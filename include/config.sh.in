@@ -1,0 +1,16 @@
+#! /bin/sh -e
+
+# System configuration
+
+top_srcdir=@top_srcdir@
+build=@build_cpu@-@build_os@
+host=@host_cpu@-@host_os@
+MAKE=@MAKE@
+UNZIP=@UNZIP@
+TAR=@TAR@
+MKDIR=@MKDIR@
+CP=@CP@
+RM=@RM@
+STOW=@STOW@
+INSTALL="@INSTALL@"
+WGET=@WGET@

@@ -1,0 +1,32 @@
+#!/bin/bash
+
+CMD=/usr/bin/pkg-config
+PREFIX=/usr
+
+if [ ! "$SYSROOT" ]; then
+    echo "pkg-config-filter: missing \$SYSROOT environment variable"
+    exit 2
+fi
+
+#if [ ! "$PKG_CONFIG_LIBDIR" ]; then
+#    export PKG_CONFIG_LIBDIR=$SYSROOT/lib/pkgconfig/
+#fi
+
+export PKG_CONFIG_LIBDIR
+export PKG_CONFIG_PATH
+
+if $CMD $* |
+    sed -e "s~\-L/*$SYSROOT/*~-L=/~g; s~\-I/*$SYSROOT/*~-I=/~g;" | # protect already given sysroot 
+    sed -e "s~\-L$PREFIX/~-L=/~g; s~\-I$PREFIX/~-I=/~g;" | # add sysroot symbol to all absolute pathes
+    sed -e "s~\-L\=~-L$SYSROOT~g; s~\-I\=~-I$SYSROOT~g;"  # replace sysroot sign to sysroot path
+#    sed -e "s~\-x11\-~-win32-~g;" # replace x11 with win32 (target)
+#    sed -e "s~pangoxft~pangow32ft~g;" # replace x11 with win32 (target)
+then    
+    echo "PKG_CONFIG_LIBDIR=$PKG_CONFIG_LIBDIR" >&2
+    echo "PKG_CONFIG_PATH=$PKG_CONFIG_PATH" >&2
+    echo "OKAY" >&2;
+    exit 0;
+else
+    echo "pkg-config failed!" >&2 
+    exit 1
+fi
