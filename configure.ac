@@ -27,10 +27,10 @@ PACKAGE=$PACKAGE_NAME
 VERSION=$PACKAGE_VERSION
 
 AC_CONFIG_SRCDIR(include/config.sh.in)
+AC_CONFIG_MACRO_DIR(m4)
 
 AM_INIT_AUTOMAKE($PACKAGE, $VERSION)
 AM_MAINTAINER_MODE
-
 AC_CANONICAL_HOST
 
 AC_SUBST(PACKAGE)
@@ -52,6 +52,30 @@ AC_PROG_INSTALL
 # Optional tools.
 
 AC_CHECK_PROGS(WGET, wget)
+
+
+# Packages.
+
+#GPG4WIN_BPKG_GNU([libiconv])
+#GPG4WIN_BPKG_GNU([gettext], [libiconv])
+
+GPG4WIN_BPKG_GNUWIN32([zlib])
+GPG4WIN_BPKG_GNUWIN32([libpng], [pkgconfig])
+
+GPG4WIN_BPKG_GTK([pkgconfig])
+GPG4WIN_BPKG_GTK_DEV([glib], [pkgconfig])
+#GPG4WIN_BPKG_GTK_DEV([gtk+], [atk pango glib libiconv gettext pkgconfig])
+GPG4WIN_BPKG_GTK_DEV([gtk+], [atk pango glib pkgconfig])
+GPG4WIN_BPKG_GTK_DEV([atk], [glib pkgconfig])
+GPG4WIN_BPKG_GTK_DEV([pango], [glib pkgconfig])
+
+GPG4WIN_SPKG([libgpg-error])
+GPG4WIN_SPKG([gpgme], [libgpg-error])
+GPG4WIN_SPKG([gnupg])
+GPG4WIN_SPKG([gpgol], [gpgme])
+GPG4WIN_SPKG([gpa], [zlib gtk+ libpng glib gpgme])
+
+GPG4WIN_FINALIZE
 
 
 # Finalize.

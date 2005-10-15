@@ -1,4 +1,10 @@
 2005-10-15  Marcus Brinkmann  <marcus@g10code.de>
 
+	* m4/gpg4win.m4: New file.
+	* include/config.sh: Add many package variables.
+	* configure.ac: Call package detection macros.
+	* Makefile.am (ACLOCAL_AMFLAGS): New variable.
+	* src/gpg4win.sh: Use some of the new variables.
+
 	* packages/download.sh: Fix downloading of Gtk source packages.
 
