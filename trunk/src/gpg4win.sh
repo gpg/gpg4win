@@ -135,12 +135,12 @@ install_binary gettext-runtime-0.13.1.bin.woe32 gettext-0.13.1 LIBINTL
 
 # Install zlib runtime and development.
 
-install_binary zlib-1.2.3-bin zlib-1.2.3-src
-install_binary zlib-1.2.3-lib zlib-1.2.3-src ZLIB
+install_binary zlib-${gpg4win_pkg_zlib_version}-bin zlib-${gpg4win_pkg_zlib_version}-src
+install_binary zlib-${gpg4win_pkg_zlib_version}-lib zlib-${gpg4win_pkg_zlib_version}-src ZLIB
 
 # Now generate the required file for libtool (FIXME: Is this really
 # required?).
-(cd ${ipdir}; ${no_run} ${STOW} -D zlib-1.2.3-lib)
+(cd ${ipdir}; ${no_run} ${STOW} -D zlib-${gpg4win_pkg_zlib_version}-lib)
 (cd ${ZLIB_PREFIX}; ${no_run} cat > lib/libz.la <<EOF)
 dlname='../bin/zlib1.dll'
 library_names='libz.dll.a'
@@ -155,37 +155,37 @@ dlopen=''
 dlpreopen=''
 libdir="${ZLIB_PREFIX}/lib"
 EOF
-(cd ${ipdir}; ${no_run} ${STOW} zlib-1.2.3-lib)
+(cd ${ipdir}; ${no_run} ${STOW} zlib-${gpg4win_pkg_zlib_version}-lib)
 
 
 # Install Glib runtime and development.
 
 # extra-source: dirent.zip
-install_binary glib-2.6.6 glib-2.6.6
-install_binary glib-dev-2.6.6 glib-2.6.6 GLIB
+install_binary glib-${gpg4win_pkg_glib_version} glib-${gpg4win_pkg_glib_version}
+install_binary glib-dev-${gpg4win_pkg_glib_version} glib-${gpg4win_pkg_glib_version} GLIB
 
 
 # Install Gtk+ runtime and development.  Requires glib.
 
-install_binary atk-1.9.0 atk-1.9.0
-install_binary atk-dev-1.9.0 atk-1.9.0 ATK
+install_binary atk-${gpg4win_pkg_atk_version} atk-${gpg4win_pkg_atk_version}
+install_binary atk-dev-${gpg4win_pkg_atk_version} atk-${gpg4win_pkg_atk_version} ATK
 
-install_binary pango-1.8.2 pango-1.8.2
-install_binary pango-dev-1.8.2 pango-1.8.2 PANGO
+install_binary pango-${gpg4win_pkg_pango_version} pango-${gpg4win_pkg_pango_version}
+install_binary pango-dev-${gpg4win_pkg_pango_version} pango-${gpg4win_pkg_pango_version} PANGO
 
-install_binary gtk+-2.6.9 gtk+-2.6.9
-install_binary gtk+-dev-2.6.9 gtk+-2.6.9 GTK2
+install_binary gtk+-${gpg4win_pkg_gtk__version} gtk+-${gpg4win_pkg_gtk__version}
+install_binary gtk+-dev-${gpg4win_pkg_gtk__version} gtk+-${gpg4win_pkg_gtk__version} GTK2
 
 
 # Install libpng runtime and development.
 
-install_binary libpng-1.2.8-bin libpng-1.2.8-src
-install_binary libpng-1.2.8-lib libpng-1.2.8-src LIBPNG
+install_binary libpng-${gpg4win_pkg_libpng_version}-bin libpng-${gpg4win_pkg_libpng_version}-src
+install_binary libpng-${gpg4win_pkg_libpng_version}-lib libpng-${gpg4win_pkg_libpng_version}-src LIBPNG
 
 
 # Install pkg-config.  Requires Gtk+.  (FIXME: Is this needed?)
 
-install_binary pkgconfig-0.15 pkgconfig-0.15.0
+install_binary pkgconfig-${gpg4win_pkg_pkgconfig_version} pkgconfig-0.15.0
 
 
 # BINARY FIXUP
@@ -198,30 +198,30 @@ install_binary pkgconfig-0.15 pkgconfig-0.15.0
 
 # Install GnuPG.
 
-install_source gnupg-1.4.2
+install_source gnupg-${gpg4win_pkg_gnupg_version}
 
 
 # Install libgpg-error.
 
-install_source libgpg-error-1.2-cvs "" LIBGPG_ERROR
+install_source libgpg-error-${gpg4win_pkg_libgpg_error_version} "" LIBGPG_ERROR
 
 
 # Install GPGME.  Requires libgpg-error.
 
-install_source gpgme-1.1.0 \
+install_source gpgme-${gpg4win_pkg_gpgme_version} \
   "--with-gpg-error-prefix=${idir} --without-gpgsm" \
   GPGME
 
 
 # Install GPA.  Requires zlib, Gtk+, libpng, glib, GPGME.
 
-install_source gpa-0.7.1-cvs \
+install_source gpa-${gpg4win_pkg_gpa_version} \
     "--with-libiconv-prefix=${idir} --with-libintl-prefix=${idir} --with-gpgme-prefix=${idir} --with-zlib=${idir}" \
     GPA
 
 # Install GPGol.  Requires GPGME.
 
-install_source gpgol-0.9.3-cvs "--with-gpgme-prefix=${idir}" GPA
+install_source gpgol-${gpg4win_pkg_gpgol_version} "--with-gpgme-prefix=${idir}" GPA
 
 # Install GPGee.  FIXME  (From installable exe ?)
 
