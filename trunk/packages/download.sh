@@ -33,23 +33,23 @@ ${WGET} -c ${server_gnuwin32}/libpng-1.2.8-src.zip
 
 # http://www.gimp.org/~tml/gimp/win32/downloads.html
 
-server_gtk=ftp://ftp.gtk.org/pub/gtk/v2.6/win32
+server_gtk=ftp://ftp.gtk.org/pub/gtk/v2.6
 server_gimp=http://www.gimp.org/~tml/gimp/win32
 
-${WGET} -c ${server_gtk}/glib-2.6.6.zip
-${WGET} -c ${server_gtk}/glib-dev-2.6.6.zip
+${WGET} -c ${server_gtk}/win32/glib-2.6.6.zip
+${WGET} -c ${server_gtk}/win32/glib-dev-2.6.6.zip
 ${WGET} -c ${server_gtk}/glib-2.6.6.tar.bz2
 
-${WGET} -c ${server_gtk}/atk-1.9.0.zip
-${WGET} -c ${server_gtk}/atk-dev-1.9.0.zip
+${WGET} -c ${server_gtk}/win32/atk-1.9.0.zip
+${WGET} -c ${server_gtk}/win32/atk-dev-1.9.0.zip
 ${WGET} -c ${server_gtk}/atk-1.9.0.tar.bz2
 
-${WGET} -c ${server_gtk}/pango-1.8.2.zip
-${WGET} -c ${server_gtk}/pango-dev-1.8.2.zip
+${WGET} -c ${server_gtk}/win32/pango-1.8.2.zip
+${WGET} -c ${server_gtk}/win32/pango-dev-1.8.2.zip
 ${WGET} -c ${server_gtk}/pango-1.8.2.tar.bz2
 
-${WGET} -c ${server_gtk}/gtk+-2.6.9.zip
-${WGET} -c ${server_gtk}/gtk+-dev-2.6.9.zip
+${WGET} -c ${server_gtk}/win32/gtk+-2.6.9.zip
+${WGET} -c ${server_gtk}/win32/gtk+-dev-2.6.9.zip
 ${WGET} -c ${server_gtk}/gtk+-2.6.6.tar.bz2
 
 ${WGET} -c ${server_gimp}/pkgconfig-0.15.zip

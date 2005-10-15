@@ -1,0 +1,4 @@
+2005-10-15  Marcus Brinkmann  <marcus@g10code.de>
+
+	* packages/download.sh: Fix downloading of Gtk source packages.
+
