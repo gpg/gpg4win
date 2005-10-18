@@ -1,1 +1,84 @@
 EXTRA_DIST = gpg4win.sh pkg-config
+
+# Supported source packages.
+gpg4win_spkgs := gnupg libgpg-error gpgme gpgol gpa
+
+# Extra options to configure for individual packages.
+# We can use $(idir) here for the installation prefix.
+gpg4win_pkg_gpgme_configure = \
+  --with-gpg-error-prefix=$(idir) --without-gpgsm
+
+gpg4win_pkg_gpa_configure = \
+  --with-libiconv-prefix=$(idir) --with-libintl-prefix=$(idir) \
+  --with-gpgme-prefix=$(idir) --with-zlib=$(idir)
+
+gpg4win_pkg_gpgol_configure = \
+  --with-gpgme-prefix=$(idir)
+
+
+# Supported binary packages.
+gpg4win_bpkgs :=  libiconv gettext pkgconfig zlib glib libpng pango atk gtk+
+
+# Zlib needs some special magic to generate a libtool file.
+define gpg4win_pkg_zlib_post_install
+(cd $$$${pkgidir_dev};					\
+echo "dlname='../bin/zlib1.dll'" > lib/libz.la;	\
+echo "library_names='libz.dll.a'" >> lib/libz.la;	\
+echo "old_library='libz.a'" >> lib/libz.la;		\
+echo "dependency_libs=''" >> lib/libz.la;		\
+echo "current=1" >> lib/libz.la;			\
+echo "age=2" >> lib/libz.la;				\
+echo "revision=3" >> lib/libz.la;			\
+echo "installed=yes" >> lib/libz.la;			\
+echo "shouldnotlink=no" >> lib/libz.la;			\
+echo "dlopen=''" >> lib/libz.la;			\
+echo "dlpreopen=''" >> lib/libz.la;			\
+echo "libdir=\"$$$${pkgidir}/lib\"" >> lib/libz.la;)
+endef
+
+
+# We need to fix the prefix in the various packages using pkgconfig,
+# or we can't substitute it properly in our pkg-config wrapper.
+define gpg4win_pkg_glib_post_install
+ (cd $$$${pkgidir_dev};							\
+ perl -pi -e 's/^prefix=.*$$$$/prefix=\/usr/' `find . -name \*.pc`)
+endef
+
+define gpg4win_pkg_atk_post_install
+ (cd $$$${pkgidir_dev};							\
+ perl -pi -e 's/^prefix=.*$$$$/prefix=\/usr/' `find . -name \*.pc`)
+endef
+
+define gpg4win_pkg_pango_post_install
+ (cd $$$${pkgidir_dev};							\
+ perl -pi -e 's/^prefix=.*$$$$/prefix=\/usr/' `find . -name \*.pc`)
+endef
+
+define gpg4win_pkg_gtk__post_install
+ (cd $$$${pkgidir_dev};							\
+ perl -pi -e 's/^prefix=.*$$$$/prefix=\/usr/' `find . -name \*.pc`)
+endef
+
+# In libpng, the pkg-config files are surprisingly found in the
+# runtime package.
+define gpg4win_pkg_libpng_post_install
+ (cd $$$${pkgidir};							\
+ perl -pi -e 's/^prefix=.*$$$$/prefix=\/usr/' `find . -name \*.pc`)
+endef
+
+
+# Now do the bunch of the work.  This is a bunch of dirty magic to
+# integrate our special makefile into automake, while not actually
+# including it (make should include it).  This is in turn necessary
+# because automake can't deal with the elegant magic in the actual
+# Makefile.
+
+define INCLUDE_BY_MAKE
+include $(1)
+endef
+
+$(eval $(call INCLUDE_BY_MAKE,gpg4win.mk))
+
+all-local: all-gpg4win
+
+clean-local: clean-gpg4win
