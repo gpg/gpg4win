@@ -1,5 +1,7 @@
 2005-10-18  Marcus Brinkmann  <marcus@g10code.de>
 
+	configure.ac: Enable libiconv and gettext dependencies for Gtk+.
+
 	* src/Makefile.am: First real implementation.
 	* src/gpg4win.mk.in: New file.
 	* configure.ac: Activate libiconv and gettext.
