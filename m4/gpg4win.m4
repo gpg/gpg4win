@@ -227,7 +227,7 @@ AC_DEFUN([GPG4WIN_SPKG],
 
 
 # GPG4WIN_BPKG_GNUWIN32([PKG],[DEPENDS],[IF-FOUND],[IF-NOT-FOUND])
-# Set up the source package PKG.
+# Set up the gnuwin32 package PKG.
 # It is provided in gpg4win_val.
 AC_DEFUN([GPG4WIN_BPKG_GNUWIN32],
 [
@@ -286,7 +286,7 @@ AC_DEFUN([GPG4WIN_BPKG_GNUWIN32],
 
 
 # GPG4WIN_BPKG_GTK([PKG],[DEPENDS],[IF-FOUND],[IF-NOT-FOUND])
-# Set up the source package PKG.
+# Set up the Gtk binary package PKG.
 # It is provided in gpg4win_val.
 AC_DEFUN([GPG4WIN_BPKG_GTK],
 [
@@ -336,7 +336,7 @@ AC_DEFUN([GPG4WIN_BPKG_GTK],
 
 
 # GPG4WIN_BPKG_GTK_DEV([PKG],[DEPENDS],[IF-FOUND],[IF-NOT-FOUND])
-# Set up the source package PKG.
+# Set up the Gtk library package PKG.
 # It is provided in gpg4win_val.
 AC_DEFUN([GPG4WIN_BPKG_GTK_DEV],
 [
@@ -389,3 +389,64 @@ AC_DEFUN([GPG4WIN_BPKG_GTK_DEV],
           [$3],
           [$4])
 ])
+
+
+# GPG4WIN_BPKG_GNU([PKG],[DEPENDS],[IF-FOUND],[IF-NOT-FOUND])
+# Set up the source package PKG.
+# It is provided in gpg4win_val.
+AC_DEFUN([GPG4WIN_BPKG_GNU],
+[
+  AC_REQUIRE([GPG4WIN_INIT])
+  _gpg4win_pkg=maybe
+  AC_ARG_ENABLE([pkg-$1],
+    AS_HELP_STRING([--enable-pkg-$1[=DIR]],
+                   [include package $1]),
+    _gpg4win_pkg=$enableval)
+  _gpg4win_bpkg=no
+  _gpg4win_version=
+
+  AS_IF([test x$_gpg4win_pkg != xno],
+        [
+          # For some shameful reason, the gettext package is actually called
+          # gettext-runtime!
+          AS_IF([test $1 = gettext],
+	        [GPG4WIN_FIND($1-runtime,,zip, $_gpg4win_pkg,
+ 		             _gpg4win_bpkg=$gpg4win_val
+		 	     _gpg4win_version=$gpg4win_version)],
+		[GPG4WIN_FIND($1,,zip, $_gpg4win_pkg,
+ 		             _gpg4win_bpkg=$gpg4win_val
+		 	     _gpg4win_version=$gpg4win_version)])
+	])
+
+  # At this point, _gpg4win_bpkg is no, or the actual package source file.
+
+  # gpg4win_pkg_PKGNAME=FILENAME_OF_BINARY
+  gpg4win_pkg_[]m4_bpatsubst([$1],-,_)[]=$_gpg4win_bpkg
+  AC_SUBST(gpg4win_pkg_[]m4_bpatsubst([$1],-,_))
+
+  # gpg4win_pkg_PKGNAME_version=VERSION
+  gpg4win_pkg_[]m4_bpatsubst([$1],[[-+]],_)[]_version=$_gpg4win_version
+  AC_SUBST(gpg4win_pkg_[]m4_bpatsubst([$1],[[-+]],_)[]_version)
+
+  AS_IF([test $_gpg4win_bpkg != no],
+    [GPG4WIN_FIND($1,,tar, $_gpg4win_pkg, _gpg4win_bpkg=$gpg4win_val,
+       AC_MSG_ERROR(can not find sources for package $1))]
+    # gpg4win_pkg_PKGNAME_src=FILENAME_OF_SOURCE
+    gpg4win_pkg_[]m4_bpatsubst([$1],-,_)[]_src=$_gpg4win_bpkg
+    AC_SUBST(gpg4win_pkg_[]m4_bpatsubst([$1],-,_)[]_src)
+
+    # FIXME: Add a version consistency check here.  All two packages
+    # must match!
+
+    _gpg4win_pkgs="$_gpg4win_pkgs $1"
+    # Record dependencies.  Also enter every package as node.
+    _gpg4win_deps="$_gpg4win_deps $1 $1"
+    AS_IF([test ! -z "$2"],
+          for _gpg4win_i in $2; do
+	    _gpg4win_deps="$_gpg4win_deps $_gpg4win_i $1"
+          done)
+          [$3],
+          [$4])
+])
+
+

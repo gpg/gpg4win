@@ -56,8 +56,8 @@ AC_CHECK_PROGS(WGET, wget)
 
 # Packages.
 
-#GPG4WIN_BPKG_GNU([libiconv])
-#GPG4WIN_BPKG_GNU([gettext], [libiconv])
+GPG4WIN_BPKG_GNU([libiconv])
+GPG4WIN_BPKG_GNU([gettext], [libiconv])
 
 GPG4WIN_BPKG_GNUWIN32([zlib])
 GPG4WIN_BPKG_GNUWIN32([libpng], [pkgconfig])
@@ -80,6 +80,6 @@ GPG4WIN_FINALIZE
 
 # Finalize.
 
-AC_CONFIG_FILES(Makefile src/Makefile include/Makefile)
-AC_CONFIG_FILES(include/config.sh)
+AC_CONFIG_FILES(Makefile packages/Makefile include/Makefile src/Makefile)
+AC_CONFIG_FILES(include/config.sh src/gpg4win.mk)
 AC_OUTPUT

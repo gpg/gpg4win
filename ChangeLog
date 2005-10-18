@@ -1,3 +1,12 @@
+2005-10-18  Marcus Brinkmann  <marcus@g10code.de>
+
+	* src/Makefile.am: First real implementation.
+	* src/gpg4win.mk.in: New file.
+	* configure.ac: Activate libiconv and gettext.
+	(AC_CONFIG_FILES): Add packages/Makefile and src/gpg4win.mk.
+	* m4/gpg4win.m4 (GPG4WIN_BPKG_GNU): New macro.
+	* include/config.sh.in: Add variables for libiconv and gettext.
+
 2005-10-15  Marcus Brinkmann  <marcus@g10code.de>
 
 	* m4/gpg4win.m4: New file.

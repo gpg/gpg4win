@@ -74,3 +74,11 @@ gpg4win_pkg_gtk_=@gpg4win_pkg_gtk_@
 gpg4win_pkg_gtk__version=@gpg4win_pkg_gtk__version@
 gpg4win_pkg_gtk__dev=@gpg4win_pkg_gtk__dev@
 gpg4win_pkg_gtk__src=@gpg4win_pkg_gtk__src@
+
+gpg4win_pkg_libiconv=@gpg4win_pkg_libiconv@
+gpg4win_pkg_libiconv_version=@gpg4win_pkg_libiconv_version@
+gpg4win_pkg_libiconv_src=@gpg4win_pkg_libiconv_src@
+
+gpg4win_pkg_gettext=@gpg4win_pkg_gettext@
+gpg4win_pkg_gettext_version=@gpg4win_pkg_gettext_version@
+gpg4win_pkg_gettext_src=@gpg4win_pkg_gettext_src@
