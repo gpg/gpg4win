@@ -1,7 +1,3 @@
-* Add copyright statements to all files !!!
-
-* Integrate patches into CVS !!!
-
 * Record the dependencies in the build list in the gpg4win.mk.in
    Makefile using make dependencies between the stamp-final-$(1)
    targets.  This would hopefully ensure that parallel makes work. !
@@ -30,3 +26,18 @@
 * Add the missing packages: gpgee, Sylpheed, WinPT, Eudore extensions.
 
 * gpgol needs to be registered. !!!
+
+* Verify the digital signatures.  Include them in the source
+   installer.
+
+
+Copyright 2005 g10 Code GmbH
+
+This file is free software; as a special exception the author gives
+unlimited permission to copy and/or distribute it, with or without
+modifications, as long as this notice is preserved.
+
+This file is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
+implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+PURPOSE.
