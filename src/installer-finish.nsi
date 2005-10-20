@@ -44,11 +44,15 @@ Section Uninstall
 !endif
   Delete "$SMPROGRAMS\$R0\Uninstall.lnk"
   RMDir "$SMPROGRAMS\$R0"
+  DeleteRegValue HKLM "Software\GNU\${PRETTY_PACKAGE_SHORT}" \
+        "Start Menu Folder"
 !endif
 
   Delete "$INSTDIR\${PACKAGE}-uninstall.exe"
   RMDir "$INSTDIR"
 
+  # Clean the registry.
   DeleteRegValue HKLM "Software\GNU\${PRETTY_PACKAGE_SHORT}" \
         "Install Directory"
+  DeleteRegKey /ifempty HKLM "Software\GNU\${PRETTY_PACKAGE_SHORT}" \
 SectionEnd
