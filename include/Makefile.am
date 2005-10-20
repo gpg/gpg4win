@@ -1,1 +1,1 @@
-EXTRA_DIST = config.sh.in
+EXTRA_DIST = config.nsh.in
