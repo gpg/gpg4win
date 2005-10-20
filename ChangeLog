@@ -1,5 +1,10 @@
 2005-10-20  Marcus Brinkmann  <marcus@g10code.de>
 
+	* Makefile.am (EXTRA_DIST): New target.
+	* include/Makefile.am (EXTRA_DIST): Change config.nsh.in to
+	config.nsi.in.
+	* src/Makefile.am (EXTRA_DIST): Remove pkg-config.  Add nsi files.
+
 	* src/inst-gpgol.nsi: Change libgpgol-0.9.3.dll to gpgol.dll.
 
 	* src/gpg4win.mk.in (stamp/stamp-$(1)-02-configure): Add

@@ -18,7 +18,7 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
 
-EXTRA_DIST = gpg4win.sh pkg-config
+EXTRA_DIST = pkg-config $(common_nsi) gpg4win.nsi gpg4win-src.nsi
 
 # Supported source packages.
 gpg4win_spkgs := gnupg libgpg-error gpgme gpgol gpa
@@ -101,14 +101,13 @@ $(eval $(call INCLUDE_BY_MAKE,gpg4win.mk))
 
 clean-local: clean-gpg4win
 
-gpg4win-$(VERSION).exe: gpg4win.nsi inst-sections.nsi \
-   installer.nsi installer-finish.nsi \
-  $(addsuffix .nsi,$(addprefix inst-,$(gpg4win_build_list))) stamps/stamp-final
+common_nsi := inst-sections.nsi installer.nsi installer-finish.nsi \
+  $(addsuffix .nsi,$(addprefix inst-,$(gpg4win_build_list)))
+
+gpg4win-$(VERSION).exe: gpg4win.nsi $(common_nsi) stamps/stamp-final
 	$(MAKENSIS) gpg4win.nsi
 
-gpg4win-src-$(VERSION).exe: gpg4win-src.nsi inst-sections.nsi \
-  installer.nsi installer-finish.nsi \
-  $(addsuffix .nsi,$(addprefix inst-,$(gpg4win_build_list))) stamps/stamp-final
+gpg4win-src-$(VERSION).exe: gpg4win-src.nsi $(common_nsi) stamps/stamp-final
 	$(MAKENSIS) gpg4win-src.nsi
 
 all-local: gpg4win-$(VERSION).exe gpg4win-src-$(VERSION).exe

@@ -20,3 +20,8 @@
 ACLOCAL_AMFLAGS = -I m4
 
 SUBDIRS = packages include src
+
+EXTRA_DIST = \
+	patches/gnupg-1.4.2/01-po-subdirs.patch \
+	patches/gpgme-1.1.0/01-gpgme-def.patch \
+	patches/gpgme-1.1.0/02-libtool-dll.patch
