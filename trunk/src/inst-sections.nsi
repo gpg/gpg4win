@@ -141,3 +141,19 @@ FunctionEnd
   !insertmacro MUI_DESCRIPTION_TEXT ${SEC_gnupg} $(DESC_SEC_gnupg)
 !insertmacro MUI_FUNCTION_DESCRIPTION_END
 
+
+# This also must be in a central place.  Also Urgs.
+
+Section "-startmenu"
+!ifdef HAVE_STARTMENU
+!insertmacro MUI_STARTMENU_WRITE_BEGIN Application
+    CreateDirectory "$SMPROGRAMS\$STARTMENU_FOLDER"
+!ifdef HAVE_PKG_GPA
+    CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\GPA.lnk" \
+	"$INSTDIR\gpa.exe"
+!endif
+    CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\Uninstall.lnk" \
+	"$INSTDIR\${PACKAGE}-uninstall.exe"
+!insertmacro MUI_STARTMENU_WRITE_END
+!endif
+SectionEnd

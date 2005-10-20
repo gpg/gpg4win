@@ -37,6 +37,15 @@ SectionEnd
 
 
 Section Uninstall
+!ifdef HAVE_STARTMENU
+!insertmacro MUI_STARTMENU_GETFOLDER ${STARTMENU_FOLDER} $R0
+!ifdef HAVE_PKG_GPA
+  Delete "$SMPROGRAMS\$R0\GPA.lnk"
+!endif
+  Delete "$SMPROGRAMS\$R0\Uninstall.lnk"
+  RMDir "$SMPROGRAMS\$R0"
+!endif
+
   Delete "$INSTDIR\${PACKAGE}-uninstall.exe"
   RMDir "$INSTDIR"
 
