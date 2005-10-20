@@ -26,6 +26,9 @@
 * Verify the digital signatures.  Include them in the source
    installer.
 
+* BUG: If there is more than one version of a package, the script
+   breaks.  The GPG4WIN_FIND function must filter and pick one of the
+   matches.
 
 Copyright 2005 g10 Code GmbH
 
