@@ -138,7 +138,7 @@ AC_DEFUN([GPG4WIN_FIND],
         AC_MSG_RESULT($_gpg4win_file))
   AS_IF([test -z "$_gpg4win_file" -a $_gpg4win_critical = yes],
         AC_MSG_ERROR(could not find sources for $1 in $_gpg4win_dir))
-  AS_IF([test ! -z $_gpg4win_file],
+  AS_IF([test ! -z "$_gpg4win_file"],
         [gpg4win_val="$_gpg4win_file"
  	[gpg4win_version=`echo "$gpg4win_val" | sed -e "s,^.*/${_gpg4win_pat}${_gpg4win_suffix}$,\1,"`]
          [$5]],
@@ -213,7 +213,7 @@ AC_DEFUN([GPG4WIN_SPKG],
   gpg4win_pkg_[]m4_bpatsubst([$1],[[-+]],_)[]_version=$_gpg4win_version
   AC_SUBST(gpg4win_pkg_[]m4_bpatsubst([$1],[[-+]],_)[]_version)
 
-  AS_IF([test $_gpg4win_spkg != no],
+  AS_IF([test "$_gpg4win_spkg" != no],
     _gpg4win_pkgs="$_gpg4win_pkgs $1"
     # Record dependencies.  Also enter every package as node.
     _gpg4win_deps="$_gpg4win_deps $1 $1"
