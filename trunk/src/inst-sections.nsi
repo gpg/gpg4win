@@ -1,4 +1,4 @@
-# inst-sections.nsi - Installer for GnuPG 4 Windows sections.
+# inst-sections.nsi - Installer for GPG4Win sections.  -*- coding: latin-1; -*-
 # Copyright (C) 2005 g10 Code GmbH
 # 
 # This file is part of GPG4Win.

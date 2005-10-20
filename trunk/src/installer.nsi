@@ -1,4 +1,4 @@
-# installer.nsi - Installer for GnuPG 4 Windows.
+# installer.nsi - Installer for GnuPG 4 Windows.    -*- coding: latin-1; -*-
 # Copyright (C) 2005 g10 Code GmbH
 # 
 # This file is part of GPG4Win.
@@ -46,7 +46,8 @@ OutFile "${PACKAGE}-${VERSION}.exe"
 !ifndef INSTALL_DIR
 !define INSTALL_DIR "${PACKAGE}"
 !endif
-InstallDir "$PROGRAMFILES\GNU\${INSTALL_DIR}\"
+InstallDir "$PROGRAMFILES\GNU\${INSTALL_DIR}\\" 
+
 
 InstallDirRegKey HKLM "Software\GNU\${PRETTY_PACKAGE_SHORT}" \
 	"Install Directory"

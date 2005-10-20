@@ -1,4 +1,4 @@
-# inst-gtk+.nsi - Installer snippet for gtk+.
+# inst-gtk+.nsi - Installer snippet for gtk+.     -*- coding: latin-1; -*-
 # Copyright (C) 2005 g10 Code GmbH
 # 
 # This file is part of GPG4Win.

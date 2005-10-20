@@ -1,4 +1,4 @@
-# inst-libiconv.nsi - Installer snippet for libiconv.
+# inst-libiconv.nsi - Installer snippet for libiconv.  -*- coding: latin-1; -*-
 # Copyright (C) 2005 g10 Code GmbH
 # 
 # This file is part of GPG4Win.

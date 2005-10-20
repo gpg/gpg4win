@@ -1,4 +1,4 @@
-# inst-libgpg-error.nsi - Installer snippet for libgpg-error.
+# inst-libgpg-error.nsi - snippet for libgpg-error.   -*- coding: latin-1; -*-
 # Copyright (C) 2005 g10 Code GmbH
 # 
 # This file is part of GPG4Win.

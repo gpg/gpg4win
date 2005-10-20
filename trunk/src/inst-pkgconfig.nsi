@@ -1,4 +1,4 @@
-# inst-pkgconfig.nsi - Installer snippet for pkgconfig.
+# inst-pkgconfig.nsi - Installer snippet for pkgconfig -*- coding: latin-1; -*-
 # Copyright (C) 2005 g10 Code GmbH
 # 
 # This file is part of GPG4Win.

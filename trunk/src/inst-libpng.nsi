@@ -1,4 +1,4 @@
-# inst-libpng.nsi - Installer snippet for libpng.
+# inst-libpng.nsi - Installer snippet for libpng.   -*- coding: latin-1; -*-
 # Copyright (C) 2005 g10 Code GmbH
 # 
 # This file is part of GPG4Win.

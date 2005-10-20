@@ -1,4 +1,4 @@
-# inst-gpgol.nsi - Installer snippet for gpgol.
+# inst-gpgol.nsi - Installer snippet for gpgol.      -*- coding: latin-1; -*-
 # Copyright (C) 2005 g10 Code GmbH
 # 
 # This file is part of GPG4Win.
