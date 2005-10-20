@@ -173,13 +173,10 @@ $(foreach spkg, $(gpg4win_spkgs), $(eval $(call SPKG_template,$(spkg))))
 # Insert the template for each binary package.
 $(foreach bpkg, $(gpg4win_bpkgs), $(eval $(call BPKG_template,$(bpkg))))
 
+stamps/stamp-final: $(addprefix stamps/stamp-final-,$(gpg4win_build_list))
+	touch stamps/stamp-final
 
-.PHONY : final
-
-final: $(addprefix stamps/stamp-final-,$(gpg4win_build_list))
-
-all-gpg4win: final
-
+all-gpg4win: stamps/stamp-final
 
 # Just to check if we catched all stamps.
 clean-stamps:
@@ -187,3 +184,5 @@ clean-stamps:
 
 clean-gpg4win:
 	$(RM) -fR playground stamps
+
+.PHONY : all-gpg4win clean-stamps clean-gpg4win
