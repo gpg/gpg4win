@@ -1,2 +1,24 @@
 This is gpg4win - the GUI Installer Builder for W32.
 
+Instructions:
+
+1. Download the source and binary packages that are required to build
+   the installer:
+
+   $ cd packages
+   $ sh download.sh
+   [...]
+   $ cd ..
+
+2. Configure the source tree for cross compilation:
+
+   $ configure --host=i586-mingw32msvc
+
+3. Build the installer:
+
+   $ make
+
+The installer will be made available in two files:
+
+src/gpg4win-X.Y.Z.exe
+src/gpg4win-src-X.Y.Z.exe
