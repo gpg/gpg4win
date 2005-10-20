@@ -28,7 +28,7 @@ Section "gpgol" SEC_gpgol
 !ifdef SOURCES
   File "${gpg4win_pkg_gpgol}"
 !else
-  File ${prefix}/bin/libgpgol-0-9-3-cvs.dll
+  File ${prefix}/bin/gpgol.dll
 !endif
 SectionEnd
 
@@ -39,7 +39,7 @@ Section "-un.gpgol"
   Push "${gpg4win_pkg_gpgol}"
   Call un.SourceDelete
 !else
-  Delete "$INSTDIR\libgpgol-0-9-3-cvs.dll"
+  Delete "$INSTDIR\gpgol.dll"
   RMDir "$INSTDIR"
 !endif
 SectionEnd
