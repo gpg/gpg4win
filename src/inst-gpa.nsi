@@ -1,4 +1,4 @@
-# inst-gpa.nsi - Installer snippet for gpa.
+# inst-gpa.nsi - Installer snippet for gpa.        -*- coding: latin-1; -*-
 # Copyright (C) 2005 g10 Code GmbH
 # 
 # This file is part of GPG4Win.

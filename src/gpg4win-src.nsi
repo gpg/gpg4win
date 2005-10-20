@@ -1,4 +1,4 @@
-# gpg4win-src.nsi - Installer for GnuPG 4 Windows sources.
+# gpg4win-src.nsi - Installer for GPG4Win sources.   -*- coding: latin-1; -*-
 # Copyright (C) 2005 g10 Code GmbH
 # 
 # This file is part of GPG4Win.
