@@ -17,22 +17,23 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
+Var MYTMP
+
 # Last section is a hidden one.
 Section
-
   WriteUninstaller "$INSTDIR\${PACKAGE}-uninstall.exe"
 
-#  StrCpy $MYTMP "Software\Microsoft\Windows\CurrentVersion\Uninstall\GnuPG"
-#  WriteRegExpandStr HKLM $MYTMP "UninstallString" '"$INSTDIR\uninst-gnupg.exe"'
-#  WriteRegExpandStr HKLM $MYTMP "InstallLocation" "$INSTDIR"
-#  WriteRegStr       HKLM $MYTMP "DisplayName"     "GNU Privacy Guard"
-#  WriteRegStr       HKLM $MYTMP "DisplayIcon"     "$INSTDIR\gpg.exe,0"
-#  WriteRegStr       HKLM $MYTMP "DisplayVersion"  "${VERSION}"
-#  WriteRegStr       HKLM $MYTMP "Publisher"       "Free Software Foundation"
-#  WriteRegStr       HKLM $MYTMP "URLInfoAbout"    "http://www.gnupg.org/"
-#  WriteRegDWORD     HKLM $MYTMP "NoModify"        "1"
-#  WriteRegDWORD     HKLM $MYTMP "NoRepair"        "1"
-
+  # Windows Add/Remove Programs support
+  StrCpy $MYTMP "Software\Microsoft\Windows\CurrentVersion\Uninstall\{PRETTY_PACKAGE_SHORT}"
+  WriteRegExpandStr HKLM $MYTMP "UninstallString" '"$INSTDIR\${PACKAGE}-uninstall.exe"'
+  WriteRegExpandStr HKLM $MYTMP "InstallLocation" "$INSTDIR"
+  WriteRegStr       HKLM $MYTMP "DisplayName"     "${PRETTY_PACKAGE}"
+  WriteRegStr       HKLM $MYTMP "DisplayIcon"     "$INSTDIR\gpg.exe,0"
+  WriteRegStr       HKLM $MYTMP "DisplayVersion"  "${VERSION}"
+  WriteRegStr       HKLM $MYTMP "Publisher"       "g10 Code GmbH"
+  WriteRegStr       HKLM $MYTMP "URLInfoAbout"    "http://www.gnupg.org/"
+  WriteRegDWORD     HKLM $MYTMP "NoModify"        "1"
+  WriteRegDWORD     HKLM $MYTMP "NoRepair"        "1"
 SectionEnd
 
 
@@ -55,4 +56,6 @@ Section Uninstall
   DeleteRegValue HKLM "Software\GNU\${PRETTY_PACKAGE_SHORT}" \
         "Install Directory"
   DeleteRegKey /ifempty HKLM "Software\GNU\${PRETTY_PACKAGE_SHORT}" \
+  # Remove Windows Add/Remove Programs support.
+  DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\GnuPG"
 SectionEnd
