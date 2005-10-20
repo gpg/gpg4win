@@ -1,5 +1,8 @@
 2005-10-20  Marcus Brinkmann  <marcus@g10code.de>
 
+	* src/gpg4win.mk.in (stamp/stamp-$(1)-02-configure): Add
+	-mms-bitfields to CFLAGS.
+
 	* src/gpg4win.mk.in (stamps/stamp-final): New target that replaces
 	phony target final.
 
