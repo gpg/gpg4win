@@ -47,7 +47,7 @@ endef
 
 # Get the variable $(1) (which may contain '-' and '+' characters).
 define GETVAR
-$$($(call FROB_macro,$(1)))
+$($(call FROB_macro,$(1)))
 endef
 
 # Set a couple of common variables.
@@ -75,8 +75,19 @@ define DEFLATE_macro
 	  *.tar.bz2 | *.tbz2 | *.tbz)	\
 	    $(TAR) xjf "$(1)" ;;	\
 	  *.zip)			\
-	    $(UNZIP) "$(1)" ;;	\
+	    $(UNZIP) "$(1)" ;;		\
 	esac
+endef
+
+# Support macro.  Strip all dll and exe files below $(1).
+define STRIP_macro
+	if test -z "$(DEBUG)"; then			\
+	  (cd $(1);					\
+	   for f in `find . -name \*.dll		\
+		  -o -name \*.exe`; do			\
+	   echo Calling $(STRIP) "$$$${pkg_version}/$$$${f}"; \
+	   $(STRIP) "$$$${f}"; done);			\
+	fi
 endef
 
 
@@ -118,7 +129,8 @@ stamps/stamp-$(1)-03-make: stamps/stamp-$(1)-02-configure
 stamps/stamp-$(1)-04-install: stamps/stamp-$(1)-03-make
 	($(call SETVARS,$(1));				\
 	  cd "$$$${pkgbdir}";				\
-	  $(MAKE) $(AM_MAKEFLAGS) install)
+	  $(MAKE) $(AM_MAKEFLAGS) install;		\
+	  $(call STRIP_macro,"$$$${pkgidir}"))
 	touch stamps/stamp-$(1)-04-install
 
 stamps/stamp-$(1)-05-stow: stamps/stamp-$(1)-04-install
@@ -140,14 +152,18 @@ stamps/stamp-$(1)-00-install: stamps/stamp-directories
 	($(call SETVARS,$(1));				\
 	 $(MKDIR) "$$$${pkgidir}";			\
 	 cd $$$${pkgidir};				\
-	 $(call DEFLATE_macro,$$$${pkg}))
+	 $(call DEFLATE_macro,$$$${pkg});		\
+	 $(call STRIP_macro,"$$$${pkgidir}"))
 	touch stamps/stamp-$(1)-00-install
 
+# Note that post_install must come last because it may be empty and
+# "; ;" is a syntax error.
 stamps/stamp-$(1)-01-install-dev: stamps/stamp-$(1)-00-install
 	($(call SETVARS,$(1));				\
 	 $(MKDIR) "$$$${pkgidir_dev}";			\
 	 cd $$$${pkgidir_dev};				\
 	 $(call DEFLATE_macro,$$$${pkg_dev});		\
+	 $(call STRIP_macro,"$$$${pkgidir_dev}");	\
 	 $(call gpg4win_pkg_$(call FROB_macro,$(1))_post_install))
 	touch stamps/stamp-$(1)-01-install-dev
 
