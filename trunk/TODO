@@ -11,8 +11,6 @@
 
 * Check which iconv to use !!
 
-* Strip the binaries (simple find running over the whole pkgs tree). !!
-
 * Finish modularization of installer.  NSIS' macro language is not up
    to the task, so we need a bit of configure/make magic as well (a la
    autoheader). !!!
