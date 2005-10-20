@@ -1,5 +1,9 @@
 2005-10-20  Marcus Brinkmann  <marcus@g10code.de>
 
+	* src/gpg4win.mk.in (GETVAR): Don't quote the first $.
+	(STRIP_macro): New macro.
+	(SPKG, BPKG): Use it here.
+
 	* Makefile.am (EXTRA_DIST): New target.
 	* include/Makefile.am (EXTRA_DIST): Change config.nsh.in to
 	config.nsi.in.
