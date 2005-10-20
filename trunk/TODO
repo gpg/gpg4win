@@ -1,0 +1,27 @@
+* Add copyright statements to all files !!!
+
+* Integrate patches into CVS !!!
+
+* Record the dependencies in the build list in the gpg4win.mk.in
+   Makefile using make dependencies between the stamp-final-$(1)
+   targets.  This would hopefully ensure that parallel makes work. !
+
+* Invent something clever to cope with new versions of packages, which
+   may have a different file list.  We can't use globs because Delete
+   must still work.  Either have inst-PACKAGE-VERSION.nsi files, or
+   have globs plus some scripting to generate the .nis files. !
+
+* Check out which locale files to install and where. !!!
+
+* Check which iconv to use !!
+
+* Strip the binaries (simple find running over the whole pkgs tree). !!
+
+* Make make dist work. !!
+
+* Finish modularization of installer.  NSIS' macro language is not up
+   to the task, so we need a bit of configure/make magic as well (a la
+   autoheader). !!!
+
+* Allow to enable debug mode from configure line. !
+

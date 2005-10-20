@@ -1,3 +1,26 @@
+2005-10-20  Marcus Brinkmann  <marcus@g10code.de>
+
+	* configure.ac: Check for makensis.  Add gnupg as dependency for
+	gpgme.  Change config.sh into config.nsi.
+	* include/config.sh.in: File removed.
+	* src/gpg4win.sh: File removed.
+	* include/config.nsi.in: New file.
+	* include/Makefile.am (EXTRA_DIST): Change config.sh.in into
+	config.nsi.in.
+	* src/Makefile.am (gpg4win-$(VERSION).exe): New target.
+	(gpg4win-src-$(VERSION).exe): New target.
+	(all-local): Remove dependency on phony target all-gpg4win.
+	(all-local): Add dependency on gpg4win-$(VERSION).exe and
+	gpg4win-src-$(VERSION).exe.
+	(clean-local): New rule for this target.
+	* src/gpg4win.nsi, src/gpg4win-src.nsi, src/inst-atk.nsi,
+	src/inst-gettext.nsi, src/inst-glib.nsi, src/inst-gnupg.nsi,
+	src/inst-gpa.nsi, src/inst-gpgme.nsi, src/inst-gpgol.nsi,
+	src/inst-gtk+.nsi, src/inst-libgpg-error.nsi,
+	src/inst-libiconv.nsi, src/inst-libpng.nsi, src/inst-pango.nsi,
+	src/inst-pkgconfig.nsi, src/inst-sections.nsi, src/inst-zlib.nsi,
+	src/installer-finish.nsi, src/installer.nsi: New file.
+
 2005-10-18  Marcus Brinkmann  <marcus@g10code.de>
 
 	configure.ac: Enable libiconv and gettext dependencies for Gtk+.
@@ -19,3 +42,13 @@
 
 	* packages/download.sh: Fix downloading of Gtk source packages.
 
+
+ Copyright 2005 g10 Code GmbH
+
+ This file is free software; as a special exception the author gives
+ unlimited permission to copy and/or distribute it, with or without
+ modifications, as long as this notice is preserved.
+
+ This file is distributed in the hope that it will be useful, but
+ WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
+ implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
