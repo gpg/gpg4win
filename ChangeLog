@@ -1,5 +1,10 @@
 2005-10-20  Marcus Brinkmann  <marcus@g10code.de>
 
+	* src/gpg4win.nsi: Add start menu support.
+	* src/inst-sections.nsi: Likewise.
+	* src/installer.nsi: Likewise.
+	* src/installer-finish.nsi: Likewise.
+
 	* src/gpg4win.mk.in (GETVAR): Don't quote the first $.
 	(STRIP_macro): New macro.
 	(SPKG, BPKG): Use it here.

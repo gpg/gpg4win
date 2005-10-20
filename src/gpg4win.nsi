@@ -18,6 +18,7 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
 !include "../include/config.nsi"
+!define HAVE_PKG_GPA 1
 
 # The package name and version.  PRETTY_PACKAGE is a user visible name
 # only while PACKAGE is useful for filenames etc.  PROD_VERSION is the
@@ -69,6 +70,7 @@
 
 
 # Now include the generic parts.
+!define HAVE_STARTMENU
 !include "installer.nsi"
 
 
