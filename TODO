@@ -1,34 +1,30 @@
-* Record the dependencies in the build list in the gpg4win.mk.in
-   Makefile using make dependencies between the stamp-final-$(1)
-   targets.  This would hopefully ensure that parallel makes work. !
+* Component related issues:
+** Check out which locale files to install and where. !!!
+** Check which iconv to use !!
+** Finish integration of GnuPG.
+** Add the missing packages: gpgee, Sylpheed, WinPT, Eudore extensions.
+** gpgol needs to be registered. !!!
 
-* Invent something clever to cope with new versions of packages, which
+* The following items are related to package auto-detection and
+   configuration.  They are not critical.
+** Verify the digital signatures.  Include them in the source
+   installer.
+** BUG: If there is more than one version of a package, the script
+   breaks.  The GPG4WIN_FIND function must filter and pick one of the
+   matches.
+** GLITCH: If unnecessary dependency packages are enabled, they are
+   included in the installer, although they never will be (and can't
+   be) installed (they can't be installed because they can't be
+   selected).  To fix this, configure would need to know which
+   packages can be selected and which can't.
+** Invent something clever to cope with new versions of packages, which
    may have a different file list.  We can't use globs because Delete
    must still work.  Either have inst-PACKAGE-VERSION.nsi files, or
    have globs plus some scripting to generate the .nis files. !
+** Record the dependencies in the build list in the gpg4win.mk.in
+   Makefile using make dependencies between the stamp-final-$(1)
+   targets.  This would hopefully ensure that parallel makes work. !
 
-* Check out which locale files to install and where. !!!
-
-* Check which iconv to use !!
-
-* Finish modularization of installer.  NSIS' macro language is not up
-   to the task, so we need a bit of configure/make magic as well (a la
-   autoheader). !!!
-
-* Allow to enable debug mode from configure line. !
-
-* Finish integration of GnuPG.
-
-* Add the missing packages: gpgee, Sylpheed, WinPT, Eudore extensions.
-
-* gpgol needs to be registered. !!!
-
-* Verify the digital signatures.  Include them in the source
-   installer.
-
-* BUG: If there is more than one version of a package, the script
-   breaks.  The GPG4WIN_FIND function must filter and pick one of the
-   matches.
 
 Copyright 2005 g10 Code GmbH
 
