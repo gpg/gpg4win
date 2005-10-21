@@ -26,15 +26,14 @@ gpg4win_spkgs := gnupg libgpg-error gpgme gpgol gpa
 # Extra options to configure for individual packages.
 # We can use $(idir) here for the installation prefix.
 gpg4win_pkg_gpgme_configure = \
-  --with-gpg-error-prefix=$(idir) --without-gpgsm
+  --with-gpg-error-prefix=$(idir) --without-gpgsm --enable-static
 
 gpg4win_pkg_gpa_configure = \
   --with-libiconv-prefix=$(idir) --with-libintl-prefix=$(idir) \
   --with-gpgme-prefix=$(idir) --with-zlib=$(idir)
 
 gpg4win_pkg_gpgol_configure = \
-  --with-gpgme-prefix=$(idir)
-
+  --with-gpgme-prefix=$(idir) --with-gpg-error-prefix=$(idir)
 
 # Supported binary packages.
 gpg4win_bpkgs :=  libiconv gettext pkgconfig zlib glib libpng pango atk gtk+

@@ -1,5 +1,9 @@
 2005-10-21  Marcus Brinkmann  <marcus@g10code.de>
 
+	* src/Makefile.am (gpg4win_pkg_gpgme_configure): Enable static
+	library for gpgol.
+	(gpg4win_pkg_gpgol_configure): Add gpg-error prefix.
+
 	* src/inst-gnupg.nsi: Fix path of deleted files.
 
 	* src/gpg4win.mk.in (pdir): Don't strip DLL files.
