@@ -79,12 +79,13 @@ define DEFLATE_macro
 	esac
 endef
 
-# Support macro.  Strip all dll and exe files below $(1).
+# Support macro.  Strip all exe files below $(1).
+# We can't strip dll files: Neither --strip-unneeded nor --strip-debug
+# works correctly on this target.
 define STRIP_macro
 	if test -z '$(DEBUG)'; then			\
 	  (cd $(1);					\
-	   for f in `find . -name \*.dll		\
-		  -o -name \*.exe`; do			\
+	   for f in `find . -name \*.exe`; do		\
 	   echo Calling $(STRIP) "$$$${pkg_version}/$$$${f}"; \
 	   $(STRIP) "$$$${f}"; done);			\
 	fi
