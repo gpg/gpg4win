@@ -1,5 +1,7 @@
 2005-10-21  Marcus Brinkmann  <marcus@g10code.de>
 
+	* src/inst-gnupg.nsi: Fix path of deleted files.
+
 	* src/gpg4win.mk.in (pdir): Don't strip DLL files.
 
 2005-10-20  Marcus Brinkmann  <marcus@g10code.de>
