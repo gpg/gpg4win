@@ -29,18 +29,9 @@ Section "gpgol" SEC_gpgol
   File "${gpg4win_pkg_gpgol}"
 !else
   File ${prefix}/bin/gpgol.dll
-!endif
-SectionEnd
 
-
-; Uninstaller section.
-Section "-un.gpgol"
-!ifdef SOURCES
-  Push "${gpg4win_pkg_gpgol}"
-  Call un.SourceDelete
-!else
-  Delete "$INSTDIR\gpgol.dll"
-  RMDir "$INSTDIR"
+  # Register the DLL.
+  Exec 'regsvr32.exe /s "$INSTDIR\gpgol.dll"'
 !endif
 SectionEnd
 

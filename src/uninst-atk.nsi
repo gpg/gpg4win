@@ -1,4 +1,4 @@
-# inst-atk.nsi - Installer snippet for atk.        -*- coding: latin-1; -*-
+# uninst-atk.nsi - Installer snippet for atk.      -*- coding: latin-1; -*-
 # Copyright (C) 2005 g10 Code GmbH
 # 
 # This file is part of GPG4Win.
@@ -23,15 +23,14 @@
 !endif
 !define prefix ${ipdir}/atk-${gpg4win_pkg_atk_version}
 
-!ifdef DEBUG
-Section "atk" SEC_atk
-!else
-Section "-atk" SEC_atk
-!endif
-  SetOutPath "$INSTDIR"
+
+; Uninstaller section.
+Section "-un.atk"
 !ifdef SOURCES
-  File ${gpg4win_pkg_atk_src}
+  Push "${gpg4win_pkg_atk_src}"
+  Call un.SourceDelete
 !else
-  File ${prefix}/bin/libatk-1.0-0.dll
+  Delete "$INSTDIR\libatk-1.0-0.dll"
 !endif
+  RMDir "$INSTDIR"
 SectionEnd

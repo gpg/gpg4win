@@ -35,15 +35,3 @@ Section "-gpgme" SEC_gpgme
   File ${prefix}/bin/libgpgme-11.dll
 !endif
 SectionEnd
-
-
-; Uninstaller section.
-Section "-un.gpgme"
-!ifdef SOURCES
-  Push "${gpg4win_pkg_gpgme}"
-  Call un.SourceDelete
-!else
-  Delete "$INSTDIR\libgpgme-11.dll"
-  RMDir "$INSTDIR"
-!endif
-SectionEnd

@@ -40,18 +40,3 @@ Section "-libgpg-error" SEC_libgpg_error
 !endif
 !endif
 SectionEnd
-
-
-; Uninstaller section.
-Section "-un.libgpg-error"
-!ifdef SOURCES
-  Push "${gpg4win_pkg_libgpg_error}"
-  Call un.SourceDelete
-!else
-  Delete "$INSTDIR\libgpg-error-0.dll"
-!ifdef DEBUG
-  Delete "$INSTDIR\gpg-error.exe"
-!endif
-  RMDir "$INSTDIR"
-!endif
-SectionEnd

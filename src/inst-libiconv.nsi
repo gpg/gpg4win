@@ -23,6 +23,7 @@
 !endif
 !define prefix ${ipdir}/libiconv-${gpg4win_pkg_libiconv_version}
 
+
 !ifdef DEBUG
 Section "libiconv" SEC_libiconv
 !else
@@ -38,20 +39,5 @@ Section "-libiconv" SEC_libiconv
   File ${prefix}/bin/charset.dll
   File ${prefix}/bin/iconv.exe
 !endif
-!endif
-SectionEnd
-
-; Uninstaller section.
-Section "-un.libiconv"
-!ifdef SOURCES
-  Push "${gpg4win_pkg_libiconv_src}"
-  Call un.SourceDelete
-!else
-  Delete "$INSTDIR\iconv.dll"
-!ifdef DEBUG
-  Delete "$INSTDIR\charset.dll"
-  Delete "$INSTDIR\iconv.exe"
-!endif
-  RMDir "$INSTDIR"
 !endif
 SectionEnd

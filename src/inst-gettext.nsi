@@ -42,21 +42,3 @@ Section "-gettext" SEC_gettext
 !endif
 !endif
 SectionEnd
-
-
-; Uninstaller section.
-Section "-un.gettext"
-!ifdef SOURCES
-  Push "${gpg4win_pkg_gettext_src}"
-  Call un.SourceDelete
-!else
-  Delete "$INSTDIR\intl.dll"
-!ifdef DEBUG
-  Delete "$INSTDIR\gettext.exe"
-  Delete "$INSTDIR\ngettext.exe"
-  Delete "$INSTDIR\envsubst.exe"
-  Delete "$INSTDIR\asprintf.dll"
-!endif
-  RMDir "$INSTDIR"
-!endif
-SectionEnd

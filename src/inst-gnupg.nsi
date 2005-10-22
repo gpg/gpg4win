@@ -51,33 +51,6 @@ Section "gnupg" SEC_gnupg
 SectionEnd
 
 
-; Uninstaller section.
-Section "-un.gnupg"
-!ifdef SOURCES
-  Push "${gpg4win_pkg_gnupg}"
-  Call un.SourceDelete
-!else
-  Delete "$INSTDIR\gpg.exe"
-  Delete "$INSTDIR\gpgsplit.exe"
-  Delete "$INSTDIR\gpgv.exe"
-
-  Delete "$INSTDIR\gpgkeys_finger.exe"
-  Delete "$INSTDIR\gpgkeys_hkp.exe"
-  Delete "$INSTDIR\gpgkeys_http.exe"
-  Delete "$INSTDIR\gpgkeys_ldap.exe"
-
-  Delete "$INSTDIR\share\gnupg\options.skel"
-  Delete "$INSTDIR\share\gnupg\FAQ"
-  Delete "$INSTDIR\share\gnupg\faq.html"
-  RMDir "$INSTDIR\share\gnupg"
-  RMDir "$INSTDIR\share"
-  RMDir "$INSTDIR"
-
-  DeleteRegValue HKLM "Software\GNU\GnuPG" "Install Directory"
-!endif
-SectionEnd
-
-
 LangString DESC_SEC_gnupg ${LANG_ENGLISH} \
    "GNU Privacy Guard"
 LangString DESC_SEC_gnupg ${LANG_GERMAN} \

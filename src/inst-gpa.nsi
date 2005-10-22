@@ -40,25 +40,6 @@ Section "gpa" SEC_gpa
 SectionEnd
 
 
-; Uninstaller section.
-Section "-un.gpa"
-!ifdef SOURCES
-  Push "${gpg4win_pkg_gpa}"
-  Call un.SourceDelete
-!else
-  Delete "$INSTDIR\gpa.exe"
-
-  Delete "$INSTDIR\share\gpa\gpa_tips.en"
-  Delete "$INSTDIR\share\gpa\gpa_tips.de"
-  Delete "$INSTDIR\share\gpa\gpa_logo.ppm"
-  Delete "$INSTDIR\share\gpa\gpa.png"
-  RMDir "$INSTDIR\share\gpa"
-  RMDir "$INSTDIR\share"
-  RMDir "$INSTDIR"
-!endif
-SectionEnd
-
-
 LangString DESC_SEC_gpa ${LANG_ENGLISH} \
    "GNU Privacy Assistant"
 LangString DESC_SEC_gpa ${LANG_GERMAN} \
