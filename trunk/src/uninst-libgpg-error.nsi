@@ -1,4 +1,4 @@
-# inst-atk.nsi - Installer snippet for atk.        -*- coding: latin-1; -*-
+# uninst-libgpg-error.nsi - Installer f. libgpg-error. -*- coding: latin-1; -*-
 # Copyright (C) 2005 g10 Code GmbH
 # 
 # This file is part of GPG4Win.
@@ -21,17 +21,19 @@
 !ifdef prefix
 !undef prefix
 !endif
-!define prefix ${ipdir}/atk-${gpg4win_pkg_atk_version}
+!define prefix ${ipdir}/libgpg-error-${gpg4win_pkg_libgpg_error_version}
 
-!ifdef DEBUG
-Section "atk" SEC_atk
-!else
-Section "-atk" SEC_atk
-!endif
-  SetOutPath "$INSTDIR"
+
+; Uninstaller section.
+Section "-un.libgpg-error"
 !ifdef SOURCES
-  File ${gpg4win_pkg_atk_src}
+  Push "${gpg4win_pkg_libgpg_error}"
+  Call un.SourceDelete
 !else
-  File ${prefix}/bin/libatk-1.0-0.dll
+  Delete "$INSTDIR\libgpg-error-0.dll"
+!ifdef DEBUG
+  Delete "$INSTDIR\gpg-error.exe"
+!endif
+  RMDir "$INSTDIR"
 !endif
 SectionEnd

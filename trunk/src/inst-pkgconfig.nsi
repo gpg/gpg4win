@@ -34,13 +34,3 @@ Section "-pkgconfig" SEC_pkgconfig
 !else
 !endif
 SectionEnd
-
-
-; Uninstaller section.
-Section "-un.pkgconfig"
-!ifdef SOURCES
-  Push "${gpg4win_pkg_pkgconfig_src}"
-  Call un.SourceDelete
-!else
-!endif
-SectionEnd

@@ -1,4 +1,4 @@
-# inst-atk.nsi - Installer snippet for atk.        -*- coding: latin-1; -*-
+# uninst-libpng.nsi - Installer snippet for libpng. -*- coding: latin-1; -*-
 # Copyright (C) 2005 g10 Code GmbH
 # 
 # This file is part of GPG4Win.
@@ -21,17 +21,25 @@
 !ifdef prefix
 !undef prefix
 !endif
-!define prefix ${ipdir}/atk-${gpg4win_pkg_atk_version}
+!define prefix ${ipdir}/libpng-${gpg4win_pkg_libpng_version}
 
-!ifdef DEBUG
-Section "atk" SEC_atk
-!else
-Section "-atk" SEC_atk
-!endif
-  SetOutPath "$INSTDIR"
+
+; Uninstaller section.
+Section "-un.libpng"
 !ifdef SOURCES
-  File ${gpg4win_pkg_atk_src}
+  Push "${gpg4win_pkg_libpng_src}"
+  Call un.SourceDelete
 !else
-  File ${prefix}/bin/libatk-1.0-0.dll
+  Delete "$INSTDIR\libpng13.dll"
+!ifdef DEBUG
+  Delete "$INSTDIR\png2pnm.exe"
+  Delete "$INSTDIR\pngtest.exe"
+  Delete "$INSTDIR\pnm2png.exe"
+  Delete "$INSTDIR\rpng-win.exe"
+  Delete "$INSTDIR\rpng2-win.exe"
+  Delete "$INSTDIR\VisualPng.exe"
+  Delete "$INSTDIR\wpng.exe"
+!endif
+  RMDir "$INSTDIR"
 !endif
 SectionEnd

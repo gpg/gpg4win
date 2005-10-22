@@ -62,6 +62,51 @@
 !include "inst-gpa.nsi"
 !endif
 
+# We have to invoke the uninstallers in reverse order!
+
+!ifdef HAVE_PKG_GPA
+!include "uninst-gpa.nsi"
+!endif
+!ifdef HAVE_PKG_GTK_
+!include "uninst-gtk+.nsi"
+!endif
+!ifdef HAVE_PKG_ATK
+!include "uninst-atk.nsi"
+!endif
+!ifdef HAVE_PKG_PANGO
+!include "uninst-pango.nsi"
+!endif
+!ifdef HAVE_PKG_GPGOL
+!include "uninst-gpgol.nsi"
+!endif
+!ifdef HAVE_PKG_LIBPNG
+!include "uninst-libpng.nsi"
+!endif
+!ifdef HAVE_PKG_GLIB
+!include "uninst-glib.nsi"
+!endif
+!ifdef HAVE_PKG_GETTEXT
+!include "uninst-gettext.nsi"
+!endif
+!ifdef HAVE_PKG_GPGME
+!include "uninst-gpgme.nsi"
+!endif
+!ifdef HAVE_PKG_ZLIB
+!include "uninst-zlib.nsi"
+!endif
+!ifdef HAVE_PKG_PKGCONFIG
+!include "uninst-pkgconfig.nsi"
+!endif
+!ifdef HAVE_PKG_LIBICONV
+!include "uninst-libiconv.nsi"
+!endif
+!ifdef HAVE_PKG_LIBGPG_ERROR
+!include "uninst-libgpg-error.nsi"
+!endif
+!ifdef HAVE_PKG_GNUPG
+!include "uninst-gnupg.nsi"
+!endif
+
 # Dependency Management
 
 !include "Sections.nsh"

@@ -45,24 +45,3 @@ Section "-libpng" SEC_libpng
 !endif
 !endif
 SectionEnd
-
-
-; Uninstaller section.
-Section "-un.libpng"
-!ifdef SOURCES
-  Push "${gpg4win_pkg_libpng_src}"
-  Call un.SourceDelete
-!else
-  Delete "$INSTDIR\libpng13.dll"
-!ifdef DEBUG
-  Delete "$INSTDIR\png2pnm.exe"
-  Delete "$INSTDIR\pngtest.exe"
-  Delete "$INSTDIR\pnm2png.exe"
-  Delete "$INSTDIR\rpng-win.exe"
-  Delete "$INSTDIR\rpng2-win.exe"
-  Delete "$INSTDIR\VisualPng.exe"
-  Delete "$INSTDIR\wpng.exe"
-!endif
-  RMDir "$INSTDIR"
-!endif
-SectionEnd

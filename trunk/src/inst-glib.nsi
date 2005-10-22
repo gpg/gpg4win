@@ -38,19 +38,3 @@ Section "-glib" SEC_glib
   File ${prefix}/bin/libgthread-2.0-0.dll
 !endif
 SectionEnd
-
-
-; Uninstaller section.
-Section "-un.glib"
-!ifdef SOURCES
-  Push "${gpg4win_pkg_glib_src}"
-  Call un.SourceDelete
-!else
-  Delete "$INSTDIR\gspawn-win32-helper.exe"
-  Delete "$INSTDIR\libglib-2.0-0.dll"
-  Delete "$INSTDIR\libgmodule-2.0-0.dll"
-  Delete "$INSTDIR\libgobject-2.0-0.dll"
-  Delete "$INSTDIR\libgthread-2.0-0.dll"
-  RMDir "$INSTDIR"
-!endif
-SectionEnd

@@ -35,15 +35,3 @@ Section "-zlib" SEC_zlib
   File ${prefix}/bin/zlib1.dll
 !endif
 SectionEnd
-
-
-; Uninstaller section.
-Section "-un.zlib"
-!ifdef SOURCES
-  Push "${gpg4win_pkg_zlib_src}"
-  Call un.SourceDelete
-!else
-  Delete "$INSTDIR\zlib1.dll"
-  RMDir "$INSTDIR"
-!endif
-SectionEnd

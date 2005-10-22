@@ -1,4 +1,4 @@
-# inst-atk.nsi - Installer snippet for atk.        -*- coding: latin-1; -*-
+# uninst-glib.nsi - Installer snippet for glib.      -*- coding: latin-1; -*-
 # Copyright (C) 2005 g10 Code GmbH
 # 
 # This file is part of GPG4Win.
@@ -17,21 +17,23 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
-
 !ifdef prefix
 !undef prefix
 !endif
-!define prefix ${ipdir}/atk-${gpg4win_pkg_atk_version}
+!define prefix ${ipdir}/glib-${gpg4win_pkg_glib_version}
 
-!ifdef DEBUG
-Section "atk" SEC_atk
-!else
-Section "-atk" SEC_atk
-!endif
-  SetOutPath "$INSTDIR"
+
+; Uninstaller section.
+Section "-un.glib"
 !ifdef SOURCES
-  File ${gpg4win_pkg_atk_src}
+  Push "${gpg4win_pkg_glib_src}"
+  Call un.SourceDelete
 !else
-  File ${prefix}/bin/libatk-1.0-0.dll
+  Delete "$INSTDIR\gspawn-win32-helper.exe"
+  Delete "$INSTDIR\libglib-2.0-0.dll"
+  Delete "$INSTDIR\libgmodule-2.0-0.dll"
+  Delete "$INSTDIR\libgobject-2.0-0.dll"
+  Delete "$INSTDIR\libgthread-2.0-0.dll"
+  RMDir "$INSTDIR"
 !endif
 SectionEnd

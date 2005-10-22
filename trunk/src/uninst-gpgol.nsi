@@ -1,4 +1,4 @@
-# inst-atk.nsi - Installer snippet for atk.        -*- coding: latin-1; -*-
+# uninst-gpgol.nsi - Installer snippet for gpgol.    -*- coding: latin-1; -*-
 # Copyright (C) 2005 g10 Code GmbH
 # 
 # This file is part of GPG4Win.
@@ -17,21 +17,23 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
-
 !ifdef prefix
 !undef prefix
 !endif
-!define prefix ${ipdir}/atk-${gpg4win_pkg_atk_version}
+!define prefix ${ipdir}/gpgol-${gpg4win_pkg_gpgol_version}
 
-!ifdef DEBUG
-Section "atk" SEC_atk
-!else
-Section "-atk" SEC_atk
-!endif
-  SetOutPath "$INSTDIR"
+
+; Uninstaller section.
+Section "-un.gpgol"
 !ifdef SOURCES
-  File ${gpg4win_pkg_atk_src}
+  Push "${gpg4win_pkg_gpgol}"
+  Call un.SourceDelete
 !else
-  File ${prefix}/bin/libatk-1.0-0.dll
+
+  # Unregister the DLL
+  Exec 'regsvr32.exe /s /u "$INSTDIR\gpgol.dll"'
+
+  Delete "$INSTDIR\gpgol.dll"
+  RMDir "$INSTDIR"
 !endif
 SectionEnd

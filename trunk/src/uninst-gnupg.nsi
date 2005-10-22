@@ -1,4 +1,4 @@
-# inst-atk.nsi - Installer snippet for atk.        -*- coding: latin-1; -*-
+# uninst-gnupg.nsi - Installer snippet for gnupg.   -*- coding: latin-1; -*-
 # Copyright (C) 2005 g10 Code GmbH
 # 
 # This file is part of GPG4Win.
@@ -21,17 +21,31 @@
 !ifdef prefix
 !undef prefix
 !endif
-!define prefix ${ipdir}/atk-${gpg4win_pkg_atk_version}
+!define prefix ${ipdir}/gnupg-${gpg4win_pkg_gnupg_version}
 
-!ifdef DEBUG
-Section "atk" SEC_atk
-!else
-Section "-atk" SEC_atk
-!endif
-  SetOutPath "$INSTDIR"
+
+; Uninstaller section.
+Section "-un.gnupg"
 !ifdef SOURCES
-  File ${gpg4win_pkg_atk_src}
+  Push "${gpg4win_pkg_gnupg}"
+  Call un.SourceDelete
 !else
-  File ${prefix}/bin/libatk-1.0-0.dll
+  Delete "$INSTDIR\gpg.exe"
+  Delete "$INSTDIR\gpgsplit.exe"
+  Delete "$INSTDIR\gpgv.exe"
+
+  Delete "$INSTDIR\gpgkeys_finger.exe"
+  Delete "$INSTDIR\gpgkeys_hkp.exe"
+  Delete "$INSTDIR\gpgkeys_http.exe"
+  Delete "$INSTDIR\gpgkeys_ldap.exe"
+
+  Delete "$INSTDIR\share\gnupg\options.skel"
+  Delete "$INSTDIR\share\gnupg\FAQ"
+  Delete "$INSTDIR\share\gnupg\faq.html"
+  RMDir "$INSTDIR\share\gnupg"
+  RMDir "$INSTDIR\share"
+  RMDir "$INSTDIR"
+
+  DeleteRegValue HKLM "Software\GNU\GnuPG" "Install Directory"
 !endif
 SectionEnd

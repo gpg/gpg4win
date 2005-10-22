@@ -100,8 +100,9 @@ $(eval $(call INCLUDE_BY_MAKE,gpg4win.mk))
 
 clean-local: clean-gpg4win
 
-common_nsi := inst-sections.nsi installer.nsi installer-finish.nsi \
-  $(addsuffix .nsi,$(addprefix inst-,$(gpg4win_build_list)))
+common_nsi := inst-sections.nsi installer.nsi installer-finish.nsi	\
+  $(addsuffix .nsi,$(addprefix inst-,$(gpg4win_build_list)))		\
+  $(addsuffix .nsi,$(addprefix uninst-,$(gpg4win_build_list)))
 
 gpg4win-$(VERSION).exe: gpg4win.nsi $(common_nsi) stamps/stamp-final
 	$(MAKENSIS) gpg4win.nsi

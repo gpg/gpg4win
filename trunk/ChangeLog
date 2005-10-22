@@ -1,3 +1,17 @@
+2005-10-22  Marcus Brinkmann  <marcus@g10code.de>
+
+	* src/Makefile.am (common_nsi): Add uninstaller files.
+	* src/uninst-atk.nsi, src/uninst-gettext.nsi, src/uninst-glib.nsi,
+	src/uninst-gnupg.nsi, src/uninst-gpa.nsi, src/uninst-gpgme.nsi,
+	src/uninst-gpgol.nsi, src/uninst-gtk+.nsi,
+	src/uninst-libgpg-error.nsi, src/uninst-libiconv.nsi,
+	src/uninst-libpng.nsi, src/uninst-pango.nsi,
+	src/uninst-pkgconfig.nsi, src/uninst-zlib.nsi: New file.
+	* src/inst-sections.nsi: Include the uninstallers in reverse
+	order.
+	* src/inst-gpgol.nsi: Register the gpgol DLL at installation, and
+	(surprise!) unregister it at deinstallation.
+
 2005-10-21  Marcus Brinkmann  <marcus@g10code.de>
 
 	* src/Makefile.am (gpg4win_pkg_gpgme_configure): Enable static
