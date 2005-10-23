@@ -162,9 +162,9 @@ stamps/stamp-$(1)-00-install: stamps/stamp-directories
 stamps/stamp-$(1)-01-install-dev: stamps/stamp-$(1)-00-install
 	($(call SETVARS,$(1));				\
 	 $(MKDIR) "$$$${pkgidir_dev}";			\
-	 cd $$$${pkgidir_dev};				\
-	 $(call DEFLATE_macro,$$$${pkg_dev});		\
-	 $(call STRIP_macro,"$$$${pkgidir_dev}");	\
+	 (cd $$$${pkgidir_dev};				\
+	  $(call DEFLATE_macro,$$$${pkg_dev});		\
+	  $(call STRIP_macro,"$$$${pkgidir_dev}"));	\
 	 $(call gpg4win_pkg_$(call FROB_macro,$(1))_post_install))
 	touch stamps/stamp-$(1)-01-install-dev
 

@@ -18,13 +18,23 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
 
-EXTRA_DIST = pkg-config $(common_nsi) gpg4win.nsi gpg4win-src.nsi
+EXTRA_DIST = pkg-config $(common_nsi) gpg4win.nsi gpg4win-src.nsi \
+	libiconv.def libintl.def
 
 # Supported source packages.
 gpg4win_spkgs := gnupg libgpg-error gpgme gpgol gpa
 
 # Extra options to configure for individual packages.
 # We can use $(idir) here for the installation prefix.
+
+# We would like to use --with-libiconv-prefix and
+# --with-libintl-prefix, but these don't work with the cheesy
+# non-"libfoo.la" versions of iconv and gettext that we are using.
+#gpg4win_pkg_libgpg_error_configure = \
+#  --with-libiconv-prefix=$(idir) --with-libintl-prefix=$(idir)
+gpg4win_pkg_libgpg_error_configure = \
+  CPPFLAGS=-I$(idir)/include LDFLAGS=-L$(idir)/lib
+
 gpg4win_pkg_gpgme_configure = \
   --with-gpg-error-prefix=$(idir) --without-gpgsm --enable-static
 
@@ -37,6 +47,25 @@ gpg4win_pkg_gpgol_configure = \
 
 # Supported binary packages.
 gpg4win_bpkgs :=  libiconv gettext pkgconfig zlib glib libpng pango atk gtk+
+
+# libiconv needs some special magic to generate a usable import
+# library.
+define gpg4win_pkg_libiconv_post_install
+(cp $(srcdir)/libiconv.def $$$${pkgidir}/lib;		\
+cd $$$${pkgidir}/lib;					\
+$(DLLTOOL) --output-lib libiconv.dll.a --def libiconv.def)
+endef
+
+# libiconv needs some special magic to generate a usable import
+# library.  Note that we include some internal symbols that are not
+# actually part of the DLL.  They are needed by the AM_GNU_GETTEXT
+# configure test, but not used otherwise.
+define gpg4win_pkg_gettext_post_install
+(cp $(srcdir)/libintl.def $$$${pkgidir}/lib;		\
+cd $$$${pkgidir}/lib;					\
+$(DLLTOOL) --output-lib libintl.dll.a --def libintl.def)
+endef
+
 
 # Zlib needs some special magic to generate a libtool file.
 define gpg4win_pkg_zlib_post_install
