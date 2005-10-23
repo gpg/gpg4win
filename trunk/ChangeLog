@@ -1,4 +1,20 @@
+2005-10-23  Marcus Brinkmann  <marcus@g10code.de>
+
+	* src/gpg4win.mk.in (pdir): Call post_install with source dir as
+	current directory.
+	* configure.ac (VERSION): Check for dlltool.
+	* src/Makefile.am (gpg4win_pkg_libiconv_post_install,
+	gpg4win_pkg_gettext_post_install): New macros.
+	* src/libiconv.def, src/libintl.def: New files.
+	* src/inst-libgpg-error.nsi: Install mo files.
+	* src/uninst-libgpg-error.nsi: Uninstall mo files.
+
 2005-10-22  Marcus Brinkmann  <marcus@g10code.de>
+
+	* configure.ac: Add libiconv and gettext as dependencies for
+	libgpg-error and gpa.
+	* src/Makefile.am (gpg4win_pkg_libgpg_error_configure): New
+	variable.
 
 	* src/Makefile.am (common_nsi): Add uninstaller files.
 	* src/uninst-atk.nsi, src/uninst-gettext.nsi, src/uninst-glib.nsi,

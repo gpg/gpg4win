@@ -34,7 +34,19 @@ Section "-libgpg-error" SEC_libgpg_error
   File "${gpg4win_pkg_libgpg_error}"
 !else
   File ${prefix}/bin/libgpg-error-0.dll
+
+  SetOutPath "$INSTDIR\share\locale\de\LC_MESSAGES"
+  File ${prefix}/share/locale/de/LC_MESSAGES/libgpg-error.mo
+  SetOutPath "$INSTDIR\share\locale\pl\LC_MESSAGES"
+  File ${prefix}/share/locale/pl/LC_MESSAGES/libgpg-error.mo
+  SetOutPath "$INSTDIR\share\locale\ro\LC_MESSAGES"
+  File ${prefix}/share/locale/ro/LC_MESSAGES/libgpg-error.mo
+  SetOutPath "$INSTDIR\share\locale\fr\LC_MESSAGES"
+  File ${prefix}/share/locale/fr/LC_MESSAGES/libgpg-error.mo
+
 !ifdef DEBUG
+  SetOutPath "$INSTDIR"
+
   # We install a couple of binaries that may be useful for testing.
   File ${prefix}/bin/gpg-error.exe
 !endif
