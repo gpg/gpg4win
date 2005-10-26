@@ -474,3 +474,58 @@ AC_DEFUN([GPG4WIN_BPKG_GNU],
           [$3],
           [$4])
 ])
+
+
+# GPG4WIN_BPKG_BINSRC([PKG],[DEPENDS],[IF-FOUND],[IF-NOT-FOUND])
+# Set up package PKG which is expected to ge delivered as two ZIP files
+# with a "-src" and a "-bin" suffix.
+AC_DEFUN([GPG4WIN_BPKG_BINSRC],
+[
+  AC_REQUIRE([GPG4WIN_INIT])
+  _gpg4win_pkg=maybe
+  AC_ARG_ENABLE([pkg-$1],
+    AS_HELP_STRING([--enable-pkg-$1[=DIR]],
+                   [include package $1]),
+    _gpg4win_pkg=$enableval)
+  _gpg4win_bpkg=no
+  _gpg4win_version=
+  AS_IF([test x$_gpg4win_pkg != xno],
+        [GPG4WIN_FIND($1-bin, [$1-\(.*\)-bin],,
+         $_gpg4win_pkg,
+         _gpg4win_bpkg=$gpg4win_val
+	 _gpg4win_version=$gpg4win_version)])
+
+  # At this point, _gpg4win_bpkg is no, or the actual package binary file.
+
+  # gpg4win_pkg_PKGNAME=FILENAME_OF_BINARY
+  gpg4win_pkg_[]m4_translit([$1],[-+],[__])[]=$_gpg4win_bpkg
+  AC_SUBST(gpg4win_pkg_[]m4_translit([$1],[-+],[__]))
+
+  # gpg4win_pkg_PKGNAME_version=VERSION
+  gpg4win_pkg_[]m4_translit([$1],[-+],[__])[]_version=$_gpg4win_version
+  AC_SUBST(gpg4win_pkg_[]m4_translit([$1],[-+],[__])[]_version)
+
+  AS_IF([test $_gpg4win_bpkg != no],
+    GPG4WIN_FIND($1-src, [$1-\(.*\)-src],,
+                 $_gpg4win_pkg, _gpg4win_bpkg=$gpg4win_val,
+       AC_MSG_ERROR(can not find sources for package $1))
+    # gpg4win_pkg_PKGNAME_src=FILENAME_OF_SOURCE
+    gpg4win_pkg_[]m4_translit([$1],[-+],[__])[]_src=$_gpg4win_bpkg
+    AC_SUBST(gpg4win_pkg_[]m4_translit([$1],[-+],[__])[]_src)
+
+    # FIXME: Add a version consistency check here.  Both packages
+    # must match!
+
+    GPG4WIN_DEFINE(HAVE_PKG_[]m4_translit([$1],[a-z+-],[A-Z__]))
+
+    _gpg4win_pkgs="$_gpg4win_pkgs $1"
+    # Record dependencies.  Also enter every package as node.
+    _gpg4win_deps="$_gpg4win_deps $1 $1"
+    AS_IF([test ! -z "$2"],
+          for _gpg4win_i in $2; do
+	    _gpg4win_deps="$_gpg4win_deps $_gpg4win_i $1"
+          done)
+          [$3],
+          [$4])
+])
+

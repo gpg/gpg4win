@@ -67,6 +67,16 @@
 !define gpg4win_pkg_gpa @gpg4win_pkg_gpa@
 !define gpg4win_pkg_gpa_version @gpg4win_pkg_gpa_version@
 
+@HAVE_PKG_WINPT@
+!define gpg4win_pkg_winpt @gpg4win_pkg_winpt@
+!define gpg4win_pkg_winpt_version @gpg4win_pkg_winpt_version@
+!define gpg4win_pkg_winpt_src @gpg4win_pkg_winpt_src@
+
+@HAVE_PKG_GPGEE@
+!define gpg4win_pkg_gpgee @gpg4win_pkg_gpgee@
+!define gpg4win_pkg_gpgee_version @gpg4win_pkg_gpgee_version@
+!define gpg4win_pkg_gpgee_src @gpg4win_pkg_gpgee_src@
+
 @HAVE_PKG_ZLIB@
 !define gpg4win_pkg_zlib @gpg4win_pkg_zlib@
 !define gpg4win_pkg_zlib_version @gpg4win_pkg_zlib_version@

@@ -61,9 +61,21 @@
 !ifdef HAVE_PKG_GPA
 !include "inst-gpa.nsi"
 !endif
+!ifdef HAVE_PKG_WINPT
+!include "inst-winpt.nsi"
+!endif
+!ifdef HAVE_PKG_GPGEE
+!include "inst-gpgee.nsi"
+!endif
 
 # We have to invoke the uninstallers in reverse order!
 
+!ifdef HAVE_PKG_GPGEE
+!include "uninst-gpgee.nsi"
+!endif
+!ifdef HAVE_PKG_WINPT
+!include "uninst-winpt.nsi"
+!endif
 !ifdef HAVE_PKG_GPA
 !include "uninst-gpa.nsi"
 !endif
@@ -152,6 +164,22 @@ Function CalcDepends
 !endif
 
   # Then enable all dependencies in reverse build list order!
+
+!ifdef HAVE_PKG_GPGEE
+  !insertmacro SectionFlagIsSet ${SEC_gpgee} ${SF_SELECTED} have_gpgee skip_gpgee
+  have_gpgee:
+  !insertmacro SelectSection ${SEC_gpgme}
+  !insertmacro SelectSection ${SEC_gnupg}
+  skip_gpgee:
+!endif
+
+!ifdef HAVE_PKG_WINPT
+  !insertmacro SectionFlagIsSet ${SEC_winpt} ${SF_SELECTED} have_winpt skip_winpt
+  have_winpt:
+  !insertmacro SelectSection ${SEC_gpgme}
+  !insertmacro SelectSection ${SEC_gnupg}
+  skip_winpt:
+!endif
 
 !ifdef HAVE_PKG_GPA
   !insertmacro SectionFlagIsSet ${SEC_gpa} ${SF_SELECTED} have_gpa skip_gpa
@@ -263,6 +291,12 @@ FunctionEnd
 !ifdef HAVE_PKG_GPA
   !insertmacro MUI_DESCRIPTION_TEXT ${SEC_gpa} $(DESC_SEC_gpa)
 !endif
+!ifdef HAVE_PKG_WINPT
+  !insertmacro MUI_DESCRIPTION_TEXT ${SEC_winpt} $(DESC_SEC_winpt)
+!endif
+!ifdef HAVE_PKG_GPGEE
+  !insertmacro MUI_DESCRIPTION_TEXT ${SEC_gpgee} $(DESC_SEC_gpgee)
+!endif
 !ifdef HAVE_PKG_GNUPG
   !insertmacro MUI_DESCRIPTION_TEXT ${SEC_gnupg} $(DESC_SEC_gnupg)
 !endif
@@ -275,6 +309,10 @@ Section "-startmenu"
 !ifdef HAVE_STARTMENU
 !insertmacro MUI_STARTMENU_WRITE_BEGIN Application
     CreateDirectory "$SMPROGRAMS\$STARTMENU_FOLDER"
+!ifdef HAVE_PKG_WINPT
+    CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\WINPT.lnk" \
+	"$INSTDIR\winpt.exe"
+!endif
 !ifdef HAVE_PKG_GPA
     CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\GPA.lnk" \
 	"$INSTDIR\gpa.exe"

@@ -34,8 +34,9 @@
 !include "MUI.nsh"
 
 
-# Set the package name.
-Name "${PRETTY_PACKAGE} ${VERSION}"
+# Set the package name.  Note that this name should not be sufficed
+#  with the version because this would get displayed in the start menu.
+Name "${PRETTY_PACKAGE}"
 
 
 # Set the output filename.

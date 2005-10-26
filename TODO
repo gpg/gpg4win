@@ -1,3 +1,9 @@
+                                                          -*- outline -*-
+
+* Missing stuff
+** No sources yet for WinPT due to current changes in its build system
+** WinPT signature file should better be named .sig
+
 * Component related issues:
 ** Check out which locale files to install and where. !!!
 ** Check which iconv to use !!
