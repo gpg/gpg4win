@@ -1,3 +1,27 @@
+2005-10-26  Werner Koch  <wk@g10code.com>
+
+	* README: Add basic instructions on how to add new packages.
+
+	* configure.ac: Add detection of GPGee and WinPT.
+	* m4/gpg4win.m4 (GPG4WIN_BPKG_BINSRC): New.
+
+	* include/config.nsi.in: Add defines for WinPT and GGee.
+	* src/inst-winpt.nsi: New.
+	* src/inst-gpgee.nsi: New.
+	* src/uninst-winpt.nsi: New.
+	* src/uninst-gpgee.nsi: New.
+	* src/Makefile.am (gpg4win_bpkgs): Add WinPT and GPGee.
+	* src/inst-sections.nsi: Ditto.
+	* src/installer-finish.nsi: Ditto.
+	* packages/download.sh (server_winpt): Add WinPT.
+	(server_gpgee): Add temporary location for gpgee.
+	(server_g10code): Add temporary location for gpg-error, gpgme,
+	gpa and gpgol.
+
+2005-10-25  Werner Koch  <wk@g10code.com>
+
+	* src/installer.nsi: Don't put the version into the "Name" variable.
+
 2005-10-24  Marcus Brinkmann  <marcus@g10code.de>
 
 	* COPYING: New file.

@@ -46,7 +46,8 @@ gpg4win_pkg_gpgol_configure = \
   --with-gpgme-prefix=$(idir) --with-gpg-error-prefix=$(idir)
 
 # Supported binary packages.
-gpg4win_bpkgs :=  libiconv gettext pkgconfig zlib glib libpng pango atk gtk+
+gpg4win_bpkgs :=  libiconv gettext pkgconfig zlib glib libpng pango atk gtk+ \
+		  winpt gpgee
 
 # libiconv needs some special magic to generate a usable import
 # library.

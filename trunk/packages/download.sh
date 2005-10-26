@@ -73,6 +73,22 @@ ${WGET} -c ${server_gtk}/gtk+-2.6.6.tar.bz2
 ${WGET} -c ${server_gimp}/pkgconfig-0.15.zip
 ${WGET} -c ${server_gimp}/pkgconfig-0.15.0.tar.gz
 
+# WinPT
+
+#server_winpt="http://wald.intevation.org/frs/download.php"
+server_winpt="ftp://ftp.g10code.com/g10code/scratch"
+
+${WGET} -c ${server_winpt}/winpt-0.10.2_beta-bin.zip
+${WGET} -c ${server_winpt}/winpt-0.10.2_beta-src.zip
+
+# GPGee
+# Note: This is a temporary location
+
+server_gpgee="ftp://ftp.g10code.com/g10code/scratch"
+
+${WGET} -c ${server_gpgee}/gpgee-1.2.2-bin.zip
+${WGET} -c ${server_gpgee}/gpgee-1.2.2-src.zip
+
 
 # GnuPG stuff.
 
@@ -81,8 +97,15 @@ server_gnupg=http://ftp.gnupg.org/gcrypt
 ${WGET} -c ${server_gnupg}/gnupg/gnupg-1.4.2.tar.gz
 ${WGET} -c ${server_gnupg}/gnupg/gnupg-1.4.2.tar.gz.sig
 
-${WGET} -c ${server_gnupg}/gpgme/gpgme-1.1.0.tar.gz
-${WGET} -c ${server_gnupg}/gpgme/gpgme-1.1.0.tar.gz.sig
+#${WGET} -c ${server_gnupg}/gpgme/gpgme-1.1.0.tar.gz
+#${WGET} -c ${server_gnupg}/gpgme/gpgme-1.1.0.tar.gz.sig
 
 # libgpg-error, GPA and GPGol currently come from manually crafted
-# packages.
+# packages.  However, we make them available at a scratch location
+
+server_g10code="ftp://ftp.g10code.com/g10code/scratch"
+
+${WGET} -c ${server_g10code}/libgpg-error-1.2-cvs.tar.bz2
+${WGET} -c ${server_g10code}/gpgme-1.2.0-cvs.tar.bz2
+${WGET} -c ${server_g10code}/gpa-0.7.1-cvs.tar.bz2
+${WGET} -c ${server_g10code}/gpgol-0.9.4-cvs.tar.bz2
