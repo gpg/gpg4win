@@ -20,6 +20,7 @@
 # (Process this file with autoconf to produce a configure script.)
 
 AC_PREREQ(2.59)
+min_automake_version="1.9.3"
 
 AC_INIT([gpg4win],[0.0.0-cvs],[gpg4win-devel@wald.intevation.org])
 
