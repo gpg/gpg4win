@@ -1,3 +1,11 @@
+2005-11-02  Werner Koch  <wk@g10code.com>
+
+	* packages/download.sh: Removed inclusion of config.h and defined
+	WGET directly.  This is required because the download script needs
+	to be used before configure and thus we can't use configure to
+	determine the to be used wget; the config.sh script was anyway
+	missing.
+
 2005-10-26  Werner Koch  <wk@g10code.com>
 
 	* README: Add basic instructions on how to add new packages.
