@@ -22,7 +22,7 @@ EXTRA_DIST = pkg-config $(common_nsi) gpg4win.nsi gpg4win-src.nsi \
 	libiconv.def libintl.def
 
 # Supported source packages.
-gpg4win_spkgs := gnupg libgpg-error gpgme gpgol gpa
+gpg4win_spkgs := gnupg libgpg-error gpgme gpgol gpa winpt
 
 # Extra options to configure for individual packages.
 # We can use $(idir) here for the installation prefix.
@@ -45,9 +45,13 @@ gpg4win_pkg_gpa_configure = \
 gpg4win_pkg_gpgol_configure = \
   --with-gpgme-prefix=$(idir) --with-gpg-error-prefix=$(idir)
 
+gpg4win_pkg_winpt_configure = \
+  --with-gpgme-prefix=$(idir) --with-gpg-error-prefix=$(idir)
+
+
 # Supported binary packages.
 gpg4win_bpkgs :=  libiconv gettext pkgconfig zlib glib libpng pango atk gtk+ \
-		  winpt gpgee
+		  gpgee
 
 # libiconv needs some special magic to generate a usable import
 # library.
