@@ -27,15 +27,16 @@
 Section "winpt" SEC_winpt
   SetOutPath "$INSTDIR"
 !ifdef SOURCES
-  File "${gpg4win_pkg_winpt_src}"
+  File "${gpg4win_pkg_winpt}"
 !else
-  File ${prefix}/WinPT.exe
-  File ${prefix}/PTD.dll
+  File ${prefix}/bin/WinPT.exe
+  File ${prefix}/bin/PTD.dll
 
-  SetOutPath "$INSTDIR\share\winpt"
-  File ${prefix}/keyserver.conf
-  File ${prefix}/NEWS-0.10.txt
-  File ${prefix}/README-0.10.txt
+  # Do not install the documentation until we have agreed on the filenames.
+  #SetOutPath "$INSTDIR\share\winpt"
+  #File ${prefix}/keyserver.conf
+  #File ${prefix}/NEWS-0.10.txt
+  #File ${prefix}/README-0.10.txt
 !endif
 SectionEnd
 

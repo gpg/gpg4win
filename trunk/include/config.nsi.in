@@ -70,7 +70,6 @@
 @HAVE_PKG_WINPT@
 !define gpg4win_pkg_winpt @gpg4win_pkg_winpt@
 !define gpg4win_pkg_winpt_version @gpg4win_pkg_winpt_version@
-!define gpg4win_pkg_winpt_src @gpg4win_pkg_winpt_src@
 
 @HAVE_PKG_GPGEE@
 !define gpg4win_pkg_gpgee @gpg4win_pkg_gpgee@
