@@ -51,6 +51,14 @@ AC_CHECK_PROGS(STOW, stow)
 AC_CHECK_PROGS(MAKENSIS, makensis)
 AC_PROG_INSTALL
 
+missing_tools=
+for i in DLLTOOL MAKE UNZIP TAR MKDIR CP RM STOW MAKENSIS; do
+   eval tmp='$'$i
+   if test -z "$tmp"; then 
+      missing_tools="$missing_tools `echo $i | tr 'A-Z' 'a-z'`"
+   fi
+done
+
 
 # Optional tools.
 
@@ -83,6 +91,18 @@ GPG4WIN_SPKG([gpa], [libiconv gettext zlib gtk+ libpng glib gpgme])
 #GPG4WIN_SPKG([winpt], [gpgme gnupg])
 
 GPG4WIN_FINALIZE
+
+# Throw an error if required tools are missing
+if test -n "$missing_tools"; then
+    for i in $missing_tools; do 
+      AC_MSG_NOTICE([$i is missing])
+    done
+    AC_MSG_ERROR([[
+***
+*** Required tools not found. Please consult the above messages
+*** and install them before running configure again.
+***]])
+fi
 
 
 # Finalize.
