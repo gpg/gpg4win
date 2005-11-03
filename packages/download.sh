@@ -78,8 +78,7 @@ ${WGET} -c ${server_gimp}/pkgconfig-0.15.0.tar.gz
 #server_winpt="http://wald.intevation.org/frs/download.php"
 server_winpt="ftp://ftp.g10code.com/g10code/scratch"
 
-${WGET} -c ${server_winpt}/winpt-0.10.2_beta-bin.zip
-${WGET} -c ${server_winpt}/winpt-0.10.2_beta-src.zip
+${WGET} -c ${server_winpt}/winpt-0.11.0-cvs.tar.bz2
 
 # GPGee
 # Note: This is a temporary location

@@ -30,7 +30,7 @@ VERSION=$PACKAGE_VERSION
 AC_CONFIG_SRCDIR(include/config.nsi.in)
 AC_CONFIG_MACRO_DIR(m4)
 
-AM_INIT_AUTOMAKE($PACKAGE, $VERSION)
+AM_INIT_AUTOMAKE
 AM_MAINTAINER_MODE
 AC_CANONICAL_HOST
 
@@ -78,9 +78,8 @@ GPG4WIN_BPKG_GTK_DEV([glib], [pkgconfig])
 GPG4WIN_BPKG_GTK_DEV([gtk+], [atk pango glib libiconv gettext pkgconfig])
 GPG4WIN_BPKG_GTK_DEV([atk], [glib pkgconfig])
 GPG4WIN_BPKG_GTK_DEV([pango], [glib pkgconfig])
-#fixme: Theseare intermediate package.
+#fixme: These are intermediate package.
 GPG4WIN_BPKG_BINSRC([gpgee], [gnupg])
-GPG4WIN_BPKG_BINSRC([winpt], [gpgme gnupg])
 
 
 GPG4WIN_SPKG([libgpg-error], [libiconv gettext])
@@ -88,7 +87,7 @@ GPG4WIN_SPKG([gpgme], [libgpg-error gnupg])
 GPG4WIN_SPKG([gnupg])
 GPG4WIN_SPKG([gpgol], [gpgme])
 GPG4WIN_SPKG([gpa], [libiconv gettext zlib gtk+ libpng glib gpgme])
-#GPG4WIN_SPKG([winpt], [gpgme gnupg])
+GPG4WIN_SPKG([winpt], [gpgme gnupg])
 
 GPG4WIN_FINALIZE
 
