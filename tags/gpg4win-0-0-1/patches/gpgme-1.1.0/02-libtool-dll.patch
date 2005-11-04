@@ -1,0 +1,1454 @@
+#! /bin/sh
+patch -p1 -f $* < $0
+exit $?
+
+diff -ru gpgme-1.1.0-orig/assuan/Makefile.in gpgme-1.1.0/assuan/Makefile.in
+--- gpgme-1.1.0-orig/assuan/Makefile.in	2005-10-01 23:13:44.000000000 +0200
++++ gpgme-1.1.0/assuan/Makefile.in	2005-10-03 00:02:21.000000000 +0200
+@@ -99,6 +99,7 @@
+ AMDEP_TRUE = @AMDEP_TRUE@
+ AMTAR = @AMTAR@
+ AR = @AR@
++AS = @AS@
+ AUTOCONF = @AUTOCONF@
+ AUTOHEADER = @AUTOHEADER@
+ AUTOMAKE = @AUTOMAKE@
+@@ -169,6 +170,7 @@
+ MAINTAINER_MODE_FALSE = @MAINTAINER_MODE_FALSE@
+ MAINTAINER_MODE_TRUE = @MAINTAINER_MODE_TRUE@
+ MAKEINFO = @MAKEINFO@
++OBJDUMP = @OBJDUMP@
+ OBJEXT = @OBJEXT@
+ PACKAGE = @PACKAGE@
+ PACKAGE_BUGREPORT = @PACKAGE_BUGREPORT@
+@@ -182,6 +184,7 @@
+ PTH_LDFLAGS = @PTH_LDFLAGS@
+ PTH_LIBS = @PTH_LIBS@
+ RANLIB = @RANLIB@
++RC = @RC@
+ RUN_GPGSM_TESTS_FALSE = @RUN_GPGSM_TESTS_FALSE@
+ RUN_GPGSM_TESTS_TRUE = @RUN_GPGSM_TESTS_TRUE@
+ RUN_GPG_TESTS_FALSE = @RUN_GPG_TESTS_FALSE@
+@@ -190,15 +193,16 @@
+ SHELL = @SHELL@
+ STRIP = @STRIP@
+ VERSION = @VERSION@
+-WINDRES = @WINDRES@
+ ac_ct_AR = @ac_ct_AR@
++ac_ct_AS = @ac_ct_AS@
+ ac_ct_CC = @ac_ct_CC@
+ ac_ct_CXX = @ac_ct_CXX@
+ ac_ct_DLLTOOL = @ac_ct_DLLTOOL@
+ ac_ct_F77 = @ac_ct_F77@
++ac_ct_OBJDUMP = @ac_ct_OBJDUMP@
+ ac_ct_RANLIB = @ac_ct_RANLIB@
++ac_ct_RC = @ac_ct_RC@
+ ac_ct_STRIP = @ac_ct_STRIP@
+-ac_ct_WINDRES = @ac_ct_WINDRES@
+ am__fastdepCC_FALSE = @am__fastdepCC_FALSE@
+ am__fastdepCC_TRUE = @am__fastdepCC_TRUE@
+ am__fastdepCXX_FALSE = @am__fastdepCXX_FALSE@
+Nur in gpgme-1.1.0: autom4te.cache.
+diff -ru gpgme-1.1.0-orig/complus/Makefile.in gpgme-1.1.0/complus/Makefile.in
+--- gpgme-1.1.0-orig/complus/Makefile.in	2005-10-01 23:13:45.000000000 +0200
++++ gpgme-1.1.0/complus/Makefile.in	2005-10-03 00:02:21.000000000 +0200
+@@ -100,6 +100,7 @@
+ AMDEP_TRUE = @AMDEP_TRUE@
+ AMTAR = @AMTAR@
+ AR = @AR@
++AS = @AS@
+ AUTOCONF = @AUTOCONF@
+ AUTOHEADER = @AUTOHEADER@
+ AUTOMAKE = @AUTOMAKE@
+@@ -170,6 +171,7 @@
+ MAINTAINER_MODE_FALSE = @MAINTAINER_MODE_FALSE@
+ MAINTAINER_MODE_TRUE = @MAINTAINER_MODE_TRUE@
+ MAKEINFO = @MAKEINFO@
++OBJDUMP = @OBJDUMP@
+ OBJEXT = @OBJEXT@
+ PACKAGE = @PACKAGE@
+ PACKAGE_BUGREPORT = @PACKAGE_BUGREPORT@
+@@ -183,6 +185,7 @@
+ PTH_LDFLAGS = @PTH_LDFLAGS@
+ PTH_LIBS = @PTH_LIBS@
+ RANLIB = @RANLIB@
++RC = @RC@
+ RUN_GPGSM_TESTS_FALSE = @RUN_GPGSM_TESTS_FALSE@
+ RUN_GPGSM_TESTS_TRUE = @RUN_GPGSM_TESTS_TRUE@
+ RUN_GPG_TESTS_FALSE = @RUN_GPG_TESTS_FALSE@
+@@ -191,15 +194,16 @@
+ SHELL = @SHELL@
+ STRIP = @STRIP@
+ VERSION = @VERSION@
+-WINDRES = @WINDRES@
+ ac_ct_AR = @ac_ct_AR@
++ac_ct_AS = @ac_ct_AS@
+ ac_ct_CC = @ac_ct_CC@
+ ac_ct_CXX = @ac_ct_CXX@
+ ac_ct_DLLTOOL = @ac_ct_DLLTOOL@
+ ac_ct_F77 = @ac_ct_F77@
++ac_ct_OBJDUMP = @ac_ct_OBJDUMP@
+ ac_ct_RANLIB = @ac_ct_RANLIB@
++ac_ct_RC = @ac_ct_RC@
+ ac_ct_STRIP = @ac_ct_STRIP@
+-ac_ct_WINDRES = @ac_ct_WINDRES@
+ am__fastdepCC_FALSE = @am__fastdepCC_FALSE@
+ am__fastdepCC_TRUE = @am__fastdepCC_TRUE@
+ am__fastdepCXX_FALSE = @am__fastdepCXX_FALSE@
+diff -ru gpgme-1.1.0-orig/configure gpgme-1.1.0/configure
+--- gpgme-1.1.0-orig/configure	2005-10-01 23:13:49.000000000 +0200
++++ gpgme-1.1.0/configure	2005-10-03 00:02:24.000000000 +0200
+@@ -243,6 +243,8 @@
+ $as_unset CDPATH
+ 
+ 
++tagnames=${tagnames+${tagnames},}RC
++
+ 
+ # Check that we are running under the correct shell.
+ SHELL=${CONFIG_SHELL-/bin/sh}
+@@ -465,7 +467,7 @@
+ # include <unistd.h>
+ #endif"
+ 
+-ac_subst_vars='SHELL PATH_SEPARATOR PACKAGE_NAME PACKAGE_TARNAME PACKAGE_VERSION PACKAGE_STRING PACKAGE_BUGREPORT exec_prefix prefix program_transform_name bindir sbindir libexecdir datadir sysconfdir sharedstatedir localstatedir libdir includedir oldincludedir infodir mandir build_alias host_alias target_alias DEFS ECHO_C ECHO_N ECHO_T LIBS INSTALL_PROGRAM INSTALL_SCRIPT INSTALL_DATA CYGPATH_W PACKAGE VERSION ACLOCAL AUTOCONF AUTOMAKE AUTOHEADER MAKEINFO install_sh STRIP ac_ct_STRIP INSTALL_STRIP_PROGRAM mkdir_p AWK SET_MAKE am__leading_dot AMTAR am__tar am__untar MAINTAINER_MODE_TRUE MAINTAINER_MODE_FALSE MAINT build build_cpu build_vendor build_os host host_cpu host_vendor host_os CC CFLAGS LDFLAGS CPPFLAGS ac_ct_CC EXEEXT OBJEXT DEPDIR am__include am__quote AMDEP_TRUE AMDEP_FALSE AMDEPBACKSLASH CCDEPMODE am__fastdepCC_TRUE am__fastdepCC_FALSE DLLTOOL ac_ct_DLLTOOL WINDRES ac_ct_WINDRES LIBGPGME_LT_CURRENT LIBGPGME_LT_AGE LIBGPGME_LT_REVISION EGREP LN_S ECHO AR ac_ct_AR RANLIB ac_ct_RANLIB CPP CXX CXXFLAGS ac_ct_CXX CXXDEPMODE am__fastdepCXX_TRUE am__fastdepCXX_FALSE CXXCPP F77 FFLAGS ac_ct_F77 LIBTOOL HAVE_LD_VERSION_SCRIPT_TRUE HAVE_LD_VERSION_SCRIPT_FALSE PTH_CPPFLAGS PTH_CFLAGS PTH_LDFLAGS PTH_LIBS HAVE_DOSISH_SYSTEM_TRUE HAVE_DOSISH_SYSTEM_FALSE HAVE_W32_SYSTEM_TRUE HAVE_W32_SYSTEM_FALSE HAVE_PTH_TRUE HAVE_PTH_FALSE HAVE_PTHREAD_TRUE HAVE_PTHREAD_FALSE LIBOBJS GLIBC21 GPG_ERROR_CONFIG GPG_ERROR_CFLAGS GPG_ERROR_LIBS GPG RUN_GPG_TESTS_TRUE RUN_GPG_TESTS_FALSE GPG_PATH GPGSM HAVE_GPGSM_TRUE HAVE_GPGSM_FALSE RUN_GPGSM_TESTS_TRUE RUN_GPGSM_TESTS_FALSE BUILD_ASSUAN_TRUE BUILD_ASSUAN_FALSE BUILD_COMPLUS_TRUE BUILD_COMPLUS_FALSE BUILD_TIMESTAMP BUILD_FILEVERSION GPGME_CONFIG_API_VERSION GPGME_CONFIG_LIBS GPGME_CONFIG_CFLAGS LTLIBOBJS'
++ac_subst_vars='SHELL PATH_SEPARATOR PACKAGE_NAME PACKAGE_TARNAME PACKAGE_VERSION PACKAGE_STRING PACKAGE_BUGREPORT exec_prefix prefix program_transform_name bindir sbindir libexecdir datadir sysconfdir sharedstatedir localstatedir libdir includedir oldincludedir infodir mandir build_alias host_alias target_alias DEFS ECHO_C ECHO_N ECHO_T LIBS INSTALL_PROGRAM INSTALL_SCRIPT INSTALL_DATA CYGPATH_W PACKAGE VERSION ACLOCAL AUTOCONF AUTOMAKE AUTOHEADER MAKEINFO install_sh STRIP ac_ct_STRIP INSTALL_STRIP_PROGRAM mkdir_p AWK SET_MAKE am__leading_dot AMTAR am__tar am__untar MAINTAINER_MODE_TRUE MAINTAINER_MODE_FALSE MAINT build build_cpu build_vendor build_os host host_cpu host_vendor host_os CC CFLAGS LDFLAGS CPPFLAGS ac_ct_CC EXEEXT OBJEXT DEPDIR am__include am__quote AMDEP_TRUE AMDEP_FALSE AMDEPBACKSLASH CCDEPMODE am__fastdepCC_TRUE am__fastdepCC_FALSE LIBGPGME_LT_CURRENT LIBGPGME_LT_AGE LIBGPGME_LT_REVISION RC ac_ct_RC EGREP LN_S ECHO AR ac_ct_AR RANLIB ac_ct_RANLIB DLLTOOL ac_ct_DLLTOOL AS ac_ct_AS OBJDUMP ac_ct_OBJDUMP CPP CXX CXXFLAGS ac_ct_CXX CXXDEPMODE am__fastdepCXX_TRUE am__fastdepCXX_FALSE CXXCPP F77 FFLAGS ac_ct_F77 LIBTOOL HAVE_LD_VERSION_SCRIPT_TRUE HAVE_LD_VERSION_SCRIPT_FALSE PTH_CPPFLAGS PTH_CFLAGS PTH_LDFLAGS PTH_LIBS HAVE_DOSISH_SYSTEM_TRUE HAVE_DOSISH_SYSTEM_FALSE HAVE_W32_SYSTEM_TRUE HAVE_W32_SYSTEM_FALSE HAVE_PTH_TRUE HAVE_PTH_FALSE HAVE_PTHREAD_TRUE HAVE_PTHREAD_FALSE LIBOBJS GLIBC21 GPG_ERROR_CONFIG GPG_ERROR_CFLAGS GPG_ERROR_LIBS GPG RUN_GPG_TESTS_TRUE RUN_GPG_TESTS_FALSE GPG_PATH GPGSM HAVE_GPGSM_TRUE HAVE_GPGSM_FALSE RUN_GPGSM_TESTS_TRUE RUN_GPGSM_TESTS_FALSE BUILD_ASSUAN_TRUE BUILD_ASSUAN_FALSE BUILD_COMPLUS_TRUE BUILD_COMPLUS_FALSE BUILD_TIMESTAMP BUILD_FILEVERSION GPGME_CONFIG_API_VERSION GPGME_CONFIG_LIBS GPGME_CONFIG_CFLAGS LTLIBOBJS'
+ ac_subst_files=''
+ 
+ # Initialize some variables set by options.
+@@ -3169,96 +3171,72 @@
+ fi
+ 
+ 
+-if test -n "$ac_tool_prefix"; then
+-  # Extract the first word of "${ac_tool_prefix}dlltool", so it can be a program name with args.
+-set dummy ${ac_tool_prefix}dlltool; ac_word=$2
+-echo "$as_me:$LINENO: checking for $ac_word" >&5
+-echo $ECHO_N "checking for $ac_word... $ECHO_C" >&6
+-if test "${ac_cv_prog_DLLTOOL+set}" = set; then
+-  echo $ECHO_N "(cached) $ECHO_C" >&6
+-else
+-  if test -n "$DLLTOOL"; then
+-  ac_cv_prog_DLLTOOL="$DLLTOOL" # Let the user override the test.
+-else
+-as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+-for as_dir in $PATH
+-do
+-  IFS=$as_save_IFS
+-  test -z "$as_dir" && as_dir=.
+-  for ac_exec_ext in '' $ac_executable_extensions; do
+-  if $as_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
+-    ac_cv_prog_DLLTOOL="${ac_tool_prefix}dlltool"
+-    echo "$as_me:$LINENO: found $as_dir/$ac_word$ac_exec_ext" >&5
+-    break 2
+-  fi
+-done
+-done
+ 
+-fi
+-fi
+-DLLTOOL=$ac_cv_prog_DLLTOOL
+-if test -n "$DLLTOOL"; then
+-  echo "$as_me:$LINENO: result: $DLLTOOL" >&5
+-echo "${ECHO_T}$DLLTOOL" >&6
+-else
+-  echo "$as_me:$LINENO: result: no" >&5
+-echo "${ECHO_T}no" >&6
+-fi
+ 
+-fi
+-if test -z "$ac_cv_prog_DLLTOOL"; then
+-  ac_ct_DLLTOOL=$DLLTOOL
+-  # Extract the first word of "dlltool", so it can be a program name with args.
+-set dummy dlltool; ac_word=$2
+-echo "$as_me:$LINENO: checking for $ac_word" >&5
+-echo $ECHO_N "checking for $ac_word... $ECHO_C" >&6
+-if test "${ac_cv_prog_ac_ct_DLLTOOL+set}" = set; then
+-  echo $ECHO_N "(cached) $ECHO_C" >&6
+-else
+-  if test -n "$ac_ct_DLLTOOL"; then
+-  ac_cv_prog_ac_ct_DLLTOOL="$ac_ct_DLLTOOL" # Let the user override the test.
+-else
+-as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+-for as_dir in $PATH
+-do
+-  IFS=$as_save_IFS
+-  test -z "$as_dir" && as_dir=.
+-  for ac_exec_ext in '' $ac_executable_extensions; do
+-  if $as_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
+-    ac_cv_prog_ac_ct_DLLTOOL="dlltool"
+-    echo "$as_me:$LINENO: found $as_dir/$ac_word$ac_exec_ext" >&5
+-    break 2
+-  fi
+-done
+-done
+ 
+-  test -z "$ac_cv_prog_ac_ct_DLLTOOL" && ac_cv_prog_ac_ct_DLLTOOL=":"
+-fi
+-fi
+-ac_ct_DLLTOOL=$ac_cv_prog_ac_ct_DLLTOOL
+-if test -n "$ac_ct_DLLTOOL"; then
+-  echo "$as_me:$LINENO: result: $ac_ct_DLLTOOL" >&5
+-echo "${ECHO_T}$ac_ct_DLLTOOL" >&6
+-else
+-  echo "$as_me:$LINENO: result: no" >&5
+-echo "${ECHO_T}no" >&6
+-fi
+ 
+-  DLLTOOL=$ac_ct_DLLTOOL
++
++cat >>confdefs.h <<_ACEOF
++#define NEED_GPG_VERSION "$NEED_GPG_VERSION"
++_ACEOF
++
++
++cat >>confdefs.h <<_ACEOF
++#define NEED_GPGSM_VERSION "$NEED_GPGSM_VERSION"
++_ACEOF
++
++
++
++
++
++cat >>confdefs.h <<_ACEOF
++#define PACKAGE "$PACKAGE"
++_ACEOF
++
++
++cat >>confdefs.h <<_ACEOF
++#define VERSION "$VERSION"
++_ACEOF
++
++
++# Don't default to build static libs.
++# Check whether --enable-static or --disable-static was given.
++if test "${enable_static+set}" = set; then
++  enableval="$enable_static"
++  p=${PACKAGE-default}
++    case $enableval in
++    yes) enable_static=yes ;;
++    no) enable_static=no ;;
++    *)
++     enable_static=no
++      # Look at the argument we got.  We use all the common list separators.
++      lt_save_ifs="$IFS"; IFS="${IFS}$PATH_SEPARATOR,"
++      for pkg in $enableval; do
++	IFS="$lt_save_ifs"
++	if test "X$pkg" = "X$p"; then
++	  enable_static=yes
++	fi
++      done
++      IFS="$lt_save_ifs"
++      ;;
++    esac
+ else
+-  DLLTOOL="$ac_cv_prog_DLLTOOL"
+-fi
++  enable_static=no
++fi;
++
++
++
+ 
+ if test -n "$ac_tool_prefix"; then
+   # Extract the first word of "${ac_tool_prefix}windres", so it can be a program name with args.
+ set dummy ${ac_tool_prefix}windres; ac_word=$2
+ echo "$as_me:$LINENO: checking for $ac_word" >&5
+ echo $ECHO_N "checking for $ac_word... $ECHO_C" >&6
+-if test "${ac_cv_prog_WINDRES+set}" = set; then
++if test "${ac_cv_prog_RC+set}" = set; then
+   echo $ECHO_N "(cached) $ECHO_C" >&6
+ else
+-  if test -n "$WINDRES"; then
+-  ac_cv_prog_WINDRES="$WINDRES" # Let the user override the test.
++  if test -n "$RC"; then
++  ac_cv_prog_RC="$RC" # Let the user override the test.
+ else
+ as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+ for as_dir in $PATH
+@@ -3267,7 +3245,7 @@
+   test -z "$as_dir" && as_dir=.
+   for ac_exec_ext in '' $ac_executable_extensions; do
+   if $as_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
+-    ac_cv_prog_WINDRES="${ac_tool_prefix}windres"
++    ac_cv_prog_RC="${ac_tool_prefix}windres"
+     echo "$as_me:$LINENO: found $as_dir/$ac_word$ac_exec_ext" >&5
+     break 2
+   fi
+@@ -3276,27 +3254,27 @@
+ 
+ fi
+ fi
+-WINDRES=$ac_cv_prog_WINDRES
+-if test -n "$WINDRES"; then
+-  echo "$as_me:$LINENO: result: $WINDRES" >&5
+-echo "${ECHO_T}$WINDRES" >&6
++RC=$ac_cv_prog_RC
++if test -n "$RC"; then
++  echo "$as_me:$LINENO: result: $RC" >&5
++echo "${ECHO_T}$RC" >&6
+ else
+   echo "$as_me:$LINENO: result: no" >&5
+ echo "${ECHO_T}no" >&6
+ fi
+ 
+ fi
+-if test -z "$ac_cv_prog_WINDRES"; then
+-  ac_ct_WINDRES=$WINDRES
++if test -z "$ac_cv_prog_RC"; then
++  ac_ct_RC=$RC
+   # Extract the first word of "windres", so it can be a program name with args.
+ set dummy windres; ac_word=$2
+ echo "$as_me:$LINENO: checking for $ac_word" >&5
+ echo $ECHO_N "checking for $ac_word... $ECHO_C" >&6
+-if test "${ac_cv_prog_ac_ct_WINDRES+set}" = set; then
++if test "${ac_cv_prog_ac_ct_RC+set}" = set; then
+   echo $ECHO_N "(cached) $ECHO_C" >&6
+ else
+-  if test -n "$ac_ct_WINDRES"; then
+-  ac_cv_prog_ac_ct_WINDRES="$ac_ct_WINDRES" # Let the user override the test.
++  if test -n "$ac_ct_RC"; then
++  ac_cv_prog_ac_ct_RC="$ac_ct_RC" # Let the user override the test.
+ else
+ as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+ for as_dir in $PATH
+@@ -3305,28 +3283,28 @@
+   test -z "$as_dir" && as_dir=.
+   for ac_exec_ext in '' $ac_executable_extensions; do
+   if $as_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
+-    ac_cv_prog_ac_ct_WINDRES="windres"
++    ac_cv_prog_ac_ct_RC="windres"
+     echo "$as_me:$LINENO: found $as_dir/$ac_word$ac_exec_ext" >&5
+     break 2
+   fi
+ done
+ done
+ 
+-  test -z "$ac_cv_prog_ac_ct_WINDRES" && ac_cv_prog_ac_ct_WINDRES=":"
++  test -z "$ac_cv_prog_ac_ct_RC" && ac_cv_prog_ac_ct_RC="no"
+ fi
+ fi
+-ac_ct_WINDRES=$ac_cv_prog_ac_ct_WINDRES
+-if test -n "$ac_ct_WINDRES"; then
+-  echo "$as_me:$LINENO: result: $ac_ct_WINDRES" >&5
+-echo "${ECHO_T}$ac_ct_WINDRES" >&6
++ac_ct_RC=$ac_cv_prog_ac_ct_RC
++if test -n "$ac_ct_RC"; then
++  echo "$as_me:$LINENO: result: $ac_ct_RC" >&5
++echo "${ECHO_T}$ac_ct_RC" >&6
+ else
+   echo "$as_me:$LINENO: result: no" >&5
+ echo "${ECHO_T}no" >&6
+ fi
+ 
+-  WINDRES=$ac_ct_WINDRES
++  RC=$ac_ct_RC
+ else
+-  WINDRES="$ac_cv_prog_WINDRES"
++  RC="$ac_cv_prog_RC"
+ fi
+ 
+ 
+@@ -3334,56 +3312,6 @@
+ 
+ 
+ 
+-
+-cat >>confdefs.h <<_ACEOF
+-#define NEED_GPG_VERSION "$NEED_GPG_VERSION"
+-_ACEOF
+-
+-
+-cat >>confdefs.h <<_ACEOF
+-#define NEED_GPGSM_VERSION "$NEED_GPGSM_VERSION"
+-_ACEOF
+-
+-
+-
+-
+-
+-cat >>confdefs.h <<_ACEOF
+-#define PACKAGE "$PACKAGE"
+-_ACEOF
+-
+-
+-cat >>confdefs.h <<_ACEOF
+-#define VERSION "$VERSION"
+-_ACEOF
+-
+-
+-# Don't default to build static libs.
+-# Check whether --enable-static or --disable-static was given.
+-if test "${enable_static+set}" = set; then
+-  enableval="$enable_static"
+-  p=${PACKAGE-default}
+-    case $enableval in
+-    yes) enable_static=yes ;;
+-    no) enable_static=no ;;
+-    *)
+-     enable_static=no
+-      # Look at the argument we got.  We use all the common list separators.
+-      lt_save_ifs="$IFS"; IFS="${IFS}$PATH_SEPARATOR,"
+-      for pkg in $enableval; do
+-	IFS="$lt_save_ifs"
+-	if test "X$pkg" = "X$p"; then
+-	  enable_static=yes
+-	fi
+-      done
+-      IFS="$lt_save_ifs"
+-      ;;
+-    esac
+-else
+-  enable_static=no
+-fi;
+-
+-
+ # Check whether --enable-shared or --disable-shared was given.
+ if test "${enable_shared+set}" = set; then
+   enableval="$enable_shared"
+@@ -3905,7 +3833,7 @@
+   ;;
+ *-*-irix6*)
+   # Find out which ABI we are using.
+-  echo '#line 3908 "configure"' > conftest.$ac_ext
++  echo '#line 3836 "configure"' > conftest.$ac_ext
+   if { (eval echo "$as_me:$LINENO: \"$ac_compile\"") >&5
+   (eval $ac_compile) 2>&5
+   ac_status=$?
+@@ -4060,6 +3988,248 @@
+     CFLAGS="$SAVE_CFLAGS"
+   fi
+   ;;
++*-*-cygwin* | *-*-mingw* | *-*-pw32*)
++  if test -n "$ac_tool_prefix"; then
++  # Extract the first word of "${ac_tool_prefix}dlltool", so it can be a program name with args.
++set dummy ${ac_tool_prefix}dlltool; ac_word=$2
++echo "$as_me:$LINENO: checking for $ac_word" >&5
++echo $ECHO_N "checking for $ac_word... $ECHO_C" >&6
++if test "${ac_cv_prog_DLLTOOL+set}" = set; then
++  echo $ECHO_N "(cached) $ECHO_C" >&6
++else
++  if test -n "$DLLTOOL"; then
++  ac_cv_prog_DLLTOOL="$DLLTOOL" # Let the user override the test.
++else
++as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
++for as_dir in $PATH
++do
++  IFS=$as_save_IFS
++  test -z "$as_dir" && as_dir=.
++  for ac_exec_ext in '' $ac_executable_extensions; do
++  if $as_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
++    ac_cv_prog_DLLTOOL="${ac_tool_prefix}dlltool"
++    echo "$as_me:$LINENO: found $as_dir/$ac_word$ac_exec_ext" >&5
++    break 2
++  fi
++done
++done
++
++fi
++fi
++DLLTOOL=$ac_cv_prog_DLLTOOL
++if test -n "$DLLTOOL"; then
++  echo "$as_me:$LINENO: result: $DLLTOOL" >&5
++echo "${ECHO_T}$DLLTOOL" >&6
++else
++  echo "$as_me:$LINENO: result: no" >&5
++echo "${ECHO_T}no" >&6
++fi
++
++fi
++if test -z "$ac_cv_prog_DLLTOOL"; then
++  ac_ct_DLLTOOL=$DLLTOOL
++  # Extract the first word of "dlltool", so it can be a program name with args.
++set dummy dlltool; ac_word=$2
++echo "$as_me:$LINENO: checking for $ac_word" >&5
++echo $ECHO_N "checking for $ac_word... $ECHO_C" >&6
++if test "${ac_cv_prog_ac_ct_DLLTOOL+set}" = set; then
++  echo $ECHO_N "(cached) $ECHO_C" >&6
++else
++  if test -n "$ac_ct_DLLTOOL"; then
++  ac_cv_prog_ac_ct_DLLTOOL="$ac_ct_DLLTOOL" # Let the user override the test.
++else
++as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
++for as_dir in $PATH
++do
++  IFS=$as_save_IFS
++  test -z "$as_dir" && as_dir=.
++  for ac_exec_ext in '' $ac_executable_extensions; do
++  if $as_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
++    ac_cv_prog_ac_ct_DLLTOOL="dlltool"
++    echo "$as_me:$LINENO: found $as_dir/$ac_word$ac_exec_ext" >&5
++    break 2
++  fi
++done
++done
++
++  test -z "$ac_cv_prog_ac_ct_DLLTOOL" && ac_cv_prog_ac_ct_DLLTOOL="false"
++fi
++fi
++ac_ct_DLLTOOL=$ac_cv_prog_ac_ct_DLLTOOL
++if test -n "$ac_ct_DLLTOOL"; then
++  echo "$as_me:$LINENO: result: $ac_ct_DLLTOOL" >&5
++echo "${ECHO_T}$ac_ct_DLLTOOL" >&6
++else
++  echo "$as_me:$LINENO: result: no" >&5
++echo "${ECHO_T}no" >&6
++fi
++
++  DLLTOOL=$ac_ct_DLLTOOL
++else
++  DLLTOOL="$ac_cv_prog_DLLTOOL"
++fi
++
++  if test -n "$ac_tool_prefix"; then
++  # Extract the first word of "${ac_tool_prefix}as", so it can be a program name with args.
++set dummy ${ac_tool_prefix}as; ac_word=$2
++echo "$as_me:$LINENO: checking for $ac_word" >&5
++echo $ECHO_N "checking for $ac_word... $ECHO_C" >&6
++if test "${ac_cv_prog_AS+set}" = set; then
++  echo $ECHO_N "(cached) $ECHO_C" >&6
++else
++  if test -n "$AS"; then
++  ac_cv_prog_AS="$AS" # Let the user override the test.
++else
++as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
++for as_dir in $PATH
++do
++  IFS=$as_save_IFS
++  test -z "$as_dir" && as_dir=.
++  for ac_exec_ext in '' $ac_executable_extensions; do
++  if $as_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
++    ac_cv_prog_AS="${ac_tool_prefix}as"
++    echo "$as_me:$LINENO: found $as_dir/$ac_word$ac_exec_ext" >&5
++    break 2
++  fi
++done
++done
++
++fi
++fi
++AS=$ac_cv_prog_AS
++if test -n "$AS"; then
++  echo "$as_me:$LINENO: result: $AS" >&5
++echo "${ECHO_T}$AS" >&6
++else
++  echo "$as_me:$LINENO: result: no" >&5
++echo "${ECHO_T}no" >&6
++fi
++
++fi
++if test -z "$ac_cv_prog_AS"; then
++  ac_ct_AS=$AS
++  # Extract the first word of "as", so it can be a program name with args.
++set dummy as; ac_word=$2
++echo "$as_me:$LINENO: checking for $ac_word" >&5
++echo $ECHO_N "checking for $ac_word... $ECHO_C" >&6
++if test "${ac_cv_prog_ac_ct_AS+set}" = set; then
++  echo $ECHO_N "(cached) $ECHO_C" >&6
++else
++  if test -n "$ac_ct_AS"; then
++  ac_cv_prog_ac_ct_AS="$ac_ct_AS" # Let the user override the test.
++else
++as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
++for as_dir in $PATH
++do
++  IFS=$as_save_IFS
++  test -z "$as_dir" && as_dir=.
++  for ac_exec_ext in '' $ac_executable_extensions; do
++  if $as_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
++    ac_cv_prog_ac_ct_AS="as"
++    echo "$as_me:$LINENO: found $as_dir/$ac_word$ac_exec_ext" >&5
++    break 2
++  fi
++done
++done
++
++  test -z "$ac_cv_prog_ac_ct_AS" && ac_cv_prog_ac_ct_AS="false"
++fi
++fi
++ac_ct_AS=$ac_cv_prog_ac_ct_AS
++if test -n "$ac_ct_AS"; then
++  echo "$as_me:$LINENO: result: $ac_ct_AS" >&5
++echo "${ECHO_T}$ac_ct_AS" >&6
++else
++  echo "$as_me:$LINENO: result: no" >&5
++echo "${ECHO_T}no" >&6
++fi
++
++  AS=$ac_ct_AS
++else
++  AS="$ac_cv_prog_AS"
++fi
++
++  if test -n "$ac_tool_prefix"; then
++  # Extract the first word of "${ac_tool_prefix}objdump", so it can be a program name with args.
++set dummy ${ac_tool_prefix}objdump; ac_word=$2
++echo "$as_me:$LINENO: checking for $ac_word" >&5
++echo $ECHO_N "checking for $ac_word... $ECHO_C" >&6
++if test "${ac_cv_prog_OBJDUMP+set}" = set; then
++  echo $ECHO_N "(cached) $ECHO_C" >&6
++else
++  if test -n "$OBJDUMP"; then
++  ac_cv_prog_OBJDUMP="$OBJDUMP" # Let the user override the test.
++else
++as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
++for as_dir in $PATH
++do
++  IFS=$as_save_IFS
++  test -z "$as_dir" && as_dir=.
++  for ac_exec_ext in '' $ac_executable_extensions; do
++  if $as_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
++    ac_cv_prog_OBJDUMP="${ac_tool_prefix}objdump"
++    echo "$as_me:$LINENO: found $as_dir/$ac_word$ac_exec_ext" >&5
++    break 2
++  fi
++done
++done
++
++fi
++fi
++OBJDUMP=$ac_cv_prog_OBJDUMP
++if test -n "$OBJDUMP"; then
++  echo "$as_me:$LINENO: result: $OBJDUMP" >&5
++echo "${ECHO_T}$OBJDUMP" >&6
++else
++  echo "$as_me:$LINENO: result: no" >&5
++echo "${ECHO_T}no" >&6
++fi
++
++fi
++if test -z "$ac_cv_prog_OBJDUMP"; then
++  ac_ct_OBJDUMP=$OBJDUMP
++  # Extract the first word of "objdump", so it can be a program name with args.
++set dummy objdump; ac_word=$2
++echo "$as_me:$LINENO: checking for $ac_word" >&5
++echo $ECHO_N "checking for $ac_word... $ECHO_C" >&6
++if test "${ac_cv_prog_ac_ct_OBJDUMP+set}" = set; then
++  echo $ECHO_N "(cached) $ECHO_C" >&6
++else
++  if test -n "$ac_ct_OBJDUMP"; then
++  ac_cv_prog_ac_ct_OBJDUMP="$ac_ct_OBJDUMP" # Let the user override the test.
++else
++as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
++for as_dir in $PATH
++do
++  IFS=$as_save_IFS
++  test -z "$as_dir" && as_dir=.
++  for ac_exec_ext in '' $ac_executable_extensions; do
++  if $as_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
++    ac_cv_prog_ac_ct_OBJDUMP="objdump"
++    echo "$as_me:$LINENO: found $as_dir/$ac_word$ac_exec_ext" >&5
++    break 2
++  fi
++done
++done
++
++  test -z "$ac_cv_prog_ac_ct_OBJDUMP" && ac_cv_prog_ac_ct_OBJDUMP="false"
++fi
++fi
++ac_ct_OBJDUMP=$ac_cv_prog_ac_ct_OBJDUMP
++if test -n "$ac_ct_OBJDUMP"; then
++  echo "$as_me:$LINENO: result: $ac_ct_OBJDUMP" >&5
++echo "${ECHO_T}$ac_ct_OBJDUMP" >&6
++else
++  echo "$as_me:$LINENO: result: no" >&5
++echo "${ECHO_T}no" >&6
++fi
++
++  OBJDUMP=$ac_ct_OBJDUMP
++else
++  OBJDUMP="$ac_cv_prog_OBJDUMP"
++fi
++
++  ;;
+ 
+ esac
+ 
+@@ -5469,7 +5639,7 @@
+ 
+ 
+ # Provide some information about the compiler.
+-echo "$as_me:5472:" \
++echo "$as_me:5642:" \
+      "checking for Fortran 77 compiler version" >&5
+ ac_compiler=`set X $ac_compile; echo $2`
+ { (eval echo "$as_me:$LINENO: \"$ac_compiler --version </dev/null >&5\"") >&5
+@@ -6366,7 +6536,7 @@
+ esac
+ 
+ enable_dlopen=no
+-enable_win32_dll=no
++enable_win32_dll=yes
+ 
+ # Check whether --enable-libtool-lock or --disable-libtool-lock was given.
+ if test "${enable_libtool_lock+set}" = set; then
+@@ -6505,11 +6675,11 @@
+    -e 's:.*FLAGS}? :&$lt_compiler_flag :; t' \
+    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
+    -e 's:$: $lt_compiler_flag:'`
+-   (eval echo "\"\$as_me:6508: $lt_compile\"" >&5)
++   (eval echo "\"\$as_me:6678: $lt_compile\"" >&5)
+    (eval "$lt_compile" 2>conftest.err)
+    ac_status=$?
+    cat conftest.err >&5
+-   echo "$as_me:6512: \$? = $ac_status" >&5
++   echo "$as_me:6682: \$? = $ac_status" >&5
+    if (exit $ac_status) && test -s "$ac_outfile"; then
+      # The compiler can only warn and ignore the option if not recognized
+      # So say no if there are warnings
+@@ -6738,11 +6908,11 @@
+    -e 's:.*FLAGS}? :&$lt_compiler_flag :; t' \
+    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
+    -e 's:$: $lt_compiler_flag:'`
+-   (eval echo "\"\$as_me:6741: $lt_compile\"" >&5)
++   (eval echo "\"\$as_me:6911: $lt_compile\"" >&5)
+    (eval "$lt_compile" 2>conftest.err)
+    ac_status=$?
+    cat conftest.err >&5
+-   echo "$as_me:6745: \$? = $ac_status" >&5
++   echo "$as_me:6915: \$? = $ac_status" >&5
+    if (exit $ac_status) && test -s "$ac_outfile"; then
+      # The compiler can only warn and ignore the option if not recognized
+      # So say no if there are warnings
+@@ -6798,11 +6968,11 @@
+    -e 's:.*FLAGS}? :&$lt_compiler_flag :; t' \
+    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
+    -e 's:$: $lt_compiler_flag:'`
+-   (eval echo "\"\$as_me:6801: $lt_compile\"" >&5)
++   (eval echo "\"\$as_me:6971: $lt_compile\"" >&5)
+    (eval "$lt_compile" 2>out/conftest.err)
+    ac_status=$?
+    cat out/conftest.err >&5
+-   echo "$as_me:6805: \$? = $ac_status" >&5
++   echo "$as_me:6975: \$? = $ac_status" >&5
+    if (exit $ac_status) && test -s out/conftest2.$ac_objext
+    then
+      # The compiler can only warn and ignore the option if not recognized
+@@ -8974,7 +9144,7 @@
+   lt_dlunknown=0; lt_dlno_uscore=1; lt_dlneed_uscore=2
+   lt_status=$lt_dlunknown
+   cat > conftest.$ac_ext <<EOF
+-#line 8977 "configure"
++#line 9147 "configure"
+ #include "confdefs.h"
+ 
+ #if HAVE_DLFCN_H
+@@ -9072,7 +9242,7 @@
+   lt_dlunknown=0; lt_dlno_uscore=1; lt_dlneed_uscore=2
+   lt_status=$lt_dlunknown
+   cat > conftest.$ac_ext <<EOF
+-#line 9075 "configure"
++#line 9245 "configure"
+ #include "confdefs.h"
+ 
+ #if HAVE_DLFCN_H
+@@ -11253,11 +11423,11 @@
+    -e 's:.*FLAGS}? :&$lt_compiler_flag :; t' \
+    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
+    -e 's:$: $lt_compiler_flag:'`
+-   (eval echo "\"\$as_me:11256: $lt_compile\"" >&5)
++   (eval echo "\"\$as_me:11426: $lt_compile\"" >&5)
+    (eval "$lt_compile" 2>conftest.err)
+    ac_status=$?
+    cat conftest.err >&5
+-   echo "$as_me:11260: \$? = $ac_status" >&5
++   echo "$as_me:11430: \$? = $ac_status" >&5
+    if (exit $ac_status) && test -s "$ac_outfile"; then
+      # The compiler can only warn and ignore the option if not recognized
+      # So say no if there are warnings
+@@ -11313,11 +11483,11 @@
+    -e 's:.*FLAGS}? :&$lt_compiler_flag :; t' \
+    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
+    -e 's:$: $lt_compiler_flag:'`
+-   (eval echo "\"\$as_me:11316: $lt_compile\"" >&5)
++   (eval echo "\"\$as_me:11486: $lt_compile\"" >&5)
+    (eval "$lt_compile" 2>out/conftest.err)
+    ac_status=$?
+    cat out/conftest.err >&5
+-   echo "$as_me:11320: \$? = $ac_status" >&5
++   echo "$as_me:11490: \$? = $ac_status" >&5
+    if (exit $ac_status) && test -s out/conftest2.$ac_objext
+    then
+      # The compiler can only warn and ignore the option if not recognized
+@@ -12670,7 +12840,7 @@
+   lt_dlunknown=0; lt_dlno_uscore=1; lt_dlneed_uscore=2
+   lt_status=$lt_dlunknown
+   cat > conftest.$ac_ext <<EOF
+-#line 12673 "configure"
++#line 12843 "configure"
+ #include "confdefs.h"
+ 
+ #if HAVE_DLFCN_H
+@@ -12768,7 +12938,7 @@
+   lt_dlunknown=0; lt_dlno_uscore=1; lt_dlneed_uscore=2
+   lt_status=$lt_dlunknown
+   cat > conftest.$ac_ext <<EOF
+-#line 12771 "configure"
++#line 12941 "configure"
+ #include "confdefs.h"
+ 
+ #if HAVE_DLFCN_H
+@@ -13595,11 +13765,11 @@
+    -e 's:.*FLAGS}? :&$lt_compiler_flag :; t' \
+    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
+    -e 's:$: $lt_compiler_flag:'`
+-   (eval echo "\"\$as_me:13598: $lt_compile\"" >&5)
++   (eval echo "\"\$as_me:13768: $lt_compile\"" >&5)
+    (eval "$lt_compile" 2>conftest.err)
+    ac_status=$?
+    cat conftest.err >&5
+-   echo "$as_me:13602: \$? = $ac_status" >&5
++   echo "$as_me:13772: \$? = $ac_status" >&5
+    if (exit $ac_status) && test -s "$ac_outfile"; then
+      # The compiler can only warn and ignore the option if not recognized
+      # So say no if there are warnings
+@@ -13655,11 +13825,11 @@
+    -e 's:.*FLAGS}? :&$lt_compiler_flag :; t' \
+    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
+    -e 's:$: $lt_compiler_flag:'`
+-   (eval echo "\"\$as_me:13658: $lt_compile\"" >&5)
++   (eval echo "\"\$as_me:13828: $lt_compile\"" >&5)
+    (eval "$lt_compile" 2>out/conftest.err)
+    ac_status=$?
+    cat out/conftest.err >&5
+-   echo "$as_me:13662: \$? = $ac_status" >&5
++   echo "$as_me:13832: \$? = $ac_status" >&5
+    if (exit $ac_status) && test -s out/conftest2.$ac_objext
+    then
+      # The compiler can only warn and ignore the option if not recognized
+@@ -15692,11 +15862,11 @@
+    -e 's:.*FLAGS}? :&$lt_compiler_flag :; t' \
+    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
+    -e 's:$: $lt_compiler_flag:'`
+-   (eval echo "\"\$as_me:15695: $lt_compile\"" >&5)
++   (eval echo "\"\$as_me:15865: $lt_compile\"" >&5)
+    (eval "$lt_compile" 2>conftest.err)
+    ac_status=$?
+    cat conftest.err >&5
+-   echo "$as_me:15699: \$? = $ac_status" >&5
++   echo "$as_me:15869: \$? = $ac_status" >&5
+    if (exit $ac_status) && test -s "$ac_outfile"; then
+      # The compiler can only warn and ignore the option if not recognized
+      # So say no if there are warnings
+@@ -15925,11 +16095,11 @@
+    -e 's:.*FLAGS}? :&$lt_compiler_flag :; t' \
+    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
+    -e 's:$: $lt_compiler_flag:'`
+-   (eval echo "\"\$as_me:15928: $lt_compile\"" >&5)
++   (eval echo "\"\$as_me:16098: $lt_compile\"" >&5)
+    (eval "$lt_compile" 2>conftest.err)
+    ac_status=$?
+    cat conftest.err >&5
+-   echo "$as_me:15932: \$? = $ac_status" >&5
++   echo "$as_me:16102: \$? = $ac_status" >&5
+    if (exit $ac_status) && test -s "$ac_outfile"; then
+      # The compiler can only warn and ignore the option if not recognized
+      # So say no if there are warnings
+@@ -15985,11 +16155,11 @@
+    -e 's:.*FLAGS}? :&$lt_compiler_flag :; t' \
+    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
+    -e 's:$: $lt_compiler_flag:'`
+-   (eval echo "\"\$as_me:15988: $lt_compile\"" >&5)
++   (eval echo "\"\$as_me:16158: $lt_compile\"" >&5)
+    (eval "$lt_compile" 2>out/conftest.err)
+    ac_status=$?
+    cat out/conftest.err >&5
+-   echo "$as_me:15992: \$? = $ac_status" >&5
++   echo "$as_me:16162: \$? = $ac_status" >&5
+    if (exit $ac_status) && test -s out/conftest2.$ac_objext
+    then
+      # The compiler can only warn and ignore the option if not recognized
+@@ -18161,7 +18331,7 @@
+   lt_dlunknown=0; lt_dlno_uscore=1; lt_dlneed_uscore=2
+   lt_status=$lt_dlunknown
+   cat > conftest.$ac_ext <<EOF
+-#line 18164 "configure"
++#line 18334 "configure"
+ #include "confdefs.h"
+ 
+ #if HAVE_DLFCN_H
+@@ -18259,7 +18429,7 @@
+   lt_dlunknown=0; lt_dlno_uscore=1; lt_dlneed_uscore=2
+   lt_status=$lt_dlunknown
+   cat > conftest.$ac_ext <<EOF
+-#line 18262 "configure"
++#line 18432 "configure"
+ #include "confdefs.h"
+ 
+ #if HAVE_DLFCN_H
+@@ -23904,13 +24074,11 @@
+ s,@CCDEPMODE@,$CCDEPMODE,;t t
+ s,@am__fastdepCC_TRUE@,$am__fastdepCC_TRUE,;t t
+ s,@am__fastdepCC_FALSE@,$am__fastdepCC_FALSE,;t t
+-s,@DLLTOOL@,$DLLTOOL,;t t
+-s,@ac_ct_DLLTOOL@,$ac_ct_DLLTOOL,;t t
+-s,@WINDRES@,$WINDRES,;t t
+-s,@ac_ct_WINDRES@,$ac_ct_WINDRES,;t t
+ s,@LIBGPGME_LT_CURRENT@,$LIBGPGME_LT_CURRENT,;t t
+ s,@LIBGPGME_LT_AGE@,$LIBGPGME_LT_AGE,;t t
+ s,@LIBGPGME_LT_REVISION@,$LIBGPGME_LT_REVISION,;t t
++s,@RC@,$RC,;t t
++s,@ac_ct_RC@,$ac_ct_RC,;t t
+ s,@EGREP@,$EGREP,;t t
+ s,@LN_S@,$LN_S,;t t
+ s,@ECHO@,$ECHO,;t t
+@@ -23918,6 +24086,12 @@
+ s,@ac_ct_AR@,$ac_ct_AR,;t t
+ s,@RANLIB@,$RANLIB,;t t
+ s,@ac_ct_RANLIB@,$ac_ct_RANLIB,;t t
++s,@DLLTOOL@,$DLLTOOL,;t t
++s,@ac_ct_DLLTOOL@,$ac_ct_DLLTOOL,;t t
++s,@AS@,$AS,;t t
++s,@ac_ct_AS@,$ac_ct_AS,;t t
++s,@OBJDUMP@,$OBJDUMP,;t t
++s,@ac_ct_OBJDUMP@,$ac_ct_OBJDUMP,;t t
+ s,@CPP@,$CPP,;t t
+ s,@CXX@,$CXX,;t t
+ s,@CXXFLAGS@,$CXXFLAGS,;t t
+diff -ru gpgme-1.1.0-orig/configure.ac gpgme-1.1.0/configure.ac
+--- gpgme-1.1.0-orig/configure.ac	2005-10-01 23:13:02.000000000 +0200
++++ gpgme-1.1.0/configure.ac	2005-10-03 00:01:41.000000000 +0200
+@@ -69,9 +69,6 @@
+ #endif])
+ 
+ AC_PROG_CC
+-AC_CHECK_TOOL(DLLTOOL, dlltool, :)
+-AC_CHECK_TOOL(WINDRES, windres, :)
+-
+ 
+ AC_SUBST(LIBGPGME_LT_CURRENT)
+ AC_SUBST(LIBGPGME_LT_AGE)
+@@ -88,6 +85,8 @@
+ 
+ # Don't default to build static libs.
+ AC_DISABLE_STATIC
++AC_LIBTOOL_WIN32_DLL
++AC_LIBTOOL_RC
+ AC_PROG_LIBTOOL
+ 
+ # For now we hardcode the use of version scripts.  It would be better
+diff -ru gpgme-1.1.0-orig/doc/Makefile.in gpgme-1.1.0/doc/Makefile.in
+--- gpgme-1.1.0-orig/doc/Makefile.in	2005-10-01 23:13:45.000000000 +0200
++++ gpgme-1.1.0/doc/Makefile.in	2005-10-03 00:02:21.000000000 +0200
+@@ -89,6 +89,7 @@
+ AMDEP_TRUE = @AMDEP_TRUE@
+ AMTAR = @AMTAR@
+ AR = @AR@
++AS = @AS@
+ AUTOCONF = @AUTOCONF@
+ AUTOHEADER = @AUTOHEADER@
+ AUTOMAKE = @AUTOMAKE@
+@@ -159,6 +160,7 @@
+ MAINTAINER_MODE_FALSE = @MAINTAINER_MODE_FALSE@
+ MAINTAINER_MODE_TRUE = @MAINTAINER_MODE_TRUE@
+ MAKEINFO = @MAKEINFO@
++OBJDUMP = @OBJDUMP@
+ OBJEXT = @OBJEXT@
+ PACKAGE = @PACKAGE@
+ PACKAGE_BUGREPORT = @PACKAGE_BUGREPORT@
+@@ -172,6 +174,7 @@
+ PTH_LDFLAGS = @PTH_LDFLAGS@
+ PTH_LIBS = @PTH_LIBS@
+ RANLIB = @RANLIB@
++RC = @RC@
+ RUN_GPGSM_TESTS_FALSE = @RUN_GPGSM_TESTS_FALSE@
+ RUN_GPGSM_TESTS_TRUE = @RUN_GPGSM_TESTS_TRUE@
+ RUN_GPG_TESTS_FALSE = @RUN_GPG_TESTS_FALSE@
+@@ -180,15 +183,16 @@
+ SHELL = @SHELL@
+ STRIP = @STRIP@
+ VERSION = @VERSION@
+-WINDRES = @WINDRES@
+ ac_ct_AR = @ac_ct_AR@
++ac_ct_AS = @ac_ct_AS@
+ ac_ct_CC = @ac_ct_CC@
+ ac_ct_CXX = @ac_ct_CXX@
+ ac_ct_DLLTOOL = @ac_ct_DLLTOOL@
+ ac_ct_F77 = @ac_ct_F77@
++ac_ct_OBJDUMP = @ac_ct_OBJDUMP@
+ ac_ct_RANLIB = @ac_ct_RANLIB@
++ac_ct_RC = @ac_ct_RC@
+ ac_ct_STRIP = @ac_ct_STRIP@
+-ac_ct_WINDRES = @ac_ct_WINDRES@
+ am__fastdepCC_FALSE = @am__fastdepCC_FALSE@
+ am__fastdepCC_TRUE = @am__fastdepCC_TRUE@
+ am__fastdepCXX_FALSE = @am__fastdepCXX_FALSE@
+diff -ru gpgme-1.1.0-orig/gpgme/Makefile.am gpgme-1.1.0/gpgme/Makefile.am
+--- gpgme-1.1.0-orig/gpgme/Makefile.am	2005-10-03 00:01:30.000000000 +0200
++++ gpgme-1.1.0/gpgme/Makefile.am	2005-10-03 00:01:58.000000000 +0200
+@@ -89,10 +89,45 @@
+ 
+ AM_CPPFLAGS = $(assuan_cppflags) @GPG_ERROR_CFLAGS@
+ 
+-libgpgme_la_LDFLAGS = $(libgpgme_version_script_cmd) -version-info \
++
++if HAVE_W32_SYSTEM
++
++LTRCCOMPILE = $(LIBTOOL) --mode=compile $(RC) \
++     `echo $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) | \
++     sed -e 's/-I/--include-dir /g;s/-D/--define /g'`
++
++%.lo : %.rc
++	$(LTRCCOMPILE) -i $< -o $@
++
++gpgme_res = versioninfo.lo
++gpgme_res_ldflag = -Wl,.libs/versioninfo.o
++no_undefined = -no-undefined
++export_symbols = -export-symbols $(srcdir)/gpgme.def
++
++install-def-file:
++	$(INSTALL) $(srcdir)/gpgme.def $(DESTDIR)$(libdir)/gpgme.def
++
++uninstall-def-file:
++	-rm $(DESTDIR)$(libdir)/gpgme.def
++
++gpgme_deps = $(gpgme_res) gpgme.def
++
++else
++gpgme_res =
++gpgme_res_ldflag =
++no_undefined =
++export_symbols =
++install-def-file:
++uninstall-def-file:
++
++gpgme_deps
++endif
++
++libgpgme_la_LDFLAGS = $(gpgme_res_ldflag) $(no_undefined) $(export_symbols) \
++	$(libgpgme_version_script_cmd) -version-info \
+ 	@LIBGPGME_LT_CURRENT@:@LIBGPGME_LT_REVISION@:@LIBGPGME_LT_AGE@
+ libgpgme_la_DEPENDENCIES = libgpgme-real.la $(assuan_libobjs) \
+-	@LTLIBOBJS@ $(srcdir)/libgpgme.vers
++	@LTLIBOBJS@ $(srcdir)/libgpgme.vers $(gpgme_deps)
+ libgpgme_la_LIBADD = libgpgme-real.la $(assuan_libobjs) @LTLIBOBJS@ \
+ 	@GPG_ERROR_LIBS@
+ 
+@@ -116,33 +151,6 @@
+ status-table.h : gpgme.h
+ 	$(srcdir)/mkstatus < $(srcdir)/gpgme.h > status-table.h
+ 
+-# Special code to build a DLL.  The current libtool (1.5.6) is not
+-# able to do this properly; we better use gcc's built in magic.  
+-if HAVE_W32_SYSTEM
+-
+-w32_o_files = ath.o conversion.o data-compat.o data-fd.o \
+-              data-mem.o data-stream.o data-user.o data.o debug.o \
+-              decrypt-verify.o decrypt.o delete.o edit.o encrypt-sign.o \
+-              encrypt.o engine-gpgsm.o engine.o error.o export.o genkey.o \
+-              get-env.o gpgme.o import.o key.o keylist.o memrchr.o \
+-              op-support.o passphrase.o progress.o putc_unlocked.o \
+-              rungpg.o sign.o signers.o trust-item.o trustlist.o \
+-              ttyname_r.o vasprintf.o verify.o version.o \
+-              w32-io.o w32-sema.o w32-util.o \
+-              wait-global.o wait-private.o wait-user.o wait.o
+-
+-all-local: gpgme.dll gpgme.dll.a
+-
+-install-exec-hook:
+-	cp gpgme.dll gpgme.dll.a $(DESTDIR)$(libdir)/
+-	$(STRIP) $(DESTDIR)$(libdir)/gpgme.dll
+-
+-gpgme.dll gpgme.dll.a: gpgme.def $(w32_o_files) versioninfo.o
+-	$(CC) -shared -o gpgme.dll $(srcdir)/gpgme.def $(w32_o_files) \
+-	   versioninfo.o @GPG_ERROR_LIBS@ -Wl,--out-implib,gpgme.dll.a
++install-data-local: install-def-file
+ 
+-
+-.rc.o:
+-	$(WINDRES) `test -f '$<' || echo '$(srcdir)/'`$< $@
+-
+-endif
++uninstall-local: uninstall-def-file
+Nur in gpgme-1.1.0/gpgme: Makefile.am~.
+diff -ru gpgme-1.1.0-orig/gpgme/Makefile.in gpgme-1.1.0/gpgme/Makefile.in
+--- gpgme-1.1.0-orig/gpgme/Makefile.in	2005-10-03 00:01:30.000000000 +0200
++++ gpgme-1.1.0/gpgme/Makefile.in	2005-10-03 00:02:21.000000000 +0200
+@@ -149,6 +149,7 @@
+ AMDEP_TRUE = @AMDEP_TRUE@
+ AMTAR = @AMTAR@
+ AR = @AR@
++AS = @AS@
+ AUTOCONF = @AUTOCONF@
+ AUTOHEADER = @AUTOHEADER@
+ AUTOMAKE = @AUTOMAKE@
+@@ -219,6 +220,7 @@
+ MAINTAINER_MODE_FALSE = @MAINTAINER_MODE_FALSE@
+ MAINTAINER_MODE_TRUE = @MAINTAINER_MODE_TRUE@
+ MAKEINFO = @MAKEINFO@
++OBJDUMP = @OBJDUMP@
+ OBJEXT = @OBJEXT@
+ PACKAGE = @PACKAGE@
+ PACKAGE_BUGREPORT = @PACKAGE_BUGREPORT@
+@@ -232,6 +234,7 @@
+ PTH_LDFLAGS = @PTH_LDFLAGS@
+ PTH_LIBS = @PTH_LIBS@
+ RANLIB = @RANLIB@
++RC = @RC@
+ RUN_GPGSM_TESTS_FALSE = @RUN_GPGSM_TESTS_FALSE@
+ RUN_GPGSM_TESTS_TRUE = @RUN_GPGSM_TESTS_TRUE@
+ RUN_GPG_TESTS_FALSE = @RUN_GPG_TESTS_FALSE@
+@@ -240,15 +243,16 @@
+ SHELL = @SHELL@
+ STRIP = @STRIP@
+ VERSION = @VERSION@
+-WINDRES = @WINDRES@
+ ac_ct_AR = @ac_ct_AR@
++ac_ct_AS = @ac_ct_AS@
+ ac_ct_CC = @ac_ct_CC@
+ ac_ct_CXX = @ac_ct_CXX@
+ ac_ct_DLLTOOL = @ac_ct_DLLTOOL@
+ ac_ct_F77 = @ac_ct_F77@
++ac_ct_OBJDUMP = @ac_ct_OBJDUMP@
+ ac_ct_RANLIB = @ac_ct_RANLIB@
++ac_ct_RC = @ac_ct_RC@
+ ac_ct_STRIP = @ac_ct_STRIP@
+-ac_ct_WINDRES = @ac_ct_WINDRES@
+ am__fastdepCC_FALSE = @am__fastdepCC_FALSE@
+ am__fastdepCC_TRUE = @am__fastdepCC_TRUE@
+ am__fastdepCXX_FALSE = @am__fastdepCXX_FALSE@
+@@ -330,11 +334,25 @@
+ libgpgme_pthread_la_SOURCES = ath.h ath-pthread.c
+ libgpgme_pth_la_SOURCES = ath.h ath-pth.c
+ AM_CPPFLAGS = $(assuan_cppflags) @GPG_ERROR_CFLAGS@
+-libgpgme_la_LDFLAGS = $(libgpgme_version_script_cmd) -version-info \
++@HAVE_W32_SYSTEM_TRUE@LTRCCOMPILE = $(LIBTOOL) --mode=compile $(RC) \
++@HAVE_W32_SYSTEM_TRUE@     `echo $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) | \
++@HAVE_W32_SYSTEM_TRUE@     sed -e 's/-I/--include-dir /g;s/-D/--define /g'`
++
++@HAVE_W32_SYSTEM_FALSE@gpgme_res = 
++@HAVE_W32_SYSTEM_TRUE@gpgme_res = versioninfo.lo
++@HAVE_W32_SYSTEM_FALSE@gpgme_res_ldflag = 
++@HAVE_W32_SYSTEM_TRUE@gpgme_res_ldflag = -Wl,.libs/versioninfo.o
++@HAVE_W32_SYSTEM_FALSE@no_undefined = 
++@HAVE_W32_SYSTEM_TRUE@no_undefined = -no-undefined
++@HAVE_W32_SYSTEM_FALSE@export_symbols = 
++@HAVE_W32_SYSTEM_TRUE@export_symbols = -export-symbols $(srcdir)/gpgme.def
++@HAVE_W32_SYSTEM_TRUE@gpgme_deps = $(gpgme_res) gpgme.def
++libgpgme_la_LDFLAGS = $(gpgme_res_ldflag) $(no_undefined) $(export_symbols) \
++	$(libgpgme_version_script_cmd) -version-info \
+ 	@LIBGPGME_LT_CURRENT@:@LIBGPGME_LT_REVISION@:@LIBGPGME_LT_AGE@
+ 
+ libgpgme_la_DEPENDENCIES = libgpgme-real.la $(assuan_libobjs) \
+-	@LTLIBOBJS@ $(srcdir)/libgpgme.vers
++	@LTLIBOBJS@ $(srcdir)/libgpgme.vers $(gpgme_deps)
+ 
+ libgpgme_la_LIBADD = libgpgme-real.la $(assuan_libobjs) @LTLIBOBJS@ \
+ 	@GPG_ERROR_LIBS@
+@@ -360,25 +378,11 @@
+ libgpgme_pth_la_LIBADD = libgpgme-real.la $(assuan_libobjs) @LTLIBOBJS@ \
+ 	@PTH_LIBS@ @GPG_ERROR_LIBS@
+ 
+-
+-# Special code to build a DLL.  The current libtool (1.5.6) is not
+-# able to do this properly; we better use gcc's built in magic.  
+-@HAVE_W32_SYSTEM_TRUE@w32_o_files = ath.o conversion.o data-compat.o data-fd.o \
+-@HAVE_W32_SYSTEM_TRUE@              data-mem.o data-stream.o data-user.o data.o debug.o \
+-@HAVE_W32_SYSTEM_TRUE@              decrypt-verify.o decrypt.o delete.o edit.o encrypt-sign.o \
+-@HAVE_W32_SYSTEM_TRUE@              encrypt.o engine-gpgsm.o engine.o error.o export.o genkey.o \
+-@HAVE_W32_SYSTEM_TRUE@              get-env.o gpgme.o import.o key.o keylist.o memrchr.o \
+-@HAVE_W32_SYSTEM_TRUE@              op-support.o passphrase.o progress.o putc_unlocked.o \
+-@HAVE_W32_SYSTEM_TRUE@              rungpg.o sign.o signers.o trust-item.o trustlist.o \
+-@HAVE_W32_SYSTEM_TRUE@              ttyname_r.o vasprintf.o verify.o version.o \
+-@HAVE_W32_SYSTEM_TRUE@              w32-io.o w32-sema.o w32-util.o \
+-@HAVE_W32_SYSTEM_TRUE@              wait-global.o wait-private.o wait-user.o wait.o
+-
+ all: $(BUILT_SOURCES)
+ 	$(MAKE) $(AM_MAKEFLAGS) all-am
+ 
+ .SUFFIXES:
+-.SUFFIXES: .c .lo .o .obj .rc
++.SUFFIXES: .c .lo .o .obj
+ $(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am  $(am__configure_deps)
+ 	@for dep in $?; do \
+ 	  case '$(am__configure_deps)' in \
+@@ -687,9 +691,7 @@
+ check-am: all-am
+ check: $(BUILT_SOURCES)
+ 	$(MAKE) $(AM_MAKEFLAGS) check-am
+-@HAVE_W32_SYSTEM_FALSE@all-local:
+-all-am: Makefile $(LTLIBRARIES) $(SCRIPTS) $(DATA) $(HEADERS) \
+-		all-local
++all-am: Makefile $(LTLIBRARIES) $(SCRIPTS) $(DATA) $(HEADERS)
+ installdirs:
+ 	for dir in "$(DESTDIR)$(libdir)" "$(DESTDIR)$(bindir)" "$(DESTDIR)$(m4datadir)" "$(DESTDIR)$(includedir)"; do \
+ 	  test -z "$$dir" || $(mkdir_p) "$$dir"; \
+@@ -721,7 +723,6 @@
+ 	@echo "This command is intended for maintainers to use"
+ 	@echo "it deletes files that may require special tools to rebuild."
+ 	-test -z "$(BUILT_SOURCES)" || rm -f $(BUILT_SOURCES)
+-@HAVE_W32_SYSTEM_FALSE@install-exec-hook:
+ clean: clean-am
+ 
+ clean-am: clean-generic clean-libLTLIBRARIES clean-libtool \
+@@ -743,11 +744,10 @@
+ 
+ info-am:
+ 
+-install-data-am: install-includeHEADERS install-m4dataDATA
++install-data-am: install-data-local install-includeHEADERS \
++	install-m4dataDATA
+ 
+ install-exec-am: install-binSCRIPTS install-libLTLIBRARIES
+-	@$(NORMAL_INSTALL)
+-	$(MAKE) $(AM_MAKEFLAGS) install-exec-hook
+ 
+ install-info: install-info-am
+ 
+@@ -774,41 +774,45 @@
+ ps-am:
+ 
+ uninstall-am: uninstall-binSCRIPTS uninstall-includeHEADERS \
+-	uninstall-info-am uninstall-libLTLIBRARIES \
++	uninstall-info-am uninstall-libLTLIBRARIES uninstall-local \
+ 	uninstall-m4dataDATA
+ 
+-.PHONY: CTAGS GTAGS all all-am all-local check check-am clean \
+-	clean-generic clean-libLTLIBRARIES clean-libtool \
+-	clean-noinstLTLIBRARIES ctags distclean distclean-compile \
+-	distclean-generic distclean-libtool distclean-tags distdir dvi \
+-	dvi-am html html-am info info-am install install-am \
+-	install-binSCRIPTS install-data install-data-am install-exec \
+-	install-exec-am install-exec-hook install-includeHEADERS \
+-	install-info install-info-am install-libLTLIBRARIES \
+-	install-m4dataDATA install-man install-strip installcheck \
+-	installcheck-am installdirs maintainer-clean \
+-	maintainer-clean-generic mostlyclean mostlyclean-compile \
+-	mostlyclean-generic mostlyclean-libtool pdf pdf-am ps ps-am \
+-	tags uninstall uninstall-am uninstall-binSCRIPTS \
+-	uninstall-includeHEADERS uninstall-info-am \
+-	uninstall-libLTLIBRARIES uninstall-m4dataDATA
++.PHONY: CTAGS GTAGS all all-am check check-am clean clean-generic \
++	clean-libLTLIBRARIES clean-libtool clean-noinstLTLIBRARIES \
++	ctags distclean distclean-compile distclean-generic \
++	distclean-libtool distclean-tags distdir dvi dvi-am html \
++	html-am info info-am install install-am install-binSCRIPTS \
++	install-data install-data-am install-data-local install-exec \
++	install-exec-am install-includeHEADERS install-info \
++	install-info-am install-libLTLIBRARIES install-m4dataDATA \
++	install-man install-strip installcheck installcheck-am \
++	installdirs maintainer-clean maintainer-clean-generic \
++	mostlyclean mostlyclean-compile mostlyclean-generic \
++	mostlyclean-libtool pdf pdf-am ps ps-am tags uninstall \
++	uninstall-am uninstall-binSCRIPTS uninstall-includeHEADERS \
++	uninstall-info-am uninstall-libLTLIBRARIES uninstall-local \
++	uninstall-m4dataDATA
+ 
+ 
++@HAVE_W32_SYSTEM_TRUE@%.lo : %.rc
++@HAVE_W32_SYSTEM_TRUE@	$(LTRCCOMPILE) -i $< -o $@
++
++@HAVE_W32_SYSTEM_TRUE@install-def-file:
++@HAVE_W32_SYSTEM_TRUE@	$(INSTALL) $(srcdir)/gpgme.def $(DESTDIR)$(libdir)/gpgme.def
++
++@HAVE_W32_SYSTEM_TRUE@uninstall-def-file:
++@HAVE_W32_SYSTEM_TRUE@	-rm $(DESTDIR)$(libdir)/gpgme.def
++@HAVE_W32_SYSTEM_FALSE@install-def-file:
++@HAVE_W32_SYSTEM_FALSE@uninstall-def-file:
++
++@HAVE_W32_SYSTEM_FALSE@gpgme_deps
++
+ status-table.h : gpgme.h
+ 	$(srcdir)/mkstatus < $(srcdir)/gpgme.h > status-table.h
+ 
+-@HAVE_W32_SYSTEM_TRUE@all-local: gpgme.dll gpgme.dll.a
+-
+-@HAVE_W32_SYSTEM_TRUE@install-exec-hook:
+-@HAVE_W32_SYSTEM_TRUE@	cp gpgme.dll gpgme.dll.a $(DESTDIR)$(libdir)/
+-@HAVE_W32_SYSTEM_TRUE@	$(STRIP) $(DESTDIR)$(libdir)/gpgme.dll
+-
+-@HAVE_W32_SYSTEM_TRUE@gpgme.dll gpgme.dll.a: gpgme.def $(w32_o_files) versioninfo.o
+-@HAVE_W32_SYSTEM_TRUE@	$(CC) -shared -o gpgme.dll $(srcdir)/gpgme.def $(w32_o_files) \
+-@HAVE_W32_SYSTEM_TRUE@	   versioninfo.o @GPG_ERROR_LIBS@ -Wl,--out-implib,gpgme.dll.a
++install-data-local: install-def-file
+ 
+-@HAVE_W32_SYSTEM_TRUE@.rc.o:
+-@HAVE_W32_SYSTEM_TRUE@	$(WINDRES) `test -f '$<' || echo '$(srcdir)/'`$< $@
++uninstall-local: uninstall-def-file
+ # Tell versions [3.59,3.63) of GNU make to not export all variables.
+ # Otherwise a system limit (for SysV at least) may be exceeded.
+ .NOEXPORT:
+diff -ru gpgme-1.1.0-orig/Makefile.in gpgme-1.1.0/Makefile.in
+--- gpgme-1.1.0-orig/Makefile.in	2005-10-01 23:13:48.000000000 +0200
++++ gpgme-1.1.0/Makefile.in	2005-10-03 00:02:23.000000000 +0200
+@@ -100,6 +100,7 @@
+ AMDEP_TRUE = @AMDEP_TRUE@
+ AMTAR = @AMTAR@
+ AR = @AR@
++AS = @AS@
+ AUTOCONF = @AUTOCONF@
+ AUTOHEADER = @AUTOHEADER@
+ AUTOMAKE = @AUTOMAKE@
+@@ -170,6 +171,7 @@
+ MAINTAINER_MODE_FALSE = @MAINTAINER_MODE_FALSE@
+ MAINTAINER_MODE_TRUE = @MAINTAINER_MODE_TRUE@
+ MAKEINFO = @MAKEINFO@
++OBJDUMP = @OBJDUMP@
+ OBJEXT = @OBJEXT@
+ PACKAGE = @PACKAGE@
+ PACKAGE_BUGREPORT = @PACKAGE_BUGREPORT@
+@@ -183,6 +185,7 @@
+ PTH_LDFLAGS = @PTH_LDFLAGS@
+ PTH_LIBS = @PTH_LIBS@
+ RANLIB = @RANLIB@
++RC = @RC@
+ RUN_GPGSM_TESTS_FALSE = @RUN_GPGSM_TESTS_FALSE@
+ RUN_GPGSM_TESTS_TRUE = @RUN_GPGSM_TESTS_TRUE@
+ RUN_GPG_TESTS_FALSE = @RUN_GPG_TESTS_FALSE@
+@@ -191,15 +194,16 @@
+ SHELL = @SHELL@
+ STRIP = @STRIP@
+ VERSION = @VERSION@
+-WINDRES = @WINDRES@
+ ac_ct_AR = @ac_ct_AR@
++ac_ct_AS = @ac_ct_AS@
+ ac_ct_CC = @ac_ct_CC@
+ ac_ct_CXX = @ac_ct_CXX@
+ ac_ct_DLLTOOL = @ac_ct_DLLTOOL@
+ ac_ct_F77 = @ac_ct_F77@
++ac_ct_OBJDUMP = @ac_ct_OBJDUMP@
+ ac_ct_RANLIB = @ac_ct_RANLIB@
++ac_ct_RC = @ac_ct_RC@
+ ac_ct_STRIP = @ac_ct_STRIP@
+-ac_ct_WINDRES = @ac_ct_WINDRES@
+ am__fastdepCC_FALSE = @am__fastdepCC_FALSE@
+ am__fastdepCC_TRUE = @am__fastdepCC_TRUE@
+ am__fastdepCXX_FALSE = @am__fastdepCXX_FALSE@
+diff -ru gpgme-1.1.0-orig/tests/gpg/Makefile.in gpgme-1.1.0/tests/gpg/Makefile.in
+--- gpgme-1.1.0-orig/tests/gpg/Makefile.in	2005-10-01 23:13:46.000000000 +0200
++++ gpgme-1.1.0/tests/gpg/Makefile.in	2005-10-03 00:02:22.000000000 +0200
+@@ -191,6 +191,7 @@
+ AMDEP_TRUE = @AMDEP_TRUE@
+ AMTAR = @AMTAR@
+ AR = @AR@
++AS = @AS@
+ AUTOCONF = @AUTOCONF@
+ AUTOHEADER = @AUTOHEADER@
+ AUTOMAKE = @AUTOMAKE@
+@@ -261,6 +262,7 @@
+ MAINTAINER_MODE_FALSE = @MAINTAINER_MODE_FALSE@
+ MAINTAINER_MODE_TRUE = @MAINTAINER_MODE_TRUE@
+ MAKEINFO = @MAKEINFO@
++OBJDUMP = @OBJDUMP@
+ OBJEXT = @OBJEXT@
+ PACKAGE = @PACKAGE@
+ PACKAGE_BUGREPORT = @PACKAGE_BUGREPORT@
+@@ -274,6 +276,7 @@
+ PTH_LDFLAGS = @PTH_LDFLAGS@
+ PTH_LIBS = @PTH_LIBS@
+ RANLIB = @RANLIB@
++RC = @RC@
+ RUN_GPGSM_TESTS_FALSE = @RUN_GPGSM_TESTS_FALSE@
+ RUN_GPGSM_TESTS_TRUE = @RUN_GPGSM_TESTS_TRUE@
+ RUN_GPG_TESTS_FALSE = @RUN_GPG_TESTS_FALSE@
+@@ -282,15 +285,16 @@
+ SHELL = @SHELL@
+ STRIP = @STRIP@
+ VERSION = @VERSION@
+-WINDRES = @WINDRES@
+ ac_ct_AR = @ac_ct_AR@
++ac_ct_AS = @ac_ct_AS@
+ ac_ct_CC = @ac_ct_CC@
+ ac_ct_CXX = @ac_ct_CXX@
+ ac_ct_DLLTOOL = @ac_ct_DLLTOOL@
+ ac_ct_F77 = @ac_ct_F77@
++ac_ct_OBJDUMP = @ac_ct_OBJDUMP@
+ ac_ct_RANLIB = @ac_ct_RANLIB@
++ac_ct_RC = @ac_ct_RC@
+ ac_ct_STRIP = @ac_ct_STRIP@
+-ac_ct_WINDRES = @ac_ct_WINDRES@
+ am__fastdepCC_FALSE = @am__fastdepCC_FALSE@
+ am__fastdepCC_TRUE = @am__fastdepCC_TRUE@
+ am__fastdepCXX_FALSE = @am__fastdepCXX_FALSE@
+diff -ru gpgme-1.1.0-orig/tests/gpgsm/Makefile.in gpgme-1.1.0/tests/gpgsm/Makefile.in
+--- gpgme-1.1.0-orig/tests/gpgsm/Makefile.in	2005-10-01 23:13:47.000000000 +0200
++++ gpgme-1.1.0/tests/gpgsm/Makefile.in	2005-10-03 00:02:22.000000000 +0200
+@@ -130,6 +130,7 @@
+ AMDEP_TRUE = @AMDEP_TRUE@
+ AMTAR = @AMTAR@
+ AR = @AR@
++AS = @AS@
+ AUTOCONF = @AUTOCONF@
+ AUTOHEADER = @AUTOHEADER@
+ AUTOMAKE = @AUTOMAKE@
+@@ -200,6 +201,7 @@
+ MAINTAINER_MODE_FALSE = @MAINTAINER_MODE_FALSE@
+ MAINTAINER_MODE_TRUE = @MAINTAINER_MODE_TRUE@
+ MAKEINFO = @MAKEINFO@
++OBJDUMP = @OBJDUMP@
+ OBJEXT = @OBJEXT@
+ PACKAGE = @PACKAGE@
+ PACKAGE_BUGREPORT = @PACKAGE_BUGREPORT@
+@@ -213,6 +215,7 @@
+ PTH_LDFLAGS = @PTH_LDFLAGS@
+ PTH_LIBS = @PTH_LIBS@
+ RANLIB = @RANLIB@
++RC = @RC@
+ RUN_GPGSM_TESTS_FALSE = @RUN_GPGSM_TESTS_FALSE@
+ RUN_GPGSM_TESTS_TRUE = @RUN_GPGSM_TESTS_TRUE@
+ RUN_GPG_TESTS_FALSE = @RUN_GPG_TESTS_FALSE@
+@@ -221,15 +224,16 @@
+ SHELL = @SHELL@
+ STRIP = @STRIP@
+ VERSION = @VERSION@
+-WINDRES = @WINDRES@
+ ac_ct_AR = @ac_ct_AR@
++ac_ct_AS = @ac_ct_AS@
+ ac_ct_CC = @ac_ct_CC@
+ ac_ct_CXX = @ac_ct_CXX@
+ ac_ct_DLLTOOL = @ac_ct_DLLTOOL@
+ ac_ct_F77 = @ac_ct_F77@
++ac_ct_OBJDUMP = @ac_ct_OBJDUMP@
+ ac_ct_RANLIB = @ac_ct_RANLIB@
++ac_ct_RC = @ac_ct_RC@
+ ac_ct_STRIP = @ac_ct_STRIP@
+-ac_ct_WINDRES = @ac_ct_WINDRES@
+ am__fastdepCC_FALSE = @am__fastdepCC_FALSE@
+ am__fastdepCC_TRUE = @am__fastdepCC_TRUE@
+ am__fastdepCXX_FALSE = @am__fastdepCXX_FALSE@
+diff -ru gpgme-1.1.0-orig/tests/Makefile.in gpgme-1.1.0/tests/Makefile.in
+--- gpgme-1.1.0-orig/tests/Makefile.in	2005-10-01 23:13:46.000000000 +0200
++++ gpgme-1.1.0/tests/Makefile.in	2005-10-03 00:02:22.000000000 +0200
+@@ -112,6 +112,7 @@
+ AMDEP_TRUE = @AMDEP_TRUE@
+ AMTAR = @AMTAR@
+ AR = @AR@
++AS = @AS@
+ AUTOCONF = @AUTOCONF@
+ AUTOHEADER = @AUTOHEADER@
+ AUTOMAKE = @AUTOMAKE@
+@@ -182,6 +183,7 @@
+ MAINTAINER_MODE_FALSE = @MAINTAINER_MODE_FALSE@
+ MAINTAINER_MODE_TRUE = @MAINTAINER_MODE_TRUE@
+ MAKEINFO = @MAKEINFO@
++OBJDUMP = @OBJDUMP@
+ OBJEXT = @OBJEXT@
+ PACKAGE = @PACKAGE@
+ PACKAGE_BUGREPORT = @PACKAGE_BUGREPORT@
+@@ -195,6 +197,7 @@
+ PTH_LDFLAGS = @PTH_LDFLAGS@
+ PTH_LIBS = @PTH_LIBS@
+ RANLIB = @RANLIB@
++RC = @RC@
+ RUN_GPGSM_TESTS_FALSE = @RUN_GPGSM_TESTS_FALSE@
+ RUN_GPGSM_TESTS_TRUE = @RUN_GPGSM_TESTS_TRUE@
+ RUN_GPG_TESTS_FALSE = @RUN_GPG_TESTS_FALSE@
+@@ -203,15 +206,16 @@
+ SHELL = @SHELL@
+ STRIP = @STRIP@
+ VERSION = @VERSION@
+-WINDRES = @WINDRES@
+ ac_ct_AR = @ac_ct_AR@
++ac_ct_AS = @ac_ct_AS@
+ ac_ct_CC = @ac_ct_CC@
+ ac_ct_CXX = @ac_ct_CXX@
+ ac_ct_DLLTOOL = @ac_ct_DLLTOOL@
+ ac_ct_F77 = @ac_ct_F77@
++ac_ct_OBJDUMP = @ac_ct_OBJDUMP@
+ ac_ct_RANLIB = @ac_ct_RANLIB@
++ac_ct_RC = @ac_ct_RC@
+ ac_ct_STRIP = @ac_ct_STRIP@
+-ac_ct_WINDRES = @ac_ct_WINDRES@
+ am__fastdepCC_FALSE = @am__fastdepCC_FALSE@
+ am__fastdepCC_TRUE = @am__fastdepCC_TRUE@
+ am__fastdepCXX_FALSE = @am__fastdepCXX_FALSE@
