@@ -23,8 +23,7 @@ DISTCHECK_CONFIGURE_FLAGS = --host=i586-mingw32msvc
 
 SUBDIRS = packages include src
 
-EXTRA_DIST = \
-	autogen.sh README.SVN
+EXTRA_DIST = autogen.sh README.SVN \
 	patches/gnupg-1.4.2/01-po-subdirs.patch \
 	patches/gpgme-1.1.0/01-gpgme-def.patch \
 	patches/gpgme-1.1.0/02-libtool-dll.patch

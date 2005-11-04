@@ -108,7 +108,7 @@ VIAddVersionKey "FileVersion" "${PROD_VERSION}"
 !define MUI_LICENSEPAGE_BUTTON "$(^NextBtn)"
 !define MUI_PAGE_HEADER_SUBTEXT "$(T_GPLHeader)"
 !define MUI_LICENSEPAGE_TEXT_BOTTOM "$(T_GPLShort)"
-!insertmacro MUI_PAGE_LICENSE "../COPYING"
+!insertmacro MUI_PAGE_LICENSE "${TOP_SRCDIR}/COPYING"
 
 !define MUI_PAGE_CUSTOMFUNCTION_SHOW PrintNonAdminWarning
 !insertmacro MUI_PAGE_COMPONENTS
@@ -150,7 +150,7 @@ Var STARTMENU_FOLDER
 !insertmacro MUI_RESERVEFILE_LANGDLL
 !insertmacro MUI_RESERVEFILE_INSTALLOPTIONS
 
-ReserveFile "../COPYING"
+ReserveFile "${TOP_SRCDIR}/COPYING"
 
 
 # Language support
