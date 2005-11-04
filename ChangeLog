@@ -1,5 +1,7 @@
 2005-11-04  Marcus Brinkmann  <marcus@g10code.de>
 
+	Released 0.0.1.
+
 	* Makefile.am (EXTRA_DIST): Add missing backslash.
 	* include/config.nsi.in (top_srcdir): Remove.
 	* src/Makefile.am (gpg4win-src-$(VERSION).exe): Pass TOP_SRCDIR,

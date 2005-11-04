@@ -22,7 +22,7 @@
 AC_PREREQ(2.59)
 min_automake_version="1.9.3"
 
-AC_INIT([gpg4win],[0.0.0-cvs],[gpg4win-devel@wald.intevation.org])
+AC_INIT([gpg4win],[0.0.1],[gpg4win-devel@wald.intevation.org])
 
 PACKAGE=$PACKAGE_NAME
 VERSION=$PACKAGE_VERSION
