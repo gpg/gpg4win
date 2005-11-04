@@ -191,6 +191,7 @@ $(foreach spkg, $(gpg4win_spkgs), $(eval $(call SPKG_template,$(spkg))))
 # Insert the template for each binary package.
 $(foreach bpkg, $(gpg4win_bpkgs), $(eval $(call BPKG_template,$(bpkg))))
 
+stamps/stamp-final: stamps/stamp-directories
 stamps/stamp-final: $(addprefix stamps/stamp-final-,$(gpg4win_build_list))
 	touch stamps/stamp-final
 

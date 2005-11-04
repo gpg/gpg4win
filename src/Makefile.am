@@ -138,11 +138,16 @@ common_nsi := inst-sections.nsi installer.nsi installer-finish.nsi	\
   $(addsuffix .nsi,$(addprefix inst-,$(gpg4win_build_list)))		\
   $(addsuffix .nsi,$(addprefix uninst-,$(gpg4win_build_list)))
 
+# For some nut-crazy reason someone thought it would be a great idea
+# if makensis changed to the directory of the source file at startup.
+# So we have to pull a couple of strings to correct this.
 gpg4win-$(VERSION).exe: gpg4win.nsi $(common_nsi) stamps/stamp-final
-	$(MAKENSIS) gpg4win.nsi
+	$(MAKENSIS) -DBUILD_DIR=`pwd` -DTOP_SRCDIR=$(top_srcdir) \
+		-DSRCDIR=$(srcdir) $(srcdir)/gpg4win.nsi
 
 gpg4win-src-$(VERSION).exe: gpg4win-src.nsi $(common_nsi) stamps/stamp-final
-	$(MAKENSIS) gpg4win-src.nsi
+	$(MAKENSIS) -DBUILD_DIR=`pwd` -DTOP_SRCDIR=$(top_srcdir) \
+		-DSRCDIR=$(srcdir) $(srcdir)/gpg4win-src.nsi
 
 all-local: gpg4win-$(VERSION).exe gpg4win-src-$(VERSION).exe
 

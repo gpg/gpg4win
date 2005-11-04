@@ -17,6 +17,9 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
+!cd "${BUILD_DIR}"
+!addincludedir "${TOP_SRCDIR}"
+!addincludedir "${SRCDIR}"
 !include "../include/config.nsi"
 
 # The package name and version.  PRETTY_PACKAGE is a user visible name

@@ -21,7 +21,6 @@
 !define _PACKAGE @PACKAGE@
 !define _VERSION @VERSION@
 
-!define top_srcdir @top_srcdir@
 !define build @build_cpu@-@build_os@
 !define host @host_cpu@-@host_os@
 !define MAKE @MAKE@
