@@ -67,9 +67,21 @@
 !ifdef HAVE_PKG_GPGEE
 !include "inst-gpgee.nsi"
 !endif
+!ifdef HAVE_PKG_MAN_NOVICE_DE
+!include "inst-man_novice_de.nsi"
+!endif
+!ifdef HAVE_PKG_MAN_ADVANCED_DE
+!include "inst-man_advanced_de.nsi"
+!endif
 
 # We have to invoke the uninstallers in reverse order!
 
+!ifdef HAVE_PKG_MAN_ADVANCED_DE
+!include "uninst-man_advanced_de.nsi"
+!endif
+!ifdef HAVE_PKG_MAN_NOVICE_DE
+!include "uninst-man_novice_de.nsi"
+!endif
 !ifdef HAVE_PKG_GPGEE
 !include "uninst-gpgee.nsi"
 !endif
@@ -274,6 +286,15 @@ Function CalcDepends
 FunctionEnd
 
 Function .onInit
+  SetOutPath $TEMP
+  File /oname=gpgspltmp.bmp "${TOP_SRCDIR}/src/gpg4win-splash.bmp"
+  File /oname=gpgspltmp.wav "${TOP_SRCDIR}/src/gpg4win-splash.wav"
+  advsplash::show 3000 600 400 -1 $TEMP\gpgspltmp
+  Pop $0 # $0 has '1' if the user closed the splash screen early,
+         # '0' if everything closed normal, and '-1' if some error occured.
+  Delete $TEMP\gpgspltmp.wav
+  Delete $TEMP\gpgspltmp.bmp
+
   Call CalcDepends
 FunctionEnd
 
@@ -285,6 +306,9 @@ FunctionEnd
 # This must be in a central place.  Urgs.
 
 !insertmacro MUI_FUNCTION_DESCRIPTION_BEGIN
+!ifdef HAVE_PKG_GNUPG
+  !insertmacro MUI_DESCRIPTION_TEXT ${SEC_gnupg} $(DESC_SEC_gnupg)
+!endif
 !ifdef HAVE_PKG_GPGOL
   !insertmacro MUI_DESCRIPTION_TEXT ${SEC_gpgol} $(DESC_SEC_gpgol)
 !endif
@@ -297,8 +321,11 @@ FunctionEnd
 !ifdef HAVE_PKG_GPGEE
   !insertmacro MUI_DESCRIPTION_TEXT ${SEC_gpgee} $(DESC_SEC_gpgee)
 !endif
-!ifdef HAVE_PKG_GNUPG
-  !insertmacro MUI_DESCRIPTION_TEXT ${SEC_gnupg} $(DESC_SEC_gnupg)
+!ifdef HAVE_PKG_MAN_NOVICE_DE
+  !insertmacro MUI_DESCRIPTION_TEXT ${SEC_man_novice_de} $(DESC_SEC_man_novice_de)
+!endif
+!ifdef HAVE_PKG_MAN_ADVANCED_DE
+  !insertmacro MUI_DESCRIPTION_TEXT ${SEC_man_advanced_de} $(DESC_SEC_man_advanced_de)
 !endif
 !insertmacro MUI_FUNCTION_DESCRIPTION_END
 
@@ -309,14 +336,56 @@ Section "-startmenu"
 !ifdef HAVE_STARTMENU
 !insertmacro MUI_STARTMENU_WRITE_BEGIN Application
     CreateDirectory "$SMPROGRAMS\$STARTMENU_FOLDER"
+
 !ifdef HAVE_PKG_WINPT
+    SectionGetFlags ${SEC_winpt} $R0 
+    IntOp $R0 $R0 & ${SF_SELECTED} 
+    IntCmp $R0 ${SF_SELECTED} 0 no_winpt_menu 
     CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\WINPT.lnk" \
 	"$INSTDIR\winpt.exe"
+   no_winpt_menu:
 !endif
+
 !ifdef HAVE_PKG_GPA
+    SectionGetFlags ${SEC_gpa} $R0 
+    IntOp $R0 $R0 & ${SF_SELECTED} 
+    IntCmp $R0 ${SF_SELECTED} 0 no_gpa_menu 
     CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\GPA.lnk" \
 	"$INSTDIR\gpa.exe"
+  no_gpa_menu:
 !endif
+
+!ifdef HAVE_PKG_MAN_NOVICE_DE
+    SectionGetFlags ${SEC_man_novice_de} $R0 
+    IntOp $R0 $R0 & ${SF_SELECTED} 
+    IntCmp $R0 ${SF_SELECTED} 0 no_man_novice_de_menu 
+    CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\Novice Manual.lnk" \
+	"$INSTDIR\share\gpg4win\man_novice_de.html"
+  no_man_novice_de_menu:
+!endif
+
+!ifdef HAVE_PKG_MAN_ADVANCED_DE
+    SectionGetFlags ${SEC_man_advanced_de} $R0 
+    IntOp $R0 $R0 & ${SF_SELECTED} 
+    IntCmp $R0 ${SF_SELECTED} 0 no_man_advanced_de_menu 
+    CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\Advanced Manual.lnk" \
+	"$INSTDIR\share\gpg4win\man_novice_de.html"
+  no_man_advanced_de_menu:
+!endif
+
+!ifdef HAVE_PKG_GPGEE
+    SectionGetFlags ${SEC_gpgee} $R0 
+    IntOp $R0 $R0 & ${SF_SELECTED} 
+    IntCmp $R0 ${SF_SELECTED} 0 no_gpgee_menu 
+    CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\GPGee Manual.lnk" \
+	"$INSTDIR\GPGee.hlp"
+  no_gpgee_menu:
+!endif
+
+
+    CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\GnuPG FAQ.lnk" \
+                   "$INSTDIR\share\gnupg\faq.html"
+
     CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\Uninstall.lnk" \
 	"$INSTDIR\${PACKAGE}-uninstall.exe"
 !insertmacro MUI_STARTMENU_WRITE_END

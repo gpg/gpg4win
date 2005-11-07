@@ -19,10 +19,11 @@
 
 
 EXTRA_DIST = pkg-config $(common_nsi) gpg4win.nsi gpg4win-src.nsi \
-	libiconv.def libintl.def
+	libiconv.def libintl.def  gpg4win-splash.bmp gpg4win-splash.wav
 
 # Supported source packages.
-gpg4win_spkgs := gnupg libgpg-error gpgme gpgol gpa winpt
+gpg4win_spkgs := gnupg libgpg-error gpgme gpgol gpa winpt \
+		 man_novice_de man_advanced_de
 
 # Extra options to configure for individual packages.
 # We can use $(idir) here for the installation prefix.

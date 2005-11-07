@@ -1,4 +1,4 @@
-# inst-winpt.nsi - Installer snippet for WinPT       -*- coding: latin-1; -*-
+# uninst-man_novice_de.nsi - Installer snippet.     -*- coding: latin-1; -*-
 # Copyright (C) 2005 g10 Code GmbH
 # 
 # This file is part of GPG4Win.
@@ -21,27 +21,20 @@
 !ifdef prefix
 !undef prefix
 !endif
-!define prefix ${ipdir}/winpt-${gpg4win_pkg_winpt_version}
+!define prefix ${ipdir}/man_novice_de-${gpg4win_pkg_man_novice_de_version}
 
 
-Section "WinPT" SEC_winpt
-  SetOutPath "$INSTDIR"
+; Uninstaller section.
+Section "-un.man_novice_de"
 !ifdef SOURCES
-  File "${gpg4win_pkg_winpt}"
+  Push "${gpg4win_pkg_man_novice_de}"
+  Call un.SourceDelete
 !else
-  File ${prefix}/bin/WinPT.exe
-  File ${prefix}/bin/PTD.dll
 
-  # Do not install the documentation until we have agreed on the filenames.
-  #SetOutPath "$INSTDIR\share\winpt"
-  #File ${prefix}/keyserver.conf
-  #File ${prefix}/NEWS-0.10.txt
-  #File ${prefix}/README-0.10.txt
+  Delete "$INSTDIR\share\gpg4win\man_novice_de.html"
+  RMDir "$INSTDIR\share\gpg4win"
+  RMDir "$INSTDIR\share"
+  RMDir "$INSTDIR"
+
 !endif
 SectionEnd
-
-
-LangString DESC_SEC_winpt ${LANG_ENGLISH} \
-   "Windows Privacy Tray"
-LangString DESC_SEC_winpt ${LANG_GERMAN} \
-   "Windows Privacy Tray"

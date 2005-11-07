@@ -44,13 +44,13 @@ some of tehse tasks.  Here is a short run up:
    is required for menu shortcuts.
 
 5. Add detection of packages to configure.ac.  Check out the available
-   mcros in m4/gpg4win.m4.  Depending on the way an upstream package
+   macros in m4/gpg4win.m4.  Depending on the way an upstream package
    is packaged, you might need to write a new macro.
 
 6. Add download information to packages/download.sh.
 
-Then run the usual "aclocal -I m4 && automake && autoconf" or whatever
-to create the actual configure file and run configure as described above.
+Then run the usual "./autogen.sh" to create the actual configure file
+and run configure as described above.
 
 
 Copyright 2005 g10 Code GmbH

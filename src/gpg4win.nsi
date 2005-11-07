@@ -53,6 +53,7 @@
    Dateiversion ${PROD_VERSION}"
 
 
+
 # The copyright license of the package.  Define only one of these.
 !define LICENSE_GPL
 # !define LICENSE_LGPL
@@ -71,6 +72,13 @@
 
 # The installation directory.
 !define ipdir "playground/install/pkgs"
+
+# Select the best compression algorithm available.  The dictionary
+# size is the default (8 MB). 
+!ifndef SOURCES
+SetCompressor lzma
+# SetCompressorDictSize 8
+!endif
 
 
 # Now include the generic parts.

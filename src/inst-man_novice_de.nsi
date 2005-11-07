@@ -1,4 +1,4 @@
-# inst-winpt.nsi - Installer snippet for WinPT       -*- coding: latin-1; -*-
+# inst-man_novice_de.nsi - Installer snippet       -*- coding: latin-1; -*-
 # Copyright (C) 2005 g10 Code GmbH
 # 
 # This file is part of GPG4Win.
@@ -21,27 +21,22 @@
 !ifdef prefix
 !undef prefix
 !endif
-!define prefix ${ipdir}/winpt-${gpg4win_pkg_winpt_version}
+!define prefix ${ipdir}/man_novice_de-${gpg4win_pkg_man_novice_de_version}
 
 
-Section "WinPT" SEC_winpt
+Section "Novice Manual (de)" SEC_man_novice_de
   SetOutPath "$INSTDIR"
 !ifdef SOURCES
-  File "${gpg4win_pkg_winpt}"
+  File "${gpg4win_pkg_man_novice_de}"
 !else
-  File ${prefix}/bin/WinPT.exe
-  File ${prefix}/bin/PTD.dll
 
-  # Do not install the documentation until we have agreed on the filenames.
-  #SetOutPath "$INSTDIR\share\winpt"
-  #File ${prefix}/keyserver.conf
-  #File ${prefix}/NEWS-0.10.txt
-  #File ${prefix}/README-0.10.txt
+  SetOutPath "$INSTDIR\share\gpg4win"
+  File "${prefix}/share/man_novice_de/man_novice_de.html"
 !endif
 SectionEnd
 
 
-LangString DESC_SEC_winpt ${LANG_ENGLISH} \
-   "Windows Privacy Tray"
-LangString DESC_SEC_winpt ${LANG_GERMAN} \
-   "Windows Privacy Tray"
+LangString DESC_SEC_man_novice_de ${LANG_ENGLISH} \
+   "Gpg4Win Manual for the Novice User (German)"
+LangString DESC_SEC_man_novice_de ${LANG_GERMAN} \
+   "Gpg4Win Handbuch für den Einsteiger"

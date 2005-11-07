@@ -64,6 +64,9 @@
 # The installation directory.
 !define ipdir "playground/install/pkgs"
 
+# For source packages we use the standard zip method because it takes
+# ages to compress a large archive of already packed sources.
+SetCompressor zlib
 
 # Now include the generic parts.
 !include "installer.nsi"
