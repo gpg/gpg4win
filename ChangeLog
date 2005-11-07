@@ -1,5 +1,10 @@
 2005-11-07  Werner Koch  <wk@g10code.com>
 
+	* src/installer-finish.nsi: Fixed dereferencing of variable.
+
+	* src/inst-sections.nsi, src/installer-finish.nsi: Ensure that the
+	menu gets written for all users.
+
 	* packages/download.sh: Add dummy manual pages.
 
 	* src/installer.nsi: Move compression type to ...

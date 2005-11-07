@@ -24,21 +24,28 @@ Section
   WriteUninstaller "$INSTDIR\${PACKAGE}-uninstall.exe"
 
   # Windows Add/Remove Programs support
-  StrCpy $MYTMP "Software\Microsoft\Windows\CurrentVersion\Uninstall\{PRETTY_PACKAGE_SHORT}"
+  StrCpy $MYTMP "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRETTY_PACKAGE_SHORT}"
   WriteRegExpandStr HKLM $MYTMP "UninstallString" '"$INSTDIR\${PACKAGE}-uninstall.exe"'
   WriteRegExpandStr HKLM $MYTMP "InstallLocation" "$INSTDIR"
   WriteRegStr       HKLM $MYTMP "DisplayName"     "${PRETTY_PACKAGE}"
   WriteRegStr       HKLM $MYTMP "DisplayIcon"     "$INSTDIR\gpg.exe,0"
   WriteRegStr       HKLM $MYTMP "DisplayVersion"  "${VERSION}"
   WriteRegStr       HKLM $MYTMP "Publisher"       "g10 Code GmbH"
-  WriteRegStr       HKLM $MYTMP "URLInfoAbout"    "http://www.gnupg.org/"
+  WriteRegStr       HKLM $MYTMP "URLInfoAbout"    "http://www.gpg4win.org/"
   WriteRegDWORD     HKLM $MYTMP "NoModify"        "1"
   WriteRegDWORD     HKLM $MYTMP "NoRepair"        "1"
 SectionEnd
 
 
 Section Uninstall
+
 !ifdef HAVE_STARTMENU
+  # Make sure that the context of the automatic variables has been set to
+  # the "all users" shell folder.  This guarantees that the menu gets written
+  # for all users.  We have already checked that we are running as Admin; or
+  # we printed a warning that installation will not succeed.
+  SetShellVarContext all
+
 !insertmacro MUI_STARTMENU_GETFOLDER ${STARTMENU_FOLDER} $R0
 !ifdef HAVE_PKG_WINPT
   Delete "$SMPROGRAMS\$R0\WinPT.lnk"

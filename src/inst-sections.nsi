@@ -333,7 +333,14 @@ FunctionEnd
 # This also must be in a central place.  Also Urgs.
 
 Section "-startmenu"
+
 !ifdef HAVE_STARTMENU
+  # Make sure that the context of the automatic variables has been set to
+  # the "all users" shell folder.  This guarantees that the menu gets written
+  # for all users.  We have already checked that we are running as Admin; or
+  # we printed a warning that installation will not succeed.
+  SetShellVarContext all
+
 !insertmacro MUI_STARTMENU_WRITE_BEGIN Application
     CreateDirectory "$SMPROGRAMS\$STARTMENU_FOLDER"
 
@@ -378,7 +385,7 @@ Section "-startmenu"
     IntOp $R0 $R0 & ${SF_SELECTED} 
     IntCmp $R0 ${SF_SELECTED} 0 no_gpgee_menu 
     CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\GPGee Manual.lnk" \
-	"$INSTDIR\GPGee.hlp"
+	"$INSTDIR\GPGee.hlp" "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_gpgee_hlp)
   no_gpgee_menu:
 !endif
 
