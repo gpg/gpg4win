@@ -50,4 +50,8 @@ LangString DESC_SEC_gpgee ${LANG_GERMAN} \
     den Explorer, die es ermöglicht, Dateien über das Kontextmenü zu \
     verschlüsseln."
 
+LangString DESC_Menu_gpgee_hlp ${LANG_ENGLISH} \
+   "Show the online manula of GPGee"
+LangString DESC_Menu_gpgee_hlp ${LANG_German} \
+   "Das englische Handbuch zu GPGee anzeigen"
 
