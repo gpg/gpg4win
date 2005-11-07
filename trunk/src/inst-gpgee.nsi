@@ -24,7 +24,7 @@
 !define prefix ${ipdir}/gpgee-${gpg4win_pkg_gpgee_version}
 
 
-Section "gpgee" SEC_gpgee
+Section "GPGee" SEC_gpgee
   SetOutPath "$INSTDIR"
 !ifdef SOURCES
   File "${gpg4win_pkg_gpgee_src}"
@@ -46,6 +46,8 @@ SectionEnd
 LangString DESC_SEC_gpgee ${LANG_ENGLISH} \
    "GPG Explorer Extensions"
 LangString DESC_SEC_gpgee ${LANG_GERMAN} \
-   "GPG Explorer Erweiterungen"
+   "GPG Explorer Erweiterungen (GPGee) ist eine Erweiterung für \
+    den Explorer, die es ermöglicht, Dateien über das Kontextmenü zu \
+    verschlüsseln."
 
 

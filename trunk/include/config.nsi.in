@@ -1,4 +1,4 @@
-# config.nsi - Configuration settings for gpg4win.nsi.
+# config.nsi - Configuration settings for gpg4win.nsi.         -*- nsi -*-
 # Copyright (C) 2005 g10 Code GmbH
 # 
 # This file is part of GPG4Win.
@@ -125,3 +125,11 @@
 !define gpg4win_pkg_gettext @gpg4win_pkg_gettext@
 !define gpg4win_pkg_gettext_version @gpg4win_pkg_gettext_version@
 !define gpg4win_pkg_gettext_src @gpg4win_pkg_gettext_src@
+
+@HAVE_PKG_MAN_NOVICE_DE@
+!define gpg4win_pkg_man_novice_de @gpg4win_pkg_man_novice_de@
+!define gpg4win_pkg_man_novice_de_version @gpg4win_pkg_man_novice_de_version@
+
+@HAVE_PKG_MAN_ADVANCED_DE@
+!define gpg4win_pkg_man_advanced_de @gpg4win_pkg_man_advanced_de@
+!define gpg4win_pkg_man_advanced_de_version @gpg4win_pkg_man_advanced_de_version@

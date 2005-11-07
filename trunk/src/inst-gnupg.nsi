@@ -24,7 +24,9 @@
 !define prefix ${ipdir}/gnupg-${gpg4win_pkg_gnupg_version}
 
 
-Section "gnupg" SEC_gnupg
+Section "GnuPG" SEC_gnupg
+  SectionIn RO
+
   SetOutPath "$INSTDIR"
 !ifdef SOURCES
   File "${gpg4win_pkg_gnupg}"
@@ -54,4 +56,6 @@ SectionEnd
 LangString DESC_SEC_gnupg ${LANG_ENGLISH} \
    "GNU Privacy Guard"
 LangString DESC_SEC_gnupg ${LANG_GERMAN} \
-   "GNU Privacy Guard"
+   "Der GNU Privacy Guard (GnuPG) ist der Kernbestandteil \
+    dieser Software.  GnuPG stellt die eigentlichen \
+    Verschlüsselungsfunktionen sowie die Schlüsselverwaltung bereit."

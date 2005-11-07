@@ -41,11 +41,22 @@ Section Uninstall
 !ifdef HAVE_STARTMENU
 !insertmacro MUI_STARTMENU_GETFOLDER ${STARTMENU_FOLDER} $R0
 !ifdef HAVE_PKG_WINPT
-  Delete "$SMPROGRAMS\$R0\WINPT.lnk"
+  Delete "$SMPROGRAMS\$R0\WinPT.lnk"
 !endif
 !ifdef HAVE_PKG_GPA
   Delete "$SMPROGRAMS\$R0\GPA.lnk"
 !endif
+!ifdef HAVE_PKG_MAN_NOVICE_DE
+  Delete "$SMPROGRAMS\$R0\Novice Manual.lnk"
+!endif
+!ifdef HAVE_PKG_MAN_ADVANCED_DE
+  Delete "$SMPROGRAMS\$R0\Advanced Manual.lnk"
+!endif
+!ifdef HAVE_PKG_GPGEE
+  Delete "$SMPROGRAMS\$R0\GPGee Manual.lnk"
+!endif
+
+
   Delete "$SMPROGRAMS\$R0\Uninstall.lnk"
   RMDir "$SMPROGRAMS\$R0"
   DeleteRegValue HKLM "Software\GNU\${PRETTY_PACKAGE_SHORT}" \

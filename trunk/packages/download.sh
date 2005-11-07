@@ -108,3 +108,7 @@ ${WGET} -c ${server_g10code}/libgpg-error-1.2-cvs.tar.bz2
 ${WGET} -c ${server_g10code}/gpgme-1.2.0-cvs.tar.bz2
 ${WGET} -c ${server_g10code}/gpa-0.7.1-cvs.tar.bz2
 ${WGET} -c ${server_g10code}/gpgol-0.9.4-cvs.tar.bz2
+
+# Dummy manual pages
+${WGET} -c ${server_g10code}/man_novice_de-0.0.0-cvs.tar.gz
+${WGET} -c ${server_g10code}/man_advanced_de-0.0.0-cvs.tar.gz

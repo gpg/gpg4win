@@ -23,7 +23,7 @@
 !define prefix ${ipdir}/gpgol-${gpg4win_pkg_gpgol_version}
 
 
-Section "gpgol" SEC_gpgol
+Section "GPGol" SEC_gpgol
   SetOutPath "$INSTDIR"
 !ifdef SOURCES
   File "${gpg4win_pkg_gpgol}"
@@ -39,4 +39,5 @@ SectionEnd
 LangString DESC_SEC_gpgol ${LANG_ENGLISH} \
    "GnuPG for Outlook"
 LangString DESC_SEC_gpgol ${LANG_GERMAN} \
-   "GnuPG für Outlook"
+   "GnuPG für Outlook (GPGol) is eine Erweiterung für Outlook 2000, die \
+    verwendet wird um Nachrichten mit OpenPGP zu verschlüsseln."

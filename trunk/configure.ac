@@ -88,6 +88,8 @@ GPG4WIN_SPKG([gnupg])
 GPG4WIN_SPKG([gpgol], [gpgme])
 GPG4WIN_SPKG([gpa], [libiconv gettext zlib gtk+ libpng glib gpgme])
 GPG4WIN_SPKG([winpt], [gpgme gnupg])
+GPG4WIN_SPKG([man_novice_de])
+GPG4WIN_SPKG([man_advanced_de])
 
 GPG4WIN_FINALIZE
 
