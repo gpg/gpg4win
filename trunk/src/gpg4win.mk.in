@@ -1,4 +1,4 @@
-# gpg4win.m4 - Installer for GnuPG 4 Windows Makefile.
+# gpg4win.m4.in - Installer for GnuPG 4 Windows Makefile.   -*- makefile -*-
 # Copyright (C) 2005 g10 Code GmbH
 # 
 # This file is part of GPG4Win.
@@ -80,12 +80,10 @@ define DEFLATE_macro
 endef
 
 # Support macro.  Strip all exe files below $(1).
-# We can't strip dll files: Neither --strip-unneeded nor --strip-debug
-# works correctly on this target.
 define STRIP_macro
 	if test -z '$(DEBUG)'; then			\
 	  (cd $(1);					\
-	   for f in `find . -name \*.exe`; do		\
+	   for f in `find . -name \*.exe -o -name \*.dll`; do		\
 	   echo Calling $(STRIP) "$$$${pkg_version}/$$$${f}"; \
 	   $(STRIP) "$$$${f}"; done);			\
 	fi
