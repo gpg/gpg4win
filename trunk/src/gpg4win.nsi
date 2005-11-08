@@ -37,6 +37,12 @@
 
 !define INSTALL_DIR "GnuPG"
 
+!define WELCOME_TITLE_ENGLISH \
+ "Welcome to the installation of Gpg4Win"
+
+!define WELCOME_TITLE_GERMAN \
+ "Willkommen bei der Installation von Gpg4Win"
+
 !define ABOUT_ENGLISH \
  "GnuPG is GNU's tool for secure communication and data storage. \
   It can be used to encrypt data and to create digital signatures. \

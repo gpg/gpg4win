@@ -285,7 +285,20 @@ Function CalcDepends
 
 FunctionEnd
 
+#LangString T_AlreadyRunning ${LANG_ENGLISH} \
+#   "An instance of this installer is already running."
+#LangString T_AlreadyRunning ${LANG_GERMAN} \
+#   "Ein Exemplar dieses Installers läuft bereits."
+
 Function .onInit
+  # Debian's NSIS package comes without System.dll because it can't be
+  # compiled with mingw.  Thus we can't use the code below.
+  #System::Call 'kernel32::CreateMutexA(i 0, i 0, t "gpg4win") i .r1 ?e'
+  #Pop $R0
+  #StrCmp $R0 0 +3
+  #  MessageBox MB_OK $(T_AlreadyRunning)
+  #  Abort
+
   SetOutPath $TEMP
   File /oname=gpgspltmp.bmp "${TOP_SRCDIR}/src/gpg4win-splash.bmp"
   File /oname=gpgspltmp.wav "${TOP_SRCDIR}/src/gpg4win-splash.wav"
@@ -349,7 +362,8 @@ Section "-startmenu"
     IntOp $R0 $R0 & ${SF_SELECTED} 
     IntCmp $R0 ${SF_SELECTED} 0 no_winpt_menu 
     CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\WINPT.lnk" \
-	"$INSTDIR\winpt.exe"
+	"$INSTDIR\winpt.exe" \
+        "" "$INSTDIR\winpt.exe" "" SW_SHOWNORMAL "" $(DESC_Menu_winpt)
    no_winpt_menu:
 !endif
 
@@ -358,7 +372,8 @@ Section "-startmenu"
     IntOp $R0 $R0 & ${SF_SELECTED} 
     IntCmp $R0 ${SF_SELECTED} 0 no_gpa_menu 
     CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\GPA.lnk" \
-	"$INSTDIR\gpa.exe"
+	"$INSTDIR\gpa.exe" \
+        "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_gpa)
   no_gpa_menu:
 !endif
 
@@ -367,7 +382,8 @@ Section "-startmenu"
     IntOp $R0 $R0 & ${SF_SELECTED} 
     IntCmp $R0 ${SF_SELECTED} 0 no_man_novice_de_menu 
     CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\Novice Manual.lnk" \
-	"$INSTDIR\share\gpg4win\man_novice_de.html"
+	"$INSTDIR\share\gpg4win\man_novice_de.html" \
+        "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_man_novice_de)
   no_man_novice_de_menu:
 !endif
 
@@ -376,7 +392,8 @@ Section "-startmenu"
     IntOp $R0 $R0 & ${SF_SELECTED} 
     IntCmp $R0 ${SF_SELECTED} 0 no_man_advanced_de_menu 
     CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\Advanced Manual.lnk" \
-	"$INSTDIR\share\gpg4win\man_novice_de.html"
+	"$INSTDIR\share\gpg4win\man_novice_de.html" \
+        "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_man_advanced_de)
   no_man_advanced_de_menu:
 !endif
 
@@ -391,7 +408,8 @@ Section "-startmenu"
 
 
     CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\GnuPG FAQ.lnk" \
-                   "$INSTDIR\share\gnupg\faq.html"
+                   "$INSTDIR\share\gnupg\faq.html" \
+                   "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_gnupg_faq)
 
     CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\Uninstall.lnk" \
 	"$INSTDIR\${PACKAGE}-uninstall.exe"

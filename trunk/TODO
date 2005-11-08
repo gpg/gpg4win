@@ -1,15 +1,19 @@
                                                           -*- outline -*-
 
 * Missing stuff
-** No sources yet for WinPT due to current changes in its build system
 ** WinPT signature file should better be named .sig
+** System.dll is unsuable under DLL.
+    We should write a custom Plugin DLL for gpg4win to collect
+    function we need. This can also do the check for existing versions
+    of GnuPG etc.  And maybe to display a jpeg splash screen and to
+    play continuesly an ogg encoded tune.
+
 
 * Component related issues:
 ** Check out which locale files to install and where. !!!
 ** Check which iconv to use !!
 ** Finish integration of GnuPG.
-** Add the missing packages: gpgee, Sylpheed, WinPT, Eudore extensions.
-** gpgol needs to be registered. !!!
+** Add the missing packages: Sylpheed Eudore extensions.
 
 * The following items are related to package auto-detection and
    configuration.  They are not critical.

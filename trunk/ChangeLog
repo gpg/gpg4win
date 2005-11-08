@@ -1,3 +1,15 @@
+2005-11-08  Werner Koch  <wk@g10code.com>
+
+	* src/installer.nsi (T_WelcomeTitle): New.
+	(MUI_WELCOMEPAGE_TITLE): New.
+	(MUI_FINISHPAGE): Enhanced.
+
+	* src/installer-finish.nsi (Uninstall): use a loop to delete the
+	startmenu.  Fixed Registry cleaning.
+
+	* src/inst-sections.nsi (onInit): Make sure that only one
+	installer is running.
+
 2005-11-07  Werner Koch  <wk@g10code.com>
 
 	* src/installer-finish.nsi: Fixed dereferencing of variable.
