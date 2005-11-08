@@ -46,26 +46,20 @@ Section Uninstall
   # we printed a warning that installation will not succeed.
   SetShellVarContext all
 
-!insertmacro MUI_STARTMENU_GETFOLDER ${STARTMENU_FOLDER} $R0
-!ifdef HAVE_PKG_WINPT
-  Delete "$SMPROGRAMS\$R0\WinPT.lnk"
-!endif
-!ifdef HAVE_PKG_GPA
-  Delete "$SMPROGRAMS\$R0\GPA.lnk"
-!endif
-!ifdef HAVE_PKG_MAN_NOVICE_DE
-  Delete "$SMPROGRAMS\$R0\Novice Manual.lnk"
-!endif
-!ifdef HAVE_PKG_MAN_ADVANCED_DE
-  Delete "$SMPROGRAMS\$R0\Advanced Manual.lnk"
-!endif
-!ifdef HAVE_PKG_GPGEE
-  Delete "$SMPROGRAMS\$R0\GPGee Manual.lnk"
-!endif
+  #---------------------------------------------------
+  # Delete the menu entries and any empty parent menus
+  #---------------------------------------------------
+  !insertmacro MUI_STARTMENU_GETFOLDER Application $MYTMP
+  Delete "$SMPROGRAMS\$MYTMP\*.lnk"
+  StrCpy $MYTMP "$SMPROGRAMS\$MYTMP"
+  startMenuDeleteLoop:
+    ClearErrors
+    RMDir $MYTMP
+    GetFullPathName $MYTMP "$MYTMP\.."
+    IfErrors startMenuDeleteLoopDone
+    StrCmp $MYTMP $SMPROGRAMS startMenuDeleteLoopDone startMenuDeleteLoop
+  startMenuDeleteLoopDone:
 
-
-  Delete "$SMPROGRAMS\$R0\Uninstall.lnk"
-  RMDir "$SMPROGRAMS\$R0"
   DeleteRegValue HKLM "Software\GNU\${PRETTY_PACKAGE_SHORT}" \
         "Start Menu Folder"
 !endif
@@ -78,5 +72,5 @@ Section Uninstall
         "Install Directory"
   DeleteRegKey /ifempty HKLM "Software\GNU\${PRETTY_PACKAGE_SHORT}" \
   # Remove Windows Add/Remove Programs support.
-  DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\GnuPG"
+  DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRETTY_PACKAGE_SHORT}"
 SectionEnd

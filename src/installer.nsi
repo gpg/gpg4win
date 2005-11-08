@@ -96,7 +96,8 @@ VIAddVersionKey "FileVersion" "${PROD_VERSION}"
 
 # The list of wizard pages.
 
-!define MUI_WELCOMEPAGE_TEXT "$(T_About)"
+!define MUI_WELCOMEPAGE_TITLE "$(T_WelcomeTitle)"
+!define MUI_WELCOMEPAGE_TEXT  "$(T_About)"
 !insertmacro MUI_PAGE_WELCOME
 
 !define MUI_LICENSEPAGE_BUTTON "$(^NextBtn)"
@@ -118,6 +119,12 @@ Var STARTMENU_FOLDER
 
 !insertmacro MUI_PAGE_INSTFILES
 
+!define MUI_FINISHPAGE_RUN "$INSTDIR\gpa.exe"
+!define MUI_FINISHPAGE_RUN_PARAMETERS "--keyring"
+!define MUI_FINISHPAGE_RUN_TEXT "$(T_RunKeyManager)"
+!define MUI_FINISHPAGE_RUN_NOTCHECKED
+!define MUI_FINISHPAGE_LINK "$(T_MoreInfo)"
+!define MUI_FINISHPAGE_LINK_LOCATION http://www.gpg4win.org
 !insertmacro MUI_PAGE_FINISH
 
 
@@ -144,11 +151,16 @@ Var STARTMENU_FOLDER
 !insertmacro MUI_RESERVEFILE_LANGDLL
 !insertmacro MUI_RESERVEFILE_INSTALLOPTIONS
 ReserveFile "${NSISDIR}\Plugins\advsplash.dll"
+#ReserveFile "${NSISDIR}\Plugins\System.dll"
 ReserveFile "${TOP_SRCDIR}\src\gpg4win-splash.bmp"
 ReserveFile "${TOP_SRCDIR}\src\gpg4win-splash.wav"
 ReserveFile "${TOP_SRCDIR}\COPYING"
 
 # Language support
+
+# The WelcomeTitle is displayed on the first page.
+LangString T_WelcomeTitle ${LANG_ENGLISH} "${WELCOME_TITLE_ENGLISH}"
+LangString T_WelcomeTitle ${LANG_GERMAN} "${WELCOME_TITLE_GERMAN}"
 
 # The About string as displayed on the first page.
 LangString T_About ${LANG_ENGLISH} "${ABOUT_ENGLISH}"
@@ -172,6 +184,16 @@ LangString T_GPLShort ${LANG_GERMAN} \
   "In aller Kürze: Sie haben das Recht, die Software zu jedem Zweck \
    einzusetzen.  Sie können die Software weitergeben, sofern Sie dem \
    Empfänger dieselben Rechte einräumen, die auch Sie erhalten haben."
+
+LangString T_RunKeyManager ${LANG_ENGLISH} \
+   "Run the key manager"
+LangString T_RunKeyManager ${LANG_GERMAN} \
+   "Die Schlüsselverwaltung aufrufen"
+
+LangString T_MoreInfo ${LANG_ENGLISH} \
+   "Click here for the project's homepage"
+LangString T_MoreInfo ${LANG_GERMAN} \
+   "Hier klicken um zur Homepage des Projekts zu gelangen"
 
 
 # Functions

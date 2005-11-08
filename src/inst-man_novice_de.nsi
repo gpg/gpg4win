@@ -40,3 +40,8 @@ LangString DESC_SEC_man_novice_de ${LANG_ENGLISH} \
    "Gpg4Win Manual for the Novice User (German)"
 LangString DESC_SEC_man_novice_de ${LANG_GERMAN} \
    "Gpg4Win Handbuch für den Einsteiger"
+
+LangString DESC_Menu_man_novice_de ${LANG_ENGLISH} \
+   "Show the German online manual of Gpg4Win for novice users"
+LangString DESC_Menu_man_novice_de ${LANG_GERMAN} \
+   "Das Online-Handbuch von Gpg4Win für den Einsteiger anzeigen"
