@@ -33,6 +33,8 @@
 # We use the modern UI.
 !include "MUI.nsh"
 
+# Customj functions and macros for gpg4win. 
+!include "g4wihelp.nsi"
 
 # Set the package name.  Note that this name should not be sufficed
 #  with the version because this would get displayed in the start menu.
@@ -151,7 +153,7 @@ Var STARTMENU_FOLDER
 !insertmacro MUI_RESERVEFILE_LANGDLL
 !insertmacro MUI_RESERVEFILE_INSTALLOPTIONS
 ReserveFile "${NSISDIR}\Plugins\advsplash.dll"
-#ReserveFile "${NSISDIR}\Plugins\System.dll"
+ReserveFile "${BUILD_DIR}\g4wihelp.dll"
 ReserveFile "${TOP_SRCDIR}\src\gpg4win-splash.bmp"
 ReserveFile "${TOP_SRCDIR}\src\gpg4win-splash.wav"
 ReserveFile "${TOP_SRCDIR}\COPYING"

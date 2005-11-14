@@ -285,28 +285,20 @@ Function CalcDepends
 
 FunctionEnd
 
-#LangString T_AlreadyRunning ${LANG_ENGLISH} \
-#   "An instance of this installer is already running."
-#LangString T_AlreadyRunning ${LANG_GERMAN} \
-#   "Ein Exemplar dieses Installers läuft bereits."
 
 Function .onInit
-  # Debian's NSIS package comes without System.dll because it can't be
-  # compiled with mingw.  Thus we can't use the code below.
-  #System::Call 'kernel32::CreateMutexA(i 0, i 0, t "gpg4win") i .r1 ?e'
-  #Pop $R0
-  #StrCmp $R0 0 +3
-  #  MessageBox MB_OK $(T_AlreadyRunning)
-  #  Abort
+  Call G4wRunOnce
 
+  #Call G4wTest
+ 
   SetOutPath $TEMP
   File /oname=gpgspltmp.bmp "${TOP_SRCDIR}/src/gpg4win-splash.bmp"
   File /oname=gpgspltmp.wav "${TOP_SRCDIR}/src/gpg4win-splash.wav"
   advsplash::show 3000 600 400 -1 $TEMP\gpgspltmp
   Pop $0 # $0 has '1' if the user closed the splash screen early,
          # '0' if everything closed normal, and '-1' if some error occured.
-  Delete $TEMP\gpgspltmp.wav
-  Delete $TEMP\gpgspltmp.bmp
+  Delete /rebootok $TEMP\gpgspltmp.wav
+  Delete /rebootok $TEMP\gpgspltmp.bmp
 
   Call CalcDepends
 FunctionEnd

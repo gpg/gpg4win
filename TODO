@@ -3,11 +3,15 @@
 * Missing stuff
 ** WinPT signature file should better be named .sig
 ** System.dll is unsuable under DLL.
-    We should write a custom Plugin DLL for gpg4win to collect
-    function we need. This can also do the check for existing versions
+    We solved this by our g4wihelp DLL.
+    This can also do the check for existing versions
     of GnuPG etc.  And maybe to display a jpeg splash screen and to
     play continuesly an ogg encoded tune.
 
+* Build system
+** Some versions of strip don't work.
+   Werner's GNU strip 2.15.91 20040904 is fine but
+   Marcus'  GNU strip 2.15.94 20050118 does not work.
 
 * Component related issues:
 ** Check out which locale files to install and where. !!!

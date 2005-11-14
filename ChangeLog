@@ -1,3 +1,12 @@
+2005-11-14  Werner Koch  <wk@g10code.com>
+
+	* src/inst-sections.nsi (.onInit): Make sure that only one
+	instance of the installer may run at the same time.
+	* src/installer.nsi: Include g4wihelp.nsi.
+	* src/g4wihelp.nsi: New.
+	* src/g4wihelp.c: New.
+	* src/exdll.h: New.
+
 2005-11-11  Marcus Brinkmann  <marcus@g10code.de>
 
 	* src/gpg4win.mk.in (stamps/stamp-$(1)-00-install): Don't strip.

@@ -19,7 +19,8 @@
 
 
 EXTRA_DIST = pkg-config $(common_nsi) gpg4win.nsi gpg4win-src.nsi \
-	libiconv.def libintl.def  gpg4win-splash.bmp gpg4win-splash.wav
+	libiconv.def libintl.def  gpg4win-splash.bmp gpg4win-splash.wav \
+	exdll.h g4wihelp.c
 
 # Supported source packages.
 gpg4win_spkgs := gnupg libgpg-error gpgme gpgol gpa winpt \
@@ -142,13 +143,17 @@ common_nsi := inst-sections.nsi installer.nsi installer-finish.nsi	\
 # For some nut-crazy reason someone thought it would be a great idea
 # if makensis changed to the directory of the source file at startup.
 # So we have to pull a couple of strings to correct this.
-gpg4win-$(VERSION).exe: gpg4win.nsi $(common_nsi) stamps/stamp-final
+gpg4win-$(VERSION).exe: gpg4win.nsi $(common_nsi) stamps/stamp-final \
+                        g4wihelp.dll
 	$(MAKENSIS) -DBUILD_DIR=`pwd` -DTOP_SRCDIR=$(top_srcdir) \
 		-DSRCDIR=$(srcdir) $(srcdir)/gpg4win.nsi
 
 gpg4win-src-$(VERSION).exe: gpg4win-src.nsi $(common_nsi) stamps/stamp-final
 	$(MAKENSIS) -DBUILD_DIR=`pwd` -DTOP_SRCDIR=$(top_srcdir) \
 		-DSRCDIR=$(srcdir) $(srcdir)/gpg4win-src.nsi
+
+g4wihelp.dll: g4wihelp.c exdll.h
+	$(CC) -I. -shared -O2 -o g4wihelp.dll $(srcdir)/g4wihelp.c
 
 all-local: gpg4win-$(VERSION).exe gpg4win-src-$(VERSION).exe
 
