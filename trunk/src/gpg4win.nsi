@@ -20,7 +20,9 @@
 !cd "${BUILD_DIR}"
 !addincludedir "${TOP_SRCDIR}"
 !addincludedir "${SRCDIR}"
+!addplugindir "${BUILD_DIR}"
 !include "../include/config.nsi"
+
 
 # The package name and version.  PRETTY_PACKAGE is a user visible name
 # only while PACKAGE is useful for filenames etc.  PROD_VERSION is the
