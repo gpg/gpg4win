@@ -33,9 +33,6 @@
 # We use the modern UI.
 !include "MUI.nsh"
 
-# Customj functions and macros for gpg4win. 
-!include "g4wihelp.nsi"
-
 # Set the package name.  Note that this name should not be sufficed
 #  with the version because this would get displayed in the start menu.
 Name "${PRETTY_PACKAGE}"
@@ -199,6 +196,9 @@ LangString T_MoreInfo ${LANG_GERMAN} \
 
 
 # Functions
+
+# Custom functions and macros for gpg4win. 
+!include "g4wihelp.nsi"
 
 # PrintNonAdminWarning
 

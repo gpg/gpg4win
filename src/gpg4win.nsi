@@ -31,8 +31,7 @@
 !define PRETTY_PACKAGE "GnuPG For Windows"
 !define PRETTY_PACKAGE_SHORT "GPG4Win"
 !define VERSION "${_VERSION}"
-# FIXME
-!define PROD_VERSION "0.0.0.1"
+!define PROD_VERSION "${_BUILD_FILEVERSION}"
 !define COMPANY "g10 Code GmbH"
 !define COPYRIGHT "Copyright (C) 2005 g10 Code GmbH"
 !define DESCRIPTION "GPG4Win: The GNU Privacy Guard and tools for Windows"

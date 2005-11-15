@@ -20,6 +20,8 @@
 
 !define _PACKAGE @PACKAGE@
 !define _VERSION @VERSION@
+!define _BUILD_FILEVERSION @BUILD_FILEVERSION@
+!define _BUILD_TIMESTAMP   @BUILD_TIMESTAMP@
 
 !define build @build_cpu@-@build_os@
 !define host @host_cpu@-@host_os@
