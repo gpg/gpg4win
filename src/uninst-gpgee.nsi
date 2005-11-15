@@ -30,11 +30,11 @@ Section "-un.gpgee"
   Push "${gpg4win_pkg_gpgee}"
   Call un.SourceDelete
 !else
-  # Unregister the DLL
-  Exec 'regsvr32.exe /s /u "$INSTDIR\GPGee.dll"'
 
-  Delete "$INSTDIR\GPGee.dll"
-  Delete "$INSTDIR\GPGee.DEU"
+  UnRegDLL "$INSTDIR\GPGee.dll"
+
+  Delete /REBOOTOK "$INSTDIR\GPGee.dll"
+  Delete /REBOOTOK "$INSTDIR\GPGee.DEU"
   Delete "$INSTDIR\GPGee.hlp"
 
   Delete "$INSTDIR\share\gpgee\gpl.txt"
