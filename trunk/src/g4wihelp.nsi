@@ -24,15 +24,15 @@ LangString T_AlreadyRunning ${LANG_GERMAN} \
    "Ein Exemplar dieses Installers läuft bereits."
 
 
-Function G4wTest
-  Push $R0
-  Push $R1
-  StrCpy $R0 "mein argument 0"
-  StrCpy $R1 "mein argument 1"
-  g4wihelp::dummy 
-  Pop $R1
-  Pop $R0
-FunctionEnd
+#Function G4wTest
+#  Push $R0
+#  Push $R1
+#  StrCpy $R0 "mein argument 0"
+#  StrCpy $R1 "mein argument 1"
+#  g4wihelp::dummy 
+#  Pop $R1
+#  Pop $R0
+#FunctionEnd
 
 Function G4wRunOnce
   Push $R0

@@ -289,16 +289,14 @@ FunctionEnd
 Function .onInit
   Call G4wRunOnce
 
-  #Call G4wTest
- 
   SetOutPath $TEMP
   File /oname=gpgspltmp.bmp "${TOP_SRCDIR}/src/gpg4win-splash.bmp"
   File /oname=gpgspltmp.wav "${TOP_SRCDIR}/src/gpg4win-splash.wav"
   advsplash::show 3000 600 400 -1 $TEMP\gpgspltmp
   Pop $0 # $0 has '1' if the user closed the splash screen early,
          # '0' if everything closed normal, and '-1' if some error occured.
-  Delete /rebootok $TEMP\gpgspltmp.wav
-  Delete /rebootok $TEMP\gpgspltmp.bmp
+  Delete $TEMP\gpgspltmp.wav
+  Delete $TEMP\gpgspltmp.bmp
 
   Call CalcDepends
 FunctionEnd

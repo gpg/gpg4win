@@ -30,15 +30,31 @@ Section "GPGee" SEC_gpgee
   File "${gpg4win_pkg_gpgee_src}"
 !else
   # Try to unregister first
-  Exec 'regsvr32.exe /u /s "$INSTDIR\GPGee.dll"'
-  Sleep 1000
+  UnRegDLL "$INSTDIR\GPGee.dll"
+  Sleep 500
 
+  ClearErrors
+  SetOverwrite try
   File ${prefix}/GPGee.dll
+  SetOverwrite lastused
+  ifErrors 0 +3
+      File /oname=GPGee.dll.tmp ${prefix}/GPGee.dll
+      Rename /REBOOTOK GPGee.dll.tmp GPGee.dll
+
+  ClearErrors
+  SetOverwrite try
   File ${prefix}/GPGee.DEU
+  SetOverwrite lastused
+  ifErrors 0 +3
+      File /oname=GPGee.DEU.tmp ${prefix}/GPGee.DEU
+      Rename /REBOOTOK GPGee.DEU.tmp GPGee.DEU
+
   File ${prefix}/GPGee.hlp
 
   # Register the DLL.
-  Exec 'regsvr32.exe /s "$INSTDIR\GPGee.dll"'
+  RegDLL "$INSTDIR\GPGee.dll"
+  ifErrors 0 +2
+     MessageBox MB_OK "$(T_GPGee_RegFailed)"
 
   SetOutPath "$INSTDIR\share\gpgee"
   File ${prefix}/gpl.txt
@@ -46,6 +62,10 @@ Section "GPGee" SEC_gpgee
 !endif
 SectionEnd
 
+LangString T_GPGee_RegFailed ${LANG_ENGLISH} \
+   "Warning: Registration of the GPGee explorer extension failed."
+LangString T_GPGee_RegFailed ${LANG_GERMAN} \
+   "Warnung: Registration der GPGee Explorer Extension ist fehlgeschlagen. "
 
 LangString DESC_SEC_gpgee ${LANG_ENGLISH} \
    "GPG Explorer Extensions"
@@ -58,4 +78,5 @@ LangString DESC_Menu_gpgee_hlp ${LANG_ENGLISH} \
    "Show the online manual of GPGee"
 LangString DESC_Menu_gpgee_hlp ${LANG_GERMAN} \
    "Das englische Handbuch zu GPGee anzeigen"
+
 
