@@ -28,12 +28,28 @@ Section "GPGol" SEC_gpgol
 !ifdef SOURCES
   File "${gpg4win_pkg_gpgol}"
 !else
+
+  ClearErrors
+  SetOverwrite try
   File ${prefix}/bin/gpgol.dll
+  SetOverwrite lastused
+  ifErrors 0 +4
+      File /oname=gpgol.dll.tmp ${prefix}/bin/gpgol.dll
+      Rename /REBOOTOK gpgol.dll.tmp gpgol.dll
 
   # Register the DLL.
-  Exec 'regsvr32.exe /s "$INSTDIR\gpgol.dll"'
+  RegDLL "$INSTDIR\gpgol.dll"
+  ifErrors 0 +2
+     MessageBox MB_OK "$(T_GPGol_RegFailed)"
+
 !endif
 SectionEnd
+
+
+LangString T_GPGol_RegFailed ${LANG_ENGLISH} \
+   "Warning: Registration of the GPGol Outlook pluginfailed."
+LangString T_GPGol_RegFailed ${LANG_GERMAN} \
+   "Warnung: Registration des GPGol Outlook Plugin ist fehlgeschlagen. "
 
 
 LangString DESC_SEC_gpgol ${LANG_ENGLISH} \

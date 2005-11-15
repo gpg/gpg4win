@@ -30,10 +30,9 @@ Section "-un.gpgol"
   Call un.SourceDelete
 !else
 
-  # Unregister the DLL
-  Exec 'regsvr32.exe /s /u "$INSTDIR\gpgol.dll"'
+  UnRegDLL "$INSTDIR\gpgol.dll"
 
-  Delete "$INSTDIR\gpgol.dll"
+  Delete /REBOOTOK "$INSTDIR\gpgol.dll"
   RMDir "$INSTDIR"
 !endif
 SectionEnd

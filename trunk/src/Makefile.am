@@ -20,7 +20,10 @@
 
 EXTRA_DIST = pkg-config $(common_nsi) gpg4win.nsi gpg4win-src.nsi \
 	libiconv.def libintl.def  gpg4win-splash.bmp gpg4win-splash.wav \
-	exdll.h g4wihelp.c
+	exdll.h g4wihelp.c g4wihelp.nsi
+
+# Need to clean the dll because we bypassed automake.
+CLEANFILES = g4wihelp.dll 
 
 # Supported source packages.
 gpg4win_spkgs := gnupg libgpg-error gpgme gpgol gpa winpt \
