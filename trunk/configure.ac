@@ -38,8 +38,20 @@ AC_SUBST(PACKAGE)
 AC_SUBST(VERSION)
 
 
-# Required tools.
+# Generate extended version information.  Note, that for NSIS use we
+# must not translate the dots to commas in the BUILD_FILEVERSION.
+BUILD_TIMESTAMP=`date --iso-8601=minutes`
+changequote(,)dnl
+BUILD_FILEVERSION=`echo "$VERSION" | sed 's/\([0-9.]*\).*/\1./'`
+tmp="`echo '$Revision$' | sed 's/[^0-9]//g'`"
+changequote([,])dnl
+test -z "$tmp" && tmp="0"
+BUILD_FILEVERSION="${BUILD_FILEVERSION}$tmp"
+AC_SUBST(BUILD_TIMESTAMP)
+AC_SUBST(BUILD_FILEVERSION)
 
+
+# Required tools.
 AC_PROG_CC
 AC_PROG_CPP
 AC_CHECK_TOOLS(DLLTOOL, dlltool)

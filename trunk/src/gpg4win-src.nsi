@@ -20,6 +20,7 @@
 !cd "${BUILD_DIR}"
 !addincludedir "${TOP_SRCDIR}"
 !addincludedir "${SRCDIR}"
+!addplugindir "${BUILD_DIR}"
 !include "../include/config.nsi"
 
 # We need StrRep.
@@ -32,8 +33,7 @@
 !define PRETTY_PACKAGE "GnuPG For Windows Sources"
 !define PRETTY_PACKAGE_SHORT "GPG4WinSrc"
 !define VERSION "${_VERSION}"
-# FIXME
-!define PROD_VERSION "0.0.0.1"
+!define PROD_VERSION "${_BUILD_FILEVERSION}"
 !define COMPANY "g10 Code GmbH"
 !define COPYRIGHT "Copyright (C) 2005 g10 Code GmbH"
 !define DESCRIPTION "GPG4Win: The GNU Privacy Guard and tools for Windows (Source Files)"

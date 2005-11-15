@@ -29,6 +29,10 @@ Section "GPGee" SEC_gpgee
 !ifdef SOURCES
   File "${gpg4win_pkg_gpgee_src}"
 !else
+  # Try to unregister first
+  Exec 'regsvr32.exe /u /s "$INSTDIR\GPGee.dll"'
+  Sleep 1000
+
   File ${prefix}/GPGee.dll
   File ${prefix}/GPGee.DEU
   File ${prefix}/GPGee.hlp

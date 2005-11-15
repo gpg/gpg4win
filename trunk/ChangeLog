@@ -1,3 +1,14 @@
+2005-11-15  Werner Koch  <wk@g10code.com>
+
+	* src/installer.nsi: Moved inclusion of g4wihelp.nsi after the
+	language definitions.
+
+	* configure.ac (VERSION): Generate extended version information.
+	* include/config.nsi.in: Define replacements
+	* src/gpg4win.nsi, src/gpg4win-src.nsi: Use them for PROD_VERSION.
+
+	* src/gpg4win-src.nsi: Add our build dir as plugindir.
+
 2005-11-14  Werner Koch  <wk@g10code.com>
 
 	* src/inst-sections.nsi (.onInit): Make sure that only one
