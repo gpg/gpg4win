@@ -37,8 +37,8 @@ ${WGET} -c ${server_gnu}/libiconv/libiconv-1.9.1.tar.gz
 
 
 # http://gnuwin32.sourceforge.net/
-
-server_gnuwin32=http://mesh.dl.sourceforge.net/sourceforge/gnuwin32
+# Note:  Mesh, Duesseldorf does not work reliable anymore.
+server_gnuwin32=http://kent.dl.sourceforge.net/sourceforge/gnuwin32
 
 ${WGET} -c ${server_gnuwin32}/zlib-1.2.3-bin.zip
 ${WGET} -c ${server_gnuwin32}/zlib-1.2.3-lib.zip
@@ -47,6 +47,19 @@ ${WGET} -c ${server_gnuwin32}/zlib-1.2.3-src.zip
 ${WGET} -c ${server_gnuwin32}/libpng-1.2.8-bin.zip
 ${WGET} -c ${server_gnuwin32}/libpng-1.2.8-lib.zip
 ${WGET} -c ${server_gnuwin32}/libpng-1.2.8-src.zip
+
+${WGET} -c ${server_gnuwin32}/crypt-2.2.5-lib.zip
+${WGET} -c ${server_gnuwin32}/crypt-2.2.5-src.zip
+
+${WGET} -c ${server_gnuwin32}/regex-0.12-lib.zip
+${WGET} -c ${server_gnuwin32}/regex-0.12-src.zip
+
+
+# RedHat
+
+server_redhat=ftp://sources.redhat.com/pub/
+
+${WGET} -c ${server_redhat}/pthreads-win32/pthreads-w32-2-7-0-release.tar.gz
 
 
 # http://www.gimp.org/~tml/gimp/win32/downloads.html
@@ -75,10 +88,10 @@ ${WGET} -c ${server_gimp}/pkgconfig-0.15.0.tar.gz
 
 # WinPT
 
-#server_winpt="http://wald.intevation.org/frs/download.php"
-server_winpt="ftp://ftp.g10code.com/g10code/scratch"
+server_winpt="http://wald.intevation.org/frs/download.php"
 
-${WGET} -c ${server_winpt}/winpt-0.11.0-cvs.tar.bz2
+${WGET} -c ${server_winpt}/47/winpt-0.11.0.tar.bz2
+${WGET} -c ${server_winpt}/48/winpt-0.11.0.tar.bz2.sig
 
 # GPGee
 # Note: This is a temporary location
@@ -108,7 +121,9 @@ ${WGET} -c ${server_g10code}/libgpg-error-1.2-cvs.tar.bz2
 ${WGET} -c ${server_g10code}/gpgme-1.2.0-cvs.tar.bz2
 ${WGET} -c ${server_g10code}/gpa-0.7.1-cvs.tar.bz2
 ${WGET} -c ${server_g10code}/gpgol-0.9.4-cvs.tar.bz2
+${WGET} -c ${server_g10code}/sylpheed-claws-1.9.99cvs5-wk1.tar.bz2
 
 # Dummy manual pages
 ${WGET} -c ${server_g10code}/man_novice_de-0.0.0-cvs.tar.gz
 ${WGET} -c ${server_g10code}/man_advanced_de-0.0.0-cvs.tar.gz
+${WGET} -c ${server_g10code}/eudoragpg-0.0.0-cvs.tar.gz

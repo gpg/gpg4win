@@ -85,6 +85,8 @@ GPG4WIN_BPKG_GNU([libiconv])
 GPG4WIN_BPKG_GNU([gettext], [libiconv])
 
 GPG4WIN_BPKG_GNUWIN32([zlib])
+GPG4WIN_BPKG_GNUWIN32_LIB([crypt])
+GPG4WIN_BPKG_GNUWIN32_LIB([regex])
 GPG4WIN_BPKG_GNUWIN32([libpng], [pkgconfig])
 
 GPG4WIN_BPKG_GTK([pkgconfig])
@@ -99,9 +101,13 @@ GPG4WIN_BPKG_BINSRC([gpgee], [gnupg])
 GPG4WIN_SPKG([libgpg-error], [libiconv gettext])
 GPG4WIN_SPKG([gpgme], [libgpg-error gnupg glib])
 GPG4WIN_SPKG([gnupg])
+GPG4WIN_SPKG([pthreads-w32])
 GPG4WIN_SPKG([gpgol], [gpgme])
 GPG4WIN_SPKG([gpa], [libiconv gettext zlib gtk+ libpng glib gpgme])
 GPG4WIN_SPKG([winpt], [gpgme gnupg])
+GPG4WIN_SPKG([sylpheed-claws], [libiconv gettext zlib gtk+ libpng glib dnl
+                                gpgme pthreads-w32 crypt regex])
+GPG4WIN_SPKG([eudoragpg])
 GPG4WIN_SPKG([man_novice_de])
 GPG4WIN_SPKG([man_advanced_de])
 

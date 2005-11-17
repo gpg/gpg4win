@@ -1,4 +1,4 @@
-# Makefile.am - Installer for GnuPG 4 Windows Makefile.
+# inst-regex.nsi - Installer snippet.            -*- coding: latin-1; -*-
 # Copyright (C) 2005 g10 Code GmbH
 # 
 # This file is part of GPG4Win.
@@ -17,14 +17,21 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
-ACLOCAL_AMFLAGS = -I m4
-AUTOMAKE_OPTIONS = dist-bzip2
-DISTCHECK_CONFIGURE_FLAGS = --host=i586-mingw32msvc
 
-SUBDIRS = packages include src
+!ifdef prefix
+!undef prefix
+!endif
+!define prefix ${ipdir}/regex-${gpg4win_pkg_regex_version}
 
-EXTRA_DIST = autogen.sh README.SVN \
-	patches/gnupg-1.4.2/01-po-subdirs.patch \
-	patches/gpgme-1.1.0/01-gpgme-def.patch \
-	patches/gpgme-1.1.0/02-libtool-dll.patch \
-        patches/pthreads-w32-2-7-0-release/01-make.patch
+!ifdef DEBUG
+Section "regex" SEC_regex
+!else
+Section "-regex" SEC_regex
+!endif
+  SetOutPath "$INSTDIR"
+!ifdef SOURCES
+  File "${gpg4win_pkg_regex_src}"
+!else
+  # Nothing to install as we link statically.
+!endif
+SectionEnd
