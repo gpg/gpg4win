@@ -34,6 +34,15 @@
 !ifdef HAVE_PKG_ZLIB
 !include "inst-zlib.nsi"
 !endif
+!ifdef HAVE_PKG_CRYPT
+!include "inst-crypt.nsi"
+!endif
+!ifdef HAVE_PKG_REGEX
+!include "inst-regex.nsi"
+!endif
+!ifdef HAVE_PKG_PTHREADS_W32
+!include "inst-pthreads-w32.nsi"
+!endif
 !ifdef HAVE_PKG_GPGME
 !include "inst-gpgme.nsi"
 !endif
@@ -67,6 +76,12 @@
 !ifdef HAVE_PKG_GPGEE
 !include "inst-gpgee.nsi"
 !endif
+!ifdef HAVE_PKG_SYLPHEED_CLAWS
+!include "inst-sylpheed-claws.nsi"
+!endif
+!ifdef HAVE_PKG_EUDORAGPG
+!include "inst-eudoragpg.nsi"
+!endif
 !ifdef HAVE_PKG_MAN_NOVICE_DE
 !include "inst-man_novice_de.nsi"
 !endif
@@ -81,6 +96,12 @@
 !endif
 !ifdef HAVE_PKG_MAN_NOVICE_DE
 !include "uninst-man_novice_de.nsi"
+!endif
+!ifdef HAVE_PKG_EUDORAGPG
+!include "uninst-eudoragpg.nsi"
+!endif
+!ifdef HAVE_PKG_SYLPHEED_CLAWS
+!include "uninst-sylpheed-claws.nsi"
 !endif
 !ifdef HAVE_PKG_GPGEE
 !include "uninst-gpgee.nsi"
@@ -114,6 +135,15 @@
 !endif
 !ifdef HAVE_PKG_GPGME
 !include "uninst-gpgme.nsi"
+!endif
+!ifdef HAVE_PKG_PTHREADS_W32
+!include "uninst-pthreads-w32.nsi"
+!endif
+!ifdef HAVE_PKG_REGEX
+!include "uninst-regex.nsi"
+!endif
+!ifdef HAVE_PKG_CRYPT
+!include "uninst-crypt.nsi"
 !endif
 !ifdef HAVE_PKG_ZLIB
 !include "uninst-zlib.nsi"
@@ -149,6 +179,15 @@ Function CalcDepends
 !endif
 !ifdef HAVE_PKG_ZLIB
   !insertmacro UnselectSection ${SEC_zlib}
+!endif
+!ifdef HAVE_PKG_CRYPT
+  !insertmacro UnselectSection ${SEC_crypt}
+!endif
+!ifdef HAVE_PKG_REGEX
+  !insertmacro UnselectSection ${SEC_regex}
+!endif
+!ifdef HAVE_PKG_PTHREADS_W32
+  !insertmacro UnselectSection ${SEC_pthreads_w32}
 !endif
 !ifdef HAVE_PKG_LIBPNG
   !insertmacro UnselectSection ${SEC_libpng}
@@ -203,6 +242,31 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_gpgme}
   !insertmacro SelectSection ${SEC_gnupg}
   skip_gpa:
+!endif
+
+!ifdef HAVE_PKG_SYLPHEED_CLAWS
+  !insertmacro SectionFlagIsSet ${SEC_sylpheed} ${SF_SELECTED} have_sylpheed skip_sylpheed
+  have_sylpheed:
+  !insertmacro SelectSection ${SEC_zlib}
+  !insertmacro SelectSection ${SEC_gtk_}
+  !insertmacro SelectSection ${SEC_libpng}
+  !insertmacro SelectSection ${SEC_glib}
+  !insertmacro SelectSection ${SEC_gpgme}
+  !insertmacro SelectSection ${SEC_gnupg}
+  # fixme: Need more.
+  skip_sylpheed:
+!endif
+
+!ifdef HAVE_PKG_EUDORAGPG
+  !insertmacro SectionFlagIsSet ${SEC_eudoragpg} ${SF_SELECTED} have_eudoragpg skip_eudoragpg
+  have_eudoragpg:
+  !insertmacro SelectSection ${SEC_zlib}
+  !insertmacro SelectSection ${SEC_gtk_}
+  !insertmacro SelectSection ${SEC_libpng}
+  !insertmacro SelectSection ${SEC_glib}
+  !insertmacro SelectSection ${SEC_gpgme}
+  !insertmacro SelectSection ${SEC_gnupg}
+  skip_eudoragpg:
 !endif
 
 !ifdef HAVE_PKG_GTK_
@@ -324,6 +388,12 @@ FunctionEnd
 !ifdef HAVE_PKG_GPGEE
   !insertmacro MUI_DESCRIPTION_TEXT ${SEC_gpgee} $(DESC_SEC_gpgee)
 !endif
+!ifdef HAVE_PKG_SYLPHEED_CLAWS
+  !insertmacro MUI_DESCRIPTION_TEXT ${SEC_sylpheed} $(DESC_SEC_sylpheed)
+!endif
+!ifdef HAVE_PKG_EUDORAGPG
+  !insertmacro MUI_DESCRIPTION_TEXT ${SEC_eudoragpg} $(DESC_SEC_eudoragpg)
+!endif
 !ifdef HAVE_PKG_MAN_NOVICE_DE
   !insertmacro MUI_DESCRIPTION_TEXT ${SEC_man_novice_de} $(DESC_SEC_man_novice_de)
 !endif
@@ -351,7 +421,7 @@ Section "-startmenu"
     SectionGetFlags ${SEC_winpt} $R0 
     IntOp $R0 $R0 & ${SF_SELECTED} 
     IntCmp $R0 ${SF_SELECTED} 0 no_winpt_menu 
-    CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\WINPT.lnk" \
+    CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\WinPT.lnk" \
 	"$INSTDIR\winpt.exe" \
         "" "$INSTDIR\winpt.exe" "" SW_SHOWNORMAL "" $(DESC_Menu_winpt)
    no_winpt_menu:
@@ -365,6 +435,26 @@ Section "-startmenu"
 	"$INSTDIR\gpa.exe" \
         "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_gpa)
   no_gpa_menu:
+!endif
+
+!ifdef HAVE_PKG_SYLPHEED_CLAWS
+    SectionGetFlags ${SEC_sylpheed} $R0 
+    IntOp $R0 $R0 & ${SF_SELECTED} 
+    IntCmp $R0 ${SF_SELECTED} 0 no_sylpheed_menu 
+    CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\Sylpheed.lnk" \
+	"$INSTDIR\sylpheed-claws.exe" \
+        "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_sylpheed)
+  no_sylpheed_menu:
+!endif
+
+!ifdef HAVE_PKG_EUDORAGPG
+    SectionGetFlags ${SEC_eudoragpg} $R0 
+    IntOp $R0 $R0 & ${SF_SELECTED} 
+    IntCmp $R0 ${SF_SELECTED} 0 no_eudoragpg_menu 
+    CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\EudoraGPG Plugin.lnk" \
+	"$INSTDIR\share\eudoragpg\eudoragpg.html" \
+        "" "" "" SW_SHOWNORMAL "" ""
+  no_eudoragpg_menu:
 !endif
 
 !ifdef HAVE_PKG_MAN_NOVICE_DE

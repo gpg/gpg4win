@@ -20,14 +20,14 @@
 
 EXTRA_DIST = pkg-config $(common_nsi) gpg4win.nsi gpg4win-src.nsi \
 	libiconv.def libintl.def  gpg4win-splash.bmp gpg4win-splash.wav \
-	exdll.h g4wihelp.c g4wihelp.nsi
+	exdll.h g4wihelp.c g4wihelp.nsi loreley.mid
 
 # Need to clean the dll because we bypassed automake.
 CLEANFILES = g4wihelp.dll 
 
 # Supported source packages.
-gpg4win_spkgs := gnupg libgpg-error gpgme gpgol gpa winpt \
-		 man_novice_de man_advanced_de
+gpg4win_spkgs := gnupg libgpg-error gpgme gpgol gpa winpt sylpheed-claws \
+                 eudoragpg man_novice_de man_advanced_de
 
 # Extra options to configure for individual packages.
 # We can use $(idir) here for the installation prefix.
@@ -55,10 +55,31 @@ gpg4win_pkg_gpgol_configure = \
 gpg4win_pkg_winpt_configure = \
   --with-gpgme-prefix=$(idir) --with-gpg-error-prefix=$(idir)
 
+gpg4win_pkg_sylpheed_claws_configure = \
+  --with-lib-prefix=$(idir) --with-libiconv-prefix=$(idir) \
+  --with-gpg-error-prefix=$(idir) --with-gpgme-prefix=$(idir) \
+  --with-config-dir="Sylpheed-claws" \
+  --disable-libetpan --disable-aspell --disable-trayicon-plugin \
+  --disable-openssl --disable-dillo-viewer-plugin --disable-gnomeprint \
+  --disable-jpilot --disable-startup-notification --disable-ipv6 \
+  --disable-mathml-viewer-plugin --disable-clamav-plugin \
+  --disable-spamassassin-plugin
+
+# Supported make-only source packages.
+gpg4win_mpkgs :=  pthreads-w32
+
+# Extra options for the make infocations for individual packages.
+# make_flags is used fur building make_args_inst is used for installing.
+gpg4win_pkg_pthreads_w32_make_args = \
+  prefix=$(idir) CROSS=$(host_alias)- clean GC
+
+gpg4win_pkg_pthreads_w32_make_args_inst = \
+  prefix=$$$${pkgidir} CROSS=$(host_alias)- 
+
 
 # Supported binary packages.
 gpg4win_bpkgs :=  libiconv gettext pkgconfig zlib glib libpng pango atk gtk+ \
-		  gpgee
+		  gpgee crypt regex
 
 # libiconv needs some special magic to generate a usable import
 # library.
@@ -96,6 +117,17 @@ echo "dlpreopen=''" >> lib/libz.la;			\
 echo "libdir=\"$$$${pkgidir}/lib\"" >> lib/libz.la;)
 endef
 
+# To make shure that we link against the static versions we need
+# remove the import libs from crypt
+define gpg4win_pkg_crypt_post_install
+(cd $$$${pkgidir}/lib && rm libcrypt.dll.a libcrypt.lib)
+endef
+
+# To make shure that we link against the static versions we need
+# remove the import libs from regex
+define gpg4win_pkg_regex_post_install
+(cd $$$${pkgidir}/lib && rm libregex.dll.a libregex.lib)
+endef
 
 # We need to fix the prefix in the various packages using pkgconfig,
 # or we can't substitute it properly in our pkg-config wrapper.

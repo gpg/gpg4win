@@ -40,8 +40,7 @@ some of tehse tasks.  Here is a short run up:
    build be the gpg4win) or gpg4win_spkgs (if foo should be build by
    gpg4win) in src/Makefile.am
 
-4. Add FOO to inst-sections.nsi and installer-finish.nsi.  The latter
-   is required for menu shortcuts.
+4. Add FOO to inst-sections.nsi.
 
 5. Add detection of packages to configure.ac.  Check out the available
    macros in m4/gpg4win.m4.  Depending on the way an upstream package

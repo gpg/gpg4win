@@ -62,6 +62,8 @@ define SETVARS
 	pkg_version_dev="$(1)-dev-$(call GETVAR,gpg4win_pkg_$(1)_version)"; \
 	pkgidir_dev="$(ipdir)/$$$${pkg_version_dev}";			\
 	pkgcfg="$(call GETVAR,gpg4win_pkg_$(1)_configure)";		\
+	pkgmkargs="$(call GETVAR,gpg4win_pkg_$(1)_make_args)";          \
+	pkgmkargs_inst="$(call GETVAR,gpg4win_pkg_$(1)_make_args_inst)";\
 	export PKG_CONFIG="$(shell pwd)/$(top_srcdir)/src/pkg-config";	\
 	export PKG_CONFIG_PATH="${idir}/lib/pkgconfig";			\
 	export SYSROOT="${idir}"
@@ -75,7 +77,7 @@ define DEFLATE_macro
 	  *.tar.bz2 | *.tbz2 | *.tbz)	\
 	    $(TAR) xjf "$(1)" ;;	\
 	  *.zip)			\
-	    $(UNZIP) "$(1)" ;;		\
+	    $(UNZIP) -o "$(1)" ;;		\
 	esac
 endef
 
@@ -122,13 +124,13 @@ stamps/stamp-$(1)-02-configure: stamps/stamp-$(1)-01-patch
 stamps/stamp-$(1)-03-make: stamps/stamp-$(1)-02-configure
 	($(call SETVARS,$(1));				\
 	  cd "$$$${pkgbdir}";				\
-	  $(MAKE) $(AM_MAKEFLAGS))
+	  $(MAKE) $(AM_MAKEFLAGS) $$$${pkgmkargs})
 	touch stamps/stamp-$(1)-03-make
 
 stamps/stamp-$(1)-04-install: stamps/stamp-$(1)-03-make
 	($(call SETVARS,$(1));				\
 	  cd "$$$${pkgbdir}";				\
-	  $(MAKE) $(AM_MAKEFLAGS) install;		\
+	  $(MAKE) $(AM_MAKEFLAGS) $$$${pkgmkargs_inst} install; \
 	  $(call STRIP_macro,"$$$${pkgidir}"))
 	touch stamps/stamp-$(1)-04-install
 
@@ -141,6 +143,50 @@ stamps/stamp-$(1)-05-stow: stamps/stamp-$(1)-04-install
 stamps/stamp-final-$(1): stamps/stamp-$(1)-05-stow
 	touch stamps/stamp-final-$(1)
 endef
+
+
+# Template for source packages using only make and no build
+# directory.
+
+define MPKG_template
+
+stamps/stamp-$(1)-00-unpack: stamps/stamp-directories 
+	(cd $(bdir);					\
+	 $(call SETVARS,$(1));				\
+	 $(call DEFLATE_macro,$$$${pkg}))
+	touch stamps/stamp-$(1)-00-unpack
+
+stamps/stamp-$(1)-01-patch: stamps/stamp-$(1)-00-unpack
+	(shopt -s nullglob;				\
+	 $(call SETVARS,$(1));				\
+	 for pfile in "$$$${pkgpdir}"/*.patch ; do	\
+	   (cd "$$$${pkgsdir}"; "$$$${pfile}")		\
+	 done)
+	touch stamps/stamp-$(1)-01-patch
+
+stamps/stamp-$(1)-03-make: stamps/stamp-$(1)-01-patch
+	($(call SETVARS,$(1));				\
+	  cd "$$$${pkgsdir}";				\
+	  $(MAKE) $(AM_MAKEFLAGS) $$$${pkgmkargs})
+	touch stamps/stamp-$(1)-03-make
+
+stamps/stamp-$(1)-04-install: stamps/stamp-$(1)-03-make
+	($(call SETVARS,$(1));				\
+	  cd "$$$${pkgsdir}";				\
+	  $(MAKE) $(AM_MAKEFLAGS) $$$${pkgmkargs_inst} install; \
+	  $(call STRIP_macro,"$$$${pkgidir}"))
+	touch stamps/stamp-$(1)-04-install
+
+stamps/stamp-$(1)-05-stow: stamps/stamp-$(1)-04-install
+	($(call SETVARS,$(1));				\
+	 cd $(ipdir);					\
+	 $(STOW) "$$$${pkg_version}")
+	touch stamps/stamp-$(1)-05-stow
+
+stamps/stamp-final-$(1): stamps/stamp-$(1)-05-stow
+	touch stamps/stamp-final-$(1)
+endef
+
 
 
 # Template for binary packages.
@@ -183,6 +229,9 @@ endef
 
 # Insert the template for each source package.
 $(foreach spkg, $(gpg4win_spkgs), $(eval $(call SPKG_template,$(spkg))))
+
+# Insert the template for each make only source package.
+$(foreach mpkg, $(gpg4win_mpkgs), $(eval $(call MPKG_template,$(mpkg))))
 
 # Insert the template for each binary package.
 $(foreach bpkg, $(gpg4win_bpkgs), $(eval $(call BPKG_template,$(bpkg))))

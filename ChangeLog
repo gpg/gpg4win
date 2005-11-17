@@ -6,6 +6,31 @@
 	* src/inst-gpgme.nsi: Install libgpgme-glib-11.dll.
 	* src/uninst-gpgme.nsi: Uninstall libgpgme-glib-11.dll.
 
+2005-11-17  Werner Koch  <wk@g10code.com>
+
+	* src/Makefile.am (EXTRA_DIST): Add loreley.mid as original source
+	of the splash sound.
+
+	Add packages pthreads-w32 and regex.
+
+	* src/gpg4win.mk.in (MPKG_template): New.
+	(pkgmkflags, pkgmkarg): New.
+	(DEFLATE_macro): Use overwrite option for unzip.
+
+2005-11-16  Werner Koch  <wk@g10code.com>
+
+	* src/inst-crypt.nsi, src/uninst-crypt.nsi: New.
+	* m4/gpg4win.m4 (GPG4WIN_BPKG_GNUWIN32_LIB): New.
+
+	* src/uninst-sylpheed-claws.nsi, src/uninst-eudoragpg.nsi
+	* src/inst-eudoragpg.nsi, src/inst-sylpheed-claws.nsi: New.
+	* include/config.nsi.in: Add support for Sylpheed and EudorGPG.
+	* src/Makefile.am (gpg4win_spkgs): Add them.
+	(gpg4win_pkg_sylpheed_claws_configure): New. 
+
+	* src/inst-sections.nsi: Add them.
+	* configure.ac: Add them.
+
 2005-11-15  Werner Koch  <wk@g10code.com>
 
 	* src/Makefile.am (EXTRA_DIST): Add g4wihelp.nsi.

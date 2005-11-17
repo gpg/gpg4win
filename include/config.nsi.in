@@ -77,11 +77,33 @@
 !define gpg4win_pkg_gpgee_version @gpg4win_pkg_gpgee_version@
 !define gpg4win_pkg_gpgee_src @gpg4win_pkg_gpgee_src@
 
+@HAVE_PKG_SYLPHEED_CLAWS@
+!define gpg4win_pkg_sylpheed_claws @gpg4win_pkg_sylpheed_claws@
+!define gpg4win_pkg_sylpheed_claws_version @gpg4win_pkg_sylpheed_claws_version@
+
+@HAVE_PKG_EUDORAGPG@
+!define gpg4win_pkg_eudoragpg @gpg4win_pkg_eudoragpg@
+!define gpg4win_pkg_eudoragpg_version @gpg4win_pkg_eudoragpg_version@
+
 @HAVE_PKG_ZLIB@
 !define gpg4win_pkg_zlib @gpg4win_pkg_zlib@
 !define gpg4win_pkg_zlib_version @gpg4win_pkg_zlib_version@
 !define gpg4win_pkg_zlib_dev @gpg4win_pkg_zlib_dev@
 !define gpg4win_pkg_zlib_src @gpg4win_pkg_zlib_src@
+
+@HAVE_PKG_CRYPT@
+!define gpg4win_pkg_crypt @gpg4win_pkg_crypt@
+!define gpg4win_pkg_crypt_version @gpg4win_pkg_crypt_version@
+!define gpg4win_pkg_crypt_src @gpg4win_pkg_crypt_src@
+
+@HAVE_PKG_REGEX@
+!define gpg4win_pkg_regex @gpg4win_pkg_regex@
+!define gpg4win_pkg_regex_version @gpg4win_pkg_regex_version@
+!define gpg4win_pkg_regex_src @gpg4win_pkg_regex_src@
+
+@HAVE_PKG_PTHREADS_W32@
+!define gpg4win_pkg_pthreads_w32 @gpg4win_pkg_pthreads_w32@
+!define gpg4win_pkg_pthreads_w32_version @gpg4win_pkg_pthreads_w32_version@
 
 @HAVE_PKG_LIBPNG@
 !define gpg4win_pkg_libpng @gpg4win_pkg_libpng@

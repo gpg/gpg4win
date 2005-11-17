@@ -1,6 +1,8 @@
 Noteworthy changes in version 0.1.0
 ------------------------------------------------
 
+  * Inclded Sylpheed.
+
   * Some visual cleanups, more help texts.      
 
   * Reboot support for installing an already running GPGee 
