@@ -31,6 +31,7 @@ Section "-un.gpgme"
   Call un.SourceDelete
 !else
   Delete "$INSTDIR\libgpgme-11.dll"
+  Delete "$INSTDIR\libgpgme-glib-11.dll"
   RMDir "$INSTDIR"
 !endif
 SectionEnd

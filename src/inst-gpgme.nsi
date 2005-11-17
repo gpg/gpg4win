@@ -33,5 +33,6 @@ Section "-gpgme" SEC_gpgme
   File "${gpg4win_pkg_gpgme}"
 !else
   File ${prefix}/bin/libgpgme-11.dll
+  File ${prefix}/bin/libgpgme-glib-11.dll
 !endif
 SectionEnd
