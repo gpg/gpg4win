@@ -40,8 +40,10 @@ gpg4win_spkgs := gnupg libgpg-error gpgme gpgol gpa winpt \
 gpg4win_pkg_libgpg_error_configure = \
   CPPFLAGS=-I$(idir)/include LDFLAGS=-L$(idir)/lib
 
+# Glib doesn't add the LDFLAGS automatically.
 gpg4win_pkg_gpgme_configure = \
-  --with-gpg-error-prefix=$(idir) --without-gpgsm --enable-static
+  --with-gpg-error-prefix=$(idir) --without-gpgsm --enable-static \
+  --enable-w32-glib LDFLAGS=-L$(idir)/lib
 
 gpg4win_pkg_gpa_configure = \
   --with-libiconv-prefix=$(idir) --with-libintl-prefix=$(idir) \
