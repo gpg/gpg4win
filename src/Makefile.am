@@ -58,7 +58,7 @@ gpg4win_pkg_winpt_configure = \
 gpg4win_pkg_sylpheed_claws_configure = \
   --with-lib-prefix=$(idir) --with-libiconv-prefix=$(idir) \
   --with-gpg-error-prefix=$(idir) --with-gpgme-prefix=$(idir) \
-  --with-config-dir="Sylpheed-claws" \
+  --with-config-dir="Sylpheed-claws" --disable-pthread \
   --disable-libetpan --disable-aspell --disable-trayicon-plugin \
   --disable-openssl --disable-dillo-viewer-plugin --disable-gnomeprint \
   --disable-jpilot --disable-startup-notification --disable-ipv6 \
@@ -71,7 +71,7 @@ gpg4win_mpkgs :=  pthreads-w32
 # Extra options for the make infocations for individual packages.
 # make_flags is used fur building make_args_inst is used for installing.
 gpg4win_pkg_pthreads_w32_make_args = \
-  prefix=$(idir) CROSS=$(host_alias)- clean GC
+  prefix=$(idir) CROSS=$(host_alias)- clean GC-inlined
 
 gpg4win_pkg_pthreads_w32_make_args_inst = \
   prefix=$$$${pkgidir} CROSS=$(host_alias)- 

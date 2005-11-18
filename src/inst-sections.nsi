@@ -253,7 +253,9 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_glib}
   !insertmacro SelectSection ${SEC_gpgme}
   !insertmacro SelectSection ${SEC_gnupg}
-  # fixme: Need more.
+  !insertmacro SelectSection ${SEC_pthreads_w32}
+  !insertmacro SelectSection ${SEC_crypt}
+  !insertmacro SelectSection ${SEC_regex}
   skip_sylpheed:
 !endif
 
