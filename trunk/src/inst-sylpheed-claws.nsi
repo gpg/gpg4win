@@ -30,7 +30,6 @@ Section "Sylpheed" SEC_sylpheed
   File "${gpg4win_pkg_sylpheed_claws}"
 !else
   File ${prefix}/bin/sylpheed-claws.exe
-  File ${prefix}/bin/pthreadGC2.dll
 
   SetOutPath "$INSTDIR\share\sylpheed-claws"
 !endif
