@@ -1,11 +1,13 @@
-Noteworthy changes in version 0.1.0
+Noteworthy changes in version 0.1.0 (2005-11-21)
 ------------------------------------------------
 
-  * Inclded Sylpheed.
+  * GPA does now actually do something.
+
+  * Included Sylpheed, although the GnuPG part is not yet working.
 
   * Some visual cleanups, more help texts.      
 
-  * Reboot support for installing an already running GPGee 
+  * Reboot support for installing an already running GPGee.
 
 
 Noteworthy changes in version 0.0.2 (2005-11-08)

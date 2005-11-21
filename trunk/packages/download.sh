@@ -102,12 +102,13 @@ ${WGET} -c ${server_gpgee}/gpgee-1.2.2-bin.zip
 ${WGET} -c ${server_gpgee}/gpgee-1.2.2-src.zip
 
 
-# GnuPG stuff.
+# GnuPG stuff. 
 
 server_gnupg=http://ftp.gnupg.org/gcrypt
 
-${WGET} -c ${server_gnupg}/gnupg/gnupg-1.4.2.tar.gz
-${WGET} -c ${server_gnupg}/gnupg/gnupg-1.4.2.tar.gz.sig
+# (see below for gnupg - we use the CVS version for now)
+#${WGET} -c ${server_gnupg}/gnupg/gnupg-1.4.2.tar.gz
+#${WGET} -c ${server_gnupg}/gnupg/gnupg-1.4.2.tar.gz.sig
 
 #${WGET} -c ${server_gnupg}/gpgme/gpgme-1.1.0.tar.gz
 #${WGET} -c ${server_gnupg}/gpgme/gpgme-1.1.0.tar.gz.sig
@@ -117,6 +118,7 @@ ${WGET} -c ${server_gnupg}/gnupg/gnupg-1.4.2.tar.gz.sig
 
 server_g10code="ftp://ftp.g10code.com/g10code/scratch"
 
+${WGET} -c ${server_g10code}/gnupg-1.4.3-cvs.tar.bz2
 ${WGET} -c ${server_g10code}/libgpg-error-1.2-cvs.tar.bz2
 ${WGET} -c ${server_g10code}/gpgme-1.2.0-cvs.tar.bz2
 ${WGET} -c ${server_g10code}/gpa-0.7.1-cvs.tar.bz2
