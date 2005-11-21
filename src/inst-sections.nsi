@@ -493,8 +493,10 @@ Section "-startmenu"
                    "$INSTDIR\share\gnupg\faq.html" \
                    "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_gnupg_faq)
 
-    CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\Uninstall.lnk" \
-	"$INSTDIR\${PACKAGE}-uninstall.exe"
+# No more uninstall link becuase Windows has its wom feature to call
+#  the uninstaller.
+#    CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\Uninstall.lnk" \
+#	"$INSTDIR\${PACKAGE}-uninstall.exe"
 !insertmacro MUI_STARTMENU_WRITE_END
 !endif
 SectionEnd

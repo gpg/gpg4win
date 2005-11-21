@@ -1,3 +1,9 @@
+2005-11-21  Werner Koch  <wk@g10code.com>
+
+	Released 0.1.0.
+
+	* src/inst-sections.nsi: Disable uninstaller menu link.
+
 2005-11-18  Werner Koch  <wk@g10code.com>
 
 	* src/inst-sections.nsi: Add more dependencies to sylpheed.
