@@ -116,6 +116,7 @@ Var STARTMENU_FOLDER
 !insertmacro MUI_PAGE_STARTMENU Application $STARTMENU_FOLDER
 !endif
 
+!insertmacro MUI_PAGE_CUSTOMFUNCTION_PRE PrintCloseOtherApps
 !insertmacro MUI_PAGE_INSTFILES
 
 !define MUI_FINISHPAGE_RUN "$INSTDIR\gpa.exe"
@@ -219,13 +220,43 @@ Function PrintNonAdminWarning
  leave:
 FunctionEnd
 
+
+# Check whether this is a reinstall and popup a message box to explain
+# that it is better to close other apps before continuing
+Function PrintCloseOtherApps
+    IfFileExists $INSTDIR\gnupg.exe print_warning
+    IfFileExists $INSTDIR\winpt.exe print_warning
+    IfFileExists $INSTDIR\gpa.exe   print_warning
+    IfFileExists $INSTDIR\gpgol.dll print_warning
+    IfFileExists $INSTDIR\gpgee.dll print_warning
+    Return
+   print_warning:
+    MessageBox MB_OK|MB_ICONEXCLAMATION "$(T_CloseOtherApps)"
+    IfFileExists $INSTDIR\winpt.exe 0 +2
+      ExecWait '"$INSTDIR\winpt.exe" --stop'
+   leave:
+FunctionEnd
+
+
 # From Function PrintNonAdminWarning
 LangString T_AdminNeeded ${LANG_ENGLISH} \
    "Warning: Administrator permissions required for a successful installation"
 LangString T_AdminNeeded ${LANG_GERMAN} \
-   "Warnung: Für eine erfolgreiche Installation werden \
+   "Achtung: Für eine erfolgreiche Installation werden \
     Administratorrechte benötigt."
 
+# From Function PrintCloseOtherApps
+LangString T_CloseOtherApps ${LANG_ENGLISH} \
+   "Please make sure that other applications are not running. \
+    In particular you should close Outlook and all Explorer \
+    windows.  Gpg4Win will try to install anyway but a reboot \
+    will be required then."
+LangString T_CloseOtherApps ${LANG_GERMAN} \
+   "Bitte stellen Sie sicher, daß alle anderen Anwendugen geschlossen \
+    sind.  Insbesondere sollten Sie Outlook und alle Explorer Fenster \
+    schliessen bevor sie die Installation fortsetzen.  Gpg4Win wird auf \
+    jeden Fall versuchen eine Instalaltion durchzuführen es ist dann aber \
+    u.U. notwendig das System neu zu starten."
 
 # FIXME: The GetAfterChar function comes from the NSIS wiki.
 Function un.GetAfterChar

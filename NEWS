@@ -1,3 +1,14 @@
+Noteworthy changes in version 0.2.0 (2005-11-24)
+------------------------------------------------
+
+  * The installer tries to stop a running instance of WinPT.
+
+  * A warning message to close other application is displayed if
+    necessary.
+
+  * Cleanups.
+
+
 Noteworthy changes in version 0.1.0 (2005-11-21)
 ------------------------------------------------
 
