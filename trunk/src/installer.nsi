@@ -116,7 +116,7 @@ Var STARTMENU_FOLDER
 !insertmacro MUI_PAGE_STARTMENU Application $STARTMENU_FOLDER
 !endif
 
-!insertmacro MUI_PAGE_CUSTOMFUNCTION_PRE PrintCloseOtherApps
+!define MUI_PAGE_CUSTOMFUNCTION_PRE PrintCloseOtherApps
 !insertmacro MUI_PAGE_INSTFILES
 
 !define MUI_FINISHPAGE_RUN "$INSTDIR\gpa.exe"
@@ -254,9 +254,9 @@ LangString T_CloseOtherApps ${LANG_ENGLISH} \
 LangString T_CloseOtherApps ${LANG_GERMAN} \
    "Bitte stellen Sie sicher, daß alle anderen Anwendugen geschlossen \
     sind.  Insbesondere sollten Sie Outlook und alle Explorer Fenster \
-    schliessen bevor sie die Installation fortsetzen.  Gpg4Win wird auf \
-    jeden Fall versuchen eine Instalaltion durchzuführen es ist dann aber \
-    u.U. notwendig das System neu zu starten."
+    schliessen bevor Sie die Installation fortsetzen.  Gpg4Win wird auf \
+    jeden Fall versuchen, eine Installation durchzuführen; es ist dann aber \
+    u.U. notwendig, das System neu zu starten."
 
 # FIXME: The GetAfterChar function comes from the NSIS wiki.
 Function un.GetAfterChar
