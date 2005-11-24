@@ -90,8 +90,8 @@ ${WGET} -c ${server_gimp}/pkgconfig-0.15.0.tar.gz
 
 server_winpt="http://wald.intevation.org/frs/download.php"
 
-${WGET} -c ${server_winpt}/53/winpt-0.11.1.tar.bz2
-${WGET} -c ${server_winpt}/54/winpt-0.11.1.tar.bz2.sig
+${WGET} -c ${server_winpt}/59/winpt-0.11.1.tar.bz2
+${WGET} -c ${server_winpt}/60/winpt-0.11.1.tar.bz2.sig
 
 # GPGee
 # Note: This is a temporary location
