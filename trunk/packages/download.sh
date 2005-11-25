@@ -94,8 +94,8 @@ ${WGET} -c ${server_gimp}/pkgconfig-0.15.0.tar.gz
 #${WGET} -c ${server_winpt}/60/winpt-0.11.1.tar.bz2.sig
 # A recent CVS version is needed and no release is available
 # yet, so the scratch dir is temporary used.
-${WGET} -c "ftp://ftp.g10code.com/g10code/scratch/winpt-0.11.2-cvs.tar.bz2"
-${WGET} -c "ftp://ftp.g10code.com/g10code/scratch/winpt-0.11.2-cvs.tar.bz2.sig"
+${WGET} -c "ftp://ftp.g10code.com/g10code/scratch/winpt-0.11.2-cvs2.tar.bz2"
+${WGET} -c "ftp://ftp.g10code.com/g10code/scratch/winpt-0.11.2-cvs2.tar.bz2.sig"
 
 # GPGee
 # Note: This is a temporary location
