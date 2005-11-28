@@ -1,5 +1,9 @@
 2005-11-28  Werner Koch  <wk@g10code.com>
 
+	Released 0.2.1.
+
+	* configure.ac: Append the revision number to the version suffix.
+
 	* src/Makefile.am: Reduced verbosity level of makensis.
 
 	* src/exdll.h: Adapted license to the NSIS one.
