@@ -24,7 +24,7 @@
 !define prefix ${ipdir}/man_novice_de-${gpg4win_pkg_man_novice_de_version}
 
 
-Section "Novice Manual (de)" SEC_man_novice_de
+Section "$(DESC_Name_man_novice_de)" SEC_man_novice_de
   SetOutPath "$INSTDIR"
 !ifdef SOURCES
   File "${gpg4win_pkg_man_novice_de}"
@@ -35,6 +35,11 @@ Section "Novice Manual (de)" SEC_man_novice_de
 !endif
 SectionEnd
 
+
+LangString DESC_Name_man_novice_de ${LANG_ENGLISH} \
+   "Novice Manual (German)"
+LangString DESC_Name_man_novice_de ${LANG_GERMAN} \
+   "Einsteigerhandbuch"
 
 LangString DESC_SEC_man_novice_de ${LANG_ENGLISH} \
    "Gpg4Win Manual for the Novice User (German)"

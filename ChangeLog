@@ -1,3 +1,23 @@
+2005-11-28  Werner Koch  <wk@g10code.com>
+
+	* src/Makefile.am: Reduced verbosity level of makensis.
+
+	* src/exdll.h: Adapted license to the NSIS one.
+	(popstring): Add arg MAXLEN.
+	* src/g4wihelp.c (playsound, stopsound): New.
+	(splash_wndproc, showsplash): New.
+	* src/inst-sections.nsi (.onInit): Use our new g4wihelp functions.
+	(-startmenu): Translate the startmenu entries for the manuals.
+
+	* src/installer.nsi (ReserveFile): Removed advsplash.
+
+	* src/inst-gpa.nsi: Uppercase section name.
+
+	* src/inst-man_novice_de.nsi, src/inst-man_advanced_de.nsi:
+	Translate section name.
+
+	* src/inst-gpgol.nsi: Try to register even on overwrite failure.
+
 2005-11-24  Werner Koch  <wk@g10code.com>
 
 	Released 0.2.0.

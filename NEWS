@@ -1,6 +1,12 @@
 Noteworthy changes in version 0.2.1
 ------------------------------------------------
 
+  * Translated the displayed names of the manuals in the package
+    selection.  
+
+  * Removed splash.dlle by code put into our helper DLL.  The tune is
+    not anymore cut off to early.
+
 
 Noteworthy changes in version 0.2.0 (2005-11-24)
 ------------------------------------------------

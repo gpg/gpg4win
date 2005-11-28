@@ -53,7 +53,7 @@ static unsigned int g_stringsize;
 static stack_t **g_stacktop;
 static char *g_variables;
 
-static int __stdcall popstring(char *str); /* 0 on success, 1 on empty stack */
+static int __stdcall popstring(char *str, size_t maxlen); /* 0 on success, 1 on empty stack */
 static void __stdcall pushstring(const char *str);
 
 enum
@@ -106,14 +106,16 @@ typedef struct {
   int (__stdcall *ExecuteCodeSegment)(int, HWND);
 } extra_parameters_t;
 
-// utility functions (not required but often useful)
+
+/* Utility functions (not required but often useful). */
 static int __stdcall 
-popstring(char *str)
+popstring(char *str, size_t maxlen)
 {
   stack_t *th;
-  if (!g_stacktop || !*g_stacktop) return 1;
+  if (!g_stacktop || !*g_stacktop) 
+    return 1;
   th=(*g_stacktop);
-  lstrcpy(str,th->text);
+  lstrcpyn (str, th->text, maxlen);
   *g_stacktop = th->next;
   GlobalFree((HGLOBAL)th);
   return 0;

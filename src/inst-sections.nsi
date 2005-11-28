@@ -358,10 +358,11 @@ Function .onInit
   SetOutPath $TEMP
   File /oname=gpgspltmp.bmp "${TOP_SRCDIR}/src/gpg4win-splash.bmp"
   File /oname=gpgspltmp.wav "${TOP_SRCDIR}/src/gpg4win-splash.wav"
-  advsplash::show 3000 600 400 -1 $TEMP\gpgspltmp
-  Pop $0 # $0 has '1' if the user closed the splash screen early,
-         # '0' if everything closed normal, and '-1' if some error occured.
-  Delete $TEMP\gpgspltmp.wav
+  g4wihelp::playsound $TEMP\gpgspltmp.wav
+  g4wihelp::showsplash 3000 $TEMP\gpgspltmp.bmp
+
+  #FIXME: Ned to delete the WAV later.
+  #Delete $TEMP\gpgspltmp.wav
   Delete $TEMP\gpgspltmp.bmp
 
   Call CalcDepends
@@ -463,7 +464,8 @@ Section "-startmenu"
     SectionGetFlags ${SEC_man_novice_de} $R0 
     IntOp $R0 $R0 & ${SF_SELECTED} 
     IntCmp $R0 ${SF_SELECTED} 0 no_man_novice_de_menu 
-    CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\Novice Manual.lnk" \
+    CreateShortCut \
+        "$SMPROGRAMS\$STARTMENU_FOLDER\$(DESC_Name_man_novice_de).lnk" \
 	"$INSTDIR\share\gpg4win\man_novice_de.html" \
         "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_man_novice_de)
   no_man_novice_de_menu:
@@ -473,7 +475,8 @@ Section "-startmenu"
     SectionGetFlags ${SEC_man_advanced_de} $R0 
     IntOp $R0 $R0 & ${SF_SELECTED} 
     IntCmp $R0 ${SF_SELECTED} 0 no_man_advanced_de_menu 
-    CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\Advanced Manual.lnk" \
+    CreateShortCut \
+        "$SMPROGRAMS\$STARTMENU_FOLDER\$(DESC_Name_man_advanced_de).lnk" \
 	"$INSTDIR\share\gpg4win\man_novice_de.html" \
         "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_man_advanced_de)
   no_man_advanced_de_menu:
