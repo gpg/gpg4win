@@ -24,7 +24,7 @@
 !define prefix ${ipdir}/man_advanced_de-${gpg4win_pkg_man_advanced_de_version}
 
 
-Section "Advanced Manual (de)" SEC_man_advanced_de
+Section "$(DESC_Name_man_advanced_de)" SEC_man_advanced_de
   SetOutPath "$INSTDIR"
 !ifdef SOURCES
   File "${gpg4win_pkg_man_advanced_de}"
@@ -35,6 +35,11 @@ Section "Advanced Manual (de)" SEC_man_advanced_de
 !endif
 SectionEnd
 
+
+LangString DESC_Name_man_advanced_de ${LANG_ENGLISH} \
+   "Advanced Manual (German)"
+LangString DESC_Name_man_advanced_de ${LANG_GERMAN} \
+   "Durchblickerhandbuch"
 
 LangString DESC_SEC_man_advanced_de ${LANG_ENGLISH} \
    "Gpg4Win Manual for the Advanced User (German)"

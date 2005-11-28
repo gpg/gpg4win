@@ -33,10 +33,11 @@ Section "GPGol" SEC_gpgol
   SetOverwrite try
   File ${prefix}/bin/gpgol.dll
   SetOverwrite lastused
-  ifErrors 0 +4
+  ifErrors 0 do_reg
       File /oname=gpgol.dll.tmp ${prefix}/bin/gpgol.dll
       Rename /REBOOTOK gpgol.dll.tmp gpgol.dll
 
+ do_reg:
   # Register the DLL.
   RegDLL "$INSTDIR\gpgol.dll"
   ifErrors 0 +2
