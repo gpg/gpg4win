@@ -92,7 +92,6 @@ VIAddVersionKey "FileVersion" "${PROD_VERSION}"
 #!define MUI_LANGDLL_REGISTRY_KEY "Software\GNU\${PRETTY_PACKAGE_SHORT}" 
 #!define MUI_LANGDLL_REGISTRY_VALUENAME "Installer Language"
 
-
 # The list of wizard pages.
 
 !define MUI_WELCOMEPAGE_TITLE "$(T_WelcomeTitle)"
@@ -109,6 +108,7 @@ VIAddVersionKey "FileVersion" "${PROD_VERSION}"
 
 !ifdef HAVE_STARTMENU
 Var STARTMENU_FOLDER
+
 !define MUI_STARTMENUPAGE_REGISTRY_ROOT "HKCU"
 !define MUI_STARTMENUPAGE_REGISTRY_KEY "Software\GNU\${PRETTY_PACKAGE_SHORT}"
 !define MUI_STARTMENUPAGE_REGISTRY_VALUENAME "Start Menu Folder"
@@ -119,8 +119,8 @@ Var STARTMENU_FOLDER
 !define MUI_PAGE_CUSTOMFUNCTION_PRE PrintCloseOtherApps
 !insertmacro MUI_PAGE_INSTFILES
 
-!define MUI_FINISHPAGE_RUN "$INSTDIR\gpa.exe"
-!define MUI_FINISHPAGE_RUN_PARAMETERS "--keyring"
+!define MUI_FINISHPAGE_RUN
+!define MUI_FINISHPAGE_RUN_FUNCTION RunOnFinish
 !define MUI_FINISHPAGE_RUN_TEXT "$(T_RunKeyManager)"
 !define MUI_FINISHPAGE_RUN_NOTCHECKED
 !define MUI_FINISHPAGE_LINK "$(T_MoreInfo)"
@@ -193,6 +193,12 @@ LangString T_MoreInfo ${LANG_ENGLISH} \
    "Click here for the project's homepage"
 LangString T_MoreInfo ${LANG_GERMAN} \
    "Hier klicken um zur Homepage des Projekts zu gelangen"
+
+LangString T_NoKeyManager ${LANG_ENGLISH} \
+   "No key manager has been installed, thus we can't run one now."
+LangString T_NoKeyManager ${LANG_GERMAN} \
+   "Es wurde keine Schlüsselverwaltung installiert. \
+    Deswegen kann sie jetzt auch nicht ausgeführt werden."
 
 
 # Functions
