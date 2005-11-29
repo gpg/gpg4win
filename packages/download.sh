@@ -18,116 +18,66 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
+# Syntax of the packages.current file:
+#
+# If the first non whitespace character of a line is #, the line is
+# considered a comment.  If the first word of a line is "server", the
+# rest of the line will be taken as the base URL for following file
+# commands.  If the first word of a line is "file" the rest of the
+# line will be appended to the current base URL (with a / as
+# delimiter).  Example:
+#
+#    # GnuPG stuff. 
+#    server ftp://ftp.gnupg.org/gcrypt
+#    
+#    file gnupg/gnupg-1.4.2.tar.gz
+#    file gnupg/gnupg-1.4.2.tar.gz.sig
+#    
+
 WGET=wget
 
+${WGET} -N ftp://ftp.gpw4win.org/gpg4win/packages.current{,.sig}
 
-# GNU
-
-server_gnu=ftp://ftp.cs.tu-berlin.de/pub/gnu
-
-${WGET} -c ${server_gnu}/gettext/gettext-runtime-0.13.1.bin.woe32.zip
-${WGET} -c ${server_gnu}/gettext/gettext-runtime-0.13.1.bin.woe32.zip.sig
-${WGET} -c ${server_gnu}/gettext/gettext-0.13.1.tar.gz
-${WGET} -c ${server_gnu}/gettext/gettext-0.13.1.tar.gz.sig
-
-${WGET} -c ${server_gnu}/libiconv/libiconv-1.9.1.bin.woe32.zip
-${WGET} -c ${server_gnu}/libiconv/libiconv-1.9.1.bin.woe32.zip.sig
-${WGET} -c ${server_gnu}/libiconv/libiconv-1.9.1.tar.gz
-# No signature for the source package.
+if ! gpgv --keyring ./packages.keys packages.current.sig packages.current
+  then
+    echo "list of packages is not usable." >&2
+    exit 1
+fi
 
 
-# http://gnuwin32.sourceforge.net/
-# Note:  Mesh, Duesseldorf does not work reliable anymore.
-server_gnuwin32=http://kent.dl.sourceforge.net/sourceforge/gnuwin32
-
-${WGET} -c ${server_gnuwin32}/zlib-1.2.3-bin.zip
-${WGET} -c ${server_gnuwin32}/zlib-1.2.3-lib.zip
-${WGET} -c ${server_gnuwin32}/zlib-1.2.3-src.zip
-
-${WGET} -c ${server_gnuwin32}/libpng-1.2.8-bin.zip
-${WGET} -c ${server_gnuwin32}/libpng-1.2.8-lib.zip
-${WGET} -c ${server_gnuwin32}/libpng-1.2.8-src.zip
-
-${WGET} -c ${server_gnuwin32}/crypt-2.2.5-lib.zip
-${WGET} -c ${server_gnuwin32}/crypt-2.2.5-src.zip
-
-${WGET} -c ${server_gnuwin32}/regex-0.12-lib.zip
-${WGET} -c ${server_gnuwin32}/regex-0.12-src.zip
-
-
-# RedHat
-
-server_redhat=ftp://sources.redhat.com/pub/
-
-${WGET} -c ${server_redhat}/pthreads-win32/pthreads-w32-2-7-0-release.tar.gz
-
-
-# http://www.gimp.org/~tml/gimp/win32/downloads.html
-
-server_gtk=ftp://ftp.gtk.org/pub/gtk/v2.6
-server_gimp=http://www.gimp.org/~tml/gimp/win32
-
-${WGET} -c ${server_gtk}/win32/glib-2.6.6.zip
-${WGET} -c ${server_gtk}/win32/glib-dev-2.6.6.zip
-${WGET} -c ${server_gtk}/glib-2.6.6.tar.bz2
-
-${WGET} -c ${server_gtk}/win32/atk-1.9.0.zip
-${WGET} -c ${server_gtk}/win32/atk-dev-1.9.0.zip
-${WGET} -c ${server_gtk}/atk-1.9.0.tar.bz2
-
-${WGET} -c ${server_gtk}/win32/pango-1.8.2.zip
-${WGET} -c ${server_gtk}/win32/pango-dev-1.8.2.zip
-${WGET} -c ${server_gtk}/pango-1.8.2.tar.bz2
-
-${WGET} -c ${server_gtk}/win32/gtk+-2.6.9.zip
-${WGET} -c ${server_gtk}/win32/gtk+-dev-2.6.9.zip
-${WGET} -c ${server_gtk}/gtk+-2.6.6.tar.bz2
-
-${WGET} -c ${server_gimp}/pkgconfig-0.15.zip
-${WGET} -c ${server_gimp}/pkgconfig-0.15.0.tar.gz
-
-# WinPT
-
-#server_winpt="http://wald.intevation.org/frs/download.php"
-#
-#${WGET} -c ${server_winpt}/59/winpt-0.11.1.tar.bz2
-#${WGET} -c ${server_winpt}/60/winpt-0.11.1.tar.bz2.sig
-# A recent CVS version is needed and no release is available
-# yet, so the scratch dir is temporary used.
-${WGET} -c "ftp://ftp.g10code.com/g10code/scratch/winpt-0.11.2-cvs2.tar.bz2"
-${WGET} -c "ftp://ftp.g10code.com/g10code/scratch/winpt-0.11.2-cvs2.tar.bz2.sig"
-
-# GPGee
-# Note: This is a temporary location
-
-server_gpgee="ftp://ftp.g10code.com/g10code/scratch"
-
-${WGET} -c ${server_gpgee}/gpgee-1.2.2-bin.zip
-${WGET} -c ${server_gpgee}/gpgee-1.2.2-src.zip
-
-
-# GnuPG stuff. 
-
-server_gnupg=http://ftp.gnupg.org/gcrypt
-
-${WGET} -c ${server_gnupg}/gnupg/gnupg-1.4.2.tar.gz
-${WGET} -c ${server_gnupg}/gnupg/gnupg-1.4.2.tar.gz.sig
-
-#${WGET} -c ${server_gnupg}/gpgme/gpgme-1.1.0.tar.gz
-#${WGET} -c ${server_gnupg}/gpgme/gpgme-1.1.0.tar.gz.sig
-
-# libgpg-error, GPA and GPGol currently come from manually crafted
-# packages.  However, we make them available at a scratch location
-
-server_g10code="ftp://ftp.g10code.com/g10code/scratch"
-
-${WGET} -c ${server_g10code}/libgpg-error-1.2-cvs.tar.bz2
-${WGET} -c ${server_g10code}/gpgme-1.2.0-cvs.tar.bz2
-${WGET} -c ${server_g10code}/gpa-0.7.1-cvs.tar.bz2
-${WGET} -c ${server_g10code}/gpgol-0.9.4-cvs.tar.bz2
-${WGET} -c ${server_g10code}/sylpheed-claws-1.9.99cvs5-wk1.tar.bz2
-
-# Dummy manual pages
-${WGET} -c ${server_g10code}/man_novice_de-0.0.0-cvs.tar.gz
-${WGET} -c ${server_g10code}/man_advanced_de-0.0.0-cvs.tar.gz
-${WGET} -c ${server_g10code}/eudoragpg-0.0.0-cvs.tar.gz
+lnr=0
+[ -f '.#download.failed' ] && rm '.#download.failed'
+cat packages.current | \
+while read key value ; do
+    (( lnr++ ))
+    [ -z "$key" ] && continue
+    case "$key" in
+     \#*)    ;;
+    server) 
+       server="$value" 
+       ;;
+    file)
+       if [ -z "$value" ]; then
+           echo "syntax error in file statement" >&2
+           exit 1
+       fi
+       if [ -z "$server" ]; then
+           echo "no server location available for file \`$value'" >&2
+           exit 1
+       fi
+       url="$server/$value"
+       echo "downloading \`$url'."
+       if ! ${WGET} -c -q "$url" ; then
+           echo "download of \`$url' failed." >&2
+           echo "$url" >> '.#download.failed'
+       fi
+       ;;
+     *)
+       echo "syntax error in packages.current, line $lnr." >&2
+       exit 1
+     esac
+done
+if [ -f '.#download.failed' ]; then
+  echo "some files failed to download" 2>&1
+  exit 1
+fi

@@ -2,11 +2,6 @@
 
 * Missing stuff
 ** WinPT signature file should better be named .sig
-** System.dll is unsuable under DLL.
-    We solved this by our g4wihelp DLL.
-    This can also do the check for existing versions
-    of GnuPG etc.  And maybe to display a jpeg splash screen and to
-    play continuesly an ogg encoded tune.
 
 * Build system
 ** Some versions of strip don't work.

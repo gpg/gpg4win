@@ -361,11 +361,19 @@ Function .onInit
   g4wihelp::playsound $TEMP\gpgspltmp.wav
   g4wihelp::showsplash 3000 $TEMP\gpgspltmp.bmp
 
-  #FIXME: Ned to delete the WAV later.
-  #Delete $TEMP\gpgspltmp.wav
   Delete $TEMP\gpgspltmp.bmp
+  ; Note that we delete gpgspltmp.wav in .onInst{Failed,Success}
 
   Call CalcDepends
+FunctionEnd
+
+
+Function .onInstFailed
+  Delete $TEMP\gpgspltmp.wav
+FunctionEnd
+
+Function .onInstSuccess
+  Delete $TEMP\gpgspltmp.wav
 FunctionEnd
 
 Function .onSelChange

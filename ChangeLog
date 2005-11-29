@@ -1,3 +1,13 @@
+2005-11-29  Werner Koch  <wk@g10code.com>
+
+	* packages/packages.current: New.  This is more or less a
+	template; the version on the server may be updated without syncing
+	it to this version.
+	* packages/packages.keys: New.
+	* packages/download.sh: Rewritten.
+
+	* src/inst-sections.nsi (.onInstFailed, .onInstSuccess): New.
+
 2005-11-28  Werner Koch  <wk@g10code.com>
 
 	Released 0.2.1.
