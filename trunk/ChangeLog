@@ -7,6 +7,9 @@
 	* packages/download.sh: Rewritten.
 
 	* src/inst-sections.nsi (.onInstFailed, .onInstSuccess): New.
+	(RunOnFinish): New function to run a key manager depending on the
+	installed ones.
+	* src/installer.nsi: Use a function to run the key manager on finish.
 
 2005-11-28  Werner Koch  <wk@g10code.com>
 

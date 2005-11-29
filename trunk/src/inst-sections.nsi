@@ -381,6 +381,28 @@ Function .onSelChange
 FunctionEnd
 
 
+# This function is run from the finish page.
+Function RunOnFinish
+!ifdef HAVE_PKG_GPA
+    SectionGetFlags ${SEC_gpa} $R0 
+    IntOp $R0 $R0 & ${SF_SELECTED} 
+    IntCmp $R0 ${SF_SELECTED} 0 no_gpa_avail
+       Exec "$INSTDIR\gpa.exe"
+       Return
+   no_gpa_avail:
+!endif
+!ifdef HAVE_PKG_WINPT
+    SectionGetFlags ${SEC_winpt} $R0 
+    IntOp $R0 $R0 & ${SF_SELECTED} 
+    IntCmp $R0 ${SF_SELECTED} 0 no_winpt_avail
+       Exec "$INSTDIR\WinPT.exe --keymanager"
+       Return
+   no_winpt_avail:
+!endif
+  MessageBox MB_OK "$(T_NoKeyManager)"
+FunctionEnd
+
+
 # This must be in a central place.  Urgs.
 
 !insertmacro MUI_FUNCTION_DESCRIPTION_BEGIN
