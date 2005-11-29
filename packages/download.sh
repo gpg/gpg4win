@@ -36,7 +36,12 @@
 
 WGET=wget
 
-${WGET} -N ftp://ftp.gpw4win.org/gpg4win/packages.current{,.sig}
+url="ftp://ftp.gpg4win.org/gpg4win/"
+echo "downloading packages list from \`$url'."
+if ! ${WGET} -N -q $url/packages.current{,.sig} ; then
+    echo "download of packages list failed." >&2
+    exit 1
+fi
 
 if ! gpgv --keyring ./packages.keys packages.current.sig packages.current
   then
