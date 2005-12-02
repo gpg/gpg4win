@@ -1,3 +1,8 @@
+2005-12-02  Timo Schulz  <ts@g10code.com>
+
+	* packages/download.sh: Update WinPT url.
+	* packages/packages.keys: Add second release key for WinPT.
+	
 2005-11-29  Werner Koch  <wk@g10code.com>
 
 	* packages/packages.current: New.  This is more or less a
