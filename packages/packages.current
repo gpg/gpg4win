@@ -85,14 +85,15 @@ file pkgconfig-0.15.0.tar.gz
 
 # WinPT
 
-#server http://wald.intevation.org/frs/download.php
-#
-#file 59/winpt-0.11.1.tar.bz2
-#file 60/winpt-0.11.1.tar.bz2.sig
-server ftp://ftp.g10code.com/g10code/scratch
+server http://wald.intevation.org/frs/download.php
 
-file winpt-0.11.2-cvs2.tar.bz2
-file winpt-0.11.2-cvs2.tar.bz2.sig
+file 65/winpt-0.11.2.tar.bz2
+file 66/winpt-0.11.2.tar.bz2.sig
+
+#server ftp://ftp.g10code.com/g10code/scratch
+#
+#file winpt-0.11.2-cvs2.tar.bz2
+#file winpt-0.11.2-cvs2.tar.bz2.sig
 
 
 # GPGee
