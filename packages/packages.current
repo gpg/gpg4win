@@ -108,7 +108,8 @@ file gpgee-1.2.2-src.zip
 # GPGol
 server ftp://ftp.g10code.com/g10code/gpgol
 
-file gpgol-0.9.4-cvs.tar.bz2
+file gpgol-0.9.4.tar.bz2
+file gpgol-0.9.4.tar.bz2.sig
 
 
 # GnuPG stuff. 
