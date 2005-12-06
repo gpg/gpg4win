@@ -1,5 +1,15 @@
-Noteworthy changes in version 0.2.2
+Noteworthy changes in version 0.3.0 (2005-12-06)
 ------------------------------------------------
+
+  * Add i18n stuff to gpgol.  Only german for now.
+
+  * Winpt updates.
+
+  * Changed the way the download script works.  It now uses a packages
+    file from ftp.gpw4win.org and only downloads packages which are
+    not yet downloaded unless the --force option is used.  Chnages to
+    the packages are to be recorded in that packages file and not
+    anymore in the SVN.
 
 
 Noteworthy changes in version 0.2.1 (2005-11-28)

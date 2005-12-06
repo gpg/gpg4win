@@ -43,6 +43,10 @@ Section "GPGol" SEC_gpgol
   ifErrors 0 +2
      MessageBox MB_OK "$(T_GPGol_RegFailed)"
 
+  SetOutPath "$INSTDIR\share\locale\de\LC_MESSAGES"
+  File ${prefix}/share/locale/de/LC_MESSAGES/gpgol.mo
+
+
 !endif
 SectionEnd
 

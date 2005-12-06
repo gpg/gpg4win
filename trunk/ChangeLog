@@ -1,8 +1,22 @@
+2005-12-06  Werner Koch  <wk@g10code.com>
+
+	Released 0.3.0.
+
+2005-12-02  Werner Koch  <wk@g10code.com>
+
+	* packages/download.sh: New option --force.  Default to skip
+	already existing packages.
+
 2005-12-02  Timo Schulz  <ts@g10code.com>
 
 	* packages/download.sh: Update WinPT url.
 	* packages/packages.keys: Add second release key for WinPT.
 	
+2005-11-30  Werner Koch  <wk@g10code.com>
+
+	* src/inst-gpgol.nsi: Install German translation.
+	* src/uninst-gpgol.nsi: Likewise.
+
 2005-11-29  Werner Koch  <wk@g10code.com>
 
 	* packages/packages.current: New.  This is more or less a

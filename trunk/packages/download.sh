@@ -34,6 +34,12 @@
 #    file gnupg/gnupg-1.4.2.tar.gz.sig
 #    
 
+force=no
+if [ "$1" = "--force" ]; then
+    force=yes
+    shift
+fi
+
 WGET=wget
 
 url="ftp://ftp.gpg4win.org/gpg4win/"
@@ -71,10 +77,15 @@ while read key value ; do
            exit 1
        fi
        url="$server/$value"
-       echo "downloading \`$url'."
-       if ! ${WGET} -c -q "$url" ; then
-           echo "download of \`$url' failed." >&2
-           echo "$url" >> '.#download.failed'
+       name=`basename "$value"`
+       if [ -f "$name" -a "$force" = "no" ]; then
+           echo "package     \`$url' already exists."
+       else
+           echo "downloading \`$url'."
+           if ! ${WGET} -c -q "$url" ; then
+               echo "download of \`$url' failed." >&2
+               echo "$url" >> '.#download.failed'
+           fi
        fi
        ;;
      *)
