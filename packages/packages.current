@@ -12,7 +12,8 @@
 # commands.  If the first word of a line is "file" the rest of the
 # line will be appended to the current base URL (with a / as
 # delimiter).
-
+#
+# 2005-12-06 11:16:12
 
 # GNU
 
@@ -104,6 +105,11 @@ server ftp://ftp.g10code.com/g10code/scratch
 file gpgee-1.2.2-bin.zip
 file gpgee-1.2.2-src.zip
 
+# GPGol
+server ftp://ftp.g10code.com/g10code/gpgol
+
+file gpgol-0.9.4-cvs.tar.bz2
+
 
 # GnuPG stuff. 
 
@@ -121,7 +127,6 @@ server ftp://ftp.g10code.com/g10code/scratch
 file libgpg-error-1.2-cvs.tar.bz2
 file gpgme-1.2.0-cvs.tar.bz2
 file gpa-0.7.1-cvs.tar.bz2
-file gpgol-0.9.4-cvs.tar.bz2
 file sylpheed-claws-1.9.99cvs5-wk1.tar.bz2
 file man_novice_de-0.0.0-cvs.tar.gz
 file man_advanced_de-0.0.0-cvs.tar.gz

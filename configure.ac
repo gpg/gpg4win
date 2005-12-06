@@ -24,8 +24,8 @@ min_automake_version="1.9.3"
 
 # Remember to change the version number immediately *after* a release.
 # Uncomment the my_iscvs macro for non-released code.
-m4_define(my_version, [0.2.2])
-m4_define(my_iscvs, yes)
+m4_define(my_version, [0.3.0])
+#m4_define(my_iscvs, yes)
 AC_INIT([gpg4win], my_version[]m4_ifdef([my_iscvs], [-cvs[]m4_translit(
                   [$Revision$],[Ra-z $:])]),
                   [gpg4win-devel@wald.intevation.org])

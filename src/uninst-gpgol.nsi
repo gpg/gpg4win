@@ -30,6 +30,9 @@ Section "-un.gpgol"
   Call un.SourceDelete
 !else
 
+  Delete "$INSTDIR\share\locale\de\LC_MESSAGES\gpgol.mo"
+  RMDir "$INSTDIR\share\locale\de\LC_MESSAGES"
+
   UnRegDLL "$INSTDIR\gpgol.dll"
 
   Delete /REBOOTOK "$INSTDIR\gpgol.dll"
