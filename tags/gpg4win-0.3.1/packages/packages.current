@@ -1,0 +1,134 @@
+# packages.current - list of current packages for use with gpg4win -*- sh -*-
+#
+#
+# This list as well as its corresponding signature file are intended
+# to be downloaded by the download.sh script of gpg4win.  The download
+# script will then process the statements here to actually download
+# the packages.  The syntax is trivial:
+#
+# If the first non whitespace character of a line is #, the line is
+# considered a comment.  If the first word of a line is "server", the
+# rest of the line will be taken as the base URL for following file
+# commands.  If the first word of a line is "file" the rest of the
+# line will be appended to the current base URL (with a / as
+# delimiter).
+#
+# 2005-12-06 11:16:12
+
+# GNU
+
+server ftp://ftp.cs.tu-berlin.de/pub/gnu
+
+file gettext/gettext-runtime-0.13.1.bin.woe32.zip
+file gettext/gettext-runtime-0.13.1.bin.woe32.zip.sig
+file gettext/gettext-0.13.1.tar.gz
+file gettext/gettext-0.13.1.tar.gz.sig
+
+file libiconv/libiconv-1.9.1.bin.woe32.zip
+file libiconv/libiconv-1.9.1.bin.woe32.zip.sig
+file libiconv/libiconv-1.9.1.tar.gz
+# No signature for the source package.
+
+
+# Sourceforge
+server http://kent.dl.sourceforge.net/sourceforge/gnuwin32
+
+file zlib-1.2.3-bin.zip
+file zlib-1.2.3-lib.zip
+file zlib-1.2.3-src.zip
+
+file libpng-1.2.8-bin.zip
+file libpng-1.2.8-lib.zip
+file libpng-1.2.8-src.zip
+
+file crypt-2.2.5-lib.zip
+file crypt-2.2.5-src.zip
+
+file regex-0.12-lib.zip
+file regex-0.12-src.zip
+
+
+# RedHat
+
+server ftp://sources.redhat.com/pub
+
+file pthreads-win32/pthreads-w32-2-7-0-release.tar.gz
+
+
+# GTK+ stuff
+# http://www.gimp.org/~tml/gimp/win32/downloads.html
+
+server ftp://ftp.gtk.org/pub/gtk/v2.6
+
+file win32/glib-2.6.6.zip
+file win32/glib-dev-2.6.6.zip
+file glib-2.6.6.tar.bz2
+
+file win32/atk-1.9.0.zip
+file win32/atk-dev-1.9.0.zip
+file atk-1.9.0.tar.bz2
+
+file win32/pango-1.8.2.zip
+file win32/pango-dev-1.8.2.zip
+file pango-1.8.2.tar.bz2
+
+file win32/gtk+-2.6.9.zip
+file win32/gtk+-dev-2.6.9.zip
+file gtk+-2.6.6.tar.bz2
+
+
+# GIMP stuff for W32
+server http://www.gimp.org/~tml/gimp/win32
+
+file pkgconfig-0.15.zip
+file pkgconfig-0.15.0.tar.gz
+
+
+# WinPT
+
+#server http://wald.intevation.org/frs/download.php
+#file 65/winpt-0.11.2.tar.bz2
+#file 66/winpt-0.11.2.tar.bz2.sig
+
+server ftp://ftp.g10code.com/g10code/scratch
+file winpt-0.11.3-cvs.tar.bz2
+file winpt-0.11.3-cvs.tar.bz2.sig
+
+
+# GPGee
+# Note: This is a temporary location
+
+server ftp://ftp.g10code.com/g10code/scratch
+
+file gpgee-1.2.2-bin.zip
+file gpgee-1.2.2-src.zip
+
+# GPGol
+server ftp://ftp.g10code.com/g10code/gpgol
+
+file gpgol-0.9.5.tar.bz2
+file gpgol-0.9.5.tar.bz2.sig
+
+
+# GnuPG stuff. 
+
+server ftp://ftp.gnupg.org/gcrypt
+
+file gnupg/gnupg-1.4.2.tar.gz
+file gnupg/gnupg-1.4.2.tar.gz.sig
+
+
+# libgpg-error, GPA and GPGol currently come from manually crafted
+# packages.  However, we make them available at a scratch location
+
+server ftp://ftp.g10code.com/g10code/scratch
+
+file libgpg-error-1.2-cvs.tar.bz2
+file gpgme-1.2.0-cvs.tar.bz2
+file gpa-0.7.1-cvs.tar.bz2
+file sylpheed-claws-1.9.99cvs5-wk1.tar.bz2
+file man_novice_de-0.0.0-cvs.tar.gz
+file man_advanced_de-0.0.0-cvs.tar.gz
+file eudoragpg-0.0.0-cvs.tar.gz
+
+
