@@ -1,7 +1,22 @@
                                                           -*- outline -*-
 
 * Missing stuff
-** WinPT signature file should better be named .sig
+** Version number for the created installers
+  We need a way to have a different version number for the actual
+  installers.  It does not make sense to update the gpg4win version
+  number with each release and there will probably difdferent
+  installers released based on the same gpg4win packaes.  Thus a
+  configure option to set a "vendor" name as wenn as build number is
+  appreciated.  Not sure how this can make it into the file version of
+  the actual .exe files as we are using the Revision number of SVN
+  there. and we don't have enough space to encode a nedor tag and
+  vendor version.  May be this should go into the version info's text
+  strings.
+** Create a text file to record the version numbers
+   of all installed packages and distribute it with the .exe.  If
+   possible HTML formatted with links to the NEWS files of the
+   packages.
+
 
 * Build system
 ** Some versions of strip don't work.
