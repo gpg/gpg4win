@@ -11,41 +11,52 @@
 # rest of the line will be taken as the base URL for following file
 # commands.  If the first word of a line is "file" the rest of the
 # line will be appended to the current base URL (with a / as
-# delimiter).
+# delimiter).  The statement "chk" is followed by the SHA1 checksum of
+# the last file.
 #
 # 2005-12-06 11:16:12
 
 # GNU
-
 server ftp://ftp.cs.tu-berlin.de/pub/gnu
 
 file gettext/gettext-runtime-0.13.1.bin.woe32.zip
-file gettext/gettext-runtime-0.13.1.bin.woe32.zip.sig
+chk  8cd55585429b5d696ac3745e065f8613de26f19c
 file gettext/gettext-0.13.1.tar.gz
-file gettext/gettext-0.13.1.tar.gz.sig
+chk  fa46cb397cf6768f5ff4fdf1854514a9ced5b02b
 
 file libiconv/libiconv-1.9.1.bin.woe32.zip
-file libiconv/libiconv-1.9.1.bin.woe32.zip.sig
+chk  b57f5e8234975ec3cde340e101886135eb532329
 file libiconv/libiconv-1.9.1.tar.gz
-# No signature for the source package.
+chk  f130c93fdf20903ca21bace8b8822f46468c9d65
 
 
 # Sourceforge
 server http://kent.dl.sourceforge.net/sourceforge/gnuwin32
 
 file zlib-1.2.3-bin.zip
+chk  becbcaf5076e307e743b1edc6a5645849eba9ebc
 file zlib-1.2.3-lib.zip
+chk  fe2ee77293da3361b1f2710d1bd62f27b2ae64b0
 file zlib-1.2.3-src.zip
+chk  0e18fcd7f1a585f825c210a1bb2456b4aa8fcc0d
 
 file libpng-1.2.8-bin.zip
+chk  32876271847afed0ed721fb1b5913a2ce5f25168
 file libpng-1.2.8-lib.zip
+chk  834e1567813506525c0f1003a048df0353b1bb36
 file libpng-1.2.8-src.zip
+chk  f00a86596d804fb62e912cf575983124692858fa
 
 file crypt-2.2.5-lib.zip
+chk  77482f40ce2c65c0e1b807a07049f53823861266
 file crypt-2.2.5-src.zip
+chk  91c4c5e2790bc19909b03d6eaaf5d6c205b65f07
 
 file regex-0.12-lib.zip
+chk  37e5aa61bdf26cd182ebc6169528c86f165c7e09
 file regex-0.12-src.zip
+chk  b9faae10efae552f23c213891a3ed8187cb7d017
+
 
 
 # RedHat
@@ -53,6 +64,7 @@ file regex-0.12-src.zip
 server ftp://sources.redhat.com/pub
 
 file pthreads-win32/pthreads-w32-2-7-0-release.tar.gz
+chk  e9f66acde58136ab67e2167412773f727cd13a9d
 
 
 # GTK+ stuff
@@ -61,27 +73,41 @@ file pthreads-win32/pthreads-w32-2-7-0-release.tar.gz
 server ftp://ftp.gtk.org/pub/gtk/v2.6
 
 file win32/glib-2.6.6.zip
+chk  f1cf6ff8831217aac38ecd83c07d02416e571c5d
 file win32/glib-dev-2.6.6.zip
+chk  9445676e9394cd92b1e60e0550ed74d8917414d6
 file glib-2.6.6.tar.bz2
+chk  6bb8860bd29a83964ee66ad53ae3e4950aa2677f
 
 file win32/atk-1.9.0.zip
+chk  d6f99c56b890051c3b9bc77abe8c5a705d3bc5d4
 file win32/atk-dev-1.9.0.zip
+chk  7934420db4233374304aa55f47aeb4be66603974
 file atk-1.9.0.tar.bz2
+chk  3e34534e5bcf3494c5a89c4804c7892a915f3f58
 
 file win32/pango-1.8.2.zip
+chk  5e1a16803a3d6a1c13c3c6b8213f35d32fa081f5
 file win32/pango-dev-1.8.2.zip
+chk  a4b1b9015279679011a9d2646a5b161dc3698474
 file pango-1.8.2.tar.bz2
+chk  1ff94ba7618ea8bffbd9872ffb4856c414a0e8d8
 
 file win32/gtk+-2.6.9.zip
+chk  c150c1300a4e57c03c7900ce8a46e18bc882f231
 file win32/gtk+-dev-2.6.9.zip
+chk  a0a59ce11244c8aa63d01ff526a777185ceb2fd9
 file gtk+-2.6.6.tar.bz2
+chk  6d5da1d14c2351de11e7d31499b38ebfe7678f8d
 
 
 # GIMP stuff for W32
 server http://www.gimp.org/~tml/gimp/win32
 
 file pkgconfig-0.15.zip
+chk  fc4b38b372e1559cbfafc169f528efcb31c9dd94
 file pkgconfig-0.15.0.tar.gz
+chk  1019c8027c0cf94bca680886f4e2ae4e629a2a97
 
 
 # WinPT
@@ -92,7 +118,7 @@ file pkgconfig-0.15.0.tar.gz
 
 server ftp://ftp.g10code.com/g10code/scratch
 file winpt-0.11.3-cvs.tar.bz2
-file winpt-0.11.3-cvs.tar.bz2.sig
+chk  78c3357c1a8c59209263e1c58e7dd84916799f21
 
 
 # GPGee
@@ -101,13 +127,15 @@ file winpt-0.11.3-cvs.tar.bz2.sig
 server ftp://ftp.g10code.com/g10code/scratch
 
 file gpgee-1.2.2-bin.zip
+chk  c230469dd25cc49908560e09bed0fb4eab1824bc
 file gpgee-1.2.2-src.zip
+chk  fed15718d265c892bc74e4b8c376fda84aa794f7
 
 # GPGol
 server ftp://ftp.g10code.com/g10code/gpgol
 
 file gpgol-0.9.5.tar.bz2
-file gpgol-0.9.5.tar.bz2.sig
+chk  5fede7910073a1d513d25223daa25a73b81b13d5
 
 
 # GnuPG stuff. 
@@ -115,7 +143,7 @@ file gpgol-0.9.5.tar.bz2.sig
 server ftp://ftp.gnupg.org/gcrypt
 
 file gnupg/gnupg-1.4.2.tar.gz
-file gnupg/gnupg-1.4.2.tar.gz.sig
+chk  cc7e9a5268bf309ac652a7343b62dff8cfb68d38
 
 
 # libgpg-error, GPA and GPGol currently come from manually crafted
@@ -124,11 +152,18 @@ file gnupg/gnupg-1.4.2.tar.gz.sig
 server ftp://ftp.g10code.com/g10code/scratch
 
 file libgpg-error-1.2-cvs.tar.bz2
+chk  ad964f78de99c7493dc47f49b0071f34d7d5e53d
 file gpgme-1.2.0-cvs.tar.bz2
+chk  3f8bc76e006577fa7c27173c1b695fba3436c6ba
 file gpa-0.7.1-cvs.tar.bz2
+chk  e9c682982daf3434b0892d7e69ad04da5bac4ae1
 file sylpheed-claws-1.9.99cvs5-wk1.tar.bz2
+chk  0706c278dab540981c5ab40872136aa04e3255cb
 file man_novice_de-0.0.0-cvs.tar.gz
+chk  33329175b9b69724870139f383edf6e3edea7c78
 file man_advanced_de-0.0.0-cvs.tar.gz
+chk  b4a8b05b181f20c5ba9d937b6347095905323318
 file eudoragpg-0.0.0-cvs.tar.gz
+chk  79e3a24e4baa19f23e955b1a4b1c41b8083345b7
 
 

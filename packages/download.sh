@@ -57,6 +57,7 @@ fi
 
 
 lnr=0
+name=
 [ -f '.#download.failed' ] && rm '.#download.failed'
 cat packages.current | \
 while read key value ; do
@@ -66,34 +67,57 @@ while read key value ; do
      \#*)    ;;
     server) 
        server="$value" 
+       name=
        ;;
     file)
        if [ -z "$value" ]; then
-           echo "syntax error in file statement" >&2
+           echo "syntax error in file statement, line $lnr" >&2
            exit 1
        fi
        if [ -z "$server" ]; then
-           echo "no server location available for file \`$value'" >&2
+           echo "no server location for file \`$value', line $lnr" >&2
            exit 1
        fi
        url="$server/$value"
        name=`basename "$value"`
        if [ -f "$name" -a "$force" = "no" ]; then
-           echo "package     \`$url' already exists."
+           echo "package     \`$url' ... already exists"
        else
-           echo "downloading \`$url'."
-           if ! ${WGET} -c -q "$url" ; then
-               echo "download of \`$url' failed." >&2
-               echo "$url" >> '.#download.failed'
+           echo -n "downloading \`$url' ..."
+           if ${WGET} -c -q "$url" ; then
+               echo " okay"
+           else
+               echo " FAILED (line $lnr)"
+               echo "line $lnr: downloading $url failed" >> '.#download.failed'
            fi
        fi
        ;;
+     chk)
+       if [ -z "$value" ]; then
+           echo "syntax error in chk statement, line $lnr" >&2
+           exit 1
+       fi
+       if [ -z "$name" ]; then
+           echo "no file name for chk statement, line $lnr" >&2
+           exit 1
+       fi
+       echo -n "checking    \`$name' ..."
+       if echo "$value *$name" | sha1sum -c >/dev/null 2>&1 ; then
+           echo " okay"
+       else
+           echo " FAILED (line $lnr)"
+           echo "line $lnr: checking $name failed" >> '.#download.failed'
+       fi
+       name=
+       ;;
      *)
-       echo "syntax error in packages.current, line $lnr." >&2
+       echo "syntax error in \`packages.current', line $lnr." >&2
        exit 1
      esac
 done
 if [ -f '.#download.failed' ]; then
-  echo "some files failed to download" 2>&1
+  cat '.#download.failed' >&2
+  rm '.#download.failed'
+  echo "some files failed to download or checksums are not matching" >&2
   exit 1
 fi
