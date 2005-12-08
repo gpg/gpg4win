@@ -2,7 +2,7 @@
 
 * Missing stuff
 ** Version number for the created installers
-  We need a way to have a different version number for the actual
+  We may want to have a different version number for the actual
   installers.  It does not make sense to update the gpg4win version
   number with each release and there will probably difdferent
   installers released based on the same gpg4win packaes.  Thus a
@@ -31,8 +31,6 @@
 
 * The following items are related to package auto-detection and
    configuration.  They are not critical.
-** Verify the digital signatures.  Include them in the source
-   installer.
 ** BUG: If there is more than one version of a package, the script
    breaks.  The GPG4WIN_FIND function must filter and pick one of the
    matches.
