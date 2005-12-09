@@ -1,22 +1,11 @@
                                                           -*- outline -*-
 
 * Missing stuff
-** Version number for the created installers
-  We may want to have a different version number for the actual
-  installers.  It does not make sense to update the gpg4win version
-  number with each release and there will probably difdferent
-  installers released based on the same gpg4win packaes.  Thus a
-  configure option to set a "vendor" name as wenn as build number is
-  appreciated.  Not sure how this can make it into the file version of
-  the actual .exe files as we are using the Revision number of SVN
-  there. and we don't have enough space to encode a nedor tag and
-  vendor version.  May be this should go into the version info's text
-  strings.
 ** Create a text file to record the version numbers
    of all installed packages and distribute it with the .exe.  If
    possible HTML formatted with links to the NEWS files of the
    packages.
-
+** Add gpg translations to the installer
 
 * Build system
 ** Some versions of strip don't work.
@@ -46,6 +35,17 @@
 ** Record the dependencies in the build list in the gpg4win.mk.in
    Makefile using make dependencies between the stamp-final-$(1)
    targets.  This would hopefully ensure that parallel makes work. !
+** Version number for the created installers
+  We may want to have a different version number for the actual
+  installers.  It does not make sense to update the gpg4win version
+  number with each release and there will probably difdferent
+  installers released based on the same gpg4win packaes.  Thus a
+  configure option to set a "vendor" name as wenn as build number is
+  appreciated.  Not sure how this can make it into the file version of
+  the actual .exe files as we are using the Revision number of SVN
+  there. and we don't have enough space to encode a nedor tag and
+  vendor version.  May be this should go into the version info's text
+  strings.
 
 
 Copyright 2005 g10 Code GmbH

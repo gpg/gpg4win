@@ -1,12 +1,9 @@
-2005-12-09  Jan-Oliver Wagner  <jan@intevation.de>
-	* doc/website/index.html: winpt-the-project replaced by its full name.
-	* doc/website/index.de.html: winpt-the-project replaced by its full name.
+2005-12-09  Werner Koch  <wk@g10code.com>
 
-2005-12-08  Jan-Oliver Wagner  <jan@intevation.de>
+	* Makefile.am (SUBDIRS): Include doc dir.
+	* configure.ac: Add new Makefiles.
 
-	* doc/website/: New.
-	* doc/website/index.html: New.
-	* doc/website/index.de.html: New.
+	* doc/ChangeLog: New.  Moved relevant entries to that file.
 
 2005-12-08  Werner Koch  <wk@g10code.com>
 

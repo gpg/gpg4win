@@ -1,0 +1,26 @@
+2005-12-09  Werner Koch  <wk@g10code.com>
+
+	* manual-de: New.
+	* manual-de/Makefile.am: New.
+	* manual-de/einsteiger.tex: New.
+	* manual-de/fdl.tex:  New. Slighly adjusted form the orginal
+	www.gnupg.org/licenses/fdl.tex to remove the section names from
+	our TOC and to use ``...'' instead of "..."
+
+	* website/Makefile.am: New.
+
+	* Makefile.am: New.
+
+2005-12-09  Jan-Oliver Wagner  <jan@intevation.de>
+
+	* website/index.html: winpt-the-project replaced by its full name.
+	* website/index.de.html: winpt-the-project replaced by its full name.
+
+2005-12-08  Jan-Oliver Wagner  <jan@intevation.de>
+
+	* website/: New.
+	* website/index.html: New.
+	* website/index.de.html: New.
+
+	
+

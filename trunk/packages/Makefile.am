@@ -17,7 +17,5 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
-# Note, that we don't distribute the packages.current template file
-# from the repository.
 EXTRA_DIST = download.sh packages.keys
 
