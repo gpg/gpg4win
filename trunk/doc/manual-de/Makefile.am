@@ -24,7 +24,9 @@ eps_files := adele01.eps.gz adele02.eps.gz man-with-signed-key.eps.gz \
              letter-into-safe.eps.gz letter-out-of-safe.eps.gz \
              secret-key-exchange.eps.gz pk-safe-open.eps.gz \
              pk-safe-opened-with-sk.eps.gz think-passphrase.eps.gz \
-             keyserver-world.eps.gz 
+             keyserver-world.eps.gz key-with-sigs.eps.gz \
+	     clock-face.eps.gz mileage-indicator.eps.gz \
+	     table-1.eps.gz table-2.eps.gz table-3.eps.gz 
 
 eps_files_bb := $(eps_files:.gz=.bb)
 
