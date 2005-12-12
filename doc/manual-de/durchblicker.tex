@@ -1,0 +1,1026 @@
+\documentclass[a4paper,11pt,twoside,titlepage,dvips]{scrartcl}
+\usepackage{a4wide}
+\usepackage[latin1]{inputenc}
+%\usepackage[T1]{fontenc}
+\usepackage{german}
+\usepackage{graphicx}
+\usepackage{alltt}
+\usepackage{moreverb}
+\usepackage{fancyhdr}
+
+\DeclareGraphicsExtensions{.eps.gz,.eps}
+
+%\fancyhead{} % clear all fields
+%\fancyhead[LO]{Gpg4win für Durchblicker}
+%\fancyhead[RO]{\thepage}
+%\fancyfoot{}
+
+% Hyperref should be among the last packages loaded
+\usepackage{hyperref}
+
+\begin{document}
+
+\title{Gpg4win für Durchblicker}
+\author{Eine Veröffentlichung des Gpg4Win Projekts\\
+  \small Basierend auf einem Original von \\
+  \small Manfred J. Heinze, Karl Bihlmeier, Isabel Kramer\\
+  \small Dr. Francis Wray und Ute Bahn}
+\date{WiP}
+
+\maketitle
+
+
+%% Original page 2
+%% We don't include this text anymore due to the rule given in the
+%% Impressum:
+%%    Wenn dieses Dokument von Dritten kopiert, verteilt und/oder
+%%    verändert wird, darf in keiner Form der Eindruck eines
+%%    Zusammenhanges mit dem Bundesministerium für Wirtschaft und
+%%    Technologie erweckt werden.
+%%
+%%%\abstract{
+%%%GnuPP für Durchblocker
+%%%
+%%%Das Hintergrund-Know-How zum E-Mail-Verschlüsselungsprogramm GnuPP
+%%%
+%%%Herausgegeben und gefördert vom\\
+%%%Bundesministerium für Wirtschaft und Technologie\\
+%%%Scharnhorststr. 34--37\\
+%%%10115 Berlin
+%%%
+%%%Ansprechpartner:\\
+%%%Bundesministerium für Wirtschaft und Technologie\\
+%%%Referat Öffentlichkeitsarbeit\\
+%%%
+%%%Copyright © Bundesministerium für Wirtschaft und Technologie
+%%
+%%%Diese Druckschrift wird im Rahmen der Öffentlichkeitsarbeit des
+%%%Bundesministeriums für Wirtschaft und Technologie kostenfrei
+%%%herausgegeben. Sie darf von Dritten nicht gegen Entgelt weitergegeben
+%%%werden. 
+%%%
+%%%Sie darf weder von Parteien noch von Wahlwerbern oder
+%%%Wahlhelfern während eines Wahlkampfes zum Zwecke der Wahlwerbung
+%%%verwendet werden. Dies gilt für Europa-, Bundestags-, Landtags- und
+%%%Kommunal- wahlen. Missbräuchlich sind insbesondere die Verteilung auf
+%%%Wahlver- anstaltungen, an Informationsständen der Parteien sowie das
+%%%Einlegen, Aufdrucken oder Aufkleben parteipolitischer Informationen
+%%%oder Werbemittel. Untersagt ist gleichfalls die Weitergabe an Dritte
+%%%zum Zwecke der Wahlwerbung. Unabhängig davon, wann, auf welchem Wege
+%%%und in welcher Anzahl diese Schrift dem Empfänger zugegangen ist, darf
+%%%sie auch ohne zeitlichen Bezug zu einer bevorstehenden Wahl nicht in
+%%%einer Weise verwendet werden, die als Parteinahme der Bundesregierung
+%%%zugunsten einzelner politischer Gruppen verstanden werden könnte.
+%%%}
+%%%
+
+\section*{Impressum gpg4win}
+
+\noindent
+Copyright \copyright{} Bundesministerium für Wirtschaft und Technologie\\
+Copyright \copyright{} 2005 g10 Code GmbH\\
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation; with
+the Invariant Sections being ,,Impressum'', no Front-Cover Texts, and
+no Back-Cover Texts.  A copy of the license is included in the section
+entitled ,,GNU Free Documentation License''.
+
+\bigskip
+
+{\LARGE Dieses Handbuch wird zur Zeit überarbeitet.} 
+
+\vfill
+
+\begin{center}
+\fbox{\parbox{.7\textwidth}{Die Angaben auf der folgenden Seite
+    sind nicht mehr korrekt; wir können diese Seite allerdings nicht
+    abändern, da die Regeln der GFDL hier falsch angewandt wurden.
+    Neue Copyright Hinweise sollten deswegen hier eingestellt werden.}}
+\end{center}
+
+\clearpage
+%% Original page 3
+%% This is an invariant section
+\section*{Impressum}
+Diese Seite darf nicht verändert werden.\\
+
+Autor: Manfred J. Heinze, TextLab text+media\\
+Beratung: Lutz Zolondz, G-N-U GmbH\\
+Illustrationen: Karl Bihlmeier, Bihlmeier \& Kramer GbR\\
+Layout: Isabel Kramer, Bihlmeier \& Kramer GbR\\
+Fachtext: Dr. Francis Wray, e-mediate Ltd.\\
+Redaktion: Ute Bahn, TextLab text+media\\
+Auflage, März 2002\\
+
+
+Copyright \copyright{} Bundesministerium für Wirtschaft und Technologie
+
+Dieses Buch unterliegt der ,,GNU Free Documentation License''.
+Originaltext der Lizenz: http://www.gnu.org/copyleft/fdl.html .
+Deutsche Übersetzung http://nautix.sourceforge.net/docs/fdl.de.html
+sowie auf der beiliegenden CD-ROM.
+
+Es wird die Erlaubnis gegeben, dieses Dokument zu kopieren, zu
+verteilen und/oder zu verändern unter den Bedingungen der GNU Free
+Documentation License, Version 1.1 oder einer späteren, von der Free
+Software Foundation veröffentlichten Version.
+
+Diese Seite (,,Impressum'') darf nicht verändert werden und muß in
+allen Kopien und Bearbeitungen erhalten bleiben (,,unveränderlicher
+Abschnitt'' im Sinne der GNU Free Documentation License).
+
+Wenn dieses Dokument von Dritten kopiert, verteilt und/oder verändert
+wird, darf in keiner Form der Eindruck eines Zusammenhanges mit dem
+Bundesministerium für Wirtschaft und Technologie erweckt werden.
+
+
+%% Orginal page 4
+%% Just for documentation
+%%%
+%%% GnuPP für Durchblicker          2
+%%%                                 3
+%%% Impressum
+%%%                                 4
+%%% Inhalt
+%%%                                74
+%%% Anhang: Menus in GPA und WinPT
+%%% 
+%%% 
+%%%                                                5
+%%% 1.  Was ist GnuPP?
+%%%                                                6
+%%% 2.  Warum überhaupt verschlüsseln?
+%%%                                                9
+%%% 3.  Wie funktioniert GnuPP?:
+%%%                                              20
+%%% 4.  Der Passwort-Satz
+%%%                                              24
+%%% 5.  Schlüssel im Detail
+%%%                                              25
+%%% 6.  Die Schlüsselserver
+%%%                                              29
+%%% 7.  Der Schlüssel als Dateianhang
+%%%                                              30
+%%% 8.  PlugIns für E-Mail-Programme
+%%%                                              31
+%%% 9.  Die Schlüsselprüfung
+%%%                                              37
+%%% 10. E-Mails signieren
+%%%                                              43
+%%% 11. Dateianhänge verschlüsseln
+%%%                                              45
+%%% 12. Im- und Export eines geheimen Schlüssels
+%%%                                              4
+%%% 13. Warum GnuPP nicht zu knacken ist:
+%%%     Kryptografie für Nicht-Mathematiker
+%%% 
+
+
+\newpage
+\tableofcontents
+
+
+
+%%\clearpage
+%% Orginal page  6
+%% We don't use these foreword anymore because Mr. Müller is not
+%% anymore minister of economic and technology.  We might want to ask
+%% for a new foreword by the current head of that ministr
+%%
+
+%%% %% Portrait Müller  daneben
+%%%   Sicherheit durch Offenheit
+%%% 
+%%% Liebe Anwender der Freien Software GnuPP,
+%%% bisher hat man oft versucht, Software dadurch zu schützen,
+%%% dass man möglichst wenige Informationen darüber preisgab. Trotzdem
+%%% werden immer wieder schwerwiegende Sicherheitslücken in solch
+%%% geschlossenen Software-Systemen gefunden und zu Hackerangriffen
+%%% missbraucht. Wir setzen deshalb auf ,,Sicherheit durch Offenheit''. Denn
+%%% die öffentliche Diskussion über erkannte Schwachstellen hilft, Sicherheits-
+%%% lecks schnell zu beseitigen oder gar nicht erst entstehen zu lassen.
+%%% 
+%%% Deshalb unterstützt das Bundesministerium für Wirtschaft und
+%%% Technologie die Entwicklung des Open-Source-Verschlüsselungsprojektes
+%%% ,,GNU Privacy Projekt'' (GnuPP) . GnuPP ist eine sichere, einfache und
+%%% kostenlose Verschlüsselungssoftware. Sie ermöglicht es jedem Bürger
+%%% 
+%%% % rechte Spalte
+%%% und jedem Unternehmen, seine Grundrechte auf vertrauliche
+%%% Kommunikation über das Internet zu wahren und die Rechtsverbind-
+%%% lichkeit, Integrität und Authentizität der Kommunikation zu überprüfen.
+%%% 
+%%% Gerade für den Verkehr mit und zwischen den Behörden spielt das eine
+%%% wichtige Rolle. Denn mit der flächendeckenden Einführung der digitalen
+%%% Signatur in der Bundesverwaltung - wie sie die Bundesregierung
+%%% beschlossen hat - können Bürgerinnen und Bürger ihren Rechts- und
+%%% Geschäftsverkehr mit den Bundesbehörden künftig auch über das
+%%% Internet sicher abwickeln.
+%%% 
+%%% Ich wünsche allen Anwendern von GnuPP eine lebhafte und sichere
+%%% E-Mail-Kommunikation.
+%%% 
+%%% % Unterschrift.
+%%% 
+%%% Dr. Werner Müller\\
+%%% Bundesminister für Wirtschaft und Technologie.
+%%% 
+
+
+\clearpage
+%% Original page 5
+\section{Was ist GnuPP}
+Das Projekt GnuPP (GNU Privacy Project) ist eine vom
+Bundeswirtschaftsministerium geförderte
+E-mail-Verschlüsselungssoftware. GnuPP bezeichnet das Gesamtpaket,
+das die Programme GnuPG, GPA, WinPT und andere Komponenten enthält.
+\marginpar{FIXME}
+
+Mit dem Verschlüsselungsprogramm GnuPG (GNU Privacy Guard) kann
+jedermann E-Mails sicher, einfach und kostenlos verschlüsseln. GnuPG
+kann privat oder kommerziell eingesetzt werden. Die Verschlüsselung
+von GnuPG kann nach dem heutigen Stand von Forschung und Technik nicht
+gebrochen werden.  GnuPG ist Freie Software oder Open-Source-Software.
+Das bedeutet, dass jedermann das Recht hat, sie nach Belieben
+kommerziell oder privat zu nutzen.
+
+Und es bedeuetet, daß jedermann den Quellcode, also die eigentliche
+Programmierung des Programms, genau untersuchen soll und darf.  Für
+eine Sicherheits-Software ist diese garantierte Transparenz des
+Quellcodes eine unverzichtbare Grundlage.  Nur so lässt sich die
+Vertrauenswürdigkeit eines Programmes prüfen.  GnuPG ist vollständig
+kompatibel mit PGP GnuPG basiert auf dem internationalen Standard
+OpenPGP (RFC 2440), ist vollständig kompatibel zu PGP und benutzt die
+gleiche Infrastruktur (Schlüsselserver usw.)
+
+PGP (,,Pretty Good Privacy'') ist keine freie Software, sie wird seit
+mehreren Jahren nicht mehr unter der freien Softwarelizenz GNU General
+Public License (GNU GPL) vertrieben.
+
+Weitere Informationen zu GnuPG und den Projekten der Bundesregierung
+zum Schutz des Internets finden Sie auf der Website
+\href{http://www.sicherheit-im-internet.de}{www.sicherheit-im-internet.de}
+des Bundeswirtschaftsministeriums.
+
+
+\clearpage
+%% Original page 6
+\section{Warum überhaupt  verschlüsseln?}
+Die Verschlüsselung von Nachrichten wird manchmal als das zweitälteste
+Gewerbe der Welt bezeichnet. Verschlüsselungstechniken benutzten schon
+der Pharao Khnumhotep II, Herodot und Cäsar.
+
+Wenigstens das zweitälteste Gewerbe der Welt ist heute dank GnuPP für
+jedermann frei und kostenlos zugänglich\ldots
+\marginpar{FIXME: Billige Anspielung}
+
+\includegraphics[width=0.9\textwidth]{egyptian-stone}
+
+Die Computertechnik hat uns phantastische Mittel in die Hand gegeben,
+um rund um den Globus miteinander zu kommunizieren und uns zu
+informieren. Aber Rechte und Freiheiten, die in anderen
+Kommunikationsformen längst selbstverständlich sind, müßen wir uns in
+den neuen Technogien erst sichern. Das Internet ist so schnell und
+massiv über uns hereingebrochen, daß wir mit der Wahrung unserer Rechte
+noch nicht so recht nachgekommen sind.
+
+
+Beim altmodischen Briefschreiben haben wir die Inhalte unserer
+Mitteilungen ganz selbstverständlich mit einem Briefumschlag
+geschützt. Der Umschlag schützt die Nachrichten vor fremden Blicken,
+eine Manipulation am Umschlag kann man leicht bemerken. Nur wenn etwas
+nicht ganz so wichtig ist, schreibt man es auf eine ungeschützte
+Postkarte, die zur Not auch der Briefträger oder andere lesen können.
+
+
+\clearpage
+%% Original page 7
+
+Ob die Nachricht wichtig, vertraulich oder geheim ist, das bestimmt
+man selbst und niemand sonst.
+
+Diese Entscheidungsfreiheit haben wir bei E-Mail nicht. Eine normale
+E-Mail ist immer offen wie eine Postkarte, und der elektronische
+,,Briefträger'' --- und andere --- können sie immer lesen. Die Sache
+ist sogar noch schlimmer: die Computertechnik bietet nicht nur die
+Möglichkeiten, die vielen Millionen E-Mails täglich zu befördern und
+zu verteilen, sondern auch, sie zu kontrollieren.
+
+Niemand hätte je ersthaft daran gedacht, alle Briefe und Postkarten zu
+sammeln, ihren Inhalt auszuwerten oder Absender und Empfänger zu
+protokollieren. Das wäre einfach nicht machbar gewesen, oder es hätte
+zu lange gedauert. Mit der modernen Computertechnik ist das
+zumindestens technisch möglich. Und ob genau das nicht heute schon mit
+Ihrer und meiner E-Mail geschieht, wissen wir nicht und werden es
+wahrscheinlich auch nie erfahren.
+
+Denn: der Umschlag fehlt.
+
+\includegraphics[width=0.3\textwidth]{sealed-envelope}
+
+
+\clearpage
+%% Original page 8
+
+Was wir Ihnen hier vorschlagen, ist ein Umschlag für Ihre
+elektronischen Briefe. Ob Sie ihn benutzen, wann, für wen und wie oft,
+ist ganz allein Ihre Sache. Software wie GnuPP gibt Ihnen lediglich
+die Wahlfreiheit zurück. Die Wahl, ob Sie persönlich eine Nachricht
+für wichtig und schützenswert halten oder nicht.
+
+Das ist der Kern des Rechts auf Brief-, Post- und Fernmeldegeheimnis
+im Grundgesetz, und dieses Recht können Sie mit Hilfe der Software
+GnuPP wahrnehmen. Sie müssen sie nicht benutzen --- Sie müssen ja auch
+keinen Briefumschlag benutzen. Aber es ist Ihr gutes Recht.
+
+Um dieses Recht zu sichern, bietet GnuPP Ihnen sogenannte ,,starke
+Verschlüsselungs- technologie''. ,,Stark'' bedeutet hier: mit keinem
+gegenwärtigen Mittel zu knacken. In vielen Ländern war starke
+Verschlüsselungstechnologie bis vor ein paar Jahren den Militärs und
+Regierungsbehörden vorbehalten. Das Recht, sie für jeden Bürger
+nutzbar zu machen, haben sich die Internet-Nutzer mühsam erobert;
+manchmal auch mit der Hilfe von klugen und weitsichtigen Menschen in
+Regierungsinstitutionen, wie im Falle von GnuPP.  GnuPG wird von
+Sicherheitsexperten in aller Welt als eins der sichersten
+entsprechenden Software-Systeme angesehen.
+
+Wie wertvoll diese Sicherheit für Sie ist, liegt ganz in Ihrer Hand,
+denn Sie allein bestimmen das Verhältnis zwischen Bequemlichkeit bei
+der Verschlüsselung und größtmöglicher Sicherheit. Dazu gehören die
+wenigen, aber umso wichtigeren Vorkehrungen, die Sie treffen müssen,
+und die wir im Folgenden besprechen:
+
+
+\clearpage
+%% Original page 9
+\section{Wie funktioniert GnuPP?}
+Das Besondere an GnuPP und der zugrundeliegenden Public Key-Methode
+ist, daß sie jeder verstehen kann und soll. Nichts daran ist
+Geheimwissen ­-- es ist nicht einmal besonders schwer zu verstehen.
+
+Die Benutzung von GnuPP ist sehr einfach, seine Wirkungsweise dagegen
+ziemlich kompliziert. Wir werden in diesem Kapitel erklären, wie GnuPP
+funktioniert ­-- nicht in allen Details, aber so, dass die Prinzipien
+dahinter deutlicher werden. Wenn Sie diese Prinzipien kennen, werden
+Sie ein hohes Vertrauen in die Sicherheit von GnuPP gewinnen.
+
+Ganz am Ende dieses Buches, in Kapitel 13, können Sie ­-- wenn Sie
+wollen ­-- auch noch die letzten Geheimnisse um die Public
+Key-Kryptografie lüften und entdecken, warum GnuPP nicht zu knacken
+ist.
+
+
+\clearpage
+%% Original page 10
+Der Herr der Schlüsselringe
+
+Wenn man etwas sehr Wertvolles sichern will, schließt man es am besten
+ein --- mit einen Schlüssel. Noch besser mit einem Schlüssel, den es
+nur einmal gibt und den man ganz sicher aufbewahrt.
+
+\includegraphics[width=0.4\textwidth]{schlapphut-with-key}
+
+Denn wenn dieser Schlüssel in die falschen Hände fällt, ist es um die
+Sicherheit des wertvollen Gutes geschehen. Dessen Sicherheit steht und
+fällt mit der Sicherheit des Schlüssels.  Also muss man den Schlüssel
+mindestens genauso gut absichern, wie das zu sichernde Gut selbst, und
+Art und Beschaffenheit des Schlüssels müssen völlig geheim gehalten
+werden.
+
+
+\clearpage
+%% Original page 11
+
+Geheime Schlüssel sind in der Kryptografie ein alter Hut: schon immer
+hat man Botschaften geheimzuhalten ver- sucht, indem man den Schlüssel
+geheimhielt. Funktioniert hat das letztendlich nie: jede einzelne
+dieser Methoden wurde geknackt ­-- früher oder später.
+
+\includegraphics[width=0.4\textwidth]{tangled-schlapphut}
+
+Das Grundproblem bei der ,,normalen'' geheimen Nachrichtenübermittlung
+ist, dass für Ver- und Entschlüsselung derselbe Schlüssel benutzt wird
+und dass sowohl der Absender als auch der Empfänger diesen geheimen
+Schlüssel kennen.
+
+Das führt zu einer ziemlich paradoxen Situation: bevor man mit einem
+solchen System ein Geheimnis --­ eine verschlüsselte Nachricht ---
+mitteilen kann, muss man schon vorher ein anderes Geheimnis --­ den
+Schlüssel ­-- mitgeteilt haben.  Und da liegt der Hase im Pfeffer: man
+muss sich ständig mit dem Problem herumärgern, dass der Schlüssel
+unbedingt ausgetauscht werden muss, aber auf keinen Fall von einem
+Dritten abgefangen werden darf.
+
+
+
+\clearpage
+%% Original page 12
+
+GnuPP dagegen arbeitet ­-- außer mit dem Geheimschlüssel --- mit einem
+weiteren Schlüssel (,,key''), der vollkommen frei und öffentlich
+(,,public'') zugänglich ist.
+
+Man spricht daher auch von
+GnuPP als einem ,,Public Key''-Verschlüsselungssystem.
+
+Das klingt widersinnig, ist es aber nicht. Der Witz an der Sache: es
+muss kein Geheimschlüssel mehr ausgetauscht werden. Im Gegenteil: der
+Geheimschlüssel darf auf keinen Fall ausgetauscht werden!
+Weitergegeben wird nur der öffentliche Schlüssel ­-- und den kennt
+sowieso jeder.
+
+Mit GnuPP benutzen Sie also ein Schlüsselpaar ­-- eine geheime und
+eine zweite öffentliche Schlüsselhälfte.  Beide Hälften sind durch
+eine komplexe mathematische Formel untrennbar miteinander verbunden.
+Nach heutiger wissenschaftlicher und technischer Kenntnis ist es
+unmöglich, einen Schlüsselteil aus dem anderen zu berechnen und damit
+den Code zu knacken. In Kapitel 13 erklären wir, wie das funktioniert.
+
+% Note: The texts on the signs are emprt in the current revision.
+% However, Iused the original images and wiped out the texts ``Open
+% Source'' and ``gratis'' - need to replace with something better.
+% What about ``Artikel 10'' and ``von GnuPG erzeugt''?
+\includegraphics[width=0.4\textwidth]{verleihnix}
+
+
+\clearpage
+%% Original page 13
+Das GnuPP-Prinzip ist wie gesagt recht einfach:
+
+der geheime oder private Schlüssel (secret oder private key) muß
+geheim gehalten werden.
+
+der öffentliche Schlüssel (oder public key) soll so öffentlich wie
+möglich gemacht werden.
+
+Beide Schlüsselteile haben ganz und gar unterschiedliche Aufgaben:
+
+\bigskip
+
+der geheime Schlüsselteil entschlüsseln Nachrichten
+
+\includegraphics[width=0.9\textwidth]{key-with-shadow-bit}
+
+
+der öffentliche Schlüsselteil verschlüsselt
+
+
+\clearpage
+%% Original page 14
+
+Der öffentliche Safe
+
+In einem kleinen Gedankenspiel
+wird die Methode des Public
+Key-Verschlüsselungssystems
+und ihr Unterschied zur ,,nicht-publickey''-Methode deutlicher:
+
+Die ,,nicht-Public Key-Methode'' geht so:
+
+Stellen Sie sich vor, Sie stellen einen Briefkasten vor Ihrem Haus
+auf, über den Sie geheime Nachrichten übermitteln wollen.
+
+Der Briefkasten ist mit einem Schloss verschlossen, zu dem es nur
+einen einzigen Schlüssel gibt. Niemand kann ohne diesen Schlüssel
+etwas hineinlegen oder herausnehmen. Damit sind Ihre geheimen
+Nachrichten zunächst einmal gut gesichert.
+
+\includegraphics[width=0.9\textwidth]{letter-into-safe}
+
+Da es nur einen Schlüssel gibt, muß Ihr Korrespondenzpartner denselben
+Schlüssel wie Sie haben, um den Briefkasten damit auf- und zuschließen
+und eine Geheimnachricht deponieren zu können.
+
+\clearpage
+%% Original page 15
+Diesen Schlüssel müssen Sie Ihrem Korrespondenzpartner auf geheimem
+Wege übergeben.
+
+\includegraphics[width=0.9\textwidth]{secret-key-exchange}
+
+\clearpage
+%% Original page 16
+Erst wenn der andere den Geheimschlüssel hat, kann er den Briefkasten
+öffnen und die geheime Nachricht lesen.
+
+Alles dreht sich also um diesen Schlüssel: wenn ein Dritter ihn kennt,
+ist es sofort aus mit den Geheimbotschaften. Sie und Ihr
+Korrespondenzpartner müssen ihn also genauso geheim austauschen wie
+die Botschaft selbst.
+
+Aber ­-- eigentlich könnten Sie ihm bei dieser Gelegenheit ja auch
+gleich die geheime Mitteilung übergeben\ldots
+
+
+Übertragen auf die E-Mail-Verschlüsselung: weltweit müssten alle
+E-Mail-Teilnehmer geheime Schlüssel besitzen und auf geheimem Wege
+austauschen, bevor sie geheime Nachrichten per E-Mail versenden
+könnten.
+
+Vergessen wir diese Möglichkeit am besten sofort\ldots
+
+\includegraphics[width=0.9\textwidth]{letter-out-of-safe}
+
+\clearpage
+%% Original page 17
+Jetzt die Public Key-Methode:
+
+Sie installieren wieder einen Briefkasten vor Ihrem Haus.  Aber:
+dieser Briefkasten ist ­-- ganz im Gegensatz zu dem ersten Beispiel
+--- stets offen.  Direkt daneben hängt --­ weithin öffentlich sichtbar
+--- ein Schlüssel, mit dem jedermann den Briefkasten zuschließen kann.
+
+Zuschließen, aber nicht aufschließen: das ist der Trick.
+
+\includegraphics[width=0.9\textwidth]{pk-safe-open}
+
+Dieser Schlüssel gehört Ihnen, und --- Sie ahnen es: es ist Ihr
+öffentlicher Schlüssel.
+
+Wenn jemand Ihnen eine geheime Nachricht hinterlassen will, legt er
+sie in den Briefkasten und schließt mit Ihrem öffentlichen Schlüssel
+ab.  Jedermann kann das tun, denn der Schlüssel dazu ist ja völlig
+frei zugänglich.
+
+Kein anderer kann den Briefkasten nun öffnen und die Nachricht lesen.
+Selbst derjenige, der die Nachricht in dem Briefkasten eingeschlossen
+hat, kann ihn nicht wieder aufschliessen, zum Beispiel um die
+Botschaft nachträglich zu verändern.
+
+Denn die öffentliche Schlüsselhälfte taugt ja nur zum Abschließen.
+
+Aufschließen kann man den Briefkasten nur mit einem einzigen
+Schlüssel: Ihrem eigenen geheimen oder privaten Schlüsselteil.
+
+\clearpage
+%% Original page 18
+Wieder übertragen auf die E-Mail-Verschlüsselung: jedermann kann eine
+E-Mail an Sie verschlüsseln. Er benötigt dazu keineswegs einen
+geheimen, sondern ganz im Gegenteil einen völlkommen öffentlichen,
+,,ungeheimen'' Schlüssel. Nur ein einziger Schlüssel entschlüsselt die
+E-Mail wieder: Ihr privater, geheimer Schlüssel.
+
+Spielen wir das Gedankenspiel noch einmal anders herum:
+
+Wenn Sie einem anderen eine geheime Nachricht zukommen lassen wollen,
+öffnen Sie dessen Briefkasten mit seinem öffentlichen, frei
+verfügbaren Schlüssel.
+
+Sie müssen Ihren Briefpartner dazu nicht persönlich kennen, ihn
+getroffen oder je mit ihm gesprochen haben, denn sein öffentlicher
+Schlüssel ist überall und jederzeit zugänglich. Wenn Sie Ihre
+Nachricht hinterlegt und den Briefkasten des Empfängers mit seinem
+öffentlichem Schlüssel wieder verschlossen haben, ist sie völlig
+unzugänglich für jeden anderen, auch für Sie selbst.  Nur der
+Empfänger kann den Briefkasten mit seinem privaten Schlüssel öffnen
+und die Nachricht lesen.
+
+\includegraphics[width=0.9\textwidth]{pk-safe-opened-with-sk}
+
+
+\clearpage
+%% Original page 19 
+Was ist nun eigentlich gewonnen: es gibt immer noch einen geheimen
+Schlüssel!?
+
+Der Unterschied gegenüber der ,,nicht-Public Key-Methode'' ist
+allerdings ein gewaltiger:
+
+Ihren privater Schlüssel kennen und benutzen nur Sie selbst.  Er wird
+niemals einem Dritten mitgeteilt ­-- die Notwendigkeit einer geheimen
+Vereinbarung entfällt, sie verbietet sich sogar.
+
+Es muss überhaupt nichts Geheimes mehr zwischen Absender und Empfänger
+ausgetauscht werden --- weder eine geheime Vereinbarung noch ein
+geheimes Codewort.
+
+Das ist ­-- im wahrsten Sinne des Wortes --- der Knackpunkt: alle
+,,alten'' Verschlüsselungs- verfahren wurden geknackt, weil ein
+Dritter sich beim Schlüsselaustausch in den Besitz des Schlüssels
+bringen konnte.
+
+Dieses Risiko entfällt, weil der Geheimschlüssel nicht ausgetauscht
+wird und sich nur an einem einzigen Ort befindet: Ihrem Gedächtnis.
+
+
+\clearpage
+%% Original page 20
+\section{Der Passwort-Satz}
+
+Wie Sie oben gesehen haben, ist der private Schlüssel eine der
+wichtigsten Komponenten im Public Key-Verschlüsselungssystem. Man muss
+ihn zwar nicht mehr auf geheimem Wege mit seinen Korrespondenzpartnern
+austauschen (was bei der E-Mail-Kommunikation auch so gut wie
+unmöglich wäre), aber nach wie vor ist seine Sicherheit der Schlüssel
+zur Sicherheit des ganzen Systems.
+
+Der Schutz des privaten Schlüssels besteht aus einem Passwort-Satz.
+
+Passwort-Satz, weil er aus einem Satz und nicht nur aus einem Wort
+bestehen soll. Sie müssen diesen Passwort-Satz wirklich ,,im Kopf''
+haben und niemals aufschreiben müssen.
+
+Trotzdem darf er nicht erraten werden können. Das klingt vielleicht
+widersprüchlich, ist es aber nicht. Es gibt einige erprobte Tricks,
+mit deren Hilfe man sich einen völlig individuellen, leicht zu
+merkenden und nicht zu erratenden Passwort-Satz ausdenken kann.
+
+\includegraphics[width=0.9\textwidth]{think-passphrase}
+
+
+
+\clearpage
+%% Original page 21
+Eine guter Passwort-Satz kann so entstehen:
+
+Denken Sie an einen Ihnen gut bekannten Satz, z.B.: Ein blindes Huhn
+findet auch einmal ein Korn
+
+Aus diesem Satz nehmen Sie zum Beispiel jeden dritten Buchstaben:
+
+\verb-nieuf dahn lnr-
+
+\marginpar{Das ist eine schlechte Memotechnik --- Neu schreiben.}
+
+Diesen Buchstabensalat kann man sich zunächst nicht unbedingt gut
+merken, aber man kann ihn eigentlich nie vergessen, solange man den
+ursprünglichen Satz im Kopf hat. Im Laufe der Zeit und je öfter man
+ihn benutzt, prägt sich so ein Passwort-Satz ins Gedächtnis. Erraten
+kann ihn niemand.
+
+
+Denken Sie an ein Ereignis, das sich bereits fest in Ihrem
+persönlichen Langzeitgedächtnis verankert hat.  Vielleicht gibt es
+einen Satz, mit dem sich Ihr Kind oder Ihr Partner ,,unvergesslich''
+ge- macht hat. Oder eine Ferien- erinnerung, oder der Titel eines für
+Sie wichtigen Liedes.
+
+
+Verwenden Sie kleine und große Buchstaben, Nummern, Sonder- und
+Leerzeichen durcheinander. Im Prinzip ist alles erlaubt, auch ,,Ö'',
+,,ß'', ,,\$'' usw.
+
+Aber Vorsicht --- falls Sie Ihren geheimen Schlüssel im Ausland an
+einem fremden Rechner benutzen wollen, bedenken Sie, daß
+fremdsprachige Tastaturen diese Sonderzeichen oft nicht haben.
+
+
+%% Original page  22
+machen Sie Rechtschreib- fehler, z.B. ,,feLer'' statt ,,Fehler''.
+Natürlich müssen Sie sich diese ,,feLer'' gut merken können.  Oder
+wechseln Sie mittendrin die Sprache.  Aus dem schönen Satz
+
+In München steht ein Hofbräuhaus
+
+könnten man beispielsweise diesen Passwort-Satz machen:
+
+\verb-inMinschen stet 1h0f breuhome-
+
+denken Sie sich einen Satz aus, der möglichst unsinnig ist, den Sie
+sich aber doch merken können, wie z.B.:
+
+Es blaut so garstig beim Walfang, neben Taschengeld, auch im Winter.
+
+Ein Passwort-Satz in dieser Länge ist ein sicherer Schutz für den
+geheimen Schlüssel.
+
+
+Es darf auch kürzer sein, wenn Sie einige Buchstaben groß schreiben,
+z.B. so:
+
+Es blAut nEBen TaschengeLd auch im WiNter.
+
+Kürzer, aber nicht mehr so leicht merken. Wenn Sie einen noch kürzeren
+Passwort-Satz verwenden, indem Sie hier und da Sonderzeichen benutzen,
+haben Sie zwar bei der Eingabe weniger zu tippen, aber die
+Wahrscheinlichkeit, daß Sie Ihr Passwort-Satz vergessen, wird dabei
+noch größer.
+
+Ein extremes Beispiel für einen möglichst kurzen, aber dennoch sehr
+sicheren Passwort-Satz ist dieses hier:
+
+\verb-R!Qw"s,UIb *7\$-
+
+In der Praxis haben sich solche Zeichenfolgen allerdings als recht
+wenig brauchbar herausgestellt, da man einfach zu wenig Anhaltspunkte
+für die Erinnerung hat.
+
+%% Original page 23
+Ein schlechter Passwort-Satz
+ist blitzschnell geknackt,
+wenn er:
+
+\begin{itemize}
+\item schon für einen anderen Zweck benutzt wird; z.B. für einen
+  E-Mail-Account oder Ihr Handy
+
+\item aus einem Wörterbuch stammt. Hacker lassen in Minutenschnelle
+  komplette Wörterbücher elektronisch über ein Passwort laufen.
+
+\item aus einem Geburtsdatum oder einem Namen besteht.  Wer sich die
+  Mühe macht, Ihre E-Mail zu entziffern, kann auch ganz leicht an
+  diese Daten herankommen.
+
+\item ein landläufiges Zitat ist wie ,,Schau mir in die Augen,
+  Kleines'' oder ,,to be or not to be''. Auch mit derartigen gängigen
+  Zitaten scannen Hacker routinemäßig und blitzschnell ein Passwort.
+
+\item aus nur einem Wort oder aus weniger als 8 Zeichen besteht.
+  Denken Sie sich einen längeren Passwort-Satz aus, kein Passwort.
+
+\end{itemize}
+
+Wenn Sie nun Ihren Passwort-Satz zusammenstellen, nehmen Sie auf gar
+keinen Fall eines der oben angeführten Beispiele.  Denn es liegt auf
+der Hand, daß jemand, der sich ernsthaft darum bemüht, Ihr
+Passwort-Satz herauszubekommen, zuerst ausprobieren würde, ob Sie
+nicht eines dieser Beispiele genommen haben, falls er auch diese
+Informationen gelesen hat.
+
+Seien Sie kreativ. Denken Sie sich jetzt einen Passwort-Satz aus.
+Unvergesslich und unknackbar.
+
+Lesen Sie dann im ,,Einsteiger-Handbuch'', Kapitel 3 weiter.
+
+
+
+
+\clearpage
+%% Original page 24
+\section{Schlüssel im Detail}
+Der Schlüssel, den Sie erzeugt
+haben, besitzt einige
+Kennzeichen:
+\begin{itemize}
+\item die Benutzerkennung
+\item die Schlüsselkennung
+\item das Verfallsdatum
+\item das Benutzervertrauen
+\item das Schlüsselvertrauen
+\end{itemize}
+
+Die Benutzerkennung
+besteht aus dem Namen und
+der E-Mail-Adresse, die Sie
+während der Schlüsselerzeugung eingegeben haben,
+also z.B. \verb-Fritz Mustermann <f.mustermann@firma.de>-
+
+Die Schlüsselkennung verwendet die Software intern um mehrere
+Schlüssel voneinander zu unterscheiden. Mit dieser Kennung kann man
+auch nach öffentlichen Schlüsseln suchen, die auf den Keyservern
+liegen. Was Keyserver sind, erfahren Sie im folgenden Kapitel.
+
+Das Verfallsdatum ist normalerweise auf ,,kein Verfallsdatum''
+gesetzt. Sie können das ändern, indem Sie auf die Schaltfläche
+,,Ändern'' klicken und ein neues Ablaufdatum eintragen. Damit können
+Sie Schlüssel nur für eine begrenzte Zeit gültig erklären, zum
+Beispiel, um sie an externe Mitarbeiter auszugeben.
+
+Das Benutzervertrauen beschreibt das Maß an Vertrauen, das Sie
+subjektiv in den Besitzer des Schlüssel setzen.  Es kann über die
+Schaltfläche ,,Ändern'' editiert werden.
+
+Das Schlüsselvertrauen schließlich bezeichnet das Vertrauen, das man
+gegenüber dem Schlüssels hat. Wenn man sich von der Echtheit eines
+Schlüssels überzeugt und ihn dann möglicherweise auch signiert hat,
+erhält er volles ,,Schlüsselvertrauen''.
+
+Diese Angaben sind für die tagtägliche Benutzung des Programms nicht
+unbedingt wichtig. Sie werden relevant, wenn Sie neue Schlüssel
+erhalten oder ändern. Wir besprechen die Punkte ,,Benutzervertrauen''
+und ,,Schlüsselvertrauen'' in Kapitel 9.
+
+\clearpage
+%% Original page 2
+\section{Die Schlüsselserver}
+Um verschlüsselt mit anderen zu kommunizieren, müssen die Partner ihre
+Schlüssel veröffent- lichen und austauschen. Dazu ist --- Sie erinnern
+sich an Kapitel 1 --- keine Geheimniskrämerei notwendig, denn Ihr
+öffent- licher Schlüsselteil ist ja ganz und gar ,,ungeheim''.
+
+Im Internetzeitalter ist eine möglichst große Verbreitung Ihres
+öffentlichen Schlüssels überhaupt kein Problem. Sie können ihn z.B.
+über internationale Keyserver oder per E-Mail publizieren --- diese
+beiden Möglichkeiten haben wir Ihnen im ,,Einsteiger-Handbuch''
+vorgeschlagen. Es gibt aber noch andere:
+
+\begin{itemize}
+\item Verbreitung des Schlüssels über die eigene Homepage
+
+\item als Dateianhang an einer E-Mail
+
+\item last but not least: persönlich per Diskette
+\end{itemize}
+
+
+\clearpage
+%% Original page 26
+
+Am praktischsten ist sicher die Veröffentlichung über die Keyserver,
+die von allen Programmen nach dem OpenPGP-Standard benutzt werden
+können. Diese Möglichkeit haben wir bereits im Manual
+,,Einsteiger-Handbuch'' Kapitel 4 vorgestellt. Es genügt, den
+Schlüssel an irgendeinen der Keyserver zu senden, denn alle
+synchronsieren sich weltweit miteinander.
+
+Ein Keyserver ist in GnuPP stets voreingestellt. Ein Mausklick genügt,
+und Ihr Schlüssel ist unterwegs rund um die Welt.  Es kann ein ein,
+zwei Tage dauern, bis er wirklich überall verfügbar ist, aber dann
+haben Sie einen globalen Schlüssel!  Die Schlüsselserver sind völlig
+dezentral organisiert, aktuelle Statistiken über ihre Zahl oder die
+Anzahl der dort liegenden Schlüssel gibt es nicht.
+
+\includegraphics[width=0.9\textwidth]{keyserver-world}
+
+Dies ist durchaus beabsichtigt
+und Teil des Public Key-Konzeptes, denn ein ,,Big
+Brother'' hat so praktisch
+keine Chance.
+
+\marginpar{Erklären was hier die Gefahr ist}
+
+%% Keyserver.net sind proprietar und funktionieren überhaupt nicht.
+%% Nur wel PRZ den Hersteller berät, sollte man nicht glauben, daß sie
+%% funktionieren.
+
+%%%Das OpenPGP-Netz http://www.keyserver.net/ ist zum Beispiel der
+%%%Sammelpunkt für ein ganzes Netz dieser Server, oft benutzt werden
+%%%ebenfalls http://germany.  keyserver.net/en/ oder der Keyserver des
+%%%Deutschen Forschungsnetzes DFN http://www.dfn.pca.de/pgpkserv/. 
+
+Das OpenPGP-Netz \verb-hkp://subkeys.pgp.net/- ist zum Beispiel der
+Sammelpunkt für ein ganzes Netz dieser Server, oft benutzt wird auch
+der Keyserver des Deutschen Forschungsnetzes DFN
+\verb-hkp://blackhole.pcs.dfn.de-.
+
+\clearpage
+%% Original page 27
+Genauso einfach können Sie auf den Keyservern nach einem öffentlichen
+Schlüssel suchen.  Geben Sie in das Suchfeld den Namen des
+Schlüsselbesitzers ein oder seine E-Mail-Adresse.  Als Ergebnis sehen
+Sie etwa eine solche Ausgabe:
+
+pub 1024/C06525EC
+2001/10/24 ... usw.
+
+und evtl. noch
+
+sig C06525EC ... usw.
+sig B3B2A12C ... usw.
+
+Alle drei Eintragungen sind Bestandteil des Schlüssels.
+
+% screenshot with the frontpage of keyserver.net - no reason to put it
+% here. In particular not keyserver.net.
+
+
+Sie benötigen aber nur den ersten Teil: das ist der öffentliche
+Schlüssel. Der zweite Teil ist die sogenannte Selbstzertifizierung,
+der dritte die Bestätigung der persönlichen Identität des
+Schlüsselinhabers.
+
+
+\clearpage
+%% Original page 28
+Klicken Sie nun den Link des ersten Schlüsselteils (pub usw.)  an:
+
+Sie sehen den Ihnen schon bekannten Textblock, der den eigentlichen
+öffentlichen Schlüssel bildet.
+
+Im ,,Schnelleinstieg'', Kapitel 6 und 7 zeigen wir Ihnen, wie man
+diesen Schlüssel importiert, d.h., am eigenen GnuPP- Schlüsselbund
+befestigt, und damit eine E-Mail an den Besitzer verschlüsselt.
+
+Diese Suche nach einem Schlüssel funktioniert auch direkt aus GnuPP:
+Sie können einfach die E-Mail-Adresse des Schlüsselbesitzers eingeben,
+oder auch die Schlüsselkennung, falls Ihnen diese bekannt ist. Klicken
+Sie dazu auf ,,Import'', und dort auf ,,Schlüssel vom Key-Server
+empfangen''
+
+
+% screenshot: GPA import from keyserver
+
+GnuPP sucht dann den Schlüssel, importiert ihn und zeigt ihn im
+Schlüsselverwaltungs-Fenster an.
+
+
+\clearpage
+%% Original page 29
+\section{Der Schlüssel als  Dateianhang}
+
+Im Einsteiger-Handbuch Kapitel 4. haben Sie gesehen, wie einfach man
+seinen öffentlichen Schlüssel per E-Mail verschicken kann. Wir haben
+dabei den Schlüssel in einen Ordner exportiert, geöffnet und in die
+Zwischenablage kopiert.  Von dort aus wurde der Schlüssel in ein
+E-Mail Programm kopiert und schließlich versandt. Noch einfacher geht
+es, wenn man den Schlüssel --­ genau wie im vorherigen Beispiel ­--
+exportiert und dann direkt als E-Mail-Anhang verschickt.
+
+Dazu klicken Sie auf im GNU Privacy Assistant auf [Export] in der
+Iconleiste und dann in dem sich öffnenden Dialog auf [Exportieren in
+Datei]. Wählen Sie mit [Durchsuchen...] einen geeigneten Ordner auf
+Ihrem PC, z.B. \verb-C:\Eigene Dateien\ - und speichern Sie den
+Schlüssel dort z.B. als ,,mein\_key.asc''.
+
+Nun ziehen Sie den exportierten Schlüssel als Dateianhang in das
+entsprechende Fenster Ihres E-Mail-Programms, genauso wie jede andere
+Datei, und senden sie ihn an den Empfänger.
+
+% screenshot: GPA key export
+
+\clearpage
+%% Original page 30
+\section{PlugIns für E-Mail-Programme}
+
+Im ,,Einsteiger-Handbuch'' haben wir im Kapitel 5, ,,Sie entschlüsseln
+eine E-Mail'' erwähnt, daß es PlugIns für bestimmte E-Mail-Programme
+gibt, die die Ver- und Entschlüsselung erleichtern. Die im
+Schnelleinstieg vorgestellte Methode mit dem Frontend WinPT
+funktioniert sehr einfach und schnell, und zwar mit jedem beliebigen
+E-Mail- und Text-Programm. Trotzdem ist für viele E-Mail-Anwender ein
+spezieller Programmzusatz in ihrem Lieblings-E-Mailer ein Vorteil.
+
+GnuPG-PlugIns gibt es im Moment für Microsoft Outlook, PostMe (beide
+Windows), sowie mail (Apple MacOS X). Unter Linux stehen mit KMail und
+Mutt E-Mail-Clients mit integriertem GnuPG-Support zur Verfügung.
+
+Da sämtliche Komponenten des GnuPP-Pakets als Freie Software
+entstehen, ist die Entwicklung stark im Fluss.
+
+Aktuelle Informationen über neue Komponenten finden Sie unter diesen
+Webadressen: auf der GnuPP-Webpage http://www.gnupp.de/
+
+auf der Informations-Site des BMWi https://sicherheit-im- internet.de/
+im ,,Sicherheit im Internet''- Newsletter, den Sie unter
+https://www.sicherheit-im- internet.de/service/newslet ter.phtml
+bestellen können - übrigens mit dem GnuPP Paket signiert.
+
+\clearpage
+%% Original page 31
+\section{Die Schlüsselprüfung}
+
+Woher wissen Sie eigentlich, dass der fremde öffentliche Schlüssel
+wirklich vom Absender stammt? Und umge- kehrt --- warum sollte Ihr
+Korrespondenzpartner glauben, daß der öffentliche Schlüssel, den Sie
+ihm geschickt haben, auch wirklich von Ihnen stammt? Die
+Absenderangabe auf einer E-Mail besagt eigentlich gar nichts.
+
+Wenn Ihre Bank z.B. eine E-Mail mit Ihrem Namen und der Anweisung
+erhält, Ihre sämtliche Guthaben auf ein Nummernkonto auf den Bahamas
+zu überweisen, wird sie sich hoffentlich weigern --- E-Mail-Adresse
+hin oder her.  Eine E-Mail-Adresse besagt überhaupt nichts über die
+Identität des Ansenders.
+
+Wenn Sie nur einen kleinen Kreis von Korrespondenzpartnern haben, ist
+die Sache mit der Identität schnell geregelt: Sie prüfen den
+Fingerabdruck des Verdächtigen.
+
+Jeder öffentliche Schlüssel trägt eine einmalige Kennzeichnung, die
+ihn zweifelsfrei identifiziert; wie ein Fingerabdruck einen Menschen.
+Deshalb bezeichnet man diese Kennzeichnung auch als ,,Fingerprint''.
+
+Wenn Sie einen Schlüssel im GNU Privacy Assistant anklicken, sehen Sie
+den Fingerprint:
+
+% screenshot:  GPA key listing with fingerprint
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+\appendix
+\section{History}
+
+\begin{itemize}
+\item  ,,GnuPP für Durchblicker'', Auflage März 2002,\\
+  Autoren: Manfred J. Heinze, TextLab text+media\\
+  Beratung: Lutz Zolondz, G-N-U GmbH\\
+  Illustrationen: Karl Bihlmeier, Bihlmeier \& Kramer GbR\\
+  Layout: Isabel Kramer, Bihlmeier \& Kramer GbR\\
+  Fachtext: Dr. Francis Wray, e-mediate Ltd.\\
+  Redaktion: Ute Bahn, TextLab text+media\\
+  Herausgegeben vom Bundesministerium für Wirtschaft und
+  Technologie.\\
+  Verfügbar unter
+  \verb-http://www.gnupp.de/pdf/durchblicker.pdf-\footnote{%
+    Der Abschnitt ,,History'' ist im Originaldokument nicht vorhanden
+    und wurde von Werner Koch beigefügt.}
+\item Revidierte nicht-veröffentlichte Version von TextLab text+media.      
+\item ,,Gpg4Win für Durchblicker'', Dezember 2005\\
+      Autoren:  Werner Koch, g10 Code GmbH\\
+      Herausgegeben durch das Gpg4Win Projekt.
+
+\end{itemize}
+
+\input{fdl.tex}
+
+\end{document}
