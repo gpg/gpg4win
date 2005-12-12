@@ -1,4 +1,4 @@
-\documentclass[a4paper,11pt,twoside,titlepage]{scrartcl}
+\documentclass[a4paper,11pt,twoside,titlepage,dvips]{scrartcl}
 \usepackage{a4wide}
 \usepackage[latin1]{inputenc}
 %\usepackage[T1]{fontenc}
@@ -7,6 +7,23 @@
 \usepackage{alltt}
 \usepackage{moreverb}
 \usepackage{fancyhdr}
+
+% I would really like to use jpg sources but tehre are two problems.
+% The way as described below does no work becuase neiteyr dvips not
+% xdvi can cope with the BMP type.  The other solution of converting
+% jpeg on-the-fly into EPS is hampered by the fact that there seems to
+% be no free tool fo this.  The jpeg2ps tool mentioned at some places
+% is not free.  Frankly writing such a tool is pretty straightforword
+% and I'd really like to have a free one.  Another problem with a
+% non-builtin DeclareGraphicsRule is that one needs to pass the -R0
+% option (do not run securely) to dvips - not the best solution.
+% Eventually we should get code to do the on-the-fly conversion into
+% dvips proper.
+%
+%\DeclareGraphicsExtensions{.eps,.eps.gz,.jpg}
+%\DeclareGraphicsRule{.jpg}{bmp}{.jpg.bb}{`djpeg -bmp #1}
+\DeclareGraphicsExtensions{.eps.gz,.eps}
+
 
 \fancyhead{} % clear all fields
 \fancyhead[LO]{Gpg4win für Einsteiger}
@@ -30,37 +47,68 @@
 
 
 %% Original page 3
-\abstract{
-GnuPP für Einsteiger\\
-Schnelleinstieg zum E-Mail-Verschlüsselungsprogramm GnuPP\\
-Herausgegeben und gefördert vom\\
-Bundesministerium für Wirtschaft und Technologie\\
-Scharnhorststr. 34--37\\
-10115 Berlin\\
-Ansprechpartner:\\
-Bundesministerium für Wirtschaft und Technologie\\
-Referat Öffentlichkeitsarbeit\\
+%% We don't include this text anymore due to the rule given in the
+%% Impressum:
+%%    Wenn dieses Dokument von Dritten kopiert, verteilt und/oder
+%%    verändert wird, darf in keiner Form der Eindruck eines
+%%    Zusammenhanges mit dem Bundesministerium für Wirtschaft und
+%%    Technologie erweckt werden.
+%%
+%%%\abstract{
+%%%GnuPP für Einsteiger\\
+%%%Schnelleinstieg zum E-Mail-Verschlüsselungsprogramm GnuPP\\
+%%%Herausgegeben und gefördert vom\\
+%%%Bundesministerium für Wirtschaft und Technologie\\
+%%%Scharnhorststr. 34--37\\
+%%%10115 Berlin\\
+%%%Ansprechpartner:\\
+%%%Bundesministerium für Wirtschaft und Technologie\\
+%%%Referat Öffentlichkeitsarbeit\\
+%%%
+%%%Diese Druckschrift wird im Rahmen der Öffentlichkeitsarbeit des
+%%%Bundesministeriums für Wirtschaft und Technologie kostenfrei
+%%%herausgegeben. Sie darf von Dritten nicht gegen Entgelt weitergegeben
+%%%werden.  Sie darf weder von Parteien noch von Wahlwerbern oder
+%%%Wahlhelfern während eines Wahlkampfes zum Zwecke der Wahlwerbung
+%%%verwendet werden. Dies gilt für Europa-, Bundestags-, Landtags- und
+%%%Kommunal- wahlen. Missbräuchlich sind insbesondere die Verteilung auf
+%%%Wahlver- anstaltungen, an Informationsständen der Parteien sowie das
+%%%Einlegen, Aufdrucken oder Aufkleben parteipolitischer Informationen
+%%%oder Werbemittel. Untersagt ist gleichfalls die Weitergabe an Dritte
+%%%zum Zwecke der Wahlwerbung. Unabhängig davon, wann, auf welchem Wege
+%%%und in welcher Anzahl diese Schrift dem Empfänger zugegangen ist, darf
+%%%sie auch ohne zeitlichen Bezug zu einer bevorstehenden Wahl nicht in
+%%%einer Weise verwendet werden, die als Parteinahme der Bundesregierung
+%%%zugunsten einzelner politischer Gruppen verstanden werden könnte.
+%%%}
+%%%
 
-\marginpar{Dieser Text sollte wohl besser entfernt werden}
+\section*{Impressum gpg4win}
 
-Diese Druckschrift wird im Rahmen der Öffentlichkeitsarbeit des
-Bundesministeriums für Wirtschaft und Technologie kostenfrei
-herausgegeben. Sie darf von Dritten nicht gegen Entgelt weitergegeben
-werden.  Sie darf weder von Parteien noch von Wahlwerbern oder
-Wahlhelfern während eines Wahlkampfes zum Zwecke der Wahlwerbung
-verwendet werden. Dies gilt für Europa-, Bundestags-, Landtags- und
-Kommunal- wahlen. Missbräuchlich sind insbesondere die Verteilung auf
-Wahlver- anstaltungen, an Informationsständen der Parteien sowie das
-Einlegen, Aufdrucken oder Aufkleben parteipolitischer Informationen
-oder Werbemittel. Untersagt ist gleichfalls die Weitergabe an Dritte
-zum Zwecke der Wahlwerbung. Unabhängig davon, wann, auf welchem Wege
-und in welcher Anzahl diese Schrift dem Empfänger zugegangen ist, darf
-sie auch ohne zeitlichen Bezug zu einer bevorstehenden Wahl nicht in
-einer Weise verwendet werden, die als Parteinahme der Bundesregierung
-zugunsten einzelner politischer Gruppen verstanden werden könnte.
-}
+\noindent
+Copyright \copyright{} 2002 Bundesministerium für Wirtschaft und Technologie\\
+Copyright \copyright{} 2005 g10 Code GmbH\\
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation; with
+the Invariant Sections being ,,Impressum'', no Front-Cover Texts, and
+no Back-Cover Texts.  A copy of the license is included in the section
+entitled ,,GNU Free Documentation License''.
 
+\bigskip
 
+{\LARGE Dieses Handbuch wird zur Zeit überarbeitet.} 
+
+\vfill
+
+\begin{center}
+\fbox{\parbox{.7\textwidth}{Die Angaben auf der folgenden Seite
+    sind nicht mehr korrekt; wir können diese Seite allerdings nicht
+    abändern, da die Regeln der GFDL hier falsch angewandt wurden.
+    Neue Copyright Hinweise sollten deswegen hier eingestellt werden.}}
+\end{center}
+
+\clearpage
 %% Orginal page 4
 %% This is an invariant section
 \section*{Impressum}
@@ -93,30 +141,6 @@ werden.  Wie das OpenSource-Kryptografieprogramm GnuPP selbst wurden
 diese Texte nicht für Mathematiker, Geheimdienstler und Kryptografen
 geschrieben, sondern für jedermann.
 
-
-\clearpage
-\section*{}
-\begin{center}
-\fbox{\parbox{.7\textwidth}{Die Angaben auf der vorhergehenden Seite
-    sind nicht mehr korrekt; wir können diese Seite allerdings nicht
-    abändern, da die Regeln der GFDL hier falsch angewandt wurden.}}
-\end{center}
-
-\bigskip
-
-\noindent
-Copyright \copyright{} 2002 Bundesministerium für Wirtschaft und Technologie\\
-Copyright \copyright{} 2005 g10 Code GmbH\\
-Permission is granted to copy, distribute and/or modify this document
-under the terms of the GNU Free Documentation License, Version 1.2 or
-any later version published by the Free Software Foundation; with
-the Invariant Sections being ,,Impressum'', no Front-Cover Texts, and
-no Back-Cover Texts.  A copy of the license is included in the section
-entitled ,,GNU Free Documentation License''.
-
-\bigskip
-
-{\LARGE Dieses Handbuch wird zur Zeit überarbeitet.} 
 
 
 %% Orginal page 5
@@ -153,45 +177,51 @@ entitled ,,GNU Free Documentation License''.
 
 
 
-\clearpage
+%%\clearpage
 %% Orginal page  6
-                                    
-%% Portrait Müller  daneben
-  Sicherheit durch Offenheit
+%% We don't use these foreword anymore because Mr. Müller is not
+%% anymore minister of economic and technology.  We might want to ask
+%% for a new foreword by the current head of that ministr
+%%
 
-Liebe Anwender der Freien Software GnuPP,
-bisher hat man oft versucht, Software dadurch zu schützen,
-dass man möglichst wenige Informationen darüber preisgab. Trotzdem
-werden immer wieder schwerwiegende Sicherheitslücken in solch
-geschlossenen Software-Systemen gefunden und zu Hackerangriffen
-missbraucht. Wir setzen deshalb auf ,,Sicherheit durch Offenheit''. Denn
-die öffentliche Diskussion über erkannte Schwachstellen hilft, Sicherheits-
-lecks schnell zu beseitigen oder gar nicht erst entstehen zu lassen.
+%%% %% Portrait Müller  daneben
+%%%   Sicherheit durch Offenheit
+%%% 
+%%% Liebe Anwender der Freien Software GnuPP,
+%%% bisher hat man oft versucht, Software dadurch zu schützen,
+%%% dass man möglichst wenige Informationen darüber preisgab. Trotzdem
+%%% werden immer wieder schwerwiegende Sicherheitslücken in solch
+%%% geschlossenen Software-Systemen gefunden und zu Hackerangriffen
+%%% missbraucht. Wir setzen deshalb auf ,,Sicherheit durch Offenheit''. Denn
+%%% die öffentliche Diskussion über erkannte Schwachstellen hilft, Sicherheits-
+%%% lecks schnell zu beseitigen oder gar nicht erst entstehen zu lassen.
+%%% 
+%%% Deshalb unterstützt das Bundesministerium für Wirtschaft und
+%%% Technologie die Entwicklung des Open-Source-Verschlüsselungsprojektes
+%%% ,,GNU Privacy Projekt'' (GnuPP) . GnuPP ist eine sichere, einfache und
+%%% kostenlose Verschlüsselungssoftware. Sie ermöglicht es jedem Bürger
+%%% 
+%%% % rechte Spalte
+%%% und jedem Unternehmen, seine Grundrechte auf vertrauliche
+%%% Kommunikation über das Internet zu wahren und die Rechtsverbind-
+%%% lichkeit, Integrität und Authentizität der Kommunikation zu überprüfen.
+%%% 
+%%% Gerade für den Verkehr mit und zwischen den Behörden spielt das eine
+%%% wichtige Rolle. Denn mit der flächendeckenden Einführung der digitalen
+%%% Signatur in der Bundesverwaltung - wie sie die Bundesregierung
+%%% beschlossen hat - können Bürgerinnen und Bürger ihren Rechts- und
+%%% Geschäftsverkehr mit den Bundesbehörden künftig auch über das
+%%% Internet sicher abwickeln.
+%%% 
+%%% Ich wünsche allen Anwendern von GnuPP eine lebhafte und sichere
+%%% E-Mail-Kommunikation.
+%%% 
+%%% % Unterschrift.
+%%% 
+%%% Dr. Werner Müller\\
+%%% Bundesminister für Wirtschaft und Technologie.
+%%% 
 
-Deshalb unterstützt das Bundesministerium für Wirtschaft und
-Technologie die Entwicklung des Open-Source-Verschlüsselungsprojektes
-,,GNU Privacy Projekt'' (GnuPP) . GnuPP ist eine sichere, einfache und
-kostenlose Verschlüsselungssoftware. Sie ermöglicht es jedem Bürger
-
-% rechte Spalte
-und jedem Unternehmen, seine Grundrechte auf vertrauliche
-Kommunikation über das Internet zu wahren und die Rechtsverbind-
-lichkeit, Integrität und Authentizität der Kommunikation zu überprüfen.
-
-Gerade für den Verkehr mit und zwischen den Behörden spielt das eine
-wichtige Rolle. Denn mit der flächendeckenden Einführung der digitalen
-Signatur in der Bundesverwaltung - wie sie die Bundesregierung
-beschlossen hat - können Bürgerinnen und Bürger ihren Rechts- und
-Geschäftsverkehr mit den Bundesbehörden künftig auch über das
-Internet sicher abwickeln.
-
-Ich wünsche allen Anwendern von GnuPP eine lebhafte und sichere
-E-Mail-Kommunikation.
-
-% Unterschrift.
-
-Dr. Werner Müller\\
-Bundesminister für Wirtschaft und Technologie.
 
 \clearpage
 %% Orginal page 7
@@ -601,6 +631,7 @@ netten jungen Dame lieber korrespondiert als mit einem Stück Software
 vorgestellt:
 
 % Cartoon:  Adele mit Buch ind er Hand vor Rechner ``you have mail''
+\includegraphics{adele01}
 
 Adele schicken Sie zunächst Ihren öffentlichen Schlüssel. Wenn Adele
 Ihren Schlüssel empfangen hat, verschlüsselt sie damit eine E-Mail an
@@ -760,6 +791,7 @@ E-Mail und sendet sie an Sie zurück.  Nach kurzer Zeit erhalten Sie
 Adeles Antwort.
 
 % cartoon: Adele typing and sending a mail
+\includegraphics{adele02}
 
 \clearpage
 %% Orginal page 32
@@ -999,6 +1031,9 @@ Ihrem GnuPP- Schlüsselbund befestigt haben, wie in Kapitel 8
 besprochen.
 
 % cartoon:  Müller mit Schlüssel
+\includegraphics{man-with-signed-key}
+
+
 \clearpage
 %% Original page 41
 Wenn Sie eine signierte E-Mail erhalten, sehen Sie, daß der Text am

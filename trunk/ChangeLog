@@ -1,3 +1,7 @@
+2005-12-12  Werner Koch  <wk@g10code.com>
+
+	* configure.ac: Test vor zcat.
+
 2005-12-09  Werner Koch  <wk@g10code.com>
 
 	* Makefile.am (SUBDIRS): Include doc dir.

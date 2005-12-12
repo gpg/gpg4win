@@ -1,3 +1,11 @@
+2005-12-12  Werner Koch  <wk@g10code.com>
+
+	* manual-de/durchblicker.tex: New. Not yet ready. Also added more
+	graphics.
+
+	* manual-de/Makefile.am: Include some graphics and rules to build
+	the bounding box files.
+
 2005-12-09  Werner Koch  <wk@g10code.com>
 
 	* manual-de: New.
