@@ -101,9 +101,7 @@ GPG4WIN_BPKG_GTK_DEV([glib], [pkgconfig])
 GPG4WIN_BPKG_GTK_DEV([gtk+], [atk pango glib libiconv gettext pkgconfig])
 GPG4WIN_BPKG_GTK_DEV([atk], [glib pkgconfig])
 GPG4WIN_BPKG_GTK_DEV([pango], [glib pkgconfig])
-#fixme: These are intermediate package.
-GPG4WIN_BPKG_BINSRC([gpgee], [gnupg])
-
+GPG4WIN_BPKG_BINSRC([GPGee], [gnupg])
 
 GPG4WIN_SPKG([libgpg-error], [libiconv gettext])
 GPG4WIN_SPKG([gpgme], [libgpg-error gnupg glib])

@@ -122,14 +122,22 @@ chk  78c3357c1a8c59209263e1c58e7dd84916799f21
 
 
 # GPGee
-# Note: This is a temporary location
+# Note that the -bin package has been repackaged from the
+# -noinstaller package using these commands:
+#    mkdir gpgee-tmp
+#    unzip ../GPGee-1.2.3-noinstaller.zip
+#    gpg --verify GPGee.zip.asc
+#    unzip GPGee.zip
+#    rm GPGee/uninst.exe 
+#    zip ../GPGee-1.2.3-bin.zip GPGee/*
 
-server ftp://ftp.g10code.com/g10code/scratch
+server ftp://ftp.gnupg.org/gcrypt/gpgee
 
-file gpgee-1.2.2-bin.zip
-chk  c230469dd25cc49908560e09bed0fb4eab1824bc
-file gpgee-1.2.2-src.zip
-chk  fed15718d265c892bc74e4b8c376fda84aa794f7
+file GPGee-1.2.3-bin.zip
+chk  911a30208094acc30ffb5f8f43e95be1d29d99e6
+file GPGee-1.2.3-source.zip
+chk  8255044586f5b7ef63f7937c496d925e942829e8 
+
 
 # GPGol
 server ftp://ftp.g10code.com/g10code/gpgol

@@ -1,3 +1,10 @@
+2005-12-13  Werner Koch  <wk@g10code.com>
+
+	* packages/packages.current: Updated GPGee.
+	* src/inst-gpgee.nsi: Adjusted for new location of packages.
+	* m4/gpg4win.m4 (GPG4WIN_BPKG_BINSRC): Allow for -source suffix
+	and uppercase package names.
+
 2005-12-12  Werner Koch  <wk@g10code.com>
 
 	* configure.ac: Test vor zcat.
