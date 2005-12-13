@@ -10,15 +10,19 @@
 
 \DeclareGraphicsExtensions{.eps.gz,.eps}
 
-%\fancyhead{} % clear all fields
-%\fancyhead[LO]{Gpg4win für Durchblicker}
-%\fancyhead[RO]{\thepage}
-%\fancyfoot{}
+\fancyhead{} % clear all fields
+\fancyhead[LO]{Gpg4win für Durchblicker}
+\fancyhead[RO]{\thepage}
+\fancyfoot{}
 
 % Hyperref should be among the last packages loaded
 \usepackage{hyperref}
 
 \begin{document}
+\thispagestyle{empty}
+\pagestyle{fancy}
+\parindent0cm
+\parskip\medskipamount
 
 \title{Gpg4win für Durchblicker}
 \author{Eine Veröffentlichung des Gpg4Win Projekts\\
@@ -29,50 +33,6 @@
 
 \maketitle
 
-
-%% Original page 2
-%% We don't include this text anymore due to the rule given in the
-%% Impressum:
-%%    Wenn dieses Dokument von Dritten kopiert, verteilt und/oder
-%%    verändert wird, darf in keiner Form der Eindruck eines
-%%    Zusammenhanges mit dem Bundesministerium für Wirtschaft und
-%%    Technologie erweckt werden.
-%%
-%%%\abstract{
-%%%GnuPP für Durchblocker
-%%%
-%%%Das Hintergrund-Know-How zum E-Mail-Verschlüsselungsprogramm GnuPP
-%%%
-%%%Herausgegeben und gefördert vom\\
-%%%Bundesministerium für Wirtschaft und Technologie\\
-%%%Scharnhorststr. 34--37\\
-%%%10115 Berlin
-%%%
-%%%Ansprechpartner:\\
-%%%Bundesministerium für Wirtschaft und Technologie\\
-%%%Referat Öffentlichkeitsarbeit\\
-%%%
-%%%Copyright © Bundesministerium für Wirtschaft und Technologie
-%%
-%%%Diese Druckschrift wird im Rahmen der Öffentlichkeitsarbeit des
-%%%Bundesministeriums für Wirtschaft und Technologie kostenfrei
-%%%herausgegeben. Sie darf von Dritten nicht gegen Entgelt weitergegeben
-%%%werden. 
-%%%
-%%%Sie darf weder von Parteien noch von Wahlwerbern oder
-%%%Wahlhelfern während eines Wahlkampfes zum Zwecke der Wahlwerbung
-%%%verwendet werden. Dies gilt für Europa-, Bundestags-, Landtags- und
-%%%Kommunal- wahlen. Missbräuchlich sind insbesondere die Verteilung auf
-%%%Wahlver- anstaltungen, an Informationsständen der Parteien sowie das
-%%%Einlegen, Aufdrucken oder Aufkleben parteipolitischer Informationen
-%%%oder Werbemittel. Untersagt ist gleichfalls die Weitergabe an Dritte
-%%%zum Zwecke der Wahlwerbung. Unabhängig davon, wann, auf welchem Wege
-%%%und in welcher Anzahl diese Schrift dem Empfänger zugegangen ist, darf
-%%%sie auch ohne zeitlichen Bezug zu einer bevorstehenden Wahl nicht in
-%%%einer Weise verwendet werden, die als Parteinahme der Bundesregierung
-%%%zugunsten einzelner politischer Gruppen verstanden werden könnte.
-%%%}
-%%%
 
 \section*{Impressum gpg4win}
 
@@ -135,124 +95,36 @@ wird, darf in keiner Form der Eindruck eines Zusammenhanges mit dem
 Bundesministerium für Wirtschaft und Technologie erweckt werden.
 
 
-%% Orginal page 4
-%% Just for documentation
-%%%
-%%% GnuPP für Durchblicker          2
-%%%                                 3
-%%% Impressum
-%%%                                 4
-%%% Inhalt
-%%%                                74
-%%% Anhang: Menus in GPA und WinPT
-%%% 
-%%% 
-%%%                                                5
-%%% 1.  Was ist GnuPP?
-%%%                                                6
-%%% 2.  Warum überhaupt verschlüsseln?
-%%%                                                9
-%%% 3.  Wie funktioniert GnuPP?:
-%%%                                              20
-%%% 4.  Der Passwort-Satz
-%%%                                              24
-%%% 5.  Schlüssel im Detail
-%%%                                              25
-%%% 6.  Die Schlüsselserver
-%%%                                              29
-%%% 7.  Der Schlüssel als Dateianhang
-%%%                                              30
-%%% 8.  PlugIns für E-Mail-Programme
-%%%                                              31
-%%% 9.  Die Schlüsselprüfung
-%%%                                              37
-%%% 10. E-Mails signieren
-%%%                                              43
-%%% 11. Dateianhänge verschlüsseln
-%%%                                              45
-%%% 12. Im- und Export eines geheimen Schlüssels
-%%%                                              4
-%%% 13. Warum GnuPP nicht zu knacken ist:
-%%%     Kryptografie für Nicht-Mathematiker
-%%% 
-
-
-\newpage
+\clearpage
 \tableofcontents
-
-
-
-%%\clearpage
-%% Orginal page  6
-%% We don't use these foreword anymore because Mr. Müller is not
-%% anymore minister of economic and technology.  We might want to ask
-%% for a new foreword by the current head of that ministr
-%%
-
-%%% %% Portrait Müller  daneben
-%%%   Sicherheit durch Offenheit
-%%% 
-%%% Liebe Anwender der Freien Software GnuPP,
-%%% bisher hat man oft versucht, Software dadurch zu schützen,
-%%% dass man möglichst wenige Informationen darüber preisgab. Trotzdem
-%%% werden immer wieder schwerwiegende Sicherheitslücken in solch
-%%% geschlossenen Software-Systemen gefunden und zu Hackerangriffen
-%%% missbraucht. Wir setzen deshalb auf ,,Sicherheit durch Offenheit''. Denn
-%%% die öffentliche Diskussion über erkannte Schwachstellen hilft, Sicherheits-
-%%% lecks schnell zu beseitigen oder gar nicht erst entstehen zu lassen.
-%%% 
-%%% Deshalb unterstützt das Bundesministerium für Wirtschaft und
-%%% Technologie die Entwicklung des Open-Source-Verschlüsselungsprojektes
-%%% ,,GNU Privacy Projekt'' (GnuPP) . GnuPP ist eine sichere, einfache und
-%%% kostenlose Verschlüsselungssoftware. Sie ermöglicht es jedem Bürger
-%%% 
-%%% % rechte Spalte
-%%% und jedem Unternehmen, seine Grundrechte auf vertrauliche
-%%% Kommunikation über das Internet zu wahren und die Rechtsverbind-
-%%% lichkeit, Integrität und Authentizität der Kommunikation zu überprüfen.
-%%% 
-%%% Gerade für den Verkehr mit und zwischen den Behörden spielt das eine
-%%% wichtige Rolle. Denn mit der flächendeckenden Einführung der digitalen
-%%% Signatur in der Bundesverwaltung - wie sie die Bundesregierung
-%%% beschlossen hat - können Bürgerinnen und Bürger ihren Rechts- und
-%%% Geschäftsverkehr mit den Bundesbehörden künftig auch über das
-%%% Internet sicher abwickeln.
-%%% 
-%%% Ich wünsche allen Anwendern von GnuPP eine lebhafte und sichere
-%%% E-Mail-Kommunikation.
-%%% 
-%%% % Unterschrift.
-%%% 
-%%% Dr. Werner Müller\\
-%%% Bundesminister für Wirtschaft und Technologie.
-%%% 
 
 
 \clearpage
 %% Original page 5
-\section{Was ist GnuPP}
-Das Projekt GnuPP (GNU Privacy Project) ist eine vom
-Bundeswirtschaftsministerium geförderte
-E-mail-Verschlüsselungssoftware. GnuPP bezeichnet das Gesamtpaket,
-das die Programme GnuPG, GPA, WinPT und andere Komponenten enthält.
-\marginpar{FIXME}
+\section{Was ist Gpg4win}
+Das Projekt Gpg4win (GNU Privacy Guard for Windows) ist eine vom
+Bundesamt für Sicherheit in der Informationstechnik beauftragte
+E-Mail-Verschlüsselungssoftware. Gpg4win bezeichnet ein Gesamtpaket,
+welches die Programme GnuPG, GPA, WinPT und andere Komponenten
+enthält.
 
 Mit dem Verschlüsselungsprogramm GnuPG (GNU Privacy Guard) kann
 jedermann E-Mails sicher, einfach und kostenlos verschlüsseln. GnuPG
 kann privat oder kommerziell eingesetzt werden. Die Verschlüsselung
 von GnuPG kann nach dem heutigen Stand von Forschung und Technik nicht
-gebrochen werden.  GnuPG ist Freie Software oder Open-Source-Software.
+gebrochen werden.  GnuPG ist Freie Software\footnote{oft fälschlich
+auch als Open Source Software bezeichnet}.
 Das bedeutet, dass jedermann das Recht hat, sie nach Belieben
 kommerziell oder privat zu nutzen.
 
 Und es bedeuetet, daß jedermann den Quellcode, also die eigentliche
-Programmierung des Programms, genau untersuchen soll und darf.  Für
+Programmierung des Programms, genau untersuchen kann und darf.  Für
 eine Sicherheits-Software ist diese garantierte Transparenz des
 Quellcodes eine unverzichtbare Grundlage.  Nur so lässt sich die
-Vertrauenswürdigkeit eines Programmes prüfen.  GnuPG ist vollständig
-kompatibel mit PGP GnuPG basiert auf dem internationalen Standard
-OpenPGP (RFC 2440), ist vollständig kompatibel zu PGP und benutzt die
-gleiche Infrastruktur (Schlüsselserver usw.)
+Vertrauenswürdigkeit eines Programmes prüfen.  GnuPG basiert auf auf
+dem internationalen Standard OpenPGP (RFC 2440), ist vollständig
+kompatibel zu PGP und benutzt die gleiche Infrastruktur
+(Schlüsselserver usw.)
 
 PGP (,,Pretty Good Privacy'') ist keine freie Software, sie wird seit
 mehreren Jahren nicht mehr unter der freien Softwarelizenz GNU General
@@ -267,11 +139,12 @@ des Bundeswirtschaftsministeriums.
 \clearpage
 %% Original page 6
 \section{Warum überhaupt  verschlüsseln?}
+
 Die Verschlüsselung von Nachrichten wird manchmal als das zweitälteste
 Gewerbe der Welt bezeichnet. Verschlüsselungstechniken benutzten schon
 der Pharao Khnumhotep II, Herodot und Cäsar.
 
-Wenigstens das zweitälteste Gewerbe der Welt ist heute dank GnuPP für
+Wenigstens das zweitälteste Gewerbe der Welt ist heute dank Gpg4win für
 jedermann frei und kostenlos zugänglich\ldots
 \marginpar{FIXME: Billige Anspielung}
 
@@ -325,23 +198,23 @@ Denn: der Umschlag fehlt.
 
 Was wir Ihnen hier vorschlagen, ist ein Umschlag für Ihre
 elektronischen Briefe. Ob Sie ihn benutzen, wann, für wen und wie oft,
-ist ganz allein Ihre Sache. Software wie GnuPP gibt Ihnen lediglich
+ist ganz allein Ihre Sache. Software wie Gpg4win gibt Ihnen lediglich
 die Wahlfreiheit zurück. Die Wahl, ob Sie persönlich eine Nachricht
 für wichtig und schützenswert halten oder nicht.
 
 Das ist der Kern des Rechts auf Brief-, Post- und Fernmeldegeheimnis
 im Grundgesetz, und dieses Recht können Sie mit Hilfe der Software
-GnuPP wahrnehmen. Sie müssen sie nicht benutzen --- Sie müssen ja auch
+Gpg4win wahrnehmen. Sie müssen sie nicht benutzen --- Sie müssen ja auch
 keinen Briefumschlag benutzen. Aber es ist Ihr gutes Recht.
 
-Um dieses Recht zu sichern, bietet GnuPP Ihnen sogenannte ,,starke
+Um dieses Recht zu sichern, bietet Gpg4win Ihnen sogenannte ,,starke
 Verschlüsselungs- technologie''. ,,Stark'' bedeutet hier: mit keinem
 gegenwärtigen Mittel zu knacken. In vielen Ländern war starke
 Verschlüsselungstechnologie bis vor ein paar Jahren den Militärs und
 Regierungsbehörden vorbehalten. Das Recht, sie für jeden Bürger
 nutzbar zu machen, haben sich die Internet-Nutzer mühsam erobert;
 manchmal auch mit der Hilfe von klugen und weitsichtigen Menschen in
-Regierungsinstitutionen, wie im Falle von GnuPP.  GnuPG wird von
+Regierungsinstitutionen, wie im Falle von Gpg4win.  GnuPG wird von
 Sicherheitsexperten in aller Welt als eins der sichersten
 entsprechenden Software-Systeme angesehen.
 
@@ -354,20 +227,20 @@ und die wir im Folgenden besprechen:
 
 \clearpage
 %% Original page 9
-\section{Wie funktioniert GnuPP?}
-Das Besondere an GnuPP und der zugrundeliegenden Public Key-Methode
+\section{Wie funktioniert Gpg4win?}
+Das Besondere an Gpg4win und der zugrundeliegenden Public Key-Methode
 ist, daß sie jeder verstehen kann und soll. Nichts daran ist
 Geheimwissen ­-- es ist nicht einmal besonders schwer zu verstehen.
 
-Die Benutzung von GnuPP ist sehr einfach, seine Wirkungsweise dagegen
-ziemlich kompliziert. Wir werden in diesem Kapitel erklären, wie GnuPP
+Die Benutzung von Gpg4win ist sehr einfach, seine Wirkungsweise dagegen
+ziemlich kompliziert. Wir werden in diesem Kapitel erklären, wie Gpg4win
 funktioniert ­-- nicht in allen Details, aber so, dass die Prinzipien
 dahinter deutlicher werden. Wenn Sie diese Prinzipien kennen, werden
-Sie ein hohes Vertrauen in die Sicherheit von GnuPP gewinnen.
+Sie ein hohes Vertrauen in die Sicherheit von Gpg4win gewinnen.
 
 Ganz am Ende dieses Buches, in Kapitel 13, können Sie ­-- wenn Sie
 wollen ­-- auch noch die letzten Geheimnisse um die Public
-Key-Kryptografie lüften und entdecken, warum GnuPP nicht zu knacken
+Key-Kryptografie lüften und entdecken, warum Gpg4win nicht zu knacken
 ist.
 
 
@@ -417,12 +290,12 @@ Dritten abgefangen werden darf.
 \clearpage
 %% Original page 12
 
-GnuPP dagegen arbeitet ­-- außer mit dem Geheimschlüssel --- mit einem
+Gpg4win dagegen arbeitet ­-- außer mit dem Geheimschlüssel --- mit einem
 weiteren Schlüssel (,,key''), der vollkommen frei und öffentlich
 (,,public'') zugänglich ist.
 
 Man spricht daher auch von
-GnuPP als einem ,,Public Key''-Verschlüsselungssystem.
+Gpg4win als einem ,,Public Key''-Verschlüsselungssystem.
 
 Das klingt widersinnig, ist es aber nicht. Der Witz an der Sache: es
 muss kein Geheimschlüssel mehr ausgetauscht werden. Im Gegenteil: der
@@ -430,7 +303,7 @@ Geheimschlüssel darf auf keinen Fall ausgetauscht werden!
 Weitergegeben wird nur der öffentliche Schlüssel ­-- und den kennt
 sowieso jeder.
 
-Mit GnuPP benutzen Sie also ein Schlüsselpaar ­-- eine geheime und
+Mit Gpg4win benutzen Sie also ein Schlüsselpaar ­-- eine geheime und
 eine zweite öffentliche Schlüsselhälfte.  Beide Hälften sind durch
 eine komplexe mathematische Formel untrennbar miteinander verbunden.
 Nach heutiger wissenschaftlicher und technischer Kenntnis ist es
@@ -446,7 +319,7 @@ den Code zu knacken. In Kapitel 13 erklären wir, wie das funktioniert.
 
 \clearpage
 %% Original page 13
-Das GnuPP-Prinzip ist wie gesagt recht einfach:
+Das Gpg4win-Prinzip ist wie gesagt recht einfach:
 
 der geheime oder private Schlüssel (secret oder private key) muß
 geheim gehalten werden.
@@ -824,7 +697,7 @@ können. Diese Möglichkeit haben wir bereits im Manual
 Schlüssel an irgendeinen der Keyserver zu senden, denn alle
 synchronsieren sich weltweit miteinander.
 
-Ein Keyserver ist in GnuPP stets voreingestellt. Ein Mausklick genügt,
+Ein Keyserver ist in Gpg4win stets voreingestellt. Ein Mausklick genügt,
 und Ihr Schlüssel ist unterwegs rund um die Welt.  Es kann ein ein,
 zwei Tage dauern, bis er wirklich überall verfügbar ist, aber dann
 haben Sie einen globalen Schlüssel!  Die Schlüsselserver sind völlig
@@ -849,9 +722,9 @@ keine Chance.
 %%%ebenfalls http://germany.  keyserver.net/en/ oder der Keyserver des
 %%%Deutschen Forschungsnetzes DFN http://www.dfn.pca.de/pgpkserv/. 
 
-Das OpenPGP-Netz \verb-hkp://subkeys.pgp.net/- ist zum Beispiel der
-Sammelpunkt für ein ganzes Netz dieser Server, oft benutzt wird auch
-der Keyserver des Deutschen Forschungsnetzes DFN
+Die Keyserver under der Adresse \verb-hkp://subkeys.pgp.net/- sind zum
+Beispiel der Sammelpunkt für ein ganzes Netz dieser Server, oft
+benutzt wird auch der Keyserver des Deutschen Forschungsnetzes DFN
 \verb-hkp://blackhole.pcs.dfn.de-.
 
 \clearpage
@@ -889,10 +762,10 @@ Sie sehen den Ihnen schon bekannten Textblock, der den eigentlichen
 öffentlichen Schlüssel bildet.
 
 Im ,,Schnelleinstieg'', Kapitel 6 und 7 zeigen wir Ihnen, wie man
-diesen Schlüssel importiert, d.h., am eigenen GnuPP- Schlüsselbund
+diesen Schlüssel importiert, d.h., am eigenen Gpg4win- Schlüsselbund
 befestigt, und damit eine E-Mail an den Besitzer verschlüsselt.
 
-Diese Suche nach einem Schlüssel funktioniert auch direkt aus GnuPP:
+Diese Suche nach einem Schlüssel funktioniert auch direkt aus Gpg4win:
 Sie können einfach die E-Mail-Adresse des Schlüsselbesitzers eingeben,
 oder auch die Schlüsselkennung, falls Ihnen diese bekannt ist. Klicken
 Sie dazu auf ,,Import'', und dort auf ,,Schlüssel vom Key-Server
@@ -901,7 +774,7 @@ empfangen''
 
 % screenshot: GPA import from keyserver
 
-GnuPP sucht dann den Schlüssel, importiert ihn und zeigt ihn im
+Gpg4win sucht dann den Schlüssel, importiert ihn und zeigt ihn im
 Schlüsselverwaltungs-Fenster an.
 
 
@@ -945,16 +818,16 @@ GnuPG-PlugIns gibt es im Moment für Microsoft Outlook, PostMe (beide
 Windows), sowie mail (Apple MacOS X). Unter Linux stehen mit KMail und
 Mutt E-Mail-Clients mit integriertem GnuPG-Support zur Verfügung.
 
-Da sämtliche Komponenten des GnuPP-Pakets als Freie Software
+Da sämtliche Komponenten des Gpg4win-Pakets als Freie Software
 entstehen, ist die Entwicklung stark im Fluss.
 
 Aktuelle Informationen über neue Komponenten finden Sie unter diesen
-Webadressen: auf der GnuPP-Webpage http://www.gnupp.de/
+Webadressen: auf der Gpg4win-Webpage http://www.Gpg4win.de/
 
 auf der Informations-Site des BMWi https://sicherheit-im- internet.de/
 im ,,Sicherheit im Internet''- Newsletter, den Sie unter
 https://www.sicherheit-im- internet.de/service/newslet ter.phtml
-bestellen können - übrigens mit dem GnuPP Paket signiert.
+bestellen können - übrigens mit dem Gpg4win Paket signiert.
 
 \clearpage
 %% Original page 31
@@ -1003,7 +876,7 @@ gehören.
 
 Nachdem Sie sich ,,per Fingerabdruck'' von der Echtheit des
 öffentlichen Schlüssel überzeugt haben, sollten Sie ihn signieren.
-Damit teilen Sie anderen GnuPP-Benutzern mit, daß Sie diesen Schlüssel
+Damit teilen Sie anderen Gpg4win-Benutzern mit, daß Sie diesen Schlüssel
 für echt halten: Sie übernehmen so etwas wie die ,,Patenschaft'' über
 diesen Schlüssel und erhöhen das allgemeine Vertrauen in seine
 Echtheit.
@@ -1034,7 +907,7 @@ Schlüssels gegeben.
 %% Original page 34
 
 Das Netz des Vertrauens So entsteht --- auch über den Kreis von
-GnuPP-Benutzern Ihrer täglichen Korrespondenz hinaus --- ein ,,Netz
+Gpg4win-Benutzern Ihrer täglichen Korrespondenz hinaus --- ein ,,Netz
 des Vertrauens'', bei dem Sie nicht mehr zwangsläufig darauf
 angewiesen sind, einen Schlüssel direkt zu prüfen.
 
@@ -1101,12 +974,12 @@ Modell natürlich wesentlich besser den Bedürfnissen staatlicher und
 behördlicher Instanzen als das lose, auf gegenseitigem Vertrauen
 beruhende ,,Web of Trust'' der GnuPG- und PGP-Modelle. Der Kern der
 Be- glaubigung selbst ist allerdings völlig identisch: wenn man in
-GnuPP zusätzlich eine hierarchische Zertifizierungs- Struktur einbauen
-würde, dann würde auch GnuPP dem strengen Signaturgesetz der
+Gpg4win zusätzlich eine hierarchische Zertifizierungs- Struktur einbauen
+würde, dann würde auch Gpg4win dem strengen Signaturgesetz der
 Bundesrepublik entsprechen.
 
 Wenn Sie sich weiter für dieses Thema interessieren (das zum Zeitpunkt
-der Arbeit an dieser GnuPP-Ausgabe gerade in Bewegung ist), dann
+der Arbeit an dieser Gpg4win-Ausgabe gerade in Bewegung ist), dann
 können Sie sich an der Quelle informieren: die Website ,,Sicherheit im
 Internet'' des Bundesministeriums für Wirtschaft und Technologie
 (\href{http://www.sicherheit-im-internet.de}%
@@ -1128,7 +1001,7 @@ dem Versenden einer Postkarte verglichen. Erst die Verschlüsselung
 macht daraus einen Brief mit verschlossenem Umschlag, den nicht mehr
 jedermann lesen kann.
 
-GnuPP bietet zusätzlich zur kompletten Verschlüsselung einer E-Mail
+Gpg4win bietet zusätzlich zur kompletten Verschlüsselung einer E-Mail
 noch eine weitere Möglichkeit:
 \begin{itemize}
 \item man kann seine E-Mail signieren, das heisst mit einer
@@ -1188,7 +1061,7 @@ nur Ihr Geheimschlüssel passt ja zu Ihrem öffentlichen Schlüssel.
 
 Klicken Sie also auf Ihren eigenen Schlüssel und bestätigen Sie mit
 [OK]. Im folgenden Fenster geben Sie Ihren geheimen Passwort-Satz
-einund bestätigen Sie wieder mit [OK]. GnuPP meldet [Finished], wenn
+einund bestätigen Sie wieder mit [OK]. Gpg4win meldet [Finished], wenn
 der Text signiert ist. Jetzt müssen Sie Ihren signierten Text nur noch
 in Ihr E-Mail- oder Textpro- gramm einfügen (Menübefehl ,,Einfügen''
 oder Crtl+V).
@@ -1418,8 +1291,8 @@ Korrespondenzpartners importiert und ,,am Schlüsselbund'' befestigt.
 Import eines PGP-Schlüssels Dabei ging es stets um den öffentlichen
 Schlüssel. Es gibt aber auch hin und wieder die Notwendigkeit, einen
 geheimen Schlüssel zu im- oder exportieren. Wenn Sie zum Beispiel
-einen bereits vor- handenen PGP-Schlüssel mit GnuPP weiterbenutzen
-wollen, müssen Sie ihn importieren.  Oder wenn Sie GnuPP von einem
+einen bereits vor- handenen PGP-Schlüssel mit Gpg4win weiterbenutzen
+wollen, müssen Sie ihn importieren.  Oder wenn Sie Gpg4win von einem
 anderen Rechner aus benutzen wollen, muß ebenfalls zunächst der
 gesamte Schlüssel dorthin transferiert werden --­ der öffentliche und
 der private Schlüssel.
@@ -1442,14 +1315,14 @@ private, dann der öffentliche Schlüsselteil. Speichern Sie beide
 Schlüsselteile in zwei getrennten ASCII-Dateien ab, zum Beispiel unter
 den Namen ,,meinSecKey.asc'' und ,,meinPubKey.asc''.
 
-Öffnen Sie nun GnuPP und importieren zunächst den öffentlichen
+Öffnen Sie nun Gpg4win und importieren zunächst den öffentlichen
 Schlüssel, in unserem Beispiel also ,,meinPubKey.asc''. Diese
 Schlüsselhälfte wird sofort in der Schlüsselverwaltung sichtbar.  Dann
 importieren Sie den geheimen Schlüssel, in unserem Beispiel
 ,,meinSecKey.asc''.  Der Schlüssel wird nun als komplettes Icon mit
 zwei Schlüsselhälften dargestellt.
 
-Damit haben Sie einen PGP-Schlüssel erfolgreich in GnuPP importiert
+Damit haben Sie einen PGP-Schlüssel erfolgreich in Gpg4win importiert
 und können ihn dort genau wie einen normalen GnuPG-Schlüssel benutzen.
 
 \clearpage
@@ -1476,7 +1349,7 @@ entsprechend, zum Beispiel ,,meinSecKey.asc''.
 Beim Import, also zum Beispiel auf einem anderen Computer, gehen Sie
 entsprechend vor:
 
-zunächst öffnen Sie mit GnuPP den öffentlichen Schlüssel, in unserem
+zunächst öffnen Sie mit Gpg4win den öffentlichen Schlüssel, in unserem
 Beispiel also ,,meinPubKey.asc''. Diese Schlüsselhälfte wird sofort in
 der Schlüsselverwaltung sichtbar.
 
@@ -1489,7 +1362,7 @@ wieder importiert.
 
 \clearpage
 %% Original page 49
-\section{Warum GnuPP nicht zu knacken ist}
+\section{Warum Gpg4win nicht zu knacken ist}
 
 Jedenfalls nicht in den nächsten paar Milliarden Jahren
 
@@ -1502,7 +1375,7 @@ zueinander passen, kann man Geheimbotschaften
 entschlüsseln.
 
 Das Geheimnis dieser mathematischen Verbindung müssen Sie nicht
-unbedingt kennen ­ GnuPP funktioniert auch so. Man diese komplexe
+unbedingt kennen ­ Gpg4win funktioniert auch so. Man diese komplexe
 mathematische Methode aber auch als Normalsterblicher und
 Nichtmathematiker verstehen. Sie müssen eigentlich nur einfache
 Additionen ($2 + 3$) und Multiplikationen ($5 * 7$) beherrschen.
@@ -1510,14 +1383,14 @@ Allerdings in einer ganzen anderen Rechenmethode als der, die Sie im
 Alltag benutzen.  Es gehört sowohl zur Sicherheitsphilosophie der
 Public Key-Methode wie auch zum Prinzip der Freien Software, daß es
 keine Geheimnisse gibt. Letztendlich versteht man auch erst dann
-wirklich, warum GnuPP sicher ist.
+wirklich, warum Gpg4win sicher ist.
 
 Hier beginnt also sozusagen die Kür nach dem Pflichtteil:
 
 
 \clearpage
 %% Original page 50
-\section{GnuPP und das Geheimnis der großen Zahlen}
+\section{Gpg4win und das Geheimnis der großen Zahlen}
 
 {\Large Kryptografie für Nicht-Mathematiker}
 
@@ -1541,7 +1414,7 @@ geknackt.
 
 %% Original page 51
 
-Nur bei GnuPP bzw. der zugrundeliegenden mathematischen Methode
+Nur bei Gpg4win bzw. der zugrundeliegenden mathematischen Methode
 versagt jede Hackerkunst. Warum ist das so? Diese Methode hat zwei
 einzigartige Grundeigenschaften:
 
@@ -1549,9 +1422,9 @@ erstens beruht sie auf der öffentlichen Bekanntgabe
 der genauen Details der Verschlüsselungsmethode. Das scheint
 dem gesunden Menschenverstand zunächst völlig zu
 widersprechen --- Sie haben aber in diesem Handbuch gesehen,
-warum GnuPP genau deshalb so sicher ist.
+warum Gpg4win genau deshalb so sicher ist.
 
-zweitens basiert GnuPP auf einer mathematischen Technik, die
+zweitens basiert Gpg4win auf einer mathematischen Technik, die
 erwiesenermaßen so komplex ist, daß sie die Methode unüberwindlich
 gegen alle heute durchführbaren Angriffe macht, selbst wenn enorme
 Zeit- und Rechenressourcen aufgewendet werden. Und trotzdem können Sie
@@ -1570,7 +1443,7 @@ Normalsterblicher und Nichtmathematiker verstehen. Sie müssen nur
 einfache Additionen und Multiplikationen beherrschen. Wie gesagt: hier
 beginnt der Kür-Teil, und bei der Kür geht es immer etwas mehr zur
 Sache als bei im Pflichtprogramm.  Letztendlich versteht man dann
-aber, warum GnuPP wirklich so sicher ist.
+aber, warum Gpg4win wirklich so sicher ist.
 
 Eine Begriffsklärung vorneweg:
 
@@ -1581,7 +1454,7 @@ Arithmetik ist die Methode, nach der wir Zahlen addieren und
 multiplizieren.
 
 
-Die Verschlüsselung mit GnuPP basiert auf dem sogenannten
+Die Verschlüsselung mit Gpg4win basiert auf dem sogenannten
 RSA-Algorithmus. RSA steht für Rivest, Shamir, und Adelman, die
 Erfinder % Erfinder???? tsss.
 des Algorithmus. Dieser Algorithmus verwendet einen Typ der
@@ -1706,7 +1579,7 @@ gespeichert, die zwischen zwischen 0 und 255 liegen.
 Wir können also eine Nachricht auch in eine Zahlenfolge umwandeln.
 Nach welcher Methode (oder Algorithmus), wird im nächsten Abschnitt
 beschrieben. Darin stellen wir Ihnen die Methode vor, nach der die
-Verschlüsselung mit GnuPP funktioniert: den RSA-Algorithmus. Dieser
+Verschlüsselung mit Gpg4win funktioniert: den RSA-Algorithmus. Dieser
 Algorithmus wandelt eine Zahlenfolge (die ja eine Nachricht darstellen
 kann) so in eine andere Zahlenfolge um (Transformation), dass die
 Nachricht dabei verschlüsselt wird. Wenn man dabei nach dem richtigen
@@ -1714,7 +1587,7 @@ Verfahren vorgeht, wird die Nachricht sicher kodiert und kann nur noch
 vom rechtmässigen Empfänger dekodiert werden.  Das sind die Grundlagen
 des RSA-Algorithmus:
 
-Sie selbst haben bei der Installation von GnuPP während der
+Sie selbst haben bei der Installation von Gpg4win während der
 Eingabe Ihres Passwort-Satzes zwei große Primzahlen erzeugt,
 ohne es zu bemerken. Nur Sie --­ oder in der Praxis Ihr Computer
 --­ kennen diese beiden Primzahlen, und Sie müssen für ihre
@@ -2235,7 +2108,7 @@ Jahre\ldots
 \section{GPA-Menüs und Icons im Überblick}
 
 Beinahe zum Schluß noch ein kurzer Überblick über die Menüs
-und Icons von GnuPP mit Verweisen auf die Kapitel, in denen
+und Icons von Gpg4win mit Verweisen auf die Kapitel, in denen
 die Funktionen besprochen wurden.
 
 TODO

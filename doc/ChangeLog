@@ -1,3 +1,9 @@
+2005-12-13  Werner Koch  <wk@g10code.com>
+
+	* manual-de/durchblicker.tex: Minor updates and edits, removed
+	stuff we won't include.
+	* manual-de/einsteiger.tex: Ditto
+
 2005-12-12  Werner Koch  <wk@g10code.com>
 
 	* manual-de/durchblicker.tex: Finished raw conversion.

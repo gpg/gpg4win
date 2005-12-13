@@ -35,6 +35,11 @@
 
 
 \begin{document}
+\thispagestyle{empty}
+\pagestyle{fancy}
+\parindent0cm
+\parskip\medskipamount
+
 
 \title{Gpg4win für Einsteiger}
 \author{Eine Veröffentlichung des Gpg4Win Projekts\\
@@ -45,43 +50,6 @@
 
 \maketitle
 
-
-%% Original page 3
-%% We don't include this text anymore due to the rule given in the
-%% Impressum:
-%%    Wenn dieses Dokument von Dritten kopiert, verteilt und/oder
-%%    verändert wird, darf in keiner Form der Eindruck eines
-%%    Zusammenhanges mit dem Bundesministerium für Wirtschaft und
-%%    Technologie erweckt werden.
-%%
-%%%\abstract{
-%%%GnuPP für Einsteiger\\
-%%%Schnelleinstieg zum E-Mail-Verschlüsselungsprogramm GnuPP\\
-%%%Herausgegeben und gefördert vom\\
-%%%Bundesministerium für Wirtschaft und Technologie\\
-%%%Scharnhorststr. 34--37\\
-%%%10115 Berlin\\
-%%%Ansprechpartner:\\
-%%%Bundesministerium für Wirtschaft und Technologie\\
-%%%Referat Öffentlichkeitsarbeit\\
-%%%
-%%%Diese Druckschrift wird im Rahmen der Öffentlichkeitsarbeit des
-%%%Bundesministeriums für Wirtschaft und Technologie kostenfrei
-%%%herausgegeben. Sie darf von Dritten nicht gegen Entgelt weitergegeben
-%%%werden.  Sie darf weder von Parteien noch von Wahlwerbern oder
-%%%Wahlhelfern während eines Wahlkampfes zum Zwecke der Wahlwerbung
-%%%verwendet werden. Dies gilt für Europa-, Bundestags-, Landtags- und
-%%%Kommunal- wahlen. Missbräuchlich sind insbesondere die Verteilung auf
-%%%Wahlver- anstaltungen, an Informationsständen der Parteien sowie das
-%%%Einlegen, Aufdrucken oder Aufkleben parteipolitischer Informationen
-%%%oder Werbemittel. Untersagt ist gleichfalls die Weitergabe an Dritte
-%%%zum Zwecke der Wahlwerbung. Unabhängig davon, wann, auf welchem Wege
-%%%und in welcher Anzahl diese Schrift dem Empfänger zugegangen ist, darf
-%%%sie auch ohne zeitlichen Bezug zu einer bevorstehenden Wahl nicht in
-%%%einer Weise verwendet werden, die als Parteinahme der Bundesregierung
-%%%zugunsten einzelner politischer Gruppen verstanden werden könnte.
-%%%}
-%%%
 
 \section*{Impressum gpg4win}
 
@@ -143,39 +111,8 @@ geschrieben, sondern für jedermann.
 
 
 
-%% Orginal page 5
-%% Just for documentation
-%GnuPP für Einsteiger                          3
-%                                              4
-%Impressum
-%                                              5
-%Inhaltsverzeichnis
-%                                              6
-%Vorwort Dr. Werner Müller,
-%Bundesminister für Wirtschaft und Technologie
-%
-%1. Über dieses Handbuch                                7
-%                                                       8
-%2. Was ist GnuPP?
-%                                                       9
-%3. Sie installieren GnuPP
-%                                                     15
-%4. Sie erzeugen Ihr Schlüsselpaar
-%                                                     24
-%5. Sie veröffentlichen Ihren Schlüssel per E-Mail
-%                                                     30
-%6. Sie veröffentlichen Ihren Schlüssel per Keyserver
-%                                                     31
-%7. Sie entschlüsseln eine E-Mail
-%                                                     37
-%8. Sie befestigen einen Schlüssel am Schlüsselbund
-%                                                     4
-%9. Sie verschlüsseln eine E-Mail
-
-\newpage
+\clearpage
 \tableofcontents
-
-
 
 %%\clearpage
 %% Orginal page  6
@@ -184,76 +121,36 @@ geschrieben, sondern für jedermann.
 %% for a new foreword by the current head of that ministr
 %%
 
-%%% %% Portrait Müller  daneben
-%%%   Sicherheit durch Offenheit
-%%% 
-%%% Liebe Anwender der Freien Software GnuPP,
-%%% bisher hat man oft versucht, Software dadurch zu schützen,
-%%% dass man möglichst wenige Informationen darüber preisgab. Trotzdem
-%%% werden immer wieder schwerwiegende Sicherheitslücken in solch
-%%% geschlossenen Software-Systemen gefunden und zu Hackerangriffen
-%%% missbraucht. Wir setzen deshalb auf ,,Sicherheit durch Offenheit''. Denn
-%%% die öffentliche Diskussion über erkannte Schwachstellen hilft, Sicherheits-
-%%% lecks schnell zu beseitigen oder gar nicht erst entstehen zu lassen.
-%%% 
-%%% Deshalb unterstützt das Bundesministerium für Wirtschaft und
-%%% Technologie die Entwicklung des Open-Source-Verschlüsselungsprojektes
-%%% ,,GNU Privacy Projekt'' (GnuPP) . GnuPP ist eine sichere, einfache und
-%%% kostenlose Verschlüsselungssoftware. Sie ermöglicht es jedem Bürger
-%%% 
-%%% % rechte Spalte
-%%% und jedem Unternehmen, seine Grundrechte auf vertrauliche
-%%% Kommunikation über das Internet zu wahren und die Rechtsverbind-
-%%% lichkeit, Integrität und Authentizität der Kommunikation zu überprüfen.
-%%% 
-%%% Gerade für den Verkehr mit und zwischen den Behörden spielt das eine
-%%% wichtige Rolle. Denn mit der flächendeckenden Einführung der digitalen
-%%% Signatur in der Bundesverwaltung - wie sie die Bundesregierung
-%%% beschlossen hat - können Bürgerinnen und Bürger ihren Rechts- und
-%%% Geschäftsverkehr mit den Bundesbehörden künftig auch über das
-%%% Internet sicher abwickeln.
-%%% 
-%%% Ich wünsche allen Anwendern von GnuPP eine lebhafte und sichere
-%%% E-Mail-Kommunikation.
-%%% 
-%%% % Unterschrift.
-%%% 
-%%% Dr. Werner Müller\\
-%%% Bundesminister für Wirtschaft und Technologie.
-%%% 
-
-
 \clearpage
 %% Orginal page 7
-
 \section{Über dieses Handbuch}
 
-Das GnuPP-Anleitungs- und Übungsmaterial besteht aus drei Teilen:
+Das Gpg4win-Anleitungs- und Übungsmaterial besteht aus drei Teilen:
 
 \begin{itemize}
 
-\item dem gedruckten Schnelleinstieg, ,,GnuPP für Einsteiger'', in dem
+\item dem gedruckten Schnelleinstieg, ,,Gpg4win für Einsteiger'', in dem
   Sie gerade lesen,
 
 
-\item dem Handbuch ,,GnuPP für Durchblicker'' im PDF-Format, das Sie
-  auf der beiliegenden CD-ROM und nach der Installation von GnuPP auf
+\item dem Handbuch ,,Gpg4win für Durchblicker'' im PDF-Format, das Sie
+  auf der beiliegenden CD-ROM und nach der Installation von Gpg4win auf
   Ihrer Festplatte finden,
 
-\item dem GnuPP-Übungsroboter Adele, mit dem Sie die EMail-Ver- und
+\item dem Gpg4win-Übungsroboter Adele, mit dem Sie die EMail-Ver- und
   Entschlüsselung so oft üben können, wie Sie wollen. Um mit Adele zu
   üben, brauchen Sie eine Internet-Verbindung.
 \end{itemize}
 
 
-,,GnuPP für Einsteiger'' führt Sie kurz und knapp durch die Installa-
-tion und die alltägliche Benutzung der GnuPP-Software. Der Zeitbedarf
+,,Gpg4win für Einsteiger'' führt Sie kurz und knapp durch die Installa-
+tion und die alltägliche Benutzung der Gpg4win-Software. Der Zeitbedarf
 für das Durcharbeiten des Schnell- einstiegs hängt unter anderem davon
 ab, wie gut Sie sich mit Ihrem PC und Windows auskennen. In etwa
 sollten Sie sich eine halbe Stunde Zeit nehmen.
 
-,,GnuPP für Durchblicker'' liefert Hintergrundwissen, das Ihnen die
-grundlegenden Mechanismen von GnuPP verdeutlicht und die etwas
+,,Gpg4win für Durchblicker'' liefert Hintergrundwissen, das Ihnen die
+grundlegenden Mechanismen von Gpg4win verdeutlicht und die etwas
 seltener benutzten Features erläutert. Das Handbuch liegt im
 PDF-Format vor, Sie können es auch ausdrucken.
 
@@ -264,7 +161,7 @@ der angegebenen Reihenfolge lesen.
 $\spadesuit$ Diese Hand weist auf auf den Wechsel in das andere Buch
 hin.
 
-Der GnuPP-Übungsroboter Adele steht Ihnen jederzeit im Internet zur
+Der Gpg4win-Übungsroboter Adele steht Ihnen jederzeit im Internet zur
 Verfügung. Sie empfängt und sendet verschlüsselte E-Mails und
 entschlüsselt sie auch. Sie können also mit Adele einen kompletten
 Verschlüsselungsdialog so lange üben, bis Sie sich völlig mit dem
@@ -272,23 +169,25 @@ Gebrauch der Software vertraut gemacht haben.
 
 \clearpage
 %% Orginal page 8
-\section{Was ist GnuPP?}
+\section{Was ist Gpg4win?}
 
-GnuPP (GNU Privacy Projekt) ist eine vom Bundeswirtschafts-
-ministerium geförderte E-Mail- Verschlüsselungssoftware. GnuPP
-bezeichnet das Gesamtpaket, das die Programme GnuPG, GPA, WinPT und
-andere Komponenten enthält.
+Das Projekt Gpg4win (GNU Privacy Guard for Windows) ist eine vom
+Bundesamt für Sicherheit in der Informationstechnik beauftragte
+E-Mail-Verschlüsselungssoftware. Gpg4win bezeichnet ein Gesamtpaket,
+welches die Programme GnuPG, GPA, WinPT und andere Komponenten
+enthält.
 
-Mit dem Verschlüsselungspro- gramm GnuPG (GNU Privacy Guard) kann
+Mit dem Verschlüsselungsprogramm GnuPG (GNU Privacy Guard) kann
 jedermann E-Mails sicher, einfach und kostenlos verschlüsseln. GnuPG
 kann ohne jede Restriktion privat oder kommerziell benutzt werden. Die
 Verschlüsselung von GnuPG ist extrem sicher und kann nach dem heutigen
 Stand von Forschung und Technik nicht gebrochen werden.
 
-GnuPG ist Freie Software oder Open-Source-Software. Das bedeutet, dass
-jedermann das Recht hat, sie nach Belieben kommerziell oder privat zu
-nutzen.  Jedermann soll und darf den Quellcode, also die eigentliche
-Programmierung des Programms, genau untersuchen.
+GnuPG ist Freie Software\footnote{oft fälschlich auch als Open Source
+  Software bezeichnet}. Das bedeutet, dass jedermann das Recht hat,
+sie nach Belieben kommerziell oder privat zu nutzen.  Jedermann soll
+und darf den Quellcode, also die eigentliche Programmierung des
+Programms, genau untersuchen.
 
 Für eine Sicherheits-Software ist diese garantierte Transparenz des
 Quellcodes eine unverzichtbare Grundlage. Nur so lässt sich die
@@ -310,16 +209,16 @@ sicherheit-im-internet.de des Bundeswirtschaftsministeriums.
 
 \clearpage
 %% Orginal page 9
-\section{Sie installieren GnuPP}
+\section{Sie installieren Gpg4win}
 
 Legen Sie die beiliegende CD-ROM in das CD-ROM-Laufwerk Ihres PCs.
 Öffnen Sie Ihren ,,Arbeitsplatz'' und klicken Sie dort auf das CD-ROM-
-Icon mit dem Titel ,,GnuPP''.
+Icon mit dem Titel ,,Gpg4win''.
 
 Wenn sich das CD-ROM-Icon geöffnet hat, klicken Sie auf das
-Installations-Icon mit dem Titel ,,gnupp.1.1-de''.
+Installations-Icon mit dem Titel ,,Gpg4win.1.1-de''.
 
-% Icon gnupp 1.1-de
+% Icon Gpg4win 1.1-de
 
 Die Frage, ob Sie das Programm installieren wollen, beantworten Sie
 mit [ Ja ].
@@ -345,8 +244,8 @@ klicken Sie auf [ Ja ].
 %% Original page 11
 
 In der nun folgenden Dateiauswahl können Sie einen Ordner auf Ihrem
-PC aussuchen, in dem GnuPP installiert wird. Sie können auch einfach
-den voreingestellten Standard-Ordner \verb-C:\Programme\GnuPP- nehmen.
+PC aussuchen, in dem Gpg4win installiert wird. Sie können auch einfach
+den voreingestellten Standard-Ordner \verb-C:\Programme\Gpg4win- nehmen.
 
 % screenshot: Auswahl des Installationsverzeichnis.
 % fixme: Haben wir miomentan nicht.
@@ -358,7 +257,7 @@ Klicken Sie anschliessend auf [ Weiter ].
 %% Original page 12
 
 Das Programm legt nun ein Icon in das Windows Startup-Menü, damit Sie
-GnuPP einfacher starten können.
+Gpg4win einfacher starten können.
 
 % screenshot:  Startnmenu auswählen
 
@@ -389,15 +288,15 @@ Wenn Sie fertig sind, schließen Sie die Readme-Datei.
 
 Das war's schon!
 
-Sie haben GnuPP installiert und
+Sie haben Gpg4win installiert und
 können es gleich zum ersten Mal
 starten.
 
-Vorher sollten Sie aber im Handbuch ,,GnuPP für Durchblicker''
+Vorher sollten Sie aber im Handbuch ,,Gpg4win für Durchblicker''
 (PDF-Datei) die Kapitel 3 und 4 lesen. Wir erklären dort den genialen
-Trick, mit dem GnuPP Ihre E-Mails sicher und bequem verschlüsselt.
-GnuPP funktioniert zwar auch, ohne dass Sie verstehen warum, aber im
-Gegensatz zu anderen PC-Programmen wollen Sie GnuPP schließlich Ihre
+Trick, mit dem Gpg4win Ihre E-Mails sicher und bequem verschlüsselt.
+Gpg4win funktioniert zwar auch, ohne dass Sie verstehen warum, aber im
+Gegensatz zu anderen PC-Programmen wollen Sie Gpg4win schließlich Ihre
 geheime Korrespondenz anvertrauen. Da sollten Sie schon wissen, was
 vor sich geht.
 
@@ -424,14 +323,14 @@ Und genau das können Sie auch tun: Sie können den gesamten Vblauf der
 Schlüsselerzeugung, erschlüsselung und Entschlüssel- ung durchspielen,
 so oft Sie wollen, bis Sie ganz sicher sind.
 
-Ihr Vertrauen in GnuPP wird sich durch diese ,,Trockenübun'' festigen,
+Ihr Vertrauen in Gpg4win wird sich durch diese ,,Trockenübun'' festigen,
 und die ,,heisse Phase'' der Schlüsselerzeugung wird danach kein
 Problem mehr sein.
 
 Ihr Partner bei diesen Übungen wird Adele sein.
 
 Adele ist ein Testserver, den die Firma G-N-U GmbH ­-- einer der
-Entwickler von GnuPP ­-- bereit stellt. Mit Hilfe von Adele können Sie
+Entwickler von Gpg4win ­-- bereit stellt. Mit Hilfe von Adele können Sie
 Ihre Schlüssel, die wir gleich erzeugen werden, ausprobieren und
 testen, bevor Sie damit Ernst machen. Doch dazu später mehr.
 
@@ -441,7 +340,7 @@ testen, bevor Sie damit Ernst machen. Doch dazu später mehr.
 Los geht's!
 
 Öffnen Sie das Windows Startmenü, dort den Ordner
-\verb-Programme\GnuPP- und schließlich das Programm GNU Privacy
+\verb-Programme\Gpg4win- und schließlich das Programm GNU Privacy
 Assistant. Daraufhin sehen Sie diesen Dialog:
 
 % screenshot: GPA Erste Schlüsselerzeugung
@@ -494,7 +393,7 @@ Jetzt folgt der wichtigste Teil: die
 Eingabe Ihres Passwortsatzes.
 
 Erinnern Sie sich an das Kapitel 4, ,,Der Passwort-Satz'' im Handbuch
-,,GnuPP für Durchblicker'' das Sie eben durchgelesen haben? Wir haben
+,,Gpg4win für Durchblicker'' das Sie eben durchgelesen haben? Wir haben
 Ihnen dort einige Tipps zur Erzeugung eines sicheren Passwortsatzes
 gegeben.
 
@@ -567,7 +466,7 @@ fertig!
 
 % screenshot: keymanger mit einem Schlüssel.
 
-Damit ist die Installation von GnuPP und die Erzeugung Ihres
+Damit ist die Installation von Gpg4win und die Erzeugung Ihres
 Schlüsselpaares abgeschlossen.  Sie besitzen nun einen einmaligen und
 extrem sicheren digitalen Schlüssel.
 
@@ -580,7 +479,7 @@ wenn Sie diese Informationen benötigen
 
 \section{Sie veröffentlichen Ihren Schlüssel per E-Mail}
 
-Beim täglichen Gebrauch von GnuPP ist es sehr praktisch, dass Sie es
+Beim täglichen Gebrauch von Gpg4win ist es sehr praktisch, dass Sie es
 beim Ver- und Entschlüsseln stets nur mit den ,,ungeheimen''
 öffentlichen Schlüsseln zu tun haben. Solange Ihr eigener geheimer
 Schlüssel und der ihn schützende Passwortsatz sicher sind, brauchen
@@ -710,7 +609,7 @@ Diesen Vorgang ­-- Kopieren und
 Einfügen ­-- kennen Sie sicher als
 ,,Copy \& Paste''.
 
-Adressieren Sie nun diese E-Mail an \verb-adele@gnupp.de- und
+Adressieren Sie nun diese E-Mail an \verb-adele@Gpg4win.de- und
 schreiben in die Betreff-Zeile:
 
 \begin{verbatim}
@@ -738,7 +637,7 @@ programmiert worden.  Fassen wir kurz zusammen: Sie haben Ihren
 öffentlichen Schlüssel per E-Mail an einen Korrespondenzpartner
 geschickt.
 
-$\spadesuit$ Im Handbuch ,,GnuPP für Durchblicker'' Kapitel 7
+$\spadesuit$ Im Handbuch ,,Gpg4win für Durchblicker'' Kapitel 7
 beschreiben wir, wie Sie Ihren Schlüssel auch als Dateianhang
 versenden.
 
@@ -779,7 +678,7 @@ einen Schlüsselserver im Internet schicken können.
 
 $\spadesuit$ Wie Sie den Schlüssel eines Partners auf den
 Schlüsselervern suchen und finden, beschreiben wir im Handbuchch
-,,GnuPP für Durchblicker'' Kapitel 6. Sie können dieses Kapitel jetzt
+,,Gpg4win für Durchblicker'' Kapitel 6. Sie können dieses Kapitel jetzt
 lesen oder später, wenn Sie diese Funktion benötigen.
 
 \clearpage
@@ -799,7 +698,7 @@ So sieht sie aus:
 
 \begin{verbatim}
 To: f.mustermann@firma.de
-From: adele <adele@gnupp.de>
+From: adele <adele@Gpg4win.de>
 Subject: Verschluesselte Antwort
 
 
@@ -832,11 +731,11 @@ und Überprüfung von digitalen Unterschriften. Und zwar ­ und das ist
 einer seiner Vorteile ­ mit jedem beliebigen E-Mail-Programm.
 
 Für bestimmte E-Mail-Programme --­ z.B. MS Outlook für Windows, gibt
-es außerdem spezielle GnuPP-PlugIns, mit denen die Ver- und
+es außerdem spezielle Gpg4win-PlugIns, mit denen die Ver- und
 Entschlüsselung direkt im jeweiligen E-Mailer erledigt werden kann.
 
 $\spadesuit$ Hinweise zu diesen Lösungen ,,dinden Sie im Handbuch
-,,GnuPP für Durchblicker'' Kapitel 8. Sie können dieses Kapitel jetzt
+,,Gpg4win für Durchblicker'' Kapitel 8. Sie können dieses Kapitel jetzt
 lesen oder später, wenn Sie diese Funktion benötigen.
 
 WinPT hat dagegen den Vorteil,dass es nicht mit einem bestimmten,
@@ -903,7 +802,7 @@ Anbei der public key von adele@gnupp.de,
 dem freundlichen E-Mail-Roboter, als Anlage.
 
 Viele Gruesse,
-adele@gnupp.de
+adele@Gpg4win.de
 \end{verbatim}
 
 Der Textblock, der darauf folgt, ist der öffentliche Schlüssel von
@@ -1006,17 +905,17 @@ versenden ­-- die Absenderangabe besagt eigentlich gar nichts.
 Wie können Sie also sichergehen, dass ein Schlüssel auch wirklich
 seinem Absender gehört ?
    
-$\spadesuit$ Diese Kernfrage besprechen wir im Handbuch ,,GnuPP für
+$\spadesuit$ Diese Kernfrage besprechen wir im Handbuch ,,Gpg4win für
 Durchblicker'' Kapitel 9: ,,Die Schlüsselprüfung''. Lesen Sie jetzt
 dort weiter, bevor Sie danach an dieser Stelle fortfahren.
 
 \clearpage
 %% Original page 40
-Sie haben in Kapitel 9 des Hand- buchs ,,GnuPP für Durchblicker''
+Sie haben in Kapitel 9 des Hand- buchs ,,Gpg4win für Durchblicker''
 gelesen, wie man sich von der Echtheit eines Schlüsselss überzeugt und
 ihn dann mit seinem eigenen geheimen Schlüssel signiert.
 
-In Kapitel 10 des Handbuchs ,,GnuPP für Durchblicker'' besprechen wir,
+In Kapitel 10 des Handbuchs ,,Gpg4win für Durchblicker'' besprechen wir,
 wie man nicht nur einen Schlüssel, sondern auch eine komplette
 E-Mail-Nachricht signieren kann. Das bedeutet, daß man die E-Mail mit
 einer Art elektronischem Siegel versieht.
@@ -1027,7 +926,7 @@ wurde.
 
 Die Überprüfung einer solchen Signatur ist sehr einfach. Sie müssen
 dazu natürlich den öffentlichen Schlüssel des Absenders bereits an
-Ihrem GnuPP- Schlüsselbund befestigt haben, wie in Kapitel 8
+Ihrem Gpg4win- Schlüsselbund befestigt haben, wie in Kapitel 8
 besprochen.
 
 % cartoon:  Müller mit Schlüssel
@@ -1089,7 +988,7 @@ wahrscheinlichste Fall. Es kann jedoch auch bedeuten, dass der Text
 nachträglich verändert wurde.
 
 $\spadesuit$ Wie Sie in einem solchen Fall vorgehen sollten, erfahren
-Sie im Handbuch ,,GnuPP für Durchblicker'' Kapitel 10.  ,,E-Mails
+Sie im Handbuch ,,Gpg4win für Durchblicker'' Kapitel 10.  ,,E-Mails
 signieren''. Lesen Sie jetzt dort weiter, bevor Sie danach an dieser
 Stelle fortfahren.
 
@@ -1192,12 +1091,12 @@ Sie nicht und werden Sie nie haben$\ldots$
 
 Also was tun?
 
-Ganz einfach ­ GnuPP legt einfach eine Archiv-Kopie Ihres Textes ab,
+Ganz einfach ­ Gpg4win legt einfach eine Archiv-Kopie Ihres Textes ab,
 die mit Ihrem eigenen öffentlichen Schlüssel verschlüsselt ist! So
 können Sie den Text auch später noch einfach mit Ihrem eigenen
 Geheimschlüssel wieder lesbar machen.
 
-Da GnuPP nicht wissen kann, welchen Schlüssel Sie benutzen ­-- Sie
+Da Gpg4win nicht wissen kann, welchen Schlüssel Sie benutzen ­-- Sie
 können ja auch mehrere haben --­ müssen Sie dem Programm dies
 mitteilen.
 
@@ -1220,7 +1119,7 @@ Fassen wir kurz zusammen:
 \begin{enumerate}
 \item Sie haben mit dem öffentlichen Schlüssel Ihres Partners eine
   E-Mail verschlüsselt und ihm damit geantwortet.
-\item Sie haben GnuPP mitgeteilt, daß es Archiv-Kopien Ihrer E-Mails
+\item Sie haben Gpg4win mitgeteilt, daß es Archiv-Kopien Ihrer E-Mails
   ablegen soll, die mit Ihrem eigenen Schlüssel verschlüsselt sind.
 \end{enumerate}
 
@@ -1228,21 +1127,21 @@ Das war's! Willkommen in der Welt der freien und sicheren
 E-Mail-Verschlüsselung!
 
 
-$\spadesuit$ Lesen Sie nun die Kapitel 10 bis 12 im Handbuch ,,GnuPP
+$\spadesuit$ Lesen Sie nun die Kapitel 10 bis 12 im Handbuch ,,Gpg4win
 für Durchblicker''.  Sie erfahren dort unter anderem, wie man E-Mails
 signiert und einen bereits vorhandenen Geheimschlüssel (z.B. aus PGP)
 in GnuPG importiert und verwendet.
 
-$\spadesuit$ Im Kapitel 13 des Handbuchs ,,Gnupp für Durchblicker''
+$\spadesuit$ Im Kapitel 13 des Handbuchs ,,Gpg4win für Durchblicker''
 können Sie weiterhin in zwei spannenden Kapiteln lesen, warum GnuPG
 nicht zu knacken ist --- jedenfalls nicht in den nächsten paar
 Milliarden Jahren.
 
-Und Sie können lesen, wie die geheimnisvolle Mathematik hinter GnuPP
+Und Sie können lesen, wie die geheimnisvolle Mathematik hinter Gpg4win
 wirklich funktoniert.
 
-Genau wie das OpenSource-Kryptografieprogramm GnuPP wurden diese Texte
-nicht geschrieben für Mathematiker, Geheimdienstler und Kryptografen,
+Genau wie das Kryptographiesystem Gpg4win wurden diese Texte nicht
+geschrieben für Mathematiker, Geheimdienstler und Kryptographen,
 sondern
 
 $\spadesuit$ für jedermann.
