@@ -32,6 +32,7 @@ Section "-un.eudoragpg"
 !else
   Delete "$INSTDIR\eudoragpg.exe"
 
+  Delete "$INSTDIR\share\eudoragpg\eudoragpg.html"
   RMDir "$INSTDIR\share\eudoragpg"
   RMDir "$INSTDIR\share"
   RMDir "$INSTDIR"

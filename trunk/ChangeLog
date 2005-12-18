@@ -1,3 +1,8 @@
+2005-12-18  Marcus Brinkmann  <marcus@g10code.de>
+
+	* src/uninst-eudoragpg.nsi: Delete file
+	$INSTDIR\share\eudoragpg\eudoragpg.html.
+
 2005-12-13  Werner Koch  <wk@g10code.com>
 
 	* packages/packages.current: Updated GPGee.
