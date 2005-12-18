@@ -32,6 +32,15 @@ Section "-un.sylpheed"
 !else
   Delete "$INSTDIR\sylpheed-claws.exe"
 
+  Delete "$INSTDIR\lib\sylpheed-claws\plugins\pgpcore.dll"
+  Delete "$INSTDIR\lib\sylpheed-claws\plugins\pgpinline.dll"
+  Delete "$INSTDIR\lib\sylpheed-claws\plugins\pgpinline.deps"
+  Delete "$INSTDIR\lib\sylpheed-claws\plugins\pgpmime.dll"
+  Delete "$INSTDIR\lib\sylpheed-claws\plugins\pgpmime.deps"
+  RMDir "$INSTDIR\lib\sylpheed-claws\plugins"
+  RMDir "$INSTDIR\lib\sylpheed-claws"
+  RMDir "$INSTDIR\lib"
+
   RMDir "$INSTDIR\share\sylpheed-claws"
   RMDir "$INSTDIR\share"
   RMDir "$INSTDIR"

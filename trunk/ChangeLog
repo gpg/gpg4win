@@ -1,5 +1,8 @@
 2005-12-18  Marcus Brinkmann  <marcus@g10code.de>
 
+	* src/inst-sylpheed-claws.nsi: Install GPG plugins.
+	* src/uninst-sylpheed-claws.nsi: Uninstall GPG plugins.
+
 	* src/uninst-eudoragpg.nsi: Delete file
 	$INSTDIR\share\eudoragpg\eudoragpg.html.
 
