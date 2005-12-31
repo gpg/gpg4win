@@ -7,8 +7,8 @@ Implement write support for fd I/O channels in glib on W32 targets.
 (no changelog yet)
 
 diff -ru glib/giowin32.c glib-2.6.6/glib/giowin32.c
---- glib/giowin32.c	2005-03-30 14:02:48.000000000 +0200
-+++ glib/giowin32.c	2005-12-31 04:37:17.000000000 +0100
+--- glib-2.6.6-orig/glib/giowin32.c	2005-03-30 14:02:48.000000000 +0200
++++ glib-2.6.6/glib/giowin32.c	2005-12-31 04:37:17.000000000 +0100
 @@ -95,7 +95,8 @@
    gushort revents;
  
