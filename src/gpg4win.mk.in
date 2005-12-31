@@ -26,6 +26,7 @@ root := $(shell pwd)/playground
 bdir := $(root)/build
 idir := $(root)/install
 ipdir := $(root)/install/pkgs
+tsdir := $(shell pwd)/${top_srcdir}
 pdir := $(shell pwd)/${top_srcdir}/patches
 
 
@@ -64,9 +65,10 @@ define SETVARS
 	pkgcfg="$(call GETVAR,gpg4win_pkg_$(1)_configure)";		\
 	pkgmkargs="$(call GETVAR,gpg4win_pkg_$(1)_make_args)";          \
 	pkgmkargs_inst="$(call GETVAR,gpg4win_pkg_$(1)_make_args_inst)";\
-	export PKG_CONFIG="$(shell pwd)/$(top_srcdir)/src/pkg-config";	\
-	export PKG_CONFIG_PATH="${idir}/lib/pkgconfig";			\
-	export SYSROOT="${idir}"
+	export PKG_CONFIG="$(tsdir)/src/pkg-config";			\
+	export PKG_CONFIG_PATH="$(idir)/lib/pkgconfig";			\
+	export SYSROOT="$(idir)";					\
+	export CONFIG_SITE="$(tsdir)/src/config.site"
 endef
 
 # Support macro.  Unpack the archive $(1).
