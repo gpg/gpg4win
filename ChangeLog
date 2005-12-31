@@ -1,3 +1,14 @@
+2005-12-31  Marcus Brinkmann  <marcus@g10code.de>
+
+	* configure.ac (glib): Make it a source package.
+	* src/Makefile.am (gpg4win_bpkgs): Move glib to ...
+	(gpg4win_spkgs): ... here.
+	* patches/glib/01-giowin32.patch: New file.
+	* patches/glib-2.6.6/01-giowin32.patch: New file.
+	* src/config.site: New file.
+	* src/gpg4win.mk (tsdir): New variable.
+	(SETVARS): Use $(idir), not ${idir}.  Define CONFIG_SITE.
+
 2005-12-18  Marcus Brinkmann  <marcus@g10code.de>
 
 	* src/inst-sylpheed-claws.nsi: Install GPG plugins.

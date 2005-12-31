@@ -26,12 +26,16 @@ EXTRA_DIST = pkg-config $(common_nsi) gpg4win.nsi gpg4win-src.nsi \
 CLEANFILES = g4wihelp.dll 
 
 # Supported source packages.
-gpg4win_spkgs := gnupg libgpg-error gpgme gpgol gpa winpt sylpheed-claws \
+gpg4win_spkgs := glib gnupg libgpg-error gpgme gpgol gpa winpt sylpheed-claws \
                  eudoragpg man_novice_de man_advanced_de
 
 # Extra options to configure for individual packages.
 # We can use $(idir) here for the installation prefix.
 
+gpg4win_pkg_glib_configure = \
+  --with-lib-prefix=$(idir) --with-libiconv-prefix=$(idir) \
+  CPPFLAGS=-I$(idir)/include LDFLAGS=-L$(idir)/lib
+ 
 # We would like to use --with-libiconv-prefix and
 # --with-libintl-prefix, but these don't work with the cheesy
 # non-"libfoo.la" versions of iconv and gettext that we are using.
@@ -78,7 +82,7 @@ gpg4win_pkg_pthreads_w32_make_args_inst = \
 
 
 # Supported binary packages.
-gpg4win_bpkgs :=  libiconv gettext pkgconfig zlib glib libpng pango atk gtk+ \
+gpg4win_bpkgs :=  libiconv gettext pkgconfig zlib libpng pango atk gtk+ \
 		  gpgee crypt regex
 
 # libiconv needs some special magic to generate a usable import
