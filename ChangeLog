@@ -1,5 +1,8 @@
 2005-12-31  Marcus Brinkmann  <marcus@g10code.de>
 
+	* glib/02-windres.patch: New file.
+	* glib-2.6.6/02-windres.patch: New file.
+
 	* configure.ac (glib): Make it a source package.
 	* src/Makefile.am (gpg4win_bpkgs): Move glib to ...
 	(gpg4win_spkgs): ... here.
