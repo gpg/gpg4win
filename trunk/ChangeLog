@@ -1,3 +1,7 @@
+2006-01-03  Marcus Brinkmann  <marcus@g10code.de>
+
+	* patches/glib-2.8.4/01-giowin32.patch: New file.
+
 2005-12-31  Marcus Brinkmann  <marcus@g10code.de>
 
 	* glib/02-windres.patch: New file.
