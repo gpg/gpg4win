@@ -49,7 +49,7 @@ diff -ru glib/giowin32.c glib-2.6.6/glib/giowin32.c
        LOCK (channel->mutex);
  
        channel->revents = G_IO_IN;
-@@ -325,6 +333,121 @@
+@@ -325,6 +333,124 @@
    return 0;
  }
  
@@ -99,6 +99,9 @@ diff -ru glib/giowin32.c glib-2.6.6/glib/giowin32.c
 +	  WaitForSingleObject (channel->space_avail_event, INFINITE);
 +
 +	  LOCK (channel->mutex);
++	  if (!channel->running)
++	    break;
++
 +	  if (channel->debug)
 +	    g_print ("write_thread %#x: rdp=%d, wrp=%d\n",
 +		     channel->thread_id, channel->rdp, channel->wrp);
@@ -171,7 +174,7 @@ diff -ru glib/giowin32.c glib-2.6.6/glib/giowin32.c
  static void
  create_thread (GIOWin32Channel     *channel,
  	       GIOCondition         condition,
-@@ -341,6 +464,8 @@
+@@ -341,6 +467,8 @@
      g_warning (G_STRLOC ": Error closing thread handle: %s\n",
  	       g_win32_error_message (GetLastError ()));
  
@@ -180,7 +183,7 @@ diff -ru glib/giowin32.c glib-2.6.6/glib/giowin32.c
    WaitForSingleObject (channel->space_avail_event, INFINITE);
  }
  
-@@ -474,6 +599,80 @@
+@@ -474,6 +602,80 @@
    return (*bytes_read > 0) ? G_IO_STATUS_NORMAL : G_IO_STATUS_EOF;
  }
  
@@ -261,7 +264,7 @@ diff -ru glib/giowin32.c glib-2.6.6/glib/giowin32.c
  static unsigned __stdcall
  select_thread (void *parameter)
  {
-@@ -629,13 +828,27 @@
+@@ -629,13 +831,27 @@
    if (channel->type == G_IO_WIN32_FILE_DESC)
      {
        LOCK (channel->mutex);
@@ -294,7 +297,7 @@ diff -ru glib/giowin32.c glib-2.6.6/glib/giowin32.c
        UNLOCK (channel->mutex);
      }
    else if (channel->type == G_IO_WIN32_SOCKET)
-@@ -968,6 +1181,12 @@
+@@ -968,6 +1184,12 @@
    GIOWin32Channel *win32_channel = (GIOWin32Channel *)channel;
    gint result;
    
@@ -307,7 +310,19 @@ diff -ru glib/giowin32.c glib-2.6.6/glib/giowin32.c
    result = write (win32_channel->fd, buf, count);
    if (win32_channel->debug)
      g_print ("g_io_win32_fd_write: fd:%d count:%d = %d\n",
-@@ -1086,7 +1305,9 @@
+@@ -1063,7 +1285,10 @@
+ 		 win32_channel->thread_id, win32_channel->fd);
+       win32_channel->running = FALSE;
+       win32_channel->needs_close = TRUE;
+-      SetEvent (win32_channel->data_avail_event);
++      if (win32_channel->direction == 0)
++	SetEvent (win32_channel->data_avail_event);
++      else
++	SetEvent (win32_channel->space_avail_event);
+     }
+   else
+     {
+@@ -1086,7 +1311,9 @@
  g_io_win32_fd_create_watch (GIOChannel    *channel,
  			    GIOCondition   condition)
  {
@@ -318,7 +333,7 @@ diff -ru glib/giowin32.c glib-2.6.6/glib/giowin32.c
  }
  
  static GIOStatus
-@@ -1701,8 +1922,13 @@
+@@ -1701,8 +1928,13 @@
  
    if (win32_channel->thread_id == 0)
      {

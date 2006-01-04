@@ -49,7 +49,7 @@ diff -rup glib-2.8.4-old/glib/giowin32.c glib-2.8.4/glib/giowin32.c
        LOCK (channel->mutex);
  
        channel->revents = G_IO_IN;
-@@ -486,6 +494,121 @@ read_thread (void *parameter)
+@@ -486,6 +494,124 @@ read_thread (void *parameter)
    return 0;
  }
  
@@ -99,6 +99,9 @@ diff -rup glib-2.8.4-old/glib/giowin32.c glib-2.8.4/glib/giowin32.c
 +	  WaitForSingleObject (channel->space_avail_event, INFINITE);
 +
 +	  LOCK (channel->mutex);
++	  if (!channel->running)
++	    break;
++
 +	  if (channel->debug)
 +	    g_print ("write_thread %#x: rdp=%d, wrp=%d\n",
 +		     channel->thread_id, channel->rdp, channel->wrp);
@@ -171,7 +174,7 @@ diff -rup glib-2.8.4-old/glib/giowin32.c glib-2.8.4/glib/giowin32.c
  static void
  create_thread (GIOWin32Channel     *channel,
  	       GIOCondition         condition,
-@@ -502,6 +625,8 @@ create_thread (GIOWin32Channel     *chan
+@@ -502,6 +628,8 @@ create_thread (GIOWin32Channel     *chan
      g_warning (G_STRLOC ": Error closing thread handle: %s\n",
  	       g_win32_error_message (GetLastError ()));
  
@@ -180,7 +183,7 @@ diff -rup glib-2.8.4-old/glib/giowin32.c glib-2.8.4/glib/giowin32.c
    WaitForSingleObject (channel->space_avail_event, INFINITE);
  }
  
-@@ -575,6 +700,79 @@ buffer_read (GIOWin32Channel *channel,
+@@ -575,6 +703,79 @@ buffer_read (GIOWin32Channel *channel,
    return (*bytes_read > 0) ? G_IO_STATUS_NORMAL : G_IO_STATUS_EOF;
  }
  
@@ -260,7 +263,7 @@ diff -rup glib-2.8.4-old/glib/giowin32.c glib-2.8.4/glib/giowin32.c
  static gboolean
  g_io_win32_prepare (GSource *source,
  		    gint    *timeout)
-@@ -601,13 +799,27 @@ g_io_win32_prepare (GSource *source,
+@@ -601,13 +802,27 @@ g_io_win32_prepare (GSource *source,
  		 condition_to_string (channel->revents));
        
        LOCK (channel->mutex);
@@ -293,7 +296,7 @@ diff -rup glib-2.8.4-old/glib/giowin32.c glib-2.8.4/glib/giowin32.c
        UNLOCK (channel->mutex);
        break;
  
-@@ -965,6 +1177,12 @@ g_io_win32_fd_write (GIOChannel  *channe
+@@ -965,6 +1180,12 @@ g_io_win32_fd_write (GIOChannel  *channe
    GIOWin32Channel *win32_channel = (GIOWin32Channel *)channel;
    gint result;
    
@@ -306,7 +309,19 @@ diff -rup glib-2.8.4-old/glib/giowin32.c glib-2.8.4/glib/giowin32.c
    result = write (win32_channel->fd, buf, count);
    if (win32_channel->debug)
      g_print ("g_io_win32_fd_write: fd=%d count=%d => %d\n",
-@@ -1105,7 +1323,12 @@ g_io_win32_fd_create_watch (GIOChannel  
+@@ -1061,7 +1282,10 @@ g_io_win32_fd_close (GIOChannel *channel
+ 		 win32_channel->thread_id, win32_channel->fd);
+       win32_channel->running = FALSE;
+       win32_channel->needs_close = TRUE;
+-      SetEvent (win32_channel->data_avail_event);
++      if (win32_channel->direction == 0)
++	SetEvent (win32_channel->data_avail_event);
++      else
++	SetEvent (win32_channel->space_avail_event);
+     }
+   else
+     {
+@@ -1105,7 +1329,12 @@ g_io_win32_fd_create_watch (GIOChannel  
  
    LOCK (win32_channel->mutex);
    if (win32_channel->thread_id == 0)
@@ -320,7 +335,7 @@ diff -rup glib-2.8.4-old/glib/giowin32.c glib-2.8.4/glib/giowin32.c
  
    g_source_add_poll (source, &watch->pollfd);
    UNLOCK (win32_channel->mutex);
-@@ -1715,8 +1938,13 @@ g_io_channel_win32_make_pollfd (GIOChann
+@@ -1715,8 +1944,13 @@ g_io_channel_win32_make_pollfd (GIOChann
  
        fd->fd = (gint) win32_channel->data_avail_event;
  
