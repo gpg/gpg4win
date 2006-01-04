@@ -2,6 +2,11 @@
 
 	* patches/glib/01-giowin32.patch,
 	patches/glib-2.6.6/01-giowin32.patch,
+	patches/glib-2.8.4/01-giowin32.patch: Flush write buffer in write
+	thread before closing FD.
+
+	* patches/glib/01-giowin32.patch,
+	patches/glib-2.6.6/01-giowin32.patch,
 	patches/glib-2.8.4/01-giowin32.patch: Notify write thread about fd
 	close.
 
