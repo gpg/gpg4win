@@ -78,7 +78,7 @@ diff -ru glib/giowin32.c glib-2.6.6/glib/giowin32.c
 +  SetEvent (channel->space_avail_event);
 +  
 +  LOCK (channel->mutex);
-+  while (channel->running)
++  while (channel->running || channel->rdp != channel->wrp)
 +    {
 +      if (channel->debug)
 +	g_print ("write_thread %#x: rdp=%d, wrp=%d\n",
@@ -99,7 +99,7 @@ diff -ru glib/giowin32.c glib-2.6.6/glib/giowin32.c
 +	  WaitForSingleObject (channel->space_avail_event, INFINITE);
 +
 +	  LOCK (channel->mutex);
-+	  if (!channel->running)
++	  if (channel->rdp == channel->wrp)
 +	    break;
 +
 +	  if (channel->debug)
