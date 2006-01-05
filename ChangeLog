@@ -1,7 +1,8 @@
 2006-01-05  Werner Koch  <wk@g10code.com>
 
-	Released 0.5.0
+	Released 0.5.0.
 
+	* src/Makefile.am (EXTRA_DIST): Add config.site.
 	* Makefile.am (EXTRA_DIST): Update patches.
 
 	* src/inst-sylpheed-claws.nsi, src/uninst-sylpheed-claws.nsi,
