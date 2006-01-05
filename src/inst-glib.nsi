@@ -29,7 +29,7 @@ Section "-glib" SEC_glib
 !endif
   SetOutPath "$INSTDIR"
 !ifdef SOURCES
-  File ${gpg4win_pkg_glib_src}
+  File ${gpg4win_pkg_glib}
 !else
   File ${prefix}/bin/gspawn-win32-helper.exe
   File ${prefix}/bin/libglib-2.0-0.dll

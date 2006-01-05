@@ -119,8 +119,8 @@
 @HAVE_PKG_GLIB@
 !define gpg4win_pkg_glib @gpg4win_pkg_glib@
 !define gpg4win_pkg_glib_version @gpg4win_pkg_glib_version@
-!define gpg4win_pkg_glib_dev @gpg4win_pkg_glib_dev@
-!define gpg4win_pkg_glib_src @gpg4win_pkg_glib_src@
+#!define gpg4win_pkg_glib_dev @gpg4win_pkg_glib_dev@
+#!define gpg4win_pkg_glib_src @gpg4win_pkg_glib_src@
 
 @HAVE_PKG_ATK@
 !define gpg4win_pkg_atk @gpg4win_pkg_atk@

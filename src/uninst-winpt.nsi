@@ -33,6 +33,9 @@ Section "-un.winpt"
   Delete "$INSTDIR\WinPT.exe"
   Delete "$INSTDIR\PTD.dll"
 
+  Delete "$INSTDIR\share\locale\de\LC_MESSAGES\winpt.mo"
+  RMDir  "$INSTDIR\share\locale\de\LC_MESSAGES"
+
   Delete "$INSTDIR\share\winpt\keyserver.conf"
   Delete "$INSTDIR\share\winpt\NEWS-0.10.txt"
   Delete "$INSTDIR\share\winpt\README-0.10.txt"

@@ -34,9 +34,22 @@ EXTRA_DIST = fdl.tex einsteiger.tex durchblicker.tex $(eps_files)
 
 CLEANFILES = $(eps_files_bb)
 
+pkgdata_DATA = einsteiger.pdf durchblicker.pdf
+
+manual.dvi :  signatures.eps
+
+
 all-local: $(eps_files_bb)
 
 
 %.eps.bb : %.eps.gz
 	$(ZCAT) `test -f '$<' || echo '$(srcdir)/'`$< \
           | grep '^%%BoundingBox' | head -1 > $@
+
+
+%.dvi : %.tex
+	latex  `test -f '$<' || echo '$(srcdir)/'`$< 
+	latex  `test -f '$<' || echo '$(srcdir)/'`$< 
+
+%.pdf : %.dvi
+	dvipdf  $< $@

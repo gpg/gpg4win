@@ -11,6 +11,8 @@
 ** Some versions of strip don't work.
    Werner's GNU strip 2.15.91 20040904 is fine but
    Marcus'  GNU strip 2.15.94 20050118 does not work.
+** Mo file installation macro
+
 
 * Component related issues:
 ** Check out which locale files to install and where. !!!

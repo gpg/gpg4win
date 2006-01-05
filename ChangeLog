@@ -1,3 +1,20 @@
+2006-01-05  Werner Koch  <wk@g10code.com>
+
+	* src/inst-sylpheed-claws.nsi, src/uninst-sylpheed-claws.nsi,
+	* src/inst-gpa.nsi, src/uninst-gpa.nsi: Install language files.
+
+2006-01-04  Werner Koch  <wk@g10code.com>
+
+	* src/uninst-winpt.nsi: Deinstall the mo file.
+
+	* src/uninst-gpgee.nsi: Fix Source uninstall.
+	* src/uninst-glib.nsi, src/inst-glib.nsi, include/config.nsi.in:
+	Adjusted for source build.
+
+	* patches/glib-2.9.2-wk: New.
+	
+	* packages/packages.current: Switch to glib 2.9.2-wk1.
+
 2006-01-05  Marcus Brinkmann  <marcus@g10code.de>
 
 	* configure.ac: Add libiconv and gettext as dependencies.

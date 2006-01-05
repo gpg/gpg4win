@@ -70,14 +70,25 @@ chk  e9f66acde58136ab67e2167412773f727cd13a9d
 # GTK+ stuff
 # http://www.gimp.org/~tml/gimp/win32/downloads.html
 
+#server ftp://ftp.gtk.org/pub/gtk/v2.9
+#
+#file glib-2.9.1.tar.bz2
+#chk  ab84a8afc60c726c105cba3f542f1425e058b1c4  
+server ftp://ftp.g10code.com/g10code/scratch
+
+file glib-2.9.2-wk1.tar.bz2
+chk  2ba7b74ec3337126d8a56aae1b7a77705a6166d5
+
+
 server ftp://ftp.gtk.org/pub/gtk/v2.6
 
-file win32/glib-2.6.6.zip
-chk  f1cf6ff8831217aac38ecd83c07d02416e571c5d
-file win32/glib-dev-2.6.6.zip
-chk  9445676e9394cd92b1e60e0550ed74d8917414d6
-file glib-2.6.6.tar.bz2
-chk  6bb8860bd29a83964ee66ad53ae3e4950aa2677f
+# We need to build our onw glib - see above.
+#file win32/glib-2.6.6.zip
+#chk  f1cf6ff8831217aac38ecd83c07d02416e571c5d
+#file win32/glib-dev-2.6.6.zip
+#chk  9445676e9394cd92b1e60e0550ed74d8917414d6
+#file glib-2.6.6.tar.bz2
+#chk  6bb8860bd29a83964ee66ad53ae3e4950aa2677f
 
 file win32/atk-1.9.0.zip
 chk  d6f99c56b890051c3b9bc77abe8c5a705d3bc5d4
@@ -112,13 +123,10 @@ chk  1019c8027c0cf94bca680886f4e2ae4e629a2a97
 
 # WinPT
 
-#server http://wald.intevation.org/frs/download.php
-#file 65/winpt-0.11.2.tar.bz2
-#file 66/winpt-0.11.2.tar.bz2.sig
+server http://wald.intevation.org/frs/download.php
 
-server ftp://ftp.g10code.com/g10code/scratch
-file winpt-0.11.3-cvs.tar.bz2
-chk  78c3357c1a8c59209263e1c58e7dd84916799f21
+file 84/winpt-0.11.4.tar.bz2
+chk  f880bd2103b51a8e2f6e94f58a9524c523765ccb  winpt-0.11.4.tar.bz2
 
 
 # GPGee
@@ -161,12 +169,16 @@ server ftp://ftp.g10code.com/g10code/scratch
 
 file libgpg-error-1.2-cvs.tar.bz2
 chk  ad964f78de99c7493dc47f49b0071f34d7d5e53d
-file gpgme-1.2.0-cvs.tar.bz2
-chk  3f8bc76e006577fa7c27173c1b695fba3436c6ba
-file gpa-0.7.1-cvs.tar.bz2
-chk  e9c682982daf3434b0892d7e69ad04da5bac4ae1
-file sylpheed-claws-1.9.99cvs5-wk1.tar.bz2
-chk  0706c278dab540981c5ab40872136aa04e3255cb
+
+file gpgme-1.1.1-cvs1150.tar.bz2
+chk  1116ebddb7ba0858e7c28fdefadaa62c096c3237
+
+file gpa-0.7.1-cvs728.tar.bz2
+chk  a61f292e61e2e0ececbc892fc4174542333269bd  
+
+file sylpheed-claws-1.9.100cvs124.tar.bz2
+chk  950c7795f7348a919910d8e6bb5222565a114328  
+
 file man_novice_de-0.0.0-cvs.tar.gz
 chk  33329175b9b69724870139f383edf6e3edea7c78
 file man_advanced_de-0.0.0-cvs.tar.gz
