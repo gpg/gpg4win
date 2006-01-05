@@ -13,8 +13,7 @@
 # line will be appended to the current base URL (with a / as
 # delimiter).  The statement "chk" is followed by the SHA1 checksum of
 # the last file.
-#
-# 2005-12-06 11:16:12
+
 
 # GNU
 server ftp://ftp.cs.tu-berlin.de/pub/gnu
@@ -123,10 +122,13 @@ chk  1019c8027c0cf94bca680886f4e2ae4e629a2a97
 
 # WinPT
 
-server http://wald.intevation.org/frs/download.php
+#server http://wald.intevation.org/frs/download.php
+#file 84/winpt-0.11.4.tar.bz2
+#chk  f880bd2103b51a8e2f6e94f58a9524c523765ccb
 
-file 84/winpt-0.11.4.tar.bz2
-chk  f880bd2103b51a8e2f6e94f58a9524c523765ccb
+server ftp://ftp.g10code.com/g10code/scratch
+file winpt-0.11.5-cvs.tar.bz2
+chk  8299a0d2556e56623b188b9d23583ef88b9607f0
 
 
 # GPGee

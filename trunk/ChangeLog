@@ -2,6 +2,8 @@
 
 	Released 0.5.0.
 
+	* src/inst-winpt.nsi: Remove old mo installation hack.
+
 	* src/Makefile.am (EXTRA_DIST): Add config.site.
 	* Makefile.am (EXTRA_DIST): Update patches.
 
