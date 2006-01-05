@@ -99,7 +99,7 @@ GPG4WIN_BPKG_GNUWIN32([libpng], [pkgconfig])
 GPG4WIN_BPKG_GTK([pkgconfig])
 # We build our own version of glib, because we need to patch giowin32.c.
 # GPG4WIN_BPKG_GTK_DEV([glib], [pkgconfig])
-GPG4WIN_SPKG([glib], [pkgconfig])
+GPG4WIN_SPKG([glib], [libiconv gettext pkgconfig])
 GPG4WIN_BPKG_GTK_DEV([gtk+], [atk pango glib libiconv gettext pkgconfig])
 GPG4WIN_BPKG_GTK_DEV([atk], [glib pkgconfig])
 GPG4WIN_BPKG_GTK_DEV([pango], [glib pkgconfig])
