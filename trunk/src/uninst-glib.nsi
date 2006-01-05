@@ -26,7 +26,7 @@
 ; Uninstaller section.
 Section "-un.glib"
 !ifdef SOURCES
-  Push "${gpg4win_pkg_glib_src}"
+  Push "${gpg4win_pkg_glib}"
   Call un.SourceDelete
 !else
   Delete "$INSTDIR\gspawn-win32-helper.exe"

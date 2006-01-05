@@ -31,11 +31,15 @@ Section "GPA" SEC_gpa
 !else
   File ${prefix}/bin/gpa.exe
 
+  SetOutPath "$INSTDIR\share\locale\de\LC_MESSAGES"
+  File ${prefix}/share/locale/de/LC_MESSAGES/gpa.mo
+
   SetOutPath "$INSTDIR\share\gpa"
   File ${prefix}/share/gpa/gpa_tips.en
   File ${prefix}/share/gpa/gpa_tips.de
   File ${prefix}/share/gpa/gpa_logo.ppm
   File ${prefix}/share/gpa/gpa.png
+
 !endif
 SectionEnd
 

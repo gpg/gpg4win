@@ -1,5 +1,9 @@
-Noteworthy changes in version 0.3.2
+Noteworthy changes in version 0.5.0
 ------------------------------------------------
+
+ * Fixed GPA problems.
+
+ * Sylpheed does now actually work.
 
  * Changed the packaging of GPGee.
 

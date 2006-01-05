@@ -32,6 +32,8 @@ Section "-un.gpa"
 !else
   Delete "$INSTDIR\gpa.exe"
 
+  Delete "$INSTDIR\share\locale\de\LC_MESSAGES\gpa.mo"
+
   Delete "$INSTDIR\share\gpa\gpa_tips.en"
   Delete "$INSTDIR\share\gpa\gpa_tips.de"
   Delete "$INSTDIR\share\gpa\gpa_logo.ppm"

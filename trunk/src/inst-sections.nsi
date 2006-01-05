@@ -155,6 +155,8 @@
 !include "uninst-libiconv.nsi"
 !endif
 !ifdef HAVE_PKG_LIBGPG_ERROR
+# Note that the uninstaller of libgpg-error is supposed to remove the shareed
+# directories.  We might want to move this to an extra section.
 !include "uninst-libgpg-error.nsi"
 !endif
 !ifdef HAVE_PKG_GNUPG

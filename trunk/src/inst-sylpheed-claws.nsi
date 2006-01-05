@@ -31,14 +31,15 @@ Section "Sylpheed" SEC_sylpheed
 !else
   File ${prefix}/bin/sylpheed-claws.exe
 
-  SetOutPath "$INSTDIR\share\sylpheed-claws"
-
   SetOutPath "$INSTDIR\lib\sylpheed-claws\plugins"
   File ${prefix}/lib/sylpheed-claws/plugins/pgpcore.dll
   File ${prefix}/lib/sylpheed-claws/plugins/pgpinline.dll
   File ${prefix}/lib/sylpheed-claws/plugins/pgpinline.deps
   File ${prefix}/lib/sylpheed-claws/plugins/pgpmime.dll
   File ${prefix}/lib/sylpheed-claws/plugins/pgpmime.deps
+
+  SetOutPath "$INSTDIR\share\locale\de\LC_MESSAGES"
+  File ${prefix}/share/locale/de/LC_MESSAGES/sylpheed-claws.mo
 !endif
 SectionEnd
 

@@ -35,7 +35,7 @@ gpg4win_spkgs := glib gnupg libgpg-error gpgme gpgol gpa winpt sylpheed-claws \
 gpg4win_pkg_glib_configure = \
   --with-lib-prefix=$(idir) --with-libiconv-prefix=$(idir) \
   CPPFLAGS=-I$(idir)/include LDFLAGS=-L$(idir)/lib
- 
+
 # We would like to use --with-libiconv-prefix and
 # --with-libintl-prefix, but these don't work with the cheesy
 # non-"libfoo.la" versions of iconv and gettext that we are using.

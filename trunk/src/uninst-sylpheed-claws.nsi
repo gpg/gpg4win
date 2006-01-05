@@ -41,6 +41,8 @@ Section "-un.sylpheed"
   RMDir "$INSTDIR\lib\sylpheed-claws"
   RMDir "$INSTDIR\lib"
 
+  Delete "$INSTDIR\share\locale\de\LC_MESSAGES\sylpheed-claws.mo"
+
   RMDir "$INSTDIR\share\sylpheed-claws"
   RMDir "$INSTDIR\share"
   RMDir "$INSTDIR"
