@@ -28,4 +28,5 @@ EXTRA_DIST = autogen.sh README.SVN \
 	patches/gpgme-1.1.0/01-gpgme-def.patch \
 	patches/gpgme-1.1.0/02-libtool-dll.patch \
         patches/pthreads-w32-2-7-0-release/01-make.patch \
-        glib-2.9.2-wk1/01-giowin32.patch 
+        patches/glib-2.9.2-wk1/01-giowin32.patch 
+
