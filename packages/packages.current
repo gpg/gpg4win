@@ -126,7 +126,7 @@ chk  1019c8027c0cf94bca680886f4e2ae4e629a2a97
 server http://wald.intevation.org/frs/download.php
 
 file 84/winpt-0.11.4.tar.bz2
-chk  f880bd2103b51a8e2f6e94f58a9524c523765ccb  winpt-0.11.4.tar.bz2
+chk  f880bd2103b51a8e2f6e94f58a9524c523765ccb
 
 
 # GPGee

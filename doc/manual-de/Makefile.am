@@ -32,15 +32,14 @@ eps_files_bb := $(eps_files:.gz=.bb)
 
 EXTRA_DIST = fdl.tex einsteiger.tex durchblicker.tex $(eps_files)
 
-CLEANFILES = $(eps_files_bb)
+CLEANFILES = $(eps_files_bb) *.pdf *.pdf *.toc *.log *.aux *.out
+
 
 pkgdata_DATA = einsteiger.pdf durchblicker.pdf
 
-manual.dvi :  signatures.eps
+BUILT_SOURCES = $(eps_files_bb)
 
-
-all-local: $(eps_files_bb)
-
+all-local: einsteiger.pdf durchblicker.pdf
 
 %.eps.bb : %.eps.gz
 	$(ZCAT) `test -f '$<' || echo '$(srcdir)/'`$< \
@@ -48,8 +47,7 @@ all-local: $(eps_files_bb)
 
 
 %.dvi : %.tex
-	latex  `test -f '$<' || echo '$(srcdir)/'`$< 
-	latex  `test -f '$<' || echo '$(srcdir)/'`$< 
+	$(TEXI2DVI) `test -f '$<' || echo '$(srcdir)/'`$< 
 
 %.pdf : %.dvi
-	dvipdf  $< $@
+	TEXPICTS=$(srcdir) dvipdf  $< $@
