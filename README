@@ -52,7 +52,7 @@ Then run the usual "./autogen.sh" to create the actual configure file
 and run configure as described above.
 
 
-Copyright 2005 g10 Code GmbH
+Copyright 2005, 2006 g10 Code GmbH
 
 This file is free software; as a special exception the author gives
 unlimited permission to copy and/or distribute it, with or without

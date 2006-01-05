@@ -23,9 +23,6 @@
 !endif
 !define prefix ${ipdir}/winpt-${gpg4win_pkg_winpt_version}
 
-# Kludge to access the generated winpt.mo file
-!define winptpath playground/build/winpt-${gpg4win_pkg_winpt_version}
-
 Section "WinPT" SEC_winpt
   SetOutPath "$INSTDIR"
 !ifdef SOURCES
@@ -36,7 +33,7 @@ Section "WinPT" SEC_winpt
   #File ${winptpath}/keyserver.conf
 
   SetOutPath "$INSTDIR\share\locale\de\LC_MESSAGES"
-  File ${winptpath}/Po/winpt.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/winpt.mo
   
   # Do not install the documentation until we have agreed on the filenames.
   #SetOutPath "$INSTDIR\share\winpt"
