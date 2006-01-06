@@ -19,6 +19,8 @@
 
 # Sections
 
+!include "inst-gpg4win.nsi"
+
 !ifdef HAVE_PKG_GNUPG
 !include "inst-gnupg.nsi"
 !endif
@@ -162,6 +164,9 @@
 !ifdef HAVE_PKG_GNUPG
 !include "uninst-gnupg.nsi"
 !endif
+
+!include "uninst-gpg4win.nsi"
+
 
 # Dependency Management
 
@@ -498,7 +503,7 @@ Section "-startmenu"
     IntCmp $R0 ${SF_SELECTED} 0 no_man_novice_de_menu 
     CreateShortCut \
         "$SMPROGRAMS\$STARTMENU_FOLDER\$(DESC_Name_man_novice_de).lnk" \
-	"$INSTDIR\share\gpg4win\man_novice_de.html" \
+	"$INSTDIR\share\gpg4win\einsteiger.pdf" \
         "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_man_novice_de)
   no_man_novice_de_menu:
 !endif
@@ -509,7 +514,7 @@ Section "-startmenu"
     IntCmp $R0 ${SF_SELECTED} 0 no_man_advanced_de_menu 
     CreateShortCut \
         "$SMPROGRAMS\$STARTMENU_FOLDER\$(DESC_Name_man_advanced_de).lnk" \
-	"$INSTDIR\share\gpg4win\man_novice_de.html" \
+	"$INSTDIR\share\gpg4win\durchblicker.pdf" \
         "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_man_advanced_de)
   no_man_advanced_de_menu:
 !endif

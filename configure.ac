@@ -70,10 +70,14 @@ AC_CHECK_PROGS(RM, rm)
 AC_CHECK_PROGS(STOW, stow)
 AC_CHECK_PROGS(MAKENSIS, makensis)
 AC_CHECK_PROGS(ZCAT, zcat)
+AC_CHECK_PROGS(TEXI2DVI, texi2dvi)
+AC_CHECK_PROGS(DVIPDF, dvipdf)
+AC_CHECK_PROGS(SHA1SUM, sha1sum)
 AC_PROG_INSTALL
 
 missing_tools=
-for i in DLLTOOL MAKE UNZIP TAR MKDIR CP RM STOW MAKENSIS; do
+for i in DLLTOOL MAKE UNZIP TAR MKDIR CP RM STOW MAKENSIS ZCAT TEXI2DVI \
+         DVIPDF SHA1SUM ; do
    eval tmp='$'$i
    if test -z "$tmp"; then 
       missing_tools="$missing_tools `echo $i | tr 'A-Z' 'a-z'`"

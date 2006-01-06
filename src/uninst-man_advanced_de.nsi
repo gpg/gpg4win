@@ -21,17 +21,20 @@
 !ifdef prefix
 !undef prefix
 !endif
-!define prefix ${ipdir}/man_advanced_de-${gpg4win_pkg_man_advanced_de_version}
 
 
 ; Uninstaller section.
 Section "-un.man_advanced_de"
 !ifdef SOURCES
-  Push "${gpg4win_pkg_man_advanced_de}"
-  Call un.SourceDelete
+  #Push "${gpg4win_pkg_man_advanced_de}"
+  #Call un.SourceDelete
 !else
 
+  # Note, that we will delete the dummy package which might have been
+  # installed by versions of gpg4win pre 0.5.1
   Delete "$INSTDIR\share\gpg4win\man_advanced_de.html"
+
+  Delete "$INSTDIR\share\gpg4win\durchblicker.pdf"
   RMDir "$INSTDIR\share\gpg4win"
   RMDir "$INSTDIR\share"
   RMDir "$INSTDIR"

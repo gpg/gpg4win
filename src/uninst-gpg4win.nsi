@@ -1,4 +1,4 @@
-# uninst-man_novice_de.nsi - Installer snippet.     -*- coding: latin-1; -*-
+# uninst-gpg4win.nsi - Hidden uninstaller.           -*- coding: latin-1; -*-
 # Copyright (C) 2005 g10 Code GmbH
 # 
 # This file is part of GPG4Win.
@@ -18,23 +18,18 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
 
-!ifdef prefix
-!undef prefix
-!endif
-
-; Uninstaller section.
-Section "-un.man_novice_de"
+# This is the very last section of the uninstaller.
+Section "-un.gpg4win"
 !ifdef SOURCES
-  #Push "${gpg4win_pkg_man_novice_de}"
-  #Call un.SourceDelete
+
 !else
 
-  # Note, that we will delete the dummy package which might have been
-  # installed by versions of gpg4win pre 0.5.1
-  Delete "$INSTDIR\share\gpg4win\man_novice_de.html"
+  Delete "$INSTDIR\share\gpg4win\versioninfo.txt"
 
-  Delete "$INSTDIR\share\gpg4win\einsteiger.pdf"
   RMDir "$INSTDIR\share\gpg4win"
+
+  # Try to remove otehr top directories.
+  RMDir "$INSTDIR\lib"
   RMDir "$INSTDIR\share"
   RMDir "$INSTDIR"
 

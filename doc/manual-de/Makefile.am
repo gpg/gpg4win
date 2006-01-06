@@ -50,4 +50,4 @@ all-local: einsteiger.pdf durchblicker.pdf
 	$(TEXI2DVI) `test -f '$<' || echo '$(srcdir)/'`$< 
 
 %.pdf : %.dvi
-	TEXPICTS=$(srcdir) dvipdf  $< $@
+	TEXPICTS=$(srcdir) $(DVIPDF)  $< $@

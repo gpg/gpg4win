@@ -19,11 +19,12 @@
 
 
 EXTRA_DIST = pkg-config $(common_nsi) gpg4win.nsi gpg4win-src.nsi \
+        inst-gpg4win.nsi uninst-gpg4win.nsi \
 	libiconv.def libintl.def  gpg4win-splash.bmp gpg4win-splash.wav \
 	exdll.h g4wihelp.c g4wihelp.nsi config.site loreley.mid
 
 # Need to clean the dll because we bypassed automake.
-CLEANFILES = g4wihelp.dll 
+CLEANFILES = g4wihelp.dll versioninfo.txt
 
 # Supported source packages.
 gpg4win_spkgs := glib gnupg libgpg-error gpgme gpgol gpa winpt sylpheed-claws \
@@ -181,11 +182,25 @@ common_nsi := inst-sections.nsi installer.nsi installer-finish.nsi	\
   $(addsuffix .nsi,$(addprefix inst-,$(gpg4win_build_list)))		\
   $(addsuffix .nsi,$(addprefix uninst-,$(gpg4win_build_list)))
 
+
+# Prepare the versioninfo file.  The pipeline extracts the last
+# occurrence of a package with the same name, sorts the entries and
+# writes the file with DOS line endings.  This helps to avoid
+# duplicate entries in case one package has been rebuild (which is
+# common when developing a new version).
+versioninfo.txt : playground/build/versioninfo.txt
+	set -e; \
+	( while read a b; do echo "$$a $$(basename $$b)"; \
+            done < playground/build/versioninfo.txt \
+          | sort -k2 -sf | tac | uniq -f1 ; \
+          echo '=========== SHA-1 checksum ============= == package ==' \
+         ) | tac | awk '{printf "%s\r\n", $$0}' > versioninfo.txt
+
 # For some nut-crazy reason someone thought it would be a great idea
 # if makensis changed to the directory of the source file at startup.
 # So we have to pull a couple of strings to correct this.
 gpg4win-$(VERSION).exe: gpg4win.nsi $(common_nsi) stamps/stamp-final \
-                        g4wihelp.dll
+                        g4wihelp.dll  versioninfo.txt
 	$(MAKENSIS) -V3 -DBUILD_DIR=`pwd` -DTOP_SRCDIR=$(top_srcdir) \
 		-DSRCDIR=$(srcdir) $(srcdir)/gpg4win.nsi
 
