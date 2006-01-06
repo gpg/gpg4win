@@ -21,17 +21,17 @@
 !ifdef prefix
 !undef prefix
 !endif
-!define prefix ${ipdir}/man_novice_de-${gpg4win_pkg_man_novice_de_version}
 
 
 Section "$(DESC_Name_man_novice_de)" SEC_man_novice_de
   SetOutPath "$INSTDIR"
 !ifdef SOURCES
-  File "${gpg4win_pkg_man_novice_de}"
+  # No need to include anything as the manuals are part of gpg4win
+  # File "${gpg4win_pkg_man_novice_de}"
 !else
 
   SetOutPath "$INSTDIR\share\gpg4win"
-  File "${prefix}/share/man_novice_de/man_novice_de.html"
+  File "${BUILD_DIR}/../doc/manual-de/einsteiger.pdf"
 !endif
 SectionEnd
 

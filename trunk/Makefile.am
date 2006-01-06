@@ -21,7 +21,7 @@ ACLOCAL_AMFLAGS = -I m4
 AUTOMAKE_OPTIONS = dist-bzip2
 DISTCHECK_CONFIGURE_FLAGS = --host=i586-mingw32msvc
 
-SUBDIRS = packages include src doc
+SUBDIRS = packages include doc src
 
 EXTRA_DIST = autogen.sh README.SVN \
 	patches/gnupg-1.4.2/01-po-subdirs.patch \

@@ -71,6 +71,11 @@ define SETVARS
 	export CONFIG_SITE="$(tsdir)/src/config.site"
 endef
 
+# Support macro.  Record version number of file $(1).
+define VERSIONINFO_macro
+         $(SHA1SUM) "$(1)" >> "$(bdir)/versioninfo.txt" 
+endef
+
 # Support macro.  Unpack the archive $(1).
 define DEFLATE_macro
 	case "$(1)" in			\
@@ -101,6 +106,7 @@ define SPKG_template
 stamps/stamp-$(1)-00-unpack: stamps/stamp-directories 
 	(cd $(bdir);					\
 	 $(call SETVARS,$(1));				\
+	 $(call VERSIONINFO_macro,$$$${pkg});           \
 	 $(call DEFLATE_macro,$$$${pkg}))
 	touch stamps/stamp-$(1)-00-unpack
 
@@ -155,6 +161,7 @@ define MPKG_template
 stamps/stamp-$(1)-00-unpack: stamps/stamp-directories 
 	(cd $(bdir);					\
 	 $(call SETVARS,$(1));				\
+	 $(call VERSIONINFO_macro,$$$${pkg});           \
 	 $(call DEFLATE_macro,$$$${pkg}))
 	touch stamps/stamp-$(1)-00-unpack
 
@@ -199,6 +206,7 @@ stamps/stamp-$(1)-00-install: stamps/stamp-directories
 	($(call SETVARS,$(1));				\
 	 $(MKDIR) "$$$${pkgidir}";			\
 	 cd $$$${pkgidir};				\
+	 $(call VERSIONINFO_macro,$$$${pkg});           \
 	 $(call DEFLATE_macro,$$$${pkg}))
 	touch stamps/stamp-$(1)-00-install
 
@@ -208,6 +216,7 @@ stamps/stamp-$(1)-01-install-dev: stamps/stamp-$(1)-00-install
 	($(call SETVARS,$(1));				\
 	 $(MKDIR) "$$$${pkgidir_dev}";			\
 	 (cd $$$${pkgidir_dev};				\
+          $(call VERSIONINFO_macro,$$$${pkg_dev});      \
 	  $(call DEFLATE_macro,$$$${pkg_dev}));		\
 	 $(call gpg4win_pkg_$(call FROB_macro,$(1))_post_install))
 	touch stamps/stamp-$(1)-01-install-dev
