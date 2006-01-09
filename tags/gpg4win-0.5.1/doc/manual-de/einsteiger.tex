@@ -1,0 +1,1181 @@
+\documentclass[a4paper,11pt,twoside,titlepage,dvips]{scrartcl}
+\usepackage{a4wide}
+\usepackage[latin1]{inputenc}
+%\usepackage[T1]{fontenc}
+\usepackage{german}
+\usepackage{graphicx}
+\usepackage{alltt}
+\usepackage{moreverb}
+\usepackage{fancyhdr}
+
+% I would really like to use jpg sources but tehre are two problems.
+% The way as described below does no work becuase neiteyr dvips not
+% xdvi can cope with the BMP type.  The other solution of converting
+% jpeg on-the-fly into EPS is hampered by the fact that there seems to
+% be no free tool fo this.  The jpeg2ps tool mentioned at some places
+% is not free.  Frankly writing such a tool is pretty straightforword
+% and I'd really like to have a free one.  Another problem with a
+% non-builtin DeclareGraphicsRule is that one needs to pass the -R0
+% option (do not run securely) to dvips - not the best solution.
+% Eventually we should get code to do the on-the-fly conversion into
+% dvips proper.
+%
+%\DeclareGraphicsExtensions{.eps,.eps.gz,.jpg}
+%\DeclareGraphicsRule{.jpg}{bmp}{.jpg.bb}{`djpeg -bmp #1}
+\DeclareGraphicsExtensions{.eps.gz,.eps}
+
+
+\fancyhead{} % clear all fields
+\fancyhead[LO]{Gpg4win für Einsteiger}
+\fancyhead[RO]{\thepage}
+\fancyfoot{}
+
+% Hyperref should be among the last packages loaded
+\usepackage{hyperref}
+
+
+\begin{document}
+\thispagestyle{empty}
+\pagestyle{fancy}
+\parindent0cm
+\parskip\medskipamount
+
+
+\title{Gpg4win für Einsteiger}
+\author{Eine Veröffentlichung des Gpg4Win Projekts\\
+  \small Basierend auf einem Original von \\
+  \small Manfred J. Heinze, Karl Bihlmeier, Isabel Kramer\\
+  \small Dr. Francis Wray und Ute Bahn}
+\date{WiP}
+
+\maketitle
+
+
+\section*{Impressum gpg4win}
+
+\noindent
+Copyright \copyright{} 2002 Bundesministerium für Wirtschaft und Technologie\\
+Copyright \copyright{} 2005 g10 Code GmbH\\
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2 or
+any later version published by the Free Software Foundation; with
+the Invariant Sections being ,,Impressum'', no Front-Cover Texts, and
+no Back-Cover Texts.  A copy of the license is included in the section
+entitled ,,GNU Free Documentation License''.
+
+\bigskip
+
+{\LARGE Dieses Handbuch wird zur Zeit überarbeitet.} 
+
+\vfill
+
+\begin{center}
+\fbox{\parbox{.7\textwidth}{Die Angaben auf der folgenden Seite
+    sind nicht mehr korrekt; wir können diese Seite allerdings nicht
+    abändern, da die Regeln der GFDL hier falsch angewandt wurden.
+    Neue Copyright Hinweise sollten deswegen hier eingestellt werden.}}
+\end{center}
+
+\clearpage
+%% Orginal page 4
+%% This is an invariant section
+\section*{Impressum}
+Diese Seite darf nicht verändert werden.\\
+
+Autor: Manfred J. Heinze, TextLab text+media\\
+Beratung: Lutz Zolondz, G-N-U GmbH\\
+Illustrationen: Karl Bihlmeier, Bihlmeier \& Kramer GbR\\
+Layout: Isabel Kramer, Bihlmeier \& Kramer GbR\\
+Fachtext: Dr. Francis Wray, e-mediate Ltd.\\
+Redaktion: Ute Bahn, TextLab text+media\\
+1. Auflage, März 2002\\
+
+
+Copyright \copyright{} Bundesministerium für Wirtschaft und Technologie
+Dieses Buch unterliegt der ,,GNU Free Documentation License''.
+Originaltext der Lizenz: http://www.gnu.org/copyleft/fdl.html .
+Deutsche Übersetzung http://nautix.sourceforge.net/docs/fdl.de.html
+sowie auf der beiliegenden CD-ROM.  Es wird die Erlaubnis gegeben,
+dieses Dokument zu kopieren, zu verteilen und/oder zu verändern unter
+den Bedingungen der GNU Free Documentation License, Version 1.1 oder
+einer späteren, von der Free Software Foundation veröffentlichten
+Version.  Diese Seite (,,Impressum'') darf nicht verändert werden und
+muß in allen Kopien und Bearbeitungen erhalten bleiben
+(,,unveränderlicher Abschnitt'' im Sinne der GNU Free Documentation
+License).  Wenn dieses Dokument von Dritten kopiert, verteilt und/oder
+verändert wird, darf in keiner Form der Eindruck eines Zusammenhanges
+mit dem Bundesministerium für Wirtschaft und Technologie erweckt
+werden.  Wie das OpenSource-Kryptografieprogramm GnuPP selbst wurden
+diese Texte nicht für Mathematiker, Geheimdienstler und Kryptografen
+geschrieben, sondern für jedermann.
+
+
+
+\clearpage
+\tableofcontents
+
+%%\clearpage
+%% Orginal page  6
+%% We don't use these foreword anymore because Mr. Müller is not
+%% anymore minister of economic and technology.  We might want to ask
+%% for a new foreword by the current head of that ministr
+%%
+
+\clearpage
+%% Orginal page 7
+\section{Über dieses Handbuch}
+
+Das Gpg4win-Anleitungs- und Übungsmaterial besteht aus drei Teilen:
+
+\begin{itemize}
+
+\item dem gedruckten Schnelleinstieg, ,,Gpg4win für Einsteiger'', in dem
+  Sie gerade lesen,
+
+
+\item dem Handbuch ,,Gpg4win für Durchblicker'' im PDF-Format, das Sie
+  auf der beiliegenden CD-ROM und nach der Installation von Gpg4win auf
+  Ihrer Festplatte finden,
+
+\item dem Gpg4win-Übungsroboter Adele, mit dem Sie die EMail-Ver- und
+  Entschlüsselung so oft üben können, wie Sie wollen. Um mit Adele zu
+  üben, brauchen Sie eine Internet-Verbindung.
+\end{itemize}
+
+
+,,Gpg4win für Einsteiger'' führt Sie kurz und knapp durch die Installa-
+tion und die alltägliche Benutzung der Gpg4win-Software. Der Zeitbedarf
+für das Durcharbeiten des Schnell- einstiegs hängt unter anderem davon
+ab, wie gut Sie sich mit Ihrem PC und Windows auskennen. In etwa
+sollten Sie sich eine halbe Stunde Zeit nehmen.
+
+,,Gpg4win für Durchblicker'' liefert Hintergrundwissen, das Ihnen die
+grundlegenden Mechanismen von Gpg4win verdeutlicht und die etwas
+seltener benutzten Features erläutert. Das Handbuch liegt im
+PDF-Format vor, Sie können es auch ausdrucken.
+
+Beide Handbuchteile können unabhängig voneinander benutzt werden. Zu
+Ihrem besseren Verständnis sollten Sie aber möglichst beide Teile in
+der angegebenen Reihenfolge lesen.
+
+$\spadesuit$ Diese Hand weist auf auf den Wechsel in das andere Buch
+hin.
+
+Der Gpg4win-Übungsroboter Adele steht Ihnen jederzeit im Internet zur
+Verfügung. Sie empfängt und sendet verschlüsselte E-Mails und
+entschlüsselt sie auch. Sie können also mit Adele einen kompletten
+Verschlüsselungsdialog so lange üben, bis Sie sich völlig mit dem
+Gebrauch der Software vertraut gemacht haben.
+
+\clearpage
+%% Orginal page 8
+\section{Was ist Gpg4win?}
+
+Das Projekt Gpg4win (GNU Privacy Guard for Windows) ist eine vom
+Bundesamt für Sicherheit in der Informationstechnik beauftragte
+E-Mail-Verschlüsselungssoftware. Gpg4win bezeichnet ein Gesamtpaket,
+welches die Programme GnuPG, GPA, WinPT und andere Komponenten
+enthält.
+
+Mit dem Verschlüsselungsprogramm GnuPG (GNU Privacy Guard) kann
+jedermann E-Mails sicher, einfach und kostenlos verschlüsseln. GnuPG
+kann ohne jede Restriktion privat oder kommerziell benutzt werden. Die
+Verschlüsselung von GnuPG ist extrem sicher und kann nach dem heutigen
+Stand von Forschung und Technik nicht gebrochen werden.
+
+GnuPG ist Freie Software\footnote{oft fälschlich auch als Open Source
+  Software bezeichnet}. Das bedeutet, dass jedermann das Recht hat,
+sie nach Belieben kommerziell oder privat zu nutzen.  Jedermann soll
+und darf den Quellcode, also die eigentliche Programmierung des
+Programms, genau untersuchen.
+
+Für eine Sicherheits-Software ist diese garantierte Transparenz des
+Quellcodes eine unverzichtbare Grundlage. Nur so lässt sich die
+Vertrauenswürdigkeit eines Programmes prüfen.
+
+GnuPG ist vollständig kompatibel mit PGP.
+
+GnuPG basiert auf dem inter- nationalen Standard OpenPGP (RFC 2440),
+ist vollständig kom- patibel zu PGP und benutzt die gleiche
+Infrastruktur (Schlüssel- server etc).
+
+PGP (,,Pretty Good Privacy'') ist keine freie Software, sie wird seit
+mehreren Jahren nicht mehr unter der freien Softwarelizenz GNU General
+Public License (GNU GPL) vertrieben.
+
+Weitere Informationen zu GnuPG und den Projekten der Bundesregierung
+zum Schutz des Internets finden Sie auf der Website
+sicherheit-im-internet.de des Bundeswirtschaftsministeriums.
+
+\clearpage
+%% Orginal page 9
+\section{Sie installieren Gpg4win}
+
+Legen Sie die beiliegende CD-ROM in das CD-ROM-Laufwerk Ihres PCs.
+Öffnen Sie Ihren ,,Arbeitsplatz'' und klicken Sie dort auf das CD-ROM-
+Icon mit dem Titel ,,Gpg4win''.
+
+Wenn sich das CD-ROM-Icon geöffnet hat, klicken Sie auf das
+Installations-Icon mit dem Titel ,,Gpg4win.1.1-de''.
+
+% Icon Gpg4win 1.1-de
+
+Die Frage, ob Sie das Programm installieren wollen, beantworten Sie
+mit [ Ja ].
+
+Es begrüßt Sie dieser Screen:
+
+% screenshot:  Welcome Seite Installer
+
+Beenden Sie alle möglicherweise auf Ihrem Rechner laufenden Programme,
+und klicken Sie dann auf [ Weiter ].
+
+\clearpage
+%% Orginal page 10
+
+%% FIXME: Eine Zustimmung zur Installion ist bei Freier Software nicht
+%% notwendig.
+Lesen Sie die Lizenzvereinbarung und ­ wenn Sie ihr zustimmen ­
+klicken Sie auf [ Ja ].
+
+% sreenshot Lizenzseite des Installers
+
+\clearpage
+%% Original page 11
+
+In der nun folgenden Dateiauswahl können Sie einen Ordner auf Ihrem
+PC aussuchen, in dem Gpg4win installiert wird. Sie können auch einfach
+den voreingestellten Standard-Ordner \verb-C:\Programme\Gpg4win- nehmen.
+
+% screenshot: Auswahl des Installationsverzeichnis.
+% fixme: Haben wir miomentan nicht.
+
+
+Klicken Sie anschliessend auf [ Weiter ].
+
+\clearpage
+%% Original page 12
+
+Das Programm legt nun ein Icon in das Windows Startup-Menü, damit Sie
+Gpg4win einfacher starten können.
+
+% screenshot:  Startnmenu auswählen
+
+Am einfachsten übernehmen Sie die vorgeschlagene Einstellung und
+klicken dann auf [ Weiter ].
+
+Anschließend werden alle bisherigen Eingaben noch einmal aufgelistet.
+Wenn alles in Ordnung ist, klicken Sie auf [Installieren].
+
+
+\clearpage
+%% Original page 13
+
+% Screenshot: Finish page Installer
+
+Nach kurzer Zeit ist die Installation beendet und dieser Dialog
+erscheint:
+
+Klicken Sie auf [ Fertigstellen ] und
+lesen Sie die Informationen in der
+kurzen Readme-Datei
+
+Wenn Sie fertig sind, schließen Sie die Readme-Datei.
+
+% FIXME:  Wir müssen erklären wie man Word als Standard Editor in
+% Outlook ausschaltet.
+
+\clearpage
+%% Original page 14
+
+Das war's schon!
+
+Sie haben Gpg4win installiert und
+können es gleich zum ersten Mal
+starten.
+
+Vorher sollten Sie aber im Handbuch ,,Gpg4win für Durchblicker''
+(PDF-Datei) die Kapitel 3 und 4 lesen. Wir erklären dort den genialen
+Trick, mit dem Gpg4win Ihre E-Mails sicher und bequem verschlüsselt.
+Gpg4win funktioniert zwar auch, ohne dass Sie verstehen warum, aber im
+Gegensatz zu anderen PC-Programmen wollen Sie Gpg4win schließlich Ihre
+geheime Korrespondenz anvertrauen. Da sollten Sie schon wissen, was
+vor sich geht.
+
+Außerdem ist die ganze Angelegenheit ziemlich spannend$\ldots$
+
+Weiter geben wir Ihnen einige Tipps, mit denen Sie sich einen sicheren
+und trotzdem leicht zu merkenden Passwortsatz ausdenken können.
+
+$\spadesuit$ Lesen Sie jetzt im Handbuch die Kapitel 3 und 4, und
+             lesen Sie erst danach hier weiter.
+
+\clearpage
+%% Original page 15
+\section{Sie erzeugen Ihr  Schlüsselpaar}
+
+Nachdem Sie gelesen haben, warum GnuPG so sicher ist und wie ein guter
+Passwortsatz als Schutz für Ihren geheimen Schlüssel entsteht, werden
+wir Ihr Schlüsselpaar erzeugen.
+
+Eigentlich müsste man so einen wichtigen Schritt ein paar Mal üben
+können$\ldots$
+
+Und genau das können Sie auch tun: Sie können den gesamten Vblauf der
+Schlüsselerzeugung, erschlüsselung und Entschlüssel- ung durchspielen,
+so oft Sie wollen, bis Sie ganz sicher sind.
+
+Ihr Vertrauen in Gpg4win wird sich durch diese ,,Trockenübun'' festigen,
+und die ,,heisse Phase'' der Schlüsselerzeugung wird danach kein
+Problem mehr sein.
+
+Ihr Partner bei diesen Übungen wird Adele sein.
+
+Adele ist ein Testserver, den die Firma G-N-U GmbH ­-- einer der
+Entwickler von Gpg4win ­-- bereit stellt. Mit Hilfe von Adele können Sie
+Ihre Schlüssel, die wir gleich erzeugen werden, ausprobieren und
+testen, bevor Sie damit Ernst machen. Doch dazu später mehr.
+
+
+\clearpage
+%% Original page 16
+Los geht's!
+
+Öffnen Sie das Windows Startmenü, dort den Ordner
+\verb-Programme\Gpg4win- und schließlich das Programm GNU Privacy
+Assistant. Daraufhin sehen Sie diesen Dialog:
+
+% screenshot: GPA Erste Schlüsselerzeugung
+
+Klicken Sie auf [Jetzt Schlüssel erzeugen].
+
+
+\clearpage
+%% Original page 17
+
+Wenn Sie die Schlüsselerzeugung zunächst einmal testen wollen, dann
+können Sie im nun folgenden Fenster einen beliebigen Namen eingeben,
+z.B. ,,Mustermann''.
+
+% screenshot: Key egenration wizard first page
+
+
+Oder Sie können auch gleich Ernst
+machen und Ihren richtigen
+Namen eingeben.
+
+Klicken Sie auf [ Weiter ], wenn Sie fertig sind.
+
+\clearpage
+%% Original page 18
+Als nächstens geben Sie Ihre eigene E-Mail-Adresse an.
+
+Wieder gilt: Sie können die Schlüsselerzeugung zunächst einmal mit
+irgendeiner ausgedachten E-Mail-Adresse durchtesten, z.B.
+f.mustermann@firm.de
+
+% screenshot: Wizard email address
+
+Oder Sie können auch gleich Ihre echte E-Mail-Adresse eingeben.
+
+Klicken Sie auf [ Weiter ], wenn Sie die E-Mail-Adresse eingegeben
+haben.
+
+Anschliessend können Sie einen Kommentar zum Schlüssel eingeben, als
+z.B. ,,Schlüssel für Büro-E-Mail''. Dieser Kommentar ist nur für Sie
+sichtbar und wird einem Dritten nicht angezeigt. 
+% FIXME: Quatsch, der Kommentar is teil der UserID
+
+Klicken Sie anschliessend auf [ Weiter ].
+
+
+\clearpage
+%% Original page 19
+Jetzt folgt der wichtigste Teil: die
+Eingabe Ihres Passwortsatzes.
+
+Erinnern Sie sich an das Kapitel 4, ,,Der Passwort-Satz'' im Handbuch
+,,Gpg4win für Durchblicker'' das Sie eben durchgelesen haben? Wir haben
+Ihnen dort einige Tipps zur Erzeugung eines sicheren Passwortsatzes
+gegeben.
+
+Dann sollten Sie nun einen geheimen, einfach zu merkenden und schwer
+zu knackenden Passwortsatz parat haben und hier eintragen.
+
+% screenshot: Wizard, Enter passphrase
+
+Falls der Passwortsatz nicht sicher genug sein sollte, werden Sie
+darauf hingewiesen.
+
+Auch an dieser Stelle können Sie ­-- wenn Sie wollen ­-- zunächst
+einen Test-Passwortsatz eingeben oder auch gleich ,,Ernst machen''.
+
+\clearpage
+%% Original page 20
+Wenn Sie Ihren geheimen Passwortsatz zweimal eingegeben haben, klicken
+Sie auf [ Weiter ].
+
+% screenshot: Wizard, backup
+
+\clearpage
+%% Original page 21
+
+Im nächsten Dialog werden Sie gebeten, eine Sicherheitskopie Ihres
+Schlüssels anzulegen. Tun Sie das jetzt, auch wenn Sie den Ablauf nur
+üben:
+
+
+Speichern Sie die Sicherungskopien auf einer Diskette, die Sie sicher
+verwahren können. Auf einer Diskette, die Sie an einem sicheren Ort
+aufheben, ist Ihr geheimer Schlüssel wesentlich besser geschützt als
+auf der Festplatte Ihres PCs.
+
+Wenn Sie keine Sicherungskopie angelegt haben, werden Sie an mehreren
+Stellen ­-- z.B. bei einem neuen Programmstart --­ daran erinnert.
+
+% screenshot:  Wizard, backup path
+
+Fertig? Dann klicken Sie auf [Fertig] und Ihre Schlüssel werden
+endgültig erzeugt.
+
+\clearpage
+%% Original page 22
+
+Wenn der PC Ihre Schlüssel berechnet hat, erscheint dieser Hinweis.
+
+% screenshot:  Wizard: Generation finished.
+
+
+\clearpage
+%% Original page 23
+
+In der Mitte des Fensters ­-- hinter dem Symbol der doppelten
+Schlüssel ­-- sehen Sie Ihr soeben erzeugtes Schlüsselpaar.
+
+Wenn Sie Ihr Schlüsselpaar anklicken, sehen Sie einige Details, die
+Sie gleich nachlesen können.
+
+Was bedeuten die Anmerkungen über Ihren Schlüssel?  Ihr Schlüssel ist
+unbegrenzt gültig d.h., er hat kein ,,eingebautes Verfallsdatum''. Man
+kann die Gültigkeit nachträglich verändern ­-- mehr dazu später.
+
+Ein Schlüssel mit einer Länge von 1048 Bit ist ein sehr sicherer
+Schlüssel, der trotzdem nicht zuviel Rechenpower auf Ihrem Computer
+beansprucht.
+
+Klicken Sie nun auf [ Schliessen ].  Voila --- Ihre Schlüssel sind
+fertig!
+
+% screenshot: keymanger mit einem Schlüssel.
+
+Damit ist die Installation von Gpg4win und die Erzeugung Ihres
+Schlüsselpaares abgeschlossen.  Sie besitzen nun einen einmaligen und
+extrem sicheren digitalen Schlüssel.
+
+$\spadesuit$ Lesen Sie nun im Handbuch Kapitel 5 ,,Schlüssel im
+Detail'' weiter.  Sie können dieses Kapitel jetzt lesen oder später,
+wenn Sie diese Informationen benötigen
+
+\clearpage
+%% Original page 24
+
+\section{Sie veröffentlichen Ihren Schlüssel per E-Mail}
+
+Beim täglichen Gebrauch von Gpg4win ist es sehr praktisch, dass Sie es
+beim Ver- und Entschlüsseln stets nur mit den ,,ungeheimen''
+öffentlichen Schlüsseln zu tun haben. Solange Ihr eigener geheimer
+Schlüssel und der ihn schützende Passwortsatz sicher sind, brauchen
+Sie sich um weitere Geheimhaltung keine Sorgen zu machen.
+
+Jedermann darf und soll Ihren öffentlichen Schlüssel haben, und Sie
+können und sollen öffentliche Schlüssel von Ihren Korrespondenz-
+partnern haben --- je mehr, desto besser.
+
+Denn:
+
+Um sichere E-Mails austauschen zu können, müssen beide Partner jeweils
+den öffentlichen Schlüssel des anderen besitzen und benutzen.
+
+Wenn Sie also an jemanden verschlüsselte E-Mails schicken wollen,
+müssen Sie dessen öffentlichen Schlüssel haben und zum Verschlüsseln
+benutzen.
+
+Wenn ­-- andersherum ­-- jemand Ihnen verschlüsselte E-Mails schicken
+will, muss er Ihren öffentlichen Schlüssel haben und zum Verschlüsseln
+benutzen.
+
+Deshalb werden Sie nun Ihren
+öffentlichen Schlüssel öffentlich
+zugänglich machen. Je nachdem,
+wie gross der Kreis Ihrer Korres-
+pondenzpartner ist, gibt es zwei
+Möglichkeiten:
+
+\begin{itemize}
+\item direkt per E-Mail an bestimmte Korrespondenzpartner
+\item oder auf einem Schlüsselserver --- weltweit für jedermann zugänglich
+\end{itemize}
+
+Die erste Möglichkeit, Ihren öffentlichen Schlüssel zu verbreiten,
+besteht wie gesagt darin, dass Sie ihn per E-Mail an einen oder
+mehrere Korrespondenzpartner schicken.
+
+
+\clearpage
+%% Original page 25
+Zum Üben dieses Vorgangs kommt nun Adele ins Spiel:
+
+Adele ist ein sehr netter E-Mail- Roboter, mit dem Sie zwanglos
+korrespondieren können. Weil man gewöhnlich mit einer klugen und
+netten jungen Dame lieber korrespondiert als mit einem Stück Software
+(was Adele in Wirklichkeit natürlich ist), haben wir sie uns so
+vorgestellt:
+
+% Cartoon:  Adele mit Buch ind er Hand vor Rechner ``you have mail''
+\includegraphics{adele01}
+
+Adele schicken Sie zunächst Ihren öffentlichen Schlüssel. Wenn Adele
+Ihren Schlüssel empfangen hat, verschlüsselt sie damit eine E-Mail an
+Sie und sendet sie zurück.
+
+Diese Antwort von Adele entschlüsseln Sie mit Ihrem eigenen geheimen
+Schlüssel. Damit Sie wiederum Adele verschlüsselt antworten können,
+legt Adele ihren eigenen öffentlichen Schlüssel bei.
+
+Adele verhält sich also genau wie ein richtiger Korrespondenzpartner.
+Allerdings sind Adeles E-Mails leider bei weitem nicht so interessant
+wie die Ihrer echten Korrespondenzpartner.  Andererseits können Sie
+mit Adele so oft üben, wie Sie wollen ­-- was Ihnen ein menschlicher
+Adressat wahrscheinlich ziemlich übel nehmen würde.
+
+Wir exportieren also nun Ihren öffentlichen Schlüssel, kopieren ihn in
+eine E-Mail und senden diese an Adele.
+
+
+\clearpage
+%% Original page 26
+Die hier zuerst gezeigte Möglichkeit funktioniert immer, selbst wenn
+Sie ­-- z.B. wenn Sie einen E-Mail-Service im Web verwenden ­-- keine
+Dateien anhängen können. Zudem bekommen Sie so Ihren Schlüssel zum
+ersten Mal zu Gesicht und wissen, was sich dahinter verbirgt und
+woraus der Schlüssel eigentlich besteht.
+
+% screenshot: gpa, export keys, enter file name
+
+Und so geht's:\\
+Zuerst klicken Sie auf [Export] in der Iconleiste und dann in dem sich
+öffnenden Dialog auf [Exportieren in Datei]. Wählen Sie mit
+[Durchsuchen...] einen geeigneten Ordner auf Ihrem PC,
+z.B. \verb-C:\Eigene Dateien- und speichern Sie den Schlüssel dort z.B. als
+,,mein\_key.asc''.
+
+Wenn der Schlüssel auf Ihrer Festplatte gespeichert ist, können Sie
+den Dialog ,,Schlüssel exportieren'' mit [OK] schließen.
+
+
+\clearpage
+%% Original page 27
+
+Klicken Sie sich dann bis zu dem Ordner durch, in dem Sie Ihren
+Schlüssel gespeichert haben.  Nun öffnen Sie den Schlüssel mit einem
+Texteditor, z.B. mit Notepad.  Sie sehen Ihren öffentlichen Schlüssel
+im Texteditor so, wie er wirklich aussieht ­-- ein ziemlich wirrer
+Text- und Zahlenblock:
+
+% screenshot: Editor mit ascii armored key
+
+\clearpage
+%% Original page 28
+
+Markieren Sie den gesamten
+Schlüssel von
+
+\begin{verbatim}
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+\end{verbatim}
+bis
+\begin{verbatim}
+-----END PGP PUBLIC KEY BLOCK-----
+\end{verbatim}
+
+und kopieren Sie ihn mit dem Menübefehl oder mit dem Tastaturkürzel
+Strg+C. Damit haben Sie den Schlüssel in den Speicher Ihres Rechners
+­-- bei Windows Zwischenablage genannt ­-- kopiert.
+
+Nun starten Sie Ihr E-Mail-Programm ­-- es spielt keine Rolle, welches
+Sie benutzen ­-- und fügen Ihren öffentlichen Schlüssel in eine leere
+E-Mail ein. Der Tastaturbefehl zum Einfügen (,,Paste'') lautet bei
+Windows Strg+V.
+
+Diesen Vorgang ­-- Kopieren und
+Einfügen ­-- kennen Sie sicher als
+,,Copy \& Paste''.
+
+Adressieren Sie nun diese E-Mail an \verb-adele@Gpg4win.de- und
+schreiben in die Betreff-Zeile:
+
+\begin{verbatim}
+mein öffentlicher Schlüssel
+\end{verbatim}
+
+So etwa sollte Ihre E-Mail nun aussehen:
+
+% screenshot:  Eines composer Windows.
+
+Schicken Sie die E-Mail an Adele nun ab. Nur zur Vorsicht: natürlich
+sollten Ihre E-Mails nicht \verb-f.mustermann@firma.de- als Absender
+haben, sondern Ihre eigene E-Mail-Adresse. Denn sonst werden Sie nie
+Antwort von Adele bekommen$\ldots$
+
+
+\clearpage
+%% Original page 29
+
+Genauso gehen Sie vor, wenn Sie Ihren Schlüssel an eine echte
+E-Mail-Adresse senden. Natürlich können Sie dann auch noch ein
+paar erklärende Sätze dazuschreiben. Adele braucht diese
+Erklärung nicht, denn sie ist zu Zichts anderem als zu diesem Zweck
+programmiert worden.  Fassen wir kurz zusammen: Sie haben Ihren
+öffentlichen Schlüssel per E-Mail an einen Korrespondenzpartner
+geschickt.
+
+$\spadesuit$ Im Handbuch ,,Gpg4win für Durchblicker'' Kapitel 7
+beschreiben wir, wie Sie Ihren Schlüssel auch als Dateianhang
+versenden.
+
+Das ist oftmals das gebräuch- lichere Verfahren. Wir haben Ihnen hier
+die ,,Copy \& Paste''-Methode zuerst vorgestellt, weil sie
+transparenter und leichter nachzuvollziehen ist.  Sie können dieses
+Kapitel jetzt lesen oder später, wenn Sie diese Funktion benötigen.
+
+
+\clearpage
+%% Original page 30
+\section{Sie veröffentlichen Ihren Schlüssel per Keyserver}
+
+Diese Möglichkeit bietet sich eigentlich immer an, selbst wenn Sie nur
+mit wenigen Partnern verschlüsselte E-Mails austauschen.  Ihr
+Schlüssel ist dann sozusagen ,,stets griffbereit'' auf einem Server im
+Internet vorhanden.
+
+Klicken Sie Ihren Schlüssel an, und klicken Sie dann auf die Taste
+[Export].
+
+% screenshot: GPA export with radiobutton keyserver 
+
+Wie Sie sehen, ist ein Key Server bereits voreingestellt. Wenn Sie auf
+[OK] klicken, wird der Schlüssel auf den Server geschickt und von dort
+aus an die anderen, weltweit verbundenen Key Server weitergereicht.
+Jedermann kann ihn von dort herunterladen und dazu benutzen, Ihnen
+eine sichere E-Mail zu schreiben.
+
+Wenn Sie den Ablauf im Moment nur testen, dann schicken Sie den
+Übungs-Schlüssel nicht ab.  Er ist wertlos und kann praktisch nicht
+mehr vom Schlüsselserver entfernt werden. Sie glauben nicht, wieviele
+Testkeys mit Namen wie ,,Julius Caesar'', ,,Helmut Kohl'' oder ,,Bill
+Clinton'' dort herumliegen ­ schon seit Jahren$\ldots$
+
+Fassen wir kurz zusammen: Sie wissen nun, wie Sie Ihren Schlüssel auf
+einen Schlüsselserver im Internet schicken können.
+
+$\spadesuit$ Wie Sie den Schlüssel eines Partners auf den
+Schlüsselervern suchen und finden, beschreiben wir im Handbuchch
+,,Gpg4win für Durchblicker'' Kapitel 6. Sie können dieses Kapitel jetzt
+lesen oder später, wenn Sie diese Funktion benötigen.
+
+\clearpage
+%% Original page 31
+\section{Sie entschlüsseln eine E-Mail}
+
+Adele erhält nun Ihren öffentlichen Schlüssel, verschüsselt damit eine
+E-Mail und sendet sie an Sie zurück.  Nach kurzer Zeit erhalten Sie
+Adeles Antwort.
+
+% cartoon: Adele typing and sending a mail
+\includegraphics{adele02}
+
+\clearpage
+%% Orginal page 32
+So sieht sie aus:
+
+\begin{verbatim}
+To: f.mustermann@firma.de
+From: adele <adele@Gpg4win.de>
+Subject: Verschluesselte Antwort
+
+
+----BEGIN PGP MESSAGE-----
+Version: GnuPG v1.0.1 (GNU/Linux)
+Comment: For info see http://www.gnupg.org
+hQEOAwuiAEB5WiClEAP/Whx+O/DbrJ97DEa+s9q4sOwWZ9tGq7fV1UwL2/qE8pe6
+5Mr/77y6C7Uc2kQUSI06+NpV4J4Y9HINkWskn7M3UBhFHY6sRPF9Ks4wseHM0klI
+qj0uLw/+2ylbCchTMoAAPgPVvtGp2aEfiRJItVJjLk96eb6qqATlHmcAgwQ26XoD
+...
+ssp3BSvr7UZdFHKhIKGjDf9dJuP9VFbmyhLvBeUfpo+O1+dd8CO0JOGZAoBGiY7a
+TvFz2NTqLhtWoH897Wu31tzYt41P08PsIqq94Bp6yQO6zoI22vJ0Q8jwVfFqHkaR
+9Djp34LyqkyAVHcw25KtCtGEYadBdqI0aHJ0ddQanxOfu7UG0Es6/ugtwmfQX/aZ
+c03tyh6DNhWPs9UTZBQwNdk=
+=C3TI
+-----END PGP MESSAGE-----
+\end{verbatim}
+
+(Aus Gründen der Übersichtlichkeit haben wir den Verschlüsselungs-
+block stark gekürzt)
+
+\clearpage
+%% Original page 33
+
+Diese E-Mail werden Sie nun mit dem Programm WinPT entschlüsseln.
+
+WinPT ist ein sogenanntes ,,Frontend'' für GnuPG. Es dient zur
+eigentlichen Ver- und Entschlüsselung der E-Mails und zur Erzeugung
+und Überprüfung von digitalen Unterschriften. Und zwar ­ und das ist
+einer seiner Vorteile ­ mit jedem beliebigen E-Mail-Programm.
+
+Für bestimmte E-Mail-Programme --­ z.B. MS Outlook für Windows, gibt
+es außerdem spezielle Gpg4win-PlugIns, mit denen die Ver- und
+Entschlüsselung direkt im jeweiligen E-Mailer erledigt werden kann.
+
+$\spadesuit$ Hinweise zu diesen Lösungen ,,dinden Sie im Handbuch
+,,Gpg4win für Durchblicker'' Kapitel 8. Sie können dieses Kapitel jetzt
+lesen oder später, wenn Sie diese Funktion benötigen.
+
+WinPT hat dagegen den Vorteil,dass es nicht mit einem bestimmten,
+sondern mit jedem E-Mail-Programm funktioniert. Es erledigt nämlich
+die Ver- und Entschlüsselung einfach im Speicher des Rechners. Das
+bedeutet, dass man den Text, der ver- oder entschlüsselt werden soll,
+zunächst in die Zwischenablage des Rechners kopieren muss.
+
+Markieren Sie den gesamten Text aus Adeles E-Mail und kopieren Sie ihn
+mit dem entsprechenden Menübefehl oder Tastaturkürzel (z.B. Strg+C bei
+Windows).
+
+Damit haben Sie den Schlüssel in den Speicher Ihres Rechners ­-- bei
+Windows Zwischenablage oder Clipboard genannt ­-- kopiert.
+
+
+\clearpage
+%% Original page 34
+Starten Sie nun WinPT aus dem Windows-Startmenü:
+
+% screenshot: startmenu Auswahl winpt
+
+Während WinPT startet, erscheint kurz ein Hinweis darauf, dass das
+Programm die bereits vorhandenen Schlüssel einlädt.
+
+Nachdem das Programm gestartet wurde, sehen Sie unten rechts in der
+Windows-Taskleiste dieses Schlüssel-Icon:
+
+% screenshot: taskbar rechts mit WinPT icon
+
+
+\clearpage
+%% Original page 35
+Klicken Sie mit der rechten Maustaste auf dieses Icon.  Daraufhin
+öffnet sich das WinPT-Menü. Hier klicken Sie auf [ Zwischenablage ]
+und dann auf [ Entschlüsseln/Überprüfen ].
+
+Es erscheint dieser Dialog: Geben Sie nun Ihren geheimen Passwortsatz
+ein. GnuPG entschlüsselt nun Adeles E-Mail.
+
+% screenshot: WinPT decryption dialog
+
+Kurz darauf erscheint dieser
+Hinweis:
+
+% screenshot: WinPT Finished message
+
+\clearpage
+%% Original page 36
+
+Der entschlüsselte Text befindet sich jetzt wieder im Windows-
+Clipboard, genau wie beim Verschlüsseln. Kopieren Sie ihn mit Einfügen
+[ Strg+V ] in den Texteditor oder auch in Ihr E-Mail-Programm.
+
+Die entschlüsselte Antwort von Adele sieht so aus:
+
+\begin{verbatim}
+Hallo Herr Mustermann,
+
+hier ist die verschluesselte Antwort auf
+Ihre mail.
+
+Anbei der public key von adele@gnupp.de,
+dem freundlichen E-Mail-Roboter, als Anlage.
+
+Viele Gruesse,
+adele@Gpg4win.de
+\end{verbatim}
+
+Der Textblock, der darauf folgt, ist der öffentliche Schlüssel von
+Adele.
+
+Wir werden anschliessend diesen öffentlichen Schlüssel importieren und
+an Ihrem Schlüsselbund befestigen. So können Sie ihn jederzeit zum
+Entschlüsseln der Nachrichten Ihres Korrespondenzpartners benutzen.
+
+Fassen wir kurz zusammen:
+
+\begin{enumerate}
+\item Sie haben eine verschlüsselte E-Mail mit Ihrem geheimen
+  Schlüssel entschlüsselt.
+
+\item Der Korrespondenzpartner hat seinen eigenen öffentlichen
+  Schlüssel beigelegt, damit Sie ihm antworten können.
+\end{enumerate}
+
+
+\clearpage
+%% Original page 37
+\section{Sie befestigen einen Schlüssel am Schlüsselbund}
+
+Ihr Korrespondenzpartner muß nicht etwa jedes Mal seinen Schlüssel
+mitschicken, wenn er Ihnen verschlüsselt schreibt. Sie bewahren seinen
+öffentlichen Schlüssel einfach an Ihrem GnuPG-,,Schlüsselbund'' auf.
+
+1. Möglichkeit:
+
+Um einen öffentlichen Schlüssel zu importieren (an Ihrem Schlüsselbund
+zu befestigen), speichern Sie ihn am einfachsten als Textblock ab, so
+wie Sie es vorhin schon bei Ihrem eigenen Schlüssel getan haben.
+
+
+Also:
+
+
+markieren Sie den öffentlichen
+Schlüssel, den Sie von Ihrem
+Korrespondenzpartner erhalten
+haben, von
+
+\begin{verbatim}
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+\end{verbatim}
+bis
+\begin{verbatim}
+-----END PGP PUBLIC KEY BLOCK-----
+\end{verbatim}
+
+und setzen ihn mit Copy \& Paste in einen Texteditor ein. Speichern
+Sie den Schlüssel unter einem Namen in einem Ordner, den Sie leicht
+wiederfinden, z.B. als ,,adeles\_key'' im Verzeichnis
+\verb-C:\Eigene Dateien-.
+
+
+
+\clearpage
+%% Original page 38
+2. Möglichkeit:
+
+Der Schlüssel liegt der E-Mail als Dateianhang bei. Welches
+E-Mail-Programm Sie auch immer benutzen, Sie können stets Dateianhänge
+(,,Attachments'') auf Ihrer Festplatte abspeichern. Tun Sie das jetzt
+(am besten wieder in einem Ordner, den Sie leicht wiederfinden,unter
+z.B. \verb-C:\Eigene Dateien-).
+
+Ob Sie nun den Schlüssel als Text oder als E-Mail-Anhang abgespeichert
+haben, ist egal: in beiden Fällen importieren Sie diesen
+abgespeicherten Schlüssel in den GnuPG-,,Schlüsselbund''.
+
+% screenshot:  Startmenu, Auswahl GPA
+
+Und zwar so:
+
+Starten Sie den GNU Privacy Assistant im Windows-Menü, falls Sie ihn
+in der letzten Übung ausgeschaltet haben.
+
+\clearpage
+%% Original page 39
+Wenn der GNU Privacy Assistant läuft, klicken Sie auf die Schaltfläche
+Import, suchen den eben abgespeicherten Schlüssel und laden ihn. Der
+importierte Schlüssel wird nun im GNU Privacy Assistant angezeigt:
+
+% screenshot GPA Schlüsselverwaltung mit einem key
+
+Damit haben Sie einen fremden öffentlichen Schlüssel ­-- in diesem
+Beispiel den von Adele ­-- importiert und an Ihrem Schlüsselbund
+befestigt. Sie können diesen Schlüssel jederzeit benutzen, um
+verschlüsselte Nachrichten an den Besitzer dieses Schlüssels zu
+senden.
+
+Bevor wir weitermachen, eine
+wichtige Frage:\\
+woher wissen Sie eigentlich, dass der fremde öffentliche Schlüssel
+wirklich von Adele stammt? Man kann E-Mails auch unter falschem Namen
+versenden ­-- die Absenderangabe besagt eigentlich gar nichts.
+
+Wie können Sie also sichergehen, dass ein Schlüssel auch wirklich
+seinem Absender gehört ?
+   
+$\spadesuit$ Diese Kernfrage besprechen wir im Handbuch ,,Gpg4win für
+Durchblicker'' Kapitel 9: ,,Die Schlüsselprüfung''. Lesen Sie jetzt
+dort weiter, bevor Sie danach an dieser Stelle fortfahren.
+
+\clearpage
+%% Original page 40
+Sie haben in Kapitel 9 des Hand- buchs ,,Gpg4win für Durchblicker''
+gelesen, wie man sich von der Echtheit eines Schlüsselss überzeugt und
+ihn dann mit seinem eigenen geheimen Schlüssel signiert.
+
+In Kapitel 10 des Handbuchs ,,Gpg4win für Durchblicker'' besprechen wir,
+wie man nicht nur einen Schlüssel, sondern auch eine komplette
+E-Mail-Nachricht signieren kann. Das bedeutet, daß man die E-Mail mit
+einer Art elektronischem Siegel versieht.
+
+Der Text ist dann zwar noch für jeden lesbar, aber der Empfänger kann
+sicher sein, daß die E-Mail unterwegs nicht manipuliert oder verändert
+wurde.
+
+Die Überprüfung einer solchen Signatur ist sehr einfach. Sie müssen
+dazu natürlich den öffentlichen Schlüssel des Absenders bereits an
+Ihrem Gpg4win- Schlüsselbund befestigt haben, wie in Kapitel 8
+besprochen.
+
+% cartoon:  Müller mit Schlüssel
+\includegraphics{man-with-signed-key}
+
+
+\clearpage
+%% Original page 41
+Wenn Sie eine signierte E-Mail erhalten, sehen Sie, daß der Text am
+Anfang und Ende von einer Signatur eingerahmt ist.  Sie beginnt mit
+
+\begin{verbatim}
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+und endet unter der E-Mail-Nachricht mit
+
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.0.6 (MingW32) - WinPT 0.4.0
+Comment: Weitere Infos: siehe http://www.gnupg.org
+
+iEYEARECAAYFAjxeqy0ACgkQcwePex+3Ivs79wCfW8u
+ytRsEXgzCrfPnjGrDDtb7
+QZIAn17B8l8gFQ3WIUUDCMfA5cQajHcm
+=O6lY
+-----END PGP SIGNATURE-----
+\end{verbatim}
+
+Markieren Sie den gesamten Text
+von BEGIN PGP SIGNED
+MESSAGE bis END PGP
+SIGNATURE und kopieren
+Sie ihn mit Crtl+C in die
+Zwischenablage.
+
+Nun fahren Sie genauso fort wie
+bei der Entschlüsselung einer
+E-Mail, wie wir es in Kapitel 7
+dieses Handbuchs besprochen
+haben:
+
+Sie öffnen WinPT aus der Windows-
+Taskleiste und wählen
+Decrypt/Verify.
+
+Es sollte dann die Meldung
+
+\begin{verbatim}
+Signature good -
+Signed by .....
+\end{verbatim}
+
+angezeigt werden.  Falls Sie aber die Meldung \emph{Bad signature}
+oder \emph{Überprüfung fehlgeschlagen} erhalten, wurde die Nachricht
+bei der Übertragung verändert.  Aufgrund der technischen Gegebenheiten
+im Internet ist es nicht auszuschließen, daß die E-Mail durch eine
+fehlerhafte Übertragung verändert wurde. Das ist zunächst der
+wahrscheinlichste Fall. Es kann jedoch auch bedeuten, dass der Text
+nachträglich verändert wurde.
+
+$\spadesuit$ Wie Sie in einem solchen Fall vorgehen sollten, erfahren
+Sie im Handbuch ,,Gpg4win für Durchblicker'' Kapitel 10.  ,,E-Mails
+signieren''. Lesen Sie jetzt dort weiter, bevor Sie danach an dieser
+Stelle fortfahren.
+
+
+\clearpage
+%% Original page 42
+\section{Sie verschlüsseln eine E-Mail}
+
+Jetzt wird es nochmal spannend:
+
+Sie verschlüsseln eine E-Mail und senden sie an Adele. Wenn Sie einen
+ebenso geduldigen menschlichen Korrespondenzpartner haben, dann senden
+Sie Ihre E-Mail eben an diesen.
+
+Starten Sie nun Ihr E-Mail-Programm. Schreiben Sie eine Nachricht ­--
+es ist egal, was: Adele kann nicht wirklich lesen$\ldots$
+
+% screenshot: composer mit mail an Adele
+
+\clearpage
+%% Original page 43
+Nun markieren Sie den gesamten Text und kopieren Sie ihn mit dem
+entsprechenden Menübefehl oder Tastaturkürzel Ihres Betriebssystems
+(z.B. Strg+C bei Windows).  Damit haben Sie den Text in den Speicher
+Ihres Rechners ­-- bei Windows Zwischenablage oder Clipboard genannt
+­-- kopiert.
+
+% screenshot compoer mit mail an Adele, body markiert
+
+\clearpage
+%% Original page 44
+Klicken Sie nun mit der rechten Maustaste auf auf das WinPT-Icon unten
+rechts in der Windows-Task.  In der WinPT-Befehlsleiste klicken Sie
+auf [ Zwischenablage ] und dann auf [ Verschlüsseln ].
+
+% screenshot: Winpt menu aus taklsbar->zwischenablage->verschlüsseln
+
+\clearpage
+%% Original page 45
+Daraufhin öffnet sich ein Fenster mit den Schlüsseln, die Sie an Ihrem
+Schlüsselbund haben. In unserem Beispiel sind das Adeles Schlüssel,
+den sie Ihnen vorhin geschickt hat, und Ihr eigener Schlüssel, den Sie
+in Kapitel 2 erzeugt haben.
+
+Klicken Sie auf Adeles Schlüssel, denn damit muss die Nachricht ja
+verschlüsselt werden,
+
+Sie erinnern sich an den Grundsatz:
+
+Wenn Sie an jemanden verschlüsselte E-Mails schicken wollen, müssen
+Sie dessen öffentlichen Schlüssel haben und zum Verschlüsseln
+
+% screenshot: Winpt encryption key selection
+
+Klicken Sie den öffentlichen Schlüssel Ihres Korrespondenzpartners an
+und anschließend auf [ OK ].
+
+Jetzt wird Ihre Nachricht verschlüsselt. Nach kurzer Zei erscheint
+diese Meldung:
+
+% screenshot: winpt Finished message
+
+Klicken Sie auf OK.
+
+
+\clearpage
+%% Original page 46
+Die verschlüsselte Nachricht befindet sich noch in der Zwischenablage
+(Clipboard) und kann nun mühelos in das E-Mail- Fenster hineinkopiert
+werden.  Löschen Sie den unverschlüsselten Text oder kopieren die den
+Inhalt der Zwischenablage einfach darüber.
+
+So ähnlich sollte das Ergebnis aussehen:
+
+% screenshot: composer Windows mit enrcypted text 
+
+Senden Sie nun Ihre E-Mail wieder an Adele.  Nur zur Vorsicht:
+natürlich sollten Ihre E-Mails nicht \verb-f.mustermann@firma.de- als
+Absender haben, sondern Ihre eigene E-Mail-Adresse.  Denn sonst werden
+Sie nie Antwort von Adele bekommen$\ldots$
+
+Herzlichen Glückwunsch!  Sie haben Ihre erste E-Mail verschlüsselt!
+
+\clearpage
+%% Original page 47
+Wie Sie Ihre E-Mails verschlüsselt
+archivieren
+
+Eine Einstellung müssen Sie noch vornehmen, damit Sie Ihre E-Mails
+verschlüsselt aufbewahren können.  Natürlich können Sie einfach eine
+Klartext-Version Ihrer Texte aufbewahren, aber das wäre eigentlich
+nicht angebracht. Wenn Ihre Mitteilung geheimhaltungsbedürftig war,
+sollte sie auch nicht im Klartext auf Ihrem Rechner gespeichert sein.
+Also sollte immer ein Kopie der verschlüsselten E-Mail aufbewahrt
+werden.
+
+Sie ahnen das Problem: zum Entschlüsseln der archivierten E-Mails
+braucht man den geheimen Schlüssel des Empfängers ­-- und den haben
+Sie nicht und werden Sie nie haben$\ldots$
+
+Also was tun?
+
+Ganz einfach ­ Gpg4win legt einfach eine Archiv-Kopie Ihres Textes ab,
+die mit Ihrem eigenen öffentlichen Schlüssel verschlüsselt ist! So
+können Sie den Text auch später noch einfach mit Ihrem eigenen
+Geheimschlüssel wieder lesbar machen.
+
+Da Gpg4win nicht wissen kann, welchen Schlüssel Sie benutzen ­-- Sie
+können ja auch mehrere haben --­ müssen Sie dem Programm dies
+mitteilen.
+
+\clearpage
+%% Original page 48
+Um diese Option zu nutzen, genügt
+ein Mausklick: öffnen Sie WinPT,
+dann das Untermenü ,,Einstellungen'' und dort ,,GPG''
+
+% screenshot: Winpt Menu mit untermenu
+
+In dem Einstellungsfenster, das sich nun öffnet, tragen Sie unter
+,,Eigener Schlüssel'' Ihren Schlüssel ein, und zwar einfach mit der
+dazugehörigen E-Mail-Adresse.
+
+
+\clearpage
+%% Original page 49
+Fassen wir kurz zusammen:
+\begin{enumerate}
+\item Sie haben mit dem öffentlichen Schlüssel Ihres Partners eine
+  E-Mail verschlüsselt und ihm damit geantwortet.
+\item Sie haben Gpg4win mitgeteilt, daß es Archiv-Kopien Ihrer E-Mails
+  ablegen soll, die mit Ihrem eigenen Schlüssel verschlüsselt sind.
+\end{enumerate}
+
+Das war's! Willkommen in der Welt der freien und sicheren
+E-Mail-Verschlüsselung!
+
+
+$\spadesuit$ Lesen Sie nun die Kapitel 10 bis 12 im Handbuch ,,Gpg4win
+für Durchblicker''.  Sie erfahren dort unter anderem, wie man E-Mails
+signiert und einen bereits vorhandenen Geheimschlüssel (z.B. aus PGP)
+in GnuPG importiert und verwendet.
+
+$\spadesuit$ Im Kapitel 13 des Handbuchs ,,Gpg4win für Durchblicker''
+können Sie weiterhin in zwei spannenden Kapiteln lesen, warum GnuPG
+nicht zu knacken ist --- jedenfalls nicht in den nächsten paar
+Milliarden Jahren.
+
+Und Sie können lesen, wie die geheimnisvolle Mathematik hinter Gpg4win
+wirklich funktoniert.
+
+Genau wie das Kryptographiesystem Gpg4win wurden diese Texte nicht
+geschrieben für Mathematiker, Geheimdienstler und Kryptographen,
+sondern
+
+$\spadesuit$ für jedermann.
+
+
+\newpage
+\appendix
+\section{History}
+
+\begin{itemize}
+\item  ,,GnuPP für Einsteiger'', 1. Auflage März 2002,\\
+  Autoren: Manfred J. Heinze, TextLab text+media\\
+  Beratung: Lutz Zolondz, G-N-U GmbH\\
+  Illustrationen: Karl Bihlmeier, Bihlmeier \& Kramer GbR\\
+  Layout: Isabel Kramer, Bihlmeier \& Kramer GbR\\
+  Fachtext: Dr. Francis Wray, e-mediate Ltd.\\
+  Redaktion: Ute Bahn, TextLab text+media\\
+  Herausgegeben vom Bundesministerium für Wirtschaft und
+  Technologie.\\
+  Verfügbar unter
+  \verb-http://www.gnupp.de/pdf/einsteiger.pdf-\footnote{%
+    Der Abschnitt ,,History'' ist im Originaldokument nicht vorhanden
+    und wurde von Werner Koch beigefügt.}
+\item Revidierte nicht-veröffentlichte Version von TextLab text+media.      
+\item ,,Gpg4Win für Einsteiger'', Dezember 2005\\
+      Autoren:  Werner Koch, g10 Code GmbH\\
+      Herausgegeben durch das Gpg4Win Projekt.
+
+\end{itemize}
+
+\input{fdl.tex}
+
+\end{document}
+
+
