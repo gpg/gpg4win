@@ -20,10 +20,10 @@
 
 # This is the very first section installed.
 Section "-gpg4win"
-
 !ifdef SOURCES
-  #
-!else
+  SetOutPath "$INSTDIR"
+  File "${BUILD_DIR}/../gpg4win-${VERSION}.tar.bz2"
+!else 
   SetOutPath "$INSTDIR\share\gpg4win"
 
   File "${BUILD_DIR}/versioninfo.txt"

@@ -127,9 +127,8 @@ chk  1019c8027c0cf94bca680886f4e2ae4e629a2a97
 #chk  f880bd2103b51a8e2f6e94f58a9524c523765ccb
 
 server ftp://ftp.g10code.com/g10code/scratch
-file winpt-0.11.5-cvs.tar.bz2
-chk  8299a0d2556e56623b188b9d23583ef88b9607f0
-
+file  winpt-0.11.5-cvs.tar.bz2
+chk   99290e405d036904eca5002ba4aec9f9a16caa3e
 
 # GPGee
 # Note that the -bin package has been repackaged from the
@@ -163,8 +162,10 @@ server ftp://ftp.gnupg.org/gcrypt
 file gnupg/gnupg-1.4.2.tar.gz
 chk  cc7e9a5268bf309ac652a7343b62dff8cfb68d38
 
+file alpha/gpa/gpa-0.7.1.tar.bz2
+chk  db850a43e69c6677765cbaf95718b930fe439612
 
-# libgpg-error, GPA and GPGol currently come from manually crafted
+# libgpg-error and GPGol currently come from manually crafted
 # packages.  However, we make them available at a scratch location
 
 server ftp://ftp.g10code.com/g10code/scratch
@@ -174,9 +175,6 @@ chk  ad964f78de99c7493dc47f49b0071f34d7d5e53d
 
 file gpgme-1.1.1-cvs1150.tar.bz2
 chk  1116ebddb7ba0858e7c28fdefadaa62c096c3237
-
-file gpa-0.7.1-cvs728.tar.bz2
-chk  a61f292e61e2e0ececbc892fc4174542333269bd  
 
 file sylpheed-claws-1.9.100cvs124.tar.bz2
 chk  950c7795f7348a919910d8e6bb5222565a114328  

@@ -366,7 +366,7 @@ Function .onInit
   File /oname=gpgspltmp.bmp "${TOP_SRCDIR}/src/gpg4win-splash.bmp"
   File /oname=gpgspltmp.wav "${TOP_SRCDIR}/src/gpg4win-splash.wav"
   g4wihelp::playsound $TEMP\gpgspltmp.wav
-  g4wihelp::showsplash 3000 $TEMP\gpgspltmp.bmp
+  g4wihelp::showsplash 2000 $TEMP\gpgspltmp.bmp
 
   Delete $TEMP\gpgspltmp.bmp
   ; Note that we delete gpgspltmp.wav in .onInst{Failed,Success}

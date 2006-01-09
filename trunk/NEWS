@@ -1,5 +1,13 @@
-Noteworthy changes in version 0.5.1
+Noteworthy changes in version 0.5.1 (2006-01-09)
 ------------------------------------------------
+
+ * Get plugin directory for sylpheed right.
+
+ * WinPT starts again.
+
+ * Included very early versions of the manuals as PDFs.
+
+ * Include gpg4win in the source installer.
 
 
 Noteworthy changes in version 0.5.0 (2006-01-05)
