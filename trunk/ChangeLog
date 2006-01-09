@@ -2,7 +2,7 @@
 
 	Released 0.5.1.
 
-	* src/gpg4win.mk (stamps/stamp-directories): Touch versioninfo.
+	* src/gpg4win.mk.in (stamps/stamp-directories): Touch versioninfo.
 
 	* src/inst-gpg4win.nsi, src/uninst-gpg4win.nsi:
 	* src/Makefile.am (stamps/stamp-dist-selft): Include ourself in the

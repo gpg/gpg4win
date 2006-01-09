@@ -38,6 +38,7 @@ stamps/stamp-directories:
 	$(MKDIR) $(bdir)
 	$(MKDIR) $(idir)
 	$(MKDIR) $(ipdir)
+	touch $(bdir)/versioninfo.txt
 	touch stamps/stamp-directories
 
 
