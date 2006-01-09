@@ -21,7 +21,7 @@
 # This is the very last section of the uninstaller.
 Section "-un.gpg4win"
 !ifdef SOURCES
-
+  Delete "gpg4win-${VERSION}.tar.bz2"
 !else
 
   Delete "$INSTDIR\share\gpg4win\versioninfo.txt"

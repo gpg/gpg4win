@@ -204,7 +204,12 @@ gpg4win-$(VERSION).exe: gpg4win.nsi $(common_nsi) stamps/stamp-final \
 	$(MAKENSIS) -V3 -DBUILD_DIR=`pwd` -DTOP_SRCDIR=$(top_srcdir) \
 		-DSRCDIR=$(srcdir) $(srcdir)/gpg4win.nsi
 
-gpg4win-src-$(VERSION).exe: gpg4win-src.nsi $(common_nsi) stamps/stamp-final
+stamps/stamp-dist-self: versioninfo.txt
+	(set -e; cd ..; make dist-bzip2)
+	touch stamps/stamp-dist-self
+
+gpg4win-src-$(VERSION).exe: gpg4win-src.nsi $(common_nsi) stamps/stamp-final \
+                            stamps/stamp-dist-self
 	$(MAKENSIS) -V3 -DBUILD_DIR=`pwd` -DTOP_SRCDIR=$(top_srcdir) \
 		-DSRCDIR=$(srcdir) $(srcdir)/gpg4win-src.nsi
 
