@@ -36,6 +36,7 @@ Section "-un.gnupg"
 
   Delete "$INSTDIR\gpgkeys_finger.exe"
   Delete "$INSTDIR\gpgkeys_hkp.exe"
+  Delete "$INSTDIR\gpgkeys_http.exe"
   Delete "$INSTDIR\gpgkeys_curl.exe"
   Delete "$INSTDIR\gpgkeys_ldap.exe"
 
