@@ -2,6 +2,8 @@
 
 	Released 0.5.1.
 
+	* src/inst-gnupg.nsi: Install http and not curl version.
+
 	* src/gpg4win.mk.in (stamps/stamp-directories): Touch versioninfo.
 
 	* src/inst-gpg4win.nsi, src/uninst-gpg4win.nsi:
