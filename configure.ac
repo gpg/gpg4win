@@ -58,6 +58,18 @@ AC_SUBST(BUILD_TIMESTAMP)
 AC_SUBST(BUILD_FILEVERSION)
 
 
+# For development of this package it is useful to build without
+# creatign the source install;er (takes a long time).  This option may
+# be used to suppress creation of the source installer.
+AC_ARG_ENABLE(source-installer,
+    AC_HELP_STRING([--disable-source-installer],
+                   [Do not create the Source installer]),
+                    build_source_installer=$enableval,
+                    build_source_installer=yes)
+AC_MSG_RESULT($source_installer)
+AM_CONDITIONAL(BUILD_SOURCE_INSTALLER, test "$build_source_installer" = yes)
+
+
 # Required tools.
 AC_PROG_CC
 AC_PROG_CPP
@@ -143,6 +155,6 @@ fi
 AC_CONFIG_FILES(Makefile packages/Makefile include/Makefile src/Makefile)
 AC_CONFIG_FILES(include/config.nsi src/gpg4win.mk)
 AC_CONFIG_FILES(doc/Makefile)
-AC_CONFIG_FILES(doc/manual-de/Makefile)
+AC_CONFIG_FILES(doc/manual-de/Makefile doc/manual-de/version.tex)
 AC_CONFIG_FILES(doc/website/Makefile)
 AC_OUTPUT

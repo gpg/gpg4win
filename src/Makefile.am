@@ -217,7 +217,11 @@ g4wihelp.dll: g4wihelp.c exdll.h
 	$(CC) -I. -shared -O2 -o g4wihelp.dll $(srcdir)/g4wihelp.c \
 	   -lwinmm -lgdi32
 
+if BUILD_SOURCE_INSTALLER
 all-local: gpg4win-$(VERSION).exe gpg4win-src-$(VERSION).exe
+else
+all-local: gpg4win-$(VERSION).exe
+endif
 
 clean-local:
 	rm -f gpg4win-$(VERSION).exe gpg4win-src-$(VERSION).exe

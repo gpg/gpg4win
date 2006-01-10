@@ -26,14 +26,19 @@ eps_files := adele01.eps.gz adele02.eps.gz man-with-signed-key.eps.gz \
              pk-safe-opened-with-sk.eps.gz think-passphrase.eps.gz \
              keyserver-world.eps.gz key-with-sigs.eps.gz \
 	     clock-face.eps.gz mileage-indicator.eps.gz \
-	     table-1.eps.gz table-2.eps.gz table-3.eps.gz 
+	     table-1.eps.gz table-2.eps.gz table-3.eps.gz \
+             sc-inst-components.eps.gz sc-inst-directory.eps.gz \
+             sc-inst-finished.eps.gz sc-inst-finished2.eps.gz \
+             sc-inst-license.eps.gz sc-inst-ready.eps.gz \
+             sc-inst-startmenu.eps.gz sc-inst-welcome.eps.gz
 
 eps_files_bb := $(eps_files:.gz=.bb)
 
-EXTRA_DIST = fdl.tex einsteiger.tex durchblicker.tex $(eps_files)
+EXTRA_DIST = fdl.tex einsteiger.tex durchblicker.tex $(eps_files) \
+	     macros.tex version.tex.in
 
 CLEANFILES = $(eps_files_bb) *.pdf *.pdf *.toc *.log *.aux *.out
-
+DISTCLEANFILES = version.tex
 
 pkgdata_DATA = einsteiger.pdf durchblicker.pdf
 

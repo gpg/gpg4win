@@ -106,6 +106,8 @@ VIAddVersionKey "FileVersion" "${PROD_VERSION}"
 !define MUI_PAGE_CUSTOMFUNCTION_SHOW PrintNonAdminWarning
 !insertmacro MUI_PAGE_COMPONENTS
 
+!insertmacro MUI_PAGE_DIRECTORY
+
 !ifdef HAVE_STARTMENU
 Var STARTMENU_FOLDER
 

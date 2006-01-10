@@ -18,6 +18,9 @@
 % Hyperref should be among the last packages loaded
 \usepackage{hyperref}
 
+\input{version.tex}
+\input{macros.tex}
+
 \begin{document}
 \thispagestyle{empty}
 \pagestyle{fancy}
@@ -790,11 +793,11 @@ E-Mail Programm kopiert und schließlich versandt. Noch einfacher geht
 es, wenn man den Schlüssel --­ genau wie im vorherigen Beispiel ­--
 exportiert und dann direkt als E-Mail-Anhang verschickt.
 
-Dazu klicken Sie auf im GNU Privacy Assistant auf [Export] in der
-Iconleiste und dann in dem sich öffnenden Dialog auf [Exportieren in
-Datei]. Wählen Sie mit [Durchsuchen...] einen geeigneten Ordner auf
-Ihrem PC, z.B. \verb-C:\Eigene Dateien\ - und speichern Sie den
-Schlüssel dort z.B. als ,,mein\_key.asc''.
+Dazu klicken Sie auf im GNU Privacy Assistant auf \Button{Export} in
+der Iconleiste und dann in dem sich öffnenden Dialog auf
+\Button{Exportieren~in~Datei}. Wählen Sie mit \Button{Durchsuchen...}
+einen geeigneten Ordner auf Ihrem PC, z.B. \verb-C:\Eigene Dateien\ -
+und speichern Sie den Schlüssel dort z.B. als ,,mein\_key.asc''.
 
 Nun ziehen Sie den exportierten Schlüssel als Dateianhang in das
 entsprechende Fenster Ihres E-Mail-Programms, genauso wie jede andere
