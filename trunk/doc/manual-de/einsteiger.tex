@@ -34,12 +34,14 @@
 \usepackage{hyperref}
 
 
+\input{version.tex}
+\input{macros.tex}
+
 \begin{document}
 \thispagestyle{empty}
 \pagestyle{fancy}
 \parindent0cm
 \parskip\medskipamount
-
 
 \title{Gpg4win für Einsteiger}
 \author{Eine Veröffentlichung des Gpg4Win Projekts\\
@@ -129,15 +131,13 @@ Das Gpg4win-Anleitungs- und Übungsmaterial besteht aus drei Teilen:
 
 \begin{itemize}
 
-\item dem gedruckten Schnelleinstieg, ,,Gpg4win für Einsteiger'', in dem
+\item dem Schnelleinstieg, ,,Gpg4win für Einsteiger'', in dem
   Sie gerade lesen,
 
+\item dem Handbuch ,,Gpg4win für Durchblicker'' im PDF-Format, welches
+  Sie nach der Installation von Gpg4win auf Ihrer Festplatte finden,
 
-\item dem Handbuch ,,Gpg4win für Durchblicker'' im PDF-Format, das Sie
-  auf der beiliegenden CD-ROM und nach der Installation von Gpg4win auf
-  Ihrer Festplatte finden,
-
-\item dem Gpg4win-Übungsroboter Adele, mit dem Sie die EMail-Ver- und
+\item dem Übungsroboter Adele, mit dem Sie die Email-Ver- und
   Entschlüsselung so oft üben können, wie Sie wollen. Um mit Adele zu
   üben, brauchen Sie eine Internet-Verbindung.
 \end{itemize}
@@ -145,24 +145,27 @@ Das Gpg4win-Anleitungs- und Übungsmaterial besteht aus drei Teilen:
 
 ,,Gpg4win für Einsteiger'' führt Sie kurz und knapp durch die Installa-
 tion und die alltägliche Benutzung der Gpg4win-Software. Der Zeitbedarf
-für das Durcharbeiten des Schnell- einstiegs hängt unter anderem davon
+für das Durcharbeiten des Schnelleinstiegs hängt unter anderem davon
 ab, wie gut Sie sich mit Ihrem PC und Windows auskennen. In etwa
 sollten Sie sich eine halbe Stunde Zeit nehmen.
 
 ,,Gpg4win für Durchblicker'' liefert Hintergrundwissen, das Ihnen die
 grundlegenden Mechanismen von Gpg4win verdeutlicht und die etwas
-seltener benutzten Features erläutert. Das Handbuch liegt im
-PDF-Format vor, Sie können es auch ausdrucken.
+seltener benutzten Fähigkeiten erläutert.
 
-Beide Handbuchteile können unabhängig voneinander benutzt werden. Zu
+Beide Handbuchteile liegen als PDF Dateien vor.  Falls Sie keine
+gedruckte Version erhalten haben, so können Sie sie auch selbst
+ausdrucken.
+
+Die Handbuchteile können unabhängig voneinander benutzt werden. Zu
 Ihrem besseren Verständnis sollten Sie aber möglichst beide Teile in
 der angegebenen Reihenfolge lesen.
 
 $\spadesuit$ Diese Hand weist auf auf den Wechsel in das andere Buch
 hin.
 
-Der Gpg4win-Übungsroboter Adele steht Ihnen jederzeit im Internet zur
-Verfügung. Sie empfängt und sendet verschlüsselte E-Mails und
+Der Übungsroboter Adele steht Ihnen jederzeit im Internet zur
+Verfügung. Adele empfängt und sendet verschlüsselte E-Mails und
 entschlüsselt sie auch. Sie können also mit Adele einen kompletten
 Verschlüsselungsdialog so lange üben, bis Sie sich völlig mit dem
 Gebrauch der Software vertraut gemacht haben.
@@ -173,35 +176,38 @@ Gebrauch der Software vertraut gemacht haben.
 
 Das Projekt Gpg4win (GNU Privacy Guard for Windows) ist eine vom
 Bundesamt für Sicherheit in der Informationstechnik beauftragte
-E-Mail-Verschlüsselungssoftware. Gpg4win bezeichnet ein Gesamtpaket,
-welches die Programme GnuPG, GPA, WinPT und andere Komponenten
-enthält.
+Email-Verschlüsselungssoftware. Gpg4win bezeichnet ein Gesamtpaket,
+welches die Programme GnuPG, GPA, WinPT, GPGol, GPGee und
+Sylpheed-Claws enthält.
 
 Mit dem Verschlüsselungsprogramm GnuPG (GNU Privacy Guard) kann
-jedermann E-Mails sicher, einfach und kostenlos verschlüsseln. GnuPG
+jedermann Emails sicher, einfach und kostenlos verschlüsseln. GnuPG
 kann ohne jede Restriktion privat oder kommerziell benutzt werden. Die
 Verschlüsselung von GnuPG ist extrem sicher und kann nach dem heutigen
 Stand von Forschung und Technik nicht gebrochen werden.
 
-GnuPG ist Freie Software\footnote{oft fälschlich auch als Open Source
-  Software bezeichnet}. Das bedeutet, dass jedermann das Recht hat,
-sie nach Belieben kommerziell oder privat zu nutzen.  Jedermann soll
-und darf den Quellcode, also die eigentliche Programmierung des
-Programms, genau untersuchen.
+GnuPG ist Freie Software\footnote{oft ungenau auch als Open Source
+  Software bezeichnet}. Das bedeutet, daß jedermann das Recht hat, sie
+nach Belieben kommerziell oder privat zu nutzen.  Jedermann darf den
+Quellcode, also die eigentliche Programmierung des Programms, genau
+untersuchen und auch selbst Änderungen durchführen und diese
+weitergeben.\footnote{Obwohl dies ausdrücklich erlaubt ist, sollte man
+  ohne ausreichendes Fachwissen nicht leichtfertig Änderungen
+  durchführen da hierdurch die Sicherheit der Software beeinträchtigt
+  werden kann.}
 
 Für eine Sicherheits-Software ist diese garantierte Transparenz des
-Quellcodes eine unverzichtbare Grundlage. Nur so lässt sich die
+Quellcodes eine unverzichtbare Grundlage. Nur so läßt sich die
 Vertrauenswürdigkeit eines Programmes prüfen.
 
-GnuPG ist vollständig kompatibel mit PGP.
+GnuPG basiert auf dem internationalen Standard OpenPGP (RFC 2440), ist
+vollständig kompatibel zu PGP und benutzt die gleiche Infrastruktur
+(Schlüsselserver etc).
 
-GnuPG basiert auf dem inter- nationalen Standard OpenPGP (RFC 2440),
-ist vollständig kom- patibel zu PGP und benutzt die gleiche
-Infrastruktur (Schlüssel- server etc).
-
-PGP (,,Pretty Good Privacy'') ist keine freie Software, sie wird seit
-mehreren Jahren nicht mehr unter der freien Softwarelizenz GNU General
-Public License (GNU GPL) vertrieben.
+PGP (,,Pretty Good Privacy'') ist keine Freie Software, sie war
+lediglich vor vielen Jahren kurzzeitig zu ähnlichen Bedingungen wie
+GnuPG erhältlich.  Diese Version entspricht aber schon lange nicht
+mehr dem Stand der Technik.
 
 Weitere Informationen zu GnuPG und den Projekten der Bundesregierung
 zum Schutz des Internets finden Sie auf der Website
@@ -211,47 +217,71 @@ sicherheit-im-internet.de des Bundeswirtschaftsministeriums.
 %% Orginal page 9
 \section{Sie installieren Gpg4win}
 
-Legen Sie die beiliegende CD-ROM in das CD-ROM-Laufwerk Ihres PCs.
-Öffnen Sie Ihren ,,Arbeitsplatz'' und klicken Sie dort auf das CD-ROM-
-Icon mit dem Titel ,,Gpg4win''.
+Falls Sie Gpg4Win auf einer CD-ROM erhalten haben:
 
-Wenn sich das CD-ROM-Icon geöffnet hat, klicken Sie auf das
-Installations-Icon mit dem Titel ,,Gpg4win.1.1-de''.
+Legen Sie diese CD-ROM in das CD-ROM-Laufwerk Ihres PCs.  Öffnen Sie
+Ihren ,,Arbeitsplatz'' und klicken Sie dort auf das CD-ROM- Icon mit
+dem Titel ,,Gpg4win''. Wenn sich das CD-ROM-Icon geöffnet hat, klicken
+Sie auf das Installations-Icon mit dem Titel ,,Gpg4win''.
 
-% Icon Gpg4win 1.1-de
+Haben Sie Gpg4Win aus dem Internet heruntergeladen, so klicken Sie
+bitte auf diese neu abgespeicherte Datei, die den Namen
+\texttt{gpg4win-\PackageVersion{}.exe} haben sollte.  Achten Sie
+unbedingt darauf, daß Sie die Datei von einer vertrauenswürdigen Seite
+erhalten haben.
+
+Die weitere Installatiion ist dann identisch:
 
 Die Frage, ob Sie das Programm installieren wollen, beantworten Sie
-mit [ Ja ].
+mit \Button{Ja}.
 
 Es begrüßt Sie dieser Screen:
 
 % screenshot:  Welcome Seite Installer
+\begin{center}
+\includegraphics{sc-inst-welcome}
+\end{center}
 
 Beenden Sie alle möglicherweise auf Ihrem Rechner laufenden Programme,
-und klicken Sie dann auf [ Weiter ].
+und klicken Sie dann auf \Button{Weiter}.
 
 \clearpage
 %% Orginal page 10
 
-%% FIXME: Eine Zustimmung zur Installion ist bei Freier Software nicht
-%% notwendig.
-Lesen Sie die Lizenzvereinbarung und ­ wenn Sie ihr zustimmen ­
-klicken Sie auf [ Ja ].
+Auf der Seite mit dem Lizenabkommen, können Sie Informationen zu den
+Lizenzen dieser Software lesen. 
+
+Wenn Sie die Software lediglich installieren und einsetzen wollen, so
+haben Sie immer das Recht dazu und sind nicht angehalten diese Texte
+zu lesen.  
+
+Geben Sie allerdings diese Software weiter oder wollen Sie sie
+verändern, so müßen Sie sich mit den Bedingungen der Lizenzen vertraut
+machen.  
 
 % sreenshot Lizenzseite des Installers
+\begin{center}
+\includegraphics{sc-inst-license}
+\end{center}
+
+
+Klicken Sie auf \Button{Weiter}.
+
 
 \clearpage
 %% Original page 11
 
-In der nun folgenden Dateiauswahl können Sie einen Ordner auf Ihrem
-PC aussuchen, in dem Gpg4win installiert wird. Sie können auch einfach
-den voreingestellten Standard-Ordner \verb-C:\Programme\Gpg4win- nehmen.
+In der nun folgenden Dateiauswahl können Sie einen Ordner auf Ihrem PC
+aussuchen, in dem Gpg4win installiert wird. Sie sollten hier im
+Normalfall den voreingestellten Ordner \verb-C:\Programme\GNU\GnuPG-
+nehmen.
 
 % screenshot: Auswahl des Installationsverzeichnis.
-% fixme: Haben wir miomentan nicht.
+\begin{center}
+\includegraphics{sc-inst-directory}
+\end{center}
 
-
-Klicken Sie anschliessend auf [ Weiter ].
+Klicken Sie anschliessend auf \Button{Weiter}.
 
 \clearpage
 %% Original page 12
@@ -259,28 +289,62 @@ Klicken Sie anschliessend auf [ Weiter ].
 Das Programm legt nun ein Icon in das Windows Startup-Menü, damit Sie
 Gpg4win einfacher starten können.
 
-% screenshot:  Startnmenu auswählen
+% screenshot:  Startmenu auswählen
+\begin{center}
+\includegraphics{sc-inst-startmenu}
+\end{center}
 
 Am einfachsten übernehmen Sie die vorgeschlagene Einstellung und
-klicken dann auf [ Weiter ].
+klicken dann auf \Button{Installieren}.
 
-Anschließend werden alle bisherigen Eingaben noch einmal aufgelistet.
-Wenn alles in Ordnung ist, klicken Sie auf [Installieren].
+\clearpage
 
+Während der nun folgenden Installation sehen Sie einen
+Fortschrittsbalken und Informationen, welche Datei momentan
+installiert wird.  Sie können jederzeit auf \Button{Details~anzeigen} drücken
+um ein Protokoll der Installation sichbar zu machen.
+
+% Screenshot: Ready page Installer
+\begin{center}
+\includegraphics{sc-inst-ready}
+\end{center}
+
+Nachdem die Installation abgeschlossen ist, drücken Sie bitte auf
+\Button{Weiter}.
 
 \clearpage
 %% Original page 13
 
+Die letzte Seite des Installationsvorgangs wird nun angezeigt:
+
 % Screenshot: Finish page Installer
+\begin{center}
+\includegraphics{sc-inst-finished}
+\end{center}
 
-Nach kurzer Zeit ist die Installation beendet und dieser Dialog
-erscheint:
+Durch ankreuzen von ,,Die Schlüsselverwaltung aufrufen'' wird diese
+direkt danach noch aufgerufen.  Gpg4win hat 2 Schlüsselverwaltungen:
+Wurde GPA installiert, so wird diese aufgerufen werden (dies ist der
+Normallfall und m Weiteren beschrieben); wurde GPA nicht installiert so
+wird versucht WinPT aufzurufen.
 
-Klicken Sie auf [ Fertigstellen ] und
-lesen Sie die Informationen in der
-kurzen Readme-Datei
+Klicken Sie auf \Button{Fertig stellen}.
 
-Wenn Sie fertig sind, schließen Sie die Readme-Datei.
+\clearpage
+
+In einigen Fällen kann es vorkommen, daß Windows neu gebootet werden
+muß.  In diesem Fall sehen Sie statt der obigen die folgende Seite:
+
+% Screenshot: Finish page Installer with reboot
+\begin{center}
+\includegraphics{sc-inst-finished2}
+\end{center}
+
+Sie können hier auswählen, ob Windows sofort neu gestartet werden
+soll oder später manuell. 
+
+Klicken Sie hier auch auf \Button{Fertig stellen}.
+
 
 % FIXME:  Wir müssen erklären wie man Word als Standard Editor in
 % Outlook ausschaltet.
@@ -296,9 +360,9 @@ starten.
 
 Vorher sollten Sie aber im Handbuch ,,Gpg4win für Durchblicker''
 (PDF-Datei) die Kapitel 3 und 4 lesen. Wir erklären dort den genialen
-Trick, mit dem Gpg4win Ihre E-Mails sicher und bequem verschlüsselt.
+Trick, mit dem Gpg4win Ihre Emails sicher und bequem verschlüsselt.
 Gpg4win funktioniert zwar auch, ohne dass Sie verstehen warum, aber im
-Gegensatz zu anderen PC-Programmen wollen Sie Gpg4win schließlich Ihre
+Gegensatz zu anderen Programmen wollen Sie Gpg4win schließlich Ihre
 geheime Korrespondenz anvertrauen. Da sollten Sie schon wissen, was
 vor sich geht.
 
@@ -309,6 +373,7 @@ und trotzdem leicht zu merkenden Passwortsatz ausdenken können.
 
 $\spadesuit$ Lesen Sie jetzt im Handbuch die Kapitel 3 und 4, und
              lesen Sie erst danach hier weiter.
+
 
 \clearpage
 %% Original page 15
@@ -321,8 +386,8 @@ wir Ihr Schlüsselpaar erzeugen.
 Eigentlich müsste man so einen wichtigen Schritt ein paar Mal üben
 können$\ldots$
 
-Und genau das können Sie auch tun: Sie können den gesamten Vblauf der
-Schlüsselerzeugung, erschlüsselung und Entschlüssel- ung durchspielen,
+Und genau das können Sie auch tun: Sie können den gesamten Ablauf der
+Schlüsselerzeugung, Verschlüsselung und Entschlüsselung durchspielen,
 so oft Sie wollen, bis Sie ganz sicher sind.
 
 Ihr Vertrauen in Gpg4win wird sich durch diese ,,Trockenübun'' festigen,
@@ -331,10 +396,10 @@ Problem mehr sein.
 
 Ihr Partner bei diesen Übungen wird Adele sein.
 
-Adele ist ein Testserver, den die Firma G-N-U GmbH ­-- einer der
-Entwickler von Gpg4win ­-- bereit stellt. Mit Hilfe von Adele können Sie
-Ihre Schlüssel, die wir gleich erzeugen werden, ausprobieren und
-testen, bevor Sie damit Ernst machen. Doch dazu später mehr.
+Adele ist ein Testserver, denr noch aus dem alten GnuPP Projekt
+stammt.  Mit Hilfe von Adele können Sie Ihre Schlüssel, die wir gleich
+erzeugen werden, ausprobieren und testen, bevor Sie damit Ernst
+machen. Doch dazu später mehr.
 
 
 \clearpage
@@ -342,7 +407,7 @@ testen, bevor Sie damit Ernst machen. Doch dazu später mehr.
 Los geht's!
 
 Öffnen Sie das Windows Startmenü, dort den Ordner
-\verb-Programme\Gpg4win- und schließlich das Programm GNU Privacy
+\verb-Programme\GNU\Gpg4win- und schließlich das Programm GPA
 Assistant. Daraufhin sehen Sie diesen Dialog:
 
 % screenshot: GPA Erste Schlüsselerzeugung
@@ -364,7 +429,7 @@ Oder Sie können auch gleich Ernst
 machen und Ihren richtigen
 Namen eingeben.
 
-Klicken Sie auf [ Weiter ], wenn Sie fertig sind.
+Klicken Sie auf \Button{Weiter}, wenn Sie fertig sind.
 
 \clearpage
 %% Original page 18
@@ -378,7 +443,7 @@ f.mustermann@firm.de
 
 Oder Sie können auch gleich Ihre echte E-Mail-Adresse eingeben.
 
-Klicken Sie auf [ Weiter ], wenn Sie die E-Mail-Adresse eingegeben
+Klicken Sie auf \Button{Weiter}, wenn Sie die E-Mail-Adresse eingegeben
 haben.
 
 Anschliessend können Sie einen Kommentar zum Schlüssel eingeben, als
@@ -386,7 +451,7 @@ z.B. ,,Schlüssel für Büro-E-Mail''. Dieser Kommentar ist nur für Sie
 sichtbar und wird einem Dritten nicht angezeigt. 
 % FIXME: Quatsch, der Kommentar is teil der UserID
 
-Klicken Sie anschliessend auf [ Weiter ].
+Klicken Sie anschliessend auf \Button{Weiter}.
 
 
 \clearpage
@@ -413,7 +478,7 @@ einen Test-Passwortsatz eingeben oder auch gleich ,,Ernst machen''.
 \clearpage
 %% Original page 20
 Wenn Sie Ihren geheimen Passwortsatz zweimal eingegeben haben, klicken
-Sie auf [ Weiter ].
+Sie auf \Button{Weiter}.
 
 % screenshot: Wizard, backup
 
@@ -435,7 +500,7 @@ Stellen ­-- z.B. bei einem neuen Programmstart --­ daran erinnert.
 
 % screenshot:  Wizard, backup path
 
-Fertig? Dann klicken Sie auf [Fertig] und Ihre Schlüssel werden
+Fertig? Dann klicken Sie auf \Button{Fertig} und Ihre Schlüssel werden
 endgültig erzeugt.
 
 \clearpage
@@ -463,7 +528,7 @@ Ein Schlüssel mit einer Länge von 1048 Bit ist ein sehr sicherer
 Schlüssel, der trotzdem nicht zuviel Rechenpower auf Ihrem Computer
 beansprucht.
 
-Klicken Sie nun auf [ Schliessen ].  Voila --- Ihre Schlüssel sind
+Klicken Sie nun auf \Button{Schliessen}.  Voila --- Ihre Schlüssel sind
 fertig!
 
 % screenshot: keymanger mit einem Schlüssel.
@@ -570,7 +635,7 @@ z.B. \verb-C:\Eigene Dateien- und speichern Sie den Schlüssel dort z.B. als
 ,,mein\_key.asc''.
 
 Wenn der Schlüssel auf Ihrer Festplatte gespeichert ist, können Sie
-den Dialog ,,Schlüssel exportieren'' mit [OK] schließen.
+den Dialog ,,Schlüssel exportieren'' mit \Button{OK} schließen.
 
 
 \clearpage

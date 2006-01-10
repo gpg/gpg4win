@@ -72,7 +72,7 @@ if test "$1" = "--build-w32"; then
         fi
     fi
 
-    ./configure --host=i586-mingw32msvc --build=${build} \
+    ./configure --host=i586-mingw32msvc --build=${build}  "$@"\
 
     rc=$?
 

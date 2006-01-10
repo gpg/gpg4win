@@ -1,3 +1,10 @@
+2006-01-10  Werner Koch  <wk@g10code.com>
+
+	* configure.ac: New option --disable-source-installer.
+	* src/Makefile.am: Implement it.
+
+	* src/installer.nsi: Insert directory page.
+
 2006-01-09  Werner Koch  <wk@g10code.com>
 
 	Released 0.5.1.
