@@ -150,8 +150,8 @@ Var STARTMENU_FOLDER
 !insertmacro MUI_LANGUAGE "English"
 !insertmacro MUI_LANGUAGE "German"
 
-!insertmacro MUI_RESERVEFILE_LANGDLL
-!insertmacro MUI_RESERVEFILE_INSTALLOPTIONS
+#!insertmacro MUI_RESERVEFILE_LANGDLL
+#!insertmacro MUI_RESERVEFILE_INSTALLOPTIONS
 ReserveFile "${BUILD_DIR}\g4wihelp.dll"
 ReserveFile "${TOP_SRCDIR}\src\gpg4win-splash.bmp"
 ReserveFile "${TOP_SRCDIR}\src\gpg4win-splash.wav"
