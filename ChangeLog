@@ -1,3 +1,11 @@
+2006-01-13  Werner Koch  <wk@g10code.com>
+
+	* patches/glib-2.9.2-wk1/02-gspawn-w32.patch: New.
+
+2006-01-12  Werner Koch  <wk@g10code.com>
+
+	* src/inst-glib.nsi: Also install the console spawn helper.
+
 2006-01-10  Werner Koch  <wk@g10code.com>
 
 	* configure.ac: New option --disable-source-installer.

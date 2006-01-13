@@ -32,6 +32,7 @@ Section "-glib" SEC_glib
   File ${gpg4win_pkg_glib}
 !else
   File ${prefix}/bin/gspawn-win32-helper.exe
+  File ${prefix}/bin/gspawn-win32-helper-console.exe
   File ${prefix}/bin/libglib-2.0-0.dll
   File ${prefix}/bin/libgmodule-2.0-0.dll
   File ${prefix}/bin/libgobject-2.0-0.dll
