@@ -34,9 +34,16 @@ eps_files := adele01.eps.gz adele02.eps.gz man-with-signed-key.eps.gz \
              sc-gpa-first-key.eps.gz sc-gpa-gen-backup.eps.gz \
              sc-gpa-gen-email.eps.gz sc-gpa-gen-name.eps.gz \
              sc-gpa-gen-passwd.eps.gz sc-gpa-nokey.eps.gz \
-             sc-gpa-rungpa.eps.gz \
+             sc-gpa-rungpa.eps.gz sc-gpa-ks-export-p.eps.gz \
+             sc-gpa-two-keys.eps.gz \
+             sc-ol-send-test-key.eps.gz sc-ol-send-enc-msg1.eps.gz \
+             sc-ol-send-enc-msg2.eps.gz \
              sc-gpgol-noword.eps.gz sc-gpgol-set-icon.eps.gz \
-	     sc-misc-mein-key-asc.eps.gz sc-ol-send-test-key.eps.gz
+             sc-winpt-startmenu.eps.gz sc-winpt-trayicon.eps.gz \
+	     sc-winpt-clip-decrypt.eps.gz sc-winpt-good-sig.eps.gz \
+             sc-winpt-sel-enc-key.eps.gz sc-winpt-enctoself.eps.gz \
+	     sc-misc-mein-key-asc.eps.gz 
+
 
 eps_files_bb := $(eps_files:.gz=.bb)
 

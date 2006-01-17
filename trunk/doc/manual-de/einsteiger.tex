@@ -67,7 +67,7 @@ entitled ,,GNU Free Documentation License''.
 
 \bigskip
 
-{\LARGE Dieses Handbuch wird zur Zeit überarbeitet.} 
+{\LARGE Dieses Handbuch befindet sich noch in der Korrektur.} 
 
 \vfill
 
@@ -720,10 +720,10 @@ bekommen$\ldots$
 %% Original page 29
 
 Genauso gehen Sie vor, wenn Sie Ihren Schlüssel an eine echte
-Email-Adresse senden. Natürlich können Sie dann auch noch ein
-paar erklärende Sätze dazuschreiben. Adele braucht diese
-Erklärung nicht, denn sie ist zu Nichts anderem als zu diesem Zweck
-programmiert worden.  Fassen wir kurz zusammen: Sie haben Ihren
+Email-Adresse senden. Natürlich können Sie dann auch noch ein paar
+erklärende Sätze dazuschreiben. Adele braucht diese Erklärung nicht,
+denn sie ist zu Nichts anderem als zu diesem Zweck programmiert
+worden.  \textbf{Fassen wir kurz zusammen:} Sie haben Ihren
 öffentlichen Schlüssel per Email an einen Korrespondenzpartner
 geschickt.
 
@@ -746,25 +746,28 @@ mit wenigen Partnern verschlüsselte Emails austauschen.  Ihr
 Schlüssel ist dann sozusagen ,,stets griffbereit'' auf einem Server im
 Internet vorhanden.
 
-Klicken Sie Ihren Schlüssel an, und klicken Sie dann auf die Taste
-[Export].
+Klicken Sie Ihren Schlüssel an und wählen Sie dann den Menüpunkt
+\Menu{Server$\rightarrow$Schlüssel~verschicken}. 
 
-% screenshot: GPA export with radiobutton keyserver 
+% screenshot: GPA export key to keyserver
+\begin{center}
+\includegraphics[width=0.4\textwidth]{sc-gpa-ks-export-p}
+\end{center}
 
-Wie Sie sehen, ist ein Key Server bereits voreingestellt. Wenn Sie auf
-[OK] klicken, wird der Schlüssel auf den Server geschickt und von dort
-aus an die anderen, weltweit verbundenen Key Server weitergereicht.
+Wie Sie sehen, ist ein Keyserver bereits voreingestellt. Wenn Sie auf
+\Button{Ja} klicken, wird der Schlüssel an den Server geschickt und von dort
+aus an die anderen, weltweit verbundenen Keyserver weitergereicht.
 Jedermann kann ihn von dort herunterladen und dazu benutzen, Ihnen
 eine sichere Email zu schreiben.
 
 Wenn Sie den Ablauf im Moment nur testen, dann schicken Sie den
-Übungs-Schlüssel nicht ab.  Er ist wertlos und kann praktisch nicht
+Übungsschlüssel nicht ab.  Er ist wertlos und kann nicht
 mehr vom Schlüsselserver entfernt werden. Sie glauben nicht, wieviele
 Testkeys mit Namen wie ,,Julius Caesar'', ,,Helmut Kohl'' oder ,,Bill
 Clinton'' dort herumliegen ­ schon seit Jahren$\ldots$
 
-Fassen wir kurz zusammen: Sie wissen nun, wie Sie Ihren Schlüssel auf
-einen Schlüsselserver im Internet schicken können.
+\textbf{Fassen wir kurz zusammen:} Sie wissen nun, wie Sie Ihren
+Schlüssel auf einen Schlüsselserver im Internet schicken können.
 
 $\spadesuit$ Wie Sie den Schlüssel eines Partners auf den
 Schlüsselervern suchen und finden, beschreiben wir im Handbuchch
@@ -780,50 +783,51 @@ Email und sendet sie an Sie zurück.  Nach kurzer Zeit erhalten Sie
 Adeles Antwort.
 
 % cartoon: Adele typing and sending a mail
+\begin{center}
 \includegraphics{adele02}
+\end{center}
+
 
 \clearpage
 %% Orginal page 32
 So sieht sie aus:
 
 \begin{verbatim}
-To: f.mustermann@firma.de
-From: adele <adele@Gpg4win.de>
-Subject: Verschluesselte Antwort
+From: Adele (Der freundliche E-Mail-Roboter) <adele@gnupp.de>
+Subject: Re: mein öffentlicher Schlüssel
+To: heinrichh@duesseldorf.de
+Date: Thu, 12 Jan 2006 09:17:28 +0100
 
+-----BEGIN PGP MESSAGE-----
+Version: GnuPG v1.4.1 (GNU/Linux)
 
-----BEGIN PGP MESSAGE-----
-Version: GnuPG v1.0.1 (GNU/Linux)
-Comment: For info see http://www.gnupg.org
-hQEOAwuiAEB5WiClEAP/Whx+O/DbrJ97DEa+s9q4sOwWZ9tGq7fV1UwL2/qE8pe6
-5Mr/77y6C7Uc2kQUSI06+NpV4J4Y9HINkWskn7M3UBhFHY6sRPF9Ks4wseHM0klI
-qj0uLw/+2ylbCchTMoAAPgPVvtGp2aEfiRJItVJjLk96eb6qqATlHmcAgwQ26XoD
-...
-ssp3BSvr7UZdFHKhIKGjDf9dJuP9VFbmyhLvBeUfpo+O1+dd8CO0JOGZAoBGiY7a
-TvFz2NTqLhtWoH897Wu31tzYt41P08PsIqq94Bp6yQO6zoI22vJ0Q8jwVfFqHkaR
-9Djp34LyqkyAVHcw25KtCtGEYadBdqI0aHJ0ddQanxOfu7UG0Es6/ugtwmfQX/aZ
-c03tyh6DNhWPs9UTZBQwNdk=
-=C3TI
+hQEOA9FS8I3hSvdPEAP/W6W6f4MBwqTdzd9O/7FOTDHh//bQ+GUWoT0k9Y0i96UZ
+QO1VhQSia6a8DZrFQj7SlJWmB1MM7RNhkmhfZsD5Bn9ICmwwOt2xJDBkCQ34gu5N
+NxQ92WXZjHCaI0dSlynNziNbK8Ik26YPBYkQjLUDhHN4CRZ7q67eVEd/B9DI04wD
+....
+ujbjyj09L/9NvoBniWrgqVUayKr1Ls8OIZkyiex6mKypPGADJFAzvTwjubj5S6zJ
+A+QvSXUB9Hj8Ft2Nt3j0B/gWn5no3Er2/15UcBn/UPSxW9or0w9seDxCuSXvpakX
+bcneOm/pcJNEHcApXWXpoNOxRZ1MksM300w+79M6p2w=
+=VCHb
 -----END PGP MESSAGE-----
 \end{verbatim}
 
-(Aus Gründen der Übersichtlichkeit haben wir den Verschlüsselungs-
-block stark gekürzt)
+(Aus Gründen der Übersichtlichkeit haben wir den Verschlüsselungsblock
+stark gekürzt.)
 
 \clearpage
 %% Original page 33
 
-Diese Email werden Sie nun mit dem Programm WinPT entschlüsseln.
+\textbf{Diese Email werden Sie nun mit dem Programm WinPT entschlüsseln.}
 
 WinPT ist ein sogenanntes ,,Frontend'' für GnuPG. Es dient zur
 eigentlichen Ver- und Entschlüsselung der Emails und zur Erzeugung
-und Überprüfung von digitalen Unterschriften. Und zwar ­ und das ist
-einer seiner Vorteile ­ mit jedem beliebigen Mailprogramm.
+und Überprüfung von digitalen Unterschriften. Und zwar ­-- und das ist
+einer seiner Vorteile ­-- mit jedem beliebigen Mailprogramm.
 
-Für bestimmte Mailprogramme --­ z.B. MS Outlook für Windows, gibt es
-außerdem spezielle Gpg4win-PlugIns, mit denen die Ver- und
-Entschlüsselung direkt im jeweiligen Mailprogramm erledigt werden
-kann.
+Für die meisten Mailprogramme --­ z.B. MS Outlook für Windows, gibt es
+außerdem spezielle PlugIns, mit denen die Ver- und Entschlüsselung
+direkt im jeweiligen Mailprogramm erledigt werden kann.
 
 $\spadesuit$ Hinweise zu diesen Lösungen ,,dinden Sie im Handbuch
 ,,Gpg4win für Durchblicker'' Kapitel 8. Sie können dieses Kapitel jetzt
@@ -832,12 +836,11 @@ lesen oder später, wenn Sie diese Funktion benötigen.
 WinPT hat dagegen den Vorteil,dass es nicht mit einem bestimmten,
 sondern mit jedem Mailprogramm funktioniert. Es erledigt nämlich
 die Ver- und Entschlüsselung einfach im Speicher des Rechners. Das
-bedeutet, dass man den Text, der ver- oder entschlüsselt werden soll,
-zunächst in die Zwischenablage des Rechners kopieren muss.
+bedeutet, daß man den Text, der ver- oder entschlüsselt werden soll,
+zunächst in die Zwischenablage des Rechners zu kopieren ist.
 
-Markieren Sie den gesamten Text aus Adeles Email und kopieren Sie ihn
-mit dem entsprechenden Menübefehl oder Tastaturkürzel (z.B. Strg+C bei
-Windows).
+Markieren Sie also den gesamten Text aus Adeles Email und kopieren Sie ihn
+mit dem entsprechenden Menübefehl oder Tastaturkürzel (Strg+C).
 
 Damit haben Sie den Schlüssel in den Speicher Ihres Rechners ­-- bei
 Windows Zwischenablage oder Clipboard genannt ­-- kopiert.
@@ -848,52 +851,66 @@ Windows Zwischenablage oder Clipboard genannt ­-- kopiert.
 Starten Sie nun WinPT aus dem Windows-Startmenü:
 
 % screenshot: startmenu Auswahl winpt
+\begin{center}
+\includegraphics[width=0.7\textwidth]{sc-winpt-startmenu}
+\end{center}
 
-Während WinPT startet, erscheint kurz ein Hinweis darauf, dass das
+Während WinPT startet, erscheint kurz ein Hinweis darauf, daß das
 Programm die bereits vorhandenen Schlüssel einlädt.
 
 Nachdem das Programm gestartet wurde, sehen Sie unten rechts in der
-Windows-Taskleiste dieses Schlüssel-Icon:
+Windows-Taskleiste das Schlüsselsymbol von WinPT:
 
 % screenshot: taskbar rechts mit WinPT icon
+\begin{center}
+\includegraphics{sc-winpt-trayicon}
+\end{center}
 
 
 \clearpage
 %% Original page 35
 Klicken Sie mit der rechten Maustaste auf dieses Icon.  Daraufhin
-öffnet sich das WinPT-Menü. Hier klicken Sie auf [ Zwischenablage ]
-und dann auf [ Entschlüsseln/Überprüfen ].
+öffnet sich das WinPT-Menü. Hier klicken Sie auf
+\Menu{Zwischenablage$\rightarrow$Entschlüsseln/Überprüfen}.
 
 Es erscheint dieser Dialog: Geben Sie nun Ihren geheimen Passwortsatz
-ein. GnuPG entschlüsselt nun Adeles Email.
+ein. Adeles Email wird nun entschlüsselt.
 
 % screenshot: WinPT decryption dialog
+\begin{center}
+\includegraphics[width=0.7\textwidth]{sc-winpt-clip-decrypt}
+\end{center}
 
-Kurz darauf erscheint dieser
-Hinweis:
-
-% screenshot: WinPT Finished message
+Kurz darauf erscheint ein kurzer Hinweis, daß die Entschlüsselung
+beendet ist.
 
 \clearpage
 %% Original page 36
 
-Der entschlüsselte Text befindet sich jetzt wieder im Windows-
-Clipboard, genau wie beim Verschlüsseln. Kopieren Sie ihn mit Einfügen
-[ Strg+V ] in den Texteditor oder auch in Ihr Mailprogramm.
+Der entschlüsselte Text befindet sich jetzt wieder inder
+Zwischenablage von Windows; genau wie beim Verschlüsseln. Kopieren Sie
+ihn mit Einfügen (Strg+V) in den Texteditor oder auch in Ihr
+Mailprogramm.
 
-Die entschlüsselte Antwort von Adele sieht so aus:
+Die entschlüsselte Antwort von Adele sieht so aus\footnote{Abhangig
+  von der Softwareversion von Adele kann dies auch etwas
+  unterschiedlich aussehen}:
 
 \begin{verbatim}
-Hallo Herr Mustermann,
+Hallo Heinrich Heine,
 
-hier ist die verschluesselte Antwort auf
-Ihre mail.
+hier ist die verschlüsselte Antwort auf Ihre E-Mail.
 
-Anbei der public key von adele@gnupp.de,
-dem freundlichen Email-Roboter, als Anlage.
+Ihr öffentlicher Schlüssel mit der Schlüssel-ID
+57251332CD8687F6 und der Bezeichnung
+`Heinrich Heine <heinrichh@duesseldorf.de>'
+wurde von mir empfangen.
 
-Viele Gruesse,
-adele@Gpg4win.de
+Anbei der öffentliche Schlüssel von adele@gnupp.de,
+dem freundlichen E-Mail-Roboter.
+
+Viele Grüße,
+adele@gnupp.de
 \end{verbatim}
 
 Der Textblock, der darauf folgt, ist der öffentliche Schlüssel von
@@ -903,7 +920,7 @@ Wir werden anschliessend diesen öffentlichen Schlüssel importieren und
 an Ihrem Schlüsselbund befestigen. So können Sie ihn jederzeit zum
 Entschlüsseln der Nachrichten Ihres Korrespondenzpartners benutzen.
 
-Fassen wir kurz zusammen:
+\textbf{Fassen wir kurz zusammen:}
 
 \begin{enumerate}
 \item Sie haben eine verschlüsselte Email mit Ihrem geheimen
@@ -922,7 +939,7 @@ Ihr Korrespondenzpartner muß nicht etwa jedes Mal seinen Schlüssel
 mitschicken, wenn er Ihnen verschlüsselt schreibt. Sie bewahren seinen
 öffentlichen Schlüssel einfach an Ihrem GnuPG-,,Schlüsselbund'' auf.
 
-1. Möglichkeit:
+\textbf{1. Möglichkeit:}
 
 Um einen öffentlichen Schlüssel zu importieren (an Ihrem Schlüsselbund
 zu befestigen), speichern Sie ihn am einfachsten als Textblock ab, so
@@ -947,20 +964,20 @@ bis
 
 und setzen ihn mit Copy \& Paste in einen Texteditor ein. Speichern
 Sie den Schlüssel unter einem Namen in einem Ordner, den Sie leicht
-wiederfinden, z.B. als ,,adeles\_key'' im Verzeichnis
-\verb-C:\Eigene Dateien-.
+wiederfinden, z.B. als \Filename{adeles-key.asc} im Ordner
+\Filename{Eigene Dateien}.
 
 
 
 \clearpage
 %% Original page 38
-2. Möglichkeit:
+\textbf{2. Möglichkeit:}
 
 Der Schlüssel liegt der Email als Dateianhang bei. Welches
 Mailprogramm Sie auch immer benutzen, Sie können stets Dateianhänge
 (,,Attachments'') auf Ihrer Festplatte abspeichern. Tun Sie das jetzt
-(am besten wieder in einem Ordner, den Sie leicht wiederfinden,unter
-z.B. \verb-C:\Eigene Dateien-).
+(am besten wieder in einem Ordner, den Sie leicht wiederfinden, z.B.
+\Filename{Eigene~Dateien}).
 
 Ob Sie nun den Schlüssel als Text oder als Email-Anhang abgespeichert
 haben, ist egal: in beiden Fällen importieren Sie diesen
@@ -973,13 +990,17 @@ Und zwar so:
 Starten Sie den GNU Privacy Assistant im Windows-Menü, falls Sie ihn
 in der letzten Übung ausgeschaltet haben.
 
+
 \clearpage
 %% Original page 39
 Wenn der GNU Privacy Assistant läuft, klicken Sie auf die Schaltfläche
 Import, suchen den eben abgespeicherten Schlüssel und laden ihn. Der
 importierte Schlüssel wird nun im GNU Privacy Assistant angezeigt:
 
-% screenshot GPA Schlüsselverwaltung mit einem key
+% screenshot GPA Schlüsselverwaltung mit zwei Schlüsseln
+\begin{center}
+\includegraphics[width=0.9\textwidth]{sc-gpa-two-keys}
+\end{center}
 
 Damit haben Sie einen fremden öffentlichen Schlüssel ­-- in diesem
 Beispiel den von Adele ­-- importiert und an Ihrem Schlüsselbund
@@ -987,14 +1008,13 @@ befestigt. Sie können diesen Schlüssel jederzeit benutzen, um
 verschlüsselte Nachrichten an den Besitzer dieses Schlüssels zu
 senden.
 
-Bevor wir weitermachen, eine
-wichtige Frage:\\
+\textbf{Bevor wir weitermachen, eine wichtige Frage:}\\
 woher wissen Sie eigentlich, dass der fremde öffentliche Schlüssel
 wirklich von Adele stammt? Man kann Emails auch unter falschem Namen
 versenden ­-- die Absenderangabe besagt eigentlich gar nichts.
 
-Wie können Sie also sichergehen, dass ein Schlüssel auch wirklich
-seinem Absender gehört ?
+Wie können Sie also sichergehen, daß ein Schlüssel auch wirklich
+seinem Absender gehört?
    
 $\spadesuit$ Diese Kernfrage besprechen wir im Handbuch ,,Gpg4win für
 Durchblicker'' Kapitel 9: ,,Die Schlüsselprüfung''. Lesen Sie jetzt
@@ -1002,7 +1022,7 @@ dort weiter, bevor Sie danach an dieser Stelle fortfahren.
 
 \clearpage
 %% Original page 40
-Sie haben in Kapitel 9 des Hand- buchs ,,Gpg4win für Durchblicker''
+Sie haben in Kapitel 9 des Handbuchs ,,Gpg4win für Durchblicker''
 gelesen, wie man sich von der Echtheit eines Schlüsselss überzeugt und
 ihn dann mit seinem eigenen geheimen Schlüssel signiert.
 
@@ -1012,16 +1032,17 @@ Email-Nachricht signieren kann. Das bedeutet, daß man die Email mit
 einer Art elektronischem Siegel versieht.
 
 Der Text ist dann zwar noch für jeden lesbar, aber der Empfänger kann
-sicher sein, daß die Email unterwegs nicht manipuliert oder verändert
-wurde.
+feststellen, ob die Email unterwegs manipuliert oder verändert wurde.
 
 Die Überprüfung einer solchen Signatur ist sehr einfach. Sie müssen
 dazu natürlich den öffentlichen Schlüssel des Absenders bereits an
-Ihrem Gpg4win- Schlüsselbund befestigt haben, wie in Kapitel 8
+Ihrem Gpg4win-,,Schlüsselbund'' befestigt haben, wie in Kapitel 8
 besprochen.
 
 % cartoon:  Müller mit Schlüssel
-\includegraphics{man-with-signed-key}
+\begin{center}
+\includegraphics[width=0.4\textwidth]{man-with-signed-key}
+\end{center}
 
 
 \clearpage
@@ -1032,51 +1053,43 @@ Anfang und Ende von einer Signatur eingerahmt ist.  Sie beginnt mit
 \begin{verbatim}
 -----BEGIN PGP SIGNED MESSAGE-----
 Hash: SHA1
+\end{verbatim} 
 
 und endet unter der Email-Nachricht mit
 
+\begin{verbatim}
 -----BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.0.6 (MingW32) - WinPT 0.4.0
-Comment: Weitere Infos: siehe http://www.gnupg.org
+Version: GnuPG v1.4.2 (MingW32)
 
 iEYEARECAAYFAjxeqy0ACgkQcwePex+3Ivs79wCfW8u
-ytRsEXgzCrfPnjGrDDtb7
-QZIAn17B8l8gFQ3WIUUDCMfA5cQajHcm
+ytRsEXgzCrfPnjGrDDtb7QZIAn17B8l8gFQ3WIUUDCMfA5cQajHcm
 =O6lY
 -----END PGP SIGNATURE-----
 \end{verbatim}
 
-Markieren Sie den gesamten Text
-von BEGIN PGP SIGNED
-MESSAGE bis END PGP
-SIGNATURE und kopieren
-Sie ihn mit Crtl+C in die
+Markieren Sie den gesamten Text von \textsl{BEGIN PGP SIGNED MESSAGE}
+bis \textsl{END PGP SIGNATURE} und kopieren Sie ihn mit Strg+C in die
 Zwischenablage.
 
-Nun fahren Sie genauso fort wie
-bei der Entschlüsselung einer
-Email, wie wir es in Kapitel 7
-dieses Handbuchs besprochen
-haben:
+Nun fahren Sie genauso fort wie bei der Entschlüsselung einer Email,
+wie wir es in Kapitel 7 dieses Handbuchs besprochen haben:
 
-Sie öffnen WinPT aus der Windows-
-Taskleiste und wählen
-Decrypt/Verify.
+Sie öffnen WinPT aus der Windows-Taskleiste und wählen
+\Menu{Zwischenablage$\rightarrow$Entschlüsseln/Überprüfen}.
 
-Es sollte dann die Meldung
+Sie sollte daraufhin folgendes Fenster sehen:
 
-\begin{verbatim}
-Signature good -
-Signed by .....
-\end{verbatim}
+% screenshot: WinPT good signature.
+\begin{center}
+\includegraphics[width=0.7\textwidth]{sc-winpt-good-sig}
+\end{center}
 
-angezeigt werden.  Falls Sie aber die Meldung \emph{Bad signature}
-oder \emph{Überprüfung fehlgeschlagen} erhalten, wurde die Nachricht
-bei der Übertragung verändert.  Aufgrund der technischen Gegebenheiten
-im Internet ist es nicht auszuschließen, daß die Email durch eine
-fehlerhafte Übertragung verändert wurde. Das ist zunächst der
-wahrscheinlichste Fall. Es kann jedoch auch bedeuten, dass der Text
-nachträglich verändert wurde.
+Falls Sie dort aber in der Statusspalte \emph{Die Signatur ist nicht
+  gültig!}  erhalten, wurde die Nachricht bei der Übertragung
+verändert.  Aufgrund der technischen Gegebenheiten im Internet ist es
+nicht auszuschließen, daß die Email durch eine fehlerhafte Übertragung
+verändert wurde. Das ist zunächst der wahrscheinlichste Fall. Es kann
+jedoch auch bedeuten, dass der Text nachträglich verändert wurde.
 
 $\spadesuit$ Wie Sie in einem solchen Fall vorgehen sollten, erfahren
 Sie im Handbuch ,,Gpg4win für Durchblicker'' Kapitel 10.  ,,Emails
@@ -1097,25 +1110,19 @@ Sie Ihre Email eben an diesen.
 Starten Sie nun Ihr Mailprogramm. Schreiben Sie eine Nachricht ­--
 es ist egal, was: Adele kann nicht wirklich lesen$\ldots$
 
-% screenshot: composer mit mail an Adele
-
-\clearpage
-%% Original page 43
 Nun markieren Sie den gesamten Text und kopieren Sie ihn mit dem
-entsprechenden Menübefehl oder Tastaturkürzel Ihres Betriebssystems
-(z.B. Strg+C bei Windows).  Damit haben Sie den Text in den Speicher
-Ihres Rechners ­-- bei Windows Zwischenablage oder Clipboard genannt
-­-- kopiert.
+entsprechenden Menübefehl oder Tastaturkürzel (Strg+C).  Damit haben
+Sie den Text in den Speicher Ihres Rechners ­-- bei Windows
+Zwischenablage oder Clipboard genannt ­-- kopiert.
 
-% screenshot compoer mit mail an Adele, body markiert
+% screenshot: composer mit mail an Adele, body markiert
+\begin{center}
+\includegraphics[width=0.9\textwidth]{sc-ol-send-enc-msg1}
+\end{center}
 
-\clearpage
-%% Original page 44
-Klicken Sie nun mit der rechten Maustaste auf auf das WinPT-Icon unten
-rechts in der Windows-Task.  In der WinPT-Befehlsleiste klicken Sie
-auf [ Zwischenablage ] und dann auf [ Verschlüsseln ].
+Sie öffnen nun WinPT aus der Windows-Taskleiste und wählen
+\Menu{Zwischenablage$\rightarrow$Verschlüsseln}.
 
-% screenshot: Winpt menu aus taklsbar->zwischenablage->verschlüsseln
 
 \clearpage
 %% Original page 45
@@ -1124,40 +1131,42 @@ Schlüsselbund haben. In unserem Beispiel sind das Adeles Schlüssel,
 den sie Ihnen vorhin geschickt hat, und Ihr eigener Schlüssel, den Sie
 in Kapitel 2 erzeugt haben.
 
-Klicken Sie auf Adeles Schlüssel, denn damit muss die Nachricht ja
-verschlüsselt werden,
+% screenshot: Winpt encryption key selection
+\begin{center}
+\includegraphics[width=0.7\textwidth]{sc-winpt-sel-enc-key}
+\end{center}
+
+Klicken Sie auf Adeles Schlüssel, denn damit muß die Nachricht ja
+verschlüsselt werden.
 
 Sie erinnern sich an den Grundsatz:
 
-Wenn Sie an jemanden verschlüsselte Emails schicken wollen, müssen
-Sie dessen öffentlichen Schlüssel haben und zum Verschlüsseln
+\textbf{Wenn Sie an jemanden verschlüsselte Emails schicken wollen,
+  müssen Sie dessen öffentlichen Schlüssel haben und zum Verschlüsseln
+  benutzen.}
 
-% screenshot: Winpt encryption key selection
 
-Klicken Sie den öffentlichen Schlüssel Ihres Korrespondenzpartners an
-und anschließend auf [ OK ].
-
-Jetzt wird Ihre Nachricht verschlüsselt. Nach kurzer Zei erscheint
-diese Meldung:
-
-% screenshot: winpt Finished message
-
-Klicken Sie auf OK.
+Nachdem Sie auf \Button{OK} geklickt haben, wird Ihre Nachricht
+verschlüsselt. Nach kurzer Zeit erscheint eine Meldung die dies
+bestätigt.
 
 
 \clearpage
 %% Original page 46
 Die verschlüsselte Nachricht befindet sich noch in der Zwischenablage
-(Clipboard) und kann nun mühelos in das Email- Fenster hineinkopiert
+(Clipboard) und kann nun mühelos in das Email-Fenster hineinkopiert
 werden.  Löschen Sie den unverschlüsselten Text oder kopieren die den
 Inhalt der Zwischenablage einfach darüber.
 
 So ähnlich sollte das Ergebnis aussehen:
 
 % screenshot: composer Windows mit enrcypted text 
+\begin{center}
+\includegraphics[width=0.9\textwidth]{sc-ol-send-enc-msg2}
+\end{center}
 
 Senden Sie nun Ihre Email wieder an Adele.  Nur zur Vorsicht:
-natürlich sollten Ihre Emails nicht \verb-f.mustermann@firma.de- als
+natürlich sollten Ihre Emails nicht \verb-heinrichh@gpg4win.de- als
 Absender haben, sondern Ihre eigene Email-Adresse.  Denn sonst werden
 Sie nie Antwort von Adele bekommen$\ldots$
 
@@ -1165,12 +1174,11 @@ Herzlichen Glückwunsch!  Sie haben Ihre erste Email verschlüsselt!
 
 \clearpage
 %% Original page 47
-Wie Sie Ihre Emails verschlüsselt
-archivieren
+\section{Wie Sie Ihre Emails verschlüsselt archivieren}
 
 Eine Einstellung müssen Sie noch vornehmen, damit Sie Ihre Emails
 verschlüsselt aufbewahren können.  Natürlich können Sie einfach eine
-Klartext-Version Ihrer Texte aufbewahren, aber das wäre eigentlich
+Klartextversion Ihrer Texte aufbewahren, aber das wäre eigentlich
 nicht angebracht. Wenn Ihre Mitteilung geheimhaltungsbedürftig war,
 sollte sie auch nicht im Klartext auf Ihrem Rechner gespeichert sein.
 Also sollte immer ein Kopie der verschlüsselten Email aufbewahrt
@@ -1182,9 +1190,11 @@ Sie nicht und werden Sie nie haben$\ldots$
 
 Also was tun?
 
-Ganz einfach ­ Gpg4win legt einfach eine Archiv-Kopie Ihres Textes ab,
-die mit Ihrem eigenen öffentlichen Schlüssel verschlüsselt ist! So
-können Sie den Text auch später noch einfach mit Ihrem eigenen
+Ganz einfach: Sie verschlüsseln zusätzlich auch an sich selbst.
+
+Die Nachricht wird für den eigentlichen Empfanger (z.B. Adele) als
+auch an Ihren eigenen öffenlichen Schlüssel verschlüsselt.  So können
+Sie den Text auch später noch einfach mit Ihrem eigenen
 Geheimschlüssel wieder lesbar machen.
 
 Da Gpg4win nicht wissen kann, welchen Schlüssel Sie benutzen ­-- Sie
@@ -1193,49 +1203,54 @@ mitteilen.
 
 \clearpage
 %% Original page 48
-Um diese Option zu nutzen, genügt
-ein Mausklick: öffnen Sie WinPT,
-dann das Untermenü ,,Einstellungen'' und dort ,,GPG''
+Um diese Option zu nutzen, genügt ein Mausklick: Öffnen Sie WinPT und
+dort das Menü \Menu{Einstellungen$\rightarrow$GPG}.
 
-% screenshot: Winpt Menu mit untermenu
+% screenshot: Winpt configuration dialog
+\begin{center}
+\includegraphics[width=0.9\textwidth]{sc-winpt-enctoself}
+\end{center}
 
 In dem Einstellungsfenster, das sich nun öffnet, tragen Sie unter
-,,Eigener Schlüssel'' Ihren Schlüssel ein, und zwar einfach mit der
+,,Encrypt to this key'' Ihren Schlüssel ein, und zwar einfach mit der
 dazugehörigen Email-Adresse.
+
+Eine entsprechende Option finden Sie auch bei allen Mailprogrammen,
+die GnuPG direkt unterstützen.
 
 
 \clearpage
 %% Original page 49
-Fassen wir kurz zusammen:
+\textbf{Fassen wir kurz zusammen:}
+
 \begin{enumerate}
 \item Sie haben mit dem öffentlichen Schlüssel Ihres Partners eine
   Email verschlüsselt und ihm damit geantwortet.
-\item Sie haben Gpg4win mitgeteilt, daß es Archiv-Kopien Ihrer Emails
-  ablegen soll, die mit Ihrem eigenen Schlüssel verschlüsselt sind.
+\item Sie haben WinPT mitgeteilt, daß Archivkopien Ihrer Emails auch
+  zusätzich mit Ihrem eigenen Schlüssel verschlüsselt werden sollen.
 \end{enumerate}
 
-Das war's! Willkommen in der Welt der freien und sicheren
-Email-Verschlüsselung!
+\textbf{Das war's! Willkommen in der Welt der freien und sicheren
+Email-Verschlüsselung!}
 
 
 $\spadesuit$ Lesen Sie nun die Kapitel 10 bis 12 im Handbuch ,,Gpg4win
 für Durchblicker''.  Sie erfahren dort unter anderem, wie man Emails
-signiert und einen bereits vorhandenen Geheimschlüssel (z.B. aus PGP)
-in GnuPG importiert und verwendet.
+signiert und einen bereits vorhandenen Geheimschlüssel in GnuPG
+importiert und verwendet.
 
 $\spadesuit$ Im Kapitel 13 des Handbuchs ,,Gpg4win für Durchblicker''
-können Sie weiterhin in zwei spannenden Kapiteln lesen, warum GnuPG
-nicht zu knacken ist --- jedenfalls nicht in den nächsten paar
-Milliarden Jahren.
+können Sie weiterhin in zwei spannenden Kapiteln lesen, auf welchen
+Verfahren die Sicherheit von GnuPG beruht.
 
-Und Sie können lesen, wie die geheimnisvolle Mathematik hinter Gpg4win
-wirklich funktoniert.
+Und Sie können lesen, wie die geheimnisvolle Mathematik hinter GnuPG
+im Detail funktoniert.
 
-Genau wie das Kryptographiesystem Gpg4win wurden diese Texte nicht
-geschrieben für Mathematiker, Geheimdienstler und Kryptographen,
+Genau wie das Kryptographiesystem Gpg4win wurden diese Texte nicht nur
+für Mathematiker, Geheimdienstler und Kryptographen geschrieben,
 sondern
 
-$\spadesuit$ für jedermann.
+\textbf{für jedermann.}
 
 
 \newpage
