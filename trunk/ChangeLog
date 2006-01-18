@@ -1,3 +1,8 @@
+2006-01-19  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
+
+	* README.SVN: Extend sample configure call. Without the --host
+	setting, configure will complain about missing dlltool.
+
 2006-01-13  Werner Koch  <wk@g10code.com>
 
 	* patches/glib-2.9.2-wk1/02-gspawn-w32.patch: New.

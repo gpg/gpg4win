@@ -5,7 +5,7 @@ If you are building from Subversion, run the script
 first, to make sure that you have all the necessary maintainer tools
 are installed and to build the actual configuration files.  Then run
 
-./configure --enable-maintainer-mode
+./configure --enable-maintainer-mode --host=i586-mingw32msvc
 
 followed by the usual make.
 
