@@ -33,8 +33,12 @@
 % Hyperref should be among the last packages loaded
 \usepackage{hyperref}
 
-
-\input{version.tex}
+% As long as this manual is part of the gpg4win package, we don't want
+% to update the version number automatically.  If we move this to its
+% own package we should have a central way to declare the version
+% of gpg4win this manual referes to.
+%\input{version.tex}
+\newcommand{\PackageVersion}{0.6.0}
 \input{macros.tex}
 
 \begin{document}
@@ -77,7 +81,7 @@ entitled ,,GNU Free Documentation License''.
 \vfill
 
 \begin{center}
-\fbox{\parbox{.7\textwidth}{Die Angaben auf der {\bf folgenden Seite}
+\fbox{\parbox{.7\textwidth}{Die Angaben auf der \textbf{folgenden Seite}
     sind nicht mehr korrekt; wir können diese Seite allerdings nicht
     abändern, da die Regeln der GFDL hier falsch angewandt wurden.
     Neue Copyright Hinweise sollten deswegen hier eingestellt werden.}}
@@ -136,25 +140,25 @@ Das Gpg4win-Anleitungs- und Übungsmaterial besteht aus drei Teilen:
 
 \begin{itemize}
 
-\item {\bf dem Schnelleinstieg, ,,Gpg4win für Einsteiger'',} in dem
+\item \textbf{dem Schnelleinstieg, ,,Gpg4win für Einsteiger'',} in dem
   Sie gerade lesen,
 
-\item {\bf dem Handbuch ,,Gpg4win für Durchblicker''} im PDF-Format, welches
+\item \textbf{dem Handbuch ,,Gpg4win für Durchblicker''} im PDF-Format, welches
   Sie nach der Installation von Gpg4win auf Ihrer Festplatte finden,
 
-\item {\bf dem Übungsroboter Adele,} mit dem Sie die Email-Ver- und
+\item \textbf{dem Übungsroboter Adele,} mit dem Sie die Email-Ver- und
   Entschlüsselung so oft üben können, wie Sie wollen. Um mit Adele zu
   üben, brauchen Sie eine Internet-Verbindung.
 \end{itemize}
 
 
-{\bf ,,Gpg4win für Einsteiger''} führt Sie kurz und knapp durch die Installation
+\textbf{,,Gpg4win für Einsteiger''} führt Sie kurz und knapp durch die Installation
 und die alltägliche Benutzung der Gpg4win-Software. Der Zeitbedarf
 für das Durcharbeiten des Schnelleinstiegs hängt unter anderem davon
 ab, wie gut Sie sich mit Ihrem PC und Windows auskennen. In etwa
 sollten Sie sich eine halbe Stunde Zeit nehmen.
 
-{\bf ,,Gpg4win für Durchblicker''} liefert Hintergrundwissen, das Ihnen die
+\textbf{,,Gpg4win für Durchblicker''} liefert Hintergrundwissen, das Ihnen die
 grundlegenden Mechanismen von Gpg4win verdeutlicht und die etwas
 seltener benutzten Fähigkeiten erläutert.
 
@@ -169,7 +173,7 @@ der angegebenen Reihenfolge lesen.
 $\spadesuit$ Dieses Symbol weist auf auf den Wechsel in das andere Buch
 hin.
 
-{\bf Der Übungsroboter Adele} steht Ihnen im Internet zur
+\textbf{Der Übungsroboter Adele} steht Ihnen im Internet zur
 Verfügung. Adele empfängt und sendet verschlüsselte Emails und
 entschlüsselt sie auch. Sie können also mit Adele einen kompletten
 Verschlüsselungsdialog so lange üben, bis Sie sich völlig mit dem
@@ -184,23 +188,23 @@ für den Betrieb von Adele.
 %% Orginal page 8
 \section{Was ist Gpg4win?}
 
-{\bf
+\textbf{
 Das Projekt Gpg4win (GNU Privacy Guard for Windows) ist eine vom
 Bundesamt für Sicherheit in der Informationstechnik beauftragte
 Email-Verschlüsselungssoftware. Gpg4win bezeichnet ein Gesamtpaket,
 welches die folgenden Programme umfasst:
 }
 
-{\bf GnuPG}: das Kernstück, die Verschlüsselungs-Software \newline
-{\bf GPA}: der GNU Privacy Assistent,
+\textbf{GnuPG}: das Kernstück, die Verschlüsselungs-Software \newline
+\textbf{GPA}: der GNU Privacy Assistent,
 eine Schlüsselverwaltung \newline
-{\bf WinPT}: Schlüsselverwaltung, unterstützt auch Verschlüsselung
+\textbf{WinPT}: Schlüsselverwaltung, unterstützt auch Verschlüsselung
 per Clipboard \newline
-{\bf GPGol}: ein Plugin für Microsoft Outlook, es integriert dort die
+\textbf{GPGol}: ein Plugin für Microsoft Outlook, es integriert dort die
 Bedienung von GnuPG \newline
-{\bf GPGee}: ein Plugin für den Windows Explorer, per rechter Maustaste
+\textbf{GPGee}: ein Plugin für den Windows Explorer, per rechter Maustaste
 können Dateien verschlüsselt werden \newline
-{\bf Sylpheed-Claws}: ein komplettes Email-Programm mit integrierter
+\textbf{Sylpheed-Claws}: ein komplettes Email-Programm mit integrierter
 GnuPG-Bedienung \newline
 
 Mit dem Verschlüsselungsprogramm GnuPG (GNU Privacy Guard) kann
@@ -251,9 +255,9 @@ Sie auf das Installations-Icon mit dem Titel ,,Gpg4win''.
 
 Haben Sie Gpg4Win aus dem Internet heruntergeladen, so klicken Sie
 bitte auf diese neu abgespeicherte Datei, die den Namen
-\texttt{gpg4win-0.6.0.exe} (oder höhere Verisionnummer) haben sollte.  Achten Sie
-unbedingt darauf, daß Sie die Datei von einer vertrauenswürdigen Seite
-erhalten haben.
+\texttt{gpg4win-\PackageVersion{}.exe} (oder höhere Verisionnummer)
+haben sollte.  Achten Sie unbedingt darauf, daß Sie die Datei von
+einer vertrauenswürdigen Seite erhalten haben.
 
 Die weitere Installation ist dann identisch:
 
@@ -402,7 +406,7 @@ Klicken Sie hier auch auf \Button{Fertig stellen}.
 \clearpage
 %% Original page 14
 
-{\bf Das war's schon!}
+\textbf{Das war's schon!}
 
 
 Sie haben Gpg4win installiert und
@@ -412,7 +416,7 @@ starten.
 Vorher sollten Sie aber im Handbuch ,,Gpg4win für Durchblicker''
 (PDF-Datei) die Kapitel 3 und 4 lesen. Wir erklären dort den genialen
 Trick, mit dem Gpg4win Ihre Emails sicher und bequem verschlüsselt.
-Gpg4win funktioniert zwar auch, ohne dass Sie verstehen warum, aber im
+Gpg4win funktioniert zwar auch, ohne daß Sie verstehen warum, aber im
 Gegensatz zu anderen Programmen wollen Sie Gpg4win schließlich Ihre
 geheime Korrespondenz anvertrauen. Da sollten Sie schon wissen, was
 vor sich geht.
@@ -422,7 +426,7 @@ Außerdem ist die ganze Angelegenheit ziemlich spannend$\ldots$
 Weiter geben wir Ihnen einige Tipps, mit denen Sie sich einen sicheren
 und trotzdem leicht zu merkenden Passwortsatz ausdenken können.
 
-{\bf
+\textbf{
 $\spadesuit$ Lesen Sie jetzt im Handbuch ,,Gpg4win für Durchblicker''
              die Kapitel 3 und 4, und lesen Sie erst danach hier weiter.
 }
@@ -435,12 +439,12 @@ Nachdem Sie gelesen haben, warum GnuPG so sicher ist und wie ein guter
 Passwortsatz als Schutz für Ihren geheimen Schlüssel entsteht, werden
 wir Ihr Schlüsselpaar erzeugen.
 
-{\bf
+\textbf{
 Eigentlich müsste man so einen wichtigen Schritt ein paar Mal üben
 können$\ldots$
 }
 
-{\bf Und genau das können Sie auch tun:} Sie können den gesamten Ablauf der
+\textbf{Und genau das können Sie auch tun:} Sie können den gesamten Ablauf der
 Schlüsselerzeugung, Verschlüsselung und Entschlüsselung durchspielen,
 so oft Sie wollen, bis Sie ganz sicher sind.
 
@@ -458,7 +462,7 @@ machen. Doch dazu später mehr.
 
 \clearpage
 %% Original page 16
-{\bf Los geht's!}
+\textbf{Los geht's!}
 
 Rufen Sie das Programm GPA über das Windows Startmenü auf:
 
@@ -480,7 +484,7 @@ Klicken Sie auf \Button{Jetzt~Schlüssel~erzeugen}.
 \clearpage
 %% Original page 17
 
-{\bf Wenn Sie die Schlüsselerzeugung} zunächst einmal testen wollen, dann
+\textbf{Wenn Sie die Schlüsselerzeugung} zunächst einmal testen wollen, dann
 können Sie im nun folgenden Fenster einen beliebigen Namen eingeben,
 z.B. ,,Heinrich Heine''.
 
@@ -541,7 +545,7 @@ zu knackenden Passwortsatz parat haben und hier eintragen.
 Falls der Passwortsatz nicht sicher genug sein sollte, werden Sie
 darauf hingewiesen.
 
-{\bf Auch an dieser Stelle können Sie} ­-- wenn Sie wollen ­-- zunächst
+\textbf{Auch an dieser Stelle können Sie} ­-- wenn Sie wollen ­-- zunächst
 einen Test-Passwortsatz eingeben oder auch gleich ,,Ernst machen''.
 
 Wenn Sie Ihren geheimen Passwortsatz zweimal eingegeben haben, klicken
@@ -587,7 +591,7 @@ Sie dann aus dem Hauptmenü
 
 \clearpage
 %% Original page 23
-{\bf
+\textbf{
 Damit ist die Installation von Gpg4win und die Erzeugung Ihres
 Schlüsselpaares abgeschlossen.  Sie besitzen nun einen einmaligen und
 sicheren digitalen Schlüssel.
@@ -612,7 +616,7 @@ kann die Gültigkeit nachträglich verändern ­-- mehr dazu später.
 Ein Schlüssel mit einer Länge von 1024 Bit ist ein sicherer Schlüssel,
 der trotzdem nicht zuviel Rechenkraft auf Ihrem Computer beansprucht.
 
-{\bf
+\textbf{
 $\spadesuit$ Lesen Sie nun im Handbuch Kapitel 5 ,,Schlüssel im
 Detail'' weiter.  Sie können dieses Kapitel jetzt lesen oder später,
 wenn Sie diese Informationen benötigen
@@ -635,7 +639,7 @@ Korrespondenzpartnern haben --- je mehr, desto besser.
 
 Denn:
 
-{\bf
+\textbf{
 Um sichere Emails austauschen zu können, müssen beide Partner jeweils
 den öffentlichen Schlüssel des anderen besitzen und benutzen.
 }
@@ -653,8 +657,8 @@ zugänglich machen. Je nachdem, wie groß der Kreis Ihrer
 Korrespondenzpartner ist, gibt es zwei Möglichkeiten:
 
 \begin{itemize}
-\item {\bf direkt per Email} an bestimmte Korrespondenzpartner
-\item {\bf oder auf einem Schlüsselserver} --- weltweit für jedermann zugänglich
+\item \textbf{direkt per Email} an bestimmte Korrespondenzpartner
+\item \textbf{oder auf einem Schlüsselserver} --- weltweit für jedermann zugänglich
 \end{itemize}
 
 Die erste Möglichkeit, Ihren öffentlichen Schlüssel zu verbreiten,
@@ -770,7 +774,7 @@ So etwa sollte Ihre Email nun aussehen:
 \end{center}
 
 Schicken Sie die Email an Adele nun ab. Nur zur Vorsicht: natürlich
-sollten Ihre Emails {\bf nicht} \verb-heinrichh@gpg4win.de- oder ein andere
+sollten Ihre Emails \textbf{nicht} \verb-heinrichh@gpg4win.de- oder ein andere
 Beispieladresse als Absender haben, sondern \emph{Ihre eigene
   Email-Adresse}. Denn sonst werden Sie nie Antwort von Adele
 bekommen$\ldots$
@@ -787,7 +791,7 @@ worden.  \textbf{Fassen wir kurz zusammen:} Sie haben Ihren
 öffentlichen Schlüssel per Email an einen Korrespondenzpartner
 geschickt.
 
-{\bf
+\textbf{
 $\spadesuit$ Im Handbuch ,,Gpg4win für Durchblicker'' Kapitel 7
 beschreiben wir, wie Sie Ihren Schlüssel auch als Dateianhang
 versenden.
@@ -831,9 +835,9 @@ Clinton'' dort herumliegen ­ schon seit Jahren$\ldots$
 \textbf{Fassen wir kurz zusammen:} Sie wissen nun, wie Sie Ihren
 Schlüssel auf einen Schlüsselserver im Internet schicken können.
 
-{\bf
+\textbf{
 $\spadesuit$ Wie Sie den Schlüssel eines Partners auf den
-Schlüsselervern suchen und finden, beschreiben wir im Handbuchch
+Schlüsselservern suchen und finden, beschreiben wir im Handbuch
 ,,Gpg4win für Durchblicker'' Kapitel 6. Sie können dieses Kapitel jetzt
 lesen oder später, wenn Sie diese Funktion benötigen.
 }
@@ -893,13 +897,13 @@ Für die meisten Mailprogramme --­ z.B. MS Outlook für Windows, gibt es
 außerdem spezielle PlugIns, mit denen die Ver- und Entschlüsselung
 direkt im jeweiligen Mailprogramm erledigt werden kann.
 
-{\bf
+\textbf{
 $\spadesuit$ Hinweise zu diesen Lösungen finden Sie im Handbuch
 ,,Gpg4win für Durchblicker'' Kapitel 8. Sie können dieses Kapitel jetzt
 lesen oder später, wenn Sie diese Funktion benötigen.
 }
 
-WinPT hat dagegen den Vorteil, dass es nicht mit einem bestimmten,
+WinPT hat dagegen den Vorteil, daß es nicht mit einem bestimmten,
 sondern mit jedem Mailprogramm funktioniert. Es erledigt nämlich
 die Ver- und Entschlüsselung einfach im Speicher des Rechners. Das
 bedeutet, daß man den Text, der ver- oder entschlüsselt werden soll,
@@ -1075,14 +1079,14 @@ verschlüsselte Nachrichten an den Besitzer dieses Schlüssels zu
 senden.
 
 \textbf{Bevor wir weitermachen, eine wichtige Frage:}\\
-woher wissen Sie eigentlich, dass der fremde öffentliche Schlüssel
+woher wissen Sie eigentlich, daß der fremde öffentliche Schlüssel
 wirklich von Adele stammt? Man kann Emails auch unter falschem Namen
 versenden ­-- die Absenderangabe besagt eigentlich gar nichts.
 
 Wie können Sie also sichergehen, daß ein Schlüssel auch wirklich
 seinem Absender gehört?
 
-{\bf
+\textbf{
 $\spadesuit$ Diese Kernfrage besprechen wir im Handbuch ,,Gpg4win für
 Durchblicker'' Kapitel 9: ,,Die Schlüsselprüfung''. Lesen Sie jetzt
 dort weiter, bevor Sie danach an dieser Stelle fortfahren.
@@ -1157,9 +1161,9 @@ Falls Sie dort aber in der Statusspalte \emph{Die Signatur ist nicht
 verändert.  Aufgrund der technischen Gegebenheiten im Internet ist es
 nicht auszuschließen, daß die Email durch eine fehlerhafte Übertragung
 verändert wurde. Das ist zunächst der wahrscheinlichste Fall. Es kann
-jedoch auch bedeuten, dass der Text nachträglich verändert wurde.
+jedoch auch bedeuten, daß der Text nachträglich verändert wurde.
 
-{\bf
+\textbf{
 $\spadesuit$ Wie Sie in einem solchen Fall vorgehen sollten, erfahren
 Sie im Handbuch ,,Gpg4win für Durchblicker'' Kapitel 10.  ,,Emails
 signieren''. Lesen Sie jetzt dort weiter, bevor Sie danach an dieser
@@ -1235,11 +1239,11 @@ So ähnlich sollte das Ergebnis aussehen:
 \end{center}
 
 Senden Sie nun Ihre Email wieder an Adele.  Nur zur Vorsicht:
-natürlich sollten Ihre Emails {\bf nicht} \verb-heinrichh@gpg4win.de- als
+natürlich sollten Ihre Emails \textbf{nicht} \verb-heinrichh@gpg4win.de- als
 Absender haben, sondern Ihre eigene Email-Adresse.  Denn sonst werden
 Sie nie Antwort von Adele bekommen$\ldots$
 
-{\bf
+\textbf{
 Herzlichen Glückwunsch!  Sie haben Ihre erste Email verschlüsselt!
 }
 
@@ -1304,14 +1308,14 @@ die GnuPG direkt unterstützen.
 \textbf{Das war's! Willkommen in der Welt der freien und sicheren
 Email-Verschlüsselung!}
 
-{\bf
+\textbf{
 $\spadesuit$ Lesen Sie nun die Kapitel 10 bis 12 im Handbuch ,,Gpg4win
 für Durchblicker''.  Sie erfahren dort unter anderem, wie man Emails
 signiert und einen bereits vorhandenen Geheimschlüssel in GnuPG
 importiert und verwendet.
 }
 
-{\bf
+\textbf{
 $\spadesuit$ Im Kapitel 13 des Handbuchs ,,Gpg4win für Durchblicker''
 können Sie weiterhin in zwei spannenden Kapiteln lesen, auf welchen
 Verfahren die Sicherheit von GnuPG beruht.
