@@ -1,5 +1,10 @@
 2006-01-20  Jan-Oliver Wagner  <jan@intevation.de>
 
+	* manual-de/gpg4win-logo.eps: New.
+	* manual-de/einsteiger.tex: Reworked.
+
+2006-01-20  Jan-Oliver Wagner  <jan@intevation.de>
+
 	* logo/: New.
 	* logo/gpg4win-logo.eps: New.
 	* logo/gpg4win-logo-400px.png: New.
