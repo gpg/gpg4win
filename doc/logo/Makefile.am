@@ -1,4 +1,4 @@
-# Makefile.am - Documentation for GnuPG 4 Windows Makefile.
+# Makefile.am - GnuPG 4 Windows Makefile for Logos.
 # Copyright (C) 2005 g10 Code GmbH
 # 
 # This file is part of GPG4Win.
@@ -17,6 +17,10 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
-EXTRA_DIST = nsi-mode.el
+EXTRA_DIST = gpg4win-logo.eps         \
+             gpg4win-logo-400px.png   \
+             gpg4win-logo-400px.bmp   \
+             gpg4win-logo-favicon.bmp \
+             gpg4win-logo-icon.ico
 
-SUBDIRS = logo manual-de website
+

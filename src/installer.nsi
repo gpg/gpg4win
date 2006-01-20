@@ -41,6 +41,8 @@ Name "${PRETTY_PACKAGE}"
 # Set the output filename.
 OutFile "${PACKAGE}-${VERSION}.exe"
 
+Icon "${TOP_SRCDIR}/doc/logo/gpg4win-logo-icon.ico"
+UninstallIcon "${TOP_SRCDIR}/doc/logo/gpg4win-logo-icon.ico"
 
 # Set the installation directory.
 !ifndef INSTALL_DIR
@@ -153,7 +155,7 @@ Var STARTMENU_FOLDER
 #!insertmacro MUI_RESERVEFILE_LANGDLL
 #!insertmacro MUI_RESERVEFILE_INSTALLOPTIONS
 ReserveFile "${BUILD_DIR}\g4wihelp.dll"
-ReserveFile "${TOP_SRCDIR}\src\gpg4win-splash.bmp"
+ReserveFile "${TOP_SRCDIR}\doc\logo\gpg4win-logo-400px.bmp"
 ReserveFile "${TOP_SRCDIR}\src\gpg4win-splash.wav"
 ReserveFile "${TOP_SRCDIR}\COPYING"
 
