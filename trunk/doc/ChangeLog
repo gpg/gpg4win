@@ -1,5 +1,12 @@
 2006-01-20  Werner Koch  <wk@g10code.com>
 
+	* Makefile.am (SUBDIRS): Add logo.
+
+	* logo/Makefile.am: New.
+
+	* logo/gpg4win-logo-icon.ico: new. Created from the favicon.
+	* logo/gpg4win-logo-400px.bmp: New.  Created from the PNG.
+
 	* manual-de/einsteiger.tex: Minor cleanups.  Do not include
 	version.tex anymore but hardcode the macro at the top of the file.
 

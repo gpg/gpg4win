@@ -1,3 +1,11 @@
+2006-01-20  Werner Koch  <wk@g10code.com>
+
+	* configure.ac: Create doc/log/Makefile.
+	* src/inst-sections.nsi: Replaced splash image by new logo.
+	* src/installer.nsi: Reserve that new file.
+	(Icon, UninstallIcon): New.
+	* src/gpg4win-splash.bmp: Removed.
+
 2006-01-19  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
 
 	* README.SVN: Extend sample configure call. Without the --host
