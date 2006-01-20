@@ -1,3 +1,8 @@
+2006-01-20  Werner Koch  <wk@g10code.com>
+
+	* manual-de/einsteiger.tex: Minor cleanups.  Do not include
+	version.tex anymore but hardcode the macro at the top of the file.
+
 2006-01-20  Jan-Oliver Wagner  <jan@intevation.de>
 
 	* manual-de/gpg4win-logo.eps: New.
