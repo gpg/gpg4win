@@ -26,11 +26,18 @@ Section "-gpg4win"
 !else 
   SetOutPath "$INSTDIR\share\gpg4win"
 
+  File "${BUILD_DIR}/README.en.txt"
+  File "${BUILD_DIR}/README.de.txt"
   File "${BUILD_DIR}/versioninfo.txt"
 
 !endif
 
 SectionEnd
+
+LangString DESC_Menu_gpg4win_readme ${LANG_ENGLISH} \
+   "General information on Gpg4Win"
+LangString DESC_Menu_gpg4win_readme ${LANG_GERMAN} \
+   "Allgemeine Informationen zu Gpg4Win"
 
 
 

@@ -24,7 +24,7 @@ EXTRA_DIST = pkg-config $(common_nsi) gpg4win.nsi gpg4win-src.nsi \
 	exdll.h g4wihelp.c g4wihelp.nsi config.site loreley.mid
 
 # Need to clean the dll because we bypassed automake.
-CLEANFILES = g4wihelp.dll versioninfo.txt
+CLEANFILES = g4wihelp.dll versioninfo.txt README.en.txt README.de.txt
 
 # Supported source packages.
 gpg4win_spkgs := glib gnupg libgpg-error gpgme gpgol gpa winpt sylpheed-claws \
@@ -196,11 +196,23 @@ versioninfo.txt : playground/build/versioninfo.txt
           echo '=========== SHA-1 checksum ============= == package ==' \
          ) | tac | awk '{printf "%s\r\n", $$0}' > versioninfo.txt
 
+README.en.txt : versioninfo.txt $(top_srcdir)/doc/README.en.txt
+	sed -e '/^;.*/d;/!VERSIONINFO!/{r versioninfo.txt' -e 'd;}' \
+	   < $(top_srcdir)/doc/README.en.txt \
+           | awk '{printf "%s\r\n", $$0}' >README.en.txt
+
+README.de.txt : versioninfo.txt $(top_srcdir)/doc/README.de.txt
+	sed -e '/^;.*/d;/!VERSIONINFO!/{r versioninfo.txt' -e 'd;}' \
+	    -e '/!NEWSFILE!/{r $(top_srcdir)/NEWS' -e 'd;}' \
+            -e 's,!VERSION!,$(VERSION),g' \
+	   < $(top_srcdir)/doc/README.de.txt \
+           | awk '{printf "%s\r\n", $$0}' >README.de.txt
+
 # For some nut-crazy reason someone thought it would be a great idea
 # if makensis changed to the directory of the source file at startup.
 # So we have to pull a couple of strings to correct this.
 gpg4win-$(VERSION).exe: gpg4win.nsi $(common_nsi) stamps/stamp-final \
-                        g4wihelp.dll  versioninfo.txt
+                        g4wihelp.dll  README.en.txt README.de.txt
 	$(MAKENSIS) -V3 -DBUILD_DIR=`pwd` -DTOP_SRCDIR=$(top_srcdir) \
 		-DSRCDIR=$(srcdir) $(srcdir)/gpg4win.nsi
 

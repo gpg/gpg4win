@@ -1,3 +1,23 @@
+2006-01-25  Werner Koch  <wk@g10code.com>
+
+	* m4/gpg4win.m4 (GPG4WIN_BPKG_BINSRC): Kludge to allow
+	"noinstaller" as an alternative to "bin".
+
+2006-01-23  Werner Koch  <wk@g10code.com>
+
+	* src/Makefile.am (README.en.txt, README.de.txt): New.
+	(gpg4win-$(VERSION).exe): Depend on them.
+	(CLEANFILES): Clean them up.
+
+	* src/installer.nsi (T_LangCode): new.
+	(MUI_FINISHPAGE_SHOWREADME): Use this intead of running the key
+	manager.  This makes sense becuase gpg4win needs to be insalled as
+	Administartor but the Administrator should in general not use
+	gpg4win.
+
+	* src/inst-gpg4win.nsi: Install README.de.txt and README.en.txt.
+	* src/uninst-gpg4win.nsi: Uninstall them.
+
 2006-01-20  Werner Koch  <wk@g10code.com>
 
 	* configure.ac: Create doc/log/Makefile.

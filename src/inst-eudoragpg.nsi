@@ -40,6 +40,6 @@ SectionEnd
 LangString DESC_SEC_eudoragpg ${LANG_ENGLISH} \
    "EudoraGPG is a plugin for the Eudora mail program"
 LangString DESC_SEC_eudoragpg ${LANG_GERMAN} \
-   "EudoraGPG ist ein Plugin für das Eudora Mailprogramm"
+   "EudoraGPG ist ein Plugin zur Verschlüsselung für das Eudora Mailprogramm"
 
 

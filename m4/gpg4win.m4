@@ -532,7 +532,7 @@ AC_DEFUN([GPG4WIN_BPKG_GNU],
 
 # GPG4WIN_BPKG_BINSRC([PKG],[DEPENDS],[IF-FOUND],[IF-NOT-FOUND])
 # Set up package PKG which is expected to be delivered as two ZIP files
-# with a "-(src|source)" and a "-bin" suffix.
+# with a "-(src|source)" and a "-(bin|noinstaller)" suffix.
 AC_DEFUN([GPG4WIN_BPKG_BINSRC],
 [
   AC_REQUIRE([GPG4WIN_INIT])
@@ -545,6 +545,11 @@ AC_DEFUN([GPG4WIN_BPKG_BINSRC],
   _gpg4win_version=
   AS_IF([test x$_gpg4win_pkg != xno],
         [GPG4WIN_FIND($1-bin, [$1-\(.*\)-bin],,
+         $_gpg4win_pkg,
+         _gpg4win_bpkg=$gpg4win_val
+	 _gpg4win_version=$gpg4win_version)])
+  AS_IF([test x$_gpg4win_pkg != xno -a x$_gpg4win_bpkg = xno],
+        [GPG4WIN_FIND($1-noinstaller, [$1-\(.*\)-noinstaller],,
          $_gpg4win_pkg,
          _gpg4win_bpkg=$gpg4win_val
 	 _gpg4win_version=$gpg4win_version)])
