@@ -123,10 +123,12 @@ Var STARTMENU_FOLDER
 !define MUI_PAGE_CUSTOMFUNCTION_PRE PrintCloseOtherApps
 !insertmacro MUI_PAGE_INSTFILES
 
-!define MUI_FINISHPAGE_RUN
-!define MUI_FINISHPAGE_RUN_FUNCTION RunOnFinish
-!define MUI_FINISHPAGE_RUN_TEXT "$(T_RunKeyManager)"
-!define MUI_FINISHPAGE_RUN_NOTCHECKED
+!define MUI_FINISHPAGE_SHOWREADME "README.$(T_LangCode).txt"
+!define MUI_FINISHPAGE_SHOWREADME_TEXT "$(T_ShowReadme)"
+#!define MUI_FINISHPAGE_RUN
+#!define MUI_FINISHPAGE_RUN_FUNCTION RunOnFinish
+#!define MUI_FINISHPAGE_RUN_TEXT "$(T_RunKeyManager)"
+#!define MUI_FINISHPAGE_RUN_NOTCHECKED
 !define MUI_FINISHPAGE_LINK "$(T_MoreInfo)"
 !define MUI_FINISHPAGE_LINK_LOCATION http://www.gpg4win.org
 !insertmacro MUI_PAGE_FINISH
@@ -160,6 +162,10 @@ ReserveFile "${TOP_SRCDIR}\src\gpg4win-splash.wav"
 ReserveFile "${TOP_SRCDIR}\COPYING"
 
 # Language support
+
+LangString T_LangCode ${LANG_ENGLISH} "en"
+LangString T_LangCode ${LANG_GERMAN}  "de"
+
 
 # The WelcomeTitle is displayed on the first page.
 LangString T_WelcomeTitle ${LANG_ENGLISH} "${WELCOME_TITLE_ENGLISH}"
@@ -197,6 +203,11 @@ LangString T_MoreInfo ${LANG_ENGLISH} \
    "Click here for the project's homepage"
 LangString T_MoreInfo ${LANG_GERMAN} \
    "Hier klicken um zur Homepage des Projekts zu gelangen"
+
+LangString T_ShowReadme ${LANG_ENGLISH} \
+   "Show the README file"
+LangString T_ShowReadme ${LANG_GERMAN} \
+   "Die README Datei anzeigen"
 
 LangString T_NoKeyManager ${LANG_ENGLISH} \
    "No key manager has been installed, thus we can't run one now."

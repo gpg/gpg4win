@@ -24,6 +24,8 @@ Section "-un.gpg4win"
   Delete "gpg4win-${VERSION}.tar.bz2"
 !else
 
+  Delete "$INSTDIR\share\gpg4win\README.en.txt"
+  Delete "$INSTDIR\share\gpg4win\README.de.txt"
   Delete "$INSTDIR\share\gpg4win\versioninfo.txt"
 
   RMDir "$INSTDIR\share\gpg4win"

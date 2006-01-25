@@ -533,6 +533,12 @@ Section "-startmenu"
                    "$INSTDIR\share\gnupg\faq.html" \
                    "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_gnupg_faq)
 
+    CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\Gpg4Win README.lnk" \
+                   "$INSTDIR\share\gpg4win\README.$(T_LangCode).txt" \
+                   "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_gpg4win_readme)
+
+
+
 # No more uninstall link becuase Windows has its wom feature to call
 #  the uninstaller.
 #    CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\Uninstall.lnk" \

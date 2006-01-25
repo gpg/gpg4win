@@ -60,5 +60,5 @@ LangString T_GPGol_RegFailed ${LANG_GERMAN} \
 LangString DESC_SEC_gpgol ${LANG_ENGLISH} \
    "GnuPG for Outlook"
 LangString DESC_SEC_gpgol ${LANG_GERMAN} \
-   "GnuPG für Outlook (GPGol) is eine Erweiterung für Outlook 2000, die \
+   "GnuPG für Outlook (GPGol) is eine Erweiterung für Outlook 2003, die \
     verwendet wird um Nachrichten mit OpenPGP zu verschlüsseln."
