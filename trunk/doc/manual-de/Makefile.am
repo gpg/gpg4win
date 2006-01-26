@@ -48,7 +48,7 @@ eps_files := adele01.eps.gz adele02.eps.gz man-with-signed-key.eps.gz \
 eps_files_bb := $(eps_files:.gz=.bb)
 
 EXTRA_DIST = fdl.tex einsteiger.tex durchblicker.tex $(eps_files) \
-	     macros.tex version.tex.in
+	     macros.tex version.tex.in gpg4win-logo.eps
 
 CLEANFILES = $(eps_files_bb) *.pdf *.pdf *.toc *.log *.aux *.out
 DISTCLEANFILES = version.tex
