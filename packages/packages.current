@@ -128,7 +128,7 @@ chk  1019c8027c0cf94bca680886f4e2ae4e629a2a97
 
 server ftp://ftp.g10code.com/g10code/scratch
 file winpt-0.11.7-cvs.tar.bz2
-chk  839dce06ab87f50513ce076ba049e61d9de40e39  
+chk  4f1229c776a2eef438dc97512b0882fbdfebbd81  
 
 
 # GPGee
@@ -154,8 +154,8 @@ chk  fa398ea4ca857f11d6c60cbb69b29c6c27bd379c
 # GPGol
 server ftp://ftp.g10code.com/g10code/gpgol
 
-file gpgol-0.9.5.tar.bz2
-chk  5fede7910073a1d513d25223daa25a73b81b13d5
+file gpgol-0.9.6.tar.bz2
+chk  a637d8a024d3106eba320af47066574817624ab3  
 
 
 # GnuPG stuff. 
@@ -168,7 +168,7 @@ chk  cc7e9a5268bf309ac652a7343b62dff8cfb68d38
 file alpha/gpa/gpa-0.7.1.tar.bz2
 chk  db850a43e69c6677765cbaf95718b930fe439612
 
-# libgpg-error and GPGol currently come from manually crafted
+# libgpg-error and gpgme currently come from manually crafted
 # packages.  However, we make them available at a scratch location
 
 server ftp://ftp.g10code.com/g10code/scratch
@@ -176,8 +176,8 @@ server ftp://ftp.g10code.com/g10code/scratch
 file libgpg-error-1.2-cvs.tar.bz2
 chk  ad964f78de99c7493dc47f49b0071f34d7d5e53d
 
-file gpgme-1.1.1-cvs1150.tar.bz2
-chk  1116ebddb7ba0858e7c28fdefadaa62c096c3237
+file gpgme-1.1.1-cvs1152.tar.bz2
+chk  6eb8f6245fda45daeefce667d63aba412c730c2b 
 
 file sylpheed-claws-1.9.100cvs124.tar.bz2
 chk  950c7795f7348a919910d8e6bb5222565a114328  
