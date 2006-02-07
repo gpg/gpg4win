@@ -1,15 +1,13 @@
-<html>
+m4_dnl -*-html-*-
+m4_include(`template.m4')
+m4_dnl $Id: index.htm4,v 1.30 2006/01/12 16:04:03 jan Exp $
+
+m4_define(`EN')
+PAGE_TITLE(`gpg4win')
+PAGE_START
+
 
 <h1>gpg4win: GnuPG for Windows</h1>
-
-(This is a preliminary version of the currently planned homepage
-of the gpg4win project)
-
-<p>
-<a href="http://wald.intevation.org/projects/gpg4win/">GForge gpg4win projekt page</a>
-
-<p>
-<a href="index.de.html">gpg4win Heimatseite in deutsch</a>
 
 <h2>About gpg4win</h2>
 
@@ -24,6 +22,7 @@ related products
 <a href="http://gpgee.excelcia.org/">GPGee</a>,
 <a href="http://eudoragpg.sourceforge.net/ver2.0/en/">EurdoraGPG</a>
 as well as documentation).
+
 
 <p>
 It is an international project. Apart from the english as default,
@@ -48,6 +47,7 @@ simple to create updates.
 
 Choose the newest version gpg4win-n.n.n.exe:
 
+
 <p>
 <a href="ftp://ftp.gpg4win.org/gpg4win/">ftp://ftp.gpg4win.org/gpg4win/</a>
 
@@ -56,4 +56,29 @@ Please subscribe to one of the
 <a href="http://wald.intevation.org/mail/?group_id=11">gpg4win mailing lists</a>
 and share your experiences, questions or problems.
 
-</html>
+
+PAGE_BOXES
+
+<div class="box">
+  <h1>Support</h1>
+  Mailnglists:<br>
+  <a href="http://lists.wald.intevation.org/pipermail/gpg4win-users-en/">Archive</a>
+  | <a href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-users-en">Subscribe</a>
+  <p>Web Forums:<br>
+  <a href="http://wald.intevation.org/forum/forum.php?forum_id=21">Help</a>
+  | <a href="http://wald.intevation.org/forum/forum.php?forum_id=20">Discussion</a>
+  <p>Report Errors:<br>
+  <a
+  href="http://wald.intevation.org/tracker/?atid=126&group_id=11&func=browse">Bug Tracker</a>
+</div>
+<div class="box">
+  <h1>Developers</h1>
+  <a href="http://wald.intevation.org/projects/gpg4win/">Project Site</a>
+</div>
+<div class="box">
+  <h1>Related Projects</h1>
+  <a href="http://www.gnupg.org/">GnuPG</a><br>
+  <a href="http://www.stud.uni-hannover.de/~twoaday/winpt.html">WinPT</a><br>
+  <a href="http://claws.sylpheed.org/">Sylpheed Claws</a><br>
+  Foo Bar
+</div>
