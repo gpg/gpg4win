@@ -1,15 +1,12 @@
-<html>
+m4_dnl -*-html-*-
+m4_include(`template.m4')
+m4_dnl $Id: index.htm4,v 1.30 2006/01/12 16:04:03 jan Exp $
+
+m4_define(`DE')
+PAGE_TITLE(`gpg4win')
+PAGE_START
 
 <h1>gpg4win: GnuPG für Windows</h1>
-
-(Dies ist eine vorläufige Version der in Planung befindlichen
-Heimatseite des gpg4win Projektes)
-
-<p>
-<a href="http://wald.intevation.org/projects/gpg4win/">GForge gpg4win Projekt-Seite</a>
-
-<p>
-<a href="index.html">gpg4win homepage in english</a>
 
 <h2>Über gpg4win</h2>
 
@@ -55,4 +52,23 @@ Bitte tragen Sie sich in eine der
 <a href="http://wald.intevation.org/mail/?group_id=11">gpg4win Mailing Listen</a>
 ein und teilen Sie Ihre Erfahrung,  Fragen oder Probleme mit.
 
-</html>
+
+PAGE_BOXES
+
+<div class="box">
+  <h1>Support</h1>
+  Mailnglisten:<br>
+  <a href="http://lists.wald.intevation.org/pipermail/gpg4win-users-de/">Archive</a>
+  | <a href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-users-de">Subscribe</a>
+  <p>Web Foren:<br>
+  <a href="http://wald.intevation.org/forum/forum.php?forum_id=21">Hilfe</a>
+  | <a href="http://wald.intevation.org/forum/forum.php?forum_id=20">Diskussion</a>
+  <p>Fehler Melden:<br>
+  <a
+  href="http://wald.intevation.org/tracker/?atid=126&group_id=11&func=browse">Bug Tracker</a>
+</div>
+<div class="box">
+  <h1>Entwickler</h1>
+  <a href="http://wald.intevation.org/projects/gpg4win/">Projekt Seite</a>
+</div>
+

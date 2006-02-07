@@ -1,0 +1,40 @@
+----------------------------------------------------------------------
+                           gpg4win Web Site
+----------------------------------------------------------------------
+
+INTRODUCTION:
+
+The .html files are build from the *.htm4 files using GNU m4.  The
+*.htm4 files consist of mainly simple plain HTML and some macros
+implementing the overall page layout.
+
+The structure of the .htm4 files should be rather self explaining.
+
+
+BUILDING:
+
+Building the web site is _not_ incorporated into the autotools based
+build process.
+
+To build to websites use the file `buildhtml.mk':
+
+  make -f buildhtml.mk
+
+
+TEMPLATES:
+
+versions.m4 : Definitions of some macros, holding the current versions
+              of gpg4win and the included software packages.  If any
+              version changes this file should be changed accordingly.
+              This file is included by `template_header.m4'.
+
+template.m4 : Contains the definition of the main macros PAGE_START
+              and PAGE_BOXES as well as some helper macros normally
+              not used in the .htm4 files.  Authors should not need to
+              change this file.
+
+template_header.m4: Contains the actual page layout.  This file is
+                    included by `template.m4'.  Authors should not
+                    need to change this file, but if additional
+                    languages are added the navigation must be added
+                    in here.
