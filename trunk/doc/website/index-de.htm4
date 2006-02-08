@@ -6,21 +6,66 @@ m4_define(`DE')
 PAGE_TITLE(`gpg4win')
 PAGE_START
 
-<h1>gpg4win: GnuPG für Windows</h1>
+<h2>Neuer Anwender?</h2>
+
+gpg4win ist ein Installtionspaket für Windows (95/98/XP/2000/2003)
+mit Computer-Programmen und Handbüchern für EMail- und Datei-Verschlüsselung.
+
+<p>
+Wahlweise können alle oder einige der folgenden Module installiert werden:
+
+<table>
+  <tr>
+    <td>GnuPG:</td>
+    <td>Das Kernstück, das eigentliche Verschlüsselungsprogramm</td>
+  </tr>
+  <tr>
+    <td>WinPT:</td>
+    <td>Ein Schlüsselmanager und Helfer bei vielen anderen Verschlüsselungs-Fragen</td>
+  </tr>
+  <tr>
+    <td>GPA:</td>
+    <td>Ein anderer Schlüsselmanager, die Geschmäcker sind nunmal verschieden</td>
+  </tr>
+  <tr>
+    <td>GPGol:</td>
+    <td>Ein Plugin für Microsoft Outlook 2003 (EMail-Verschlüsselung)</td>
+  </tr>
+  <tr>
+    <td>GPGee:</td>
+    <td>Ein Plugin für den Microsoft Explorer (Dateiverschlüsselung)</td>
+  </tr>
+  <tr>
+    <td>Sylpheed-Claws:</td>
+    <td>Ein komplettes EMail-Programm inklusive Plugin für GnuPG</td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td>Gpg4win für Einsteiger:</td>
+    <td>Ein Handbuch speziell für Neulinge</td>
+  </tr>
+  <tr>
+    <td>Gpg4win für Durchblicker:</td>
+    <td>Ein Handbuch zu den Hintergründen, für Anfänger</td>
+  </tr>
+</table>
+
+gpg4win ist mit wenigen Mausclicks installiert und kann ausprobiert werden.
+Sie sollten aber auf Ihrem System Administrator sein oder Administrationsrechte
+besitzen.
+
+<p>
+Am besten beginnt man mit dem recht anschaulichen
+Handbuch <em>gpg4win für Einsteiger</em>.
 
 <h2>Über gpg4win</h2>
 
 Das gpg4win Projekt hat sich auf die Fahnen
 geschrieben hat, einen Windows-Installer für
-<a href="http://www.gnupg.de/">GnuPG</a> und
-verwandte Produkte
-(<a href="http://www.gnupg.org/(de)/related_software/gpa/index.html">GPA</a>,
-<a href="http://www.winpt.org">WinPT</a>,
-<a href="http://www.g10code.de/p-gpgol.html">GPGol</a>,
-<a href="http://claws.sylpheed.org/">Sylpheed-Claws</a>,
-<a href="http://gpgee.excelcia.org/">GPGee</a>,
-<a href="http://eudoragpg.sourceforge.net/ver2.0/de/">EurdoraGPG</a>
-sowie Dokumentation) zu erstellen und zu pflegen.
+GnuPG und verwandte Produkte
+sowie Dokumentation zu erstellen und zu pflegen.
 
 <p>
 Es ist ein internationales Projekt, es wird aber insbesondere
@@ -40,17 +85,22 @@ sogar automatisch per Cross-Compilation erstellt werden.
 Damit verbindet sich die Hoffnung, der schnellen Alterung von Installer-Paketen
 entgegenzuwirken, denn eine Aktualisierung wird deutlich einfacher.
 
-<h2>Download des gpg4win Installationspaketes</h2>
+<h2>Alle Downloads</h2>
 
-Wählen Sie jeweils die aktuellste Version gpg4win-n.n.n.exe:
+Aktueller und aller bisherigen gpg4win Installer (gpg4win-n.n.n.exe)
+sowie Signaturen (gpg4win-n.n.n.exe.sig) und zugehörige Quelltextpakete
+(gpg4win-n.n.n.bz2 mit gpg4win-n.n.n.tar.bz2.sig):
 
 <p>
 <a href="ftp://ftp.gpg4win.org/gpg4win/">ftp://ftp.gpg4win.org/gpg4win/</a>
 
 <p>
-Bitte tragen Sie sich in eine der
-<a href="http://wald.intevation.org/mail/?group_id=11">gpg4win Mailing Listen</a>
-ein und teilen Sie Ihre Erfahrung,  Fragen oder Probleme mit.
+gpg4win Kern-Quelltextpakete (gpg4win-n.n.n.tar.bz2 mit gpg4win-n.n.n.tar.bz2.sig)
+sowie gpg4win für Einsteiger als separates PDF-Dokument
+(gpg4win-fuer-einsteiger-n.n.n.pdf):
+
+<p>
+<a href="http://wald.intevation.org/frs/?group_id=11">http://wald.intevation.org/frs/?group_id=11</a>
 
 
 PAGE_BOXES
@@ -58,8 +108,8 @@ PAGE_BOXES
 <div class="box">
   <h1>Support</h1>
   Mailnglisten:<br>
-  <a href="http://lists.wald.intevation.org/pipermail/gpg4win-users-de/">Archive</a>
-  | <a href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-users-de">Subscribe</a>
+  <a href="http://lists.wald.intevation.org/pipermail/gpg4win-users-de/">Archiv</a>
+  | <a href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-users-de">Abonieren</a>
   <p>Web Foren:<br>
   <a href="http://wald.intevation.org/forum/forum.php?forum_id=21">Hilfe</a>
   | <a href="http://wald.intevation.org/forum/forum.php?forum_id=20">Diskussion</a>
@@ -68,7 +118,7 @@ PAGE_BOXES
   href="http://wald.intevation.org/tracker/?atid=126&group_id=11&func=browse">Bug Tracker</a>
 </div>
 <div class="box">
-  <h1>Entwickler</h1>
+  <h1>Mitmachen</h1>
   <a href="http://wald.intevation.org/projects/gpg4win/">Projekt Seite</a>
 </div>
 
