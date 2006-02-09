@@ -14,7 +14,8 @@ m4_ifdef(`__TMPL_ROOT',,`m4_define(`__TMPL_ROOT',`')')
           <img src="pix/logo.png">
         </td>
         <td style="text-align: left;">
-          <h1>EMail-Sicherheit mit GnuPG für Windows</h1>
+          I18N(`EN',`<h1>EMail-Security using GnuPG for Windows</h1>')
+          I18N(`DE',`<h1>EMail-Sicherheit mit GnuPG für Windows</h1>')
         </td>
         <td>
           LANG_LINK(`EN',`english',`index.html') |
@@ -23,9 +24,7 @@ m4_ifdef(`__TMPL_ROOT',,`m4_define(`__TMPL_ROOT',`')')
     </table>
     <table id="bigbar">
       <tr><td id="vertable" style="white-space: nowrap;">
-m4_dnl -- English ------------------------------------------------------------
       I18N(`EN',`Current Version VERSION includes:')
-m4_dnl -- Deutsch ------------------------------------------------------------
       I18N(`DE',`Aktuelle Version VERSION enthält:' )
             <br><pre class="swlist">SOFTWARE</pre>
           </td>
