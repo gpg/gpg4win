@@ -75,10 +75,3 @@ PAGE_BOXES
   <h1>Developers</h1>
   <a href="http://wald.intevation.org/projects/gpg4win/">Project Site</a>
 </div>
-<div class="box">
-  <h1>Related Projects</h1>
-  <a href="http://www.gnupg.org/">GnuPG</a><br>
-  <a href="http://www.stud.uni-hannover.de/~twoaday/winpt.html">WinPT</a><br>
-  <a href="http://claws.sylpheed.org/">Sylpheed Claws</a><br>
-  Foo Bar
-</div>
