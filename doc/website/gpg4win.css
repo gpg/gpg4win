@@ -182,7 +182,9 @@ TD {
 }
 
 #main TD {
-    padding: 5px;
+    padding: 0px;
+    padding-top: 3px;
+    padding-bottom: 3px;
     text-align: left;
     vertical-align: top;
     border-top: 1px solid #fa050c;
