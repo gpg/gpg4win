@@ -16,9 +16,26 @@ BUILDING:
 Building the web site is _not_ incorporated into the autotools based
 build process.
 
-To build to websites use the file `buildhtml.mk':
+To build to web sites use the file `buildhtml.mk':
 
   make -f buildhtml.mk
+
+
+INSTALLING:
+
+To install the generated web site you need a gpg4win docwriter or
+developer account on wald.intevation.org.
+
+Installing is done from within the "doc/website" directory, using
+rsync:
+
+rsync -urvP *.css *.html pix USER@wald.intevation.org:/gpg4win/htdocs/
+
+Where USER is your accounts user name on wald.intevation.org.
+
+For further information on web site management on wald.intevation.org
+please read the online manual:
+http://wald.intevation.org/docman/view.php/1/34/project-websites.txt
 
 
 TEMPLATES:
@@ -27,6 +44,9 @@ versions.m4 : Definitions of some macros, holding the current versions
               of gpg4win and the included software packages.  If any
               version changes this file should be changed accordingly.
               This file is included by `template_header.m4'.
+              The current version numbers of the packages installed by 
+              gpg4win can be found here:
+              ftp://ftp.gpg4win.org/gpg4win/packages.current
 
 template.m4 : Contains the definition of the main macros PAGE_START
               and PAGE_BOXES as well as some helper macros normally
