@@ -1,4 +1,5 @@
 m4_define(`VERSION',`0.6.0')
+m4_define(`DOWNLOAD_URL',`ftp://ftp.gpg4win.org/gpg4win/gpg4win-VERSION.exe')
 m4_define(`SOFTWARE',`
 <a href="http://www.gpg.org/">GnuPG</a> 1.4.2
 <a href="http://www.winpt.org/">WinPT</a> 0.11.7

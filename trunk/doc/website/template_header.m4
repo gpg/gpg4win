@@ -30,8 +30,7 @@ m4_dnl -- Deutsch ------------------------------------------------------------
             <br><pre class="swlist">SOFTWARE</pre>
           </td>
           <td class="center">
-            <a href="ftp://ftp.gpg4win.org/gpg4win/gpg4win-VERSION.exe"
-               class="dlbutton">Download<br> 
+            <a href="DOWNLOAD_URL" class="dlbutton">Download<br> 
               <span class="version">gpg4win VERSION</span></a>
       </td></tr>
     </table>
