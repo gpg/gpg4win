@@ -10,7 +10,7 @@ m4_ifdef(`__TMPL_ROOT',,`m4_define(`__TMPL_ROOT',`')')
   </head>
   <body>
     <table id="navbar"><tr valign="bottom">
-        <td style="text-align: left;">
+        <td style="width:172px; text-align: left; padding-bottom: 8px;">
           <img src="pix/logo.png">
         </td>
         <td style="text-align: left;">
