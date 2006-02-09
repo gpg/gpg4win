@@ -33,7 +33,7 @@ Wahlweise können alle oder einige der folgenden Module installiert werden:
   </tr>
   <tr>
     <td>GPGee:</td>
-    <td>Ein Plugin für den Microsoft Explorer (Dateiverschlüsselung)</td>
+    <td>Ein Plugin für den Microsoft Explorer (Datei-Verschlüsselung)</td>
   </tr>
   <tr>
     <td>Sylpheed-Claws:</td>
@@ -62,28 +62,32 @@ Handbuch <em>gpg4win für Einsteiger</em>.
 
 <h2>Über gpg4win</h2>
 
-Das gpg4win Projekt hat sich auf die Fahnen
-geschrieben hat, einen Windows-Installer für
-GnuPG und verwandte Produkte
-sowie Dokumentation zu erstellen und zu pflegen.
+Das gpg4win Projekt <b>hat das Ziel</b>
+das gpg4win Windows-Installationspaket für
+die Verschlüsselungs-Software
+GnuPG sowie zugehörige Anwendungen
+und Dokumentation kontinuerlich zu aktualisieren.
+Insbsondere wird die Dokumentation (Handbücher "Einsteiger"
+und "Durchblicker") direkt beim gpg4win Projekt gepflegt.
 
 <p>
-Es ist ein internationales Projekt, es wird aber insbesondere
-auch Wert auf vollständige deutsche Übersetzung gelegt.
+Es ist ein internationales Projekt, aufgrund der Herkunft
+des Projektes und vieler Beteiligter liegt eine
+<b>vollständige deutsche Übersetzung</b> vor.
 
 <p>
 Der Hauptunterschied zu den bisherigen Ansätzen
-(<a href="http://www.gnupp.de/start.html">GnuPP</a> und
-<a href="http://sourceforge.net/projects/winpt">Windows Privacy Tools</a>) ist,
-dass zunächst der <b>gpg4win-Builder</b> entwickelt wurde.
+(vor allem GnuPP, GnuPT, Windows Privacy Tools und GnuPG-Basics)
+ist, dass zunächst der <b>gpg4win-Builder</b> entwickelt wurde.
 Dieser erlaubt es, sehr leicht neue gpg4win.exe-Installer
 mit aktualisierten Komponenten herzustellen.
-Und zwar unter GNU/Linux, wobei die meisten Produkte
-sogar automatisch per Cross-Compilation erstellt werden.
+Und zwar auf einem GNU/Linux System. Fast alle Produkte
+werden dabei sogar automatisch per Cross-Compilation erstellt.
 
 <p>
-Damit verbindet sich die Hoffnung, der schnellen Alterung von Installer-Paketen
-entgegenzuwirken, denn eine Aktualisierung wird deutlich einfacher.
+Damit verbindet sich die Hoffnung, der <b>schnellen Alterung von Installer-Paketen
+entgegenzuwirken</b>, denn eine Aktualisierung wird deutlich einfacher
+und hängt eben nicht von einer Einzelperson ab.
 
 <h2>Alle Downloads</h2>
 
@@ -120,5 +124,12 @@ PAGE_BOXES
 <div class="box">
   <h1>Mitmachen</h1>
   <a href="http://wald.intevation.org/projects/gpg4win/">Projekt Seite</a>
+</div>
+<div class="box">
+  <h1>Ähnliche Projekte</h1>
+  <a href="http://www.equipmente.de/">GnuPT</a><br>
+  <a href="http://people.freenet.de/rose-indorf">GnuPG-Basics</a><br>
+  <a href="http://sourceforge.net/projects/winpt">Windows Privacy Tools</a><br>
+  <a href="http://www.gnupp.de/start.html">GnuPP</a><br>
 </div>
 
