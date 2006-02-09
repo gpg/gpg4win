@@ -55,13 +55,13 @@ IMG {
     border: none;
 }
 
-.version { 
+.version {
     font-size: 75%;
     font-weight: normal;
     color: black;
 }
 
-.swlist { 
+.swlist {
     font-weight: normal;
     color: black;
     white-space:pre;
@@ -116,7 +116,7 @@ TD {
 
 #navbar TD {
     text-align: right;
-    vertical-align: middle;
+    vertical-align: bottom;
 }
 
 #navbar A {
@@ -126,6 +126,12 @@ TD {
 
 #navbar A:hover {
     color: #ffa500;
+}
+
+#navbar H1 {
+    font-size: 200%;
+    margin: 0px;
+    padding: 0px;
 }
 
 #bigbar {
@@ -141,10 +147,6 @@ TD {
     height: 190px;
     width: 100%;
     min-width: 600px;
-}
-
-TD#bigbar {
-    padding: 20px;
 }
 
 #vertable {
