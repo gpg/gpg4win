@@ -24,11 +24,10 @@ m4_ifdef(`__TMPL_ROOT',,`m4_define(`__TMPL_ROOT',`')')
     <table id="bigbar">
       <tr><td id="vertable" style="white-space: nowrap;">
 m4_dnl -- English ------------------------------------------------------------
-      I18N(`EN',`<h1>GnuPG for Windows</h1>
-      Current Version: VERSION')
+      I18N(`EN',`Current Version VERSION includes:')
 m4_dnl -- Deutsch ------------------------------------------------------------
       I18N(`DE',`Aktuelle Version VERSION enthält:' )
-            <br><span class="swlist">SOFTWARE</span>
+            <br><pre class="swlist">SOFTWARE</pre>
           </td>
           <td class="center">
             <a href="ftp://ftp.gpg4win.org/gpg4win/gpg4win-VERSION.exe"

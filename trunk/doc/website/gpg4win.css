@@ -65,6 +65,8 @@ IMG {
     font-weight: normal;
     color: black;
     white-space:pre;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 12px;
 }
 
 .center {
@@ -134,7 +136,7 @@ TD {
     background-position: right;
     border-top: 2px solid #fa050c;
     border-bottom: 2px solid #fa050c;
-    color: #fa050c;
+    color: black;
     font-weight: bold;
     height: 190px;
     width: 100%;
