@@ -3,9 +3,7 @@ m4_include(`template.m4')
 m4_dnl $Id: index.htm4,v 1.30 2006/01/12 16:04:03 jan Exp $
 
 m4_define(`EN')
-PAGE_TITLE(`gpg4win')
 PAGE_START
-
 
 <h1>gpg4win: GnuPG for Windows</h1>
 
