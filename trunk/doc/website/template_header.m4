@@ -2,11 +2,18 @@ m4_dnl -*-html-*-
 m4_dnl THIS IS INCLUDED BY `template.m4'
 m4_dnl DONT USE THIS FILE DIRECTLY
 m4_ifdef(`__TMPL_ROOT',,`m4_define(`__TMPL_ROOT',`')')
+
+m4_define(`__TITLE',m4_dnl
+I18N(`EN',`EMail-Security using GnuPG for Windows')`'m4_dnl
+I18N(`DE',`EMail-Sicherheit mit GnuPG für Windows'))
+
+m4_ifdef(`__TMPL_PAGE_TITLE',,`m4_define(`__TMPL_PAGE_TITLE',`gpg4win - '__TITLE)')
+
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
     <link rel="stylesheet" type="text/css" href="__TMPL_ROOT`'gpg4win.css">
-    <title>gpg4win</title>
+    <title>__TMPL_PAGE_TITLE</title>
   </head>
   <body>
     <table id="navbar"><tr valign="bottom">
@@ -14,8 +21,7 @@ m4_ifdef(`__TMPL_ROOT',,`m4_define(`__TMPL_ROOT',`')')
           <img src="pix/logo.png">
         </td>
         <td style="text-align: left;">
-          I18N(`EN',`<h1>EMail-Security using GnuPG for Windows</h1>')
-          I18N(`DE',`<h1>EMail-Sicherheit mit GnuPG für Windows</h1>')
+          <h1>__TITLE</h1>
         </td>
         <td>
           LANG_LINK(`EN',`english',`index.html') |
