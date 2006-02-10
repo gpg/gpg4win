@@ -18,7 +18,7 @@ m4_ifdef(`__TMPL_PAGE_TITLE',,`m4_define(`__TMPL_PAGE_TITLE',`gpg4win - '__TITLE
   <body>
     <table id="navbar"><tr valign="bottom">
         <td style="width:172px; text-align: left; padding-bottom: 8px;">
-          <img src="pix/logo.png">
+          <img src="pix/logo.png" alt="gpg4win">
         </td>
         <td style="text-align: left;">
           <h1>__TITLE</h1>

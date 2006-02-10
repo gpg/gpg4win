@@ -122,7 +122,7 @@ PAGE_BOXES
   | <a href="http://wald.intevation.org/forum/forum.php?forum_id=20">Diskussion</a>
   <p>Fehler Melden:<br>
   <a
-  href="http://wald.intevation.org/tracker/?atid=126&group_id=11&func=browse">Bug Tracker</a>
+  href="http://wald.intevation.org/tracker/?atid=126&amp;group_id=11&amp;func=browse">Bug Tracker</a>
 </div>
 <div class="box">
   <h1>Mitmachen</h1>
