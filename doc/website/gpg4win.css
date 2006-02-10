@@ -73,8 +73,6 @@ IMG {
     vertical-align: middle;
 }
 
-/* Tables */
-
 TD {
     padding: 10px;
     text-align: left;
@@ -175,6 +173,7 @@ TD {
 }
 
 #main TABLE {
+    width:100%;
     border-spacing:0px;
     border-collapse: collapse;
     margin-top: 5px;
