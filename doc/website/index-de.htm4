@@ -11,7 +11,7 @@ gpg4win ist ein Installtionspaket für Windows (95/98/XP/2000/2003)
 mit Computer-Programmen und Handbüchern für EMail- und Datei-Verschlüsselung.
 
 <p>
-Wahlweise können alle oder einige der folgenden Module installiert werden:
+Wahlweise können <b>alle oder einige der folgenden Module</b> installiert werden:
 
 <table>
   <tr>
@@ -55,7 +55,7 @@ Dokumentation:
 </table>
 
 <p>
-gpg4win ist mit wenigen Mausclicks installiert und kann ausprobiert werden.
+<b>gpg4win ist mit wenigen Mausclicks installiert</b> und kann ausprobiert werden.
 Sie sollten aber auf Ihrem System Administrator sein oder Administrationsrechte
 besitzen.
 
@@ -103,7 +103,7 @@ sowie Signaturen (gpg4win-n.n.n.exe.sig) und zugehörige Quelltextpakete
 
 <p>
 gpg4win Kern-Quelltextpakete (gpg4win-n.n.n.tar.bz2 mit gpg4win-n.n.n.tar.bz2.sig)
-sowie gpg4win für Einsteiger als separates PDF-Dokument
+sowie <em>gpg4win für Einsteiger</em> als separates PDF-Dokument
 (gpg4win-fuer-einsteiger-n.n.n.pdf):
 
 <p>
