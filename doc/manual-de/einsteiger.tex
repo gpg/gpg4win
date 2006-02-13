@@ -12,7 +12,7 @@
 % The way as described below does no work becuase neiteyr dvips not
 % xdvi can cope with the BMP type.  The other solution of converting
 % jpeg on-the-fly into EPS is hampered by the fact that there seems to
-% be no free tool fo this.  The jpeg2ps tool mentioned at some places
+% be no free tool to do this.  The jpeg2ps tool mentioned at some places
 % is not free.  Frankly writing such a tool is pretty straightforword
 % and I'd really like to have a free one.  Another problem with a
 % non-builtin DeclareGraphicsRule is that one needs to pass the -R0
@@ -33,12 +33,7 @@
 % Hyperref should be among the last packages loaded
 \usepackage{hyperref}
 
-% As long as this manual is part of the gpg4win package, we don't want
-% to update the version number automatically.  If we move this to its
-% own package we should have a central way to declare the version
-% of gpg4win this manual referes to.
-%\input{version.tex}
-\newcommand{\PackageVersion}{0.6.0}
+% Macros specific to this package
 \input{macros.tex}
 
 \begin{document}
@@ -65,18 +60,15 @@ Gpg4win für Einsteiger}
 \section*{Impressum gpg4win}
 
 \noindent
-Copyright \copyright{} 2002 Bundesministerium für Wirtschaft und Technologie\\
-Copyright \copyright{} 2005 g10 Code GmbH\\
+\copyright{} 2002 Bundesministerium für Wirtschaft und Technologie\\
+\copyright{} 2005 g10 Code GmbH\\
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.2 or
 any later version published by the Free Software Foundation; with
-the Invariant Sections being ,,Impressum'', no Front-Cover Texts, and
+the Invariant Sections being "`Impressum"', no Front-Cover Texts, and
 no Back-Cover Texts.  A copy of the license is included in the section
-entitled ,,GNU Free Documentation License''.
+entitled "`GNU Free Documentation License"'.
 
-\bigskip
-
-{\LARGE Dieses Handbuch befindet sich noch in der Korrektur.} 
 
 \vfill
 
@@ -103,16 +95,17 @@ Redaktion: Ute Bahn, TextLab text+media\\
 
 
 Copyright \copyright{} Bundesministerium für Wirtschaft und Technologie
-Dieses Buch unterliegt der ,,GNU Free Documentation License''.
-Originaltext der Lizenz: http://www.gnu.org/copyleft/fdl.html .
-Deutsche Übersetzung http://nautix.sourceforge.net/docs/fdl.de.html
+
+Dieses Buch unterliegt der "`GNU Free Documentation License"'.
+Originaltext der Lizenz: http://www.gnu.org/copyleft/fdl.html.
+Deutsche Übersetzung http://nautix.sourceforge.net""/docs/fdl.de.html
 sowie auf der beiliegenden CD-ROM.  Es wird die Erlaubnis gegeben,
 dieses Dokument zu kopieren, zu verteilen und/oder zu verändern unter
 den Bedingungen der GNU Free Documentation License, Version 1.1 oder
 einer späteren, von der Free Software Foundation veröffentlichten
-Version.  Diese Seite (,,Impressum'') darf nicht verändert werden und
+Version.  Diese Seite ("`Impressum"') darf nicht verändert werden und
 muß in allen Kopien und Bearbeitungen erhalten bleiben
-(,,unveränderlicher Abschnitt'' im Sinne der GNU Free Documentation
+("`unveränderlicher Abschnitt"' im Sinne der GNU Free Documentation
 License).  Wenn dieses Dokument von Dritten kopiert, verteilt und/oder
 verändert wird, darf in keiner Form der Eindruck eines Zusammenhanges
 mit dem Bundesministerium für Wirtschaft und Technologie erweckt
@@ -140,10 +133,10 @@ Das Gpg4win-Anleitungs- und Übungsmaterial besteht aus drei Teilen:
 
 \begin{itemize}
 
-\item \textbf{dem Schnelleinstieg, ,,Gpg4win für Einsteiger'',} in dem
+\item \textbf{dem Schnelleinstieg, "`Gpg4win für Einsteiger"',} in dem
   Sie gerade lesen,
 
-\item \textbf{dem Handbuch ,,Gpg4win für Durchblicker''} im PDF-Format, welches
+\item \textbf{dem Handbuch "`Gpg4win für Durchblicker"'} im PDF-Format, welches
   Sie nach der Installation von Gpg4win auf Ihrer Festplatte finden,
 
 \item \textbf{dem Übungsroboter Adele,} mit dem Sie die Email-Ver- und
@@ -152,13 +145,13 @@ Das Gpg4win-Anleitungs- und Übungsmaterial besteht aus drei Teilen:
 \end{itemize}
 
 
-\textbf{,,Gpg4win für Einsteiger''} führt Sie kurz und knapp durch die Installation
+\textbf{"`Gpg4win für Einsteiger"'} führt Sie kurz und knapp durch die Installation
 und die alltägliche Benutzung der Gpg4win-Software. Der Zeitbedarf
 für das Durcharbeiten des Schnelleinstiegs hängt unter anderem davon
 ab, wie gut Sie sich mit Ihrem PC und Windows auskennen. In etwa
 sollten Sie sich eine halbe Stunde Zeit nehmen.
 
-\textbf{,,Gpg4win für Durchblicker''} liefert Hintergrundwissen, das Ihnen die
+\textbf{"`Gpg4win für Durchblicker"'} liefert Hintergrundwissen, das Ihnen die
 grundlegenden Mechanismen von Gpg4win verdeutlicht und die etwas
 seltener benutzten Fähigkeiten erläutert.
 
@@ -180,7 +173,7 @@ Verschlüsselungsdialog so lange üben, bis Sie sich völlig mit dem
 Gebrauch der Software vertraut gemacht haben.
 
 Adele ist im Rahmen des alten GnuPP Projektes entstanden und
-läuft dort noch immer. ,,Gpg4win für Einsteiger'' verwendet diesen
+läuft dort noch immer. "`Gpg4win für Einsteiger"' verwendet diesen
 zuverlässigen Übungsroboter und dankt den Inhabern von gnupp.de
 für den Betrieb von Adele.
 
@@ -188,58 +181,7 @@ für den Betrieb von Adele.
 %% Orginal page 8
 \section{Was ist Gpg4win?}
 
-\textbf{
-Das Projekt Gpg4win (GNU Privacy Guard for Windows) ist eine vom
-Bundesamt für Sicherheit in der Informationstechnik beauftragte
-Email-Verschlüsselungssoftware. Gpg4win bezeichnet ein Gesamtpaket,
-welches die folgenden Programme umfasst:
-}
-
-\textbf{GnuPG}: das Kernstück, die Verschlüsselungs-Software \newline
-\textbf{GPA}: der GNU Privacy Assistent,
-eine Schlüsselverwaltung \newline
-\textbf{WinPT}: Schlüsselverwaltung, unterstützt auch Verschlüsselung
-per Clipboard \newline
-\textbf{GPGol}: ein Plugin für Microsoft Outlook, es integriert dort die
-Bedienung von GnuPG \newline
-\textbf{GPGee}: ein Plugin für den Windows Explorer, per rechter Maustaste
-können Dateien verschlüsselt werden \newline
-\textbf{Sylpheed-Claws}: ein komplettes Email-Programm mit integrierter
-GnuPG-Bedienung \newline
-
-Mit dem Verschlüsselungsprogramm GnuPG (GNU Privacy Guard) kann
-jedermann Emails sicher, einfach und kostenlos verschlüsseln. GnuPG
-kann ohne jede Restriktion privat oder kommerziell benutzt werden. Die
-Verschlüsselung von GnuPG ist extrem sicher und kann nach dem heutigen
-Stand von Forschung und Technik nicht gebrochen werden.
-
-GnuPG ist Freie Software\footnote{oft ungenau auch als Open Source
-  Software bezeichnet}. Das bedeutet, daß jedermann das Recht hat, sie
-nach Belieben kommerziell oder privat zu nutzen.  Jedermann darf den
-Quellcode, also die eigentliche Programmierung des Programms, genau
-untersuchen und auch selbst Änderungen durchführen und diese
-weitergeben.\footnote{Obwohl dies ausdrücklich erlaubt ist, sollte man
-  ohne ausreichendes Fachwissen nicht leichtfertig Änderungen
-  durchführen da hierdurch die Sicherheit der Software beeinträchtigt
-  werden kann.}
-
-Für eine Sicherheits-Software ist diese garantierte Transparenz des
-Quellcodes eine unverzichtbare Grundlage. Nur so läßt sich die
-Vertrauenswürdigkeit eines Programmes prüfen.
-
-GnuPG basiert auf dem internationalen Standard OpenPGP (RFC 2440), ist
-vollständig kompatibel zu PGP und benutzt die gleiche Infrastruktur
-(Schlüsselserver etc).
-
-PGP (,,Pretty Good Privacy'') ist keine Freie Software, sie war
-lediglich vor vielen Jahren kurzzeitig zu ähnlichen Bedingungen wie
-GnuPG erhältlich.  Diese Version entspricht aber schon lange nicht
-mehr dem Stand der Technik.
-
-Weitere Informationen zu GnuPG und den Projekten der Bundesregierung
-zum Schutz des Internets finden Sie auf der Website
-www.bsi-fuer-buerger.de des Bundesamtes für Sicherheit in der
-Informationstechnik.
+\input{was-ist-gpg4win.tex}
 
 \clearpage
 %% Orginal page 9
@@ -249,9 +191,9 @@ Falls Sie Gpg4Win auf einer CD-ROM erhalten haben:
 
 Legen Sie diese CD-ROM in das CD-ROM-Laufwerk Ihres PCs
 und melden Sie sich als Administrator an.  Öffnen Sie
-Ihren ,,Arbeitsplatz'' und klicken Sie dort auf das CD-ROM- Icon mit
-dem Titel ,,Gpg4win''. Wenn sich das CD-ROM-Icon geöffnet hat, klicken
-Sie auf das Installations-Icon mit dem Titel ,,Gpg4win''.
+Ihren "`Arbeitsplatz"' und klicken Sie dort auf das CD-ROM- Icon mit
+dem Titel "`Gpg4win"'. Wenn sich das CD-ROM-Icon geöffnet hat, klicken
+Sie auf das Installations-Icon mit dem Titel "`Gpg4win"'.
 
 Haben Sie Gpg4Win aus dem Internet heruntergeladen, so klicken Sie
 bitte auf diese neu abgespeicherte Datei, die den Namen
@@ -376,7 +318,7 @@ Die letzte Seite des Installationsvorgangs wird nun angezeigt:
 \includegraphics{sc-inst-finished}
 \end{center}
 
-Durch ankreuzen von ,,Die Schlüsselverwaltung aufrufen'' wird diese
+Durch ankreuzen von "`Die Schlüsselverwaltung aufrufen"' wird diese
 direkt danach noch aufgerufen.  Gpg4win hat 2 Schlüsselverwaltungen:
 Wurde GPA installiert, so wird diese aufgerufen werden (dies ist der
 Normallfall und im Weiteren beschrieben); wurde GPA nicht installiert so
@@ -413,7 +355,7 @@ Sie haben Gpg4win installiert und
 können es gleich zum ersten Mal
 starten.
 
-Vorher sollten Sie aber im Handbuch ,,Gpg4win für Durchblicker''
+Vorher sollten Sie aber im Handbuch "`Gpg4win für Durchblicker"'
 (PDF-Datei) die Kapitel 3 und 4 lesen. Wir erklären dort den genialen
 Trick, mit dem Gpg4win Ihre Emails sicher und bequem verschlüsselt.
 Gpg4win funktioniert zwar auch, ohne daß Sie verstehen warum, aber im
@@ -427,7 +369,7 @@ Weiter geben wir Ihnen einige Tipps, mit denen Sie sich einen sicheren
 und trotzdem leicht zu merkenden Passwortsatz ausdenken können.
 
 \textbf{
-$\spadesuit$ Lesen Sie jetzt im Handbuch ,,Gpg4win für Durchblicker''
+$\spadesuit$ Lesen Sie jetzt im Handbuch "`Gpg4win für Durchblicker"'
              die Kapitel 3 und 4, und lesen Sie erst danach hier weiter.
 }
 
@@ -448,8 +390,8 @@ können$\ldots$
 Schlüsselerzeugung, Verschlüsselung und Entschlüsselung durchspielen,
 so oft Sie wollen, bis Sie ganz sicher sind.
 
-Ihr Vertrauen in Gpg4win wird sich durch diese ,,Trockenübung'' festigen,
-und die ,,heisse Phase'' der Schlüsselerzeugung wird danach kein
+Ihr Vertrauen in Gpg4win wird sich durch diese "`Trockenübung"' festigen,
+und die "`heisse Phase"' der Schlüsselerzeugung wird danach kein
 Problem mehr sein.
 
 Ihr Partner bei diesen Übungen wird Adele sein.
@@ -486,14 +428,14 @@ Klicken Sie auf \Button{Jetzt~Schlüssel~erzeugen}.
 
 \textbf{Wenn Sie die Schlüsselerzeugung} zunächst einmal testen wollen, dann
 können Sie im nun folgenden Fenster einen beliebigen Namen eingeben,
-z.B. ,,Heinrich Heine''.
+z.B. "`Heinrich Heine"'.
 
 % screenshot: Key generation wizard first page
 \begin{center}
 \includegraphics[width=0.6\textwidth]{sc-gpa-gen-name}
 \end{center}
 
-Oder Sie können auch gleich ,,Ernst machen'' und Ihren richtigen Namen
+Oder Sie können auch gleich "`Ernst machen"' und Ihren richtigen Namen
 eingeben.
 
 Klicken Sie auf \Button{Weiter}, wenn Sie fertig sind.
@@ -504,7 +446,7 @@ Als nächstens geben Sie Ihre eigene Email-Adresse an.
 
 Wieder gilt: Sie können die Schlüsselerzeugung zunächst einmal mit
 irgendeiner ausgedachten Email-Adresse durchtesten, z.B.
-,,\verb-heinrichh@gpg4win.de-''
+"`\verb-heinrichh@gpg4win.de-"'
 
 % screenshot: Wizard email address
 \begin{center}
@@ -518,7 +460,7 @@ haben.
 
 Anschliessend können Sie einen Kommentar zum Schlüssel eingeben.
 Normalerweise bleibt dieses Feld leer; wenn sie aber einen
-Testschlüssel erzeugen sollten Sie dort als Erinnerung ,,test''
+Testschlüssel erzeugen sollten Sie dort als Erinnerung "`test"'
 eingeben.  Dieser Kommentar ist Teil Ihrer User-ID und genau wie der
 Name und die Email-Adresse später öffentlich sichtbar.  Klicken Sie
 auch dort anschliessend auf \Button{Weiter}.
@@ -529,8 +471,8 @@ auch dort anschliessend auf \Button{Weiter}.
 Jetzt folgt der wichtigste Teil: die
 Eingabe Ihres Passwortsatzes.
 
-Erinnern Sie sich an das Kapitel 4, ,,Der Passwort-Satz'' im Handbuch
-,,Gpg4win für Durchblicker'' das Sie eben durchgelesen haben? Wir haben
+Erinnern Sie sich an das Kapitel 4, "`Der Passwort-Satz"' im Handbuch
+"`Gpg4win für Durchblicker"' das Sie eben durchgelesen haben? Wir haben
 Ihnen dort einige Tipps zur Erzeugung eines sicheren Passwortsatzes
 gegeben.
 
@@ -546,7 +488,7 @@ Falls der Passwortsatz nicht sicher genug sein sollte, werden Sie
 darauf hingewiesen.
 
 \textbf{Auch an dieser Stelle können Sie} ­-- wenn Sie wollen ­-- zunächst
-einen Test-Passwortsatz eingeben oder auch gleich ,,Ernst machen''.
+einen Test-Passwortsatz eingeben oder auch gleich "`Ernst machen"'.
 
 Wenn Sie Ihren geheimen Passwortsatz zweimal eingegeben haben, klicken
 Sie auf \Button{Weiter}.
@@ -610,15 +552,15 @@ Sie gleich nachlesen können.
 \end{center}
 
 Was bedeuten die Anmerkungen über Ihren Schlüssel?  Ihr Schlüssel ist
-unbegrenzt gültig d.h., er hat kein ,,eingebautes Verfallsdatum''. Man
+unbegrenzt gültig d.h., er hat kein "`eingebautes Verfallsdatum"'. Man
 kann die Gültigkeit nachträglich verändern ­-- mehr dazu später.
 
 Ein Schlüssel mit einer Länge von 1024 Bit ist ein sicherer Schlüssel,
 der trotzdem nicht zuviel Rechenkraft auf Ihrem Computer beansprucht.
 
 \textbf{
-$\spadesuit$ Lesen Sie nun im Handbuch Kapitel 5 ,,Schlüssel im
-Detail'' weiter.  Sie können dieses Kapitel jetzt lesen oder später,
+$\spadesuit$ Lesen Sie nun im Handbuch Kapitel 5 "`Schlüssel im
+Detail"' weiter.  Sie können dieses Kapitel jetzt lesen oder später,
 wenn Sie diese Informationen benötigen
 }
 
@@ -628,7 +570,7 @@ wenn Sie diese Informationen benötigen
 \section{Sie veröffentlichen Ihren Schlüssel per Email}
 
 Beim täglichen Gebrauch von Gpg4win ist es sehr praktisch, daß Sie es
-beim Ver- und Entschlüsseln stets nur mit den ,,ungeheimen''
+beim Ver- und Entschlüsseln stets nur mit den "`ungeheimen"'
 öffentlichen Schlüsseln zu tun haben. Solange Ihr eigener geheimer
 Schlüssel und der ihn schützende Passwortsatz sicher sind, brauchen
 Sie sich um weitere Geheimhaltung keine Sorgen zu machen.
@@ -676,7 +618,7 @@ netten jungen Dame lieber korrespondiert als mit einem Stück Software
 (was Adele in Wirklichkeit natürlich ist), haben wir sie uns so
 vorgestellt:
 
-% Cartoon:  Adele mit Buch ind er Hand vor Rechner ``you have mail''
+% Cartoon:  Adele mit Buch ind er Hand vor Rechner ``you have mail"'
 \begin{center}
 \includegraphics{adele01}
 \end{center}
@@ -753,13 +695,13 @@ Strg+C. Damit haben Sie den Schlüssel in den Speicher Ihres Rechners
 
 Nun starten Sie Ihr Mailprogramm ­-- es spielt keine Rolle, welches
 Sie benutzen ­-- und fügen Ihren öffentlichen Schlüssel in eine leere
-Email ein. Der Tastaturbefehl zum Einfügen (,,Paste'') lautet bei
+Email ein. Der Tastaturbefehl zum Einfügen ("`Paste"') lautet bei
 Windows Strg+V.  Es ist sinnvoll vorher das Mailprogramm so zu
 konfigurieren, daß reine Textnachrichten gesendet werden und keine HTML
 formtierte Nachrichten.
 
 Diesen Vorgang ­-- Kopieren und Einfügen ­-- kennen Sie sicher als
-,,Copy \& Paste''.
+"`Copy \& Paste"'.
 
 Adressieren Sie nun diese Email an \verb-adele@gnupp.de- und
 schreiben in die Betreffzeile:
@@ -792,13 +734,13 @@ worden.  \textbf{Fassen wir kurz zusammen:} Sie haben Ihren
 geschickt.
 
 \textbf{
-$\spadesuit$ Im Handbuch ,,Gpg4win für Durchblicker'' Kapitel 7
+$\spadesuit$ Im Handbuch "`Gpg4win für Durchblicker"' Kapitel 7
 beschreiben wir, wie Sie Ihren Schlüssel auch als Dateianhang
 versenden.
 }
 
 Das ist oftmals das gebräuchlichere Verfahren. Wir haben Ihnen hier
-die ,,Copy \& Paste''-Methode zuerst vorgestellt, weil sie
+die "`Copy \& Paste"'-Methode zuerst vorgestellt, weil sie
 transparenter und leichter nachzuvollziehen ist.  Sie können dieses
 Kapitel jetzt lesen oder später, wenn Sie diese Funktion benötigen.
 
@@ -809,7 +751,7 @@ Kapitel jetzt lesen oder später, wenn Sie diese Funktion benötigen.
 
 Diese Möglichkeit bietet sich eigentlich immer an, selbst wenn Sie nur
 mit wenigen Partnern verschlüsselte Emails austauschen.  Ihr
-Schlüssel ist dann sozusagen ,,stets griffbereit'' auf einem Server im
+Schlüssel ist dann sozusagen "`stets griffbereit"' auf einem Server im
 Internet vorhanden.
 
 Klicken Sie Ihren Schlüssel an und wählen Sie dann den Menüpunkt
@@ -829,8 +771,8 @@ eine sichere Email zu schreiben.
 Wenn Sie den Ablauf im Moment nur testen, dann schicken Sie den
 Übungsschlüssel nicht ab.  Er ist wertlos und kann nicht
 mehr vom Schlüsselserver entfernt werden. Sie glauben nicht, wieviele
-Testkeys mit Namen wie ,,Julius Caesar'', ,,Helmut Kohl'' oder ,,Bill
-Clinton'' dort herumliegen ­ schon seit Jahren$\ldots$
+Testkeys mit Namen wie "`Julius Caesar"', "`Helmut Kohl"' oder "`Bill
+Clinton"' dort herumliegen ­ schon seit Jahren$\ldots$
 
 \textbf{Fassen wir kurz zusammen:} Sie wissen nun, wie Sie Ihren
 Schlüssel auf einen Schlüsselserver im Internet schicken können.
@@ -838,7 +780,7 @@ Schlüssel auf einen Schlüsselserver im Internet schicken können.
 \textbf{
 $\spadesuit$ Wie Sie den Schlüssel eines Partners auf den
 Schlüsselservern suchen und finden, beschreiben wir im Handbuch
-,,Gpg4win für Durchblicker'' Kapitel 6. Sie können dieses Kapitel jetzt
+"`Gpg4win für Durchblicker"' Kapitel 6. Sie können dieses Kapitel jetzt
 lesen oder später, wenn Sie diese Funktion benötigen.
 }
 
@@ -888,7 +830,7 @@ stark gekürzt.)
 
 \textbf{Diese Email werden Sie nun mit dem Programm WinPT entschlüsseln.}
 
-WinPT ist ein sogenanntes ,,Frontend'' für GnuPG. Es dient zur
+WinPT ist ein sogenanntes "`Frontend"' für GnuPG. Es dient zur
 eigentlichen Ver- und Entschlüsselung der Emails und zur Erzeugung
 und Überprüfung von digitalen Unterschriften. Und zwar ­-- und das ist
 einer seiner Vorteile ­-- mit jedem beliebigen Mailprogramm.
@@ -899,7 +841,7 @@ direkt im jeweiligen Mailprogramm erledigt werden kann.
 
 \textbf{
 $\spadesuit$ Hinweise zu diesen Lösungen finden Sie im Handbuch
-,,Gpg4win für Durchblicker'' Kapitel 8. Sie können dieses Kapitel jetzt
+"`Gpg4win für Durchblicker"' Kapitel 8. Sie können dieses Kapitel jetzt
 lesen oder später, wenn Sie diese Funktion benötigen.
 }
 
@@ -1007,7 +949,7 @@ Entschlüsseln der Nachrichten Ihres Korrespondenzpartners benutzen.
 
 Ihr Korrespondenzpartner muß nicht etwa jedes Mal seinen Schlüssel
 mitschicken, wenn er Ihnen verschlüsselt schreibt. Sie bewahren seinen
-öffentlichen Schlüssel einfach an Ihrem GnuPG-,,Schlüsselbund'' auf.
+öffentlichen Schlüssel einfach an Ihrem GnuPG-"`Schlüsselbund"' auf.
 
 \textbf{1. Möglichkeit:}
 
@@ -1045,13 +987,13 @@ wiederfinden, z.B. als \Filename{adeles-key.asc} im Ordner
 
 Der Schlüssel liegt der Email als Dateianhang bei. Welches
 Mailprogramm Sie auch immer benutzen, Sie können stets Dateianhänge
-(,,Attachments'') auf Ihrer Festplatte abspeichern. Tun Sie das jetzt
+("`Attachments"') auf Ihrer Festplatte abspeichern. Tun Sie das jetzt
 (am besten wieder in einem Ordner, den Sie leicht wiederfinden, z.B.
 \Filename{Eigene~Dateien}).
 
 Ob Sie nun den Schlüssel als Text oder als Email-Anhang abgespeichert
 haben, ist egal: in beiden Fällen importieren Sie diesen
-abgespeicherten Schlüssel in den GnuPG-,,Schlüsselbund''.
+abgespeicherten Schlüssel in den GnuPG-"`Schlüsselbund"'.
 
 % screenshot:  Startmenu, Auswahl GPA
 
@@ -1087,18 +1029,18 @@ Wie können Sie also sichergehen, daß ein Schlüssel auch wirklich
 seinem Absender gehört?
 
 \textbf{
-$\spadesuit$ Diese Kernfrage besprechen wir im Handbuch ,,Gpg4win für
-Durchblicker'' Kapitel 9: ,,Die Schlüsselprüfung''. Lesen Sie jetzt
+$\spadesuit$ Diese Kernfrage besprechen wir im Handbuch "`Gpg4win für
+Durchblicker"' Kapitel 9: "`Die Schlüsselprüfung"'. Lesen Sie jetzt
 dort weiter, bevor Sie danach an dieser Stelle fortfahren.
 }
 
 \clearpage
 %% Original page 40
-Sie haben in Kapitel 9 des Handbuchs ,,Gpg4win für Durchblicker''
+Sie haben in Kapitel 9 des Handbuchs "`Gpg4win für Durchblicker"'
 gelesen, wie man sich von der Echtheit eines Schlüsselss überzeugt und
 ihn dann mit seinem eigenen geheimen Schlüssel signiert.
 
-In Kapitel 10 des Handbuchs ,,Gpg4win für Durchblicker'' besprechen wir,
+In Kapitel 10 des Handbuchs "`Gpg4win für Durchblicker"' besprechen wir,
 wie man nicht nur einen Schlüssel, sondern auch eine komplette
 Email-Nachricht signieren kann. Das bedeutet, daß man die Email mit
 einer Art elektronischem Siegel versieht.
@@ -1108,8 +1050,8 @@ feststellen, ob die Email unterwegs manipuliert oder verändert wurde.
 
 Die Überprüfung einer solchen Signatur ist sehr einfach. Sie müssen
 dazu natürlich den öffentlichen Schlüssel des Absenders bereits an
-Ihrem Gpg4win-,,Schlüsselbund'' befestigt haben, wie in Kapitel 8
-von ,,Gpg4win für Einsteiger'' besprochen.
+Ihrem Gpg4win-"`Schlüsselbund"' befestigt haben, wie in Kapitel 8
+von "`Gpg4win für Einsteiger"' besprochen.
 
 % cartoon:  Müller mit Schlüssel
 \begin{center}
@@ -1165,8 +1107,8 @@ jedoch auch bedeuten, daß der Text nachträglich verändert wurde.
 
 \textbf{
 $\spadesuit$ Wie Sie in einem solchen Fall vorgehen sollten, erfahren
-Sie im Handbuch ,,Gpg4win für Durchblicker'' Kapitel 10.  ,,Emails
-signieren''. Lesen Sie jetzt dort weiter, bevor Sie danach an dieser
+Sie im Handbuch "`Gpg4win für Durchblicker"' Kapitel 10.  "`Emails
+signieren"'. Lesen Sie jetzt dort weiter, bevor Sie danach an dieser
 Stelle fortfahren.
 }
 
@@ -1287,7 +1229,7 @@ dort das Menü \Menu{Einstellungen $\rightarrow$ GPG}.
 \end{center}
 
 In dem Einstellungsfenster, das sich nun öffnet, tragen Sie unter
-,,Encrypt to this key'' Ihren Schlüssel ein, und zwar einfach mit der
+"`Encrypt to this key"' Ihren Schlüssel ein, und zwar einfach mit der
 dazugehörigen Email-Adresse.
 
 Eine entsprechende Option finden Sie auch bei allen Mailprogrammen,
@@ -1309,14 +1251,14 @@ die GnuPG direkt unterstützen.
 Email-Verschlüsselung!}
 
 \textbf{
-$\spadesuit$ Lesen Sie nun die Kapitel 10 bis 12 im Handbuch ,,Gpg4win
-für Durchblicker''.  Sie erfahren dort unter anderem, wie man Emails
+$\spadesuit$ Lesen Sie nun die Kapitel 10 bis 12 im Handbuch "`Gpg4win
+für Durchblicker"'.  Sie erfahren dort unter anderem, wie man Emails
 signiert und einen bereits vorhandenen Geheimschlüssel in GnuPG
 importiert und verwendet.
 }
 
 \textbf{
-$\spadesuit$ Im Kapitel 13 des Handbuchs ,,Gpg4win für Durchblicker''
+$\spadesuit$ Im Kapitel 13 des Handbuchs "`Gpg4win für Durchblicker"'
 können Sie weiterhin in zwei spannenden Kapiteln lesen, auf welchen
 Verfahren die Sicherheit von GnuPG beruht.
 }
@@ -1336,7 +1278,7 @@ sondern
 \section{History}
 
 \begin{itemize}
-\item  ,,GnuPP für Einsteiger'', 1. Auflage März 2002,\\
+\item  "`GnuPP für Einsteiger"', 1. Auflage März 2002,\\
   Autoren: Manfred J. Heinze, TextLab text+media\\
   Beratung: Lutz Zolondz, G-N-U GmbH\\
   Illustrationen: Karl Bihlmeier, Bihlmeier \& Kramer GbR\\
@@ -1347,15 +1289,16 @@ sondern
   Technologie.\\
   Verfügbar unter
   \verb-http://www.gnupp.de/pdf/einsteiger.pdf-\footnote{%
-    Der Abschnitt ,,History'' ist im Originaldokument nicht vorhanden
+    Der Abschnitt "`History"' ist im Originaldokument nicht vorhanden
     und wurde von Werner Koch beigefügt.}
 \item Revidierte nicht-veröffentlichte Version von TextLab text+media.      
-\item ,,Gpg4Win für Einsteiger'', Dezember 2005\\
+\item "`Gpg4Win für Einsteiger"', Dezember 2005\\
       Autoren:  Werner Koch, g10 Code GmbH\\
       Herausgegeben durch das Gpg4Win Projekt.
 
 \end{itemize}
 
+\selectlanguage{USenglish}
 \input{fdl.tex}
 
 \end{document}

@@ -17,6 +17,11 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
+png_files := \
+	sc-winpt-sign-passwd.png \
+        sc-gpgee-ctxmenu.png sc-gpgee-signmenu.png \
+	sc-gpa-gen-backup.png sc-gpa-gen-backup-warn.png
+
 eps_files := adele01.eps.gz adele02.eps.gz man-with-signed-key.eps.gz \
              egyptian-stone.eps.gz sealed-envelope.eps.gz \
 	     schlapphut-with-key.eps.gz tangled-schlapphut.eps.gz \
@@ -31,7 +36,7 @@ eps_files := adele01.eps.gz adele02.eps.gz man-with-signed-key.eps.gz \
              sc-inst-finished.eps.gz sc-inst-finished2.eps.gz \
              sc-inst-license.eps.gz sc-inst-ready.eps.gz \
              sc-inst-startmenu.eps.gz sc-inst-welcome.eps.gz \
-             sc-gpa-first-key.eps.gz sc-gpa-gen-backup.eps.gz \
+             sc-gpa-first-key.eps.gz \
              sc-gpa-gen-email.eps.gz sc-gpa-gen-name.eps.gz \
              sc-gpa-gen-passwd.eps.gz sc-gpa-nokey.eps.gz \
              sc-gpa-rungpa.eps.gz sc-gpa-ks-export-p.eps.gz \
@@ -44,28 +49,41 @@ eps_files := adele01.eps.gz adele02.eps.gz man-with-signed-key.eps.gz \
              sc-winpt-sel-enc-key.eps.gz sc-winpt-enctoself.eps.gz \
 	     sc-misc-mein-key-asc.eps.gz 
 
-
-eps_files_bb := $(eps_files:.gz=.bb)
+eps_files_bb  := $(eps_files:.gz=.bb)
+#eps_files_pdf := $(eps_files:.eps.gz=.pdf)
+png_files_eps := $(png_files:.png=.eps) 
 
 EXTRA_DIST = fdl.tex einsteiger.tex durchblicker.tex $(eps_files) \
-	     macros.tex version.tex.in gpg4win-logo.eps
+             $(png_files) \
+	     was-ist-gpg4win.text macros.tex version.tex.in gpg4win-logo.eps
 
-CLEANFILES = $(eps_files_bb) *.pdf *.pdf *.toc *.log *.aux *.out
+CLEANFILES = $(eps_files_bb) $(png_files_eps) \
+             *.pdf *.pdf *.toc *.log *.aux *.out
 DISTCLEANFILES = version.tex
 
 pkgdata_DATA = einsteiger.pdf durchblicker.pdf
 
-BUILT_SOURCES = $(eps_files_bb)
+BUILT_SOURCES = $(eps_files_bb) $(png_files_eps)
 
 all-local: einsteiger.pdf durchblicker.pdf
+
+einsteiger.pdf : $(eps_files_bb) $(png_files_eps) 
+#$(eps_files_pdf)
+durchblicker.pdf : $(eps_files_bb) $(png_files_eps)
 
 %.eps.bb : %.eps.gz
 	$(ZCAT) `test -f '$<' || echo '$(srcdir)/'`$< \
           | grep '^%%BoundingBox' | head -1 > $@
 
+%.eps : %.png
+	$(CONVERT) `test -f '$<' || echo '$(srcdir)/'`$< $@
 
 %.dvi : %.tex
 	$(TEXI2DVI) `test -f '$<' || echo '$(srcdir)/'`$< 
 
 %.pdf : %.dvi
 	TEXPICTS=$(srcdir) $(DVIPDF)  $< $@
+
+#%.pdf : %.eps.gz
+#	$(ZCAT) `test -f '$<' || echo '$(srcdir)/'`$< \
+#         | epstopdf -f > $@

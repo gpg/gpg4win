@@ -24,8 +24,8 @@ min_automake_version="1.9.3"
 
 # Remember to change the version number immediately *after* a release.
 # Uncomment the my_iscvs macro for non-released code.
-m4_define(my_version, [0.6.0])
-#m4_define(my_iscvs, yes)
+m4_define(my_version, [0.6.1])
+m4_define(my_iscvs, yes)
 
 AC_INIT([gpg4win], my_version[]m4_ifdef([my_iscvs], [-cvs[]m4_translit(
                   [$Revision$],[Ra-z $:])]),
@@ -85,12 +85,13 @@ AC_CHECK_PROGS(MAKENSIS, makensis)
 AC_CHECK_PROGS(ZCAT, zcat)
 AC_CHECK_PROGS(TEXI2DVI, texi2dvi)
 AC_CHECK_PROGS(DVIPDF, dvipdf)
+AC_CHECK_PROGS(CONVERT, convert)
 AC_CHECK_PROGS(SHA1SUM, sha1sum)
 AC_PROG_INSTALL
 
 missing_tools=
 for i in DLLTOOL MAKE UNZIP TAR MKDIR CP RM STOW MAKENSIS ZCAT TEXI2DVI \
-         DVIPDF SHA1SUM ; do
+         DVIPDF CONVERT SHA1SUM ; do
    eval tmp='$'$i
    if test -z "$tmp"; then 
       missing_tools="$missing_tools `echo $i | tr 'A-Z' 'a-z'`"

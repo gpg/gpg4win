@@ -48,7 +48,7 @@ UninstallIcon "${TOP_SRCDIR}/doc/logo/gpg4win-logo-icon.ico"
 !ifndef INSTALL_DIR
 !define INSTALL_DIR "${PACKAGE}"
 !endif
-InstallDir "$PROGRAMFILES\GNU\${INSTALL_DIR}\\" 
+InstallDir "$PROGRAMFILES\GNU\${INSTALL_DIR}" 
 
 
 InstallDirRegKey HKLM "Software\GNU\${PRETTY_PACKAGE_SHORT}" \
