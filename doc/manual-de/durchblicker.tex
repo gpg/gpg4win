@@ -38,7 +38,7 @@ Gpg4win für Durchblicker}
   \small Dr. Francis Wray und Ute Bahn\\ \ \\
   Überarbeitet von\\
   \small Werner Koch}
-\date{Version 2.0.0.RC1. vom 12. Februar 2006}
+\date{Version 2.0.0.RC1 vom 13. Februar 2006}
 
 \maketitle
 
@@ -560,7 +560,7 @@ fremdsprachige Tastaturen diese Sonderzeichen oft nicht haben.
 
 
 %% Original page  22
-machen Sie Rechtschreibfehler, z.B. "`feLer"' statt "`Fehler"'.
+Machen Sie Rechtschreibfehler, z.B. "`feLer"' statt "`Fehler"'.
 Natürlich müssen Sie sich diese "`feLer"' gut merken können.  Oder
 wechseln Sie mittendrin die Sprache.  Aus dem schönen Satz
 
@@ -634,7 +634,8 @@ Informationen gelesen hat.
 Seien Sie kreativ. Denken Sie sich jetzt einen Passwort-Satz aus.
 Unvergesslich und unknackbar.
 
-Lesen Sie dann im "`Einsteiger-Handbuch"', Kapitel 3 weiter.
+Lesen Sie dann im Handbuch "`Gpg4win für Einsteiger"', Kapitel 4 ("`Sie
+erzeugen Ihre Schlüsselpaar"') weiter.
 
 
 
@@ -712,8 +713,9 @@ vorgeschlagen. Es gibt aber noch andere:
 
 Am praktischsten ist sicher die Veröffentlichung über die Keyserver,
 die von allen Programmen nach dem OpenPGP-Standard benutzt werden
-können. Diese Möglichkeit haben wir bereits im Manual
-"`Einsteiger-Handbuch"' Kapitel 4 vorgestellt. Es genügt, den
+können. Diese Möglichkeit haben wir bereits im Handbuch
+"`Gpg4win für Einsteiger"' Kapitel 6 ("`Sie veröffentlichen Ihren
+Schlüssel per Keyserver"') vorgestellt. Es genügt, den
 Schlüssel an irgendeinen der Keyserver zu senden, denn fast alle
 synchronsieren sich weltweit miteinander.
 
@@ -806,7 +808,9 @@ Klicken Sie nun den Link des ersten Schlüsselteils (pub usw.)  an:
 Sie sehen den Ihnen schon bekannten Textblock, der den eigentlichen
 öffentlichen Schlüssel bildet.
 
-Im "`Schnelleinstieg"', Kapitel 6 und 7 zeigen wir Ihnen, wie man
+Im "`Schnelleinstieg"', Kapitel 7 ("`Sie entschlüsseln eine Email"')
+und 8 ("`Sie befestigen einen Schlüssel am Schlüsselbund"')
+zeigen wir Ihnen, wie man
 diesen Schlüssel importiert, d.h., am eigenen Gpg4win Schlüsselbund
 befestigt, und damit eine Email an den Besitzer verschlüsselt.
 
@@ -814,7 +818,7 @@ Diese Suche nach einem Schlüssel funktioniert auch direkt aus Gpg4win:
 Sie können einfach die Email-Adresse des Schlüsselbesitzers eingeben,
 oder auch die Schlüsselkennung, falls Ihnen diese bekannt ist. Klicken
 Sie dazu auf "`Import"', und dort auf "`Schlüssel vom Key-Server
-empfangen"'
+empfangen"'.
 
 
 % screenshot: GPA import from keyserver
@@ -827,7 +831,8 @@ Schlüsselverwaltungs-Fenster an.
 %% Original page 29
 \section{Der Schlüssel als  Dateianhang}
 
-Im Einsteiger Handbuch Kapitel 4. haben Sie gesehen, wie einfach man
+Im Einsteiger Handbuch Kapitel 5 ("`Sie veröffentlichen Ihren Schlüssel
+per Email"') haben Sie gesehen, wie einfach man
 seinen öffentlichen Schlüssel per Email verschicken kann. Wir haben
 dabei den Schlüssel in einen Ordner exportiert, geöffnet und in die
 Zwischenablage kopiert.  Von dort aus wurde der Schlüssel in ein
@@ -852,40 +857,41 @@ Datei, und senden sie ihn an den Empfänger.
 %% Original page 30
 \section{PlugIns für Email-Programme}
 
-Im "`Einsteiger-Handbuch"' haben wir im Kapitel 5, "`Sie entschlüsseln
-eine Email"' erwähnt, daß es PlugIns für bestimmte Email-Programme
+Im "`Einsteiger-Handbuch"' haben wir im Kapitel 7 ("`Sie entschlüsseln
+eine Email"') erwähnt, daß es PlugIns für bestimmte Email-Programme
 gibt, die die Ver- und Entschlüsselung erleichtern. Die im
 Schnelleinstieg vorgestellte Methode mit dem Frontend WinPT
 funktioniert einfach und schnell, und zwar mit jedem beliebigen
 Email- und Text-Programm. Trotzdem ist für viele Email-Anwender ein
 spezieller Programmzusatz in ihrem Lieblings-Emailer ein Vorteil.
 
-Plugins für GnuPG gibt es im Moment für die Mailprogramme:
+Plugins für GnuPG gibt es im Moment für folgende Windows-Mailprogramme:
 
 \begin{description}
-\item[Thunderbird] mit Plugin \textbf{Enigmai},
+\item[Thunderbird] mit Plugin \textbf{Enigmail},
 \item[Outlook 2003] mit Plugin \textbf{GPGol}, welches in Gpg4win
   enthalten ist.  Läuft nur unter Windows; Outlook sollte nur dann
   verwendet werden wenn andere organisatorische Vorgaben es
   bedingen.
 \item[Sylpheed] oder Sylpheed-Claws wie in Gpg4win enthalten.
-  Hier sind im Konfigurationsmenü de Plugins für "`PGP/Mime"' und
-  "`PGP inline"' zu laden. 
+  Hier sind im Konfigurationsmenü die Plugins für "`PGP/Mime"' und
+  "`PGP inline"' zu laden, bei einer Installation über Gpg4win ist
+  das bereits geschehen.
 %\item[PostMe] nur Windows.
 %% FIXME Postme und mail: Prüfen ob noch verfügbar
-\item[Eudora] Das Plugin wird in Gpg4win enthalten sein, sobald
-  einige rechtliche Fragen geklärt sind.
+\item[Eudora] Das Plugin wird in Gpg4win enthalten sein, falls
+  einige rechtliche Fragen zufriedenstellend geklärt werden.
 \end{description}
 
-Desweiteren verfügen alle Mailprogramme, die unter GNU/Linux oder
+Desweiteren verfügen praktisch alle Mailprogramme, die unter GNU/Linux oder
 anderen Unix Varianten laufen, über komfortablen und integrierten
 GnuPG Support.
 
 Da sämtliche Komponenten des Gpg4win Pakets als Freie Software
 entstehen, ist die Entwicklung stark im Fluss.
 
-Aktuelle Informationen über neue Komponenten finden Sie unter diesen
-Webadressen: auf der Gpg4win-Webpage http://www.gpg4win.de/
+Aktuelle Informationen über die Komponenten finden Sie unter
+der Gpg4win-Webpage http://www.gpg4win.de/
 
 Weitere Informationen zu Gpg4Win, GnuPG und anderer Software finden
 Sie auf der Website www.bsi-fuer-buerger.de des Bundesamtes für
@@ -906,7 +912,7 @@ Wenn Ihre Bank z.B. eine Email mit Ihrem Namen und der Anweisung
 erhält, Ihre sämtliche Guthaben auf ein Nummernkonto auf den Bahamas
 zu überweisen, wird sie sich hoffentlich weigern --- Email-Adresse
 hin oder her.  Eine Email-Adresse besagt überhaupt nichts über die
-Identität des Ansenders.
+Identität des Absenders.
 
 Wenn Sie nur einen kleinen Kreis von Korrespondenzpartnern haben, ist
 die Sache mit der Identität schnell geregelt: Sie prüfen den
@@ -983,7 +989,9 @@ Schlüssels gegeben.
 \clearpage
 %% Original page 34
 
-Das Netz des Vertrauens entsteht --- auch über den Kreis von
+\textbf{Das Netz des Vertrauens}
+
+So entsteht --- auch über den Kreis von
 Gpg4win-Benutzern Ihrer täglichen Korrespondenz hinaus --- ein "`Netz
 des Vertrauens"', bei dem Sie nicht mehr zwangsläufig darauf
 angewiesen sind, einen Schlüssel direkt zu prüfen.
@@ -1252,10 +1260,10 @@ Sie sehen in der Mitte eine Möglichkeit den Signaturschlüssel
 auszuwählen --- benutzen Sie dieses, falls Sie mit einem anderen als
 Ihrem Standardschlüssel signieren möchten.
 
-Die 3 Rahmen im unter Teil steuern die Funktion; die Vorgaben sind in
+Die drei Rahmen im unter Teil steuern die Funktion; die Vorgaben sind in
 den meisten Fällen richtig.  Die linke untere Box, steuert die
 Verschlüsselung.  Da Sie lediglich signieren möchten ist hier
-"`Keine"' ausgewahlt.
+"`Keine"' ausgewählt.
 
 In der mittleren Box können Sie die Art der Signatur wählen. Sie
 verwenden hier am besten eine "`abgetrennte"' Signatur; dies bedeutet,
@@ -1269,7 +1277,7 @@ einem Dateinamen der auf "`.asc"' endet und die direkt mit jedem
 Texteditor lesbar ist --- sie würden dort den Buchstaben- und
 Ziffernsalat sehen, den Sie bereits kennen.  Wenn diese Option nicht
 ausgewählt ist, so wird eine Datei mit der Endung "`.sig"' erzeugt,
-die dann nicht direkt lesbar ist (binäre Datei).  Was Sie nier
+die dann nicht direkt lesbar ist (binäre Datei).  Was Sie hier
 benutzen ist eigentlich gleichgültig; Gpg4win kommt mit beiden Arten
 klar.
 
@@ -1298,7 +1306,7 @@ Nachricht damit entschlüsseln könnte.
 
 Es gibt aber ein anderes Verfahren um mit Ihrem geheimen Schlüssel
 eine Datei zu erzeugen: Die Signatur, wie wir sie oben bereits
-besschrieben haben.  Solch eine digitiale Signatur bestätigt eindeutig
+beschrieben haben.  Solch eine digitiale Signatur bestätigt eindeutig
 die Urheberschaft --­ denn wenn jemand Ihren öffentlichen Schlüssel
 auf diese Datei (die Signatur) anwendet und die Ausgabe dieser Prüfung
 ist "`gültig"', so kann diese Datei nur von Ihrem privaten Schlüssel
@@ -1341,7 +1349,7 @@ ganz einfach.
 
 Was tun, wenn Sie zusammen mit Ihrer Email eine Datei versenden und
 diese ebenfalls verschlüsseln wollen? Die Verschlüsselung, wie wir sie
-in Kapitel 7 des "`Einsteiger-Handbuch"' erklärt haben, erfasst nur
+in Kapitel 9 von "`Gpg4win für Einsteiger"' erklärt haben, erfasst nur
 den Text der Email, nicht aber eine gleichzeitig versandte,
 angehängte Datei. 
 
@@ -1357,7 +1365,7 @@ signieren"' kennengelernt haben.
 
 Hier ist nun in der unteren linken Box "`Public-Key"' markiert.  Sie
 müßen jetzt im oberen Fenster auswählen, an welche Empfänger sie
-verhsclüssel wollen,  keuzen Sie einfach die entsprechenden Schlüsseln an.
+verschlüsseln wollen,  keuzen Sie einfach die entsprechenden Schlüsseln an.
 
 Möchten Sie diese Datei (und damit auch den Dateianhang) auch noch
 signieren, so können Sie dies in der mittleren unteren Box auswählen
@@ -1418,7 +1426,7 @@ genau wie einen normalen GnuPG-Schlüssel benutzen.
 Es kann in einigen Fällen vorkommen, daß Sie einen importierten
 Schlüssel nicht direkt benutzen können.  Dies äussert sich darin, daß
 die den richtigen Passwort-Satz eingeben, dieser aber nicht akzeptiert
-wird.  Es wird verursacht da einige Versionen von PGPs intern den
+wird.  Es wird verursacht da einige Versionen von PGP intern den
 IDEA Algorithmus verwenden.  Dieser kann von GnuPG aus rechtlichen
 Gründen nicht unterstützt werden.  Um das Problem zu beheben,
 ändern Sie in PGP einfach den Passwort-Satz und
@@ -1438,7 +1446,7 @@ transferieren oder auf einer anderen Festplattenpartition bzw. einer
 Sicherungsdiskette speichern wollen, müssen Sie ein Backup erstellen.
 Dies entspricht dem Backup, welches Sie bei der Schlüsselerzeugung
 auch schon durchgeführt haben.  Da Ihr Schlüssel inzwischen weitere
-Schlüsselunterschriften haben kann, sollte Sie es erneunt durchführen.
+Schlüsselunterschriften haben kann, sollte Sie es erneut durchführen.
 
 Klicken Sie in der GPA-Schlüsselverwaltung den Schlüssel an und wählen
 Sie dann den Menüpunkt \Menu{Schlüssel$\rightarrow$Sicherheitskopie anlegen}.
@@ -1460,8 +1468,8 @@ diese Datei sehr sorgfaltig zu handhaben ist:
 
 
 Beim Import, also zum Beispiel auf einem anderen Rechner, importieren
-Sie einfach diese Sicherheistkopie.  Gpg4win wird dann sohl den
-geheimen als auch den öffentlichen SChlüssel aus dieser Datei
+Sie einfach diese Sicherheistkopie.  Gpg4win wird dann sowohl den
+geheimen als auch den öffentlichen Schlüssel aus dieser Datei
 importieren.
 
 Damit haben Sie erfolgreich einen GnuPG-Schlüssel exportiert und
@@ -1475,9 +1483,9 @@ wieder importiert.
 $\ldots$ jedenfalls nicht mit heute bekannten Methoden und sofern die
 Implementierung der Programme frei von Fehlern ist. 
 
-In der Realitat sind es genau diese Fehler in den Programmen, dem
-Betriebssystem und in erster Linie Fehler in der Benutzung der Weg um
-doch an die geheimen Informationen zu gelangen --- Auch deshalb sollte
+In der Realität sind es genau diese Fehler in den Programmen, dem
+Betriebssystem und in erster Linie Fehler in der Benutzung der letzte Weg um
+doch noch an die geheimen Informationen zu gelangen --- Auch deshalb sollte
 Sie diese Handbücher bis hierhin gelesen haben.
 
 In jedem Beispiel dieses Handbuchs haben Sie gesehen, daß zwischen dem
@@ -1486,7 +1494,7 @@ Verbindung besteht. Nur wenn beide zueinander passen, kann man
 Geheimbotschaften entschlüsseln.
 
 Das Geheimnis dieser mathematischen Verbindung müssen Sie nicht
-unbedingt kennen ­-- Gpg4win funktioniert auch so. Man diese komplexe
+unbedingt kennen ­-- Gpg4win funktioniert auch so. Man kann diese komplexe
 mathematische Methode aber auch als Normalsterblicher und
 Nichtmathematiker verstehen. Sie müssen eigentlich nur einfache
 Additionen ($2 + 3$) und Multiplikationen ($5 * 7$) beherrschen.
@@ -1727,7 +1735,7 @@ Die erste und die zweite Zahl werden veröffentlicht ­-- das ist Ihr
 öffentlicher Schlüssel.  Beide werden dazu benutzt, Nachrichten zu
 verschlüsseln. Die dritte Zahl muss von Ihnen geheimgehalten werden
 ­-- es ist Ihr geheimer Schlüssel.  Die beiden Primzahlen werden
-danahc nicht mehr benötigt.
+danach nicht mehr benötigt.
 
 Wenn eine verschlüsselte Nachricht empfangen wird, kann sie
 entschlüsselt werden mit Hilfe der ersten ($n$) und der dritten Zahl
@@ -1918,10 +1926,10 @@ bereiten, die beiden Primzahlen zu errechnen.
 
 Man muss die Primzahlen also nur groß genug wählen, damit ihre
 Berechnung aus dem Produkt so lange dauert, daß alle bekannten
-Methoden daran in der Parxis scheitern.  Außerdem nimmt der Anteil der
+Methoden daran in der Praxis scheitern.  Außerdem nimmt der Anteil der
 Zahlen, die in sich selbst transformiert werden --­ wie wir sie oben
 in den Tabellen 1 und 2 gefunden haben --- stetig ab, je größer die
-Primzahlen werden.  Von Primzahlen in Grössenordnung, die wir in der
+Primzahlen werden.  Von Primzahlen in der Grössenordnung, die wir in der
 Praxis bei der Verschlüsselung verwenden, ist dieser Teil ist so
 klein, daß der RSA Algorithmus davon in keiner Weise beeinträchtigt
 wird.
@@ -2135,7 +2143,7 @@ Buchstaben a, b, c und d. In diesem --- wirklich sehr einfachen ---
 Beispiel können wir die vier Buchstaben durch die Zahlenwerte 0, 1, 2
 und 3 darstellen, und haben dann
 
-\[ a = 0, b = 1, c = 2 und d = 3 \].
+\[ a = 0, b = 1, c = 2 ~\mbox{und}~ d = 3 \].
 
 Wir wollen nun die Nachricht "`abacadaca"' verschlüsseln. Wir kodieren
 diese Nachricht mit Hilfe der Primzahlen 7 und 11, mit dem
@@ -2176,9 +2184,9 @@ Zur Basis 10 wird diese Nachricht durch die Zahlenfolge 4, 35,
 Stück $203_4$:
 
 \begin{eqnarray*}
- 3 * 4^0, & also~ 3 * 1, & also~ 3 \\
- 0 * 4^1, & also~ 0 * 4, & also~ 0 \\
- 2 * 4^2, & also~ 2 * 16, & also~ 32
+ 3 * 4^0, & ~\mbox{also}~ 3 * 1, & ~\mbox{also}~ 3 \\
+ 0 * 4^1, & ~\mbox{also}~ 0 * 4, & ~\mbox{also}~ 0 \\
+ 2 * 4^2, & ~\mbox{also}~ 2 * 16, & ~\mbox{also}~ 32
 \end{eqnarray*}
 
 3. Jetzt können wir zur Verschlüsselung die Tabelle 1 benutzen, die ja
@@ -2209,8 +2217,8 @@ Anhand der Tabellen 1 und 2 können wir ebensogut Nachrichten unter
 Verwendung des geheimen Schlüssels (d.h.  erst Tabelle 2 benutzen)
 verschlüsseln, dann mit dem öffentlichen Schlüssel (d.h. Tabelle 1 als
 zweites benutzen) dekodieren und damit unsere ursprüngliche Zahl
-wieder hergestellen. Das bedeutet --­ wie wir bereits im
-"`Einsteiger-Manual"' gesehen haben ---, daß der Inhaber des geheimen
+wieder hergestellen. Das bedeutet --­ wie wir bereits im Handbuch
+"`Gpg4win für Einsteiger"' gesehen haben ---, daß der Inhaber des geheimen
 Schlüssels damit Nachrichten unter Verwendung des RSA Algorithmus
 verschlüsseln kann.  Damit ist bewiesen, daß sie eindeutig nur von
 ihm stammen können.
@@ -2230,7 +2238,7 @@ tiefergehende Details sind leicht in anderen Büchern (z.B. R.~Wobst,
 
 \vfill
 
-Immerhin wissen Sie nun: wenn jemand sich an Ihren verschlüsselten
+\textbf{Immerhin wissen Sie nun:} wenn jemand sich an Ihren verschlüsselten
 Emails zu schaffen macht, ist er durchaus so lange damit beschäftig,
 daß er dann keine Lust mehr haben kann sie auch noch zu lesen\ldots
 
