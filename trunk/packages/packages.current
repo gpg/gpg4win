@@ -127,8 +127,8 @@ chk  1019c8027c0cf94bca680886f4e2ae4e629a2a97
 #chk  f880bd2103b51a8e2f6e94f58a9524c523765ccb
 
 server ftp://ftp.g10code.com/g10code/scratch
-file winpt-0.11.7-cvs.tar.bz2
-chk  4f1229c776a2eef438dc97512b0882fbdfebbd81  
+file winpt-0.11.8rc1.tar.bz2
+chk  4195420ba82c5852c7b30192fda2c6627e5b31fd
 
 
 # GPGee
@@ -162,8 +162,8 @@ chk  a637d8a024d3106eba320af47066574817624ab3
 
 server ftp://ftp.gnupg.org/gcrypt
 
-file gnupg/gnupg-1.4.2.tar.gz
-chk  cc7e9a5268bf309ac652a7343b62dff8cfb68d38
+file alpha/gnupg/gnupg-1.4.3rc1.tar.bz2
+chk  6c2d5f65c2acde6eaeb1ae3a4bc9ae971f942126
 
 file alpha/gpa/gpa-0.7.1.tar.bz2
 chk  db850a43e69c6677765cbaf95718b930fe439612

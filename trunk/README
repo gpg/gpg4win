@@ -1,5 +1,6 @@
 This is gpg4win - the GUI Installer Builder for W32.
 
+
 Instructions:
 =============
 
@@ -23,6 +24,25 @@ The installer will be made available in two files:
 
 src/gpg4win-X.Y.Z.exe
 src/gpg4win-src-X.Y.Z.exe
+
+
+Basic requirements
+==================
+
+A decent POSIX system is required for building this software as well
+as GNU make.  We are using Debian GNU/Linux (Sid), however it should
+work with current Testing (as of Februar 2006) too.  It might work with
+Sarge - this has not been tested.  To satisfy all needs of configure
+at least the following packages need to be installed:
+
+ mingw32
+ nsis
+ stow
+ unzip
+ texinfo
+ imagemagick
+ tetex-bin
+ gs-common
 
 
 Adding new packages to the installer:
@@ -51,6 +71,32 @@ some of tehse tasks.  Here is a short run up:
 Then run the usual "./autogen.sh" to create the actual configure file
 and run configure as described above.
 
+
+Copyright
+=========
+
+The entire GPG4Win package is
+
+  Copyright (C) 2005, 2006 g10 Code GmbH
+  
+  GPG4Win is free software; you can redistribute it and/or modify it
+  under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
+  
+  GPG4Win is distributed in the hope that it will be useful, but
+  WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+  General Public License for more details.
+  
+  You should have received a copy of the GNU General Public License
+  along with this program; if not, write to the Free Software
+  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+  02110-1301, USA
+
+
+This file
+=========
 
 Copyright 2005, 2006 g10 Code GmbH
 
