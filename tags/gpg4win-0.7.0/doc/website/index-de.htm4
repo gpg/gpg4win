@@ -1,0 +1,138 @@
+m4_dnl -*-html-*-
+m4_include(`template.m4')
+m4_dnl $Id: index.htm4,v 1.30 2006/01/12 16:04:03 jan Exp $
+
+m4_define(`DE')
+PAGE_START
+
+<h2>Neuer Anwender?</h2>
+
+gpg4win ist ein Installtionspaket für Windows (95/98/XP/2000/2003)
+mit Computer-Programmen und Handbüchern für EMail- und Datei-Verschlüsselung.
+
+<p>
+Wahlweise können <b>alle oder einige der folgenden Module</b> installiert werden:
+
+<table>
+  <tr>
+    <td>GnuPG:</td>
+    <td>Das Kernstück, das eigentliche Verschlüsselungsprogramm</td>
+  </tr>
+  <tr>
+    <td>WinPT:</td>
+    <td>Ein Schlüsselmanager und Helfer bei vielen anderen Verschlüsselungs-Fragen</td>
+  </tr>
+  <tr>
+    <td>GPA:</td>
+    <td>Ein anderer Schlüsselmanager, die Geschmäcker sind nunmal verschieden</td>
+  </tr>
+  <tr>
+    <td>GPGol:</td>
+    <td>Ein Plugin für Microsoft Outlook 2003 (EMail-Verschlüsselung)</td>
+  </tr>
+  <tr>
+    <td>GPGee:</td>
+    <td>Ein Plugin für den Microsoft Explorer (Datei-Verschlüsselung)</td>
+  </tr>
+  <tr>
+    <td>Sylpheed-Claws:</td>
+    <td>Ein komplettes EMail-Programm inklusive Plugin für GnuPG</td>
+  </tr>
+</table>
+
+<p>
+Dokumentation:
+
+<table>
+  <tr>
+    <td>Gpg4win für Einsteiger:</td>
+    <td>Ein Handbuch speziell für Neulinge</td>
+  </tr>
+  <tr>
+    <td>Gpg4win für Durchblicker:</td>
+    <td>Ein Handbuch zu den Hintergründen, für Anfänger</td>
+  </tr>
+</table>
+
+<p>
+<b>gpg4win ist mit wenigen Mausclicks installiert</b> und kann ausprobiert werden.
+Sie sollten aber auf Ihrem System Administrator sein oder Administrationsrechte
+besitzen.
+
+<p>
+Am besten beginnt man mit dem recht anschaulichen
+Handbuch <em>gpg4win für Einsteiger</em>.
+
+<h2>Über gpg4win</h2>
+
+Das gpg4win Projekt <b>hat das Ziel</b>
+das gpg4win Windows-Installationspaket für
+die Verschlüsselungs-Software
+GnuPG sowie zugehörige Anwendungen
+und Dokumentation kontinuerlich zu aktualisieren.
+Insbsondere wird die Dokumentation (Handbücher "Einsteiger"
+und "Durchblicker") direkt beim gpg4win Projekt gepflegt.
+
+<p>
+Es ist ein internationales Projekt, aufgrund der Herkunft
+des Projektes und vieler Beteiligter liegt eine
+<b>vollständige deutsche Übersetzung</b> vor.
+
+<p>
+Der Hauptunterschied zu den bisherigen Ansätzen
+(vor allem GnuPP, GnuPT, Windows Privacy Tools und GnuPG-Basics)
+ist, dass zunächst der <b>gpg4win-Builder</b> entwickelt wurde.
+Dieser erlaubt es, sehr leicht neue gpg4win.exe-Installer
+mit aktualisierten Komponenten herzustellen.
+Und zwar auf einem GNU/Linux System. Fast alle Produkte
+werden dabei sogar automatisch per Cross-Compilation erstellt.
+
+<p>
+Damit verbindet sich die Hoffnung, der <b>schnellen Alterung von Installer-Paketen
+entgegenzuwirken</b>, denn eine Aktualisierung wird deutlich einfacher
+und hängt eben nicht von einer Einzelperson ab.
+
+<h2>Alle Downloads</h2>
+
+Aktueller und aller bisherigen gpg4win Installer (gpg4win-n.n.n.exe)
+sowie Signaturen (gpg4win-n.n.n.exe.sig) und zugehörige Quelltextpakete
+(gpg4win-n.n.n.bz2 mit gpg4win-n.n.n.tar.bz2.sig):
+
+<p>
+<a href="ftp://ftp.gpg4win.org/gpg4win/">ftp://ftp.gpg4win.org/gpg4win/</a>
+
+<p>
+gpg4win Kern-Quelltextpakete (gpg4win-n.n.n.tar.bz2 mit gpg4win-n.n.n.tar.bz2.sig)
+sowie <em>gpg4win für Einsteiger</em> als separates PDF-Dokument
+(gpg4win-fuer-einsteiger-n.n.n.pdf):
+
+<p>
+<a href="http://wald.intevation.org/frs/?group_id=11">http://wald.intevation.org/frs/?group_id=11</a>
+
+
+PAGE_BOXES
+
+<div class="box">
+  <h1>Support</h1>
+  Mailnglisten:<br>
+  <a href="http://lists.wald.intevation.org/pipermail/gpg4win-users-de/">Archiv</a>
+  | <a href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-users-de">Abonnieren</a>
+  <p>Web Foren:<br>
+  <a href="http://wald.intevation.org/forum/forum.php?forum_id=21">Hilfe</a>
+  | <a href="http://wald.intevation.org/forum/forum.php?forum_id=20">Diskussion</a>
+  <p>Fehler Melden:<br>
+  <a
+  href="http://wald.intevation.org/tracker/?atid=126&amp;group_id=11&amp;func=browse">Bug Tracker</a>
+</div>
+<div class="box">
+  <h1>Mitmachen</h1>
+  <a href="http://wald.intevation.org/projects/gpg4win/">Projekt Seite</a>
+</div>
+<div class="box">
+  <h1>Ähnliche Projekte</h1>
+  <a href="http://www.equipmente.de/">GnuPT</a><br>
+  <a href="http://people.freenet.de/rose-indorf">GnuPG-Basics</a><br>
+  <a href="http://sourceforge.net/projects/winpt">Windows Privacy Tools</a><br>
+  <a href="http://www.gnupp.de/start.html">GnuPP</a><br>
+</div>
+
