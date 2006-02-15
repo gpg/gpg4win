@@ -1,0 +1,120 @@
+#! /bin/sh
+patch -p1 -f $* < $0
+exit $?
+
+Fix write thread buffer management.  The problems were revealed by SMP
+machines (ie P4 with Hyperthreading).
+
+2006-02-15  Marcus Brinkmann  <marcus@g10code.de>
+
+	* w32-io.c (create_writer): Make C->have_data a manually resetted
+	event.
+	(writer): Move code from end of if block to beginning, so it
+	is also run the first time.
+	(_gpgme_io_write): Move assert check after error check.  Reset
+	the is_empty event, and also do it eagerly.
+	(_gpgme_io_select): Unconditionally wait for the is_empty event.
+
+diff -rup gpgme-1.1.1-cvs1152o/gpgme/w32-io.c gpgme-1.1.1-cvs1152/gpgme/w32-io.c
+--- gpgme-1.1.1-cvs1152o/gpgme/w32-io.c	2006-01-26 10:10:52.000000000 +0100
++++ gpgme-1.1.1-cvs1152/gpgme/w32-io.c	2006-02-15 13:26:01.000000000 +0100
+@@ -438,7 +438,13 @@ writer (void *arg)
+     DEBUG2 ("writer thread %p for file %p started", c->thread_hd, c->file_hd );
+     for (;;) {
+         LOCK (c->mutex);
++        if ( c->stop_me ) {
++            UNLOCK (c->mutex);
++            break;
++        }
+         if ( !c->nbytes ) { 
++            if (!SetEvent (c->is_empty))
++                DEBUG1 ("SetEvent failed: ec=%d", (int)GetLastError ());
+             if (!ResetEvent (c->have_data) )
+                 DEBUG1 ("ResetEvent failed: ec=%d", (int)GetLastError ());
+             UNLOCK (c->mutex);
+@@ -468,14 +474,6 @@ writer (void *arg)
+       
+         LOCK (c->mutex);
+         c->nbytes -= nwritten;
+-        if (c->stop_me) {
+-            UNLOCK (c->mutex);
+-            break;
+-        }
+-        if ( !c->nbytes ) {
+-            if ( !SetEvent (c->is_empty) )
+-                DEBUG1 ("SetEvent failed: ec=%d", (int)GetLastError ());
+-        }
+         UNLOCK (c->mutex);
+     }
+     /* indicate that we have an error  */
+@@ -505,7 +503,7 @@ create_writer (HANDLE fd)
+         return NULL;
+ 
+     c->file_hd = fd;
+-    c->have_data = CreateEvent (&sec_attr, FALSE, FALSE, NULL);
++    c->have_data = CreateEvent (&sec_attr, TRUE, FALSE, NULL);
+     c->is_empty  = CreateEvent (&sec_attr, TRUE, TRUE, NULL);
+     c->stopped = CreateEvent (&sec_attr, TRUE, FALSE, NULL);
+     if (!c->have_data || !c->is_empty || !c->stopped ) {
+@@ -637,12 +635,14 @@ _gpgme_io_write ( int fd, const void *bu
+ 
+     LOCK (c->mutex);
+     if ( c->nbytes ) { /* bytes are pending for send */
++        /* Reset the is_empty event.  Better safe than sorry.  */
++        if (!ResetEvent (c->is_empty))
++            DEBUG1 ("ResetEvent failed: ec=%d", (int)GetLastError ());
+         UNLOCK (c->mutex);
+         DEBUG2 ("fd %d: waiting for empty buffer in thread %p",
+                 fd, c->thread_hd);
+         WaitForSingleObject (c->is_empty, INFINITE);
+         DEBUG2 ("fd %d: thread %p buffer is empty", fd, c->thread_hd);
+-        assert (!c->nbytes);
+         LOCK (c->mutex);
+     }
+     
+@@ -651,11 +651,20 @@ _gpgme_io_write ( int fd, const void *bu
+         DEBUG1 ("fd %d: write error", fd );
+         return -1;
+     }
+-      
++
++    /* If no error occured, the number of bytes in the buffer must be
++       zero.  */
++    assert (!c->nbytes);
++
+     if (count > WRITEBUF_SIZE)
+         count = WRITEBUF_SIZE;
+     memcpy (c->buffer, buffer, count);
+     c->nbytes = count;
++
++    /* We have to reset the is_empty event early, because it is also
++       used by the select() implementation to probe the channel.  */
++    if (!ResetEvent (c->is_empty))
++        DEBUG1 ("ResetEvent failed: ec=%d", (int)GetLastError ());
+     if (!SetEvent (c->have_data))
+         DEBUG1 ("SetEvent failed: ec=%d", (int)GetLastError ());
+     UNLOCK (c->mutex);
+@@ -1018,18 +1027,11 @@ _gpgme_io_select ( struct io_select_fd_s
+                         DEBUG0 ("Too many objects for WFMO!" );
+                         return -1;
+                     }
+-                    LOCK (c->mutex);
+-                    if ( !c->nbytes ) {
+-                        waitidx[nwait]   = i;
+-                        waitbuf[nwait++] = c->is_empty;
+-                        DEBUG_ADD1 (dbg_help, "w%d ", fds[i].fd );
+-                        any = 1;
+-                    }
+-                    else {
+-                        DEBUG_ADD1 (dbg_help, "w%d(ignored) ", fds[i].fd );
+-                    }
+-                    UNLOCK (c->mutex);
++		    waitidx[nwait]   = i;
++		    waitbuf[nwait++] = c->is_empty;
+                 }
++		DEBUG_ADD1 (dbg_help, "w%d ", fds[i].fd );
++		any = 1;
+             }
+         }
+     }
+
