@@ -10,7 +10,8 @@
                                    
 Dies ist GnuPG for Windows, Version !VERSION!.
 
-
+Informationen zur Benutzung sind den Handbüchern "Gpg4Win für
+Einsteiger" und "Gpg4Win für Durchblicker" zu entnehmen.
 
 
               Versionsnummern der einzenen Bestandteile
@@ -21,17 +22,35 @@ Dies ist GnuPG for Windows, Version !VERSION!.
 
 
 
+
+                   Liste der Änderungen an Gpg4Win
+                  =================================
+                        (englische NEWS Datei)
+
+!NEWSFILE!
+
+
    Rechtliche Hinweise zu den einzelnen Bestandteilen der Software
   =================================================================
 
+Gpw4win besteht aus einer ganzen Reihe von unabhängig entwickelten
+Packeten, die teilweise unterschiedliche Lizenzen haben.  Der Großteil
+dieser Software ist, wie Gpg4win selbst, steht unter der GNU General
+Public License (GNU GPL).  Gemeinsam ist allen, daß die Software ohne
+Restriktionen benutzt werden kann, verändert werden darf und
+Änderungen weitergeben dürfen.  Wenn die Quelltexte (also
+gpg4win-src-x.y.z.exe) mit weitergegeben werden und auf die die GNU
+GPL hingewiesen wird, ist die Weitergabe in jedem Fall möglich.
+
+Zur Übersicht folgt eine Liste der Copyright Erklärungen.
 
 
+!PKG-COPYRIGHT!
 
-         Liste der Änderungen an Gpg4Win 
-        =================================
-            (englische NEWS Datei)
 
-!NEWSFILE!
+Frohes GiPiGien,
+
+  Ihr Gpg4Win Team
 
 
                         *** Ende der Datei ***

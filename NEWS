@@ -1,5 +1,11 @@
-Noteworthy changes in version 0.6.1
+Noteworthy changes in version 0.7.0 (2006-02-15)
 ------------------------------------------------
+
+ * Finished Durchblicker manual.
+
+ * Install a list with copyright statements.
+
+ * Fix bugs in the individual packages.
 
 
 Noteworthy changes in version 0.6.0 (2006-01-26)
@@ -98,7 +104,7 @@ Noteworthy changes in version 0.0.1 (2005-11-04)
   * Initial release.
 
 
-Copyright 2005 g10 Code GmbH
+Copyright 2005, 2006 g10 Code GmbH
 
 This file is free software; as a special exception the author gives
 unlimited permission to copy and/or distribute it, with or without

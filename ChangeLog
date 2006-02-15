@@ -1,7 +1,17 @@
+2006-02-15  Werner Koch  <wk@gnupg.org>
+
+	Released 0.7.0.
+
+	* patches/gpa-0.7.2/01-bin-open.patch: New file.
+
 2006-02-15  Marcus Brinkmann  <marcus@g10code.de>
 
 	* patches/gpgme/03-w32-io.patch: New file.
 	* patches/gpgme-1.1.1-cvs1152/03-w32-io.patch: New file.
+
+2006-02-14  Werner Koch  <wk@gnupg.org>
+
+	* README (Instructions): Add a list of required Debian packages.
 
 2006-01-31  Werner Koch  <wk@g10code.com>
 

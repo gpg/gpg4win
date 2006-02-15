@@ -39,15 +39,23 @@ if [ "$1" = "--force" ]; then
     force=yes
     shift
 fi
+keep_list=no
+if [ "$1" = "--keep-list" ]; then
+    keep_list=yes
+    shift
+fi
 
 WGET=wget
 
 url="ftp://ftp.gpg4win.org/gpg4win/"
-echo "downloading packages list from \`$url'."
-if ! ${WGET} -N -q $url/packages.current{,.sig} ; then
-    echo "download of packages list failed." >&2
-    exit 1
+if [ "$keep_list" = "no" ]; then
+  echo "downloading packages list from \`$url'."
+  if ! ${WGET} -N -q $url/packages.current{,.sig} ; then
+      echo "download of packages list failed." >&2
+      exit 1
+  fi
 fi
+
 
 if ! gpgv --keyring ./packages.keys packages.current.sig packages.current
   then

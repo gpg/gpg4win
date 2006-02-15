@@ -1,12 +1,5 @@
                                                           -*- outline -*-
 
-* Missing stuff
-** Create a text file to record the version numbers
-   of all installed packages and distribute it with the .exe.  If
-   possible HTML formatted with links to the NEWS files of the
-   packages.
-** Add gpg translations to the installer
-
 * Build system
 ** Some versions of strip don't work.
    Werner's GNU strip 2.15.91 20040904 is fine but

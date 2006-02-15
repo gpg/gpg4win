@@ -55,7 +55,7 @@ png_files_eps := $(png_files:.png=.eps)
 
 EXTRA_DIST = fdl.tex einsteiger.tex durchblicker.tex $(eps_files) \
              $(png_files) \
-	     was-ist-gpg4win.text macros.tex version.tex.in gpg4win-logo.eps
+	     was-ist-gpg4win.tex macros.tex version.tex.in gpg4win-logo.eps
 
 CLEANFILES = $(eps_files_bb) $(png_files_eps) \
              *.pdf *.pdf *.toc *.log *.aux *.out

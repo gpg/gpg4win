@@ -198,13 +198,17 @@ versioninfo.txt : playground/build/versioninfo.txt
 
 README.en.txt : versioninfo.txt $(top_srcdir)/doc/README.en.txt
 	sed -e '/^;.*/d;/!VERSIONINFO!/{r versioninfo.txt' -e 'd;}' \
+	-e '/!NEWSFILE!/{r $(top_srcdir)/NEWS' -e 'd;}' \
+        -e '/!PKG-COPYRIGHT!/{r $(top_srcdir)/doc/pkg-copyright.txt' -e 'd;}' \
+        -e 's,!VERSION!,$(VERSION),g' \
 	   < $(top_srcdir)/doc/README.en.txt \
            | awk '{printf "%s\r\n", $$0}' >README.en.txt
 
 README.de.txt : versioninfo.txt $(top_srcdir)/doc/README.de.txt
 	sed -e '/^;.*/d;/!VERSIONINFO!/{r versioninfo.txt' -e 'd;}' \
-	    -e '/!NEWSFILE!/{r $(top_srcdir)/NEWS' -e 'd;}' \
-            -e 's,!VERSION!,$(VERSION),g' \
+	-e '/!NEWSFILE!/{r $(top_srcdir)/NEWS' -e 'd;}' \
+        -e '/!PKG-COPYRIGHT!/{r $(top_srcdir)/doc/pkg-copyright.txt' -e 'd;}' \
+        -e 's,!VERSION!,$(VERSION),g' \
 	   < $(top_srcdir)/doc/README.de.txt \
            | awk '{printf "%s\r\n", $$0}' >README.de.txt
 
