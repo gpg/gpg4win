@@ -12,7 +12,7 @@ mit Computer-Programmen und Handbüchern für EMail- und Datei-Verschlüsselung.
 
 <p>
 Wahlweise können <b>alle oder einige der folgenden Module</b> installiert werden:
-
+</p>
 <table>
   <tr>
     <td>GnuPG:</td>
@@ -42,7 +42,7 @@ Wahlweise können <b>alle oder einige der folgenden Module</b> installiert werden
 
 <p>
 Dokumentation:
-
+</p>
 <table>
   <tr>
     <td>Gpg4win für Einsteiger:</td>
@@ -58,10 +58,11 @@ Dokumentation:
 <b>gpg4win ist mit wenigen Mausclicks installiert</b> und kann ausprobiert werden.
 Sie sollten aber auf Ihrem System Administrator sein oder Administrationsrechte
 besitzen.
-
+</p>
 <p>
 Am besten beginnt man mit dem recht anschaulichen
 Handbuch <em>gpg4win für Einsteiger</em>.
+</p>
 
 <h2>Über gpg4win</h2>
 
@@ -77,7 +78,7 @@ und "Durchblicker") direkt beim gpg4win Projekt gepflegt.
 Es ist ein internationales Projekt, aufgrund der Herkunft
 des Projektes und vieler Beteiligter liegt eine
 <b>vollständige deutsche Übersetzung</b> vor.
-
+</p>
 <p>
 Der Hauptunterschied zu den bisherigen Ansätzen
 (vor allem GnuPP, GnuPT, Windows Privacy Tools und GnuPG-Basics)
@@ -86,11 +87,12 @@ Dieser erlaubt es, sehr leicht neue gpg4win.exe-Installer
 mit aktualisierten Komponenten herzustellen.
 Und zwar auf einem GNU/Linux System. Fast alle Produkte
 werden dabei sogar automatisch per Cross-Compilation erstellt.
-
+</p>
 <p>
 Damit verbindet sich die Hoffnung, der <b>schnellen Alterung von Installer-Paketen
 entgegenzuwirken</b>, denn eine Aktualisierung wird deutlich einfacher
 und hängt eben nicht von einer Einzelperson ab.
+</p>
 
 <h2>Alle Downloads</h2>
 
@@ -100,15 +102,15 @@ sowie Signaturen (gpg4win-n.n.n.exe.sig) und zugehörige Quelltextpakete
 
 <p>
 <a href="ftp://ftp.gpg4win.org/gpg4win/">ftp://ftp.gpg4win.org/gpg4win/</a>
-
+</p>
 <p>
 gpg4win Kern-Quelltextpakete (gpg4win-n.n.n.tar.bz2 mit gpg4win-n.n.n.tar.bz2.sig)
 sowie <em>gpg4win für Einsteiger</em> als separates PDF-Dokument
 (gpg4win-fuer-einsteiger-n.n.n.pdf):
-
+</p>
 <p>
 <a href="http://wald.intevation.org/frs/?group_id=11">http://wald.intevation.org/frs/?group_id=11</a>
-
+</p>
 
 PAGE_BOXES
 
@@ -119,10 +121,14 @@ PAGE_BOXES
   | <a href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-users-de">Abonnieren</a>
   <p>Web Foren:<br>
   <a href="http://wald.intevation.org/forum/forum.php?forum_id=21">Hilfe</a>
-  | <a href="http://wald.intevation.org/forum/forum.php?forum_id=20">Diskussion</a>
+  | <a
+  href="http://wald.intevation.org/forum/forum.php?forum_id=20">Diskussion</a>
+  </p>
   <p>Fehler Melden:<br>
   <a
-  href="http://wald.intevation.org/tracker/?atid=126&amp;group_id=11&amp;func=browse">Bug Tracker</a>
+  href="http://wald.intevation.org/tracker/?atid=126&amp;group_id=11&amp;func=browse">Bug 
+  Tracker</a>
+  </p>
 </div>
 <div class="box">
   <h1>Mitmachen</h1>
