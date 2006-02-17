@@ -29,7 +29,8 @@ developer account on wald.intevation.org.
 Installing is done from within the "doc/website" directory, using
 rsync:
 
-rsync -urvP *.css *.html pix/*.png USER@wald.intevation.org:/gpg4win/htdocs/
+rsync -urvP --exclude='.svn' *.css *.html pix \
+      USER@wald.intevation.org:/gpg4win/htdocs/
 
 Where USER is your accounts user name on wald.intevation.org.
 
