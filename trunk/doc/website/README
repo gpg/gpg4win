@@ -26,18 +26,23 @@ INSTALLING:
 To install the generated web site you need a gpg4win docwriter or
 developer account on wald.intevation.org.
 
-Installing is done from within the "doc/website" directory, using
-rsync:
+Installing is done from within the "doc/website" directory,
+just type:
 
-rsync -urvP --exclude='.svn' *.css *.html *.php pix \
-      USER@wald.intevation.org:/gpg4win/htdocs/
+  make -f buildhtml.mk online
 
-Where USER is your accounts user name on wald.intevation.org.
+You will have to enter the ssh password of your account at wald.intevation.org.
 
-For further information on web site management on wald.intevation.org
-please read the online manual:
+If you are interested on web site management on wald.intevation.org
+in general, please read the online manual:
 http://wald.intevation.org/docman/view.php/1/34/project-websites.txt
 
+If you need the website as offline version for some other
+purposes just run:
+
+  make -f buildhtml.mk tar
+
+After thar you have the file "www.gpg4win.org.tar.gz".
 
 TEMPLATES:
 
