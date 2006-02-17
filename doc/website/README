@@ -4,6 +4,25 @@
 
 INTRODUCTION:
 
+Getting the source:
+
+You can work on the website independntly of the rest of gpg4win.
+First check out the website from SVN repository:
+
+  svn checkout svn+ssh://USER@svn.wald.intevation.org/gpg4win/trunk/doc/website
+
+where USER is you name at wald.intevation.org.
+If you are not a member of the gpg4win project at wald.intevation.org,
+you can also checkout anonymously:
+
+  svn checkout https://svn.wald.intevation.org/gpg4win/trunk/doc/website
+
+but of course you can not update the official website www.gpg4win.org
+this way.
+
+
+File organisation:
+
 The .html files are build from the *.htm4 files using GNU m4.  The
 *.htm4 files consist of mainly simple plain HTML and some macros
 implementing the overall page layout.
