@@ -12,7 +12,7 @@ with computer programs and handbooks for EMail and file encryption.
 
 <p>
 You can <b>choose all or some of the following modules</b> during installation:
-
+</p>
 <table>
   <tr>
     <td>GnuPG:</td>
@@ -42,7 +42,7 @@ You can <b>choose all or some of the following modules</b> during installation:
 
 <p>
 Documentation (only in german so far):
-
+</p>
 <table>
   <tr>
     <td>Gpg4win für Einsteiger:</td>
@@ -58,11 +58,11 @@ Documentation (only in german so far):
 gpg4win can be <b>installed and tested with just a few mouse clicks</b>.
 Of course you should be administrator of your system or have administration
 rights.
-
+</p>
 <p>
 The best point to start is with the illustrative handbook
 <em>gpg4win für Einsteiger</em> (so far only available in german!).
-
+</p>
 <h2>About gpg4win</h2>
 
 The gpg4win <b>project aims at</b> updating the gpg4win Windows installation
@@ -76,7 +76,7 @@ It is an international project. Due to the origin of the project and
 many members, german language is fully supported as well.
 Currently the handbooks are even only available in german.
 Any translators are very welcome!
-
+</p>
 <p>
 The main difference compared to all other similar approaches
 (mainly GnuPP, GnuPT, Windows Privacy Tools and GnuPG-Basics)
@@ -86,12 +86,12 @@ with updated components.
 It runs best on a GNU/Linux system. Almost all products
 are even automatically cross-compiled for integration into
 the installer.
-
+</p>
 <p>
 With this concept it is hoped to good practical support to <b>prevent
 quick aging of the installer package</b>. Because updating is much easier
 and does not depend on a single person.
-
+</p>
 <h2>All Downloads</h2>
 
 Current and all previous gpg4win installers (gpg4win-n.n.n.exe)
@@ -100,15 +100,15 @@ source code packages (gpg4win-n.n.n.bz2 with gpg4win-n.n.n.tar.bz2.sig):
 
 <p>
 <a href="ftp://ftp.gpg4win.org/gpg4win/">ftp://ftp.gpg4win.org/gpg4win/</a>
-
+</p>
 <p>
 gpg4win core source code package (gpg4win-n.n.n.tar.bz2 with gpg4win-n.n.n.tar.bz2.sig)
 as well as <em>gpg4win für Einsteiger</em> as separate PDF document
 (gpg4win-fuer-einsteiger-n.n.n.pdf):
-
+</p>
 <p>
 <a href="http://wald.intevation.org/frs/?group_id=11">http://wald.intevation.org/frs/?group_id=11</a>
-
+</p>
 PAGE_BOXES
 
 <div class="box">
@@ -118,10 +118,14 @@ PAGE_BOXES
   | <a href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-users-en">Subscribe</a>
   <p>Web Forums:<br>
   <a href="http://wald.intevation.org/forum/forum.php?forum_id=21">Help</a>
-  | <a href="http://wald.intevation.org/forum/forum.php?forum_id=20">Discussion</a>
+  | <a
+  href="http://wald.intevation.org/forum/forum.php?forum_id=20">Discussion</a>
+  </p>
   <p>Report Errors:<br>
   <a
-  href="http://wald.intevation.org/tracker/?atid=126&amp;group_id=11&amp;func=browse">Bug Tracker</a>
+  href="http://wald.intevation.org/tracker/?atid=126&amp;group_id=11&amp;func=browse">Bug
+  Tracker</a>
+  </p>
 </div>
 <div class="box">
   <h1>Getting involved</h1>
