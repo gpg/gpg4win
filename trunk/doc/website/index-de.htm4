@@ -7,7 +7,7 @@ PAGE_START
 
 <h2>Neuer Anwender?</h2>
 
-gpg4win ist ein Installtionspaket für Windows (95/98/XP/2000/2003)
+gpg4win ist ein Installtionspaket für Windows (95/98/ME/XP/2000/2003)
 mit Computer-Programmen und Handbüchern für EMail- und Datei-Verschlüsselung.
 
 <p>
@@ -98,7 +98,7 @@ und hängt eben nicht von einer Einzelperson ab.
 
 Aktueller und aller bisherigen gpg4win Installer (gpg4win-n.n.n.exe)
 sowie Signaturen (gpg4win-n.n.n.exe.sig) und zugehörige Quelltextpakete
-(gpg4win-n.n.n.bz2 mit gpg4win-n.n.n.tar.bz2.sig):
+(gpg4win-src-n.n.n.exe mit gpg4win-src-n.n.n.exe.sig):
 
 <p>
 <a href="ftp://ftp.gpg4win.org/gpg4win/">ftp://ftp.gpg4win.org/gpg4win/</a>
@@ -116,15 +116,15 @@ PAGE_BOXES
 
 <div class="box">
   <h1>Support</h1>
-  Mailnglisten:<br>
+  Mailinglisten:<br>
   <a href="http://lists.wald.intevation.org/pipermail/gpg4win-users-de/">Archiv</a>
   | <a href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-users-de">Abonnieren</a>
-  <p>Web Foren:<br>
+  <p>Webforen:<br>
   <a href="http://wald.intevation.org/forum/forum.php?forum_id=21">Hilfe</a>
   | <a
   href="http://wald.intevation.org/forum/forum.php?forum_id=20">Diskussion</a>
   </p>
-  <p>Fehler Melden:<br>
+  <p>Fehlermeldungen:<br>
   <a
   href="http://wald.intevation.org/tracker/?atid=126&amp;group_id=11&amp;func=browse">Bug 
   Tracker</a>
@@ -138,7 +138,7 @@ PAGE_BOXES
   <h1>Ähnliche Projekte</h1>
   <a href="http://www.equipmente.de/">GnuPT</a><br>
   <a href="http://people.freenet.de/rose-indorf">GnuPG-Basics</a><br>
-  <a href="http://sourceforge.net/projects/winpt">Windows Privacy Tools</a><br>
-  <a href="http://www.gnupp.de/start.html">GnuPP</a><br>
+  <a href="http://sourceforge.net/projects/winpt">Windows Privacy Tools</a> (veraltet)<br>
+  <a href="http://www.gnupp.de/start.html">GnuPP</a> (veraltet)<br>
 </div>
 
