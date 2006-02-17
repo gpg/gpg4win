@@ -31,12 +31,13 @@ m4_ifdef(`__TMPL_PAGE_TITLE',,`m4_define(`__TMPL_PAGE_TITLE',`gpg4win - '__TITLE
     <table id="bigbar">
       <tr><td id="vertable" style="white-space: nowrap;">
       I18N(`EN',`Current Version VERSION includes:')
-      I18N(`DE',`Aktuelle Version VERSION enthält:' )
+      I18N(`DE',`Aktuelle Version VERSION enthält:')
             <br><pre class="swlist">SOFTWARE</pre>
           </td>
           <td class="center">
             <a href="DOWNLOAD_URL" class="dlbutton">Download<br> 
-              <span class="version">gpg4win VERSION</span></a>
+              <span class="version">gpg4win VERSION<br>
+                I18N(`EN',`Size: ')I18N(`DE',`Größe: ')DL_SIZE</span></a>
       </td></tr>
     </table>
     <div id="main">
