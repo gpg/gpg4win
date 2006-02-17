@@ -105,8 +105,9 @@ sowie Signaturen (gpg4win-n.n.n.exe.sig) und zugehörige Quelltextpakete
 </p>
 <p>
 gpg4win Kern-Quelltextpakete (gpg4win-n.n.n.tar.bz2 mit gpg4win-n.n.n.tar.bz2.sig)
-sowie <em>gpg4win für Einsteiger</em> als separates PDF-Dokument
-(gpg4win-fuer-einsteiger-n.n.n.pdf):
+sowie <em>gpg4win für Einsteiger</em> und <em>gpg4win für Durchblicker</em>
+als separate PDF-Dokumente (gpg4win-fuer-einsteiger-n.n.n.pdf und
+gpg4win-fuer-durchblicker-n.n.n.pdf):
 </p>
 <p>
 <a href="http://wald.intevation.org/frs/?group_id=11">http://wald.intevation.org/frs/?group_id=11</a>
