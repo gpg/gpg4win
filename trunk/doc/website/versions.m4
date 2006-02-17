@@ -1,5 +1,6 @@
 m4_define(`VERSION',`0.7.0')
 m4_define(`DOWNLOAD_URL',`ftp://ftp.gpg4win.org/gpg4win/gpg4win-VERSION.exe')
+m4_define(`DL_SIZE',`4.04 MiB')
 m4_define(`SOFTWARE',`
 I18N(`EN', `<a href="http://www.gnupg.org/">GnuPG</a>')I18N(`DE', `<a href="http://www.gnupg.de/">GnuPG</a>') 1.4.3rc1
 <a href="http://www.winpt.org/">WinPT</a> 0.11.8rc1
