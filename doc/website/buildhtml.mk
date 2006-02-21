@@ -1,5 +1,5 @@
 # Build html from m4 macrofiles
-# $Id: Makefile,v 1.8 2005/05/11 14:11:02 wilde Exp $
+# $Id$
 #
 # (c)2005,2006 by Intevation GmbH
 # Author(s): Sascha Wilde
@@ -16,7 +16,7 @@ SUBDIRS =
 
 # Installation configuration
 INSTALL_DIR = /tmp/gpg4win-www
-ADD_INST_TYPES = .css
+ADD_INST_TYPES = *.css *.ico *.php
 ADD_INST_DIRS = pix
 
 USER=$(shell grep "svn+ssh://" .svn/entries | sed -e "s/.*svn+ssh:\/\///g" | sed -e "s/@.*//g")
@@ -39,13 +39,13 @@ subdirs: $(SUBDIRS)
 
 online: all
 	echo "Going to put current contents online for www.gpg4win.org ..."
-	rsync -urvP --exclude='.svn' *.css *.html *.php pix \
+	rsync -urvP --exclude='.svn' $(ADD_INST_TYPES) $(TARGETS) $(ADD_INST_DIRS) \
       $(USER)@wald.intevation.org:/gpg4win/htdocs/
 
 install: all
 	mkdir -p $(INSTALL_DIR) ;\
 	cp -uf $(TARGETS) $(INSTALL_DIR) ;\
-	cp -uf *$(ADD_INST_TYPES) $(INSTALL_DIR)
+	cp -uf $(ADD_INST_TYPES) $(INSTALL_DIR)
 	cp -urf *$(ADD_INST_DIRS) $(INSTALL_DIR)
 	find $(INSTALL_DIR) -name ".svn" | xargs rm -rf
 
