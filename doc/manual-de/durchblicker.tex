@@ -226,7 +226,7 @@ knacken ist.
 \textbf{Der Herr der Schlüsselringe}
 
 Wenn man etwas sehr Wertvolles sichern will, schließt man es am besten
-ein --- mit einen Schlüssel. Noch besser mit einem Schlüssel, den es
+ein --- mit einem Schlüssel. Noch besser mit einem Schlüssel, den es
 nur einmal gibt und den man ganz sicher aufbewahrt.
 
 \begin{center}
@@ -236,7 +236,7 @@ nur einmal gibt und den man ganz sicher aufbewahrt.
 Denn wenn dieser Schlüssel in die falschen Hände fällt, ist es um die
 Sicherheit des wertvollen Gutes geschehen. Dessen Sicherheit steht und
 fällt mit der Sicherheit des Schlüssels.  Also hat man den Schlüssel
-mindestens genauso gut absichern, wie das zu sichernde Gut selbst.
+mindestens genauso gut abzusichern, wie das zu sichernde Gut selbst.
 Die genaue Form des Schlüssels muß völlig geheim gehalten werden.
 
 
@@ -245,9 +245,8 @@ Die genaue Form des Schlüssels muß völlig geheim gehalten werden.
 
 Geheime Schlüssel sind in der Kryptographie ein alter Hut: schon immer
 hat man Botschaften geheimzuhalten versucht, indem man den Schlüssel
-geheimhielt.  Um dies wirklich sicher zu machen ist eine ausgeklügelte
-und fehleranfällige Organisation notwendig; dies ist sehr umständlich
-verwirrend und teuer.
+geheimhielt.  Dies wirklich sicher zu machen ist sehr umständlich und
+dazu auch sehr fehleranfällig.
 
 \begin{center}
 \includegraphics[width=0.4\textwidth]{tangled-schlapphut}
@@ -258,7 +257,7 @@ ist, daß für Ver- und Entschlüsselung derselbe Schlüssel benutzt wird
 und daß sowohl der Absender als auch der Empfänger diesen geheimen
 Schlüssel kennen.
 
-Dies führt zu einer ziemlich paradoxen Situation: bevor man mit einem
+Dies führt zu einer ziemlich paradoxen Situation: Bevor man mit einem
 solchen System ein Geheimnis --­ eine verschlüsselte Nachricht ---
 mitteilen kann, muß man schon vorher ein anderes Geheimnis --­ den
 Schlüssel ­-- mitgeteilt haben.  Und da liegt der Hase im Pfeffer: man
@@ -271,7 +270,7 @@ Dritten abgefangen werden darf.
 \clearpage
 %% Original page 12
 
-Gpg4win dagegen arbeitet ­-- außer mit dem Geheimschlüssel --- mit einem
+Gpg4win dagegen arbeitet ­-- ausser mit dem Geheimschlüssel --- mit einem
 weiteren Schlüssel ("`key"'), der vollkommen frei und öffentlich
 ("`public"') zugänglich ist.
 
@@ -305,10 +304,10 @@ funktioniert.
 %% Original page 13
 Das Gpg4win-Prinzip ist wie gesagt recht einfach:
 
-der \textbf{geheime oder private Schlüssel} (secret oder private key) muß
+Der \textbf{geheime oder private Schlüssel} (secret oder private key) muß
 geheim gehalten werden.
 
-der \textbf{öffentliche Schlüssel} (oder public key) soll so
+Der \textbf{öffentliche Schlüssel} (public key) soll so
 öffentlich wie möglich gemacht werden.
 
 Beide Schlüsselteile haben ganz und gar unterschiedliche Aufgaben:
@@ -380,7 +379,7 @@ Emailteilnehmer geheime Schlüssel besitzen und auf geheimem Wege
 austauschen, bevor sie geheime Nachrichten per Email versenden
 könnten.
 
-Vergessen wir diese Möglichkeit am besten sofort\ldots
+Vergessen wir diese Möglichkeit am besten sofort wieder\ldots
 
 \begin{center}
 \includegraphics[width=0.9\textwidth]{letter-out-of-safe}
@@ -492,8 +491,10 @@ Schlüssel gespeichert ist, darf keinen Zugriff auf ihn erhalten --
 weder zum schreiben noch zum lesen.  Es ist deswegen unbedingt zu
 vermeiden, den Schlüssel in einem öffentlichen Ordner
 (z.B. \verb=c:\Temp= oder \verb=c:\WINNT=) abzulegen.  Gpw4win
-speichert den Schlüssel deswegen im sogenannten "`Homedir"' von GnuPG
-ab.  Dies kann je nach System woanders sein; für einen Benutzer mit
+speichert den Schlüssel deswegen im sogenannten "`Heimverzeichnis"'
+("`Homedir"') von GnuPG
+ab.  Dies kann sich je nach System an unterschiedlichen Orten
+befinden; für einen Benutzer mit
 dem Anmeldenamen "`Harry"' könnte es z.B.:
 \verb=C:\Dokumente und Einstellungen\harry\Anwendungsdaten\gnupg=
 sein.  Der geheime Schlüssel befindet sich dort in eine Datei mit dem
@@ -557,6 +558,8 @@ Leerzeichen durcheinander. Im Prinzip ist alles erlaubt, auch "`Ö"',
 Aber Vorsicht --- falls Sie Ihren geheimen Schlüssel im Ausland an
 einem fremden Rechner benutzen wollen, bedenken Sie, daß
 fremdsprachige Tastaturen diese Sonderzeichen oft nicht haben.
+Beispielsweise werden Sie kein "`ä"' auf einer englischen
+Tastatur finden.
 
 
 %% Original page  22
@@ -768,7 +771,7 @@ Die Keyserver unter den Adressen
 sind ein Sammelpunkt für ein ganzes Netz dieser Server, es wird
 dann zufällig ein konkreter Server ausgewählt.
 
-Achtung: Der Keyserver \verb=ldap://keyserver.pgp.com= syncronisiert
+Achtung: Der Keyserver \verb=ldap://keyserver.pgp.com= synchronisiert
 sich nicht mit den anderen Servern und sollte i.d.R. nicht benutzt
 werden.
 
@@ -777,7 +780,8 @@ werden.
 \clearpage
 %% Original page 27
 %%% FIXME: needs a rework
-Genauso einfach können Sie auf den Keyservern nach einem öffentlichen
+Genauso einfach wie Sie einen Schlüssel hochladen, können Sie auf den
+Keyservern nach einem öffentlichen
 Schlüssel suchen.  Geben Sie in das Suchfeld den Namen des
 Schlüsselbesitzers ein oder seine Email-Adresse.  Als Ergebnis sehen
 Sie etwa eine solche Ausgabe:
@@ -811,7 +815,7 @@ Sie sehen den Ihnen schon bekannten Textblock, der den eigentlichen
 Im "`Schnelleinstieg"', Kapitel 7 ("`Sie entschlüsseln eine Email"')
 und 8 ("`Sie befestigen einen Schlüssel am Schlüsselbund"')
 zeigen wir Ihnen, wie man
-diesen Schlüssel importiert, d.h., am eigenen Gpg4win Schlüsselbund
+diesen Schlüssel importiert, d.h. am eigenen Gpg4win Schlüsselbund
 befestigt, und damit eine Email an den Besitzer verschlüsselt.
 
 Diese Suche nach einem Schlüssel funktioniert auch direkt aus Gpg4win:
@@ -916,7 +920,7 @@ Identität des Absenders.
 
 Wenn Sie nur einen kleinen Kreis von Korrespondenzpartnern haben, ist
 die Sache mit der Identität schnell geregelt: Sie prüfen den
-Fingerabdruck des andweren Schlüssels.
+Fingerabdruck des anderen Schlüssels.
 
 Jeder öffentliche Schlüssel trägt eine einmalige Kennzeichnung, die
 ihn zweifelsfrei identifiziert; besser noch als ein Fingerabdruck
@@ -1093,8 +1097,8 @@ jedermann lesen kann.
 Gpg4win bietet zusätzlich zur kompletten Verschlüsselung einer Email
 noch eine weitere Möglichkeit:
 \begin{itemize}
-\item man kann seine Email signieren, das heisst mit einer
-  elektronischen Unterschrift versehen. Der Text ist dann zwar noch
+\item man kann seine Email signieren, mit anderen Worten die Email
+  mit einer elektronischen Unterschrift versehen. Der Text ist dann zwar noch
   für jeden lesbar, aber der Empfänger kann sicher sein, daß die
   Email unterwegs nicht manipuliert oder verändert wurde.
 \end{itemize}
@@ -1135,8 +1139,8 @@ Sie können nun entscheiden ob Sie eine völlig unverschlüsselte, eine
 signierte oder eine komplett verschlüsselte Mail versenden wollen ­--
 je nachdem, wie wichtig und schutzbedürftig der Inhalt ist.
 
-Dann öffnen Sie WinPT mit de rechten Maustaste aus der Windows-Taskbar
-und wahlen im erscheinenden WinPT Menü
+Dann öffnen Sie WinPT mit der rechten Maustaste aus der Windows-Taskbar
+und wählen im erscheinenden WinPT Menü
 \Menu{Zwischenablage$\rightarrow$Signieren} aus.  Anders als beim
 Verschlüsseln öffnet sich daraufhin ein Fenster mit Ihrem eigenen
 Schlüssel. Denn:
@@ -1196,7 +1200,8 @@ erhält, kann sie sicher sein,
 Hätte zum Bespiel jemand das "`gesund"' in dem obigen Beispiel zu
 "`krank"' verändert, wäre die Signatur "`gebrochen"', daß heißt, die
 Email wäre mit dem Vermerk "`Bad signature"' oder "`Überprüfung
-fehlgeschlagen"' beim Empfänger eingetroffen.
+fehlgeschlagen"' beim Empfänger versehen, soabald die Signatur
+überprüft wird.
 
 \clearpage
 %% Original page 40
@@ -1257,10 +1262,11 @@ erscheint:
 \end{center}
 
 Sie sehen in der Mitte eine Möglichkeit den Signaturschlüssel
-auszuwählen --- benutzen Sie dieses, falls Sie mit einem anderen als
+auszuwählen --- nutzen Sie dies, falls Sie mit einem anderen als
 Ihrem Standardschlüssel signieren möchten.
 
-Die drei Rahmen im unter Teil steuern die Funktion; die Vorgaben sind in
+Die drei Rahmen im unter Teil steuern die Signatur/Verschlüsselungs-Funktion;
+die Vorgaben sind in
 den meisten Fällen richtig.  Die linke untere Box, steuert die
 Verschlüsselung.  Da Sie lediglich signieren möchten ist hier
 "`Keine"' ausgewählt.
@@ -1281,10 +1287,11 @@ die dann nicht direkt lesbar ist (binäre Datei).  Was Sie hier
 benutzen ist eigentlich gleichgültig; Gpg4win kommt mit beiden Arten
 klar.
 
-Zum Überprüfen müssen die Original- und die signierte Datei im selben
+Zum Überprüfen der Unverändertheit und der Authentizität
+müssen die Original- und die signierte Datei im selben
 Verzeichnis liegen.  Man öffnet die signierte Datei --- also die mit der
 Endung "`.sig"' oder "`.asc"' --- wieder aus dem Kontextmenü des Explorers
-und wählt \Menu{GPGee$\rightarrow$Überprüfen/Entschlüsseln }.
+mit \Menu{GPGee$\rightarrow$Überprüfen/Entschlüsseln }.
 
 Daraufhin erhalten Sie eine Ausgabe, ob die Signatur gültig ist ---
 also die Datei nicht verändert wurde.  Selbst wenn nur ein Zeichen
@@ -1337,7 +1344,7 @@ geheimen Schlüssel.  Hiermit ist die Geheimhaltung gewährleistet, denn
 nur dieser Schlüssel kann den Text dekodieren. Die innere, versiegelte
 Hülle öffnet er mit Ihrem öffentlichen Schlüssel und hat den Beweis
 Ihrer Urheberschaft, denn wenn Ihr öffentlicher Schlüssel passt, kann
-r nur mit Ihrem Geheimschlüssel kodiert worden sein.
+er nur mit Ihrem Geheimschlüssel kodiert worden sein.
 
 Sehr trickreich und ­-- wenn man ein wenig darüber nachdenkt --­ auch
 ganz einfach.
@@ -1401,15 +1408,15 @@ importieren.  Oder wenn Sie Gpg4win von einem anderen Rechner aus
 benutzen wollen, muß ebenfalls zunächst der gesamte Schlüssel dorthin
 transferiert werden --­ der öffentliche und der private Schlüssel.
 
-\clearpage
+%\clearpage
 %% Original page 46
 
-Wir gehen hier von der zur Zeit aktuellen PGP-Version 7 aus, in allen
+Wir gehen im folgenden von der zur Zeit aktuellen PGP-Version 7 aus, in allen
 anderen ist der Vorgang ähnlich.
 
 Zunächst speichern Sie beiden PGP-Schlüsselteile ab. Dazu müssen Sie
 in "`PGPkeys"' Ihren Schlüssel anklicken und "`Keys / Export"'
-anwählen. Auf dem Dateirequester "`Export Key to File"' sehen Sie
+anwählen. Auf dem Dateiauswahldialog "`Export Key to File"' sehen Sie
 unten links eine Checkbox "`Include Private Keys"', den Sie anklicken
 und mit einem Häkchen versehen müssen. PGP speichert beide
 Schlüsselteile in eine Datei ab, die Sie entsprechend benennen, zum
@@ -1425,8 +1432,8 @@ genau wie einen normalen GnuPG-Schlüssel benutzen.
 
 Es kann in einigen Fällen vorkommen, daß Sie einen importierten
 Schlüssel nicht direkt benutzen können.  Dies äussert sich darin, daß
-die den richtigen Passwort-Satz eingeben, dieser aber nicht akzeptiert
-wird.  Es wird verursacht da einige Versionen von PGP intern den
+Sie den richtigen Passwort-Satz eingeben, dieser aber nicht akzeptiert
+wird.  Das kommt daher, dass einige Versionen von PGP intern den
 IDEA Algorithmus verwenden.  Dieser kann von GnuPG aus rechtlichen
 Gründen nicht unterstützt werden.  Um das Problem zu beheben,
 ändern Sie in PGP einfach den Passwort-Satz und
@@ -1434,7 +1441,7 @@ exportieren/importieren Sie den Schlüssel erneut.  Sollte dies auch
 nicht funktionieren, so setzen Sie den Passwort-Satz in PGP auf
 "`leer"'; d.h. auf keinen Schutz und exportieren/importieren Sie wieder
 --- In diesem Fall müssen Sie unbedingt sicherstellen, sowohl die
-\textbf{Datei sicher zu löschen als auch in PGP und in Gpg4Win wieder
+\textbf{Datei sicher zu löschen als auch in PGP und in Gpg4Win danach wieder
   einen echten Passwortsatz zu setzen.}
 
 \clearpage
@@ -1443,12 +1450,13 @@ nicht funktionieren, so setzen Sie den Passwort-Satz in PGP auf
 
 Immer wenn Sie einen GnuPG-Schlüssel auf einen anderen Rechner
 transferieren oder auf einer anderen Festplattenpartition bzw. einer
-Sicherungsdiskette speichern wollen, müssen Sie ein Backup erstellen.
+Sicherungsdiskette speichern wollen, müssen Sie mit WinPT oder GPA ein Backup erstellen.
 Dies entspricht dem Backup, welches Sie bei der Schlüsselerzeugung
 auch schon durchgeführt haben.  Da Ihr Schlüssel inzwischen weitere
 Schlüsselunterschriften haben kann, sollte Sie es erneut durchführen.
 
-Klicken Sie in der GPA-Schlüsselverwaltung den Schlüssel an und wählen
+Klicken Sie in der GPA-Schlüsselverwaltung den Schlüssel an, den Sie sichern
+wollen und wählen
 Sie dann den Menüpunkt \Menu{Schlüssel$\rightarrow$Sicherheitskopie anlegen}.
 
 % screenshot: GPA, Backup erzeugen
@@ -1459,7 +1467,7 @@ Sie dann den Menüpunkt \Menu{Schlüssel$\rightarrow$Sicherheitskopie anlegen}.
 Bestätigen Sie den Dateinamen oder wählen Sie einen anderen und GPA
 wird eine Sicherheitskopie bestehend aus dem geheimen und öffentlichen
 Schlüssel anlegen. Danach werden Sie noch daran erinnert, daß Sie
-diese Datei sehr sorgfaltig zu handhaben ist:
+diese Datei sehr sorgfältig zu handhaben ist:
 
 % screenshot: GPA, Backup Hinweis
 \begin{center}
@@ -1468,7 +1476,8 @@ diese Datei sehr sorgfaltig zu handhaben ist:
 
 
 Beim Import, also zum Beispiel auf einem anderen Rechner, importieren
-Sie einfach diese Sicherheistkopie.  Gpg4win wird dann sowohl den
+Sie einfach diese Sicherheistkopie in WinPT oder GPA.
+Gpg4win wird dann sowohl den
 geheimen als auch den öffentlichen Schlüssel aus dieser Datei
 importieren.
 
@@ -1483,8 +1492,8 @@ wieder importiert.
 $\ldots$ jedenfalls nicht mit heute bekannten Methoden und sofern die
 Implementierung der Programme frei von Fehlern ist. 
 
-In der Realität sind es genau diese Fehler in den Programmen, dem
-Betriebssystem und in erster Linie Fehler in der Benutzung der letzte Weg um
+In der Realität sind genau solche Fehler in den Programmen, Fehler im
+Betriebssystem oder nicht zuletzt Fehler in der Benutzung der letzte Weg um
 doch noch an die geheimen Informationen zu gelangen --- Auch deshalb sollte
 Sie diese Handbücher bis hierhin gelesen haben.
 
@@ -1494,7 +1503,7 @@ Verbindung besteht. Nur wenn beide zueinander passen, kann man
 Geheimbotschaften entschlüsseln.
 
 Das Geheimnis dieser mathematischen Verbindung müssen Sie nicht
-unbedingt kennen ­-- Gpg4win funktioniert auch so. Man kann diese komplexe
+unbedingt kennen ­-- Gpg4win funktioniert für Sie auch so. Man kann diese komplexe
 mathematische Methode aber auch als Normalsterblicher und
 Nichtmathematiker verstehen. Sie müssen eigentlich nur einfache
 Additionen ($2 + 3$) und Multiplikationen ($5 * 7$) beherrschen.
@@ -1518,21 +1527,20 @@ Es ist schon versucht worden, den RSA Algorithmus, auf dem GnuPG
 basiert\footnote{Wir verwenden hier RSA als Beispiel da dieser
   einfacher zu verstehen ist als der Elgamal Algorithmus der als
   Voreinstellung von GnuPG benutzt wird.}, zu "`knacken"', also einen
-privaten Schlüssel zu berechnen, wenn man den lediglich den
+privaten Schlüssel zu berechnen, wenn man lediglich den
 öffentlichen Schlüssel kennt.  Diese Berechnung ist aber noch nie für
 Schlüssellängen (1024 Bit und mehr), die in GnuPG verwendet werden,
 gelungen.  Es ist theoretisch zwar möglich, aber praktisch
 undurchführbar da selbst bei genügend vorhandener Zeit (viele Jahre)
 und Abertausenden von vernetzten Rechnern niemals genügen Speicher zur
-Verfügung stehen wird um den letzen Schritt dieser Berechnung
+Verfügung stehen wird, um den letzen Schritt dieser Berechnung
 durchführen zu können.
 
 Es kann allerdings durchaus möglich sein, daß eines Tage eine geniale
-Idee die Mathematik revoltioniert und eine schnelle Lösung des
+Idee die Mathematik revolutioniert und eine schnelle Lösung des mathematischen
 Problems, welches hinter RSA steckt, liefert.  Dies wird aber wohl
-kaum von heute auf morgen geschehen und im Laufe der Jahre verlieren
-Daten ja auch die Notwendigkeit zur Geheimhaltung.  Das Bundesamt für
-Sicherheit in der Informationstechnik veröffentlicht von Zeit zu Zeit
+kaum von heute auf morgen geschehen.
+Das Bundesamt für Sicherheit in der Informationstechnik veröffentlicht von Zeit zu Zeit
 Prognosen und Einschätzungen, welche Schlüssellängen noch wieviele
 Jahre für absolute Geheimhaltung benutzt werden sollen.  GnuPG
 überschreitet mit seinen Standardeinstellungen noch weit diese
@@ -1545,7 +1553,7 @@ angewandten Kryptographie.
 \clearpage
 %% Original page  52
 
-Hier erfahren Sie, wie diese matematische Methode funktioniert. Nicht
+Im folgenden erfahren Sie, wie diese mathematische Methode funktioniert. Nicht
 in allen Einzelheiten ­-- das würde den Rahmen dieser Anleitung bei
 weitem sprengen ---, aber doch so, daß Sie bei etwas Mitrechnen selbst
 mathematisch korrekt ver- und entschlüsseln können und dabei das
@@ -1580,7 +1588,7 @@ Rechnen mit Restklassen oder "`Modulo-Arithmetik"' heisst.
 \subsection{Das Rechnen mit Restklassen}
 
 Wenn man mit Restklassen rechnet, so bedeutet dies, daß man
-nur mit dem "`Rest"' rechnet, der nach einer Teilung durch eine
+nur mit dem "`Rest"' rechnet, der nach einer ganzzahligen Teilung durch eine
 bestimmte Zahl übrigbleibt. Diese Zahl, durch die geteilt wird,
 nennt man den "`Modul"' oder die "`Modulzahl"'. Wenn wir
 beispielsweise mit dem Teiler oder der Modulzahl 5 rechnen,
@@ -1609,7 +1617,7 @@ der Rest, wenn man 15 (also $7 + 8$) durch 12 teilt.  Um 5 mit 7 zu
 multiplizieren, beginnt man bei 0 und dreht 7 mal jeweils um 5 Striche
 weiter (oder auch bei 0 beginnend 5 mal um 7 Striche). In beiden
 Fällen bleibt der Zeiger bei 11 stehen. Denn 11 ist der Rest, wenn 35
-(also $7 x 5$) durch 12 geteilt wird.
+(also $7 * 5$) durch 12 geteilt wird.
 
 \clearpage
 %% Original page 54
@@ -1681,7 +1689,7 @@ Dazu noch drei Beispiele:
 \[ 2 \bmod 7 * 4 \bmod 7 = 1 \bmod 7                  \]
 \[ 13 \bmod 17 * 11 \bmod 17 = 7 \bmod 17             \]
 
-Das letzte Beispiel wird klar, wenn man sich bedenkt, dass in normaler
+Das letzte Beispiel wird klar, wenn man bedenkt, dass in normaler
 Arithmetik gerechnet $ 13 * 11 = 143 $ und $ 143 = 8 * 17 + 7 $ ist.
 
 
@@ -1711,7 +1719,7 @@ in der Praxis Ihr Computer --­ kennen diese beiden Primzahlen, und Sie
 müssen für ihre Geheimhaltung sorgen.
 
 %% Original page 57
-Es werden nun drei Zahlen erzeugt:
+Es werden daraus nun drei weitere Zahlen erzeugt:
 \begin{description}
 \item [Die erste Zahl] ist das Ergebnis der Multiplikation der beiden
   Primzahlen, also ihr Produkt.  Dieses Produkt wird als Modulus und
@@ -1724,7 +1732,7 @@ Es werden nun drei Zahlen erzeugt:
   wird hier 3, 41 oder 65537 benutzt.
 
 \item [Die dritte Zahl] wird errechnet aus dem öffentlichem Exponent
-  (der zweiten Zahl) und den beiden Primxahlen. Dieses Zahl ist der
+  (der zweiten Zahl) und den beiden Primzahlen. Diese Zahl ist der
   geheime Exponent und wird mit $d$ bezeichnet.  Die komplizierte
   Formel zur Berechnung lautet:
       \[ d = e^{-1} \bmod (p - 1)(q -1) \]
@@ -1779,7 +1787,7 @@ zunächst ziehen wir von unseren Primzahlen 7 und 11 jeweils die Zahl 1
 ab (also $7 - 1$ und $11 - 1$) und multiplizieren die beiden
 resultierenden Zahlen miteinander. In unserem Beispiel ergibt das 60:
 $( 7 - 1 ) * ( 11 - 1) = 60$. 60 ist unsere Modulzahl für die
-weiterführende Rechnung des geheimen Schlüssels (sie ist aber nicht
+weiterführende Berechnung des geheimen Schlüssels (sie ist aber nicht
 mit dem eigentlichen Modulus 77 zu verwechseln).
 
 Wir suchen jetzt eine Zahl, die multipliziert mit dem öffentlichen
@@ -1816,7 +1824,7 @@ umgewandelt, weil
 
  Ein weiteres Beispiel: 75 wird in die Zahl 47 umgewandelt, denn 75
  wird 13 mal mit sich selbst multipliziert und durch 77 geteilt, so
- das der Rest 47 entsteht.
+ dass der Rest 47 entsteht.
 
 Wenn man eine solche Rechnung für alle Zahlen zwischen 0 und 76
 durchführt und die Ergebnisse in eine Tabelle einsetzt, sieht diese so
@@ -1860,7 +1868,7 @@ Tabelle 2 zum Ergebnis 25 gelangen. Dabei haben wir den öffentlichen
 Schlüssel, 13, zur Umwandlung bzw.  Kodierung einer Zahl verwendet,
 und den geheimen Schlüssel 37, um sie zurückzuwandeln bzw. zu
 dekodieren. Sowohl für die Verschlüsselung als auch für die
-Entschlüsselung haben wir uns der Modulo-77 Arithmetik
+Entschlüsselung haben wir uns der Modulo-77 Arithmetik bedient.
 
 \clearpage
 %% Original page 61
@@ -1951,8 +1959,8 @@ unterschiedlichen Zahlenbasen dargestellt werden können.
 
 Dazu machen wir uns zunächst mit den Zahlenpotenzen vertraut.
                                  
-Zwei hoch eins, das man als $2^1$ darstellt, ist gleich 2; zwei hoch
-zwei, zwei hoch drei, dargestellt als $2^3$, ist $2 * 2 * 2 = 8$; zwei
+Zwei hoch eins, das man als $2^1$ darstellt, ist gleich 2;
+zwei hoch drei, dargestellt als $2^3$, ist $2 * 2 * 2 = 8$; zwei
 hoch zehn, dargestellt als $2^{10}$, ist $2*2*2*2*2*2*2*2*2*2 = 1024$.
 
 Jede Zahl hoch 0 ist gleich 1, zum Beispiel $2^0 = 1$ und $5^0 = 1$.
@@ -2116,8 +2124,8 @@ sie zunächst zusammen und verfolgen dann die Einzelschritte:
 
 \begin{enumerate}
 \item Die Nachricht \emph{aba, cad, ada} wandeln wir --- wie gesehen --- in
-  Zahlen um
-\item diese Darstellung zur Basis 4 wandeln wir in eine Darstellung
+  Zahlen um.
+\item Diese Darstellung zur Basis 4 wandeln wir in eine Darstellung
   zur Basis 10 um, damit wir zur Verschlüsselung die Tabelle 1
   benutzen können, in denen die Zahlen ja auch auf 10er-Basis
   dargestellt werden.  Dabei entsteht eine kodierte Nachricht zur
@@ -2135,6 +2143,8 @@ sie zunächst zusammen und verfolgen dann die Einzelschritte:
 \clearpage
 %% Original page 70
 
+Und nun ausführlich:
+
 1. Die Nachricht \emph{aba, cad, ada} wandeln wir --- wie gesehen ---
 in Zahlen um.
 
@@ -2151,7 +2161,7 @@ diese Nachricht mit Hilfe der Primzahlen 7 und 11, mit dem
 Schlüssel 37.  Dieses Beispiel kennen wir bereits aus dem früheren
 Kapitel: wir haben damit die Tabellen 1 und 2 konstruiert.
 
-2. diese Darstellung zur Basis 4 wandeln wir in eine Darstellung zur
+2. Diese Darstellung zur Basis 4 wandeln wir in eine Darstellung zur
 Basis 10 um, damit wir zur Verschlüsselung die Tabelle 1 benutzen
 können, in denen die Zahlen ja auch auf 10er-Basis dargestellt werden.
 
