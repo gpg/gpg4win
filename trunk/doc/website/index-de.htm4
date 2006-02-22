@@ -96,7 +96,7 @@ und hängt eben nicht von einer Einzelperson ab.
 
 <h2>Alle Downloads</h2>
 
-Aktueller und aller bisherigen gpg4win Installer (gpg4win-n.n.n.exe)
+Aktueller und alle bisherigen gpg4win Installer (gpg4win-n.n.n.exe)
 sowie Signaturen (gpg4win-n.n.n.exe.sig) und zugehörige Quelltextpakete
 (gpg4win-src-n.n.n.exe mit gpg4win-src-n.n.n.exe.sig):
 
@@ -112,6 +112,45 @@ gpg4win-fuer-durchblicker-n.n.n.pdf):
 <p>
 <a href="http://wald.intevation.org/frs/?group_id=11">http://wald.intevation.org/frs/?group_id=11</a>
 </p>
+
+<h2>Impressum</h2>
+
+<p>
+Die Web-Seiten von gpg4win sowie die Projektseite werden von der Intevation GmbH
+bereitgestellt, der Download-Bereich ftp.gpg4win.org/gpg4win/ von der g10 Code GmbH.
+</p>
+
+<p>
+Die inhaltliche Gestaltung erfolgte und erfolgt durch die wechselnden
+aktiven Mitglieder des gpg4win Projektes.
+</p>
+
+<p>
+Intevation GmbH<br>
+Georgstraße 4<br>
+49074 Osnabrück<br>
+Deutschland<br>
+<a href="http://www.intevation.de">www.intevation.de</a><br>
+Vertretungsberechtigt: Frank Koormann, Bernhard Reiter, Dr. Jan-Oliver Wagner<br>
+Registereintrag: HR B 18998, Amtsgericht Osnabrück<br>
+Umsatzsteuer-Identifikation: de 204 854 484<br>
+E-Mail: info@intevation.de<br>
+Telefon: 0541/33508-30<br>
+</p>
+
+<p>
+g10 Code GmbH<br>
+Hüttenstr. 61<br>
+40699 Erkrath<br>
+Deutschland<br>
+<a href="http://www.g10code.de">www.g10code.de</a><br>
+Vertretungsberechtigt: Werner Koch<br>
+Registereintrag: HR B 14459, Amtsgericht Wuppertal<br>
+Umsatzsteuer-Identifikation: de 215605608<br>
+E-Mail: info@g10code.de<br>
+Telefon: 02104/173855<br>
+</p>
+
 
 PAGE_BOXES
 
@@ -133,7 +172,7 @@ PAGE_BOXES
 </div>
 <div class="box">
   <h1>Mitmachen</h1>
-  <a href="http://wald.intevation.org/projects/gpg4win/">Projekt Seite</a>
+  <a href="http://wald.intevation.org/projects/gpg4win/">Projektseite</a>
 </div>
 <div class="box">
   <h1>Ähnliche Projekte</h1>
