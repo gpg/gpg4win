@@ -1,9 +1,31 @@
 \newcommand{\Button}[1]{[\,#1\,]}
 \newcommand{\Menu}[1]{\emph{#1}}
 \newcommand{\Filename}[1]{\texttt{#1}}
+
+% Some people still insist that Email should be written as two words
+% for whatever reasons.  Maybe is is that they don't like the game of
+% Teekesselchen and fear the ambiguity between email and enamel (which
+% uses the same word in German).  
+
+%\newcommand{\Email}{E-Post}
+\newcommand{\Email}{E-Mail}
+%\newcommand{\Email}{EMail}
+%\newcommand{\Email}{Email}
+
+
+\newcommand{\OtherBook}{\texorhtml{$\spadesuit$}{==\xmlent{gt}}}
+
+\newcommand{\IncludeImage}[2][]{\texorhtml{%
+\includegraphics[#1]{#2}%
+}{%
+\htmlimg{#2.png}%
+}}
+
+
 % As long as this manual is part of the gpg4win package, we don't want
 % to update the version number automatically.  If we move this to its
 % own package we should have a central way to declare the version
 % of gpg4win this manual referes to.
 %\input{version.tex}
-\newcommand{\PackageVersion}{0.6.0}
+\newcommand{\PackageVersion}{0.7.0}
+

@@ -1,4 +1,7 @@
+% einsteiger.tex                
+% Note, that this a HyperLaTeX source and not plain LaTeX!
 \documentclass[a4paper,11pt,twoside,titlepage,dvips]{scrartcl}
+\usepackage{hyperlatex}
 \usepackage{a4wide}
 \usepackage[latin1]{inputenc}
 %\usepackage[T1]{fontenc}
@@ -7,6 +10,7 @@
 \usepackage{alltt}
 \usepackage{moreverb}
 \usepackage{fancyhdr}
+\W\usepackage{sequential}
 
 % I would really like to use jpg sources but tehre are two problems.
 % The way as described below does no work becuase neiteyr dvips not
@@ -22,13 +26,16 @@
 %
 %\DeclareGraphicsExtensions{.eps,.eps.gz,.jpg}
 %\DeclareGraphicsRule{.jpg}{bmp}{.jpg.bb}{`djpeg -bmp #1}
-\DeclareGraphicsExtensions{.eps.gz,.eps}
+\T\DeclareGraphicsExtensions{.eps.gz,.eps}
 
+\T\fancyhead{} % clear all fields
+\T\fancyhead[LO]{Gpg4win für Einsteiger}
+\T\fancyhead[RO,LE]{\thepage}
+\T\fancyfoot[C]{\includegraphics[width=1cm]{gpg4win-logo}}
 
-\fancyhead{} % clear all fields
-\fancyhead[LO]{Gpg4win für Einsteiger}
-\fancyhead[RO,LE]{\thepage}
-\fancyfoot[C]{\includegraphics[width=1cm]{gpg4win-logo}}
+\newcommand{\HlxIcons}{}
+
+\W\htmlpanelgerman
 
 % Hyperref should be among the last packages loaded
 \usepackage{hyperref}
@@ -36,14 +43,12 @@
 % Macros specific to this package
 \input{macros.tex}
 
-\begin{document}
-\thispagestyle{empty}
-\pagestyle{fancy}
-\parindent0cm
-\parskip\medskipamount
 
+% Title stuff 
+\htmltitle{Gpg4win für Einsteiger}
+%\htmladdress{Gpg4win Project, \today}
 \title{
-\includegraphics[width=8cm]{gpg4win-logo}
+\T\includegraphics[width=8cm]{gpg4win-logo}
 \\
 Gpg4win für Einsteiger}
 \author{Eine Veröffentlichung des Gpg4Win Projekts\\
@@ -53,6 +58,14 @@ Gpg4win für Einsteiger}
   Überarbeitet von\\
   \small Werner Koch}
 \date{Version 2.0.0.RC1 vom 20. Januar 2006}
+
+
+\begin{document}
+\thispagestyle{empty}
+\pagestyle{fancy}
+\T\parindent0cm
+\T\parskip\medskipamount
+
 
 \maketitle
 
@@ -73,10 +86,12 @@ entitled "`GNU Free Documentation License"'.
 \vfill
 
 \begin{center}
-\fbox{\parbox{.7\textwidth}{Die Angaben auf der \textbf{folgenden Seite}
+\T\fbox{\parbox{.7\textwidth}{%
+    Die Angaben auf der \textbf{folgenden Seite}
     sind nicht mehr korrekt; wir können diese Seite allerdings nicht
     abändern, da die Regeln der GFDL hier falsch angewandt wurden.
-    Neue Copyright Hinweise sollten deswegen hier eingestellt werden.}}
+    Neue Copyright Hinweise sollten deswegen hier eingestellt werden.
+\T}}
 \end{center}
 
 \clearpage
@@ -116,6 +131,7 @@ geschrieben, sondern für jedermann.
 
 
 \clearpage
+
 \tableofcontents
 
 %%\clearpage
@@ -139,7 +155,7 @@ Das Gpg4win-Anleitungs- und Übungsmaterial besteht aus drei Teilen:
 \item \textbf{dem Handbuch "`Gpg4win für Durchblicker"'} im PDF-Format, welches
   Sie nach der Installation von Gpg4win auf Ihrer Festplatte finden,
 
-\item \textbf{dem Übungsroboter Adele,} mit dem Sie die Email-Ver- und
+\item \textbf{dem Übungsroboter Adele,} mit dem Sie die \Email{}-Ver- und
   Entschlüsselung so oft üben können, wie Sie wollen. Um mit Adele zu
   üben, brauchen Sie eine Internet-Verbindung.
 \end{itemize}
@@ -163,11 +179,11 @@ Die Handbuchteile können unabhängig voneinander benutzt werden. Zu
 Ihrem besseren Verständnis sollten Sie aber möglichst beide Teile in
 der angegebenen Reihenfolge lesen.
 
-$\spadesuit$ Dieses Symbol weist auf auf den Wechsel in das andere Buch
+\OtherBook{} Dieses Symbol weist auf auf den Wechsel in das andere Buch
 hin.
 
 \textbf{Der Übungsroboter Adele} steht Ihnen im Internet zur
-Verfügung. Adele empfängt und sendet verschlüsselte Emails und
+Verfügung. Adele empfängt und sendet verschlüsselte \Email{}s und
 entschlüsselt sie auch. Sie können also mit Adele einen kompletten
 Verschlüsselungsdialog so lange üben, bis Sie sich völlig mit dem
 Gebrauch der Software vertraut gemacht haben.
@@ -210,7 +226,7 @@ Es begrüßt Sie dieser Screen:
 
 % screenshot:  Welcome Seite Installer
 \begin{center}
-\includegraphics{sc-inst-welcome}
+\IncludeImage{sc-inst-welcome}
 \end{center}
 
 Beenden Sie alle möglicherweise auf Ihrem Rechner laufenden Programme,
@@ -232,7 +248,7 @@ machen.
 
 % sreenshot Lizenzseite des Installers
 \begin{center}
-\includegraphics{sc-inst-license}
+\IncludeImage{sc-inst-license}
 \end{center}
 
 
@@ -255,7 +271,7 @@ hilft Ihnen vielleicht ebenfalls weiter.
 
 % sreenshot Auswahl zu installierender Komponenten
 \begin{center}
-\includegraphics{sc-inst-components}
+\IncludeImage{sc-inst-components}
 \end{center}
 
 Sinnvoll ist es, mindestens GnuPG, GPA, WinPT und die Handbücher
@@ -274,7 +290,7 @@ Normalfall den voreingestellten Ordner \verb-C:\Programme\GNU\GnuPG-
 
 % screenshot: Auswahl des Installationsverzeichnis.
 \begin{center}
-\includegraphics{sc-inst-directory}
+\IncludeImage{sc-inst-directory}
 \end{center}
 
 Klicken Sie anschließend auf \Button{Weiter}.
@@ -287,7 +303,7 @@ Gpg4win einfacher starten können.
 
 % screenshot:  Startmenu auswählen
 \begin{center}
-\includegraphics{sc-inst-startmenu}
+\IncludeImage{sc-inst-startmenu}
 \end{center}
 
 Am einfachsten übernehmen Sie die vorgeschlagene Einstellung und
@@ -302,7 +318,7 @@ um ein Protokoll der Installation sichbar zu machen.
 
 % Screenshot: Ready page Installer
 \begin{center}
-\includegraphics{sc-inst-ready}
+\IncludeImage{sc-inst-ready}
 \end{center}
 
 Nachdem die Installation abgeschlossen ist, drücken Sie bitte auf
@@ -315,7 +331,7 @@ Die letzte Seite des Installationsvorgangs wird nun angezeigt:
 
 % Screenshot: Finish page Installer
 \begin{center}
-\includegraphics{sc-inst-finished}
+\IncludeImage{sc-inst-finished}
 \end{center}
 
 Durch ankreuzen von "`Die Schlüsselverwaltung aufrufen"' wird diese
@@ -333,7 +349,7 @@ muß.  In diesem Fall sehen Sie statt der vorherigen die folgende Seite:
 
 % Screenshot: Finish page Installer with reboot
 \begin{center}
-\includegraphics{sc-inst-finished2}
+\IncludeImage{sc-inst-finished2}
 \end{center}
 
 Sie können hier auswählen, ob Windows sofort neu gestartet werden
@@ -357,7 +373,7 @@ starten.
 
 Vorher sollten Sie aber im Handbuch "`Gpg4win für Durchblicker"'
 (PDF-Datei) die Kapitel 3 und 4 lesen. Wir erklären dort den genialen
-Trick, mit dem Gpg4win Ihre Emails sicher und bequem verschlüsselt.
+Trick, mit dem Gpg4win Ihre \Email{}s sicher und bequem verschlüsselt.
 Gpg4win funktioniert zwar auch, ohne daß Sie verstehen warum, aber im
 Gegensatz zu anderen Programmen wollen Sie Gpg4win schließlich Ihre
 geheime Korrespondenz anvertrauen. Da sollten Sie schon wissen, was
@@ -369,7 +385,7 @@ Weiter geben wir Ihnen einige Tipps, mit denen Sie sich einen sicheren
 und trotzdem leicht zu merkenden Passwortsatz ausdenken können.
 
 \textbf{
-$\spadesuit$ Lesen Sie jetzt im Handbuch "`Gpg4win für Durchblicker"'
+\OtherBook{} Lesen Sie jetzt im Handbuch "`Gpg4win für Durchblicker"'
              die Kapitel 3 und 4, und lesen Sie bitte erst danach hier weiter.
 }
 
@@ -410,14 +426,14 @@ Rufen Sie das Programm GPA über das Windows Startmenü auf:
 
 % screenshot Startmenu with GPA highlighted
 \begin{center}
-\includegraphics[width=0.4\textwidth]{sc-gpa-rungpa}
+\IncludeImage[width=0.4\textwidth]{sc-gpa-rungpa}
 \end{center}
 
 Daraufhin sehen Sie diesen Dialog:
 
 % screenshot: GPA erste Schlüsselerzeugung
 \begin{center}
-\includegraphics[width=0.9\textwidth]{sc-gpa-nokey}
+\IncludeImage[width=0.9\textwidth]{sc-gpa-nokey}
 \end{center}
 
 Klicken Sie auf \Button{Jetzt~Schlüssel~erzeugen}.
@@ -432,7 +448,7 @@ z.B. "`Heinrich Heine"'.
 
 % screenshot: Key generation wizard first page
 \begin{center}
-\includegraphics[width=0.6\textwidth]{sc-gpa-gen-name}
+\IncludeImage[width=0.6\textwidth]{sc-gpa-gen-name}
 \end{center}
 
 Oder Sie können auch gleich "`Ernst machen"' und Ihren richtigen Namen
@@ -442,15 +458,15 @@ Klicken Sie auf \Button{Weiter}, wenn Sie fertig sind.
 
 \clearpage
 %% Original page 18
-Als nächstens geben Sie Ihre eigene Email-Adresse an.
+Als nächstens geben Sie Ihre eigene \Email{}-Adresse an.
 
 Wieder gilt: Sie können die Schlüsselerzeugung zunächst einmal mit
-irgendeiner ausgedachten Email-Adresse durchtesten, z.B.
+irgendeiner ausgedachten \Email{}-Adresse durchtesten, z.B.
 "`\verb-heinrichh@gpg4win.de-"'
 
 % screenshot: Wizard email address
 \begin{center}
-\includegraphics[width=0.6\textwidth]{sc-gpa-gen-email}
+\IncludeImage[width=0.6\textwidth]{sc-gpa-gen-email}
 \end{center}
 
 Oder Sie können auch gleich Ihre echte EMail-Adresse eingeben.
@@ -462,7 +478,7 @@ Anschliessend können Sie einen Kommentar zum Schlüssel eingeben.
 Normalerweise bleibt dieses Feld leer; wenn sie aber einen
 Testschlüssel erzeugen sollten Sie dort als Erinnerung "`test"'
 eingeben.  Dieser Kommentar ist Teil Ihrer User-ID und genau wie der
-Name und die Email-Adresse später öffentlich sichtbar.  Klicken Sie
+Name und die \Email{}-Adresse später öffentlich sichtbar.  Klicken Sie
 auch dort anschließend auf \Button{Weiter}.
 
 
@@ -481,7 +497,7 @@ zu knackenden Passwortsatz parat haben und hier eintragen.
 
 % screenshot: Wizard, Enter passphrase
 \begin{center}
-\includegraphics[width=0.6\textwidth]{sc-gpa-gen-passwd}
+\IncludeImage[width=0.6\textwidth]{sc-gpa-gen-passwd}
 \end{center}
 
 Falls der Passwortsatz nicht sicher genug sein sollte, werden Sie
@@ -510,7 +526,7 @@ folgenden Dialog sehen:
 
 % screenshot: Wizard, backup
 \begin{center}
-\includegraphics[width=0.6\textwidth]{sc-gpa-gen-backup}
+\IncludeImage[width=0.6\textwidth]{sc-gpa-gen-backup}
 \end{center}
 
 Sie werden hier gebeten, eine Sicherheitskopie Ihres Schlüssels
@@ -548,7 +564,7 @@ Sie gleich nachlesen können.
 
 % screenshot: keymanger mit einem Schlüssel.
 \begin{center}
-\includegraphics[width=0.9\textwidth]{sc-gpa-first-key}
+\IncludeImage[width=0.9\textwidth]{sc-gpa-first-key}
 \end{center}
 
 Was bedeuten die Anmerkungen über Ihren Schlüssel?  Ihr Schlüssel ist
@@ -559,7 +575,7 @@ Ein Schlüssel mit einer Länge von 1024 Bit ist ein sicherer Schlüssel,
 der trotzdem nicht zuviel Rechenkraft auf Ihrem Computer beansprucht.
 
 \textbf{
-$\spadesuit$ Lesen Sie nun im Handbuch "`Gpg4win für Durchblicker"'
+\OtherBook{} Lesen Sie nun im Handbuch "`Gpg4win für Durchblicker"'
 Kapitel 5 "`Schlüssel im
 Detail"' weiter.  Sie können dieses Kapitel jetzt lesen oder später,
 wenn Sie diese Informationen benötigen
@@ -568,7 +584,7 @@ wenn Sie diese Informationen benötigen
 \clearpage
 %% Original page 24
 
-\section{Sie veröffentlichen Ihren Schlüssel per Email}
+\section{Sie veröffentlichen Ihren Schlüssel per \Email{}}
 
 Beim täglichen Gebrauch von Gpg4win ist es sehr praktisch, daß Sie es
 beim Ver- und Entschlüsseln stets nur mit den "`ungeheimen"'
@@ -583,15 +599,15 @@ Korrespondenzpartnern haben --- je mehr, desto besser.
 Denn:
 
 \textbf{
-Um sichere Emails austauschen zu können, müssen beide Partner jeweils
+Um sichere \Email{}s austauschen zu können, müssen beide Partner jeweils
 den öffentlichen Schlüssel des anderen besitzen und benutzen.
 }
 
-Wenn Sie also an jemanden verschlüsselte Emails schicken wollen,
+Wenn Sie also an jemanden verschlüsselte \Email{}s schicken wollen,
 müssen Sie dessen öffentlichen Schlüssel haben und zum Verschlüsseln
 benutzen.
 
-Wenn ­-- andersherum ­-- jemand Ihnen verschlüsselte Emails schicken
+Wenn ­-- andersherum ­-- jemand Ihnen verschlüsselte \Email{}s schicken
 will, muß er Ihren öffentlichen Schlüssel haben und zum Verschlüsseln
 benutzen.
 
@@ -600,12 +616,12 @@ zugänglich machen. Je nachdem, wie groß der Kreis Ihrer
 Korrespondenzpartner ist, gibt es zwei Möglichkeiten:
 
 \begin{itemize}
-\item \textbf{direkt per Email} an bestimmte Korrespondenzpartner
+\item \textbf{direkt per \Email{}} an bestimmte Korrespondenzpartner
 \item \textbf{oder auf einem Schlüsselserver} --- weltweit für jedermann zugänglich
 \end{itemize}
 
 Die erste Möglichkeit, Ihren öffentlichen Schlüssel zu verbreiten,
-besteht wie gesagt darin, daß Sie ihn per Email an einen oder
+besteht wie gesagt darin, daß Sie ihn per \Email{} an einen oder
 mehrere Korrespondenzpartner schicken.
 
 
@@ -613,7 +629,7 @@ mehrere Korrespondenzpartner schicken.
 %% Original page 25
 Zum Üben dieses Vorgangs kommt nun Adele ins Spiel:
 
-Adele ist ein sehr netter Email-Roboter, mit dem Sie zwanglos
+Adele ist ein sehr netter \Email{}-Roboter, mit dem Sie zwanglos
 korrespondieren können. Weil man gewöhnlich mit einer klugen und
 netten jungen Dame lieber korrespondiert als mit einem Stück Software
 (was Adele in Wirklichkeit natürlich ist), haben wir sie uns so
@@ -621,11 +637,11 @@ vorgestellt:
 
 % Cartoon:  Adele mit Buch ind er Hand vor Rechner ``you have mail"'
 \begin{center}
-\includegraphics{adele01}
+\IncludeImage{adele01}
 \end{center}
 
 Adele schicken Sie zunächst Ihren öffentlichen Schlüssel. Wenn Adele
-Ihren Schlüssel empfangen hat, verschlüsselt sie damit eine Email an
+Ihren Schlüssel empfangen hat, verschlüsselt sie damit eine \Email{} an
 Sie und sendet sie zurück.
 
 Diese Antwort von Adele entschlüsseln Sie mit Ihrem eigenen geheimen
@@ -633,19 +649,19 @@ Schlüssel. Damit Sie wiederum Adele verschlüsselt antworten können,
 legt Adele ihren eigenen öffentlichen Schlüssel bei.
 
 Adele verhält sich also genau wie ein richtiger Korrespondenzpartner.
-Allerdings sind Adeles Emails leider bei weitem nicht so interessant
+Allerdings sind Adeles \Email{}s leider bei weitem nicht so interessant
 wie die Ihrer echten Korrespondenzpartner.  Andererseits können Sie
 mit Adele so oft üben, wie Sie wollen ­-- was Ihnen ein menschlicher
 Adressat wahrscheinlich ziemlich übel nehmen würde.
 
 Wir exportieren also nun Ihren öffentlichen Schlüssel, kopieren ihn in
-eine Email und senden diese an Adele.
+eine \Email{} und senden diese an Adele.
 
 
 \clearpage
 %% Original page 26
 Die hier zuerst gezeigte Möglichkeit funktioniert immer, selbst wenn
-Sie ­-- z.B. bei manchen Email-Services im Web ­-- keine Dateien
+Sie ­-- z.B. bei manchen \Email{}-Services im Web ­-- keine Dateien
 anhängen können. Zudem bekommen Sie so Ihren Schlüssel zum ersten Mal
 zu Gesicht und wissen, was sich dahinter verbirgt und woraus der
 Schlüssel eigentlich besteht.
@@ -673,7 +689,7 @@ aussieht ­-- ein ziemlich wirrer Text- und Zahlenblock:
 
 % screenshot: Editor mit ascii armored key
 \begin{center}
-\includegraphics[width=0.9\textwidth]{sc-misc-mein-key-asc}
+\IncludeImage[width=0.9\textwidth]{sc-misc-mein-key-asc}
 \end{center}
 
 
@@ -696,7 +712,7 @@ Strg+C. Damit haben Sie den Schlüssel in den Speicher Ihres Rechners
 
 Nun starten Sie Ihr Mailprogramm ­-- es spielt keine Rolle, welches
 Sie benutzen ­-- und fügen Ihren öffentlichen Schlüssel in eine leere
-Email ein. Der Tastaturbefehl zum Einfügen ("`Paste"') lautet bei
+\Email{} ein. Der Tastaturbefehl zum Einfügen ("`Paste"') lautet bei
 Windows Strg+V.  Es ist sinnvoll vorher das Mailprogramm so zu
 konfigurieren, daß reine Textnachrichten gesendet werden und keine HTML
 formtierte Nachrichten.
@@ -704,22 +720,22 @@ formtierte Nachrichten.
 Diesen Vorgang ­-- Kopieren und Einfügen ­-- kennen Sie sicher als
 "`Copy \& Paste"'.
 
-Adressieren Sie nun diese Email an \verb-adele@gnupp.de- und
+Adressieren Sie nun diese \Email{} an \verb-adele@gnupp.de- und
 schreiben in die Betreffzeile:
 
 \textbf{mein öffentlicher Schlüssel}
 
-So etwa sollte Ihre Email nun aussehen:
+So etwa sollte Ihre \Email{} nun aussehen:
 
 % screenshot:  Eines composer Windows.
 \begin{center}
-\includegraphics[width=0.9\textwidth]{sc-ol-send-test-key}
+\IncludeImage[width=0.9\textwidth]{sc-ol-send-test-key}
 \end{center}
 
-Schicken Sie die Email an Adele nun ab. Nur zur Vorsicht: natürlich
-sollten Ihre Emails \textbf{nicht} \verb-heinrichh@gpg4win.de- oder ein andere
+Schicken Sie die \Email{} an Adele nun ab. Nur zur Vorsicht: natürlich
+sollten Ihre \Email{}s \textbf{nicht} \verb-heinrichh@gpg4win.de- oder ein andere
 Beispieladresse als Absender haben, sondern \emph{Ihre eigene
-  Email-Adresse}. Denn sonst werden Sie nie Antwort von Adele
+  \Email{}-Adresse}. Denn sonst werden Sie nie Antwort von Adele
 bekommen$\ldots$
 
 
@@ -727,17 +743,17 @@ bekommen$\ldots$
 %% Original page 29
 
 Genauso gehen Sie vor, wenn Sie Ihren Schlüssel an eine echte
-Email-Adresse senden. Natürlich können Sie dann auch noch ein paar
+\Email{}-Adresse senden. Natürlich können Sie dann auch noch ein paar
 erklärende Sätze dazuschreiben. Adele braucht diese Erklärung nicht,
 denn sie ist zu nichts anderem als zu diesem Zweck programmiert
 worden.
 
 \textbf{Fassen wir kurz zusammen:} Sie haben Ihren
-öffentlichen Schlüssel per Email an einen Korrespondenzpartner
+öffentlichen Schlüssel per \Email{} an einen Korrespondenzpartner
 geschickt.
 
 \textbf{
-$\spadesuit$ Im Handbuch "`Gpg4win für Durchblicker"' Kapitel 7
+\OtherBook{} Im Handbuch "`Gpg4win für Durchblicker"' Kapitel 7
 beschreiben wir, wie Sie Ihren Schlüssel auch als Dateianhang
 versenden.
 }
@@ -753,7 +769,7 @@ Kapitel jetzt lesen oder später, wenn Sie diese Funktion benötigen.
 \section{Sie veröffentlichen Ihren Schlüssel per Keyserver}
 
 Diese Möglichkeit bietet sich eigentlich immer an, selbst wenn Sie nur
-mit wenigen Partnern verschlüsselte Emails austauschen.  Ihr
+mit wenigen Partnern verschlüsselte \Email{}s austauschen.  Ihr
 Schlüssel ist dann sozusagen "`stets griffbereit"' auf einem Server im
 Internet vorhanden.
 
@@ -762,14 +778,14 @@ Klicken Sie Ihren Schlüssel an und wählen Sie dann den Menüpunkt
 
 % screenshot: GPA export key to keyserver
 \begin{center}
-\includegraphics[width=0.4\textwidth]{sc-gpa-ks-export-p}
+\IncludeImage[width=0.4\textwidth]{sc-gpa-ks-export-p}
 \end{center}
 
 Wie Sie sehen, ist ein Keyserver bereits voreingestellt. Wenn Sie auf
 \Button{Ja} klicken, wird der Schlüssel an den Server geschickt und von dort
 aus an die anderen, weltweit verbundenen Keyserver weitergereicht.
 Jedermann kann ihn von dort herunterladen und dazu benutzen, Ihnen
-eine sichere Email zu schreiben.
+eine sichere \Email{} zu schreiben.
 
 Wenn Sie den Ablauf im Moment nur testen, dann schicken Sie den
 Übungsschlüssel nicht ab.  Er ist wertlos und kann nicht
@@ -781,7 +797,7 @@ Clinton"' dort herumliegen ­ schon seit Jahren$\ldots$
 Schlüssel auf einen Schlüsselserver im Internet schicken können.
 
 \textbf{
-$\spadesuit$ Wie Sie den Schlüssel eines Partners auf den
+\OtherBook{} Wie Sie den Schlüssel eines Partners auf den
 Schlüsselservern suchen und finden, beschreiben wir im Handbuch
 "`Gpg4win für Durchblicker"' Kapitel 6. Sie können dieses Kapitel jetzt
 lesen oder später, wenn Sie diese Funktion benötigen.
@@ -789,15 +805,15 @@ lesen oder später, wenn Sie diese Funktion benötigen.
 
 \clearpage
 %% Original page 31
-\section{Sie entschlüsseln eine Email}
+\section{Sie entschlüsseln eine \Email{}}
 
 Adele erhält nun Ihren öffentlichen Schlüssel, verschüsselt damit eine
-Email und sendet sie an Sie zurück.  Nach kurzer Zeit erhalten Sie
+\Email{} und sendet sie an Sie zurück.  Nach kurzer Zeit erhalten Sie
 Adeles Antwort.
 
 % cartoon: Adele typing and sending a mail
 \begin{center}
-\includegraphics{adele02}
+\IncludeImage{adele02}
 \end{center}
 
 
@@ -831,10 +847,10 @@ stark gekürzt.)
 \clearpage
 %% Original page 33
 
-\textbf{Diese Email werden Sie nun mit dem Programm WinPT entschlüsseln.}
+\textbf{Diese \Email{} werden Sie nun mit dem Programm WinPT entschlüsseln.}
 
 WinPT ist ein sogenanntes "`Frontend"' für GnuPG. Es dient zur
-eigentlichen Ver- und Entschlüsselung der Emails und zur Erzeugung
+eigentlichen Ver- und Entschlüsselung der \Email{}s und zur Erzeugung
 und Überprüfung von digitalen Unterschriften. Und zwar ­-- und das ist
 einer seiner Vorteile ­-- mit jedem beliebigen Mailprogramm.
 
@@ -843,7 +859,7 @@ außerdem spezielle PlugIns, mit denen die Ver- und Entschlüsselung
 direkt im jeweiligen Mailprogramm erledigt werden kann.
 
 \textbf{
-$\spadesuit$ Hinweise zu diesen Lösungen finden Sie im Handbuch
+\OtherBook{} Hinweise zu diesen Lösungen finden Sie im Handbuch
 "`Gpg4win für Durchblicker"' Kapitel 8. Sie können dieses Kapitel jetzt
 lesen oder später, wenn Sie diese Funktion benötigen.
 }
@@ -854,7 +870,7 @@ die Ver- und Entschlüsselung einfach im Speicher des Rechners. Das
 bedeutet, daß man den Text, der ver- oder entschlüsselt werden soll,
 zunächst in die Zwischenablage des Rechners zu kopieren ist.
 
-Markieren Sie also den gesamten Text aus Adeles Email und kopieren Sie ihn
+Markieren Sie also den gesamten Text aus Adeles \Email{} und kopieren Sie ihn
 mit dem entsprechenden Menübefehl oder Tastaturkürzel (Strg+C).
 
 Damit haben Sie den Schlüssel in den Speicher Ihres Rechners ­-- bei
@@ -867,7 +883,7 @@ Starten Sie nun WinPT aus dem Windows-Startmenü:
 
 % screenshot: startmenu Auswahl winpt
 \begin{center}
-\includegraphics[width=0.7\textwidth]{sc-winpt-startmenu}
+\IncludeImage[width=0.7\textwidth]{sc-winpt-startmenu}
 \end{center}
 
 Während WinPT startet, erscheint kurz ein Hinweis darauf, daß das
@@ -878,7 +894,7 @@ Windows-Taskleiste das Schlüsselsymbol von WinPT:
 
 % screenshot: taskbar rechts mit WinPT icon
 \begin{center}
-\includegraphics{sc-winpt-trayicon}
+\IncludeImage{sc-winpt-trayicon}
 \end{center}
 
 
@@ -889,11 +905,11 @@ Klicken Sie mit der rechten Maustaste auf dieses Icon.  Daraufhin
 \Menu{Zwischenablage$\rightarrow$Entschlüsseln/Überprüfen}.
 
 Es erscheint dieser Dialog: Geben Sie nun Ihren geheimen Passwortsatz
-ein. Adeles Email wird nun entschlüsselt.
+ein. Adeles \Email{} wird nun entschlüsselt.
 
 % screenshot: WinPT decryption dialog
 \begin{center}
-\includegraphics[width=0.7\textwidth]{sc-winpt-clip-decrypt}
+\IncludeImage[width=0.7\textwidth]{sc-winpt-clip-decrypt}
 \end{center}
 
 Kurz darauf erscheint ein kurzer Hinweis, daß die Entschlüsselung
@@ -938,7 +954,7 @@ Entschlüsseln der Nachrichten Ihres Korrespondenzpartners benutzen.
 \textbf{Fassen wir kurz zusammen:}
 
 \begin{enumerate}
-\item Sie haben eine verschlüsselte Email mit Ihrem geheimen
+\item Sie haben eine verschlüsselte \Email{} mit Ihrem geheimen
   Schlüssel entschlüsselt.
 
 \item Der Korrespondenzpartner hat seinen eigenen öffentlichen
@@ -988,13 +1004,13 @@ wiederfinden, z.B. als \Filename{adeles-key.asc} im Ordner
 %% Original page 38
 \textbf{2. Möglichkeit:}
 
-Der Schlüssel liegt der Email als Dateianhang bei. Welches
+Der Schlüssel liegt der \Email{} als Dateianhang bei. Welches
 Mailprogramm Sie auch immer benutzen, Sie können stets Dateianhänge
 ("`Attachments"') auf Ihrer Festplatte abspeichern. Tun Sie das jetzt
 (am besten wieder in einem Ordner, den Sie leicht wiederfinden, z.B.
 \Filename{Eigene~Dateien}).
 
-Ob Sie nun den Schlüssel als Text oder als Email-Anhang abgespeichert
+Ob Sie nun den Schlüssel als Text oder als \Email{}-Anhang abgespeichert
 haben, ist egal: in beiden Fällen importieren Sie diesen
 abgespeicherten Schlüssel in den GnuPG-"`Schlüsselbund"'.
 
@@ -1014,7 +1030,7 @@ importierte Schlüssel wird nun im GNU Privacy Assistant angezeigt:
 
 % screenshot GPA Schlüsselverwaltung mit zwei Schlüsseln
 \begin{center}
-\includegraphics[width=0.9\textwidth]{sc-gpa-two-keys}
+\IncludeImage[width=0.9\textwidth]{sc-gpa-two-keys}
 \end{center}
 
 Damit haben Sie einen fremden öffentlichen Schlüssel ­-- in diesem
@@ -1025,14 +1041,14 @@ senden.
 
 \textbf{Bevor wir weitermachen, eine wichtige Frage:}\\
 woher wissen Sie eigentlich, daß der fremde öffentliche Schlüssel
-wirklich von Adele stammt? Man kann Emails auch unter falschem Namen
+wirklich von Adele stammt? Man kann \Email{}s auch unter falschem Namen
 versenden ­-- die Absenderangabe besagt eigentlich gar nichts.
 
 Wie können Sie also sichergehen, daß ein Schlüssel auch wirklich
 seinem Absender gehört?
 
 \textbf{
-$\spadesuit$ Diese Kernfrage besprechen wir im Handbuch "`Gpg4win für
+\OtherBook{} Diese Kernfrage besprechen wir im Handbuch "`Gpg4win für
 Durchblicker"' Kapitel 9: "`Die Schlüsselprüfung"'. Lesen Sie jetzt
 bitte dort weiter, bevor Sie danach an dieser Stelle fortfahren.
 }
@@ -1045,11 +1061,11 @@ ihn dann mit seinem eigenen geheimen Schlüssel signiert.
 
 In Kapitel 10 des Handbuchs "`Gpg4win für Durchblicker"' besprechen wir,
 wie man nicht nur einen Schlüssel, sondern auch eine komplette
-Email-Nachricht signieren kann. Das bedeutet, daß man die Email mit
+\Email{}-Nachricht signieren kann. Das bedeutet, daß man die \Email{} mit
 einer Art elektronischem Siegel versieht.
 
 Der Text ist dann zwar noch für jeden lesbar, aber der Empfänger kann
-feststellen, ob die Email unterwegs manipuliert oder verändert wurde.
+feststellen, ob die \Email{} unterwegs manipuliert oder verändert wurde.
 
 Die Überprüfung einer solchen Signatur ist sehr einfach. Sie müssen
 dazu natürlich den öffentlichen Schlüssel des Absenders bereits an
@@ -1058,13 +1074,13 @@ von "`Gpg4win für Einsteiger"' besprochen.
 
 % cartoon:  Müller mit Schlüssel
 \begin{center}
-\includegraphics[width=0.4\textwidth]{man-with-signed-key}
+\IncludeImage[width=0.4\textwidth]{man-with-signed-key}
 \end{center}
 
 
 \clearpage
 %% Original page 41
-Wenn Sie eine signierte Email erhalten, sehen Sie, daß der Text am
+Wenn Sie eine signierte \Email{} erhalten, sehen Sie, daß der Text am
 Anfang und Ende von einer Signatur eingerahmt ist.  Sie beginnt mit
 
 \begin{verbatim}
@@ -1072,7 +1088,7 @@ Anfang und Ende von einer Signatur eingerahmt ist.  Sie beginnt mit
 Hash: SHA1
 \end{verbatim} 
 
-und endet unter der Email-Nachricht mit
+und endet unter der \Email{}-Nachricht mit
 
 \begin{verbatim}
 -----BEGIN PGP SIGNATURE-----
@@ -1088,7 +1104,7 @@ Markieren Sie den gesamten Text von \textsl{BEGIN PGP SIGNED MESSAGE}
 bis \textsl{END PGP SIGNATURE} und kopieren Sie ihn mit Strg+C in die
 Zwischenablage.
 
-Nun fahren Sie genauso fort wie bei der Entschlüsselung einer Email,
+Nun fahren Sie genauso fort wie bei der Entschlüsselung einer \Email{},
 wie wir es in Kapitel 7 dieses Handbuchs besprochen haben:
 
 Sie öffnen WinPT aus der Windows-Taskleiste und wählen
@@ -1098,34 +1114,34 @@ Sie sollte daraufhin folgendes Fenster sehen:
 
 % screenshot: WinPT good signature.
 \begin{center}
-\includegraphics[width=0.7\textwidth]{sc-winpt-good-sig}
+\IncludeImage[width=0.7\textwidth]{sc-winpt-good-sig}
 \end{center}
 
 Falls Sie dort aber in der Statusspalte \emph{Die Signatur ist nicht
   gültig!}  erhalten, wurde die Nachricht bei der Übertragung
 verändert.  Aufgrund der technischen Gegebenheiten im Internet ist es
-nicht auszuschließen, daß die Email durch eine fehlerhafte Übertragung
+nicht auszuschließen, daß die \Email{} durch eine fehlerhafte Übertragung
 verändert wurde. Das ist zunächst der wahrscheinlichste Fall. Es kann
 jedoch auch bedeuten, daß der Text nachträglich verändert wurde.
 
 \textbf{
-$\spadesuit$ Wie Sie in einem solchen Fall vorgehen sollten, erfahren
-Sie im Handbuch "`Gpg4win für Durchblicker"' Kapitel 10.  "`Emails
+\OtherBook{} Wie Sie in einem solchen Fall vorgehen sollten, erfahren
+Sie im Handbuch "`Gpg4win für Durchblicker"' Kapitel 10.  "`\Email{}s
 signieren"'. Lesen Sie jetzt bitte dort weiter, bevor Sie danach an dieser
 Stelle fortfahren.
 }
 
 \clearpage
 %% Original page 42
-\section{Sie verschlüsseln eine Email}
+\section{Sie verschlüsseln eine \Email{}}
 
 Jetzt wird es nochmal spannend:
 
-Sie verschlüsseln eine Email und senden sie an Adele. Wenn Sie einen
+Sie verschlüsseln eine \Email{} und senden sie an Adele. Wenn Sie einen
 ebenso geduldigen menschlichen Korrespondenzpartner haben, dann senden
-Sie Ihre Email eben an diesen.
+Sie Ihre \Email{} eben an diesen.
 
-Starten Sie nun Ihr Emailprogramm. Schreiben Sie eine Nachricht ­--
+Starten Sie nun Ihr \Email{}programm. Schreiben Sie eine Nachricht ­--
 es ist egal, was: Adele kann nicht wirklich lesen$\ldots$
 
 Nun markieren Sie den gesamten Text und kopieren Sie ihn mit dem
@@ -1135,7 +1151,7 @@ Zwischenablage oder Clipboard genannt ­-- kopiert.
 
 % screenshot: composer mit mail an Adele, body markiert
 \begin{center}
-\includegraphics[width=0.9\textwidth]{sc-ol-send-enc-msg1}
+\IncludeImage[width=0.9\textwidth]{sc-ol-send-enc-msg1}
 \end{center}
 
 Sie öffnen nun WinPT aus der Windows-Taskleiste und wählen
@@ -1151,7 +1167,7 @@ in Kapitel 2 erzeugt haben.
 
 % screenshot: Winpt encryption key selection
 \begin{center}
-\includegraphics[width=0.7\textwidth]{sc-winpt-sel-enc-key}
+\IncludeImage[width=0.7\textwidth]{sc-winpt-sel-enc-key}
 \end{center}
 
 Klicken Sie auf Adeles Schlüssel, denn damit muß die Nachricht ja
@@ -1159,7 +1175,7 @@ verschlüsselt werden.
 
 Sie erinnern sich an den Grundsatz:
 
-\textbf{Wenn Sie an jemanden verschlüsselte Emails schicken wollen,
+\textbf{Wenn Sie an jemanden verschlüsselte \Email{}s schicken wollen,
   müssen Sie dessen öffentlichen Schlüssel haben und zum Verschlüsseln
   benutzen.}
 
@@ -1172,7 +1188,7 @@ bestätigt.
 \clearpage
 %% Original page 46
 Die verschlüsselte Nachricht befindet sich noch in der Zwischenablage
-(Clipboard) und kann nun mühelos in das Email-Fenster hineinkopiert
+(Clipboard) und kann nun mühelos in das \Email{}-Fenster hineinkopiert
 werden.  Löschen Sie den unverschlüsselten Text oder kopieren die den
 Inhalt der Zwischenablage einfach darüber.
 
@@ -1180,31 +1196,31 @@ So ähnlich sollte das Ergebnis aussehen:
 
 % screenshot: composer Windows mit enrcypted text 
 \begin{center}
-\includegraphics[width=0.9\textwidth]{sc-ol-send-enc-msg2}
+\IncludeImage[width=0.9\textwidth]{sc-ol-send-enc-msg2}
 \end{center}
 
-Senden Sie nun Ihre Email wieder an Adele.  Nur zur Vorsicht:
-natürlich sollten Ihre Emails \textbf{nicht} \verb-heinrichh@gpg4win.de- als
-Absender haben, sondern Ihre eigene Email-Adresse.  Denn sonst werden
+Senden Sie nun Ihre \Email{} wieder an Adele.  Nur zur Vorsicht:
+natürlich sollten Ihre \Email{}s \textbf{nicht} \verb-heinrichh@gpg4win.de- als
+Absender haben, sondern Ihre eigene \Email{}-Adresse.  Denn sonst werden
 Sie nie Antwort von Adele bekommen$\ldots$
 
 \textbf{
-Herzlichen Glückwunsch!  Sie haben Ihre erste Email verschlüsselt!
+Herzlichen Glückwunsch!  Sie haben Ihre erste \Email{} verschlüsselt!
 }
 
 \clearpage
 %% Original page 47
-\section{Wie Sie Ihre Emails verschlüsselt archivieren}
+\section{Wie Sie Ihre \Email{}s verschlüsselt archivieren}
 
-Eine Einstellung müssen Sie noch vornehmen, damit Sie Ihre Emails
+Eine Einstellung müssen Sie noch vornehmen, damit Sie Ihre \Email{}s
 verschlüsselt aufbewahren können.  Natürlich können Sie einfach eine
 Klartextversion Ihrer Texte aufbewahren, aber das wäre eigentlich
 nicht angebracht. Wenn Ihre Mitteilung geheimhaltungsbedürftig war,
 sollte sie auch nicht im Klartext auf Ihrem Rechner gespeichert sein.
-Also sollte immer ein Kopie der verschlüsselten Email aufbewahrt
+Also sollte immer ein Kopie der verschlüsselten \Email{} aufbewahrt
 werden.
 
-Sie ahnen das Problem: zum Entschlüsseln der archivierten Emails
+Sie ahnen das Problem: zum Entschlüsseln der archivierten \Email{}s
 braucht man den geheimen Schlüssel des Empfängers ­-- und den haben
 Sie nicht und werden Sie nie haben$\ldots$
 
@@ -1228,14 +1244,14 @@ dort das Menü \Menu{Einstellungen $\rightarrow$ GPG}.
 
 % screenshot: Winpt configuration dialog
 \begin{center}
-\includegraphics[width=0.9\textwidth]{sc-winpt-enctoself}
+\IncludeImage[width=0.9\textwidth]{sc-winpt-enctoself}
 \end{center}
 
 In dem Einstellungsfenster, das sich nun öffnet, tragen Sie unter
 "`Encrypt to this key"' Ihren Schlüssel ein, und zwar einfach mit der
-dazugehörigen Email-Adresse.
+dazugehörigen \Email{}-Adresse.
 
-Eine entsprechende Option finden Sie auch bei allen Emailprogrammen,
+Eine entsprechende Option finden Sie auch bei allen \Email{}programmen,
 die GnuPG direkt unterstützen.
 
 
@@ -1245,23 +1261,23 @@ die GnuPG direkt unterstützen.
 
 \begin{enumerate}
 \item Sie haben mit dem öffentlichen Schlüssel Ihres Partners eine
-  Email verschlüsselt und ihm damit geantwortet.
-\item Sie haben WinPT mitgeteilt, daß Archivkopien Ihrer Emails auch
+  \Email{} verschlüsselt und ihm damit geantwortet.
+\item Sie haben WinPT mitgeteilt, daß Archivkopien Ihrer \Email{}s auch
   zusätzlich mit Ihrem eigenen Schlüssel verschlüsselt werden sollen.
 \end{enumerate}
 
 \textbf{Das war's! Willkommen in der Welt der freien und sicheren
-Email-Verschlüsselung!}
+\Email{}-Verschlüsselung!}
 
 \textbf{
-$\spadesuit$ Lesen Sie nun die Kapitel 10 bis 12 im Handbuch "`Gpg4win
-für Durchblicker"'.  Sie erfahren dort unter anderem, wie man Emails
+\OtherBook{} Lesen Sie nun die Kapitel 10 bis 12 im Handbuch "`Gpg4win
+für Durchblicker"'.  Sie erfahren dort unter anderem, wie man \Email{}s
 signiert und einen bereits vorhandenen Geheimschlüssel in GnuPG
 importiert und verwendet.
 }
 
 \textbf{
-$\spadesuit$ Ab Kapitel 13 des Handbuchs "`Gpg4win für Durchblicker"'
+\OtherBook{} Ab Kapitel 13 des Handbuchs "`Gpg4win für Durchblicker"'
 können Sie weiterhin in zwei spannenden Kapiteln lesen, auf welchen
 Verfahren die Sicherheit von GnuPG beruht.
 }
@@ -1301,7 +1317,7 @@ sondern
 
 \end{itemize}
 
-\selectlanguage{USenglish}
+\T\selectlanguage{USenglish}
 \input{fdl.tex}
 
 \end{document}

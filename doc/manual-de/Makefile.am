@@ -18,6 +18,7 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
 png_files := \
+        blank.png next.png previous.png up.png \
 	sc-winpt-sign-passwd.png \
         sc-gpgee-ctxmenu.png sc-gpgee-signmenu.png \
 	sc-gpa-gen-backup.png sc-gpa-gen-backup-warn.png
