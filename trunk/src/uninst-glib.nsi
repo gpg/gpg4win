@@ -29,6 +29,13 @@ Section "-un.glib"
   Push "${gpg4win_pkg_glib}"
   Call un.SourceDelete
 !else
+
+  Delete "$INSTDIR\share\locale\de\LC_MESSAGES\glib20.mo"
+  RMDir "$INSTDIR\share\locale\de\LC_MESSAGES"
+  RMDir "$INSTDIR\share\locale\de"
+  RMDir "$INSTDIR\share\locale"
+  RMDir "$INSTDIR\share"
+
   Delete "$INSTDIR\gspawn-win32-helper.exe"
   Delete "$INSTDIR\libglib-2.0-0.dll"
   Delete "$INSTDIR\libgmodule-2.0-0.dll"

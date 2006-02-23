@@ -32,6 +32,10 @@ Section "-atk" SEC_atk
 !ifdef SOURCES
   File ${gpg4win_pkg_atk_src}
 !else
+
+  SetOutPath "$INSTDIR\lib\locale\de\LC_MESSAGES"
+  File ${prefix}/lib/locale/de/LC_MESSAGES/atk10.mo
+
   File ${prefix}/bin/libatk-1.0-0.dll
 !endif
 SectionEnd

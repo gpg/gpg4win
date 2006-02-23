@@ -30,6 +30,12 @@ Section "-un.gtk+"
   Push "${gpg4win_pkg_gtk__src}"
   Call un.SourceDelete
 !else
+
+  Delete "$INSTDIR\lib\locale\de\LC_MESSAGES\gtk20.mo"
+  RMDir "$INSTDIR\lib\locale\de\LC_MESSAGES"
+  RMDir "$INSTDIR\lib\locale\de"
+  RMDir "$INSTDIR\lib\locale"
+
   Delete "$INSTDIR\libgdk_pixbuf-2.0-0.dll"
   Delete "$INSTDIR\libgdk-win32-2.0-0.dll"
   Delete "$INSTDIR\libgtk-win32-2.0-0.dll"
