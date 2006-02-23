@@ -1,3 +1,12 @@
+2006-02-23  Marcus Brinkmann  <marcus@g10code.de>
+
+	* src/inst-glib.nsi: Add glib20.mo.
+	* src/uninst-glib.nsi: Remove glib20.mo.
+	* src/inst-gtk+.nsi: Add gtk20.mo.
+	* src/uninst-gtk+.nsi: Remove gtk20.mo.
+	* src/inst-atk.nsi: Add atk10.mo.
+	* src/uninst-atk.nsi: Remove atk10.mo.
+
 2006-02-15  Werner Koch  <wk@gnupg.org>
 
 	Released 0.7.0.

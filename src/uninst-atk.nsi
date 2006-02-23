@@ -30,7 +30,14 @@ Section "-un.atk"
   Push "${gpg4win_pkg_atk_src}"
   Call un.SourceDelete
 !else
+  Delete "$INSTDIR\lib\locale\de\LC_MESSAGES\atk10.mo"
+  RMDir "$INSTDIR\lib\locale\de\LC_MESSAGES"
+  RMDir "$INSTDIR\lib\locale\de"
+  RMDir "$INSTDIR\lib\locale"
+  RMDir "$INSTDIR\lib"
+
   Delete "$INSTDIR\libatk-1.0-0.dll"
 !endif
+
   RMDir "$INSTDIR"
 SectionEnd

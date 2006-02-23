@@ -75,5 +75,9 @@ Section "-gtk+" SEC_gtk_
 
   SetOutPath "$INSTDIR\share\themes\Emacs\gtk-2.0-key"
   File ${prefix}/share/themes/Emacs/gtk-2.0-key/gtkrc
+
+  SetOutPath "$INSTDIR\lib\locale\de\LC_MESSAGES"
+  File ${prefix}/lib/locale/de/LC_MESSAGES/gtk20.mo
+
 !endif
 SectionEnd
