@@ -1,5 +1,10 @@
                                                           -*- outline -*-
 
+* Documentation
+ Take new screenshots and base distributed images on png or jpg.
+ Convert to eps while building.  Make sure that image sizes are
+ suitable for webpages.
+
 * Build system
 ** Some versions of strip don't work.
    Werner's GNU strip 2.15.91 20040904 is fine but

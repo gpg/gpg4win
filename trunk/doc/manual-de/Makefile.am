@@ -18,10 +18,13 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
 png_files := \
-        blank.png next.png previous.png up.png \
 	sc-winpt-sign-passwd.png \
         sc-gpgee-ctxmenu.png sc-gpgee-signmenu.png \
 	sc-gpa-gen-backup.png sc-gpa-gen-backup-warn.png
+
+web_png_files := blank.png next.png previous.png up.png \
+                 home.png nonext.png noprevious.png noup.png
+
 
 eps_files := adele01.eps.gz adele02.eps.gz man-with-signed-key.eps.gz \
              egyptian-stone.eps.gz sealed-envelope.eps.gz \
@@ -51,32 +54,40 @@ eps_files := adele01.eps.gz adele02.eps.gz man-with-signed-key.eps.gz \
 	     sc-misc-mein-key-asc.eps.gz 
 
 eps_files_bb  := $(eps_files:.gz=.bb)
+eps_files_png  := $(eps_files:.eps.gz=.png)
 #eps_files_pdf := $(eps_files:.eps.gz=.pdf)
 png_files_eps := $(png_files:.png=.eps) 
 
 EXTRA_DIST = fdl.tex einsteiger.tex durchblicker.tex $(eps_files) \
-             $(png_files) \
+             $(png_files) $(web_png_files) \
 	     was-ist-gpg4win.tex macros.tex version.tex.in gpg4win-logo.eps
 
 CLEANFILES = $(eps_files_bb) $(png_files_eps) \
              *.pdf *.pdf *.toc *.log *.aux *.out
-DISTCLEANFILES = version.tex
+DISTCLEANFILES = version.tex $(eps_files_png)
 
 pkgdata_DATA = einsteiger.pdf durchblicker.pdf
 
-BUILT_SOURCES = $(eps_files_bb) $(png_files_eps)
+BUILT_SOURCES = $(eps_files_bb) $(png_files_eps) $(eps_files_png)
 
 all-local: einsteiger.pdf durchblicker.pdf
 
-einsteiger.pdf : $(eps_files_bb) $(png_files_eps) 
+einsteiger.pdf : $(eps_files_bb) $(png_files_eps) $(eps_files_png)
 #$(eps_files_pdf)
-durchblicker.pdf : $(eps_files_bb) $(png_files_eps)
+durchblicker.pdf : $(eps_files_bb) $(png_files_eps) $(eps_files_png)
+
+
+webversion: einsteiger.html durchblicker.html
+
 
 %.eps.bb : %.eps.gz
 	$(ZCAT) `test -f '$<' || echo '$(srcdir)/'`$< \
           | grep '^%%BoundingBox' | head -1 > $@
 
 %.eps : %.png
+	$(CONVERT) `test -f '$<' || echo '$(srcdir)/'`$< $@
+
+%.png : %.eps.gz
 	$(CONVERT) `test -f '$<' || echo '$(srcdir)/'`$< $@
 
 %.dvi : %.tex
@@ -88,3 +99,6 @@ durchblicker.pdf : $(eps_files_bb) $(png_files_eps)
 #%.pdf : %.eps.gz
 #	$(ZCAT) `test -f '$<' || echo '$(srcdir)/'`$< \
 #         | epstopdf -f > $@
+
+%.html : %.tex
+	hyperlatex $<

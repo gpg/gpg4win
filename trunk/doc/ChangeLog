@@ -1,3 +1,18 @@
+2006-02-24  Werner Koch  <wk@g10code.com>
+
+	* manual-de/durchblicker.tex: Converted to hyperlatex. Images need
+	to be tweaked for web publishing.
+
+2006-02-23  Werner Koch  <wk@g10code.com>
+
+	* manual-de/einsteiger.tex: Converted to a Hyperlatex document.
+
+2006-02-22  Werner Koch  <wk@g10code.com>
+
+	* manual-de/macros.tex: Made Email configurable.
+	* manual-de/einsteiger.tex: Use new Email command.
+	* manual-de/durchblicker.tex: Ditto.
+
 2006-02-15  Werner Koch  <wk@gnupg.org>
 
 	* pkg-copyright.txt: New.
