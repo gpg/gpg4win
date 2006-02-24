@@ -10,22 +10,10 @@
 \usepackage{alltt}
 \usepackage{moreverb}
 \usepackage{fancyhdr}
+\W\usepackage{rhxpanel}
 \W\usepackage{sequential}
 
-% I would really like to use jpg sources but tehre are two problems.
-% The way as described below does no work becuase neiteyr dvips not
-% xdvi can cope with the BMP type.  The other solution of converting
-% jpeg on-the-fly into EPS is hampered by the fact that there seems to
-% be no free tool to do this.  The jpeg2ps tool mentioned at some places
-% is not free.  Frankly writing such a tool is pretty straightforword
-% and I'd really like to have a free one.  Another problem with a
-% non-builtin DeclareGraphicsRule is that one needs to pass the -R0
-% option (do not run securely) to dvips - not the best solution.
-% Eventually we should get code to do the on-the-fly conversion into
-% dvips proper.
-%
-%\DeclareGraphicsExtensions{.eps,.eps.gz,.jpg}
-%\DeclareGraphicsRule{.jpg}{bmp}{.jpg.bb}{`djpeg -bmp #1}
+
 \T\DeclareGraphicsExtensions{.eps.gz,.eps}
 
 \T\fancyhead{} % clear all fields
@@ -33,9 +21,6 @@
 \T\fancyhead[RO,LE]{\thepage}
 \T\fancyfoot[C]{\includegraphics[width=1cm]{gpg4win-logo}}
 
-\newcommand{\HlxIcons}{}
-
-\W\htmlpanelgerman
 
 % Hyperref should be among the last packages loaded
 \usepackage{hyperref}
@@ -48,14 +33,19 @@
 \htmltitle{Gpg4win für Einsteiger}
 %\htmladdress{Gpg4win Project, \today}
 \title{
-\T\includegraphics[width=8cm]{gpg4win-logo}
+\IncludeImage[width=8cm]{gpg4win-logo}
 \\
 Gpg4win für Einsteiger}
 \author{Eine Veröffentlichung des Gpg4Win Projekts\\
-  \small Basierend auf einem Original von \\
-  \small Manfred J. Heinze, Karl Bihlmeier, Isabel Kramer\\
-  \small Dr. Francis Wray und Ute Bahn\\ \ \\
-  Überarbeitet von\\
+  \small Basierend auf einem Original von 
+\T\\
+  \small Manfred J. Heinze, Karl Bihlmeier, Isabel Kramer
+\T\\
+  \small Dr. Francis Wray und Ute Bahn
+\T\\ \
+ \\
+  Überarbeitet von
+\T\\
   \small Werner Koch}
 \date{Version 2.0.0.RC1 vom 20. Januar 2006}
 
@@ -1307,9 +1297,9 @@ sondern
   Herausgegeben vom Bundesministerium für Wirtschaft und
   Technologie.\\
   Verfügbar unter
-  \verb-http://www.gnupp.de/pdf/einsteiger.pdf-\footnote{%
-    Der Abschnitt "`History"' ist im Originaldokument nicht vorhanden
-    und wurde von Werner Koch beigefügt.}
+  \verb-http://www.gnupp.de/pdf/einsteiger.pdf-.
+%    Der Abschnitt "`History"' ist im Originaldokument nicht vorhanden
+%    und wurde von Werner Koch beigefügt.
 \item Revidierte nicht-veröffentlichte Version von TextLab text+media.      
 \item "`Gpg4Win für Einsteiger"', Dezember 2005\\
       Autoren:  Werner Koch, g10 Code GmbH\\
@@ -1317,9 +1307,10 @@ sondern
 
 \end{itemize}
 
-\T\selectlanguage{USenglish}
+\T\selectlanguage{english}
 \input{fdl.tex}
 
 \end{document}
+
 
 

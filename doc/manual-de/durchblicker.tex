@@ -1,4 +1,7 @@
+% durchblicker.tex                
+% Note, that this a HyperLaTeX source and not plain LaTeX!
 \documentclass[a4paper,11pt,twoside,titlepage,dvips]{scrartcl}
+\usepackage{hyperlatex}
 \usepackage{a4wide}
 \usepackage[latin1]{inputenc}
 %\usepackage[T1]{fontenc}
@@ -7,14 +10,20 @@
 \usepackage{alltt}
 \usepackage{moreverb}
 \usepackage{fancyhdr}
+\W\usepackage{rhxpanel}
+\W\usepackage{sequential}
 
 
-\DeclareGraphicsExtensions{.eps.gz,.eps}
+\T\DeclareGraphicsExtensions{.eps.gz,.eps}
 
-\fancyhead{} % clear all fields
-\fancyhead[LO]{Gpg4win für Durchblicker}
-\fancyhead[RO,LE]{\thepage}
-\fancyfoot[C]{\includegraphics[width=1cm]{gpg4win-logo}}
+\T\fancyhead{} % clear all fields
+\T\fancyhead[LO]{Gpg4win für Durchblicker}
+\T\fancyhead[RO,LE]{\thepage}
+\T\fancyfoot[C]{\includegraphics[width=1cm]{gpg4win-logo}}
+
+
+\W\htmlpanelgerman
+
 
 % Hyperref should be among the last packages loaded
 \usepackage{hyperref}
@@ -22,23 +31,35 @@
 % Macros specific to this package
 \input{macros.tex}
 
-\begin{document}
-\thispagestyle{empty}
-\pagestyle{fancy}
-\parindent0cm
-\parskip\medskipamount
+\W\NotSpecial{\do\&}
+\W\newcommand{\bmod}{mod}
 
+
+% Title stuff 
+\htmltitle{Gpg4win für Durchblicker}
+%\htmladdress{Gpg4win Project, \today}
 \title{
-\includegraphics[width=8cm]{gpg4win-logo}
+\IncludeImage[width=8cm]{gpg4win-logo}
 \\
 Gpg4win für Durchblicker}
 \author{Eine Veröffentlichung des Gpg4Win Projekts\\
-  \small Basierend auf einem Original von \\
-  \small Manfred J. Heinze, Karl Bihlmeier, Isabel Kramer\\
-  \small Dr. Francis Wray und Ute Bahn\\ \ \\
-  Überarbeitet von\\
+  \small Basierend auf einem Original von 
+\T\\
+  \small Manfred J. Heinze, Karl Bihlmeier, Isabel Kramer
+\T\\
+  \small Dr. Francis Wray und Ute Bahn
+\T\\ \ 
+ \\
+  Überarbeitet von
+\T\\
   \small Werner Koch}
 \date{Version 2.0.0.RC1 vom 13. Februar 2006}
+
+\begin{document}
+\thispagestyle{empty}
+\pagestyle{fancy}
+\T\parindent0cm
+\T\parskip\medskipamount
 
 \maketitle
 
@@ -59,10 +80,12 @@ entitled "`GNU Free Documentation License"'.
 \vfill
 
 \begin{center}
-\fbox{\parbox{.7\textwidth}{Die Angaben auf der \textbf{folgenden Seite}
+\T\fbox{\parbox{.7\textwidth}{%
+    Die Angaben auf der \textbf{folgenden Seite}
     sind nicht mehr korrekt; wir können diese Seite allerdings nicht
     abändern, da die Regeln der GFDL hier falsch angewandt wurden.
-    Neue Copyright Hinweise sollten deswegen hier eingestellt werden.}}
+    Neue Copyright Hinweise sollten deswegen hier eingestellt werden.
+\T}}
 \end{center}
 
 \clearpage
@@ -122,7 +145,7 @@ Verschlüsselung nunmehr für jedermann frei und kostenlos
 zugänglich\ldots
 
 \begin{center}
-\includegraphics[width=0.9\textwidth]{egyptian-stone}
+\IncludeImage[width=0.9\textwidth]{egyptian-stone}
 \end{center}
 
 Die Computertechnik hat uns phantastische Mittel in die Hand gegeben,
@@ -161,13 +184,15 @@ protokollieren. Das wäre einfach nicht machbar gewesen, oder es hätte
 zu lange gedauert. Mit der modernen Computertechnik ist das technisch
 möglich. Es gibt mehr als einen Hinweis darauf, daß dies genau heute
 schon im großen Stil mit Ihrer und meiner \Email{}
-geschieht.\footnote{Hier sei nur an das Echelon Projekt erinnert;
-  siehe \href{http://www.heise.de/tp/r4/artikel/6/6928/1.html}{http://www.heise.de/tp/r4/artikel/6/6928/1.html}}
+geschieht.\footnote{Hier sei nur an das \xlink{Echelon
+    System}{\EchelonUrl} erinnert%
+\T; siehe \href{\EchelonUrl}{\EchelonUrl}%
+.}.
 
 Denn: der Umschlag fehlt.
 
 \begin{center}
-\includegraphics[width=0.3\textwidth]{sealed-envelope}
+\IncludeImage[width=0.3\textwidth]{sealed-envelope}
 \end{center}
 
 \clearpage
@@ -230,7 +255,7 @@ ein --- mit einem Schlüssel. Noch besser mit einem Schlüssel, den es
 nur einmal gibt und den man ganz sicher aufbewahrt.
 
 \begin{center}
-\includegraphics[width=0.4\textwidth]{schlapphut-with-key}
+\IncludeImage[width=0.4\textwidth]{schlapphut-with-key}
 \end{center}
 
 Denn wenn dieser Schlüssel in die falschen Hände fällt, ist es um die
@@ -249,7 +274,7 @@ geheimhielt.  Dies wirklich sicher zu machen ist sehr umständlich und
 dazu auch sehr fehleranfällig.
 
 \begin{center}
-\includegraphics[width=0.4\textwidth]{tangled-schlapphut}
+\IncludeImage[width=0.4\textwidth]{tangled-schlapphut}
 \end{center}
 
 Das Grundproblem bei der "`normalen"' geheimen Nachrichtenübermittlung
@@ -296,7 +321,7 @@ funktioniert.
 % Source"' and ``gratis"' - need to replace with something better.
 % What about ``Artikel 10"' and ``von GnuPG erzeugt"'?
 \begin{center}
-\includegraphics[width=0.4\textwidth]{verleihnix}
+\IncludeImage[width=0.4\textwidth]{verleihnix}
 \end{center}
 
 
@@ -317,7 +342,7 @@ Beide Schlüsselteile haben ganz und gar unterschiedliche Aufgaben:
 der geheime Schlüsselteil \textbf{entschlüsselt} Nachrichten
 
 \begin{center}
-\includegraphics[width=0.9\textwidth]{key-with-shadow-bit}
+\IncludeImage[width=0.9\textwidth]{key-with-shadow-bit}
 \end{center}
 
 der öffentliche Schlüsselteil \textbf{verschlüsselt}.
@@ -343,7 +368,7 @@ etwas hineinlegen oder herausnehmen. Damit sind Ihre geheimen
 Nachrichten zunächst einmal gut gesichert.
 
 \begin{center}
-\includegraphics[width=0.9\textwidth]{letter-into-safe}
+\IncludeImage[width=0.9\textwidth]{letter-into-safe}
 \end{center}
 
 Da es nur einen Schlüssel gibt, muß Ihr Korrespondenzpartner denselben
@@ -357,7 +382,7 @@ Diesen Schlüssel müssen Sie Ihrem Korrespondenzpartner auf geheimem
 Wege übergeben.
 
 \begin{center}
-\includegraphics[width=0.9\textwidth]{secret-key-exchange}
+\IncludeImage[width=0.9\textwidth]{secret-key-exchange}
 \end{center}
 
 \clearpage
@@ -382,7 +407,7 @@ könnten.
 Vergessen wir diese Möglichkeit am besten sofort wieder\ldots
 
 \begin{center}
-\includegraphics[width=0.9\textwidth]{letter-out-of-safe}
+\IncludeImage[width=0.9\textwidth]{letter-out-of-safe}
 \end{center}
 
 \clearpage
@@ -397,7 +422,7 @@ dieser Briefkasten ist ­-- ganz im Gegensatz zu dem ersten Beispiel
 \textbf{Zuschließen, aber nicht aufschließen:} das ist der Trick.
 
 \begin{center}
-\includegraphics[width=0.9\textwidth]{pk-safe-open}
+\IncludeImage[width=0.9\textwidth]{pk-safe-open}
 \end{center}
 
 Dieser Schlüssel gehört Ihnen, und --- Sie ahnen es: es ist Ihr
@@ -443,7 +468,7 @@ Empfänger kann den Briefkasten mit seinem privaten Schlüssel öffnen
 und die Nachricht lesen.
 
 \begin{center}
-\includegraphics[width=0.9\textwidth]{pk-safe-opened-with-sk}
+\IncludeImage[width=0.9\textwidth]{pk-safe-opened-with-sk}
 \end{center}
 
 
@@ -520,7 +545,7 @@ merkenden und nur sehr schwer zu erratenden Passwort-Satz ausdenken
 kann.
 
 \begin{center}
-\includegraphics[width=0.9\textwidth]{think-passphrase}
+\IncludeImage[width=0.9\textwidth]{think-passphrase}
 \end{center}
 
 
@@ -729,7 +754,7 @@ haben Sie einen globalen Schlüssel!  Die Schlüsselserver sind
 dezentral organisiert, aktuelle Statistiken über ihre Zahl oder die
 Anzahl der dort liegenden Schlüssel gibt es nicht.
 
-\includegraphics[width=0.9\textwidth]{keyserver-world}
+\IncludeImage[width=0.9\textwidth]{keyserver-world}
 
 Dieses verteilte Netz von Keyservern sorgt für eine bessere
 Verfügbarkeit und verhindert daß einzelne Systemandministratoren
@@ -934,7 +959,7 @@ im unteren Teil des Fensters u.a. den Fingerprint:
 
 % screenshot:  GPA key listing with fingerprint
 \begin{center}
-\includegraphics[width=0.9\textwidth]{sc-gpa-two-keys}
+\IncludeImage[width=0.9\textwidth]{sc-gpa-two-keys}
 \end{center}
 
 Der Fingerprint von Adeles Schlüssel ist also:
@@ -1001,7 +1026,7 @@ des Vertrauens"', bei dem Sie nicht mehr zwangsläufig darauf
 angewiesen sind, einen Schlüssel direkt zu prüfen.
 
 \begin{center}
-\includegraphics[width=0.9\textwidth]{key-with-sigs}
+\IncludeImage[width=0.9\textwidth]{key-with-sigs}
 \end{center}
 
 Natürlich steigt das Vertrauen in die Gültigkeit eines Schlüssels,
@@ -1071,17 +1096,18 @@ Bundesrepublik entsprechen.
 
 Wenn Sie sich weiter für dieses Thema interessieren (das zum Zeitpunkt
 der Arbeit an dieser Gpg4win-Ausgabe gerade in Bewegung ist), dann
-können Sie sich an der Quelle informieren: die Website "`Sicherheit im
-Internet"' des Bundesministeriums für Wirtschaft und Technologie
-(\href{http://www.sicherheit-im-internet.de}%
-{www.sicherheit-im-internet.de}) hält Sie über dieses und viele andere
+können Sie sich an der Quelle informieren: die Website "`\xlink{Sicherheit im
+Internet}{http://www.sicherheit-im-internet.de}"' des Bundesministeriums für Wirtschaft und Technologie
+\T(\href{http://www.sicherheit-im-internet.de}{www.sicherheit-im-internet.de})
+hält Sie über dieses und viele andere
 Themen aktuell auf dem Laufenden.
 
 Eine weitere exzellente, mehr technische Informationsquelle zum Thema
-der Beglaubigungsinfrastrukturen bietet das Original GnuPG Handbuch,
+der Beglaubigungsinfrastrukturen bietet das 
+\xlink{Original GnuPG Handbuch}{http://www.gnupg.org/gph/de/manual},
 das Sie ebenfalls im Internet finden
-(\href{http://www.gnupg.org/gph/de/manual}%
-{www.gnupg.org/gph/de/manual}).
+\T(\href{http://www.gnupg.org/gph/de/manual}{www.gnupg.org/gph/de/manual})%
+.
 
 %%% .. bis hier FIXME
 
@@ -1161,7 +1187,7 @@ einfügen (Im WindowsMenü "`Einfügen"' oder einfach Strg+V).
 
 % screenshot: WinPT signing - enter passphrase
 \begin{center}
-\includegraphics{sc-winpt-sign-passwd}
+\IncludeImage{sc-winpt-sign-passwd}
 \end{center}
 
 \clearpage
@@ -1251,14 +1277,14 @@ Maustaste:
 
 % screenshot GPGee contextmenu
 \begin{center}
-\includegraphics{sc-gpgee-ctxmenu}
+\IncludeImage{sc-gpgee-ctxmenu}
 \end{center}
 
 Dort wählen Sie \Menu{signieren} aus, woraufhin das folgende Fenster
 erscheint:
 
 \begin{center}
-\includegraphics{sc-gpgee-signmenu}
+\IncludeImage{sc-gpgee-signmenu}
 \end{center}
 
 Sie sehen in der Mitte eine Möglichkeit den Signaturschlüssel
@@ -1461,7 +1487,7 @@ Sie dann den Menüpunkt \Menu{Schlüssel$\rightarrow$Sicherheitskopie anlegen}.
 
 % screenshot: GPA, Backup erzeugen
 \begin{center}
-\includegraphics[width=0.6\textwidth]{sc-gpa-gen-backup}
+\IncludeImage[width=0.6\textwidth]{sc-gpa-gen-backup}
 \end{center}
 
 Bestätigen Sie den Dateinamen oder wählen Sie einen anderen und GPA
@@ -1471,7 +1497,7 @@ diese Datei sehr sorgfältig zu handhaben ist:
 
 % screenshot: GPA, Backup Hinweis
 \begin{center}
-\includegraphics[width=0.6\textwidth]{sc-gpa-gen-backup-warn}
+\IncludeImage[width=0.6\textwidth]{sc-gpa-gen-backup-warn}
 \end{center}
 
 
@@ -1599,7 +1625,7 @@ Kongruenzrechnung genannt --- funktioniert, kann man sich gut
 klarmachen, wenn man sich das Zifferblattes einer Uhr vorstellt:
 
 \begin{center}
-\includegraphics[width=0.25\textwidth]{clock-face}
+\IncludeImage[width=0.25\textwidth]{clock-face}
 \end{center}
 
 Diese Uhr ist ein Beispiel für das Rechnen mit modulo 12 (der Teiler
@@ -1835,7 +1861,7 @@ In der linken Spalte stehen die 10er-Stellen, in der oberen Zeile die
 
 % FIXME: Replace the table by a LaTeX table and use realistc examples
 % e.g. from the HAC.
-\includegraphics[width=0.9\textwidth]{table-1}
+\IncludeImage[width=0.9\textwidth]{table-1}
 
 \clearpage
 %% Original page 60
@@ -1852,7 +1878,7 @@ ergibt. Das andere Beispiel: die Zahl $47 \bmod 77$ wird zur Zahl $75
 
 Tabelle 2 zeigt die genaue Zuordnung der 77 Zahlen zwischen 0 und 76.
 
-\includegraphics[width=0.9\textwidth]{table-2}
+\IncludeImage[width=0.9\textwidth]{table-2}
 %\caption{Tabelle 2: Zahlentransformation modulo77, unter Verwendung
 %des geheimen Schlüssels 37}
 
@@ -1910,7 +1936,7 @@ knacken. Der scharfsinnige Leser wird auch bemerkt haben, dass etliche
 Zahlen, zum Beispiel die Zahl 11 und ihr Vielfaches (also 22, 33 etc.)
 und die benachbarten Zahlen sich in sich selbst umwandeln.
 
-\includegraphics[width=0.9\textwidth]{table-3}
+\IncludeImage[width=0.9\textwidth]{table-3}
 
 \clearpage
 
@@ -1982,7 +2008,7 @@ weiter.
 %% Original page 65
 
 \begin{center}
-\includegraphics[width=0.4\textwidth]{mileage-indicator}
+\IncludeImage[width=0.4\textwidth]{mileage-indicator}
 \end{center}
 
 Das rechte Rad zählt die einzelnen Kilometer. Wenn es eine 8
@@ -2193,11 +2219,11 @@ Zur Basis 10 wird diese Nachricht durch die Zahlenfolge 4, 35,
 8 dargestellt. Warum? Nehmen wir zum Beispiel das mittlere
 Stück $203_4$:
 
-\begin{eqnarray*}
+\T\begin{eqnarray*}
  3 * 4^0, & ~\mbox{also}~ 3 * 1, & ~\mbox{also}~ 3 \\
  0 * 4^1, & ~\mbox{also}~ 0 * 4, & ~\mbox{also}~ 0 \\
  2 * 4^2, & ~\mbox{also}~ 2 * 16, & ~\mbox{also}~ 32
-\end{eqnarray*}
+\T\end{eqnarray*}
 
 3. Jetzt können wir zur Verschlüsselung die Tabelle 1 benutzen, die ja
 zur Basis 10 berechnet wurde. Diese Tabelle benutzen wir, weil wir mit
@@ -2207,7 +2233,7 @@ kodierte Nachricht zur Basis 10.
 Zum Verschlüsseln der Nachricht nehmen wir jetzt Tabelle 1 zur Hilfe.
 Die Nachricht wird nun zu der Zahlenfolge 53, 63, 50 (zur Basis 10).
 
-\includegraphics[width=0.9\textwidth]{table-1}
+\IncludeImage[width=0.9\textwidth]{table-1}
 
 
 %% Original page 72
@@ -2271,9 +2297,9 @@ daß er dann keine Lust mehr haben kann sie auch noch zu lesen\ldots
   Herausgegeben vom Bundesministerium für Wirtschaft und
   Technologie.\\
   Verfügbar unter
-  \verb-http://www.gnupp.de/pdf/durchblicker.pdf-\footnote{%
-    Der Abschnitt "`History"' ist im Originaldokument nicht vorhanden
-    und wurde von Werner Koch beigefügt.}
+  \verb-http://www.gnupp.de/pdf/durchblicker.pdf-.
+%    Der Abschnitt "`History"' ist im Originaldokument nicht vorhanden
+%    und wurde von Werner Koch beigefügt.
 \item Revidierte nicht-veröffentlichte Version von TextLab text+media.      
 \item "`Gpg4Win für Durchblicker"', Dezember 2005\\
       Autoren:  Werner Koch, g10 Code GmbH\\
@@ -2282,7 +2308,7 @@ daß er dann keine Lust mehr haben kann sie auch noch zu lesen\ldots
 \end{itemize}
 
 
-\selectlanguage{USenglish}
+\T\selectlanguage{english}
 \input{fdl.tex}
 
 \end{document}

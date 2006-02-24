@@ -43,13 +43,23 @@ at least the following packages need to be installed:
  imagemagick
  tetex-bin
  gs-common
+ hyperlatex
+
+
+Building the Webpages
+=====================
+
+This has not been automated.  See the README file in the doc/website
+directory.  To build the HTML version of the manuals you need to go to
+doc/manual-de, run the command "make webversion" and copy the require
+files to the desired location.
 
 
 Adding new packages to the installer:
 =====================================
 
 This requires editing a couple of files; we might eventually automate
-some of tehse tasks.  Here is a short run up:
+some of these tasks.  Here is a short run up:
 
 1. Add constants for the package FOO into include/config.nsi.in .
 
