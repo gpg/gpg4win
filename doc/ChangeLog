@@ -1,5 +1,13 @@
 2006-02-28  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
 
+	* manual-de/einsteiger.html.patch: Added link to homepage.
+
+	* manual-de/durchblicker.html.patch: Added link to homepage.
+
+	* manual-de/was-ist-gpg4win.tex: Improved a sentence.
+
+2006-02-28  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
+
 	* manual-de/einsteiger.html.patch: New. Adds a link for PDF Download.
 
 	* manual-de/durchblicker.html.patch: New. Adds a link for PDF Download.
