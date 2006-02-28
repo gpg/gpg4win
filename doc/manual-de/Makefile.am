@@ -17,6 +17,8 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
+USER=$(shell grep "svn+ssh://" .svn/entries | sed -e "s/.*svn+ssh:\/\///g" | sed -e "s/@.*//g")
+
 png_files := \
 	sc-winpt-sign-passwd.png \
         sc-gpgee-ctxmenu.png sc-gpgee-signmenu.png \
@@ -78,6 +80,13 @@ durchblicker.pdf : $(eps_files_bb) $(png_files_eps) $(eps_files_png)
 
 
 webversion: einsteiger.html durchblicker.html
+
+online: webversion
+	echo "Going to put current manuals online for www.gpg4win.org ..."
+	patch < einsteiger.html.patch
+	patch < durchblicker.html.patch
+	rsync -urvP --exclude='.svn' einsteiger*.html durchblicker*.html $(web_png_files) \
+	  $(USER)@wald.intevation.org:/gpg4win/htdocs/handbuecher/
 
 
 %.eps.bb : %.eps.gz
