@@ -1,3 +1,7 @@
+2006-02-28  Marcus Brinkmann  <marcus@g10code.de>
+
+	* src/inst-atk.nsi: Fix outpath of library.
+
 2006-02-23  Marcus Brinkmann  <marcus@g10code.de>
 
 	* src/inst-glib.nsi: Add glib20.mo.
