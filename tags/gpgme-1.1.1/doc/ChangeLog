@@ -1,0 +1,129 @@
+2006-02-28  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
+
+	* manual-de/einsteiger.html.patch: Added link to homepage.
+
+	* manual-de/durchblicker.html.patch: Added link to homepage.
+
+	* manual-de/was-ist-gpg4win.tex: Improved a sentence.
+
+2006-02-28  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
+
+	* manual-de/einsteiger.html.patch: New. Adds a link for PDF Download.
+
+	* manual-de/durchblicker.html.patch: New. Adds a link for PDF Download.
+
+	* manual-de/Makefile.am: Added target "online" for snycing manuals
+	to www.gpg4win.org
+
+2006-02-24  Werner Koch  <wk@g10code.com>
+
+	* manual-de/durchblicker.tex: Converted to hyperlatex. Images need
+	to be tweaked for web publishing.
+
+2006-02-23  Werner Koch  <wk@g10code.com>
+
+	* manual-de/einsteiger.tex: Converted to a Hyperlatex document.
+
+2006-02-22  Werner Koch  <wk@g10code.com>
+
+	* manual-de/macros.tex: Made Email configurable.
+	* manual-de/einsteiger.tex: Use new Email command.
+	* manual-de/durchblicker.tex: Ditto.
+
+2006-02-15  Werner Koch  <wk@gnupg.org>
+
+	* pkg-copyright.txt: New.
+
+2006-02-12  Werner Koch  <wk@g10code.com>
+
+	* manual-de/durchblicker.tex: Finished first rework.
+
+2006-01-27  Werner Koch  <wk@g10code.com>
+
+	* manual-de/was-ist-gpg4win.tex: New. Common introduction to both
+	manuals.
+	* manual-de/durchblicker.tex (section{Was ist Gpg4win}): Include it.
+	* manual-de/einsteiger.tex (section{Was ist Gpg4win?}): Include it. 
+
+2006-01-23  Werner Koch  <wk@g10code.com>
+
+	* README.de.txt, README.en.txt: New.
+
+2006-01-20  Werner Koch  <wk@g10code.com>
+
+	* Makefile.am (SUBDIRS): Add logo.
+
+	* logo/Makefile.am: New.
+
+	* logo/gpg4win-logo-icon.ico: new. Created from the favicon.
+	* logo/gpg4win-logo-400px.bmp: New.  Created from the PNG.
+
+	* manual-de/einsteiger.tex: Minor cleanups.  Do not include
+	version.tex anymore but hardcode the macro at the top of the file.
+
+2006-01-20  Jan-Oliver Wagner  <jan@intevation.de>
+
+	* manual-de/gpg4win-logo.eps: New.
+	* manual-de/einsteiger.tex: Reworked.
+
+2006-01-20  Jan-Oliver Wagner  <jan@intevation.de>
+
+	* logo/: New.
+	* logo/gpg4win-logo.eps: New.
+	* logo/gpg4win-logo-400px.png: New.
+	* logo/gpg4win-logo-favicon.bmp: New.
+
+2006-01-17  Werner Koch  <wk@g10code.com>
+
+	* manual-de/einsteiger.tex: Finished updated.
+
+2006-01-10  Werner Koch  <wk@g10code.com>
+
+	* manual-de/version.tex.in: New.
+
+2006-01-05  Werner Koch  <wk@g10code.com>
+
+	* manual-de/Makefile.am: Tweaked for VPATH builds.
+
+2005-12-13  Werner Koch  <wk@g10code.com>
+
+	* manual-de/durchblicker.tex: Minor updates and edits, removed
+	stuff we won't include.
+	* manual-de/einsteiger.tex: Ditto
+
+2005-12-12  Werner Koch  <wk@g10code.com>
+
+	* manual-de/durchblicker.tex: Finished raw conversion.
+
+	* manual-de/durchblicker.tex: New. Not yet ready. Also added more
+	graphics.
+
+	* manual-de/Makefile.am: Include some graphics and rules to build
+	the bounding box files.
+
+2005-12-09  Werner Koch  <wk@g10code.com>
+
+	* manual-de: New.
+	* manual-de/Makefile.am: New.
+	* manual-de/einsteiger.tex: New.
+	* manual-de/fdl.tex:  New. Slighly adjusted form the orginal
+	www.gnupg.org/licenses/fdl.tex to remove the section names from
+	our TOC and to use ``...'' instead of "..."
+
+	* website/Makefile.am: New.
+
+	* Makefile.am: New.
+
+2005-12-09  Jan-Oliver Wagner  <jan@intevation.de>
+
+	* website/index.html: winpt-the-project replaced by its full name.
+	* website/index.de.html: winpt-the-project replaced by its full name.
+
+2005-12-08  Jan-Oliver Wagner  <jan@intevation.de>
+
+	* website/: New.
+	* website/index.html: New.
+	* website/index.de.html: New.
+
+	
+

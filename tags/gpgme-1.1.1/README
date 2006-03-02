@@ -1,0 +1,120 @@
+This is gpg4win - the GUI Installer Builder for W32.
+
+
+Instructions:
+=============
+
+1. Download the source and binary packages that are required to build
+   the installer:
+
+   $ cd packages
+   $ sh download.sh
+   [...]
+   $ cd ..
+
+2. Configure the source tree for cross compilation:
+
+   $ configure --host=i586-mingw32msvc
+
+3. Build the installer:
+
+   $ make
+
+The installer will be made available in two files:
+
+src/gpg4win-X.Y.Z.exe
+src/gpg4win-src-X.Y.Z.exe
+
+
+Basic requirements
+==================
+
+A decent POSIX system is required for building this software as well
+as GNU make.  We are using Debian GNU/Linux (Sid), however it should
+work with current Testing (as of Februar 2006) too.  It might work with
+Sarge - this has not been tested.  To satisfy all needs of configure
+at least the following packages need to be installed:
+
+ mingw32
+ nsis
+ stow
+ unzip
+ texinfo
+ imagemagick
+ tetex-bin
+ gs-common
+ hyperlatex
+
+
+Building the Webpages
+=====================
+
+This has not been automated.  See the README file in the doc/website
+directory.  To build the HTML version of the manuals you need to go to
+doc/manual-de, run the command "make webversion" and copy the require
+files to the desired location.
+
+
+Adding new packages to the installer:
+=====================================
+
+This requires editing a couple of files; we might eventually automate
+some of these tasks.  Here is a short run up:
+
+1. Add constants for the package FOO into include/config.nsi.in .
+
+2. Create 2 new installer scripts, named src/inst-foo.nsi and
+   uninst-foo.nsi .
+
+3. Add foo to one the variables gpg4win_bpgks (if foo should not be
+   build be the gpg4win) or gpg4win_spkgs (if foo should be build by
+   gpg4win) in src/Makefile.am
+
+4. Add FOO to inst-sections.nsi.
+
+5. Add detection of packages to configure.ac.  Check out the available
+   macros in m4/gpg4win.m4.  Depending on the way an upstream package
+   is packaged, you might need to write a new macro.
+
+6. Add download information to packages/download.sh.
+
+Then run the usual "./autogen.sh" to create the actual configure file
+and run configure as described above.
+
+
+Copyright
+=========
+
+The entire GPG4Win package is
+
+  Copyright (C) 2005, 2006 g10 Code GmbH
+  
+  GPG4Win is free software; you can redistribute it and/or modify it
+  under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
+  
+  GPG4Win is distributed in the hope that it will be useful, but
+  WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+  General Public License for more details.
+  
+  You should have received a copy of the GNU General Public License
+  along with this program; if not, write to the Free Software
+  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+  02110-1301, USA
+
+
+This file
+=========
+
+Copyright 2005, 2006 g10 Code GmbH
+
+This file is free software; as a special exception the author gives
+unlimited permission to copy and/or distribute it, with or without
+modifications, as long as this notice is preserved.
+
+This file is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
+implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+PURPOSE.
