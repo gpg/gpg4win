@@ -1,0 +1,16 @@
+--- einsteiger.html	2006-02-28 10:58:56.000000000 +0100
++++ einsteiger.html.web	2006-02-28 10:58:40.000000000 +0100
+@@ -23,6 +23,13 @@
+ <h1 class="maketitle">
+ <img alt="" src="gpg4win-logo.png"/>
+ <br />Gpg4win f&uuml;r Einsteiger</h1>
++
++<b>
++<a href="http://wald.intevation.org/frs/?group_id=11">Hier Downloadübersicht
++   zur PDF-Version</a><br>
++<a href="http://www.gpg4win.de/">Zur gpg4win Homepage</a>
++</b>
++
+ <h2 class="maketitle">Eine Ver&ouml;ffentlichung des Gpg4Win Projekts<br /><font size="-1">Basierend auf einem Original von 
+ <font size="-1">Manfred J. Heinze, Karl Bihlmeier, Isabel Kramer
+ <font size="-1">Dr. Francis Wray und Ute Bahn
