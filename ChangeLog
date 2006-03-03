@@ -1,5 +1,9 @@
 2006-03-03  Marcus Brinkmann  <marcus@g10code.de>
 
+	* patches/gpa-0.7.2/01-bin-open.patch: Rename to ...
+	* patches/gpa-0.7.2/01-keyserver-list.patch: ... this.  Remove
+	binary open patch.
+
 	* packages/packages.current: Use GPA 0.7.2.
 
 	* packages/packages.current: Use libgpg-error 1.2 and GPGME 1.2.
