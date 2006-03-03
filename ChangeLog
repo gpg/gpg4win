@@ -1,5 +1,10 @@
 2006-03-03  Marcus Brinkmann  <marcus@g10code.de>
 
+	* Makefile.am (EXTRA_DIST): Change
+	patches/gpa-0.7.2/01-bin-open.patch to
+	patches/gpa-0.7.2/01-keyserver-list.patch.
+	* packages/packages.current: Use the right GPA 0.7.2.
+
 	* patches/gpa-0.7.2/01-bin-open.patch: Rename to ...
 	* patches/gpa-0.7.2/01-keyserver-list.patch: ... this.  Remove
 	binary open patch.
