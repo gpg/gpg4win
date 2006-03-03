@@ -32,4 +32,4 @@ EXTRA_DIST = autogen.sh README.SVN \
         patches/glib-2.9.2-wk1/02-gspawn-w32.patch \
 	patches/sylpheed-claws-1.9.100cvs124/01-fix-plugin-dir.patch \
 	patches/sylpheed-claws-1.9.100cvs124/02-std-plugins.patch \
-        patches/gpa-0.7.2/01-bin-open.patch
+        patches/gpa-0.7.2/01-keyserver-list.patch
