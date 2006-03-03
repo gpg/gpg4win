@@ -163,8 +163,8 @@ server ftp://ftp.gnupg.org/gcrypt
 file alpha/gnupg/gnupg-1.4.3rc1.tar.bz2
 chk  6c2d5f65c2acde6eaeb1ae3a4bc9ae971f942126
 
-file alpha/gpa/gpa-0.7.1.tar.bz2
-chk  db850a43e69c6677765cbaf95718b930fe439612
+file alpha/gpa/gpa-0.7.2.tar.bz2
+chk  f3c0c400cc5b01b69b36704fdbe26f26abc8531b  
 
 file libgpg-error/libgpg-error-1.2.tar.bz2
 chk  468657e5bccd534f350b1a0109e19d2a9cc5d027
