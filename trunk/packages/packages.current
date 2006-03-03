@@ -149,8 +149,6 @@ file GPGee-1.3.0-source.zip
 chk  fa398ea4ca857f11d6c60cbb69b29c6c27bd379c  
 
 
-
-
 # GPGol
 server ftp://ftp.g10code.com/g10code/gpgol
 
@@ -168,16 +166,16 @@ chk  6c2d5f65c2acde6eaeb1ae3a4bc9ae971f942126
 file alpha/gpa/gpa-0.7.1.tar.bz2
 chk  db850a43e69c6677765cbaf95718b930fe439612
 
-# libgpg-error and gpgme currently come from manually crafted
-# packages.  However, we make them available at a scratch location
+file libgpg-error/libgpg-error-1.2.tar.bz2
+chk  468657e5bccd534f350b1a0109e19d2a9cc5d027
+
+file gpgme/gpgme-1.1.2.tar.bz2
+chk  ebf8c278e967588acd7c416bd14bfe35615b7e81
+
+# A couple of packages currently come from manually crafted packages.
+# However, we make them available at a scratch location
 
 server ftp://ftp.g10code.com/g10code/scratch
-
-file libgpg-error-1.2-cvs.tar.bz2
-chk  ad964f78de99c7493dc47f49b0071f34d7d5e53d
-
-file gpgme-1.1.1-cvs1152.tar.bz2
-chk  6eb8f6245fda45daeefce667d63aba412c730c2b 
 
 file sylpheed-claws-1.9.100cvs124.tar.bz2
 chk  950c7795f7348a919910d8e6bb5222565a114328  
@@ -188,5 +186,3 @@ file man_advanced_de-0.0.0-cvs.tar.gz
 chk  b4a8b05b181f20c5ba9d937b6347095905323318
 file eudoragpg-0.0.0-cvs.tar.gz
 chk  79e3a24e4baa19f23e955b1a4b1c41b8083345b7
-
-
