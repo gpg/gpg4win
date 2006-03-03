@@ -1,5 +1,7 @@
 2006-03-03  Marcus Brinkmann  <marcus@g10code.de>
 
+	* packages/packages.current: Use GPA 0.7.2.
+
 	* packages/packages.current: Use libgpg-error 1.2 and GPGME 1.2.
 
 2006-02-28  Marcus Brinkmann  <marcus@g10code.de>
