@@ -30,13 +30,19 @@
 
 
 % Title stuff 
-\htmltitle{Gpg4win für Einsteiger}
+\htmltitle{Einsteiger}
 %\htmladdress{Gpg4win Project, \today}
 \title{
 \IncludeImage[width=8cm]{gpg4win-logo}
 \\
 Gpg4win für Einsteiger}
-\author{Eine Veröffentlichung des Gpg4Win Projekts\\
+
+\author{\htmlonly{\xml{p}\small
+Zu \xlink{Gpg4win für Durchblicker}{durchblicker.html}\xml{br}
+Zur \xlink{gpg4win Homepage}{http://www.gpg4win.de/}\xml{br}
+Hier \xlink{Downloadübersicht zur PDF Version}{http://wald.intevation.org/frs/?group_id=11}\xml{p}
+}%
+Eine Veröffentlichung des Gpg4Win Projekts\\
   \small Basierend auf einem Original von 
 \T\\
   \small Manfred J. Heinze, Karl Bihlmeier, Isabel Kramer
@@ -63,8 +69,8 @@ Gpg4win für Einsteiger}
 \section*{Impressum gpg4win}
 
 \noindent
-\copyright{} 2002 Bundesministerium für Wirtschaft und Technologie\\
-\copyright{} 2005 g10 Code GmbH\\
+Copyright \copyright{} 2002 Bundesministerium für Wirtschaft und Technologie\\
+Copyright \copyright{} 2005 g10 Code GmbH\\
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.2 or
 any later version published by the Free Software Foundation; with
@@ -72,6 +78,8 @@ the Invariant Sections being "`Impressum"', no Front-Cover Texts, and
 no Back-Cover Texts.  A copy of the license is included in the section
 entitled "`GNU Free Documentation License"'.
 
+\htmlonly{Die aktuelle PDF Version dieses Dokuments finden sie unter
+\xlink{\EinsteigerPDFURL}{\EinsteigerPDFURL}.}
 
 \vfill
 
@@ -225,7 +233,7 @@ und klicken Sie dann auf \Button{Weiter}.
 \clearpage
 %% Orginal page 10
 
-Auf der Seite mit dem Lizenabkommen, können Sie Informationen zu den
+Auf der Seite mit dem Lizenzabkommen, können Sie Informationen zu den
 Lizenzen dieser Software lesen. 
 
 Wenn Sie die Software lediglich installieren und einsetzen wollen, so
@@ -236,7 +244,7 @@ Geben Sie allerdings diese Software weiter oder wollen Sie sie
 verändern, so müßen Sie sich mit den Bedingungen der Lizenzen vertraut
 machen.  
 
-% sreenshot Lizenzseite des Installers
+% Screenshot Lizenzseite des Installers
 \begin{center}
 \IncludeImage{sc-inst-license}
 \end{center}
@@ -321,14 +329,8 @@ Die letzte Seite des Installationsvorgangs wird nun angezeigt:
 
 % Screenshot: Finish page Installer
 \begin{center}
-\IncludeImage{sc-inst-finished}
+\IncludeImage{sc-inst-finished} 
 \end{center}
-
-Durch ankreuzen von "`Die Schlüsselverwaltung aufrufen"' wird diese
-direkt danach noch aufgerufen.  Gpg4win hat 2 Schlüsselverwaltungen:
-Wurde GPA installiert, so wird diese aufgerufen werden (dies ist der
-Normallfall und im Weiteren beschrieben); wurde GPA nicht installiert so
-wird versucht WinPT aufzurufen.
 
 Klicken Sie auf \Button{Fertig stellen}.
 
@@ -375,7 +377,8 @@ Weiter geben wir Ihnen einige Tipps, mit denen Sie sich einen sicheren
 und trotzdem leicht zu merkenden Passwortsatz ausdenken können.
 
 \textbf{
-\OtherBook{} Lesen Sie jetzt im Handbuch "`Gpg4win für Durchblicker"'
+\OtherBook{} Lesen Sie jetzt im Handbuch 
+"`\xlink{Gpg4win für Durchblicker}{durchblicker.html}"'
              die Kapitel 3 und 4, und lesen Sie bitte erst danach hier weiter.
 }
 
@@ -564,12 +567,10 @@ kann die Gültigkeit nachträglich verändern ­-- dazu später mehr.
 Ein Schlüssel mit einer Länge von 1024 Bit ist ein sicherer Schlüssel,
 der trotzdem nicht zuviel Rechenkraft auf Ihrem Computer beansprucht.
 
-\textbf{
-\OtherBook{} Lesen Sie nun im Handbuch "`Gpg4win für Durchblicker"'
-Kapitel 5 "`Schlüssel im
-Detail"' weiter.  Sie können dieses Kapitel jetzt lesen oder später,
-wenn Sie diese Informationen benötigen
-}
+\textbf{ \OtherBook{} Lesen Sie nun im Handbuch "`\xlink{Gpg4win für
+    Durchblicker}{durchblicker.html}"' Kapitel 5 "`Schlüssel im
+  Detail"' weiter.  Sie können dieses Kapitel jetzt lesen oder später,
+  wenn Sie diese Informationen benötigen }
 
 \clearpage
 %% Original page 24
@@ -742,11 +743,9 @@ worden.
 öffentlichen Schlüssel per \Email{} an einen Korrespondenzpartner
 geschickt.
 
-\textbf{
-\OtherBook{} Im Handbuch "`Gpg4win für Durchblicker"' Kapitel 7
-beschreiben wir, wie Sie Ihren Schlüssel auch als Dateianhang
-versenden.
-}
+\textbf{ \OtherBook{} Im Handbuch "`\xlink{Gpg4win für
+    Durchblicker}{durchblicker.html}"' Kapitel 7 beschreiben wir, wie
+  Sie Ihren Schlüssel auch als Dateianhang versenden.  }
 
 Das ist oftmals das einfachere und gebräuchlichere Verfahren. Wir haben Ihnen hier
 die "`Copy \& Paste"'-Methode zuerst vorgestellt, weil sie
@@ -762,6 +761,12 @@ Diese Möglichkeit bietet sich eigentlich immer an, selbst wenn Sie nur
 mit wenigen Partnern verschlüsselte \Email{}s austauschen.  Ihr
 Schlüssel ist dann sozusagen "`stets griffbereit"' auf einem Server im
 Internet vorhanden.
+
+\textsc{Vorsicht: Obwohl es noch keine Hinweise gibt, daß Spammer
+  Adressen wirklich von den Keyservern sammeln, so ist dies jedoch
+  technisch möglich.  Falls Sie keinen wirksamen Spamfilter benutzen,
+  sollten Sie u.U.\ von der Veröffentlichung Ihres Schlüssels auf einem
+  Keyserver absehen.}
 
 Klicken Sie Ihren Schlüssel an und wählen Sie dann den Menüpunkt
 \Menu{Server$\rightarrow$Schlüssel~verschicken}. 
@@ -786,12 +791,11 @@ Clinton"' dort herumliegen ­ schon seit Jahren$\ldots$
 \textbf{Fassen wir kurz zusammen:} Sie wissen nun, wie Sie Ihren
 Schlüssel auf einen Schlüsselserver im Internet schicken können.
 
-\textbf{
-\OtherBook{} Wie Sie den Schlüssel eines Partners auf den
-Schlüsselservern suchen und finden, beschreiben wir im Handbuch
-"`Gpg4win für Durchblicker"' Kapitel 6. Sie können dieses Kapitel jetzt
-lesen oder später, wenn Sie diese Funktion benötigen.
-}
+\textbf{ \OtherBook{} Wie Sie den Schlüssel eines Partners auf den
+  Schlüsselservern suchen und finden, beschreiben wir im Handbuch
+  "`\xlink{Gpg4win für Durchblicker}{durchblicker.html}"' Kapitel 6.
+  Sie können dieses Kapitel jetzt lesen oder später, wenn Sie diese
+  Funktion benötigen.  }
 
 \clearpage
 %% Original page 31
@@ -848,11 +852,10 @@ Für die meisten Mailprogramme --­ z.B. MS Outlook für Windows, gibt es
 außerdem spezielle PlugIns, mit denen die Ver- und Entschlüsselung
 direkt im jeweiligen Mailprogramm erledigt werden kann.
 
-\textbf{
-\OtherBook{} Hinweise zu diesen Lösungen finden Sie im Handbuch
-"`Gpg4win für Durchblicker"' Kapitel 8. Sie können dieses Kapitel jetzt
-lesen oder später, wenn Sie diese Funktion benötigen.
-}
+\textbf{ \OtherBook{} Hinweise zu diesen Lösungen finden Sie im
+  Handbuch "`\xlink{Gpg4win für Durchblicker}{durchblicker.html}"'
+  Kapitel 8. Sie können dieses Kapitel jetzt lesen oder später, wenn
+  Sie diese Funktion benötigen.  }
 
 WinPT hat dagegen den Vorteil, daß es nicht mit einem bestimmten,
 sondern mit jedem Mailprogramm funktioniert. Es erledigt nämlich
@@ -1037,11 +1040,10 @@ versenden ­-- die Absenderangabe besagt eigentlich gar nichts.
 Wie können Sie also sichergehen, daß ein Schlüssel auch wirklich
 seinem Absender gehört?
 
-\textbf{
-\OtherBook{} Diese Kernfrage besprechen wir im Handbuch "`Gpg4win für
-Durchblicker"' Kapitel 9: "`Die Schlüsselprüfung"'. Lesen Sie jetzt
-bitte dort weiter, bevor Sie danach an dieser Stelle fortfahren.
-}
+\textbf{ \OtherBook{} Diese Kernfrage besprechen wir im Handbuch
+  "`\xlink{Gpg4win für Durchblicker}{durchblicker.html}"' Kapitel 9:
+  "`Die Schlüsselprüfung"'. Lesen Sie jetzt bitte dort weiter, bevor
+  Sie danach an dieser Stelle fortfahren.  }
 
 \clearpage
 %% Original page 40
@@ -1114,12 +1116,12 @@ nicht auszuschließen, daß die \Email{} durch eine fehlerhafte Übertragung
 verändert wurde. Das ist zunächst der wahrscheinlichste Fall. Es kann
 jedoch auch bedeuten, daß der Text nachträglich verändert wurde.
 
-\textbf{
-\OtherBook{} Wie Sie in einem solchen Fall vorgehen sollten, erfahren
-Sie im Handbuch "`Gpg4win für Durchblicker"' Kapitel 10.  "`\Email{}s
-signieren"'. Lesen Sie jetzt bitte dort weiter, bevor Sie danach an dieser
-Stelle fortfahren.
-}
+
+\textbf{ \OtherBook{} Wie Sie in einem solchen Fall vorgehen sollten,
+  erfahren Sie im Handbuch "`\xlink{Gpg4win für
+    Durchblicker}{durchblicker.html}"' Kapitel 10.  "`\Email{}s
+  signieren"'. Lesen Sie jetzt bitte dort weiter, bevor Sie danach an
+  dieser Stelle fortfahren.  }
 
 \clearpage
 %% Original page 42
@@ -1260,14 +1262,14 @@ die GnuPG direkt unterstützen.
 \Email{}-Verschlüsselung!}
 
 \textbf{
-\OtherBook{} Lesen Sie nun die Kapitel 10 bis 12 im Handbuch "`Gpg4win
-für Durchblicker"'.  Sie erfahren dort unter anderem, wie man \Email{}s
+\OtherBook{} Lesen Sie nun die Kapitel 10 bis 12 im Handbuch "`\xlink{Gpg4win
+für Durchblicker}{durchblicker.html}"'.  Sie erfahren dort unter anderem, wie man \Email{}s
 signiert und einen bereits vorhandenen Geheimschlüssel in GnuPG
 importiert und verwendet.
 }
 
 \textbf{
-\OtherBook{} Ab Kapitel 13 des Handbuchs "`Gpg4win für Durchblicker"'
+\OtherBook{} Ab Kapitel 13 des Handbuchs "`\xlink{Gpg4win für Durchblicker}{durchblicker.html}"'
 können Sie weiterhin in zwei spannenden Kapiteln lesen, auf welchen
 Verfahren die Sicherheit von GnuPG beruht.
 }
@@ -1311,6 +1313,4 @@ sondern
 \input{fdl.tex}
 
 \end{document}
-
-
 

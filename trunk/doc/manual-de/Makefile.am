@@ -17,12 +17,16 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
-USER=$(shell grep "svn+ssh://" .svn/entries | sed -e "s/.*svn+ssh:\/\///g" | sed -e "s/@.*//g")
 
 png_files := \
+        sc-inst-welcome.png sc-inst-license.png \
+        sc-inst-components.png sc-inst-directory.png \
+        sc-inst-startmenu.png sc-inst-ready.png \
+        sc-inst-finished.png sc-inst-finished2.png \
 	sc-winpt-sign-passwd.png \
         sc-gpgee-ctxmenu.png sc-gpgee-signmenu.png \
 	sc-gpa-gen-backup.png sc-gpa-gen-backup-warn.png
+
 
 web_png_files := blank.png next.png previous.png up.png \
                  home.png nonext.png noprevious.png noup.png
@@ -38,10 +42,6 @@ eps_files := adele01.eps.gz adele02.eps.gz man-with-signed-key.eps.gz \
              keyserver-world.eps.gz key-with-sigs.eps.gz \
 	     clock-face.eps.gz mileage-indicator.eps.gz \
 	     table-1.eps.gz table-2.eps.gz table-3.eps.gz \
-             sc-inst-components.eps.gz sc-inst-directory.eps.gz \
-             sc-inst-finished.eps.gz sc-inst-finished2.eps.gz \
-             sc-inst-license.eps.gz sc-inst-ready.eps.gz \
-             sc-inst-startmenu.eps.gz sc-inst-welcome.eps.gz \
              sc-gpa-first-key.eps.gz \
              sc-gpa-gen-email.eps.gz sc-gpa-gen-name.eps.gz \
              sc-gpa-gen-passwd.eps.gz sc-gpa-nokey.eps.gz \
@@ -82,11 +82,13 @@ durchblicker.pdf : $(eps_files_bb) $(png_files_eps) $(eps_files_png)
 webversion: einsteiger.html durchblicker.html
 
 online: webversion
-	echo "Going to put current manuals online for www.gpg4win.org ..."
-	patch < einsteiger.html.patch
-	patch < durchblicker.html.patch
-	rsync -urvP --exclude='.svn' einsteiger*.html durchblicker*.html $(web_png_files) \
-	  $(USER)@wald.intevation.org:/gpg4win/htdocs/handbuecher/
+	set -e; \
+	echo "Going to put current manuals online for www.gpg4win.org ..."; \
+        user=`svn info | sed -n '/^URL:/ s,.*svn+ssh://\\([^@]*\\).*,\\1,p'`;\
+	rsync -v --exclude='.svn' einsteiger*.html durchblicker*.html \
+	  einsteiger.css durchblicker.css \
+	  $(web_png_files) $(png_files) \
+	  $${user}@wald.intevation.org:/gpg4win/htdocs/handbuecher/
 
 
 %.eps.bb : %.eps.gz
