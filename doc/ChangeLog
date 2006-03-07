@@ -1,3 +1,14 @@
+2006-03-07  Werner Koch  <wk@g10code.com>
+
+	* manual-de/Makefile.am (online): Use portable way to extract the
+	svn user.
+
+	* manual-de/einsteiger.tex: Updated.  Added new PNG format
+	screenshots.
+	* manual-de/durchblicker.tex: Updated.
+	* manual-de/durchblicker.html.patch: Removed 
+	* manual-de/einsteiger.html.patch: Removed
+
 2006-02-28  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
 
 	* manual-de/einsteiger.html.patch: Added link to homepage.
