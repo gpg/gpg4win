@@ -24,7 +24,7 @@ min_automake_version="1.9.3"
 
 # Remember to change the version number immediately *after* a release.
 # Uncomment the my_iscvs macro for non-released code.
-m4_define(my_version, [0.7.0])
+m4_define(my_version, [0.8.0-cvs])
 #m4_define(my_iscvs, yes)
 
 AC_INIT([gpg4win], my_version[]m4_ifdef([my_iscvs], [-cvs[]m4_translit(
@@ -132,7 +132,8 @@ GPG4WIN_SPKG([gpa], [libiconv gettext zlib gtk+ libpng glib gpgme])
 GPG4WIN_SPKG([winpt], [gpgme gnupg])
 GPG4WIN_SPKG([sylpheed-claws], [libiconv gettext zlib gtk+ libpng glib dnl
                                 gpgme pthreads-w32 crypt regex])
-GPG4WIN_SPKG([eudoragpg])
+# The Eudora license (the one for thye EMS API) is still not acceptable.
+#GPG4WIN_SPKG([eudoragpg])
 GPG4WIN_SPKG([man_novice_de])
 GPG4WIN_SPKG([man_advanced_de])
 

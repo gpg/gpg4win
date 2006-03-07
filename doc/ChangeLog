@@ -1,12 +1,21 @@
 2006-03-07  Werner Koch  <wk@g10code.com>
 
+	Set both manual versions to 2.0.0.RC2.
+
 	* manual-de/Makefile.am (online): Use portable way to extract the
 	svn user.
 	(EXTRA_DIST): Add gpg4win-logo.png.
 
 	* manual-de/einsteiger.tex: Updated.  Added new PNG format
 	screenshots.
+	(section*{Impressum gpg4win}): No more hint to the PDF version as
+	tehre is one on the title page.
+
 	* manual-de/durchblicker.tex: Updated.
+	(section*{Impressum gpg4win}): No more hint to the PDF version as
+	tehre is one on the title page.
+	(section{Die Schlüsselserver}): Add Keyserver warning.
+	
 	* manual-de/durchblicker.html.patch: Removed 
 	* manual-de/einsteiger.html.patch: Removed
 
