@@ -62,7 +62,8 @@ png_files_eps := $(png_files:.png=.eps)
 
 EXTRA_DIST = fdl.tex einsteiger.tex durchblicker.tex $(eps_files) \
              $(png_files) $(web_png_files) \
-	     was-ist-gpg4win.tex macros.tex version.tex.in gpg4win-logo.eps
+	     was-ist-gpg4win.tex macros.tex version.tex.in \
+	     gpg4win-logo.eps gpg4win-logo.png
 
 CLEANFILES = $(eps_files_bb) $(png_files_eps) \
              *.pdf *.pdf *.toc *.log *.aux *.out
@@ -87,7 +88,7 @@ online: webversion
         user=`svn info | sed -n '/^URL:/ s,.*svn+ssh://\\([^@]*\\).*,\\1,p'`;\
 	rsync -v --exclude='.svn' einsteiger*.html durchblicker*.html \
 	  einsteiger.css durchblicker.css \
-	  $(web_png_files) $(png_files) \
+	  $(web_png_files) $(png_files) gpg4win-logo.png \
 	  $${user}@wald.intevation.org:/gpg4win/htdocs/handbuecher/
 
 
