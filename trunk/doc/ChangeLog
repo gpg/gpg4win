@@ -2,6 +2,7 @@
 
 	* manual-de/Makefile.am (online): Use portable way to extract the
 	svn user.
+	(EXTRA_DIST): Add gpg4win-logo.png.
 
 	* manual-de/einsteiger.tex: Updated.  Added new PNG format
 	screenshots.
