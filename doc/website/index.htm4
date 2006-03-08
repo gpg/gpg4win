@@ -3,6 +3,7 @@ m4_include(`template.m4')
 m4_dnl $Id: index.htm4,v 1.30 2006/01/12 16:04:03 jan Exp $
 
 m4_define(`EN')
+m4_define(`DE_FILE', `index-de.html')
 PAGE_START
 
 <h2>New User?</h2>

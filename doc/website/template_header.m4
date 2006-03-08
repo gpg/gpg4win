@@ -24,8 +24,8 @@ m4_ifdef(`__TMPL_PAGE_TITLE',,`m4_define(`__TMPL_PAGE_TITLE',`gpg4win - '__TITLE
           <h1>__TITLE</h1>
         </td>
         <td>
-          LANG_LINK(`EN',`english',`index.html') |
-          LANG_LINK(`DE',`deutsch',`index-de.html')
+          LANG_LINK(`EN',`english', EN_FILE) |
+          LANG_LINK(`DE',`deutsch', DE_FILE)
         </td>
     </table>
     <table id="bigbar">
