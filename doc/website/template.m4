@@ -13,4 +13,6 @@ m4_define(`I18N',`m4_ifdef(`$1',`$2')')
 m4_define(`PAGE_TITLE',`m4_define(`__TMPL_PAGE_TITLE',`$1')')
 m4_define(`PAGE_ROOT',`m4_define(`__TMPL_ROOT',`$1')')
 m4_define(`PAGE_START',`m4_include(`template_header.m4')')
-m4_define(`PAGE_BOXES',`m4_divert(1)</div><div id="boxes">')
+m4_define(`PAGE_BOXES',`m4_include(m4_dnl
+I18N(`DE', `template_link_boxes_de.m4')`'m4_dnl
+I18N(`EN', `template_link_boxes_en.m4'))')
