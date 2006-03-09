@@ -1,3 +1,18 @@
+2006-03-09  Werner Koch  <wk@g10code.com>
+
+	Released 0.8.0.
+
+	* src/inst-sylpheed-claws.nsi: Don't select be Default.
+
+	* include/config.nsi.in: Disabled Eudora.
+	* src/inst-sections.nsi: Ditto.
+	* src/Makefile.am: Ditto
+
+2006-03-08  Werner Koch  <wk@g10code.com>
+
+	* src/inst-sections.nsi: Play the tune only for the source installer.
+	* src/installer.nsi: And don't reserve the tune file.
+
 2006-03-07  Werner Koch  <wk@g10code.com>
 
 	* configure.ac: Don't build Eudora due to license problems.

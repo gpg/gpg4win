@@ -81,9 +81,9 @@
 !ifdef HAVE_PKG_SYLPHEED_CLAWS
 !include "inst-sylpheed-claws.nsi"
 !endif
-!ifdef HAVE_PKG_EUDORAGPG
-!include "inst-eudoragpg.nsi"
-!endif
+#!ifdef HAVE_PKG_EUDORAGPG
+#!include "inst-eudoragpg.nsi"
+#!endif
 !ifdef HAVE_PKG_MAN_NOVICE_DE
 !include "inst-man_novice_de.nsi"
 !endif
@@ -99,9 +99,9 @@
 !ifdef HAVE_PKG_MAN_NOVICE_DE
 !include "uninst-man_novice_de.nsi"
 !endif
-!ifdef HAVE_PKG_EUDORAGPG
-!include "uninst-eudoragpg.nsi"
-!endif
+#!ifdef HAVE_PKG_EUDORAGPG
+#!include "uninst-eudoragpg.nsi"
+#!endif
 !ifdef HAVE_PKG_SYLPHEED_CLAWS
 !include "uninst-sylpheed-claws.nsi"
 !endif
@@ -266,17 +266,17 @@ Function CalcDepends
   skip_sylpheed:
 !endif
 
-!ifdef HAVE_PKG_EUDORAGPG
-  !insertmacro SectionFlagIsSet ${SEC_eudoragpg} ${SF_SELECTED} have_eudoragpg skip_eudoragpg
-  have_eudoragpg:
-  !insertmacro SelectSection ${SEC_zlib}
-  !insertmacro SelectSection ${SEC_gtk_}
-  !insertmacro SelectSection ${SEC_libpng}
-  !insertmacro SelectSection ${SEC_glib}
-  !insertmacro SelectSection ${SEC_gpgme}
-  !insertmacro SelectSection ${SEC_gnupg}
-  skip_eudoragpg:
-!endif
+#!ifdef HAVE_PKG_EUDORAGPG
+#  !insertmacro SectionFlagIsSet ${SEC_eudoragpg} ${SF_SELECTED} have_eudoragpg skip_eudoragpg
+#  have_eudoragpg:
+#  !insertmacro SelectSection ${SEC_zlib}
+#  !insertmacro SelectSection ${SEC_gtk_}
+#  !insertmacro SelectSection ${SEC_libpng}
+#  !insertmacro SelectSection ${SEC_glib}
+#  !insertmacro SelectSection ${SEC_gpgme}
+#  !insertmacro SelectSection ${SEC_gnupg}
+#  skip_eudoragpg:
+#!endif
 
 !ifdef HAVE_PKG_GTK_
   !insertmacro SectionFlagIsSet ${SEC_gtk_} \
@@ -364,8 +364,11 @@ Function .onInit
 
   SetOutPath $TEMP
   File /oname=gpgspltmp.bmp "${TOP_SRCDIR}/doc/logo/gpg4win-logo-400px.bmp"
+  # We play the tune only for the soruce installer
+!ifdef SOURCES
   File /oname=gpgspltmp.wav "${TOP_SRCDIR}/src/gpg4win-splash.wav"
   g4wihelp::playsound $TEMP\gpgspltmp.wav
+!endif
   g4wihelp::showsplash 2500 $TEMP\gpgspltmp.bmp
 
   Delete $TEMP\gpgspltmp.bmp
@@ -431,9 +434,9 @@ FunctionEnd
 !ifdef HAVE_PKG_SYLPHEED_CLAWS
   !insertmacro MUI_DESCRIPTION_TEXT ${SEC_sylpheed} $(DESC_SEC_sylpheed)
 !endif
-!ifdef HAVE_PKG_EUDORAGPG
-  !insertmacro MUI_DESCRIPTION_TEXT ${SEC_eudoragpg} $(DESC_SEC_eudoragpg)
-!endif
+#!ifdef HAVE_PKG_EUDORAGPG
+#  !insertmacro MUI_DESCRIPTION_TEXT ${SEC_eudoragpg} $(DESC_SEC_eudoragpg)
+#!endif
 !ifdef HAVE_PKG_MAN_NOVICE_DE
   !insertmacro MUI_DESCRIPTION_TEXT ${SEC_man_novice_de} $(DESC_SEC_man_novice_de)
 !endif
@@ -487,15 +490,15 @@ Section "-startmenu"
   no_sylpheed_menu:
 !endif
 
-!ifdef HAVE_PKG_EUDORAGPG
-    SectionGetFlags ${SEC_eudoragpg} $R0 
-    IntOp $R0 $R0 & ${SF_SELECTED} 
-    IntCmp $R0 ${SF_SELECTED} 0 no_eudoragpg_menu 
-    CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\EudoraGPG Plugin.lnk" \
-	"$INSTDIR\share\eudoragpg\eudoragpg.html" \
-        "" "" "" SW_SHOWNORMAL "" ""
-  no_eudoragpg_menu:
-!endif
+#!ifdef HAVE_PKG_EUDORAGPG
+#    SectionGetFlags ${SEC_eudoragpg} $R0 
+#    IntOp $R0 $R0 & ${SF_SELECTED} 
+#    IntCmp $R0 ${SF_SELECTED} 0 no_eudoragpg_menu 
+#    CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\EudoraGPG Plugin.lnk" \
+#	"$INSTDIR\share\eudoragpg\eudoragpg.html" \
+#        "" "" "" SW_SHOWNORMAL "" ""
+#  no_eudoragpg_menu:
+#!endif
 
 !ifdef HAVE_PKG_MAN_NOVICE_DE
     SectionGetFlags ${SEC_man_novice_de} $R0 

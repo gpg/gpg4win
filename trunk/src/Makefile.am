@@ -28,7 +28,7 @@ CLEANFILES = g4wihelp.dll versioninfo.txt README.en.txt README.de.txt
 
 # Supported source packages.
 gpg4win_spkgs := glib gnupg libgpg-error gpgme gpgol gpa winpt sylpheed-claws \
-                 eudoragpg man_novice_de man_advanced_de
+                 man_novice_de man_advanced_de
 
 # Extra options to configure for individual packages.
 # We can use $(idir) here for the installation prefix.

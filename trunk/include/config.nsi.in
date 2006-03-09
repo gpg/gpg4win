@@ -81,9 +81,9 @@
 !define gpg4win_pkg_sylpheed_claws @gpg4win_pkg_sylpheed_claws@
 !define gpg4win_pkg_sylpheed_claws_version @gpg4win_pkg_sylpheed_claws_version@
 
-@HAVE_PKG_EUDORAGPG@
-!define gpg4win_pkg_eudoragpg @gpg4win_pkg_eudoragpg@
-!define gpg4win_pkg_eudoragpg_version @gpg4win_pkg_eudoragpg_version@
+#@HAVE_PKG_EUDORAGPG@
+#!define gpg4win_pkg_eudoragpg @gpg4win_pkg_eudoragpg@
+#!define gpg4win_pkg_eudoragpg_version @gpg4win_pkg_eudoragpg_version@
 
 @HAVE_PKG_ZLIB@
 !define gpg4win_pkg_zlib @gpg4win_pkg_zlib@

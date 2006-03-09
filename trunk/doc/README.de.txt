@@ -17,6 +17,10 @@ Einsteiger" und "Gpg4Win für Durchblicker" zu entnehmen.
               Versionsnummern der einzenen Bestandteile
               =========================================
 
+Zur Übersicht sind hier die Prüfsummen sowie die Namen der einzelnen
+Bestandteile aufgelistet.  Sie finden dieselben Informationen auch in
+der Datei versioninfo.txt.
+
 !VERSIONINFO!
 
 

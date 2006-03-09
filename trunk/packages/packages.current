@@ -122,13 +122,9 @@ chk  1019c8027c0cf94bca680886f4e2ae4e629a2a97
 
 # WinPT
 
-#server http://wald.intevation.org/frs/download.php
-#file 84/winpt-0.11.4.tar.bz2
-#chk  f880bd2103b51a8e2f6e94f58a9524c523765ccb
-
-server ftp://ftp.g10code.com/g10code/scratch
-file winpt-0.11.8rc1.tar.bz2
-chk  4195420ba82c5852c7b30192fda2c6627e5b31fd
+server http://wald.intevation.org/frs/download.php
+file  137/winpt-0.11.8.tar.bz2
+chk   b87a6d0d4f53fa305d27632f4ad5d6a5a5219e15
 
 
 # GPGee
@@ -160,8 +156,8 @@ chk  a637d8a024d3106eba320af47066574817624ab3
 
 server ftp://ftp.gnupg.org/gcrypt
 
-file alpha/gnupg/gnupg-1.4.3rc1.tar.bz2
-chk  6c2d5f65c2acde6eaeb1ae3a4bc9ae971f942126
+file alpha/gnupg/gnupg-1.4.3rc2.tar.bz2
+chk  eb5b839555ff1957b5956aaf4c96505223a2f9d0 
 
 file libgpg-error/libgpg-error-1.2.tar.bz2
 chk  468657e5bccd534f350b1a0109e19d2a9cc5d027
@@ -190,5 +186,4 @@ file man_novice_de-0.0.0-cvs.tar.gz
 chk  33329175b9b69724870139f383edf6e3edea7c78
 file man_advanced_de-0.0.0-cvs.tar.gz
 chk  b4a8b05b181f20c5ba9d937b6347095905323318
-file eudoragpg-0.0.0-cvs.tar.gz
-chk  79e3a24e4baa19f23e955b1a4b1c41b8083345b7
+
