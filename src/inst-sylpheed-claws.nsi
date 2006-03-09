@@ -24,7 +24,7 @@
 !define prefix ${ipdir}/sylpheed-claws-${gpg4win_pkg_sylpheed_claws_version}
 
 
-Section "Sylpheed" SEC_sylpheed
+Section /o "Sylpheed" SEC_sylpheed
   SetOutPath "$INSTDIR"
 !ifdef SOURCES
   File "${gpg4win_pkg_sylpheed_claws}"

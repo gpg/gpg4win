@@ -24,6 +24,11 @@ Section "-un.gpg4win"
   Delete "gpg4win-${VERSION}.tar.bz2"
 !else
 
+  # Delete cruft from version prior to 0.8
+  Delete "$INSTDIR\share\eudoragpg\eudoragpg.html"
+  RMDir "$INSTDIR\share\eudoragpg"
+
+  # Delete standard stuff.
   Delete "$INSTDIR\share\gpg4win\README.en.txt"
   Delete "$INSTDIR\share\gpg4win\README.de.txt"
   Delete "$INSTDIR\share\gpg4win\versioninfo.txt"

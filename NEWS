@@ -1,3 +1,20 @@
+Noteworthy changes in version 0.8.0 (2006-03-09)
+------------------------------------------------
+
+ * The sound will not be played for the regular installer.
+
+ * The unfinished support for the Eudora plugin as been removed
+   because Qualcomm was not able to come up with a free license for
+   the EMS API as used by this plugin.  That code makes up about an
+   quarter of the entire plugin and it should be possible to
+   re-implement it under a free license.
+
+ * Updated GnuPG to 1.4.3rc2 which fixes the non-detached signature
+   verification bug.
+
+ * Updated WinPT, GPA and the manuals.
+
+
 Noteworthy changes in version 0.7.0 (2006-02-15)
 ------------------------------------------------
 

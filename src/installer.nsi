@@ -158,7 +158,9 @@ Var STARTMENU_FOLDER
 #!insertmacro MUI_RESERVEFILE_INSTALLOPTIONS
 ReserveFile "${BUILD_DIR}\g4wihelp.dll"
 ReserveFile "${TOP_SRCDIR}\doc\logo\gpg4win-logo-400px.bmp"
+!ifdef SOURCES
 ReserveFile "${TOP_SRCDIR}\src\gpg4win-splash.wav"
+!endif
 ReserveFile "${TOP_SRCDIR}\COPYING"
 
 # Language support
