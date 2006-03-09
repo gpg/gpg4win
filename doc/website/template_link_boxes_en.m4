@@ -24,6 +24,9 @@ m4_dnl DONT USE THIS FILE DIRECTLY
 <div class="box">
   <h1>Getting involved</h1>
   <a href="http://wald.intevation.org/projects/gpg4win/">Project Site</a>
+  <p>Howtos:<br>
+  <a href="website-maintenance.html">Maintaining Website</a>
+  </p>
 </div>
 <div class="box">
   <h1>Similar Projects</h1>
@@ -31,4 +34,9 @@ m4_dnl DONT USE THIS FILE DIRECTLY
   <a href="http://people.freenet.de/rose-indorf">GnuPG-Basics</a><br>
   <a href="http://sourceforge.net/projects/winpt">Windows Privacy Tools</a> (outdated)<br>
   <a href="http://www.gnupp.de/start.html">GnuPP</a> (outdated)<br>
+</div>
+<div class="box">
+  <h1>Sitemap</h1>
+  <a href="index.html">Main page</a><br>
+  &nbsp;&nbsp;<a href="website-maintenance.html">Maintaining Website</a><br>
 </div>
