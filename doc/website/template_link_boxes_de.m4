@@ -25,7 +25,8 @@ m4_dnl DONT USE THIS FILE DIRECTLY
   <h1>Mitmachen</h1>
   <a href="http://wald.intevation.org/projects/gpg4win/">Projektseite</a>
   <p>Anleitungen:<br>
-  <a href="website-maintenance-de.html">Website pflegen</a>
+  <a href="build-installer-de.html">Installationspaket herstellen</a><br>
+  <a href="website-maintenance-de.html">Website pflegen</a><br>
   </p>
 </div>
 <div class="box">
@@ -38,5 +39,6 @@ m4_dnl DONT USE THIS FILE DIRECTLY
 <div class="box">
   <h1>Sitemap</h1>
   <a href="index-de.html">Hauptseite</a><br>
+  &nbsp;&nbsp;<a href="build-installer-de.html">Installationspaket herstellen</a><br>
   &nbsp;&nbsp;<a href="website-maintenance-de.html">Website pflegen</a><br>
 </div>
