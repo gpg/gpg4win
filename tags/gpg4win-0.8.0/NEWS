@@ -1,0 +1,133 @@
+Noteworthy changes in version 0.8.0 (2006-03-09)
+------------------------------------------------
+
+ * The sound will not be played for the regular installer.
+
+ * The unfinished support for the Eudora plugin as been removed
+   because Qualcomm was not able to come up with a free license for
+   the EMS API as used by this plugin.  That code makes up about an
+   quarter of the entire plugin and it should be possible to
+   re-implement it under a free license.
+
+ * Updated GnuPG to 1.4.3rc2 which fixes the non-detached signature
+   verification bug.
+
+ * Updated WinPT, GPA and the manuals.
+
+
+Noteworthy changes in version 0.7.0 (2006-02-15)
+------------------------------------------------
+
+ * Finished Durchblicker manual.
+
+ * Install a list with copyright statements.
+
+ * Fix bugs in the individual packages.
+
+
+Noteworthy changes in version 0.6.0 (2006-01-26)
+------------------------------------------------
+
+ * The location where to install gpg4win may now be changed.
+
+ * Cosmetic changes
+
+ * Finished Einsteiger manual
+
+
+Noteworthy changes in version 0.5.1 (2006-01-09)
+------------------------------------------------
+
+ * Get plugin directory for sylpheed right.
+
+ * WinPT starts again.
+
+ * Included very early versions of the manuals as PDFs.
+
+ * Include gpg4win in the source installer.
+
+
+Noteworthy changes in version 0.5.0 (2006-01-05)
+------------------------------------------------
+
+ * Fixed GPA problems.
+
+ * Sylpheed does now actually work.
+
+ * Changed the packaging of GPGee.
+
+
+Noteworthy changes in version 0.3.1 (2005-12-07)
+------------------------------------------------
+
+ * Updated WinPT and GPGol
+
+
+Noteworthy changes in version 0.3.0 (2005-12-06)
+------------------------------------------------
+
+  * Add i18n stuff to gpgol.  Only german for now.
+
+  * Winpt updates.
+
+  * Changed the way the download script works.  It now uses a packages
+    file from ftp.gpw4win.org and only downloads packages which are
+    not yet downloaded unless the --force option is used.  Chnages to
+    the packages are to be recorded in that packages file and not
+    anymore in the SVN.
+
+
+Noteworthy changes in version 0.2.1 (2005-11-28)
+------------------------------------------------
+
+  * Translated the displayed names of the manuals in the package
+    selection.  
+
+  * Removed splash.dll by code put into our helper DLL.  The tune is
+    not anymore cut off to early.
+
+
+Noteworthy changes in version 0.2.0 (2005-11-24)
+------------------------------------------------
+
+  * The installer tries to stop a running instance of WinPT.
+
+  * A warning message to close other application is displayed if
+    necessary.
+
+  * Cleanups.
+
+
+Noteworthy changes in version 0.1.0 (2005-11-21)
+------------------------------------------------
+
+  * GPA does now actually do something.
+
+  * Included Sylpheed, although the GnuPG part is not yet working.
+
+  * Some visual cleanups, more help texts.      
+
+  * Reboot support for installing an already running GPGee.
+
+
+Noteworthy changes in version 0.0.2 (2005-11-08)
+------------------------------------------------
+
+  * A second test release
+
+Noteworthy changes in version 0.0.1 (2005-11-04)
+------------------------------------------------
+
+  * Initial release.
+
+
+Copyright 2005, 2006 g10 Code GmbH
+
+This file is free software; as a special exception the author gives
+unlimited permission to copy and/or distribute it, with or without
+modifications, as long as this notice is preserved.
+
+This file is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
+implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+PURPOSE.

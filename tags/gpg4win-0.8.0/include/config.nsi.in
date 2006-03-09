@@ -1,0 +1,159 @@
+# config.nsi - Configuration settings for gpg4win.nsi.         -*- nsi -*-
+# Copyright (C) 2005 g10 Code GmbH
+# 
+# This file is part of GPG4Win.
+# 
+# GPG4Win is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+# 
+# GPG4Win is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
+
+
+!define _PACKAGE @PACKAGE@
+!define _VERSION @VERSION@
+!define _BUILD_FILEVERSION @BUILD_FILEVERSION@
+!define _BUILD_TIMESTAMP   @BUILD_TIMESTAMP@
+
+!define build @build_cpu@-@build_os@
+!define host @host_cpu@-@host_os@
+!define MAKE @MAKE@
+!define UNZIP @UNZIP@
+!define TAR @TAR@
+!define MKDIR @MKDIR@
+!define CP @CP@
+!define RM @RM@
+!define STOW @STOW@
+!define INSTALL "@INSTALL@"
+!define WGET @WGET@
+
+# If debugging is desired.
+@GPG4WIN_DEBUG@
+
+# The package build list, in order.
+!define gpg4win_build_list "@gpg4win_build_list@"
+
+
+# The default packages source directory.
+!define gpg4win_packages @gpg4win_packages@
+
+
+# The path of each package.
+
+@HAVE_PKG_LIBGPG_ERROR@
+!define gpg4win_pkg_libgpg_error @gpg4win_pkg_libgpg_error@
+!define gpg4win_pkg_libgpg_error_version @gpg4win_pkg_libgpg_error_version@
+
+@HAVE_PKG_GPGME@
+!define gpg4win_pkg_gpgme @gpg4win_pkg_gpgme@
+!define gpg4win_pkg_gpgme_version @gpg4win_pkg_gpgme_version@
+
+@HAVE_PKG_GNUPG@
+!define gpg4win_pkg_gnupg @gpg4win_pkg_gnupg@
+!define gpg4win_pkg_gnupg_version @gpg4win_pkg_gnupg_version@
+
+@HAVE_PKG_GPGOL@
+!define gpg4win_pkg_gpgol @gpg4win_pkg_gpgol@
+!define gpg4win_pkg_gpgol_version @gpg4win_pkg_gpgol_version@
+
+@HAVE_PKG_GPA@
+!define gpg4win_pkg_gpa @gpg4win_pkg_gpa@
+!define gpg4win_pkg_gpa_version @gpg4win_pkg_gpa_version@
+
+@HAVE_PKG_WINPT@
+!define gpg4win_pkg_winpt @gpg4win_pkg_winpt@
+!define gpg4win_pkg_winpt_version @gpg4win_pkg_winpt_version@
+
+@HAVE_PKG_GPGEE@
+!define gpg4win_pkg_gpgee @gpg4win_pkg_gpgee@
+!define gpg4win_pkg_gpgee_version @gpg4win_pkg_gpgee_version@
+!define gpg4win_pkg_gpgee_src @gpg4win_pkg_gpgee_src@
+
+@HAVE_PKG_SYLPHEED_CLAWS@
+!define gpg4win_pkg_sylpheed_claws @gpg4win_pkg_sylpheed_claws@
+!define gpg4win_pkg_sylpheed_claws_version @gpg4win_pkg_sylpheed_claws_version@
+
+#@HAVE_PKG_EUDORAGPG@
+#!define gpg4win_pkg_eudoragpg @gpg4win_pkg_eudoragpg@
+#!define gpg4win_pkg_eudoragpg_version @gpg4win_pkg_eudoragpg_version@
+
+@HAVE_PKG_ZLIB@
+!define gpg4win_pkg_zlib @gpg4win_pkg_zlib@
+!define gpg4win_pkg_zlib_version @gpg4win_pkg_zlib_version@
+!define gpg4win_pkg_zlib_dev @gpg4win_pkg_zlib_dev@
+!define gpg4win_pkg_zlib_src @gpg4win_pkg_zlib_src@
+
+@HAVE_PKG_CRYPT@
+!define gpg4win_pkg_crypt @gpg4win_pkg_crypt@
+!define gpg4win_pkg_crypt_version @gpg4win_pkg_crypt_version@
+!define gpg4win_pkg_crypt_src @gpg4win_pkg_crypt_src@
+
+@HAVE_PKG_REGEX@
+!define gpg4win_pkg_regex @gpg4win_pkg_regex@
+!define gpg4win_pkg_regex_version @gpg4win_pkg_regex_version@
+!define gpg4win_pkg_regex_src @gpg4win_pkg_regex_src@
+
+@HAVE_PKG_PTHREADS_W32@
+!define gpg4win_pkg_pthreads_w32 @gpg4win_pkg_pthreads_w32@
+!define gpg4win_pkg_pthreads_w32_version @gpg4win_pkg_pthreads_w32_version@
+
+@HAVE_PKG_LIBPNG@
+!define gpg4win_pkg_libpng @gpg4win_pkg_libpng@
+!define gpg4win_pkg_libpng_version @gpg4win_pkg_libpng_version@
+!define gpg4win_pkg_libpng_dev @gpg4win_pkg_libpng_dev@
+!define gpg4win_pkg_libpng_src @gpg4win_pkg_libpng_src@
+
+@HAVE_PKG_PKGCONFIG@
+!define gpg4win_pkg_pkgconfig @gpg4win_pkg_pkgconfig@
+!define gpg4win_pkg_pkgconfig_version @gpg4win_pkg_pkgconfig_version@
+!define gpg4win_pkg_pkgconfig_src @gpg4win_pkg_pkgconfig_src@
+
+@HAVE_PKG_GLIB@
+!define gpg4win_pkg_glib @gpg4win_pkg_glib@
+!define gpg4win_pkg_glib_version @gpg4win_pkg_glib_version@
+#!define gpg4win_pkg_glib_dev @gpg4win_pkg_glib_dev@
+#!define gpg4win_pkg_glib_src @gpg4win_pkg_glib_src@
+
+@HAVE_PKG_ATK@
+!define gpg4win_pkg_atk @gpg4win_pkg_atk@
+!define gpg4win_pkg_atk_version @gpg4win_pkg_atk_version@
+!define gpg4win_pkg_atk_dev @gpg4win_pkg_atk_dev@
+!define gpg4win_pkg_atk_src @gpg4win_pkg_atk_src@
+
+@HAVE_PKG_PANGO@
+!define gpg4win_pkg_pango @gpg4win_pkg_pango@
+!define gpg4win_pkg_pango_version @gpg4win_pkg_pango_version@
+!define gpg4win_pkg_pango_dev @gpg4win_pkg_pango_dev@
+!define gpg4win_pkg_pango_src @gpg4win_pkg_pango_src@
+
+@HAVE_PKG_GTK_@
+!define gpg4win_pkg_gtk_ @gpg4win_pkg_gtk_@
+!define gpg4win_pkg_gtk__version @gpg4win_pkg_gtk__version@
+!define gpg4win_pkg_gtk__dev @gpg4win_pkg_gtk__dev@
+!define gpg4win_pkg_gtk__src @gpg4win_pkg_gtk__src@
+
+@HAVE_PKG_LIBICONV@
+!define gpg4win_pkg_libiconv @gpg4win_pkg_libiconv@
+!define gpg4win_pkg_libiconv_version @gpg4win_pkg_libiconv_version@
+!define gpg4win_pkg_libiconv_src @gpg4win_pkg_libiconv_src@
+
+@HAVE_PKG_GETTEXT@
+!define gpg4win_pkg_gettext @gpg4win_pkg_gettext@
+!define gpg4win_pkg_gettext_version @gpg4win_pkg_gettext_version@
+!define gpg4win_pkg_gettext_src @gpg4win_pkg_gettext_src@
+
+@HAVE_PKG_MAN_NOVICE_DE@
+!define gpg4win_pkg_man_novice_de @gpg4win_pkg_man_novice_de@
+!define gpg4win_pkg_man_novice_de_version @gpg4win_pkg_man_novice_de_version@
+
+@HAVE_PKG_MAN_ADVANCED_DE@
+!define gpg4win_pkg_man_advanced_de @gpg4win_pkg_man_advanced_de@
+!define gpg4win_pkg_man_advanced_de_version @gpg4win_pkg_man_advanced_de_version@
