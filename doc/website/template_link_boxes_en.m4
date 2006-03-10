@@ -39,6 +39,7 @@ m4_dnl DONT USE THIS FILE DIRECTLY
 <div class="box">
   <h1>Sitemap</h1>
   <a href="index.html">Main page</a><br>
+  &nbsp;&nbsp;<a href="package-integrity.html">Integrity Check</a><br>
   &nbsp;&nbsp;<a href="build-installer.html">Build Installer Package</a><br>
   &nbsp;&nbsp;<a href="website-maintenance.html">Maintaining Website</a><br>
 </div>
