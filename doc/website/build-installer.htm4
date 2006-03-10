@@ -1,0 +1,13 @@
+m4_dnl -*-html-*-
+m4_include(`template.m4')
+m4_dnl $Id$
+
+m4_define(`EN')
+m4_define(`DE_FILE', `build-installer-de.html')
+PAGE_START
+
+<h1>Build Installer Package</h1>
+
+This howto has not yet been translated to english.
+
+PAGE_BOXES
