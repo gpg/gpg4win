@@ -1,3 +1,9 @@
+2006-03-13  Werner Koch  <wk@g10code.com>
+
+	* packages/Makefile.am (upload): New target for uploading the
+	packages file.
+	* packages/download.sh: Use http://www.gpg4win/org.
+
 2006-03-09  Werner Koch  <wk@g10code.com>
 
 	Released 0.8.0.

@@ -2,9 +2,11 @@
 #
 #
 # This list as well as its corresponding signature file are intended
-# to be downloaded by the download.sh script of gpg4win.  The download
-# script will then process the statements here to actually download
-# the packages.  The syntax is trivial:
+# to be downloaded by the download.sh script of gpg4win.  The
+# canonical URL of this file is http://www.gpg4win.org/packages.org .
+#
+# The download script will then process the statements here to
+# actually download the packages.  The syntax is trivial:
 #
 # If the first non whitespace character of a line is #, the line is
 # considered a comment.  If the first word of a line is "server", the
@@ -13,6 +15,9 @@
 # line will be appended to the current base URL (with a / as
 # delimiter).  The statement "chk" is followed by the SHA1 checksum of
 # the last file.
+#
+# Note: You may use "make upload" to copy this file to is canocnical place.
+#
 
 
 # GNU
