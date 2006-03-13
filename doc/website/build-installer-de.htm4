@@ -36,7 +36,7 @@ durchgeführt werden müssen, '$' für einen normalen Benutzer.
 <ol>
 <li> Notwendige Pakete auf dem Debian GNU/Linux 3.1 installieren:<br>
      <em># apt-get install mingw32 nsis stow unzip texinfo imagemagick</em><br>
-     <em># apt-get install tetex-bin gs-common hyperlatex<br>
+     <em># apt-get install tetex-bin gs-common hyperlatex</em><br>
 
 <li> Die Quellen anonym (also ohne Schreibrechte) holen:<br>
      <em>$ svn checkout https://svn.wald.intevation.org/gpg4win/trunk/</em><br>
@@ -70,11 +70,37 @@ Das zugehörige Quelltextpaket (mit den Quelltexten sämtlicher Module, sehr gross
 <h2>Ein einzelnes Modul für gpg4win aktualisieren</h2>
 
 Hierfür sollte man schon einmal ein Installationspaket wie oben beschreiben
-hergestellt haben.
+hergestellt haben.  Im Folgenden nehmen wir an, sie möchten das Modul
+<em>gnupg</em> aktualisieren.
 
 <ol>
-<li> (Beschreibung fehlt noch)
+<li> Zuerst ist die alte Version zu löschen:<br>
+     <em>$ cd packages</em><br>
+     <em>$ rm gnupg-*</em><br>
+<li> Danach laden Sie die gewünschte Version herunter; z.B:<br>
+     <em>$ wget ftp://ftp.gnupg.org/gnupg/gnupg-1.4.3.tar.bz2</em><br>
+     <em>$ wget ftp://ftp.gnupg.org/gnupg/gnupg-1.4.3.tar.bz2.sig</em><br>
+     <em>$ gpg --verify gnupg-1.4.3.tar.bz2.sig</em><br>
+     Nur wenn das letzte Kommando eine gültige Signatur anzeigt,
+     dürfen Sie fortfahren.  Weitere Erklärungen finden Sie auf <a
+     href="http://www.gnupg.org/download/integrity_check.html">GnuPG
+     Webseite</a>.  Falls das Modul keine Signatur bereitstellt,
+     sollten Sie sich auf eine andere Art der Authentizität des Moduls
+     vergewissern.
+<li> Bauen Sie eine neuen Installer:<br>
+     <em>$ cd ..</em><br>
+     <em>$ make clean</em><br>
+     <em>$ ./configure --host=i586-mingw32msvc</em><br>
+     <em>$ make</em>
 </ol>
+
+Achtung: Sie dürfen das Skiript <em>download.sh</em> nicht mehr
+aufrufen, da es die aktuelle Standardversion des Moduls wieder
+installieren würde.  Entwickler mit Schreibzugriff auf den FTP-Server
+können eine neue Standardversion eines Moduls installieren, indem sie
+die Datei <em>packages.current</em> anpassen, signieren und auf den
+FTP Sever hochladen.
+
 
 <h2>Ein neues Modul in gpg4win einbauen</h2>
 
