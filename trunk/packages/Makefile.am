@@ -19,3 +19,17 @@
 
 EXTRA_DIST = download.sh packages.keys
 
+
+upload: packages.current packages.current.sig
+	set -e; \
+	echo "Uploading package list to www.gpg4win.org ..."; \
+        user=`svn info | sed -n '/^URL:/ s,.*svn+ssh://\\([^@]*\\).*,\\1,p'`;\
+	rsync -v -W packages.current{,.sig} \
+	  $${user}@wald.intevation.org:/gpg4win/htdocs/
+
+
+packages.current.sig : packages.current
+	@echo "packages.current.sig is expected to be a detached signature of packages.current"
+	@echo "Use \"gpg -sbu YOUR_KEYID packages.current\" to create it"
+	@false
+

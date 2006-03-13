@@ -27,11 +27,11 @@
 # line will be appended to the current base URL (with a / as
 # delimiter).  Example:
 #
-#    # GnuPG stuff. 
+#    # GnuPG stuff.
 #    server ftp://ftp.gnupg.org/gcrypt
 #    
 #    file gnupg/gnupg-1.4.2.tar.gz
-#    file gnupg/gnupg-1.4.2.tar.gz.sig
+#    chk  1234567890123456789012345678901234567890
 #    
 
 force=no
@@ -47,7 +47,7 @@ fi
 
 WGET=wget
 
-url="ftp://ftp.gpg4win.org/gpg4win/"
+url="http://www.gpg4win.org/"
 if [ "$keep_list" = "no" ]; then
   echo "downloading packages list from \`$url'."
   if ! ${WGET} -N -q $url/packages.current{,.sig} ; then
