@@ -16,9 +16,9 @@ Was man benötigt: Ein Debian GNU/Linux 3.1 'sarge' system.
 Dafür ist die nachfolgende Anleitung getestet.
 Prinzipiell sind auch andere Systeme, ggf. mit
 ein bischen Anpassungsarbeit, möglich.<br>
-Desweiteren mindestens 50 MByte Platz auf der
+Desweiteren mindestens 200 MByte Platz auf der
 Festplatte und eine halbwegs schnelle Internetanbindung
-da ca. 20 MByte heruntergeladen werden müssen.
+da ca. 40 MByte heruntergeladen werden müssen.
 </p>
 
 <p>
@@ -69,7 +69,7 @@ Das zugehörige Quelltextpaket (mit den Quelltexten sämtlicher Module, sehr gross
 
 <h2>Ein einzelnes Modul für gpg4win aktualisieren</h2>
 
-Hierfür sollte man schon einmal ein Installationspaket wie oben beschreiben
+Hierfür sollte man schon einmal ein Installationspaket wie oben beschrieben
 hergestellt haben.  Im Folgenden nehmen wir an, sie möchten das Modul
 <em>gnupg</em> aktualisieren.
 
@@ -94,17 +94,48 @@ hergestellt haben.  Im Folgenden nehmen wir an, sie möchten das Modul
      <em>$ make</em>
 </ol>
 
-Achtung: Sie dürfen das Skiript <em>download.sh</em> nicht mehr
+<p>
+Achtung: Sie dürfen das Skript <em>download.sh</em> jetzt nicht mehr
 aufrufen, da es die aktuelle Standardversion des Moduls wieder
-installieren würde.  Entwickler mit Schreibzugriff auf den FTP-Server
-können eine neue Standardversion eines Moduls installieren, indem sie
-die Datei <em>packages.current</em> anpassen, signieren und auf den
-FTP Sever hochladen.
+installieren würde. Für eine dauerhafte Aktivierung der neuen Modul-Version
+des offiziellen gpg4win Installationspaketes sind folgende Schritte zu erledigen.
+</p>
+
+<p>
+Voraussetzung dabei ist, dass man Schreibrechten auf
+das SVN Verzeichnis  besitzt (also ein Benutzerkonto auf
+wald.intevation.de mit Entwickler-Status für gpg4win).
+</p>
+
+<ol>
+<li> Anpassen der Datei<br>
+     <em>packages.current</em><br>
+     für die neue Modulversion (lesen Sie für die Syntax den Kopf
+     dieser Datei) und laden Sie sie in das Subversion repository hoch:<br>
+     <em>$ svn commit packages.current</em>
+
+<li> Erstellen Sie eine Signatur für diese Datei:<br>
+     <em>$ gpg -sb packages.current</em>
+
+<li> Falls Sie bisher noch nie eine Aktualisierung der Paketliste
+     autorisiert haben, müssen Sie zunächst Ihren PGP-Schlüssel
+     an den Schlüsselbund<br>
+     <em>packages.keys</em><br>
+     anhängen:<br>
+     <em>$ gpg --export --armor YOUR-KEY-ID > gpg_pub_key.asc</em><br>
+     <em>$ gpg --no-default-keyring --keyring ./packages.keys --import gpg_pub_key.asc</em><br>
+     Eine Liste der bisher eingetragenen Schlüssel erhalten Sie so:<br>
+     <em>$ gpg packages.keys</em><br>
+
+<li> Laden Sie die beiden Dateien
+     auf die Website von gpg4win hoch:<br>
+     <em>$ make update</em><br>
+</ol>
 
 
 <h2>Ein neues Modul in gpg4win einbauen</h2>
 
-Hierfür sollte man schon einmal ein Installationspaket wie oben beschreiben
+Hierfür sollte man schon einmal ein Installationspaket wie oben beschrieben
 hergestellt haben und dabei die Version aus SVN benutzt haben.
 
 <ol>
@@ -142,10 +173,9 @@ hergestellt haben und dabei die Version aus SVN benutzt haben.
     oder als einfaches bereits andersweitig
     für Windows kompiliertes Binärobjekt integriert werden soll.
 
-<li>Jetzt noch die Anweisungen für das automatische Herunterladen
-    in die Datei<br>
+<li>Jetzt noch die Datei<br>
     <em>packages/packages.current</em><br>
-    eintragen. Auch hier finden sich ausreichend Beispiele.
+    wie weiter oben beschrieben aktualisieren.
 
 <li>gpg4win muss für das neue Modul erneut konfiguriert werden:<br>
      <em>$ AUTOMAKE_SUFFIX=-1.9 ./autogen.sh</em><br>
