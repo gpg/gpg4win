@@ -1294,13 +1294,13 @@ Bedienung von GnuPG.  Wir geben hier einige Hinweise zur Benutzung.
 
 Aufgrund technischer Schwierigkeiten der Integration von OpenPGP in
 Outlook ist dieses Plugin nicht so komfortabel zu bedienen wie die
-OpenPGP Unterstützung in anderen Mailprogrammen.  GPGol funktioniert
+OpenPGP Unterstützung in anderen EMail-Programmen.  GPGol funktioniert
 in der aktuellen Version nur mit Outlook 2003 SP2 und gibt einen
 Warnhinweis aus, falls eine ältere Outlook Version benutzt wird.
 
 \subsection{Installation}
 
-Die Installation wird duch den Installer vorgenommen.  Beim nächsten
+Die Installation wird duch den gpg4win Installer vorgenommen.  Beim nächsten
 Start von Outlook findet sich im Menü
 \Menu{Extras$\rightarrow$Optionen} eine Karteikarte \Menu{GnuPG}:
 
@@ -1313,19 +1313,19 @@ verschlüsselt oder signiert werden sollen.  Sie können dies aber immer
 noch bei der Erstellung der Nachricht individuell verändern.
 
 Die Option "`Entschlüsselte Attachments automatisch speichern"'
-speichert Attachments nach der Entschlsselung im Klartext ab, so daß
+speichert Anhänge nach der Entschlüsselung im Klartext ab, so daß
 sie dann jederzeit ohne erneute Entschlüsselung gelesen werden können.
 
 Die Option "`Automatisch Attachments signieren"' sorgt dafür, daß mit
-dem Signieren des Haupttexts auch die Attachments signiert werden.
-Dazu wird für jedes Attachment eine weiteres Attachment mit der
+dem Signieren des Haupttexts auch die Anhänge signiert werden.
+Dazu wird für jeden Anhang ein weiterer Anhang mit der
 Signatur angelegt.
 
 Wenn Sie "`Nachricht ebenfalls mit voreingestelltem Schlüssel
 verschlüsseln"' ankreuzen und in das Eingabefeld die Key-ID Ihres
-eigenen Schlüssels eintrage, so werden Ihre Nachrichten automatisch
+eigenen Schlüssels eintragen, so werden Ihre Nachrichten automatisch
 auch an sie selbst verschlüsselt. Dies ermöglich die Nachricht dann
-selber noch im Order für gesendete Nachrichten lesen zu können.
+selber noch im Order für gesendete Nachrichten entschlüsseln und lesen zu können.
 
 Die Option "`Im Vorschaufenster entschlüsseln"' kann nur sinnvoll auf
 schnellen Rechnern eingesetzt werden und funktioniert z.Z. nur
@@ -1359,15 +1359,15 @@ Bildschirmausdruck entsprechen:
   unten klicken ("`Optionen für Symbolleiste"').  Dort finden Sie dann
   alle nicht angezeigten Icons. Ein Klick auf eines dieses Icons
   verschiebt es in die Symbolleiste.  Dasselbe gilt für das Icon zum
-  Aufrufe der Schlüsselverwaltung.
+  Aufruf der Schlüsselverwaltung.
 
 \item[Was bedeuten die Buchstaben im Übersichtsdialog?]
 
   Bei der Entschlüsselung oder Signaturprüfung von Nachrichten mit
-  Attachments zeigt GPGol eine Liste mit den einzelnen Besandteilen
+  Anhängen zeigt GPGol eine Liste mit den einzelnen Besandteilen
   und deren Dateinamen dar. Vor dem Dateinamen steht eine "`E"' falls
-  es sich um ein verschlüsseltes Attachment handelt oder eine "`S"'
-  für ein signiertes Attachment.
+  es sich um einen verschlüsselten Anhang handelt oder eine "`S"'
+  für einen signierten Anhang.
 
 
 \item[Wie finde ich Informationen zur aktuellen Version von GPGol?]       
@@ -1387,7 +1387,7 @@ Bildschirmausdruck entsprechen:
   aber nicht immer erfolgreich.
 
 \item[Warum erscheint der Bestätigungsdialog beim Zugriff auf
-  bestimmet Email?]
+  bestimmte EMails?]
 
   Sofern GPGol nicht als vertrauenswürdiges Plugin installiert worden
   ist, nimmt Outlook an, das Plugin versucht unberechtigt auf interne
@@ -1398,7 +1398,7 @@ Bildschirmausdruck entsprechen:
 \item[Warum unterstützt GPGol keine PGP/MIME Signaturen?]
 
   Durch die Architektur von Outlook ist es nicht möglich derartige
-  Signaturen in in einem Plugin zu prüfen.  Outlook verändert die
+  Signaturen in einem Plugin zu prüfen.  Outlook verändert die
   Nachrichten direkt beim Empfang, wodurch diese Signaturen nicht mehr
   gültig wären.
 
