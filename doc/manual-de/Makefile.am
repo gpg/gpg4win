@@ -25,7 +25,8 @@ png_files := \
         sc-inst-finished.png sc-inst-finished2.png \
 	sc-winpt-sign-passwd.png \
         sc-gpgee-ctxmenu.png sc-gpgee-signmenu.png \
-	sc-gpa-gen-backup.png sc-gpa-gen-backup-warn.png
+	sc-gpa-gen-backup.png sc-gpa-gen-backup-warn.png \
+	sc-gpgol-options.png sc-gpgol-noword.png
 
 
 web_png_files := blank.png next.png previous.png up.png \
@@ -49,7 +50,7 @@ eps_files := adele01.eps.gz adele02.eps.gz man-with-signed-key.eps.gz \
              sc-gpa-two-keys.eps.gz \
              sc-ol-send-test-key.eps.gz sc-ol-send-enc-msg1.eps.gz \
              sc-ol-send-enc-msg2.eps.gz \
-             sc-gpgol-noword.eps.gz sc-gpgol-set-icon.eps.gz \
+              sc-gpgol-set-icon.eps.gz \
              sc-winpt-startmenu.eps.gz sc-winpt-trayicon.eps.gz \
 	     sc-winpt-clip-decrypt.eps.gz sc-winpt-good-sig.eps.gz \
              sc-winpt-sel-enc-key.eps.gz sc-winpt-enctoself.eps.gz \
