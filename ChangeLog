@@ -1,3 +1,7 @@
+2006-03-15  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
+
+	* src/inst-gpa.nsi: Fixed a typo.
+
 2006-03-13  Werner Koch  <wk@g10code.com>
 
 	* packages/Makefile.am (upload): New target for uploading the
