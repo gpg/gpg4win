@@ -17,7 +17,7 @@
 \T\DeclareGraphicsExtensions{.eps.gz,.eps}
 
 \T\fancyhead{} % clear all fields
-\T\fancyhead[LO]{Gpg4win für Durchblicker}
+\T\fancyhead[LO,RE]{Gpg4win für Durchblicker}
 \T\fancyhead[RO,LE]{\thepage}
 \T\fancyfoot[C]{\includegraphics[width=1cm]{gpg4win-logo}}
 
@@ -125,7 +125,7 @@ verteilen und/oder zu verändern unter den Bedingungen der GNU Free
 Documentation License, Version 1.1 oder einer späteren, von der Free
 Software Foundation veröffentlichten Version.
 
-Diese Seite ("`Impressum"') darf nicht verändert werden und muß in
+Diese Seite ("`Impressum"') darf nicht verändert werden und muss in
 allen Kopien und Bearbeitungen erhalten bleiben ("`unveränderlicher
 Abschnitt"' im Sinne der GNU Free Documentation License).
 
@@ -163,7 +163,7 @@ um rund um den Globus miteinander zu kommunizieren und uns zu
 informieren. Aber Rechte und Freiheiten, die in anderen
 Kommunikationsformen längst selbstverständlich sind, müßen wir uns in
 den neuen Technologien erst sichern. Das Internet ist so schnell und
-massiv über uns hereingebrochen, daß wir mit der Wahrung unserer Rechte
+massiv über uns hereingebrochen, dass wir mit der Wahrung unserer Rechte
 noch nicht so recht nachgekommen sind.
 
 
@@ -192,7 +192,7 @@ Niemand hätte je ersthaft daran gedacht, alle Briefe und Postkarten zu
 sammeln, ihren Inhalt auszuwerten oder Absender und Empfänger zu
 protokollieren. Das wäre einfach nicht machbar gewesen, oder es hätte
 zu lange gedauert. Mit der modernen Computertechnik ist das technisch
-möglich. Es gibt mehr als einen Hinweis darauf, daß dies genau heute
+möglich. Es gibt mehr als einen Hinweis darauf, dass dies genau heute
 schon im großen Stil mit Ihrer und meiner \Email{}
 geschieht.\footnote{Hier sei nur an das \xlink{Echelon
     System}{\EchelonUrl} erinnert%
@@ -241,7 +241,7 @@ und die wir im Folgenden besprechen:
 %% Original page 9
 \section{Wie funktioniert Gpg4win?}
 Das Besondere an Gpg4win und der zugrundeliegenden Public-Key Methode
-ist, daß sie jeder verstehen kann und soll. Nichts daran ist
+ist, dass sie jeder verstehen kann und soll. Nichts daran ist
 Geheimwissen ­-- es ist nicht einmal besonders schwer zu verstehen.
 
 Die Benutzung von Gpg4win ist sehr einfach, seine Wirkungsweise dagegen
@@ -272,7 +272,7 @@ Denn wenn dieser Schlüssel in die falschen Hände fällt, ist es um die
 Sicherheit des wertvollen Gutes geschehen. Dessen Sicherheit steht und
 fällt mit der Sicherheit des Schlüssels.  Also hat man den Schlüssel
 mindestens genauso gut abzusichern, wie das zu sichernde Gut selbst.
-Die genaue Form des Schlüssels muß völlig geheim gehalten werden.
+Die genaue Form des Schlüssels muss völlig geheim gehalten werden.
 
 
 \clearpage
@@ -288,16 +288,16 @@ dazu auch sehr fehleranfällig.
 \end{center}
 
 Das Grundproblem bei der "`normalen"' geheimen Nachrichtenübermittlung
-ist, daß für Ver- und Entschlüsselung derselbe Schlüssel benutzt wird
-und daß sowohl der Absender als auch der Empfänger diesen geheimen
+ist, dass für Ver- und Entschlüsselung derselbe Schlüssel benutzt wird
+und dass sowohl der Absender als auch der Empfänger diesen geheimen
 Schlüssel kennen.
 
 Dies führt zu einer ziemlich paradoxen Situation: Bevor man mit einem
 solchen System ein Geheimnis --­ eine verschlüsselte Nachricht ---
-mitteilen kann, muß man schon vorher ein anderes Geheimnis --­ den
+mitteilen kann, muss man schon vorher ein anderes Geheimnis --­ den
 Schlüssel ­-- mitgeteilt haben.  Und da liegt der Hase im Pfeffer: man
-muß sich ständig mit dem Problem herumärgern, daß der Schlüssel
-unbedingt ausgetauscht werden muß, aber auf keinen Fall von einem
+muss sich ständig mit dem Problem herumärgern, dass der Schlüssel
+unbedingt ausgetauscht werden muss, aber auf keinen Fall von einem
 Dritten abgefangen werden darf.
 
 
@@ -339,8 +339,8 @@ funktioniert.
 %% Original page 13
 Das Gpg4win-Prinzip ist wie gesagt recht einfach:
 
-Der \textbf{geheime oder private Schlüssel} (secret oder private key) muß
-geheim gehalten werden.
+Der \textbf{geheime Schlüssel}, auch \textbf{private Schlüssel} genannt
+(secret oder private key), muss geheim gehalten werden.
 
 Der \textbf{öffentliche Schlüssel} (public key) soll so
 öffentlich wie möglich gemacht werden.
@@ -381,7 +381,7 @@ Nachrichten zunächst einmal gut gesichert.
 \IncludeImage[width=0.9\textwidth]{letter-into-safe}
 \end{center}
 
-Da es nur einen Schlüssel gibt, muß Ihr Korrespondenzpartner denselben
+Da es nur einen Schlüssel gibt, muss Ihr Korrespondenzpartner denselben
 Schlüssel wie Sie haben, um den Briefkasten damit auf- und zuschließen
 und eine Geheimnachricht deponieren zu können.
 
@@ -513,7 +513,7 @@ Schlüsselbund.
 \section{Der Passwortsatz}
 
 Wie Sie oben gesehen haben, ist der private Schlüssel eine der
-wichtigsten Komponenten im Public-Key Verschlüsselungssystem. Man muß
+wichtigsten Komponenten im Public-Key Verschlüsselungssystem. Man muss
 (und darf) ihn zwar nicht mehr auf geheimem Wege mit seinen
 Korrespondenzpartnern austauschen, aber nach wie vor ist seine
 Sicherheit der Schlüssel zur Sicherheit des "`ganzen"' Systems.
@@ -534,8 +534,8 @@ speichert den Schlüssel deswegen im sogenannten "`Heimverzeichnis"'
 ("`Homedir"') von GnuPG
 ab.  Dies kann sich je nach System an unterschiedlichen Orten
 befinden; für einen Benutzer mit
-dem Anmeldenamen "`Harry"' könnte es z.B.:
-\verb=C:\Dokumente und Einstellungen\harry\Anwendungsdaten\gnupg=
+dem Anmeldenamen "`Harry"' könnte es z.B.:\newline
+\verb=C:\Dokumente und Einstellungen\harry\Anwendungsdaten\gnupg= \newline
 sein.  Der geheime Schlüssel befindet sich dort in eine Datei mit dem
 Namen \verb=secring.gpg=.
 
@@ -591,7 +591,7 @@ Leerzeichen durcheinander. Im Prinzip ist alles erlaubt, auch "`Ö"',
 "`ß"', "`\$"' usw.
 
 Aber Vorsicht --- falls Sie Ihren geheimen Schlüssel im Ausland an
-einem fremden Rechner benutzen wollen, bedenken Sie, daß
+einem fremden Rechner benutzen wollen, bedenken Sie, dass
 fremdsprachige Tastaturen diese Sonderzeichen oft nicht haben.
 Beispielsweise werden Sie kein "`ä"' auf einer englischen
 Tastatur finden.
@@ -625,7 +625,7 @@ Es blAut nEBen TaschengeLd auch im WiNter.
 Kürzer, aber nicht mehr so leicht merken. Wenn Sie einen noch kürzeren
 Passwortsatz verwenden, indem Sie hier und da Sonderzeichen benutzen,
 haben Sie zwar bei der Eingabe weniger zu tippen, aber die
-Wahrscheinlichkeit, daß Sie Ihr Passwortsatz vergessen, wird dabei
+Wahrscheinlichkeit, dass Sie Ihr Passwortsatz vergessen, wird dabei
 noch größer.
 
 Ein extremes Beispiel für einen möglichst kurzen, aber dennoch sehr
@@ -647,7 +647,7 @@ wenn er:
   \Email{}-Account oder Ihr Handy
 
 \item aus einem Wörterbuch stammt. Cracker lassen in Minutenschnelle
-  komplette Wörterbücher elektronisch über ein Passwort laufen.
+  komplette Wörter\-bücher elektronisch über ein Passwort laufen.
 
 \item aus einem Geburtsdatum oder einem Namen besteht.  Wer sich die
   Mühe macht, Ihre \Email{} zu entziffern, kann auch ganz leicht an
@@ -664,7 +664,7 @@ wenn er:
 
 Wenn Sie nun Ihren Passwortsatz zusammenstellen, nehmen Sie auf gar
 keinen Fall eines der oben angeführten Beispiele.  Denn es liegt auf
-der Hand, daß jemand, der sich ernsthaft darum bemüht, Ihr
+der Hand, dass jemand, der sich ernsthaft darum bemüht, Ihr
 Passwortsatz herauszubekommen, zuerst ausprobieren würde, ob Sie
 nicht eines dieser Beispiele genommen haben, falls er auch diese
 Informationen gelesen hat.
@@ -694,7 +694,8 @@ Kennzeichen:
 
 \textbf{Die Benutzerkennung} besteht aus dem Namen und der
 \Email{}-Adresse, die Sie während der Schlüsselerzeugung eingegeben
-haben, also z.B. \verb=-Heinrich Heine <heinrichh@gpg4win.de>=.
+haben, also z.B. \newline
+\verb=-Heinrich Heine <heinrichh@gpg4win.de>=.
 
 \textbf{Die Schlüsselkennung} verwendet die Software intern um mehrere
 Schlüssel voneinander zu unterscheiden. Mit dieser Kennung kann man
@@ -757,7 +758,7 @@ Schlüssel per Keyserver"') vorgestellt. Es genügt, den
 Schlüssel an irgendeinen der Keyserver zu senden, denn fast alle
 synchronsieren sich weltweit miteinander.
 
-\textsc{Vorsicht: Obwohl es noch keine Hinweise gibt, daß Spammer
+\textsc{Vorsicht: Obwohl es noch keine Hinweise gibt, dass Spammer
   Adressen wirklich von den Keyservern sammeln, so ist dies jedoch
   technisch möglich.  Falls Sie keinen wirksamen Spamfilter benutzen,
   sollten Sie u.U.\ von der Veröffentlichung Ihres Schlüssels auf einem
@@ -775,12 +776,12 @@ Anzahl der dort liegenden Schlüssel gibt es nicht.
 \end{center}
 
 Dieses verteilte Netz von Keyservern sorgt für eine bessere
-Verfügbarkeit und verhindert daß einzelne Systemandministratoren
+Verfügbarkeit und verhindert dass einzelne Systemandministratoren
 Schlüssel löschen um so die Kommunikation unmöglich zu machen
 ("`Denial of Service"'-Angriff).
 
 %% Keyserver.net sind proprietar und funktionieren überhaupt nicht.
-%% Nur weil PRZ den Hersteller berät, sollte man nicht glauben, daß sie
+%% Nur weil PRZ den Hersteller berät, sollte man nicht glauben, dass sie
 %% funktionieren.
 
 %%%Das OpenPGP-Netz http://www.keyserver.net/ ist zum Beispiel der
@@ -905,7 +906,7 @@ Datei, und senden sie ihn an den Empfänger.
 \section{PlugIns für \Email{}-Programme}
 
 Im "`Einsteiger-Handbuch"' haben wir im Kapitel 7 ("`Sie entschlüsseln
-eine \Email{}"') erwähnt, daß es PlugIns für bestimmte \Email{}-Programme
+eine \Email{}"') erwähnt, dass es PlugIns für bestimmte \Email{}-Programme
 gibt, die die Ver- und Entschlüsselung erleichtern. Die im
 Schnelleinstieg vorgestellte Methode mit dem Frontend WinPT
 funktioniert einfach und schnell, und zwar mit jedem beliebigen
@@ -926,8 +927,8 @@ Plugins für GnuPG gibt es im Moment für folgende Windows-Mailprogramme:
   das bereits geschehen.
 %\item[PostMe] nur Windows.
 %% FIXME Postme und mail: Prüfen ob noch verfügbar
-\item[Eudora] Das Plugin wird in Gpg4win enthalten sein, falls
-  einige rechtliche Fragen zufriedenstellend geklärt werden.
+%\item[Eudora] Das Plugin wird in Gpg4win enthalten sein, falls
+%  einige rechtliche Fragen zufriedenstellend geklärt werden.
 \end{description}
 
 Desweiteren verfügen praktisch alle Mailprogramme, die unter GNU/Linux oder
@@ -937,11 +938,10 @@ GnuPG Support.
 Da sämtliche Komponenten des Gpg4win Pakets als Freie Software
 entstehen, ist die Entwicklung stark im Fluss.
 
-Aktuelle Informationen über die Komponenten finden Sie unter
-der Gpg4win-Webpage http://www.gpg4win.de/
+Aktuelle Informationen über die Komponenten finden Sie unter www.gpg4win.de.
 
-Weitere Informationen zu Gpg4Win, GnuPG und anderer Software finden
-Sie auf der Website www.bsi-fuer-buerger.de des Bundesamtes für
+Informationen zu den Themen IT-Sicherheit, Gpg4Win, GnuPG und anderer Software finden
+Sie auf der Website www.bsi-fuer-buerger.de und www.bsi.de des Bundesamtes für
 Sicherheit in der Informationstechnik.
 
 \clearpage
@@ -949,9 +949,9 @@ Sicherheit in der Informationstechnik.
 \section{Die Schlüsselprüfung}
 \label{ch:trust}
 
-Woher wissen Sie eigentlich, daß der fremde öffentliche Schlüssel
+Woher wissen Sie eigentlich, dass der fremde öffentliche Schlüssel
 wirklich vom Absender stammt? Und umgekehrt --- warum sollte Ihr
-Korrespondenzpartner glauben, daß der öffentliche Schlüssel, den Sie
+Korrespondenzpartner glauben, dass der öffentliche Schlüssel, den Sie
 ihm geschickt haben, auch wirklich von Ihnen stammt?  Die
 Absenderangabe auf einer \Email{} besagt eigentlich gar nichts.
 
@@ -1000,7 +1000,7 @@ eindeutig den richtigen Schlüssel.
 
 Natürlich können Sie sich auch persönlich mit dem Eigentümer des
 Schlüssels treffen oder auf jedem anderen Wege mit ihm kommunizeren,
-solange Sie ganz sicher sind, daß Schlüssel und Eigentümer zusammen
+solange Sie ganz sicher sind, dass Schlüssel und Eigentümer zusammen
 gehören.  Häufig ist der Fingerprint auch auf Vistenkarten abgedruckt;
 wenn Sie also eine authentische Vistenkarte haben, so können Sie sich
 den Anruf ersparen.
@@ -1009,7 +1009,7 @@ den Anruf ersparen.
 
 Nachdem Sie sich "`per Fingerabdruck"' von der Echtheit des
 öffentlichen Schlüssel überzeugt haben, sollten Sie ihn signieren.
-Damit teilen Sie anderen Gpg4win-Benutzern mit, daß Sie diesen Schlüssel
+Damit teilen Sie anderen Gpg4win-Benutzern mit, dass Sie diesen Schlüssel
 für echt halten: Sie übernehmen so etwas wie die "`Patenschaft"' über
 diesen Schlüssel und erhöhen das allgemeine Vertrauen in seine
 Echtheit.
@@ -1027,8 +1027,8 @@ Schlüssels bestätigt.
 
 Da --- wie Sie wissen --- geheimer und öffentlicher Schlüssel
 untrennbar zusammengehören, kann jedermann mit Hilfe Ihres
-öffentlichen Schlüssels überprüfen, daß diese Signatur von Ihnen
-stammt und daß der Schlüssel nicht verändert wurde, also authentisch
+öffentlichen Schlüssels überprüfen, dass diese Signatur von Ihnen
+stammt und dass der Schlüssel nicht verändert wurde, also authentisch
 ist.  Damit ist für einen Dritten --- wenn auch indirekt --- ein
 gewisses Vertrauen in die Echtheit und Gültigkeit des signierten
 Schlüssels gegeben.
@@ -1054,7 +1054,7 @@ tragen. Damit können immer mehr Menschen darauf vertrauen, dass dieser
 öffentliche Schlüssel wirklich Ihnen und niemandem sonst gehört.
 
 Wenn man dieses "`Web of Trust"' weiterspinnt, entsteht eine flexible
-Beglaubigungs-Infrastruktur.
+Beglaubigungs-Infra\-struktur.
 
 Eine einzige Möglichkeit ist denkbar, mit dem man diese
 Schlüsselprüfung aushebeln kann: jemand schiebt Ihnen einen falschen
@@ -1077,7 +1077,7 @@ nicht die Lösung sein\ldots
 Hier braucht man eine "`übergeordnete"' Instanz, der alle Benutzer
 vertrauen können.  Sie überprüfen ja auch nicht persönlich den
 Personalausweis eines Unbekannten durch einen Anruf beim
-Einwohnermeldeamt, sondern vertrauen darauf, daß die ausstellende
+Einwohnermeldeamt, sondern vertrauen darauf, dass die ausstellende
 Behörde diese Überprüfung korrekt durchgeführt und beglaubigt hat.
 
 Solche Zertifizierungsinstanzen gibt es auch bei der Public-Key
@@ -1143,11 +1143,11 @@ noch eine weitere Möglichkeit:
 \begin{itemize}
 \item man kann seine \Email{} signieren, mit anderen Worten die \Email{}
   mit einer elektronischen Unterschrift versehen. Der Text ist dann zwar noch
-  für jeden lesbar, aber der Empfänger kann sicher sein, daß die
+  für jeden lesbar, aber der Empfänger kann sicher sein, dass die
   \Email{} unterwegs nicht manipuliert oder verändert wurde.
 \end{itemize}
 
-Außerdem garantiert die Signatur dem Empfänger, daß die Nachricht
+Außerdem garantiert die Signatur dem Empfänger, dass die Nachricht
 auch tatsächlich vom Absender stammt. Und: wenn man mit jemandem
 korrespondiert, dessen öffentlichen Schlüssel man ­-- aus welchem
 Grund auch immer --- nicht hat, kann man so die Nachricht wenigstens
@@ -1237,14 +1237,14 @@ CEL3//4INzHUNA/eqR3XMi0=
 Wenn Frau Adele diese \Email{}
 erhält, kann sie sicher sein,
 \begin{enumerate}
-\item daß die Nachricht von Herrn Heine stammt
-\item daß sie nicht verändert wurde
+\item dass die Nachricht von Herrn Heine stammt
+\item dass sie nicht verändert wurde
 \end{enumerate}
 
 Hätte zum Bespiel jemand das "`gesund"' in dem obigen Beispiel zu
-"`krank"' verändert, wäre die Signatur "`gebrochen"', daß heißt, die
+"`krank"' verändert, wäre die Signatur "`gebrochen"', dass heißt, die
 \Email{} wäre mit dem Vermerk "`Bad signature"' oder "`Überprüfung
-fehlgeschlagen"' beim Empfänger versehen, soabald die Signatur
+fehlgeschlagen"' beim Empfänger versehen, sobald die Signatur
 überprüft wird.
 
 \clearpage
@@ -1254,23 +1254,23 @@ fehlgeschlagen"' beim Empfänger versehen, soabald die Signatur
 Es gibt aber noch zwei weitere Gründe, die zu einem Bruch der Signatur
 führen können. Wenn Sie eine \Email{} mit dem Vermerk "`Bad signature"'
 oder "`Überprüfung fehlgeschlagen"' erhalten, ist das ein Warnsignal,
-muß aber nicht zwangsläufig bedeuten, daß Ihre \Email{} manipuliert
+muss aber nicht zwangsläufig bedeuten, dass Ihre \Email{} manipuliert
 wurde.
 
 \begin{enumerate}
 \item aufgrund der technischen Gegebenheiten ist es nicht
-  auszuschließen, daß die \Email{} durch eine fehlerhafte Übertragung
+  auszuschließen, dass die \Email{} durch eine fehlerhafte Übertragung
   über das Internet verändert wurde.
-\item das \Email{}-Programm des Absenders kann falsch eingestellt sein.
+\item das \Email{}-Programm des Absenders oder Empfängers kann falsch eingestellt sein.
   Wenn man eine signierte \Email{} verschickt, sollte man unbedingt
-  darauf achten, daß im \Email{}-Programm alle Optionen ausgeschaltet
+  darauf achten, dass im \Email{}-Programm alle Optionen ausgeschaltet
   sind, die \Email{} schon beim Versand verändern. Dazu zählt
   "`HTML-Mails"' und "`Word Wrap"'.
 
   "`Word Wrap"' bezeichnet den Umbruch von Zeilen in der \Email{}. Beides
   verändert natürlich die \Email{} und "`bricht"' die Signatur, obwohl
   niemand sie willentlich verändert hat.  Bei Outlook Express
-  beispielsweise muß diese Option unter "`Extras / Optionen / Senden /
+  beispielsweise muss diese Option unter "`Extras / Optionen / Senden /
   NurText-Einstellungen / Textkodierung mit Keine"' aktiviert sein,
   wie es auch standardmäßig voreingestellt ist.
 \end{enumerate}
@@ -1317,7 +1317,7 @@ Verschlüsselung.  Da Sie lediglich signieren möchten ist hier
 
 In der mittleren Box können Sie die Art der Signatur wählen. Sie
 verwenden hier am besten eine "`abgetrennte"' Signatur; dies bedeutet,
-daß die zu signierende Datei unverändert bleibt und eine zweite Datei
+dass die zu signierende Datei unverändert bleibt und eine zweite Datei
 mit der eigentlichen Signatur erzeugt wird.  Um die Signatur später zu
 überprüfen sind dann beide Dateien notwendig.
 
@@ -1449,7 +1449,7 @@ hin und wieder die Notwendigkeit, einen geheimen Schlüssel zu im- oder
 exportieren. Wenn Sie zum Beispiel einen bereits vorhandenen
 PGP-Schlüssel mit Gpg4win weiterbenutzen wollen, müssen Sie ihn
 importieren.  Oder wenn Sie Gpg4win von einem anderen Rechner aus
-benutzen wollen, muß ebenfalls zunächst der gesamte Schlüssel dorthin
+benutzen wollen, muss ebenfalls zunächst der gesamte Schlüssel dorthin
 transferiert werden --­ der öffentliche und der private Schlüssel.
 
 %\clearpage
@@ -1474,8 +1474,8 @@ importiert; sie sind dann sofort sichtbar. \textbf{Löschen Sie danach
 PGP-Schlüssel erfolgreich in Gpg4win importiert und können ihn dort
 genau wie einen normalen GnuPG-Schlüssel benutzen.
 
-Es kann in einigen Fällen vorkommen, daß Sie einen importierten
-Schlüssel nicht direkt benutzen können.  Dies äussert sich darin, daß
+Es kann in einigen Fällen vorkommen, dass Sie einen importierten
+Schlüssel nicht direkt benutzen können.  Dies äussert sich darin, dass
 Sie den richtigen Passwortsatz eingeben, dieser aber nicht akzeptiert
 wird.  Das kommt daher, dass einige Versionen von PGP intern den
 IDEA Algorithmus verwenden.  Dieser kann von GnuPG aus rechtlichen
@@ -1510,7 +1510,7 @@ Sie dann den Menüpunkt \Menu{Schlüssel$\rightarrow$Sicherheitskopie anlegen}.
 
 Bestätigen Sie den Dateinamen oder wählen Sie einen anderen und GPA
 wird eine Sicherheitskopie bestehend aus dem geheimen und öffentlichen
-Schlüssel anlegen. Danach werden Sie noch daran erinnert, daß Sie
+Schlüssel anlegen. Danach werden Sie noch daran erinnert, dass Sie
 diese Datei sehr sorgfältig zu handhaben ist:
 
 % screenshot: GPA, Backup Hinweis
@@ -1520,7 +1520,7 @@ diese Datei sehr sorgfältig zu handhaben ist:
 
 
 Beim Import, also zum Beispiel auf einem anderen Rechner, importieren
-Sie einfach diese Sicherheistkopie in WinPT oder GPA.
+Sie einfach diese Sicherheitskopie in WinPT oder GPA.
 Gpg4win wird dann sowohl den
 geheimen als auch den öffentlichen Schlüssel aus dieser Datei
 importieren.
@@ -1541,7 +1541,7 @@ Betriebssystem oder nicht zuletzt Fehler in der Benutzung der letzte Weg um
 doch noch an die geheimen Informationen zu gelangen --- Auch deshalb sollte
 Sie diese Handbücher bis hierhin gelesen haben.
 
-In jedem Beispiel dieses Handbuchs haben Sie gesehen, daß zwischen dem
+In jedem Beispiel dieses Handbuchs haben Sie gesehen, dass zwischen dem
 geheimen und dem öffentlichen Schlüsselteil eine geheimnisvolle
 Verbindung besteht. Nur wenn beide zueinander passen, kann man
 Geheimbotschaften entschlüsseln.
@@ -1553,7 +1553,7 @@ Nichtmathematiker verstehen. Sie müssen eigentlich nur einfache
 Additionen ($2 + 3$) und Multiplikationen ($5 * 7$) beherrschen.
 Allerdings in einer ganzen anderen Rechenmethode als der, die Sie im
 Alltag benutzen.  Es gehört sowohl zur Sicherheitsphilosophie der
-Kryptographie wie auch zum Prinzip der Freien Software, daß es keine
+Kryptographie wie auch zum Prinzip der Freien Software, dass es keine
 geheimnissvollen Methoden und Algorithmen gibt. Letztendlich versteht
 man auch erst dann wirklich, warum GnuPG (die eigentliche Maschinerie
 hinter Gpg4win) sicher ist.
@@ -1580,7 +1580,7 @@ und Abertausenden von vernetzten Rechnern niemals genügen Speicher zur
 Verfügung stehen wird, um den letzen Schritt dieser Berechnung
 durchführen zu können.
 
-Es kann allerdings durchaus möglich sein, daß eines Tage eine geniale
+Es kann allerdings durchaus möglich sein, dass eines Tage eine geniale
 Idee die Mathematik revolutioniert und eine schnelle Lösung des mathematischen
 Problems, welches hinter RSA steckt, liefert.  Dies wird aber wohl
 kaum von heute auf morgen geschehen.
@@ -1597,9 +1597,9 @@ angewandten Kryptographie.
 \clearpage
 %% Original page  52
 
-Im folgenden erfahren Sie, wie diese mathematische Methode funktioniert. Nicht
+Im Folgenden erfahren Sie, wie diese mathematische Methode funktioniert. Nicht
 in allen Einzelheiten ­-- das würde den Rahmen dieser Anleitung bei
-weitem sprengen ---, aber doch so, daß Sie bei etwas Mitrechnen selbst
+weitem sprengen ---, aber doch so, dass Sie bei etwas Mitrechnen selbst
 mathematisch korrekt ver- und entschlüsseln können und dabei das
 "`Geheimnis der großen Zahlen"' entdecken.
 
@@ -1631,7 +1631,7 @@ Rechnen mit Restklassen oder "`Modulo-Arithmetik"' heisst.
 %% Original page 53
 \subsection{Das Rechnen mit Restklassen}
 
-Wenn man mit Restklassen rechnet, so bedeutet dies, daß man
+Wenn man mit Restklassen rechnet, so bedeutet dies, dass man
 nur mit dem "`Rest"' rechnet, der nach einer ganzzahligen Teilung durch eine
 bestimmte Zahl übrigbleibt. Diese Zahl, durch die geteilt wird,
 nennt man den "`Modul"' oder die "`Modulzahl"'. Wenn wir
@@ -1668,7 +1668,7 @@ Fällen bleibt der Zeiger bei 11 stehen. Denn 11 ist der Rest, wenn 35
 
 Beim Rechnen mit Restklassen addieren und teilen wir Zahlen also nach
 den normalen Regeln der Alltagsarithmetik, verwenden dabei jedoch
-immer nur den Rest nach der Teilung. Um anzuzeigen, daß wir nach den
+immer nur den Rest nach der Teilung. Um anzuzeigen, dass wir nach den
 Regeln der Modulo-Arithmetik und nicht nach denen der üblichen
 Arithmetik rechnen, schreibt man den Modul (Sie wissen schon --- den
 Teiler) dazu. Man sagt dann zum Beispiel "`4 modulo 5"',
@@ -1795,7 +1795,7 @@ entschlüsselt werden mit Hilfe der ersten ($n$) und der dritten Zahl
 öffentlichen und seinen geheimen Schlüssel. Der Rest der Welt kennt
 nur den öffentlichen Schlüssel ($n$ und $e$).
 
-Die Trick des RSA Algorithmus liegt nun darin, daß es unmöglich ist,
+Die Trick des RSA Algorithmus liegt nun darin, dass es unmöglich ist,
 aus dem öffentlichen Schlüsselteil ($n$ und $e$) den geheimen
 Schlüsselteil ($d$) zu errechnen und damit die Botschaft zu
 entschlüsseln --- denn: Nur wer im Besitz von $d$ ist, kann die
@@ -1837,7 +1837,7 @@ mit dem eigentlichen Modulus 77 zu verwechseln).
 Wir suchen jetzt eine Zahl, die multipliziert mit dem öffentlichen
 Schlüssel die Zahl 1 ergibt, wenn man mit dem Modul 60 rechnet:
 
-\[ 13 \bmod 60 * ? \bmod 60 = 1 \bmod 60 \]
+\[ 13 \bmod 60 *~?~\bmod 60 = 1 \bmod 60 \]
 
 Die einzige Zahl, die diese Bedingung erfüllt, ist 37, denn
 
@@ -1932,11 +1932,11 @@ Wir haben\ldots
   entschlüsselt.
 \end{itemize}
 
-Diese beiden Primzahlen können so groß gewählt werden, daß es
+Diese beiden Primzahlen können so groß gewählt werden, dass es
 unmöglich ist, sie einzig aus dem öffentlich bekannt gemachten Produkt
 zu ermitteln. Das begründet die Sicherheit des RSA Algorithmus.
 
-Wir haben gesehen, daß die Rechnerei sogar in diesem einfachen
+Wir haben gesehen, dass die Rechnerei sogar in diesem einfachen
 Beispiel recht kompliziert geworden ist. In diesem Fall hat die
 Person, die den Schlüssel öffentlich gemacht hat, die Zahlen 77 und 13
 als öffentlichen Schlüssel bekanntgegeben.  Damit kann jedermann dieser
@@ -1947,7 +1947,7 @@ mit Hilfe der Zahl 77 und dem geheimen Schlüssel 37 dekodieren.
 
 %% Original page 62
 In diesem einfachen Beispiel ist die Verschlüsselung natürlich nicht
-sonderlich sicher. Es ist klar, daß 77 das Produkt aus 7 und 11 ist.
+sonderlich sicher. Es ist klar, dass 77 das Produkt aus 7 und 11 ist.
 
 Folglich kann man den Code in diesem einfachen Beispiel leicht
 knacken. Der scharfsinnige Leser wird auch bemerkt haben, dass etliche
@@ -1959,7 +1959,7 @@ und die benachbarten Zahlen sich in sich selbst umwandeln.
 \clearpage
 
 Das erscheint als ein weiterer Schwachpunkt dieser
-Verschlüsselungsmethode: man könnte annehmen, daß die Sicherheit des
+Verschlüsselungsmethode: man könnte annehmen, dass die Sicherheit des
 Algorithmus dadurch beeinträchtigt würde.  Doch stellen Sie sich nun
 vor, das Produkt zweier grosser Primzahlen, die auf absolut
 willkürliche Art und Weise gewählt werden, ergäbe
@@ -1977,13 +1977,13 @@ Selbst den schnellsten Computern der Welt würde es gewaltige Probleme
 bereiten, die beiden Primzahlen zu errechnen.
 
 Man muss die Primzahlen also nur groß genug wählen, damit ihre
-Berechnung aus dem Produkt so lange dauert, daß alle bekannten
+Berechnung aus dem Produkt so lange dauert, dass alle bekannten
 Methoden daran in der Praxis scheitern.  Außerdem nimmt der Anteil der
 Zahlen, die in sich selbst transformiert werden --­ wie wir sie oben
 in den Tabellen 1 und 2 gefunden haben --- stetig ab, je größer die
 Primzahlen werden.  Von Primzahlen in der Grössenordnung, die wir in der
 Praxis bei der Verschlüsselung verwenden, ist dieser Teil ist so
-klein, daß der RSA Algorithmus davon in keiner Weise beeinträchtigt
+klein, dass der RSA Algorithmus davon in keiner Weise beeinträchtigt
 wird.
 
 Je größer die Primzahlen, desto sicherer die Verschlüsselung.
@@ -2223,7 +2223,7 @@ Folglich würde die Nachricht in dreiziffrigen Stücken nun
 \[ aba, cad, aca \]
 
 ergeben. Geben wir den Zeichen nun ihre Zahlenwerte und vergessen
-dabei nicht, daß die Stücke dreiziffrige Zahlen zur Basis 4
+dabei nicht, dass die Stücke dreiziffrige Zahlen zur Basis 4
 darstellen.
 
 
@@ -2272,9 +2272,9 @@ Verwendung des geheimen Schlüssels (d.h.  erst Tabelle 2 benutzen)
 verschlüsseln, dann mit dem öffentlichen Schlüssel (d.h. Tabelle 1 als
 zweites benutzen) dekodieren und damit unsere ursprüngliche Zahl
 wieder hergestellen. Das bedeutet --­ wie wir bereits im Handbuch
-"`Gpg4win für Einsteiger"' gesehen haben ---, daß der Inhaber des geheimen
+"`Gpg4win für Einsteiger"' gesehen haben ---, dass der Inhaber des geheimen
 Schlüssels damit Nachrichten unter Verwendung des RSA Algorithmus
-verschlüsseln kann.  Damit ist bewiesen, daß sie eindeutig nur von
+verschlüsseln kann.  Damit ist bewiesen, dass sie eindeutig nur von
 ihm stammen können.
 
 
@@ -2294,7 +2294,7 @@ tiefergehende Details sind leicht in anderen Büchern (z.B. R.~Wobst,
 
 \textbf{Immerhin wissen Sie nun:} wenn jemand sich an Ihren verschlüsselten
 \Email{}s zu schaffen macht, ist er durchaus so lange damit beschäftig,
-daß er dann keine Lust mehr haben kann sie auch noch zu lesen\ldots
+dass er dann keine Lust mehr haben kann sie auch noch zu lesen\ldots
 
 
 
