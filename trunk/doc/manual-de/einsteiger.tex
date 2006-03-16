@@ -17,7 +17,7 @@
 \T\DeclareGraphicsExtensions{.eps.gz,.eps}
 
 \T\fancyhead{} % clear all fields
-\T\fancyhead[LO]{Gpg4win für Einsteiger}
+\T\fancyhead[LO,RE]{Gpg4win für Einsteiger}
 \T\fancyhead[RO,LE]{\thepage}
 \T\fancyfoot[C]{\includegraphics[width=1cm]{gpg4win-logo}}
 
@@ -27,7 +27,6 @@
 
 % Macros specific to this package
 \input{macros.tex}
-
 
 % Title stuff 
 \htmltitle{Einsteiger}
@@ -118,7 +117,7 @@ dieses Dokument zu kopieren, zu verteilen und/oder zu verändern unter
 den Bedingungen der GNU Free Documentation License, Version 1.1 oder
 einer späteren, von der Free Software Foundation veröffentlichten
 Version.  Diese Seite ("`Impressum"') darf nicht verändert werden und
-muß in allen Kopien und Bearbeitungen erhalten bleiben
+muss in allen Kopien und Bearbeitungen erhalten bleiben
 ("`unveränderlicher Abschnitt"' im Sinne der GNU Free Documentation
 License).  Wenn dieses Dokument von Dritten kopiert, verteilt und/oder
 verändert wird, darf in keiner Form der Eindruck eines Zusammenhanges
@@ -175,7 +174,7 @@ gedruckte Version erhalten haben, so können Sie sie auch selbst
 ausdrucken.
 
 Die Handbuchteile können unabhängig voneinander benutzt werden. Zu
-Ihrem besseren Verständnis sollten Sie aber möglichst beide Teile in
+Ihrem besseren Ver\-ständnis sollten Sie aber möglichst beide Teile in
 der angegebenen Reihenfolge lesen.
 
 \OtherBook{} Dieses Symbol weist auf auf den Wechsel in das andere Buch
@@ -213,7 +212,7 @@ Sie auf das Installations-Icon mit dem Titel "`Gpg4win"'.
 Haben Sie Gpg4Win aus dem Internet heruntergeladen, so klicken Sie
 bitte auf diese neu abgespeicherte Datei, die den Namen
 \texttt{gpg4win-\PackageVersion{}.exe} (oder höhere Versionnummer)
-haben sollte.  Achten Sie unbedingt darauf, daß Sie die Datei von
+haben sollte.  Achten Sie unbedingt darauf, dass Sie die Datei von
 einer vertrauenswürdigen Seite erhalten haben.
 
 Die weitere Installation ist dann identisch:
@@ -337,8 +336,8 @@ Klicken Sie auf \Button{Fertig stellen}.
 
 \clearpage
 
-In einigen Fällen kann es vorkommen, daß Windows neu gestartet werden
-muß.  In diesem Fall sehen Sie statt der vorherigen die folgende Seite:
+In einigen Fällen kann es vorkommen, dass Windows neu gestartet werden
+muss.  In diesem Fall sehen Sie statt der vorherigen die folgende Seite:
 
 % Screenshot: Finish page Installer with reboot
 \begin{center}
@@ -367,7 +366,7 @@ starten.
 Vorher sollten Sie aber im Handbuch "`Gpg4win für Durchblicker"'
 (PDF-Datei) die Kapitel 3 und 4 lesen. Wir erklären dort den genialen
 Trick, mit dem Gpg4win Ihre \Email{}s sicher und bequem verschlüsselt.
-Gpg4win funktioniert zwar auch, ohne daß Sie verstehen warum, aber im
+Gpg4win funktioniert zwar auch, ohne dass Sie verstehen warum, aber im
 Gegensatz zu anderen Programmen wollen Sie Gpg4win schließlich Ihre
 geheime Korrespondenz anvertrauen. Da sollten Sie schon wissen, was
 vor sich geht.
@@ -463,9 +462,9 @@ irgendeiner ausgedachten \Email{}-Adresse durchtesten, z.B.
 \IncludeImage[width=0.6\textwidth]{sc-gpa-gen-email}
 \end{center}
 
-Oder Sie können auch gleich Ihre echte EMail-Adresse eingeben.
+Oder Sie können auch gleich Ihre echte \Email{}-Adresse eingeben.
 
-Klicken Sie auf \Button{Weiter}, wenn Sie die EMail-Adresse eingegeben
+Klicken Sie auf \Button{Weiter}, wenn Sie die \Email{}-Adresse eingegeben
 haben.
 
 Anschliessend können Sie einen Kommentar zum Schlüssel eingeben.
@@ -578,7 +577,7 @@ der trotzdem nicht zuviel Rechenkraft auf Ihrem Computer beansprucht.
 
 \section{Sie veröffentlichen Ihren Schlüssel per \Email{}}
 
-Beim täglichen Gebrauch von Gpg4win ist es sehr praktisch, daß Sie es
+Beim täglichen Gebrauch von Gpg4win ist es sehr praktisch, dass Sie es
 beim Ver- und Entschlüsseln stets nur mit den "`ungeheimen"'
 öffentlichen Schlüsseln zu tun haben. Solange Ihr eigener geheimer
 Schlüssel und der ihn schützende Passwortsatz sicher sind, haben
@@ -600,7 +599,7 @@ müssen Sie dessen öffentlichen Schlüssel haben und zum Verschlüsseln
 benutzen.
 
 Wenn ­-- andersherum ­-- jemand Ihnen verschlüsselte \Email{}s schicken
-will, muß er Ihren öffentlichen Schlüssel haben und zum Verschlüsseln
+will, muss er Ihren öffentlichen Schlüssel haben und zum Verschlüsseln
 benutzen.
 
 Deshalb werden Sie nun Ihren öffentlichen Schlüssel öffentlich
@@ -613,8 +612,14 @@ Korrespondenzpartner ist, gibt es zwei Möglichkeiten:
 \end{itemize}
 
 Die erste Möglichkeit, Ihren öffentlichen Schlüssel zu verbreiten,
-besteht wie gesagt darin, daß Sie ihn per \Email{} an einen oder
+besteht wie gesagt darin, dass Sie ihn per \Email{} an einen oder
 mehrere Korrespondenzpartner schicken.
+Bei der zweiten Möglichkeit ist Ihre \Email{}-Adresse weltweit für
+jedermann zugänglich. Dies birgt leider das Risiko, dass Ihnen
+auch ungebetene Personen \Email{}s schreiben können und die
+SPAM-Menge für Ihre \Email{}-Adresse dadurch zunehmen kann.
+Sie sollten daher im zweiten Fall einen ausreichenden
+SPAM-Schutz nutzen.
 
 
 \clearpage
@@ -706,7 +711,7 @@ Nun starten Sie Ihr Mailprogramm ­-- es spielt keine Rolle, welches
 Sie benutzen ­-- und fügen Ihren öffentlichen Schlüssel in eine leere
 \Email{} ein. Der Tastaturbefehl zum Einfügen ("`Paste"') lautet bei
 Windows Strg+V.  Es ist sinnvoll vorher das Mailprogramm so zu
-konfigurieren, daß reine Textnachrichten gesendet werden und keine HTML
+konfigurieren, dass reine Textnachrichten gesendet werden und keine HTML
 formtierte Nachrichten.
 
 Diesen Vorgang ­-- Kopieren und Einfügen ­-- kennen Sie sicher als
@@ -763,7 +768,7 @@ mit wenigen Partnern verschlüsselte \Email{}s austauschen.  Ihr
 Schlüssel ist dann sozusagen "`stets griffbereit"' auf einem Server im
 Internet vorhanden.
 
-\textsc{Vorsicht: Obwohl es noch keine Hinweise gibt, daß Spammer
+\textsc{Vorsicht: Obwohl es noch keine Hinweise gibt, dass Spammer
   Adressen wirklich von den Keyservern sammeln, so ist dies jedoch
   technisch möglich.  Falls Sie keinen wirksamen Spamfilter benutzen,
   sollten Sie u.U.\ von der Veröffentlichung Ihres Schlüssels auf einem
@@ -858,10 +863,10 @@ direkt im jeweiligen Mailprogramm erledigt werden kann.
   Kapitel 8. Sie können dieses Kapitel jetzt lesen oder später, wenn
   Sie diese Funktion benötigen.  }
 
-WinPT hat dagegen den Vorteil, daß es nicht mit einem bestimmten,
+WinPT hat dagegen den Vorteil, dass es nicht mit einem bestimmten,
 sondern mit jedem Mailprogramm funktioniert. Es erledigt nämlich
 die Ver- und Entschlüsselung einfach im Speicher des Rechners. Das
-bedeutet, daß man den Text, der ver- oder entschlüsselt werden soll,
+bedeutet, dass man den Text, der ver- oder entschlüsselt werden soll,
 zunächst in die Zwischenablage des Rechners zu kopieren ist.
 
 Markieren Sie also den gesamten Text aus Adeles \Email{} und kopieren Sie ihn
@@ -880,7 +885,7 @@ Starten Sie nun WinPT aus dem Windows-Startmenü:
 \IncludeImage[width=0.7\textwidth]{sc-winpt-startmenu}
 \end{center}
 
-Während WinPT startet, erscheint kurz ein Hinweis darauf, daß das
+Während WinPT startet, erscheint kurz ein Hinweis darauf, dass das
 Programm die bereits vorhandenen Schlüssel einlädt.
 
 Nachdem das Programm gestartet wurde, sehen Sie unten rechts in der
@@ -906,14 +911,14 @@ ein. Adeles \Email{} wird nun entschlüsselt.
 \IncludeImage[width=0.7\textwidth]{sc-winpt-clip-decrypt}
 \end{center}
 
-Kurz darauf erscheint ein kurzer Hinweis, daß die Entschlüsselung
+Kurz darauf erscheint ein kurzer Hinweis, dass die Entschlüsselung
 beendet ist.
 
 \clearpage
 %% Original page 36
 
-Der entschlüsselte Text befindet sich jetzt wieder in der
-Zwischenablage von Windows, genau wie beim Verschlüsseln. Kopieren Sie
+Der entschlüsselte Text befindet sich jetzt, genau wie beim Verschlüsseln,
+wieder in der Zwischenablage von Windows. Kopieren Sie
 ihn mit Einfügen (Strg+V) in den Texteditor oder auch in Ihr
 Mailprogramm.
 
@@ -960,7 +965,7 @@ Entschlüsseln der Nachrichten Ihres Korrespondenzpartners benutzen.
 %% Original page 37
 \section{Sie befestigen einen Schlüssel am Schlüsselbund}
 
-Ihr Korrespondenzpartner muß nicht etwa jedes Mal seinen Schlüssel
+Ihr Korrespondenzpartner muss nicht etwa jedes Mal seinen Schlüssel
 mitschicken, wenn er Ihnen signiert schreibt. Sie bewahren seinen
 öffentlichen Schlüssel einfach an Ihrem GnuPG-"`Schlüsselbund"' auf.
 
@@ -1019,7 +1024,7 @@ in der letzten Übung ausgeschaltet haben.
 \clearpage
 %% Original page 39
 Wenn der GNU Privacy Assistant läuft, klicken Sie auf die Schaltfläche
-Import, suchen den eben abgespeicherten Schlüssel und laden ihn. Der
+Import, suchen die eben abgespeicherte Schlüsseldatei und laden sie. Der
 importierte Schlüssel wird nun im GNU Privacy Assistant angezeigt:
 
 % screenshot GPA Schlüsselverwaltung mit zwei Schlüsseln
@@ -1031,14 +1036,14 @@ Damit haben Sie einen fremden öffentlichen Schlüssel ­-- in diesem
 Beispiel den von Adele ­-- importiert und an Ihrem Schlüsselbund
 befestigt. Sie können diesen Schlüssel jederzeit benutzen, um
 verschlüsselte Nachrichten an den Besitzer dieses Schlüssels zu
-senden.
+senden und Signaturen zu prüfen.
 
 \textbf{Bevor wir weitermachen, eine wichtige Frage:}\\
-woher wissen Sie eigentlich, daß der fremde öffentliche Schlüssel
+woher wissen Sie eigentlich, dass der fremde öffentliche Schlüssel
 wirklich von Adele stammt? Man kann \Email{}s auch unter falschem Namen
 versenden ­-- die Absenderangabe besagt eigentlich gar nichts.
 
-Wie können Sie also sichergehen, daß ein Schlüssel auch wirklich
+Wie können Sie also sichergehen, dass ein Schlüssel auch wirklich
 seinem Absender gehört?
 
 \textbf{ \OtherBook{} Diese Kernfrage besprechen wir im Handbuch
@@ -1054,7 +1059,7 @@ ihn dann mit seinem eigenen geheimen Schlüssel signiert.
 
 In Kapitel 10 des Handbuchs "`Gpg4win für Durchblicker"' besprechen wir,
 wie man nicht nur einen Schlüssel, sondern auch eine komplette
-\Email{}-Nachricht signieren kann. Das bedeutet, daß man die \Email{} mit
+\Email{}-Nachricht signieren kann. Das bedeutet, dass man die \Email{} mit
 einer Art elektronischem Siegel versieht.
 
 Der Text ist dann zwar noch für jeden lesbar, aber der Empfänger kann
@@ -1073,7 +1078,7 @@ von "`Gpg4win für Einsteiger"' besprochen.
 
 \clearpage
 %% Original page 41
-Wenn Sie eine signierte \Email{} erhalten, sehen Sie, daß der Text am
+Wenn Sie eine signierte \Email{} erhalten, sehen Sie, dass der Text am
 Anfang und Ende von einer Signatur eingerahmt ist.  Sie beginnt mit
 
 \begin{verbatim}
@@ -1100,8 +1105,8 @@ Zwischenablage.
 Nun fahren Sie genauso fort wie bei der Entschlüsselung einer \Email{},
 wie wir es in Kapitel 7 dieses Handbuchs besprochen haben:
 
-Sie öffnen WinPT aus der Windows-Taskleiste und wählen
-\Menu{Zwischenablage$\rightarrow$Entschlüsseln/Überprüfen}.
+Sie öffnen WinPT aus der Windows-Taskleiste und wählen \newline
+\Menu{Zwischenablage$\rightarrow$ Entschlüsseln/Überprüfen}.
 
 Sie sollte daraufhin folgendes Fenster sehen:
 
@@ -1113,9 +1118,9 @@ Sie sollte daraufhin folgendes Fenster sehen:
 Falls Sie dort aber in der Statusspalte \emph{Die Signatur ist nicht
   gültig!}  erhalten, wurde die Nachricht bei der Übertragung
 verändert.  Aufgrund der technischen Gegebenheiten im Internet ist es
-nicht auszuschließen, daß die \Email{} durch eine fehlerhafte Übertragung
+nicht auszuschließen, dass die \Email{} durch eine fehlerhafte Übertragung
 verändert wurde. Das ist zunächst der wahrscheinlichste Fall. Es kann
-jedoch auch bedeuten, daß der Text nachträglich verändert wurde.
+jedoch auch bedeuten, dass der Text nachträglich verändert wurde.
 
 
 \textbf{ \OtherBook{} Wie Sie in einem solchen Fall vorgehen sollten,
@@ -1163,7 +1168,7 @@ in Kapitel 2 erzeugt haben.
 \IncludeImage[width=0.7\textwidth]{sc-winpt-sel-enc-key}
 \end{center}
 
-Klicken Sie auf Adeles Schlüssel, denn damit muß die Nachricht ja
+Klicken Sie auf Adeles Schlüssel, denn damit muss die Nachricht ja
 verschlüsselt werden.
 
 Sie erinnern sich an den Grundsatz:
@@ -1210,7 +1215,7 @@ verschlüsselt aufbewahren können.  Natürlich können Sie einfach eine
 Klartextversion Ihrer Texte aufbewahren, aber das wäre eigentlich
 nicht angebracht. Wenn Ihre Mitteilung geheimhaltungsbedürftig war,
 sollte sie auch nicht im Klartext auf Ihrem Rechner gespeichert sein.
-Also sollte immer ein Kopie der verschlüsselten \Email{} aufbewahrt
+Also sollte immer ein verschlüsselte Kopie der \Email{} aufbewahrt
 werden.
 
 Sie ahnen das Problem: zum Entschlüsseln der archivierten \Email{}s
@@ -1255,7 +1260,7 @@ die GnuPG direkt unterstützen.
 \begin{enumerate}
 \item Sie haben mit dem öffentlichen Schlüssel Ihres Partners eine
   \Email{} verschlüsselt und ihm damit geantwortet.
-\item Sie haben WinPT mitgeteilt, daß Archivkopien Ihrer \Email{}s auch
+\item Sie haben WinPT mitgeteilt, dass Archivkopien Ihrer \Email{}s auch
   zusätzlich mit Ihrem eigenen Schlüssel verschlüsselt werden sollen.
 \end{enumerate}
 
@@ -1294,7 +1299,7 @@ Bedienung von GnuPG.  Wir geben hier einige Hinweise zur Benutzung.
 
 Aufgrund technischer Schwierigkeiten der Integration von OpenPGP in
 Outlook ist dieses Plugin nicht so komfortabel zu bedienen wie die
-OpenPGP Unterstützung in anderen EMail-Programmen.  GPGol funktioniert
+OpenPGP Unterstützung in anderen \Email{}-Programmen.  GPGol funktioniert
 in der aktuellen Version nur mit Outlook 2003 SP2 und gibt einen
 Warnhinweis aus, falls eine ältere Outlook Version benutzt wird.
 
@@ -1313,10 +1318,10 @@ verschlüsselt oder signiert werden sollen.  Sie können dies aber immer
 noch bei der Erstellung der Nachricht individuell verändern.
 
 Die Option "`Entschlüsselte Attachments automatisch speichern"'
-speichert Anhänge nach der Entschlüsselung im Klartext ab, so daß
+speichert Anhänge nach der Entschlüsselung im Klartext ab, so dass
 sie dann jederzeit ohne erneute Entschlüsselung gelesen werden können.
 
-Die Option "`Automatisch Attachments signieren"' sorgt dafür, daß mit
+Die Option "`Automatisch Attachments signieren"' sorgt dafür, dass mit
 dem Signieren des Haupttexts auch die Anhänge signiert werden.
 Dazu wird für jeden Anhang ein weiterer Anhang mit der
 Signatur angelegt.
@@ -1334,7 +1339,7 @@ eingeschränkt.
 
 Alle Optionen sind nach einer Neuinstallation bereits sinnvoll vorbelegt.  Um
 aber verschlüsselte Nachrichten versenden zu können, sollten Sie
-sicherstellen, daß Sie nicht Microsoft Word zum Verfassen der
+sicherstellen, dass Sie nicht Microsoft Word zum Verfassen der
 Nachrichten benutzen.  Desweiteren ist dringend anzuraten auf HTML
 Nachrichten zu verzichten.
 
@@ -1378,8 +1383,8 @@ Bildschirmausdruck entsprechen:
 
   Wenn Sie auf Senden geklickt haben, beginnt GPGol mit der
   Verschlüsselung.  Outlook hat jedoch seit langem einen Fehler, der
-  verhindert, daß diese Operation abgebrochen werden kann.  Als
-  Gegenmaßnahme können Sie Outlook so konfigurieren, daß erstellte
+  verhindert, dass diese Operation abgebrochen werden kann.  Als
+  Gegenmaßnahme können Sie Outlook so konfigurieren, dass erstellte
   Nachrichten nicht sofort versendet werden --- das gibt Ihnen die
   Möglichkeit die Nachricht noch nachträglich zu löschen.  Aus
   Sicherheitsgründen versucht GPGol den Inhalt der Nachricht zu
@@ -1387,13 +1392,13 @@ Bildschirmausdruck entsprechen:
   aber nicht immer erfolgreich.
 
 \item[Warum erscheint der Bestätigungsdialog beim Zugriff auf
-  bestimmte EMails?]
+  bestimmte \Email{}s?]
 
   Sofern GPGol nicht als vertrauenswürdiges Plugin installiert worden
   ist, nimmt Outlook an, das Plugin versucht unberechtigt auf interne
   Informationen zuzugreifen.  GPGol versucht derartige Zugriffe zu
   vermeiden, in einige Fällen sind sie aber notwendig um
-  verschlüsselte oder signierte Emails anzeigen zu können.
+  verschlüsselte oder signierte \Email{}s anzeigen zu können.
 
 \item[Warum unterstützt GPGol keine PGP/MIME Signaturen?]
 
@@ -1404,7 +1409,7 @@ Bildschirmausdruck entsprechen:
 
 \item[Warum kann GPGol keine PGP/MIME Nachrichten erzeugen?]
 
-  Es ist keine Möglichkeit bekannt, Outlook mitzuteilen, daß eine
+  Es ist keine Möglichkeit bekannt, Outlook mitzuteilen, dass eine
   PGP/MIME Nachricht erzeugt werden soll.  Outlook legt immer selbst
   den sogenannten "`Content-Type"' fest und ein Plugin ist nicht in
   der Lage, einen bestimmten Typ vorzugeben.  Bitte wenden Sie sich
