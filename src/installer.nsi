@@ -81,6 +81,8 @@ VIAddVersionKey "LegalCopyright" "${COPYRIGHT}"
 VIAddVersionKey "FileDescription" "${DESCRIPTION}"
 VIAddVersionKey "FileVersion" "${PROD_VERSION}"
 
+# Set to the name of another GnupG installation if one has been detected
+Var OtherGnuPGDetected
 
 # Interface Settings
 
@@ -123,6 +125,7 @@ Var STARTMENU_FOLDER
 !define MUI_PAGE_CUSTOMFUNCTION_PRE PrintCloseOtherApps
 !insertmacro MUI_PAGE_INSTFILES
 
+!define MUI_PAGE_CUSTOMFUNCTION_PRE ShowFinalWarnings
 !define MUI_FINISHPAGE_SHOWREADME "README.$(T_LangCode).txt"
 !define MUI_FINISHPAGE_SHOWREADME_TEXT "$(T_ShowReadme)"
 #!define MUI_FINISHPAGE_RUN
@@ -223,12 +226,62 @@ LangString T_NoKeyManager ${LANG_GERMAN} \
 # Custom functions and macros for gpg4win. 
 !include "g4wihelp.nsi"
 
+
+# Display a warning if GnuPP has been detected and allow the user to abort
+# the installation.
+Function PrintGnuPPWarning
+   MessageBox MB_YESNO "$(T_FoundOldGnuPP)" IDYES cont
+     Abort
+ cont:
+   StrCpy $OtherGnuPGDetected "GnuPP"
+FunctionEnd
+
+# Display a warning if GnuPT has been detected and allow the user to abort
+# the installation.
+Function PrintGnuPTWarning
+   MessageBox MB_YESNO "$(T_FoundOldGnuPT)" IDYES cont
+     Abort
+ cont:
+   StrCpy $OtherGnuPGDetected "GnuPT"
+FunctionEnd
+
+# Display a warning if GnuPG Pack has been detected and abort the
+# the installation.  This one clobbers our own Registry space.
+Function PrintGnuPackWarning
+   MessageBox MB_OK "$(T_FoundOldGnuPack)"
+   Abort
+FunctionEnd
+
+
+# Check whether one of the other GnuPG systems has already been
+# installed.  We do this by looking at the registry.
+Function CheckOtherGnuPGApps
+  StrCpy $OtherGnuPGDetected ""
+  ClearErrors
+  ReadRegStr $0 HKLM "Software\GNU\GnuPP\Settings" "Path"
+  IfErrors +2 0
+    Call PrintGnuPPWarning
+
+  EnumRegKey $0 HKCU "Software\Microsoft\Windows\CurrentVersion\Explorer\MenuOrder\Start Menu\Programs\GnuPT" 0
+  StrCmp $0 "" +2
+    Call PrintGnuPTWarning
+
+  ReadRegStr $0 HKLM "Software\GNU\GnuPG" "Install Directory"
+  Push $0
+  Push "GnuPG-Pack"
+  Call StrStr
+  Pop $0
+  StrCmp $0 "" +2
+    Call PrintGnuPackWarning
+
+FunctionEnd
+
+
 # PrintNonAdminWarning
 
 # Check whether the current user is in the Administrator group or an
 # OS version without the need for an Administrator is in use.  Print a
 # warning if this is not the case.
-
 Function PrintNonAdminWarning
   ClearErrors
   UserInfo::GetName
@@ -258,6 +311,65 @@ Function PrintCloseOtherApps
       ExecWait '"$INSTDIR\winpt.exe" --stop'
    leave:
 FunctionEnd
+
+# Called right before the final page to show more warnings.
+Function ShowFinalWarnings
+   StrCmp $OtherGnupgDetected "" +2
+     MessageBox MB_OK "$(T_FoundOldSeeManual)"
+   leave:
+FunctionEnd
+
+#---------------------------------------------
+# From the old installation checking functions
+#---------------------------------------------
+LangString T_FoundOldSeeManual ${LANG_ENGLISH} \
+     "Please see the Gpg4win manual to learn how to migrate existing \
+      keys from other GnuPG based installations to Gpg4win."
+LangString T_FoundOldSeeManual ${LANG_GERMAN} \
+     "Bitte sehen Sie im Gpg4win für Durchblicker Handbuch nach, wie Sie \
+      Schlüssel aus anderen - GnuPG basierten - Installationen in Gpg4win \
+      überführen."
+
+#---------
+LangString T_FoundOldGnuPP ${LANG_ENGLISH} \
+     "An old installation of GnuPP (GNU Privacy Project) has been been \
+      detected.  That software is not maintained anymore and thus should \
+      be removed. \
+          \
+      Do you want to continue installing Gpg4win and take care of the old \
+      installation later?"
+LangString T_FoundOldGnuPP ${LANG_GERMAN} \
+     "Eine alte Installation von GnuPP (GNU Privacy Project) wurde gefunden. \
+      Diese Software wird nicht mehr gepflegt und sollte deshalb vom \
+      System entfernt werden. \
+        \
+      Möchten Sie die Installation von Gpg4win weiter durchführen und sich \
+      dann später um die Entfernung von GnuPP kümmern?"
+
+#---------
+LangString T_FoundOldGnuPT ${LANG_ENGLISH} \
+     "An installation of GnuPT has been been detected.  This may cause \
+      problems when used along with Gpg4win. \
+          \
+      Do you want to continue installing Gpg4win?"
+LangString T_FoundOldGnuPT ${LANG_GERMAN} \
+     "Eine Installation von GnuPT wurde gefunden.  Dies kann zu Problemen \
+      führen, falls GnuPT zusammem mit Gpg4win benutzt wird. \r\n\r\n \
+      Möchten Sie die Installation von Gpg4win fortführen?"
+
+#--------
+LangString T_FoundOldGnuPack ${LANG_ENGLISH} \
+     "An installation of GnuPG-Pack has been been detected. You need to \
+      uninstall it before you can continue with Gpg4win installation. \
+        \
+      The installation will be aborted now!"
+LangString T_FoundOldGnuPack ${LANG_GERMAN} \
+     "Eine Installation con GnuPG-Pack wurde gefunden.  Sie müssen diese \
+      zuerst deinstallieren bevor Sie mit der Installation von Gpg4win \
+      fortfahren können. \
+        \
+      Die Installation von Gpg4win wird nun abgebrochen!"
+
 
 
 # From Function PrintNonAdminWarning
@@ -312,4 +424,47 @@ Function un.SourceDelete
   Call un.GetAfterChar
   Pop $R0
   Delete "$INSTDIR\$R0"
+FunctionEnd
+
+
+# StrStr  - taken from the NSIS reference
+# input, top of stack = string to search for
+#        top of stack-1 = string to search in
+# output, top of stack (replaces with the portion of the string remaining)
+# modifies no other variables.
+#
+# Usage:
+#   Push "this is a long ass string"
+#   Push "ass"
+#   Call StrStr
+#   Pop $R0
+#  ($R0 at this point is "ass string")
+#
+Function StrStr
+   Exch $R1 # st=haystack,old$R1, $R1=needle
+   Exch     # st=old$R1,haystack
+   Exch $R2 # st=old$R1,old$R2, $R2=haystack
+   Push $R3
+   Push $R4
+   Push $R5
+   StrLen $R3 $R1
+   StrCpy $R4 0
+   # $R1=needle
+   # $R2=haystack
+   # $R3=len(needle)
+   # $R4=cnt
+   # $R5=tmp
+   loop:
+     StrCpy $R5 $R2 $R3 $R4
+     StrCmp $R5 $R1 done
+     StrCmp $R5 "" done
+     IntOp $R4 $R4 + 1
+     Goto loop
+ done:
+   StrCpy $R1 $R2 "" $R4
+   Pop $R5
+   Pop $R4
+   Pop $R3
+   Pop $R2
+   Exch $R1
 FunctionEnd

@@ -1,3 +1,12 @@
+Noteworthy changes in version 
+------------------------------------------------
+
+ * Shows a warning if an existing installation of GnuPP or GnuPT is
+   found.  Rejects installation if GnuPG-Pack is installed.
+
+ * The Einsteiger manual features a section on GPGol.
+
+
 Noteworthy changes in version 0.8.0 (2006-03-09)
 ------------------------------------------------
 

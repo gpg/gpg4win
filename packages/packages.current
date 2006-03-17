@@ -16,7 +16,7 @@
 # delimiter).  The statement "chk" is followed by the SHA1 checksum of
 # the last file.
 #
-# Note: You may use "make upload" to copy this file to is canocnical place.
+# Note: You may use "make upload" to copy this file to its canonical place.
 #
 
 
