@@ -372,7 +372,9 @@ Function .onInit
   g4wihelp::showsplash 2500 $TEMP\gpgspltmp.bmp
 
   Delete $TEMP\gpgspltmp.bmp
-  ; Note that we delete gpgspltmp.wav in .onInst{Failed,Success}
+  # Note that we delete gpgspltmp.wav in .onInst{Failed,Success}
+
+  !insertmacro MUI_INSTALLOPTIONS_EXTRACT "opt.ini"
 
   Call CalcDepends
   Call CheckOtherGnuPGApps
