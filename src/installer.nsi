@@ -120,6 +120,9 @@ Var STARTMENU_FOLDER
 !define MUI_STARTMENUPAGE_REGISTRY_VALUENAME "Start Menu Folder"
 
 !insertmacro MUI_PAGE_STARTMENU Application $STARTMENU_FOLDER
+
+Page custom CustomPageOptions
+
 !endif
 
 !define MUI_PAGE_CUSTOMFUNCTION_PRE PrintCloseOtherApps
@@ -158,13 +161,14 @@ Var STARTMENU_FOLDER
 !insertmacro MUI_LANGUAGE "German"
 
 #!insertmacro MUI_RESERVEFILE_LANGDLL
-#!insertmacro MUI_RESERVEFILE_INSTALLOPTIONS
+!insertmacro MUI_RESERVEFILE_INSTALLOPTIONS
 ReserveFile "${BUILD_DIR}\g4wihelp.dll"
 ReserveFile "${TOP_SRCDIR}\doc\logo\gpg4win-logo-400px.bmp"
 !ifdef SOURCES
 ReserveFile "${TOP_SRCDIR}\src\gpg4win-splash.wav"
 !endif
 ReserveFile "${TOP_SRCDIR}\COPYING"
+ReserveFile "${TOP_SRCDIR}\src\opt.ini"
 
 # Language support
 
@@ -225,6 +229,19 @@ LangString T_NoKeyManager ${LANG_GERMAN} \
 
 # Custom functions and macros for gpg4win. 
 !include "g4wihelp.nsi"
+
+#
+# Control function for the Custom page to select special
+# install options.
+#
+Function CustomPageOptions  
+  !insertmacro MUI_HEADER_TEXT "$(T_InstallOptions)" "$(T_InstallOptLinks)"
+  !insertmacro MUI_INSTALLOPTIONS_READ $R0 "opt.ini" "Field 1" "ListItems"
+  !insertmacro MUI_INSTALLOPTIONS_WRITE "opt.ini" "Field 1" "State" $R3
+
+  !insertmacro MUI_INSTALLOPTIONS_DISPLAY "opt.ini"
+FunctionEnd
+
 
 
 # Display a warning if GnuPP has been detected and allow the user to abort
@@ -319,14 +336,28 @@ Function ShowFinalWarnings
    leave:
 FunctionEnd
 
+#-----------------------------------------------
+# Strings pertaining to the install options page
+#-----------------------------------------------
+
+# Installation options title
+LangString T_InstallOptions ${LANG_ENGLISH} "Install Options"
+LangString T_InstallOptions ${LANG_GERMAN}  "Installationsoptionen"
+
+# Installation options subtitle 1
+LangString T_InstallOptLinks ${LANG_ENGLISH} "Start links"
+LangString T_InstallOptLinks ${LANG_GERMAN}  "Startlinks"
+
+
+
 #---------------------------------------------
 # From the old installation checking functions
 #---------------------------------------------
 LangString T_FoundOldSeeManual ${LANG_ENGLISH} \
-     "Please see the Gpg4win manual to learn how to migrate existing \
+     "Please see the Gpg4win user manual to learn how to migrate existing \
       keys from other GnuPG based installations to Gpg4win."
 LangString T_FoundOldSeeManual ${LANG_GERMAN} \
-     "Bitte sehen Sie im Gpg4win für Durchblicker Handbuch nach, wie Sie \
+     "Bitte sehen Sie im Gpg4win für Einsteiger Handbuch nach, wie Sie Ihre \
       Schlüssel aus anderen - GnuPG basierten - Installationen in Gpg4win \
       überführen."
 
@@ -354,7 +385,8 @@ LangString T_FoundOldGnuPT ${LANG_ENGLISH} \
       Do you want to continue installing Gpg4win?"
 LangString T_FoundOldGnuPT ${LANG_GERMAN} \
      "Eine Installation von GnuPT wurde gefunden.  Dies kann zu Problemen \
-      führen, falls GnuPT zusammem mit Gpg4win benutzt wird. \r\n\r\n \
+      führen, falls GnuPT zusammem mit Gpg4win benutzt wird. \
+         \
       Möchten Sie die Installation von Gpg4win fortführen?"
 
 #--------

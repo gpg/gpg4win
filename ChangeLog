@@ -1,3 +1,12 @@
+2006-03-21  Werner Koch  <wk@g10code.com>
+
+	* Makefile.am (EXTRA_DIST): No more need tositribute the GPA 0.7.2
+	patch/
+
+	* src/installer.nsi: Add a cutom option page.
+	(StrStr): New.  Taken from the NSIS reference manual.
+	* src/opt.ini: New.
+
 2006-03-15  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
 
 	* src/inst-gpa.nsi: Fixed a typo.
