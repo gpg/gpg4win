@@ -23,7 +23,8 @@ m4_dnl DONT USE THIS FILE DIRECTLY
 </div>
 <div class="box">
   <h1>Getting involved</h1>
-  <a href="http://wald.intevation.org/projects/gpg4win/">Project Site</a>
+  <a href="http://wald.intevation.org/projects/gpg4win/">Project Site</a><br>
+  <a href="candidates.html">Candidates for Integration</a><br>
   <p>Howtos:<br>
   <a href="build-installer.html">Build Installer Package</a><br>
   <a href="website-maintenance.html">Maintaining Website</a><br>
@@ -42,4 +43,5 @@ m4_dnl DONT USE THIS FILE DIRECTLY
   &nbsp;&nbsp;<a href="package-integrity.html">Integrity Check</a><br>
   &nbsp;&nbsp;<a href="build-installer.html">Build Installer Package</a><br>
   &nbsp;&nbsp;<a href="website-maintenance.html">Maintaining Website</a><br>
+  &nbsp;&nbsp;<a href="candidates.html">Candidates for Integration</a><br>
 </div>
