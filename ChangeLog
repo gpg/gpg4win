@@ -1,3 +1,18 @@
+2006-03-27  Marcus Brinkmann  <marcus@g10code.de>
+
+	* installer.nsi: Move custom page for installer options before
+	start menu path selection.  Do not allow to disable start menu
+	creation at start meny path selection dialog.  Only display start
+	menu path selection dialog if start menu creation is desired.
+	Rename opt.ini to installer-options.ini.
+	(CheckIfStartMenuWanted): New function.
+	* installer-finish.nsi: Delete desktop and quicklaunch shortcuts.
+	* inst-sections.nsi: Rename opt.ini to installer-options.ini.
+	Install desktop and quick launch bar shortcuts.
+	* Makefile.am (EXTRA_DIST): Rename opt.ini to
+	installer-options.ini.
+	* installer-options.ini: New file.
+
 2006-03-21  Werner Koch  <wk@g10code.com>
 
 	* Makefile.am (EXTRA_DIST): No more need tositribute the GPA 0.7.2

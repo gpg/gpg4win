@@ -62,7 +62,55 @@ Section Uninstall
 
   DeleteRegValue HKLM "Software\GNU\${PRETTY_PACKAGE_SHORT}" \
         "Start Menu Folder"
+
+  # Delete Desktop links.
+!ifdef HAVE_PKG_WINPT
+  Delete "$DESKTOP\WinPT.lnk"
 !endif
+!ifdef HAVE_PKG_GPA
+  Delete "$DESKTOP\GPA.lnk"
+!endif
+!ifdef HAVE_PKG_SYLPHEED_CLAWS
+  Delete "$DESKTOP\Sylpheed.lnk"
+!endif
+!ifdef HAVE_PKG_MAN_NOVICE_DE
+  Delete "$DESKTOP\$(DESC_Name_man_novice_de).lnk"
+!endif
+!ifdef HAVE_PKG_MAN_ADVANCED_DE
+  Delete "$DESKTOP\$(DESC_Name_man_advanced_de).lnk"
+!endif
+!ifdef HAVE_PKG_GPGEE
+  Delete "$DESKTOP\GPGee Manual.lnk"
+!endif
+  Delete "$DESKTOP\GnuPG FAQ.lnk"
+  Delete "$DESKTOP\Gpg4Win README.lnk"
+
+  # Delete Quick Launch Bar links.
+  StrCmp $QUICKLAUNCH $TEMP no_quick_launch_uninstall
+!ifdef HAVE_PKG_WINPT
+  Delete "$QUICKLAUNCH\WinPT.lnk"
+!endif
+!ifdef HAVE_PKG_GPA
+  Delete "$QUICKLAUNCH\GPA.lnk"
+!endif
+!ifdef HAVE_PKG_SYLPHEED_CLAWS
+  Delete "$QUICKLAUNCH\Sylpheed.lnk"
+!endif
+!ifdef HAVE_PKG_MAN_NOVICE_DE
+  Delete "$QUICKLAUNCH\$(DESC_Name_man_novice_de).lnk"
+!endif
+!ifdef HAVE_PKG_MAN_ADVANCED_DE
+  Delete "$QUICKLAUNCH\$(DESC_Name_man_advanced_de).lnk"
+!endif
+!ifdef HAVE_PKG_GPGEE
+  Delete "$QUICKLAUNCH\GPGee Manual.lnk"
+!endif
+  Delete "$QUICKLAUNCH\GnuPG FAQ.lnk"
+  Delete "$QUICKLAUNCH\Gpg4Win README.lnk"
+no_quick_launch_uninstall:
+
+!endif
+
 
   Delete "$INSTDIR\${PACKAGE}-uninstall.exe"
   RMDir "$INSTDIR"

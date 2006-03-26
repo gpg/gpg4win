@@ -19,7 +19,7 @@
 
 
 EXTRA_DIST = pkg-config $(common_nsi) gpg4win.nsi gpg4win-src.nsi \
-        inst-gpg4win.nsi uninst-gpg4win.nsi opt.ini \
+        inst-gpg4win.nsi uninst-gpg4win.nsi installer-options.ini \
 	libiconv.def libintl.def  gpg4win-splash.wav \
 	exdll.h g4wihelp.c g4wihelp.nsi config.site loreley.mid
 

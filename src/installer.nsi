@@ -113,15 +113,18 @@ Var OtherGnuPGDetected
 !insertmacro MUI_PAGE_DIRECTORY
 
 !ifdef HAVE_STARTMENU
+
+Page custom CustomPageOptions
+
 Var STARTMENU_FOLDER
 
+!define MUI_PAGE_CUSTOMFUNCTION_PRE CheckIfStartMenuWanted
+!define MUI_STARTMENUPAGE_NODISABLE
 !define MUI_STARTMENUPAGE_REGISTRY_ROOT "HKCU"
 !define MUI_STARTMENUPAGE_REGISTRY_KEY "Software\GNU\${PRETTY_PACKAGE_SHORT}"
 !define MUI_STARTMENUPAGE_REGISTRY_VALUENAME "Start Menu Folder"
 
 !insertmacro MUI_PAGE_STARTMENU Application $STARTMENU_FOLDER
-
-Page custom CustomPageOptions
 
 !endif
 
@@ -168,7 +171,7 @@ ReserveFile "${TOP_SRCDIR}\doc\logo\gpg4win-logo-400px.bmp"
 ReserveFile "${TOP_SRCDIR}\src\gpg4win-splash.wav"
 !endif
 ReserveFile "${TOP_SRCDIR}\COPYING"
-ReserveFile "${TOP_SRCDIR}\src\opt.ini"
+ReserveFile "${TOP_SRCDIR}\src\installer-options.ini"
 
 # Language support
 
@@ -236,12 +239,8 @@ LangString T_NoKeyManager ${LANG_GERMAN} \
 #
 Function CustomPageOptions  
   !insertmacro MUI_HEADER_TEXT "$(T_InstallOptions)" "$(T_InstallOptLinks)"
-  !insertmacro MUI_INSTALLOPTIONS_READ $R0 "opt.ini" "Field 1" "ListItems"
-  !insertmacro MUI_INSTALLOPTIONS_WRITE "opt.ini" "Field 1" "State" $R3
-
-  !insertmacro MUI_INSTALLOPTIONS_DISPLAY "opt.ini"
+  !insertmacro MUI_INSTALLOPTIONS_DISPLAY "installer-options.ini"
 FunctionEnd
-
 
 
 # Display a warning if GnuPP has been detected and allow the user to abort
@@ -310,6 +309,16 @@ Function PrintNonAdminWarning
   MessageBox MB_OK "$(T_AdminNeeded)"
 
  leave:
+FunctionEnd
+
+
+# Check whether the start menu is actually wanted.
+
+Function CheckIfStartMenuWanted
+  !insertmacro MUI_INSTALLOPTIONS_READ $R0 "installer-options.ini" \
+	"Field 1" "State"
+  IntCmp $R0 1 +2
+    Abort
 FunctionEnd
 
 
