@@ -360,7 +360,7 @@ FunctionEnd
 
 
 Function .onInit
-  Call G4wRunOnce
+Call G4wRunOnce
 
   SetOutPath $TEMP
   File /oname=gpgspltmp.bmp "${TOP_SRCDIR}/doc/logo/gpg4win-logo-400px.bmp"
@@ -374,7 +374,7 @@ Function .onInit
   Delete $TEMP\gpgspltmp.bmp
   # Note that we delete gpgspltmp.wav in .onInst{Failed,Success}
 
-  !insertmacro MUI_INSTALLOPTIONS_EXTRACT "opt.ini"
+  !insertmacro MUI_INSTALLOPTIONS_EXTRACT "installer-options.ini"
 
   Call CalcDepends
   Call CheckOtherGnuPGApps
@@ -461,6 +461,11 @@ Section "-startmenu"
   # we printed a warning that installation will not succeed.
   SetShellVarContext all
 
+  # Check if the start menu entries where requested.
+  !insertmacro MUI_INSTALLOPTIONS_READ $R0 "installer-options.ini" \
+	"Field 1" "State"
+  IntCmp $R0 0 no_start_menu
+
 !insertmacro MUI_STARTMENU_WRITE_BEGIN Application
     CreateDirectory "$SMPROGRAMS\$STARTMENU_FOLDER"
 
@@ -535,7 +540,6 @@ Section "-startmenu"
   no_gpgee_menu:
 !endif
 
-
     CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\GnuPG FAQ.lnk" \
                    "$INSTDIR\share\gnupg\faq.html" \
                    "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_gnupg_faq)
@@ -544,12 +548,175 @@ Section "-startmenu"
                    "$INSTDIR\share\gpg4win\README.$(T_LangCode).txt" \
                    "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_gpg4win_readme)
 
-
-
-# No more uninstall link becuase Windows has its wom feature to call
+# No more uninstall link because Windows has its own feature to call
 #  the uninstaller.
 #    CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\Uninstall.lnk" \
 #	"$INSTDIR\${PACKAGE}-uninstall.exe"
 !insertmacro MUI_STARTMENU_WRITE_END
+
+ no_start_menu:
+
+
+
+  # Check if the desktop entries where requested.
+  !insertmacro MUI_INSTALLOPTIONS_READ $R0 "installer-options.ini" \
+	"Field 2" "State"
+  IntCmp $R0 0 no_desktop
+
+!ifdef HAVE_PKG_WINPT
+    SectionGetFlags ${SEC_winpt} $R0 
+    IntOp $R0 $R0 & ${SF_SELECTED}
+    IntCmp $R0 ${SF_SELECTED} 0 no_winpt_desktop 
+    CreateShortCut "$DESKTOP\WinPT.lnk" \
+	"$INSTDIR\winpt.exe" \
+        "" "$INSTDIR\winpt.exe" "" SW_SHOWNORMAL "" $(DESC_Menu_winpt)
+   no_winpt_desktop:
+!endif
+
+!ifdef HAVE_PKG_GPA
+    SectionGetFlags ${SEC_gpa} $R0 
+    IntOp $R0 $R0 & ${SF_SELECTED} 
+    IntCmp $R0 ${SF_SELECTED} 0 no_gpa_desktop
+    CreateShortCut "$DESKTOP\GPA.lnk" \
+	"$INSTDIR\gpa.exe" \
+        "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_gpa)
+  no_gpa_desktop:
+!endif
+
+!ifdef HAVE_PKG_SYLPHEED_CLAWS
+    SectionGetFlags ${SEC_sylpheed} $R0 
+    IntOp $R0 $R0 & ${SF_SELECTED} 
+    IntCmp $R0 ${SF_SELECTED} 0 no_sylpheed_desktop
+    CreateShortCut "$DESKTOP\Sylpheed.lnk" \
+	"$INSTDIR\sylpheed-claws.exe" \
+        "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_sylpheed)
+  no_sylpheed_desktop:
+!endif
+
+!ifdef HAVE_PKG_MAN_NOVICE_DE
+    SectionGetFlags ${SEC_man_novice_de} $R0 
+    IntOp $R0 $R0 & ${SF_SELECTED} 
+    IntCmp $R0 ${SF_SELECTED} 0 no_man_novice_de_desktop
+    CreateShortCut \
+        "$DESKTOP\$(DESC_Name_man_novice_de).lnk" \
+	"$INSTDIR\share\gpg4win\einsteiger.pdf" \
+        "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_man_novice_de)
+  no_man_novice_de_desktop:
+!endif
+
+!ifdef HAVE_PKG_MAN_ADVANCED_DE
+    SectionGetFlags ${SEC_man_advanced_de} $R0 
+    IntOp $R0 $R0 & ${SF_SELECTED} 
+    IntCmp $R0 ${SF_SELECTED} 0 no_man_advanced_de_desktop
+    CreateShortCut \
+        "$DESKTOP\$(DESC_Name_man_advanced_de).lnk" \
+	"$INSTDIR\share\gpg4win\durchblicker.pdf" \
+        "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_man_advanced_de)
+  no_man_advanced_de_desktop:
+!endif
+
+!ifdef HAVE_PKG_GPGEE
+    SectionGetFlags ${SEC_gpgee} $R0 
+    IntOp $R0 $R0 & ${SF_SELECTED} 
+    IntCmp $R0 ${SF_SELECTED} 0 no_gpgee_desktop
+    CreateShortCut "$DESKTOP\GPGee Manual.lnk" \
+	"$INSTDIR\GPGee.hlp" "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_gpgee_hlp)
+  no_gpgee_desktop:
+!endif
+
+    CreateShortCut "$DESKTOP\GnuPG FAQ.lnk" \
+                   "$INSTDIR\share\gnupg\faq.html" \
+                   "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_gnupg_faq)
+
+    CreateShortCut "$DESKTOP\Gpg4Win README.lnk" \
+                   "$INSTDIR\share\gpg4win\README.$(T_LangCode).txt" \
+                   "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_gpg4win_readme)
+
+no_desktop:
+
+	
+  # Check if the quick launch bar entries where requested.
+  !insertmacro MUI_INSTALLOPTIONS_READ $R0 "installer-options.ini" \
+	"Field 3" "State"
+  IntCmp $R0 0 no_quick_launch
+  StrCmp $QUICKLAUNCH $TEMP no_quick_launch
+
+!ifdef HAVE_PKG_WINPT
+    SectionGetFlags ${SEC_winpt} $R0 
+    IntOp $R0 $R0 & ${SF_SELECTED}
+    IntCmp $R0 ${SF_SELECTED} 0 no_winpt_quicklaunch 
+    CreateShortCut "$QUICKLAUNCH\WinPT.lnk" \
+	"$INSTDIR\winpt.exe" \
+        "" "$INSTDIR\winpt.exe" "" SW_SHOWNORMAL "" $(DESC_Menu_winpt)
+   no_winpt_quicklaunch:
+!endif
+
+!ifdef HAVE_PKG_GPA
+    SectionGetFlags ${SEC_gpa} $R0 
+    IntOp $R0 $R0 & ${SF_SELECTED} 
+    IntCmp $R0 ${SF_SELECTED} 0 no_gpa_quicklaunch
+    CreateShortCut "$QUICKLAUNCH\GPA.lnk" \
+	"$INSTDIR\gpa.exe" \
+        "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_gpa)
+  no_gpa_quicklaunch:
+!endif
+
+!ifdef HAVE_PKG_SYLPHEED_CLAWS
+    SectionGetFlags ${SEC_sylpheed} $R0 
+    IntOp $R0 $R0 & ${SF_SELECTED} 
+    IntCmp $R0 ${SF_SELECTED} 0 no_sylpheed_quicklaunch
+    CreateShortCut "$QUICKLAUNCH\Sylpheed.lnk" \
+	"$INSTDIR\sylpheed-claws.exe" \
+        "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_sylpheed)
+  no_sylpheed_quicklaunch:
+!endif
+
+!ifdef HAVE_PKG_MAN_NOVICE_DE
+    SectionGetFlags ${SEC_man_novice_de} $R0 
+    IntOp $R0 $R0 & ${SF_SELECTED} 
+    IntCmp $R0 ${SF_SELECTED} 0 no_man_novice_de_quicklaunch
+    CreateShortCut \
+        "$QUICKLAUNCH\$(DESC_Name_man_novice_de).lnk" \
+	"$INSTDIR\share\gpg4win\einsteiger.pdf" \
+        "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_man_novice_de)
+  no_man_novice_de_quicklaunch:
+!endif
+
+!ifdef HAVE_PKG_MAN_ADVANCED_DE
+    SectionGetFlags ${SEC_man_advanced_de} $R0 
+    IntOp $R0 $R0 & ${SF_SELECTED} 
+    IntCmp $R0 ${SF_SELECTED} 0 no_man_advanced_de_quicklaunch
+    CreateShortCut \
+        "$QUICKLAUNCH\$(DESC_Name_man_advanced_de).lnk" \
+	"$INSTDIR\share\gpg4win\durchblicker.pdf" \
+        "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_man_advanced_de)
+  no_man_advanced_de_quicklaunch:
+!endif
+
+!ifdef HAVE_PKG_GPGEE
+    SectionGetFlags ${SEC_gpgee} $R0 
+    IntOp $R0 $R0 & ${SF_SELECTED} 
+    IntCmp $R0 ${SF_SELECTED} 0 no_gpgee_quicklaunch
+    CreateShortCut "$QUICKLAUNCH\GPGee Manual.lnk" \
+	"$INSTDIR\GPGee.hlp" "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_gpgee_hlp)
+  no_gpgee_quicklaunch:
+!endif
+
+    CreateShortCut "$QUICKLAUNCH\GnuPG FAQ.lnk" \
+                   "$INSTDIR\share\gnupg\faq.html" \
+                   "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_gnupg_faq)
+
+    CreateShortCut "$QUICKLAUNCH\Gpg4Win README.lnk" \
+                   "$INSTDIR\share\gpg4win\README.$(T_LangCode).txt" \
+                   "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_gpg4win_readme)
+
+no_quick_launch:
+
+
 !endif
 SectionEnd
+
+
+# FIXME: Now write desktop and quick launch bar.
+# Don't forget to delete the corr. entries in installer-finish. Uninstall.
+
