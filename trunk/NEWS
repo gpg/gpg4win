@@ -1,10 +1,15 @@
 Noteworthy changes in version 
 ------------------------------------------------
 
- * Shows a warning if an existing installation of GnuPP or GnuPT is
-   found.  Rejects installation if GnuPG-Pack is installed.
+ * Shows a warning if an existing installation of GnuPP, GnuPT or
+   Windows privacy Tools is found.  Rejects installation if GnuPG-Pack
+   is installed.
 
  * The Einsteiger manual features a section on GPGol.
+
+ * No more splash screen with the logo
+
+ * A new page to select where startlinks are to be installed.
 
 
 Noteworthy changes in version 0.8.0 (2006-03-09)

@@ -363,16 +363,16 @@ Function .onInit
 Call G4wRunOnce
 
   SetOutPath $TEMP
+!ifdef SOURCES
   File /oname=gpgspltmp.bmp "${TOP_SRCDIR}/doc/logo/gpg4win-logo-400px.bmp"
   # We play the tune only for the soruce installer
-!ifdef SOURCES
   File /oname=gpgspltmp.wav "${TOP_SRCDIR}/src/gpg4win-splash.wav"
   g4wihelp::playsound $TEMP\gpgspltmp.wav
-!endif
   g4wihelp::showsplash 2500 $TEMP\gpgspltmp.bmp
 
   Delete $TEMP\gpgspltmp.bmp
   # Note that we delete gpgspltmp.wav in .onInst{Failed,Success}
+!endif
 
   !insertmacro MUI_INSTALLOPTIONS_EXTRACT "installer-options.ini"
 

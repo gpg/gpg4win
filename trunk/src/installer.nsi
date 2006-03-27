@@ -90,6 +90,12 @@ Var OtherGnuPGDetected
 !define MUI_FINISHPAGE_NOAUTOCLOSE
 !define MUI_UNFINISHPAGE_NOAUTOCLOSE
 
+#!define MUI_HEADERIMAGE
+#!define MUI_HEADERIMAGE_BITMAP \
+#               "${TOP_SRCDIR}/doc/logo/gpg4win-logo-150x57.bmp"
+!define MUI_WELCOMEFINISHPAGE_BITMAP \
+               "${TOP_SRCDIR}/doc/logo/gpg4win-logo-164x314.bmp"
+
 # Remember the installer language
 
 #!define MUI_LANGDLL_REGISTRY_ROOT "HKCU" 
@@ -110,6 +116,7 @@ Var OtherGnuPGDetected
 !define MUI_PAGE_CUSTOMFUNCTION_SHOW PrintNonAdminWarning
 !insertmacro MUI_PAGE_COMPONENTS
 
+!define MUI_PAGE_CUSTOMFUNCTION_LEAVE CheckExistingVersion
 !insertmacro MUI_PAGE_DIRECTORY
 
 !ifdef HAVE_STARTMENU
@@ -166,12 +173,13 @@ Var STARTMENU_FOLDER
 #!insertmacro MUI_RESERVEFILE_LANGDLL
 !insertmacro MUI_RESERVEFILE_INSTALLOPTIONS
 ReserveFile "${BUILD_DIR}\g4wihelp.dll"
-ReserveFile "${TOP_SRCDIR}\doc\logo\gpg4win-logo-400px.bmp"
 !ifdef SOURCES
+ReserveFile "${TOP_SRCDIR}\doc\logo\gpg4win-logo-400px.bmp"
 ReserveFile "${TOP_SRCDIR}\src\gpg4win-splash.wav"
 !endif
 ReserveFile "${TOP_SRCDIR}\COPYING"
 ReserveFile "${TOP_SRCDIR}\src\installer-options.ini"
+ReserveFile "${TOP_SRCDIR}\doc\logo\gpg4win-logo-164x314.bmp"
 
 # Language support
 
@@ -261,6 +269,15 @@ Function PrintGnuPTWarning
    StrCpy $OtherGnuPGDetected "GnuPT"
 FunctionEnd
 
+# Display a warning if the Sourceforge WinPT has been detected and
+# allow the user to abort the installation.
+Function PrintWinPTSFWarning
+   MessageBox MB_YESNO "$(T_FoundOldWinPTSF)" IDYES cont
+     Abort
+ cont:
+   StrCpy $OtherGnuPGDetected "WinPT-SF"
+FunctionEnd
+
 # Display a warning if GnuPG Pack has been detected and abort the
 # the installation.  This one clobbers our own Registry space.
 Function PrintGnuPackWarning
@@ -282,6 +299,11 @@ Function CheckOtherGnuPGApps
   StrCmp $0 "" +2
     Call PrintGnuPTWarning
 
+  ClearErrors
+  ReadRegStr $0 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\Windows Privacy Tools" "DisplayVersion"
+  IfErrors +2 0
+    Call PrintWinPTSFWarning
+
   ReadRegStr $0 HKLM "Software\GNU\GnuPG" "Install Directory"
   Push $0
   Push "GnuPG-Pack"
@@ -290,7 +312,29 @@ Function CheckOtherGnuPGApps
   StrCmp $0 "" +2
     Call PrintGnuPackWarning
 
+
 FunctionEnd
+
+# Check whether gpg4win has already been installed.  This is called as
+# a leave function from the directory page.  A call to abort will get
+# back to the directory selection.
+Function CheckExistingVersion
+  ClearErrors
+  FileOpen $0 "$INSTDIR\VERSION" r
+  IfErrors leave
+  FileRead $0 $R0
+  FileRead $0 $R1
+  FileClose $0
+
+  Push $R1
+  Call TrimNewLines
+  Pop $R1
+
+  MessageBox MB_YESNO "$(T_FoundExistingVersion)" IDYES leave
+     Abort
+ leave:
+FunctionEnd
+
 
 
 # PrintNonAdminWarning
@@ -358,6 +402,16 @@ LangString T_InstallOptLinks ${LANG_ENGLISH} "Start links"
 LangString T_InstallOptLinks ${LANG_GERMAN}  "Startlinks"
 
 
+#------------------------------------------------
+# String pertaining to the existing version check
+#------------------------------------------------
+LangString T_FoundExistingVersion ${LANG_ENGLISH} \
+     "Version $R1 has already been installed.  $\r$\n\
+      Do you want to overwrite it with version ${VERSION}?"
+LangString T_FoundExistingVersion ${LANG_GERMAN} \
+     "Version $R1 ist hier bereits installiert.  $\r$\n\
+      Möchte Sie diese mit Version ${VERSION} überschreiben?"
+
 
 #---------------------------------------------
 # From the old installation checking functions
@@ -368,47 +422,94 @@ LangString T_FoundOldSeeManual ${LANG_ENGLISH} \
 LangString T_FoundOldSeeManual ${LANG_GERMAN} \
      "Bitte sehen Sie im Gpg4win für Einsteiger Handbuch nach, wie Sie Ihre \
       Schlüssel aus anderen - GnuPG basierten - Installationen in Gpg4win \
-      überführen."
+      überführen.  Es wird dringend geraten Gpg4Win nicht zusammen mit \
+      diesen anderen Installation zu betreiben."
 
 #---------
 LangString T_FoundOldGnuPP ${LANG_ENGLISH} \
      "An old installation of GnuPP (GNU Privacy Project) has been been \
       detected.  That software is not maintained anymore and thus should \
-      be removed. \
-          \
+      be removed. $\r$\n\
+          $\r$\n\
       Do you want to continue installing Gpg4win and take care of the old \
       installation later?"
 LangString T_FoundOldGnuPP ${LANG_GERMAN} \
      "Eine alte Installation von GnuPP (GNU Privacy Project) wurde gefunden. \
       Diese Software wird nicht mehr gepflegt und sollte deshalb vom \
-      System entfernt werden. \
-        \
+      System entfernt werden.  $\r$\n\
+        $\r$\n\
+      Sie können die Installation von Gpg4win jetzt weiterdurchführen und \
+      danach entscheiden, ob Sie das alte GnuPP dann entfernen.  Sie finden \
+      hierzu Hinweise im Gpg4Win Handbuch für Einsteiger.  Falls Sie die alte \
+      Installation schon jetzt entfernen möchten, so exportieren Sie dort \
+      alle vorhandenen Schlüssel in eine Datei um sie so später in Gpg4Win \
+      wieder importieren zu können. $\r$\n\
+        $\r$\n\
       Möchten Sie die Installation von Gpg4win weiter durchführen und sich \
       dann später um die Entfernung von GnuPP kümmern?"
 
 #---------
 LangString T_FoundOldGnuPT ${LANG_ENGLISH} \
      "An installation of GnuPT has been been detected.  This may cause \
-      problems when used along with Gpg4win. \
-          \
+      problems when used along with Gpg4win. $\r$\n\
+          $\r$\n\
       Do you want to continue installing Gpg4win?"
 LangString T_FoundOldGnuPT ${LANG_GERMAN} \
      "Eine Installation von GnuPT wurde gefunden.  Dies kann zu Problemen \
-      führen, falls GnuPT zusammem mit Gpg4win benutzt wird. \
-         \
+      führen, falls GnuPT zusammem mit Gpg4win benutzt wird.  Falls Sie GnuPT \
+      zwischenzeitlich bereits entfernt haben, so ignorieren Sie diese \
+      Warnung bitte.  Die Deinstallation von GnuPT erfolgt nicht immer \
+      spurlos und Gpg4win kann deshalb nicht sicher erkennen, ob es \
+      vollständig entfernt wurde.  $\r$\n\
+         $\r$\n\
+      Sie können die Installation von Gpg4win jetzt weiterdurchführen und \
+      danach entscheiden, ob Sie das alte GnuPT dann entfernen.  Sie finden \
+      hierzu Hinweise im Gpg4Win Handbuch für Einsteiger.  Falls Sie die alte \
+      Installation schon jetzt entfernen möchten, so exportieren Sie dort \
+      alle vorhandenen Schlüssel in eine Datei um sie so später in Gpg4Win \
+      wieder importieren zu können.  $\r$\n\
+          $\r$\n\
       Möchten Sie die Installation von Gpg4win fortführen?"
+
+#---------
+LangString T_FoundOldWinPTSF ${LANG_ENGLISH} \
+     "An old installation of the Sourceforge hosted WinPT has been been \
+      detected.  That software is not maintained anymore and should \
+      be removed. $\r$\n\
+          $\r$\n\
+      Do you want to continue installing Gpg4win and take care of the old \
+      installation later?"
+LangString T_FoundOldWinPTSF ${LANG_GERMAN} \
+     "Eine alte Installation der Windows Privacy Tools von Sourceforge \
+      wurde gefunden.  Diese Software wird nicht mehr gepflegt und verträgt \
+      sich vermutlich nicht mit Gpg4win.  Sie sollte deshalb vom System \
+      entfernt werden.  $\r$\n\
+        $\r$\n\
+      Sie können versuchen, die Installation von Gpg4win jetzt \
+      weiterdurchführen und danach entscheiden, ob Sie die alte Installation \
+      entfernen.  Sie finden hierzu Hinweise im Gpg4Win Handbuch für \
+      Einsteiger.  $\r$\n\
+        $\r$\n\
+      Wir empfehlen alerdings, diese alte Installation vorher zu entfernen. \
+      Brechen Sie hierzu die Installation von Gpg4win ab und exportieren Sie \
+      mittles dieser alten Version alle vorhandenen Schlüssel in eine Datei \
+      um sie so später in Gpg4Win wieder importieren zu können. $\r$\n\
+        $\r$\n\
+      Möchten Sie die Installation von Gpg4win trotzdem jetzt weiter \
+      durchführen?"
+
 
 #--------
 LangString T_FoundOldGnuPack ${LANG_ENGLISH} \
      "An installation of GnuPG-Pack has been been detected. You need to \
-      uninstall it before you can continue with Gpg4win installation. \
-        \
+      uninstall it before you can continue with Gpg4win installation. $\r$\n\
+        $\r$\n\
       The installation will be aborted now!"
 LangString T_FoundOldGnuPack ${LANG_GERMAN} \
-     "Eine Installation con GnuPG-Pack wurde gefunden.  Sie müssen diese \
+     "Eine Installation von GnuPG-Pack wurde gefunden.  Sie müssen diese \
       zuerst deinstallieren bevor Sie mit der Installation von Gpg4win \
-      fortfahren können. \
-        \
+      fortfahren können. $\r$\n\
+        $\r$\n\
       Die Installation von Gpg4win wird nun abgebrochen!"
 
 
@@ -509,3 +610,29 @@ Function StrStr
    Pop $R2
    Exch $R1
 FunctionEnd
+
+# TrimNewlines  - taken from the NSIS reference
+# input, top of stack  (e.g. whatever$\r$\n)
+# output, top of stack (replaces, with e.g. whatever)
+# modifies no other variables.
+Function TrimNewlines
+   Exch $R0
+   Push $R1
+   Push $R2
+   StrCpy $R1 0
+ 
+ loop:
+   IntOp $R1 $R1 - 1
+   StrCpy $R2 $R0 1 $R1
+   StrCmp $R2 "$\r" loop
+   StrCmp $R2 "$\n" loop
+   IntOp $R1 $R1 + 1
+   IntCmp $R1 0 no_trim_needed
+   StrCpy $R0 $R0 $R1
+ 
+ no_trim_needed:
+   Pop $R2
+   Pop $R1
+   Exch $R0
+FunctionEnd
+
