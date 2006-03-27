@@ -1,3 +1,16 @@
+2006-03-27  Werner Koch  <wk@g10code.com>
+
+	* src/installer-options.ini: Don't create a desktop link by default.
+
+	* src/installer.nsi: Add a logo image. Add leave function.
+	(CheckExistingVersion): New.
+	(TrimNewLines): New.
+	(PrintWinPTSFWarning): New.
+	* src/inst-sections.nsi: Call it.
+	Do not show the splash screen.
+	* src/inst-gpg4win.nsi: Write a version file.
+	* src/uninst-gpg4win.nsi: Delete version file
+
 2006-03-27  Marcus Brinkmann  <marcus@g10code.de>
 
 	* installer.nsi: Move custom page for installer options before

@@ -21,6 +21,7 @@ EXTRA_DIST = gpg4win-logo.eps         \
              gpg4win-logo-400px.png   \
              gpg4win-logo-400px.bmp   \
              gpg4win-logo-favicon.bmp \
-             gpg4win-logo-icon.ico
+             gpg4win-logo-icon.ico \
+             gpg4win-logo-164x314.bmp
 
 

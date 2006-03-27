@@ -30,6 +30,12 @@ Section "-gpg4win"
   File "${BUILD_DIR}/README.de.txt"
   File "${BUILD_DIR}/versioninfo.txt"
 
+  # Write a version file.
+  FileOpen $0 "$INSTDIR\VERSION" w
+  FileWrite $0 "${PACKAGE}$\r$\n"
+  FileWrite $0 "${VERSION}$\r$\n"
+  FileClose $0
+
 !endif
 
 SectionEnd

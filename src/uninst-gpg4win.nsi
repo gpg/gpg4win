@@ -33,6 +33,8 @@ Section "-un.gpg4win"
   Delete "$INSTDIR\share\gpg4win\README.de.txt"
   Delete "$INSTDIR\share\gpg4win\versioninfo.txt"
 
+  Delete "$INSTDIR\VERSION"
+
   RMDir "$INSTDIR\share\gpg4win"
 
   # Try to remove otehr top directories.

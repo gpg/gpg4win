@@ -1,3 +1,8 @@
+2006-03-27  Werner Koch  <wk@g10code.com>
+
+	* logo/gpg4win-logo-150x57.bmp: New.
+	* logo/Makefile.am (EXTRA_DIST): Add it. 
+
 2006-03-07  Werner Koch  <wk@g10code.com>
 
 	Set both manual versions to 2.0.0.RC2.
