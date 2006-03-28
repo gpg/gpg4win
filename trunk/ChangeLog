@@ -2,6 +2,7 @@
 
 	* src/installer.nsi (CustomPageOptions): Write Labels, so that
 	they are translatable.
+	(MUI_FINISHPAGE_LINK_LOCATION): Localized.
 	* src/installer-options.ini: Add label field and removed static
 	texts.
 
