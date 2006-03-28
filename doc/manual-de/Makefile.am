@@ -21,6 +21,7 @@
 png_files := \
         sc-inst-welcome.png sc-inst-license.png \
         sc-inst-components.png sc-inst-directory.png \
+        sc-inst-options.png \
         sc-inst-startmenu.png sc-inst-ready.png \
         sc-inst-finished.png sc-inst-finished2.png \
 	sc-winpt-sign-passwd.png \

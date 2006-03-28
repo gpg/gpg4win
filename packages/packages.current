@@ -128,9 +128,8 @@ chk  1019c8027c0cf94bca680886f4e2ae4e629a2a97
 # WinPT
 
 server http://wald.intevation.org/frs/download.php
-file  137/winpt-0.11.8.tar.bz2
-chk   b87a6d0d4f53fa305d27632f4ad5d6a5a5219e15
-
+file  156/winpt-0.11.9.tar.bz2
+chk   2c7ac9a0344d6b7059761780854e69f7363f21e4
 
 # GPGee
 # Note that the -bin package has been repackaged from the
@@ -153,9 +152,8 @@ chk  fa398ea4ca857f11d6c60cbb69b29c6c27bd379c
 # GPGol
 server ftp://ftp.g10code.com/g10code/gpgol
 
-file gpgol-0.9.6.tar.bz2
-chk  a637d8a024d3106eba320af47066574817624ab3  
-
+file gpgol-0.9.8.tar.bz2
+chk 03db1c683354b5e83ab5cdefd2aac2c1abedd2bb
 
 # GnuPG stuff. 
 

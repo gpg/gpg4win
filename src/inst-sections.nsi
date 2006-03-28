@@ -463,7 +463,7 @@ Section "-startmenu"
 
   # Check if the start menu entries where requested.
   !insertmacro MUI_INSTALLOPTIONS_READ $R0 "installer-options.ini" \
-	"Field 1" "State"
+	"Field 2" "State"
   IntCmp $R0 0 no_start_menu
 
 !insertmacro MUI_STARTMENU_WRITE_BEGIN Application
@@ -560,7 +560,7 @@ Section "-startmenu"
 
   # Check if the desktop entries where requested.
   !insertmacro MUI_INSTALLOPTIONS_READ $R0 "installer-options.ini" \
-	"Field 2" "State"
+	"Field 3" "State"
   IntCmp $R0 0 no_desktop
 
 !ifdef HAVE_PKG_WINPT
@@ -637,7 +637,7 @@ no_desktop:
 	
   # Check if the quick launch bar entries where requested.
   !insertmacro MUI_INSTALLOPTIONS_READ $R0 "installer-options.ini" \
-	"Field 3" "State"
+	"Field 4" "State"
   IntCmp $R0 0 no_quick_launch
   StrCmp $QUICKLAUNCH $TEMP no_quick_launch
 

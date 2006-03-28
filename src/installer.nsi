@@ -245,8 +245,19 @@ LangString T_NoKeyManager ${LANG_GERMAN} \
 # Control function for the Custom page to select special
 # install options.
 #
-Function CustomPageOptions  
+Function CustomPageOptions
   !insertmacro MUI_HEADER_TEXT "$(T_InstallOptions)" "$(T_InstallOptLinks)"
+  # Note, that the default selection is done in the ini file
+  !insertmacro MUI_INSTALLOPTIONS_WRITE "installer-options.ini" \
+	"Field 1" "Text"  "$(T_InstOptLabelA)"
+  !insertmacro MUI_INSTALLOPTIONS_WRITE "installer-options.ini" \
+	"Field 2" "Text"  "$(T_InstOptFieldA)"
+  !insertmacro MUI_INSTALLOPTIONS_WRITE "installer-options.ini" \
+	"Field 3" "Text"  "$(T_InstOptFieldB)"
+  !insertmacro MUI_INSTALLOPTIONS_WRITE "installer-options.ini" \
+	"Field 4" "Text"  "$(T_InstOptFieldC)"
+
+
   !insertmacro MUI_INSTALLOPTIONS_DISPLAY "installer-options.ini"
 FunctionEnd
 
@@ -360,7 +371,7 @@ FunctionEnd
 
 Function CheckIfStartMenuWanted
   !insertmacro MUI_INSTALLOPTIONS_READ $R0 "installer-options.ini" \
-	"Field 1" "State"
+	"Field 2" "State"
   IntCmp $R0 1 +2
     Abort
 FunctionEnd
@@ -401,6 +412,25 @@ LangString T_InstallOptions ${LANG_GERMAN}  "Installationsoptionen"
 LangString T_InstallOptLinks ${LANG_ENGLISH} "Start links"
 LangString T_InstallOptLinks ${LANG_GERMAN}  "Startlinks"
 
+LangString T_InstOptLabelA  ${LANG_ENGLISH} \
+     "Please select where Gpg4win shall install links:"
+LangString T_InstOptLabelA  ${LANG_GERMAN} \
+     "Bitte wählen Sie, welche Verknüpfungen angelegt werden sollen:"
+
+LangString T_InstOptFieldA  ${LANG_ENGLISH} \
+     "Start Menu"
+LangString T_InstOptFieldA  ${LANG_GERMAN} \
+     "Startmenü"
+
+LangString T_InstOptFieldB  ${LANG_ENGLISH} \
+     "Desktop"
+LangString T_InstOptFieldB  ${LANG_GERMAN} \
+     "Arbeitsfläche"
+
+LangString T_InstOptFieldC  ${LANG_ENGLISH} \
+     "Quick Launch Bar"
+LangString T_InstOptFieldC  ${LANG_GERMAN} \
+     "Schnellstartleiste"
 
 #------------------------------------------------
 # String pertaining to the existing version check
