@@ -1,3 +1,10 @@
+2006-03-28  Werner Koch  <wk@g10code.com>
+
+	* src/installer.nsi (CustomPageOptions): Write Labels, so that
+	they are translatable.
+	* src/installer-options.ini: Add label field and removed static
+	texts.
+
 2006-03-27  Werner Koch  <wk@g10code.com>
 
 	* src/installer-options.ini: Don't create a desktop link by default.
