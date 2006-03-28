@@ -1,5 +1,8 @@
 2006-03-28  Werner Koch  <wk@g10code.com>
 
+	* website/index.htm4: Fixed contact information for g10 code.
+	* website/index-de.htm4: Ditto.
+
 	* manual-de/Makefile.am (png_files): Add sc-inst-options.png
 	* manual-de/einsteiger.tex: Docuemtn the new otpiosn page.
 

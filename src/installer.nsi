@@ -146,7 +146,7 @@ Var STARTMENU_FOLDER
 #!define MUI_FINISHPAGE_RUN_TEXT "$(T_RunKeyManager)"
 #!define MUI_FINISHPAGE_RUN_NOTCHECKED
 !define MUI_FINISHPAGE_LINK "$(T_MoreInfo)"
-!define MUI_FINISHPAGE_LINK_LOCATION http://www.gpg4win.org
+!define MUI_FINISHPAGE_LINK_LOCATION "$(T_MoreInfoURL)"
 !insertmacro MUI_PAGE_FINISH
 
 
@@ -223,6 +223,8 @@ LangString T_MoreInfo ${LANG_ENGLISH} \
    "Click here for the project's homepage"
 LangString T_MoreInfo ${LANG_GERMAN} \
    "Hier klicken um zur Homepage des Projekts zu gelangen"
+LangString T_MoreInfoURL ${LANG_ENGLISH} "http://www.gpg4win.org"
+LangString T_MoreInfoURL ${LANG_GERMAN}  "http://www.gpg4win.de"
 
 LangString T_ShowReadme ${LANG_ENGLISH} \
    "Show the README file"
