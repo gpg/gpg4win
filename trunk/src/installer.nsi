@@ -334,7 +334,7 @@ FunctionEnd
 Function CheckExistingVersion
   ClearErrors
   FileOpen $0 "$INSTDIR\VERSION" r
-  IfErrors leave
+  IfErrors nexttest
   FileRead $0 $R0
   FileRead $0 $R1
   FileClose $0
@@ -344,7 +344,15 @@ Function CheckExistingVersion
   Pop $R1
 
   MessageBox MB_YESNO "$(T_FoundExistingVersion)" IDYES leave
+  Abort
+
+ nexttest:
+  ClearErrors
+  ReadRegStr $0 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\GPG4Win" "DisplayVersion"
+  IfErrors leave 0
+     MessageBox MB_YESNO "$(T_FoundExistingVersionB)" IDYES leave
      Abort
+     
  leave:
 FunctionEnd
 
@@ -441,8 +449,22 @@ LangString T_FoundExistingVersion ${LANG_ENGLISH} \
      "Version $R1 has already been installed.  $\r$\n\
       Do you want to overwrite it with version ${VERSION}?"
 LangString T_FoundExistingVersion ${LANG_GERMAN} \
-     "Version $R1 ist hier bereits installiert.  $\r$\n\
-      Möchte Sie diese mit Version ${VERSION} überschreiben?"
+     "Version $R1 ist hier bereits installiert. $\r$\n\
+      Möchten Sie diese mit Version ${VERSION} überschreiben? $\r$\n\
+       $\r$\n\
+      (Sie können in jedem Fall mit JA antworten, falls es sich um \
+       eine neuere oder dieselbe Version handelt.)"
+LangString T_FoundExistingVersionB ${LANG_ENGLISH} \
+     "A version of Gpg4Win has already been installed on the system. \
+      There will be no problem installing and thus overwriting this \
+      Version. $\r$\n\
+       $\r$\n\
+      Do you want to continue installing Gpg4win?"
+LangString T_FoundExistingVersionB ${LANG_GERMAN} \
+     "Eine Version von Gpg4Win ist hier bereits installiert. \
+      Es ist problemlos möglich, die Installation fortzuführen.  $\r$\n\
+        $\r$\n\
+      Möchten die die Installation von Gpg4Win fortführen?"
 
 
 #---------------------------------------------

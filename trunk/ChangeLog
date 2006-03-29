@@ -1,3 +1,9 @@
+2006-03-29  Werner Koch  <wk@g10code.com>
+
+	* configure.ac (BUILD_ISODATE): New.
+	* include/config.nsi.in: Ditto.
+	* src/gpg4win.nsi: Display it on the Welcome page
+
 2006-03-28  Werner Koch  <wk@g10code.com>
 
 	* src/installer.nsi (CustomPageOptions): Write Labels, so that
