@@ -178,7 +178,7 @@ ReserveFile "${TOP_SRCDIR}\doc\logo\gpg4win-logo-400px.bmp"
 ReserveFile "${TOP_SRCDIR}\src\gpg4win-splash.wav"
 !endif
 ReserveFile "${TOP_SRCDIR}\COPYING"
-ReserveFile "${TOP_SRCDIR}\src\installer-options.ini"
+ReserveFile "installer-options.ini"
 ReserveFile "${TOP_SRCDIR}\doc\logo\gpg4win-logo-164x314.bmp"
 
 # Language support
