@@ -51,14 +51,16 @@
   It includes an advanced key management facility and is compliant \
   with the proposed OpenPGP Internet standard as described in RFC2440. \
   \r\n\r\n$_CLICK \
-  \r\n\r\n\r\n\r\n\r\nThis is GnuPG version ${VERSION}\r\n\
-  file version ${PROD_VERSION}"
+  \r\n\r\n\r\n\r\n\r\nThis is GPG4WIN version ${VERSION}\r\n\
+  file version ${PROD_VERSION}\r\n\
+  release date ${_BUILD_ISODATE}"
 !define ABOUT_GERMAN \
   "GnuPG is das Werkzeug aus dem GNU Projekt zur sicheren Kommunikation \
    sowie zum sicheren Speichern von Daten. \
    \r\n\r\n$_CLICK \
-   \r\n\r\n\r\n\r\n\r\nDies ist GnuPG Version ${VERSION}\r\n\
-   Dateiversion ${PROD_VERSION}"
+   \r\n\r\n\r\n\r\n\r\nDies ist GPG4WIN Version ${VERSION}\r\n\
+   Dateiversion ${PROD_VERSION}\r\n\
+   Releasedatum ${_BUILD_ISODATE}"
 
 
 # The copyright license of the package.  Define only one of these.
