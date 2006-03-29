@@ -24,7 +24,8 @@ EXTRA_DIST = pkg-config $(common_nsi) gpg4win.nsi gpg4win-src.nsi \
 	exdll.h g4wihelp.c g4wihelp.nsi config.site loreley.mid
 
 # Need to clean the dll because we bypassed automake.
-CLEANFILES = g4wihelp.dll versioninfo.txt README.en.txt README.de.txt
+CLEANFILES = g4wihelp.dll versioninfo.txt README.en.txt README.de.txt \
+             installer-options.ini
 
 # Supported source packages.
 gpg4win_spkgs := glib gnupg libgpg-error gpgme gpgol gpa winpt sylpheed-claws \
