@@ -374,7 +374,10 @@ Call G4wRunOnce
   # Note that we delete gpgspltmp.wav in .onInst{Failed,Success}
 !endif
 
-  !insertmacro MUI_INSTALLOPTIONS_EXTRACT "${TOP_SRCDIR}/src/installer-options.ini"
+  # We can't use TOP_SRCDIR dir as the name of the file needs to be
+  # the same while building and running the installer.  Thus we
+  # generate the file from a template.
+  !insertmacro MUI_INSTALLOPTIONS_EXTRACT "installer-options.ini"
 
   Call CalcDepends
   Call CheckOtherGnuPGApps

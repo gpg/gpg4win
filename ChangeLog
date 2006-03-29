@@ -2,6 +2,8 @@
 
 	Released 1.0.0rc1.
 
+	* src/installer-options.ini: Renamed to ..
+	* src/installer-options.ini.in: .. this.
 	* configure.ac (BUILD_ISODATE): New.
 	* include/config.nsi.in: Ditto.
 	* src/gpg4win.nsi: Display it on the Welcome page

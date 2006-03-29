@@ -19,7 +19,7 @@
 
 
 EXTRA_DIST = pkg-config $(common_nsi) gpg4win.nsi gpg4win-src.nsi \
-        inst-gpg4win.nsi uninst-gpg4win.nsi installer-options.ini \
+        inst-gpg4win.nsi uninst-gpg4win.nsi installer-options.ini.in \
 	libiconv.def libintl.def  gpg4win-splash.wav \
 	exdll.h g4wihelp.c g4wihelp.nsi config.site loreley.mid
 
@@ -204,6 +204,9 @@ README.en.txt : versioninfo.txt $(top_srcdir)/doc/README.en.txt
 	   < $(top_srcdir)/doc/README.en.txt \
            | awk '{printf "%s\r\n", $$0}' >README.en.txt
 
+installer-options.ini : $(top_srcdir)/src/installer-options.ini.in
+	cat $(top_srcdir)/src/installer-options.ini.in >installer-options.ini
+
 README.de.txt : versioninfo.txt $(top_srcdir)/doc/README.de.txt
 	sed -e '/^;.*/d;/!VERSIONINFO!/{r versioninfo.txt' -e 'd;}' \
 	-e '/!NEWSFILE!/{r $(top_srcdir)/NEWS' -e 'd;}' \
@@ -216,7 +219,8 @@ README.de.txt : versioninfo.txt $(top_srcdir)/doc/README.de.txt
 # if makensis changed to the directory of the source file at startup.
 # So we have to pull a couple of strings to correct this.
 gpg4win-$(VERSION).exe: gpg4win.nsi $(common_nsi) stamps/stamp-final \
-                        g4wihelp.dll  README.en.txt README.de.txt
+                        g4wihelp.dll  README.en.txt README.de.txt \
+			installer-options.ini
 	$(MAKENSIS) -V3 -DBUILD_DIR=`pwd` -DTOP_SRCDIR=$(top_srcdir) \
 		-DSRCDIR=$(srcdir) $(srcdir)/gpg4win.nsi
 
@@ -225,7 +229,7 @@ stamps/stamp-dist-self: versioninfo.txt
 	touch stamps/stamp-dist-self
 
 gpg4win-src-$(VERSION).exe: gpg4win-src.nsi $(common_nsi) stamps/stamp-final \
-                            stamps/stamp-dist-self
+                            stamps/stamp-dist-self installer-options.ini
 	$(MAKENSIS) -V3 -DBUILD_DIR=`pwd` -DTOP_SRCDIR=$(top_srcdir) \
 		-DSRCDIR=$(srcdir) $(srcdir)/gpg4win-src.nsi
 
