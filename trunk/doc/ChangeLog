@@ -1,3 +1,11 @@
+2006-03-30  Bernhard Reiter <bernhard@intevation.de>
+
+	Correcting website bugs. Thanks to Rodrigo Ristow Branco for reporting.
+
+	* website/versions.m4: Corrected version number 0.1.0rc1 -> 1.0.0rc1.
+	* website/package-integrity-de.htm4,website/package-integrity.htm4:
+	Using VERSION for the signature files.
+
 2006-03-29  Werner Koch  <wk@g10code.com>
 
 	* website/versions.m4: Updated to match 1.0.0rc1.
