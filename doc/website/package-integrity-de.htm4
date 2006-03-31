@@ -27,11 +27,11 @@ MD5_SRC  gpg4win-VERSION.tar.bz2
 <h2>OpenPGP Signaturen</h2>
 
 Für gpg4win-VERSION.exe:
-<a href="ftp://ftp.gpg4win.org/gpg4win/gpg4win-VERSION.exe.sig"
+<a href="http://ftp.gpg4win.org/gpg4win/gpg4win-VERSION.exe.sig"
   >ftp://ftp.gpg4win.org/gpg4win/gpg4win-VERSION.exe.sig</a><br>
 
 Für gpg4win-src-VERSION.exe:
-<a href="ftp://ftp.gpg4win.org/gpg4win/gpg4win-src-VERSION.exe.sig"
+<a href="http://ftp.gpg4win.org/gpg4win/gpg4win-src-VERSION.exe.sig"
   >ftp://ftp.gpg4win.org/gpg4win/gpg4win-src-VERSION.exe.sig</a><br>
 
 Für gpg4win-VERSION.tar.bz2:
