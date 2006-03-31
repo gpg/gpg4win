@@ -16,7 +16,8 @@ m4_ifdef(`__TMPL_PAGE_TITLE',,`m4_define(`__TMPL_PAGE_TITLE',`gpg4win - '__TITLE
     <title>__TMPL_PAGE_TITLE</title>
   </head>
   <body>
-    <table id="navbar"><tr valign="bottom">
+    <table id="navbar">
+      <tr valign="bottom">
         <td style="width:172px; text-align: left; padding-bottom: 8px;">
           <a href="I18N(`EN', `index.html') I18N(`DE', `index-de.html')"
             ><img src="pix/logo.png" alt="gpg4win"></a>
@@ -28,6 +29,7 @@ m4_ifdef(`__TMPL_PAGE_TITLE',,`m4_define(`__TMPL_PAGE_TITLE',`gpg4win - '__TITLE
           LANG_LINK(`EN',`english', EN_FILE) |
           LANG_LINK(`DE',`deutsch', DE_FILE)
         </td>
+      </tr>
     </table>
     <table id="bigbar">
       <tr><td id="vertable" style="white-space: nowrap;">
