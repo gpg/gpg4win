@@ -569,10 +569,12 @@ Section "-startmenu"
 !ifdef HAVE_PKG_WINPT
     SectionGetFlags ${SEC_winpt} $R0 
     IntOp $R0 $R0 & ${SF_SELECTED}
-    IntCmp $R0 ${SF_SELECTED} 0 no_winpt_desktop 
+    IntCmp $R0 ${SF_SELECTED} 0 no_winpt_desktop
+    # Create link which directly starts the WinPT key manager
     CreateShortCut "$DESKTOP\WinPT.lnk" \
 	"$INSTDIR\winpt.exe" \
-        "" "$INSTDIR\winpt.exe" "" SW_SHOWNORMAL "" $(DESC_Menu_winpt)
+        "--keymanager" "$INSTDIR\winpt.exe" "" \
+	SW_SHOWNORMAL "" $(DESC_Menu_winpt)
    no_winpt_desktop:
 !endif
 

@@ -1,3 +1,8 @@
+2006-04-01  Timo Schulz  <ts@g10code.com>
+
+	* src/inst-sections.nsi: WinPT desktop link now
+	directly starts the key manager.
+	
 2006-03-29  Werner Koch  <wk@g10code.com>
 
 	Released 1.0.0rc1.
