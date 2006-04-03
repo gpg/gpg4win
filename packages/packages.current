@@ -159,8 +159,8 @@ chk 03db1c683354b5e83ab5cdefd2aac2c1abedd2bb
 
 server ftp://ftp.gnupg.org/gcrypt
 
-file alpha/gnupg/gnupg-1.4.3rc2.tar.bz2
-chk  eb5b839555ff1957b5956aaf4c96505223a2f9d0 
+file gnupg/gnupg-1.4.3.tar.bz2
+chk  9e96b36e4f4d1e8bc5028c99fac674482cbdb370
 
 file libgpg-error/libgpg-error-1.2.tar.bz2
 chk  468657e5bccd534f350b1a0109e19d2a9cc5d027

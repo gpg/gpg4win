@@ -40,8 +40,7 @@ Section "GnuPG" SEC_gnupg
   # gnupg/g10/keyserver.c::keyserver_spawn() for an explanation.
   File "${prefix}/libexec/gnupg/gpgkeys_finger.exe"
   File "${prefix}/libexec/gnupg/gpgkeys_hkp.exe"
-  File /nonfatal "${prefix}/libexec/gnupg/gpgkeys_http.exe"
-  File /nonfatal "${prefix}/libexec/gnupg/gpgkeys_curl.exe"
+  File "${prefix}/libexec/gnupg/gpgkeys_curl.exe"
   File "${prefix}/libexec/gnupg/gpgkeys_ldap.exe"
 
   SetOutPath "$INSTDIR\share\gnupg"
