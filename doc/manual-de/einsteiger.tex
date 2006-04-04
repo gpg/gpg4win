@@ -48,7 +48,7 @@ Zu \xlink{Gpg4win für Durchblicker}{durchblicker.html}\xml{br}
 Zur \xlink{gpg4win Homepage}{http://www.gpg4win.de/}\xml{br}
 Hier \xlink{Downloadübersicht zur PDF Version}{http://wald.intevation.org/frs/?group_id=11}\xml{p}
 }%
-Eine Veröffentlichung des Gpg4Win Projekts\\
+Eine Veröffentlichung des Gpg4win Projekts\\
   \small Basierend auf einem Original von 
 \T\\
   \small Manfred J. Heinze, Karl Bihlmeier, Isabel Kramer
@@ -207,7 +207,7 @@ für den Betrieb von Adele.
 %% Orginal page 9
 \section{Sie installieren Gpg4win}
 
-Falls Sie Gpg4Win auf einer CD-ROM erhalten haben:
+Falls Sie Gpg4win auf einer CD-ROM erhalten haben:
 
 Legen Sie diese CD-ROM in das CD-ROM-Laufwerk Ihres PCs
 und melden Sie sich als Administrator an.  Öffnen Sie
@@ -215,7 +215,7 @@ Ihren "`Arbeitsplatz"' und klicken Sie dort auf das CD-ROM- Icon mit
 dem Titel "`Gpg4win"'. Wenn sich das CD-ROM-Icon geöffnet hat, klicken
 Sie auf das Installations-Icon mit dem Titel "`Gpg4win"'.
 
-Haben Sie Gpg4Win aus dem Internet heruntergeladen, so klicken Sie
+Haben Sie Gpg4win aus dem Internet heruntergeladen, so klicken Sie
 bitte auf diese neu abgespeicherte Datei, die den Namen
 \texttt{gpg4win-\PackageVersion{}.exe} (oder höhere Versionnummer)
 haben sollte.  Achten Sie unbedingt darauf, dass Sie die Datei von
@@ -1425,13 +1425,6 @@ Bildschirmausdruck entsprechen:
   vermeiden, in einige Fällen sind sie aber notwendig um
   verschlüsselte oder signierte \Email{}s anzeigen zu können.
 
-\item[Warum unterstützt GPGol keine PGP/MIME Signaturen?]
-
-  Durch die Architektur von Outlook ist es nicht möglich derartige
-  Signaturen in einem Plugin zu prüfen.  Outlook verändert die
-  Nachrichten direkt beim Empfang, wodurch diese Signaturen nicht mehr
-  gültig wären.
-
 \item[Warum kann GPGol keine PGP/MIME Nachrichten erzeugen?]
 
   Es ist keine Möglichkeit bekannt, Outlook mitzuteilen, dass eine
@@ -1447,10 +1440,42 @@ Bildschirmausdruck entsprechen:
 \section{Umstieg von anderen GnuPG Programmen}
 
 Wir werden hier erläutern, wie Sie von anderen GnuPG basierten
-Programmen auf Gpg4Win umsteigen können.  Das Installprogramm erkennt
-einige dieser Programme und warnt Sie in diesem Fall. 
+Programmen auf Gpg4win umsteigen können.  Das Installationsprogramm
+erkennt einige dieser Programme und warnt Sie in diesem Fall.
 
-TODO.
+Generell ist es ratsam, eine vorhandene Installation eines anderen
+GnuPG basierten Programms zu entfernen bevor Gpg4win installiert wird.
+Es ist hier wichtig, die vorhandenen Schlüssel zu sichern.
+
+Der einzige sinnvolle Weg dies zu tun, ist unter Verwendung der im
+alten System vorhandenen Möglichkeiten.  Suchen Sie nach einem
+Menüpunkt um die eigenen privaten (geheimen) Schlüssel zu sichern als
+auch nach einem Menüpunkt um alle vorhandenen öffentlichen Schlüssel
+zu sichern.  Sichern Sie diese dann in eine oder zwei Dateien.
+
+Sobald Sie dann Gpg4win installiert haben, prüfen Sie, ob Ihre
+alten Schlüssel bereits vorhanden sind.  Sie können dies mit GPA oder
+WinPT machen.  Sind die Schlüssel schon vorhanden, so entsprach das
+alte System bereits den neuen Konventionen zum Speicherort für die
+Schlüssel und Sie müssen nichts weiter unternehmen.
+
+Wenn die alten Schlüssel nicht erscheinen, so importieren Sie diese
+einfach aus den erstellten Backupdateien.  Lesen Sie hierzu das
+Kapitel 12 im Handbuch "`\xlink{Gpg4win für
+  Durchblicker}{durchblicker.html}"'.
+
+Falls das alte System auch GPA verwendet, so können Sie die dort
+vorhandene Backupmöglichkeit benutzen.  Diese sollte sehr ähnlich zu
+der Funktion in der GPA Version aus Gpg4win sein.
+
+Falls Sie keinen anderen Weg finden, Ihre alten Schlüssel
+wiederzufinden, so suchen Sie bitte mit den Bordmittel von Windows
+nach Dateien mit den Namen \Filename{secring.gpg} und
+\Filename{pubring.gpg} und importieren diese beiden Dateien mittels
+GPA.\footnote{Dies ist nicht der offizielle Weg, funktioniert aber
+  noch mit allen aktuellen GnuPG Versionen.}
+
+
 
 
 \clearpage
@@ -1471,9 +1496,9 @@ TODO.
 %    Der Abschnitt "`History"' ist im Originaldokument nicht vorhanden
 %    und wurde von Werner Koch beigefügt.
 \item Revidierte nicht-veröffentlichte Version von TextLab text+media.      
-\item "`Gpg4Win für Einsteiger"', Dezember 2005\\
+\item "`Gpg4win für Einsteiger"', Dezember 2005\\
       Autoren:  Werner Koch, g10 Code GmbH\\
-      Herausgegeben durch das Gpg4Win Projekt.
+      Herausgegeben durch das Gpg4win Projekt.
 
 \end{itemize}
 

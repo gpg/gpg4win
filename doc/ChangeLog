@@ -1,5 +1,11 @@
 2006-04-04  Werner Koch  <wk@g10code.com>
 
+	* manual-de/einsteiger.tex: Use consist capitalization "Gpg4win". 
+	* manual-de/durchblicker.tex: Ditto.
+
+	* manual-de/einsteiger.tex (Umstieg von anderen GnuPG Programmen):
+	New.
+
 	* website/build-history.awk: New.
 
 2006-03-31  Werner Koch  <wk@g10code.com>
