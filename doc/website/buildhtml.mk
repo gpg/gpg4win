@@ -11,7 +11,7 @@ PP = m4
 PPFLAGS = --prefix-builtins
 
 # Build configuration
-TARGETS = $(patsubst %.htm4,%.html,$(wildcard *.htm4))
+TARGETS = $(patsubst %.htm4,%.html,$(wildcard *.htm4)) change-history.html change-history-de.html
 SUBDIRS = 
 
 # Installation configuration
@@ -37,6 +37,12 @@ subdirs: $(SUBDIRS)
 	@for dir in $^ ; do \
 	  $(MAKE) -C $$dir SUBDIRS="" ; \
 	done
+
+change-history.htm4: build-history.awk ../../NEWS
+	recode utf8..latin1 < ../../NEWS | awk -f build-history.awk > $@
+
+change-history-de.htm4: build-history.awk ../../NEWS
+	recode utf8..latin1 < ../../NEWS | awk -f build-history.awk -v lang=de > $@
 
 online: all
 	echo "Going to put current contents online for www.gpg4win.org ..."

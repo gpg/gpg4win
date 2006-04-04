@@ -67,10 +67,10 @@ BEGIN {
     "m4_define(`DE')\n" \
     "m4_define(`DE_FILE', `change-history-de.html')\n" \
     "PAGE_START\n" \
-    "<h1>Ã„nderungshistorie von gpg4win</h1>\n";
+    "<h1>Änderungshistorie von gpg4win</h1>\n";
 
   release_text["en"] = "released ";
-  release_text["de"] = "verÃ¶ffentlicht ";
+  release_text["de"] = "veröffentlicht ";
 
   print header_text[lang];
 }
@@ -98,7 +98,10 @@ in_section && $0 ~ /^Noteworthy/ {
     sub (/\).*$/, "");
     reldate = $0;
   } else {
-    reldate = "unreleased";
+    if (lang == "en")
+      reldate = "[ in progress; not yet released ]";
+    if (lang == "de")
+      reldate = "[ in Arbeit; bisher noch nicht veröffentlicht ]";
   }
   in_section = 1;
   in_para = 0;
