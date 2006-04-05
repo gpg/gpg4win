@@ -1,4 +1,5 @@
-# build-history.awk - Build a history HTML page from a NEWS file
+# build-history.awk - Build a history HTML         -*- coding: latin1 *-*
+#                     page from the NEWS file
 # Copyright (C) 2006 g10 Code GmbH
 # 
 # This program is free software; you can redistribute it and/or
@@ -41,7 +42,7 @@
 # ignored.  Paragraphs are indicated by the language tags.  A new
 # revision history starts with the "Noteworthy .." line; the release
 # date is expected in parentheses on that line.  If it is not given the
-# section won't be rendered.  The NEWS file shall be utf-8 encoded.
+# section won't be rendered.  
 
 
 BEGIN {
@@ -50,6 +51,7 @@ BEGIN {
   in_section = 0;
   in_para = 0;
   in_vers = 0;
+  any_para = 0;
   version = "";
   reldate = "";
     
@@ -71,6 +73,8 @@ BEGIN {
 
   release_text["en"] = "released ";
   release_text["de"] = "veröffentlicht ";
+  noreldate_text["en"] = "[ in progress; not yet released ]";
+  noreldate_text["de"] = "[ in Arbeit; bisher noch nicht veröffentlicht ]";
 
   print header_text[lang];
 }
@@ -86,6 +90,7 @@ in_section && $0 ~ /^Noteworthy/ {
   in_section = 0;
   in_para = 0;
   in_vers = 0;
+  any_para = 0;
 }
 
 
@@ -93,29 +98,29 @@ in_section && $0 ~ /^Noteworthy/ {
   if ($0 !~ /^Noteworthy/)
     next;
   version = $5;
+  reldate = "";
   if (index ($0, "(")) {
     sub (/^.*\(/, "");
     sub (/\).*$/, "");
     reldate = $0;
+    print "<h2>Version " version " " release_text[lang] " " reldate "</h2>"
   } else {
-    if (lang == "en")
-      reldate = "[ in progress; not yet released ]";
-    if (lang == "de")
-      reldate = "[ in Arbeit; bisher noch nicht veröffentlicht ]";
+    reldate = noreldate_text[lang];
+    print "<h2>Version " version " " reldate "</h2>"
   }
   in_section = 1;
   in_para = 0;
   in_vers = 0;
+  any_para = 0;
 
-  print "<h2>Version " version " " release_text[lang] " " reldate "</h2>"
-  print "<ul>"
   next;
 }
 
 in_section && $0 ~ /^\([a-zA-Z]+\)/ {
   in_para = 0;
-  if ( $0 ~ ("(" lang ")" ) ) {
+  if ( $0 ~ ("^\\(" lang "\\)" ) ) {
     in_para = 1;
+    any_para = 1;
     print "<li>"
     print substr ($0, 5);
   }
@@ -123,7 +128,7 @@ in_section && $0 ~ /^\([a-zA-Z]+\)/ {
 }
     
 in_section && !in_vers && /^~~~/ {
-  if (in_para)
+  if (in_para && any_para)
     print "</ul>"
   in_para = 0; 
   in_vers = 1;
@@ -148,7 +153,7 @@ in_vers {
 
 
 END {
-  if (in_para)
+  if (in_para && any_para)
     print "</ul>"
   print "PAGE_BOXES"
 }

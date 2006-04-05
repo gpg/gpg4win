@@ -1,6 +1,18 @@
+2006-04-05  Werner Koch  <wk@g10code.com>
+
+	* website/buildhtml.mk (change-history.htm4): Don't use recode. A
+	simple recode to latin1 won't anyway work with all source
+	encodings and thus we stay with latin1 for the NEWS file for now.
+
+	* website/build-history.awk: Register encoding.
+
+	* manual-de/einsteiger.tex (Appendix A): Describe Prefer HTML
+	Version.
+	* manual-de/sc-gpgol-options.png: Updated.
+
 2006-04-04  Werner Koch  <wk@g10code.com>
 
-	* manual-de/einsteiger.tex: Use consist capitalization "Gpg4win". 
+	* manual-de/einsteiger.tex: Use consistent capitalization "Gpg4win". 
 	* manual-de/durchblicker.tex: Ditto.
 
 	* manual-de/einsteiger.tex (Umstieg von anderen GnuPG Programmen):

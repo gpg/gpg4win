@@ -1,4 +1,4 @@
-# NEWS for gpg4win                                        -*- coding: utf-8 -*-
+# NEWS for gpg4win                                   -*- coding: latin1 -*-
 #
 # The version number given below are for the standard installers as
 # distributed by www.gpg4win.org.
@@ -17,12 +17,12 @@ Noteworthy changes in version 1.0.0
 
 (en) New: A installer page allows to install start-links for the
      desktop.
-(de) Neu: Eine Seite im Installer erlaubt es, Start-Links fÃ¼r
+(de) Neu: Eine Seite im Installer erlaubt es, Start-Links für
      den Desktop mitzuinstallieren.
 
 (en) No splash screen anymore. Instead, the logo now integrates into
      installer dialog.
-(de) Kein Splash-Screen mehr. DafÃ¼r Logo in Installer-Dialog eingebaut.
+(de) Kein Splash-Screen mehr. Dafür Logo in Installer-Dialog eingebaut.
 
 ~~~~~~~~~~~~~~~
 GnuPG: 1.4.3rc2
