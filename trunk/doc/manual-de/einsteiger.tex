@@ -17,14 +17,15 @@
 \T\DeclareGraphicsExtensions{.eps.gz,.eps}
 
 % Document version:
-\newcommand{\manualversion}{2.0.0.RC2}
-\newcommand{\manualdate}{7. März 2006}
-% \newcommand{\manualinprogress}{} % temporarily activate this for a release
-\newcommand{\manualinprogress}{~und evtl. seitdem weiter bearbeitet}
+\newcommand{\manualversion}{2.0.0}
+\newcommand{\manualdate}{6. April 2006}
+\newcommand{\manualinprogress}{} % temporarily activate this for a release
+                                   % and deactivate the next line
+% \newcommand{\manualinprogress}{~und evtl. seitdem weiter bearbeitet}
 
 
 \T\fancyhead{} % clear all fields
-\T\fancyhead[LO,RE]{Gpg4win für Einsteiger \manualversion \manualinprogress}
+\T\fancyhead[LO,RE]{Gpg4win für Einsteiger \manualversion\ \manualinprogress}
 \T\fancyhead[RO,LE]{\thepage}
 \T\fancyfoot[C]{\includegraphics[width=1cm]{gpg4win-logo}}
 
@@ -59,7 +60,7 @@ Eine Veröffentlichung des Gpg4win Projekts\\
   Überarbeitet von
 \T\\
   \small Werner Koch}
-\date{Version \manualversion vom \manualdate \manualinprogress}
+\date{Version \manualversion\ vom \manualdate\ \manualinprogress}
 
 
 \begin{document}
@@ -1410,7 +1411,7 @@ Bildschirmausdruck entsprechen:
 
 \item[Warum kann eine Verschlüsselung nicht abgebrochen werden?] 
 
-  Wenn Sie auf Senden geklickt haben, beginnt GPGol mit der
+  Wenn Sie auf Senden ge\-klickt haben, beginnt GPGol mit der
   Verschlüsselung.  Outlook hat jedoch seit langem einen Fehler, der
   verhindert, dass diese Operation abgebrochen werden kann.  Als
   Gegenmaßnahme können Sie Outlook so konfigurieren, dass erstellte
@@ -1423,8 +1424,8 @@ Bildschirmausdruck entsprechen:
 \item[Warum erscheint der Bestätigungsdialog beim Zugriff auf
   bestimmte \Email{}s?]
 
-  Sofern GPGol nicht als vertrauenswürdiges Plugin installiert worden
-  ist, nimmt Outlook an, das Plugin versucht unberechtigt auf interne
+  Ist GPGol nicht als vertrauenswürdiges Plugin installiert worden,
+  nimmt Outlook an, das Plugin versucht unberechtigt auf interne
   Informationen zuzugreifen.  GPGol versucht derartige Zugriffe zu
   vermeiden, in einige Fällen sind sie aber notwendig um
   verschlüsselte oder signierte \Email{}s anzeigen zu können.
