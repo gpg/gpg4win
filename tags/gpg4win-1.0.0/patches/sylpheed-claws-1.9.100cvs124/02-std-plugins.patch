@@ -1,0 +1,117 @@
+#! /bin/sh
+patch -p1 -f $* < $0
+exit $?
+
+Force loading of the PGP plugins.
+
+
+2006-01-13  Werner Koch  <wk@g10code.com>
+
+	* src/common/plugin.c (plugin_load_standard_plugins): New.
+	(plugin_load_deps): Made more robust.
+	* src/main.c (main): Call it here.
+
+
+Only in sylpheed-claws-1.9.100cvs124/src/common: passcrypt.o
+diff -urp orig/sylpheed-claws-1.9.100cvs124/src/common/plugin.c sylpheed-claws-1.9.100cvs124/src/common/plugin.c
+--- orig/sylpheed-claws-1.9.100cvs124/src/common/plugin.c	2005-12-23 10:53:24.000000000 +0100
++++ sylpheed-claws-1.9.100cvs124/src/common/plugin.c	2006-01-13 20:44:02.000000000 +0100
+@@ -58,6 +58,11 @@ static gint list_find_by_string(gconstpo
+ 
+ static gint list_find_by_plugin_filename(const Plugin *plugin, const gchar *filename)
+ {
++        /* FIXME: There is a problem in case of symlinks or when a
++           user tries to load a plugin with the same name from a
++           different directory.  I think it would be better to compare
++           only the basename of the filename here (case-insensitive on
++           W32). */
+         g_return_val_if_fail(plugin, 1);
+         g_return_val_if_fail(plugin->filename, 1);
+         g_return_val_if_fail(filename, 1);
+@@ -130,9 +135,11 @@ static gint plugin_load_deps(const gchar
+ 	gchar *deps_file = NULL;
+ 	FILE *fp = NULL;
+ 	gchar buf[BUFFSIZE];
++        gchar *p;
+ 
+         tmp = g_strdup(filename);
+-	*strrchr(tmp, '.') = '\0';
++	if( (p = strrchr(tmp, '.')) )
++          *p = '\0';
+ 	deps_file = g_strconcat(tmp, ".deps", NULL);
+ 	g_free(tmp);
+ 	
+@@ -347,6 +354,43 @@ void plugin_unload_all(const gchar *type
+ 	}
+ }
+ 
++
++/* Load those plugins we always want to use.  No error output; just
++ * try. */
++void plugin_load_standard_plugins (void)
++{
++        static const char *names[] = {
++                "pgpmime",
++                "pgpinline",
++                NULL
++        };
++        int i;
++        gchar *error, *filename;
++        
++        for (i=0; names[i]; i++) {
++                /* Simple hack to check whether the plugin has already
++                 * been loaded but checking only for the basename. */
++                GSList *cur = plugins;
++                for(; cur; cur = cur->next) {
++                        Plugin *p = (Plugin *)cur->data;
++                        if (strstr(p->filename, names[i]))
++                                break;
++                }
++                if (!cur) { /* Not yet loaded. */
++                        /* FIXME: get_plugin_dir () returns with a trailing
++                         * (back)slash; this should be fixed so that we can use
++                         * g_module_build_path here. */
++                        filename = g_strconcat (get_plugin_dir(),
++                                                names[i], NULL);
++                        error = NULL;
++                        plugin_load(filename, &error);
++                        g_free (error);
++                        g_free(filename);
++                }
++        }
++}
++
++
+ GSList *plugin_get_list(void)
+ {
+ 	return g_slist_copy(plugins);
+
+diff -urp orig/sylpheed-claws-1.9.100cvs124/src/common/plugin.h sylpheed-claws-1.9.100cvs124/src/common/plugin.h
+--- orig/sylpheed-claws-1.9.100cvs124/src/common/plugin.h	2005-12-15 09:58:19.000000000 +0100
++++ sylpheed-claws-1.9.100cvs124/src/common/plugin.h	2006-01-13 15:20:45.000000000 +0100
+@@ -38,6 +38,7 @@ void plugin_unload		(Plugin		 *plugin);
+ void plugin_load_all		(const gchar	 *type);
+ void plugin_unload_all		(const gchar	 *type);
+ void plugin_save_list		(void);
++void plugin_load_standard_plugins (void);
+ 
+ GSList *plugin_get_list		(void);
+ const gchar *plugin_get_name	(Plugin		 *plugin);
+
+
+diff -urp orig/sylpheed-claws-1.9.100cvs124/src/main.c sylpheed-claws-1.9.100cvs124/src/main.c
+--- orig/sylpheed-claws-1.9.100cvs124/src/main.c	2005-12-20 20:50:35.000000000 +0100
++++ sylpheed-claws-1.9.100cvs124/src/main.c	2006-01-13 15:22:07.000000000 +0100
+@@ -518,7 +518,8 @@ int main(int argc, char *argv[])
+ 	prefs_toolbar_init();
+ 
+ 	plugin_load_all("GTK2");
+-	
++	plugin_load_standard_plugins ();
++
+ 	static_mainwindow = mainwin;
+ 
+ #ifdef HAVE_STARTUP_NOTIFICATION
+
+
+
