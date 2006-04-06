@@ -31,6 +31,7 @@ AC_INIT([gpg4win], my_version[]m4_ifdef([my_iscvs], [-cvs[]m4_translit(
                   [$Revision$],[Ra-z $:])]),
                   [gpg4win-devel@wald.intevation.org])
 
+
 PACKAGE=$PACKAGE_NAME
 VERSION=$PACKAGE_VERSION
 
