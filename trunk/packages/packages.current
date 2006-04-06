@@ -128,8 +128,10 @@ chk  1019c8027c0cf94bca680886f4e2ae4e629a2a97
 # WinPT
 
 server http://wald.intevation.org/frs/download.php
-file  156/winpt-0.11.9.tar.bz2
-chk   2c7ac9a0344d6b7059761780854e69f7363f21e4
+
+file  172/winpt-0.11.10.tar.bz2
+chk   e64b7c8d6b07388ce77f2b124fed7e5052d720fe      
+
 
 # GPGee
 # Note that the -bin package has been repackaged from the
