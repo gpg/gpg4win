@@ -34,8 +34,11 @@ m4_dnl DONT USE THIS FILE DIRECTLY
   <h1>Similar Projects</h1>
   <a href="http://www.equipmente.de/">GnuPT</a><br>
   <a href="http://people.freenet.de/rose-indorf">GnuPG-Basics</a><br>
-  <a href="http://sourceforge.net/projects/winpt">Windows Privacy Tools</a> (outdated)<br>
-  <a href="http://www.gnupp.de/start.html">GnuPP</a> (outdated)<br>
+  <p>Outdated:<br>
+  <a href="build-installer.html">Build Installer Package</a><br>
+  <a href="http://sourceforge.net/projects/winpt">Windows Privacy Tools</a><br>
+  <a href="http://www.gnupp.de/start.html">GnuPP</a><br>
+  </p>
 </div>
 <div class="box">
   <h1>Sitemap</h1>
