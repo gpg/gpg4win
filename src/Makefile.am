@@ -220,10 +220,16 @@ README.de.txt : versioninfo.txt $(top_srcdir)/doc/README.de.txt
 # if makensis changed to the directory of the source file at startup.
 # So we have to pull a couple of strings to correct this.
 gpg4win-$(VERSION).exe: gpg4win.nsi $(common_nsi) stamps/stamp-final \
-                        g4wihelp.dll  README.en.txt README.de.txt \
+                        g4wihelp.dll README.en.txt README.de.txt \
 			installer-options.ini
 	$(MAKENSIS) -V3 -DBUILD_DIR=`pwd` -DTOP_SRCDIR=$(top_srcdir) \
 		-DSRCDIR=$(srcdir) $(srcdir)/gpg4win.nsi
+
+gpg4win-light-$(VERSION).exe: gpg4win.nsi $(common_nsi) stamps/stamp-final \
+                        g4wihelp.dll README.en.txt README.de.txt \
+			installer-options.ini
+	$(MAKENSIS) -V3 -DBUILD_DIR=`pwd` -DTOP_SRCDIR=$(top_srcdir) \
+		-DSRCDIR=$(srcdir) -DGPG4WIN_LIGHT=1 $(srcdir)/gpg4win.nsi
 
 stamps/stamp-dist-self: versioninfo.txt
 	(set -e; cd ..; make dist-bzip2)
@@ -239,10 +245,18 @@ g4wihelp.dll: g4wihelp.c exdll.h
 	   -lwinmm -lgdi32
 
 if BUILD_SOURCE_INSTALLER
-all-local: gpg4win-$(VERSION).exe gpg4win-src-$(VERSION).exe
+all_src = gpg4win-src-$(VERSION).exe
 else
-all-local: gpg4win-$(VERSION).exe
+all_src =
 endif
+
+if BUILD_LIGHT_INSTALLER
+all_light = gpg4win-light-$(VERSION).exe
+else
+all_light =
+endif
+
+all-local: gpg4win-$(VERSION).exe $(all_light) $(all_src)
 
 clean-local:
 	rm -f gpg4win-$(VERSION).exe gpg4win-src-$(VERSION).exe

@@ -1,3 +1,20 @@
+2006-04-08  Marcus Brinkmann  <marcus@g10code.de>
+
+	* m4/gpg4win.m4 (GPG4WIN_IPKG): New macro for internal packages.
+	* include/config.nsi.in (gpg4win_pkg_man_novice_de,
+	gpg4win_pkg_man_novice_de_version, gpg4win_pkg_man_advanced_de,
+	gpg4win_pkg_man_advanced_de_version): Removed.
+	* src/installer.nsi [GPG4WIN_LIGHT]: Set the output filename for
+	the light installer.
+	* configure.ac: New option --enable-light-installer to control the
+	new automake conditional BUILD_LIGHT_INSTALLER.
+	Make packages man_novide_de and man_advanced_de included packages.
+	* src/Makefile.am (gpg4win-light-$(VERSION).exe): New target.
+	(all_src, all_light): New variables.
+	(all-local): Use all_src and all_light.
+	* src/gpg4win.nsi [GPG4WIN_LIGHT]: Undefine HAVE_PKG_MAN_NOVICE_DE
+	and HAVE_PKG_MAN_ADVANCED_DE.
+
 2006-04-07  Werner Koch  <wk@g10code.com>
 
 	* configure.ac: Use new method to include the SVN revison.  Now it

@@ -64,7 +64,7 @@ AC_SUBST(BUILD_FILEVERSION)
 
 
 # For development of this package it is useful to build without
-# creatign the source install;er (takes a long time).  This option may
+# creatign the source installer (takes a long time).  This option may
 # be used to suppress creation of the source installer.
 AC_ARG_ENABLE(source-installer,
     AC_HELP_STRING([--disable-source-installer],
@@ -73,6 +73,17 @@ AC_ARG_ENABLE(source-installer,
                     build_source_installer=yes)
 AC_MSG_RESULT($source_installer)
 AM_CONDITIONAL(BUILD_SOURCE_INSTALLER, test "$build_source_installer" = yes)
+
+
+# You can build a light version of the installer in addition to the
+# regular version.  This one does not contain the manuals.
+AC_ARG_ENABLE(light-installer,
+    AC_HELP_STRING([--disable-light-installer],
+                   [Do not create the light version of the installer]),
+                    build_light_installer=$enableval,
+                    build_light_installer=yes)
+AC_MSG_RESULT($light_installer)
+AM_CONDITIONAL(BUILD_LIGHT_INSTALLER, test "$build_light_installer" = yes)
 
 
 # Required tools.
@@ -139,8 +150,8 @@ GPG4WIN_SPKG([sylpheed-claws], [libiconv gettext zlib gtk+ libpng glib dnl
                                 gpgme pthreads-w32 crypt regex])
 # The Eudora license (the one for thye EMS API) is still not acceptable.
 #GPG4WIN_SPKG([eudoragpg])
-GPG4WIN_SPKG([man_novice_de])
-GPG4WIN_SPKG([man_advanced_de])
+GPG4WIN_IPKG([man_novice_de])
+GPG4WIN_IPKG([man_advanced_de])
 
 GPG4WIN_FINALIZE
 
