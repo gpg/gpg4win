@@ -39,7 +39,11 @@ Name "${PRETTY_PACKAGE}"
 
 
 # Set the output filename.
+!ifdef GPG4WIN_LIGHT
+OutFile "${PACKAGE}-light-${VERSION}.exe"
+!else
 OutFile "${PACKAGE}-${VERSION}.exe"
+!endif
 
 Icon "${TOP_SRCDIR}/doc/logo/gpg4win-logo-icon.ico"
 UninstallIcon "${TOP_SRCDIR}/doc/logo/gpg4win-logo-icon.ico"
@@ -249,6 +253,7 @@ LangString T_NoKeyManager ${LANG_GERMAN} \
 #
 Function CustomPageOptions
   !insertmacro MUI_HEADER_TEXT "$(T_InstallOptions)" "$(T_InstallOptLinks)"
+
   # Note, that the default selection is done in the ini file
   !insertmacro MUI_INSTALLOPTIONS_WRITE "installer-options.ini" \
 	"Field 1" "Text"  "$(T_InstOptLabelA)"
@@ -258,7 +263,6 @@ Function CustomPageOptions
 	"Field 3" "Text"  "$(T_InstOptFieldB)"
   !insertmacro MUI_INSTALLOPTIONS_WRITE "installer-options.ini" \
 	"Field 4" "Text"  "$(T_InstOptFieldC)"
-
 
   !insertmacro MUI_INSTALLOPTIONS_DISPLAY "installer-options.ini"
 FunctionEnd

@@ -151,10 +151,7 @@
 !define gpg4win_pkg_gettext_version @gpg4win_pkg_gettext_version@
 !define gpg4win_pkg_gettext_src @gpg4win_pkg_gettext_src@
 
+# Internal packages.
 @HAVE_PKG_MAN_NOVICE_DE@
-!define gpg4win_pkg_man_novice_de @gpg4win_pkg_man_novice_de@
-!define gpg4win_pkg_man_novice_de_version @gpg4win_pkg_man_novice_de_version@
 
 @HAVE_PKG_MAN_ADVANCED_DE@
-!define gpg4win_pkg_man_advanced_de @gpg4win_pkg_man_advanced_de@
-!define gpg4win_pkg_man_advanced_de_version @gpg4win_pkg_man_advanced_de_version@

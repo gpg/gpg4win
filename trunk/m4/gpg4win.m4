@@ -202,6 +202,37 @@ AC_DEFUN([GPG4WIN_FINALIZE],
 ])
 
 
+# GPG4WIN_IPKG([PKG],[DEPENDS],[IF-FOUND],[IF-NOT-FOUND])
+# Set up the internal package PKG.
+# It is provided in gpg4win_val.
+AC_DEFUN([GPG4WIN_IPKG],
+[
+  AC_REQUIRE([GPG4WIN_INIT])
+  AC_MSG_CHECKING([for internal package $1])
+  _gpg4win_pkg=maybe
+  AC_ARG_ENABLE([pkg-$1],
+    AS_HELP_STRING([--enable-pkg-$1[=DIR]],
+                   [include internal package $1]),
+    _gpg4win_pkg=$enableval,
+    _gpg4win_pkg=yes)
+
+  AC_MSG_RESULT($_gpg4win_pkg)
+
+  AS_IF([test "$_gpg4win_pkg" != no],
+    _gpg4win_pkgs="$_gpg4win_pkgs $1"
+    GPG4WIN_DEFINE(HAVE_PKG_[]m4_translit([$1],[a-z+-],[A-Z__]))
+    # Record dependencies.  Also enter every package as node.
+    _gpg4win_deps="$_gpg4win_deps $1 $1"
+    AS_IF([test ! -z "$2"],
+          for _gpg4win_i in $2; do
+            _gpg4win_deps="$_gpg4win_deps $_gpg4win_i $1"
+          done)
+      [$3],
+      [$4])
+])
+
+
+
 # GPG4WIN_SPKG([PKG],[DEPENDS],[IF-FOUND],[IF-NOT-FOUND])
 # Set up the source package PKG.
 # It is provided in gpg4win_val.

@@ -23,6 +23,13 @@
 !addplugindir "${BUILD_DIR}"
 !include "../include/config.nsi"
 
+# For the "light" version of the package, we explicitely disable some
+# of the packages right after including config.nsi.
+!ifdef GPG4WIN_LIGHT
+!undef HAVE_PKG_MAN_NOVICE_DE
+!undef HAVE_PKG_MAN_ADVANCED_DE
+!endif
+
 
 # The package name and version.  PRETTY_PACKAGE is a user visible name
 # only while PACKAGE is useful for filenames etc.  PROD_VERSION is the
