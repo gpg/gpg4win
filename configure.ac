@@ -23,17 +23,21 @@ AC_PREREQ(2.59)
 min_automake_version="1.9.3"
 
 # Remember to change the version number immediately *after* a release.
-# Uncomment the my_iscvs macro for non-released code.
-m4_define(my_version, [1.0.0])
-#m4_define(my_iscvs, yes)
-
-AC_INIT([gpg4win], my_version[]m4_ifdef([my_iscvs], [-cvs[]m4_translit(
-                  [$Revision$],[Ra-z $:])]),
-                  [gpg4win-devel@wald.intevation.org])
+# Set my_issvn to "yes" for non-released code.  Remember to run an
+# "svn up" and "autogen.sh" right before creating a distribution.
+m4_define([my_version], [1.0.1])
+m4_define([my_issvn], [yes])
 
 
+m4_define([svn_revision], m4_esyscmd([echo -n $((svn info 2>/dev/null \
+            || echo 'Revision: 0')|sed -n '/^Revision:/ {s/[^0-9]//gp;q}')]))
+AC_INIT([gpg4win], my_version[]m4_if(my_issvn,[yes],[-svn[]svn_revision]),
+        [gpg4win-devel@wald.intevation.org])
+
+SVN_REVISION=svn_revision
 PACKAGE=$PACKAGE_NAME
 VERSION=$PACKAGE_VERSION
+
 
 AC_CONFIG_SRCDIR(include/config.nsi.in)
 AC_CONFIG_MACRO_DIR(m4)
@@ -52,10 +56,8 @@ BUILD_TIMESTAMP=`date --iso-8601=minutes`
 BUILD_ISODATE=`date --iso-8601`
 changequote(,)dnl
 BUILD_FILEVERSION=`echo "$VERSION" | sed 's/\([0-9.]*\).*/\1./'`
-tmp="`echo '$Revision$' | sed 's/[^0-9]//g'`"
 changequote([,])dnl
-test -z "$tmp" && tmp="0"
-BUILD_FILEVERSION="${BUILD_FILEVERSION}$tmp"
+BUILD_FILEVERSION="${BUILD_FILEVERSION}${SVN_REVISION}"
 AC_SUBST(BUILD_TIMESTAMP)
 AC_SUBST(BUILD_ISODATE)
 AC_SUBST(BUILD_FILEVERSION)
