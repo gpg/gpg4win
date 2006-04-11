@@ -6,7 +6,7 @@ m4_define(`DE')
 m4_define(`EN_FILE', `candidates.html')
 PAGE_START
 
-<h1>Weitere Kandidaten für Integration in gpg4win</h1>
+<h1>Weitere Kandidaten zur Integration in gpg4win</h1>
 
 <p>
 Folgende Software-Module könnten gpg4win sinnvoll erweitern.

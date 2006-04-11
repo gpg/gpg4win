@@ -24,7 +24,7 @@ m4_dnl DONT USE THIS FILE DIRECTLY
 <div class="box">
   <h1>Mitmachen</h1>
   <a href="http://wald.intevation.org/projects/gpg4win/">Projektseite</a><br>
-  <a href="candidates-de.html">Kandidaten für Integration</a>
+  <a href="candidates-de.html">Kandidaten zur Integration</a>
   <p>Anleitungen:<br>
   <a href="build-installer-de.html">Installationspaket herstellen</a><br>
   <a href="website-maintenance-de.html">Website pflegen</a><br>
@@ -45,5 +45,5 @@ m4_dnl DONT USE THIS FILE DIRECTLY
   <a href="package-integrity-de.html">Integritätsprüfung</a><br>
   <a href="build-installer-de.html">Installationspaket herstellen</a><br>
   <a href="website-maintenance-de.html">Website pflegen</a><br>
-  <a href="candidates-de.html">Kandidaten für Integration</a><br>
+  <a href="candidates-de.html">Kandidaten zur Integration</a><br>
 </div>
