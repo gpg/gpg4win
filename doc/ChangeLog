@@ -1,3 +1,7 @@
+2006-04-12  Werner Koch  <wk@g10code.com>
+
+	* manual-de/einsteiger.tex (GPGol): List limitations early.
+
 2006-04-05  Werner Koch  <wk@g10code.com>
 
 	* website/buildhtml.mk (change-history.htm4): Don't use recode. A
