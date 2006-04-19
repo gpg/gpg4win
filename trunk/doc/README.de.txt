@@ -10,12 +10,29 @@
                                    
 Dies ist GnuPG for Windows, Version !VERSION!.
 
+Inhalt:
+
+     1. Wichtige Hinweise
+     2. Versionsnummern
+     3. Änderungen
+     4. Rechtliche Hinweise
+
+
+
+
+1. Wichtige Hinweise
+====================
+
 Informationen zur Benutzung sind den Handbüchern "Gpg4Win für
-Einsteiger" und "Gpg4Win für Durchblicker" zu entnehmen.
+Einsteiger" und "Gpg4Win für Durchblicker" zu entnehmen.  Diese können
+Sie auch, in einer möglicherweise bereits überarbeiteten Fassung,
+online unter http://www.gpg4win.de lesen.
 
 
-              Versionsnummern der einzenen Bestandteile
-              =========================================
+
+
+2. Versionsnummern der einzenen Bestandteile
+============================================
 
 Zur Übersicht sind hier die Prüfsummen sowie die Namen der einzelnen
 Bestandteile aufgelistet.  Sie finden dieselben Informationen auch in
@@ -26,16 +43,20 @@ der Datei versioninfo.txt.
 
 
 
+3. Liste der Änderungen an Gpg4Win
+==================================
 
-                   Liste der Änderungen an Gpg4Win
-                  =================================
-                        (englische NEWS Datei)
+Eine aktuelle deutschsprachige Übersicht der Änderungen finden online
+unter http://www.gpg4win.de/change-history-de.html .  Im weiteren
+finden Sie die Einträge aus der englischen NEWS Datei:
 
 !NEWSFILE!
 
 
-   Rechtliche Hinweise zu den einzelnen Bestandteilen der Software
-  =================================================================
+
+
+4. Rechtliche Hinweise zu den einzelnen Bestandteilen der Software
+==================================================================
 
 Gpw4win besteht aus einer ganzen Reihe von unabhängig entwickelten
 Packeten, die teilweise unterschiedliche Lizenzen haben.  Der Großteil
@@ -52,9 +73,11 @@ Zur Übersicht folgt eine Liste der Copyright Erklärungen.
 !PKG-COPYRIGHT!
 
 
+
+
 Frohes GiPiGien,
 
   Ihr Gpg4Win Team
 
 
-                        *** Ende der Datei ***
+*** Ende der Datei ***

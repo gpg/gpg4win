@@ -366,7 +366,7 @@ FunctionEnd
 
 # Check whether the current user is in the Administrator group or an
 # OS version without the need for an Administrator is in use.  Print a
-# warning if this is not the case.
+# diagnostic if this is not the case and abort installation.
 Function PrintNonAdminWarning
   ClearErrors
   UserInfo::GetName
@@ -376,6 +376,7 @@ Function PrintNonAdminWarning
   Pop $1
   StrCmp $1 "Admin" leave +1
   MessageBox MB_OK "$(T_AdminNeeded)"
+  Abort
 
  leave:
 FunctionEnd
