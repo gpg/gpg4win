@@ -403,7 +403,8 @@ Function PrintCloseOtherApps
     Return
    print_warning:
     MessageBox MB_OK|MB_ICONEXCLAMATION "$(T_CloseOtherApps)"
-    IfFileExists $INSTDIR\winpt.exe 0 +2
+    IfFileExists $INSTDIR\winpt.exe 0 +3
+      MessageBox MB_OK "$(T_ShuttingDownWinPT)"
       ExecWait '"$INSTDIR\winpt.exe" --stop'
    leave:
 FunctionEnd
@@ -592,6 +593,11 @@ LangString T_CloseOtherApps ${LANG_GERMAN} \
     schliessen bevor Sie die Installation fortsetzen.  Gpg4Win wird auf \
     jeden Fall versuchen, eine Installation durchzuführen; es ist dann aber \
     u.U. notwendig, das System neu zu starten."
+LangString T_ShuttingDownWinPT ${LANG_ENGLISH} \
+   "Trying to shutdown a possible running instance of WinPT."
+LangString T_ShuttingDownWinPT ${LANG_GERMAN} \
+   "Ein möglicherweise laufendes WinPT wird jetzt automatisch beendet."
+
 
 # FIXME: The GetAfterChar function comes from the NSIS wiki.
 Function un.GetAfterChar
