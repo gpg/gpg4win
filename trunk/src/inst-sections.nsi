@@ -633,10 +633,6 @@ Section "-startmenu"
                    "$INSTDIR\share\gnupg\faq.html" \
                    "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_gnupg_faq)
 
-    CreateShortCut "$DESKTOP\Gpg4Win README.lnk" \
-                   "$INSTDIR\share\gpg4win\README.$(T_LangCode).txt" \
-                   "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_gpg4win_readme)
-
 no_desktop:
 
 	
@@ -676,28 +672,6 @@ no_desktop:
   no_sylpheed_quicklaunch:
 !endif
 
-!ifdef HAVE_PKG_MAN_NOVICE_DE
-    SectionGetFlags ${SEC_man_novice_de} $R0 
-    IntOp $R0 $R0 & ${SF_SELECTED} 
-    IntCmp $R0 ${SF_SELECTED} 0 no_man_novice_de_quicklaunch
-    CreateShortCut \
-        "$QUICKLAUNCH\$(DESC_Name_man_novice_de).lnk" \
-	"$INSTDIR\share\gpg4win\einsteiger.pdf" \
-        "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_man_novice_de)
-  no_man_novice_de_quicklaunch:
-!endif
-
-!ifdef HAVE_PKG_MAN_ADVANCED_DE
-    SectionGetFlags ${SEC_man_advanced_de} $R0 
-    IntOp $R0 $R0 & ${SF_SELECTED} 
-    IntCmp $R0 ${SF_SELECTED} 0 no_man_advanced_de_quicklaunch
-    CreateShortCut \
-        "$QUICKLAUNCH\$(DESC_Name_man_advanced_de).lnk" \
-	"$INSTDIR\share\gpg4win\durchblicker.pdf" \
-        "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_man_advanced_de)
-  no_man_advanced_de_quicklaunch:
-!endif
-
 !ifdef HAVE_PKG_GPGEE
     SectionGetFlags ${SEC_gpgee} $R0 
     IntOp $R0 $R0 & ${SF_SELECTED} 
@@ -706,14 +680,6 @@ no_desktop:
 	"$INSTDIR\GPGee.hlp" "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_gpgee_hlp)
   no_gpgee_quicklaunch:
 !endif
-
-    CreateShortCut "$QUICKLAUNCH\GnuPG FAQ.lnk" \
-                   "$INSTDIR\share\gnupg\faq.html" \
-                   "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_gnupg_faq)
-
-    CreateShortCut "$QUICKLAUNCH\Gpg4Win README.lnk" \
-                   "$INSTDIR\share\gpg4win\README.$(T_LangCode).txt" \
-                   "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_gpg4win_readme)
 
 no_quick_launch:
 
