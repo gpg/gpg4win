@@ -1,5 +1,8 @@
 2006-04-22  Marcus Brinkmann  <marcus@g10code.de>
 
+	* src/gpg4win.mk (stamps/stamp-final-$(1)): Depend on
+	stamps/stamp-directories.
+
 	* src/installer.nsi (T_InstOptLabelB): New string.
 	(CustomPageOptions): Install new string.
 	* src/installer-options.ini.in (Field 5): Add new field.
