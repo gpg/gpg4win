@@ -239,6 +239,15 @@ stamps/stamp-final-$(1): stamps/stamp-$(1)-03-stow-dev
 endef
 
 
+# Template for source packages.
+
+define IPKG_template
+
+stamps/stamp-final-$(1):
+	touch stamps/stamp-final-$(1)
+endef
+
+
 # Insert the template for each source package.
 $(foreach spkg, $(gpg4win_spkgs), $(eval $(call SPKG_template,$(spkg))))
 
@@ -247,6 +256,9 @@ $(foreach mpkg, $(gpg4win_mpkgs), $(eval $(call MPKG_template,$(mpkg))))
 
 # Insert the template for each binary package.
 $(foreach bpkg, $(gpg4win_bpkgs), $(eval $(call BPKG_template,$(bpkg))))
+
+# Insert the template for each internal package.
+$(foreach ipkg, $(gpg4win_ipkgs), $(eval $(call IPKG_template,$(ipkg))))
 
 stamps/stamp-final: stamps/stamp-directories
 stamps/stamp-final: $(addprefix stamps/stamp-final-,$(gpg4win_build_list))

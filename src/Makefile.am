@@ -28,8 +28,7 @@ CLEANFILES = g4wihelp.dll versioninfo.txt README.en.txt README.de.txt \
              installer-options.ini
 
 # Supported source packages.
-gpg4win_spkgs := glib gnupg libgpg-error gpgme gpgol gpa winpt sylpheed-claws \
-                 man_novice_de man_advanced_de
+gpg4win_spkgs := glib gnupg libgpg-error gpgme gpgol gpa winpt sylpheed-claws
 
 # Extra options to configure for individual packages.
 # We can use $(idir) here for the installation prefix.
@@ -163,6 +162,12 @@ define gpg4win_pkg_libpng_post_install
  (cd $$$${pkgidir};							\
  perl -pi -e 's/^prefix=.*$$$$/prefix=\/usr/' `find . -name \*.pc`)
 endef
+
+
+# Supported internal packages.  Internal packages do not require any
+# special support.  Thus, this variable is actually unused, and no
+# rules are added in gpg4win.mk.
+gpg4win_ipkgs := man_novice_de man_advanced_de
 
 
 # Now do the bunch of the work.  This is a bunch of dirty magic to

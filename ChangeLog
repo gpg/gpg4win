@@ -1,3 +1,11 @@
+2006-04-22  Marcus Brinkmann  <marcus@g10code.de>
+
+	* src/Makefile.am (gpg4win_spkgs): Move man_novice_de and
+	man_advanced_de to ...
+	(gpg4win_ipkgs): ... here.
+	* src/gpg4win.mk.in (IPKG_template): New template.
+	Insert it for each internal package.
+
 2006-04-20  Werner Koch  <wk@g10code.com>
 
 	* src/installer.nsi: Pop up a message before shutting down winpt.
