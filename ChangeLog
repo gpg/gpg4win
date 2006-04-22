@@ -1,5 +1,13 @@
 2006-04-22  Marcus Brinkmann  <marcus@g10code.de>
 
+	* src/installer.nsi (T_InstOptLabelB): New string.
+	(CustomPageOptions): Install new string.
+	* src/installer-options.ini.in (Field 5): Add new field.
+	(NumFields): Set to 5.
+	* src/inst-sections.nsi: Do not install manuals and other
+	documents in the quick launch bar.  Do not install the README on
+	the desktop.
+
 	* src/Makefile.am (gpg4win_spkgs): Move man_novice_de and
 	man_advanced_de to ...
 	(gpg4win_ipkgs): ... here.

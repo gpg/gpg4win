@@ -1,5 +1,5 @@
 [Settings]
-NumFields=4
+NumFields=5
 
 ; The number of the fields here is known in installer.nsi.
 ; The tags must be "[Field N]" with N=1..NumFields
@@ -37,4 +37,11 @@ Top=70
 Bottom=80
 ;Text=Quick Launch Bar
 State=0
+
+[Field 5]
+Type=Label
+Left=0
+Right=-1
+Top=90
+Bottom=130
 
