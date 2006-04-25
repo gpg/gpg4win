@@ -154,8 +154,8 @@ chk  b04fa9ea81fc77844c7aa2e3eda042d819d8e9f1
 # GPGol
 server ftp://ftp.g10code.com/g10code/gpgol
 
-file gpgol-0.9.9.tar.bz2
-chk e7aebbd17ba3a15f37f5c8b7c9dd424f79b69cbb 
+file gpgol-0.9.10.tar.bz2
+chk 64d6abead30ae48ea61921bf6a982e0b75d9d142
 
 # GnuPG stuff. 
 

@@ -378,7 +378,7 @@ Function PrintNonAdminWarning
   Pop $1
   StrCmp $1 "Admin" leave +1
   MessageBox MB_OK "$(T_AdminNeeded)"
-  Abort
+  Quit
 
  leave:
 FunctionEnd

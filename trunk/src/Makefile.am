@@ -267,4 +267,5 @@ endif
 all-local: gpg4win-$(VERSION).exe $(all_light) $(all_src)
 
 clean-local:
-	rm -f gpg4win-$(VERSION).exe gpg4win-src-$(VERSION).exe
+	rm -f gpg4win-$(VERSION).exe gpg4win-light-$(VERSION).exe \
+            gpg4win-src-$(VERSION).exe
