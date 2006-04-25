@@ -1,1 +1,6 @@
 \newcommand{\PackageVersion}{@PACKAGE_VERSION@}
+\newcommand{\manualinprogress}{@MANUALINPROGRESS_DE@}
+\newcommand{\manualversionEinsteiger}{@MANUALVERSION_EINSTEIGER@}
+\newcommand{\manualdateEinsteiger}{@MANUALDATE_EINSTEIGER@}
+\newcommand{\manualversionDurchblicker}{@MANUALVERSION_DURCHBLICKER@}
+\newcommand{\manualdateDurchblicker}{@MANUALDATE_DURCHBLICKER@}

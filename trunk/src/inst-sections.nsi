@@ -672,14 +672,6 @@ no_desktop:
   no_sylpheed_quicklaunch:
 !endif
 
-!ifdef HAVE_PKG_GPGEE
-    SectionGetFlags ${SEC_gpgee} $R0 
-    IntOp $R0 $R0 & ${SF_SELECTED} 
-    IntCmp $R0 ${SF_SELECTED} 0 no_gpgee_quicklaunch
-    CreateShortCut "$QUICKLAUNCH\GPGee Manual.lnk" \
-	"$INSTDIR\GPGee.hlp" "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_gpgee_hlp)
-  no_gpgee_quicklaunch:
-!endif
 
 no_quick_launch:
 

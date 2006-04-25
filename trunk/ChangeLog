@@ -1,3 +1,16 @@
+2006-04-25  Werner Koch  <wk@g10code.com>
+
+	* configure.ac: Define manual versions.
+
+	* src/inst-sections.nsi: Do not install the GGPee manual in the QLB.
+
+2006-04-24  Werner Koch  <wk@g10code.com>
+
+	* src/Makefile.am (NEWS.tmp): New. Use it in the README files
+	so that the comment lines are not visible.
+
+	* packages/packages.current: Updated GPGee, WinPT and GPGol.
+
 2006-04-22  Marcus Brinkmann  <marcus@g10code.de>
 
 	* src/gpg4win.mk (stamps/stamp-final-$(1)): Depend on
