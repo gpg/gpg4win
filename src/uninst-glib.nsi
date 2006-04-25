@@ -37,6 +37,7 @@ Section "-un.glib"
   RMDir "$INSTDIR\share"
 
   Delete "$INSTDIR\gspawn-win32-helper.exe"
+  Delete "$INSTDIR\gspawn-win32-helper-console.exe"
   Delete "$INSTDIR\libglib-2.0-0.dll"
   Delete "$INSTDIR\libgmodule-2.0-0.dll"
   Delete "$INSTDIR\libgobject-2.0-0.dll"
