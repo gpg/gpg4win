@@ -17,25 +17,20 @@
 
 \T\DeclareGraphicsExtensions{.eps.gz,.eps}
 
-% Document version:
-\newcommand{\manualversion}{2.0.0}
-\newcommand{\manualdate}{6. April 2006}
-%\newcommand{\manualinprogress}{} % temporarily activate this for a release
-                                   % and deactivate the next line
-\newcommand{\manualinprogress}{~und evtl. seitdem weiter bearbeitet}
-
-
-\T\fancyhead{} % clear all fields
-\T\fancyhead[LO,RE]{Gpg4win für Einsteiger \manualversion\ \manualinprogress}
-\T\fancyhead[RO,LE]{\thepage}
-\T\fancyfoot[C]{\includegraphics[width=1cm]{gpg4win-logo}}
-
 
 % Hyperref should be among the last packages loaded
 \usepackage{hyperref}
 
 % Macros specific to this package
 \input{macros.tex}
+\newcommand{\manualversion}{\manualversionEinsteiger}
+\newcommand{\manualdate}{\manualdateEinsteiger}
+
+\T\fancyhead{} % clear all fields
+\T\fancyhead[LO,RE]{Gpg4win für Einsteiger \manualversion\ \manualinprogress}
+\T\fancyhead[RO,LE]{\thepage}
+\T\fancyfoot[C]{\includegraphics[width=1cm]{gpg4win-logo}}
+
 
 % Title stuff 
 \htmltitle{Einsteiger}
@@ -119,7 +114,7 @@ Redaktion: Ute Bahn, TextLab text+media\\
 Copyright \copyright{} Bundesministerium für Wirtschaft und Technologie
 
 Dieses Buch unterliegt der "`GNU Free Documentation License"'.
-Originaltext der Lizenz: http://www.gnu.org/copyleft/fdl.html.
+Originaltext der Lizenz: http://www.\texonly{\linebreak{}}gnu.org/copyleft/fdl.html.
 Deutsche Übersetzung http://nautix.sourceforge.net""/docs/fdl.de.html
 sowie auf der beiliegenden CD-ROM.  Es wird die Erlaubnis gegeben,
 dieses Dokument zu kopieren, zu verteilen und/oder zu verändern unter
@@ -292,7 +287,8 @@ Klicken Sie auf \Button{Weiter}.
 
 In der nun folgenden Dateiauswahl können Sie einen Ordner auf Ihrem PC
 aussuchen, in dem Gpg4win installiert wird. Sie sollten hier im
-Normalfall den voreingestellten Ordner \verb-C:\Programme\GNU\GnuPG-
+Normalfall den voreingestellten Ordner\\
+\Filename{C:$\backslash$Programme$\backslash$GNU$\backslash$GnuPG}\\
 übernehmen.
 
 % screenshot: Auswahl des Installationsverzeichnis.
@@ -693,7 +689,7 @@ Selektieren Sie den zu exportierenden Schlüssel (durch klicken auf die
 entsprechende Zeile in der Liste der Schlüssel) und klicken Sie dann
 auf \Button{Export} in der Iconleiste von GPA.  Wählen Sie dann einen
 geeigneten Ordner auf Ihrem PC aus und speichern Sie den Schlüssel
-dort z.B. als \Filename{mein-key.asc}.
+dort z.B. als\\ \Filename{mein-key.asc}.
 
 Über den Erfolg dieser Operation werden Sie durch eine Hinweisbox
 informiert.  Klicken Sie dort dann auf \Button{OK}.
@@ -1267,7 +1263,7 @@ dort das Menü \Menu{Einstellungen $\rightarrow$ GPG}.
 
 % screenshot: Winpt configuration dialog
 \begin{center}
-\IncludeImage[width=0.9\textwidth]{sc-winpt-enctoself}
+\IncludeImage[width=0.7\textwidth]{sc-winpt-enctoself}
 \end{center}
 
 In dem Einstellungsfenster, das sich nun öffnet, tragen Sie unter
@@ -1439,11 +1435,12 @@ Bildschirmausdruck entsprechen:
 \item[Warum erscheint der Bestätigungsdialog beim Zugriff auf
   bestimmte \Email{}s?]
 
-  Ist GPGol nicht als vertrauenswürdiges Plugin installiert worden,
-  nimmt Outlook an, das Plugin versucht unberechtigt auf interne
-  Informationen zuzugreifen.  GPGol versucht derartige Zugriffe zu
-  vermeiden, in einige Fällen sind sie aber notwendig um
-  verschlüsselte oder signierte \Email{}s anzeigen zu können.
+  Ist \linebreak{} GPGol nicht als vertrauenswürdiges Plugin
+  installiert worden, nimmt Outlook an, das Plugin versucht
+  unberechtigt auf interne Informationen zuzugreifen.  GPGol versucht
+  derartige Zugriffe zu vermeiden, in einige Fällen sind sie aber
+  notwendig um verschlüsselte oder signierte \Email{}s anzeigen zu
+  können.
 
   GPGol ist noch in Entwicklung. Einer der offenen Punkte ist
   die Registrierung als vertrauenswürdiges Plugin. Zukünftige

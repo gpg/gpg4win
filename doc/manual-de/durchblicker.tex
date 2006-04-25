@@ -17,12 +17,13 @@
 
 \T\DeclareGraphicsExtensions{.eps.gz,.eps}
 
-% Document version:
-\newcommand{\manualversion}{2.0.0}
-\newcommand{\manualdate}{5. April 2006}
-%\newcommand{\manualinprogress}{} % temporarily activate this for a release
-                                   % and deactivate the next line
-\newcommand{\manualinprogress}{~und evtl. seitdem weiter bearbeitet}
+% Hyperref should be among the last packages loaded
+\usepackage{hyperref}
+
+% Macros specific to this package
+\input{macros.tex}
+\newcommand{\manualversion}{\manualversionDurchblicker}
+\newcommand{\manualdate}{\manualdateDurchblicker}
 
 
 \T\fancyhead{} % clear all fields
@@ -34,11 +35,6 @@
 \W\htmlpanelgerman
 
 
-% Hyperref should be among the last packages loaded
-\usepackage{hyperref}
-
-% Macros specific to this package
-\input{macros.tex}
 
 \W\NotSpecial{\do\&}
 \W\newcommand{\bmod}{mod}
@@ -125,7 +121,7 @@ Auflage, März 2002\\
 Copyright \copyright{} Bundesministerium für Wirtschaft und Technologie
 
 Dieses Buch unterliegt der "`GNU Free Documentation License"'.
-Originaltext der Lizenz: http://www.gnu.org/copyleft/fdl.html.
+Originaltext der Lizenz: http://www.\linebreak{}gnu.org/copyleft/fdl.html.
 Deutsche Übersetzung http://nautix.sourceforge.net""/docs/fdl.de.html
 sowie auf der beiliegenden CD-ROM.
 

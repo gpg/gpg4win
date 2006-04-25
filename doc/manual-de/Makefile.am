@@ -81,6 +81,10 @@ einsteiger.pdf : $(eps_files_bb) $(png_files_eps) $(eps_files_png)
 #$(eps_files_pdf)
 durchblicker.pdf : $(eps_files_bb) $(png_files_eps) $(eps_files_png)
 
+einsteiger.dvi : version.tex macros.tex
+durchblicker.dvi : version.tex macros.tex
+einsteiger.html : version.tex macros.tex
+durchblicker.html : version.tex macros.tex
 
 webversion: einsteiger.html durchblicker.html
 

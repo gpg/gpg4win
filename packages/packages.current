@@ -129,8 +129,8 @@ chk  1019c8027c0cf94bca680886f4e2ae4e629a2a97
 
 server http://wald.intevation.org/frs/download.php
 
-file  172/winpt-0.11.10.tar.bz2
-chk   e64b7c8d6b07388ce77f2b124fed7e5052d720fe      
+file  199/winpt-0.11.12.tar.bz2
+chk   6cac1401eb417e75170972790795684bcdcf22c6      
 
 
 # GPGee
@@ -145,17 +145,17 @@ chk   e64b7c8d6b07388ce77f2b124fed7e5052d720fe
 
 server ftp://ftp.gnupg.org/gcrypt/gpgee
 
-file GPGee-1.3.0-noinstaller.zip
-chk  a7aa1ee4a92922b33ca45e2dca0e4dbfa5a7b1fd  
-file GPGee-1.3.0-source.zip
-chk  fa398ea4ca857f11d6c60cbb69b29c6c27bd379c  
+file GPGee-1.3.1-noinstaller.zip
+chk  6e44bbf61776e0a6c8714a514fa39489e94c0179
+file GPGee-1.3.1-source.zip
+chk  b04fa9ea81fc77844c7aa2e3eda042d819d8e9f1
 
 
 # GPGol
 server ftp://ftp.g10code.com/g10code/gpgol
 
-file gpgol-0.9.8.tar.bz2
-chk 03db1c683354b5e83ab5cdefd2aac2c1abedd2bb
+file gpgol-0.9.9.tar.bz2
+chk e7aebbd17ba3a15f37f5c8b7c9dd424f79b69cbb 
 
 # GnuPG stuff. 
 
@@ -186,8 +186,5 @@ server ftp://ftp.g10code.com/g10code/scratch
 file sylpheed-claws-1.9.100cvs124.tar.bz2
 chk  950c7795f7348a919910d8e6bb5222565a114328  
 
-file man_novice_de-0.0.0-cvs.tar.gz
-chk  33329175b9b69724870139f383edf6e3edea7c78
-file man_advanced_de-0.0.0-cvs.tar.gz
-chk  b4a8b05b181f20c5ba9d937b6347095905323318
+
 

@@ -25,7 +25,7 @@ EXTRA_DIST = pkg-config $(common_nsi) gpg4win.nsi gpg4win-src.nsi \
 
 # Need to clean the dll because we bypassed automake.
 CLEANFILES = g4wihelp.dll versioninfo.txt README.en.txt README.de.txt \
-             installer-options.ini
+             installer-options.ini NEWS.tmp
 
 # Supported source packages.
 gpg4win_spkgs := glib gnupg libgpg-error gpgme gpgol gpa winpt sylpheed-claws
@@ -202,9 +202,12 @@ versioninfo.txt : playground/build/versioninfo.txt
           echo '=========== SHA-1 checksum ============= == package ==' \
          ) | tac | awk '{printf "%s\r\n", $$0}' > versioninfo.txt
 
-README.en.txt : versioninfo.txt $(top_srcdir)/doc/README.en.txt
+NEWS.tmp : $(top_srcdir)/NEWS
+	sed -e '/^#/d' <$(top_srcdir)/NEWS >NEWS.tmp
+
+README.en.txt : versioninfo.txt NEWS.tmp $(top_srcdir)/doc/README.en.txt
 	sed -e '/^;.*/d;/!VERSIONINFO!/{r versioninfo.txt' -e 'd;}' \
-	-e '/!NEWSFILE!/{r $(top_srcdir)/NEWS' -e 'd;}' \
+	-e '/!NEWSFILE!/{r NEWS.tmp' -e 'd;}' \
         -e '/!PKG-COPYRIGHT!/{r $(top_srcdir)/doc/pkg-copyright.txt' -e 'd;}' \
         -e 's,!VERSION!,$(VERSION),g' \
 	   < $(top_srcdir)/doc/README.en.txt \
@@ -213,9 +216,9 @@ README.en.txt : versioninfo.txt $(top_srcdir)/doc/README.en.txt
 installer-options.ini : $(top_srcdir)/src/installer-options.ini.in
 	cat $(top_srcdir)/src/installer-options.ini.in >installer-options.ini
 
-README.de.txt : versioninfo.txt $(top_srcdir)/doc/README.de.txt
+README.de.txt : versioninfo.txt NEWS.tmp $(top_srcdir)/doc/README.de.txt
 	sed -e '/^;.*/d;/!VERSIONINFO!/{r versioninfo.txt' -e 'd;}' \
-	-e '/!NEWSFILE!/{r $(top_srcdir)/NEWS' -e 'd;}' \
+	-e '/!NEWSFILE!/{r NEWS.tmp' -e 'd;}' \
         -e '/!PKG-COPYRIGHT!/{r $(top_srcdir)/doc/pkg-copyright.txt' -e 'd;}' \
         -e 's,!VERSION!,$(VERSION),g' \
 	   < $(top_srcdir)/doc/README.de.txt \

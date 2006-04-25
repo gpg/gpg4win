@@ -28,12 +28,19 @@ min_automake_version="1.9.3"
 m4_define([my_version], [1.0.1])
 m4_define([my_issvn], [yes])
 
-
 m4_define([svn_revision], m4_esyscmd([echo -n $((svn info 2>/dev/null \
             || echo 'Revision: 0')|sed -n '/^Revision:/ {s/[^0-9]//gp;q}')]))
 AC_INIT([gpg4win], my_version[]m4_if(my_issvn,[yes],[-svn[]svn_revision]),
         [gpg4win-devel@wald.intevation.org])
 
+# Remember to update these version numbers also in the NEWS file.
+MANUALVERSION_EINSTEIGER="2.0.0"
+MANUALDATE_EINSTEIGER="6. April 2006"
+MANUALVERSION_DURCHBLICKER="2.0.0"
+MANUALDATE_DURCHBLICKER="5. April 2006"
+
+
+MANUALINPROGRESS_DE=m4_if(my_issvn,[yes],["~und evtl. seitdem weiter bearbeitet"])
 SVN_REVISION=svn_revision
 PACKAGE=$PACKAGE_NAME
 VERSION=$PACKAGE_VERSION
@@ -48,6 +55,11 @@ AC_CANONICAL_HOST
 
 AC_SUBST(PACKAGE)
 AC_SUBST(VERSION)
+AC_SUBST(MANUALVERSION_EINSTEIGER)
+AC_SUBST(MANUALDATE_EINSTEIGER)
+AC_SUBST(MANUALVERSION_DURCHBLICKER)
+AC_SUBST(MANUALDATE_DURCHBLICKER)
+AC_SUBST(MANUALINPROGRESS_DE)
 
 
 # Generate extended version information.  Note, that for NSIS use we
