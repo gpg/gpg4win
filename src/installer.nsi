@@ -263,6 +263,8 @@ Function CustomPageOptions
 	"Field 3" "Text"  "$(T_InstOptFieldB)"
   !insertmacro MUI_INSTALLOPTIONS_WRITE "installer-options.ini" \
 	"Field 4" "Text"  "$(T_InstOptFieldC)"
+  !insertmacro MUI_INSTALLOPTIONS_WRITE "installer-options.ini" \
+	"Field 5" "Text"  "$(T_InstOptLabelB)"
 
   !insertmacro MUI_INSTALLOPTIONS_DISPLAY "installer-options.ini"
 FunctionEnd
@@ -432,6 +434,12 @@ LangString T_InstOptLabelA  ${LANG_ENGLISH} \
      "Please select where Gpg4win shall install links:"
 LangString T_InstOptLabelA  ${LANG_GERMAN} \
      "Bitte wählen Sie, welche Verknüpfungen angelegt werden sollen:"
+
+LangString T_InstOptLabelB  ${LANG_ENGLISH} \
+     "(Only programs will be linked into the quick launch bar.)"
+LangString T_InstOptLabelB  ${LANG_GERMAN} \
+     "(In die Schnellstartleiste werden nur Verknüpfungen für \
+      Programme angelegt.) "
 
 LangString T_InstOptFieldA  ${LANG_ENGLISH} \
      "Start Menu"
