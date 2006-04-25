@@ -68,7 +68,7 @@ EXTRA_DIST = fdl.tex einsteiger.tex durchblicker.tex $(eps_files) \
 	     gpg4win-logo.eps gpg4win-logo.png
 
 CLEANFILES = $(eps_files_bb) $(png_files_eps) \
-             *.pdf *.pdf *.toc *.log *.aux *.out
+             *.dvi *.pdf *.pdf *.toc *.log *.aux *.out
 DISTCLEANFILES = version.tex $(eps_files_png)
 
 pkgdata_DATA = einsteiger.pdf durchblicker.pdf
