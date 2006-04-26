@@ -44,6 +44,7 @@ m4_dnl DONT USE THIS FILE DIRECTLY
   <h1>Sitemap</h1>
   <a href="index.html">Main page</a><br>
   <a href="package-integrity.html">Integrity Check</a><br>
+  <a href="change-history.html">Change History</a><br>
   <a href="build-installer.html">Build Installer Package</a><br>
   <a href="website-maintenance.html">Maintaining Website</a><br>
   <a href="candidates.html">Candidates for Integration</a><br>
