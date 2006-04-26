@@ -1,3 +1,7 @@
+2006-04-26  Werner Koch  <wk@g10code.com>
+
+	Released 1.0.1.
+
 2006-04-25  Werner Koch  <wk@g10code.com>
 
 	* src/Makefile.am (clean-local): Also remove the light installer.
