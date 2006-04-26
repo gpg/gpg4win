@@ -1,3 +1,7 @@
+2006-04-26  Werner Koch  <wk@g10code.com>
+
+	* README.en.txt (Content): New.
+
 2006-04-25  Werner Koch  <wk@g10code.com>
 
 	* manual-de/was-ist-gpg4win.tex: Make URL a link

@@ -5,26 +5,52 @@
 ;; those words are enclosed by exclamation marks.
 
                    English README file for Gpg4Win
-                   ================================
+                   ===============================
 
 This is GnuPG for Windows, vesion !VERSION!.
 
+Content:
+
+     1. Important notes
+     2. Version numbers 
+     3. Changes
+     4. Legal notices 
 
 
 
-                 Version Numbers of Included Software
-                 ====================================
+
+1. Important Notes
+==================
+
+Manuals describing the installation of Gpg4Win are currently only
+available in German.  Check out http://www/gpg4win.org for latest
+news.
+
+
+
+
+2. Version Numbers of Included Software
+=======================================
 
 !VERSIONINFO!
 
-                   Record of Changes (NEWS file)
-                  =================================
+
+
+
+3. Record of Changes (NEWS file)
+================================
+
+An up-to-date list of changes is also available at
+http://www.gpg4win.de/change-history.html .  Below you find the raw
+NEWS file:
 
 !NEWSFILE!
 
 
-          Legal notices pertaining to the individual packets
-          ==================================================
+
+
+4. Legal notices pertaining to the individual packets
+=====================================================
 
 Gpg4win consist of several independent developed packages, available
 under different license conditions.  Most of these packages however
@@ -46,4 +72,4 @@ Happy GiPiGing,
 
   Your Gpg4Win Team
 
-                     ***end of file ***
+***end of file ***
