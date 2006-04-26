@@ -1,4 +1,4 @@
-m4_define(`VERSION',`1.0.0')
+m4_define(`VERSION',`1.0.1')
 m4_define(`DOWNLOAD_URL',`http://ftp.gpg4win.org/gpg4win-VERSION.exe')
 m4_define(`DL_SIZE',`6.6 MByte')
 m4_define(`DL_DATE',`2006-04-26')
