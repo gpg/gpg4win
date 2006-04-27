@@ -136,11 +136,14 @@ stamps/stamp-$(1)-03-make: stamps/stamp-$(1)-02-configure
 	  $(MAKE) $(AM_MAKEFLAGS) $$$${pkgmkargs})
 	touch stamps/stamp-$(1)-03-make
 
+# Note that post_install must come last because it may be empty and
+# "; ;" is a syntax error.
 stamps/stamp-$(1)-04-install: stamps/stamp-$(1)-03-make
 	($(call SETVARS,$(1));				\
 	  cd "$$$${pkgbdir}";				\
 	  $(MAKE) $(AM_MAKEFLAGS) $$$${pkgmkargs_inst} install; \
-	  $(call STRIP_macro,"$$$${pkgidir}"))
+	  $(call STRIP_macro,"$$$${pkgidir}"); \
+	  $(call gpg4win_pkg_$(call FROB_macro,$(1))_post_install))
 	touch stamps/stamp-$(1)-04-install
 
 stamps/stamp-$(1)-05-stow: stamps/stamp-$(1)-04-install

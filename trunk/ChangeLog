@@ -1,3 +1,12 @@
+2006-04-27  Marcus Brinkmann  <marcus@g10code.de>
+
+	* src/Makefile.am (gpg4win_pkg_gnupg_post_install): New macro to
+	generate man pages.
+	* src/gpg4win.mk.in (stamps/stamp-$(1)-04-install): Invoke post
+	install macro.
+	* src/inst-gnupg.nsi: Install man pages.
+	* src/uninst-gnupg.nsi: Uninstall man pages.
+
 2006-04-26  Werner Koch  <wk@g10code.com>
 
 	Released 1.0.1.
