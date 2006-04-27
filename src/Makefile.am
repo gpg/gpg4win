@@ -37,6 +37,16 @@ gpg4win_pkg_glib_configure = \
   --with-lib-prefix=$(idir) --with-libiconv-prefix=$(idir) \
   CPPFLAGS=-I$(idir)/include LDFLAGS=-L$(idir)/lib
 
+# The GnuPG package provides man pages which we have to convert.
+define gpg4win_pkg_gnupg_post_install	
+(man -Tlatin1 -l $$$${pkgidir}/man/man1/gpg.1 | sed `printf "s/\b.//g"` | \
+ sed -e 's/$$$$/\r/' > $$$${pkgidir}/man/man1/gpg.man; \
+man -Tlatin1 -l $$$${pkgidir}/man/man1/gpgv.1 | sed `printf "s/\b.//g"` | \
+ sed -e 's/$$$$/\r/' > $$$${pkgidir}/man/man1/gpgv.man; \
+man -Tlatin1 -l $$$${pkgidir}/man/man7/gnupg.7 | sed `printf "s/\b.//g"` | \
+ sed -e 's/$$$$/\r/' > $$$${pkgidir}/man/man7/gnupg.man)
+endef
+
 # We would like to use --with-libiconv-prefix and
 # --with-libintl-prefix, but these don't work with the cheesy
 # non-"libfoo.la" versions of iconv and gettext that we are using.
