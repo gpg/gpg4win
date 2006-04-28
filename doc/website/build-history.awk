@@ -157,5 +157,4 @@ in_vers {
 END {
   if (in_para && any_para)
     print "</ul>"
-  print "PAGE_BOXES"
 }
