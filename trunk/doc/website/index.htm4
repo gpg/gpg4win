@@ -4,8 +4,8 @@ m4_dnl $Id: index.htm4,v 1.30 2006/01/12 16:04:03 jan Exp $
 
 m4_define(`EN')
 m4_define(`DE_FILE', `index-de.html')
-PAGE_START
 
+PAGE_START
 <h2>New User?</h2>
 
 gpg4win is a installer package for Windows (95/98/ME/2000/XP/2003)
@@ -151,4 +151,3 @@ E-Mail: info@g10code.com<br>
 Phone: +49 2104 173855<br>
 </p>
 
-PAGE_BOXES

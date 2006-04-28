@@ -2,7 +2,6 @@ m4_dnl -*-html-*-
 m4_dnl THIS IS INCLUDED BY `template.m4'
 m4_dnl DONT USE THIS FILE DIRECTLY
 
-</div>
 <div id="boxes">
 
 <div class="box">
@@ -47,4 +46,5 @@ m4_dnl DONT USE THIS FILE DIRECTLY
   <a href="build-installer-de.html">Installationspaket herstellen</a><br>
   <a href="website-maintenance-de.html">Website pflegen</a><br>
   <a href="candidates-de.html">Kandidaten zur Integration</a><br>
+</div>
 </div>
