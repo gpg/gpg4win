@@ -16,6 +16,7 @@ m4_ifdef(`__TMPL_PAGE_TITLE',,`m4_define(`__TMPL_PAGE_TITLE',`gpg4win - '__TITLE
     <title>__TMPL_PAGE_TITLE</title>
   </head>
   <body>
+  <div id="header">
     <table id="navbar">
       <tr valign="bottom">
         <td style="width:172px; text-align: left; padding-bottom: 8px;">
@@ -35,7 +36,7 @@ m4_ifdef(`__TMPL_PAGE_TITLE',,`m4_define(`__TMPL_PAGE_TITLE',`gpg4win - '__TITLE
       <tr><td id="vertable" style="white-space: nowrap;">
       I18N(`EN',`Version VERSION (DL_DATE) includes:')
       I18N(`DE',`Version VERSION (DL_DATE) enthält:')
-            <br><pre class="swlist">SOFTWARE</pre>
+           <pre class="swlist">SOFTWARE</pre>
           </td>
           <td class="center">
             <a href="DOWNLOAD_URL" class="dlbutton">Download<br> 
@@ -45,6 +46,9 @@ m4_ifdef(`__TMPL_PAGE_TITLE',,`m4_define(`__TMPL_PAGE_TITLE',`gpg4win - '__TITLE
                   >SHA1/MD5/OpenPGP-Sig</a>
       </td></tr>
     </table>
+  </div>
+m4_include(I18N(`DE', `template_link_boxes_de.m4')`'m4_dnl
+I18N(`EN', `template_link_boxes_en.m4'))
     <div id="main">
 m4_divert(999)
     </div>

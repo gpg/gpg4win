@@ -65,6 +65,7 @@ IMG {
     font-weight: normal;
     color: black;
     white-space:pre;
+    margin:0;
     font-family: Helvetica, Arial, sans-serif;
     font-size: 12px;
 }
@@ -103,6 +104,10 @@ TD {
 /* STRUCTURE ELEMENTS */
 
 /* Head */
+
+#header {
+    clear: both;
+}
 
 #navbar {
     background-color: white;
@@ -154,13 +159,12 @@ TD {
 /* Content */
 
 #main {
-    position: absolute;
     min-width: 250px;
     padding: 40px;
     padding-top: 20px;
-    left: 0px;
-    right: 200px;
+    padding-right: 0px;
     line-height: 150%;
+    margin-right: 250px;
 }
 
 #main TABLE {
@@ -182,9 +186,7 @@ TD {
 }
 
 #boxes {
-    position: absolute;
-    overflow: visible;
-    right: 0px;
+    float: right;
     width: 200px;
     padding: 10px;
 }
