@@ -1,0 +1,31 @@
+m4_dnl -*-html-*-
+m4_include(`template.m4')
+m4_dnl $Id:$
+
+m4_define(`EN')
+m4_define(`DE_FILE', `download-de.html')
+
+PAGE_START
+<h1>Download</h1>
+
+<h2>gpg4win VERSION</h2>
+
+<p>You can download the full version (including the german manuals) of
+gpg4win VERSION here:</p>
+<a href="DOWNLOAD_URL" class="dlbutton2">gpg4win&nbsp;VERSION<br>
+<span class="version">Size: DL_SIZE<br></span></a> 
+
+<h2>gpg4win light VERSION</h2>
+
+<p>The light version of gpg4win VERSION contains everything of the
+  full version, except the manuals.  You can download the light
+  version here:</p>
+<a href="LDOWNLOAD_URL" class="dlbutton2">gpg4win&nbsp;light&nbsp;VERSION<br>
+<span class="version">Size: LDL_SIZE<br></span></a> 
+
+<h2>Installation</h2>
+
+<p>After downloading
+  please <a href="package-integrity.html">verify</a> the integrity of
+  your gpg4win package.  Then click on the file you downloaded and
+  follow the instructions on the screen.</p>
