@@ -10,6 +10,9 @@ PAGE_START
 
 gpg4win ist ein Installationspaket für Windows (95/98/ME/2000/XP/2003)
 mit Computer-Programmen und Handbüchern für EMail- und Datei-Verschlüsselung.
+gpg4win und die in gpg4win enthaltene Software
+sind <a href="http://www.fsfe.de/documents/freesoftware.de.html">Freie
+Software</a>.
 
 <p>
 Wahlweise können <b>alle oder einige der folgenden Module</b> installiert werden:
