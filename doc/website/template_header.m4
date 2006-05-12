@@ -34,8 +34,8 @@ m4_ifdef(`__TMPL_PAGE_TITLE',,`m4_define(`__TMPL_PAGE_TITLE',`gpg4win - '__TITLE
     </table>
     <table id="bigbar">
       <tr><td id="vertable" style="white-space: nowrap;">
-      I18N(`EN',`Version VERSION (DL_DATE) includes:')
-      I18N(`DE',`Version VERSION (DL_DATE) enthält:')
+      I18N(`EN',`Version VERSION (<a href="change-history.html">DL_DATE</a>) includes:')
+      I18N(`DE',`Version VERSION (<a href="change-history-de.html">DL_DATE</a>) enthält:')
            <pre class="swlist">SOFTWARE</pre>
           </td>
           <td class="center">
