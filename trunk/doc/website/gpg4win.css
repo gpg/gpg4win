@@ -84,6 +84,7 @@ TD {
 
 .dlbutton {
     padding: 10px;
+    margin-bottom: 5px;
     font-size: 150%;
     font-weight: bold;
     display: block;
