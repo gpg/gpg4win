@@ -12,6 +12,7 @@ PAGE_START
 
 <pre>
 SHA1_EXE  gpg4win-VERSION.exe
+SHA1_EXL  gpg4win-light-VERSION.exe
 SHA1_EXS  gpg4win-src-VERSION.exe
 SHA1_SRC  gpg4win-VERSION.tar.bz2
 </pre>
@@ -20,6 +21,7 @@ SHA1_SRC  gpg4win-VERSION.tar.bz2
 
 <pre>
 MD5_EXE  gpg4win-VERSION.exe
+MD5_EXL  gpg4win-light-VERSION.exe
 MD5_EXS  gpg4win-src-VERSION.exe
 MD5_SRC  gpg4win-VERSION.tar.bz2
 </pre>
@@ -29,6 +31,10 @@ MD5_SRC  gpg4win-VERSION.tar.bz2
 Für gpg4win-VERSION.exe:
 <a href="http://ftp.gpg4win.org/gpg4win-VERSION.exe.sig"
   >http://ftp.gpg4win.org/gpg4win-VERSION.exe.sig</a><br>
+
+Für gpg4win-light-VERSION.exe:
+<a href="http://ftp.gpg4win.org/gpg4win-light-VERSION.exe.sig"
+  >http://ftp.gpg4win.org/gpg4win-light-VERSION.exe.sig</a><br>
 
 Für gpg4win-src-VERSION.exe:
 <a href="http://ftp.gpg4win.org/gpg4win-src-VERSION.exe.sig"

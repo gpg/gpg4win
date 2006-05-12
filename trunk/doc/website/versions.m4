@@ -1,7 +1,10 @@
 m4_define(`VERSION',`1.0.1')
 m4_define(`DOWNLOAD_URL',`http://ftp.gpg4win.org/gpg4win-VERSION.exe')
 m4_define(`DL_SIZE',`6.6 MByte')
+m4_define(`LDOWNLOAD_URL',`http://ftp.gpg4win.org/gpg4win-light-VERSION.exe')
+m4_define(`LDL_SIZE',`4.5 MByte')
 m4_define(`DL_DATE',`2006-04-26')
+m4_define(`DLPAGE',`I18N(`EN',`download.html')`'I18N(`DE',`download-de.html')')
 m4_define(`SHA1_SRC',`4d111814dfd4b0b7dd1a8a0fb81beaee477693dc') m4_dnl gpg4win-n.n.n.tar.bz2
 m4_define(`SHA1_EXE',`c55f73561a2e013599b1c9aa6cb1291abd06c18d') m4_dnl gpg4win-n.n.n.exe
 m4_define(`SHA1_EXL',`f8e9dd1cf3225fbd6e66454e6eda603a21d436f7') m4_dnl gpg4win-light-n.n.n.exe

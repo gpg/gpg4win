@@ -99,8 +99,25 @@ TD {
 
 .dlbutton:hover {
     background-color: #fdd347;
+    cursor: pointer;
 }
 
+.dlbutton2 {
+    padding: 10px;
+    margin: 20px;
+    margin-top: 10px;
+    font-size: 150%;
+    font-weight: bold;
+    text-align: center;
+    display: block;
+    border: 3px solid white;
+    background-color: #fdba19;
+}
+
+.dlbutton2:hover {
+    background-color: #fdd347;
+    cursor: crosshair;
+}
 
 /* STRUCTURE ELEMENTS */
 
