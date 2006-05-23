@@ -8,9 +8,9 @@ m4_define(`DE_FILE', `index-de.html')
 PAGE_START
 <h2>New User?</h2>
 
-gpg4win is a installer package for Windows (95/98/ME/2000/XP/2003)
+Gpg4win is a installer package for Windows (95/98/ME/2000/XP/2003)
 with computer programs and handbooks for EMail and file encryption.
-gpg4win and the software included with gpg4win
+Gpg4win and the software included with Gpg4win
 are <a href="http://www.fsf.org/licensing/essays/free-sw.html">Free
 Software</a>.
 
@@ -59,21 +59,21 @@ Documentation (only in german so far):
 </table>
 
 <p>
-gpg4win can be <b>installed and tested with just a few mouse clicks</b>.
+Gpg4win can be <b>installed and tested with just a few mouse clicks</b>.
 Of course you should be administrator of your system or have administration
 rights.
 </p>
 <p>
 The best point to start is with the illustrative handbook
-<em>gpg4win für Einsteiger</em> (so far only available in german!).
+<em>Gpg4win für Einsteiger</em> (so far only available in german!).
 </p>
-<h2>About gpg4win</h2>
+<h2>About Gpg4win</h2>
 
-The gpg4win <b>project aims at</b> updating the gpg4win Windows installation
+The Gpg4win <b>project aims at</b> updating the Gpg4win Windows installation
 package with GnuPG encryption tool, associated applications and
 documentation on a regular basis.
 Especially the documentation (handbooks "Einsteiger"
-and "Durchblicker") are directly maintained as part of the gpg4win project.
+and "Durchblicker") are directly maintained as part of the Gpg4win project.
 
 <p>
 It is an international project. Due to the origin of the project and
@@ -84,7 +84,7 @@ Any translators are very welcome!
 <p>
 The main difference compared to all other similar approaches
 (mainly GnuPP, GnuPT, Windows Privacy Tools and GnuPG-Basics)
-is that the first thing developed was the <b>gpg4win-Builder</b>.
+is that the first thing developed was the <b>Gpg4win-Builder</b>.
 This builder allows to easily create new gpg4win.exe installers
 with updated components.
 It runs best on a GNU/Linux system. Almost all products
@@ -98,7 +98,7 @@ and does not depend on a single person.
 </p>
 <h2>All Downloads</h2>
 
-Current and all previous gpg4win installers (gpg4win-n.n.n.exe)
+Current and all previous Gpg4win installers (gpg4win-n.n.n.exe)
 as well as signatures (gpg4win-n.n.n.exe.sig) and corresponding
 source code packages (gpg4win-src-n.n.n.exe with gpg4win-src-n.n.n.exe.sig):
 
@@ -106,8 +106,8 @@ source code packages (gpg4win-src-n.n.n.exe with gpg4win-src-n.n.n.exe.sig):
 <a href="ftp://ftp.gpg4win.org/gpg4win/">ftp://ftp.gpg4win.org/gpg4win/</a>
 </p>
 <p>
-gpg4win core source code package (gpg4win-n.n.n.tar.bz2 with gpg4win-n.n.n.tar.bz2.sig)
-as well as <em>gpg4win für Einsteiger</em> and <em>gpg4win für Durchblicker</em>
+Gpg4win core source code package (gpg4win-n.n.n.tar.bz2 with gpg4win-n.n.n.tar.bz2.sig)
+as well as <em>Gpg4win für Einsteiger</em> and <em>Gpg4win für Durchblicker</em>
 as separate PDF documents (gpg4win-fuer-einsteiger-n.n.n.pdf and
 gpg4win-fuer-durchblicker-n.n.n.pdf):
 </p>
@@ -118,14 +118,14 @@ gpg4win-fuer-durchblicker-n.n.n.pdf):
 <h2>Imprint</h2>
 
 <p>
-The web pages of gpg4win as well as the project
+The web pages of Gpg4win as well as the project
 site are hosted by Intevation GmbH.
 The download area ftp.gpg4win.org/gpg4win/ is hosted by g10 Code GmbH.
 </p>
 
 <p>
 The contents has been created and is being maintained by the changing
-active team members of the gpg4win project.
+active team members of the Gpg4win project.
 </p>
 
 <p>

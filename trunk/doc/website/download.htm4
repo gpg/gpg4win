@@ -8,16 +8,16 @@ m4_define(`DE_FILE', `download-de.html')
 PAGE_START
 <h1>Download</h1>
 
-<h2>gpg4win VERSION</h2>
+<h2>Gpg4win VERSION</h2>
 
 <p>You can download the full version (including the german manuals) of
-gpg4win VERSION here:</p>
+Gpg4win VERSION here:</p>
 <a href="DOWNLOAD_URL" class="dlbutton2">gpg4win&nbsp;VERSION<br>
 <span class="version">Size: DL_SIZE<br></span></a> 
 
-<h2>gpg4win light VERSION</h2>
+<h2>Gpg4win light VERSION</h2>
 
-<p>The light version of gpg4win VERSION contains everything of the
+<p>The light version of Gpg4win VERSION contains everything of the
   full version, except the manuals.  You can download the light
   version here:</p>
 <a href="LDOWNLOAD_URL" class="dlbutton2">gpg4win&nbsp;light&nbsp;VERSION<br>
@@ -27,5 +27,5 @@ gpg4win VERSION here:</p>
 
 <p>After downloading
   please <a href="package-integrity.html">verify</a> the integrity of
-  your gpg4win package.  Then click on the file you downloaded and
+  your Gpg4win package.  Then click on the file you downloaded and
   follow the instructions on the screen.</p>

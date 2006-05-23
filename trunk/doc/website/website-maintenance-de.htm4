@@ -6,7 +6,7 @@ m4_define(`DE')
 m4_define(`EN_FILE', `website-maintenance.html')
 PAGE_START
 
-<h1>Website von gpg4win pflegen</h1>
+<h1>Website von Gpg4win pflegen</h1>
 
 Die Pflege der Website ist eigentlich recht einfach, da
 vieles automatisiert ist.
@@ -19,7 +19,7 @@ Subversions.
 <p>
 Typische Aufgaben:
 <ul>
-<li> Version von gpg4win aktualiseren (gelegentlich, ca. 15 Minuten)
+<li> Version von Gpg4win aktualisieren (gelegentlich, ca. 15 Minuten)
 <li> Tippfehler beseitigen (immer wenn man selbst oder jemand anderes etwas findet, wenige Minuten)
 </ul>
 </p>
@@ -40,7 +40,7 @@ Typische Aufgaben:
 
 <h2>Was man vorbereitend nur einmal machen muss um aktiver Mitentwickler zu werden</h2>
 
-Ein vorheriges "Hallo" auf einer der gpg4win Mailing Listen
+Ein vorheriges "Hallo" auf einer der Gpg4win Mailing Listen
 und dass man gerne mitmachen möchte ist natürlich immer sinnvoll.
 
 <ol>
@@ -49,7 +49,7 @@ und dass man gerne mitmachen möchte ist natürlich immer sinnvoll.
      einrichten</a>.<br>
      Das geht schnell, denn es ist ein vollautomatischer Prozess.
 
-<li> Mitgliedschaft beim Projekt gpg4win
+<li> Mitgliedschaft beim Projekt Gpg4win
      <a href="http://wald.intevation.org/project/request.php?group_id=11"
        >beantragen</a>.<br>
      Das dauert ein wenig, da einer der Projektadministoren den Antrag

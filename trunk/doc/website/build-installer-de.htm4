@@ -8,7 +8,7 @@ PAGE_START
 
 <h1>Installationspaket herstellen</h1>
 
-Der Bau eines neuen gpg4win Installationspaketes ist
+Der Bau eines neuen Gpg4win Installationspaketes ist
 weitestgehend automatisiert.
 
 <p>
@@ -45,7 +45,7 @@ durchgeführt werden müssen, '$' für einen normalen Benutzer.
      SVN version zu arbeiten wenn Sie mehr als nur ein Modul aktualisieren
      wollen.
 
-<li> Alle notwendigen gpg4win-Module aus dem Internet herunterladen:<br>
+<li> Alle notwendigen Gpg4win-Module aus dem Internet herunterladen:<br>
      <em>$ cd packages</em><br>
      <em>$ sh download.sh</em><br>
      (dauert nun eine Weile, besonders beim ersten mal)<br>
@@ -57,7 +57,7 @@ durchgeführt werden müssen, '$' für einen normalen Benutzer.
      ansonsten:<br>
      <em>$ ./configure --host=i586-mingw32msvc</em><br>
 
-<li> Nun das gpg4win Installationpaket bauen:<br>
+<li> Nun das Gpg4win Installationpaket bauen:<br>
      <em>$ make</em>
 </ol>
 
@@ -67,7 +67,7 @@ Das war es schon. Das fertige Installationspaket liegt unter:<br>
 Das zugehörige Quelltextpaket (mit den Quelltexten sämtlicher Module, sehr gross!) unter:<br>
 <em>src/gpg4win-src-n.n.n.exe</em><br>
 
-<h2>Ein einzelnes Modul für gpg4win aktualisieren</h2>
+<h2>Ein einzelnes Modul für Gpg4win aktualisieren</h2>
 
 Hierfür sollte man schon einmal ein Installationspaket wie oben beschrieben
 hergestellt haben.  Im Folgenden nehmen wir an, sie möchten das Modul
@@ -98,13 +98,13 @@ hergestellt haben.  Im Folgenden nehmen wir an, sie möchten das Modul
 Achtung: Sie dürfen das Skript <em>download.sh</em> jetzt nicht mehr
 aufrufen, da es die aktuelle Standardversion des Moduls wieder
 installieren würde. Für eine dauerhafte Aktivierung der neuen Modul-Version
-des offiziellen gpg4win Installationspaketes sind folgende Schritte zu erledigen.
+des offiziellen Gpg4win Installationspaketes sind folgende Schritte zu erledigen.
 </p>
 
 <p>
 Voraussetzung dabei ist, dass man Schreibrechten auf
 das SVN Verzeichnis  besitzt (also ein Benutzerkonto auf
-wald.intevation.de mit Entwickler-Status für gpg4win).
+wald.intevation.de mit Entwickler-Status für Gpg4win).
 </p>
 
 <ol>
@@ -128,12 +128,12 @@ wald.intevation.de mit Entwickler-Status für gpg4win).
      <em>$ gpg packages.keys</em><br>
 
 <li> Laden Sie die beiden Dateien
-     auf die Website von gpg4win hoch:<br>
+     auf die Website von Gpg4win hoch:<br>
      <em>$ make update</em><br>
 </ol>
 
 
-<h2>Ein neues Modul in gpg4win einbauen</h2>
+<h2>Ein neues Modul in Gpg4win einbauen</h2>
 
 Hierfür sollte man schon einmal ein Installationspaket wie oben beschrieben
 hergestellt haben und dabei die Version aus SVN benutzt haben.
@@ -177,7 +177,7 @@ hergestellt haben und dabei die Version aus SVN benutzt haben.
     <em>packages/packages.current</em><br>
     wie weiter oben beschrieben aktualisieren.
 
-<li>gpg4win muss für das neue Modul erneut konfiguriert werden:<br>
+<li>Gpg4win muss für das neue Modul erneut konfiguriert werden:<br>
      <em>$ AUTOMAKE_SUFFIX=-1.9 ./autogen.sh</em><br>
      <em>$ ./configure --enable-maintainer-mode --host=i586-mingw32msvc</em><br>
 

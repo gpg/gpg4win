@@ -6,7 +6,7 @@ m4_define(`DE')
 m4_define(`EN_FILE', `package-integrity.html')
 PAGE_START
 
-<h1>Integrität der gpg4win-Pakete prüfen</h1>
+<h1>Integrität der Gpg4win-Pakete prüfen</h1>
 
 <h2>SHA1 Prüfsummen</h2>
 

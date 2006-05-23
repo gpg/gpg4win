@@ -6,14 +6,14 @@ m4_define(`EN')
 m4_define(`DE_FILE', `candidates-de.html')
 PAGE_START
 
-<h1>Further Candidates for Integration into gpg4win</h1>
+<h1>Further Candidates for Integration into Gpg4win</h1>
 
 <p>
 The following software modules could make sense as a member
-of the gpg4win installer.
+of the Gpg4win installer.
 If you are interested, just go ahead and integrate the modules
 your self, the <a href="build-installer-de.html">Howto on extending
-the gpg4win installer</a> will help you.
+the Gpg4win installer</a> will help you.
 </p>
 
 <h2>GPGrelay - Encryption in the background for any email program</h2>

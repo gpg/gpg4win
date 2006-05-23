@@ -7,7 +7,7 @@ m4_define(`__TITLE',m4_dnl
 I18N(`EN',`EMail-Security using GnuPG for Windows')`'m4_dnl
 I18N(`DE',`EMail-Sicherheit mit GnuPG für Windows'))
 
-m4_ifdef(`__TMPL_PAGE_TITLE',,`m4_define(`__TMPL_PAGE_TITLE',`gpg4win - '__TITLE)')
+m4_ifdef(`__TMPL_PAGE_TITLE',,`m4_define(`__TMPL_PAGE_TITLE',`Gpg4win - '__TITLE)')
 
 <html>
   <head>
@@ -21,7 +21,7 @@ m4_ifdef(`__TMPL_PAGE_TITLE',,`m4_define(`__TMPL_PAGE_TITLE',`gpg4win - '__TITLE
       <tr valign="bottom">
         <td style="width:172px; text-align: left; padding-bottom: 8px;">
           <a href="I18N(`EN', `index.html') I18N(`DE', `index-de.html')"
-            ><img src="pix/logo.png" alt="gpg4win"></a>
+            ><img src="pix/logo.png" alt="Gpg4win"></a>
         </td>
         <td style="text-align: left;">
           <h1>__TITLE</h1>
@@ -40,7 +40,7 @@ m4_ifdef(`__TMPL_PAGE_TITLE',,`m4_define(`__TMPL_PAGE_TITLE',`gpg4win - '__TITLE
           </td>
           <td class="center">
             <a href="DLPAGE" class="dlbutton">Download<br> 
-              <span class="version">gpg4win VERSION<br></a>
+              <span class="version">Gpg4win VERSION<br></a>
                 &nbsp;&nbsp;<a href="I18N(`EN', `./package-integrity.html') I18N(`DE', `./package-integrity-de.html')"
                   >SHA1/MD5/OpenPGP-Sig</a>
       </td></tr>
