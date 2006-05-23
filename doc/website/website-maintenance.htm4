@@ -6,7 +6,7 @@ m4_define(`EN')
 m4_define(`DE_FILE', `website-maintenance-de.html')
 PAGE_START
 
-<h1>Maintaining the gpg4win website</h1>
+<h1>Maintaining the Gpg4win website</h1>
 
 The maintenance of the website is actually quite simply
 because many things are automized.
@@ -19,7 +19,7 @@ HTML, ssh and Subversions.
 <p>
 Typical tasks:
 <ul>
-<li> Update version of gpg4win (occasioanlly, ca. 15 minutes)
+<li> Update version of Gpg4win (occasioanlly, ca. 15 minutes)
 <li> Fix typos (whenever you or someone else finds one, few minutes)
 </ul>
 </p>
@@ -40,7 +40,7 @@ Typical tasks:
 
 <h2>What to do initially to become an active team member</h2>
 
-A prior "Hello" on one of the gpg4win mailing lists and your
+A prior "Hello" on one of the Gpg4win mailing lists and your
 expression of interest to join the team is of course a good idea.
 
 <ol>
@@ -51,7 +51,7 @@ expression of interest to join the team is of course a good idea.
      This is established quickly because it is an automatic process.
 
 <li> <a href="http://wald.intevation.org/project/request.php?group_id=11"
-       >Request</a> membership for project gpg4win.<br>
+       >Request</a> membership for project Gpg4win.<br>
      This takes a little time because one of the project administrators
      has to answer the request.
 

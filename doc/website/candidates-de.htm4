@@ -6,13 +6,13 @@ m4_define(`DE')
 m4_define(`EN_FILE', `candidates.html')
 PAGE_START
 
-<h1>Weitere Kandidaten zur Integration in gpg4win</h1>
+<h1>Weitere Kandidaten zur Integration in Gpg4win</h1>
 
 <p>
-Folgende Software-Module könnten gpg4win sinnvoll erweitern.
+Folgende Software-Module könnten Gpg4win sinnvoll erweitern.
 Wer Interesse hat, kann die Integration selbst durchführen,
 dafür gibt es einige <a href="build-installer-de.html">Hilfestellungen
-zur Erweiterung von gpg4win</a>.
+zur Erweiterung von Gpg4win</a>.
 </p>
 
 <h2>GPGrelay - Verschlüsselung im Hintergrund für alle E-Mail Programme</h2>

@@ -8,16 +8,16 @@ m4_define(`EN_FILE', `download.html')
 PAGE_START
 <h1>Download</h1>
 
-<h2>gpg4win VERSION</h2>
+<h2>Gpg4win VERSION</h2>
 
-<p>Die Vollversion (inklusive der deutschen Handbücher) von gpg4win VERSION
+<p>Die Vollversion (inklusive der deutschen Handbücher) von Gpg4win VERSION
 kann hier herunter geladen werden:</p>
 <a href="DOWNLOAD_URL" class="dlbutton2">gpg4win&nbsp;VERSION<br>
 <span class="version">Größe: DL_SIZE<br></span></a> 
 
-<h2>gpg4win light VERSION</h2>
+<h2>Gpg4win light VERSION</h2>
 
-<p>Die light Version von gpg4win VERSION enthält alles aus der
+<p>Die light Version von Gpg4win VERSION enthält alles aus der
   Vollversion, außer den Handbüchern.  Die light Version kann hier
   herunter geladen werden:</p>
 <a href="LDOWNLOAD_URL" class="dlbutton2">gpg4win&nbsp;light&nbsp;VERSION<br>
@@ -27,6 +27,6 @@ kann hier herunter geladen werden:</p>
 
 <p>Nach Beendigung des
   Downloads <a href="package-integrity-de.html">verifizieren</a> Sie
-  bitte die Integrität des gpg4win Paketes, dass sie heruntergeladen
+  bitte die Integrität des Gpg4win Paketes, dass sie heruntergeladen
   haben.  Danach folgen Sie den Hinweisen zur Installation
   im <a href="/handbuecher/einsteiger.html">Handbuch</a>.

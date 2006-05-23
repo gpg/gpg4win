@@ -61,7 +61,7 @@ BEGIN {
     "m4_define(`EN')\n" \
     "m4_define(`DE_FILE', `change-history-de.html')\n" \
     "PAGE_START\n" \
-    "<h1>Change History of gpg4win</h1>\n";
+    "<h1>Change History of Gpg4win</h1>\n";
 
   header_text["de"] = "" \
     "m4_dnl -*-html-*-\n" \
@@ -69,7 +69,7 @@ BEGIN {
     "m4_define(`DE')\n" \
     "m4_define(`EN_FILE', `change-history.html')\n" \
     "PAGE_START\n" \
-    "<h1>Änderungshistorie von gpg4win</h1>\n" \
+    "<h1>Änderungshistorie von Gpg4win</h1>\n" \
     "<p>Die deutsche Übersetzung der Historie ist nicht notwendigerweise\n" \
     "vollständig. Begonnen wurde sie mit Version 1.0.0.</p>\n";
 
