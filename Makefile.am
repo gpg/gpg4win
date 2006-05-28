@@ -30,5 +30,7 @@ EXTRA_DIST = autogen.sh README.SVN \
         patches/pthreads-w32-2-7-0-release/01-make.patch \
         patches/glib-2.9.2-wk1/01-giowin32.patch \
         patches/glib-2.9.2-wk1/02-gspawn-w32.patch \
+        patches/glib-2.9.2-wk1/03-gspawn-w32-fixup.patch \
+        patches/glib-2.9.2-wk1/04-gspawn-w32-buffering.patch \
 	patches/sylpheed-claws-1.9.100cvs124/01-fix-plugin-dir.patch \
 	patches/sylpheed-claws-1.9.100cvs124/02-std-plugins.patch
