@@ -33,4 +33,8 @@ EXTRA_DIST = autogen.sh README.SVN \
         patches/glib-2.9.2-wk1/03-gspawn-w32-fixup.patch \
         patches/glib-2.9.2-wk1/04-gspawn-w32-buffering.patch \
 	patches/sylpheed-claws-1.9.100cvs124/01-fix-plugin-dir.patch \
-	patches/sylpheed-claws-1.9.100cvs124/02-std-plugins.patch
+	patches/sylpheed-claws-1.9.100cvs124/02-std-plugins.patch \
+	patches/sylpheed-claws-2.2.0/01-locale-dir.patch \
+	patches/sylpheed-claws-2.2.0/02-fix-plugin-dir.patch \
+	patches/sylpheed-claws-2.2.0/03-std-plugins.patch \
+	patches/sylpheed-claws-2.2.0/04-pgpcore-def.patch
