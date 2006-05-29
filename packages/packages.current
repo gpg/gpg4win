@@ -61,7 +61,10 @@ chk  37e5aa61bdf26cd182ebc6169528c86f165c7e09
 file regex-0.12-src.zip
 chk  b9faae10efae552f23c213891a3ed8187cb7d017
 
+server http://kent.dl.sourceforge.net/sourceforge/sylpheed-claws
 
+file  sylpheed-claws-2.2.0.tar.bz2
+chk   b2244cfa04a7800b7d0ce518e0b1f54743f02bf3  
 
 # RedHat
 
@@ -129,8 +132,8 @@ chk  1019c8027c0cf94bca680886f4e2ae4e629a2a97
 
 server http://wald.intevation.org/frs/download.php
 
-file  199/winpt-0.11.12.tar.bz2
-chk   6cac1401eb417e75170972790795684bcdcf22c6      
+file  219/winpt-0.12.1.tar.bz2
+chk   90ce0740a5c4886720c01079df73e4de0572825c 
 
 
 # GPGee
@@ -178,13 +181,7 @@ server http://wald.intevation.org/frs/download.php
 file 151/gpa-0.7.3.tar.bz2
 chk  829871ad5c4c41e12cc4097af0e02e86c66efcab
 
-# A couple of packages currently come from manually crafted packages.
-# However, we make them available at a scratch location
 
-server ftp://ftp.g10code.com/g10code/scratch
-
-file sylpheed-claws-1.9.100cvs124.tar.bz2
-chk  950c7795f7348a919910d8e6bb5222565a114328  
 
 
 
