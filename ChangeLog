@@ -1,5 +1,15 @@
 2006-05-29  Marcus Brinkmann  <marcus@g10code.de>
 
+	* Makefile.am (DIST): Add
+	patches/sylpheed-claws-2.2.0/01-locale-dir.patch,
+	patches/sylpheed-claws-2.2.0/02-fix-plugin-dir.patch,
+	patches/sylpheed-claws-2.2.0/03-std-plugins.patch and
+	patches/sylpheed-claws-2.2.0/04-pgpcore-def.patch.
+	* patches/sylpheed-claws-2.2.0/01-locale-dir.patch,
+	patches/sylpheed-claws-2.2.0/02-fix-plugin-dir.patch,
+	patches/sylpheed-claws-2.2.0/03-std-plugins.patch,
+	patches/sylpheed-claws-2.2.0/04-pgpcore-def.patch: New file.
+
 	* Makefile.am (EXTRA_DIST): Add
 	patches/glib-2.9.2-wk1/03-gspawn-w32-fixup.patch and
 	patches/glib-2.9.2-wk1/04-gspawn-w32-buffering.patch.
