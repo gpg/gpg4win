@@ -25,7 +25,7 @@ min_automake_version="1.9.3"
 # Remember to change the version number immediately *after* a release.
 # Set my_issvn to "yes" for non-released code.  Remember to run an
 # "svn up" and "autogen.sh" right before creating a distribution.
-m4_define([my_version], [1.0.1])
+m4_define([my_version], [1.0.2])
 m4_define([my_issvn], [no])
 
 m4_define([svn_revision], m4_esyscmd([echo -n $((svn info 2>/dev/null \
@@ -34,10 +34,10 @@ AC_INIT([gpg4win], my_version[]m4_if(my_issvn,[yes],[-svn[]svn_revision]),
         [gpg4win-devel@wald.intevation.org])
 
 # Remember to update these version numbers also in the NEWS file.
-MANUALVERSION_EINSTEIGER="2.0.1"
-MANUALDATE_EINSTEIGER="26. April 2006"
-MANUALVERSION_DURCHBLICKER="2.0.1"
-MANUALDATE_DURCHBLICKER="26. April 2006"
+MANUALVERSION_EINSTEIGER="2.0.2"
+MANUALDATE_EINSTEIGER="29 Mai 2006"
+MANUALVERSION_DURCHBLICKER="2.0.2"
+MANUALDATE_DURCHBLICKER="29. Mai 2006"
 
 
 MANUALINPROGRESS_DE=m4_if(my_issvn,[yes],["~und evtl. seitdem weiter bearbeitet"])
