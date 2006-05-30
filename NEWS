@@ -3,7 +3,7 @@
 # The version number given below are for the standard installers as
 # distributed by www.gpg4win.org.
 
-Noteworthy changes in version 1.0.2 (2006-05-29)
+Noteworthy changes in version 1.0.2 (2006-05-30)
 ------------------------------------------------
 
 (en) Fixed a bug in GPA which led to a non-working backup on some
@@ -11,7 +11,7 @@ Noteworthy changes in version 1.0.2 (2006-05-29)
 (de) Fehler beim Backup mittels GPA behoben.  Dieser Fehler trat bei
      einigen Windows Versionen auf.
 
-(en) Updated Sylpheed to the latest stable version.
+(en) Updated Sylpheed-Claws to the latest stable version.
 (de) Sylpheed-Claws ist nun in der aktuellen stabilen Version eingebunden.
 
 ~~~~~~~~~~~~~~~

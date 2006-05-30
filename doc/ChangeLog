@@ -1,3 +1,9 @@
+2006-05-30  Werner Koch  <wk@g10code.com>
+
+	* manual-de/durchblicker.tex (subsubsection{Zusammenfassung}):
+	Fixed c+p bug in the long prime.  Thanks to Ernst-Günter Giessmann
+	for reporting this.
+
 2006-04-26  Werner Koch  <wk@g10code.com>
 
 	* README.en.txt (Content): New.
