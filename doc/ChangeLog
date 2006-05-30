@@ -1,5 +1,7 @@
 2006-05-30  Werner Koch  <wk@g10code.com>
 
+	* website/mk-chksums: New.
+
 	* manual-de/durchblicker.tex (subsubsection{Zusammenfassung}):
 	Fixed c+p bug in the long prime.  Thanks to Ernst-Günter Giessmann
 	for reporting this.
