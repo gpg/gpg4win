@@ -35,9 +35,9 @@ AC_INIT([gpg4win], my_version[]m4_if(my_issvn,[yes],[-svn[]svn_revision]),
 
 # Remember to update these version numbers also in the NEWS file.
 MANUALVERSION_EINSTEIGER="2.0.2"
-MANUALDATE_EINSTEIGER="29 Mai 2006"
+MANUALDATE_EINSTEIGER="30. Mai 2006"
 MANUALVERSION_DURCHBLICKER="2.0.2"
-MANUALDATE_DURCHBLICKER="29. Mai 2006"
+MANUALDATE_DURCHBLICKER="30. Mai 2006"
 
 
 MANUALINPROGRESS_DE=m4_if(my_issvn,[yes],["~und evtl. seitdem weiter bearbeitet"])
