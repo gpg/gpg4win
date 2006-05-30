@@ -19,6 +19,7 @@
 
 EXTRA_DIST = README buildhtml.mk gpg4win.css index-de.htm4 index.htm4 \
              template.m4 template_header.m4 versions.m4 build-history.awk \
-             pix/disk.png pix/lock.png pix/logo.png
+             pix/disk.png pix/lock.png pix/logo.png mk-chksums
+
 
 
