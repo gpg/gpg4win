@@ -23,33 +23,29 @@ m4_dnl DONT USE THIS FILE DIRECTLY
 <div class="box">
   <h1>Sponsoring</h1>
 
-  Is Gpg4win helpful?
-
   <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-    <font size="-2">
-      <input type="hidden" name="cmd" value="_xclick">
-      <input type="hidden" name="business" value="paypal@intevation.net">
-      <input type="hidden" name="undefined_quantity" value="1">
-      <input type="hidden" name="item_name" value="Gpg4win">
-      <input type="hidden" name="item_number" value="1010">
-      <input type="hidden" name="no_shipping" value="1">
-      <input type="hidden" name="tax" value="0.16">
-      <input type="hidden" name="cn" value="Comment (praise/criticism)">
+    <input type="hidden" name="cmd" value="_xclick">
+    <input type="hidden" name="business" value="paypal@intevation.net">
+    <input type="hidden" name="undefined_quantity" value="1">
+    <input type="hidden" name="item_name" value="Gpg4win">
+    <input type="hidden" name="item_number" value="1000">
+    <input type="hidden" name="no_shipping" value="1">
+    <input type="hidden" name="tax" value="0.16">
+    <input type="hidden" name="cn" value="Comment (praise/criticism)">
+    <input type="hidden" name="currency_code" value="EUR">
+    <input type="hidden" name="bn" value="PP-BuyNowBF">
 
-      <p>
-      <input type="hidden" name="on0" value="Naming allowed?">Naming allowed?
-      <input type="radio" name="os0" value="Yes">Yes
-      <input type="radio" name="os0" value="No" checked>No
-      </p>
+    <input type="image" src="http://images.paypal.com/images/x-click-but02.gif"
+      border="0" name="submit" alt="Pay with PayPal">
 
-      <input type="hidden" name="currency_code" value="EUR">
-      <input type="hidden" name="bn" value="PP-BuyNowBF">
-
-      <p align="center">
-      <input type="image" src="http://images.paypal.com/images/x-click-but02.gif"
-        border="0" name="submit" alt="Pay with PayPal">
-      </p>
-    </font>
+    <p>
+    <input type="hidden" name="on0" value="Allowed to publish
+      your sponsorship?">
+    Allowed to publish your sponsorship?
+    <br/>
+    <input type="radio" name="os0" value="Yes">Yes&nbsp;<input
+       type="radio" name="os0" value="No" checked>No
+    </p>
   </form>
 
   </p>
