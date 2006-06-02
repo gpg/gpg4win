@@ -28,7 +28,7 @@ m4_dnl DONT USE THIS FILE DIRECTLY
   <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
     <font size="-2">
       <input type="hidden" name="cmd" value="_xclick">
-      <input type="hidden" name="business" value="paypal@intevation.de">
+      <input type="hidden" name="business" value="paypal@intevation.net">
       <input type="hidden" name="undefined_quantity" value="1">
       <input type="hidden" name="item_name" value="Gpg4win">
       <input type="hidden" name="item_number" value="1010">
