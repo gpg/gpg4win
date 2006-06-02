@@ -1,3 +1,8 @@
+2006-06-02  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
+
+	* website/template_link_boxes_de.m4, website/template_link_boxes_en.m4:
+	Added box for sponsoring via PayPal.
+
 2006-05-30  Werner Koch  <wk@g10code.com>
 
 	* website/mk-chksums: New.
