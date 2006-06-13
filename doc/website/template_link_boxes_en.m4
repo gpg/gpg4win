@@ -30,7 +30,6 @@ m4_dnl DONT USE THIS FILE DIRECTLY
     <input type="hidden" name="item_name" value="Gpg4win">
     <input type="hidden" name="item_number" value="1000">
     <input type="hidden" name="no_shipping" value="1">
-    <input type="hidden" name="tax" value="0.16">
     <input type="hidden" name="cn" value="Comment (praise/criticism)">
     <input type="hidden" name="currency_code" value="EUR">
     <input type="hidden" name="bn" value="PP-BuyNowBF">
