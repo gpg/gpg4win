@@ -21,7 +21,7 @@ m4_dnl DONT USE THIS FILE DIRECTLY
   </p>
 </div>
 <div class="box">
-  <h1>Sponsoring</h1>
+  <h1>Sponsorship</h1>
 
   <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
     <input type="hidden" name="cmd" value="_xclick">
