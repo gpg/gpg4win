@@ -10,9 +10,9 @@ m4_dnl DONT USE THIS FILE DIRECTLY
   <a href="http://lists.wald.intevation.org/pipermail/gpg4win-users-de/">Archiv</a>
   | <a href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-users-de">Abonnieren</a>
   <p>Webforen:<br>
-  <a href="http://wald.intevation.org/forum/forum.php?forum_id=21">Hilfe</a>
+  <a href="http://wald.intevation.org/forum/forum.php?forum_id=84">Hilfe</a>
   | <a
-  href="http://wald.intevation.org/forum/forum.php?forum_id=20">Diskussion</a>
+  href="http://wald.intevation.org/forum/forum.php?forum_id=83">Diskussion</a>
   </p>
   <p>Fehlermeldungen:<br>
   <a
