@@ -6,9 +6,12 @@ m4_dnl DONT USE THIS FILE DIRECTLY
 
 <div class="box">
   <h1>Support</h1>
-  Mailinglists:<br>
+  Mailinglist Discussion:<br>
   <a href="http://lists.wald.intevation.org/pipermail/gpg4win-users-en/">Archive</a>
-  | <a href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-users-en">Subscribe</a>
+  | <a href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-users-en">Subscribe</a><br>
+  Mailinglist Announcements:<br>
+  <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/">Archive</a>
+  | <a href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-announce">Subscribe</a>
   <p>Web Forums:<br>
   <a href="http://wald.intevation.org/forum/forum.php?forum_id=21">Help</a>
   | <a
