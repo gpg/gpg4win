@@ -63,8 +63,11 @@ chk  b9faae10efae552f23c213891a3ed8187cb7d017
 
 server http://kent.dl.sourceforge.net/sourceforge/sylpheed-claws
 
-file  sylpheed-claws-2.2.0.tar.bz2
-chk   b2244cfa04a7800b7d0ce518e0b1f54743f02bf3  
+#file  sylpheed-claws-2.2.0.tar.bz2
+#chk   b2244cfa04a7800b7d0ce518e0b1f54743f02bf3  
+file  sylpheed-claws-2.3.1.tar.bz2
+chk   9a9935dc4c7ed04b45daf6c75d01dbe2f4920e3e
+
 
 # RedHat
 
@@ -132,8 +135,8 @@ chk  1019c8027c0cf94bca680886f4e2ae4e629a2a97
 
 server http://wald.intevation.org/frs/download.php
 
-file  219/winpt-0.12.1.tar.bz2
-chk   90ce0740a5c4886720c01079df73e4de0572825c 
+file  229/winpt-0.12.3.tar.bz2
+chk   54a614d2fb5b622703850478ac20dd19077a5028
 
 
 # GPGee
@@ -164,8 +167,8 @@ chk 64d6abead30ae48ea61921bf6a982e0b75d9d142
 
 server ftp://ftp.gnupg.org/gcrypt
 
-file gnupg/gnupg-1.4.3.tar.bz2
-chk  9e96b36e4f4d1e8bc5028c99fac674482cbdb370
+file gnupg/gnupg-1.4.4.tar.bz2
+chk  3414d67f22973576f31e354f44859bafbccb7eee
 
 file libgpg-error/libgpg-error-1.2.tar.bz2
 chk  468657e5bccd534f350b1a0109e19d2a9cc5d027

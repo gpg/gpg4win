@@ -1,0 +1,30 @@
+#! /bin/sh
+patch -p1 -f $* < $0
+exit $?
+
+2006-06-26  Werner Koch  <wk@g10code.com>
+
+	* src/plugins/pgpcore/sylpheed.def: Add privacy_get_error and
+	privacy_set_error.
+
+2006-05-29  Marcus Brinkmann  <marcus@g10code.com>
+
+	* src/plugins/pgpcore/sylpheed.def: Add alertpanel_error.
+
+--- orig/sylpheed-claws-2.3.1/src/plugins/pgpcore/sylpheed.def	2006-06-20 10:31:44.000000000 +0200
++++ sylpheed-claws-2.3.1/src/plugins/pgpcore/sylpheed.def	2006-06-26 09:16:11.000000000 +0200
+@@ -2,6 +2,7 @@ LIBRARY SYLPHEED-CLAWS.EXE
+ EXPORTS
+ alertpanel
+ alertpanel_full
++alertpanel_error
+ copy_file_part
+ debug_print_real
+ debug_srcname
+@@ -30,3 +31,5 @@ prefs_set_default
+ prefs_write_open
+ prefs_write_param
+ sylpheed_get_version
++privacy_set_error
++privacy_get_error
+
