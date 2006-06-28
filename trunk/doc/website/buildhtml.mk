@@ -38,11 +38,11 @@ subdirs: $(SUBDIRS)
 	  $(MAKE) -C $$dir SUBDIRS="" ; \
 	done
 
-change-history.htm4: build-history.awk ../../NEWS
-	awk -f build-history.awk < ../../NEWS > $@
+change-history.htm4: build-history.awk NEWS.last
+	awk -f build-history.awk < NEWS.last > $@
 
-change-history-de.htm4: build-history.awk ../../NEWS
-	awk -f build-history.awk -v lang=de < ../../NEWS > $@
+change-history-de.htm4: build-history.awk NEWS.last
+	awk -f build-history.awk -v lang=de < NEWS.last > $@
 
 online: all
 	echo "Going to put current contents online for www.gpg4win.org ..."

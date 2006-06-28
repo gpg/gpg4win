@@ -71,6 +71,8 @@ Section Uninstall
   Delete "$DESKTOP\GPA.lnk"
 !endif
 !ifdef HAVE_PKG_SYLPHEED_CLAWS
+  Delete "$DESKTOP\Sylpheed-Claws.lnk"
+  # We better delete also the name we used prior to 1.0.3
   Delete "$DESKTOP\Sylpheed.lnk"
 !endif
 !ifdef HAVE_PKG_MAN_NOVICE_DE
@@ -94,6 +96,8 @@ Section Uninstall
   Delete "$QUICKLAUNCH\GPA.lnk"
 !endif
 !ifdef HAVE_PKG_SYLPHEED_CLAWS
+  Delete "$QUICKLAUNCH\Sylpheed-Claws.lnk"
+  # We better delete also the name we used prior to 1.0.3
   Delete "$QUICKLAUNCH\Sylpheed.lnk"
 !endif
 !ifdef HAVE_PKG_MAN_NOVICE_DE
