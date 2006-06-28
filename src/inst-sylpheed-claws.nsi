@@ -24,7 +24,7 @@
 !define prefix ${ipdir}/sylpheed-claws-${gpg4win_pkg_sylpheed_claws_version}
 
 
-Section /o "Sylpheed" SEC_sylpheed
+Section /o "Sylpheed-Claws" SEC_sylpheed
   SetOutPath "$INSTDIR"
 !ifdef SOURCES
   File "${gpg4win_pkg_sylpheed_claws}"
@@ -45,12 +45,12 @@ SectionEnd
 
 
 LangString DESC_SEC_sylpheed ${LANG_ENGLISH} \
-   "Sylpheed Mail-User-Agent"
+   "Sylpheed-Claws Mail-User-Agent"
 LangString DESC_SEC_sylpheed ${LANG_GERMAN} \
-   "Sylpheed ist ein vollständiges Mail- und News-Programm mit sehr guter \
-    Unterstützung für GnuPG.  Dies ist die Sylpheed-Claws Variante."
+   "Sylpheed-Claws ist ein vollständiges Mail- und News-Programm mit sehr \
+    guter Unterstützung für GnuPG.  Dies ist die Sylpheed-Claws Variante."
 
 LangString DESC_Menu_sylpheed ${LANG_ENGLISH} \
-   "Run the Sylpheed mailprogram."
+   "Run the Sylpheed-Claws mailprogram."
 LangString DESC_Menu_sylpheed ${LANG_GERMAN} \
-   "Das Mailprogramm Sylpheed aufrufen."
+   "Das Mailprogramm Sylpheed-Claws aufrufen."

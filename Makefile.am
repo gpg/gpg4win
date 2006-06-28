@@ -40,3 +40,8 @@ EXTRA_DIST = autogen.sh README.SVN \
         patches/sylpheed-claws-2.3.1/06-pgpmime-def.patch \
         patches/sylpheed-claws-2.3.1/07-mbox.patch 
 
+
+
+copy-news:
+	cp NEWS doc/website/NEWS.last
+

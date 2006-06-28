@@ -1,3 +1,10 @@
+2006-06-28  Werner Koch  <wk@g10code.com>
+
+	* website/NEWS.last: new.  This file is actually created by the
+	top level make target copy-news.
+	* website/buildhtml.mk: Use NEWS.last instead of the top-level
+	news.  This way we are self-contained again.
+
 2006-06-02  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
 
 	* website/template_link_boxes_de.m4, website/template_link_boxes_en.m4:

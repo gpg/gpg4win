@@ -496,7 +496,7 @@ Section "-startmenu"
     SectionGetFlags ${SEC_sylpheed} $R0 
     IntOp $R0 $R0 & ${SF_SELECTED} 
     IntCmp $R0 ${SF_SELECTED} 0 no_sylpheed_menu 
-    CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\Sylpheed.lnk" \
+    CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\Sylpheed-Claws.lnk" \
 	"$INSTDIR\sylpheed-claws.exe" \
         "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_sylpheed)
   no_sylpheed_menu:
@@ -592,7 +592,7 @@ Section "-startmenu"
     SectionGetFlags ${SEC_sylpheed} $R0 
     IntOp $R0 $R0 & ${SF_SELECTED} 
     IntCmp $R0 ${SF_SELECTED} 0 no_sylpheed_desktop
-    CreateShortCut "$DESKTOP\Sylpheed.lnk" \
+    CreateShortCut "$DESKTOP\Sylpheed-Claws.lnk" \
 	"$INSTDIR\sylpheed-claws.exe" \
         "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_sylpheed)
   no_sylpheed_desktop:
@@ -666,7 +666,7 @@ no_desktop:
     SectionGetFlags ${SEC_sylpheed} $R0 
     IntOp $R0 $R0 & ${SF_SELECTED} 
     IntCmp $R0 ${SF_SELECTED} 0 no_sylpheed_quicklaunch
-    CreateShortCut "$QUICKLAUNCH\Sylpheed.lnk" \
+    CreateShortCut "$QUICKLAUNCH\Sylpheed-Claws.lnk" \
 	"$INSTDIR\sylpheed-claws.exe" \
         "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_sylpheed)
   no_sylpheed_quicklaunch:
