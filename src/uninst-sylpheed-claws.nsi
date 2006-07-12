@@ -32,6 +32,10 @@ Section "-un.sylpheed"
 !else
   Delete "$INSTDIR\sylpheed-claws.exe"
 
+!ifndef GPG4WIN_LIGHT
+  Delete "$INSTDIR\sylpheed-claws-manual.pdf"
+!endif
+
   Delete "$INSTDIR\lib\sylpheed-claws\plugins\pgpcore.dll"
   Delete "$INSTDIR\lib\sylpheed-claws\plugins\pgpinline.dll"
   Delete "$INSTDIR\lib\sylpheed-claws\plugins\pgpinline.deps"
