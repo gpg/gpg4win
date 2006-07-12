@@ -499,6 +499,11 @@ Section "-startmenu"
     CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\Sylpheed-Claws.lnk" \
 	"$INSTDIR\sylpheed-claws.exe" \
         "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_sylpheed)
+!ifndef GPG4WIN_LIGHT
+    CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\Sylpheed Claws Manual.lnk" \
+	"$INSTDIR\sylpheed-claws-manual.pdf" \
+	"" "" "" SW_SHOWNORMAL "" $(DESC_Menu_sylpheed_pdf)
+!endif
   no_sylpheed_menu:
 !endif
 
@@ -595,6 +600,11 @@ Section "-startmenu"
     CreateShortCut "$DESKTOP\Sylpheed-Claws.lnk" \
 	"$INSTDIR\sylpheed-claws.exe" \
         "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_sylpheed)
+!ifndef GPG4WIN_LIGHT
+    CreateShortCut "$DESKTOP\Sylpheed-Claws Manual.lnk" \
+	"$INSTDIR\sylpheed-claws-manual.pdf" \
+	"" "" "" SW_SHOWNORMAL "" $(DESC_Menu_sylpheed_pdf)
+!endif
   no_sylpheed_desktop:
 !endif
 

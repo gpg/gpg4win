@@ -31,6 +31,10 @@ Section /o "Sylpheed-Claws" SEC_sylpheed
 !else
   File ${prefix}/bin/sylpheed-claws.exe
 
+!ifndef GPG4WIN_LIGHT
+  File ${prefix}/share/sylpheed-claws/manual/en/sylpheed-claws-manual.pdf
+!endif
+
   SetOutPath "$INSTDIR\lib\sylpheed-claws\plugins"
   File ${prefix}/lib/sylpheed-claws/plugins/pgpcore.dll
   File ${prefix}/lib/sylpheed-claws/plugins/pgpinline.dll
@@ -54,3 +58,8 @@ LangString DESC_Menu_sylpheed ${LANG_ENGLISH} \
    "Run the Sylpheed-Claws mailprogram."
 LangString DESC_Menu_sylpheed ${LANG_GERMAN} \
    "Das Mailprogramm Sylpheed-Claws aufrufen."
+
+LangString DESC_Menu_sylpheed_pdf ${LANG_ENGLISH} \
+   "Show the online manual of Sylpheed Claws"
+LangString DESC_Menu_sylpheed_pdf ${LANG_GERMAN} \
+   "Das englische Handbuch zu Sylpheed Claws anzeigen"
