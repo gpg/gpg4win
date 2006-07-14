@@ -1,3 +1,8 @@
+2006-07-14  Marcus Brinkmann  <marcus@g10code.de>
+
+	* patches/sylpheed-claws-2.3.1 (08-w32-logo.patch,
+	09-w32-icon.patch, 99-auto.patch): New files.
+
 2006-07-12  Marcus Brinkmann  <marcus@g10code.de>
 
 	* src/inst-sections.nsi: Install start menu and desktop link for
