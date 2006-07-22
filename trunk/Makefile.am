@@ -38,9 +38,10 @@ EXTRA_DIST = autogen.sh README.SVN \
 	patches/sylpheed-claws-2.3.1/04-pgpcore-def.patch \
         patches/sylpheed-claws-2.3.1/05-pgpinline-def.patch \
         patches/sylpheed-claws-2.3.1/06-pgpmime-def.patch \
-        patches/sylpheed-claws-2.3.1/07-mbox.patch 
-
-
+        patches/sylpheed-claws-2.3.1/07-mbox.patch \
+	patches/sylpheed-claws-2.3.1/08-w32-logo.patch \
+	patches/sylpheed-claws-2.3.1/09-w32-icon.patch \
+	patches/sylpheed-claws-2.3.1/99-auto.patch
 
 copy-news:
 	cp NEWS doc/website/NEWS.last
