@@ -3,6 +3,30 @@
 # The version number given below are for the standard installers as
 # distributed by www.gpg4win.org.
 
+Noteworthy changes in version 1.0.4 (2006-07-25)
+------------------------------------------------
+
+(en)Changed GnuPG to again allow working with certain frontends.
+(de)GnuPG wurde geändert, so daß einige Frontends wieder
+    funktionieren.
+
+(en)Added icons to GPA and Sylpheed-Claws.
+(de)Icons werden nun für GPA und Sylpheed-Claws angezeigt.
+
+(en)Install an English manual for Sylpheed-Claws.
+(de)Ein englisches Handbuch zu Sylpheed-Claws wird nun installiert.
+
+~~~~~~~~~~~~~~~
+GnuPG: 1.4.4
+WinPT: 0.12.3
+GPA:   0.7.4
+GPGol: 0.9.10
+GPGee: 1.3.1
+Sylpheed-Claws: 2.3.1
+Einsteiger:     2.0.2
+Durchblicker:   2.0.2
+~~~~~~~~~~~~~~~
+
 Noteworthy changes in version 1.0.3 (2006-06-26)
 ------------------------------------------------
 
