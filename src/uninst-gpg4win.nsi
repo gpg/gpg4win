@@ -37,7 +37,7 @@ Section "-un.gpg4win"
 
   RMDir "$INSTDIR\share\gpg4win"
 
-  # Try to remove otehr top directories.
+  # Try to remove other top directories.
   RMDir "$INSTDIR\lib"
   RMDir "$INSTDIR\share"
   RMDir "$INSTDIR"
