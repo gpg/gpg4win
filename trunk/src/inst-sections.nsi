@@ -500,7 +500,7 @@ Section "-startmenu"
 	"$INSTDIR\sylpheed-claws.exe" \
         "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_sylpheed)
 !ifndef GPG4WIN_LIGHT
-    CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\Sylpheed Claws Manual.lnk" \
+    CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\Sylpheed-Claws Manual.lnk" \
 	"$INSTDIR\sylpheed-claws-manual.pdf" \
 	"" "" "" SW_SHOWNORMAL "" $(DESC_Menu_sylpheed_pdf)
 !endif

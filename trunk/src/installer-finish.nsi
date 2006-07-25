@@ -72,6 +72,7 @@ Section Uninstall
 !endif
 !ifdef HAVE_PKG_SYLPHEED_CLAWS
   Delete "$DESKTOP\Sylpheed-Claws.lnk"
+  Delete "$DESKTOP\Sylpheed-Claws Manual.lnk" \
   # We better delete also the name we used prior to 1.0.3
   Delete "$DESKTOP\Sylpheed.lnk"
 !endif

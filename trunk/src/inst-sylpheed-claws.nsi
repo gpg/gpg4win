@@ -52,7 +52,7 @@ LangString DESC_SEC_sylpheed ${LANG_ENGLISH} \
    "Sylpheed-Claws Mail-User-Agent"
 LangString DESC_SEC_sylpheed ${LANG_GERMAN} \
    "Sylpheed-Claws ist ein vollständiges Mail- und News-Programm mit sehr \
-    guter Unterstützung für GnuPG.  Dies ist die Sylpheed-Claws Variante."
+    guter Unterstützung für GnuPG."
 
 LangString DESC_Menu_sylpheed ${LANG_ENGLISH} \
    "Run the Sylpheed-Claws mailprogram."
