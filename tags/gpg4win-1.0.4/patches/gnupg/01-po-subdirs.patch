@@ -1,0 +1,44 @@
+#! /bin/sh
+patch -p1 -f $* < $0
+exit $?
+
+Handle po directory properly.
+
+2005-10-02  Marcus Brinkmann  <marcus@g10code.de>
+
+	* configure.ac [!$try_gettext]: Invoke AM_PO_SUBDIRS.
+
+scripts/
+2005-10-02  Marcus Brinkmann  <marcus@g10code.de>
+
+	* autogen.sh (DIE): Remove ugly hack for po dir suppression.
+
+Index: scripts/autogen.sh
+===================================================================
+--- scripts/autogen.sh	(Revision 3899)
++++ scripts/autogen.sh	(Arbeitskopie)
+@@ -99,12 +99,6 @@
+ 
+     $tsdir/configure ${conf_CC} --build=${build} --host=${host} \
+                 ${disable_foo_tests}  $*
+-
+-    # Ugly hack to overcome a gettext problem.  Someone should look into
+-    # gettext to figure out why the po directory is not ignored as it used
+-    # to be.
+-    [ $? = 0 ] && touch $tsdir/po/all
+-    exit $?
+ fi
+ 
+ 
+Index: configure.ac
+===================================================================
+--- configure.ac	(Revision 3899)
++++ configure.ac	(Arbeitskopie)
+@@ -708,6 +708,7 @@
+   AC_SUBST(USE_NLS)
+   AC_SUBST(USE_INCLUDED_LIBINTL)
+   AC_SUBST(BUILD_INCLUDED_LIBINTL)
++  AM_PO_SUBDIRS
+ fi
+ 
+ if test "$try_extensions" = yes || test x"$card_support" = xyes ; then

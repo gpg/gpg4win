@@ -1,0 +1,34 @@
+#! /bin/sh
+patch -p1 -f $* < $0
+exit $?
+
+Find gpgme.def when building in other directory.
+
+2005-10-02  Marcus Brinkmann  <marcus@g10code.de>
+
+	* Makefile.am (gpgme.dll gpgme.dll.a): Use $(srcdir) for gpgme.def.
+
+diff -ru gpgme-1.1.0-orig/gpgme/Makefile.am gpgme-1.1.0/gpgme/Makefile.am
+--- gpgme-1.1.0-orig/gpgme/Makefile.am	2005-10-01 04:06:07.000000000 +0200
++++ gpgme-1.1.0/gpgme/Makefile.am	2005-10-02 20:05:02.000000000 +0200
+@@ -138,7 +138,7 @@
+ 	$(STRIP) $(DESTDIR)$(libdir)/gpgme.dll
+ 
+ gpgme.dll gpgme.dll.a: gpgme.def $(w32_o_files) versioninfo.o
+-	$(CC) -shared -o gpgme.dll gpgme.def $(w32_o_files) \
++	$(CC) -shared -o gpgme.dll $(srcdir)/gpgme.def $(w32_o_files) \
+ 	   versioninfo.o @GPG_ERROR_LIBS@ -Wl,--out-implib,gpgme.dll.a
+ 
+ 
+diff -ru gpgme-1.1.0-orig/gpgme/Makefile.in gpgme-1.1.0/gpgme/Makefile.in
+--- gpgme-1.1.0-orig/gpgme/Makefile.in	2005-10-01 23:13:45.000000000 +0200
++++ gpgme-1.1.0/gpgme/Makefile.in	2005-10-02 20:06:57.000000000 +0200
+@@ -804,7 +804,7 @@
+ @HAVE_W32_SYSTEM_TRUE@	$(STRIP) $(DESTDIR)$(libdir)/gpgme.dll
+ 
+ @HAVE_W32_SYSTEM_TRUE@gpgme.dll gpgme.dll.a: gpgme.def $(w32_o_files) versioninfo.o
+-@HAVE_W32_SYSTEM_TRUE@	$(CC) -shared -o gpgme.dll gpgme.def $(w32_o_files) \
++@HAVE_W32_SYSTEM_TRUE@	$(CC) -shared -o gpgme.dll $(srcdir)/gpgme.def $(w32_o_files) \
+ @HAVE_W32_SYSTEM_TRUE@	   versioninfo.o @GPG_ERROR_LIBS@ -Wl,--out-implib,gpgme.dll.a
+ 
+ @HAVE_W32_SYSTEM_TRUE@.rc.o:
