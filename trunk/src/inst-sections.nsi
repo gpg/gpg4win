@@ -362,9 +362,16 @@ Function CalcDepends
 
   # Package "zlib" has no dependencies.
   # Package "pkgconfig" has no dependencies.
-  # Package "libiconv" has no dependencies.
   # Package "libgpg-error" has no dependencies.
-  # Package "gnupg" has no dependencies.
+
+!ifdef HAVE_PKG_GNUPG
+  !insertmacro SectionFlagIsSet ${SEC_gnupg} ${SF_SELECTED} have_gnupg skip_gnupg
+  have_gnupg:
+  !insertmacro SelectSection ${SEC_libiconv}
+  skip_gnupg:
+!endif
+
+  # Package "libiconv" has no dependencies.
 
 FunctionEnd
 

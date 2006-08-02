@@ -155,7 +155,7 @@ GPG4WIN_BPKG_BINSRC([GPGee], [gnupg])
 
 GPG4WIN_SPKG([libgpg-error], [libiconv gettext])
 GPG4WIN_SPKG([gpgme], [libgpg-error gnupg glib])
-GPG4WIN_SPKG([gnupg])
+GPG4WIN_SPKG([gnupg], [libiconv])
 GPG4WIN_SPKG([pthreads-w32])
 GPG4WIN_SPKG([gpgol], [gpgme])
 GPG4WIN_SPKG([gpa], [libiconv gettext zlib gtk+ libpng glib gpgme])
