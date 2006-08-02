@@ -1,0 +1,83 @@
+m4_dnl -*-html-*-
+m4_include(`template.m4')
+m4_dnl $Id$
+
+m4_define(`DE')
+m4_define(`EN_FILE', `website-maintenance.html')
+PAGE_START
+
+<h1>Website von Gpg4win pflegen</h1>
+
+Die Pflege der Website ist eigentlich recht einfach, da
+vieles automatisiert ist.
+
+<p>
+Was man beherrschen sollte: Irgendeinen Text-Editor, HTML, ssh und
+Subversions.
+</p>
+
+<p>
+Typische Aufgaben:
+<ul>
+<li> Version von Gpg4win aktualisieren (gelegentlich, ca. 15 Minuten)
+<li> Tippfehler beseitigen (immer wenn man selbst oder jemand anderes etwas findet, wenige Minuten)
+</ul>
+</p>
+
+<h2>Zunächst mal ganz anonym reinschnuppern</h2>
+
+<ol>
+<li> Die Quellen zur Website anonyme (also ohne Schreibrechte) holen:<br>
+     <em>svn checkout https://svn.wald.intevation.org/gpg4win/trunk/doc/website</em>
+
+<li> Die Website lokal bauen:<br>
+     <em>make -f buildhtml.mk</em><br>
+     und im Browser anschauen (z.B. Datei index-de.html).
+
+<li> Die Datei README lesen, nach belieben Änderungen vornehmen und die
+     Website dann wieder neu bauen und anschauen.
+</ol>
+
+<h2>Was man vorbereitend nur einmal machen muss um aktiver Mitentwickler zu werden</h2>
+
+Ein vorheriges "Hallo" auf einer der Gpg4win Mailing Listen
+und dass man gerne mitmachen möchte ist natürlich immer sinnvoll.
+
+<ol>
+<li> Auf <a href="http://wald.intevation.de">wald.intevation.de</a> ein
+     <a href="http://wald.intevation.org/account/register.php">Benutzerkonto
+     einrichten</a>.<br>
+     Das geht schnell, denn es ist ein vollautomatischer Prozess.
+
+<li> Mitgliedschaft beim Projekt Gpg4win
+     <a href="http://wald.intevation.org/project/request.php?group_id=11"
+       >beantragen</a>.<br>
+     Das dauert ein wenig, da einer der Projektadministoren den Antrag
+     persönlich bearbeitet.
+
+<li> Einen SSH-Schlüssel erzeugen und auf wald.intevation.de
+     <a href="http://wald.intevation.org/account/">hochladen</a>.
+
+<li> Die Quellen zur Website holen:<br>
+     <em>svn checkout svn+ssh://USER@svn.wald.intevation.org/gpg4win/trunk/doc/website</em><br>
+     wobei USER das Benutzerkonto auf wald.intevation.de ist.
+</ol>
+
+<h2>Wie man die Website aktualisiert und online schaltet</h2>
+
+<ol>
+<li> Gewünschte Änderungen in dem per SVN geholten Verzeichnis <em>website</em> durchführen.
+     Zum besseren Verständnis ggf. die dort liegende Datei <em>REAMDE</em> vorher
+     durchlesen.
+<li> Lokale Version zum Anschauen herstellen:<br>
+     <em>make -f buildhtml.mk</em><br>
+     und im Browser anschauen.
+<li> Sind die Änderungen in Ordnung, sollte man sie noch mal prüfen:<br>
+     <em>svn diff | less</em><br>
+     und können dann mit möglichst sinnvollen Kommentare ins SVN Repository
+     hochgeladen werden:<br>
+     <em>svn commit</em><br>
+<li> Der letzte Schritt ist das online schalten:<br>
+     <em>make -f buildhtml.mk online</em><br>
+</ol>
+
