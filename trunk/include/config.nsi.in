@@ -112,6 +112,12 @@
 !define gpg4win_pkg_libpng_dev @gpg4win_pkg_libpng_dev@
 !define gpg4win_pkg_libpng_src @gpg4win_pkg_libpng_src@
 
+@HAVE_PKG_JPEG@
+!define gpg4win_pkg_jpeg @gpg4win_pkg_jpeg@
+!define gpg4win_pkg_jpeg_version @gpg4win_pkg_jpeg_version@
+!define gpg4win_pkg_jpeg_dev @gpg4win_pkg_jpeg_dev@
+!define gpg4win_pkg_jpeg_src @gpg4win_pkg_jpeg_src@
+
 @HAVE_PKG_PKGCONFIG@
 !define gpg4win_pkg_pkgconfig @gpg4win_pkg_pkgconfig@
 !define gpg4win_pkg_pkgconfig_version @gpg4win_pkg_pkgconfig_version@

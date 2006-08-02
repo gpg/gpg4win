@@ -1,5 +1,5 @@
 # Makefile.am - Installer for GnuPG 4 Windows Makefile.
-# Copyright (C) 2005 g10 Code GmbH
+# Copyright (C) 2005, 2006 g10 Code GmbH
 # 
 # This file is part of GPG4Win.
 # 
@@ -93,7 +93,7 @@ gpg4win_pkg_pthreads_w32_make_args_inst = \
 
 
 # Supported binary packages.
-gpg4win_bpkgs :=  libiconv gettext pkgconfig zlib libpng pango atk gtk+ \
+gpg4win_bpkgs :=  libiconv gettext pkgconfig zlib libpng jpeg pango atk gtk+ \
 		  gpgee crypt regex
 
 # libiconv needs some special magic to generate a usable import

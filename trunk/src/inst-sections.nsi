@@ -1,5 +1,5 @@
 # inst-sections.nsi - Installer for GPG4Win sections.  -*- coding: latin-1; -*-
-# Copyright (C) 2005 g10 Code GmbH
+# Copyright (C) 2005, 2006 g10 Code GmbH
 # 
 # This file is part of GPG4Win.
 # 
@@ -56,6 +56,9 @@
 !endif
 !ifdef HAVE_PKG_LIBPNG
 !include "inst-libpng.nsi"
+!endif
+!ifdef HAVE_PKG_JPEG
+!include "inst-jpeg.nsi"
 !endif
 !ifdef HAVE_PKG_GPGOL
 !include "inst-gpgol.nsi"
@@ -129,6 +132,9 @@
 !ifdef HAVE_PKG_LIBPNG
 !include "uninst-libpng.nsi"
 !endif
+!ifdef HAVE_PKG_JPEG
+!include "uninst-jpeg.nsi"
+!endif
 !ifdef HAVE_PKG_GLIB
 !include "uninst-glib.nsi"
 !endif
@@ -199,6 +205,9 @@ Function CalcDepends
 !ifdef HAVE_PKG_LIBPNG
   !insertmacro UnselectSection ${SEC_libpng}
 !endif
+!ifdef HAVE_PKG_JPEG
+  !insertmacro UnselectSection ${SEC_jpeg}
+!endif
 !ifdef HAVE_PKG_PKGCONFIG
   !insertmacro UnselectSection ${SEC_pkgconfig}
 !endif
@@ -257,6 +266,7 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_zlib}
   !insertmacro SelectSection ${SEC_gtk_}
   !insertmacro SelectSection ${SEC_libpng}
+  !insertmacro SelectSection ${SEC_jpeg}
   !insertmacro SelectSection ${SEC_glib}
   !insertmacro SelectSection ${SEC_gpgme}
   !insertmacro SelectSection ${SEC_gnupg}
