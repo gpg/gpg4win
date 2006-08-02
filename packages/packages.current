@@ -51,6 +51,13 @@ chk  834e1567813506525c0f1003a048df0353b1bb36
 file libpng-1.2.8-src.zip
 chk  f00a86596d804fb62e912cf575983124692858fa
 
+file jpeg-6b-4-bin.zip
+chk  d6309212c783cffe8ea9d2c7c8913b69709796fe
+file jpeg-6b-4-lib.zip
+chk  858cbedcefcc265e5eec35a5c7a20bcde3de4399
+file jpeg-6b-4-src.zip
+chk  fb46e04938e28bc1ecea1e7bb8b92414129faf96
+
 file crypt-2.2.5-lib.zip
 chk  77482f40ce2c65c0e1b807a07049f53823861266
 file crypt-2.2.5-src.zip

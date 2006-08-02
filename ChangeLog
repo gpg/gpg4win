@@ -1,3 +1,13 @@
+2006-08-02  Marcus Brinkmann  <marcus@g10code.de>
+
+	* packages/packages.current: Add jpeg packages.
+	* src/inst-sections.nsi: Add jpeg support.
+	* src/Makefile.am (gpg4win_bpkgs): Add jpeg.
+	* src/inst-jpeg.nsi, src/uninst-jpeg.nsi: New file.
+	* include/config.nsi.in: Add defines for jpeg.
+	* configure.ac: Add new GnuWin32 package jpeg.  Add it as a
+	dependency to sylpheed-claws.
+
 2006-08-02  Werner Koch  <wk@g10code.com>
 
 	Released 1.0.5.

@@ -142,6 +142,7 @@ GPG4WIN_BPKG_GNUWIN32([zlib])
 GPG4WIN_BPKG_GNUWIN32_LIB([crypt])
 GPG4WIN_BPKG_GNUWIN32_LIB([regex])
 GPG4WIN_BPKG_GNUWIN32([libpng], [pkgconfig])
+GPG4WIN_BPKG_GNUWIN32([jpeg])
 
 GPG4WIN_BPKG_GTK([pkgconfig])
 # We build our own version of glib, because we need to patch giowin32.c.
@@ -159,7 +160,7 @@ GPG4WIN_SPKG([pthreads-w32])
 GPG4WIN_SPKG([gpgol], [gpgme])
 GPG4WIN_SPKG([gpa], [libiconv gettext zlib gtk+ libpng glib gpgme])
 GPG4WIN_SPKG([winpt], [gpgme gnupg])
-GPG4WIN_SPKG([sylpheed-claws], [libiconv gettext zlib gtk+ libpng glib dnl
+GPG4WIN_SPKG([sylpheed-claws], [libiconv gettext zlib gtk+ libpng jpeg glib dnl
                                 gpgme pthreads-w32 crypt regex])
 # The Eudora license (the one for thye EMS API) is still not acceptable.
 #GPG4WIN_SPKG([eudoragpg])
