@@ -1,0 +1,90 @@
+m4_dnl -*-html-*-
+m4_include(`template.m4')
+m4_dnl $Id$
+
+m4_define(`EN')
+m4_define(`DE_FILE', `reporting-bugs-de.html')
+PAGE_START
+
+<h1>How to report a problem</h1>
+
+<p>
+Gpg4win integrates a number of tools that are
+actually maintained by other development teams.
+
+<p>
+Therefore problems and bugs of general nature,
+i.e. not related to the cross-compilation and/or
+packaging by the Gpg4win team, should be reported
+to the respective project teams:
+
+<ul>
+<li><a href="http://www.stud.uni-hannover.de/~twoaday/bugs.html">
+    WinPT bug tracking</a>
+     <p>
+<li><a href="http://wald.intevation.org/tracker/?group_id=13">
+    GPA bug tracking</a>
+     <p>
+<li><a href="http://www.excelcia.org/modules.php?name=Forums&file=viewforum&f=1">
+    GPGee Forum</a> (GPGee has no bug tracker, users are asked to report
+    problems in the forum)
+     <p>
+<li><a href="http://www.thewildbeast.co.uk/sylpheed-claws/bugzilla/index.cgi">
+    Sylpheed-Claws bug tracking</a>
+     <p>
+<li><a href="http://www.gnupg.org/(en)/documentation/bts.html">
+    GnuPG and GPGol bug tracking</a>
+</ul>
+
+Of course, it is not always easy to decide whether
+it is a bug of Gpg4win or a module.
+In these cases and depending on the type of the
+problem, either ask on one of the Gpg4win forums
+or mailing lists for advice or create a Gpg4win bug report.
+
+<p>
+
+<h2>General hints for reporting bugs</h2>
+
+When you report a bug, please
+
+<ul>
+<li> first check whether your problem has been
+     already reported and add your comments.
+     <p>
+<li> provide the exact version of the Windows System,
+     Gpg4win, and if appropriate of MS Office and Outlook.
+     <p>
+<li> if possible provide a step by step method
+     how you reproduce the bug.
+     <p>
+<li> if appropriate, attach a debug log.
+</ul>
+
+<p>
+
+<h2>Creating debug log information</h2>
+
+GPGME is a middle layer between GnuPG and all
+Gpg4win modules except for GPGee.
+
+<p>
+To obtain detailed debugging information, you
+must enter something like this on the DOS prompt:
+
+<pre>
+set GPGME_DEBUG=5;c:\temp\gpgme.log
+"c:\Program Files\Microsoft Office\OFFICE11\OUTLOOK.EXE"
+</pre>
+
+In this case the communication between GPGol and Outlook
+will be logged into the file \tmp\gpgme.log.
+
+<p>
+<b>Please note</b> that you should search for your passwords
+in this file and replace it by XXX before submitting the log
+file to a bug tracker.
+
+<p>
+If you feel able to, just send a excerpt with the relevant
+information.
