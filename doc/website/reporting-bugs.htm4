@@ -94,9 +94,9 @@ c:\temp\gpgol.log
 into the "Debug output" field.  
 
 <p>
-<b>Please note</b> that you should search for your passwords
-in these file and replace it by XXX before submitting the log
-file to a bug tracker.
+<b>Please note</b> that you should search for passwords
+in these files and replace them by XXX before submitting the log
+file(s) to a bug tracker.
 
 <p>
 If you feel able to, just send a excerpt with the relevant
