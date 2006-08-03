@@ -66,7 +66,6 @@ m4_dnl DONT USE THIS FILE DIRECTLY
   <a href="http://www.equipmente.de/">GnuPT</a><br>
   <a href="http://people.freenet.de/rose-indorf">GnuPG-Basics</a><br>
   <p>Outdated:<br>
-  <a href="build-installer.html">Build Installer Package</a><br>
   <a href="http://sourceforge.net/projects/winpt">Windows Privacy Tools</a><br>
   <a href="http://www.gnupp.de/start.html">GnuPP</a><br>
   </p>
