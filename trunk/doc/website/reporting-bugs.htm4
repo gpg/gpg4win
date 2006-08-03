@@ -81,8 +81,21 @@ In this case the communication between GPGol and Outlook
 will be logged into the file \tmp\gpgme.log.
 
 <p>
+GPGol has an extra debug options which helps to understand the
+internal communication between Outlook and GPGol; this debugging
+feature is often more important than the above noted gpgme logging.
+To enable it, go to the GnuPG tab in Outlook's option page, click on
+the "Advanced" button and enter
+
+<pre>
+c:\temp\gpgol.log
+</pre>
+
+into the "Debug output" field.  
+
+<p>
 <b>Please note</b> that you should search for your passwords
-in this file and replace it by XXX before submitting the log
+in these file and replace it by XXX before submitting the log
 file to a bug tracker.
 
 <p>
