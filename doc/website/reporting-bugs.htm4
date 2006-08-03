@@ -8,15 +8,33 @@ PAGE_START
 
 <h1>How to report a problem</h1>
 
+<h2>1. Check whether you are using the newest version of Gpg4win</h2>
+
+<p>
+The download button ontop of the Gpg4win homepage shows
+the current version of Gpg4win.
+</p>
+
+<!--
+<p>
+TODO: Where can you see the version number of a installed
+package?
+</p>
+-->
+
+<h2>2. Check whether it is really a Gpg4win bug</h2>
+
 <p>
 Gpg4win integrates a number of tools that are
 actually maintained by other development teams.
+</p>
 
 <p>
 Therefore problems and bugs of general nature,
 i.e. not related to the cross-compilation and/or
 packaging by the Gpg4win team, should be reported
 to the respective project teams:
+</p>
 
 <ul>
 <li><a href="http://www.stud.uni-hannover.de/~twoaday/bugs.html">
@@ -36,49 +54,66 @@ to the respective project teams:
     GnuPG and GPGol bug tracking</a>
 </ul>
 
+<p>
 Of course, it is not always easy to decide whether
 it is a bug of Gpg4win or a module.
 In these cases and depending on the type of the
 problem, either ask on one of the Gpg4win forums
 or mailing lists for advice or create a Gpg4win bug report.
+</p>
+
+
+<h2>3. Check whether the problem is already reported</h2>
 
 <p>
+Search through the list of open bugs and try to
+identify whether one of the entries already describes
+your problem. Add your additional comments there.
+</p>
 
-<h2>General hints for reporting bugs</h2>
-
-When you report a bug, please
-
-<ul>
-<li> first check whether your problem has been
-     already reported and add your comments.
-     <p>
-<li> provide the exact version of the Windows System,
-     Gpg4win, and if appropriate of MS Office and Outlook.
-     <p>
-<li> if possible provide a step by step method
-     how you reproduce the bug.
-     <p>
-<li> if appropriate, attach a debug log.
-</ul>
+<h2>4. Provide version number</h2>
 
 <p>
+If you report a new bug or add comments to a existing
+bug report, describe the exact version of the Windows System,
+Gpg4win, and if appropriate of MS Office and Outlook.
+</p>
 
-<h2>Creating debug log information</h2>
+<h2>5. Notes how to reproduce the bug</h2>
 
+<p>
+If possible provide a step by step method
+how you reproduce the bug.
+</p>
+
+<h2>6. Add debug information</h2>
+
+<p>
+If appropriate, attach a debug log of the
+procedure where you produced the bug.
+</p>
+
+<h3>Creating debug log information</h3>
+
+<p>
 GPGME is a middle layer between GnuPG and all
 Gpg4win modules except for GPGee.
+</p>
 
 <p>
 To obtain detailed debugging information, you
 must enter something like this on the DOS prompt:
+</p>
 
 <pre>
 set GPGME_DEBUG=5;c:\temp\gpgme.log
 "c:\Program Files\Microsoft Office\OFFICE11\OUTLOOK.EXE"
 </pre>
 
+<p>
 In this case the communication between GPGol and Outlook
 will be logged into the file \tmp\gpgme.log.
+</p>
 
 <p>
 GPGol has an extra debug options which helps to understand the
@@ -86,18 +121,23 @@ internal communication between Outlook and GPGol; this debugging
 feature is often more important than the above noted gpgme logging.
 To enable it, go to the GnuPG tab in Outlook's option page, click on
 the "Advanced" button and enter
+</p>
 
 <pre>
 c:\temp\gpgol.log
 </pre>
 
-into the "Debug output" field.  
+<p>
+into the "Debug output" field.
+</p>
 
 <p>
-<b>Please note</b> that you should search for passwords
+<em>Please note</em> that you should search for passwords
 in these files and replace them by XXX before submitting the log
 file(s) to a bug tracker.
+</p>
 
 <p>
 If you feel able to, just send a excerpt with the relevant
 information.
+</p>
