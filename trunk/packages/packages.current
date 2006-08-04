@@ -72,8 +72,10 @@ server http://kent.dl.sourceforge.net/sourceforge/sylpheed-claws
 
 #file  sylpheed-claws-2.2.0.tar.bz2
 #chk   b2244cfa04a7800b7d0ce518e0b1f54743f02bf3  
-file  sylpheed-claws-2.3.1.tar.bz2
-chk   9a9935dc4c7ed04b45daf6c75d01dbe2f4920e3e
+#file  sylpheed-claws-2.3.1.tar.bz2
+#chk   9a9935dc4c7ed04b45daf6c75d01dbe2f4920e3e
+file  sylpheed-claws-2.4.0.tar.bz2
+chk   f61acdf3e9851da3d1e2591321bf43426465955f
 
 
 # RedHat

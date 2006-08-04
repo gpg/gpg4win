@@ -1,3 +1,15 @@
+2006-08-04  Marcus Brinkmann  <marcus@g10code.de>
+
+	* packages/packages.current: Replace sylpheed-claws 2.3.1 with
+	2.4.0.
+	* Makefile.am (EXTRA_DIST): Add
+	patches/sylpheed-claws-2.4.0/01-w32-logo.patch,
+	patches/sylpheed-claws-2.4.0/02-w32-icon.patch,
+	patches/sylpheed-claws-2.4.0/03-plugins-symbols.patch,
+	patches/sylpheed-claws-2.4.0/04-font-prefs.patch,
+	patches/sylpheed-claws-2.4.0/05-textviewer.patch,
+	patches/sylpheed-claws-2.4.0/99-auto.patch.
+
 2006-08-03  Marcus Brinkmann  <marcus@g10code.de>
 
 	* configure.ac: Add libiconv as a dependency for gnupg.
