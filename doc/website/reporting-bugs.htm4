@@ -96,29 +96,8 @@ procedure where you produced the bug.
 <h3>Creating debug log information</h3>
 
 <p>
-GPGME is a middle layer between GnuPG and all
-Gpg4win modules except for GPGee.
-</p>
-
-<p>
-To obtain detailed debugging information, you
-must enter something like this on the DOS prompt:
-</p>
-
-<pre>
-set GPGME_DEBUG=5;c:\temp\gpgme.log
-"c:\Program Files\Microsoft Office\OFFICE11\OUTLOOK.EXE"
-</pre>
-
-<p>
-In this case the communication between GPGol and Outlook
-will be logged into the file \tmp\gpgme.log.
-</p>
-
-<p>
 GPGol has an extra debug options which helps to understand the
-internal communication between Outlook and GPGol; this debugging
-feature is often more important than the above noted gpgme logging.
+internal communication between Outlook and GPGol.
 To enable it, go to the GnuPG tab in Outlook's option page, click on
 the "Advanced" button and enter
 </p>
@@ -129,12 +108,6 @@ c:\temp\gpgol.log
 
 <p>
 into the "Debug output" field.
-</p>
-
-<p>
-<em>Please note</em> that you should search for passwords
-in these files and replace them by XXX before submitting the log
-file(s) to a bug tracker.
 </p>
 
 <p>
