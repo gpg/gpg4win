@@ -17,7 +17,7 @@ m4_dnl DONT USE THIS FILE DIRECTLY
   | <a
   href="http://wald.intevation.org/forum/forum.php?forum_id=83">Diskussion</a>
   </p>
-  <p>Fehlermeldungen:<br>
+  <p>Fehlermeldungen (<a href="reporting-bugs-de.html">Tipps</a>):<br>
   <a
   href="http://wald.intevation.org/tracker/?atid=126&amp;group_id=11&amp;func=browse">Bug 
   Tracker</a>
@@ -74,6 +74,7 @@ m4_dnl DONT USE THIS FILE DIRECTLY
   <a href="index-de.html">Hauptseite</a><br>
   <a href="package-integrity-de.html">Integritätsprüfung</a><br>
   <a href="change-history-de.html">Änderungshistorie</a><br>
+  <a href="reporting-bugs-de.html">Fehler melden: Tipps</a><br>
   <a href="build-installer-de.html">Installationspaket herstellen</a><br>
   <a href="website-maintenance-de.html">Website pflegen</a><br>
   <a href="candidates-de.html">Kandidaten zur Integration</a><br>

@@ -17,7 +17,7 @@ m4_dnl DONT USE THIS FILE DIRECTLY
   | <a
   href="http://wald.intevation.org/forum/forum.php?forum_id=20">Discussion</a>
   </p>
-  <p>Bug Reports:<br>
+  <p>Bug Reports (<a href="reporting-bugs.html">howto</a>):<br>
   <a
   href="http://wald.intevation.org/tracker/?atid=126&amp;group_id=11&amp;func=browse">Bug
   Tracker</a>
@@ -75,6 +75,7 @@ m4_dnl DONT USE THIS FILE DIRECTLY
   <a href="index.html">Main page</a><br>
   <a href="package-integrity.html">Integrity Check</a><br>
   <a href="change-history.html">Change History</a><br>
+  <a href="reporting-bugs.html">How to report a problem</a><br>
   <a href="build-installer.html">Build Installer Package</a><br>
   <a href="website-maintenance.html">Maintaining Website</a><br>
   <a href="candidates.html">Candidates for Integration</a><br>
