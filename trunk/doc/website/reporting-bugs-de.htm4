@@ -33,7 +33,9 @@ Pflege über deren eigene Entwickler-Teams erfolgt.
 Daher sollten Probleme und Fehler allgmeinerer Art,
 also die nicht durch Cross-Kompilation und/oder Paketierung
 durch das Gpg4win Team entstandenen, an die jeweiligen
-Projekte gemeldet werden:
+Projekte gemeldet werden (üblichweise ist es notwendig sich
+zu registrieren bevor man einen Fehler melden und kommentieren
+kann):
 </p>
 
 <ul>
