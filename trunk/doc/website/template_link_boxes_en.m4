@@ -54,6 +54,7 @@ m4_dnl DONT USE THIS FILE DIRECTLY
 </div>
 <div class="box">
   <h1>Getting involved</h1>
+  <a href="contribute.html">Contributing to Gpg4win</a><br>
   <a href="http://wald.intevation.org/projects/gpg4win/">Project Site</a><br>
   <a href="candidates.html">Candidates for Integration</a><br>
   <p>Howtos:<br>
