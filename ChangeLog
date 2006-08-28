@@ -2,6 +2,8 @@
 
 	Released 1.0.6.
 	
+	* Makefile.am (EXTRA_DIST): Added missing patches for Claws.
+
 	* packages/download.sh: Rewrote option parser.  New option
 	--no-sig-check.
 
