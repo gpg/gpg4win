@@ -1,3 +1,10 @@
+2006-08-28  Werner Koch  <wk@g10code.com>
+
+	Released 1.0.6.
+	
+	* packages/download.sh: Rewrote option parser.  New option
+	--no-sig-check.
+
 2006-08-04  Marcus Brinkmann  <marcus@g10code.de>
 
 	* packages/packages.current: Replace sylpheed-claws 2.3.1 with
