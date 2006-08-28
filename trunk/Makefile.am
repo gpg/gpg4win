@@ -44,6 +44,9 @@ EXTRA_DIST = autogen.sh README.SVN \
 	patches/sylpheed-claws-2.3.1/99-auto.patch \
 	patches/sylpheed-claws-2.4.0/01-w32-logo.patch \
 	patches/sylpheed-claws-2.4.0/02-w32-icon.patch \
+        patches/sylpheed-claws-2.4.0/03-plugins-symbols.patch \
+        patches/sylpheed-claws-2.4.0/04-font-prefs.patch \
+        patches/sylpheed-claws-2.4.0/05-textviewer.patch \
 	patches/sylpheed-claws-2.4.0/99-auto.patch
 
 copy-news:
