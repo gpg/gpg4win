@@ -3,6 +3,24 @@
 # The version number given below are for the standard installers as
 # distributed by www.gpg4win.org.
 
+Noteworthy changes in version 1.0.6 (2006-08-28)
+------------------------------------------------
+
+(en) Packaged new versions of GPGol, Sylpheed-Claws and WinPT.
+(de) Neue Versionen von GPGol, Sylpheed-Claws und WinPT.
+
+~~~~~~~~~~~~~~~
+GnuPG: 1.4.5
+WinPT: 1.0.0
+GPA:   0.7.4
+GPGol: 0.9.90
+GPGee: 1.3.1
+Sylpheed-Claws: 2.4.0
+Einsteiger:     2.0.2
+Durchblicker:   2.0.2
+~~~~~~~~~~~~~~~
+
+
 Noteworthy changes in version 1.0.5 (2006-08-02)
 ------------------------------------------------
 
