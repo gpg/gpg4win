@@ -1,3 +1,8 @@
+2006-08-03  Werner Koch  <wk@g10code.com>
+
+	* website/reporting-bugs.htm4: Added information on the gpgol
+	logging.
+
 2006-06-28  Werner Koch  <wk@g10code.com>
 
 	* website/NEWS.last: new.  This file is actually created by the

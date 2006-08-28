@@ -34,16 +34,50 @@
 #    chk  1234567890123456789012345678901234567890
 #    
 
+
+usage()
+{
+    cat <<EOF
+Usage: $0 [OPTIONS]
+Options:
+	[--force]
+	[--keep-list]
+	[--no-sig-check]
+EOF
+    exit $1
+}
+
+
 force=no
-if [ "$1" = "--force" ]; then
-    force=yes
-    shift
-fi
 keep_list=no
-if [ "$1" = "--keep-list" ]; then
-    keep_list=yes
+sig_check=yes
+while [ $# -gt 0 ]; do
+    case "$1" in
+	--*=*)
+	    optarg=`echo "$1" | sed 's/[-_a-zA-Z0-9]*=//'`
+	    ;;
+	*)
+	    optarg=""
+	    ;;
+    esac
+
+    case $1 in
+	--force)
+	    force=yes
+	    ;;
+        --keep-list)
+            keep_list=yes
+            ;;
+        --no-sig-check)
+            sig_check=no
+            ;;
+	*)
+	    usage 1 1>&2
+	    ;;
+    esac
     shift
-fi
+done
+
 
 WGET=wget
 
@@ -56,13 +90,13 @@ if [ "$keep_list" = "no" ]; then
   fi
 fi
 
-
-if ! gpgv --keyring ./packages.keys packages.current.sig packages.current
-  then
+if [ "$sig_ckeck" = yes ]; then
+ if ! gpgv --keyring ./packages.keys packages.current.sig packages.current
+   then
     echo "list of packages is not usable." >&2
     exit 1
+ fi
 fi
-
 
 lnr=0
 name=
