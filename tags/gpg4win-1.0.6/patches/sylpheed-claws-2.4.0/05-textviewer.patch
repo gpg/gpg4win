@@ -1,0 +1,38 @@
+#! /bin/sh
+patch -p1 -f $* < $0
+exit $?
+
+2006-08-04  Marcus Brinkmann  <marcus@g10code.de>
+
+	* src/textview.c [G_OS_WIN32]: Do not include <sys/wait.h>.
+	(textview_write_body): Do not fork for an external textviewer.
+
+diff -rup sylpheed-claws-2.4.0-orig/src/textview.c sylpheed-claws-2.4.0/src/textview.c
+--- sylpheed-claws-2.4.0-orig/src/textview.c	2006-07-31 09:26:18.000000000 +0200
++++ sylpheed-claws-2.4.0/src/textview.c	2006-08-04 21:11:39.000000000 +0200
+@@ -35,7 +35,9 @@
+ #include <string.h>
+ #include <stdlib.h>
+ #include <errno.h>
++#if HAVE_SYS_WAIT_H
+ #include <sys/wait.h>
++#endif
+ #if HAVE_LIBCOMPFACE
+ #  include <compface.h>
+ #endif
+@@ -883,6 +885,7 @@ static void textview_write_body(TextView
+ 			g_unlink(filename);
+ 		}
+ 		g_free(filename);
++#ifndef G_OS_WIN32
+ 	} else if ( g_ascii_strcasecmp(mimeinfo->subtype, "plain") &&
+ 		   (cmd = prefs_common.mime_textviewer) && *cmd &&
+ 		   (p = strchr(cmd, '%')) && *(p + 1) == 's') {
+@@ -933,6 +936,7 @@ static void textview_write_body(TextView
+ 		fclose(tmpfp);
+ 		waitpid(pid, pfd, 0);
+ 		unlink(fname);
++#endif
+ 	} else {
+ textview_default:
+ 		tmpfp = g_fopen(mimeinfo->data.filename, "rb");
