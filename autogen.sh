@@ -52,14 +52,18 @@ if test "$1" = "--build-w32"; then
     [ -z "$w32root" ] && w32root="$HOME/w32root"
     echo "Using $w32root as standard install directory" >&2
     
-    # See whether we have the Debian cross compiler package or the
-    # old mingw32/cpd system
-    if i586-mingw32msvc-gcc --version >/dev/null 2>&1 ; then
-        host=i586-mingw32msvc
-        crossbindir=/usr/$host/bin
-    else
+    # Locate the cross compiler
+    crossbindir=
+    for host in i586-mingw32msvc i386-mingw32msvc; do
+        if ${host}-gcc --version >/dev/null 2>&1 ; then
+            crossbindir=/usr/${host}/bin
+            break;
+        fi
+    done
+
+    if [ -z "$crossbindir" ]; then
         echo "Cross compiler kit not installed" >&2
-        echo "Under Debian GNU/LInux, you may install it using" >&2
+        echo "Under Debian GNU/Linux, you may install it using" >&2
         echo "  apt-get install mingw32 mingw32-runtime mingw32-binutils" >&2 
         echo "Stop." >&2
         exit 1
@@ -72,8 +76,7 @@ if test "$1" = "--build-w32"; then
         fi
     fi
 
-    ./configure --host=i586-mingw32msvc --build=${build}  "$@"\
-
+    ./configure --host=${host} --build=${build}  "$@"
     rc=$?
 
     exit $rc
