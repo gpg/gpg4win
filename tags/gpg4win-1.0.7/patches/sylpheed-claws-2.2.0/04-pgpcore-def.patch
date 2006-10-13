@@ -1,0 +1,19 @@
+#! /bin/sh
+patch -p1 -f $* < $0
+exit $?
+
+2006-05-29  Marcus Brinkmann  <marcus@g10code.com>
+
+	* src/plugins/pgpcore/sylpheed.def: Add alertpanel_error.
+
+diff -rup sylpheed-claws-2.2.0/src/plugins/pgpcore/sylpheed.def sylpheed-claws-2.2.0-new/src/plugins/pgpcore/sylpheed.def
+--- sylpheed-claws-2.2.0/src/plugins/pgpcore/sylpheed.def	2006-05-08 09:09:56.000000000 +0200
++++ sylpheed-claws-2.2.0-new/src/plugins/pgpcore/sylpheed.def	2006-05-29 02:30:32.000000000 +0200
+@@ -1,6 +1,7 @@
+ LIBRARY SYLPHEED-CLAWS.EXE
+ EXPORTS
+ alertpanel
++alertpanel_error
+ alertpanel_full
+ copy_file_part
+ debug_print_real

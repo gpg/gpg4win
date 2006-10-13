@@ -1,0 +1,56 @@
+m4_dnl -*-html-*-
+m4_include(`template.m4')
+m4_dnl $Id$
+
+m4_define(`DE')
+m4_define(`EN_FILE', `package-integrity.html')
+PAGE_START
+
+<h1>Integrität der Gpg4win-Pakete prüfen</h1>
+
+<h2>SHA1 Prüfsummen</h2>
+
+<pre>
+SHA1_EXE  gpg4win-VERSION.exe
+SHA1_EXL  gpg4win-light-VERSION.exe
+SHA1_EXS  gpg4win-src-VERSION.exe
+SHA1_SRC  gpg4win-VERSION.tar.bz2
+</pre>
+
+<h2>MD5 Prüfsummen</h2>
+
+<pre>
+MD5_EXE  gpg4win-VERSION.exe
+MD5_EXL  gpg4win-light-VERSION.exe
+MD5_EXS  gpg4win-src-VERSION.exe
+MD5_SRC  gpg4win-VERSION.tar.bz2
+</pre>
+
+<h2>OpenPGP Signaturen</h2>
+
+Für gpg4win-VERSION.exe:
+<a href="http://ftp.gpg4win.org/gpg4win-VERSION.exe.sig"
+  >http://ftp.gpg4win.org/gpg4win-VERSION.exe.sig</a><br>
+
+Für gpg4win-light-VERSION.exe:
+<a href="http://ftp.gpg4win.org/gpg4win-light-VERSION.exe.sig"
+  >http://ftp.gpg4win.org/gpg4win-light-VERSION.exe.sig</a><br>
+
+Für gpg4win-src-VERSION.exe:
+<a href="http://ftp.gpg4win.org/gpg4win-src-VERSION.exe.sig"
+  >http://ftp.gpg4win.org/gpg4win-src-VERSION.exe.sig</a><br>
+
+Für gpg4win-VERSION.tar.bz2:
+gpg4win-VERSION.tar.bz2.sig welches
+<a href="http://wald.intevation.org/frs/?group_id=11">hier</a> zu finden ist.
+
+<p>
+Die Signaturen wurden mit dem Schlüssel mit der ID <em>1CE0C630</em> erstellt
+und kann über PGP Schlüsselserver abgeholt werden.
+</p>
+
+<p>
+Einen Schlüssel von einem Schlüsselserver abholen geht z.B. mit
+GPA oder WinPT. Die Prüfung einer Signatur kann man leicht mit GPGee
+über den Explorer erledigen.
+</p>
