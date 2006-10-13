@@ -25,6 +25,7 @@ SUBDIRS = packages include doc src
 
 EXTRA_DIST = autogen.sh README.SVN \
 	patches/gnupg-1.4.4/01-reopen-std.patch \
+	patches/gnupg-1.4.5/01-uncompress.patch \
 	patches/gpgme-1.1.0/01-gpgme-def.patch \
 	patches/gpgme-1.1.0/02-libtool-dll.patch \
         patches/pthreads-w32-2-7-0-release/01-make.patch \

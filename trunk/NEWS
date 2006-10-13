@@ -6,6 +6,29 @@
 Noteworthy changes in version 1.0.7
 ------------------------------------------------
 
+(en) Packaged new versions of GPGol and WinPT.
+(de) Neue Versionen von GPGol und WinPT.
+
+(en) Fixed a bug while decrypting certain compressed and encrypted
+     messages. 
+(de) Ein Fehler beim Entschlüsseln einiger komprimierter und
+     verschlüsselter Nachrichten wurde behoben.
+
+(en) Fixed a crash in GPGol.
+(de) Ein Absturz von GPGOl wurde behoben.
+
+
+~~~~~~~~~~~~~~~
+GnuPG: 1.4.5
+WinPT: 1.0.1
+GPA:   0.7.4
+GPGol: 0.9.91
+GPGee: 1.3.1
+Sylpheed-Claws: 2.4.0
+Einsteiger:     2.0.2
+Durchblicker:   2.0.2
+~~~~~~~~~~~~~~~
+
 
 Noteworthy changes in version 1.0.6 (2006-08-28)
 ------------------------------------------------
