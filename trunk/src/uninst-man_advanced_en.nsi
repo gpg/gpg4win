@@ -1,4 +1,4 @@
-# Makefile.am - Documentation for GnuPG 4 Windows Makefile.
+# uninst-man_advanced_en.nsi - Installer snippet.     -*- coding: latin-1; -*-
 # Copyright (C) 2005 g10 Code GmbH
 # 
 # This file is part of GPG4Win.
@@ -17,6 +17,23 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
-EXTRA_DIST = nsi-mode.el  README.en.txt README.de.txt pkg-copyright.txt
 
-SUBDIRS = logo manual website
+!ifdef prefix
+!undef prefix
+!endif
+
+
+; Uninstaller section.
+Section "-un.man_advanced_en"
+!ifdef SOURCES
+  #Push "${gpg4win_pkg_man_advanced_en}"
+  #Call un.SourceDelete
+!else
+
+  Delete "$INSTDIR\share\gpg4win\durchblicker-en.pdf"
+  RMDir "$INSTDIR\share\gpg4win"
+  RMDir "$INSTDIR\share"
+  RMDir "$INSTDIR"
+
+!endif
+SectionEnd
