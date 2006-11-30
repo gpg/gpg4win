@@ -30,7 +30,7 @@ Section "-un.man_advanced_en"
   #Call un.SourceDelete
 !else
 
-  Delete "$INSTDIR\share\gpg4win\durchblicker-en.pdf"
+  Delete "$INSTDIR\share\gpg4win\advanced.pdf"
   RMDir "$INSTDIR\share\gpg4win"
   RMDir "$INSTDIR\share"
   RMDir "$INSTDIR"

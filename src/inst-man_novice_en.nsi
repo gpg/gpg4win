@@ -31,7 +31,7 @@ Section "$(DESC_Name_man_novice_en)" SEC_man_novice_en
 !else
 
   SetOutPath "$INSTDIR\share\gpg4win"
-  File "${BUILD_DIR}/../doc/manual/einsteiger-en.pdf"
+  File "${BUILD_DIR}/../doc/manual/novices.pdf"
 !endif
 SectionEnd
 
