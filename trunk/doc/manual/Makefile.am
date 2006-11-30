@@ -1,4 +1,4 @@
-# Makefile.am - Building the german manuals
+# Makefile.am - Building the manuals
 # Copyright (C) 2005 g10 Code GmbH
 # 
 # This file is part of GPG4Win.
@@ -62,31 +62,36 @@ eps_files_png  := $(eps_files:.eps.gz=.png)
 #eps_files_pdf := $(eps_files:.eps.gz=.pdf)
 png_files_eps := $(png_files:.png=.eps) 
 
-EXTRA_DIST = fdl.tex einsteiger.tex durchblicker.tex $(eps_files) \
-             $(png_files) $(web_png_files) \
-	     was-ist-gpg4win.tex macros.tex version.tex.in \
+EXTRA_DIST = fdl.tex einsteiger.tex durchblicker.tex novices.tex advanced.tex \
+	     $(eps_files) $(png_files) $(web_png_files) \
+	     was-ist-gpg4win.tex what-is-gpg4win.tex \
+             macros.tex macros-en.tex version.tex.in \
 	     gpg4win-logo.eps gpg4win-logo.png
 
 CLEANFILES = $(eps_files_bb) $(png_files_eps) \
              *.dvi *.pdf *.pdf *.toc *.log *.aux *.out
 DISTCLEANFILES = version.tex $(eps_files_png)
 
-pkgdata_DATA = einsteiger.pdf durchblicker.pdf
+pkgdata_DATA = einsteiger.pdf durchblicker.pdf novices.pdf advanced.pdf
 
 BUILT_SOURCES = $(eps_files_bb) $(png_files_eps) $(eps_files_png)
 
-all-local: einsteiger.pdf durchblicker.pdf
+all-local: einsteiger.pdf durchblicker.pdf novices.pdf advanced.pdf
 
 einsteiger.pdf : $(eps_files_bb) $(png_files_eps) $(eps_files_png)
-#$(eps_files_pdf)
-durchblicker.pdf : $(eps_files_bb) $(png_files_eps) $(eps_files_png)
-
 einsteiger.dvi : version.tex macros.tex
-durchblicker.dvi : version.tex macros.tex
 einsteiger.html : version.tex macros.tex
+durchblicker.pdf : $(eps_files_bb) $(png_files_eps) $(eps_files_png)
+durchblicker.dvi : version.tex macros.tex
 durchblicker.html : version.tex macros.tex
+novices.pdf : $(eps_files_bb) $(png_files_eps) $(eps_files_png)
+novices.dvi : version.tex macros.tex
+novices.html : version.tex macros.tex
+advanced.pdf : $(eps_files_bb) $(png_files_eps) $(eps_files_png)
+advanced.dvi : version.tex macros.tex
+advanced.html : version.tex macros.tex
 
-webversion: einsteiger.html durchblicker.html
+webversion: einsteiger.html durchblicker.html novices.html advanced.html
 
 online: webversion
 	set -e; \

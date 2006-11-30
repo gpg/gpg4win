@@ -1,4 +1,13 @@
+2006-11-30  Brigitte Hamilton <gordianknits@gmail.com>  (wk)
+
+	* manual/novices.tex: Filled with content.
+
 2006-11-30  Werner Koch  <wk@g10code.com>
+
+	* manual/Makefile.am: Add code to build english versions.
+	* manual/advanced.tex: New dummy file.
+	* manual/novices.tex: New dummy file. 
+	* manual/what-is-gpg4win.tex: New.
 
 	* manual-de/:  Renamed to manual/.
 	* Makefile.am (SUBDIRS): Likewise

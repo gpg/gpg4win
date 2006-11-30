@@ -31,7 +31,7 @@ Section "$(DESC_Name_man_advanced_en)" SEC_man_advanced_en
 !else
 
   SetOutPath "$INSTDIR\share\gpg4win"
-  File "${BUILD_DIR}/../doc/manual/durchblicker-en.pdf"
+  File "${BUILD_DIR}/../doc/manual/advanced.pdf"
 !endif
 SectionEnd
 

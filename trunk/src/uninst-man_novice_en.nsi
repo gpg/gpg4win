@@ -29,7 +29,7 @@ Section "-un.man_novice_en"
   #Call un.SourceDelete
 !else
 
-  Delete "$INSTDIR\share\gpg4win\einsteiger-en.pdf"
+  Delete "$INSTDIR\share\gpg4win\novices.pdf"
   RMDir "$INSTDIR\share\gpg4win"
   RMDir "$INSTDIR\share"
   RMDir "$INSTDIR"

@@ -558,7 +558,7 @@ Section "-startmenu"
     IntCmp $R0 ${SF_SELECTED} 0 no_man_novice_en_menu 
     CreateShortCut \
         "$SMPROGRAMS\$STARTMENU_FOLDER\$(DESC_Name_man_novice_en).lnk" \
-	"$INSTDIR\share\gpg4win\einsteiger-en.pdf" \
+	"$INSTDIR\share\gpg4win\novices.pdf" \
         "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_man_novice_en)
   no_man_novice_en_menu:
 !endif
@@ -569,7 +569,7 @@ Section "-startmenu"
     IntCmp $R0 ${SF_SELECTED} 0 no_man_advanced_en_menu 
     CreateShortCut \
         "$SMPROGRAMS\$STARTMENU_FOLDER\$(DESC_Name_man_advanced_en).lnk" \
-	"$INSTDIR\share\gpg4win\durchblicker-en.pdf" \
+	"$INSTDIR\share\gpg4win\advanced.pdf" \
         "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_man_advanced_en)
   no_man_advanced_en_menu:
 !endif
@@ -671,7 +671,7 @@ Section "-startmenu"
     IntCmp $R0 ${SF_SELECTED} 0 no_man_novice_en_desktop
     CreateShortCut \
         "$DESKTOP\$(DESC_Name_man_novice_en).lnk" \
-	"$INSTDIR\share\gpg4win\einsteiger-en.pdf" \
+	"$INSTDIR\share\gpg4win\novices.pdf" \
         "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_man_novice_en)
   no_man_novice_en_desktop:
 !endif
@@ -682,7 +682,7 @@ Section "-startmenu"
     IntCmp $R0 ${SF_SELECTED} 0 no_man_advanced_en_desktop
     CreateShortCut \
         "$DESKTOP\$(DESC_Name_man_advanced_en).lnk" \
-	"$INSTDIR\share\gpg4win\durchblicker-en.pdf" \
+	"$INSTDIR\share\gpg4win\advanced.pdf" \
         "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_man_advanced_en)
   no_man_advanced_en_desktop:
 !endif
