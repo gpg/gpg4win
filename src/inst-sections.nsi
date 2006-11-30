@@ -87,6 +87,12 @@
 #!ifdef HAVE_PKG_EUDORAGPG
 #!include "inst-eudoragpg.nsi"
 #!endif
+!ifdef HAVE_PKG_MAN_NOVICE_EN
+!include "inst-man_novice_en.nsi"
+!endif
+!ifdef HAVE_PKG_MAN_ADVANCED_EN
+!include "inst-man_advanced_en.nsi"
+!endif
 !ifdef HAVE_PKG_MAN_NOVICE_DE
 !include "inst-man_novice_de.nsi"
 !endif
@@ -101,6 +107,12 @@
 !endif
 !ifdef HAVE_PKG_MAN_NOVICE_DE
 !include "uninst-man_novice_de.nsi"
+!endif
+!ifdef HAVE_PKG_MAN_ADVANCED_EN
+!include "uninst-man_advanced_en.nsi"
+!endif
+!ifdef HAVE_PKG_MAN_NOVICE_EN
+!include "uninst-man_novice_en.nsi"
 !endif
 #!ifdef HAVE_PKG_EUDORAGPG
 #!include "uninst-eudoragpg.nsi"
@@ -461,6 +473,12 @@ FunctionEnd
 #!ifdef HAVE_PKG_EUDORAGPG
 #  !insertmacro MUI_DESCRIPTION_TEXT ${SEC_eudoragpg} $(DESC_SEC_eudoragpg)
 #!endif
+!ifdef HAVE_PKG_MAN_NOVICE_EN
+  !insertmacro MUI_DESCRIPTION_TEXT ${SEC_man_novice_en} $(DESC_SEC_man_novice_en)
+!endif
+!ifdef HAVE_PKG_MAN_ADVANCED_EN
+  !insertmacro MUI_DESCRIPTION_TEXT ${SEC_man_advanced_en} $(DESC_SEC_man_advanced_en)
+!endif
 !ifdef HAVE_PKG_MAN_NOVICE_DE
   !insertmacro MUI_DESCRIPTION_TEXT ${SEC_man_novice_de} $(DESC_SEC_man_novice_de)
 !endif
@@ -533,6 +551,28 @@ Section "-startmenu"
 #        "" "" "" SW_SHOWNORMAL "" ""
 #  no_eudoragpg_menu:
 #!endif
+
+!ifdef HAVE_PKG_MAN_NOVICE_EN
+    SectionGetFlags ${SEC_man_novice_en} $R0 
+    IntOp $R0 $R0 & ${SF_SELECTED} 
+    IntCmp $R0 ${SF_SELECTED} 0 no_man_novice_en_menu 
+    CreateShortCut \
+        "$SMPROGRAMS\$STARTMENU_FOLDER\$(DESC_Name_man_novice_en).lnk" \
+	"$INSTDIR\share\gpg4win\einsteiger-en.pdf" \
+        "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_man_novice_en)
+  no_man_novice_en_menu:
+!endif
+
+!ifdef HAVE_PKG_MAN_ADVANCED_EN
+    SectionGetFlags ${SEC_man_advanced_en} $R0 
+    IntOp $R0 $R0 & ${SF_SELECTED} 
+    IntCmp $R0 ${SF_SELECTED} 0 no_man_advanced_en_menu 
+    CreateShortCut \
+        "$SMPROGRAMS\$STARTMENU_FOLDER\$(DESC_Name_man_advanced_en).lnk" \
+	"$INSTDIR\share\gpg4win\durchblicker-en.pdf" \
+        "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_man_advanced_en)
+  no_man_advanced_en_menu:
+!endif
 
 !ifdef HAVE_PKG_MAN_NOVICE_DE
     SectionGetFlags ${SEC_man_novice_de} $R0 
@@ -623,6 +663,28 @@ Section "-startmenu"
 	"" "" "" SW_SHOWNORMAL "" $(DESC_Menu_sylpheed_pdf)
 !endif
   no_sylpheed_desktop:
+!endif
+
+!ifdef HAVE_PKG_MAN_NOVICE_EN
+    SectionGetFlags ${SEC_man_novice_en} $R0 
+    IntOp $R0 $R0 & ${SF_SELECTED} 
+    IntCmp $R0 ${SF_SELECTED} 0 no_man_novice_en_desktop
+    CreateShortCut \
+        "$DESKTOP\$(DESC_Name_man_novice_en).lnk" \
+	"$INSTDIR\share\gpg4win\einsteiger-en.pdf" \
+        "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_man_novice_en)
+  no_man_novice_en_desktop:
+!endif
+
+!ifdef HAVE_PKG_MAN_ADVANCED_EN
+    SectionGetFlags ${SEC_man_advanced_en} $R0 
+    IntOp $R0 $R0 & ${SF_SELECTED} 
+    IntCmp $R0 ${SF_SELECTED} 0 no_man_advanced_en_desktop
+    CreateShortCut \
+        "$DESKTOP\$(DESC_Name_man_advanced_en).lnk" \
+	"$INSTDIR\share\gpg4win\durchblicker-en.pdf" \
+        "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_man_advanced_en)
+  no_man_advanced_en_desktop:
 !endif
 
 !ifdef HAVE_PKG_MAN_NOVICE_DE

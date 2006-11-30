@@ -1,4 +1,4 @@
-# inst-man_novice_de.nsi - Installer snippet       -*- coding: latin-1; -*-
+# inst-man_advanced_en.nsi - Installer snippet       -*- coding: latin-1; -*-
 # Copyright (C) 2005 g10 Code GmbH
 # 
 # This file is part of GPG4Win.
@@ -23,30 +23,31 @@
 !endif
 
 
-Section "$(DESC_Name_man_novice_de)" SEC_man_novice_de
+Section "$(DESC_Name_man_advanced_en)" SEC_man_advanced_en
   SetOutPath "$INSTDIR"
 !ifdef SOURCES
   # No need to include anything as the manuals are part of gpg4win
-  # File "${gpg4win_pkg_man_novice_de}"
+  # File "${gpg4win_pkg_man_advanced_en}"
 !else
 
   SetOutPath "$INSTDIR\share\gpg4win"
-  File "${BUILD_DIR}/../doc/manual/einsteiger.pdf"
+  File "${BUILD_DIR}/../doc/manual/durchblicker-en.pdf"
 !endif
 SectionEnd
 
 
-LangString DESC_Name_man_novice_de ${LANG_ENGLISH} \
-   "Novice Manual (German)"
-LangString DESC_Name_man_novice_de ${LANG_GERMAN} \
-   "Einsteigerhandbuch"
+LangString DESC_Name_man_advanced_en ${LANG_ENGLISH} \
+   "Advanced Manual"
+LangString DESC_Name_man_advanced_en ${LANG_GERMAN} \
+   "Durchblickerhandbuch (Englisch)"
 
-LangString DESC_SEC_man_novice_de ${LANG_ENGLISH} \
-   "Gpg4Win Manual for the Novice User (German)"
-LangString DESC_SEC_man_novice_de ${LANG_GERMAN} \
-   "Gpg4Win Handbuch für den Einsteiger"
+LangString DESC_SEC_man_advanced_en ${LANG_ENGLISH} \
+   "Gpg4Win Manual for the Advanced User"
+LangString DESC_SEC_man_advanced_en ${LANG_GERMAN} \
+   "Gpg4Win Handbuch für den Durchblicker (Englisch)"
 
-LangString DESC_Menu_man_novice_de ${LANG_ENGLISH} \
-   "Show the German online manual of Gpg4Win for novice users"
-LangString DESC_Menu_man_novice_de ${LANG_GERMAN} \
-   "Das Online-Handbuch von Gpg4Win für den Einsteiger anzeigen"
+
+LangString DESC_Menu_man_advanced_en ${LANG_ENGLISH} \
+   "Show the online manual of Gpg4Win for advanced users"
+LangString DESC_Menu_man_advanced_en ${LANG_GERMAN} \
+   "Das englische Online-Handbuch von Gpg4Win für den Durchblicker anzeigen"

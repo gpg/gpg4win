@@ -29,7 +29,7 @@ min_automake_version="1.9.3"
 m4_define([my_version], [1.0.8])
 m4_define([my_issvn], [yes])
 
-m4_define([svn_revision], m4_esyscmd([echo -n $((svn info 2>/dev/null \
+m4_define([svn_revision], m4_esyscmd([echo -n $( (svn info 2>/dev/null \
           ||echo 'Revision: 0')|sed -n '/^Revision:/ s/[^0-9]//gp'|head -1)]))
 AC_INIT([gpg4win], my_version[]m4_if(my_issvn,[yes],[-svn[]svn_revision]),
         [gpg4win-devel@wald.intevation.org])
@@ -166,6 +166,8 @@ GPG4WIN_SPKG([sylpheed-claws], [libiconv gettext zlib gtk+ libpng jpeg glib dnl
 #GPG4WIN_SPKG([eudoragpg])
 GPG4WIN_IPKG([man_novice_de])
 GPG4WIN_IPKG([man_advanced_de])
+GPG4WIN_IPKG([man_novice_en])
+GPG4WIN_IPKG([man_advanced_en])
 
 GPG4WIN_FINALIZE
 
@@ -188,6 +190,6 @@ AC_CONFIG_FILES(Makefile packages/Makefile include/Makefile src/Makefile)
 AC_CONFIG_FILES(include/config.nsi src/gpg4win.mk)
 AC_CONFIG_FILES(doc/Makefile)
 AC_CONFIG_FILES(doc/logo/Makefile)
-AC_CONFIG_FILES(doc/manual-de/Makefile doc/manual-de/version.tex)
+AC_CONFIG_FILES(doc/manual/Makefile doc/manual/version.tex)
 AC_CONFIG_FILES(doc/website/Makefile)
 AC_OUTPUT
