@@ -1,3 +1,9 @@
+2006-12-04  Werner Koch  <wk@g10code.com>
+
+	* src/Makefile.am (gpg4win_ipkgs): Add english manuals.
+
+	* autogen.sh <--build-w32>: Disable the english manuals for now.
+
 2006-11-30  Werner Koch  <wk@g10code.com>
 
 	* include/config.nsi.in: Add definitions for the english manuals.
