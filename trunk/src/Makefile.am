@@ -177,7 +177,7 @@ endef
 # Supported internal packages.  Internal packages do not require any
 # special support.  Thus, this variable is actually unused, and no
 # rules are added in gpg4win.mk.
-gpg4win_ipkgs := man_novice_de man_advanced_de
+gpg4win_ipkgs := man_novice_de man_advanced_de man_novice_en man_advanced_en
 
 
 # Now do the bunch of the work.  This is a bunch of dirty magic to
