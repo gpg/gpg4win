@@ -19,9 +19,7 @@
 
 ACLOCAL_AMFLAGS = -I m4
 AUTOMAKE_OPTIONS = dist-bzip2
-DISTCHECK_CONFIGURE_FLAGS = --host=i586-mingw32msvc \
-                            --disable-pkg-man_novice_en \
-                            --disable-pkg-man_advanced_en
+DISTCHECK_CONFIGURE_FLAGS = --host=i586-mingw32msvc
 
 SUBDIRS = packages include doc src
 
