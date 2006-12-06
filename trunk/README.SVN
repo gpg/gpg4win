@@ -1,11 +1,13 @@
 If you are building from Subversion, run the script
 
-./autogen.sh
+ ./autogen.sh
 
 first, to make sure that you have all the necessary maintainer tools
-are installed and to build the actual configuration files.  Then run
+are installed and to build the actual configuration files.  If you
+have just updated from SVN, you should add the option "--force" to
+autogen.sh so that meta data from SVN is noticed.  Then run
 
-./configure --enable-maintainer-mode --host=i586-mingw32msvc
+ ./configure --enable-maintainer-mode --host=i586-mingw32msvc
 
 followed by the usual make.
 
@@ -45,7 +47,3 @@ manually if the maintainer decides that newer versions are required.
 The maintainer should also make sure that the required version of
 automake et al. are properly indicated at the top of configure.ac and
 take care to copy the files and not merely use symlinks.
-
-
-
-

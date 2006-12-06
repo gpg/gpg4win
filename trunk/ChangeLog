@@ -2,6 +2,8 @@
 
 	Released 1.0.8.
 
+	* autogen.sh: Add option --force.
+
 	* src/Makefile.am: GnuPG man pages are now below share.
 	* src/inst-gnupg.nsi: Ditto
 
