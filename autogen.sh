@@ -36,6 +36,11 @@ AUTOMAKE=${AUTOMAKE_PREFIX}${AUTOMAKE:-automake}${AUTOMAKE_SUFFIX}
 ACLOCAL=${AUTOMAKE_PREFIX}${ACLOCAL:-aclocal}${AUTOMAKE_SUFFIX}
 
 DIE=no
+FORCE=
+if test "$1" == "--force"; then
+  FORCE=" --force"
+  shift
+fi
 
 # ***** W32 build script *******
 # Used to cross-compile for Windows.
@@ -133,7 +138,7 @@ $ACLOCAL -I m4 $ACLOCAL_FLAGS
 #$AUTOHEADER
 echo "Running automake --gnu ..."
 $AUTOMAKE --gnu;
-echo "Running autoconf..."
-$AUTOCONF
+echo "Running autoconf${FORCE} ..."
+$AUTOCONF${FORCE}
 
 echo "You may now run \"./configure --host=i586-mingw32msvc && make\"."
