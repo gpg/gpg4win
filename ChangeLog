@@ -1,8 +1,15 @@
+2006-12-06  Werner Koch  <wk@g10code.com>
+
+	Released 1.0.8.
+
+	* src/Makefile.am: GnuPG man pages are now below share.
+	* src/inst-gnupg.nsi: Ditto
+
 2006-12-04  Werner Koch  <wk@g10code.com>
 
 	* src/Makefile.am (gpg4win_ipkgs): Add english manuals.
 
-	* autogen.sh <--build-w32>: Disable the english manuals for now.
+	* autogen.sh <build-w32>: Disable the english manuals for now.
 
 2006-11-30  Werner Koch  <wk@g10code.com>
 
