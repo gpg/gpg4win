@@ -47,9 +47,9 @@ Section "GnuPG" SEC_gnupg
   File "${prefix}/share/gnupg/options.skel"
   File "${prefix}/share/gnupg/FAQ"
   File "${prefix}/share/gnupg/faq.html"
-  File "${prefix}/man/man1/gpg.man"
-  File "${prefix}/man/man1/gpgv.man"
-  File "${prefix}/man/man7/gnupg.man"
+  File "${prefix}/share/man/man1/gpg.man"
+  File "${prefix}/share/man/man1/gpgv.man"
+  File "${prefix}/share/man/man7/gnupg.man"
 
   WriteRegStr HKLM "Software\GNU\GnuPG" "Install Directory" $INSTDIR
 !endif

@@ -39,12 +39,15 @@ gpg4win_pkg_glib_configure = \
 
 # The GnuPG package provides man pages which we have to convert.
 define gpg4win_pkg_gnupg_post_install	
-(man -Tlatin1 -l $$$${pkgidir}/man/man1/gpg.1 | sed `printf "s/\b.//g"` | \
- sed -e 's/$$$$/\r/' > $$$${pkgidir}/man/man1/gpg.man; \
-man -Tlatin1 -l $$$${pkgidir}/man/man1/gpgv.1 | sed `printf "s/\b.//g"` | \
- sed -e 's/$$$$/\r/' > $$$${pkgidir}/man/man1/gpgv.man; \
-man -Tlatin1 -l $$$${pkgidir}/man/man7/gnupg.7 | sed `printf "s/\b.//g"` | \
- sed -e 's/$$$$/\r/' > $$$${pkgidir}/man/man7/gnupg.man)
+(man -Tlatin1 -l $$$${pkgidir}/share/man/man1/gpg.1 | \
+ sed `printf "s/\b.//g"` | \
+ sed -e 's/$$$$/\r/' > $$$${pkgidir}/share/man/man1/gpg.man; \
+man -Tlatin1 -l $$$${pkgidir}/share/man/man1/gpgv.1 | \
+ sed `printf "s/\b.//g"` | \
+ sed -e 's/$$$$/\r/' > $$$${pkgidir}/share/man/man1/gpgv.man; \
+man -Tlatin1 -l $$$${pkgidir}/share/man/man7/gnupg.7 | \
+ sed `printf "s/\b.//g"` | \
+ sed -e 's/$$$$/\r/' > $$$${pkgidir}/share/man/man7/gnupg.man)
 endef
 
 # We would like to use --with-libiconv-prefix and
