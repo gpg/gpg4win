@@ -15,7 +15,7 @@ m4_define(`MD5_EXL',`bfca90ee20cae3683f9a17d1303238ad')
 m4_define(`MD5_EXS',`fab30eaed7100a15b4097fbfb3c4152f')
 m4_define(`SOFTWARE',`
 I18N(`EN', `<a href="http://www.gnupg.org/">GnuPG</a>')I18N(`DE', `<a href="http://www.gnupg.de/">GnuPG</a>') 1.4.6
-<a href="http://www.winpt.org/">WinPT</a> 1.0.1
+<a href="http://winpt.wald.intevation.org/">WinPT</a> 1.0.1
 I18N(`EN', `<a href="http://www.gnupg.org/related_software/gpa/index.html">GPA</a>')I18N(`DE', `<a href="http://www.gnupg.de/related_software/gpa/index.html">GPA</a>') 0.7.4
 <a href="http://www.g10code.de/p-gpgol.html">GPGol</a> 0.9.91
 <a href="http://gpgee.excelcia.org/">GPGee</a> 1.3.1
