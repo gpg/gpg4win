@@ -6,7 +6,7 @@ INTRODUCTION:
 
 Getting the source:
 
-You can work on the website independntly of the rest of gpg4win.
+You can work on the website independently of the rest of gpg4win.
 First check out the website from SVN repository:
 
   svn checkout svn+ssh://USER@svn.wald.intevation.org/gpg4win/trunk/doc/website
