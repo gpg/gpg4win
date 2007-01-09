@@ -63,7 +63,7 @@ m4_dnl DONT USE THIS FILE DIRECTLY
 </div>
 <div class="box">
   <h1>Ähnliche Projekte</h1>
-  <a href="http://people.freenet.de/rose-indorf">GnuPG-Basics</a><br>
+  <a href="http://home.arcor.de/rose-indorf/">GnuPG-Basics</a><br>
   <p>Veraltet:<br>
   <a href="http://sourceforge.net/projects/winpt">Windows Privacy Tools</a><br>
   <a href="http://www.gnupp.de/start.html">GnuPP</a><br>
