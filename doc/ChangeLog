@@ -16,6 +16,12 @@
 	* manual-de/:  Renamed to manual/.
 	* Makefile.am (SUBDIRS): Likewise
 
+2006-11-03  Bernhard Reiter <bernhard.reiter@intevation.de>
+
+	* manual-de/einsteiger.tex, manual-de/durchblicker.tex: 
+	  fixed pdf download location, version number there and size.
+	  Now also using German decimal comma for the size.
+
 2006-10-02  Werner Koch  <wk@g10code.com>
 
 	* website/index-de.htm4, website/index.htm4: Changed All-Downloads
