@@ -1,3 +1,11 @@
+2006-11-03  Bernhard Reiter <bernhard.reiter@intevation.de>
+
+	* manual/einsteiger.tex: Improved comments around the invariant
+	page to clarify that it cannot even be translated.
+
+	* manual/novices.tex: Made sure that the invariant page is
+	kept as the German original page.
+
 2006-12-04  Brigitte Hamilton <gordianknits@gmail.com>  (wk)
 
 	* manual/what-is-gpg4win.tex: Did translation.
