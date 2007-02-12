@@ -79,16 +79,16 @@ BUILT_SOURCES = $(eps_files_bb) $(png_files_eps) $(eps_files_png)
 all-local: einsteiger.pdf durchblicker.pdf novices.pdf advanced.pdf
 
 einsteiger.pdf : $(eps_files_bb) $(png_files_eps) $(eps_files_png)
-einsteiger.dvi : version.tex macros.tex
+einsteiger.dvi : version.tex macros.tex $(eps_files_bb)
 einsteiger.html : version.tex macros.tex
 durchblicker.pdf : $(eps_files_bb) $(png_files_eps) $(eps_files_png)
-durchblicker.dvi : version.tex macros.tex
+durchblicker.dvi : version.tex macros.tex $(eps_files_bb)
 durchblicker.html : version.tex macros.tex
 novices.pdf : $(eps_files_bb) $(png_files_eps) $(eps_files_png)
-novices.dvi : version.tex macros.tex
+novices.dvi : version.tex macros.tex $(eps_files_bb)
 novices.html : version.tex macros.tex
 advanced.pdf : $(eps_files_bb) $(png_files_eps) $(eps_files_png)
-advanced.dvi : version.tex macros.tex
+advanced.dvi : version.tex macros.tex $(eps_files_bb)
 advanced.html : version.tex macros.tex
 
 webversion: einsteiger.html durchblicker.html novices.html advanced.html
