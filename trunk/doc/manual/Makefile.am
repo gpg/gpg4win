@@ -91,7 +91,8 @@ advanced.pdf : $(eps_files_bb) $(png_files_eps) $(eps_files_png)
 advanced.dvi : version.tex macros.tex $(eps_files_bb)
 advanced.html : version.tex macros.tex
 
-webversion: einsteiger.html durchblicker.html novices.html advanced.html
+webversion: einsteiger.html durchblicker.html novices.html 
+# advanced.html
 
 online: webversion
 	set -e; \
