@@ -51,6 +51,13 @@ Section "GnuPG" SEC_gnupg
   File "${prefix}/share/man/man1/gpgv.man"
   File "${prefix}/share/man/man7/gnupg.man"
 
+  # Install the language files for gpg.  Note that the PO files are
+  # required to be UTF-8 encoded and that the post-install macro in
+  # Makefile.am needs to build them.
+  SetOutPath "$INSTDIR\gnupg.nls"
+  File "${prefix}/share/gnupg/de.mo"
+
+
   WriteRegStr HKLM "Software\GNU\GnuPG" "Install Directory" $INSTDIR
 !endif
 SectionEnd

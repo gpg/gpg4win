@@ -99,6 +99,7 @@ online: webversion
 	echo "Going to put current manuals online for www.gpg4win.org ..."; \
         user=`svn info | sed -n '/^URL:/ s,.*svn+ssh://\\([^@]*\\).*,\\1,p'`;\
 	rsync -v --exclude='.svn' einsteiger*.html durchblicker*.html \
+          novices*.html \
 	  einsteiger.css durchblicker.css \
 	  $(web_png_files) $(png_files) gpg4win-logo.png \
 	  $${user}@wald.intevation.org:/gpg4win/htdocs/handbuecher/

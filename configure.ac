@@ -27,7 +27,7 @@ min_automake_version="1.9.3"
 # "svn up" and "autogen.sh" right before creating a distribution.
 # Right after a release the make target "copy-news" is to be called!
 m4_define([my_version], [1.0.9])
-m4_define([my_issvn], [yes])
+m4_define([my_issvn], [no])
 
 m4_define([svn_revision], m4_esyscmd([echo -n $( (svn info 2>/dev/null \
           ||echo 'Revision: 0')|sed -n '/^Revision:/ s/[^0-9]//gp'|head -1)]))
@@ -126,11 +126,12 @@ AC_CHECK_PROGS(TEXI2DVI, texi2dvi)
 AC_CHECK_PROGS(DVIPDF, dvipdf)
 AC_CHECK_PROGS(CONVERT, convert)
 AC_CHECK_PROGS(SHA1SUM, sha1sum)
+AC_CHECK_PROGS(MSGFMT, msgfmt)
 AC_PROG_INSTALL
 
 missing_tools=
 for i in DLLTOOL MAKE UNZIP TAR MKDIR CP RM STOW MAKENSIS ZCAT TEXI2DVI \
-         DVIPDF CONVERT SHA1SUM ; do
+         DVIPDF CONVERT SHA1SUM MSGFMT ; do
    eval tmp='$'$i
    if test -z "$tmp"; then 
       missing_tools="$missing_tools `echo $i | tr 'A-Z' 'a-z'`"

@@ -1,3 +1,18 @@
+2007-03-09  Werner Koch  <wk@g10code.com>
+
+	Released 1.0.9.
+
+	* src/Makefile.am: Fixed syntax error in gnupg post install.
+
+	* packages/packages.current: Replaced sourceforge download site
+	by the g10code mirror.  Updated WinPT, GPA and GnupG.
+
+2007-02-26  Werner Koch  <wk@g10code.com>
+
+	* configure.ac: Require msgfmt.
+	* src/inst-gnupg.nsi: Install the German translation.
+	* src/Makefile.am (gpg4win_pkg_gnupg_post_install): Create mo files.
+
 2006-12-06  Werner Koch  <wk@g10code.com>
 
 	Released 1.0.8.

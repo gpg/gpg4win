@@ -1,3 +1,7 @@
+2007-03-09  Werner Koch  <wk@g10code.com>
+
+	* README.de.txt, README.en.txt (Content): Change order of sections.
+
 2007-03-05  Werner Koch  <wk@g10code.com>
 
 	* manual/Makefile.am (webversion): Do not build advanced.html
