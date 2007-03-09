@@ -21,7 +21,9 @@
 EXTRA_DIST = pkg-config $(common_nsi) gpg4win.nsi gpg4win-src.nsi \
         inst-gpg4win.nsi uninst-gpg4win.nsi installer-options.ini.in \
 	libiconv.def libintl.def  gpg4win-splash.wav \
-	exdll.h g4wihelp.c g4wihelp.nsi config.site loreley.mid
+	exdll.h g4wihelp.c g4wihelp.nsi config.site loreley.mid \
+	inst-man_novice_en.nsi inst-man_advanced_en.nsi \
+	uninst-man_novice_en.nsi uninst-man_advanced_en.nsi
 
 # Need to clean the dll because we bypassed automake.
 CLEANFILES = g4wihelp.dll versioninfo.txt README.en.txt README.de.txt \
