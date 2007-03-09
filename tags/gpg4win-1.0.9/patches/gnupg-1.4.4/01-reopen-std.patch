@@ -1,0 +1,33 @@
+#! /bin/sh
+patch -p0 -f $* < $0
+exit $?
+
+Fix a problem when used by faulty Windows software.
+
+
+2006-06-27  Werner Koch  <wk@g10code.com>
+
+	* gpg.c (reopen_std) [HAVE_W32_SYSTEM]: Do not use it.
+
+
+--- g10/gpg.c~  2006-06-25 12:58:40.000000000 +0200
++++ g10/gpg.c   2006-07-25 09:23:20.000000000 +0200
+@@ -1631,7 +1631,7 @@ parse_trust_model(const char *model)
+ static void
+ reopen_std(void)
+ {  
+-#ifdef HAVE_STAT
++#if defined(HAVE_STAT) && !defined(HAVE_W32_SYSTEM)
+   struct stat statbuf;
+   int did_stdin=0,did_stdout=0,did_stderr=0;
+   FILE *complain;
+@@ -1685,7 +1685,7 @@ reopen_std(void)
+ 
+   if(did_stdin==2 || did_stdout==2 || did_stderr==2)
+     exit(3);
+-#endif
++#endif /* HAVE_STAT && !HAVE_W32_SYSTEM */
+ }
+ 
+ int
+
