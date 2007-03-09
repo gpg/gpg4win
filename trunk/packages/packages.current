@@ -34,8 +34,10 @@ file libiconv/libiconv-1.9.1.tar.gz
 chk  f130c93fdf20903ca21bace8b8822f46468c9d65
 
 
-# Sourceforge
-server http://kent.dl.sourceforge.net/sourceforge/gnuwin32
+# Gnuwin32 packages orginally hosted at sf.net but mirrored at g10code
+# for easier download.  The regex-0.12 package has evne disappeared
+# from Sourceforge.
+server ftp://ftp.g10code.com/mirrors/gnuwin32
 
 file zlib-1.2.3-bin.zip
 chk  becbcaf5076e307e743b1edc6a5645849eba9ebc
@@ -68,12 +70,10 @@ chk  37e5aa61bdf26cd182ebc6169528c86f165c7e09
 file regex-0.12-src.zip
 chk  b9faae10efae552f23c213891a3ed8187cb7d017
 
-server http://kent.dl.sourceforge.net/sourceforge/sylpheed-claws
 
-#file  sylpheed-claws-2.2.0.tar.bz2
-#chk   b2244cfa04a7800b7d0ce518e0b1f54743f02bf3  
-#file  sylpheed-claws-2.3.1.tar.bz2
-#chk   9a9935dc4c7ed04b45daf6c75d01dbe2f4920e3e
+# For the same reason we also keep a copy of the Sylpheed hosted Claws project.
+server ftp://ftp.g10code.com/mirrors/claws
+
 file  sylpheed-claws-2.4.0.tar.bz2
 chk   f61acdf3e9851da3d1e2591321bf43426465955f
 
@@ -146,10 +146,11 @@ server http://wald.intevation.org/frs/download.php
 
 #file  265/winpt-1.0.0.tar.bz2
 #chk   7a3589a0ce3a81e3b94547ffdd76bf53d51e919f  
+#file  272/winpt-1.0.1.tar.bz2
+#chk   574b7766701aaaef6e388d8b3ad68a171c9c071f
 
-file  272/winpt-1.0.1.tar.bz2
-chk   574b7766701aaaef6e388d8b3ad68a171c9c071f
-
+file  312/winpt-1.2.0.tar.bz2
+chk   050f93a0d74385ce90e8934e49c11f171d495c5a
 
 # GPGee
 # Note that the -bin package has been repackaged from the
@@ -183,26 +184,21 @@ chk  391eee90ea072ea181bed332b9411f2a43395e7e
 
 server ftp://ftp.gnupg.org/gcrypt
 
-file gnupg/gnupg-1.4.6.tar.bz2
-chk  9cbbef5c94f793867ff3ae4941816962311a0563
+file gnupg/gnupg-1.4.7.tar.bz2
+chk  22149105845c79068771837c8deb7d5ba0854927
 
-file libgpg-error/libgpg-error-1.2.tar.bz2
-chk  468657e5bccd534f350b1a0109e19d2a9cc5d027
+file libgpg-error/libgpg-error-1.5.tar.bz2
+chk  1f83d9af8e8ed3bcbf3a5e9018db257dc6336655
 
-file gpgme/gpgme-1.1.2.tar.bz2
-chk  ebf8c278e967588acd7c416bd14bfe35615b7e81
+file gpgme/gpgme-1.1.4.tar.bz2
+chk  d3c71afb8b88b1050067633cd8bcc4ca0bae696d  
 
 
 # Intevation.org stuff.
 
 server http://wald.intevation.org/frs/download.php
 
-file 241/gpa-0.7.4.tar.bz2
-chk  f2bdfb3ce5e6e7f6ce7530d214dd2202ab6a2072
-
-
-
-
-
+file 324/gpa-0.7.5.tar.bz2
+chk  b29e2195088418d1ecab5a087fa8b747cdae7b8e
 
 

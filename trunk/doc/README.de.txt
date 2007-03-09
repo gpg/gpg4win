@@ -13,8 +13,8 @@ Dies ist GnuPG for Windows, Version !VERSION!.
 Inhalt:
 
      1. Wichtige Hinweise
-     2. Versionsnummern
-     3. Änderungen
+     2. Änderungen
+     3. Versionsnummern
      4. Rechtliche Hinweise
 
 
@@ -31,18 +31,6 @@ online unter http://www.gpg4win.de lesen.
 
 
 
-2. Versionsnummern der einzenen Bestandteile
-============================================
-
-Zur Übersicht sind hier die Prüfsummen sowie die Namen der einzelnen
-Bestandteile aufgelistet.  Sie finden dieselben Informationen auch in
-der Datei versioninfo.txt.
-
-!VERSIONINFO!
-
-
-
-
 3. Liste der Änderungen an Gpg4Win
 ==================================
 
@@ -51,6 +39,18 @@ unter http://www.gpg4win.de/change-history-de.html .  Im weiteren
 finden Sie die Einträge aus der englischen NEWS Datei:
 
 !NEWSFILE!
+
+
+
+
+3. Versionsnummern der einzenen Bestandteile
+============================================
+
+Zur Übersicht sind hier die Prüfsummen sowie die Namen der einzelnen
+Bestandteile aufgelistet.  Sie finden dieselben Informationen auch in
+der Datei versioninfo.txt.
+
+!VERSIONINFO!
 
 
 

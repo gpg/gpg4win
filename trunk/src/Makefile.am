@@ -38,6 +38,7 @@ gpg4win_pkg_glib_configure = \
   CPPFLAGS=-I$(idir)/include LDFLAGS=-L$(idir)/lib
 
 # The GnuPG package provides man pages which we have to convert.
+# We also create the MO files here.
 define gpg4win_pkg_gnupg_post_install	
 (man -Tlatin1 -l $$$${pkgidir}/share/man/man1/gpg.1 | \
  sed `printf "s/\b.//g"` | \
@@ -47,7 +48,11 @@ man -Tlatin1 -l $$$${pkgidir}/share/man/man1/gpgv.1 | \
  sed -e 's/$$$$/\r/' > $$$${pkgidir}/share/man/man1/gpgv.man; \
 man -Tlatin1 -l $$$${pkgidir}/share/man/man7/gnupg.7 | \
  sed `printf "s/\b.//g"` | \
- sed -e 's/$$$$/\r/' > $$$${pkgidir}/share/man/man7/gnupg.man)
+ sed -e 's/$$$$/\r/' > $$$${pkgidir}/share/man/man7/gnupg.man; \
+for i in de; do \
+ msgfmt --output-file=$$$${pkgidir}/share/gnupg/$$$${i}.mo \
+                               $$$${pkgsdir}/po/$$$${i}.po; \
+ done)
 endef
 
 # We would like to use --with-libiconv-prefix and

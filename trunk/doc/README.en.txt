@@ -12,8 +12,8 @@ This is GnuPG for Windows, vesion !VERSION!.
 Content:
 
      1. Important notes
-     2. Version numbers 
-     3. Changes
+     2. Changes
+     3. Version numbers 
      4. Legal notices 
 
 
@@ -29,15 +29,7 @@ news.
 
 
 
-2. Version Numbers of Included Software
-=======================================
-
-!VERSIONINFO!
-
-
-
-
-3. Record of Changes (NEWS file)
+2. Record of Changes (NEWS file)
 ================================
 
 An up-to-date list of changes is also available at
@@ -45,6 +37,14 @@ http://www.gpg4win.de/change-history.html .  Below you find the raw
 NEWS file:
 
 !NEWSFILE!
+
+
+
+
+3. Version Numbers of Included Software
+=======================================
+
+!VERSIONINFO!
 
 
 
