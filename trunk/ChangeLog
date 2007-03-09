@@ -3,6 +3,7 @@
 	Released 1.0.9.
 
 	* src/Makefile.am: Fixed syntax error in gnupg post install.
+	(EXTRA_DIST): Add english manual installation files.
 
 	* packages/packages.current: Replaced sourceforge download site
 	by the g10code mirror.  Updated WinPT, GPA and GnupG.
