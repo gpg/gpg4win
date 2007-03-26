@@ -1,3 +1,9 @@
+2007-03-27  Bernhard Reiter <bernhard.reiter@intevation.de>
+
+	* manual/Makefile.am: Added option -density 100x100 to the
+	convert call when producing pngs out of eps.gz which gives
+	a better result for the html target.
+
 2007-03-26  Bernhard Reiter <bernhard.reiter@intevation.de>
 
 	* manual/novices.tex (Special Thanks): Added Andrew Hosch for
