@@ -118,7 +118,7 @@ online: webversion
 	$(CONVERT) `test -f '$<' || echo '$(srcdir)/'`$< $@
 
 %.png : %.eps.gz
-	$(CONVERT) `test -f '$<' || echo '$(srcdir)/'`$< $@
+	$(CONVERT) -density 100x100 `test -f '$<' || echo '$(srcdir)/'`$< $@
 
 %.dvi : %.tex
 	$(TEXI2DVI) `test -f '$<' || echo '$(srcdir)/'`$< 
