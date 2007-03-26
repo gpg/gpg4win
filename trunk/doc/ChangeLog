@@ -1,3 +1,23 @@
+2007-03-26  Bernhard Reiter <bernhard.reiter@intevation.de>
+
+	* manual/novices.tex (Special Thanks): Added Andrew Hosch for
+	screenshots and added "coordination" to Bernhard Reiter
+
+	* manual/novices.tex (Titel Page): Added commas between the
+	mentioned names so it looks better in the HTML output.
+
+	* manual/novices.tex, manual/Makefile.am: Replaced German screenshots 
+	with new ones in English from Andrew Hosch. Also added them
+	to the repository. Files:
+		sc-en-inst-license.png
+		sc-en-inst-welcome.png
+        	sc-en-inst-components.png 
+		sc-en-inst-directory.png 
+        	sc-en-inst-options.png 
+        	sc-en-inst-startmenu.png 
+		sc-en-inst-ready.png 
+        	sc-en-inst-finished.png 
+
 2007-03-14  Werner Koch  <wk@g10code.com>
 
 	* manual/einsteiger.tex (section{Sie entschlüsseln eine Email}):

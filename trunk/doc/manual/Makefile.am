@@ -27,7 +27,12 @@ png_files := \
 	sc-winpt-sign-passwd.png \
         sc-gpgee-ctxmenu.png sc-gpgee-signmenu.png \
 	sc-gpa-gen-backup.png sc-gpa-gen-backup-warn.png \
-	sc-gpgol-options.png sc-gpgol-noword.png
+	sc-gpgol-options.png sc-gpgol-noword.png \
+	sc-en-inst-welcome.png sc-en-inst-license.png \
+        sc-en-inst-components.png sc-en-inst-directory.png \
+        sc-en-inst-options.png \
+        sc-en-inst-startmenu.png sc-en-inst-ready.png \
+        sc-en-inst-finished.png 
 
 
 web_png_files := blank.png next.png previous.png up.png \
