@@ -72,5 +72,45 @@ A publication of the Gpg4win project\\
 
 \maketitle
 
+\clearpage
+%% Original page 47
+\subsection{Export eines GnuPG-Schlüssels}
+
+Immer wenn Sie einen GnuPG-Schlüssel auf einen anderen Rechner
+transferieren oder auf einer anderen Festplattenpartition bzw. einer
+Sicherungsdiskette speichern wollen, müssen Sie mit WinPT oder GPA ein Backup erstellen.
+Dies entspricht dem Backup, welches Sie bei der Schlüsselerzeugung
+auch schon durchgeführt haben.  Da Ihr Schlüssel inzwischen weitere
+Schlüsselunterschriften haben kann, sollte Sie es erneut durchführen.
+
+Klicken Sie in der GPA-Schlüsselverwaltung den Schlüssel an, den Sie sichern
+wollen und wählen
+Sie dann den Menüpunkt \Menu{Schlüssel$\rightarrow$Sicherheitskopie anlegen}.
+
+% screenshot: GPA, Backup erzeugen
+\begin{center}
+\IncludeImage[width=0.6\textwidth]{sc-en gpa-gen-backup}
+\end{center}
+
+Bestätigen Sie den Dateinamen oder wählen Sie einen anderen und GPA
+wird eine Sicherheitskopie bestehend aus dem geheimen und öffentlichen
+Schlüssel anlegen. Danach werden Sie noch daran erinnert, dass Sie
+diese Datei sehr sorgfältig zu handhaben ist:
+
+% screenshot: GPA, Backup Hinweis
+\begin{center}
+\IncludeImage[width=0.6\textwidth]{sc-en-gpa-gen-backup-warn}
+\end{center}
+
+
+Beim Import, also zum Beispiel auf einem anderen Rechner, importieren
+Sie einfach diese Sicherheitskopie in WinPT oder GPA.
+Gpg4win wird dann sowohl den
+geheimen als auch den öffentlichen Schlüssel aus dieser Datei
+importieren.
+
+Damit haben Sie erfolgreich einen GnuPG-Schlüssel exportiert und
+wieder importiert.
+
 
 \end{document}
