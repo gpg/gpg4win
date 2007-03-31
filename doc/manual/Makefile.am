@@ -32,7 +32,12 @@ png_files := \
         sc-en-inst-components.png sc-en-inst-directory.png \
         sc-en-inst-options.png \
         sc-en-inst-startmenu.png sc-en-inst-ready.png \
-        sc-en-inst-finished.png 
+        sc-en-inst-finished.png \
+	sc-en-gpa-gen-backup.png sc-en-gpa-gen-backup-warn.png \
+	sc-en-gpa-first-key.png sc-en-gpa-gen-email.png \
+	sc-en-gpa-gen-name.png sc-en-gpa-gen-passwd.png \
+	sc-en-gpa-ks-export-p.png sc-en-gpa-nokey.png \
+	sc-en-gpa-rungpa.png sc-en-gpa-two-keys.png
 
 
 web_png_files := blank.png next.png previous.png up.png \
@@ -85,16 +90,16 @@ all-local: einsteiger.pdf durchblicker.pdf novices.pdf advanced.pdf
 
 einsteiger.pdf : $(eps_files_bb) $(png_files_eps) $(eps_files_png)
 einsteiger.dvi : version.tex macros.tex $(eps_files_bb)
-einsteiger.html : version.tex macros.tex
+einsteiger.html : version.tex macros.tex $(eps_files_png)
 durchblicker.pdf : $(eps_files_bb) $(png_files_eps) $(eps_files_png)
 durchblicker.dvi : version.tex macros.tex $(eps_files_bb)
-durchblicker.html : version.tex macros.tex
+durchblicker.html : version.tex macros.tex $(eps_files_png)
 novices.pdf : $(eps_files_bb) $(png_files_eps) $(eps_files_png)
-novices.dvi : version.tex macros.tex $(eps_files_bb)
-novices.html : version.tex macros.tex
+novices.dvi : version.tex macros-en.tex $(eps_files_bb) $(eps_files_png)
+novices.html : version.tex macros-en.tex $(eps_files_png)
 advanced.pdf : $(eps_files_bb) $(png_files_eps) $(eps_files_png)
-advanced.dvi : version.tex macros.tex $(eps_files_bb)
-advanced.html : version.tex macros.tex
+advanced.dvi : version.tex macros-en.tex $(eps_files_bb)
+advanced.html : version.tex macros-en.tex $(eps_files_png)
 
 webversion: einsteiger.html durchblicker.html novices.html 
 # advanced.html
