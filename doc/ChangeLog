@@ -1,3 +1,8 @@
+2007-04-02  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
+
+	* website/candidates.htm4: Fixed wrong link and improved
+	Text (found and suggested by Florian Samson).
+
 2007-03-27  Bernhard Reiter <bernhard.reiter@intevation.de>
 
 	* manual/Makefile.am: Added option -density 100x100 to the

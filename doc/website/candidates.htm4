@@ -6,14 +6,14 @@ m4_define(`EN')
 m4_define(`DE_FILE', `candidates-de.html')
 PAGE_START
 
-<h1>Further Candidates for Integration into Gpg4win</h1>
+<h1>Candidates for integration in the Gpg4win installer package</h1>
 
 <p>
-The following software modules could make sense as a member
-of the Gpg4win installer.
-If you are interested, just go ahead and integrate the modules
-your self, the <a href="build-installer-de.html">Howto on extending
-the Gpg4win installer</a> will help you.
+The following software modules are potential candidates for integration
+in the Gpg4win installer package.
+If you are interested, just go ahead and integrate these modules, the 
+<a href="build-installer.html">Howto extend the Gpg4win installer 
+package</a> will help you.
 </p>
 
 <h2>GPGrelay - Encryption in the background for any email program</h2>
@@ -22,7 +22,6 @@ the Gpg4win installer</a> will help you.
 <a href="http://sites.inka.de/tesla/gpgrelay.html">GPGrelay</a> is
 a encryption tool which encrypts E-Mails in the background, so that you
 do not need a specific plugins for your email tool.
-ist.
 </p>
 
 <h2>GPGoe - Plugin for Microsoft Outlook Express</h2>
@@ -32,4 +31,3 @@ ist.
 plugin for GPG encryption via the clipboard
 for the email tool Microsoft Outlook Express.
 </p>
-
