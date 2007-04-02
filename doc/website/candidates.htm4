@@ -20,13 +20,15 @@ package</a> will help you.
 
 <p>
 <a href="http://sites.inka.de/tesla/gpgrelay.html">GPGrelay</a> is
-a encryption tool which encrypts E-Mails in the background, so that you
-do not need a specific plugins for your email tool.
+an encryption tool which encrypts e-mails in the
+background, hence eliminating the need for a plugin for any e-mail
+tool of your choice.
 </p>
 
 <h2>GPGoe - Plugin for Microsoft Outlook Express</h2>
 
 <p>
+
 <a href="http://wald.intevation.org/projects/gpgoe/">GPGoe</a> is a
 plugin for GPG encryption via the clipboard
 for the email tool Microsoft Outlook Express.
