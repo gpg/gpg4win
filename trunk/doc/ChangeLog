@@ -1,7 +1,38 @@
+2007-04-06  Bernhard Reiter <bernhard.reiter@intevation.de>
+
+	* manual/novices.tex: A number of corrections by Brigitte Hamilton.
+	Also replaced "` and "' with English style ".
+
 2007-04-02  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
 
 	* website/candidates.htm4: Fixed wrong link and improved
 	Text (found and suggested by Florian Samson).
+
+2007-03-31  Bernhard Reiter <bernhard.reiter@intevation.de>
+
+	* manual/advanced.tex, manual/Makefile.am: Transfered 
+	original page 47 and replaced the German screenshots 
+	with new ones in English.
+	Added file: sc-en-gpa-gen-backup-warn.png
+
+	* manual/novices.tex, manual/Makefile.am: 
+	Added new png files for screenshots in EN:
+	sc-en-gpa-gen-backup.png
+	sc-en-gpa-first-key.png 
+	sc-en-gpa-gen-email.png
+	sc-en-gpa-gen-name.png 
+	sc-en-gpa-gen-passwd.png 
+	sc-en-gpa-ks-export-p.png 
+	sc-en-gpa-nokey.png
+	sc-en-gpa-rungpa.png 
+	sc-en-gpa-two-keys.png
+
+	* manual/Makefile.am: Added eps_files_png as prerequisites to 
+	all html targets as the png files are actually needed for them.
+	Added eps_files_png to novices.dvi, because the eps files bbs
+	are not included in eps_files_bb and latex needs them.
+	Changed the dependency of novices and advanced to macros-en
+	instead of just "macros".
 
 2007-03-27  Bernhard Reiter <bernhard.reiter@intevation.de>
 
