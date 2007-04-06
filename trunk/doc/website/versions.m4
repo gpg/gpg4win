@@ -13,6 +13,7 @@ m4_define(`MD5_SRC',`b08125b45ab31b5193c9817c22e5ca03')
 m4_define(`MD5_EXE',`c9e710e01ea0a3e15624059211cadd03')
 m4_define(`MD5_EXL',`81d12f61392953a139567785983a264b')
 m4_define(`MD5_EXS',`c052a3ce8bf04aa327aad9924259d070')
+m4_define(`MIRROR_NO_URL',`http://ftp.no.gpg4win.org/pub/gpg4win/')
 m4_define(`SOFTWARE',`
 I18N(`EN', `<a href="http://www.gnupg.org/">GnuPG</a>')I18N(`DE', `<a href="http://www.gnupg.de/">GnuPG</a>') 1.4.7
 <a href="http://winpt.wald.intevation.org/">WinPT</a> 1.2.0
@@ -22,4 +23,3 @@ I18N(`EN', `<a href="http://www.gnupg.org/related_software/gpa/index.html">GPA</
 <a href="http://claws.sylpheed.org/">Sylpheed-Claws</a> 2.4.0
 <a href="/handbuecher/einsteiger.html">Gpg4win für Einsteiger</a> 2.0.2
 <a href="/handbuecher/durchblicker.html">Gpg4win für Durchblicker</a> 2.0.2')
-

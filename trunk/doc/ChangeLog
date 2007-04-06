@@ -1,5 +1,15 @@
 2007-04-06  Bernhard Reiter <bernhard.reiter@intevation.de>
 
+	* website/download-de.htm4, website/download.htm4: Added vim modeline
+	to set the filetype to HTML for syntax higlighting. Added new section
+	for hints at the end. Moved the hint about the announcement list there
+	and added a link to the Norwegian mirror.
+
+	* website/versions.m4: Added macro MIRROR_NO_URL 
+	for mirror from Norway (thanks to  Trond Endrestøl) for setting it up.
+
+2007-04-06  Bernhard Reiter <bernhard.reiter@intevation.de>
+
 	* manual/novices.tex: A number of corrections by Brigitte Hamilton.
 	Also replaced "` and "' with English style ".
 
