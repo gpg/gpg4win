@@ -1,3 +1,9 @@
+2007-04-14  Werner Koch  <wk@g10code.com>
+
+	* website/mk-chksums: Create macros with the length of the files.
+	They should be displayed along with the checksum to allow checking
+	for incomplete downloads.
+
 2007-04-06  Bernhard Reiter <bernhard.reiter@intevation.de>
 
 	* website/download-de.htm4, website/download.htm4: Added vim modeline
@@ -69,6 +75,11 @@
         	sc-en-inst-startmenu.png 
 		sc-en-inst-ready.png 
         	sc-en-inst-finished.png 
+
+2007-03-16  Werner Koch  <wk@g10code.com>
+
+	* website/build-installer.htm4: Fixed SVN URL.  Reported by wwp.
+	* website/build-installer-de.htm4: Ditto.
 
 2007-03-14  Werner Koch  <wk@g10code.com>
 

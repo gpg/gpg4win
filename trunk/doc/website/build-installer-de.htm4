@@ -39,7 +39,7 @@ durchgeführt werden müssen, '$' für einen normalen Benutzer.
      <em># apt-get install tetex-bin gs-common hyperlatex</em><br>
 
 <li> Die Quellen anonym (also ohne Schreibrechte) holen:<br>
-     <em>$ svn checkout https://svn.wald.intevation.org/gpg4win/trunk/</em><br>
+     <em>$ svn checkout https://svn.wald.intevation.org/svn/gpg4win/trunk/</em><br>
      oder das Quelltextpaket gpg4win-n.n.n.tar.gz herunterladen, auspacken
      und in das Verzeichnis gpg4win-n.n.n wechseln. Wir empfehlen, mit der
      SVN version zu arbeiten wenn Sie mehr als nur ein Modul aktualisieren
