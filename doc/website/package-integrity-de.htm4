@@ -54,3 +54,18 @@ Einen Schlüssel von einem Schlüsselserver abholen geht z.B. mit
 GPA oder WinPT. Die Prüfung einer Signatur kann man leicht mit GPGee
 über den Explorer erledigen.
 </p>
+
+
+<h2>Dateilängen</h2>
+
+Falls die Prüfsumme nicht stimmen sollte oder eine fehlerhafte Signatur
+angezeigt wird, so sollten Sie zuerst die Dateilänge überprüfen, um
+sicherzustellen, daß Sie auch die komplette Datei heruntergeladen
+haben.  Hier sind die Längen die Sie erhalten sollten:
+
+<pre>
+LEN_EXE bytes für gpg4win-VERSION.exe
+LEN_EXL bytes für gpg4win-light-VERSION.exe
+LEN_EXS bytes für gpg4win-src-VERSION.exe
+LEN_SRC bytes für gpg4win-VERSION.tar.bz2
+</pre>

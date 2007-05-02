@@ -55,3 +55,17 @@ Checking the the signature of a file is best done with GPGee via
 the Explorer.
 </p>
 
+<h2>File lengths</h2>
+
+If you have a mismatch on the checksum or a bad signature you should
+first verify that you really downloaded the complete file.  Here are
+the lengths you should get:
+
+<pre>
+LEN_EXE bytes for gpg4win-VERSION.exe
+LEN_EXL bytes for gpg4win-light-VERSION.exe
+LEN_EXS bytes for gpg4win-src-VERSION.exe
+LEN_SRC bytes for gpg4win-VERSION.tar.bz2
+</pre>
+
+
