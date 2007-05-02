@@ -1,3 +1,9 @@
+2007-05-02  Werner Koch  <wk@g10code.com>
+
+	* website/package-integrity.htm4: Add file length section.
+	* website/package-integrity-de.htm4: Ditto.
+	* website/versions.m4: Add the current file lengths. 
+
 2007-04-14  Werner Koch  <wk@g10code.com>
 
 	* website/mk-chksums: Create macros with the length of the files.
