@@ -31,49 +31,39 @@ Section "-un.gtk+"
   Call un.SourceDelete
 !else
 
-  Delete "$INSTDIR\lib\locale\de\LC_MESSAGES\gtk20.mo"
-  RMDir "$INSTDIR\lib\locale\de\LC_MESSAGES"
-  RMDir "$INSTDIR\lib\locale\de"
-  RMDir "$INSTDIR\lib\locale"
-
   Delete "$INSTDIR\libgdk_pixbuf-2.0-0.dll"
   Delete "$INSTDIR\libgdk-win32-2.0-0.dll"
   Delete "$INSTDIR\libgtk-win32-2.0-0.dll"
 
   Delete "$INSTDIR\etc\gtk-2.0\gdk-pixbuf.loaders"
   Delete "$INSTDIR\etc\gtk-2.0\gtk.immodules"
+  Delete "$INSTDIR\etc\gtk-2.0\gtkrc"
   RMDir "$INSTDIR\etc\gtk-2.0"
   RMDir "$INSTDIR\etc"
 
-  Delete "$INSTDIR\lib\gtk-2.0\2.4.0\loaders\libpixbufloader-ani.dll"
-  Delete "$INSTDIR\lib\gtk-2.0\2.4.0\loaders\libpixbufloader-bmp.dll"
-  Delete "$INSTDIR\lib\gtk-2.0\2.4.0\loaders\libpixbufloader-gif.dll"
-  Delete "$INSTDIR\lib\gtk-2.0\2.4.0\loaders\libpixbufloader-ico.dll"
-  Delete "$INSTDIR\lib\gtk-2.0\2.4.0\loaders\libpixbufloader-jpeg.dll"
-  Delete "$INSTDIR\lib\gtk-2.0\2.4.0\loaders\libpixbufloader-pcx.dll"
-  Delete "$INSTDIR\lib\gtk-2.0\2.4.0\loaders\libpixbufloader-png.dll"
-  Delete "$INSTDIR\lib\gtk-2.0\2.4.0\loaders\libpixbufloader-pnm.dll"
-  Delete "$INSTDIR\lib\gtk-2.0\2.4.0\loaders\libpixbufloader-ras.dll"
-  Delete "$INSTDIR\lib\gtk-2.0\2.4.0\loaders\libpixbufloader-tga.dll"
-  Delete "$INSTDIR\lib\gtk-2.0\2.4.0\loaders\libpixbufloader-tiff.dll"
-  Delete "$INSTDIR\lib\gtk-2.0\2.4.0\loaders\libpixbufloader-wbmp.dll"
-  Delete "$INSTDIR\lib\gtk-2.0\2.4.0\loaders\libpixbufloader-xbm.dll"
-  Delete "$INSTDIR\lib\gtk-2.0\2.4.0\loaders\libpixbufloader-xpm.dll"
-  RMDir "$INSTDIR\lib\gtk-2.0\2.4.0\loaders"
+  Delete "$INSTDIR\lib\gtk-2.0\2.4.0\loaders\*.dll"
+  RMDir "$INSTDIR\lib\gtk-2.0\2.10.0\loaders"
+  Delete "$INSTDIR\lib\gtk-2.0\2.10.0\loaders\*.dll"
+  RMDir "$INSTDIR\lib\gtk-2.0\2.10.0\loaders"
 
-  Delete "$INSTDIR\lib\gtk-2.0\2.4.0\immodules\im-am-et.dll"
-  Delete "$INSTDIR\lib\gtk-2.0\2.4.0\immodules\im-cedilla.dll"
-  Delete "$INSTDIR\lib\gtk-2.0\2.4.0\immodules\im-cyrillic-translit.dll"
-  Delete "$INSTDIR\lib\gtk-2.0\2.4.0\immodules\im-ime.dll"
-  Delete "$INSTDIR\lib\gtk-2.0\2.4.0\immodules\im-inuktitut.dll"
-  Delete "$INSTDIR\lib\gtk-2.0\2.4.0\immodules\im-ipa.dll"
-  Delete "$INSTDIR\lib\gtk-2.0\2.4.0\immodules\im-thai-broken.dll"
-  Delete "$INSTDIR\lib\gtk-2.0\2.4.0\immodules\im-ti-er.dll"
-  Delete "$INSTDIR\lib\gtk-2.0\2.4.0\immodules\im-ti-et.dll"
-  Delete "$INSTDIR\lib\gtk-2.0\2.4.0\immodules\im-viqr.dll"
+  Delete "$INSTDIR\lib\gtk-2.0\2.4.0\immodules\*.dll"
   RMDir "$INSTDIR\lib\gtk-2.0\2.4.0\immodules"
+  Delete "$INSTDIR\lib\gtk-2.0\2.10.0\immodules\*.dll"
+  RMDir "$INSTDIR\lib\gtk-2.0\2.10.0\immodules"
+
+  Delete "$INSTDIR\lib\gtk-2.0\2.10.0\engines\*.dll"
+  RMDir "$INSTDIR\lib\gtk-2.0\2.10.0\engines"
+
   RMDir "$INSTDIR\lib\gtk-2.0\2.4.0"
+  RMDir "$INSTDIR\lib\gtk-2.0\2.10.0"
+
   RMDir "$INSTDIR\lib\gtk-2.0"
+
+  Delete "$INSTDIR\lib\locale\de\LC_MESSAGES\gtk20.mo"
+  RMDir "$INSTDIR\lib\locale\de\LC_MESSAGES"
+  RMDir "$INSTDIR\lib\locale\de"
+  RMDir "$INSTDIR\lib\locale"
+
   RMDir "$INSTDIR\lib"
 
   Delete "$INSTDIR\share\themes\Default\gtk-2.0\gtkrc"
@@ -85,8 +75,19 @@ Section "-un.gtk+"
   Delete "$INSTDIR\share\themes\Emacs\gtk-2.0-key\gtkrc"
   RMDir "$INSTDIR\share\themes\Emacs\gtk-2.0-key"
   RMDir "$INSTDIR\share\themes\Emacs"
+
+  Delete "$INSTDIR\share\themes\Raleigh\gtk-2.0\gtkrc"
+  RMDir "$INSTDIR\share\themes\Raleigh\gtk-2.0"
+  RMDir "$INSTDIR\share\themes\Raleigh"
+
+  Delete "$INSTDIR\share\themes\MS-Windows\gtk-2.0\gtkrc"
+  RMDir "$INSTDIR\share\themes\MS-Windows\gtk-2.0"
+  RMDir "$INSTDIR\share\themes\MW-Windows"
+
   RMDir "$INSTDIR\share\themes"
+
   RMDir "$INSTDIR\share"
+
   RMDir "$INSTDIR"
 !endif
 SectionEnd

@@ -51,6 +51,9 @@ Section "-un.gnupg"
   RMDir "$INSTDIR\share"
   RMDir "$INSTDIR"
 
+  Delete "$INSTDIR\gnupg.nls\de.mo"
+  RMDir  "$INSTDIR\gnupg.nls"
+
   DeleteRegValue HKLM "Software\GNU\GnuPG" "Install Directory"
 !endif
 SectionEnd

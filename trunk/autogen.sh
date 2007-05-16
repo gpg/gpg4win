@@ -82,7 +82,6 @@ if test "$1" = "--build-w32"; then
     fi
 
     ./configure --host=${host} --build=${build} \
-                --disable-pkg-man_novice_en     \
                 --disable-pkg-man_advanced_en  "$@"
     rc=$?
 

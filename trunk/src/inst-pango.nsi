@@ -35,21 +35,11 @@ Section "-pango" SEC_pango
   File ${prefix}/bin/libpango-1.0-0.dll
   File ${prefix}/bin/libpangoft2-1.0-0.dll
   File ${prefix}/bin/libpangowin32-1.0-0.dll
+  File ${prefix}/bin/libpangocairo-1.0-0.dll
 
   SetOutPath "$INSTDIR\etc\pango"
   File ${prefix}/etc/pango/pango.aliases
   File ${prefix}/etc/pango/pango.modules
 
-  SetOutPath "$INSTDIR\lib\pango\1.4.0\modules"
-  File ${prefix}/lib/pango/1.4.0/modules/pango-arabic-fc.dll
-  File ${prefix}/lib/pango/1.4.0/modules/pango-basic-fc.dll
-  File ${prefix}/lib/pango/1.4.0/modules/pango-basic-win32.dll
-  File ${prefix}/lib/pango/1.4.0/modules/pango-hangul-fc.dll
-  File ${prefix}/lib/pango/1.4.0/modules/pango-hebrew-fc.dll
-  File ${prefix}/lib/pango/1.4.0/modules/pango-indic-fc.dll
-  File ${prefix}/lib/pango/1.4.0/modules/pango-khmer-fc.dll
-  File ${prefix}/lib/pango/1.4.0/modules/pango-syriac-fc.dll
-  File ${prefix}/lib/pango/1.4.0/modules/pango-thai-fc.dll
-  File ${prefix}/lib/pango/1.4.0/modules/pango-tibetan-fc.dll
 !endif
 SectionEnd

@@ -1,3 +1,18 @@
+2007-05-16  Werner Koch  <wk@g10code.com>
+
+	* src/inst-gtk+.nsi: Install new themes and the engines.  Update
+	to gtk 2.10.
+	* src/uninst-gtk+.nsi: Likewise.
+
+	* src/inst-pango.nsi: Adjust for Pango 1.16.
+
+	* configure.ac: New package Cairo as reguired by the current Gtk+.
+	* src/uninst-cairo.nsi, src/inst-cairo.nsi: New.
+	* src/inst-sections.nsi: Install Cairo.
+	* include/config.nsi.in: Ditto.
+
+	* src/uninst-gnupg.nsi: Delete gnupg.nls directory.
+
 2007-03-09  Werner Koch  <wk@g10code.com>
 
 	Released 1.0.9.

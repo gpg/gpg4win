@@ -103,8 +103,8 @@ gpg4win_pkg_pthreads_w32_make_args_inst = \
 
 
 # Supported binary packages.
-gpg4win_bpkgs :=  libiconv gettext pkgconfig zlib libpng jpeg pango atk gtk+ \
-		  gpgee crypt regex
+gpg4win_bpkgs :=  libiconv gettext pkgconfig zlib libpng jpeg pango cairo \
+	          atk gtk+ gpgee crypt regex 
 
 # libiconv needs some special magic to generate a usable import
 # library.
@@ -162,6 +162,11 @@ define gpg4win_pkg_glib_post_install
 endef
 
 define gpg4win_pkg_atk_post_install
+ (cd $$$${pkgidir_dev};							\
+ perl -pi -e 's/^prefix=.*$$$$/prefix=\/usr/' `find . -name \*.pc`)
+endef
+
+define gpg4win_pkg_cairo_post_install
  (cd $$$${pkgidir_dev};							\
  perl -pi -e 's/^prefix=.*$$$$/prefix=\/usr/' `find . -name \*.pc`)
 endef
