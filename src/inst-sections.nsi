@@ -15,7 +15,9 @@
 # 
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
-# Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,
+# USA.
+
 
 # Sections
 
@@ -65,6 +67,9 @@
 !endif
 !ifdef HAVE_PKG_PANGO
 !include "inst-pango.nsi"
+!endif
+!ifdef HAVE_PKG_CAIRO
+!include "inst-cairo.nsi"
 !endif
 !ifdef HAVE_PKG_ATK
 !include "inst-atk.nsi"
@@ -134,6 +139,9 @@
 !endif
 !ifdef HAVE_PKG_ATK
 !include "uninst-atk.nsi"
+!endif
+!ifdef HAVE_PKG_CAIRO
+!include "uninst-cairo.nsi"
 !endif
 !ifdef HAVE_PKG_PANGO
 !include "uninst-pango.nsi"
@@ -229,6 +237,9 @@ Function CalcDepends
 !ifdef HAVE_PKG_ATK
   !insertmacro UnselectSection ${SEC_atk}
 !endif
+!ifdef HAVE_PKG_CAIRO
+  !insertmacro UnselectSection ${SEC_cairo}
+!endif
 !ifdef HAVE_PKG_PANGO
   !insertmacro UnselectSection ${SEC_pango}
 !endif
@@ -305,6 +316,7 @@ Function CalcDepends
 		${SF_SELECTED} have_gtk_ skip_gtk_
   have_gtk_:
   !insertmacro SelectSection ${SEC_atk}
+  !insertmacro SelectSection ${SEC_cairo}
   !insertmacro SelectSection ${SEC_pango}
   !insertmacro SelectSection ${SEC_glib}
   !insertmacro SelectSection ${SEC_libiconv}
@@ -320,6 +332,15 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_glib}
   !insertmacro SelectSection ${SEC_pkgconfig}
   skip_atk:
+!endif
+
+!ifdef HAVE_PKG_CAIRO
+  !insertmacro SectionFlagIsSet ${SEC_cairo} \
+		${SF_SELECTED} have_cairo skip_cairo
+  have_cairo:
+  !insertmacro SelectSection ${SEC_glib}
+  !insertmacro SelectSection ${SEC_pkgconfig}
+  skip_cairo:
 !endif
 
 !ifdef HAVE_PKG_PANGO

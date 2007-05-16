@@ -156,12 +156,14 @@ GPG4WIN_BPKG_GNUWIN32([libpng], [pkgconfig])
 GPG4WIN_BPKG_GNUWIN32([jpeg])
 
 GPG4WIN_BPKG_GTK([pkgconfig])
-# We build our own version of glib, because we need to patch giowin32.c.
+# We build our own version of glib, because we need to apply a few patches.
 # GPG4WIN_BPKG_GTK_DEV([glib], [pkgconfig])
 GPG4WIN_SPKG([glib], [libiconv gettext pkgconfig])
-GPG4WIN_BPKG_GTK_DEV([gtk+], [atk pango glib libiconv gettext pkgconfig])
+GPG4WIN_BPKG_GTK_DEV([gtk+], [atk pango glib libiconv gettext pkgconfig cairo])
 GPG4WIN_BPKG_GTK_DEV([atk], [glib pkgconfig])
 GPG4WIN_BPKG_GTK_DEV([pango], [glib pkgconfig])
+GPG4WIN_BPKG_GTK_DEV([cairo], [glib pkgconfig])
+
 GPG4WIN_BPKG_BINSRC([GPGee], [gnupg])
 
 GPG4WIN_SPKG([libgpg-error], [libiconv gettext])
@@ -173,7 +175,7 @@ GPG4WIN_SPKG([gpa], [libiconv gettext zlib gtk+ libpng glib gpgme])
 GPG4WIN_SPKG([winpt], [gpgme gnupg])
 GPG4WIN_SPKG([sylpheed-claws], [libiconv gettext zlib gtk+ libpng jpeg glib dnl
                                 gpgme pthreads-w32 crypt regex])
-# The Eudora license (the one for thye EMS API) is still not acceptable.
+# The Eudora license (the one for the EMS API) is still not acceptable.
 #GPG4WIN_SPKG([eudoragpg])
 GPG4WIN_IPKG([man_novice_de])
 GPG4WIN_IPKG([man_advanced_de])

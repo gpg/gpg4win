@@ -19,8 +19,9 @@
 # Note: You may use "make upload" to copy this file to is canonical place.
 #
 
-
+#
 # GNU
+#
 server ftp://ftp.cs.tu-berlin.de/pub/gnu
 
 file gettext/gettext-runtime-0.13.1.bin.woe32.zip
@@ -35,7 +36,7 @@ chk  f130c93fdf20903ca21bace8b8822f46468c9d65
 
 
 # Gnuwin32 packages orginally hosted at sf.net but mirrored at g10code
-# for easier download.  The regex-0.12 package has evne disappeared
+# for easier download.  The regex-0.12 package has even disappeared
 # from Sourceforge.
 server ftp://ftp.g10code.com/mirrors/gnuwin32
 
@@ -70,68 +71,95 @@ chk  37e5aa61bdf26cd182ebc6169528c86f165c7e09
 file regex-0.12-src.zip
 chk  b9faae10efae552f23c213891a3ed8187cb7d017
 
-
-# For the same reason we also keep a copy of the Sylpheed hosted Claws project.
+#
+# Claws
+#
+# (Kept on our own mirror due to Soruceforge peculiarities.)
 server ftp://ftp.g10code.com/mirrors/claws
 
 file  sylpheed-claws-2.4.0.tar.bz2
 chk   f61acdf3e9851da3d1e2591321bf43426465955f
 
 
-# RedHat
-
+#
+# Pthreads for Windows.
+#
 server ftp://sources.redhat.com/pub
 
 file pthreads-win32/pthreads-w32-2-7-0-release.tar.gz
 chk  e9f66acde58136ab67e2167412773f727cd13a9d
 
 
-# GTK+ stuff
-# http://www.gimp.org/~tml/gimp/win32/downloads.html
-
-#server ftp://ftp.gtk.org/pub/gtk/v2.9
 #
-#file glib-2.9.1.tar.bz2
-#chk  ab84a8afc60c726c105cba3f542f1425e058b1c4  
-server ftp://ftp.g10code.com/g10code/scratch
+# GLIB
+#
+server ftp://ftp.gtk.org/pub/glib/2.12
 
-file glib-2.9.2-wk1.tar.bz2
-chk  2ba7b74ec3337126d8a56aae1b7a77705a6166d5
-
-
-server ftp://ftp.gtk.org/pub/gtk/v2.6
-
-# We need to build our onw glib - see above.
-#file win32/glib-2.6.6.zip
-#chk  f1cf6ff8831217aac38ecd83c07d02416e571c5d
-#file win32/glib-dev-2.6.6.zip
-#chk  9445676e9394cd92b1e60e0550ed74d8917414d6
-#file glib-2.6.6.tar.bz2
-#chk  6bb8860bd29a83964ee66ad53ae3e4950aa2677f
-
-file win32/atk-1.9.0.zip
-chk  d6f99c56b890051c3b9bc77abe8c5a705d3bc5d4
-file win32/atk-dev-1.9.0.zip
-chk  7934420db4233374304aa55f47aeb4be66603974
-file atk-1.9.0.tar.bz2
-chk  3e34534e5bcf3494c5a89c4804c7892a915f3f58
-
-file win32/pango-1.8.2.zip
-chk  5e1a16803a3d6a1c13c3c6b8213f35d32fa081f5
-file win32/pango-dev-1.8.2.zip
-chk  a4b1b9015279679011a9d2646a5b161dc3698474
-file pango-1.8.2.tar.bz2
-chk  1ff94ba7618ea8bffbd9872ffb4856c414a0e8d8
-
-file win32/gtk+-2.6.9.zip
-chk  c150c1300a4e57c03c7900ce8a46e18bc882f231
-file win32/gtk+-dev-2.6.9.zip
-chk  a0a59ce11244c8aa63d01ff526a777185ceb2fd9
-file gtk+-2.6.6.tar.bz2
-chk  6d5da1d14c2351de11e7d31499b38ebfe7678f8d
+file glib-2.12.12.tar.bz2
+chk  527bced2e6d38169c08c8712d5e3b6ebb0dc46b5
 
 
+#
+# ATK
+#
+server ftp://ftp.gnome.org/pub/gnome/sources/atk/1.12
+
+file atk-1.12.2.tar.bz2
+chk  8c59f23a90e6b4ddcff0712dcbf1bfdaa9fc35cb
+
+server ftp://ftp.gtk.org/pub/gtk/v2.10/win32/dependencies
+
+file atk-1.12.2.zip
+chk  c4dd9617e96f03a6856cc99dec407bc9e8f28a98
+file atk-dev-1.12.2.zip
+chk  168ebd566ab4913cb8b03b11d7bc7a038bf27273 
+
+
+#
+# PANGO
+#
+server ftp://ftp.gtk.org/pub/pango/1.16
+
+file pango-1.16.4.tar.bz2
+chk  6a21126632ed99950818c64d8598b6e92fa7da58
+file win32/pango-1.16.4.zip
+chk  c0dbdaf50465c28ba0686f7d125a6cddc70e40fb
+file win32/pango-dev-1.16.4.zip
+chk  3ffdfe8f49421e5c0f8608c113ee6920316b9562
+
+#
+# CAIRO
+#
+server http://cairographics.org/releases
+
+file cairo-1.4.2.tar.gz
+chk  9e7a323fc7d81d5011044d7eb22db3bf26ff7314 
+
+server ftp://ftp.gtk.org/pub/gtk/v2.10
+
+file win32/cairo-1.4.2.zip
+chk  33d5308b94c967bfbf2d94a9ec7eda170411d628
+file win32/cairo-dev-1.4.2.zip
+chk  689f8959f69cff6b086846d3f25c361cd6800cb6
+
+
+
+#
+# GTK+
+#
+server ftp://ftp.gtk.org/pub/gtk/v2.10
+
+file gtk+-2.10.12.tar.bz2
+chk  2912aeac11628c60b653e6a4bc5919106c02e045
+file win32/gtk+-2.10.12.zip
+chk  d9e496b42ac8eb69eec7ead6a2530a32f9929372
+file win32/gtk+-dev-2.10.12.zip
+chk  c0a8e450252451ed8c09af93753c981e7dfc690e
+
+
+#
 # GIMP stuff for W32
+#
 server http://www.gimp.org/~tml/gimp/win32
 
 file pkgconfig-0.15.zip
@@ -139,9 +167,9 @@ chk  fc4b38b372e1559cbfafc169f528efcb31c9dd94
 file pkgconfig-0.15.0.tar.gz
 chk  1019c8027c0cf94bca680886f4e2ae4e629a2a97
 
-
+#
 # WinPT
-
+#
 server http://wald.intevation.org/frs/download.php
 
 #file  265/winpt-1.0.0.tar.bz2
@@ -152,7 +180,10 @@ server http://wald.intevation.org/frs/download.php
 file  312/winpt-1.2.0.tar.bz2
 chk   050f93a0d74385ce90e8934e49c11f171d495c5a
 
+
+#
 # GPGee
+#
 # Note that the -bin package has been repackaged from the
 # -noinstaller package using these commands:
 #    mkdir gpgee-tmp
@@ -161,7 +192,6 @@ chk   050f93a0d74385ce90e8934e49c11f171d495c5a
 #    unzip GPGee.zip
 #    rm GPGee/uninst.exe 
 #    zip ../GPGee-1.2.3-bin.zip GPGee/*
-
 server ftp://ftp.gnupg.org/gcrypt/gpgee
 
 file GPGee-1.3.1-noinstaller.zip
@@ -170,18 +200,18 @@ file GPGee-1.3.1-source.zip
 chk  b04fa9ea81fc77844c7aa2e3eda042d819d8e9f1
 
 
+#
 # GPGol
+#
 server ftp://ftp.g10code.com/g10code/gpgol
-
-#file gpgol-0.9.90.tar.bz2
-#chk 54d6d42d613804ce646d72a9e40b1c1cabfcacb7
 
 file gpgol-0.9.91.tar.bz2
 chk  391eee90ea072ea181bed332b9411f2a43395e7e
 
 
-# GnuPG stuff. 
-
+#
+# GnuPG et al.
+#
 server ftp://ftp.gnupg.org/gcrypt
 
 file gnupg/gnupg-1.4.7.tar.bz2
@@ -193,9 +223,9 @@ chk  1f83d9af8e8ed3bcbf3a5e9018db257dc6336655
 file gpgme/gpgme-1.1.4.tar.bz2
 chk  d3c71afb8b88b1050067633cd8bcc4ca0bae696d  
 
-
-# Intevation.org stuff.
-
+#
+# GPA
+#
 server http://wald.intevation.org/frs/download.php
 
 file 324/gpa-0.7.5.tar.bz2

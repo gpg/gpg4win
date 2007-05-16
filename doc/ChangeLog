@@ -1,3 +1,7 @@
+2007-05-16  Werner Koch  <wk@g10code.com>
+
+	* manual/Makefile.am: Commented advanced manual.
+
 2007-05-02  Bernhard Reiter <bernhard.reiter@intevation.de>
 
 	* website/download-de.htm4, website/download.htm4: Credited

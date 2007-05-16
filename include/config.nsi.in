@@ -1,21 +1,22 @@
 # config.nsi - Configuration settings for gpg4win.nsi.         -*- nsi -*-
-# Copyright (C) 2005 g10 Code GmbH
+# Copyright (C) 2005, 2007 g10 Code GmbH
 # 
-# This file is part of GPG4Win.
+# This file is part of Gpg4win.
 # 
-# GPG4Win is free software; you can redistribute it and/or modify
+# Gpg4win is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 of the License, or
 # (at your option) any later version.
 # 
-# GPG4Win is distributed in the hope that it will be useful,
+# Gpg4win is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 # 
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
-# Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,
+# USA.
 
 
 !define _PACKAGE @PACKAGE@
@@ -134,6 +135,12 @@
 !define gpg4win_pkg_atk_version @gpg4win_pkg_atk_version@
 !define gpg4win_pkg_atk_dev @gpg4win_pkg_atk_dev@
 !define gpg4win_pkg_atk_src @gpg4win_pkg_atk_src@
+
+@HAVE_PKG_CAIRO@
+!define gpg4win_pkg_cairo @gpg4win_pkg_cairo@
+!define gpg4win_pkg_cairo_version @gpg4win_pkg_cairo_version@
+!define gpg4win_pkg_cairo_dev @gpg4win_pkg_cairo_dev@
+!define gpg4win_pkg_cairo_src @gpg4win_pkg_cairo_src@
 
 @HAVE_PKG_PANGO@
 !define gpg4win_pkg_pango @gpg4win_pkg_pango@
