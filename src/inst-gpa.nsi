@@ -31,6 +31,9 @@ Section "GPA" SEC_gpa
 !else
   File ${prefix}/bin/gpa.exe
 
+  SetOutPath "$INSTDIR\pub"
+  File /oname=gpa.exe "${BUILD_DIR}/gpgwrap.exe"
+
   SetOutPath "$INSTDIR\share\locale\de\LC_MESSAGES"
   File ${prefix}/share/locale/de/LC_MESSAGES/gpa.mo
 

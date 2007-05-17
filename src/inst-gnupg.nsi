@@ -35,6 +35,11 @@ Section "GnuPG" SEC_gnupg
   File "${prefix}/bin/gpgsplit.exe"
   File "${prefix}/bin/gpgv.exe"
 
+  SetOutPath "$INSTDIR\pub"
+  File /oname=gpg.exe      "${BUILD_DIR}/gpgwrap.exe"
+  File /oname=gpgv.exe     "${BUILD_DIR}/gpgwrap.exe"
+  File /oname=gpgsplit.exe "${BUILD_DIR}/gpgwrap.exe"
+
   # As a special exception, these programs are not kept in
   # libexec/gnupg, where they belong.  Please see the comment in
   # gnupg/g10/keyserver.c::keyserver_spawn() for an explanation.
@@ -59,6 +64,11 @@ Section "GnuPG" SEC_gnupg
 
 
   WriteRegStr HKLM "Software\GNU\GnuPG" "Install Directory" $INSTDIR
+
+  # Add the public directory to the PATH
+  Push "$INSTDIR\pub"
+  Call AddToPath
+
 !endif
 SectionEnd
 

@@ -6,6 +6,27 @@
 Noteworthy changes in version 1.0.10
 ------------------------------------------------
 
+(en) Included Brigitte Hamilton's english translation of the novice's
+     manual.
+
+(en) gpg, gpgv, gpgsplit and gpa are now installed so that they are
+     searched via PATH.
+
+(en) Updated to the latest stable version of GTK+ libraries (2.10).
+
+
+~~~~~~~~~~~~~~~
+GnuPG: 1.4.7
+GPA:   0.7.5
+GPGol: 0.9.91
+GPGee: 1.3.1
+WinPT: 1.2.0
+Sylpheed-Claws: 2.4.0
+Novices:         
+Einsteiger:     2.0.2
+Durchblicker:   2.0.2
+~~~~~~~~~~~~~~~
+
 
 
 Noteworthy changes in version 1.0.9 (2007-03-09)
