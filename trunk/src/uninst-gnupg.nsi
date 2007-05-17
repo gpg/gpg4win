@@ -33,6 +33,9 @@ Section "-un.gnupg"
   Delete "$INSTDIR\gpg.exe"
   Delete "$INSTDIR\gpgsplit.exe"
   Delete "$INSTDIR\gpgv.exe"
+  Delete "$INSTDIR\pub\gpg.exe"
+  Delete "$INSTDIR\pub\gpgsplit.exe"
+  Delete "$INSTDIR\pub\gpgv.exe"
 
   Delete "$INSTDIR\gpgkeys_finger.exe"
   Delete "$INSTDIR\gpgkeys_hkp.exe"
@@ -55,5 +58,10 @@ Section "-un.gnupg"
   RMDir  "$INSTDIR\gnupg.nls"
 
   DeleteRegValue HKLM "Software\GNU\GnuPG" "Install Directory"
+
+  # Remove the public directory from the PATH
+  Push "$INSTDIR\pub"
+  Call un.RemoveFromPath
+
 !endif
 SectionEnd

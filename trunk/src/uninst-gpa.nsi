@@ -31,6 +31,7 @@ Section "-un.gpa"
   Call un.SourceDelete
 !else
   Delete "$INSTDIR\gpa.exe"
+  Delete "$INSTDIR\pub\gpa.exe"
 
   Delete "$INSTDIR\share\locale\de\LC_MESSAGES\gpa.mo"
 

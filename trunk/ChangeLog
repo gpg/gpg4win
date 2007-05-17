@@ -1,3 +1,15 @@
+2007-05-17  Werner Koch  <wk@g10code.com>
+
+	* src/installer.nsi (AddToPath,RemoveFromPath): New.
+	* src/inst-gpa.nsi: Install gpgwrap for gpa.
+	* src/inst-gnupg.nsi: Install gpgwrap for gpg, gpgv and gpgsplit.
+	
+	* src/gpgwrap.c: New.
+	* configure.ac: Check for strip.
+	(AC_CONFIG_HEADER): New.
+	* src/Makefile.am (g4wihelp.dll): Strip.
+	(gpgwrap.exe): Build.
+
 2007-05-16  Werner Koch  <wk@g10code.com>
 
 	* src/inst-gtk+.nsi: Install new themes and the engines.  Update
