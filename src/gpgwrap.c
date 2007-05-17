@@ -36,12 +36,6 @@ main (int argc, const char * const *argv)
   char pgm[MAX_PATH+100];
   char *p, *p0;
 
-  if (argc >= 2 && !strcmp(argv[1], "--version"))
-    {
-      puts ("gpgwrap (gpg4win) " PACKAGE_VERSION "\n");
-      fflush (stdout);
-    }
-
   if ( !GetModuleFileNameA (NULL, pgm, sizeof pgm -1) )
     {
       fprintf (stderr, "gpgwrap: error getting my own name: rc=%d\n",
@@ -61,6 +55,20 @@ main (int argc, const char * const *argv)
   while (*p)
     *p0++ = *p++;
   *p0 = 0;
+
+  /* Hack to output our own version along with the real file name
+     before the actual, we require that the --version option is given
+     twice. */
+  if (argc > 2
+      && !strcmp(argv[1], "--version")
+      && !strcmp(argv[2], "--version"))
+    {
+      fputs ("gpgwrap (Gpg4win) " PACKAGE_VERSION " ", stdout);
+      fputs (pgm, stdout);
+      fputc ('\n', stdout);
+      fflush (stdout);
+    }
+
   execv (pgm, argv);
   fprintf (stderr, "gpgwrap: executing `%s' failed: %s\n",
            pgm, strerror (errno));
