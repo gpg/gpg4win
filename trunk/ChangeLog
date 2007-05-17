@@ -5,6 +5,7 @@
 	* src/inst-gnupg.nsi: Install gpgwrap for gpg, gpgv and gpgsplit.
 	
 	* src/gpgwrap.c: New.
+
 	* configure.ac: Check for strip.
 	(AC_CONFIG_HEADER): New.
 	* src/Makefile.am (g4wihelp.dll): Strip.
