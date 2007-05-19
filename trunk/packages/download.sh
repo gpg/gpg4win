@@ -1,6 +1,6 @@
-#!/bin/sh
+#!/bin/bash
 # download.sh - Download source and binary packages for GPG4Win.
-# Copyright (C) 2005 g10 Code GmbH
+# Copyright (C) 2005, 2007 g10 Code GmbH
 # 
 # This file is part of GPG4Win.
 # 
@@ -81,7 +81,7 @@ done
 
 WGET=wget
 
-url="http://www.gpg4win.org/"
+url="http://www.gpg4win.org"
 if [ "$keep_list" = "no" ]; then
   echo "downloading packages list from \`$url'."
   if ! ${WGET} -N -q $url/packages.current{,.sig} ; then
