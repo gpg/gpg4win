@@ -1,3 +1,7 @@
+2007-05-19  Marcus Brinkmann  <marcus@g10code.de>
+
+	* packages/download.sh: Require bash due to brace expansion.
+
 2007-05-17  Werner Koch  <wk@g10code.com>
 
 	* src/installer.nsi (AddToPath,RemoveFromPath): New.
