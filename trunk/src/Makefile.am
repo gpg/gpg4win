@@ -30,7 +30,7 @@ CLEANFILES = g4wihelp.dll versioninfo.txt README.en.txt README.de.txt \
              installer-options.ini NEWS.tmp gpgwrap.exe
 
 # Supported source packages.
-gpg4win_spkgs := glib gnupg libgpg-error gpgme gpgol gpa winpt sylpheed-claws
+gpg4win_spkgs = glib gnupg libgpg-error gpgme gpgol gpa winpt sylpheed-claws
 
 # Extra options to configure for individual packages.
 # We can use $(idir) here for the installation prefix.
@@ -91,7 +91,7 @@ gpg4win_pkg_sylpheed_claws_configure = \
   --disable-spamassassin-plugin
 
 # Supported make-only source packages.
-gpg4win_mpkgs :=  pthreads-w32
+gpg4win_mpkgs =  pthreads-w32
 
 # Extra options for the make infocations for individual packages.
 # make_flags is used fur building make_args_inst is used for installing.
@@ -103,7 +103,7 @@ gpg4win_pkg_pthreads_w32_make_args_inst = \
 
 
 # Supported binary packages.
-gpg4win_bpkgs :=  libiconv gettext pkgconfig zlib libpng jpeg pango cairo \
+gpg4win_bpkgs =  libiconv gettext pkgconfig zlib libpng jpeg pango cairo \
 	          atk gtk+ gpgee crypt regex 
 
 # libiconv needs some special magic to generate a usable import
@@ -192,7 +192,7 @@ endef
 # Supported internal packages.  Internal packages do not require any
 # special support.  Thus, this variable is actually unused, and no
 # rules are added in gpg4win.mk.
-gpg4win_ipkgs := man_novice_de man_advanced_de man_novice_en man_advanced_en
+gpg4win_ipkgs = man_novice_de man_advanced_de man_novice_en man_advanced_en
 
 
 # Now do the bunch of the work.  This is a bunch of dirty magic to
@@ -209,7 +209,7 @@ $(eval $(call INCLUDE_BY_MAKE,gpg4win.mk))
 
 clean-local: clean-gpg4win
 
-common_nsi := inst-sections.nsi installer.nsi installer-finish.nsi	\
+common_nsi = inst-sections.nsi installer.nsi installer-finish.nsi	\
   $(addsuffix .nsi,$(addprefix inst-,$(gpg4win_build_list)))		\
   $(addsuffix .nsi,$(addprefix uninst-,$(gpg4win_build_list)))
 
