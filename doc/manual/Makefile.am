@@ -18,7 +18,7 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
 
-png_files := \
+png_files = \
         sc-inst-welcome.png sc-inst-license.png \
         sc-inst-components.png sc-inst-directory.png \
         sc-inst-options.png \
@@ -40,37 +40,37 @@ png_files := \
 	sc-en-gpa-rungpa.png sc-en-gpa-two-keys.png
 
 
-web_png_files := blank.png next.png previous.png up.png \
+web_png_files = blank.png next.png previous.png up.png \
                  home.png nonext.png noprevious.png noup.png
 
 
-eps_files := adele01.eps.gz adele02.eps.gz man-with-signed-key.eps.gz \
-             egyptian-stone.eps.gz sealed-envelope.eps.gz \
-	     schlapphut-with-key.eps.gz tangled-schlapphut.eps.gz \
-	     verleihnix.eps.gz key-with-shadow-bit.eps.gz \
-             letter-into-safe.eps.gz letter-out-of-safe.eps.gz \
-             secret-key-exchange.eps.gz pk-safe-open.eps.gz \
-             pk-safe-opened-with-sk.eps.gz think-passphrase.eps.gz \
-             keyserver-world.eps.gz key-with-sigs.eps.gz \
-	     clock-face.eps.gz mileage-indicator.eps.gz \
-	     table-1.eps.gz table-2.eps.gz table-3.eps.gz \
-             sc-gpa-first-key.eps.gz \
-             sc-gpa-gen-email.eps.gz sc-gpa-gen-name.eps.gz \
-             sc-gpa-gen-passwd.eps.gz sc-gpa-nokey.eps.gz \
-             sc-gpa-rungpa.eps.gz sc-gpa-ks-export-p.eps.gz \
-             sc-gpa-two-keys.eps.gz \
-             sc-ol-send-test-key.eps.gz sc-ol-send-enc-msg1.eps.gz \
-             sc-ol-send-enc-msg2.eps.gz \
-              sc-gpgol-set-icon.eps.gz \
-             sc-winpt-startmenu.eps.gz sc-winpt-trayicon.eps.gz \
-	     sc-winpt-clip-decrypt.eps.gz sc-winpt-good-sig.eps.gz \
-             sc-winpt-sel-enc-key.eps.gz sc-winpt-enctoself.eps.gz \
-	     sc-misc-mein-key-asc.eps.gz 
+eps_files = adele01.eps.gz adele02.eps.gz man-with-signed-key.eps.gz \
+            egyptian-stone.eps.gz sealed-envelope.eps.gz \
+	    schlapphut-with-key.eps.gz tangled-schlapphut.eps.gz \
+	    verleihnix.eps.gz key-with-shadow-bit.eps.gz \
+            letter-into-safe.eps.gz letter-out-of-safe.eps.gz \
+            secret-key-exchange.eps.gz pk-safe-open.eps.gz \
+            pk-safe-opened-with-sk.eps.gz think-passphrase.eps.gz \
+            keyserver-world.eps.gz key-with-sigs.eps.gz \
+	    clock-face.eps.gz mileage-indicator.eps.gz \
+	    table-1.eps.gz table-2.eps.gz table-3.eps.gz \
+            sc-gpa-first-key.eps.gz \
+            sc-gpa-gen-email.eps.gz sc-gpa-gen-name.eps.gz \
+            sc-gpa-gen-passwd.eps.gz sc-gpa-nokey.eps.gz \
+            sc-gpa-rungpa.eps.gz sc-gpa-ks-export-p.eps.gz \
+            sc-gpa-two-keys.eps.gz \
+            sc-ol-send-test-key.eps.gz sc-ol-send-enc-msg1.eps.gz \
+            sc-ol-send-enc-msg2.eps.gz \
+            sc-gpgol-set-icon.eps.gz \
+            sc-winpt-startmenu.eps.gz sc-winpt-trayicon.eps.gz \
+	    sc-winpt-clip-decrypt.eps.gz sc-winpt-good-sig.eps.gz \
+            sc-winpt-sel-enc-key.eps.gz sc-winpt-enctoself.eps.gz \
+	    sc-misc-mein-key-asc.eps.gz 
 
-eps_files_bb  := $(eps_files:.gz=.bb)
-eps_files_png  := $(eps_files:.eps.gz=.png)
-#eps_files_pdf := $(eps_files:.eps.gz=.pdf)
-png_files_eps := $(png_files:.png=.eps) 
+eps_files_bb  = $(eps_files:.gz=.bb)
+eps_files_png  = $(eps_files:.eps.gz=.png)
+#eps_files_pdf = $(eps_files:.eps.gz=.pdf)
+png_files_eps = $(png_files:.png=.eps) 
 
 EXTRA_DIST = fdl.tex einsteiger.tex durchblicker.tex novices.tex \
 	     $(eps_files) $(png_files) $(web_png_files) \
