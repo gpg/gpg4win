@@ -182,7 +182,7 @@ GPG4WIN_SPKG([sylpheed-claws], [libiconv gettext zlib gtk+ libpng jpeg glib dnl
 GPG4WIN_IPKG([man_novice_de])
 GPG4WIN_IPKG([man_advanced_de])
 GPG4WIN_IPKG([man_novice_en])
-GPG4WIN_IPKG([man_advanced_en])
+#GPG4WIN_IPKG([man_advanced_en])
 
 GPG4WIN_FINALIZE
 
