@@ -29,6 +29,9 @@ EXTRA_DIST = autogen.sh README.SVN \
         patches/glib-2.9.2-wk1/02-gspawn-w32.patch \
         patches/glib-2.9.2-wk1/03-gspawn-w32-fixup.patch \
         patches/glib-2.9.2-wk1/04-gspawn-w32-buffering.patch \
+        patches/glib-2.12.12/01-giowin32.patch \
+        patches/glib-2.12.12/02-gspawn-w32.patch \
+        patches/glib-2.12.12/03-gspawn-w32-fixup.patch \
 	patches/sylpheed-claws-2.3.1/01-locale-dir.patch \
 	patches/sylpheed-claws-2.3.1/02-fix-plugin-dir.patch \
 	patches/sylpheed-claws-2.3.1/03-std-plugins.patch \
