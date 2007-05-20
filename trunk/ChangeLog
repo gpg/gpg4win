@@ -1,5 +1,8 @@
 2007-05-20  Marcus Brinkmann  <marcus@g10code.de>
 
+	* src/gpgwrap.c (build_commandline): New function.
+	(main): Quote argument vector.
+
 	* configure.ac: Comment advanced manual here as well.
 
 2007-05-19  Marcus Brinkmann  <marcus@g10code.de>
