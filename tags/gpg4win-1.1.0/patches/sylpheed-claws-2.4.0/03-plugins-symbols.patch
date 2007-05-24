@@ -1,0 +1,25 @@
+#! /bin/sh
+patch -p1 -f $* < $0
+exit $?
+
+2006-08-04  Marcus Brinkmann  <marcus@g10code.de>
+
+	* src/plugins/pgpinline/sylpheed.def,
+	src/plugins/pgpmime/sylpheed.def: Add privacy_reset_error.
+
+diff -rup sylpheed-claws-2.4.0-orig/src/plugins/pgpinline/sylpheed.def sylpheed-claws-2.4.0/src/plugins/pgpinline/sylpheed.def
+--- sylpheed-claws-2.4.0-orig/src/plugins/pgpinline/sylpheed.def	2006-07-31 09:26:19.000000000 +0200
++++ sylpheed-claws-2.4.0/src/plugins/pgpinline/sylpheed.def	2006-08-04 21:16:46.000000000 +0200
+@@ -19,3 +19,4 @@ procmime_write_mimeinfo
+ sylpheed_get_version
+ privacy_set_error
+ privacy_get_error
++privacy_reset_error
+diff -rup sylpheed-claws-2.4.0-orig/src/plugins/pgpmime/sylpheed.def sylpheed-claws-2.4.0/src/plugins/pgpmime/sylpheed.def
+--- sylpheed-claws-2.4.0-orig/src/plugins/pgpmime/sylpheed.def	2006-07-31 09:26:19.000000000 +0200
++++ sylpheed-claws-2.4.0/src/plugins/pgpmime/sylpheed.def	2006-08-04 21:15:23.000000000 +0200
+@@ -18,3 +18,4 @@ procmime_write_mimeinfo
+ sylpheed_get_version
+ privacy_set_error
+ privacy_get_error
++privacy_reset_error

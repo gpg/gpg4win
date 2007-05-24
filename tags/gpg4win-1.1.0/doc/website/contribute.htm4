@@ -1,0 +1,89 @@
+m4_dnl -*-html-*-
+m4_include(`template.m4')
+m4_dnl $Id$
+
+m4_define(`EN')
+m4_define(`DE_FILE', `contribute-de.html')
+PAGE_START
+
+<h1>Contributing to Gpg4win</h1>
+
+You like Gpg4win? Then support this project.
+This is easier than you think and even little
+contributions may have a viable effect.
+As with any other Free Software you may either
+contribute yout time or money.
+
+<p>
+
+<h2>As volunteer</h2>
+
+No matter what your strenghts and weaknesses are,
+you can get active for Gpg4win:
+
+<ul>
+
+<li> Make yourself familiar with Gpg4win and first become a
+     engaged user and then a contributor.
+     Participate in the forums or mailing lists.
+     Your hints can make users of Gpg4win or one of its
+     components happy.
+     Just pick yourself a task, let others know about on the
+     mailing list and start right away.
+
+<p>
+
+<li> Write down your opinion. What's good? What's bad?
+     Where is a bug? Is the new version better?
+     Write this repectful because the respective
+     maintainers are often volunteers.
+
+<p>
+
+<li> Attract further volunteers and financial backers.
+     For example you could talk to other users.
+     If you know companies or authorities that do already
+     use Gpg4win, encourage them ensure Gpg4win will continue
+     to be a viable software product.
+     Some authorities already sponsored development.
+     Exert influence on politics: Praise the achieved results
+     and demand continuation of support.
+
+<p>
+
+<li> Actively distribute Gpg4win. You could ask computer magazines
+     to pick up this topic. Or make software distributors aware that
+     they are still missing Gpg4win. Speak or write about Gpg4win.
+     Motivate people to use it.
+
+</ul>
+
+<p>
+
+<h2>As financial backer</h2>
+
+<ul>
+
+<li> Give a small anount via the payment opportunity of the web site.
+     Add a short comment along with a payment and explain for
+     which improvements you would again pay.
+     Even smallest amounts help and motivate.
+
+<p>
+
+<li> For an average amount, contact one of the project members
+     and receive a official invoice. You could also
+     contract for some specific step, update, bug fix or new features.
+     Take care that your contracted improvements will be integrated
+     into the main development of Gpg4win.
+
+<p>
+
+<li> As a company or authority, contract for more extensive measures
+     that will ensure continuation of the project.
+     This way you will ensure sustainable availability of Gpg4win
+     for your organisation.
+     Such measures do provide the collateral benefit of generally
+     improving security for data exchange.
+
+</ul>
