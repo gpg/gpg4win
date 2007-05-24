@@ -82,7 +82,7 @@ Section "-un.gtk+"
 
   Delete "$INSTDIR\share\themes\MS-Windows\gtk-2.0\gtkrc"
   RMDir "$INSTDIR\share\themes\MS-Windows\gtk-2.0"
-  RMDir "$INSTDIR\share\themes\MW-Windows"
+  RMDir "$INSTDIR\share\themes\MS-Windows"
 
   RMDir "$INSTDIR\share\themes"
 
