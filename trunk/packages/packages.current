@@ -16,7 +16,7 @@
 # delimiter).  The statement "chk" is followed by the SHA1 checksum of
 # the last file.
 #
-# Note: You may use "make upload" to copy this file to is canonical place.
+# Note: You may use "make upload" to copy this file to its canonical place.
 #
 
 #
@@ -228,7 +228,8 @@ chk  d3c71afb8b88b1050067633cd8bcc4ca0bae696d
 #
 server http://wald.intevation.org/frs/download.php
 
-file 324/gpa-0.7.5.tar.bz2
-chk  b29e2195088418d1ecab5a087fa8b747cdae7b8e
+file 350/gpa-0.7.6.tar.bz2
+chk  bb9182cd4c6bd6677ba9cdcca262dcc1b1d22c3c
+
 
 

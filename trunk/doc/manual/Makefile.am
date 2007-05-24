@@ -114,8 +114,17 @@ online: webversion
 	rsync -v --exclude='.svn' einsteiger*.html durchblicker*.html \
           novices*.html \
 	  einsteiger.css durchblicker.css \
-	  $(web_png_files) $(png_files) gpg4win-logo.png \
+	  $(web_png_files) $(png_files) $(eps_files_png) gpg4win-logo.png \
 	  $${user}@wald.intevation.org:/gpg4win/htdocs/handbuecher/
+
+preview: webversion
+	set -e; \
+	echo "Rsyncing the HTML manuals to the preview host ..."; \
+	rsync -v --exclude='.svn' einsteiger*.html durchblicker*.html \
+          novices*.html \
+	  einsteiger.css durchblicker.css \
+	  $(web_png_files) $(png_files) $(eps_files_png) gpg4win-logo.png \
+	  ${PREVIEWHOST}/
 
 
 %.eps.bb : %.eps.gz

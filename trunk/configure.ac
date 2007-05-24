@@ -26,7 +26,7 @@ min_automake_version="1.9.3"
 # Set my_issvn to "yes" for non-released code.  Remember to run an
 # "svn up" and "autogen.sh" right before creating a distribution.
 # Right after a release the make target "copy-news" is to be called!
-m4_define([my_version], [1.0.10])
+m4_define([my_version], [1.1.0])
 m4_define([my_issvn], [yes])
 
 m4_define([svn_revision], m4_esyscmd([echo -n $( (svn info 2>/dev/null \
@@ -39,7 +39,7 @@ MANUALVERSION_EINSTEIGER="2.0.2"
 MANUALDATE_EINSTEIGER="30. Mai 2006"
 MANUALVERSION_DURCHBLICKER="2.0.2"
 MANUALDATE_DURCHBLICKER="30. Mai 2006"
-MANUALVERSION_NOVICES="0.9.0"
+MANUALVERSION_NOVICES="1.0.0"
 MANUALDATE_NOVICES="Nov. 30, 2006"
 MANUALVERSION_ADVANCED="0.0.0"
 MANUALDATE_ADVANCED="Nov. 30, 2006"
@@ -87,8 +87,18 @@ AC_SUBST(BUILD_ISODATE)
 AC_SUBST(BUILD_FILEVERSION)
 
 
+# To test tye manuals using an actual web server, the preview target
+# may be used in doc/manuals.  The default is my (wk) test environment
+# but may be overriden using another preview variable.  PREVIEWHOST is
+# expected to be the target for an rsync command.
+if test -z "$PREVIEWHOST" ; then
+   PREVIEWHOST="vigenere:/var/www/all/preview.gpg4win.org/htdocs/"
+fi
+AC_SUBST(PREVIEWHOST)
+
+
 # For development of this package it is useful to build without
-# creatign the source installer (takes a long time).  This option may
+# creating the source installer (takes a long time).  This option may
 # be used to suppress creation of the source installer.
 AC_ARG_ENABLE(source-installer,
     AC_HELP_STRING([--disable-source-installer],

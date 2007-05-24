@@ -1,3 +1,16 @@
+2007-05-24  Werner Koch  <wk@g10code.com>
+
+	* manual/Makefile.am (preview): New.
+	(online): Also copy eps_files_png.
+
+	* manual/durchblicker.tex: Don't specify a specific URL for
+	downloading a PDF version.  We can't do that because the Gforge
+	server preprends a semi-random number to the URL.  Did the same
+	for the other manuals.
+
+	* manual/novices.tex (section{History}): Do not translate the
+	title of the 2005 revision
+
 2007-05-19  Marcus Brinkmann  <marcus@g10code.de>
 
 	* manual/Makefile.am: Replace := by =.
