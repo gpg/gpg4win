@@ -1,3 +1,9 @@
+2007-05-25  Marcus Brinkmann  <marcus@g10code.de>
+
+	* src/uninst-gnupg.nsi: Fix path of gpgkeys helper programs.
+	Remove pub directory.
+	* src/uninst-gtk+.nsi: Fix path of directory to be removed.
+
 2007-05-24  Werner Koch  <wk@g10code.com>
 
 	Released 1.1.0.

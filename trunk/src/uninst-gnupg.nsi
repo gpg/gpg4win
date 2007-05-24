@@ -37,12 +37,13 @@ Section "-un.gnupg"
   Delete "$INSTDIR\pub\gpgsplit.exe"
   Delete "$INSTDIR\pub\gpgv.exe"
 
-  Delete "$INSTDIR\gpgkeys_finger.exe"
-  Delete "$INSTDIR\gpgkeys_hkp.exe"
-  Delete "$INSTDIR\gpgkeys_curl.exe"
-  Delete "$INSTDIR\gpgkeys_ldap.exe"
+  Delete "$INSTDIR\pub\gpgkeys_finger.exe"
+  Delete "$INSTDIR\pub\gpgkeys_hkp.exe"
+  Delete "$INSTDIR\pub\gpgkeys_curl.exe"
+  Delete "$INSTDIR\pub\gpgkeys_ldap.exe"
   # Old gpg versions come with a separate http keyserver helper.
-  Delete "$INSTDIR\gpgkeys_http.exe"
+  Delete "$INSTDIR\pub\gpgkeys_http.exe"
+  RMDir "$INSTDIR\pub"
 
   Delete "$INSTDIR\share\gnupg\options.skel"
   Delete "$INSTDIR\share\gnupg\FAQ"
