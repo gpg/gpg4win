@@ -135,7 +135,7 @@ main (int argc, const char * const *argv)
       && !strcmp(argv[1], "--version")
       && !strcmp(argv[2], "--version"))
     {
-      fputs ("gpgwrap (Gpg4win) " PACKAGE_VERSION " ", stdout);
+      fputs ("gpgwrap (Gpg4win) " PACKAGE_VERSION " ;", stdout);
       fputs (pgm, stdout);
       fputc ('\n', stdout);
       fflush (stdout);
