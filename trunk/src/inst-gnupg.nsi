@@ -35,11 +35,6 @@ Section "GnuPG" SEC_gnupg
   File "${prefix}/bin/gpgsplit.exe"
   File "${prefix}/bin/gpgv.exe"
 
-  SetOutPath "$INSTDIR\pub"
-  File /oname=gpg.exe      "${BUILD_DIR}/gpgwrap.exe"
-  File /oname=gpgv.exe     "${BUILD_DIR}/gpgwrap.exe"
-  File /oname=gpgsplit.exe "${BUILD_DIR}/gpgwrap.exe"
-
   # As a special exception, these programs are not kept in
   # libexec/gnupg, where they belong.  Please see the comment in
   # gnupg/g10/keyserver.c::keyserver_spawn() for an explanation.
@@ -47,6 +42,11 @@ Section "GnuPG" SEC_gnupg
   File "${prefix}/libexec/gnupg/gpgkeys_hkp.exe"
   File "${prefix}/libexec/gnupg/gpgkeys_curl.exe"
   File "${prefix}/libexec/gnupg/gpgkeys_ldap.exe"
+
+  SetOutPath "$INSTDIR\pub"
+  File /oname=gpg.exe      "${BUILD_DIR}/gpgwrap.exe"
+  File /oname=gpgv.exe     "${BUILD_DIR}/gpgwrap.exe"
+  File /oname=gpgsplit.exe "${BUILD_DIR}/gpgwrap.exe"
 
   SetOutPath "$INSTDIR\share\gnupg"
   File "${prefix}/share/gnupg/options.skel"
