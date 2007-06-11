@@ -145,10 +145,19 @@ main (int argc, const char * const *argv)
   if (!argv_quoted)
     goto leave;
 
-  execv (pgm, (const char **) argv_quoted);
-  fprintf (stderr, "gpgwrap: executing `%s' failed: %s\n",
-           pgm, strerror (errno));
-  return 2;
+  /* Using execv does not replace the existing program image, but
+     spawns a new one and daemonizes it, confusing the command line
+     interpreter.  So we have to use spawnv.  */
+  rc = _spawnv (_P_WAIT, pgm, (const char **) argv_quoted);
+  if (rc < 0)
+    {
+      fprintf (stderr, "gpgwrap: executing `%s' failed: %s\n",
+	       pgm, strerror (errno));
+      return 2;
+    }
+
+  return rc;
+
  leave:
   fprintf (stderr, "gpgwrap: internal error parsing my own name `%s'\n",
            pgm);
