@@ -30,7 +30,8 @@ CLEANFILES = g4wihelp.dll versioninfo.txt README.en.txt README.de.txt \
              installer-options.ini NEWS.tmp gpgwrap.exe
 
 # Supported source packages.
-gpg4win_spkgs = glib gnupg libgpg-error gpgme gpgol gpa winpt sylpheed-claws
+gpg4win_spkgs = glib gnupg libgpg-error gpgme gpgol gpa winpt sylpheed-claws \
+	        gnupg2 libassuan libksba libgcrypt w32pth
 
 # Extra options to configure for individual packages.
 # We can use $(idir) here for the installation prefix.
@@ -62,25 +63,45 @@ endef
 # non-"libfoo.la" versions of iconv and gettext that we are using.
 #gpg4win_pkg_libgpg_error_configure = \
 #  --with-libiconv-prefix=$(idir) --with-libintl-prefix=$(idir)
-gpg4win_pkg_libgpg_error_configure = \
+gpg4win_pkg_libgpg_error_configure = --silent \
   CPPFLAGS=-I$(idir)/include LDFLAGS=-L$(idir)/lib
 
+gpg4win_pkg_libassuan_configure =  --silent \
+  --disable-shared \
+  --with-pth-prefix=$(idir)
+
+gpg4win_pkg_libksba_configure = --silent \
+  --with-gpg-error-prefix=$(idir)
+
+gpg4win_pkg_libgcrypt_configure = --silent \
+  --with-gpg-error-prefix=$(idir)
+
+gpg4win_pkg_gnupg2_configure = \
+  --with-gpg-error-prefix=$(idir) \
+  --with-ksba-prefix=$(idir) \
+  --with-libgcrypt-prefix=$(idir) \
+  --with-libassuan-prefix=$(idir) \
+  --with-zlib=$(idir) \
+  --with-pth-prefix=$(idir) \
+  --without-included-gettext
+
+
 # Glib doesn't add the LDFLAGS automatically.
-gpg4win_pkg_gpgme_configure = \
+gpg4win_pkg_gpgme_configure = --silent \
   --with-gpg-error-prefix=$(idir) --without-gpgsm --enable-static \
   --enable-w32-glib LDFLAGS=-L$(idir)/lib
 
-gpg4win_pkg_gpa_configure = \
+gpg4win_pkg_gpa_configure = --silent \
   --with-libiconv-prefix=$(idir) --with-libintl-prefix=$(idir) \
   --with-gpgme-prefix=$(idir) --with-zlib=$(idir)
 
-gpg4win_pkg_gpgol_configure = \
+gpg4win_pkg_gpgol_configure = --silent \
   --with-gpgme-prefix=$(idir) --with-gpg-error-prefix=$(idir)
 
-gpg4win_pkg_winpt_configure = \
+gpg4win_pkg_winpt_configure = --silent \
   --with-gpgme-prefix=$(idir) --with-gpg-error-prefix=$(idir)
 
-gpg4win_pkg_sylpheed_claws_configure = \
+gpg4win_pkg_sylpheed_claws_configure = --silent \
   --with-lib-prefix=$(idir) --with-libiconv-prefix=$(idir) \
   --with-gpg-error-prefix=$(idir) --with-gpgme-prefix=$(idir) \
   --with-config-dir="Sylpheed-claws" --disable-pthread \

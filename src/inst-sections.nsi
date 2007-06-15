@@ -26,8 +26,23 @@
 !ifdef HAVE_PKG_GNUPG
 !include "inst-gnupg.nsi"
 !endif
+!ifdef HAVE_PKG_GNUPG2
+!include "inst-gnupg2.nsi"
+!endif
 !ifdef HAVE_PKG_LIBGPG_ERROR
 !include "inst-libgpg-error.nsi"
+!endif
+!ifdef HAVE_PKG_W32PTH
+!include "inst-w32pth.nsi"
+!endif
+!ifdef HAVE_PKG_LIBASSUAN
+!include "inst-libassuan.nsi"
+!endif
+!ifdef HAVE_PKG_LIBKSBA
+!include "inst-libksba.nsi"
+!endif
+!ifdef HAVE_PKG_LIBGCRYPT
+!include "inst-libgrypt.nsi"
 !endif
 !ifdef HAVE_PKG_LIBICONV
 !include "inst-libiconv.nsi"
@@ -182,10 +197,25 @@
 !ifdef HAVE_PKG_LIBICONV
 !include "uninst-libiconv.nsi"
 !endif
+!ifdef HAVE_PKG_LIBGCRYPT
+!include "uninst-libgcrypt.nsi"
+!endif
+!ifdef HAVE_PKG_LIBKSBA
+!include "uninst-libksba.nsi"
+!endif
+!ifdef HAVE_PKG_LIBASSUAN
+!include "uninst-libassuan.nsi"
+!endif
+!ifdef HAVE_PKG_W32PTH
+!include "uninst-w32pth.nsi"
+!endif
 !ifdef HAVE_PKG_LIBGPG_ERROR
 # Note that the uninstaller of libgpg-error is supposed to remove the shareed
 # directories.  We might want to move this to an extra section.
 !include "uninst-libgpg-error.nsi"
+!endif
+!ifdef HAVE_PKG_GNUPG2
+!include "uninst-gnupg2.nsi"
 !endif
 !ifdef HAVE_PKG_GNUPG
 !include "uninst-gnupg.nsi"

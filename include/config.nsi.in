@@ -54,6 +54,22 @@
 !define gpg4win_pkg_libgpg_error @gpg4win_pkg_libgpg_error@
 !define gpg4win_pkg_libgpg_error_version @gpg4win_pkg_libgpg_error_version@
 
+@HAVE_PKG_W32PTH@
+!define gpg4win_pkg_w32pth @gpg4win_pkg_w32pth@
+!define gpg4win_pkg_w32pth_version @gpg4win_pkg_w32pth_version@
+
+@HAVE_PKG_LIBASSUAN@
+!define gpg4win_pkg_libassuan @gpg4win_pkg_libassuan@
+!define gpg4win_pkg_libassuan_version @gpg4win_pkg_libassuan_version@
+
+@HAVE_PKG_LIBGCRYPT@
+!define gpg4win_pkg_libgcrypt @gpg4win_pkg_libgcrypt@
+!define gpg4win_pkg_libgcrypt_version @gpg4win_pkg_libgcrypt_version@
+
+@HAVE_PKG_LIBKSBA@
+!define gpg4win_pkg_libksba @gpg4win_pkg_libksba@
+!define gpg4win_pkg_libksba_version @gpg4win_pkg_libksba_version@
+
 @HAVE_PKG_GPGME@
 !define gpg4win_pkg_gpgme @gpg4win_pkg_gpgme@
 !define gpg4win_pkg_gpgme_version @gpg4win_pkg_gpgme_version@
@@ -61,6 +77,10 @@
 @HAVE_PKG_GNUPG@
 !define gpg4win_pkg_gnupg @gpg4win_pkg_gnupg@
 !define gpg4win_pkg_gnupg_version @gpg4win_pkg_gnupg_version@
+
+@HAVE_PKG_GNUPG2@
+!define gpg4win_pkg_gnupg2 @gpg4win_pkg_gnupg2@
+!define gpg4win_pkg_gnupg2_version @gpg4win_pkg_gnupg2_version@
 
 @HAVE_PKG_GPGOL@
 !define gpg4win_pkg_gpgol @gpg4win_pkg_gpgol@
