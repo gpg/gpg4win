@@ -80,6 +80,8 @@ endef
 # Support macro.  Unpack the archive $(1).
 define DEFLATE_macro
 	case "$(1)" in			\
+          */gnupg2-2.*.tar.bz2)          \
+            $(TAR) -xj --transform='s,^gnupg-,gnupg2-,' -f "$(1)" ;; \
 	  *.tar.gz | *.tgz)		\
 	    $(TAR) xzf "$(1)" ;;	\
 	  *.tar.bz2 | *.tbz2 | *.tbz)	\

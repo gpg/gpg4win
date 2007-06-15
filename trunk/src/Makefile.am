@@ -83,7 +83,8 @@ gpg4win_pkg_gnupg2_configure = \
   --with-libassuan-prefix=$(idir) \
   --with-zlib=$(idir) \
   --with-pth-prefix=$(idir) \
-  --without-included-gettext
+  --without-included-gettext \
+  --disable-regex
 
 
 # Glib doesn't add the LDFLAGS automatically.
