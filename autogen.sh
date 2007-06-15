@@ -37,7 +37,7 @@ ACLOCAL=${AUTOMAKE_PREFIX}${ACLOCAL:-aclocal}${AUTOMAKE_SUFFIX}
 
 DIE=no
 FORCE=
-if test "$1" = "--force"; then
+if test x"$1" = x"--force"; then
   FORCE=" --force"
   shift
 fi

@@ -12,13 +12,10 @@ Instructions:
    [...]
    $ cd ..
 
-   If you have downloaded gnupg-2.x, you need to repack it so that the
-   name of the apckage is gnupg2. For example:
+   If you have downloaded gnupg-2.x, you need to rename that tarball.
+   e.g.:
    
-    tar xjf gnupg-2.0.5.tar.bz2 
-    mv gnupg-2.0.5 gnupg2-2.0.5
-    tar chf gnupg2-2.0.5.tar.bz2 gnupg2-2.0.5
-
+     mv gnupg-2.0.5.tar.bz2 gnupg2-2.0.5.tar.bz2
 
 2. Configure the source tree for cross compilation:
 
@@ -50,7 +47,7 @@ at least the following packages need to be installed:
  texinfo
  imagemagick
  tetex-bin
- tetex-extra
+ tr
  gs-common
  hyperlatex
 
