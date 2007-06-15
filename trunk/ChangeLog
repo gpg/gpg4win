@@ -3,6 +3,7 @@
 	* src/gpg4win.mk.in: Add cruel hack to support gnupg2.
 
 	* src/Makefile.am: Use --silent with most configure runs.
+	(gpg4win_pkg_gnupg2_post_install): New.
 
 	* src/uninst-gnupg2.nsi, src/inst-libgnupg2.nsi: New.
 	* src/uninst-libassun.nsi, src/inst-libassuan.nsi: New.

@@ -42,7 +42,7 @@
 !include "inst-libksba.nsi"
 !endif
 !ifdef HAVE_PKG_LIBGCRYPT
-!include "inst-libgrypt.nsi"
+!include "inst-libgcrypt.nsi"
 !endif
 !ifdef HAVE_PKG_LIBICONV
 !include "inst-libiconv.nsi"

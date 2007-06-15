@@ -22,7 +22,7 @@
 !ifdef prefix
 !undef prefix
 !endif
-!define prefix ${ipdir}/gnupg-${gpg4win_pkg_gnupg2_version}
+!define prefix ${ipdir}/gnupg2-${gpg4win_pkg_gnupg2_version}
 
 
 Section "GnuPG2" SEC_gnupg2
@@ -39,10 +39,10 @@ Section "GnuPG2" SEC_gnupg2
   # As a special exception, these programs are not kept in
   # libexec/gnupg, where they belong.  Please see the comment in
   # gnupg/g10/keyserver.c::keyserver_spawn() for an explanation.
-  File "${prefix}/libexec/gnupg/gpg2keys_finger.exe"
-  File "${prefix}/libexec/gnupg/gpg2keys_hkp.exe"
-  File "${prefix}/libexec/gnupg/gpg2keys_curl.exe"
-  File "${prefix}/libexec/gnupg/gpg2keys_ldap.exe"
+  File "${prefix}/libexec/gpg2keys_finger.exe"
+  File "${prefix}/libexec/gpg2keys_hkp.exe"
+  File "${prefix}/libexec/gpg2keys_curl.exe"
+  File "${prefix}/libexec/gpg2keys_ldap.exe"
 
   SetOutPath "$INSTDIR\pub"
   File /oname=gpg2.exe      "${BUILD_DIR}/gpgwrap.exe"
