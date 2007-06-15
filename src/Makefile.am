@@ -58,6 +58,14 @@ for i in de; do \
  done)
 endef
 
+
+# The fields FAQ and faq.html conflict with those in GnuPG1.
+# For now removes them.
+define gpg4win_pkg_gnupg2_post_install	
+( rm $$$${pkgidir}/share/gnupg/FAQ; \
+  rm $$$${pkgidir}/share/gnupg/faq.html )
+endef
+
 # We would like to use --with-libiconv-prefix and
 # --with-libintl-prefix, but these don't work with the cheesy
 # non-"libfoo.la" versions of iconv and gettext that we are using.
