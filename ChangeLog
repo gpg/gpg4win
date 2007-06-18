@@ -1,5 +1,8 @@
 2007-06-18  Marcus Brinkmann  <marcus@g10code.de>
 
+	* src/inst-w32pth.nsi: Install shared library.
+	* src/uninst-w32pth.nsi: Uninstall shared library.
+
 	* src/inst-gnupg2.nsi: Install gpgconf.exe.
 	* src/uninst-gnupg2.nsi: Uninstall gpgconf.exe.
 

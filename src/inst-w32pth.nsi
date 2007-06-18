@@ -34,7 +34,7 @@ Section "-w32pth" SEC_w32pth
 !ifdef SOURCES
   File "${gpg4win_pkg_w32pth}"
 !else
-  # Nothing to install as we link statically.
+  File ${prefix}/bin/libw32pth-0.dll
 
 !endif
 SectionEnd
