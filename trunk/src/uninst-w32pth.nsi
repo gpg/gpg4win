@@ -31,8 +31,7 @@ Section "-un.w32pth"
   Push "${gpg4win_pkg_w32pth}"
   Call un.SourceDelete
 !else
-  # Nothing to uninstall as we link static.
-
+  Delete "$INSTDIR\libw32pth-0.dll"
+  RMDir "$INSTDIR"
 !endif
 SectionEnd
-
