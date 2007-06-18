@@ -35,6 +35,7 @@ Section "GnuPG2" SEC_gnupg2
   File "${prefix}/bin/gpgsm.exe"
   File "${prefix}/bin/gpg-agent.exe"
   File "${prefix}/bin/scdaemon.exe"
+  File "${prefix}/bin/gpgconf.exe"
 
   # As a special exception, these programs are not kept in
   # libexec/gnupg, where they belong.  Please see the comment in
