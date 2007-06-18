@@ -35,6 +35,7 @@ Section "-un.gnupg2"
   Delete "$INSTDIR\gpgsm.exe"
   Delete "$INSTDIR\gpg-agent.exe"
   Delete "$INSTDIR\scdaemon.exe"
+  Delete "$INSTDIR\gpgconf.exe"
 
   Delete "$INSTDIR\pub\gpg2.exe"
   Delete "$INSTDIR\pub\gpgsm.exe"
