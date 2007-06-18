@@ -282,8 +282,33 @@ Function CalcDepends
 !ifdef HAVE_PKG_GPGME
   !insertmacro UnselectSection ${SEC_gpgme}
 !endif
+!ifdef HAVE_PKG_LIBKSBA
+  !insertmacro UnselectSection ${SEC_libksba}
+!endif
+!ifdef HAVE_PKG_W32PTH
+  !insertmacro UnselectSection ${SEC_w32pth}
+!endif
+!ifdef HAVE_PKG_LIBASSUAN
+  !insertmacro UnselectSection ${SEC_libassuan}
+!endif
+!ifdef HAVE_PKG_LIBGCRYPT
+  !insertmacro UnselectSection ${SEC_libgcrypt}
+!endif
 
   # Then enable all dependencies in reverse build list order!
+
+!ifdef HAVE_PKG_GNUPG2
+  !insertmacro SectionFlagIsSet ${SEC_gnupg2} ${SF_SELECTED} have_gnupg2 skip_gnupg2
+  have_gnupg2:
+  !insertmacro SelectSection ${SEC_libiconv}
+  !insertmacro SelectSection ${SEC_libgcrypt}
+  !insertmacro SelectSection ${SEC_libksba}
+  !insertmacro SelectSection ${SEC_libassuan}
+  !insertmacro SelectSection ${SEC_libgpg_error}
+  !insertmacro SelectSection ${SEC_w32pth}
+  !insertmacro SelectSection ${SEC_zlib}
+  skip_gnupg2:
+!endif
 
 !ifdef HAVE_PKG_GPGEE
   !insertmacro SectionFlagIsSet ${SEC_gpgee} ${SF_SELECTED} have_gpgee skip_gpgee
