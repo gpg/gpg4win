@@ -1,3 +1,8 @@
+2007-06-19  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
+
+	* manual/novices.tex: Text slightly reworked by
+	Brigitte Hamilton.
+
 2007-05-24  Werner Koch  <wk@g10code.com>
 
 	* manual/Makefile.am (preview): New.
