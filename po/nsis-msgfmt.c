@@ -315,6 +315,41 @@ xerror2 (int severity, po_message_t message1,
 struct po_xerror_handler err_handler = { xerror, xerror2 };
 
 
+char *
+convert_newline (const char *msg)
+{
+  int i;
+  int j = 0;
+  char *new_msg;
+
+  for (i = 0; msg[i]; i++)
+    if (msg[i] == '\n')
+      j++;
+
+  new_msg = malloc (i + 5 * j + 1);
+  if (!new_msg)
+    error (EXIT_FAILURE, errno, "couldn't allocate memory");
+
+  i = 0;
+  while (*msg)
+    {
+      if (*msg == '\n')
+	{
+	  new_msg[i++] = '$';
+	  new_msg[i++] = '\\';
+	  new_msg[i++] = 'r';
+	  new_msg[i++] = '$';
+	  new_msg[i++] = '\\';
+	  new_msg[i++] = 'n';
+	}
+      else
+	new_msg[i++] = *msg;
+      msg++;
+    }
+  return new_msg;
+}
+
+
 void
 fmt_one (char *filename)
 {
@@ -387,9 +422,11 @@ fmt_one (char *filename)
 	  msgctx = po_message_msgctxt (message);
 
 	  if (msgctx != NULL)
-	    /* FIXME: Replace newlines.  */
-	    printf ("LangString %s ${%s} \"%s\"\n", msgctx, lang,
-		    (*msgstr == '\0') ? msgid : msgstr);
+	    {
+	      char *msg = convert_newline ((*msgstr == '\0') ? msgid : msgstr);
+	      printf ("LangString %s ${%s} \"%s\"\n", msgctx, lang, msg);
+	      free (msg);
+	    }
 	}
       po_message_iterator_free (iterator);
     }

@@ -46,9 +46,7 @@ collect && !/\\$/ {
 
   # Snip everything up to the first double-quote.
   sub (/^[^"]*/, "", line);
-  # Convert the \r characters that gettext doesn't like.
-  gsub (/\\r/, "\\\\r", line);
-  # Convert the \n characters as well.
-  gsub (/\\n/, "\\\\n", line);
+  # Convert the newline characters.
+  gsub (/ *\$\\r\$\\n */, "\\n", line);
   print "pgettext (\"" context "\", " line ");";
 }
