@@ -45,15 +45,7 @@ SectionEnd
 
 LangString DESC_SEC_winpt ${LANG_ENGLISH} \
    "Windows Privacy Tray"
-LangString DESC_SEC_winpt ${LANG_GERMAN} \
-   "Windows Privacy Tray (WinPT) ist ein vielseitiges Programm zur \
-   Schlüsselverwaltung sowie aller anderen Funktionen von GnuPG.  Es \
-   installiert sich in die Startleiste."
 
 LangString DESC_Menu_winpt ${LANG_ENGLISH} \
    "Run the Windows Privacy Tray key management tool. \
     This is a versatile key management and encryption tool."
-LangString DESC_Menu_winpt ${LANG_GERMAN} \
-   "Das Schlüsselverwaltungsprogramm Windows Privacy Tray aufrufen. \
-    Dies ist ein vielseitiges Programm zur Schlüsselverwaltung und \
-    Verschlüsselung.  Es installiert sich in die Startleiste."

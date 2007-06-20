@@ -21,7 +21,7 @@ ACLOCAL_AMFLAGS = -I m4
 AUTOMAKE_OPTIONS = dist-bzip2
 DISTCHECK_CONFIGURE_FLAGS = --host=i586-mingw32msvc --disable-pkg-man_advanced_en 
 
-SUBDIRS = packages include doc src
+SUBDIRS = po packages include doc src
 
 EXTRA_DIST = autogen.sh README.SVN \
         patches/pthreads-w32-2-7-0-release/01-make.patch \

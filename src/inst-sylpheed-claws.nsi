@@ -50,16 +50,9 @@ SectionEnd
 
 LangString DESC_SEC_sylpheed ${LANG_ENGLISH} \
    "Sylpheed-Claws Mail-User-Agent"
-LangString DESC_SEC_sylpheed ${LANG_GERMAN} \
-   "Sylpheed-Claws ist ein vollständiges Mail- und News-Programm mit sehr \
-    guter Unterstützung für GnuPG."
 
 LangString DESC_Menu_sylpheed ${LANG_ENGLISH} \
    "Run the Sylpheed-Claws mailprogram."
-LangString DESC_Menu_sylpheed ${LANG_GERMAN} \
-   "Das Mailprogramm Sylpheed-Claws aufrufen."
 
 LangString DESC_Menu_sylpheed_pdf ${LANG_ENGLISH} \
    "Show the online manual of Sylpheed Claws"
-LangString DESC_Menu_sylpheed_pdf ${LANG_GERMAN} \
-   "Das englische Handbuch zu Sylpheed Claws anzeigen"

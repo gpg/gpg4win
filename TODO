@@ -9,6 +9,21 @@
 
   (04-* is not required).
 
+* I18n:
+
+** There is no advantage to conditionally define translation strings,
+   as the tables are purged of unnecessary strings by makensis.  Thus
+   we should probably define strings where they are used, rather in the
+   inst-*.nsi files of the package to which they belong.  This would
+   also simplify management of po/POFILES.in.
+** /bin/bash is used unconditionally in po/Makevars.
+** nsis-msgfmt could check if a language file (nlf/nsh) exists for the
+   installed version of makensis/Modern UI.
+** po/Rules-nsis requires a compiler for the build platform, and an installed
+   libgettextpo.  None of this is configurable at this point.
+** nsis-xgettext.awk could be made more robust, although there is no
+   strong need.
+** Test what happens with --disable-nls.
 
 * Build system
 ** Some versions of strip don't work.

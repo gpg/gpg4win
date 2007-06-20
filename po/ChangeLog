@@ -1,0 +1,11 @@
+2007-06-20  Marcus Brinkmann  <marcus@g10code.de>
+
+	* Makevars, LINGUAS, nsis-xgettext.sh, nsis-xgettext.awk,
+	nsis-msgfmt.c, Rules-nsis, de.po, README.nsis: New files.
+
+2007-06-20  gettextize  <bug-gnu-gettext@gnu.org>
+
+	* Makefile.in.in: New file, from gettext-0.16.1.
+	* remove-potcdate.sin: New file, from gettext-0.16.1.
+	* POTFILES.in: New file.
+

@@ -38,16 +38,9 @@ SectionEnd
 
 LangString DESC_Name_man_advanced_en ${LANG_ENGLISH} \
    "Advanced Manual"
-LangString DESC_Name_man_advanced_en ${LANG_GERMAN} \
-   "Durchblickerhandbuch (Englisch)"
 
 LangString DESC_SEC_man_advanced_en ${LANG_ENGLISH} \
    "Gpg4Win Manual for the Advanced User"
-LangString DESC_SEC_man_advanced_en ${LANG_GERMAN} \
-   "Gpg4Win Handbuch für den Durchblicker (Englisch)"
-
 
 LangString DESC_Menu_man_advanced_en ${LANG_ENGLISH} \
    "Show the online manual of Gpg4Win for advanced users"
-LangString DESC_Menu_man_advanced_en ${LANG_GERMAN} \
-   "Das englische Online-Handbuch von Gpg4Win für den Durchblicker anzeigen"

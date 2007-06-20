@@ -38,15 +38,9 @@ SectionEnd
 
 LangString DESC_Name_man_novice_en ${LANG_ENGLISH} \
    "Novice Manual"
-LangString DESC_Name_man_novice_en ${LANG_GERMAN} \
-   "Einsteigerhandbuch (Englisch)"
 
 LangString DESC_SEC_man_novice_en ${LANG_ENGLISH} \
    "Gpg4Win Manual for the Novice User"
-LangString DESC_SEC_man_novice_en ${LANG_GERMAN} \
-   "Gpg4Win Handbuch für den Einsteiger (Englisch)"
 
 LangString DESC_Menu_man_novice_en ${LANG_ENGLISH} \
    "Show the online manual of Gpg4Win for novice users"
-LangString DESC_Menu_man_novice_en ${LANG_GERMAN} \
-   "Das englische Online-Handbuch von Gpg4Win für den Einsteiger anzeigen"

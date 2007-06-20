@@ -64,19 +64,9 @@ SectionEnd
 
 LangString T_GPGee_RegFailed ${LANG_ENGLISH} \
    "Warning: Registration of the GPGee explorer extension failed."
-LangString T_GPGee_RegFailed ${LANG_GERMAN} \
-   "Warnung: Registration der GPGee Explorer Extension ist fehlgeschlagen. "
 
 LangString DESC_SEC_gpgee ${LANG_ENGLISH} \
    "GPG Explorer Extensions"
-LangString DESC_SEC_gpgee ${LANG_GERMAN} \
-   "GPG Explorer Erweiterungen (GPGee) ist eine Erweiterung für \
-    den Explorer, die es ermöglicht, Dateien über das Kontextmenü zu \
-    verschlüsseln."
 
 LangString DESC_Menu_gpgee_hlp ${LANG_ENGLISH} \
    "Show the online manual of GPGee"
-LangString DESC_Menu_gpgee_hlp ${LANG_GERMAN} \
-   "Das englische Handbuch zu GPGee anzeigen"
-
-

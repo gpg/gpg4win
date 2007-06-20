@@ -19,6 +19,7 @@
 
 !cd "${BUILD_DIR}"
 !addincludedir "${TOP_SRCDIR}"
+!addincludedir "${TOP_SRCDIR}/po"
 !addincludedir "${SRCDIR}"
 !addplugindir "${BUILD_DIR}"
 !include "../include/config.nsi"
@@ -106,6 +107,8 @@ SetCompressor lzma
 !define BINARIES
 !include "inst-sections.nsi"
 
+# At long last, include all the translations.
+!include "../po/catalogs.nsi"
 
 # Now include the generic parts to end the installation.
 !include "installer-finish.nsi"
