@@ -82,6 +82,10 @@
 !define gpg4win_pkg_gnupg2 @gpg4win_pkg_gnupg2@
 !define gpg4win_pkg_gnupg2_version @gpg4win_pkg_gnupg2_version@
 
+@HAVE_PKG_PINENTRY@
+!define gpg4win_pkg_pinentry @gpg4win_pkg_pinentry@
+!define gpg4win_pkg_pinentry_version @gpg4win_pkg_pinentry_version@
+
 @HAVE_PKG_GPGOL@
 !define gpg4win_pkg_gpgol @gpg4win_pkg_gpgol@
 !define gpg4win_pkg_gpgol_version @gpg4win_pkg_gpgol_version@

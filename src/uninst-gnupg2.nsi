@@ -22,7 +22,7 @@
 !ifdef prefix
 !undef prefix
 !endif
-!define prefix ${ipdir}/gnupg-${gpg4win_pkg_gnupg2_version}
+!define prefix ${ipdir}/gnupg2-${gpg4win_pkg_gnupg2_version}
 
 
 # Uninstaller section.

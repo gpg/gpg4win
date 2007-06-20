@@ -1,3 +1,14 @@
+2007-06-20  Werner Koch  <wk@g10code.com>
+
+	* src/inst-sections.nsi, src/Makefile.am, src/uninst-pinentry.nsi
+	* src/inst-pinentry.nsi, include/config.nsi.in: Add new package
+	pinentry.
+	* src/Makefile.am (gpg4win_pkg_pinentry_configure): New.
+	
+	* src/Makefile.am (gpg4win-$(VERSION).exe): Add versioninfo.txt as
+	dependency.
+	(gpg4win-light-$(VERSION).exe): Ditto.
+
 2007-06-20  Marcus Brinkmann  <marcus@g10code.de>
 
 	* po: New directory.
