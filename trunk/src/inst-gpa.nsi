@@ -49,15 +49,7 @@ SectionEnd
 
 LangString DESC_SEC_gpa ${LANG_ENGLISH} \
    "GNU Privacy Assistant"
-LangString DESC_SEC_gpa ${LANG_GERMAN} \
-   "GNU Privacy Assistent (GPA) ist ein Programm zum Verwalten von Schlüsseln \
-    welches für mehrere Plattformen verfügbar ist.  Es kann zusammen \
-    oder anstatt von WinPT benutzt werden."
-
 
 LangString DESC_Menu_gpa ${LANG_ENGLISH} \
    "Run the GNU Privacy Assistant key management tool. \
     This is an alternative to the WinPT key management tool."
-LangString DESC_Menu_gpa ${LANG_GERMAN} \
-   "Das Schlüsselverwaltungsprogramm GNU Privacy Assistent aufrufen. \
-    Dies ist eine Alternative zu dem WinPT Programm."

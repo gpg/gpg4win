@@ -60,6 +60,10 @@ AM_MAINTAINER_MODE
 AC_CANONICAL_HOST
 AM_CONFIG_HEADER(config.h)
 
+# Language support
+AM_PO_SUBDIRS
+
+
 AC_SUBST(PACKAGE)
 AC_SUBST(VERSION)
 AC_SUBST(MANUALVERSION_EINSTEIGER)
@@ -218,7 +222,8 @@ fi
 
 # Finalize.
 
-AC_CONFIG_FILES(Makefile packages/Makefile include/Makefile src/Makefile)
+AC_CONFIG_FILES(Makefile)
+AC_CONFIG_FILES(packages/Makefile include/Makefile src/Makefile po/Makefile.in)
 AC_CONFIG_FILES(include/config.nsi src/gpg4win.mk)
 AC_CONFIG_FILES(doc/Makefile)
 AC_CONFIG_FILES(doc/logo/Makefile)

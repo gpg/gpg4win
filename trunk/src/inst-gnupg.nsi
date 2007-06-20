@@ -75,13 +75,4 @@ SectionEnd
 
 LangString DESC_SEC_gnupg ${LANG_ENGLISH} \
    "GNU Privacy Guard"
-LangString DESC_SEC_gnupg ${LANG_GERMAN} \
-   "Der GNU Privacy Guard (GnuPG) ist der Kernbestandteil \
-    dieser Software.  GnuPG stellt die eigentliche \
-    Verschlüsselung sowie die Verwaltung der Schlüssel bereit."
-
-LangString DESC_Menu_gnupg_faq ${LANG_ENGLISH} \
-   "Show the Frequently Asked Questions Document for GnuPG"
-LangString DESC_Menu_gnupg_faq ${LANG_GERMAN} \
-   "Das Dokument mit den häufig gestellten Fragen (FAQ) zu GnuPG anzeigen"
 

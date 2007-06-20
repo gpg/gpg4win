@@ -184,7 +184,6 @@ Var STARTMENU_FOLDER
 # before defining the translation strings.  Confusing.
 
 !insertmacro MUI_LANGUAGE "English"
-!insertmacro MUI_LANGUAGE "German"
 
 #!insertmacro MUI_RESERVEFILE_LANGDLL
 !insertmacro MUI_RESERVEFILE_INSTALLOPTIONS
@@ -200,58 +199,36 @@ ReserveFile "${TOP_SRCDIR}\doc\logo\gpg4win-logo-164x314.bmp"
 # Language support
 
 LangString T_LangCode ${LANG_ENGLISH} "en"
-LangString T_LangCode ${LANG_GERMAN}  "de"
-
 
 # The WelcomeTitle is displayed on the first page.
 LangString T_WelcomeTitle ${LANG_ENGLISH} "${WELCOME_TITLE_ENGLISH}"
-LangString T_WelcomeTitle ${LANG_GERMAN} "${WELCOME_TITLE_GERMAN}"
 
 # The About string as displayed on the first page.
 LangString T_About ${LANG_ENGLISH} "${ABOUT_ENGLISH}"
-LangString T_About ${LANG_GERMAN} "${ABOUT_GERMAN}"
 
 # Startup page
 LangString T_GPLHeader ${LANG_ENGLISH} \
   "This software is licensed under the terms of the GNU General Public \
    License (GPL) which guarantees your freedom to share and change Free \
    Software."
-LangString T_GPLHeader ${LANG_GERMAN}} \
-  "Diese Software ist unter der GNU General Public License \
-   (GPL) lizensiert; dies gibt Ihnen die Freiheit, sie \
-   zu ändern und weiterzugeben."
 
 LangString T_GPLShort ${LANG_ENGLISH} \
   "In short: You are allowed to run this software for any purpose. \
    You may distribute it as long as you give the recipients the same \
    rights you have received."
-LangString T_GPLShort ${LANG_GERMAN} \
-  "In aller Kürze: Sie haben das Recht, die Software zu jedem Zweck \
-   einzusetzen.  Sie können die Software weitergeben, sofern Sie dem \
-   Empfänger dieselben Rechte einräumen, die auch Sie erhalten haben."
 
 LangString T_RunKeyManager ${LANG_ENGLISH} \
    "Run the key manager"
-LangString T_RunKeyManager ${LANG_GERMAN} \
-   "Die Schlüsselverwaltung aufrufen"
 
 LangString T_MoreInfo ${LANG_ENGLISH} \
    "Click here for the project's homepage"
-LangString T_MoreInfo ${LANG_GERMAN} \
-   "Hier klicken um zur Homepage des Projekts zu gelangen"
 LangString T_MoreInfoURL ${LANG_ENGLISH} "http://www.gpg4win.org"
-LangString T_MoreInfoURL ${LANG_GERMAN}  "http://www.gpg4win.de"
 
 LangString T_ShowReadme ${LANG_ENGLISH} \
    "Show the README file"
-LangString T_ShowReadme ${LANG_GERMAN} \
-   "Die README Datei anzeigen"
 
 LangString T_NoKeyManager ${LANG_ENGLISH} \
    "No key manager has been installed, thus we can't run one now."
-LangString T_NoKeyManager ${LANG_GERMAN} \
-   "Es wurde keine Schlüsselverwaltung installiert. \
-    Deswegen kann sie jetzt auch nicht ausgeführt werden."
 
 
 # Functions
@@ -436,37 +413,24 @@ FunctionEnd
 
 # Installation options title
 LangString T_InstallOptions ${LANG_ENGLISH} "Install Options"
-LangString T_InstallOptions ${LANG_GERMAN}  "Installationsoptionen"
 
 # Installation options subtitle 1
 LangString T_InstallOptLinks ${LANG_ENGLISH} "Start links"
-LangString T_InstallOptLinks ${LANG_GERMAN}  "Startlinks"
 
 LangString T_InstOptLabelA  ${LANG_ENGLISH} \
      "Please select where Gpg4win shall install links:"
-LangString T_InstOptLabelA  ${LANG_GERMAN} \
-     "Bitte wählen Sie, welche Verknüpfungen angelegt werden sollen:"
 
 LangString T_InstOptLabelB  ${LANG_ENGLISH} \
      "(Only programs will be linked into the quick launch bar.)"
-LangString T_InstOptLabelB  ${LANG_GERMAN} \
-     "(In die Schnellstartleiste werden nur Verknüpfungen für \
-      Programme angelegt.) "
 
 LangString T_InstOptFieldA  ${LANG_ENGLISH} \
      "Start Menu"
-LangString T_InstOptFieldA  ${LANG_GERMAN} \
-     "Startmenü"
 
 LangString T_InstOptFieldB  ${LANG_ENGLISH} \
      "Desktop"
-LangString T_InstOptFieldB  ${LANG_GERMAN} \
-     "Arbeitsfläche"
 
 LangString T_InstOptFieldC  ${LANG_ENGLISH} \
      "Quick Launch Bar"
-LangString T_InstOptFieldC  ${LANG_GERMAN} \
-     "Schnellstartleiste"
 
 #------------------------------------------------
 # String pertaining to the existing version check
@@ -474,23 +438,12 @@ LangString T_InstOptFieldC  ${LANG_GERMAN} \
 LangString T_FoundExistingVersion ${LANG_ENGLISH} \
      "Version $R1 has already been installed.  $\r$\n\
       Do you want to overwrite it with version ${VERSION}?"
-LangString T_FoundExistingVersion ${LANG_GERMAN} \
-     "Version $R1 ist hier bereits installiert. $\r$\n\
-      Möchten Sie diese mit Version ${VERSION} überschreiben? $\r$\n\
-       $\r$\n\
-      (Sie können in jedem Fall mit JA antworten, falls es sich um \
-       eine neuere oder dieselbe Version handelt.)"
 LangString T_FoundExistingVersionB ${LANG_ENGLISH} \
      "A version of Gpg4Win has already been installed on the system. \
       There will be no problem installing and thus overwriting this \
       Version. $\r$\n\
        $\r$\n\
       Do you want to continue installing Gpg4win?"
-LangString T_FoundExistingVersionB ${LANG_GERMAN} \
-     "Eine Version von Gpg4Win ist hier bereits installiert. \
-      Es ist problemlos möglich, die Installation fortzuführen.  $\r$\n\
-        $\r$\n\
-      Möchten die die Installation von Gpg4Win fortführen?"
 
 
 #---------------------------------------------
@@ -499,11 +452,6 @@ LangString T_FoundExistingVersionB ${LANG_GERMAN} \
 LangString T_FoundOldSeeManual ${LANG_ENGLISH} \
      "Please see the Gpg4win user manual to learn how to migrate existing \
       keys from other GnuPG based installations to Gpg4win."
-LangString T_FoundOldSeeManual ${LANG_GERMAN} \
-     "Bitte sehen Sie im Gpg4win für Einsteiger Handbuch nach, wie Sie Ihre \
-      Schlüssel aus anderen - GnuPG basierten - Installationen in Gpg4win \
-      überführen.  Es wird dringend geraten Gpg4Win nicht zusammen mit \
-      diesen anderen Installation zu betreiben."
 
 #---------
 LangString T_FoundOldGnuPP ${LANG_ENGLISH} \
@@ -513,20 +461,6 @@ LangString T_FoundOldGnuPP ${LANG_ENGLISH} \
           $\r$\n\
       Do you want to continue installing Gpg4win and take care of the old \
       installation later?"
-LangString T_FoundOldGnuPP ${LANG_GERMAN} \
-     "Eine alte Installation von GnuPP (GNU Privacy Project) wurde gefunden. \
-      Diese Software wird nicht mehr gepflegt und sollte deshalb vom \
-      System entfernt werden.  $\r$\n\
-        $\r$\n\
-      Sie können die Installation von Gpg4win jetzt weiterdurchführen und \
-      danach entscheiden, ob Sie das alte GnuPP dann entfernen.  Sie finden \
-      hierzu Hinweise im Gpg4Win Handbuch für Einsteiger.  Falls Sie die alte \
-      Installation schon jetzt entfernen möchten, so exportieren Sie dort \
-      alle vorhandenen Schlüssel in eine Datei um sie so später in Gpg4Win \
-      wieder importieren zu können. $\r$\n\
-        $\r$\n\
-      Möchten Sie die Installation von Gpg4win weiter durchführen und sich \
-      dann später um die Entfernung von GnuPP kümmern?"
 
 #---------
 LangString T_FoundOldGnuPT ${LANG_ENGLISH} \
@@ -534,22 +468,6 @@ LangString T_FoundOldGnuPT ${LANG_ENGLISH} \
       problems when used along with Gpg4win. $\r$\n\
           $\r$\n\
       Do you want to continue installing Gpg4win?"
-LangString T_FoundOldGnuPT ${LANG_GERMAN} \
-     "Eine Installation von GnuPT wurde gefunden.  Dies kann zu Problemen \
-      führen, falls GnuPT zusammem mit Gpg4win benutzt wird.  Falls Sie GnuPT \
-      zwischenzeitlich bereits entfernt haben, so ignorieren Sie diese \
-      Warnung bitte.  Die Deinstallation von GnuPT erfolgt nicht immer \
-      spurlos und Gpg4win kann deshalb nicht sicher erkennen, ob es \
-      vollständig entfernt wurde.  $\r$\n\
-         $\r$\n\
-      Sie können die Installation von Gpg4win jetzt weiterdurchführen und \
-      danach entscheiden, ob Sie das alte GnuPT dann entfernen.  Sie finden \
-      hierzu Hinweise im Gpg4Win Handbuch für Einsteiger.  Falls Sie die alte \
-      Installation schon jetzt entfernen möchten, so exportieren Sie dort \
-      alle vorhandenen Schlüssel in eine Datei um sie so später in Gpg4Win \
-      wieder importieren zu können.  $\r$\n\
-          $\r$\n\
-      Möchten Sie die Installation von Gpg4win fortführen?"
 
 #---------
 LangString T_FoundOldWinPTSF ${LANG_ENGLISH} \
@@ -559,24 +477,6 @@ LangString T_FoundOldWinPTSF ${LANG_ENGLISH} \
           $\r$\n\
       Do you want to continue installing Gpg4win and take care of the old \
       installation later?"
-LangString T_FoundOldWinPTSF ${LANG_GERMAN} \
-     "Eine alte Installation der Windows Privacy Tools von Sourceforge \
-      wurde gefunden.  Diese Software wird nicht mehr gepflegt und verträgt \
-      sich vermutlich nicht mit Gpg4win.  Sie sollte deshalb vom System \
-      entfernt werden.  $\r$\n\
-        $\r$\n\
-      Sie können versuchen, die Installation von Gpg4win jetzt \
-      weiterdurchführen und danach entscheiden, ob Sie die alte Installation \
-      entfernen.  Sie finden hierzu Hinweise im Gpg4Win Handbuch für \
-      Einsteiger.  $\r$\n\
-        $\r$\n\
-      Wir empfehlen alerdings, diese alte Installation vorher zu entfernen. \
-      Brechen Sie hierzu die Installation von Gpg4win ab und exportieren Sie \
-      mittles dieser alten Version alle vorhandenen Schlüssel in eine Datei \
-      um sie so später in Gpg4Win wieder importieren zu können. $\r$\n\
-        $\r$\n\
-      Möchten Sie die Installation von Gpg4win trotzdem jetzt weiter \
-      durchführen?"
 
 
 #--------
@@ -585,21 +485,12 @@ LangString T_FoundOldGnuPack ${LANG_ENGLISH} \
       uninstall it before you can continue with Gpg4win installation. $\r$\n\
         $\r$\n\
       The installation will be aborted now!"
-LangString T_FoundOldGnuPack ${LANG_GERMAN} \
-     "Eine Installation von GnuPG-Pack wurde gefunden.  Sie müssen diese \
-      zuerst deinstallieren bevor Sie mit der Installation von Gpg4win \
-      fortfahren können. $\r$\n\
-        $\r$\n\
-      Die Installation von Gpg4win wird nun abgebrochen!"
 
 
 
 # From Function PrintNonAdminWarning
 LangString T_AdminNeeded ${LANG_ENGLISH} \
    "Warning: Administrator permissions required for a successful installation"
-LangString T_AdminNeeded ${LANG_GERMAN} \
-   "Achtung: Für eine erfolgreiche Installation werden \
-    Administratorrechte benötigt."
 
 # From Function PrintCloseOtherApps
 LangString T_CloseOtherApps ${LANG_ENGLISH} \
@@ -607,16 +498,8 @@ LangString T_CloseOtherApps ${LANG_ENGLISH} \
     In particular you should close Outlook and all Explorer \
     windows.  Gpg4Win will try to install anyway but a reboot \
     will be required then."
-LangString T_CloseOtherApps ${LANG_GERMAN} \
-   "Bitte stellen Sie sicher, daß alle anderen Anwendugen geschlossen \
-    sind.  Insbesondere sollten Sie Outlook und alle Explorer Fenster \
-    schliessen bevor Sie die Installation fortsetzen.  Gpg4Win wird auf \
-    jeden Fall versuchen, eine Installation durchzuführen; es ist dann aber \
-    u.U. notwendig, das System neu zu starten."
 LangString T_ShuttingDownWinPT ${LANG_ENGLISH} \
    "Trying to shutdown a possible running instance of WinPT."
-LangString T_ShuttingDownWinPT ${LANG_GERMAN} \
-   "Ein möglicherweise laufendes WinPT wird jetzt automatisch beendet."
 
 
 # FIXME: The GetAfterChar function comes from the NSIS wiki.

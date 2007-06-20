@@ -20,9 +20,6 @@
 
 LangString T_AlreadyRunning ${LANG_ENGLISH} \
    "An instance of this installer is already running."
-LangString T_AlreadyRunning ${LANG_GERMAN} \
-   "Ein Exemplar dieses Installers läuft bereits."
-
 
 #Function G4wTest
 #  Push $R0

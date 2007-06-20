@@ -42,8 +42,6 @@ SectionEnd
 
 LangString DESC_Menu_gpg4win_readme ${LANG_ENGLISH} \
    "General information on Gpg4Win"
-LangString DESC_Menu_gpg4win_readme ${LANG_GERMAN} \
-   "Allgemeine Informationen zu Gpg4Win"
 
-
-
+LangString DESC_Menu_gnupg_faq ${LANG_ENGLISH} \
+   "Show the Frequently Asked Questions Document for GnuPG"

@@ -1,0 +1,15 @@
+# List of source files which contain translatable strings.
+src/g4wihelp.nsi
+src/installer.nsi
+src/inst-eudoragpg.nsi
+src/inst-gnupg.nsi
+src/inst-gpa.nsi
+src/inst-gpg4win.nsi
+src/inst-gpgee.nsi
+src/inst-gpgol.nsi
+src/inst-man_advanced_de.nsi
+src/inst-man_advanced_en.nsi
+src/inst-man_novice_de.nsi
+src/inst-man_novice_en.nsi
+src/inst-sylpheed-claws.nsi
+src/inst-winpt.nsi

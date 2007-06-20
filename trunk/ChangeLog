@@ -1,3 +1,28 @@
+2007-06-20  Marcus Brinkmann  <marcus@g10code.de>
+
+	* po: New directory.
+	* m4/po.m4: New file, from gettext-0.16.1.
+	* m4/progtest.m4: New file, from gettext-0.16.1.
+	* m4/nls.m4: New file, from gettext-0.16.1.
+	* Makefile.am (SUBDIRS): Add po.
+	* configure.ac: Invoke AM_PO_SUBDIRS.
+	(AC_CONFIG_FILES): Add po/Makefile.in.
+
+	* src/installer.nsi: Do not insert MUI_LANGUAGE "German".
+	* src/gpg4win.nsi, src/gpg4win-src.nsi: Add include dir
+	${TOP_SRCDIR}/po.  Include "../po/catalogs.nsi".
+	* src/inst-gnupg.nsi: Move translation string DESC_Menu_gnupg_faq
+	from here ...	
+	* src/inst-gpg4win.nsi: ... to here.
+
+	* src/g4wihelp.nsi, src/installer.nsi, src/inst-eudoragpg.nsi,
+	src/inst-gnupg.nsi, src/inst-gpa.nsi, src/inst-gpg4win.nsi,
+	src/inst-gpgee.nsi, src/inst-gpgol.nsi,
+	src/inst-man_advanced_de.nsi, src/inst-man_advanced_en.nsi,
+	src/inst-man_novice_de.nsi, src/inst-man_novice_en.nsi,
+	src/inst-sylpheed-claws.nsi, src/inst-winpt.nsi: Remove German
+	translation.
+	
 2007-06-18  Marcus Brinkmann  <marcus@g10code.de>
 
 	* src/inst-w32pth.nsi: Install shared library.
