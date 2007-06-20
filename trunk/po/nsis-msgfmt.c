@@ -346,6 +346,7 @@ convert_newline (const char *msg)
 	new_msg[i++] = *msg;
       msg++;
     }
+  new_msg[i] = '\0';
   return new_msg;
 }
 
