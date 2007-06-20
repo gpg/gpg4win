@@ -31,7 +31,7 @@ CLEANFILES = g4wihelp.dll versioninfo.txt README.en.txt README.de.txt \
 
 # Supported source packages.
 gpg4win_spkgs = glib gnupg libgpg-error gpgme gpgol gpa winpt sylpheed-claws \
-	        gnupg2 libassuan libksba libgcrypt w32pth
+	        gnupg2 pinentry libassuan libksba libgcrypt w32pth
 
 # Extra options to configure for individual packages.
 # We can use $(idir) here for the installation prefix.
@@ -93,6 +93,11 @@ gpg4win_pkg_gnupg2_configure = \
   --with-pth-prefix=$(idir) \
   --without-included-gettext \
   --disable-regex
+
+gpg4win_pkg_pinentry_configure = \
+  --disable-pinentry-gtk \
+  --disable-pinentry-gtk2 \
+  --disable-pinentry-qt 
 
 
 # Glib doesn't add the LDFLAGS automatically.
@@ -284,13 +289,13 @@ README.de.txt : versioninfo.txt NEWS.tmp $(top_srcdir)/doc/README.de.txt
 # So we have to pull a couple of strings to correct this.
 gpg4win-$(VERSION).exe: gpg4win.nsi $(common_nsi) stamps/stamp-final \
                         g4wihelp.dll gpgwrap.exe README.en.txt README.de.txt \
-			installer-options.ini
+			installer-options.ini versioninfo.txt
 	$(MAKENSIS) -V3 -DBUILD_DIR=`pwd` -DTOP_SRCDIR=$(top_srcdir) \
 		-DSRCDIR=$(srcdir) $(srcdir)/gpg4win.nsi
 
 gpg4win-light-$(VERSION).exe: gpg4win.nsi $(common_nsi) stamps/stamp-final \
                         g4wihelp.dll gpgwrap.exe README.en.txt README.de.txt \
-			installer-options.ini
+			installer-options.ini versioninfo.txt
 	$(MAKENSIS) -V3 -DBUILD_DIR=`pwd` -DTOP_SRCDIR=$(top_srcdir) \
 		-DSRCDIR=$(srcdir) -DGPG4WIN_LIGHT=1 $(srcdir)/gpg4win.nsi
 

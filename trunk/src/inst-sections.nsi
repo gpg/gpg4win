@@ -29,6 +29,9 @@
 !ifdef HAVE_PKG_GNUPG2
 !include "inst-gnupg2.nsi"
 !endif
+!ifdef HAVE_PKG_PINENTRY
+!include "inst-pinentry.nsi"
+!endif
 !ifdef HAVE_PKG_LIBGPG_ERROR
 !include "inst-libgpg-error.nsi"
 !endif
@@ -214,6 +217,9 @@
 # directories.  We might want to move this to an extra section.
 !include "uninst-libgpg-error.nsi"
 !endif
+!ifdef HAVE_PKG_PINENTRY
+!include "uninst-pinentry.nsi"
+!endif
 !ifdef HAVE_PKG_GNUPG2
 !include "uninst-gnupg2.nsi"
 !endif
@@ -294,6 +300,9 @@ Function CalcDepends
 !ifdef HAVE_PKG_LIBGCRYPT
   !insertmacro UnselectSection ${SEC_libgcrypt}
 !endif
+!ifdef HAVE_PKG_PINENTRY
+  !insertmacro UnselectSection ${SEC_pinentry}
+!endif
 
   # Then enable all dependencies in reverse build list order!
 
@@ -307,6 +316,7 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_libgpg_error}
   !insertmacro SelectSection ${SEC_w32pth}
   !insertmacro SelectSection ${SEC_zlib}
+  !insertmacro SelectSection ${SEC_pinentry}
   skip_gnupg2:
 !endif
 
@@ -354,17 +364,6 @@ Function CalcDepends
   skip_sylpheed:
 !endif
 
-#!ifdef HAVE_PKG_EUDORAGPG
-#  !insertmacro SectionFlagIsSet ${SEC_eudoragpg} ${SF_SELECTED} have_eudoragpg skip_eudoragpg
-#  have_eudoragpg:
-#  !insertmacro SelectSection ${SEC_zlib}
-#  !insertmacro SelectSection ${SEC_gtk_}
-#  !insertmacro SelectSection ${SEC_libpng}
-#  !insertmacro SelectSection ${SEC_glib}
-#  !insertmacro SelectSection ${SEC_gpgme}
-#  !insertmacro SelectSection ${SEC_gnupg}
-#  skip_eudoragpg:
-#!endif
 
 !ifdef HAVE_PKG_GTK_
   !insertmacro SectionFlagIsSet ${SEC_gtk_} \

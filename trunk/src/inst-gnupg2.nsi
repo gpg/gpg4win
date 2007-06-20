@@ -1,4 +1,4 @@
-# inst-gnupgw.nsi - Installer snippet for gnupg2.     -*- coding: latin-1; -*-
+# inst-gnupg2.nsi - Installer snippet for gnupg2.     -*- coding: latin-1; -*-
 # Copyright (C) 2007 g10 Code GmbH
 # 
 # This file is part of Gpg4win.

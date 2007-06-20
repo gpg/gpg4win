@@ -47,6 +47,7 @@ at least the following packages need to be installed:
  texinfo
  imagemagick
  tetex-bin
+ tetex-extra
  tr
  gs-common
  hyperlatex
