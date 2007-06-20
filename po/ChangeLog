@@ -1,3 +1,8 @@
+2007-06-21  Marcus Brinkmann  <marcus@g10code.de>
+
+	* nsis-msgfmt.c (convert_newline): Terminate strings (d'oh!).
+	* de.po: Convert to ISO-8859-1 consistently.
+
 2007-06-20  Marcus Brinkmann  <marcus@g10code.de>
 
 	* nsis-xgettext.awk, nsis-msgfmt.c: Convert newlines properly.
