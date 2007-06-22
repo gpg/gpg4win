@@ -36,6 +36,7 @@ Section "GnuPG2" SEC_gnupg2
   File "${prefix}/bin/gpg-agent.exe"
   File "${prefix}/bin/scdaemon.exe"
   File "${prefix}/bin/gpgconf.exe"
+  File "${prefix}/bin/gpg-connect-agent.exe"
 
   # As a special exception, these programs are not kept in
   # libexec/gnupg, where they belong.  Please see the comment in
@@ -44,19 +45,18 @@ Section "GnuPG2" SEC_gnupg2
   File "${prefix}/libexec/gpg2keys_hkp.exe"
   File "${prefix}/libexec/gpg2keys_curl.exe"
   File "${prefix}/libexec/gpg2keys_ldap.exe"
+  File "${prefix}/libexec/gpg-protect-tool.exe"
+  File "${prefix}/libexec/gpg-preset-passphrase.exe"
 
   SetOutPath "$INSTDIR\pub"
   File /oname=gpg2.exe      "${BUILD_DIR}/gpgwrap.exe"
   File /oname=gpgsm.exe     "${BUILD_DIR}/gpgwrap.exe"
+  File /oname=gpg-connect-agent.exe  "${BUILD_DIR}/gpgwrap.exe"
 
-# Fixme:
-#  SetOutPath "$INSTDIR\share\gnupg"
-#  File "${prefix}/share/gnupg/options.skel"
-#  File "${prefix}/share/gnupg/FAQ"
-#  File "${prefix}/share/gnupg/faq.html"
-#  File "${prefix}/share/man/man1/gpg.man"
-#  File "${prefix}/share/man/man1/gpgv.man"
-#  File "${prefix}/share/man/man7/gnupg.man"
+  SetOutPath "$INSTDIR\share\gnupg"
+  File "${prefix}/share/gnupg/qualified.txt"
+  File "${prefix}/share/gnupg/com-certs.pem"
+  File "${prefix}/share/gnupg/gpg-conf.skel"
 
   # Install the language files for gpg.  Note that the PO files are
   # required to be UTF-8 encoded and that the post-install macro in

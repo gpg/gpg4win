@@ -44,13 +44,13 @@ gpg4win_pkg_glib_configure = \
 # We also create the MO files here.
 define gpg4win_pkg_gnupg_post_install	
 (man -Tlatin1 -l $$$${pkgidir}/share/man/man1/gpg.1 | \
- sed `printf "s/\b.//g"` | \
+ sed `printf "s/_\b//g;s/\b.//g"` | \
  sed -e 's/$$$$/\r/' > $$$${pkgidir}/share/man/man1/gpg.man; \
 man -Tlatin1 -l $$$${pkgidir}/share/man/man1/gpgv.1 | \
- sed `printf "s/\b.//g"` | \
+ sed `printf "s/_\b//g;s/\b.//g"` | \
  sed -e 's/$$$$/\r/' > $$$${pkgidir}/share/man/man1/gpgv.man; \
 man -Tlatin1 -l $$$${pkgidir}/share/man/man7/gnupg.7 | \
- sed `printf "s/\b.//g"` | \
+ sed `printf "s/_\b//g;s/\b.//g"` | \
  sed -e 's/$$$$/\r/' > $$$${pkgidir}/share/man/man7/gnupg.man; \
 for i in de; do \
  msgfmt --output-file=$$$${pkgidir}/share/gnupg/$$$${i}.mo \
