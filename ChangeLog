@@ -1,3 +1,11 @@
+2007-06-22  Werner Koch  <wk@g10code.com>
+
+	* src/inst-gnupg2.nsi: Install more files.
+	* src/uninst-gnupg2.nsi: and uninstall them.
+
+	* src/Makefile.am (gpg4win_pkg_gnupg_post_install): Remove
+	underlined markup.  Reported by Dirk Traulsen.
+
 2007-06-20  Werner Koch  <wk@g10code.com>
 
 	* src/inst-sections.nsi, src/Makefile.am, src/uninst-pinentry.nsi
