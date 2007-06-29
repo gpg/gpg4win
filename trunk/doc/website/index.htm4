@@ -49,8 +49,8 @@ Documentation (only in German so far):
 </p>
 <table>
   <tr>
-    <td>Gpg4win für Einsteiger:</td>
-    <td>A (German!) handbook specifically for newbies</td>
+    <td>Gpg4win for Novices:</td>
+    <td>A handbook specifically for newbies</td>
   </tr>
   <tr>
     <td>Gpg4win für Durchblicker:</td>
@@ -65,7 +65,7 @@ rights.
 </p>
 <p>
 The best point to start is with the illustrative handbook
-<em>Gpg4win für Einsteiger</em> (so far only available in German!).
+<em>Gpg4win for Novices</em>.
 </p>
 <p>
 We recommend to subscribe to the
@@ -80,7 +80,7 @@ important Gpg4win news.
 The Gpg4win <b>project aims at</b> updating the Gpg4win Windows installation
 package with GnuPG encryption tool, associated applications and
 documentation on a regular basis.
-Especially the documentation (handbooks "Einsteiger"
+Especially the documentation (handbooks "Novices"
 and "Durchblicker") are directly maintained as part of the Gpg4win project.
 
 <p>
@@ -115,8 +115,8 @@ source code packages (gpg4win-src-n.n.n.exe with gpg4win-src-n.n.n.exe.sig):
 </p>
 <p>
 Gpg4win core source code package (gpg4win-n.n.n.tar.bz2 with gpg4win-n.n.n.tar.bz2.sig)
-as well as <em>Gpg4win für Einsteiger</em> and <em>Gpg4win für Durchblicker</em>
-as separate PDF documents (gpg4win-fuer-einsteiger-n.n.n.pdf and
+as well as <em>Gpg4win for Novices</em> and <em>Gpg4win für Durchblicker</em>
+as separate PDF documents (gpg4win-fuer-novices-n.n.n.pdf and
 gpg4win-fuer-durchblicker-n.n.n.pdf):
 </p>
 <p>
