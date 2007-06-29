@@ -8,7 +8,7 @@ m4_define(`DE_FILE', `index-de.html')
 PAGE_START
 <h2>New User?</h2>
 
-Gpg4win is a installer package for Windows (95/98/ME/2000/XP/2003)
+Gpg4win is a installer package for Windows (2000/XP/2003)
 with computer programs and handbooks for EMail and file encryption.
 Gpg4win and the software included with Gpg4win
 are <a href="http://www.fsf.org/licensing/essays/free-sw.html">Free

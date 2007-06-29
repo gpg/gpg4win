@@ -1,3 +1,8 @@
+2007-06-29  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
+
+	*  index.htm4, template_header.m4, index-de.htm4: Removed
+	any mentioning of the old Windows systems 9x.
+
 2007-06-19  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
 
 	* manual/novices.tex: Text slightly reworked by
