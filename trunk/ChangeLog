@@ -1,3 +1,17 @@
+2007-07-03  Marcus Brinkmann  <marcus@g10code.de>
+
+	* Makefile.am (EXTRA_DIST): Add
+	patches/claws-mail-2.10.0/01-w32-logo.patch,
+	patches/claws-mail-2.10.0/02-w32-icon.patch,
+	patches/claws-mail-2.10.0/03-w32-port.patch,
+	patches/claws-mail-2.10.0/04-smime-plugin.patch and
+	patches/claws-mail-2.10.0/99-auto.patch.
+	* patches/claws-mail-2.10.0/01-w32-logo.patch,
+	patches/claws-mail-2.10.0/02-w32-icon.patch,
+	patches/claws-mail-2.10.0/03-w32-port.patch,
+	patches/claws-mail-2.10.0/04-smime-plugin.patch,
+	patches/claws-mail-2.10.0/99-auto.patch: New files.
+
 2007-07-02  Marcus Brinkmann  <marcus@g10code.de>
 
 	* src/Makefile.am (gpg4win_pkg_claws_mail_configure): Fix config
