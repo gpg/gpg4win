@@ -31,7 +31,8 @@ CLEANFILES = g4wihelp.dll versioninfo.txt README.en.txt README.de.txt \
 
 # Supported source packages.
 gpg4win_spkgs = glib gnupg libgpg-error gpgme gpgol gpa winpt sylpheed-claws \
-	        gnupg2 pinentry libassuan libksba libgcrypt w32pth
+	        claws-mail gnupg2 pinentry libassuan libksba \
+		libgcrypt w32pth
 
 # Extra options to configure for individual packages.
 # We can use $(idir) here for the installation prefix.
@@ -99,7 +100,6 @@ gpg4win_pkg_pinentry_configure = \
   --disable-pinentry-gtk2 \
   --disable-pinentry-qt 
 
-
 # Glib doesn't add the LDFLAGS automatically.
 gpg4win_pkg_gpgme_configure = --silent \
   --with-gpg-error-prefix=$(idir) --without-gpgsm --enable-static \
@@ -124,6 +124,17 @@ gpg4win_pkg_sylpheed_claws_configure = --silent \
   --disable-jpilot --disable-startup-notification --disable-ipv6 \
   --disable-mathml-viewer-plugin --disable-clamav-plugin \
   --disable-spamassassin-plugin
+
+gpg4win_pkg_claws_mail_configure = --silent \
+  --with-lib-prefix=$(idir) --with-libiconv-prefix=$(idir) \
+  --with-gpg-error-prefix=$(idir) --with-gpgme-prefix=$(idir) \
+  --with-config-dir="Sylpheed-claws" --disable-pthread \
+  --disable-libetpan --disable-aspell --disable-trayicon-plugin \
+  --disable-openssl --disable-dillo-viewer-plugin --disable-gnomeprint \
+  --disable-jpilot --disable-startup-notification --disable-ipv6 \
+  --disable-mathml-viewer-plugin --disable-clamav-plugin \
+  --disable-spamassassin-plugin --disable-bogofilter-plugin \
+  --disable-valgrind
 
 # Supported make-only source packages.
 gpg4win_mpkgs =  pthreads-w32
