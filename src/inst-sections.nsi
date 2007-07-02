@@ -62,6 +62,9 @@
 !ifdef HAVE_PKG_REGEX
 !include "inst-regex.nsi"
 !endif
+!ifdef HAVE_PKG_DIRMNGR
+!include "inst-dirmngr.nsi"
+!endif
 !ifdef HAVE_PKG_PTHREADS_W32
 !include "inst-pthreads-w32.nsi"
 !endif
@@ -143,11 +146,11 @@
 #!ifdef HAVE_PKG_EUDORAGPG
 #!include "uninst-eudoragpg.nsi"
 #!endif
-!ifdef HAVE_PKG_SYLPHEED_CLAWS
-!include "uninst-sylpheed-claws.nsi"
-!endif
 !ifdef HAVE_PKG_CLAWS_MAIL
 !include "uninst-claws-mail.nsi"
+!endif
+!ifdef HAVE_PKG_SYLPHEED_CLAWS
+!include "uninst-sylpheed-claws.nsi"
 !endif
 !ifdef HAVE_PKG_GPGEE
 !include "uninst-gpgee.nsi"
@@ -190,6 +193,9 @@
 !endif
 !ifdef HAVE_PKG_PTHREADS_W32
 !include "uninst-pthreads-w32.nsi"
+!endif
+!ifdef HAVE_PKG_DIRMNGR
+!include "uninst-dirmngr.nsi"
 !endif
 !ifdef HAVE_PKG_REGEX
 !include "uninst-regex.nsi"
@@ -260,6 +266,9 @@ Function CalcDepends
 !endif
 !ifdef HAVE_PKG_REGEX
   !insertmacro UnselectSection ${SEC_regex}
+!endif
+!ifdef HAVE_PKG_DIRMNGR
+  !insertmacro UnselectSection ${SEC_dirmngr}
 !endif
 !ifdef HAVE_PKG_PTHREADS_W32
   !insertmacro UnselectSection ${SEC_pthreads_w32}
@@ -444,6 +453,16 @@ Function CalcDepends
   have_libpng:
   !insertmacro SelectSection ${SEC_pkgconfig}
   skip_libpng:
+!endif
+
+!ifdef HAVE_PKG_DIRMNGR
+  !insertmacro SectionFlagIsSet ${SEC_dirmngr} ${SF_SELECTED} have_dirmngr skip_dirmngr
+  have_dirmngr:
+  !insertmacro SelectSection ${SEC_libgcrypt}
+  !insertmacro SelectSection ${SEC_libksba}
+  !insertmacro SelectSection ${SEC_libassuan}
+  !insertmacro SelectSection ${SEC_libgpg_error}
+  skip_dirmngr:
 !endif
 
 !ifdef HAVE_PKG_GLIB
