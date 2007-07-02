@@ -47,7 +47,12 @@ EXTRA_DIST = autogen.sh README.SVN \
         patches/sylpheed-claws-2.4.0/03-plugins-symbols.patch \
         patches/sylpheed-claws-2.4.0/04-font-prefs.patch \
         patches/sylpheed-claws-2.4.0/05-textviewer.patch \
-	patches/sylpheed-claws-2.4.0/99-auto.patch
+	patches/sylpheed-claws-2.4.0/99-auto.patch \
+	patches/claws-mail-2.9.2/01-w32-logo.patch \
+	patches/claws-mail-2.9.2/02-w32-icon.patch \
+	patches/claws-mail-2.9.2/03-w32-port.patch \
+	patches/claws-mail-2.9.2/04-smime-plugin.patch \
+	patches/claws-mail-2.9.2/99-auto.patch
 
 copy-news:
 	cp NEWS doc/website/NEWS.last
