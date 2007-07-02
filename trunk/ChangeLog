@@ -1,5 +1,8 @@
 2007-07-02  Marcus Brinkmann  <marcus@g10code.de>
 
+	* src/Makefile.am (gpg4win_pkg_claws_mail_configure): Fix config
+	dir.
+
 	* Makefile.am (EXTRA_DIST): Add
 	patches/claws-mail-2.9.2/01-w32-logo.patch,
 	patches/claws-mail-2.9.2/02-w32-icon.patch,

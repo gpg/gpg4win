@@ -128,7 +128,7 @@ gpg4win_pkg_sylpheed_claws_configure = --silent \
 gpg4win_pkg_claws_mail_configure = --silent \
   --with-lib-prefix=$(idir) --with-libiconv-prefix=$(idir) \
   --with-gpg-error-prefix=$(idir) --with-gpgme-prefix=$(idir) \
-  --with-config-dir="Sylpheed-claws" --disable-pthread \
+  --with-config-dir="Claws-mail" --disable-pthread \
   --disable-libetpan --disable-aspell --disable-trayicon-plugin \
   --disable-openssl --disable-dillo-viewer-plugin --disable-gnomeprint \
   --disable-jpilot --disable-startup-notification --disable-ipv6 \
