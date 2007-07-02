@@ -199,6 +199,8 @@ GPG4WIN_SPKG([gpa], [libiconv gettext zlib gtk+ libpng glib gpgme])
 GPG4WIN_SPKG([winpt], [gpgme gnupg])
 GPG4WIN_SPKG([sylpheed-claws], [libiconv gettext zlib gtk+ libpng jpeg glib dnl
                                 gpgme pthreads-w32 crypt regex])
+GPG4WIN_SPKG([claws-mail], [libiconv gettext zlib gtk+ libpng jpeg glib dnl
+                            gpgme pthreads-w32 crypt regex])
 # The Eudora license (the one for the EMS API) is still not acceptable.
 #GPG4WIN_SPKG([eudoragpg])
 GPG4WIN_IPKG([man_novice_de])

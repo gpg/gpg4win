@@ -1,3 +1,14 @@
+2007-07-02  Marcus Brinkmann  <marcus@g10code.de>
+
+	* configure.ac: Add claws-mail.
+	* include/config.nsi.in: Add claws-mail.
+	* src/Makefile.am (gpg4win_spkgs): Add claws-mail.
+	(gpg4win_pkg_claws_mail_configure): New variable.
+	* src/inst-claws-mail.nsi, src/uninst-claws-mail.nsi: New files.
+	* src/inst-sections.nsi [HAVE_PKG_CLAws_MAIL]: Include installer
+	and uninstaller snippet for claws-mail, handle claws-mail
+	dependencies and add a menu item for it.
+
 2007-06-22  Werner Koch  <wk@g10code.com>
 
 	* src/inst-gnupg2.nsi: Install more files.

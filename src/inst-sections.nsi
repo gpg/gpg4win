@@ -107,6 +107,9 @@
 !ifdef HAVE_PKG_SYLPHEED_CLAWS
 !include "inst-sylpheed-claws.nsi"
 !endif
+!ifdef HAVE_PKG_CLAWS_MAIL
+!include "inst-claws-mail.nsi"
+!endif
 #!ifdef HAVE_PKG_EUDORAGPG
 #!include "inst-eudoragpg.nsi"
 #!endif
@@ -142,6 +145,9 @@
 #!endif
 !ifdef HAVE_PKG_SYLPHEED_CLAWS
 !include "uninst-sylpheed-claws.nsi"
+!endif
+!ifdef HAVE_PKG_CLAWS_MAIL
+!include "uninst-claws-mail.nsi"
 !endif
 !ifdef HAVE_PKG_GPGEE
 !include "uninst-gpgee.nsi"
@@ -365,6 +371,23 @@ Function CalcDepends
 !endif
 
 
+!ifdef HAVE_PKG_CLAWS_MAIL
+  !insertmacro SectionFlagIsSet ${SEC_claws_mail} ${SF_SELECTED} have_claws_mail skip_claws_mail
+  have_claws_mail:
+  !insertmacro SelectSection ${SEC_zlib}
+  !insertmacro SelectSection ${SEC_gtk_}
+  !insertmacro SelectSection ${SEC_libpng}
+  !insertmacro SelectSection ${SEC_jpeg}
+  !insertmacro SelectSection ${SEC_glib}
+  !insertmacro SelectSection ${SEC_gpgme}
+  !insertmacro SelectSection ${SEC_gnupg}
+  !insertmacro SelectSection ${SEC_pthreads_w32}
+  !insertmacro SelectSection ${SEC_crypt}
+  !insertmacro SelectSection ${SEC_regex}
+  skip_claws_mail:
+!endif
+
+
 !ifdef HAVE_PKG_GTK_
   !insertmacro SectionFlagIsSet ${SEC_gtk_} \
 		${SF_SELECTED} have_gtk_ skip_gtk_
@@ -545,6 +568,9 @@ FunctionEnd
 !ifdef HAVE_PKG_SYLPHEED_CLAWS
   !insertmacro MUI_DESCRIPTION_TEXT ${SEC_sylpheed} $(DESC_SEC_sylpheed)
 !endif
+!ifdef HAVE_PKG_CLAWS_MAIL
+  !insertmacro MUI_DESCRIPTION_TEXT ${SEC_claws_mail} $(DESC_SEC_claws_mail)
+!endif
 #!ifdef HAVE_PKG_EUDORAGPG
 #  !insertmacro MUI_DESCRIPTION_TEXT ${SEC_eudoragpg} $(DESC_SEC_eudoragpg)
 #!endif
@@ -615,6 +641,21 @@ Section "-startmenu"
 	"" "" "" SW_SHOWNORMAL "" $(DESC_Menu_sylpheed_pdf)
 !endif
   no_sylpheed_menu:
+!endif
+
+!ifdef HAVE_PKG_CLAWS_MAIL
+    SectionGetFlags ${SEC_claws_mail} $R0 
+    IntOp $R0 $R0 & ${SF_SELECTED} 
+    IntCmp $R0 ${SF_SELECTED} 0 no_claws_mail_menu 
+    CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\Claws-Mail.lnk" \
+	"$INSTDIR\claws-mail.exe" \
+        "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_claws_mail)
+!ifndef GPG4WIN_LIGHT
+    CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\Claws-Mail Manual.lnk" \
+	"$INSTDIR\claws-mail-manual.pdf" \
+	"" "" "" SW_SHOWNORMAL "" $(DESC_Menu_claws_mail_pdf)
+!endif
+  no_claws_mail_menu:
 !endif
 
 #!ifdef HAVE_PKG_EUDORAGPG
@@ -740,6 +781,21 @@ Section "-startmenu"
   no_sylpheed_desktop:
 !endif
 
+!ifdef HAVE_PKG_CLAWS_MAIL
+    SectionGetFlags ${SEC_claws_mail} $R0 
+    IntOp $R0 $R0 & ${SF_SELECTED} 
+    IntCmp $R0 ${SF_SELECTED} 0 no_claws_mail_desktop
+    CreateShortCut "$DESKTOP\Claws-Mail.lnk" \
+	"$INSTDIR\claws-mail.exe" \
+        "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_claws_mail)
+!ifndef GPG4WIN_LIGHT
+    CreateShortCut "$DESKTOP\Claws-Mail Manual.lnk" \
+	"$INSTDIR\claws-mail-manual.pdf" \
+	"" "" "" SW_SHOWNORMAL "" $(DESC_Menu_claws_mail_pdf)
+!endif
+  no_claws_mail_desktop:
+!endif
+
 !ifdef HAVE_PKG_MAN_NOVICE_EN
     SectionGetFlags ${SEC_man_novice_en} $R0 
     IntOp $R0 $R0 & ${SF_SELECTED} 
@@ -834,6 +890,16 @@ no_desktop:
 	"$INSTDIR\sylpheed-claws.exe" \
         "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_sylpheed)
   no_sylpheed_quicklaunch:
+!endif
+
+!ifdef HAVE_PKG_CLAWS_MAIL
+    SectionGetFlags ${SEC_claws_mail} $R0 
+    IntOp $R0 $R0 & ${SF_SELECTED} 
+    IntCmp $R0 ${SF_SELECTED} 0 no_claws_mail_quicklaunch
+    CreateShortCut "$QUICKLAUNCH\Claws-Mail.lnk" \
+	"$INSTDIR\claws-mail.exe" \
+        "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_claws_mail)
+  no_claws_mail_quicklaunch:
 !endif
 
 
