@@ -32,7 +32,7 @@ CLEANFILES = g4wihelp.dll versioninfo.txt README.en.txt README.de.txt \
 # Supported source packages.
 gpg4win_spkgs = glib gnupg libgpg-error gpgme gpgol gpa winpt sylpheed-claws \
 	        claws-mail gnupg2 pinentry libassuan libksba \
-		libgcrypt w32pth
+		libgcrypt dirmngr w32pth
 
 # Extra options to configure for individual packages.
 # We can use $(idir) here for the installation prefix.
@@ -84,6 +84,12 @@ gpg4win_pkg_libksba_configure = --silent \
 
 gpg4win_pkg_libgcrypt_configure = --silent \
   --with-gpg-error-prefix=$(idir)
+
+gpg4win_pkg_dirmngr_configure = \
+  --with-gpg-error-prefix=$(idir) \
+  --with-ksba-prefix=$(idir) \
+  --with-libgcrypt-prefix=$(idir) \
+  --with-libassuan-prefix=$(idir)
 
 gpg4win_pkg_gnupg2_configure = \
   --with-gpg-error-prefix=$(idir) \

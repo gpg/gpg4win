@@ -70,6 +70,10 @@
 !define gpg4win_pkg_libksba @gpg4win_pkg_libksba@
 !define gpg4win_pkg_libksba_version @gpg4win_pkg_libksba_version@
 
+@HAVE_PKG_DIRMNGR@
+!define gpg4win_pkg_dirmngr @gpg4win_pkg_dirmngr@
+!define gpg4win_pkg_dirmngr_version @gpg4win_pkg_dirmngr_version@
+
 @HAVE_PKG_GPGME@
 !define gpg4win_pkg_gpgme @gpg4win_pkg_gpgme@
 !define gpg4win_pkg_gpgme_version @gpg4win_pkg_gpgme_version@

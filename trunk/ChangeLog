@@ -1,5 +1,13 @@
 2007-07-03  Marcus Brinkmann  <marcus@g10code.de>
 
+	* configure.ac: Add dirmngr.
+	* include/config.nsi.in: Add dirmngr.
+	* src/Makefile.am (gpg4win_spkgs): Add dirmngr.
+	(gpg4win_pkg_dirmngr_configure): New variable.
+	* src/inst-dirmngr.nsi, src/uninst-dirmngr.nsi: New files.
+	* src/inst-sections.nsi [HAVE_PKG_DIRMNGR]: Include installer
+	and uninstaller snippet for dirmngr.
+
 	* Makefile.am (EXTRA_DIST): Add
 	patches/claws-mail-2.10.0/01-w32-logo.patch,
 	patches/claws-mail-2.10.0/02-w32-icon.patch,
@@ -34,7 +42,7 @@
 	* src/Makefile.am (gpg4win_spkgs): Add claws-mail.
 	(gpg4win_pkg_claws_mail_configure): New variable.
 	* src/inst-claws-mail.nsi, src/uninst-claws-mail.nsi: New files.
-	* src/inst-sections.nsi [HAVE_PKG_CLAws_MAIL]: Include installer
+	* src/inst-sections.nsi [HAVE_PKG_CLAWS_MAIL]: Include installer
 	and uninstaller snippet for claws-mail, handle claws-mail
 	dependencies and add a menu item for it.
 
