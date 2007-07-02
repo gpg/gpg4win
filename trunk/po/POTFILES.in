@@ -12,4 +12,5 @@ src/inst-man_advanced_en.nsi
 src/inst-man_novice_de.nsi
 src/inst-man_novice_en.nsi
 src/inst-sylpheed-claws.nsi
+src/inst-claws-mail.nsi
 src/inst-winpt.nsi

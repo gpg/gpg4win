@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gpg4win 1.1.1-svn417\n"
 "Report-Msgid-Bugs-To: gpg4win-devel@wald.intevation.org\n"
-"POT-Creation-Date: 2007-06-20 23:49+0200\n"
-"PO-Revision-Date: 2007-06-21 00:14+0200\n"
+"POT-Creation-Date: 2007-07-02 21:33+0200\n"
+"PO-Revision-Date: 2007-07-02 21:35+0200\n"
 "Last-Translator: Marcus Brinkmann <mb@g10code.com>\n"
 "Language-Team: German <translation-team-de@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -412,6 +412,21 @@ msgstr "Das Mailprogramm Sylpheed-Claws aufrufen."
 msgctxt "DESC_Menu_sylpheed_pdf"
 msgid "Show the online manual of Sylpheed Claws"
 msgstr "Das englische Handbuch zu Sylpheed Claws anzeigen"
+
+#: src/inst-claws-mail.nsi:53
+msgctxt "DESC_SEC_claws_mail"
+msgid "Claws Mail-User-Agent"
+msgstr "Claws Mail ist ein vollständiges Mail- und News-Programm mit sehr guter Unterstützung für GnuPG."
+
+#: src/inst-claws-mail.nsi:56
+msgctxt "DESC_Menu_claws_mail"
+msgid "Run the Claws mailprogram."
+msgstr "Das Mailprogramm Claws Mail aufrufen."
+
+#: src/inst-claws-mail.nsi:59
+msgctxt "DESC_Menu_claws_mail_pdf"
+msgid "Show the online manual of Claws Mail"
+msgstr "Das englische Handbuch zu Claws Mail anzeigen"
 
 #: src/inst-winpt.nsi:46
 msgctxt "DESC_SEC_winpt"
