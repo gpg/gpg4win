@@ -28,7 +28,14 @@ Typische Aufgaben:
 
 <ol>
 <li> Die Quellen zur Website anonyme (also ohne Schreibrechte) holen:<br>
-     <em>svn checkout https://svn.wald.intevation.org/gpg4win/trunk/doc/website</em>
+     <em>svn checkout https://svn.wald.intevation.org/gpg4win/trunk/ gpg4win-trunk-anon</em>
+
+<li> Das gesamte Paket initial konfigurieren:<br>
+     <em>
+     cd gpg4win-trunk-anon<br>
+     ./autogen.sh<br>
+     ./configure --enable-maintainer-mode --host=i586-mingw32msvc<br>
+     </em>
 
 <li> Die Website lokal bauen:<br>
      <em>make -f buildhtml.mk</em><br>
@@ -59,14 +66,23 @@ und dass man gerne mitmachen möchte ist natürlich immer sinnvoll.
      <a href="http://wald.intevation.org/account/">hochladen</a>.
 
 <li> Die Quellen zur Website holen:<br>
-     <em>svn checkout svn+ssh://USER@svn.wald.intevation.org/gpg4win/trunk/doc/website</em><br>
+     <em>svn checkout svn+ssh://USER@svn.wald.intevation.org/gpg4win/trunk/ gpg4win-trunk</em><br>
      wobei USER das Benutzerkonto auf wald.intevation.de ist.
+
+<li> Das gesamte Paket initial konfigurieren:<br>
+     <em>
+     cd gpg4win-trunk<br>
+     ./autogen.sh<br>
+     ./configure --enable-maintainer-mode --host=i586-mingw32msvc<br>
+     </em>
+
 </ol>
 
 <h2>Wie man die Website aktualisiert und online schaltet</h2>
 
 <ol>
-<li> Gewünschte Änderungen in dem per SVN geholten Verzeichnis <em>website</em> durchführen.
+<li> Gewünschte Änderungen in dem per SVN geholten Verzeichnis
+     <em>gpg4win-trunk/doc/website</em> durchführen.
      Zum besseren Verständnis ggf. die dort liegende Datei <em>REAMDE</em> vorher
      durchlesen.
 <li> Lokale Version zum Anschauen herstellen:<br>

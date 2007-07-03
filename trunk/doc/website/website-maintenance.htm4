@@ -28,9 +28,17 @@ Typical tasks:
 
 <ol>
 <li> Get the sources for the website anonymously (without write access):<br>
-     <em>svn checkout https://svn.wald.intevation.org/gpg4win/trunk/doc/website</em>
+     <em>svn checkout https://svn.wald.intevation.org/gpg4win/trunk/ gpg4win-trunk-anon</em>
+
+<li> Configure the whole package:<br>
+     <em>
+     cd gpg4win-trunk-anon<br>
+     ./autogen.sh<br>
+     ./configure --enable-maintainer-mode --host=i586-mingw32msvc<br>
+     </em>
 
 <li> Build the website locally:<br>
+     <em>cd doc/website</em><br>
      <em>make -f buildhtml.mk</em><br>
      and open it in your browser (file index.html).
 
@@ -60,14 +68,22 @@ expression of interest to join the team is of course a good idea.
      it to wald.intevation.de
 
 <li> Get the source for the website:<br>
-     <em>svn checkout svn+ssh://USER@svn.wald.intevation.org/gpg4win/trunk/doc/website</em><br>
+     <em>svn checkout svn+ssh://USER@svn.wald.intevation.org/gpg4win/trunk/ gpg4win-trunk</em><br>
      where USER is the user account at wald.intevation.de.
+
+<li> Configure the whole package:<br>
+     <em>
+     cd gpg4win-trunk<br>
+     ./autogen.sh<br>
+     ./configure --enable-maintainer-mode --host=i586-mingw32msvc<br>
+     </em>
 </ol>
 
 <h2>How to update the website and put it online</h2>
 
 <ol>
-<li> Apply your desired changes in the directory <em>website</em> which you retrieved
+<li> Apply your desired changes in the directory <em>gpg4win-trunk/doc/website</em>
+     which you retrieved
      via SVN. The file <em>REAMDE</em> in this directory will provide you some
      helpful hints.
 
@@ -84,4 +100,3 @@ expression of interest to join the team is of course a good idea.
 <li> The last step is to put the new version online:<br>
      <em>make -f buildhtml.mk online</em><br>
 </ol>
-
