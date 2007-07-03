@@ -150,11 +150,14 @@ diff -rupN claws-mail-2.10.0-orig/src/plugins/smime/Makefile.am claws-mail-2.10.
 diff -rupN claws-mail-2.10.0-orig/src/plugins/smime/mypgpcore.def claws-mail-2.10.0/src/plugins/smime/mypgpcore.def
 --- claws-mail-2.10.0-orig/src/plugins/smime/mypgpcore.def	1970-01-01 01:00:00.000000000 +0100
 +++ claws-mail-2.10.0/src/plugins/smime/mypgpcore.def	2007-07-03 18:36:43.000000000 +0200
-@@ -0,0 +1,13 @@
+@@ -0,0 +1,16 @@
 +LIBRARY PGPCORE.DLL
 +EXPORTS
++prefs_gpg_add_skip_encryption_warning
 +prefs_gpg_enable_agent
 +prefs_gpg_get_config
++prefs_gpg_remove_skip_encryption_warning 
++prefs_gpg_should_skip_encryption_warning
 +sgpgme_data_from_mimeinfo
 +sgpgme_data_release_and_get_mem
 +sgpgme_decrypt_verify
