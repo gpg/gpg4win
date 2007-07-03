@@ -58,9 +58,9 @@ exit $?
 	* src/plugins/pgpmime/mypgpcore.def: Update.
 
 
-diff -rup claws-mail-2.9.2-orig/autogen.sh claws-mail-2.9.2/autogen.sh
---- claws-mail-2.9.2-orig/autogen.sh	2007-05-08 09:59:23.000000000 +0200
-+++ claws-mail-2.9.2/autogen.sh	2007-06-29 16:59:34.000000000 +0200
+diff -rupN claws-mail-2.10.0-orig/autogen.sh claws-mail-2.10.0/autogen.sh
+--- claws-mail-2.10.0-orig/autogen.sh	2007-07-02 10:32:22.000000000 +0200
++++ claws-mail-2.10.0/autogen.sh	2007-07-03 18:31:59.000000000 +0200
 @@ -40,6 +40,7 @@ if test "$1" = "--build-w32"; then
               --disable-openssl --disable-dillo-viewer-plugin \
               --disable-nls --disable-libetpan --disable-aspell \
@@ -69,49 +69,23 @@ diff -rup claws-mail-2.9.2-orig/autogen.sh claws-mail-2.9.2/autogen.sh
               PKG_CONFIG_LIBDIR="$w32root/lib/pkgconfig"
  
      rc=$?
-diff -rup claws-mail-2.9.2-orig/src/common/w32lib.h claws-mail-2.9.2/src/common/w32lib.h
---- claws-mail-2.9.2-orig/src/common/w32lib.h	2007-05-08 09:59:21.000000000 +0200
-+++ claws-mail-2.9.2/src/common/w32lib.h	2007-05-21 11:46:41.000000000 +0200
-@@ -44,6 +44,12 @@
+diff -rupN claws-mail-2.10.0-orig/src/common/log.c claws-mail-2.10.0/src/common/log.c
+--- claws-mail-2.10.0-orig/src/common/log.c	2007-07-02 10:32:17.000000000 +0200
++++ claws-mail-2.10.0/src/common/log.c	2007-07-03 18:31:59.000000000 +0200
+@@ -23,6 +23,10 @@
  
- /* Changes are:
+ #include "defs.h"
  
-+2007-05-21  Werner Koch  <wk@g10code.com>
-+
-+	* src/common/w32_account.c: New.
-+
-+	* src/common/w32lib.h: Undef "interface".
-+
- 2005-11-17  Werner Koch  <wk@g10code.com>
- 
- 	Add boilerplate text to all files and explain legal status.
-@@ -76,6 +82,13 @@
- #include <dirent.h>
- #endif
- 
-+/* Mingw32 3.4.4 defines interface to struct and thus breaks our own
-+   use of that symbol.  Undef it here. */
-+#if defined(_BASETYPS_H) && defined(interface) 
-+#undef interface
++#ifdef G_OS_WIN32
++#  include <w32lib.h>
 +#endif
 +
-+
- /* types */
- /*** ??? ***/
- #ifndef __MINGW32__
-@@ -188,6 +201,9 @@ int kill( pid_t pid, int sig );
- FILE *popen( const char *command, const char *type );
- int pclose( FILE *stream );
- 
-+/*** w32_account.c ***/
-+int w32_is_administrator (void);
-+
- /*** misc ***/
- char *read_w32_registry_string( char *parent, char *section, char *key );
- char *get_content_type_from_registry_with_ext( char *ext );
-diff -rup claws-mail-2.9.2-orig/src/common/Makefile.am claws-mail-2.9.2/src/common/Makefile.am
---- claws-mail-2.9.2/src/common/Makefile.am	2007-05-08 09:59:21.000000000 +0200
-+++ claws-mail-2.9.2/src/common/Makefile.am	2007-05-21 11:46:16.000000000 +0200
+ #include <stdio.h>
+ #include <glib.h>
+ #include <glib/gi18n.h>
+diff -rupN claws-mail-2.10.0-orig/src/common/Makefile.am claws-mail-2.10.0/src/common/Makefile.am
+--- claws-mail-2.10.0-orig/src/common/Makefile.am	2007-07-02 10:32:17.000000000 +0200
++++ claws-mail-2.10.0/src/common/Makefile.am	2007-07-03 18:31:59.000000000 +0200
 @@ -5,7 +5,7 @@ if OS_WIN32
  arch_sources = fnmatch.c \
                 w32_dirent.c w32_reg.c w32_signal.c w32_stat.c \
@@ -121,9 +95,147 @@ diff -rup claws-mail-2.9.2-orig/src/common/Makefile.am claws-mail-2.9.2/src/comm
  arch_headers = fnmatch.h w32lib.h
  else
  arch_files = 
-diff -rupN /dev/null claws-mail-2.9.2/src/common/w32_account.c
---- /dev/null	2007-05-14 05:46:41.000000000 +0200
-+++ claws-mail-2.9.2/src/common/w32_account.c	2007-05-21 11:52:32.000000000 +0200
+diff -rupN claws-mail-2.10.0-orig/src/common/timing.h claws-mail-2.10.0/src/common/timing.h
+--- claws-mail-2.10.0-orig/src/common/timing.h	2007-07-02 10:32:18.000000000 +0200
++++ claws-mail-2.10.0/src/common/timing.h	2007-07-03 18:31:59.000000000 +0200
+@@ -29,6 +29,7 @@
+ #ifndef __TIMING_H__
+ #define __TIMING_H__
+ 
++#include <glib.h>
+ #include <sys/time.h>
+ #ifdef HAVE_CONFIG_H
+ #  include "config.h"
+@@ -49,13 +50,38 @@
+ #define START_TIMING(str) do {} while(0);
+ #define END_TIMING() do {} while(0);
+ #else
++
++#ifdef G_OS_WIN32
++
++#include <w32lib.h>
++
++/* no {} by purpose */
++#define START_TIMING(str) 						\
++        LARGE_INTEGER frequency;					\
++	LARGE_INTEGER start;						\
++	LARGE_INTEGER end;						\
++	LARGE_INTEGER diff;						\
++	const char *timing_name=str;					\
++	QueryPerformanceFrequency (&frequency);				\
++	QueryPerformanceCounter (&start);				\
++
++#define END_TIMING()							\
++	QueryPerformanceCounter (&end);					\
++        diff.QuadPart = (double)					\
++		((end.QuadPart - start.QuadPart)	\
++		* (double)1000.0/(double)frequency.QuadPart);		\
++        debug_print("TIMING %s: %ds%03dms\n",				\
++		timing_name, (unsigned int) (diff.QuadPart / 1000000),	\
++		(unsigned int) ((diff.QuadPart / 1000) % 1000));
++
++#else
+ /* no {} by purpose */
+ #define START_TIMING(str) 						\
+ 	struct timeval start;						\
+ 	struct timeval end;						\
+ 	struct timeval diff;						\
+ 	const char *timing_name=str;					\
+-	gettimeofday(&start, NULL);					\
++	gettimeofday(&start, NULL);
+ 
+ #ifdef __GLIBC__
+ #define END_TIMING()							\
+@@ -64,7 +90,7 @@
+ 	debug_print("TIMING %s %s: %ds%03dms\n", 			\
+ 		__FUNCTION__,						\
+ 		timing_name, (unsigned int)diff.tv_sec, 		\
+-		(unsigned int)diff.tv_usec/1000);			
++		(unsigned int)diff.tv_usec/1000);
+ #else
+ #define END_TIMING()							\
+ 	gettimeofday(&end, NULL);					\
+@@ -76,3 +102,4 @@
+ 
+ #endif 
+ #endif 
++#endif
+diff -rupN claws-mail-2.10.0-orig/src/common/utils.c claws-mail-2.10.0/src/common/utils.c
+--- claws-mail-2.10.0-orig/src/common/utils.c	2007-07-02 10:32:18.000000000 +0200
++++ claws-mail-2.10.0/src/common/utils.c	2007-07-03 18:31:59.000000000 +0200
+@@ -57,6 +57,7 @@
+ #  include <direct.h>
+ #  include <io.h>
+ #  include <fcntl.h>
++#  include <w32lib.h>
+ #endif
+ 
+ #ifdef MAEMO
+@@ -75,6 +76,18 @@ static gboolean debug_mode = FALSE;
+ static GSList *tempfiles=NULL;
+ #endif
+ 
++/* Return true if we are running as root.  This function should beused
++   instead of getuid () == 0.  */
++gboolean superuser_p (void)
++{
++#ifdef G_OS_WIN32
++  return w32_is_administrator ();
++#else
++  return !getuid();
++#endif  
++}
++
++
+ 
+ #if !GLIB_CHECK_VERSION(2, 7, 0) && !defined(G_OS_UNIX)
+ gint g_chdir(const gchar *path)
+@@ -4766,7 +4779,12 @@ gint copy_dir(const gchar *src, const gc
+ 				g_dir_close(dir);
+ 				return r;
+ 			}
+-		} else if (g_file_test(old_file, G_FILE_TEST_IS_SYMLINK)) {
++                }
++#ifndef G_OS_WIN32
++                /* Windows has no symlinks.  Or well, Vista seems to
++                   have something like this but the semantics might be
++                   different.  Thus we don't use it under Windows. */
++		 else if (g_file_test(old_file, G_FILE_TEST_IS_SYMLINK)) {
+ 			GError *error;
+ 			gint r = 0;
+ 			gchar *target = g_file_read_link(old_file, &error);
+@@ -4777,7 +4795,9 @@ gint copy_dir(const gchar *src, const gc
+ 				g_dir_close(dir);
+ 				return r;
+ 			}
+-		} else if (g_file_test(old_file, G_FILE_TEST_IS_DIR)) {
++                 }
++#endif /*G_OS_WIN32*/
++	        else if (g_file_test(old_file, G_FILE_TEST_IS_DIR)) {
+ 			gint r = copy_dir(old_file, new_file);
+ 			if (r < 0) {
+ 				g_dir_close(dir);
+diff -rupN claws-mail-2.10.0-orig/src/common/utils.h claws-mail-2.10.0/src/common/utils.h
+--- claws-mail-2.10.0-orig/src/common/utils.h	2007-07-02 10:32:18.000000000 +0200
++++ claws-mail-2.10.0/src/common/utils.h	2007-07-03 18:31:59.000000000 +0200
+@@ -204,6 +204,14 @@ gboolean debug_get_mode		(void);
+ #define Str(x)	#x
+ #define Xstr(x)	Str(x)
+ 
++
++/* System related stuff.  */
++
++gboolean superuser_p (void);
++
++
++/* String utilities.  */
++
+ void list_free_strings		(GList		*list);
+ void slist_free_strings		(GSList		*list);
+ 
+diff -rupN claws-mail-2.10.0-orig/src/common/w32_account.c claws-mail-2.10.0/src/common/w32_account.c
+--- claws-mail-2.10.0-orig/src/common/w32_account.c	1970-01-01 01:00:00.000000000 +0100
++++ claws-mail-2.10.0/src/common/w32_account.c	2007-07-03 18:31:59.000000000 +0200
 @@ -0,0 +1,149 @@
 +/* w32_account.c - Account related W32 functions.
 +   Copyright (C) 2007 g10 Code GmbH 
@@ -274,148 +386,73 @@ diff -rupN /dev/null claws-mail-2.9.2/src/common/w32_account.c
 +  return is_admin;
 +}
 +
-diff -rup claws-mail-2.9.2-orig/src/common/utils.c claws-mail-2.9.2/src/common/utils.c
---- claws-mail-2.9.2-orig/src/common/utils.c	2007-05-08 09:59:21.000000000 +0200
-+++ claws-mail-2.9.2/src/common/utils.c	2007-05-21 11:55:02.000000000 +0200
-@@ -56,6 +56,7 @@
- #  include <direct.h>
- #  include <io.h>
- #  include <fcntl.h>
-+#  include <w32lib.h>
+diff -rupN claws-mail-2.10.0-orig/src/common/w32lib.h claws-mail-2.10.0/src/common/w32lib.h
+--- claws-mail-2.10.0-orig/src/common/w32lib.h	2007-07-02 10:32:18.000000000 +0200
++++ claws-mail-2.10.0/src/common/w32lib.h	2007-07-03 18:31:59.000000000 +0200
+@@ -44,6 +44,12 @@
+ 
+ /* Changes are:
+ 
++2007-05-21  Werner Koch  <wk@g10code.com>
++
++	* src/common/w32_account.c: New.
++
++	* src/common/w32lib.h: Undef "interface".
++
+ 2005-11-17  Werner Koch  <wk@g10code.com>
+ 
+ 	Add boilerplate text to all files and explain legal status.
+@@ -76,6 +82,13 @@
+ #include <dirent.h>
  #endif
  
- #ifdef MAEMO
-@@ -74,6 +75,18 @@ static gboolean debug_mode = FALSE;
- static GSList *tempfiles=NULL;
- #endif
- 
-+/* Return true if we are running as root.  This function should beused
-+   instead of getuid () == 0.  */
-+gboolean superuser_p (void)
-+{
-+#ifdef G_OS_WIN32
-+  return w32_is_administrator ();
-+#else
-+  return !getuid();
-+#endif  
-+}
-+
-+
- 
- #if !GLIB_CHECK_VERSION(2, 7, 0) && !defined(G_OS_UNIX)
- gint g_chdir(const gchar *path)
-@@ -4728,7 +4741,12 @@ gint copy_dir(const gchar *src, const gc
- 				g_dir_close(dir);
- 				return r;
- 			}
--		} else if (g_file_test(old_file, G_FILE_TEST_IS_SYMLINK)) {
-+                }
-+#ifndef G_OS_WIN32
-+                /* Windows has no symlinks.  Or well, Vista seems to
-+                   have something like this but the semantics might be
-+                   different.  Thus we don't use it under Windows. */
-+		 else if (g_file_test(old_file, G_FILE_TEST_IS_SYMLINK)) {
- 			GError *error;
- 			gint r = 0;
- 			gchar *target = g_file_read_link(old_file, &error);
-@@ -4739,7 +4757,9 @@ gint copy_dir(const gchar *src, const gc
- 				g_dir_close(dir);
- 				return r;
- 			}
--		} else if (g_file_test(old_file, G_FILE_TEST_IS_DIR)) {
-+                 }
-+#endif /*G_OS_WIN32*/
-+	        else if (g_file_test(old_file, G_FILE_TEST_IS_DIR)) {
- 			gint r = copy_dir(old_file, new_file);
- 			if (r < 0) {
- 				g_dir_close(dir);
-diff -rup claws-mail-2.9.2-orig/src/common/utils.h claws-mail-2.9.2/src/common/utils.h
---- claws-mail-2.9.2-orig/src/common/utils.h	2007-05-08 09:59:21.000000000 +0200
-+++ claws-mail-2.9.2/src/common/utils.h	2007-05-21 11:49:32.000000000 +0200
-@@ -204,6 +204,14 @@ gboolean debug_get_mode		(void);
- #define Str(x)	#x
- #define Xstr(x)	Str(x)
- 
-+
-+/* System related stuff.  */
-+
-+gboolean superuser_p (void);
-+
-+
-+/* String utilities.  */
-+
- void list_free_strings		(GList		*list);
- void slist_free_strings		(GSList		*list);
- 
-diff -rup claws-mail-2.9.2-orig/src/common/timing.h claws-mail-2.9.2/src/common/timing.h
---- claws-mail-2.9.2-orig/src/common/timing.h	2007-05-08 09:59:21.000000000 +0200
-+++ claws-mail-2.9.2/src/common/timing.h	2007-06-29 19:41:56.000000000 +0200
-@@ -29,6 +29,7 @@
- #ifndef __TIMING_H__
- #define __TIMING_H__
- 
-+#include <glib.h>
- #include <sys/time.h>
- #ifdef HAVE_CONFIG_H
- #  include "config.h"
-@@ -49,13 +50,38 @@
- #define START_TIMING(str) do {} while(0);
- #define END_TIMING() do {} while(0);
- #else
-+
-+#ifdef G_OS_WIN32
-+
-+#include <w32lib.h>
-+
-+/* no {} by purpose */
-+#define START_TIMING(str) 						\
-+        LARGE_INTEGER frequency;					\
-+	LARGE_INTEGER start;						\
-+	LARGE_INTEGER end;						\
-+	LARGE_INTEGER diff;						\
-+	const char *timing_name=str;					\
-+	QueryPerformanceFrequency (&frequency);				\
-+	QueryPerformanceCounter (&start);				\
-+
-+#define END_TIMING()							\
-+	QueryPerformanceCounter (&end);					\
-+        diff.QuadPart = (double)					\
-+		((end.QuadPart - start.QuadPart)	\
-+		* (double)1000.0/(double)frequency.QuadPart);		\
-+        debug_print("TIMING %s: %ds%03dms\n",				\
-+		timing_name, (unsigned int) (diff.QuadPart / 1000000),	\
-+		(unsigned int) ((diff.QuadPart / 1000) % 1000));
-+
-+#else
- /* no {} by purpose */
- #define START_TIMING(str) 						\
- 	struct timeval start;						\
- 	struct timeval end;						\
- 	struct timeval diff;						\
- 	const char *timing_name=str;					\
--	gettimeofday(&start, NULL);					\
-+	gettimeofday(&start, NULL);
- 
- #ifdef __GLIBC__
- #define END_TIMING()							\
-@@ -64,7 +90,7 @@
- 	debug_print("TIMING %s %s: %ds%03dms\n", 			\
- 		__FUNCTION__,						\
- 		timing_name, (unsigned int)diff.tv_sec, 		\
--		(unsigned int)diff.tv_usec/1000);			
-+		(unsigned int)diff.tv_usec/1000);
- #else
- #define END_TIMING()							\
- 	gettimeofday(&end, NULL);					\
-@@ -76,3 +102,4 @@
- 
- #endif 
- #endif 
++/* Mingw32 3.4.4 defines interface to struct and thus breaks our own
++   use of that symbol.  Undef it here. */
++#if defined(_BASETYPS_H) && defined(interface) 
++#undef interface
 +#endif
-diff -rup claws-mail-2.9.2-orig/src/gtk/Makefile.am claws-mail-2.9.2/src/gtk/Makefile.am
---- claws-mail-2.9.2-orig/src/gtk/Makefile.am	2007-05-08 09:59:19.000000000 +0200
-+++ claws-mail-2.9.2/src/gtk/Makefile.am	2007-06-29 16:48:05.000000000 +0200
-@@ -65,6 +65,7 @@ clawsgtkinclude_HEADERS = \
++
++
+ /* types */
+ /*** ??? ***/
+ #ifndef __MINGW32__
+@@ -188,8 +201,18 @@ int kill( pid_t pid, int sig );
+ FILE *popen( const char *command, const char *type );
+ int pclose( FILE *stream );
+ 
++/*** w32_account.c ***/
++int w32_is_administrator (void);
++
+ /*** misc ***/
+ char *read_w32_registry_string( char *parent, char *section, char *key );
+ char *get_content_type_from_registry_with_ext( char *ext );
+ 
++
++/* Simulate thread-safe versions of some functions.  */
++#define gmtime_r(time, resultp) gmtime (time)
++#define localtime_r(time, resultp) localtime (time)
++#define asctime_r(time, buffer) asctime (time)
++#define ctime_r(time, buffer) ctime (time)
++
+ #endif
+diff -rupN claws-mail-2.10.0-orig/src/exporthtml.c claws-mail-2.10.0/src/exporthtml.c
+--- claws-mail-2.10.0-orig/src/exporthtml.c	2007-07-02 10:32:21.000000000 +0200
++++ claws-mail-2.10.0/src/exporthtml.c	2007-07-03 18:31:59.000000000 +0200
+@@ -33,6 +33,10 @@
+ #include <glib.h>
+ #include <glib/gi18n.h>
+ 
++#ifdef G_OS_WIN32
++#  include <w32lib.h>
++#endif
++
+ #include "mgutils.h"
+ #include "utils.h"
+ #include "exporthtml.h"
+diff -rupN claws-mail-2.10.0-orig/src/gtk/Makefile.am claws-mail-2.10.0/src/gtk/Makefile.am
+--- claws-mail-2.10.0-orig/src/gtk/Makefile.am	2007-07-02 10:32:15.000000000 +0200
++++ claws-mail-2.10.0/src/gtk/Makefile.am	2007-07-03 18:31:59.000000000 +0200
+@@ -66,6 +66,7 @@ clawsgtkinclude_HEADERS = \
  
  AM_CPPFLAGS = \
  	-I$(srcdir)/../common \
@@ -423,10 +460,10 @@ diff -rup claws-mail-2.9.2-orig/src/gtk/Makefile.am claws-mail-2.9.2/src/gtk/Mak
  	-I$(srcdir)/.. \
  	$(GTK_CFLAGS) \
  	$(OPENSSL_CFLAGS) \
-diff -rup claws-mail-2.9.2-orig/src/Makefile.am claws-mail-2.9.2/src/Makefile.am
---- claws-mail-2.9.2-orig/src/Makefile.am	2007-07-02 19:45:47.000000000 +0200
-+++ claws-mail-2.9.2/src/Makefile.am	2007-06-29 17:03:48.000000000 +0200
-@@ -460,6 +444,7 @@ EXTRA_DIST = \
+diff -rupN claws-mail-2.10.0-orig/src/Makefile.am claws-mail-2.10.0/src/Makefile.am
+--- claws-mail-2.10.0-orig/src/Makefile.am	2007-07-03 18:28:46.000000000 +0200
++++ claws-mail-2.10.0/src/Makefile.am	2007-07-03 18:31:59.000000000 +0200
+@@ -462,6 +462,7 @@ EXTRA_DIST = \
  
  INCLUDES = \
  	-I$(srcdir)/common \
@@ -434,9 +471,23 @@ diff -rup claws-mail-2.9.2-orig/src/Makefile.am claws-mail-2.9.2/src/Makefile.am
  	-I$(srcdir)/gtk \
  	-I$(srcdir)/etpan
  
-diff -rup claws-mail-2.9.2-orig/src/msgcache.c claws-mail-2.9.2/src/msgcache.c
---- claws-mail-2.9.2-orig/src/msgcache.c	2007-05-08 09:59:22.000000000 +0200
-+++ claws-mail-2.9.2/src/msgcache.c	2007-06-29 20:17:41.000000000 +0200
+diff -rupN claws-mail-2.10.0-orig/src/mbox.c claws-mail-2.10.0/src/mbox.c
+--- claws-mail-2.10.0-orig/src/mbox.c	2007-07-02 10:32:19.000000000 +0200
++++ claws-mail-2.10.0/src/mbox.c	2007-07-03 18:31:59.000000000 +0200
+@@ -37,6 +37,10 @@
+ #include <time.h>
+ #include <errno.h>
+ 
++#ifdef G_OS_WIN32
++#  include <w32lib.h>
++#endif
++
+ #include "mbox.h"
+ #include "procmsg.h"
+ #include "folder.h"
+diff -rupN claws-mail-2.10.0-orig/src/msgcache.c claws-mail-2.10.0/src/msgcache.c
+--- claws-mail-2.10.0-orig/src/msgcache.c	2007-07-02 10:32:18.000000000 +0200
++++ claws-mail-2.10.0/src/msgcache.c	2007-07-03 18:31:59.000000000 +0200
 @@ -28,7 +28,12 @@
  
  #include <glib.h>
@@ -591,30 +642,9 @@ diff -rup claws-mail-2.9.2-orig/src/msgcache.c claws-mail-2.9.2/src/msgcache.c
  		ftruncate(fileno(write_fps.cache_fp), write_fps.cache_size);
  		ftruncate(fileno(write_fps.mark_fp), write_fps.mark_size);
  	} else {
-diff -rup claws-mail-2.9.2-orig/src/prefs_themes.c claws-mail-2.9.2/src/prefs_themes.c
---- claws-mail-2.9.2-orig/src/prefs_themes.c	2007-05-08 09:59:19.000000000 +0200
-+++ claws-mail-2.9.2/src/prefs_themes.c	2007-05-21 11:51:35.000000000 +0200
-@@ -445,7 +445,7 @@ static void prefs_themes_btn_remove_clic
- 	tmp = g_path_get_basename(theme_str);
- 
- 	if (IS_SYSTEM_THEME(theme_str)) {
--		if (getuid() != 0) {
-+		if (!superuser_p()) {
- 			alertpanel_error(_("Only root can remove system themes"));
- 			return;
- 		}
-@@ -518,7 +518,7 @@ static void prefs_themes_btn_install_cli
- 		if (G_ALERTALTERNATE != val)
- 			goto end_inst;
- 	}
--	if (getuid() == 0) {
-+	if (superuser_p ()) {
- 		val = alertpanel(alert_title,
- 				 _("Do you want to install theme for all users?"),
- 				 GTK_STOCK_NO, GTK_STOCK_YES, NULL);
-diff -rup claws-mail-2.9.2-orig/src/plugins/pgpcore/claws.def claws-mail-2.9.2/src/plugins/pgpcore/claws.def
---- claws-mail-2.9.2-orig/src/plugins/pgpcore/claws.def	2007-05-08 09:59:23.000000000 +0200
-+++ claws-mail-2.9.2/src/plugins/pgpcore/claws.def	2007-07-02 19:51:25.000000000 +0200
+diff -rupN claws-mail-2.10.0-orig/src/plugins/pgpcore/claws.def claws-mail-2.10.0/src/plugins/pgpcore/claws.def
+--- claws-mail-2.10.0-orig/src/plugins/pgpcore/claws.def	2007-07-02 10:32:21.000000000 +0200
++++ claws-mail-2.10.0/src/plugins/pgpcore/claws.def	2007-07-03 18:31:59.000000000 +0200
 @@ -1,26 +1,37 @@
  LIBRARY CLAWS-MAIL.EXE
  EXPORTS
@@ -669,9 +699,9 @@ diff -rup claws-mail-2.9.2-orig/src/plugins/pgpcore/claws.def claws-mail-2.9.2/s
 +textview_set_font
 +textview_show_icon
 +textview_show_mime_part
-diff -rup claws-mail-2.9.2-orig/src/plugins/pgpcore/Makefile.am claws-mail-2.9.2/src/plugins/pgpcore/Makefile.am
---- claws-mail-2.9.2-orig/src/plugins/pgpcore/Makefile.am	2007-05-08 09:59:23.000000000 +0200
-+++ claws-mail-2.9.2/src/plugins/pgpcore/Makefile.am	2007-06-29 20:29:45.000000000 +0200
+diff -rupN claws-mail-2.10.0-orig/src/plugins/pgpcore/Makefile.am claws-mail-2.10.0/src/plugins/pgpcore/Makefile.am
+--- claws-mail-2.10.0-orig/src/plugins/pgpcore/Makefile.am	2007-07-02 10:32:21.000000000 +0200
++++ claws-mail-2.10.0/src/plugins/pgpcore/Makefile.am	2007-07-03 18:31:59.000000000 +0200
 @@ -72,6 +72,7 @@ pgpcore_la_LIBADD = $(cygwin_export_lib)
  INCLUDES = \
  	-I$(top_srcdir)/src \
@@ -680,9 +710,9 @@ diff -rup claws-mail-2.9.2-orig/src/plugins/pgpcore/Makefile.am claws-mail-2.9.2
  	-I$(top_srcdir)/src/gtk
  
  AM_CPPFLAGS = \
-diff -rup claws-mail-2.9.2-orig/src/plugins/pgpcore/passphrase.c claws-mail-2.9.2/src/plugins/pgpcore/passphrase.c
---- claws-mail-2.9.2-orig/src/plugins/pgpcore/passphrase.c	2007-05-08 09:59:23.000000000 +0200
-+++ claws-mail-2.9.2/src/plugins/pgpcore/passphrase.c	2007-05-21 10:19:05.000000000 +0200
+diff -rupN claws-mail-2.10.0-orig/src/plugins/pgpcore/passphrase.c claws-mail-2.10.0/src/plugins/pgpcore/passphrase.c
+--- claws-mail-2.10.0-orig/src/plugins/pgpcore/passphrase.c	2007-07-02 10:32:20.000000000 +0200
++++ claws-mail-2.10.0/src/plugins/pgpcore/passphrase.c	2007-07-03 18:31:59.000000000 +0200
 @@ -44,7 +44,7 @@
  #include <string.h>
  #include <sys/types.h>
@@ -692,9 +722,9 @@ diff -rup claws-mail-2.9.2-orig/src/plugins/pgpcore/passphrase.c claws-mail-2.9.
  #else
  #include <sys/mman.h>
  #endif
-diff -rup claws-mail-2.9.2-orig/src/plugins/pgpcore/pgp_viewer.c claws-mail-2.9.2/src/plugins/pgpcore/pgp_viewer.c
---- claws-mail-2.9.2-orig/src/plugins/pgpcore/pgp_viewer.c	2007-05-08 09:59:23.000000000 +0200
-+++ claws-mail-2.9.2/src/plugins/pgpcore/pgp_viewer.c	2007-05-21 10:21:25.000000000 +0200
+diff -rupN claws-mail-2.10.0-orig/src/plugins/pgpcore/pgp_viewer.c claws-mail-2.10.0/src/plugins/pgpcore/pgp_viewer.c
+--- claws-mail-2.10.0-orig/src/plugins/pgpcore/pgp_viewer.c	2007-07-02 10:32:21.000000000 +0200
++++ claws-mail-2.10.0/src/plugins/pgpcore/pgp_viewer.c	2007-07-03 18:31:59.000000000 +0200
 @@ -26,7 +26,9 @@
  #include <glib.h>
  #include <glib/gi18n.h>
@@ -706,9 +736,9 @@ diff -rup claws-mail-2.9.2-orig/src/plugins/pgpcore/pgp_viewer.c claws-mail-2.9.
  #if (defined(__DragonFly__) || defined (__NetBSD__) || defined (__FreeBSD__) || defined (__OpenBSD__))
  #  include <sys/signal.h>
  #endif
-diff -rup claws-mail-2.9.2-orig/src/plugins/pgpcore/plugin.def claws-mail-2.9.2/src/plugins/pgpcore/plugin.def
---- claws-mail-2.9.2-orig/src/plugins/pgpcore/plugin.def	2007-05-08 09:59:23.000000000 +0200
-+++ claws-mail-2.9.2/src/plugins/pgpcore/plugin.def	2007-06-30 01:59:46.000000000 +0200
+diff -rupN claws-mail-2.10.0-orig/src/plugins/pgpcore/plugin.def claws-mail-2.10.0/src/plugins/pgpcore/plugin.def
+--- claws-mail-2.10.0-orig/src/plugins/pgpcore/plugin.def	2007-07-02 10:32:20.000000000 +0200
++++ claws-mail-2.10.0/src/plugins/pgpcore/plugin.def	2007-07-03 18:31:59.000000000 +0200
 @@ -1,13 +1,15 @@
  EXPORTS
 -        plugin_init
@@ -737,9 +767,9 @@ diff -rup claws-mail-2.9.2-orig/src/plugins/pgpcore/plugin.def claws-mail-2.9.2/
 +        prefs_gpg_remove_skip_encryption_warning
 +        prefs_gpg_should_skip_encryption_warning
          prefs_gpg_get_config
-diff -rup claws-mail-2.9.2-orig/src/plugins/pgpcore/sgpgme.c claws-mail-2.9.2/src/plugins/pgpcore/sgpgme.c
---- claws-mail-2.9.2-orig/src/plugins/pgpcore/sgpgme.c	2007-05-08 09:59:23.000000000 +0200
-+++ claws-mail-2.9.2/src/plugins/pgpcore/sgpgme.c	2007-05-21 10:21:47.000000000 +0200
+diff -rupN claws-mail-2.10.0-orig/src/plugins/pgpcore/sgpgme.c claws-mail-2.10.0/src/plugins/pgpcore/sgpgme.c
+--- claws-mail-2.10.0-orig/src/plugins/pgpcore/sgpgme.c	2007-07-02 10:32:21.000000000 +0200
++++ claws-mail-2.10.0/src/plugins/pgpcore/sgpgme.c	2007-07-03 18:31:59.000000000 +0200
 @@ -33,7 +33,9 @@
  #include <stdlib.h>
  #include <errno.h>
@@ -751,9 +781,9 @@ diff -rup claws-mail-2.9.2-orig/src/plugins/pgpcore/sgpgme.c claws-mail-2.9.2/sr
  #if (defined(__DragonFly__) || defined (__NetBSD__) || defined (__FreeBSD__) || defined (__OpenBSD__))
  #  include <sys/signal.h>
  #endif
-diff -rup claws-mail-2.9.2-orig/src/plugins/pgpinline/claws.def claws-mail-2.9.2/src/plugins/pgpinline/claws.def
---- claws-mail-2.9.2-orig/src/plugins/pgpinline/claws.def	2007-05-08 09:59:23.000000000 +0200
-+++ claws-mail-2.9.2/src/plugins/pgpinline/claws.def	2007-07-02 19:53:21.000000000 +0200
+diff -rupN claws-mail-2.10.0-orig/src/plugins/pgpinline/claws.def claws-mail-2.10.0/src/plugins/pgpinline/claws.def
+--- claws-mail-2.10.0-orig/src/plugins/pgpinline/claws.def	2007-07-02 10:32:20.000000000 +0200
++++ claws-mail-2.10.0/src/plugins/pgpinline/claws.def	2007-07-03 18:31:59.000000000 +0200
 @@ -1,5 +1,6 @@
  LIBRARY CLAWS-MAIL.EXE
  EXPORTS
@@ -778,9 +808,9 @@ diff -rup claws-mail-2.9.2-orig/src/plugins/pgpinline/claws.def claws-mail-2.9.2
 -privacy_set_error
 -privacy_get_error
 -privacy_reset_error
-diff -rup claws-mail-2.9.2-orig/src/plugins/pgpinline/Makefile.am claws-mail-2.9.2/src/plugins/pgpinline/Makefile.am
---- claws-mail-2.9.2-orig/src/plugins/pgpinline/Makefile.am	2007-05-08 09:59:23.000000000 +0200
-+++ claws-mail-2.9.2/src/plugins/pgpinline/Makefile.am	2007-06-30 00:25:06.000000000 +0200
+diff -rupN claws-mail-2.10.0-orig/src/plugins/pgpinline/Makefile.am claws-mail-2.10.0/src/plugins/pgpinline/Makefile.am
+--- claws-mail-2.10.0-orig/src/plugins/pgpinline/Makefile.am	2007-07-02 10:32:20.000000000 +0200
++++ claws-mail-2.10.0/src/plugins/pgpinline/Makefile.am	2007-07-03 18:31:59.000000000 +0200
 @@ -71,6 +71,7 @@ pgpinline_la_LIBADD = $(plugin_ldadd) $(
  INCLUDES = \
  	-I$(top_srcdir)/src \
@@ -789,9 +819,9 @@ diff -rup claws-mail-2.9.2-orig/src/plugins/pgpinline/Makefile.am claws-mail-2.9
  	-I$(top_srcdir)/src/gtk
  
  AM_CPPFLAGS = \
-diff -rup claws-mail-2.9.2-orig/src/plugins/pgpinline/mypgpcore.def claws-mail-2.9.2/src/plugins/pgpinline/mypgpcore.def
---- claws-mail-2.9.2-orig/src/plugins/pgpinline/mypgpcore.def	2007-05-08 09:59:23.000000000 +0200
-+++ claws-mail-2.9.2/src/plugins/pgpinline/mypgpcore.def	2007-07-02 19:54:29.000000000 +0200
+diff -rupN claws-mail-2.10.0-orig/src/plugins/pgpinline/mypgpcore.def claws-mail-2.10.0/src/plugins/pgpinline/mypgpcore.def
+--- claws-mail-2.10.0-orig/src/plugins/pgpinline/mypgpcore.def	2007-07-02 10:32:20.000000000 +0200
++++ claws-mail-2.10.0/src/plugins/pgpinline/mypgpcore.def	2007-07-03 18:31:59.000000000 +0200
 @@ -1,14 +1,16 @@
  LIBRARY PGPCORE.DLL
  EXPORTS
@@ -821,9 +851,9 @@ diff -rup claws-mail-2.9.2-orig/src/plugins/pgpinline/mypgpcore.def claws-mail-2
 +sgpgme_sigstat_info_full
 +sgpgme_sigstat_info_short
 +sgpgme_verify_signature
-diff -rup claws-mail-2.9.2-orig/src/plugins/pgpinline/plugin.def claws-mail-2.9.2/src/plugins/pgpinline/plugin.def
---- claws-mail-2.9.2-orig/src/plugins/pgpinline/plugin.def	2007-05-08 09:59:23.000000000 +0200
-+++ claws-mail-2.9.2/src/plugins/pgpinline/plugin.def	2007-06-30 01:05:15.000000000 +0200
+diff -rupN claws-mail-2.10.0-orig/src/plugins/pgpinline/plugin.def claws-mail-2.10.0/src/plugins/pgpinline/plugin.def
+--- claws-mail-2.10.0-orig/src/plugins/pgpinline/plugin.def	2007-07-02 10:32:20.000000000 +0200
++++ claws-mail-2.10.0/src/plugins/pgpinline/plugin.def	2007-07-03 18:31:59.000000000 +0200
 @@ -1,9 +1,10 @@
  EXPORTS
 -        plugin_init
@@ -838,9 +868,9 @@ diff -rup claws-mail-2.9.2-orig/src/plugins/pgpinline/plugin.def claws-mail-2.9.
 +	plugin_provides
          plugin_version
  
-diff -rup claws-mail-2.9.2-orig/src/plugins/pgpmime/claws.def claws-mail-2.9.2/src/plugins/pgpmime/claws.def
---- claws-mail-2.9.2-orig/src/plugins/pgpmime/claws.def	2007-05-08 09:59:23.000000000 +0200
-+++ claws-mail-2.9.2/src/plugins/pgpmime/claws.def	2007-07-02 19:53:39.000000000 +0200
+diff -rupN claws-mail-2.10.0-orig/src/plugins/pgpmime/claws.def claws-mail-2.10.0/src/plugins/pgpmime/claws.def
+--- claws-mail-2.10.0-orig/src/plugins/pgpmime/claws.def	2007-07-02 10:32:21.000000000 +0200
++++ claws-mail-2.10.0/src/plugins/pgpmime/claws.def	2007-07-03 18:31:59.000000000 +0200
 @@ -1,6 +1,7 @@
  LIBRARY CLAWS-MAIL.EXE
  EXPORTS
@@ -866,9 +896,9 @@ diff -rup claws-mail-2.9.2-orig/src/plugins/pgpmime/claws.def claws-mail-2.9.2/s
 -privacy_set_error
 -privacy_get_error
 -privacy_reset_error
-diff -rup claws-mail-2.9.2-orig/src/plugins/pgpmime/Makefile.am claws-mail-2.9.2/src/plugins/pgpmime/Makefile.am
---- claws-mail-2.9.2-orig/src/plugins/pgpmime/Makefile.am	2007-05-08 09:59:23.000000000 +0200
-+++ claws-mail-2.9.2/src/plugins/pgpmime/Makefile.am	2007-06-30 00:20:29.000000000 +0200
+diff -rupN claws-mail-2.10.0-orig/src/plugins/pgpmime/Makefile.am claws-mail-2.10.0/src/plugins/pgpmime/Makefile.am
+--- claws-mail-2.10.0-orig/src/plugins/pgpmime/Makefile.am	2007-07-02 10:32:21.000000000 +0200
++++ claws-mail-2.10.0/src/plugins/pgpmime/Makefile.am	2007-07-03 18:31:59.000000000 +0200
 @@ -70,6 +70,7 @@ pgpmime_la_LIBADD = $(plugin_ldadd) $(pg
  INCLUDES = \
  	-I$(top_srcdir)/src \
@@ -877,9 +907,9 @@ diff -rup claws-mail-2.9.2-orig/src/plugins/pgpmime/Makefile.am claws-mail-2.9.2
  	-I$(top_srcdir)/src/gtk
  
  AM_CPPFLAGS = \
-diff -rup claws-mail-2.9.2-orig/src/plugins/pgpmime/mypgpcore.def claws-mail-2.9.2/src/plugins/pgpmime/mypgpcore.def
---- claws-mail-2.9.2-orig/src/plugins/pgpmime/mypgpcore.def	2007-05-08 09:59:23.000000000 +0200
-+++ claws-mail-2.9.2/src/plugins/pgpmime/mypgpcore.def	2007-07-02 19:55:09.000000000 +0200
+diff -rupN claws-mail-2.10.0-orig/src/plugins/pgpmime/mypgpcore.def claws-mail-2.10.0/src/plugins/pgpmime/mypgpcore.def
+--- claws-mail-2.10.0-orig/src/plugins/pgpmime/mypgpcore.def	2007-07-02 10:32:21.000000000 +0200
++++ claws-mail-2.10.0/src/plugins/pgpmime/mypgpcore.def	2007-07-03 18:31:59.000000000 +0200
 @@ -1,14 +1,17 @@
  LIBRARY PGPCORE.DLL
  EXPORTS
@@ -910,9 +940,9 @@ diff -rup claws-mail-2.9.2-orig/src/plugins/pgpmime/mypgpcore.def claws-mail-2.9
 +sgpgme_sigstat_info_full
 +sgpgme_sigstat_info_short
 +sgpgme_verify_signature
-diff -rup claws-mail-2.9.2-orig/src/plugins/pgpmime/plugin.def claws-mail-2.9.2/src/plugins/pgpmime/plugin.def
---- claws-mail-2.9.2-orig/src/plugins/pgpmime/plugin.def	2007-05-08 09:59:23.000000000 +0200
-+++ claws-mail-2.9.2/src/plugins/pgpmime/plugin.def	2007-06-30 01:05:27.000000000 +0200
+diff -rupN claws-mail-2.10.0-orig/src/plugins/pgpmime/plugin.def claws-mail-2.10.0/src/plugins/pgpmime/plugin.def
+--- claws-mail-2.10.0-orig/src/plugins/pgpmime/plugin.def	2007-07-02 10:32:21.000000000 +0200
++++ claws-mail-2.10.0/src/plugins/pgpmime/plugin.def	2007-07-03 18:31:59.000000000 +0200
 @@ -1,8 +1,9 @@
  EXPORTS
 -        plugin_init
@@ -925,67 +955,10 @@ diff -rup claws-mail-2.9.2-orig/src/plugins/pgpmime/plugin.def claws-mail-2.9.2/
          plugin_type
 -        plugin_licence
 +	plugin_provides
-         plugin_versio
-ndiff -rup claws-mail-2.10.0-orig/src/common/log.c claws-mail-2.10.0/src/common/log.c
---- claws-mail-2.10.0-orig/src/common/log.c	2007-07-02 10:32:17.000000000 +0200
-+++ claws-mail-2.10.0/src/common/log.c	2007-07-02 23:29:10.000000000 +0200
-@@ -23,6 +23,10 @@
- 
- #include "defs.h"
- 
-+#ifdef G_OS_WIN32
-+#  include <w32lib.h>
-+#endif
-+
- #include <stdio.h>
- #include <glib.h>
- #include <glib/gi18n.h>
-diff -rup claws-mail-2.10.0-orig/src/common/w32lib.h claws-mail-2.10.0/src/common/w32lib.h
---- claws-mail-2.10.0-orig/src/common/w32lib.h	2007-07-02 23:47:23.000000000 +0200
-+++ claws-mail-2.10.0/src/common/w32lib.h	2007-07-02 23:31:31.000000000 +0200
-@@ -208,4 +208,11 @@ int w32_is_administrator (void);
- char *read_w32_registry_string( char *parent, char *section, char *key );
- char *get_content_type_from_registry_with_ext( char *ext );
- 
-+
-+/* Simulate thread-safe versions of some functions.  */
-+#define gmtime_r(time, resultp) gmtime (time)
-+#define localtime_r(time, resultp) localtime (time)
-+#define asctime_r(time, buffer) asctime (time)
-+#define ctime_r(time, buffer) ctime (time)
-+
- #endif
-diff -rup claws-mail-2.10.0-orig/src/exporthtml.c claws-mail-2.10.0/src/exporthtml.c
---- claws-mail-2.10.0-orig/src/exporthtml.c	2007-07-02 10:32:21.000000000 +0200
-+++ claws-mail-2.10.0/src/exporthtml.c	2007-07-02 23:36:46.000000000 +0200
-@@ -33,6 +33,10 @@
- #include <glib.h>
- #include <glib/gi18n.h>
- 
-+#ifdef G_OS_WIN32
-+#  include <w32lib.h>
-+#endif
-+
- #include "mgutils.h"
- #include "utils.h"
- #include "exporthtml.h"
-diff -rup claws-mail-2.10.0-orig/src/mbox.c claws-mail-2.10.0/src/mbox.c
---- claws-mail-2.10.0-orig/src/mbox.c	2007-07-02 10:32:19.000000000 +0200
-+++ claws-mail-2.10.0/src/mbox.c	2007-07-02 23:37:17.000000000 +0200
-@@ -37,6 +37,10 @@
- #include <time.h>
- #include <errno.h>
- 
-+#ifdef G_OS_WIN32
-+#  include <w32lib.h>
-+#endif
-+
- #include "mbox.h"
- #include "procmsg.h"
- #include "folder.h"
-diff -rup claws-mail-2.10.0-orig/src/prefs_summaries.c claws-mail-2.10.0/src/prefs_summaries.c
+         plugin_version
+diff -rupN claws-mail-2.10.0-orig/src/prefs_summaries.c claws-mail-2.10.0/src/prefs_summaries.c
 --- claws-mail-2.10.0-orig/src/prefs_summaries.c	2007-07-02 10:32:18.000000000 +0200
-+++ claws-mail-2.10.0/src/prefs_summaries.c	2007-07-02 23:37:27.000000000 +0200
++++ claws-mail-2.10.0/src/prefs_summaries.c	2007-07-03 18:31:59.000000000 +0200
 @@ -31,6 +31,10 @@
  #include <gtk/gtk.h>
  #include <gdk/gdkkeysyms.h>
@@ -997,9 +970,30 @@ diff -rup claws-mail-2.10.0-orig/src/prefs_summaries.c claws-mail-2.10.0/src/pre
  #include "prefs_common.h"
  #include "prefs_gtk.h"
  #include "prefs_summary_open.h"
-diff -rup claws-mail-2.10.0-orig/src/procheader.c claws-mail-2.10.0/src/procheader.c
+diff -rupN claws-mail-2.10.0-orig/src/prefs_themes.c claws-mail-2.10.0/src/prefs_themes.c
+--- claws-mail-2.10.0-orig/src/prefs_themes.c	2007-07-02 10:32:15.000000000 +0200
++++ claws-mail-2.10.0/src/prefs_themes.c	2007-07-03 18:31:59.000000000 +0200
+@@ -445,7 +445,7 @@ static void prefs_themes_btn_remove_clic
+ 	tmp = g_path_get_basename(theme_str);
+ 
+ 	if (IS_SYSTEM_THEME(theme_str)) {
+-		if (getuid() != 0) {
++		if (!superuser_p()) {
+ 			alertpanel_error(_("Only root can remove system themes"));
+ 			return;
+ 		}
+@@ -518,7 +518,7 @@ static void prefs_themes_btn_install_cli
+ 		if (G_ALERTALTERNATE != val)
+ 			goto end_inst;
+ 	}
+-	if (getuid() == 0) {
++	if (superuser_p ()) {
+ 		val = alertpanel(alert_title,
+ 				 _("Do you want to install theme for all users?"),
+ 				 GTK_STOCK_NO, GTK_STOCK_YES, NULL);
+diff -rupN claws-mail-2.10.0-orig/src/procheader.c claws-mail-2.10.0/src/procheader.c
 --- claws-mail-2.10.0-orig/src/procheader.c	2007-07-02 10:32:19.000000000 +0200
-+++ claws-mail-2.10.0/src/procheader.c	2007-07-02 23:36:56.000000000 +0200
++++ claws-mail-2.10.0/src/procheader.c	2007-07-03 18:31:59.000000000 +0200
 @@ -29,6 +29,10 @@
  #include <time.h>
  #include <sys/stat.h>

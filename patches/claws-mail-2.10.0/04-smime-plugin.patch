@@ -4,13 +4,14 @@ exit $?
 
 2007-06-30  Marcus Brinkmann  <marcus@g10code.de>
 
-	* Add the SMIME plugin straight to the source.  This makes
-          building it so much simpler.
+	* Add the S/MIME 0.7.1 plugin from claws-mail-extra-plugins-2.10.0
+	straight to the source.  This makes building it so much simpler.
 
-diff -ruN claws-mail-2.9.2-p03/configure.ac claws-mail-2.9.2/configure.ac
---- claws-mail-2.9.2-p03/configure.ac	2007-07-02 20:53:34.000000000 +0200
-+++ claws-mail-2.9.2/configure.ac	2007-07-02 20:54:13.000000000 +0200
-@@ -888,6 +888,7 @@
+
+diff -rupN claws-mail-2.10.0-orig/configure.ac claws-mail-2.10.0/configure.ac
+--- claws-mail-2.10.0-orig/configure.ac	2007-07-02 10:33:02.000000000 +0200
++++ claws-mail-2.10.0/configure.ac	2007-07-03 18:36:43.000000000 +0200
+@@ -895,6 +895,7 @@ src/plugins/clamav/Makefile
  src/plugins/pgpcore/Makefile
  src/plugins/pgpmime/Makefile
  src/plugins/pgpinline/Makefile
@@ -18,19 +19,19 @@ diff -ruN claws-mail-2.9.2-p03/configure.ac claws-mail-2.9.2/configure.ac
  doc/Makefile
  doc/man/Makefile
  tools/Makefile
-diff -ruN claws-mail-2.9.2-p03/src/plugins/Makefile.am claws-mail-2.9.2/src/plugins/Makefile.am
---- claws-mail-2.9.2-p03/src/plugins/Makefile.am	2007-07-02 20:53:34.000000000 +0200
-+++ claws-mail-2.9.2/src/plugins/Makefile.am	2007-07-02 20:54:14.000000000 +0200
-@@ -40,4 +40,5 @@
+diff -rupN claws-mail-2.10.0-orig/src/plugins/Makefile.am claws-mail-2.10.0/src/plugins/Makefile.am
+--- claws-mail-2.10.0-orig/src/plugins/Makefile.am	2007-07-02 10:32:20.000000000 +0200
++++ claws-mail-2.10.0/src/plugins/Makefile.am	2007-07-03 18:36:43.000000000 +0200
+@@ -40,4 +40,5 @@ SUBDIRS = $(demo_dir) \
  	$(clamav_dir) \
  	$(pgpcore_dir) \
  	$(pgpmime_dir) \
 -	$(pgpinline_dir)
 +	$(pgpinline_dir) \
 +	smime
-diff -ruN claws-mail-2.9.2-p03/src/plugins/smime/claws.def claws-mail-2.9.2/src/plugins/smime/claws.def
---- claws-mail-2.9.2-p03/src/plugins/smime/claws.def	1970-01-01 01:00:00.000000000 +0100
-+++ claws-mail-2.9.2/src/plugins/smime/claws.def	2007-07-02 20:54:14.000000000 +0200
+diff -rupN claws-mail-2.10.0-orig/src/plugins/smime/claws.def claws-mail-2.10.0/src/plugins/smime/claws.def
+--- claws-mail-2.10.0-orig/src/plugins/smime/claws.def	1970-01-01 01:00:00.000000000 +0100
++++ claws-mail-2.10.0/src/plugins/smime/claws.def	2007-07-03 18:36:43.000000000 +0200
 @@ -0,0 +1,28 @@
 +LIBRARY CLAWS-MAIL.EXE
 +EXPORTS
@@ -60,9 +61,9 @@ diff -ruN claws-mail-2.9.2-p03/src/plugins/smime/claws.def claws-mail-2.9.2/src/
 +procmime_write_mime_header
 +procmime_write_mimeinfo
 +str_write_to_file
-diff -ruN claws-mail-2.9.2-p03/src/plugins/smime/Makefile.am claws-mail-2.9.2/src/plugins/smime/Makefile.am
---- claws-mail-2.9.2-p03/src/plugins/smime/Makefile.am	1970-01-01 01:00:00.000000000 +0100
-+++ claws-mail-2.9.2/src/plugins/smime/Makefile.am	2007-07-02 20:54:14.000000000 +0200
+diff -rupN claws-mail-2.10.0-orig/src/plugins/smime/Makefile.am claws-mail-2.10.0/src/plugins/smime/Makefile.am
+--- claws-mail-2.10.0-orig/src/plugins/smime/Makefile.am	1970-01-01 01:00:00.000000000 +0100
++++ claws-mail-2.10.0/src/plugins/smime/Makefile.am	2007-07-03 18:36:43.000000000 +0200
 @@ -0,0 +1,82 @@
 +EXTRA_DIST = version.rc plugin.def claws.def mypgpcore.def smime.deps
 +
@@ -146,9 +147,9 @@ diff -ruN claws-mail-2.9.2-p03/src/plugins/smime/Makefile.am claws-mail-2.9.2/sr
 +clean-local:
 +	rm -f libclaws.a
 +	rm -f libmypgpcore.a
-diff -ruN claws-mail-2.9.2-p03/src/plugins/smime/mypgpcore.def claws-mail-2.9.2/src/plugins/smime/mypgpcore.def
---- claws-mail-2.9.2-p03/src/plugins/smime/mypgpcore.def	1970-01-01 01:00:00.000000000 +0100
-+++ claws-mail-2.9.2/src/plugins/smime/mypgpcore.def	2007-07-02 20:54:14.000000000 +0200
+diff -rupN claws-mail-2.10.0-orig/src/plugins/smime/mypgpcore.def claws-mail-2.10.0/src/plugins/smime/mypgpcore.def
+--- claws-mail-2.10.0-orig/src/plugins/smime/mypgpcore.def	1970-01-01 01:00:00.000000000 +0100
++++ claws-mail-2.10.0/src/plugins/smime/mypgpcore.def	2007-07-03 18:36:43.000000000 +0200
 @@ -0,0 +1,13 @@
 +LIBRARY PGPCORE.DLL
 +EXPORTS
@@ -163,9 +164,9 @@ diff -ruN claws-mail-2.9.2-p03/src/plugins/smime/mypgpcore.def claws-mail-2.9.2/
 +sgpgme_sigstat_info_full
 +sgpgme_sigstat_info_short
 +sgpgme_verify_signature
-diff -ruN claws-mail-2.9.2-p03/src/plugins/smime/plugin.c claws-mail-2.9.2/src/plugins/smime/plugin.c
---- claws-mail-2.9.2-p03/src/plugins/smime/plugin.c	1970-01-01 01:00:00.000000000 +0100
-+++ claws-mail-2.9.2/src/plugins/smime/plugin.c	2007-07-02 20:54:14.000000000 +0200
+diff -rupN claws-mail-2.10.0-orig/src/plugins/smime/plugin.c claws-mail-2.10.0/src/plugins/smime/plugin.c
+--- claws-mail-2.10.0-orig/src/plugins/smime/plugin.c	1970-01-01 01:00:00.000000000 +0100
++++ claws-mail-2.10.0/src/plugins/smime/plugin.c	2007-07-03 18:39:18.000000000 +0200
 @@ -0,0 +1,90 @@
 +/*
 + * Claws Mail -- a GTK+ based, lightweight, and fast e-mail client
@@ -202,7 +203,7 @@ diff -ruN claws-mail-2.9.2-p03/src/plugins/smime/plugin.c claws-mail-2.9.2/src/p
 +
 +gint plugin_init(gchar **error)
 +{
-+	if (!check_plugin_version(MAKE_NUMERIC_VERSION(2, 7, 2, 63), 
++	if (!check_plugin_version(MAKE_NUMERIC_VERSION(2,9,2,72),
 +				VERSION_NUMERIC, _("S/MIME"), error))
 +		return -1;
 +
@@ -257,9 +258,9 @@ diff -ruN claws-mail-2.9.2-p03/src/plugins/smime/plugin.c claws-mail-2.9.2/src/p
 +{
 +	return VERSION;
 +}
-diff -ruN claws-mail-2.9.2-p03/src/plugins/smime/plugin.def claws-mail-2.9.2/src/plugins/smime/plugin.def
---- claws-mail-2.9.2-p03/src/plugins/smime/plugin.def	1970-01-01 01:00:00.000000000 +0100
-+++ claws-mail-2.9.2/src/plugins/smime/plugin.def	2007-07-02 20:54:14.000000000 +0200
+diff -rupN claws-mail-2.10.0-orig/src/plugins/smime/plugin.def claws-mail-2.10.0/src/plugins/smime/plugin.def
+--- claws-mail-2.10.0-orig/src/plugins/smime/plugin.def	1970-01-01 01:00:00.000000000 +0100
++++ claws-mail-2.10.0/src/plugins/smime/plugin.def	2007-07-03 18:36:43.000000000 +0200
 @@ -0,0 +1,9 @@
 +EXPORTS
 +        plugin_desc
@@ -270,10 +271,10 @@ diff -ruN claws-mail-2.9.2-p03/src/plugins/smime/plugin.def claws-mail-2.9.2/src
 +        plugin_type
 +	plugin_provides
 +        plugin_version
-diff -ruN claws-mail-2.9.2-p03/src/plugins/smime/smime.c claws-mail-2.9.2/src/plugins/smime/smime.c
---- claws-mail-2.9.2-p03/src/plugins/smime/smime.c	1970-01-01 01:00:00.000000000 +0100
-+++ claws-mail-2.9.2/src/plugins/smime/smime.c	2007-07-02 20:54:14.000000000 +0200
-@@ -0,0 +1,860 @@
+diff -rupN claws-mail-2.10.0-orig/src/plugins/smime/smime.c claws-mail-2.10.0/src/plugins/smime/smime.c
+--- claws-mail-2.10.0-orig/src/plugins/smime/smime.c	1970-01-01 01:00:00.000000000 +0100
++++ claws-mail-2.10.0/src/plugins/smime/smime.c	2007-07-03 18:38:38.000000000 +0200
+@@ -0,0 +1,879 @@
 +/* 
 + * Claws Mail -- a GTK+ based, lightweight, and fast e-mail client
 + * Copyright (C) 1999-2007 Colin Leroy <colin@colino.net> and 
@@ -931,6 +932,23 @@ diff -ruN claws-mail-2.9.2-p03/src/plugins/smime/smime.c claws-mail-2.9.2/src/pl
 +	return sgpgme_get_encrypt_data(recp_names, GPGME_PROTOCOL_CMS);
 +}
 +
++static const gchar *smime_get_encrypt_warning(void)
++{
++	if (prefs_gpg_should_skip_encryption_warning(smime_system.id))
++		return NULL;
++	else
++		return _("Please note that email headers, like Subject, "
++			 "are not encrypted by the S/MIME system.");
++}
++
++static void smime_inhibit_encrypt_warning(gboolean inhibit)
++{
++	if (inhibit)
++		prefs_gpg_add_skip_encryption_warning(smime_system.id);
++	else
++		prefs_gpg_remove_skip_encryption_warning(smime_system.id);
++}
++
 +static gchar *fp_read_noconv(FILE *fp)
 +{
 +	GByteArray *array;
@@ -1114,6 +1132,8 @@ diff -ruN claws-mail-2.9.2-p03/src/plugins/smime/smime.c claws-mail-2.9.2/src/pl
 +	TRUE,
 +	smime_get_encrypt_data,
 +	smime_encrypt,
++	smime_get_encrypt_warning,
++	smime_inhibit_encrypt_warning,
 +};
 +
 +void smime_init()
@@ -1134,14 +1154,14 @@ diff -ruN claws-mail-2.9.2-p03/src/plugins/smime/smime.c claws-mail-2.9.2/src/pl
 +	return features;
 +}
 +#endif /* USE_GPGME */
-diff -ruN claws-mail-2.9.2-p03/src/plugins/smime/smime.deps claws-mail-2.9.2/src/plugins/smime/smime.deps
---- claws-mail-2.9.2-p03/src/plugins/smime/smime.deps	1970-01-01 01:00:00.000000000 +0100
-+++ claws-mail-2.9.2/src/plugins/smime/smime.deps	2007-07-02 20:54:14.000000000 +0200
+diff -rupN claws-mail-2.10.0-orig/src/plugins/smime/smime.deps claws-mail-2.10.0/src/plugins/smime/smime.deps
+--- claws-mail-2.10.0-orig/src/plugins/smime/smime.deps	1970-01-01 01:00:00.000000000 +0100
++++ claws-mail-2.10.0/src/plugins/smime/smime.deps	2007-07-03 18:36:43.000000000 +0200
 @@ -0,0 +1 @@
 +pgpcore
-diff -ruN claws-mail-2.9.2-p03/src/plugins/smime/smime.h claws-mail-2.9.2/src/plugins/smime/smime.h
---- claws-mail-2.9.2-p03/src/plugins/smime/smime.h	1970-01-01 01:00:00.000000000 +0100
-+++ claws-mail-2.9.2/src/plugins/smime/smime.h	2007-07-02 20:54:14.000000000 +0200
+diff -rupN claws-mail-2.10.0-orig/src/plugins/smime/smime.h claws-mail-2.10.0/src/plugins/smime/smime.h
+--- claws-mail-2.10.0-orig/src/plugins/smime/smime.h	1970-01-01 01:00:00.000000000 +0100
++++ claws-mail-2.10.0/src/plugins/smime/smime.h	2007-07-03 18:36:43.000000000 +0200
 @@ -0,0 +1,27 @@
 +/*
 + * Claws Mail -- a GTK+ based, lightweight, and fast e-mail client
@@ -1170,9 +1190,9 @@ diff -ruN claws-mail-2.9.2-p03/src/plugins/smime/smime.h claws-mail-2.9.2/src/pl
 +void smime_done(void);
 +
 +#endif /* PGPMIME_H */
-diff -ruN claws-mail-2.9.2-p03/src/plugins/smime/version.rc claws-mail-2.9.2/src/plugins/smime/version.rc
---- claws-mail-2.9.2-p03/src/plugins/smime/version.rc	1970-01-01 01:00:00.000000000 +0100
-+++ claws-mail-2.9.2/src/plugins/smime/version.rc	2007-07-02 20:54:15.000000000 +0200
+diff -rupN claws-mail-2.10.0-orig/src/plugins/smime/version.rc claws-mail-2.10.0/src/plugins/smime/version.rc
+--- claws-mail-2.10.0-orig/src/plugins/smime/version.rc	1970-01-01 01:00:00.000000000 +0100
++++ claws-mail-2.10.0/src/plugins/smime/version.rc	2007-07-03 18:36:43.000000000 +0200
 @@ -0,0 +1,36 @@
 +1 VERSIONINFO
 + FILEVERSION 0, 0, 0, 0

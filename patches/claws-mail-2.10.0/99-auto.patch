@@ -8,10 +8,12 @@ exit $?
 
 $ aclocal -I m4   && libtoolize --force --copy   && autoheader   && automake --add-missing --foreign --copy   && autoconf
 
+	but removing autom4te.cache before creating the diff.
+
 
 diff -rupN claws-mail-2.10.0-orig/aclocal.m4 claws-mail-2.10.0/aclocal.m4
 --- claws-mail-2.10.0-orig/aclocal.m4	2007-07-02 12:03:02.000000000 +0200
-+++ claws-mail-2.10.0/aclocal.m4	2007-07-02 22:55:40.000000000 +0200
++++ claws-mail-2.10.0/aclocal.m4	2007-07-03 18:42:31.000000000 +0200
 @@ -8029,7 +8029,7 @@ path to pkg-config.
  
  _PKG_TEXT
@@ -165,7 +167,7 @@ diff -rupN claws-mail-2.10.0-orig/config/config.sub claws-mail-2.10.0/config/con
  		;;
 diff -rupN claws-mail-2.10.0-orig/configure claws-mail-2.10.0/configure
 --- claws-mail-2.10.0-orig/configure	2007-07-02 12:03:19.000000000 +0200
-+++ claws-mail-2.10.0/configure	2007-07-02 22:56:00.000000000 +0200
++++ claws-mail-2.10.0/configure	2007-07-03 18:42:59.000000000 +0200
 @@ -26664,7 +26664,7 @@ Alternatively, you may set the environme
  and GLIB_LIBS to avoid the need to call pkg-config.
  See the pkg-config man page for more details.
@@ -221,7 +223,7 @@ diff -rupN claws-mail-2.10.0-orig/configure claws-mail-2.10.0/configure
      "tools/Makefile") CONFIG_FILES="$CONFIG_FILES tools/Makefile" ;;
 diff -rupN claws-mail-2.10.0-orig/src/common/Makefile.in claws-mail-2.10.0/src/common/Makefile.in
 --- claws-mail-2.10.0-orig/src/common/Makefile.in	2007-07-02 12:03:14.000000000 +0200
-+++ claws-mail-2.10.0/src/common/Makefile.in	2007-07-02 22:55:53.000000000 +0200
++++ claws-mail-2.10.0/src/common/Makefile.in	2007-07-03 18:42:49.000000000 +0200
 @@ -57,15 +57,16 @@ libclawscommon_la_DEPENDENCIES = $(am__D
  	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1)
  am__libclawscommon_la_SOURCES_DIST = fnmatch.c w32_dirent.c w32_reg.c \
@@ -264,7 +266,7 @@ diff -rupN claws-mail-2.10.0-orig/src/common/Makefile.in claws-mail-2.10.0/src/c
  @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/w32_signal.Plo@am__quote@
 diff -rupN claws-mail-2.10.0-orig/src/gtk/Makefile.in claws-mail-2.10.0/src/gtk/Makefile.in
 --- claws-mail-2.10.0-orig/src/gtk/Makefile.in	2007-07-02 12:03:15.000000000 +0200
-+++ claws-mail-2.10.0/src/gtk/Makefile.in	2007-07-02 22:55:54.000000000 +0200
++++ claws-mail-2.10.0/src/gtk/Makefile.in	2007-07-03 18:42:50.000000000 +0200
 @@ -340,6 +340,7 @@ clawsgtkinclude_HEADERS = \
  
  AM_CPPFLAGS = \
@@ -275,7 +277,7 @@ diff -rupN claws-mail-2.10.0-orig/src/gtk/Makefile.in claws-mail-2.10.0/src/gtk/
  	$(OPENSSL_CFLAGS) \
 diff -rupN claws-mail-2.10.0-orig/src/Makefile.in claws-mail-2.10.0/src/Makefile.in
 --- claws-mail-2.10.0-orig/src/Makefile.in	2007-07-02 12:03:14.000000000 +0200
-+++ claws-mail-2.10.0/src/Makefile.in	2007-07-02 22:55:53.000000000 +0200
++++ claws-mail-2.10.0/src/Makefile.in	2007-07-03 18:42:49.000000000 +0200
 @@ -115,15 +115,6 @@ am_claws_mail_OBJECTS = account.$(OBJEXT
  claws_mail_OBJECTS = $(am_claws_mail_OBJECTS)
  @CLAWS_LIBETPAN_TRUE@am__DEPENDENCIES_1 = etpan/libclawsetpan.la
@@ -347,7 +349,7 @@ diff -rupN claws-mail-2.10.0-orig/src/Makefile.in claws-mail-2.10.0/src/Makefile
  @CYGWIN_TRUE@	@rm -f claws-mail.def claws-mail.base claws-mail.exp libclaws-mail.a .libs/libclaws-mail.a
 diff -rupN claws-mail-2.10.0-orig/src/plugins/Makefile.in claws-mail-2.10.0/src/plugins/Makefile.in
 --- claws-mail-2.10.0-orig/src/plugins/Makefile.in	2007-07-02 12:03:15.000000000 +0200
-+++ claws-mail-2.10.0/src/plugins/Makefile.in	2007-07-02 22:55:54.000000000 +0200
++++ claws-mail-2.10.0/src/plugins/Makefile.in	2007-07-03 18:42:50.000000000 +0200
 @@ -60,7 +60,7 @@ RECURSIVE_CLEAN_TARGETS = mostlyclean-re
  ETAGS = etags
  CTAGS = ctags
@@ -369,7 +371,7 @@ diff -rupN claws-mail-2.10.0-orig/src/plugins/Makefile.in claws-mail-2.10.0/src/
  
 diff -rupN claws-mail-2.10.0-orig/src/plugins/pgpcore/Makefile.in claws-mail-2.10.0/src/plugins/pgpcore/Makefile.in
 --- claws-mail-2.10.0-orig/src/plugins/pgpcore/Makefile.in	2007-07-02 12:03:17.000000000 +0200
-+++ claws-mail-2.10.0/src/plugins/pgpcore/Makefile.in	2007-07-02 22:55:57.000000000 +0200
++++ claws-mail-2.10.0/src/plugins/pgpcore/Makefile.in	2007-07-03 18:42:52.000000000 +0200
 @@ -321,6 +321,7 @@ pgpcore_la_LIBADD = $(cygwin_export_lib)
  INCLUDES = \
  	-I$(top_srcdir)/src \
@@ -380,7 +382,7 @@ diff -rupN claws-mail-2.10.0-orig/src/plugins/pgpcore/Makefile.in claws-mail-2.1
  AM_CPPFLAGS = \
 diff -rupN claws-mail-2.10.0-orig/src/plugins/pgpinline/Makefile.in claws-mail-2.10.0/src/plugins/pgpinline/Makefile.in
 --- claws-mail-2.10.0-orig/src/plugins/pgpinline/Makefile.in	2007-07-02 12:03:17.000000000 +0200
-+++ claws-mail-2.10.0/src/plugins/pgpinline/Makefile.in	2007-07-02 22:55:57.000000000 +0200
++++ claws-mail-2.10.0/src/plugins/pgpinline/Makefile.in	2007-07-03 18:42:53.000000000 +0200
 @@ -319,6 +319,7 @@ pgpinline_la_LIBADD = $(plugin_ldadd) $(
  INCLUDES = \
  	-I$(top_srcdir)/src \
@@ -391,7 +393,7 @@ diff -rupN claws-mail-2.10.0-orig/src/plugins/pgpinline/Makefile.in claws-mail-2
  AM_CPPFLAGS = \
 diff -rupN claws-mail-2.10.0-orig/src/plugins/pgpmime/Makefile.in claws-mail-2.10.0/src/plugins/pgpmime/Makefile.in
 --- claws-mail-2.10.0-orig/src/plugins/pgpmime/Makefile.in	2007-07-02 12:03:17.000000000 +0200
-+++ claws-mail-2.10.0/src/plugins/pgpmime/Makefile.in	2007-07-02 22:55:57.000000000 +0200
++++ claws-mail-2.10.0/src/plugins/pgpmime/Makefile.in	2007-07-03 18:42:53.000000000 +0200
 @@ -318,6 +318,7 @@ pgpmime_la_LIBADD = $(plugin_ldadd) $(pg
  INCLUDES = \
  	-I$(top_srcdir)/src \
@@ -402,7 +404,7 @@ diff -rupN claws-mail-2.10.0-orig/src/plugins/pgpmime/Makefile.in claws-mail-2.1
  AM_CPPFLAGS = \
 diff -rupN claws-mail-2.10.0-orig/src/plugins/smime/Makefile.in claws-mail-2.10.0/src/plugins/smime/Makefile.in
 --- claws-mail-2.10.0-orig/src/plugins/smime/Makefile.in	1970-01-01 01:00:00.000000000 +0100
-+++ claws-mail-2.10.0/src/plugins/smime/Makefile.in	2007-07-02 22:55:57.000000000 +0200
++++ claws-mail-2.10.0/src/plugins/smime/Makefile.in	2007-07-03 18:42:53.000000000 +0200
 @@ -0,0 +1,661 @@
 +# Makefile.in generated by automake 1.10 from Makefile.am.
 +# @configure_input@
