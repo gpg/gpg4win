@@ -1,5 +1,7 @@
 2007-07-03  Marcus Brinkmann  <marcus@g10code.de>
 
+	* packages/packages.current: Update sylpheed entry to claws-mail.
+
 	* configure.ac: Add dirmngr.
 	* include/config.nsi.in: Add dirmngr.
 	* src/Makefile.am (gpg4win_spkgs): Add dirmngr.
