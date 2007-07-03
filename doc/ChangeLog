@@ -1,3 +1,14 @@
+2007-07-03  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
+
+	* website/website-maintenance-de.htm4, website/website-maintenance.htm4:
+	Fixed description to consider that the whole package needs to be
+	retrieved (because a global configure is needed to have the website work
+	properly).
+
+	* website/build-installer-de.htm4, website/build-installer.htm4:
+	Updated description from Sage to Etch and increased the required
+	MegaBytes of download and harddisk.
+
 2007-06-29  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
 
 	* website/versions.m4, website/index.htm4: Replaced Einsteiger by

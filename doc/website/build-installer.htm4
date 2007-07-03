@@ -12,13 +12,13 @@ Building a new Gpg4win installer package is
 mostly automized.
 
 <p>
-What you need: A Debian GNU/Linux 3.1 'sarge' system.
+What you need: A Debian GNU/Linux 'Etch' 4.0 system.
 For this system the follwing instructions are tested.
-In principle the procesure should also work for other
+In principle the procedure should also work for other
 system, perhaps some adapations are necessary.<br>
-Furthermore, you need at least 200 MByte on your harddisk
+Furthermore, you need at least 220 MByte on your harddisk
 and a acceptable fast internet connection for downloading
-about 40 MBytes.
+about 60 MBytes.
 </p>
 
 <p>
@@ -34,9 +34,9 @@ The character '#' indicates commands to be executed as administrator (root)
 and '$' for commands to be executed as regular user.
 
 <ol>
-<li> Install required packages on your Debian GNU/Linux 3.1:<br>
+<li> Install required packages on your Debian GNU/Linux 4.0:<br>
      <em># apt-get install mingw32 nsis stow unzip texinfo imagemagick</em><br>
-     <em># apt-get install tetex-bin gs-common hyperlatex</em><br>
+     <em># apt-get install tetex-bin tetex-extra gs-common hyperlatex</em><br>
 
 <li> Get the sources anonymously (i.e. with out write-access):<br>
      <em>$ svn checkout https://svn.wald.intevation.org/svn/gpg4win/trunk/</em><br>
@@ -52,7 +52,7 @@ and '$' for commands to be executed as regular user.
      <em>$ cd ..</em><br>
 
 <li> If you work with the SVN version:<br>
-     <em>$ AUTOMAKE_SUFFIX=-1.9 ./autogen.sh</em><br>
+     <em>$ ./autogen.sh</em><br>
      <em>$ ./configure --enable-maintainer-mode --host=i586-mingw32msvc</em><br>
      else:<br>
      <em>$ ./configure --host=i586-mingw32msvc</em><br>
