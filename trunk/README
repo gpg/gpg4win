@@ -51,6 +51,7 @@ at least the following packages need to be installed:
  tr
  gs-common
  hyperlatex
+ libglib2.0-dev
 
 
 Building the Webpages
