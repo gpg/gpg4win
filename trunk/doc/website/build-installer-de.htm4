@@ -16,7 +16,7 @@ Was man benötigt: Ein Debian GNU/Linux 'Etch' 4.0 System.
 Dafür ist die nachfolgende Anleitung getestet.
 Prinzipiell sind auch andere Systeme, ggf. mit
 ein bischen Anpassungsarbeit, möglich.<br>
-Desweiteren mindestens 220 MByte Platz auf der
+Desweiteren mindestens 503 MByte Platz auf der
 Festplatte und eine halbwegs schnelle Internetanbindung
 da ca. 60 MByte heruntergeladen werden müssen.
 </p>
@@ -36,7 +36,7 @@ durchgeführt werden müssen, '$' für einen normalen Benutzer.
 <ol>
 <li> Notwendige Pakete auf dem Debian GNU/Linux 3.1 installieren:<br>
      <em># apt-get install mingw32 nsis stow unzip texinfo imagemagick</em><br>
-     <em># apt-get install tetex-bin tetex-extra gs-common hyperlatex</em><br>
+     <em># apt-get install libglib2.0-dev tetex-bin tetex-extra gs-common hyperlatex</em><br>
 
 <li> Die Quellen anonym (also ohne Schreibrechte) holen:<br>
      <em>$ svn checkout https://svn.wald.intevation.org/svn/gpg4win/trunk/</em><br>
