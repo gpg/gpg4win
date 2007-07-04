@@ -1,3 +1,8 @@
+2007-07-04  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
+
+	* website/build-installer-de.htm4, website/build-installer.htm4:
+	Further fixes (size, dependencies)
+
 2007-07-03  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
 
 	* website/index.htm4: Removed some hints on "german only".
