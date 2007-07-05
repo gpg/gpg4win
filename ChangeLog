@@ -1,5 +1,7 @@
 2007-07-05  Marcus Brinkmann  <marcus@g10code.de>
 
+	* packages/packages.current: Update to Gtk+ 2.10.13.
+
 	* patches/claws-mail-2.10.0/03-w32-port.patch: Fix cut&paste bug.
 	* patches/claws-mail-2.9.2/03-w32-port.patch: Likewise.
 	Spotted by Colin Leroy.
