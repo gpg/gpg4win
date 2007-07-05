@@ -153,13 +153,12 @@ chk  689f8959f69cff6b086846d3f25c361cd6800cb6
 #
 server ftp://ftp.gtk.org/pub/gtk/v2.10
 
-file gtk+-2.10.12.tar.bz2
-chk  2912aeac11628c60b653e6a4bc5919106c02e045
-file win32/gtk+-2.10.12.zip
-chk  d9e496b42ac8eb69eec7ead6a2530a32f9929372
-file win32/gtk+-dev-2.10.12.zip
-chk  c0a8e450252451ed8c09af93753c981e7dfc690e
-
+file gtk+-2.10.13.tar.bz2
+chk  8d00b928a8788ff86d97197c20c18d41f9a1b1cd
+file win32/gtk+-2.10.13.zip
+chk  1cb9e220adcd784ef92d147d2c5d72545eb9c226
+file win32/gtk+-dev-2.10.13.zip
+chk  e3a8e235fef16c01291e683214fb82e19be61844
 
 #
 # GIMP stuff for W32
