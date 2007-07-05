@@ -545,7 +545,7 @@ diff -rup claws-mail-2.9.2-orig/src/msgcache.c claws-mail-2.9.2/src/msgcache.c
  		if (cache_data != NULL && cache_data != MAP_FAILED) {
  			if (ftruncate(fileno(write_fps.mark_fp), (off_t)map_len) == 0) {
 +#ifdef G_OS_WIN32
-+			cache_data = NULL;
++			mark_data = NULL;
 +			HANDLE hFile, hMapping;
 +			hFile = (HANDLE) _get_osfhandle (fileno(write_fps.mark_fp));
 +			if (hFile == (HANDLE) -1)
