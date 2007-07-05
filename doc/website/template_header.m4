@@ -12,7 +12,7 @@ m4_ifdef(`__TMPL_PAGE_TITLE',,`m4_define(`__TMPL_PAGE_TITLE',`Gpg4win - '__TITLE
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-    <meta name="keywords" content="Gpg4win, GnuPG, WinPT, GPA, GPGol, GPGee, Sylpheed, Sylpheed-Claws, E-Mail, Email, Windows, WinXP, XP, 2000, PGP, GPG, GnuPP, OpenPGP, Outlook, I18N(`EN', `Encryption, Secure') I18N(`DE', `Verschlüsselung, sicher, sichere, Sicherheit')">
+    <meta name="keywords" content="Gpg4win, GnuPG, WinPT, GPA, GPGol, GPGee, Claws Mail, E-Mail, Email, Windows, WinXP, XP, 2000, PGP, GPG, GnuPP, OpenPGP, Outlook, I18N(`EN', `Encryption, Secure') I18N(`DE', `Verschlüsselung, sicher, sichere, Sicherheit')">
     <link rel="stylesheet" type="text/css" href="__TMPL_ROOT`'gpg4win.css">
     <title>__TMPL_PAGE_TITLE</title>
   </head>

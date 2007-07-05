@@ -204,10 +204,10 @@ Pthreads-win32 is
   it is not possible to include it here.
 
 
-Sylpheed-Claws is
+Claws Mail is
 
-  Copyright(C) 1999-2005 Hiroyuki Yamamoto <hiro-y@kcn.ne.jp> and the
-  Sylpheed-Claws Team
+  Copyright(C) 1999-2007 Hiroyuki Yamamoto <hiro-y@kcn.ne.jp> and the
+  Claws Mail Team
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by

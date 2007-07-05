@@ -39,7 +39,7 @@ You can <b>choose all or some of the following modules</b> during installation:
     <td>A plugin for Microsoft Explorer (file encryption)</td>
   </tr>
   <tr>
-    <td>Sylpheed-Claws:</td>
+    <td>Claws Mail:</td>
     <td>A complete email program including the plugin for GnuPG</td>
   </tr>
 </table>
