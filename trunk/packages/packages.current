@@ -211,6 +211,14 @@ server ftp://ftp.g10code.com/g10code/gpgol
 file gpgol-0.9.91.tar.bz2
 chk  391eee90ea072ea181bed332b9411f2a43395e7e
 
+#
+# Pth emulation
+#
+server ftp://ftp.g10code.com/g10code/w32pth
+
+file w32pth-2.0.0.tar.bz2
+chk  f0d441a2c174f59ba04e4605768f1862aa953a72 
+
 
 #
 # GnuPG et al.
@@ -220,11 +228,27 @@ server ftp://ftp.gnupg.org/gcrypt
 file gnupg/gnupg-1.4.7.tar.bz2
 chk  22149105845c79068771837c8deb7d5ba0854927
 
+file gnupg/gnupg-2.0.5.tar.bz2
+chk  9435e7fabe525ce943a5818008d412ecad244018
+
 file libgpg-error/libgpg-error-1.5.tar.bz2
 chk  1f83d9af8e8ed3bcbf3a5e9018db257dc6336655
 
+file libksba/libksba-1.0.2.tar.bz2
+chk  4d2c4a99c313b799590bf3fc223179c454e268b5
+
+file libassuan/libassuan-1.0.2.tar.bz2 
+chk  6f9bbee22719cd75fae6a5a5c38d557b971fe8fe 
+
+file alpha/libgcrypt/libgcrypt-1.3.0.tar.bz2
+chk  38361925fef99715eccb8a1f73110ce2f3c3896a
+
+file pinentry/pinentry-0.7.3.tar.gz
+chk  557b886bc7a7030fd185fbc085703ef1ed304db8
+
 file gpgme/gpgme-1.1.4.tar.bz2
 chk  d3c71afb8b88b1050067633cd8bcc4ca0bae696d  
+
 
 #
 # GPA
