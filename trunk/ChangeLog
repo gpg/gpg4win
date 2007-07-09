@@ -1,5 +1,9 @@
 2007-07-09  Marcus Brinkmann  <marcus@g10code.de>
 
+	* packages/download.sh: Implement a new function "ren" for
+	renaming.
+	* packages/packages.current: Rename gnupg 2.
+
 	* packages/packages.current: Update to GPGME 1.1.5.
 
 	* src/Makefile.am (gpg4win_pkg_gpgme_configure): Enable gpgsm.
