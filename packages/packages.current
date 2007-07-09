@@ -229,6 +229,7 @@ file gnupg/gnupg-1.4.7.tar.bz2
 chk  22149105845c79068771837c8deb7d5ba0854927
 
 file gnupg/gnupg-2.0.5.tar.bz2
+ren  gnupg2-2.0.5.tar.bz2
 chk  9435e7fabe525ce943a5818008d412ecad244018
 
 file libgpg-error/libgpg-error-1.5.tar.bz2

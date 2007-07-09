@@ -134,6 +134,24 @@ while read key value ; do
            fi
        fi
        ;;
+     ren)
+       if [ -z "$value" ]; then
+           echo "syntax error in ren statement, line $lnr" >&2
+           exit 1
+       fi
+       if [ -z "$name" ]; then
+           echo "no file name for ren statement, line $lnr" >&2
+           exit 1
+       fi
+       echo -n "renaming    \`$name' ..."
+       if mv -f "$name" "$value" ; then
+           echo " okay"
+       else
+           echo " FAILED (line $lnr)"
+           echo "line $lnr: renaming $name failed" >> '.#download.failed'
+       fi
+       name="$value"
+       ;;
      chk)
        if [ -z "$value" ]; then
            echo "syntax error in chk statement, line $lnr" >&2
