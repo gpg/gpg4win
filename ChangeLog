@@ -1,5 +1,8 @@
 2007-07-09  Marcus Brinkmann  <marcus@g10code.de>
 
+	* patches/gpgol-0.9.91/01-gpgme.patch: New file.
+	* Makefile.am (EXTRA_DIST): Add patches/gpgol-0.9.91/01-gpgme.patch.
+
 	* packages/download.sh: Implement a new function "ren" for
 	renaming.
 	* packages/packages.current: Rename gnupg 2.
