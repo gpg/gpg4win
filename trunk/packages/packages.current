@@ -246,8 +246,8 @@ chk  38361925fef99715eccb8a1f73110ce2f3c3896a
 file pinentry/pinentry-0.7.3.tar.gz
 chk  557b886bc7a7030fd185fbc085703ef1ed304db8
 
-file gpgme/gpgme-1.1.4.tar.bz2
-chk  d3c71afb8b88b1050067633cd8bcc4ca0bae696d  
+file gpgme/gpgme-1.1.5.tar.bz2
+chk  dc2744b4555192546566bba754e708991677badc
 
 
 #
