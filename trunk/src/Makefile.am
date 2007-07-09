@@ -108,7 +108,7 @@ gpg4win_pkg_pinentry_configure = \
 
 # Glib doesn't add the LDFLAGS automatically.
 gpg4win_pkg_gpgme_configure = --silent \
-  --with-gpg-error-prefix=$(idir) --without-gpgsm --enable-static \
+  --with-gpg-error-prefix=$(idir) --enable-static \
   --enable-w32-glib LDFLAGS=-L$(idir)/lib
 
 gpg4win_pkg_gpa_configure = --silent \
