@@ -18,8 +18,8 @@ Gpg4win VERSION here:</p>
 <h2>Gpg4win light VERSION</h2>
 
 <p>The light version of Gpg4win VERSION contains everything of the
-  full version, except the manuals.  You can download the light
-  version here:</p>
+  full version, except the manuals and the GnuPG2 command line tools.
+  You can download the light version here:</p>
 <a href="LDOWNLOAD_URL" class="dlbutton2">gpg4win&nbsp;light&nbsp;VERSION<br>
 <span class="version">Size: LDL_SIZE<br></span></a> 
 
