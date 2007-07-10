@@ -97,7 +97,7 @@ VIAddVersionKey "LegalCopyright" "${COPYRIGHT}"
 VIAddVersionKey "FileDescription" "${DESCRIPTION}"
 VIAddVersionKey "FileVersion" "${PROD_VERSION}"
 
-# Set to the name of another GnupG installation if one has been detected
+# Set to the name of another GnuPG installation if one has been detected
 Var OtherGnuPGDetected
 
 # Interface Settings

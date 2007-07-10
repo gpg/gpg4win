@@ -30,7 +30,7 @@ Section
   WriteRegStr       HKLM $MYTMP "DisplayName"     "${PRETTY_PACKAGE}"
   WriteRegStr       HKLM $MYTMP "DisplayIcon"     "$INSTDIR\gpg.exe,0"
   WriteRegStr       HKLM $MYTMP "DisplayVersion"  "${VERSION}"
-  WriteRegStr       HKLM $MYTMP "Publisher"       "g10 Code GmbH"
+  WriteRegStr       HKLM $MYTMP "Publisher"       "The Gpg4win Project"
   WriteRegStr       HKLM $MYTMP "URLInfoAbout"    "http://www.gpg4win.org/"
   WriteRegDWORD     HKLM $MYTMP "NoModify"        "1"
   WriteRegDWORD     HKLM $MYTMP "NoRepair"        "1"
@@ -76,8 +76,15 @@ Section Uninstall
   # We better delete also the name we used prior to 1.0.3
   Delete "$DESKTOP\Sylpheed.lnk"
 !endif
+!ifdef HAVE_PKG_CLAWS_MAIL
+  Delete "$DESKTOP\Claws-Mail.lnk"
+  Delete "$DESKTOP\Claws-Mail Manual.lnk"
+!endif
 !ifdef HAVE_PKG_MAN_NOVICE_DE
   Delete "$DESKTOP\$(DESC_Name_man_novice_de).lnk"
+!endif
+!ifdef HAVE_PKG_MAN_NOVICE_EN
+  Delete "$DESKTOP\$(DESC_Name_man_novice_en).lnk"
 !endif
 !ifdef HAVE_PKG_MAN_ADVANCED_DE
   Delete "$DESKTOP\$(DESC_Name_man_advanced_de).lnk"
@@ -100,6 +107,9 @@ Section Uninstall
   Delete "$QUICKLAUNCH\Sylpheed-Claws.lnk"
   # We better delete also the name we used prior to 1.0.3
   Delete "$QUICKLAUNCH\Sylpheed.lnk"
+!endif
+!ifdef HAVE_PKG_CLAWS_MAIL
+  Delete "$QUICKLAUNCH\Claws-Mail.lnk"
 !endif
 !ifdef HAVE_PKG_MAN_NOVICE_DE
   Delete "$QUICKLAUNCH\$(DESC_Name_man_novice_de).lnk"

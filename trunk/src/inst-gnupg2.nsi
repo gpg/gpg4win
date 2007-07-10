@@ -25,7 +25,7 @@
 !define prefix ${ipdir}/gnupg2-${gpg4win_pkg_gnupg2_version}
 
 
-Section "GnuPG2" SEC_gnupg2
+Section /o "GnuPG2" SEC_gnupg2
 
   SetOutPath "$INSTDIR"
 !ifdef SOURCES
@@ -67,3 +67,5 @@ Section "GnuPG2" SEC_gnupg2
 !endif
 SectionEnd
 
+LangString DESC_SEC_gnupg2 ${LANG_ENGLISH} \
+   "GNU Privacy Guard with S/MIME support"

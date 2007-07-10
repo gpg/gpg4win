@@ -1,3 +1,9 @@
+2007-07-09  Werner Koch  <wk@g10code.com>
+
+	* de.po: Add description for gnupg2.
+
+	* POTFILES.in: Include gnupg2.
+
 2007-07-02  Marcus Brinkmann  <marcus@g10code.de>
 
 	* POTFILES.in: Add src/inst-claws-mail.nsi.

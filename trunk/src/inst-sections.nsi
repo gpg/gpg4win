@@ -572,6 +572,9 @@ FunctionEnd
 !ifdef HAVE_PKG_GNUPG
   !insertmacro MUI_DESCRIPTION_TEXT ${SEC_gnupg} $(DESC_SEC_gnupg)
 !endif
+!ifdef HAVE_PKG_GNUPG2
+  !insertmacro MUI_DESCRIPTION_TEXT ${SEC_gnupg2} $(DESC_SEC_gnupg2)
+!endif
 !ifdef HAVE_PKG_GPGOL
   !insertmacro MUI_DESCRIPTION_TEXT ${SEC_gpgol} $(DESC_SEC_gpgol)
 !endif

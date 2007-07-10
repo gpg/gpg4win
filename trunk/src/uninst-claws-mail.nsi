@@ -32,9 +32,7 @@ Section "-un.claws-mail"
 !else
   Delete "$INSTDIR\claws-mail.exe"
 
-!ifndef GPG4WIN_LIGHT
   Delete "$INSTDIR\claws-mail-manual.pdf"
-!endif
 
   Delete "$INSTDIR\lib\claws-mail\plugins\pgpcore.dll"
   Delete "$INSTDIR\lib\claws-mail\plugins\pgpinline.dll"

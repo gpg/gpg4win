@@ -1,3 +1,28 @@
+2007-07-10  Werner Koch  <wk@g10code.com>
+
+	* src/gpg4win.nsi [GPG4WIN_LIGHT]: Undef gnupg2 and related libs.
+	Undef the English novices manual.
+	* src/installer-finish.nsi: Delete the link for the English novices
+	manual and the claws manual.
+
+	* src/uninst-sylpheed-claws.nsi: Delete the manual even when using
+	the lighjt version.  This is to allow updating with a light version.
+	* src/uninst-claws-mail.nsi: Ditto.
+
+	* src/installer-finish.nsi: Changed publisher name to "The Gpg4win
+	Project".
+
+	* src/gpg4win.nsi: Fixed capitalization of some Gpg4win strings.
+	* src/gpg4win-src.nsi: Ditto.
+
+2007-07-09  Werner Koch  <wk@g10code.com>
+
+	* src/uninst-gnupg2.nsi: Need to remove com-certs.pem.
+
+	* src/inst-gnupg2.nsi: Make it an optional package.
+	Add description.
+	* src/inst-sections.nsi: Include language macro for description.
+
 2007-07-09  Marcus Brinkmann  <marcus@g10code.de>
 
 	* patches/gpgol-0.9.91/01-gpgme.patch: New file.
