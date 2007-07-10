@@ -1,0 +1,73 @@
+                                                          -*- outline -*-
+* next release
+
+  We need tocheck whether setting Threadpriority in 01-giowin32.pacth
+  is still required.  It is not in upstream.
+
+  02-gspawn-w32.patch is required.
+  03-gspawn-w32-fixup.patch is required.
+
+  (04-* is not required).
+
+* I18n:
+** There is no advantage to conditionally define translation strings,
+   as the tables are purged of unnecessary strings by makensis.  Thus
+   we should probably define strings where they are used, rather in the
+   inst-*.nsi files of the package to which they belong.  This would
+   also simplify management of po/POFILES.in.
+** Dependency tracking is partly missing: The installer should depend on
+   catalogs.nsi and any included LANG.nsi.  gettext usually works at
+   run-time, and thus there is no canonical support for this already.
+** /bin/bash is used unconditionally in po/Makevars.
+** nsis-msgfmt could check if a language file (nlf/nsh) exists for the
+   installed version of makensis/Modern UI.
+** po/Rules-nsis requires a compiler for the build platform, and an installed
+   libgettextpo.  None of this is configurable at this point.
+** nsis-xgettext.awk could be made more robust, although there is no
+   strong need.
+** Test what happens with --disable-nls.
+
+* Build system
+** Some versions of strip don't work.
+   Werner's GNU strip 2.15.91 20040904 is fine but
+   Marcus'  GNU strip 2.15.94 20050118 does not work.
+** Mo file installation macro
+
+* Component related issues:
+** Check which iconv to use !!
+** Finish integration of GnuPG.
+** Add the missing packages: Sylpheed Eudore extensions.
+** Remove the /nonfatal from the keyserver helper installing
+     This might need that we check what files are actually available.
+
+* The following items are related to package auto-detection and
+   configuration.  They are not critical.
+** BUG: If there is more than one version of a package, the script
+   breaks.  The GPG4WIN_FIND function must filter and pick one of the
+   matches.
+** GLITCH: If unnecessary dependency packages are enabled, they are
+   included in the installer, although they never will be (and can't
+   be) installed (they can't be installed because they can't be
+   selected).  To fix this, configure would need to know which
+   packages can be selected and which can't.
+** Invent something clever to cope with new versions of packages, which
+   may have a different file list.  We can't use globs because Delete
+   must still work.  Either have inst-PACKAGE-VERSION.nsi files, or
+   have globs plus some scripting to generate the .nis files. !
+** Record the dependencies in the build list in the gpg4win.mk.in
+   Makefile using make dependencies between the stamp-final-$(1)
+   targets.  This would hopefully ensure that parallel makes work. !
+
+
+
+Copyright 2005 g10 Code GmbH
+
+This file is free software; as a special exception the author gives
+unlimited permission to copy and/or distribute it, with or without
+modifications, as long as this notice is preserved.
+
+This file is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
+implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+PURPOSE.
+

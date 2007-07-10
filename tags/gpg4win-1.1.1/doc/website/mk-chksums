@@ -1,0 +1,45 @@
+#!/bin/sh
+# Script to generate teh checksums for a release.
+
+version="$1"
+if [ -z "$version" ]; then
+  echo "usage: mk-chksums VERSION" >&2
+  exit 1
+fi
+
+for i in gpg4win-$version.tar.bz2 gpg4win-$version.exe \
+         gpg4win-light-$version.exe gpg4win-src-$version.exe ; do
+  if [ ! -f "$i" ]; then
+    echo "mk-chksums: file $i is missing in current directory" >&2
+    exit 1
+  fi
+done
+
+sha1_src="`sha1sum gpg4win-$version.tar.bz2 | awk '{print $1}'`"
+sha1_exe="`sha1sum gpg4win-$version.exe | awk '{print $1}'`"
+sha1_exl="`sha1sum gpg4win-light-$version.exe | awk '{print $1}'`"
+sha1_exs="`sha1sum gpg4win-src-$version.exe | awk '{print $1}'`"
+md5_src="`md5sum gpg4win-$version.tar.bz2 | awk '{print $1}'`"
+md5_exe="`md5sum gpg4win-$version.exe | awk '{print $1}'`"
+md5_exl="`md5sum gpg4win-light-$version.exe | awk '{print $1}'`"
+md5_exs="`md5sum gpg4win-src-$version.exe | awk '{print $1}'`"
+len_src="`ls -l  gpg4win-$version.tar.bz2 | awk '{print $5}'`"
+len_exe="`ls -l  gpg4win-$version.exe | awk '{print $5}'`"
+len_exl="`ls -l  gpg4win-light-$version.exe | awk '{print $5}'`"
+len_exs="`ls -l  gpg4win-src-$version.exe | awk '{print $5}'`"
+
+
+cat <<EOF
+m4_define(\`SHA1_SRC',\`$sha1_src')
+m4_define(\`SHA1_EXE',\`$sha1_exe')
+m4_define(\`SHA1_EXL',\`$sha1_exl')
+m4_define(\`SHA1_EXS',\`$sha1_exs')
+m4_define(\`MD5_SRC',\`$md5_src')
+m4_define(\`MD5_EXE',\`$md5_exe')
+m4_define(\`MD5_EXL',\`$md5_exl')
+m4_define(\`MD5_EXS',\`$md5_exs')
+m4_define(\`LEN_SRC',\`$len_src')
+m4_define(\`LEN_EXE',\`$len_exe')
+m4_define(\`LEN_EXL',\`$len_exl')
+m4_define(\`LEN_EXS',\`$len_exs')
+EOF

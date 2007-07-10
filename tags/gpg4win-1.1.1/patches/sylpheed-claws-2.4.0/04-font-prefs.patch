@@ -1,0 +1,22 @@
+#! /bin/sh
+patch -p1 -f $* < $0
+exit $?
+
+2006-08-04  Marcus Brinkmann  <marcus@g10code.de>
+
+	* src/prefs_common.c (param_os_specific): Fix broken entry.
+
+diff -rup sylpheed-claws-2.4.0-orig/src/prefs_common.c sylpheed-claws-2.4.0/src/prefs_common.c
+--- sylpheed-claws-2.4.0-orig/src/prefs_common.c	2006-07-31 09:26:19.000000000 +0200
++++ sylpheed-claws-2.4.0/src/prefs_common.c	2006-08-04 20:59:24.000000000 +0200
+@@ -95,8 +95,8 @@ static PrefParam param_os_specific[] = {
+ 	  &prefs_common.widgetfont,		P_STRING, NULL, NULL, NULL},
+ 	{"message_font_gtk2",	"Monospace 9",
+ 	 &prefs_common.textfont,		P_STRING, NULL, NULL, NULL},
+-        {"print_font_gtk2",     "Monospace 9"
+-         &prefs_common.printfont
++        {"print_font_gtk2",     "Monospace 9",
++         &prefs_common.printfont,		P_STRING, NULL, NULL, NULL},
+ 	{"small_font_gtk2",	"Sans 9",
+ 	  &prefs_common.smallfont,		P_STRING, NULL, NULL, NULL},
+ 	{"normal_font_gtk2",	"Sans 9",

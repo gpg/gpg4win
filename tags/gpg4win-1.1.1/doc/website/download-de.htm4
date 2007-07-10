@@ -1,0 +1,47 @@
+m4_dnl -*-html-*- vim:filetype=html:
+m4_include(`template.m4')
+m4_dnl $Id:$
+
+m4_define(`DE')
+m4_define(`EN_FILE', `download.html')
+
+PAGE_START
+<h1>Download</h1>
+
+<h2>Gpg4win VERSION</h2>
+
+<p>Die Vollversion (inklusive der deutschen Handbücher) von Gpg4win VERSION
+kann hier herunter geladen werden:</p>
+<a href="DOWNLOAD_URL" class="dlbutton2">gpg4win&nbsp;VERSION<br>
+<span class="version">Größe: DL_SIZE<br></span></a> 
+
+<h2>Gpg4win light VERSION</h2>
+
+<p>Die light Version von Gpg4win VERSION enthält alles aus der
+  Vollversion, außer den Handbüchern.  Die light Version kann hier
+  herunter geladen werden:</p>
+<a href="LDOWNLOAD_URL" class="dlbutton2">gpg4win&nbsp;light&nbsp;VERSION<br>
+<span class="version">Größe: LDL_SIZE<br></span></a> 
+
+<h2>Installation</h2>
+
+<p>Nach Beendigung des
+  Downloads <a href="package-integrity-de.html">verifizieren</a> Sie
+  bitte die Integrität des Gpg4win Paketes, dass sie heruntergeladen
+  haben.  Danach folgen Sie den Hinweisen zur Installation
+  im <a href="/handbuecher/einsteiger.html">Handbuch</a>.
+
+<h2>Hinweise</h2>
+
+<p>
+Wir empfehlen, sich in die
+<a href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-announce"
+  >Gpg4win Bekanntmachungs-Email-Liste</a> einzuschreiben
+um automatisch über neue Versionen und andere wichtige
+Neuigkeiten zu Gpg4win informiert zu werden.
+
+<p>
+Ist das Herunterladen immer langsam? Versuchen Sie den
+<a href="MIRROR_NO_URL">Gpg4win Spiegelserver in Norwegen</a>, 
+betrieben von Trond.Endrestol-a.t-fagskolen.gjovik.no
+vom Gjøvik Technical College.

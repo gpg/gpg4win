@@ -1,0 +1,912 @@
+#! /bin/sh
+patch -p1 -f $* < $0
+exit $?
+
+2007-05-21  Werner Koch  <wk@g10code.com>
+2007-06-30  Marcus Brinkmann  <marcus@g10code.de>
+
+	* autogen.sh [--build-w32]: Disable bogofilter-plugin and
+	valgrind.
+	* src/common/w32lib.h: Undef "interface".
+	(w32_is_administrator): New prototype.
+	* src/common/Makefile.am (arch_sources): Add w32_account.c.
+	* src/common/w32_account.c: New.
+	* src/common/utils.c (copy_dir) [W32]: Don't use symlinks.
+	(superuser_p): New.
+	* src/common/utils.h (superuser_p): New prototype.
+	* src/prefs_themes.c (prefs_themes_btn_remove_clicked_cb) 
+	(prefs_themes_btn_install_clicked_cb): Replace getuid based test
+	by superuser_p.
+	* src/common/timing.h [G_OS_WIN32]: Include w32lib.h and implement
+	timing macros.
+	* src/gtk/Makefile.am (AM_CPPFLAGS): Add -I../common for version.h.
+	* src/Makefile.am (INCLUDES): Add -Icommon for version.h.
+	* src/msgcache.c [G_OS_WIN32]: Include w32lib.h instead of
+	sys/mman.h and define MAP_FAILED.
+	(msgcache_read_cache, msgcache_read_mark, msgcache_write)
+	[G_OS_WIN32]: Implement memory mapped file access.
+
+	* src/plugins/pgpcore/Makefile.am (INCLUDES): Add
+	-I$(top_builddir)/src/common.
+	* src/plugins/pgpcore/claws.def: Update.
+	* src/plugins/pgpcore/passphrase.c: Include w32lib.h instead of
+	windows.h.  This so that we can fix problems in windows.h.
+	* src/plugins/pgpcore/sgpgme.c [G_OS_WIN32]: Do not include
+	sys/wait.h.
+	* src/plugins/pgpcore/pgp_viewer.c: Ditto.
+	* src/plugins/pgpcore/plugin.def: Add
+	sgpgme_data_release_and_get_mem, prefs_gpg_enable_agent and
+	plugin_provides.
+
+	* src/plugins/pgpinline/Makefile.am (INCLUDES): Add
+	-I$(top_builddir)/src/common.
+	* src/plugins/pgpinline/plugin.def: Add plugin_provides.
+	* src/plugins/pgpinline/claws.def: Update.
+	* src/plugins/pgpinline/mypgpcore.def: Update.
+
+	* src/plugins/pgpmime/Makefile.am (INCLUDES): Add
+	-I$(top_builddir)/src/common.
+	* src/plugins/pgpmime/plugin.def: Add plugin_provides.
+	* src/plugins/pgpmime/claws.def: Update.
+	* src/plugins/pgpmime/mypgpcore.def: Update.
+
+
+diff -rup claws-mail-2.9.2-orig/autogen.sh claws-mail-2.9.2/autogen.sh
+--- claws-mail-2.9.2-orig/autogen.sh	2007-05-08 09:59:23.000000000 +0200
++++ claws-mail-2.9.2/autogen.sh	2007-06-29 16:59:34.000000000 +0200
+@@ -40,6 +40,7 @@ if test "$1" = "--build-w32"; then
+              --disable-openssl --disable-dillo-viewer-plugin \
+              --disable-nls --disable-libetpan --disable-aspell \
+              --disable-trayicon-plugin --disable-spamassassin-plugin \
++             --disable-bogofilter-plugin --disable-valgrind \
+              PKG_CONFIG_LIBDIR="$w32root/lib/pkgconfig"
+ 
+     rc=$?
+diff -rup claws-mail-2.9.2-orig/src/common/w32lib.h claws-mail-2.9.2/src/common/w32lib.h
+--- claws-mail-2.9.2-orig/src/common/w32lib.h	2007-05-08 09:59:21.000000000 +0200
++++ claws-mail-2.9.2/src/common/w32lib.h	2007-05-21 11:46:41.000000000 +0200
+@@ -44,6 +44,12 @@
+ 
+ /* Changes are:
+ 
++2007-05-21  Werner Koch  <wk@g10code.com>
++
++	* src/common/w32_account.c: New.
++
++	* src/common/w32lib.h: Undef "interface".
++
+ 2005-11-17  Werner Koch  <wk@g10code.com>
+ 
+ 	Add boilerplate text to all files and explain legal status.
+@@ -76,6 +82,13 @@
+ #include <dirent.h>
+ #endif
+ 
++/* Mingw32 3.4.4 defines interface to struct and thus breaks our own
++   use of that symbol.  Undef it here. */
++#if defined(_BASETYPS_H) && defined(interface) 
++#undef interface
++#endif
++
++
+ /* types */
+ /*** ??? ***/
+ #ifndef __MINGW32__
+@@ -188,6 +201,9 @@ int kill( pid_t pid, int sig );
+ FILE *popen( const char *command, const char *type );
+ int pclose( FILE *stream );
+ 
++/*** w32_account.c ***/
++int w32_is_administrator (void);
++
+ /*** misc ***/
+ char *read_w32_registry_string( char *parent, char *section, char *key );
+ char *get_content_type_from_registry_with_ext( char *ext );
+diff -rup claws-mail-2.9.2-orig/src/common/Makefile.am claws-mail-2.9.2/src/common/Makefile.am
+--- claws-mail-2.9.2/src/common/Makefile.am	2007-05-08 09:59:21.000000000 +0200
++++ claws-mail-2.9.2/src/common/Makefile.am	2007-05-21 11:46:16.000000000 +0200
+@@ -5,7 +5,7 @@ if OS_WIN32
+ arch_sources = fnmatch.c \
+                w32_dirent.c w32_reg.c w32_signal.c w32_stat.c \
+                w32_stdio.c w32_stdlib.c w32_string.c w32_time.c \
+-               w32_unistd.c w32_wait.c
++               w32_unistd.c w32_wait.c w32_account.c
+ arch_headers = fnmatch.h w32lib.h
+ else
+ arch_files = 
+diff -rupN /dev/null claws-mail-2.9.2/src/common/w32_account.c
+--- /dev/null	2007-05-14 05:46:41.000000000 +0200
++++ claws-mail-2.9.2/src/common/w32_account.c	2007-05-21 11:52:32.000000000 +0200
+@@ -0,0 +1,149 @@
++/* w32_account.c - Account related W32 functions.
++   Copyright (C) 2007 g10 Code GmbH 
++   Copyright (C) 1999-2005 Nullsoft, Inc.
++
++   This software is provided 'as-is', without any express or implied
++   warranty. In no event will the authors be held liable for any
++   damages arising from the use of this software.
++   
++   Permission is granted to anyone to use this software for any
++   purpose, including commercial applications, and to alter it and
++   redistribute it freely, subject to the following restrictions:
++   
++   1. The origin of this software must not be misrepresented; you must
++      not claim that you wrote the original software. If you use this
++      software in a product, an acknowledgment in the product
++      documentation would be appreciated but is not required.
++   
++   2. Altered source versions must be plainly marked as such, and must
++      not be misrepresented as being the original software.
++   
++   3. This notice may not be removed or altered from any source
++      distribution.
++
++ =======[ wk 2007-05-21 ]====
++   The code for get_group_name has been taken from NSIS 2.05, module
++   UserInfo.c.  NSIS bears the above license and along with the
++   notice:
++     This license applies to everything in the NSIS package, except where
++     otherwise noted.
++   Thus we make this module available under the same license - note,
++   that this lincese is fully compatibe with the GNU GPL 2.0.
++*/ 
++  
++  
++
++
++#include <stdlib.h>
++#include <string.h>
++
++#include "w32lib.h"
++
++#ifndef DIM
++#define DIM(v)  (sizeof(v)/sizeof((v)[0]))
++#endif
++
++
++/* Return a malloced name of our user group.  */
++static char *
++get_group_name (void)
++{
++  HANDLE        hThread;
++  TOKEN_GROUPS  *ptg = NULL;
++  DWORD         cbTokenGroups;
++  DWORD         i, j;
++  SID_IDENTIFIER_AUTHORITY SystemSidAuthority = { SECURITY_NT_AUTHORITY };
++  char *group;
++  struct
++  {
++    DWORD auth_id;
++    char *name;
++  } groups[] = 
++    {
++      /* Every user belongs to the users group, hence
++         users comes before guests */
++      {DOMAIN_ALIAS_RID_USERS, "User"},
++      {DOMAIN_ALIAS_RID_GUESTS, "Guest"},
++      {DOMAIN_ALIAS_RID_POWER_USERS, "Power"},
++      {DOMAIN_ALIAS_RID_ADMINS, "Admin"}
++    };
++
++
++  group = NULL;
++  if (GetVersion() & 0x80000000) 
++    {
++      /* This is not NT; thus we are always Admin. */
++      group = "Admin";
++    }
++  else if (OpenThreadToken(GetCurrentThread(), TOKEN_QUERY, FALSE, &hThread) 
++           || OpenProcessToken(GetCurrentProcess(), TOKEN_QUERY, &hThread))
++    {
++      /* With the token for the current thread or process in hand we
++         query the size of the associated group information.  Note
++         that we expect an error because buffer has been passed as
++         NULL. cbTokenGroups will then tell use the required size.  */
++      if (!GetTokenInformation (hThread, TokenGroups, NULL, 0, &cbTokenGroups)
++          && GetLastError () == ERROR_INSUFFICIENT_BUFFER)
++        {
++          ptg = GlobalAlloc (GPTR, cbTokenGroups);
++          if (ptg)
++            {
++              if (GetTokenInformation ( hThread, TokenGroups, ptg,
++                                        cbTokenGroups, &cbTokenGroups))
++                {
++
++                  /* Now iterate through the list of groups for this
++                     access token looking for a match against the SID
++                     we created above. */
++                  for (i = 0; i < DIM (groups); i++)
++                    {
++                      PSID psid = 0;
++                      
++                      AllocateAndInitializeSid (&SystemSidAuthority,
++                                                2,
++                                                SECURITY_BUILTIN_DOMAIN_RID,
++                                                groups[i].auth_id,
++                                                0, 0, 0, 0, 0, 0,
++                                                &psid);
++                      if (!psid) 
++                        continue;
++                      for (j = 0; j < ptg->GroupCount; j++)
++                        if (EqualSid(ptg->Groups[j].Sid, psid))
++                          group = groups[i].name;
++                      FreeSid(psid);
++                    }
++                }
++              
++              GlobalFree(ptg);
++            }
++        }
++      
++      CloseHandle(hThread);
++    }
++
++  return group? strdup (group):NULL;
++}
++
++
++/* Return true if we are an administrator.  The chekc is done only
++   once so if the current user has been hadded to the Administrator
++   group the process needs to be rerstarted. */
++int
++w32_is_administrator (void)
++{
++  static int got_it;
++  static int is_admin;
++
++  if (!got_it)
++    {
++      char *name = get_group_name ();
++
++      if (name && !strcmp (name, "Admin"))
++        is_admin = 1;
++      got_it = 1;
++      free (name);
++    }
++
++  return is_admin;
++}
++
+diff -rup claws-mail-2.9.2-orig/src/common/utils.c claws-mail-2.9.2/src/common/utils.c
+--- claws-mail-2.9.2-orig/src/common/utils.c	2007-05-08 09:59:21.000000000 +0200
++++ claws-mail-2.9.2/src/common/utils.c	2007-05-21 11:55:02.000000000 +0200
+@@ -56,6 +56,7 @@
+ #  include <direct.h>
+ #  include <io.h>
+ #  include <fcntl.h>
++#  include <w32lib.h>
+ #endif
+ 
+ #ifdef MAEMO
+@@ -74,6 +75,18 @@ static gboolean debug_mode = FALSE;
+ static GSList *tempfiles=NULL;
+ #endif
+ 
++/* Return true if we are running as root.  This function should beused
++   instead of getuid () == 0.  */
++gboolean superuser_p (void)
++{
++#ifdef G_OS_WIN32
++  return w32_is_administrator ();
++#else
++  return !getuid();
++#endif  
++}
++
++
+ 
+ #if !GLIB_CHECK_VERSION(2, 7, 0) && !defined(G_OS_UNIX)
+ gint g_chdir(const gchar *path)
+@@ -4728,7 +4741,12 @@ gint copy_dir(const gchar *src, const gc
+ 				g_dir_close(dir);
+ 				return r;
+ 			}
+-		} else if (g_file_test(old_file, G_FILE_TEST_IS_SYMLINK)) {
++                }
++#ifndef G_OS_WIN32
++                /* Windows has no symlinks.  Or well, Vista seems to
++                   have something like this but the semantics might be
++                   different.  Thus we don't use it under Windows. */
++		 else if (g_file_test(old_file, G_FILE_TEST_IS_SYMLINK)) {
+ 			GError *error;
+ 			gint r = 0;
+ 			gchar *target = g_file_read_link(old_file, &error);
+@@ -4739,7 +4757,9 @@ gint copy_dir(const gchar *src, const gc
+ 				g_dir_close(dir);
+ 				return r;
+ 			}
+-		} else if (g_file_test(old_file, G_FILE_TEST_IS_DIR)) {
++                 }
++#endif /*G_OS_WIN32*/
++	        else if (g_file_test(old_file, G_FILE_TEST_IS_DIR)) {
+ 			gint r = copy_dir(old_file, new_file);
+ 			if (r < 0) {
+ 				g_dir_close(dir);
+diff -rup claws-mail-2.9.2-orig/src/common/utils.h claws-mail-2.9.2/src/common/utils.h
+--- claws-mail-2.9.2-orig/src/common/utils.h	2007-05-08 09:59:21.000000000 +0200
++++ claws-mail-2.9.2/src/common/utils.h	2007-05-21 11:49:32.000000000 +0200
+@@ -204,6 +204,14 @@ gboolean debug_get_mode		(void);
+ #define Str(x)	#x
+ #define Xstr(x)	Str(x)
+ 
++
++/* System related stuff.  */
++
++gboolean superuser_p (void);
++
++
++/* String utilities.  */
++
+ void list_free_strings		(GList		*list);
+ void slist_free_strings		(GSList		*list);
+ 
+diff -rup claws-mail-2.9.2-orig/src/common/timing.h claws-mail-2.9.2/src/common/timing.h
+--- claws-mail-2.9.2-orig/src/common/timing.h	2007-05-08 09:59:21.000000000 +0200
++++ claws-mail-2.9.2/src/common/timing.h	2007-06-29 19:41:56.000000000 +0200
+@@ -29,6 +29,7 @@
+ #ifndef __TIMING_H__
+ #define __TIMING_H__
+ 
++#include <glib.h>
+ #include <sys/time.h>
+ #ifdef HAVE_CONFIG_H
+ #  include "config.h"
+@@ -49,13 +50,38 @@
+ #define START_TIMING(str) do {} while(0);
+ #define END_TIMING() do {} while(0);
+ #else
++
++#ifdef G_OS_WIN32
++
++#include <w32lib.h>
++
++/* no {} by purpose */
++#define START_TIMING(str) 						\
++        LARGE_INTEGER frequency;					\
++	LARGE_INTEGER start;						\
++	LARGE_INTEGER end;						\
++	LARGE_INTEGER diff;						\
++	const char *timing_name=str;					\
++	QueryPerformanceFrequency (&frequency);				\
++	QueryPerformanceCounter (&start);				\
++
++#define END_TIMING()							\
++	QueryPerformanceCounter (&end);					\
++        diff.QuadPart = (double)					\
++		((end.QuadPart - start.QuadPart)	\
++		* (double)1000.0/(double)frequency.QuadPart);		\
++        debug_print("TIMING %s: %ds%03dms\n",				\
++		timing_name, (unsigned int) (diff.QuadPart / 1000000),	\
++		(unsigned int) ((diff.QuadPart / 1000) % 1000));
++
++#else
+ /* no {} by purpose */
+ #define START_TIMING(str) 						\
+ 	struct timeval start;						\
+ 	struct timeval end;						\
+ 	struct timeval diff;						\
+ 	const char *timing_name=str;					\
+-	gettimeofday(&start, NULL);					\
++	gettimeofday(&start, NULL);
+ 
+ #ifdef __GLIBC__
+ #define END_TIMING()							\
+@@ -64,7 +90,7 @@
+ 	debug_print("TIMING %s %s: %ds%03dms\n", 			\
+ 		__FUNCTION__,						\
+ 		timing_name, (unsigned int)diff.tv_sec, 		\
+-		(unsigned int)diff.tv_usec/1000);			
++		(unsigned int)diff.tv_usec/1000);
+ #else
+ #define END_TIMING()							\
+ 	gettimeofday(&end, NULL);					\
+@@ -76,3 +102,4 @@
+ 
+ #endif 
+ #endif 
++#endif
+diff -rup claws-mail-2.9.2-orig/src/gtk/Makefile.am claws-mail-2.9.2/src/gtk/Makefile.am
+--- claws-mail-2.9.2-orig/src/gtk/Makefile.am	2007-05-08 09:59:19.000000000 +0200
++++ claws-mail-2.9.2/src/gtk/Makefile.am	2007-06-29 16:48:05.000000000 +0200
+@@ -65,6 +65,7 @@ clawsgtkinclude_HEADERS = \
+ 
+ AM_CPPFLAGS = \
+ 	-I$(srcdir)/../common \
++	-I../common \
+ 	-I$(srcdir)/.. \
+ 	$(GTK_CFLAGS) \
+ 	$(OPENSSL_CFLAGS) \
+diff -rup claws-mail-2.9.2-orig/src/Makefile.am claws-mail-2.9.2/src/Makefile.am
+--- claws-mail-2.9.2-orig/src/Makefile.am	2007-07-02 19:45:47.000000000 +0200
++++ claws-mail-2.9.2/src/Makefile.am	2007-06-29 17:03:48.000000000 +0200
+@@ -460,6 +444,7 @@ EXTRA_DIST = \
+ 
+ INCLUDES = \
+ 	-I$(srcdir)/common \
++	-Icommon \
+ 	-I$(srcdir)/gtk \
+ 	-I$(srcdir)/etpan
+ 
+diff -rup claws-mail-2.9.2-orig/src/msgcache.c claws-mail-2.9.2/src/msgcache.c
+--- claws-mail-2.9.2-orig/src/msgcache.c	2007-05-08 09:59:22.000000000 +0200
++++ claws-mail-2.9.2/src/msgcache.c	2007-06-29 20:17:41.000000000 +0200
+@@ -28,7 +28,12 @@
+ 
+ #include <glib.h>
+ #include <glib/gi18n.h>
+-#include <sys/mman.h>
++#ifdef _WIN32
++# include <w32lib.h>
++# define MAP_FAILED	((char *) -1)
++#else
++# include <sys/mman.h>
++#endif
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ 
+@@ -621,8 +626,23 @@ MsgCache *msgcache_read_cache(FolderItem
+ 			map_len = st.st_size;
+ 		else
+ 			map_len = -1;
+-		if (map_len > 0)
++		if (map_len > 0) {
++#ifdef G_OS_WIN32
++			cache_data = NULL;
++			HANDLE hFile, hMapping;
++			hFile = (HANDLE) _get_osfhandle (fileno(fp));
++			if (hFile == (HANDLE) -1)
++				goto w32_fail;
++			hMapping = CreateFileMapping(hFile, NULL, PAGE_WRITECOPY, 0, 0, NULL);
++			if (!hMapping)
++				goto w32_fail;
++			cache_data = (unsigned char *)MapViewOfFile(hMapping, FILE_MAP_COPY, 0, 0, 0);
++		w32_fail:
++			;
++#else
+ 			cache_data = mmap(NULL, map_len, PROT_READ, MAP_PRIVATE, fileno(fp), 0);
++#endif
++		}
+ 	} else {
+ 		cache_data = NULL;
+ 	}
+@@ -678,8 +698,12 @@ MsgCache *msgcache_read_cache(FolderItem
+ 			if(msginfo->msgid)
+ 				g_hash_table_insert(cache->msgid_table, msginfo->msgid, msginfo);
+ 		}
+-		
++
++#ifdef G_OS_WIN32
++		UnmapViewOfFile((void*) cache_data);
++#else
+ 		munmap(cache_data, map_len);
++#endif
+ 	} else {
+ 		while (fread(&num, sizeof(num), 1, fp) == 1) {
+ 			if (swapping)
+@@ -784,8 +808,23 @@ void msgcache_read_mark(MsgCache *cache,
+ 			map_len = st.st_size;
+ 		else
+ 			map_len = -1;
+-		if (map_len > 0)
++		if (map_len > 0) {
++#ifdef G_OS_WIN32
++			cache_data = NULL;
++			HANDLE hFile, hMapping;
++			hFile = (HANDLE) _get_osfhandle (fileno(fp));
++			if (hFile == (HANDLE) -1)
++				goto w32_fail2;
++			hMapping = CreateFileMapping(hFile, NULL, PAGE_WRITECOPY, 0, 0, NULL);
++			if (!hMapping)
++				goto w32_fail2;
++			cache_data = (unsigned char *)MapViewOfFile(hMapping, FILE_MAP_COPY, 0, 0, 0);
++		w32_fail2:
++			;
++#else
+ 			cache_data = mmap(NULL, map_len, PROT_READ, MAP_PRIVATE, fileno(fp), 0);
++#endif
++		}
+ 	} else {
+ 		cache_data = NULL;
+ 	}
+@@ -801,7 +840,11 @@ void msgcache_read_mark(MsgCache *cache,
+ 				msginfo->flags.perm_flags = perm_flags;
+ 			}
+ 		}
++#ifdef G_OS_WIN32
++		UnmapViewOfFile((void*) cache_data);
++#else
+ 		munmap(cache_data, map_len);
++#endif
+ 	} else {
+ 		while (fread(&num, sizeof(num), 1, fp) == 1) {
+ 			if (swapping)
+@@ -1011,16 +1054,49 @@ gint msgcache_write(const gchar *cache_f
+ 	if (msgcache_use_mmap_write && cache->memusage > 0) {
+ 		map_len = cache->memusage;
+ 		if (ftruncate(fileno(write_fps.cache_fp), (off_t)map_len) == 0) {
++
++#ifdef G_OS_WIN32
++			cache_data = NULL;
++			HANDLE hFile, hMapping;
++			hFile = (HANDLE) _get_osfhandle (fileno(write_fps.cache_fp));
++			if (hFile == (HANDLE) -1)
++				goto w32_fail3;
++			hMapping = CreateFileMapping(hFile, NULL, PAGE_READWRITE, 0, 0, NULL);
++			if (!hMapping)
++				goto w32_fail3;
++			cache_data = (unsigned char *)MapViewOfFile(hMapping, FILE_MAP_COPY, 0, 0, 0);
++		w32_fail3:
++			;
++#else
+ 			cache_data = mmap(NULL, map_len, PROT_WRITE, MAP_SHARED, 
+ 				fileno(write_fps.cache_fp), 0);
++#endif
+ 		}
+ 		if (cache_data != NULL && cache_data != MAP_FAILED) {
+ 			if (ftruncate(fileno(write_fps.mark_fp), (off_t)map_len) == 0) {
++#ifdef G_OS_WIN32
++			mark_data = NULL;
++			HANDLE hFile, hMapping;
++			hFile = (HANDLE) _get_osfhandle (fileno(write_fps.mark_fp));
++			if (hFile == (HANDLE) -1)
++				goto w32_fail4;
++			hMapping = CreateFileMapping(hFile, NULL, PAGE_READWRITE, 0, 0, NULL);
++			if (!hMapping)
++				goto w32_fail4;
++			mark_data = (unsigned char *)MapViewOfFile(hMapping, FILE_MAP_COPY, 0, 0, 0);
++		w32_fail4:
++			;
++#else
+ 				mark_data = mmap(NULL, map_len, PROT_WRITE, MAP_SHARED, 
+ 					fileno(write_fps.mark_fp), 0);
++#endif
+ 			} 
+ 			if (mark_data == NULL || mark_data == MAP_FAILED) {
++#ifdef G_OS_WIN32
++				UnmapViewOfFile((void*) cache_data);
++#else
+ 				munmap(cache_data, map_len);
++#endif
+ 				cache_data = NULL;
+ 			}
+ 		}
+@@ -1030,8 +1106,13 @@ gint msgcache_write(const gchar *cache_f
+ 		write_fps.cache_data = cache_data + ftell(write_fps.cache_fp);
+ 		write_fps.mark_data = mark_data + ftell(write_fps.mark_fp);
+ 		g_hash_table_foreach(cache->msgnum_table, msgcache_write_mmap_func, (gpointer)&write_fps);
++#ifdef G_OS_WIN32
++		UnmapViewOfFile((void*) cache_data);
++		UnmapViewOfFile((void*) mark_data);
++#else
+ 		munmap(cache_data, map_len);
+ 		munmap(mark_data, map_len);
++#endif
+ 		ftruncate(fileno(write_fps.cache_fp), write_fps.cache_size);
+ 		ftruncate(fileno(write_fps.mark_fp), write_fps.mark_size);
+ 	} else {
+diff -rup claws-mail-2.9.2-orig/src/prefs_themes.c claws-mail-2.9.2/src/prefs_themes.c
+--- claws-mail-2.9.2-orig/src/prefs_themes.c	2007-05-08 09:59:19.000000000 +0200
++++ claws-mail-2.9.2/src/prefs_themes.c	2007-05-21 11:51:35.000000000 +0200
+@@ -445,7 +445,7 @@ static void prefs_themes_btn_remove_clic
+ 	tmp = g_path_get_basename(theme_str);
+ 
+ 	if (IS_SYSTEM_THEME(theme_str)) {
+-		if (getuid() != 0) {
++		if (!superuser_p()) {
+ 			alertpanel_error(_("Only root can remove system themes"));
+ 			return;
+ 		}
+@@ -518,7 +518,7 @@ static void prefs_themes_btn_install_cli
+ 		if (G_ALERTALTERNATE != val)
+ 			goto end_inst;
+ 	}
+-	if (getuid() == 0) {
++	if (superuser_p ()) {
+ 		val = alertpanel(alert_title,
+ 				 _("Do you want to install theme for all users?"),
+ 				 GTK_STOCK_NO, GTK_STOCK_YES, NULL);
+diff -rup claws-mail-2.9.2-orig/src/plugins/pgpcore/claws.def claws-mail-2.9.2/src/plugins/pgpcore/claws.def
+--- claws-mail-2.9.2-orig/src/plugins/pgpcore/claws.def	2007-05-08 09:59:23.000000000 +0200
++++ claws-mail-2.9.2/src/plugins/pgpcore/claws.def	2007-07-02 19:51:25.000000000 +0200
+@@ -1,26 +1,37 @@
+ LIBRARY CLAWS-MAIL.EXE
+ EXPORTS
++account_get_default
+ alertpanel
+-alertpanel_full
+ alertpanel_error
++alertpanel_full
++check_plugin_version
+ copy_file_part
+ debug_print_real
+ debug_srcname
++extract_address
+ get_rc_dir
+ get_tmp_file
++gtkut_get_options_frame
+ gtkut_stock_button_set_create
++gtkut_window_new
+ input_dialog
++label_window_create
++label_window_destroy
+ mainwindow_get_mainwindow
+ manage_window_destroy
+ manage_window_focus_in
+ manage_window_focus_out
+ manage_window_set_transient
+ manage_window_unmap
++mimeview_register_viewer_factory
++mimeview_unregister_viewer_factory
+ prefs_account_get_privacy_prefs
+ prefs_account_register_page
+ prefs_account_set_privacy_prefs
+ prefs_account_unregister_page
+ prefs_button_toggled
++prefs_button_toggled_reverse
++prefs_common
+ prefs_file_close
+ prefs_file_close_revert
+ prefs_gtk_register_page
+@@ -30,6 +41,12 @@ prefs_set_block_label
+ prefs_set_default
+ prefs_write_open
+ prefs_write_param
+-claws_get_version
+-privacy_set_error
+ privacy_get_error
++privacy_set_error
++textview_clear
++textview_create
++textview_destroy
++textview_init
++textview_set_font
++textview_show_icon
++textview_show_mime_part
+diff -rup claws-mail-2.9.2-orig/src/plugins/pgpcore/Makefile.am claws-mail-2.9.2/src/plugins/pgpcore/Makefile.am
+--- claws-mail-2.9.2-orig/src/plugins/pgpcore/Makefile.am	2007-05-08 09:59:23.000000000 +0200
++++ claws-mail-2.9.2/src/plugins/pgpcore/Makefile.am	2007-06-29 20:29:45.000000000 +0200
+@@ -72,6 +72,7 @@ pgpcore_la_LIBADD = $(cygwin_export_lib)
+ INCLUDES = \
+ 	-I$(top_srcdir)/src \
+ 	-I$(top_srcdir)/src/common \
++	-I$(top_builddir)/src/common \
+ 	-I$(top_srcdir)/src/gtk
+ 
+ AM_CPPFLAGS = \
+diff -rup claws-mail-2.9.2-orig/src/plugins/pgpcore/passphrase.c claws-mail-2.9.2/src/plugins/pgpcore/passphrase.c
+--- claws-mail-2.9.2-orig/src/plugins/pgpcore/passphrase.c	2007-05-08 09:59:23.000000000 +0200
++++ claws-mail-2.9.2/src/plugins/pgpcore/passphrase.c	2007-05-21 10:19:05.000000000 +0200
+@@ -44,7 +44,7 @@
+ #include <string.h>
+ #include <sys/types.h>
+ #ifdef G_OS_WIN32
+-#include <windows.h>
++#include <w32lib.h>
+ #else
+ #include <sys/mman.h>
+ #endif
+diff -rup claws-mail-2.9.2-orig/src/plugins/pgpcore/pgp_viewer.c claws-mail-2.9.2/src/plugins/pgpcore/pgp_viewer.c
+--- claws-mail-2.9.2-orig/src/plugins/pgpcore/pgp_viewer.c	2007-05-08 09:59:23.000000000 +0200
++++ claws-mail-2.9.2/src/plugins/pgpcore/pgp_viewer.c	2007-05-21 10:21:25.000000000 +0200
+@@ -26,7 +26,9 @@
+ #include <glib.h>
+ #include <glib/gi18n.h>
+ #include <sys/types.h>
+-#include <sys/wait.h>
++#ifndef G_OS_WIN32
++#  include <sys/wait.h>
++#endif
+ #if (defined(__DragonFly__) || defined (__NetBSD__) || defined (__FreeBSD__) || defined (__OpenBSD__))
+ #  include <sys/signal.h>
+ #endif
+diff -rup claws-mail-2.9.2-orig/src/plugins/pgpcore/plugin.def claws-mail-2.9.2/src/plugins/pgpcore/plugin.def
+--- claws-mail-2.9.2-orig/src/plugins/pgpcore/plugin.def	2007-05-08 09:59:23.000000000 +0200
++++ claws-mail-2.9.2/src/plugins/pgpcore/plugin.def	2007-06-30 01:59:46.000000000 +0200
+@@ -1,13 +1,15 @@
+ EXPORTS
+-        plugin_init
++        plugin_desc
+         plugin_done
++        plugin_init
++        plugin_licence
+         plugin_name
+-        plugin_desc
++	plugin_provides
+         plugin_type
+-        plugin_licence
+         plugin_version
+ 
+         sgpgme_data_from_mimeinfo
++	sgpgme_data_release_and_get_mem
+         sgpgme_decrypt_verify
+         sgpgme_get_encrypt_data
+         sgpgme_setup_signers
+@@ -17,4 +19,5 @@ EXPORTS
+         sgpgme_verify_signature
+ 
+         gpgmegtk_passphrase_cb
++        prefs_gpg_enable_agent
+         prefs_gpg_get_config
+diff -rup claws-mail-2.9.2-orig/src/plugins/pgpcore/sgpgme.c claws-mail-2.9.2/src/plugins/pgpcore/sgpgme.c
+--- claws-mail-2.9.2-orig/src/plugins/pgpcore/sgpgme.c	2007-05-08 09:59:23.000000000 +0200
++++ claws-mail-2.9.2/src/plugins/pgpcore/sgpgme.c	2007-05-21 10:21:47.000000000 +0200
+@@ -33,7 +33,9 @@
+ #include <stdlib.h>
+ #include <errno.h>
+ #include <sys/types.h>
+-#include <sys/wait.h>
++#ifndef G_OS_WIN32
++#  include <sys/wait.h>
++#endif
+ #if (defined(__DragonFly__) || defined (__NetBSD__) || defined (__FreeBSD__) || defined (__OpenBSD__))
+ #  include <sys/signal.h>
+ #endif
+diff -rup claws-mail-2.9.2-orig/src/plugins/pgpinline/claws.def claws-mail-2.9.2/src/plugins/pgpinline/claws.def
+--- claws-mail-2.9.2-orig/src/plugins/pgpinline/claws.def	2007-05-08 09:59:23.000000000 +0200
++++ claws-mail-2.9.2/src/plugins/pgpinline/claws.def	2007-07-02 19:53:21.000000000 +0200
+@@ -1,5 +1,6 @@
+ LIBRARY CLAWS-MAIL.EXE
+ EXPORTS
++check_plugin_version
+ codeconv_set_strict
+ conv_codeset_strdup
+ conv_get_locale_charset_str_no_utf8
+@@ -8,6 +9,8 @@ debug_srcname
+ get_mime_tmp_dir
+ my_tmpfile
+ privacy_register_system
++privacy_reset_error
++privacy_set_error
+ privacy_unregister_system
+ procmime_decode_content
+ procmime_encode_content
+@@ -16,7 +19,3 @@ procmime_mimeinfo_get_parameter
+ procmime_mimeinfo_parent
+ procmime_scan_file
+ procmime_write_mimeinfo
+-claws_get_version
+-privacy_set_error
+-privacy_get_error
+-privacy_reset_error
+diff -rup claws-mail-2.9.2-orig/src/plugins/pgpinline/Makefile.am claws-mail-2.9.2/src/plugins/pgpinline/Makefile.am
+--- claws-mail-2.9.2-orig/src/plugins/pgpinline/Makefile.am	2007-05-08 09:59:23.000000000 +0200
++++ claws-mail-2.9.2/src/plugins/pgpinline/Makefile.am	2007-06-30 00:25:06.000000000 +0200
+@@ -71,6 +71,7 @@ pgpinline_la_LIBADD = $(plugin_ldadd) $(
+ INCLUDES = \
+ 	-I$(top_srcdir)/src \
+ 	-I$(top_srcdir)/src/common \
++	-I$(top_builddir)/src/common \
+ 	-I$(top_srcdir)/src/gtk
+ 
+ AM_CPPFLAGS = \
+diff -rup claws-mail-2.9.2-orig/src/plugins/pgpinline/mypgpcore.def claws-mail-2.9.2/src/plugins/pgpinline/mypgpcore.def
+--- claws-mail-2.9.2-orig/src/plugins/pgpinline/mypgpcore.def	2007-05-08 09:59:23.000000000 +0200
++++ claws-mail-2.9.2/src/plugins/pgpinline/mypgpcore.def	2007-07-02 19:54:29.000000000 +0200
+@@ -1,14 +1,13 @@
+ LIBRARY PGPCORE.DLL
+ EXPORTS
+-        sgpgme_data_from_mimeinfo
+-        sgpgme_decrypt_verify
+-        sgpgme_get_encrypt_data
+-        sgpgme_setup_signers
+-        sgpgme_sigstat_gpgme_to_privacy
+-        sgpgme_sigstat_info_full
+-        sgpgme_sigstat_info_short
+-        sgpgme_verify_signature
+-        gpgmegtk_passphrase_cb
+-        prefs_gpg_get_config
+-
+-
++gpgmegtk_passphrase_cb
++prefs_gpg_enable_agent
++prefs_gpg_get_config
++sgpgme_data_release_and_get_mem
++sgpgme_decrypt_verify
++sgpgme_get_encrypt_data
++sgpgme_setup_signers
++sgpgme_sigstat_gpgme_to_privacy
++sgpgme_sigstat_info_full
++sgpgme_sigstat_info_short
++sgpgme_verify_signature
+diff -rup claws-mail-2.9.2-orig/src/plugins/pgpinline/plugin.def claws-mail-2.9.2/src/plugins/pgpinline/plugin.def
+--- claws-mail-2.9.2-orig/src/plugins/pgpinline/plugin.def	2007-05-08 09:59:23.000000000 +0200
++++ claws-mail-2.9.2/src/plugins/pgpinline/plugin.def	2007-06-30 01:05:15.000000000 +0200
+@@ -1,9 +1,10 @@
+ EXPORTS
+-        plugin_init
++        plugin_desc
+         plugin_done
++        plugin_init
++        plugin_licence
+         plugin_name
+-        plugin_desc
+         plugin_type
+-        plugin_licence
++	plugin_provides
+         plugin_version
+ 
+diff -rup claws-mail-2.9.2-orig/src/plugins/pgpmime/claws.def claws-mail-2.9.2/src/plugins/pgpmime/claws.def
+--- claws-mail-2.9.2-orig/src/plugins/pgpmime/claws.def	2007-05-08 09:59:23.000000000 +0200
++++ claws-mail-2.9.2/src/plugins/pgpmime/claws.def	2007-07-02 19:53:39.000000000 +0200
+@@ -1,6 +1,7 @@
+ LIBRARY CLAWS-MAIL.EXE
+ EXPORTS
+ canonicalize_str
++check_plugin_version
+ debug_print_real
+ debug_srcname
+ file_read_stream_to_str
+@@ -8,6 +9,8 @@ generate_mime_boundary
+ get_mime_tmp_dir
+ my_tmpfile
+ privacy_register_system
++privacy_reset_error
++privacy_set_error
+ privacy_unregister_system
+ procmime_mimeinfo_free_all
+ procmime_mimeinfo_get_parameter
+@@ -15,7 +18,3 @@ procmime_mimeinfo_new
+ procmime_mimeinfo_parent
+ procmime_scan_file
+ procmime_write_mimeinfo
+-claws_get_version
+-privacy_set_error
+-privacy_get_error
+-privacy_reset_error
+diff -rup claws-mail-2.9.2-orig/src/plugins/pgpmime/Makefile.am claws-mail-2.9.2/src/plugins/pgpmime/Makefile.am
+--- claws-mail-2.9.2-orig/src/plugins/pgpmime/Makefile.am	2007-05-08 09:59:23.000000000 +0200
++++ claws-mail-2.9.2/src/plugins/pgpmime/Makefile.am	2007-06-30 00:20:29.000000000 +0200
+@@ -70,6 +70,7 @@ pgpmime_la_LIBADD = $(plugin_ldadd) $(pg
+ INCLUDES = \
+ 	-I$(top_srcdir)/src \
+ 	-I$(top_srcdir)/src/common \
++	-I$(top_builddir)/src/common \
+ 	-I$(top_srcdir)/src/gtk
+ 
+ AM_CPPFLAGS = \
+diff -rup claws-mail-2.9.2-orig/src/plugins/pgpmime/mypgpcore.def claws-mail-2.9.2/src/plugins/pgpmime/mypgpcore.def
+--- claws-mail-2.9.2-orig/src/plugins/pgpmime/mypgpcore.def	2007-05-08 09:59:23.000000000 +0200
++++ claws-mail-2.9.2/src/plugins/pgpmime/mypgpcore.def	2007-07-02 19:55:09.000000000 +0200
+@@ -1,14 +1,14 @@
+ LIBRARY PGPCORE.DLL
+ EXPORTS
+-        sgpgme_data_from_mimeinfo
+-        sgpgme_decrypt_verify
+-        sgpgme_get_encrypt_data
+-        sgpgme_setup_signers
+-        sgpgme_sigstat_gpgme_to_privacy
+-        sgpgme_sigstat_info_full
+-        sgpgme_sigstat_info_short
+-        sgpgme_verify_signature
+-        gpgmegtk_passphrase_cb
+-        prefs_gpg_get_config
+-
+-
++gpgmegtk_passphrase_cb
++prefs_gpg_enable_agent
++prefs_gpg_get_config
++sgpgme_data_from_mimeinfo
++sgpgme_data_release_and_get_mem
++sgpgme_decrypt_verify
++sgpgme_get_encrypt_data
++sgpgme_setup_signers
++sgpgme_sigstat_gpgme_to_privacy
++sgpgme_sigstat_info_full
++sgpgme_sigstat_info_short
++sgpgme_verify_signature
+diff -rup claws-mail-2.9.2-orig/src/plugins/pgpmime/plugin.def claws-mail-2.9.2/src/plugins/pgpmime/plugin.def
+--- claws-mail-2.9.2-orig/src/plugins/pgpmime/plugin.def	2007-05-08 09:59:23.000000000 +0200
++++ claws-mail-2.9.2/src/plugins/pgpmime/plugin.def	2007-06-30 01:05:27.000000000 +0200
+@@ -1,8 +1,9 @@
+ EXPORTS
+-        plugin_init
++        plugin_desc
+         plugin_done
++        plugin_init
++        plugin_licence
+         plugin_name
+-        plugin_desc
+         plugin_type
+-        plugin_licence
++	plugin_provides
+         plugin_version

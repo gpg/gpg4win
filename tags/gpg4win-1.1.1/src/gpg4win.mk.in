@@ -1,0 +1,281 @@
+# gpg4win.m4.in - Installer for GnuPG 4 Windows Makefile.   -*- makefile -*-
+# Copyright (C) 2005 g10 Code GmbH
+# 
+# This file is part of GPG4Win.
+# 
+# GPG4Win is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+# 
+# GPG4Win is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
+
+
+# No servicable parts below this line :)
+
+
+# These paths must be absolute, as we switch directories pretty often.
+root := $(shell pwd)/playground
+bdir := $(root)/build
+idir := $(root)/install
+ipdir := $(root)/install/pkgs
+tsdir := $(shell pwd)/${top_srcdir}
+pdir := $(shell pwd)/${top_srcdir}/patches
+
+
+# The playground area is our scratch area, where we unpack, build and
+# install the packages.
+stamps/stamp-directories:
+	$(MKDIR) stamps
+	$(MKDIR) playground
+	$(MKDIR) $(bdir)
+	$(MKDIR) $(idir)
+	$(MKDIR) $(ipdir)
+	touch $(bdir)/versioninfo.txt
+	touch stamps/stamp-directories
+
+
+# Frob the name $1 by converting all '-' and '+' characters to '_'.
+define FROB_macro
+$(subst +,_,$(subst -,_,$(1)))
+endef
+
+# Get the variable $(1) (which may contain '-' and '+' characters).
+define GETVAR
+$($(call FROB_macro,$(1)))
+endef
+
+# Set a couple of common variables.
+define SETVARS
+	pkg="$(call GETVAR,gpg4win_pkg_$(1))";				\
+	pkg_version="$(1)-$(call GETVAR,gpg4win_pkg_$(1)_version)";	\
+	pkgsdir="$(bdir)/$$$${pkg_version}";				\
+	pkgbdir="$(bdir)/$$$${pkg_version}-build";			\
+	pkgpdir="$(pdir)/$$$${pkg_version}";				\
+	pkgidir="$(ipdir)/$$$${pkg_version}";				\
+	pkg_dev="$(call GETVAR,gpg4win_pkg_$(1)_dev)";			\
+	pkg_version_dev="$(1)-dev-$(call GETVAR,gpg4win_pkg_$(1)_version)"; \
+	pkgidir_dev="$(ipdir)/$$$${pkg_version_dev}";			\
+	pkgcfg="$(call GETVAR,gpg4win_pkg_$(1)_configure)";		\
+	pkgmkargs="$(call GETVAR,gpg4win_pkg_$(1)_make_args)";          \
+	pkgmkargs_inst="$(call GETVAR,gpg4win_pkg_$(1)_make_args_inst)";\
+	export PKG_CONFIG="$(tsdir)/src/pkg-config";			\
+	export PKG_CONFIG_PATH="$(idir)/lib/pkgconfig";			\
+	export SYSROOT="$(idir)";					\
+	export CONFIG_SITE="$(tsdir)/src/config.site"
+endef
+
+# Support macro.  Record version number of file $(1).
+define VERSIONINFO_macro
+         $(SHA1SUM) "$(1)" >> "$(bdir)/versioninfo.txt" 
+endef
+
+# Support macro.  Unpack the archive $(1).
+define DEFLATE_macro
+	case "$(1)" in			\
+          */gnupg2-2.*.tar.bz2)          \
+            $(TAR) -xj --transform='s,^gnupg-,gnupg2-,' -f "$(1)" ;; \
+	  *.tar.gz | *.tgz)		\
+	    $(TAR) xzf "$(1)" ;;	\
+	  *.tar.bz2 | *.tbz2 | *.tbz)	\
+	    $(TAR) xjf "$(1)" ;;	\
+	  *.zip)			\
+	    $(UNZIP) -o "$(1)" ;;		\
+	esac
+endef
+
+# Support macro.  Strip all exe files below $(1).
+define STRIP_macro
+	if test -z '$(DEBUG)'; then			\
+	  (cd $(1);					\
+	   for f in `find . -name \*.exe -o -name \*.dll`; do		\
+	   echo Calling $(STRIP) "$$$${pkg_version}/$$$${f}"; \
+	   $(STRIP) "$$$${f}"; done);			\
+	fi
+endef
+
+
+# Template for source packages.
+
+define SPKG_template
+
+stamps/stamp-$(1)-00-unpack: stamps/stamp-directories 
+	(cd $(bdir);					\
+	 $(call SETVARS,$(1));				\
+	 $(call VERSIONINFO_macro,$$$${pkg});           \
+	 $(call DEFLATE_macro,$$$${pkg}))
+	touch stamps/stamp-$(1)-00-unpack
+
+stamps/stamp-$(1)-01-patch: stamps/stamp-$(1)-00-unpack
+	(shopt -s nullglob;				\
+	 $(call SETVARS,$(1));				\
+	 for pfile in "$$$${pkgpdir}"/*.patch ; do	\
+	   (cd "$$$${pkgsdir}"; "$$$${pfile}")		\
+	 done)
+	touch stamps/stamp-$(1)-01-patch
+
+stamps/stamp-$(1)-02-configure: stamps/stamp-$(1)-01-patch
+	($(call SETVARS,$(1));				\
+	 mkdir "$$$${pkgbdir}";				\
+	  cd "$$$${pkgbdir}";				\
+	 "$$$${pkgsdir}/configure"			\
+		--prefix="$$$${pkgidir}"		\
+		--host=$(host_cpu)-$(host_os)		\
+		--build=$(build_cpu)-$(build_os)	\
+		$$$${pkgcfg} CFLAGS=-mms-bitfields)
+	touch stamps/stamp-$(1)-02-configure
+
+stamps/stamp-$(1)-03-make: stamps/stamp-$(1)-02-configure
+	($(call SETVARS,$(1));				\
+	  cd "$$$${pkgbdir}";				\
+	  $(MAKE) $(AM_MAKEFLAGS) $$$${pkgmkargs})
+	touch stamps/stamp-$(1)-03-make
+
+# Note that post_install must come last because it may be empty and
+# "; ;" is a syntax error.
+stamps/stamp-$(1)-04-install: stamps/stamp-$(1)-03-make
+	($(call SETVARS,$(1));				\
+	  cd "$$$${pkgbdir}";				\
+	  $(MAKE) $(AM_MAKEFLAGS) $$$${pkgmkargs_inst} install; \
+	  $(call STRIP_macro,"$$$${pkgidir}"); \
+	  $(call gpg4win_pkg_$(call FROB_macro,$(1))_post_install))
+	touch stamps/stamp-$(1)-04-install
+
+stamps/stamp-$(1)-05-stow: stamps/stamp-$(1)-04-install
+	($(call SETVARS,$(1));				\
+	 cd $(ipdir);					\
+	 $(STOW) "$$$${pkg_version}")
+	touch stamps/stamp-$(1)-05-stow
+
+stamps/stamp-final-$(1): stamps/stamp-$(1)-05-stow
+	touch stamps/stamp-final-$(1)
+endef
+
+
+# Template for source packages using only make and no build
+# directory.
+
+define MPKG_template
+
+stamps/stamp-$(1)-00-unpack: stamps/stamp-directories 
+	(cd $(bdir);					\
+	 $(call SETVARS,$(1));				\
+	 $(call VERSIONINFO_macro,$$$${pkg});           \
+	 $(call DEFLATE_macro,$$$${pkg}))
+	touch stamps/stamp-$(1)-00-unpack
+
+stamps/stamp-$(1)-01-patch: stamps/stamp-$(1)-00-unpack
+	(shopt -s nullglob;				\
+	 $(call SETVARS,$(1));				\
+	 for pfile in "$$$${pkgpdir}"/*.patch ; do	\
+	   (cd "$$$${pkgsdir}"; "$$$${pfile}")		\
+	 done)
+	touch stamps/stamp-$(1)-01-patch
+
+stamps/stamp-$(1)-03-make: stamps/stamp-$(1)-01-patch
+	($(call SETVARS,$(1));				\
+	  cd "$$$${pkgsdir}";				\
+	  $(MAKE) $(AM_MAKEFLAGS) $$$${pkgmkargs})
+	touch stamps/stamp-$(1)-03-make
+
+stamps/stamp-$(1)-04-install: stamps/stamp-$(1)-03-make
+	($(call SETVARS,$(1));				\
+	  cd "$$$${pkgsdir}";				\
+	  $(MAKE) $(AM_MAKEFLAGS) $$$${pkgmkargs_inst} install; \
+	  $(call STRIP_macro,"$$$${pkgidir}"))
+	touch stamps/stamp-$(1)-04-install
+
+stamps/stamp-$(1)-05-stow: stamps/stamp-$(1)-04-install
+	($(call SETVARS,$(1));				\
+	 cd $(ipdir);					\
+	 $(STOW) "$$$${pkg_version}")
+	touch stamps/stamp-$(1)-05-stow
+
+stamps/stamp-final-$(1): stamps/stamp-$(1)-05-stow
+	touch stamps/stamp-final-$(1)
+endef
+
+
+
+# Template for binary packages.
+
+define BPKG_template
+
+stamps/stamp-$(1)-00-install: stamps/stamp-directories 
+	($(call SETVARS,$(1));				\
+	 $(MKDIR) "$$$${pkgidir}";			\
+	 cd $$$${pkgidir};				\
+	 $(call VERSIONINFO_macro,$$$${pkg});           \
+	 $(call DEFLATE_macro,$$$${pkg}))
+	touch stamps/stamp-$(1)-00-install
+
+# Note that post_install must come last because it may be empty and
+# "; ;" is a syntax error.
+stamps/stamp-$(1)-01-install-dev: stamps/stamp-$(1)-00-install
+	($(call SETVARS,$(1));				\
+	 $(MKDIR) "$$$${pkgidir_dev}";			\
+	 (cd $$$${pkgidir_dev};				\
+          $(call VERSIONINFO_macro,$$$${pkg_dev});      \
+	  $(call DEFLATE_macro,$$$${pkg_dev}));		\
+	 $(call gpg4win_pkg_$(call FROB_macro,$(1))_post_install))
+	touch stamps/stamp-$(1)-01-install-dev
+
+stamps/stamp-$(1)-02-stow: stamps/stamp-$(1)-01-install-dev
+	($(call SETVARS,$(1));				\
+	 cd $(ipdir);					\
+	 $(STOW) "$$$${pkg_version}")
+	touch stamps/stamp-$(1)-02-stow
+
+stamps/stamp-$(1)-03-stow-dev: stamps/stamp-$(1)-02-stow
+	($(call SETVARS,$(1));				\
+	 cd $(ipdir);					\
+	 $(STOW) "$$$${pkg_version_dev}")
+	touch stamps/stamp-$(1)-03-stow-dev
+
+stamps/stamp-final-$(1): stamps/stamp-$(1)-03-stow-dev
+	touch stamps/stamp-final-$(1)
+endef
+
+
+# Template for source packages.
+
+define IPKG_template
+
+stamps/stamp-final-$(1): stamps/stamp-directories 
+	touch stamps/stamp-final-$(1)
+endef
+
+
+# Insert the template for each source package.
+$(foreach spkg, $(gpg4win_spkgs), $(eval $(call SPKG_template,$(spkg))))
+
+# Insert the template for each make only source package.
+$(foreach mpkg, $(gpg4win_mpkgs), $(eval $(call MPKG_template,$(mpkg))))
+
+# Insert the template for each binary package.
+$(foreach bpkg, $(gpg4win_bpkgs), $(eval $(call BPKG_template,$(bpkg))))
+
+# Insert the template for each internal package.
+$(foreach ipkg, $(gpg4win_ipkgs), $(eval $(call IPKG_template,$(ipkg))))
+
+stamps/stamp-final: stamps/stamp-directories
+stamps/stamp-final: $(addprefix stamps/stamp-final-,$(gpg4win_build_list))
+	touch stamps/stamp-final
+
+all-gpg4win: stamps/stamp-final
+
+# Just to check if we catched all stamps.
+clean-stamps:
+	$(RM) -fR $(stamps)
+
+clean-gpg4win:
+	$(RM) -fR playground stamps
+
+.PHONY : all-gpg4win clean-stamps clean-gpg4win
