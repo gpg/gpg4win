@@ -18,7 +18,7 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
 ACLOCAL_AMFLAGS = -I m4
-AUTOMAKE_OPTIONS = dist-bzip2
+AUTOMAKE_OPTIONS = dist-bzip2 no-dist-gzip
 DISTCHECK_CONFIGURE_FLAGS = --host=i586-mingw32msvc --disable-pkg-man_advanced_en 
 
 SUBDIRS = po packages include doc src
@@ -32,27 +32,12 @@ EXTRA_DIST = autogen.sh README.SVN \
         patches/glib-2.12.12/01-giowin32.patch \
         patches/glib-2.12.12/02-gspawn-w32.patch \
         patches/glib-2.12.12/03-gspawn-w32-fixup.patch \
-	patches/sylpheed-claws-2.3.1/01-locale-dir.patch \
-	patches/sylpheed-claws-2.3.1/02-fix-plugin-dir.patch \
-	patches/sylpheed-claws-2.3.1/03-std-plugins.patch \
-	patches/sylpheed-claws-2.3.1/04-pgpcore-def.patch \
-        patches/sylpheed-claws-2.3.1/05-pgpinline-def.patch \
-        patches/sylpheed-claws-2.3.1/06-pgpmime-def.patch \
-        patches/sylpheed-claws-2.3.1/07-mbox.patch \
-	patches/sylpheed-claws-2.3.1/08-w32-logo.patch \
-	patches/sylpheed-claws-2.3.1/09-w32-icon.patch \
-	patches/sylpheed-claws-2.3.1/99-auto.patch \
 	patches/sylpheed-claws-2.4.0/01-w32-logo.patch \
 	patches/sylpheed-claws-2.4.0/02-w32-icon.patch \
         patches/sylpheed-claws-2.4.0/03-plugins-symbols.patch \
         patches/sylpheed-claws-2.4.0/04-font-prefs.patch \
         patches/sylpheed-claws-2.4.0/05-textviewer.patch \
 	patches/sylpheed-claws-2.4.0/99-auto.patch \
-	patches/claws-mail-2.9.2/01-w32-logo.patch \
-	patches/claws-mail-2.9.2/02-w32-icon.patch \
-	patches/claws-mail-2.9.2/03-w32-port.patch \
-	patches/claws-mail-2.9.2/04-smime-plugin.patch \
-	patches/claws-mail-2.9.2/99-auto.patch \
 	patches/claws-mail-2.10.0/01-w32-logo.patch \
 	patches/claws-mail-2.10.0/02-w32-icon.patch \
 	patches/claws-mail-2.10.0/03-w32-port.patch \

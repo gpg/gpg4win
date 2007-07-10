@@ -1,3 +1,8 @@
+2007-07-10  Werner Koch  <wk@g10code.com>
+
+	* Rules-nsis (%.nsi): Remove dependency on nsis-msgfmt and call
+	make on it instead.
+
 2007-07-09  Werner Koch  <wk@g10code.com>
 
 	* de.po: Add description for gnupg2.

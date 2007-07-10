@@ -18,12 +18,48 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
 
-EXTRA_DIST = pkg-config $(common_nsi) gpg4win.nsi gpg4win-src.nsi \
-        inst-gpg4win.nsi uninst-gpg4win.nsi installer-options.ini.in \
-	libiconv.def libintl.def  gpg4win-splash.wav gpgwrap.c \
-	exdll.h g4wihelp.c g4wihelp.nsi config.site loreley.mid \
-	inst-man_novice_en.nsi inst-man_advanced_en.nsi \
-	uninst-man_novice_en.nsi uninst-man_advanced_en.nsi
+EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi config.site \
+        installer-options.ini.in libiconv.def libintl.def loreley.mid \
+        gpg4win-splash.wav gpgwrap.c exdll.h g4wihelp.c g4wihelp.nsi \
+        inst-sections.nsi installer.nsi installer-finish.nsi  \
+        inst-gpg4win.nsi	   uninst-gpg4win.nsi	      \
+        inst-atk.nsi               uninst-atk.nsi	      \
+        inst-cairo.nsi		   uninst-cairo.nsi	      \
+        inst-claws-mail.nsi	   uninst-claws-mail.nsi      \
+        inst-crypt.nsi		   uninst-crypt.nsi	      \
+        inst-dirmngr.nsi	   uninst-dirmngr.nsi	      \
+        inst-eudoragpg.nsi	   uninst-eudoragpg.nsi	      \
+        inst-gettext.nsi	   uninst-gettext.nsi	      \
+        inst-glib.nsi		   uninst-glib.nsi	      \
+        inst-gnupg2.nsi		   uninst-gnupg2.nsi	      \
+        inst-gnupg.nsi		   uninst-gnupg.nsi	      \
+        inst-gpa.nsi		   uninst-gpa.nsi	      \
+        inst-gpgee.nsi		   uninst-gpgee.nsi	      \
+        inst-gpgme.nsi		   uninst-gpgme.nsi	      \
+        inst-gpgol.nsi		   uninst-gpgol.nsi	      \
+        inst-gtk+.nsi		   uninst-gtk+.nsi	      \
+        inst-jpeg.nsi		   uninst-jpeg.nsi	      \
+        inst-libassuan.nsi	   uninst-libassuan.nsi	      \
+        inst-libgcrypt.nsi	   uninst-libgcrypt.nsi	      \
+        inst-libgpg-error.nsi	   uninst-libgpg-error.nsi    \
+        inst-libiconv.nsi	   uninst-libiconv.nsi	      \
+        inst-libksba.nsi	   uninst-libksba.nsi	      \
+        inst-libpng.nsi		   uninst-libpng.nsi	      \
+        inst-man_advanced_de.nsi   uninst-man_advanced_de.nsi \
+        inst-man_advanced_en.nsi   uninst-man_advanced_en.nsi \
+        inst-man_novice_de.nsi	   uninst-man_novice_de.nsi   \
+        inst-man_novice_en.nsi	   uninst-man_novice_en.nsi   \
+        inst-pango.nsi		   uninst-pango.nsi	      \
+        inst-pinentry.nsi	   uninst-pinentry.nsi	      \
+        inst-pkgconfig.nsi	   uninst-pkgconfig.nsi	      \
+        inst-pthreads-w32.nsi	   uninst-pthreads-w32.nsi    \
+        inst-regex.nsi		   uninst-regex.nsi	      \
+        inst-sylpheed-claws.nsi	   uninst-sylpheed-claws.nsi  \
+        inst-w32pth.nsi		   uninst-w32pth.nsi	      \
+        inst-winpt.nsi		   uninst-winpt.nsi	      \
+        inst-zlib.nsi        	   uninst-zlib.nsi
+
+
 
 # Need to clean the dll because we bypassed automake.
 CLEANFILES = g4wihelp.dll versioninfo.txt README.en.txt README.de.txt \
