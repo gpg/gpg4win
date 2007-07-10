@@ -1,5 +1,7 @@
 2007-07-10  Werner Koch  <wk@g10code.com>
 
+	Released 1.1.1.
+
 	* src/gpg4win.nsi [GPG4WIN_LIGHT]: Undef gnupg2 and related libs.
 	Undef the English novices manual.
 	* src/installer-finish.nsi: Delete the link for the English novices
