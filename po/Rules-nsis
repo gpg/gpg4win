@@ -1,4 +1,4 @@
-# Rules-nsis - Special Makefile rules for NSIS message catalogs.
+# Rules-nsis - Special Makefile rules for NSIS msg catalogs. -*- Makefile -*-
 # Copyright (C) 2007 g10 Code GmbH
 # 
 # This file is part of GPG4Win.
@@ -32,7 +32,8 @@ nsis-msgfmt: nsis-msgfmt.c
 # We extend the GMO file mechanism to also handle NSIS files.
 $(GMOFILES): %.gmo: %.nsi
 
-%.nsi : %.po nsis-msgfmt
+%.nsi : %.po 
+	$(MAKE) nsis-msgfmt
 	@lang=`echo $* | sed -e 's,.*/,,'`; \
 	test "$(srcdir)" = . && dir="" || dir="$(srcdir)/"; \
 	echo "rm -f $${dir}$${lang}.nsi && ./nsis-msgfmt $${dir}$${lang}.po > $${dir}$${lang}.nsi"; \

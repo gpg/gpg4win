@@ -2,6 +2,12 @@
 
 	Released 1.1.1.
 
+	* src/Makefile.am (EXTRA_DIST): Remove $(common_nsi).  Add all
+	installer scripts explicitly.
+
+	* Makefile.am (EXTRA_DIST): Removed old patches for Sylpheed.
+	(AUTOMAKE_OPTIONS): Add no-dist-gzip.
+
 	* src/gpg4win.nsi [GPG4WIN_LIGHT]: Undef gnupg2 and related libs.
 	Undef the English novices manual.
 	* src/installer-finish.nsi: Delete the link for the English novices
