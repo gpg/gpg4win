@@ -3,6 +3,37 @@
 # The version number given below are for the standard installers as
 # distributed by www.gpg4win.org.
 
+Noteworthy changes in version 1.1.1 (2007-07-10)
+------------------------------------------------
+
+(en) Replaced Sylpheed-Claws by a current Claws-Mail package.
+(de) Sylpheed-Claws ist durch eine aktuelle Claws-Mail Version ersetzt worden.
+
+(en) Add command line tools for CMS (S/MIME) to the standard installer.
+(de) Der Standardinstaller ist um Kommandozeilenwerkzeuge für CMS (S/MIME) erweitert worden.
+
+(en) Translations of the installer are now done in the usual GNU
+     gettext way.
+(de) Übersetzungen des Installers werden nun auf dem gebräuchlichen GNU gettext Weg erstellt.
+
+(en) Fixed a couple of bugs.
+(de) Einige Programmfehler wurden behoben.
+
+
+~~~~~~~~~~~~~~~
+GnuPG:  1.4.7 
+GnuPG2: 2.0.5
+GPA:    0.7.6
+GPGol:  0.9.91
+GPGee:  1.3.1
+WinPT:  1.2.0
+Claws-Mail: 2.10.0
+Novices:        1.0.0
+Einsteiger:     2.0.2
+Durchblicker:   2.0.2
+~~~~~~~~~~~~~~~
+
+
 Noteworthy changes in version 1.1.0 (2007-05-24)
 ------------------------------------------------
 

@@ -19,7 +19,7 @@ INSTALL_DIR = /tmp/gpg4win-www
 ADD_INST_TYPES = *.css *.ico *.php
 ADD_INST_DIRS = pix
 
-USER=$(shell grep "svn+ssh://" .svn/entries | sed -e "s/.*svn+ssh:\/\///g" | sed -e "s/@.*//g")
+USER=$(shell grep "svn+ssh://" .svn/entries | sed -e "s/.*svn+ssh:\/\///g" | sed -e "s/@.*//g" | head -1)
 
 CURDIR=$(shell pwd)
 
