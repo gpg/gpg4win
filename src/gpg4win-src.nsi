@@ -1,14 +1,14 @@
 # gpg4win-src.nsi - Installer for GPG4Win sources.   -*- coding: latin-1; -*-
-# Copyright (C) 2005 g10 Code GmbH
+# Copyright (C) 2005, 2007 g10 Code GmbH
 # 
-# This file is part of GPG4Win.
+# This file is part of Gpg4win.
 # 
-# GPG4Win is free software; you can redistribute it and/or modify
+# Gpg4win is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 of the License, or
 # (at your option) any later version.
 # 
-# GPG4Win is distributed in the hope that it will be useful,
+# Gpg4win is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
@@ -30,21 +30,23 @@
 # The package name and version.  PRETTY_PACKAGE is a user visible name
 # only while PACKAGE is useful for filenames etc.  PROD_VERSION is the
 # product version and needs to be in the format "MAJ.MIN.MIC.BUILDNR".
+# NOTE: Please keep the capitalization of PRETTY_PACKAGE_SHORT as it is
+# used as registry key.
 !define PACKAGE "${_PACKAGE}-src"
 !define PRETTY_PACKAGE "GnuPG For Windows Sources"
 !define PRETTY_PACKAGE_SHORT "GPG4WinSrc"
 !define VERSION "${_VERSION}"
 !define PROD_VERSION "${_BUILD_FILEVERSION}"
 !define COMPANY "g10 Code GmbH"
-!define COPYRIGHT "Copyright (C) 2005 g10 Code GmbH"
-!define DESCRIPTION "GPG4Win: The GNU Privacy Guard and tools for Windows (Source Files)"
+!define COPYRIGHT "Copyright (C) 2007 g10 Code GmbH"
+!define DESCRIPTION "Gpg4win: The GNU Privacy Guard and tools for Windows (Source Files)"
 
 !define INSTALL_DIR "GnuPG\Source"
 
 !define WELCOME_TITLE_ENGLISH \
- "Welcome to the installation of the Gpg4Win sources"
+ "Welcome to the installation of the Gpg4win sources"
 !define WELCOME_TITLE_GERMAN \
- "Willkommen bei der Installation der Gpg4Win Quellen"
+ "Willkommen bei der Installation der Gpg4win Quellen"
 
 !define ABOUT_ENGLISH \
  "GnuPG is GNU's tool for secure communication and data storage. \
@@ -52,14 +54,14 @@
   It includes an advanced key management facility and is compliant \
   with the proposed OpenPGP Internet standard as described in RFC2440. \
   \r\n\r\n$_CLICK \
-  \r\n\r\n\r\n\r\n\r\nThis is GPG4WIN version ${VERSION}\r\n\
+  \r\n\r\n\r\n\r\n\r\nThis is Gpg4win version ${VERSION}\r\n\
   file version ${PROD_VERSION}\r\n\
   release date ${_BUILD_ISODATE}"
 !define ABOUT_GERMAN \
   "GnuPG is das Werkzeug aus dem GNU Projekt zur sicheren Kommunikation \
    sowie zum sicheren Speichern von Daten. \
    \r\n\r\n$_CLICK \
-   \r\n\r\n\r\n\r\n\r\nDies ist GPG4WIN Version ${VERSION}\r\n\
+   \r\n\r\n\r\n\r\n\r\nDies ist Gpg4win Version ${VERSION}\r\n\
    Dateiversion ${PROD_VERSION}\r\n\
    Releasedatum ${_BUILD_ISODATE}"
 

@@ -51,7 +51,7 @@ Section "-un.gnupg2"
   Delete "$INSTDIR\gpg-preset-passphrase.exe"
 
   Delete "$INSTDIR\share\gnupg\qualified.txt"
-  Delete "$INSTDIR\share\gnupg\com-certs.txt"
+  Delete "$INSTDIR\share\gnupg\com-certs.pem"
   Delete "$INSTDIR\share\gnupg\gpg-conf.skel"
   RMDir "$INSTDIR\share\gnupg"
 
