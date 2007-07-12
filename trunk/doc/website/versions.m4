@@ -17,6 +17,7 @@ m4_define(`LEN_EXE',`9431823')
 m4_define(`LEN_EXL',`5876275')
 m4_define(`LEN_EXS',`59285760')
 m4_define(`DLPAGE',`I18N(`EN',`download.html')`'I18N(`DE',`download-de.html')')
+m4_define(`MIRROR_IE_URL',`http://ftp.heanet.ie/mirrors/ftp.gpg4win.org/')
 m4_define(`MIRROR_NO_URL',`http://ftp.no.gpg4win.org/pub/gpg4win/')
 m4_define(`SOFTWARE',`
 I18N(`EN', `<a href="http://www.gnupg.org/">GnuPG</a>')I18N(`DE', `<a href="http://www.gnupg.de/">GnuPG</a>') 1.4.7
