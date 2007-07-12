@@ -40,7 +40,12 @@ to be automatically informed about new releases and other
 important Gpg4win news.
 
 <p>
-Is downloading very slow? Try the 
-<a href="MIRROR_NO_URL">Gpg4win mirrorserver in Norway</a>
-run by Trond.Endrestol-a.t-fagskolen.gjovik.no from the
-Gjøvik Technical College.
+Is downloading very slow? Try one of the mirror servers: 
+<dl>
+  <dt><a href="MIRROR_IE_URL">Gpg4win mirror server in Ireland</a>
+  <dd>run by <a href="http://ftp.heanet.ie/about/">HEAnet</a>.
+
+  <dt><a href="MIRROR_NO_URL">Gpg4win mirror server in Norway</a>
+  <dd>run by Trond.Endrestol-a.t-fagskolen.gjovik.no from the
+      Gjøvik Technical College.
+<dl>      

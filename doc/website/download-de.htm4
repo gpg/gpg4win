@@ -42,7 +42,13 @@ um automatisch über neue Versionen und andere wichtige
 Neuigkeiten zu Gpg4win informiert zu werden.
 
 <p>
-Ist das Herunterladen immer langsam? Versuchen Sie den
-<a href="MIRROR_NO_URL">Gpg4win Spiegelserver in Norwegen</a>, 
-betrieben von Trond.Endrestol-a.t-fagskolen.gjovik.no
-vom Gjøvik Technical College.
+Ist das Herunterladen immer langsam? Versuchen Sie einen der
+Spiegelserver:
+<dl>
+  <dt><a href="MIRROR_IE_URL">Gpg4win Spiegelserver in Irland</a>, 
+  <dd>betrieben von <a href="http://ftp.heanet.ie/about/">HEAnet</a>.
+
+  <dt><a href="MIRROR_NO_URL">Gpg4win Spiegelserver in Norwegen</a>, 
+  <dd>betrieben von Trond.Endrestol-a.t-fagskolen.gjovik.no
+      vom Gjøvik Technical College.
+<dl>
