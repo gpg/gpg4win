@@ -21,11 +21,11 @@ m4_define(`MIRROR_IE_URL',`http://ftp.heanet.ie/mirrors/ftp.gpg4win.org/')
 m4_define(`MIRROR_NO_URL',`http://ftp.no.gpg4win.org/pub/gpg4win/')
 m4_define(`SOFTWARE',`
 I18N(`EN', `<a href="http://www.gnupg.org/">GnuPG</a>')I18N(`DE', `<a href="http://www.gnupg.de/">GnuPG</a>') 1.4.7
-I18N(`EN', `<a href="http://www.gnupg.org/">GnuPG2</a>')I18N(`DE', `<a href="http://www.gnupg.de/">GnuPG</a>') 2.0.5
+I18N(`EN', `<a href="http://www.gnupg.org/">GnuPG2</a>')I18N(`DE', `<a href="http://www.gnupg.de/">GnuPG2</a>') 2.0.5
 <a href="http://winpt.wald.intevation.org/">WinPT</a> 1.2.0
 I18N(`EN', `<a href="http://www.gnupg.org/related_software/gpa/index.html">GPA</a>')I18N(`DE', `<a href="http://www.gnupg.de/related_software/gpa/index.html">GPA</a>') 0.7.6
 <a href="http://www.g10code.de/p-gpgol.html">GPGol</a> 0.9.91
 <a href="http://gpgee.excelcia.org/">GPGee</a> 1.3.1
-<a href="http://www.claws-mail.org/">Sylpheed-Claws</a> 2.10.0
+<a href="http://www.claws-mail.org/">Claws Mail</a> 2.10.0
 I18N(`EN', `<a href="/handbuecher/novices.html">Gpg4win for Novices</a> 1.0.0')I18N(`DE', `<a href="/handbuecher/einsteiger.html">Gpg4win für Einsteiger</a> 2.0.2')
 <a href="/handbuecher/durchblicker.html">Gpg4win für Durchblicker</a> 2.0.2')
