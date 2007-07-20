@@ -1,3 +1,8 @@
+2007-07-20  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
+
+	* website/build-installer-de.htm4: Fix some changes that didn't make
+	it into the german translation.
+
 2007-07-13  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
 
 	* website/versions.m4: Rename Sylpheed-Claws to Claws Mail. Add forgotten
