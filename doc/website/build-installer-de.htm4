@@ -34,7 +34,7 @@ Das Zeichen '#' steht für Kommandos die als Administrator (root)
 durchgeführt werden müssen, '$' für einen normalen Benutzer.
 
 <ol>
-<li> Notwendige Pakete auf dem Debian GNU/Linux 3.1 installieren:<br>
+<li> Notwendige Pakete auf dem Debian GNU/Linux 4.0 installieren:<br>
      <em># apt-get install mingw32 nsis stow unzip texinfo imagemagick</em><br>
      <em># apt-get install libglib2.0-dev tetex-bin tetex-extra gs-common hyperlatex</em><br>
 
@@ -52,7 +52,7 @@ durchgeführt werden müssen, '$' für einen normalen Benutzer.
      <em>$ cd ..</em><br>
 
 <li> Falls Sie mit der SVN-Version arbeiten:<br>
-     <em>$ AUTOMAKE_SUFFIX=-1.9 ./autogen.sh</em><br>
+     <em>$ ./autogen.sh</em><br>
      <em>$ ./configure --enable-maintainer-mode --host=i586-mingw32msvc</em><br>
      ansonsten:<br>
      <em>$ ./configure --host=i586-mingw32msvc</em><br>
