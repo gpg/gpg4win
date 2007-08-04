@@ -125,7 +125,8 @@ gpg4win_pkg_dirmngr_configure = \
   --with-gpg-error-prefix=$(idir) \
   --with-ksba-prefix=$(idir) \
   --with-libgcrypt-prefix=$(idir) \
-  --with-libassuan-prefix=$(idir)
+  --with-libassuan-prefix=$(idir) \
+  --with-pth-prefix=$(idir)
 
 gpg4win_pkg_gnupg2_configure = \
   --with-gpg-error-prefix=$(idir) \

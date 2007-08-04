@@ -33,8 +33,37 @@ Section "-dirmngr" SEC_dirmngr
 !ifdef SOURCES
   File "${gpg4win_pkg_dirmngr}"
 !else
+  Var /GLOBAL DirMngrStatus
+  g4wihelp::service_query "DirMngr"
+  StrCpy $DirMngrStatus $R0
+
+  StrCmp $DirMngrStatus "MISSING" dirmngr_stopped
+  # Try to stop the daemon in case it is running.
+  g4wihelp::service_stop "DirMngr"
+dirmngr_stopped:
+
   File "${prefix}/bin/dirmngr.exe"
+  File "${prefix}/bin/dirmngr-client.exe"
+  File "${prefix}/libexec/dirmngr_ldap.exe"
+
+  # We need to create the cache directory, as this is not
+  # automatically created by dirmngr.  Actually, the default should be
+  # different.  FIXME.
+  CreateDirectory "$INSTDIR\cache"
+
+  # FIXME: Error checking.  Also, check if --service really reaches
+  # the service both times.
+
+  StrCmp $DirMngrStatus "MISSING" 0 dirmngr_created
+    # Create the service.
+    g4wihelp::service_create "DirMngr" "DirMngr" '"$INSTDIR\dirmngr.exe" --service'
+dirmngr_created:
+
+  # We only start the dirmngr if it was running before.
+  StrCmp $DirMngrStatus "RUNNING" 0 dirmngr_restarted
+  # Start the service.
+  g4wihelp::service_start "DirMngr" "1" "\"$INSTDIR\dirmngr.exe\""
+dirmngr_restarted:
 
 !endif
 SectionEnd
-

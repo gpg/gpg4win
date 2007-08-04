@@ -266,3 +266,314 @@ showsplash (HWND hwndParent, int string_size, char *variables,
     }
   UnregisterClass (classname, g_hInstance);
 }
+
+
+/* Service Management.  */
+
+/* Use this to report unexpected errors.  FIXME: This is really not
+   very descriptive.  */
+void
+service_error (const char *str)
+{
+  char buf[1024];
+  snprintf (buf, sizeof (buf) - 1, "error: %s: ec=%d\r\n", str,
+	    GetLastError ());
+  MessageBox(g_hwndParent, buf, 0, MB_OK);
+
+  setuservariable (INST_R0, "1");
+}
+
+
+void __declspec(dllexport) 
+service_create (HWND hwndParent, int string_size, char *variables, 
+		 stack_t **stacktop, extra_parameters_t *extra)
+{
+  SC_HANDLE sc;
+  SC_HANDLE service;
+  const char *result = NULL;
+  char service_name[256];
+  char display_name[256];
+  char program[256];
+  int err = 0;
+
+  g_hwndParent = hwndParent;
+  EXDLL_INIT();
+
+  /* The expected stack layout: service_name, display_name, program.  */
+  if (popstring (service_name, sizeof (service_name)))
+    err = 1;
+  if (!err && popstring (display_name, sizeof (display_name)))
+    err = 1;
+  if (!err && popstring (program, sizeof (program)))
+    err = 1;
+  if (err)
+    {
+      setuservariable (INST_R0, "1");
+      return;
+    }
+
+  sc = OpenSCManager (NULL, NULL, SC_MANAGER_ALL_ACCESS);
+  if (sc == NULL)
+    {
+      service_error ("OpenSCManager");
+      return;
+    }
+
+  service = CreateService (sc, service_name, display_name,
+			   SERVICE_ALL_ACCESS, SERVICE_WIN32_OWN_PROCESS,
+			   /* FIXME: As long as we are debugging... */
+			   SERVICE_DEMAND_START /* SERVICE_AUTO_START */,
+			   SERVICE_ERROR_NORMAL, program,
+			   NULL, NULL, NULL,
+			   NULL /* FIXME: "NT AUTHORITY\LocalService"? */,
+			   NULL);
+  if (service == NULL)
+    {
+      service_error ("CreateService");
+      CloseServiceHandle (sc);
+      return;
+    }
+  CloseServiceHandle (service);
+
+  result = GetLastError () ? "1":"0";
+  setuservariable (INST_R0, result);
+  return;
+}
+
+
+/* Requires g_hwndParent to be set!  */
+SC_HANDLE
+service_lookup (char *service_name)
+{
+  SC_HANDLE sc;
+  SC_HANDLE service;
+  
+  sc = OpenSCManager (NULL, NULL, SC_MANAGER_ALL_ACCESS);
+  if (sc == NULL)
+    {
+      service_error ("OpenSCManager");
+      return NULL;
+    }
+  service = OpenService (sc, service_name, SC_MANAGER_ALL_ACCESS);
+  if (service == NULL)
+    {
+      /* Fail silently here.  */
+      CloseServiceHandle (sc);
+      return NULL;
+    }
+  CloseServiceHandle (sc);
+  return service;
+}
+
+
+/* Returns status.  */
+void __declspec(dllexport) 
+service_query (HWND hwndParent, int string_size, char *variables, 
+	       stack_t **stacktop, extra_parameters_t *extra)
+{
+  SC_HANDLE service;
+  const char *result = NULL;
+  char service_name[256];
+  int err = 0;
+  SERVICE_STATUS status;
+
+  g_hwndParent = hwndParent;
+  EXDLL_INIT();
+
+  /* The expected stack layout: service_name argc [argv].  */
+  if (popstring (service_name, sizeof (service_name)))
+    err = 1;
+  if (err)
+    {
+      setuservariable (INST_R0, "ERROR");
+      return;
+    }
+
+  service = service_lookup (service_name);
+  if (service == NULL)
+  if (err == 0)
+    {
+      setuservariable (INST_R0, "MISSING");
+      return;
+    }
+
+  err = QueryServiceStatus (service, &status);
+  if (err == 0)
+    {
+      setuservariable (INST_R0, "ERROR");
+      CloseServiceHandle (service);
+      return;
+    }
+  CloseServiceHandle (service);
+
+  switch (status.dwCurrentState)
+    {
+    case SERVICE_START_PENDING:
+      result = "START_PENDING";
+      break;
+    case SERVICE_RUNNING:
+      result = "RUNNING";
+      break;
+    case SERVICE_PAUSE_PENDING:
+      result = "PAUSE_PENDING";
+      break;
+    case SERVICE_PAUSED:
+      result = "PAUSED";
+      break;
+    case SERVICE_CONTINUE_PENDING:
+      result = "CONTINUE_PENDING";
+      break;
+    case SERVICE_STOP_PENDING:
+      result = "STOP_PENDING";
+      break;
+    case SERVICE_STOPPED:
+      result = "STOPPED";
+      break;
+    default:
+      result = "UNKNOWN";
+    }
+  setuservariable (INST_R0, result);
+  return;
+}
+
+
+void __declspec(dllexport) 
+service_start (HWND hwndParent, int string_size, char *variables, 
+	       stack_t **stacktop, extra_parameters_t *extra)
+{
+  SC_HANDLE service;
+  const char *result = NULL;
+  char service_name[256];
+  char argc_str[256];
+#define NR_ARGS 10
+#define ARG_MAX 256
+  char argv_str[NR_ARGS][ARG_MAX];
+  char *argv[NR_ARGS + 1];
+  int argc;
+  int i;
+  int err = 0;
+
+  g_hwndParent = hwndParent;
+  EXDLL_INIT();
+
+  /* The expected stack layout: service_name argc [argv].  */
+  if (popstring (service_name, sizeof (service_name)))
+    err = 1;
+  if (!err && popstring (argc_str, sizeof (argc_str)))
+    err = 1;
+  if (!err)
+    {
+      argc = atoi (argc_str);
+      for (i = 0; i < argc; i++)
+	{
+	  if (popstring (argv_str[i], ARG_MAX))
+	    {
+	      err = 1;
+	      break;
+	    }
+	  argv[i] = argv_str[i];
+	}
+      argv[i] = NULL;
+    }
+  if (err)
+    {
+      setuservariable (INST_R0, "1");
+      return;
+    }
+
+  service = service_lookup (service_name);
+  if (service == NULL)
+    return;
+
+  err = StartService (service, argc, argv);
+  if (err == 0)
+    {
+      service_error ("StartService");
+      CloseServiceHandle (service);
+      return;
+    }
+  CloseServiceHandle (service);
+
+  setuservariable (INST_R0, "0");
+  return;
+}
+
+
+void __declspec(dllexport) 
+service_stop (HWND hwndParent, int string_size, char *variables, 
+	      stack_t **stacktop, extra_parameters_t *extra)
+{
+  SC_HANDLE service;
+  const char *result = NULL;
+  char service_name[256];
+  int err = 0;
+  SERVICE_STATUS status;
+
+  g_hwndParent = hwndParent;
+  EXDLL_INIT();
+
+  /* The expected stack layout: service_name argc [argv].  */
+  if (popstring (service_name, sizeof (service_name)))
+    err = 1;
+  if (err)
+    {
+      setuservariable (INST_R0, "1");
+      return;
+    }
+
+  service = service_lookup (service_name);
+  if (service == NULL)
+    return;
+
+  err = ControlService (service, SERVICE_CONTROL_STOP, &status);
+  if (err == 0)
+    {
+      service_error ("ControlService");
+      CloseServiceHandle (service);
+      return;
+    }
+  CloseServiceHandle (service);
+
+  setuservariable (INST_R0, "0");
+  return;
+}
+
+
+void __declspec(dllexport) 
+service_delete (HWND hwndParent, int string_size, char *variables, 
+		stack_t **stacktop, extra_parameters_t *extra)
+{
+  SC_HANDLE service;
+  const char *result = NULL;
+  char service_name[256];
+  int err = 0;
+
+  g_hwndParent = hwndParent;
+  EXDLL_INIT();
+
+  /* The expected stack layout: service_name argc [argv].  */
+  if (popstring (service_name, sizeof (service_name)))
+    err = 1;
+  if (err)
+    {
+      setuservariable (INST_R0, "1");
+      return;
+    }
+
+  service = service_lookup (service_name);
+  if (service == NULL)
+    return;
+
+  err = DeleteService (service);
+  if (err == 0)
+    {
+      service_error ("DeleteService");
+      CloseServiceHandle (service);
+      return;
+    }
+  CloseServiceHandle (service);
+
+  setuservariable (INST_R0, "0");
+  return;
+}
+
