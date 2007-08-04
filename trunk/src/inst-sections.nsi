@@ -332,6 +332,7 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_w32pth}
   !insertmacro SelectSection ${SEC_zlib}
   !insertmacro SelectSection ${SEC_pinentry}
+  !insertmacro SelectSection ${SEC_dirmngr}
   skip_gnupg2:
 !endif
 
@@ -462,6 +463,7 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_libksba}
   !insertmacro SelectSection ${SEC_libassuan}
   !insertmacro SelectSection ${SEC_libgpg_error}
+  !insertmacro SelectSection ${SEC_w32pth}
   skip_dirmngr:
 !endif
 

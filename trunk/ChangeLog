@@ -1,3 +1,16 @@
+2007-08-04  Marcus Brinkmann  <marcus@g10code.de>
+
+	* src/g4wihelp.c (service_error, service_create, service_lookup,
+	service_start, service_stop, service_delete): New functions.
+	* src/inst-dirmngr.nsi: Register and start the service.
+	* src/uninst-dirmngr.nsi: Stop and unregister the service.
+
+	* src/inst-sections.nsi: Add dirmngr as dependency for gnupg2, and
+	w32pth as dependency for dirmngr.
+
+	* src/Makefile.am (gpg4win_pkg_gnupg2_configure): Add
+	--with-pth-prefix.
+
 2007-07-10  Werner Koch  <wk@g10code.com>
 
 	Released 1.1.1.

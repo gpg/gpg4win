@@ -31,7 +31,23 @@ Section "-un.dirmngr"
   Push "${gpg4win_pkg_dirmngr}"
   Call un.SourceDelete
 !else
+  # We need to stop before delete.
+  Var /GLOBAL DirMngrUninstStatus
+  g4wihelp::service_query "DirMngr"
+  StrCpy $DirMngrUninstStatus $R0
+  StrCmp $DirMngrUninstStatus "MISSING" dirmngr_uninst_deleted
+  StrCmp $DirMngrUninstStatus "RUNNING" 0 dirmngr_uninst_stopped
+  # Try to stop the daemon in case it is running.
+  g4wihelp::service_stop "DirMngr"
+dirmngr_uninst_stopped:
+  g4wihelp::service_delete "DirMngr"
+dirmngr_uninst_deleted:
+
   Delete "$INSTDIR\dirmngr.exe"
+  Delete "$INSTDIR\dirmngr-client.exe"
+  Delete "$INSTDIR\dirmngr_ldap.exe"
+  RMDir "$INSTDIR\cache"
+  RMDir "$INSTDIR"
 
 !endif
 SectionEnd
