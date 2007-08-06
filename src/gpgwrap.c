@@ -91,7 +91,7 @@ build_commandline (const char * const *argv)
 	  *(p++) = *(argvp++);
 	}
       *(p++) = '"';
-      *(p++) = ' ';
+      *(p++) = 0;
     }
   *(p++) = 0;
   argv_quoted[i] = NULL;
