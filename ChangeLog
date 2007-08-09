@@ -1,3 +1,7 @@
+2007-08-10  Marcus Brinkmann  <marcus@g10code.de>
+
+	* m4/gpg4win.m4: Check for duplicate packages.
+
 2007-08-06  Werner Koch  <wk@g10code.com>
 
 	* src/gpgwrap.c (build_commandline): Terminate each itenm in the

@@ -147,6 +147,15 @@ AC_DEFUN([GPG4WIN_FIND],
         AC_MSG_RESULT($_gpg4win_file))
   AS_IF([test -z "$_gpg4win_file" -a $_gpg4win_critical = yes],
         AC_MSG_ERROR(could not find sources for $1 in $_gpg4win_dir))
+
+  # Test for duplicate.
+  _gpg4win_found=
+  for _gpg4win_f in $_gpg4win_file; do
+      AS_IF([test "$_gpg4win_found" = yes],
+            AC_MSG_ERROR(found more than one sources for $1 in $_gpg4win_dir))
+      _gpg4win_found=yes
+  done
+
   AS_IF([test ! -z "$_gpg4win_file"],
         [gpg4win_val="$_gpg4win_file"
  	[gpg4win_version=`echo "$gpg4win_val" | sed -e "s,^.*/${_gpg4win_pat}${_gpg4win_suffix}$,\1,"`]
