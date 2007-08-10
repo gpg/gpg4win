@@ -43,6 +43,10 @@ EXTRA_DIST = autogen.sh README.SVN \
 	patches/claws-mail-2.10.0/03-w32-port.patch \
 	patches/claws-mail-2.10.0/04-smime-plugin.patch \
 	patches/claws-mail-2.10.0/99-auto.patch \
+	patches/claws-mail-3.0.0-rc2/01-w32-logo.patch \
+	patches/claws-mail-3.0.0-rc2/02-w32-icon.patch \
+	patches/claws-mail-3.0.0-rc2/03-smime-plugin.patch \
+	patches/claws-mail-3.0.0-rc2/99-auto.patch \
 	patches/gpgol-0.9.91/01-gpgme.patch
 
 copy-news:

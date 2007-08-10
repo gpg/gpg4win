@@ -1,5 +1,12 @@
 2007-08-10  Marcus Brinkmann  <marcus@g10code.de>
 
+	* patches/claws-mail-3.0.0-rc2/01-w32-logo.patch,
+	patches/claws-mail-3.0.0-rc2/02-w32-icon.patch,
+	patches/claws-mail-3.0.0-rc2/03-smime-plugin.patch,
+	patches/claws-mail-3.0.0-rc2/99-auto.patch: New files.
+	* Makefile.am (EXTRA_DIST): Add these patches.
+	* packages/packages.current: Upgrade claws to 3.0.0-rc2.
+
 	* m4/gpg4win.m4: Check for duplicate packages.
 
 2007-08-06  Werner Koch  <wk@g10code.com>
