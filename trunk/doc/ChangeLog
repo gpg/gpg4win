@@ -1,5 +1,24 @@
 2007-08-14  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
 
+	Adding a german description how to build Gpg4win installer
+	on Windows with a virtual Debian Etch.
+
+	* website/pix/debian-install-de/: New. Directory with various
+	screenshots and thumbnails. German.
+
+	* website/build-installer-on-win-de.htm4: New. Describes
+	how to build Gpg4win on Windows. German.
+
+	* website/build-installer-on-win-debian-screenshots-de.htm4: New.
+	Illustrates the Debian installation as VM on Windows with
+	screenshots. All german.
+
+	* website/build-installer-de.htm4: Adding link to
+	build-installer-on-win-de.html and re.phrased the description
+	accordingly with some new information.
+
+2007-08-14  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
+
 	Some general improvements.
 
 	* website/gpg4win.css: Nicer <h3>

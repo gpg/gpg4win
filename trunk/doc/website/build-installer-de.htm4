@@ -6,23 +6,47 @@ m4_define(`DE')
 m4_define(`EN_FILE', `build-installer.html')
 PAGE_START
 
-<h1>Installationspaket herstellen</h1>
-
-Der Bau eines neuen Gpg4win Installationspaketes ist
-weitestgehend automatisiert.
+<h1>Gpg4win Installationspaket selbst herstellen</h1>
 
 <p>
-Was man benötigt: Ein Debian GNU/Linux 'Etch' 4.0 System.
-Dafür ist die nachfolgende Anleitung getestet.
-Prinzipiell sind auch andere Systeme, ggf. mit
-ein bischen Anpassungsarbeit, möglich.<br>
-Desweiteren mindestens 503 MByte Platz auf der
-Festplatte und eine halbwegs schnelle Internetanbindung
-da ca. 60 MByte heruntergeladen werden müssen.
+Der Bau eines neuen Gpg4win Installationspaketes ist
+weitestgehend automatisiert. Dieser Bauprozess läuft innerhalb
+eines GNU/Linux Systems und läßt auch auf Windows-Systemen
+durchführen.
 </p>
 
 <p>
-Typische Aufgaben:
+Was man benötigt:
+</p>
+
+<ul>
+<li> <b>Gpg4win auf GNU/Linux herstellen</b>:
+
+     <p>
+     Ein Debian GNU/Linux 'Etch' 4.0 System.
+     Dafür ist <b>die nachfolgende Anleitung</b> getestet.
+     Prinzipiell sind auch andere GNU/Linux Systeme, ggf. mit
+     ein bischen Anpassungsarbeit, möglich.<br>
+     Desweiteren mindestens 503 MByte Platz auf der
+     Festplatte und eine halbwegs schnelle Internetanbindung
+     da ca. 60 MByte heruntergeladen werden müssen.
+     </p>
+
+<li> <b>Gpg4win auf Windows herstellen</b>:
+     <p>
+     Ein Windows XP SP2.
+     Dafür ist <a href="build-installer-on-win-de.html">die spezielle
+     Windows-Anleitung</a> getestet.
+     Prinzipiell sind auch weitere Windows-Systeme, ggf. mit
+     ein bischen Anpassungsarbeit, möglich.<br>
+     Desweitere mindestens 1,5 GByte Platz auf der
+     Festplatte und eine halbwegs schnelle Internetanbindung
+     da ca. 360 MByte heruntergeladen werden müssen.
+     </p>
+</ul>
+
+<p>
+Typische Aufgaben für die Mitarbeit beim Gpg4win Projekt:
 <ul>
 <li> Einzelkomponenten aktualisieren (gelegentlich, ca. 1-4 Stunden)
 </ul>
