@@ -65,5 +65,21 @@ dirmngr_created:
   g4wihelp::service_start "DirMngr" "1" "\"$INSTDIR\dirmngr.exe\""
 dirmngr_restarted:
 
+
+  # If requested, install the configuration files.
+  ReadRegStr $0 HKCU "Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders" AppData
+  StrCmp $0 "" no_config_dirmngr_files
+  SetOutPath "$0\gnupg"
+
+  g4wihelp::config_fetch "dirmngr.conf"
+  StrCmp $R0 "" no_config_dirmngr_conf
+    CopyFiles $R0 "$0\gnupg\dirmngr.conf"
+  no_config_dirmngr_conf:
+
+  g4wihelp::config_fetch "dirmngr_ldapservers.conf"
+  StrCmp $R0 "" no_config_dirmngr_ldapservers_conf
+    CopyFiles $R0 "$0\gnupg\dirmngr_ldapservers.conf"
+  no_config_dirmngr_ldapservers_conf:
+
 !endif
 SectionEnd
