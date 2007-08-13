@@ -1,5 +1,8 @@
 2007-08-13  Marcus Brinkmann  <marcus@g10code.de>
 
+	* patches/claws-mail-3.0.0-rc2/04-cvs116.patch: New file.
+	* Makefile.am (EXTRA_DIST): Add that patch.
+
 	* NEWS: Add new entries.
 	* README.wine: Remove obsolete file.
 
