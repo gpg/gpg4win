@@ -62,6 +62,17 @@ Section "GnuPG" SEC_gnupg
   SetOutPath "$INSTDIR\gnupg.nls"
   File "${prefix}/share/gnupg/de.mo"
 
+  # If requested, install the configured gpg.conf.
+  Var /GLOBAL ConfigGPGConf
+  g4wihelp::config_fetch "gpg.conf"
+  StrCpy $ConfigGPGConf $R0
+  StrCmp $ConfigGPGConf "" no_config_gpg_conf
+    ReadRegStr $0 HKCU "Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders" AppData
+    StrCmp $0 "" no_config_gpg_conf
+    SetOutPath "$0\gnupg"
+    CopyFiles $ConfigGPGConf "$0\gnupg\gpg.conf"
+  no_config_gpg_conf:
+
 
   WriteRegStr HKLM "Software\GNU\GnuPG" "Install Directory" $INSTDIR
 
