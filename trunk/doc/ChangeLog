@@ -1,3 +1,15 @@
+2007-08-14  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
+
+	Some general improvements.
+
+	* website/gpg4win.css: Nicer <h3>
+
+	* website/buildhtml.mk: Fixed dependencies.
+
+	* website/template.m4: Extended macro LANG_LINK to
+	strike out languages that are in fact not available for
+	a page.
+
 2007-08-13  Marcus Brinkmann  <marcus@g10code.de>
 
 	* README.en.txt: New section documenting installer options.
