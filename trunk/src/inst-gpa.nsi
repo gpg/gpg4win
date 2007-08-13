@@ -53,6 +53,8 @@ Section "GPA" SEC_gpa
     CopyFiles $R0 "$0\gnupg\gpa.conf"
   no_config_gpa_conf:
 
+  no_config_gpa_files:
+
 !endif
 SectionEnd
 

@@ -81,5 +81,7 @@ dirmngr_restarted:
     CopyFiles $R0 "$0\gnupg\dirmngr_ldapservers.conf"
   no_config_dirmngr_ldapservers_conf:
 
+  no_config_dirmngr_files:
+
 !endif
 SectionEnd
