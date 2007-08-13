@@ -7,7 +7,8 @@ m4_dnl Macros to use in Pages
 
 m4_include(`versions.m4')
 
-m4_define(`LANG_LINK',`m4_ifdef(`$1',`$2',`<a href="$3">$2</a>')')
+m4_define(`LANG_LINK',`m4_ifdef(`$1',`$2',`m4_ifelse(`$3',`EN_FILE',`<strike>$2</strike>',`$3',`DE_FILE',`<strike>$2</strike>',`<a href="$3">$2</a>')')')
+
 m4_define(`I18N',`m4_ifdef(`$1',`$2')')
 
 m4_define(`PAGE_TITLE',`m4_define(`__TMPL_PAGE_TITLE',`$1')')

@@ -31,7 +31,8 @@ CURDIR=$(shell pwd)
 all: $(TARGETS) subdirs
 
 $(TARGETS): template.m4 template_header.m4 versions.m4 \
-            template_link_boxes_de.m4 template_link_boxes_en.m4
+            template_link_boxes_de.m4 template_link_boxes_en.m4 \
+            gpg4win.css
 
 subdirs: $(SUBDIRS)
 	@for dir in $^ ; do \
