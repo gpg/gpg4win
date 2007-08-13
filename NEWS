@@ -1,7 +1,32 @@
-# NEWS for gpg4win                                   -*- coding: latin1 -*-
+# NEWS for gpg4win                                   -*- coding: latin-1 -*-
 #
 # The version number given below are for the standard installers as
 # distributed by www.gpg4win.org.
+
+Noteworthy changes in version 1.1.2 (FIXME: DATE)
+------------------------------------------------
+
+(en) Updated the Claws-Mail package.  A couple of serious bugs are fixed.
+(de) Claws-Mail Version wurde aktualisiert, und einige schwere Fehler behoben.
+
+(en) Additional configuration files can be installed with the
+     /C=FILE option.
+(de) Zusätzliche Konfigurationsdateien können mit der Option /C=FILE
+     installiert werden.
+
+~~~~~~~~~~~~~~~
+GnuPG:  1.4.7 
+GnuPG2: 2.0.5
+GPA:    0.7.6
+GPGol:  0.9.91
+GPGee:  1.3.1
+WinPT:  1.2.0
+Claws-Mail: 3.0.0-rc2
+Novices:        1.0.0
+Einsteiger:     2.0.2
+Durchblicker:   2.0.2
+~~~~~~~~~~~~~~~
+
 
 Noteworthy changes in version 1.1.1 (2007-07-10)
 ------------------------------------------------
