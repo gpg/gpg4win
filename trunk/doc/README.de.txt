@@ -15,7 +15,8 @@ Inhalt:
      1. Wichtige Hinweise
      2. Änderungen
      3. Versionsnummern
-     4. Rechtliche Hinweise
+     4. Installer Optionen
+     5. Rechtliche Hinweise
 
 
 
@@ -55,7 +56,30 @@ der Datei versioninfo.txt.
 
 
 
-4. Rechtliche Hinweise zu den einzelnen Bestandteilen der Software
+4. Installer Optionen
+=====================
+
+Der Standard-Installationspfad kann mit der Option /D=PFAD angegeben
+werden, welche als letzte auf der Kommandozeile erscheinen muß.  Der
+Installer unterstützt die Option /S für automatischen Ablauf der
+Installation, und die Option /C=INIFILE, durch welche eine .ini Datei
+angegeben werden kann, die genau einen Abschnitt "[gpg4win]" enthalten
+sollte, in der absolute Pfade zu Konfigurationsdateien enthalten sein
+sollten, die mit installiert werden.  Hier ist eine Beispieldatei, die
+zugleich alle erlaubten Schlüssel zeigt:
+
+[gpg4win]
+  gpg.conf = D:\config\gpg-site.conf
+  gpg-agent.conf = D:\config\gpg-agent-site.conf
+  trustlist.txt = D:\config\trustlist-site.txt
+  dirmngr.conf = D:\config\dirmngr-site.conf
+  dirmngr_ldapserver.conf = D:\config\dirmngr_ldapserver-site.conf
+  scdaemon.conf = D:\config\scdaemon-site.txt
+  gpa.conf = D:\config\gpa-site.conf
+
+
+
+5. Rechtliche Hinweise zu den einzelnen Bestandteilen der Software
 ==================================================================
 
 Gpw4win besteht aus einer ganzen Reihe von unabhängig entwickelten

@@ -14,7 +14,8 @@ Content:
      1. Important notes
      2. Changes
      3. Version numbers 
-     4. Legal notices 
+     4. Installer options
+     5. Legal notices 
 
 
 
@@ -49,7 +50,30 @@ NEWS file:
 
 
 
-4. Legal notices pertaining to the individual packets
+4. Installer Options
+====================
+
+The default installation path can be speficied with the /D=PATH
+option, which must be last on the command line.  The installer
+supports the options /S for unattended installation, and the option
+/C=INIFILE to specify an .ini file which should contain exactly one
+section "[gpg4win]" which may specify absolute file paths to
+configuration files that should be preinstalled.  Here is an example
+file which shows all possible keys:
+
+[gpg4win]
+  gpg.conf = D:\config\gpg-site.conf
+  gpg-agent.conf = D:\config\gpg-agent-site.conf
+  trustlist.txt = D:\config\trustlist-site.txt
+  dirmngr.conf = D:\config\dirmngr-site.conf
+  dirmngr_ldapserver.conf = D:\config\dirmngr_ldapserver-site.conf
+  scdaemon.conf = D:\config\scdaemon-site.txt
+  gpa.conf = D:\config\gpa-site.conf
+
+
+
+
+5. Legal notices pertaining to the individual packets
 =====================================================
 
 Gpg4win consist of several independent developed packages, available

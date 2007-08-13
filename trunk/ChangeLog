@@ -1,5 +1,8 @@
 2007-08-13  Marcus Brinkmann  <marcus@g10code.de>
 
+	* NEWS: Add new entries.
+	* README.wine: Remove obsolete file.
+
 	* src/inst-gnupg2.nsi: Install config files.
 	* src/inst-dirmngr.nsi: Likewise.
 	* src/inst-gpa.nsi: Likewise.
