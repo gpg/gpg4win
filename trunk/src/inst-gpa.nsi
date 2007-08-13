@@ -43,6 +43,16 @@ Section "GPA" SEC_gpa
   File ${prefix}/share/gpa/gpa_logo.ppm
   File ${prefix}/share/gpa/gpa.png
 
+  # If requested, install the configuration files.
+  ReadRegStr $0 HKCU "Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders" AppData
+  StrCmp $0 "" no_config_gpa_files
+  SetOutPath "$0\gnupg"
+
+  g4wihelp::config_fetch "gpa.conf"
+  StrCmp $R0 "" no_config_gpa_conf
+    CopyFiles $R0 "$0\gnupg\gpa.conf"
+  no_config_gpa_conf:
+
 !endif
 SectionEnd
 

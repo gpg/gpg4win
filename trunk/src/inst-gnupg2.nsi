@@ -64,6 +64,32 @@ Section /o "GnuPG2" SEC_gnupg2
 #  SetOutPath "$INSTDIR\gnupg2.nls"
 #  File "${prefix}/share/gnupg2/de.mo"
 
+  # If requested, install the configuration files.
+  ReadRegStr $0 HKCU "Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders" AppData
+  StrCmp $0 "" no_config_gpg_conf_files
+  SetOutPath "$0\gnupg"
+
+  g4wihelp::config_fetch "gpg.conf"
+  StrCmp $R0 "" no_config_gpg2_conf
+    CopyFiles $R0 "$0\gnupg\gpg.conf"
+  no_config_gpg2_conf:
+
+  g4wihelp::config_fetch "gpg-agent.conf"
+  StrCmp $R0 "" no_config_gpg_agent_conf
+    CopyFiles $R0 "$0\gnupg\gpg-agent.conf"
+  no_config_gpg_agent_conf:
+
+  g4wihelp::config_fetch "scdaemon.conf"
+  StrCmp $R0 "" no_config_scdaemon_conf
+    CopyFiles $R0 "$0\gnupg\scdaemon.conf"
+  no_config_scdaemon_conf:
+
+  g4wihelp::config_fetch "trustlist.txt"
+  StrCmp $R0 "" no_config_trustlist_txt
+    CopyFiles $R0 "$0\gnupg\trustlist.txt"
+  no_config_trustlist_txt:
+
+  no_config_gpg_conf_files:
 !endif
 SectionEnd
 
