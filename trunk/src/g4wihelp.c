@@ -577,3 +577,238 @@ service_delete (HWND hwndParent, int string_size, char *variables,
   return;
 }
 
+
+#include <stdio.h>
+
+/* Extract config file parameters.  FIXME: Not particularly robust.
+   We expect some reasonable formatting.  The parser below is very
+   limited.  It expects a command line option /c=FILE or /C=FILE,
+   where FILE must be enclosed in double-quotes if it contains spaces.
+   That file should contain a single section [gpg4win] and KEY=VALUE
+   pairs for each additional configuration file to install.  Comments
+   are supported only on lines by themselves.  VALUE can be quoted in
+   double-quotes, but does not need to be, unless it has whitespace at
+   the beginning or end.  KEY can, for example, be "gpg.conf" (without
+   the quotes).  */
+void
+config_init (HWND hwndParent, int string_size, char *variables, 
+	     stack_t **stacktop, extra_parameters_t *extra,
+	     char **keys, char **values, int max)
+{
+  /* First, parse the command line.  */
+  char *cmdline;
+  char *begin = NULL;
+  char *end = NULL;
+  char mark;
+  char *fname;
+  char *ptr;
+  FILE *conf;
+
+  *keys = NULL;
+  *values = NULL;
+
+  cmdline = getuservariable (INST_CMDLINE);
+
+  mark = (*cmdline == '"') ? (cmdline++, '"') : ' ';
+  while (*cmdline && *cmdline != mark)
+    cmdline++;
+  if (mark == '"' && *cmdline)
+    cmdline++;
+  while (*cmdline && *cmdline == ' ')
+    cmdline++;
+
+  while (*cmdline)
+    {
+      /* We are at the beginning of a new argument.  */
+      if (cmdline[0] == '/' && (cmdline[1] == 'C' || cmdline[1] == 'c')
+	  && cmdline[2] == '=')
+	{
+	  cmdline += 3;
+	  begin = cmdline;
+	}
+
+      while (*cmdline && *cmdline != ' ')
+	{
+	  /* Skip over quoted parts.  */
+	  if (*cmdline == '"')
+	    {
+	      cmdline++;
+	      while (*cmdline && *cmdline != '"')
+		cmdline++;
+	      if (*cmdline)
+		cmdline++;
+	    }
+	  else
+	    cmdline++;
+	}
+      if (begin && !end)
+	{
+	  end = cmdline - 1;
+	  break;
+	}
+    }
+
+  if (!begin || begin > end)
+    return;
+
+  /* Strip quotes.  */
+  if (*begin == '"' && *end == '"')
+    {
+      begin++;
+      end--;
+    }
+  if (begin > end)
+    return;
+
+  fname = malloc (end - begin + 2);
+  if (!fname)
+    return;
+
+  ptr = fname;
+  while (begin <= end)
+    *(ptr++) = *(begin++);
+  *ptr = '\0';
+
+  conf = fopen (fname, "r");
+  free (fname);
+  if (!conf)
+    return;
+
+  while (max - 1 > 0)
+    {
+      char line[256];
+      char *ptr2;
+
+      if (fgets (line, sizeof (line), conf) == NULL)
+	break;
+      ptr = &line[strlen (line)];
+      while (ptr > line && (ptr[-1] == '\n' || ptr[-1] == '\r'
+			    || ptr[-1] == ' ' || ptr[-1] == '\t'))
+	ptr--;
+      *ptr = '\0';
+
+      ptr = line;
+      while (*ptr && (*ptr == ' ' || *ptr == '\t'))
+	ptr++;
+      /* Ignore comment lines.  */
+      /* FIXME: Ignore section markers.  */
+      if (*ptr == '\0' || *ptr == ';' || *ptr == '[')
+	continue;
+      begin = ptr;
+      while (*ptr && *ptr != '=' && *ptr != ' ' && *ptr != '\t')
+	ptr++;
+      end = ptr - 1;
+      while (*ptr && (*ptr == ' ' || *ptr == '\t'))
+	ptr++;
+      if (*ptr != '=')
+	continue;
+      ptr++;
+
+      if (begin > end)
+	continue;
+
+      /* We found a key.  */
+      *keys = malloc (end - begin + 2);
+      if (!keys)
+	return;
+      ptr2 = *keys;
+      while (begin <= end)
+	*(ptr2++) = *(begin++);
+      *ptr2 = '\0';
+
+      *values = NULL;
+
+      while (*ptr && (*ptr == ' ' || *ptr == '\t'))
+	ptr++;
+      begin = ptr;
+      /* In this case, end points to the byte after the value, which
+	 is OK because that is '\0'.  */
+      end = &line[strlen (line)];
+      if (begin > end)
+	begin = end;
+
+      /* Strip quotes.  */
+      if (*begin == '"' && end[-1] == '"')
+	{
+	  begin++;
+	  end--;
+	  *end = '\0';
+	}
+      if (begin > end)
+	return;
+
+      *values = malloc (end - begin + 1);
+      ptr2 = *values;
+      while (begin <= end)
+	*(ptr2++) = *(begin++);
+
+      keys++;
+      values++;
+      max--;
+    }
+
+  fclose (conf);
+  *keys = NULL;
+  *values = NULL;
+}
+
+
+void __declspec(dllexport) 
+config_fetch (HWND hwndParent, int string_size, char *variables, 
+	      stack_t **stacktop, extra_parameters_t *extra)
+{
+  SC_HANDLE service;
+  const char *result = NULL;
+  char key[256];
+#define MAX_KEYS 64
+  int err = 0;
+  static int initialised = 0;
+  static char *keys[MAX_KEYS];
+  static char *values[MAX_KEYS];
+  int i;
+
+  g_hwndParent = hwndParent;
+  EXDLL_INIT();
+
+  /* The expected stack layout: key.  */
+  if (popstring (key, sizeof (key)))
+    err = 1;
+  if (err)
+    {
+      setuservariable (INST_R0, "");
+      return;
+    }
+
+  if (initialised == 0)
+    {
+      initialised = 1;
+      config_init (hwndParent, string_size, variables, 
+		   stacktop, extra, keys, values, MAX_KEYS);
+    }
+
+#if 0
+  MessageBox(g_hwndParent, "Configuration File:", 0, MB_OK);
+  i = 0;
+  while (keys[i])
+    {
+      char buf[256];
+      sprintf (buf, "%s=%s\r\n", keys[i], values[i]);
+      MessageBox(g_hwndParent, buf, 0, MB_OK);
+      i++;
+    }
+#endif
+
+  i = 0;
+  while (keys[i])
+    {
+      if (!strcmp (keys[i], key))
+	{
+	  setuservariable (INST_R0, values[i]);
+	  return;
+	}
+      i++;
+    }
+  
+  setuservariable (INST_R0, "");
+  return;
+}

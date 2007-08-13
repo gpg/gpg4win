@@ -1,3 +1,8 @@
+2007-08-13  Marcus Brinkmann  <marcus@g10code.de>
+
+	* src/g4wihelp.c (config_init, config_fetch): New functions.
+	* src/inst-gnupg.nsi: Install gpg.conf AppData if configured.
+
 2007-08-10  Marcus Brinkmann  <marcus@g10code.de>
 
 	* patches/claws-mail-3.0.0-rc2/01-w32-logo.patch,
