@@ -35,7 +35,7 @@ Was man benötigt:
 <li> <b>Gpg4win auf Windows herstellen</b>:
      <p>
      Ein Windows XP SP2.
-     Dafür ist <a href="build-installer-on-win-de.html">die spezielle
+     Dafür ist <a href="build-installer-on-w32-de.html">die spezielle
      Windows-Anleitung</a> getestet.
      Prinzipiell sind auch weitere Windows-Systeme, ggf. mit
      ein bischen Anpassungsarbeit, möglich.<br>
