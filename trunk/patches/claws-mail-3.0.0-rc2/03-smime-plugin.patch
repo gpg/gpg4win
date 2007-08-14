@@ -7,6 +7,10 @@ exit $?
 	* Add the S/MIME 0.7.1 plugin from claws-mail-extra-plugins-2.10.0
 	straight to the source.  This makes building it so much simpler.
 
+2007-08-14  Marcus Brinkmann  <marcus@g10code.de>
+
+	* We need to bump the license string to "GPL3+" to make it load.
+
 diff -rupN claws-mail-3.0.0-rc2-after-02/configure.ac claws-mail-3.0.0-rc2/configure.ac
 --- claws-mail-3.0.0-rc2-after-02/configure.ac	2007-08-10 12:59:16.000000000 +0200
 +++ claws-mail-3.0.0-rc2/configure.ac	2007-08-10 16:34:59.000000000 +0200
@@ -253,7 +257,7 @@ diff -rupN claws-mail-3.0.0-rc2-after-02/src/plugins/smime/plugin.c claws-mail-3
 +
 +const gchar *plugin_licence(void)
 +{
-+	return "GPL";
++	return "GPL3+";
 +}
 +
 +const gchar *plugin_version(void)
