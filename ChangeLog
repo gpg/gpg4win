@@ -1,5 +1,19 @@
 2007-08-14  Marcus Brinkmann  <marcus@g10code.de>
 
+	* src/g4wihelp.c (service_create): Auto start service, install as
+	local service.
+	(service_start): Set argv to NULL if argc is zero.
+	(service_stop): Wait until service is actually stopped.  Implement
+	the whole logic when to stop and when to wait.
+	* src/installer.nsi: Print warning about shutting down dirmngr.
+	Shutdown dirmngr.
+	* src/inst-dirmngr.nsi: Remove code refactored into service_stop.
+	Do not pass any arguments when starting the service.  Use
+	CreateDirectory instead of SetOutPath.
+	* src/uninst-dirmngr.nsi: Remove code factored into service_stop.
+	* src/inst-gnupg.nsi, src/inst-gnupg2.nsi, src/inst-gpa.nsi: Use
+	CreateDirectory instead SetOutPath.
+
 	* patches/claws-mail-3.0.0-rc2/03-smime-plugin.patch: Change
 	license string to "GPL3+" to make Claws load it.
 

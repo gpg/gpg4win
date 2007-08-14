@@ -46,7 +46,7 @@ Section "GPA" SEC_gpa
   # If requested, install the configuration files.
   ReadRegStr $0 HKCU "Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders" AppData
   StrCmp $0 "" no_config_gpa_files
-  SetOutPath "$0\gnupg"
+  CreateDirectory "$0\gnupg"
 
   g4wihelp::config_fetch "gpa.conf"
   StrCmp $R0 "" no_config_gpa_conf

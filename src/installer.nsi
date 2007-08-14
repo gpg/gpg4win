@@ -1,5 +1,5 @@
 # installer.nsi - Installer for GnuPG 4 Windows.    -*- coding: latin-1; -*-
-# Copyright (C) 2005 g10 Code GmbH
+# Copyright (C) 2005, 2007 g10 Code GmbH
 # 
 # This file is part of GPG4Win.
 # 
@@ -391,12 +391,16 @@ Function PrintCloseOtherApps
     IfFileExists $INSTDIR\gpa.exe   print_warning
     IfFileExists $INSTDIR\gpgol.dll print_warning
     IfFileExists $INSTDIR\gpgee.dll print_warning
+    IfFileExists $INSTDIR\dirmngr.exe print_warning
     Return
    print_warning:
     MessageBox MB_OK|MB_ICONEXCLAMATION "$(T_CloseOtherApps)"
     IfFileExists $INSTDIR\winpt.exe 0 +3
       MessageBox MB_OK "$(T_ShuttingDownWinPT)"
       ExecWait '"$INSTDIR\winpt.exe" --stop'
+    IfFileExists $INSTDIR\dirmngr.exe 0 +3
+      MessageBox MB_OK "$(T_ShuttingDownDirMngr)"
+      g4wihelp::service_stop "DirMngr"
    leave:
 FunctionEnd
 
@@ -500,6 +504,8 @@ LangString T_CloseOtherApps ${LANG_ENGLISH} \
     will be required then."
 LangString T_ShuttingDownWinPT ${LANG_ENGLISH} \
    "Trying to shutdown a possible running instance of WinPT."
+LangString T_ShuttingDownDirMngr ${LANG_ENGLISH} \
+   "Trying to shutdown a possible running instance of DirMngr."
 
 
 # FIXME: The GetAfterChar function comes from the NSIS wiki.
