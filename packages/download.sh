@@ -2,14 +2,14 @@
 # download.sh - Download source and binary packages for GPG4Win.
 # Copyright (C) 2005, 2007 g10 Code GmbH
 # 
-# This file is part of GPG4Win.
+# This file is part of Gpg4win.
 # 
-# GPG4Win is free software; you can redistribute it and/or modify
+# Gpg4win is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 of the License, or
 # (at your option) any later version.
 # 
-# GPG4Win is distributed in the hope that it will be useful,
+# Gpg4win is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
@@ -41,16 +41,14 @@ usage()
 Usage: $0 [OPTIONS]
 Options:
 	[--force]
-	[--keep-list]
-	[--no-sig-check]
 EOF
     exit $1
 }
 
 
 force=no
-keep_list=no
-sig_check=yes
+#keep_list=no
+#sig_check=yes
 while [ $# -gt 0 ]; do
     case "$1" in
 	--*=*)
@@ -66,9 +64,11 @@ while [ $# -gt 0 ]; do
 	    force=yes
 	    ;;
         --keep-list)
-            keep_list=yes
+            # Now a dummy
+            # keep_list=yes
             ;;
         --no-sig-check)
+            # Now a dummy
             sig_check=no
             ;;
 	*)
@@ -81,22 +81,29 @@ done
 
 WGET=wget
 
-url="http://www.gpg4win.org"
-if [ "$keep_list" = "no" ]; then
-  echo "downloading packages list from \`$url'."
-  if ! ${WGET} -N -q $url/packages.current{,.sig} ; then
-      echo "download of packages list failed." >&2
-      exit 1
-  fi
-fi
-
-if [ "$sig_ckeck" = yes ]; then
- if ! gpgv --keyring ./packages.keys packages.current.sig packages.current
-   then
-    echo "list of packages is not usable." >&2
-    exit 1
- fi
-fi
+# We used to download the packages.current list but it turned out that
+# this is too problematic: As there is no history of these files it is
+# not possible to build and older version of gpg4win using the online
+# version of the list.  Thus we keep the list now with the installer
+# and in case a package update is required we will post an updated
+# list to the mailing list.
+#
+#url="http://www.gpg4win.org"
+#if [ "$keep_list" = "no" ]; then
+#  echo "downloading packages list from \`$url'."
+#  if ! ${WGET} -N -q $url/packages.current{,.sig} ; then
+#      echo "download of packages list failed." >&2
+#      exit 1
+#  fi
+#fi
+#
+#if [ "$sig_ckeck" = yes ]; then
+# if ! gpgv --keyring ./packages.keys packages.current.sig packages.current
+#   then
+#    echo "list of packages is not usable." >&2
+#    exit 1
+# fi
+#fi
 
 lnr=0
 name=

@@ -1,3 +1,12 @@
+2007-08-14  Werner Koch  <wk@g10code.com>
+
+	* packages/Makefile.am (packages.current.sig, upload): Remove.
+	(EXTRA_DIST): Remove packages.key.  Add packages.current.
+
+	* packages/download.sh: Remove online downloading of
+	packages.current.
+	* packages/packages.current: Fix comment.
+
 2007-08-13  Marcus Brinkmann  <marcus@g10code.de>
 
 	* patches/claws-mail-3.0.0-rc2/04-cvs116.patch: New file.

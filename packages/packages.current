@@ -1,11 +1,6 @@
 # packages.current - list of current packages for use with gpg4win -*- sh -*-
 #
-#
-# This list as well as its corresponding signature file are intended
-# to be downloaded by the download.sh script of gpg4win.  The
-# canonical URL of this file is http://www.gpg4win.org/packages.org .
-#
-# The download script will then process the statements here to
+# The download script processes the statements here to
 # actually download the packages.  The syntax is trivial:
 #
 # If the first non whitespace character of a line is #, the line is
@@ -15,9 +10,7 @@
 # line will be appended to the current base URL (with a / as
 # delimiter).  The statement "chk" is followed by the SHA1 checksum of
 # the last file.
-#
-# Note: You may use "make upload" to copy this file to its canonical place.
-#
+
 
 #
 # GNU
@@ -74,7 +67,7 @@ chk  b9faae10efae552f23c213891a3ed8187cb7d017
 #
 # Claws
 #
-# (Kept on our own mirror due to Soruceforge peculiarities.)
+# (Kept on our own mirror due to Sourceforge peculiarities.)
 server ftp://ftp.g10code.com/mirrors/claws
 
 #file  sylpheed-claws-2.4.0.tar.bz2
