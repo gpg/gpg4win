@@ -1,5 +1,12 @@
 2007-08-14  Marcus Brinkmann  <marcus@g10code.de>
 
+	* src/g4wihelp.c (config_lookup, config_fetch_bool): New functions.
+	* src/inst-sections.nsi (CalcDefaults): New function.
+	(.onInit): Call CalcDefaults.
+	* src/inst-sections.nsi (CalcDepends): New function.  Run it once.
+	Support auto-config for link selection.
+	* src/installer-finish.nsi: Support auto-config for start menu folder.
+
 	* src/g4wihelp.c (service_create): Auto start service, install as
 	local service.
 	(service_start): Set argv to NULL if argc is zero.

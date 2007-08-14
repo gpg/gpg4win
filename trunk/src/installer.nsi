@@ -243,7 +243,7 @@ LangString T_NoKeyManager ${LANG_ENGLISH} \
 Function CustomPageOptions
   !insertmacro MUI_HEADER_TEXT "$(T_InstallOptions)" "$(T_InstallOptLinks)"
 
-  # Note, that the default selection is done in the ini file
+  # Note that the default selection is done in the ini file.
   !insertmacro MUI_INSTALLOPTIONS_WRITE "installer-options.ini" \
 	"Field 1" "Text"  "$(T_InstOptLabelA)"
   !insertmacro MUI_INSTALLOPTIONS_WRITE "installer-options.ini" \

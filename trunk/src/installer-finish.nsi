@@ -50,6 +50,9 @@ Section Uninstall
   # Delete the menu entries and any empty parent menus
   #---------------------------------------------------
   !insertmacro MUI_STARTMENU_GETFOLDER Application $MYTMP
+  g4wihelp::config_fetch "inst_start_menu_folder"
+  StrCmp $R0 "" +2
+  StrCpy $MYTMP $R0
   Delete "$SMPROGRAMS\$MYTMP\*.lnk"
   StrCpy $MYTMP "$SMPROGRAMS\$MYTMP"
   startMenuDeleteLoop:

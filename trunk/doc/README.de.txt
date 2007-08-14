@@ -64,11 +64,35 @@ werden, welche als letzte auf der Kommandozeile erscheinen muß.  Der
 Installer unterstützt die Option /S für automatischen Ablauf der
 Installation, und die Option /C=INIFILE, durch welche eine .ini Datei
 angegeben werden kann, die genau einen Abschnitt "[gpg4win]" enthalten
-sollte, in der absolute Pfade zu Konfigurationsdateien enthalten sein
-sollten, die mit installiert werden.  Hier ist eine Beispieldatei, die
-zugleich alle erlaubten Schlüssel zeigt:
+sollte.  In dieser Datei können diverse Einstellungen vorgenommen
+werden, inklusive absolute Pfade zu Konfigurationsdateien, die mit
+installiert werden.  Die meisten Einstellungen verändern nur die
+Standardeinstellungen.  Ausnahmen sind unten dokumentiert.  Hier ist
+eine Beispieldatei, die zugleich alle erlaubten Schlüssel zeigt:
 
 [gpg4win]
+  ; Installer Einstellungen.  Weg- oder leer-lassen fuer Standard.
+  inst_gnupg2 = false
+  inst_gpgol = true
+  inst_gpa = true
+  inst_winpt = true
+  inst_gpgee = true
+  inst_claws_mail = false
+  inst_man_novice_de = true
+  inst_man_novice_en = true
+  inst_man_advanced_de = true
+  inst_man_advanced_en = true
+
+  ; Die Stellen, an denen Verknüpfungen erzeugt werden sollen.
+  inst_start_menu = true
+  inst_desktop = false
+  inst_quick_launch_bar = false
+
+  ; Im Gegensatz zu den anderen Optionen überschreibt diese Option die
+  ; Einstellung des Benutzers im Installer.
+  inst_start_menu_folder = GnuPG for Windows
+
+  ; Standard-Konfigurationsdateien.
   gpg.conf = D:\config\gpg-site.conf
   gpg-agent.conf = D:\config\gpg-agent-site.conf
   trustlist.txt = D:\config\trustlist-site.txt
