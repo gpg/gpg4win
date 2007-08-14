@@ -321,11 +321,13 @@ service_create (HWND hwndParent, int string_size, char *variables,
 
   service = CreateService (sc, service_name, display_name,
 			   SERVICE_ALL_ACCESS, SERVICE_WIN32_OWN_PROCESS,
-			   /* FIXME: As long as we are debugging... */
-			   SERVICE_DEMAND_START /* SERVICE_AUTO_START */,
+			   /* Use SERVICE_DEMAND_START for testing.
+			      FIXME: Currently not configurable by caller.  */
+			   SERVICE_AUTO_START,
 			   SERVICE_ERROR_NORMAL, program,
 			   NULL, NULL, NULL,
-			   NULL /* FIXME: "NT AUTHORITY\LocalService"? */,
+			   /* FIXME: Currently not configurable by caller.  */
+			   "NT AUTHORITY\\LocalService",
 			   NULL);
   if (service == NULL)
     {
@@ -485,7 +487,7 @@ service_start (HWND hwndParent, int string_size, char *variables,
   if (service == NULL)
     return;
 
-  err = StartService (service, argc, argv);
+  err = StartService (service, argc, argc == 0 ? NULL : argv);
   if (err == 0)
     {
       service_error ("StartService");
@@ -508,6 +510,8 @@ service_stop (HWND hwndParent, int string_size, char *variables,
   char service_name[256];
   int err = 0;
   SERVICE_STATUS status;
+  DWORD timeout = 10000;	/* 10 seconds.  */
+  DWORD start_time;
 
   g_hwndParent = hwndParent;
   EXDLL_INIT();
@@ -525,15 +529,51 @@ service_stop (HWND hwndParent, int string_size, char *variables,
   if (service == NULL)
     return;
 
-  err = ControlService (service, SERVICE_CONTROL_STOP, &status);
+  err = QueryServiceStatus (service, &status);
   if (err == 0)
     {
-      service_error ("ControlService");
+      service_error ("QueryService");
       CloseServiceHandle (service);
       return;
     }
-  CloseServiceHandle (service);
 
+  if (status.dwCurrentState != SERVICE_STOPPED
+      && status.dwCurrentState != SERVICE_STOP_PENDING)
+    {
+      err = ControlService (service, SERVICE_CONTROL_STOP, &status);
+      if (err == 0)
+	{
+	  service_error ("ControlService");
+	  CloseServiceHandle (service);
+	  return;
+	}
+    }
+
+  start_time = GetTickCount ();
+  while (status.dwCurrentState != SERVICE_STOPPED)
+    {
+      Sleep (1000);	/* One second.  */
+      if (!QueryServiceStatus (service, &status))
+	{
+	  service_error ("QueryService");
+	  CloseServiceHandle (service);
+	  return;
+	}
+      if (status.dwCurrentState == SERVICE_STOPPED)
+	break;
+
+      if (GetTickCount () - start_time > timeout)
+	{
+	  char buf[1024];
+	  snprintf (buf, sizeof (buf) - 1,
+		    "time out waiting for service %s to stop\r\n",
+		    service_name);
+	  MessageBox (g_hwndParent, buf, 0, MB_OK);
+	  setuservariable (INST_R0, "1");
+	  return;
+	}
+    }
+  CloseServiceHandle (service);
   setuservariable (INST_R0, "0");
   return;
 }

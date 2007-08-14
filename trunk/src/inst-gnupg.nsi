@@ -69,7 +69,7 @@ Section "GnuPG" SEC_gnupg
   StrCmp $ConfigGPGConf "" no_config_gpg_conf
     ReadRegStr $0 HKCU "Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders" AppData
     StrCmp $0 "" no_config_gpg_conf
-    SetOutPath "$0\gnupg"
+    CreateDirectory "$0\gnupg"
     CopyFiles $ConfigGPGConf "$0\gnupg\gpg.conf"
   no_config_gpg_conf:
 

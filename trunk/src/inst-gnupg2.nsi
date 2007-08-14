@@ -67,7 +67,7 @@ Section /o "GnuPG2" SEC_gnupg2
   # If requested, install the configuration files.
   ReadRegStr $0 HKCU "Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders" AppData
   StrCmp $0 "" no_config_gpg_conf_files
-  SetOutPath "$0\gnupg"
+  CreateDirectory "$0\gnupg"
 
   g4wihelp::config_fetch "gpg.conf"
   StrCmp $R0 "" no_config_gpg2_conf

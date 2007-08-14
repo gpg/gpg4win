@@ -37,11 +37,6 @@ Section "-dirmngr" SEC_dirmngr
   g4wihelp::service_query "DirMngr"
   StrCpy $DirMngrStatus $R0
 
-  StrCmp $DirMngrStatus "MISSING" dirmngr_stopped
-  # Try to stop the daemon in case it is running.
-  g4wihelp::service_stop "DirMngr"
-dirmngr_stopped:
-
   File "${prefix}/bin/dirmngr.exe"
   File "${prefix}/bin/dirmngr-client.exe"
   File "${prefix}/libexec/dirmngr_ldap.exe"
@@ -51,25 +46,22 @@ dirmngr_stopped:
   # different.  FIXME.
   CreateDirectory "$INSTDIR\cache"
 
-  # FIXME: Error checking.  Also, check if --service really reaches
-  # the service both times.
-
   StrCmp $DirMngrStatus "MISSING" 0 dirmngr_created
     # Create the service.
-    g4wihelp::service_create "DirMngr" "DirMngr" '"$INSTDIR\dirmngr.exe" --service'
-dirmngr_created:
+    g4wihelp::service_create "DirMngr" "DirMngr" \
+                             '"$INSTDIR\dirmngr.exe" --service'
+  dirmngr_created:
 
-  # We only start the dirmngr if it was running before.
-  StrCmp $DirMngrStatus "RUNNING" 0 dirmngr_restarted
   # Start the service.
-  g4wihelp::service_start "DirMngr" "1" "\"$INSTDIR\dirmngr.exe\""
-dirmngr_restarted:
-
+  # FIXME: This does not work.  Luckily, it is also not needed.
+  # g4wihelp::service_start "DirMngr" "2" '"$INSTDIR\dirmngr.exe"' "--service"
+  # This works.
+  g4wihelp::service_start "DirMngr" 0
 
   # If requested, install the configuration files.
   ReadRegStr $0 HKCU "Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders" AppData
   StrCmp $0 "" no_config_dirmngr_files
-  SetOutPath "$0\gnupg"
+  CreateDirectory "$0\gnupg"
 
   g4wihelp::config_fetch "dirmngr.conf"
   StrCmp $R0 "" no_config_dirmngr_conf
