@@ -156,6 +156,16 @@ stamps/stamp-$(1)-05-stow: stamps/stamp-$(1)-04-install
 
 stamps/stamp-final-$(1): stamps/stamp-$(1)-05-stow
 	touch stamps/stamp-final-$(1)
+
+.PHONY : clean-$(1)
+clean-$(1):
+	($(call SETVARS,$(1));				\
+	 (cd $(ipdir) &&				\
+	  ($(STOW) -D "$$$${pkg_version}";		\
+	   rm -fR "$$$${pkg_version}"));		\
+	 rm -fR "$$$${pkgsdir}" "$$$${pkgbdir}")
+	rm -f stamps/stamp-final-$(1) stamps/stamp-$(1)-*
+
 endef
 
 
@@ -200,6 +210,16 @@ stamps/stamp-$(1)-05-stow: stamps/stamp-$(1)-04-install
 
 stamps/stamp-final-$(1): stamps/stamp-$(1)-05-stow
 	touch stamps/stamp-final-$(1)
+
+.PHONY : clean-$(1)
+clean-$(1):
+	($(call SETVARS,$(1));				\
+	 (cd $(ipdir) &&				\
+	  ($(STOW) -D "$$$${pkg_version}";		\
+	   rm -fR "$$$${pkg_version}"));		\
+	 rm -fR "$$$${pkgsdir}"
+	rm -f stamps/stamp-final-$(1) stamps/stamp-$(1)-*
+
 endef
 
 
@@ -241,6 +261,15 @@ stamps/stamp-$(1)-03-stow-dev: stamps/stamp-$(1)-02-stow
 
 stamps/stamp-final-$(1): stamps/stamp-$(1)-03-stow-dev
 	touch stamps/stamp-final-$(1)
+
+.PHONY : clean-$(1)
+clean-$(1):
+	($(call SETVARS,$(1));				\
+	 cd $(ipdir) &&					\
+	 ($(STOW) -D "$$$${pkg_version}";		\
+	   rm -fR "$$$${pkg_version}"))
+	rm -f stamps/stamp-final-$(1) stamps/stamp-$(1)-*
+
 endef
 
 
