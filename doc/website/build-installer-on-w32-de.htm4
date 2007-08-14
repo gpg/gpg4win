@@ -3,7 +3,7 @@ m4_include(`template.m4')
 m4_dnl $Id$
 
 m4_define(`DE')
-m4_dnl m4_define(`EN_FILE', `build-installer-on-win.html')
+m4_dnl m4_define(`EN_FILE', `build-installer-on-w32.html')
 PAGE_START
 
 <h1>Bau von Gpg4win unter Windows XP/SP2 via Debian 'Etch' in QEMU</h1>
@@ -16,7 +16,7 @@ mithilfe eines virtuellen GNU/Linux-Systems.
 <p>
 Tipps: <a href="build-installer-de.html">Bauen unter
 GNU/Linux etwas detaillierter beschrieben</a> und
-<a href="build-installer-on-win-debian-screenshots-de.html">Installation von Debian GNU/Linux 'Etch' 4.0 innerhalb einer virtuellen QEMU-Maschine als Screenshot-Serie illustriert</a>.
+<a href="build-installer-on-w32-debian-screenshots-de.html">Installation von Debian GNU/Linux 'Etch' 4.0 innerhalb einer virtuellen QEMU-Maschine als Screenshot-Serie illustriert</a>.
 </p>
 
 <h2>Inhalt</h2>
@@ -361,7 +361,7 @@ GNU/Linux etwas detaillierter beschrieben</a> und
   sh download.sh
   cd ..
   ./autogen.sh
-  ./configure --enable-maintainer-mode --host=i586-mingw32msvc
+  ./autogen.sh --build-32 --enable-maintainer-mode
   make
 
 </pre>

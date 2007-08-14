@@ -1,3 +1,13 @@
+2007-08-14  Werner Koch  <wk@g10code.com>
+
+	* website/build-installer-on-w32-de.htm4: Use autogen.sh
+	--build-w32 instead of configure
+
+	* website/build-installer-on-win-de.htm4: Rename to
+	build-installer-on-w32-debian-screenshots-de.htm4.
+	* website/build-installer-on-win-de.htm4: Rename to
+	build-installer-on-w32-de.htm4.  Changed all references.
+
 2007-08-14  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
 
 	Adding a german description how to build Gpg4win installer

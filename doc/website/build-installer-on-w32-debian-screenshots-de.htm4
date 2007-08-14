@@ -3,14 +3,14 @@ m4_include(`template.m4')
 m4_dnl $Id$
 
 m4_define(`DE')
-m4_dnl m4_define(`EN_FILE', `build-installer-on-win-debian-screenshots.html')
+m4_dnl m4_define(`EN_FILE', `build-installer-on-w32-debian-screenshots.html')
 PAGE_START
 
 <h2>Installation von Debian GNU/Linux 'Etch' 4.0 innerhalb einer
     virtuellen QEMU-Maschine</h2>
 
 <p>
-<a href="build-installer-on-win-de.html">Zurück zur
+<a href="build-installer-on-w32-de.html">Zurück zur
 Gpg4win-Bauanleitung für Windows</a>
 </p>
 
