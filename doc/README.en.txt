@@ -57,11 +57,35 @@ The default installation path can be speficied with the /D=PATH
 option, which must be last on the command line.  The installer
 supports the options /S for unattended installation, and the option
 /C=INIFILE to specify an .ini file which should contain exactly one
-section "[gpg4win]" which may specify absolute file paths to
-configuration files that should be preinstalled.  Here is an example
-file which shows all possible keys:
+section "[gpg4win]".  This section contains various installer settings
+and absolute file paths to configuration files that should be
+preinstalled.  Most options just set a different default value.
+Excetions are documented below.  Here is an example file which shows
+all possible keys:
 
 [gpg4win]
+  ; Installer settings.  Do not define or leave empty for defaults.
+  inst_gnupg2 = false
+  inst_gpgol = true
+  inst_gpa = true
+  inst_winpt = true
+  inst_gpgee = true
+  inst_claws_mail = false
+  inst_novice_manual_en = true
+  inst_novice_manual_de = true
+  inst_advanced_manual_de = true
+
+  ; Where to install short-cuts.
+  inst_start_menu = true
+  inst_desktop = false
+  inst_quick_launch_bar = false
+
+  ; Contrary to other settings in this file, the start menu folder
+  ; setting here will override the user selection at installation
+  ; time.
+  inst_start_menu_folder = GnuPG for Windows
+
+  ; Additional configuration files to install.
   gpg.conf = D:\config\gpg-site.conf
   gpg-agent.conf = D:\config\gpg-agent-site.conf
   trustlist.txt = D:\config\trustlist-site.txt
@@ -70,6 +94,7 @@ file which shows all possible keys:
   scdaemon.conf = D:\config\scdaemon-site.txt
   gpa.conf = D:\config\gpa-site.conf
 
+  
 
 
 

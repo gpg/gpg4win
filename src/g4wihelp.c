@@ -631,9 +631,7 @@ service_delete (HWND hwndParent, int string_size, char *variables,
    the beginning or end.  KEY can, for example, be "gpg.conf" (without
    the quotes).  */
 void
-config_init (HWND hwndParent, int string_size, char *variables, 
-	     stack_t **stacktop, extra_parameters_t *extra,
-	     char **keys, char **values, int max)
+config_init (char **keys, char **values, int max)
 {
   /* First, parse the command line.  */
   char *cmdline;
@@ -793,19 +791,52 @@ config_init (HWND hwndParent, int string_size, char *variables,
 }
 
 
-void __declspec(dllexport) 
-config_fetch (HWND hwndParent, int string_size, char *variables, 
-	      stack_t **stacktop, extra_parameters_t *extra)
+char *
+config_lookup (char *key)
 {
-  SC_HANDLE service;
-  const char *result = NULL;
-  char key[256];
-#define MAX_KEYS 64
-  int err = 0;
+#define MAX_KEYS 128
   static int initialised = 0;
   static char *keys[MAX_KEYS];
   static char *values[MAX_KEYS];
   int i;
+
+  if (initialised == 0)
+    {
+      initialised = 1;
+      config_init (keys, values, MAX_KEYS);
+
+#if 0
+      MessageBox(g_hwndParent, "Configuration File:", 0, MB_OK);
+      i = 0;
+      while (keys[i])
+	{
+	  char buf[256];
+	  sprintf (buf, "%s=%s\r\n", keys[i], values[i]);
+	  MessageBox (g_hwndParent, buf, 0, MB_OK);
+	  i++;
+	}
+#endif
+    }
+
+  i = 0;
+  while (keys[i])
+    {
+      if (!strcmp (keys[i], key))
+	return values[i];
+      i++;
+    }
+  
+  return NULL;
+}
+
+
+void __declspec(dllexport) 
+config_fetch (HWND hwndParent, int string_size, char *variables, 
+	      stack_t **stacktop, extra_parameters_t *extra)
+{
+  char key[256];
+  int err = 0;
+  char *value;
 
   g_hwndParent = hwndParent;
   EXDLL_INIT();
@@ -819,36 +850,47 @@ config_fetch (HWND hwndParent, int string_size, char *variables,
       return;
     }
 
-  if (initialised == 0)
+  value = config_lookup (key);
+
+  setuservariable (INST_R0, value == NULL ? "" : value);
+  return;
+}
+
+
+void __declspec(dllexport) 
+config_fetch_bool (HWND hwndParent, int string_size, char *variables, 
+		   stack_t **stacktop, extra_parameters_t *extra)
+{
+  char key[256];
+  int err = 0;
+  char *value;
+  int result;
+
+  g_hwndParent = hwndParent;
+  EXDLL_INIT();
+
+  /* The expected stack layout: key.  */
+  if (popstring (key, sizeof (key)))
+    err = 1;
+  if (err)
     {
-      initialised = 1;
-      config_init (hwndParent, string_size, variables, 
-		   stacktop, extra, keys, values, MAX_KEYS);
+      setuservariable (INST_R0, "");
+      return;
     }
 
-#if 0
-  MessageBox(g_hwndParent, "Configuration File:", 0, MB_OK);
-  i = 0;
-  while (keys[i])
+  value = config_lookup (key);
+  if (value == NULL || *value == '\0')
     {
-      char buf[256];
-      sprintf (buf, "%s=%s\r\n", keys[i], values[i]);
-      MessageBox(g_hwndParent, buf, 0, MB_OK);
-      i++;
-    }
-#endif
-
-  i = 0;
-  while (keys[i])
-    {
-      if (!strcmp (keys[i], key))
-	{
-	  setuservariable (INST_R0, values[i]);
-	  return;
-	}
-      i++;
+      setuservariable (INST_R0, "");
+      return;
     }
   
-  setuservariable (INST_R0, "");
+  result = 0;
+  if (!strcasecmp (value, "true")
+      || !strcasecmp (value, "yes")
+      || atoi (value) != 0)
+    result = 1;
+
+  setuservariable (INST_R0, result == 0 ? "0" : "1");
   return;
 }
