@@ -1,0 +1,156 @@
+m4_dnl -*-html-*-
+m4_include(`template.m4')
+m4_dnl $Id$
+
+m4_define(`EN')
+m4_dnl m4_define(`DE_FILE', `localize-gpg4win-de.html')
+PAGE_START
+
+<h1>How to translate all of Gpg4win into your language</h1>
+
+<p>
+Gpg4win consists out of various modules. Some to already support
+numerous languages, some only few.
+</p>
+
+<p>
+Here, you find a description on how to translate each of the
+modules or just how to check whether it supports your language.
+</p>
+
+<p>
+Note, that english is always the default base for any translation.
+</p>
+
+<p>
+In most cases the <a href="http://www.gnu.org/software/gettext/">GNU gettext</a> technology is applied for translations
+which more or less means to edit .po files. This is a very common
+technology and various graphical tools to aid the translation are available (e.g. <a href="http://www.poedit.net/">poedit</a> or
+<a href="http://kbabel.kde.org/">KBabel</a>). However, a simple text editor will do the job as well. For many
+cases it makes sense if the editor supports UTF8.
+Your language identifier is the language code (<a href="http://en.wikipedia.org/wiki/ISO_639-1">ISO 639-1</a>)
+and optionally combined with
+contry code (<a href="http://en.wikipedia.org/wiki/ISO_3166">ISO 3166</a>).
+E.g. "de" is german language, "de_DE" is german language as used in Germany and
+"de_CH" is german language as used in Switzerland.
+</p>
+
+<h2>Gpg4win Installer</h2>
+
+<h4>Available languages</h4>
+
+<p>
+See the .po filenames in the <a href="http://wald.intevation.org/plugins/scmsvn/viewcvs.php/trunk/po/?root=gpg4win">Gpg4win
+po directory</a>. This is the most current status, so in case of relatively new files the most
+recent release of Gpg4win might not yet support it.
+</p>
+
+<h4>How to initialize a new language</h4>
+
+<p>
+The procedure is described in the Gpg4win file
+<a href="http://wald.intevation.org/plugins/scmsvn/viewcvs.php/trunk/po/README.nsis?root=gpg4win&view=markup">po/README.nsis</a>.
+</p>
+
+<p>
+It is highly recommended to coordinate with the Gpg4win developers (via the Gpg4win
+developer mailing list) before you start if you want to have your language get
+integrated into Gpg4win as a officially supported language.
+</p>
+
+<h4>How to update a available language</h4>
+
+This should work on basically any GNU/Linux or other unixoid system:
+
+<ol>
+<li> Get the sources for the website anonymously (without write access):<br>
+     <em>svn checkout https://svn.wald.intevation.org/gpg4win/trunk/ gpg4win-trunk-anon</em>
+
+<li> Configure the whole package:<br>
+     <em>
+     cd gpg4win-trunk-anon<br>
+     ./autogen.sh<br>
+     ./configure --enable-maintainer-mode --host=i586-mingw32msvc<br>
+     </em>
+
+<li> Check the status of the translations:<br>
+     <em>cd po</em><br>
+     <em>make update-po</em><br>
+     <p>
+     This will report about the total number of strings that
+     are marked inside the source code for translation, about
+     the number of fuzzy and untranslated strings. If only
+     the number of translated messages is reported, there is
+     nothing to do and you can stop for now (at a later
+     time you might want to "svn up" in the parent directory
+     of "po" and repeat the check).
+     </p>
+
+<li> Edit the .po file to resolve fuzzy and missing translations
+     with your preferred tool. Then repeat "make update-po" to
+     check whether you completed the translation successfully.
+</ol>
+
+<h4>How to activate a available language</h4>
+
+<p>
+Depending on the language environment of your Windows installation,
+the apropriate language is selected automatically if available.
+Else, english is used.
+</p>
+
+<h2>Gpg4win Web-Site</h2>
+
+<p>
+Not yet documented here. Please ask on the gpg4win developer
+mailing list for support.
+</p>
+
+<h2>Handbook Gpg4win for Novices</h2>
+
+<p>
+Not yet documented here. Please ask on the gpg4win developer
+mailing list for support.
+</p>
+
+<h2>Handbook Gpg4win für Durchblicker</h2>
+
+<p>
+Not yet documented here. Please ask on the gpg4win developer
+mailing list for support.
+</p>
+
+<h2>Claws Mail</h2>
+
+<p>
+Not yet documented here. Please ask on the gpg4win developer
+mailing list for support.
+</p>
+
+<h2>GpgOL</h2>
+
+<p>
+Not yet documented here. Please ask on the gpg4win developer
+mailing list for support.
+</p>
+
+<h2>GpgEX</h2>
+
+<p>
+Not yet a developed module. Please ask on the gpg4win developer
+mailing list for support.
+</p>
+
+<h2>Kleopatra</h2>
+
+<p>
+Not yet a integrated module. Please ask on the gpg4win developer
+mailing list for support.
+</p>
+
+<h2>GnuPG</h2>
+
+<p>
+Not yet documented here. Please ask on the gpg4win developer
+mailing list for support.
+</p>
