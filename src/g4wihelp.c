@@ -684,6 +684,8 @@ config_init (char **keys, char **values, int max)
 	  end = cmdline - 1;
 	  break;
 	}
+      while (*cmdline && *cmdline == ' ')
+	cmdline++;
     }
 
   if (!begin || begin > end)
