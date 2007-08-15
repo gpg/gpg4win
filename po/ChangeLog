@@ -1,3 +1,7 @@
+2007-08-15  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
+
+	* de.po: Fixed a fuzzy translation.
+
 2007-07-10  Werner Koch  <wk@g10code.com>
 
 	* Rules-nsis (%.nsi): Remove dependency on nsis-msgfmt and call
