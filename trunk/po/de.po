@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gpg4win 1.1.1-svn417\n"
 "Report-Msgid-Bugs-To: gpg4win-devel@wald.intevation.org\n"
-"POT-Creation-Date: 2007-07-09 17:06+0200\n"
+"POT-Creation-Date: 2007-08-15 11:48+0200\n"
 "PO-Revision-Date: 2007-07-09 17:09+0200\n"
 "Last-Translator: Marcus Brinkmann <mb@g10code.com>\n"
 "Language-Team: German <translation-team-de@lists.sourceforge.net>\n"
@@ -82,43 +82,43 @@ msgstr ""
 "Es wurde keine Schlüsselverwaltung installiert.  Deswegen kann sie jetzt "
 "auch nicht ausgeführt werden."
 
-#: src/installer.nsi:415
+#: src/installer.nsi:419
 msgctxt "T_InstallOptions"
 msgid "Install Options"
 msgstr "Installationsoptionen"
 
-#: src/installer.nsi:418
+#: src/installer.nsi:422
 msgctxt "T_InstallOptLinks"
 msgid "Start links"
 msgstr "Startlinks"
 
-#: src/installer.nsi:420
+#: src/installer.nsi:424
 msgctxt "T_InstOptLabelA"
 msgid "Please select where Gpg4win shall install links:"
 msgstr "Bitte wählen Sie, welche Verknüpfungen angelegt werden sollen:"
 
-#: src/installer.nsi:423
+#: src/installer.nsi:427
 msgctxt "T_InstOptLabelB"
 msgid "(Only programs will be linked into the quick launch bar.)"
 msgstr ""
 "(In die Schnellstartleiste werden nur Verknüpfungen für Programme angelegt.)"
 
-#: src/installer.nsi:426
+#: src/installer.nsi:430
 msgctxt "T_InstOptFieldA"
 msgid "Start Menu"
 msgstr "Startmenü"
 
-#: src/installer.nsi:429
+#: src/installer.nsi:433
 msgctxt "T_InstOptFieldB"
 msgid "Desktop"
 msgstr "Arbeitsfläche"
 
-#: src/installer.nsi:432
+#: src/installer.nsi:436
 msgctxt "T_InstOptFieldC"
 msgid "Quick Launch Bar"
 msgstr "Schnellstartleiste"
 
-#: src/installer.nsi:438
+#: src/installer.nsi:442
 msgctxt "T_FoundExistingVersion"
 msgid ""
 "Version $R1 has already been installed.\n"
@@ -130,7 +130,7 @@ msgstr ""
 "(Sie können in jedem Fall mit JA antworten, falls es sich um eine neuere "
 "oder dieselbe Version handelt.)"
 
-#: src/installer.nsi:441
+#: src/installer.nsi:445
 msgctxt "T_FoundExistingVersionB"
 msgid ""
 "A version of Gpg4Win has already been installed on the system. There will be "
@@ -143,7 +143,7 @@ msgstr ""
 "\n"
 "Möchten die die Installation von Gpg4Win fortführen?"
 
-#: src/installer.nsi:452
+#: src/installer.nsi:456
 msgctxt "T_FoundOldSeeManual"
 msgid ""
 "Please see the Gpg4win user manual to learn how to migrate existing keys "
@@ -154,7 +154,7 @@ msgstr ""
 "überführen.  Es wird dringend geraten Gpg4Win nicht zusammen mit diesen "
 "anderen Installation zu betreiben."
 
-#: src/installer.nsi:457
+#: src/installer.nsi:461
 msgctxt "T_FoundOldGnuPP"
 msgid ""
 "An old installation of GnuPP (GNU Privacy Project) has been been detected.  "
@@ -177,7 +177,7 @@ msgstr ""
 "Möchten Sie die Installation von Gpg4win weiter durchführen und sich dann "
 "später um die Entfernung von GnuPP kümmern?"
 
-#: src/installer.nsi:466
+#: src/installer.nsi:470
 msgctxt "T_FoundOldGnuPT"
 msgid ""
 "An installation of GnuPT has been been detected.  This may cause problems "
@@ -200,7 +200,7 @@ msgstr ""
 "\n"
 "Möchten Sie die Installation von Gpg4win fortführen?"
 
-#: src/installer.nsi:473
+#: src/installer.nsi:477
 msgctxt "T_FoundOldWinPTSF"
 msgid ""
 "An old installation of the Sourceforge hosted WinPT has been been detected.  "
@@ -225,7 +225,7 @@ msgstr ""
 "\n"
 "Möchten Sie die Installation von Gpg4win trotzdem jetzt weiter durchführen?"
 
-#: src/installer.nsi:483
+#: src/installer.nsi:487
 msgctxt "T_FoundOldGnuPack"
 msgid ""
 "An installation of GnuPG-Pack has been been detected. You need to uninstall "
@@ -239,7 +239,7 @@ msgstr ""
 "\n"
 "Die Installation von Gpg4win wird nun abgebrochen!"
 
-#: src/installer.nsi:492
+#: src/installer.nsi:496
 msgctxt "T_AdminNeeded"
 msgid ""
 "Warning: Administrator permissions required for a successful installation"
@@ -247,7 +247,7 @@ msgstr ""
 "Achtung: Für eine erfolgreiche Installation werden Administratorrechte "
 "benötigt."
 
-#: src/installer.nsi:496
+#: src/installer.nsi:500
 msgctxt "T_CloseOtherApps"
 msgid ""
 "Please make sure that other applications are not running. In particular you "
@@ -260,10 +260,15 @@ msgstr ""
 "eine Installation durchzuführen; es ist dann aber u.U. notwendig, das System "
 "neu zu starten."
 
-#: src/installer.nsi:501
+#: src/installer.nsi:505
 msgctxt "T_ShuttingDownWinPT"
 msgid "Trying to shutdown a possible running instance of WinPT."
 msgstr "Ein möglicherweise laufendes WinPT wird jetzt automatisch beendet."
+
+#: src/installer.nsi:507
+msgctxt "T_ShuttingDownDirMngr"
+msgid "Trying to shutdown a possible running instance of DirMngr."
+msgstr "Ein möglicherweise laufender DirMngr wird jetzt automatisch beendet."
 
 #: src/inst-eudoragpg.nsi:40
 msgctxt "DESC_SEC_eudoragpg"
@@ -271,7 +276,7 @@ msgid "EudoraGPG is a plugin for the Eudora mail program"
 msgstr ""
 "EudoraGPG ist ein Plugin zur Verschlüsselung für das Eudora Mailprogramm"
 
-#: src/inst-gnupg.nsi:76
+#: src/inst-gnupg.nsi:87
 msgctxt "DESC_SEC_gnupg"
 msgid "GNU Privacy Guard"
 msgstr ""
@@ -279,7 +284,7 @@ msgstr ""
 "GnuPG stellt die eigentliche Verschlüsselung sowie die Verwaltung der "
 "Schlüssel bereit."
 
-#: src/inst-gnupg2.nsi:70
+#: src/inst-gnupg2.nsi:96
 msgctxt "DESC_SEC_gnupg2"
 msgid "GNU Privacy Guard with S/MIME support"
 msgstr ""
@@ -287,7 +292,7 @@ msgstr ""
 "Verschlüsselung mittels S/MIME bereitzustellen.  Bitte beachten Sie, daß "
 "diese Option noch nicht vollständig unterstützt ist."
 
-#: src/inst-gpa.nsi:50
+#: src/inst-gpa.nsi:62
 msgctxt "DESC_SEC_gpa"
 msgid "GNU Privacy Assistant"
 msgstr ""
@@ -295,7 +300,7 @@ msgstr ""
 "welches für mehrere Plattformen verfügbar ist.  Es kann zusammen oder "
 "anstatt von WinPT benutzt werden."
 
-#: src/inst-gpa.nsi:53
+#: src/inst-gpa.nsi:65
 msgctxt "DESC_Menu_gpa"
 msgid ""
 "Run the GNU Privacy Assistant key management tool. This is an alternative to "
