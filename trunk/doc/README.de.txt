@@ -59,20 +59,33 @@ der Datei versioninfo.txt.
 4. Installer Optionen
 =====================
 
+Hinweis: Dies ist eine kurze Zusammenfassung. Im Anhang des
+Handbuches "Gpg4win für Einsteiger" findet sich ein ähnlicher Text
+der ggf. für Anwender angepasst wurde.
+
+In einigen Fällen wie zum Beispiel für Software-Verteilungssysteme ist
+es hilfreich, wenn die Installation von Gpg4win ohne Dialoge funktioniert,
+man aber trotzdem vorab alle Installationseinstellungen bestimmen kann.
+
 Der Standard-Installationspfad kann mit der Option /D=PFAD angegeben
-werden, welche als letzte auf der Kommandozeile erscheinen muß.  Der
-Installer unterstützt die Option /S für automatischen Ablauf der
-Installation, und die Option /C=INIFILE, durch welche eine .ini Datei
-angegeben werden kann, die genau einen Abschnitt "[gpg4win]" enthalten
-sollte.  In dieser Datei können diverse Einstellungen vorgenommen
-werden, inklusive absolute Pfade zu Konfigurationsdateien, die mit
-installiert werden.  Die meisten Einstellungen verändern nur die
-Standardeinstellungen.  Ausnahmen sind unten dokumentiert.  Hier ist
-eine Beispieldatei, die zugleich alle erlaubten Schlüssel zeigt:
+werden, welche als letzte auf der Kommandozeile erscheinen muß.
+
+
+Der Gpg4win Installer unterstützt die Option /S für automatischen Ablauf der
+Installation, und die Option /C=INIFILE, durch welche eine Steuerungsdatei
+(Name endet üblicherweise auf .ini) angegeben werden kann.
+Diese Datei sollte genau einen Abschnitt "[gpg4win]" enthalten,
+in der absolute Pfade für die zu installierenden Konfigurationsdateien
+vorgegeben werden.
+
+Hier ist eine Beispieldatei, die
+zugleich alle erlaubten Schlüsselworte zeigt:
 
 [gpg4win]
-  ; Installer Einstellungen.  Weg- oder leer-lassen fuer Standard.
-  inst_gnupg2 = false
+  ; Installer Einstellungen.
+  ; Weg- oder leer-lassen bedeutet, dass die Voreinstellung
+  ; verwendet wird.
+  inst_gnupg2 = true
   inst_gpgol = true
   inst_gpa = true
   inst_winpt = true
@@ -101,6 +114,10 @@ eine Beispieldatei, die zugleich alle erlaubten Schlüssel zeigt:
   scdaemon.conf = D:\config\scdaemon-site.txt
   gpa.conf = D:\config\gpa-site.conf
 
+Ein entsprechender Aufruf zur automatichen Installation könnte also
+wie folgt aussehen:
+
+gpg4win.exe /S /C=C:\TEMP\gpg4win.ini /D=D:\Programme\Gpg4win
 
 
 5. Rechtliche Hinweise zu den einzelnen Bestandteilen der Software
