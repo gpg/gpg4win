@@ -1,0 +1,32 @@
+#! /bin/sh
+patch -p1 -f $* < $0
+exit $?
+
+2007-07-02  Marcus Brinkmann <mb@g10code.com>
+
+	* src/Makefile.am (gpgol_LDADD): Add -lws2_32 for GPGME.
+
+diff -rup gpgol-0.9.91-orig/src/Makefile.am gpgol-0.9.91/src/Makefile.am
+--- gpgol-0.9.91-orig/src/Makefile.am	2006-04-25 16:08:31.000000000 +0200
++++ gpgol-0.9.91/src/Makefile.am	2007-07-09 16:46:08.000000000 +0200
+@@ -70,7 +70,7 @@ clean-local:
+ 
+ gpgol_LDADD = $(srcdir)/gpgol.def  \
+ 	-L . -lgpgme -lgpg-error -lmapi32 -lshell32 -lgdi32 -lcomdlg32 \
+-        -loleaut32
++        -loleaut32 -lws2_32
+ 
+ resource.o: resource.rc versioninfo.rc gpgol-rsrcs.rc olflange-rsrcs.rc
+ 
+diff -rup gpgol-0.9.91-orig/src/Makefile.in gpgol-0.9.91/src/Makefile.in
+--- gpgol-0.9.91-orig/src/Makefile.in	2006-10-13 08:46:04.000000000 +0200
++++ gpgol-0.9.91/src/Makefile.in	2007-07-09 16:46:18.000000000 +0200
+@@ -265,7 +265,7 @@ gpgol_SOURCES = \
+ gpgol_DEPENDENCIES = libmapi32.a libgpgme.a libgpg-error.a
+ gpgol_LDADD = $(srcdir)/gpgol.def  \
+ 	-L . -lgpgme -lgpg-error -lmapi32 -lshell32 -lgdi32 -lcomdlg32 \
+-        -loleaut32
++        -loleaut32 -lws2_32
+ 
+ all: all-am
+ 

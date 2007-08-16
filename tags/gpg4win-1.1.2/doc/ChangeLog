@@ -1,0 +1,557 @@
+2007-08-15  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
+
+	* website/localize-gpg4win.htm4: New. Describes how to translate
+	Gpg4win into arbitrary languages.
+
+2007-08-15  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
+
+	* README.de.txt: Slight improvements of installer options description.
+
+2007-08-14  Werner Koch  <wk@g10code.com>
+
+	* website/build-installer-on-w32-de.htm4: Use autogen.sh
+	--build-w32 instead of configure
+
+	* website/build-installer-on-win-de.htm4: Rename to
+	build-installer-on-w32-debian-screenshots-de.htm4.
+	* website/build-installer-on-win-de.htm4: Rename to
+	build-installer-on-w32-de.htm4.  Changed all references.
+
+2007-08-14  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
+
+	Adding a german description how to build Gpg4win installer
+	on Windows with a virtual Debian Etch.
+
+	* website/pix/debian-install-de/: New. Directory with various
+	screenshots and thumbnails. German.
+
+	* website/build-installer-on-win-de.htm4: New. Describes
+	how to build Gpg4win on Windows. German.
+
+	* website/build-installer-on-win-debian-screenshots-de.htm4: New.
+	Illustrates the Debian installation as VM on Windows with
+	screenshots. All german.
+
+	* website/build-installer-de.htm4: Adding link to
+	build-installer-on-win-de.html and re.phrased the description
+	accordingly with some new information.
+
+2007-08-14  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
+
+	Some general improvements.
+
+	* website/gpg4win.css: Nicer <h3>
+
+	* website/buildhtml.mk: Fixed dependencies.
+
+	* website/template.m4: Extended macro LANG_LINK to
+	strike out languages that are in fact not available for
+	a page.
+
+2007-08-13  Marcus Brinkmann  <marcus@g10code.de>
+
+	* README.en.txt: New section documenting installer options.
+	* README.de.txt: Likewise.
+
+2007-07-20  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
+
+	* website/build-installer-de.htm4: Fix some changes that didn't make
+	it into the german translation.
+
+2007-07-13  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
+
+	* website/versions.m4: Rename Sylpheed-Claws to Claws Mail. Add
+	forgotten "2" to GnuPG for German pages.
+
+2007-07-12  Werner Koch  <wk@g10code.com>
+
+	* website/download.htm4: Add Irish mirror.
+	* website/download-de.htm4: Ditto.
+	* website/versions.m4: Ditto.
+
+2007-07-10  Werner Koch  <wk@g10code.com>
+
+	* website/buildhtml.mk (USER): Take only the first entry.
+
+	* website/download-de.htm4: Document that the light installer
+	comes without gnupg2.
+	* website/download.htm4: Ditto.
+
+2007-07-05  Marcus Brinkmann  <marcus@g10code.de>
+
+	* website/index-de.htm4, website/index.htm4,
+	website/template_header.m4, website/reporting-bugs-de.htm4
+	website/reporting-bugs.htm4, pkg-copyright.txt,
+	manual/what-is-gpg4win.tex, manual/durchblicker.tex,
+	manual/was-ist-gpg4win.tex: Rename Sylpheed Claws to Claws Mail.
+
+2007-07-04  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
+
+	* website/build-installer-de.htm4, website/build-installer.htm4:
+	Further fixes (size, dependencies)
+
+2007-07-03  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
+
+	* website/index.htm4: Removed some hints on "german only".
+
+2007-07-03  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
+
+	* website/website-maintenance-de.htm4, website/website-maintenance.htm4:
+	Fixed description to consider that the whole package needs to be
+	retrieved (because a global configure is needed to have the website work
+	properly).
+
+	* website/build-installer-de.htm4, website/build-installer.htm4:
+	Updated description from Sage to Etch and increased the required
+	MegaBytes of download and harddisk.
+
+2007-06-29  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
+
+	* website/versions.m4, website/index.htm4: Replaced Einsteiger by
+	Novices for all englisch pages.
+
+2007-06-29  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
+
+	*  website/index.htm4, website/template_header.m4, website/index-de.htm4: Removed
+	any mentioning of the old Windows systems 9x.
+
+2007-06-19  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
+
+	* manual/novices.tex: Text slightly reworked by
+	Brigitte Hamilton.
+
+2007-05-24  Werner Koch  <wk@g10code.com>
+
+	* manual/Makefile.am (preview): New.
+	(online): Also copy eps_files_png.
+
+	* manual/durchblicker.tex: Don't specify a specific URL for
+	downloading a PDF version.  We can't do that because the Gforge
+	server preprends a semi-random number to the URL.  Did the same
+	for the other manuals.
+
+	* manual/novices.tex (section{History}): Do not translate the
+	title of the 2005 revision
+
+2007-05-19  Marcus Brinkmann  <marcus@g10code.de>
+
+	* manual/Makefile.am: Replace := by =.
+
+2007-05-16  Werner Koch  <wk@g10code.com>
+
+	* manual/Makefile.am: Commented advanced manual.
+
+2007-05-02  Bernhard Reiter <bernhard.reiter@intevation.de>
+
+	* website/download-de.htm4, website/download.htm4: Credited
+	Gjøvik Technical College where Trond works for the Norwegian mirror.
+
+2007-05-02  Werner Koch  <wk@g10code.com>
+
+	* website/package-integrity.htm4: Add file length section.
+	* website/package-integrity-de.htm4: Ditto.
+	* website/versions.m4: Add the current file lengths. 
+
+2007-04-14  Werner Koch  <wk@g10code.com>
+
+	* website/mk-chksums: Create macros with the length of the files.
+	They should be displayed along with the checksum to allow checking
+	for incomplete downloads.
+
+2007-04-06  Bernhard Reiter <bernhard.reiter@intevation.de>
+
+	* website/download-de.htm4, website/download.htm4: Added vim modeline
+	to set the filetype to HTML for syntax higlighting. Added new section
+	for hints at the end. Moved the hint about the announcement list there
+	and added a link to the Norwegian mirror.
+
+	* website/versions.m4: Added macro MIRROR_NO_URL 
+	for mirror from Norway (thanks to  Trond Endrestøl) for setting it up.
+
+2007-04-06  Bernhard Reiter <bernhard.reiter@intevation.de>
+
+	* manual/novices.tex: A number of corrections by Brigitte Hamilton.
+	Also replaced "` and "' with English style ".
+
+2007-04-02  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
+
+	* website/candidates.htm4: Fixed wrong link and improved
+	Text (found and suggested by Florian Samson).
+
+2007-03-31  Bernhard Reiter <bernhard.reiter@intevation.de>
+
+	* manual/advanced.tex, manual/Makefile.am: Transfered 
+	original page 47 and replaced the German screenshots 
+	with new ones in English.
+	Added file: sc-en-gpa-gen-backup-warn.png
+
+	* manual/novices.tex, manual/Makefile.am: 
+	Added new png files for screenshots in EN:
+	sc-en-gpa-gen-backup.png
+	sc-en-gpa-first-key.png 
+	sc-en-gpa-gen-email.png
+	sc-en-gpa-gen-name.png 
+	sc-en-gpa-gen-passwd.png 
+	sc-en-gpa-ks-export-p.png 
+	sc-en-gpa-nokey.png
+	sc-en-gpa-rungpa.png 
+	sc-en-gpa-two-keys.png
+
+	* manual/Makefile.am: Added eps_files_png as prerequisites to 
+	all html targets as the png files are actually needed for them.
+	Added eps_files_png to novices.dvi, because the eps files bbs
+	are not included in eps_files_bb and latex needs them.
+	Changed the dependency of novices and advanced to macros-en
+	instead of just "macros".
+
+2007-03-27  Bernhard Reiter <bernhard.reiter@intevation.de>
+
+	* manual/Makefile.am: Added option -density 100x100 to the
+	convert call when producing pngs out of eps.gz which gives
+	a better result for the html target.
+
+2007-03-26  Bernhard Reiter <bernhard.reiter@intevation.de>
+
+	* manual/novices.tex (Special Thanks): Added Andrew Hosch for
+	screenshots and added "coordination" to Bernhard Reiter
+
+	* manual/novices.tex (Titel Page): Added commas between the
+	mentioned names so it looks better in the HTML output.
+
+	* manual/novices.tex, manual/Makefile.am: Replaced German screenshots 
+	with new ones in English from Andrew Hosch. Also added them
+	to the repository. Files:
+		sc-en-inst-license.png
+		sc-en-inst-welcome.png
+        	sc-en-inst-components.png 
+		sc-en-inst-directory.png 
+        	sc-en-inst-options.png 
+        	sc-en-inst-startmenu.png 
+		sc-en-inst-ready.png 
+        	sc-en-inst-finished.png 
+
+2007-03-16  Werner Koch  <wk@g10code.com>
+
+	* website/build-installer.htm4: Fixed SVN URL.  Reported by wwp.
+	* website/build-installer-de.htm4: Ditto.
+
+2007-03-14  Werner Koch  <wk@g10code.com>
+
+	* manual/einsteiger.tex (section{Sie entschlÃ¼sseln eine Email}):
+	The public key is used for encryption and not for decryption.
+
+2007-03-09  Werner Koch  <wk@g10code.com>
+
+	* website/versions.m4: Updated for 1.0.9.
+
+	* README.de.txt, README.en.txt (Content): Change order of sections.
+
+2007-03-05  Werner Koch  <wk@g10code.com>
+
+	* manual/Makefile.am (webversion): Do not build advanced.html
+	* manual/novices.tex (section*{Impressum Gpg4win}): Translated
+	note regading the next page. 
+	(section*{Impressum Gpg4win}): Added a copyright line for the
+	translation.
+
+2007-02-12  Werner Koch  <wk@g10code.com>
+
+	* manual/Makefile.am: Let the dvi files depend on the bb files.
+
+2006-12-04  Brigitte Hamilton <gordianknits@gmail.com>  (wk)
+
+	* manual/what-is-gpg4win.tex: Did translation.
+
+2006-11-30  Brigitte Hamilton <gordianknits@gmail.com>  (wk)
+
+	* manual/novices.tex: Filled with content.
+
+2006-11-30  Werner Koch  <wk@g10code.com>
+
+	* manual/Makefile.am: Add code to build english versions.
+	* manual/advanced.tex: New dummy file.
+	* manual/novices.tex: New dummy file. 
+	* manual/what-is-gpg4win.tex: New.
+
+	* manual-de/:  Renamed to manual/.
+	* Makefile.am (SUBDIRS): Likewise
+
+2006-11-03  Bernhard Reiter <bernhard.reiter@intevation.de>
+
+	* manual/einsteiger.tex: Improved comments around the invariant
+	page to clarify that it cannot even be translated.
+
+	* manual/novices.tex: Made sure that the invariant page is
+	kept as the German original page.
+
+2006-11-03  Bernhard Reiter <bernhard.reiter@intevation.de>
+
+	* manual-de/einsteiger.tex, manual-de/durchblicker.tex: Fixed pdf
+	download location, version number there and size.  Now also using
+	German decimal comma for the size.
+
+2006-10-02  Werner Koch  <wk@g10code.com>
+
+	* website/index-de.htm4, website/index.htm4: Changed All-Downloads
+	location to http.  An index file is now generated over there.
+
+2006-08-03  Werner Koch  <wk@g10code.com>
+
+	* website/reporting-bugs.htm4: Added information on the gpgol
+	logging.
+
+2006-06-28  Werner Koch  <wk@g10code.com>
+
+	* website/NEWS.last: new.  This file is actually created by the
+	top level make target copy-news.
+	* website/buildhtml.mk: Use NEWS.last instead of the top-level
+	news.  This way we are self-contained again.
+
+2006-06-02  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
+
+	* website/template_link_boxes_de.m4, website/template_link_boxes_en.m4:
+	Added box for sponsoring via PayPal.
+
+2006-05-30  Werner Koch  <wk@g10code.com>
+
+	* website/mk-chksums: New.
+
+	* manual-de/durchblicker.tex (subsubsection{Zusammenfassung}):
+	Fixed c+p bug in the long prime.  Thanks to Ernst-GÃ¼nter Giessmann
+	for reporting this.
+
+2006-04-26  Werner Koch  <wk@g10code.com>
+
+	* README.en.txt (Content): New.
+
+2006-04-25  Werner Koch  <wk@g10code.com>
+
+	* manual-de/was-ist-gpg4win.tex: Make URL a link
+
+	* manual-de/Makefile.am (einsteiger.dvi): Depend on version.tex
+	(durchblicker.dvi): Ditto.
+	(einsteiger.html, durchblicker.html): Ditto.
+
+	* manual-de/version.tex.in: Define more version numbers.
+	* manual-de/macros.tex: Include version.tex 
+	* manual-de/durchblicker.tex: Take version numbers from macros.tex/
+	* manual-de/einsteiger.tex: Ditto.
+	(section{Sie installieren Gpg4win}): Add some Text.
+
+2006-04-24  Marcus Brinkmann  <marcus@g10code.de>
+
+	* (manual-de/durchblicker.tex, manual-de/einsteiger.tex): Use
+	package times instead of palatino.
+
+	* (manual-de/durchblicker.tex, manual-de/einsteiger.tex): Use
+	package palatino and fontenc.
+
+2006-04-19  Werner Koch  <wk@g10code.com>
+
+	* README.de.txt (Inhalt): Added TOC etc.
+
+2006-04-12  Werner Koch  <wk@g10code.com>
+
+	* manual-de/einsteiger.tex (GPGol): List limitations early.
+
+2006-04-05  Werner Koch  <wk@g10code.com>
+
+	* website/buildhtml.mk (change-history.htm4): Don't use recode. A
+	simple recode to latin1 won't anyway work with all source
+	encodings and thus we stay with latin1 for the NEWS file for now.
+
+	* website/build-history.awk: Register encoding.
+
+	* manual-de/einsteiger.tex (Appendix A): Describe Prefer HTML
+	Version.
+	* manual-de/sc-gpgol-options.png: Updated.
+
+2006-04-04  Werner Koch  <wk@g10code.com>
+
+	* manual-de/einsteiger.tex: Use consistent capitalization "Gpg4win". 
+	* manual-de/durchblicker.tex: Ditto.
+
+	* manual-de/einsteiger.tex (Umstieg von anderen GnuPG Programmen):
+	New.
+
+	* website/build-history.awk: New.
+
+2006-03-31  Werner Koch  <wk@g10code.com>
+
+	* website/: Use http:// instead of ftp:// for all downloads.
+
+2006-03-30  Bernhard Reiter <bernhard@intevation.de>
+
+	Correcting website bugs. Thanks to Rodrigo Ristow Branco for reporting.
+
+	* website/versions.m4: Corrected version number 0.1.0rc1 -> 1.0.0rc1.
+	* website/package-integrity-de.htm4,website/package-integrity.htm4:
+	Using VERSION for the signature files.
+
+2006-03-29  Werner Koch  <wk@g10code.com>
+
+	* website/versions.m4: Updated to match 1.0.0rc1.
+
+2006-03-28  Werner Koch  <wk@g10code.com>
+
+	* website/index.htm4: Fixed contact information for g10 code.
+	* website/index-de.htm4: Ditto.
+
+	* manual-de/Makefile.am (png_files): Add sc-inst-options.png
+	* manual-de/einsteiger.tex: Docuemtn the new otpiosn page.
+
+2006-03-27  Werner Koch  <wk@g10code.com>
+
+	* logo/gpg4win-logo-150x57.bmp: New.
+	* logo/Makefile.am (EXTRA_DIST): Add it. 
+
+2006-03-07  Werner Koch  <wk@g10code.com>
+
+	Set both manual versions to 2.0.0.RC2.
+
+	* manual-de/Makefile.am (online): Use portable way to extract the
+	svn user.
+	(EXTRA_DIST): Add gpg4win-logo.png.
+
+	* manual-de/einsteiger.tex: Updated.  Added new PNG format
+	screenshots.
+	(section*{Impressum gpg4win}): No more hint to the PDF version as
+	tehre is one on the title page.
+
+	* manual-de/durchblicker.tex: Updated.
+	(section*{Impressum gpg4win}): No more hint to the PDF version as
+	tehre is one on the title page.
+	(section{Die SchlÃ¼sselserver}): Add Keyserver warning.
+	
+	* manual-de/durchblicker.html.patch: Removed 
+	* manual-de/einsteiger.html.patch: Removed
+
+2006-02-28  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
+
+	* manual-de/einsteiger.html.patch: Added link to homepage.
+
+	* manual-de/durchblicker.html.patch: Added link to homepage.
+
+	* manual-de/was-ist-gpg4win.tex: Improved a sentence.
+
+2006-02-28  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
+
+	* manual-de/einsteiger.html.patch: New. Adds a link for PDF Download.
+
+	* manual-de/durchblicker.html.patch: New. Adds a link for PDF Download.
+
+	* manual-de/Makefile.am: Added target "online" for snycing manuals
+	to www.gpg4win.org
+
+2006-02-24  Werner Koch  <wk@g10code.com>
+
+	* manual-de/durchblicker.tex: Converted to hyperlatex. Images need
+	to be tweaked for web publishing.
+
+2006-02-23  Werner Koch  <wk@g10code.com>
+
+	* manual-de/einsteiger.tex: Converted to a Hyperlatex document.
+
+2006-02-22  Werner Koch  <wk@g10code.com>
+
+	* manual-de/macros.tex: Made Email configurable.
+	* manual-de/einsteiger.tex: Use new Email command.
+	* manual-de/durchblicker.tex: Ditto.
+
+2006-02-15  Werner Koch  <wk@gnupg.org>
+
+	* pkg-copyright.txt: New.
+
+2006-02-12  Werner Koch  <wk@g10code.com>
+
+	* manual-de/durchblicker.tex: Finished first rework.
+
+2006-01-27  Werner Koch  <wk@g10code.com>
+
+	* manual-de/was-ist-gpg4win.tex: New. Common introduction to both
+	manuals.
+	* manual-de/durchblicker.tex (section{Was ist Gpg4win}): Include it.
+	* manual-de/einsteiger.tex (section{Was ist Gpg4win?}): Include it. 
+
+2006-01-23  Werner Koch  <wk@g10code.com>
+
+	* README.de.txt, README.en.txt: New.
+
+2006-01-20  Werner Koch  <wk@g10code.com>
+
+	* Makefile.am (SUBDIRS): Add logo.
+
+	* logo/Makefile.am: New.
+
+	* logo/gpg4win-logo-icon.ico: new. Created from the favicon.
+	* logo/gpg4win-logo-400px.bmp: New.  Created from the PNG.
+
+	* manual-de/einsteiger.tex: Minor cleanups.  Do not include
+	version.tex anymore but hardcode the macro at the top of the file.
+
+2006-01-20  Jan-Oliver Wagner  <jan@intevation.de>
+
+	* manual-de/gpg4win-logo.eps: New.
+	* manual-de/einsteiger.tex: Reworked.
+
+2006-01-20  Jan-Oliver Wagner  <jan@intevation.de>
+
+	* logo/: New.
+	* logo/gpg4win-logo.eps: New.
+	* logo/gpg4win-logo-400px.png: New.
+	* logo/gpg4win-logo-favicon.bmp: New.
+
+2006-01-17  Werner Koch  <wk@g10code.com>
+
+	* manual-de/einsteiger.tex: Finished updated.
+
+2006-01-10  Werner Koch  <wk@g10code.com>
+
+	* manual-de/version.tex.in: New.
+
+2006-01-05  Werner Koch  <wk@g10code.com>
+
+	* manual-de/Makefile.am: Tweaked for VPATH builds.
+
+2005-12-13  Werner Koch  <wk@g10code.com>
+
+	* manual-de/durchblicker.tex: Minor updates and edits, removed
+	stuff we won't include.
+	* manual-de/einsteiger.tex: Ditto
+
+2005-12-12  Werner Koch  <wk@g10code.com>
+
+	* manual-de/durchblicker.tex: Finished raw conversion.
+
+	* manual-de/durchblicker.tex: New. Not yet ready. Also added more
+	graphics.
+
+	* manual-de/Makefile.am: Include some graphics and rules to build
+	the bounding box files.
+
+2005-12-09  Werner Koch  <wk@g10code.com>
+
+	* manual-de: New.
+	* manual-de/Makefile.am: New.
+	* manual-de/einsteiger.tex: New.
+	* manual-de/fdl.tex:  New. Slighly adjusted form the orginal
+	www.gnupg.org/licenses/fdl.tex to remove the section names from
+	our TOC and to use ``...'' instead of "..."
+
+	* website/Makefile.am: New.
+
+	* Makefile.am: New.
+
+2005-12-09  Jan-Oliver Wagner  <jan@intevation.de>
+
+	* website/index.html: winpt-the-project replaced by its full name.
+	* website/index.de.html: winpt-the-project replaced by its full name.
+
+2005-12-08  Jan-Oliver Wagner  <jan@intevation.de>
+
+	* website/: New.
+	* website/index.html: New.
+	* website/index.de.html: New.
+
+	
+

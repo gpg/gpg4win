@@ -1,0 +1,232 @@
+/* Styles for the Kolab Konsotium Site */
+/* $Id: kolabkonsortium.css,v 1.9 2005/08/08 06:40:38 jan Exp $
+
+
+/* TEXT STYLES */
+
+BODY {
+    margin: 0px;
+    background-color: #eeeee0;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 12px;
+}
+
+H1 {
+    margin-top: 0px;
+    font-size: 160%;
+    font-weight: bold;
+    color: black;
+}
+
+H2 {
+    background-color: #ffff98;
+    border-top: 2px solid #fdba19;
+    border-bottom: 2px solid #fdba19;
+    margin-top: 0px;
+    font-size: 125%;
+    font-weight: bold;
+}
+
+H3 {
+    background-color: #ffff98;
+    border-bottom: 2px solid #fdba19;
+    margin-top: 0px;
+    font-size: 125%;
+    font-weight: bold;
+}
+
+STRONG {
+    color: #ff8000;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+A {
+    color: #fa050c;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+A:hover {
+    color: #ff8000;
+    text-decoration: none;
+}
+
+IMG {
+    border: none;
+}
+
+.version {
+    font-size: 75%;
+    font-weight: normal;
+    color: black;
+}
+
+.swlist {
+    font-weight: normal;
+    color: black;
+    white-space:pre;
+    margin:0;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 12px;
+}
+
+.center {
+    vertical-align: middle;
+}
+
+TD {
+    padding: 10px;
+    text-align: left;
+    vertical-align: top;
+}
+
+/* Buttons */
+
+.dlbutton {
+    padding: 10px;
+    margin-bottom: 5px;
+    font-size: 150%;
+    font-weight: bold;
+    display: block;
+    width: 33%;
+    height: 80px;
+    border: 3px solid white;
+    background-color: #fdba19;
+    background-image: url(pix/disk.png);
+    background-repeat: no-repeat;
+    background-position: right bottom;
+}
+
+.dlbutton:hover {
+    background-color: #fdd347;
+    cursor: pointer;
+}
+
+.dlbutton2 {
+    padding: 10px;
+    margin: 20px;
+    margin-top: 10px;
+    font-size: 150%;
+    font-weight: bold;
+    text-align: center;
+    display: block;
+    border: 3px solid white;
+    background-color: #fdba19;
+}
+
+.dlbutton2:hover {
+    background-color: #fdd347;
+    cursor: crosshair;
+}
+
+/* STRUCTURE ELEMENTS */
+
+/* Head */
+
+#header {
+    clear: both;
+}
+
+#navbar {
+    background-color: white;
+    color: black;
+    font-weight: bold;
+    font-size: 80%;
+    width: 100%;
+}
+
+#navbar TD {
+    text-align: right;
+    vertical-align: bottom;
+}
+
+#navbar H1 {
+    font-size: 200%;
+    margin: 0px;
+    padding: 0px;
+}
+
+#bigbar {
+    text-align: left;
+    background-color: #ffff98;
+    background-image:url(pix/lock.png);
+    background-repeat: no-repeat;
+    background-position: right;
+    border-top: 2px solid #fa050c;
+    border-bottom: 2px solid #fa050c;
+    color: black;
+    font-weight: bold;
+    height: 190px;
+    width: 100%;
+    min-width: 600px;
+}
+
+#vertable {
+    width: 33%
+}
+
+/* colors */
+.yellow {
+    color: #fdba19;
+}
+
+.red {
+    color: #fa050c;
+}
+
+/* Content */
+
+#main {
+    min-width: 250px;
+    padding: 40px;
+    padding-top: 20px;
+    padding-right: 0px;
+    line-height: 150%;
+    margin-right: 250px;
+}
+
+#main TABLE {
+    width:100%;
+    border-spacing:0px;
+    border-collapse: collapse;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+#main TD {
+    padding: 0px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    text-align: left;
+    vertical-align: top;
+    border-top: 1px solid #fa050c;
+    border-bottom: 1px solid #fa050c;
+}
+
+#boxes {
+    float: right;
+    width: 200px;
+    padding: 10px;
+}
+
+.box {
+    background-color: #fdba19;
+    border-left: 4px solid #fa050c;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.box H1 {
+    color: black;
+    padding-bottom: 5px;
+    border-bottom: 2px solid white;
+    margin-bottom: 5px;
+    font-size: 120%;
+}
+
+.box P {
+    margin: 0px;
+    padding: 0px;
+    margin-top: 5px;
+}
