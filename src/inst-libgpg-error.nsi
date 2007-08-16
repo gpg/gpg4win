@@ -33,7 +33,15 @@ Section "-libgpg-error" SEC_libgpg_error
 !ifdef SOURCES
   File "${gpg4win_pkg_libgpg_error}"
 !else
-  File ${prefix}/bin/libgpg-error-0.dll
+
+  ClearErrors
+  SetOverwrite try
+  File "${prefix}/bin/libgpg-error-0.dll"
+  SetOverwrite lastused
+  ifErrors 0 +3
+      File /oname=libgpg-error-0.dll.tmp "${prefix}/bin/libgpg-error-0.dll"
+      Rename /REBOOTOK libgpg-error-0.dll.tmp libgpg-error-0.dll
+
 
   SetOutPath "$INSTDIR\share\locale\de\LC_MESSAGES"
   File ${prefix}/share/locale/de/LC_MESSAGES/libgpg-error.mo

@@ -34,7 +34,14 @@ Section "-libgcrypt" SEC_libgcrypt
 !ifdef SOURCES
   File "${gpg4win_pkg_libgcrypt}"
 !else
-  File ${prefix}/bin/libgcrypt-11.dll
+  ClearErrors
+  SetOverwrite try
+  File "${prefix}/bin/libgcrypt-11.dll"
+  SetOverwrite lastused
+  ifErrors 0 +3
+      File /oname=libgcrypt-11.dll.tmp "${prefix}/bin/libgcrypt-11.dll"
+      Rename /REBOOTOK libgcrypt-11.dll.tmp libgcrypt-11.dll
+
 
 !endif
 SectionEnd

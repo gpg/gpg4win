@@ -33,10 +33,19 @@ Section /o "GnuPG2" SEC_gnupg2
 !else
   File "${prefix}/bin/gpg2.exe"
   File "${prefix}/bin/gpgsm.exe"
+
+  ClearErrors
+  SetOverwrite try
   File "${prefix}/bin/gpg-agent.exe"
+  SetOverwrite lastused
+  ifErrors 0 +3
+      File /oname=gpg-agent.exe.tmp "${prefix}/bin/gpg-agent.exe"
+      Rename /REBOOTOK gpg-agent.exe.tmp gpg-agent.exe
+
   File "${prefix}/bin/scdaemon.exe"
   File "${prefix}/bin/gpgconf.exe"
   File "${prefix}/bin/gpg-connect-agent.exe"
+
 
   # As a special exception, these programs are not kept in
   # libexec/gnupg, where they belong.  Please see the comment in

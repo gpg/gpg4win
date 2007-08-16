@@ -3,7 +3,7 @@
 # The version number given below are for the standard installers as
 # distributed by www.gpg4win.org.
 
-Noteworthy changes in version 1.1.2 (FIXME: DATE)
+Noteworthy changes in version 1.1.2 (2007-08-16)
 ------------------------------------------------
 
 (en) Updated the Claws-Mail package.  A couple of serious bugs are fixed.
@@ -14,9 +14,17 @@ Noteworthy changes in version 1.1.2 (FIXME: DATE)
 (de) Zusätzliche Konfigurationsdateien können mit der Option /C=FILE
      installiert werden.
 
+(en) Update GnuPG2 to support the chain model.
+(de) GnuPG2 wurde aktualisiert um das Kettenmodell zu unterstützen.
+
+(en) Install DirMngr along with GnuPG2.
+(de) DirMngr wird nun zusammen mit GnuPG2 installiert.
+
+
 ~~~~~~~~~~~~~~~
 GnuPG:  1.4.7 
 GnuPG2: 2.0.5
+DirMngr: 1.0.1
 GPA:    0.7.6
 GPGol:  0.9.91
 GPGee:  1.3.1
