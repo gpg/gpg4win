@@ -211,8 +211,8 @@ chk  391eee90ea072ea181bed332b9411f2a43395e7e
 #
 server ftp://ftp.g10code.com/g10code/w32pth
 
-file w32pth-2.0.0.tar.bz2
-chk  f0d441a2c174f59ba04e4605768f1862aa953a72 
+file w32pth-2.0.1.tar.bz2
+chk  e74a770a58f08ba02f311d16c5debe79c218ee5d
 
 
 #
@@ -223,9 +223,9 @@ server ftp://ftp.gnupg.org/gcrypt
 file gnupg/gnupg-1.4.7.tar.bz2
 chk  22149105845c79068771837c8deb7d5ba0854927
 
-file gnupg/gnupg-2.0.5.tar.bz2
-ren  gnupg2-2.0.5.tar.bz2
-chk  9435e7fabe525ce943a5818008d412ecad244018
+file gnupg/gnupg-2.0.6.tar.bz2
+ren  gnupg2-2.0.6.tar.bz2
+chk  4aa9a3ecc954126cfc0a30bef94ec6e1fbbc7009
 
 file libgpg-error/libgpg-error-1.5.tar.bz2
 chk  1f83d9af8e8ed3bcbf3a5e9018db257dc6336655
