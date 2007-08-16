@@ -32,7 +32,21 @@ Section "-gpgme" SEC_gpgme
 !ifdef SOURCES
   File "${gpg4win_pkg_gpgme}"
 !else
-  File ${prefix}/bin/libgpgme-11.dll
-  File ${prefix}/bin/libgpgme-glib-11.dll
+  ClearErrors
+  SetOverwrite try
+  File "${prefix}/bin/libgpgme-11.dll"
+  SetOverwrite lastused
+  ifErrors 0 +3
+      File /oname=libgpgme-11.dll.tmp "${prefix}/bin/libgpgme-11.dll"
+      Rename /REBOOTOK libgpgme-11.dll.tmp libgpgme-11.dll
+
+  ClearErrors
+  SetOverwrite try
+  File "${prefix}/bin/libgpgme-glib-11.dll"
+  SetOverwrite lastused
+  ifErrors 0 +3
+      File /oname=libgpgme-glib-11.dll.tmp "${prefix}/bin/libgpgme-glib-11.dll"
+      Rename /REBOOTOK libgpgme-glib-11.dll.tmp libgpgme-glib-11.dll
+
 !endif
 SectionEnd

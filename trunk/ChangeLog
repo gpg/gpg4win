@@ -1,6 +1,16 @@
 2007-08-16  Werner Koch  <wk@g10code.com>
 
-	* packages/packages.current: Updated GnuPG2 and W32pth.
+	Released 1.1.2.
+
+	* src/inst-gnupg2.nsi: Allow overwriting of gpg-agent.
+	* src/inst-libgpg-error.nsi: Allow overwriting of libgpg-error.dll.
+	* src/inst-libgcrypt.nsi: Likewise.
+	* src/inst-gpgme.nsi: Likewise.
+	* src/inst-w32pth.nsi: Likewise.
+	* src/inst-libiconv.nsi: Likewise.
+
+	* packages/packages.current: Updated GnuPG2 and W32pth.  Add
+	Dirmngr.  Add gpgme snapshot.
 
 2007-08-15  Marcus Brinkmann  <marcus@g10code.de>
 

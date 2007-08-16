@@ -33,7 +33,16 @@ Section "-libiconv" SEC_libiconv
 !ifdef SOURCES
   File "${gpg4win_pkg_libiconv_src}"
 !else
-  File ${prefix}/bin/iconv.dll
+
+  ClearErrors
+  SetOverwrite try
+  File "${prefix}/bin/iconv.dll"
+  SetOverwrite lastused
+  ifErrors 0 +3
+      File /oname=iconv.dll.tmp "${prefix}/bin/iconv.dll"
+      Rename /REBOOTOK iconv.dll.tmp iconv.dll
+
+
 !ifdef DEBUG
   # We install a couple of binaries that may be useful for testing.
   File ${prefix}/bin/charset.dll

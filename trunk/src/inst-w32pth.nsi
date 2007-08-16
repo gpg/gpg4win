@@ -34,7 +34,14 @@ Section "-w32pth" SEC_w32pth
 !ifdef SOURCES
   File "${gpg4win_pkg_w32pth}"
 !else
-  File ${prefix}/bin/libw32pth-0.dll
+
+  ClearErrors
+  SetOverwrite try
+  File "${prefix}/bin/libw32pth-0.dll"
+  SetOverwrite lastused
+  ifErrors 0 +3
+      File /oname=libw32pth-0.dll.tmp "${prefix}/bin/libw32pth-0.dll"
+      Rename /REBOOTOK libw32pth-0.dll.tmp libw32pth-0.dll
 
 !endif
 SectionEnd
