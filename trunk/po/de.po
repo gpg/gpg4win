@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gpg4win 1.1.1-svn417\n"
 "Report-Msgid-Bugs-To: gpg4win-devel@wald.intevation.org\n"
-"POT-Creation-Date: 2007-08-16 16:12+0200\n"
+"POT-Creation-Date: 2007-08-16 17:59+0200\n"
 "PO-Revision-Date: 2007-07-09 17:09+0200\n"
 "Last-Translator: Marcus Brinkmann <mb@g10code.com>\n"
 "Language-Team: German <translation-team-de@lists.sourceforge.net>\n"
@@ -284,7 +284,7 @@ msgstr ""
 "GnuPG stellt die eigentliche Verschlüsselung sowie die Verwaltung der "
 "Schlüssel bereit."
 
-#: src/inst-gnupg2.nsi:96
+#: src/inst-gnupg2.nsi:105
 msgctxt "DESC_SEC_gnupg2"
 msgid "GNU Privacy Guard with S/MIME support"
 msgstr ""
