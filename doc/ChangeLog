@@ -1,3 +1,9 @@
+2007-08-17  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
+
+	* website/package-integrity.htm4,
+	website/package-integrity-de.htm4: Added hint where
+	to read about how to actually perform the integrity check.
+
 2007-08-15  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
 
 	* website/localize-gpg4win.htm4: New. Describes how to translate
