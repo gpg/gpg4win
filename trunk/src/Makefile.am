@@ -57,7 +57,8 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi config.site \
         inst-sylpheed-claws.nsi	   uninst-sylpheed-claws.nsi  \
         inst-w32pth.nsi		   uninst-w32pth.nsi	      \
         inst-winpt.nsi		   uninst-winpt.nsi	      \
-        inst-zlib.nsi        	   uninst-zlib.nsi
+        inst-zlib.nsi        	   uninst-zlib.nsi            \
+	inst-bzip2.nsi             uninst-bzip2.nsi           
 
 
 
@@ -128,6 +129,9 @@ gpg4win_pkg_dirmngr_configure = \
   --with-libassuan-prefix=$(idir) \
   --with-pth-prefix=$(idir)
 
+gpg4win_pkg_gnupg_configure = \
+  --with-bzip2=$(idir) 
+
 gpg4win_pkg_gnupg2_configure = \
   --with-gpg-error-prefix=$(idir) \
   --with-ksba-prefix=$(idir) \
@@ -180,15 +184,21 @@ gpg4win_pkg_claws_mail_configure = --silent \
   --disable-valgrind
 
 # Supported make-only source packages.
-gpg4win_mpkgs =  pthreads-w32
+gpg4win_mpkgs = pthreads-w32 bzip2
 
-# Extra options for the make infocations for individual packages.
-# make_flags is used fur building make_args_inst is used for installing.
+# Extra options for the make invocations for individual packages.
+# make_flags is used fur building, make_args_inst is used for installing.
 gpg4win_pkg_pthreads_w32_make_args = \
   prefix=$(idir) CROSS=$(host_alias)- clean GC-inlined
 
 gpg4win_pkg_pthreads_w32_make_args_inst = \
   prefix=$$$${pkgidir} CROSS=$(host_alias)- 
+
+gpg4win_pkg_bzip2_make_args = \
+  CC=$(CC) AR=$(AR) RANLIB=$(RANLIB)
+
+gpg4win_pkg_bzip2_make_args_inst = \
+  PREFIX=$$$${pkgidir} CC=$(CC) AR=$(AR) RANLIB=$(RANLIB)
 
 
 # Supported binary packages.

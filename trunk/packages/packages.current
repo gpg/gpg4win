@@ -214,6 +214,14 @@ server ftp://ftp.g10code.com/g10code/w32pth
 file w32pth-2.0.1.tar.bz2
 chk  e74a770a58f08ba02f311d16c5debe79c218ee5d
 
+#
+# Stripped down version of BZIP2
+#
+server ftp://ftp.g10code.com/g10code/bzip2
+
+file bzip2-1.0.4-g10.tar.gz
+chk  ae1b992721198b93198aa36eb7a3a7d074417f47  
+
 
 #
 # GnuPG et al.

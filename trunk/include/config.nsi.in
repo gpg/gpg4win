@@ -139,6 +139,10 @@
 !define gpg4win_pkg_pthreads_w32 @gpg4win_pkg_pthreads_w32@
 !define gpg4win_pkg_pthreads_w32_version @gpg4win_pkg_pthreads_w32_version@
 
+@HAVE_PKG_BZIP2@
+!define gpg4win_pkg_bzip2 @gpg4win_pkg_bzip2@
+!define gpg4win_pkg_bzip2_version @gpg4win_pkg_bzip2_version@
+
 @HAVE_PKG_LIBPNG@
 !define gpg4win_pkg_libpng @gpg4win_pkg_libpng@
 !define gpg4win_pkg_libpng_version @gpg4win_pkg_libpng_version@
