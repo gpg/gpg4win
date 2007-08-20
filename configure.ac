@@ -127,6 +127,8 @@ AM_CONDITIONAL(BUILD_LIGHT_INSTALLER, test "$build_light_installer" = yes)
 # Required tools.
 AC_PROG_CC
 AC_PROG_CPP
+AC_PROG_RANLIB
+AC_CHECK_TOOL(AR, ar, :)
 AC_CHECK_TOOLS(STRIP, strip)
 AC_CHECK_TOOLS(DLLTOOL, dlltool)
 AC_CHECK_PROGS(MAKE, make)
@@ -182,6 +184,7 @@ GPG4WIN_BPKG_GTK_DEV([cairo], [glib pkgconfig])
 
 GPG4WIN_BPKG_BINSRC([GPGee], [gnupg])
 
+GPG4WIN_SPKG([bzip2])
 GPG4WIN_SPKG([libgpg-error], [libiconv gettext])
 GPG4WIN_SPKG([libgcrypt], [libgpg-error])
 GPG4WIN_SPKG([libksba], [libgpg-error])
@@ -190,9 +193,9 @@ GPG4WIN_SPKG([dirmngr], [libgpg-error libgcrypt libassuan libksba])
 GPG4WIN_SPKG([w32pth])
 GPG4WIN_SPKG([pinentry], [libiconv])
 GPG4WIN_SPKG([gpgme], [libgpg-error gnupg glib])
-GPG4WIN_SPKG([gnupg], [libiconv])
+GPG4WIN_SPKG([gnupg], [libiconv bzip2])
 GPG4WIN_SPKG([gnupg2], [libiconv libgcrypt libksba libassuan libgpg-error dnl
-                        w32pth zlib])
+                        w32pth zlib bzip2])
 GPG4WIN_SPKG([pthreads-w32])
 GPG4WIN_SPKG([pinentry])
 GPG4WIN_SPKG([gpgol], [gpgme])

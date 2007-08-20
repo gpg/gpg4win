@@ -1,3 +1,17 @@
+2007-08-20  Werner Koch  <wk@g10code.com>
+
+	* packages/packages.current: Add bzip2.
+
+	* configure.ac: Check for RANLIB and AR.  Look for bzip2.  Make
+	gnupg and gnupg2 depend on it.
+	* src/Makefile.am (gpg4win_pkg_bzip2_make_args) 
+	(gpg4win_pkg_bzip2_make_args_inst): New.
+	(EXTRA_DIST): Add bzip2.
+	(gpg4win_pkg_gnupg_configure): New.  Look for bzip2.
+	* include/config.nsi.in: Add bzip2.
+	* src/inst-bzip2.nsi: New.
+	* src/uninst-bzip2.nsi: New.
+
 2007-08-16  Werner Koch  <wk@g10code.com>
 
 	Released 1.1.2.
