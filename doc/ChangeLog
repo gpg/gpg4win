@@ -1,7 +1,14 @@
+2007-08-20  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
+
+	* website/localize-gpg4win.htm4: Fix information on new po files.
+
+	* website/template_link_boxes_en.m4, website/template_link_boxes_de.m4:
+	Added kinks to localize-gpg4win.html.
+
 2007-08-20  Werner Koch  <wk@g10code.com>
 
 	* pkg-copyright.txt: Add bzip2 Updated Claws as it is now GPLv3+.
-	
+
 2007-08-17  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
 
 	* website/package-integrity.htm4,
