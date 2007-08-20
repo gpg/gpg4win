@@ -59,6 +59,7 @@ m4_dnl DONT USE THIS FILE DIRECTLY
   <p>Anleitungen:<br>
   <a href="build-installer-de.html">Installationspaket herstellen</a><br>
   <a href="website-maintenance-de.html">Website pflegen</a><br>
+  <a href="localize-gpg4win.html">Gpg4win in your language</a><br>
   </p>
 </div>
 <div class="box">

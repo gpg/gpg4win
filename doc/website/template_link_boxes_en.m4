@@ -60,6 +60,7 @@ m4_dnl DONT USE THIS FILE DIRECTLY
   <p>Howtos:<br>
   <a href="build-installer.html">Build Installer Package</a><br>
   <a href="website-maintenance.html">Maintaining Website</a><br>
+  <a href="localize-gpg4win.html">Gpg4win in your language</a><br>
   </p>
 </div>
 <div class="box">

@@ -48,14 +48,19 @@ recent release of Gpg4win might not yet support it.
 <h4>How to initialize a new language</h4>
 
 <p>
-The procedure is described in the Gpg4win file
-<a href="http://wald.intevation.org/plugins/scmsvn/viewcvs.php/trunk/po/README.nsis?root=gpg4win&view=markup">po/README.nsis</a>.
+The procedure is the <a href="http://www.gnu.org/software/gettext/manual/gettext.html#Creating">standard procedure of GNU gettext to create a new PO file</a>.
 </p>
 
 <p>
 It is highly recommended to coordinate with the Gpg4win developers (via the Gpg4win
 developer mailing list) before you start if you want to have your language get
 integrated into Gpg4win as a officially supported language.
+</p>
+
+<p>
+Also, the po files should not be in UTF-8 but rather in some Windows code page.
+The Gpg4win developers will help you to find out the best option or whether
+there will arise bigger problems with the support of you language.
 </p>
 
 <h4>How to update a available language</h4>
