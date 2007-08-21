@@ -1,5 +1,10 @@
 2007-08-21  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
 
+	* website/index.htm4, website/index-de.htm4: Added target platform
+	"Vista". Added project aim "S/MIME".
+
+2007-08-21  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
+
 	* website/localize-gpg4win.htm4: Updated with information on
 	web-site, novices and durchblicker.
 

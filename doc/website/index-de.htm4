@@ -8,8 +8,10 @@ PAGE_START
 
 <h2>Neuer Anwender?</h2>
 
-Gpg4win ist ein Installationspaket für Windows (2000/XP/2003)
+Gpg4win ist ein Installationspaket für Windows (2000/XP/2003/Vista)
 mit Computer-Programmen und Handbüchern für EMail- und Datei-Verschlüsselung.
+Die beiden relevanten kryptographischen Standards OpenPGP und S/MIME werden
+unterstützt (letzterer ist in Arbeit und funktioniert aktuell mit GnuPG2 und Claws Mail).
 Gpg4win und die in Gpg4win enthaltene Software
 sind <a href="http://www.fsfe.de/documents/freesoftware.de.html">Freie
 Software</a>.
@@ -81,15 +83,23 @@ Das Gpg4win Projekt <b>hat das Ziel</b>
 das Gpg4win Windows-Installationspaket für
 die Verschlüsselungs-Software
 GnuPG sowie zugehörige Anwendungen
-und Dokumentation kontinuerlich zu aktualisieren.
+und Dokumentation <b>kontinuerlich zu aktualisieren</b>.
 Insbsondere wird die Dokumentation (Handbücher "Einsteiger"
 und "Durchblicker") direkt beim Gpg4win Projekt gepflegt.
 
 <p>
-Es ist ein internationales Projekt, aufgrund der Herkunft
+Ein weiteres zenrales Ziel ist die <b>vereinigte Unterstützung
+für die beiden relevanten kryptographischen Standards OpenPGP
+und S/MIME</b>. Dies befindet sich noch in Arbeit, sollte aber
+spätestetens Ende 2007 abgeschlossen sein.
+</p>
+
+<p>
+Gpg4win ist ein internationales Projekt, aufgrund der Herkunft
 des Projektes und vieler Beteiligter liegt eine
 <b>vollständige deutsche Übersetzung</b> vor.
 </p>
+
 <p>
 Der Hauptunterschied zu den bisherigen Ansätzen
 (vor allem GnuPP, GnuPT, Windows Privacy Tools und GnuPG-Basics)
