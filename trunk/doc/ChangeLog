@@ -1,5 +1,9 @@
 2007-08-21  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
 
+	* website/NEWS.last: Fixed version number of GnuPG2.
+
+2007-08-21  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
+
 	* website/index.htm4, website/index-de.htm4: Added target platform
 	"Vista". Added project aim "S/MIME".
 
