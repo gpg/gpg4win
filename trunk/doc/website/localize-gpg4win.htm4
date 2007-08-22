@@ -99,7 +99,7 @@ This should work on basically any GNU/Linux or other unixoid system:
 <h4>How to activate a available language</h4>
 
 <p>
-Depending on the language environment of your Windows installation,
+Depending on the language environment of your Windows system,
 the apropriate language is selected automatically if available.
 Else, english is used.
 </p>
@@ -237,35 +237,96 @@ developer mailing list) before you start working out an english or any other ver
 
 <h2>Claws Mail</h2>
 
+<h4>Available languages</h4>
+
+<p>
+The Claws Mail developer team offers
+a <a href="http://www.claws-mail.org/i18n.php?section=projects">
+Translation Status</a> for the current stable release of Claws Mail.
+</p>
+
+<h4>How to initialize a new or update a available language</h4>
+
+<p>
+Claws Mail uses GNU gettext and therefore the standard methods
+for GNU gettext apply. The Claws Mail developer team
+offers detailed <a href="http://www.claws-mail.org/faq/index.php/Translator's_Information">
+Translator's Information</a> and a special <a href="http://www.claws-mail.org/MLs.php">mailing
+list for coordinating translators</a>.
+</p>
+
+<h4>How to activate a available language</h4>
+
+<p>
+Depending on the language environment of your Windows system,
+the apropriate language is selected automatically if available.
+Else, english is used.
+</p>
+
+<h2>GpgOL</h2>
+
+<h4>Available languages</h4>
+
 <p>
 Not yet documented here. Please ask on the gpg4win developer
 mailing list for support.
 </p>
 
-<h2>GpgOL</h2>
+<h4>How to initialize a new or update a available language</h4>
 
 <p>
-Not yet documented here. Please ask on the gpg4win developer
-mailing list for support.
+GpgOL uses GNU gettext and therefore the standard methods
+for GNU gettext apply. GpgOL is managed by the GnuPG developer team
+which coordinates translations on the <a href="http://lists.gnupg.org/mailman/listinfo/gnupg-i18n">
+GnuPG-i18n Mailing List</a>.
+</p>
+
+<h4>How to activate a available language</h4>
+
+<p>
+Depending on the language environment of your Windows system,
+the apropriate language is selected automatically if available.
+Else, english is used.
 </p>
 
 <h2>GpgEX</h2>
 
 <p>
-Not yet a developed module. Please ask on the gpg4win developer
-mailing list for support.
+This is a planned module to replace GpgEE.
+Please ask on the gpg4win developer
+mailing list for more information.
 </p>
 
 <h2>Kleopatra</h2>
 
 <p>
-Not yet a integrated module. Please ask on the gpg4win developer
-mailing list for support.
+This new certificate and key manager is not yet a integrated module.
+Please ask on the gpg4win developer
+mailing list for more information.
 </p>
 
 <h2>GnuPG</h2>
 
+<h4>Available languages</h4>
+
 <p>
 Not yet documented here. Please ask on the gpg4win developer
 mailing list for support.
+</p>
+
+<h4>How to initialize a new or update a available language</h4>
+
+<p>
+GnuPG uses GNU gettext and therefore the standard methods
+for GNU gettext apply. The GnuPG developer team
+coordinates translations on the <a href="http://lists.gnupg.org/mailman/listinfo/gnupg-i18n">
+GnuPG-i18n Mailing List</a>.
+</p>
+
+<h4>How to activate a available language</h4>
+
+<p>
+Depending on the language environment of your Windows system,
+the apropriate language is selected automatically if available.
+Else, english is used.
 </p>
