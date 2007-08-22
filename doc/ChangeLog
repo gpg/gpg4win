@@ -1,3 +1,7 @@
+2007-08-22  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
+
+	* manual/einsteiger.tex: Added appendix on automatic installation.
+
 2007-08-21  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
 
 	* website/NEWS.last: Fixed version number of GnuPG2.

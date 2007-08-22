@@ -266,7 +266,7 @@ Klicken Sie auf \Button{Weiter}.
 %% New page (not in original document)
 
 Auf der Seite mit der Komponentenauswahl können
-Sie entscheiden welche Programme Sie installieren
+Sie entscheiden, welche Programme Sie installieren
 möchten.
 
 Wenn Sie mit der Maus über die Auswahl laufen, dann erscheint
@@ -406,6 +406,12 @@ und trotzdem leicht zu merkenden Passwortsatz ausdenken können.
 \OtherBook{} Lesen Sie jetzt im Handbuch 
 "`\xlink{Gpg4win für Durchblicker}{durchblicker.html}"'
              die Kapitel 3 und 4, und lesen Sie bitte erst danach hier weiter.
+}
+
+\textbf{
+Für Informationen zur automatischen Installation von Gpg4win wie sie
+zum Beispiel für Softwareverteilungs-Systeme interessant ist, lesen Sie bitte im
+Anhang \ref{ch:auto} "`Automatische Installation von Gpg4win"' weiter.
 }
 
 \clearpage
@@ -1471,6 +1477,96 @@ Bildschirmausdruck entsprechen:
   Schwierigkeiten bei Outlook nicht einfach zu realisieren.
 
 \end{description}
+
+\clearpage
+\section{Automatische Installation von Gpg4win}
+\label{ch:auto}
+
+In diesem Kapitel wird die automatisierte Installation, also
+ohne Benutzerdialoge, erläutert.
+
+In einigen Fällen wie zum Beispiel für Software-Verteilungssysteme ist
+es hilfreich, wenn die Installation von Gpg4win ohne die Interaktion
+über Dialoge funktioniert. Um aber trotzdem vorab alle
+Installationseinstellungen bestimmen zu können, unterstützt der Gpg4win
+Installer eine Option für den Standard-Installationspfad auf der
+Kommandozeile als auch eine Steuerungsdatei.
+
+Der Standard-Installationspfad kann mit der Option \verb-/D=PFAD- angegeben
+werden, welche als letzte Option auf der Kommandozeile erscheinen muß.
+Der Dateiname der Installerdatei kann je nach Version variieren.
+Die Groß-/Kleinschreibung bei der Eingabe Optionsschalter in der
+Konsole ist hierbei wichtig. Eventuell sind Schreib-/Leserechte zu
+setzen.
+
+Ein Beispiel:
+
+\begin{verbatim}
+> gpg4win.exe /D=D:\Programme\Gpg4win
+\end{verbatim}
+
+Außerdem unterstützt der Gpg4win Installer eine Steurungsdatei, mit
+der Option \verb-/S- für automatischen Ablauf der Installation und der
+Option \verb-/C=INIFILE- wird eine Steuerungsdatei (Name endet
+üblicherweise auf .ini) angegeben.
+
+\begin{verbatim}
+> gpg4win.exe /S /C=C:\TEMP\gpg4win.ini
+\end{verbatim}
+
+Diese .ini Datei sollte genau einen Abschnitt \verb-[gpg4win]- enthalten.
+Dort können diverse Einstellungen vorgenommen werden, darunter
+absolute Pfade für die zu installierenden Konfigurationsdateien.
+Relative Pfade, also abhänig vom aktuellem
+Arbeitsverzeichnis, dürfen hier nicht angegeben werden. Absolute Pfade
+enthalten den vollständigen Pfad inkusive der Partitionsangabe.
+In der Regel sind die Einstellungen dann anzugeben falls nicht
+die Voreinstellung verwendet werden soll.
+Ausnahmen davon sind im Beispiel unten dokumentiert.
+
+Hier ist ein Beispiel für eine Steuerungsdatei, die
+zugleich alle erlaubten Schlüsselworte zeigt:
+
+\begin{verbatim}
+[gpg4win]
+  ; Installer Einstellungen. Weg- oder leerlassen für Voreinstellung
+  inst_gnupg2 = true
+  inst_gpgol = true
+  inst_gpa = true
+  inst_winpt = true
+  inst_gpgee = true
+  inst_claws_mail = false
+  inst_man_novice_de = true
+  inst_man_novice_en = true
+  inst_man_advanced_de = true
+  inst_man_advanced_en = true
+
+  ; Die Stellen, an denen Verknüpfungen erzeugt werden sollen.
+  inst_start_menu = true
+  inst_desktop = false
+  inst_quick_launch_bar = false
+
+  ; Im Gegensatz zu den anderen Optionen überschreibt diese Option
+  ; die Einstellung des Benutzers im Installer.
+  inst_start_menu_folder = GnuPG for Windows
+
+  ; Standard-Konfigurationsdateien.
+  gpg.conf = D:\config\gpg-site.conf
+  gpg-agent.conf = D:\config\gpg-agent-site.conf
+  trustlist.txt = D:\config\trustlist-site.txt
+  dirmngr.conf = D:\config\dirmngr-site.conf
+  dirmngr_ldapserver.conf = D:\config\dirmngr_ldapserver-site.conf
+  scdaemon.conf = D:\config\scdaemon-site.txt
+  gpa.conf = D:\config\gpa-site.conf
+\end{verbatim}
+
+Ein entsprechender Aufruf zur automatischen Installation mit einer
+Steuerungsdatei \verb-gpg4win.ini- und einem Installationspfad
+\verb-D:\Programme\Gpg4win- könnte also wie folgt aussehen:
+
+\begin{verbatim}
+> gpg4win.exe /S /C=C:\TEMP\gpg4win.ini /D=D:\Programme\Gpg4win
+\end{verbatim}
 
 \clearpage
 \section{Umstieg von anderen GnuPG Programmen}
