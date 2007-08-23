@@ -1,0 +1,183 @@
+m4_dnl -*-html-*-
+m4_include(`template.m4')
+m4_dnl $Id$
+
+m4_define(`DE')
+m4_define(`EN_FILE', `build-installer-gnulinux.html')
+PAGE_START
+
+<h1>Bau von Gpg4win unter GNU/Linux</h1>
+
+<p><b>
+Dieses Beispiel beschreibt konkret die Herstellung eines neuen
+Gpg4win Installers auf Debian GNU/Linux 'Etch' 4.0.
+Grundsätzlich können auch andere GNU/Linux Systeme verwendet werden.
+</b></p>
+
+<p>
+  <a href="build-installer-de.html">Zurück zur Übersicht zum Installer-Bau</a>
+</p>
+
+<h2>Den Gpg4win Installer direkt bauen</h2>
+
+<ol>
+<li> Typische Pakete die noch auf dem Debian GNU/Linux 4.0 nachinstalliert werden müssen
+     (ggf. fehlen bei Ihnen aber noch weitere, die dann im Verlauf der Konfiguration gemeldet
+    werden):<br>
+     <em># apt-get install mingw32 nsis stow unzip texinfo imagemagick</em><br>
+     <em># apt-get install libglib2.0-dev tetex-bin tetex-extra gs-common hyperlatex</em><br>
+
+<li> Die Quellen anonym (also ohne Schreibrechte) holen:<br>
+     <em>$ svn checkout https://svn.wald.intevation.org/svn/gpg4win/trunk/</em><br>
+     oder das Quelltextpaket gpg4win-n.n.n.tar.gz herunterladen, auspacken
+     und in das Verzeichnis gpg4win-n.n.n wechseln. Wir empfehlen, mit der
+     SVN version zu arbeiten wenn Sie mehr als nur ein Modul aktualisieren
+     wollen.
+
+<li> Alle notwendigen Gpg4win-Module aus dem Internet herunterladen:<br>
+     <em>$ cd packages</em><br>
+     <em>$ sh download.sh</em><br>
+     (dauert nun eine Weile, besonders beim ersten mal)<br>
+     <em>$ cd ..</em><br>
+
+<li> Falls Sie mit der SVN-Version arbeiten:<br>
+     <em>$ ./autogen.sh</em><br>
+     <em>$ ./configure --enable-maintainer-mode --host=i586-mingw32msvc</em><br>
+     ansonsten:<br>
+     <em>$ ./configure --host=i586-mingw32msvc</em><br>
+
+<li> Nun das Gpg4win Installationpaket bauen:<br>
+     <em>$ make</em>
+</ol>
+
+<p>
+Das war es schon. Das fertige Installationspaket liegt unter:<br>
+<em>src/gpg4win-n.n.n.exe</em><br>
+Das zugehörige Quelltextpaket (mit den Quelltexten sämtlicher Module, sehr gross!) unter:<br>
+<em>src/gpg4win-src-n.n.n.exe</em><br>
+
+<h2>Ein einzelnes Modul für Gpg4win aktualisieren</h2>
+
+Hierfür sollte man schon einmal ein Installationspaket wie oben beschrieben
+hergestellt haben.  Im Folgenden nehmen wir an, sie möchten das Modul
+<em>gnupg</em> aktualisieren.
+
+<ol>
+<li> Zuerst ist die alte Version zu löschen:<br>
+     <em>$ cd packages</em><br>
+     <em>$ rm gnupg-*</em><br>
+<li> Danach laden Sie die gewünschte Version herunter; z.B:<br>
+     <em>$ wget ftp://ftp.gnupg.org/gnupg/gnupg-1.4.3.tar.bz2</em><br>
+     <em>$ wget ftp://ftp.gnupg.org/gnupg/gnupg-1.4.3.tar.bz2.sig</em><br>
+     <em>$ gpg --verify gnupg-1.4.3.tar.bz2.sig</em><br>
+     Nur wenn das letzte Kommando eine gültige Signatur anzeigt,
+     dürfen Sie fortfahren.  Weitere Erklärungen finden Sie auf <a
+     href="http://www.gnupg.org/download/integrity_check.html">GnuPG
+     Webseite</a>.  Falls das Modul keine Signatur bereitstellt,
+     sollten Sie sich auf eine andere Art der Authentizität des Moduls
+     vergewissern.
+<li> Bauen Sie eine neuen Installer:<br>
+     <em>$ cd ..</em><br>
+     <em>$ make clean</em><br>
+     <em>$ ./configure --host=i586-mingw32msvc</em><br>
+     <em>$ make</em>
+</ol>
+
+<p>
+Achtung: Sie dürfen das Skript <em>download.sh</em> jetzt nicht mehr
+aufrufen, da es die aktuelle Standardversion des Moduls wieder
+installieren würde. Für eine dauerhafte Aktivierung der neuen Modul-Version
+des offiziellen Gpg4win Installationspaketes sind folgende Schritte zu erledigen.
+</p>
+
+<p>
+Voraussetzung dabei ist, dass man Schreibrechten auf
+das SVN Verzeichnis  besitzt (also ein Benutzerkonto auf
+wald.intevation.de mit Entwickler-Status für Gpg4win).
+</p>
+
+<ol>
+<li> Anpassen der Datei<br>
+     <em>packages.current</em><br>
+     für die neue Modulversion (lesen Sie für die Syntax den Kopf
+     dieser Datei) und laden Sie sie in das Subversion repository hoch:<br>
+     <em>$ svn commit packages.current</em>
+
+<li> Erstellen Sie eine Signatur für diese Datei:<br>
+     <em>$ gpg -sb packages.current</em>
+
+<li> Falls Sie bisher noch nie eine Aktualisierung der Paketliste
+     autorisiert haben, müssen Sie zunächst Ihren PGP-Schlüssel
+     an den Schlüsselbund<br>
+     <em>packages.keys</em><br>
+     anhängen:<br>
+     <em>$ gpg --export --armor YOUR-KEY-ID > gpg_pub_key.asc</em><br>
+     <em>$ gpg --no-default-keyring --keyring ./packages.keys --import gpg_pub_key.asc</em><br>
+     Eine Liste der bisher eingetragenen Schlüssel erhalten Sie so:<br>
+     <em>$ gpg packages.keys</em><br>
+
+<li> Laden Sie die beiden Dateien
+     auf die Website von Gpg4win hoch:<br>
+     <em>$ make update</em><br>
+</ol>
+
+
+<h2>Ein neues Modul in Gpg4win einbauen</h2>
+
+Hierfür sollte man schon einmal ein Installationspaket wie oben beschrieben
+hergestellt haben und dabei die Version aus SVN benutzt haben.
+
+<ol>
+<li>Für Ihr neues Modul 'MYMOD' erstellen Sie zunächst Konstanten
+    in der Datei include/config.nsi.in indem Sie folgende drei
+    Zeilen hinzufügen:<br>
+    <em>@HAVE_PKG_MYMOD@</em><br>
+    <em>!define gpg4win_pkg_mymod @gpg4win_pkg_mymod@</em><br>
+    <em>!define gpg4win_pkg_mymod_version @gpg4win_pkg_mymod_version@</em><br>
+    Sie finden in der Datei genügend Beispiele, z.B. 'HAVE_PKG_WINPT'.
+
+<li>Das NSIS Installations-Skript<br>
+    <em>src/inst-mymod.nsi</em><br>
+    schreiben. Im selben Verzeichnis liegen viele Beispiele
+    an denen man sich orientieren kann.
+
+<li>Das NSIS Deinstallations-Skript<br>
+    <em>src/uninst-mymod.nsi</em><br>
+    schreiben. Im selben Verzeichnis liegen viele Beispiele
+    an denen man sich orientieren kann.
+
+<li>Das NSIS Haupt-Skript<br>
+    <em>src/inst-sections.nsi</em><br>
+    um MYMOD erweitern. Orientieren Sie sich einfach an den
+    schon existierenden Einträgen und den Hilfe-Kommentaren.
+
+<li>Nun tragen Sie in die Datei<br>
+    <em>configure.ac</em><br>
+    Vorschriften zur Integration in den Bauprozess ein.
+    Dafür können Sie die Makros aus der Datei<br>
+    <em>m4/gpg4win.m4</em><br>
+    verwenden. Durch die bereits integrierten Module
+    sind bereits zahlreiche Beispiele gegeben. Hauptsächlich
+    muss unterschieden werden ob das Modul Cross-Compiliert
+    oder als einfaches bereits andersweitig
+    für Windows kompiliertes Binärobjekt integriert werden soll.
+
+<li>Jetzt noch die Datei<br>
+    <em>packages/packages.current</em><br>
+    wie weiter oben beschrieben aktualisieren.
+
+<li>Gpg4win muss für das neue Modul erneut konfiguriert werden:<br>
+     <em>$ AUTOMAKE_SUFFIX=-1.9 ./autogen.sh</em><br>
+     <em>$ ./configure --enable-maintainer-mode --host=i586-mingw32msvc</em><br>
+
+<li>Der letzte Schritt ist der Bau des Installationpaketes:<br>
+     <em>$ make</em>
+</ol>
+
+<p>
+Das fertige Installationspaket liegt unter:<br>
+<em>src/gpg4win-n.n.n.exe</em><br>
+Das zugehörige Quelltextpaket (mit den Quelltexten sämtlicher Module, sehr gross!) unter:<br>
+<em>src/gpg4win-src-n.n.n.exe</em><br>
+</p>
+
