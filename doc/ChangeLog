@@ -1,5 +1,17 @@
 2007-08-23  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
 
+	* website/build-installer-on-w32-de.htm4: Renamed to
+	build-installer-on-vm-de.htm4.
+
+	* website/build-installer-on-vm-de.htm4: New. Former
+	build-installer-on-w32-de.htm4.
+
+	* websiute/build-installer-de.htm4,
+	websiute/build-installer-on-w32-debian-screenshots-de.htm4:
+	Reflect name change for links.
+
+2007-08-23  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
+
 	* website/build-installer-de.htm4: Describe choice of OS as more generic.
 	And various other improvements.
 

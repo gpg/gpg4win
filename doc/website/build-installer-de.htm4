@@ -36,7 +36,7 @@ Was man benötigt:
      <p>
      Prinzipiell sind alle aktuelleren Windows-Systeme, ggf. mit
      ein bischen Anpassungsarbeit, geeignet.<br>
-     Die <a href="build-installer-on-w32-de.html">spezielle
+     Die <a href="build-installer-on-vm-de.html">spezielle
      Windows-Anleitung</a> ist getestet für Windows XP SP2.<br>
      Desweitere benötigt sind mindestens 1,5 GByte Platz auf der
      Festplatte und eine halbwegs schnelle Internetanbindung
