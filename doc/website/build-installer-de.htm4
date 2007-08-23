@@ -10,9 +10,9 @@ PAGE_START
 
 <p>
 Der Bau eines neuen Gpg4win Installationspaketes ist
-weitestgehend automatisiert. Dieser Bauprozess läuft innerhalb
-eines GNU/Linux Systems und läßt auch auf Windows-Systemen
-durchführen.
+weitgehend automatisiert. Dieser Bauprozess lässt sich auf
+einem GNU/Linux System oder mit Hilfe einer virtuellen Maschine
+auch auf Windows- und anderen Systemen durchführen.
 </p>
 
 <p>
@@ -23,30 +23,29 @@ Was man benötigt:
 <li> <b>Gpg4win auf GNU/Linux herstellen</b>:
 
      <p>
-     Ein Debian GNU/Linux 'Etch' 4.0 System.
-     Dafür ist <b>die nachfolgende Anleitung</b> getestet.
-     Prinzipiell sind auch andere GNU/Linux Systeme, ggf. mit
-     ein bischen Anpassungsarbeit, möglich.<br>
-     Desweiteren mindestens 503 MByte Platz auf der
-     Festplatte und eine halbwegs schnelle Internetanbindung
+     Prinzipiell sind alle aktuelleren GNU/Linux Systeme
+     als Grundlage geeignet, ggf. mit kleinen Anpassungen.
+     Die <b>nachfolgende Anleitung</b> ist getestet für
+     Debian GNU/Linux 'Etch' 4.0.<br>
+     Desweiteren benötigt sind mindestens 503 MByte Platz auf der
+     Festplatte und eine schnelle Internetanbindung
      da ca. 60 MByte heruntergeladen werden müssen.
      </p>
 
 <li> <b>Gpg4win auf Windows herstellen</b>:
      <p>
-     Ein Windows XP SP2.
-     Dafür ist <a href="build-installer-on-w32-de.html">die spezielle
-     Windows-Anleitung</a> getestet.
-     Prinzipiell sind auch weitere Windows-Systeme, ggf. mit
-     ein bischen Anpassungsarbeit, möglich.<br>
-     Desweitere mindestens 1,5 GByte Platz auf der
+     Prinzipiell sind alle aktuelleren Windows-Systeme, ggf. mit
+     ein bischen Anpassungsarbeit, geeignet.<br>
+     Die <a href="build-installer-on-w32-de.html">spezielle
+     Windows-Anleitung</a> ist getestet für Windows XP SP2.<br>
+     Desweitere benötigt sind mindestens 1,5 GByte Platz auf der
      Festplatte und eine halbwegs schnelle Internetanbindung
      da ca. 360 MByte heruntergeladen werden müssen.
      </p>
 </ul>
 
 <p>
-Typische Aufgaben für die Mitarbeit beim Gpg4win Projekt:
+<p>Typische Aufgaben für die Mitarbeit beim Gpg4win Projekt:</b>
 <ul>
 <li> Einzelkomponenten aktualisieren (gelegentlich, ca. 1-4 Stunden)
 </ul>

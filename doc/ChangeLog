@@ -1,3 +1,14 @@
+2007-08-23  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
+
+	* website/build-installer-de.htm4: Describe choice of OS as more generic.
+	And various other improvements.
+
+	* website/build-installer-on-w32-de.htm4: Hint that
+	you have the choice for OSs and VM. Also explained locale and subversion a
+	bit more. And various other improvements.
+
+	* website/download.htm4: "click"->"double->click".
+
 2007-08-22  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
 
 	* website/localize-gpg4win.htm4:  Extended with description
