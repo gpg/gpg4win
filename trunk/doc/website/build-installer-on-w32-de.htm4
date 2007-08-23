@@ -6,11 +6,13 @@ m4_define(`DE')
 m4_dnl m4_define(`EN_FILE', `build-installer-on-w32.html')
 PAGE_START
 
-<h1>Bau von Gpg4win unter Windows XP/SP2 via Debian 'Etch' in QEMU</h1>
+<h1>Bau von Gpg4win unter Windows via eines virtualisiertem GNU/Linux</h1>
 
 <p><b>
-Bau von Gpg4win-Installations-Paketen unter MS Windows XP/SP2 
-mithilfe eines virtuellen GNU/Linux-Systems.
+Dieses Beispiel beschreibt konkret die Herstellung eines neuen Gpg4win Installers
+auf Windows XP/SP2 via Debian 'Etch' 4.0 in QEMU.
+Grundsätzlich können für alle drei Komponenten auch Alternativen verwendet
+werden.
 </b></p>
 
 <p>
@@ -46,9 +48,9 @@ GNU/Linux etwas detaillierter beschrieben</a> und
 
 <p>
  Der Bauprozess von Gpg4win ist auf eine Cross-Kompilierung unter
- GNU/Linux ausgerichtet. Die Schaffung einer geeigenten Bauumgebung
- unter Windows XP/SP2 ist zwar prinzipiell möglich, erfordert aber
- umfassende Anpassungsarbeiten an den in Gpg4win integrierten Modulen.
+ GNU/Linux ausgerichtet. Die Schaffung einer geeigneten Bauumgebung
+ unter Windows oder u. U. auch anderen Systemen ist zwar prinzipiell möglich,
+ erfordert aber umfassende Anpassungsarbeiten an den in Gpg4win integrierten Modulen.
  Wesentlich einfacher ist die Installation eines virtualisierten
  GNU/Linux Systems innerhalb von Windows, in dem der Bauprozess
  dann durchgeführt werden kann.
@@ -56,33 +58,36 @@ GNU/Linux etwas detaillierter beschrieben</a> und
 
 <p>
  In dieser Anleitung wird beschrieben, wie mit Freier Software
- ein derartiges virtuelles GNU/Linux für Windows XP SP2
- aufgesetzt und zur Erzeugung der Installationspakete genutzt werden kann.
+ ein derartiges virtuelles GNU/Linux aufgesetzt und zur Erzeugung
+ der Installationspakete genutzt werden kann.
  Als virtuelle Maschine kommt
  das unter GNU GPL stehende QEMU 0.9.0 <a href="#ref1">[1]</a> zum Einsatz.
- Als GNU/Linux-Distribution
- wird Debian 'Etch' 4.0 <a href="#ref2">[2]</a> benutzt.
+ Als GNU/Linux-Distribution wird Debian 'Etch' 4.0 [2] benutzt.
 </p>
 
 <p>
- Die Anleitung gliedert sich in zwei Teile. Der erste Teil beschreibt,
- wie man unter Windows die Virtualiserungssoftware QEMU installiert, eine
- virtuelle Festplatte erzeugt und auf dieser ein minimales Debian 'Etch'
- installiert. Im zweiten Teil wird erläutert, wie der eigentliche Bauprozess
- innerhalb der virtuellen Maschine ablaufen sollte. Dieser entspricht
- dem bereits dokumentierten Bauprozess unter GNU/Linux, wird
- aber der Vollständigkeit halber hier noch einmal aufgeführt.
+ Die Anleitung gliedert sich in zwei Teile:
+ <ol>
+   <li> Der erste Teil beschreibt, wie man unter Windows
+        die Virtualisierungssoftware QEMU installiert,
+        eine virtuelle Festplatte erzeugt und auf dieser
+        ein minimales Debian 'Etch' installiert.
+   <li> Im zweiten Teil wird erläutert, wie der eigentliche
+        Bauprozess innerhalb der virtuellen Maschine ablaufen sollte.
+        Dieser entspricht dem bereits dokumentierten Bauprozess
+        unter GNU/Linux, wird aber der Vollständigkeit halber
+        hier noch einmal aufgeführt.
+ </ol>
 </p>
 
 <h3><a name="I"></a>I - Installation von Debian GNU/Linux 'Etch' 4.0 in einer virtuellen Umgebung</h3>
 
 <p>
- Resultat dieses Abschnittes wird eine Datei sein, die ein virtuelles
- Festplatten-Image eines rudimentären Debian 'Etch' auf Ihrem Windows XP
- enthalten wird.
- Die finale Image-Datei wird ungefähr 250MB groß sein.
- Insgesamt  sollte man für diese Phase der Installation mindestens 1,5GB
- freien Festplattenplatz auf dem Host-Windows-System zur Verfügung haben.
+ Resultat dieses Abschnittes wird eine Datei sein, die ein Festplatten-Image
+ eines rudimentären Debian 'Etch' für Ihre Virtualisierungssoftware (Virtual Machine Monitor)
+ enthalten wird. Die finale Image-Datei wird ungefähr 250MB groß sein.
+ Insgesamt sollte für diese Phase der Installation mindestens 1,5GB
+ freien Festplattenplatz auf dem Host-System zur Verfügung stehen.
 </p>
 
 <h4><a name="I-1"></a> I-1 - Installation von QEMU</h4>
@@ -312,8 +317,15 @@ GNU/Linux etwas detaillierter beschrieben</a> und
 </pre>
 
 <p>
- Subversion wird nur benötigt, wenn man Gpg4win aus dem SVN
- bauen will. Der OpenSSH-Server erleichtert die Kommunikation
+ <a href="http://de.wikipedia.org/wiki/Subversion_(Software)">Subversion</a>
+ (bzw. das Kommando "svn") gehört zum Quelltext-Management-System mit dem Gpg4win verwaltet
+ wird. Es wird nur benötigt, wenn man Gpg4win direkt aus dem SVN Qelltext-Management-System
+ heraus bauen will. Verwendet man stattdessen die Archivdateien (Endung .tar.gz oder .tar.bz2)
+ einer veröffentlichten Version, so kann man auf Subversion verzichten.
+</p>
+
+<p>
+ Der <a href="http://de.wikipedia.org/wiki/OpenSSH">OpenSSH</a>-Server erleichtert die Kommunikation
  mit der virtuellen Maschine. Zum einen kann man sich nach
  der Installation mit PuTTY in den Rechner einwählen und zum
  anderen mit pscp Dateien aus dem System heraus und hinein kopieren.
@@ -330,9 +342,11 @@ GNU/Linux etwas detaillierter beschrieben</a> und
 </p>
 
 <p>
- Um Probleme mit dem Locale zu vermeiden, ist es empfehlenswert,
- das de_DE-Locale zu generieren. Hierzu als root-Nutzer
- bitte folgendes eingeben
+ Um Probleme mit dem Locale (das sind die Einstellungen für die
+ Unterstützung Ihrer Sprache und sonstiger sprach-spezifischer
+ Einstellungen) zu vermeiden, ist es empfehlenswert,
+ das de_DE-Locale (das ist die Unterstützung für deutsch wie in Deutschland verwendet)
+ zu erzeugen. Hierzu als root-Nutzer bitte folgendes eingeben
 </p>
 
 <pre>
