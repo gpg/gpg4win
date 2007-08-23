@@ -2,9 +2,13 @@ m4_dnl -*-html-*-
 m4_include(`template.m4')
 m4_dnl $Id$
 
-m4_define(`DE')
-m4_define(`EN_FILE', `build-installer-on-vm.html')
+m4_define(`EN')
+m4_define(`DE_FILE', `build-installer-on-vm-de.html')
 PAGE_START
+
+<p>
+<b>Attention: Translation of page into english in progress</b>
+</p>
 
 <h1>Bau von Gpg4win unter Windows via eines virtualisiertem GNU/Linux</h1>
 
@@ -16,9 +20,9 @@ werden.
 </b></p>
 
 <p>
-Tipps: <a href="build-installer-gnulinux-de.html">Bauen unter
+Tipps: <a href="build-installer-gnulinux.html">Bauen unter
 GNU/Linux etwas detaillierter beschrieben</a> und
-<a href="build-installer-on-w32-debian-screenshots-de.html">Installation von Debian GNU/Linux 'Etch' 4.0 innerhalb einer virtuellen QEMU-Maschine als Screenshot-Serie illustriert</a>.
+<a href="build-installer-on-w32-debian-screenshots.html">Installation von Debian GNU/Linux 'Etch' 4.0 innerhalb einer virtuellen QEMU-Maschine als Screenshot-Serie illustriert</a>.
 </p>
 
 <p>

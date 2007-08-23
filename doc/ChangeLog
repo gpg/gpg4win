@@ -1,5 +1,21 @@
 2007-08-23  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
 
+	Prepare english translation of changes in the build descriptions.
+
+	* website/build-installer-gnulinux.htm4: New.
+
+	* website/build-installer.htm4: Extracted the description for GNU/Linux.
+	Added hint on Windows.
+
+	* website/build-installer-on-vm.htm4: New.
+
+	* website/build-installer-on-w32-debian-screenshots.htm4: New.
+
+	* website/build-installer-on-w32-debian-screenshots-de.htm4,
+	website/build-installer-on-vm-de.htm4: Activate english link.
+
+2007-08-23  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
+
 	* website/build-installer-de.htm4: Extracted the description for GNU/Linux
 
 	* website/build-installer-gnulinux-de.htm4: New.

@@ -8,182 +8,45 @@ PAGE_START
 
 <h1>Build Installer Package</h1>
 
-Building a new Gpg4win installer package is
-mostly automized.
-
 <p>
-What you need: A Debian GNU/Linux 'Etch' 4.0 system.
-For this system the follwing instructions are tested.
-In principle the procedure should also work for other
-system, perhaps some adapations are necessary.<br>
-Furthermore, you need at least 503 MByte on your harddisk
-and a acceptable fast internet connection for downloading
-about 60 MBytes.
+Building a new Gpg4win installer package is
+mostly automized. The build procedure can be executed
+on a GNU/Linux system or within a virtual maschine also
+on Windows and other systems.
 </p>
+
+<ul>
+<li> <b>Build Gpg4win on GNU/Linux</b>:
+
+     <p>
+     In principle, any current GNU/Linux system is
+     sufficient as the base system. Some minor
+     adaptions might be necessary though.
+     The <a href="build-installer-gnulinux-de.html">specific
+     GNU/Linux guide</a> is tested with a Debian GNU/Linux 'Etch' 4.0 system.
+     <br>
+     Furthermore, you need at least 503 MByte on your harddisk
+     and a acceptable fast internet connection for downloading
+     about 60 MBytes.
+     </p>
+<li> <p>Build Gpg4win on Windows</b>:
+
+     <p>
+     In principle, any current Windows system is
+     sufficient as the base system. Some minor
+     adaptions might be necessary though.
+     The <a href="build-installer-on-vm.html">specific
+     Windows guide</a> is tested with Windows XP SP2.
+     <br>
+     Furthermore, you need at least 1.5 GByte on your harddisk
+     and a acceptable fast internet connection for downloading
+     about 360 MBytes.
+     </p>
+</ul>
 
 <p>
 Typical tasks:
-<ul>
+<ul
 <li> Update a single module (occasionally, ca. 1-4 hours)
 </ul>
 </p>
-
-<h2>Create a new installer package</h2>
-
-The character '#' indicates commands to be executed as administrator (root)
-and '$' for commands to be executed as regular user.
-
-<ol>
-<li> Install required packages on your Debian GNU/Linux 4.0:<br>
-     <em># apt-get install mingw32 nsis stow unzip texinfo imagemagick</em><br>
-     <em># apt-get install libglib2.0-dev tetex-bin tetex-extra gs-common hyperlatex</em><br>
-
-<li> Get the sources anonymously (i.e. with out write-access):<br>
-     <em>$ svn checkout https://svn.wald.intevation.org/svn/gpg4win/trunk/</em><br>
-     or download the source code package gpg4win-n.n.n.tar.gz, unpack it and
-     change to the directory gpg4win-n.n.n. We recommend to work
-     with the SVN version if you want to do more that just update a single
-     module for yourself.
-
-<li> Download all necessary Gpg4win modules from Internet:<br>
-     <em>$ cd packages</em><br>
-     <em>$ sh download.sh</em><br>
-     (takes some time, especially the first time)<br>
-     <em>$ cd ..</em><br>
-
-<li> If you work with the SVN version:<br>
-     <em>$ ./autogen.sh</em><br>
-     <em>$ ./configure --enable-maintainer-mode --host=i586-mingw32msvc</em><br>
-     else:<br>
-     <em>$ ./configure --host=i586-mingw32msvc</em><br>
-
-<li> Now build the Gpg4win installer package:<br>
-     <em>$ make</em>
-</ol>
-
-<p>
-That's all. The new installer package is here:<br>
-<em>src/gpg4win-n.n.n.exe</em><br>
-The corresponding source code packages (with the sources of all modules, very big!) is here:<br>
-<em>src/gpg4win-src-n.n.n.exe</em><br>
-</p>
-
-<h2>Update a single module for Gpg4win</h2>
-
-Fort this task you should have build at least once a new installer package as
-described above. Consider now we want to update the module
-<em>gnupg</em>.
-
-<ol>
-<li> First, remove the old version:<br>
-     <em>$ cd packages</em><br>
-     <em>$ rm gnupg-*</em><br>
-<li> Then download the desired new release, e.g:<br>
-     <em>$ wget ftp://ftp.gnupg.org/gnupg/gnupg-1.4.3.tar.bz2</em><br>
-     <em>$ wget ftp://ftp.gnupg.org/gnupg/gnupg-1.4.3.tar.bz2.sig</em><br>
-     <em>$ gpg --verify gnupg-1.4.3.tar.bz2.sig</em><br>
-     Only continue if that latter command shows a valid signature.
-     You will find further hints on this at the
-     href="http://www.gnupg.org/download/integrity_check.html">GnuPG
-     Website</a>.  If the module does not provide any signature you
-     should ensure authenticity of the file with another reasonable method.
-<li> Build a new installer:<br>
-     <em>$ cd ..</em><br>
-     <em>$ make clean</em><br>
-     <em>$ ./configure --host=i586-mingw32msvc</em><br>
-     <em>$ make</em>
-</ol>
-
-<p>
-Attention: From now on your should not execute the script <em>download.sh</em>
-anymore because it would revert to the previous (i.e. official) version of the module.
-For a permanent activation of the new module version for the official Gpg4win
-installer package, the following steps are necessary.
-</p>
-
-<p>
-Precondition is that you have write access to the
-SVN directory (i.e. a user account at wald.intevation.de
-with developer status for Gpg4win).
-</p>
-
-<ol>
-<li> Adapt file<br>
-     <em>packages.current</em><br>
-     accordingly for the new module version (read the head of this file about
-     the syntax) and upload to Subversion repository:<br>
-     <em>$ svn commit packages.current</em>
-
-<li> Create a signature for this file:<br>
-     <em>$ gpg -sb packages.current</em>
-
-<li> If haven't so far ever authorized an updated package list,
-     you need to add your PGP key to the keyring
-     an den Schlüsselbund<br>
-     <em>packages.keys</em><br>
-     using this command:<br>
-     <em>$ gpg --export --armor YOUR-KEY-ID > gpg_pub_key.asc</em><br>
-     <em>$ gpg --no-default-keyring --keyring ./packages.keys --import gpg_pub_key.asc</em><br>
-     A lost of the current keys is shown with this command:<br>
-     <em>$ gpg packages.keys</em><br>
-
-<li> Upload the two files to the Gpg4win website:<br>
-     <em>$ make update</em><br>
-</ol>
-
-
-<h2>Integrate a new module into Gpg4win</h2>
-
-Hierfür sollte man schon einmal ein Installationspaket wie oben beschrieben
-For this task you should have at least once created a installer package
-according to the description above using the SVN version.
-
-<ol>
-<li>For your new module 'MYMOD' first create constants in the file
-    include/config.nsi.in by adding the following lines:<br>
-    <em>@HAVE_PKG_MYMOD@</em><br>
-    <em>!define gpg4win_pkg_mymod @gpg4win_pkg_mymod@</em><br>
-    <em>!define gpg4win_pkg_mymod_version @gpg4win_pkg_mymod_version@</em><br>
-    You will find various examples in this file, e.g. see 'HAVE_PKG_WINPT'.
-
-<li>Write the NSIS installation script<br>
-    <em>src/inst-mymod.nsi</em><br>
-    In the same directory you will find many examples to learn from.
-
-<li>Write the NSIS de-installation script<br>
-    <em>src/uninst-mymod.nsi</em><br>
-    In the same directory you will find many examples to learn from.
-
-<li>Extend the NSIS main script<br>
-    <em>src/inst-sections.nsi</em><br>
-    with MYMOD. Do this analogous to existing entries
-    and read the explanations in the comments.
-
-<li>Now add rules for integration into the build process into the file<br>
-    <em>configure.ac</em><br>
-    For this you can use macros from the file<br>
-    <em>m4/gpg4win.m4</em><br>
-    Due to the already integrated modules there are plenty
-    of examples given. A main distinction is between cross-compiled
-    modules and those that have been compiled for Windows elsewhere
-    and integrated as compiled binaries.
-
-<li>Now update the package list<br>
-    <em>packages/packages.current</em><br>
-    as described above.
-
-<li>Gpg4win has to be configured anew for the new module:<br>
-     <em>$ AUTOMAKE_SUFFIX=-1.9 ./autogen.sh</em><br>
-     <em>$ ./configure --enable-maintainer-mode --host=i586-mingw32msvc</em><br>
-
-<li>The last step is to build the new package:<br>
-     <em>$ make</em>
-</ol>
-
-<p>
-The new installer package is here:<br>
-<em>src/gpg4win-n.n.n.exe</em><br>
-The corresponding source code packages (with the sources of all modules, very big!) is here:<br>
-<em>src/gpg4win-src-n.n.n.exe</em><br>
-</p>
-
