@@ -35,13 +35,13 @@ m4_ifdef(`__TMPL_PAGE_TITLE',,`m4_define(`__TMPL_PAGE_TITLE',`Gpg4win - '__TITLE
     </table>
     <table id="bigbar">
       <tr><td id="vertable" style="white-space: nowrap;">
-      I18N(`EN',`Version VERSION (<a href="change-history.html">DL_DATE</a>) includes:')
-      I18N(`DE',`Version VERSION (<a href="change-history-de.html">DL_DATE</a>) enthält:')
+      I18N(`EN',`Version VERSION (<a href="change-history.html">Change History</a>) includes:')
+      I18N(`DE',`Version VERSION (<a href="change-history-de.html">Änderungshistorie</a>) enthält:')
            <pre class="swlist">SOFTWARE</pre>
           </td>
           <td class="center">
             <a href="DLPAGE" class="dlbutton">Download<br> 
-              <span class="version">Gpg4win VERSION<br></a>
+              <span class="version">Gpg4win VERSION (DL_DATE)<br></a>
                 &nbsp;&nbsp;<a href="I18N(`EN', `./package-integrity.html') I18N(`DE', `./package-integrity-de.html')"
                   >SHA1/MD5/OpenPGP-Sig</a>
       </td></tr>

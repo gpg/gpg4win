@@ -1,5 +1,13 @@
 2007-08-23  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
 
+	* website/template_link_boxes_de.m4, website/template_link_boxes_en.m4:
+	Added localization page to sitemap.
+
+	* website/template_header.htm4: Moved date into download box
+	and renamed link to change history from date to change history.
+
+2007-08-23  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
+
 	Prepare english translation of changes in the build descriptions.
 
 	* website/build-installer-gnulinux.htm4: New.

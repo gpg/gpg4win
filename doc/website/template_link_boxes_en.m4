@@ -80,5 +80,6 @@ m4_dnl DONT USE THIS FILE DIRECTLY
   <a href="build-installer.html">Build Installer Package</a><br>
   <a href="website-maintenance.html">Maintaining Website</a><br>
   <a href="candidates.html">Candidates for Integration</a><br>
+  <a href="localize-gpg4win.html">Gpg4win in your language</a><br>
 </div>
 </div>
