@@ -76,6 +76,10 @@ Section "GnuPG" SEC_gnupg
 
   WriteRegStr HKLM "Software\GNU\GnuPG" "Install Directory" $INSTDIR
 
+  # This old key is required for GPGee.  Please do not use in new
+  # applications.
+  WriteRegStr HKLM "Software\GNU\GnuPG" "gpgProgram" "$INSTDIR\gpg.exe"
+
   # Add the public directory to the PATH
   Push "$INSTDIR\pub"
   Call AddToPath
