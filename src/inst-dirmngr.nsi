@@ -41,6 +41,20 @@ Section "-dirmngr" SEC_dirmngr
   File "${prefix}/bin/dirmngr-client.exe"
   File "${prefix}/libexec/dirmngr_ldap.exe"
 
+  SetOutPath "$INSTDIR\etc\dirmngr"
+
+  ifFileExists "$INSTDIR\etc\dirmngr\dirmngr.conf" dirmngr_no_conf 0
+   File /nonfatal "${prefix}/share/doc/dirmngr/examples/dirmngr.conf"
+   File /nonfatal "${prefix}/share/doc/dirmngr/examples/bnetza-10r-ocsp.signer"
+
+   SetOutPath "$INSTDIR\etc\dirmngr\trusted-certs"
+   File /nonfatal "${prefix}/share/doc/dirmngr/examples/trusted-certs/README"
+   File /nonfatal "${prefix}/share/doc/dirmngr/examples/trusted-certs/*.crt"
+
+  dirmngr_no_conf:
+
+  SetOutPath "$INSTDIR"
+
   # We need to create the cache directory, as this is not
   # automatically created by dirmngr.  Actually, the default should be
   # different.  FIXME.
