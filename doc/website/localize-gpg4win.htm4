@@ -268,8 +268,9 @@ Else, english is used.
 <h4>Available languages</h4>
 
 <p>
-Not yet documented here. Please ask on the gpg4win developer
-mailing list for support.
+See the .po filenames in the <a href="http://cvs.gnupg.org/cgi-bin/viewcvs.cgi/trunk/po/?root=GpgOL">GpgOL
+po directory</a>. This is the most current status, so in case of relatively new files the most
+recent release of GpgOL might not yet support it.
 </p>
 
 <h4>How to initialize a new or update a available language</h4>
