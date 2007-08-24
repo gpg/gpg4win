@@ -1,3 +1,7 @@
+2007-08-24  Marcus Brinkmann  <marcus@g10code.de>
+
+	* src/inst-gnupg.nsi: Write compatibility key to registry for GPGee.
+
 2007-08-24  Werner Koch  <wk@g10code.com>
 
 	* packages/packages.current: Updated libassuan to 1.0.3.
