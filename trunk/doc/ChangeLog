@@ -1,5 +1,10 @@
 2007-08-28  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
 
+	* manual/einsteiger.tex, manual/durchblicker.tex: Unified terms
+	"Passwortsatz", "Passwort" to "Passphrase".
+
+2007-08-28  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
+
 	* manual/einsteiger.tex: A new chapter on explaining
 	the two worlds, S/MIME and OpenPGP. By Geo Kocheril.
 
