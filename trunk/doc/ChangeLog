@@ -1,5 +1,10 @@
 2007-08-28  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
 
+	* manual/einsteiger.tex: Some little improvements and typo fixes,
+	by Geo Kocheril.
+
+2007-08-28  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
+
 	* website/build-installer-de.htm4: Added MacOS X etc. into list
 	of possible build systems just to make clear it is a generalized
 	approach when using a VM.

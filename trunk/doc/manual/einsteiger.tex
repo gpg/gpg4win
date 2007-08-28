@@ -155,7 +155,8 @@ Das Gpg4win-Anleitungs- und Übungsmaterial besteht aus drei Teilen:
   Sie gerade lesen,
 
 \item \textbf{dem Handbuch "`Gpg4win für Durchblicker"'} im PDF-Format, welches
-  Sie nach der Installation von Gpg4win auf Ihrer Festplatte finden,
+  Sie nach der Installation von Gpg4win auf Ihrer Festplatte finden, oder auf der
+  Projekt-Homepage.
 
 \item \textbf{dem Übungsroboter Adele,} mit dem Sie die \Email{}-Ver- und
   Entschlüsselung so oft üben können, wie Sie wollen. Um mit Adele zu
@@ -399,7 +400,7 @@ vor sich geht.
 
 Außerdem ist die ganze Angelegenheit ziemlich spannend$\ldots$
 
-Weiter geben wir Ihnen einige Tipps, mit denen Sie sich einen sicheren
+Weiter geben wir Ihnen dort einige Tipps, mit denen Sie sich einen sicheren
 und trotzdem leicht zu merkenden Passwortsatz ausdenken können.
 
 \textbf{
@@ -623,7 +624,9 @@ Denn:
 
 \textbf{
 Um sichere \Email{}s austauschen zu können, müssen beide Partner jeweils
-den öffentlichen Schlüssel des anderen besitzen und benutzen.
+den öffentlichen Schlüssel des anderen besitzen und benutzen. Natürlich
+braucht der Empfänger auch ein Programm, das mit den Schlüsseln umgehen
+kann, wie zum Beispiel Gpg4win.
 }
 
 Wenn Sie also an jemanden verschlüsselte \Email{}s schicken wollen,
@@ -1097,7 +1100,7 @@ einer Art elektronischem Siegel versieht.
 
 Der Text ist dann zwar noch für jeden lesbar, aber der Empfänger kann
 feststellen, ob die \Email{} unterwegs manipuliert oder verändert wurde
-(und das sie von Ihnen stammt).
+und das die \Email{} wirklich von Ihnen stammt.
 
 Die Überprüfung einer solchen Signatur ist sehr einfach. Sie müssen
 dazu natürlich den öffentlichen Schlüssel des Absenders bereits an
@@ -1249,7 +1252,7 @@ verschlüsselt aufbewahren können.  Natürlich können Sie einfach eine
 Klartextversion Ihrer Texte aufbewahren, aber das wäre eigentlich
 nicht angebracht. Wenn Ihre Mitteilung geheimhaltungsbedürftig war,
 sollte sie auch nicht im Klartext auf Ihrem Rechner gespeichert sein.
-Also sollte immer ein verschlüsselte Kopie der \Email{} aufbewahrt
+Also sollte immer eine verschlüsselte Kopie der \Email{} aufbewahrt
 werden.
 
 Sie ahnen das Problem: zum Entschlüsseln der archivierten \Email{}s
@@ -1280,8 +1283,8 @@ dort das Menü \Menu{Einstellungen $\rightarrow$ GPG}.
 \end{center}
 
 In dem Einstellungsfenster, das sich nun öffnet, tragen Sie unter
-"`Encrypt to this key"' Ihren Schlüssel ein, und zwar einfach mit der
-dazugehörigen \Email{}-Adresse.
+"`Encrypt to this key"' Ihren Schlüssel ein bzw. die
+dazugehörige \Email{}-Adresse.
 
 Eine entsprechende Option finden Sie auch bei allen \Email{}programmen,
 die GnuPG direkt unterstützen.
@@ -1341,7 +1344,8 @@ Bitte beachten Sie die beiden folgenden Einschränkungen:
 
 \begin{itemize}
 \item Als Texteditor darf nicht das Programm Word eingestellt sein.
-
+% FIXME:  Wir müssen erklären wie man Word als Standard Editor in
+% Outlook ausschaltet.
 \item Sogenanntes Inline-PGP oder traditionelles PGP wird voll
   unterstützt.  Es können jedoch keine PGP/MIME \Email{}s erstellt werden.
 
@@ -1413,7 +1417,7 @@ Bildschirmausdruck entsprechen:
   Icons nicht unbedingt direkt an.  Sie können diese anzeigen lassen,
   indem Sie in der Symbolleiste auf das kleine Icon mit dem Pfeil nach
   unten klicken ("`Optionen für Symbolleiste"').  Dort finden Sie dann
-  alle nicht angezeigten Icons. Ein Klick auf eines dieses Icons
+  alle nicht angezeigten Icons. Ein Klick auf eines dieser Icons
   verschiebt es in die Symbolleiste.  Dasselbe gilt für das Icon zum
   Aufruf der Schlüsselverwaltung.
 
@@ -1578,7 +1582,7 @@ erkennt einige dieser Programme und warnt Sie in diesem Fall.
 
 Generell ist es ratsam, eine vorhandene Installation eines anderen
 GnuPG basierten Programms zu entfernen bevor Gpg4win installiert wird.
-Es ist hier wichtig, die vorhandenen Schlüssel zu sichern.
+Es ist hier wichtig, die vorhandenen Schlüssel vorher zu sichern.
 
 Der einzige sinnvolle Weg dies zu tun, ist unter Verwendung der im
 alten System vorhandenen Möglichkeiten.  Suchen Sie nach einem
@@ -1593,7 +1597,7 @@ alte System bereits den neuen Konventionen zum Speicherort für die
 Schlüssel und Sie müssen nichts weiter unternehmen.
 
 Wenn die alten Schlüssel nicht erscheinen, so importieren Sie diese
-einfach aus den erstellten Backupdateien.  Lesen Sie hierzu das
+einfach aus den erstellten Sicherungsdateien.  Lesen Sie hierzu das
 Kapitel 12 im Handbuch "`\xlink{Gpg4win für
   Durchblicker}{durchblicker.html}"'.
 
