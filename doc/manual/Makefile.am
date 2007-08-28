@@ -65,7 +65,8 @@ eps_files = adele01.eps.gz adele02.eps.gz man-with-signed-key.eps.gz \
             sc-winpt-startmenu.eps.gz sc-winpt-trayicon.eps.gz \
 	    sc-winpt-clip-decrypt.eps.gz sc-winpt-good-sig.eps.gz \
             sc-winpt-sel-enc-key.eps.gz sc-winpt-enctoself.eps.gz \
-	    sc-misc-mein-key-asc.eps.gz 
+	    sc-misc-mein-key-asc.eps.gz \
+            openpgp-icon.eps.gz smime-icon.eps.gz
 
 eps_files_bb  = $(eps_files:.gz=.bb)
 eps_files_png  = $(eps_files:.eps.gz=.png)

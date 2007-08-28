@@ -1,5 +1,12 @@
 2007-08-28  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
 
+	* manual/openpgp-icon.eps.gz, manual/smime-icon.eps.gz: New.
+
+	* manual/Makefile.am: Added handling for openpgp-icon.eps.gz and
+	smime-icon.eps.gz.
+
+2007-08-28  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
+
 	* manual/einsteiger.tex, manual/durchblicker.tex: Unified terms
 	"Passwortsatz", "Passwort" to "Passphrase".
 
