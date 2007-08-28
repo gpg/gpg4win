@@ -416,6 +416,121 @@ Anhang \ref{ch:auto} "`Automatische Installation von Gpg4win"' weiter.
 }
 
 \clearpage
+\section{Zwei Wege, ein Ziel: OpenPGP \& S/MIME}
+
+Wie so oft gibt es für das gleiche Ziel verschiedene Wege, ähnlich ist
+es auch in der Verschlüsselung Ihrer \Email{}s mit den Standards OpenPGP
+und S/MIME. Beide Standards und ihre Umsetzungen in Software ermöglichen die
+\Email{}-Veschlüsselung mit Freier Software, wie zum Beispiel Gpg4Win.
+
+Beim Verschlüsseln bzw. bei der Sicherheit der geheimen Daten-Übertragung
+sind 2 Perspektiven wichtig, einmal die Gewährleistung der \textbf{Geheimhaltung}
+und zum anderen die \textbf{Authentizität} des Absenders. Authentizität bedeutet
+hier, dass der Inhalt auch tatsächlich vom besagten Absender ist.
+
+Konzeptionell steckt hinter OpenPGP und S/MIME das gleiche System zur Geheimhaltung,
+und zwar das Public-Key-Verfahren. Was heisst das?
+
+Nehmen wir an, die \Email{} oder die Datei sei in einer Truhe verschlossen.
+Im Gegensatz zu einem "`normalen"' Schloss mit einem Schlüssel gibt es beim
+Public-Key-Verfahren zum Verschlüsseln/Entschlüsseln \textbf{ein Schlüsselpaar}.
+So gibt es einen beglaubigten Schlüssel zum Verschlüsseln der \textbf{"`Zertifikat"'} und
+einen Schlüssel zum Entschlüsseln \textbf{"`Geheimer Schlüssel"'}.
+
+Klingt zwar komisch wann man an echte Schlösser denkt, aber bei
+Software löst diese Idee das Problem, dass ich meinen Schlüssel
+für jeden Empfänger aus der Hand geben müsste.
+Denn normalerweise muss der Schlüssel zum Verschlüsseln/Abschließen auch
+zum Entschlüsseln bzw. Aufschließen benutzt werden. Also muss ich Ihnen,
+wenn ich etwas für Sie in der Truhe verschließe, die Truhe \textbf{und}
+den Schlüssel geben. Wenn der Schlüssel bei der Übertragung
+abhanden kommt oder jemand davon eine Kopie erstellt, ist das ein
+grosses Problem.
+
+Beim Public-Key-Verfahren verschließe ich mit Ihrem \textbf{"`Zertifikat"'}
+die Truhe und Sie schließen die Truhe mit Ihrem \textbf{"`Geheimen Schlüssel"'} auf.
+Ich muss also nur die Truhe zu Ihnen transportieren lassen.
+Das ist auf jeden Fall sicherer als den geheimen Schlüssel mit zu
+transportieren, selbst wenn er einen anderen Weg als die Truhe zu Ihnen nehmen
+würde.
+
+Trotz dieses gleichen Ansatzes zur Geheimhaltung unterscheiden sich
+OpenPGP und S/MIME aber zum Beispiel bei der Schlüsselerzeugung.
+
+Falls Sie sich fragen, wie das Public-Key-Verfahren so funktionieren kann, und
+warum das sicher ist:
+
+\textbf{
+\OtherBook{} Lesen Sie jetzt im Handbuch 
+"`\xlink{Gpg4win für Durchblicker}{durchblicker.html}"'
+             die Kapitel 13 und 14.
+ }
+
+Mit ein wenig Interesse und Zeit kann man dort auch die kleinen mathematischen
+Geheimnisse verstehen. Viel Spaß beim Entdecken.
+
+% TODO: Grafik?! (z.B. Alice - Bob Transport-Problem)
+
+Der wesentlichste Unterschied zwischen OpenPGP und S/MIME liegt
+im Bereich der Authentifizierung.
+Um die Authentizität des Absenders festzustellen, ist bei S/MIME
+ein Zertifikat notwendig, welches die Authentizität des Schlüssel-Besitzers
+unzweifelhaft beglaubigt.
+Das heisst, dass ich meinen Schlüssel von einer dazu
+berechtigten Organisation zertifizieren lassen muss, bevor er daruch wirklich nutzbar wird.
+Diese Organisation wurde wiederum von einer höher stehenden Organisaiton zertifiziert
+usw. bis man zu einem Wurzel-Zertifikat kommt. Vertaut man nun diesem Wurzel-Zertifkat,
+so vertaut man automatisch allen darunter liegenden Zertfizierungen. Das nennt
+man hierarchisches Vertrauenskonzept. Zumeist ist die Kette nur 3 Elemente
+lang: Wurzel, Zertifizierungsstelle (auch CA für Certificate Authority genannt), Anwender.
+Wurzel zertifiziert CA, CA zertifiziert Anwender.
+
+Im Gegensatz dazu erlaubt OpenPGP neben dieser baum-artigen Zertifizierung
+zusätzlich auch eine direkte "`\textbf{peer-to-peer}"' Zertifizierung (Anwender A zertfiziert
+Anwender B, B zertifiziert A und C usw.) und macht damit
+aus einem Zertifizierungs-Baum ein Zertifizierungs-Netz, das sogenannte
+\textbf{Web-of-Trust}. Im Fall der direkten Authentifizierung bei OpenPGP haben Sie
+also die Möglichkeit, ohne eine Zertifizierung einer höheren Stelle verschlüsselte Daten und
+\Email{}s auszutauschen. Dafür reicht es aus, wenn Sie der \Email{}-Adresse
+und dem dazugehörigen Zertifikat ihres Kommunikationspartners vertrauen.
+
+\textbf{
+\OtherBook{} Nähere Informationen zu Authentifizierungswegen wie zum Beispiel
+Web-of-Trust finden Sie im Handbuch
+"`\xlink{Gpg4win für Durchblicker}{durchblicker.html}"'
+             im Kapitel 3.
+}
+
+% TODO: Grafik?! (z.B. Alice - Bob Authentizität-Problem)
+
+Zusammengefasst bedeutet das für Sie:
+\begin{itemize}
+\item sowohl \textbf{OpenPGP} als auch \textbf{S/MIME} kann Ihnen die notwendige Sicherheit
+ bieten,
+\item aber Sie sind \textbf{nicht kompatibel} miteinander, so dass die geheime
+	Kommunikation und die Authentifizierung nicht interoperabel sind.
+\item \textbf{Gpg4Win} als Freie Software ermöglicht Ihnen die bequeme
+\textbf{ parallele } Nutzung beider Systeme.
+\end{itemize}
+
+Falls Ihnen all das etwas zuviel Informationen waren, machen Sie sich keine
+Sorgen, in den folgenden Kapiteln wird jeder Schritt von der Installation bis
+hin zur Verschlüsselung  sowohl mit OpenPGP als auch
+mit S/MIME detailliert erklärt. Außerdem weisen Sie besondere Symbole für OpenPGP und S/MIME auf
+Erklärungen zu den verschiedenen Konzepten hin, so dass immer sofort ersichtlich ist,
+zu welchem Konzept welche Erklärung gehört.
+
+\begin{figure}[htbp]
+  \centering
+  \fbox{
+	 \includegraphics[height=0.8cm]{openpgp-icon}
+	 \includegraphics[width=1.4cm]{smime-icon}
+  }
+%  \caption{Titel}
+%  \label{Labelname}
+\end{figure}
+
+\clearpage
 %% Original page 15
 \section{Sie erzeugen Ihr  Schlüsselpaar}
 
