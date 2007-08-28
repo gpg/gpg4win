@@ -1,5 +1,10 @@
 2007-08-28  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
 
+	* manual/einsteiger.tex: A new chapter on explaining
+	the two worlds, S/MIME and OpenPGP. By Geo Kocheril.
+
+2007-08-28  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
+
 	* manual/einsteiger.tex: Some little improvements and typo fixes,
 	by Geo Kocheril.
 
