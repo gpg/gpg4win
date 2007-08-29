@@ -28,7 +28,7 @@ Typische Aufgaben:
 
 <ol>
 <li> Die Quellen zur Website anonyme (also ohne Schreibrechte) holen:<br>
-     <em>svn checkout https://svn.wald.intevation.org/gpg4win/trunk/ gpg4win-trunk-anon</em>
+     <em>svn checkout https://svn.wald.intevation.org/svn/gpg4win/trunk/ gpg4win-trunk-anon</em>
 
 <li> Das gesamte Paket initial konfigurieren:<br>
      <em>
