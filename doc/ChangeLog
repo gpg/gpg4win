@@ -1,3 +1,8 @@
+2007-08-29  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
+
+	* website/website-maintenance.htm4, website/website-maintenance-de.htm4:
+	Fixed SVN URL.
+
 2007-08-28  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
 
 	* manual/openpgp-icon.eps.gz, manual/smime-icon.eps.gz: New.
