@@ -231,8 +231,8 @@ server ftp://ftp.gnupg.org/gcrypt
 file gnupg/gnupg-1.4.7.tar.bz2
 chk  22149105845c79068771837c8deb7d5ba0854927
 
+name gnupg2-2.0.6.tar.bz2
 file gnupg/gnupg-2.0.6.tar.bz2
-ren  gnupg2-2.0.6.tar.bz2
 chk  4aa9a3ecc954126cfc0a30bef94ec6e1fbbc7009
 
 file libgpg-error/libgpg-error-1.5.tar.bz2
@@ -266,4 +266,20 @@ file 350/gpa-0.7.6.tar.bz2
 chk  bb9182cd4c6bd6677ba9cdcca262dcc1b1d22c3c
 
 
+#
+# Qt
+#
+server http://www.kdab.net/~frank/qt-win
 
+name qt-win-opensource-4.3.1-bin.zip
+file Qt-Win-Opensource-4.3.1.zip
+chk 36da6ba5a271bb66dd4e92a6b237ec8051edbf92
+
+name qt-win-opensource-4.3.1-lib.zip
+file Qt-Win-Opensource-4.3.1-dev.zip
+chk c73998ac45b17ec4b7a52de6ef8f7f0e95d9818a
+
+server ftp://ftp.trolltech.com/pub/qt/source
+name qt-win-opensource-4.3.1-src.zip
+file qt-win-opensource-src-4.3.1.zip
+chk 7dcdaafe5ab451b1bc9af0e5db080e7b5d484732

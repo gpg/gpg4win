@@ -200,6 +200,12 @@
 !define gpg4win_pkg_gettext_version @gpg4win_pkg_gettext_version@
 !define gpg4win_pkg_gettext_src @gpg4win_pkg_gettext_src@
 
+@HAVE_PKG_QT@
+!define gpg4win_pkg_qt @gpg4win_pkg_qt@
+!define gpg4win_pkg_qt_version @gpg4win_pkg_qt_version@
+!define gpg4win_pkg_qt_dev @gpg4win_pkg_qt_dev@
+!define gpg4win_pkg_qt_src @gpg4win_pkg_qt_src@
+
 # Internal packages.
 @HAVE_PKG_MAN_NOVICE_DE@
 

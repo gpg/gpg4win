@@ -1,5 +1,5 @@
 # inst-sections.nsi - Installer for GPG4Win sections.  -*- coding: latin-1; -*-
-# Copyright (C) 2005, 2006 g10 Code GmbH
+# Copyright (C) 2005, 2006, 2007 g10 Code GmbH
 # 
 # This file is part of GPG4Win.
 # 
@@ -116,6 +116,9 @@
 #!ifdef HAVE_PKG_EUDORAGPG
 #!include "inst-eudoragpg.nsi"
 #!endif
+!ifdef HAVE_PKG_QT
+!include "inst-qt.nsi"
+!endif
 !ifdef HAVE_PKG_MAN_NOVICE_EN
 !include "inst-man_novice_en.nsi"
 !endif
@@ -142,6 +145,9 @@
 !endif
 !ifdef HAVE_PKG_MAN_NOVICE_EN
 !include "uninst-man_novice_en.nsi"
+!endif
+!ifdef HAVE_PKG_QT
+!include "uninst-qt.nsi"
 !endif
 #!ifdef HAVE_PKG_EUDORAGPG
 #!include "uninst-eudoragpg.nsi"
@@ -452,6 +458,9 @@ Function CalcDepends
 !ifdef HAVE_PKG_PINENTRY
   !insertmacro UnselectSection ${SEC_pinentry}
 !endif
+!ifdef HAVE_PKG_QT
+  !insertmacro UnselectSection ${SEC_qt}
+!endif
 
   # Then enable all dependencies in reverse build list order!
 
@@ -637,6 +646,7 @@ Function CalcDepends
 !endif
 
   # Package "libiconv" has no dependencies.
+  # Package "qt" has no dependencies.
 
 FunctionEnd
 
