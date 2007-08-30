@@ -1,5 +1,17 @@
 2007-08-30  Marcus Brinkmann  <marcus@g10code.de>
 
+	* configure.ac: Add gpgex.
+	* include/config.nsi.in: Add gpgex.
+	* src/Makefile.am (EXTRA_DIST): Add inst-gpgex.nsi and
+	uninst-gpgex.nsi.
+	(gpg4win_spkgs): Add gpgex.
+	(gpg4win_pkg_gpgex_configure): New variable.
+	* src/inst-sections.nsi: Add gpgex installer and uninstaller, as
+	well as description.
+	(CalcDefaults, CalcDepends): Add gpgex.
+
+2007-08-30  Marcus Brinkmann  <marcus@g10code.de>
+
 	* packages/download.sh: Implement new "name" command and remove
 	"ren" command.
 	* packages/packages.current: Add qt.

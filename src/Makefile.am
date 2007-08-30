@@ -37,6 +37,7 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi config.site \
         inst-gpgee.nsi		   uninst-gpgee.nsi	      \
         inst-gpgme.nsi		   uninst-gpgme.nsi	      \
         inst-gpgol.nsi		   uninst-gpgol.nsi	      \
+        inst-gpgex.nsi		   uninst-gpgex.nsi	      \
         inst-gtk+.nsi		   uninst-gtk+.nsi	      \
         inst-jpeg.nsi		   uninst-jpeg.nsi	      \
         inst-libassuan.nsi	   uninst-libassuan.nsi	      \
@@ -67,7 +68,8 @@ CLEANFILES = g4wihelp.dll versioninfo.txt README.en.txt README.de.txt \
              installer-options.ini NEWS.tmp gpgwrap.exe
 
 # Supported source packages.
-gpg4win_spkgs = glib gnupg libgpg-error gpgme gpgol gpa winpt sylpheed-claws \
+gpg4win_spkgs = glib gnupg libgpg-error gpgme gpgol gpgex \
+		gpa winpt sylpheed-claws \
 	        claws-mail gnupg2 pinentry libassuan libksba \
 		libgcrypt dirmngr w32pth
 
@@ -158,6 +160,8 @@ gpg4win_pkg_gpa_configure = --silent \
 
 gpg4win_pkg_gpgol_configure = --silent \
   --with-gpgme-prefix=$(idir) --with-gpg-error-prefix=$(idir)
+
+gpg4win_pkg_gpgex_configure = --silent
 
 gpg4win_pkg_winpt_configure = --silent \
   --with-gpgme-prefix=$(idir) --with-gpg-error-prefix=$(idir)

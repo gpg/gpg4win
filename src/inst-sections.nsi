@@ -86,6 +86,9 @@
 !ifdef HAVE_PKG_GPGOL
 !include "inst-gpgol.nsi"
 !endif
+!ifdef HAVE_PKG_GPGEX
+!include "inst-gpgex.nsi"
+!endif
 !ifdef HAVE_PKG_PANGO
 !include "inst-pango.nsi"
 !endif
@@ -178,6 +181,9 @@
 !endif
 !ifdef HAVE_PKG_PANGO
 !include "uninst-pango.nsi"
+!endif
+!ifdef HAVE_PKG_GPGEX
+!include "uninst-gpgex.nsi"
 !endif
 !ifdef HAVE_PKG_GPGOL
 !include "uninst-gpgol.nsi"
@@ -293,6 +299,17 @@ calc_defaults_gnupg2_done:
   StrCmp $R0 "0" 0 calc_defaults_gpgol_done
    !insertmacro UnselectSection ${SEC_gpgol}
 calc_defaults_gpgol_done:
+!endif
+
+!ifdef HAVE_PKG_GPGEX
+  g4wihelp::config_fetch_bool "inst_gpgex"
+  StrCmp $R0 "1" 0 calc_defaults_gpgex_not_one
+   !insertmacro SelectSection ${SEC_gpgex}
+   Goto calc_defaults_gpgex_done
+  calc_defaults_gpgex_not_one:
+  StrCmp $R0 "0" 0 calc_defaults_gpgex_done
+   !insertmacro UnselectSection ${SEC_gpgex}
+calc_defaults_gpgex_done:
 !endif
 
 !ifdef HAVE_PKG_GPA
@@ -591,6 +608,14 @@ Function CalcDepends
   skip_gpgol:
 !endif
 
+!ifdef HAVE_PKG_GPGEX
+  !insertmacro SectionFlagIsSet ${SEC_gpgex} \
+		${SF_SELECTED} have_gpgex skip_gpgex
+  have_gpgex:
+  # FIXME: Add Kleopatra as dependency.
+  skip_gpgex:
+!endif
+
 !ifdef HAVE_PKG_LIBPNG
   !insertmacro SectionFlagIsSet ${SEC_libpng} \
 		${SF_SELECTED} have_libpng skip_libpng
@@ -724,6 +749,9 @@ FunctionEnd
 !endif
 !ifdef HAVE_PKG_GPGOL
   !insertmacro MUI_DESCRIPTION_TEXT ${SEC_gpgol} $(DESC_SEC_gpgol)
+!endif
+!ifdef HAVE_PKG_GPGEX
+  !insertmacro MUI_DESCRIPTION_TEXT ${SEC_gpgex} $(DESC_SEC_gpgex)
 !endif
 !ifdef HAVE_PKG_GPA
   !insertmacro MUI_DESCRIPTION_TEXT ${SEC_gpa} $(DESC_SEC_gpa)

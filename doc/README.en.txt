@@ -67,6 +67,7 @@ all possible keys:
   ; Installer settings.  Do not define or leave empty for defaults.
   inst_gnupg2 = false
   inst_gpgol = true
+  inst_gpgex = true
   inst_gpa = true
   inst_winpt = true
   inst_gpgee = true

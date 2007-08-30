@@ -207,6 +207,12 @@ file gpgol-0.9.91.tar.bz2
 chk  391eee90ea072ea181bed332b9411f2a43395e7e
 
 #
+# GpgEX
+#
+
+# FIXME: Add this when released.
+
+#
 # Pth emulation
 #
 server ftp://ftp.g10code.com/g10code/w32pth

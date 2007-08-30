@@ -87,6 +87,7 @@ zugleich alle erlaubten Schlüsselworte zeigt:
   ; verwendet wird.
   inst_gnupg2 = true
   inst_gpgol = true
+  inst_gpgex = true
   inst_gpa = true
   inst_winpt = true
   inst_gpgee = true

@@ -1,3 +1,8 @@
+2007-08-30  Marcus Brinkmann  <marcus@g10code.de>
+
+	* manual/einsteiger.tex (Automatische Installation von Gpg4win),
+	README.de.txt, README.en.txt: Add inst_gpgex key.
+
 2007-08-29  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
 
 	* CD, CD/README.txt, CD/Makefile: New. Initial coarse creation
