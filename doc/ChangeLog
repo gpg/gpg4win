@@ -1,5 +1,8 @@
 2007-08-30  Marcus Brinkmann  <marcus@g10code.de>
 
+	* website/localize-gpg4win.htm4: Add GpgEX instructions, fix some
+	grammar.
+
 	* manual/einsteiger.tex (Automatische Installation von Gpg4win),
 	README.de.txt, README.en.txt: Add inst_gpgex key.
 
