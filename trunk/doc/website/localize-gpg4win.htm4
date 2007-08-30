@@ -63,7 +63,7 @@ The Gpg4win developers will help you to find out the best option or whether
 there will arise bigger problems with the support of you language.
 </p>
 
-<h4>How to update a available language</h4>
+<h4>How to update an available language</h4>
 
 This should work on basically any GNU/Linux or other unixoid system:
 
@@ -96,7 +96,7 @@ This should work on basically any GNU/Linux or other unixoid system:
      check whether you completed the translation successfully.
 </ol>
 
-<h4>How to activate a available language</h4>
+<h4>How to activate an available language</h4>
 
 <p>
 Depending on the language environment of your Windows system,
@@ -134,7 +134,7 @@ developer mailing list) before you start if you want to have the Gpg4win
 web site officially in your language.
 </p>
 
-<h4>How to update a available language</h4>
+<h4>How to update an available language</h4>
 
 <p>
 This is a difficult task and requires some disciplin.
@@ -157,7 +157,7 @@ synchronisation work nor the correctness of translations. So, thats where
 disciplin comes to play a role.
 </p>
 
-<h4>How to activate a available language</h4>
+<h4>How to activate an available language</h4>
 
 <p>
 Simply click on the top-right language you prefer.
@@ -196,7 +196,7 @@ It is highly recommended to coordinate with the Gpg4win developers (via the Gpg4
 developer mailing list) before you start.
 </p>
 
-<h4>How to update a available language</h4>
+<h4>How to update an available language</h4>
 
 <p>
 The english version is the master version. Whenever a change
@@ -215,7 +215,7 @@ synchronisation work nor the correctness of translations. So, thats where
 disciplin comes to play a role.
 </p>
 
-<h4>How to activate a available language</h4>
+<h4>How to activate an available language</h4>
 
 <p>
 Simply read the text (html, pdf or print-outs) in one of the available
@@ -245,7 +245,7 @@ a <a href="http://www.claws-mail.org/i18n.php?section=projects">
 Translation Status</a> for the current stable release of Claws Mail.
 </p>
 
-<h4>How to initialize a new or update a available language</h4>
+<h4>How to initialize a new or update an available language</h4>
 
 <p>
 Claws Mail uses GNU gettext and therefore the standard methods
@@ -255,7 +255,7 @@ Translator's Information</a> and a special <a href="http://www.claws-mail.org/ML
 list for coordinating translators</a>.
 </p>
 
-<h4>How to activate a available language</h4>
+<h4>How to activate an available language</h4>
 
 <p>
 Depending on the language environment of your Windows system,
@@ -273,7 +273,7 @@ po directory</a>. This is the most current status, so in case of relatively new 
 recent release of GpgOL might not yet support it.
 </p>
 
-<h4>How to initialize a new or update a available language</h4>
+<h4>How to initialize a new or update an available language</h4>
 
 <p>
 GpgOL uses GNU gettext and therefore the standard methods
@@ -282,7 +282,7 @@ which coordinates translations on the <a href="http://lists.gnupg.org/mailman/li
 GnuPG-i18n Mailing List</a>.
 </p>
 
-<h4>How to activate a available language</h4>
+<h4>How to activate an available language</h4>
 
 <p>
 Depending on the language environment of your Windows system,
@@ -292,10 +292,29 @@ Else, english is used.
 
 <h2>GpgEX</h2>
 
+<h4>Available languages</h4>
+
 <p>
-This is a planned module to replace GpgEE.
-Please ask on the gpg4win developer
-mailing list for more information.
+See the .po filenames in the <a href="http://cvs.gnupg.org/cgi-bin/viewcvs.cgi/trunk/po/?root=GpgEX">GpgEX
+po directory</a>. This is the most current status, so in case of relatively new files the most
+recent release of GpgEX might not yet support it.
+</p>
+
+<h4>How to initialize a new or update an available language</h4>
+
+<p>
+GpgEX uses GNU gettext and therefore the standard methods
+for GNU gettext apply.  GpgEX is managed by the GnuPG developer team
+which coordinates translations on the <a href="http://lists.gnupg.org/mailman/listinfo/gnupg-i18n">
+GnuPG-i18n Mailing List</a>.
+</p>
+
+<h4>How to activate an available language</h4>
+
+<p>
+Depending on the language environment of your Windows system,
+the apropriate language is selected automatically if available.
+Else, english is used.
 </p>
 
 <h2>Kleopatra</h2>
@@ -315,7 +334,7 @@ Not yet documented here. Please ask on the gpg4win developer
 mailing list for support.
 </p>
 
-<h4>How to initialize a new or update a available language</h4>
+<h4>How to initialize a new or update an available language</h4>
 
 <p>
 GnuPG uses GNU gettext and therefore the standard methods
@@ -324,7 +343,7 @@ coordinates translations on the <a href="http://lists.gnupg.org/mailman/listinfo
 GnuPG-i18n Mailing List</a>.
 </p>
 
-<h4>How to activate a available language</h4>
+<h4>How to activate an available language</h4>
 
 <p>
 Depending on the language environment of your Windows system,
