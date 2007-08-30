@@ -30,6 +30,9 @@
 !undef HAVE_PKG_MAN_NOVICE_DE
 !undef HAVE_PKG_MAN_NOVICE_EN
 !undef HAVE_PKG_MAN_ADVANCED_DE
+!ifdef HAVE_PKG_QT
+!undef HAVE_PKG_QT
+!endif
 !ifdef HAVE_PKG_GNUPG2
 !undef HAVE_PKG_GNUPG2
 !endif

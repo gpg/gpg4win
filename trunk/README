@@ -75,11 +75,12 @@ some of these tasks.  Here is a short run up:
 1. Add constants for the package FOO into include/config.nsi.in .
 
 2. Create 2 new installer scripts, named src/inst-foo.nsi and
-   uninst-foo.nsi .
+   uninst-foo.nsi and add them to EXTRA_DIST in src/Makefile.am.
 
 3. Add foo to one the variables gpg4win_bpgks (if foo should not be
    build be the gpg4win) or gpg4win_spkgs (if foo should be build by
-   gpg4win) in src/Makefile.am
+   gpg4win) in src/Makefile.am .  Also add any required configure
+   flags etc.
 
 4. Add FOO to inst-sections.nsi.
 

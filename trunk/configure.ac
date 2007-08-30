@@ -212,6 +212,9 @@ GPG4WIN_IPKG([man_advanced_de])
 GPG4WIN_IPKG([man_novice_en])
 #GPG4WIN_IPKG([man_advanced_en])
 
+# Qt related stuff.
+GPG4WIN_BPKG_GNUWIN32([qt])
+
 GPG4WIN_FINALIZE
 
 # Throw an error if required tools are missing

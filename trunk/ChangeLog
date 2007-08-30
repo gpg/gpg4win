@@ -1,3 +1,17 @@
+2007-08-30  Marcus Brinkmann  <marcus@g10code.de>
+
+	* packages/download.sh: Implement new "name" command and remove
+	"ren" command.
+	* packages/packages.current: Add qt.
+	* configure.ac: Add qt.
+	* include/config.nsi.in: Add qt.
+	* src/Makefile.am (EXTRA_DIST): Add inst-qt.nsi and uninst-qt.nsi.
+	(gpg4win_bpkgs): Add qt.
+	* src/uninst-qt.nsi, src/inst-qt.nsi: New files.
+	* src/inst-sections.nsi: Run installer and uninstaller for qt.
+	(CalcDepends): Handle qt.
+	* src/gpg4win.nsi: Remove qt from light installer.
+
 2007-08-24  Marcus Brinkmann  <marcus@g10code.de>
 
 	* src/inst-gnupg.nsi: Write compatibility key to registry for GPGee.

@@ -118,6 +118,14 @@ while read key value ; do
        server="$value" 
        name=
        ;;
+     name)
+       if [ -z "$value" ]; then
+           echo "syntax error in name statement, line $lnr" >&2
+           exit 1
+       fi
+       name="$value"
+       echo "using name  \`$name'"
+       ;;
     file)
        if [ -z "$value" ]; then
            echo "syntax error in file statement, line $lnr" >&2
@@ -128,36 +136,20 @@ while read key value ; do
            exit 1
        fi
        url="$server/$value"
-       name=`basename "$value"`
+       if [ -z "$name" ]; then
+           name=`basename "$value"`
+       fi
        if [ -f "$name" -a "$force" = "no" ]; then
            echo "package     \`$url' ... already exists"
        else
            echo -n "downloading \`$url' ..."
-           if ${WGET} -c -q "$url" ; then
+           if ${WGET} -c -q "$url" -O "$name" ; then
                echo " okay"
            else
                echo " FAILED (line $lnr)"
                echo "line $lnr: downloading $url failed" >> '.#download.failed'
            fi
        fi
-       ;;
-     ren)
-       if [ -z "$value" ]; then
-           echo "syntax error in ren statement, line $lnr" >&2
-           exit 1
-       fi
-       if [ -z "$name" ]; then
-           echo "no file name for ren statement, line $lnr" >&2
-           exit 1
-       fi
-       echo -n "renaming    \`$name' ..."
-       if mv -f "$name" "$value" ; then
-           echo " okay"
-       else
-           echo " FAILED (line $lnr)"
-           echo "line $lnr: renaming $name failed" >> '.#download.failed'
-       fi
-       name="$value"
        ;;
      chk)
        if [ -z "$value" ]; then

@@ -58,8 +58,8 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi config.site \
         inst-w32pth.nsi		   uninst-w32pth.nsi	      \
         inst-winpt.nsi		   uninst-winpt.nsi	      \
         inst-zlib.nsi        	   uninst-zlib.nsi            \
+        inst-qt.nsi        	   uninst-qt.nsi              \
 	inst-bzip2.nsi             uninst-bzip2.nsi           
-
 
 
 # Need to clean the dll because we bypassed automake.
@@ -202,8 +202,8 @@ gpg4win_pkg_bzip2_make_args_inst = \
 
 
 # Supported binary packages.
-gpg4win_bpkgs =  libiconv gettext pkgconfig zlib libpng jpeg pango cairo \
-	          atk gtk+ gpgee crypt regex 
+gpg4win_bpkgs = libiconv gettext pkgconfig zlib libpng jpeg pango cairo \
+	        atk gtk+ gpgee crypt regex qt
 
 # libiconv needs some special magic to generate a usable import
 # library.
