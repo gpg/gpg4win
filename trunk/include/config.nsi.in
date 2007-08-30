@@ -94,6 +94,10 @@
 !define gpg4win_pkg_gpgol @gpg4win_pkg_gpgol@
 !define gpg4win_pkg_gpgol_version @gpg4win_pkg_gpgol_version@
 
+@HAVE_PKG_GPGEX@
+!define gpg4win_pkg_gpgex @gpg4win_pkg_gpgex@
+!define gpg4win_pkg_gpgex_version @gpg4win_pkg_gpgex_version@
+
 @HAVE_PKG_GPA@
 !define gpg4win_pkg_gpa @gpg4win_pkg_gpa@
 !define gpg4win_pkg_gpa_version @gpg4win_pkg_gpa_version@
