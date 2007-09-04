@@ -1,3 +1,8 @@
+2007-09-04  Bernhard Reiter <bernhard.reiter@intevation.de>
+
+	* website/index-de.htm4: Fixed typo kontinuerlich. Thanks
+	to Jens Kubieziel for finding it.
+
 2007-08-30  Marcus Brinkmann  <marcus@g10code.de>
 
 	* website/localize-gpg4win.htm4: Add GpgEX instructions, fix some
