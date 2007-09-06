@@ -10,178 +10,168 @@ PAGE_START
 <b>Attention: Translation of page into english in progress</b>
 </p>
 
-<h1>Bau von Gpg4win unter Windows via eines virtualisiertem GNU/Linux</h1>
+<h1>Building of Gpg4win under Windows via virtual GNU/Linux</h1>
 
 <p><b>
-Dieses Beispiel beschreibt konkret die Herstellung eines neuen Gpg4win Installers
-auf Windows XP/SP2 via Debian 'Etch' 4.0 in QEMU.
-Grundsätzlich können für alle drei Komponenten auch Alternativen verwendet
-werden.
+This example pracitcally describes how to build a new Gpg4win Installer on
+Windows XP/SP2 via Debian Etch 4.0 in QEMU. In principle also alternatives can
+be used for all of these three base components.
 </b></p>
 
 <p>
-Tipps: <a href="build-installer-gnulinux.html">Bauen unter
-GNU/Linux etwas detaillierter beschrieben</a> und
-<a href="build-installer-on-w32-debian-screenshots.html">Installation von Debian GNU/Linux 'Etch' 4.0 innerhalb einer virtuellen QEMU-Maschine als Screenshot-Serie illustriert</a>.
+Hints: <a href="build-installer-gnulinux.html">Building under GNU/Linux
+in more detail</a> and
+<a href="build-installer-on-w32-debian-screenshots.html">installation of
+Debian GNU/Linux Etch 4.0 within a virtual QEMU machine illustrated as
+screenshot-series.</a>.
 </p>
 
 <p>
-  <a href="build-installer-de.html">Zurück zur Übersicht zum Installer-Bau</a>
+  <a href="build-installer.html">Back to the overview on building Gpg4win</a>
 </p>
 
-<h2>Inhalt</h2>
+<h2>Contents</h2>
 
 <p>
-<a href="#intro">Einleitung</a><br><br>
-<tt>I   - </tt><a href="#I">Installation von Debian GNU/Linux 'Etch' 4.0 in einer virtuellen Umgebung</a><br>
-<tt>I-1 - </tt><a href="#I-1">Installation von QEMU</a><br>
-<tt>I-2 - </tt><a href="#I-2">Installation von PuTTY</a><br>
-<tt>I-3 - </tt><a href="#I-3">Bezug eines Debian 'Etch' Boot-Mediums</a><br>
-<tt>I-4 - </tt><a href="#I-4">Öffnen einer CMD-Shell</a><br>
-<tt>I-5 - </tt><a href="#I-5">Erzeugen eines Festplatten-Images</a><br>
-<tt>I-6 - </tt><a href="#I-6">Starten der Etch-Installation</a><br>
-<tt>I-7 - </tt><a href="#I-7">Abschluss der Etch-Installation</a>
+<a href="#intro">Introduction</a><br><br>
+<tt>I   - </tt><a href="#I">Installation of Debian GNU/Linux Etch 4.0 in a virtual environment</a><br>
+<tt>I-1 - </tt><a href="#I-1">Installation of QEMU</a><br>
+<tt>I-2 - </tt><a href="#I-2">Installation of PuTTY</a><br>
+<tt>I-3 - </tt><a href="#I-3">Getting a Debian Etch boot medium</a><br>
+<tt>I-4 - </tt><a href="#I-4">Open a CMD Shell</a><br>
+<tt>I-5 - </tt><a href="#I-5">Create the hard disk image</a><br>
+<tt>I-6 - </tt><a href="#I-6">Starting the Etch installation</a><br>
+<tt>I-7 - </tt><a href="#I-7">Finalize the Etch installation</a>
 <br><br>
-<tt>II   - </tt><a href="#II">Bauen von Gpg4win</a><br>
-<tt>II-1 - </tt><a href="#II-1">Starten der virtuellen Maschine</a><br>
-<tt>II-2 - </tt><a href="#II-2">Installation der für den Bau von Gpg4win wichtigen Pakete</a><br>
-<tt>II-3 - </tt><a href="#II-3">Bau der Gpg4win-Installations-Pakete</a><br>
-<tt>II-4 - </tt><a href="#II-4">Extraktion der fertigen Installationspakete</a>
+<tt>II   - </tt><a href="#II">Build of Gpg4win</a><br>
+<tt>II-1 - </tt><a href="#II-1">Start the virtual machine</a><br>
+<tt>II-2 - </tt><a href="#II-2">Installation of important packages for building Gpg4win</a><br>
+<tt>II-3 - </tt><a href="#II-3">Building Gpg4win installation packages</a><br>
+<tt>II-4 - </tt><a href="#II-4">Extraction of the final installation packages</a>
 <br><br>
-<a href="#references">Referenzen (URLs)</a>
+<a href="#references">References (URLs)</a>
 </p>
 
 
-<h2><a name="intro"></a>Einleitung</h2>
+<h2><a name="intro"></a>Introduction</h2>
 
 <p>
- Der Bauprozess von Gpg4win ist auf eine Cross-Kompilierung unter
- GNU/Linux ausgerichtet. Die Schaffung einer geeigneten Bauumgebung
- unter Windows oder u. U. auch anderen Systemen ist zwar prinzipiell möglich,
- erfordert aber umfassende Anpassungsarbeiten an den in Gpg4win integrierten Modulen.
- Wesentlich einfacher ist die Installation eines virtualisierten
- GNU/Linux Systems innerhalb von Windows, in dem der Bauprozess
- dann durchgeführt werden kann.
+ The building process of Gpg4win is aligned to a cross-compiling under
+ GNU/Linux. The creation of a suitable building environment under MS Windows or
+ for other operating system is possible in principle, but requires
+ comprehensive adjustment work on the modules integrated in Gpg4win.
+ The installation of a virtual GNU/Linux system is substantially simpler
+ within Windows, in which the building process can be accomplished then.
 </p>
 
 <p>
- In dieser Anleitung wird beschrieben, wie mit Freier Software
- ein derartiges virtuelles GNU/Linux aufgesetzt und zur Erzeugung
- der Installationspakete genutzt werden kann.
- Als virtuelle Maschine kommt
- das unter GNU GPL stehende QEMU 0.9.0 <a href="#ref1">[1]</a> zum Einsatz.
- Als GNU/Linux-Distribution wird Debian 'Etch' 4.0 [2] benutzt.
+ This manual describes, how such a virtual GNU/Linux can be installed with
+ Free Software and used for building of installation packages.
+ QEMU 0.9.0 <a href="#ref1">[1]</a>, standing under GNU GPL, is used as a
+ virtual machine. Debian Etch 4.0 [2] is used as GNU/Linux distribution.
 </p>
 
 <p>
- Die Anleitung gliedert sich in zwei Teile:
+ This manual is divided in two parts:
  <ol>
-   <li> Der erste Teil beschreibt, wie man unter Windows
-        die Virtualisierungssoftware QEMU installiert,
-        eine virtuelle Festplatte erzeugt und auf dieser
-        ein minimales Debian 'Etch' installiert.
-   <li> Im zweiten Teil wird erläutert, wie der eigentliche
-        Bauprozess innerhalb der virtuellen Maschine ablaufen sollte.
-        Dieser entspricht dem bereits dokumentierten Bauprozess
-        unter GNU/Linux, wird aber der Vollständigkeit halber
-        hier noch einmal aufgeführt.
+   <li> The first part describes, how one installs the software QEMU for
+   virtualisation in the MS-Windows-environment,creates a virtual disk and
+   installs a minimum Debian Etch there.
+   <li> The second part describes, how the actual building process is supposed to
+   work. This corresponds to the building process under GNU/Linux,
+   which has already been documented. However, it is here again for the sake of
+   completeness.
  </ol>
 </p>
 
-<h3><a name="I"></a>I - Installation von Debian GNU/Linux 'Etch' 4.0 in einer virtuellen Umgebung</h3>
+<h3><a name="I"></a>I - Installation of Debian GNU/Linux Etch  4.0 in a virtual environment</h3>
 
 <p>
- Resultat dieses Abschnittes wird eine Datei sein, die ein Festplatten-Image
- eines rudimentären Debian 'Etch' für Ihre Virtualisierungssoftware (Virtual Machine Monitor)
- enthalten wird. Die finale Image-Datei wird ungefähr 250MB groß sein.
- Insgesamt sollte für diese Phase der Installation mindestens 1,5GB
- freien Festplattenplatz auf dem Host-System zur Verfügung stehen.
+ The result of this section is a file, which will contain a partition image
+ of a rudimentary Debian Etch for QEMU (Virtual Machine monitor).
+ The final image file will need approximately 250MB. For the whole process at
+ least 1.5GB disk space should be available on the host system.
 </p>
 
-<h4><a name="I-1"></a> I-1 - Installation von QEMU</h4>
+<h4><a name="I-1"></a> I-1 - Installation of QEMU</h4>
 
 <p>
- QEMU ist eigentlich ein Hardware-Emulator. Mit anderen Worten,
- er interpretiert den Maschinen-Code des simulierten Gast-Systems
- und führt ihn auf dem Host-System aus. Dies würde es u.a. auch
- ermöglichen, den Bau von Gpg4win-Paketen auf einen PPC-System
- unter Mac OS X-Host durchzuführen. Für den Fall einer Installation
- unter MS Windows auf einer x86-Architektur empfiehlt es sich,
- neben dem eigentlichen Emulator noch die Virtualisierungskomponente
- QEMU Accelerator (KQEMU) zu installieren. Sie sorgt für eine direkte
- Ausführung des Maschinen-Codes des Gasts- auf dem Host-System, was
- die Auführung enorm beschleunigt, sofern das Gast-System ebenfalls
- eine x86-Architektur aufweisst.
+ QEMU is actually a hardware emulator. In other words, QEMU interprets
+ the machine code of the simulated guest system and executes it on
+ the host system. This would also allow to accomplish the
+ building of Gpg4win-packages on a PPC system under Mac OS X-host. In case of
+ an installation under MS Windows on a x86-architecture it is advisable to
+ install the virtualisation module KQEMU, the QEMU accelerator, addtional
+ to the actual emulator.
+ It provides for a direct execution of the
+ guest-system's machine code on the host system, which accelerates
+ the execution enormously, if the guest system likewise has a x86-architecture.
 </p>
 
 <p>
- Auf der "QEMU for Windows" <a href="#ref3">[3]</a> Seite finden sich fertige
- Installations-Binaries für QEMU <a href="#ref4">[4]</a> und
+ On the 'QEMU for Windows' <a href="#ref3">[3]</a> page you can get compiled
+ installation binaries for QEMU <a href="#ref4">[4]</a> and
  KQEMU <a href="#ref5">[5]</a>.
- Nach dem Herunterladen müssen die beiden Binaries einfach
- ausgeführt werden, um sie zu installieren.
- Bitte merken Sie sich den Pfad zur QEMU-Installation
- (z.B. also: C:\Programme\QEMU).
+ After downloading the two Binaries they must be simply executed,
+ in order to install them. Please note the path for QEMU installation
+ (e.g. thus: C:\Programs\QEMU).
 </p>
 
 
-<h4><a name="I-2"></a>I-2 - Installation von PuTTY</h4>
+<h4><a name="I-2"></a>I-2 - Installation of PuTTY</h4>
 
 <p>
- Um Daten zwischen Host- und Gast-System austauschen zu können,
- existieren mehrere Möglichkeiten. In dieser Anleitung wird vorgeschlagen,
- auf dem Gast-System einen OpenSSH-Server zu installieren. Um mit diesem
- kommunizieren zu können, wird eine entsprechende Client-Software benötigt.
- PuTTY <a href="#ref6">[6]</a> ist hierfür gut geeignet. Ein Windows-Installer
- findet sich unter <a href="#ref7">[7]</a>.
- Auch hier wird die Installation durch das Ausführen der
- Datei gestartet. Es ist empfehlenswert, nach der Installation die
- PATH-Variable um den Pfad hin zur Putty-Installation zu erweitern.
- Später wird von den Programmen putty.exe und pscp.exe Gebrauch gemacht.
+ In order to be able to exchange data between host and guest system, there are
+ several possibilities. In this manual it is suggested to install a
+ Open SSH server on the guest system. In order to be able to communicate with
+ this, an appropriate client software is needed.
+ PuTTY <a href="#ref6">[6]</a> is well suitable for this. A Windows installer
+ can be found here <a href="#ref7">[7]</a>.
+ The installation is also started through file-execution. After the installation it
+ is recommended to extend the PATH variable by the path of Putty installation.
+ Later on the tools 'putty.exe' and 'pscp.exe' will be used.
 </p>
 
-<h4><a name="I-3"></a>I-3 - Bezug eines Debian 'Etch' Boot-Mediums</h4>
+<h4><a name="I-3"></a>I-3 - Getting a Debian Etch boot medium</h4>
 
 <p>
- Für das Herunterladen der für den Bau von Gpg4win
- notwendigen Pakete wird ohnehin eine schnelle Internet-Verbindung
- vorausgesetzt. Von daher reicht es aus, sich das minimale
- x86-Netz-Installations-Image debian-40r0-i386-netinst.iso (159MB)
- oder gar das kleinere Business-Card-Image
- debian-40r0-i386-businesscard.iso (32MB) zu besorgen und den Rest
- des Debian-Systems bei der Installation aus dem Netz nachzuladen.
- Das Net-Image ist unter <a href="#ref8">[8]</a> und das Business-Image unter
- <a href=#ref9">[9]</a>
- oder alternativ über die entsprechenden Debian-Mirrors zu finden.
+ A fast Internet connection is assumed for downloading the packages necessary
+ to build Gpg4win anyway. It is sufficient to have the minimum
+ x86-Net-Installation-Image debian-40r0-i386-netinst.iso (159MB) or the even
+ smaller Business Card image debian-40r0-i386-businesscard.iso (32MB)
+ and to reload the rest of the Debian system during the installation over
+ the net. The Net-Installation image can be found under <a href="#ref8">[8]</a> 
+ and the Business image under  <a href=#ref9">[9]</a>  or alternatively
+ over the appropriate Debian Mirrors.
 </p>
 
 <p>
- Es ist nicht nötig, diese Images auf eine CD zu brennen,
- da QEMU auch direkt von ihnen booten kann. 
+ It is not necessary to burn those images on CD since QEMU can also boot
+ directly from them.
 </p>
 
-<h4><a name="I-4"></a> I-4 - Öffnen einer CMD-Shell</h4>
+<h4><a name="I-4"></a> I-4 - Open a CMD-shell</h4>
 
 <p>
- Im Start-&gt;Ausführen...-Dialog "cmd" eingeben und bestätigen.
- In der CMD-Shell folgendes eingeben:
+ In Start-> Run-dialog please enter 'cmd' and confirm. Enter the following
+ lines in the CMD Shell:
 </p>
 
 <pre>
-   cd /d &lt;Arbeitsverzeichnis&gt;
-   QEMU=C:\Programme\Qemu
+   cd /d &lt;working directory&gt;
+   QEMU=C:\Programs\Qemu
    set PATH=%QEMU%;%PATH%
 </pre>
 
 <p>
- Wobei &lt;Arbeitsverzeichnis&gt; das Verzeichnis sein sollte,
- in dem das Festplatten-Abbild erstellt werden soll. Z.B. C:\temp
+ Whereas &lt;working directory&gt; should be the directory, in which
+ the disk image is. E.g. C:\temp
 </p>
 
-<h4><a name="I-5"></a>I-5 - Erzeugen eines Festplatten-Images</h4>
+<h4><a name="I-5"></a>I-5 - Create the hard disk image</h4>
 
 <p>
- In der offenen CMD-Shell folgendes eingeben:
+ Enter the following in the opened CMD-shell:
 </p>
 
 <pre>
@@ -191,15 +181,14 @@ GNU/Linux etwas detaillierter beschrieben</a> und
 </pre>
 
 <p>
- Dies legt eine virtuelle Festplatten-Datei der Maximalgröße
- 2500MB an. Die Datei wird erst bei Bedarf Schritt für
- Schritt vergrößert.
+ This sets a virtual disk file of the maximum size of 2500MB. The file is only
+ increased to this size if necessary.
 </p>
 
-<h4><a name="I-6"></a>I-6 - Starten der Etch-Installation</h4>
+<h4><a name="I-6"></a>I-6 - Start the Etch installation</h4>
 
 <p>
- In der offenen CMD-Shell folgendes in einer Zeile eingeben
+ Enter the following command in one line in the shell
 </p>
 
 <pre>
@@ -210,63 +199,55 @@ GNU/Linux etwas detaillierter beschrieben</a> und
 </pre>
 
 <p>
- Dies startet einen virtuellen PC mit 256MB, der vom
- Netz-Installations-Image bootet und die eben erzeugte virtuelle
- Festplatte zugewiesen bekommt. Der Pfad zum Boot-Image
- sollte natürlich angepasst werden. Die "-k de"-Option wählt das
- deutsche Tastatur-Layout. Die "-kernel-kqemu"-Option aktiviert
- die vollständige Virtualisierung des emulierten System, was die
- Performanz drastisch erhöht. Wenn man während des Bootens
- Meldungen der Form "hda: lost interrupt" bekommt, sollte man
- zusätzlich die Option "-no-acpi" in obigem Aufruf ergänzen.
- Sollte es darüber hinaus unerwarteter Weise zu
- Problemen mit der virtuellen Maschine kommen, sollte die
- Flagge "-kernel-kqemu" entfernt werden. Details hierzu finden sich
- in der Dokumentation zu QEMU.
+ This starts a virtual PC with 256MB RAM, which boots the net installation
+ image and which gets the evenly produced virtual disk assigned. The path to
+ the boot image should be adapted certainly. The option '-k us' selects the 
+ english keyboard layout. The '-kernel kqemu' option activates the full
+ virtualisation of the emulated system, this increases/boosts the performance
+ drastically. If one gets during the start-up/boot-process messages of the form
+ 'hda: lost interrut', one should supplement additionally the option '-no-acpi'.
+ If it should come beyond that to unexpected problems with the virtual machine,
+ the flag should be removed '-kernel kqemu'. Details can be found in
+ the documentation to QEMU.
 </p>
 
 <p>
- Es sollte nun in einem sich neu öffnenden Fenster der
- Boot-Prompt der Debian-Installation zu sehen sein. Diese
- kann durch Betätigen der Return-Taste gestartet werden.
- Die Installation sollte minimal gehalten werden. Nach
- Wahl der Sprache sollte die komplette virtuelle Festplatte
- für die Installation benutzt werden. Eine ext3-Partion+Swap
- reichen für unsere Zwecke völlig aus.
- Die Standard-Netzwerk-Konfiguration reicht ebenfalls aus.
+ Now there should be a boot prompt of Debian installation in a actually opened
+ window. This can be started by confirming with the RETURN key. The installation
+ should be kept minimal. After choice of the language the complete virtual disk
+ should be used for the installation. A ext3-partition+swap are fully sufficient
+ for our purposes. The standard network configuration is sufficient likewise.
 </p>
 
 <p>
- Neben dem root-Nutzer sollte ein Benutzerkonto "gpg4win" angelegt werden.
- Über dieses Benutzerkonto wird der eigentlich Bauprozess abgewickelt.
+ Beside the root user, a user account 'gpg4win' should be created. This user
+ account is used to complete the building process.
 </p>
 
-<h4><a name="I-7"></a>I-7 - Abschluss der Etch-Installation</h4>
+<h4><a name="I-7"></a>I-7 - Finalize the Etch installation</h4>
 
 <p>
- Es sollte die aktuellen Sicherheits-Updates mit
- 'apt-get update &amp;&amp; apt-get upgrade' eingespielt werden.
-</p>
-
-<p>
- Optional für das Erstellen eines wiederverwendbaren Images:
- 'apt-get clean; apt-get auto-clean' zum Löschen gecachter
- Downloads aufrufen.
+ The current security updates should be installed:
+ 
+ 'apt-get update &amp;&amp; apt-get upgrade'
+ 
 </p>
 
 <p>
- Das Gast-System kann jetzt mit 'shutdown -h now' heruntergefahren
- werden.
+ Optionally for providing a reusable image:
+ 'apt-get clean; apt-get auto-clean' These commands deletes the cached downloads.
 </p>
 
 <p>
- Will man ein wiederverwendbares Basis-Image erzeugen, bietet es sich
- an, das Image zu bereinigen und transparent zu komprimieren.
- Der Zeitpunkt (damit ist der Umfang des Images gemeint) zu dem Sie ein Basis-Image
- erzeugen wollen, müssen Sie,
- abhängig davon ob Sie Gpg4win dauerhaft oder nur zum ausprobieren auf
- Windows bauen, selbst bestimmen.
- Dies kann auf der CMD-Shell mit folgenden Befehlen durchgeführt werden.
+ The guest system can be shut down now with: 'shutdown -h now'
+</p>
+
+<p>
+ If one wants to produce a reusable base image, you should clean and
+ transparently compress the image. The time and size of the image depends on,
+ whether you want to use Gpg4win permanently or only to try out on Windows.
+
+This can be accomplished on CMD-shell with the following commands:
 </p>
 
 <pre>
@@ -277,17 +258,16 @@ GNU/Linux etwas detaillierter beschrieben</a> und
 </pre>
 
 <p>
- Eine Kopie dieses Images sollte man verwahren und regelmäßig
- mit Sicherheits-Updates versorgen.
+ One should keep a copy of this image and supply regularly with security updates.
 </p>
 
-<h3><a name="II"></a>II - Bauen von Gpg4win</h3>
+<h3><a name="II"></a>II - Construction of Gpg4win</h3>
 
 
-<h4><a name="II-1"></a>II-1 - Starten der virtuellen Maschine</h4>
+<h4><a name="II-1"></a>II-1 - Starting the virtual machine</h4>
 
 <p>
- In der offenen CMD-Shell bitte in einer Zeile folgendes eingeben:
+ Please enter the following line in an open CMD-shell:
 </p>
 
 <pre>
@@ -298,21 +278,20 @@ GNU/Linux etwas detaillierter beschrieben</a> und
 </pre>
 
 <p>
- Die "-redir"-Option sorgt dafür, dass TCP-Anfragen an den
- Host-Port 5555 an den Gast-Port 22 (SSH) weitergeleitet werden.
- Die Firewall von Windows-XP wird ggf. fragen, ob der Port 5555
- geblockt werden soll. Dies kann man bestätigen, wenn man nur
- vom eigenen Rechner aus auf die virtuelle Maschine zugreifen
- möchte. Andernfalls sollte man die Anfragen durchlassen.
+ The '-redir'-option ensures for the fact that TCP inquiries to the host
+ port 5555 are passed on to the host port 5555 to the guest port 22 (SSH).
+ If necessary, the firewall of Windows XP will ask whether the port 5555 is to
+ be blocked. You can confirm this, if you want to access the virtual
+ machine only from the local computer.
+ Otherwise you should allow to pass the inquiries.
 </p>
 
-<h4><a name="II-2"></a>II-2 - Installation der für den Bau von Gpg4win wichtigen Pakete</h4>
+<h4><a name="II-2"></a>II-2 - Installation of important packages for building Gpg4win</h4>
 
 <p>
- Nach dem Booten sollte man als root-Benutzer folgendes
- nachinstallieren, bzw. mit 'apt-get update &amp;&amp; apt-get upgrade'
- auf den neusten Stand bringen:
-</p>
+ After that, as a root user, one should get the sytem up-to-date with the following commands:
+ 'apt-get update &amp;&amp; apt-get upgrade'
+ </p>
 
 <pre>
 
@@ -325,36 +304,34 @@ GNU/Linux etwas detaillierter beschrieben</a> und
 </pre>
 
 <p>
- <a href="http://de.wikipedia.org/wiki/Subversion_(Software)">Subversion</a>
- (bzw. das Kommando "svn") gehört zum Quelltext-Management-System mit dem Gpg4win verwaltet
- wird. Es wird nur benötigt, wenn man Gpg4win direkt aus dem SVN Qelltext-Management-System
- heraus bauen will. Verwendet man stattdessen die Archivdateien (Endung .tar.gz oder .tar.bz2)
- einer veröffentlichten Version, so kann man auf Subversion verzichten.
+ <a href="http://en.wikipedia.org/wiki/Subversion_(Software)">Subversion</a>
+ (or the command svn) belonged to the source code management system used
+ for Gpg4win. It is needed only if one wants to build
+ Gpg4win directly from the svn source-code management system. If you use
+ archive files (ending .tar.gz or .tar .bz2) of a published version,
+ then one can do without subversion.
 </p>
 
 <p>
- Der <a href="http://de.wikipedia.org/wiki/OpenSSH">OpenSSH</a>-Server erleichtert die Kommunikation
- mit der virtuellen Maschine. Zum einen kann man sich nach
- der Installation mit PuTTY in den Rechner einwählen und zum
- anderen mit pscp Dateien aus dem System heraus und hinein kopieren.
- Ersteres stellt eine erhebliche Bedienungs-Verbesserung
- (z.B. Copy &amp; Paste) da,  letzteres ermöglicht die Extraktion
- der fertigen Installationspakete.
+ The <a href="http://de.wikipedia.org/wiki/OpenSSH">OpenSSH</a>-Server
+ facilitates communication with the virtual machine. You could
+ log-in with PuTTY as well as copy files with pscp in and out.
+ The first method offers quite usable working environment (e.g. copy &amp; paste),
+ the latter allows  to easily retrieve the resulting new installation packages.
 </p>
 
 <p>
- Hat man den OpenSSH-Server im Gast und PuTTY auf dem Host-System
- installiert, kann man sich mit PuTTY in den Gast einloggen.
- Die Verbindungsdaten lauten Host: gpg4win@localhost, Port: 5555.
- Das Passwort im Fall des vorgefertigten Images lautet 'gpg4win'.
+ If OpenSSH server is installed on the guest system and PuTTY on the
+ host system, one can log in with PuTTY into the guest. The connecting data
+ reads: gpg4win@localhost, port: 5555.
+ The password in the case of the finished image is 'gpg4win'.
 </p>
 
 <p>
- Um Probleme mit dem Locale (das sind die Einstellungen für die
- Unterstützung Ihrer Sprache und sonstiger sprach-spezifischer
- Einstellungen) zu vermeiden, ist es empfehlenswert,
- das de_DE-Locale (das ist die Unterstützung für deutsch wie in Deutschland verwendet)
- zu erzeugen. Hierzu als root-Nutzer bitte folgendes eingeben
+ In order to avoid problems with the 'Locale' (these are the settings for
+ the support of your language and other language specific settings), it is
+ recommendable to produce e.g. the de_DE-Locale (support for german as it is
+ used in Germany). For this please enter the following as root user:
 </p>
 
 <pre>
@@ -364,15 +341,14 @@ GNU/Linux etwas detaillierter beschrieben</a> und
 </pre>
 
 <p>
- und das Häckchen zusätzlich bei de_DE setzen.
+ and tick the check mark of de_DE set.
 </p>
 
-<h4><a name="II-3"></a>II-3 - Bau der Gpg4win-Installations-Pakete</h4>
+<h4><a name="II-3"></a>II-3 - Building Gpg4win installation packages</h4>
 
 <p>
- Man logge sich als 'gpg4win' Nutzer ein und gebe auf
- der Linux-Shell folgendes ein, wenn man Gpg4win aus
- dem SVN bauen will:
+ Logs in as user 'gpg4win' and enter the following on the Linux Shell,
+ in case you  want to build Gpg4win out of the SVN repository:
 </p>
 
 <pre>
@@ -389,15 +365,14 @@ GNU/Linux etwas detaillierter beschrieben</a> und
 </pre>
 
 <p>
- Nach dem dies erfolgreich durchgelaufen ist, stehen unter
- trunk/src die fertigen Installationspakete zur Verfügung.
+ When this was completed successfully, the new installation packages are
+ available under trunk/src.
 </p>
 
-<h4><a name="II-4"></a>II-4 - Extraktion der fertigen Installationspakete</h4>
+<h4><a name="II-4"></a>II-4 - Extraction of the final installation packages</h4>
 
 <p>
- Auf dem Windows-Host-System in einer offenen CMD-Shell
- folgendes eingeben:
+ Please enter the following command on a CMD Shell in the Windows host system:
 </p>
 
 <pre>
@@ -407,12 +382,11 @@ GNU/Linux etwas detaillierter beschrieben</a> und
 </pre>
 
 <p>
- Es wird vorausgesetzt, dass sich pscp.exe im PATH befindet.
- Nachdem der Transfer erfolgreich abgeschlossen wurde, kann
- das Gast-Linux-System heruntergefahren werden.
+ It is assumed that pscp.exe is in the PATH. After the successful transfer was
+ successfully locked, the guest Linux system can be shutdown.
 </p>
 
-<h2><a name="references"></a>Referenzen (URLs)</h2>
+<h2><a name="references"></a>References (URLs)</h2>
 
 <tt>
 <a name="ref1">[1]</a> <a href="http://fabrice.bellard.free.fr/qemu/">http://fabrice.bellard.free.fr/qemu/</a> <br>

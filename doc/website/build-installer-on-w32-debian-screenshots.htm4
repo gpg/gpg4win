@@ -6,22 +6,16 @@ m4_define(`EN')
 m4_define(`DE_FILE', `build-installer-on-w32-debian-screenshots-de.html')
 PAGE_START
 
-<p>
-<b>Attention: Translation of page into english in progress</b>
-</p>
-
-<h2>Installation von Debian GNU/Linux 'Etch' 4.0 innerhalb einer
-    virtuellen QEMU-Maschine</h2>
+<h2>Installation of Debian GNU/Linux 'Etch' 4.0 within a virtual QEMU machine</h2>
 
 <p>
-<a href="build-installer-on-vm-de.html">Zurück zur
-Gpg4win-Bauanleitung für Windows</a>
+<a href="build-installer-on-vm.html">Back to the Gpg4win build instructions for
+Windows</a>
 </p>
 
 <p>
- Diese Installation wurde mit dem Business-Card-Boot-Medium von
- Debian 'Etch' durchgeführt. Der Aufruf zum Starten der
- vituellen Maschine lautete:
+ This installation was accomplished with the Business Card boot medium, version
+ Debian 'Etch'. The startup for the vitual machine reads:
 </p>
 
 <pre>
@@ -31,63 +25,63 @@ qemu -m 256 -L %QEMU -cdrom debian-40r0-i386-businesscard.iso -hda install.img -
 </pre>
 
 <p>
- Wobei <em>%QEMU</em> auf den Pfad zur QEMU-Installation gesetzt war.
- Falls die <em>-kernel-kqemu</em> Option Probleme bereiten sollte,
- kann sie weggelassen werden. Die Installation wird hierdurch aber verlangsamt.
+ Where<em>%QEMU</em> was set on the path for QEMU installation.
+ If <em>-kernel-kqemu</em> option causes problems, it can be omitted.
+ The installation is then however slowed down.
 </p>
 
 <p>
- Hinweis: Im folgenden sind nur die interaktiven Teile der Debian-Installation bebildert.
+ Note: In the following only the interactive parts of the Debian installation is illustrated.
 </p>
 
 <p>
  <a href="pix/debian-install-de/01.png"><img src="pix/debian-install-de/thumbs/01.png"></a>
  <br>
- Im Boot-Screen  die Installation durch Eingabe von <tt>&lt;Return&gt;</tt> starten.
+ In the boot-screen start the installation by entering <tt>&lt;Return&gt;</tt>.
 </p>
 
 <p>
  <a href="pix/debian-install-de/02.png"><img src="pix/debian-install-de/thumbs/02.png"></a>
  <br>
- Als Sprache <em>German</em> auswählen.
+ Select <em>English</em> as language.
 </p>
 
 <p>
  <a href="pix/debian-install-de/03.png"><img src="pix/debian-install-de/thumbs/03.png"></a>
  <br>
- Als Land <em>Deutschland</em> auswählen.
+ Select <em>United States</em> as country.
 </p>
 
 <p>
  <a href="pix/debian-install-de/04.png"><img src="pix/debian-install-de/thumbs/04.png"></a>
  <br>
- Als Tastatur-Layout <em>Deutsch</em> auswählen.
+ Select <em>United States</em> as keyboard layout.
 </p>
 
 <p>
  <a href="pix/debian-install-de/05.png"><img src="pix/debian-install-de/thumbs/05.png"></a>
  <br>
- Als Name des Rechners <em>gpg4win</em> eingeben.
+ Enter <em>gpg4win</em> as name of the computer.
 </p>
 
 <p>
  <a href="pix/debian-install-de/06.png"><img src="pix/debian-install-de/thumbs/06.png"></a>
  <br>
- Den Namen der Domain leerlassen.
+ Leave the name of the domain empty.
 </p>
 
 <p>
  <a href="pix/debian-install-de/07.png"><img src="pix/debian-install-de/thumbs/07.png"></a>
  <a href="pix/debian-install-de/08.png"><img src="pix/debian-install-de/thumbs/08.png"></a>
  <br>
- Als Land des Debian-Archiv-Spiegelservers <em>Deutschland</em> 
- und einen Server in Ihrer Nähe auswählen.<br>
+ Select as country of the Debian archives mirrors <em>United States</em> 
+ and a server in your area.<br>
 </p>
 
 <p>
  <a href="pix/debian-install-de/09.png"><img src="pix/debian-install-de/thumbs/09.png"></a>
  <br>
- Proxy-Einstellung leerlassen.
+ Please leave proxy-settings empty.
 </p>
 
 <p>
@@ -98,14 +92,13 @@ qemu -m 256 -L %QEMU -cdrom debian-40r0-i386-businesscard.iso -hda install.img -
  <a href="pix/debian-install-de/14.png"><img src="pix/debian-install-de/thumbs/14.png"></a>
  <br>
  <ul>
-   <li>Als Festplatten-Partitionierungs-Methode
-       <em>Geführt - verwende vollständige Festplatte</em>
-       auswählen.
+   <li>As disk-partition method choose
+       <em>Guided - 'use complete hard disk'</em>
    </li>
-   <li>Die <em>IDE1 Master (hda)</em> Festplatte auswählen.</li>
-   <li><em>Alle Dateinen auf eine Partition</em> auswählen.</li>
-   <li><em>Partitionierung beenden und Änderungen übernehmen</em> auswählen.</li>
-   <li><em>Änderungen auf die Festplatte schreiben?</em> mit <em>Ja</em> bestätigen.</li>
+   <li>Select <em>IDE1 Master (hda)</em> harddisk.</li>
+   <li>Selct <em>All files on one partition</em></li>
+   <li>Select <em>Finish the partitioning and take over changes</em></li>
+   <li><em>Write changes on the hard disk?</em> Confirm with<em>Yes</em>.</li>
  </ul>
 </p>
 
@@ -113,7 +106,7 @@ qemu -m 256 -L %QEMU -cdrom debian-40r0-i386-businesscard.iso -hda install.img -
  <a href="pix/debian-install-de/15.png"><img src="pix/debian-install-de/thumbs/15.png"></a>
  <a href="pix/debian-install-de/16.png"><img src="pix/debian-install-de/thumbs/16.png"></a>
  <br>
- Das root-Passwort eingeben und zuer Bestätigung wiederholen.
+ Enter the root password and for confirmation repeat password.
 </p>
 
 <p>
@@ -123,28 +116,28 @@ qemu -m 256 -L %QEMU -cdrom debian-40r0-i386-businesscard.iso -hda install.img -
  <a href="pix/debian-install-de/20.png"><img src="pix/debian-install-de/thumbs/20.png"></a>
  <br>
  <ul>
-   <li>Einen neuen Benutzer <em>gpg4win</em> anlegen.</li>
-   <li>Konto-Bezeichnung des neuen Nutzes soll <em>gpg4win</em> lauten.</li>
-   <li>Passwort festlegen und durch Wiedereingabe bestätigen</li>
+   <li>Add the new user <em>gpg4win</em>.</li>
+   <li>User's account designation is to read <em>gpg4win</em>.</li>
+   <li>Specify password and confirm by re-entry</li>
  </ul>
 </p>
 
 <p>
  <a href="pix/debian-install-de/21.png"><img src="pix/debian-install-de/thumbs/21.png"></a>
  <br>
- Nicht an der Paketverwendungserfassung teilnehmen.
+ Do not participate in the package-usage statistic collection.
 </p>
 
 <p>
  <a href="pix/debian-install-de/22.png"><img src="pix/debian-install-de/thumbs/22.png"></a>
  <br>
- Nur ein <em>Standard-System</em> installieren.
+ Install only <em>base-system</em>.
 </p>
 
 <p>
  <a href="pix/debian-install-de/23.png"><img src="pix/debian-install-de/thumbs/23.png"></a>
  <br>
- Den GRUB-Bootloader in den Master Boot Record installieren.
+ Install GRUB-Bootloader into the master boot record (MBR).
 </p>
 
 <p>
@@ -152,14 +145,14 @@ qemu -m 256 -L %QEMU -cdrom debian-40r0-i386-businesscard.iso -hda install.img -
  <a href="pix/debian-install-de/25.png"><img src="pix/debian-install-de/thumbs/25.png"></a>
  <br>
  <ul>
-   <li>Die Beendigung der Installation mit <em>weiter</em> bestätigen.</li>
-   <li>Nach dem Neustart sollte sich QUEMU beschweren, dass es
-       nicht vom angebenen Medium booten kann. QUEMU kann nun beendet werden.</li>
+   <li>Confirm the completion of the installation: <em>Continue</em>.</li>
+   <li>After the restart QUEMU should complain that it cannot boot from
+   the given medium. QUEMU can be terminated now.</li>
  </ul>
 </p>
 
 <p>
-Die virtuellen Maschine wurde jetzt mit folgendem Befehl neu gestartet:
+The virtual machine is again started now with the following command:
 </p>
 
 <pre>
@@ -171,6 +164,6 @@ qemu -m 256 -L %QEMU -hda install.img -kernel-kqemu -redir tcp:5555::22
 <p>
  <a href="pix/debian-install-de/26.png"><img src="pix/debian-install-de/thumbs/26.png"></a>
  <br>
- Nach dem Boot-Vorgang sollte man sich erfolgreich als root-Nutzer anmelden
- und System-Aktualisierungen bzw. weitere Installation durchführen können.
+ After the boot procedure one should successfully login as root user
+ and be able to update the system and/or do further installation.
 </p>
