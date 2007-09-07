@@ -61,7 +61,9 @@ BEGIN {
     "m4_define(`EN')\n" \
     "m4_define(`DE_FILE', `change-history-de.html')\n" \
     "PAGE_START\n" \
-    "<h1>Change History of Gpg4win</h1>\n";
+    "<h1>Change History of Gpg4win</h1>\n" \
+    "<p>Please note that old release still contain meanwhile fixed\n" \
+    "security issues.</p>\n" ;
 
   header_text["de"] = "" \
     "m4_dnl -*-html-*-\n" \
@@ -71,12 +73,16 @@ BEGIN {
     "PAGE_START\n" \
     "<h1>Änderungshistorie von Gpg4win</h1>\n" \
     "<p>Die deutsche Übersetzung der Historie ist nicht notwendigerweise\n" \
-    "vollständig. Begonnen wurde sie mit Version 1.0.0.</p>\n";
+    "vollständig. Begonnen wurde sie mit Version 1.0.0.</p>\n" \
+    "<p>Bitte beachten Sie, dass die alten Versionen die ggf.\n" \
+    "zwischenzeitlich beseitigten Sicherheitslöcher weiterhin enthalten!</p>\n";
 
   release_text["en"] = "released ";
   release_text["de"] = "veröffentlicht ";
   noreldate_text["en"] = "[ in progress; not yet released ]";
   noreldate_text["de"] = "[ in Arbeit; bisher noch nicht veröffentlicht ]";
+  explicit_dl_text["en"] = "Explicit download of this version:";
+  explicit_dl_text["de"] = "Expliziter Download dieser Version:";
 
   print header_text[lang];
 }
@@ -146,6 +152,10 @@ in_para {
 in_vers && /^~~~/ {
   in_vers = 0;
   print "</pre>"
+
+  printf "<p>%s ", explicit_dl_text[lang];
+  printf "<a href=\"http://ftp.gpg4win.org/gpg4win-%s.exe\">gpg4win-%s.exe</a><br>", version, version;
+  printf "</p>"
 }
 
 in_vers {
