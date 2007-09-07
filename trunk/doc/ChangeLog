@@ -1,5 +1,13 @@
 2007-09-07  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
 
+	* website/build-history.awk: Added a link for each release to
+	offer the download of this past release.
+
+	* website/download.htm4, website/download-de.htm4: Added section
+	about change history and where to find old releases.
+
+2007-09-07  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
+
 	* website/build-installer-on-w32-debian-screenshots.htm4: Updated
 	to english screenshot series.
 
