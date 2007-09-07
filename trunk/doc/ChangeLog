@@ -1,3 +1,11 @@
+2007-09-07  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
+
+	* website/build-installer-on-w32-debian-screenshots.htm4: Updated
+	to english screenshot series.
+
+	* website/pix/debian-install-en/: New. Directory with various
+	screenshots and thumbnails. English.
+
 2007-09-06  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
 
 	* website/build-installer-on-vm.htm4,
