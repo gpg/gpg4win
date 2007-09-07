@@ -168,7 +168,9 @@ gpg4win_pkg_gpa_configure = --silent \
 gpg4win_pkg_gpgol_configure = --silent \
   --with-gpgme-prefix=$(idir) --with-gpg-error-prefix=$(idir)
 
-gpg4win_pkg_gpgex_configure = --silent
+gpg4win_pkg_gpgex_configure = --silent \
+  --with-gpg-error-prefix=$(idir) \
+  --with-libassuan-prefix=$(idir)
 
 gpg4win_pkg_winpt_configure = --silent \
   --with-gpgme-prefix=$(idir) --with-gpg-error-prefix=$(idir)

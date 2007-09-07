@@ -1,5 +1,5 @@
 # configure.ac for GPG4Win
-# Copyright (C) 2005, 2006 g10 Code GmbH
+# Copyright (C) 2005, 2006, 2007 g10 Code GmbH
 # 
 # This file is part of GPG4Win
 # 
@@ -192,14 +192,14 @@ GPG4WIN_SPKG([libassuan], [w32pth])
 GPG4WIN_SPKG([dirmngr], [libgpg-error libgcrypt libassuan libksba])
 GPG4WIN_SPKG([w32pth])
 GPG4WIN_SPKG([pinentry], [libiconv])
-GPG4WIN_SPKG([gpgme], [libgpg-error gnupg glib])
+GPG4WIN_SPKG([gpgme], [libgpg-error gnupg glib qt])
 GPG4WIN_SPKG([gnupg], [libiconv bzip2])
 GPG4WIN_SPKG([gnupg2], [libiconv libgcrypt libksba libassuan libgpg-error dnl
                         w32pth zlib bzip2])
 GPG4WIN_SPKG([pthreads-w32])
 GPG4WIN_SPKG([pinentry])
 GPG4WIN_SPKG([gpgol], [gpgme])
-GPG4WIN_SPKG([gpgex])
+GPG4WIN_SPKG([gpgex], [libassuan])
 GPG4WIN_SPKG([gpa], [libiconv gettext zlib gtk+ libpng glib gpgme])
 GPG4WIN_SPKG([winpt], [gpgme gnupg])
 GPG4WIN_SPKG([sylpheed-claws], [libiconv gettext zlib gtk+ libpng jpeg glib dnl

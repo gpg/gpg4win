@@ -656,7 +656,10 @@ Function CalcDepends
 		${SF_SELECTED} have_gpgme skip_gpgme
   have_gpgme:
   !insertmacro SelectSection ${SEC_libgpg_error}
-  skip_gpgme:
+!ifdef HAVE_PKG_QT
+  !insertmacro SelectSection ${SEC_qt}
+!endif  
+   skip_gpgme:
 !endif
 
   # Package "zlib" has no dependencies.

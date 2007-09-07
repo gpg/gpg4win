@@ -32,6 +32,11 @@
    Werner's GNU strip 2.15.91 20040904 is fine but
    Marcus'  GNU strip 2.15.94 20050118 does not work.
 ** Mo file installation macro
+** Allow optional packages.  For example, GPGME depends on Qt, which
+   limits the number of different installers you can build.  To make
+   this more flexible, we need optional packages in configure.ac
+   checks, and optional configure flags in Makefile.am.  The installer
+   itself already supports them well.
 
 * Component related issues:
 ** Check which iconv to use !!
