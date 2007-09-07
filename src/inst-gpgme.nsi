@@ -1,5 +1,5 @@
 # inst-gpgme.nsi - Installer snippet for gpgme.     -*- coding: latin-1; -*-
-# Copyright (C) 2005 g10 Code GmbH
+# Copyright (C) 2005, 2007 g10 Code GmbH
 # 
 # This file is part of GPG4Win.
 # 
@@ -47,6 +47,16 @@ Section "-gpgme" SEC_gpgme
   ifErrors 0 +3
       File /oname=libgpgme-glib-11.dll.tmp "${prefix}/bin/libgpgme-glib-11.dll"
       Rename /REBOOTOK libgpgme-glib-11.dll.tmp libgpgme-glib-11.dll
+
+!ifndef GPG4WIN_LIGHT
+  ClearErrors
+  SetOverwrite try
+  File "${prefix}/bin/libgpgme-qt-11.dll"
+  SetOverwrite lastused
+  ifErrors 0 +3
+      File /oname=libgpgme-qt-11.dll.tmp "${prefix}/bin/libgpgme-qt-11.dll"
+      Rename /REBOOTOK libgpgme-qt-11.dll.tmp libgpgme-qt-11.dll
+!endif
 
 !endif
 SectionEnd

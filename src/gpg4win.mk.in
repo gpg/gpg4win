@@ -125,7 +125,7 @@ stamps/stamp-$(1)-02-configure: stamps/stamp-$(1)-01-patch
 	($(call SETVARS,$(1));				\
 	 mkdir "$$$${pkgbdir}";				\
 	  cd "$$$${pkgbdir}";				\
-	 "$$$${pkgsdir}/configure"			\
+	 eval "$$$${pkgsdir}/configure"			\
 		--prefix="$$$${pkgidir}"		\
 		--host=$(host_cpu)-$(host_os)		\
 		--build=$(build_cpu)-$(build_os)	\
