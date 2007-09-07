@@ -149,10 +149,17 @@ gpg4win_pkg_pinentry_configure = \
   --disable-pinentry-gtk2 \
   --disable-pinentry-qt 
 
-# Glib doesn't add the LDFLAGS automatically.
+# The LDFLAGS is needed for -lintl for glib.  The QT4 variables work
+# around the lack of cross compilation support in qt-dev.
 gpg4win_pkg_gpgme_configure = --silent \
   --with-gpg-error-prefix=$(idir) --enable-static \
-  --enable-w32-glib LDFLAGS=-L$(idir)/lib
+  --enable-w32-glib LDFLAGS=-L$(idir)/lib \
+  --enable-w32-qt \
+  QT4_CORE_CFLAGS=\"-DQT_LARGEFILE_SUPPORT -DQT_DLL \
+                   -DQT_NO_DEBUG -DQT_CORE_LIB -DQT_THREAD_SUPPORT \
+                   -I$(idir)/include/QtCore -I$(idir)/include \
+		   -I$(idir)/mkspecs/win32-g++\" \
+  QT4_CORE_LIBS=\"-L$(idir)/lib -lQtCore4\"
 
 gpg4win_pkg_gpa_configure = --silent \
   --with-libiconv-prefix=$(idir) --with-libintl-prefix=$(idir) \
