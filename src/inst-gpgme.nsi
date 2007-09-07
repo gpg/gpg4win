@@ -48,7 +48,7 @@ Section "-gpgme" SEC_gpgme
       File /oname=libgpgme-glib-11.dll.tmp "${prefix}/bin/libgpgme-glib-11.dll"
       Rename /REBOOTOK libgpgme-glib-11.dll.tmp libgpgme-glib-11.dll
 
-!ifndef GPG4WIN_LIGHT
+!ifdef HAVE_PKG_QT
   ClearErrors
   SetOverwrite try
   File "${prefix}/bin/libgpgme-qt-11.dll"
