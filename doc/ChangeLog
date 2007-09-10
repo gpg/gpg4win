@@ -1,3 +1,7 @@
+2007-09-10  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
+
+	* manual/novices.tex: Some minor improvements. By Geo Kocheril.
+
 2007-09-07  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
 
 	* website/build-history.awk: Added a link for each release to
