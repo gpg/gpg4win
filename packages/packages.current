@@ -247,8 +247,8 @@ chk  1f83d9af8e8ed3bcbf3a5e9018db257dc6336655
 file libksba/libksba-1.0.2.tar.bz2
 chk  4d2c4a99c313b799590bf3fc223179c454e268b5
 
-file libassuan/libassuan-1.0.2.tar.bz2 
-chk  6f9bbee22719cd75fae6a5a5c38d557b971fe8fe 
+file alpha/libassuan/libassuan-1.0.3-svn262.tar.bz2 
+chk  8ff570cd6cc4961658664944e5d0088ca4db389b
 
 file alpha/libgcrypt/libgcrypt-1.3.0.tar.bz2
 chk  38361925fef99715eccb8a1f73110ce2f3c3896a
@@ -256,8 +256,8 @@ chk  38361925fef99715eccb8a1f73110ce2f3c3896a
 file pinentry/pinentry-0.7.3.tar.gz
 chk  557b886bc7a7030fd185fbc085703ef1ed304db8
 
-file alpha/gpgme/gpgme-1.1.5-cvs1228.tar.bz2
-chk  fbe4fe5e44d270b3ded9a68a23c5091b506ad879 
+file alpha/gpgme/gpgme-1.1.5-cvs1251.tar.bz2
+chk  55a026062b51895c42c5830da0d1fdcd4539c37a
 
 file dirmngr/dirmngr-1.0.1.tar.bz2
 chk  39eb62907e5c4ddc29da00b1291c24e5267f113e
