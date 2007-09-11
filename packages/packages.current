@@ -214,8 +214,8 @@ chk  391eee90ea072ea181bed332b9411f2a43395e7e
 
 server ftp://ftp.g10code.com/g10code/scratch
 
-file gpgex-0.0.0-svn17.tar.bz2
-chk  caf8a5ef84defd19a743045867699bd59b5f1466
+file gpgex-0.0.0-svn18.tar.bz2
+chk  825320edd689cd221f189ec308531817663295fc
 
 #
 # Pth emulation
