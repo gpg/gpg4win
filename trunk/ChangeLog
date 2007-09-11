@@ -1,3 +1,9 @@
+2007-09-11  Marcus Brinkmann  <marcus@g10code.de>
+
+	* packages/packages.current: Bump gnupg to 2.0.7.
+	* src/qt.conf: New file.
+	* src/inst-qt.nsi: Install qt.conf.
+
 2007-09-10  Marcus Brinkmann  <marcus@g10code.de>
 
 	* packages/packages.current: Update gpgme and libassuan to
