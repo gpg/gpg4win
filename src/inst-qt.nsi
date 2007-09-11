@@ -32,6 +32,9 @@ Section "-qt" SEC_qt
 !ifdef SOURCES
   File "${gpg4win_pkg_qt_src}"
 !else
+  # Qt needs some help to find itself.
+  File qt.conf
+
   File ${prefix}/bin/Qt3Support4.dll
   File ${prefix}/bin/QtAssistantClient4.dll
   File ${prefix}/bin/QtCore4.dll
