@@ -1,5 +1,7 @@
 2007-09-11  Marcus Brinkmann  <marcus@g10code.de>
 
+	* packages/packages.current: Update gpgex.
+
 	* packages/packages.current: Add gpgex, disable gpgee.
 
 	* packages/packages.current: Bump gnupg to 2.0.7.
