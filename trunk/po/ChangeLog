@@ -1,3 +1,8 @@
+2007-09-13  Marcus Brinkmann  <marcus@g10code.de>
+
+	* POTFILES.in: Add inst-gpgex.nsi.
+	* de.po: Updated.
+
 2007-08-15  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
 
 	* de.po: Fixed a fuzzy translation.

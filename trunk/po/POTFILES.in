@@ -7,6 +7,7 @@ src/inst-gnupg2.nsi
 src/inst-gpa.nsi
 src/inst-gpg4win.nsi
 src/inst-gpgee.nsi
+src/inst-gpgex.nsi
 src/inst-gpgol.nsi
 src/inst-man_advanced_de.nsi
 src/inst-man_advanced_en.nsi

@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gpg4win 1.1.1-svn417\n"
 "Report-Msgid-Bugs-To: gpg4win-devel@wald.intevation.org\n"
-"POT-Creation-Date: 2007-08-16 17:59+0200\n"
-"PO-Revision-Date: 2007-07-09 17:09+0200\n"
+"POT-Creation-Date: 2007-09-13 00:03+0200\n"
+"PO-Revision-Date: 2007-09-13 00:05+0200\n"
 "Last-Translator: Marcus Brinkmann <mb@g10code.com>\n"
 "Language-Team: German <translation-team-de@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -276,7 +276,7 @@ msgid "EudoraGPG is a plugin for the Eudora mail program"
 msgstr ""
 "EudoraGPG ist ein Plugin zur Verschlüsselung für das Eudora Mailprogramm"
 
-#: src/inst-gnupg.nsi:87
+#: src/inst-gnupg.nsi:91
 msgctxt "DESC_SEC_gnupg"
 msgid "GNU Privacy Guard"
 msgstr ""
@@ -335,6 +335,16 @@ msgstr ""
 msgctxt "DESC_Menu_gpgee_hlp"
 msgid "Show the online manual of GPGee"
 msgstr "Das englische Handbuch zu GPGee anzeigen"
+
+#: src/inst-gpgex.nsi:54
+msgctxt "T_GpgEX_RegFailed"
+msgid "Warning: Registration of the GpgEX plugin failed."
+msgstr "Warnung: Registration des GpgEX Plugin ist fehlgeschlagen."
+
+#: src/inst-gpgex.nsi:57
+msgctxt "DESC_SEC_gpgex"
+msgid "GnuPG Shell Extension"
+msgstr "GPG Shell Extension (GpgEX) ist eine Erweiterung für den Explorer, die es ermöglicht, Dateien über das Kontextmenü zu verschlüsseln."
 
 #: src/inst-gpgol.nsi:54
 msgctxt "T_GPGol_RegFailed"
