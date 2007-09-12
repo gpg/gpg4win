@@ -264,8 +264,9 @@ chk  557b886bc7a7030fd185fbc085703ef1ed304db8
 file alpha/gpgme/gpgme-1.1.5-cvs1251.tar.bz2
 chk  55a026062b51895c42c5830da0d1fdcd4539c37a
 
-file dirmngr/dirmngr-1.0.1.tar.bz2
-chk  39eb62907e5c4ddc29da00b1291c24e5267f113e
+server ftp://ftp.g10code.com/g10code/scratch
+file dirmngr-1.0.2-svn267.tar.bz2
+chk  408e9ab1d4755b1fa2ac66ed503bbbe2d791c4e8
 
 
 #
