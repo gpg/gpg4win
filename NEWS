@@ -3,8 +3,25 @@
 # The version number given below are for the standard installers as
 # distributed by www.gpg4win.org.
 
-Noteworthy changes in version 1.1.3 
+Noteworthy changes in version 1.1.3 (2007-09-17)
 ------------------------------------------------
+
+(en) Update GpgOL to 0.9.92 and build with a fixed version of GPGME.
+(de) GpgOL wurde auf 0.9.92 aktualisiert und mit einer korrigierten Version von GPGME gebaut.
+
+~~~~~~~~~~~~~~~
+GnuPG:  1.4.7 
+GnuPG2: 2.0.7
+DirMngr: 1.0.2-svn267
+GPA:    0.7.6
+GPGol:  0.9.92
+GPGee:  1.3.1
+WinPT:  1.2.0
+Claws-Mail: 3.0.0-rc2
+Novices:        1.0.0
+Einsteiger:     2.0.2
+Durchblicker:   2.0.2
+~~~~~~~~~~~~~~~
 
 
 Noteworthy changes in version 1.1.2 (2007-08-16)
