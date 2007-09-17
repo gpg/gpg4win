@@ -1,3 +1,14 @@
+2007-09-17  Werner Koch  <wk@g10code.com>
+
+	Released 0.9.92.
+
+	* src/Makefile.am (gpg4win_pkg_gpgme_configure): Disable Qt
+	requirement.
+	* configure.ac: Ditto.
+
+	* packages/packages.current: Update gpgol to 0.9.92 and gpgme to a
+	new snapshot. Disable gpgex, enable gpgee.
+
 2007-09-12  Marcus Brinkmann  <marcus@g10code.de>
 
 	* packages/packages.current: Update dirmngr.
