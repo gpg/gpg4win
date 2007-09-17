@@ -194,10 +194,10 @@ chk   050f93a0d74385ce90e8934e49c11f171d495c5a
 #    zip ../GPGee-1.2.3-bin.zip GPGee/*
 # server ftp://ftp.gnupg.org/gcrypt/gpgee
 #
-file GPGee-1.3.1-noinstaller.zip
-chk  6e44bbf61776e0a6c8714a514fa39489e94c0179
-file GPGee-1.3.1-source.zip
-chk  b04fa9ea81fc77844c7aa2e3eda042d819d8e9f1
+#file GPGee-1.3.1-noinstaller.zip
+#chk  6e44bbf61776e0a6c8714a514fa39489e94c0179
+#file GPGee-1.3.1-source.zip
+#chk  b04fa9ea81fc77844c7aa2e3eda042d819d8e9f1
 
 
 #
@@ -211,10 +211,10 @@ chk  98c14c731f8e69e26d243fb4e830c0afa9a66cb7
 # GpgEX
 #
 
-#server ftp://ftp.g10code.com/g10code/scratch
-#
-#file gpgex-0.0.0-svn18.tar.bz2
-#chk  825320edd689cd221f189ec308531817663295fc
+server ftp://ftp.g10code.com/g10code/scratch
+
+file gpgex-0.0.0-svn18.tar.bz2
+chk  825320edd689cd221f189ec308531817663295fc
 
 #
 # Pth emulation
