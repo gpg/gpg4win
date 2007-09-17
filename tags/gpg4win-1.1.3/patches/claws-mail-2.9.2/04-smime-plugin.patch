@@ -1,0 +1,1211 @@
+#! /bin/sh
+patch -p1 -f $* < $0
+exit $?
+
+2007-06-30  Marcus Brinkmann  <marcus@g10code.de>
+
+	* Add the SMIME plugin straight to the source.  This makes
+          building it so much simpler.
+
+diff -ruN claws-mail-2.9.2-p03/configure.ac claws-mail-2.9.2/configure.ac
+--- claws-mail-2.9.2-p03/configure.ac	2007-07-02 20:53:34.000000000 +0200
++++ claws-mail-2.9.2/configure.ac	2007-07-02 20:54:13.000000000 +0200
+@@ -888,6 +888,7 @@
+ src/plugins/pgpcore/Makefile
+ src/plugins/pgpmime/Makefile
+ src/plugins/pgpinline/Makefile
++src/plugins/smime/Makefile
+ doc/Makefile
+ doc/man/Makefile
+ tools/Makefile
+diff -ruN claws-mail-2.9.2-p03/src/plugins/Makefile.am claws-mail-2.9.2/src/plugins/Makefile.am
+--- claws-mail-2.9.2-p03/src/plugins/Makefile.am	2007-07-02 20:53:34.000000000 +0200
++++ claws-mail-2.9.2/src/plugins/Makefile.am	2007-07-02 20:54:14.000000000 +0200
+@@ -40,4 +40,5 @@
+ 	$(clamav_dir) \
+ 	$(pgpcore_dir) \
+ 	$(pgpmime_dir) \
+-	$(pgpinline_dir)
++	$(pgpinline_dir) \
++	smime
+diff -ruN claws-mail-2.9.2-p03/src/plugins/smime/claws.def claws-mail-2.9.2/src/plugins/smime/claws.def
+--- claws-mail-2.9.2-p03/src/plugins/smime/claws.def	1970-01-01 01:00:00.000000000 +0100
++++ claws-mail-2.9.2/src/plugins/smime/claws.def	2007-07-02 20:54:14.000000000 +0200
+@@ -0,0 +1,28 @@
++LIBRARY CLAWS-MAIL.EXE
++EXPORTS
++alertpanel_error
++canonicalize_file_replace
++canonicalize_str
++check_plugin_version
++debug_print_real
++debug_srcname
++file_read_stream_to_str
++file_read_to_str
++generate_mime_boundary
++get_mime_tmp_dir
++get_tmp_file
++my_tmpfile
++privacy_register_system
++privacy_set_error
++privacy_unregister_system
++procmime_decode_content
++procmime_encode_content
++procmime_get_part
++procmime_mimeinfo_free_all
++procmime_mimeinfo_get_parameter
++procmime_mimeinfo_new
++procmime_mimeinfo_parent
++procmime_scan_file
++procmime_write_mime_header
++procmime_write_mimeinfo
++str_write_to_file
+diff -ruN claws-mail-2.9.2-p03/src/plugins/smime/Makefile.am claws-mail-2.9.2/src/plugins/smime/Makefile.am
+--- claws-mail-2.9.2-p03/src/plugins/smime/Makefile.am	1970-01-01 01:00:00.000000000 +0100
++++ claws-mail-2.9.2/src/plugins/smime/Makefile.am	2007-07-02 20:54:14.000000000 +0200
+@@ -0,0 +1,82 @@
++EXTRA_DIST = version.rc plugin.def claws.def mypgpcore.def smime.deps
++
++if OS_WIN32
++
++LTRCCOMPILE = $(LIBTOOL) --mode=compile $(RC) \
++     `echo $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) | \
++     sed -e 's/-I/--include-dir /g;s/-D/--define /g'`
++
++%.lo : %.rc
++	$(LTRCCOMPILE) -i $< -o $@
++
++plugin_res = version.lo
++plugin_res_ldflag = -Wl,.libs/version.o
++
++export_symbols = -export-symbols $(srcdir)/plugin.def
++
++plugin_deps = libclaws.a libmypgpcore.a $(plugin_res) plugin.def
++
++libclaws.a: claws.def
++	$(DLLTOOL) --output-lib $@ --def $<
++
++libmypgpcore.a: mypgpcore.def
++	$(DLLTOOL) --output-lib $@ --def $<
++
++plugin_ldadd = -L . -lclaws -lmypgpcore
++
++else
++plugin_res =
++plugin_res_ldflag =
++export_symbols =
++plugin_deps =
++plugin_ldadd =
++endif
++
++if PLATFORM_WIN32
++no_undefined = -no-undefined
++else
++no_undefined =
++endif
++
++if CYGWIN
++cygwin_export_lib = -L$(top_builddir)/src -lclaws-mail
++else
++cygwin_export_lib =
++endif
++
++plugindir = $(pkglibdir)/plugins
++plugin_DATA = smime.deps
++
++plugin_LTLIBRARIES = smime.la
++
++smime_la_SOURCES = \
++	plugin.c \
++	smime.c
++
++pluginincludedir = $(pkgincludedir)/plugins/smime
++plugininclude_HEADERS = \
++	smime.h
++
++smime_la_LDFLAGS = \
++	$(plugin_res_ldflag) $(no_undefined) $(export_symbols) \
++	-avoid-version -module 
++smime_la_DEPENDENCIES = $(plugin_deps)
++smime_la_LIBADD = $(cygwin_export_lib) $(plugin_ldadd) $(pgpcore_lib) \
++        $(GTK_LIBS) \
++	$(GPGME_LIBS)
++
++INCLUDES = \
++	-I$(top_srcdir)/src \
++	-I$(top_srcdir)/src/common \
++	-I$(top_builddir)/src/common \
++	-I$(top_srcdir)/src/gtk
++
++AM_CPPFLAGS = \
++	$(GLIB_CFLAGS) \
++	$(GTK_CFLAGS) \
++	$(GPGME_CFLAGS) \
++	-Wno-deprecated-declarations
++
++clean-local:
++	rm -f libclaws.a
++	rm -f libmypgpcore.a
+diff -ruN claws-mail-2.9.2-p03/src/plugins/smime/mypgpcore.def claws-mail-2.9.2/src/plugins/smime/mypgpcore.def
+--- claws-mail-2.9.2-p03/src/plugins/smime/mypgpcore.def	1970-01-01 01:00:00.000000000 +0100
++++ claws-mail-2.9.2/src/plugins/smime/mypgpcore.def	2007-07-02 20:54:14.000000000 +0200
+@@ -0,0 +1,13 @@
++LIBRARY PGPCORE.DLL
++EXPORTS
++prefs_gpg_enable_agent
++prefs_gpg_get_config
++sgpgme_data_from_mimeinfo
++sgpgme_data_release_and_get_mem
++sgpgme_decrypt_verify
++sgpgme_get_encrypt_data
++sgpgme_setup_signers
++sgpgme_sigstat_gpgme_to_privacy
++sgpgme_sigstat_info_full
++sgpgme_sigstat_info_short
++sgpgme_verify_signature
+diff -ruN claws-mail-2.9.2-p03/src/plugins/smime/plugin.c claws-mail-2.9.2/src/plugins/smime/plugin.c
+--- claws-mail-2.9.2-p03/src/plugins/smime/plugin.c	1970-01-01 01:00:00.000000000 +0100
++++ claws-mail-2.9.2/src/plugins/smime/plugin.c	2007-07-02 20:54:14.000000000 +0200
+@@ -0,0 +1,89 @@
++/*
++ * Claws Mail -- a GTK+ based, lightweight, and fast e-mail client
++ * Copyright (C) 1999-2007 Colin Leroy <colin@colino.net> and 
++ * the Claws Mail team
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
++ */
++
++#ifdef HAVE_CONFIG_H
++#  include "config.h"
++#endif
++
++#include <stddef.h>
++#include <glib.h>
++#include <glib/gi18n.h>
++
++#include "version.h"
++#include "common/claws.h"
++#include "smime.h"
++#include "plugin.h"
++
++gint plugin_init(gchar **error)
++{
++	if (!check_plugin_version(MAKE_NUMERIC_VERSION(2, 7, 2, 63), 
++				VERSION_NUMERIC, _("S/MIME"), error))
++		return -1;
++
++	smime_init();
++
++	return 0;	
++}
++
++void plugin_done(void)
++{
++	smime_done();
++}
++
++const gchar *plugin_name(void)
++{
++	return _("S/MIME");
++}
++
++const gchar *plugin_desc(void)
++{
++	return _("This plugin handles S/MIME signed and/or encrypted "
++		 "mails. You can decrypt mails, verify signatures or "
++                 "sign and encrypt your own mails.\n"
++		 "\n"
++		 "It can be selected as the Default Privacy System in "
++		 "/Configuration/[Account Preferences]/Privacy and when "
++		 "composing a message from /Options/Privacy System\n"
++		 "\n"
++		 "This plugin uses the GPGME library as a wrapper for GnuPG.\n"
++		 "This plugin also needs gpgsm, gnupg-agent and dirmngr "
++		 "installed and configured.\n"
++		 "\n"
++		 "Information about how to get S/MIME certificates working "
++		 "with GPGSM can be found at:\n"
++		 "http://www.claws-mail.org/faq/index.php/S/MIME_howto\n"
++		 "\n"
++		 "GPGME is copyright 2001 by Werner Koch <dd9jn@gnu.org>");
++}
++
++const gchar *plugin_type(void)
++{
++	return "GTK2";
++}
++
++const gchar *plugin_licence(void)
++{
++	return "GPL";
++}
++
++const gchar *plugin_version(void)
++{
++	return VERSION;
++}
+diff -ruN claws-mail-2.9.2-p03/src/plugins/smime/plugin.def claws-mail-2.9.2/src/plugins/smime/plugin.def
+--- claws-mail-2.9.2-p03/src/plugins/smime/plugin.def	1970-01-01 01:00:00.000000000 +0100
++++ claws-mail-2.9.2/src/plugins/smime/plugin.def	2007-07-02 20:54:14.000000000 +0200
+@@ -0,0 +1,9 @@
++EXPORTS
++        plugin_desc
++        plugin_done
++        plugin_init
++        plugin_licence
++        plugin_name
++        plugin_type
++	plugin_provides
++        plugin_version
+diff -ruN claws-mail-2.9.2-p03/src/plugins/smime/smime.c claws-mail-2.9.2/src/plugins/smime/smime.c
+--- claws-mail-2.9.2-p03/src/plugins/smime/smime.c	1970-01-01 01:00:00.000000000 +0100
++++ claws-mail-2.9.2/src/plugins/smime/smime.c	2007-07-02 20:54:14.000000000 +0200
+@@ -0,0 +1,860 @@
++/* 
++ * Claws Mail -- a GTK+ based, lightweight, and fast e-mail client
++ * Copyright (C) 1999-2007 Colin Leroy <colin@colino.net> and 
++ * the Claws Mail team
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
++ */
++
++#ifdef HAVE_CONFIG_H
++#  include "config.h"
++#endif
++
++#ifdef USE_GPGME
++
++#include "defs.h"
++#include <glib.h>
++#include <gpgme.h>
++#include <ctype.h>
++#include <glib/gi18n.h>
++
++#include "utils.h"
++#include "privacy.h"
++#include "procmime.h"
++
++#include "smime.h"
++#include <plugins/pgpcore/sgpgme.h>
++#include <plugins/pgpcore/prefs_gpg.h>
++#include <plugins/pgpcore/passphrase.h>
++
++#include "alertpanel.h"
++#include "prefs_common.h"
++#include "procmime.h"
++#include "plugin.h"
++
++typedef struct _PrivacyDataPGP PrivacyDataPGP;
++
++struct _PrivacyDataPGP
++{
++	PrivacyData	data;
++	
++	gboolean	done_sigtest;
++	gboolean	is_signed;
++	gpgme_verify_result_t	sigstatus;
++	gpgme_ctx_t 	ctx;
++};
++
++static PrivacySystem smime_system;
++
++static gint smime_check_signature(MimeInfo *mimeinfo);
++
++static PrivacyDataPGP *smime_new_privacydata()
++{
++	PrivacyDataPGP *data;
++
++	data = g_new0(PrivacyDataPGP, 1);
++	data->data.system = &smime_system;
++	data->done_sigtest = FALSE;
++	data->is_signed = FALSE;
++	data->sigstatus = NULL;
++	gpgme_new(&data->ctx);
++	
++	return data;
++}
++
++static void smime_free_privacydata(PrivacyData *_data)
++{
++	PrivacyDataPGP *data = (PrivacyDataPGP *) _data;
++	gpgme_release(data->ctx);
++	g_free(data);
++}
++
++static gboolean smime_is_signed(MimeInfo *mimeinfo)
++{
++	MimeInfo *parent;
++	MimeInfo *signature;
++	const gchar *protocol, *tmpstr;
++	PrivacyDataPGP *data = NULL;
++	
++	g_return_val_if_fail(mimeinfo != NULL, FALSE);
++	if (mimeinfo->privacy != NULL) {
++		data = (PrivacyDataPGP *) mimeinfo->privacy;
++		if (data->done_sigtest)
++			return data->is_signed;
++	}
++	
++	if (!g_ascii_strcasecmp(mimeinfo->subtype, "pkcs7-mime") ||
++	    !g_ascii_strcasecmp(mimeinfo->subtype, "x-pkcs7-mime")) {
++		tmpstr = procmime_mimeinfo_get_parameter(mimeinfo, "smime-type");
++		if (tmpstr && !g_ascii_strcasecmp(tmpstr, "signed-data")) {
++			if (data == NULL) {
++				data = smime_new_privacydata();
++				mimeinfo->privacy = (PrivacyData *) data;
++			}
++
++			data->done_sigtest = TRUE;
++			data->is_signed = TRUE;
++			smime_check_signature(mimeinfo);
++			return TRUE;
++		}
++	}
++
++	/* check parent */
++	parent = procmime_mimeinfo_parent(mimeinfo);
++	if (parent == NULL)
++		return FALSE;
++	
++	if ((parent->type != MIMETYPE_MULTIPART) ||
++	    g_ascii_strcasecmp(parent->subtype, "signed"))
++		return FALSE;
++	protocol = procmime_mimeinfo_get_parameter(parent, "protocol");
++	if ((protocol == NULL) || 
++	    (g_ascii_strcasecmp(protocol, "application/pkcs7-signature") &&
++	     g_ascii_strcasecmp(protocol, "application/x-pkcs7-signature")))
++		return FALSE;
++
++	/* check if mimeinfo is the first child */
++	if (parent->node->children->data != mimeinfo)
++		return FALSE;
++
++
++	/* check signature */
++	signature = parent->node->children->next != NULL ? 
++	    (MimeInfo *) parent->node->children->next->data : NULL;
++	if (signature == NULL)
++		return FALSE;
++	if ((signature->type != MIMETYPE_APPLICATION) ||
++	    (g_ascii_strcasecmp(signature->subtype, "pkcs7-signature") &&
++	     g_ascii_strcasecmp(signature->subtype, "x-pkcs7-signature")))
++		return FALSE;
++
++is_signed:
++	if (data == NULL) {
++		data = smime_new_privacydata();
++		mimeinfo->privacy = (PrivacyData *) data;
++	}
++	
++	data->done_sigtest = TRUE;
++	data->is_signed = TRUE;
++
++	return TRUE;
++}
++
++static gchar *get_canonical_content(FILE *fp, const gchar *boundary)
++{
++	gchar *ret;
++	GString *textbuffer;
++	guint boundary_len = 0;
++	gchar buf[BUFFSIZE];
++
++	if (boundary) {
++		boundary_len = strlen(boundary);
++		while (fgets(buf, sizeof(buf), fp) != NULL)
++			if (IS_BOUNDARY(buf, boundary, boundary_len))
++				break;
++	}
++	
++	textbuffer = g_string_new("");
++	while (fgets(buf, sizeof(buf), fp) != NULL) {
++		gchar *buf2;
++
++		if (boundary && IS_BOUNDARY(buf, boundary, boundary_len))
++			break;
++		
++		buf2 = canonicalize_str(buf);
++		g_string_append(textbuffer, buf2);
++		g_free(buf2);
++	}
++	g_string_truncate(textbuffer, textbuffer->len - 2);
++		
++	ret = textbuffer->str;
++	g_string_free(textbuffer, FALSE);
++
++	return ret;
++}
++
++static gint smime_check_signature(MimeInfo *mimeinfo)
++{
++	PrivacyDataPGP *data;
++	MimeInfo *parent, *signature;
++	FILE *fp;
++	gchar *boundary;
++	gchar *textstr;
++	const gchar *tmpstr;
++	gpgme_data_t sigdata = NULL, textdata = NULL;
++	gpgme_error_t err;
++	g_return_val_if_fail(mimeinfo != NULL, -1);
++	g_return_val_if_fail(mimeinfo->privacy != NULL, -1);
++	data = (PrivacyDataPGP *) mimeinfo->privacy;
++	gpgme_new(&data->ctx);
++	EncodingType oldenc = ENC_BINARY;
++	
++	debug_print("Checking S/MIME signature\n");
++
++	err = gpgme_set_protocol(data->ctx, GPGME_PROTOCOL_CMS);
++
++	if (err) {
++		debug_print ("gpgme_set_protocol failed: %s\n",
++                   gpgme_strerror (err));
++	}
++	parent = procmime_mimeinfo_parent(mimeinfo);
++
++	fp = g_fopen(parent->data.filename, "rb");
++	g_return_val_if_fail(fp != NULL, SIGNATURE_INVALID);
++	
++	boundary = g_hash_table_lookup(parent->typeparameters, "boundary");
++	if (!boundary) {
++		gchar *tmpfile = get_tmp_file();
++		debug_print("no boundary\n");
++		if (tmpfile) {
++			if (mimeinfo->encoding_type != ENC_BASE64) {
++				procmime_encode_content(mimeinfo, ENC_BASE64);
++			}
++			oldenc = mimeinfo->encoding_type;
++			if (mimeinfo->encoding_type == ENC_BASE64)
++				mimeinfo->encoding_type = ENC_BINARY;
++			if (procmime_get_part(tmpfile, mimeinfo) == 0) {
++				textstr = file_read_to_str(tmpfile);
++			} else {
++				textstr = NULL;
++			}
++			if (mimeinfo->encoding_type != oldenc)
++				mimeinfo->encoding_type = oldenc;
++		}
++		g_free(tmpfile);
++	} else {
++		textstr = get_canonical_content(fp, boundary);
++	}
++	err = gpgme_data_new_from_mem(&textdata, textstr, strlen(textstr), 0);
++	
++	if (err) {
++		debug_print ("gpgme_data_new_from_mem failed: %s\n",
++                   gpgme_strerror (err));
++	}
++
++	if (!g_ascii_strcasecmp(mimeinfo->subtype, "pkcs7-mime") ||
++	    !g_ascii_strcasecmp(mimeinfo->subtype, "x-pkcs7-mime")) {
++		tmpstr = procmime_mimeinfo_get_parameter(mimeinfo, "smime-type");
++		if (tmpstr && !g_ascii_strcasecmp(tmpstr, "signed-data")) {
++			gpgme_data_t cipher, plain;
++			int len;
++			if (oldenc == ENC_BASE64)
++				gpgme_data_set_encoding (textdata, GPGME_DATA_ENCODING_BASE64);
++			gpgme_data_new(&cipher);
++			data->sigstatus =
++				sgpgme_verify_signature	(data->ctx, textdata, NULL, cipher);
++			gpgme_data_release(textdata);
++			g_free(textstr);
++			gpgme_data_rewind(cipher);
++			textstr = sgpgme_data_release_and_get_mem(cipher, &len);
++			fclose(fp);
++			if (textstr && len > 0)
++				textstr[len-1]='\0';
++
++			if (textstr && len) {
++				gchar *tmp_file = get_tmp_file();
++				MimeInfo *newinfo = NULL, *decinfo = NULL, *parentinfo = NULL;
++				gint childnumber = 0;
++								
++				str_write_to_file(textstr, tmp_file);
++				newinfo = procmime_scan_file(tmp_file);
++				decinfo = g_node_first_child(newinfo->node) != NULL ?
++					g_node_first_child(newinfo->node)->data : NULL;
++				g_node_unlink(decinfo->node);
++				procmime_mimeinfo_free_all(newinfo);
++				decinfo->tmp = TRUE;
++				parentinfo = procmime_mimeinfo_parent(mimeinfo);
++				childnumber = g_node_child_index(parentinfo->node, mimeinfo);
++				if (parentinfo->type == MIMETYPE_MESSAGE && 
++				    !strcmp(parentinfo->subtype, "rfc822")) {
++					procmime_decode_content(parentinfo);
++					procmime_encode_content(parentinfo, ENC_BASE64);
++					procmime_encode_content(parentinfo, ENC_8BIT);
++					if (parentinfo->content == MIMECONTENT_MEM) {
++						gint newlen = 
++							(gint)(strstr(parentinfo->data.mem, "\n\n") - parentinfo->data.mem);
++						if (newlen > 0)
++							parentinfo->length = newlen;
++					}
++				}
++				g_node_prepend(parentinfo->node, decinfo->node);
++				return 0;
++			} else {
++				return -1;
++			}
++		}
++	}
++
++	signature = (MimeInfo *) mimeinfo->node->next->data;
++	sigdata = sgpgme_data_from_mimeinfo(signature);
++
++	err = 0;
++	if (signature->encoding_type == ENC_BASE64) {
++		err = gpgme_data_set_encoding (sigdata, GPGME_DATA_ENCODING_BASE64);
++	}
++	
++	if (err) {
++		debug_print ("gpgme_data_set_encoding failed: %s\n",
++			gpgme_strerror (err));
++	}
++
++	data->sigstatus =
++		sgpgme_verify_signature	(data->ctx, sigdata, textdata, NULL);
++
++	gpgme_data_release(sigdata);
++	gpgme_data_release(textdata);
++	g_free(textstr);
++	fclose(fp);
++	
++	return 0;
++}
++
++static SignatureStatus smime_get_sig_status(MimeInfo *mimeinfo)
++{
++	PrivacyDataPGP *data = (PrivacyDataPGP *) mimeinfo->privacy;
++	
++	g_return_val_if_fail(data != NULL, SIGNATURE_INVALID);
++
++	if (data->sigstatus == NULL && 
++	    prefs_gpg_get_config()->auto_check_signatures)
++		smime_check_signature(mimeinfo);
++	
++	return sgpgme_sigstat_gpgme_to_privacy(data->ctx, data->sigstatus);
++}
++
++static gchar *smime_get_sig_info_short(MimeInfo *mimeinfo)
++{
++	PrivacyDataPGP *data = (PrivacyDataPGP *) mimeinfo->privacy;
++	
++	g_return_val_if_fail(data != NULL, g_strdup("Error"));
++
++	if (data->sigstatus == NULL && 
++	    prefs_gpg_get_config()->auto_check_signatures)
++		smime_check_signature(mimeinfo);
++	
++	return sgpgme_sigstat_info_short(data->ctx, data->sigstatus);
++}
++
++static gchar *smime_get_sig_info_full(MimeInfo *mimeinfo)
++{
++	PrivacyDataPGP *data = (PrivacyDataPGP *) mimeinfo->privacy;
++	
++	g_return_val_if_fail(data != NULL, g_strdup("Error"));
++
++	if (data->sigstatus == NULL && 
++	    prefs_gpg_get_config()->auto_check_signatures)
++		smime_check_signature(mimeinfo);
++	
++	return sgpgme_sigstat_info_full(data->ctx, data->sigstatus);
++}
++
++static gboolean smime_is_encrypted(MimeInfo *mimeinfo)
++{
++	MimeInfo *tmpinfo;
++	const gchar *tmpstr;
++	
++	if (mimeinfo->type != MIMETYPE_APPLICATION)
++		return FALSE;
++	if (!g_ascii_strcasecmp(mimeinfo->subtype, "pkcs7-mime")) {
++		tmpstr = procmime_mimeinfo_get_parameter(mimeinfo, "smime-type");
++		if (tmpstr && g_ascii_strcasecmp(tmpstr, "enveloped-data"))
++			return FALSE;
++		else 
++			return TRUE;
++
++	} else if (!g_ascii_strcasecmp(mimeinfo->subtype, "x-pkcs7-mime")) {
++		tmpstr = procmime_mimeinfo_get_parameter(mimeinfo, "smime-type");
++		if (tmpstr && g_ascii_strcasecmp(tmpstr, "enveloped-data"))
++			return FALSE;
++		else 
++			return TRUE;
++	}
++	return FALSE;
++}
++
++static MimeInfo *smime_decrypt(MimeInfo *mimeinfo)
++{
++	MimeInfo *encinfo, *decinfo, *parseinfo;
++	gpgme_data_t cipher = NULL, plain = NULL;
++	static gint id = 0;
++	FILE *dstfp;
++	gchar *fname;
++	gpgme_verify_result_t sigstat = NULL;
++	PrivacyDataPGP *data = NULL;
++	gpgme_ctx_t ctx;
++	gpgme_error_t err;
++	gchar *chars;
++	size_t len;
++
++	g_return_val_if_fail(smime_is_encrypted(mimeinfo), NULL);
++	
++	if ((err = gpgme_new(&ctx)) != GPG_ERR_NO_ERROR) {
++		privacy_set_error(_("Couldn't initialize GPG context, %s"), gpgme_strerror(err));
++		return NULL;
++	}
++
++	err = gpgme_set_protocol(ctx, GPGME_PROTOCOL_CMS);
++	if (err) {
++		debug_print ("gpgme_set_protocol failed: %s\n",
++                   gpgme_strerror (err));
++		privacy_set_error(_("Couldn't set GPG protocol, %s"), gpgme_strerror(err));
++		gpgme_release(ctx);
++		return NULL;
++	}
++	gpgme_set_armor(ctx, TRUE);
++
++	encinfo = mimeinfo;
++
++	cipher = sgpgme_data_from_mimeinfo(encinfo);
++	gpgme_data_set_encoding(cipher, GPGME_DATA_ENCODING_BASE64);
++	plain = sgpgme_decrypt_verify(cipher, &sigstat, ctx);
++
++	gpgme_data_release(cipher);
++	if (plain == NULL) {
++		debug_print("plain is null!\n");
++		gpgme_release(ctx);
++		return NULL;
++	}
++
++    	fname = g_strdup_printf("%s%cplaintext.%08x",
++		get_mime_tmp_dir(), G_DIR_SEPARATOR, ++id);
++
++    	if ((dstfp = g_fopen(fname, "wb")) == NULL) {
++        	FILE_OP_ERROR(fname, "fopen");
++        	g_free(fname);
++        	gpgme_data_release(plain);
++		gpgme_release(ctx);
++		debug_print("can't open!\n");
++		privacy_set_error(_("Couldn't open temporary file"));
++		return NULL;
++    	}
++
++	fprintf(dstfp, "MIME-Version: 1.0\n");
++
++	chars = sgpgme_data_release_and_get_mem(plain, &len);
++
++	if (len > 0) {
++		fwrite(chars, len, 1, dstfp);
++	}
++	fclose(dstfp);
++	g_free(chars);
++
++	parseinfo = procmime_scan_file(fname);
++	g_free(fname);
++	if (parseinfo == NULL) {
++		privacy_set_error(_("Couldn't parse decrypted file."));
++		gpgme_release(ctx);
++		return NULL;
++	}
++	decinfo = g_node_first_child(parseinfo->node) != NULL ?
++		g_node_first_child(parseinfo->node)->data : NULL;
++	if (decinfo == NULL) {
++		privacy_set_error(_("Couldn't parse decrypted file parts."));
++		gpgme_release(ctx);
++		return NULL;
++	}
++
++	g_node_unlink(decinfo->node);
++	procmime_mimeinfo_free_all(parseinfo);
++
++	decinfo->tmp = TRUE;
++
++	if (sigstat != NULL && sigstat->signatures != NULL) {
++		if (decinfo->privacy != NULL) {
++			data = (PrivacyDataPGP *) decinfo->privacy;
++		} else {
++			data = smime_new_privacydata();
++			decinfo->privacy = (PrivacyData *) data;	
++		}
++		data->done_sigtest = TRUE;
++		data->is_signed = TRUE;
++		data->sigstatus = sigstat;
++		if (data->ctx)
++			gpgme_release(data->ctx);
++		data->ctx = ctx;
++	} else
++		gpgme_release(ctx);
++	
++	
++	
++	return decinfo;
++}
++
++gboolean smime_sign(MimeInfo *mimeinfo, PrefsAccount *account)
++{
++	MimeInfo *msgcontent, *sigmultipart, *newinfo;
++	gchar *textstr, *micalg;
++	FILE *fp;
++	gchar *boundary = NULL;
++	gchar *sigcontent;
++	gpgme_ctx_t ctx;
++	gpgme_data_t gpgtext, gpgsig;
++	gpgme_error_t err;
++	size_t len;
++	struct passphrase_cb_info_s info;
++	gpgme_sign_result_t result = NULL;
++	gchar *test_msg;
++	gchar *real_content = NULL;
++	
++	fp = my_tmpfile();
++	if (fp == NULL) {
++		perror("my_tmpfile");
++		return FALSE;
++	}
++	procmime_write_mimeinfo(mimeinfo, fp);
++	rewind(fp);
++
++	/* read temporary file into memory */
++	test_msg = file_read_stream_to_str(fp);
++	fclose(fp);
++	
++	memset (&info, 0, sizeof info);
++
++	/* remove content node from message */
++	msgcontent = (MimeInfo *) mimeinfo->node->children->data;
++	g_node_unlink(msgcontent->node);
++
++	/* create temporary multipart for content */
++	sigmultipart = procmime_mimeinfo_new();
++	sigmultipart->type = MIMETYPE_MULTIPART;
++	sigmultipart->subtype = g_strdup("signed");
++	
++	do {
++		if (boundary)
++			g_free(boundary);
++		boundary = generate_mime_boundary("Sig");
++	} while (strstr(test_msg, boundary) != NULL);
++	
++	g_free(test_msg);
++
++	g_hash_table_insert(sigmultipart->typeparameters, g_strdup("boundary"),
++                            g_strdup(boundary));
++	g_hash_table_insert(sigmultipart->typeparameters, g_strdup("protocol"),
++                            g_strdup("application/pkcs7-signature"));
++	g_node_append(sigmultipart->node, msgcontent->node);
++	g_node_append(mimeinfo->node, sigmultipart->node);
++
++	/* write message content to temporary file */
++	fp = my_tmpfile();
++	if (fp == NULL) {
++		perror("my_tmpfile");
++		return FALSE;
++	}
++	procmime_write_mimeinfo(sigmultipart, fp);
++	rewind(fp);
++
++	/* read temporary file into memory */
++	textstr = get_canonical_content(fp, boundary);
++
++	g_free(boundary);
++
++	fclose(fp);
++
++	gpgme_data_new_from_mem(&gpgtext, textstr, strlen(textstr), 0);
++	gpgme_data_new(&gpgsig);
++	gpgme_new(&ctx);
++	gpgme_set_armor(ctx, TRUE);
++	gpgme_signers_clear (ctx);
++
++	err = gpgme_set_protocol(ctx, GPGME_PROTOCOL_CMS);
++
++	if (err) {
++		debug_print ("gpgme_set_protocol failed: %s\n",
++                   gpgme_strerror (err));
++		gpgme_data_release(gpgtext);
++		gpgme_release(ctx);
++		return FALSE;
++	}
++
++	if (!sgpgme_setup_signers(ctx, account)) {
++		debug_print("setup_signers failed\n");
++		gpgme_data_release(gpgtext);
++		gpgme_release(ctx);
++		return FALSE;
++	}
++
++	info.c = ctx;
++	prefs_gpg_enable_agent(TRUE);
++    	gpgme_set_passphrase_cb (ctx, NULL, &info);
++	
++	err = gpgme_op_sign(ctx, gpgtext, gpgsig, GPGME_SIG_MODE_DETACH);
++	if (err != GPG_ERR_NO_ERROR) {
++		alertpanel_error("S/MIME : Cannot sign, %s (%d)", gpg_strerror(err), gpg_err_code(err));
++		gpgme_data_release(gpgtext);
++		gpgme_release(ctx);
++		return FALSE;
++	}
++	result = gpgme_op_sign_result(ctx);
++	if (result && result->signatures) {
++	    if (gpgme_get_protocol(ctx) == GPGME_PROTOCOL_OpenPGP) {
++		micalg = g_strdup_printf("PGP-%s", gpgme_hash_algo_name(
++			    result->signatures->hash_algo));
++	    } else {
++		micalg = g_strdup(gpgme_hash_algo_name(
++			    result->signatures->hash_algo));
++	    }
++	} else {
++	    /* can't get result (maybe no signing key?) */
++	    debug_print("gpgme_op_sign_result error\n");
++	    return FALSE;
++	}
++
++	gpgme_release(ctx);
++	sigcontent = sgpgme_data_release_and_get_mem(gpgsig, &len);
++	gpgme_data_release(gpgtext);
++	g_free(textstr);
++
++	if (!sigcontent) {
++		gpgme_release(ctx);
++		return FALSE;
++	}
++	real_content = sigcontent+strlen("-----BEGIN SIGNED MESSAGE-----\n");
++	if (!strstr(real_content, "-----END SIGNED MESSAGE-----")) {
++		debug_print("missing end\n");
++		gpgme_release(ctx);
++		return FALSE;
++	}
++	*strstr(real_content, "-----END SIGNED MESSAGE-----") = '\0';
++	/* add signature */
++	g_hash_table_insert(sigmultipart->typeparameters, g_strdup("micalg"),
++                            micalg);
++
++	newinfo = procmime_mimeinfo_new();
++	newinfo->type = MIMETYPE_APPLICATION;
++	newinfo->subtype = g_strdup("pkcs7-signature");
++	g_hash_table_insert(newinfo->typeparameters, g_strdup("name"),
++			     g_strdup("smime.p7s"));
++	newinfo->content = MIMECONTENT_MEM;
++	newinfo->disposition = DISPOSITIONTYPE_ATTACHMENT;
++	g_hash_table_insert(newinfo->dispositionparameters, g_strdup("filename"),
++			    g_strdup("smime.p7s"));
++	newinfo->data.mem = g_malloc(len + 1);
++	g_memmove(newinfo->data.mem, real_content, len);
++	newinfo->data.mem[len] = '\0';
++	newinfo->encoding_type = ENC_BASE64;
++	g_node_append(sigmultipart->node, newinfo->node);
++
++	g_free(sigcontent);
++
++	return TRUE;
++}
++gchar *smime_get_encrypt_data(GSList *recp_names)
++{
++	return sgpgme_get_encrypt_data(recp_names, GPGME_PROTOCOL_CMS);
++}
++
++static gchar *fp_read_noconv(FILE *fp)
++{
++	GByteArray *array;
++	guchar buf[BUFSIZ];
++	gint n_read;
++	gchar *result = NULL;
++
++	if (!fp)
++		return NULL;
++	array = g_byte_array_new();
++
++	while ((n_read = fread(buf, sizeof(gchar), sizeof(buf), fp)) > 0) {
++		if (n_read < sizeof(buf) && ferror(fp))
++			break;
++		g_byte_array_append(array, buf, n_read);
++	}
++
++	if (ferror(fp)) {
++		FILE_OP_ERROR("file stream", "fread");
++		g_byte_array_free(array, TRUE);
++		return NULL;
++	}
++
++	buf[0] = '\0';
++	g_byte_array_append(array, buf, 1);
++	result = (gchar *)array->data;
++	g_byte_array_free(array, FALSE);
++	
++	return result;
++}
++
++gboolean smime_encrypt(MimeInfo *mimeinfo, const gchar *encrypt_data)
++{
++	MimeInfo *msgcontent, *encmultipart;
++	FILE *fp;
++	gchar *enccontent;
++	size_t len;
++	gchar *textstr = NULL;
++	gpgme_data_t gpgtext = NULL, gpgenc = NULL;
++	gpgme_ctx_t ctx = NULL;
++	gpgme_key_t *kset = NULL;
++	gchar **fprs = g_strsplit(encrypt_data, " ", -1);
++	gint i = 0;
++	gpgme_error_t err;
++	gchar *tmpfile = NULL;
++
++	while (fprs[i] && strlen(fprs[i])) {
++		i++;
++	}
++	
++	gpgme_new(&ctx);
++
++	err = gpgme_set_protocol(ctx, GPGME_PROTOCOL_CMS);
++
++	if (err) {
++		debug_print ("gpgme_set_protocol failed: %s\n",
++                   gpgme_strerror (err));
++		return FALSE;   
++	}
++
++	kset = g_malloc(sizeof(gpgme_key_t)*(i+1));
++	memset(kset, 0, sizeof(gpgme_key_t)*(i+1));
++	i = 0;
++
++	while (fprs[i] && strlen(fprs[i])) {
++		gpgme_key_t key;
++		gpgme_error_t err;
++		err = gpgme_get_key(ctx, fprs[i], &key, 0);
++		if (err) {
++			debug_print("can't add key '%s'[%d] (%s)\n", fprs[i],i, gpgme_strerror(err));
++			break;
++		}
++		debug_print("found %s at %d\n", fprs[i], i);
++		kset[i] = key;
++		i++;
++	}
++	
++	debug_print("Encrypting message content\n");
++
++	/* remove content node from message */
++	msgcontent = (MimeInfo *) mimeinfo->node->children->data;
++	g_node_unlink(msgcontent->node);
++
++
++	/* create temporary multipart for content */
++	encmultipart = procmime_mimeinfo_new();
++	encmultipart->type = MIMETYPE_APPLICATION;
++	encmultipart->subtype = g_strdup("x-pkcs7-mime");
++	g_hash_table_insert(encmultipart->typeparameters, g_strdup("name"),
++                            g_strdup("smime.p7m"));
++	
++	encmultipart->disposition = DISPOSITIONTYPE_ATTACHMENT;
++	g_hash_table_insert(encmultipart->dispositionparameters, g_strdup("filename"),
++                            g_strdup("smime.p7m"));
++
++	g_node_append(encmultipart->node, msgcontent->node);
++
++	/* write message content to temporary file */
++	tmpfile = get_tmp_file();
++	fp = fopen(tmpfile, "wb");
++	if (fp == NULL) {
++		perror("get_tmp_file");
++		return FALSE;
++	}
++	procmime_decode_content(msgcontent);
++	procmime_write_mime_header(msgcontent, fp);
++	procmime_write_mimeinfo(msgcontent, fp);
++	fclose(fp);
++	canonicalize_file_replace(tmpfile);
++	fp = fopen(tmpfile, "rb");
++	if (fp == NULL) {
++		perror("get_tmp_file");
++		return FALSE;
++	}
++	g_free(tmpfile);
++
++	/* read temporary file into memory */
++	textstr = fp_read_noconv(fp);
++
++	fclose(fp);
++
++	/* encrypt data */
++	gpgme_data_new_from_mem(&gpgtext, textstr, strlen(textstr), 0);
++	gpgme_data_new(&gpgenc);
++	gpgme_data_rewind(gpgtext);
++	
++	gpgme_data_set_encoding(gpgenc, GPGME_DATA_ENCODING_BASE64);
++	gpgme_op_encrypt(ctx, kset, GPGME_ENCRYPT_ALWAYS_TRUST, gpgtext, gpgenc);
++
++	gpgme_release(ctx);
++	enccontent = sgpgme_data_release_and_get_mem(gpgenc, &len);
++
++	if (!enccontent) {
++		g_warning("no enccontent\n");
++		return FALSE;
++	}
++
++	tmpfile = get_tmp_file();
++	fp = fopen(tmpfile, "wb");
++	if (fp) {
++		fwrite(enccontent, 1, len, fp);
++		fclose(fp);
++	} else {
++		perror("get_tmp_file");
++		return FALSE;
++	}
++	gpgme_data_release(gpgtext);
++	g_free(textstr);
++
++	/* create encrypted multipart */
++	procmime_mimeinfo_free_all(msgcontent);
++	g_node_append(mimeinfo->node, encmultipart->node);
++
++	encmultipart->content = MIMECONTENT_FILE;
++	encmultipart->data.filename = tmpfile;
++	procmime_encode_content(encmultipart, ENC_BASE64);
++
++	g_free(enccontent);
++
++	return TRUE;
++}
++
++static PrivacySystem smime_system = {
++	"smime",			/* id */
++	"S-MIME",			/* name */
++
++	smime_free_privacydata,	/* free_privacydata */
++
++	smime_is_signed,		/* is_signed(MimeInfo *) */
++	smime_check_signature,	/* check_signature(MimeInfo *) */
++	smime_get_sig_status,		/* get_sig_status(MimeInfo *) */
++	smime_get_sig_info_short,	/* get_sig_info_short(MimeInfo *) */
++	smime_get_sig_info_full,	/* get_sig_info_full(MimeInfo *) */
++
++	smime_is_encrypted,		/* is_encrypted(MimeInfo *) */
++	smime_decrypt,			/* decrypt(MimeInfo *) */
++
++	TRUE,
++	smime_sign,
++
++	TRUE,
++	smime_get_encrypt_data,
++	smime_encrypt,
++};
++
++void smime_init()
++{
++	privacy_register_system(&smime_system);
++}
++
++void smime_done()
++{
++	privacy_unregister_system(&smime_system);
++}
++
++struct PluginFeature *plugin_provides(void)
++{
++	static struct PluginFeature features[] = 
++		{ {PLUGIN_PRIVACY, N_("S/MIME")},
++		  {PLUGIN_NOTHING, NULL}};
++	return features;
++}
++#endif /* USE_GPGME */
+diff -ruN claws-mail-2.9.2-p03/src/plugins/smime/smime.deps claws-mail-2.9.2/src/plugins/smime/smime.deps
+--- claws-mail-2.9.2-p03/src/plugins/smime/smime.deps	1970-01-01 01:00:00.000000000 +0100
++++ claws-mail-2.9.2/src/plugins/smime/smime.deps	2007-07-02 20:54:14.000000000 +0200
+@@ -0,0 +1 @@
++pgpcore
+diff -ruN claws-mail-2.9.2-p03/src/plugins/smime/smime.h claws-mail-2.9.2/src/plugins/smime/smime.h
+--- claws-mail-2.9.2-p03/src/plugins/smime/smime.h	1970-01-01 01:00:00.000000000 +0100
++++ claws-mail-2.9.2/src/plugins/smime/smime.h	2007-07-02 20:54:14.000000000 +0200
+@@ -0,0 +1,27 @@
++/*
++ * Claws Mail -- a GTK+ based, lightweight, and fast e-mail client
++ * Copyright (C) 1999-2007 Colin Leroy <colin@colino.net> and 
++ * the Claws Mail team
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
++ */
++
++#ifndef PGPMIME_H
++#define PGPMIME_H 1
++
++void smime_init(void);
++void smime_done(void);
++
++#endif /* PGPMIME_H */
+diff -ruN claws-mail-2.9.2-p03/src/plugins/smime/version.rc claws-mail-2.9.2/src/plugins/smime/version.rc
+--- claws-mail-2.9.2-p03/src/plugins/smime/version.rc	1970-01-01 01:00:00.000000000 +0100
++++ claws-mail-2.9.2/src/plugins/smime/version.rc	2007-07-02 20:54:15.000000000 +0200
+@@ -0,0 +1,36 @@
++1 VERSIONINFO
++ FILEVERSION 0, 0, 0, 0
++ PRODUCTVERSION 0, 0, 0, 0
++ FILEFLAGSMASK 0x3fL
++#ifdef _DEBUG
++ FILEFLAGS 0x1L
++#else
++ FILEFLAGS 0x0L
++#endif
++ FILEOS 0x40004L
++ FILETYPE 0x2L
++ FILESUBTYPE 0x0L
++BEGIN
++    BLOCK "StringFileInfo"
++    BEGIN
++        BLOCK "000004b0"
++        BEGIN
++            VALUE "FileDescription", "smime Plugin\0"
++            VALUE "FileVersion", "0.0.0.0\0"
++            VALUE "ProductVersion", "0.0.0.0 Win32\0"
++            VALUE "LegalCopyright", "GPL / Å© 1999-2007 Colin Leroy <colin@colino.net>\0"
++            VALUE "CompanyName", "GNU / Free Software Foundation\0"
++            VALUE "ProductName", "Claws Mail\0"
++//            VALUE "Comments", "\0"
++//            VALUE "InternalName", "\0"
++//            VALUE "LegalTrademarks", "\0"
++//            VALUE "OriginalFilename", "\0"
++//            VALUE "PrivateBuild", "\0"
++//            VALUE "SpecialBuild", "\0"
++        END
++    END
++    BLOCK "VarFileInfo"
++    BEGIN
++        VALUE "Translation", 0x0, 1200
++    END
++END

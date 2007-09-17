@@ -1,0 +1,1426 @@
+% novices.tex                
+% Note, that this a HyperLaTeX source and not plain LaTeX!
+\documentclass[a4paper,11pt,twoside,titlepage,dvips]{scrartcl}
+\usepackage{hyperlatex}
+\usepackage{a4wide}
+\usepackage{times}
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{alltt}
+\usepackage{moreverb}
+\usepackage{fancyhdr}
+\W\usepackage{rhxpanel}
+\W\usepackage{sequential}
+
+
+\T\DeclareGraphicsExtensions{.eps.gz,.eps}
+
+
+% Hyperref should be among the last packages loaded
+\usepackage{hyperref}
+
+% Macros specific to this package
+\input{macros-en.tex}
+\newcommand{\manualversion}{\manualversionNovices}
+\newcommand{\manualdate}{\manualdateNovices}
+
+\T\fancyhead{} % clear all fields
+\T\fancyhead[LO,RE]{Gpg4win for Novices \manualversion\ \manualinprogressEn}
+\T\fancyhead[RO,LE]{\thepage}
+\T\fancyfoot[C]{\includegraphics[width=1cm]{gpg4win-logo}}
+
+
+% Title stuff 
+\htmltitle{Novices}
+%\htmladdress{Gpg4win Project, \today}
+\title{
+\IncludeImage[width=8cm]{gpg4win-logo}
+\\
+Gpg4win for Novices}
+
+\author{\htmlonly{\xml{p}\small
+\xlink{List of PDF Download Versions}{http://wald.intevation.org/frs/?group_id=11}\xml{br}
+%To \xlink{Gpg4win for Advanced Users}{advanced.html}\xml{br}
+To \xlink{German version of this manual}{einsteiger.html}\xml{br}
+To \xlink{Gpg4win Homepage}{http://www.gpg4win.org/}\xml{p}
+}%
+A publication of the Gpg4win project\\
+  \small based on original documents by  
+\T\\
+  \small Manfred J. Heinze, Karl Bihlmeier, Isabel Kramer,
+\T\\
+  \small Dr. Francis Wray, Ute Bahn,
+\T\\ \
+  \small Werner Koch.
+ \\
+  \small Translated from the German original by 
+\T\\
+  \small Brigitte Hamilton}
+\date{Version \manualversion\ as of \manualdate\ \manualinprogressEn}
+
+
+\begin{document}
+\thispagestyle{empty}
+\pagestyle{fancy}
+\T\parindent0cm
+\T\parskip\medskipamount
+
+
+\maketitle
+
+
+\section*{Imprint Gpg4win}
+
+\noindent
+Copyright \copyright{} 2002 Bundesministerium für Wirtschaft und
+Technologie (German Federal Ministry of Economics \& Technology)\\
+Copyright \copyright{} 2005 g10 Code GmbH\\
+Copyright \copyright{} 2006 Brigitte Hamilton\\
+Permission is hereby granted to copy, distribute and/or modify this
+document under the terms of the GNU Free Documentation License, 
+Version 1.2 (or newer) published by the Free Software Foundation; 
+with the Invariant Sections being "Impressum", no Front-Cover Texts, and
+no Back-Cover Texts.  A copy of the license is included in the section
+entitled "GNU Free Documentation License".
+
+%%\htmlonly{Die aktuelle PDF Version dieses Dokuments finden sie unter
+%%\xlink{\EinsteigerPDFURL}{\EinsteigerPDFURL}.}
+
+Special Thanks to:\\
+Bernhard Reiter for minor edits and coordination (2006, 2007).\\
+Michael W. Lewis for proofreading (2007).\\
+Andre Hosch for screenshots (2007)
+
+\vfill
+
+\begin{center}
+  \T\fbox{\parbox{.7\textwidth}{%
+      The statements on the \textbf{next page} are no longer
+      correct.  Due to a wrong application of the terms of
+      the GFDL, it is not legally possible to fix them.  Please add
+      new copyright notices only here.  \T}}
+\end{center}
+
+\clearpage
+%% Orginal page 4
+%% This page 4 is an invariant section. Translation not allowed.
+\section*{Impressum}
+Diese Seite darf nicht verändert werden.\\
+
+Autor: Manfred J. Heinze, TextLab text+media\\
+Beratung: Lutz Zolondz, G-N-U GmbH\\
+Illustrationen: Karl Bihlmeier, Bihlmeier \& Kramer GbR\\
+Layout: Isabel Kramer, Bihlmeier \& Kramer GbR\\
+Fachtext: Dr. Francis Wray, e-mediate Ltd.\\
+Redaktion: Ute Bahn, TextLab text+media\\
+1. Auflage, März 2002\\
+
+
+Copyright \copyright{} Bundesministerium für Wirtschaft und Technologie
+
+Dieses Buch unterliegt der "`GNU Free Documentation License"'.
+Originaltext der Lizenz: http://www.\texonly{\linebreak{}}gnu.org/copyleft/fdl.html.
+Deutsche Übersetzung http://nautix.sourceforge.net""/docs/fdl.de.html
+sowie auf der beiliegenden CD-ROM.  Es wird die Erlaubnis gegeben,
+dieses Dokument zu kopieren, zu verteilen und/oder zu verändern unter
+den Bedingungen der GNU Free Documentation License, Version 1.1 oder
+einer späteren, von der Free Software Foundation veröffentlichten
+Version.  Diese Seite ("`Impressum"') darf nicht verändert werden und
+muss in allen Kopien und Bearbeitungen erhalten bleiben
+("`unveränderlicher Abschnitt"' im Sinne der GNU Free Documentation
+License).  Wenn dieses Dokument von Dritten kopiert, verteilt und/oder
+verändert wird, darf in keiner Form der Eindruck eines Zusammenhanges
+mit dem Bundesministerium für Wirtschaft und Technologie erweckt
+werden.  Wie das OpenSource-Kryptografieprogramm GnuPP selbst wurden
+diese Texte nicht für Mathematiker, Geheimdienstler und Kryptografen
+geschrieben, sondern für jedermann.
+
+
+
+\clearpage %% End of original page 4.
+
+\tableofcontents
+
+%%\clearpage
+%% Orginal page  6
+%% We don't use these foreword anymore because Mr. Müller is not
+%% anymore minister of economic and technology.  We might want to ask
+%% for a new foreword by the current head of that ministr
+%%
+
+\clearpage
+%% Orginal page 7
+\section{About this manual}
+
+The Gpg4win manual and exercise module consists of three parts:
+
+\begin{itemize}
+
+\item \textbf{an introductory guide called "Gpg4win for Novices",} 
+which you are reading right now,
+
+\item \textbf{the manual "Gpg4win for Advanced Users"} in PDF-Format,
+which can be found on your hard drive after you have installed Gpg4win or on
+the project homepage,
+\item \textbf{the exercise robot Adele,} which allows you to practice
+the \Email{} en- and decryption process (an internet connection is
+required).
+\end{itemize}
+
+
+\textbf{"Gpg4win for Novices"} is a quick guide to the installation and
+everyday use of the Gpg4win software. You will need about half an hour to work
+through this manual, depending on your knowledge of computers and Windows. 
+
+\textbf{"Gpg4win for Advanced Users"} provides in-depth information
+about Gpg4win's basic principles and mechanisms, 
+as well as its less commonly used capabilities.
+
+Both manuals are available in PDF format; you can print your own
+manual if you did not receive a printed copy. 
+
+Each manual can be read independently. We suggest, however, that you 
+read both manuals in order to get a better understanding of the software.
+
+\OtherBook{} This symbol references a link to the other manual.
+
+
+\textbf{The practice robot Adele} is available on the Internet. Adele
+receives, sends and decrypts encrypted \Email{}s. You can use Adele to 
+practice a complete cryptographic exchange as often as you need 
+to be fully familiar with the software.
+
+Adele was developed as part of the older GnuPP project, where it is
+still used.  "Gpg4win for Novices" also uses this very reliable
+practice robot and hereby wishes to express its gratitude to the owners
+of gnupp.de for operating Adele. 
+
+\clearpage
+%% Orginal page 8
+\section{What is Gpg4win?}
+
+\input{what-is-gpg4win.tex}
+
+\clearpage
+%% Orginal page 9
+\section{Installing Gpg4win}
+
+If you already have a GnuPG-based application such as GnuPP, GnuPT,
+WinPT or GnuPG Basics installed on your system, we recommend that you
+read the Appendix \ref{ch:migration} to find out how to migrate existing
+keys. 
+
+Installing Gpg4win from a CD-ROM:
+
+Insert the CD-ROM in the CD-ROM drive of your computer and log in as
+Administrator. On the screen click on the CD-ROM icon titled 'Gpg4win'.
+Once the CD-ROM icon opens, click on the installation icon titled
+'Gpg4win'.
+
+Installing Gpg4win from the Internet:
+
+If you have downloaded Gpg4win from the Internet, click on the new file
+(it should be named \texttt{gpg4win-\PackageVersion{}.exe} or a newer
+version).  Please ensure that you have downloaded the file from a
+trustworthy site.
+
+The following installation steps apply to all situations:
+
+You will be asked if you want to install the program; click on
+\Button{Yes}. 
+
+The following screen will appear:
+
+% screenshot:  Welcome Seite Installer
+\begin{center}
+\IncludeImage{sc-en-inst-welcome}
+\end{center}
+
+If you have other programs running on your computer, close them now and
+click on \Button{Next}.
+
+\clearpage
+%% Orginal page 10
+
+The licensing page contains information regarding the licensing of this
+software.
+
+If your sole intention is to install and use the software, you do not
+need to read this information. 
+
+However, if you plan to distribute and/or alter the software, you must
+familiarize yourself with the conditions contained in the licensing
+agreement.
+
+
+% Screenshot Lizenzseite des Installers
+\begin{center}
+\IncludeImage{sc-en-inst-license}
+\end{center}
+
+
+Click on \Button{Next}.
+
+
+\clearpage
+%% New page (not in original document)
+
+On the components page you can select which features of GnuPG For
+Windows you want to install. 
+ 
+To assist you with your selection, a short description window appears
+when you move the mouse over a selected item. At this point, you may
+want to check the available free space on your hard drive as well.
+
+% sreenshot Auswahl zu installierender Komponenten
+\begin{center}
+\IncludeImage{sc-en-inst-components}
+\end{center}
+
+The recommended minimum installation consists of GnuPG, GPA, WinPT and
+the manuals. If required, the remaining programs can be installed later.
+
+Click on \Button{Next}.
+
+
+\clearpage
+%% Original page 11
+
+On this page you can choose the folder in which to install Gpg4win on
+your computer. If you do not enter a folder name, 
+you should accept the default folder name, which is: \\
+\Filename{C:$\backslash$Programme$\backslash$GNU$\backslash$GnuPG}\\%%FIXME
+
+% screenshot: Auswahl des Installationsverzeichnis.
+\begin{center}
+\IncludeImage{sc-en-inst-directory}
+\end{center}
+
+Click on \Button{Next}.
+
+\clearpage
+
+This page allows you to set start links for the program. The default
+setting adds Gpg4win to the start menu only.  You can change
+these settings within Windows at any time.
+
+% screenshot: Auswahl des Links
+\begin{center}
+\IncludeImage{sc-en-inst-options}
+\end{center}
+
+Click on  \Button{Next}.
+
+\clearpage
+%% Original page 12
+
+If you chose to add the program to the Start Menu (as per previous
+page), this page allows you to choose a Start Menu subfolder for the
+program.
+
+
+% screenshot:  Startmenu auswählen
+\begin{center}
+\IncludeImage{sc-en-inst-startmenu}
+\end{center}
+
+For a standard installation, select the default setting and click on
+\Button{Install}.
+
+\clearpage
+
+
+During the installation a progress bar displays the file being installed.
+You can click on \Button{Show details} to see a log of the installation.
+
+% Screenshot: Ready page Installer
+\begin{center}
+\IncludeImage{sc-en-inst-ready}
+\end{center}
+
+Once the installation is complete, click on \Button{Next}.
+
+\clearpage
+%% Original page 13
+
+The following page shows the last step of the installation process: 
+
+% Screenshot: Finish page Installer
+\begin{center}
+\IncludeImage{sc-en-inst-finished} 
+\end{center}
+
+Click on  \Button{Finish}.
+
+\clearpage
+
+You may need to restart Windows for the settings to take effect.  In
+that case, instead of showing the installation completion page, the
+following page appears: 
+
+% Screenshot: Finish page Installer with reboot
+\begin{center}
+\IncludeImage{sc-inst-finished2}
+\end{center}
+
+At this point you can choose to restart Windows automatically or restart
+later manually.
+
+Click on \Button{Finish}.
+
+
+% FIXME:  Wir müssen erklären wie man Word als Standard Editor in
+% Outlook ausschaltet.
+
+\clearpage
+%% Original page 14
+
+\textbf{And that's it!}
+
+
+You have now installed Gpg4win and are ready to use the program.
+
+Prior to starting Gpg4win, we recommend reading Chapter 3 and 4 of the
+manual "Gpg4win for Advanced Users"
+(PDF-File).  These chapters highlight the ingenious theory behind
+Gpg4win's ability to encrypt \Email{}s in a safe and user-friendly
+manner.
+
+Of course you do not need to know all the technical details of Gpg4win to be
+able to use the program. However, since you will use Gpg4win to handle your 
+most sensitive correspondence, it is probably a good idea to understand
+the theory behind it.
+
+$\ldots$
+
+The following section provides you with suggestions for creating a
+secure yet easy-to-remember passphrase.
+
+\textbf{
+\OtherBook{}  At this point, please read Chapter 3 and 4 in the manual
+"\xlink{Gpg4win for Advanced Users}{durchblicker.html}" before reading
+on.}
+
+\clearpage
+%% Original page 15
+\section{Creating a key pair}
+
+After reading the information on Gpg4win's security features
+and the creation of a good passphrase to protect your
+private key, this section shows you how to create a key pair.
+
+\textbf{
+The processes of key creation, encryption and decryption are very
+important - so important that it should be possible to practice $\ldots$
+}
+
+\textbf{and this you can actually do:} 
+Run through the whole processes as often as you want.
+These "dry-runs" help you gain confidence in
+using the program, so that some of the more intricate steps in creating
+keys will not pose any problems later on. You can use Adele to do this.
+It is a test server which was developed as part of the GnuPP project.
+Adele allows you to try and test several practice keys before creating
+your own set.  
+
+\clearpage
+%% Original page 16
+\textbf{Let's get started!}
+
+Start the GPA program from your Windows Start menu: 
+
+% screenshot Startmenu with GPA highlighted
+\begin{center}
+\IncludeImage[width=0.4\textwidth]{sc-en-gpa-rungpa}
+\end{center}
+
+The following window appears: 
+
+% screenshot: GPA erste Schlüsselerzeugung
+\begin{center}
+\IncludeImage[width=0.9\textwidth]{sc-en-gpa-nokey}
+\end{center}
+
+Click on  \Button{Generate key now}.
+
+
+\clearpage
+%% Original page 17
+
+\textbf{For practice purposes} you can enter any name in the window for
+now, e.g. "Larry Smith".
+
+% screenshot: Key generation wizard first page
+\begin{center}
+\IncludeImage[width=0.6\textwidth]{sc-en-gpa-gen-name}
+\end{center}
+
+Or you can generate your 'real' key in which case you should enter your
+real name.
+
+When you are done, click on  \Button{Forward}.
+
+\clearpage
+%% Original page 18
+Now enter your \Email{} address.
+
+Again, if this is a test run, you can use an imaginary \Email{} address
+such as 
+"\verb-larrys@gpg4win.de-"
+
+% screenshot: Wizard email address
+\begin{center}
+\IncludeImage[width=0.6\textwidth]{sc-en-gpa-gen-email}
+\end{center}
+
+Or you can enter your real \Email{} address, and click on
+\Button{Forward}.
+
+%note by translator Brigitte: when I ran Gpg4win, the option outlined in
+%the text below was not available!  FIXME
+
+This option allows you to enter notes regarding your key.  Usually this
+field is empty; however, if you are creating a test key, you should make
+a note, such as "test". The notes are a part of your User-ID and will
+be made public along with your name and \Email{} address.  Now click on
+\Button{Forward}.
+
+
+\clearpage
+%% Original page 19
+
+Entering a passphrase is one of the most important steps in the program,
+as the program is only as good (and as secure) as your passphrase! 
+
+Chapter 4 ("The Passphrase") from the manual "Gpg4win for Advanced
+Users" already provided you with suggestions on creating a secure
+passphrase, so at this point you should have come up with your own
+passphrase - one that is private, easy to remember, and difficult to
+crack.  
+
+Enter your passphrase now. 
+
+% screenshot: Wizard, Enter passphrase
+\begin{center}
+\IncludeImage[width=0.6\textwidth]{sc-en-gpa-gen-passwd}
+\end{center}
+
+If the passphrase you entered is not very secure, 
+a warning will be displayed,
+allowing you to enter a more secure passphrase. 
+
+\textbf Again, you can enter a test passphrase for practice purposes, or
+your real passphrase.
+
+Once you have entered your passphrase twice, click on \Button{Next}.
+
+\clearpage
+%% Original page 21
+
+This starts the creation of your key pair, which can take a few minutes.
+In the meantime, you can continue to work with other programs on your
+computer which will slightly increase the quality of the key being
+generated.
+
+%put a note in here somewhere that 'key pair' and 'key' are used
+%interchangeably.  FIXME
+
+Once the key is generated, the following window appears:
+
+% screenshot: Wizard, backup
+\begin{center}
+\IncludeImage[width=0.6\textwidth]{sc-en-gpa-gen-backup}
+\end{center}
+
+This window asks you to create a back-up copy of your key. Please do
+this now, even if this is just a test run.
+
+If the default file name is acceptable, click on  \Button{OK}. If you
+would like to store the back-up in a different location, please select a
+different file name now. 
+
+\textbf{Important:} Once the the back-up file is saved onto your hard
+drive, you should save this file onto a removable storage device
+(e.g. USB stick, diskette or CD-ROM), and subsequently delete the
+original file.  Be sure to keep the storage device in a secure place. 
+
+Please note that you can create back-up copies at any time by selecting
+the following option from the main menu: 
+\Menu{Key$\rightarrow$Backup}.
+
+
+\clearpage
+%% Original page 23
+\textbf{
+This concludes the installation of Gpg4win and the generation of your
+key pair.  You are now the owner of a unique and secure digital key. 
+}
+
+You should now see the GPA's main window. The key pair you just created
+will be shown in the middle of the window, beside the key pair symbol.  
+
+Clicking on the key pair symbol will provide details about your key
+pair, which are discussed in more detail below.
+
+% screenshot: keymanger mit einem Schlüssel.
+\begin{center}
+\IncludeImage[width=0.9\textwidth]{sc-en-gpa-first-key}
+\end{center}
+
+What is the significance of the notes regarding your key? Your key has
+no built-in expiry date and is therefore valid indefinitely.  You can,
+however, change the key's validity period - more about this later.
+
+A key consisting of 1024 bits is considered very secure, without
+creating undue strain on your computer's capacity.
+
+
+\textbf{ \OtherBook{} More information on this topic can be found in
+Chapter 5 "More about keys" in the manual "\xlink{Gpg4win for
+Advanced Users}{durchblicker.html}".}
+
+\clearpage
+%% Original page 24
+
+\section{Publishing your key per  \Email{}}
+
+One of the more practical aspects of Gpg4win is its ability to use a
+"non-secret" public key for the en- and decryption of data.  As long
+as your key and its corresponding passphrase are secure, you have gone a
+long way towards keeping your information confidential. 
+
+Everyone can and should have your public key, just as you can and should
+have the public keys of the people you correspond with. 
+
+Because:
+
+\textbf{
+In order to exchange secure \Email{}s, each party must have access to
+the public key of the other party. Naturally the receiver needs also a
+software that can handle with the keys like the Gpg4win modules do.
+}
+
+In order to send someone encrypted \Email{}s, you must have their
+public key in order to encrypt the emails to sent to them. 
+
+Similarly, someone wanting to send you encrypted \Email{}s must 
+have your public key in order to encrypt the email being sent to you.  
+
+This is the reason that your public key should be made widely
+available. Depending on the number of correspondence partners,
+this can be done in two ways:
+
+\begin{itemize}
+\item \textbf{directly sending an \Email{}} to selected recipients
+\item \textbf{or publishing the key on a key server} --- making it
+available to anyone
+\end{itemize}
+
+The first way to distribute your public key is to send it by
+\Email{} to one or more selected recipients.
+Alternatively you can make your \Email{} address available to anyone
+in the Internet. The second option is somewhat risky, as it can
+result in considerable SPAM activity on your email account. Therefore it
+is a good idea to only use an address with a good SPAM filter. 
+
+
+\clearpage
+%% Original page 25
+You can use Adele to practice the following steps:
+
+Adele is a very good \Email{} robot for practicing secure correspondence.
+Because most people prefer to correspond with a real person rather
+than with a piece of software (which is what Adele is, after all), we
+developed the following scenario:
+
+% Cartoon:  Adele mit Buch ind er Hand vor Rechner ``you have mail"'
+\begin{center}
+\IncludeImage{adele01}
+\end{center}
+
+You first send Adele your public key. Once Adele has received your key,
+she uses it to encrypt an  \Email{} which she sends to you along with
+her own public key.  You can now decrypt Adele's email using your own
+private key, and you can also respond to Adele by encrypting your email
+with her public key.
+
+You can now export your public key, copy it into an \Email{} und send it
+to Adele.
+
+
+\clearpage
+%% Original page 26
+
+Here is one possible way of doing just that, a method which works even
+if your \Email{} service does not allow attachments.
+This procedure also gives you a first in-depth look at your
+key and its components.
+
+How it works:\\
+Select the key you want to export by clicking on the corresponding key
+on your list, and then clicking on the \Button{Export} icon of the main
+GPA menu. Choose a file to export your key to, e.g. \\
+\Filename{my-key.asc}.  A popup window will let you know whether the
+operation was successful.  Then click on \Button{OK}.
+
+
+\clearpage
+%% Original page 27
+
+You can access the file through Windows Explorer; make sure you choose
+the same folder you chose when exporting the key.  You can open
+the file with a text editor (ex. WordPad), which will show your public
+key as a series of blocks containing text and numbers. 
+
+% screenshot: Editor mit ascii armored key
+\begin{center}
+\IncludeImage[width=0.9\textwidth]{sc-misc-mein-key-asc}
+\end{center}
+
+
+\clearpage
+%% Original page 28
+
+Highlight the whole key portion from 
+
+\begin{verbatim}
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+\end{verbatim}
+to
+\begin{verbatim}
+-----END PGP PUBLIC KEY BLOCK-----
+\end{verbatim}
+
+and copy it using the copy function on your toolbar or a keyboard
+shortcut such as Ctrl-C. This saves your key on the clipboard until you
+are ready to paste it, as described below. 
+
+Start your email program. Open a new \Email{} message and paste
+your public key (Windows users may use a shortcut key such as Ctrl-V).
+Before doing this, you should configure your email program to
+send messages in text-only format rather than HTML.
+
+Put \verb-adele@gnupp.de- into the address line of the \Email{}, and
+\textbf{my public key} on the subject line.
+
+Your \Email{} should look like this:
+
+% screenshot:  Eines composer Windows.
+\begin{center}
+\IncludeImage[width=0.9\textwidth]{sc-ol-send-test-key}
+\end{center}
+
+Now send this \Email{} to Adele. Make sure that you include your proper
+email address as sender rather than your practice address, otherwise you
+will never get a response from Adele!
+
+\clearpage
+%% Original page 29
+
+This process works exactly the same way if you send your key to a real
+\Email{} address. You can add other text, just like in any other email.
+Obviously, this is not required for emails addressed to Adele, as the
+robot's only purpose is to help you with the technical aspects of this
+process.
+
+\textbf{Summary:} You have now sent your public key by \Email{} to
+someone else (e.g. Adele). 
+
+\textbf{ \OtherBook{} The "Copy \& Paste" method shown in this
+example is easily understood by beginners.
+Chapter 7 of the manual "\xlink{Gpg4win for Advanced
+Users}{durchblicker.html}" describes how to send your key as a
+file attachment, which is a more commonly used method.}  
+
+\clearpage
+%% Original page 30
+\section{Sending your key to a keyserver}
+
+You can use this option even if you are exchanging encrypted \Email{}s
+with only a few people. By making your key available on a keyserver, it
+is always accessible to you and/or others.  
+
+\textsc{PLEASE NOTE: Although there are no indications that spammers are
+currently collecting addresses from keyservers, it is technically
+possible to do so. We do not, therefore, recommend publishing your key to
+a key server if you do not have an effective spam filter.}
+
+Choose your key by clicking on it. Then click on \Menu{Server
+$\rightarrow$Send key} which is found under \Menu{Server$\rightarrow
+$Server}.  A popup window will alert you that your key is about to be
+sent to a public key server. 
+
+% screenshot: GPA export key to keyserver
+\begin{center}
+\IncludeImage[width=0.4\textwidth]{sc-en-gpa-ks-export-p}
+\end{center}
+
+This window also displays a default key server.  If you click on
+\Button{Yes}, your key will be automatically sent to the server, from
+where it is sent to a network of worldwide key servers. Now anyone can
+download your key, and use it to send you a secure \Email{}.
+
+If this is a practice run, do NOT send your practice key to the key
+server because once sent, it cannot be removed.
+
+\textbf{Summary:} You now know how to distribute your key via a key
+server on the Internet. 
+
+\textbf{ \OtherBook{} Chapter 6 of the manual"\xlink{Gpg4win for
+Advanced Users}{durchblicker.html}" explains how to find someone else's
+key on a keyserver.}
+
+\clearpage
+%% Original page 31
+\section{Decrypting an \Email{}}
+
+Adele has received your public key, and uses it to encrypt an \Email{}
+which she sends back to you. 
+
+% cartoon: Adele typing and sending a mail
+\begin{center}
+\IncludeImage{adele02}
+\end{center}
+
+
+\clearpage
+%% Orginal page 32
+The email will look like this:
+
+\begin{verbatim}
+From: Adele (The friendly email-Robot) <adele@gnupp.de>
+Subject: Re: my publis key
+To: larrys@gpg4win.de
+Date: Thu, 12 Jan 2006 09:17:28 +0100
+
+-----BEGIN PGP MESSAGE-----
+Version: GnuPG v1.4.1 (GNU/Linux)
+
+hQEOA9FS8I3hSvdPEAP/W6W6f4MBwqTdzd9O/7FOTDHh//bQ+GUWoT0k9Y0i96UZ
+QO1VhQSia6a8DZrFQj7SlJWmB1MM7RNhkmhfZsD5Bn9ICmwwOt2xJDBkCQ34gu5N
+NxQ92WXZjHCaI0dSlynNziNbK8Ik26YPBYkQjLUDhHN4CRZ7q67eVEd/B9DI04wD
+....
+ujbjyj09L/9NvoBniWrgqVUayKr1Ls8OIZkyiex6mKypPGADJFAzvTwjubj5S6zJ
+A+QvSXUB9Hj8Ft2Nt3j0B/gWn5no3Er2/15UcBn/UPSxW9or0w9seDxCuSXvpakX
+bcneOm/pcJNEHcApXWXpoNOxRZ1MksM300w+79M6p2w=
+=VCHb
+-----END PGP MESSAGE-----
+\end{verbatim}
+
+(Please note that the encryption sequence has been considerably 
+shortened for demonstration purposes.)
+\clearpage
+%% Original page 33
+
+\textbf{Using WinPT to decrypt this \Email{}.}
+
+WinPT (Windows Privacy Tray key management tool) serves as PnuPG's
+"front end". This program is used to encrypt and decrypt \Email{}s; it
+also creates and verifies digital signatures.  One of WinPT's advantages
+is that it works with all email programs. 
+
+Most email programs (e.g. MS Outlook for Windows) also have special
+plug-ins which can encrypt and decrypt an \Email{} directly within the program.
+
+
+\textbf{ \OtherBook{} Chapter 8 of the manual "\xlink{Gpg4win for
+Advanced Users}{durchblicker.html}" provides more information on this
+particular funtion.} 
+
+WinPT performs the en/decryption function using your computer's memory.
+This means that any text to be en/decrypted must be copied onto the
+computer's clipboard.
+
+To do this, highlight the complete text in Adele's \Email{} and copy it
+onto the clipboard using the copy function or the shortcut Ctrl-C. 
+
+
+\clearpage
+%% Original page 34
+Starting WinPT from Windows Start Menu:
+
+% screenshot: startmenu Auswahl winpt
+\begin{center}
+\IncludeImage[width=0.7\textwidth]{sc-winpt-startmenu}
+\end{center}
+
+% the english version of the program does not have the "hinweis"below,
+% so I have not translated it. FIXME
+
+% Während WinPT startet, erscheint kurz ein Hinweis darauf, dass das
+% Programm die bereits vorhandenen Schlüssel einlädt.
+
+Once you open the program, the WinPT icon (a key) appears in the
+Windows taskbar, which is located in the lower right hand corner of the screen.
+
+% screenshot: taskbar rechts mit WinPT icon
+\begin{center}
+\IncludeImage{sc-winpt-trayicon}
+\end{center}
+
+
+\clearpage
+%% Original page 35
+Right-click on the icon to open the menu box, and click on
+\Menu{Clipboard$\rightarrow$Decrypt/Verify}.
+
+The program will then ask you for your secret passphrase and proceed to
+decrypt Adele's \Email{}.
+
+% screenshot: WinPT decryption dialog
+\begin{center}
+\IncludeImage[width=0.7\textwidth]{sc-winpt-clip-decrypt}
+\end{center}
+
+A popup window window will notify you when the decryption process is
+complete. 
+
+\clearpage
+%% Original page 36
+
+The decrypted text is now located on the clipboard, much in the same way
+as was done during the encryption process. You can copy the text (using
+shortcut key Ctrl-V) into your text editor or email program. 
+
+Adele's decrypted email will look something like this\footnote{Depending
+on Adele's software version, it might look slightly different.}:
+
+\begin{verbatim}
+Hello Larry Smith,
+
+here is an encrypted response to your email. 
+
+I received your public key with the ID 57251332CD8687F6 and a
+description `<larrys@gpg4win.de>'.
+
+I have enclosed the public key of adele@gnupp.de.
+
+Sincerely,
+adele@gnupp.de
+\end{verbatim}
+
+The text sequence following this message is Adele's public key. 
+
+The next section shows you how to import someone's public key and
+attach it to your key ring, which allows you to use this key anytime
+to encrypt messages to that person (in this case, Adele) or to verify
+a digital signature.
+
+
+\textbf{Summary:}
+
+\begin{enumerate}
+\item You know how to decrypt an encrypted \Email{} using your private
+key.
+
+\item You know how to send an encrypted response using the public key of
+the sender. 
+\end{enumerate}
+
+
+\clearpage
+%% Original page 37
+\section{Attaching a key to your key ring}
+
+You can store your friends' public keys on your "key ring" so they do
+not have to send you their public key every time they write to you.  
+
+\textbf{First Option:}
+
+To import a public key (ie. attach it to your key ring), you can save
+the key as a text block, much like you did with your own key. 
+
+
+To do this:
+
+Highlight the public key portion of the email you received, from
+
+\begin{verbatim}
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+\end{verbatim}
+to
+\begin{verbatim}
+-----END PGP PUBLIC KEY BLOCK-----
+\end{verbatim}
+
+and use Copy \& Paste to insert it into your text editor.  We recommend
+using a file and folder name that is easily found later; e.g.
+\Filename{adeles-key.asc} in folder 
+\Filename{My Documents}.
+
+
+
+\clearpage
+%% Original page 38
+\textbf{2nd Option:}
+
+The key is sent to you as a file attachment to the \Email{}. No matter
+which mail program you use, you can always save attachments onto your
+hard drive.  Do this now (again using names you will easily recognize
+and find later on, e.g. \Filename{My Documents}).
+
+It does not matter whether you save the key as text or directly as an
+\Email{} attachment, as both methods import the key into your GnuPG-"Key
+Ring".
+
+% screenshot:  Startmenu, Auswahl GPA
+
+This is how it works:
+
+Start the GNU Privacy Assistant (GPA) from Windows (this is necessary
+only if you shut it down after the previous practice session).
+
+
+\clearpage
+%% Original page 39
+Click on Import, then select and load the key file.
+
+% screenshot GPA Schlüsselverwaltung mit zwei Schlüsseln
+\begin{center}
+\IncludeImage[width=0.9\textwidth]{sc-en-gpa-two-keys}
+\end{center}
+
+You have now imported someone else's (in this case Adele's) public key
+and attached it to your key ring. Now you can use this key to send
+encrypted messages to the owner of that public key, as well as to verify
+his or her signature.
+
+
+\textbf{Before continuing, it is important to address the following
+concern:}\\
+It is possible that the \Email{} was sent by someone else using Adele's
+name, therefore how do you know that the public key sent to you is
+really Adele's key? 
+
+\textbf{ \OtherBook{} Chapter 9 ("Key Verification") in the 
+"\xlink{Gpg4win for Advanced Users}{durchblicker.html}" manual deals
+with this important question.  You may want to read that section now 
+before continuing with this manual. }
+
+\clearpage
+%% Original page 40
+Chapter 9 of the manual "Gpg4win for Advanced Users" shows you how to
+validate a key as well as how to sign a message (i.e. attach a signature)
+using your private key.
+
+Chapter 10 of the advanced manual also discusses ways to attach a
+signature to \Email{} messages. This is the equivalent of attaching an
+electronic seal to your message, allowing the recipient to verify
+whether the \Email{} has been altered during transmission
+and that the \Email{} definitely came from you).
+
+The signature verification process is simple. For this, you
+need the sender's public key on your Gpg4win-"key ring" (see
+Chapter 8 of "Gpg4win for Advanced Users" for more information).
+
+% cartoon:  Müller mit Schlüssel
+\begin{center}
+\IncludeImage[width=0.4\textwidth]{man-with-signed-key}
+\end{center}
+
+
+\clearpage
+%% Original page 41
+You can tell whether an \Email{} has been electronically signed if the
+text of the email is framed with the sender's signature (like a border).
+It will look something like this: 
+
+\begin{verbatim}
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+\end{verbatim} 
+
+and ends \Email{}-message with 
+
+\begin{verbatim}
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.2 (MingW32)
+
+iEYEARECAAYFAjxeqy0ACgkQcwePex+3Ivs79wCfW8u
+ytRsEXgzCrfPnjGrDDtb7QZIAn17B8l8gFQ3WIUUDCMfA5cQajHcm
+=O6lY
+-----END PGP SIGNATURE-----
+\end{verbatim}
+
+Highlight the text starting from \textsl{BEGIN PGP SIGNED MESSAGE} to
+\textsl{END PGP SIGNATURE} and copy it (using Ctrl-C) to your
+clipboard. 
+
+Now continue to decrypt the \Email{} as shown in Chapter 7 of this
+manual.
+
+Right-click on the WinPT icon on your Windows taskbar and select
+\newline
+\Menu{Clipboard$\rightarrow$ Decrypt/Verify}.
+
+You should see the following window:
+
+% screenshot: WinPT good signature.
+\begin{center}
+\IncludeImage[width=0.7\textwidth]{sc-winpt-good-sig}
+\end{center}
+
+If the status line on the window displays the message
+\emph{Invalid Signature}%someone check if this is the right text used in
+%the program, i did not encounter it so I am not sure of the tranlsation,
+%although i think this should be right FIXME
+
+ it means that the message has been altered after being sent.  This does
+not always mean that a third party has altered the message; it could
+also have been altered by a technical error during transmission
+through the Internet. 
+
+\textbf{ \OtherBook{} Before continuing, you may want to read Chapter 10
+of the manual "\xlink{Gpg4win for Advanced Users}{durchblicker.html}"
+which contains additional information on how to deal with
+invalid signatures.}
+
+\clearpage
+%% Original page 42
+\section{Encrypting \Email{}s}
+
+Encrypt an \Email{} and send it to Adele (or another person).
+
+Open your \Email{} program and write a message (if you are sending the
+message to Adele, any text will do as Adele cannot actually read $\ldots$)
+
+Highlight the text and copy it onto your clipboard (Windows) using the
+copy function or the Ctrl-C shortcut.
+
+% screenshot: composer mit mail an Adele, body markiert
+\begin{center}
+\IncludeImage[width=0.9\textwidth]{sc-ol-send-enc-msg1}
+\end{center}
+
+Right click on the WinPT icon on your Windows Taskbar and select
+\Menu{Clipboard$\rightarrow$Encrypt}.
+
+
+\clearpage
+%% Original page 45
+You should now see a window containing the keys on your key ring. Using
+the examples featured in this manual, you would see Adele's key (the one
+she sent to you), as well as your own key, which you created in Chapter
+2 (FIXME: Use dynamic reference).
+
+% screenshot: Winpt encryption key selection
+\begin{center}
+\IncludeImage[width=0.7\textwidth]{sc-winpt-sel-enc-key}
+\end{center}
+
+Click on Adele's key to encrypt the message you just composed, keeping in
+mind the following principle:
+
+\textbf{In order to send someone encrypted \Email{}s, you need to have
+that person's public key in order to encrypt the message properly.}
+
+Clicking on \Button{OK} starts the encryption process, which will be
+confirmed by the program if successful.
+
+\clearpage
+%% Original page 46
+The encrypted message can be found on your computer's clipboard, from
+which you can copy it into the \Email{} window.  You can erase the
+unencrypted text or just copy and paste the contents of the clipboard.
+
+It will look something like this: 
+
+% screenshot: composer Windows mit enrcypted text 
+\begin{center}
+\IncludeImage[width=0.9\textwidth]{sc-ol-send-enc-msg2}
+\end{center}
+
+Now send your \Email{} to Adele.  Remember to use your proper email
+address (rather than the practice email) otherwise you will not
+receive a response.
+
+\textbf{
+Congratulations! You have just encrypted your first \Email{}!
+}
+
+\clearpage
+%% Original page 47
+\section{How to archive/store encrypted \Email{}s}
+
+It is probably not wise to store the readable (clear) text of your
+encrypted \Email{}s on your computer (after all, they were encrypted 
+for a reason). Therefore it makes sense to store the encrypted
+copies of the \Email{}s.
+
+You may already have guessed resulting problem: To decrypt the
+archived \Email{}s you need the private key of the recipient, which will
+(should) never be available to you.
+
+The solution: You encrypt the messages to yourself as well. 
+
+You can encrypt a message designated for a recipient (ex. Adele) using
+their own as well as your own public key, which allows you to decrypt the
+text later using your own private key.
+
+Since Gpg4win cannot tell the difference between the different keys used
+to encrypt a message (ie. you could have more than one key), you need to
+set up the program accordingly. 
+
+\clearpage
+%% Original page 48
+To use this option, right click on the WinPT icon select
+\Menu{Preferences $\rightarrow$ GPG}.
+
+% screenshot: Winpt configuration dialog
+\begin{center}
+\IncludeImage[width=0.7\textwidth]{sc-winpt-enctoself}
+\end{center}
+
+This opens the GnuPG Preferences Window. You can add your key in the
+"Encrypt to this key" field using your (corresponding) \Email{} address.
+
+\Email{} programs which directly support GnuPG will also feature this
+option.
+
+\clearpage
+%% Original page 49
+\textbf{Summary:}
+
+\begin{enumerate}
+\item You responded to the recipient by encrypting an \Email{} with
+his/her public key.
+
+\item You also set up WinPT to encrypt archived copies of your \Email{}s
+with your own public key.
+\end{enumerate}
+
+\textbf{And that's it - welcome to the world of free and secure \Email{}
+encryption!}
+
+\textbf{
+\OtherBook{} We recommend you read Chapter 10 to 12 of the manual "
+\xlink{Gpg4win for Advanced Users}{durchblicker.html}" 
+for additional information on adding signatures to \Email{}s, as well 
+as importing and using an existing private key in GnuPG.
+}
+
+\textbf{
+\OtherBook{} Furthermore, Chapters 13 and 14 of the manual 
+"\xlink{Gpg4win for Advanced Users}{durchblicker.html}" provide 
+additional information about the ideas behind GnuPG's security
+features, as well as detailed insights into the mathematical
+concepts used.  These chapters are easy to read, as they were
+written for \textbf{the every day user}, not mathematicians and
+cryptographers. }
+
+
+\newpage
+\appendix
+\section{Suggestions regarding the Outlook plugin \emph{GPGol}}
+
+GPGol, a Microsoft Outlook plugin, integrates the operation of GnuPG.
+Here are some suggestions on the operation of this plugin.
+
+While it is fairly easy to operate the plugin in other \Email{} programs,
+technical difficulties associated with the integration of OpenPGP
+into Outlook make it harder to operate in this context.
+
+The current version of GPGol works only with Outlook 2003 SP2 and will
+notify you if you are using an older version.
+
+Please note the following limitations:
+
+\begin{itemize}
+\item Do not use Word as your text editor. 
+
+\item Inline-PGP or the conventional PGP is fully supported, however,
+PGP/MIME \Email{}s cannot be created. 
+
+On the other hand, decryption and signature verification of simple,
+as opposed to more complex, PGP/MIME \Email{}s, is not supported.
+\end{itemize}
+
+
+\subsection{Installation}
+
+The plugin can be installed using the the Gpg4win Installer. The next
+time you start Outlook, a \Menu{GnuPG} tab will be added in the
+\Menu{Tools$\rightarrow$Options} menu :
+
+\begin{center}
+\IncludeImage[width=0.7\textwidth]{sc-gpgol-options}
+\end{center}
+
+The first two options of this tab allow you to set default settings
+to do with encrypting and signing new messages.  Note that you
+can always change these settings when creating new messages.
+
+The option "Save decrypted message automatically" will save attachments
+as unencrypted text (after decryption). As a result, the attachment can
+be read anytime without having to decrypt it again. 
+
+The option "Automatically sign attachments" ensures that attachments are
+automatically signed along with your main text. For this purpose, an
+attachment with a signature is created for every attachment included in
+the message.
+
+The option "Also encrypt message with the default key" allows you to
+enter the Key ID of your own key so that your messages are automatically
+(and additionally) encrypted using your own key. This allows you to
+later retrieve, decrypt and read messages in the Sent folder.
+
+The option "Also decrypt in preview window" is only feasible with very
+fast computers; at the present time it has only limited operational
+capacity. 
+
+The option "Show HTML view if possible" enables you to view a message
+in HTML format. In most cases, or when an HTML format is not available,
+it will be shown in text format. 
+
+There are a number of preset default settings which take effect after
+initial installation. However, you should also ensure that you are
+not using \textbf{Microsoft Word} to compose messages.  We also do not
+recommend using HTML messages.
+
+You can set these option using the \Menu{Mail Format} tab in the
+\Menu{Tools$\rightarrow$Options} menu.  Your settings should look like
+this:
+
+\begin{center}
+\IncludeImage[width=0.7\textwidth]{sc-gpgol-noword}
+\end{center}
+
+
+\subsection{Common Questions}
+
+\begin{description}
+\item[Encryption Icons are not visible in the notification area/system
+tray.] 
+
+%The german text below was somewhat confusing - I know what they are
+%trying to accomplish here and changed the english text slightly.
+
+If the system tray contains a large number of icons, it may not display
+all of them. Clicking on the arrow at the right end of the system
+tray (located on the bottom right hand side of most computers) will open
+up the tray to show all icons, including the Key Manager icon.
+
+Again, make sure that you are not using Microsoft Word to compose
+messages (see installation instructions).
+ 
+\item[What is the meaning of the letters included in the GnuPG tab?] 
+
+  GPGol lists the components and their associated file names as part of
+the decryption or message signature verification. File names
+containing encrypted attachments are prefaced with "E", and signed
+attachments are marked with an "S". 
+
+\item[Where can I locate information regarding the latest version
+GPGol?]       
+
+  Click on the logo on the lower left side of your GnuPG options menu.
+
+\item[Why is it not possible to cancel an encryption process?] 
+
+  GPGol begins the encryption process as soon as you press the Send
+button. An error contained in Outlook prevents you from interrupting or
+cancelling this process. To avoid this, we recommend configuring Outlook
+so that messages are not sent immediately. This gives you the
+opportunity to cancel the message before it is sent. As a security
+measure, GPGol will try to erase the contents of the message if the
+encryption process is interrupted, but this is not always successful.
+
+\item[Why does the confirmation window appear when accessing certain
+\Email{}s?]
+
+If \linebreak{} GPGol is not installed as a trusted plugin, Outlook
+assumes that it is trying to access internal information without
+authorization.  GPGol tries to prevent this from happening, but
+sometimes it is necessary in order to properly display encrypted or
+signed \Email{}s.
+
+GPGol is still "in development". One outstanding issue is its
+registration as a trusted plugin. Future versions of GPGol should be able
+to solve the issue of needing to confirm some or all \Email{}s.
+
+\item[How come GPGol cannot create PGP/MIME messages?]
+
+At the present, there is no way of telling Outlook that a PGP/MIME
+message is to be created. Outlook decides on its own which
+"Content-Type" is to be used, as the plugin is not able to preset a
+certain type.  You may want to contact Microsoft directly to talk about
+this setting and/or missing documentation regarding this setup.
+
+\item[Why are signature verifications not performed automatically?]
+
+We are currently working on an automatic signature verification option
+to be used when opening an \Email{}.  However, given Outlook's complex
+technical environment, this is not an easy issue to solve. 
+
+
+\end{description}
+
+\clearpage
+\section{Transferring from other GnuPG programs}
+\label{ch:migration}
+
+This section explains how to migrate from GnuPG-based programs to Gpg4win.
+The installation program recognizes some of these programs
+and notifies you if that is the case.
+
+As a general rule it is recommended that existing GnuPG-based programs
+are removed before installing Gpg4win. 
+
+\textbf{Always} save a backup of the existing keys. 
+The best way to do this is to use
+the options in the existing system before installing Gpg4win.
+Select the option to save any private (secret) keys, 
+as well as all existing public keys.  Save these in one or two files.
+
+As soon as Gpg4win is installed, check if your existing keys are listed
+in the new program (using either GPA or WinPT). If yes, Gpg4win 
+was able to detect the previous key storage and you
+need take no further action.
+
+If the program does not list the existing keys, you must import them from
+your backup file(s).  For more information on this topic, refer to Chapter
+12 in the manual "\xlink{Gpg4win for Avanced
+Users}{durchblicker.html}".
+
+If your older system also includes GPA, you can use its back-up option,
+which should be very similar to the operation of GPA in Gpg4win.
+
+If you are not able to locate your existing keys, use the 'Search'
+function in Windows to find the files named \Filename{secring.gpg} and
+\Filename{pubring.gpg} an import them per GPA.\footnote{This is not the
+official procedure, but it works with all current versions of GnuPG.}
+
+
+
+
+\clearpage
+\section{History}
+
+\begin{itemize}
+\item  "GnuPP for Beginners", First Edition March 2002,\\
+  Authors: Manfred J. Heinze, TextLab text+media\\
+  Consulting: Lutz Zolondz, G-N-U GmbH\\
+  Illustrations: Karl Bihlmeier, Bihlmeier \& Kramer GbR\\
+  Layout: Isabel Kramer, Bihlmeier \& Kramer GbR\\
+  Documentation: Dr. Francis Wray, e-mediate Ltd.\\
+  Editor: Ute Bahn, TextLab text+media\\
+  Published by the German Federal Ministry for Industry \& Technology.\\
+  Available at
+  \verb-http://www.gnupp.de/pdf/einsteiger.pdf-.
+%    Der Abschnitt "History" ist im Originaldokument nicht vorhanden
+%    und wurde von Werner Koch beigefügt.
+\item Revised unpublished version by TextLab text+media.      
+\item "Gpg4win für Einsteiger", December 2005\\
+      Authors:  Werner Koch, g10 Code GmbH\\
+      Published as part of the Gpg4win project.
+\item "Gpg4win for Novices", November 2006\\
+      Translated by: Brigitte Hamilton\\
+      Published as part of the Gpg4win project.
+
+\end{itemize}
+
+\clearpage
+\input{fdl.tex}
+
+\end{document}

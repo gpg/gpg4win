@@ -1,0 +1,76 @@
+m4_dnl -*-html-*-
+m4_include(`template.m4')
+m4_dnl $Id$
+
+m4_define(`EN')
+m4_define(`DE_FILE', `package-integrity-de.html')
+PAGE_START
+
+<h1>Check integrity of Gpg4win packages</h1>
+
+How to actually perform the checks can be found e.g.
+on the
+<a href="http://www.gnupg.org/(en)/download/integrity_check.html">
+GnuPG web page on integrity checks</a>.
+
+<h2>SHA1 checksums</h2>
+
+<pre>
+SHA1_EXE  gpg4win-VERSION.exe
+SHA1_EXL  gpg4win-light-VERSION.exe
+SHA1_EXS  gpg4win-src-VERSION.exe
+SHA1_SRC  gpg4win-VERSION.tar.bz2
+</pre>
+
+<h2>MD5 checksums</h2>
+
+<pre>
+MD5_EXE  gpg4win-VERSION.exe
+MD5_EXL  gpg4win-light-VERSION.exe
+MD5_EXS  gpg4win-src-VERSION.exe
+MD5_SRC  gpg4win-VERSION.tar.bz2
+</pre>
+
+<h2>OpenPGP signatures</h2>
+
+For gpg4win-VERSION.exe:
+<a href="http://ftp.gpg4win.org/gpg4win-VERSION.exe.sig"
+  >http://ftp.gpg4win.org/gpg4win-VERSION.exe.sig</a><br>
+
+For gpg4win-light-VERSION.exe:
+<a href="http://ftp.gpg4win.org/gpg4win-light-VERSION.exe.sig"
+  >http://ftp.gpg4win.org/gpg4win-light-VERSION.exe.sig</a><br>
+
+For gpg4win-src-VERSION.exe:
+<a href="http://ftp.gpg4win.org/gpg4win-src-VERSION.exe.sig"
+  >http://ftp.gpg4win.org/gpg4win-src-VERSION.exe.sig</a><br>
+
+For gpg4win-VERSION.tar.bz2:
+gpg4win-VERSION.tar.bz2.sig which can be found
+<a href="http://wald.intevation.org/frs/?group_id=11">here</a>.
+
+<p>
+The signatures have been created with the key with the ID <em>1CE0C630</em>
+and can be retrieved from PGP keyservers.
+</p>
+
+<p>
+Loading a key from a keyserver can be done e.g. via GPA or WinPT.
+Checking the the signature of a file is best done with GPGee via
+the Explorer.
+</p>
+
+<h2>File lengths</h2>
+
+If you have a mismatch on the checksum or a bad signature you should
+first verify that you really downloaded the complete file.  Here are
+the lengths you should get:
+
+<pre>
+LEN_EXE bytes for gpg4win-VERSION.exe
+LEN_EXL bytes for gpg4win-light-VERSION.exe
+LEN_EXS bytes for gpg4win-src-VERSION.exe
+LEN_SRC bytes for gpg4win-VERSION.tar.bz2
+</pre>
+
+

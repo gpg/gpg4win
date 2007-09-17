@@ -1,0 +1,513 @@
+# NEWS for gpg4win                                   -*- coding: latin-1 -*-
+#
+# The version number given below are for the standard installers as
+# distributed by www.gpg4win.org.
+
+Noteworthy changes in version 1.1.3 (2007-09-17)
+------------------------------------------------
+
+(en) Update GpgOL to 0.9.92 and build with a fixed version of GPGME.
+(de) GpgOL wurde auf 0.9.92 aktualisiert und mit einer korrigierten Version von GPGME gebaut.
+
+~~~~~~~~~~~~~~~
+GnuPG:  1.4.7 
+GnuPG2: 2.0.7
+DirMngr: 1.0.2-svn267
+GPA:    0.7.6
+GPGol:  0.9.92
+GPGee:  1.3.1
+WinPT:  1.2.0
+Claws-Mail: 3.0.0-rc2
+Novices:        1.0.0
+Einsteiger:     2.0.2
+Durchblicker:   2.0.2
+~~~~~~~~~~~~~~~
+
+
+Noteworthy changes in version 1.1.2 (2007-08-16)
+------------------------------------------------
+
+(en) Updated the Claws-Mail package.  A couple of serious bugs are fixed.
+(de) Claws-Mail Version wurde aktualisiert, und einige schwere Fehler behoben.
+
+(en) Additional configuration files can be installed with the
+     /C=FILE option.
+(de) Zusätzliche Konfigurationsdateien können mit der Option /C=FILE
+     installiert werden.
+
+(en) Update GnuPG2 to support the chain model.
+(de) GnuPG2 wurde aktualisiert um das Kettenmodell zu unterstützen.
+
+(en) Install DirMngr along with GnuPG2.
+(de) DirMngr wird nun zusammen mit GnuPG2 installiert.
+
+
+~~~~~~~~~~~~~~~
+GnuPG:  1.4.7 
+GnuPG2: 2.0.5
+DirMngr: 1.0.1
+GPA:    0.7.6
+GPGol:  0.9.91
+GPGee:  1.3.1
+WinPT:  1.2.0
+Claws-Mail: 3.0.0-rc2
+Novices:        1.0.0
+Einsteiger:     2.0.2
+Durchblicker:   2.0.2
+~~~~~~~~~~~~~~~
+
+
+Noteworthy changes in version 1.1.1 (2007-07-10)
+------------------------------------------------
+
+(en) Replaced Sylpheed-Claws by a current Claws-Mail package.
+(de) Sylpheed-Claws ist durch eine aktuelle Claws-Mail Version ersetzt worden.
+
+(en) Add command line tools for CMS (S/MIME) to the standard installer.
+(de) Der Standardinstaller ist um Kommandozeilenwerkzeuge für CMS
+     (S/MIME) erweitert worden.
+
+(en) Translations of the installer are now done in the usual GNU
+     gettext way.
+(de) Übersetzungen des Installers werden nun auf dem gebräuchlichen
+     GNU gettext Weg erstellt.
+
+(en) Fixed a couple of bugs.
+(de) Einige Programmfehler wurden behoben.
+
+
+~~~~~~~~~~~~~~~
+GnuPG:  1.4.7 
+GnuPG2: 2.0.5
+GPA:    0.7.6
+GPGol:  0.9.91
+GPGee:  1.3.1
+WinPT:  1.2.0
+Claws-Mail: 2.10.0
+Novices:        1.0.0
+Einsteiger:     2.0.2
+Durchblicker:   2.0.2
+~~~~~~~~~~~~~~~
+
+
+Noteworthy changes in version 1.1.0 (2007-05-24)
+------------------------------------------------
+
+(en) Included Brigitte Hamilton's english translation of the novice's
+     manual.
+(de) Brigitte Hamiltons englische Übersetzung des Einsteiger Handbuchs
+     with nun mit installiert.
+
+(en) The programs GPG, GPGV, GPGSPLIT and GPA are now installed so
+     that they are searched via PATH.
+(de) Die Programm GPG, GPGV, GPGSPLIT und GPA werden nun so
+     installiert, daß sie über den PATH gefunden werden.
+
+(en) Updated to the latest stable version of GTK+ libraries (2.10).
+(de) Update der GTK+ Bibliothek auf die aktuelle Version (2.10).
+
+(en) Files may now be dropped on GPA's file manager window.
+(de) Dateien können nun per Drag&Drop in die Dateiverwaltung von GPA
+     gezogen werden
+
+
+~~~~~~~~~~~~~~~
+GnuPG: 1.4.7
+GPA:   0.7.6
+GPGol: 0.9.91
+GPGee: 1.3.1
+WinPT: 1.2.0
+Sylpheed-Claws: 2.4.0
+Novices:        1.0.0
+Einsteiger:     2.0.2
+Durchblicker:   2.0.2
+~~~~~~~~~~~~~~~
+
+
+Noteworthy changes in version 1.0.9 (2007-03-09)
+------------------------------------------------
+
+(en) Updated GnuPG to fix a problem in Sylpheed-Claws and GPGol. See
+     http://lists.gnupg.org/pipermail/gnupg-announce/2007q1/000252.html .
+(de) Update von GnuPG um eine Problem in Sylpheed-Claws and GPGol zu
+     beheben.  Siehe 
+     http://lists.gnupg.org/pipermail/gnupg-announce/2007q1/000252.html .
+
+(en) GnuPG prints German messages when used on the command line (when
+     used on a German system).
+(de) GnuPG gibt nun auf der Kommandozeile Meldungen auch auf Deutsch aus.
+
+(en) Some long standing bugs have been resolved in GPA.
+(de) Einige lang bekannte Fehler wurde in GPA behoben.
+
+(en) A new version of WinPT is included.
+(de) Eine neue Version von WinPT is nun enthalten.
+
+
+~~~~~~~~~~~~~~~
+GnuPG: 1.4.7
+WinPT: 1.2.0
+GPA:   0.7.5
+GPGol: 0.9.91
+GPGee: 1.3.1
+Sylpheed-Claws: 2.4.0
+Einsteiger:     2.0.2
+Durchblicker:   2.0.2
+~~~~~~~~~~~~~~~
+
+
+Noteworthy changes in version 1.0.8 (2006-12-06)
+------------------------------------------------
+
+(en) Fixed a serious and exploitable GnuPG bug in processing encrypted
+     packages. [CVE-2006-6235]
+(de) Ein schwerer und ausnutzbarer Fehler wurde in GnuPG behoben. 
+     [CVE-2006-6235]
+
+(en) Fixed a buffer overflow occuring when using gpg in interactive
+     mode on the command line. [CVE-2006-6169]
+(de) Ein Pufferüberlauf, der bei interaktiver Nutzung auf der
+     Kommandzeile auftreten kann, wurde behoben.  [CVE-2006-6169]
+
+(en) Fixed a GnuPG bug while decrypting certain compressed and
+     encrypted messages.
+(de) Ein selten auftretender Fehler beim Entschlüsseln von
+     komprimierten Nachrichten wurde in GnuPG behoben. 
+
+
+~~~~~~~~~~~~~~~
+GnuPG: 1.4.6
+WinPT: 1.0.1
+GPA:   0.7.4
+GPGol: 0.9.91
+GPGee: 1.3.1
+Sylpheed-Claws: 2.4.0
+Einsteiger:     2.0.2
+Durchblicker:   2.0.2
+~~~~~~~~~~~~~~~
+
+
+Noteworthy changes in version 1.0.7 (2006-10-13)
+------------------------------------------------
+
+(en) Packaged new versions of GPGol and WinPT.
+(de) Neue Versionen von GPGol und WinPT.
+
+(en) Fixed a bug while decrypting certain compressed and encrypted
+     messages. 
+(de) Ein Fehler beim Entschlüsseln einiger komprimierter und
+     verschlüsselter Nachrichten wurde behoben.
+
+(en) Fixed a crash in GPGol.
+(de) Ein Absturz von GPGOl wurde behoben.
+
+
+~~~~~~~~~~~~~~~
+GnuPG: 1.4.5
+WinPT: 1.0.1
+GPA:   0.7.4
+GPGol: 0.9.91
+GPGee: 1.3.1
+Sylpheed-Claws: 2.4.0
+Einsteiger:     2.0.2
+Durchblicker:   2.0.2
+~~~~~~~~~~~~~~~
+
+
+Noteworthy changes in version 1.0.6 (2006-08-28)
+------------------------------------------------
+
+(en) Packaged new versions of GPGol, Sylpheed-Claws and WinPT.
+(de) Neue Versionen von GPGol, Sylpheed-Claws und WinPT.
+
+~~~~~~~~~~~~~~~
+GnuPG: 1.4.5
+WinPT: 1.0.0
+GPA:   0.7.4
+GPGol: 0.9.90
+GPGee: 1.3.1
+Sylpheed-Claws: 2.4.0
+Einsteiger:     2.0.2
+Durchblicker:   2.0.2
+~~~~~~~~~~~~~~~
+
+
+Noteworthy changes in version 1.0.5 (2006-08-02)
+------------------------------------------------
+
+(en) Fixed another security related bug in GnuPG.
+(de) Ein weiterer sicherheitskritischer Fehler wurde in GnuPG behoben. 
+
+~~~~~~~~~~~~~~~
+GnuPG: 1.4.5
+WinPT: 0.12.3
+GPA:   0.7.4
+GPGol: 0.9.10
+GPGee: 1.3.1
+Sylpheed-Claws: 2.3.1
+Einsteiger:     2.0.2
+Durchblicker:   2.0.2
+~~~~~~~~~~~~~~~
+
+
+Noteworthy changes in version 1.0.4 (2006-07-25)
+------------------------------------------------
+
+(en)Changed GnuPG to again allow working with certain frontends.
+(de)GnuPG wurde geändert, so daß einige Frontends wieder
+    funktionieren.
+
+(en)Added icons to GPA and Sylpheed-Claws.
+(de)Icons werden nun für GPA und Sylpheed-Claws angezeigt.
+
+(en)Install an English manual for Sylpheed-Claws.
+(de)Ein englisches Handbuch zu Sylpheed-Claws wird nun installiert.
+
+~~~~~~~~~~~~~~~
+GnuPG: 1.4.4
+WinPT: 0.12.3
+GPA:   0.7.4
+GPGol: 0.9.10
+GPGee: 1.3.1
+Sylpheed-Claws: 2.3.1
+Einsteiger:     2.0.2
+Durchblicker:   2.0.2
+~~~~~~~~~~~~~~~
+
+Noteworthy changes in version 1.0.3 (2006-06-26)
+------------------------------------------------
+
+(en) Fixed a security related bug in GnuPG (CVE-2006-3082).
+(de) Ein sicherheitskritischer Fehler wurde in GnuPG behoben. 
+
+(en) Updated Sylpheed-Claws due to security problems.
+(de) Update von Sylpheed-Claws aufgrund von Sicherheitsfehlern.
+
+~~~~~~~~~~~~~~~
+GnuPG: 1.4.4
+WinPT: 0.12.3
+GPA:   0.7.3
+GPGol: 0.9.10
+GPGee: 1.3.1
+Sylpheed-Claws: 2.3.1
+Einsteiger:     2.0.2
+Durchblicker:   2.0.2
+~~~~~~~~~~~~~~~
+
+
+Noteworthy changes in version 1.0.2 (2006-05-30)
+------------------------------------------------
+
+(en) Fixed a bug in GPA which led to a non-working backup on some
+     Windows systems. 
+(de) Fehler beim Backup mittels GPA behoben.  Dieser Fehler trat bei
+     einigen Windows Versionen auf.
+
+(en) Updated Sylpheed-Claws to the latest stable version.
+(de) Sylpheed-Claws ist nun in der aktuellen stabilen Version eingebunden.
+
+~~~~~~~~~~~~~~~
+GnuPG: 1.4.3
+WinPT: 0.12.1
+GPA:   0.7.3
+GPGol: 0.9.10
+GPGee: 1.3.1
+Sylpheed-Claws: 2.2.0
+Einsteiger:     2.0.2
+Durchblicker:   2.0.2
+~~~~~~~~~~~~~~~
+
+
+Noteworthy changes in version 1.0.1 (2006-04-26)
+------------------------------------------------
+
+(en) New: Another version of the installer without the PDF manuals is now
+     build in addition to the standard one. 
+(de) Neu: Eine weitere Version des Installers, ohne die PDF Handbücher wird
+     nun auch gebaut.
+
+(en) Manuals are not installed in the quick launch bar anymore. 
+(de) Die Handbücher werden nun nicht mehr in der Schnellstartleise
+     installiert.
+
+(en) The manuals are now searchable even for words with Umlauts.
+(de) Die Handbücher können nun auch nach Wörtern mit Umlauten
+     durchsucht werden.
+
+~~~~~~~~~~~~~~~
+GnuPG: 1.4.3
+WinPT: 0.11.12
+GPA:   0.7.3
+GPGol: 0.9.10
+GPGee: 1.3.1
+Sylpheed-Claws: 1.9.100cvs124
+Einsteiger:     2.0.1
+Durchblicker:   2.0.1
+~~~~~~~~~~~~~~~
+
+
+Noteworthy changes in version 1.0.0 (2006-04-06)
+------------------------------------------------
+
+(en) New: Warning and hints if GnuPP, GnuPT or Windows Privacy Tools
+     are detected.  In case, GnuPG-Pack is found, installation will
+     stop, because this can not work in parallel.
+(de) Neu: Warnung und Hinweise falls GnuPP, GnuPT oder Windows Privacy
+     Tools gefunden wird.  Falls GnuPG-Pack gefunden wird, stoppt die
+     Installation da dieses Paket nicht parallel betrieben werden
+     kann.
+
+(en) New: A installer page allows to install start-links for the
+     desktop.
+(de) Neu: Eine Seite im Installer erlaubt es, Start-Links für
+     den Desktop mitzuinstallieren.
+
+(en) No splash screen anymore. Instead, the logo now integrates into
+     installer dialog.
+(de) Kein Splash-Screen mehr. Dafür Logo in Installer-Dialog eingebaut.
+
+~~~~~~~~~~~~~~~
+GnuPG: 1.4.3
+WinPT: 0.11.10 
+GPA:   0.7.3
+GPGol: 0.9.8 
+GPGee: 1.3.0
+Sylpheed-Claws: 1.9.100cvs124
+Einsteiger:     2.0.0
+Durchblicker:   2.0.0
+~~~~~~~~~~~~~~~
+
+
+Noteworthy changes in version 0.8.0 (2006-03-09)
+------------------------------------------------
+
+(en) The sound will not be played for the regular installer.
+
+(en) The unfinished support for the Eudora plugin as been removed
+     because Qualcomm was not able to come up with a free license for
+     the EMS API as used by this plugin.  That code makes up about an
+     quarter of the entire plugin and it should be possible to
+     re-implement it under a free license.
+
+(en) Updated GnuPG to 1.4.3rc2 which fixes the non-detached signature
+     verification bug.
+
+(en) Updated WinPT, GPA and the manuals.
+
+
+Noteworthy changes in version 0.7.0 (2006-02-15)
+------------------------------------------------
+
+(en) Finished Durchblicker manual.
+
+(en) Install a list with copyright statements.
+
+(en) Fix bugs in the individual packages.
+
+
+Noteworthy changes in version 0.6.0 (2006-01-26)
+------------------------------------------------
+
+(en) The location where to install gpg4win may now be changed.
+
+(en) Cosmetic changes
+
+(en) Finished Einsteiger manual
+
+
+Noteworthy changes in version 0.5.1 (2006-01-09)
+------------------------------------------------
+
+(en) Get plugin directory for sylpheed right.
+
+(en) WinPT starts again.
+
+(en) Included very early versions of the manuals as PDFs.
+
+(en) Include gpg4win in the source installer.
+
+
+Noteworthy changes in version 0.5.0 (2006-01-05)
+------------------------------------------------
+
+(en) Fixed GPA problems.
+
+(en) Sylpheed does now actually work.
+
+(en) Changed the packaging of GPGee.
+
+
+Noteworthy changes in version 0.3.1 (2005-12-07)
+------------------------------------------------
+
+(en) Updated WinPT and GPGol
+
+
+Noteworthy changes in version 0.3.0 (2005-12-06)
+------------------------------------------------
+
+(en) Add i18n stuff to GPGol.  Only German for now.
+
+(en) WinPT updates.
+
+(en) Changed the way the download script works.  It now uses a
+     packages file from ftp.gpw4win.org and only downloads packages
+     which are not yet downloaded unless the --force option is used.
+     Chnages to the packages are to be recorded in that packages file
+     and not anymore in the SVN.
+
+
+Noteworthy changes in version 0.2.1 (2005-11-28)
+------------------------------------------------
+
+(en) Translated the displayed names of the manuals in the package
+     selection.  
+
+(en) Removed splash.dll by code put into our helper DLL.  The tune is
+     not anymore cut off to early.
+
+
+Noteworthy changes in version 0.2.0 (2005-11-24)
+------------------------------------------------
+
+(en) The installer tries to stop a running instance of WinPT.
+
+(en) A warning message to close other application is displayed if
+     necessary.
+
+(en) Cleanups.
+
+
+Noteworthy changes in version 0.1.0 (2005-11-21)
+------------------------------------------------
+
+(en) GPA does now actually do something.
+
+(en) Included Sylpheed, although the GnuPG part is not yet working.
+
+(en) Some visual cleanups, more help texts.      
+
+(en) Reboot support for installing an already running GPGee.
+
+
+Noteworthy changes in version 0.0.2 (2005-11-08)
+------------------------------------------------
+
+(en) A second test release
+
+Noteworthy changes in version 0.0.1 (2005-11-04)
+------------------------------------------------
+
+(en) Initial release.
+
+
+# Copyright 2005, 2006 g10 Code GmbH
+# 
+# This file is free software; as a special exception the author gives
+# unlimited permission to copy and/or distribute it, with or without
+# modifications, as long as this notice is preserved.
+# 
+# This file is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
+# implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+# PURPOSE.

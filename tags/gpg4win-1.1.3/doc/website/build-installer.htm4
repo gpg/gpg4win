@@ -1,0 +1,52 @@
+m4_dnl -*-html-*-
+m4_include(`template.m4')
+m4_dnl $Id$
+
+m4_define(`EN')
+m4_define(`DE_FILE', `build-installer-de.html')
+PAGE_START
+
+<h1>Build Installer Package</h1>
+
+<p>
+Building a new Gpg4win installer package is
+mostly automized. The build procedure can be executed
+on a GNU/Linux system or within a virtual maschine also
+on Windows and other systems.
+</p>
+
+<ul>
+<li> <b>Build Gpg4win on GNU/Linux</b>:
+
+     <p>
+     In principle, any current GNU/Linux system is
+     sufficient as the base system. Some minor
+     adaptions might be necessary though.
+     The <a href="build-installer-gnulinux-de.html">specific
+     GNU/Linux guide</a> is tested with a Debian GNU/Linux 'Etch' 4.0 system.
+     <br>
+     Furthermore, you need at least 503 MByte on your harddisk
+     and a acceptable fast internet connection for downloading
+     about 60 MBytes.
+     </p>
+<li> <p>Build Gpg4win on Windows</b>:
+
+     <p>
+     In principle, any current Windows system is
+     sufficient as the base system. Some minor
+     adaptions might be necessary though.
+     The <a href="build-installer-on-vm.html">specific
+     Windows guide</a> is tested with Windows XP SP2.
+     <br>
+     Furthermore, you need at least 1.5 GByte on your harddisk
+     and a acceptable fast internet connection for downloading
+     about 360 MBytes.
+     </p>
+</ul>
+
+<p>
+Typical tasks:
+<ul
+<li> Update a single module (occasionally, ca. 1-4 hours)
+</ul>
+</p>
