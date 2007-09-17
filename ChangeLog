@@ -1,5 +1,12 @@
 2007-09-17  Werner Koch  <wk@g10code.com>
 
+	* configure.ac: Set version to 1.9.0-svn.  Make gpgme depend on qt
+	again.
+	* src/Makefile.am (gpg4win_pkg_gpgme_configure): Enable Qt again.
+	* packages/packages.current: Disable gpgee, enable gpgex.
+	
+2007-09-17  Werner Koch  <wk@g10code.com>
+
 	Released 0.9.92.
 
 	* src/Makefile.am (gpg4win_pkg_gpgme_configure): Disable Qt

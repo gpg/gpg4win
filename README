@@ -65,6 +65,15 @@ files to the desired location.  If you are a developer with write
 access to the Sibversion, you may use the "online" target to actually
 update the website.
 
+Development Branches
+====================
+
+The old version of gpg4win (version < 1.2) is since 1.1.3 tracked by
+the SVN branch: branches/gpg4win-1-branch.  Only important fixes will
+go into this version.  The current version is in the SVN trunk starts
+as version 1.9 and will soon lead to version 2.0.
+
+
 
 Adding new packages to the installer:
 =====================================
