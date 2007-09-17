@@ -1,0 +1,43 @@
+#! /bin/sh
+patch -p1 -f $* < $0
+exit $?
+
+2006-06-26  Werner Koch  <wk@g10code.com>
+
+	* src/mbox.c (lock_mbox, unlock_mbox) [G_OS_WIN32]: Do not use
+	struct flock.
+
+
+--- orig/sylpheed-claws-2.3.1/src/mbox.c	2006-06-20 10:31:43.000000000 +0200
++++ sylpheed-claws-2.3.1/src/mbox.c	2006-06-26 09:11:36.000000000 +0200
+@@ -279,7 +279,7 @@ gint lock_mbox(const gchar *base, LockTy
+ 	} else if (type == LOCK_FLOCK) {
+ 		gint lockfd;
+ 		gboolean fcntled = FALSE;
+-#if HAVE_FCNTL_H
++#if HAVE_FCNTL_H && !defined(G_OS_WIN32)
+ 		struct flock fl;
+ 		fl.l_type = F_WRLCK;
+ 		fl.l_whence = SEEK_SET;
+@@ -296,7 +296,7 @@ gint lock_mbox(const gchar *base, LockTy
+ 			return -1;
+ 		}
+ 		
+-#if HAVE_FCNTL_H
++#if HAVE_FCNTL_H && !defined(G_OS_WIN32)
+ 		if (fcntl(lockfd, F_SETLK, &fl) == -1) {
+ 			g_warning("can't fnctl %s (%s)", base, strerror(errno));
+ 			return -1;
+@@ -349,7 +349,7 @@ gint unlock_mbox(const gchar *base, gint
+ 		return 0;
+ 	} else if (type == LOCK_FLOCK) {
+ 		gboolean fcntled = FALSE;
+-#if HAVE_FCNTL_H
++#if HAVE_FCNTL_H && !defined(G_OS_WIN32)
+ 		struct flock fl;
+ 		fl.l_type = F_UNLCK;
+ 		fl.l_whence = SEEK_SET;
+
+
+
+

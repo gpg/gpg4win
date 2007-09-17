@@ -1,0 +1,44 @@
+2007-09-13  Marcus Brinkmann  <marcus@g10code.de>
+
+	* POTFILES.in: Add inst-gpgex.nsi.
+	* de.po: Updated.
+
+2007-08-15  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
+
+	* de.po: Fixed a fuzzy translation.
+
+2007-07-10  Werner Koch  <wk@g10code.com>
+
+	* Rules-nsis (%.nsi): Remove dependency on nsis-msgfmt and call
+	make on it instead.
+
+2007-07-09  Werner Koch  <wk@g10code.com>
+
+	* de.po: Add description for gnupg2.
+
+	* POTFILES.in: Include gnupg2.
+
+2007-07-02  Marcus Brinkmann  <marcus@g10code.de>
+
+	* POTFILES.in: Add src/inst-claws-mail.nsi.
+	* de.po: Update.
+
+2007-06-21  Marcus Brinkmann  <marcus@g10code.de>
+
+	* nsis-msgfmt.c (convert_newline): Terminate strings (d'oh!).
+	* de.po: Convert to ISO-8859-1 consistently.
+
+2007-06-20  Marcus Brinkmann  <marcus@g10code.de>
+
+	* nsis-xgettext.awk, nsis-msgfmt.c: Convert newlines properly.
+	* de.po: Use proper newlines.
+
+	* Makevars, LINGUAS, nsis-xgettext.sh, nsis-xgettext.awk,
+	nsis-msgfmt.c, Rules-nsis, de.po, README.nsis: New files.
+
+2007-06-20  gettextize  <bug-gnu-gettext@gnu.org>
+
+	* Makefile.in.in: New file, from gettext-0.16.1.
+	* remove-potcdate.sin: New file, from gettext-0.16.1.
+	* POTFILES.in: New file.
+

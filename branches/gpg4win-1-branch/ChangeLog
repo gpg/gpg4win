@@ -1,0 +1,1408 @@
+2007-09-17  Werner Koch  <wk@g10code.com>
+
+	Released 0.9.92.
+
+	* src/Makefile.am (gpg4win_pkg_gpgme_configure): Disable Qt
+	requirement.
+	* configure.ac: Ditto.
+
+	* packages/packages.current: Update gpgol to 0.9.92 and gpgme to a
+	new snapshot. Disable gpgex, enable gpgee.
+
+2007-09-12  Marcus Brinkmann  <marcus@g10code.de>
+
+	* packages/packages.current: Update dirmngr.
+
+2007-09-11  Marcus Brinkmann  <marcus@g10code.de>
+
+	* packages/packages.current: Update gpgex.
+
+	* packages/packages.current: Add gpgex, disable gpgee.
+
+	* packages/packages.current: Bump gnupg to 2.0.7.
+
+	* src/qt.conf: New file.
+	* src/inst-qt.nsi: Install qt.conf.
+
+2007-09-10  Marcus Brinkmann  <marcus@g10code.de>
+
+	* packages/packages.current: Update gpgme and libassuan to
+	snapshot pacakages.
+
+2007-09-07  Marcus Brinkmann  <marcus@g10code.de>
+
+	* configure.ac: Add libassuan as dependency for GpgEX.
+	* src/Makefile.am (gpg4win_pkg_gpgex_configure): Add gpg-error and
+	libassuan configure options.
+
+	* configure.ac: Add qt as dependency for GPGME.
+	* src/inst-sections.nsi [HAVE_PKG_QT]: Make GPGME depending on Qt. 
+	* src/inst-gpgme.nsi: Change condition from !GPG4WIN_LIGHT to HAVE_PKG_QT.
+
+	* src/Makefile.am (gpg4win_pkg_gpgme_configure): Remove LDFLAGS,
+	add --enable-w32-qt and work around Qt's lack of cross compilation
+	support.
+	* src/gpg4win.mk.in (stamps/stamp-$(1)-02-configure): Call
+	configure through eval, so that configure options with spaces are
+	quoted properly.
+	* src/inst-gpgme.nsi [!GPG4WIN_LIGHT]: Install libgpgme-qt-11.dll.
+	* src/uninst-gpgme.nsi: Uninstall libgpgme-qt-11.dll.
+	
+2007-08-30  Marcus Brinkmann  <marcus@g10code.de>
+
+	* configure.ac: Add gpgex.
+	* include/config.nsi.in: Add gpgex.
+	* src/Makefile.am (EXTRA_DIST): Add inst-gpgex.nsi and
+	uninst-gpgex.nsi.
+	(gpg4win_spkgs): Add gpgex.
+	(gpg4win_pkg_gpgex_configure): New variable.
+	* src/inst-sections.nsi: Add gpgex installer and uninstaller, as
+	well as description.
+	(CalcDefaults, CalcDepends): Add gpgex.
+
+2007-08-30  Marcus Brinkmann  <marcus@g10code.de>
+
+	* packages/download.sh: Implement new "name" command and remove
+	"ren" command.
+	* packages/packages.current: Add qt.
+	* configure.ac: Add qt.
+	* include/config.nsi.in: Add qt.
+	* src/Makefile.am (EXTRA_DIST): Add inst-qt.nsi and uninst-qt.nsi.
+	(gpg4win_bpkgs): Add qt.
+	* src/uninst-qt.nsi, src/inst-qt.nsi: New files.
+	* src/inst-sections.nsi: Run installer and uninstaller for qt.
+	(CalcDepends): Handle qt.
+	* src/gpg4win.nsi: Remove qt from light installer.
+
+2007-08-24  Marcus Brinkmann  <marcus@g10code.de>
+
+	* src/inst-gnupg.nsi: Write compatibility key to registry for GPGee.
+
+2007-08-24  Werner Koch  <wk@g10code.com>
+
+	* packages/packages.current: Updated libassuan to 1.0.3.
+
+2007-08-23  Werner Koch  <wk@g10code.com>
+
+	* src/inst-dirmngr.nsi: Install examples files as default
+	configuration.
+
+2007-08-20  Werner Koch  <wk@g10code.com>
+
+	* packages/packages.current: Add bzip2.
+
+	* configure.ac: Check for RANLIB and AR.  Look for bzip2.  Make
+	gnupg and gnupg2 depend on it.
+	* src/Makefile.am (gpg4win_pkg_bzip2_make_args) 
+	(gpg4win_pkg_bzip2_make_args_inst): New.
+	(EXTRA_DIST): Add bzip2.
+	(gpg4win_pkg_gnupg_configure): New.  Look for bzip2.
+	* include/config.nsi.in: Add bzip2.
+	* src/inst-bzip2.nsi: New.
+	* src/uninst-bzip2.nsi: New.
+
+2007-08-16  Werner Koch  <wk@g10code.com>
+
+	Released 1.1.2.
+
+	* src/inst-gnupg2.nsi: Allow overwriting of gpg-agent.
+	* src/inst-libgpg-error.nsi: Allow overwriting of libgpg-error.dll.
+	* src/inst-libgcrypt.nsi: Likewise.
+	* src/inst-gpgme.nsi: Likewise.
+	* src/inst-w32pth.nsi: Likewise.
+	* src/inst-libiconv.nsi: Likewise.
+
+	* packages/packages.current: Updated GnuPG2 and W32pth.  Add
+	Dirmngr.  Add gpgme snapshot.
+
+2007-08-15  Marcus Brinkmann  <marcus@g10code.de>
+
+	* src/g4wihelp.c (config_init): Fix bug in argument parsing.
+
+2007-08-14  Marcus Brinkmann  <marcus@g10code.de>
+
+	* src/g4wihelp.c (config_lookup, config_fetch_bool): New functions.
+	* src/inst-sections.nsi (CalcDefaults): New function.
+	(.onInit): Call CalcDefaults.
+	* src/inst-sections.nsi (CalcDepends): New function.  Run it once.
+	Support auto-config for link selection.
+	* src/installer-finish.nsi: Support auto-config for start menu folder.
+
+	* src/g4wihelp.c (service_create): Auto start service, install as
+	local service.
+	(service_start): Set argv to NULL if argc is zero.
+	(service_stop): Wait until service is actually stopped.  Implement
+	the whole logic when to stop and when to wait.
+	* src/installer.nsi: Print warning about shutting down dirmngr.
+	Shutdown dirmngr.
+	* src/inst-dirmngr.nsi: Remove code refactored into service_stop.
+	Do not pass any arguments when starting the service.  Use
+	CreateDirectory instead of SetOutPath.
+	* src/uninst-dirmngr.nsi: Remove code factored into service_stop.
+	* src/inst-gnupg.nsi, src/inst-gnupg2.nsi, src/inst-gpa.nsi: Use
+	CreateDirectory instead SetOutPath.
+
+	* patches/claws-mail-3.0.0-rc2/03-smime-plugin.patch: Change
+	license string to "GPL3+" to make Claws load it.
+
+	* src/gpg4win.mk: Implement clean-PKG targets to allow rebuilding
+	individual packages.
+
+2007-08-14  Werner Koch  <wk@g10code.com>
+
+	* packages/Makefile.am (packages.current.sig, upload): Remove.
+	(EXTRA_DIST): Remove packages.key.  Add packages.current.
+
+	* packages/download.sh: Remove online downloading of
+	packages.current.
+	* packages/packages.current: Fix comment.
+
+2007-08-13  Marcus Brinkmann  <marcus@g10code.de>
+
+	* patches/claws-mail-3.0.0-rc2/04-cvs116.patch: New file.
+	* Makefile.am (EXTRA_DIST): Add that patch.
+
+	* NEWS: Add new entries.
+	* README.wine: Remove obsolete file.
+
+	* src/inst-gnupg2.nsi: Install config files.
+	* src/inst-dirmngr.nsi: Likewise.
+	* src/inst-gpa.nsi: Likewise.
+
+	* src/g4wihelp.c (config_init, config_fetch): New functions.
+	* src/inst-gnupg.nsi: Install gpg.conf AppData if configured.
+
+2007-08-10  Marcus Brinkmann  <marcus@g10code.de>
+
+	* patches/claws-mail-3.0.0-rc2/01-w32-logo.patch,
+	patches/claws-mail-3.0.0-rc2/02-w32-icon.patch,
+	patches/claws-mail-3.0.0-rc2/03-smime-plugin.patch,
+	patches/claws-mail-3.0.0-rc2/99-auto.patch: New files.
+	* Makefile.am (EXTRA_DIST): Add these patches.
+	* packages/packages.current: Upgrade claws to 3.0.0-rc2.
+
+	* m4/gpg4win.m4: Check for duplicate packages.
+
+2007-08-06  Werner Koch  <wk@g10code.com>
+
+	* src/gpgwrap.c (build_commandline): Terminate each itenm in the
+	array.  Problem found by Moritz Schulte.
+	
+2007-08-04  Marcus Brinkmann  <marcus@g10code.de>
+
+	* src/g4wihelp.c (service_error, service_create, service_lookup,
+	service_start, service_stop, service_delete): New functions.
+	* src/inst-dirmngr.nsi: Register and start the service.
+	* src/uninst-dirmngr.nsi: Stop and unregister the service.
+
+	* src/inst-sections.nsi: Add dirmngr as dependency for gnupg2, and
+	w32pth as dependency for dirmngr.
+
+	* src/Makefile.am (gpg4win_pkg_gnupg2_configure): Add
+	--with-pth-prefix.
+
+2007-07-10  Werner Koch  <wk@g10code.com>
+
+	Released 1.1.1.
+
+	* src/Makefile.am (EXTRA_DIST): Remove $(common_nsi).  Add all
+	installer scripts explicitly.
+
+	* Makefile.am (EXTRA_DIST): Removed old patches for Sylpheed.
+	(AUTOMAKE_OPTIONS): Add no-dist-gzip.
+
+	* src/gpg4win.nsi [GPG4WIN_LIGHT]: Undef gnupg2 and related libs.
+	Undef the English novices manual.
+	* src/installer-finish.nsi: Delete the link for the English novices
+	manual and the claws manual.
+
+	* src/uninst-sylpheed-claws.nsi: Delete the manual even when using
+	the lighjt version.  This is to allow updating with a light version.
+	* src/uninst-claws-mail.nsi: Ditto.
+
+	* src/installer-finish.nsi: Changed publisher name to "The Gpg4win
+	Project".
+
+	* src/gpg4win.nsi: Fixed capitalization of some Gpg4win strings.
+	* src/gpg4win-src.nsi: Ditto.
+
+2007-07-09  Werner Koch  <wk@g10code.com>
+
+	* src/uninst-gnupg2.nsi: Need to remove com-certs.pem.
+
+	* src/inst-gnupg2.nsi: Make it an optional package.
+	Add description.
+	* src/inst-sections.nsi: Include language macro for description.
+
+2007-07-09  Marcus Brinkmann  <marcus@g10code.de>
+
+	* patches/gpgol-0.9.91/01-gpgme.patch: New file.
+	* Makefile.am (EXTRA_DIST): Add patches/gpgol-0.9.91/01-gpgme.patch.
+
+	* packages/download.sh: Implement a new function "ren" for
+	renaming.
+	* packages/packages.current: Rename gnupg 2.
+
+	* packages/packages.current: Update to GPGME 1.1.5.
+
+	* src/Makefile.am (gpg4win_pkg_gpgme_configure): Enable gpgsm.
+
+2007-07-05  Marcus Brinkmann  <marcus@g10code.de>
+
+	* packages/packages.current: Update to Gtk+ 2.10.13.
+
+	* patches/claws-mail-2.10.0/03-w32-port.patch: Fix cut&paste bug.
+	* patches/claws-mail-2.9.2/03-w32-port.patch: Likewise.
+	Spotted by Colin Leroy.
+
+2007-07-04  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
+
+	* README: Added just another dependency that sometimes happen to miss.
+
+2007-07-03  Marcus Brinkmann  <marcus@g10code.de>
+
+	* packages/packages.current: Update sylpheed entry to claws-mail.
+
+	* configure.ac: Add dirmngr.
+	* include/config.nsi.in: Add dirmngr.
+	* src/Makefile.am (gpg4win_spkgs): Add dirmngr.
+	(gpg4win_pkg_dirmngr_configure): New variable.
+	* src/inst-dirmngr.nsi, src/uninst-dirmngr.nsi: New files.
+	* src/inst-sections.nsi [HAVE_PKG_DIRMNGR]: Include installer
+	and uninstaller snippet for dirmngr.
+
+	* Makefile.am (EXTRA_DIST): Add
+	patches/claws-mail-2.10.0/01-w32-logo.patch,
+	patches/claws-mail-2.10.0/02-w32-icon.patch,
+	patches/claws-mail-2.10.0/03-w32-port.patch,
+	patches/claws-mail-2.10.0/04-smime-plugin.patch and
+	patches/claws-mail-2.10.0/99-auto.patch.
+	* patches/claws-mail-2.10.0/01-w32-logo.patch,
+	patches/claws-mail-2.10.0/02-w32-icon.patch,
+	patches/claws-mail-2.10.0/03-w32-port.patch,
+	patches/claws-mail-2.10.0/04-smime-plugin.patch,
+	patches/claws-mail-2.10.0/99-auto.patch: New files.
+
+2007-07-02  Marcus Brinkmann  <marcus@g10code.de>
+
+	* src/Makefile.am (gpg4win_pkg_claws_mail_configure): Fix config
+	dir.
+
+	* Makefile.am (EXTRA_DIST): Add
+	patches/claws-mail-2.9.2/01-w32-logo.patch,
+	patches/claws-mail-2.9.2/02-w32-icon.patch,
+	patches/claws-mail-2.9.2/03-w32-port.patch,
+	patches/claws-mail-2.9.2/04-smime-plugin.patch and
+	patches/claws-mail-2.9.2/99-auto.patch.
+	* patches/claws-mail-2.9.2/01-w32-logo.patch,
+	patches/claws-mail-2.9.2/02-w32-icon.patch,
+	patches/claws-mail-2.9.2/03-w32-port.patch,
+	patches/claws-mail-2.9.2/04-smime-plugin.patch,
+	patches/claws-mail-2.9.2/99-auto.patch: New files.
+
+	* configure.ac: Add claws-mail.
+	* include/config.nsi.in: Add claws-mail.
+	* src/Makefile.am (gpg4win_spkgs): Add claws-mail.
+	(gpg4win_pkg_claws_mail_configure): New variable.
+	* src/inst-claws-mail.nsi, src/uninst-claws-mail.nsi: New files.
+	* src/inst-sections.nsi [HAVE_PKG_CLAWS_MAIL]: Include installer
+	and uninstaller snippet for claws-mail, handle claws-mail
+	dependencies and add a menu item for it.
+
+2007-06-22  Werner Koch  <wk@g10code.com>
+
+	* src/inst-gnupg2.nsi: Install more files.
+	* src/uninst-gnupg2.nsi: and uninstall them.
+
+	* src/Makefile.am (gpg4win_pkg_gnupg_post_install): Remove
+	underlined markup.  Reported by Dirk Traulsen.
+
+2007-06-20  Werner Koch  <wk@g10code.com>
+
+	* src/inst-sections.nsi, src/Makefile.am, src/uninst-pinentry.nsi
+	* src/inst-pinentry.nsi, include/config.nsi.in: Add new package
+	pinentry.
+	* src/Makefile.am (gpg4win_pkg_pinentry_configure): New.
+	
+	* src/Makefile.am (gpg4win-$(VERSION).exe): Add versioninfo.txt as
+	dependency.
+	(gpg4win-light-$(VERSION).exe): Ditto.
+
+2007-06-20  Marcus Brinkmann  <marcus@g10code.de>
+
+	* po: New directory.
+	* m4/po.m4: New file, from gettext-0.16.1.
+	* m4/progtest.m4: New file, from gettext-0.16.1.
+	* m4/nls.m4: New file, from gettext-0.16.1.
+	* Makefile.am (SUBDIRS): Add po.
+	* configure.ac: Invoke AM_PO_SUBDIRS.
+	(AC_CONFIG_FILES): Add po/Makefile.in.
+
+	* src/installer.nsi: Do not insert MUI_LANGUAGE "German".
+	* src/gpg4win.nsi, src/gpg4win-src.nsi: Add include dir
+	${TOP_SRCDIR}/po.  Include "../po/catalogs.nsi".
+	* src/inst-gnupg.nsi: Move translation string DESC_Menu_gnupg_faq
+	from here ...	
+	* src/inst-gpg4win.nsi: ... to here.
+
+	* src/g4wihelp.nsi, src/installer.nsi, src/inst-eudoragpg.nsi,
+	src/inst-gnupg.nsi, src/inst-gpa.nsi, src/inst-gpg4win.nsi,
+	src/inst-gpgee.nsi, src/inst-gpgol.nsi,
+	src/inst-man_advanced_de.nsi, src/inst-man_advanced_en.nsi,
+	src/inst-man_novice_de.nsi, src/inst-man_novice_en.nsi,
+	src/inst-sylpheed-claws.nsi, src/inst-winpt.nsi: Remove German
+	translation.
+	
+2007-06-18  Marcus Brinkmann  <marcus@g10code.de>
+
+	* src/inst-w32pth.nsi: Install shared library.
+	* src/uninst-w32pth.nsi: Uninstall shared library.
+
+	* src/inst-gnupg2.nsi: Install gpgconf.exe.
+	* src/uninst-gnupg2.nsi: Uninstall gpgconf.exe.
+
+	* src/inst-sections.nsi: Add dependency management for GnuPG2.
+
+2007-06-15  Werner Koch  <wk@g10code.com>
+
+	* src/gpg4win.mk.in: Add cruel hack to support gnupg2.
+
+	* src/Makefile.am: Use --silent with most configure runs.
+	(gpg4win_pkg_gnupg2_post_install): New.
+
+	* src/uninst-gnupg2.nsi, src/inst-libgnupg2.nsi: New.
+	* src/uninst-libassun.nsi, src/inst-libassuan.nsi: New.
+	* src/inst-libksba.nsi, src/uninst-libksba.nsi: New.
+	* src/inst-libgcrypt.nsi, src/uninst-libgcrypt.nsi: New.
+	* src/inst-sections.nsi: Include new installation scripts.a
+	* include/config.nsi.in: Add definitions for new packages.
+
+	* src/uninst-gnupg.nsi: Fix removal of gpgkeys helper.
+
+2007-06-12  Marcus Brinkmann  <marcus@g10code.de>
+
+	* src/gpgwrap.c (main): Call _spawnv, not execv.
+
+2007-05-25  Marcus Brinkmann  <marcus@g10code.de>
+
+	* src/uninst-gnupg.nsi: Fix path of gpgkeys helper programs.
+	Remove pub directory.
+	* src/uninst-gtk+.nsi: Fix path of directory to be removed.
+
+2007-05-24  Werner Koch  <wk@g10code.com>
+
+	Released 1.1.0.
+
+	* configure.ac (PREVIEWHOST): New. 
+	(MANUALVERSION_NOVICES): Set to 1.0.0.
+
+2007-05-20  Marcus Brinkmann  <marcus@g10code.de>
+
+	* patches/glib-2.12.12/01-giowin32.patch,
+	patches/glib-2.12.12/02-gspawn-w32.patch,
+	patches/glib-2.12.12/03-gspawn-w32-fixup.patch: New files.
+	* Makefile.am (EXTRA_DIST): Add these new files.
+
+	* src/gpgwrap.c (build_commandline): New function.
+	(main): Quote argument vector.
+
+	* configure.ac: Comment advanced manual here as well.
+
+2007-05-19  Marcus Brinkmann  <marcus@g10code.de>
+
+	* autogen.sh: Fix test.
+	* src/Makefile.am: Replace := by =.a 
+
+	* packages/download.sh: Require bash due to brace expansion.
+
+2007-05-18  Werner Koch  <wk@g10code.com>
+
+	* src/gpgwrap.c (main): Delimit the real path from the version
+	using a semicolon.
+
+2007-05-17  Werner Koch  <wk@g10code.com>
+
+	* src/installer.nsi (AddToPath,RemoveFromPath): New.
+	* src/inst-gpa.nsi: Install gpgwrap for gpa.
+	* src/inst-gnupg.nsi: Install gpgwrap for gpg, gpgv and gpgsplit.
+	
+	* src/gpgwrap.c: New.
+
+	* configure.ac: Check for strip.
+	(AC_CONFIG_HEADER): New.
+	* src/Makefile.am (g4wihelp.dll): Strip.
+	(gpgwrap.exe): Build.
+
+2007-05-16  Werner Koch  <wk@g10code.com>
+
+	* src/inst-gtk+.nsi: Install new themes and the engines.  Update
+	to gtk 2.10.
+	* src/uninst-gtk+.nsi: Likewise.
+
+	* src/inst-pango.nsi: Adjust for Pango 1.16.
+
+	* configure.ac: New package Cairo as reguired by the current Gtk+.
+	* src/uninst-cairo.nsi, src/inst-cairo.nsi: New.
+	* src/inst-sections.nsi: Install Cairo.
+	* include/config.nsi.in: Ditto.
+
+	* src/uninst-gnupg.nsi: Delete gnupg.nls directory.
+
+2007-03-09  Werner Koch  <wk@g10code.com>
+
+	Released 1.0.9.
+
+	* src/Makefile.am: Fixed syntax error in gnupg post install.
+	(EXTRA_DIST): Add english manual installation files.
+
+	* packages/packages.current: Replaced sourceforge download site
+	by the g10code mirror.  Updated WinPT, GPA and GnupG.
+
+2007-02-26  Werner Koch  <wk@g10code.com>
+
+	* configure.ac: Require msgfmt.
+	* src/inst-gnupg.nsi: Install the German translation.
+	* src/Makefile.am (gpg4win_pkg_gnupg_post_install): Create mo files.
+
+2006-12-06  Werner Koch  <wk@g10code.com>
+
+	Released 1.0.8.
+
+	* autogen.sh: Add option --force.
+
+	* src/Makefile.am: GnuPG man pages are now below share.
+	* src/inst-gnupg.nsi: Ditto
+
+2006-12-04  Werner Koch  <wk@g10code.com>
+
+	* src/Makefile.am (gpg4win_ipkgs): Add english manuals.
+
+	* autogen.sh <build-w32>: Disable the english manuals for now.
+
+2006-11-30  Werner Koch  <wk@g10code.com>
+
+	* include/config.nsi.in: Add definitions for the english manuals.
+	* configure.ac: Adjusted name of manual directory.
+	* src/inst-man_novice_de.nsi: Ditto.
+	* src/inst-man_advanced_de.nsi: Ditto.
+	* src/inst-man_advanced_en.nsi: New.
+	* src/inst-man_novice_en.nsi: New.
+	* src/uninst-man_novice_en.nsi: New.
+	* src/uninst-man_advanced_en.nsi: New.
+	* src/inst-sections.nsi: Include the new installers sections.
+
+2006-10-13  Werner Koch  <wk@g10code.com>
+
+	Released 1.0.7.
+
+	* patches/gnupg-1.4.5/01-uncompress.patch: New.
+
+2006-08-28  Werner Koch  <wk@g10code.com>
+
+	Released 1.0.6.
+	
+	* Makefile.am (EXTRA_DIST): Added missing patches for Claws.
+
+	* packages/download.sh: Rewrote option parser.  New option
+	--no-sig-check.
+
+2006-08-04  Marcus Brinkmann  <marcus@g10code.de>
+
+	* packages/packages.current: Replace sylpheed-claws 2.3.1 with
+	2.4.0.
+	* Makefile.am (EXTRA_DIST): Add
+	patches/sylpheed-claws-2.4.0/01-w32-logo.patch,
+	patches/sylpheed-claws-2.4.0/02-w32-icon.patch,
+	patches/sylpheed-claws-2.4.0/03-plugins-symbols.patch,
+	patches/sylpheed-claws-2.4.0/04-font-prefs.patch,
+	patches/sylpheed-claws-2.4.0/05-textviewer.patch,
+	patches/sylpheed-claws-2.4.0/99-auto.patch.
+
+2006-08-03  Marcus Brinkmann  <marcus@g10code.de>
+
+	* configure.ac: Add libiconv as a dependency for gnupg.
+	* src/inst-sections.nsi: Likewise here.
+
+2006-08-02  Marcus Brinkmann  <marcus@g10code.de>
+
+	* packages/packages.current: Add jpeg packages.
+	* src/inst-sections.nsi: Add jpeg support.
+	* src/Makefile.am (gpg4win_bpkgs): Add jpeg.
+	* src/inst-jpeg.nsi, src/uninst-jpeg.nsi: New file.
+	* include/config.nsi.in: Add defines for jpeg.
+	* configure.ac: Add new GnuWin32 package jpeg.  Add it as a
+	dependency to sylpheed-claws.
+
+2006-08-02  Werner Koch  <wk@g10code.com>
+
+	Released 1.0.5.
+
+2006-07-25  Werner Koch  <wk@g10code.com>
+
+	Released 1.0.4.
+
+	* src/installer-finish.nsi: Delete Sylpheed manual.
+
+	* patches/gnupg-1.4.4/01-reopen-std.patch: New. 
+	* Makefile.am (EXTRA_DIST): Add new patch and removed old 1.4.2
+	patch.
+
+2006-07-22  Timo Schulz  <twoaday@g10code.de>
+
+	* Makefile.am: Added new sylpheed patches.
+	
+2006-07-14  Marcus Brinkmann  <marcus@g10code.de>
+
+	* patches/sylpheed-claws-2.3.1 (08-w32-logo.patch,
+	09-w32-icon.patch, 99-auto.patch): New files.
+
+2006-07-12  Marcus Brinkmann  <marcus@g10code.de>
+
+	* src/inst-sections.nsi: Install start menu and desktop link for
+	the sylpheed manual.
+	* src/inst-sylpheed-claws.nsi: Install manual.
+	(DESC_Menu_sylpheed_pdf): New translation.
+	* src/uninst-sylpheed-claws.nsi: Uninstall manual.
+
+2006-06-28  Werner Koch  <wk@g10code.com>
+
+	* Makefile.am (copy-news): New target.
+
+2006-06-27  Werner Koch  <wk@g10code.com>
+
+	* src/inst-sylpheed-claws.nsi: Renamed strings to Sylpheed-Claws.
+	* src/installer-finish.nsi: Ditto.
+	* src/inst-sections.nsi: Ditto.
+
+2006-06-26  Werner Koch  <wk@g10code.com>
+
+	Released 1.0.3.
+
+	* Makefile.am (EXTRA_DIST): Added new Sylpheed patches. Removed
+	old sylpheed patches.
+
+2006-05-30  Werner Koch  <wk@g10code.com>
+
+	Released 1.0.2.
+
+2006-05-29  Marcus Brinkmann  <marcus@g10code.de>
+
+	* Makefile.am (DIST): Add
+	patches/sylpheed-claws-2.2.0/01-locale-dir.patch,
+	patches/sylpheed-claws-2.2.0/02-fix-plugin-dir.patch,
+	patches/sylpheed-claws-2.2.0/03-std-plugins.patch and
+	patches/sylpheed-claws-2.2.0/04-pgpcore-def.patch.
+	* patches/sylpheed-claws-2.2.0/01-locale-dir.patch,
+	patches/sylpheed-claws-2.2.0/02-fix-plugin-dir.patch,
+	patches/sylpheed-claws-2.2.0/03-std-plugins.patch,
+	patches/sylpheed-claws-2.2.0/04-pgpcore-def.patch: New file.
+
+	* Makefile.am (EXTRA_DIST): Add
+	patches/glib-2.9.2-wk1/03-gspawn-w32-fixup.patch and
+	patches/glib-2.9.2-wk1/04-gspawn-w32-buffering.patch.
+	* patches/glib-2.9.2-wk1/03-gspawn-w32-fixup.patch: New file.
+	* patches/glib-2.9.2-wk1/04-gspawn-w32-buffering.patch: New file.
+
+2006-04-27  Marcus Brinkmann  <marcus@g10code.de>
+
+	* src/Makefile.am (gpg4win_pkg_gnupg_post_install): New macro to
+	generate man pages.
+	* src/gpg4win.mk.in (stamps/stamp-$(1)-04-install): Invoke post
+	install macro.
+	* src/inst-gnupg.nsi: Install man pages.
+	* src/uninst-gnupg.nsi: Uninstall man pages.
+
+2006-04-26  Werner Koch  <wk@g10code.com>
+
+	Released 1.0.1.
+
+2006-04-25  Werner Koch  <wk@g10code.com>
+
+	* src/Makefile.am (clean-local): Also remove the light installer.
+
+	* src/installer.nsi (PrintNonAdminWarning): Use Quit instead of Abort.
+
+	* src/uninst-glib.nsi: Delete console helper.
+
+	* configure.ac: Define manual versions.
+
+	* src/inst-sections.nsi: Do not install the GGPee manual in the QLB.
+
+2006-04-24  Werner Koch  <wk@g10code.com>
+
+	* src/Makefile.am (NEWS.tmp): New. Use it in the README files
+	so that the comment lines are not visible.
+
+	* packages/packages.current: Updated GPGee, WinPT and GPGol.
+
+2006-04-22  Marcus Brinkmann  <marcus@g10code.de>
+
+	* src/gpg4win.mk (stamps/stamp-final-$(1)): Depend on
+	stamps/stamp-directories.
+
+	* src/installer.nsi (T_InstOptLabelB): New string.
+	(CustomPageOptions): Install new string.
+	* src/installer-options.ini.in (Field 5): Add new field.
+	(NumFields): Set to 5.
+	* src/inst-sections.nsi: Do not install manuals and other
+	documents in the quick launch bar.  Do not install the README on
+	the desktop.
+
+	* src/Makefile.am (gpg4win_spkgs): Move man_novice_de and
+	man_advanced_de to ...
+	(gpg4win_ipkgs): ... here.
+	* src/gpg4win.mk.in (IPKG_template): New template.
+	Insert it for each internal package.
+
+2006-04-20  Werner Koch  <wk@g10code.com>
+
+	* src/installer.nsi: Pop up a message before shutting down winpt.
+
+2006-04-19  Werner Koch  <wk@g10code.com>
+
+	* src/installer.nsi: Abort installation if not run as Admin.
+
+2006-04-08  Marcus Brinkmann  <marcus@g10code.de>
+
+	* m4/gpg4win.m4 (GPG4WIN_IPKG): New macro for internal packages.
+	* include/config.nsi.in (gpg4win_pkg_man_novice_de,
+	gpg4win_pkg_man_novice_de_version, gpg4win_pkg_man_advanced_de,
+	gpg4win_pkg_man_advanced_de_version): Removed.
+	* src/installer.nsi [GPG4WIN_LIGHT]: Set the output filename for
+	the light installer.
+	* configure.ac: New option --enable-light-installer to control the
+	new automake conditional BUILD_LIGHT_INSTALLER.
+	Make packages man_novide_de and man_advanced_de included packages.
+	* src/Makefile.am (gpg4win-light-$(VERSION).exe): New target.
+	(all_src, all_light): New variables.
+	(all-local): Use all_src and all_light.
+	* src/gpg4win.nsi [GPG4WIN_LIGHT]: Undefine HAVE_PKG_MAN_NOVICE_DE
+	and HAVE_PKG_MAN_ADVANCED_DE.
+
+2006-04-07  Werner Koch  <wk@g10code.com>
+
+	* configure.ac: Use new method to include the SVN revison.  Now it
+	is the actual global revision number.
+
+2006-04-06  Werner Koch  <wk@g10code.com>
+
+	Released 1.0.0.
+
+2006-04-05  Werner Koch  <wk@g10code.com>
+
+	* NEWS: Recoded to latin1.
+
+2006-04-04  Werner Koch  <wk@g10code.com>
+
+	* NEWS: Reformatted.
+
+2006-04-03  Werner Koch  <wk@g10code.com>
+
+	* src/inst-gnupg.nsi: Now that 1.4.3 has been released tehr eis no
+	more need trying to install the http keyserver helper.
+
+2006-04-01  Timo Schulz  <ts@g10code.com>
+
+	* src/inst-sections.nsi: WinPT desktop link now
+	directly starts the key manager.
+	
+2006-03-29  Werner Koch  <wk@g10code.com>
+
+	Released 1.0.0rc1.
+
+	* src/installer-options.ini: Renamed to ..
+	* src/installer-options.ini.in: .. this.
+	* configure.ac (BUILD_ISODATE): New.
+	* include/config.nsi.in: Ditto.
+	* src/gpg4win.nsi: Display it on the Welcome page
+
+2006-03-28  Werner Koch  <wk@g10code.com>
+
+	* src/installer.nsi (CustomPageOptions): Write Labels, so that
+	they are translatable.
+	(MUI_FINISHPAGE_LINK_LOCATION): Localized.
+	* src/installer-options.ini: Add label field and removed static
+	texts.
+
+2006-03-27  Werner Koch  <wk@g10code.com>
+
+	* src/installer-options.ini: Don't create a desktop link by default.
+
+	* src/installer.nsi: Add a logo image. Add leave function.
+	(CheckExistingVersion): New.
+	(TrimNewLines): New.
+	(PrintWinPTSFWarning): New.
+	* src/inst-sections.nsi: Call it.
+	Do not show the splash screen.
+	* src/inst-gpg4win.nsi: Write a version file.
+	* src/uninst-gpg4win.nsi: Delete version file
+
+2006-03-27  Marcus Brinkmann  <marcus@g10code.de>
+
+	* installer.nsi: Move custom page for installer options before
+	start menu path selection.  Do not allow to disable start menu
+	creation at start meny path selection dialog.  Only display start
+	menu path selection dialog if start menu creation is desired.
+	Rename opt.ini to installer-options.ini.
+	(CheckIfStartMenuWanted): New function.
+	* installer-finish.nsi: Delete desktop and quicklaunch shortcuts.
+	* inst-sections.nsi: Rename opt.ini to installer-options.ini.
+	Install desktop and quick launch bar shortcuts.
+	* Makefile.am (EXTRA_DIST): Rename opt.ini to
+	installer-options.ini.
+	* installer-options.ini: New file.
+
+2006-03-21  Werner Koch  <wk@g10code.com>
+
+	* Makefile.am (EXTRA_DIST): No more need tositribute the GPA 0.7.2
+	patch/
+
+	* src/installer.nsi: Add a cutom option page.
+	(StrStr): New.  Taken from the NSIS reference manual.
+	* src/opt.ini: New.
+
+2006-03-15  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
+
+	* src/inst-gpa.nsi: Fixed a typo.
+
+2006-03-13  Werner Koch  <wk@g10code.com>
+
+	* packages/Makefile.am (upload): New target for uploading the
+	packages file.
+	* packages/download.sh: Use http://www.gpg4win/org.
+
+2006-03-09  Werner Koch  <wk@g10code.com>
+
+	Released 0.8.0.
+
+	* src/inst-sylpheed-claws.nsi: Don't select be Default.
+
+	* include/config.nsi.in: Disabled Eudora.
+	* src/inst-sections.nsi: Ditto.
+	* src/Makefile.am: Ditto
+
+2006-03-08  Werner Koch  <wk@g10code.com>
+
+	* src/inst-sections.nsi: Play the tune only for the source installer.
+	* src/installer.nsi: And don't reserve the tune file.
+
+2006-03-07  Werner Koch  <wk@g10code.com>
+
+	* configure.ac: Don't build Eudora due to license problems.
+
+2006-03-03  Marcus Brinkmann  <marcus@g10code.de>
+
+	* Makefile.am (EXTRA_DIST): Change
+	patches/gpa-0.7.2/01-bin-open.patch to
+	patches/gpa-0.7.2/01-keyserver-list.patch.
+	* packages/packages.current: Use the right GPA 0.7.2.
+
+	* patches/gpa-0.7.2/01-bin-open.patch: Rename to ...
+	* patches/gpa-0.7.2/01-keyserver-list.patch: ... this.  Remove
+	binary open patch.
+
+	* packages/packages.current: Use GPA 0.7.2.
+
+	* packages/packages.current: Use libgpg-error 1.2 and GPGME 1.2.
+
+2006-02-28  Marcus Brinkmann  <marcus@g10code.de>
+
+	* src/inst-atk.nsi: Fix outpath of library.
+
+2006-02-23  Marcus Brinkmann  <marcus@g10code.de>
+
+	* src/inst-glib.nsi: Add glib20.mo.
+	* src/uninst-glib.nsi: Remove glib20.mo.
+	* src/inst-gtk+.nsi: Add gtk20.mo.
+	* src/uninst-gtk+.nsi: Remove gtk20.mo.
+	* src/inst-atk.nsi: Add atk10.mo.
+	* src/uninst-atk.nsi: Remove atk10.mo.
+
+2006-02-15  Werner Koch  <wk@gnupg.org>
+
+	Released 0.7.0.
+
+	* patches/gpa-0.7.2/01-bin-open.patch: New file.
+
+2006-02-15  Marcus Brinkmann  <marcus@g10code.de>
+
+	* patches/gpgme/03-w32-io.patch: New file.
+	* patches/gpgme-1.1.1-cvs1152/03-w32-io.patch: New file.
+
+2006-02-14  Werner Koch  <wk@gnupg.org>
+
+	* README (Instructions): Add a list of required Debian packages.
+
+2006-01-31  Werner Koch  <wk@g10code.com>
+
+	* src/installer.nsi (InstallDir): Removed trailing backslashes.
+
+2006-01-26  Werner Koch  <wk@g10code.com>
+
+	Released 0.6.0.
+
+2006-01-25  Werner Koch  <wk@g10code.com>
+
+	* m4/gpg4win.m4 (GPG4WIN_BPKG_BINSRC): Kludge to allow
+	"noinstaller" as an alternative to "bin".
+
+2006-01-23  Werner Koch  <wk@g10code.com>
+
+	* src/Makefile.am (README.en.txt, README.de.txt): New.
+	(gpg4win-$(VERSION).exe): Depend on them.
+	(CLEANFILES): Clean them up.
+
+	* src/installer.nsi (T_LangCode): new.
+	(MUI_FINISHPAGE_SHOWREADME): Use this intead of running the key
+	manager.  This makes sense becuase gpg4win needs to be insalled as
+	Administartor but the Administrator should in general not use
+	gpg4win.
+
+	* src/inst-gpg4win.nsi: Install README.de.txt and README.en.txt.
+	* src/uninst-gpg4win.nsi: Uninstall them.
+
+2006-01-20  Werner Koch  <wk@g10code.com>
+
+	* configure.ac: Create doc/log/Makefile.
+	* src/inst-sections.nsi: Replaced splash image by new logo.
+	* src/installer.nsi: Reserve that new file.
+	(Icon, UninstallIcon): New.
+	* src/gpg4win-splash.bmp: Removed.
+
+2006-01-19  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
+
+	* README.SVN: Extend sample configure call. Without the --host
+	setting, configure will complain about missing dlltool.
+
+2006-01-13  Werner Koch  <wk@g10code.com>
+
+	* patches/glib-2.9.2-wk1/02-gspawn-w32.patch: New.
+
+2006-01-12  Werner Koch  <wk@g10code.com>
+
+	* src/inst-glib.nsi: Also install the console spawn helper.
+
+2006-01-10  Werner Koch  <wk@g10code.com>
+
+	* configure.ac: New option --disable-source-installer.
+	* src/Makefile.am: Implement it.
+
+	* src/installer.nsi: Insert directory page.
+
+2006-01-09  Werner Koch  <wk@g10code.com>
+
+	Released 0.5.1.
+
+	* src/inst-gnupg.nsi: Install http and not curl version.
+
+	* src/gpg4win.mk.in (stamps/stamp-directories): Touch versioninfo.
+
+	* src/inst-gpg4win.nsi, src/uninst-gpg4win.nsi:
+	* src/Makefile.am (stamps/stamp-dist-selft): Include ourself in the
+	source installer.
+
+2006-01-06  Werner Koch  <wk@g10code.com>
+
+	* src/gpg4win.mk.in (VERSIONINFO_macro): New.  Use it where
+	appropriate.
+
+	* configure.ac: Test for texi2dvi, dvipdf and sha1sum.
+
+	* Makefile.am (SUBDIRS): Build doc prior to src.
+
+	* src/inst-man_novice_de.nsi: Install einsteiger.pdf.
+	* src/uninst-man_novice_de.nsi: Likewise.
+	* src/inst-man_advanced_de.nsi: Install druchblicker.pdf
+	* src/uninst-man_advanced_de.nsi: Likewise.
+
+2006-01-05  Werner Koch  <wk@g10code.com>
+
+	Released 0.5.0.
+
+	* src/inst-winpt.nsi: Remove old mo installation hack.
+
+	* src/Makefile.am (EXTRA_DIST): Add config.site.
+	* Makefile.am (EXTRA_DIST): Update patches.
+
+	* src/inst-sylpheed-claws.nsi, src/uninst-sylpheed-claws.nsi,
+	* src/inst-gpa.nsi, src/uninst-gpa.nsi: Install language files.
+
+2006-01-04  Werner Koch  <wk@g10code.com>
+
+	* src/uninst-winpt.nsi: Deinstall the mo file.
+
+	* src/uninst-gpgee.nsi: Fix Source uninstall.
+	* src/uninst-glib.nsi, src/inst-glib.nsi, include/config.nsi.in:
+	Adjusted for source build.
+
+	* patches/glib-2.9.2-wk: New.
+	
+	* packages/packages.current: Switch to glib 2.9.2-wk1.
+
+2006-01-05  Marcus Brinkmann  <marcus@g10code.de>
+
+	* configure.ac: Add libiconv and gettext as dependencies.
+
+2006-01-04  Marcus Brinkmann  <marcus@g10code.de>
+
+	* patches/glib/01-giowin32.patch,
+	patches/glib-2.6.6/01-giowin32.patch,
+	patches/glib-2.8.4/01-giowin32.patch: Flush write buffer in write
+	thread before closing FD.
+
+	* patches/glib/01-giowin32.patch,
+	patches/glib-2.6.6/01-giowin32.patch,
+	patches/glib-2.8.4/01-giowin32.patch: Notify write thread about fd
+	close.
+
+2006-01-03  Marcus Brinkmann  <marcus@g10code.de>
+
+	* patches/glib-2.8.4/01-giowin32.patch: New file.
+
+2005-12-31  Marcus Brinkmann  <marcus@g10code.de>
+
+	* glib/02-windres.patch: New file.
+	* glib-2.6.6/02-windres.patch: New file.
+
+	* configure.ac (glib): Make it a source package.
+	* src/Makefile.am (gpg4win_bpkgs): Move glib to ...
+	(gpg4win_spkgs): ... here.
+	* patches/glib/01-giowin32.patch: New file.
+	* patches/glib-2.6.6/01-giowin32.patch: New file.
+	* src/config.site: New file.
+	* src/gpg4win.mk.in (tsdir): New variable.
+	(SETVARS): Use $(idir), not ${idir}.  Define CONFIG_SITE.
+
+2005-12-18  Marcus Brinkmann  <marcus@g10code.de>
+
+	* src/inst-sylpheed-claws.nsi: Install GPG plugins.
+	* src/uninst-sylpheed-claws.nsi: Uninstall GPG plugins.
+
+	* src/uninst-eudoragpg.nsi: Delete file
+	$INSTDIR\share\eudoragpg\eudoragpg.html.
+
+2005-12-13  Werner Koch  <wk@g10code.com>
+
+	* packages/packages.current: Updated GPGee.
+	* src/inst-gpgee.nsi: Adjusted for new location of packages.
+	* m4/gpg4win.m4 (GPG4WIN_BPKG_BINSRC): Allow for -source suffix
+	and uppercase package names.
+
+2005-12-12  Werner Koch  <wk@g10code.com>
+
+	* configure.ac: Test vor zcat.
+
+2005-12-09  Werner Koch  <wk@g10code.com>
+
+	* Makefile.am (SUBDIRS): Include doc dir.
+	* configure.ac: Add new Makefiles.
+
+	* doc/ChangeLog: New.  Moved relevant entries to that file.
+
+2005-12-08  Werner Koch  <wk@g10code.com>
+
+	* packages/download.sh: Implemented CHK statement.
+	* packages/packages.current: Add chk lines for all packages.
+
+2005-12-07  Werner Koch  <wk@g10code.com>
+
+	Released 0.3.1.
+
+2005-12-06  Werner Koch  <wk@g10code.com>
+
+	Released 0.3.0.
+
+2005-12-02  Werner Koch  <wk@g10code.com>
+
+	* packages/download.sh: New option --force.  Default to skip
+	already existing packages.
+
+2005-12-02  Timo Schulz  <ts@g10code.com>
+
+	* packages/download.sh: Update WinPT url.
+	* packages/packages.keys: Add second release key for WinPT.
+	
+2005-11-30  Werner Koch  <wk@g10code.com>
+
+	* src/inst-gpgol.nsi: Install German translation.
+	* src/uninst-gpgol.nsi: Likewise.
+
+2005-11-29  Werner Koch  <wk@g10code.com>
+
+	* packages/packages.current: New.  This is more or less a
+	template; the version on the server may be updated without syncing
+	it to this version.
+	* packages/packages.keys: New.
+	* packages/download.sh: Rewritten.
+
+	* src/inst-sections.nsi (.onInstFailed, .onInstSuccess): New.
+	(RunOnFinish): New function to run a key manager depending on the
+	installed ones.
+	* src/installer.nsi: Use a function to run the key manager on finish.
+
+2005-11-28  Werner Koch  <wk@g10code.com>
+
+	Released 0.2.1.
+
+	* configure.ac: Append the revision number to the version suffix.
+
+	* src/Makefile.am: Reduced verbosity level of makensis.
+
+	* src/exdll.h: Adapted license to the NSIS one.
+	(popstring): Add arg MAXLEN.
+	* src/g4wihelp.c (playsound, stopsound): New.
+	(splash_wndproc, showsplash): New.
+	* src/inst-sections.nsi (.onInit): Use our new g4wihelp functions.
+	(-startmenu): Translate the startmenu entries for the manuals.
+
+	* src/installer.nsi (ReserveFile): Removed advsplash.
+
+	* src/inst-gpa.nsi: Uppercase section name.
+
+	* src/inst-man_novice_de.nsi, src/inst-man_advanced_de.nsi:
+	Translate section name.
+
+	* src/inst-gpgol.nsi: Try to register even on overwrite failure.
+
+2005-11-24  Werner Koch  <wk@g10code.com>
+
+	Released 0.2.0.
+
+	* src/installer.nsi (PrintCloseOtherApps): New.
+
+2005-11-21  Werner Koch  <wk@g10code.com>
+
+	Released 0.1.0.
+
+	* src/inst-sections.nsi: Disable uninstaller menu link.
+
+2005-11-18  Werner Koch  <wk@g10code.com>
+
+	* src/inst-sections.nsi: Add more dependencies to sylpheed.
+
+2005-11-17  Marcus Brinkmann  <marcus@g10code.de>
+
+	* configure.ac: Add glib dependency for GPGME.
+	* src/Makefile.am (gpg4win_pkg_gpgme_configure): Add
+	--enable-w32-glib and LDFLAGS.
+	* src/inst-gpgme.nsi: Install libgpgme-glib-11.dll.
+	* src/uninst-gpgme.nsi: Uninstall libgpgme-glib-11.dll.
+
+2005-11-17  Werner Koch  <wk@g10code.com>
+
+	* src/Makefile.am (EXTRA_DIST): Add loreley.mid as original source
+	of the splash sound.
+
+	Add packages pthreads-w32 and regex.
+
+	* src/gpg4win.mk.in (MPKG_template): New.
+	(pkgmkflags, pkgmkarg): New.
+	(DEFLATE_macro): Use overwrite option for unzip.
+
+2005-11-16  Werner Koch  <wk@g10code.com>
+
+	* src/inst-crypt.nsi, src/uninst-crypt.nsi: New.
+	* m4/gpg4win.m4 (GPG4WIN_BPKG_GNUWIN32_LIB): New.
+
+	* src/uninst-sylpheed-claws.nsi, src/uninst-eudoragpg.nsi
+	* src/inst-eudoragpg.nsi, src/inst-sylpheed-claws.nsi: New.
+	* include/config.nsi.in: Add support for Sylpheed and EudorGPG.
+	* src/Makefile.am (gpg4win_spkgs): Add them.
+	(gpg4win_pkg_sylpheed_claws_configure): New. 
+
+	* src/inst-sections.nsi: Add them.
+	* configure.ac: Add them.
+
+2005-11-15  Werner Koch  <wk@g10code.com>
+
+	* src/Makefile.am (EXTRA_DIST): Add g4wihelp.nsi.
+	(CLEANFILES): Add g4wihelp.dll.
+
+	* src/inst-gpgee.nsi: Use RegDLL and UnRegDLL.  Print warning on
+	registration failure.  Use move approach for active extension.
+	* src/inst-gpgol.nsi: Ditto.
+	* src/uninst-gpgol.nsi: Use UnRegDLL and allow rebooting.
+	* src/uninst-gpgee.nsi: Ditto.
+
+	* src/installer.nsi: Moved inclusion of g4wihelp.nsi after the
+	language definitions.
+
+	* configure.ac (VERSION): Generate extended version information.
+	* include/config.nsi.in: Define replacements
+	* src/gpg4win.nsi, src/gpg4win-src.nsi: Use them for PROD_VERSION.
+
+	* src/gpg4win-src.nsi: Add our build dir as plugindir.
+
+2005-11-14  Werner Koch  <wk@g10code.com>
+
+	* src/inst-sections.nsi (.onInit): Make sure that only one
+	instance of the installer may run at the same time.
+	* src/installer.nsi: Include g4wihelp.nsi.
+	* src/g4wihelp.nsi: New.
+	* src/g4wihelp.c: New.
+	* src/exdll.h: New.
+
+2005-11-11  Marcus Brinkmann  <marcus@g10code.de>
+
+	* src/gpg4win.mk.in (stamps/stamp-$(1)-00-install): Don't strip.
+	(stamps/stamp-$(1)-01-install-dev): Likewise.
+
+2005-11-08  Werner Koch  <wk@g10code.com>
+
+	* src/gpg4win.mk.in: Also strip DLLs; I am using stripped DLLs for
+	months now.
+
+	Released 0.0.2.
+
+	* src/installer.nsi (T_WelcomeTitle): New.
+	(MUI_WELCOMEPAGE_TITLE): New.
+	(MUI_FINISHPAGE): Enhanced.
+
+	* src/installer-finish.nsi (Uninstall): use a loop to delete the
+	startmenu.  Fixed Registry cleaning.
+
+	* src/inst-sections.nsi (onInit): Make sure that only one
+	installer is running.
+
+2005-11-07  Werner Koch  <wk@g10code.com>
+
+	* src/installer-finish.nsi: Fixed dereferencing of variable.
+
+	* src/inst-sections.nsi, src/installer-finish.nsi: Ensure that the
+	menu gets written for all users.
+
+	* packages/download.sh: Add dummy manual pages.
+
+	* src/installer.nsi: Move compression type to ...
+	* src/gpg4win.nsi: .. here and ...
+	* src/gpg4win-src.nsi: .. here.  Use zlib for sources.
+	
+	* src/gpg4win-splash.bmp: New.
+	* src/gpg4win-splash.wav: New.
+	* src/installer.nsi: Reserve these files
+	* src/inst-sections.nsi: Show silly splash screen.
+	
+	* include/config.nsi.in: Add dummy packages for the manuals.
+	* src/uninst-man_advanced_de.nsi, src/uninst-man_novice_de.nsi
+	* src/inst-man_advanced_de.nsi, src/inst-man_novice_de.nsi: Ditto.
+	* src/Makefile.am (gpg4win_spkgs): Ditto.
+	* src/inst-sections.nsi: Ditto.
+	
+	* src/installer-finish.nsi: Ditto.
+
+	* src/inst-gnupg.nsi: Make section read-only.
+
+2005-11-04  Marcus Brinkmann  <marcus@g10code.de>
+
+	Released 0.0.1.
+
+	* Makefile.am (EXTRA_DIST): Add missing backslash.
+	* include/config.nsi.in (top_srcdir): Remove.
+	* src/Makefile.am (gpg4win-src-$(VERSION).exe): Pass TOP_SRCDIR,
+	SRCDIR and BUILD_DIR (absolute path) as defined values.  Also, use
+	$(srcdir) for nsi source file.
+	(gpg4win-src-$(VERSION).exe): Likewise.
+	* src/gpg4win.nsi: Change directory to build directory.
+	Add include dirs ${TOP_SRCDIR} and ${SRCDIR}.
+	* src/gpg4win-src.nsi: Likewise.
+	* src/installer.nsi: Use ${TOP_SRCDIR} to access COPYING file.
+	* src/gpg4win.mk (stamps/stamp-final): Depend on
+	stamps/stamp-directories.
+
+2005-11-03  Werner Koch  <wk@g10code.com>
+
+	* include/config.nsi.in: Adjusted for WinPT being a source package now.
+
+	* src/inst-winpt.nsi: Adjusted location of to be installed files.
+
+	* src/Makefile.am (gpg4win_spkgs): Add winpt.
+	(gpg4win_bpkgs): Remove winpt
+	(gpg4win_pkg_winpt_configure): Added.
+
+	* configure.ac (winpt): Made it a source package.
+
+	* configure.ac: Bail out if a required tool is missing.
+
+2005-11-02  Werner Koch  <wk@g10code.com>
+
+	* README.SVN, autogen.sh: New.
+
+	* Makefile.am (AUTOMAKE_OPTIONS): Add dist-bzip2.
+
+	* packages/download.sh: Removed inclusion of config.h and defined
+	WGET directly.  This is required because the download script needs
+	to be used before configure and thus we can't use configure to
+	determine the to be used wget; the config.sh script was anyway
+	missing.
+
+2005-10-26  Werner Koch  <wk@g10code.com>
+
+	* README: Add basic instructions on how to add new packages.
+
+	* configure.ac: Add detection of GPGee and WinPT.
+	* m4/gpg4win.m4 (GPG4WIN_BPKG_BINSRC): New.
+
+	* include/config.nsi.in: Add defines for WinPT and GGee.
+	* src/inst-winpt.nsi: New.
+	* src/inst-gpgee.nsi: New.
+	* src/uninst-winpt.nsi: New.
+	* src/uninst-gpgee.nsi: New.
+	* src/Makefile.am (gpg4win_bpkgs): Add WinPT and GPGee.
+	* src/inst-sections.nsi: Ditto.
+	* src/installer-finish.nsi: Ditto.
+	* packages/download.sh (server_winpt): Add WinPT.
+	(server_gpgee): Add temporary location for gpgee.
+	(server_g10code): Add temporary location for gpg-error, gpgme,
+	gpa and gpgol.
+
+2005-10-25  Werner Koch  <wk@g10code.com>
+
+	* src/installer.nsi: Don't put the version into the "Name" variable.
+
+2005-10-24  Marcus Brinkmann  <marcus@g10code.de>
+
+	* COPYING: New file.
+
+2005-10-23  Marcus Brinkmann  <marcus@g10code.de>
+
+	* src/gpg4win.mk.in (pdir): Call post_install with source dir as
+	current directory.
+	* configure.ac (VERSION): Check for dlltool.
+	* src/Makefile.am (gpg4win_pkg_libiconv_post_install,
+	gpg4win_pkg_gettext_post_install): New macros.
+	* src/libiconv.def, src/libintl.def: New files.
+	* src/inst-libgpg-error.nsi: Install mo files.
+	* src/uninst-libgpg-error.nsi: Uninstall mo files.
+
+2005-10-22  Marcus Brinkmann  <marcus@g10code.de>
+
+	* configure.ac: Add libiconv and gettext as dependencies for
+	libgpg-error and gpa.
+	* src/Makefile.am (gpg4win_pkg_libgpg_error_configure): New
+	variable.
+
+	* src/Makefile.am (common_nsi): Add uninstaller files.
+	* src/uninst-atk.nsi, src/uninst-gettext.nsi, src/uninst-glib.nsi,
+	src/uninst-gnupg.nsi, src/uninst-gpa.nsi, src/uninst-gpgme.nsi,
+	src/uninst-gpgol.nsi, src/uninst-gtk+.nsi,
+	src/uninst-libgpg-error.nsi, src/uninst-libiconv.nsi,
+	src/uninst-libpng.nsi, src/uninst-pango.nsi,
+	src/uninst-pkgconfig.nsi, src/uninst-zlib.nsi: New file.
+	* src/inst-sections.nsi: Include the uninstallers in reverse
+	order.
+	* src/inst-gpgol.nsi: Register the gpgol DLL at installation, and
+	(surprise!) unregister it at deinstallation.
+
+2005-10-21  Marcus Brinkmann  <marcus@g10code.de>
+
+	* src/Makefile.am (gpg4win_pkg_gpgme_configure): Enable static
+	library for gpgol.
+	(gpg4win_pkg_gpgol_configure): Add gpg-error prefix.
+
+	* src/inst-gnupg.nsi: Fix path of deleted files.
+
+	* src/gpg4win.mk.in (pdir): Don't strip DLL files.
+
+2005-10-20  Marcus Brinkmann  <marcus@g10code.de>
+
+	* m4/gpg4win.m4 (GPG4WIN_DEFINE): New function.  Use it to define
+	feature symbols for NSI.  Use m4_translit instead of m4_bpatsubst.
+	New option --enable-debug.
+	* include/config.nsi.in: Catch all this new information.
+	* src/gpg4win.nsi (DEBUG): Define if [GPG4WIN_DEBUG].
+	(HAVE_PKG_GPA): Don't define here.
+	* src/inst-sections.nsi: Guard all package specific commands with
+	feature macro checks.  Calculate dependencies on .onInit, too.
+	* src/gpg4win.mk.in (STRIP_macro): Quote $(DEBUG) strictly.
+
+	* src/installer-finish.nsi: Add support for Add/Remove Programs.
+
+2005-10-20  Werner Koch  <wk@g10code.com>
+
+	* m4/gpg4win.m4 (GPG4WIN_FIND): Quote a file variable.
+	(GPG4WIN_SPKG): Ditto.
+
+2005-10-20  Marcus Brinkmann  <marcus@g10code.de>
+
+	* src/gpg4win.nsi: Add start menu support.
+	* src/inst-sections.nsi: Likewise.
+	* src/installer.nsi: Likewise.
+	* src/installer-finish.nsi: Likewise.
+
+	* src/gpg4win.mk.in (GETVAR): Don't quote the first $.
+	(STRIP_macro): New macro.
+	(SPKG, BPKG): Use it here.
+
+	* Makefile.am (EXTRA_DIST): New target.
+	* include/Makefile.am (EXTRA_DIST): Change config.nsh.in to
+	config.nsi.in.
+	* src/Makefile.am (EXTRA_DIST): Remove pkg-config.  Add nsi files.
+
+	* src/inst-gpgol.nsi: Change libgpgol-0.9.3.dll to gpgol.dll.
+
+	* src/gpg4win.mk.in (stamp/stamp-$(1)-02-configure): Add
+	-mms-bitfields to CFLAGS.
+
+	* src/gpg4win.mk.in (stamps/stamp-final): New target that replaces
+	phony target final.
+
+2005-10-20  Werner Koch  <wk@g10code.com>
+
+	* src/*.nsi: Add a Latin-1 tag to make sure that Emacs uses the
+	correct encoding.
+	* doc/nsi-mode.el: Added for convenience.
+
+2005-10-20  Marcus Brinkmann  <marcus@g10code.de>
+
+	* configure.ac: Check for makensis.  Add gnupg as dependency for
+	gpgme.  Change config.sh into config.nsi.
+	* include/config.sh.in: File removed.
+	* src/gpg4win.sh: File removed.
+	* include/config.nsi.in: New file.
+	* include/Makefile.am (EXTRA_DIST): Change config.sh.in into
+	config.nsi.in.
+	* src/Makefile.am (gpg4win-$(VERSION).exe): New target.
+	(gpg4win-src-$(VERSION).exe): New target.
+	(all-local): Remove dependency on phony target all-gpg4win.
+	(all-local): Add dependency on gpg4win-$(VERSION).exe and
+	gpg4win-src-$(VERSION).exe.
+	(clean-local): New rule for this target.
+	* src/gpg4win.nsi, src/gpg4win-src.nsi, src/inst-atk.nsi,
+	src/inst-gettext.nsi, src/inst-glib.nsi, src/inst-gnupg.nsi,
+	src/inst-gpa.nsi, src/inst-gpgme.nsi, src/inst-gpgol.nsi,
+	src/inst-gtk+.nsi, src/inst-libgpg-error.nsi,
+	src/inst-libiconv.nsi, src/inst-libpng.nsi, src/inst-pango.nsi,
+	src/inst-pkgconfig.nsi, src/inst-sections.nsi, src/inst-zlib.nsi,
+	src/installer-finish.nsi, src/installer.nsi: New file.
+
+2005-10-18  Marcus Brinkmann  <marcus@g10code.de>
+
+	configure.ac: Enable libiconv and gettext dependencies for Gtk+.
+
+	* src/Makefile.am: First real implementation.
+	* src/gpg4win.mk.in: New file.
+	* configure.ac: Activate libiconv and gettext.
+	(AC_CONFIG_FILES): Add packages/Makefile and src/gpg4win.mk.
+	* m4/gpg4win.m4 (GPG4WIN_BPKG_GNU): New macro.
+	* include/config.sh.in: Add variables for libiconv and gettext.
+
+2005-10-15  Marcus Brinkmann  <marcus@g10code.de>
+
+	* m4/gpg4win.m4: New file.
+	* include/config.sh: Add many package variables.
+	* configure.ac: Call package detection macros.
+	* Makefile.am (ACLOCAL_AMFLAGS): New variable.
+	* src/gpg4win.sh: Use some of the new variables.
+
+	* packages/download.sh: Fix downloading of Gtk source packages.
+
+
+ Copyright 2005 g10 Code GmbH
+
+ This file is free software; as a special exception the author gives
+ unlimited permission to copy and/or distribute it, with or without
+ modifications, as long as this notice is preserved.
+
+ This file is distributed in the hope that it will be useful, but
+ WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
+ implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.

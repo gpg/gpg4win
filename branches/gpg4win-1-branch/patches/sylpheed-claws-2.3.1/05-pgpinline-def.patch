@@ -1,0 +1,19 @@
+#! /bin/sh
+patch -p1 -f $* < $0
+exit $?
+
+2006-06-26  Werner Koch  <wk@g10code.com>
+
+	* src/plugins/pgpinline/sylpheed.def: Add privacy_get_error and
+	privacy_set_error.
+
+
+--- orig/sylpheed-claws-2.3.1/src/plugins/pgpinline/sylpheed.def	2006-06-20 10:31:44.000000000 +0200
++++ sylpheed-claws-2.3.1/src/plugins/pgpinline/sylpheed.def	2006-06-26 09:16:58.000000000 +0200
+@@ -17,3 +17,5 @@ procmime_mimeinfo_parent
+ procmime_scan_file
+ procmime_write_mimeinfo
+ sylpheed_get_version
++privacy_set_error
++privacy_get_error
+
