@@ -60,6 +60,7 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi config.site \
         inst-winpt.nsi		   uninst-winpt.nsi	      \
         inst-zlib.nsi        	   uninst-zlib.nsi            \
         inst-qt.nsi        	   uninst-qt.nsi              \
+        inst-kdesupport.nsi   	   uninst-kdesupport.nsi      \
 	inst-bzip2.nsi             uninst-bzip2.nsi           
 
 
@@ -147,7 +148,7 @@ gpg4win_pkg_gnupg2_configure = \
 gpg4win_pkg_pinentry_configure = \
   --disable-pinentry-gtk \
   --disable-pinentry-gtk2 \
-  --disable-pinentry-qt 
+  --disable-pinentry-qt
 
 # The LDFLAGS is needed for -lintl for glib.  The QT4 variables work
 # around the lack of cross compilation support in qt-dev.
@@ -216,7 +217,7 @@ gpg4win_pkg_bzip2_make_args_inst = \
 
 # Supported binary packages.
 gpg4win_bpkgs = libiconv gettext pkgconfig zlib libpng jpeg pango cairo \
-	        atk gtk+ gpgee crypt regex qt
+	        atk gtk+ gpgee crypt regex qt kdesupport
 
 # libiconv needs some special magic to generate a usable import
 # library.
@@ -298,6 +299,20 @@ endef
 define gpg4win_pkg_libpng_post_install
  (cd $$$${pkgidir};							\
  perl -pi -e 's/^prefix=.*$$$$/prefix=\/usr/' `find . -name \*.pc`)
+endef
+
+
+define gpg4win_pkg_libiconv_post_install
+(cp $(srcdir)/libiconv.def $$$${pkgidir}/lib;		\
+cd $$$${pkgidir}/lib;					\
+$(DLLTOOL) --output-lib libiconv.dll.a --def libiconv.def)
+endef
+
+
+# kdesupport ships gettext, which we already have.  Remove a stow
+# conflict.
+define gpg4win_pkg_kdesupport_post_install
+(rm -fR "$$$${pkgidir_dev}/share/locale")
 endef
 
 

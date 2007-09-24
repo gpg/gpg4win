@@ -214,7 +214,8 @@ GPG4WIN_IPKG([man_novice_en])
 #GPG4WIN_IPKG([man_advanced_en])
 
 # Qt related stuff.
-GPG4WIN_BPKG_GNUWIN32([qt])
+GPG4WIN_BPKG_GNUWIN32([kdesupport])
+GPG4WIN_BPKG_GNUWIN32([qt], [kdesupport])
 
 GPG4WIN_FINALIZE
 

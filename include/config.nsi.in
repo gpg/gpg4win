@@ -210,6 +210,12 @@
 !define gpg4win_pkg_qt_dev @gpg4win_pkg_qt_dev@
 !define gpg4win_pkg_qt_src @gpg4win_pkg_qt_src@
 
+@HAVE_PKG_KDESUPPORT@
+!define gpg4win_pkg_kdesupport @gpg4win_pkg_kdesupport@
+!define gpg4win_pkg_kdesupport_version @gpg4win_pkg_kdesupport_version@
+!define gpg4win_pkg_kdesupport_dev @gpg4win_pkg_kdesupport_dev@
+!define gpg4win_pkg_kdesupport_src @gpg4win_pkg_kdesupport_src@
+
 # Internal packages.
 @HAVE_PKG_MAN_NOVICE_DE@
 
