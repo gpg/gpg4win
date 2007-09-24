@@ -267,7 +267,8 @@ clean-$(1):
 	($(call SETVARS,$(1));				\
 	 cd $(ipdir) &&					\
 	 ($(STOW) -D "$$$${pkg_version}";		\
-	   rm -fR "$$$${pkg_version}"))
+	  $(STOW) -D "$$$${pkg_version_dev}";		\
+	  rm -fR "$$$${pkg_version}" "$$$${pkg_version_dev}"))
 	rm -f stamps/stamp-final-$(1) stamps/stamp-$(1)-*
 
 endef

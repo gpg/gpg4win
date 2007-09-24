@@ -280,17 +280,17 @@ chk  bb9182cd4c6bd6677ba9cdcca262dcc1b1d22c3c
 #
 # Qt
 #
-server http://www.kdab.net/~frank/qt-win
+server ftp://ftp.kdab.net/pub/gpg4win
 
-name qt-4.3.1-bin.zip
-file Qt-Win-Opensource-4.3.1.zip
-chk 36da6ba5a271bb66dd4e92a6b237ec8051edbf92
+name qt-4.3.1-2-bin.zip
+file qt-gpg4win-4.3.1-2-bin.zip
+chk 7d811a95bee1fcef20cb62104a53754726bc8267
 
-name qt-4.3.1-lib.zip
-file Qt-Win-Opensource-4.3.1-dev.zip
-chk c73998ac45b17ec4b7a52de6ef8f7f0e95d9818a
+name qt-4.3.1-2-lib.zip
+file qt-gpg4win-4.3.1-2-dev.zip
+chk ea1f1e73db6425530a9c1826465d2c42e2ba1f30
 
 server ftp://ftp.trolltech.com/pub/qt/source
-name qt-4.3.1-src.zip
+name qt-4.3.1-2-src.zip
 file qt-win-opensource-src-4.3.1.zip
 chk 7dcdaafe5ab451b1bc9af0e5db080e7b5d484732
