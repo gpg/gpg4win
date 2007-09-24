@@ -218,6 +218,33 @@ GPG4WIN_BPKG_GNUWIN32([qt])
 
 GPG4WIN_FINALIZE
 
+# Qt is compiled with -mthreads, and thus requires the mingwm10.dll.
+mingwm_dll=no
+AC_ARG_WITH([mingwm-dll],
+	    AC_HELP_STRING([--with-mingwm-dll=FILE], [use the mingwm DLL]),
+	    [mingwm_dll=$withval])
+if test "$mingwm_dll" = "no"; then
+  file="/usr/share/doc/mingw32-runtime/mingwm10.dll.gz"
+  if test -r "$file"; then
+    mingwm_dll="$file"
+  fi
+fi
+if test "$mingwm_dll" = "no"; then
+  missing_tools="mingwm10.dll $missing_tools"
+fi
+# To make things simple, we just install a copy of the file in the
+# source directory.  No need to make this ugly hack any uglier by
+# messing around with the build system.
+case "$mingwm_dll" in
+    *.gz)
+      $ZCAT $mingwm_dll > src/mingwm10.dll
+      ;;
+    *)
+      cp $mingwm_dll src/mingwm10.dll
+      ;;
+esac
+
+
 # Throw an error if required tools are missing
 if test -n "$missing_tools"; then
     for i in $missing_tools; do 
