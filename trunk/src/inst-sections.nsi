@@ -122,6 +122,9 @@
 !ifdef HAVE_PKG_QT
 !include "inst-qt.nsi"
 !endif
+!ifdef HAVE_PKG_KDESUPPORT
+!include "inst-kdesupport.nsi"
+!endif
 !ifdef HAVE_PKG_MAN_NOVICE_EN
 !include "inst-man_novice_en.nsi"
 !endif
@@ -151,6 +154,9 @@
 !endif
 !ifdef HAVE_PKG_QT
 !include "uninst-qt.nsi"
+!endif
+!ifdef HAVE_PKG_KDESUPPORT
+!include "uninst-kdesupport.nsi"
 !endif
 #!ifdef HAVE_PKG_EUDORAGPG
 #!include "uninst-eudoragpg.nsi"
@@ -478,6 +484,9 @@ Function CalcDepends
 !ifdef HAVE_PKG_QT
   !insertmacro UnselectSection ${SEC_qt}
 !endif
+!ifdef HAVE_PKG_KDESUPPORT
+  !insertmacro UnselectSection ${SEC_kdesupport}
+!endif
 
   # Then enable all dependencies in reverse build list order!
 
@@ -674,7 +683,16 @@ Function CalcDepends
 !endif
 
   # Package "libiconv" has no dependencies.
-  # Package "qt" has no dependencies.
+
+!ifdef HAVE_PKG_QT
+  !insertmacro SectionFlagIsSet ${SEC_qt} \
+		${SF_SELECTED} have_qt skip_qt
+  have_qt:
+  !insertmacro SelectSection ${SEC_kdesupport}
+  skip_qt:
+!endif
+
+  # Package "kdesupport" has no dependencies.
 
 FunctionEnd
 

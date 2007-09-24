@@ -294,3 +294,21 @@ server ftp://ftp.trolltech.com/pub/qt/source
 name qt-4.3.1-2-src.zip
 file qt-win-opensource-src-4.3.1.zip
 chk 7dcdaafe5ab451b1bc9af0e5db080e7b5d484732
+
+#
+# Qt contains DBus and thus depends on kdesupport, which is a random
+# collection of libraries.
+#
+
+server ftp://ftp.kdab.net/pub/gpg4win
+
+file kdesupport-4.0.0-2-bin.zip
+chk 03514b4007a0b7edbed2dd5157d60be11009745c
+
+# FIXME: This does not actually contain the development files, but
+# further binary files we need.
+file kdesupport-4.0.0-2-lib.zip
+chk 78a5d914fa232e85dddd26ef102d6b309111037f
+
+file kdesupport-4.0.0-2-src.zip
+chk 40318619764a5c0ae9aa3796a6f33155d0a90c0d

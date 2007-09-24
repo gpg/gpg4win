@@ -1,5 +1,16 @@
 2007-09-24  Marcus Brinkmann  <marcus@g10code.de>
 
+	* src/Makefile.am (EXTRA_DIST): Add inst-kdesupport.nsi and
+	src/uninst-kdesupport.nsi.
+	(gpg4win_bpkgs): Add kdesupport.
+	(gpg4win_pkg_kdesupport_post_install): New macro.
+	* src/inst-kdesupport.nsi, src/uninst-kdesupport.nsi: New files.
+	* src/inst-sections.nsi: Add kdesupport (also as a dependency for
+	Qt).
+	* packages/packages.current: Add kdesupport.
+	* include/config.nsi.in: Add macros for kdesupport.
+	* configure.ac: Check for kdesupport.  Make qt dependent on it.
+
 	* configure.ac: Check for mingwm10.dll.
 	* src/gpg4win.mk.in: Fix clean-PKG for binary packages.
 	* src/inst-qt.nsi: Install QtDBus4.dll.  Do not install debug and
