@@ -1,5 +1,13 @@
 2007-09-25  Marcus Brinkmann  <marcus@g10code.de>
 
+	* configure.ac: Add check for kleopatra.
+	* include/config.nsi.in: Add macros for kleopatra.
+	* src/inst-kleopatra.nsi, src/uninst-kleopatra.nsi: New files.
+	* src/Makefile.am (gpg4win_bpkgs): Add kleopatra.
+	(EXTRA_DIST): Add inst-kleopatra.nsi and uninst-kleopatra.nsi.
+	* src/inst-sections.nsi: Add support for kleopatra.
+	* packages/packages.current: Add kleopatra.
+
 	* src/gpg4win.nsi: Disable kdelibs, kdesupport, oxygen-icons in
 	light installer.
 	* configure.ac: Add check for kdelibs.

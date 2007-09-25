@@ -131,6 +131,9 @@
 !ifdef HAVE_PKG_KDELIBS
 !include "inst-kdelibs.nsi"
 !endif
+!ifdef HAVE_PKG_KLEOPATRA
+!include "inst-kleopatra.nsi"
+!endif
 !ifdef HAVE_PKG_MAN_NOVICE_EN
 !include "inst-man_novice_en.nsi"
 !endif
@@ -157,6 +160,9 @@
 !endif
 !ifdef HAVE_PKG_MAN_NOVICE_EN
 !include "uninst-man_novice_en.nsi"
+!endif
+!ifdef HAVE_PKG_KLEOPATRA
+!include "uninst-kleopatra.nsi"
 !endif
 !ifdef HAVE_PKG_KDELIBS
 !include "uninst-kdelibs.nsi"
@@ -508,6 +514,17 @@ Function CalcDepends
 
   # Then enable all dependencies in reverse build list order!
 
+!ifdef HAVE_PKG_KLEOPATRA
+  !insertmacro SectionFlagIsSet ${SEC_kleopatra} ${SF_SELECTED} have_kleopatra skip_kleopatra
+  have_kleopatra:
+  !insertmacro SelectSection ${SEC_gpgme}
+  !insertmacro SelectSection ${SEC_gnupg}
+  !insertmacro SelectSection ${SEC_gnupg2}
+  # This drags in all the other KDE and Qt stuff.
+  !insertmacro SelectSection ${SEC_kdelibs}
+  skip_kleopatra:
+!endif
+
 !ifdef HAVE_PKG_GNUPG2
   !insertmacro SectionFlagIsSet ${SEC_gnupg2} ${SF_SELECTED} have_gnupg2 skip_gnupg2
   have_gnupg2:
@@ -632,6 +649,7 @@ Function CalcDepends
   have_gpgol:
   !insertmacro SelectSection ${SEC_gpgme}
   !insertmacro SelectSection ${SEC_gnupg}
+  # FIXME: Add kleopatra dependency.
   skip_gpgol:
 !endif
 
@@ -639,7 +657,7 @@ Function CalcDepends
   !insertmacro SectionFlagIsSet ${SEC_gpgex} \
 		${SF_SELECTED} have_gpgex skip_gpgex
   have_gpgex:
-  # FIXME: Add Kleopatra as dependency.
+  !insertmacro SelectSection ${SEC_kleopatra}
   skip_gpgex:
 !endif
 
@@ -682,6 +700,8 @@ Function CalcDepends
   !insertmacro SectionFlagIsSet ${SEC_gpgme} \
 		${SF_SELECTED} have_gpgme skip_gpgme
   have_gpgme:
+  # GPGME does not depend on gnupg or gnupg2.  Do this in the
+  # actual application instead.
   !insertmacro SelectSection ${SEC_libgpg_error}
 !ifdef HAVE_PKG_QT
   !insertmacro SelectSection ${SEC_qt}

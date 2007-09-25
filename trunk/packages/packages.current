@@ -340,3 +340,13 @@ name kdelibs-20070918-src.zip
 # all the sources.
 file kdelibs-svn713936.tar.bz2
 chk 7c2b10819ed4eb1c17e7b5076b9e494ad8bdddbb
+
+# Kleopatra
+
+server ftp://ftp.kdab.net/pub/gpg4win
+
+name kleopatra-20070920-2-bin.zip
+file kleo-uiserver-only-20070920-2-bin.zip 
+# FIXME: This is totally wrong.  We don't have a source package!
+link kleopatra-20070920-2-src.zip
+chk 18e31cbf54c54db47e4b9ede0ab317d9cb8643e8
