@@ -62,6 +62,7 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi config.site \
         inst-qt.nsi        	   uninst-qt.nsi              \
         inst-kdesupport.nsi   	   uninst-kdesupport.nsi      \
         inst-oxygen-icons.nsi  	   uninst-oxygen-icons.nsi    \
+        inst-kdelibs.nsi  	   uninst-kdelibs.nsi         \
 	inst-bzip2.nsi             uninst-bzip2.nsi
 
 # Need to clean the dll because we bypassed automake.
@@ -217,7 +218,7 @@ gpg4win_pkg_bzip2_make_args_inst = \
 
 # Supported binary packages.
 gpg4win_bpkgs = libiconv gettext pkgconfig zlib libpng jpeg pango cairo \
-	        atk gtk+ gpgee crypt regex qt kdesupport oxygen-icons
+	        atk gtk+ gpgee crypt regex qt kdesupport oxygen-icons kdelibs
 
 # libiconv needs some special magic to generate a usable import
 # library.
@@ -310,9 +311,10 @@ endef
 
 
 # kdesupport ships gettext, which we already have.  Remove a stow
-# conflict.
+# conflict about that.  Also remove a stow conflict with kdelibs-lib.
 define gpg4win_pkg_kdesupport_post_install
-(rm -fR "$$$${pkgidir_dev}/share/locale")
+(rm -fR "$$$${pkgidir_dev}/share/locale"; \
+ rm -fR "$$$${pkgidir_dev}/share/apps/cmake/modules")
 endef
 
 

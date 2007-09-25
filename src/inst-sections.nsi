@@ -128,6 +128,9 @@
 !ifdef HAVE_PKG_OXYGEN_ICONS
 !include "inst-oxygen-icons.nsi"
 !endif
+!ifdef HAVE_PKG_KDELIBS
+!include "inst-kdelibs.nsi"
+!endif
 !ifdef HAVE_PKG_MAN_NOVICE_EN
 !include "inst-man_novice_en.nsi"
 !endif
@@ -154,6 +157,9 @@
 !endif
 !ifdef HAVE_PKG_MAN_NOVICE_EN
 !include "uninst-man_novice_en.nsi"
+!endif
+!ifdef HAVE_PKG_KDELIBS
+!include "uninst-kdelibs.nsi"
 !endif
 !ifdef HAVE_PKG_OXYGEN_ICONS
 !include "uninst-oxygen-icons.nsi"
@@ -496,6 +502,9 @@ Function CalcDepends
 !ifdef HAVE_PKG_OXYGEN_ICONS
   !insertmacro UnselectSection ${SEC_oxygen_icons}
 !endif
+!ifdef HAVE_PKG_KDELIBS
+  !insertmacro UnselectSection ${SEC_kdelibs}
+!endif
 
   # Then enable all dependencies in reverse build list order!
 
@@ -692,6 +701,15 @@ Function CalcDepends
 !endif
 
   # Package "libiconv" has no dependencies.
+
+!ifdef HAVE_PKG_KDELIBS
+  !insertmacro SectionFlagIsSet ${SEC_kdelibs} \
+		${SF_SELECTED} have_kdelibs skip_kdelibs
+  have_kdelibs:
+  !insertmacro SelectSection ${SEC_qt}
+  !insertmacro SelectSection ${SEC_oxygen_icons}
+   skip_kdelibs:
+!endif
 
 !ifdef HAVE_PKG_QT
   !insertmacro SectionFlagIsSet ${SEC_qt} \
