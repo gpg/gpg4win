@@ -303,6 +303,17 @@ StrCmp $R0 "" +2
 
 
 
+!ifdef HAVE_PKG_KLEOPATRA
+  g4wihelp::config_fetch_bool "inst_kleopatra"
+  StrCmp $R0 "1" 0 calc_defaults_kleopatra_not_one
+   !insertmacro SelectSection ${SEC_kleopatra}
+   Goto calc_defaults_kleopatra_done
+  calc_defaults_kleopatra_not_one:
+  StrCmp $R0 "0" 0 calc_defaults_kleopatra_done
+   !insertmacro UnselectSection ${SEC_kleopatra}
+calc_defaults_kleopatra_done:
+!endif
+
 !ifdef HAVE_PKG_GNUPG2
   g4wihelp::config_fetch_bool "inst_gnupg2"
   StrCmp $R0 "1" 0 calc_defaults_gnupg2_not_one
@@ -514,12 +525,19 @@ Function CalcDepends
 
   # Then enable all dependencies in reverse build list order!
 
+!ifdef HAVE_PKG_GPGEX
+  !insertmacro SectionFlagIsSet ${SEC_gpgex} \
+		${SF_SELECTED} have_gpgex skip_gpgex
+  have_gpgex:
+  !insertmacro SelectSection ${SEC_kleopatra}
+  skip_gpgex:
+!endif
+
 !ifdef HAVE_PKG_KLEOPATRA
   !insertmacro SectionFlagIsSet ${SEC_kleopatra} ${SF_SELECTED} have_kleopatra skip_kleopatra
   have_kleopatra:
   !insertmacro SelectSection ${SEC_gpgme}
   !insertmacro SelectSection ${SEC_gnupg}
-  !insertmacro SelectSection ${SEC_gnupg2}
   # This drags in all the other KDE and Qt stuff.
   !insertmacro SelectSection ${SEC_kdelibs}
   skip_kleopatra:
@@ -651,14 +669,6 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_gnupg}
   # FIXME: Add kleopatra dependency.
   skip_gpgol:
-!endif
-
-!ifdef HAVE_PKG_GPGEX
-  !insertmacro SectionFlagIsSet ${SEC_gpgex} \
-		${SF_SELECTED} have_gpgex skip_gpgex
-  have_gpgex:
-  !insertmacro SelectSection ${SEC_kleopatra}
-  skip_gpgex:
 !endif
 
 !ifdef HAVE_PKG_LIBPNG
@@ -840,6 +850,9 @@ FunctionEnd
 #!ifdef HAVE_PKG_EUDORAGPG
 #  !insertmacro MUI_DESCRIPTION_TEXT ${SEC_eudoragpg} $(DESC_SEC_eudoragpg)
 #!endif
+!ifdef HAVE_PKG_KLEOPATRA
+  !insertmacro MUI_DESCRIPTION_TEXT ${SEC_kleopatra} $(DESC_SEC_kleopatra)
+!endif
 !ifdef HAVE_PKG_MAN_NOVICE_EN
   !insertmacro MUI_DESCRIPTION_TEXT ${SEC_man_novice_en} $(DESC_SEC_man_novice_en)
 !endif
