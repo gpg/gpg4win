@@ -221,6 +221,12 @@
 !define gpg4win_pkg_oxygen_icons_version @gpg4win_pkg_oxygen_icons_version@
 !define gpg4win_pkg_oxygen_icons_src @gpg4win_pkg_oxygen_icons_src@
 
+@HAVE_PKG_KDELIBS@
+!define gpg4win_pkg_kdelibs @gpg4win_pkg_kdelibs@
+!define gpg4win_pkg_kdelibs_version @gpg4win_pkg_kdelibs_version@
+!define gpg4win_pkg_kdelibs_dev @gpg4win_pkg_kdelibs_dev@
+!define gpg4win_pkg_kdelibs_src @gpg4win_pkg_kdelibs_src@
+
 # Internal packages.
 @HAVE_PKG_MAN_NOVICE_DE@
 

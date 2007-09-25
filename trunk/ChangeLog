@@ -1,5 +1,15 @@
 2007-09-25  Marcus Brinkmann  <marcus@g10code.de>
 
+	* src/gpg4win.nsi: Disable kdelibs, kdesupport, oxygen-icons in
+	light installer.
+	* configure.ac: Add check for kdelibs.
+	* include/config.nsi.in: Add macros for kdelibs.
+	* src/inst-kdelibs.nsi, src/uninst-kdelibs.nsi: New files.
+	* src/Makefile.am (gpg4win_bpkgs): Add kdelibs.
+	(EXTRA_DIST): Add inst-kdelibs.nsi and uninst-kdelibs.nsi.
+	* src/inst-sections.nsi: Add support for kdelibs.
+	* packages/packages.current: Add kdelibs.
+
 	* configure.ac: Add check for oxygen-icons.
 	* include/config.nsi.in: Add macros for oxygen-icons.
 	* m4/gpg4win.m4: Fix translit expression (dash must come first or last).

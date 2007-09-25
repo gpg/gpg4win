@@ -322,3 +322,21 @@ name oxygen-icons-20070918-bin.zip
 file oxygen-icons-20070918.zip
 link oxygen-icons-20070918-src.zip
 chk cefb58affdf099069d3b4e14029b4d26abb03ae1
+
+# kdelibs
+
+server ftp://ftp.kdab.net/pub/gpg4win
+
+name kdelibs-20070918-bin.zip
+file kdelibs-for-kleo-20070918-bin.zip
+chk 188d64379b68a839562b230bc80ba0f4b39555f1
+
+name kdelibs-20070918-lib.zip
+file kdelibs-for-kleo-20070918-dev.zip
+chk f5080386d81155ab6111d6658817a5ecf4d11f08
+
+name kdelibs-20070918-src.zip
+# FIXME: This is very wrong.  It's not a zip file and does not contain
+# all the sources.
+file kdelibs-svn713936.tar.bz2
+chk 7c2b10819ed4eb1c17e7b5076b9e494ad8bdddbb
