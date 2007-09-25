@@ -23,7 +23,7 @@
 !endif
 !define prefix ${ipdir}/kleopatra-${gpg4win_pkg_kleopatra_version}
 
-Section "kleopatra" SEC_kleopatra
+Section /o "Kleopatra" SEC_kleopatra
   SetOutPath "$INSTDIR"
 !ifdef SOURCES
   File "${gpg4win_pkg_kleopatra_src}"
@@ -72,3 +72,7 @@ Section "kleopatra" SEC_kleopatra
 
 !endif
 SectionEnd
+
+
+LangString DESC_SEC_kleopatra ${LANG_ENGLISH} \
+   "Kleopatra"
