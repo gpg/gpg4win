@@ -216,6 +216,7 @@ GPG4WIN_IPKG([man_novice_en])
 # Qt related stuff.
 GPG4WIN_BPKG_GNUWIN32([kdesupport])
 GPG4WIN_BPKG_GNUWIN32([qt], [kdesupport])
+GPG4WIN_BPKG_BINSRC([oxygen-icons])
 
 GPG4WIN_FINALIZE
 

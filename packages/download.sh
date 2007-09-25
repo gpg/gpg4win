@@ -151,6 +151,27 @@ while read key value ; do
            fi
        fi
        ;;
+    link)
+       if [ -z "$value" ]; then
+           echo "syntax error in file statement, line $lnr" >&2
+           exit 1
+       fi
+       if [ -z "$name" ]; then
+           echo "no name for link in line $lnr" >&2
+           exit 1
+       fi
+       if [ -f "$value" -a "$force" = "no" ]; then
+           echo "package     \`$value' ... already exists"
+       else
+           echo -n "linking \`$value' to \`$name' ..."
+	   if ln -f "$name" "$value"; then
+               echo " okay"
+           else
+               echo " FAILED (line $lnr)"
+               echo "line $lnr: linking $value failed" >> '.#download.failed'
+           fi
+       fi
+       ;;
      chk)
        if [ -z "$value" ]; then
            echo "syntax error in chk statement, line $lnr" >&2

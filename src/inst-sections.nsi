@@ -119,11 +119,14 @@
 #!ifdef HAVE_PKG_EUDORAGPG
 #!include "inst-eudoragpg.nsi"
 #!endif
+!ifdef HAVE_PKG_KDESUPPORT
+!include "inst-kdesupport.nsi"
+!endif
 !ifdef HAVE_PKG_QT
 !include "inst-qt.nsi"
 !endif
-!ifdef HAVE_PKG_KDESUPPORT
-!include "inst-kdesupport.nsi"
+!ifdef HAVE_PKG_OXYGEN_ICONS
+!include "inst-oxygen-icons.nsi"
 !endif
 !ifdef HAVE_PKG_MAN_NOVICE_EN
 !include "inst-man_novice_en.nsi"
@@ -151,6 +154,9 @@
 !endif
 !ifdef HAVE_PKG_MAN_NOVICE_EN
 !include "uninst-man_novice_en.nsi"
+!endif
+!ifdef HAVE_PKG_OXYGEN_ICONS
+!include "uninst-oxygen-icons.nsi"
 !endif
 !ifdef HAVE_PKG_QT
 !include "uninst-qt.nsi"
@@ -481,11 +487,14 @@ Function CalcDepends
 !ifdef HAVE_PKG_PINENTRY
   !insertmacro UnselectSection ${SEC_pinentry}
 !endif
+!ifdef HAVE_PKG_KDESUPPORT
+  !insertmacro UnselectSection ${SEC_kdesupport}
+!endif
 !ifdef HAVE_PKG_QT
   !insertmacro UnselectSection ${SEC_qt}
 !endif
-!ifdef HAVE_PKG_KDESUPPORT
-  !insertmacro UnselectSection ${SEC_kdesupport}
+!ifdef HAVE_PKG_OXYGEN_ICONS
+  !insertmacro UnselectSection ${SEC_oxygen_icons}
 !endif
 
   # Then enable all dependencies in reverse build list order!
@@ -693,6 +702,7 @@ Function CalcDepends
 !endif
 
   # Package "kdesupport" has no dependencies.
+  # Package "oxygen-icons" has no dependencies.
 
 FunctionEnd
 
