@@ -1,3 +1,16 @@
+2007-09-25  Marcus Brinkmann  <marcus@g10code.de>
+
+	* configure.ac: Add check for oxygen-icons.
+	* include/config.nsi.in: Add macros for oxygen-icons.
+	* m4/gpg4win.m4: Fix translit expression (dash must come first or last).
+	* src/inst-oxygen-icons.nsi, src/uninst-oxygen-icons.nsi: New files.
+	* src/Makefile.am (gpg4win_bpkgs): Add oxygen-icons.
+	(EXTRA_DIST): Add inst-oxygen-icons.nsi and
+	uninst-oxygen-icons.nsi.
+	* src/inst-sections.nsi: Add support for oxygen-icons.
+	* packages/download.sh (name): Add "link" option.
+	* packages/packages.current: Add oxygen-icons.
+
 2007-09-24  Marcus Brinkmann  <marcus@g10code.de>
 
 	* src/Makefile.am (EXTRA_DIST): Add inst-kdesupport.nsi and

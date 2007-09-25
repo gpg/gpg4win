@@ -597,12 +597,12 @@ AC_DEFUN([GPG4WIN_BPKG_BINSRC],
   # At this point, _gpg4win_bpkg is no, or the actual package binary file.
 
   # gpg4win_pkg_PKGNAME=FILENAME_OF_BINARY
-  gpg4win_pkg_[]m4_translit([$1],[A-Z-+],[a-z__])[]=$_gpg4win_bpkg
-  AC_SUBST(gpg4win_pkg_[]m4_translit([$1],[A-Z-+],[a-z__]))
+  gpg4win_pkg_[]m4_translit([$1],[A-Z+-],[a-z__])[]=$_gpg4win_bpkg
+  AC_SUBST(gpg4win_pkg_[]m4_translit([$1],[A-Z+-],[a-z__]))
 
   # gpg4win_pkg_PKGNAME_version=VERSION
-  gpg4win_pkg_[]m4_translit([$1],[A-Z-+],[a-z__])[]_version=$_gpg4win_version
-  AC_SUBST(gpg4win_pkg_[]m4_translit([$1],[A-Z-+],[a-z__])[]_version)
+  gpg4win_pkg_[]m4_translit([$1],[A-Z+-],[a-z__])[]_version=$_gpg4win_version
+  AC_SUBST(gpg4win_pkg_[]m4_translit([$1],[A-Z+-],[a-z__])[]_version)
 
   AS_IF([test $_gpg4win_bpkg != no],
     tmp_binsrc=yes
@@ -614,8 +614,8 @@ AC_DEFUN([GPG4WIN_BPKG_BINSRC],
                     AC_MSG_ERROR(can not find sources for package $1))
     fi
     # gpg4win_pkg_PKGNAME_src=FILENAME_OF_SOURCE
-    gpg4win_pkg_[]m4_translit([$1],[A-Z-+],[a-z__])[]_src=$_gpg4win_bpkg
-    AC_SUBST(gpg4win_pkg_[]m4_translit([$1],[A-Z-+],[a-z__])[]_src)
+    gpg4win_pkg_[]m4_translit([$1],[A-Z+-],[a-z__])[]_src=$_gpg4win_bpkg
+    AC_SUBST(gpg4win_pkg_[]m4_translit([$1],[A-Z+-],[a-z__])[]_src)
 
     # FIXME: Add a version consistency check here.  Both packages
     # must match!

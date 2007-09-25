@@ -204,17 +204,22 @@
 !define gpg4win_pkg_gettext_version @gpg4win_pkg_gettext_version@
 !define gpg4win_pkg_gettext_src @gpg4win_pkg_gettext_src@
 
+@HAVE_PKG_KDESUPPORT@
+!define gpg4win_pkg_kdesupport @gpg4win_pkg_kdesupport@
+!define gpg4win_pkg_kdesupport_version @gpg4win_pkg_kdesupport_version@
+!define gpg4win_pkg_kdesupport_dev @gpg4win_pkg_kdesupport_dev@
+!define gpg4win_pkg_kdesupport_src @gpg4win_pkg_kdesupport_src@
+
 @HAVE_PKG_QT@
 !define gpg4win_pkg_qt @gpg4win_pkg_qt@
 !define gpg4win_pkg_qt_version @gpg4win_pkg_qt_version@
 !define gpg4win_pkg_qt_dev @gpg4win_pkg_qt_dev@
 !define gpg4win_pkg_qt_src @gpg4win_pkg_qt_src@
 
-@HAVE_PKG_KDESUPPORT@
-!define gpg4win_pkg_kdesupport @gpg4win_pkg_kdesupport@
-!define gpg4win_pkg_kdesupport_version @gpg4win_pkg_kdesupport_version@
-!define gpg4win_pkg_kdesupport_dev @gpg4win_pkg_kdesupport_dev@
-!define gpg4win_pkg_kdesupport_src @gpg4win_pkg_kdesupport_src@
+@HAVE_PKG_OXYGEN_ICONS@
+!define gpg4win_pkg_oxygen_icons @gpg4win_pkg_oxygen_icons@
+!define gpg4win_pkg_oxygen_icons_version @gpg4win_pkg_oxygen_icons_version@
+!define gpg4win_pkg_oxygen_icons_src @gpg4win_pkg_oxygen_icons_src@
 
 # Internal packages.
 @HAVE_PKG_MAN_NOVICE_DE@
@@ -224,4 +229,3 @@
 @HAVE_PKG_MAN_NOVICE_EN@
 
 # @HAVE_PKG_MAN_ADVANCED_EN@
-

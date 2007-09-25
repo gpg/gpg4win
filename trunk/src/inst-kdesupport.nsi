@@ -1,4 +1,4 @@
-# inst-kdesupport.nsi - Snioppet for kdesupport.      -*- coding: latin-1; -*-
+# inst-kdesupport.nsi - Snippet for kdesupport.      -*- coding: latin-1; -*-
 # Copyright (C) 2005, 2007 g10 Code GmbH
 # 
 # This file is part of GPG4Win.

@@ -61,8 +61,8 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi config.site \
         inst-zlib.nsi        	   uninst-zlib.nsi            \
         inst-qt.nsi        	   uninst-qt.nsi              \
         inst-kdesupport.nsi   	   uninst-kdesupport.nsi      \
-	inst-bzip2.nsi             uninst-bzip2.nsi           
-
+        inst-oxygen-icons.nsi  	   uninst-oxygen-icons.nsi    \
+	inst-bzip2.nsi             uninst-bzip2.nsi
 
 # Need to clean the dll because we bypassed automake.
 CLEANFILES = g4wihelp.dll versioninfo.txt README.en.txt README.de.txt \
@@ -217,7 +217,7 @@ gpg4win_pkg_bzip2_make_args_inst = \
 
 # Supported binary packages.
 gpg4win_bpkgs = libiconv gettext pkgconfig zlib libpng jpeg pango cairo \
-	        atk gtk+ gpgee crypt regex qt kdesupport
+	        atk gtk+ gpgee crypt regex qt kdesupport oxygen-icons
 
 # libiconv needs some special magic to generate a usable import
 # library.
