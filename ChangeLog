@@ -1,3 +1,11 @@
+2007-09-26  Marcus Brinkmann  <marcus@g10code.de>
+
+	* src/inst-gnupg2.nsi: Put it in the read-only section.
+	* src/inst-sections.nsi: Make kleopatra dependent on gnupg2, and
+	gpgol dependent on kleopatra.  Remove explicit dependencies on
+	gnupg and gnupg2 from individual packages.	
+	* src/gpg4win.nsi: Remove kleopatra from light installer.
+
 2007-09-25  Marcus Brinkmann  <marcus@g10code.de>
 
 	* src/inst-sections.nsi, src/inst-kleopatra.nsi,

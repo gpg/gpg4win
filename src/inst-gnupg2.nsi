@@ -25,7 +25,8 @@
 !define prefix ${ipdir}/gnupg2-${gpg4win_pkg_gnupg2_version}
 
 
-Section /o "GnuPG2" SEC_gnupg2
+Section "GnuPG2" SEC_gnupg2
+  SectionIn RO
 
   SetOutPath "$INSTDIR"
 !ifdef SOURCES
