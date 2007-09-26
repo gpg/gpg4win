@@ -314,17 +314,6 @@ StrCmp $R0 "" +2
 calc_defaults_kleopatra_done:
 !endif
 
-!ifdef HAVE_PKG_GNUPG2
-  g4wihelp::config_fetch_bool "inst_gnupg2"
-  StrCmp $R0 "1" 0 calc_defaults_gnupg2_not_one
-   !insertmacro SelectSection ${SEC_gnupg2}
-   Goto calc_defaults_gnupg2_done
-  calc_defaults_gnupg2_not_one:
-  StrCmp $R0 "0" 0 calc_defaults_gnupg2_done
-   !insertmacro UnselectSection ${SEC_gnupg2}
-calc_defaults_gnupg2_done:
-!endif
-
 !ifdef HAVE_PKG_GPGOL
   g4wihelp::config_fetch_bool "inst_gpgol"
   StrCmp $R0 "1" 0 calc_defaults_gpgol_not_one
@@ -523,7 +512,23 @@ Function CalcDepends
   !insertmacro UnselectSection ${SEC_kdelibs}
 !endif
 
+  # Always install gnupg and gnupg2.  This is also ensured by putting
+  # these packages in the RO section and enabling them by default, but
+  # it doesn't harm to add it explicitely here as well.
+
+  !insertmacro SelectSection ${SEC_gnupg}
+  !insertmacro SelectSection ${SEC_gnupg2}
+
   # Then enable all dependencies in reverse build list order!
+
+!ifdef HAVE_PKG_GPGOL
+  !insertmacro SectionFlagIsSet ${SEC_gpgol} \
+		${SF_SELECTED} have_gpgol skip_gpgol
+  have_gpgol:
+  !insertmacro SelectSection ${SEC_gpgme}
+  !insertmacro SelectSection ${SEC_kleopatra}
+  skip_gpgol:
+!endif
 
 !ifdef HAVE_PKG_GPGEX
   !insertmacro SectionFlagIsSet ${SEC_gpgex} \
@@ -537,7 +542,6 @@ Function CalcDepends
   !insertmacro SectionFlagIsSet ${SEC_kleopatra} ${SF_SELECTED} have_kleopatra skip_kleopatra
   have_kleopatra:
   !insertmacro SelectSection ${SEC_gpgme}
-  !insertmacro SelectSection ${SEC_gnupg}
   # This drags in all the other KDE and Qt stuff.
   !insertmacro SelectSection ${SEC_kdelibs}
   skip_kleopatra:
@@ -562,7 +566,6 @@ Function CalcDepends
   !insertmacro SectionFlagIsSet ${SEC_gpgee} ${SF_SELECTED} have_gpgee skip_gpgee
   have_gpgee:
   !insertmacro SelectSection ${SEC_gpgme}
-  !insertmacro SelectSection ${SEC_gnupg}
   skip_gpgee:
 !endif
 
@@ -570,7 +573,6 @@ Function CalcDepends
   !insertmacro SectionFlagIsSet ${SEC_winpt} ${SF_SELECTED} have_winpt skip_winpt
   have_winpt:
   !insertmacro SelectSection ${SEC_gpgme}
-  !insertmacro SelectSection ${SEC_gnupg}
   skip_winpt:
 !endif
 
@@ -582,7 +584,6 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_libpng}
   !insertmacro SelectSection ${SEC_glib}
   !insertmacro SelectSection ${SEC_gpgme}
-  !insertmacro SelectSection ${SEC_gnupg}
   skip_gpa:
 !endif
 
@@ -595,7 +596,6 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_jpeg}
   !insertmacro SelectSection ${SEC_glib}
   !insertmacro SelectSection ${SEC_gpgme}
-  !insertmacro SelectSection ${SEC_gnupg}
   !insertmacro SelectSection ${SEC_pthreads_w32}
   !insertmacro SelectSection ${SEC_crypt}
   !insertmacro SelectSection ${SEC_regex}
@@ -612,7 +612,6 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_jpeg}
   !insertmacro SelectSection ${SEC_glib}
   !insertmacro SelectSection ${SEC_gpgme}
-  !insertmacro SelectSection ${SEC_gnupg}
   !insertmacro SelectSection ${SEC_pthreads_w32}
   !insertmacro SelectSection ${SEC_crypt}
   !insertmacro SelectSection ${SEC_regex}
@@ -659,16 +658,6 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_glib}
   !insertmacro SelectSection ${SEC_pkgconfig}
   skip_pango:
-!endif
-
-!ifdef HAVE_PKG_GPGOL
-  !insertmacro SectionFlagIsSet ${SEC_gpgol} \
-		${SF_SELECTED} have_gpgol skip_gpgol
-  have_gpgol:
-  !insertmacro SelectSection ${SEC_gpgme}
-  !insertmacro SelectSection ${SEC_gnupg}
-  # FIXME: Add kleopatra dependency.
-  skip_gpgol:
 !endif
 
 !ifdef HAVE_PKG_LIBPNG
