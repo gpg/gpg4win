@@ -1,3 +1,11 @@
+2007-09-27  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
+
+	* website/support.htm4, website/support-de.htm4: New. A
+	description on where to get professional support for Gpg4win.
+
+	* website/template_link_boxes_de.m4,s
+	website/template_link_boxes_en.m4: Added link to new support page.
+
 2007-09-11  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
 
 	* manual/einsteiger.tex: Fix to have webversion work again.
