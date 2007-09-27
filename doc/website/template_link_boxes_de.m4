@@ -22,6 +22,9 @@ m4_dnl DONT USE THIS FILE DIRECTLY
   href="http://wald.intevation.org/tracker/?atid=126&amp;group_id=11&amp;func=browse">Bug 
   Tracker</a>
   </p>
+  <p>
+  <a href="support-de.html">Professioneller Support</a>
+  </p>
 </div>
 <div class="box">
   <h1>Sponsoring</h1>
