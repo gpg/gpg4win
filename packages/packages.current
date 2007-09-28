@@ -260,10 +260,11 @@ chk  38361925fef99715eccb8a1f73110ce2f3c3896a
 file pinentry/pinentry-0.7.3.tar.gz
 chk  557b886bc7a7030fd185fbc085703ef1ed304db8
 
-file alpha/gpgme/gpgme-1.1.6-svn1258.tar.bz2
-chk  aa4299ec21c3cd5bb4614c45388e9c89ab64093a 
-
 server ftp://ftp.g10code.com/g10code/scratch
+
+file gpgme-1.1.6-svn1267.tar.bz2
+chk  5567fa929c084694b41aaa548110d443c2f82a6e
+
 file dirmngr-1.0.2-svn267.tar.bz2
 chk  408e9ab1d4755b1fa2ac66ed503bbbe2d791c4e8
 
