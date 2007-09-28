@@ -1,3 +1,11 @@
+2007-09-28  Marcus Brinkmann  <marcus@g10code.de>
+
+	* src/inst-kleopatra.nsi: Put kleopatra into bin for now.
+	* src/uninst-kleopatra.nsi: Remove it from there.
+	* src/inst-kdesupport.nsi: Put dbus-daemon into bin for now, and
+	install missing config files.
+	* src/uninst-kdesupport.nsi: Uninstall these files.
+
 2007-09-26  Marcus Brinkmann  <marcus@g10code.de>
 
 	* src/inst-gnupg2.nsi: Put it in the read-only section.

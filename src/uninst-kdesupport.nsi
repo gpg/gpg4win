@@ -30,7 +30,10 @@ Section "-un.kdesupport"
   Push "${gpg4win_pkg_kdesupport_src}"
   Call un.SourceDelete
 !else
-  Delete "$INSTDIR\dbus-daemon.exe"
+  # FIXME: See inst-kdesupport.nsi.
+  Delete "$INSTDIR\bin\dbus-daemon.exe"
+  RMDir "$INSTDIR\bin"
+
   Delete "$INSTDIR\dbus-launch.exe"
   Delete "$INSTDIR\dbus-monitor.exe"
   Delete "$INSTDIR\dbus-send.exe"
@@ -54,6 +57,10 @@ Section "-un.kdesupport"
   Delete "$INSTDIR\pcrecpp.dll"
   Delete "$INSTDIR\pcreposix.dll"
   Delete "$INSTDIR\ssleay32.dll"
+
+  Delete "$INSTDIR\etc\session.conf"
+  Delete "$INSTDIR\etc\system.conf"
+  RMDir "$INSTDIR\etc"
 
   RMDir "$INSTDIR"
 !endif

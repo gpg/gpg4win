@@ -29,7 +29,11 @@ Section /o "Kleopatra" SEC_kleopatra
   File "${gpg4win_pkg_kleopatra_src}"
 !else
 
+  # Relocate this when dbus-daemon is relocated.
+  SetOutPath "$INSTDIR\bin"
   File ${prefix}/bin/kleopatra.exe
+  SetOutPath "$INSTDIR"
+
   File ${prefix}/bin/test_uiserver.exe
   File ${prefix}/lib/libgpgme++-glib.dll
   File ${prefix}/lib/libgpgme++-qt.dll

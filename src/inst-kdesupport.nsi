@@ -32,7 +32,11 @@ Section "-kdesupport" SEC_kdesupport
 !ifdef SOURCES
   File "${gpg4win_pkg_kdesupport_src}"
 !else
+  # FIXME: Figure out how to relocate dbus-daemon (and kleopatra).
+  SetOutPath "$INSTDIR\bin"
   File ${prefix}/bin/dbus-daemon.exe
+  SetOutPath "$INSTDIR"
+
   File ${prefix}/bin/dbus-launch.exe
   File ${prefix}/bin/dbus-monitor.exe
   File ${prefix}/bin/dbus-send.exe
@@ -46,6 +50,7 @@ Section "-kdesupport" SEC_kdesupport
 !undef prefix
 !define prefix ${ipdir}/kdesupport-dev-${gpg4win_pkg_kdesupport_version}
 
+  SetOutPath "$INSTDIR"
   File ${prefix}/bin/giflib4.dll
   File ${prefix}/bin/libdbus-1.dll
   File ${prefix}/bin/libeay32.dll
@@ -60,6 +65,10 @@ Section "-kdesupport" SEC_kdesupport
   File ${prefix}/bin/pcrecpp.dll
   File ${prefix}/bin/pcreposix.dll
   File ${prefix}/bin/ssleay32.dll
+
+  SetOutPath "$INSTDIR\etc"
+  File ${prefix}/etc/session.conf
+  File ${prefix}/etc/system.conf
 
 !endif
 SectionEnd
