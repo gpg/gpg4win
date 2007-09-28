@@ -31,8 +31,12 @@ Section "-un.kleopatra"
   Call un.SourceDelete
 !else
 
-  Delete "$INSTDIR\kleopatra.exe"
+  # FIXME: See inst-kleopatra.nsi
+  Delete "$INSTDIR\bin\kleopatra.exe"
+  RMDir "$INSTDIR\bin"
+
   Delete "$INSTDIR\test_uiserver.exe"
+
   Delete "$INSTDIR\libgpgme++-glib.dll"
   Delete "$INSTDIR\libgpgme++-qt.dll"
   Delete "$INSTDIR\libgpgme++.dll"
