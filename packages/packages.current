@@ -346,8 +346,8 @@ chk 7c2b10819ed4eb1c17e7b5076b9e494ad8bdddbb
 
 server ftp://ftp.kdab.net/pub/gpg4win
 
-name kleopatra-20071002-bin.zip
-file kleo-uiserver-only-20071002-bin.zip
+name kleopatra-20071002-2-bin.zip
+file kleo-uiserver-only-20071002-2-bin.zip
 # FIXME: This is totally wrong.  We don't have a source package!
-link kleopatra-20071002-src.zip
-chk 30ca42fb583f31cefe8155f1ed2dcc0fab819491
+link kleopatra-20071002-2-src.zip
+chk 
