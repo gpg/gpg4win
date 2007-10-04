@@ -73,6 +73,9 @@ m4_dnl DONT USE THIS FILE DIRECTLY
   <a href="http://sourceforge.net/projects/winpt">Windows Privacy Tools</a><br>
   <a href="http://www.gnupp.de/start.html">GnuPP</a><br>
   </p>
+  <p>Related:<br>
+  <a href="http://enigmail.mozdev.org/">Thunderbird/Enigmail</a>
+  </p>
 </div>
 <div class="box">
   <h1>Sitemap</h1>
