@@ -77,6 +77,10 @@ m4_dnl DONT USE THIS FILE DIRECTLY
   </p>
 </div>
 <div class="box">
+  <h1>Sonstiges</h1>
+  <a href="Kurzstudie-Nachhaltige-FS-Beispiel-Gpg4win.html">Kurzstudie: Nachhaltige Freie Software: Vom Projekt zur Dauertätigkeit am Beispiel Gpg4win</a>
+</div>
+<div class="box">
   <h1>Sitemap</h1>
   <a href="index-de.html">Hauptseite</a><br>
   <a href="package-integrity-de.html">Integritätsprüfung</a><br>
