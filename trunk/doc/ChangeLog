@@ -1,3 +1,18 @@
+2007-10-05  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
+
+	* website/Kurzstudie-Nachhaltige-FS-Beispiel-Gpg4win.htm4: New.
+	The html version of a paper about sustainable Free Software
+	where Gpg4win is the base example.
+
+	* website/pix/Kurzstudie-Nachhaltige-FS-Beispiel-Gpg4win_html_7e8e3982.png,
+	website/pix/Kurzstudie-Nachhaltige-FS-Beispiel-Gpg4win_html_771195ab.png,
+	website/pix/Kurzstudie-Nachhaltige-FS-Beispiel-Gpg4win_html_m25626251.png:
+	New. Some graphics for the paper.
+
+	* website/template_link_boxes_de.m4,
+	website/template_link_boxes_en.m4: New Box "Miscellaneous" with
+	link to paper.
+
 2007-10-04  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
 
 	* website/template_link_boxes_de.m4,
