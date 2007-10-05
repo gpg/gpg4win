@@ -1,3 +1,12 @@
+2007-10-05  Bernhard Reiter <bernhard.reiter@intevation.de>
+
+	* website/Kurzstudie-Nachhaltige-FS-Beispiel-Gpg4win.htm4:
+	Better Intevation logo and corrected link to Bernhard's Artikel. 
+	Added a webversion date to indicate the difference to the pdf version.
+
+	* website/pix/Kurzstudie-Nachhaltige-FS-Beispiel-Gpg4win_html_7e8e3982.png:
+	removed in favor of new website/pix/intevation-logo.png
+
 2007-10-05  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
 
 	* website/Kurzstudie-Nachhaltige-FS-Beispiel-Gpg4win.htm4: New.
