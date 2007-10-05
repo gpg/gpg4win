@@ -213,8 +213,8 @@ chk  98c14c731f8e69e26d243fb4e830c0afa9a66cb7
 
 server ftp://ftp.g10code.com/g10code/scratch
 
-file gpgex-0.0.0-svn23.tar.bz2
-chk  0d2c73f4cc2d32d2fe218401c80ce8cc2307741c
+file gpgex-0.0.0-svn27.tar.bz2
+chk  9db77a2cfb5df475c3cbaeeb37c88053468b1c3c
 
 #
 # Pth emulation
@@ -256,11 +256,11 @@ chk  557b886bc7a7030fd185fbc085703ef1ed304db8
 server ftp://ftp.g10code.com/g10code/scratch
 
 name gnupg2-2.0.8-svn4588.tar.bz2
-file gnupg/gnupg-2.0.8-svn4588.tar.bz2
+file gnupg-2.0.8-svn4588.tar.bz2
 chk  9e88710d13581107cafb2efc89dbb664d0106a52
 
-file libassuan-1.0.4-svn268.tar.bz2
-chk  64ae848c60768a3e0dbe77c6af2e4e9c0451f2fb
+file libassuan-1.0.4-svn271.tar.bz2
+chk  c831441ad351eb8013d0968b61853e5b20914042
 
 file gpgme-1.1.6-svn1272.tar.bz2
 chk  76c49524f880759c48869a6c181b4bce01ce806c
