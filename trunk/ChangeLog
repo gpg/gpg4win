@@ -1,5 +1,7 @@
 2007-10-05  Marcus Brinkmann  <marcus@g10code.de>
 
+	* packages/packages.current: Update dirmngr.
+
 	* packages/packages.current: Update libassuan.
 
 	* packages/packages.current: Update gpgex and libassuan, and fix gnupg2.
