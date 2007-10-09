@@ -213,8 +213,8 @@ chk  98c14c731f8e69e26d243fb4e830c0afa9a66cb7
 
 server ftp://ftp.g10code.com/g10code/scratch
 
-file gpgex-0.0.0-svn27.tar.gz
-chk  9db77a2cfb5df475c3cbaeeb37c88053468b1c3c
+file gpgex-0.0.0-svn31.tar.bz2
+chk  d95bbb0602675b5197bab1b7632f597926a2d5ca
 
 #
 # Pth emulation
@@ -315,14 +315,16 @@ file kdesupport-4.0.0-2-src.zip
 chk 40318619764a5c0ae9aa3796a6f33155d0a90c0d
 
 # oxygen-icons
+# Not yet needed.
+#
 # Source package is identical to binary package.
-
-server ftp://ftp.kdab.net/pub/gpg4win
-
-name oxygen-icons-20070918-bin.zip
-file oxygen-icons-20070918.zip
-link oxygen-icons-20070918-src.zip
-chk cefb58affdf099069d3b4e14029b4d26abb03ae1
+#
+# server ftp://ftp.kdab.net/pub/gpg4win
+#
+# name oxygen-icons-20070918-bin.zip
+# file oxygen-icons-20070918.zip
+# link oxygen-icons-20070918-src.zip
+# chk cefb58affdf099069d3b4e14029b4d26abb03ae1
 
 # kdelibs
 
@@ -346,8 +348,8 @@ chk 7c2b10819ed4eb1c17e7b5076b9e494ad8bdddbb
 
 server ftp://ftp.kdab.net/pub/gpg4win
 
-name kleopatra-20071004-bin.zip
-file kleo-uiserver-only-20071004-bin.zip
+name kleopatra-20071009-2-bin.zip
+file kleo-uiserver-only-20071009-2-bin.zip
 # FIXME: This is totally wrong.  We don't have a source package!
 link kleopatra-20071004-src.zip
-chk 899bc73254116a278d7bbe4d5f03d57a4e55faa1
+chk 80e8252d1a6ff3b51cf22aac6df9d4cd8460d82c
