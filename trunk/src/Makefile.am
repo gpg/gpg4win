@@ -166,7 +166,8 @@ gpg4win_pkg_gpgme_configure = --silent \
 
 gpg4win_pkg_gpa_configure = --silent \
   --with-libiconv-prefix=$(idir) --with-libintl-prefix=$(idir) \
-  --with-gpgme-prefix=$(idir) --with-zlib=$(idir)
+  --with-gpgme-prefix=$(idir) --with-zlib=$(idir) \
+  --with-libassuan-prefix=$(idir) --with-gpg-error-prefix=$(idir)
 
 gpg4win_pkg_gpgol_configure = --silent \
   --with-gpgme-prefix=$(idir) --with-gpg-error-prefix=$(idir)
