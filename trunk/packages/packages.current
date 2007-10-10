@@ -262,8 +262,8 @@ chk  9e88710d13581107cafb2efc89dbb664d0106a52
 file libassuan-1.0.4-svn273.tar.bz2
 chk  cf039a5da53c60591730d67acb7a9a97c99bfff9
 
-file gpgme-1.1.6-svn1272.tar.bz2
-chk  76c49524f880759c48869a6c181b4bce01ce806c
+file gpgme-1.1.6-svn1274.tar.bz2
+chk  68e8ca010699ca0fd81d4dd46bbf1e6e063e0f8d
 
 file dirmngr-1.0.2-svn270.tar.bz2
 chk  d9b57d45f4ec51693d03f739b01167633bb5ab53
@@ -330,15 +330,15 @@ chk 40318619764a5c0ae9aa3796a6f33155d0a90c0d
 
 server ftp://ftp.kdab.net/pub/gpg4win
 
-name kdelibs-20070918-bin.zip
-file kdelibs-for-kleo-20070918-bin.zip
-chk 188d64379b68a839562b230bc80ba0f4b39555f1
+name kdelibs-20071009-bin.zip
+file kdelibs-for-kleo-20071009-bin.zip
+chk d0c5f45d84535303b76456df81d9bb5fe937e0ec
 
-name kdelibs-20070918-lib.zip
-file kdelibs-for-kleo-20070918-dev.zip
-chk f5080386d81155ab6111d6658817a5ecf4d11f08
+name kdelibs-20071009-lib.zip
+file kdelibs-for-kleo-20071009-dev.zip
+chk 4894ea9b0175b83d956d9d9998d4db247d49ae13
 
-name kdelibs-20070918-src.zip
+name kdelibs-20071009-src.zip
 # FIXME: This is very wrong.  It's not a zip file and does not contain
 # all the sources.
 file kdelibs-svn713936.tar.bz2
@@ -348,8 +348,8 @@ chk 7c2b10819ed4eb1c17e7b5076b9e494ad8bdddbb
 
 server ftp://ftp.kdab.net/pub/gpg4win
 
-name kleopatra-20071009-2-bin.zip
-file kleo-uiserver-only-20071009-2-bin.zip
+name kleopatra-20071009-3-bin.zip
+file kleo-uiserver-only-20071009-3-bin.zip
 # FIXME: This is totally wrong.  We don't have a source package!
-link kleopatra-20071004-src.zip
-chk 80e8252d1a6ff3b51cf22aac6df9d4cd8460d82c
+link kleopatra-20071009-3-src.zip
+chk 035420fa630cc2537f84621f43a43c11289fe147
