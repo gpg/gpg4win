@@ -36,7 +36,7 @@ Section "-kdelibs" SEC_kdelibs
   File ${prefix}/bin/kcmdwrapper.exe
   File ${prefix}/bin/libkdecore.dll
   File ${prefix}/bin/libkdeui.dll
-  File ${prefix}/bin/libkdefx.dll
+#  File ${prefix}/bin/libkdefx.dll
 
   SetOutPath "$INSTDIR\lib\kde4"
 

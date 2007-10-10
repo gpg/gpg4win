@@ -1,3 +1,8 @@
+2007-10-10  Marcus Brinkmann  <marcus@g10code.de>
+
+	* src/inst-kdelibs.nsi: Do not install libkdefx.dll.
+	* packages/packages.current: Update gpgme, kdelibs and kleopatra.
+
 2007-10-09  Marcus Brinkmann  <marcus@g10code.de>
 
 	* configure.ac: Fix last change.
