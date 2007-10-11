@@ -1,3 +1,11 @@
+2007-10-11  Werner Koch  <wk@g10code.com>
+
+	* packages/packages.current: Update kleopatra.
+
+	* configure.ac (gpgol): Add libassuan as dependency.
+	* src/Makefile.am (gpg4win_pkg_gpgol_configure): Add
+	--with-libassuan-prefix.
+
 2007-10-10  Marcus Brinkmann  <marcus@g10code.de>
 
 	* src/inst-kdelibs.nsi: Do not install libkdefx.dll.
@@ -14,6 +22,10 @@
 
 	* src/Makefile.am (gpg4win_pkg_gpa_configure): Add search path for
 	libassuan and gpg-error.
+
+2007-10-06  Werner Koch  <wk@g10code.com>
+
+	* packages/packages.current: Fixed gpgex filename to be .gz.
 
 2007-10-05  Marcus Brinkmann  <marcus@g10code.de>
 
