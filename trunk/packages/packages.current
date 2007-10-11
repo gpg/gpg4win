@@ -203,18 +203,20 @@ chk   050f93a0d74385ce90e8934e49c11f171d495c5a
 #
 # GPGol
 #
-server ftp://ftp.g10code.com/g10code/gpgol
+server ftp://ftp.g10code.com/g10code/gpgol/alpha
 
-file gpgol-0.9.92.tar.bz2
-chk  98c14c731f8e69e26d243fb4e830c0afa9a66cb7
+file gpgol-0.10.0.tar.bz2
+chk  3386475fbe1d86feb33cbc83f6fa7ee16f71db36  
+
+
 #
 # GpgEX
 #
 
-server ftp://ftp.g10code.com/g10code/scratch
-
-file gpgex-0.0.0-svn31.tar.bz2
-chk  d95bbb0602675b5197bab1b7632f597926a2d5ca
+#server ftp://ftp.g10code.com/g10code/scratch
+#
+#file gpgex-0.0.0-svn31.tar.bz2
+#chk  d95bbb0602675b5197bab1b7632f597926a2d5ca
 
 #
 # Pth emulation

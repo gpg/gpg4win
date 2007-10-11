@@ -1,6 +1,7 @@
 2007-10-11  Werner Koch  <wk@g10code.com>
 
-	* packages/packages.current: Update kleopatra.
+	* packages/packages.current: Update kleopatra. Update gpgol.
+	Disable gpgex.
 
 	* configure.ac (gpgol): Add libassuan as dependency.
 	* src/Makefile.am (gpg4win_pkg_gpgol_configure): Add
