@@ -1,3 +1,12 @@
+2007-10-12  Werner Koch  <wk@g10code.com>
+
+	* src/inst-kleopatra.nsi: Select by default.  Do not install
+	test_uiserver.
+	* src/uninst-kleopatra.nsi: No need to remove test_uiserver.
+
+	* src/inst-gpgee.nsi: Do not select by default.
+	* src/inst-gpgex.nsi: Select by default.
+
 2007-10-11  Werner Koch  <wk@g10code.com>
 
 	* packages/packages.current: Update kleopatra. Update gpgol.

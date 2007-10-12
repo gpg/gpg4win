@@ -24,7 +24,7 @@
 !define prefix ${ipdir}/gpgee-${gpg4win_pkg_gpgee_version}
 
 
-Section "GPGee" SEC_gpgee
+Section /o "GPGee" SEC_gpgee
   SetOutPath "$INSTDIR"
 !ifdef SOURCES
   File "${gpg4win_pkg_gpgee_src}"

@@ -23,7 +23,7 @@
 !endif
 !define prefix ${ipdir}/kleopatra-${gpg4win_pkg_kleopatra_version}
 
-Section /o "Kleopatra" SEC_kleopatra
+Section "Kleopatra" SEC_kleopatra
   SetOutPath "$INSTDIR"
 !ifdef SOURCES
   File "${gpg4win_pkg_kleopatra_src}"
@@ -34,7 +34,6 @@ Section /o "Kleopatra" SEC_kleopatra
   File ${prefix}/bin/kleopatra.exe
   SetOutPath "$INSTDIR"
 
-  File ${prefix}/bin/test_uiserver.exe
   File ${prefix}/lib/libgpgme++-glib.dll
   File ${prefix}/lib/libgpgme++-qt.dll
   File ${prefix}/lib/libgpgme++.dll
