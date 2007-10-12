@@ -23,7 +23,7 @@
 !define prefix ${ipdir}/gpgex-${gpg4win_pkg_gpgex_version}
 
 
-Section /o "GpgEX" SEC_gpgex
+Section "GpgEX" SEC_gpgex
   SetOutPath "$INSTDIR"
 !ifdef SOURCES
   File "${gpg4win_pkg_gpgex}"
