@@ -33,8 +33,10 @@ Section "-Pinentry" SEC_pinentry
 !ifdef SOURCES
   File "${gpg4win_pkg_pinentry}"
 !else
-  File /oname=pinentry.exe "${prefix}/bin/pinentry-w32.exe"
 
+  File "${prefix}/bin/pinentry-w32.exe"
+  File "${prefix}/bin/pinentry-gtk-2.exe"
+  File /oname=pinentry.exe "${prefix}/bin/pinentry-gtk-2.exe"
 !endif
 SectionEnd
 
