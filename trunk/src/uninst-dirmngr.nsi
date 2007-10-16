@@ -40,9 +40,18 @@ Section "-un.dirmngr"
   Delete "$INSTDIR\dirmngr-client.exe"
   Delete "$INSTDIR\dirmngr_ldap.exe"
   RMDir "$INSTDIR\cache"
-  RMDir "$INSTDIR"
 
   # Remove etc files.
 
+  Delete "$INSTDIR\etc\dirmngr\dirmngr.conf"
+  Delete "$INSTDIR\etc\dirmngr\bnetza-10r-ocsp.signer"
+
+  Delete "$INSTDIR\etc\dirmngr\trusted-certs\README"
+  Delete "$INSTDIR\etc\dirmngr\trusted-certs\bnetza-10r-ca.crt"
+
+  RMDir "$INSTDIR\etc\dirmngr\trusted-certs"
+  RMDir "$INSTDIR\etc\dirmngr"
+  RMDir "$INSTDIR\etc"
+  RMDir "$INSTDIR"
 !endif
 SectionEnd
