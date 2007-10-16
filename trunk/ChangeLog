@@ -1,3 +1,10 @@
+2007-10-17  Marcus Brinkmann  <marcus@g10code.de>
+
+	* configure.ac: Reenable oxygen-icons dependency.
+	* src/inst-oxygen-icons.nsi: Only install action icons for now.
+	* packages/packages.current: Reenable oxygen-icons.
+	Update kleopatra and gpgex packages.
+
 2007-10-16  Marcus Brinkmann  <marcus@g10code.de>
 
 	* src/uninst-dirmngr.nsi: Remove etc files.
