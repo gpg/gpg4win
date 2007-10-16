@@ -34,6 +34,7 @@ Section "-un.kleopatra"
   # FIXME: See inst-kleopatra.nsi
   Delete "$INSTDIR\bin\kleopatra.exe"
   RMDir "$INSTDIR\bin"
+  Delete "$INSTDIR\kleopatra.bat"
 
   Delete "$INSTDIR\libgpgme++-glib.dll"
   Delete "$INSTDIR\libgpgme++-qt.dll"
@@ -47,6 +48,8 @@ Section "-un.kleopatra"
   RMDir "$INSTDIR\share\applications"
 
   Delete "$INSTDIR\share\apps\kleopatra\kleopatraui.rc"
+  RMDir "$INSTDIR\share\apps\kleopatra"
+
   Delete "$INSTDIR\share\apps\libkleopatra\pics\chiasmus_chi.png"
   Delete "$INSTDIR\share\apps\libkleopatra\pics\key.png"
   Delete "$INSTDIR\share\apps\libkleopatra\pics\key_bad.png"

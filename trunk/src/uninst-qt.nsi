@@ -30,6 +30,8 @@ Section "-un.qt"
   Push "${gpg4win_pkg_qt_src}"
   Call un.SourceDelete
 !else
+  Delete "$INSTDIR\mingwm10.dll"
+
   Delete "$INSTDIR\Qt3Support4.dll"
   Delete "$INSTDIR\QtAssistantClient4.dll"
   Delete "$INSTDIR\QtCore4.dll"

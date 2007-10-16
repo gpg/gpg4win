@@ -51,7 +51,7 @@ Section "Kleopatra" SEC_kleopatra
 
   File ${prefix}/share/apps/kleopatra/kleopatraui.rc
 
-  SetOutPath "$INSTDIR\share\apps\libkleopatra/pics"
+  SetOutPath "$INSTDIR\share\apps\libkleopatra\pics"
 
   File ${prefix}/share/apps/libkleopatra/pics/chiasmus_chi.png
   File ${prefix}/share/apps/libkleopatra/pics/key.png

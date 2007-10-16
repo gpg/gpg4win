@@ -42,5 +42,7 @@ Section "-un.dirmngr"
   RMDir "$INSTDIR\cache"
   RMDir "$INSTDIR"
 
+  # Remove etc files.
+
 !endif
 SectionEnd

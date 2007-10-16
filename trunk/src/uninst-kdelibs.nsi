@@ -92,16 +92,19 @@ Section "-un.kdelibs"
 
   Delete "$INSTDIR\share\config\ui\ui_standards.rc"
 
-  RMDir "$INSTDIR\share\ui"
+  RMDir "$INSTDIR\share\config\ui"
+  RMDir "$INSTDIR\share\config"
 
   Delete "$INSTDIR\share\kde4\services\kded\kdedglobalaccel.desktop"
 
   RMDir "$INSTDIR\share\kde4\services\kded"
+  RMDir "$INSTDIR\share\kde4\services"
 
   Delete "$INSTDIR\share\kde4\servicetypes\sonnetspeller.desktop"
   Delete "$INSTDIR\share\kde4\servicetypes\kplugininfo.desktop"
 
   RMDir "$INSTDIR\share\kde4\servicetypes"
+  RMDir "$INSTDIR\share\kde4"
 
   Delete "$INSTDIR\share\locale\all_languages"
 
