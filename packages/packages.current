@@ -213,10 +213,10 @@ chk  3386475fbe1d86feb33cbc83f6fa7ee16f71db36
 # GpgEX
 #
 
-#server ftp://ftp.g10code.com/g10code/scratch
-#
-#file gpgex-0.0.0-svn31.tar.bz2
-#chk  d95bbb0602675b5197bab1b7632f597926a2d5ca
+server ftp://ftp.g10code.com/g10code/scratch
+
+file gpgex-0.0.0-svn31.tar.bz2
+chk  d95bbb0602675b5197bab1b7632f597926a2d5ca
 
 #
 # Pth emulation
