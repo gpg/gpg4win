@@ -49,7 +49,7 @@ Section "-dirmngr" SEC_dirmngr
 
    SetOutPath "$INSTDIR\etc\dirmngr\trusted-certs"
    File /nonfatal "${prefix}/share/doc/dirmngr/examples/trusted-certs/README"
-   File /nonfatal "${prefix}/share/doc/dirmngr/examples/trusted-certs/*.crt"
+   File /nonfatal "${prefix}/share/doc/dirmngr/examples/trusted-certs/bnetza-10r-ca.crt"
 
   dirmngr_no_conf:
 
