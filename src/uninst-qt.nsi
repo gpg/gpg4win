@@ -31,6 +31,7 @@ Section "-un.qt"
   Call un.SourceDelete
 !else
   Delete "$INSTDIR\mingwm10.dll"
+  Delete "$INSTDIR\qt.conf"
 
   Delete "$INSTDIR\Qt3Support4.dll"
   Delete "$INSTDIR\QtAssistantClient4.dll"

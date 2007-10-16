@@ -1,5 +1,7 @@
 2007-10-16  Marcus Brinkmann  <marcus@g10code.de>
 
+	* src/uninst-qt.nsi: Uninstall qt.conf.
+
 	* src/uninst-qt.nsi: Uninstall mingwm10.dll.
 	* src/inst-kleopatra.nsi: Fix slash instead backslash error.
 	* src/uninst-kdelibs.nsi: Remove directories share\config\ui and
