@@ -1,5 +1,15 @@
 2007-10-16  Marcus Brinkmann  <marcus@g10code.de>
 
+	* src/uninst-qt.nsi: Uninstall mingwm10.dll.
+	* src/inst-kleopatra.nsi: Fix slash instead backslash error.
+	* src/uninst-kdelibs.nsi: Remove directories share\config\ui and
+	share\config instead share\ui.  Remove directories
+	share\kde4\services and share\kde4.
+	* src/uninst-pinentry.nsi: Uninstall pinentry-w32.exe and
+	pinentry-gtk-2.exe.
+	* src/uninst-kleopatra.nsi: Uninstall kleopatra.bat.
+	Remove directory share\apps\kleopatra.
+
 	* packages/packages.current: Enable gpgex.
 
 2007-10-15  Marcus Brinkmann  <marcus@g10code.de>
