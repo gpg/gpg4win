@@ -53,7 +53,6 @@ Section "-kdesupport" SEC_kdesupport
   SetOutPath "$INSTDIR"
   File ${prefix}/bin/giflib4.dll
   File ${prefix}/bin/libdbus-1.dll
-  File ${prefix}/bin/libeay32.dll
   File ${prefix}/bin/libexpat.dll
   File ${prefix}/bin/libexpatw.dll
   File ${prefix}/bin/libexslt.dll
@@ -64,7 +63,6 @@ Section "-kdesupport" SEC_kdesupport
   File ${prefix}/bin/pcre.dll
   File ${prefix}/bin/pcrecpp.dll
   File ${prefix}/bin/pcreposix.dll
-  File ${prefix}/bin/ssleay32.dll
 
   SetOutPath "$INSTDIR\etc"
   File ${prefix}/etc/session.conf

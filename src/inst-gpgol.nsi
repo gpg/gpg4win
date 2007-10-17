@@ -23,7 +23,7 @@
 !define prefix ${ipdir}/gpgol-${gpg4win_pkg_gpgol_version}
 
 
-Section "GPGol" SEC_gpgol
+Section "GpgOL" SEC_gpgol
   SetOutPath "$INSTDIR"
 !ifdef SOURCES
   File "${gpg4win_pkg_gpgol}"
@@ -41,7 +41,7 @@ Section "GPGol" SEC_gpgol
   # Register the DLL.
   RegDLL "$INSTDIR\gpgol.dll"
   ifErrors 0 +2
-     MessageBox MB_OK "$(T_GPGol_RegFailed)"
+     MessageBox MB_OK "$(T_GpgOL_RegFailed)"
 
   SetOutPath "$INSTDIR\share\locale\de\LC_MESSAGES"
   File ${prefix}/share/locale/de/LC_MESSAGES/gpgol.mo
@@ -51,8 +51,8 @@ Section "GPGol" SEC_gpgol
 SectionEnd
 
 
-LangString T_GPGol_RegFailed ${LANG_ENGLISH} \
-   "Warning: Registration of the GPGol Outlook pluginfailed."
+LangString T_GpgOL_RegFailed ${LANG_ENGLISH} \
+   "Warning: Registration of the GpgOL Outlook pluginfailed."
 
 LangString DESC_SEC_gpgol ${LANG_ENGLISH} \
    "GnuPG for Outlook"

@@ -1,5 +1,10 @@
 2007-10-17  Werner Koch  <wk@g10code.com>
 
+	* src/inst-kdesupport.nsi: Remove libeay32.dll and ssleay32/dll;
+	they seems not to be necessary and conflict with the GPL anyway.
+
+	* src/inst-gpgol.nsi: s/GPGol/GpgOL/.
+
 	* src/inst-pinentry.nsi: Install native pinentry.
 	* src/Makefile.am: Disable pinnetry-gtk-2 for now.
 	* configure.ac: Make pinentry depend on glib.
