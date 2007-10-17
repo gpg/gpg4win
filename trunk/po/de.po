@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gpg4win 1.1.1-svn417\n"
 "Report-Msgid-Bugs-To: gpg4win-devel@wald.intevation.org\n"
-"POT-Creation-Date: 2007-09-17 16:26+0200\n"
-"PO-Revision-Date: 2007-09-13 00:05+0200\n"
+"POT-Creation-Date: 2007-10-17 13:13+0200\n"
+"PO-Revision-Date: 2007-10-17 13:15+0200\n"
 "Last-Translator: Marcus Brinkmann <mb@g10code.com>\n"
 "Language-Team: German <translation-team-de@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -284,7 +284,7 @@ msgstr ""
 "GnuPG stellt die eigentliche Verschlüsselung sowie die Verwaltung der "
 "Schlüssel bereit."
 
-#: src/inst-gnupg2.nsi:105
+#: src/inst-gnupg2.nsi:106
 msgctxt "DESC_SEC_gnupg2"
 msgid "GNU Privacy Guard with S/MIME support"
 msgstr ""
@@ -349,16 +349,14 @@ msgstr ""
 "ermöglicht, Dateien über das Kontextmenü zu verschlüsseln."
 
 #: src/inst-gpgol.nsi:54
-msgctxt "T_GPGol_RegFailed"
-msgid "Warning: Registration of the GPGol Outlook pluginfailed."
-msgstr "Warnung: Registration des GPGol Outlook Plugin ist fehlgeschlagen."
+msgctxt "T_GpgOL_RegFailed"
+msgid "Warning: Registration of the GpgOL Outlook pluginfailed."
+msgstr "Warnung: Registration des GpgOL Outlook Plugin ist fehlgeschlagen."
 
 #: src/inst-gpgol.nsi:57
 msgctxt "DESC_SEC_gpgol"
 msgid "GnuPG for Outlook"
-msgstr ""
-"GnuPG für Outlook (GPGol) is eine Erweiterung für Outlook 2003, die "
-"verwendet wird um Nachrichten mit OpenPGP zu verschlüsseln."
+msgstr "GnuPG für Outlook (GpgOL) is eine Erweiterung für Outlook 2003, die verwendet wird um Nachrichten mit OpenPGP oder S/MIME zu verschlüsseln."
 
 #: src/inst-man_advanced_de.nsi:39
 msgctxt "DESC_Name_man_advanced_de"

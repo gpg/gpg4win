@@ -45,7 +45,6 @@ Section "-un.kdesupport"
 
   Delete "$INSTDIR\giflib4.dll"
   Delete "$INSTDIR\libdbus-1.dll"
-  Delete "$INSTDIR\libeay32.dll"
   Delete "$INSTDIR\libexpat.dll"
   Delete "$INSTDIR\libexpatw.dll"
   Delete "$INSTDIR\libexslt.dll"
@@ -56,7 +55,11 @@ Section "-un.kdesupport"
   Delete "$INSTDIR\pcre.dll"
   Delete "$INSTDIR\pcrecpp.dll"
   Delete "$INSTDIR\pcreposix.dll"
+
+  # Some test installers installed these files:
+  # fixme: Remove them when releasing 2.0.
   Delete "$INSTDIR\ssleay32.dll"
+  Delete "$INSTDIR\libeay32.dll"
 
   Delete "$INSTDIR\etc\session.conf"
   Delete "$INSTDIR\etc\system.conf"
