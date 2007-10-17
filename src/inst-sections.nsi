@@ -896,6 +896,16 @@ Section "-startmenu"
   no_gpa_menu:
 !endif
 
+!ifdef HAVE_PKG_KLEOPATRA
+    SectionGetFlags ${SEC_kleopatra} $R0 
+    IntOp $R0 $R0 & ${SF_SELECTED} 
+    IntCmp $R0 ${SF_SELECTED} 0 no_kleopatra_menu 
+    CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\Kleopatra.lnk" \
+	"$INSTDIR\kleopatra.bat" \
+        "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_kleopatra)
+  no_kleopatra_menu:
+!endif
+
 !ifdef HAVE_PKG_SYLPHEED_CLAWS
     SectionGetFlags ${SEC_sylpheed} $R0 
     IntOp $R0 $R0 & ${SF_SELECTED} 
@@ -1034,6 +1044,16 @@ Section "-startmenu"
   no_gpa_desktop:
 !endif
 
+!ifdef HAVE_PKG_KLEOPATRA
+    SectionGetFlags ${SEC_kleopatra} $R0 
+    IntOp $R0 $R0 & ${SF_SELECTED}
+    IntCmp $R0 ${SF_SELECTED} 0 no_kleopatra_desktop
+    CreateShortCut "$DESKTOP\Kleopatra.lnk" \
+	"$INSTDIR\kleopatra.bat" \
+        "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_kleopatra)
+  no_kleopatra_desktop:
+!endif
+
 !ifdef HAVE_PKG_SYLPHEED_CLAWS
     SectionGetFlags ${SEC_sylpheed} $R0 
     IntOp $R0 $R0 & ${SF_SELECTED} 
@@ -1148,6 +1168,16 @@ no_desktop:
 	"$INSTDIR\gpa.exe" \
         "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_gpa)
   no_gpa_quicklaunch:
+!endif
+
+!ifdef HAVE_PKG_KLEOPATRA
+    SectionGetFlags ${SEC_kleopatra} $R0 
+    IntOp $R0 $R0 & ${SF_SELECTED} 
+    IntCmp $R0 ${SF_SELECTED} 0 no_kleopatra_quicklaunch
+    CreateShortCut "$QUICKLAUNCH\Kleopatra.lnk" \
+	"$INSTDIR\kleopatra.bat" \
+        "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_kleopatra)
+  no_kleopatra_quicklaunch:
 !endif
 
 !ifdef HAVE_PKG_SYLPHEED_CLAWS
