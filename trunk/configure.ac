@@ -197,7 +197,7 @@ GPG4WIN_SPKG([gnupg], [libiconv bzip2])
 GPG4WIN_SPKG([gnupg2], [libiconv libgcrypt libksba libassuan libgpg-error dnl
                         w32pth zlib bzip2])
 GPG4WIN_SPKG([pthreads-w32])
-GPG4WIN_SPKG([pinentry])
+GPG4WIN_SPKG([pinentry], [glib])
 GPG4WIN_SPKG([gpgol], [gpgme libassuan])
 GPG4WIN_SPKG([gpgex], [libassuan])
 GPG4WIN_SPKG([gpa], [libiconv gettext zlib gtk+ libpng glib gpgme])
