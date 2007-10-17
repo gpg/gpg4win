@@ -80,3 +80,6 @@ SectionEnd
 
 LangString DESC_SEC_kleopatra ${LANG_ENGLISH} \
    "Kleopatra"
+
+LangString DESC_Menu_kleopatra ${LANG_ENGLISH} \
+   "Run the Kleopatra key management tool."

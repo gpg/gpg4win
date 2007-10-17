@@ -73,6 +73,9 @@ Section Uninstall
 !ifdef HAVE_PKG_GPA
   Delete "$DESKTOP\GPA.lnk"
 !endif
+!ifdef HAVE_PKG_KLEOPATRA
+  Delete "$DESKTOP\Kleopatra.lnk"
+!endif
 !ifdef HAVE_PKG_SYLPHEED_CLAWS
   Delete "$DESKTOP\Sylpheed-Claws.lnk"
   Delete "$DESKTOP\Sylpheed-Claws Manual.lnk" \
@@ -105,6 +108,9 @@ Section Uninstall
 !endif
 !ifdef HAVE_PKG_GPA
   Delete "$QUICKLAUNCH\GPA.lnk"
+!endif
+!ifdef HAVE_PKG_KLEOPATRA
+  Delete "$QUICKLAUNCH\Kleopatra.lnk"
 !endif
 !ifdef HAVE_PKG_SYLPHEED_CLAWS
   Delete "$QUICKLAUNCH\Sylpheed-Claws.lnk"
