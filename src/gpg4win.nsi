@@ -33,6 +33,9 @@
 !ifdef HAVE_PKG_KLEOPATRA
 !undef HAVE_PKG_KLEOPATRA
 !endif
+!ifdef HAVE_PKG_GPGEX
+!undef HAVE_PKG_GPGEX
+!endif
 !ifdef HAVE_PKG_KDELIBS
 !undef HAVE_PKG_KDELIBS
 !endif

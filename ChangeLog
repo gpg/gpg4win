@@ -1,3 +1,11 @@
+2007-10-18  Marcus Brinkmann  <marcus@g10code.de>
+
+	* src/g4wihelp.c (read_w32_registry_string): New function.
+	(ENV_HK, ENV_REG): New macros.
+	(path_add, path_remove): New functions.
+	* src/gpg4win.nsi: Remove GpgEX from light installer.
+	* src/installer.nsi (AddToPath, RemoveFromPath): Rewritten.
+
 2007-10-17  Marcus Brinkmann  <marcus@g10code.de>
 
 	* src/inst-kleopatra.nsi: Add DESC_Menu_kleopatra language string.
