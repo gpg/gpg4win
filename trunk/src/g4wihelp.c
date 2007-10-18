@@ -896,3 +896,232 @@ config_fetch_bool (HWND hwndParent, int string_size, char *variables,
   setuservariable (INST_R0, result == 0 ? "0" : "1");
   return;
 }
+
+
+/* Return a string from the Win32 Registry or NULL in case of error.
+   Caller must release the return value.  A NULL for root is an alias
+   for HKEY_CURRENT_USER, HKEY_LOCAL_MACHINE in turn.  */
+char *
+read_w32_registry_string (HKEY root, const char *dir, const char *name)
+{
+  HKEY root_key;
+  HKEY key_handle;
+  DWORD n1, nbytes, type;
+  char *result = NULL;
+
+  root_key = root;
+  if (! root_key)
+    root_key = HKEY_CURRENT_USER;
+
+  if( RegOpenKeyEx( root_key, dir, 0, KEY_READ, &key_handle ) )
+    {
+      if (root)
+	return NULL; /* no need for a RegClose, so return direct */
+      /* It seems to be common practise to fall back to HKLM. */
+      if (RegOpenKeyEx (HKEY_LOCAL_MACHINE, dir, 0, KEY_READ, &key_handle) )
+	return NULL; /* still no need for a RegClose, so return direct */
+    }
+
+  nbytes = 1;
+  if( RegQueryValueEx( key_handle, name, 0, NULL, NULL, &nbytes ) ) {
+    if (root)
+      goto leave;
+    /* Try to fallback to HKLM also vor a missing value.  */
+    RegCloseKey (key_handle);
+    if (RegOpenKeyEx (HKEY_LOCAL_MACHINE, dir, 0, KEY_READ, &key_handle) )
+      return NULL; /* Nope.  */
+    if (RegQueryValueEx( key_handle, name, 0, NULL, NULL, &nbytes))
+      goto leave;
+  }
+
+  result = malloc( (n1=nbytes+1) );
+
+  if( !result )
+    goto leave;
+  if( RegQueryValueEx( key_handle, name, 0, &type, result, &n1 ) ) {
+    free(result); result = NULL;
+    goto leave;
+  }
+  result[nbytes] = 0; /* make sure it is really a string  */
+
+ leave:
+  RegCloseKey( key_handle );
+  return result;
+}
+
+
+#define ENV_HK HKEY_LOCAL_MACHINE
+#define ENV_REG "SYSTEM\\CurrentControlSet\\Control\\" \
+    "Session Manager\\Environment"
+  /* The following setting can be used for a per-user setting.  */
+#if 0
+#define ENV_HK HKEY_CURRENT_USER
+#define ENV_REG "Environment"
+#endif
+
+
+void __declspec(dllexport) 
+path_add (HWND hwndParent, int string_size, char *variables, 
+	  stack_t **stacktop, extra_parameters_t *extra)
+{
+#ifndef PATH_MAX
+#define PATH_MAX 8192
+#endif
+  char dir[PATH_MAX];
+  char *path;
+  char *path_new;
+  int path_new_size;
+  char *comp;
+  const char delims[] = ";";
+  HKEY key_handle = 0;
+
+  g_hwndParent = hwndParent;
+  EXDLL_INIT();
+
+  setuservariable (INST_R0, "0");
+
+  MessageBox (g_hwndParent, "XXX 1", 0, MB_OK);
+
+  /* The expected stack layout: path component.  */
+  if (popstring (dir, sizeof (dir)))
+    return;
+
+  MessageBox (g_hwndParent, "XXX 2", 0, MB_OK);
+
+  path = read_w32_registry_string (ENV_HK, ENV_REG, "Path");
+  if (! path)
+    {
+      MessageBox (g_hwndParent, "No PATH variable found", 0, MB_OK);
+      return;
+    }
+
+  MessageBox (g_hwndParent, "XXX 3", 0, MB_OK);
+
+  /* Old path plus semicolon plus dir plus terminating nul.  */
+  path_new_size = strlen (path) + 1 + strlen (dir) + 1;
+  if (path_new_size > PATH_MAX)
+    {
+      MessageBox (g_hwndParent, "PATH env variable too big", 0, MB_OK);
+      free (path);
+      return;
+    }
+
+  MessageBox (g_hwndParent, "XXX 4", 0, MB_OK);
+
+  path_new = malloc (path_new_size);
+  if (!path_new)
+    {
+      free (path);
+      return;
+    }
+
+  MessageBox (g_hwndParent, "XXX 5", 0, MB_OK);
+
+  strcpy (path_new, path);
+  strcat (path_new, ";");
+  strcat (path_new, dir);
+
+  MessageBox (g_hwndParent, "XXX 6", 0, MB_OK);
+  MessageBox (g_hwndParent, dir, 0, MB_OK);
+  MessageBox (g_hwndParent, "XXX 7", 0, MB_OK);
+
+  /* Check if the directory already exists in the path.  */
+  comp = strtok (path, delims);
+  do
+    {
+      MessageBox (g_hwndParent, comp, 0, MB_OK);
+
+      if (!strcmp (comp, dir))
+	{
+	  free (path);
+	  free (path_new);
+	  return;
+	}
+      comp = strtok (NULL, delims);
+    }
+  while (comp);
+  free (path);
+
+  MessageBox (g_hwndParent, "XXX 8", 0, MB_OK);
+
+  /* Set a key for our CLSID.  */
+  RegCreateKey (ENV_HK, ENV_REG, &key_handle);
+  RegSetValueEx (key_handle, "Path", 0, REG_EXPAND_SZ,
+		 path_new, path_new_size);
+  RegCloseKey (key_handle);
+  free (path_new);
+
+  MessageBox (g_hwndParent, "XXX 9", 0, MB_OK);
+
+  setuservariable (INST_R0, "1");
+}
+
+
+void __declspec(dllexport) 
+path_remove (HWND hwndParent, int string_size, char *variables, 
+	     stack_t **stacktop, extra_parameters_t *extra)
+{
+#ifndef PATH_MAX
+#define PATH_MAX 8192
+#endif
+  char dir[PATH_MAX];
+  char *path;
+  char *path_new;
+  int path_new_size;
+  char *comp;
+  const char delims[] = ";";
+  HKEY key_handle = 0;
+  int changed = 0;
+  int count = 0;
+
+  g_hwndParent = hwndParent;
+  EXDLL_INIT();
+
+  setuservariable (INST_R0, "0");
+
+  /* The expected stack layout: path component.  */
+  if (popstring (dir, sizeof (dir)))
+    return;
+
+  path = read_w32_registry_string (ENV_HK, ENV_REG, "Path");
+  /* Old path plus semicolon plus dir plus terminating nul.  */
+  path_new_size = strlen (path) + 1;
+  path_new = malloc (path_new_size);
+  if (!path_new)
+    {
+      free (path);
+      return;
+    }
+  path_new[0] = '\0';
+
+  /* Compose the new path.  */
+  comp = strtok (path, delims);
+  do
+    {
+      if (strcmp (comp, dir))
+	{
+	  if (count != 0)
+	    strcat (path_new, ";");
+	  strcat (path_new, comp);
+	  count++;
+	}
+      else
+	changed = 1;
+
+      comp = strtok (NULL, delims);
+    }
+  while (comp);
+  free (path);
+
+  if (! changed)
+    return;
+
+  /* Set a key for our CLSID.  */
+  RegCreateKey (ENV_HK, ENV_REG, &key_handle);
+  RegSetValueEx (key_handle, "Path", 0, REG_EXPAND_SZ,
+		 path_new, path_new_size);
+  RegCloseKey (key_handle);
+  free (path_new);
+
+  setuservariable (INST_R0, "1");
+}

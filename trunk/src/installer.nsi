@@ -616,110 +616,26 @@ Function TrimNewlines
 FunctionEnd
 
 
-#
 # AddToPath - Adds the given dir to the search path.
 #        Input - head of the stack
-# (Taken from Kichik's code at the NSIS Wiki)
-#
 Function AddToPath
   Exch $0
-  Push $1
-  Push $2
-  Push $3
- 
-  # Don't add if the path doesn't exist
-  IfFileExists "$0\*.*" "" AddToPath_done
- 
-  ReadEnvStr $1 PATH
-  Push "$1;"
-  Push "$0;"
-  Call StrStr
-  Pop $2
-  StrCmp $2 "" "" AddToPath_done
-  Push "$1;"
-  Push "$0\;"
-  Call StrStr
-  Pop $2
-  StrCmp $2 "" "" AddToPath_done
-  GetFullPathName /SHORT $3 $0
-  Push "$1;"
-  Push "$3;"
-  Call StrStr
-  Pop $2
-  StrCmp $2 "" "" AddToPath_done
-  Push "$1;"
-  Push "$3\;"
-  Call StrStr
-  Pop $2
-  StrCmp $2 "" "" AddToPath_done
- 
-  ReadRegStr $1 ${Regkey_for_Env} "PATH"
-  StrCmp $1 "" AddToPath_NTdoIt
-    Push $1
-    #  We do not need the follwing call
-    #  Call Trim
-    Pop $1
-    StrCpy $0 "$1;$0"
-  AddToPath_NTdoIt:
-    WriteRegExpandStr ${Regkey_for_Env} "PATH" $0
-    SendMessage ${HWND_BROADCAST} ${WM_WININICHANGE} 0 "STR:Environment" /TIMEOUT=5000
- 
-  AddToPath_done:
-    Pop $3
-    Pop $2
-    Pop $1
-    Pop $0
+  g4wihelp::path_add "$0"
+  StrCmp $R5 "0" add_to_path_done
+  SendMessage ${HWND_BROADCAST} ${WM_WININICHANGE} 0 "STR:Environment" /TIMEOUT=5000
+  add_to_path_done:
+  Pop $0
 FunctionEnd
  
-#
 # RemoveFromPath - Remove a given dir from the path
 #     Input: head of the stack
-# (Taken from Kichik's code at the NSIS Wiki)
-# 
 Function un.RemoveFromPath
   Exch $0
-  Push $1
-  Push $2
-  Push $3
-  Push $4
-  Push $5
-  Push $6
- 
-  IntFmt $6 "%c" 26 # DOS EOF
- 
-  ReadRegStr $1 ${Regkey_for_Env} "PATH"
-  StrCpy $5 $1 1 -1 # copy last char
-  StrCmp $5 ";" +2 # if last char != ;
-    StrCpy $1 "$1;" # append ;
-  Push $1
-  Push "$0;"
-  Call un.StrStr # Find `$0;` in $1
-  Pop $2 ; pos of our dir
-  StrCmp $2 "" unRemoveFromPath_done
-    # else, it is in path
-    # $0 - path to add
-    # $1 - path var
-    StrLen $3 "$0;"
-    StrLen $4 $2
-    StrCpy $5 $1 -$4   # $5 is now the part before the path to remove
-    StrCpy $6 $2 "" $3 # $6 is now the part after the path to remove
-    StrCpy $3 $5$6
- 
-    StrCpy $5 $3 1 -1  # copy last char
-    StrCmp $5 ";" 0 +2 # if last char == ;
-      StrCpy $3 $3 -1  # remove last char
- 
-    WriteRegExpandStr ${Regkey_for_Env} "PATH" $3
-    SendMessage ${HWND_BROADCAST} ${WM_WININICHANGE} 0 "STR:Environment" /TIMEOUT=5000
- 
-  unRemoveFromPath_done:
-    Pop $6
-    Pop $5
-    Pop $4
-    Pop $3
-    Pop $2
-    Pop $1
-    Pop $0
+  g4wihelp::path_remove "$0"
+  StrCmp $R5 "0" remove_from_path_done
+  SendMessage ${HWND_BROADCAST} ${WM_WININICHANGE} 0 "STR:Environment" /TIMEOUT=5000
+  remove_from_path_done:
+  Pop $0
 FunctionEnd
  
  
