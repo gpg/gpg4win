@@ -1,3 +1,7 @@
+2007-10-22  Werner Koch  <wk@g10code.com>
+
+	* packages/packages.current: Updated gpgol.
+
 2007-10-18  Marcus Brinkmann  <marcus@g10code.de>
 
 	* src/g4wihelp.c (read_w32_registry_string): New function.
