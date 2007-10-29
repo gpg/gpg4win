@@ -68,6 +68,7 @@ define SETVARS
 	pkgmkargs_inst="$(call GETVAR,gpg4win_pkg_$(1)_make_args_inst)";\
 	export PKG_CONFIG="$(tsdir)/src/pkg-config";			\
 	export PKG_CONFIG_PATH="$(idir)/lib/pkgconfig";			\
+	export PATH="$(idir)/bin:$${PATH}";				\
 	export SYSROOT="$(idir)";					\
 	export CONFIG_SITE="$(tsdir)/src/config.site"
 endef
@@ -125,7 +126,7 @@ stamps/stamp-$(1)-02-configure: stamps/stamp-$(1)-01-patch
 	($(call SETVARS,$(1));				\
 	 mkdir "$$$${pkgbdir}";				\
 	  cd "$$$${pkgbdir}";				\
-	 eval "$$$${pkgsdir}/configure"			\
+	 eval "../$$$${pkg_version}/configure"		\
 		--prefix="$$$${pkgidir}"		\
 		--host=$(host_cpu)-$(host_os)		\
 		--build=$(build_cpu)-$(build_os)	\

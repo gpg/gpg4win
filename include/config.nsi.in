@@ -115,6 +115,10 @@
 !define gpg4win_pkg_sylpheed_claws @gpg4win_pkg_sylpheed_claws@
 !define gpg4win_pkg_sylpheed_claws_version @gpg4win_pkg_sylpheed_claws_version@
 
+@HAVE_PKG_LIBETPAN@
+!define gpg4win_pkg_libetpan @gpg4win_pkg_libetpan@
+!define gpg4win_pkg_libetpan_version @gpg4win_pkg_libetpan_version@
+
 @HAVE_PKG_CLAWS_MAIL@
 !define gpg4win_pkg_claws_mail @gpg4win_pkg_claws_mail@
 !define gpg4win_pkg_claws_mail_version @gpg4win_pkg_claws_mail_version@
