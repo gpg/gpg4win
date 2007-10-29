@@ -26,6 +26,7 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi config.site \
         inst-gpg4win.nsi	   uninst-gpg4win.nsi	      \
         inst-atk.nsi               uninst-atk.nsi	      \
         inst-cairo.nsi		   uninst-cairo.nsi	      \
+        inst-libetpan.nsi	   uninst-libetpan.nsi        \
         inst-claws-mail.nsi	   uninst-claws-mail.nsi      \
         inst-crypt.nsi		   uninst-crypt.nsi	      \
         inst-dirmngr.nsi	   uninst-dirmngr.nsi	      \
@@ -73,7 +74,7 @@ CLEANFILES = g4wihelp.dll versioninfo.txt README.en.txt README.de.txt \
 
 # Supported source packages.
 gpg4win_spkgs = glib gnupg libgpg-error gpgme gpgol gpgex \
-		gpa winpt sylpheed-claws \
+		gpa winpt sylpheed-claws libetpan \
 	        claws-mail gnupg2 pinentry libassuan libksba \
 		libgcrypt dirmngr w32pth
 
@@ -197,7 +198,11 @@ gpg4win_pkg_sylpheed_claws_configure = --silent \
   --disable-mathml-viewer-plugin --disable-clamav-plugin \
   --disable-spamassassin-plugin
 
-gpg4win_pkg_claws_mail_configure = --silent \
+# The CFLAGS are needed to find pthread-w32.
+gpg4win_pkg_libetpan_configure = \
+  CPPFLAGS=\"-I$(idir)/include\" LIBS=\"-L$(idir)/lib\"
+
+gpg4win_pkg_claws_mail_configure = \
   --with-lib-prefix=$(idir) --with-libiconv-prefix=$(idir) \
   --with-gpg-error-prefix=$(idir) --with-gpgme-prefix=$(idir) \
   --with-config-dir="Claws-mail" --disable-pthread \

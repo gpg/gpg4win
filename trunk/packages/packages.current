@@ -65,6 +65,15 @@ file regex-0.12-src.zip
 chk  b9faae10efae552f23c213891a3ed8187cb7d017
 
 #
+# libetpan for claws
+#
+
+server ftp://ftp.g10code.com/g10code/scratch
+
+file libetpan-0.52-dev-20071029.tar.gz
+chk  bf01a5754831f833745ee8812463a327b4be060b
+
+#
 # Claws
 #
 # (Kept on our own mirror due to Sourceforge peculiarities.)
