@@ -243,14 +243,14 @@ server ftp://ftp.gnupg.org/gcrypt
 file gnupg/gnupg-1.4.7.tar.bz2
 chk  22149105845c79068771837c8deb7d5ba0854927
 
-file libgpg-error/libgpg-error-1.5.tar.bz2
-chk  1f83d9af8e8ed3bcbf3a5e9018db257dc6336655
+file libgpg-error/libgpg-error-1.6.tar.bz2
+chk  2f387d0c34dd55eaf3b5f3c2570e9033eb540bc3
 
 file libksba/libksba-1.0.2.tar.bz2
 chk  4d2c4a99c313b799590bf3fc223179c454e268b5
 
-file alpha/libgcrypt/libgcrypt-1.3.0.tar.bz2
-chk  38361925fef99715eccb8a1f73110ce2f3c3896a
+file alpha/libgcrypt/libgcrypt-1.3.1.tar.bz2
+chk  eea6aea27d7e12297630de6b4fcba1b486c809c8
 
 file pinentry/pinentry-0.7.3.tar.gz
 chk  557b886bc7a7030fd185fbc085703ef1ed304db8
