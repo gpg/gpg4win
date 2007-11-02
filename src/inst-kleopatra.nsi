@@ -35,11 +35,11 @@ Section "Kleopatra" SEC_kleopatra
   SetOutPath "$INSTDIR"
   File kleopatra.bat
 
-  File ${prefix}/lib/libgpgme++-glib.dll
-  File ${prefix}/lib/libgpgme++-qt.dll
-  File ${prefix}/lib/libgpgme++.dll
+  File ${prefix}/bin/libgpgme++-glib.dll
+  File ${prefix}/bin/libgpgme++-qt.dll
+  File ${prefix}/bin/libgpgme++.dll
+  File ${prefix}/bin/libqgpgme.dll
   File ${prefix}/lib/libkleo.dll
-  File ${prefix}/lib/libqgpgme.dll
 
   SetOutPath "$INSTDIR\lib\kde4"
 

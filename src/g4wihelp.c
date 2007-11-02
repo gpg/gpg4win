@@ -980,13 +980,13 @@ path_add (HWND hwndParent, int string_size, char *variables,
 
   setuservariable (INST_R0, "0");
 
-  MessageBox (g_hwndParent, "XXX 1", 0, MB_OK);
+/*   MessageBox (g_hwndParent, "XXX 1", 0, MB_OK); */
 
   /* The expected stack layout: path component.  */
   if (popstring (dir, sizeof (dir)))
     return;
 
-  MessageBox (g_hwndParent, "XXX 2", 0, MB_OK);
+/*   MessageBox (g_hwndParent, "XXX 2", 0, MB_OK); */
 
   path = read_w32_registry_string (ENV_HK, ENV_REG, "Path");
   if (! path)
@@ -995,7 +995,7 @@ path_add (HWND hwndParent, int string_size, char *variables,
       return;
     }
 
-  MessageBox (g_hwndParent, "XXX 3", 0, MB_OK);
+/*   MessageBox (g_hwndParent, "XXX 3", 0, MB_OK); */
 
   /* Old path plus semicolon plus dir plus terminating nul.  */
   path_new_size = strlen (path) + 1 + strlen (dir) + 1;
@@ -1006,7 +1006,7 @@ path_add (HWND hwndParent, int string_size, char *variables,
       return;
     }
 
-  MessageBox (g_hwndParent, "XXX 4", 0, MB_OK);
+/*   MessageBox (g_hwndParent, "XXX 4", 0, MB_OK); */
 
   path_new = malloc (path_new_size);
   if (!path_new)
@@ -1015,21 +1015,21 @@ path_add (HWND hwndParent, int string_size, char *variables,
       return;
     }
 
-  MessageBox (g_hwndParent, "XXX 5", 0, MB_OK);
+/*   MessageBox (g_hwndParent, "XXX 5", 0, MB_OK); */
 
   strcpy (path_new, path);
   strcat (path_new, ";");
   strcat (path_new, dir);
 
-  MessageBox (g_hwndParent, "XXX 6", 0, MB_OK);
-  MessageBox (g_hwndParent, dir, 0, MB_OK);
-  MessageBox (g_hwndParent, "XXX 7", 0, MB_OK);
+/*   MessageBox (g_hwndParent, "XXX 6", 0, MB_OK); */
+/*   MessageBox (g_hwndParent, dir, 0, MB_OK); */
+/*   MessageBox (g_hwndParent, "XXX 7", 0, MB_OK); */
 
   /* Check if the directory already exists in the path.  */
   comp = strtok (path, delims);
   do
     {
-      MessageBox (g_hwndParent, comp, 0, MB_OK);
+/*       MessageBox (g_hwndParent, comp, 0, MB_OK); */
 
       if (!strcmp (comp, dir))
 	{
@@ -1042,7 +1042,7 @@ path_add (HWND hwndParent, int string_size, char *variables,
   while (comp);
   free (path);
 
-  MessageBox (g_hwndParent, "XXX 8", 0, MB_OK);
+/*   MessageBox (g_hwndParent, "XXX 8", 0, MB_OK); */
 
   /* Set a key for our CLSID.  */
   RegCreateKey (ENV_HK, ENV_REG, &key_handle);
@@ -1051,7 +1051,7 @@ path_add (HWND hwndParent, int string_size, char *variables,
   RegCloseKey (key_handle);
   free (path_new);
 
-  MessageBox (g_hwndParent, "XXX 9", 0, MB_OK);
+/*   MessageBox (g_hwndParent, "XXX 9", 0, MB_OK); */
 
   setuservariable (INST_R0, "1");
 }
