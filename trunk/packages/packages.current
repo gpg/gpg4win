@@ -224,8 +224,8 @@ chk  f8cf87ed746e1588a6dc9fbdf2a72811b16cc233
 
 server ftp://ftp.g10code.com/g10code/scratch
 
-file gpgex-0.0.0-svn35.tar.bz2
-chk  971dab9e13a27c47ddbd3ef83fb78bdeeb7ea11e
+file gpgex-0.0.0-svn37.tar.bz2
+chk  fef1f4579541137855a2c36737b9936a2fbaec76
 
 #
 # Pth emulation
@@ -340,26 +340,26 @@ chk cefb58affdf099069d3b4e14029b4d26abb03ae1
 
 server ftp://ftp.kdab.net/pub/gpg4win
 
-name kdelibs-20071009-bin.zip
-file kdelibs-for-kleo-20071009-bin.zip
-chk d0c5f45d84535303b76456df81d9bb5fe937e0ec
+name kdelibs-20071030-bin.zip
+file kdelibs-for-kleo-20071030-bin.zip
+chk 4151b43b61b7e218e7ecaa54943c8c5ab812f7db 
 
-name kdelibs-20071009-lib.zip
-file kdelibs-for-kleo-20071009-dev.zip
-chk 4894ea9b0175b83d956d9d9998d4db247d49ae13
+name kdelibs-20071030-lib.zip
+file kdelibs-for-kleo-20071030-dev.zip
+chk 13e79e3575675e02f74b782f5433c8efa7d918d2
 
-name kdelibs-20071009-src.zip
+name kdelibs-20071030-src.zip
 # FIXME: This is very wrong.  It's not a zip file and does not contain
 # all the sources.
 file kdelibs-svn713936.tar.bz2
-chk 7c2b10819ed4eb1c17e7b5076b9e494ad8bdddbb
+chk 312e5a68c27d693b16b0a703b4fe849301cf8389
 
 # Kleopatra
 
 server ftp://ftp.kdab.net/pub/gpg4win
 
-name kleopatra-20071016-bin.zip
-file kleo-uiserver-only-20071016-bin.zip
+name kleopatra-20071031-bin.zip
+file kleo-uiserver-only-20071031-bin.zip
 # FIXME: This is totally wrong.  We don't have a source package!
-link kleopatra-20071016-src.zip
-chk a4cdfc8b58d7eb43dc9299e899f9af6f0364e9f6
+link kleopatra-20071031-src.zip
+chk d166fdd8a1dd91213b6c95a6c7296d991ebb9be7
