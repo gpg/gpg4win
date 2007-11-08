@@ -30,8 +30,16 @@ Section "-un.gpgex"
   Call un.SourceDelete
 !else
 
+  Delete "$INSTDIR\share\doc\gpgex\gpgex-en.html"
+  Delete "$INSTDIR\share\doc\gpgex\gpgex-de.html"
+  RMDir "$INSTDIR\share\doc\gpgex"
+  RMDir "$INSTDIR\share\doc"
+
   Delete "$INSTDIR\share\locale\de\LC_MESSAGES\gpgex.mo"
   RMDir "$INSTDIR\share\locale\de\LC_MESSAGES"
+  RMDir "$INSTDIR\share\locale\de"
+  RMDir "$INSTDIR\share\locale"
+  RMDir "$INSTDIR\share"
 
   UnRegDLL "$INSTDIR\gpgex.dll"
 
