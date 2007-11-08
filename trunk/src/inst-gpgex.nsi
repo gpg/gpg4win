@@ -46,6 +46,9 @@ Section "GpgEX" SEC_gpgex
   SetOutPath "$INSTDIR\share\locale\de\LC_MESSAGES"
   File ${prefix}/share/locale/de/LC_MESSAGES/gpgex.mo
 
+  SetOutPath "$INSTDIR\share\doc\gpgex"
+  File ${prefix}/share/doc/gpgex/gpgex-en.html
+  File ${prefix}/share/doc/gpgex/gpgex-de.html
 
 !endif
 SectionEnd
