@@ -1,4 +1,4 @@
-# packages.current - list of current packages for use with gpg4win -*- sh -*-
+1;1609;0c# packages.current - list of current packages for use with gpg4win -*- sh -*-
 #
 # The download script processes the statements here to
 # actually download the packages.  The syntax is trivial:
@@ -358,8 +358,8 @@ chk  7c2b10819ed4eb1c17e7b5076b9e494ad8bdddbb
 
 server ftp://ftp.kdab.net/pub/gpg4win
 
-name kleopatra-20071109-bin.zip
-file kleo-uiserver-only-20071109-bin.zip
+name kleopatra-20071112-bin.zip
+file kleo-uiserver-only-20071112-bin.zip
 # FIXME: This is totally wrong.  We don't have a source package!
-link kleopatra-20071107-src.zip
-chk 3d39ce0ce5e26b1a73c98aae42d38a7fc08c43dd
+link kleopatra-20071112-src.zip
+chk  d5463a417a19f26fbdbe8dbc8b7bb1823c39a94a
