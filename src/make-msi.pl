@@ -39,11 +39,8 @@ use strict;
 
 # TODO:
 #
-# UpgradeCode + table
-# Overwrite try files (gpgol, etc)
-# Register DLLs
-# Register services
-# Menu, shortcut, desktop entries
+# DirMngr config files/cache directory?  service start fails!!!
+# desktop and quick launch entries, but optional (also startmenu optional)
 
 # The list of all enabled packages.
 @::pkgs = ();
@@ -57,6 +54,9 @@ use strict;
 # A hash which maps frobbed package names to a hash of frobbed package
 # names on which they depend.
 %::deps = ();
+# A hash which contains one key for each file that wants a shortcut in the
+# canonical places (start menu, desktop, quick launch).
+%::shortcuts = ();
 
 $::INSTDIR = 'GnuPG';
 $::name = 'GnuPG for Windows';
@@ -197,6 +197,37 @@ sub get_deps
 }
 
 
+sub get_shortcuts
+{
+    my %shortcuts = ();
+
+    # Pending line.
+    my $line;
+
+    # FIXME: Check if file exists.
+    open (FILE, "<inst-sections.nsi") or return;
+    while (<FILE>)
+    {
+	# Combine multiple lines connected with backslashes.
+	$line = $line . $_;
+	if ($line =~ m/^(.*)\\\s*\r?\n$/)
+	{
+	    $line = $1 . ' ';
+	    next;
+	}
+	$_ = $line;
+	$line = '';
+
+	if (m,^\s*CreateShortCut\s+\"\$SMPROGRAMS\\\$STARTMENU_FOLDER\\[^.]+\.lnk\"\s+\"\$INSTDIR\\([^"]+)\",)
+	{
+	    $shortcuts{$1} = 1;
+	}
+    }
+    close (FILE);
+    %::shortcuts = %shortcuts;
+}
+
+
 sub collect_all
 {
   # Input file is $(top_srcdir)/include/config.nsi
@@ -293,10 +324,37 @@ sub collect_all
 	  {
 	      $dir = $1;
 	  }
-	  elsif (m,^\s*File\s+"?\$\{prefix\}(\S+)/([^/"\s]+)"?\s*\r?\n$,)
+	  elsif (m,^\s*File\s+"?\$\{(prefix|BUILD_DIR)\}(?:/(\S*))?/([^/"\s]+)"?\s*\r?\n$,)
 	  {
-	      my $source = "${prefix}$1/$2";
+	      my $source = $3;
+
+	      $source = "$2/$source" if defined $2;
+	      $source = "${prefix}/$source" if $1 eq 'prefix';
+
+	      push @files, { source => $source, dir => $dir, target => $3 };
+	      push @::sources, $source;
+	  }
+	  elsif (m,^\s*File\s+"?\$\{BUILD_DIR\}(\S+)/([^/"\s]+)"?\s*\r?\n$,)
+	  {
+	      my $source = $2;
+	      $source = "$1/$source" if ($1 ne '');
 	      push @files, { source => $source, dir => $dir, target => $2 };
+	      push @::sources, $source;
+	  }
+	  elsif (m,^\s*File\s+/oname=(\S+)\s+"?\$\{(prefix|BUILD_DIR)\}/([^"\s]+)"?\s*\r?\n$,)
+	  {
+	      my $target = $1;
+	      my $source = $3;
+
+	      $source = "${prefix}/$source" if $2 eq 'prefix';
+
+	      # Temp files are due to overwrite attempts, which are
+	      # handled automatically by the Windows Installer.
+	      # Ignore them here.
+	      next if $target =~ m/\.tmp$/;
+
+	      push @files, { source => $source,
+			     dir => $dir, target => $target };
 	      push @::sources, $source;
 	  }
 	  elsif (m,^\s*WriteRegStr\s+(\S+)\s+"([^"]+)"\s+"([^"]+)"\s+"?([^"]+)"?\s*\r?\n$,)
@@ -392,7 +450,112 @@ sub dump_all
 	    print ' ' x $::level
 		. "  <File Id='f_$pkg->{frobbed_name}_$fileidx' Name='"
 		. $file->{target} . "' Source='" . $file->{source} . "'"
-		. " DefaultLanguage='1033'/>\n";
+		. " DefaultLanguage='1033'>\n";
+
+	    # EXCEPTIONS:
+	    if ($targetfull eq 'gpgol.dll')
+	    {
+		print ' ' x $::level
+		    . "    <Class Id='{42D30988-1A3A-11DA-C687-000D6080E735}' "
+		    . "Context='InprocServer32' Description='GpgOL - The "
+		    . "GnuPG Outlook Plugin' ThreadingModel='neutral'/>\n";
+	    }
+	    if ($targetfull eq 'gpgex.dll')
+	    {
+		print ' ' x $::level
+		    . "    <Class Id='{CCD955E4-5C16-4A33-AFDA-A8947A94946B}' "
+		    . "Context='InprocServer32' Description='GpgEX' "
+		    . "ThreadingModel='apartment'/>\n";
+	    }
+	    elsif ($targetfull eq 'gpgee.dll')
+	    {
+		print STDERR "ERR: run heat.exe on gpgee.dll and add info\n";
+		exit 1;
+	    }
+
+	    # Create shortcuts.
+	    if (defined $::shortcuts{$targetfull})
+	    {
+		print ' ' x $::level
+		    . "    <Shortcut Id='sm_$pkg->{frobbed_name}_$fileidx' "
+		    . "Directory='ProgramMenuDir' Name='$file->{target}'/>\n";
+
+#		print ' ' x $::level
+#                   . "    <Shortcut Id='sm_$pkg->{frobbed_name}_$fileidx' "
+#		    . "Directory='DesktopFolder' Name='$file->{target}'/>\n";
+	    }
+
+	    print ' ' x $::level
+		. "  </File>\n";
+
+	    if (defined $::shortcuts{$targetfull})
+	    {
+		# http://www.mail-archive.com/wix-users@lists.sourceforge.net/msg02746.html
+		# -sice:ICE64
+		print ' ' x $::level
+		    . "    <RemoveFolder Id='rsm_$pkg->{frobbed_name}_$fileidx' "
+		    . "Directory='ProgramMenuDir' On='uninstall'/>\n";
+	    }
+
+	    # EXCEPTIONS:
+	    # We use $targetfull because there is also a gpg.exe in pub\.
+	    if ($targetfull eq 'gpg.exe')
+	    {
+		print ' ' x $::level
+		    . "  <Environment Id='env_path' Name='PATH' Action='set' "
+		    . "System='yes' Part='last' Value='[INSTDIR]pub'/>\n";
+	    }
+	    elsif ($targetfull eq 'gpgol.dll')
+	    {
+		print ' ' x $::level
+		    . "  <RegistryValue Root='HKLM' Key='Software\\"
+		    . "Microsoft\\Exchange\\Client\\Extensions' "
+		    . "Name='GpgOL' "
+		    . "Value='4.0;[!gpgol.dll];1;11000111111100;11111101' "
+		    . "Type='string' Action='write'/>\n";
+		print ' ' x $::level
+		    . "  <RegistryValue Root='HKLM' Key='Software\\"
+		    . "Microsoft\\Exchange\\Client\\Extensions' "
+		    . "Name='Outlook Setup Extension' "
+		    . "Value='4.0;Outxxx.dll;7;000000000000000;0000000000;OutXXX' "
+		    . "Type='string' Action='write'/>\n";
+	    }
+	    elsif ($targetfull eq 'gpgex.dll')
+	    {
+		print ' ' x $::level
+		    . "  <ProgId Id='*'/>\n";
+		print ' ' x $::level
+		    . "  <ProgId Id='Directory'/>\n";
+		print ' ' x $::level
+		    . "  <RegistryValue Root='HKCR' "
+		    . "Key='*\\ShellEx\\ContextMenuHandlers\\GpgEX' "
+		    . "Value='{CCD955E4-5C16-4A33-AFDA-A8947A94946B}' "
+		    . "Type='string' Action='write'/>\n";
+		print ' ' x $::level
+		    . "  <RegistryValue Root='HKCR' "
+		    . "Key='Directory\\ShellEx\\ContextMenuHandlers\\GpgEX' "
+		    . "Value='{CCD955E4-5C16-4A33-AFDA-A8947A94946B}' "
+		    . "Type='string' Action='write'/>\n";
+	    }
+	    elsif ($targetfull eq 'gpgee.dll')
+	    {
+		print STDERR "ERR: run heat.exe on gpgee.dll and add info\n";
+		exit 1;
+	    }
+	    elsif ($targetfull eq 'dirmngr.exe')
+	    {
+		print ' ' x $::level
+		    . "  <ServiceInstall Id='s_dirmngr' "
+		    . "DisplayName='Directory Manager' "
+		    . "Name='DirMngr' ErrorControl='normal' Start='auto' "
+		    . "Type='ownProcess' Vital='yes'/>\n";
+
+		print ' ' x $::level
+		    . "  <ServiceControl Id='s_dirmngr_ctrl' "
+		    . "Name='DirMngr' Start='install' Stop='uninstall' "
+		    . "Remove='uninstall'/>\n";
+	    }
+
 	    print ' ' x $::level
 		. "</Component>\n";
 	    $fileidx++;
@@ -410,7 +573,7 @@ sub dump_all
 		. "<Component Id='c_$pkg->{frobbed_name}_r_$regidx' Guid='"
 		. get_guid ($target) . "'>\n";
 	    print ' ' x $::level
-		. "  <Registry Id='r_$pkg->{frobbed_name}_$regidx' Root='"
+		. "  <RegistryValue Id='r_$pkg->{frobbed_name}_$regidx' Root='"
 		. $reg->{root} . "' Key='" . $reg->{key} . "' Name='"
 		. $reg->{name} . "' Action='write' Type='" . $reg->{type}
 		. "' Value='" . $reg->{value} . "'/>\n";
@@ -505,15 +668,18 @@ sub dump_all2
 # FIXME: Use Vital for all file attributes?
 fetch_guids ();
 collect_all ();
-get_deps();
+get_deps ();
+get_shortcuts ();
 
 $::product_id = get_guid ("/PRODUCT/$::config{_BUILD_FILEVERSION}");
+$::upgrade_code = get_guid ("/UPGRADE/1");
 
 print <<EOF;
 <?xml version='1.0'?>
 <Wix xmlns='http://schemas.microsoft.com/wix/2006/wi'>
   <Product Name='Gpg4win'
            Id='$::product_id'
+           UpgradeCode='$::upgrade_code'
            Language='1033'
            Version='$::config{_BUILD_FILEVERSION}'
            Manufacturer='g10 Code GmbH'>
@@ -523,6 +689,16 @@ print <<EOF;
              InstallerVersion='200'
              InstallPrivileges='elevated'
              Manufacturer='g10 Code GmbH'/>
+
+    <Upgrade Id='$::upgrade_code'>
+      <UpgradeVersion Property='UPGRADEPROP'
+                      IncludeMaximum='no'
+                      Maximum='$::config{_BUILD_FILEVERSION}'/>
+    </Upgrade>
+
+    <InstallExecuteSequence>
+      <RemoveExistingProducts After='InstallFinalize' />
+    </InstallExecuteSequence>
 
     <Condition
      Message="You need to be an administrator to install this product.">
@@ -552,13 +728,19 @@ print <<EOF;
       </Directory>
 EOF
 
+if (scalar keys %::shortcuts)
+{
+    print <<EOF;
+      <Directory Id='ProgramMenuFolder' Name='PMenu'>
+        <Directory Id='ProgramMenuDir' Name='$::name'/>
+      </Directory>
+EOF
+}
+
 #print <<EOF;
-#      <Directory Id='ProgramMenuFolder' Name='PMenu'>
-#        <Directory Id='ProgramMenuDir' Name='$::name'/>
-#      </Directory>
-#
 #      <Directory Id="DesktopFolder" Name="Desktop"/>
 #EOF
+
 
 print <<EOF;
     </Directory>
