@@ -2,6 +2,7 @@
 c98dadcc-b796-41cf-aff2-bfa1706a5a6f /PRODUCT/1.9.0.581
 fb54db39-2456-4fcc-9550-2790db663015 /REGISTRY/HKLM/Software\GNU\GnuPG/Install Directory
 ad23691b-1734-4dec-b91a-d4ff286190ea /REGISTRY/HKLM/Software\GNU\GnuPG/gpgProgram
+e0807a2f-4e70-48f8-b047-c5d3e219c3e7 /UPGRADE/1
 e3b715b2-757f-4908-a3bf-2bbf7d298b4d PTD.dll
 c3ac0e08-d6df-402c-a688-6ed9c1882c09 Qt3Support4.dll
 5dfc6d83-0ac3-4e41-bad9-dd3e1b478357 QtAssistantClient4.dll
@@ -73,6 +74,7 @@ a44e024e-d7be-41af-aef1-a71ac0fa156f intl.dll
 996ad039-3d20-4d59-9738-61b37c935d73 jpegexiforient.exe
 cc503b23-d91a-4a62-b718-d3d8421ab7b4 jpegtran.exe
 02193762-114d-4a94-933f-63fe75eb7cad kcmdwrapper.exe
+92c55686-77ac-4be1-9c11-b4b29ae221ee kleopatra.bat
 cd859306-3fdf-4b82-a658-7311ed8c9ef3 lib\gtk-2.0\2.10.0\engines\libpixmap.dll
 fa4cf290-a03d-4c1b-959f-ff817038ba70 lib\gtk-2.0\2.10.0\engines\libwimp.dll
 9d1e8259-486a-4d68-b4f0-3f872484de74 lib\gtk-2.0\2.10.0\immodules\im-am-et.dll
@@ -146,6 +148,7 @@ c6c25e5d-3c93-4b25-8500-438e6e54edc7 pcregrep.exe
 d2d12f16-ea10-4602-8a11-11c0cd0c532b pcreposix.dll
 61a687c1-323b-4259-9253-cabc98fe5436 pinentry-gtk-2.exe
 def76dfd-df61-475b-b804-28ab536dae1a pinentry-w32.exe
+9b2b5969-951e-4c1e-8314-fbf75ce3cbf8 pinentry.exe
 2f5d42e7-1de0-434b-884b-6f7752438aea plugins\accessible\qtaccessiblecompatwidgets4.dll
 9c507371-c6a9-436e-a392-735bf5cabfbc plugins\accessible\qtaccessiblewidgets4.dll
 6be23045-c2f9-4794-a023-2ec27b0c1883 plugins\codecs\qcncodecs4.dll
@@ -169,6 +172,13 @@ a3323831-3e8f-4fce-a799-a82deb19a65f png2pnm.exe
 4ebf7e3a-b493-4aba-9e85-6e35d7acf82d pngtest.exe
 a6fe5108-2c72-4f79-85d6-26d44fa26bfa pnm2png.exe
 a6244378-a28a-488b-a5a4-ed87f89a1b84 pthreadGC2.dll
+45126bd1-8ede-4997-99b5-1c6cdba3affd pub\gpa.exe
+36b88ab6-3b92-4870-acb8-f3fc8e7aa20b pub\gpg-connect-agent.exe
+c5d41ce6-542e-4509-80cb-6fc805aa4a44 pub\gpg.exe
+5cc63041-4789-4f74-999b-07cc31b32c80 pub\gpg2.exe
+f24f9221-f347-4435-b818-4c3473d8f4ed pub\gpgsm.exe
+0762e4a3-a292-4d69-a0c9-34fc9747adef pub\gpgsplit.exe
+826eb8d2-14f1-44ff-8fd0-29f891fafa0c pub\gpgv.exe
 b5303e90-698c-4823-b982-32bfd2b761b4 rdjpgcom.exe
 22c41f80-e04d-4ad9-a18f-65a74df05b89 rpng-win.exe
 66c7ad35-6e11-40ed-a74d-2a6c4fb502b1 rpng2-win.exe
