@@ -280,9 +280,11 @@ endef
 
 # To make shure that we link against the static versions we need
 # remove the import libs from regex
-define gpg4win_pkg_regex_post_install
-(cd $$$${pkgidir}/lib && rm libregex.dll.a libregex.lib)
-endef
+# FIXME: We need to shared version or libtool refuses to build the
+# claws plugin.
+#define gpg4win_pkg_regex_post_install
+#(cd $$$${pkgidir}/lib && rm libregex.dll.a libregex.lib)
+#endef
 
 # We need to fix the prefix in the various packages using pkgconfig,
 # or we can't substitute it properly in our pkg-config wrapper.
