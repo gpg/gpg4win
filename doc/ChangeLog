@@ -1,3 +1,10 @@
+2007-11-15  Werner Koch  <wk@g10code.com>
+
+	* manual/einsteiger.tex (section*{Impressum}): Remove invariant
+	section and updated notices.
+	* manual/durchblicker.tex (section*{Impressum}): Ditto.
+	* manual/novices.tex (section*{Imprint}): Ditto.
+
 2007-10-05  Bernhard Reiter <bernhard.reiter@intevation.de>
 
 	* website/Kurzstudie-Nachhaltige-FS-Beispiel-Gpg4win.htm4:
