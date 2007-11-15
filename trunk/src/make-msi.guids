@@ -1,5 +1,6 @@
 # This is an automatically generated file.  DO NOT EDIT.
 c98dadcc-b796-41cf-aff2-bfa1706a5a6f /PRODUCT/1.9.0.581
+06b9c50c-352a-4fe2-9f47-4f6348d9dda4 /PRODUCT/1.9.0.587
 fb54db39-2456-4fcc-9550-2790db663015 /REGISTRY/HKLM/Software\GNU\GnuPG/Install Directory
 ad23691b-1734-4dec-b91a-d4ff286190ea /REGISTRY/HKLM/Software\GNU\GnuPG/gpgProgram
 e0807a2f-4e70-48f8-b047-c5d3e219c3e7 /UPGRADE/1
@@ -25,6 +26,8 @@ be9b9b72-a574-429c-83b3-ad463852c930 VisualPng.exe
 9fdec388-8c88-402c-9272-bc77ea9e09f7 bin\kleopatra.exe
 78f631d6-9fb4-4b16-88db-34256222aef4 charset.dll
 2a6c061a-c8df-4756-b075-f3b5d386b6a9 cjpeg.exe
+4c4e070f-6ca6-49b3-9ff5-aae36352e909 claws-mail-manual.pdf
+e727cf5b-9485-4b5c-b54d-5a0866082b03 claws-mail.exe
 460d777c-6ce0-48f3-90ac-d260c9dcbb3e dbus-launch.exe
 ee21a9ad-8d11-470d-8478-b89d19764248 dbus-monitor.exe
 90cc13c3-d94c-44e5-bf0f-bcde6b7105ae dbus-send.exe
@@ -75,6 +78,13 @@ a44e024e-d7be-41af-aef1-a71ac0fa156f intl.dll
 cc503b23-d91a-4a62-b718-d3d8421ab7b4 jpegtran.exe
 02193762-114d-4a94-933f-63fe75eb7cad kcmdwrapper.exe
 92c55686-77ac-4be1-9c11-b4b29ae221ee kleopatra.bat
+30e04a1f-e9d3-4e1c-bfa6-404dc4e7be1d lib\claws-mail\plugins\pgpcore.dll
+6094a185-ac8e-4acb-808f-5112d1c67d84 lib\claws-mail\plugins\pgpinline.deps
+5e4270af-56f7-4dd6-a169-69d0bf9b8885 lib\claws-mail\plugins\pgpinline.dll
+c433f133-8096-4671-be0c-1dafe038341a lib\claws-mail\plugins\pgpmime.deps
+18bae9e2-bd16-4805-b6c1-bdd8235769c0 lib\claws-mail\plugins\pgpmime.dll
+3114c12a-0e31-4101-a518-3682cd180a99 lib\claws-mail\plugins\smime.deps
+01d05e5f-dabd-4e0e-92c1-26daa087ea56 lib\claws-mail\plugins\smime.dll
 cd859306-3fdf-4b82-a658-7311ed8c9ef3 lib\gtk-2.0\2.10.0\engines\libpixmap.dll
 fa4cf290-a03d-4c1b-959f-ff817038ba70 lib\gtk-2.0\2.10.0\engines\libwimp.dll
 9d1e8259-486a-4d68-b4f0-3f872484de74 lib\gtk-2.0\2.10.0\immodules\im-am-et.dll
@@ -107,6 +117,7 @@ e6e768dd-c788-47c5-b812-4a237d728000 lib\kde4\kded_globalaccel.dll
 b7eb067b-886c-4797-82d1-38a43e03e7c9 libatk-1.0-0.dll
 12c77de4-ff42-4ce6-8e34-18f4a7222ee2 libcairo-2.dll
 a36b79c8-0394-4e90-9019-a9cb18690fbf libdbus-1.dll
+79140123-4274-4f67-860a-579a27142316 libetpan-11.dll
 03e3ba08-a2d1-41c5-9c48-c44ddf702e59 libexpat.dll
 df5e070b-4e37-4288-8034-3fef70ec7ec5 libexpatw.dll
 87964742-0183-4f54-9c7a-a0de9c518e35 libexslt.dll
@@ -180,6 +191,7 @@ f24f9221-f347-4435-b818-4c3473d8f4ed pub\gpgsm.exe
 0762e4a3-a292-4d69-a0c9-34fc9747adef pub\gpgsplit.exe
 826eb8d2-14f1-44ff-8fd0-29f891fafa0c pub\gpgv.exe
 b5303e90-698c-4823-b982-32bfd2b761b4 rdjpgcom.exe
+e4ee6e26-6fad-4e1e-8c8a-3dd75085c32a regex.dll
 22c41f80-e04d-4ad9-a18f-65a74df05b89 rpng-win.exe
 66c7ad35-6e11-40ed-a74d-2a6c4fb502b1 rpng2-win.exe
 da1cca94-5f3c-47b2-8708-66cdaf489eb4 scdaemon.exe
@@ -1607,6 +1619,7 @@ ad830d10-83d3-4f90-b852-17e6e80618e0 share\icons\oxygen\48x48\actions\zoom-out.p
 725b28f9-c4df-4ca2-accb-2e2b618a5e22 share\kde4\servicetypes\kplugininfo.desktop
 2a531421-9c1e-4519-b4f0-20fb338ea6aa share\kde4\servicetypes\sonnetspeller.desktop
 3439cb4c-cdf4-4446-baaf-e3f0762cec48 share\locale\all_languages
+c34c4c43-5046-4f3c-a5e5-5f66feb730f9 share\locale\de\LC_MESSAGES\claws-mail.mo
 c1eafc06-fad1-4d14-8314-182c8664866c share\locale\de\LC_MESSAGES\glib20.mo
 1cfcfefe-32e0-43d8-8f95-48230af6485e share\locale\de\LC_MESSAGES\gpa.mo
 46bd57e6-5302-4f5e-a106-18f1015caa97 share\locale\de\LC_MESSAGES\gpgex.mo

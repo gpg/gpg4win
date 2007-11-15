@@ -615,6 +615,7 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_pthreads_w32}
   !insertmacro SelectSection ${SEC_crypt}
   !insertmacro SelectSection ${SEC_regex}
+  !insertmacro SelectSection ${SEC_libetpan}
   skip_claws_mail:
 !endif
 
