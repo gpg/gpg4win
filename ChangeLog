@@ -1,5 +1,9 @@
 2007-11-15  Marcus Brinkmann  <marcus@g10code.de>
 
+	* src/inst-sections.nsi (CalcDepends): Add dependency for
+	libetpan.
+	* src/make-msi.guids: Add libetpan and claws.
+
 	* Makefile.am (EXTRA_DIST): Add these patches.
 	* packages/packages.current: Update claws mail.  Download
 	regex-bin package.
