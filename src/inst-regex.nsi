@@ -32,6 +32,6 @@ Section "-regex" SEC_regex
 !ifdef SOURCES
   File "${gpg4win_pkg_regex_src}"
 !else
-  # Nothing to install as we link statically.
+  File ${prefix}/bin/regex.dll
 !endif
 SectionEnd

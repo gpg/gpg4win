@@ -29,8 +29,7 @@ chk  f130c93fdf20903ca21bace8b8822f46468c9d65
 
 
 # Gnuwin32 packages orginally hosted at sf.net but mirrored at g10code
-# for easier download.  The regex-0.12 package has even disappeared
-# from Sourceforge.
+# for easier download.
 server ftp://ftp.g10code.com/mirrors/gnuwin32
 
 file zlib-1.2.3-bin.zip
@@ -59,6 +58,8 @@ chk  77482f40ce2c65c0e1b807a07049f53823861266
 file crypt-2.2.5-src.zip
 chk  91c4c5e2790bc19909b03d6eaaf5d6c205b65f07
 
+file regex-0.12-bin.zip
+chk  13000b102f2e0ce5142ce0b5081820337c24da7d
 file regex-0.12-lib.zip
 chk  37e5aa61bdf26cd182ebc6169528c86f165c7e09
 file regex-0.12-src.zip
@@ -86,8 +87,8 @@ server ftp://ftp.g10code.com/mirrors/claws
 #file  claws-mail-2.10.0.tar.bz2
 #chk   0ee38ec2dd0c37941b0bcc4af7ab441ec432c63c
 
-file  claws-mail-3.0.0-rc2.tar.bz2
-chk   4fa89b8c2abefccd3f70e27de3e73e4d3319e83e
+file  claws-mail-3.0.2.tar.bz2
+chk   a607aca53a349f3a0a8d8f7a51f4754705e12350
 
 #
 # Pthreads for Windows.

@@ -1,0 +1,54 @@
+#! /bin/sh
+patch -p1 -f $* < $0
+exit $?
+
+2007-11-15  Marcus Brinkmann <mb@g10code.com>
+
+	* Just a quick work around to make it build.
+
+diff -rup claws-mail-3.0.2/src/common/w32lib.h claws-mail-3.0.2-fixed/src/common/w32lib.h
+--- claws-mail-3.0.2/src/common/w32lib.h	2007-07-11 18:35:57.000000000 +0200
++++ claws-mail-3.0.2-fixed/src/common/w32lib.h	2007-11-15 15:33:31.000000000 +0100
+@@ -78,6 +78,7 @@
+ #ifdef __MINGW32__
+ #include <wchar.h>
+ #include <dirent.h>
++#include <sys/time.h>
+ #endif
+ 
+ /* Mingw32 3.4.4 defines interface to struct and thus breaks our own
+@@ -162,7 +163,7 @@ DIR *opendir( const char *name );
+ int closedir( DIR *dir );
+ struct dirent *readdir( DIR *dir );
+ 
+-#ifdef __MINGW32__
++#ifndef __MINGW32__
+ struct timezone {
+   int tz_minuteswest;
+   int tz_dsttime;
+@@ -176,7 +177,9 @@ int lstat( const char *file_name, struct
+ pid_t waitpid( pid_t pid, int *status, int options );
+ 
+ /*** sys/time ***/
++#ifndef __MINGW32__
+ int gettimeofday( struct timeval *tv, struct timezone *tz );
++#endif
+ 
+ /*** unistd ***/
+ uid_t getuid( void );
+diff -rup claws-mail-3.0.2/src/common/w32_time.c claws-mail-3.0.2-fixed/src/common/w32_time.c
+--- claws-mail-3.0.2/src/common/w32_time.c	2007-07-11 18:35:56.000000000 +0200
++++ claws-mail-3.0.2-fixed/src/common/w32_time.c	2007-11-15 15:33:07.000000000 +0100
+@@ -24,6 +24,7 @@
+ 
+ #include "w32lib.h"
+ 
++#ifndef __MINGW32__
+ int gettimeofday( struct timeval *tv, struct timezone *tz ){
+   struct _timeb tstruct;
+   _ftime( &tstruct );
+@@ -31,3 +32,4 @@ int gettimeofday( struct timeval *tv, st
+   tv->tv_usec = tstruct.millitm;
+   return 1;
+ }
++#endif
