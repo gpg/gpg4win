@@ -324,21 +324,15 @@ sub collect_all
 	  {
 	      $dir = $1;
 	  }
-	  elsif (m,^\s*File\s+"?\$\{(prefix|BUILD_DIR)\}(?:/(\S*))?/([^/"\s]+)"?\s*\r?\n$,)
+	  elsif (m,^\s*File\s+"?\$\{(prefix|BUILD_DIR|SRCDIR)\}(?:/(\S*))?/([^/"\s]+)"?\s*\r?\n$,)
 	  {
 	      my $source = $3;
 
 	      $source = "$2/$source" if defined $2;
 	      $source = "${prefix}/$source" if $1 eq 'prefix';
+	      # FIXME: We assume that srcdir == build_dir here.
 
 	      push @files, { source => $source, dir => $dir, target => $3 };
-	      push @::sources, $source;
-	  }
-	  elsif (m,^\s*File\s+"?\$\{BUILD_DIR\}(\S+)/([^/"\s]+)"?\s*\r?\n$,)
-	  {
-	      my $source = $2;
-	      $source = "$1/$source" if ($1 ne '');
-	      push @files, { source => $source, dir => $dir, target => $2 };
 	      push @::sources, $source;
 	  }
 	  elsif (m,^\s*File\s+/oname=(\S+)\s+"?\$\{(prefix|BUILD_DIR)\}/([^"\s]+)"?\s*\r?\n$,)
@@ -548,12 +542,13 @@ sub dump_all
 		    . "  <ServiceInstall Id='s_dirmngr' "
 		    . "DisplayName='Directory Manager' "
 		    . "Name='DirMngr' ErrorControl='normal' Start='auto' "
+		    . "Arguments='--service' "
 		    . "Type='ownProcess' Vital='yes'/>\n";
-
-		print ' ' x $::level
-		    . "  <ServiceControl Id='s_dirmngr_ctrl' "
-		    . "Name='DirMngr' Start='install' Stop='uninstall' "
-		    . "Remove='uninstall'/>\n";
+# FIXME: Start service (currently broken).
+#		print ' ' x $::level
+#		    . "  <ServiceControl Id='s_dirmngr_ctrl' "
+#		    . "Name='DirMngr' Start='install' Stop='uninstall' "
+#		    . "Remove='uninstall'/>\n";
 	    }
 
 	    print ' ' x $::level

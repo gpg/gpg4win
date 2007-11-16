@@ -33,7 +33,7 @@ Section "Kleopatra" SEC_kleopatra
   SetOutPath "$INSTDIR\bin"
   File ${prefix}/bin/kleopatra.exe
   SetOutPath "$INSTDIR"
-  File ${BUILD_DIR}/kleopatra.bat
+  File ${SRCDIR}/kleopatra.bat
 
   File ${prefix}/bin/libgpgme++-glib.dll
   File ${prefix}/bin/libgpgme++-qt.dll
