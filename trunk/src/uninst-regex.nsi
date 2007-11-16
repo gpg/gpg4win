@@ -30,6 +30,8 @@ Section "-un.regex"
   Push "${gpg4win_pkg_regex_src}"
   Call un.SourceDelete
 !else
-  # Nothing to uninstall
+  Delete "$INSTDIR\regex.dll"
+
+  RMDir "$INSTDIR"
 !endif
 SectionEnd

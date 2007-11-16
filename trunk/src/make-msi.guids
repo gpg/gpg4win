@@ -151,6 +151,7 @@ d1846a76-8dbd-4c5b-9d3f-3f5453345e84 libw32pth-0.dll
 82b84c27-93d1-4c4e-b664-126dd0b83377 libxml2.dll
 f2ed9b47-3ab0-475f-a666-ba9b8948ad5c libxslt.dll
 a8bb3ee1-8ac8-43b1-9a13-49292d7bb90f mingw-pcrecpp.dll
+dc2a7ef6-c56c-44d3-91ff-89b57cf70050 mingwm10.dll
 4dbebcb2-45f4-45e7-8cd9-1bd97830dcbd ngettext.exe
 e7b9fa9e-febd-488c-96a3-b7fde58908e2 pango-querymodules.exe
 d74205aa-7b11-446d-8831-feebaf7131be pcre.dll
@@ -190,6 +191,7 @@ c5d41ce6-542e-4509-80cb-6fc805aa4a44 pub\gpg.exe
 f24f9221-f347-4435-b818-4c3473d8f4ed pub\gpgsm.exe
 0762e4a3-a292-4d69-a0c9-34fc9747adef pub\gpgsplit.exe
 826eb8d2-14f1-44ff-8fd0-29f891fafa0c pub\gpgv.exe
+1820fef1-f47f-413d-bbb2-ec86cb0141a0 qt.conf
 b5303e90-698c-4823-b982-32bfd2b761b4 rdjpgcom.exe
 e4ee6e26-6fad-4e1e-8c8a-3dd75085c32a regex.dll
 22c41f80-e04d-4ad9-a18f-65a74df05b89 rpng-win.exe

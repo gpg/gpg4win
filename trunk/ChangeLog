@@ -1,5 +1,13 @@
 2007-11-15  Marcus Brinkmann  <marcus@g10code.de>
 
+	* src/inst-kleopatra.nsi: Use SRCDIR to find kleopatra.bat.
+	* src/inst-qt.nsi: Use SRCDIR to find qt.conf and BUILD_DIR to
+	find mingwm10.dll.
+	* src/make-msi.guids: Add these files.
+	* src/make-msi.pl (dump_all): Do not try to start the service yet.
+	(collect_all): Support SRCDIR in File.
+	* src/uninst-regex.nsi: Uninstall regex.dll.
+
 	* src/inst-sections.nsi (CalcDepends): Add dependency for
 	libetpan.
 	* src/make-msi.guids: Add libetpan and claws.

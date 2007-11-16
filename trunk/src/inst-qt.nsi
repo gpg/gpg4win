@@ -33,9 +33,9 @@ Section "-qt" SEC_qt
   File "${gpg4win_pkg_qt_src}"
 !else
   # Qt needs some help to find itself.
-  File qt.conf
+  File ${SRCDIR}/qt.conf
   # Qt uses -mthreads, so install the support library.
-  File mingwm10.dll
+  File ${BUILD_DIR}/mingwm10.dll
 
   File ${prefix}/bin/Qt3Support4.dll
   File ${prefix}/bin/QtAssistantClient4.dll
