@@ -1,3 +1,9 @@
+2007-11-16  Marcus Brinkmann  <marcus@g10code.de>
+
+	* src/make-msi.guids: Include manual files.
+	* src/make-msi.pl: Support manuals, and prefix output file names
+	by src, because manuals are within gpg4win.
+
 2007-11-15  Marcus Brinkmann  <marcus@g10code.de>
 
 	* src/inst-kleopatra.nsi: Use SRCDIR to find kleopatra.bat.

@@ -64,6 +64,13 @@ $::name = 'GnuPG for Windows';
 # Simple indentation tracking, for pretty printing.
 $::level = 0;
 
+
+# FIXME: Some work arounds for the manual.
+
+my $DESC_Name_man_advanced_de = "Advanced Manual (German)";
+my $DESC_Name_man_advanced_en = "Advanced Manual";
+my $DESC_Name_man_novice_de = "Novice Manual (German)";
+my $DESC_Name_man_novice_en = "Novice Manual";
 
 
 # We use a new product and package code for every build (using pseudo
@@ -143,7 +150,8 @@ sub store_files
     foreach my $pkg (@::components)
     {
 	next if ($#{$pkg->{files}} == -1);
-	print FILE (join ("\n", map { $_->{source} } @{$pkg->{files}})). "\n";
+	print FILE (join ("\n", map { "src/" . ($_->{source}) }
+			  @{$pkg->{files}})). "\n";
     }
     close FILE;
 }
@@ -263,9 +271,11 @@ sub collect_all
       # is not a full-featured NSIS to MSI converter, but it does the
       # job for us.
 
-      # FIXME: Manuals!
-      next if not defined $pkg{version};
-      my $prefix = "playground/install/pkgs/$pkg{name}-$pkg{version}";
+      my $prefix;
+      if (defined $pkg{version})
+      {
+	  $prefix = "playground/install/pkgs/$pkg{name}-$pkg{version}";
+      }
 
       # The list of all files encountered and included in the package.
       my @files;
@@ -301,13 +311,19 @@ sub collect_all
 	  }
 	  elsif (m,^\s*Section\s+"([^"]+)",)
 	  {
-	      $pkg{title} = $1;
+	      # FIXME: Work around for manuals, which have variables
+	      # in this place.
+	      my $title = $1;
+	      $title =~ s/^\$\((.*)\)$/\$$1/;
+	      eval '$pkg{title} = "' . $title . '"';
 	      $pkg{level} = 1;
 	  }
 	  elsif (m,^\s*Section\s+/o\s+"([^"]+)",)
 	  {
-	      # Default install level is 3.
+	      # FIXME: Work around for manuals, which have variables
+	      # in this place.
 	      $pkg{title} = $1;
+	      # Default install level is 3.
 	      $pkg{level} = 1000;
 	  }
 	  elsif (m,^\s*LangString\s+DESC_SEC_\S+\s+\$\{LANG_ENGLISH\}\s+\"([^"]+)\"\s*\r?\n,)
@@ -611,7 +627,6 @@ sub dump_all2
     {
 	my $features;
 
-	next if not defined $pkg->{version};
 	next if $pkg->{hidden};
 
 	$features = $pkg->{features};
