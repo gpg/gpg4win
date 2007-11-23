@@ -350,17 +350,20 @@ file kdelibs-for-kleo-20071107-dev.zip
 chk  7977bb7028d0996dcda53d156e1d1c81adb2d8a7
 
 name kdelibs-20071107-src.zip
-# FIXME: This is very wrong.  It's not a zip file and does not contain
-# all the sources.
 file kdelibs-svn713936.tar.bz2
-chk  7c2b10819ed4eb1c17e7b5076b9e494ad8bdddbb
+chk  6d765b4168593df6450385c51f52f7494ca80169
+
 
 # Kleopatra
 
 server ftp://ftp.kdab.net/pub/gpg4win
 
-name kleopatra-20071112-bin.zip
-file kleo-uiserver-only-20071112-bin.zip
-# FIXME: This is totally wrong.  We don't have a source package!
-link kleopatra-20071112-src.zip
-chk  d5463a417a19f26fbdbe8dbc8b7bb1823c39a94a
+name kleopatra-20071122-bin.zip
+file kleo-uiserver-only-20071122-bin.zip
+chk  aff34df0ec82d177bfc1285a02898618633a0a88
+
+name kleopatra-20071122-src.zip
+file kleo-uiserver-only-20071122-src.zip
+chk  5e2fbbb6cb37f999e2fe1b025565ee612b85684a
+
+
