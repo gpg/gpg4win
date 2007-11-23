@@ -1,9 +1,9 @@
-# packages.current - list of current packages for use with gpg4win -*- sh -*-
+B# packages.current - list of current packages for use with gpg4win -*- sh -*-
 #
 # The download script processes the statements here to
 # actually download the packages.  The syntax is trivial:
 #
-# If the first non whitespace character of a line is #, the line is
+#1;1609;0c If the first non whitespace character of a line is #, the line is
 # considered a comment.  If the first word of a line is "server", the
 # rest of the line will be taken as the base URL for following file
 # commands.  If the first word of a line is "file" the rest of the
@@ -274,8 +274,8 @@ chk  9e88710d13581107cafb2efc89dbb664d0106a52
 file libassuan-1.0.4-svn273.tar.bz2
 chk  cf039a5da53c60591730d67acb7a9a97c99bfff9
 
-file gpgme-1.1.6-svn1274.tar.bz2
-chk  68e8ca010699ca0fd81d4dd46bbf1e6e063e0f8d
+file gpgme-1.1.6-svn1279.tar.bz2
+chk  9751403f5c90c973fc47a5659f1fa67126253ab6
 
 file dirmngr-1.0.2-svn270.tar.bz2
 chk  d9b57d45f4ec51693d03f739b01167633bb5ab53
