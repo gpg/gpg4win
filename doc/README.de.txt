@@ -120,6 +120,17 @@ wie folgt aussehen:
 
 gpg4win.exe /S /C=C:\TEMP\gpg4win.ini /D=D:\Programme\Gpg4win
 
+Für den MSI installer gilt entsprechendes, mit folgenden Änderungen:
+Automatischer Ablauf wird wie üblich mit der Option /qb- zu msiexec
+erreicht.  Die Steuerungsdatei muss gpg4win.ini heißen und im
+Systemverzeichnis (C:\WINDOWS) vorliegen.  Der Installationspfad kann
+mit dem Eintrag "instdir" festgelegt werden.  Ausserdem können die
+Einstellungen auch auf der Kommandozeile mittels INSTDIR=... und
+INST_GPA=FALSE etc. angegeben werden (die Steuerungsdatei geht
+allerdings vor).  Die Angabe von Standard-Konfigurationsdateien, sowie
+die Angabe des Start Menu Verzeichnisses und die optionale Auswahl der
+Verknüpfungen wird vom MSI installer momentan nicht unterstützt.
+
 
 5. Rechtliche Hinweise zu den einzelnen Bestandteilen der Software
 ==================================================================

@@ -1,3 +1,15 @@
+2007-11-26  Marcus Brinkmann  <marcus@g10code.de>
+
+	* src/Makefile.am (msi, gpg4win-$(VERSION).wix,
+	(gpg4win-light-$(VERSION).wix): New targets.
+	* src/make-msi.pl: Rewritten.
+	* src/make-msi.guids: Include missing files.
+	* src/inst-gpg4win.nsi: Give section an identifier.
+	* src/README-msi.txt: Update.
+	* src/gpg4win.nsi: Do not include pinentry in the light installer.
+	* doc/README.de.txt, doc/README.en.txt: Document MSI package.
+	* src/make-msi.bat: Support other languages and light installer.
+
 2007-11-23  Marcus Brinkmann  <marcus@g10code.de>
 
 	* packages/packages.current: Update gpgme to 1.1.6-svn1279.

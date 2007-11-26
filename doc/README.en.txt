@@ -95,8 +95,21 @@ all possible keys:
   scdaemon.conf = D:\config\scdaemon-site.txt
   gpa.conf = D:\config\gpa-site.conf
 
-  
+An example command for unattended installation could look like this:
 
+gpg4win.exe /S /C=C:\TEMP\gpg4win.ini /D=D:\Programme\Gpg4win
+
+For the MSI installer, the above also holds, with the following
+changes: Unattended installation is achieved as usual with the /qb-
+option to msiexec.  The control file must be called gpg4win.ini and
+reside in the system directory (C:\WINDOWS).  It is found
+automatically by the installer.  The installation directory can be
+specified with an entry for "instdir".  Also, each entry can be given
+in uppercase at the command line through INSTDIR=... and
+INST_GPA=FALSE etc. (the control file takes precedence, though).  The
+default config files as well as start menu directory and optional
+installation of short cuts are currently not supported through the MSI
+installer.
 
 
 5. Legal notices pertaining to the individual packets

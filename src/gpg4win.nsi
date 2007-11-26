@@ -51,6 +51,9 @@
 !ifdef HAVE_PKG_GNUPG2
 !undef HAVE_PKG_GNUPG2
 !endif
+!ifdef HAVE_PKG_PINENTRY
+!undef HAVE_PKG_PINENTRY
+!endif
 !ifdef HAVE_PKG_DIRMNGR
 !undef HAVE_PKG_DIRMNGR
 !endif
