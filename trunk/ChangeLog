@@ -1,3 +1,9 @@
+2007-11-26  Werner Koch  <wk@g10code.com>
+
+	* src/inst-kleopatra.nsi: Install libkmime.dll.  Take libkleo from
+	bin/.
+	* src/uninst-kleopatra.nsi: Uninstall libkmime.dll.
+
 2007-11-26  Marcus Brinkmann  <marcus@g10code.de>
 
 	* packages/packages.current: Fix entry for kdelibs source.

@@ -39,7 +39,8 @@ Section "Kleopatra" SEC_kleopatra
   File ${prefix}/bin/libgpgme++-qt.dll
   File ${prefix}/bin/libgpgme++.dll
   File ${prefix}/bin/libqgpgme.dll
-  File ${prefix}/lib/libkleo.dll
+  File ${prefix}/bin/libkmime.dll
+  File ${prefix}/bin/libkleo.dll
 
   SetOutPath "$INSTDIR\lib\kde4"
 
