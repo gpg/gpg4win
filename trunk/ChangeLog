@@ -1,5 +1,8 @@
 2007-11-26  Marcus Brinkmann  <marcus@g10code.de>
 
+	* src/make-msi.pl (dump_all): Start dirmngr service.
+	* src/README-msi.txt: Add todo items.
+
 	* src/Makefile.am (msi, gpg4win-$(VERSION).wix,
 	(gpg4win-light-$(VERSION).wix): New targets.
 	* src/make-msi.pl: Rewritten.

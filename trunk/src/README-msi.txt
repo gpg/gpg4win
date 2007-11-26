@@ -90,3 +90,29 @@ $ tar -T src/gpg4win-VERSION.files cjf gpg4win-msi.tar.bz2
 Beside the files in gpg4win-msi.tar.bz, you also need src/gpg4win-VERSION.wix
 and src/make-msi.bat on the Windows computer, which should be put into
 the src/ subdirectory of the archive.
+
+
+TODO
+====
+
+1. The UI extension in WiX 3.0 only supports en-us.
+Translation to german is desired.
+
+2. Edit license dialog to not require acceptance (see tutorial, lesson 2).
+
+3. Support (optional) shortcuts on desktop and quicklaunch.  Make
+customizable via ini file.  No idea how to do this, actually.
+
+4. Add README dialog and launch README file:
+<Property Id='NOTEPAD'>Notepad.exe</Property>
+<CustomAction Id='LaunchFile' Property='NOTEPAD' ExeCommand='[SourceDir]Readme.txt' Return='asyncNoWait'/>
+
+Problems: Dialog needs to be added.  How to select language to display?
+
+5. Various warnings/blockers for NT5 and admin privileges checks.  We
+need to figure out which ones should be warnings and which should be
+critical, and how to implement warning dialogs (critical is easy).
+
+6. Dependencies could be done better by not repeating (hidden)
+features and using custom actions instead.
+
