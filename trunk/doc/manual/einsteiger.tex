@@ -1726,6 +1726,52 @@ GPA.\footnote{Dies ist nicht der offizielle Weg, funktioniert aber
       Version angepasst.
 \end{itemize}
 
+
+\clearpage
+\section{Deinstallation von Gpg4Win}
+
+%  TODO: Wenn die Kapitel zu S/MIME fertig sind, sollten Verweise zum Sichern
+%  von Zertifikaten und Schlüssel eingefügt werden
+
+Soll Gpg4win von Ihrem System entfernt, also deinstalliert werden,
+dann sollten Sie zunächst alle nicht notwendigen
+Anwendungen beenden und alle Schlüssel und Zertifikate sichern.
+Falls Sie auf ihrem Rechner mit eingeschränkten Rechten arbeiten
+sollten, ist es für die Deinstallation außerdem notwendig mit
+\verb-Administratorenrechten- angemeldet zu sein.
+Wurde die Installation bereits über Ihr Benutzerkonto
+durchgeführt, so verfügt es über Administratorenrechten.
+
+Es gibt zwei Möglichkeiten die Deinstallation auszuführen:
+
+\begin{itemize}
+\item Einmal mit den Bordmitteln von Microsoft Windows. Hierfür gehen
+Sie über das \verb-Startmenü- zur \verb-Systemsteuerung-.
+
+Öffnen Sie das Modul \verb-Software-
+und wählen Sie dann \verb-GnuPG for Windows- aus.
+
+Mit dem Knopf \verb-Entfernen- deinstallieren Sie \verb-GnuPG for Windows- bzw. \verb-Gpg4Win- von Ihrem System.
+\item Die zweite Möglichkeit zur Deinstallation bietet die ausführbare Datei
+\texttt{gpg4win-uninstall.exe}. Sie wird mit Gpg4win mitgeliefert und
+liegt im Verzeichnis \Filename{C:$\backslash$Programme$\backslash$GNU$\backslash$GnuPG}.\\
+Falls Sie bei der Installation einen anderen als den voreingestellten Pfad
+gewählt hatten, werden Sie das Deinstallationsprogramm an entsprechender
+Stelle finden.
+\end{itemize}
+
+In beiden Fällen werden die allgemeinen Systemdaten von Gpg4win, aber
+nicht die persönlichen Daten gelöscht.
+
+Es kommt vor, dass nach der Deinstallation noch einige Systemdaten
+die zwischenzeitlich von Gpg4win erstellt wurden, zurückbleiben.
+Falls Sie sich sicher sind, dass diese Daten nicht gesichert
+werden sollen, können Sie das Installationsverzeichnis,
+also zum Beispiel
+\Filename{C:$\backslash$Programme$\backslash$GNU$\backslash$GnuPG},\\
+über den Dateimanager vollständig löschen.
+
+
 \clearpage
 \T\selectlanguage{english}
 \input{fdl.tex}
