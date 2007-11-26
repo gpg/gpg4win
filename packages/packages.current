@@ -225,8 +225,8 @@ chk  2173d4b557c3a0982598caa3978e3ee790ad54b0
 
 server ftp://ftp.g10code.com/g10code/scratch
 
-file gpgex-0.0.0-svn39.tar.bz2
-chk  1d0464553c920a0d135a2f1d1a707be0eecc708f
+file gpgex-0.0.0-svn44.tar.bz2
+chk  062336b264d89bdf0f70be6a234a174bf00322f5
 
 #
 # Pth emulation
@@ -277,8 +277,8 @@ chk  cf039a5da53c60591730d67acb7a9a97c99bfff9
 file gpgme-1.1.6-svn1279.tar.bz2
 chk  9751403f5c90c973fc47a5659f1fa67126253ab6
 
-file dirmngr-1.0.2-svn270.tar.bz2
-chk  d9b57d45f4ec51693d03f739b01167633bb5ab53
+file dirmngr-1.0.2-svn275.tar.bz2
+chk  7a0f5eb38041ce152dd8111fcf43eb45ba3482f4
 
 
 #
