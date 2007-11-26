@@ -40,6 +40,7 @@ Section "-un.kleopatra"
   Delete "$INSTDIR\libgpgme++-qt.dll"
   Delete "$INSTDIR\libgpgme++.dll"
   Delete "$INSTDIR\libqgpgme.dll"
+  Delete "$INSTDIR\libkmime.dll"
   Delete "$INSTDIR\libkleo.dll"
 
   Delete "$INSTDIR\share\applications\kde4\kleopatra_import.desktop"
