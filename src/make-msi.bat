@@ -25,6 +25,3 @@ IF "%1"=="" GOTO nofile
 
 %WIXPATH%\candle.exe %FILE%
 %WIXPATH%\light.exe -ext WixUIExtension -cultures:%LANG% %FILE%obj
-
-%WIXPATH%\candle.exe %FILE%
-%WIXPATH%\light.exe -ext WixUIExtension -cultures:%LANG% %FILE%obj

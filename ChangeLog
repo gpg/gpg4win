@@ -1,3 +1,12 @@
+2007-11-26  Marcus Brinkmann  <marcus@g10code.de>
+
+	* src/inst-dirmngr.nsi: No longer create the cache directory.
+	* src/inst-sections.pl: Correct upper/lowercase of WinPT link (for
+	the msi converter).
+	* src/make-msi.pl: Improve handling of shortcuts.
+	* src/make-msi.guids: Update.
+	* src/make-msi.bat: Remove duplicate entries.
+
 2007-11-26  Werner Koch  <wk@g10code.com>
 
 	* src/inst-kleopatra.nsi: Install libkmime.dll.  Take libkleo from
@@ -5,6 +14,10 @@
 	* src/uninst-kleopatra.nsi: Uninstall libkmime.dll.
 
 2007-11-26  Marcus Brinkmann  <marcus@g10code.de>
+
+	* src/inst-dirmngr.nsi: No longer create the cache directory.
+
+	* src/make-msi.pl: 
 
 	* packages/packages.current: Fix entry for kdelibs source.
 

@@ -882,8 +882,8 @@ Section "-startmenu"
     IntOp $R0 $R0 & ${SF_SELECTED} 
     IntCmp $R0 ${SF_SELECTED} 0 no_winpt_menu 
     CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\WinPT.lnk" \
-	"$INSTDIR\winpt.exe" \
-        "" "$INSTDIR\winpt.exe" "" SW_SHOWNORMAL "" $(DESC_Menu_winpt)
+	"$INSTDIR\WinPT.exe" \
+        "" "$INSTDIR\WinPT.exe" "" SW_SHOWNORMAL "" $(DESC_Menu_winpt)
    no_winpt_menu:
 !endif
 
