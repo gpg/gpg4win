@@ -55,11 +55,6 @@ Section "-dirmngr" SEC_dirmngr
 
   SetOutPath "$INSTDIR"
 
-  # We need to create the cache directory, as this is not
-  # automatically created by dirmngr.  Actually, the default should be
-  # different.  FIXME.
-  CreateDirectory "$INSTDIR\cache"
-
   StrCmp $DirMngrStatus "MISSING" 0 dirmngr_created
     # Create the service.
     g4wihelp::service_create "DirMngr" "DirMngr" \

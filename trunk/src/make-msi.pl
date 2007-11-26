@@ -224,20 +224,29 @@ sub nsis_translate
 {
     my ($parser, $file, $expr) = @_;
     my $val = $expr;
+    my $iter = 0;
 
-    # Resolve outer double quotes, if any.
-    if ($val =~ m/^\$\((.*)\)$/)
+    while ($val =~ m/\$\((.*)\)/)
     {
+	my $var = $1;
+
 	if (exists $parser->{po}->{$::lang}->{$1})
 	{
-	    $val = $parser->{po}->{$::lang}->{$1};
+	    my $subst = $parser->{po}->{$::lang}->{$1};
+	    $val =~ s/\$\($var\)/$subst/g;
 	}
 	else
 	{
 	    fail "$file:$.: no translation for $val to language $::lang";
 	}
+	$iter++;
+	if ($iter > 100)
+	{
+	    fail "$file:$.: too deep nesting of translations";
+	}
     }
 
+    # Resolve outer double quotes, if any.
     $val =~ s/^"(.*)"$/$1/;
     $val =~ s/\$\r/\r/g;
     $val =~ s/\$\n/\n/g;
@@ -806,11 +815,16 @@ sub gpg4win_nsis_stubs
 
 	    # Take the base name of the link.  */
 	    $link =~ s/^.*\\([^\\]*)\"$/$1/;
+	    $link =~ s/\.lnk$//;
 
 	    my $target = nsis_eval ($parser, $file, $args[1]);
 	    $target =~ s/^\$INSTDIR\\//;
 
-	    my $icon = nsis_eval ($parser, $file, $args[3]);
+	    my $icon = $args[3];
+	    $icon =~ s/^"(.*)"$/$1/;
+	    $icon =~ s/^\$INSTDIR\\/[INSTDIR]/;
+	    $icon = nsis_eval ($parser, $file, $icon);
+
 	    my $icon_idx = nsis_eval ($parser, $file, $args[4]);
 	    fail "$file:$.: not supported" if ($icon_idx ne '');
 
@@ -1085,13 +1099,47 @@ sub dump_all
 	    # Create shortcuts.
 	    if (defined $parser->{shortcuts}->{$targetfull})
 	    {
-		# FIXME: Use shortcut info.
+		my $shortcut = $parser->{shortcuts}->{$targetfull};
+		my $extra = '';
+
+		if (exists $shortcut->{description})
+		{
+		    my $desc = nsis_translate ($parser, '',
+					       $shortcut->{description});
+		    $extra .= " Description='$desc'";
+		}
+# FIXME: WiX wants the icon to be known at compile time, so it needs a
+# source file, not a target file name.
+#		if ($shortcut->{icon} ne '')
+#		{
+#		    $extra .= " Icon='sm_$pkg->{name}_${fileidx}_icon'";
+#		}
+
+		# FIXME: Note that the link name should better not
+		# change, or it is not correctly replaced on updates.
+		my $link = nsis_translate ($parser, '', $shortcut->{link});
 		print ' ' x $::level
 		    . "    <Shortcut Id='sm_$pkg->{name}_$fileidx' "
-		    . "Directory='ProgramMenuDir' Name='$file->{target}'/>\n";
+		    . "Directory='ProgramMenuDir' Name='$link'"
+		    . $extra;
 
+#		if ($shortcut->{icon} eq '')
+#		{
+		    print "/>\n";
+#		}
+#		else
+#		{
+#		    print ">\n";
+#		    print ' ' x $::level
+#			. "      <Icon Id='sm_$pkg->{name}_${fileidx}_icon' "
+#			. "SourceFile='$shortcut->{icon}'/>\n";
+#		    print ' ' x $::level
+#			. "    </Shortcut>\n";
+#		}
+
+# Can't make these optional, so we don't do this.
 #		print ' ' x $::level
-#                   . "    <Shortcut Id='sm_$pkg->{name}_$fileidx' "
+#                   . "    <Shortcut Id='dt_$pkg->{name}_$fileidx' "
 #		    . "Directory='DesktopFolder' Name='$file->{target}'/>\n";
 	    }
 
