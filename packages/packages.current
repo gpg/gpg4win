@@ -1,9 +1,9 @@
-B# packages.current - list of current packages for use with gpg4win -*- sh -*-
+# packages.current - list of current packages for use with gpg4win -*- sh -*-
 #
 # The download script processes the statements here to
 # actually download the packages.  The syntax is trivial:
 #
-#1;1609;0c If the first non whitespace character of a line is #, the line is
+# If the first non whitespace character of a line is #, the line is
 # considered a comment.  If the first word of a line is "server", the
 # rest of the line will be taken as the base URL for following file
 # commands.  If the first word of a line is "file" the rest of the
