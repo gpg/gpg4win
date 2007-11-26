@@ -1,6 +1,7 @@
 # This is an automatically generated file.  DO NOT EDIT.
 c98dadcc-b796-41cf-aff2-bfa1706a5a6f /PRODUCT/1.9.0.581
 06b9c50c-352a-4fe2-9f47-4f6348d9dda4 /PRODUCT/1.9.0.587
+b3ce3cd9-0436-4348-8c09-106163ad9170 /PRODUCT/1.9.0.595
 fb54db39-2456-4fcc-9550-2790db663015 /REGISTRY/HKLM/Software\GNU\GnuPG/Install Directory
 ad23691b-1734-4dec-b91a-d4ff286190ea /REGISTRY/HKLM/Software\GNU\GnuPG/gpgProgram
 e0807a2f-4e70-48f8-b047-c5d3e219c3e7 /UPGRADE/1
@@ -253,9 +254,12 @@ b6206090-b123-4776-bc2e-7e52af95206d share\gpa\gpa.png
 01020ce6-6c8c-460f-8f66-a8f734fa3fec share\gpa\gpa_logo.ppm
 fa992dcc-ff89-4a32-9723-0b76bbc1dae4 share\gpa\gpa_tips.de
 1e855765-7624-42bb-b06b-28a0bcfce29b share\gpa\gpa_tips.en
+9433746e-dddf-421c-9dd0-f5b1cefaadb7 share\gpg4win\README.de.txt
+13b17315-1137-401c-8021-020cc0e5db70 share\gpg4win\README.en.txt
 592ab2a3-a681-4baf-80ff-9d8d9ea3ce95 share\gpg4win\durchblicker.pdf
 b1b23af2-9aa8-4055-9ff8-6e0d26c8dd0e share\gpg4win\einsteiger.pdf
 806964aa-cb2a-4d5e-b53c-9525736563f2 share\gpg4win\novices.pdf
+85a68157-9931-4a40-879c-b3f24361930f share\gpg4win\versioninfo.txt
 4ca6e2ae-6987-4a21-9268-dc652b709fe2 share\icons\oxygen\16x16\actions\1day.png
 f244617c-8b96-4f99-aa69-d73a41c287fd share\icons\oxygen\16x16\actions\5days.png
 d38f25e8-1245-4687-bf17-4e5be87a548a share\icons\oxygen\16x16\actions\7days.png

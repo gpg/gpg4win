@@ -18,61 +18,36 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
-# Invoke like this:
+# TODO
+# ====
 #
-# perl make-msi.pl < ../include/config.nsi
+# 1. The UI extension in WiX 3.0 only supports en-us.
+# Translation to german is desired.
 #
-# Note that this needs to be called from the gpg4win src/ directory, because
-# a number of files (inst-*.nsi for example) are accessed in that directory.
+# 1. Edit license dialog to not require acceptance (see tutorial, lesson 2).
 #
-# This program parses the NSIS source files and creates a .wix file,
-# which needs to be compiled with candle and linked with light, see
-# make-msi.bat.
+# 2. Support .ini file for customization.
 #
-# The file make-msi.guids is read and updated.  It contains GUIDs for all
-# components used by the installer, which are kept from version to version.
-#
-# Also, the output file make-msi.files contains a list of all files
-# that will be accessed by the linker when creating the package.
+# 3. Add README dialog and launch README file:
+# <Property Id='NOTEPAD'>Notepad.exe</Property>
+# <CustomAction Id='LaunchFile' Property='NOTEPAD' ExeCommand='[SourceDir]Readme.txt' Return='asyncNoWait'/>
+# Problems: Dialog is missing.  How to select language to display?
 
 use strict;
-
-# TODO:
-#
-# DirMngr config files/cache directory?  service start fails!!!
-# desktop and quick launch entries, but optional (also startmenu optional)
-
-# The list of all enabled packages.
-@::pkgs = ();
-# All definitions from config.nsi (the input file)
-%::config = ();
-# A description of the components.  We have one component per package.
-# Creating the data for these components is most of the work.
-@::components = ();
-# A list of all source files included in the package.
-@::sources = ();
-# A hash which maps frobbed package names to a hash of frobbed package
-# names on which they depend.
-%::deps = ();
-# A hash which contains one key for each file that wants a shortcut in the
-# canonical places (start menu, desktop, quick launch).
-%::shortcuts = ();
-
-$::INSTDIR = 'GnuPG';
-$::name = 'GnuPG for Windows';
-
-# Simple indentation tracking, for pretty printing.
-$::level = 0;
+use warnings;
+use diagnostics;
 
 
-# FIXME: Some work arounds for the manual.
-
-my $DESC_Name_man_advanced_de = "Advanced Manual (German)";
-my $DESC_Name_man_advanced_en = "Advanced Manual";
-my $DESC_Name_man_novice_de = "Novice Manual (German)";
-my $DESC_Name_man_novice_en = "Novice Manual";
+# Default language.
+$::lang = 'en';
 
 
+sub fail
+{
+    print STDERR $_[0] . "\n";
+    exit 1;
+}
+    
 # We use a new product and package code for every build (using pseudo
 # components), but a single constant upgrade code for all versions.
 # Note that Windows installer ignores the build part of the version
@@ -140,15 +115,20 @@ sub get_guid
 }
 
 
-$::files_file = 'make-msi.files';
+$::files_file = '';
 
 # We store the list of included files for temporary packaging, in case
 # WiX needs to be run on a different system.
 sub store_files
 {
+    my ($parser) = @_;
+
+    return if ($::files_file eq '');
     open (FILE, ">$::files_file") or die;
-    foreach my $pkg (@::components)
+    foreach my $name (@{$parser->{pkg_list}})
     {
+	my $pkg = $parser->{pkgs}->{$name};
+
 	next if ($#{$pkg->{files}} == -1);
 	print FILE (join ("\n", map { "src/" . ($_->{source}) }
 			  @{$pkg->{files}})). "\n";
@@ -157,248 +137,880 @@ sub store_files
 }
 
 
-sub get_deps
+sub lang_to_lcid
 {
-    my $name = '';
-    my %deps = ();
+    my ($lang) = @_;
 
-    # FIXME: Check if file exists.
-    open (FILE, "<inst-sections.nsi") or return;
-    while (<FILE>)
+    if ($lang eq 'en')
     {
-	my $line = $_;
+	return 1033;
+    }
+    elsif ($lang eq 'de')
+    {
+	return 1031;
+    }
+    else
+    {
+	fail "language $lang not supported";
+    }
+}
+	
+
+# NSIS parser
 
-	if ($name eq '')
+# The parser data structure contains the following members:
+#
+# pre_depth: The current nesting depth of preprocessor conditionals.
+# pre_true:  Depth of the last preprocessor conditional that was true.
+# pre_symbols: A hash of defined preprocessor symbols.
+# po: A hash of languages, each a hash of translated strings.
+# outpath: the current output path.
+# includedirs: An array of include directories to search through.
+
+# A couple of variables you can set:
+$::nsis_parser_warn = 0;
+$::nsis_parser_debug = 0;
+
+$::nsis_level_default = 1;
+$::nsis_level_optional = 1000;
+$::nsis_level_hidden = 2000;
+
+# Evaluate an expression.
+sub nsis_eval
+{
+    my ($parser, $file, $expr) = @_;
+    my $val = $expr;
+
+    # Resolve outer double quotes, if any.
+    if ($val =~ m/^"/)
+    {
+	if (not $val =~ s/^"(.*)"$/$1/)
 	{
-	    if ($line =~ m/^\s*have_(\S+):\s*\r?\n$/)
-	    {
-		$name = $1;
-	    }
+	    fail "$file:$.: unmatched quote in expression: $expr";
+	}
+    }
+    
+    my $iter = 0;
+    while ($val =~ m/\${([^}]*)}/)
+    {
+	my $varname = $1;
+	my $varvalue;
+
+	if (exists $parser->{pre_symbols}->{$varname})
+	{
+	    $varvalue = $parser->{pre_symbols}->{$varname};
 	}
 	else
 	{
-	    if ($line =~ m/^\s*!insertmacro\s+SelectSection\s+\$\{SEC_(\S+)\}\s*\r?\n$/)
-	    {
-		$deps{$1} = 1;
-	    }
-	    elsif ($line =~ m/^\s*skip_$name:\s*\r?\n$/)
-	    {
-		# We resolve indirect dependencies right now.
-		foreach my $pkg (keys %::deps)
-		{
-		    if (defined $::deps{$pkg}->{$name})
-		    {
-			foreach my $dep (keys %deps)
-			{
-			    $::deps{$pkg}->{$dep} = $::deps{$pkg}->{$name} + 1
-				if (not defined $::deps{$pkg}->{$dep})
-			}
-		    }
-		}
-		$::deps{$name} = { %deps };
-		$name = '';
-		%deps = ();
-	    }
+	    fail "$file:$.: undefined variable $varname in expression: $expr";
+	}
+	$val =~ s/\${$varname}/$varvalue/g;
+
+	$iter++;
+	if ($iter > 100)
+	{
+	    fail "$file:$.: too many variable expansions in expression: $expr";
 	}
     }
-    close (FILE);
+    
+#    # FIXME: For now.
+#    if ($expr =~ m/\$/ or $expr !~ m/^\"/)
+#    {
+#	return $expr;
+#    }
+#    $val = eval $expr;
+    return $val;
 }
 
-
-sub get_shortcuts
+
+# Retrieve an evaluated symbol
+sub nsis_fetch
 {
-    my %shortcuts = ();
+    my ($parser, $symname) = @_;
 
-    # Pending line.
-    my $line;
+    return undef if (not exists $parser->{pre_symbols}->{$symname});
 
-    # FIXME: Check if file exists.
-    open (FILE, "<inst-sections.nsi") or return;
-    while (<FILE>)
+    return nsis_eval ($parser, '', $parser->{pre_symbols}->{$symname});
+}
+
+
+# Evaluate an expression.
+sub nsis_translate
+{
+    my ($parser, $file, $expr) = @_;
+    my $val = $expr;
+
+    # Resolve outer double quotes, if any.
+    if ($val =~ m/^\$\((.*)\)$/)
     {
-	# Combine multiple lines connected with backslashes.
+	if (exists $parser->{po}->{$::lang}->{$1})
+	{
+	    $val = $parser->{po}->{$::lang}->{$1};
+	}
+	else
+	{
+	    fail "$file:$.: no translation for $val to language $::lang";
+	}
+    }
+
+    $val =~ s/^"(.*)"$/$1/;
+    $val =~ s/\$\r/\r/g;
+    $val =~ s/\$\n/\n/g;
+    $val =~ s/\$\"/"/g;
+
+    return $val;
+}
+
+
+# Low level line input.
+sub nsis_get_line
+{
+    my ($file) = @_;
+    my $line = '';
+
+    while (<$file>)
+    {
 	$line = $line . $_;
-	if ($line =~ m/^(.*)\\\s*\r?\n$/)
+
+	# Strip leading whitespace.
+	$line =~ s/^\s*//;
+
+	# Strip newline and trailing whitespace.
+	$line =~ s/\s*\r?\n$//;
+
+	# Combine multiple lines connected with backslashes.
+	if ($line =~ m/^(.*)\\$/)
 	{
 	    $line = $1 . ' ';
 	    next;
 	}
-	$_ = $line;
-	$line = '';
 
-	if (m,^\s*CreateShortCut\s+\"\$SMPROGRAMS\\\$STARTMENU_FOLDER\\[^.]+\.lnk\"\s+\"\$INSTDIR\\([^"]+)\",)
+	$_ = $line;
+	last;
+    }
+
+    # Now break up the line into 
+    return $_;
+}
+
+
+# Tokenize the NSIS line.
+sub nsis_tokenize
+{
+    my ($file, $line) = @_;
+    my @tokens;
+
+    my @line = split ('', $line);
+    my $idx = 0;
+
+    while ($idx <= $#line)
+    {
+	# The beginning of the current partial token.
+	my $token = $idx;
+
+	if ($line[$idx] eq '"')
 	{
-	    $shortcuts{$1} = 1;
+	    $idx++;
+	    # Skip until end of string, indicated by double quote that
+	    # is not part of the $\" string.
+	    while ($idx <= $#line)
+	    {
+		if (substr ($line, $idx, 3) eq '$\\"')
+		{
+		    $idx += 3;
+		}
+		else
+		{
+		    last if ($line[$idx] eq '"');
+		    $idx++;
+		}
+	    }
+	    fail "$file:$.:$idx: unterminated string from position $token"
+		if ($idx > $#line);
+	    $idx++;
+	    fail "$file:$.:$idx: strings not separated"
+		if ($idx <= $#line and $line[$idx] !~ m/\s/);
+	}
+	elsif ($line[$idx] eq '\'')
+	{
+	    $idx++;
+	    # Skip until end of string, indicated by a single quote.
+	    while ($idx <= $#line)
+	    {
+		last if ($line[$idx] eq '\'');
+		$idx++;
+	    }
+	    fail "$file:$.:$idx: unterminated string from position $token"
+		if ($idx > $#line);
+	    $idx++;
+	    fail "$file:$.:$idx: strings not separated"
+		if ($idx <= $#line and $line[$idx] !~ m/\s/);
+	}
+	else
+	{
+	    # Skip until end of token indicated by whitespace.
+	    while ($idx <= $#line)
+	    {
+		fail "$file:$.:$idx: invalid character"
+		    if ($line[$idx] eq '"');
+
+		last if ($line[$idx] =~ m/\s/);
+		$idx++;
+	    }
+	}
+
+	push @tokens, substr ($line, $token, $idx - $token);
+
+	# Skip white space between arguments.
+	while ($idx <= $#line and $line[$idx] =~ m/\s/)
+	{
+	    $idx++;
 	}
     }
-    close (FILE);
-    %::shortcuts = %shortcuts;
+    
+    return @tokens;
+}
+
+
+# We suppress some warnings after first time.
+%::warn = ();
+
+# Parse the NSIS line.
+sub nsis_parse_line
+{
+    my ($parser, $file, $line) = @_;
+
+    # We first tokenize the line.
+    my @tokens = nsis_tokenize ($file, $line); 
+
+    # We handle preprocessing directives here.
+	
+    print STDERR "Tokens: " . join (" AND ", @tokens) . "\n"
+	if $::nsis_parser_debug;
+
+    # We have special code dealing with ignored areas.
+    if ($parser->{pre_depth} > $parser->{pre_true})
+    {
+	if ($tokens[0] eq '!ifdef' or $tokens[0] eq '!ifndef')
+	{
+	    fail "$file:$.: syntax error" if $#tokens != 1;
+	    $parser->{pre_depth}++;
+	}
+	elsif ($tokens[0] eq '!else')
+	{
+	    fail "$file:$.: stray !else" if $parser->{pre_depth} == 0;
+
+	    if ($parser->{pre_depth} == $parser->{pre_true} + 1)
+	    {
+		$parser->{pre_true}++;
+	    }
+	}
+	elsif ($tokens[0] eq '!endif')
+	{
+	    fail "$file:$.: syntax error" if $#tokens != 0;
+
+	    fail "$file:$.: stray !endif" if $parser->{pre_depth} == 0;
+
+	    $parser->{pre_depth}--;
+	}
+	elsif ($tokens[0] eq '!macro')
+	{
+	    fail "$file:$.: syntax error" if $#tokens < 1;
+
+	    # FIXME: We do not support macros at this point, although
+	    # support would not be too hard to add.  Instead, we just
+	    # ignore their definition so it does not throw us off.
+
+	    print STDERR
+		"$file:$.: warning: ignoring macro $tokens[1]\n"
+		if $::nsis_parser_warn;
+
+	    $parser->{pre_depth}++;
+	}
+	elsif ($tokens[0] eq '!macroend')
+	{
+	    # FIXME: See !macro.
+	    fail "$file:$.: stray !macroend" if $parser->{pre_depth} == 0;
+	    $parser->{pre_depth}--;
+	}
+    }
+    else
+    {
+	# This is the parser for areas not ignored.
+	if ($tokens[0] eq '!define')
+	{
+	    if ($#tokens == 1)
+	    {
+		# FIXME: Maybe define to 1?
+		$parser->{pre_symbols}->{$tokens[1]} = '';
+	    }
+	    elsif ($#tokens == 2)
+	    {
+		$parser->{pre_symbols}->{$tokens[1]} =
+		    nsis_eval ($parser, $file, $tokens[2]);
+	    }
+	    else
+	    {
+		fail "$file:$.: syntax error";
+	    }
+
+	}
+	elsif ($tokens[0] eq '!undef')
+	{
+	    fail "$file:$.: syntax error" if $#tokens != 1;
+	    delete $parser->{pre_symbols}->{$tokens[1]};
+	}
+	elsif ($tokens[0] eq '!ifdef')
+	{
+	    fail "$file:$.: syntax error" if $#tokens != 1;
+
+	    if (exists $parser->{pre_symbols}->{$tokens[1]})
+	    {
+		$parser->{pre_true}++;
+	    }
+	    $parser->{pre_depth}++;
+	}
+	elsif ($tokens[0] eq '!ifndef')
+	{
+	    fail "$file:$.: syntax error" if $#tokens != 1;
+
+	    if (not exists $parser->{pre_symbols}->{$tokens[1]})
+	    {
+		$parser->{pre_true}++;
+	    }
+	    $parser->{pre_depth}++;
+	}
+	elsif ($tokens[0] eq '!else')
+	{
+	    fail "$file:$.: stray !else" if $parser->{pre_depth} == 0;
+
+	    if ($parser->{pre_depth} == $parser->{pre_true})
+	    {
+		$parser->{pre_true}--;
+	    }
+	    elsif ($parser->{pre_depth} == $parser->{pre_true} + 1)
+	    {
+		$parser->{pre_true}++;
+	    }
+	}
+	elsif ($tokens[0] eq '!endif')
+	{
+	    fail "$file:$.: syntax error" if $#tokens != 0;
+
+	    fail "$file:$.: stray !endif" if $parser->{pre_depth} == 0;
+
+	    if ($parser->{pre_depth} == $parser->{pre_true})
+	    {
+		$parser->{pre_true}--;
+	    }
+	    $parser->{pre_depth}--;
+	}
+	elsif ($tokens[0] eq '!include')
+	{
+	    fail "$file:$.: syntax error" if $#tokens != 1;
+
+	    print STDERR "Including $tokens[1]\n"
+		if $::nsis_parser_debug;
+
+	    my $filename = nsis_eval ($parser, $file, $tokens[1]);
+
+	    # Recursion.
+	    nsis_parse_file ($parser, $filename);
+	}
+	elsif ($tokens[0] eq '!macro')
+	{
+	    fail "$file:$.: syntax error" if $#tokens < 1;
+
+	    # FIXME: We do not support macros at this point, although
+	    # support would not be too hard to add.  Instead, we just
+	    # ignore their definition so it does not throw us off.
+
+	    print STDERR
+		"$file:$.: warning: ignoring macro $tokens[1]\n"
+		if $::nsis_parser_warn;
+
+	    $parser->{pre_depth}++;
+	}
+	elsif ($tokens[0] eq '!macroend')
+	{
+	    # FIXME: See !macro.
+	    fail "$file:$.: stray !macroend" if $parser->{pre_depth} == 0;
+	    $parser->{pre_depth}--;
+	}
+	elsif ($tokens[0] eq '!cd' or $tokens[0] eq '!addplugindir')
+	{
+	    if (not exists $::warn{"directive-$tokens[0]"})
+	    {
+		print STDERR
+		    "$file:$.: warning: ignoring $tokens[0] directive\n"
+		if $::nsis_parser_warn;
+	    }
+	    $::warn{"directive-$tokens[0]"}++;
+	}
+	elsif ($tokens[0] eq '!addincludedir')
+	{
+	    fail "$file:$.: syntax error" if $#tokens != 1;
+
+	    my $dir = nsis_eval ($parser, $file, $tokens[1]);
+
+	    unshift @{$parser->{includedirs}}, $dir;
+	}
+	elsif ($tokens[0] =~ m/^\!/ and $tokens[0] ne '!insertmacro')
+	{
+	    # Note: It is essential that some !insertmacro invocations are
+	    # not expanded, namely those of SelectSection and UnselectSection,
+	    # which are used to track dependencies in Gpg4win.
+
+	    fail "$file:$.: compiler directive $tokens[0] not implemented";
+	}
+	else
+	{
+	    # Main processing routine.  This is specific to the backend
+	    # and probably package.
+	    gpg4win_nsis_stubs ($parser, $file, @tokens);
+	}
+    }    
+}
+
+
+# Parse the NSIS file.
+sub nsis_parse_file
+{
+    my ($parser, $file) = @_;
+    my $handle;
+
+    if ($file eq '-')
+    {
+	$. = 0;
+	$handle = *STDIN;
+    }
+    else
+    {
+	if (not -e $file and 1)
+	{
+	    # Search for include file.  Note: We do not change
+	    # directories, but that is OK for us.  Also, we want to
+	    # avoid the system header files, as we don't control what
+	    # constructs they use, and in fact we want to treat their
+	    # macros and functions as atoms.
+
+	    my @includedirs = @{$parser->{includedirs}};
+	    my $dir;
+
+	    foreach $dir (@includedirs)
+	    {
+		if (-e $dir . '/' . $file)
+		{
+		    $file = $dir . '/' . $file;
+		    last;
+		}
+	    }
+	}
+
+	if (not open ($handle, "<$file"))
+	{
+	    print STDERR "$file:$.: warning: "
+		. "can not open include file $file: $!\n"
+		if $::nsis_parser_warn;
+	    return;
+	}
+    }
+
+    while (defined nsis_get_line ($handle))
+    {
+	$.++ if ($file eq '-');
+
+	# Skip comment lines.
+	next if $_ =~ m/^#/;
+
+	# Skip empty lines.
+	next if $_ =~ m/^$/;
+
+	nsis_parse_line ($parser, $file, $_);
+    }
+
+    close $handle if ($file ne '-');
 }
 
 
-sub collect_all
+# The Gpg4win stubs for the MSI backend to the NSIS converter.
+
+# Gpg4win specific state in $parser:
+# pkg: the current package (a hash reference), corresponds to certain sections.
+# pkgs: a hash ref of all packages encountered indexed by their frobbed name.
+# pkg_list: the order of packages (as frobbed names).
+# state: specifies a state for special parsing of certain parts.
+# dep_name: the current package for which we list dependencies (- for none)
+
+sub gpg4win_nsis_stubs
 {
-  # Input file is $(top_srcdir)/include/config.nsi
+    my ($parser, $file, $command, @args) = @_;
 
-  while (<>)
-  {
-      if (/^!define\s+(\w+)\s+(\S.*\S)\s*\r?\n$/)
-      {
-	  $::config{$1} = $2;
-      }
-  }
-  # gpg4win_build_list is a C-like string, so strip the quotes first.
-  my $pkg_list;
-  eval '$pkg_list = ' . $::config{gpg4win_build_list};
-  @::pkgs = split (' ', $pkg_list);
+    $parser->{state} = "" if not defined $parser->{state};
+    
+    if ($parser->{state} =~ m/^ignore-until-(.*)$/)
+    {
+	undef $parser->{state} if ($command eq $1);
+    }
 
-  # Now we have a list of packages to process.  For each package,
-  # create a nice data structure that captures all the information we
-  # collect.
+    # Section support.
+    #
+    # We parse SetOutPath and File directives in sections.
+    # Everything else is ignored.
 
-  foreach my $pkg (@::pkgs)
-  {
-      my %pkg;
-      $pkg{name} = $pkg;
-      $pkg =~ tr/-+/__/;
-      $pkg{frobbed_name} = $pkg;
-      $pkg{version} = $::config{"gpg4win_pkg_${pkg}_version"};
-      $pkg{source} = $::config{"gpg4win_pkg_${pkg}"};
-      $pkg{features} = '';
-      $pkg{hidden} = 0;
+    elsif ($parser->{state} eq '' and $command eq 'Section')
+    {
+	my $idx = 0;
+	# Default install level for MSI is 3.
+	my $level = $::nsis_level_default;
+	my $hidden = 0;
+	
+	# Check for options first.
+	return if ($idx > $#args);
+	if ($args[$idx] eq '/o')
+	{
+	    # Default install level for MSI is 3.
+	    $level = $::nsis_level_optional;
+	    $idx++;
+	}
 
-      # We parse the inst-package file to figure out what to do.  This
-      # is not a full-featured NSIS to MSI converter, but it does the
-      # job for us.
+	return if ($idx > $#args);
 
-      my $prefix;
-      if (defined $pkg{version})
-      {
-	  $prefix = "playground/install/pkgs/$pkg{name}-$pkg{version}";
-      }
+	my $title = nsis_eval ($parser, $file, $args[$idx++]);
 
-      # The list of all files encountered and included in the package.
-      my @files;
-      # The list of all registry settings to write.
-      my @registry;
+	# Check for hidden flag.
+	if (substr ($title, 0, 1) eq '-')
+	{
+	    # Hidden packages are dependency tracked and never
+	    # installed by default unless required.
+	    $level = $::nsis_level_hidden;
+	    $hidden = 1;
+	    substr ($title, 0, 1) = '';
+	}
+		
+	# We only pay attention to special sections and those which
+	# have a section index defined.
+	if ($title eq 'startmenu')
+	{
+	    # The special startmenu section contains all our shortcuts.\
+	    $parser->{state} = 'section-startmenu';
+	    return;
+	}
+	elsif ($idx > $#args)
+	{
+	    return;
+	}
 
-      # The current directory.
-      my $dir = '';
+	# Finally we can get the frobbed name of the package.
+	my $name = $args[$idx++];
+	$name =~ s/^SEC_//;
+	
+	my $pkg = \%{$parser->{pkgs}->{$name}};
 
-      # The pending line.
-      my $line = '';
+	$pkg->{name} = $name;
+	$pkg->{title} = $title;
+	$pkg->{level} = $level;
+	$pkg->{hidden} = $hidden;
+	$pkg->{features} = '';
 
-      open (FILE, "<inst-$pkg{name}.nsi") or die;
-      while (<FILE>)
-      {
-	  # Combine multiple lines connected with backslashes.
-	  $line = $line . $_;
-	  if ($line =~ m/^(.*)\\\s*\r?\n$/)
-	  {
-	      $line = $1 . ' ';
-	      next;
-	  }
-	  $_ = $line;
-	  $line = '';
+	# Remember the order of sections included.
+	push @{$parser->{pkg_list}}, $name;
 
-	  # FIXME: Handle hidden packages "-foo".
-	  if (m,^\s*Section\s+"-([^"]+)",)
-	  {
-	      # Hidden packages are dependency-tracked.
-	      $pkg{title} = $1;
-	      $pkg{level} = 2000;  # Superfluous.
-	      $pkg{hidden} = 1;
-	  }
-	  elsif (m,^\s*Section\s+"([^"]+)",)
-	  {
-	      # FIXME: Work around for manuals, which have variables
-	      # in this place.
-	      my $title = $1;
-	      $title =~ s/^\$\((.*)\)$/\$$1/;
-	      eval '$pkg{title} = "' . $title . '"';
-	      $pkg{level} = 1;
-	  }
-	  elsif (m,^\s*Section\s+/o\s+"([^"]+)",)
-	  {
-	      # FIXME: Work around for manuals, which have variables
-	      # in this place.
-	      $pkg{title} = $1;
-	      # Default install level is 3.
-	      $pkg{level} = 1000;
-	  }
-	  elsif (m,^\s*LangString\s+DESC_SEC_\S+\s+\$\{LANG_ENGLISH\}\s+\"([^"]+)\"\s*\r?\n,)
-	  {
-	      $pkg{description} = $1;
-	  }
-	  # Special hack for kdesupport.nsi.  FIXME: Could do real
-	  # variable substitution here.
-	  elsif (m,^\s*\!define prefix \${ipdir}/([^\$]+)-\$.*\r?\n$,)
-	  {
-	      $prefix = "playground/install/pkgs/$1-$pkg{version}";
-	  }
-	  elsif (m,^\s*SetOutPath\s+"?\$INSTDIR\\?([^"]*)"?\s*\r?\n$,)
-	  {
-	      $dir = $1;
-	  }
-	  elsif (m,^\s*File\s+"?\$\{(prefix|BUILD_DIR|SRCDIR)\}(?:/(\S*))?/([^/"\s]+)"?\s*\r?\n$,)
-	  {
-	      my $source = $3;
+	$parser->{pkg} = $pkg;
+	$parser->{state} = 'in-section';
+    }
+    elsif ($parser->{state} eq 'in-section')
+    {
+	if ($command eq 'SectionEnd')
+	{
+	    delete $parser->{pkg};
+	    undef $parser->{state};
+	}
+	elsif ($command eq 'SetOutPath')
+	{
+	    fail "$file:$.: syntax error" if ($#args != 0);
 
-	      $source = "$2/$source" if defined $2;
-	      $source = "${prefix}/$source" if $1 eq 'prefix';
-	      # FIXME: We assume that srcdir == build_dir here.
+	    my $outpath = $args[0];
+	    if (not $outpath =~ s/^"\$INSTDIR\\?(.*)"$/$1/)
+	    {
+		fail "$file:$.: unsupported out path: $args[0]";
+	    }
+	    $parser->{outpath} = $outpath;
+	}
+	elsif ($command eq 'File')
+	{
+	    my $idx = 0;
+	    my $target;
+	    
+	    fail "$file:$.: not supported" if ($#args < 0 || $#args > 1);
+	    
+	    if ($#args == 1)
+	    {
+		if ($args[0] eq '/nonfatal')
+		{
+		    print STDERR "$file:$.: warning: skipping non-fatal file $args[1]\n"
+			if $::nsis_parser_warn;
+		    return;
+		}
+		
+		$target = $args[0];
+		if (not $target =~ s,^/oname=(.*)$,$1,)
+		{
+		    fail "$file:$.: syntax error";
+		}
+		
+		# Temp files are due to overwrite attempts, which are
+		# handled automatically by the Windows Installer.  Ignore
+		# them here.
+		return if $target =~ m/\.tmp$/;
+		$idx++;
+	    }
+	    
+	    my $source = nsis_eval ($parser, $file, $args[$idx]);
+	    if (not defined $target)
+	    {
+		$target = $source;
+		$target =~ s,^.*/([^/\\]+)$,$1,;
+	    }
 
-	      push @files, { source => $source, dir => $dir, target => $3 };
-	      push @::sources, $source;
-	  }
-	  elsif (m,^\s*File\s+/oname=(\S+)\s+"?\$\{(prefix|BUILD_DIR)\}/([^"\s]+)"?\s*\r?\n$,)
-	  {
-	      my $target = $1;
-	      my $source = $3;
+	    push @{$parser->{pkg}->{files}}, { source => $source,
+					       dir => $parser->{outpath},
+					       target => $target };
+	}
+	elsif ($command eq 'WriteRegStr')
+	{
+	    fail "$file:$.: not supported" if ($#args != 3);
 
-	      $source = "${prefix}/$source" if $2 eq 'prefix';
+	    my $root = $args[0];
 
-	      # Temp files are due to overwrite attempts, which are
-	      # handled automatically by the Windows Installer.
-	      # Ignore them here.
-	      next if $target =~ m/\.tmp$/;
+	    my $key = $args[1];
+	    $key =~ s/^"(.*)"$/$1/;
 
-	      push @files, { source => $source,
-			     dir => $dir, target => $target };
-	      push @::sources, $source;
-	  }
-	  elsif (m,^\s*WriteRegStr\s+(\S+)\s+"([^"]+)"\s+"([^"]+)"\s+"?([^"]+)"?\s*\r?\n$,)
-	  {
-	      my ($root, $key, $name, $value) = ($1, $2, $3, $4);
-	      $value =~ s/\$INSTDIR/\[INSTDIR\]/g;
-	      push (@registry,
-		    { root => $root, key => $key, name => $name,
-		      value => $value, type => 'string' });
-	  }
-      }
-      close (FILE);
-      $pkg{files} = \@files;
-      $pkg{registry} = \@registry;
+	    my $name = $args[2];
+	    $name =~ s/^"(.*)"$/$1/;
 
-      # Some things we can not easily parse from the NSI files.  For
-      # these, we do manual overrides here.
-      if ($pkg{name} eq 'gnupg')
-      {
-	  $pkg{features} .= " Absent='disallow'";
-      }
-      elsif ($pkg{name} eq 'gnupg2')
-      {
-	  $pkg{features} .= " Absent='disallow'";
-      }
+	    my $value = $args[3];
+	    $value =~ s/^"(.*)"$/$1/;
+	    $value =~ s/\$INSTDIR\\?/\[INSTDIR\]/g;
 
-      push @::components, \%pkg;
-  }
+	    push (@{$parser->{pkg}->{registry}},
+		  { root => $root, key => $key, name => $name,
+		    value => $value, type => 'string' });
+	}
+    }
+
+    # Start menu shortcuts support.
+
+    elsif ($parser->{state} eq 'section-startmenu')
+    {
+	if ($command eq 'SectionEnd')
+	{
+	    undef $parser->{state};
+	}
+	elsif ($command eq 'CreateShortCut')
+	{
+	    fail "$file:$.: not supported" if ($#args != 7);
+
+	    # The link may contains a translatable string.
+	    my $link = $args[0];
+
+	    # We filter for startmenu shortcuts, as the others are
+	    # just more of the same.  Equivalently, we could filter
+	    # for a block between two labels.
+	    return if ($link !~ m/STARTMENU_FOLDER/);
+
+	    # Take the base name of the link.  */
+	    $link =~ s/^.*\\([^\\]*)\"$/$1/;
+
+	    my $target = nsis_eval ($parser, $file, $args[1]);
+	    $target =~ s/^\$INSTDIR\\//;
+
+	    my $icon = nsis_eval ($parser, $file, $args[3]);
+	    my $icon_idx = nsis_eval ($parser, $file, $args[4]);
+	    fail "$file:$.: not supported" if ($icon_idx ne '');
+
+	    # The description contains a translatable string.
+	    my $description = $args[7];
+
+	    $parser->{shortcuts}->{$target} = { link => $link,
+						target => $target,
+						icon => $icon,
+						description => $description };
+	}
+    }
+
+    # LangString support.
+    #
+    # LangString directives must be stated at the top-level of the file.
+
+    elsif ($parser->{state} eq '' and $command eq 'LangString')
+    {
+	fail "$file:$.: syntax error" if ($#args != 2);
+
+	my $lang = $args[1];
+	$lang =~ s/^\$\{LANG_(\w*)\}$/$1/;
+	if ($lang eq 'ENGLISH')
+	{
+	    $lang = 'en';
+	}
+	elsif ($lang eq 'GERMAN')
+	{
+	    $lang = 'de';
+	}
+	else
+	{
+	    fail "$file:$.: unsupported language ID $args[1]";
+	}
+	$parser->{po}->{$lang}->{$args[0]} = $args[2];
+    }
+
+    # Function support.
+    #
+    # Most functions are ignored.  Some are of special interest and
+    # are parsed separately.
+
+    elsif ($parser->{state} eq '' and $command eq 'Function')
+    {
+	fail "$file:$.: syntax error" if ($#args != 0);
+
+	if ($args[0] eq 'CalcDepends')
+	{
+	    $parser->{state} = 'function-calc-depends';
+	}
+	elsif ($args[0] eq 'CalcDefaults')
+	{
+	    $parser->{state} = 'function-calc-defaults';
+	}
+	else
+	{
+	    # Functions we do not find interesting are skipped.
+	    print STDERR
+		"$file:$.: warning: ignoring function $args[0]\n"
+		if $::nsis_parser_warn;
+	    delete $parser->{dep_name};
+	    $parser->{state} = 'ignore-until-FunctionEnd';
+	}
+    }
+
+    # Function calc-depends.
+    #
+    # This function gathers information about dependencies between
+    # features.  Features are identified by their frobbed names.  The
+    # format is as such: First, a couple of UnselectSection macros,
+    # one for each dependency.  Then SelectSection invocations for all
+    # packages which should always be installed (mandatory), followed
+    # by one block for each feature, consisting of a label "have_FOO:"
+    # where FOO is the frobbed package name (in lowercase, usually),
+    # followed by SelectSection invocations, one for each dependency,
+    # and finally a "skip_FOO:" label to finish the block.
+    #
+    # The order of these statements and blocks must be so that a single pass
+    # through the list is sufficient to resolve all dependencies, that means
+    # in pre-fix order.
+
+    elsif ($parser->{state} eq 'function-calc-depends')
+    {
+	if ($command eq 'FunctionEnd')
+	{
+	    undef $parser->{state};
+	}
+	elsif ($command =~ m/^have_(.*):$/)
+	{
+	    $parser->{dep_name} = $1;
+	    $parser->{pkgs}->{$1}->{deps} = {};
+	}
+	elsif ($command eq '!insertmacro')
+	{
+	    fail "$file:$.: syntax error" if $#args < 0;
+	    if ($args[0] eq 'SelectSection')
+	    {
+		fail "$file:$.: syntax error" if $#args != 1;
+		my $name = $args[1];
+		$name =~ s/^\$\{SEC_(.*)\}$/$1/;
+
+		if (not exists $parser->{dep_name})
+		{
+		    # A stray SelectSection chooses defaults.
+		    $parser->{pkgs}->{$name}->{features} .=
+			" Absent='disallow'";
+		}
+		else
+		{
+		    my $dep_name = $parser->{dep_name};
+
+		    # Add $name as a dependency for $dep_name.
+		    $parser->{pkgs}->{$dep_name}->{deps}->{$name} = 1;
+		}
+	    }
+	}
+	elsif ($command =~ m/^skip_(.*):$/)
+	{
+	    fail "$file:$.: stray skip_FOO label"
+		if not exists $parser->{dep_name};
+
+	    my $dep_name = $parser->{dep_name};
+	    my $dep_pkg = $parser->{pkgs}->{$dep_name};
+
+	    # We resolve indirect dependencies right now.  This works
+	    # because dependencies are required to be listed in
+	    # pre-fix order.
+
+	    foreach my $name (keys %{$parser->{pkgs}})
+	    {
+		my $pkg = $parser->{pkgs}->{$name};
+
+		# Check if $dep_name is a dependency for $name.
+		if (exists $pkg->{deps}->{$dep_name})
+		{
+		    # Add all dependencies of $dep_name to $name.
+		    foreach my $dep (keys %{$dep_pkg->{deps}})
+		    {
+			$pkg->{deps}->{$dep} = $pkg->{deps}->{$dep_name} + 1
+			    if (not defined $pkg->{deps}->{$dep});
+		    }
+		}
+	    }
+	    delete $parser->{dep_name};
+	}
+    }
+
+    # Function calc-depends.
+    #
+    # Format:
+    # g4wihelp::config_fetch_bool "inst_FOO"
+
+    elsif ($parser->{state} eq 'function-calc-defaults')
+    {
+	if ($command eq 'FunctionEnd')
+	{
+	    undef $parser->{state};
+	}
+	elsif ($command eq 'g4wihelp::config_fetch_bool')
+	{
+	    fail "$file:$.: syntax error" if $#args != 0;
+
+	    if ($args[0] !~ m/^"inst_(.*)"$/)
+	    {
+		fail "$file:$.: syntax error";
+	    }
+
+	    $parser->{pkgs}->{$1}->{ini_inst} = 1;
+	}
+    }
 }
+
+
+# MSI generator.
+
+# Simple indentation tracking, for pretty printing.
+$::level = 0;
 
 
 sub dump_all
 {
-    my $pkg;
+    my ($parser) = @_;
+
+    my $pkgname;
     # A running count for files within each feature.
     my $fileidx;
     # A running count for registry settings within each feature.
@@ -408,8 +1020,10 @@ sub dump_all
     # The current directory.
     my $cdir = '';
 
-    foreach $pkg (@::components)
+    foreach $pkgname (@{$parser->{pkg_list}})
     {
+	my $pkg = $parser->{pkgs}->{$pkgname};
+
 	$fileidx = 0;
 	foreach my $file (@{$pkg->{files}})
 	{
@@ -455,12 +1069,12 @@ sub dump_all
 	    }
 
 	    print ' ' x $::level
-		. "<Component Id='c_$pkg->{frobbed_name}_$fileidx' Guid='"
+		. "<Component Id='c_$pkg->{name}_$fileidx' Guid='"
 		. get_guid ($targetfull) . "'>\n";
 	    print ' ' x $::level
-		. "  <File Id='f_$pkg->{frobbed_name}_$fileidx' Name='"
-		. $file->{target} . "' Source='" . $file->{source} . "'"
-		. " DefaultLanguage='1033'>\n";
+		. "  <File Id='f_$pkg->{name}_$fileidx' Name='"
+		. $file->{target} . "' Source='" . $file->{source} . "'>\n";
+	    # Does not help to avoid the warnings: DefaultLanguage='1033'.
 
 	    # EXCEPTIONS:
 	    if ($targetfull eq 'gpgol.dll')
@@ -484,26 +1098,27 @@ sub dump_all
 	    }
 
 	    # Create shortcuts.
-	    if (defined $::shortcuts{$targetfull})
+	    if (defined $parser->{shortcuts}->{$targetfull})
 	    {
+		# FIXME: Use shortcut info.
 		print ' ' x $::level
-		    . "    <Shortcut Id='sm_$pkg->{frobbed_name}_$fileidx' "
+		    . "    <Shortcut Id='sm_$pkg->{name}_$fileidx' "
 		    . "Directory='ProgramMenuDir' Name='$file->{target}'/>\n";
 
 #		print ' ' x $::level
-#                   . "    <Shortcut Id='sm_$pkg->{frobbed_name}_$fileidx' "
+#                   . "    <Shortcut Id='sm_$pkg->{name}_$fileidx' "
 #		    . "Directory='DesktopFolder' Name='$file->{target}'/>\n";
 	    }
 
 	    print ' ' x $::level
 		. "  </File>\n";
 
-	    if (defined $::shortcuts{$targetfull})
+	    if (defined $parser->{shortcuts}->{$targetfull})
 	    {
 		# http://www.mail-archive.com/wix-users@lists.sourceforge.net/msg02746.html
 		# -sice:ICE64
 		print ' ' x $::level
-		    . "    <RemoveFolder Id='rsm_$pkg->{frobbed_name}_$fileidx' "
+		    . "  <RemoveFolder Id='rsm_$pkg->{name}_$fileidx' "
 		    . "Directory='ProgramMenuDir' On='uninstall'/>\n";
 	    }
 
@@ -581,10 +1196,10 @@ sub dump_all
 	    . '/' . $reg->{name};
 
 	    print ' ' x $::level
-		. "<Component Id='c_$pkg->{frobbed_name}_r_$regidx' Guid='"
+		. "<Component Id='c_$pkg->{name}_r_$regidx' Guid='"
 		. get_guid ($target) . "'>\n";
 	    print ' ' x $::level
-		. "  <RegistryValue Id='r_$pkg->{frobbed_name}_$regidx' Root='"
+		. "  <RegistryValue Id='r_$pkg->{name}_$regidx' Root='"
 		. $reg->{root} . "' Key='" . $reg->{key} . "' Name='"
 		. $reg->{name} . "' Action='write' Type='" . $reg->{type}
 		. "' Value='" . $reg->{value} . "'/>\n";
@@ -592,6 +1207,15 @@ sub dump_all
 		. "</Component>\n";
 	    $regidx++;
 	}
+    }
+
+    my @cdir = grep (!/^$/, split (/\\/, $cdir));
+    my $j;
+    for ($j = 0; $j <= $#cdir; $j++)
+    {
+	$::level -= 2;
+	print ' ' x $::level
+	    . "</Directory>\n";
     }
 }
 
@@ -606,14 +1230,14 @@ sub dump_meat
     foreach my $file (@{$pkg->{files}})
     {
 	print ' ' x $::level
-	    . "  <ComponentRef Id='c_$pkg->{frobbed_name}_$fileidx'/>\n";
+	    . "  <ComponentRef Id='c_$pkg->{name}_$fileidx'/>\n";
 	$fileidx++;
     }
     $regidx = 0;
     foreach my $reg (@{$pkg->{registry}})
     {
 	print ' ' x $::level
-	    . "  <ComponentRef Id='c_$pkg->{frobbed_name}_r_$regidx'/>\n";
+	    . "  <ComponentRef Id='c_$pkg->{name}_r_$regidx'/>\n";
 	$regidx++;
     }
 }
@@ -621,10 +1245,13 @@ sub dump_meat
 
 sub dump_all2
 {
-    my $pkg;
+    my ($parser) = @_;
 
-    foreach $pkg (@::components)
+    my $pkgname;
+
+    foreach $pkgname (@{$parser->{pkg_list}})
     {
+	my $pkg = $parser->{pkgs}->{$pkgname};
 	my $features;
 
 	next if $pkg->{hidden};
@@ -634,24 +1261,32 @@ sub dump_all2
 	$features .= " Description='$pkg->{description}'"
 	    if $pkg->{description};
 	
+	my $title = nsis_translate ($parser, '', $pkg->{title});
+
 	print ' ' x $::level
-	    . "<Feature Id='p_$pkg->{frobbed_name}' Level='$pkg->{level}' "
-	    . "Title='$pkg->{title}'" . $features . ">\n";
+	    . "<Feature Id='p_$pkg->{name}' Level='$pkg->{level}' "
+	    . "Title='$title'" . $features . ">\n";
+	if ($pkg->{ini_inst})
+	{
+	    my $uc_pkgname = uc ($pkgname);
+
+	    print ' ' x $::level
+		. "<Condition Level='$::nsis_level_default'>"
+		. "INST_$uc_pkgname = \"true\"</Condition>\n";
+	    print ' ' x $::level
+		. "<Condition Level='$::nsis_level_optional'>"
+		. "INST_$uc_pkgname = \"false\"</Condition>\n";
+	}
+
 	dump_meat ($pkg);
 
-	foreach my $dep (keys %{$::deps{$pkg->{frobbed_name}}})
+	foreach my $dep (keys %{$pkg->{deps}})
 	{
-	    my $deppkg;
-
-	    foreach my $_pkg (@::components)
-	    {
-		$deppkg = $_pkg;
- 		last if ($_pkg->{frobbed_name} eq $dep);
-	    }
+	    my $deppkg = $parser->{pkgs}->{$dep};
 	    
 	    print ' ' x $::level
-		. "  <Feature Id='p_$pkg->{frobbed_name}_$dep' "
-		. "Title='p_$pkg->{frobbed_name}_$dep' "
+		. "  <Feature Id='p_$pkg->{name}_$dep' "
+		. "Title='p_$pkg->{name}_$dep' "
 		. "Level='$pkg->{level}' Display='hidden' "
 		. "InstallDefault='followParent'>\n";
 	    $::level += 2;
@@ -666,32 +1301,103 @@ sub dump_all2
 }
 
 
-# WiX is the Windows Installer XML toolset.  It contains a compiler
-# (candle.exe) and a linker (light.exe) which can assemble an XML file
-# and data files to a Windows installer package (MSI).
-#
-# The following code creates an appropriate XML file for Gpg4win.
+# Just so that it is defined.
+$. = 0;
 
-# We use a single media element, which is also the default for all
-# components and directory elements.
+my %parser = ( pre_depth => 0, pre_true => 0 );
+my $parser = \%parser;
 
-# FIXME: Use Vital for all file attributes?
 fetch_guids ();
-collect_all ();
-get_deps ();
-get_shortcuts ();
 
-$::product_id = get_guid ("/PRODUCT/$::config{_BUILD_FILEVERSION}");
-$::upgrade_code = get_guid ("/UPGRADE/1");
+while ($#ARGV >= 0 and $ARGV[0] =~ m/^-/)
+{
+    my $opt = shift @ARGV;
+    if ($opt =~ m/^--guids$/)
+    {
+	$::guid_file = shift @ARGV;
+    }
+    elsif ($opt =~ m/^--manifest$/)
+    {
+	$::files_file = shift @ARGV;
+    }
+    elsif ($opt =~ m/^-D([^=]*)=(.*)$/)
+    {
+	$parser->{pre_symbols}->{$1} = $2;
+    }
+    elsif ($opt =~ m/^-L(.*)$/)
+    {
+	$::lang = $1;
+	# Test if it is supported.
+	lang_to_lcid ($::lang);	
+    }
+    elsif ($opt eq '--usage')
+    {
+	print STDERR "Usage: $0 [-DNAME=VALUE...] NSIFILE\n";
+	print STDERR "Use --help or -h for more information.\n";
+	exit 1;
+    }
+    elsif ($opt eq '-h' or $opt eq '--help')
+    {
+	print STDERR "Usage: $0 [-DNAME=VALUE...] NSIFILE\n";
+	print STDERR "Convert the .nsi file NSIFILE to a WiX source file.\n";
+	print STDERR "Options:\n";
+        print STDERR "       --guids NAME     Save GUIDs into file NAME (default: $::guid_file)\n";
+        print STDERR "       --manifest NAME  Save included files into file NAME (default: $::files_file)\n";
+        print STDERR "       -DNAME=VALUE     Define preprocessor symbol NAME to VALUE\n";
+        print STDERR "       -LLANG           Build installer for language LANG (default: $::lang)\n";
+	print STDERR "\n";
+        print STDERR "       -h|--help        Print this help and exit\n";
+	exit 0;
+    }
+    else
+    {
+	print STDERR "$0: unknown option $opt\n";
+	print STDERR "Usage: $0 [-DNAME=VALUE...] NSIFILE\n";
+	print STDERR "Use --help or -h for more information.\n";
+	exit 1;
+    }
+}
+
+
+if ($#ARGV < 0)
+{
+    nsis_parse_file ($parser, '-');
+}
+else
+{
+    nsis_parse_file ($parser, $ARGV[0]);
+}
+
+# Add exceptions.
+# ===============
+
+$parser->{pkgs}->{gnupg}->{deps}->{gpg4win} = 1;
+
+# For debugging:
+# use Data::Dumper;
+# print Dumper ($parser);
+# exit;
+
+# Dump the gathered information.
+# ==============================
+
+my $BUILD_FILEVERSION = nsis_fetch ($parser, '_BUILD_FILEVERSION');
+
+my $product_id = get_guid ("/PRODUCT/$BUILD_FILEVERSION");
+my $upgrade_code = get_guid ("/UPGRADE/1");
+
+my $INSTALL_DIR = nsis_fetch ($parser, 'INSTALL_DIR');
+
+my $lcid = lang_to_lcid ($::lang);
 
 print <<EOF;
 <?xml version='1.0'?>
 <Wix xmlns='http://schemas.microsoft.com/wix/2006/wi'>
   <Product Name='Gpg4win'
-           Id='$::product_id'
-           UpgradeCode='$::upgrade_code'
-           Language='1033'
-           Version='$::config{_BUILD_FILEVERSION}'
+           Id='$product_id'
+           UpgradeCode='$upgrade_code'
+           Language='$lcid'
+           Version='$BUILD_FILEVERSION'
            Manufacturer='g10 Code GmbH'>
     <Package Description='Gpg4win Installer'
              Comments='http://www.gpg4win.org/'
@@ -700,10 +1406,10 @@ print <<EOF;
              InstallPrivileges='elevated'
              Manufacturer='g10 Code GmbH'/>
 
-    <Upgrade Id='$::upgrade_code'>
+    <Upgrade Id='$upgrade_code'>
       <UpgradeVersion Property='UPGRADEPROP'
                       IncludeMaximum='no'
-                      Maximum='$::config{_BUILD_FILEVERSION}'/>
+                      Maximum='$BUILD_FILEVERSION'/>
     </Upgrade>
 
     <InstallExecuteSequence>
@@ -718,18 +1424,39 @@ print <<EOF;
     <Media Id='1' Cabinet='gpg4win.cab' EmbedCab='yes'/>
 
     <Property Id="INSTDIR">
-      <RegistrySearch Id='gpg4win_registry' Type='raw'
-      Root='HKLM' Key='Software\\GNU\\GnuPG' Name='Install Directory' />
+      <RegistrySearch Id='gpg4win_instdir_registry' Type='raw'
+       Root='HKLM' Key='Software\\GNU\\GnuPG' Name='Install Directory'/>
+      <IniFileSearch Id='gpg4win_instdir_ini' Type='raw'
+       Name='gpg4win.ini' Section='gpg4win' Key='instdir'/>
     </Property>
 
+EOF
+
+foreach my $pkgname (@{$parser->{pkg_list}})
+{
+    if (exists $parser->{pkgs}->{$pkgname}->{ini_inst})
+    {
+	my $uc_pkgname = uc ($pkgname);
+
+	print <<EOF;
+    <Property Id="INST_$uc_pkgname">
+      <IniFileSearch Id='gpg4win_ini_inst_$pkgname' Type='raw'
+       Name='gpg4win.ini' Section='gpg4win' Key='inst_$pkgname'/>
+    </Property>
+
+EOF
+    }
+}
+
+print <<EOF;
     <Directory Id='TARGETDIR' Name='SourceDir'>
       <Directory Id='ProgramFilesFolder' Name='PFiles'>
         <Directory Id='GNU' Name='GNU'>
-          <Directory Id='INSTDIR' Name='$::INSTDIR'>
+          <Directory Id='INSTDIR' Name='$INSTALL_DIR'>
 EOF
 
 $::level = 12;
-dump_all ();
+dump_all ($parser);
 
 
 print <<EOF;
@@ -738,11 +1465,13 @@ print <<EOF;
       </Directory>
 EOF
 
-if (scalar keys %::shortcuts)
+if (scalar keys %{$parser->{shortcuts}})
 {
+    my $name = nsis_fetch ($parser, 'PRETTY_PACKAGE');
+
     print <<EOF;
       <Directory Id='ProgramMenuFolder' Name='PMenu'>
-        <Directory Id='ProgramMenuDir' Name='$::name'/>
+        <Directory Id='ProgramMenuDir' Name='$name'/>
       </Directory>
 EOF
 }
@@ -760,16 +1489,18 @@ print <<EOF;
 EOF
 
 $::level = 6;
-dump_all2 ();
+dump_all2 ($parser);
     
 #    <Icon Id="Foobar10.exe" SourceFile="FoobarAppl10.exe"/>
+
+# Removed this, because it is not localized:
+#    <UIRef Id='WixUI_ErrorProgressText' />
 
 print <<EOF;
     </Feature>
 
     <WixVariable Id='WixUILicenseRtf' Value='gpl.rtf'/>
     <UIRef Id='WixUI_Mondo' />
-    <UIRef Id='WixUI_ErrorProgressText' />
 
   </Product>
 </Wix>
@@ -780,5 +1511,4 @@ EOF
 # different machine for invocation of WiX.
 
 store_guids ();
-store_files ();
-
+store_files ($parser);

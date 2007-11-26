@@ -19,7 +19,7 @@
 
 
 # This is the very first section installed.
-Section "-gpg4win"
+Section "-gpg4win" SEC_gpg4win
 !ifdef SOURCES
   SetOutPath "$INSTDIR"
   File "${BUILD_DIR}/../gpg4win-${VERSION}.tar.bz2"

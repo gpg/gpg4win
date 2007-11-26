@@ -28,18 +28,22 @@ Instructions
 
 $ cd gpg4win/src
 
-2) Run make-msi.pl to generate the required WiX source file:
+2) Create the required WiX source file:
 
-$ perl make-msi.pl < ../include/config.nsi > gpg4win.wix
+$ make msi
 
 Maintainer note: The program might output the message "GUID list
 stored in make-msi.guids changed, please commit!".  In this case, the
-file make-msi.guids should be committed to the repository.
+modified source file make-msi.guids should be committed to the repository.
 
 3) Now switch to the same directory on the Windows machine, and run
 the script make-msi.bat to create the MSI package:
 
-> make-msi.bat
+> make-msi.bat gpg4win-VERSION.wix
+> make-msi.bat gpg4win-light-VERSION.wix
+
+where VERSION is the full version number of the build (for example,
+1.9.0-svn595).
 
 The batch file assumes that WiX is installed in the canonical
 location.  If that is not the case, you might need to adjust the PATH
@@ -81,11 +85,8 @@ and to the Windows computer by any media or network.  For example,
 they can be grouped in an archive using tar:
 
 $ cd gpg4win
-$ tar -T src/make-msi.files cjf gpg4win-msi.tar.bz2
+$ tar -T src/gpg4win-VERSION.files cjf gpg4win-msi.tar.bz2
 
-Beside the files in gpg4win-msi.tar.bz, you also need src/gpg4win.wix
+Beside the files in gpg4win-msi.tar.bz, you also need src/gpg4win-VERSION.wix
 and src/make-msi.bat on the Windows computer, which should be put into
 the src/ subdirectory of the archive.
-
-
-
