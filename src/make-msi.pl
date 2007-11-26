@@ -18,21 +18,6 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
-# TODO
-# ====
-#
-# 1. The UI extension in WiX 3.0 only supports en-us.
-# Translation to german is desired.
-#
-# 1. Edit license dialog to not require acceptance (see tutorial, lesson 2).
-#
-# 2. Support .ini file for customization.
-#
-# 3. Add README dialog and launch README file:
-# <Property Id='NOTEPAD'>Notepad.exe</Property>
-# <CustomAction Id='LaunchFile' Property='NOTEPAD' ExeCommand='[SourceDir]Readme.txt' Return='asyncNoWait'/>
-# Problems: Dialog is missing.  How to select language to display?
-
 use strict;
 use warnings;
 use diagnostics;
@@ -1175,11 +1160,10 @@ sub dump_all
 		    . "Name='DirMngr' ErrorControl='normal' Start='auto' "
 		    . "Arguments='--service' "
 		    . "Type='ownProcess' Vital='yes'/>\n";
-# FIXME: Start service (currently broken).
-#		print ' ' x $::level
-#		    . "  <ServiceControl Id='s_dirmngr_ctrl' "
-#		    . "Name='DirMngr' Start='install' Stop='uninstall' "
-#		    . "Remove='uninstall'/>\n";
+		print ' ' x $::level
+		    . "  <ServiceControl Id='s_dirmngr_ctrl' "
+		    . "Name='DirMngr' Start='install' Stop='uninstall' "
+		    . "Remove='uninstall'/>\n";
 	    }
 
 	    print ' ' x $::level
