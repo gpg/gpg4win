@@ -41,3 +41,22 @@ diff -rup claws-mail-3.0.2-orig/src/common/w32lib.h claws-mail-3.0.2/src/common/
  
  /*** unistd ***/
  uid_t getuid( void );
+
+
+
+diff -rup claws-mail-3.0.2-orig/src/common/w32_time.c claws-mail-3.0.2/src/common/w32_time.c
+--- claws-mail-3.0.2-orig/src/common/w32_time.c	2007-11-23 17:44:51.000000000 +0100
++++ claws-mail-3.0.2/src/common/w32_time.c	2007-11-23 17:46:32.000000000 +0100
+@@ -24,6 +24,7 @@
+ 
+ #include "w32lib.h"
+ 
++#if ! defined (__MINGW32__) || MINGW32_VERSION < 312
+ int gettimeofday( struct timeval *tv, struct timezone *tz ){
+   struct _timeb tstruct;
+   _ftime( &tstruct );
+@@ -31,3 +32,4 @@ int gettimeofday( struct timeval *tv, st
+   tv->tv_usec = tstruct.millitm;
+   return 1;
+ }
++#endif
