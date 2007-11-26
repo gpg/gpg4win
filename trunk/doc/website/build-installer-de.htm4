@@ -94,17 +94,17 @@ Folgende Schritte müssen nun durchgeführt werden:
      <em>$ cd src</em>
 
 <li> Führen Sie make-msi.pl aus um die benötigten WiX Quelldateien zu erzeugen:<br>
-     <em>$ perl make-msi.pl < ../include/config.nsi > gpg4win.wix</em>
-
-<!-->
-Maintainer note: The program might output the message "GUID list
-stored in make-msi.guids changed, please commit!".  In this case, the
-file make-msi.guids should be committed to the repository.
-<--!>
+     <em>$ make msi</em>
 
 <li> Wechseln Sie nun in genau das gleich Verzeichnis ("src") auf dem Windows System
      und starten Sie das Skript "make-msi.bat" um das MSI-Paket herzustellen:</br>
-     <em>> make-msi.bat</em>
+     <em>> make-msi.bat gpg4win-Version.wix</em><br>
+     or</br>
+     <em>> make-msi.bat gpg4win-light-Version.wix</em>
+
+     <p>wobei "Version" die vollständige Versionsnummer des aktuell erzeugten Installers
+     ist, beispielsweise "1.9.0-svn595". Sie finden die entsprechenden .wix-Dateien
+     im gleichen Verzeichnis vor.</p>
 
     <p>Diese Routine geht davon aus, dass WiX an üblicher Stelle installiert ist.
     Ist das nicht der Fall, muss ggf. der Suchpfad für ausführbare Dateien (PATH-Variable)
@@ -145,10 +145,14 @@ Anpassungen an die individuelle Umgebung.
     in de Datei make-msi.files gespeichert. Diese Liste kann nun
     benutzt werden um alle benötigten Dateien einzuopacken und zu transportieren:<br>
     <em>$ cd gpg4win</em><br>
-    <em>$ tar -T src/make-msi.files cjf gpg4win-msi.tar.bz2</em>
+    <em>$ tar -T src/gpg4win-Version.files cjf gpg4win-msi.tar.bz2</em>
     </p>
 
-   <p>Neben gpg4win-msi.tar.bz wird ausserdem src/gpg4win.wix und
+     <p>wobei "Version" die vollständige Versionsnummer des aktuell erzeugten Installers
+     ist, beispielsweise "1.9.0-svn595". Sie finden auch die entsprechenden .files-Dateien
+     im Verzeichnis "src".</p>
+
+   <p>Neben gpg4win-msi.tar.bz wird ausserdem src/gpg4win-Version.wix und
    src/make-msi.bat auf dem Windows-System benötigt. Sie sollten dort
    auch wieder in das src/ Verzeichnis abgelgegt werden.
 </ul>
