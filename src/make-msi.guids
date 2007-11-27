@@ -39,6 +39,10 @@ b9dd182f-b2c5-48bd-b8f6-4a5161100c8d dirmngr-client.exe
 f1c4e2cc-2048-4587-9da6-01ece27d6ef9 dirmngr_ldap.exe
 03d1416b-0743-44a3-a0b9-b33e714cec79 djpeg.exe
 d47edab0-8b44-46cf-96a3-34e230cd4272 envsubst.exe
+9ba47605-66ce-4c35-97a6-4647257c4dc5 etc\dirmngr\bnetza-10r-ocsp.signer
+d1095726-f0a6-49dc-9eb3-0a22ff1a2909 etc\dirmngr\dirmngr.conf
+1244c140-ed30-4077-8e9a-1b2f39a0a30b etc\dirmngr\trusted-certs\README
+35a1a4c0-d7b9-4466-8c8a-12f153deef70 etc\dirmngr\trusted-certs\bnetza-10r-ca.crt
 cf7de0b8-618e-4a9d-824b-e12cff1ea079 etc\gtk-2.0\gdk-pixbuf.loaders
 73b1a9cb-0060-4068-a0f0-f3eded95dc66 etc\gtk-2.0\gtk.immodules
 2146aa1e-cc15-4602-b8ef-685467a53d3c etc\pango\pango.aliases
