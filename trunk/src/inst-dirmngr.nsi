@@ -41,15 +41,18 @@ Section "-dirmngr" SEC_dirmngr
   File "${prefix}/bin/dirmngr-client.exe"
   File "${prefix}/libexec/dirmngr_ldap.exe"
 
-  SetOutPath "$INSTDIR\etc\dirmngr"
-
+  # Note: The make-msi.pl script ignores the following line and always
+  # installs the configuration files.
   ifFileExists "$INSTDIR\etc\dirmngr\dirmngr.conf" dirmngr_no_conf 0
-   File /nonfatal "${prefix}/share/doc/dirmngr/examples/dirmngr.conf"
-   File /nonfatal "${prefix}/share/doc/dirmngr/examples/bnetza-10r-ocsp.signer"
+   # Once we decide to install the conf files, we need all the example files.
+   SetOutPath "$INSTDIR\etc\dirmngr"
+
+   File "${SRCDIR}/dirmngr.conf"
+   File "${prefix}/share/doc/dirmngr/examples/bnetza-10r-ocsp.signer"
 
    SetOutPath "$INSTDIR\etc\dirmngr\trusted-certs"
-   File /nonfatal "${prefix}/share/doc/dirmngr/examples/trusted-certs/README"
-   File /nonfatal "${prefix}/share/doc/dirmngr/examples/trusted-certs/bnetza-10r-ca.crt"
+   File "${prefix}/share/doc/dirmngr/examples/trusted-certs/README"
+   File "${prefix}/share/doc/dirmngr/examples/trusted-certs/bnetza-10r-ca.crt"
 
   dirmngr_no_conf:
 
