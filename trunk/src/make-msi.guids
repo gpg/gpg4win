@@ -3,6 +3,7 @@ c98dadcc-b796-41cf-aff2-bfa1706a5a6f /PRODUCT/1.9.0.581
 06b9c50c-352a-4fe2-9f47-4f6348d9dda4 /PRODUCT/1.9.0.587
 b3ce3cd9-0436-4348-8c09-106163ad9170 /PRODUCT/1.9.0.595
 e34a3f68-c604-4029-99dc-5c4822556934 /PRODUCT/1.9.0.600
+8806e4a6-c6e3-4b18-879b-2063206c46ef /PRODUCT/1.9.0.608
 fb54db39-2456-4fcc-9550-2790db663015 /REGISTRY/HKLM/Software\GNU\GnuPG/Install Directory
 ad23691b-1734-4dec-b91a-d4ff286190ea /REGISTRY/HKLM/Software\GNU\GnuPG/gpgProgram
 e0807a2f-4e70-48f8-b047-c5d3e219c3e7 /UPGRADE/1
@@ -142,6 +143,7 @@ f9787e10-769c-435b-a589-ae336f6bdfa6 libgpgme-glib-11.dll
 993b4902-699c-4b11-9fce-2c8bc7a06bf9 libkdeui.dll
 52adadd9-7fc7-4f6b-be24-02345226306b libkdewin32.dll
 49f0646b-ace5-493e-bcb3-c7f7c9cd97c2 libkleo.dll
+64bb7e08-4a6b-4002-b4b5-b38f51b37cf3 libkmime.dll
 9ee05862-7c98-4fe7-b6d8-77b4ee3c4758 libksba-8.dll
 5747f79b-c2a3-4871-99ec-fad7a69e1968 libpango-1.0-0.dll
 22fd4941-f2f2-4f20-8e67-82baffb785f8 libpangocairo-1.0-0.dll
