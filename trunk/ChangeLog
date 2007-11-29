@@ -1,3 +1,9 @@
+2007-11-29  Marcus Brinkmann  <marcus@g10code.de>
+
+	* packages/packages.current: Update pinentry.
+	* configure.ac: Merge duplicated pinentry entries.
+	Make gnupg2 dependent on pinentry.
+
 2007-11-27  Marcus Brinkmann  <marcus@g10code.de>
 
 	* src/dirmngr.conf: New file.
