@@ -1316,10 +1316,13 @@ sub dump_all2
 	{
 	    my $deppkg = $parser->{pkgs}->{$dep};
 	    
+	    # We use Level=1 because with InstallDefault followParent
+	    # the Level seems to specify some sort of minimum install
+	    # level or something (FIXME: confirm this).
 	    print ' ' x $::level
 		. "  <Feature Id='p_$pkg->{name}_$dep' "
 		. "Title='p_$pkg->{name}_$dep' "
-		. "Level='$pkg->{level}' Display='hidden' "
+		. "Level='1' Display='hidden' "
 		. "InstallDefault='followParent'>\n";
 	    $::level += 2;
 	    dump_meat ($deppkg);
