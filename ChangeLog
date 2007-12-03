@@ -1,3 +1,8 @@
+2007-12-03  Marcus Brinkmann  <marcus@g10code.de>
+
+	* src/make-msi.pl (dump_all2): Hard code level for hidden packages
+	to 1.
+
 2007-11-30  Marcus Brinkmann  <marcus@g10code.de>
 
 	* packages/packages.current: Update gpgex.
