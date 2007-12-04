@@ -1,5 +1,10 @@
 2007-12-04  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
 
+	* website/versions.m4: Removed leading "/" for URLs to manuals.
+	This enables the offline version of the html pages to work better.
+
+2007-12-04  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
+
 	* website/build-installer-on-vm.htm4, website/build-installer-on-vm-de.htm4,
 	website/build-installer-on-w32-debian-screenshots-de.htm4,
 	website/build-installer-on-w32-debian-screenshots.htm4: Fixes in command
