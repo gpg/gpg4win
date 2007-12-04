@@ -20,7 +20,7 @@ Windows</a>
 
 <pre>
 
-qemu -m 256 -L %QEMU -cdrom debian-40r0-i386-businesscard.iso -hda install.img -boot d -kernel-kqemu</tt>
+qemu -m 256 -L %QEMU% -cdrom debian-40r0-i386-businesscard.iso -hda install.img -boot d -kernel-kqemu</tt>
 
 </pre>
 
@@ -162,7 +162,7 @@ The virtual machine is again started now with the following command:
 
 <pre>
 
-qemu -m 256 -L %QEMU -hda install.img -kernel-kqemu -redir tcp:5555::22
+qemu -m 256 -L %QEMU%\pc-bios -hda install.img -kernel-kqemu -redir tcp:5555::22
 
 </pre>
 

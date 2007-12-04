@@ -1,5 +1,12 @@
 2007-12-04  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
 
+	* website/build-installer-on-vm.htm4, website/build-installer-on-vm-de.htm4,
+	website/build-installer-on-w32-debian-screenshots-de.htm4,
+	website/build-installer-on-w32-debian-screenshots.htm4: Fixes in command
+	line samples.
+
+2007-12-04  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
+
 	* README-BETA-de.txt: New. Report (in german) on status of
 	current Beta version.
 

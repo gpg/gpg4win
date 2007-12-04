@@ -165,7 +165,7 @@ GNU/Linux etwas detaillierter beschrieben</a> und
 
 <pre>
    cd /d &lt;Arbeitsverzeichnis&gt;
-   QEMU=C:\Programme\Qemu
+   set QEMU=C:\Programme\Qemu
    set PATH=%QEMU%;%PATH%
 </pre>
 
@@ -200,7 +200,7 @@ GNU/Linux etwas detaillierter beschrieben</a> und
 
 <pre>
 
-   qemu -k de -m 256 -boot c -L %QEMU%\pc-bios -hda install.img
+   qemu -k de -m 256 -boot d -L %QEMU%\pc-bios -hda install.img
         -cdrom debian-40r0-i386-businesscard.iso -kernel-kqemu
 
 </pre>
