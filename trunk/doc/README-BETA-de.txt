@@ -84,8 +84,12 @@ Aktualisiert:
   * Achtung: Es kann gelegentlich vorkommen, dass Kleopatra beendet
     wird (kein Schlüsselsymbol mehr in Task-Leiste oder Symbol
     verschwindet in dem Moment wo man mit der Maus darüber fährt).
-    In diesem Fall kann es zu Fehlerb bei GpgOL kommen.
+    In diesem Fall kann es zu Fehlern bei GpgOL kommen.
     Kleopatra sollte über das Startmenü neu gestartet werden.
+
+  * Hinweis: Der Import einer von P12- und PEM-Dateien ist
+    derzeit nur über die Kommandozeile möglich, z.B.:
+    gpgsm --import datei.p12
 
   * Grundsätzlich hängt die Menge der funktionierenden Operationen
     wesentlich vom gegenwärtigen Entwicklungsstand von Kleopatra ab.
@@ -101,21 +105,24 @@ Aktualisiert:
       aber entschlüsselter Text kann nicht angezeigt werden.
     - Entschlüsselung OpenPGP/MIME: Grundsätzlich funktional, muss aber
       noch verbessert werden
-    - Entschlüsselung S/MIME Opaque: nicht geprüft (P12-Import defekt)
-    - Entschlüsselung S/MIME: nicht geprüft (P12-Import defekt)
+    - Entschlüsselung S/MIME Opaque: Grundsätzlich
+      funktional, muss aber noch verbessert werden
+    - Entschlüsselung S/MIME: Grundsätzlich
+      funktional, muss aber noch verbessert werden
     - Signatur-Prüfung und Entschlüsselung inline-OpenPGP: nicht geprüft
       (Test-E-Mails nicht auf einfache Weise herstellbar)
     - Signatur-Prüfung und Entschlüsselung OpenPGP/MIME: Grundsätzlich
       funktional, muss aber noch verbessert werden
-    - Signatur-Prüfung und Entschlüsselung S/MIME Opaque: nicht geprüft (P12-Import defekt)
-    - Signatur-Prüfung und Entschlüsselung S/MIME: nicht geprüft (P12-Import defekt)
+    - Signatur-Prüfung und Entschlüsselung S/MIME Opaque: Funktion defekt
+    - Signatur-Prüfung und Entschlüsselung S/MIME: Grundsätzlich
+      funktional, muss aber noch verbessert werden
 
     - Signatur OpenPGP/MIME: Funktion defekt: Signatur wird nicht erstellt
-    - Signatur S/MIME: nicht geprüft (P12-Import defekt)
+    - Signatur S/MIME: Funktion defekt: Signatur wird nicht erstellt
     - Verschlüsselung OpenPGP/MIME: Funktion defekt: Absturz von Kleopatra
-    - Verschlüsselung S/MIME: Funktione defekt: Abssturz von Kleopatra
+    - Verschlüsselung S/MIME: Funktione defekt: Absturz von Kleopatra
     - Signatur und Verschlüsselung OpenPGP/MIME: Funktion defekt
-    - Signatur und Verschlüsselung S/MIME: nicht geprüft (P12-Import defekt)
+    - Signatur und Verschlüsselung S/MIME: Funktion defekt: Absturz von Kleopatra
 
 Neu:
 
