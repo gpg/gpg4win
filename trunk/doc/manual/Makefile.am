@@ -105,28 +105,24 @@ novices.html : version.tex macros-en.tex $(eps_files_png)
 #advanced.dvi : version.tex macros-en.tex $(eps_files_bb)
 #advanced.html : version.tex macros-en.tex $(eps_files_png)
 
-webversion: einsteiger.html durchblicker.html novices.html 
+htmlversion: einsteiger.html durchblicker.html novices.html
 # advanced.html
+	rm -rf html
+	mkdir html
+	cp einsteiger*.html durchblicker*.html novices*.html html/
+	cp $(web_png_files) $(png_files) $(eps_files_png) gpg4win-logo.png html/
 
-online: webversion
+online: htmlversion
 	set -e; \
 	echo "Going to put current manuals online for www.gpg4win.org ..."; \
         user=`svn info | sed -n '/^URL:/ s,.*svn+ssh://\\([^@]*\\).*,\\1,p'`;\
-	rsync -v --exclude='.svn' einsteiger*.html durchblicker*.html \
-          novices*.html \
-	  einsteiger.css durchblicker.css \
-	  $(web_png_files) $(png_files) $(eps_files_png) gpg4win-logo.png \
-	  $${user}@wald.intevation.org:/gpg4win/htdocs/handbuecher/
+	( cd html ; rsync -v * \
+	  $${user}@wald.intevation.org:/gpg4win/htdocs/handbuecher/ )
 
-preview: webversion
+preview: htmlversion
 	set -e; \
 	echo "Rsyncing the HTML manuals to the preview host ..."; \
-	rsync -v --exclude='.svn' einsteiger*.html durchblicker*.html \
-          novices*.html \
-	  einsteiger.css durchblicker.css \
-	  $(web_png_files) $(png_files) $(eps_files_png) gpg4win-logo.png \
-	  ${PREVIEWHOST}/
-
+	( cd html ; rsync -v * ${PREVIEWHOST}/ )
 
 %.eps.bb : %.eps.gz
 	$(ZCAT) `test -f '$<' || echo '$(srcdir)/'`$< \
