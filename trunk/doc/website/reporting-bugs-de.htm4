@@ -45,6 +45,9 @@ kann):
 <li><a href="http://wald.intevation.org/tracker/?group_id=13">
     GPA Bug Tracking</a>
      <p>
+<li><a href="http://bugs.kde.org/component-report.cgi?product=kleopatra">
+    Kleopatra Bug Tracking</a>
+     <p>
 <li><a href="http://www.excelcia.org/modules.php?name=Forums&file=viewforum&f=1">
     GPGee Forum</a> (GPGee bietet keinen Bug Tracker, Anwender werden
     aufgefordert Probleme im Forum zu berichten)
@@ -53,7 +56,7 @@ kann):
     Claws Mail Bug Tracking</a>
      <p>
 <li><a href="http://www.gnupg.org/(de)/documentation/bts.html">
-    GnuPG und GPGol Bug Tracking</a>
+    GnuPG, GpgOL und GpgEX Bug Tracking</a>
 </ul>
 
 <p>

@@ -1,3 +1,8 @@
+2007-12-06  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
+
+	* website/reporting-bugs.htm4, website/reporting-bugs-de.htm4:
+	Added URL for Kleopatra and added GpgEX.
+
 2007-12-05  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
 
 	* manuals/Makefile.am: replaced target webversion by target

@@ -44,6 +44,9 @@ register before submitting or commenting a bug):
 <li><a href="http://wald.intevation.org/tracker/?group_id=13">
     GPA bug tracking</a>
      <p>
+<li><a href="http://bugs.kde.org/component-report.cgi?product=kleopatra">
+    Kleopatra Bug Tracking</a>
+     <p>
 <li><a href="http://www.excelcia.org/modules.php?name=Forums&file=viewforum&f=1">
     GPGee Forum</a> (GPGee has no bug tracker, users are asked to report
     problems in the forum)
@@ -52,7 +55,7 @@ register before submitting or commenting a bug):
     Claws Mail bug tracking</a>
      <p>
 <li><a href="http://www.gnupg.org/(en)/documentation/bts.html">
-    GnuPG and GPGol bug tracking</a>
+    GnuPG, GpgOL and GpgEX bug tracking</a>
 </ul>
 
 <p>
