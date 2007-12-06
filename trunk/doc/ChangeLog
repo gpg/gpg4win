@@ -1,5 +1,10 @@
 2007-12-06  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
 
+	* README-BETA-de.txt: Section "Bekannte Fehler" ("known errors")
+	added and filled.
+
+2007-12-06  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
+
 	* website/reporting-bugs.htm4, website/reporting-bugs-de.htm4:
 	Added URL for Kleopatra and added GpgEX.
 

@@ -162,3 +162,28 @@ Neu:
   * Die einzelnen Krypto-Dialoge sind noch nicht vollständig implementiert,
     stattdessen sind teilweise Platzhalter-Dialog mit eingeschränkter
     Funktionalität enthalten.
+
+
+Bekannte Fehler
+---------------
+
+* GpgOL: does not decrypt inline-PGP received prior to Gpg4win-1.9.0
+  https://bugs.g10code.com/gnupg/issue861
+
+* GpgOL: same title for different toolbar items
+  https://bugs.g10code.com/gnupg/issue862
+
+* GpgOL: Can not create OpenPGP Signature.
+  https://bugs.g10code.com/gnupg/issue863
+
+* Claws Mail: Freezes if password dialog is cancelled
+  http://wald.intevation.org/tracker/index.php?func=detail&aid=548&group_id=11&atid=126
+
+* The button to report a bug does not work
+  http://bugs.kde.org/show_bug.cgi?id=153565
+
+* Extend Menu of Tray-Kleopatra
+  http://bugs.kde.org/show_bug.cgi?id=153566
+
+* Kleopatra: Check GpgConf results in error not finding config
+  http://wald.intevation.org/tracker/index.php?func=detail&aid=556&group_id=11&atid=126
