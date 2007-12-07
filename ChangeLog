@@ -1,5 +1,13 @@
 2007-12-07  Marcus Brinkmann  <marcus@g10code.de>
 
+	* src/inst-sections.nsi: Install manuals in subdirectories for
+	start menu and desktop.
+	* src/installer-finish.nsi: Uninstall the manuals in those
+	subdirectories.
+	* src/installer.nsi: Add language strings for the subdirectory
+	names.
+	* po/de.po: Update.
+
 	* packages/packages.current: Update kleopatra to 20071207.
 
 	* src/inst-gpgex.nsi: Detect and uninstall a previously installed
