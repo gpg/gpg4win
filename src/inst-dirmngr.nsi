@@ -41,10 +41,10 @@ Section "-dirmngr" SEC_dirmngr
   File "${prefix}/bin/dirmngr-client.exe"
   File "${prefix}/libexec/dirmngr_ldap.exe"
 
-  # Note: The make-msi.pl script ignores the following line and always
-  # installs the configuration files.
+  # Note: The make-msi.pl script ignores the following line, which is
+  # ok, because the Windows installer does not override locally
+  # modified files.
   ifFileExists "$INSTDIR\etc\dirmngr\dirmngr.conf" dirmngr_no_conf 0
-   # Once we decide to install the conf files, we need all the example files.
    SetOutPath "$INSTDIR\etc\dirmngr"
 
    File "${SRCDIR}/dirmngr.conf"
@@ -53,7 +53,6 @@ Section "-dirmngr" SEC_dirmngr
    SetOutPath "$INSTDIR\etc\dirmngr\trusted-certs"
    File "${prefix}/share/doc/dirmngr/examples/trusted-certs/README"
    File "${prefix}/share/doc/dirmngr/examples/trusted-certs/bnetza-10r-ca.crt"
-
   dirmngr_no_conf:
 
   SetOutPath "$INSTDIR"
