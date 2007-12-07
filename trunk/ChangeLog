@@ -1,7 +1,7 @@
 2007-12-07  Marcus Brinkmann  <marcus@g10code.de>
 
-	* src/uninst-gpgex.nsi: Detect and uninstall a previously
-	installed GPGee.
+	* src/inst-gpgex.nsi: Detect and uninstall a previously installed
+	GPGee.
 
 2007-12-03  Marcus Brinkmann  <marcus@g10code.de>
 
