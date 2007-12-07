@@ -23,12 +23,8 @@
 !define prefix ${ipdir}/gpgex-${gpg4win_pkg_gpgex_version}
 
 
-Section "GpgEX" SEC_gpgex
-  SetOutPath "$INSTDIR"
-!ifdef SOURCES
-  File "${gpg4win_pkg_gpgex}"
-!else
-
+Section "-removegpgee"
+!ifndef SOURCES
 # Uninstall a previous gpgee version, if it exists.
   ifFileExists "$INSTDIR\GPGee.dll" 0 gpgex_no_gpgee
     UnRegDLL "$INSTDIR\GPGee.dll"
@@ -40,6 +36,15 @@ Section "GpgEX" SEC_gpgex
     RMDir "$INSTDIR\share"
     RMDir "$INSTDIR"
   gpgex_no_gpgee:
+!endif
+SectionEnd
+
+
+Section "GpgEX" SEC_gpgex
+  SetOutPath "$INSTDIR"
+!ifdef SOURCES
+  File "${gpg4win_pkg_gpgex}"
+!else
 
   ClearErrors
   SetOverwrite try
