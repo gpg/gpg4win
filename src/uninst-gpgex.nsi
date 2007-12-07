@@ -30,18 +30,6 @@ Section "-un.gpgex"
   Call un.SourceDelete
 !else
 
-# Uninstall a previous gpgee version, if it exists.
-  ifFileExists "$INSTDIR\GPGee.dll" 0 gpgex_no_gpgee
-    UnRegDLL "$INSTDIR\GPGee.dll"
-    Delete /REBOOTOK "$INSTDIR\GPGee.dll"
-    Delete /REBOOTOK "$INSTDIR\GPGee.DEU"
-    Delete "$INSTDIR\GPGee.hlp"
-    Delete "$INSTDIR\share\gpgee\gpl.txt"
-    RMDir "$INSTDIR\share\gpgee"
-    RMDir "$INSTDIR\share"
-    RMDir "$INSTDIR"
-  gpgex_no_gpgee:
-
   Delete "$INSTDIR\share\doc\gpgex\gpgex-en.html"
   Delete "$INSTDIR\share\doc\gpgex\gpgex-de.html"
   RMDir "$INSTDIR\share\doc\gpgex"
