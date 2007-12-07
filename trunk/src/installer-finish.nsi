@@ -54,6 +54,10 @@ Section Uninstall
   StrCmp $R0 "" +2
   StrCpy $MYTMP $R0
   Delete "$SMPROGRAMS\$MYTMP\*.lnk"
+  Delete "$SMPROGRAMS\$MYTMP\$(DESC_Menu_manuals)\*.lnk"
+  Delete "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_man_novice_de).lnk"
+
+  RMDir "$SMPROGRAMS\$MYTMP\$(DESC_Desktop_manuals)"
   StrCpy $MYTMP "$SMPROGRAMS\$MYTMP"
   startMenuDeleteLoop:
     ClearErrors
@@ -84,22 +88,23 @@ Section Uninstall
 !endif
 !ifdef HAVE_PKG_CLAWS_MAIL
   Delete "$DESKTOP\Claws-Mail.lnk"
-  Delete "$DESKTOP\Claws-Mail Manual.lnk"
+  Delete "$DESKTOP\$(DESC_Desktop_manuals)\Claws-Mail Manual.lnk"
 !endif
 !ifdef HAVE_PKG_MAN_NOVICE_DE
-  Delete "$DESKTOP\$(DESC_Name_man_novice_de).lnk"
+  Delete "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_man_novice_de).lnk"
 !endif
 !ifdef HAVE_PKG_MAN_NOVICE_EN
-  Delete "$DESKTOP\$(DESC_Name_man_novice_en).lnk"
+  Delete "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_man_novice_en).lnk"
 !endif
 !ifdef HAVE_PKG_MAN_ADVANCED_DE
-  Delete "$DESKTOP\$(DESC_Name_man_advanced_de).lnk"
+  Delete "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_man_advanced_de).lnk"
 !endif
 !ifdef HAVE_PKG_GPGEE
-  Delete "$DESKTOP\GPGee Manual.lnk"
+  Delete "$DESKTOP\$(DESC_Desktop_manuals)\GPGee Manual.lnk"
 !endif
-  Delete "$DESKTOP\GnuPG FAQ.lnk"
-  Delete "$DESKTOP\Gpg4Win README.lnk"
+  Delete "$DESKTOP\$(DESC_Desktop_manuals)\GnuPG FAQ.lnk"
+  Delete "$DESKTOP\$(DESC_Desktop_manuals)\Gpg4Win README.lnk"
+  RMDir "$DESKTOP\$(DESC_Desktop_manuals)"
 
   # Delete Quick Launch Bar links.
   StrCmp $QUICKLAUNCH $TEMP no_quick_launch_uninstall

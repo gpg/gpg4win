@@ -876,6 +876,7 @@ Section "-startmenu"
 
 !insertmacro MUI_STARTMENU_WRITE_BEGIN Application
     CreateDirectory "$SMPROGRAMS\$STARTMENU_FOLDER"
+    CreateDirectory "$SMPROGRAMS\$STARTMENU_FOLDER\$(DESC_Menu_manuals)"
 
 !ifdef HAVE_PKG_WINPT
     SectionGetFlags ${SEC_winpt} $R0 
@@ -915,7 +916,8 @@ Section "-startmenu"
 	"$INSTDIR\sylpheed-claws.exe" \
         "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_sylpheed)
 !ifndef GPG4WIN_LIGHT
-    CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\Sylpheed-Claws Manual.lnk" \
+    CreateShortCut \
+        "$SMPROGRAMS\$STARTMENU_FOLDER\$(DESC_Menu_manuals)\Sylpheed-Claws Manual.lnk" \
 	"$INSTDIR\sylpheed-claws-manual.pdf" \
 	"" "" "" SW_SHOWNORMAL "" $(DESC_Menu_sylpheed_pdf)
 !endif
@@ -930,7 +932,8 @@ Section "-startmenu"
 	"$INSTDIR\claws-mail.exe" \
         "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_claws_mail)
 !ifndef GPG4WIN_LIGHT
-    CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\Claws-Mail Manual.lnk" \
+    CreateShortCut \
+        "$SMPROGRAMS\$STARTMENU_FOLDER\$(DESC_Menu_manuals)\Claws-Mail Manual.lnk" \
 	"$INSTDIR\claws-mail-manual.pdf" \
 	"" "" "" SW_SHOWNORMAL "" $(DESC_Menu_claws_mail_pdf)
 !endif
@@ -952,7 +955,7 @@ Section "-startmenu"
     IntOp $R0 $R0 & ${SF_SELECTED} 
     IntCmp $R0 ${SF_SELECTED} 0 no_man_novice_en_menu 
     CreateShortCut \
-        "$SMPROGRAMS\$STARTMENU_FOLDER\$(DESC_Name_man_novice_en).lnk" \
+        "$SMPROGRAMS\$STARTMENU_FOLDER\$(DESC_Menu_manuals)\$(DESC_Name_man_novice_en).lnk" \
 	"$INSTDIR\share\gpg4win\novices.pdf" \
         "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_man_novice_en)
   no_man_novice_en_menu:
@@ -963,7 +966,7 @@ Section "-startmenu"
     IntOp $R0 $R0 & ${SF_SELECTED} 
     IntCmp $R0 ${SF_SELECTED} 0 no_man_advanced_en_menu 
     CreateShortCut \
-        "$SMPROGRAMS\$STARTMENU_FOLDER\$(DESC_Name_man_advanced_en).lnk" \
+        "$SMPROGRAMS\$STARTMENU_FOLDER\$(DESC_Menu_manuals)\$(DESC_Name_man_advanced_en).lnk" \
 	"$INSTDIR\share\gpg4win\advanced.pdf" \
         "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_man_advanced_en)
   no_man_advanced_en_menu:
@@ -974,7 +977,7 @@ Section "-startmenu"
     IntOp $R0 $R0 & ${SF_SELECTED} 
     IntCmp $R0 ${SF_SELECTED} 0 no_man_novice_de_menu 
     CreateShortCut \
-        "$SMPROGRAMS\$STARTMENU_FOLDER\$(DESC_Name_man_novice_de).lnk" \
+        "$SMPROGRAMS\$STARTMENU_FOLDER\$(DESC_Menu_manuals)\$(DESC_Name_man_novice_de).lnk" \
 	"$INSTDIR\share\gpg4win\einsteiger.pdf" \
         "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_man_novice_de)
   no_man_novice_de_menu:
@@ -985,7 +988,7 @@ Section "-startmenu"
     IntOp $R0 $R0 & ${SF_SELECTED} 
     IntCmp $R0 ${SF_SELECTED} 0 no_man_advanced_de_menu 
     CreateShortCut \
-        "$SMPROGRAMS\$STARTMENU_FOLDER\$(DESC_Name_man_advanced_de).lnk" \
+        "$SMPROGRAMS\$STARTMENU_FOLDER\$(DESC_Menu_manuals)\$(DESC_Name_man_advanced_de).lnk" \
 	"$INSTDIR\share\gpg4win\durchblicker.pdf" \
         "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_man_advanced_de)
   no_man_advanced_de_menu:
@@ -995,18 +998,21 @@ Section "-startmenu"
     SectionGetFlags ${SEC_gpgee} $R0 
     IntOp $R0 $R0 & ${SF_SELECTED} 
     IntCmp $R0 ${SF_SELECTED} 0 no_gpgee_menu 
-    CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\GPGee Manual.lnk" \
+    CreateShortCut \
+        "$SMPROGRAMS\$STARTMENU_FOLDER\$(DESC_Menu_manuals)\GPGee Manual.lnk" \
 	"$INSTDIR\GPGee.hlp" "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_gpgee_hlp)
   no_gpgee_menu:
 !endif
 
-    CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\GnuPG FAQ.lnk" \
-                   "$INSTDIR\share\gnupg\faq.html" \
-                   "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_gnupg_faq)
+    CreateShortCut \
+      "$SMPROGRAMS\$STARTMENU_FOLDER\$(DESC_Menu_manuals)\GnuPG FAQ.lnk" \
+      "$INSTDIR\share\gnupg\faq.html" \
+      "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_gnupg_faq)
 
-    CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\Gpg4Win README.lnk" \
-                   "$INSTDIR\share\gpg4win\README.$(T_LangCode).txt" \
-                   "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_gpg4win_readme)
+    CreateShortCut \
+      "$SMPROGRAMS\$STARTMENU_FOLDER\$(DESC_Menu_manuals)\Gpg4Win README.lnk" \
+      "$INSTDIR\share\gpg4win\README.$(T_LangCode).txt" \
+      "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_gpg4win_readme)
 
 # No more uninstall link because Windows has its own feature to call
 #  the uninstaller.
@@ -1022,6 +1028,8 @@ Section "-startmenu"
   !insertmacro MUI_INSTALLOPTIONS_READ $R0 "installer-options.ini" \
 	"Field 3" "State"
   IntCmp $R0 0 no_desktop
+
+  CreateDirectory "$DESKTOP\$(DESC_Desktop_manuals)"
 
 !ifdef HAVE_PKG_WINPT
     SectionGetFlags ${SEC_winpt} $R0 
@@ -1078,7 +1086,8 @@ Section "-startmenu"
 	"$INSTDIR\claws-mail.exe" \
         "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_claws_mail)
 !ifndef GPG4WIN_LIGHT
-    CreateShortCut "$DESKTOP\Claws-Mail Manual.lnk" \
+    CreateShortCut \
+        "$DESKTOP\$(DESC_Desktop_manuals)\Claws-Mail Manual.lnk" \
 	"$INSTDIR\claws-mail-manual.pdf" \
 	"" "" "" SW_SHOWNORMAL "" $(DESC_Menu_claws_mail_pdf)
 !endif
@@ -1090,7 +1099,7 @@ Section "-startmenu"
     IntOp $R0 $R0 & ${SF_SELECTED} 
     IntCmp $R0 ${SF_SELECTED} 0 no_man_novice_en_desktop
     CreateShortCut \
-        "$DESKTOP\$(DESC_Name_man_novice_en).lnk" \
+        "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_man_novice_en).lnk" \
 	"$INSTDIR\share\gpg4win\novices.pdf" \
         "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_man_novice_en)
   no_man_novice_en_desktop:
@@ -1101,7 +1110,7 @@ Section "-startmenu"
     IntOp $R0 $R0 & ${SF_SELECTED} 
     IntCmp $R0 ${SF_SELECTED} 0 no_man_advanced_en_desktop
     CreateShortCut \
-        "$DESKTOP\$(DESC_Name_man_advanced_en).lnk" \
+        "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_man_advanced_en).lnk" \
 	"$INSTDIR\share\gpg4win\advanced.pdf" \
         "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_man_advanced_en)
   no_man_advanced_en_desktop:
@@ -1112,7 +1121,7 @@ Section "-startmenu"
     IntOp $R0 $R0 & ${SF_SELECTED} 
     IntCmp $R0 ${SF_SELECTED} 0 no_man_novice_de_desktop
     CreateShortCut \
-        "$DESKTOP\$(DESC_Name_man_novice_de).lnk" \
+        "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_man_novice_de).lnk" \
 	"$INSTDIR\share\gpg4win\einsteiger.pdf" \
         "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_man_novice_de)
   no_man_novice_de_desktop:
@@ -1123,7 +1132,7 @@ Section "-startmenu"
     IntOp $R0 $R0 & ${SF_SELECTED} 
     IntCmp $R0 ${SF_SELECTED} 0 no_man_advanced_de_desktop
     CreateShortCut \
-        "$DESKTOP\$(DESC_Name_man_advanced_de).lnk" \
+        "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_man_advanced_de).lnk" \
 	"$INSTDIR\share\gpg4win\durchblicker.pdf" \
         "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_man_advanced_de)
   no_man_advanced_de_desktop:
@@ -1138,7 +1147,7 @@ Section "-startmenu"
   no_gpgee_desktop:
 !endif
 
-    CreateShortCut "$DESKTOP\GnuPG FAQ.lnk" \
+    CreateShortCut "$DESKTOP\$(DESC_Desktop_manuals)\GnuPG FAQ.lnk" \
                    "$INSTDIR\share\gnupg\faq.html" \
                    "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_gnupg_faq)
 
@@ -1211,4 +1220,3 @@ SectionEnd
 
 # FIXME: Now write desktop and quick launch bar.
 # Don't forget to delete the corr. entries in installer-finish. Uninstall.
-

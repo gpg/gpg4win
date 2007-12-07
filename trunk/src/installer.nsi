@@ -230,6 +230,15 @@ LangString T_ShowReadme ${LANG_ENGLISH} \
 LangString T_NoKeyManager ${LANG_ENGLISH} \
    "No key manager has been installed, thus we can't run one now."
 
+# Used as subdirectory name in Start Menu.
+
+LangString DESC_Menu_manuals ${LANG_ENGLISH} \
+   "Documentation"
+
+# Used as subdirectory name on Desktop.
+LangString DESC_Desktop_manuals ${LANG_ENGLISH} \
+   "Gpg4win Documentation"
+
 
 # Functions
 
