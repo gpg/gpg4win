@@ -100,7 +100,9 @@ Translation to german is desired.
 
 2. Edit license dialog to not require acceptance (see tutorial, lesson 2).
 
-3. Support (optional) shortcuts on desktop and quicklaunch.  Make
+3. Put manual shortcuts in start menu into subdirectory.
+
+Also, support (optional) shortcuts on desktop and quicklaunch.  Make
 customizable via ini file.  No idea how to do this, actually.
 
 4. Add README dialog and launch README file:

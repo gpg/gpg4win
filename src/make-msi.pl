@@ -813,7 +813,8 @@ sub gpg4win_nsis_stubs
 	    # for a block between two labels.
 	    return if ($link !~ m/STARTMENU_FOLDER/);
 
-	    # Take the base name of the link.  */
+	    # Take the base name of the link.
+	    # FIXME: We want the manuals in a subdirectory.
 	    $link =~ s/^.*\\([^\\]*)\"$/$1/;
 	    $link =~ s/\.lnk$//;
 
