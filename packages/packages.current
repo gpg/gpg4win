@@ -86,9 +86,11 @@ server ftp://ftp.g10code.com/mirrors/claws
 #chk   3b15730065ca1e0c318592b39b02c2d0497e6ebc
 #file  claws-mail-2.10.0.tar.bz2
 #chk   0ee38ec2dd0c37941b0bcc4af7ab441ec432c63c
+#file  claws-mail-3.0.2.tar.bz2
+#chk   a607aca53a349f3a0a8d8f7a51f4754705e12350
 
-file  claws-mail-3.0.2.tar.bz2
-chk   a607aca53a349f3a0a8d8f7a51f4754705e12350
+file  claws-mail-3.1.0cvs70.tar.bz2
+chk   94abcee174c8405fa4cbfe67294377928b55c6f6
 
 #
 # Pthreads for Windows.
