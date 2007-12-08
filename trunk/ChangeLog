@@ -1,3 +1,15 @@
+2007-12-09  Marcus Brinkmann  <marcus@g10code.de>
+
+	* packages/packages.current: Update claws-mail.
+	* src/Makefile.am (gpg4win_pkg_claws_mail_configure): Enable
+	libetpan.
+	* src/inst-sections.nsi: Include libetpan install scripts.
+	* patches/claws-mail-3.1.0cvs70/01-w32-logo.patch,
+	patches/claws-mail-3.1.0cvs70/02-w32-icon.patch,
+	patches/claws-mail-3.1.0cvs70/03-smime-plugin.patch,
+	patches/claws-mail-3.1.0cvs70/99-auto.patch: New files.
+	* Makefile.am (EXTRA_DIST): Add claws-mail 3.1.0cvs70 patches.
+
 2007-12-07  Marcus Brinkmann  <marcus@g10code.de>
 
 	* src/inst-sections.nsi: Install manuals in subdirectories for

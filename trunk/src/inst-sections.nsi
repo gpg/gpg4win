@@ -116,6 +116,9 @@
 !ifdef HAVE_PKG_CLAWS_MAIL
 !include "inst-claws-mail.nsi"
 !endif
+!ifdef HAVE_PKG_CLAWS_MAIL
+!include "inst-libetpan.nsi"
+!endif
 #!ifdef HAVE_PKG_EUDORAGPG
 #!include "inst-eudoragpg.nsi"
 #!endif
@@ -179,6 +182,9 @@
 #!ifdef HAVE_PKG_EUDORAGPG
 #!include "uninst-eudoragpg.nsi"
 #!endif
+!ifdef HAVE_PKG_CLAWS_MAIL
+!include "uninst-libetpan.nsi"
+!endif
 !ifdef HAVE_PKG_CLAWS_MAIL
 !include "uninst-claws-mail.nsi"
 !endif
