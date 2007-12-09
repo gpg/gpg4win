@@ -71,8 +71,8 @@ chk  b9faae10efae552f23c213891a3ed8187cb7d017
 
 server ftp://ftp.g10code.com/g10code/scratch
 
-file libetpan-0.52-dev-20071029.tar.gz
-chk  bf01a5754831f833745ee8812463a327b4be060b
+file libetpan-0.52-dev-20071209.tar.gz
+chk  f4731684a1ae28e219f7a6eae01f0a5e7bd9306f
 
 #
 # Claws

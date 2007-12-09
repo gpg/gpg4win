@@ -1,6 +1,9 @@
 2007-12-09  Marcus Brinkmann  <marcus@g10code.de>
 
+	* packages/packages.current: Update libetpan.
+
 	* packages/packages.current: Update claws-mail.
+
 	* src/Makefile.am (gpg4win_pkg_claws_mail_configure): Enable
 	libetpan.
 	* src/inst-sections.nsi: Include libetpan install scripts.
