@@ -1,3 +1,9 @@
+2007-12-09  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
+
+	* manual/durchblicker.tex: Added (yet empty) new sections
+	about debugging, where to find files and configurations
+	and about handling of files.
+
 2007-12-06  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
 
 	* README-BETA-de.txt: Section "Bekannte Fehler" ("known errors")
