@@ -1,5 +1,10 @@
 2007-12-09  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
 
+	* README-BETA-de.txt: Completed known bugs with regard to
+	tested revision.
+
+2007-12-09  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
+
 	* manual/durchblicker.tex: Added (yet empty) new sections
 	about debugging, where to find files and configurations
 	and about handling of files.

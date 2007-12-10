@@ -34,7 +34,7 @@ Ist eine alte Version der 1.9er vorher installiert
 gewesen, so muss unbedingt ein Neustart des Systems
 erfolgen wenn die Installationsroutine dies (durch Vorauswahl)
 empfohlen hat.
-Ansonsten wird es zwangläufig zu Fehlfunktionen
+Ansonsten wird es zwangsläufig zu Fehlfunktionen
 bei Verschlüsselungsoperationen kommen.
 
 
@@ -187,3 +187,7 @@ Bekannte Fehler
 
 * Kleopatra: Check GpgConf results in error not finding config
   http://wald.intevation.org/tracker/index.php?func=detail&aid=556&group_id=11&atid=126
+
+* In windows start menu: have "Documentation" submenu for Gpg4win
+  http://wald.intevation.org/tracker/index.php?func=detail&aid=558&group_id=11&atid=129
+
