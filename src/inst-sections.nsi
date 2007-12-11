@@ -881,6 +881,9 @@ Section "-startmenu"
   IntCmp $R0 0 no_start_menu
 
 !insertmacro MUI_STARTMENU_WRITE_BEGIN Application
+    # Delete the old stuff.
+    Delete "$SMPROGRAMS\$STARTMENU_FOLDER\*.lnk"
+
     CreateDirectory "$SMPROGRAMS\$STARTMENU_FOLDER"
     CreateDirectory "$SMPROGRAMS\$STARTMENU_FOLDER\$(DESC_Menu_manuals)"
 
@@ -1035,6 +1038,29 @@ Section "-startmenu"
 	"Field 3" "State"
   IntCmp $R0 0 no_desktop
 
+  # Delete the old stuff, also old names of previous versions.
+  Delete "$DESKTOP\WinPT.lnk"
+  Delete "$DESKTOP\GPA.lnk"
+  Delete "$DESKTOP\Kleopatra.lnk"
+  Delete "$DESKTOP\Sylpheed-Claws.lnk"
+  Delete "$DESKTOP\Sylpheed-Claws Manual.lnk"
+  Delete "$DESKTOP\Sylpheed.lnk"
+  Delete "$DESKTOP\Claws-Mail.lnk"
+  Delete "$DESKTOP\Claws-Mail Manual.lnk"
+  Delete "$DESKTOP\$(DESC_Name_man_novice_de).lnk"
+  Delete "$DESKTOP\$(DESC_Name_man_novice_en).lnk"
+  Delete "$DESKTOP\$(DESC_Name_man_advanced_de).lnk"
+  Delete "$DESKTOP\GPGee Manual.lnk"
+  Delete "$DESKTOP\GnuPG FAQ.lnk"
+  Delete "$DESKTOP\Gpg4Win README.lnk"
+  Delete "$DESKTOP\$(DESC_Desktop_manuals)\Claws-Mail Manual.lnk"
+  Delete "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_man_novice_de).lnk"
+  Delete "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_man_novice_en).lnk"
+  Delete "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_man_advanced_de).lnk"
+  Delete "$DESKTOP\$(DESC_Desktop_manuals)\GPGee Manual.lnk"
+  Delete "$DESKTOP\$(DESC_Desktop_manuals)\GnuPG FAQ.lnk"
+  Delete "$DESKTOP\$(DESC_Desktop_manuals)\Gpg4Win README.lnk"
+
   CreateDirectory "$DESKTOP\$(DESC_Desktop_manuals)"
 
 !ifdef HAVE_PKG_WINPT
@@ -1165,6 +1191,20 @@ no_desktop:
 	"Field 4" "State"
   IntCmp $R0 0 no_quick_launch
   StrCmp $QUICKLAUNCH $TEMP no_quick_launch
+
+  # Delete old Quick Launch Bar links.
+  Delete "$QUICKLAUNCH\WinPT.lnk"
+  Delete "$QUICKLAUNCH\GPA.lnk"
+  Delete "$QUICKLAUNCH\Kleopatra.lnk"
+  Delete "$QUICKLAUNCH\Sylpheed-Claws.lnk"
+  # We better delete also the name we used prior to 1.0.3
+  Delete "$QUICKLAUNCH\Sylpheed.lnk"
+  Delete "$QUICKLAUNCH\Claws-Mail.lnk"
+  Delete "$QUICKLAUNCH\$(DESC_Name_man_novice_de).lnk"
+  Delete "$QUICKLAUNCH\$(DESC_Name_man_advanced_de).lnk"
+  Delete "$QUICKLAUNCH\GPGee Manual.lnk"
+  Delete "$QUICKLAUNCH\GnuPG FAQ.lnk"
+  Delete "$QUICKLAUNCH\Gpg4Win README.lnk"
 
 !ifdef HAVE_PKG_WINPT
     SectionGetFlags ${SEC_winpt} $R0 
