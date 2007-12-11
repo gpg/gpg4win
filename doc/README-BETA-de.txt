@@ -1,7 +1,7 @@
 Wichtige Informationen zum Einsatz von Gpg4win 1.9-BETA
 =======================================================
 
-Stand: Gpg4win-1.9.0-svn615 (20071130)
+Stand: Gpg4win-1.9.0-svn639 (20071210)
 
 Hier finden sich wichtige Informationen die bei der
 Entscheidung helfen sollen, ob Gpg4win 1.9 schon für
@@ -13,6 +13,19 @@ Ausserdem wird ein Ausblick gegeben, was mit
 Gpg4win 2.0 an neuer Funktionalität zu erwarten ist.
 Die 1.9er Versionen sind der Beta-Test-Zyklus. Ist er
 abgeschlossen wird Version 2.0 freigegeben.
+
+Verbesserungen seit Gpg4win-1.9.0-svn615
+----------------------------------------
+
+Behoben:
+
+* GpgOL: Verschlüsselung mit OpenPGP/MIME nun funktional.
+
+* In windows start menu: have "Documentation" submenu for Gpg4win
+  http://wald.intevation.org/tracker/index.php?func=detail&aid=558&group_id=11&atid=129
+
+* GpgOL: same title for different toolbar items
+  https://bugs.g10code.com/gnupg/issue862
 
 
 Migration:
@@ -37,6 +50,9 @@ empfohlen hat.
 Ansonsten wird es zwangsläufig zu Fehlfunktionen
 bei Verschlüsselungsoperationen kommen.
 
+Insbesondere wenn eine 1.9er Version vor svn639 installiert
+war, sollte diese zunächst deinstalliert werden, da sonst
+das Gpg4win Menu zuviele Einträge zur Dokumentation enthält.
 
 Komponenten von Gpg4win 1.9 und ihr Status
 ------------------------------------------
@@ -49,11 +65,12 @@ Entfallen:
 
 Aktualisiert:
 
-- Claws Mail: Version 3.0.2.
+- Claws Mail: Version 3.1.0cvs70
   NNTP- und IMAP-Unterstützung ist seitens Gpg4win ein Stück
   weiter vorbereitet, aber noch nicht verfügbar.
   Seitens Claws Mail ist die SSL-Unterstützung ebenfalls
-  ein Stück weiter, allerdings erst ab Version 3.1.0 verfügbar.
+  ein Stück weiter, allerdings bestehen aktuell noch Probleme für
+  die Windows-Version.
   Im Verlauf von 2008 könnte die Integration von SSL, NNTP und
   IMAP in der Windows-Version von Claws Mail abgeschlossen werden.
 
@@ -117,12 +134,16 @@ Aktualisiert:
     - Signatur-Prüfung und Entschlüsselung S/MIME: Grundsätzlich
       funktional, muss aber noch verbessert werden
 
-    - Signatur OpenPGP/MIME: Funktion defekt: Signatur wird nicht erstellt
-    - Signatur S/MIME: Funktion defekt: Signatur wird nicht erstellt
-    - Verschlüsselung OpenPGP/MIME: Funktion defekt: Absturz von Kleopatra
-    - Verschlüsselung S/MIME: Funktione defekt: Absturz von Kleopatra
-    - Signatur und Verschlüsselung OpenPGP/MIME: Funktion defekt
-    - Signatur und Verschlüsselung S/MIME: Funktion defekt: Absturz von Kleopatra
+    - Signatur OpenPGP/MIME: Funktion defekt: Signierter E-Mail fehlt der
+      Inhalt.
+    - Signatur S/MIME: Funktion defekt: Nach Auswahl Signaturschlüssel kommt
+      es zu einem Fehler bei der Signierung.
+    - Verschlüsselung OpenPGP/MIME: Grundsätzlich funktional, muss aber noch
+      verbessert werden.
+    - Verschlüsselung S/MIME: Funktione defekt: Kleopatra kann Verschlüsselung
+      nicht erfolgreich durchführen.
+    - Signatur und Verschlüsselung OpenPGP/MIME: Funktion defekt: Kleopatra hängt.
+    - Signatur und Verschlüsselung S/MIME: Funktion defekt:  Kleopatra hängt.
 
 Neu:
 
@@ -135,8 +156,16 @@ Neu:
     Der Dialog ist noch nicht die endgültige Fassung sondern
     eine temporärer Ersatz.
 
-  * Verschlüsseln/Signieren: Kleopatra-Aufrufe noch nicht aktiv.
-    Derzeit muss diese Operation z.B. über GPA ausgeführt werden.
+  * Verschlüsseln: Nicht funktional, da Auswahl eines Zertifikates
+    nicht angeboten wird.
+
+  * Signieren: Nicht funktional, da nach Auswahl des S/MIME Schlüssels
+    und der Datei leerer Reiter erscheint, der nur "Cacnel" erlaubt.
+
+  * Verschlüsseln/Signieren: Kleopatra-Aufrufe insgesamt noch nicht
+    funktional.
+    Derzeit müssen diese Operationen z.B. über GPA ausgeführt werden.
+    Dort wird lediglich OpenPGP, aber kein S/MIME unterstützt.
 
 - Kleopatra: Der neue Zertifikatsmanager
 
@@ -167,11 +196,10 @@ Neu:
 Bekannte Fehler
 ---------------
 
+Berichtet zu svn615:
+
 * GpgOL: does not decrypt inline-PGP received prior to Gpg4win-1.9.0
   https://bugs.g10code.com/gnupg/issue861
-
-* GpgOL: same title for different toolbar items
-  https://bugs.g10code.com/gnupg/issue862
 
 * GpgOL: Can not create OpenPGP Signature.
   https://bugs.g10code.com/gnupg/issue863
@@ -188,6 +216,7 @@ Bekannte Fehler
 * Kleopatra: Check GpgConf results in error not finding config
   http://wald.intevation.org/tracker/index.php?func=detail&aid=556&group_id=11&atid=126
 
-* In windows start menu: have "Documentation" submenu for Gpg4win
-  http://wald.intevation.org/tracker/index.php?func=detail&aid=558&group_id=11&atid=129
+Berichtet zu svn639:
 
+* Menu entry for Kleopatra lacks tooltip
+  http://wald.intevation.org/tracker/index.php?func=detail&aid=563&group_id=11&atid=126
