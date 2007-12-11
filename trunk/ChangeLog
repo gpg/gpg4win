@@ -1,5 +1,8 @@
 2007-12-11  Marcus Brinkmann  <marcus@g10code.de>
 
+	* packages/packages.current: Update to qt 4.3.3.
+	* src/inst-qt.nsi, src/uninst-qt.nsi: Update to qt 4.3.3.
+
 	* src/inst-sections.nsi: Delete old start menu, desktop and
 	quicklaunch links.
 
