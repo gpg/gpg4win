@@ -49,7 +49,6 @@ Section "-qt" SEC_qt
   File ${prefix}/bin/QtScript4.dll
   File ${prefix}/bin/QtSql4.dll
   File ${prefix}/bin/QtSvg4.dll
-  File ${prefix}/bin/QtTest4.dll
   File ${prefix}/bin/QtXml4.dll
 
   SetOutPath "$INSTDIR\plugins\accessible"
@@ -66,12 +65,7 @@ Section "-qt" SEC_qt
 
   SetOutPath "$INSTDIR\plugins\designer"
 
-  File ${prefix}/plugins/designer/arthurplugin.dll
-  File ${prefix}/plugins/designer/containerextension.dll
-  File ${prefix}/plugins/designer/customwidgetplugin.dll
   File ${prefix}/plugins/designer/qt3supportwidgets.dll
-  File ${prefix}/plugins/designer/taskmenuextension.dll
-  File ${prefix}/plugins/designer/worldtimeclockplugin.dll
 
   SetOutPath "$INSTDIR\plugins\iconengines"
 
@@ -85,6 +79,34 @@ Section "-qt" SEC_qt
   File ${prefix}/plugins/imageformats/qsvg4.dll
   File ${prefix}/plugins/imageformats/qtiff4.dll
 
+  SetOutPath "$INSTDIR\plugins\plugins\accessible"
+
+  File ${prefix}/plugins/plugins/accessible/qtaccessiblecompatwidgetsd4.dll
+  File ${prefix}/plugins/plugins/accessible/qtaccessiblewidgetsd4.dll
+
+  SetOutPath "$INSTDIR\plugins\plugins\codecs"
+
+  File ${prefix}/plugins/plugins/codecs/qcncodecsd4.dll
+  File ${prefix}/plugins/plugins/codecs/qjpcodecsd4.dll
+  File ${prefix}/plugins/plugins/codecs/qkrcodecsd4.dll
+  File ${prefix}/plugins/plugins/codecs/qtwcodecsd4.dll
+
+  SetOutPath "$INSTDIR\plugins\plugins\iconengines"
+
+  File ${prefix}/plugins/plugins/iconengines/qsvgd4.dll
+
+  SetOutPath "$INSTDIR\plugins\plugins\imageformats"
+
+  File ${prefix}/plugins/plugins/imageformats/qgifd4.dll
+  File ${prefix}/plugins/plugins/imageformats/qjpegd4.dll
+  File ${prefix}/plugins/plugins/imageformats/qmngd4.dll
+  File ${prefix}/plugins/plugins/imageformats/qsvgd4.dll
+  File ${prefix}/plugins/plugins/imageformats/qtiffd4.dll
+
+  SetOutPath "$INSTDIR\plugins\plugins\sqldrivers"
+
+  File ${prefix}/plugins/plugins/sqldrivers/qsqlited4.dll
+
   SetOutPath "$INSTDIR\plugins\sqldrivers"
 
   File ${prefix}/plugins/sqldrivers/qsqlite4.dll
@@ -93,21 +115,32 @@ Section "-qt" SEC_qt
 
   File ${prefix}/translations/assistant_de.qm
 #  File ${prefix}/translations/assistant_ja.qm
+#  File ${prefix}/translations/assistant_pl.qm
+#  File ${prefix}/translations/assistant_zh_CN.qm
   File ${prefix}/translations/designer_de.qm
 #  File ${prefix}/translations/designer_ja.qm
+#  File ${prefix}/translations/designer_pl.qm
+#  File ${prefix}/translations/designer_zh_CN.qm
 #  File ${prefix}/translations/linguist_ja.qm
+#  File ${prefix}/translations/linguist_pl.qm
+#  File ${prefix}/translations/linguist_zh_CN.qm
 #  File ${prefix}/translations/qt_ar.qm
   File ${prefix}/translations/qt_de.qm
 #  File ${prefix}/translations/qt_es.qm
 #  File ${prefix}/translations/qt_fr.qm
 #  File ${prefix}/translations/qt_iw.qm
 #  File ${prefix}/translations/qt_ja_jp.qm
+#  File ${prefix}/translations/qt_pl.qm
 #  File ${prefix}/translations/qt_pt.qm
 #  File ${prefix}/translations/qt_ru.qm
 #  File ${prefix}/translations/qt_sk.qm
 #  File ${prefix}/translations/qt_sv.qm
 #  File ${prefix}/translations/qt_uk.qm
 #  File ${prefix}/translations/qt_zh_CN.qm
+#  File ${prefix}/translations/qtconfig_pl.qm
+#  File ${prefix}/translations/qtconfig_zh_CN.qm
+#  File ${prefix}/translations/qvfb_pl.qm
+#  File ${prefix}/translations/qvfb_zh_CN.qm
 
 !endif
 SectionEnd

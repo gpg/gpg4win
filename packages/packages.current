@@ -297,18 +297,17 @@ chk  bb9182cd4c6bd6677ba9cdcca262dcc1b1d22c3c
 #
 server ftp://ftp.kdab.net/pub/gpg4win
 
-name qt-4.3.1-2-bin.zip
-file qt-gpg4win-4.3.1-2-bin.zip
-chk 7d811a95bee1fcef20cb62104a53754726bc8267
+name qt-4.3.3-1-bin.zip
+file qt-gpg4win-4.3.3-1-bin.zip
+chk  ce4af57778a63b0a1369ae230a5cdf71735b2db5
 
-name qt-4.3.1-2-lib.zip
-file qt-gpg4win-4.3.1-2-dev.zip
-chk ea1f1e73db6425530a9c1826465d2c42e2ba1f30
+name qt-4.3.3-1-lib.zip
+file qt-gpg4win-4.3.3-1-lib.zip
+chk  6f33ba41210d18d59b93cd331d0bdc6b107e132b
 
-server ftp://ftp.trolltech.com/pub/qt/source
-name qt-4.3.1-2-src.zip
-file qt-win-opensource-src-4.3.1.zip
-chk 7dcdaafe5ab451b1bc9af0e5db080e7b5d484732
+name qt-4.3.3-1-src.zip
+file qt-gpg4win-4.3.3-1-src.zip
+chk  3f918cc7d0a4e039db53df97cdce7aeac408d90c
 
 #
 # Qt contains DBus and thus depends on kdesupport, which is a random
