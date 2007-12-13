@@ -1,3 +1,7 @@
+2007-12-13  Marcus Brinkmann  <marcus@g10code.de>
+
+	* packages/packages.current: Update libassuan.
+
 2007-12-11  Marcus Brinkmann  <marcus@g10code.de>
 
 	* packages/packages.current: Update to qt 4.3.3.
