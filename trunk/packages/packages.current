@@ -267,14 +267,14 @@ chk  cd1b52e8ecfa361737c6f130ed2f1d850e312c16
 file pinentry/pinentry-0.7.4.tar.gz
 chk  6cd28bda641a6c89d0bb4120e646f967605c532a
 
+file libassuan/libassuan-1.0.4.tar.bz2
+chk  4b720706a8e4251d8cb7a0f2336226907df1426c
+
 server ftp://ftp.g10code.com/g10code/scratch
 
 name gnupg2-2.0.8-svn4628.tar.bz2
 file gnupg-2.0.8-svn4628.tar.bz2
-chk  a7b46e2ba2861f159153475c7ad3b8d85f29622d  
-
-file libassuan-1.0.4.tar.bz2
-chk  4b720706a8e4251d8cb7a0f2336226907df1426c
+chk  a7b46e2ba2861f159153475c7ad3b8d85f29622d
 
 file gpgme-1.1.6-svn1279.tar.bz2
 chk  9751403f5c90c973fc47a5659f1fa67126253ab6
