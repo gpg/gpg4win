@@ -255,6 +255,10 @@ server ftp://ftp.gnupg.org/gcrypt
 file gnupg/gnupg-1.4.7.tar.bz2
 chk  22149105845c79068771837c8deb7d5ba0854927
 
+name gnupg2-2.0.8rc1.tar.bz2
+file alpha/gnupg/gnupg-2.0.8rc1.tar.bz2
+chk  14d67b1ab8764f73d9e9209c3560b58a0876b491
+
 file libgpg-error/libgpg-error-1.6.tar.bz2
 chk  2f387d0c34dd55eaf3b5f3c2570e9033eb540bc3
 
@@ -270,11 +274,8 @@ chk  6cd28bda641a6c89d0bb4120e646f967605c532a
 file libassuan/libassuan-1.0.4.tar.bz2
 chk  4b720706a8e4251d8cb7a0f2336226907df1426c
 
+# (Snapshots)
 server ftp://ftp.g10code.com/g10code/scratch
-
-name gnupg2-2.0.8-svn4628.tar.bz2
-file gnupg-2.0.8-svn4628.tar.bz2
-chk  a7b46e2ba2861f159153475c7ad3b8d85f29622d
 
 file gpgme-1.1.6-svn1279.tar.bz2
 chk  9751403f5c90c973fc47a5659f1fa67126253ab6
