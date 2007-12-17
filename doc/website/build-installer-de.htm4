@@ -98,9 +98,9 @@ Folgende Schritte müssen nun durchgeführt werden:
 
 <li> Wechseln Sie nun in genau das gleich Verzeichnis ("src") auf dem Windows System
      und starten Sie das Skript "make-msi.bat" um das MSI-Paket herzustellen:</br>
-     <em>> make-msi.bat gpg4win-Version.wix</em><br>
+     <em>&gt; make-msi.bat gpg4win-Version.wix</em><br>
      or</br>
-     <em>> make-msi.bat gpg4win-light-Version.wix</em>
+     <em>&gt; make-msi.bat gpg4win-light-Version.wix</em>
 
      <p>wobei "Version" die vollständige Versionsnummer des aktuell erzeugten Installers
      ist, beispielsweise "1.9.0-svn595". Sie finden die entsprechenden .wix-Dateien
@@ -112,9 +112,9 @@ Folgende Schritte müssen nun durchgeführt werden:
 
 <li> Das MSI Paket ist nun fertig und liegt als Datei "gpg4win.msi" vor.
      Sie können es wie folgt installieren:<br>
-     <em>> msiexec /i gpg4win.msi</em><br>
+     <em>&gt; msiexec /i gpg4win.msi</em><br>
      und auch wieder deinstallieren:<br>
-     <em>> msiexec /x gpg4win.msi</em>
+     <em>&gt; msiexec /x gpg4win.msi</em>
 </ol>
 
 <h3>Wie man von Windows aus auf den Gpg4win Bau-Dateibaum Zugang erhält</h3>
@@ -134,7 +134,7 @@ Anpassungen an die individuelle Umgebung.
    Der Bau-Dateibaum wird als sog. "Share" freigebeben (z.B. über
    Rechte-Maustasten-Menü auf den entsprechenden Ordner "gpg4win" in Nautilus).
    Danach kann diese Netzwerkfreigabe in Windows eingebunden werden:<br>
-   <em> net use H: \\10.0.2.2\gpg4win</em><br>
+   <em>&gt; net use H: \\10.0.2.2\gpg4win</em><br>
    Wobei H: der dann zu verwendende Laufwerksbuchstabe ist und gpg4win
    der Name der Netzwerkfreigabe.
    </p>
