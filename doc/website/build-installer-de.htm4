@@ -119,7 +119,7 @@ Folgende Schritte müssen nun durchgeführt werden:
 
 <h3>Wie man von Windows aus auf den Gpg4win Bau-Dateibaum Zugang erhält</h3>
 
-Die WiX Programme benörigen Zugriff auf den Dateibaum in dem der
+Die WiX Programme benötigen Zugriff auf den Dateibaum in dem der
 herkömmliche Installer hergestellt wurde.
 Dafür gibt es viele Wege, zwei davon sind hier illustriert.
 Es sind keine Schritt-für-Schritt Anleitungen, benötigen also noch
@@ -134,7 +134,7 @@ Anpassungen an die individuelle Umgebung.
    Der Bau-Dateibaum wird als sog. "Share" freigebeben (z.B. über
    Rechte-Maustasten-Menü auf den entsprechenden Ordner "gpg4win" in Nautilus).
    Danach kann diese Netzwerkfreigabe in Windows eingebunden werden:<br>
-   <em>> net use H: \\10.0.2.2\gpg4win</em><br>
+   <em> net use H: \\10.0.2.2\gpg4win</em><br>
    Wobei H: der dann zu verwendende Laufwerksbuchstabe ist und gpg4win
    der Name der Netzwerkfreigabe.
    </p>
