@@ -31,7 +31,8 @@ GNU/Linux etwas detaillierter beschrieben</a> und
 <a href="#intro">Einleitung</a><br><br>
 <tt>I   - </tt><a href="#I">Installation von Debian GNU/Linux 'Etch' 4.0 in einer virtuellen Umgebung</a><br>
 <tt>I-1 - </tt><a href="#I-1">Installation von QEMU</a><br>
-<tt>I-2 - </tt><a href="#I-2">Installation von PuTTY</a><br>
+<tt>I-2a - </tt><a href="#I-2a">Installation von PuTTY</a><br>
+<tt>I-2b - </tt><a href="#I-2b">Installation von ext2fsd und FileDisk</a><br>
 <tt>I-3 - </tt><a href="#I-3">Bezug eines Debian 'Etch' Boot-Mediums</a><br>
 <tt>I-4 - </tt><a href="#I-4">Öffnen einer CMD-Shell</a><br>
 <tt>I-5 - </tt><a href="#I-5">Erzeugen eines Festplatten-Images</a><br>
@@ -41,8 +42,9 @@ GNU/Linux etwas detaillierter beschrieben</a> und
 <tt>II   - </tt><a href="#II">Bauen von Gpg4win</a><br>
 <tt>II-1 - </tt><a href="#II-1">Starten der virtuellen Maschine</a><br>
 <tt>II-2 - </tt><a href="#II-2">Installation der für den Bau von Gpg4win wichtigen Pakete</a><br>
-<tt>II-3 - </tt><a href="#II-3">Bau der Gpg4win-Installations-Pakete</a><br>
-<tt>II-4 - </tt><a href="#II-4">Extraktion der fertigen Installationspakete</a>
+<tt>II-3 - </tt><a href="#II-3">Einrichten der Build-Partition</a><br>
+<tt>II-4 - </tt><a href="#II-4">Bau der Gpg4win-Installations-Pakete</a><br>
+<tt>II-5 - </tt><a href="#II-5">Extraktion der fertigen Installationspakete</a>
 <br><br>
 <a href="#references">Referenzen (URLs)</a>
 </p>
@@ -121,7 +123,7 @@ GNU/Linux etwas detaillierter beschrieben</a> und
 </p>
 
 
-<h4><a name="I-2"></a>I-2 - Installation von PuTTY</h4>
+<h4><a name="I-2a"></a>I-2a - Installation von PuTTY</h4>
 
 <p>
  Um Daten zwischen Host- und Gast-System austauschen zu können,
@@ -136,6 +138,38 @@ GNU/Linux etwas detaillierter beschrieben</a> und
  Später wird von den Programmen putty.exe und pscp.exe Gebrauch gemacht.
 </p>
 
+<h4><a name="I-2b"></a>I-2b - Installation von ext2fsd und FileDisk</h4>
+
+<p>
+ <em>Dieser Schritt ist nur Notwendig wenn ein MSI Installer erstellt
+ werden soll.</em>
+</p>
+<p>
+ Für das Erstellen des MSI Installers wird Zugriff durch ein
+ Windows-System auf den vollständigen gpg4win Quelltext-Dateibaum
+ benötigt.  Da dieser sehr umfangreich ist empfiehlt diese Anleitung
+ nicht ihn vollständig per SSH zu kopieren.  Stattdessen wird die
+ virtuelle Festplatte auf der gpg4win gebaut wurde direkt unter
+ Windows gemountet.  Um das ext3 Dateisystem lesen zu können wird
+ ext2fsd<a href="#ref8">[8]</a> benötigt, und um die virtuelle Platte
+ zu mounten eignet sich FileDisk<a href="#ref9">[9]</a>.
+</p>
+<p>
+ Um ext2fsd zu installieren muss lediglich das heruntergeladene Binary
+ ausgeführt werden.  Für das Erstellen des MSI Installers wird keine
+ Schreibunterstützung auf der ext3 Partition benötigt, dieser kann bei
+ der Installation von ext2fsd also deaktiviert bleiben.
+</p>
+<p>
+ FileDisk kommt ohne Installer und muss manuell installiert werden:
+ Nach dem entpacken des ZIP-Archives wird der
+ Treiber <code>filedisk.sys</code> nach <code>%systemroot%\system32\drivers\</code>
+ und das Programm <code>filedisk.exe</code> z.B. nach
+ <code>%systemroot%\system32\</code> kopiert.  Abschließend muss noch
+ die Datei <code>filedisk.reg</code> in die Regsitry importiert werden
+ (z.B. durch Doppelklick).
+</p>
+
 <h4><a name="I-3"></a>I-3 - Bezug eines Debian 'Etch' Boot-Mediums</h4>
 
 <p>
@@ -146,8 +180,8 @@ GNU/Linux etwas detaillierter beschrieben</a> und
  oder gar das kleinere Business-Card-Image
  debian-40r0-i386-businesscard.iso (32MB) zu besorgen und den Rest
  des Debian-Systems bei der Installation aus dem Netz nachzuladen.
- Das Net-Image ist unter <a href="#ref8">[8]</a> und das Business-Image unter
- <a href="#ref9">[9]</a>
+ Das Net-Image ist unter <a href="#ref10">[10]</a> und das Business-Image unter
+ <a href="#ref11">[11]</a>
  oder alternativ über die entsprechenden Debian-Mirrors zu finden.
 </p>
 
@@ -182,14 +216,18 @@ GNU/Linux etwas detaillierter beschrieben</a> und
 
 <pre>
 
-   qemu-img create -f qcow2 install.img 2500M
+   qemu-img create -f qcow2 install.img 1500M
+   qemu-img create -f raw build.img 2000M
 
 </pre>
 
 <p>
- Dies legt eine virtuelle Festplatten-Datei der Maximalgröße
- 2500MB an. Die Datei wird erst bei Bedarf Schritt für
- Schritt vergrößert.
+ Dies legt zwei virtuelle Festplatten-Dateien an.  Eine der
+ Maximalgröße 1500MB für das GNU/Linux System, die Datei wird erst
+ bei Bedarf Schritt für Schritt vergrößert.  Und eine weitere von der
+ Größe 2000MB auf der gpg4win gebaut wird.  Das zweite Image wird in
+ einem simplen "rohen" Format erzeugt, welches bei Bedarf mit FileDisk
+ unter Windows eingebunden werden kann.
 </p>
 
 <h4><a name="I-6"></a>I-6 - Starten der Etch-Installation</h4>
@@ -288,8 +326,8 @@ GNU/Linux etwas detaillierter beschrieben</a> und
 
 <pre>
 
-   qemu -redir tcp:5555::22 -m 256 -boot c -L %QEMU%\pc-bios
-        -hda install.img -kernel-kqemu
+   qemu -redir tcp:5555::22 -m 256 -L %QEMU%\pc-bios
+        -hdb build.img -kernel-kqemu install.img 
 
 </pre>
 
@@ -363,7 +401,37 @@ GNU/Linux etwas detaillierter beschrieben</a> und
  und das Häckchen zusätzlich bei de_DE setzen.
 </p>
 
-<h4><a name="II-3"></a>II-3 - Bau der Gpg4win-Installations-Pakete</h4>
+
+<h4><a name="II-3"></a>II-3 - Einrichten der Build-Partition</h4>
+
+<p>
+ Vor dem eigentlichen Bauen von gpg4win muss noch die Build-Partition
+ auf der zweiten virtuellen Festplatte eingerichtet werden.  Dies ist
+ die Partition, die für das erstellen des MSI Installers auch direkt
+ unter Windows gemountet werden kann.
+</p>
+<p>
+ Als Benutzer root wird dazu die virtuelle Platte formatiert,
+ gemountet und ein Ordner angelegt auf den der Benutzer 'gpg4win'
+ Zugriff hat:
+</p>
+<pre>
+
+  mkfs.ext3 /dev/hdb
+  mkdir -m 0000 /mnt/build
+  mount /dev/hdb /mnt/build
+  mkdir /mnt/build/gpg4win
+  chown gpg4win /mnt/build/gpg4win
+
+</pre>
+<p>
+ Dabei ist es wichtig, dass das Dateisystem direkt auf der virtuellen
+ Platte angelegt wird (ohne, dass vorher Partitionen definiert
+ werden), da sonst dass spätere Einhängen unter Windows nicht
+ funktioniert.
+</p>
+
+<h4><a name="II-4"></a>II-4 - Bau der Gpg4win-Installations-Pakete</h4>
 
 <p>
  Man logge sich als 'gpg4win' Nutzer ein und gebe auf
@@ -374,6 +442,7 @@ GNU/Linux etwas detaillierter beschrieben</a> und
 <pre>
 
   export LANG=de_DE
+  cd /mnt/build/gpg4win
   svn co https://svn.wald.intevation.org/svn/gpg4win/trunk
   cd trunk/packages
   sh download.sh
@@ -389,7 +458,8 @@ GNU/Linux etwas detaillierter beschrieben</a> und
  trunk/src die fertigen Installationspakete zur Verfügung.
 </p>
 
-<h4><a name="II-4"></a>II-4 - Extraktion der fertigen Installationspakete</h4>
+
+<h4><a name="II-5"></a>II-5 - Extraktion der fertigen Installationspakete</h4>
 
 <p>
  Auf dem Windows-Host-System in einer offenen CMD-Shell
@@ -418,6 +488,8 @@ GNU/Linux etwas detaillierter beschrieben</a> und
 <a name="ref5">[5]</a> <a href="http://www.h6.dion.ne.jp/~kazuw/qemu-win/Kqemu-1.3.0pre11-install.exe">http://www.h6.dion.ne.jp/~kazuw/qemu-win/Kqemu-1.3.0pre11-install.exe</a> <br>
 <a name="ref6">[6]</a> <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty">http://www.chiark.greenend.org.uk/~sgtatham/putty</a> <br>
 <a name="ref7">[7]</a> <a href="http://www.tartarus.org/~simon/putty-snapshots/x86/putty-installer.exe">http://www.tartarus.org/~simon/putty-snapshots/x86/putty-installer.exe</a> <br>
-<a name="ref8">[8]</a> <a href="http://cdimage.debian.org/debian-cd/4.0_r0/i386/iso-cd/debian-40r0-i386-netinst.iso">http://cdimage.debian.org/debian-cd/4.0_r0/i386/iso-cd/debian-40r0-i386-netinst.iso</a> <br>
-<a name="ref9">[9]</a> <a href="http://cdimage.debian.org/debian-cd/4.0_r0/i386/iso-cd/debian-40r0-i386-businesscard.iso">http://cdimage.debian.org/debian-cd/4.0_r0/i386/iso-cd/debian-40r0-i386-businesscard.iso</a> <br>
+<a name="ref8">[8]</a> <a href="http://sourceforge.net/projects/ext2fsd">http://sourceforge.net/projects/ext2fsd</a><br>
+<a name="ref9">[9]</a> <a href="http://www.acc.umu.se/~bosse/">http://www.acc.umu.se/~bosse/</a><br>
+<a name="ref10">[10]</a> <a href="http://cdimage.debian.org/debian-cd/4.0_r0/i386/iso-cd/debian-40r0-i386-netinst.iso">http://cdimage.debian.org/debian-cd/4.0_r0/i386/iso-cd/debian-40r0-i386-netinst.iso</a> <br>
+<a name="ref11">[11]</a> <a href="http://cdimage.debian.org/debian-cd/4.0_r0/i386/iso-cd/debian-40r0-i386-businesscard.iso">http://cdimage.debian.org/debian-cd/4.0_r0/i386/iso-cd/debian-40r0-i386-businesscard.iso</a> <br>
 </tt>
