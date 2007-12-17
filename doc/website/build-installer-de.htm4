@@ -121,11 +121,40 @@ Folgende Schritte müssen nun durchgeführt werden:
 
 Die WiX Programme benötigen Zugriff auf den Dateibaum in dem der
 herkömmliche Installer hergestellt wurde.
-Dafür gibt es viele Wege, zwei davon sind hier illustriert.
+Dafür gibt es viele Wege, drei davon sind hier illustriert.
 Es sind keine Schritt-für-Schritt Anleitungen, benötigen also noch
 Anpassungen an die individuelle Umgebung.
 
 <ul>
+<li>Mounten einer virtuellen ext3 Build-Partition:
+  <p>
+    Wenn gpg4win wie in
+    der <a href="build-installer-on-vm-de.html">speziellen
+    Anleitung</a> beschrieben unter Windows in einem virtualisierten
+    GNU/Linux System gebaut wurde liegt der benötigte Dateibaum auf
+    einem Festplatten Image namens <code>build.img</code>.  Dieses
+    kann mit Hilfe der freien Tools ext2fsd und FileDisk unter Windows
+    direkt verwendet werden.
+  </p>
+  <p>
+    Wenn ext2fsd und FileDisk wie in der
+    Anleitung <a href="build-installer-on-vm-de.html#I-2b">beschrieben</a>
+    installiert wurden, kann die Build-Partition <em>nach
+    herunterfahren des virtuellen GNU/Linux Systems</em> mit folgendem
+    Befehl unter Windows gemountet werden:
+  </p>
+  <pre>
+  
+    filedisk /mount 0 C:\path\to\build.img H:  
+
+  </pre>
+  <p>
+    Wobei 'C:\path\to\build.img' natürlich durch den tatsächlichen
+    Pfad zu der Image-Datei ersetzt werden muss.
+    Danach ist die Build-Partition als Laufwerk H: unter Windows
+    verfügbar.
+  </p>
+
 <li>Ubuntu mit VirtualBox und Samba:
 
    <p>Man kann Windows XP als Virtuelle Maschiene unter VirtualBox
