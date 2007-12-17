@@ -379,7 +379,7 @@ GNU/Linux etwas detaillierter beschrieben</a> und
   sh download.sh
   cd ..
   ./autogen.sh
-  ./autogen.sh --build-32 --enable-maintainer-mode
+  ./configure --enable-maintainer-mode --host=i586-mingw32msvc
   make
 
 </pre>
