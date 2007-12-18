@@ -360,10 +360,10 @@ chk  6d765b4168593df6450385c51f52f7494ca80169
 
 server ftp://ftp.kdab.net/pub/gpg4win
 
-name kleopatra-20071207-bin.zip
-file kleo-uiserver-only-20071207-bin.zip
-chk  46c12119b43066661d40eadf4080f5b429d1ec29
+name kleopatra-20071214-3-bin.zip
+file kleo-uiserver-only-20071214-3-bin.zip
+chk  e5c9be6c7b564432876fb1277a974413fce2dbea
 
-name kleopatra-20071207-src.zip
-file kleo-uiserver-only-20071207-src.zip
-chk  6e7ce16e5d94de3718e721ad9c49a73a6bd18f94
+name kleopatra-20071214-3-src.zip
+file kleo-uiserver-only-20071214-3-src.zip
+chk  e5436eddf3f00b2c4805aa2592d00dea40343485
