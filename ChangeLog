@@ -1,5 +1,8 @@
 2007-12-21  Marcus Brinkmann  <marcus@g10code.de>
 
+	* src/uninst-kleopatra.nsi, src/inst-kleopatra.nsi: Update to
+	latest version.
+
 	* packages/packages.current: Update oxygen-icons and kleopatra.
 	* src/inst-oxygen-icons.nsi, src/uninst-oxygen-icons.nsi: Update
 	to latest version, but only install 16x16 icons (now all of them).
