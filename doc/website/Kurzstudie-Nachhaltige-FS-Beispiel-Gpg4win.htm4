@@ -11,109 +11,31 @@ Zum Download verfügbar: <a href="http://wald.intevation.org/frs/download.php/386
 (ca. 740 KByte)
 </p>
 
-<P ALIGN=LEFT STYLE="margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-after: auto">
+<h1>Kurzstudie</h1>
+<h1 style="text-align: left; padding-bottom: 6px;">Nachhaltige Freie Software:
+Vom Projekt zur Dauert&auml;tigkeit am Beispiel Gpg4win</h1>
+
+<IMG SRC="pix/intevation-logo.png" NAME="Grafik17">
 <BR>
-</P>
-<P ALIGN=LEFT STYLE="margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
-<BR>
-</P>
-<P ALIGN=LEFT STYLE="margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
-<BR>
-</P>
-<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
-<FONT SIZE=5 STYLE="font-size: 18pt"><B>Kurzstudie </B></FONT>
-</P>
-<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
-<BR>
-</P>
-<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
- 
-</P>
-<P ALIGN=LEFT STYLE="margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-before: auto; page-break-after: auto">
-<FONT SIZE=5 STYLE="font-size: 18pt"><B>Nachhaltige Freie Software:
-Vom Projekt zur Dauert&auml;tigkeit am Beispiel Gpg4win</B></FONT></P>
-<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
-<BR>
-</P>
-<P ALIGN=CENTER STYLE="margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
- 
-</P>
-<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
-<BR>
-</P>
-<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
-<BR>
-</P>
-<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
-<IMG SRC="pix/intevation-logo.png" NAME="Grafik17" ALIGN=LEFT BORDER=0><BR>
-</P>
-<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
-<BR>
-</P>
-<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
-<BR>
-</P>
-<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
-<BR>
-</P>
-<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
-<BR>
-</P>
-<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
-<BR>
-</P>
-<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
-<BR>
-</P>
-<P ALIGN=RIGHT STYLE="margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
-<BR>
-</P>
-<P ALIGN=RIGHT STYLE="margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
-<BR>
-</P>
-<P ALIGN=RIGHT STYLE="margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
-<BR>
-</P>
-<P ALIGN=RIGHT STYLE="margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
-<BR>
-</P>
-<P ALIGN=RIGHT STYLE="margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
-<BR>
-</P>
-<P ALIGN=RIGHT STYLE="margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
-<BR>
-</P>
-<P ALIGN=RIGHT STYLE="margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
-<BR>
-</P>
-<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
-<FONT FACE="Nimbus Roman No9 L, serif">Autoren:</FONT></P>
-<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+
+<FONT FACE="Nimbus Roman No9 L, serif">Autoren:</FONT><BR>
 <FONT FACE="Nimbus Roman No9 L, serif">Dr. Jan-Oliver
-Wagner	&lt;jan-oliver.wagner@intevation.de&gt;</FONT></P>
-<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+Wagner	&lt;jan-oliver.wagner@intevation.de&gt;</FONT><BR>
 <FONT FACE="Nimbus Roman No9 L, serif">Bernhard
-Reiter		&lt;bernhard.reiter@intevation.de&gt;</FONT></P>
-<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+Reiter		&lt;bernhard.reiter@intevation.de&gt;</FONT><BR>
 <FONT FACE="Nimbus Roman No9 L, serif">Intevation GmbH, Georgstra&szlig;e
-4, 49074 Osnabr&uuml;ck</FONT></P>
-<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+4, 49074 Osnabr&uuml;ck</FONT><BR>
 <FONT FACE="Nimbus Roman No9 L, serif">Tel: 0541/33508-30, Fax:
 0541/33508-59         </FONT>
-</P>
-<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
 <BR>
-</P>
-<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
-<BR>
-</P>
+
 <P ALIGN=RIGHT STYLE="margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
 <FONT FACE="Nimbus Roman No9 L, serif"><B>Stand Juni 2006</B>, 
-Fassung vom 20. September 2007 (Webfassung 5.10.2007)</FONT>
+Fassung vom 20. September 2007 (Webfassung 21.12.2007)</FONT>
 </P>
 <DIV ID="Inhaltsverzeichnis1" DIR="LTR">
 	<DIV ID="Inhaltsverzeichnis1_Head" DIR="LTR">
-		<P STYLE="margin-top: 0.42cm; page-break-before: always; page-break-after: avoid">
+		<P STYLE="margin-top: 6px; page-break-before: always; page-break-after: avoid">
 		<FONT FACE="Nimbus Sans L, sans-serif"><FONT SIZE=4 STYLE="font-size: 16pt"><B>Inhaltsverzeichnis</B></FONT></FONT></P>
 	</DIV>
 	<P STYLE="margin-bottom: 0cm">1  Zusammenfassung	3</P>
@@ -178,7 +100,7 @@ Fassung vom 20. September 2007 (Webfassung 5.10.2007)</FONT>
 	<P STYLE="margin-left: 0.5cm; margin-bottom: 0cm">A.2 Als
 	Geldgeber	23</P>
 </DIV>
-<H1 CLASS="western">1  Zusammenfassung</H1>
+<H2 CLASS="western">1  Zusammenfassung</H2>
 <P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
 Wer in die Entwicklung einer Freien Software (Open Source)
 investiert, m&ouml;chte meist langfristige Wirkung erzielen, trotz
@@ -213,7 +135,7 @@ technischen Fortschritte bei Gpg4win stellen eine Grundlage f&uuml;r
 diese Ma&szlig;nahmen dar. Ideal w&auml;re ein langsamer R&uuml;ckzug
 aus einer Investition, so dass jeweils andere Beteiligte &uuml;bernehmen
 k&ouml;nnen.</P>
-<H1 CLASS="western">2  Einleitung</H1>
+<H2 CLASS="western">2  Einleitung</H2>
 <P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
 Diese Kurzstudie ist parallel zum Produkt &bdquo;Gpg4win&ldquo;<A CLASS="sdfootnoteanc" NAME="sdfootnote1anc" HREF="#sdfootnote1sym"><SUP>1</SUP></A>
 entstanden.</P>
@@ -256,7 +178,7 @@ nicht erw&auml;hnt oder besprochen werden konnten. So ist diese
 Kurzstudie als Startpunkt und Anregung geeignet, &uuml;ber die
 Fragestellung des nachhaltigen Fortbestandes von Freie Software
 Produkten nachzudenken.</P>
-<H1 CLASS="western">3  Methodik</H1>
+<H2 CLASS="western">3  Methodik</H2>
 <P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
 Die Vorgehensweise bei dieser Kurzstudie beinhaltet folgende,
 wesentliche Schritte:</P>
@@ -288,8 +210,8 @@ Autoren mit Freier Software ein, mit der sie sich seit 1999
 professionell und ausschlie&szlig;lich befassen. Seit dem Jahr 2000
 haben die Autoren verschiedene Projekte zur E-Mail-Verschl&uuml;sselung
 mit GnuPG durchgef&uuml;hrt.</P>
-<H1 CLASS="western">4  Allgemeine Erfolgsfaktoren f&uuml;r Freie
-Software Projekte</H1>
+<H2 CLASS="western">4  Allgemeine Erfolgsfaktoren f&uuml;r Freie
+Software Projekte</H2>
 <P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
 Was ist &uuml;berhaupt ein &bdquo;Freie Software Projekt&ldquo;?  
 </P>
@@ -351,18 +273,7 @@ Ein erfolgreiches Freie Software Projekt zeichnet sich durch eine
 eine ausgeglichene Zusammensetzung aus Beteiligten aus wie in Abbildung 1
 dargestellt. Besonders die jeweils 
 </P>
-<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
-<BR>
-</P>
-<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
-<BR>
-</P>
-<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
-<BR>
-</P>
-<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
-<BR>
-</P>
+
 <P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
 
 	<P STYLE="margin-top: 0.21cm">
@@ -373,45 +284,7 @@ dargestellt. Besonders die jeweils
 	und Kern-Entwickler auf den Entwicklungs-Koordinator zu.</I></FONT></P>
 
 </P>
-<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
-<BR>
-</P>
-<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
-<BR>
-</P>
-<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
-<BR>
-</P>
-<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
-<BR>
-</P>
-<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
-<BR>
-</P>
-<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
-<BR>
-</P>
-<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
-<BR>
-</P>
-<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
-<BR>
-</P>
-<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
-<BR>
-</P>
-<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
-<BR>
-</P>
-<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
-<BR>
-</P>
-<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
-<BR>
-</P>
-<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
-<BR>
-</P>
+
 <P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
 <BR>
 </P>
@@ -546,7 +419,7 @@ organisatorisch.</P>
 Die folgenden beiden Beispiele beschreiben erfolgreiche Freie
 Software Projekte, warum sie Erfolg haben und in welcher Weise sie
 sich von Gpg4win unterscheiden.</P>
-<H3 CLASS="western">4.2.1  Apache</H3>
+<H2 CLASS="western3">4.2.1  Apache</H2>
 <P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
 Der Web-Server &bdquo;Apache&ldquo; ist mit &uuml;ber 60%
 Marktanteil<A CLASS="sdfootnoteanc" NAME="sdfootnote6anc" HREF="#sdfootnote6sym"><SUP>6</SUP></A>
@@ -583,7 +456,7 @@ vorgegeben. Programmierern bietet Gpg4win keine echte
 Herausforderung, weil es als Meta-Projekt sich nicht der eigentlichen
 Programmierung widmet. Es werden Ergebnisse aus anderen Projekten
 (z.B. GnuPG) &uuml;bernommen.</P>
-<H3 CLASS="western">4.2.2  Samba</H3>
+<H2 CLASS="western3">4.2.2  Samba</H2>
 <P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
 Samba ist eine Freie Software Implementierung der Datei- und
 Druck-Dienste f&uuml;r SMB/CIFS Klienten. SMB und CIFS sind
@@ -621,15 +494,15 @@ Markt kann sich bei Gpg4win also nicht so leicht und schnell
 entwickeln wie bei dem Produkt Samba, dem durch die
 Schl&uuml;sselbedeutung der Anwendung eine einfachere
 Kommerzialisierung in die Wiege gelegt wurde.</P>
-<H1 CLASS="western">5  Betrachtung bisheriger Ans&auml;tze f&uuml;r
-GnuPG Windows Installer</H1>
+<H2 CLASS="western">5  Betrachtung bisheriger Ans&auml;tze f&uuml;r
+GnuPG Windows Installer</H2>
 <P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
 Die Betrachtung bisheriger Ans&auml;tze beinhaltet jeweils einen
 geschichtlichen Abriss und ber&uuml;cksichtigt insbesondere m&ouml;gliche
 Gr&uuml;nde warum eine nachhaltig eigenst&auml;ndige L&ouml;sung
 durch andere Projekte bisher nicht etabliert werden konnte.</P>
 <H2 CLASS="western">5.1  GnuPP</H2>
-<H3 CLASS="western">5.1.1  Geschichte</H3>
+<H2 CLASS="western3">5.1.1  Geschichte</H2>
 <P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
 Ende 1999 startete ein F&ouml;rderprojekt des Bundesministerium f&uuml;r
 Wirtschaft und Technologie mit dem Ziel, GnuPG auf Windows zu
@@ -686,7 +559,7 @@ jedoch schon (als PDF-Dokumente).</P>
 <P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
 Das Installationspaket GnuPP ist von verschiedenen Websites noch
 immer herunterladbar.</P>
-<H3 CLASS="western">5.1.2  Nutzerakzeptanz</H3>
+<H2 CLASS="western3">5.1.2  Nutzerakzeptanz</H2>
 <P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
 Die initiale Nutzerakzeptanz und Aufmerksamkeit f&uuml;r GnuPP kann
 als beachtlich eingestuft werden.</P>
@@ -699,7 +572,7 @@ Die CD mit Brosch&uuml;re erschien in einer 1. Auflage M&auml;rz
 2002. Der Umfang der Auflage ist unbekannt, d&uuml;rfte aber nicht
 unter 5000 Exemplare liegen. Eine zweite Auflage war angedacht, wurde
 dann aber verworfen. Die Gr&uuml;nde daf&uuml;r sind unbekannt.</P>
-<H3 CLASS="western">5.1.3  Probleme</H3>
+<H2 CLASS="western3">5.1.3  Probleme</H2>
 <P>Sowohl GPA, wie auch GnuPP sind keine offiziellen Projekte des GNU
 Projekts<A CLASS="sdfootnoteanc" NAME="sdfootnote8anc" HREF="#sdfootnote8sym"><SUP>8</SUP></A>,
 obwohl der Name es suggeriert. Nur GnuPG selbst ist ein offizielles
@@ -731,7 +604,7 @@ erkl&auml;rtes Ziel des Vorhabens war.</P>
 Inzwischen ist das GnuPP 1.1 Installationspaket in Bezug auf die
 integrierten Komponenten hoffnungslos veraltet.</P>
 <H2 CLASS="western">5.2  Windows Privacy Tools</H2>
-<H3 CLASS="western">5.2.1  Geschichte</H3>
+<H2 CLASS="western3">5.2.1  Geschichte</H2>
 <P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
 Das Projekt <I>Windows Privacy Tools</I><A CLASS="sdfootnoteanc" NAME="sdfootnote9anc" HREF="#sdfootnote9sym"><SUP>9</SUP></A>
 (verwirrenderweise leider mit <I>WinPT</I> genauso abgek&uuml;rzt wie
@@ -757,7 +630,7 @@ Im Mai 2005 stellte Fabian Rodriguez die Position des Projektleiters
 zur Disposition, da er ohnehin schon einige Zeit nicht mehr aktiv
 war. Es meldete sich jedoch offensichtlich niemand, diese Position zu
 &uuml;bernehmen.</P>
-<H3 CLASS="western">5.2.2  Nutzerakzeptanz</H3>
+<H2 CLASS="western3">5.2.2  Nutzerakzeptanz</H2>
 <P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
 Trotz der kurzen Aktivit&auml;tsphase erfreut sich das Projekt
 scheinbar gro&szlig;er Beliebtheit. Die Download-Zahlen sind recht
@@ -776,7 +649,7 @@ Weit &uuml;ber die aktive Phase hinaus wurden kontinuierlich
 Probleme, W&uuml;nsche und Anfragen auf den Projektseiten
 eingetragen. Eine Reihe davon auch noch im Jahr 2006. Bearbeitet
 werden sie nicht.</P>
-<H3 CLASS="western">5.2.3  Probleme</H3>
+<H2 CLASS="western3">5.2.3  Probleme</H2>
 <P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
 Die Aktivit&auml;t des Projektes war eng mit der Aktivit&auml;t des
 Initiators verkn&uuml;pft. Nachdem Fabian Rodriguez nicht mehr aktiv
@@ -803,7 +676,7 @@ heraus, dass die Software WinPT ein eigenst&auml;ndiges Projekt ist
 und zwischenzeitlich umfangreich verbessert wurde. Dieser Versuch
 kann daher als taktischer Fehler gewertet werden.</P>
 <H2 CLASS="western">5.3  GnuPT</H2>
-<H3 CLASS="western">5.3.1  Geschichte</H3>
+<H2 CLASS="western3">5.3.1  Geschichte</H2>
 <P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
 Das Projekt Gnu Privacy Tools (GnuPT<A CLASS="sdfootnoteanc" NAME="sdfootnote11anc" HREF="#sdfootnote11sym"><SUP>11</SUP></A>)
 wurde von einer einzelnen Person aus Deutschland initiiert. Begonnen
@@ -817,7 +690,7 @@ Das Web-Portal zu GnuPT ist als reine Forums-Plattform organisiert.</P>
 <P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
 Nach Aussage des Autors wird die Weiterentwicklung von GnuPT in naher
 Zukunft zugunsten von Gpg4win eingestellt.</P>
-<H3 CLASS="western">5.3.2  Nutzerakzeptanz</H3>
+<H2 CLASS="western3">5.3.2  Nutzerakzeptanz</H2>
 <P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
 Aufgrund der Statistiken der Forums-Software kann man davon ausgehen,
 dass weniger als 50 aktive Teilnehmer und weniger als 3000 Leser
@@ -825,7 +698,7 @@ vorliegen. Allgemein werden scheinbar alle Fragen auf dem Forum
 beantwortet, den Support kann man als gut einstufen.</P>
 <P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
 Die Zahl der Downloads l&auml;sst sich nicht erkennen.</P>
-<H3 CLASS="western">5.3.3  Probleme</H3>
+<H2 CLASS="western3">5.3.3  Probleme</H2>
 <P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
 Das Forum ist un&uuml;bersichtlich strukturiert, da s&auml;mtliche
 Projekt-Organisation &uuml;ber dieses Forum erfolgt. Es gibt kein
@@ -843,7 +716,7 @@ irgendeinem Grund das Interesse verlieren sollte oder pl&ouml;tzlich
 (z.B. durch ein Ungl&uuml;ck) an der Weiterarbeit gehindert wird,
 niemand in der Lage sein wird das Projekt ohne weiteres fortzuf&uuml;hren.</P>
 <H2 CLASS="western">5.4  GnuPG-Pack Basics</H2>
-<H3 CLASS="western">5.4.1  Geschichte</H3>
+<H2 CLASS="western3">5.4.1  Geschichte</H2>
 <P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
 Das Installationspaket GnuPG-Pack Basics<A CLASS="sdfootnoteanc" NAME="sdfootnote12anc" HREF="#sdfootnote12sym"><SUP>12</SUP></A>
 wird seit etwa 2003 von einer einzelnen Person aus Deutschland
@@ -855,12 +728,12 @@ oder &auml;hnliches gibt die R&uuml;ckschl&uuml;sse zulassen w&uuml;rden.</P>
 Der Autor ist einer Abstimmung mit und Mitarbeit bei Gpg4win nicht
 abgeneigt, vorerst wird es aber GnuPG-Pack Basics auch weiterhin
 geben.</P>
-<H3 CLASS="western">5.4.2  Nutzerakzeptanz</H3>
+<H2 CLASS="western3">5.4.2  Nutzerakzeptanz</H2>
 <P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
 Es ist wenig dar&uuml;ber bekannt wie viele Benutzer dieses
 Installationspaket hat. Hin und wieder meldeten sich vereinzelte
 Benutzer auf den Mailing Listen von GnuPP oder GnuPT.</P>
-<H3 CLASS="western">5.4.3  Probleme</H3>
+<H2 CLASS="western3">5.4.3  Probleme</H2>
 <P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
 Analog zu GnuPT besteht die Gefahr, dass falls der Projektleiter aus
 irgendeinem Grund das Interesse verlieren sollte oder pl&ouml;tzlich
@@ -878,7 +751,7 @@ Auch der Quelltext des Installationspaketes wird nicht zur Verf&uuml;gung
 gestellt. Der Installer selbst ist demzufolge keine Freie Software.
 Damit ist der Projektleiter der einzige, der Updates leicht erstellen
 kann.</P>
-<H1 CLASS="western">6  Bisherige Erfolge von Gpg4win</H1>
+<H2 CLASS="western">6  Bisherige Erfolge von Gpg4win</H2>
 <P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
 Zur Schriftlegung ist Gpg4win in Version 1.0.2 (2006-05-30)
 ver&ouml;ffentlicht.</P>
@@ -934,7 +807,7 @@ hilfreich sind:</P>
 	geben.<BR>S&auml;mtliche dieser Strukturen werden bereits rege von
 	Anwendern genutzt.</P>
 </UL>
-<H1 CLASS="western">7  Handlungsm&ouml;glichkeiten</H1>
+<H2 CLASS="western">7  Handlungsm&ouml;glichkeiten</H2>
 <H2 CLASS="western">7.1  Grundlegende Schwierigkeiten</H2>
 <P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
 Die Beteiligten-Struktur wie sie bisher bei Gpg4win vorliegt und wie
@@ -948,45 +821,6 @@ Freie Software Projekt (vergl. Abbildung 1, Seite 6).</P>
 	Anwender, Beitragenden und Entwickler. Es gibt ein Team von
 	Kern-Enwticklern und es fehlt wiederum die Bestimmung eines
 	Entwicklungs-Koordindators.</I></FONT></P>
-</P>
-<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
-<BR>
-</P>
-<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
-<BR>
-</P>
-<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
-<BR>
-</P>
-<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
-<BR>
-</P>
-<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
-<BR>
-</P>
-<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
-<BR>
-</P>
-<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
-<BR>
-</P>
-<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
-<BR>
-</P>
-<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
-<BR>
-</P>
-<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
-<BR>
-</P>
-<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
-<BR>
-</P>
-<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
-<BR>
-</P>
-<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
-<BR>
 </P>
 <P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
 <BR>
@@ -1393,7 +1227,7 @@ falls man einen einmaligen Geldbetrag zur Verf&uuml;gung h&auml;tte.</P>
 	<B>Einbringen von Gpg4Win in &uuml;bliche Softwarequellen f&uuml;r
 	Windows, um die Nutzerzahlen zu erh&ouml;hen</B></P>
 </UL>
-<H1 CLASS="western">8  Schlussfolgerungen und Empfehlungen</H1>
+<H2 CLASS="western">8  Schlussfolgerungen und Empfehlungen</H2>
 <P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
 Ziel ist der nachhaltige, unabh&auml;ngige, eigenst&auml;ndige
 Fortbestand von Gpg4win, so dass aktualisierte  Versionen
@@ -1463,8 +1297,8 @@ und Verteilung des Gelds zu finden (siehe Abschnitt 7.5).</P>
 <P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
 &Uuml;ber die n&auml;chsten Schritte sollte aufgrund der R&uuml;ckmeldung
 zu beiden Ma&szlig;nahmen entschieden werden.</P>
-<H1 CLASS="western" STYLE="page-break-before: always">Appendix A:
-Konkrete Handlungsempfehlungen</H1>
+<H2 CLASS="western" STYLE="page-break-before: always">Appendix A:
+Konkrete Handlungsempfehlungen</H2>
 <P>Sie finden Gpg4win gut? Dann unterst&uuml;tzen Sie das Projekt. Es
 ist leichter als allgemein angenommen und selbst Wenig kann
 Erstaunliches bewirken. Wie bei jeder Freien Software k&ouml;nnen Sie
@@ -1517,58 +1351,58 @@ Gpg4win mit Tat zur Seite stehen:</P>
 	Allgemeinen verbessert wird.</SPAN></P>
 </UL>
 <DIV ID="sdfootnote1">
-	<P CLASS="sdfootnote"><A CLASS="sdfootnotesym" NAME="sdfootnote1sym" HREF="#sdfootnote1anc">1</A><A HREF="http://www.gpg4win.de/">http://www.gpg4win.de/</A></P>
+	<P CLASS="sdfootnote"><A CLASS="sdfootnotesym" NAME="sdfootnote1sym" HREF="#sdfootnote1anc">1</A> <A HREF="http://www.gpg4win.de/">http://www.gpg4win.de/</A></P>
 </DIV>
 <DIV ID="sdfootnote2">
-	<P CLASS="sdfootnote"><A CLASS="sdfootnotesym" NAME="sdfootnote2sym" HREF="#sdfootnote2anc">2</A><A HREF="http://www.gnupp.de/start.html">http://www.gnupp.de/start.html</A></P>
+	<P CLASS="sdfootnote"><A CLASS="sdfootnotesym" NAME="sdfootnote2sym" HREF="#sdfootnote2anc">2</A> <A HREF="http://www.gnupp.de/start.html">http://www.gnupp.de/start.html</A></P>
 </DIV>
 <DIV ID="sdfootnote3">
-	<P CLASS="sdfootnote"><A CLASS="sdfootnotesym" NAME="sdfootnote3sym" HREF="#sdfootnote3anc">3</A><A HREF="http://sourceforge.net/projects/winpt/">http://sourceforge.net/projects/winpt/</A></P>
+	<P CLASS="sdfootnote"><A CLASS="sdfootnotesym" NAME="sdfootnote3sym" HREF="#sdfootnote3anc">3</A> <A HREF="http://sourceforge.net/projects/winpt/">http://sourceforge.net/projects/winpt/</A></P>
 </DIV>
 <DIV ID="sdfootnote4">
-	<P CLASS="sdfootnote"><A CLASS="sdfootnotesym" NAME="sdfootnote4sym" HREF="#sdfootnote4anc">4</A>Karim
+	<P CLASS="sdfootnote"><A CLASS="sdfootnotesym" NAME="sdfootnote4sym" HREF="#sdfootnote4anc">4</A> Karim
 	Lakhani, Bob Wolf, Jeff Bates and Chris DiBona, Hacker Survey v0.73,
 	24.6.2002, Boston Consulting Group <A HREF="http://www.osdn.com/bcg/">http://www.osdn.com/bcg/</A></P>
 </DIV>
 <DIV ID="sdfootnote5">
-	<P CLASS="sdfootnote"><A CLASS="sdfootnotesym" NAME="sdfootnote5sym" HREF="#sdfootnote5anc">5</A>Bernhard
+	<P CLASS="sdfootnote"><A CLASS="sdfootnotesym" NAME="sdfootnote5sym" HREF="#sdfootnote5anc">5</A> Bernhard
 	E. Reiter, Wandel der IT: Mehr als 20 Jahre Freie Software; in HMD,
 	Heft 238, August 2004, Seiten 83-91
 	<A HREF="http://intevation.de/~bernhard/publications/200408-hmd/200408-wandel_der_it_20j_fs.html">http://intevation.de/~bernhard/publications/200408-hmd/200408-wandel_der_it_20j_fs.html</A></P>
 </DIV>
 <DIV ID="sdfootnote6">
-	<P CLASS="sdfootnote"><A CLASS="sdfootnotesym" NAME="sdfootnote6sym" HREF="#sdfootnote6anc">6</A><A HREF="http://news.netcraft.com/">http://news.netcraft.com/</A></P>
+	<P CLASS="sdfootnote"><A CLASS="sdfootnotesym" NAME="sdfootnote6sym" HREF="#sdfootnote6anc">6</A> <A HREF="http://news.netcraft.com/">http://news.netcraft.com/</A></P>
 </DIV>
 <DIV ID="sdfootnote7">
-	<P CLASS="sdfootnote"><A CLASS="sdfootnotesym" NAME="sdfootnote7sym" HREF="#sdfootnote7anc">7</A><A HREF="http://www.apache.org/">http://www.apache.org/</A></P>
+	<P CLASS="sdfootnote"><A CLASS="sdfootnotesym" NAME="sdfootnote7sym" HREF="#sdfootnote7anc">7</A> <A HREF="http://www.apache.org/">http://www.apache.org/</A></P>
 </DIV>
 <DIV ID="sdfootnote8">
-	<P CLASS="sdfootnote"><A CLASS="sdfootnotesym" NAME="sdfootnote8sym" HREF="#sdfootnote8anc">8</A><A HREF="http://www.gnu.org/"><FONT SIZE=2>http://www.gnu.org/</FONT></A></P>
+	<P CLASS="sdfootnote"><A CLASS="sdfootnotesym" NAME="sdfootnote8sym" HREF="#sdfootnote8anc">8</A> <A HREF="http://www.gnu.org/"><FONT SIZE=2>http://www.gnu.org/</FONT></A></P>
 </DIV>
 <DIV ID="sdfootnote9">
-	<P CLASS="sdfootnote"><A CLASS="sdfootnotesym" NAME="sdfootnote9sym" HREF="#sdfootnote9anc">9</A><A HREF="http://sourceforge.net/projects/winpt/">http://sourceforge.net/projects/winpt/</A></P>
+	<P CLASS="sdfootnote"><A CLASS="sdfootnotesym" NAME="sdfootnote9sym" HREF="#sdfootnote9anc">9</A> <A HREF="http://sourceforge.net/projects/winpt/">http://sourceforge.net/projects/winpt/</A></P>
 </DIV>
 <DIV ID="sdfootnote10">
-	<P CLASS="sdfootnote"><A CLASS="sdfootnotesym" NAME="sdfootnote10sym" HREF="#sdfootnote10anc">10</A><A HREF="http://www.winpt.org/">http://www.winpt.org/</A></P>
+	<P CLASS="sdfootnote"><A CLASS="sdfootnotesym" NAME="sdfootnote10sym" HREF="#sdfootnote10anc">10</A> <A HREF="http://www.winpt.org/">http://www.winpt.org/</A></P>
 </DIV>
 <DIV ID="sdfootnote11">
-	<P CLASS="sdfootnote"><A CLASS="sdfootnotesym" NAME="sdfootnote11sym" HREF="#sdfootnote11anc">11</A><A HREF="http://www.equipmente.de/">http://www.equipmente.de/</A></P>
+	<P CLASS="sdfootnote"><A CLASS="sdfootnotesym" NAME="sdfootnote11sym" HREF="#sdfootnote11anc">11</A> <A HREF="http://www.equipmente.de/">http://www.equipmente.de/</A></P>
 </DIV>
 <DIV ID="sdfootnote12">
-	<P CLASS="sdfootnote"><A CLASS="sdfootnotesym" NAME="sdfootnote12sym" HREF="#sdfootnote12anc">12</A><A HREF="http://people.freenet.de/rose-indorf/">http://people.freenet.de/rose-indorf/</A></P>
+	<P CLASS="sdfootnote"><A CLASS="sdfootnotesym" NAME="sdfootnote12sym" HREF="#sdfootnote12anc">12</A> <A HREF="http://people.freenet.de/rose-indorf/">http://people.freenet.de/rose-indorf/</A></P>
 </DIV>
 <DIV ID="sdfootnote13">
-	<P CLASS="sdfootnote"><A CLASS="sdfootnotesym" NAME="sdfootnote13sym" HREF="#sdfootnote13anc">13</A><FONT SIZE=2>Dazu
+	<P CLASS="sdfootnote"><A CLASS="sdfootnotesym" NAME="sdfootnote13sym" HREF="#sdfootnote13anc">13</A> <FONT SIZE=2>Dazu
 	auch Reiter 2002: Arbeitsteilung im Massenmarkt, Linux-Magazin
 	06/2002,
 	</FONT><A HREF="http://www.linux-magazin.de/Artikel/ausgabe/2002/06/geld/geld.html"><FONT SIZE=2>http://www.linux-magazin.de/Artikel/ausgabe/2002/06/geld/geld.html</FONT></A></P>
 </DIV>
 <DIV ID="sdfootnote14">
-	<P CLASS="sdfootnote"><A CLASS="sdfootnotesym" NAME="sdfootnote14sym" HREF="#sdfootnote14anc">14</A><FONT SIZE=2>siehe
+	<P CLASS="sdfootnote"><A CLASS="sdfootnotesym" NAME="sdfootnote14sym" HREF="#sdfootnote14anc">14</A> <FONT SIZE=2>siehe
 	</FONT><A HREF="http://lwn.net/Articles/185399/"><FONT SIZE=2>http://lwn.net/Articles/185399/</FONT></A></P>
 </DIV>
 <DIV ID="sdfootnote15">
-	<P CLASS="sdfootnote" STYLE="margin-left: 0cm; text-indent: 0cm"><A CLASS="sdfootnotesym" NAME="sdfootnote15sym" HREF="#sdfootnote15anc">15</A><FONT FACE="Times, serif"><FONT SIZE=2>Allgemeine
+	<P CLASS="sdfootnote" STYLE="margin-left: 0cm; text-indent: 0cm"><A CLASS="sdfootnotesym" NAME="sdfootnote15sym" HREF="#sdfootnote15anc">15</A> <FONT FACE="Times, serif"><FONT SIZE=2>Allgemeine
 	Hinweise finden sich oft im Wiki
 	</FONT></FONT><A HREF="http://www.deshalbfrei.org/moinmoin/freiheit_helfen"><FONT FACE="Times, serif"><FONT SIZE=2>http://www.deshalbfrei.org/moinmoin/freiheit_helfen</FONT></FONT></A><FONT FACE="Times, serif"><FONT SIZE=2>.</FONT></FONT><FONT FACE="Times, serif"><FONT SIZE=2>
 	</FONT></FONT>
