@@ -36,6 +36,7 @@ Section "-un.kleopatra"
   RMDir "$INSTDIR\bin"
   Delete "$INSTDIR\kleopatra.bat"
 
+  Delete "$INSTDIR\kgpgconf.exe"
   Delete "$INSTDIR\libgpgme++-glib.dll"
   Delete "$INSTDIR\libgpgme++-qt.dll"
   Delete "$INSTDIR\libgpgme++.dll"
@@ -49,6 +50,8 @@ Section "-un.kleopatra"
   RMDir "$INSTDIR\share\applications"
 
   Delete "$INSTDIR\share\apps\kleopatra\kleopatraui.rc"
+  Delete "$INSTDIR\share\apps\kleopatra\kleopatra_newui.rc"
+
   RMDir "$INSTDIR\share\apps\kleopatra"
 
   Delete "$INSTDIR\share\apps\libkleopatra\pics\chiasmus_chi.png"
@@ -59,25 +62,54 @@ Section "-un.kleopatra"
 
   RMDir "$INSTDIR\share\apps\libkleopatra\pics"
   RMDir "$INSTDIR\share\apps\libkleopatra"
+
+  Delete "$INSTDIR\share\apps\kleopatra\pics\kleopatra_splashscreen.png"
+  Delete "$INSTDIR\share\apps\kleopatra\pics\kleopatra_splashscreen.svgz"
+  Delete "$INSTDIR\share\apps\kleopatra\pics\kleopatra_wizard.png"
+  Delete "$INSTDIR\share\apps\kleopatra\pics\kleopatra_wizard.svgz"
+
+  RMDir "$INSTDIR\share\apps\kleopatra\pics"
   RMDir "$INSTDIR\share\apps"
 
-  Delete "$INSTDIR\share\icons\oxygen\16x16\apps\gpg.png"
-  Delete "$INSTDIR\share\icons\oxygen\16x16\apps\gpgsm.png"
+  Delete "$INSTDIR\share\config\libkleopatrarc"
+
+  RMDir "$INSTDIR\share\config"
+
+  Delete "$INSTDIR\share\icons\oxygen\128x128\apps\kleopatra.png"
+
+  RMDir "$INSTDIR\share\icons\oxygen\128x128\apps"
+  RMDir "$INSTDIR\share\icons\oxygen\128x128"
+
+  Delete "$INSTDIR\share\icons\oxygen\16x16\apps\kleopatra.png"
 
   RMDir "$INSTDIR\share\icons\oxygen\16x16\apps"
   RMDir "$INSTDIR\share\icons\oxygen\16x16"
 
-  Delete "$INSTDIR\share\icons\oxygen\22x22\apps\gpg.png"
-  Delete "$INSTDIR\share\icons\oxygen\22x22\apps\gpgsm.png"
+  Delete "$INSTDIR\share\icons\oxygen\22x22\apps\kleopatra.png"
 
   RMDir "$INSTDIR\share\icons\oxygen\22x22\apps"
   RMDir "$INSTDIR\share\icons\oxygen\22x22"
 
-  Delete "$INSTDIR\share\icons\oxygen\32x32\apps\gpg.png"
-  Delete "$INSTDIR\share\icons\oxygen\32x32\apps\gpgsm.png"
+  Delete "$INSTDIR\share\icons\oxygen\32x32\apps\kleopatra.png"
 
   RMDir "$INSTDIR\share\icons\oxygen\32x32\apps"
   RMDir "$INSTDIR\share\icons\oxygen\32x32"
+
+  Delete "$INSTDIR\share\icons\oxygen\48x48\apps\kleopatra.png"
+
+  RMDir "$INSTDIR\share\icons\oxygen\48x48\apps"
+  RMDir "$INSTDIR\share\icons\oxygen\48x48"
+
+  Delete "$INSTDIR\share\icons\oxygen\64x64\apps\kleopatra.png"
+
+  RMDir "$INSTDIR\share\icons\oxygen\64x64\apps"
+  RMDir "$INSTDIR\share\icons\oxygen\64x64"
+
+  Delete "$INSTDIR\share\icons\oxygen\scalable\apps\kleopatra.svgz"
+
+  RMDir "$INSTDIR\share\icons\oxygen\scalable\apps"
+  RMDir "$INSTDIR\share\icons\oxygen\scalable"
+
   RMDir "$INSTDIR\share\icons\oxygen"
   RMDir "$INSTDIR\share\icons"
   RMDir "$INSTDIR\share"
