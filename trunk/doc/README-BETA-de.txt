@@ -1,7 +1,7 @@
 Wichtige Informationen zum Einsatz von Gpg4win 1.9-BETA
 =======================================================
 
-Stand: Gpg4win-1.9.0-svn639 (20071210)
+Stand: Gpg4win-1.9.0-svn651 (20071221)
 
 Hier finden sich wichtige Informationen die bei der
 Entscheidung helfen sollen, ob Gpg4win 1.9 schon für
@@ -13,6 +13,18 @@ Ausserdem wird ein Ausblick gegeben, was mit
 Gpg4win 2.0 an neuer Funktionalität zu erwarten ist.
 Die 1.9er Versionen sind der Beta-Test-Zyklus. Ist er
 abgeschlossen wird Version 2.0 freigegeben.
+
+Verbesserungen seit Gpg4win-1.9.0-svn639
+----------------------------------------
+
+Behoben:
+
+* GpgEX: Verschlüsselung per OpenPGP nun funktional.
+
+* GpgOL: OpenPGP/MIME Signatur-Erstellung nun funktional
+  War unter anderem hier berichtet:
+  GpgOL: Can not create OpenPGP Signature.
+  https://bugs.g10code.com/gnupg/issue863
 
 Verbesserungen seit Gpg4win-1.9.0-svn615
 ----------------------------------------
@@ -134,8 +146,8 @@ Aktualisiert:
     - Signatur-Prüfung und Entschlüsselung S/MIME: Grundsätzlich
       funktional, muss aber noch verbessert werden
 
-    - Signatur OpenPGP/MIME: Funktion defekt: Signierter E-Mail fehlt der
-      Inhalt.
+    - Signatur OpenPGP/MIME: Grundsätzlich funktional, muss aber noch
+      verbessert werden
     - Signatur S/MIME: Funktion defekt: Nach Auswahl Signaturschlüssel kommt
       es zu einem Fehler bei der Signierung.
     - Verschlüsselung OpenPGP/MIME: Grundsätzlich funktional, muss aber noch
@@ -156,11 +168,12 @@ Neu:
     Der Dialog ist noch nicht die endgültige Fassung sondern
     eine temporärer Ersatz.
 
-  * Verschlüsseln: Nicht funktional, da Auswahl eines Zertifikates
-    nicht angeboten wird.
+  * Verschlüsseln: OpenPGP funktional, aber muss noch verbessert werden.
+    Es bleiben temporäre Dateien im jeweiligen Verzeichnis zurück.
+    S/MIME noch nicht funktional (DirMngr nicht verfügbar).
 
   * Signieren: Nicht funktional, da nach Auswahl des S/MIME Schlüssels
-    und der Datei leerer Reiter erscheint, der nur "Cacnel" erlaubt.
+    und der Datei leerer Reiter erscheint, der nur "Cancel" erlaubt.
 
   * Verschlüsseln/Signieren: Kleopatra-Aufrufe insgesamt noch nicht
     funktional.
@@ -196,13 +209,28 @@ Neu:
 Bekannte Fehler
 ---------------
 
+Berichtet zu svn651:
+
+* Kleopatra: Tray Icon Menu: Shutdown crashes Kleopatra
+  http://bugs.kde.org/show_bug.cgi?id=154423
+
+* Kleopatra: Tray menu: toggle Open and Close
+  http://bugs.kde.org/show_bug.cgi?id=154424
+
+* Kleoaptra: Verification of S/MIME E-Mails fails
+  http://bugs.kde.org/show_bug.cgi?id=154427
+
+* Kleoapatra: Message and interaction dialogs should
+  always raise in foreground (MS Windows)
+  http://bugs.kde.org/show_bug.cgi?id=154430
+
+* GpgOL: emails in sent-folder can not be verified
+  https://bugs.g10code.com/gnupg/issue867
+
 Berichtet zu svn615:
 
 * GpgOL: does not decrypt inline-PGP received prior to Gpg4win-1.9.0
   https://bugs.g10code.com/gnupg/issue861
-
-* GpgOL: Can not create OpenPGP Signature.
-  https://bugs.g10code.com/gnupg/issue863
 
 * Claws Mail: Freezes if password dialog is cancelled
   http://wald.intevation.org/tracker/index.php?func=detail&aid=548&group_id=11&atid=126
