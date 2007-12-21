@@ -334,10 +334,17 @@ chk 40318619764a5c0ae9aa3796a6f33155d0a90c0d
 
 server ftp://ftp.kdab.net/pub/gpg4win
 
-name oxygen-icons-20070918-bin.zip
-file oxygen-icons-20070918.zip
-link oxygen-icons-20070918-src.zip
-chk cefb58affdf099069d3b4e14029b4d26abb03ae1
+#name oxygen-icons-20070918-bin.zip
+#file oxygen-icons-20070918.zip
+#link oxygen-icons-20070918-src.zip
+#chk cefb58affdf099069d3b4e14029b4d26abb03ae1
+
+name oxygen-icons-20071220-bin.zip
+file oxygen-icons-20071220.zip
+chk  edce1934058d8f33a8ddc33c6d1ae4f1b8502e8e
+
+file oxygen-icons-20071220-src.zip
+chk  246a39b15c7e4b1d9b31f04392ada2dcca8140ea
 
 # kdelibs
 
@@ -360,10 +367,10 @@ chk  6d765b4168593df6450385c51f52f7494ca80169
 
 server ftp://ftp.kdab.net/pub/gpg4win
 
-name kleopatra-20071214-3-bin.zip
-file kleo-uiserver-only-20071214-3-bin.zip
-chk  e5c9be6c7b564432876fb1277a974413fce2dbea
+name kleopatra-20071220-bin.zip
+file kleo-uiserver-only-20071220-bin.zip
+chk  8ef31768ac43da58eb1846b0a491cf149615f617
 
-name kleopatra-20071214-3-src.zip
-file kleo-uiserver-only-20071214-3-src.zip
-chk  e5436eddf3f00b2c4805aa2592d00dea40343485
+name kleopatra-20071220-src.zip
+file kleo-uiserver-only-20071220-src.zip
+chk  670501e20fb663038f1a863f31839dca5d12fdb0
