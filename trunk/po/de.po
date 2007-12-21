@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gpg4win 1.1.1-svn417\n"
 "Report-Msgid-Bugs-To: gpg4win-devel@wald.intevation.org\n"
-"POT-Creation-Date: 2007-12-07 18:54+0100\n"
-"PO-Revision-Date: 2007-12-07 18:55+0100\n"
+"POT-Creation-Date: 2007-12-21 21:03+0100\n"
+"PO-Revision-Date: 2007-12-21 21:04+0100\n"
 "Last-Translator: Marcus Brinkmann <mb@g10code.com>\n"
 "Language-Team: German <translation-team-de@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -280,19 +280,28 @@ msgctxt "T_ShuttingDownDirMngr"
 msgid "Trying to shutdown a possible running instance of DirMngr."
 msgstr "Ein möglicherweise laufender DirMngr wird jetzt automatisch beendet."
 
+#: src/inst-claws-mail.nsi:53
+msgctxt "DESC_SEC_claws_mail"
+msgid "Claws Mail-User-Agent"
+msgstr ""
+"Claws Mail ist ein vollständiges Mail- und News-Programm mit sehr guter "
+"Unterstützung für GnuPG."
+
+#: src/inst-claws-mail.nsi:56
+msgctxt "DESC_Menu_claws_mail"
+msgid "Run the Claws mailprogram."
+msgstr "Das Mailprogramm Claws Mail aufrufen."
+
+#: src/inst-claws-mail.nsi:59
+msgctxt "DESC_Menu_claws_mail_pdf"
+msgid "Show the online manual of Claws Mail"
+msgstr "Das englische Handbuch zu Claws Mail anzeigen"
+
 #: src/inst-eudoragpg.nsi:40
 msgctxt "DESC_SEC_eudoragpg"
 msgid "EudoraGPG is a plugin for the Eudora mail program"
 msgstr ""
 "EudoraGPG ist ein Plugin zur Verschlüsselung für das Eudora Mailprogramm"
-
-#: src/inst-gnupg.nsi:91
-msgctxt "DESC_SEC_gnupg"
-msgid "GNU Privacy Guard"
-msgstr ""
-"Der GNU Privacy Guard (GnuPG) ist der Kernbestandteil dieser Software.  "
-"GnuPG stellt die eigentliche Verschlüsselung sowie die Verwaltung der "
-"Schlüssel bereit."
 
 #: src/inst-gnupg2.nsi:106
 msgctxt "DESC_SEC_gnupg2"
@@ -301,6 +310,14 @@ msgstr ""
 "Diese Version von GnuPG kann zusätzlich installiert werden um "
 "Verschlüsselung mittels S/MIME bereitzustellen.  Bitte beachten Sie, daß "
 "diese Option noch nicht vollständig unterstützt ist."
+
+#: src/inst-gnupg.nsi:91
+msgctxt "DESC_SEC_gnupg"
+msgid "GNU Privacy Guard"
+msgstr ""
+"Der GNU Privacy Guard (GnuPG) ist der Kernbestandteil dieser Software.  "
+"GnuPG stellt die eigentliche Verschlüsselung sowie die Verwaltung der "
+"Schlüssel bereit."
 
 #: src/inst-gpa.nsi:62
 msgctxt "DESC_SEC_gpa"
@@ -369,6 +386,16 @@ msgid "GnuPG for Outlook"
 msgstr ""
 "GnuPG für Outlook (GpgOL) is eine Erweiterung für Outlook 2003, die "
 "verwendet wird um Nachrichten mit OpenPGP oder S/MIME zu verschlüsseln."
+
+#: src/inst-kleopatra.nsi:108
+msgctxt "DESC_SEC_kleopatra"
+msgid "Kleopatra"
+msgstr "Kleopatra"
+
+#: src/inst-kleopatra.nsi:111
+msgctxt "DESC_Menu_kleopatra"
+msgid "Run the Kleopatra key management tool."
+msgstr "Das Schlüsselverwaltungsprogramm Kleopatra aufrufen."
 
 #: src/inst-man_advanced_de.nsi:39
 msgctxt "DESC_Name_man_advanced_de"
@@ -447,23 +474,6 @@ msgstr "Das Mailprogramm Sylpheed-Claws aufrufen."
 msgctxt "DESC_Menu_sylpheed_pdf"
 msgid "Show the online manual of Sylpheed Claws"
 msgstr "Das englische Handbuch zu Sylpheed Claws anzeigen"
-
-#: src/inst-claws-mail.nsi:53
-msgctxt "DESC_SEC_claws_mail"
-msgid "Claws Mail-User-Agent"
-msgstr ""
-"Claws Mail ist ein vollständiges Mail- und News-Programm mit sehr guter "
-"Unterstützung für GnuPG."
-
-#: src/inst-claws-mail.nsi:56
-msgctxt "DESC_Menu_claws_mail"
-msgid "Run the Claws mailprogram."
-msgstr "Das Mailprogramm Claws Mail aufrufen."
-
-#: src/inst-claws-mail.nsi:59
-msgctxt "DESC_Menu_claws_mail_pdf"
-msgid "Show the online manual of Claws Mail"
-msgstr "Das englische Handbuch zu Claws Mail anzeigen"
 
 #: src/inst-winpt.nsi:46
 msgctxt "DESC_SEC_winpt"
