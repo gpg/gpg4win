@@ -51,6 +51,7 @@ at least the following packages need to be installed:
  tr
  gs-common
  hyperlatex
+ sharutils (uudecode for claws icon patch)
  gettext (msgfmt, dcgettext, gmsgfmt, xgettext for glib)
  libglib2.0-dev (glib-genmarshal for glib)
 
