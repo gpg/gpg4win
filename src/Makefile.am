@@ -289,7 +289,7 @@ endef
 # We need to fix the prefix in the various packages using pkgconfig,
 # or we can't substitute it properly in our pkg-config wrapper.
 define gpg4win_pkg_glib_post_install
- (cd $$$${pkgidir_dev};							\
+ (cd $$$${pkgidir};							\
  perl -pi -e 's/^prefix=.*$$$$/prefix=\/usr/' `find . -name \*.pc`)
 endef
 

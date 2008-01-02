@@ -40,9 +40,9 @@ if $CMD $* |
 #    sed -e "s~\-x11\-~-win32-~g;" # replace x11 with win32 (target)
 #    sed -e "s~pangoxft~pangow32ft~g;" # replace x11 with win32 (target)
 then    
-    echo "PKG_CONFIG_LIBDIR=$PKG_CONFIG_LIBDIR" >&2
-    echo "PKG_CONFIG_PATH=$PKG_CONFIG_PATH" >&2
-    echo "OKAY" >&2;
+#    echo "PKG_CONFIG_LIBDIR=$PKG_CONFIG_LIBDIR" >&2
+#    echo "PKG_CONFIG_PATH=$PKG_CONFIG_PATH" >&2
+#    echo "OKAY" >&2;
     exit 0;
 else
     echo "pkg-config failed!" >&2 
