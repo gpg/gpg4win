@@ -1,4 +1,4 @@
-This is gpg4win - the GUI Installer Builder for W32.
+BThis is gpg4win - the GUI Installer Builder for W32.
 
 
 Instructions:
@@ -7,7 +7,7 @@ Instructions:
 1. Download the source and binary packages that are required to build
    the installer:
 
-   $ cd packages
+ 1;1609;0c  $ cd packages
    $ sh download.sh
    [...]
    $ cd ..
@@ -40,6 +40,8 @@ work with current Testing (as of Februar 2006) too.  It might work with
 Sarge - this has not been tested.  To satisfy all needs of configure
 at least the following packages need to be installed:
 
+ build-essential (libc6-dev, gcc, g++, make)
+ automake, autoconf (if building from SVN)
  mingw32
  nsis
  stow
@@ -99,6 +101,12 @@ some of these tasks.  Here is a short run up:
    is packaged, you might need to write a new macro.
 
 6. Add download information to packages/download.sh.
+
+7. If the package ships pkg-config (*.pc) support files, you need add
+   post install instructions to Makefile.am.  Note that *.pc files may
+   be in the "runtime" directory ${pkgidir} if the package is built
+   within gpg4win (or peculiarly shipped), or in the development
+   package ${pkgidir_dev}.
 
 Then run the usual "./autogen.sh" to create the actual configure file
 and run configure as described above.
