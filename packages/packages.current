@@ -274,7 +274,7 @@ chk  4b720706a8e4251d8cb7a0f2336226907df1426c
 # (Snapshots)
 server ftp://ftp.g10code.com/g10code/scratch
 
-file pinentry/pinentry-0.7.5-cvs.tar.gz
+file pinentry-0.7.5-cvs.tar.gz
 chk  85919f061e4fa432fd3659de89a301878c6c7d25
 
 file gpgme-1.1.6-svn1279.tar.bz2
