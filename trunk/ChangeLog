@@ -10,7 +10,7 @@
 	without the version name of the package.
 	(MPKG_template) <stamps/stamp-$(1)-01-patch>: Ditto.
 
-	* packages/packages.current: Fix pinentry name.  Use gpgol svn 204.
+	* packages/packages.current: Fix pinentry name.  Use gpgol svn 205.
 	Update to gnupg 1.48 and 2.0.8.
 
 2008-01-02  Marcus Brinkmann  <marcus@g10code.de>
