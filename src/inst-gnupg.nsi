@@ -78,7 +78,11 @@ Section "GnuPG" SEC_gnupg
 
   # This old key is required for GPGee.  Please do not use in new
   # applications.
-  WriteRegStr HKLM "Software\GNU\GnuPG" "gpgProgram" "$INSTDIR\gpg.exe"
+  # Note: We don't use it anymore so that gpgme decides what gpg to use
+  #       For the new gpg4win we actually use gpg2.exe.
+  #       To cope with old installations we actually remove this vale.
+  #WriteRegStr HKLM "Software\GNU\GnuPG" "gpgProgram" "$INSTDIR\gpg.exe"
+  DeleteRegValue HKLM "Software\GNU\GnuPG" "gpgProgram"
 
   # Add the public directory to the PATH
   Push "$INSTDIR\pub"

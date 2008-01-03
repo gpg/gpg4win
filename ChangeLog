@@ -1,5 +1,7 @@
 2008-01-03  Werner Koch  <wk@g10code.com>
 
+	* src/inst-gnupg.nsi: Do not set gpgProgram but delete it.
+
 	* patches/gpgme/01-gpg2.patch: New.
 	* Makefile.am (EXTRA_DIST): Add it.
 
