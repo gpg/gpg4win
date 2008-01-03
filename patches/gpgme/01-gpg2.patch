@@ -1,0 +1,19 @@
+#! /bin/sh
+patch -p0 -f $* < $0
+exit $?
+
+Change gpgme to use gpg2.exe by default.
+
+
+--- gpgme/w32-util.c
++++ gpgme/w32-util.c
+@@ -274,7 +275,7 @@
+   if (!gpg_program)
+     gpg_program = find_program_in_registry ("gpgProgram");
+   if (!gpg_program)
+-    gpg_program = find_program_at_standard_place ("GNU\\GnuPG\\gpg.exe");
++    gpg_program = find_program_at_standard_place ("GNU\\GnuPG\\gpg2.exe");
+ #ifdef GPG_PATH
+   if (!gpg_program)
+     gpg_program = GPG_PATH;
+
