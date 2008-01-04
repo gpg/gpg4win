@@ -43,16 +43,14 @@ Section "Kleopatra" SEC_kleopatra
   File ${prefix}/bin/libkmime.dll
   File ${prefix}/bin/libkleo.dll
 
-  SetOutPath "$INSTDIR\lib\kde4"
-
   SetOutPath "$INSTDIR\share\applications\kde4"
 
   File ${prefix}/share/applications/kde4/kleopatra_import.desktop
 
   SetOutPath "$INSTDIR\share\apps\kleopatra"
 
-  File ${prefix}/share/apps/kleopatra/kleopatraui.rc
   File ${prefix}/share/apps/kleopatra/kleopatra_newui.rc
+  File ${prefix}/share/apps/kleopatra/kleopatraui.rc
 
   SetOutPath "$INSTDIR\share\apps\kleopatra\pics"
 
@@ -72,34 +70,6 @@ Section "Kleopatra" SEC_kleopatra
   SetOutPath "$INSTDIR\share\config"
 
   File ${prefix}/share/config/libkleopatrarc
-
-  SetOutPath "$INSTDIR\share\icons\oxygen\128x128\apps"
-
-  File ${prefix}/share/icons/oxygen/128x128/apps/kleopatra.png
-
-  SetOutPath "$INSTDIR\share\icons\oxygen\16x16\apps"
-
-  File ${prefix}/share/icons/oxygen/16x16/apps/kleopatra.png
-
-  SetOutPath "$INSTDIR\share\icons\oxygen\22x22\apps"
-
-  File ${prefix}/share/icons/oxygen/22x22/apps/kleopatra.png
-
-  SetOutPath "$INSTDIR\share\icons\oxygen\32x32\apps"
-
-  File ${prefix}/share/icons/oxygen/32x32/apps/kleopatra.png
-
-  SetOutPath "$INSTDIR\share\icons\oxygen\64x64\apps"
-
-  File ${prefix}/share/icons/oxygen/64x64/apps/kleopatra.png
-
-  SetOutPath "$INSTDIR\share\icons\oxygen\48x48\apps"
-
-  File ${prefix}/share/icons/oxygen/48x48/apps/kleopatra.png
-
-  SetOutPath "$INSTDIR\share\icons\oxygen\scalable\apps"
-
-  File ${prefix}/share/icons/oxygen/scalable/apps/kleopatra.svgz
 
 !endif
 SectionEnd

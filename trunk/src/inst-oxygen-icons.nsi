@@ -35,11 +35,6 @@ Section "-oxygen-icons" SEC_oxygen_icons
 
   SetOutPath "$INSTDIR\share\icons\oxygen\16x16\actions"
 
-  File ${prefix}/share/icons/oxygen/16x16/actions/1day.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/5days.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/7days.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/abentry.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/alarmclock.png
   File ${prefix}/share/icons/oxygen/16x16/actions/application-exit.png
   File ${prefix}/share/icons/oxygen/16x16/actions/archive-extract.png
   File ${prefix}/share/icons/oxygen/16x16/actions/archive-insert-directory.png
@@ -53,50 +48,24 @@ Section "-oxygen-icons" SEC_oxygen_icons
   File ${prefix}/share/icons/oxygen/16x16/actions/arrow-right.png
   File ${prefix}/share/icons/oxygen/16x16/actions/arrow-up-double.png
   File ${prefix}/share/icons/oxygen/16x16/actions/arrow-up.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/battery-charging-000.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/battery-charging-020.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/battery-charging-040.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/battery-charging-060.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/battery-charging-080.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/battery-charging-100.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/battery-discharging-000.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/battery-discharging-020.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/battery-discharging-040.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/battery-discharging-060.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/battery-discharging-080.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/battery-discharging-100.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/book.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/book2.png
   File ${prefix}/share/icons/oxygen/16x16/actions/bookmark-new-list.png
   File ${prefix}/share/icons/oxygen/16x16/actions/bookmark-new.png
   File ${prefix}/share/icons/oxygen/16x16/actions/bookmark-toolbar.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/bookmark.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/browser-go.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/calendar-today.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/camera-test.png
   File ${prefix}/share/icons/oxygen/16x16/actions/cd-data.png
   File ${prefix}/share/icons/oxygen/16x16/actions/cd.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/cdburn.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/cdcopy.png
   File ${prefix}/share/icons/oxygen/16x16/actions/character-set.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/checkmark-korganizer.png
   File ${prefix}/share/icons/oxygen/16x16/actions/chronometer.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/clear-left.png
   File ${prefix}/share/icons/oxygen/16x16/actions/color-fill.png
   File ${prefix}/share/icons/oxygen/16x16/actions/color-line.png
   File ${prefix}/share/icons/oxygen/16x16/actions/color-picker.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/commandprompt.png
   File ${prefix}/share/icons/oxygen/16x16/actions/configure-shortcuts.png
   File ${prefix}/share/icons/oxygen/16x16/actions/configure-toolbars.png
   File ${prefix}/share/icons/oxygen/16x16/actions/configure.png
   File ${prefix}/share/icons/oxygen/16x16/actions/connect-no.png
   File ${prefix}/share/icons/oxygen/16x16/actions/connection-established.png
   File ${prefix}/share/icons/oxygen/16x16/actions/contact-new.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/contact.png
   File ${prefix}/share/icons/oxygen/16x16/actions/datashow.png
   File ${prefix}/share/icons/oxygen/16x16/actions/datashowchart.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/decrypted.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/dialog-apply.png
   File ${prefix}/share/icons/oxygen/16x16/actions/dialog-cancel.png
   File ${prefix}/share/icons/oxygen/16x16/actions/dialog-close.png
   File ${prefix}/share/icons/oxygen/16x16/actions/dialog-ok-apply.png
@@ -111,6 +80,7 @@ Section "-oxygen-icons" SEC_oxygen_icons
   File ${prefix}/share/icons/oxygen/16x16/actions/document-open-remote.png
   File ${prefix}/share/icons/oxygen/16x16/actions/document-open.png
   File ${prefix}/share/icons/oxygen/16x16/actions/document-preview-archive.png
+  File ${prefix}/share/icons/oxygen/16x16/actions/document-preview.png
   File ${prefix}/share/icons/oxygen/16x16/actions/document-print-frame.png
   File ${prefix}/share/icons/oxygen/16x16/actions/document-print-preview.png
   File ${prefix}/share/icons/oxygen/16x16/actions/document-print.png
@@ -119,15 +89,17 @@ Section "-oxygen-icons" SEC_oxygen_icons
   File ${prefix}/share/icons/oxygen/16x16/actions/document-save-all.png
   File ${prefix}/share/icons/oxygen/16x16/actions/document-save-as.png
   File ${prefix}/share/icons/oxygen/16x16/actions/document-save.png
+  File ${prefix}/share/icons/oxygen/16x16/actions/document-sign.png
   File ${prefix}/share/icons/oxygen/16x16/actions/document-start-presentation.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/documentinfo-koffice.png
   File ${prefix}/share/icons/oxygen/16x16/actions/domtreeviewer.png
   File ${prefix}/share/icons/oxygen/16x16/actions/draw-brush.png
   File ${prefix}/share/icons/oxygen/16x16/actions/draw-eraser.png
   File ${prefix}/share/icons/oxygen/16x16/actions/draw-freehand.png
+  File ${prefix}/share/icons/oxygen/16x16/actions/draw-text.png
   File ${prefix}/share/icons/oxygen/16x16/actions/edit-add.png
   File ${prefix}/share/icons/oxygen/16x16/actions/edit-clear-history.png
   File ${prefix}/share/icons/oxygen/16x16/actions/edit-clear-list.png
+  File ${prefix}/share/icons/oxygen/16x16/actions/edit-clear-locationbar-ltr.png
   File ${prefix}/share/icons/oxygen/16x16/actions/edit-clear-locationbar-rtl.png
   File ${prefix}/share/icons/oxygen/16x16/actions/edit-clear-locationbar.png
   File ${prefix}/share/icons/oxygen/16x16/actions/edit-clear.png
@@ -145,16 +117,11 @@ Section "-oxygen-icons" SEC_oxygen_icons
   File ${prefix}/share/icons/oxygen/16x16/actions/edit-redo.png
   File ${prefix}/share/icons/oxygen/16x16/actions/edit-rename.png
   File ${prefix}/share/icons/oxygen/16x16/actions/edit-select-all.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/edit-trash.png
   File ${prefix}/share/icons/oxygen/16x16/actions/edit-undo.png
   File ${prefix}/share/icons/oxygen/16x16/actions/edit-user.png
   File ${prefix}/share/icons/oxygen/16x16/actions/edit.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/editinput.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/emptytrash.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/encrypted.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/eraser.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/exec.png
   File ${prefix}/share/icons/oxygen/16x16/actions/favorites.png
+  File ${prefix}/share/icons/oxygen/16x16/actions/feed-subscribe.png
   File ${prefix}/share/icons/oxygen/16x16/actions/fileview-close-left.png
   File ${prefix}/share/icons/oxygen/16x16/actions/fileview-close-right.png
   File ${prefix}/share/icons/oxygen/16x16/actions/fileview-column.png
@@ -164,9 +131,7 @@ Section "-oxygen-icons" SEC_oxygen_icons
   File ${prefix}/share/icons/oxygen/16x16/actions/fileview-preview.png
   File ${prefix}/share/icons/oxygen/16x16/actions/fileview-split.png
   File ${prefix}/share/icons/oxygen/16x16/actions/fileview-text.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/fill.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/find-next.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/find-previous.png
+  File ${prefix}/share/icons/oxygen/16x16/actions/fill-color.png
   File ${prefix}/share/icons/oxygen/16x16/actions/flag-black.png
   File ${prefix}/share/icons/oxygen/16x16/actions/flag-blue.png
   File ${prefix}/share/icons/oxygen/16x16/actions/flag-green.png
@@ -174,8 +139,8 @@ Section "-oxygen-icons" SEC_oxygen_icons
   File ${prefix}/share/icons/oxygen/16x16/actions/flag-yellow.png
   File ${prefix}/share/icons/oxygen/16x16/actions/flag.png
   File ${prefix}/share/icons/oxygen/16x16/actions/folder-new.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/footprint.png
   File ${prefix}/share/icons/oxygen/16x16/actions/fork.png
+  File ${prefix}/share/icons/oxygen/16x16/actions/format-fill-color.png
   File ${prefix}/share/icons/oxygen/16x16/actions/format-font-size-less.png
   File ${prefix}/share/icons/oxygen/16x16/actions/format-font-size-more.png
   File ${prefix}/share/icons/oxygen/16x16/actions/format-indent-less.png
@@ -189,6 +154,7 @@ Section "-oxygen-icons" SEC_oxygen_icons
   File ${prefix}/share/icons/oxygen/16x16/actions/format-line-spacing-triple.png
   File ${prefix}/share/icons/oxygen/16x16/actions/format-list-ordered.png
   File ${prefix}/share/icons/oxygen/16x16/actions/format-list-unordered.png
+  File ${prefix}/share/icons/oxygen/16x16/actions/format-stroke-color.png
   File ${prefix}/share/icons/oxygen/16x16/actions/format-text-bold.png
   File ${prefix}/share/icons/oxygen/16x16/actions/format-text-direction-ltr.png
   File ${prefix}/share/icons/oxygen/16x16/actions/format-text-direction-rtl.png
@@ -212,6 +178,7 @@ Section "-oxygen-icons" SEC_oxygen_icons
   File ${prefix}/share/icons/oxygen/16x16/actions/gear.png
   File ${prefix}/share/icons/oxygen/16x16/actions/get-hot-new-stuff.png
   File ${prefix}/share/icons/oxygen/16x16/actions/go-bottom.png
+  File ${prefix}/share/icons/oxygen/16x16/actions/go-down-search.png
   File ${prefix}/share/icons/oxygen/16x16/actions/go-down.png
   File ${prefix}/share/icons/oxygen/16x16/actions/go-first-rtl.png
   File ${prefix}/share/icons/oxygen/16x16/actions/go-first.png
@@ -226,182 +193,113 @@ Section "-oxygen-icons" SEC_oxygen_icons
   File ${prefix}/share/icons/oxygen/16x16/actions/go-previous-rtl.png
   File ${prefix}/share/icons/oxygen/16x16/actions/go-previous.png
   File ${prefix}/share/icons/oxygen/16x16/actions/go-top.png
+  File ${prefix}/share/icons/oxygen/16x16/actions/go-up-search.png
   File ${prefix}/share/icons/oxygen/16x16/actions/go-up.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/halfencrypted.png
   File ${prefix}/share/icons/oxygen/16x16/actions/help-about-kde.png
   File ${prefix}/share/icons/oxygen/16x16/actions/help-about.png
   File ${prefix}/share/icons/oxygen/16x16/actions/help-contents.png
   File ${prefix}/share/icons/oxygen/16x16/actions/help-contextual.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/history-clear.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/history-kdeprint.png
+  File ${prefix}/share/icons/oxygen/16x16/actions/help-hint.png
   File ${prefix}/share/icons/oxygen/16x16/actions/history.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/images-display.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/inktube.png
   File ${prefix}/share/icons/oxygen/16x16/actions/insert-image.png
   File ${prefix}/share/icons/oxygen/16x16/actions/insert-table.png
   File ${prefix}/share/icons/oxygen/16x16/actions/insert-text.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/java-kjava.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/java.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/kdeprint-addprinter.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/kdeprint-addpseudo.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/kdeprint-enableprinter-kdeprint.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/kdeprint-printer-infos.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/kdeprint-queuestate-kdeprint.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/kdeprint-stopprinter-kdeprint.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/kdeprint-testprinter.png
   File ${prefix}/share/icons/oxygen/16x16/actions/kgpg-export-kgpg.png
   File ${prefix}/share/icons/oxygen/16x16/actions/kgpg-identity-kgpg.png
   File ${prefix}/share/icons/oxygen/16x16/actions/kgpg-import-kgpg.png
   File ${prefix}/share/icons/oxygen/16x16/actions/kgpg-info-kgpg.png
   File ${prefix}/share/icons/oxygen/16x16/actions/kgpg-key1-kgpg.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/kgpg-key1-kopete.png
   File ${prefix}/share/icons/oxygen/16x16/actions/kgpg-key2-kgpg.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/kgpg-key2-kopete.png
   File ${prefix}/share/icons/oxygen/16x16/actions/kgpg-key3-kgpg.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/kgpg-key3-kopete.png
   File ${prefix}/share/icons/oxygen/16x16/actions/kgpg-key4-kgpg.png
   File ${prefix}/share/icons/oxygen/16x16/actions/kgpg-sign-kgpg.png
   File ${prefix}/share/icons/oxygen/16x16/actions/kgpg-term-kgpg.png
   File ${prefix}/share/icons/oxygen/16x16/actions/knewstuff.png
   File ${prefix}/share/icons/oxygen/16x16/actions/knotes-delete-knotes.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/kontact-contacts.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/kontact-date.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/kontact-journal.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/kontact-mail.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/kontact-news.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/kontact-notes.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/kontact-summary.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/kontact-todo.png
   File ${prefix}/share/icons/oxygen/16x16/actions/konv-message.png
   File ${prefix}/share/icons/oxygen/16x16/actions/konv-message2.png
   File ${prefix}/share/icons/oxygen/16x16/actions/kscd-dock.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/laptop-charge-klaptopdaemon.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/laptop-nobattery-klaptopdaemon.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/laptop-nocharge-klaptopdaemon.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/launch.png
   File ${prefix}/share/icons/oxygen/16x16/actions/list-add-font.png
   File ${prefix}/share/icons/oxygen/16x16/actions/list-add-user.png
   File ${prefix}/share/icons/oxygen/16x16/actions/list-add.png
   File ${prefix}/share/icons/oxygen/16x16/actions/list-remove-user.png
   File ${prefix}/share/icons/oxygen/16x16/actions/list-remove.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/list.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/locationbar-erase.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/love.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/mail-delete.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/mail-find.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/mail-flag-kmail.png
   File ${prefix}/share/icons/oxygen/16x16/actions/mail-flag.png
   File ${prefix}/share/icons/oxygen/16x16/actions/mail-forward.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/mail-get.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/mail-ham-kmail.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/mail-ham.png
   File ${prefix}/share/icons/oxygen/16x16/actions/mail-mark-important.png
   File ${prefix}/share/icons/oxygen/16x16/actions/mail-mark-notjunk.png
   File ${prefix}/share/icons/oxygen/16x16/actions/mail-mark-read.png
+  File ${prefix}/share/icons/oxygen/16x16/actions/mail-mark-task.png
+  File ${prefix}/share/icons/oxygen/16x16/actions/mail-mark-unread-new.png
   File ${prefix}/share/icons/oxygen/16x16/actions/mail-mark-unread.png
   File ${prefix}/share/icons/oxygen/16x16/actions/mail-message-new.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/mail-new.png
   File ${prefix}/share/icons/oxygen/16x16/actions/mail-queue.png
   File ${prefix}/share/icons/oxygen/16x16/actions/mail-receive.png
   File ${prefix}/share/icons/oxygen/16x16/actions/mail-reply-all.png
   File ${prefix}/share/icons/oxygen/16x16/actions/mail-reply-list.png
   File ${prefix}/share/icons/oxygen/16x16/actions/mail-reply-sender.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/mail-replylist.png
   File ${prefix}/share/icons/oxygen/16x16/actions/mail-send.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/mail.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/matrix.png
   File ${prefix}/share/icons/oxygen/16x16/actions/media-eject.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/media-equalizer.png
   File ${prefix}/share/icons/oxygen/16x16/actions/media-playback-pause.png
   File ${prefix}/share/icons/oxygen/16x16/actions/media-playback-start.png
   File ${prefix}/share/icons/oxygen/16x16/actions/media-playback-stop.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/media-playlist-clear.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/media-playlist-refresh.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/media-playlist.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/media-podcast.png
   File ${prefix}/share/icons/oxygen/16x16/actions/media-record.png
   File ${prefix}/share/icons/oxygen/16x16/actions/media-scripts.png
   File ${prefix}/share/icons/oxygen/16x16/actions/media-seek-backward.png
   File ${prefix}/share/icons/oxygen/16x16/actions/media-seek-forward.png
   File ${prefix}/share/icons/oxygen/16x16/actions/media-skip-backward.png
   File ${prefix}/share/icons/oxygen/16x16/actions/media-skip-forward.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/month.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/network.png
+  File ${prefix}/share/icons/oxygen/16x16/actions/network-connect.png
+  File ${prefix}/share/icons/oxygen/16x16/actions/network-disconnect.png
   File ${prefix}/share/icons/oxygen/16x16/actions/news-subscribe.png
   File ${prefix}/share/icons/oxygen/16x16/actions/news-unsubscribe.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/no.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/none.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/note.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/note2.png
   File ${prefix}/share/icons/oxygen/16x16/actions/object-edit.png
   File ${prefix}/share/icons/oxygen/16x16/actions/object-rotate-left.png
   File ${prefix}/share/icons/oxygen/16x16/actions/object-rotate-right.png
   File ${prefix}/share/icons/oxygen/16x16/actions/ok.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/openterm.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/paintbrush.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/paperbag.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/paperclipreal.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/pen.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/pencil.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/pencil2.png
   File ${prefix}/share/icons/oxygen/16x16/actions/player-time.png
   File ${prefix}/share/icons/oxygen/16x16/actions/player-volume.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/plus.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/print-frame.png
   File ${prefix}/share/icons/oxygen/16x16/actions/process-stop.png
   File ${prefix}/share/icons/oxygen/16x16/actions/project-open.png
   File ${prefix}/share/icons/oxygen/16x16/actions/rating.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/rebuild.png
   File ${prefix}/share/icons/oxygen/16x16/actions/roll.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/rotate.png
   File ${prefix}/share/icons/oxygen/16x16/actions/rss-tag.png
   File ${prefix}/share/icons/oxygen/16x16/actions/rss.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/ruler.png
   File ${prefix}/share/icons/oxygen/16x16/actions/run-build-file.png
   File ${prefix}/share/icons/oxygen/16x16/actions/run-build.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/save-all.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/screwdriver.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/search-filter.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/search-user.png
+  File ${prefix}/share/icons/oxygen/16x16/actions/select-rectangular.png
   File ${prefix}/share/icons/oxygen/16x16/actions/services.png
   File ${prefix}/share/icons/oxygen/16x16/actions/show-menu.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/show-offliners.png
   File ${prefix}/share/icons/oxygen/16x16/actions/signature.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/smiley.png
   File ${prefix}/share/icons/oxygen/16x16/actions/speaker.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/spread.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/stamp.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/switchuser.png
   File ${prefix}/share/icons/oxygen/16x16/actions/system-lock-screen.png
   File ${prefix}/share/icons/oxygen/16x16/actions/system-log-out.png
+  File ${prefix}/share/icons/oxygen/16x16/actions/system-restart.png
   File ${prefix}/share/icons/oxygen/16x16/actions/system-run.png
   File ${prefix}/share/icons/oxygen/16x16/actions/system-search.png
+  File ${prefix}/share/icons/oxygen/16x16/actions/system-suspend-hibernate.png
+  File ${prefix}/share/icons/oxygen/16x16/actions/system-suspend.png
   File ${prefix}/share/icons/oxygen/16x16/actions/system-switch-user.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/tab-breakoff.png
   File ${prefix}/share/icons/oxygen/16x16/actions/tab-close.png
   File ${prefix}/share/icons/oxygen/16x16/actions/tab-detach.png
   File ${prefix}/share/icons/oxygen/16x16/actions/tab-duplicate.png
   File ${prefix}/share/icons/oxygen/16x16/actions/tab-new-background.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/tab-new-raised.png
   File ${prefix}/share/icons/oxygen/16x16/actions/tab-new.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/tab-remove.png
   File ${prefix}/share/icons/oxygen/16x16/actions/table.png
   File ${prefix}/share/icons/oxygen/16x16/actions/text-speak.png
   File ${prefix}/share/icons/oxygen/16x16/actions/text.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/thumbnail-show.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/todo.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/tool.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/tool2.png
   File ${prefix}/share/icons/oxygen/16x16/actions/tools-check-spelling.png
   File ${prefix}/share/icons/oxygen/16x16/actions/tools-media-optical-burn.png
   File ${prefix}/share/icons/oxygen/16x16/actions/tools-media-optical-copy.png
+  File ${prefix}/share/icons/oxygen/16x16/actions/tools-report-bug.png
+  File ${prefix}/share/icons/oxygen/16x16/actions/tools-wizard.png
+  File ${prefix}/share/icons/oxygen/16x16/actions/transform-move.png
   File ${prefix}/share/icons/oxygen/16x16/actions/transform-rotate.png
   File ${prefix}/share/icons/oxygen/16x16/actions/trash-empty.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/underconstruction.png
   File ${prefix}/share/icons/oxygen/16x16/actions/user-female.png
   File ${prefix}/share/icons/oxygen/16x16/actions/user-group-new.png
+  File ${prefix}/share/icons/oxygen/16x16/actions/user-properties.png
   File ${prefix}/share/icons/oxygen/16x16/actions/user.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/users.png
   File ${prefix}/share/icons/oxygen/16x16/actions/view-calendar-day.png
   File ${prefix}/share/icons/oxygen/16x16/actions/view-calendar-list.png
   File ${prefix}/share/icons/oxygen/16x16/actions/view-calendar-month.png
@@ -418,10 +316,16 @@ Section "-oxygen-icons" SEC_oxygen_icons
   File ${prefix}/share/icons/oxygen/16x16/actions/view-fullscreen.png
   File ${prefix}/share/icons/oxygen/16x16/actions/view-history.png
   File ${prefix}/share/icons/oxygen/16x16/actions/view-icon.png
+  File ${prefix}/share/icons/oxygen/16x16/actions/view-left-close.png
   File ${prefix}/share/icons/oxygen/16x16/actions/view-left-right.png
+  File ${prefix}/share/icons/oxygen/16x16/actions/view-list-details.png
+  File ${prefix}/share/icons/oxygen/16x16/actions/view-list-icons.png
+  File ${prefix}/share/icons/oxygen/16x16/actions/view-list-text.png
+  File ${prefix}/share/icons/oxygen/16x16/actions/view-list-tree.png
   File ${prefix}/share/icons/oxygen/16x16/actions/view-media-artist.png
   File ${prefix}/share/icons/oxygen/16x16/actions/view-media-equalizer.png
   File ${prefix}/share/icons/oxygen/16x16/actions/view-media-lyrics.png
+  File ${prefix}/share/icons/oxygen/16x16/actions/view-media-playlist.png
   File ${prefix}/share/icons/oxygen/16x16/actions/view-media-visualization.png
   File ${prefix}/share/icons/oxygen/16x16/actions/view-pim-calendar.png
   File ${prefix}/share/icons/oxygen/16x16/actions/view-pim-contacts.png
@@ -431,29 +335,33 @@ Section "-oxygen-icons" SEC_oxygen_icons
   File ${prefix}/share/icons/oxygen/16x16/actions/view-pim-notes.png
   File ${prefix}/share/icons/oxygen/16x16/actions/view-pim-summary.png
   File ${prefix}/share/icons/oxygen/16x16/actions/view-pim-tasks.png
+  File ${prefix}/share/icons/oxygen/16x16/actions/view-presentation.png
   File ${prefix}/share/icons/oxygen/16x16/actions/view-preview.png
   File ${prefix}/share/icons/oxygen/16x16/actions/view-process-all-tree.png
   File ${prefix}/share/icons/oxygen/16x16/actions/view-process-all.png
   File ${prefix}/share/icons/oxygen/16x16/actions/view-process-own.png
   File ${prefix}/share/icons/oxygen/16x16/actions/view-process-system.png
+  File ${prefix}/share/icons/oxygen/16x16/actions/view-process-tree.png
   File ${prefix}/share/icons/oxygen/16x16/actions/view-process-users.png
   File ${prefix}/share/icons/oxygen/16x16/actions/view-refresh.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/view-remove.png
   File ${prefix}/share/icons/oxygen/16x16/actions/view-restore.png
+  File ${prefix}/share/icons/oxygen/16x16/actions/view-right-close.png
+  File ${prefix}/share/icons/oxygen/16x16/actions/view-right-new.png
   File ${prefix}/share/icons/oxygen/16x16/actions/view-sidetree.png
+  File ${prefix}/share/icons/oxygen/16x16/actions/view-sort-ascending.png
+  File ${prefix}/share/icons/oxygen/16x16/actions/view-sort-descending.png
+  File ${prefix}/share/icons/oxygen/16x16/actions/view-split-left-right.png
+  File ${prefix}/share/icons/oxygen/16x16/actions/view-split-top-bottom.png
   File ${prefix}/share/icons/oxygen/16x16/actions/view-statistics.png
   File ${prefix}/share/icons/oxygen/16x16/actions/view-top-bottom.png
   File ${prefix}/share/icons/oxygen/16x16/actions/view-tree.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/viewmag1.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/wallet-closed.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/wallet-open.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/whatsnext.png
+  File ${prefix}/share/icons/oxygen/16x16/actions/view-web-browser-dom-tree.png
   File ${prefix}/share/icons/oxygen/16x16/actions/window-close.png
+  File ${prefix}/share/icons/oxygen/16x16/actions/window-duplicate.png
   File ${prefix}/share/icons/oxygen/16x16/actions/window-new.png
   File ${prefix}/share/icons/oxygen/16x16/actions/window-suppressed.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/world.png
-  File ${prefix}/share/icons/oxygen/16x16/actions/xdays.png
   File ${prefix}/share/icons/oxygen/16x16/actions/zoom-best-fit.png
+  File ${prefix}/share/icons/oxygen/16x16/actions/zoom-fit-best.png
   File ${prefix}/share/icons/oxygen/16x16/actions/zoom-in.png
   File ${prefix}/share/icons/oxygen/16x16/actions/zoom-original.png
   File ${prefix}/share/icons/oxygen/16x16/actions/zoom-out.png
@@ -463,7 +371,6 @@ Section "-oxygen-icons" SEC_oxygen_icons
   File ${prefix}/share/icons/oxygen/16x16/apps/KEduca.png
   File ${prefix}/share/icons/oxygen/16x16/apps/KLatin.png
   File ${prefix}/share/icons/oxygen/16x16/apps/KPercentage.png
-  File ${prefix}/share/icons/oxygen/16x16/apps/KSniffer.png
   File ${prefix}/share/icons/oxygen/16x16/apps/KVerbos.png
   File ${prefix}/share/icons/oxygen/16x16/apps/KWordQuiz.png
   File ${prefix}/share/icons/oxygen/16x16/apps/KmPlot.png
@@ -488,6 +395,7 @@ Section "-oxygen-icons" SEC_oxygen_icons
   File ${prefix}/share/icons/oxygen/16x16/apps/eclipse.png
   File ${prefix}/share/icons/oxygen/16x16/apps/emacs.png
   File ${prefix}/share/icons/oxygen/16x16/apps/email.png
+  File ${prefix}/share/icons/oxygen/16x16/apps/esd.png
   File ${prefix}/share/icons/oxygen/16x16/apps/evolution.png
   File ${prefix}/share/icons/oxygen/16x16/apps/fontforge.png
   File ${prefix}/share/icons/oxygen/16x16/apps/gabber.png
@@ -503,6 +411,8 @@ Section "-oxygen-icons" SEC_oxygen_icons
   File ${prefix}/share/icons/oxygen/16x16/apps/help-browser.png
   File ${prefix}/share/icons/oxygen/16x16/apps/hwinfo.png
   File ${prefix}/share/icons/oxygen/16x16/apps/inkscape.png
+  File ${prefix}/share/icons/oxygen/16x16/apps/internet-mail.png
+  File ${prefix}/share/icons/oxygen/16x16/apps/internet-telephony.png
   File ${prefix}/share/icons/oxygen/16x16/apps/internet-web-browser.png
   File ${prefix}/share/icons/oxygen/16x16/apps/java.png
   File ${prefix}/share/icons/oxygen/16x16/apps/k3b.png
@@ -537,17 +447,17 @@ Section "-oxygen-icons" SEC_oxygen_icons
   File ${prefix}/share/icons/oxygen/16x16/apps/krfb.png
   File ${prefix}/share/icons/oxygen/16x16/apps/krita.png
   File ${prefix}/share/icons/oxygen/16x16/apps/kruler.png
-  File ${prefix}/share/icons/oxygen/16x16/apps/ksim-cpu.png
   File ${prefix}/share/icons/oxygen/16x16/apps/ksnapshot.png
+  File ${prefix}/share/icons/oxygen/16x16/apps/ksniffer.png
   File ${prefix}/share/icons/oxygen/16x16/apps/kstars.png
   File ${prefix}/share/icons/oxygen/16x16/apps/ksudoku.png
   File ${prefix}/share/icons/oxygen/16x16/apps/kteatime.png
+  File ${prefix}/share/icons/oxygen/16x16/apps/ktip.png
   File ${prefix}/share/icons/oxygen/16x16/apps/ktorrent.png
   File ${prefix}/share/icons/oxygen/16x16/apps/kuickshow.png
-  File ${prefix}/share/icons/oxygen/16x16/apps/kwallet.png
+  File ${prefix}/share/icons/oxygen/16x16/apps/kvoctrain.png
   File ${prefix}/share/icons/oxygen/16x16/apps/kwalletmanager.png
   File ${prefix}/share/icons/oxygen/16x16/apps/kword.png
-  File ${prefix}/share/icons/oxygen/16x16/apps/kwrite.png
   File ${prefix}/share/icons/oxygen/16x16/apps/laptop-battery.png
   File ${prefix}/share/icons/oxygen/16x16/apps/licq.png
   File ${prefix}/share/icons/oxygen/16x16/apps/linguist.png
@@ -555,14 +465,16 @@ Section "-oxygen-icons" SEC_oxygen_icons
   File ${prefix}/share/icons/oxygen/16x16/apps/marble.png
   File ${prefix}/share/icons/oxygen/16x16/apps/multimedia-volume-control.png
   File ${prefix}/share/icons/oxygen/16x16/apps/netscape.png
-  File ${prefix}/share/icons/oxygen/16x16/apps/none.png
+  File ${prefix}/share/icons/oxygen/16x16/apps/office-address-book.png
   File ${prefix}/share/icons/oxygen/16x16/apps/office-addressbook.png
   File ${prefix}/share/icons/oxygen/16x16/apps/office-calendar.png
   File ${prefix}/share/icons/oxygen/16x16/apps/opera.png
+  File ${prefix}/share/icons/oxygen/16x16/apps/oxygen.png
   File ${prefix}/share/icons/oxygen/16x16/apps/pan.png
   File ${prefix}/share/icons/oxygen/16x16/apps/penguin.png
   File ${prefix}/share/icons/oxygen/16x16/apps/plan.png
   File ${prefix}/share/icons/oxygen/16x16/apps/planner.png
+  File ${prefix}/share/icons/oxygen/16x16/apps/plasma.png
   File ${prefix}/share/icons/oxygen/16x16/apps/plasmagik.png
   File ${prefix}/share/icons/oxygen/16x16/apps/preferences-contact-list.png
   File ${prefix}/share/icons/oxygen/16x16/apps/preferences-desktop-accessibility.png
@@ -590,6 +502,8 @@ Section "-oxygen-icons" SEC_oxygen_icons
   File ${prefix}/share/icons/oxygen/16x16/apps/preferences-desktop-wallpaper.png
   File ${prefix}/share/icons/oxygen/16x16/apps/preferences-kcalc-constants.png
   File ${prefix}/share/icons/oxygen/16x16/apps/preferences-other.png
+  File ${prefix}/share/icons/oxygen/16x16/apps/preferences-plugin-script.png
+  File ${prefix}/share/icons/oxygen/16x16/apps/preferences-plugin.png
   File ${prefix}/share/icons/oxygen/16x16/apps/preferences-system-bluetooth.png
   File ${prefix}/share/icons/oxygen/16x16/apps/preferences-system-login.png
   File ${prefix}/share/icons/oxygen/16x16/apps/preferences-system-network-sharing.png
@@ -634,6 +548,7 @@ Section "-oxygen-icons" SEC_oxygen_icons
   File ${prefix}/share/icons/oxygen/16x16/apps/xload.png
   File ${prefix}/share/icons/oxygen/16x16/apps/xmag.png
   File ${prefix}/share/icons/oxygen/16x16/apps/xmms.png
+  File ${prefix}/share/icons/oxygen/16x16/apps/xorg.png
   File ${prefix}/share/icons/oxygen/16x16/apps/xosview.png
   File ${prefix}/share/icons/oxygen/16x16/apps/xpaint.png
   File ${prefix}/share/icons/oxygen/16x16/apps/xv.png
@@ -641,7 +556,11 @@ Section "-oxygen-icons" SEC_oxygen_icons
   SetOutPath "$INSTDIR\share\icons\oxygen\16x16\categories"
 
   File ${prefix}/share/icons/oxygen/16x16/categories/applications-accessories.png
+  File ${prefix}/share/icons/oxygen/16x16/categories/applications-development-translation.png
+  File ${prefix}/share/icons/oxygen/16x16/categories/applications-development-web.png
   File ${prefix}/share/icons/oxygen/16x16/categories/applications-development.png
+  File ${prefix}/share/icons/oxygen/16x16/categories/applications-education-language.png
+  File ${prefix}/share/icons/oxygen/16x16/categories/applications-education-mathematics.png
   File ${prefix}/share/icons/oxygen/16x16/categories/applications-education.png
   File ${prefix}/share/icons/oxygen/16x16/categories/applications-engineering.png
   File ${prefix}/share/icons/oxygen/16x16/categories/applications-games.png
@@ -657,6 +576,7 @@ Section "-oxygen-icons" SEC_oxygen_icons
   File ${prefix}/share/icons/oxygen/16x16/categories/preferences-desktop-peripherals.png
   File ${prefix}/share/icons/oxygen/16x16/categories/preferences-desktop-personal.png
   File ${prefix}/share/icons/oxygen/16x16/categories/preferences-desktop.png
+  File ${prefix}/share/icons/oxygen/16x16/categories/preferences-other.png
   File ${prefix}/share/icons/oxygen/16x16/categories/preferences-system-network.png
   File ${prefix}/share/icons/oxygen/16x16/categories/preferences-system.png
   File ${prefix}/share/icons/oxygen/16x16/categories/system-help.png
@@ -708,6 +628,7 @@ Section "-oxygen-icons" SEC_oxygen_icons
   SetOutPath "$INSTDIR\share\icons\oxygen\16x16\emblems"
 
   File ${prefix}/share/icons/oxygen/16x16/emblems/emblem-favorite.png
+  File ${prefix}/share/icons/oxygen/16x16/emblems/emblem-important.png
   File ${prefix}/share/icons/oxygen/16x16/emblems/emblem-mounted.png
   File ${prefix}/share/icons/oxygen/16x16/emblems/emblem-symbolic-link.png
 
@@ -717,9 +638,11 @@ Section "-oxygen-icons" SEC_oxygen_icons
   File ${prefix}/share/icons/oxygen/16x16/mimetypes/application-octet-stream.png
   File ${prefix}/share/icons/oxygen/16x16/mimetypes/application-pdf.png
   File ${prefix}/share/icons/oxygen/16x16/mimetypes/application-pgp-encrypted.png
+  File ${prefix}/share/icons/oxygen/16x16/mimetypes/application-pgp-keys.png
   File ${prefix}/share/icons/oxygen/16x16/mimetypes/application-pgp-signature.png
   File ${prefix}/share/icons/oxygen/16x16/mimetypes/application-pgp.png
   File ${prefix}/share/icons/oxygen/16x16/mimetypes/application-pkcs7-mime.png
+  File ${prefix}/share/icons/oxygen/16x16/mimetypes/application-pkcs7-signature.png
   File ${prefix}/share/icons/oxygen/16x16/mimetypes/application-relaxng.png
   File ${prefix}/share/icons/oxygen/16x16/mimetypes/application-rss+xml.png
   File ${prefix}/share/icons/oxygen/16x16/mimetypes/application-rtf.png
@@ -821,7 +744,6 @@ Section "-oxygen-icons" SEC_oxygen_icons
   File ${prefix}/share/icons/oxygen/16x16/mimetypes/application-xsd.png
   File ${prefix}/share/icons/oxygen/16x16/mimetypes/application-xslt+xml.png
   File ${prefix}/share/icons/oxygen/16x16/mimetypes/application-zip.png
-  File ${prefix}/share/icons/oxygen/16x16/mimetypes/ascii.png
   File ${prefix}/share/icons/oxygen/16x16/mimetypes/audio-aac.png
   File ${prefix}/share/icons/oxygen/16x16/mimetypes/audio-ac3.png
   File ${prefix}/share/icons/oxygen/16x16/mimetypes/audio-basic.png
@@ -848,17 +770,7 @@ Section "-oxygen-icons" SEC_oxygen_icons
   File ${prefix}/share/icons/oxygen/16x16/mimetypes/audio-x-speex+ogg.png
   File ${prefix}/share/icons/oxygen/16x16/mimetypes/audio-x-vorbis+ogg.png
   File ${prefix}/share/icons/oxygen/16x16/mimetypes/audio-x-wav.png
-  File ${prefix}/share/icons/oxygen/16x16/mimetypes/binary.png
-  File ${prefix}/share/icons/oxygen/16x16/mimetypes/cdbo-list.png
-  File ${prefix}/share/icons/oxygen/16x16/mimetypes/cdimage.png
-  File ${prefix}/share/icons/oxygen/16x16/mimetypes/cdtrack.png
-  File ${prefix}/share/icons/oxygen/16x16/mimetypes/document.png
-  File ${prefix}/share/icons/oxygen/16x16/mimetypes/empty.png
   File ${prefix}/share/icons/oxygen/16x16/mimetypes/encrypted.png
-  File ${prefix}/share/icons/oxygen/16x16/mimetypes/font-bitmap.png
-  File ${prefix}/share/icons/oxygen/16x16/mimetypes/font-truetype.png
-  File ${prefix}/share/icons/oxygen/16x16/mimetypes/font-type1.png
-  File ${prefix}/share/icons/oxygen/16x16/mimetypes/html.png
   File ${prefix}/share/icons/oxygen/16x16/mimetypes/image-bmp.png
   File ${prefix}/share/icons/oxygen/16x16/mimetypes/image-cgm.png
   File ${prefix}/share/icons/oxygen/16x16/mimetypes/image-fax-g3.png
@@ -893,25 +805,15 @@ Section "-oxygen-icons" SEC_oxygen_icons
   File ${prefix}/share/icons/oxygen/16x16/mimetypes/image-x-xcf.png
   File ${prefix}/share/icons/oxygen/16x16/mimetypes/image-x-xfig.png
   File ${prefix}/share/icons/oxygen/16x16/mimetypes/image-x-xpixmap.png
-  File ${prefix}/share/icons/oxygen/16x16/mimetypes/image.png
-  File ${prefix}/share/icons/oxygen/16x16/mimetypes/info.png
   File ${prefix}/share/icons/oxygen/16x16/mimetypes/inode-directory.png
   File ${prefix}/share/icons/oxygen/16x16/mimetypes/kwordquiz-do.png
-  File ${prefix}/share/icons/oxygen/16x16/mimetypes/make.png
-  File ${prefix}/share/icons/oxygen/16x16/mimetypes/man.png
   File ${prefix}/share/icons/oxygen/16x16/mimetypes/message-news.png
   File ${prefix}/share/icons/oxygen/16x16/mimetypes/message-rfc822.png
   File ${prefix}/share/icons/oxygen/16x16/mimetypes/message.png
-  File ${prefix}/share/icons/oxygen/16x16/mimetypes/news.png
   File ${prefix}/share/icons/oxygen/16x16/mimetypes/none.png
   File ${prefix}/share/icons/oxygen/16x16/mimetypes/odf.png
-  File ${prefix}/share/icons/oxygen/16x16/mimetypes/pdf.png
+  File ${prefix}/share/icons/oxygen/16x16/mimetypes/package-x-generic.png
   File ${prefix}/share/icons/oxygen/16x16/mimetypes/recycled.png
-  File ${prefix}/share/icons/oxygen/16x16/mimetypes/shellscript.png
-  File ${prefix}/share/icons/oxygen/16x16/mimetypes/sound.png
-  File ${prefix}/share/icons/oxygen/16x16/mimetypes/spreadsheet.png
-  File ${prefix}/share/icons/oxygen/16x16/mimetypes/tar.png
-  File ${prefix}/share/icons/oxygen/16x16/mimetypes/tex.png
   File ${prefix}/share/icons/oxygen/16x16/mimetypes/text-calendar.png
   File ${prefix}/share/icons/oxygen/16x16/mimetypes/text-css.png
   File ${prefix}/share/icons/oxygen/16x16/mimetypes/text-csv.png
@@ -954,8 +856,6 @@ Section "-oxygen-icons" SEC_oxygen_icons
   File ${prefix}/share/icons/oxygen/16x16/mimetypes/text-x-xslfo.png
   File ${prefix}/share/icons/oxygen/16x16/mimetypes/text-xmcd.png
   File ${prefix}/share/icons/oxygen/16x16/mimetypes/text-xml.png
-  File ${prefix}/share/icons/oxygen/16x16/mimetypes/tgz.png
-  File ${prefix}/share/icons/oxygen/16x16/mimetypes/txt.png
   File ${prefix}/share/icons/oxygen/16x16/mimetypes/unknown.png
   File ${prefix}/share/icons/oxygen/16x16/mimetypes/uri-mms.png
   File ${prefix}/share/icons/oxygen/16x16/mimetypes/uri-mmst.png
@@ -963,9 +863,6 @@ Section "-oxygen-icons" SEC_oxygen_icons
   File ${prefix}/share/icons/oxygen/16x16/mimetypes/uri-pnm.png
   File ${prefix}/share/icons/oxygen/16x16/mimetypes/uri-rtspt.png
   File ${prefix}/share/icons/oxygen/16x16/mimetypes/uri-rtspu.png
-  File ${prefix}/share/icons/oxygen/16x16/mimetypes/vcalendar.png
-  File ${prefix}/share/icons/oxygen/16x16/mimetypes/vcard.png
-  File ${prefix}/share/icons/oxygen/16x16/mimetypes/vectorgfx.png
   File ${prefix}/share/icons/oxygen/16x16/mimetypes/video-mp4.png
   File ${prefix}/share/icons/oxygen/16x16/mimetypes/video-mpeg.png
   File ${prefix}/share/icons/oxygen/16x16/mimetypes/video-quicktime.png
@@ -978,18 +875,21 @@ Section "-oxygen-icons" SEC_oxygen_icons
   File ${prefix}/share/icons/oxygen/16x16/mimetypes/video-x-msvideo.png
   File ${prefix}/share/icons/oxygen/16x16/mimetypes/video-x-ogm+ogg.png
   File ${prefix}/share/icons/oxygen/16x16/mimetypes/video-x-theora+ogg.png
-  File ${prefix}/share/icons/oxygen/16x16/mimetypes/video.png
+  File ${prefix}/share/icons/oxygen/16x16/mimetypes/x-media-podcast.png
+  File ${prefix}/share/icons/oxygen/16x16/mimetypes/x-office-address-book.png
+  File ${prefix}/share/icons/oxygen/16x16/mimetypes/x-office-calendar.png
+  File ${prefix}/share/icons/oxygen/16x16/mimetypes/x-office-contact.png
   File ${prefix}/share/icons/oxygen/16x16/mimetypes/x-office-document.png
   File ${prefix}/share/icons/oxygen/16x16/mimetypes/x-office-spreadsheet.png
-  File ${prefix}/share/icons/oxygen/16x16/mimetypes/xml.png
   File ${prefix}/share/icons/oxygen/16x16/mimetypes/zip.png
 
   SetOutPath "$INSTDIR\share\icons\oxygen\16x16\places"
 
   File ${prefix}/share/icons/oxygen/16x16/places/bookmark.png
+  File ${prefix}/share/icons/oxygen/16x16/places/bookmarks.png
   File ${prefix}/share/icons/oxygen/16x16/places/contact.png
   File ${prefix}/share/icons/oxygen/16x16/places/document-multiple.png
-  File ${prefix}/share/icons/oxygen/16x16/places/file-broken.png
+  File ${prefix}/share/icons/oxygen/16x16/places/favorites.png
   File ${prefix}/share/icons/oxygen/16x16/places/folder-blue.png
   File ${prefix}/share/icons/oxygen/16x16/places/folder-bookmarks.png
   File ${prefix}/share/icons/oxygen/16x16/places/folder-brown.png
@@ -1005,6 +905,7 @@ Section "-oxygen-icons" SEC_oxygen_icons
   File ${prefix}/share/icons/oxygen/16x16/places/folder-orange.png
   File ${prefix}/share/icons/oxygen/16x16/places/folder-print.png
   File ${prefix}/share/icons/oxygen/16x16/places/folder-red.png
+  File ${prefix}/share/icons/oxygen/16x16/places/folder-remote.png
   File ${prefix}/share/icons/oxygen/16x16/places/folder-sound.png
   File ${prefix}/share/icons/oxygen/16x16/places/folder-tar.png
   File ${prefix}/share/icons/oxygen/16x16/places/folder-txt.png
@@ -1012,23 +913,24 @@ Section "-oxygen-icons" SEC_oxygen_icons
   File ${prefix}/share/icons/oxygen/16x16/places/folder-violet.png
   File ${prefix}/share/icons/oxygen/16x16/places/folder-yellow.png
   File ${prefix}/share/icons/oxygen/16x16/places/folder.png
+  File ${prefix}/share/icons/oxygen/16x16/places/mail-folder-inbox.png
+  File ${prefix}/share/icons/oxygen/16x16/places/mail-folder-outbox.png
+  File ${prefix}/share/icons/oxygen/16x16/places/mail-folder-sent.png
   File ${prefix}/share/icons/oxygen/16x16/places/mail-inbox.png
   File ${prefix}/share/icons/oxygen/16x16/places/mail-message.png
   File ${prefix}/share/icons/oxygen/16x16/places/mail-outbox.png
-  File ${prefix}/share/icons/oxygen/16x16/places/mail.png
   File ${prefix}/share/icons/oxygen/16x16/places/media-album.png
   File ${prefix}/share/icons/oxygen/16x16/places/media-playlist.png
   File ${prefix}/share/icons/oxygen/16x16/places/media-podcast.png
-  File ${prefix}/share/icons/oxygen/16x16/places/network-local.png
   File ${prefix}/share/icons/oxygen/16x16/places/network-server-database.png
   File ${prefix}/share/icons/oxygen/16x16/places/network-server.png
-  File ${prefix}/share/icons/oxygen/16x16/places/network-wired.png
   File ${prefix}/share/icons/oxygen/16x16/places/network-workgroup.png
   File ${prefix}/share/icons/oxygen/16x16/places/network.png
+  File ${prefix}/share/icons/oxygen/16x16/places/start-here-kde.png
   File ${prefix}/share/icons/oxygen/16x16/places/start-here.png
-  File ${prefix}/share/icons/oxygen/16x16/places/trashcan-empty-alt.png
   File ${prefix}/share/icons/oxygen/16x16/places/user-desktop.png
   File ${prefix}/share/icons/oxygen/16x16/places/user-home.png
+  File ${prefix}/share/icons/oxygen/16x16/places/user-identity.png
   File ${prefix}/share/icons/oxygen/16x16/places/user-trash.png
 
   SetOutPath "$INSTDIR\share\icons\oxygen\16x16\status"
@@ -1055,18 +957,22 @@ Section "-oxygen-icons" SEC_oxygen_icons
   File ${prefix}/share/icons/oxygen/16x16/status/image-missing.png
   File ${prefix}/share/icons/oxygen/16x16/status/mail-attachment.png
   File ${prefix}/share/icons/oxygen/16x16/status/mail-read.png
+  File ${prefix}/share/icons/oxygen/16x16/status/mail-unread-new.png
   File ${prefix}/share/icons/oxygen/16x16/status/mail-unread.png
+  File ${prefix}/share/icons/oxygen/16x16/status/media-playlist-repeat.png
   File ${prefix}/share/icons/oxygen/16x16/status/media-playlist-shuffle.png
   File ${prefix}/share/icons/oxygen/16x16/status/object-locked.png
   File ${prefix}/share/icons/oxygen/16x16/status/object-unlocked.png
   File ${prefix}/share/icons/oxygen/16x16/status/printer-error.png
   File ${prefix}/share/icons/oxygen/16x16/status/printer-printing.png
+  File ${prefix}/share/icons/oxygen/16x16/status/script-error.png
   File ${prefix}/share/icons/oxygen/16x16/status/security-high.png
   File ${prefix}/share/icons/oxygen/16x16/status/security-low.png
   File ${prefix}/share/icons/oxygen/16x16/status/security-medium.png
   File ${prefix}/share/icons/oxygen/16x16/status/user-away-extended.png
   File ${prefix}/share/icons/oxygen/16x16/status/user-away.png
   File ${prefix}/share/icons/oxygen/16x16/status/user-busy.png
+  File ${prefix}/share/icons/oxygen/16x16/status/user-invisible.png
   File ${prefix}/share/icons/oxygen/16x16/status/user-offline.png
   File ${prefix}/share/icons/oxygen/16x16/status/user-online.png
   File ${prefix}/share/icons/oxygen/16x16/status/user-trash-full.png
