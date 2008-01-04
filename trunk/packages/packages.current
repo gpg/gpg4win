@@ -270,14 +270,14 @@ chk  cd1b52e8ecfa361737c6f130ed2f1d850e312c16
 file libassuan/libassuan-1.0.4.tar.bz2
 chk  4b720706a8e4251d8cb7a0f2336226907df1426c
 
+file gpgme/gpgme-1.1.6.tar.bz2
+chk  05218df939d72c2fd6d74f22c2b5d5ade0718b7a
+
 # (Snapshots)
 server ftp://ftp.g10code.com/g10code/scratch
 
 file pinentry-0.7.5-cvs.tar.gz
 chk  85919f061e4fa432fd3659de89a301878c6c7d25
-
-file gpgme-1.1.6-svn1279.tar.bz2
-chk  9751403f5c90c973fc47a5659f1fa67126253ab6
 
 file dirmngr-1.0.2-svn275.tar.bz2
 chk  7a0f5eb38041ce152dd8111fcf43eb45ba3482f4
