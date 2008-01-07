@@ -226,9 +226,8 @@ chk  d0f6b4eadb963c31a33a23f23b519e89c5c16b04
 
 server ftp://ftp.g10code.com/g10code/scratch
 
-file gpgex-0.0.0-svn45.tar.bz2
-chk  a8a1acadc324807e20a748c62a930421b4f27243
-
+file gpgex-0.0.0-svn46.tar.bz2
+chk  dc7e31ff862b71c28467574324b3a9d9c60ba339
 #
 # Pth emulation
 #
@@ -333,7 +332,7 @@ chk 40318619764a5c0ae9aa3796a6f33155d0a90c0d
 
 server ftp://ftp.kdab.net/pub/gpg4win
 
-name oxygen-icons-20071220-bin.zip
+name oxygen-icons-20080104-bin.zip
 file oxygen-icons-20080104.zip
 chk  1aba4fc844259a20c72ca0a2718462efc1b1fc66
 
