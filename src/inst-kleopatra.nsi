@@ -71,6 +71,40 @@ Section "Kleopatra" SEC_kleopatra
 
   File ${prefix}/share/config/libkleopatrarc
 
+  SetOutPath "$INSTDIR\share\icons\oxygen\128x128\apps"
+
+  File ${prefix}/share/icons/oxygen/128x128/apps/kleopatra.png
+
+  SetOutPath "$INSTDIR\share\icons\oxygen\16x16\apps"
+
+  File ${prefix}/share/icons/oxygen/16x16/apps/gpg.png
+  File ${prefix}/share/icons/oxygen/16x16/apps/gpgsm.png
+  File ${prefix}/share/icons/oxygen/16x16/apps/kleopatra.png
+
+  SetOutPath "$INSTDIR\share\icons\oxygen\22x22\apps"
+
+  File ${prefix}/share/icons/oxygen/22x22/apps/gpg.png
+  File ${prefix}/share/icons/oxygen/22x22/apps/gpgsm.png
+  File ${prefix}/share/icons/oxygen/22x22/apps/kleopatra.png
+
+  SetOutPath "$INSTDIR\share\icons\oxygen\32x32\apps"
+
+  File ${prefix}/share/icons/oxygen/32x32/apps/gpg.png
+  File ${prefix}/share/icons/oxygen/32x32/apps/gpgsm.png
+  File ${prefix}/share/icons/oxygen/32x32/apps/kleopatra.png
+
+  SetOutPath "$INSTDIR\share\icons\oxygen\48x48\apps"
+
+  File ${prefix}/share/icons/oxygen/48x48/apps/kleopatra.png
+
+  SetOutPath "$INSTDIR\share\icons\oxygen\64x64\apps"
+
+  File ${prefix}/share/icons/oxygen/64x64/apps/kleopatra.png
+
+  SetOutPath "$INSTDIR\share\icons\oxygen\scalable\apps"
+
+  File ${prefix}/share/icons/oxygen/scalable/apps/kleopatra.svgz
+
 !endif
 SectionEnd
 
