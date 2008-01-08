@@ -1,4 +1,4 @@
-BThis is gpg4win - the GUI Installer Builder for W32.
+This is gpg4win - the GUI Installer Builder for W32.
 
 
 Instructions:
@@ -7,7 +7,7 @@ Instructions:
 1. Download the source and binary packages that are required to build
    the installer:
 
- 1;1609;0c  $ cd packages
+   $ cd packages
    $ sh download.sh
    [...]
    $ cd ..
