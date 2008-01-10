@@ -1,3 +1,10 @@
+2008-01-10  Marcus Brinkmann  <marcus@g10code.de>
+
+	* src/gpg4win.nsi: New variable bpdir.
+	* src/gpg4win-src.nsi: Likewise.
+	* src/inst-gnupg2.nsi: New variable source and install a skeleton
+	file for gpgconf.conf.
+
 2008-01-08  Marcus Brinkmann  <marcus@g10code.de>
 
 	* src/pkg-to-nsi.pl: New file.

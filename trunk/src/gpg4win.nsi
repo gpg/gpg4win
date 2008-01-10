@@ -131,6 +131,7 @@
 
 # The installation directory.
 !define ipdir "playground/install/pkgs"
+!define bpdir "playground/build"
 
 # Select the best compression algorithm available.  The dictionary
 # size is the default (8 MB). 

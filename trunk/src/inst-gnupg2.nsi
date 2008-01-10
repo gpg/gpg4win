@@ -23,6 +23,7 @@
 !undef prefix
 !endif
 !define prefix ${ipdir}/gnupg2-${gpg4win_pkg_gnupg2_version}
+!define source ${bpdir}/gnupg2-${gpg4win_pkg_gnupg2_version}
 
 
 Section "GnuPG2" SEC_gnupg2
@@ -67,6 +68,9 @@ Section "GnuPG2" SEC_gnupg2
   File "${prefix}/share/gnupg/qualified.txt"
   File "${prefix}/share/gnupg/com-certs.pem"
   File "${prefix}/share/gnupg/gpg-conf.skel"
+
+  SetOutPath "$INSTDIR\etc\gnupg"
+  File /oname=gpgconf-conf.skel "${source}/share/gnupg/gpgconf.conf"
 
   # Install the language files for gpg.  Note that the PO files are
   # required to be UTF-8 encoded and that the post-install macro in
