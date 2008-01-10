@@ -1,7 +1,7 @@
 Wichtige Informationen zum Einsatz von Gpg4win 1.9-BETA
 =======================================================
 
-Stand: Gpg4win-1.9.0-svn651 (20071221)
+Stand: Gpg4win-1.9.0-svn672 (20080109)
 
 Hier finden sich wichtige Informationen die bei der
 Entscheidung helfen sollen, ob Gpg4win 1.9 schon für
@@ -13,6 +13,28 @@ Ausserdem wird ein Ausblick gegeben, was mit
 Gpg4win 2.0 an neuer Funktionalität zu erwarten ist.
 Die 1.9er Versionen sind der Beta-Test-Zyklus. Ist er
 abgeschlossen wird Version 2.0 freigegeben.
+
+Verbesserungen seit Gpg4win-1.9.0-svn651
+----------------------------------------
+
+- inline-PGP Entschlüsselung klappt besser, aber
+  noch nicht vollständig.
+
+- Signierung S/MIME E-Mail klappt besser, aber
+  sehr hackelig.
+
+- Graphische Oberfläche von Kleopatra erweitert.
+
+- Import von P12-Dateien funktioniert nun über Kleopatra,
+  aber etwas hackelig.
+
+Behoben:
+
+* Menu entry for Kleopatra lacks tooltip
+  http://wald.intevation.org/tracker/index.php?func=detail&aid=563&group_id=11&atid=126
+
+* Kleopatra: Tray Icon Menu: Shutdown crashes Kleopatra
+  http://bugs.kde.org/show_bug.cgi?id=154423
 
 Verbesserungen seit Gpg4win-1.9.0-svn639
 ----------------------------------------
@@ -110,15 +132,15 @@ Aktualisiert:
     Lediglich neue E-Mails die nach Installation von GpgOL
     eintreffen sind verarbeitbar.
 
+  * Achtung: In verschiedenen Fällen passiert es, dass
+    die "Gesendeten Objekte" kaputt sind, man also
+    keine heile Kopie von versandten E-Mails hat.
+
   * Achtung: Es kann gelegentlich vorkommen, dass Kleopatra beendet
     wird (kein Schlüsselsymbol mehr in Task-Leiste oder Symbol
     verschwindet in dem Moment wo man mit der Maus darüber fährt).
     In diesem Fall kann es zu Fehlern bei GpgOL kommen.
     Kleopatra sollte über das Startmenü neu gestartet werden.
-
-  * Hinweis: Der Import einer von P12- und PEM-Dateien ist
-    derzeit nur über die Kommandozeile möglich, z.B.:
-    gpgsm --import datei.p12
 
   * Grundsätzlich hängt die Menge der funktionierenden Operationen
     wesentlich vom gegenwärtigen Entwicklungsstand von Kleopatra ab.
@@ -130,8 +152,8 @@ Aktualisiert:
       muss aber noch verbessert werden
     - Signatur-Prüfung S/MIME Opaque: funktioniert nicht (nicht angebunden)
     - Signatur-Prüfung S/MIME: Funktion defekt
-    - Entschlüsselung inline-OpenPGP: Bearbeitung scheint erfolgreich,
-      aber entschlüsselter Text kann nicht angezeigt werden.
+    - Entschlüsselung inline-OpenPGP: Entschlüsselung erfolgreich,
+      aber kann scheinbar nur ein einziges mal ausgeführt werden.
     - Entschlüsselung OpenPGP/MIME: Grundsätzlich funktional, muss aber
       noch verbessert werden
     - Entschlüsselung S/MIME Opaque: Grundsätzlich
@@ -148,12 +170,12 @@ Aktualisiert:
 
     - Signatur OpenPGP/MIME: Grundsätzlich funktional, muss aber noch
       verbessert werden
-    - Signatur S/MIME: Funktion defekt: Nach Auswahl Signaturschlüssel kommt
-      es zu einem Fehler bei der Signierung.
+    - Signatur S/MIME: Funktion defekt: Der E-Mail selbst fehlt die Signatur,
+      die Kopie in gesendete Objekte ist kaputt. Es wird ein GPGME Fehler gemeldet.
     - Verschlüsselung OpenPGP/MIME: Grundsätzlich funktional, muss aber noch
       verbessert werden.
-    - Verschlüsselung S/MIME: Funktione defekt: Kleopatra kann Verschlüsselung
-      nicht erfolgreich durchführen.
+    - Verschlüsselung S/MIME: Funktion defekt: Kleopatra kann Verschlüsselung
+      nicht erfolgreich durchführen (dirmngr Fehler wird gemeldet).
     - Signatur und Verschlüsselung OpenPGP/MIME: Funktion defekt: Kleopatra hängt.
     - Signatur und Verschlüsselung S/MIME: Funktion defekt:  Kleopatra hängt.
 
@@ -202,17 +224,25 @@ Neu:
     vorliegenden Zertifikate.
 
   * Die einzelnen Krypto-Dialoge sind noch nicht vollständig implementiert,
-    stattdessen sind teilweise Platzhalter-Dialog mit eingeschränkter
+    stattdessen sind teilweise Platzhalter-Dialoge mit eingeschränkter
     Funktionalität enthalten.
 
 
 Bekannte Fehler
 ---------------
 
-Berichtet zu svn651:
+Berichtet zu svn672:
 
-* Kleopatra: Tray Icon Menu: Shutdown crashes Kleopatra
-  http://bugs.kde.org/show_bug.cgi?id=154423
+* Kleopatra: Don't open DOS-Box when importing P12 file
+  http://bugs.kde.org/show_bug.cgi?id=155395
+
+* Kleopatra: Creating S/MIME Signature raises GPGME error
+  http://bugs.kde.org/show_bug.cgi?id=155404
+
+* Kleopatra: Lacks GPGME backend configuration dialog in current SVN version
+  http://bugs.kde.org/show_bug.cgi?id=155403
+
+Berichtet zu svn651:
 
 * Kleopatra: Tray menu: toggle Open and Close
   http://bugs.kde.org/show_bug.cgi?id=154424
@@ -243,8 +273,3 @@ Berichtet zu svn615:
 
 * Kleopatra: Check GpgConf results in error not finding config
   http://wald.intevation.org/tracker/index.php?func=detail&aid=556&group_id=11&atid=126
-
-Berichtet zu svn639:
-
-* Menu entry for Kleopatra lacks tooltip
-  http://wald.intevation.org/tracker/index.php?func=detail&aid=563&group_id=11&atid=126
