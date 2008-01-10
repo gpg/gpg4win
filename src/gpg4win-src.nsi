@@ -73,6 +73,7 @@
 
 # The installation directory.
 !define ipdir "playground/install/pkgs"
+!define bpdir "playground/build"
 
 # For source packages we use the standard zip method because it takes
 # ages to compress a large archive of already packed sources.
