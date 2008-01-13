@@ -48,7 +48,7 @@ Section "-kdelibs" SEC_kdelibs
 
   SetOutPath "$INSTDIR\share\apps\kdeui\pics"
 
-  File ${prefix}/share/apps/kdeui/pics/ktip-background.png
+#  File ${prefix}/share/apps/kdeui/pics/ktip-background.png
   File ${prefix}/share/apps/kdeui/pics/aboutkde.png
   File ${prefix}/share/apps/kdeui/pics/ktip-bulb.png
 
