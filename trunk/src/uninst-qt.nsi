@@ -107,6 +107,10 @@ Section "-un.qt"
 
   RMDir "$INSTDIR\plugins\plugins\imageformats"
 
+  Delete "$INSTDIR\plugins\plugins\sqldrivers\qsqlited4.dll"
+
+  RMDir "$INSTDIR\plugins\plugins\sqldrivers"
+
   Delete "$INSTDIR\plugins\sqldrivers\qsqlite4.dll"
 
   RMDir "$INSTDIR\plugins\sqldrivers"

@@ -34,6 +34,7 @@ Section "-un.kdesupport"
   Delete "$INSTDIR\bin\dbus-daemon.exe"
   RMDir "$INSTDIR\bin"
 
+  Delete "$INSTDIR\dbus-env.bat"
   Delete "$INSTDIR\dbus-launch.exe"
   Delete "$INSTDIR\dbus-monitor.exe"
   Delete "$INSTDIR\dbus-send.exe"

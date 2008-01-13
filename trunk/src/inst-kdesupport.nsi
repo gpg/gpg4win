@@ -38,6 +38,7 @@ Section "-kdesupport" SEC_kdesupport
   SetOutPath "$INSTDIR"
 
   File ${prefix}/bin/dbus-launch.exe
+  File ${prefix}/bin/dbus-env.bat
   File ${prefix}/bin/dbus-monitor.exe
   File ${prefix}/bin/dbus-send.exe
   File ${prefix}/bin/pcregrep.exe

@@ -70,7 +70,7 @@ Section "GnuPG2" SEC_gnupg2
   File "${prefix}/share/gnupg/gpg-conf.skel"
 
   SetOutPath "$INSTDIR\etc\gnupg"
-  File /oname=gpgconf-conf.skel "${source}/share/gnupg/gpgconf.conf"
+  File /oname=gpgconf-conf.skel "${source}/doc/examples/gpgconf.conf"
 
   # Install the language files for gpg.  Note that the PO files are
   # required to be UTF-8 encoded and that the post-install macro in

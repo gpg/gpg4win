@@ -54,9 +54,16 @@ Section "-un.gnupg2"
   Delete "$INSTDIR\share\gnupg\com-certs.pem"
   Delete "$INSTDIR\share\gnupg\gpg-conf.skel"
   RMDir "$INSTDIR\share\gnupg"
+  RMDir "$INSTDIR\share"
+
+  Delete "$INSTDIR\etc\gnupg\gpgconf-conf.skel"
+  RMDir  "$INSTDIR\etc\gnupg"
+  RMDir  "$INSTDIR\etc"
 
 #  Delete "$INSTDIR\gnupg.nls\de.mo"
 #  RMDir  "$INSTDIR\gnupg.nls"
+
+  RMDir "$INSTDIR"
 
 !endif
 SectionEnd

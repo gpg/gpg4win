@@ -315,16 +315,16 @@ chk  3f918cc7d0a4e039db53df97cdce7aeac408d90c
 
 server ftp://ftp.kdab.net/pub/gpg4win
 
-file kdesupport-4.0.0-2-bin.zip
-chk 03514b4007a0b7edbed2dd5157d60be11009745c
+file kdesupport-4.0.0-3-bin.zip
+chk 3f853554066e49cd2f91f82215cfce72edbebb14
 
 # FIXME: This does not actually contain the development files, but
 # further binary files we need.
-file kdesupport-4.0.0-2-lib.zip
-chk 78a5d914fa232e85dddd26ef102d6b309111037f
+file kdesupport-4.0.0-3-lib.zip
+chk 92ed0b77f4bcf7faae0924c92d382c64804686a1
 
-file kdesupport-4.0.0-2-src.zip
-chk 40318619764a5c0ae9aa3796a6f33155d0a90c0d
+file kdesupport-4.0.0-3-src.zip
+chk 8a23a3ba8158b64cd5362cf88a58cd44be8a8b73
 
 # oxygen-icons
 #
@@ -343,27 +343,27 @@ chk  ced2b1f3b111cf7f6cc28c4f7863a29cda05114b
 
 server ftp://ftp.kdab.net/pub/gpg4win
 
-name kdelibs-20071107-bin.zip
-file kdelibs-for-kleo-20071107-bin.zip
-chk e9fb367f2348051df51e051642bd9121e98bfb0a
+name kdelibs-20080109-bin.zip
+file kdelibs-for-kleo-20080109-bin.zip
+chk  b4d5599b6b3d769896de87df2296c10e536cdcd6
 
-name kdelibs-20071107-lib.zip
-file kdelibs-for-kleo-20071107-dev.zip
-chk  7977bb7028d0996dcda53d156e1d1c81adb2d8a7
+name kdelibs-20080109-lib.zip
+file kdelibs-for-kleo-20080109-dev.zip
+chk  43608aabe4b9f56ae88e87ffcce14aa814429914
 
-name kdelibs-20071107-src.zip
-file kdelibs-for-kleo-20071107-src.zip
-chk  6d765b4168593df6450385c51f52f7494ca80169
+name kdelibs-20080109-src.zip
+file kdelibs-for-kleo-20080109-src.zip
+chk  cd12ddcb0e4378f53a6b73541671bae8ca161eba
 
 
 # Kleopatra
 
 server ftp://ftp.kdab.net/pub/gpg4win
 
-name kleopatra-20080104-bin.zip
-file kleo-uiserver-only-20080104-bin.zip
-chk  3e39274b4ed0f4ab41ebd4b67a7040a846d68655
+name kleopatra-20080111-bin.zip
+file kleo-uiserver-only-20080111-bin.zip
+chk  d85838ad405274586455579ae78ee79b5c9271c2
 
-name kleopatra-20080104-src.zip
-file kleo-uiserver-only-20080104-src.zip
-chk  840a18ead8a1ca12ae3f72e9254e8084c8a63799
+name kleopatra-20080111-src.zip
+file kleo-uiserver-only-20080111-src.zip
+chk  6ab0b8b7c6b7e9e00d8429d6910b8c6f980dbca7

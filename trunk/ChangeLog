@@ -1,3 +1,17 @@
+2008-01-13  Marcus Brinkmann  <marcus@g10code.de>
+
+	* packages/packages.current: Update kdelibs, kdesupport, kleopatra.
+
+	* src/inst-kdelibs.nsi: Update to latest version.
+	* src/inst-kdesupport.nsi: Update to latest version.
+	* src/uninst-kdesupport.nsi: Update to latest version.
+	* src/inst-kleopatra.nsi: Update to latest version.
+
+	* src/inst-gnupg2.nsi: Fix last change.
+	* src/uninst-gnupg2.nsi: Uninstall gpgconf-conf.skel.
+
+	* src/uninst-qt.nsi: Uninstall qsqlited4.dll.
+
 2008-01-10  Marcus Brinkmann  <marcus@g10code.de>
 
 	* src/gpg4win.nsi: New variable bpdir.
