@@ -1,7 +1,7 @@
 Wichtige Informationen zum Einsatz von Gpg4win 1.9-BETA
 =======================================================
 
-Stand: Gpg4win-1.9.0-svn672 (20080109)
+Stand: Gpg4win-1.9.0-svn675 (20080111)
 
 Hier finden sich wichtige Informationen die bei der
 Entscheidung helfen sollen, ob Gpg4win 1.9 schon für
@@ -13,6 +13,14 @@ Ausserdem wird ein Ausblick gegeben, was mit
 Gpg4win 2.0 an neuer Funktionalität zu erwarten ist.
 Die 1.9er Versionen sind der Beta-Test-Zyklus. Ist er
 abgeschlossen wird Version 2.0 freigegeben.
+
+Verbesserungen seit Gpg4win-1.9.0-svn672
+----------------------------------------
+
+Behoben:
+
+* Extend Menu of Tray-Kleopatra
+  http://bugs.kde.org/show_bug.cgi?id=153566
 
 Verbesserungen seit Gpg4win-1.9.0-svn651
 ----------------------------------------
@@ -231,6 +239,14 @@ Neu:
 Bekannte Fehler
 ---------------
 
+Berichtet zu svn675:
+
+* Kleopatra UI Server not automatically running in systray
+  http://wald.intevation.org/tracker/index.php?func=detail&aid=579&group_id=11&atid=126
+
+* DirMngr system service can not be started
+  http://wald.intevation.org/tracker/index.php?func=detail&aid=580&group_id=11&atid=126
+
 Berichtet zu svn672:
 
 * Kleopatra: Don't open DOS-Box when importing P12 file
@@ -267,9 +283,6 @@ Berichtet zu svn615:
 
 * The button to report a bug does not work
   http://bugs.kde.org/show_bug.cgi?id=153565
-
-* Extend Menu of Tray-Kleopatra
-  http://bugs.kde.org/show_bug.cgi?id=153566
 
 * Kleopatra: Check GpgConf results in error not finding config
   http://wald.intevation.org/tracker/index.php?func=detail&aid=556&group_id=11&atid=126

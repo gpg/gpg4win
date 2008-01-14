@@ -1511,6 +1511,31 @@ importieren.
 Damit haben Sie erfolgreich einen GnuPG-Schlüssel exportiert und
 wieder importiert.
 
+\clearpage
+\section{Bekannte Fehlermeldungen und was man tun kann}
+
+Dieser Abschnitt ist noch nicht ausformuliert.
+Er wird auflisten welche bekannten Fehler es gibt
+und was man dann tun muss um seine Aufgabe zu lösen.
+
+\subsection{Systemdienst ,,DirMngr'' läuft nicht}
+
+,,DirMngr'' ist ein über Gpg4win installierter Dienst der
+die Zugriffe auf Verzeichnisdienste
+(z.B. LDAP) verwaltet. Eine der häufigsten Aufgaben ist das Laden
+von Sperrlisten für S/MIME Zertifikate.
+
+Es kann vorkommen, dass die S/MIME Operationen (Signatur, Prüfung,
+Ver- oder Entschlüsselung) nicht durchgeführt werden können, weil
+,,DirMngr'' nicht verfügbar ist. In der Voreinstellung von Gpg4win
+ist es zwingend notwendig, dass ,,DirMngr'' die Sperrliste prüft,
+geschieht das nicht, darf die jeweilige Operation nicht ausgeführt
+werden da möglicherweise ein kompromittiertes Zertifkat genutzt wird.
+
+Abhilfe: Neustart des ,,DirMngr'' durch den Systemadministrator.
+Dies erfolgt über Systemsteuerung -> Verwaltung -> Komponentendienste
+und dort über ,,Dienste (Lokal)'': In der Liste finden Sie ,,DirMngr'' -
+über das Kontextmenü kann der Dienst neu gestartet werden.
 
 \clearpage
 \section{Wo finde ich die Dateien und Einstellungen von Gpg4win?}
