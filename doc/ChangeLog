@@ -1,3 +1,11 @@
+2008-01-11  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
+
+	* manual/durchblicker.tex: Added new section "Bekannte
+	Fehlermeldungen und was man tun kann" with subsection
+	"Systemdienst DirMngr läuft nicht".
+
+	* README-BETA-de.txt: Some updates based on testing svn675.
+
 2008-01-10  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
 
 	* README-BETA-de.txt: Some updates based on testing svn672.
