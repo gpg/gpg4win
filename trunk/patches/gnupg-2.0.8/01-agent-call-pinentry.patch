@@ -1,0 +1,27 @@
+#! /bin/sh
+patch -p1 -f $* < $0
+exit $?
+
+2008-01-15  Marcus Brinkmann  <marcus@g10code.de>
+
+	* call-pinentry.c (start_pinentry): Start pinentry in detached
+	mode.
+
+Index: agent/call-pinentry.c
+===================================================================
+--- agent/call-pinentry.c	(revision 4674)
++++ agent/call-pinentry.c	(working copy)
+@@ -271,9 +271,11 @@
+   no_close_list[i] = -1;
+ 
+   /* Connect to the pinentry and perform initial handshaking.  Note
+-     that atfork is used to change the environment for pinentry. */
++     that atfork is used to change the environment for pinentry.  We
++     start the server in detached mode to suppress the console window
++     under Windows.  */
+   rc = assuan_pipe_connect_ext (&ctx, opt.pinentry_program, argv,
+-                                no_close_list, atfork_cb, ctrl, 0);
++                                no_close_list, atfork_cb, ctrl, 128);
+   if (rc)
+     {
+       log_error ("can't connect to the PIN entry module: %s\n",

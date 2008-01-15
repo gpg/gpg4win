@@ -1,5 +1,5 @@
 # Makefile.am - Installer for GnuPG 4 Windows Makefile.
-# Copyright (C) 2005 g10 Code GmbH
+# Copyright (C) 2005, 2008 g10 Code GmbH
 # 
 # This file is part of GPG4Win.
 # 
@@ -58,6 +58,7 @@ EXTRA_DIST = autogen.sh README.SVN \
 	patches/claws-mail-3.1.0cvs70/03-smime-plugin.patch \
 	patches/claws-mail-3.1.0cvs70/99-auto.patch \
 	patches/gpgme/01-gpg2.patch \
+	patches/gnupg-2.0.8/01-agent-call-pinentry.patch \
 	patches/gpgol-0.9.91/01-gpgme.patch
 
 copy-news:
