@@ -327,7 +327,15 @@ service_create (HWND hwndParent, int string_size, char *variables,
 			   SERVICE_ERROR_NORMAL, program,
 			   NULL, NULL, NULL,
 			   /* FIXME: Currently not configurable by caller.  */
-			   "NT AUTHORITY\\LocalService",
+			   /* FIXME: LocalService or NetworkService
+			      don't work for dirmngr right now.  NOTE!
+			      If you change it here, you also should
+			      adjust make-msi.pl for the msi
+			      installer.  In the future, this should
+			      be an argument to the function and then
+			      the make-msi.pl script can extract it
+			      from the invocation.  */
+			   NULL /* "NT AUTHORITY\\LocalService" */,
 			   NULL);
   if (service == NULL)
     {
