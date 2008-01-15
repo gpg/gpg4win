@@ -1,5 +1,9 @@
 2008-01-15  Marcus Brinkmann  <marcus@g10code.de>
 
+	* patches/gnupg-2.0.8/01-agent-call-pinentry.patch: Rename to ...
+	* patches/gnupg2-2.0.8/01-agent-call-pinentry.patch: ... this.
+	* Makefile.am (EXTRA_DIST): Also here.
+
 	* Makefile.am (EXTRA_DIST): Add
 	patches/gnupg-2.0.8/01-agent-call-pinentry.patch.
 	* patches/gnupg-2.0.8/01-agent-call-pinentry.patch: New file.
