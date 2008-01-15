@@ -9,8 +9,8 @@ exit $?
 
 Index: agent/call-pinentry.c
 ===================================================================
---- agent/call-pinentry.c	(revision 4674)
-+++ agent/call-pinentry.c	(working copy)
+--- gnupg/agent/call-pinentry.c	(revision 4674)
++++ gnupg/agent/call-pinentry.c	(working copy)
 @@ -271,9 +271,11 @@
    no_close_list[i] = -1;
  
