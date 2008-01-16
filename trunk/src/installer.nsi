@@ -120,8 +120,9 @@ Var OtherGnuPGDetected
 
 # The list of wizard pages.
 
-!define MUI_WELCOMEPAGE_TITLE "$(T_WelcomeTitle)"
-!define MUI_WELCOMEPAGE_TEXT  "$(T_About)"
+!define MUI_WELCOMEPAGE_TITLE ${WELCOME_TITLE_STR}
+!define MUI_WELCOMEPAGE_TEXT ${ABOUT_STR}
+
 !insertmacro MUI_PAGE_WELCOME
 
 !define MUI_LICENSEPAGE_BUTTON "$(^NextBtn)"
@@ -199,12 +200,6 @@ ReserveFile "${TOP_SRCDIR}\doc\logo\gpg4win-logo-164x314.bmp"
 # Language support
 
 LangString T_LangCode ${LANG_ENGLISH} "en"
-
-# The WelcomeTitle is displayed on the first page.
-LangString T_WelcomeTitle ${LANG_ENGLISH} "${WELCOME_TITLE_ENGLISH}"
-
-# The About string as displayed on the first page.
-LangString T_About ${LANG_ENGLISH} "${ABOUT_ENGLISH}"
 
 # Startup page
 LangString T_GPLHeader ${LANG_ENGLISH} \

@@ -1,3 +1,17 @@
+2008-01-16  Marcus Brinkmann  <marcus@g10code.de>
+
+	* src/installer.nsi (MUI_WELCOME_TITLE, MUI_WELCOMEPAGE_TEXT):
+	Define to ${WELCOME_TITLE_STR} and ${ABOUT_STR} respectively.
+	(T_WelcomeTitle, T_About): Remove language strings.
+	* src/gpg4win.nsi (WELCOME_TITLE_ENGLISH, WELCOME_TITLE_GERMAN)
+	(ABOUT_GERMAN, ABOUT_ENGLISH): Removed macros.
+	(WELCOME_TITLE_STR, ABOUT_STR): New macros.
+	(T_WelcomeTitleGpg4win, T_AboutGpg4win): New language strings.
+	* src/gpg4win-src.nsi (WELCOME_TITLE_ENGLISH, WELCOME_TITLE_GERMAN)
+	(ABOUT_GERMAN, ABOUT_ENGLISH): Removed macros.
+	(WELCOME_TITLE_STR, ABOUT_STR): New macros.
+	(T_WelcomeTitleGpg4winSrc, T_AboutGpg4winSrc): New language strings.
+
 2008-01-15  Marcus Brinkmann  <marcus@g10code.de>
 
 	* patches/gnupg-2.0.8/01-agent-call-pinentry.patch: Rename to ...
