@@ -43,28 +43,8 @@
 
 !define INSTALL_DIR "GnuPG\Source"
 
-!define WELCOME_TITLE_ENGLISH \
- "Welcome to the installation of the Gpg4win sources"
-!define WELCOME_TITLE_GERMAN \
- "Willkommen bei der Installation der Gpg4win Quellen"
-
-!define ABOUT_ENGLISH \
- "GnuPG is GNU's tool for secure communication and data storage. \
-  It can be used to encrypt data and to create digital signatures. \
-  It includes an advanced key management facility and is compliant \
-  with the proposed OpenPGP Internet standard as described in RFC2440. \
-  \r\n\r\n$_CLICK \
-  \r\n\r\n\r\n\r\n\r\nThis is Gpg4win version ${VERSION}\r\n\
-  file version ${PROD_VERSION}\r\n\
-  release date ${_BUILD_ISODATE}"
-!define ABOUT_GERMAN \
-  "GnuPG is das Werkzeug aus dem GNU Projekt zur sicheren Kommunikation \
-   sowie zum sicheren Speichern von Daten. \
-   \r\n\r\n$_CLICK \
-   \r\n\r\n\r\n\r\n\r\nDies ist Gpg4win Version ${VERSION}\r\n\
-   Dateiversion ${PROD_VERSION}\r\n\
-   Releasedatum ${_BUILD_ISODATE}"
-
+!define WELCOME_TITLE_STR "$(T_WelcomeTitleGpg4winSrc)"
+!define ABOUT_STR "$(T_AboutGpg4winSrc)"
 
 # The copyright license of the package.  Define only one of these.
 !define LICENSE_GPL
@@ -86,6 +66,22 @@ SetCompressor zlib
 # Now include all the sections.
 !define SOURCES
 !include "inst-sections.nsi"
+
+# The WelcomeTitle is displayed on the first page.
+LangString T_WelcomeTitleGpg4winSrc ${LANG_ENGLISH} \
+ "Welcome to the installation of the Gpg4win sources"
+
+# The About string as displayed on the first page.
+LangString T_AboutGpg4winSrc ${LANG_ENGLISH} \
+ "GnuPG is GNU's tool for secure communication and data storage. \
+  It can be used to encrypt data and to create digital signatures. \
+  It includes an advanced key management facility and is compliant \
+  with the proposed OpenPGP Internet standard as described in RFC2440. \
+  \r\n\r\n$_CLICK \
+  \r\n\r\n\r\n\r\n\r\nThis is Gpg4win version ${VERSION}\r\n\
+  file version ${PROD_VERSION}\r\n\
+  release date ${_BUILD_ISODATE}"
+
 
 # At long last, include all the translations.
 !include "../po/catalogs.nsi"
