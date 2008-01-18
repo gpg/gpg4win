@@ -30,8 +30,15 @@ Section "-un.gpgol"
   Call un.SourceDelete
 !else
 
+  Delete "$INSTDIR\share\doc\gpgol\gpgol.pdf"
+  RMDir "$INSTDIR\share\doc\gpgol"
+  RMDir "$INSTDIR\share\doc"
+
   Delete "$INSTDIR\share\locale\de\LC_MESSAGES\gpgol.mo"
   RMDir "$INSTDIR\share\locale\de\LC_MESSAGES"
+  RMDir "$INSTDIR\share\locale\de"
+  RMDir "$INSTDIR\share\locale"
+  RMDir "$INSTDIR\share\"
 
   UnRegDLL "$INSTDIR\gpgol.dll"
 

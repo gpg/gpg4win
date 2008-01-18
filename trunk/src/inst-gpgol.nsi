@@ -21,6 +21,7 @@
 !undef prefix
 !endif
 !define prefix ${ipdir}/gpgol-${gpg4win_pkg_gpgol_version}
+!define bdir ${bpdir}/gpgol-${gpg4win_pkg_gpgol_version}-build
 
 
 Section "GpgOL" SEC_gpgol
@@ -46,6 +47,8 @@ Section "GpgOL" SEC_gpgol
   SetOutPath "$INSTDIR\share\locale\de\LC_MESSAGES"
   File ${prefix}/share/locale/de/LC_MESSAGES/gpgol.mo
 
+  SetOutPath "$INSTDIR\share\doc\gpgol"
+  File "${bdir}/doc/gpgol.pdf"
 
 !endif
 SectionEnd

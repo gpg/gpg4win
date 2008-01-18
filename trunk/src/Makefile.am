@@ -111,6 +111,12 @@ define gpg4win_pkg_gnupg2_post_install
   rm $$$${pkgidir}/share/gnupg/faq.html )
 endef
 
+
+# Build the reference manual.
+define gpg4win_pkg_gpgol_post_install
+( cd $$$${pkgndir}/doc; make pdf )
+endef
+
 # We would like to use --with-libiconv-prefix and
 # --with-libintl-prefix, but these don't work with the cheesy
 # non-"libfoo.la" versions of iconv and gettext that we are using.

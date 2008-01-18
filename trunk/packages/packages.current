@@ -215,10 +215,11 @@ chk   050f93a0d74385ce90e8934e49c11f171d495c5a
 #
 # GPGol
 #
-server ftp://ftp.g10code.com/g10code/gpgol/alpha
+#server ftp://ftp.g10code.com/g10code/gpgol/alpha
+server ftp://ftp.g10code.com/g10code/scratch
 
-file gpgol-0.10.4-svn205.tar.bz2
-chk  d0f6b4eadb963c31a33a23f23b519e89c5c16b04
+file gpgol-0.10.4-svn212.tar.bz2
+chk  9fddc8851a3c007b972e2acc134d537d4aff45e4 
 
 #
 # GpgEX
