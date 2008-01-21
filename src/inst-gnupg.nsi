@@ -24,7 +24,7 @@
 !define prefix ${ipdir}/gnupg-${gpg4win_pkg_gnupg_version}
 
 
-Section "GnuPG" SEC_gnupg
+${MementoSection} "GnuPG" SEC_gnupg
   SectionIn RO
 
   SetOutPath "$INSTDIR"
@@ -89,7 +89,7 @@ Section "GnuPG" SEC_gnupg
   Call AddToPath
 
 !endif
-SectionEnd
+${MementoSectionEnd}
 
 
 LangString DESC_SEC_gnupg ${LANG_ENGLISH} \

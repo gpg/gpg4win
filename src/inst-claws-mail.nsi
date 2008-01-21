@@ -24,7 +24,7 @@
 !define prefix ${ipdir}/claws-mail-${gpg4win_pkg_claws_mail_version}
 
 
-Section /o "Claws-Mail" SEC_claws_mail
+${MementoUnselectedSection} "Claws-Mail" SEC_claws_mail
   SetOutPath "$INSTDIR"
 !ifdef SOURCES
   File "${gpg4win_pkg_claws_mail}"
@@ -47,7 +47,7 @@ Section /o "Claws-Mail" SEC_claws_mail
   SetOutPath "$INSTDIR\share\locale\de\LC_MESSAGES"
   File ${prefix}/share/locale/de/LC_MESSAGES/claws-mail.mo
 !endif
-SectionEnd
+${MementoSectionEnd}
 
 
 LangString DESC_SEC_claws_mail ${LANG_ENGLISH} \

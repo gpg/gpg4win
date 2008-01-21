@@ -24,7 +24,7 @@
 !define prefix ${ipdir}/sylpheed-claws-${gpg4win_pkg_sylpheed_claws_version}
 
 
-Section /o "Sylpheed-Claws" SEC_sylpheed
+${MementoUnselectedSection} "Sylpheed-Claws" SEC_sylpheed
   SetOutPath "$INSTDIR"
 !ifdef SOURCES
   File "${gpg4win_pkg_sylpheed_claws}"
@@ -45,7 +45,7 @@ Section /o "Sylpheed-Claws" SEC_sylpheed
   SetOutPath "$INSTDIR\share\locale\de\LC_MESSAGES"
   File ${prefix}/share/locale/de/LC_MESSAGES/sylpheed-claws.mo
 !endif
-SectionEnd
+${MementoSectionEnd}
 
 
 LangString DESC_SEC_sylpheed ${LANG_ENGLISH} \

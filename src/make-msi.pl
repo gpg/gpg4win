@@ -652,13 +652,21 @@ sub gpg4win_nsis_stubs
     # We parse SetOutPath and File directives in sections.
     # Everything else is ignored.
 
-    elsif ($parser->{state} eq '' and $command eq 'Section')
+    elsif ($parser->{state} eq ''
+	   and ($command eq 'Section' or $command eq '${MementoSection}'
+		or $command eq '${MementoUnselectedSection}'))
     {
 	my $idx = 0;
 	# Default install level for MSI is 3.
 	my $level = $::nsis_level_default;
 	my $hidden = 0;
 	
+	if ($command eq '${MementoUnselectedSection}')
+	{
+	    # Default install level for MSI is 3.
+	    $level = $::nsis_level_optional;
+	}
+
 	# Check for options first.
 	return if ($idx > $#args);
 	if ($args[$idx] eq '/o')
@@ -667,7 +675,7 @@ sub gpg4win_nsis_stubs
 	    $level = $::nsis_level_optional;
 	    $idx++;
 	}
-
+	
 	return if ($idx > $#args);
 
 	my $title = nsis_eval ($parser, $file, $args[$idx++]);
@@ -681,7 +689,7 @@ sub gpg4win_nsis_stubs
 	    $hidden = 1;
 	    substr ($title, 0, 1) = '';
 	}
-		
+
 	# We only pay attention to special sections and those which
 	# have a section index defined.
 	if ($title eq 'startmenu')
@@ -715,7 +723,7 @@ sub gpg4win_nsis_stubs
     }
     elsif ($parser->{state} eq 'in-section')
     {
-	if ($command eq 'SectionEnd')
+	if ($command eq 'SectionEnd' or $command eq '${MementoSectionEnd}')
 	{
 	    delete $parser->{pkg};
 	    undef $parser->{state};
@@ -797,7 +805,7 @@ sub gpg4win_nsis_stubs
 
     elsif ($parser->{state} eq 'section-startmenu')
     {
-	if ($command eq 'SectionEnd')
+	if ($command eq 'SectionEnd' or $command eq '${MementoSectionEnd}')
 	{
 	    undef $parser->{state};
 	}

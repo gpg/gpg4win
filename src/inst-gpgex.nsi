@@ -40,7 +40,7 @@ Section "-removegpgee"
 SectionEnd
 
 
-Section "GpgEX" SEC_gpgex
+${MementoSection} "GpgEX" SEC_gpgex
   SetOutPath "$INSTDIR"
 !ifdef SOURCES
   File "${gpg4win_pkg_gpgex}"
@@ -68,7 +68,7 @@ Section "GpgEX" SEC_gpgex
   File ${prefix}/share/doc/gpgex/gpgex-de.html
 
 !endif
-SectionEnd
+${MementoSectionEnd}
 
 
 LangString T_GpgEX_RegFailed ${LANG_ENGLISH} \

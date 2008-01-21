@@ -23,7 +23,7 @@
 !endif
 !define prefix ${ipdir}/kleopatra-${gpg4win_pkg_kleopatra_version}
 
-Section "Kleopatra" SEC_kleopatra
+${MementoSection} "Kleopatra" SEC_kleopatra
   SetOutPath "$INSTDIR"
 !ifdef SOURCES
   File "${gpg4win_pkg_kleopatra_src}"
@@ -100,7 +100,7 @@ Section "Kleopatra" SEC_kleopatra
   File ${prefix}/share/icons/oxygen/scalable/apps/kleopatra.svgz
 
 !endif
-SectionEnd
+${MementoSectionEnd}
 
 
 LangString DESC_SEC_kleopatra ${LANG_ENGLISH} \

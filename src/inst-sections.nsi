@@ -286,6 +286,8 @@
 
 # Dependency Management
 
+${MementoSectionDone}
+
 !include "Sections.nsh"
 
 
@@ -771,6 +773,7 @@ Call G4wRunOnce
   # generate the file from a template.
   !insertmacro MUI_INSTALLOPTIONS_EXTRACT "installer-options.ini"
 
+  ${MementoSectionRestore}
   Call CalcDefaults
   Call CalcDepends
   Call CheckOtherGnuPGApps
@@ -782,6 +785,7 @@ Function .onInstFailed
 FunctionEnd
 
 Function .onInstSuccess
+  ${MementoSectionSave}
   Delete $TEMP\gpgspltmp.wav
 FunctionEnd
 

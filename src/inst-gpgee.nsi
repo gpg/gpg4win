@@ -24,7 +24,7 @@
 !define prefix ${ipdir}/gpgee-${gpg4win_pkg_gpgee_version}
 
 
-Section /o "GPGee" SEC_gpgee
+${MementoUnselectedSection} /o "GPGee" SEC_gpgee
   SetOutPath "$INSTDIR"
 !ifdef SOURCES
   File "${gpg4win_pkg_gpgee_src}"
@@ -60,7 +60,7 @@ Section /o "GPGee" SEC_gpgee
   File ${prefix}/GPGee/gpl.txt
 
 !endif
-SectionEnd
+${MementoSectionEnd}
 
 LangString T_GPGee_RegFailed ${LANG_ENGLISH} \
    "Warning: Registration of the GPGee explorer extension failed."

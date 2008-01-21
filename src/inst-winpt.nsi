@@ -23,7 +23,7 @@
 !endif
 !define prefix ${ipdir}/winpt-${gpg4win_pkg_winpt_version}
 
-Section "WinPT" SEC_winpt
+${MementoSection} "WinPT" SEC_winpt
   SetOutPath "$INSTDIR"
 !ifdef SOURCES
   File "${gpg4win_pkg_winpt}"
@@ -40,7 +40,7 @@ Section "WinPT" SEC_winpt
   #File ${prefix}/NEWS.txt
   #File ${prefix}/README.txt
 !endif
-SectionEnd
+${MementoSectionEnd}
 
 
 LangString DESC_SEC_winpt ${LANG_ENGLISH} \

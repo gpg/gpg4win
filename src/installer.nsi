@@ -39,7 +39,11 @@
 # !define Regkey_for_Env 'HKCU "Environment"'
 
 
-
+# We use Memento to remember past installation choices.
+!include Memento.nsh
+!define MEMENTO_REGISTRY_ROOT HKLM
+!define MEMENTO_REGISTRY_KEY \
+  Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRETTY_PACKAGE_SHORT}
 
 
 # We use the modern UI.

@@ -24,7 +24,7 @@
 !define prefix ${ipdir}/gpa-${gpg4win_pkg_gpa_version}
 
 
-Section "GPA" SEC_gpa
+${MementoSection} "GPA" SEC_gpa
   SetOutPath "$INSTDIR"
 !ifdef SOURCES
   File "${gpg4win_pkg_gpa}"
@@ -56,7 +56,7 @@ Section "GPA" SEC_gpa
   no_config_gpa_files:
 
 !endif
-SectionEnd
+${MementoSectionEnd}
 
 
 LangString DESC_SEC_gpa ${LANG_ENGLISH} \

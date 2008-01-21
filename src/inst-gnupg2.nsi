@@ -26,7 +26,7 @@
 !define source ${bpdir}/gnupg2-${gpg4win_pkg_gnupg2_version}
 
 
-Section "GnuPG2" SEC_gnupg2
+${MementoSection} "GnuPG2" SEC_gnupg2
   SectionIn RO
 
   SetOutPath "$INSTDIR"
@@ -105,7 +105,7 @@ Section "GnuPG2" SEC_gnupg2
 
   no_config_gpg_conf_files:
 !endif
-SectionEnd
+${MementoSectionEnd}
 
 LangString DESC_SEC_gnupg2 ${LANG_ENGLISH} \
    "GNU Privacy Guard with S/MIME support"
