@@ -1,7 +1,7 @@
 Wichtige Informationen zum Einsatz von Gpg4win 1.9-BETA
 =======================================================
 
-Stand: Gpg4win-1.9.0-svn675 (20080111)
+Stand: Gpg4win-1.9.0-svn684 (20080118)
 
 Hier finden sich wichtige Informationen die bei der
 Entscheidung helfen sollen, ob Gpg4win 1.9 schon für
@@ -13,6 +13,9 @@ Ausserdem wird ein Ausblick gegeben, was mit
 Gpg4win 2.0 an neuer Funktionalität zu erwarten ist.
 Die 1.9er Versionen sind der Beta-Test-Zyklus. Ist er
 abgeschlossen wird Version 2.0 freigegeben.
+
+Verbesserungen seit Gpg4win-1.9.0-svn675
+----------------------------------------
 
 Verbesserungen seit Gpg4win-1.9.0-svn672
 ----------------------------------------
@@ -238,6 +241,11 @@ Neu:
 
 Bekannte Fehler
 ---------------
+
+Berichtet zu svn684:
+
+* During update installation: claws should be checked by default if installed last time
+  http://wald.intevation.org/tracker/index.php?func=detail&aid=583&group_id=11&atid=126
 
 Berichtet zu svn675:
 
