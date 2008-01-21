@@ -24,7 +24,7 @@
 !define bdir ${bpdir}/gpgol-${gpg4win_pkg_gpgol_version}-build
 
 
-Section "GpgOL" SEC_gpgol
+${MementoSection} "GpgOL" SEC_gpgol
   SetOutPath "$INSTDIR"
 !ifdef SOURCES
   File "${gpg4win_pkg_gpgol}"
@@ -51,7 +51,7 @@ Section "GpgOL" SEC_gpgol
   File "${bdir}/doc/gpgol.pdf"
 
 !endif
-SectionEnd
+${MementoSectionEnd}
 
 
 LangString T_GpgOL_RegFailed ${LANG_ENGLISH} \

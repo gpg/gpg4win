@@ -23,7 +23,7 @@
 !endif
 
 
-Section "$(DESC_Name_man_advanced_de)" SEC_man_advanced_de
+${MementoSection} "$(DESC_Name_man_advanced_de)" SEC_man_advanced_de
   SetOutPath "$INSTDIR"
 !ifdef SOURCES
   # No need to include anything as the manuals are part of gpg4win
@@ -33,7 +33,7 @@ Section "$(DESC_Name_man_advanced_de)" SEC_man_advanced_de
   SetOutPath "$INSTDIR\share\gpg4win"
   File "${BUILD_DIR}/../doc/manual/durchblicker.pdf"
 !endif
-SectionEnd
+${MementoSectionEnd}
 
 
 LangString DESC_Name_man_advanced_de ${LANG_ENGLISH} \

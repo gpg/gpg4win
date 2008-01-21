@@ -8,6 +8,7 @@ f5898ebd-f30a-4cfc-9763-2a98befe6719 /PRODUCT/1.9.0.613
 80591336-e7ec-47d6-8b79-7d923c35d3de /PRODUCT/1.9.0.616
 bf1af37b-2d40-4956-add4-3abb7154b0ed /PRODUCT/1.9.0.625
 d75a8790-3457-49aa-ac8d-946a33c7bb1a /PRODUCT/1.9.0.668
+3f94d3d4-7d64-44fc-a2be-28073eb595e1 /PRODUCT/1.9.0.682
 fb54db39-2456-4fcc-9550-2790db663015 /REGISTRY/HKLM/Software\GNU\GnuPG/Install Directory
 ad23691b-1734-4dec-b91a-d4ff286190ea /REGISTRY/HKLM/Software\GNU\GnuPG/gpgProgram
 e0807a2f-4e70-48f8-b047-c5d3e219c3e7 /UPGRADE/1
@@ -35,6 +36,7 @@ be9b9b72-a574-429c-83b3-ad463852c930 VisualPng.exe
 2a6c061a-c8df-4756-b075-f3b5d386b6a9 cjpeg.exe
 4c4e070f-6ca6-49b3-9ff5-aae36352e909 claws-mail-manual.pdf
 e727cf5b-9485-4b5c-b54d-5a0866082b03 claws-mail.exe
+d602f33b-70ae-465d-b768-1d436499ab44 dbus-env.bat
 460d777c-6ce0-48f3-90ac-d260c9dcbb3e dbus-launch.exe
 ee21a9ad-8d11-470d-8478-b89d19764248 dbus-monitor.exe
 90cc13c3-d94c-44e5-bf0f-bcde6b7105ae dbus-send.exe
@@ -273,6 +275,7 @@ d1851b33-a3ad-4bfa-831f-77795b11f127 share\config\kdebug.areas
 fa4fd7f9-1a16-4dd9-98f8-133a087247f6 share\config\ui\ui_standards.rc
 034afb0a-ea97-466c-a6b7-89a6be0891a9 share\doc\gpgex\gpgex-de.html
 3e81d9d7-fc44-4d0d-822c-44522b15b95d share\doc\gpgex\gpgex-en.html
+1e0dd2f5-40b2-466e-9bad-85dc8882aa26 share\doc\gpgol\gpgol.pdf
 333ef410-acf0-4cac-a9dc-d691c127cb7b share\gnupg\FAQ
 648f5486-56d0-4a03-a2f4-23ba6f7d0c74 share\gnupg\com-certs.pem
 03294f27-91ac-4eed-81e3-ee4ee602668d share\gnupg\faq.html

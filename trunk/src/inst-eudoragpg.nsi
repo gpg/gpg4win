@@ -24,7 +24,7 @@
 !define prefix ${ipdir}/eudoragpg-${gpg4win_pkg_eudoragpg_version}
 
 
-Section "EudoraGPG" SEC_eudoragpg
+${MementoSection} "EudoraGPG" SEC_eudoragpg
   SetOutPath "$INSTDIR"
 !ifdef SOURCES
   File "${gpg4win_pkg_eudoragpg}"
@@ -34,7 +34,7 @@ Section "EudoraGPG" SEC_eudoragpg
   SetOutPath "$INSTDIR\share\eudoragpg"
   File "${prefix}/share/eudoragpg/eudoragpg.html"
 !endif
-SectionEnd
+${MementoSectionEnd}
 
 
 LangString DESC_SEC_eudoragpg ${LANG_ENGLISH} \

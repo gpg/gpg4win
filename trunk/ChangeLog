@@ -1,3 +1,20 @@
+2008-01-21  Marcus Brinkmann  <marcus@g10code.de>
+
+	* src/installer.nsi: Include Memento.nsh, define
+	MEMENTO_REGISTRY_ROOT and MEMENTO_REGISTRY_KEY.
+	* src/inst-sections.nsi: Call MementoSectionDone.
+	(onInit): Call MementoSectionRestore.
+	(onInstSuccess): Call MementoSectionSave.
+	* src/inst-claws-mail.nsi, src/inst-eudoragpg.nsi,
+	src/inst-gnupg.nsi, src/inst-gnupg2.nsi, src/inst-gpa.nsi,
+	src/inst-gpgee.nsi, src/inst-gpgex.nsi, src/inst-gpgol.nsi,
+	src/inst-kleopatra.nsi, src/inst-man_advanced_de.nsi,
+	src/inst-man_advanced_en.nsi, src/inst-man_novice_de.nsi,
+	src/inst-man_novice_en.nsi, src/inst-sylpheed-claws.nsi,
+	src/inst-winpt.nsi: Replace Section/SectionEnd by Memento macro
+	calls.
+	* src/make-msi.pl (gpg4win_nsis_stubs): Support memento sections.
+
 2008-01-18  Marcus Brinkmann  <marcus@g10code.de>
 
 	* packages/packages.current: Update gpgol.
