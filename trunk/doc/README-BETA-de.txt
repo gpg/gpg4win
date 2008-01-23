@@ -17,6 +17,11 @@ abgeschlossen wird Version 2.0 freigegeben.
 Verbesserungen seit Gpg4win-1.9.0-svn675
 ----------------------------------------
 
+Behoben:
+
+* DirMngr system service can not be started
+  http://wald.intevation.org/tracker/index.php?func=detail&aid=580&group_id=11&atid=126
+
 Verbesserungen seit Gpg4win-1.9.0-svn672
 ----------------------------------------
 
@@ -244,16 +249,14 @@ Bekannte Fehler
 
 Berichtet zu svn684:
 
+* Improve GnuPG Config Check GUI
+  http://bugs.kde.org/show_bug.cgi?id=156483
+
 * During update installation: claws should be checked by default if installed last time
   http://wald.intevation.org/tracker/index.php?func=detail&aid=583&group_id=11&atid=126
 
-Berichtet zu svn675:
-
-* Kleopatra UI Server not automatically running in systray
-  http://wald.intevation.org/tracker/index.php?func=detail&aid=579&group_id=11&atid=126
-
-* DirMngr system service can not be started
-  http://wald.intevation.org/tracker/index.php?func=detail&aid=580&group_id=11&atid=126
+* Don't open DOS Boxes when importing P12 file
+  https://bugs.g10code.com/gnupg/issue875
 
 Berichtet zu svn672:
 

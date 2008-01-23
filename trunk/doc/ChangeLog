@@ -1,5 +1,9 @@
 2008-01-23  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
 
+	* README-BETA-de.txt: Few more results on testing svn684.
+
+2008-01-23  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
+
 	* manual/durchblicker.tex: Added section on how to track problems,
 	i.e. how to create logs.
 
