@@ -853,7 +853,7 @@ Schlüsselverwaltungs-Fenster an.
 
 \clearpage
 %% Original page 29
-\section{Der Schlüssel als  Dateianhang}
+\section{Der Schlüssel als Dateianhang}
 
 Im Einsteiger Handbuch Kapitel 5 ("`Sie veröffentlichen Ihren Schlüssel
 per \Email{}"') haben Sie gesehen, wie einfach man
@@ -1548,13 +1548,82 @@ und welche Einstellungsparameter man wo in den Konfigurationsprogrammen findet.
 \clearpage
 \section{Fehler in den Gpg4win Programmen aufspüren}
 
-Dieser Abschnitt ist noch nicht ausformuliert.
-Er wird erklären wie man einem Fehlverhalten der
-Gpg4win Programme auf die Spur kommt. Dazu gehört
-vor allem die Information wie man Log-Dateien einschaltet,
-wo man sie findet und wie man sie interpretiert und
-für einen Fehlerbericht verwendet.
+Es kann vorkommen, dass eines der Gpg4win Programme
+nicht wie erwartet zu funktionieren scheint.
 
+Nicht selten ist dabei eine Besonderheit der
+Arbeitsumgebung, so dass die Software-Entwickler
+das beobachtete Problem gar nicht selbst nachvollziehen können.
+
+Um die Software-Entwickler bei der Problemsuche zu
+unterstützen oder auch um mal selbst in die technischen
+Detail-Abläufe reinzuschnuppern bieten die Gpg4win Programme
+Unterstützung an.
+
+In der Regel muss diese Unterstützun aber erst einmal
+eingeschaltet werden. Eine der wichtigesten Hilfsmittel sind
+Logbücher. Dort werden detaillierte Informationen zu den
+technischen Vorgängen vermerkt. Ein Software-Entwickler kann
+ein Problem und die mögliche Lösung oft leicht ablesen,
+auch wenn es auf den ersten Blick sehr unverständlich
+und viel zu umfangreich wirken mag.
+
+Wenn Sie einen Fehler-Bericht an die Software-Entwickler
+senden wollen, so finden Sie auf dieser Web-Seite einige Hinweise:
+
+http://www.gpg4win.de/reporting-bugs-de.html
+
+Als dort erwähnte ,,Debug-Informationen''
+sind Logbücher besonders wertvoll
+und sollten mitgeschickt werden.
+
+Im folgenden werden verschieden Möglichkeiten beschrieben
+wie Programm-Ablauf-Informationen (darum handelt es sich
+letztlich bei den Logbüchern) eingeschaltet werden können.
+
+\subsection{Logbuch von Kleopatra einschalten}
+
+Das Logbuch von Kleopatra besteht aus vielen Dateien,
+daher ist der erste Schritt ein Verzeichnis für
+das Logbuch zu erstellen. Denkbar ist z.B.
+\Filename{C:\back{}TEMP\back{}kleologdir}.
+
+Der Pfad zu diesem Verzeichnis muss nun in der Umgebungsvariable
+,,KLEOPATRA\_LOGDIR'' vermerkt werden:
+
+Öffnen Sie dazu die Systemsteuerung, wählen dort ,,System'', dann
+den Reiter ,,Erweitert'' und schließlich den Knopf \Button{Umgebungsvariablen}.
+
+Fügen Sie dort nun folgende neue Benutzervariable ein:
+
+Name: KLEOPATRA\_LOGDIR
+
+Wert: \Filename{C:\back{}TEMP\back{}kleologdir}
+
+Beachten Sie, dass das angegebene Verzeichnis existieren muss. Sie können es
+auch nachträglich erstellen.
+
+Um die Log-Funktion wirksam werden zu lassen, muss Kleopatra beendet
+und neu gestartet werden. Spätestens jetzt muss das Log-Verzeichnis erstellt worden
+sein.
+
+Während Kleopatra nun verwendet wird, zeichnet es viele Daten in die
+Datei \Filename{kleo-log} (Haupt-Logbuch) sowie möglicherweise viele Dateien
+\Filename{pipe-input-ZEITSTEMPEL-ZUFALLSZEICHEN}.
+
+Möglicherweise reichen diese Informationen einem Software-Entwickler nicht
+um den Fehler zu erkennen, er wird Sie dann bitten die Umgebungsvariable
+,,KLEOPATRA\_LOGOPTIONS'' auf den Wert ,,all'' zu setzen wie Sie schon
+die andere Variable oben gesetzt haben.
+
+Möglicherweise werden die Logbuch-Dateien sehr schnell sehr groß.
+Sie sollten diese Logbuch-Aufzeichnung nur einschalten und dann
+ein bestimmtes Fehlverhalten durchspielen. Anschliessend schalten
+Sie die Aufzeichnung wieder aus indem Sie die Umgebungsvariable
+löschen oder den Namen leicht variieren (für späteres leichtes
+reaktivieren). Vergessen Sie nicht, die Logbücher zu löschen falls
+sie umfangreich geworden sind oder es sehr viele Dateien sind. Am besten immer
+bevor Sie eine neue Aufzeichnung machen.
 
 \clearpage
 %% Original page 49
