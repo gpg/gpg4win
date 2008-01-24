@@ -1,5 +1,7 @@
 2008-01-24  Marcus Brinkmann  <marcus@g10code.de>
 
+	* src/inst-gpgee.nsi: Fix last change.
+
 	* src/Memento.nsh: New file from nsis 2.28.
 
 2008-01-21  Marcus Brinkmann  <marcus@g10code.de>
