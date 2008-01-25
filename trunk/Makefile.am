@@ -59,6 +59,7 @@ EXTRA_DIST = autogen.sh README.SVN \
 	patches/claws-mail-3.1.0cvs70/99-auto.patch \
 	patches/gpgme/01-gpg2.patch \
 	patches/gnupg2-2.0.8/01-agent-call-pinentry.patch \
+	patches/gnupg2-2.0.8/02-qualified.patch \
 	patches/gpgol-0.9.91/01-gpgme.patch
 
 copy-news:

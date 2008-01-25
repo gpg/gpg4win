@@ -1,3 +1,9 @@
+2008-01-25  Marcus Brinkmann  <marcus@g10code.de>
+
+	* Makefile.am (EXTRA_DIST): Add
+	patches/gnupg2-2.0.8/02-qualified.patch.
+	* patches/gnupg2-2.0.8/02-qualified.patch: New file.
+
 2008-01-24  Marcus Brinkmann  <marcus@g10code.de>
 
 	* src/inst-gpgee.nsi: Fix last change.
