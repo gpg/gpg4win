@@ -9,8 +9,8 @@ exit $?
 
 Index: doc/qualified.txt
 ===================================================================
---- doc/qualified.txt	(revision 4656)
-+++ doc/qualified.txt	(working copy)
+--- gnupg/doc/qualified.txt	(revision 4656)
++++ gnupg/doc/qualified.txt	(working copy)
 @@ -193,7 +193,7 @@
  #[checked: 2007-12-13 via received ZIP file with qualified signature from 
  #         /CN=Dr. Matthias Stehle/O=Deutscher Sparkassenverlag
