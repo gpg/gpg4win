@@ -270,9 +270,6 @@ chk  cd1b52e8ecfa361737c6f130ed2f1d850e312c16
 file libassuan/libassuan-1.0.4.tar.bz2
 chk  4b720706a8e4251d8cb7a0f2336226907df1426c
 
-file gpgme/gpgme-1.1.6.tar.bz2
-chk  05218df939d72c2fd6d74f22c2b5d5ade0718b7a
-
 # (Snapshots)
 server ftp://ftp.g10code.com/g10code/scratch
 
@@ -282,6 +279,8 @@ chk  85919f061e4fa432fd3659de89a301878c6c7d25
 file dirmngr-1.0.2-svn275.tar.bz2
 chk  7a0f5eb38041ce152dd8111fcf43eb45ba3482f4
 
+file gpgme/gpgme-1.1.7-svn1299.tar.bz2
+chk  37e19514b1294ac46eb1534b661f36a9bc657d2e
 
 #
 # GPA
@@ -364,10 +363,10 @@ chk  b08756b5de11e0753987b906d5db3e7379b2919d
 
 server ftp://ftp.kdab.net/pub/gpg4win
 
-name kleopatra-20080117-bin.zip
-file kleo-uiserver-only-20080117-bin.zip
-chk  57246f57c2bafd0c37e8d79d6ba8a582ec91b989
+name kleopatra-20080127-bin.zip
+file kleo-uiserver-only-20080127-bin.zip
+chk  6189e00c3f05fcd1a4d8419574c10f260694dc13
 
-name kleopatra-20080117-src.zip
-file kleo-uiserver-only-20080117-src.zip
-chk  8f75b7eb0cb18631764390883ee66533c0930db3
+name kleopatra-20080127-src.zip
+file kleo-uiserver-only-20080127-src.zip
+chk  6d7139c19bad5734464d1ec23108395ba68c3e88
