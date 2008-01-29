@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gpg4win 1.1.1-svn417\n"
 "Report-Msgid-Bugs-To: gpg4win-devel@wald.intevation.org\n"
-"POT-Creation-Date: 2008-01-16 00:49+0100\n"
+"POT-Creation-Date: 2008-01-29 11:51+0100\n"
 "PO-Revision-Date: 2008-01-16 00:51+0100\n"
 "Last-Translator: Marcus Brinkmann <mb@g10code.com>\n"
 "Language-Team: German <translation-team-de@lists.sourceforge.net>\n"
@@ -76,12 +76,12 @@ msgstr ""
 "Dateiversion ${PROD_VERSION}\\r\\n\n"
 "Releasedatum ${_BUILD_ISODATE}"
 
-#: src/installer.nsi:202
+#: src/installer.nsi:206
 msgctxt "T_LangCode"
 msgid "en"
 msgstr "de"
 
-#: src/installer.nsi:205
+#: src/installer.nsi:209
 msgctxt "T_GPLHeader"
 msgid ""
 "This software is licensed under the terms of the GNU General Public License "
@@ -90,7 +90,7 @@ msgstr ""
 "Diese Software ist unter der GNU General Public License (GPL) lizensiert; "
 "dies gibt Ihnen die Freiheit, sie zu ändern und weiterzugeben."
 
-#: src/installer.nsi:210
+#: src/installer.nsi:214
 msgctxt "T_GPLShort"
 msgid ""
 "In short: You are allowed to run this software for any purpose. You may "
@@ -101,80 +101,80 @@ msgstr ""
 "einzusetzen.  Sie können die Software weitergeben, sofern Sie dem Empfänger "
 "dieselben Rechte einräumen, die auch Sie erhalten haben."
 
-#: src/installer.nsi:215
+#: src/installer.nsi:219
 msgctxt "T_RunKeyManager"
 msgid "Run the key manager"
 msgstr "Die Schlüsselverwaltung aufrufen"
 
-#: src/installer.nsi:218
+#: src/installer.nsi:222
 msgctxt "T_MoreInfo"
 msgid "Click here for the project's homepage"
 msgstr "Hier klicken um zur Homepage des Projekts zu gelangen"
 
-#: src/installer.nsi:220
+#: src/installer.nsi:224
 msgctxt "T_MoreInfoURL"
 msgid "http://www.gpg4win.org"
 msgstr "http://www.gpg4win.de"
 
-#: src/installer.nsi:222
+#: src/installer.nsi:226
 msgctxt "T_ShowReadme"
 msgid "Show the README file"
 msgstr "Die README Datei anzeigen"
 
-#: src/installer.nsi:225
+#: src/installer.nsi:229
 msgctxt "T_NoKeyManager"
 msgid "No key manager has been installed, thus we can't run one now."
 msgstr ""
 "Es wurde keine Schlüsselverwaltung installiert.  Deswegen kann sie jetzt "
 "auch nicht ausgeführt werden."
 
-#: src/installer.nsi:230
+#: src/installer.nsi:234
 msgctxt "DESC_Menu_manuals"
 msgid "Documentation"
 msgstr "Dokumentation"
 
-#: src/installer.nsi:234
+#: src/installer.nsi:238
 msgctxt "DESC_Desktop_manuals"
 msgid "Gpg4win Documentation"
 msgstr "Gpg4win Dokumentation"
 
-#: src/installer.nsi:423
+#: src/installer.nsi:427
 msgctxt "T_InstallOptions"
 msgid "Install Options"
 msgstr "Installationsoptionen"
 
-#: src/installer.nsi:426
+#: src/installer.nsi:430
 msgctxt "T_InstallOptLinks"
 msgid "Start links"
 msgstr "Startlinks"
 
-#: src/installer.nsi:428
+#: src/installer.nsi:432
 msgctxt "T_InstOptLabelA"
 msgid "Please select where Gpg4win shall install links:"
 msgstr "Bitte wählen Sie, welche Verknüpfungen angelegt werden sollen:"
 
-#: src/installer.nsi:431
+#: src/installer.nsi:435
 msgctxt "T_InstOptLabelB"
 msgid "(Only programs will be linked into the quick launch bar.)"
 msgstr ""
 "(In die Schnellstartleiste werden nur Verknüpfungen für Programme angelegt.)"
 
-#: src/installer.nsi:434
+#: src/installer.nsi:438
 msgctxt "T_InstOptFieldA"
 msgid "Start Menu"
 msgstr "Startmenü"
 
-#: src/installer.nsi:437
+#: src/installer.nsi:441
 msgctxt "T_InstOptFieldB"
 msgid "Desktop"
 msgstr "Arbeitsfläche"
 
-#: src/installer.nsi:440
+#: src/installer.nsi:444
 msgctxt "T_InstOptFieldC"
 msgid "Quick Launch Bar"
 msgstr "Schnellstartleiste"
 
-#: src/installer.nsi:446
+#: src/installer.nsi:450
 msgctxt "T_FoundExistingVersion"
 msgid ""
 "Version $R1 has already been installed.\n"
@@ -186,7 +186,7 @@ msgstr ""
 "(Sie können in jedem Fall mit JA antworten, falls es sich um eine neuere "
 "oder dieselbe Version handelt.)"
 
-#: src/installer.nsi:449
+#: src/installer.nsi:453
 msgctxt "T_FoundExistingVersionB"
 msgid ""
 "A version of Gpg4Win has already been installed on the system. There will be "
@@ -199,7 +199,7 @@ msgstr ""
 "\n"
 "Möchten die die Installation von Gpg4Win fortführen?"
 
-#: src/installer.nsi:460
+#: src/installer.nsi:464
 msgctxt "T_FoundOldSeeManual"
 msgid ""
 "Please see the Gpg4win user manual to learn how to migrate existing keys "
@@ -210,7 +210,7 @@ msgstr ""
 "überführen.  Es wird dringend geraten Gpg4Win nicht zusammen mit diesen "
 "anderen Installation zu betreiben."
 
-#: src/installer.nsi:465
+#: src/installer.nsi:469
 msgctxt "T_FoundOldGnuPP"
 msgid ""
 "An old installation of GnuPP (GNU Privacy Project) has been been detected.  "
@@ -233,7 +233,7 @@ msgstr ""
 "Möchten Sie die Installation von Gpg4win weiter durchführen und sich dann "
 "später um die Entfernung von GnuPP kümmern?"
 
-#: src/installer.nsi:474
+#: src/installer.nsi:478
 msgctxt "T_FoundOldGnuPT"
 msgid ""
 "An installation of GnuPT has been been detected.  This may cause problems "
@@ -256,7 +256,7 @@ msgstr ""
 "\n"
 "Möchten Sie die Installation von Gpg4win fortführen?"
 
-#: src/installer.nsi:481
+#: src/installer.nsi:485
 msgctxt "T_FoundOldWinPTSF"
 msgid ""
 "An old installation of the Sourceforge hosted WinPT has been been detected.  "
@@ -281,7 +281,7 @@ msgstr ""
 "\n"
 "Möchten Sie die Installation von Gpg4win trotzdem jetzt weiter durchführen?"
 
-#: src/installer.nsi:491
+#: src/installer.nsi:495
 msgctxt "T_FoundOldGnuPack"
 msgid ""
 "An installation of GnuPG-Pack has been been detected. You need to uninstall "
@@ -295,7 +295,7 @@ msgstr ""
 "\n"
 "Die Installation von Gpg4win wird nun abgebrochen!"
 
-#: src/installer.nsi:500
+#: src/installer.nsi:504
 msgctxt "T_AdminNeeded"
 msgid ""
 "Warning: Administrator permissions required for a successful installation"
@@ -303,7 +303,7 @@ msgstr ""
 "Achtung: Für eine erfolgreiche Installation werden Administratorrechte "
 "benötigt."
 
-#: src/installer.nsi:504
+#: src/installer.nsi:508
 msgctxt "T_CloseOtherApps"
 msgid ""
 "Please make sure that other applications are not running. In particular you "
@@ -316,12 +316,12 @@ msgstr ""
 "eine Installation durchzuführen; es ist dann aber u.U. notwendig, das System "
 "neu zu starten."
 
-#: src/installer.nsi:509
+#: src/installer.nsi:513
 msgctxt "T_ShuttingDownWinPT"
 msgid "Trying to shutdown a possible running instance of WinPT."
 msgstr "Ein möglicherweise laufendes WinPT wird jetzt automatisch beendet."
 
-#: src/installer.nsi:511
+#: src/installer.nsi:515
 msgctxt "T_ShuttingDownDirMngr"
 msgid "Trying to shutdown a possible running instance of DirMngr."
 msgstr "Ein möglicherweise laufender DirMngr wird jetzt automatisch beendet."
@@ -421,12 +421,12 @@ msgstr ""
 "GPG Shell Extension (GpgEX) ist eine Erweiterung für den Explorer, die es "
 "ermöglicht, Dateien über das Kontextmenü zu verschlüsseln."
 
-#: src/inst-gpgol.nsi:54
+#: src/inst-gpgol.nsi:57
 msgctxt "T_GpgOL_RegFailed"
 msgid "Warning: Registration of the GpgOL Outlook pluginfailed."
 msgstr "Warnung: Registration des GpgOL Outlook Plugin ist fehlgeschlagen."
 
-#: src/inst-gpgol.nsi:57
+#: src/inst-gpgol.nsi:60
 msgctxt "DESC_SEC_gpgol"
 msgid "GnuPG for Outlook"
 msgstr ""
