@@ -503,13 +503,20 @@ sub nsis_parse_line
 	{
 	    fail "$file:$.: syntax error" if $#tokens != 1;
 
-	    print STDERR "Including $tokens[1]\n"
-		if $::nsis_parser_debug;
-
-	    my $filename = nsis_eval ($parser, $file, $tokens[1]);
-
-	    # Recursion.
-	    nsis_parse_file ($parser, $filename);
+	    if ($tokens[1] eq 'Memento.nsh')
+	    {
+		print STDERR "Skipping $tokens[1]\n"
+		    if $::nsis_parser_debug;
+	    }
+	    else
+	    {	    print STDERR "Including $tokens[1]\n"
+			if $::nsis_parser_debug;
+		    
+		    my $filename = nsis_eval ($parser, $file, $tokens[1]);
+		    
+		    # Recursion.
+		    nsis_parse_file ($parser, $filename);
+	    }
 	}
 	elsif ($tokens[0] eq '!macro')
 	{
