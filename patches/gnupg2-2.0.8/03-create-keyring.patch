@@ -1,0 +1,60 @@
+#! /bin/sh
+patch -p1 -f $* < $0
+exit $?
+
+2008-01-29  Werner Koch  <wk@g10code.com>
+
+	* keydb.c (maybe_create_keyring): Take care of a missing slash.
+	(maybe_create_keyring) [W32]: Also test for forward slash.
+
+
+--- gnug/g10/keydb.c	(revision 4676)
++++ gnupg/g10/keydb.c	(working copy)
+@@ -1,5 +1,6 @@
+ /* keydb.c - key database dispatcher
+- * Copyright (C) 2001, 2002, 2003, 2004, 2005 Free Software Foundation, Inc.
++ * Copyright (C) 2001, 2002, 2003, 2004, 2005, 
++ *               2008 Free Software Foundation, Inc.
+  *
+  * This file is part of GnuPG.
+  *
+@@ -82,6 +83,7 @@
+   int rc;
+   mode_t oldmask;
+   char *last_slash_in_filename;
++  int save_slash;
+ 
+   /* A quick test whether the filename already exists. */
+   if (!access (filename, F_OK))
+@@ -98,6 +100,18 @@
+      tricky auto-creation which is anyway only done for some home
+      directory name patterns. */
+   last_slash_in_filename = strrchr (filename, DIRSEP_C);
++#if HAVE_W32_SYSTEM
++  {
++    /* Windows may either have a slash or a backslash.  Take care of it.  */
++    char *p = strrchr (filename, '/');
++    if (!last_slash_in_filename || p > last_slash_in_filename)
++      last_slash_in_filename = p;
++  }
++#endif /*HAVE_W32_SYSTEM*/
++  if (!last_slash_in_filename)
++    return gpg_error (GPG_ERR_ENOENT);  /* No slash at all - should
++                                           not happen though.  */
++  save_slash = *last_slash_in_filename;
+   *last_slash_in_filename = 0;
+   if (access(filename, F_OK))
+     { 
+@@ -115,9 +129,8 @@
+           goto leave;
+         }
+     }
+-  *last_slash_in_filename = DIRSEP_C;
++  *last_slash_in_filename = save_slash;
+ 
+-
+   /* To avoid races with other instances of gpg trying to create or
+      update the keyring (it is removed during an update for a short
+      time), we do the next stuff in a locked state. */
+
+
