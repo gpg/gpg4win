@@ -1,7 +1,10 @@
 2008-01-29  Werner Koch  <wk@g10code.com>
 
-	* patches/gnupg2-2.0.8/gnupg/g10/keydb.c: New file. 
-	* Makefile.am (EXTRA_DIST): Add new file.
+	* packages/packages.current: Updated GpgOL.
+
+	* patches/gnupg2-2.0.8/04-import-export-spawn.patch: New file
+	* patches/gnupg2-2.0.8/03-create-keyring.patch: New file. 
+	* Makefile.am (EXTRA_DIST): Add new files.
 
 2008-01-29  Marcus Brinkmann  <marcus@g10code.de>
 
@@ -1979,7 +1982,7 @@
 	* packages/download.sh: Fix downloading of Gtk source packages.
 
 
- Copyright 2005 g10 Code GmbH
+ Copyright 2005, 2006, 2007, 2008 g10 Code GmbH
 
  This file is free software; as a special exception the author gives
  unlimited permission to copy and/or distribute it, with or without
