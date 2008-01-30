@@ -77,9 +77,9 @@ LangString T_AboutGpg4winSrc ${LANG_ENGLISH} \
   It can be used to encrypt data and to create digital signatures. \
   It includes an advanced key management facility and is compliant \
   with the proposed OpenPGP Internet standard as described in RFC2440. \
-  \r\n\r\n$_CLICK \
-  \r\n\r\n\r\n\r\n\r\nThis is Gpg4win version ${VERSION}\r\n\
-  file version ${PROD_VERSION}\r\n\
+  ${DOSLF}${DOSLF}$_CLICK \
+  ${DOSLF}${DOSLF}${DOSLF}${DOSLF}${DOSLF}This is Gpg4win version ${VERSION}${DOSLF} \
+  file version ${PROD_VERSION}${DOSLF}${DOSLF} \
   release date ${_BUILD_ISODATE}"
 
 

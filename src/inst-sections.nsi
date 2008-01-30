@@ -567,6 +567,11 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_zlib}
   !insertmacro SelectSection ${SEC_pinentry}
   !insertmacro SelectSection ${SEC_dirmngr}
+  # Because we need pinnetry, we also need to install GTK+
+  !insertmacro SelectSection ${SEC_zlib}
+  !insertmacro SelectSection ${SEC_gtk_}
+  !insertmacro SelectSection ${SEC_libpng}
+  !insertmacro SelectSection ${SEC_glib}
   skip_gnupg2:
 !endif
 
