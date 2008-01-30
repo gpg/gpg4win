@@ -48,8 +48,8 @@
 !define ABOUT_STR "$(T_AboutGpg4winSrc) \
 	\r\n\r\n$_CLICK \r\n\r\n\r\n\r\n\r\n \
         $(T_AboutGpg4winSrcVersion) \r\n \
-        $(T_AboutGpg4winSrcFileVersion) ${PROD_VERSION} \r\n\r\n \
-        $(T_AboutGpg4winSrcReleaseDate) ${_BUILD_ISODATE}"
+        $(T_AboutGpg4winSrcFileVersion) \r\n\r\n \
+        $(T_AboutGpg4winSrcReleaseDate)"
 
 # The copyright license of the package.  Define only one of these.
 !define LICENSE_GPL

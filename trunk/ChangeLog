@@ -1,5 +1,8 @@
 2008-01-30  Marcus Brinkmann  <marcus@g10code.de>
 
+	* src/gpg4win.nsi: Fix last change.
+	* src/gpg4win-src.nsi: Dito.
+
 	* src/gpg4win.nsi (ABOUT_STR): Split up the string into several.
 	(T_AboutGpg4win): Shorten it accordingly.
 	(T_AboutGpg4winVersion, T_AboutGpg4winFileVersion)
