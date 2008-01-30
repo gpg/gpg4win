@@ -104,6 +104,11 @@ ${MementoSection} "GnuPG2" SEC_gnupg2
   no_config_trustlist_txt:
 
   no_config_gpg_conf_files:
+
+# Switch outpath back to standard so that the finish page can show the
+# README file.  Fixme:  We should have a final section to do this.
+  SetOutPath "$INSTDIR"
+
 !endif
 ${MementoSectionEnd}
 

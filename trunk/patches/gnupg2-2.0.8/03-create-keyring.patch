@@ -1,15 +1,18 @@
 #! /bin/sh
-patch -p1 -f $* < $0
+patch -p0 -f $* < $0
 exit $?
 
-2008-01-29  Werner Koch  <wk@g10code.com>
+2008-01-30  Werner Koch  <wk@g10code.com>
 
+	* tdbio.c (tdbio_set_dbname): Also test for forward slash.
 	* keydb.c (maybe_create_keyring): Take care of a missing slash.
 	(maybe_create_keyring) [W32]: Also test for forward slash.
 
 
---- gnug/g10/keydb.c	(revision 4676)
-+++ gnupg/g10/keydb.c	(working copy)
+Index: g10/keydb.c
+===================================================================
+--- g10/keydb.c	(revision 4666)
++++ g10/keydb.c	(working copy)
 @@ -1,5 +1,6 @@
  /* keydb.c - key database dispatcher
 - * Copyright (C) 2001, 2002, 2003, 2004, 2005 Free Software Foundation, Inc.
@@ -45,7 +48,12 @@ exit $?
    *last_slash_in_filename = 0;
    if (access(filename, F_OK))
      { 
-@@ -115,9 +129,8 @@
+@@ -111,13 +125,12 @@
+       if (access (filename, F_OK))
+         {
+           rc = gpg_error_from_syserror ();
+-          *last_slash_in_filename = DIRSEP_C;
++          *last_slash_in_filename = save_slash;
            goto leave;
          }
      }
@@ -56,5 +64,35 @@ exit $?
    /* To avoid races with other instances of gpg trying to create or
       update the keyring (it is removed during an update for a short
       time), we do the next stuff in a locked state. */
-
-
+Index: g10/tdbio.c
+===================================================================
+--- g10/tdbio.c	(revision 4666)
++++ g10/tdbio.c	(working copy)
+@@ -505,14 +505,25 @@
+ 	    int rc;
+ 	    char *p = strrchr( fname, DIRSEP_C );
+ 	    mode_t oldmask;
++            int save_slash;
+ 
+-	    assert(p);
++#if HAVE_W32_SYSTEM
++            {
++              /* Windows may either have a slash or a backslash.  Take
++                 care of it.  */
++              char *pp = strrchr (fname, '/');
++              if (!p || pp > p)
++                p = pp;
++            }
++#endif /*HAVE_W32_SYSTEM*/
++	    assert (p);
++            save_slash = *p;
+ 	    *p = 0;
+ 	    if( access( fname, F_OK ) ) {
+ 		try_make_homedir( fname );
+ 		log_fatal( _("%s: directory does not exist!\n"), fname );
+ 	    }
+-	    *p = DIRSEP_C;
++	    *p = save_slash;
+ 
+ 	    xfree(db_name);
+ 	    db_name = fname;

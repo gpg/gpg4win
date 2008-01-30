@@ -37,6 +37,8 @@
 !define INSTALL "@INSTALL@"
 !define WGET @WGET@
 
+!define DOSLF "\r\n"
+
 # If debugging is desired.
 @GPG4WIN_DEBUG@
 
