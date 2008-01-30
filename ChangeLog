@@ -1,5 +1,16 @@
 2008-01-30  Marcus Brinkmann  <marcus@g10code.de>
 
+	* src/gpg4win.nsi (ABOUT_STR): Split up the string into several.
+	(T_AboutGpg4win): Shorten it accordingly.
+	(T_AboutGpg4winVersion, T_AboutGpg4winFileVersion)
+	(T_AboutGpg4winReleaseDate): New translation strings.
+	* src/gpg4win-src.nsi: Split up the string into several.
+	(T_AboutGpg4winSrc): Shorten it accordingly.
+	(T_AboutGpg4winSrcVersion, T_AboutGpg4winSrcFileVersion)
+	(T_AboutGpg4winSrcReleaseDate): New translation strings.
+	* src/installer.nsi: Quote welcome title and about string.
+	* po/de.po: Update.
+
 	* packages/packages.current: Update gpgme.
 
 2008-01-30  Werner Koch  <wk@g10code.com>

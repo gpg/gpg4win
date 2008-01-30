@@ -124,8 +124,8 @@ Var OtherGnuPGDetected
 
 # The list of wizard pages.
 
-!define MUI_WELCOMEPAGE_TITLE ${WELCOME_TITLE_STR}
-!define MUI_WELCOMEPAGE_TEXT ${ABOUT_STR}
+!define MUI_WELCOMEPAGE_TITLE "${WELCOME_TITLE_STR}"
+!define MUI_WELCOMEPAGE_TEXT "${ABOUT_STR}"
 
 !insertmacro MUI_PAGE_WELCOME
 
