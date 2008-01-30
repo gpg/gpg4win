@@ -89,7 +89,12 @@
 !define INSTALL_DIR "GnuPG"
 
 !define WELCOME_TITLE_STR "$(T_WelcomeTitleGpg4win)"
-!define ABOUT_STR "$(T_AboutGpg4win)"
+
+!define ABOUT_STR "$(T_AboutGpg4win) \
+	\r\n\r\n$_CLICK \r\n\r\n\r\n\r\n\r\n \
+        $(T_AboutGpg4winVersion) \r\n \
+       file version ${PROD_VERSION} \r\n\r\n \
+       release date ${_BUILD_ISODATE}"
 
 # The copyright license of the package.  Define only one of these.
 !define LICENSE_GPL
@@ -134,16 +139,20 @@ LangString T_WelcomeTitleGpg4win ${LANG_ENGLISH} \
   "Welcome to the installation of Gpg4win"
 
 # The About string as displayed on the first page.
-# TRANSLATORS: As an exception, this string contains \r\n characters.
 LangString T_AboutGpg4win ${LANG_ENGLISH} \
  "GnuPG is GNU's tool for secure communication and data storage. \
   It can be used to encrypt data and to create digital signatures. \
   It includes an advanced key management facility and is compliant \
-  with the proposed OpenPGP Internet standard as described in RFC2440. \
-  ${DOSLF}${DOSLF}$_CLICK \
-  ${DOSLF}${DOSLF}${DOSLF}${DOSLF}${DOSLF}This is Gpg4win version ${VERSION}${DOSLF} \
-  file version ${PROD_VERSION}${DOSLF}${DOSLF} \
-  release date ${_BUILD_ISODATE}"
+  with the proposed OpenPGP Internet standard as described in RFC2440."
+
+LangString T_AboutGpg4winVersion ${LANG_ENGLISH} \
+ "This is Gpg4win version ${VERSION}"
+
+LangString T_AboutGpg4winFileVersion ${LANG_ENGLISH} \
+ "file version ${PROD_VERSION}"
+
+LangString T_AboutGpg4winReleaseDate ${LANG_ENGLISH} \
+ "release date ${_BUILD_ISODATE}"
 
 # At long last, include all the translations.
 !include "../po/catalogs.nsi"

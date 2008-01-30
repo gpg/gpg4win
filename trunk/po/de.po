@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gpg4win 1.1.1-svn417\n"
 "Report-Msgid-Bugs-To: gpg4win-devel@wald.intevation.org\n"
-"POT-Creation-Date: 2008-01-30 14:26+0100\n"
-"PO-Revision-Date: 2008-01-30 14:28+0100\n"
+"POT-Creation-Date: 2008-01-30 17:03+0100\n"
+"PO-Revision-Date: 2008-01-30 17:07+0100\n"
 "Last-Translator: Marcus Brinkmann <mb@g10code.com>\n"
 "Language-Team: German <translation-team-de@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -20,49 +20,67 @@ msgctxt "T_AlreadyRunning"
 msgid "An instance of this installer is already running."
 msgstr "Ein Exemplar dieses Installers läuft bereits."
 
-#: src/gpg4win.nsi:133
+#: src/gpg4win.nsi:138
 msgctxt "T_WelcomeTitleGpg4win"
 msgid "Welcome to the installation of Gpg4win"
 msgstr "Willkommen bei der Installation der Gpg4win Quellen"
 
-#: src/gpg4win.nsi:138
+#: src/gpg4win.nsi:142
 msgctxt "T_AboutGpg4win"
 msgid ""
 "GnuPG is GNU's tool for secure communication and data storage. It can be "
 "used to encrypt data and to create digital signatures. It includes an "
 "advanced key management facility and is compliant with the proposed OpenPGP "
-"Internet standard as described in RFC2440. ${DOSLF}${DOSLF}$_CLICK ${DOSLF}"
-"${DOSLF}${DOSLF}${DOSLF}${DOSLF}This is Gpg4win version ${VERSION}${DOSLF} "
-"file version ${PROD_VERSION}${DOSLF}${DOSLF} release date ${_BUILD_ISODATE}"
+"Internet standard as described in RFC2440."
 msgstr ""
-"GnuPG ist das Werkzeug aus dem GNU Projekt zur sicheren Kommunikation\n"
-"sowie zum sicheren Speichern von Daten. ${DOSLF}${DOSLF}$_CLICK ${DOSLF}\n"
-"${DOSLF}${DOSLF}${DOSLF}${DOSLF}Dies ist Gpg4win Version ${VERSION}"
-"${DOSLF} \n"
-"Dateiversion ${PROD_VERSION}${DOSLF}\n"
-"Releasedatum ${_BUILD_ISODATE}"
+"GnuPG ist das Werkzeug aus dem GNU Projekt zur sicheren Kommunikation sowie "
+"zum sicheren Speichern von Daten."
 
-#: src/gpg4win-src.nsi:71
+#: src/gpg4win.nsi:148
+msgctxt "T_AboutGpg4winVersion"
+msgid "This is Gpg4win version ${VERSION}"
+msgstr "Dies ist Gpg4win Version ${VERSION}"
+
+#: src/gpg4win.nsi:151
+msgctxt "T_AboutGpg4winFileVersion"
+msgid "file version ${PROD_VERSION}"
+msgstr "Dateiversion ${PROD_VERSION}"
+
+#: src/gpg4win.nsi:154
+msgctxt "T_AboutGpg4winReleaseDate"
+msgid "release date ${_BUILD_ISODATE}"
+msgstr "Releasedatum ${_BUILD_ISODATE}"
+
+#: src/gpg4win-src.nsi:76
 msgctxt "T_WelcomeTitleGpg4winSrc"
 msgid "Welcome to the installation of the Gpg4win sources"
 msgstr "Willkommen bei der Installation der Gpg4win Quellen"
 
-#: src/gpg4win-src.nsi:75
+#: src/gpg4win-src.nsi:80
 msgctxt "T_AboutGpg4winSrc"
 msgid ""
 "GnuPG is GNU's tool for secure communication and data storage. It can be "
 "used to encrypt data and to create digital signatures. It includes an "
 "advanced key management facility and is compliant with the proposed OpenPGP "
-"Internet standard as described in RFC2440. ${DOSLF}${DOSLF}$_CLICK ${DOSLF}"
-"${DOSLF}${DOSLF}${DOSLF}${DOSLF}This is Gpg4win version ${VERSION}${DOSLF} "
-"file version ${PROD_VERSION}${DOSLF}${DOSLF} release date ${_BUILD_ISODATE}"
+"Internet standard as described in RFC2440."
 msgstr ""
-"GnuPG ist das Werkzeug aus dem GNU Projekt zur sicheren Kommunikation\n"
-"sowie zum sicheren Speichern von Daten. ${DOSLF}${DOSLF}$_CLICK ${DOSLF}\n"
-"${DOSLF}${DOSLF}${DOSLF}${DOSLF}Dies ist Gpg4win Version ${VERSION}"
-"${DOSLF} \n"
-"Dateiversion ${PROD_VERSION}${DOSLF}\n"
-"Releasedatum ${_BUILD_ISODATE}"
+"GnuPG ist das Werkzeug aus dem GNU Projekt zur sicheren Kommunikation sowie "
+"zum sicheren Speichern von Daten."
+
+#: src/gpg4win-src.nsi:86
+msgctxt "T_AboutGpg4winSrcVersion"
+msgid "This is Gpg4win version ${VERSION}"
+msgstr "Dies ist Gpg4win Version ${VERSION}"
+
+#: src/gpg4win-src.nsi:89
+msgctxt "T_AboutGpg4winSrcFileVersion"
+msgid "file version ${PROD_VERSION}"
+msgstr "Dateiversion ${PROD_VERSION}"
+
+#: src/gpg4win-src.nsi:92
+msgctxt "T_AboutGpg4winSrcReleaseDate"
+msgid "release date ${_BUILD_ISODATE}"
+msgstr "Releasedatum ${_BUILD_ISODATE}"
 
 #: src/installer.nsi:206
 msgctxt "T_LangCode"
@@ -526,31 +544,3 @@ msgstr ""
 "Das Schlüsselverwaltungsprogramm Windows Privacy Tray aufrufen.  Dies ist "
 "ein vielseitiges Programm zur Schlüsselverwaltung und Verschlüsselung.  Es "
 "installiert sich in die Startleiste."
-
-#~ msgctxt "T_AboutGpg4winSrc"
-#~ msgid ""
-#~ "GnuPG is GNU's tool for secure communication and data storage. It can be "
-#~ "used to encrypt data and to create digital signatures. It includes an "
-#~ "advanced key management facility and is compliant with the proposed "
-#~ "OpenPGP Internet standard as described in RFC2440. \r\n"
-#~ "\r\n"
-#~ "$_CLICK \r\n"
-#~ "\r\n"
-#~ "\r\n"
-#~ "\r\n"
-#~ "\r\n"
-#~ "This is Gpg4win version ${VERSION}\r\n"
-#~ "file version ${PROD_VERSION}\r\n"
-#~ "release date ${_BUILD_ISODATE}"
-#~ msgstr ""
-#~ "GnuPG ist das Werkzeug aus dem GNU Projekt zur sicheren Kommunikation\n"
-#~ "sowie zum sicheren Speichern von Daten. \r\n"
-#~ "\r\n"
-#~ "$_CLICK \r\n"
-#~ "\r\n"
-#~ "\r\n"
-#~ "\r\n"
-#~ "\r\n"
-#~ "Dies ist Gpg4win Version ${VERSION}\r\n"
-#~ "Dateiversion ${PROD_VERSION}\r\n"
-#~ "Releasedatum ${_BUILD_ISODATE}"
