@@ -149,6 +149,7 @@
 !ifdef HAVE_PKG_MAN_ADVANCED_DE
 !include "inst-man_advanced_de.nsi"
 !endif
+!include "inst-final.nsi"
 
 # We have to invoke the uninstallers in reverse order!
 

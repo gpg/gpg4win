@@ -66,7 +66,8 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi config.site \
         inst-oxygen-icons.nsi  	   uninst-oxygen-icons.nsi    \
         inst-kdelibs.nsi  	   uninst-kdelibs.nsi         \
         inst-kleopatra.nsi  	   uninst-kleopatra.nsi       \
-	inst-bzip2.nsi             uninst-bzip2.nsi
+	inst-bzip2.nsi             uninst-bzip2.nsi           \
+        inst-final.nsi
 
 # Need to clean the dll because we bypassed automake.
 CLEANFILES = g4wihelp.dll versioninfo.txt README.en.txt README.de.txt \
