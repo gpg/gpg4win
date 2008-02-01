@@ -1,0 +1,22 @@
+#! /bin/sh
+patch -p0 -f $* < $0
+exit $?
+
+2008-02-01  Marcus Brinkmann  <marcus@g10code.de>
+
+	* gpgconf-comp.c (gc_component_list_options): Fix memcpy.
+	Reported by Marc Mutz.
+
+Index: tools/gpgconf-comp.c
+===================================================================
+--- tools/gpgconf-comp.c	(revision 4686)
++++ tools/gpgconf-comp.c	(working copy)
+@@ -1568,7 +1568,7 @@
+ 	      gc_option_t opt_copy;
+ 
+ 	      /* Fix up the group level.  */
+-	      memcpy (&opt_copy, option, sizeof (opt));
++	      memcpy (&opt_copy, option, sizeof (opt_copy));
+ 	      opt_copy.level = level;
+ 	      list_one_option (&opt_copy, out);
+ 	    }

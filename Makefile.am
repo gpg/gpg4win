@@ -62,6 +62,7 @@ EXTRA_DIST = autogen.sh README.SVN \
 	patches/gnupg2-2.0.8/02-qualified.patch \
 	patches/gnupg2-2.0.8/03-create-keyring.patch \
         patches/gnupg2-2.0.8/04-import-export-spawn.patch \
+        patches/gnupg2-2.0.8/05-gpgconf.patch \
 	patches/gpgol-0.9.91/01-gpgme.patch
 
 copy-news:
