@@ -1,7 +1,7 @@
 Wichtige Informationen zum Einsatz von Gpg4win 1.9-BETA
 =======================================================
 
-Stand: Gpg4win-1.9.0-svn684 (20080118)
+Stand: Gpg4win-1.9.0-svn701 (20080131)
 
 Hier finden sich wichtige Informationen die bei der
 Entscheidung helfen sollen, ob Gpg4win 1.9 schon für
@@ -13,6 +13,29 @@ Ausserdem wird ein Ausblick gegeben, was mit
 Gpg4win 2.0 an neuer Funktionalität zu erwarten ist.
 Die 1.9er Versionen sind der Beta-Test-Zyklus. Ist er
 abgeschlossen wird Version 2.0 freigegeben.
+
+Verbesserungen seit Gpg4win-1.9.0-svn684
+----------------------------------------
+
+- Die Notwendigkeit, Kleopatra gelgentlich mehrfach
+  neu starten zu müssen ist entfallen.
+  Die Start-Zeit wurde erheblich verkürzt, so dass
+  GpgEX und GpgOL nun selbst ein Kleoaptra starten
+  falls es gerade nicht läuft.
+
+- Signaturprüfungen von (neu eintreffenden) S/MIME E-Mails
+  sind jetzt funktional.
+
+Behoben:
+
+* Kleoaptra: Verification of S/MIME E-Mails fails
+  http://bugs.kde.org/show_bug.cgi?id=154427
+
+* Don't open DOS Boxes when importing P12 file
+  https://bugs.g10code.com/gnupg/issue875
+
+* Kleopatra: Don't open DOS-Box when importing P12 file
+  http://bugs.kde.org/show_bug.cgi?id=155395
 
 Verbesserungen seit Gpg4win-1.9.0-svn675
 ----------------------------------------
@@ -152,44 +175,29 @@ Aktualisiert:
     die "Gesendeten Objekte" kaputt sind, man also
     keine heile Kopie von versandten E-Mails hat.
 
-  * Achtung: Es kann gelegentlich vorkommen, dass Kleopatra beendet
-    wird (kein Schlüsselsymbol mehr in Task-Leiste oder Symbol
-    verschwindet in dem Moment wo man mit der Maus darüber fährt).
-    In diesem Fall kann es zu Fehlern bei GpgOL kommen.
-    Kleopatra sollte über das Startmenü neu gestartet werden.
-
   * Grundsätzlich hängt die Menge der funktionierenden Operationen
     wesentlich vom gegenwärtigen Entwicklungsstand von Kleopatra ab.
 
-  * Zustand der Operationen (einfache E-Mails ohne Anhänge):
-    - Signatur-Prüfung inline-OpenPGP: Grundsätzlich funktional,
-      muss aber noch verbessert werden
-    - Signatur-Prüfung OpenPGP/MIME: Grundsätzlich funktional,
-      muss aber noch verbessert werden
+  * Zustand der Operationen (getestet: einfache E-Mails ohne Anhänge):
+    - Signatur-Prüfung inline-OpenPGP: Grundsätzlich funktional
+    - Signatur-Prüfung OpenPGP/MIME: Grundsätzlich funktional
     - Signatur-Prüfung S/MIME Opaque: funktioniert nicht (nicht angebunden)
-    - Signatur-Prüfung S/MIME: Funktion defekt
+    - Signatur-Prüfung S/MIME: Grundsätzlich funktional
     - Entschlüsselung inline-OpenPGP: Entschlüsselung erfolgreich,
       aber kann scheinbar nur ein einziges mal ausgeführt werden.
-    - Entschlüsselung OpenPGP/MIME: Grundsätzlich funktional, muss aber
-      noch verbessert werden
-    - Entschlüsselung S/MIME Opaque: Grundsätzlich
-      funktional, muss aber noch verbessert werden
-    - Entschlüsselung S/MIME: Grundsätzlich
-      funktional, muss aber noch verbessert werden
+    - Entschlüsselung OpenPGP/MIME: Grundsätzlich funktional
+    - Entschlüsselung S/MIME Opaque: Grundsätzlich funktional
+    - Entschlüsselung S/MIME: Grundsätzlich funktional
     - Signatur-Prüfung und Entschlüsselung inline-OpenPGP: nicht geprüft
       (Test-E-Mails nicht auf einfache Weise herstellbar)
-    - Signatur-Prüfung und Entschlüsselung OpenPGP/MIME: Grundsätzlich
-      funktional, muss aber noch verbessert werden
+    - Signatur-Prüfung und Entschlüsselung OpenPGP/MIME: Grundsätzlich funktional
     - Signatur-Prüfung und Entschlüsselung S/MIME Opaque: Funktion defekt
-    - Signatur-Prüfung und Entschlüsselung S/MIME: Grundsätzlich
-      funktional, muss aber noch verbessert werden
+    - Signatur-Prüfung und Entschlüsselung S/MIME: Grundsätzlich funktional
 
-    - Signatur OpenPGP/MIME: Grundsätzlich funktional, muss aber noch
-      verbessert werden
+    - Signatur OpenPGP/MIME: Grundsätzlich funktional
     - Signatur S/MIME: Funktion defekt: Der E-Mail selbst fehlt die Signatur,
       die Kopie in gesendete Objekte ist kaputt. Es wird ein GPGME Fehler gemeldet.
-    - Verschlüsselung OpenPGP/MIME: Grundsätzlich funktional, muss aber noch
-      verbessert werden.
+    - Verschlüsselung OpenPGP/MIME: Grundsätzlich funktional
     - Verschlüsselung S/MIME: Funktion defekt: Kleopatra kann Verschlüsselung
       nicht erfolgreich durchführen (dirmngr Fehler wird gemeldet).
     - Signatur und Verschlüsselung OpenPGP/MIME: Funktion defekt: Kleopatra hängt.
@@ -199,24 +207,26 @@ Neu:
 
 - GpgEX: Das neue Plugin für Microsoft Explorer.
 
-  * Entschlüsseln/Verifizieren: Dateien auf Endung ".asc" werden
+  Nicht funktionale OpenPGP Methoden müssen z.B. über GPA ausgeführt werden.
+  Für S/MIME gibt es keine Alternative.
+
+  * Verifizieren OpenPGP: Dateien auf Endung ".asc" werden
     derzeit nicht automatisch als Detached Signature erkannt.
     Man muss die zugehörige Datei im Verifikationsdialog dann
     händisch angeben.
-    Der Dialog ist noch nicht die endgültige Fassung sondern
-    eine temporärer Ersatz.
+  * Verifizieren S/MIME: nicht getestet.
 
-  * Verschlüsseln: OpenPGP funktional, aber muss noch verbessert werden.
+  * Verschlüsseln OpenPGP: Grundsätzlich funktional.
     Es bleiben temporäre Dateien im jeweiligen Verzeichnis zurück.
-    S/MIME noch nicht funktional (DirMngr nicht verfügbar).
+  * Verschlüsseln SMIME: nicht funktional (Absturz Kleopatra)
 
-  * Signieren: Nicht funktional, da nach Auswahl des S/MIME Schlüssels
-    und der Datei leerer Reiter erscheint, der nur "Cancel" erlaubt.
+  * Entschlüsseln OpenPGP: Grundsätzlich funktional.
+    Es bleiben temporäre Dateien im jeweiligen Verzeichnis zurück.
+  * Entschlüsseln S/MIME: nicht getestet.
 
-  * Verschlüsseln/Signieren: Kleopatra-Aufrufe insgesamt noch nicht
-    funktional.
-    Derzeit müssen diese Operationen z.B. über GPA ausgeführt werden.
-    Dort wird lediglich OpenPGP, aber kein S/MIME unterstützt.
+  * Signieren OpenPGP: Nicht funktional
+  * Signieren S/MIME: Nicht funktional
+
 
 - Kleopatra: Der neue Zertifikatsmanager
 
@@ -230,10 +240,8 @@ Neu:
     deren Funktionalität von Kleopatra vollständig abgedeckt wird.
 
   * Kleopatra läuft in der Regel permanent als Dienst (siehe
-    Icon im System-Tray).
-    Derzeit wird für leichteres Debugging bei direktem Start von
-    Kleopatra eine Konsole (DOS-Box) geöffnet während Kleopatra
-    in Betrieb ist.
+    Icon im System-Tray) sobald dessen Dienste einmal im Verlauf
+    der Sitzung abgefragt wurden.
 
   * Kleopatra ist noch in Entwicklung: Die bei Gpg4win enthaltene
     Version ist nicht in deutsch und bietet bisher nur die Liste der
@@ -255,13 +263,7 @@ Berichtet zu svn684:
 * During update installation: claws should be checked by default if installed last time
   http://wald.intevation.org/tracker/index.php?func=detail&aid=583&group_id=11&atid=126
 
-* Don't open DOS Boxes when importing P12 file
-  https://bugs.g10code.com/gnupg/issue875
-
 Berichtet zu svn672:
-
-* Kleopatra: Don't open DOS-Box when importing P12 file
-  http://bugs.kde.org/show_bug.cgi?id=155395
 
 * Kleopatra: Creating S/MIME Signature raises GPGME error
   http://bugs.kde.org/show_bug.cgi?id=155404
@@ -273,9 +275,6 @@ Berichtet zu svn651:
 
 * Kleopatra: Tray menu: toggle Open and Close
   http://bugs.kde.org/show_bug.cgi?id=154424
-
-* Kleoaptra: Verification of S/MIME E-Mails fails
-  http://bugs.kde.org/show_bug.cgi?id=154427
 
 * Kleoapatra: Message and interaction dialogs should
   always raise in foreground (MS Windows)
