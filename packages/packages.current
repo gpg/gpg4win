@@ -227,8 +227,9 @@ chk  e5c80eee0f1994ca529a82584ac5f07b9b04ae18
 
 server ftp://ftp.g10code.com/g10code/scratch
 
-file gpgex-0.0.0-svn46.tar.bz2
-chk  dc7e31ff862b71c28467574324b3a9d9c60ba339
+file gpgex-0.0.0-svn48.tar.bz2
+chk  cc0beb6acb1d8107290a5e179fe16675ec13a0f2
+
 #
 # Pth emulation
 #
@@ -279,7 +280,7 @@ chk  85919f061e4fa432fd3659de89a301878c6c7d25
 file dirmngr-1.0.2-svn275.tar.bz2
 chk  7a0f5eb38041ce152dd8111fcf43eb45ba3482f4
 
-file gpgme/gpgme-1.1.7-svn1301.tar.bz2
+file gpgme-1.1.7-svn1301.tar.bz2
 chk  4c652562c984ebaa8009dca122b7b4d7802faeeb
 
 #
@@ -363,10 +364,10 @@ chk  b08756b5de11e0753987b906d5db3e7379b2919d
 
 server ftp://ftp.kdab.net/pub/gpg4win
 
-name kleopatra-20080127-bin.zip
-file kleo-uiserver-only-20080127-bin.zip
-chk  6189e00c3f05fcd1a4d8419574c10f260694dc13
+name kleopatra-20080204-bin.zip
+file kleo-uiserver-only-20080204-bin.zip
+chk  ea7cb22f610d209a740dc34edafc4e2f46df400e
 
-name kleopatra-20080127-src.zip
-file kleo-uiserver-only-20080127-src.zip
+name kleopatra-20080204-src.zip
+file kleo-uiserver-only-20080204-src.zip
 chk  6d7139c19bad5734464d1ec23108395ba68c3e88
