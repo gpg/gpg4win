@@ -1,3 +1,7 @@
+2008-02-06  Werner Koch  <wk@g10code.com>
+
+	* packages/packages.current: Update GpgOL.
+
 2008-02-04  Marcus Brinkmann  <marcus@g10code.de>
 
 	* packages/packages.current: Update kleopatra and gpgex.
@@ -6,6 +10,12 @@
 
 	* patches/gnupg2-2.0.8/05-gpgconf.patch: New file.
 	* Makefile.am (EXTRA_DIST): Add patch.
+
+2008-01-30  Werner Koch  <wk@g10code.com>
+
+	* src/inst-final.nsi: New.
+	* src/Makefile.am (EXTRA_DIST): Add it.
+	* src/inst-gnupg2.nsi: Remove last fix due to the final section.
 
 2008-01-30  Marcus Brinkmann  <marcus@g10code.de>
 
