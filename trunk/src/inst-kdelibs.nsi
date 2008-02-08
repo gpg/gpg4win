@@ -33,7 +33,11 @@ Section "-kdelibs" SEC_kdelibs
   File "${gpg4win_pkg_kdelibs_src}"
 !else
 
+  # Relocate this when dbus-daemon is relocated.
+  SetOutPath "$INSTDIR\bin"
   File ${prefix}/bin/kcmdwrapper.exe
+  SetOutPath "$INSTDIR"
+
   File ${prefix}/bin/libkdecore.dll
   File ${prefix}/bin/libkdeui.dll
 #  File ${prefix}/bin/libkdefx.dll

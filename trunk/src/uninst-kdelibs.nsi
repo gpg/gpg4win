@@ -31,7 +31,9 @@ Section "-un.kdelibs"
   Call un.SourceDelete
 !else
 
-  Delete "$INSTDIR\kcmdwrapper.exe"
+  # FIXME: See inst-kleopatra.nsi
+  Delete "$INSTDIR\bin\kcmdwrapper.exe"
+  RMDir "$INSTDIR\bin"
   Delete "$INSTDIR\libkdecore.dll"
   Delete "$INSTDIR\libkdeui.dll"
   Delete "$INSTDIR\libkdefx.dll"
