@@ -262,8 +262,8 @@ chk  baeb7962f9d3d4628ada78036d1f5d4480aaa2d9
 file libgpg-error/libgpg-error-1.6.tar.bz2
 chk  2f387d0c34dd55eaf3b5f3c2570e9033eb540bc3
 
-file libksba/libksba-1.0.2.tar.bz2
-chk  4d2c4a99c313b799590bf3fc223179c454e268b5
+file libksba/libksba-1.0.3.tar.bz2
+chk  7a4b3a8340087ed360269b567881ebfb9b67441b
 
 file libgcrypt/libgcrypt-1.4.0.tar.bz2
 chk  cd1b52e8ecfa361737c6f130ed2f1d850e312c16
