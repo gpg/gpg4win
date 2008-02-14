@@ -1,3 +1,8 @@
+2008-02-14  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
+
+	* manual/durchblicker.tex: Added some contents about where to
+	to find config files of GnuPG.
+
 2008-02-01  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
 
 	* README-BETA-de.txt: Updated based on testing svn701. Some
