@@ -1,7 +1,7 @@
 Wichtige Informationen zum Einsatz von Gpg4win 1.9-BETA
 =======================================================
 
-Stand: Gpg4win-1.9.0-svn701 (20080131)
+Stand: Gpg4win-1.9.0-svn709 (20080214)
 
 Hier finden sich wichtige Informationen die bei der
 Entscheidung helfen sollen, ob Gpg4win 1.9 schon für
@@ -14,107 +14,30 @@ Gpg4win 2.0 an neuer Funktionalität zu erwarten ist.
 Die 1.9er Versionen sind der Beta-Test-Zyklus. Ist er
 abgeschlossen wird Version 2.0 freigegeben.
 
-Verbesserungen seit Gpg4win-1.9.0-svn684
-----------------------------------------
 
-- Die Notwendigkeit, Kleopatra gelgentlich mehrfach
-  neu starten zu müssen ist entfallen.
-  Die Start-Zeit wurde erheblich verkürzt, so dass
-  GpgEX und GpgOL nun selbst ein Kleoaptra starten
-  falls es gerade nicht läuft.
+Wesentliche Probleme der vorliegenden Version
+---------------------------------------------
 
-- Signaturprüfungen von (neu eintreffenden) S/MIME E-Mails
-  sind jetzt funktional.
+- Entschlüsselung InlinePGP: Die E-Mails werden
+  einmnalig entschlüsselt, aber dann zerstört.
+  Also unbedingt solche E-Mails vorher sichern.
 
-Behoben:
+- Für die Verwendung von S/MIME sind die CRL-Prüfungen
+  auszuschalten ("GPG for S/MIME: never consult a CRL"
+  und "Gpg Agent: allow clients to mark keys as trusted" zu aktivieren.
+  (beides im GnuPG Konfiguration-Dialog von Kleopatra)
+  Danach neu einloggen um die Änderung zu aktivieren.
 
-* Kleoaptra: Verification of S/MIME E-Mails fails
-  http://bugs.kde.org/show_bug.cgi?id=154427
+- S/MIME Opak: Signierte und(!) verschlüsselte
+  E-Mails können nicht verarbeitet werden.
 
-* Don't open DOS Boxes when importing P12 file
-  https://bugs.g10code.com/gnupg/issue875
-
-* Kleopatra: Don't open DOS-Box when importing P12 file
-  http://bugs.kde.org/show_bug.cgi?id=155395
-
-Verbesserungen seit Gpg4win-1.9.0-svn675
-----------------------------------------
-
-Behoben:
-
-* DirMngr system service can not be started
-  http://wald.intevation.org/tracker/index.php?func=detail&aid=580&group_id=11&atid=126
-
-Verbesserungen seit Gpg4win-1.9.0-svn672
-----------------------------------------
-
-Behoben:
-
-* Extend Menu of Tray-Kleopatra
-  http://bugs.kde.org/show_bug.cgi?id=153566
-
-Verbesserungen seit Gpg4win-1.9.0-svn651
-----------------------------------------
-
-- inline-PGP Entschlüsselung klappt besser, aber
-  noch nicht vollständig.
-
-- Signierung S/MIME E-Mail klappt besser, aber
-  sehr hackelig.
-
-- Graphische Oberfläche von Kleopatra erweitert.
-
-- Import von P12-Dateien funktioniert nun über Kleopatra,
-  aber etwas hackelig.
-
-Behoben:
-
-* Menu entry for Kleopatra lacks tooltip
-  http://wald.intevation.org/tracker/index.php?func=detail&aid=563&group_id=11&atid=126
-
-* Kleopatra: Tray Icon Menu: Shutdown crashes Kleopatra
-  http://bugs.kde.org/show_bug.cgi?id=154423
-
-Verbesserungen seit Gpg4win-1.9.0-svn639
-----------------------------------------
-
-Behoben:
-
-* GpgEX: Verschlüsselung per OpenPGP nun funktional.
-
-* GpgOL: OpenPGP/MIME Signatur-Erstellung nun funktional
-  War unter anderem hier berichtet:
-  GpgOL: Can not create OpenPGP Signature.
-  https://bugs.g10code.com/gnupg/issue863
-
-Verbesserungen seit Gpg4win-1.9.0-svn615
-----------------------------------------
-
-Behoben:
-
-* GpgOL: Verschlüsselung mit OpenPGP/MIME nun funktional.
-
-* In windows start menu: have "Documentation" submenu for Gpg4win
-  http://wald.intevation.org/tracker/index.php?func=detail&aid=558&group_id=11&atid=129
-
-* GpgOL: same title for different toolbar items
-  https://bugs.g10code.com/gnupg/issue862
+- An sich selbst verschlüsseln: funktioniert nicht
+  einwandfrei. Ggf. sollte man eine reguläre Kopie
+  an sich selbst senden (über CC).
 
 
-Migration:
-----------
-
-Wenn Sie eine Version Gpg4win 1.X installiert haben,
-so deinstallieren Sie zuerst die alte Version bevor
-Sie die neue Version intallieren.
-
-Ansonsten kann es zu Problemen kommen, dass GpgEE
-(wird bei 1.9 ersetzt durch GpgEX) übrig bleibt
-und nicht mehr entfernt werden kann.
-
-An einer Absicherung gegen versehentliches Installieren
-ist in Arbeit:
-http://wald.intevation.org/tracker/index.php?func=detail&aid=547&group_id=11&atid=126
+Migration
+---------
 
 Ist eine alte Version der 1.9er vorher installiert
 gewesen, so muss unbedingt ein Neustart des Systems
@@ -123,9 +46,6 @@ empfohlen hat.
 Ansonsten wird es zwangsläufig zu Fehlfunktionen
 bei Verschlüsselungsoperationen kommen.
 
-Insbesondere wenn eine 1.9er Version vor svn639 installiert
-war, sollte diese zunächst deinstalliert werden, da sonst
-das Gpg4win Menu zuviele Einträge zur Dokumentation enthält.
 
 Komponenten von Gpg4win 1.9 und ihr Status
 ------------------------------------------
@@ -166,25 +86,12 @@ Aktualisiert:
       Kleopatra verwendet. Kleopatra bietet einheitliche
       Dialoge für Krypto-Operationen.
 
-  * Achtung: Derzeit kann der Altbestand an signierten und
-    verschlüsselten E-Mails nicht verarbeitet werden.
-    Lediglich neue E-Mails die nach Installation von GpgOL
-    eintreffen sind verarbeitbar.
-
-  * Achtung: In verschiedenen Fällen passiert es, dass
-    die "Gesendeten Objekte" kaputt sind, man also
-    keine heile Kopie von versandten E-Mails hat.
-
-  * Grundsätzlich hängt die Menge der funktionierenden Operationen
-    wesentlich vom gegenwärtigen Entwicklungsstand von Kleopatra ab.
-
   * Zustand der Operationen (getestet: einfache E-Mails ohne Anhänge):
     - Signatur-Prüfung inline-OpenPGP: Grundsätzlich funktional
     - Signatur-Prüfung OpenPGP/MIME: Grundsätzlich funktional
-    - Signatur-Prüfung S/MIME Opaque: funktioniert nicht (nicht angebunden)
+    - Signatur-Prüfung S/MIME Opaque: Grundsätzlich funktional
     - Signatur-Prüfung S/MIME: Grundsätzlich funktional
-    - Entschlüsselung inline-OpenPGP: Entschlüsselung erfolgreich,
-      aber kann scheinbar nur ein einziges mal ausgeführt werden.
+    - Entschlüsselung inline-OpenPGP: Grundsätzlich funktional
     - Entschlüsselung OpenPGP/MIME: Grundsätzlich funktional
     - Entschlüsselung S/MIME Opaque: Grundsätzlich funktional
     - Entschlüsselung S/MIME: Grundsätzlich funktional
@@ -195,13 +102,11 @@ Aktualisiert:
     - Signatur-Prüfung und Entschlüsselung S/MIME: Grundsätzlich funktional
 
     - Signatur OpenPGP/MIME: Grundsätzlich funktional
-    - Signatur S/MIME: Funktion defekt: Der E-Mail selbst fehlt die Signatur,
-      die Kopie in gesendete Objekte ist kaputt. Es wird ein GPGME Fehler gemeldet.
+    - Signatur S/MIME: Grundsätzlich funktional
     - Verschlüsselung OpenPGP/MIME: Grundsätzlich funktional
-    - Verschlüsselung S/MIME: Funktion defekt: Kleopatra kann Verschlüsselung
-      nicht erfolgreich durchführen (dirmngr Fehler wird gemeldet).
-    - Signatur und Verschlüsselung OpenPGP/MIME: Funktion defekt: Kleopatra hängt.
-    - Signatur und Verschlüsselung S/MIME: Funktion defekt:  Kleopatra hängt.
+    - Verschlüsselung S/MIME: Grundsätzlich funktional
+    - Signatur und Verschlüsselung OpenPGP/MIME: Grundsätzlich funktional
+    - Signatur und Verschlüsselung S/MIME: Grundsätzlich funktional
 
 Neu:
 
@@ -210,22 +115,17 @@ Neu:
   Nicht funktionale OpenPGP Methoden müssen z.B. über GPA ausgeführt werden.
   Für S/MIME gibt es keine Alternative.
 
-  * Verifizieren OpenPGP: Dateien auf Endung ".asc" werden
-    derzeit nicht automatisch als Detached Signature erkannt.
-    Man muss die zugehörige Datei im Verifikationsdialog dann
-    händisch angeben.
-  * Verifizieren S/MIME: nicht getestet.
+  * Verifizieren OpenPGP: Grundsätzlich funktional.
+  * Verifizieren S/MIME: Grundsätzlich funktional.
 
   * Verschlüsseln OpenPGP: Grundsätzlich funktional.
-    Es bleiben temporäre Dateien im jeweiligen Verzeichnis zurück.
-  * Verschlüsseln SMIME: nicht funktional (Absturz Kleopatra)
+  * Verschlüsseln SMIME: Grundsätzlich funktional
 
   * Entschlüsseln OpenPGP: Grundsätzlich funktional.
-    Es bleiben temporäre Dateien im jeweiligen Verzeichnis zurück.
-  * Entschlüsseln S/MIME: nicht getestet.
+  * Entschlüsseln S/MIME: Grundsätzlich funktional
 
-  * Signieren OpenPGP: Nicht funktional
-  * Signieren S/MIME: Nicht funktional
+  * Signieren OpenPGP: Grundsätzlich funktional.
+  * Signieren S/MIME: Grundsätzlich funktional.
 
 
 - Kleopatra: Der neue Zertifikatsmanager
@@ -259,29 +159,6 @@ Berichtet zu svn684:
 
 * Improve GnuPG Config Check GUI
   http://bugs.kde.org/show_bug.cgi?id=156483
-
-* During update installation: claws should be checked by default if installed last time
-  http://wald.intevation.org/tracker/index.php?func=detail&aid=583&group_id=11&atid=126
-
-Berichtet zu svn672:
-
-* Kleopatra: Creating S/MIME Signature raises GPGME error
-  http://bugs.kde.org/show_bug.cgi?id=155404
-
-* Kleopatra: Lacks GPGME backend configuration dialog in current SVN version
-  http://bugs.kde.org/show_bug.cgi?id=155403
-
-Berichtet zu svn651:
-
-* Kleopatra: Tray menu: toggle Open and Close
-  http://bugs.kde.org/show_bug.cgi?id=154424
-
-* Kleoapatra: Message and interaction dialogs should
-  always raise in foreground (MS Windows)
-  http://bugs.kde.org/show_bug.cgi?id=154430
-
-* GpgOL: emails in sent-folder can not be verified
-  https://bugs.g10code.com/gnupg/issue867
 
 Berichtet zu svn615:
 
