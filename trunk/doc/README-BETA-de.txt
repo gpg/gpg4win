@@ -23,7 +23,7 @@ Wesentliche Probleme der vorliegenden Version
   Also unbedingt solche E-Mails vorher sichern.
 
 - Für die Verwendung von S/MIME sind die CRL-Prüfungen
-  auszuschalten ("GPG for S/MIME: never consult a CRL"
+  auszuschalten: "GPG for S/MIME: never consult a CRL"
   und "Gpg Agent: allow clients to mark keys as trusted" zu aktivieren.
   (beides im GnuPG Konfiguration-Dialog von Kleopatra)
   Danach neu einloggen um die Änderung zu aktivieren.
@@ -31,9 +31,14 @@ Wesentliche Probleme der vorliegenden Version
 - S/MIME Opak: Signierte und(!) verschlüsselte
   E-Mails können nicht verarbeitet werden.
 
-- An sich selbst verschlüsseln: funktioniert nicht
-  einwandfrei. Ggf. sollte man eine reguläre Kopie
-  an sich selbst senden (über CC).
+- An sich selbst verschlüsseln: man muss unbedingt
+  für OpenPGP und S/MIME seine Zertifikate konfigurieren
+  für die die Emails auch immer verschlüsselt werden sollen.
+  Dazu jeweils im GnuPG Konfigurations-Dialog von Kleopatra
+  "GPG for S/MIME: encrypt to user ID NAME as well" und
+  "GPG for OpenPGP: encrypt to user ID NAME as well"
+  jeweils den Fingerprint des jeweiligen Zertifikates
+  einfügen.
 
 
 Migration
