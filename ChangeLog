@@ -1,3 +1,7 @@
+2008-02-15  Werner Koch  <wk@g10code.com>
+
+	* packages/packages.current: Update pinentry, gnupg and gpgme.
+
 2008-02-12  Werner Koch  <wk@g10code.com>
 
 	* packages/packages.current: Update libksba.
