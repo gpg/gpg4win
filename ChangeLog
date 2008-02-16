@@ -1,3 +1,8 @@
+2008-02-16  Marcus Brinkmann  <marcus@g10code.de>
+
+	* packages/packages.current: Update dirmngr, gpgme, gpa, gnupg,
+	w32pth, kdelibs, and kleopatra.
+
 2008-02-15  Werner Koch  <wk@g10code.com>
 
 	* packages/packages.current: Update pinentry, gnupg and gpgme.
