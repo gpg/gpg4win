@@ -233,10 +233,14 @@ chk  cc0beb6acb1d8107290a5e179fe16675ec13a0f2
 #
 # Pth emulation
 #
-server ftp://ftp.g10code.com/g10code/w32pth
 
-file w32pth-2.0.1.tar.bz2
-chk  e74a770a58f08ba02f311d16c5debe79c218ee5d
+#server ftp://ftp.g10code.com/g10code/w32pth
+#file w32pth-2.0.1.tar.bz2
+#chk  e74a770a58f08ba02f311d16c5debe79c218ee5d
+
+server ftp://ftp.g10code.com/g10code/scratch
+file w32pth-2.0.2-svn20.tar.bz2
+chk  bdfe75e343a4152e390ff46d9629d8fb578dcd3e  
 
 #
 # Stripped down version of BZIP2
@@ -255,9 +259,9 @@ server ftp://ftp.gnupg.org/gcrypt
 file gnupg/gnupg-1.4.8.tar.bz2
 chk  4b63267358e5c70f05b48e27d6877bad2636cabd
 
-name gnupg2-2.0.9-svn4694.tar.bz2
-file alpha/gnupg/gnupg-2.0.9-svn4694.tar.bz2
-chk  58244bfc723f2aca14f6690a7d9169469e4df269
+#name gnupg2-2.0.9-svn4694.tar.bz2
+#file alpha/gnupg/gnupg-2.0.9-svn4694.tar.bz2
+#chk  58244bfc723f2aca14f6690a7d9169469e4df269
 
 file libgpg-error/libgpg-error-1.6.tar.bz2
 chk  2f387d0c34dd55eaf3b5f3c2570e9033eb540bc3
@@ -277,20 +281,28 @@ chk  6699a1ff94c649e8905199d480c6412cc43bad3d
 # (Snapshots)
 server ftp://ftp.g10code.com/g10code/scratch
 
-file dirmngr-1.0.2-svn275.tar.bz2
-chk  7a0f5eb38041ce152dd8111fcf43eb45ba3482f4
+file dirmngr-1.0.2-svn293.tar.bz2
+chk  1e487d09071b4f4579fe7254e97e4baf543f9ff2
 
-file gpgme-1.1.7-svn1302.tar.bz2
-chk  0bbbf682d1846ec5969f95d6dbb41485d6be899c
+file gpgme-1.1.7-svn1304.tar.bz2
+chk  005dc484aa48766fd9d8acd27d092a6ed84f3a01
+
+name gnupg2-2.0.9-svn4695.tar.bz2
+file gnupg-2.0.9-svn4695.tar.bz2
+chk  6fd61827493b73bf3b95a9e88fa4469c44602ae0  
+
 
 #
 # GPA
 #
-server http://wald.intevation.org/frs/download.php
 
-file 350/gpa-0.7.6.tar.bz2
-chk  bb9182cd4c6bd6677ba9cdcca262dcc1b1d22c3c
+#server http://wald.intevation.org/frs/download.php
+#file 350/gpa-0.7.6.tar.bz2
+#chk  bb9182cd4c6bd6677ba9cdcca262dcc1b1d22c3c
 
+server ftp://ftp.g10code.com/g10code/scratch
+file gpa-0.7.7-svn824.tar.bz2
+chk  dab59667c9381e1e2b082e07bf8f5ae32fdc8467
 
 #
 # Qt
@@ -344,30 +356,27 @@ chk  ced2b1f3b111cf7f6cc28c4f7863a29cda05114b
 
 server ftp://ftp.kdab.net/pub/gpg4win
 
-name kdelibs-20080117-bin.zip
-file kdelibs-for-kleo-20080117-bin.zip
-chk  47c81ddc0c70b51f408049aac854f41b38282a37
+name kdelibs-20080215-bin.zip
+file kdelibs-for-kleo-20080215-bin.zip
+chk  49d1f8b3e2873098e4d27b6c5602996ac0f0d6f3
 
-name kdelibs-20080117-lib.zip
-file kdelibs-for-kleo-20080117-dev.zip
-chk  4050dbb6abf1943dbce4a65b781f36e85399c8a7
+name kdelibs-20080215-lib.zip
+file kdelibs-for-kleo-20080215-dev.zip
+chk  3100ce9fee65b878a4cb695d3cab95cace3a577d
 
-name kdelibs-20080117-src.zip
-file kdelibs-for-kleo-20080117-src.zip
-chk  b08756b5de11e0753987b906d5db3e7379b2919d
-
-
-
+name kdelibs-20080215-src.zip
+file kdelibs-for-kleo-20080215-src.zip
+chk  fd4bb91b99d606a0cc947c36c524cb9960a255fe
 
 
 # Kleopatra
 
 server ftp://ftp.kdab.net/pub/gpg4win
 
-name kleopatra-20080208-bin.zip
-file kleo-uiserver-only-20080208-bin.zip
-chk  dd787edc6911c1a4fe45db5de89418e1de73cbc7
+name kleopatra-20080215-bin.zip
+file kleo-uiserver-only-20080215-bin.zip
+chk  07697682c39d9510facf3ac64c220a62d80d7e63
 
-name kleopatra-20080208-src.zip
-file kleo-uiserver-only-20080208-src.zip
-chk  1b63fcf1c8b48d56c20a1d1e6adf64667bd38512
+name kleopatra-20080215-src.zip
+file kleo-uiserver-only-20080215-src.zip
+chk  797f3403396467c822bf26adf09f61a25fcdc0c5
