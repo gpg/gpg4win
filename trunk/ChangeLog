@@ -1,3 +1,11 @@
+2008-02-18  Werner Koch  <wk@g10code.com>
+
+	* src/installer.nsi: Take the README file from share/gpg4win.
+	This is required because we now make sure that the last output
+	directory is now the top directory.
+
+	* packages/packages.current: Update GpgOL.
+
 2008-02-16  Marcus Brinkmann  <marcus@g10code.de>
 
 	* packages/packages.current: Undo update of kdelibs and kleopatra.
