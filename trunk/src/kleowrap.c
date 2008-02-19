@@ -115,11 +115,13 @@ main (int argc, const char * const *argv)
       return 2;
     }
 
-  /* Insert bin directory.  */
+  /* Switch directory and insert bin directory.  */
   p = strrchr (pgm, '\\');
   if (!p)
     goto leave;
-  p++;
+  *p = '\0';
+  chdir (pgm);
+  *(p++) = '\\';
   memmove (p + 4, p, strlen (p) + 1);
   strncpy (p, "bin\\", 4);
 

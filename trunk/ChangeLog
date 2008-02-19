@@ -1,5 +1,7 @@
 2008-02-19  Marcus Brinkmann  <marcus@g10code.de>
 
+	* src/kleowrap.c: Change working directory.
+
 	* src/kleowrap.c: New file.
 	* src/kleopatra.bat: Removed.
 	* src/Makefile.am (EXTRA_DIST): Remove kleopatra.bat, add
