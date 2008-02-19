@@ -1,5 +1,5 @@
 # inst-kleopatra.nsi - Installer snippet for kleopatra.      -*- coding: latin-1; -*-
-# Copyright (C) 2005, 2007 g10 Code GmbH
+# Copyright (C) 2005, 2007, 2008 g10 Code GmbH
 # 
 # This file is part of GPG4Win.
 # 
@@ -33,7 +33,7 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
   SetOutPath "$INSTDIR\bin"
   File ${prefix}/bin/kleopatra.exe
   SetOutPath "$INSTDIR"
-  File ${SRCDIR}/kleopatra.bat
+  File /oname=kleopatra.exe "${BUILD_DIR}/kleowrap.exe"
 
   File ${prefix}/bin/kgpgconf.exe
   File ${prefix}/lib/libgpgme++-glib.dll
