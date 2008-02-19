@@ -22,7 +22,7 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi config.site \
         installer-options.ini.in libiconv.def libintl.def loreley.mid \
         gpg4win-splash.wav gpgwrap.c exdll.h g4wihelp.c g4wihelp.nsi \
         inst-sections.nsi installer.nsi installer-finish.nsi  \
-        qt.conf kleopatra.bat                                 \
+        qt.conf kleowrap.c                                    \
         inst-gpg4win.nsi	   uninst-gpg4win.nsi	      \
         inst-atk.nsi               uninst-atk.nsi	      \
         inst-cairo.nsi		   uninst-cairo.nsi	      \
@@ -71,7 +71,7 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi config.site \
 
 # Need to clean the dll because we bypassed automake.
 CLEANFILES = g4wihelp.dll versioninfo.txt README.en.txt README.de.txt \
-             installer-options.ini NEWS.tmp gpgwrap.exe
+             installer-options.ini NEWS.tmp gpgwrap.exe kleowrap.exe
 
 # Supported source packages.
 gpg4win_spkgs = glib gnupg libgpg-error gpgme gpgol gpgex \
@@ -407,26 +407,28 @@ README.de.txt : versioninfo.txt NEWS.tmp $(top_srcdir)/doc/README.de.txt
 # if makensis changed to the directory of the source file at startup.
 # So we have to pull a couple of strings to correct this.
 gpg4win-$(VERSION).exe: gpg4win.nsi $(common_nsi) stamps/stamp-final \
-                        g4wihelp.dll gpgwrap.exe README.en.txt README.de.txt \
-			installer-options.ini versioninfo.txt
+                        g4wihelp.dll gpgwrap.exe kleowrap.exe README.en.txt \
+			README.de.txt installer-options.ini versioninfo.txt
 	$(MAKENSIS) -V3 -DBUILD_DIR=`pwd` -DTOP_SRCDIR=$(top_srcdir) \
 		-DSRCDIR=$(srcdir) $(srcdir)/gpg4win.nsi
 
 gpg4win-light-$(VERSION).exe: gpg4win.nsi $(common_nsi) stamps/stamp-final \
-                        g4wihelp.dll gpgwrap.exe README.en.txt README.de.txt \
-			installer-options.ini versioninfo.txt
+                        g4wihelp.dll gpgwrap.exe kleowrap.exe README.en.txt \
+			README.de.txt installer-options.ini versioninfo.txt
 	$(MAKENSIS) -V3 -DBUILD_DIR=`pwd` -DTOP_SRCDIR=$(top_srcdir) \
 		-DSRCDIR=$(srcdir) -DGPG4WIN_LIGHT=1 $(srcdir)/gpg4win.nsi
 
 gpg4win-$(VERSION).wix: gpg4win.nsi $(common_nsi) stamps/stamp-final \
-			gpgwrap.exe README.en.txt README.de.txt versioninfo.txt
+			gpgwrap.exe kleowrap.exe README.en.txt \
+			README.de.txt versioninfo.txt
 	perl make-msi.pl --guids $(srcdir)/make-msi.guids \
 		--manifest gpg4win-$(VERSION).files \
 		-DBUILD_DIR=. -DTOP_SRCDIR=$(top_srcdir) \
 		-DSRCDIR=$(srcdir) $(srcdir)/gpg4win.nsi > $@
 
 gpg4win-light-$(VERSION).wix: gpg4win.nsi $(common_nsi) stamps/stamp-final \
-			gpgwrap.exe README.en.txt README.de.txt versioninfo.txt
+			gpgwrap.exe kleowrap.exe README.en.txt \
+			README.de.txt versioninfo.txt
 	perl make-msi.pl --guids $(srcdir)/make-msi.guids \
 		--manifest gpg4win-light-$(VERSION).files \
 		-DBUILD_DIR=. -DTOP_SRCDIR=$(top_srcdir) \
@@ -451,8 +453,12 @@ g4wihelp.dll: g4wihelp.c exdll.h
 	$(STRIP) g4wihelp.dll
 
 gpgwrap.exe: gpgwrap.c
-	$(CC) -I. -I.. -DHAVE_CONFIG_H -O2 -o gpgwrap.exe $(srcdir)/gpgwrap.c 
-	$(STRIP) gpgwrap.exe
+	$(CC) -I. -I.. -DHAVE_CONFIG_H -O2 -o $@ $^
+	$(STRIP) $@
+
+kleowrap.exe: kleowrap.c
+	$(CC) -I. -I.. -DHAVE_CONFIG_H -O2 -mwindows -o $@ $^
+	$(STRIP) $@
 
 if BUILD_SOURCE_INSTALLER
 all_src = gpg4win-src-$(VERSION).exe

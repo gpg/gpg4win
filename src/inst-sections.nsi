@@ -922,7 +922,7 @@ Section "-startmenu"
     IntOp $R0 $R0 & ${SF_SELECTED} 
     IntCmp $R0 ${SF_SELECTED} 0 no_kleopatra_menu 
     CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\Kleopatra.lnk" \
-	"$INSTDIR\kleopatra.bat" \
+	"$INSTDIR\kleopatra.exe" \
         "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_kleopatra)
   no_kleopatra_menu:
 !endif
@@ -1100,7 +1100,7 @@ Section "-startmenu"
     IntOp $R0 $R0 & ${SF_SELECTED}
     IntCmp $R0 ${SF_SELECTED} 0 no_kleopatra_desktop
     CreateShortCut "$DESKTOP\Kleopatra.lnk" \
-	"$INSTDIR\kleopatra.bat" \
+	"$INSTDIR\kleopatra.exe" \
         "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_kleopatra)
   no_kleopatra_desktop:
 !endif
@@ -1241,7 +1241,7 @@ no_desktop:
     IntOp $R0 $R0 & ${SF_SELECTED} 
     IntCmp $R0 ${SF_SELECTED} 0 no_kleopatra_quicklaunch
     CreateShortCut "$QUICKLAUNCH\Kleopatra.lnk" \
-	"$INSTDIR\kleopatra.bat" \
+	"$INSTDIR\kleopatra.exe" \
         "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_kleopatra)
   no_kleopatra_quicklaunch:
 !endif
