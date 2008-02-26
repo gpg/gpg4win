@@ -1,5 +1,5 @@
 #! /bin/sh
-patch -p0 -f $* < $0
+patch -p1 -f $* < $0
 exit $?
 
 NEVER set gpgProgram in the registry, and use gpg2.exe by default.
