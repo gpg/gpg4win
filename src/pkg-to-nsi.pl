@@ -43,7 +43,7 @@ use diagnostics;
 $::op = '--inst';
 
 # Filter expressions.
-@::filter;
+@::filter = ();
 
 while ($ARGV[0] =~ m,^-,)
 {
@@ -95,7 +95,7 @@ else
 
 if ($::op eq '--inst')
 {
-    my $cdir;
+    my $cdir = "";
 
     foreach my $file (@::files)
     {
@@ -169,7 +169,7 @@ elsif ($::op eq '--uninst')
 	
 	# Delete file.
 	$file =~ m,(?:(.*)/)?([^/]+),;
-	my $dir = $1;
+	$dir = $1;
 	$dir_seen{$dir}++;
 	do
 	{
