@@ -98,7 +98,9 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
 
   File ${prefix}/share/icons/oxygen/scalable/apps/kleopatra.svgz
 
-  SetOutPath "$INSTDIR\share\kde4\services"
+  # FIXME: The kcm .desktop files belong to share/kde4/services
+  # actually, but are not found if installed there.
+  SetOutPath "$INSTDIR\share\applications\kde4"
 
   File ${prefix}/share/kde4/services/kleopatra_config_appear.desktop
   File ${prefix}/share/kde4/services/kleopatra_config_dirserv.desktop

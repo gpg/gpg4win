@@ -1,5 +1,7 @@
 2008-02-26  Marcus Brinkmann  <marcus@g10code.de>
 
+	* src/inst-kleopatra.nsi, src/uninst-kleopatra.nsi: Fix last change.
+
 	* packages/packages.current: Update gpgol, kdelibs, kleopatra.
 	* src/inst-kdelibs.nsi, src/uninst-kdelibs.nsi,
 	src/inst-kleopatra.nsi, src/uninst-kleopatra.nsi: Update.
