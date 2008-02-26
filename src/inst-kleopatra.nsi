@@ -36,12 +36,11 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
   File /oname=kleopatra.exe "${BUILD_DIR}/kleowrap.exe"
 
   File ${prefix}/bin/kgpgconf.exe
-  File ${prefix}/lib/libgpgme++-glib.dll
-  File ${prefix}/lib/libgpgme++-qt.dll
-  File ${prefix}/lib/libgpgme++.dll
-  File ${prefix}/bin/libqgpgme.dll
-  File ${prefix}/bin/libkmime.dll
   File ${prefix}/bin/libkleo.dll
+
+  SetOutPath "$INSTDIR\lib\kde4"
+
+  File ${prefix}/lib/kde4/kcm_kleopatra.dll
 
   SetOutPath "$INSTDIR\share\applications\kde4"
 
@@ -98,6 +97,88 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
   SetOutPath "$INSTDIR\share\icons\oxygen\scalable\apps"
 
   File ${prefix}/share/icons/oxygen/scalable/apps/kleopatra.svgz
+
+  SetOutPath "$INSTDIR\share\kde4\services"
+
+  File ${prefix}/share/kde4/services/kleopatra_config_appear.desktop
+  File ${prefix}/share/kde4/services/kleopatra_config_dirserv.desktop
+  File ${prefix}/share/kde4/services/kleopatra_config_dnorder.desktop
+  File ${prefix}/share/kde4/services/kleopatra_config_smimevalidation.desktop
+
+  SetOutPath "$INSTDIR\share\locale\de\LC_MESSAGES"
+
+  File ${prefix}/share/locale/de/LC_MESSAGES/akregator.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/desktop_kdelibs.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/desktop_kdepim.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/desktop_l10n.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/kabc2mutt.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/kabc_slox.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/kabcakonadi.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/kabcclient.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/kaddressbook.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/kalarm.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/katepart4.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/kcertpart.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/kcm_phonon.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/kcmcrypto.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/kcmkabconfig.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/kcmkontactnt.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/kdelibs4.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/kdelibs_colors4.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/kdepimresources.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/kdepimwizards.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/kdgantt1.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/kfile_vcf.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/kfileaudiopreview4.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/kio4.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/kio_groupwise.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/kio_help4.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/kitchensync.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/kleopatra.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/kmail.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/kmail_text_calendar_plugin.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/kmail_text_vcard_plugin.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/kmail_text_xdiff_plugin.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/kmailcvt.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/kmobiletools.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/kmobiletools_at_engine.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/knode.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/knotes.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/kode.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/konsolekalendar.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/kontact.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/korganizer.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/korn.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/kpilot.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/kres_birthday.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/kres_blog.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/kres_featureplan.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/kres_groupware.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/kres_groupwise.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/kres_kolab.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/kres_remote.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/kres_scalix.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/kres_tvanytime.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/kres_xmlrpc.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/ktexteditor_plugins.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/ktexteditorkabcbridge_plugin.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/ktimetracker.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/ktnef.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/kwatchgnupg.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/kxforms.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/libakonadi.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/libkdepim.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/libkholidays.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/libkleopatra.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/libkpgp.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/libksieve.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/libphonon.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/phonon_kde.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/timezones4.mo
+
+  SetOutPath "$INSTDIR\share\locale\de"
+
+  File ${prefix}/share/locale/de/entry.desktop
 
 !endif
 ${MementoSectionEnd}

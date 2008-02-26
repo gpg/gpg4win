@@ -215,11 +215,11 @@ chk   050f93a0d74385ce90e8934e49c11f171d495c5a
 #
 # GPGol
 #
-server ftp://ftp.g10code.com/g10code/gpgol/alpha
-#server ftp://ftp.g10code.com/g10code/scratch
+#server ftp://ftp.g10code.com/g10code/gpgol/alpha
+server ftp://ftp.g10code.com/g10code/scratch
 
-file gpgol-0.10.5.tar.bz2
-chk  7ce14398a8cf4cd88651c9ff8a2c1a223fa25bf2
+file gpgol-0.10.6-svn224.tar.bz2
+chk  5663e2f0776a4e96788509efb03cddaa6d5e6daa
 
 
 #
@@ -358,27 +358,25 @@ chk  ced2b1f3b111cf7f6cc28c4f7863a29cda05114b
 
 server ftp://ftp.kdab.net/pub/gpg4win
 
-name kdelibs-20080215-bin.zip
-file kdelibs-for-kleo-20080215-bin.zip
-chk  49d1f8b3e2873098e4d27b6c5602996ac0f0d6f3
+name kdelibs-20080226-bin.zip
+file kdelibs-for-kleo-20080226-bin.zip
+chk  0a6ba94b9290ddebb210544c1974b37775ea6fc8
 
-name kdelibs-20080215-lib.zip
-file kdelibs-for-kleo-20080215-dev.zip
-chk  3100ce9fee65b878a4cb695d3cab95cace3a577d
+name kdelibs-20080226-lib.zip
+file kdelibs-for-kleo-20080226-dev.zip
+chk  0b19156c1fbcc693accc490ea46dd8e5c0085fcf
 
-name kdelibs-20080215-src.zip
-file kdelibs-for-kleo-20080215-src.zip
-chk  fd4bb91b99d606a0cc947c36c524cb9960a255fe
+name kdelibs-20080226-src.zip
+file kdelibs-for-kleo-20080226-src.zip
+chk  1cda186481ed8deaeee3bfaa1b61b75ccc4b8f16
 
 
 # Kleopatra
 
 server ftp://ftp.kdab.net/pub/gpg4win
 
-name kleopatra-20080215-bin.zip
-file kleo-uiserver-only-20080215-bin.zip
-chk  2024b3e0a5ef13af83df1051934fefd0fbcf2afc
+file kleopatra-20080226-bin.zip
+chk  d972a9a4ec3616a57d4512d8236efef3affc667c
 
-name kleopatra-20080215-src.zip
-file kleo-uiserver-only-20080215-src.zip
-chk  797f3403396467c822bf26adf09f61a25fcdc0c5
+file kleopatra-20080226-src.zip
+chk  581bf44c5a60d584b9f36dbab30ff4fc6dda4b87

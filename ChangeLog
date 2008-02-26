@@ -1,5 +1,9 @@
 2008-02-26  Marcus Brinkmann  <marcus@g10code.de>
 
+	* packages/packages.current: Update gpgol, kdelibs, kleopatra.
+	* src/inst-kdelibs.nsi, src/uninst-kdelibs.nsi,
+	src/inst-kleopatra.nsi, src/uninst-kleopatra.nsi: Update.
+
 	* patches/winpt/01-gpg-path.patch: New file.
 	* Makefile.am (EXTRA_DIST): Add this file.
 

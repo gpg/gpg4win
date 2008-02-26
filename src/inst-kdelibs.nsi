@@ -1,5 +1,5 @@
 # inst-kdelibs.nsi - Installer snippet for kdelibs.      -*- coding: latin-1; -*-
-# Copyright (C) 2005, 2007 g10 Code GmbH
+# Copyright (C) 2005, 2007, 2008 g10 Code GmbH
 # 
 # This file is part of GPG4Win.
 # 
@@ -38,9 +38,20 @@ Section "-kdelibs" SEC_kdelibs
   File ${prefix}/bin/kcmdwrapper.exe
   SetOutPath "$INSTDIR"
 
-  File ${prefix}/bin/libkdecore.dll
-  File ${prefix}/bin/libkdeui.dll
-#  File ${prefix}/bin/libkdefx.dll
+  File ${prefix}/bin/kbuildsycoca4.exe
+  File ${prefix}/bin/libgpgme++-glib.dll
+  File ${prefix}/bin/libgpgme++-qt.dll
+  File ${prefix}/bin/libgpgme++.dll
+  File ${prefix}/bin/libkmime.dll
+  File ${prefix}/bin/libqgpgme.dll
+  File ${prefix}/lib/libkcmutils.dll
+  File ${prefix}/lib/libkdecore.dll
+  File ${prefix}/lib/libkdeinit4_kbuildsycoca4.dll
+  File ${prefix}/lib/libkdeui.dll
+
+  SetOutPath "$INSTDIR\etc\xdg\menus"
+
+  File ${prefix}/etc/xdg/menus/applications.menu
 
   SetOutPath "$INSTDIR\lib\kde4"
 
@@ -50,49 +61,49 @@ Section "-kdelibs" SEC_kdelibs
 
   File ${prefix}/share/apps/kcharselect/kcharselect-data
 
+  SetOutPath "$INSTDIR\share\apps\kdeui\about"
+
+  File ${prefix}/share/apps/kdeui/about/bar-bottom-left.png
+  File ${prefix}/share/apps/kdeui/about/bar-bottom-middle.png
+  File ${prefix}/share/apps/kdeui/about/bar-bottom-right.png
+  File ${prefix}/share/apps/kdeui/about/bar-middle-left.png
+  File ${prefix}/share/apps/kdeui/about/bar-middle-right.png
+  File ${prefix}/share/apps/kdeui/about/bar-top-left.png
+  File ${prefix}/share/apps/kdeui/about/bar-top-middle.png
+  File ${prefix}/share/apps/kdeui/about/bar-top-right.png
+  File ${prefix}/share/apps/kdeui/about/bottom-left.png
+  File ${prefix}/share/apps/kdeui/about/bottom-middle.png
+  File ${prefix}/share/apps/kdeui/about/bottom-right.png
+  File ${prefix}/share/apps/kdeui/about/box-bottom-left.png
+  File ${prefix}/share/apps/kdeui/about/box-bottom-middle.png
+  File ${prefix}/share/apps/kdeui/about/box-bottom-right.png
+  File ${prefix}/share/apps/kdeui/about/box-middle-left.png
+  File ${prefix}/share/apps/kdeui/about/box-middle-right.png
+  File ${prefix}/share/apps/kdeui/about/box-top-left.png
+  File ${prefix}/share/apps/kdeui/about/box-top-middle.png
+  File ${prefix}/share/apps/kdeui/about/box-top-right.png
+  File ${prefix}/share/apps/kdeui/about/kde_infopage.css
+  File ${prefix}/share/apps/kdeui/about/kde_infopage_rtl.css
+  File ${prefix}/share/apps/kdeui/about/top-left.png
+  File ${prefix}/share/apps/kdeui/about/top-middle.png
+
   SetOutPath "$INSTDIR\share\apps\kdeui\pics"
 
-#  File ${prefix}/share/apps/kdeui/pics/ktip-background.png
   File ${prefix}/share/apps/kdeui/pics/aboutkde.png
   File ${prefix}/share/apps/kdeui/pics/ktip-bulb.png
 
-  SetOutPath "$INSTDIR\share\apps\kdeui\about"
+  SetOutPath "$INSTDIR\share\config\colors"
 
-  File ${prefix}/share/apps/kdeui/about/box-middle-left.png
-  File ${prefix}/share/apps/kdeui/about/bottom-right.png
-  File ${prefix}/share/apps/kdeui/about/bar-middle-left.png
-  File ${prefix}/share/apps/kdeui/about/bar-bottom-left.png
-  File ${prefix}/share/apps/kdeui/about/box-top-right.png
-  File ${prefix}/share/apps/kdeui/about/bar-bottom-middle.png
-  File ${prefix}/share/apps/kdeui/about/bar-bottom-right.png
-  File ${prefix}/share/apps/kdeui/about/bar-top-middle.png
-  File ${prefix}/share/apps/kdeui/about/box-bottom-right.png
-  File ${prefix}/share/apps/kdeui/about/box-bottom-middle.png
-  File ${prefix}/share/apps/kdeui/about/bar-middle-right.png
-  File ${prefix}/share/apps/kdeui/about/box-middle-right.png
-  File ${prefix}/share/apps/kdeui/about/kde_infopage.css
-  File ${prefix}/share/apps/kdeui/about/bottom-middle.png
-  File ${prefix}/share/apps/kdeui/about/bar-top-left.png
-  File ${prefix}/share/apps/kdeui/about/kde_infopage_rtl.css
-  File ${prefix}/share/apps/kdeui/about/top-middle.png
-  File ${prefix}/share/apps/kdeui/about/box-bottom-left.png
-  File ${prefix}/share/apps/kdeui/about/bar-top-right.png
-  File ${prefix}/share/apps/kdeui/about/box-top-left.png
-  File ${prefix}/share/apps/kdeui/about/top-left.png
-  File ${prefix}/share/apps/kdeui/about/box-top-middle.png
-  File ${prefix}/share/apps/kdeui/about/bottom-left.png
+  File ${prefix}/share/config/colors/40.colors
+  File ${prefix}/share/config/colors/Oxygen.colors
+  File ${prefix}/share/config/colors/Rainbow.colors
+  File ${prefix}/share/config/colors/Royal.colors
+  File ${prefix}/share/config/colors/Web.colors
 
   SetOutPath "$INSTDIR\share\config"
 
   File ${prefix}/share/config/kdebug.areas
   File ${prefix}/share/config/kdebugrc
-
-  SetOutPath "$INSTDIR\share\config\colors"
-
-  File ${prefix}/share/config/colors/Web.colors
-  File ${prefix}/share/config/colors/Royal.colors
-  File ${prefix}/share/config/colors/Rainbow.colors
-  File ${prefix}/share/config/colors/40.colors
 
   SetOutPath "$INSTDIR\share\config\ui"
 
@@ -104,8 +115,8 @@ Section "-kdelibs" SEC_kdelibs
 
   SetOutPath "$INSTDIR\share\kde4\servicetypes"
 
-  File ${prefix}/share/kde4/servicetypes/sonnetspeller.desktop
   File ${prefix}/share/kde4/servicetypes/kplugininfo.desktop
+  File ${prefix}/share/kde4/servicetypes/sonnetspeller.desktop
 
   SetOutPath "$INSTDIR\share\locale"
 
