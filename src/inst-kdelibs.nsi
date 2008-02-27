@@ -48,14 +48,11 @@ Section "-kdelibs" SEC_kdelibs
   File ${prefix}/lib/libkdecore.dll
   File ${prefix}/lib/libkdeinit4_kbuildsycoca4.dll
   File ${prefix}/lib/libkdeui.dll
+  File ${prefix}/lib/kde4/kded_globalaccel.dll
 
   SetOutPath "$INSTDIR\etc\xdg\menus"
 
   File ${prefix}/etc/xdg/menus/applications.menu
-
-  SetOutPath "$INSTDIR\lib\kde4"
-
-  File ${prefix}/lib/kde4/kded_globalaccel.dll
 
   SetOutPath "$INSTDIR\share\apps\kcharselect"
 

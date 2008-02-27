@@ -37,9 +37,6 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
 
   File ${prefix}/bin/kgpgconf.exe
   File ${prefix}/bin/libkleo.dll
-
-  SetOutPath "$INSTDIR\lib\kde4"
-
   File ${prefix}/lib/kde4/kcm_kleopatra.dll
 
   SetOutPath "$INSTDIR\share\applications\kde4"

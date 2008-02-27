@@ -1,3 +1,9 @@
+2008-02-27  Marcus Brinkmann  <marcus@g10code.de>
+
+	* src/inst-kleopatra.nsi, src/uninst-kleopatra.nsi: Move plugins
+	to INSTDIR.
+	* src/inst-kdelibs.nsi, src/uninst-kdelibs.nsi: Likewise.
+
 2008-02-26  Marcus Brinkmann  <marcus@g10code.de>
 
 	* src/inst-kleopatra.nsi, src/uninst-kleopatra.nsi: Fix last change.
