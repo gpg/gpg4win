@@ -1,5 +1,5 @@
 /* kleopatrawrap.c - Wrapper to call gpg udner Windows.
- * Copyright (C) 2007 g10 Code GmbH
+ * Copyright (C) 2007, 2008 g10 Code GmbH
  *
  * This file is part of Gpg4win.
  *
@@ -27,6 +27,31 @@
 #include <string.h>
 #include <process.h>
 #include <windows.h>
+#include <errno.h>
+
+
+/* Assumes that the current working directory is the Gpg4win INSTDIR
+   installation directory.  */
+int
+run_kbuildsycoca (void)
+{
+  int rc;
+
+  if (! SetEnvironmentVariable ("XDG_DATA_DIRS", "share")
+      || ! SetEnvironmentVariable ("XDG_CONFIG_DIRS", "etc\\xdg"))
+    {
+      fprintf (stderr, "Executing kbuildsycoca4.exe failed: "
+	       "Could not set XDG environment variables\n");
+      return -1;
+    }
+  errno = 0;
+  rc = _spawnl (_P_WAIT, "kbuildsycoca4", "kbuildsycoca4", NULL);
+  if (rc)
+    fprintf (stderr, "Executing kbuildsycoca4.exe failed: %s\n",
+	     strerror (errno));
+
+  return rc;
+}
 
 
 /* Return a copy of ARGV, but with proper quoting.  To release the
@@ -139,8 +164,14 @@ main (int argc, const char * const *argv)
     }
 
   argv_quoted = build_commandline (argv);
-  if (!argv_quoted)
+  if (! argv_quoted)
     goto leave;
+
+  /* Now that the current working is INSTDIR, try to run kbuildsycoca
+     (create/update plugin cache).  We don't check the return value,
+     as kbuildsycoca is allowed to fail (and will if kleopatra is
+     already running).  */
+  run_kbuildsycoca();
 
   /* Using execv does not replace the existing program image, but
      spawns a new one and daemonizes it, confusing the command line
