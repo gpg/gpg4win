@@ -1,5 +1,9 @@
 2008-02-27  Marcus Brinkmann  <marcus@g10code.de>
 
+	* src/kleowrap.c: Include errno.h.
+	(run_kbuildsycoca): New function by Frank Osterfeld.
+	(main): Invoke it.
+
 	* src/inst-kleopatra.nsi, src/uninst-kleopatra.nsi: Move plugins
 	to INSTDIR.
 	* src/inst-kdelibs.nsi, src/uninst-kdelibs.nsi: Likewise.
