@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: gpg4win 1.1.1-svn417\n"
 "Report-Msgid-Bugs-To: gpg4win-devel@wald.intevation.org\n"
 "POT-Creation-Date: 2008-02-01 12:08+0100\n"
-"PO-Revision-Date: 2008-01-30 17:07+0100\n"
+"PO-Revision-Date: 2008-02-28 11:40+0100\n"
 "Last-Translator: Marcus Brinkmann <mb@g10code.com>\n"
 "Language-Team: German <translation-team-de@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -23,7 +23,7 @@ msgstr "Ein Exemplar dieses Installers läuft bereits."
 #: src/gpg4win.nsi:138
 msgctxt "T_WelcomeTitleGpg4win"
 msgid "Welcome to the installation of Gpg4win"
-msgstr "Willkommen bei der Installation der Gpg4win Quellen"
+msgstr "Willkommen bei der Installation von Gpg4win"
 
 #: src/gpg4win.nsi:142
 msgctxt "T_AboutGpg4win"
