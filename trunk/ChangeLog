@@ -1,3 +1,8 @@
+2008-02-28  Marcus Brinkmann  <marcus@g10code.de>
+
+	* src/kleowrap.c: Use CreateProcess instead of spawn for ksycoca
+	to suppress console window.
+
 2008-02-27  Marcus Brinkmann  <marcus@g10code.de>
 
 	* src/kleowrap.c: Include errno.h.
