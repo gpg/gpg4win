@@ -1636,6 +1636,38 @@ reaktivieren). Vergessen Sie nicht, die Logbücher zu löschen falls
 sie umfangreich geworden sind oder es sehr viele Dateien sind. Am besten immer
 bevor Sie eine neue Aufzeichnung machen.
 
+\subsection{Logbuch von GpgOL einschalten}
+
+Für das Einschalten des Logbuches von GpgOL müssen Sie als Administrator
+den Registrierungs-Editor starten. Das kann man z.B. machen in dem man
+in einer Eingabeaufforderung das Kommando \verb:regedit: ausführt.
+
+Wählen Sie nun das GpgOL Verzeichnis
+(\verb:HKEY_CURRENT_USER\Software\GNU\GpgOL:)
+im auf der linken Seite dargestellten
+Verzeichnisbaum.
+
+Auf der rechten Seite wählen Sie nun über die rechte Maustaste den
+Menüeintrag ,,Neu/Zeichenfolge''.
+Bennennen Sie den neuen Eintrag ,,enableDebug'' und setzte Sie dessen Wert
+auf ,,1''.
+
+Man erhält umso mehrinteren Programmablaufinformationen
+je größere man den Wert von ,,enableDebug'' wählt.
+Erlaubt sind die Zahlen 2, 4, 8, 16, 32. Es ist empfehlenswert
+mit ,,1'' zu beginnen und nur höhere Werte einzusetzen, falls
+es eine tiefere Programmablaufanalyse erfordern sollte.
+
+Erstellen Sie nun eine weitere Zeichnfolge mit dem Namen ,,logFile''
+und als Wert ein Dateiname in die das Logbuch geschrieben werden soll,
+beispielsweise
+\Filename{C:\back{}TEMP\back{}gpgollog.txt}.
+
+Bedenken Sie, dass diese Datei ggf. im weiteren Verlauf sehr
+umfangreich werden kann. Stelle Sie ,,enableDebug'' auf ,,0'' wenn
+Sie kein Logbuch mehr benötigen.
+
+
 \clearpage
 %% Original page 49
 \section{Warum Gpg4win nicht zu knacken ist~$\ldots$}

@@ -1,3 +1,8 @@
+2008-02-29  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
+
+	* manual/durchblicker.tex: Added section "Logbuch von GpgOL
+	einschalten"
+
 2008-02-14  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
 
 	* README-BETA-de.txt: Additional hints for "encrypt-to-self".
