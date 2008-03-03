@@ -1638,8 +1638,9 @@ bevor Sie eine neue Aufzeichnung machen.
 
 \subsection{Logbuch von GpgOL einschalten}
 
-Für das Einschalten des Logbuches von GpgOL müssen Sie als Administrator
-den Registrierungs-Editor starten. Das kann man z.B. machen in dem man
+Für das Einschalten des Logbuches von GpgOL müssen Sie ihrem normalen
+Benutzerkonto (also nicht als Administrator) den Registrierungs-Editor
+starten. Das kann man z.B. machen in dem man
 in einer Eingabeaufforderung das Kommando \verb:regedit: ausführt.
 
 Wählen Sie nun das GpgOL Verzeichnis
@@ -1652,9 +1653,9 @@ Menüeintrag ,,Neu/Zeichenfolge''.
 Bennennen Sie den neuen Eintrag ,,enableDebug'' und setzte Sie dessen Wert
 auf ,,1''.
 
-Man erhält umso mehrinteren Programmablaufinformationen
+Man erhält umso mehr interne Programmablaufinformationen
 je größere man den Wert von ,,enableDebug'' wählt.
-Erlaubt sind die Zahlen 2, 4, 8, 16, 32. Es ist empfehlenswert
+Es ist empfehlenswert
 mit ,,1'' zu beginnen und nur höhere Werte einzusetzen, falls
 es eine tiefere Programmablaufanalyse erfordern sollte.
 
@@ -1662,6 +1663,9 @@ Erstellen Sie nun eine weitere Zeichnfolge mit dem Namen ,,logFile''
 und als Wert ein Dateiname in die das Logbuch geschrieben werden soll,
 beispielsweise
 \Filename{C:\back{}TEMP\back{}gpgollog.txt}.
+Evtl. existierte dieser Eintrag schon ohne Angabe eines Dateinamens,
+in diesem Fall reicht ein Doppel-Click auf den Eintrag um den Wert
+dann zu ändern.
 
 Bedenken Sie, dass diese Datei ggf. im weiteren Verlauf sehr
 umfangreich werden kann. Stelle Sie ,,enableDebug'' auf ,,0'' wenn
