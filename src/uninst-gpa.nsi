@@ -1,5 +1,5 @@
 # uninst-gpa.nsi - Installer snippet for gpa.      -*- coding: latin-1; -*-
-# Copyright (C) 2005 g10 Code GmbH
+# Copyright (C) 2005, 2008 g10 Code GmbH
 # 
 # This file is part of GPG4Win.
 # 
@@ -32,8 +32,25 @@ Section "-un.gpa"
 !else
   Delete "$INSTDIR\gpa.exe"
   Delete "$INSTDIR\pub\gpa.exe"
+  RMDir "$INSTDIR\pub"
 
   Delete "$INSTDIR\share\locale\de\LC_MESSAGES\gpa.mo"
+  RMDir "$INSTDIR\share\locale\de\LC_MESSAGES"
+  RMDir "$INSTDIR\share\locale\de"
+  Delete "$INSTDIR\share\locale\ar\LC_MESSAGES\gpa.mo"
+  RMDir "$INSTDIR\share\locale\ar\LC_MESSAGES"
+  RMDir "$INSTDIR\share\locale\ar"
+  Delete "$INSTDIR\share\locale\es\LC_MESSAGES\gpa.mo"
+  RMDir "$INSTDIR\share\locale\es\LC_MESSAGES"
+  RMDir "$INSTDIR\share\locale\es"
+  Delete "$INSTDIR\share\locale\fr\LC_MESSAGES\gpa.mo"
+  RMDir "$INSTDIR\share\locale\fr\LC_MESSAGES"
+  RMDir "$INSTDIR\share\locale\fr"
+  Delete "$INSTDIR\share\locale\ru\LC_MESSAGES\gpa.mo"
+  RMDir "$INSTDIR\share\locale\ru\LC_MESSAGES"
+  RMDir "$INSTDIR\share\locale\ru"
+  RMDir "$INSTDIR\share\locale"
+
 
   Delete "$INSTDIR\share\gpa\gpa_tips.en"
   Delete "$INSTDIR\share\gpa\gpa_tips.de"

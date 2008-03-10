@@ -301,8 +301,8 @@ chk  6fd61827493b73bf3b95a9e88fa4469c44602ae0
 #chk  bb9182cd4c6bd6677ba9cdcca262dcc1b1d22c3c
 
 server ftp://ftp.g10code.com/g10code/scratch
-file gpa-0.7.7-svn824.tar.bz2
-chk  dab59667c9381e1e2b082e07bf8f5ae32fdc8467
+file gpa-0.7.7-svn841.tar.bz2
+chk  1af1c5db3762f9ea8e6a4acfd5be20f1daea4945  
 
 #
 # Qt

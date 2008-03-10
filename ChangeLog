@@ -1,5 +1,9 @@
 2008-03-10  Marcus Brinkmann  <marcus@g10code.de>
 
+	* packages/packages.current: Update gpa.
+	* src/inst-gpa.nsi: Install other languages AR, ES, FR and RU.
+	* src/uninst-gpa.nsi: Deinstall those languages.
+
 	* AUTHORS: Add translators.
 	* src/inst-sections.nsi (.onInit): Insert macro MUI_LANGDLL_DISPLAY.
 	[DEBUG]: Define MUI_LANGDLL_ALWAYSSHOW.
