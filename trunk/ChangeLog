@@ -1,3 +1,16 @@
+2008-03-10  Marcus Brinkmann  <marcus@g10code.de>
+
+	* AUTHORS: Add translators.
+	* src/inst-sections.nsi (.onInit): Insert macro MUI_LANGDLL_DISPLAY.
+	[DEBUG]: Define MUI_LANGDLL_ALWAYSSHOW.
+	(un.onInit): New function.
+	* src/installer.nsi: Include ../po/catalogs.nsi with PO_HEADER
+	defined to include MUI language files.  Insert macro
+	MUI_RESERVEFILE_LANGDLL.
+	(MUI_LANGDLL_REGISTRY_ROOT, MUI_LANGDLL_REGISTRY_KEY)
+	(MUI_LANGDLL_REGISTRY_VALUENAME): New symbols.
+	(MUI_LANGDLL_ALLLANGUAGES) [DEBUG]: New symbol.
+
 2008-03-10  Werner Koch  <wk@g10code.com>
 
 	* packages/packages.current: Update GpgOL.

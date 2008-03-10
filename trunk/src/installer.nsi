@@ -118,9 +118,9 @@ Var OtherGnuPGDetected
 
 # Remember the installer language
 
-#!define MUI_LANGDLL_REGISTRY_ROOT "HKCU" 
-#!define MUI_LANGDLL_REGISTRY_KEY "Software\GNU\${PRETTY_PACKAGE_SHORT}" 
-#!define MUI_LANGDLL_REGISTRY_VALUENAME "Installer Language"
+!define MUI_LANGDLL_REGISTRY_ROOT "HKLM"
+!define MUI_LANGDLL_REGISTRY_KEY "Software\GNU\${PRETTY_PACKAGE_SHORT}" 
+!define MUI_LANGDLL_REGISTRY_VALUENAME "Installer Language"
 
 # The list of wizard pages.
 
@@ -188,9 +188,20 @@ Var STARTMENU_FOLDER
 # Language support.  This has to be done after defining the pages, but
 # before defining the translation strings.  Confusing.
 
-!insertmacro MUI_LANGUAGE "English"
+# Enable this to not filter languages for the current code page.  Note
+# that languages which are then not filtered out may not be displayed
+# correctly in the Windows version the user is using.  Not recommended,
+# but can be useful for testing.
+!ifdef DEBUG
+!define MUI_LANGDLL_ALLLANGUAGES
+!endif
 
-#!insertmacro MUI_RESERVEFILE_LANGDLL
+!insertmacro MUI_LANGUAGE "English"
+!define PO_HEADER
+!include "../po/catalogs.nsi"
+!undef PO_HEADER
+
+!insertmacro MUI_RESERVEFILE_LANGDLL
 !insertmacro MUI_RESERVEFILE_INSTALLOPTIONS
 ReserveFile "${BUILD_DIR}\g4wihelp.dll"
 !ifdef SOURCES

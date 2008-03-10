@@ -760,7 +760,7 @@ FunctionEnd
 
 
 Function .onInit
-Call G4wRunOnce
+  Call G4wRunOnce
 
   SetOutPath $TEMP
 !ifdef SOURCES
@@ -774,6 +774,15 @@ Call G4wRunOnce
   # Note that we delete gpgspltmp.wav in .onInst{Failed,Success}
 !endif
 
+  # Enable this to force a language selection dialog on every run (the
+  # preferred language is the default).  Otherwise, the preferred
+  # language is stored in the registry, and the installer does not ask
+  # on upgrades.
+!ifdef DEBUG
+!define MUI_LANGDLL_ALWAYSSHOW
+!endif
+  !insertmacro MUI_LANGDLL_DISPLAY
+
   # We can't use TOP_SRCDIR dir as the name of the file needs to be
   # the same while building and running the installer.  Thus we
   # generate the file from a template.
@@ -783,6 +792,12 @@ Call G4wRunOnce
   Call CalcDefaults
   Call CalcDepends
   Call CheckOtherGnuPGApps
+FunctionEnd
+
+
+Function un.onInit
+  # Remove the language preference.
+  !insertmacro MUI_UNGETLANGUAGE
 FunctionEnd
 
 
