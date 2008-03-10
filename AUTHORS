@@ -10,8 +10,19 @@ g10 Code GmbH <code@g10code.com>
 Brigitte Hamilton <gordianknits@gmail.com>
  - English translations of the manuals.
 
+Khaled Hosny <khaledhosny@eglug.org>
+ - Arabic translations of the installer.
 
- Copyright 2005 g10 Code GmbH
+Diego Escalante Urrelo <diegoe@gnome.org>
+ - Spanish translations of the installer.
+
+Fabian Rodriguez <magicfab@member.fsf.org>
+ - French translations of the installer.
+
+CJ <cj@neocaching.ru>
+ - Russian translations of the installer.
+
+ Copyright 2005, 2008 g10 Code GmbH
 
  This file is free software; as a special exception the author gives
  unlimited permission to copy and/or distribute it, with or without

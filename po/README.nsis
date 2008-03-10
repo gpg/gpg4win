@@ -68,6 +68,10 @@ Rules-nsis Makefile extension also creates a file catalogs.nsi, which
 contains one !include directive for every language from the catalogs
 the user selected at compile time.
 
+The file catalogs.nsi needs to be included twice, once which PO_HEADER
+defined and once without.  The header should be included early, while
+the language strings should be included late.
+
 
 5. Preparation of NSIS project
 

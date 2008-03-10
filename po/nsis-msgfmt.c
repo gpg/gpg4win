@@ -378,6 +378,7 @@ fmt_one (char *filename)
   if (!lang)
     error (EXIT_FAILURE, errno, "%s: could not determine language %s of %s\n",
 	   program_name, ll, filename);
+  printf ("!ifdef PO_HEADER\n");
   if (!nlf)
     {
       fflush (stdout);
@@ -397,6 +398,7 @@ fmt_one (char *filename)
 	printf ("LoadLanguageFile "
 		"\"${NSISDIR}\\Contrib\\Language files\\%s.nlf\"\n", nlf);
     }
+  printf ("!else\n");
 
   file = po_file_read (filename, &err_handler);
   if (file == NULL)
@@ -431,6 +433,7 @@ fmt_one (char *filename)
 	}
       po_message_iterator_free (iterator);
     }
+  printf ("!endif\n");
   po_file_free (file);  
 }      
 
