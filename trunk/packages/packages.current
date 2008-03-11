@@ -213,13 +213,12 @@ chk   050f93a0d74385ce90e8934e49c11f171d495c5a
 
 
 #
-# GPGol
+# GpgOL
 #
 server ftp://ftp.g10code.com/g10code/gpgol/alpha
 
-file gpgol-0.10.6.tar.bz2
-chk  1d3ee536c1bcc8e0ab0b67571001f5b9b4876d03  
-
+file gpgol-0.10.7.tar.bz2
+chk  aeb7922c0d717b3345cf17dfbbd8b734d64e4ea8  
 
 #
 # GpgEX
