@@ -41,9 +41,6 @@ register before submitting or commenting a bug):
 <li><a href="http://www.stud.uni-hannover.de/~twoaday/bugs.html">
     WinPT bug tracking</a>
      <p>
-<li><a href="http://wald.intevation.org/tracker/?group_id=13">
-    GPA bug tracking</a>
-     <p>
 <li><a href="http://bugs.kde.org/component-report.cgi?product=kleopatra">
     Kleopatra Bug Tracking</a>
      <p>
@@ -54,8 +51,8 @@ register before submitting or commenting a bug):
 <li><a href="http://www.thewildbeast.co.uk/claws-mail/bugzilla/index.cgi">
     Claws Mail bug tracking</a>
      <p>
-<li><a href="http://www.gnupg.org/(en)/documentation/bts.html">
-    GnuPG, GpgOL and GpgEX bug tracking</a>
+<li><a href="http://www.gnupg.org/documentation/bts.html">
+    GnuPG, GPA, GpgOL and GpgEX bug tracking</a>
 </ul>
 
 <p>
@@ -100,8 +97,8 @@ procedure where you produced the bug.
 <h3>Creating debug log information</h3>
 
 <p>
-GPGol has an extra debug options which helps to understand the
-internal communication between Outlook and GPGol.
+GpgOL has an extra debug options which helps to understand the
+internal communication between Outlook and GpgOL.
 To enable it, go to the GnuPG tab in Outlook's option page, click on
 the "Advanced" button and enter
 </p>
