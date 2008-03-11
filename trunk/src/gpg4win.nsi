@@ -48,27 +48,6 @@
 !ifdef HAVE_PKG_QT
 !undef HAVE_PKG_QT
 !endif
-!ifdef HAVE_PKG_GNUPG2
-!undef HAVE_PKG_GNUPG2
-!endif
-!ifdef HAVE_PKG_PINENTRY
-!undef HAVE_PKG_PINENTRY
-!endif
-!ifdef HAVE_PKG_DIRMNGR
-!undef HAVE_PKG_DIRMNGR
-!endif
-!ifdef HAVE_PKG_LIBGCRYPT
-!undef HAVE_PKG_LIBGCRYPT
-!endif
-!ifdef HAVE_PKG_LIBKSBA
-!undef HAVE_PKG_LIBKSBA
-!endif
-!ifdef HAVE_PKG_LIBASSUAN
-!undef HAVE_PKG_LIBASSUAN
-!endif
-!ifdef HAVE_PKG_W32PTH
-!undef HAVE_PKG_W32PTH
-!endif
 !endif
 
 
