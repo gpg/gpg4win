@@ -1,3 +1,7 @@
+2008-03-11  Marcus Brinkmann  <marcus@g10code.de>
+
+	* src/gpg4win.nsi: Add gpg2 and its buddies to the light installer.
+
 2008-03-11  Werner Koch  <wk@g10code.com>
 
 	* packages/packages.current: Update GpgOL.
