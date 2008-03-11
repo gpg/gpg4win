@@ -42,9 +42,6 @@ kann):
 <li><a href="http://www.stud.uni-hannover.de/~twoaday/bugs.html">
     WinPT Bug Tracking</a>
      <p>
-<li><a href="http://wald.intevation.org/tracker/?group_id=13">
-    GPA Bug Tracking</a>
-     <p>
 <li><a href="http://bugs.kde.org/component-report.cgi?product=kleopatra">
     Kleopatra Bug Tracking</a>
      <p>
@@ -55,8 +52,8 @@ kann):
 <li><a href="http://www.thewildbeast.co.uk/claws-mail/bugzilla/index.cgi">
     Claws Mail Bug Tracking</a>
      <p>
-<li><a href="http://www.gnupg.org/(de)/documentation/bts.html">
-    GnuPG, GpgOL und GpgEX Bug Tracking</a>
+<li><a href="http://www.gnupg.org/documentation/bts.html">
+    GnuPG, GPA, GpgOL und GpgEX Bug Tracking</a>
 </ul>
 
 <p>
@@ -106,8 +103,8 @@ sollte der Bericht um ein Debug-Log ergänzt werden.
 <h3>Debug-Log erzeugen</h3>
 
 <p>
-GPGol bietet eine spezielle Option welche dabei hilft
-die interne Kommunikation zwischen Outlook und GPGol
+GpgOL bietet eine spezielle Option welche dabei hilft
+die interne Kommunikation zwischen Outlook und GpgOL
 zu verstehen.
 Um sie anzuschalten, gehen Sie zum Reiter "GnuPG"
 bei den Optionen von Outlook. Dort muss der "Fortgeschritten"
