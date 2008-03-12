@@ -1,5 +1,5 @@
 # uninst-glib.nsi - Installer snippet for glib.      -*- coding: latin-1; -*-
-# Copyright (C) 2005 g10 Code GmbH
+# Copyright (C) 2005, 2008 g10 Code GmbH
 # 
 # This file is part of GPG4Win.
 # 
@@ -33,6 +33,18 @@ Section "-un.glib"
   Delete "$INSTDIR\share\locale\de\LC_MESSAGES\glib20.mo"
   RMDir "$INSTDIR\share\locale\de\LC_MESSAGES"
   RMDir "$INSTDIR\share\locale\de"
+  Delete "$INSTDIR\share\locale\ar\LC_MESSAGES\glib20.mo"
+  RMDir "$INSTDIR\share\locale\ar\LC_MESSAGES"
+  RMDir "$INSTDIR\share\locale\ar"
+  Delete "$INSTDIR\share\locale\es\LC_MESSAGES\glib20.mo"
+  RMDir "$INSTDIR\share\locale\es\LC_MESSAGES"
+  RMDir "$INSTDIR\share\locale\es"
+  Delete "$INSTDIR\share\locale\fr\LC_MESSAGES\glib20.mo"
+  RMDir "$INSTDIR\share\locale\fr\LC_MESSAGES"
+  RMDir "$INSTDIR\share\locale\fr"
+  Delete "$INSTDIR\share\locale\ru\LC_MESSAGES\glib20.mo"
+  RMDir "$INSTDIR\share\locale\ru\LC_MESSAGES"
+  RMDir "$INSTDIR\share\locale\ru"
   RMDir "$INSTDIR\share\locale"
   RMDir "$INSTDIR\share"
 

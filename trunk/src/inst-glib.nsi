@@ -1,5 +1,5 @@
 # inst-glib.nsi - Installer snippet for glib.        -*- coding: latin-1; -*-
-# Copyright (C) 2005 g10 Code GmbH
+# Copyright (C) 2005, 2008 g10 Code GmbH
 # 
 # This file is part of GPG4Win.
 # 
@@ -40,5 +40,18 @@ Section "-glib" SEC_glib
 
   SetOutPath "$INSTDIR\share\locale\de\LC_MESSAGES"
   File ${prefix}/share/locale/de/LC_MESSAGES/glib20.mo
+
+  SetOutPath "$INSTDIR\share\locale\ar\LC_MESSAGES"
+  File ${prefix}/share/locale/ar/LC_MESSAGES/glib20.mo
+
+  SetOutPath "$INSTDIR\share\locale\es\LC_MESSAGES"
+  File ${prefix}/share/locale/es/LC_MESSAGES/glib20.mo
+
+  SetOutPath "$INSTDIR\share\locale\fr\LC_MESSAGES"
+  File ${prefix}/share/locale/fr/LC_MESSAGES/glib20.mo
+
+  SetOutPath "$INSTDIR\share\locale\ru\LC_MESSAGES"
+  File ${prefix}/share/locale/ru/LC_MESSAGES/glib20.mo
+
 !endif
 SectionEnd
