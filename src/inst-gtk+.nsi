@@ -1,5 +1,5 @@
 # inst-gtk+.nsi - Installer snippet for gtk+.     -*- coding: latin-1; -*-
-# Copyright (C) 2005 g10 Code GmbH
+# Copyright (C) 2005, 2008 g10 Code GmbH
 # 
 # This file is part of GPG4Win.
 # 
@@ -86,6 +86,23 @@ Section "-gtk+" SEC_gtk_
 
   SetOutPath "$INSTDIR\lib\locale\de\LC_MESSAGES"
   File ${prefix}/lib/locale/de/LC_MESSAGES/gtk20.mo
+  File ${prefix}/lib/locale/de/LC_MESSAGES/gtk20-properties.mo
+
+  SetOutPath "$INSTDIR\lib\locale\ar\LC_MESSAGES"
+  File ${prefix}/lib/locale/ar/LC_MESSAGES/gtk20.mo
+  File ${prefix}/lib/locale/ar/LC_MESSAGES/gtk20-properties.mo
+
+  SetOutPath "$INSTDIR\lib\locale\es\LC_MESSAGES"
+  File ${prefix}/lib/locale/es/LC_MESSAGES/gtk20.mo
+  File ${prefix}/lib/locale/es/LC_MESSAGES/gtk20-properties.mo
+
+  SetOutPath "$INSTDIR\lib\locale\fr\LC_MESSAGES"
+  File ${prefix}/lib/locale/fr/LC_MESSAGES/gtk20.mo
+  File ${prefix}/lib/locale/fr/LC_MESSAGES/gtk20-properties.mo
+
+  SetOutPath "$INSTDIR\lib\locale\ru\LC_MESSAGES"
+  File ${prefix}/lib/locale/ru/LC_MESSAGES/gtk20.mo
+  File ${prefix}/lib/locale/ru/LC_MESSAGES/gtk20-properties.mo
 
 !endif
 SectionEnd

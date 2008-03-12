@@ -1,3 +1,12 @@
+2008-03-12  Marcus Brinkmann  <marcus@g10code.de>
+
+	* src/inst-atk.nsi: Install message catalogs for ar, es, fr and ru.
+	* src/inst-glib.nsi: Likewise.
+	* src/inst-gtk+.nsi: Likewise.  Also install gtk20-properties.mo.
+	* src/uninst-atk.nsi: Uninstall them.
+	* src/uninst-glib.nsi: Likewise.
+	* src/uninst-gtk+.nsi: Likewise.
+
 2008-03-11  Marcus Brinkmann  <marcus@g10code.de>
 
 	* src/gpg4win.nsi: Add gpg2 and its buddies to the light installer.

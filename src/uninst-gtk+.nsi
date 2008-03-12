@@ -1,5 +1,5 @@
 # uninst-gtk+.nsi - Installer snippet for gtk+.   -*- coding: latin-1; -*-
-# Copyright (C) 2005 g10 Code GmbH
+# Copyright (C) 2005, 2008 g10 Code GmbH
 # 
 # This file is part of GPG4Win.
 # 
@@ -62,6 +62,18 @@ Section "-un.gtk+"
   Delete "$INSTDIR\lib\locale\de\LC_MESSAGES\gtk20.mo"
   RMDir "$INSTDIR\lib\locale\de\LC_MESSAGES"
   RMDir "$INSTDIR\lib\locale\de"
+  Delete "$INSTDIR\lib\locale\ar\LC_MESSAGES\gtk20.mo"
+  RMDir "$INSTDIR\lib\locale\ar\LC_MESSAGES"
+  RMDir "$INSTDIR\lib\locale\ar"
+  Delete "$INSTDIR\lib\locale\es\LC_MESSAGES\gtk20.mo"
+  RMDir "$INSTDIR\lib\locale\es\LC_MESSAGES"
+  RMDir "$INSTDIR\lib\locale\es"
+  Delete "$INSTDIR\lib\locale\fr\LC_MESSAGES\gtk20.mo"
+  RMDir "$INSTDIR\lib\locale\fr\LC_MESSAGES"
+  RMDir "$INSTDIR\lib\locale\fr"
+  Delete "$INSTDIR\lib\locale\ru\LC_MESSAGES\gtk20.mo"
+  RMDir "$INSTDIR\lib\locale\ru\LC_MESSAGES"
+  RMDir "$INSTDIR\lib\locale\ru"
   RMDir "$INSTDIR\lib\locale"
 
   RMDir "$INSTDIR\lib"
