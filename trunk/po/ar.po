@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ar\n"
 "Report-Msgid-Bugs-To: gpg4win-devel@wald.intevation.org\n"
-"POT-Creation-Date: 2008-03-11 11:37+0100\n"
+"POT-Creation-Date: 2008-03-17 23:26+0100\n"
 "PO-Revision-Date: 2008-03-10 16:43+0100\n"
 "Last-Translator: Khaled Hosny <khaledhosny@eglug.org>\n"
 "Language-Team: Arabic <doc@arabeyes.org>\n"
@@ -23,12 +23,12 @@ msgctxt "T_AlreadyRunning"
 msgid "An instance of this installer is already running."
 msgstr " ⁄„· ’Ì—Ê—… √Œ—Ï „‰ Â–« «·„ıÀ»¯ˆ  »«·›⁄·."
 
-#: src/gpg4win.nsi:138
+#: src/gpg4win.nsi:117
 msgctxt "T_WelcomeTitleGpg4win"
 msgid "Welcome to the installation of Gpg4win"
 msgstr "„—Õ»« „⁄  À»Ì  Gpg4win"
 
-#: src/gpg4win.nsi:142
+#: src/gpg4win.nsi:121
 #, fuzzy
 msgctxt "T_AboutGpg4win"
 msgid ""
@@ -38,19 +38,19 @@ msgid ""
 "Internet standard as described in RFC2440."
 msgstr "˛GnuPG ÂÊ √œ«… Ã‰Ê ··« ’«·«  Ê Œ“Ì‰ «·»Ì«‰«  «·„ıƒÛ„¯‰. Ìı„ﬂ‰ «” Œœ«„Â · ⁄„Ì… «·»Ì«‰«  Ê≈‰‘«¡ «· ÊﬁÌ⁄«  «·—ﬁ„Ì…. Ì‘ „· ⁄·Ï Ê”Ì·… „ ﬁœ„… ·≈œ«—… «·„›« ÌÕ° ÊÌ Ê«›ﬁ „⁄ „⁄Ì«— «·≈‰ —‰  OpenPGP «·„ﬁ —Õ ﬂ„« Êı’ˆ› ›Ì RFC2440."
 
-#: src/gpg4win.nsi:148
+#: src/gpg4win.nsi:127
 #, fuzzy
 msgctxt "T_AboutGpg4winVersion"
 msgid "This is Gpg4win version ${VERSION}"
 msgstr "Â–Â «·≈’œ«—… ${VERSION} „‰ Gpg4win"
 
-#: src/gpg4win.nsi:151
+#: src/gpg4win.nsi:130
 #, fuzzy
 msgctxt "T_AboutGpg4winFileVersion"
 msgid "file version ${PROD_VERSION}"
 msgstr "≈’œ«—… «·„·› ${PROD_VERSION}"
 
-#: src/gpg4win.nsi:154
+#: src/gpg4win.nsi:133
 #, fuzzy
 msgctxt "T_AboutGpg4winReleaseDate"
 msgid "release date ${_BUILD_ISODATE}"
