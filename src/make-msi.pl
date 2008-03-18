@@ -18,6 +18,18 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
+# FIXME: Here is how to support multiple languages in one MSI package,
+# using an undocumented feature: Create one MSI package in each
+# language, then create transformations:
+# MsiTran.Exe -g foo.en.msi foo.de.msi language.de.mst
+# Embed these transformations:
+# CScript.exe WiSubStg.vbs foo.en.msi language.de.mst 1031
+# Change the summmary informations attribute (with Orca):
+# Languages = 1033, 1031
+# Primary language must come first!
+# http://www.installsite.org/pages/de/artikel/embeddedlang/index.htm
+# http://forum.installsite.net/index.php?showtopic=16734
+
 use strict;
 use warnings;
 use diagnostics;
@@ -133,6 +145,22 @@ sub lang_to_lcid
     elsif ($lang eq 'de')
     {
 	return 1031;
+    }
+    elsif ($lang eq 'ar')
+    {
+	return 1025;
+    }
+    elsif ($lang eq 'es')
+    {
+	return 3082;
+    }
+    elsif ($lang eq 'fr')
+    {
+	return 1036;
+    }
+    elsif ($lang eq 'ru')
+    {
+	return 1049;
     }
     else
     {
@@ -871,6 +899,22 @@ sub gpg4win_nsis_stubs
 	elsif ($lang eq 'GERMAN')
 	{
 	    $lang = 'de';
+	}
+	elsif ($lang eq 'ARABIC')
+	{
+	    $lang = 'ar';
+	}
+	elsif ($lang eq 'SPANISH')
+	{
+	    $lang = 'es';
+	}
+	elsif ($lang eq 'FRENCH')
+	{
+	    $lang = 'fr';
+	}
+	elsif ($lang eq 'RUSSIAN')
+	{
+	    $lang = 'ru';
 	}
 	else
 	{
