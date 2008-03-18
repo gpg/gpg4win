@@ -10,6 +10,7 @@ bf1af37b-2d40-4956-add4-3abb7154b0ed /PRODUCT/1.9.0.625
 d75a8790-3457-49aa-ac8d-946a33c7bb1a /PRODUCT/1.9.0.668
 3f94d3d4-7d64-44fc-a2be-28073eb595e1 /PRODUCT/1.9.0.682
 7a0ce0e2-f75c-4f08-83dd-fd8fc4bcddfe /PRODUCT/1.9.0.691
+7498403e-77cd-4bed-9a65-d8cc29a5dc01 /PRODUCT/1.9.0.741
 fb54db39-2456-4fcc-9550-2790db663015 /REGISTRY/HKLM/Software\GNU\GnuPG/Install Directory
 ad23691b-1734-4dec-b91a-d4ff286190ea /REGISTRY/HKLM/Software\GNU\GnuPG/gpgProgram
 e0807a2f-4e70-48f8-b047-c5d3e219c3e7 /UPGRADE/1
@@ -128,8 +129,21 @@ c756076b-a0cd-41b1-89f0-ae1e57114bd2 lib\gtk-2.0\2.10.0\loaders\libpixbufloader-
 13df629a-e5b9-4f30-88b8-eea06aa1f330 lib\gtk-2.0\2.10.0\loaders\libpixbufloader-xbm.dll
 58c75024-34d2-4ea4-afea-c7feed7fc310 lib\gtk-2.0\2.10.0\loaders\libpixbufloader-xpm.dll
 e6e768dd-c788-47c5-b812-4a237d728000 lib\kde4\kded_globalaccel.dll
+add898c5-f8cb-404b-bab6-9b569a556e93 lib\locale\ar\LC_MESSAGES\atk10.mo
+4ebd6ff2-5334-4b33-bfb4-1944fb54d312 lib\locale\ar\LC_MESSAGES\gtk20-properties.mo
+7506e529-f2d8-45d0-ac1e-33214ff822af lib\locale\ar\LC_MESSAGES\gtk20.mo
 423e5f61-fef0-4043-ba74-9f71b509bc11 lib\locale\de\LC_MESSAGES\atk10.mo
+864f72a6-ea38-46c3-a732-955634681ca0 lib\locale\de\LC_MESSAGES\gtk20-properties.mo
 81e8e208-2308-4472-99ad-e223bea426ff lib\locale\de\LC_MESSAGES\gtk20.mo
+7b7392fa-c56c-4979-8592-bde708ba16e6 lib\locale\es\LC_MESSAGES\atk10.mo
+1db9dfca-dcdc-4c46-99c5-d607390e105f lib\locale\es\LC_MESSAGES\gtk20-properties.mo
+c9d48c0e-2abd-4913-97f6-078353a7575c lib\locale\es\LC_MESSAGES\gtk20.mo
+6017aefe-ea27-472d-908c-01698da81c56 lib\locale\fr\LC_MESSAGES\atk10.mo
+3ec3f5da-30d0-4b5f-bfa7-f2a81ff1871a lib\locale\fr\LC_MESSAGES\gtk20-properties.mo
+ad4bf37f-e64c-4540-ac82-2fc9d36e6ecd lib\locale\fr\LC_MESSAGES\gtk20.mo
+3faefe08-8263-460b-809d-74b6b41bf1b6 lib\locale\ru\LC_MESSAGES\atk10.mo
+b9d1f0bc-fc62-4d98-88a6-2ad4f5b63b0d lib\locale\ru\LC_MESSAGES\gtk20-properties.mo
+3fe4f87e-10bc-4093-940a-627f8656128c lib\locale\ru\LC_MESSAGES\gtk20.mo
 b7eb067b-886c-4797-82d1-38a43e03e7c9 libatk-1.0-0.dll
 12c77de4-ff42-4ce6-8e34-18f4a7222ee2 libcairo-2.dll
 a36b79c8-0394-4e90-9019-a9cb18690fbf libdbus-1.dll
@@ -2406,6 +2420,8 @@ aac30dc3-eaf4-49d8-8aba-0352d4f60fc0 share\icons\oxygen\scalable\apps\kleopatra.
 725b28f9-c4df-4ca2-accb-2e2b618a5e22 share\kde4\servicetypes\kplugininfo.desktop
 2a531421-9c1e-4519-b4f0-20fb338ea6aa share\kde4\servicetypes\sonnetspeller.desktop
 3439cb4c-cdf4-4446-baaf-e3f0762cec48 share\locale\all_languages
+b118978d-6cd2-4bb4-a422-c5f613461605 share\locale\ar\LC_MESSAGES\glib20.mo
+8f7833ac-3156-489e-8faf-46fe3d5b27b3 share\locale\ar\LC_MESSAGES\gpa.mo
 c34c4c43-5046-4f3c-a5e5-5f66feb730f9 share\locale\de\LC_MESSAGES\claws-mail.mo
 c1eafc06-fad1-4d14-8314-182c8664866c share\locale\de\LC_MESSAGES\glib20.mo
 1cfcfefe-32e0-43d8-8f95-48230af6485e share\locale\de\LC_MESSAGES\gpa.mo
@@ -2413,9 +2429,15 @@ c1eafc06-fad1-4d14-8314-182c8664866c share\locale\de\LC_MESSAGES\glib20.mo
 f185fb10-f7f1-4446-abfa-b9aba02cb750 share\locale\de\LC_MESSAGES\gpgol.mo
 01bf0e94-07c9-4663-a990-0f944b0837ac share\locale\de\LC_MESSAGES\libgpg-error.mo
 466eec01-474c-4689-804c-834c7760512e share\locale\de\LC_MESSAGES\winpt.mo
+50b9f10e-faad-408e-8fdd-889a4822c64b share\locale\es\LC_MESSAGES\glib20.mo
+12adfb55-1d02-44e6-abd4-0cfe72aa67ed share\locale\es\LC_MESSAGES\gpa.mo
+5f7b6c3c-d15d-46cf-88d5-741b98e86b9c share\locale\fr\LC_MESSAGES\glib20.mo
+ba5bfc57-baec-43df-bc70-6180cf348065 share\locale\fr\LC_MESSAGES\gpa.mo
 e0b607a5-7d59-49fd-9a13-1bc2bfb3f466 share\locale\fr\LC_MESSAGES\libgpg-error.mo
 f7fb2ff7-7593-4719-aabd-05439341b16b share\locale\pl\LC_MESSAGES\libgpg-error.mo
 a1fd6968-2876-4713-92c2-81ded12c5430 share\locale\ro\LC_MESSAGES\libgpg-error.mo
+c803af00-26a1-4f57-a293-b53b72fc8aa5 share\locale\ru\LC_MESSAGES\glib20.mo
+2dd21d60-e95e-48aa-85c5-949c3dc90e10 share\locale\ru\LC_MESSAGES\gpa.mo
 1750fab5-dfa2-4ece-9bf7-087a75025963 share\themes\Default\gtk-2.0-key\gtkrc
 db397395-3852-4d88-8c89-cbe5cfaf7699 share\themes\Emacs\gtk-2.0-key\gtkrc
 72440b69-ea1d-486c-92b6-b88ee0b2cb8b share\themes\MS-Windows\gtk-2.0\gtkrc
