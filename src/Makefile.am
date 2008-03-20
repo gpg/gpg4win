@@ -22,7 +22,7 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi config.site \
         installer-options.ini.in libiconv.def libintl.def loreley.mid \
         gpg4win-splash.wav gpgwrap.c exdll.h g4wihelp.c g4wihelp.nsi \
         inst-sections.nsi installer.nsi installer-finish.nsi  \
-        qt.conf kleowrap.c                                    \
+        qt.conf kleowrap.c potomo                             \
         inst-gpg4win.nsi	   uninst-gpg4win.nsi	      \
         inst-atk.nsi               uninst-atk.nsi	      \
         inst-cairo.nsi		   uninst-cairo.nsi	      \
@@ -97,19 +97,19 @@ man -Tlatin1 -l $$$${pkgidir}/share/man/man1/gpgv.1 | \
  sed -e 's/$$$$/\r/' > $$$${pkgidir}/share/man/man1/gpgv.man; \
 man -Tlatin1 -l $$$${pkgidir}/share/man/man7/gnupg.7 | \
  sed `printf "s/_\b//g;s/\b.//g"` | \
- sed -e 's/$$$$/\r/' > $$$${pkgidir}/share/man/man7/gnupg.man; \
-for i in de; do \
- msgfmt --output-file=$$$${pkgidir}/share/gnupg/$$$${i}.mo \
-                               $$$${pkgsdir}/po/$$$${i}.po; \
- done)
+ sed -e 's/$$$$/\r/' > $$$${pkgidir}/share/man/man7/gnupg.man)
 endef
 
 
 # The fields FAQ and faq.html conflict with those in GnuPG1.
-# For now removes them.
+# For now remove them.
 define gpg4win_pkg_gnupg2_post_install	
 ( rm $$$${pkgidir}/share/gnupg/FAQ; \
-  rm $$$${pkgidir}/share/gnupg/faq.html )
+  rm $$$${pkgidir}/share/gnupg/faq.html; \
+  for i in `$(tsdir)/src/potomo --get-linguas $$$${pkgsdir}/po` ; do \
+     $(tsdir)/src/potomo $$$${pkgsdir}/po/$$$${i}.po \
+                      $$$${pkgidir}/share/gnupg/$$$${i}.mo ; \
+  done)
 endef
 
 

@@ -1,0 +1,52 @@
+#!/bin/sh
+# potomo - Convert a .po file to an utf-8 encoded .mo file.
+#
+# This script is used to create the mo files for applications using
+# the simplegetext implementaion as used by GnuPG and some other
+# tools.  That gettext can only cope with utf-8 encoded mo files; thus
+# we make this sure while creating the mo.  A vonversion is not done
+# if the source file does not exist or if it is not newer than the mo
+# file. 
+
+if [ "$1" = "--get-linguas" -a $# -eq 2 ]; then
+   if [ ! -f "$2/LINGUAS" ]; then
+       echo "potomo: directory '$2' has no LINGUAS file" >&2
+       exit 1
+   fi
+   echo $(sed -e "/^#/d" -e "s/#.*//" "$2"/LINGUAS)
+   exit 0
+fi
+
+if [ $# -ne 2 ]; then
+  echo "usage: potomo infile.po outfile.mo" >&2
+  exit 1
+fi
+infile="$1"
+outfile="$2"
+
+if [ ! -f "$infile" ]; then
+  echo "potomo: '$infile' not found - ignored" 2>&1
+  exit 0
+fi
+
+if [ "$outfile" -nt "$infile" ]; then
+  echo "potomo: '$outfile' is newer than source - keeping" 2>&1
+  exit 0
+fi
+  
+fromset=`sed -n '/^"Content-Type:/ s/.*charset=\([a-zA-Z0-9_-]*\).*/\1/p' \
+         "$infile"`
+
+case "$fromset" in 
+    utf8|utf-8|UTF8|UTF-8) 
+        echo "potomo: '$infile' keeping $fromset" >&2 
+        msgfmt --output-file="$outfile" "$infile"
+        ;;   
+    *)
+        echo "potomo: '$infile' converting from $fromset to utf-8" >&2
+        iconv --silent --from-code=$fromset --to-code=utf-8 < "$infile" |\
+            sed "/^\"Content-Type:/ s/charset=[a-zA-Z0-9_-]*/charset=utf-8/"|\
+            msgfmt --output-file="$outfile" -
+        ;;
+esac
+

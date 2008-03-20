@@ -60,8 +60,8 @@ Section "-un.gnupg2"
   RMDir  "$INSTDIR\etc\gnupg"
   RMDir  "$INSTDIR\etc"
 
-#  Delete "$INSTDIR\gnupg.nls\de.mo"
-#  RMDir  "$INSTDIR\gnupg.nls"
+  Delete "$INSTDIR\gnupg.nls\*.mo"
+  RMDir  "$INSTDIR\gnupg.nls"
 
   RMDir "$INSTDIR"
 
