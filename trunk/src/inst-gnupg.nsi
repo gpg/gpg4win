@@ -59,8 +59,13 @@ ${MementoSection} "GnuPG" SEC_gnupg
   # Install the language files for gpg.  Note that the PO files are
   # required to be UTF-8 encoded and that the post-install macro in
   # Makefile.am needs to build them.
-  SetOutPath "$INSTDIR\gnupg.nls"
-  File "${prefix}/share/gnupg/de.mo"
+
+  # Note that we do not install the mo files for gpg1 anymore.  This
+  # is because the build systems can't cope with it (stow conflicts)
+  # and becuase translations for the server version are usually not
+  # required.  Instead we install the gnupg2 mo files.
+  #SetOutPath "$INSTDIR\gnupg.nls"
+
 
   # If requested, install the configured gpg.conf.
   Var /GLOBAL ConfigGPGConf

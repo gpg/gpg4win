@@ -77,8 +77,8 @@ ${MementoSection} "GnuPG2" SEC_gnupg2
   # Install the language files for gpg.  Note that the PO files are
   # required to be UTF-8 encoded and that the post-install macro in
   # Makefile.am needs to build them.
-#  SetOutPath "$INSTDIR\gnupg2.nls"
-#  File "${prefix}/share/gnupg2/de.mo"
+  SetOutPath "$INSTDIR\gnupg2.nls"
+  File /nonfatal "${prefix}/share/gnupg/*.mo"
 
   # If requested, install the configuration files.
   ReadRegStr $0 HKCU "Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders" AppData
