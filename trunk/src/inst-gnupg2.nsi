@@ -66,7 +66,9 @@ ${MementoSection} "GnuPG2" SEC_gnupg2
 
   SetOutPath "$INSTDIR\share\gnupg"
   File "${prefix}/share/gnupg/qualified.txt"
-  File "${prefix}/share/gnupg/com-certs.pem"
+  # Due to problems with kleoptra we currently do not install the
+  # common certificates anymore.
+  #File "${prefix}/share/gnupg/com-certs.pem"
   File "${prefix}/share/gnupg/gpg-conf.skel"
 
   SetOutPath "$INSTDIR\etc\gnupg"
