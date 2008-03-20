@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ngoinabox\n"
 "Report-Msgid-Bugs-To: gpg4win-devel@wald.intevation.org\n"
-"POT-Creation-Date: 2008-03-17 23:26+0100\n"
+"POT-Creation-Date: 2008-03-18 02:25+0100\n"
 "PO-Revision-Date: 2008-03-10 16:46+0100\n"
 "Last-Translator: Fabian Rodriguez <magicfab@member.fsf.org>\n"
 "Language-Team: FRENCH <aep.lists@it46.se>\n"
@@ -16,19 +16,16 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: src/g4wihelp.nsi:21
-#, fuzzy
 msgctxt "T_AlreadyRunning"
 msgid "An instance of this installer is already running."
 msgstr "Une instance de cet installateur fonctionne déjà."
 
 #: src/gpg4win.nsi:117
-#, fuzzy
 msgctxt "T_WelcomeTitleGpg4win"
 msgid "Welcome to the installation of Gpg4win"
 msgstr "Bienvenue à l'installation de Gpg4win"
 
 #: src/gpg4win.nsi:121
-#, fuzzy
 msgctxt "T_AboutGpg4win"
 msgid ""
 "GnuPG is GNU's tool for secure communication and data storage. It can be "
@@ -43,31 +40,26 @@ msgstr ""
 "RFC2440."
 
 #: src/gpg4win.nsi:127
-#, fuzzy
 msgctxt "T_AboutGpg4winVersion"
 msgid "This is Gpg4win version ${VERSION}"
 msgstr "This is Gpg4win version ${VERSION}"
 
 #: src/gpg4win.nsi:130
-#, fuzzy
 msgctxt "T_AboutGpg4winFileVersion"
 msgid "file version ${PROD_VERSION}"
 msgstr "file version ${PROD_VERSION}"
 
 #: src/gpg4win.nsi:133
-#, fuzzy
 msgctxt "T_AboutGpg4winReleaseDate"
 msgid "release date ${_BUILD_ISODATE}"
 msgstr "release date ${_BUILD_ISODATE}"
 
 #: src/gpg4win-src.nsi:76
-#, fuzzy
 msgctxt "T_WelcomeTitleGpg4winSrc"
 msgid "Welcome to the installation of the Gpg4win sources"
 msgstr "Bienvenue à l'installation des sources de Gpg4win"
 
 #: src/gpg4win-src.nsi:80
-#, fuzzy
 msgctxt "T_AboutGpg4winSrc"
 msgid ""
 "GnuPG is GNU's tool for secure communication and data storage. It can be "
@@ -82,31 +74,26 @@ msgstr ""
 "RFC2440."
 
 #: src/gpg4win-src.nsi:86
-#, fuzzy
 msgctxt "T_AboutGpg4winSrcVersion"
 msgid "This is Gpg4win version ${VERSION}"
 msgstr "This is Gpg4win version ${VERSION}"
 
 #: src/gpg4win-src.nsi:89
-#, fuzzy
 msgctxt "T_AboutGpg4winSrcFileVersion"
 msgid "file version ${PROD_VERSION}"
 msgstr "file version ${PROD_VERSION}"
 
 #: src/gpg4win-src.nsi:92
-#, fuzzy
 msgctxt "T_AboutGpg4winSrcReleaseDate"
 msgid "release date ${_BUILD_ISODATE}"
 msgstr "release date ${_BUILD_ISODATE}"
 
 #: src/installer.nsi:217
-#, fuzzy
 msgctxt "T_LangCode"
 msgid "en"
 msgstr "fr"
 
 #: src/installer.nsi:220
-#, fuzzy
 msgctxt "T_GPLHeader"
 msgid ""
 "This software is licensed under the terms of the GNU General Public License "
@@ -116,7 +103,6 @@ msgstr ""
 "(GPL) qui garantit le droit de partager et de modifier les logiciels libres."
 
 #: src/installer.nsi:225
-#, fuzzy
 msgctxt "T_GPLShort"
 msgid ""
 "In short: You are allowed to run this software for any purpose. You may "
@@ -128,68 +114,57 @@ msgstr ""
 "mêmes droits que vous avez"
 
 #: src/installer.nsi:230
-#, fuzzy
 msgctxt "T_RunKeyManager"
 msgid "Run the key manager"
 msgstr "Lancer le gestionnaire de clés"
 
 #: src/installer.nsi:233
-#, fuzzy
 msgctxt "T_MoreInfo"
 msgid "Click here for the project's homepage"
 msgstr "Cliquer ici pour la page d'accueil du projet"
 
 #: src/installer.nsi:235
-#, fuzzy
 msgctxt "T_MoreInfoURL"
 msgid "http://www.gpg4win.org"
 msgstr "http://www.gpg4win.org"
 
 #: src/installer.nsi:237
-#, fuzzy
 msgctxt "T_ShowReadme"
 msgid "Show the README file"
 msgstr "Montrez le dossier de README"
 
 #: src/installer.nsi:240
-#, fuzzy
 msgctxt "T_NoKeyManager"
 msgid "No key manager has been installed, thus we can't run one now."
 msgstr ""
 "Directeur de clés n'a été installé. Impossible de le exécuter maintenant."
 
 #: src/installer.nsi:245
-#, fuzzy
 msgctxt "DESC_Menu_manuals"
 msgid "Documentation"
 msgstr "Guides"
 
 #: src/installer.nsi:249
-#, fuzzy
 msgctxt "DESC_Desktop_manuals"
 msgid "Gpg4win Documentation"
 msgstr "Guides pour l'installation du logiciel Gpg4win"
 
 #: src/installer.nsi:438
-#, fuzzy
 msgctxt "T_InstallOptions"
 msgid "Install Options"
 msgstr "Installer les options"
 
 #: src/installer.nsi:441
-#, fuzzy
 msgctxt "T_InstallOptLinks"
 msgid "Start links"
 msgstr "Démarrage Liens"
 
 #: src/installer.nsi:443
-#, fuzzy
 msgctxt "T_InstOptLabelA"
 msgid "Please select where Gpg4win shall install links:"
 msgstr "Veuillez choisir où Gpg4win installera des liens:"
 
 #: src/installer.nsi:446
-#, fuzzy
 msgctxt "T_InstOptLabelB"
 msgid "(Only programs will be linked into the quick launch bar.)"
 msgstr ""
@@ -197,25 +172,21 @@ msgstr ""
 "lancement.)"
 
 #: src/installer.nsi:449
-#, fuzzy
 msgctxt "T_InstOptFieldA"
 msgid "Start Menu"
 msgstr "Menu Démarrage"
 
 #: src/installer.nsi:452
-#, fuzzy
 msgctxt "T_InstOptFieldB"
 msgid "Desktop"
 msgstr "Desktop"
 
 #: src/installer.nsi:455
-#, fuzzy
 msgctxt "T_InstOptFieldC"
 msgid "Quick Launch Bar"
 msgstr "Barre rapide de Lancement"
 
 #: src/installer.nsi:461
-#, fuzzy
 msgctxt "T_FoundExistingVersion"
 msgid ""
 "Version $R1 has already been installed.\n"
@@ -225,7 +196,6 @@ msgstr ""
 "Voulez-vous la remplacer avec la version ${VERSION}?"
 
 #: src/installer.nsi:464
-#, fuzzy
 msgctxt "T_FoundExistingVersionB"
 msgid ""
 "A version of Gpg4Win has already been installed on the system. There will be "
@@ -239,7 +209,6 @@ msgstr ""
 "Voulez-vous poursuivre l'installation Gpg4win?"
 
 #: src/installer.nsi:475
-#, fuzzy
 msgctxt "T_FoundOldSeeManual"
 msgid ""
 "Please see the Gpg4win user manual to learn how to migrate existing keys "
@@ -249,7 +218,6 @@ msgstr ""
 "déplacer des clés existantes dans une installation GnuPG vers Gpg4win."
 
 #: src/installer.nsi:480
-#, fuzzy
 msgctxt "T_FoundOldGnuPP"
 msgid ""
 "An old installation of GnuPP (GNU Privacy Project) has been been detected.  "
@@ -265,7 +233,6 @@ msgstr ""
 "installation plus tard?"
 
 #: src/installer.nsi:489
-#, fuzzy
 msgctxt "T_FoundOldGnuPT"
 msgid ""
 "An installation of GnuPT has been been detected.  This may cause problems "
@@ -279,7 +246,6 @@ msgstr ""
 "Voulez-vous continuer d'installer Gpg4win?"
 
 #: src/installer.nsi:496
-#, fuzzy
 msgctxt "T_FoundOldWinPTSF"
 msgid ""
 "An old installation of the Sourceforge hosted WinPT has been been detected.  "
@@ -295,7 +261,6 @@ msgstr ""
 "installation plus tard?"
 
 #: src/installer.nsi:506
-#, fuzzy
 msgctxt "T_FoundOldGnuPack"
 msgid ""
 "An installation of GnuPG-Pack has been been detected. You need to uninstall "
@@ -309,7 +274,6 @@ msgstr ""
 "L'installation sera annulée maintenant!"
 
 #: src/installer.nsi:515
-#, fuzzy
 msgctxt "T_AdminNeeded"
 msgid ""
 "Warning: Administrator permissions required for a successful installation"
@@ -318,7 +282,6 @@ msgstr ""
 "réussie"
 
 #: src/installer.nsi:519
-#, fuzzy
 msgctxt "T_CloseOtherApps"
 msgid ""
 "Please make sure that other applications are not running. In particular you "
@@ -331,62 +294,52 @@ msgstr ""
 "sera exigé alors."
 
 #: src/installer.nsi:524
-#, fuzzy
 msgctxt "T_ShuttingDownWinPT"
 msgid "Trying to shutdown a possible running instance of WinPT."
 msgstr "Essayant à l'arrêt un instance courant possible de WinPT."
 
 #: src/installer.nsi:526
-#, fuzzy
 msgctxt "T_ShuttingDownDirMngr"
 msgid "Trying to shutdown a possible running instance of DirMngr."
 msgstr "Essayant à l'arrêt un instance courant possible de DirMngr."
 
 #: src/inst-claws-mail.nsi:53
-#, fuzzy
 msgctxt "DESC_SEC_claws_mail"
 msgid "Claws Mail-User-Agent"
 msgstr "Claws Mail-User-Agent"
 
 #: src/inst-claws-mail.nsi:56
-#, fuzzy
 msgctxt "DESC_Menu_claws_mail"
 msgid "Run the Claws mailprogram."
 msgstr "Courez le Claws mailprogram."
 
 #: src/inst-claws-mail.nsi:59
-#, fuzzy
 msgctxt "DESC_Menu_claws_mail_pdf"
 msgid "Show the online manual of Claws Mail"
 msgstr "Montrez le guide en ligne du Claws Mail"
 
 #: src/inst-eudoragpg.nsi:40
-#, fuzzy
 msgctxt "DESC_SEC_eudoragpg"
 msgid "EudoraGPG is a plugin for the Eudora mail program"
 msgstr ""
 "EudoraGPG est un plugin pour le logiciel de courrier électronique d'Eudora"
 
 #: src/inst-gnupg2.nsi:111
-#, fuzzy
 msgctxt "DESC_SEC_gnupg2"
 msgid "GNU Privacy Guard with S/MIME support"
 msgstr "GNU Privacy Guard avec l'appui de S/MIME"
 
 #: src/inst-gnupg.nsi:95
-#, fuzzy
 msgctxt "DESC_SEC_gnupg"
 msgid "GNU Privacy Guard"
 msgstr "GNU Privacy Guard"
 
 #: src/inst-gpa.nsi:74
-#, fuzzy
 msgctxt "DESC_SEC_gpa"
 msgid "GNU Privacy Assistant"
 msgstr "GNU Privacy Assistant"
 
 #: src/inst-gpa.nsi:77
-#, fuzzy
 msgctxt "DESC_Menu_gpa"
 msgid ""
 "Run the GNU Privacy Assistant key management tool. This is an alternative to "
@@ -396,19 +349,16 @@ msgstr ""
 "alternative à l'outil de gestion de clé de WinPT."
 
 #: src/inst-gpg4win.nsi:43
-#, fuzzy
 msgctxt "DESC_Menu_gpg4win_readme"
 msgid "General information on Gpg4Win"
 msgstr "Informations générales sur Gpg4Win"
 
 #: src/inst-gpg4win.nsi:46
-#, fuzzy
 msgctxt "DESC_Menu_gnupg_faq"
 msgid "Show the Frequently Asked Questions Document for GnuPG"
 msgstr "Montrez le document fréquemment demandé de questions pour GnuPG"
 
 #: src/inst-gpgee.nsi:65
-#, fuzzy
 msgctxt "T_GPGee_RegFailed"
 msgid "Warning: Registration of the GPGee explorer extension failed."
 msgstr ""
@@ -416,105 +366,88 @@ msgstr ""
 "échoué."
 
 #: src/inst-gpgee.nsi:68
-#, fuzzy
 msgctxt "DESC_SEC_gpgee"
 msgid "GPG Explorer Extensions"
 msgstr "GPG Explorer Extensions"
 
 #: src/inst-gpgee.nsi:71
-#, fuzzy
 msgctxt "DESC_Menu_gpgee_hlp"
 msgid "Show the online manual of GPGee"
 msgstr "Montrez le guide en ligne de GPGee"
 
 #: src/inst-gpgex.nsi:74
-#, fuzzy
 msgctxt "T_GpgEX_RegFailed"
 msgid "Warning: Registration of the GpgEX plugin failed."
 msgstr "Avertissement : Enregistrement du plugin de GpgEX échoué."
 
 #: src/inst-gpgex.nsi:77
-#, fuzzy
 msgctxt "DESC_SEC_gpgex"
 msgid "GnuPG Shell Extension"
 msgstr "GnuPG Shell Extension"
 
 #: src/inst-gpgol.nsi:57
-#, fuzzy
 msgctxt "T_GpgOL_RegFailed"
 msgid "Warning: Registration of the GpgOL Outlook pluginfailed."
 msgstr ""
 "Avertissement : Enregistrement du plugin de perspectives de GpgOL échoué."
 
 #: src/inst-gpgol.nsi:60
-#, fuzzy
 msgctxt "DESC_SEC_gpgol"
 msgid "GnuPG for Outlook"
 msgstr "GnuPG pour Outlook"
 
 #: src/inst-kleopatra.nsi:186
-#, fuzzy
 msgctxt "DESC_SEC_kleopatra"
 msgid "Kleopatra"
 msgstr "Kleopatra"
 
 #: src/inst-kleopatra.nsi:189
-#, fuzzy
 msgctxt "DESC_Menu_kleopatra"
 msgid "Run the Kleopatra key management tool."
 msgstr "Courez l'outil de gestion de clé de Kleopatra."
 
 #: src/inst-man_advanced_de.nsi:39
-#, fuzzy
 msgctxt "DESC_Name_man_advanced_de"
 msgid "Advanced Manual (German)"
 msgstr "Guide Avançé (Allemand)"
 
 #: src/inst-man_advanced_de.nsi:42
-#, fuzzy
 msgctxt "DESC_SEC_man_advanced_de"
 msgid "Gpg4Win Manual for the Advanced User (German)"
 msgstr "Gpg4Win Guide pour l'utilisateur avançé (Allemand)"
 
 #: src/inst-man_advanced_de.nsi:45
-#, fuzzy
 msgctxt "DESC_Menu_man_advanced_de"
 msgid "Show the German online manual of Gpg4Win for advanced users"
 msgstr ""
 "Montrez le guide en ligne allemand de Gpg4Win pour les utilisateurs avançés"
 
 #: src/inst-man_advanced_en.nsi:39
-#, fuzzy
 msgctxt "DESC_Name_man_advanced_en"
 msgid "Advanced Manual"
 msgstr "Guide Avançé"
 
 #: src/inst-man_advanced_en.nsi:42
-#, fuzzy
 msgctxt "DESC_SEC_man_advanced_en"
 msgid "Gpg4Win Manual for the Advanced User"
 msgstr "Guide de Gpg4Win pour l'utilisateur avançé"
 
 #: src/inst-man_advanced_en.nsi:45
-#, fuzzy
 msgctxt "DESC_Menu_man_advanced_en"
 msgid "Show the online manual of Gpg4Win for advanced users"
 msgstr "Montrez le guide en ligne de Gpg4Win pour les utilisateurs avançés"
 
 #: src/inst-man_novice_de.nsi:39
-#, fuzzy
 msgctxt "DESC_Name_man_novice_de"
 msgid "Novice Manual (German)"
 msgstr "Gpg4Win Guide du débutant (Allemand)"
 
 #: src/inst-man_novice_de.nsi:42
-#, fuzzy
 msgctxt "DESC_SEC_man_novice_de"
 msgid "Gpg4Win Manual for the Novice User (German)"
 msgstr "Guide de Gpg4Win pour l'utilisateur de débutant (Allemand)"
 
 #: src/inst-man_novice_de.nsi:45
-#, fuzzy
 msgctxt "DESC_Menu_man_novice_de"
 msgid "Show the German online manual of Gpg4Win for novice users"
 msgstr ""
@@ -522,49 +455,41 @@ msgstr ""
 "débutant"
 
 #: src/inst-man_novice_en.nsi:39
-#, fuzzy
 msgctxt "DESC_Name_man_novice_en"
 msgid "Novice Manual"
 msgstr "Guide de débutant"
 
 #: src/inst-man_novice_en.nsi:42
-#, fuzzy
 msgctxt "DESC_SEC_man_novice_en"
 msgid "Gpg4Win Manual for the Novice User"
 msgstr "Guide de Gpg4Win pour l'utilisateur de débutant"
 
 #: src/inst-man_novice_en.nsi:45
-#, fuzzy
 msgctxt "DESC_Menu_man_novice_en"
 msgid "Show the online manual of Gpg4Win for novice users"
 msgstr "Montrez le guide en ligne de Gpg4Win pour des utilisateurs de débutant"
 
 #: src/inst-sylpheed-claws.nsi:51
-#, fuzzy
 msgctxt "DESC_SEC_sylpheed"
 msgid "Sylpheed-Claws Mail-User-Agent"
 msgstr "Sylpheed-Claws Mail-User-Agent"
 
 #: src/inst-sylpheed-claws.nsi:54
-#, fuzzy
 msgctxt "DESC_Menu_sylpheed"
 msgid "Run the Sylpheed-Claws mailprogram."
 msgstr "Courez le Sylpheed-Claws mailprogram."
 
 #: src/inst-sylpheed-claws.nsi:57
-#, fuzzy
 msgctxt "DESC_Menu_sylpheed_pdf"
 msgid "Show the online manual of Sylpheed Claws"
 msgstr "Montrez le manuel en ligne de Sylpheed Claws"
 
 #: src/inst-winpt.nsi:46
-#, fuzzy
 msgctxt "DESC_SEC_winpt"
 msgid "Windows Privacy Tray"
 msgstr "Windows Privacy Tray"
 
 #: src/inst-winpt.nsi:49
-#, fuzzy
 msgctxt "DESC_Menu_winpt"
 msgid ""
 "Run the Windows Privacy Tray key management tool. This is a versatile key "
