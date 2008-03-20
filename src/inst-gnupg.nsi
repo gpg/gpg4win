@@ -80,7 +80,9 @@ ${MementoSection} "GnuPG" SEC_gnupg
   # applications.
   # Note: We don't use it anymore so that gpgme decides what gpg to use
   #       For the new gpg4win we actually use gpg2.exe.
-  #       To cope with old installations we actually remove this vale.
+  #       To cope with old installations we actually remove this value.
+  #       However we can only remove the HKLM version not those set by
+  #       the user under HKCU.
   #WriteRegStr HKLM "Software\GNU\GnuPG" "gpgProgram" "$INSTDIR\gpg.exe"
   DeleteRegValue HKLM "Software\GNU\GnuPG" "gpgProgram"
 
