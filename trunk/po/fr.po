@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ngoinabox\n"
 "Report-Msgid-Bugs-To: gpg4win-devel@wald.intevation.org\n"
-"POT-Creation-Date: 2008-03-18 02:25+0100\n"
+"POT-Creation-Date: 2008-03-21 15:32+0100\n"
 "PO-Revision-Date: 2008-03-10 16:46+0100\n"
 "Last-Translator: Fabian Rodriguez <magicfab@member.fsf.org>\n"
 "Language-Team: FRENCH <aep.lists@it46.se>\n"
@@ -324,12 +324,12 @@ msgid "EudoraGPG is a plugin for the Eudora mail program"
 msgstr ""
 "EudoraGPG est un plugin pour le logiciel de courrier électronique d'Eudora"
 
-#: src/inst-gnupg2.nsi:111
+#: src/inst-gnupg2.nsi:113
 msgctxt "DESC_SEC_gnupg2"
 msgid "GNU Privacy Guard with S/MIME support"
 msgstr "GNU Privacy Guard avec l'appui de S/MIME"
 
-#: src/inst-gnupg.nsi:95
+#: src/inst-gnupg.nsi:102
 msgctxt "DESC_SEC_gnupg"
 msgid "GNU Privacy Guard"
 msgstr "GNU Privacy Guard"
