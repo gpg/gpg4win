@@ -238,8 +238,8 @@ chk  1c6d0fbf684d0075e32c07add0c2b4079810b0c6
 #chk  e74a770a58f08ba02f311d16c5debe79c218ee5d
 
 server ftp://ftp.g10code.com/g10code/scratch
-file w32pth-2.0.2-svn21.tar.bz2
-chk  773ba05106bc8a973fbe83975818fc46dc0865a9
+file w32pth-2.0.2-svn23.tar.bz2
+chk  05cd7a2ce328b089dd080d1680e7cc27bcf9f772
 
 #
 # Stripped down version of BZIP2
@@ -287,8 +287,8 @@ name gnupg2-2.0.9-svn4695.tar.bz2
 file gnupg-2.0.9-svn4695.tar.bz2
 chk  6fd61827493b73bf3b95a9e88fa4469c44602ae0  
 
-file libassuan-1.0.5-svn282.tar.bz2
-chk  469eb78734c7b3be4d347ef9657ef5632224b08e
+file libassuan-1.0.5-svn283.tar.bz2
+chk  4414de1e42c0ce328fc2819529700ba2d055348e
 
 
 #
