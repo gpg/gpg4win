@@ -238,8 +238,8 @@ chk  1c6d0fbf684d0075e32c07add0c2b4079810b0c6
 #chk  e74a770a58f08ba02f311d16c5debe79c218ee5d
 
 server ftp://ftp.g10code.com/g10code/scratch
-file w32pth-2.0.2-svn20.tar.bz2
-chk  bdfe75e343a4152e390ff46d9629d8fb578dcd3e  
+file w32pth-2.0.2-svn21.tar.bz2
+chk  773ba05106bc8a973fbe83975818fc46dc0865a9
 
 #
 # Stripped down version of BZIP2
@@ -271,17 +271,14 @@ chk  7a4b3a8340087ed360269b567881ebfb9b67441b
 file libgcrypt/libgcrypt-1.4.0.tar.bz2
 chk  cd1b52e8ecfa361737c6f130ed2f1d850e312c16
 
-file libassuan/libassuan-1.0.4.tar.bz2
-chk  4b720706a8e4251d8cb7a0f2336226907df1426c
-
 file pinentry/pinentry-0.7.5.tar.gz
 chk  6699a1ff94c649e8905199d480c6412cc43bad3d 
 
 # (Snapshots)
 server ftp://ftp.g10code.com/g10code/scratch
 
-file dirmngr-1.0.2-svn293.tar.bz2
-chk  1e487d09071b4f4579fe7254e97e4baf543f9ff2
+file dirmngr-1.0.2-svn297.tar.bz2
+chk  6140c65d71af3349bfaccdccdc4d89f25399f2f9
 
 file gpgme-1.1.7-svn1304.tar.bz2
 chk  005dc484aa48766fd9d8acd27d092a6ed84f3a01
@@ -289,6 +286,9 @@ chk  005dc484aa48766fd9d8acd27d092a6ed84f3a01
 name gnupg2-2.0.9-svn4695.tar.bz2
 file gnupg-2.0.9-svn4695.tar.bz2
 chk  6fd61827493b73bf3b95a9e88fa4469c44602ae0  
+
+file libassuan-1.0.5-svn282.tar.bz2
+chk  469eb78734c7b3be4d347ef9657ef5632224b08e
 
 
 #
@@ -300,8 +300,9 @@ chk  6fd61827493b73bf3b95a9e88fa4469c44602ae0
 #chk  bb9182cd4c6bd6677ba9cdcca262dcc1b1d22c3c
 
 server ftp://ftp.g10code.com/g10code/scratch
-file gpa-0.7.7-svn841.tar.bz2
-chk  1af1c5db3762f9ea8e6a4acfd5be20f1daea4945  
+file gpa-0.7.7-svn859.tar.bz2
+chk  3f855b5dcae2159602cfad7d5757f776fa5532e9
+
 
 #
 # Qt
@@ -372,8 +373,8 @@ chk  faea48f857c5def91e211efc5b165106d11176e8
 
 server ftp://ftp.kdab.net/pub/gpg4win
 
-file kleopatra-20080318-bin.zip
-chk  edcb6c967cb5035ebf242eaab9e5500c56817197
+file kleopatra-20080318-2-bin.zip
+chk  8aba41ccf0b496c9a5c5048e29e8a794e93017c5
 
-file kleopatra-20080318-src.zip
+file kleopatra-20080318-2-src.zip
 chk  ea7406a62fe4553cae18b0a0874705440ae016ba

@@ -1,3 +1,8 @@
+2008-03-21  Marcus Brinkmann  <marcus@g10code.de>
+
+	* packages/packages.current: Update gpa, libassuan, w32pth, gpa,
+	kleopatra.
+
 2008-03-20  Werner Koch  <wk@g10code.com>
 
 	* src/potomo: New.
@@ -6,13 +11,13 @@
 	(gpg4win_pkg_gnupgw_post_install): Convert po files.
 	(EXTRA_DIST): Include potomo.
 	* src/inst-gnupg2.nsi: Install all available mo files.
-	
 	* src/inst-gnupg2.nsi: Do not install com-certs.pem.
 
 2008-03-19  Werner Koch  <wk@g10code.com>
 
 	* packages/packages.current: Update GpgOL.
 
+>>>>>>> .r748
 2008-03-18  Marcus Brinkmann  <marcus@g10code.de>
 
 	* packages/packages.current: Update kleopatra and kdelibs.
