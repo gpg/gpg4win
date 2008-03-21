@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gpg4win 1.1.1-svn417\n"
 "Report-Msgid-Bugs-To: gpg4win-devel@wald.intevation.org\n"
-"POT-Creation-Date: 2008-03-17 23:26+0100\n"
+"POT-Creation-Date: 2008-03-21 15:32+0100\n"
 "PO-Revision-Date: 2008-02-28 11:40+0100\n"
 "Last-Translator: Marcus Brinkmann <mb@g10code.com>\n"
 "Language-Team: German <translation-team-de@lists.sourceforge.net>\n"
@@ -355,7 +355,7 @@ msgid "EudoraGPG is a plugin for the Eudora mail program"
 msgstr ""
 "EudoraGPG ist ein Plugin zur Verschlüsselung für das Eudora Mailprogramm"
 
-#: src/inst-gnupg2.nsi:111
+#: src/inst-gnupg2.nsi:113
 msgctxt "DESC_SEC_gnupg2"
 msgid "GNU Privacy Guard with S/MIME support"
 msgstr ""
@@ -363,7 +363,7 @@ msgstr ""
 "Verschlüsselung mittels S/MIME bereitzustellen.  Bitte beachten Sie, daß "
 "diese Option noch nicht vollständig unterstützt ist."
 
-#: src/inst-gnupg.nsi:95
+#: src/inst-gnupg.nsi:102
 msgctxt "DESC_SEC_gnupg"
 msgid "GNU Privacy Guard"
 msgstr ""
