@@ -1,7 +1,7 @@
 Wichtige Informationen zum Einsatz von Gpg4win 1.9-BETA
 =======================================================
 
-Stand: Gpg4win-1.9.0-svn709 (20080214)
+Stand: Gpg4win-1.9.0-svn753 (20080324)
 
 Hier finden sich wichtige Informationen die bei der
 Entscheidung helfen sollen, ob Gpg4win 1.9 schon für
@@ -15,24 +15,27 @@ Die 1.9er Versionen sind der Beta-Test-Zyklus. Ist er
 abgeschlossen wird Version 2.0 freigegeben.
 
 
-Wesentliche Probleme der vorliegenden Version
----------------------------------------------
+Wichtige Hinweise zur vorliegenden Version
+------------------------------------------
 
-- Entschlüsselung InlinePGP: Die E-Mails werden
-  einmnalig entschlüsselt, aber dann zerstört.
-  Also unbedingt solche E-Mails vorher sichern.
+- Probleme mit Verzeichnisdienst "DirMngr":
+  Es kann sein, dass der Dienst "DirMngr" bei
+  S/MIME-Operationen sehr lange Laufzeiten zeigt.
 
-- Für die Verwendung von S/MIME sind die CRL-Prüfungen
+  In diesem Fall sind für die Verwendung von S/MIME die CRL-Prüfungen
   auszuschalten: "GPG for S/MIME: never consult a CRL"
   und "Gpg Agent: allow clients to mark keys as trusted" zu aktivieren.
-  (beides im GnuPG Konfiguration-Dialog von Kleopatra)
+  (beides im "GnuPG Backend einrichten" Konfiguration-Dialog von Kleopatra)
   Danach neu einloggen um die Änderung zu aktivieren.
 
-- S/MIME Opak: Signierte und(!) verschlüsselte
-  E-Mails können nicht verarbeitet werden.
+- Deutsche Sprachunterstützung:
+  Ist noch nicht in allen Bereichen realisiert.
+  Teilweise sind Dialoge daher in englisch oder
+  deutsch/englisch gemischt.
 
-- An sich selbst verschlüsseln: man muss unbedingt
-  für OpenPGP und S/MIME seine Zertifikate konfigurieren
+- An sich selbst verschlüsseln:
+  Es ist unbedingt empfehlenswert für OpenPGP und S/MIME
+  seine Zertifikate konfigurieren
   für die die Emails auch immer verschlüsselt werden sollen.
   Dazu jeweils im GnuPG Konfigurations-Dialog von Kleopatra
   "GPG for S/MIME: encrypt to user ID NAME as well" und
@@ -40,6 +43,32 @@ Wesentliche Probleme der vorliegenden Version
   jeweils den Fingerprint des jeweiligen Zertifikates
   einfügen.
 
+- Konfiguration für S/MIME:
+  Für die Inbetriebnahme sind folgende Schritte
+  durchzuführen:
+  * Den persönlichen geheimen Schlüssel als P12-Datei
+    über Kleopatra importieren (Menü Datei->Zertifikate
+    importieren)
+  * Die zum geheimen Schlüssel zugehörige Zertifikatskette
+    als P7C-Datei importieren. Es werden auch andere
+    Suffixes für solche Dateien verwendet. Einfach über
+    das gleiche Menü wie die P12-Datei importieren.
+    Typischerweise besteht die Kette aus dem Wurzel-Zertifkat,
+    einem CA-Zertifikat und dem persönlichen Zertifikat.
+  * Alle sonstigen wichtigen Zertifikate, z.B. von
+    Kommunikationspartner auf die gleiche Weise importieren
+    (am besten jeweils mit der kompletten Kette)
+  * Wurzelzertifkate als Vertrauenswürdig markieren:
+    Haben Sie wie oben beschrieben "Gpg Agent: allow clients
+    to mark keys as trusted" aktiviert, so werden Sie
+    beim Gebrauch eines bisher nicht vertrauenswürdig
+    eingestuften Wurzel-Zertifkats gefragt, ob Sie es
+    nun als Vertrauenswürdig einstufen wollen.
+    Ansonsten wird das Vetrauen in Wurzel-Zertifkate wie folgt
+    ausgesprochen:
+    TODO
+  * Hinweis: Eine Erstellung *neuer* S/MIME-Schlüssel ist
+    noch nicht vollständig in Kleopatra implementiert.
 
 Migration
 ---------
@@ -91,46 +120,44 @@ Aktualisiert:
       Kleopatra verwendet. Kleopatra bietet einheitliche
       Dialoge für Krypto-Operationen.
 
-  * Zustand der Operationen (getestet: einfache E-Mails ohne Anhänge):
-    - Signatur-Prüfung inline-OpenPGP: Grundsätzlich funktional
-    - Signatur-Prüfung OpenPGP/MIME: Grundsätzlich funktional
-    - Signatur-Prüfung S/MIME Opaque: Grundsätzlich funktional
-    - Signatur-Prüfung S/MIME: Grundsätzlich funktional
-    - Entschlüsselung inline-OpenPGP: Grundsätzlich funktional
-    - Entschlüsselung OpenPGP/MIME: Grundsätzlich funktional
-    - Entschlüsselung S/MIME Opaque: Grundsätzlich funktional
-    - Entschlüsselung S/MIME: Grundsätzlich funktional
-    - Signatur-Prüfung und Entschlüsselung inline-OpenPGP: nicht geprüft
-      (Test-E-Mails nicht auf einfache Weise herstellbar)
-    - Signatur-Prüfung und Entschlüsselung OpenPGP/MIME: Grundsätzlich funktional
-    - Signatur-Prüfung und Entschlüsselung S/MIME Opaque: Funktion defekt
-    - Signatur-Prüfung und Entschlüsselung S/MIME: Grundsätzlich funktional
+  * Zustand der Operationen
+  * Folgende Operationen sind als grundsätzlich
+    funktional gestestet (einfache E-Mails ohne Anhänge):
+    - Signatur-Prüfung inline-OpenPGP
+    - Signatur-Prüfung OpenPGP/MIME
+    - Signatur-Prüfung S/MIME Opaque
+    - Signatur-Prüfung S/MIME
+    - Entschlüsselung inline-OpenPGP
+    - Entschlüsselung OpenPGP/MIME
+    - Entschlüsselung S/MIME Opaque
+    - Entschlüsselung S/MIME
+    - Signatur-Prüfung und Entschlüsselung inline-OpenPGP
+    - Signatur-Prüfung und Entschlüsselung OpenPGP/MIME
+    - Signatur-Prüfung und Entschlüsselung S/MIME Opaque
+    - Signatur-Prüfung und Entschlüsselung S/MIME
 
-    - Signatur OpenPGP/MIME: Grundsätzlich funktional
-    - Signatur S/MIME: Grundsätzlich funktional
-    - Verschlüsselung OpenPGP/MIME: Grundsätzlich funktional
-    - Verschlüsselung S/MIME: Grundsätzlich funktional
-    - Signatur und Verschlüsselung OpenPGP/MIME: Grundsätzlich funktional
-    - Signatur und Verschlüsselung S/MIME: Grundsätzlich funktional
+    - Signatur OpenPGP/MIME
+    - Signatur S/MIME
+    - Verschlüsselung OpenPGP/MIME
+    - Verschlüsselung S/MIME
+    - Signatur und Verschlüsselung OpenPGP/MIME
+    - Signatur und Verschlüsselung S/MIME
 
 Neu:
 
 - GpgEX: Das neue Plugin für Microsoft Explorer.
 
-  Nicht funktionale OpenPGP Methoden müssen z.B. über GPA ausgeführt werden.
-  Für S/MIME gibt es keine Alternative.
+  Folgende Operationen sind als grundsätzlich
+  funktional gestestet:
 
-  * Verifizieren OpenPGP: Grundsätzlich funktional.
-  * Verifizieren S/MIME: Grundsätzlich funktional.
-
-  * Verschlüsseln OpenPGP: Grundsätzlich funktional.
-  * Verschlüsseln SMIME: Grundsätzlich funktional
-
-  * Entschlüsseln OpenPGP: Grundsätzlich funktional.
-  * Entschlüsseln S/MIME: Grundsätzlich funktional
-
-  * Signieren OpenPGP: Grundsätzlich funktional.
-  * Signieren S/MIME: Grundsätzlich funktional.
+  * Verifizieren OpenPGP
+  * Verifizieren S/MIME
+  * Verschlüsseln OpenPGP
+  * Verschlüsseln SMIME
+  * Entschlüsseln OpenPGP
+  * Entschlüsseln S/MIME
+  * Signieren OpenPGP
+  * Signieren S/MIME
 
 
 - Kleopatra: Der neue Zertifikatsmanager
@@ -148,17 +175,19 @@ Neu:
     Icon im System-Tray) sobald dessen Dienste einmal im Verlauf
     der Sitzung abgefragt wurden.
 
-  * Kleopatra ist noch in Entwicklung: Die bei Gpg4win enthaltene
-    Version ist nicht in deutsch und bietet bisher nur die Liste der
-    vorliegenden Zertifikate.
+  * Kleopatra ist noch in Entwicklung: Alle wesentlichen
+    Funktionalitäten, aber es fehlen noch einzelne für S/MIME
+    und diverse für OpenPGP. Für OpenPGP kann alternativ auf
+    GPA oder WinPT zurückgegriffen werden.
 
-  * Die einzelnen Krypto-Dialoge sind noch nicht vollständig implementiert,
-    stattdessen sind teilweise Platzhalter-Dialoge mit eingeschränkter
-    Funktionalität enthalten.
+  * Eine Überabreitung der einzelnen Krypto-Dialoge
+    (z.B. für Verschlüsselung oder Signatur-Prüfung) ist derezit
+    noch in Arbeit. Teilweise erscheinen sie daher nicht
+    aufgeräumt/optimal.
 
 
-Bekannte Fehler
----------------
+Einige Bekannte Fehler
+----------------------
 
 Berichtet zu svn684:
 
@@ -166,9 +195,6 @@ Berichtet zu svn684:
   http://bugs.kde.org/show_bug.cgi?id=156483
 
 Berichtet zu svn615:
-
-* GpgOL: does not decrypt inline-PGP received prior to Gpg4win-1.9.0
-  https://bugs.g10code.com/gnupg/issue861
 
 * Claws Mail: Freezes if password dialog is cancelled
   http://wald.intevation.org/tracker/index.php?func=detail&aid=548&group_id=11&atid=126
