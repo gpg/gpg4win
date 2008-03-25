@@ -41,6 +41,11 @@ Section "-un.dirmngr"
   Delete "$INSTDIR\dirmngr_ldap.exe"
   RMDir "$INSTDIR\cache"
 
+  # Remove the extra-certs directory.  Obviously this works only if the
+  # user has not populated it.
+  RMDir "$INSTDIR\lib\dirmngr\extra-certs"
+  RMDir "$INSTDIR\lib\dirmngr"
+
   # Remove etc files.
 
   Delete "$INSTDIR\etc\dirmngr\dirmngr.conf"
