@@ -1,7 +1,7 @@
 Wichtige Informationen zum Einsatz von Gpg4win 1.9-BETA
 =======================================================
 
-Stand: Gpg4win-1.9.0-svn753 (20080324)
+Stand: Gpg4win-1.9.0-svn755 (20080325)
 
 Hier finden sich wichtige Informationen die bei der
 Entscheidung helfen sollen, ob Gpg4win 1.9 schon für
@@ -18,14 +18,12 @@ abgeschlossen wird Version 2.0 freigegeben.
 Wichtige Hinweise zur vorliegenden Version
 ------------------------------------------
 
-- Probleme mit Verzeichnisdienst "DirMngr":
-  Es kann sein, dass der Dienst "DirMngr" bei
-  S/MIME-Operationen sehr lange Laufzeiten zeigt.
-
-  In diesem Fall sind für die Verwendung von S/MIME die CRL-Prüfungen
-  auszuschalten: "GPG for S/MIME: never consult a CRL"
-  und "Gpg Agent: allow clients to mark keys as trusted" zu aktivieren.
-  (beides im "GnuPG Backend einrichten" Konfiguration-Dialog von Kleopatra)
+- Markierung der Vertrauenswürdigkeit von Wurzel-Zertifkaten:
+  Wird entweder systemweit durch den Administrator vorgegeben
+  oder durch die Anwender gesteuert.
+  Für letzterees ist folgende Einstellung hilfreich:
+  "Gpg Agent: allow clients to mark keys as trusted" aktivieren im
+  "GnuPG Backend einrichten" Konfiguration-Dialog von Kleopatra.
   Danach neu einloggen um die Änderung zu aktivieren.
 
 - Deutsche Sprachunterstützung:
@@ -42,6 +40,16 @@ Wichtige Hinweise zur vorliegenden Version
   "GPG for OpenPGP: encrypt to user ID NAME as well"
   jeweils den Fingerprint des jeweiligen Zertifikates
   einfügen.
+
+- Anwender als Adminstrator:
+  Getested wurde bisher mit einem Anwender der gleichzeitig
+  als Administator eingestuft ist (unter Windows so voreingestellt).
+  Ist das nicht der Fall kann es zu Problemen bei
+  der Verwendung des DirMngr kommen.
+  Man kann dies umgehen in dem man z.B. die CRL-Prüfungen ausschaltet:
+  "GPG for S/MIME: never consult a CRL" aktivieren im
+  "GnuPG Backend einrichten" Konfiguration-Dialog von Kleopatra.
+  Danach neu einloggen um die Änderung zu aktivieren.
 
 - Konfiguration für S/MIME:
   Für die Inbetriebnahme sind folgende Schritte
@@ -64,11 +72,26 @@ Wichtige Hinweise zur vorliegenden Version
     beim Gebrauch eines bisher nicht vertrauenswürdig
     eingestuften Wurzel-Zertifkats gefragt, ob Sie es
     nun als Vertrauenswürdig einstufen wollen.
-    Ansonsten wird das Vetrauen in Wurzel-Zertifkate wie folgt
-    ausgesprochen:
-    TODO
+    Beachten Sie, dass der gpg-agent neu gestartet
+    werden muss, z.B: durch ausloggen und wieder einloggen.
+    Zusätzlich wird das Vetrauen in Wurzel-Zertifkate für den
+    DirMngr wie folgt ausgesprochen:
+    Die entsprechenden Wurzel-Zertifikate müssen als DER-Dateien
+    mit Dateinamen-Endung ".crt" im Verzeichnis
+    %INSTALL_DIR%\etc\dirmngr\trusted-certs\
+    abgelegt werden.
   * Hinweis: Eine Erstellung *neuer* S/MIME-Schlüssel ist
     noch nicht vollständig in Kleopatra implementiert.
+
+- Verwendung von Outlook Plugin "GpgOL":
+  * Sie Sollten unbedingt Sicherheitskopien Ihrere alten
+    Verschlüsselten/Signierten E-Mails, z.B. in PST-Dateien
+    machen!
+  * Verschlüsselte E-Mails unverschlüsselt auf Server:
+    Es kann vorkommen, dass versschlüsselte E-Mails
+    in entschlüsselter Form auf dem E-Mail-Server
+    zu liegen kommen.
+
 
 Migration
 ---------
@@ -80,6 +103,10 @@ empfohlen hat.
 Ansonsten wird es zwangsläufig zu Fehlfunktionen
 bei Verschlüsselungsoperationen kommen.
 
+Sollte Gpg4win 1.x oder irgendeine andere GnuPG Installation
+auf Ihrem System installiert gewesen sein, so muss ein ggf. noch
+zurückgebliebener Registry-Eintrage entfernt werden:
+HKCU\Software\GNU\GnuPG\gpgProgramm
 
 Komponenten von Gpg4win 1.9 und ihr Status
 ------------------------------------------
