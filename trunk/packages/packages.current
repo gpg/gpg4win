@@ -238,8 +238,8 @@ chk  1c6d0fbf684d0075e32c07add0c2b4079810b0c6
 #chk  e74a770a58f08ba02f311d16c5debe79c218ee5d
 
 server ftp://ftp.g10code.com/g10code/scratch
-file w32pth-2.0.2-svn23.tar.bz2
-chk  05cd7a2ce328b089dd080d1680e7cc27bcf9f772
+file w32pth-2.0.2-svn24.tar.bz2
+chk  9f68a7bf5bae408978b3f3b899655dfa79cb6cb2
 
 #
 # Stripped down version of BZIP2
