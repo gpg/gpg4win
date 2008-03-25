@@ -41,6 +41,9 @@ Section "-dirmngr" SEC_dirmngr
   File "${prefix}/bin/dirmngr-client.exe"
   File "${prefix}/libexec/dirmngr_ldap.exe"
 
+  # Create a directory for extra certs for documentation reasons.
+  SetOutPath "$INSTDIR\lib\dirmngr\extra-certs"
+
   # Note: The make-msi.pl script ignores the following line, which is
   # ok, because the Windows installer does not override locally
   # modified files.

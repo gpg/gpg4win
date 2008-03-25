@@ -1,3 +1,8 @@
+2008-03-25  Werner Koch  <wk@g10code.com>
+
+	* src/inst-dirmngr.nsi: Create empty extra-certs directory.
+	* src/uninst-dirmngr.nsi: Delete it.
+
 2008-03-25  Marcus Brinkmann  <marcus@g10code.de>
 
 	* packages/packages.current: Update w32pth.
@@ -23,7 +28,6 @@
 
 	* packages/packages.current: Update GpgOL.
 
->>>>>>> .r748
 2008-03-18  Marcus Brinkmann  <marcus@g10code.de>
 
 	* packages/packages.current: Update kleopatra and kdelibs.

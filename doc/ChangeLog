@@ -1,3 +1,8 @@
+2008-03-25  Werner Koch  <wk@g10code.com>
+
+	* manual/durchblicker.tex (section{Die Schlüsselserver}): mention
+	keys.gnupg.net.
+
 2008-03-24  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
 
 	* README-BETA-de.txt: Comprehensive update for svn753.
