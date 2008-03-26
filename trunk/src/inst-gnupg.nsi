@@ -81,15 +81,11 @@ ${MementoSection} "GnuPG" SEC_gnupg
 
   WriteRegStr HKLM "Software\GNU\GnuPG" "Install Directory" $INSTDIR
 
-  # To allow setting the language on a per user base we can't use the
-  # the installer language but need to resort to a Registry entry.  We
-  # put the language into HKLM so that the user can override it using
-  # a HKCU entry or the LANGUAGE envvar.  Probably Windows has a
-  # scheme to do this using a Windows specific API but that was not
-  # known at the time we invented our simple-gettext scheme for a
-  # command line utility.  A GUI frontend may want to synchronize the
-  # HKCU entry with whatever Windows uses for the local language.
-  WriteRegStr HKLM "Software\GNU\GnuPG" "Lang" "$(T_LangCode)"
+  # We used to determine the language using a Registry entry.
+  # Although we don't want to delete the user's Lang Resgistry Setting
+  # becuase he might have have selected a different language than his
+  # default.  We delete the gloabl Lang of the installation.
+  DeleteRegValue HKLM "Software\GNU\GnuPG" "Lang" 
 
   # This old key is required for GPGee.  Please do not use in new
   # applications.

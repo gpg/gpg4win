@@ -71,15 +71,18 @@ ${MementoSection} "GnuPG2" SEC_gnupg2
   #File "${prefix}/share/gnupg/com-certs.pem"
   File "${prefix}/share/gnupg/gpg-conf.skel"
 
-  SetOutPath "$INSTDIR\etc\gnupg"
-  File /oname=gpgconf-conf.skel "${source}/doc/examples/gpgconf.conf"
-
   # Install the language files for gpg.  Note that the PO files are
   # required to be UTF-8 encoded and that the post-install macro in
   # Makefile.am needs to build them.  The language used is selected by
   # using a Registry entry; see ints-gnupg.nsi.
+  File /nonfatal "${prefix}/share/gnupg/help.*.txt"
   SetOutPath "$INSTDIR\gnupg2.nls"
   File /nonfatal "${prefix}/share/gnupg/*.mo"
+
+
+  SetOutPath "$INSTDIR\etc\gnupg"
+  File /oname=gpgconf-conf.skel "${source}/doc/examples/gpgconf.conf"
+
 
   # If requested, install the configuration files.
   ReadRegStr $0 HKCU "Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders" AppData
