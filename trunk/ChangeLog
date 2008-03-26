@@ -1,3 +1,9 @@
+2008-03-26  Marcus Brinkmann  <marcus@g10code.de>
+
+	* packages/packages.current: Update gpgex to 0.9.0.
+	* src/inst-gpgex.nsi, src/uninst-gpgex.nsi: Handle translations
+	ar, es and ru.
+
 2008-03-26  Werner Koch  <wk@g10code.com>
 
 	* packages/packages.current: Update to GnuPG 2.0.9.

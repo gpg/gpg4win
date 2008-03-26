@@ -1,5 +1,5 @@
 # inst-gpgex.nsi - Installer snippet for gpgex.      -*- coding: latin-1; -*-
-# Copyright (C) 2005, 2007 g10 Code GmbH
+# Copyright (C) 2005, 2007, 2008 g10 Code GmbH
 # 
 # This file is part of GPG4Win.
 # 
@@ -62,6 +62,12 @@ ${MementoSection} "GpgEX" SEC_gpgex
 
   SetOutPath "$INSTDIR\share\locale\de\LC_MESSAGES"
   File ${prefix}/share/locale/de/LC_MESSAGES/gpgex.mo
+  SetOutPath "$INSTDIR\share\locale\ar\LC_MESSAGES"
+  File ${prefix}/share/locale/es/LC_MESSAGES/gpgex.mo
+  SetOutPath "$INSTDIR\share\locale\es\LC_MESSAGES"
+  File ${prefix}/share/locale/es/LC_MESSAGES/gpgex.mo
+  SetOutPath "$INSTDIR\share\locale\ru\LC_MESSAGES"
+  File ${prefix}/share/locale/es/LC_MESSAGES/gpgex.mo
 
   SetOutPath "$INSTDIR\share\doc\gpgex"
   File ${prefix}/share/doc/gpgex/gpgex-en.html
