@@ -58,12 +58,6 @@ EXTRA_DIST = autogen.sh README.SVN \
 	patches/claws-mail-3.1.0cvs70/03-smime-plugin.patch \
 	patches/claws-mail-3.1.0cvs70/99-auto.patch \
 	patches/gpgme/01-gpg2.patch \
-	patches/gnupg2-2.0.8/01-agent-call-pinentry.patch \
-	patches/gnupg2-2.0.8/02-qualified.patch \
-	patches/gnupg2-2.0.8/03-create-keyring.patch \
-        patches/gnupg2-2.0.8/04-import-export-spawn.patch \
-        patches/gnupg2-2.0.8/05-gpgconf.patch \
-        patches/gnupg2-2.0.8/06-gpgconf-list.patch \
         patches/gnupg-1.4.8/01-gpgconf-list.patch \
 	patches/winpt/01-gpg-path.patch \
 	patches/gpgol-0.9.91/01-gpgme.patch
