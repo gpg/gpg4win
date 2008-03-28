@@ -1,7 +1,7 @@
 Wichtige Informationen zum Einsatz von Gpg4win 1.9-BETA
 =======================================================
 
-Stand: Gpg4win-1.9.0-svn755 (20080325)
+Stand: Gpg4win-1.9.0-svn758 (20080326)
 
 Hier finden sich wichtige Informationen die bei der
 Entscheidung helfen sollen, ob Gpg4win 1.9 schon für
@@ -51,9 +51,18 @@ Wichtige Hinweise zur vorliegenden Version
   "GnuPG Backend einrichten" Konfiguration-Dialog von Kleopatra.
   Danach neu einloggen um die Änderung zu aktivieren.
 
+- Firewall-Probleme:
+  Ist eine strenge Firewall-Regel in Betrieb, kann es
+  zu Problemen kommen, da Kleopatra über einen sog. Port
+  an "localhost" mit den anderen Komponenten kommuniziert.
+  Schalten Sie entsprechende Regeln Ihrer Firewall ggf. aus.
+
 - Konfiguration für S/MIME:
   Für die Inbetriebnahme sind folgende Schritte
   durchzuführen:
+  * Unter Outlook im Menü Extras->Optionen, Reiter "GpgOL"
+    muss S/MIME explizit eingeschaltet werden.
+    Beachten Sie den Warnhinweis der darauf hin erscheint.
   * Den persönlichen geheimen Schlüssel als P12-Datei
     über Kleopatra importieren (Menü Datei->Zertifikate
     importieren)
