@@ -1512,6 +1512,50 @@ Damit haben Sie erfolgreich einen GnuPG-Schlüssel exportiert und
 wieder importiert.
 
 \clearpage
+\section{Systemweite Konfigurationen und Vorbelegungen für S/MIME}
+
+Im Rahmen von Softwareverteilung oder sonstigen Umgebungen
+in denen viele Anwender auf einem System arbeiten,
+ist es sinnvoll einige systemweite Vorgaben und Vorberlegungen
+für Gpg4win einzurichten.
+
+Einige typische systemweite Einrichtungen sind:
+
+\begin{itemize}
+\item Vertrauenswürdige Wurzel-Zertifikate
+
+	Um zu vermeiden, dass jeder Anwender selbst die notwendigen
+	Wurzelzertifikate suchen und installieren sowie Vertrauenswürdigkeit
+	prüfen und setzen muss, ist eine systemweite Vorbelegung der
+	wichtigsten Wurzel-Zertifikate sinnvoll.
+
+	Dafür sind folgende Schritte durchzuführen:
+	\begin{enumerate}
+	\item Die Wurzel-Zertifkate ablegen wie unter Abschnitt \ref{trustedrootcertsdirmngr}
+		beschrieben.
+	\item Die vertrauenswürdigen Wurzeln definieren wie unter Abschnitt \ref{systemtrustedrootcerts}
+		beschrieben.
+	\end{enumerate}
+
+\item Direkt verfügbare CA-Zertifkate
+
+	Um den Anwendern zusätzlich die Mühe zu ersparen, die Zertifkate der Zertifizierungsstellen
+	(Certificate Authorities, CAs) zu suchen und zu importieren, ist auch hier
+	eine systemweite Vorbelegung der wichtigesten CA-Zertifkate sinnvoll.
+
+	Folgen Sie dazu der Beschreibung unter Abschnitt \ref{extracertsdirmngr}
+
+\item Proxy für Verzeichnisdienst-Suche
+
+	Es kommt vor, dass interne Netzwerke keine direkten Verbindungen der einzelnen
+	Systeme nach aussen zulassen, sondern einen sogenannten Proxy vorsehen.
+
+	Ist dies in Ihrem Netzwerk auch für die bei GnuPG bzw. S/MIME wichtigen
+	LDAP-Abfragen, so stellen Sie GnuPG auf Ihren Proxy wie unter Abschnitt
+	\ref{ldapservers} ein.
+\end{itemize}
+
+\clearpage
 \section{Bekannte Probleme und was man tun kann}
 
 \subsection{GpgOL Menüs und Dialog nicht mehr in Outlook zu finden}
@@ -1548,6 +1592,8 @@ In der Liste finden Sie ,,DirMngr'' -
 \clearpage
 \section{Wo finde ich die Dateien und Einstellungen von Gpg4win?}
 
+\subsection{Persönliche Einstellungen der Anwender}
+
 Die persönlichen Einstellungen für jeden Anwender befinden sich
 im Verzeichnis \Filename{\%APPDATA\%\back{}gnupg}. Oft entspricht das dem
 Verzeichnis \newline
@@ -1563,6 +1609,80 @@ also die persönlichen Schlüssel, Zertifikate, Vertrauenseinstellungen und
 Programmkonfigurationen.
 \\
 
+\subsection{Zwischengespeicherte Sperrlisten}
+
+Der systemweite Dienst ,,DirMngr'' prüft unter anderem ob
+ein Zertifkate gesperrt und daher nicht verwendet werden darf.
+Dafür werden Sperrlisten von den Ausgabestellen der Zertifikate
+(,,Trust-Center'') abgeholt und für die Dauer ihrer Gültigkeit
+zwischengespeichert.
+
+Abgelegt werden diese Sperrlisten unter\newline
+\Filename{C:\back{}Dokumente und Einstellungen\back{}LocalService\back{}Lokale\newline
+Einstellungen\back{}Anwendungsdaten\back{}GNU\back{}cache\back{}dirmngr\back{}crls.d\back{}}
+
+Hierbei handelt es sich um einen sogenannten ,,geschützten'' Bereich
+und kann daher nur mit dem Explorer eingesehen werden, wenn für die
+Ansicht eingestellt ist, dass auch geschützte Dateien angezeigt werden sollen.
+
+In diesem Verzeichnis sollten keine Änderungen vorgenommen werden.
+
+\subsection{Vertrauenswürdige Wurzeln von DirMngr \label{trustedrootcertsdirmngr}}
+
+Für eine vollständige Prüfung von Zertifkats-Gültigkeiten
+muss auch den Wurzel-Zertifkaten vertraut werden, in deren
+Zertifizierungskette die Sperrlisten unterschrieben wurden.
+
+Die Liste der Wurzel-Zertifkate denen DirMngr bei den
+Prüfungen vertrauen soll liegt unter\newline
+\Filename{C:\back{}Programme\back{}GNU\back{}GnuPG\back{}etc\back{}dirmngr\back{}trusted-certs\back{}}
+
+Für systemweite Vorgaben sollten hier die Wurzel-Zertifkate abgelegt werden
+denen alle Anwender vertrauen können.
+
+\subsection{Weitere Zertifikate von DirMngr \label{extracertsdirmngr}}
+
+Um wie oeben beschrieben die Zertifizierungskette zu
+prüfen sind auch die Zertifkate der Zertifizierungsstellen
+(Certificate Authorities, CAs) zu prüfen.
+
+Für eine direkte Verfügbarkeit können sie in diesem Verzeichnis abgelegt
+werden:\newline
+\Filename{C:\back{}Programme\back{}GNU\back{}GnuPG\back{}lib\back{}dirmngr\back{}extra-certs\back{}}
+
+Zertifkate die nicht hier oder bei den Anwendern vorliegen müssen
+entweder automatisch von LDAP-Servern geladen werden oder, falls so nicht
+verfügbar, per Hand importiert werden.
+
+Es ist also sinnvoll im Rahmen von systemweiten Vorgaben hier die
+wichtigsten CA-Zertifkate abzulegen.
+
+\subsection{Konfiguration zur Verwendung externer LDAP Verrzeichnisdienste \label{ldapservers}}
+
+GnuPG kann so konfiguriert werden, dass bei Bedarf fehlende Zertifkate
+oder Sperrlisten auf externen Verzeichnisdiensten gesucht werden.
+
+Der Systemdienst ,,DirMngr'' verwendet dafür die Liste der Dienste die
+in der Datei\newline
+\Filename{C:\back{}Programme\back{}GNU\back{}GnuPG\back{}etc\back{}dirmngr\back{}ldapservers.conf}\newline
+angegeben sind.
+
+Sind im internen Netz die Zugänge zu externen LDAP-Servern gesperrt, so
+kann man in dieser Datei einen Proxy-Dienst für entsprechende Durchleitung
+konfigurieren, wie folgende Zeile im Beispiel illustriert:
+
+\verb#proxy.mydomain.example:389:::O=myorg,C=de#
+
+Die genaue Syntax für die Einträge lautet übrigens:
+
+\verb#HOSTNAME:PORT:USERNAME:PASSWORD:BASE_DN#
+
+\subsection{Systemweite vertrauenswürdige Wurzel-Zertifikate \label{systemtrustedrootcerts}}
+
+Die systemweit als vertrauenswürdig vorbelegten Zertifkate werden
+in der Datei\newline
+\Filename{C:\back{}Programme\back{}GNU\back{}GnuPG\back{}etc\back{}gnupg\back{}trustlist.txt}\newline
+definiert.
 
 \clearpage
 \section{Fehler in den Gpg4win Programmen aufspüren}
@@ -1679,6 +1799,24 @@ Bedenken Sie, dass diese Datei ggf. im weiteren Verlauf sehr
 umfangreich werden kann. Stelle Sie ,,enableDebug'' auf ,,0'' wenn
 Sie kein Logbuch mehr benötigen.
 
+\subsection{Logbuch von DirMngr einschalten}
+
+Bei DirMngr handelt es sich um einen systemweiten Dienst und daher
+ist das Einschalten des Logbuches nur mit Administator-Rechten
+möglich.
+
+Um das Logbuch einzuschalten, tragen Sie folgende zwei Zeilen in
+die Datei\newline
+\Filename{C:\back{}Programme\back{}GNU\back{}GnuPG\back{}etc\back{}dirmngr\back{}dirmngr.conf}\newline
+ein:
+
+\begin{verbatim}
+debug-all
+log-file C:\TEMP\dirmngr.log
+\end{verbatim}
+
+Starten Sie dann den Dienst neu, so dass er die geänderte Konfiguration
+einliesst.
 
 \clearpage
 %% Original page 49
