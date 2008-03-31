@@ -1551,8 +1551,16 @@ Einige typische systemweite Einrichtungen sind:
 	Systeme nach aussen zulassen, sondern einen sogenannten Proxy vorsehen.
 
 	Ist dies in Ihrem Netzwerk auch für die bei GnuPG bzw. S/MIME wichtigen
-	LDAP-Abfragen, so stellen Sie GnuPG auf Ihren Proxy wie unter Abschnitt
-	\ref{ldapservers} ein.
+	LDAP-Abfragen, so führen Sie folgende Schritte durch:
+
+	\begin{enumerate}
+	\item Stellen Sie Verzeichnisdienst-Suchen auf Ihren Proxy wie unter Abschnitt \ref{ldapservers} ein.
+	\item Stellen Sie Sperrlisten-Suchen auf Ihren Proxy ein, in dem Sie einen Eintrag
+		wie beispielsweise \verb@http-proxy http://proxy.mydomain.example:8080@ (ggf. analog
+		für LDAP) als Administrator in die Datei\newline
+		\Filename{C:\back{}Programme\back{}GNU\back{}GnuPG\back{}etc\back{}dirmngr\back{}dirmngr.conf}\newline
+		eintragen.
+	\end{enumerate}
 \end{itemize}
 
 \clearpage
