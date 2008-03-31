@@ -1,5 +1,11 @@
 2008-03-31  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
 
+	* manual/durchblicker.tex: New subsection "Logbuch von GPG für S/MIME, GPG
+	Agent oder Smartcard Daemon einschalten" in section "Fehler in den Gpg4win
+	Programmen aufspüren".
+
+2008-03-31  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
+
 	* manual/durchblicker.tex: Extend section "Systemweite Konfigurationen
 	und Vorbelegungen für S/MIME" with additional note on proxy
 	configuration.

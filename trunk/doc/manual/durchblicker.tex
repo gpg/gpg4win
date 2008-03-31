@@ -1826,6 +1826,20 @@ log-file C:\TEMP\dirmngr.log
 Starten Sie dann den Dienst neu, so dass er die geänderte Konfiguration
 einliesst.
 
+\subsection{Logbuch von GPG für S/MIME, GPG Agent oder Smartcard Daemon einschalten}
+
+Für die Programme GPG für S/MIME (Kommandozeilen-Name GpgSM), GPG Agent (gpg-agent) und
+Smarcard Daemon (scdaemon) können Anwender persönliche Konfigurationen vornehmen.
+Dazu gehört auch das Einstellen einer Protokolldatei für den Programmablauf.
+
+Eingeschaltet wird das jeweilige Logbuch in dem über das Kleopatra Menü
+,,Einstellungen/GnuPG Backend einrichten...'' zum jeweiligen Programm
+die beiden Einstellungen ,,Schreibe im Servermodus Logs in DATEI'' z.B. auf
+,,\Filename{C:\back{}TEMP\back{}gpgsm.log}'' und ,,Die Debugstufe auf NAME setzten''
+auf ,,guru'' setzen. Letzteres ist die höchtste Stufe und erzeugt entsprechend große
+Dateien. Daher sollten Sie die Logbücher wieder ausschalten wenn Sie nicht mehr benötigt werden
+(Debugstufe ,,none'').
+
 \clearpage
 %% Original page 49
 \section{Warum Gpg4win nicht zu knacken ist~$\ldots$}
