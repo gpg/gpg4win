@@ -354,24 +354,24 @@ chk  ced2b1f3b111cf7f6cc28c4f7863a29cda05114b
 
 server ftp://ftp.kdab.net/pub/gpg4win
 
-name kdelibs-20080318-bin.zip
-file kdelibs-for-kleo-20080318-bin.zip
-chk  62a6e386469e668899c0ef09fac36c1abdfc8392
+name kdelibs-20080401-bin.zip
+file kdelibs-for-kleo-20080401-bin.zip
+chk  9aee72326255f78af2c77f2770db3316fb6e1aef
 
-name kdelibs-20080318-lib.zip
-file kdelibs-for-kleo-20080318-dev.zip
-chk  ad665638d5f22565551261c16b3b171a8ddbb2e5
+name kdelibs-20080401-lib.zip
+file kdelibs-for-kleo-20080401-dev.zip
+chk  c0364b75042a7463892c660ac6bcea75d3fe73ed
 
-name kdelibs-20080318-src.zip
-file kdelibs-for-kleo-20080318-src.zip
-chk  faea48f857c5def91e211efc5b165106d11176e8
+name kdelibs-20080401-src.zip
+file kdelibs-for-kleo-20080401-src.zip
+chk  e36642b5aa9202e071c5d508a74c6a107f7d83b9
 
 # Kleopatra
 
 server ftp://ftp.kdab.net/pub/gpg4win
 
-file kleopatra-20080318-2-bin.zip
-chk  8aba41ccf0b496c9a5c5048e29e8a794e93017c5
+file kleopatra-20080401-bin.zip
+chk  1756e3c7ae36384998ec921d816ffd12e61bbfed
 
-file kleopatra-20080318-2-src.zip
-chk  ea7406a62fe4553cae18b0a0874705440ae016ba
+file kleopatra-20080401-src.zip
+chk  1eeab6d651ece7ca417f54a657d148045f5071b5
