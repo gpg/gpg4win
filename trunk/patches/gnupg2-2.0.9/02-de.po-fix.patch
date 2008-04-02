@@ -1,0 +1,21 @@
+#! /bin/sh
+patch -p0 -f $* < $0
+exit $?
+
+
+
+Index: po/de.po
+===================================================================
+--- po/de.po    (revision 4728)
++++ po/de.po    (working copy)
+@@ -7084,7 +7084,7 @@
+ "des X.509 Zertifikats:\n"
+ "\"%s\"\n"
+ "S/N %s, ID 0x%08lX,\n"
+-"gültig von %s bis %s\\n \n"
++"gültig von %s bis %s\n"
+ "zu entsperren.\n"
+ 
+ #: sm/certlist.c:122
+
+
