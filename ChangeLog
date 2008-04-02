@@ -1,10 +1,18 @@
+2008-04-02  Werner Koch  <wk@g10code.com>
+
+	* packages/packages.current: Update GpgOL.
+	
+	* patches/gnupg2-2.0.9/02-de.po-fix.patch: New.
+
 2008-04-01  Werner Koch  <wk@g10code.com>
+
+	* configure.ac (AC_INIT): Fix quoting.
 
 	* patches/gnupg2-2.0.9/01-close-all-handle.patch: New.
 
 2008-04-01  Marcus Brinkmann  <marcus@g10code.de>
 
-	* packages/packages.current: Update kdelibs and kleopatra.x
+	* packages/packages.current: Update kdelibs and kleopatra.
 
 2008-03-26  Werner Koch  <wk@g10code.com>
 

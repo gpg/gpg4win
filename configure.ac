@@ -31,7 +31,8 @@ m4_define([my_issvn], [yes])
 
 m4_define([svn_revision], m4_esyscmd([echo -n $( (svn info 2>/dev/null \
           ||echo 'Revision: 0')|sed -n '/^Revision:/ s/[^0-9]//gp'|head -1)]))
-AC_INIT([gpg4win], my_version[]m4_if(my_issvn,[yes],[-svn[]svn_revision]),
+AC_INIT([gpg4win], 
+        [my_version[]m4_if(my_issvn,[yes],[-svn[]svn_revision])],
         [gpg4win-devel@wald.intevation.org])
 
 # Remember to update these version numbers also in the NEWS file.
