@@ -1,7 +1,7 @@
 Wichtige Informationen zum Einsatz von Gpg4win 1.9-BETA
 =======================================================
 
-Stand: Gpg4win-1.9.0-svn758 (20080326)
+Stand: Gpg4win-1.9.0-svn770 (20080403)
 
 Hier finden sich wichtige Informationen die bei der
 Entscheidung helfen sollen, ob Gpg4win 1.9 schon für
@@ -21,7 +21,7 @@ Wichtige Hinweise zur vorliegenden Version
 - Markierung der Vertrauenswürdigkeit von Wurzel-Zertifkaten:
   Wird entweder systemweit durch den Administrator vorgegeben
   oder durch die Anwender gesteuert.
-  Für letzterees ist folgende Einstellung hilfreich:
+  Für letzteres ist folgende Einstellung hilfreich:
   "Gpg Agent: allow clients to mark keys as trusted" aktivieren im
   "GnuPG Backend einrichten" Konfiguration-Dialog von Kleopatra.
   Danach neu einloggen um die Änderung zu aktivieren.
@@ -76,8 +76,9 @@ Wichtige Hinweise zur vorliegenden Version
     Kommunikationspartner auf die gleiche Weise importieren
     (am besten jeweils mit der kompletten Kette)
   * Wurzelzertifkate als Vertrauenswürdig markieren:
-    Haben Sie wie oben beschrieben "Gpg Agent: allow clients
-    to mark keys as trusted" aktiviert, so werden Sie
+    Wenn Sie "GnuPG Backend einrichten" Konfiguration-Dialog
+    von Kleopatra "Gpg Agent: allow clients
+    to mark keys as trusted" aktivieren, so werden Sie
     beim Gebrauch eines bisher nicht vertrauenswürdig
     eingestuften Wurzel-Zertifkats gefragt, ob Sie es
     nun als Vertrauenswürdig einstufen wollen.
@@ -100,6 +101,7 @@ Wichtige Hinweise zur vorliegenden Version
     Es kann vorkommen, dass versschlüsselte E-Mails
     in entschlüsselter Form auf dem E-Mail-Server
     zu liegen kommen.
+  * Anhänge ab einer bestimmten Größe führen zu Fehlern.
 
 
 Migration
