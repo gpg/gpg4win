@@ -4,12 +4,15 @@ exit $?
 
 
 
-Index: po/de.po
-===================================================================
---- po/de.po    (revision 4728)
-+++ po/de.po    (working copy)
-@@ -7084,7 +7084,7 @@
- "des X.509 Zertifikats:\n"
+--- po/de.po.orig       2008-04-08 15:43:27.000000000 +0200
++++ po/de.po    2008-04-08 15:41:03.000000000 +0200
+@@ -7080,11 +7080,10 @@
+ "S/N %s, ID 0x%08lX,\n"
+ "created %s, expires %s.\n"
+ msgstr ""
+-"Bitte geben Sie die Passphrase an, um den geheimen Schlüssel\n"
+-"des X.509 Zertifikats:\n"
++"Bitte geben Sie die Passphrase an, um den geheimen Schlüssel des X.509 Zertifikats:\n"
  "\"%s\"\n"
  "S/N %s, ID 0x%08lX,\n"
 -"gültig von %s bis %s\\n \n"
@@ -17,5 +20,6 @@ Index: po/de.po
  "zu entsperren.\n"
  
  #: sm/certlist.c:122
+
 
 

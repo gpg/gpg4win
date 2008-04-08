@@ -1,3 +1,8 @@
+2008-04-08  Werner Koch  <wk@g10code.com>
+
+	* patches/gnupg2-2.0.9/03-i18n+etc.patch: New.
+	* patches/gnupg2-2.0.9/02-de.po-fix: Update.
+
 2008-04-02  Werner Koch  <wk@g10code.com>
 
 	* packages/packages.current: Update GpgOL.
