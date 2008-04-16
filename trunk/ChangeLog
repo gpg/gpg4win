@@ -1,3 +1,7 @@
+2008-04-16  Werner Koch  <wk@g10code.com>
+
+	* src/inst-winpt.nsi: Do not select by default.
+
 2008-04-08  Werner Koch  <wk@g10code.com>
 
 	* patches/gnupg2-2.0.9/03-i18n+etc.patch: New.
