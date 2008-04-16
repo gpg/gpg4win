@@ -23,7 +23,7 @@
 !endif
 !define prefix ${ipdir}/winpt-${gpg4win_pkg_winpt_version}
 
-${MementoSection} "WinPT" SEC_winpt
+${MementoUnselectedSection} "WinPT" SEC_winpt
   SetOutPath "$INSTDIR"
 !ifdef SOURCES
   File "${gpg4win_pkg_winpt}"
