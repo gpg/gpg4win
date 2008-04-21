@@ -60,10 +60,12 @@ EXTRA_DIST = autogen.sh README.SVN \
 	patches/gpgme/01-gpg2.patch \
         patches/gnupg-1.4.8/01-gpgconf-list.patch \
 	patches/winpt/01-gpg-path.patch \
-	patches/gpgol/01-always-encrypt.patch \
+	patches/gpgol/01-always-decrypt.patch \
 	patches/gnupg2-2.0.9/01-close-all-handle.patch \
 	patches/gnupg2-2.0.9/02-de.po-fix.patch \
 	patches/gnupg2-2.0.9/03-i18n+etc.patch \
+	patches/gnupg2-2.0.9/04-ks-w32init.patch \
+	patches/gnupg2-2.0.9/05-w32-http.patch \
 	patches/gpgol-0.9.91/01-gpgme.patch
 
 copy-news:
