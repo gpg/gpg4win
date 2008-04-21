@@ -1,3 +1,14 @@
+2008-04-21  Werner Koch  <wk@g10code.com>
+
+	* patches/gnupg2-2.0.9/05-w32-http.patch: New.
+	* patches/gnupg2-2.0.9/04-ks-w32init.patch: New.
+	* Makefile.am (EXTRA_DIST): Add new patches.  Correct name of
+	gpgol/01-always-encrypt.patch.
+	
+2008-04-18  Werner Koch  <wk@g10code.com>
+
+	* patches/gpgol/01-always-encrypt.patch: New.
+
 2008-04-16  Werner Koch  <wk@g10code.com>
 
 	* src/inst-winpt.nsi: Do not select by default.
