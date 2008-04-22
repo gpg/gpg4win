@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Gpg4Win\n"
 "Report-Msgid-Bugs-To: gpg4win-devel@wald.intevation.org\n"
-"POT-Creation-Date: 2008-04-22 11:55+0200\n"
+"POT-Creation-Date: 2008-04-22 15:44+0200\n"
 "PO-Revision-Date: 2008-03-11 23:52+0200\n"
 "Last-Translator: Ahmad Gharbeia <ahmad@gharbeia.org>\n"
 "Language-Team: Arabic <doc@arabeyes.org>\n"
@@ -146,42 +146,42 @@ msgctxt "DESC_Desktop_manuals"
 msgid "Gpg4win Documentation"
 msgstr "ÊÀ«∆ﬁ Gpg4win"
 
-#: src/installer.nsi:449
+#: src/installer.nsi:446
 msgctxt "T_InstallOptions"
 msgid "Install Options"
 msgstr "ŒÌ«—«  «· À»Ì "
 
-#: src/installer.nsi:452
+#: src/installer.nsi:449
 msgctxt "T_InstallOptLinks"
 msgid "Start links"
 msgstr "Ê’·«  «·»œ¡"
 
-#: src/installer.nsi:454
+#: src/installer.nsi:451
 msgctxt "T_InstOptLabelA"
 msgid "Please select where Gpg4win shall install links:"
 msgstr "«Œ — √Ì‰ Ì ⁄Ì‰ À»Ì  «·Ê’·« :"
 
-#: src/installer.nsi:457
+#: src/installer.nsi:454
 msgctxt "T_InstOptLabelB"
 msgid "(Only programs will be linked into the quick launch bar.)"
 msgstr "(›ﬁÿ «·»—„ÃÌ«  ”Ì—»ÿ ≈·ÌÂ« ›Ì ‘—Ìÿ «·»œ¡ «·”—Ì⁄.)"
 
-#: src/installer.nsi:460
+#: src/installer.nsi:457
 msgctxt "T_InstOptFieldA"
 msgid "Start Menu"
 msgstr "ﬁ«∆„… «»œ√"
 
-#: src/installer.nsi:463
+#: src/installer.nsi:460
 msgctxt "T_InstOptFieldB"
 msgid "Desktop"
 msgstr "”ÿÕ «·„ﬂ »"
 
-#: src/installer.nsi:466
+#: src/installer.nsi:463
 msgctxt "T_InstOptFieldC"
 msgid "Quick Launch Bar"
 msgstr "‘—Ìÿ «·»œ¡ «·”—Ì⁄"
 
-#: src/installer.nsi:472
+#: src/installer.nsi:469
 msgctxt "T_FoundExistingVersion"
 msgid ""
 "Version $R1 has already been installed.\n"
@@ -190,7 +190,7 @@ msgstr ""
 "«·≈’œ«—… $R1 „À» … »«·›⁄·.\n"
 "√ —Ìœ «” »œ«·Â« »«·≈’œ«—…  ${VERSION}ø"
 
-#: src/installer.nsi:475
+#: src/installer.nsi:472
 msgctxt "T_FoundExistingVersionB"
 msgid ""
 "A version of Gpg4Win has already been installed on the system. There will be "
@@ -203,7 +203,7 @@ msgstr ""
 "\n"
 "√ —Ìœ „Ê«’·…  À»Ì  Gpg4winø"
 
-#: src/installer.nsi:486
+#: src/installer.nsi:483
 msgctxt "T_FoundOldSeeManual"
 msgid ""
 "Please see the Gpg4win user manual to learn how to migrate existing keys "
@@ -212,7 +212,7 @@ msgstr ""
 "„‰ ›÷·ﬂ ÿ«·⁄ œ·Ì· „” Œœ„ Gpg4win · ﬁ—√ ⁄‰ ÿ—Ìﬁ… ‰ﬁ· «·„›« ÌÕ «·„ÊÃÊœ… „‰ ﬁ»· "
 "„‰  À»Ì «  ”«»ﬁ… „»‰Ì… ⁄·Ï GnuPG ≈·Ï Gpg4win."
 
-#: src/installer.nsi:491
+#: src/installer.nsi:488
 msgctxt "T_FoundOldGnuPP"
 msgid ""
 "An old installation of GnuPP (GNU Privacy Project) has been been detected.  "
@@ -226,7 +226,7 @@ msgstr ""
 "\n"
 "√ —Ìœ „Ê«’·…  À»Ì  Gpg4win Ê«· ⁄«„· „⁄ «· À»Ì  «·ﬁœÌ„ ·«Õﬁ«ø"
 
-#: src/installer.nsi:500
+#: src/installer.nsi:497
 msgctxt "T_FoundOldGnuPT"
 msgid ""
 "An installation of GnuPT has been been detected.  This may cause problems "
@@ -238,7 +238,7 @@ msgstr ""
 "\n"
 "√ —Ìœ „Ê«’·…  À»Ì  Gpg4winø"
 
-#: src/installer.nsi:507
+#: src/installer.nsi:504
 msgctxt "T_FoundOldWinPTSF"
 msgid ""
 "An old installation of the Sourceforge hosted WinPT has been been detected.  "
@@ -252,7 +252,7 @@ msgstr ""
 "\n"
 "√ —Ìœ „Ê«’·…  À»Ì  Gpg4win Ê«· ⁄«„· „⁄ «· À»Ì  «·ﬁœÌ„ ·«Õﬁ«ø"
 
-#: src/installer.nsi:517
+#: src/installer.nsi:514
 msgctxt "T_FoundOldGnuPack"
 msgid ""
 "An installation of GnuPG-Pack has been been detected. You need to uninstall "
@@ -264,7 +264,7 @@ msgstr ""
 "\n"
 "”ÌÊﬁ› «· À»Ì  «·¬‰!"
 
-#: src/installer.nsi:526
+#: src/installer.nsi:523
 msgctxt "T_BetaWarning"
 msgid ""
 "Note: This is a BETA version of Gpg4win.\n"
@@ -273,13 +273,13 @@ msgid ""
 "production environment."
 msgstr ""
 
-#: src/installer.nsi:533
+#: src/installer.nsi:530
 msgctxt "T_AdminNeeded"
 msgid ""
 "Warning: Administrator permissions required for a successful installation"
 msgstr " Õ–Ì—:  Õ «Ã ≈·Ï ’·«ÕÌ«  «·„œÌ— ·≈ „«„ «· À»Ì "
 
-#: src/installer.nsi:537
+#: src/installer.nsi:534
 #, fuzzy
 msgctxt "T_CloseOtherApps"
 msgid ""
@@ -290,12 +290,12 @@ msgstr ""
 "—Ã«¡  √ﬂœ „‰ ⁄œ„  ‘€Ì· √Ì  ÿ»Ìﬁ«  √Œ—Ï. ⁄·Ìﬂ Œ’Ê’« ≈€·«ﬁ ﬂ· ‰Ê«›– √Ê ·Êﬂ √Ê "
 "≈ﬂ”»·Ê——.  ”ÌÕ«Ê· Gpg4Win «·À»Ì  ⁄·Ï √Ì Õ«· ·ﬂ‰ ” Õ «Ã ≈·Ï ≈⁄«œ… «· ‘€Ì·."
 
-#: src/installer.nsi:542
+#: src/installer.nsi:539
 msgctxt "T_ShuttingDownWinPT"
 msgid "Trying to shutdown a possible running instance of WinPT."
 msgstr " Ã—Ì „Õ«Ê·… ≈€·«ﬁ ”Ì—Ê—… „Õ „·… ⁄«„·… „‰ WinPT."
 
-#: src/installer.nsi:544
+#: src/installer.nsi:541
 msgctxt "T_ShuttingDownDirMngr"
 msgid "Trying to shutdown a possible running instance of DirMngr."
 msgstr " Ã—Ì „Õ«Ê·… ≈€·«ﬁ ”Ì—Ê—… „Õ „·… ⁄«„·… „‰ DirMngr."
