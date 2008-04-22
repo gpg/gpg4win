@@ -281,8 +281,8 @@ server ftp://ftp.g10code.com/g10code/scratch
 file dirmngr-1.0.2-svn297.tar.bz2
 chk  6140c65d71af3349bfaccdccdc4d89f25399f2f9
 
-file gpgme-1.1.7-svn1304.tar.bz2
-chk  005dc484aa48766fd9d8acd27d092a6ed84f3a01
+file gpgme-1.1.7-svn1309.tar.bz2
+chk  13041f9aa9bcfe3ce293ea3d4b947f8e9cf5d115
 
 file libassuan-1.0.5-svn284.tar.bz2
 chk  be26eeb3f73c2eafb0e65e94b341092cf90267e1
