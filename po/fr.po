@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ngoinabox\n"
 "Report-Msgid-Bugs-To: gpg4win-devel@wald.intevation.org\n"
-"POT-Creation-Date: 2008-03-25 12:42+0100\n"
+"POT-Creation-Date: 2008-04-22 11:55+0200\n"
 "PO-Revision-Date: 2008-03-10 16:46+0100\n"
 "Last-Translator: Fabian Rodriguez <magicfab@member.fsf.org>\n"
 "Language-Team: FRENCH <aep.lists@it46.se>\n"
@@ -149,44 +149,44 @@ msgctxt "DESC_Desktop_manuals"
 msgid "Gpg4win Documentation"
 msgstr "Guides pour l'installation du logiciel Gpg4win"
 
-#: src/installer.nsi:438
+#: src/installer.nsi:449
 msgctxt "T_InstallOptions"
 msgid "Install Options"
 msgstr "Installer les options"
 
-#: src/installer.nsi:441
+#: src/installer.nsi:452
 msgctxt "T_InstallOptLinks"
 msgid "Start links"
 msgstr "Démarrage Liens"
 
-#: src/installer.nsi:443
+#: src/installer.nsi:454
 msgctxt "T_InstOptLabelA"
 msgid "Please select where Gpg4win shall install links:"
 msgstr "Veuillez choisir où Gpg4win installera des liens:"
 
-#: src/installer.nsi:446
+#: src/installer.nsi:457
 msgctxt "T_InstOptLabelB"
 msgid "(Only programs will be linked into the quick launch bar.)"
 msgstr ""
 "(Seulement des programmes seront incorporés dans la barre rapide de "
 "lancement.)"
 
-#: src/installer.nsi:449
+#: src/installer.nsi:460
 msgctxt "T_InstOptFieldA"
 msgid "Start Menu"
 msgstr "Menu Démarrage"
 
-#: src/installer.nsi:452
+#: src/installer.nsi:463
 msgctxt "T_InstOptFieldB"
 msgid "Desktop"
 msgstr "Desktop"
 
-#: src/installer.nsi:455
+#: src/installer.nsi:466
 msgctxt "T_InstOptFieldC"
 msgid "Quick Launch Bar"
 msgstr "Barre rapide de Lancement"
 
-#: src/installer.nsi:461
+#: src/installer.nsi:472
 msgctxt "T_FoundExistingVersion"
 msgid ""
 "Version $R1 has already been installed.\n"
@@ -195,7 +195,7 @@ msgstr ""
 "La version $R1 a déjà été installée.\n"
 "Voulez-vous la remplacer avec la version ${VERSION}?"
 
-#: src/installer.nsi:464
+#: src/installer.nsi:475
 msgctxt "T_FoundExistingVersionB"
 msgid ""
 "A version of Gpg4Win has already been installed on the system. There will be "
@@ -208,7 +208,7 @@ msgstr ""
 "\n"
 "Voulez-vous poursuivre l'installation Gpg4win?"
 
-#: src/installer.nsi:475
+#: src/installer.nsi:486
 msgctxt "T_FoundOldSeeManual"
 msgid ""
 "Please see the Gpg4win user manual to learn how to migrate existing keys "
@@ -217,7 +217,7 @@ msgstr ""
 "Veuillez consulter le guide d'utilisateur de Gpg4win pour apprendre comment "
 "déplacer des clés existantes dans une installation GnuPG vers Gpg4win."
 
-#: src/installer.nsi:480
+#: src/installer.nsi:491
 msgctxt "T_FoundOldGnuPP"
 msgid ""
 "An old installation of GnuPP (GNU Privacy Project) has been been detected.  "
@@ -232,7 +232,7 @@ msgstr ""
 "Voulez-vous continuer d'installer Gpg4win et prendre soin de la vieille "
 "installation plus tard?"
 
-#: src/installer.nsi:489
+#: src/installer.nsi:500
 msgctxt "T_FoundOldGnuPT"
 msgid ""
 "An installation of GnuPT has been been detected.  This may cause problems "
@@ -245,7 +245,7 @@ msgstr ""
 "\n"
 "Voulez-vous continuer d'installer Gpg4win?"
 
-#: src/installer.nsi:496
+#: src/installer.nsi:507
 msgctxt "T_FoundOldWinPTSF"
 msgid ""
 "An old installation of the Sourceforge hosted WinPT has been been detected.  "
@@ -260,7 +260,7 @@ msgstr ""
 "Vous voulez continuer d'installer Gpg4win et prendre soin de la vieille "
 "installation plus tard?"
 
-#: src/installer.nsi:506
+#: src/installer.nsi:517
 msgctxt "T_FoundOldGnuPack"
 msgid ""
 "An installation of GnuPG-Pack has been been detected. You need to uninstall "
@@ -273,7 +273,16 @@ msgstr ""
 "\n"
 "L'installation sera annulée maintenant!"
 
-#: src/installer.nsi:515
+#: src/installer.nsi:526
+msgctxt "T_BetaWarning"
+msgid ""
+"Note: This is a BETA version of Gpg4win.\n"
+"\n"
+"Beta versions are only intended for testing and shall not be used in a "
+"production environment."
+msgstr ""
+
+#: src/installer.nsi:533
 msgctxt "T_AdminNeeded"
 msgid ""
 "Warning: Administrator permissions required for a successful installation"
@@ -281,24 +290,24 @@ msgstr ""
 "Avertissement : Permissions d'administrateur requises pour une installation "
 "réussie"
 
-#: src/installer.nsi:519
+#: src/installer.nsi:537
 msgctxt "T_CloseOtherApps"
 msgid ""
 "Please make sure that other applications are not running. In particular you "
-"should close Outlook and all Explorer windows.  Gpg4Win will try to install "
+"should close Outlook and all Explorer windows.  Gpg4win will try to install "
 "anyway but a reboot will be required then."
 msgstr ""
 "Veuillez s'assurer que d'autres applications ne fonctionnent pas. En "
 "particulier vérifiez que vous avez fermé Outlook et les fenêtres Explorer. "
-"Gpg4Win essayera d'installer quoi qu'il en soit mais une réinitialisation "
+"Gpg4win essayera d'installer quoi qu'il en soit mais une réinitialisation "
 "sera exigé alors."
 
-#: src/installer.nsi:524
+#: src/installer.nsi:542
 msgctxt "T_ShuttingDownWinPT"
 msgid "Trying to shutdown a possible running instance of WinPT."
 msgstr "Essayant à l'arrêt un instance courant possible de WinPT."
 
-#: src/installer.nsi:526
+#: src/installer.nsi:544
 msgctxt "T_ShuttingDownDirMngr"
 msgid "Trying to shutdown a possible running instance of DirMngr."
 msgstr "Essayant à l'arrêt un instance courant possible de DirMngr."
@@ -324,12 +333,12 @@ msgid "EudoraGPG is a plugin for the Eudora mail program"
 msgstr ""
 "EudoraGPG est un plugin pour le logiciel de courrier électronique d'Eudora"
 
-#: src/inst-gnupg2.nsi:113
+#: src/inst-gnupg2.nsi:117
 msgctxt "DESC_SEC_gnupg2"
 msgid "GNU Privacy Guard with S/MIME support"
 msgstr "GNU Privacy Guard avec l'appui de S/MIME"
 
-#: src/inst-gnupg.nsi:102
+#: src/inst-gnupg.nsi:108
 msgctxt "DESC_SEC_gnupg"
 msgid "GNU Privacy Guard"
 msgstr "GNU Privacy Guard"
@@ -375,12 +384,12 @@ msgctxt "DESC_Menu_gpgee_hlp"
 msgid "Show the online manual of GPGee"
 msgstr "Montrez le guide en ligne de GPGee"
 
-#: src/inst-gpgex.nsi:74
+#: src/inst-gpgex.nsi:80
 msgctxt "T_GpgEX_RegFailed"
 msgid "Warning: Registration of the GpgEX plugin failed."
 msgstr "Avertissement : Enregistrement du plugin de GpgEX échoué."
 
-#: src/inst-gpgex.nsi:77
+#: src/inst-gpgex.nsi:83
 msgctxt "DESC_SEC_gpgex"
 msgid "GnuPG Shell Extension"
 msgstr "GnuPG Shell Extension"
