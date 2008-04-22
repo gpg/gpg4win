@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gpg4win 1.1.1-svn417\n"
 "Report-Msgid-Bugs-To: gpg4win-devel@wald.intevation.org\n"
-"POT-Creation-Date: 2008-04-22 11:55+0200\n"
+"POT-Creation-Date: 2008-04-22 15:44+0200\n"
 "PO-Revision-Date: 2008-01-30 17:07+0100\n"
 "Last-Translator: Diego Escalante Urrelo <diegoe@gnome.org>\n"
 "Language-Team: Spanish <diegoe@gnome.org>\n"
@@ -148,42 +148,42 @@ msgctxt "DESC_Desktop_manuals"
 msgid "Gpg4win Documentation"
 msgstr "Documentación de Gpg4win"
 
-#: src/installer.nsi:449
+#: src/installer.nsi:446
 msgctxt "T_InstallOptions"
 msgid "Install Options"
 msgstr "Opciones de instalación"
 
-#: src/installer.nsi:452
+#: src/installer.nsi:449
 msgctxt "T_InstallOptLinks"
 msgid "Start links"
 msgstr "Vínculos de inicio"
 
-#: src/installer.nsi:454
+#: src/installer.nsi:451
 msgctxt "T_InstOptLabelA"
 msgid "Please select where Gpg4win shall install links:"
 msgstr "Por favor seleccione dónde debe Gpg4win instalar los vínculos:"
 
-#: src/installer.nsi:457
+#: src/installer.nsi:454
 msgctxt "T_InstOptLabelB"
 msgid "(Only programs will be linked into the quick launch bar.)"
 msgstr "(Sólo las aplicaciones serán vinculadas en la barra de inicio rápido.)"
 
-#: src/installer.nsi:460
+#: src/installer.nsi:457
 msgctxt "T_InstOptFieldA"
 msgid "Start Menu"
 msgstr "Menú inicio"
 
-#: src/installer.nsi:463
+#: src/installer.nsi:460
 msgctxt "T_InstOptFieldB"
 msgid "Desktop"
 msgstr "Escritorio"
 
-#: src/installer.nsi:466
+#: src/installer.nsi:463
 msgctxt "T_InstOptFieldC"
 msgid "Quick Launch Bar"
 msgstr "Barra de inicio rápido"
 
-#: src/installer.nsi:472
+#: src/installer.nsi:469
 msgctxt "T_FoundExistingVersion"
 msgid ""
 "Version $R1 has already been installed.\n"
@@ -192,7 +192,7 @@ msgstr ""
 "La versión $R1 ya está instalada.\n"
 "¿Desea sobreescribirla con la versión ${VERSION}?"
 
-#: src/installer.nsi:475
+#: src/installer.nsi:472
 msgctxt "T_FoundExistingVersionB"
 msgid ""
 "A version of Gpg4Win has already been installed on the system. There will be "
@@ -205,7 +205,7 @@ msgstr ""
 "\n"
 "¿Desea continuar con la instalación?"
 
-#: src/installer.nsi:486
+#: src/installer.nsi:483
 msgctxt "T_FoundOldSeeManual"
 msgid ""
 "Please see the Gpg4win user manual to learn how to migrate existing keys "
@@ -214,7 +214,7 @@ msgstr ""
 "Por favor revise el manual del usuario de Gpg4Win para que aprenda cómo "
 "migrar las llaves existentes de una instalación basada en GnuPG a Gpg4Win."
 
-#: src/installer.nsi:491
+#: src/installer.nsi:488
 msgctxt "T_FoundOldGnuPP"
 msgid ""
 "An old installation of GnuPP (GNU Privacy Project) has been been detected.  "
@@ -229,7 +229,7 @@ msgstr ""
 "¿Desea continuar con la instalación de Gpg4Win y dejar para mas tarde la "
 "instalación antigua de GnuPP?"
 
-#: src/installer.nsi:500
+#: src/installer.nsi:497
 msgctxt "T_FoundOldGnuPT"
 msgid ""
 "An installation of GnuPT has been been detected.  This may cause problems "
@@ -242,7 +242,7 @@ msgstr ""
 "\n"
 "¿Desea continuar instalando Gpg4Win?"
 
-#: src/installer.nsi:507
+#: src/installer.nsi:504
 msgctxt "T_FoundOldWinPTSF"
 msgid ""
 "An old installation of the Sourceforge hosted WinPT has been been detected.  "
@@ -257,7 +257,7 @@ msgstr ""
 "¿Desea continuar con la instalación de Gpg4Win y dejar para más tarde la "
 "instalación antigua de WinPT?"
 
-#: src/installer.nsi:517
+#: src/installer.nsi:514
 msgctxt "T_FoundOldGnuPack"
 msgid ""
 "An installation of GnuPG-Pack has been been detected. You need to uninstall "
@@ -270,7 +270,7 @@ msgstr ""
 "\n"
 "La instalación se detendrá ahora."
 
-#: src/installer.nsi:526
+#: src/installer.nsi:523
 msgctxt "T_BetaWarning"
 msgid ""
 "Note: This is a BETA version of Gpg4win.\n"
@@ -279,14 +279,14 @@ msgid ""
 "production environment."
 msgstr ""
 
-#: src/installer.nsi:533
+#: src/installer.nsi:530
 msgctxt "T_AdminNeeded"
 msgid ""
 "Warning: Administrator permissions required for a successful installation"
 msgstr ""
 "Advertencia: Necesita permisos de administrador para una instalación exitosa."
 
-#: src/installer.nsi:537
+#: src/installer.nsi:534
 #, fuzzy
 msgctxt "T_CloseOtherApps"
 msgid ""
@@ -299,12 +299,12 @@ msgstr ""
 "intentará instalarse de todas formas, pero será necesario que reinicie su "
 "sistema una vez terminado el proceso. "
 
-#: src/installer.nsi:542
+#: src/installer.nsi:539
 msgctxt "T_ShuttingDownWinPT"
 msgid "Trying to shutdown a possible running instance of WinPT."
 msgstr "Intentado cerrar instancias de WinPT que podrían estar ejecutándose."
 
-#: src/installer.nsi:544
+#: src/installer.nsi:541
 msgctxt "T_ShuttingDownDirMngr"
 msgid "Trying to shutdown a possible running instance of DirMngr."
 msgstr ""
