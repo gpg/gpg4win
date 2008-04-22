@@ -277,12 +277,9 @@ Function CustomPageOptions
   !insertmacro MUI_INSTALLOPTIONS_DISPLAY "installer-options.ini"
 FunctionEnd
 
-# Display a warning if this is a Beta version and allow the user to
-# abort the installation.
+# Display a warning if this is a Beta version.
 Function PrintBetaWarning
-   MessageBox MB_YESNO "$(T_BetaWarning)" IDYES cont
-     Abort
- cont:
+   MessageBox MB_OK "$(T_BetaWarning)"
 FunctionEnd
 
 
