@@ -277,6 +277,14 @@ Function CustomPageOptions
   !insertmacro MUI_INSTALLOPTIONS_DISPLAY "installer-options.ini"
 FunctionEnd
 
+# Display a warning if this is a Beta version and allow the user to
+# abort the installation.
+Function PrintBetaWarning
+   MessageBox MB_YESNO "$(T_BetaWarning)" IDYES cont
+     Abort
+ cont:
+FunctionEnd
+
 
 # Display a warning if GnuPP has been detected and allow the user to abort
 # the installation.
@@ -378,6 +386,9 @@ FunctionEnd
 # OS version without the need for an Administrator is in use.  Print a
 # diagnostic if this is not the case and abort installation.
 Function PrintNonAdminWarning
+
+  Call PrintBetaWarning
+
   ClearErrors
   UserInfo::GetName
   IfErrors leave
@@ -511,6 +522,13 @@ LangString T_FoundOldGnuPack ${LANG_ENGLISH} \
 
 
 
+# From Function PrintBetaWarning
+LangString T_BetaWarning ${LANG_ENGLISH} \
+   "Note: This is a BETA version of Gpg4win. $\r$\n\
+     $\r$\n\
+    Beta versions are only intended for testing and \
+    shall not be used in a production environment."
+
 # From Function PrintNonAdminWarning
 LangString T_AdminNeeded ${LANG_ENGLISH} \
    "Warning: Administrator permissions required for a successful installation"
@@ -519,7 +537,7 @@ LangString T_AdminNeeded ${LANG_ENGLISH} \
 LangString T_CloseOtherApps ${LANG_ENGLISH} \
    "Please make sure that other applications are not running. \
     In particular you should close Outlook and all Explorer \
-    windows.  Gpg4Win will try to install anyway but a reboot \
+    windows.  Gpg4win will try to install anyway but a reboot \
     will be required then."
 LangString T_ShuttingDownWinPT ${LANG_ENGLISH} \
    "Trying to shutdown a possible running instance of WinPT."

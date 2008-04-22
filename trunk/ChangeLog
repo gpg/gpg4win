@@ -1,3 +1,8 @@
+2008-04-22  Werner Koch  <wk@g10code.com>
+
+	* src/installer.nsi (PrintBetaWarning): New.
+	(PrintNonAdminWarning): Call it.
+
 2008-04-21  Werner Koch  <wk@g10code.com>
 
 	* patches/gnupg2-2.0.9/05-w32-http.patch: New.

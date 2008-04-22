@@ -53,6 +53,7 @@ Section "-un.gnupg2"
   Delete "$INSTDIR\share\gnupg\qualified.txt"
   Delete "$INSTDIR\share\gnupg\com-certs.pem"
   Delete "$INSTDIR\share\gnupg\gpg-conf.skel"
+  Delete "$INSTDIR\share\gnupg\help.*.txt"
   RMDir "$INSTDIR\share\gnupg"
   RMDir "$INSTDIR\share"
 
