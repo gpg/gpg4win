@@ -1,3 +1,7 @@
+2008-04-22  Marcus Brinkmann  <marcus@ulysses.g10code.com>
+
+	* packages/packages.current: Update kdelibs and kleopatra.
+
 2008-04-22  Werner Koch  <wk@g10code.com>
 
 	* src/installer.nsi (PrintBetaWarning): New.
