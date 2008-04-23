@@ -1,11 +1,11 @@
 ;; README.de.txt                             -*- coding: latin-1; -*-
-;; This is the README installed with gpg4win (German version).  Lines
+;; This is the README installed with Gpg4win (German version).  Lines
 ;; with a ; in the first column are considered a comment and not
 ;; included in the actually installed version.  Certain keywords are
 ;; replaced by the Makefile; those words are enclosed by exclamation
 ;; marks.
 
-                  Deutsche README Datei for Gpg4Win
+                  Deutsche README Datei for Gpg4win
                   =================================
                                    
 Dies ist GnuPG for Windows, Version !VERSION!.
@@ -24,15 +24,15 @@ Inhalt:
 1. Wichtige Hinweise
 ====================
 
-Informationen zur Benutzung sind den Handbüchern "Gpg4Win für
-Einsteiger" und "Gpg4Win für Durchblicker" zu entnehmen.  Diese können
+Informationen zur Benutzung sind den Handbüchern "Gpg4win für
+Einsteiger" und "Gpg4win für Durchblicker" zu entnehmen.  Diese können
 Sie auch, in einer möglicherweise bereits überarbeiteten Fassung,
 online unter http://www.gpg4win.de lesen.
 
 
 
 
-3. Liste der Änderungen an Gpg4Win
+3. Liste der Änderungen an Gpg4win
 ==================================
 
 Eine aktuelle deutschsprachige Übersicht der Änderungen finden online
@@ -154,7 +154,7 @@ Zur Übersicht folgt eine Liste der Copyright Erklärungen.
 
 Frohes GiPiGien,
 
-  Ihr Gpg4Win Team
+  Ihr Gpg4win Team
 
 
 *** Ende der Datei ***

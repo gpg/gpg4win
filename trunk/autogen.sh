@@ -81,7 +81,7 @@ if test "$1" = "--build-w32"; then
         fi
     fi
 
-    ./configure --host=${host} --build=${build} \
+    ./configure --host=${host} --build=${build} --enable-maintainer-mode \
                 --disable-pkg-man_advanced_en  "$@"
     rc=$?
 
