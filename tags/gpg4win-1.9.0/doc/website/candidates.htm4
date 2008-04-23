@@ -1,0 +1,35 @@
+m4_dnl -*-html-*-
+m4_include(`template.m4')
+m4_dnl $Id$
+
+m4_define(`EN')
+m4_define(`DE_FILE', `candidates-de.html')
+PAGE_START
+
+<h1>Candidates for integration in the Gpg4win installer package</h1>
+
+<p>
+The following software modules are potential candidates for integration
+in the Gpg4win installer package.
+If you are interested, just go ahead and integrate these modules, the 
+<a href="build-installer.html">Howto extend the Gpg4win installer 
+package</a> will help you.
+</p>
+
+<h2>GPGrelay - Encryption in the background for any email program</h2>
+
+<p>
+<a href="http://sites.inka.de/tesla/gpgrelay.html">GPGrelay</a> is
+an encryption tool which encrypts e-mails in the
+background, hence eliminating the need for a plugin for any e-mail
+tool of your choice.
+</p>
+
+<h2>GPGoe - Plugin for Microsoft Outlook Express</h2>
+
+<p>
+
+<a href="http://wald.intevation.org/projects/gpgoe/">GPGoe</a> is a
+plugin for GPG encryption via the clipboard
+for the email tool Microsoft Outlook Express.
+</p>

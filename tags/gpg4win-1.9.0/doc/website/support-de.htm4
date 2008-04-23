@@ -1,0 +1,43 @@
+m4_dnl -*-html-*-
+m4_include(`template.m4')
+m4_dnl $Id$
+
+m4_define(`DE')
+m4_define(`EN_FILE', `support.html')
+PAGE_START
+
+<h1>Professioneller Support für Gpg4win</h1>
+
+<p>
+Der Support, der über die öffentichen Mailinglisten, Webforen und
+den Bug Tracker geliefert wird, kommt in der Regel von Freiwilligen.
+Aufgrund der großen
+Anwenderschaft hat man in der Regel gute Aussichten auf hilfreiche Reaktionen.
+Zeitnahe und erschöpfend richtige Antworten können natürlich nicht garantiert werden.
+</p>
+
+<p>
+Werden zeitnahe Antworten, schnelle Anpassungen oder Korrekturen sowie
+allgemeine Beratung für den Einsatz (Installation, Konfiguration, etc.)
+von Gpg4win benötigt, so bieten
+die Unternehmen <a href="http://www.intevation.de">Intevation GmbH</a>
+und <a href="http://www.g10code.de">g10code GmbH</a> gemeinsam
+entsprechenden Support an.
+Dieser ist individuell zugeschnitten, daher
+finden Sie hier keine Preistabelle oder ähnliches.
+</p>
+
+<p>
+Bitte kontaktieren Sie <em>info@intevation.de</em>
+wenn Sie professionellen Support durch Intevation und g10code einkaufen
+möchten. Beschreiben Sie dabei am besten
+schon mit der Anfrage Ihre fachlichen Anforderungen (z.B: welche Anwendungen,
+welche Krypto-Workflows), sowie Anzahl der Nutzer, Ihre IT-Infrastruktur (z.B. welche
+Windows-Versionen, Terminal-Server, V-Server), welche Aufgaben Sie bei sich
+selbst belassen wollen und was Sie von uns erwarten.
+</p>
+
+<p>
+Wir werden uns dann bei Ihnen mit einer Einschätzung der entstehenden Kosten
+sowie ggf. Rückfragen melden.
+</p>

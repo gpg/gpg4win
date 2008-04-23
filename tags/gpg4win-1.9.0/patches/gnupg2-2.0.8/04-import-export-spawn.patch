@@ -1,0 +1,105 @@
+#! /bin/sh
+patch -p0 -f $* < $0
+exit $?
+
+sm/
+2008-01-27  Werner Koch  <wk@g10code.com>
+
+	* import.c (popen_protect_tool): Set bit 7 in the flags for
+	gnupg_spawn_process so that under W32 no window appears.
+	* export.c (popen_protect_tool): Ditto.
+
+common/
+2008-01-27  Werner Koch  <wk@g10code.com>
+
+	* exechelp.c (gnupg_spawn_process): Add arg FLAGS and changed all
+	callers to pass 0 for it.
+
+
+Index: sm/import.c
+===================================================================
+--- sm/import.c	(revision 4666)
++++ sm/import.c	(working copy)
+@@ -482,7 +482,7 @@
+   assert (i < sizeof argv);
+ 
+   return gnupg_spawn_process (pgmname, argv, infile, outfile,
+-                              setup_pinentry_env,
++                              setup_pinentry_env, 128,
+                               statusfile, pid);
+ }
+ 
+Index: sm/export.c
+===================================================================
+--- sm/export.c	(revision 4666)
++++ sm/export.c	(working copy)
+@@ -597,7 +597,7 @@
+   assert (i < sizeof argv);
+ 
+   return gnupg_spawn_process (pgmname, argv, infile, outfile,
+-                              setup_pinentry_env,
++                              setup_pinentry_env, 128,
+                               statusfile, pid);
+ }
+ 
+Index: common/exechelp.c
+===================================================================
+--- common/exechelp.c	(revision 4666)
++++ common/exechelp.c	(working copy)
+@@ -1,5 +1,5 @@
+ /* exechelp.c - fork and exec helpers
+- *	Copyright (C) 2004, 2007 Free Software Foundation, Inc.
++ *	Copyright (C) 2004, 2007, 2008 Free Software Foundation, Inc.
+  *
+  * This file is part of GnuPG.
+  *
+@@ -322,11 +322,18 @@
+    PREEXEC is not NULL, that function will be called right before the
+    exec.  Calling gnupg_wait_process is required.
+ 
++   FLAGS is a bit vector with just one bit defined for now:
++
++   Bit 7: If set the process will be started as a background process.
++          This flag is only useful under W32 systems, so that no new
++          console is created and pops up a console window when
++          starting the server
++
+    Returns 0 on success or an error code. */
+ gpg_error_t
+ gnupg_spawn_process (const char *pgmname, const char *argv[],
+                      FILE *infile, FILE *outfile,
+-                     void (*preexec)(void),
++                     void (*preexec)(void), unsigned int flags,
+                      FILE **statusfile, pid_t *pid)
+ {
+ #ifdef HAVE_W32_SYSTEM
+@@ -384,6 +391,7 @@
+   si.hStdError  = fd_to_handle (rp[1]);
+ 
+   cr_flags = (CREATE_DEFAULT_ERROR_MODE
++              | ((flags & 128)? DETACHED_PROCESS : 0)
+               | GetPriorityClass (GetCurrentProcess ())
+               | CREATE_SUSPENDED); 
+   log_debug ("CreateProcess, path=`%s' cmdline=`%s'\n", pgmname, cmdline);
+Index: common/exechelp.h
+===================================================================
+--- common/exechelp.h	(revision 4666)
++++ common/exechelp.h	(working copy)
+@@ -30,13 +30,14 @@
+    stdin, write the output to OUTFILE, return a new stream in
+    STATUSFILE for stderr and the pid of the process in PID. The
+    arguments for the process are expected in the NULL terminated array
+-   ARGV.  The program name itself should not be included there.  if
++   ARGV.  The program name itself should not be included there.  If
+    PREEXEC is not NULL, that function will be called right before the
+-   exec.  Calling gnupg_wait_process is required.  Returns 0 on
++   exec.  FLAGS is currently only useful for W32, see the source for
++   details.  Calling gnupg_wait_process is required.  Returns 0 on
+    success or an error code. */
+ gpg_error_t gnupg_spawn_process (const char *pgmname, const char *argv[],
+                                  FILE *infile, FILE *outfile,
+-                                 void (*preexec)(void),
++                                 void (*preexec)(void), unsigned int flags,
+                                  FILE **statusfile, pid_t *pid);
+ 
+ 

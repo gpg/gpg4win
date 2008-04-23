@@ -1,0 +1,33 @@
+Package: gpg4win
+Maintainer: Marcus Brinkmann <marcus@g10code.com>
+Bug reports: gpg4win-devel@wald.intevation.de
+Security related bug reports: security@gnupg.org
+
+
+g10 Code GmbH <code@g10code.com>
+ - Design and implementation.
+
+Brigitte Hamilton <gordianknits@gmail.com>
+ - English translations of the manuals.
+
+Khaled Hosny <khaledhosny@eglug.org>
+ - Arabic translations of the installer.
+
+Diego Escalante Urrelo <diegoe@gnome.org>
+ - Spanish translations of the installer.
+
+Fabian Rodriguez <magicfab@member.fsf.org>
+ - French translations of the installer.
+
+CJ <cj@neocaching.ru>
+ - Russian translations of the installer.
+
+ Copyright 2005, 2008 g10 Code GmbH
+
+ This file is free software; as a special exception the author gives
+ unlimited permission to copy and/or distribute it, with or without
+ modifications, as long as this notice is preserved.
+
+ This file is distributed in the hope that it will be useful, but
+ WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
+ implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.

@@ -1,0 +1,125 @@
+m4_dnl -*-html-*-
+m4_include(`template.m4')
+m4_dnl $Id$
+
+m4_define(`DE')
+m4_define(`EN_FILE', `reporting-bugs.html')
+PAGE_START
+
+<h1>Wie man am besten einen Fehler meldet</h1>
+
+<h2>1. Prüfen ob man die aktuellste Version von Gpg4win verwendet</h2>
+
+<p>
+Der Download-Knopf im oberen Brereich der Gpg4win Heimatseite
+zeigt die jeweils aktuellste Version von Gpg4win an.
+</p>
+
+<!--
+<p>
+TODO: Where can you see the version number of a installed
+package?
+</p>
+-->
+
+<h2>2. Prüfen ob es sich überhaupt um einen Fehler von Gpg4win handelt</h2>
+
+<p>
+Gpg4win integriert eine Reihe von Werkzeugen deren
+Pflege über deren eigene Entwickler-Teams erfolgt.
+</p>
+
+<p>
+Daher sollten Probleme und Fehler allgmeinerer Art,
+also die nicht durch Cross-Kompilation und/oder Paketierung
+durch das Gpg4win Team entstandenen, an die jeweiligen
+Projekte gemeldet werden (üblichweise ist es notwendig sich
+zu registrieren bevor man einen Fehler melden und kommentieren
+kann):
+</p>
+
+<ul>
+<li><a href="http://www.stud.uni-hannover.de/~twoaday/bugs.html">
+    WinPT Bug Tracking</a>
+     <p>
+<li><a href="http://bugs.kde.org/component-report.cgi?product=kleopatra">
+    Kleopatra Bug Tracking</a>
+     <p>
+<li><a href="http://www.excelcia.org/modules.php?name=Forums&file=viewforum&f=1">
+    GPGee Forum</a> (GPGee bietet keinen Bug Tracker, Anwender werden
+    aufgefordert Probleme im Forum zu berichten)
+     <p>
+<li><a href="http://www.thewildbeast.co.uk/claws-mail/bugzilla/index.cgi">
+    Claws Mail Bug Tracking</a>
+     <p>
+<li><a href="http://www.gnupg.org/documentation/bts.html">
+    GnuPG, GPA, GpgOL und GpgEX Bug Tracking</a>
+</ul>
+
+<p>
+Natürlich ist es nicht immer einfach zu entscheiden,
+ob es sich um einen Fehler von Gpg4win handelt oder
+um einen Fehler in einem der Module.
+In diesem Fall sollte, abhängig von der Art des Problems,
+entweder auf einem der Foren oder Mailing Listen von Gpg4win
+um Rat gefragt oder ein Fehlerbericht in den Bug Tracker
+von Gpg4win eingetragen werden.
+</p>
+
+
+<h2>3. Prüfen ob das Problem bereits bekannt ist</h2>
+
+<p>
+Es ist sinnvoll, die Liste der offenen Fehler
+zu durchsuchen, ob einer dieser Einträge bereits
+das Problem beschreibt was man selbst hat.
+Dort sollte man dann seine ergänzenden Hinweise
+einfügen.
+</p>
+
+<h2>4. Versionnummern angeben</h2>
+
+<p>
+Ein neuer Fehlerbericht, aber auch Ergänzungen zu
+bestehenden Berichten sollten die exakte Versionsnummer
+von Windows, Gpg4win und ggf. von MS Office und Outlook
+nennen.
+</p>
+
+<h2>5. Anleitung zur Reproduktion des Fehlers</h2>
+
+<p>
+Falls es möglich ist, so sollte eine Schritt-für-Schritt
+Anleitung beschrieben werden wie man den Fehler reproduziert.
+</p>
+
+<h2>6. Debug Informationen hinzufügen</h2>
+
+<p>
+Falls es geht und sinnvoll erscheint,
+sollte der Bericht um ein Debug-Log ergänzt werden.
+</p>
+
+<h3>Debug-Log erzeugen</h3>
+
+<p>
+GpgOL bietet eine spezielle Option welche dabei hilft
+die interne Kommunikation zwischen Outlook und GpgOL
+zu verstehen.
+Um sie anzuschalten, gehen Sie zum Reiter "GnuPG"
+bei den Optionen von Outlook. Dort muss der "Fortgeschritten"
+Knopf betätigt und dann folgendes eingeben werden:
+</p>
+
+<pre>
+c:\temp\gpgol.log
+</pre>
+
+<p>
+in das Feld "Debug Ausgabe".
+</p>
+
+<p>
+Wer sich in der Lage dazu fühlt, sollte die nur die relevanten
+Information der Logdatei dem Fehlerbericht beilegen.
+</p>

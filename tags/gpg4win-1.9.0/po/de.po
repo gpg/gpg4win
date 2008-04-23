@@ -1,0 +1,570 @@
+# German translations for gpg4win package.
+# Copyright (C) 2007 g10 Code GmbH
+# This file is distributed under the same license as the gpg4win package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gpg4win 1.1.1-svn417\n"
+"Report-Msgid-Bugs-To: gpg4win-devel@wald.intevation.org\n"
+"POT-Creation-Date: 2008-04-22 15:44+0200\n"
+"PO-Revision-Date: 2008-04-22 15:44+0200\n"
+"Last-Translator: Marcus Brinkmann <mb@g10code.com>\n"
+"Language-Team: German <translation-team-de@lists.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: src/g4wihelp.nsi:21
+msgctxt "T_AlreadyRunning"
+msgid "An instance of this installer is already running."
+msgstr "Ein Exemplar dieses Installers läuft bereits."
+
+#: src/gpg4win.nsi:117
+msgctxt "T_WelcomeTitleGpg4win"
+msgid "Welcome to the installation of Gpg4win"
+msgstr "Willkommen bei der Installation von Gpg4win"
+
+#: src/gpg4win.nsi:121
+msgctxt "T_AboutGpg4win"
+msgid ""
+"GnuPG is GNU's tool for secure communication and data storage. It can be "
+"used to encrypt data and to create digital signatures. It includes an "
+"advanced key management facility and is compliant with the proposed OpenPGP "
+"Internet standard as described in RFC2440."
+msgstr ""
+"GnuPG ist das Werkzeug aus dem GNU Projekt zur sicheren Kommunikation sowie "
+"zum sicheren Speichern von Daten."
+
+#: src/gpg4win.nsi:127
+msgctxt "T_AboutGpg4winVersion"
+msgid "This is Gpg4win version ${VERSION}"
+msgstr "Dies ist Gpg4win Version ${VERSION}"
+
+#: src/gpg4win.nsi:130
+msgctxt "T_AboutGpg4winFileVersion"
+msgid "file version ${PROD_VERSION}"
+msgstr "Dateiversion ${PROD_VERSION}"
+
+#: src/gpg4win.nsi:133
+msgctxt "T_AboutGpg4winReleaseDate"
+msgid "release date ${_BUILD_ISODATE}"
+msgstr "Releasedatum ${_BUILD_ISODATE}"
+
+#: src/gpg4win-src.nsi:76
+msgctxt "T_WelcomeTitleGpg4winSrc"
+msgid "Welcome to the installation of the Gpg4win sources"
+msgstr "Willkommen bei der Installation der Gpg4win Quellen"
+
+#: src/gpg4win-src.nsi:80
+msgctxt "T_AboutGpg4winSrc"
+msgid ""
+"GnuPG is GNU's tool for secure communication and data storage. It can be "
+"used to encrypt data and to create digital signatures. It includes an "
+"advanced key management facility and is compliant with the proposed OpenPGP "
+"Internet standard as described in RFC2440."
+msgstr ""
+"GnuPG ist das Werkzeug aus dem GNU Projekt zur sicheren Kommunikation sowie "
+"zum sicheren Speichern von Daten."
+
+#: src/gpg4win-src.nsi:86
+msgctxt "T_AboutGpg4winSrcVersion"
+msgid "This is Gpg4win version ${VERSION}"
+msgstr "Dies ist Gpg4win Version ${VERSION}"
+
+#: src/gpg4win-src.nsi:89
+msgctxt "T_AboutGpg4winSrcFileVersion"
+msgid "file version ${PROD_VERSION}"
+msgstr "Dateiversion ${PROD_VERSION}"
+
+#: src/gpg4win-src.nsi:92
+msgctxt "T_AboutGpg4winSrcReleaseDate"
+msgid "release date ${_BUILD_ISODATE}"
+msgstr "Releasedatum ${_BUILD_ISODATE}"
+
+#: src/installer.nsi:217
+msgctxt "T_LangCode"
+msgid "en"
+msgstr "de"
+
+#: src/installer.nsi:220
+msgctxt "T_GPLHeader"
+msgid ""
+"This software is licensed under the terms of the GNU General Public License "
+"(GPL) which guarantees your freedom to share and change Free Software."
+msgstr ""
+"Diese Software ist unter der GNU General Public License (GPL) lizensiert; "
+"dies gibt Ihnen die Freiheit, sie zu ändern und weiterzugeben."
+
+#: src/installer.nsi:225
+msgctxt "T_GPLShort"
+msgid ""
+"In short: You are allowed to run this software for any purpose. You may "
+"distribute it as long as you give the recipients the same rights you have "
+"received."
+msgstr ""
+"In aller Kürze: Sie haben das Recht, die Software zu jedem Zweck "
+"einzusetzen.  Sie können die Software weitergeben, sofern Sie dem Empfänger "
+"dieselben Rechte einräumen, die auch Sie erhalten haben."
+
+#: src/installer.nsi:230
+msgctxt "T_RunKeyManager"
+msgid "Run the key manager"
+msgstr "Die Schlüsselverwaltung aufrufen"
+
+#: src/installer.nsi:233
+msgctxt "T_MoreInfo"
+msgid "Click here for the project's homepage"
+msgstr "Hier klicken um zur Homepage des Projekts zu gelangen"
+
+#: src/installer.nsi:235
+msgctxt "T_MoreInfoURL"
+msgid "http://www.gpg4win.org"
+msgstr "http://www.gpg4win.de"
+
+#: src/installer.nsi:237
+msgctxt "T_ShowReadme"
+msgid "Show the README file"
+msgstr "Die README Datei anzeigen"
+
+#: src/installer.nsi:240
+msgctxt "T_NoKeyManager"
+msgid "No key manager has been installed, thus we can't run one now."
+msgstr ""
+"Es wurde keine Schlüsselverwaltung installiert.  Deswegen kann sie jetzt "
+"auch nicht ausgeführt werden."
+
+#: src/installer.nsi:245
+msgctxt "DESC_Menu_manuals"
+msgid "Documentation"
+msgstr "Dokumentation"
+
+#: src/installer.nsi:249
+msgctxt "DESC_Desktop_manuals"
+msgid "Gpg4win Documentation"
+msgstr "Gpg4win Dokumentation"
+
+#: src/installer.nsi:446
+msgctxt "T_InstallOptions"
+msgid "Install Options"
+msgstr "Installationsoptionen"
+
+#: src/installer.nsi:449
+msgctxt "T_InstallOptLinks"
+msgid "Start links"
+msgstr "Startlinks"
+
+#: src/installer.nsi:451
+msgctxt "T_InstOptLabelA"
+msgid "Please select where Gpg4win shall install links:"
+msgstr "Bitte wählen Sie, welche Verknüpfungen angelegt werden sollen:"
+
+#: src/installer.nsi:454
+msgctxt "T_InstOptLabelB"
+msgid "(Only programs will be linked into the quick launch bar.)"
+msgstr ""
+"(In die Schnellstartleiste werden nur Verknüpfungen für Programme angelegt.)"
+
+#: src/installer.nsi:457
+msgctxt "T_InstOptFieldA"
+msgid "Start Menu"
+msgstr "Startmenü"
+
+#: src/installer.nsi:460
+msgctxt "T_InstOptFieldB"
+msgid "Desktop"
+msgstr "Arbeitsfläche"
+
+#: src/installer.nsi:463
+msgctxt "T_InstOptFieldC"
+msgid "Quick Launch Bar"
+msgstr "Schnellstartleiste"
+
+#: src/installer.nsi:469
+msgctxt "T_FoundExistingVersion"
+msgid ""
+"Version $R1 has already been installed.\n"
+"Do you want to overwrite it with version ${VERSION}?"
+msgstr ""
+"Version $R1 ist hier bereits installiert.\n"
+"Möchten Sie diese mit Version ${VERSION} überschreiben?\n"
+"\n"
+"(Sie können in jedem Fall mit JA antworten, falls es sich um eine neuere "
+"oder dieselbe Version handelt.)"
+
+#: src/installer.nsi:472
+msgctxt "T_FoundExistingVersionB"
+msgid ""
+"A version of Gpg4Win has already been installed on the system. There will be "
+"no problem installing and thus overwriting this Version.\n"
+"\n"
+"Do you want to continue installing Gpg4win?"
+msgstr ""
+"Eine Version von Gpg4Win ist hier bereits installiert.  Es ist problemlos "
+"möglich, die Installation fortzuführen.\n"
+"\n"
+"Möchten die die Installation von Gpg4Win fortführen?"
+
+#: src/installer.nsi:483
+msgctxt "T_FoundOldSeeManual"
+msgid ""
+"Please see the Gpg4win user manual to learn how to migrate existing keys "
+"from other GnuPG based installations to Gpg4win."
+msgstr ""
+"Bitte sehen Sie im Gpg4win für Einsteiger Handbuch nach, wie Sie Ihre "
+"Schlüssel aus anderen - GnuPG basierten - Installationen in Gpg4win "
+"überführen.  Es wird dringend geraten Gpg4Win nicht zusammen mit diesen "
+"anderen Installation zu betreiben."
+
+#: src/installer.nsi:488
+msgctxt "T_FoundOldGnuPP"
+msgid ""
+"An old installation of GnuPP (GNU Privacy Project) has been been detected.  "
+"That software is not maintained anymore and thus should be removed.\n"
+"\n"
+"Do you want to continue installing Gpg4win and take care of the old "
+"installation later?"
+msgstr ""
+"Eine alte Installation von GnuPP (GNU Privacy Project) wurde gefunden.  "
+"Diese Software wird nicht mehr gepflegt und sollte deshalb vom System "
+"entfernt werden.\n"
+"\n"
+"Sie können die Installation von Gpg4win jetzt weiterdurchführen und danach "
+"entscheiden, ob Sie das alte GnuPP dann entfernen.  Sie finden hierzu "
+"Hinweise im Gpg4Win Handbuch für Einsteiger.  Falls Sie die alte "
+"Installation schon jetzt entfernen möchten, so exportieren Sie dort alle "
+"vorhandenen Schlüssel in eine Datei um sie so später in Gpg4Win wieder "
+"importieren zu können.\n"
+"\n"
+"Möchten Sie die Installation von Gpg4win weiter durchführen und sich dann "
+"später um die Entfernung von GnuPP kümmern?"
+
+#: src/installer.nsi:497
+msgctxt "T_FoundOldGnuPT"
+msgid ""
+"An installation of GnuPT has been been detected.  This may cause problems "
+"when used along with Gpg4win.\n"
+"\n"
+"Do you want to continue installing Gpg4win?"
+msgstr ""
+"Eine Installation von GnuPT wurde gefunden.  Dies kann zu Problemen führen, "
+"falls GnuPT zusammem mit Gpg4win benutzt wird.  Falls Sie GnuPT "
+"zwischenzeitlich bereits entfernt haben, so ignorieren Sie diese Warnung "
+"bitte.  Die Deinstallation von GnuPT erfolgt nicht immer spurlos und Gpg4win "
+"kann deshalb nicht sicher erkennen, ob es vollständig entfernt wurde.\n"
+"\n"
+"Sie können die Installation von Gpg4win jetzt weiterdurchführen und danach "
+"entscheiden, ob Sie das alte GnuPT dann entfernen.  Sie finden hierzu "
+"Hinweise im Gpg4Win Handbuch für Einsteiger.  Falls Sie die alte "
+"Installation schon jetzt entfernen möchten, so exportieren Sie dort alle "
+"vorhandenen Schlüssel in eine Datei um sie so später in Gpg4Win wieder "
+"importieren zu können.\n"
+"\n"
+"Möchten Sie die Installation von Gpg4win fortführen?"
+
+#: src/installer.nsi:504
+msgctxt "T_FoundOldWinPTSF"
+msgid ""
+"An old installation of the Sourceforge hosted WinPT has been been detected.  "
+"That software is not maintained anymore and should be removed.\n"
+"\n"
+"Do you want to continue installing Gpg4win and take care of the old "
+"installation later?"
+msgstr ""
+"Eine alte Installation der Windows Privacy Tools von Sourceforge wurde "
+"gefunden.  Diese Software wird nicht mehr gepflegt und verträgt sich "
+"vermutlich nicht mit Gpg4win.  Sie sollte deshalb vom System entfernt "
+"werden.\n"
+"\n"
+"Sie können versuchen, die Installation von Gpg4win jetzt weiterdurchführen "
+"und danach entscheiden, ob Sie die alte Installation entfernen.  Sie finden "
+"hierzu Hinweise im Gpg4Win Handbuch für Einsteiger.\n"
+"\n"
+"Wir empfehlen allerdings, diese alte Installation vorher zu entfernen.  "
+"Brechen Sie hierzu die Installation von Gpg4win ab und exportieren Sie "
+"mittles dieser alten Version alle vorhandenen Schlüssel in eine Datei um sie "
+"so später in Gpg4Win wieder importieren zu können.\n"
+"\n"
+"Möchten Sie die Installation von Gpg4win trotzdem jetzt weiter durchführen?"
+
+#: src/installer.nsi:514
+msgctxt "T_FoundOldGnuPack"
+msgid ""
+"An installation of GnuPG-Pack has been been detected. You need to uninstall "
+"it before you can continue with Gpg4win installation.\n"
+"\n"
+"The installation will be aborted now!"
+msgstr ""
+"Eine Installation von GnuPG-Pack wurde gefunden.  Sie müssen diese zuerst "
+"deinstallieren bevor Sie mit der Installation von Gpg4win fortfahren "
+"können.\n"
+"\n"
+"Die Installation von Gpg4win wird nun abgebrochen!"
+
+#: src/installer.nsi:523
+msgctxt "T_BetaWarning"
+msgid ""
+"Note: This is a BETA version of Gpg4win.\n"
+"\n"
+"Beta versions are only intended for testing and shall not be used in a "
+"production environment."
+msgstr ""
+"Achtung: Dies ist eine BETA-Version von Gpg4win.\n"
+"\n"
+"Das bedeutet, dass der Funktionsumfang an einigen\n"
+"Stellen nicht vollständig implementiert sein kann oder auch\n"
+"noch Fehler vorliegen können.\n"
+"\n"
+"Eine BETA-Version dient dem Test durch erfahrene\n"
+"Anwender oder Administratoren um die künftige\n"
+"neue Version kennenzulernen und Verbesserungsvorschläge\n"
+"einzubringen.\n"
+"\n"
+"Bitte lesen Sie unbedingt die Hinweise zur BETA-Version \n"
+"auf der Gpg4win Download-Seite:\n"
+"\n"
+"  http://www.gpg4win.de/download-de.html  "
+
+#: src/installer.nsi:530
+msgctxt "T_AdminNeeded"
+msgid ""
+"Warning: Administrator permissions required for a successful installation"
+msgstr ""
+"Achtung: Für eine erfolgreiche Installation werden Administratorrechte "
+"benötigt."
+
+#: src/installer.nsi:534
+msgctxt "T_CloseOtherApps"
+msgid ""
+"Please make sure that other applications are not running. In particular you "
+"should close Outlook and all Explorer windows.  Gpg4win will try to install "
+"anyway but a reboot will be required then."
+msgstr ""
+"Bitte stellen Sie sicher, daß alle anderen Anwendugen geschlossen sind.  "
+"Insbesondere sollten Sie Outlook und alle Explorer Fenster schliessen bevor "
+"Sie die Installation fortsetzen.  Gpg4win wird auf jeden Fall versuchen, "
+"eine Installation durchzuführen; es ist dann aber u.U. notwendig, das System "
+"neu zu starten."
+
+#: src/installer.nsi:539
+msgctxt "T_ShuttingDownWinPT"
+msgid "Trying to shutdown a possible running instance of WinPT."
+msgstr "Ein möglicherweise laufendes WinPT wird jetzt automatisch beendet."
+
+#: src/installer.nsi:541
+msgctxt "T_ShuttingDownDirMngr"
+msgid "Trying to shutdown a possible running instance of DirMngr."
+msgstr "Ein möglicherweise laufender DirMngr wird jetzt automatisch beendet."
+
+#: src/inst-claws-mail.nsi:53
+msgctxt "DESC_SEC_claws_mail"
+msgid "Claws Mail-User-Agent"
+msgstr ""
+"Claws Mail ist ein vollständiges Mail- und News-Programm mit sehr guter "
+"Unterstützung für GnuPG."
+
+#: src/inst-claws-mail.nsi:56
+msgctxt "DESC_Menu_claws_mail"
+msgid "Run the Claws mailprogram."
+msgstr "Das Mailprogramm Claws Mail aufrufen."
+
+#: src/inst-claws-mail.nsi:59
+msgctxt "DESC_Menu_claws_mail_pdf"
+msgid "Show the online manual of Claws Mail"
+msgstr "Das englische Handbuch zu Claws Mail anzeigen"
+
+#: src/inst-eudoragpg.nsi:40
+msgctxt "DESC_SEC_eudoragpg"
+msgid "EudoraGPG is a plugin for the Eudora mail program"
+msgstr ""
+"EudoraGPG ist ein Plugin zur Verschlüsselung für das Eudora Mailprogramm"
+
+#: src/inst-gnupg2.nsi:117
+msgctxt "DESC_SEC_gnupg2"
+msgid "GNU Privacy Guard with S/MIME support"
+msgstr ""
+"Diese Version von GnuPG kann zusätzlich installiert werden um "
+"Verschlüsselung mittels S/MIME bereitzustellen.  Bitte beachten Sie, daß "
+"diese Option noch nicht vollständig unterstützt ist."
+
+#: src/inst-gnupg.nsi:108
+msgctxt "DESC_SEC_gnupg"
+msgid "GNU Privacy Guard"
+msgstr ""
+"Der GNU Privacy Guard (GnuPG) ist der Kernbestandteil dieser Software.  "
+"GnuPG stellt die eigentliche Verschlüsselung sowie die Verwaltung der "
+"Schlüssel bereit."
+
+#: src/inst-gpa.nsi:74
+msgctxt "DESC_SEC_gpa"
+msgid "GNU Privacy Assistant"
+msgstr ""
+"GNU Privacy Assistent (GPA) ist ein Programm zum Verwalten von Schlüsseln "
+"welches für mehrere Plattformen verfügbar ist.  Es kann zusammen oder "
+"anstatt von WinPT benutzt werden."
+
+#: src/inst-gpa.nsi:77
+msgctxt "DESC_Menu_gpa"
+msgid ""
+"Run the GNU Privacy Assistant key management tool. This is an alternative to "
+"the WinPT key management tool."
+msgstr ""
+"Das Schlüsselverwaltungsprogramm GNU Privacy Assistent aufrufen.  Dies ist "
+"eine Alternative zu dem WinPT Programm."
+
+#: src/inst-gpg4win.nsi:43
+msgctxt "DESC_Menu_gpg4win_readme"
+msgid "General information on Gpg4Win"
+msgstr "Allgemeine Informationen zu Gpg4Win"
+
+#: src/inst-gpg4win.nsi:46
+msgctxt "DESC_Menu_gnupg_faq"
+msgid "Show the Frequently Asked Questions Document for GnuPG"
+msgstr "Das Dokument mit den häufig gestellten Fragen (FAQ) zu GnuPG anzeigen"
+
+#: src/inst-gpgee.nsi:65
+msgctxt "T_GPGee_RegFailed"
+msgid "Warning: Registration of the GPGee explorer extension failed."
+msgstr "Warnung: Registration der GPGee Explorer Extension ist fehlgeschlagen."
+
+#: src/inst-gpgee.nsi:68
+msgctxt "DESC_SEC_gpgee"
+msgid "GPG Explorer Extensions"
+msgstr ""
+"GPG Explorer Erweiterungen (GPGee) ist eine Erweiterung für den Explorer, "
+"die es ermöglicht, Dateien über das Kontextmenü zu verschlüsseln."
+
+#: src/inst-gpgee.nsi:71
+msgctxt "DESC_Menu_gpgee_hlp"
+msgid "Show the online manual of GPGee"
+msgstr "Das englische Handbuch zu GPGee anzeigen"
+
+#: src/inst-gpgex.nsi:80
+msgctxt "T_GpgEX_RegFailed"
+msgid "Warning: Registration of the GpgEX plugin failed."
+msgstr "Warnung: Registration des GpgEX Plugin ist fehlgeschlagen."
+
+#: src/inst-gpgex.nsi:83
+msgctxt "DESC_SEC_gpgex"
+msgid "GnuPG Shell Extension"
+msgstr ""
+"GPG Shell Extension (GpgEX) ist eine Erweiterung für den Explorer, die es "
+"ermöglicht, Dateien über das Kontextmenü zu verschlüsseln."
+
+#: src/inst-gpgol.nsi:57
+msgctxt "T_GpgOL_RegFailed"
+msgid "Warning: Registration of the GpgOL Outlook pluginfailed."
+msgstr "Warnung: Registration des GpgOL Outlook Plugin ist fehlgeschlagen."
+
+#: src/inst-gpgol.nsi:60
+msgctxt "DESC_SEC_gpgol"
+msgid "GnuPG for Outlook"
+msgstr ""
+"GnuPG für Outlook (GpgOL) is eine Erweiterung für Outlook 2003, die "
+"verwendet wird um Nachrichten mit OpenPGP oder S/MIME zu verschlüsseln."
+
+#: src/inst-kleopatra.nsi:186
+msgctxt "DESC_SEC_kleopatra"
+msgid "Kleopatra"
+msgstr "Kleopatra"
+
+#: src/inst-kleopatra.nsi:189
+msgctxt "DESC_Menu_kleopatra"
+msgid "Run the Kleopatra key management tool."
+msgstr "Das Schlüsselverwaltungsprogramm Kleopatra aufrufen."
+
+#: src/inst-man_advanced_de.nsi:39
+msgctxt "DESC_Name_man_advanced_de"
+msgid "Advanced Manual (German)"
+msgstr "Durchblickerhandbuch"
+
+#: src/inst-man_advanced_de.nsi:42
+msgctxt "DESC_SEC_man_advanced_de"
+msgid "Gpg4Win Manual for the Advanced User (German)"
+msgstr "Gpg4Win Handbuch für den Durchblicker"
+
+#: src/inst-man_advanced_de.nsi:45
+msgctxt "DESC_Menu_man_advanced_de"
+msgid "Show the German online manual of Gpg4Win for advanced users"
+msgstr "Das Online-Handbuch von Gpg4Win für den Durchblicker anzeigen"
+
+#: src/inst-man_advanced_en.nsi:39
+msgctxt "DESC_Name_man_advanced_en"
+msgid "Advanced Manual"
+msgstr "Durchblickerhandbuch (Englisch)"
+
+#: src/inst-man_advanced_en.nsi:42
+msgctxt "DESC_SEC_man_advanced_en"
+msgid "Gpg4Win Manual for the Advanced User"
+msgstr "Gpg4Win Handbuch für den Durchblicker (Englisch)"
+
+#: src/inst-man_advanced_en.nsi:45
+msgctxt "DESC_Menu_man_advanced_en"
+msgid "Show the online manual of Gpg4Win for advanced users"
+msgstr ""
+"Das englische Online-Handbuch von Gpg4Win für den Durchblicker anzeigen"
+
+#: src/inst-man_novice_de.nsi:39
+msgctxt "DESC_Name_man_novice_de"
+msgid "Novice Manual (German)"
+msgstr "Einsteigerhandbuch"
+
+#: src/inst-man_novice_de.nsi:42
+msgctxt "DESC_SEC_man_novice_de"
+msgid "Gpg4Win Manual for the Novice User (German)"
+msgstr "Gpg4Win Handbuch für den Einsteiger"
+
+#: src/inst-man_novice_de.nsi:45
+msgctxt "DESC_Menu_man_novice_de"
+msgid "Show the German online manual of Gpg4Win for novice users"
+msgstr "Das Online-Handbuch von Gpg4Win für den Einsteiger anzeigen"
+
+#: src/inst-man_novice_en.nsi:39
+msgctxt "DESC_Name_man_novice_en"
+msgid "Novice Manual"
+msgstr "Einsteigerhandbuch (Englisch)"
+
+#: src/inst-man_novice_en.nsi:42
+msgctxt "DESC_SEC_man_novice_en"
+msgid "Gpg4Win Manual for the Novice User"
+msgstr "Gpg4Win Handbuch für den Einsteiger (Englisch)"
+
+#: src/inst-man_novice_en.nsi:45
+msgctxt "DESC_Menu_man_novice_en"
+msgid "Show the online manual of Gpg4Win for novice users"
+msgstr "Das englische Online-Handbuch von Gpg4Win für den Einsteiger anzeigen"
+
+#: src/inst-sylpheed-claws.nsi:51
+msgctxt "DESC_SEC_sylpheed"
+msgid "Sylpheed-Claws Mail-User-Agent"
+msgstr ""
+"Sylpheed-Claws ist ein vollständiges Mail- und News-Programm mit sehr guter "
+"Unterstützung für GnuPG."
+
+#: src/inst-sylpheed-claws.nsi:54
+msgctxt "DESC_Menu_sylpheed"
+msgid "Run the Sylpheed-Claws mailprogram."
+msgstr "Das Mailprogramm Sylpheed-Claws aufrufen."
+
+#: src/inst-sylpheed-claws.nsi:57
+msgctxt "DESC_Menu_sylpheed_pdf"
+msgid "Show the online manual of Sylpheed Claws"
+msgstr "Das englische Handbuch zu Sylpheed Claws anzeigen"
+
+#: src/inst-winpt.nsi:46
+msgctxt "DESC_SEC_winpt"
+msgid "Windows Privacy Tray"
+msgstr ""
+"Windows Privacy Tray (WinPT) ist ein vielseitiges Programm zur "
+"Schlüsselverwaltung sowie aller anderen Funktionen von GnuPG.  Es "
+"installiert sich in die Startleiste."
+
+#: src/inst-winpt.nsi:49
+msgctxt "DESC_Menu_winpt"
+msgid ""
+"Run the Windows Privacy Tray key management tool. This is a versatile key "
+"management and encryption tool."
+msgstr ""
+"Das Schlüsselverwaltungsprogramm Windows Privacy Tray aufrufen.  Dies ist "
+"ein vielseitiges Programm zur Schlüsselverwaltung und Verschlüsselung.  Es "
+"installiert sich in die Startleiste."

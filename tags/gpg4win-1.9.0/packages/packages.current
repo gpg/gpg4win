@@ -1,0 +1,377 @@
+# packages.current - list of current packages for use with gpg4win -*- sh -*-
+#
+# The download script processes the statements here to
+# actually download the packages.  The syntax is trivial:
+#
+# If the first non whitespace character of a line is #, the line is
+# considered a comment.  If the first word of a line is "server", the
+# rest of the line will be taken as the base URL for following file
+# commands.  If the first word of a line is "file" the rest of the
+# line will be appended to the current base URL (with a / as
+# delimiter).  The statement "chk" is followed by the SHA1 checksum of
+# the last file.
+
+
+#
+# GNU
+#
+server ftp://ftp.cs.tu-berlin.de/pub/gnu
+
+file gettext/gettext-runtime-0.13.1.bin.woe32.zip
+chk  8cd55585429b5d696ac3745e065f8613de26f19c
+file gettext/gettext-0.13.1.tar.gz
+chk  fa46cb397cf6768f5ff4fdf1854514a9ced5b02b
+
+file libiconv/libiconv-1.9.1.bin.woe32.zip
+chk  b57f5e8234975ec3cde340e101886135eb532329
+file libiconv/libiconv-1.9.1.tar.gz
+chk  f130c93fdf20903ca21bace8b8822f46468c9d65
+
+
+# Gnuwin32 packages orginally hosted at sf.net but mirrored at g10code
+# for easier download.
+server ftp://ftp.g10code.com/mirrors/gnuwin32
+
+file zlib-1.2.3-bin.zip
+chk  becbcaf5076e307e743b1edc6a5645849eba9ebc
+file zlib-1.2.3-lib.zip
+chk  fe2ee77293da3361b1f2710d1bd62f27b2ae64b0
+file zlib-1.2.3-src.zip
+chk  0e18fcd7f1a585f825c210a1bb2456b4aa8fcc0d
+
+file libpng-1.2.8-bin.zip
+chk  32876271847afed0ed721fb1b5913a2ce5f25168
+file libpng-1.2.8-lib.zip
+chk  834e1567813506525c0f1003a048df0353b1bb36
+file libpng-1.2.8-src.zip
+chk  f00a86596d804fb62e912cf575983124692858fa
+
+file jpeg-6b-4-bin.zip
+chk  d6309212c783cffe8ea9d2c7c8913b69709796fe
+file jpeg-6b-4-lib.zip
+chk  858cbedcefcc265e5eec35a5c7a20bcde3de4399
+file jpeg-6b-4-src.zip
+chk  fb46e04938e28bc1ecea1e7bb8b92414129faf96
+
+file crypt-2.2.5-lib.zip
+chk  77482f40ce2c65c0e1b807a07049f53823861266
+file crypt-2.2.5-src.zip
+chk  91c4c5e2790bc19909b03d6eaaf5d6c205b65f07
+
+file regex-0.12-bin.zip
+chk  13000b102f2e0ce5142ce0b5081820337c24da7d
+file regex-0.12-lib.zip
+chk  37e5aa61bdf26cd182ebc6169528c86f165c7e09
+file regex-0.12-src.zip
+chk  b9faae10efae552f23c213891a3ed8187cb7d017
+
+#
+# libetpan for claws
+#
+
+server ftp://ftp.g10code.com/g10code/scratch
+
+file libetpan-0.52-dev-20071209.tar.gz
+chk  f4731684a1ae28e219f7a6eae01f0a5e7bd9306f
+
+#
+# Claws
+#
+# (Kept on our own mirror due to Sourceforge peculiarities.)
+server ftp://ftp.g10code.com/mirrors/claws
+
+#file  sylpheed-claws-2.4.0.tar.bz2
+#chk   f61acdf3e9851da3d1e2591321bf43426465955f
+#file  claws-mail-2.9.2.tar.bz2
+#chk   3b15730065ca1e0c318592b39b02c2d0497e6ebc
+#file  claws-mail-2.10.0.tar.bz2
+#chk   0ee38ec2dd0c37941b0bcc4af7ab441ec432c63c
+#file  claws-mail-3.0.2.tar.bz2
+#chk   a607aca53a349f3a0a8d8f7a51f4754705e12350
+
+file  claws-mail-3.1.0cvs70.tar.bz2
+chk   94abcee174c8405fa4cbfe67294377928b55c6f6
+
+#
+# Pthreads for Windows.
+#
+server ftp://sources.redhat.com/pub
+
+file pthreads-win32/pthreads-w32-2-7-0-release.tar.gz
+chk  e9f66acde58136ab67e2167412773f727cd13a9d
+
+
+#
+# GLIB
+#
+server ftp://ftp.gtk.org/pub/glib/2.12
+
+file glib-2.12.12.tar.bz2
+chk  527bced2e6d38169c08c8712d5e3b6ebb0dc46b5
+
+
+#
+# ATK
+#
+server ftp://ftp.gnome.org/pub/gnome/sources/atk/1.12
+
+file atk-1.12.2.tar.bz2
+chk  8c59f23a90e6b4ddcff0712dcbf1bfdaa9fc35cb
+
+server ftp://ftp.gtk.org/pub/gtk/v2.10/win32/dependencies
+
+file atk-1.12.2.zip
+chk  c4dd9617e96f03a6856cc99dec407bc9e8f28a98
+file atk-dev-1.12.2.zip
+chk  168ebd566ab4913cb8b03b11d7bc7a038bf27273 
+
+
+#
+# PANGO
+#
+server ftp://ftp.gtk.org/pub/pango/1.16
+
+file pango-1.16.4.tar.bz2
+chk  6a21126632ed99950818c64d8598b6e92fa7da58
+file win32/pango-1.16.4.zip
+chk  c0dbdaf50465c28ba0686f7d125a6cddc70e40fb
+file win32/pango-dev-1.16.4.zip
+chk  3ffdfe8f49421e5c0f8608c113ee6920316b9562
+
+#
+# CAIRO
+#
+server http://cairographics.org/releases
+
+file cairo-1.4.2.tar.gz
+chk  9e7a323fc7d81d5011044d7eb22db3bf26ff7314 
+
+server ftp://ftp.gtk.org/pub/gtk/v2.10
+
+file win32/cairo-1.4.2.zip
+chk  33d5308b94c967bfbf2d94a9ec7eda170411d628
+file win32/cairo-dev-1.4.2.zip
+chk  689f8959f69cff6b086846d3f25c361cd6800cb6
+
+
+
+#
+# GTK+
+#
+server ftp://ftp.gtk.org/pub/gtk/v2.10
+
+file gtk+-2.10.13.tar.bz2
+chk  8d00b928a8788ff86d97197c20c18d41f9a1b1cd
+file win32/gtk+-2.10.13.zip
+chk  1cb9e220adcd784ef92d147d2c5d72545eb9c226
+file win32/gtk+-dev-2.10.13.zip
+chk  e3a8e235fef16c01291e683214fb82e19be61844
+
+#
+# GIMP stuff for W32
+#
+server http://www.gimp.org/~tml/gimp/win32
+
+file pkgconfig-0.15.zip
+chk  fc4b38b372e1559cbfafc169f528efcb31c9dd94
+file pkgconfig-0.15.0.tar.gz
+chk  1019c8027c0cf94bca680886f4e2ae4e629a2a97
+
+#
+# WinPT
+#
+server http://wald.intevation.org/frs/download.php
+
+#file  265/winpt-1.0.0.tar.bz2
+#chk   7a3589a0ce3a81e3b94547ffdd76bf53d51e919f  
+#file  272/winpt-1.0.1.tar.bz2
+#chk   574b7766701aaaef6e388d8b3ad68a171c9c071f
+
+file  312/winpt-1.2.0.tar.bz2
+chk   050f93a0d74385ce90e8934e49c11f171d495c5a
+
+
+#
+# GPGee
+#
+# 2007-09-11: Replaced by gpgex.
+#
+# Note that the -bin package has been repackaged from the
+# -noinstaller package using these commands:
+#    mkdir gpgee-tmp
+#    unzip ../GPGee-1.2.3-noinstaller.zip
+#    gpg --verify GPGee.zip.asc
+#    unzip GPGee.zip
+#    rm GPGee/uninst.exe 
+#    zip ../GPGee-1.2.3-bin.zip GPGee/*
+# server ftp://ftp.gnupg.org/gcrypt/gpgee
+#
+#file GPGee-1.3.1-noinstaller.zip
+#chk  6e44bbf61776e0a6c8714a514fa39489e94c0179
+#file GPGee-1.3.1-source.zip
+#chk  b04fa9ea81fc77844c7aa2e3eda042d819d8e9f1
+
+
+#
+# GpgOL
+#
+server ftp://ftp.g10code.com/g10code/gpgol/alpha
+
+file gpgol-0.10.12.tar.bz2
+chk  b1e9c9aba1ae094a8b23f7365442bd94a08ed55a
+
+#
+# GpgEX
+#
+
+#server ftp://ftp.g10code.com/g10code/scratch
+server ftp://ftp.g10code.com/g10code/gpgex
+
+file gpgex-0.9.0.tar.bz2
+chk  826fec99ab7d377357269a346ae3aae439b8876b
+
+#
+# Pth emulation
+#
+
+#server ftp://ftp.g10code.com/g10code/w32pth
+#file w32pth-2.0.1.tar.bz2
+#chk  e74a770a58f08ba02f311d16c5debe79c218ee5d
+
+server ftp://ftp.g10code.com/g10code/scratch
+file w32pth-2.0.2-svn24.tar.bz2
+chk  9f68a7bf5bae408978b3f3b899655dfa79cb6cb2
+
+#
+# Stripped down version of BZIP2
+#
+server ftp://ftp.g10code.com/g10code/bzip2
+
+file bzip2-1.0.4-g10.tar.gz
+chk  ae1b992721198b93198aa36eb7a3a7d074417f47  
+
+
+#
+# GnuPG et al.
+#
+server ftp://ftp.gnupg.org/gcrypt
+
+file gnupg/gnupg-1.4.9.tar.bz2
+chk  826f4bef1effce61c3799c8f7d3cc8313b340b55
+
+name gnupg2-2.0.9.tar.bz2
+file gnupg/gnupg-2.0.9.tar.bz2
+chk  959bdb934e3a72d256bfbd0122d996a73adb5d1f
+
+file libgpg-error/libgpg-error-1.6.tar.bz2
+chk  2f387d0c34dd55eaf3b5f3c2570e9033eb540bc3
+
+file libksba/libksba-1.0.3.tar.bz2
+chk  7a4b3a8340087ed360269b567881ebfb9b67441b
+
+file libgcrypt/libgcrypt-1.4.0.tar.bz2
+chk  cd1b52e8ecfa361737c6f130ed2f1d850e312c16
+
+file pinentry/pinentry-0.7.5.tar.gz
+chk  6699a1ff94c649e8905199d480c6412cc43bad3d 
+
+# (Snapshots)
+server ftp://ftp.g10code.com/g10code/scratch
+
+file dirmngr-1.0.2-svn297.tar.bz2
+chk  6140c65d71af3349bfaccdccdc4d89f25399f2f9
+
+file gpgme-1.1.7-svn1309.tar.bz2
+chk  13041f9aa9bcfe3ce293ea3d4b947f8e9cf5d115
+
+file libassuan-1.0.5-svn284.tar.bz2
+chk  be26eeb3f73c2eafb0e65e94b341092cf90267e1
+
+
+#
+# GPA
+#
+
+#server http://wald.intevation.org/frs/download.php
+#file 350/gpa-0.7.6.tar.bz2
+#chk  bb9182cd4c6bd6677ba9cdcca262dcc1b1d22c3c
+
+server ftp://ftp.g10code.com/g10code/scratch
+file gpa-0.7.7-svn859.tar.bz2
+chk  3f855b5dcae2159602cfad7d5757f776fa5532e9
+
+
+#
+# Qt
+#
+server ftp://ftp.kdab.net/pub/gpg4win
+
+name qt-4.3.3-1-bin.zip
+file qt-gpg4win-4.3.3-1-bin.zip
+chk  ce4af57778a63b0a1369ae230a5cdf71735b2db5
+
+name qt-4.3.3-1-lib.zip
+file qt-gpg4win-4.3.3-1-lib.zip
+chk  6f33ba41210d18d59b93cd331d0bdc6b107e132b
+
+name qt-4.3.3-1-src.zip
+file qt-gpg4win-4.3.3-1-src.zip
+chk  3f918cc7d0a4e039db53df97cdce7aeac408d90c
+
+#
+# Qt contains DBus and thus depends on kdesupport, which is a random
+# collection of libraries.
+#
+
+server ftp://ftp.kdab.net/pub/gpg4win
+
+file kdesupport-4.0.0-3-bin.zip
+chk 3f853554066e49cd2f91f82215cfce72edbebb14
+
+# FIXME: This does not actually contain the development files, but
+# further binary files we need.
+file kdesupport-4.0.0-3-lib.zip
+chk 92ed0b77f4bcf7faae0924c92d382c64804686a1
+
+file kdesupport-4.0.0-3-src.zip
+chk 8a23a3ba8158b64cd5362cf88a58cd44be8a8b73
+
+# oxygen-icons
+#
+# Source package is identical to binary package.
+
+server ftp://ftp.kdab.net/pub/gpg4win
+
+name oxygen-icons-20080104-bin.zip
+file oxygen-icons-20080104.zip
+chk  1aba4fc844259a20c72ca0a2718462efc1b1fc66
+
+file oxygen-icons-20080104-src.zip
+chk  ced2b1f3b111cf7f6cc28c4f7863a29cda05114b
+
+
+# kdelibs
+
+server ftp://ftp.kdab.net/pub/gpg4win
+
+name kdelibs-20080421-bin.zip
+file kdelibs-for-kleo-20080421-bin.zip
+chk  fa08d6aba03d8375fac253b687d1aaabae0aac3a
+
+name kdelibs-20080421-lib.zip
+file kdelibs-for-kleo-20080421-dev.zip
+chk  886c4cc687b2868acbc9c138b075541eb64257f0
+
+name kdelibs-20080421-src.zip
+file kdelibs-for-kleo-20080421-src.zip
+chk  bf922f89bae7c5cc16dba37f5fef51e399d5066a
+
+# Kleopatra
+
+server ftp://ftp.kdab.net/pub/gpg4win
+
+file kleopatra-20080421-bin.zip
+chk  d5ecc8958eaa311ad6ba46219ecabcbc6bc74bd2
+
+file kleopatra-20080421-src.zip
+chk  cc2b924abf32f440aad85a2782f18315b4a17168

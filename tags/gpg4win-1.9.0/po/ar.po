@@ -1,0 +1,489 @@
+# translation of ar.po to Arabic
+# Copyright (C) YEAR g10 Code GmbH
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Khaled Hosny <khaledhosny@eglug.org>, 2008.
+# Ahmad Gharbeia <gharbeia@gmail.com>, 2008.
+msgid ""
+msgstr ""
+"Project-Id-Version: Gpg4Win\n"
+"Report-Msgid-Bugs-To: gpg4win-devel@wald.intevation.org\n"
+"POT-Creation-Date: 2008-04-22 15:44+0200\n"
+"PO-Revision-Date: 2008-03-11 23:52+0200\n"
+"Last-Translator: Ahmad Gharbeia <ahmad@gharbeia.org>\n"
+"Language-Team: Arabic <doc@arabeyes.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CP1256\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n>=3 && "
+"n<=10 ? 3 : n>=11 && n<=99 ? 4 : 5;\n"
+
+#: src/g4wihelp.nsi:21
+msgctxt "T_AlreadyRunning"
+msgid "An instance of this installer is already running."
+msgstr "ÊÚãá ÓíÑæÑÉ ÃÎÑì ãä åÐÇ ÇáãõËÈøöÊ ÈÇáÝÚá."
+
+#: src/gpg4win.nsi:117
+msgctxt "T_WelcomeTitleGpg4win"
+msgid "Welcome to the installation of Gpg4win"
+msgstr "ãÑÍÈÇ Ýí ÊËÈíÊ Gpg4win"
+
+#: src/gpg4win.nsi:121
+msgctxt "T_AboutGpg4win"
+msgid ""
+"GnuPG is GNU's tool for secure communication and data storage. It can be "
+"used to encrypt data and to create digital signatures. It includes an "
+"advanced key management facility and is compliant with the proposed OpenPGP "
+"Internet standard as described in RFC2440."
+msgstr ""
+"þGnuPG åæ ÃÏÇÉ Ìäæ ááÇÊÕÇáÇÊ æ ÇáÊÎÒíä ÇáÂãä ááÈíÇäÇÊ. íõãßä ÇÓÊÎÏÇãå áÊÚãíÉ "
+"ÇáÈíÇäÇÊ æ ÇáÊæÞíÚ ÇáÑÞãíº æ åæ íÔÊãá Úáì æÓíáÉ ãÊÞÏãÉ áÅÏÇÑÉ ÇáãÝÇÊíÍ¡ "
+"æíÊæÇÝÞ ãÚ ãÚíÇÑ ÇáÅäÊÑäÊ OpenPGP ÇáãÞÊÑÍ ßãÇ æõÕöÝ Ýí RFC2440."
+
+#: src/gpg4win.nsi:127
+msgctxt "T_AboutGpg4winVersion"
+msgid "This is Gpg4win version ${VERSION}"
+msgstr "åÐå ÇáÅÕÏÇÑÉ ${VERSION} ãä Gpg4win"
+
+#: src/gpg4win.nsi:130
+msgctxt "T_AboutGpg4winFileVersion"
+msgid "file version ${PROD_VERSION}"
+msgstr "ÅÕÏÇÑÉ ÇáãáÝ ${PROD_VERSION}"
+
+#: src/gpg4win.nsi:133
+msgctxt "T_AboutGpg4winReleaseDate"
+msgid "release date ${_BUILD_ISODATE}"
+msgstr "ÊÇÑíÎ ÇáÅÕÏÇÑ ${_BUILD_ISODATE}"
+
+#: src/gpg4win-src.nsi:76
+msgctxt "T_WelcomeTitleGpg4winSrc"
+msgid "Welcome to the installation of the Gpg4win sources"
+msgstr "ãÑÍÈÇ Ýí ÊËÈíÊ ãÕÇÏöÑ Gpg4win"
+
+#: src/gpg4win-src.nsi:80
+msgctxt "T_AboutGpg4winSrc"
+msgid ""
+"GnuPG is GNU's tool for secure communication and data storage. It can be "
+"used to encrypt data and to create digital signatures. It includes an "
+"advanced key management facility and is compliant with the proposed OpenPGP "
+"Internet standard as described in RFC2440."
+msgstr ""
+"þGnuPG åæ ÃÏÇÉ Ìäæ ááÇÊÕÇáÇÊ æ ÇáÊÎÒíä ÇáÂãä ááÈíÇäÇÊ. íõãßä ÇÓÊÎÏÇãå áÊÚãíÉ "
+"ÇáÈíÇäÇÊ æ ÇáÊæÞíÚ ÇáÑÞãíº æ åæ íÔÊãá Úáì æÓíáÉ ãÊÞÏãÉ áÅÏÇÑÉ ÇáãÝÇÊíÍ¡ "
+"æíÊæÇÝÞ ãÚ ãÚíÇÑ ÇáÅäÊÑäÊ OpenPGP ÇáãÞÊÑÍ ßãÇ æõÕöÝ Ýí RFC2440."
+
+#: src/gpg4win-src.nsi:86
+msgctxt "T_AboutGpg4winSrcVersion"
+msgid "This is Gpg4win version ${VERSION}"
+msgstr "åÐå ÇáÅÕÏÇÑÉ ${VERSION} ãä Gpg4win"
+
+#: src/gpg4win-src.nsi:89
+msgctxt "T_AboutGpg4winSrcFileVersion"
+msgid "file version ${PROD_VERSION}"
+msgstr "ÅÕÏÇÑÉ ÇáãáÝ ${PROD_VERSION}"
+
+#: src/gpg4win-src.nsi:92
+msgctxt "T_AboutGpg4winSrcReleaseDate"
+msgid "release date ${_BUILD_ISODATE}"
+msgstr "ÊÇÑíÎ ÇáÅÕÏÇÑ ${_BUILD_ISODATE}"
+
+#: src/installer.nsi:217
+msgctxt "T_LangCode"
+msgid "en"
+msgstr "ar"
+
+#: src/installer.nsi:220
+msgctxt "T_GPLHeader"
+msgid ""
+"This software is licensed under the terms of the GNU General Public License "
+"(GPL) which guarantees your freedom to share and change Free Software."
+msgstr ""
+"åÐå ÇáÈÑãÌíÉ ãÑÎÕÉ ÈÑÎÕÉ Ìäæ ÇáÚãæãíÉ ÇáÚÇãÉ (GPL) æÇáÊí ÊãäÍß ÍÑíÉ ãÔÇÑßÉ "
+"æÊÚÏíá ÇáÈÑãÌíÇÊ ÇáÍÑÉ."
+
+#: src/installer.nsi:225
+msgctxt "T_GPLShort"
+msgid ""
+"In short: You are allowed to run this software for any purpose. You may "
+"distribute it as long as you give the recipients the same rights you have "
+"received."
+msgstr ""
+"ÈÇÎÊÕÇÑ: ÊÓÊØíÚ ÊÔÛíá åÐå ÇáÈÑãÌíÉ áÃí ÛÑÖ. æíãßäß ÊæÒíÚåÇ ãÇ ÏãÊ ÊÚØí "
+"ÇáãÊáÞíä äÝÓ ÇáÍÞæÞ ÇáÊí ÍÕáÊ ÚáíåÇ."
+
+#: src/installer.nsi:230
+msgctxt "T_RunKeyManager"
+msgid "Run the key manager"
+msgstr "ÔÛøá ãÏíÑ ÇáãÝÇÊíÍ"
+
+#: src/installer.nsi:233
+msgctxt "T_MoreInfo"
+msgid "Click here for the project's homepage"
+msgstr "ÇäÞÑ åäÇ áÊÒæÑ ÕÝÍÉ ÇáãÔÑæÚ"
+
+#: src/installer.nsi:235
+msgctxt "T_MoreInfoURL"
+msgid "http://www.gpg4win.org"
+msgstr "http://www.gpg4win.org"
+
+#: src/installer.nsi:237
+msgctxt "T_ShowReadme"
+msgid "Show the README file"
+msgstr "ØÇáÚ ãáÝ README"
+
+#: src/installer.nsi:240
+msgctxt "T_NoKeyManager"
+msgid "No key manager has been installed, thus we can't run one now."
+msgstr "áã íõËÈøÊ Ãí ãÏíÑ ãÝÇÊíÍ¡ áÐÇ áÇ äÓÊØíÚ ÊÔÛíáå."
+
+#: src/installer.nsi:245
+msgctxt "DESC_Menu_manuals"
+msgid "Documentation"
+msgstr "ÇáÊæËíÞ"
+
+#: src/installer.nsi:249
+msgctxt "DESC_Desktop_manuals"
+msgid "Gpg4win Documentation"
+msgstr "æËÇÆÞ Gpg4win"
+
+#: src/installer.nsi:446
+msgctxt "T_InstallOptions"
+msgid "Install Options"
+msgstr "ÎíÇÑÇÊ ÇáÊËÈíÊ"
+
+#: src/installer.nsi:449
+msgctxt "T_InstallOptLinks"
+msgid "Start links"
+msgstr "æÕáÇÊ ÇáÈÏÁ"
+
+#: src/installer.nsi:451
+msgctxt "T_InstOptLabelA"
+msgid "Please select where Gpg4win shall install links:"
+msgstr "ÇÎÊÑ Ãíä íÊÚíä ËÈíÊ ÇáæÕáÇÊ:"
+
+#: src/installer.nsi:454
+msgctxt "T_InstOptLabelB"
+msgid "(Only programs will be linked into the quick launch bar.)"
+msgstr "(ÝÞØ ÇáÈÑãÌíÇÊ ÓíÑÈØ ÅáíåÇ Ýí ÔÑíØ ÇáÈÏÁ ÇáÓÑíÚ.)"
+
+#: src/installer.nsi:457
+msgctxt "T_InstOptFieldA"
+msgid "Start Menu"
+msgstr "ÞÇÆãÉ ÇÈÏÃ"
+
+#: src/installer.nsi:460
+msgctxt "T_InstOptFieldB"
+msgid "Desktop"
+msgstr "ÓØÍ ÇáãßÊÈ"
+
+#: src/installer.nsi:463
+msgctxt "T_InstOptFieldC"
+msgid "Quick Launch Bar"
+msgstr "ÔÑíØ ÇáÈÏÁ ÇáÓÑíÚ"
+
+#: src/installer.nsi:469
+msgctxt "T_FoundExistingVersion"
+msgid ""
+"Version $R1 has already been installed.\n"
+"Do you want to overwrite it with version ${VERSION}?"
+msgstr ""
+"ÇáÅÕÏÇÑÉ $R1 ãËÈÊÉ ÈÇáÝÚá.\n"
+"ÃÊÑíÏ ÇÓÊÈÏÇáåÇ ÈÇáÅÕÏÇÑÉ  ${VERSION}¿"
+
+#: src/installer.nsi:472
+msgctxt "T_FoundExistingVersionB"
+msgid ""
+"A version of Gpg4Win has already been installed on the system. There will be "
+"no problem installing and thus overwriting this Version.\n"
+"\n"
+"Do you want to continue installing Gpg4win?"
+msgstr ""
+"Êã ÊËÈíÊ ÅÕÏÇÑÉ ãä Gpg4Win Úáì åÐÇ ÇáäÙÇã ãä ÞÈá. áÇ ãÔÇßá Ýí ÇáÊËÈíÊ "
+"æÇÓÊÈÏÇá Êáß ÇáÅÕÏÇÑÉ.\n"
+"\n"
+"ÃÊÑíÏ ãæÇÕáÉ ÊËÈíÊ Gpg4win¿"
+
+#: src/installer.nsi:483
+msgctxt "T_FoundOldSeeManual"
+msgid ""
+"Please see the Gpg4win user manual to learn how to migrate existing keys "
+"from other GnuPG based installations to Gpg4win."
+msgstr ""
+"ãä ÝÖáß ØÇáÚ Ïáíá ãÓÊÎÏã Gpg4win áÊÞÑÃ Úä ØÑíÞÉ äÞá ÇáãÝÇÊíÍ ÇáãæÌæÏÉ ãä ÞÈá "
+"ãä ÊËÈíÊÇÊ ÓÇÈÞÉ ãÈäíÉ Úáì GnuPG Åáì Gpg4win."
+
+#: src/installer.nsi:488
+msgctxt "T_FoundOldGnuPP"
+msgid ""
+"An old installation of GnuPP (GNU Privacy Project) has been been detected.  "
+"That software is not maintained anymore and thus should be removed.\n"
+"\n"
+"Do you want to continue installing Gpg4win and take care of the old "
+"installation later?"
+msgstr ""
+"æõÌöÏ ÊËÈíÊ ÞÏíã ãä GnuPP (ãÔÑæÚ ÎÕæÕíÉ Ìäæ). åÐå ÇáÈÑãÌíÇÊ áíÓÊ ÞíÏ ÇáÊØæíÑ "
+"ÈÚÏ ÇáÂä æíÌÈ ÅÒÇáÊåÇ.\n"
+"\n"
+"ÃÊÑíÏ ãæÇÕáÉ ÊËÈíÊ Gpg4win æÇáÊÚÇãá ãÚ ÇáÊËÈíÊ ÇáÞÏíã áÇÍÞÇ¿"
+
+#: src/installer.nsi:497
+msgctxt "T_FoundOldGnuPT"
+msgid ""
+"An installation of GnuPT has been been detected.  This may cause problems "
+"when used along with Gpg4win.\n"
+"\n"
+"Do you want to continue installing Gpg4win?"
+msgstr ""
+"æÌÏÊ ÊËÈíÊ ãä GnuPT.  ÞÏ íÓÈÈ åÐÇ ãÔÇßá ÅÐÇ ÇÓÊÎÏã ãÚ Gpg4win.\n"
+"\n"
+"ÃÊÑíÏ ãæÇÕáÉ ÊËÈíÊ Gpg4win¿"
+
+#: src/installer.nsi:504
+msgctxt "T_FoundOldWinPTSF"
+msgid ""
+"An old installation of the Sourceforge hosted WinPT has been been detected.  "
+"That software is not maintained anymore and should be removed.\n"
+"\n"
+"Do you want to continue installing Gpg4win and take care of the old "
+"installation later?"
+msgstr ""
+"æõÌöÏ ÊËÈíÊ ÞÏíã ãä WinPT ÇáãÓÊÖÇÝ Ýí Sourceforge.  áÇ ÊÎÖÚ åÐå ÇáÈÑãÌíÇÊ "
+"ááÊØæíÑ ÈÚÏ ÇáÂä æíÌÈ ÅÒÇáÊåÇ.\n"
+"\n"
+"ÃÊÑíÏ ãæÇÕáÉ ÊËÈíÊ Gpg4win æÇáÊÚÇãá ãÚ ÇáÊËÈíÊ ÇáÞÏíã áÇÍÞÇ¿"
+
+#: src/installer.nsi:514
+msgctxt "T_FoundOldGnuPack"
+msgid ""
+"An installation of GnuPG-Pack has been been detected. You need to uninstall "
+"it before you can continue with Gpg4win installation.\n"
+"\n"
+"The installation will be aborted now!"
+msgstr ""
+"æõÌöÏ ÊËÈíÊ ãä GnuPG-Pack.  ÊÍÊÇÌ Åáì ÅÒÇáÊå ÞÈá ÊËÈíÊ Gpg4win.\n"
+"\n"
+"ÓíæÞÝ ÇáÊËÈíÊ ÇáÂä!"
+
+#: src/installer.nsi:523
+msgctxt "T_BetaWarning"
+msgid ""
+"Note: This is a BETA version of Gpg4win.\n"
+"\n"
+"Beta versions are only intended for testing and shall not be used in a "
+"production environment."
+msgstr ""
+
+#: src/installer.nsi:530
+msgctxt "T_AdminNeeded"
+msgid ""
+"Warning: Administrator permissions required for a successful installation"
+msgstr "ÊÍÐíÑ: ÊÍÊÇÌ Åáì ÕáÇÍíÇÊ ÇáãÏíÑ áÅÊãÇã ÇáÊËÈíÊ"
+
+#: src/installer.nsi:534
+#, fuzzy
+msgctxt "T_CloseOtherApps"
+msgid ""
+"Please make sure that other applications are not running. In particular you "
+"should close Outlook and all Explorer windows.  Gpg4win will try to install "
+"anyway but a reboot will be required then."
+msgstr ""
+"ÑÌÇÁ ÊÃßÏ ãä ÚÏã ÊÔÛíá Ãí ÊØÈíÞÇÊ ÃÎÑì. Úáíß ÎÕæÕÇ ÅÛáÇÞ ßá äæÇÝÐ ÃæÊáæß Ãæ "
+"ÅßÓÈáæÑÑ.  ÓíÍÇæá Gpg4Win ÇáËÈíÊ Úáì Ãí ÍÇá áßä ÓÊÍÊÇÌ Åáì ÅÚÇÏÉ ÇáÊÔÛíá."
+
+#: src/installer.nsi:539
+msgctxt "T_ShuttingDownWinPT"
+msgid "Trying to shutdown a possible running instance of WinPT."
+msgstr "ÊÌÑí ãÍÇæáÉ ÅÛáÇÞ ÓíÑæÑÉ ãÍÊãáÉ ÚÇãáÉ ãä WinPT."
+
+#: src/installer.nsi:541
+msgctxt "T_ShuttingDownDirMngr"
+msgid "Trying to shutdown a possible running instance of DirMngr."
+msgstr "ÊÌÑí ãÍÇæáÉ ÅÛáÇÞ ÓíÑæÑÉ ãÍÊãáÉ ÚÇãáÉ ãä DirMngr."
+
+#: src/inst-claws-mail.nsi:53
+msgctxt "DESC_SEC_claws_mail"
+msgid "Claws Mail-User-Agent"
+msgstr "ÈÑãÌíÉ ÇáÈÑíÏ Claws"
+
+#: src/inst-claws-mail.nsi:56
+msgctxt "DESC_Menu_claws_mail"
+msgid "Run the Claws mailprogram."
+msgstr "ÔÛá ÈÑãÌíÉ ÇáÈÑíÏ Claws"
+
+#: src/inst-claws-mail.nsi:59
+msgctxt "DESC_Menu_claws_mail_pdf"
+msgid "Show the online manual of Claws Mail"
+msgstr "ÇÚÑÖ ßÊíøÈ ÈÑíÏ Claws Úáì ÇáæÈ"
+
+#: src/inst-eudoragpg.nsi:40
+msgctxt "DESC_SEC_eudoragpg"
+msgid "EudoraGPG is a plugin for the Eudora mail program"
+msgstr "þEudoraGPG åí ãáÍÞÉ áÈÑãÌíÉ ÇáÈÑíÏ Eudora"
+
+#: src/inst-gnupg2.nsi:117
+msgctxt "DESC_SEC_gnupg2"
+msgid "GNU Privacy Guard with S/MIME support"
+msgstr "ÍÇÑÓ ÎÕæÕíÉ Ìäæ ãÚ ÏÚã S/MIME"
+
+#: src/inst-gnupg.nsi:108
+msgctxt "DESC_SEC_gnupg"
+msgid "GNU Privacy Guard"
+msgstr "ÍÇÑÓ ÎÕæÕíÉ Ìäæ"
+
+#: src/inst-gpa.nsi:74
+msgctxt "DESC_SEC_gpa"
+msgid "GNU Privacy Assistant"
+msgstr "ãÓÇÚÏ ÎÕæÕíÉ Ìäæ"
+
+#: src/inst-gpa.nsi:77
+msgctxt "DESC_Menu_gpa"
+msgid ""
+"Run the GNU Privacy Assistant key management tool. This is an alternative to "
+"the WinPT key management tool."
+msgstr ""
+"ÔÛá ÃÏÇÉ ÅÏÇÑÉ ÇáãÝÇÊíÍ ãÓÇÚÏ ÎÕæÕíÉ Ìäæ. åÐå ÈÏíá áÃÏÇÉ ÅÏÇÑÉ ÇáãÝÇÊíÍ "
+"WinPT."
+
+#: src/inst-gpg4win.nsi:43
+msgctxt "DESC_Menu_gpg4win_readme"
+msgid "General information on Gpg4Win"
+msgstr "ãÚáæãÇÊ ÚÇãÉ Úä Gpg4Win"
+
+#: src/inst-gpg4win.nsi:46
+msgctxt "DESC_Menu_gnupg_faq"
+msgid "Show the Frequently Asked Questions Document for GnuPG"
+msgstr "ØÇáÚ ÇáÃÓÆáÉ ÇáÔÇÆÚÉ Íæá GnuPG"
+
+#: src/inst-gpgee.nsi:65
+msgctxt "T_GPGee_RegFailed"
+msgid "Warning: Registration of the GPGee explorer extension failed."
+msgstr "ÊÍÐíÑ: ÝÔá ÊÓÌíá ÇãÊÏÇÏ GPGee áÅßÓÈáæÑÑ."
+
+#: src/inst-gpgee.nsi:68
+msgctxt "DESC_SEC_gpgee"
+msgid "GPG Explorer Extensions"
+msgstr "ÇãÊÏÇÏ GPG áÅßÓÈáæÑÑ"
+
+#: src/inst-gpgee.nsi:71
+msgctxt "DESC_Menu_gpgee_hlp"
+msgid "Show the online manual of GPGee"
+msgstr "ÇÚÑÖ ßÊíøÈ GPGee Úáì ÇáæÈ"
+
+#: src/inst-gpgex.nsi:80
+msgctxt "T_GpgEX_RegFailed"
+msgid "Warning: Registration of the GpgEX plugin failed."
+msgstr "ÊÍÐíÑ: ÝÔá ÊÓÌíá ãáÍÞÉ GpgEX."
+
+#: src/inst-gpgex.nsi:83
+msgctxt "DESC_SEC_gpgex"
+msgid "GnuPG Shell Extension"
+msgstr "ãáÍÞ GnuPG ááÕøóÏóÝÉ"
+
+#: src/inst-gpgol.nsi:57
+msgctxt "T_GpgOL_RegFailed"
+msgid "Warning: Registration of the GpgOL Outlook pluginfailed."
+msgstr "ÊÍÐíÑ: ÝÔá ÊÓÌíá ãáÍÞÉ GpgOL áÃæÊáæß."
+
+#: src/inst-gpgol.nsi:60
+msgctxt "DESC_SEC_gpgol"
+msgid "GnuPG for Outlook"
+msgstr "þGnuPG áÃæÊáæß"
+
+#: src/inst-kleopatra.nsi:186
+msgctxt "DESC_SEC_kleopatra"
+msgid "Kleopatra"
+msgstr "ßáíæÈÇÊÑÇ"
+
+#: src/inst-kleopatra.nsi:189
+msgctxt "DESC_Menu_kleopatra"
+msgid "Run the Kleopatra key management tool."
+msgstr "ÔÛá ÃÏÇÉ ÅÏÇÑÉ ÇáãÝÇÊíÍ ßáíæÈÇÊÑÇ."
+
+#: src/inst-man_advanced_de.nsi:39
+msgctxt "DESC_Name_man_advanced_de"
+msgid "Advanced Manual (German)"
+msgstr "ßÊíøÈ ÇáãÊÞÏãíä (ÈÇáÃáãÇäíÉ)"
+
+#: src/inst-man_advanced_de.nsi:42
+msgctxt "DESC_SEC_man_advanced_de"
+msgid "Gpg4Win Manual for the Advanced User (German)"
+msgstr "ßõÊíÈ Gpg4Win ááãÓÊÎÏãíä ÇáãÊÞÏãíä (ÈÇáÃáãÇäíÉ)"
+
+#: src/inst-man_advanced_de.nsi:45
+msgctxt "DESC_Menu_man_advanced_de"
+msgid "Show the German online manual of Gpg4Win for advanced users"
+msgstr "ÇÚÑÖ Ïáíá Gpg4Win ÈÇáÃáãÇäíÉ Úáì ÇáæÈ ááãÓÊÎÏãíä ÇáãÊÞÏãíä"
+
+#: src/inst-man_advanced_en.nsi:39
+msgctxt "DESC_Name_man_advanced_en"
+msgid "Advanced Manual"
+msgstr "Ïáíá ÇáãÊÞÏãíä"
+
+#: src/inst-man_advanced_en.nsi:42
+msgctxt "DESC_SEC_man_advanced_en"
+msgid "Gpg4Win Manual for the Advanced User"
+msgstr "Ïáíá Gpg4Win ááãÓÊÎÏãíä ÇáãÊÞÏãíä"
+
+#: src/inst-man_advanced_en.nsi:45
+msgctxt "DESC_Menu_man_advanced_en"
+msgid "Show the online manual of Gpg4Win for advanced users"
+msgstr "ÇÚÑÖ Ïáíá Gpg4Win Úáì ÇáæÈ ááãÓÊÎÏãíä ÇáãÊÞÏãíä"
+
+#: src/inst-man_novice_de.nsi:39
+msgctxt "DESC_Name_man_novice_de"
+msgid "Novice Manual (German)"
+msgstr "Ïáíá ÇáãÈÊÏÆíä (ÈÇáÃáãÇäíÉ)"
+
+#: src/inst-man_novice_de.nsi:42
+msgctxt "DESC_SEC_man_novice_de"
+msgid "Gpg4Win Manual for the Novice User (German)"
+msgstr "Ïáíá Gpg4Win ááãÓÊÎÏãíä ÇáãÈÊÏÆíä (ÈÇáÃáãÇäíÉ)"
+
+#: src/inst-man_novice_de.nsi:45
+msgctxt "DESC_Menu_man_novice_de"
+msgid "Show the German online manual of Gpg4Win for novice users"
+msgstr "ÇÚÑÖ Ïáíá Gpg4Win ÈÇáÃáãÇäíÉ Úáì ÇáæÈ ááãÓÊÎÏãíä ÇáãÈÊÏÆíä"
+
+#: src/inst-man_novice_en.nsi:39
+msgctxt "DESC_Name_man_novice_en"
+msgid "Novice Manual"
+msgstr "Ïáíá ÇáãÈÊÏÆíä"
+
+#: src/inst-man_novice_en.nsi:42
+msgctxt "DESC_SEC_man_novice_en"
+msgid "Gpg4Win Manual for the Novice User"
+msgstr "Ïáíá Gpg4Win ááãÓÊÎÏãíä ÇáãÈÊÏÆíä"
+
+#: src/inst-man_novice_en.nsi:45
+msgctxt "DESC_Menu_man_novice_en"
+msgid "Show the online manual of Gpg4Win for novice users"
+msgstr "ÇÚÑÖ Ïáíá Gpg4Win Úáì ÇáæÈ ááãÓÊÎÏãíä ÇáãÈÊÏÆíä"
+
+#: src/inst-sylpheed-claws.nsi:51
+msgctxt "DESC_SEC_sylpheed"
+msgid "Sylpheed-Claws Mail-User-Agent"
+msgstr "ÈÑãÌíÉ ÇáÈÑíÏ Sylpheed-Claws"
+
+#: src/inst-sylpheed-claws.nsi:54
+msgctxt "DESC_Menu_sylpheed"
+msgid "Run the Sylpheed-Claws mailprogram."
+msgstr "ÔÛá ÈÑãÌíÉ ÇáÈÑíÏ Sylpheed-Claws"
+
+#: src/inst-sylpheed-claws.nsi:57
+msgctxt "DESC_Menu_sylpheed_pdf"
+msgid "Show the online manual of Sylpheed Claws"
+msgstr "ÇÚÑÖ Ïáíá Sylpheed Claws Úáì ÇáæÈ"
+
+#: src/inst-winpt.nsi:46
+msgctxt "DESC_SEC_winpt"
+msgid "Windows Privacy Tray"
+msgstr "áæÍÉ ÎÕæÕíÉ æíäÏæÒ"
+
+#: src/inst-winpt.nsi:49
+msgctxt "DESC_Menu_winpt"
+msgid ""
+"Run the Windows Privacy Tray key management tool. This is a versatile key "
+"management and encryption tool."
+msgstr ""
+"ÔÛá ÃÏÇÉ ÅÏÇÑÉ ÇáãÝÇÊíÍ áæÍÉ ÎÕæÕíÉ æíäÏæÒ. åÐå ÃÏÇÉ ÅÏÇÑÉ ãÝÇÊíÍ æÊÚãíÉ "
+"ãÊÚÏÏÉ ÇáÇÓÊÚãÇáÇÊ."
