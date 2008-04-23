@@ -14,8 +14,7 @@
 # GNU General Public License for more details.
 # 
 # You should have received a copy of the GNU General Public License
-# along with this program; if not, write to the Free Software
-# Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
+# along with this program; if not, see <http://www.gnu.org/licenses/>.
 
 ACLOCAL_AMFLAGS = -I m4
 AUTOMAKE_OPTIONS = dist-bzip2 no-dist-gzip
@@ -67,6 +66,7 @@ EXTRA_DIST = autogen.sh README.SVN \
 	patches/gnupg2-2.0.9/03-i18n+etc.patch \
 	patches/gnupg2-2.0.9/04-ks-w32init.patch \
 	patches/gnupg2-2.0.9/05-w32-http.patch \
+	patches/gpa/01-no-uiserver.patch \
 	patches/gpgol-0.9.91/01-gpgme.patch
 
 copy-news:
