@@ -265,6 +265,10 @@ fi
 
 # Finalize.
 
+AC_CONFIG_COMMANDS([gpg4win-conf],[[
+chmod +x patches/gnupg2/01-version.patch
+]])
+
 AC_CONFIG_FILES(Makefile)
 AC_CONFIG_FILES(packages/Makefile include/Makefile src/Makefile po/Makefile.in)
 AC_CONFIG_FILES(include/config.nsi src/gpg4win.mk)
@@ -272,4 +276,5 @@ AC_CONFIG_FILES(doc/Makefile)
 AC_CONFIG_FILES(doc/logo/Makefile)
 AC_CONFIG_FILES(doc/manual/Makefile doc/manual/version.tex)
 AC_CONFIG_FILES(doc/website/Makefile)
+AC_CONFIG_FILES(patches/gnupg2/01-version.patch)
 AC_OUTPUT

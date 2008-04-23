@@ -1,10 +1,10 @@
 ;; README.en.txt                               -*- coding: latin-1; -*-
-;; This is the README installed with gpg4win.  with a ; in the first
+;; This is the README installed with Gpg4win. Lines with a ; in the first
 ;; column are considered a comment and not included in the actually
 ;; installed version.  Certain keywords are replaced by the Makefile;
 ;; those words are enclosed by exclamation marks.
 
-                   English README file for Gpg4Win
+                   English README file for Gpg4win
                    ===============================
 
 This is GnuPG for Windows, vesion !VERSION!.
@@ -23,7 +23,7 @@ Content:
 1. Important Notes
 ==================
 
-Manuals describing the installation of Gpg4Win are currently only
+Manuals describing the installation of Gpg4win are currently only
 available in German.  Check out http://www/gpg4win.org for latest
 news.
 
@@ -133,6 +133,6 @@ What follows is a list of copyright statements.
 
 Happy GiPiGing,
 
-  Your Gpg4Win Team
+  Your Gpg4win Team
 
 ***end of file ***

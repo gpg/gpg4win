@@ -1,3 +1,11 @@
+2008-04-23  Werner Koch  <wk@g10code.com>
+
+	* autogen.sh <build-w32>: Pass --enable-maintainer-mode.
+
+	* patches/gnupg2/01-version.patch.in: New.
+	* configure.ac (AC_CONFIG_FILES): Patch the version of GnuPG.
+	(AC_CONFIG_COMMANDS): New.
+
 2008-04-22  Marcus Brinkmann  <marcus@ulysses.g10code.com>
 
 	* packages/packages.current: Update gpgme.
