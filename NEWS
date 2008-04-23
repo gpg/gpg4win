@@ -3,9 +3,29 @@
 # The version number given below are for the standard installers as
 # distributed by www.gpg4win.org.
 
-Noteworthy changes in version 1.9.0
+Noteworthy changes in version 1.9.0 (2008-04-23)
 ------------------------------------------------
 
+(en) This is a BETA version of the new Gpg4win/2 architecture.
+     This version shall not be used in a production environment. 
+(de) Dies ist eine BETA Version der neuen Gpg4win/2 Architektur.
+     Diese Version soll nicht in einer Produktivumgebung
+     eingesetzt werden.
+
+~~~~~~~~~~~~~~~
+GnuPG:        1.4.9 
+GnuPG2:       2.0.9
+DirMngr:      1.0.2-svn297
+Kleopatra:    20080421
+GPA:          0.7.7-svn859
+GpgOL:        0.10.12
+GpgEX:        0.9.0
+WinPT:        1.2.0
+Claws-Mail:   3.1.0cvs70
+Novices:      1.0.0
+Einsteiger:   2.0.2
+Durchblicker: 2.0.2
+~~~~~~~~~~~~~~~
 
 
 Noteworthy changes in version 1.1.3 (2007-09-17)
@@ -506,7 +526,7 @@ Noteworthy changes in version 0.0.1 (2005-11-04)
 (en) Initial release.
 
 
-# Copyright 2005, 2006 g10 Code GmbH
+# Copyright 2005, 2006, 2007, 2008 g10 Code GmbH
 # 
 # This file is free software; as a special exception the author gives
 # unlimited permission to copy and/or distribute it, with or without

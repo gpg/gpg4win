@@ -14,8 +14,7 @@
 # General Public License for more details.
 # 
 # You should have received a copy of the GNU General Public License
-# along with this program; if not, write to the Free Software
-# Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
+# along with this program; if not, see <http://www.gnu.org/licenses/>.
  
 # (Process this file with autoconf to produce a configure script.)
 
@@ -27,7 +26,7 @@ min_automake_version="1.9.3"
 # "svn up" and "autogen.sh" right before creating a distribution.
 # Right after a release the make target "copy-news" is to be called!
 m4_define([my_version], [1.9.0])
-m4_define([my_issvn], [yes])
+m4_define([my_issvn], [no])
 
 m4_define([svn_revision], m4_esyscmd([echo -n $( (svn info 2>/dev/null \
           ||echo 'Revision: 0')|sed -n '/^Revision:/ s/[^0-9]//gp'|head -1)]))

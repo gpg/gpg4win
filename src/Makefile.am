@@ -14,15 +14,14 @@
 # GNU General Public License for more details.
 # 
 # You should have received a copy of the GNU General Public License
-# along with this program; if not, write to the Free Software
-# Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
+# along with this program; if not, see <http://www.gnu.org/licenses/>.
 
 
 EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi config.site \
         installer-options.ini.in libiconv.def libintl.def loreley.mid \
         gpg4win-splash.wav gpgwrap.c exdll.h g4wihelp.c g4wihelp.nsi \
         inst-sections.nsi installer.nsi installer-finish.nsi  \
-        qt.conf kleowrap.c potomo                             \
+        qt.conf kleowrap.c potomo Memento.nsh                 \
         inst-gpg4win.nsi	   uninst-gpg4win.nsi	      \
         inst-atk.nsi               uninst-atk.nsi	      \
         inst-cairo.nsi		   uninst-cairo.nsi	      \
