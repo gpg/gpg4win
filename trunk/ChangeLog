@@ -1,5 +1,19 @@
 2008-04-25  Marcus Brinkmann  <marcus@ulysses.g10code.com>
 
+	* packages/packages.current: Add libgsasl, libtasn1, opencdk,
+	gnutls.
+	* configure.ac: Add support for libgsasl, libtasn1, opencdk and
+	gnutls source packages.
+	* include/config.nsi.in: Likewise.
+	* inst-libgsasl.nsi, uninst-libgsasl.nsi, inst-libtasn1.nsi,
+	uninst-libtasn1.nsi, inst-opencdk.nsi, uninst-opencdk.nsi,
+	inst-gnutls.nsi, uninst-gnutls.nsi: New files.
+	* src/Makefile.am (EXTRA_DIST): Add these files.
+	(gpg4win_spkgs): Add libgsasl, libtasn1, opencdk, gnutls.
+	(gpg4win_pkg_gnutls_configure): New variable.
+	(gpg4win_pkg_claws_configure): Enable pthread and gnutls.
+	* patches/claws-mail-3.4.0/04-gnutls.patch: New file.
+
 	* packages/packages.current: Update libetpan and claws-mail.
 	* src/inst-libetpan.nsi: Update to latest version.
 	* src/Makefile.am (gpg4win_pkg_claws_mail_configure): Add

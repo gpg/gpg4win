@@ -25,6 +25,10 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi config.site \
         inst-gpg4win.nsi	   uninst-gpg4win.nsi	      \
         inst-atk.nsi               uninst-atk.nsi	      \
         inst-cairo.nsi		   uninst-cairo.nsi	      \
+        inst-libgsasl.nsi	   uninst-libgsasl.nsi        \
+        inst-libtasn1.nsi	   uninst-libtasn1.nsi        \
+        inst-opencdk.nsi	   uninst-opencdk.nsi         \
+        inst-gnutls.nsi		   uninst-gnutls.nsi	      \
         inst-libetpan.nsi	   uninst-libetpan.nsi        \
         inst-claws-mail.nsi	   uninst-claws-mail.nsi      \
         inst-crypt.nsi		   uninst-crypt.nsi	      \
@@ -73,7 +77,8 @@ CLEANFILES = g4wihelp.dll versioninfo.txt README.en.txt README.de.txt \
 
 # Supported source packages.
 gpg4win_spkgs = glib gnupg libgpg-error gpgme gpgol gpgex \
-		gpa winpt libetpan claws-mail gnupg2 pinentry \
+		gpa winpt libgsasl libtasn1 opencdk gnutls \
+                libetpan claws-mail gnupg2 pinentry \
 		libassuan libksba libgcrypt dirmngr w32pth
 
 # Extra options to configure for individual packages.
@@ -192,6 +197,9 @@ gpg4win_pkg_gpgex_configure = --silent \
 gpg4win_pkg_winpt_configure = --silent \
   --with-gpgme-prefix=$(idir) --with-gpg-error-prefix=$(idir)
 
+gpg4win_pkg_gnutls_configure = \
+  --disable-cxx
+
 # The CFLAGS are needed to find pthread-w32.
 gpg4win_pkg_libetpan_configure = \
   CPPFLAGS=\"-I$(idir)/include\" LIBS=\"-L$(idir)/lib\"
@@ -199,7 +207,7 @@ gpg4win_pkg_libetpan_configure = \
 gpg4win_pkg_claws_mail_configure = \
   --with-lib-prefix=$(idir) --with-libiconv-prefix=$(idir) \
   --with-gpg-error-prefix=$(idir) --with-gpgme-prefix=$(idir) \
-  --with-config-dir="Claws-mail" --disable-pthread \
+  --with-config-dir="Claws-mail" --enable-pthread --enable-gnutls \
   --enable-libetpan --disable-aspell --disable-trayicon-plugin \
   --disable-openssl --disable-dillo-viewer-plugin --disable-gnomeprint \
   --disable-jpilot --disable-startup-notification --disable-ipv6 \

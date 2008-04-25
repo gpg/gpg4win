@@ -1,5 +1,5 @@
 # inst-sections.nsi - Installer for GPG4Win sections.  -*- coding: latin-1; -*-
-# Copyright (C) 2005, 2006, 2007 g10 Code GmbH
+# Copyright (C) 2005, 2006, 2007, 2008 g10 Code GmbH
 # 
 # This file is part of GPG4Win.
 # 
@@ -110,11 +110,23 @@
 !ifdef HAVE_PKG_GPGEE
 !include "inst-gpgee.nsi"
 !endif
-!ifdef HAVE_PKG_CLAWS_MAIL
-!include "inst-claws-mail.nsi"
+!ifdef HAVE_PKG_LIBGSASL
+!include "inst-libgsasl.nsi"
+!endif
+!ifdef HAVE_PKG_LIBTASN1
+!include "inst-libtasn1.nsi"
+!endif
+!ifdef HAVE_PKG_OPENCDK
+!include "inst-opencdk.nsi"
+!endif
+!ifdef HAVE_PKG_GNUTLS
+!include "inst-gnutls.nsi"
+!endif
+!ifdef HAVE_PKG_LIBETPAN
+!include "inst-libetpan.nsi"
 !endif
 !ifdef HAVE_PKG_CLAWS_MAIL
-!include "inst-libetpan.nsi"
+!include "inst-claws-mail.nsi"
 !endif
 #!ifdef HAVE_PKG_EUDORAGPG
 #!include "inst-eudoragpg.nsi"
@@ -181,10 +193,22 @@
 #!include "uninst-eudoragpg.nsi"
 #!endif
 !ifdef HAVE_PKG_CLAWS_MAIL
+!include "uninst-claws-mail.nsi"
+!endif
+!ifdef HAVE_PKG_LIBETPAN
 !include "uninst-libetpan.nsi"
 !endif
-!ifdef HAVE_PKG_CLAWS_MAIL
-!include "uninst-claws-mail.nsi"
+!ifdef HAVE_PKG_GNUTLS
+!include "uninst-gnutls.nsi"
+!endif
+!ifdef HAVE_PKG_OPENCDK
+!include "uninst-opencdk.nsi"
+!endif
+!ifdef HAVE_PKG_LIBTASN1
+!include "uninst-libtasn1.nsi"
+!endif
+!ifdef HAVE_PKG_LIBGSASL
+!include "uninst-libgsasl.nsi"
 !endif
 !ifdef HAVE_PKG_GPGEE
 !include "uninst-gpgee.nsi"
@@ -481,6 +505,18 @@ Function CalcDepends
 !ifdef HAVE_PKG_GTK_
   !insertmacro UnselectSection ${SEC_gtk_}
 !endif
+!ifdef HAVE_PKG_LIBGSASL
+  !insertmacro UnselectSection ${SEC_libgsasl}
+!endif
+!ifdef HAVE_PKG_LIBTASN1
+  !insertmacro UnselectSection ${SEC_libtasn1}
+!endif
+!ifdef HAVE_PKG_OPENCDK
+  !insertmacro UnselectSection ${SEC_opencdk}
+!endif
+!ifdef HAVE_PKG_GNUTLS
+  !insertmacro UnselectSection ${SEC_gnutls}
+!endif
 !ifdef HAVE_PKG_LIBGPG_ERROR
   !insertmacro UnselectSection ${SEC_libgpg_error}
 !endif
@@ -595,7 +631,6 @@ Function CalcDepends
   skip_gpa:
 !endif
 
-
 !ifdef HAVE_PKG_CLAWS_MAIL
   !insertmacro SectionFlagIsSet ${SEC_claws_mail} ${SF_SELECTED} have_claws_mail skip_claws_mail
   have_claws_mail:
@@ -609,9 +644,28 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_crypt}
   !insertmacro SelectSection ${SEC_regex}
   !insertmacro SelectSection ${SEC_libetpan}
+  !insertmacro SelectSection ${SEC_gnutls}
   skip_claws_mail:
 !endif
 
+!ifdef HAVE_PKG_GNUTLS
+  !insertmacro SectionFlagIsSet ${SEC_gnutls} ${SF_SELECTED} have_gnutls skip_gnutls
+  have_gnutls:
+  !insertmacro SelectSection ${SEC_zlib}
+  !insertmacro SelectSection ${SEC_libgcrypt}
+  !insertmacro SelectSection ${SEC_libgsasl}
+  !insertmacro SelectSection ${SEC_libtasn1}
+  !insertmacro SelectSection ${SEC_opencdk}
+  skip_gnutls:
+!endif
+
+!ifdef HAVE_PKG_OPENCDK
+  !insertmacro SectionFlagIsSet ${SEC_opencdk} ${SF_SELECTED} have_opencdk skip_opencdk
+  have_opencdk:
+  !insertmacro SelectSection ${SEC_libgcrypt}
+  !insertmacro SelectSection ${SEC_libgpg_error}
+  skip_opencdk:
+!endif
 
 !ifdef HAVE_PKG_GTK_
   !insertmacro SectionFlagIsSet ${SEC_gtk_} \
@@ -700,6 +754,13 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_qt}
 !endif  
    skip_gpgme:
+!endif
+
+!ifdef HAVE_PKG_LIBGCRYPT
+  !insertmacro SectionFlagIsSet ${SEC_libgcrypt} ${SF_SELECTED} have_libgcrypt skip_libgcrypt
+  have_libgcrypt:
+  !insertmacro SelectSection ${SEC_libgpg_error}
+  skip_libgcrypt:
 !endif
 
   # Package "zlib" has no dependencies.

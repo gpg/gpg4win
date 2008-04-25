@@ -66,6 +66,27 @@ file regex-0.12-src.zip
 chk  b9faae10efae552f23c213891a3ed8187cb7d017
 
 #
+# GNU TLS and support libraries
+#
+
+server http://josefsson.org/gsasl/releases
+
+file libgsasl-0.2.25.tar.gz
+chk  aa38392b835adb7a4102970f9c262a83e2f75f3d
+
+server http://josefsson.org/gnutls/releases
+
+file libtasn1/libtasn1-1.4.tar.gz
+chk  684c9dc343b0155a074c2127ac8050f983528bc8
+
+file opencdk/opencdk-0.6.6.tar.bz2
+chk  ad333a55632eca9b7d035d3cc5c7f0b0342cb14e
+
+file gnutls-2.3.7.tar.bz2
+chk  ee059b846b6a4a969afaa104b677b42d2270be2f
+
+
+#
 # libetpan for claws
 #
 
