@@ -2,7 +2,7 @@
 patch -p1 -f $* < $0
 exit $?
 
-2007-06-30  Marcus Brinkmann  <marcus@g10code.de>
+2007-06-08  Marcus Brinkmann  <marcus@g10code.de>
 
 	* Regenerate all autotool files with
 
@@ -10,210 +10,229 @@ $ aclocal -I m4   && libtoolize --force --copy   && autoheader   && automake --a
 
 	but removing autom4te.cache before creating the diff.
 
-
-diff -rupN claws-mail-2.10.0-orig/aclocal.m4 claws-mail-2.10.0/aclocal.m4
---- claws-mail-2.10.0-orig/aclocal.m4	2007-07-02 12:03:02.000000000 +0200
-+++ claws-mail-2.10.0/aclocal.m4	2007-07-03 18:42:31.000000000 +0200
-@@ -8029,7 +8029,7 @@ path to pkg-config.
+diff -rupN claws-mail-3.4.0-orig/aclocal.m4 claws-mail-3.4.0/aclocal.m4
+--- claws-mail-3.4.0-orig/aclocal.m4	2008-04-18 12:47:32.000000000 +0200
++++ claws-mail-3.4.0/aclocal.m4	2008-04-25 15:34:46.000000000 +0200
+@@ -1643,7 +1643,7 @@ AC_DEFUN([AC_LIB_PREPARE_MULTILIB],
  
- _PKG_TEXT
+ # libtool.m4 - Configure libtool for the host system. -*-Autoconf-*-
  
--To get pkg-config, see <http://pkg-config.freedesktop.org/>.])],
-+To get pkg-config, see <http://www.freedesktop.org/software/pkgconfig>.])],
- 		[$4])
- else
- 	$1[]_CFLAGS=$pkg_cv_[]$1[]_CFLAGS
-diff -rupN claws-mail-2.10.0-orig/config/config.guess claws-mail-2.10.0/config/config.guess
---- claws-mail-2.10.0-orig/config/config.guess	2007-04-20 04:09:10.000000000 +0200
-+++ claws-mail-2.10.0/config/config.guess	2006-11-08 08:44:58.000000000 +0100
-@@ -4,7 +4,7 @@
- #   2000, 2001, 2002, 2003, 2004, 2005, 2006 Free Software Foundation,
- #   Inc.
+-# serial 52 Debian 1.5.26-3 AC_PROG_LIBTOOL
++# serial 52 Debian 1.5.26-1ubuntu1 AC_PROG_LIBTOOL
  
--timestamp='2007-03-06'
-+timestamp='2006-07-02'
+ 
+ # AC_PROVIDE_IFELSE(MACRO-NAME, IF-PROVIDED, IF-NOT-PROVIDED)
+diff -rupN claws-mail-3.4.0-orig/config/config.guess claws-mail-3.4.0/config/config.guess
+--- claws-mail-3.4.0-orig/config/config.guess	2008-02-17 21:10:30.000000000 +0100
++++ claws-mail-3.4.0/config/config.guess	2007-10-23 21:18:59.000000000 +0200
+@@ -1,10 +1,10 @@
+ #! /bin/sh
+ # Attempt to guess a canonical system name.
+ #   Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
+-#   2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008
+-#   Free Software Foundation, Inc.
++#   2000, 2001, 2002, 2003, 2004, 2005, 2006 Free Software Foundation,
++#   Inc.
+ 
+-timestamp='2008-01-23'
++timestamp='2007-07-22'
  
  # This file is free software; you can redistribute it and/or modify it
  # under the terms of the GNU General Public License as published by
-@@ -161,7 +161,6 @@ case "${UNAME_MACHINE}:${UNAME_SYSTEM}:$
- 	    arm*) machine=arm-unknown ;;
- 	    sh3el) machine=shl-unknown ;;
- 	    sh3eb) machine=sh-unknown ;;
--	    sh5el) machine=sh5le-unknown ;;
- 	    *) machine=${UNAME_MACHINE_ARCH}-unknown ;;
- 	esac
- 	# The Operating System including object format, if it has switched
-@@ -781,7 +780,7 @@ EOF
-     i*:CYGWIN*:*)
- 	echo ${UNAME_MACHINE}-pc-cygwin
+@@ -56,8 +56,8 @@ version="\
+ GNU config.guess ($timestamp)
+ 
+ Originally written by Per Bothner.
+-Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001,
+-2002, 2003, 2004, 2005, 2006, 2007, 2008 Free Software Foundation, Inc.
++Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005
++Free Software Foundation, Inc.
+ 
+ This is free software; see the source for copying conditions.  There is NO
+ warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE."
+@@ -532,7 +532,7 @@ EOF
+ 		echo rs6000-ibm-aix3.2
+ 	fi
  	exit ;;
--    *:MINGW*:*)
-+    i*:MINGW*:*)
- 	echo ${UNAME_MACHINE}-pc-mingw32
- 	exit ;;
-     i*:windows32*:*)
-@@ -791,15 +790,12 @@ EOF
-     i*:PW*:*)
- 	echo ${UNAME_MACHINE}-pc-pw32
- 	exit ;;
--    *:Interix*:[3456]*)
--    	case ${UNAME_MACHINE} in
--	    x86) 
--		echo i586-pc-interix${UNAME_RELEASE}
+-    *:AIX:*:[456])
++    *:AIX:*:[45])
+ 	IBM_CPU_ID=`/usr/sbin/lsdev -C -c processor -S available | sed 1q | awk '{ print $1 }'`
+ 	if /usr/sbin/lsattr -El ${IBM_CPU_ID} | grep ' POWER' >/dev/null 2>&1; then
+ 		IBM_ARCH=rs6000
+@@ -799,9 +799,6 @@ EOF
+ 	    EM64T | authenticamd)
+ 		echo x86_64-unknown-interix${UNAME_RELEASE}
+ 		exit ;;
+-	    IA64)
+-		echo ia64-unknown-interix${UNAME_RELEASE}
 -		exit ;;
--	    EM64T | authenticamd)
--		echo x86_64-unknown-interix${UNAME_RELEASE}
--		exit ;;
--	esac ;;
-+    x86:Interix*:[3456]*)
-+	echo i586-pc-interix${UNAME_RELEASE}
-+	exit ;;
-+    EM64T:Interix*:[3456]*)
-+	echo x86_64-unknown-interix${UNAME_RELEASE}
-+	exit ;;
+ 	esac ;;
      [345]86:Windows_95:* | [345]86:Windows_98:* | [345]86:Windows_NT:*)
  	echo i${UNAME_MACHINE}-pc-mks
+@@ -836,14 +833,7 @@ EOF
+ 	echo ${UNAME_MACHINE}-pc-minix
  	exit ;;
-@@ -954,9 +950,6 @@ EOF
+     arm*:Linux:*:*)
+-	eval $set_cc_for_build
+-	if echo __ARM_EABI__ | $CC_FOR_BUILD -E - 2>/dev/null \
+-	    | grep -q __ARM_EABI__
+-	then
+-	    echo ${UNAME_MACHINE}-unknown-linux-gnu
+-	else
+-	    echo ${UNAME_MACHINE}-unknown-linux-gnueabi
+-	fi
++	echo ${UNAME_MACHINE}-unknown-linux-gnu
+ 	exit ;;
+     avr32*:Linux:*:*)
+ 	echo ${UNAME_MACHINE}-unknown-linux-gnu
+@@ -964,8 +954,8 @@ EOF
      x86_64:Linux:*:*)
  	echo x86_64-unknown-linux-gnu
  	exit ;;
--    xtensa:Linux:*:*)
--    	echo xtensa-unknown-linux-gnu
--	exit ;;
+-    xtensa*:Linux:*:*)
+-    	echo ${UNAME_MACHINE}-unknown-linux-gnu
++    xtensa:Linux:*:*)
++    	echo xtensa-unknown-linux-gnu
+ 	exit ;;
      i*86:Linux:*:*)
  	# The BFD linker knows what the default object file format is, so
- 	# first see if it will tell us. cd to the root directory to prevent
-@@ -1215,15 +1208,6 @@ EOF
-     SX-6:SUPER-UX:*:*)
- 	echo sx6-nec-superux${UNAME_RELEASE}
- 	exit ;;
--    SX-7:SUPER-UX:*:*)
--	echo sx7-nec-superux${UNAME_RELEASE}
--	exit ;;
--    SX-8:SUPER-UX:*:*)
--	echo sx8-nec-superux${UNAME_RELEASE}
--	exit ;;
--    SX-8R:SUPER-UX:*:*)
--	echo sx8r-nec-superux${UNAME_RELEASE}
--	exit ;;
-     Power*:Rhapsody:*:*)
- 	echo powerpc-apple-rhapsody${UNAME_RELEASE}
- 	exit ;;
-diff -rupN claws-mail-2.10.0-orig/config/config.sub claws-mail-2.10.0/config/config.sub
---- claws-mail-2.10.0-orig/config/config.sub	2007-04-20 04:09:10.000000000 +0200
-+++ claws-mail-2.10.0/config/config.sub	2006-11-08 08:44:58.000000000 +0100
-@@ -4,7 +4,7 @@
- #   2000, 2001, 2002, 2003, 2004, 2005, 2006 Free Software Foundation,
- #   Inc.
+@@ -1484,9 +1474,9 @@ This script, last modified $timestamp, h
+ the operating system you are using. It is advised that you
+ download the most up to date version of the config scripts from
  
--timestamp='2007-01-18'
-+timestamp='2006-09-20'
+-  http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess;hb=HEAD
++  http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/config/config/config.guess
+ and
+-  http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.sub;hb=HEAD
++  http://savannah.gnu.org/cgi-bin/viewcvs/*checkout*/config/config/config.sub
+ 
+ If the version you run ($0) is already up to date, please
+ send the following data and any information you think might be
+diff -rupN claws-mail-3.4.0-orig/config/config.sub claws-mail-3.4.0/config/config.sub
+--- claws-mail-3.4.0-orig/config/config.sub	2008-02-17 21:10:30.000000000 +0100
++++ claws-mail-3.4.0/config/config.sub	2007-10-23 21:18:59.000000000 +0200
+@@ -1,10 +1,10 @@
+ #! /bin/sh
+ # Configuration validation subroutine script.
+ #   Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
+-#   2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008
+-#   Free Software Foundation, Inc.
++#   2000, 2001, 2002, 2003, 2004, 2005, 2006 Free Software Foundation,
++#   Inc.
+ 
+-timestamp='2008-01-16'
++timestamp='2007-06-28'
  
  # This file is (in principle) common to ALL GNU software.
  # The presence of a machine in this file suggests that SOME GNU software
-@@ -245,12 +245,12 @@ case $basic_machine in
- 	| bfin \
- 	| c4x | clipper \
- 	| d10v | d30v | dlx | dsp16xx \
--	| fido | fr30 | frv \
-+	| fr30 | frv \
- 	| h8300 | h8500 | hppa | hppa1.[01] | hppa2.0 | hppa2.0[nw] | hppa64 \
- 	| i370 | i860 | i960 | ia64 \
- 	| ip2k | iq2000 \
- 	| m32c | m32r | m32rle | m68000 | m68k | m88k \
--	| maxq | mb | microblaze | mcore | mep \
-+	| maxq | mb | microblaze | mcore \
- 	| mips | mipsbe | mipseb | mipsel | mipsle \
- 	| mips16 \
- 	| mips64 | mips64el \
-@@ -324,7 +324,7 @@ case $basic_machine in
- 	| clipper-* | craynv-* | cydra-* \
- 	| d10v-* | d30v-* | dlx-* \
- 	| elxsi-* \
--	| f30[01]-* | f700-* | fido-* | fr30-* | frv-* | fx80-* \
-+	| f30[01]-* | f700-* | fr30-* | frv-* | fx80-* \
- 	| h8300-* | h8500-* \
- 	| hppa-* | hppa1.[01]-* | hppa2.0-* | hppa2.0[nw]-* | hppa64-* \
- 	| i*86-* | i860-* | i960-* | ia64-* \
-@@ -925,9 +925,6 @@ case $basic_machine in
- 		basic_machine=sh-hitachi
- 		os=-hms
+@@ -72,8 +72,8 @@ Report bugs and patches to <config-patch
+ version="\
+ GNU config.sub ($timestamp)
+ 
+-Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001,
+-2002, 2003, 2004, 2005, 2006, 2007, 2008 Free Software Foundation, Inc.
++Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005
++Free Software Foundation, Inc.
+ 
+ This is free software; see the source for copying conditions.  There is NO
+ warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE."
+@@ -369,14 +369,10 @@ case $basic_machine in
+ 	| v850-* | v850e-* | vax-* \
+ 	| we32k-* \
+ 	| x86-* | x86_64-* | xc16x-* | xps100-* | xscale-* | xscalee[bl]-* \
+-	| xstormy16-* | xtensa*-* \
++	| xstormy16-* | xtensa-* \
+ 	| ymp-* \
+ 	| z8k-*)
  		;;
--	sh5el)
--		basic_machine=sh5le-unknown
+-	# Recognize the basic CPU types without company name, with glob match.
+-	xtensa*)
+-		basic_machine=$basic_machine-unknown
 -		;;
- 	sh64)
- 		basic_machine=sh64-unknown
+ 	# Recognize the various machine names and aliases which stand
+ 	# for a CPU type and a company and sometimes even an OS.
+ 	386bsd)
+@@ -447,14 +443,6 @@ case $basic_machine in
+ 		basic_machine=ns32k-sequent
+ 		os=-dynix
  		;;
-@@ -1222,7 +1219,7 @@ case $os in
- 	      | -os2* | -vos* | -palmos* | -uclinux* | -nucleus* \
- 	      | -morphos* | -superux* | -rtmk* | -rtmk-nova* | -windiss* \
- 	      | -powermax* | -dnix* | -nx6 | -nx7 | -sei* | -dragonfly* \
--	      | -skyos* | -haiku* | -rdos* | -toppers* | -drops*)
-+	      | -skyos* | -haiku* | -rdos* | -toppers*)
- 	# Remember, each alternative MUST END IN *, to match a version number.
- 		;;
- 	-qnx*)
-@@ -1417,9 +1414,6 @@ case $basic_machine in
- 	m68*-cisco)
- 		os=-aout
- 		;;
--        mep-*)
--		os=-elf
+-	blackfin)
+-		basic_machine=bfin-unknown
+-		os=-linux
 -		;;
- 	mips*-cisco)
- 		os=-elf
+-	blackfin-*)
+-		basic_machine=bfin-`echo $basic_machine | sed 's/^[^-]*-//'`
+-		os=-linux
+-		;;
+ 	c90)
+ 		basic_machine=c90-cray
+ 		os=-unicos
+@@ -680,14 +668,6 @@ case $basic_machine in
+ 		basic_machine=m68k-isi
+ 		os=-sysv
  		;;
-diff -rupN claws-mail-2.10.0-orig/configure claws-mail-2.10.0/configure
---- claws-mail-2.10.0-orig/configure	2007-07-02 12:03:19.000000000 +0200
-+++ claws-mail-2.10.0/configure	2007-07-03 18:42:59.000000000 +0200
-@@ -26664,7 +26664,7 @@ Alternatively, you may set the environme
- and GLIB_LIBS to avoid the need to call pkg-config.
- See the pkg-config man page for more details.
+-	m68knommu)
+-		basic_machine=m68k-unknown
+-		os=-linux
+-		;;
+-	m68knommu-*)
+-		basic_machine=m68k-`echo $basic_machine | sed 's/^[^-]*-//'`
+-		os=-linux
+-		;;
+ 	m88k-omron*)
+ 		basic_machine=m88k-omron
+ 		;;
+@@ -833,14 +813,6 @@ case $basic_machine in
+ 		basic_machine=i860-intel
+ 		os=-osf
+ 		;;
+-	parisc)
+-		basic_machine=hppa-unknown
+-		os=-linux
+-		;;
+-	parisc-*)
+-		basic_machine=hppa-`echo $basic_machine | sed 's/^[^-]*-//'`
+-		os=-linux
+-		;;
+ 	pbd)
+ 		basic_machine=sparc-tti
+ 		;;
+@@ -1049,10 +1021,6 @@ case $basic_machine in
+ 		basic_machine=tic6x-unknown
+ 		os=-coff
+ 		;;
+-	tile*)
+-		basic_machine=tile-unknown
+-		os=-linux-gnu
+-		;;
+ 	tx39)
+ 		basic_machine=mipstx39-unknown
+ 		;;
+diff -rupN claws-mail-3.4.0-orig/config/ltmain.sh claws-mail-3.4.0/config/ltmain.sh
+--- claws-mail-3.4.0-orig/config/ltmain.sh	2008-04-05 19:05:47.000000000 +0200
++++ claws-mail-3.4.0/config/ltmain.sh	2008-02-08 01:54:46.000000000 +0100
+@@ -43,7 +43,7 @@ EXIT_FAILURE=1
  
--To get pkg-config, see <http://pkg-config.freedesktop.org/>.
-+To get pkg-config, see <http://www.freedesktop.org/software/pkgconfig>.
- See \`config.log' for more details." >&5
- echo "$as_me: error: The pkg-config script could not be found or is too old.  Make sure it
- is in your PATH or set the PKG_CONFIG environment variable to the full
-@@ -26674,7 +26674,7 @@ Alternatively, you may set the environme
- and GLIB_LIBS to avoid the need to call pkg-config.
- See the pkg-config man page for more details.
+ PROGRAM=ltmain.sh
+ PACKAGE=libtool
+-VERSION="1.5.26 Debian 1.5.26-3"
++VERSION="1.5.26 Debian 1.5.26-1ubuntu1"
+ TIMESTAMP=" (1.1220.2.493 2008/02/01 16:58:18)"
  
--To get pkg-config, see <http://pkg-config.freedesktop.org/>.
-+To get pkg-config, see <http://www.freedesktop.org/software/pkgconfig>.
- See \`config.log' for more details." >&2;}
-    { (exit 1); exit 1; }; }
- else
-@@ -27280,7 +27280,7 @@ Alternatively, you may set the environme
- and GTK_LIBS to avoid the need to call pkg-config.
- See the pkg-config man page for more details.
- 
--To get pkg-config, see <http://pkg-config.freedesktop.org/>.
-+To get pkg-config, see <http://www.freedesktop.org/software/pkgconfig>.
- See \`config.log' for more details." >&5
- echo "$as_me: error: The pkg-config script could not be found or is too old.  Make sure it
- is in your PATH or set the PKG_CONFIG environment variable to the full
-@@ -27290,7 +27290,7 @@ Alternatively, you may set the environme
- and GTK_LIBS to avoid the need to call pkg-config.
- See the pkg-config man page for more details.
- 
--To get pkg-config, see <http://pkg-config.freedesktop.org/>.
-+To get pkg-config, see <http://www.freedesktop.org/software/pkgconfig>.
- See \`config.log' for more details." >&2;}
-    { (exit 1); exit 1; }; }
- else
-@@ -31347,7 +31347,7 @@ fi
+ # Be Bourne compatible (taken from Autoconf:_AS_BOURNE_COMPATIBLE).
+diff -rupN claws-mail-3.4.0-orig/configure claws-mail-3.4.0/configure
+--- claws-mail-3.4.0-orig/configure	2008-04-18 12:47:49.000000000 +0200
++++ claws-mail-3.4.0/configure	2008-04-25 15:35:13.000000000 +0200
+@@ -32976,7 +32976,7 @@ fi
  
  
  
--ac_config_files="$ac_config_files Makefile m4/Makefile po/Makefile.in src/common/version.h src/Makefile src/common/Makefile src/common/passcrypt.h src/gtk/Makefile src/etpan/Makefile src/plugins/Makefile src/plugins/demo/Makefile src/plugins/bogofilter/Makefile src/plugins/spamassassin/Makefile src/plugins/dillo_viewer/Makefile src/plugins/trayicon/Makefile src/plugins/trayicon/libeggtrayicon/Makefile src/plugins/clamav/Makefile src/plugins/pgpcore/Makefile src/plugins/pgpmime/Makefile src/plugins/pgpinline/Makefile doc/Makefile doc/man/Makefile tools/Makefile config/Makefile manual/Makefile manual/dtd/Makefile manual/dist/Makefile manual/dist/pdf/Makefile manual/dist/ps/Makefile manual/dist/html/Makefile manual/dist/txt/Makefile manual/fr/Makefile manual/fr/dist/Makefile manual/fr/dist/pdf/Makefile manual/fr/dist/ps/Makefile manual/fr/dist/html/Makefile manual/fr/dist/txt/Makefile manual/pl/Makefile manual/pl/dist/Makefile manual/pl/dist/pdf/Makefile manual/pl/dist/ps/Makefile manual/pl/dist/html/Makefile manual/pl/dist/txt/Makefile manual/es/Makefile manual/es/dist/Makefile manual/es/dist/pdf/Makefile manual/es/dist/ps/Makefile manual/es/dist/html/Makefile manual/es/dist/txt/Makefile claws-mail.pc"
-+ac_config_files="$ac_config_files Makefile m4/Makefile po/Makefile.in src/common/version.h src/Makefile src/common/Makefile src/common/passcrypt.h src/gtk/Makefile src/etpan/Makefile src/plugins/Makefile src/plugins/demo/Makefile src/plugins/bogofilter/Makefile src/plugins/spamassassin/Makefile src/plugins/dillo_viewer/Makefile src/plugins/trayicon/Makefile src/plugins/trayicon/libeggtrayicon/Makefile src/plugins/clamav/Makefile src/plugins/pgpcore/Makefile src/plugins/pgpmime/Makefile src/plugins/pgpinline/Makefile src/plugins/smime/Makefile doc/Makefile doc/man/Makefile tools/Makefile config/Makefile manual/Makefile manual/dtd/Makefile manual/dist/Makefile manual/dist/pdf/Makefile manual/dist/ps/Makefile manual/dist/html/Makefile manual/dist/txt/Makefile manual/fr/Makefile manual/fr/dist/Makefile manual/fr/dist/pdf/Makefile manual/fr/dist/ps/Makefile manual/fr/dist/html/Makefile manual/fr/dist/txt/Makefile manual/pl/Makefile manual/pl/dist/Makefile manual/pl/dist/pdf/Makefile manual/pl/dist/ps/Makefile manual/pl/dist/html/Makefile manual/pl/dist/txt/Makefile manual/es/Makefile manual/es/dist/Makefile manual/es/dist/pdf/Makefile manual/es/dist/ps/Makefile manual/es/dist/html/Makefile manual/es/dist/txt/Makefile claws-mail.pc"
+-ac_config_files="$ac_config_files Makefile m4/Makefile po/Makefile.in src/common/version.h src/Makefile src/common/Makefile src/common/passcrypt.h src/gtk/Makefile src/etpan/Makefile src/plugins/Makefile src/plugins/demo/Makefile src/plugins/bogofilter/Makefile src/plugins/spamassassin/Makefile src/plugins/dillo_viewer/Makefile src/plugins/trayicon/Makefile src/plugins/trayicon/libeggtrayicon/Makefile src/plugins/pgpcore/Makefile src/plugins/pgpmime/Makefile src/plugins/pgpinline/Makefile doc/Makefile doc/man/Makefile tools/Makefile config/Makefile manual/Makefile manual/dtd/Makefile manual/dist/Makefile manual/dist/pdf/Makefile manual/dist/ps/Makefile manual/dist/html/Makefile manual/dist/txt/Makefile manual/fr/Makefile manual/fr/dist/Makefile manual/fr/dist/pdf/Makefile manual/fr/dist/ps/Makefile manual/fr/dist/html/Makefile manual/fr/dist/txt/Makefile manual/pl/Makefile manual/pl/dist/Makefile manual/pl/dist/pdf/Makefile manual/pl/dist/ps/Makefile manual/pl/dist/html/Makefile manual/pl/dist/txt/Makefile manual/es/Makefile manual/es/dist/Makefile manual/es/dist/pdf/Makefile manual/es/dist/ps/Makefile manual/es/dist/html/Makefile manual/es/dist/txt/Makefile claws-mail.pc"
++ac_config_files="$ac_config_files Makefile m4/Makefile po/Makefile.in src/common/version.h src/Makefile src/common/Makefile src/common/passcrypt.h src/gtk/Makefile src/etpan/Makefile src/plugins/Makefile src/plugins/demo/Makefile src/plugins/bogofilter/Makefile src/plugins/spamassassin/Makefile src/plugins/dillo_viewer/Makefile src/plugins/trayicon/Makefile src/plugins/trayicon/libeggtrayicon/Makefile src/plugins/pgpcore/Makefile src/plugins/pgpmime/Makefile src/plugins/pgpinline/Makefile src/plugins/smime/Makefile doc/Makefile doc/man/Makefile tools/Makefile config/Makefile manual/Makefile manual/dtd/Makefile manual/dist/Makefile manual/dist/pdf/Makefile manual/dist/ps/Makefile manual/dist/html/Makefile manual/dist/txt/Makefile manual/fr/Makefile manual/fr/dist/Makefile manual/fr/dist/pdf/Makefile manual/fr/dist/ps/Makefile manual/fr/dist/html/Makefile manual/fr/dist/txt/Makefile manual/pl/Makefile manual/pl/dist/Makefile manual/pl/dist/pdf/Makefile manual/pl/dist/ps/Makefile manual/pl/dist/html/Makefile manual/pl/dist/txt/Makefile manual/es/Makefile manual/es/dist/Makefile manual/es/dist/pdf/Makefile manual/es/dist/ps/Makefile manual/es/dist/html/Makefile manual/es/dist/txt/Makefile claws-mail.pc"
  
  cat >confcache <<\_ACEOF
  # This file is a shell script that caches the results of configure
-@@ -32096,6 +32096,7 @@ do
+@@ -33717,6 +33717,7 @@ do
      "src/plugins/pgpcore/Makefile") CONFIG_FILES="$CONFIG_FILES src/plugins/pgpcore/Makefile" ;;
      "src/plugins/pgpmime/Makefile") CONFIG_FILES="$CONFIG_FILES src/plugins/pgpmime/Makefile" ;;
      "src/plugins/pgpinline/Makefile") CONFIG_FILES="$CONFIG_FILES src/plugins/pgpinline/Makefile" ;;
@@ -221,64 +240,10 @@ diff -rupN claws-mail-2.10.0-orig/configure claws-mail-2.10.0/configure
      "doc/Makefile") CONFIG_FILES="$CONFIG_FILES doc/Makefile" ;;
      "doc/man/Makefile") CONFIG_FILES="$CONFIG_FILES doc/man/Makefile" ;;
      "tools/Makefile") CONFIG_FILES="$CONFIG_FILES tools/Makefile" ;;
-diff -rupN claws-mail-2.10.0-orig/src/common/Makefile.in claws-mail-2.10.0/src/common/Makefile.in
---- claws-mail-2.10.0-orig/src/common/Makefile.in	2007-07-02 12:03:14.000000000 +0200
-+++ claws-mail-2.10.0/src/common/Makefile.in	2007-07-03 18:42:49.000000000 +0200
-@@ -57,15 +57,16 @@ libclawscommon_la_DEPENDENCIES = $(am__D
- 	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1)
- am__libclawscommon_la_SOURCES_DIST = fnmatch.c w32_dirent.c w32_reg.c \
- 	w32_signal.c w32_stat.c w32_stdio.c w32_stdlib.c w32_string.c \
--	w32_time.c w32_unistd.c w32_wait.c base64.c hooks.c log.c \
--	md5.c mgutils.c nntp.c passcrypt.c plugin.c prefs.c \
--	progressindicator.c quoted-printable.c session.c smtp.c \
--	socket.c ssl.c ssl_certificate.c string_match.c stringtable.c \
--	claws.c template.c utils.c uuencode.c xml.c xmlprops.c
-+	w32_time.c w32_unistd.c w32_wait.c w32_account.c base64.c \
-+	hooks.c log.c md5.c mgutils.c nntp.c passcrypt.c plugin.c \
-+	prefs.c progressindicator.c quoted-printable.c session.c \
-+	smtp.c socket.c ssl.c ssl_certificate.c string_match.c \
-+	stringtable.c claws.c template.c utils.c uuencode.c xml.c \
-+	xmlprops.c
- @OS_WIN32_TRUE@am__objects_1 = fnmatch.lo w32_dirent.lo w32_reg.lo \
- @OS_WIN32_TRUE@	w32_signal.lo w32_stat.lo w32_stdio.lo \
- @OS_WIN32_TRUE@	w32_stdlib.lo w32_string.lo w32_time.lo \
--@OS_WIN32_TRUE@	w32_unistd.lo w32_wait.lo
-+@OS_WIN32_TRUE@	w32_unistd.lo w32_wait.lo w32_account.lo
- am_libclawscommon_la_OBJECTS = $(am__objects_1) base64.lo hooks.lo \
- 	log.lo md5.lo mgutils.lo nntp.lo passcrypt.lo plugin.lo \
- 	prefs.lo progressindicator.lo quoted-printable.lo session.lo \
-@@ -296,7 +297,7 @@ noinst_LTLIBRARIES = libclawscommon.la
- @OS_WIN32_TRUE@arch_sources = fnmatch.c \
- @OS_WIN32_TRUE@               w32_dirent.c w32_reg.c w32_signal.c w32_stat.c \
- @OS_WIN32_TRUE@               w32_stdio.c w32_stdlib.c w32_string.c w32_time.c \
--@OS_WIN32_TRUE@               w32_unistd.c w32_wait.c
-+@OS_WIN32_TRUE@               w32_unistd.c w32_wait.c w32_account.c
- 
- @OS_WIN32_TRUE@arch_headers = fnmatch.h w32lib.h
- @OS_WIN32_FALSE@arch_files = 
-@@ -456,6 +457,7 @@ distclean-compile:
- @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/template.Plo@am__quote@
- @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/utils.Plo@am__quote@
- @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/uuencode.Plo@am__quote@
-+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/w32_account.Plo@am__quote@
- @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/w32_dirent.Plo@am__quote@
- @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/w32_reg.Plo@am__quote@
- @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/w32_signal.Plo@am__quote@
-diff -rupN claws-mail-2.10.0-orig/src/gtk/Makefile.in claws-mail-2.10.0/src/gtk/Makefile.in
---- claws-mail-2.10.0-orig/src/gtk/Makefile.in	2007-07-02 12:03:15.000000000 +0200
-+++ claws-mail-2.10.0/src/gtk/Makefile.in	2007-07-03 18:42:50.000000000 +0200
-@@ -340,6 +340,7 @@ clawsgtkinclude_HEADERS = \
- 
- AM_CPPFLAGS = \
- 	-I$(srcdir)/../common \
-+	-I../common \
- 	-I$(srcdir)/.. \
- 	$(GTK_CFLAGS) \
- 	$(OPENSSL_CFLAGS) \
-diff -rupN claws-mail-2.10.0-orig/src/Makefile.in claws-mail-2.10.0/src/Makefile.in
---- claws-mail-2.10.0-orig/src/Makefile.in	2007-07-02 12:03:14.000000000 +0200
-+++ claws-mail-2.10.0/src/Makefile.in	2007-07-03 18:42:49.000000000 +0200
-@@ -115,15 +115,6 @@ am_claws_mail_OBJECTS = account.$(OBJEXT
+diff -rupN claws-mail-3.4.0-orig/src/Makefile.in claws-mail-3.4.0/src/Makefile.in
+--- claws-mail-3.4.0-orig/src/Makefile.in	2008-04-18 12:47:45.000000000 +0200
++++ claws-mail-3.4.0/src/Makefile.in	2008-04-25 15:35:05.000000000 +0200
+@@ -119,16 +119,6 @@ am_claws_mail_OBJECTS = account.$(OBJEXT
  claws_mail_OBJECTS = $(am_claws_mail_OBJECTS)
  @CLAWS_LIBETPAN_TRUE@am__DEPENDENCIES_1 = etpan/libclawsetpan.la
  am__DEPENDENCIES_2 =
@@ -290,11 +255,12 @@ diff -rupN claws-mail-2.10.0-orig/src/Makefile.in claws-mail-2.10.0/src/Makefile
 -	$(am__DEPENDENCIES_2) $(am__DEPENDENCIES_2) \
 -	$(am__DEPENDENCIES_2) $(am__DEPENDENCIES_2) \
 -	$(am__DEPENDENCIES_2) $(am__DEPENDENCIES_2) \
--	$(am__DEPENDENCIES_2)
+-	$(am__DEPENDENCIES_2) $(am__DEPENDENCIES_2) \
+-	$(am__DEPENDENCIES_2) $(am__DEPENDENCIES_2)
  claws_mail_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) \
  	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
  	$(claws_mail_LDFLAGS) $(LDFLAGS) -o $@
-@@ -362,6 +353,14 @@ top_srcdir = @top_srcdir@
+@@ -379,6 +369,14 @@ top_srcdir = @top_srcdir@
  @CLAWS_LIBETPAN_FALSE@etpan_library = 
  @CLAWS_LIBETPAN_TRUE@etpan_library = etpan/libclawsetpan.la
  SUBDIRS = common gtk $(etpan_dir) . plugins
@@ -309,7 +275,7 @@ diff -rupN claws-mail-2.10.0-orig/src/Makefile.in claws-mail-2.10.0/src/Makefile
  claws_mail_SOURCES = \
  	account.c \
  	action.c \
-@@ -649,6 +648,7 @@ BUILT_SOURCES = \
+@@ -676,6 +674,7 @@ BUILT_SOURCES = \
  	quote_fmt_parse.h
  
  EXTRA_DIST = \
@@ -317,14 +283,7 @@ diff -rupN claws-mail-2.10.0-orig/src/Makefile.in claws-mail-2.10.0/src/Makefile
  	pixmaps/addr_one.xpm \
  	pixmaps/addr_two.xpm \
  	pixmaps/address_book.xpm \
-@@ -793,13 +793,18 @@ EXTRA_DIST = \
- 
- INCLUDES = \
- 	-I$(srcdir)/common \
-+	-Icommon \
- 	-I$(srcdir)/gtk \
- 	-I$(srcdir)/etpan
- 
+@@ -843,7 +842,11 @@ INCLUDES = \
  @PLATFORM_WIN32_FALSE@arch_ldflags := 
  @PLATFORM_WIN32_TRUE@arch_ldflags := -export-all-symbols
  claws_mail_LDFLAGS = \
@@ -337,7 +296,7 @@ diff -rupN claws-mail-2.10.0-orig/src/Makefile.in claws-mail-2.10.0/src/Makefile
  
  claws_mail_LDADD = \
  	$(etpan_library) \
-@@ -1412,6 +1417,9 @@ install-exec-hook:
+@@ -1467,6 +1470,9 @@ install-exec-hook:
  	@rm -f $(DESTDIR)$(bindir)/sylpheed-claws
  	@ln -s claws-mail $(DESTDIR)$(bindir)/sylpheed-claws
  
@@ -347,20 +306,20 @@ diff -rupN claws-mail-2.10.0-orig/src/Makefile.in claws-mail-2.10.0/src/Makefile
  @CYGWIN_TRUE@claws-mail$(EXEEXT): $(claws_mail_OBJECTS) $(claws_mail_DEPENDENCIES) 
  @CYGWIN_TRUE@	@rm -f claws-mail$(EXEEXT)
  @CYGWIN_TRUE@	@rm -f claws-mail.def claws-mail.base claws-mail.exp libclaws-mail.a .libs/libclaws-mail.a
-diff -rupN claws-mail-2.10.0-orig/src/plugins/Makefile.in claws-mail-2.10.0/src/plugins/Makefile.in
---- claws-mail-2.10.0-orig/src/plugins/Makefile.in	2007-07-02 12:03:15.000000000 +0200
-+++ claws-mail-2.10.0/src/plugins/Makefile.in	2007-07-03 18:42:50.000000000 +0200
+diff -rupN claws-mail-3.4.0-orig/src/plugins/Makefile.in claws-mail-3.4.0/src/plugins/Makefile.in
+--- claws-mail-3.4.0-orig/src/plugins/Makefile.in	2008-04-18 12:47:46.000000000 +0200
++++ claws-mail-3.4.0/src/plugins/Makefile.in	2008-04-25 15:35:06.000000000 +0200
 @@ -60,7 +60,7 @@ RECURSIVE_CLEAN_TARGETS = mostlyclean-re
  ETAGS = etags
  CTAGS = ctags
  DIST_SUBDIRS = demo spamassassin bogofilter dillo_viewer trayicon \
--	clamav pgpcore pgpmime pgpinline
-+	clamav pgpcore pgpmime pgpinline smime
+-	pgpcore pgpmime pgpinline
++	pgpcore pgpmime pgpinline smime
  DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
  ACLOCAL = @ACLOCAL@
  ALLOCA = @ALLOCA@
-@@ -265,7 +265,8 @@ SUBDIRS = $(demo_dir) \
- 	$(clamav_dir) \
+@@ -275,7 +275,8 @@ SUBDIRS = $(demo_dir) \
+ 	$(trayicon_dir) \
  	$(pgpcore_dir) \
  	$(pgpmime_dir) \
 -	$(pgpinline_dir)
@@ -369,48 +328,15 @@ diff -rupN claws-mail-2.10.0-orig/src/plugins/Makefile.in claws-mail-2.10.0/src/
  
  all: all-recursive
  
-diff -rupN claws-mail-2.10.0-orig/src/plugins/pgpcore/Makefile.in claws-mail-2.10.0/src/plugins/pgpcore/Makefile.in
---- claws-mail-2.10.0-orig/src/plugins/pgpcore/Makefile.in	2007-07-02 12:03:17.000000000 +0200
-+++ claws-mail-2.10.0/src/plugins/pgpcore/Makefile.in	2007-07-03 18:42:52.000000000 +0200
-@@ -321,6 +321,7 @@ pgpcore_la_LIBADD = $(cygwin_export_lib)
- INCLUDES = \
- 	-I$(top_srcdir)/src \
- 	-I$(top_srcdir)/src/common \
-+	-I$(top_builddir)/src/common \
- 	-I$(top_srcdir)/src/gtk
- 
- AM_CPPFLAGS = \
-diff -rupN claws-mail-2.10.0-orig/src/plugins/pgpinline/Makefile.in claws-mail-2.10.0/src/plugins/pgpinline/Makefile.in
---- claws-mail-2.10.0-orig/src/plugins/pgpinline/Makefile.in	2007-07-02 12:03:17.000000000 +0200
-+++ claws-mail-2.10.0/src/plugins/pgpinline/Makefile.in	2007-07-03 18:42:53.000000000 +0200
-@@ -319,6 +319,7 @@ pgpinline_la_LIBADD = $(plugin_ldadd) $(
- INCLUDES = \
- 	-I$(top_srcdir)/src \
- 	-I$(top_srcdir)/src/common \
-+	-I$(top_builddir)/src/common \
- 	-I$(top_srcdir)/src/gtk
- 
- AM_CPPFLAGS = \
-diff -rupN claws-mail-2.10.0-orig/src/plugins/pgpmime/Makefile.in claws-mail-2.10.0/src/plugins/pgpmime/Makefile.in
---- claws-mail-2.10.0-orig/src/plugins/pgpmime/Makefile.in	2007-07-02 12:03:17.000000000 +0200
-+++ claws-mail-2.10.0/src/plugins/pgpmime/Makefile.in	2007-07-03 18:42:53.000000000 +0200
-@@ -318,6 +318,7 @@ pgpmime_la_LIBADD = $(plugin_ldadd) $(pg
- INCLUDES = \
- 	-I$(top_srcdir)/src \
- 	-I$(top_srcdir)/src/common \
-+	-I$(top_builddir)/src/common \
- 	-I$(top_srcdir)/src/gtk
- 
- AM_CPPFLAGS = \
-diff -rupN claws-mail-2.10.0-orig/src/plugins/smime/Makefile.in claws-mail-2.10.0/src/plugins/smime/Makefile.in
---- claws-mail-2.10.0-orig/src/plugins/smime/Makefile.in	1970-01-01 01:00:00.000000000 +0100
-+++ claws-mail-2.10.0/src/plugins/smime/Makefile.in	2007-07-03 18:42:53.000000000 +0200
-@@ -0,0 +1,661 @@
-+# Makefile.in generated by automake 1.10 from Makefile.am.
+diff -rupN claws-mail-3.4.0-orig/src/plugins/smime/Makefile.in claws-mail-3.4.0/src/plugins/smime/Makefile.in
+--- claws-mail-3.4.0-orig/src/plugins/smime/Makefile.in	1970-01-01 01:00:00.000000000 +0100
++++ claws-mail-3.4.0/src/plugins/smime/Makefile.in	2008-04-25 15:35:08.000000000 +0200
+@@ -0,0 +1,672 @@
++# Makefile.in generated by automake 1.10.1 from Makefile.am.
 +# @configure_input@
 +
 +# Copyright (C) 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002,
-+# 2003, 2004, 2005, 2006  Free Software Foundation, Inc.
++# 2003, 2004, 2005, 2006, 2007, 2008  Free Software Foundation, Inc.
 +# This Makefile.in is free software; the Free Software Foundation
 +# gives unlimited permission to copy and/or distribute it,
 +# with or without modifications, as long as this notice is preserved.
@@ -475,7 +401,7 @@ diff -rupN claws-mail-2.10.0-orig/src/plugins/smime/Makefile.in claws-mail-2.10.
 +smime_la_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
 +	--mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(smime_la_LDFLAGS) \
 +	$(LDFLAGS) -o $@
-+DEFAULT_INCLUDES = -I. -I$(top_builddir)@am__isrc@
++DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir)
 +depcomp = $(SHELL) $(top_srcdir)/config/depcomp
 +am__depfiles_maybe = depfiles
 +COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
@@ -512,9 +438,9 @@ diff -rupN claws-mail-2.10.0-orig/src/plugins/smime/Makefile.in claws-mail-2.10.
 +CC = @CC@
 +CCDEPMODE = @CCDEPMODE@
 +CFLAGS = @CFLAGS@
-+CLAMAV_CFLAGS = @CLAMAV_CFLAGS@
-+CLAMAV_LIBS = @CLAMAV_LIBS@
 +COMPFACE_LIBS = @COMPFACE_LIBS@
++CONIC_CFLAGS = @CONIC_CFLAGS@
++CONIC_LIBS = @CONIC_LIBS@
 +CPP = @CPP@
 +CPPFLAGS = @CPPFLAGS@
 +CRYPT_LIBS = @CRYPT_LIBS@
@@ -523,9 +449,12 @@ diff -rupN claws-mail-2.10.0-orig/src/plugins/smime/Makefile.in claws-mail-2.10.
 +CXXDEPMODE = @CXXDEPMODE@
 +CXXFLAGS = @CXXFLAGS@
 +CYGPATH_W = @CYGPATH_W@
++DBUS_CFLAGS = @DBUS_CFLAGS@
++DBUS_LIBS = @DBUS_LIBS@
 +DEFS = @DEFS@
 +DEPDIR = @DEPDIR@
 +DLLTOOL = @DLLTOOL@
++DSYMUTIL = @DSYMUTIL@
 +ECHO = @ECHO@
 +ECHO_C = @ECHO_C@
 +ECHO_N = @ECHO_N@
@@ -535,6 +464,7 @@ diff -rupN claws-mail-2.10.0-orig/src/plugins/smime/Makefile.in claws-mail-2.10.
 +EXTRA_VERSION = @EXTRA_VERSION@
 +F77 = @F77@
 +FFLAGS = @FFLAGS@
++GETTEXT_MACRO_VERSION = @GETTEXT_MACRO_VERSION@
 +GETTEXT_PACKAGE = @GETTEXT_PACKAGE@
 +GLIB_CFLAGS = @GLIB_CFLAGS@
 +GLIB_GENMARSHAL = @GLIB_GENMARSHAL@
@@ -546,10 +476,13 @@ diff -rupN claws-mail-2.10.0-orig/src/plugins/smime/Makefile.in claws-mail-2.10.
 +GNOMEPRINT_CFLAGS = @GNOMEPRINT_CFLAGS@
 +GNOMEPRINT_LIBS = @GNOMEPRINT_LIBS@
 +GNOME_CONFIG = @GNOME_CONFIG@
++GNUTLS_LIBS = @GNUTLS_LIBS@
 +GPGME_CFLAGS = @GPGME_CFLAGS@
 +GPGME_CONFIG = @GPGME_CONFIG@
 +GPGME_LIBS = @GPGME_LIBS@
 +GREP = @GREP@
++GTK210_CFLAGS = @GTK210_CFLAGS@
++GTK210_LIBS = @GTK210_LIBS@
 +GTK_CFLAGS = @GTK_CFLAGS@
 +GTK_LIBS = @GTK_LIBS@
 +INSTALL = @INSTALL@
@@ -592,6 +525,9 @@ diff -rupN claws-mail-2.10.0-orig/src/plugins/smime/Makefile.in claws-mail-2.10.
 +MSGFMT = @MSGFMT@
 +MSGFMT_015 = @MSGFMT_015@
 +MSGMERGE = @MSGMERGE@
++NETWORKMANAGER_SUPPORT_CFLAGS = @NETWORKMANAGER_SUPPORT_CFLAGS@
++NETWORKMANAGER_SUPPORT_LIBS = @NETWORKMANAGER_SUPPORT_LIBS@
++NMEDIT = @NMEDIT@
 +OBJDUMP = @OBJDUMP@
 +OBJEXT = @OBJEXT@
 +OPENSSL_CFLAGS = @OPENSSL_CFLAGS@
@@ -609,6 +545,7 @@ diff -rupN claws-mail-2.10.0-orig/src/plugins/smime/Makefile.in claws-mail-2.10.
 +PTHREAD_LIBS = @PTHREAD_LIBS@
 +RANLIB = @RANLIB@
 +RC = @RC@
++SED = @SED@
 +SET_MAKE = @SET_MAKE@
 +SHELL = @SHELL@
 +SM_LIBS = @SM_LIBS@
@@ -621,6 +558,7 @@ diff -rupN claws-mail-2.10.0-orig/src/plugins/smime/Makefile.in claws-mail-2.10.
 +VERSION = @VERSION@
 +XGETTEXT = @XGETTEXT@
 +XGETTEXT_015 = @XGETTEXT_015@
++XGETTEXT_EXTRA_OPTIONS = @XGETTEXT_EXTRA_OPTIONS@
 +YACC = @YACC@
 +YFLAGS = @YFLAGS@
 +abs_builddir = @abs_builddir@
@@ -772,8 +710,8 @@ diff -rupN claws-mail-2.10.0-orig/src/plugins/smime/Makefile.in claws-mail-2.10.
 +	@list='$(plugin_LTLIBRARIES)'; for p in $$list; do \
 +	  if test -f $$p; then \
 +	    f=$(am__strip_dir) \
-+	    echo " $(LIBTOOL) --mode=install $(pluginLTLIBRARIES_INSTALL) $(INSTALL_STRIP_FLAG) '$$p' '$(DESTDIR)$(plugindir)/$$f'"; \
-+	    $(LIBTOOL) --mode=install $(pluginLTLIBRARIES_INSTALL) $(INSTALL_STRIP_FLAG) "$$p" "$(DESTDIR)$(plugindir)/$$f"; \
++	    echo " $(LIBTOOL) $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=install $(pluginLTLIBRARIES_INSTALL) $(INSTALL_STRIP_FLAG) '$$p' '$(DESTDIR)$(plugindir)/$$f'"; \
++	    $(LIBTOOL) $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=install $(pluginLTLIBRARIES_INSTALL) $(INSTALL_STRIP_FLAG) "$$p" "$(DESTDIR)$(plugindir)/$$f"; \
 +	  else :; fi; \
 +	done
 +
@@ -781,8 +719,8 @@ diff -rupN claws-mail-2.10.0-orig/src/plugins/smime/Makefile.in claws-mail-2.10.
 +	@$(NORMAL_UNINSTALL)
 +	@list='$(plugin_LTLIBRARIES)'; for p in $$list; do \
 +	  p=$(am__strip_dir) \
-+	  echo " $(LIBTOOL) --mode=uninstall rm -f '$(DESTDIR)$(plugindir)/$$p'"; \
-+	  $(LIBTOOL) --mode=uninstall rm -f "$(DESTDIR)$(plugindir)/$$p"; \
++	  echo " $(LIBTOOL) $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=uninstall rm -f '$(DESTDIR)$(plugindir)/$$p'"; \
++	  $(LIBTOOL) $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=uninstall rm -f "$(DESTDIR)$(plugindir)/$$p"; \
 +	done
 +
 +clean-pluginLTLIBRARIES:
@@ -871,8 +809,8 @@ diff -rupN claws-mail-2.10.0-orig/src/plugins/smime/Makefile.in claws-mail-2.10.
 +	unique=`for i in $$list; do \
 +	    if test -f "$$i"; then echo $$i; else echo $(srcdir)/$$i; fi; \
 +	  done | \
-+	  $(AWK) '    { files[$$0] = 1; } \
-+	       END { for (i in files) print i; }'`; \
++	  $(AWK) '{ files[$$0] = 1; nonemtpy = 1; } \
++	      END { if (nonempty) { for (i in files) print i; }; }'`; \
 +	mkid -fID $$unique
 +tags: TAGS
 +
@@ -884,8 +822,8 @@ diff -rupN claws-mail-2.10.0-orig/src/plugins/smime/Makefile.in claws-mail-2.10.
 +	unique=`for i in $$list; do \
 +	    if test -f "$$i"; then echo $$i; else echo $(srcdir)/$$i; fi; \
 +	  done | \
-+	  $(AWK) '    { files[$$0] = 1; } \
-+	       END { for (i in files) print i; }'`; \
++	  $(AWK) '{ files[$$0] = 1; nonempty = 1; } \
++	      END { if (nonempty) { for (i in files) print i; }; }'`; \
 +	if test -z "$(ETAGS_ARGS)$$tags$$unique"; then :; else \
 +	  test -n "$$unique" || unique=$$empty_fix; \
 +	  $(ETAGS) $(ETAGSFLAGS) $(AM_ETAGSFLAGS) $(ETAGS_ARGS) \
@@ -895,13 +833,12 @@ diff -rupN claws-mail-2.10.0-orig/src/plugins/smime/Makefile.in claws-mail-2.10.
 +CTAGS:  $(HEADERS) $(SOURCES)  $(TAGS_DEPENDENCIES) \
 +		$(TAGS_FILES) $(LISP)
 +	tags=; \
-+	here=`pwd`; \
 +	list='$(SOURCES) $(HEADERS)  $(LISP) $(TAGS_FILES)'; \
 +	unique=`for i in $$list; do \
 +	    if test -f "$$i"; then echo $$i; else echo $(srcdir)/$$i; fi; \
 +	  done | \
-+	  $(AWK) '    { files[$$0] = 1; } \
-+	       END { for (i in files) print i; }'`; \
++	  $(AWK) '{ files[$$0] = 1; nonempty = 1; } \
++	      END { if (nonempty) { for (i in files) print i; }; }'`; \
 +	test -z "$(CTAGS_ARGS)$$tags$$unique" \
 +	  || $(CTAGS) $(CTAGSFLAGS) $(AM_CTAGSFLAGS) $(CTAGS_ARGS) \
 +	     $$tags $$unique

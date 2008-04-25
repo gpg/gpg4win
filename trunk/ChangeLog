@@ -1,3 +1,19 @@
+2008-04-25  Marcus Brinkmann  <marcus@ulysses.g10code.com>
+
+	* packages/packages.current: Update libetpan and claws-mail.
+	* src/inst-libetpan.nsi: Update to latest version.
+	* src/Makefile.am (gpg4win_pkg_claws_mail_configure): Add
+	--disable-network-manager-support.
+	* configure.ac: Remove support or sylpheed-claws (replaced by
+	claws-mail).
+	* Makefile.am (EXTRA_DIST): Remove all sylpheed-claws patches and
+	add the claws-mail-3.4.0 patches.  Add libetpan-0.54 patches.
+	* include/config.nsi.in: Remove support for sylpheed.
+	* src/Makefile.am: Likewise.
+	* src/inst-sections.nsi: Likewise.
+	* src/inst-sylpheed-claws.nsi, src/uninst-sylpheed-claws.nsi:
+	Removed.
+
 s2008-04-23  Werner Koch  <wk@g10code.com>
 
 	Release 1.9.0 beta version.

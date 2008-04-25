@@ -110,9 +110,6 @@
 !ifdef HAVE_PKG_GPGEE
 !include "inst-gpgee.nsi"
 !endif
-!ifdef HAVE_PKG_SYLPHEED_CLAWS
-!include "inst-sylpheed-claws.nsi"
-!endif
 !ifdef HAVE_PKG_CLAWS_MAIL
 !include "inst-claws-mail.nsi"
 !endif
@@ -188,9 +185,6 @@
 !endif
 !ifdef HAVE_PKG_CLAWS_MAIL
 !include "uninst-claws-mail.nsi"
-!endif
-!ifdef HAVE_PKG_SYLPHEED_CLAWS
-!include "uninst-sylpheed-claws.nsi"
 !endif
 !ifdef HAVE_PKG_GPGEE
 !include "uninst-gpgee.nsi"
@@ -601,21 +595,6 @@ Function CalcDepends
   skip_gpa:
 !endif
 
-!ifdef HAVE_PKG_SYLPHEED_CLAWS
-  !insertmacro SectionFlagIsSet ${SEC_sylpheed} ${SF_SELECTED} have_sylpheed skip_sylpheed
-  have_sylpheed:
-  !insertmacro SelectSection ${SEC_zlib}
-  !insertmacro SelectSection ${SEC_gtk_}
-  !insertmacro SelectSection ${SEC_libpng}
-  !insertmacro SelectSection ${SEC_jpeg}
-  !insertmacro SelectSection ${SEC_glib}
-  !insertmacro SelectSection ${SEC_gpgme}
-  !insertmacro SelectSection ${SEC_pthreads_w32}
-  !insertmacro SelectSection ${SEC_crypt}
-  !insertmacro SelectSection ${SEC_regex}
-  skip_sylpheed:
-!endif
-
 
 !ifdef HAVE_PKG_CLAWS_MAIL
   !insertmacro SectionFlagIsSet ${SEC_claws_mail} ${SF_SELECTED} have_claws_mail skip_claws_mail
@@ -862,9 +841,6 @@ FunctionEnd
 !ifdef HAVE_PKG_GPGEE
   !insertmacro MUI_DESCRIPTION_TEXT ${SEC_gpgee} $(DESC_SEC_gpgee)
 !endif
-!ifdef HAVE_PKG_SYLPHEED_CLAWS
-  !insertmacro MUI_DESCRIPTION_TEXT ${SEC_sylpheed} $(DESC_SEC_sylpheed)
-!endif
 !ifdef HAVE_PKG_CLAWS_MAIL
   !insertmacro MUI_DESCRIPTION_TEXT ${SEC_claws_mail} $(DESC_SEC_claws_mail)
 !endif
@@ -940,22 +916,6 @@ Section "-startmenu"
 	"$INSTDIR\kleopatra.exe" \
         "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_kleopatra)
   no_kleopatra_menu:
-!endif
-
-!ifdef HAVE_PKG_SYLPHEED_CLAWS
-    SectionGetFlags ${SEC_sylpheed} $R0 
-    IntOp $R0 $R0 & ${SF_SELECTED} 
-    IntCmp $R0 ${SF_SELECTED} 0 no_sylpheed_menu 
-    CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\Sylpheed-Claws.lnk" \
-	"$INSTDIR\sylpheed-claws.exe" \
-        "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_sylpheed)
-!ifndef GPG4WIN_LIGHT
-    CreateShortCut \
-        "$SMPROGRAMS\$STARTMENU_FOLDER\$(DESC_Menu_manuals)\Sylpheed-Claws Manual.lnk" \
-	"$INSTDIR\sylpheed-claws-manual.pdf" \
-	"" "" "" SW_SHOWNORMAL "" $(DESC_Menu_sylpheed_pdf)
-!endif
-  no_sylpheed_menu:
 !endif
 
 !ifdef HAVE_PKG_CLAWS_MAIL
@@ -1120,21 +1080,6 @@ Section "-startmenu"
   no_kleopatra_desktop:
 !endif
 
-!ifdef HAVE_PKG_SYLPHEED_CLAWS
-    SectionGetFlags ${SEC_sylpheed} $R0 
-    IntOp $R0 $R0 & ${SF_SELECTED} 
-    IntCmp $R0 ${SF_SELECTED} 0 no_sylpheed_desktop
-    CreateShortCut "$DESKTOP\Sylpheed-Claws.lnk" \
-	"$INSTDIR\sylpheed-claws.exe" \
-        "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_sylpheed)
-!ifndef GPG4WIN_LIGHT
-    CreateShortCut "$DESKTOP\Sylpheed-Claws Manual.lnk" \
-	"$INSTDIR\sylpheed-claws-manual.pdf" \
-	"" "" "" SW_SHOWNORMAL "" $(DESC_Menu_sylpheed_pdf)
-!endif
-  no_sylpheed_desktop:
-!endif
-
 !ifdef HAVE_PKG_CLAWS_MAIL
     SectionGetFlags ${SEC_claws_mail} $R0 
     IntOp $R0 $R0 & ${SF_SELECTED} 
@@ -1259,16 +1204,6 @@ no_desktop:
 	"$INSTDIR\kleopatra.exe" \
         "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_kleopatra)
   no_kleopatra_quicklaunch:
-!endif
-
-!ifdef HAVE_PKG_SYLPHEED_CLAWS
-    SectionGetFlags ${SEC_sylpheed} $R0 
-    IntOp $R0 $R0 & ${SF_SELECTED} 
-    IntCmp $R0 ${SF_SELECTED} 0 no_sylpheed_quicklaunch
-    CreateShortCut "$QUICKLAUNCH\Sylpheed-Claws.lnk" \
-	"$INSTDIR\sylpheed-claws.exe" \
-        "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_sylpheed)
-  no_sylpheed_quicklaunch:
 !endif
 
 !ifdef HAVE_PKG_CLAWS_MAIL

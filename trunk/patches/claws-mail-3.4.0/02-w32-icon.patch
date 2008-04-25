@@ -13,10 +13,9 @@ For the logo, see actually 01-w32-logo.patch.
 	(claws_mail_DEPENDENCIES): Add $(claws_mail_deps).
 	(EXTRA_DIST): Add w32-logo.ico and w32-resource.rc.
 
-
-diff -rupN claws-mail-2.10.0-orig/src/Makefile.am claws-mail-2.10.0/src/Makefile.am
---- claws-mail-2.10.0-orig/src/Makefile.am	2007-07-02 10:32:18.000000000 +0200
-+++ claws-mail-2.10.0/src/Makefile.am	2007-07-03 18:28:46.000000000 +0200
+diff -rupN claws-mail-3.4.0-orig/src/Makefile.am claws-mail-3.4.0/src/Makefile.am
+--- claws-mail-3.4.0-orig/src/Makefile.am	2008-04-18 12:47:08.000000000 +0200
++++ claws-mail-3.4.0/src/Makefile.am	2008-04-25 15:29:00.000000000 +0200
 @@ -14,6 +14,21 @@ install-exec-hook:
  	@rm -f $(DESTDIR)$(bindir)/sylpheed-claws
  	@ln -s claws-mail $(DESTDIR)$(bindir)/sylpheed-claws
@@ -39,7 +38,7 @@ diff -rupN claws-mail-2.10.0-orig/src/Makefile.am claws-mail-2.10.0/src/Makefile
  claws_mail_SOURCES = \
  	account.c \
  	action.c \
-@@ -301,6 +316,7 @@ BUILT_SOURCES = \
+@@ -311,6 +326,7 @@ BUILT_SOURCES = \
  	quote_fmt_parse.h
  
  EXTRA_DIST = \
@@ -47,7 +46,7 @@ diff -rupN claws-mail-2.10.0-orig/src/Makefile.am claws-mail-2.10.0/src/Makefile
  	pixmaps/addr_one.xpm \
  	pixmaps/addr_two.xpm \
  	pixmaps/address_book.xpm \
-@@ -456,7 +472,11 @@ arch_ldflags :=
+@@ -483,7 +499,11 @@ arch_ldflags :=
  endif
  
  claws_mail_LDFLAGS = \
@@ -60,8 +59,8 @@ diff -rupN claws-mail-2.10.0-orig/src/Makefile.am claws-mail-2.10.0/src/Makefile
  
  claws_mail_LDADD = \
  	$(etpan_library) \
-diff -rupN claws-mail-2.10.0-orig/src/w32-resource.rc claws-mail-2.10.0/src/w32-resource.rc
---- claws-mail-2.10.0-orig/src/w32-resource.rc	1970-01-01 01:00:00.000000000 +0100
-+++ claws-mail-2.10.0/src/w32-resource.rc	2007-07-03 18:28:46.000000000 +0200
+diff -rupN claws-mail-3.4.0-orig/src/w32-resource.rc claws-mail-3.4.0/src/w32-resource.rc
+--- claws-mail-3.4.0-orig/src/w32-resource.rc	1970-01-01 01:00:00.000000000 +0100
++++ claws-mail-3.4.0/src/w32-resource.rc	2008-04-25 15:29:00.000000000 +0200
 @@ -0,0 +1 @@
 +1 ICON "w32-logo.ico"

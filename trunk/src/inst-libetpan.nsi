@@ -31,6 +31,6 @@ Section "-libetpan" SEC_libetpan
 !ifdef SOURCES
   File ${gpg4win_pkg_libetpan}
 !else
-  File ${prefix}/bin/libetpan-11.dll
+  File ${prefix}/bin/libetpan-13.dll
 !endif
 SectionEnd
