@@ -1,5 +1,10 @@
 2008-04-25  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
 
+	* website/download.htm4, website/download-de.htm4: Added
+	download option for 1.9.0 BETA release.
+
+2008-04-25  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
+
 	* README-BETA-de.txt: Final update for 1.9.0 release.
 
 	* README-BETA-en.txt: New. English translation of the german file.
