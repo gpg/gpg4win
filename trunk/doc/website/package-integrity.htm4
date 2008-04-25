@@ -10,7 +10,7 @@ PAGE_START
 
 How to actually perform the checks can be found e.g.
 on the
-<a href="http://www.gnupg.org/(en)/download/integrity_check.html">
+<a href="http://www.gnupg.org/download/integrity_check.html">
 GnuPG web page on integrity checks</a>.
 
 <h2>SHA1 checksums</h2>
