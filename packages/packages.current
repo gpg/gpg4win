@@ -69,10 +69,11 @@ chk  b9faae10efae552f23c213891a3ed8187cb7d017
 # libetpan for claws
 #
 
-server ftp://ftp.g10code.com/g10code/scratch
+# (Kept on our own mirror due to Sourceforge peculiarities.)
+server ftp://ftp.g10code.com/mirrors/claws
 
-file libetpan-0.52-dev-20071209.tar.gz
-chk  f4731684a1ae28e219f7a6eae01f0a5e7bd9306f
+file libetpan-0.54.tar.gz
+chk  15c42e2b6593fc6583782f7475f7267c9ed32f47
 
 #
 # Claws
@@ -80,17 +81,8 @@ chk  f4731684a1ae28e219f7a6eae01f0a5e7bd9306f
 # (Kept on our own mirror due to Sourceforge peculiarities.)
 server ftp://ftp.g10code.com/mirrors/claws
 
-#file  sylpheed-claws-2.4.0.tar.bz2
-#chk   f61acdf3e9851da3d1e2591321bf43426465955f
-#file  claws-mail-2.9.2.tar.bz2
-#chk   3b15730065ca1e0c318592b39b02c2d0497e6ebc
-#file  claws-mail-2.10.0.tar.bz2
-#chk   0ee38ec2dd0c37941b0bcc4af7ab441ec432c63c
-#file  claws-mail-3.0.2.tar.bz2
-#chk   a607aca53a349f3a0a8d8f7a51f4754705e12350
-
-file  claws-mail-3.1.0cvs70.tar.bz2
-chk   94abcee174c8405fa4cbfe67294377928b55c6f6
+file  claws-mail-3.4.0.tar.bz2
+chk   67cf9bc9b9fe917fb4c2b895e6bc9291e5e6497c
 
 #
 # Pthreads for Windows.

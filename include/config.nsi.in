@@ -113,10 +113,6 @@
 !define gpg4win_pkg_gpgee_version @gpg4win_pkg_gpgee_version@
 !define gpg4win_pkg_gpgee_src @gpg4win_pkg_gpgee_src@
 
-@HAVE_PKG_SYLPHEED_CLAWS@
-!define gpg4win_pkg_sylpheed_claws @gpg4win_pkg_sylpheed_claws@
-!define gpg4win_pkg_sylpheed_claws_version @gpg4win_pkg_sylpheed_claws_version@
-
 @HAVE_PKG_LIBETPAN@
 !define gpg4win_pkg_libetpan @gpg4win_pkg_libetpan@
 !define gpg4win_pkg_libetpan_version @gpg4win_pkg_libetpan_version@

@@ -201,8 +201,6 @@ GPG4WIN_SPKG([gpgol], [gpgme libassuan])
 GPG4WIN_SPKG([gpgex], [libassuan])
 GPG4WIN_SPKG([gpa], [libiconv gettext zlib gtk+ libpng glib gpgme])
 GPG4WIN_SPKG([winpt], [gpgme gnupg])
-GPG4WIN_SPKG([sylpheed-claws], [libiconv gettext zlib gtk+ libpng jpeg glib dnl
-                                gpgme pthreads-w32 crypt regex])
 GPG4WIN_SPKG([libetpan], [pthreads-w32])
 GPG4WIN_SPKG([claws-mail], [libiconv gettext zlib gtk+ libpng jpeg glib dnl
                             gpgme pthreads-w32 crypt regex libetpan])

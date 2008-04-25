@@ -56,7 +56,6 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi config.site \
         inst-pkgconfig.nsi	   uninst-pkgconfig.nsi	      \
         inst-pthreads-w32.nsi	   uninst-pthreads-w32.nsi    \
         inst-regex.nsi		   uninst-regex.nsi	      \
-        inst-sylpheed-claws.nsi	   uninst-sylpheed-claws.nsi  \
         inst-w32pth.nsi		   uninst-w32pth.nsi	      \
         inst-winpt.nsi		   uninst-winpt.nsi	      \
         inst-zlib.nsi        	   uninst-zlib.nsi            \
@@ -74,9 +73,8 @@ CLEANFILES = g4wihelp.dll versioninfo.txt README.en.txt README.de.txt \
 
 # Supported source packages.
 gpg4win_spkgs = glib gnupg libgpg-error gpgme gpgol gpgex \
-		gpa winpt sylpheed-claws libetpan \
-	        claws-mail gnupg2 pinentry libassuan libksba \
-		libgcrypt dirmngr w32pth
+		gpa winpt libetpan claws-mail gnupg2 pinentry \
+		libassuan libksba libgcrypt dirmngr w32pth
 
 # Extra options to configure for individual packages.
 # We can use $(idir) here for the installation prefix.
@@ -194,16 +192,6 @@ gpg4win_pkg_gpgex_configure = --silent \
 gpg4win_pkg_winpt_configure = --silent \
   --with-gpgme-prefix=$(idir) --with-gpg-error-prefix=$(idir)
 
-gpg4win_pkg_sylpheed_claws_configure = --silent \
-  --with-lib-prefix=$(idir) --with-libiconv-prefix=$(idir) \
-  --with-gpg-error-prefix=$(idir) --with-gpgme-prefix=$(idir) \
-  --with-config-dir="Sylpheed-claws" --disable-pthread \
-  --disable-libetpan --disable-aspell --disable-trayicon-plugin \
-  --disable-openssl --disable-dillo-viewer-plugin --disable-gnomeprint \
-  --disable-jpilot --disable-startup-notification --disable-ipv6 \
-  --disable-mathml-viewer-plugin --disable-clamav-plugin \
-  --disable-spamassassin-plugin
-
 # The CFLAGS are needed to find pthread-w32.
 gpg4win_pkg_libetpan_configure = \
   CPPFLAGS=\"-I$(idir)/include\" LIBS=\"-L$(idir)/lib\"
@@ -217,7 +205,7 @@ gpg4win_pkg_claws_mail_configure = \
   --disable-jpilot --disable-startup-notification --disable-ipv6 \
   --disable-mathml-viewer-plugin --disable-clamav-plugin \
   --disable-spamassassin-plugin --disable-bogofilter-plugin \
-  --disable-valgrind
+  --disable-valgrind --disable-networkmanager-support
 
 # Supported make-only source packages.
 gpg4win_mpkgs = pthreads-w32 bzip2
