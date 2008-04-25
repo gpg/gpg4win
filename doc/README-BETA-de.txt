@@ -1,7 +1,7 @@
 Wichtige Informationen zum Einsatz von Gpg4win 1.9-BETA
 #######################################################
 
-Stand: Gpg4win-1.9.0 (200804XX)
+Stand: Gpg4win-1.9.0 (20080423)
 
 Hier finden sich wichtige Informationen die bei der
 Entscheidung helfen sollen, ob Gpg4win 1.9 schon für
@@ -13,6 +13,16 @@ Ausserdem wird ein Ausblick gegeben, was mit
 Gpg4win 2.0 an neuer Funktionalität zu erwarten ist.
 Die 1.9er Versionen sind der Beta-Test-Zyklus. Ist er
 abgeschlossen wird Version 2.0 freigegeben.
+
+Rückmeldung erwünscht!
+  Bitte lassen Sie uns wissen ob sie Gpg4win 1.9
+  erfolgreich getestet haben oder auch ob Sie auch
+  Probleme (und welcher Gestalt) Sie getroffen sind.
+  Am besten auf der deutschen Anwender Mailing Liste
+  einschreiben und Berichte dorthin senden bzw. die
+  Berichte der anderen lesen:
+
+  http://lists.wald.intevation.org/mailman/listinfo/gpg4win-users-de
 
 
 Wichtige Hinweise zur vorliegenden Version
@@ -26,7 +36,7 @@ Wichtige Hinweise zur vorliegenden Version
 
 - Installationpaket knapp 40 MByte:
   Derzeit sind die Programme mit umfangreichen
-  Debug-Informatioen ausgestattet, so dass bei auftauchen
+  Debug-Informationen ausgestattet, so dass bei auftauchen
   eines Fehlers unmittelbar eine Fehleranalyse
   durchgeführt werden kann. Für Version 2.0
   werden diese Debug-Informationen wieder entfernt
@@ -60,9 +70,17 @@ Wichtige Hinweise zur vorliegenden Version
     Es kann vorkommen, dass verschlüsselte E-Mails
     in entschlüsselter Form auf dem E-Mail-Server
     zu liegen kommen.
+    Betroffen sind nur eigentlichen "E-Mail-Bodies",
+    für Anhänge passiert das nicht.
+    Schaltet man die Voransicht von Outlook ab, so
+    verringert sich die Wahrscheinlichkeit dafür deutlich.
+
+  * E-Mails werden auf dem Server in Microsoft-spezifischen
+    Formaten gespeichert und können von anderen E-Mail-Programmen
+    dann nicht mehr interpretiert und die Inhalte angezeigt werden.
 
 
-Wichtige Hinweise zur verwendung von S/MIME
+Wichtige Hinweise zur Verwendung von S/MIME
 ===========================================
 
 S/MIME ist ein für Gpg4win 2.0 neu hinzukommendes
@@ -90,7 +108,7 @@ durchzuführen.
   über Kleopatra importieren (Menü Datei->Zertifikate
   importieren)
 
-- S/MIME-Zertifkatskette für persönlichen Schlüssel importieren:
+- S/MIME-Zertifikatskette für persönlichen Schlüssel importieren:
   Die zum geheimen Schlüssel zugehörige Zertifikatskette
   als P7C-Datei importieren. Es werden auch andere
   Suffixes für solche Dateien verwendet. Einfach über
@@ -112,8 +130,8 @@ durchzuführen.
   nun als Vertrauenswürdig einstufen wollen.
   Beachten Sie, dass der gpg-agent neu gestartet
   werden muss, z.B: durch ausloggen und wieder einloggen.
-  Zusätzlich wird das Vetrauen in Wurzel-Zertifkate für den
-  DirMngr wie folgt ausgesprochen:
+
+- Vetrauen für Wurzel-Zertifkate für DirMngr aussprechen:
   Die entsprechenden Wurzel-Zertifikate müssen als DER-Dateien
   mit Dateinamen-Endung ".crt" im Verzeichnis
   %INSTALL_DIR%\etc\dirmngr\trusted-certs\
@@ -208,7 +226,7 @@ Neu:
 - Kleopatra: Der neue Zertifikatsmanager
 
   * Kleoaptra ist der bisherige S/MIME Zertifikatsmanager von KDE.
-    Es ist zum einen um parallele Unterstützung von OpenPGP erweitert
+    Er ist zum einen um parallele Unterstützung von OpenPGP erweitert
     worden. Zum anderen fungiert Kleopatra als Grafische Oberfläche
     für sämtliche Kryptografischen Operationen und vereinheitlich
     damit die grafische Benutzerführung.
