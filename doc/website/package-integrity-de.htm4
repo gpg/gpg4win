@@ -9,7 +9,7 @@ PAGE_START
 <h1>Integrität der Gpg4win-Pakete prüfen</h1>
 
 Wie man die Integrität prüft, kann man z.B.
-auf der <a href="http://www.gnupg.org/(de)/download/integrity_check.html">
+auf der <a href="http://www.gnupg.org/download/integrity_check.de.html">
 GnuPG Seite zur Integritätsprüfung</a> nachlesen.
 
 <h2>SHA1 Prüfsummen</h2>
