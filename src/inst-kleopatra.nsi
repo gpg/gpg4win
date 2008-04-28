@@ -45,7 +45,7 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
 
   SetOutPath "$INSTDIR\share\apps\kleopatra"
 
-  File ${prefix}/share/apps/kleopatra/kleopatra_newui.rc
+  File ${prefix}/share/apps/kleopatra/kleopatra.rc
   File ${prefix}/share/apps/kleopatra/kleopatraui.rc
 
   SetOutPath "$INSTDIR\share\apps\kleopatra\pics"

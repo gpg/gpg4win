@@ -134,7 +134,7 @@ Section "-un.kleopatra"
   Delete "$INSTDIR\share\apps\kleopatra\pics\kleopatra_splashscreen.svgz"
   Delete "$INSTDIR\share\apps\kleopatra\pics\kleopatra_splashscreen.png"
   Delete "$INSTDIR\share\apps\kleopatra\kleopatraui.rc"
-  Delete "$INSTDIR\share\apps\kleopatra\kleopatra_newui.rc"
+  Delete "$INSTDIR\share\apps\kleopatra\kleopatra.rc"
   Delete "$INSTDIR\share\applications\kde4\kleopatra_import.desktop"
 
   RMDir "$INSTDIR\share\locale\de\LC_MESSAGES"
