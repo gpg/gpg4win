@@ -1,3 +1,8 @@
+2008-04-28  Marcus Brinkmann  <marcus@ulysses.g10code.com>
+
+	* packages/packages.current: Update kdelibs and kleopatra.
+	* src/inst-kleopatra.nsi, src/uninst-kleopatra.nsi: Update.
+
 2008-04-25  Marcus Brinkmann  <marcus@ulysses.g10code.com>
 
 	* packages/packages.current: Add libgsasl, libtasn1, opencdk,
