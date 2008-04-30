@@ -79,7 +79,8 @@ m4_dnl DONT USE THIS FILE DIRECTLY
 </div>
 <div class="box">
   <h1>Miscellaneous</h1>
-  <a href="Kurzstudie-Nachhaltige-FS-Beispiel-Gpg4win.html">Kurzstudie: Nachhaltige Freie Software: Vom Projekt zur Dauertätigkeit am Beispiel Gpg4win</a>
+  <a href="ShortStudy-Enduring-FS-example-Gpg4win.html">Short Story: Enduring Free Software: 
+    From project to permanent activity, using the example Gpg4win</a>
 </div>
 <div class="box">
   <h1>Sitemap</h1>
