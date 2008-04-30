@@ -22,7 +22,8 @@ H2 {
     background-color: #ffff98;
     border-top: 2px solid #fdba19;
     border-bottom: 2px solid #fdba19;
-    margin-top: 0px;
+    margin-top: 15px;
+    margin-bottom: 3px;
     font-size: 125%;
     font-weight: bold;
 }
