@@ -3,11 +3,11 @@ m4_include(`template.m4')
 m4_dnl $Id$
 
 m4_define(`DE')
-m4_dnl m4_define(`EN_FILE', `support.html')
+m4_define(`EN_FILE', `ShortStudy-Enduring-FS-example-Gpg4win.html')
 PAGE_START
 
 <p>
-Zum Download verfügbar: <a href="http://wald.intevation.org/frs/download.php/386/Kurzstudie-Nachhaltige-FS-Beispiel-Gpg4win-20070920.pdf">Dieser Text als PDF-Dokument</a>
+Zum Download verfügbar: <a href="http://wald.intevation.org/frs/download.php/456/Kurzstudie-Nachhaltige-FS-Beispiel-Gpg4win-20071005.pdf">Dieser Text als PDF-Dokument</a>
 (ca. 740 KByte)
 </p>
 
@@ -31,7 +31,7 @@ Reiter		&lt;bernhard.reiter@intevation.de&gt;</FONT><BR>
 
 <P ALIGN=RIGHT STYLE="margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
 <FONT FACE="Nimbus Roman No9 L, serif"><B>Stand Juni 2006</B>, 
-Fassung vom 20. September 2007 (Webfassung 21.12.2007)</FONT>
+Fassung vom 20. September 2007 (Webfassung 30.04.2008)</FONT>
 </P>
 <DIV ID="Inhaltsverzeichnis1" DIR="LTR">
 	<DIV ID="Inhaltsverzeichnis1_Head" DIR="LTR">
@@ -267,42 +267,23 @@ ist frei w&auml;hlbar. Die T&auml;tigkeiten k&ouml;nnen jedoch nur
 mit Arbeitskraft umgesetzt werden; beigetragenes Geld muss darin
 umgewandelt werden. Hier schlie&szlig;t sich sich die Frage der
 Qualifizierung und des &ouml;konomischen Modells an.</P>
+
 <H2 CLASS="western">4.1  Beteiligten-Struktur</H2>
-<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
-Ein erfolgreiches Freie Software Projekt zeichnet sich durch eine
+<P>Ein erfolgreiches Freie Software Projekt zeichnet sich durch eine
 eine ausgeglichene Zusammensetzung aus Beteiligten aus wie in Abbildung 1
-dargestellt. Besonders die jeweils 
-</P>
+dargestellt. Besonders die jeweils aneinander grenzenden Schichten kommunizieren in der Regel viel
+miteinander, also beispielsweise Beitragende mit den engagierten Anwendern und mit den Entwicklern.</P>
 
 <P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
-
 	<P STYLE="margin-top: 0.21cm">
 	<IMG SRC="pix/Kurzstudie-Nachhaltige-FS-Beispiel-Gpg4win_html_7e8e3982.png" NAME="Grafik3"><BR CLEAR=LEFT><FONT SIZE=2><I>Abbildung
 	1: Zusammensetzung der Beteiligten bei einem erfolgreichen Freie
 	Software Projekt: Aus einer breiten Basis von Anwendern l&auml;uft
 	sie konisch &uuml;ber engagierte Anwender, Beitragender, Entwickler
 	und Kern-Entwickler auf den Entwicklungs-Koordinator zu.</I></FONT></P>
+</P>
+<BR>
 
-</P>
-
-<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
-<BR>
-</P>
-<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
-<BR>
-</P>
-<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
-aneinander grenzenden Schichten kommunizieren in der Regel viel
-miteinander, also beispielsweise 
-</P>
-<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
-Beitragende mit den engagierten Anwendern und mit den Entwicklern.</P>
-<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
-<BR>
-</P>
-<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
-<BR>
-</P>
 <P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; font-style: normal; line-height: 100%">
 <B>Anwender:</B></P>
 <P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
@@ -821,12 +802,6 @@ Freie Software Projekt (vergl. Abbildung 1, Seite 6).</P>
 	Anwender, Beitragenden und Entwickler. Es gibt ein Team von
 	Kern-Enwticklern und es fehlt wiederum die Bestimmung eines
 	Entwicklungs-Koordindators.</I></FONT></P>
-</P>
-<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
-<BR>
-</P>
-<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
-<BR>
 </P>
 <P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
 <BR>
@@ -1392,21 +1367,20 @@ Gpg4win mit Tat zur Seite stehen:</P>
 	<P CLASS="sdfootnote"><A CLASS="sdfootnotesym" NAME="sdfootnote12sym" HREF="#sdfootnote12anc">12</A> <A HREF="http://people.freenet.de/rose-indorf/">http://people.freenet.de/rose-indorf/</A></P>
 </DIV>
 <DIV ID="sdfootnote13">
-	<P CLASS="sdfootnote"><A CLASS="sdfootnotesym" NAME="sdfootnote13sym" HREF="#sdfootnote13anc">13</A> <FONT SIZE=2>Dazu
+	<P CLASS="sdfootnote"><A CLASS="sdfootnotesym" NAME="sdfootnote13sym" HREF="#sdfootnote13anc">13</A> Dazu
 	auch Reiter 2002: Arbeitsteilung im Massenmarkt, Linux-Magazin
 	06/2002,
-	</FONT><A HREF="http://www.linux-magazin.de/Artikel/ausgabe/2002/06/geld/geld.html"><FONT SIZE=2>http://www.linux-magazin.de/Artikel/ausgabe/2002/06/geld/geld.html</FONT></A></P>
+	<A HREF="http://www.linux-magazin.de/Artikel/ausgabe/2002/06/geld/geld.html">http://www.linux-magazin.de/Artikel/ausgabe/2002/06/geld/geld.html</A></P>
 </DIV>
 <DIV ID="sdfootnote14">
-	<P CLASS="sdfootnote"><A CLASS="sdfootnotesym" NAME="sdfootnote14sym" HREF="#sdfootnote14anc">14</A> <FONT SIZE=2>siehe
-	</FONT><A HREF="http://lwn.net/Articles/185399/"><FONT SIZE=2>http://lwn.net/Articles/185399/</FONT></A></P>
+	<P CLASS="sdfootnote"><A CLASS="sdfootnotesym" NAME="sdfootnote14sym" HREF="#sdfootnote14anc">14</A> siehe
+	<A HREF="http://lwn.net/Articles/185399/">http://lwn.net/Articles/185399/</A></P>
 </DIV>
 <DIV ID="sdfootnote15">
-	<P CLASS="sdfootnote" STYLE="margin-left: 0cm; text-indent: 0cm"><A CLASS="sdfootnotesym" NAME="sdfootnote15sym" HREF="#sdfootnote15anc">15</A> <FONT FACE="Times, serif"><FONT SIZE=2>Allgemeine
+	<P CLASS="sdfootnote" STYLE="margin-left: 0cm; text-indent: 0cm"><A CLASS="sdfootnotesym" NAME="sdfootnote15sym" HREF="#sdfootnote15anc">15</A> Allgemeine
 	Hinweise finden sich oft im Wiki
-	</FONT></FONT><A HREF="http://www.deshalbfrei.org/moinmoin/freiheit_helfen"><FONT FACE="Times, serif"><FONT SIZE=2>http://www.deshalbfrei.org/moinmoin/freiheit_helfen</FONT></FONT></A><FONT FACE="Times, serif"><FONT SIZE=2>.</FONT></FONT><FONT FACE="Times, serif"><FONT SIZE=2>
-	</FONT></FONT>
-	</P>
+	<A
+HREF="http://www.deshalbfrei.org/moinmoin/freiheit_helfen">http://www.deshalbfrei.org/moinmoin/freiheit_helfen.</A></P>
 </DIV>
 <DIV TYPE=FOOTER>
 	<P ALIGN=CENTER STYLE="margin-top: 0.5cm; margin-bottom: 0cm">- <SDFIELD TYPE=PAGE SUBTYPE=RANDOM FORMAT=PAGE>23</SDFIELD>
