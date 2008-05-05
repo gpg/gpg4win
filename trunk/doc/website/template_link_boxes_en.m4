@@ -79,7 +79,7 @@ m4_dnl DONT USE THIS FILE DIRECTLY
 </div>
 <div class="box">
   <h1>Miscellaneous</h1>
-  <a href="ShortStudy-Enduring-FS-example-Gpg4win.html">Short Story: Enduring Free Software: 
+  <a href="ShortStudy-Enduring-FS-example-Gpg4win.html">Short Study: Enduring Free Software: 
     From project to permanent activity, using the example Gpg4win</a>
 </div>
 <div class="box">
