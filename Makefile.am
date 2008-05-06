@@ -44,7 +44,6 @@ EXTRA_DIST = autogen.sh README.SVN \
 	patches/libetpan-0.54/02-index.patch \
         patches/gnupg-1.4.8/01-gpgconf-list.patch \
 	patches/winpt/01-gpg-path.patch \
-	patches/gpgol/01-always-decrypt.patch \
 	patches/gnupg2/01-version.patch.in \
 	patches/gnupg2-2.0.9/01-close-all-handle.patch \
 	patches/gnupg2-2.0.9/02-de.po-fix.patch \

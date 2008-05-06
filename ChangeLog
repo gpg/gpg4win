@@ -1,6 +1,7 @@
 2008-05-06  Werner Koch  <wk@g10code.com>
 
-	* packages/packages.current: Update gpgme.
+	* patches/gpgol/01-always-decrypt.patch: Remove.
+	* packages/packages.current: Update gpgme and gpgol.
 
 2008-04-30  Werner Koch  <wk@g10code.com>
 
