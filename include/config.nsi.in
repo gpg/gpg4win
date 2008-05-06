@@ -80,6 +80,10 @@
 !define gpg4win_pkg_gpgme @gpg4win_pkg_gpgme@
 !define gpg4win_pkg_gpgme_version @gpg4win_pkg_gpgme_version@
 
+@HAVE_PKG_ADNS@
+!define gpg4win_pkg_adns @gpg4win_pkg_adns@
+!define gpg4win_pkg_adns_version @gpg4win_pkg_adns_version@
+
 @HAVE_PKG_GNUPG@
 !define gpg4win_pkg_gnupg @gpg4win_pkg_gnupg@
 !define gpg4win_pkg_gnupg_version @gpg4win_pkg_gnupg_version@

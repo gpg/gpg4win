@@ -1,3 +1,15 @@
+2008-05-06  Werner Koch  <wk@g10code.com>
+
+	* packages/packages.current: Update gpgme.
+
+2008-04-30  Werner Koch  <wk@g10code.com>
+
+	* packages/packages.current: Add adns.
+	* configure.ac: Add support for adns.
+	* src/uninst-libadns.nsi, src/inst-libadns.nsi: New.
+	* include/config.nsi.in, src/Makefile.am, src/inst-sections.nsi:
+	Add adns.
+
 2008-04-28  Marcus Brinkmann  <marcus@ulysses.g10code.com>
 
 	* packages/packages.current: Update kdelibs and kleopatra.
