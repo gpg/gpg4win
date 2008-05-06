@@ -47,6 +47,9 @@
 !ifdef HAVE_PKG_LIBGCRYPT
 !include "inst-libgcrypt.nsi"
 !endif
+!ifdef HAVE_PKG_ADNS
+!include "inst-adns.nsi"
+!endif
 !ifdef HAVE_PKG_LIBICONV
 !include "inst-libiconv.nsi"
 !endif
@@ -272,6 +275,9 @@
 !endif
 !ifdef HAVE_PKG_LIBICONV
 !include "uninst-libiconv.nsi"
+!endif
+!ifdef HAVE_PKG_ADNS
+!include "uninst-adns.nsi"
 !endif
 !ifdef HAVE_PKG_LIBGCRYPT
 !include "uninst-libgcrypt.nsi"
@@ -535,6 +541,9 @@ Function CalcDepends
 !ifdef HAVE_PKG_LIBGCRYPT
   !insertmacro UnselectSection ${SEC_libgcrypt}
 !endif
+!ifdef HAVE_PKG_ADNS
+  !insertmacro UnselectSection ${SEC_adns}
+!endif
 !ifdef HAVE_PKG_PINENTRY
   !insertmacro UnselectSection ${SEC_pinentry}
 !endif
@@ -596,6 +605,7 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_libgpg_error}
   !insertmacro SelectSection ${SEC_w32pth}
   !insertmacro SelectSection ${SEC_zlib}
+  !insertmacro SelectSection ${SEC_adns}
   !insertmacro SelectSection ${SEC_pinentry}
   !insertmacro SelectSection ${SEC_dirmngr}
   # Because we need pinnetry, we also need to install GTK+

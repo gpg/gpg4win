@@ -294,11 +294,19 @@ server ftp://ftp.g10code.com/g10code/scratch
 file dirmngr-1.0.2-svn297.tar.bz2
 chk  6140c65d71af3349bfaccdccdc4d89f25399f2f9
 
-file gpgme-1.1.7-svn1309.tar.bz2
-chk  13041f9aa9bcfe3ce293ea3d4b947f8e9cf5d115
+file gpgme-1.1.7-svn1311.tar.bz2
+chk  a32365721eddd4d9c854fd05aac25efafbab5847
 
 file libassuan-1.0.5-svn284.tar.bz2
 chk  be26eeb3f73c2eafb0e65e94b341092cf90267e1
+
+#
+# adns
+#
+server ftp://ftp.g10code.com/g10code/adns
+
+file adns-1.4-g10-1.tar.bz2
+chk 631ee88b7665b958f5734d736f327fadeb059ee0  
 
 
 #
