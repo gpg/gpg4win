@@ -36,6 +36,7 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
   File /oname=kleopatra.exe "${BUILD_DIR}/kleowrap.exe"
 
   File ${prefix}/bin/kgpgconf.exe
+  File ${prefix}/bin/kwatchgnupg.exe
   File ${prefix}/bin/libkleo.dll
   File ${prefix}/lib/kde4/kcm_kleopatra.dll
 
@@ -46,7 +47,6 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
   SetOutPath "$INSTDIR\share\apps\kleopatra"
 
   File ${prefix}/share/apps/kleopatra/kleopatra.rc
-  File ${prefix}/share/apps/kleopatra/kleopatraui.rc
 
   SetOutPath "$INSTDIR\share\apps\kleopatra\pics"
 
@@ -54,6 +54,15 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
   File ${prefix}/share/apps/kleopatra/pics/kleopatra_splashscreen.svgz
   File ${prefix}/share/apps/kleopatra/pics/kleopatra_wizard.png
   File ${prefix}/share/apps/kleopatra/pics/kleopatra_wizard.svgz
+
+  SetOutPath "$INSTDIR\share\apps\kwatchgnupg"
+
+  File ${prefix}/share/apps/kwatchgnupg/kwatchgnupgui.rc
+
+  SetOutPath "$INSTDIR\share\apps\kwatchgnupg\pics"
+
+  File ${prefix}/share/apps/kwatchgnupg/pics/kwatchgnupg.png
+  File ${prefix}/share/apps/kwatchgnupg/pics/kwatchgnupg2.png
 
   SetOutPath "$INSTDIR\share\apps\libkleopatra\pics"
 
