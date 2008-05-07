@@ -1,3 +1,7 @@
+2008-05-07  Werner Koch  <wk@g10code.com>
+
+	* patches/gpgol/01-last-minute.patch: New.
+
 2008-05-06  Werner Koch  <wk@g10code.com>
 
 	* patches/gpgol/01-always-decrypt.patch: Remove.
