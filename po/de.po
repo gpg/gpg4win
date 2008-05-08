@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gpg4win 1.1.1-svn417\n"
 "Report-Msgid-Bugs-To: gpg4win-devel@wald.intevation.org\n"
-"POT-Creation-Date: 2008-04-22 15:44+0200\n"
+"POT-Creation-Date: 2008-05-08 13:37+0200\n"
 "PO-Revision-Date: 2008-04-22 15:44+0200\n"
 "Last-Translator: Marcus Brinkmann <mb@g10code.com>\n"
 "Language-Team: German <translation-team-de@lists.sourceforge.net>\n"
@@ -463,12 +463,12 @@ msgstr ""
 "GnuPG für Outlook (GpgOL) is eine Erweiterung für Outlook 2003, die "
 "verwendet wird um Nachrichten mit OpenPGP oder S/MIME zu verschlüsseln."
 
-#: src/inst-kleopatra.nsi:186
+#: src/inst-kleopatra.nsi:195
 msgctxt "DESC_SEC_kleopatra"
 msgid "Kleopatra"
 msgstr "Kleopatra"
 
-#: src/inst-kleopatra.nsi:189
+#: src/inst-kleopatra.nsi:198
 msgctxt "DESC_Menu_kleopatra"
 msgid "Run the Kleopatra key management tool."
 msgstr "Das Schlüsselverwaltungsprogramm Kleopatra aufrufen."
@@ -534,23 +534,6 @@ msgctxt "DESC_Menu_man_novice_en"
 msgid "Show the online manual of Gpg4Win for novice users"
 msgstr "Das englische Online-Handbuch von Gpg4Win für den Einsteiger anzeigen"
 
-#: src/inst-sylpheed-claws.nsi:51
-msgctxt "DESC_SEC_sylpheed"
-msgid "Sylpheed-Claws Mail-User-Agent"
-msgstr ""
-"Sylpheed-Claws ist ein vollständiges Mail- und News-Programm mit sehr guter "
-"Unterstützung für GnuPG."
-
-#: src/inst-sylpheed-claws.nsi:54
-msgctxt "DESC_Menu_sylpheed"
-msgid "Run the Sylpheed-Claws mailprogram."
-msgstr "Das Mailprogramm Sylpheed-Claws aufrufen."
-
-#: src/inst-sylpheed-claws.nsi:57
-msgctxt "DESC_Menu_sylpheed_pdf"
-msgid "Show the online manual of Sylpheed Claws"
-msgstr "Das englische Handbuch zu Sylpheed Claws anzeigen"
-
 #: src/inst-winpt.nsi:46
 msgctxt "DESC_SEC_winpt"
 msgid "Windows Privacy Tray"
@@ -568,3 +551,17 @@ msgstr ""
 "Das Schlüsselverwaltungsprogramm Windows Privacy Tray aufrufen.  Dies ist "
 "ein vielseitiges Programm zur Schlüsselverwaltung und Verschlüsselung.  Es "
 "installiert sich in die Startleiste."
+
+#~ msgctxt "DESC_SEC_sylpheed"
+#~ msgid "Sylpheed-Claws Mail-User-Agent"
+#~ msgstr ""
+#~ "Sylpheed-Claws ist ein vollständiges Mail- und News-Programm mit sehr "
+#~ "guter Unterstützung für GnuPG."
+
+#~ msgctxt "DESC_Menu_sylpheed"
+#~ msgid "Run the Sylpheed-Claws mailprogram."
+#~ msgstr "Das Mailprogramm Sylpheed-Claws aufrufen."
+
+#~ msgctxt "DESC_Menu_sylpheed_pdf"
+#~ msgid "Show the online manual of Sylpheed Claws"
+#~ msgstr "Das englische Handbuch zu Sylpheed Claws anzeigen"

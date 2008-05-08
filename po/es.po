@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gpg4win 1.1.1-svn417\n"
 "Report-Msgid-Bugs-To: gpg4win-devel@wald.intevation.org\n"
-"POT-Creation-Date: 2008-04-22 15:44+0200\n"
+"POT-Creation-Date: 2008-05-08 13:37+0200\n"
 "PO-Revision-Date: 2008-01-30 17:07+0100\n"
 "Last-Translator: Diego Escalante Urrelo <diegoe@gnome.org>\n"
 "Language-Team: Spanish <diegoe@gnome.org>\n"
@@ -401,12 +401,12 @@ msgctxt "DESC_SEC_gpgol"
 msgid "GnuPG for Outlook"
 msgstr "GnuPG para Outlook (GpgOL)"
 
-#: src/inst-kleopatra.nsi:186
+#: src/inst-kleopatra.nsi:195
 msgctxt "DESC_SEC_kleopatra"
 msgid "Kleopatra"
 msgstr "Kleopatra"
 
-#: src/inst-kleopatra.nsi:189
+#: src/inst-kleopatra.nsi:198
 msgctxt "DESC_Menu_kleopatra"
 msgid "Run the Kleopatra key management tool."
 msgstr "Ejecutar la herramienta de gestión de llaves Kleopatra."
@@ -472,21 +472,6 @@ msgctxt "DESC_Menu_man_novice_en"
 msgid "Show the online manual of Gpg4Win for novice users"
 msgstr "Mostrar el manual en línea de Gpg4Win para principiantes"
 
-#: src/inst-sylpheed-claws.nsi:51
-msgctxt "DESC_SEC_sylpheed"
-msgid "Sylpheed-Claws Mail-User-Agent"
-msgstr "Cliente de correo Sylpheed-Claws"
-
-#: src/inst-sylpheed-claws.nsi:54
-msgctxt "DESC_Menu_sylpheed"
-msgid "Run the Sylpheed-Claws mailprogram."
-msgstr "Ejecutar el cliente de correo Sylpheed-Claws."
-
-#: src/inst-sylpheed-claws.nsi:57
-msgctxt "DESC_Menu_sylpheed_pdf"
-msgid "Show the online manual of Sylpheed Claws"
-msgstr "Mostrar el manual en línea de Sylpheed Claws"
-
 #: src/inst-winpt.nsi:46
 msgctxt "DESC_SEC_winpt"
 msgid "Windows Privacy Tray"
@@ -500,3 +485,15 @@ msgid ""
 msgstr ""
 "Ejecutar la herramienta de gestión de llaves Windows Privacy Tray. Ésta es "
 "una herramienta  versátil para la gestión de llaves y cifrado."
+
+#~ msgctxt "DESC_SEC_sylpheed"
+#~ msgid "Sylpheed-Claws Mail-User-Agent"
+#~ msgstr "Cliente de correo Sylpheed-Claws"
+
+#~ msgctxt "DESC_Menu_sylpheed"
+#~ msgid "Run the Sylpheed-Claws mailprogram."
+#~ msgstr "Ejecutar el cliente de correo Sylpheed-Claws."
+
+#~ msgctxt "DESC_Menu_sylpheed_pdf"
+#~ msgid "Show the online manual of Sylpheed Claws"
+#~ msgstr "Mostrar el manual en línea de Sylpheed Claws"
