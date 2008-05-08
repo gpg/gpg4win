@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Gpg4Win Installer\n"
 "Report-Msgid-Bugs-To: gpg4win-devel@wald.intevation.org\n"
-"POT-Creation-Date: 2008-04-22 15:44+0200\n"
+"POT-Creation-Date: 2008-05-08 13:37+0200\n"
 "PO-Revision-Date: 2008-04-22 11:57+0200\n"
 "Last-Translator: Sergei Smirnov <moscow@hro.org>\n"
 "Language-Team: Human Rights Network <moscow@hro.org>\n"
@@ -395,12 +395,12 @@ msgctxt "DESC_SEC_gpgol"
 msgid "GnuPG for Outlook"
 msgstr "GnuPG для MS Outlook"
 
-#: src/inst-kleopatra.nsi:186
+#: src/inst-kleopatra.nsi:195
 msgctxt "DESC_SEC_kleopatra"
 msgid "Kleopatra"
 msgstr "Kleopatra"
 
-#: src/inst-kleopatra.nsi:189
+#: src/inst-kleopatra.nsi:198
 msgctxt "DESC_Menu_kleopatra"
 msgid "Run the Kleopatra key management tool."
 msgstr "Запуск менеджера ключей Kleopatra."
@@ -467,21 +467,6 @@ msgctxt "DESC_Menu_man_novice_en"
 msgid "Show the online manual of Gpg4Win for novice users"
 msgstr "Показать онлайновые инструкции Gpg4Win для пользователей-новичков"
 
-#: src/inst-sylpheed-claws.nsi:51
-msgctxt "DESC_SEC_sylpheed"
-msgid "Sylpheed-Claws Mail-User-Agent"
-msgstr "Почтовый клиент Sylpheed-Claws"
-
-#: src/inst-sylpheed-claws.nsi:54
-msgctxt "DESC_Menu_sylpheed"
-msgid "Run the Sylpheed-Claws mailprogram."
-msgstr "Запуск почтовой программы Sylpheed-Claws."
-
-#: src/inst-sylpheed-claws.nsi:57
-msgctxt "DESC_Menu_sylpheed_pdf"
-msgid "Show the online manual of Sylpheed Claws"
-msgstr "Показать онлайновое руководство Sylpheed Claws"
-
 #: src/inst-winpt.nsi:46
 msgctxt "DESC_SEC_winpt"
 msgid "Windows Privacy Tray"
@@ -495,3 +480,15 @@ msgid ""
 msgstr ""
 "Запуск Windows Privacy Tray. Это универсальный инструмент управления ключами "
 "и шифрования данных."
+
+#~ msgctxt "DESC_SEC_sylpheed"
+#~ msgid "Sylpheed-Claws Mail-User-Agent"
+#~ msgstr "Почтовый клиент Sylpheed-Claws"
+
+#~ msgctxt "DESC_Menu_sylpheed"
+#~ msgid "Run the Sylpheed-Claws mailprogram."
+#~ msgstr "Запуск почтовой программы Sylpheed-Claws."
+
+#~ msgctxt "DESC_Menu_sylpheed_pdf"
+#~ msgid "Show the online manual of Sylpheed Claws"
+#~ msgstr "Показать онлайновое руководство Sylpheed Claws"

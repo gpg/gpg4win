@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ngoinabox\n"
 "Report-Msgid-Bugs-To: gpg4win-devel@wald.intevation.org\n"
-"POT-Creation-Date: 2008-04-22 15:44+0200\n"
+"POT-Creation-Date: 2008-05-08 13:37+0200\n"
 "PO-Revision-Date: 2008-03-10 16:46+0100\n"
 "Last-Translator: Fabian Rodriguez <magicfab@member.fsf.org>\n"
 "Language-Team: FRENCH <aep.lists@it46.se>\n"
@@ -405,12 +405,12 @@ msgctxt "DESC_SEC_gpgol"
 msgid "GnuPG for Outlook"
 msgstr "GnuPG pour Outlook"
 
-#: src/inst-kleopatra.nsi:186
+#: src/inst-kleopatra.nsi:195
 msgctxt "DESC_SEC_kleopatra"
 msgid "Kleopatra"
 msgstr "Kleopatra"
 
-#: src/inst-kleopatra.nsi:189
+#: src/inst-kleopatra.nsi:198
 msgctxt "DESC_Menu_kleopatra"
 msgid "Run the Kleopatra key management tool."
 msgstr "Courez l'outil de gestion de clé de Kleopatra."
@@ -478,21 +478,6 @@ msgctxt "DESC_Menu_man_novice_en"
 msgid "Show the online manual of Gpg4Win for novice users"
 msgstr "Montrez le guide en ligne de Gpg4Win pour des utilisateurs de débutant"
 
-#: src/inst-sylpheed-claws.nsi:51
-msgctxt "DESC_SEC_sylpheed"
-msgid "Sylpheed-Claws Mail-User-Agent"
-msgstr "Sylpheed-Claws Mail-User-Agent"
-
-#: src/inst-sylpheed-claws.nsi:54
-msgctxt "DESC_Menu_sylpheed"
-msgid "Run the Sylpheed-Claws mailprogram."
-msgstr "Courez le Sylpheed-Claws mailprogram."
-
-#: src/inst-sylpheed-claws.nsi:57
-msgctxt "DESC_Menu_sylpheed_pdf"
-msgid "Show the online manual of Sylpheed Claws"
-msgstr "Montrez le manuel en ligne de Sylpheed Claws"
-
 #: src/inst-winpt.nsi:46
 msgctxt "DESC_SEC_winpt"
 msgid "Windows Privacy Tray"
@@ -506,3 +491,15 @@ msgid ""
 msgstr ""
 "Courez l'outil de gestion de clé de plateau d'privé de Windows. C'est une "
 "clé souple outil de gestion de clé et de cryptage."
+
+#~ msgctxt "DESC_SEC_sylpheed"
+#~ msgid "Sylpheed-Claws Mail-User-Agent"
+#~ msgstr "Sylpheed-Claws Mail-User-Agent"
+
+#~ msgctxt "DESC_Menu_sylpheed"
+#~ msgid "Run the Sylpheed-Claws mailprogram."
+#~ msgstr "Courez le Sylpheed-Claws mailprogram."
+
+#~ msgctxt "DESC_Menu_sylpheed_pdf"
+#~ msgid "Show the online manual of Sylpheed Claws"
+#~ msgstr "Montrez le manuel en ligne de Sylpheed Claws"
