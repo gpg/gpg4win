@@ -1,8 +1,14 @@
 2008-05-08  Werner Koch  <wk@g10code.com>
 
+	* packages/packages.current: Update adns.
+
+	* configure.ac: Don't let gpgme depend on qt.
+
 	* src/inst-gpa.nsi: Mape tips installation optional.
 
 	* src/Makefile.am (gpg4win_pkg_gnupg2_configure): Add --with-adns.
+	(gpg4win_pkg_gpgme_configure): Build qt and glib versions only if
+	the packages are available.
 
 2008-05-08  Marcus Brinkmann  <marcus@ulysses.g10code.com>
 
