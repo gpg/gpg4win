@@ -306,8 +306,8 @@ chk  be26eeb3f73c2eafb0e65e94b341092cf90267e1
 #
 server ftp://ftp.g10code.com/g10code/adns
 
-file adns-1.4-g10-1.tar.bz2
-chk 631ee88b7665b958f5734d736f327fadeb059ee0  
+file adns-1.4-g10-2.tar.bz2
+chk  6255a7958dc9e735c3f76595cd973abca09c1f93
 
 
 #
