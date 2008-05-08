@@ -38,6 +38,7 @@ EXTRA_DIST = autogen.sh README.SVN \
 	patches/claws-mail-3.4.0/01-w32-logo.patch \
 	patches/claws-mail-3.4.0/02-w32-icon.patch \
 	patches/claws-mail-3.4.0/03-smime-plugin.patch \
+	patches/claws-mail-3.4.0/04-gnutls.patch \
 	patches/claws-mail-3.4.0/99-auto.patch \
 	patches/gpgme/01-gpg2.patch \
 	patches/libetpan-0.54/01-config.patch \

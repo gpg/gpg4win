@@ -1,5 +1,8 @@
 2008-05-08  Marcus Brinkmann  <marcus@ulysses.g10code.com>
 
+	* Makefile.am (EXTRA_DIST): Add
+	patches/claws-mail-3.4.0/04-gnutls.patch.
+
 	* packages/packages.current: Update kleopatra checksum.
 
 2008-05-07  Marcus Brinkmann  <marcus@ulysses.g10code.com>
