@@ -393,7 +393,7 @@ chk  6d89211030b83db36aa8356f5e7f0a4e3e3d7c80
 server ftp://ftp.kdab.net/pub/gpg4win
 
 file kleopatra-20080507-bin.zip
-chk  ce1e97f4756bc8bf295c4ad150207b4ffc9b8b62
+chk  233a8ac91f67ba1c11a4eeb0020f71d0e43c13b5
 
 file kleopatra-20080507-src.zip
 chk  f3982f59e0e04ff98ece3100e2c822632fb45c3e
