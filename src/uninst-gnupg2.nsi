@@ -47,6 +47,7 @@ Section "-un.gnupg2"
   Delete "$INSTDIR\gpg2keys_hkp.exe"
   Delete "$INSTDIR\gpg2keys_curl.exe"
   Delete "$INSTDIR\gpg2keys_ldap.exe"
+  Delete "$INSTDIR\gpg2keys_kdns.exe"
   Delete "$INSTDIR\gpg-protect-tool.exe"
   Delete "$INSTDIR\gpg-preset-passphrase.exe"
 
