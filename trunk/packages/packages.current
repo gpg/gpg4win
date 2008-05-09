@@ -273,9 +273,9 @@ server ftp://ftp.gnupg.org/gcrypt
 file gnupg/gnupg-1.4.9.tar.bz2
 chk  826f4bef1effce61c3799c8f7d3cc8313b340b55
 
-name gnupg2-2.0.9.tar.bz2
-file gnupg/gnupg-2.0.9.tar.bz2
-chk  959bdb934e3a72d256bfbd0122d996a73adb5d1f
+name gnupg2-2.0.10-svn4762.tar.bz2
+file alpha/gnupg/gnupg-2.0.10-svn4762.tar.bz2
+chk  7f871edf72f0bcd6dbe21b5bfdef0e4ff02635e0
 
 file libgpg-error/libgpg-error-1.6.tar.bz2
 chk  2f387d0c34dd55eaf3b5f3c2570e9033eb540bc3
@@ -295,8 +295,8 @@ server ftp://ftp.g10code.com/g10code/scratch
 file dirmngr-1.0.2-svn297.tar.bz2
 chk  6140c65d71af3349bfaccdccdc4d89f25399f2f9
 
-file gpgme-1.1.7-svn1311.tar.bz2
-chk  a32365721eddd4d9c854fd05aac25efafbab5847
+file gpgme-1.1.7-svn1313.tar.bz2
+chk  526325d020e533a0a9ebe4b34b581ad287c08d18
 
 file libassuan-1.0.5-svn284.tar.bz2
 chk  be26eeb3f73c2eafb0e65e94b341092cf90267e1

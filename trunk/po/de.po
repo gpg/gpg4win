@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gpg4win 1.1.1-svn417\n"
 "Report-Msgid-Bugs-To: gpg4win-devel@wald.intevation.org\n"
-"POT-Creation-Date: 2008-05-08 13:37+0200\n"
+"POT-Creation-Date: 2008-05-08 18:15+0200\n"
 "PO-Revision-Date: 2008-04-22 15:44+0200\n"
 "Last-Translator: Marcus Brinkmann <mb@g10code.com>\n"
 "Language-Team: German <translation-team-de@lists.sourceforge.net>\n"
@@ -395,7 +395,7 @@ msgstr ""
 "GnuPG stellt die eigentliche Verschlüsselung sowie die Verwaltung der "
 "Schlüssel bereit."
 
-#: src/inst-gpa.nsi:74
+#: src/inst-gpa.nsi:75
 msgctxt "DESC_SEC_gpa"
 msgid "GNU Privacy Assistant"
 msgstr ""
@@ -403,7 +403,7 @@ msgstr ""
 "welches für mehrere Plattformen verfügbar ist.  Es kann zusammen oder "
 "anstatt von WinPT benutzt werden."
 
-#: src/inst-gpa.nsi:77
+#: src/inst-gpa.nsi:78
 msgctxt "DESC_Menu_gpa"
 msgid ""
 "Run the GNU Privacy Assistant key management tool. This is an alternative to "
