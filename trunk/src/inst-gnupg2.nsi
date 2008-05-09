@@ -56,7 +56,7 @@ ${MementoSection} "GnuPG2" SEC_gnupg2
   File "${prefix}/libexec/gpg2keys_hkp.exe"
   File "${prefix}/libexec/gpg2keys_curl.exe"
   File "${prefix}/libexec/gpg2keys_ldap.exe"
-  File /nonfatal "${prefix}/libexec/gpg2keys_knds.exe"
+  File /nonfatal "${prefix}/libexec/gpg2keys_kdns.exe"
   File "${prefix}/libexec/gpg-protect-tool.exe"
   File "${prefix}/libexec/gpg-preset-passphrase.exe"
 
