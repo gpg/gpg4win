@@ -47,6 +47,7 @@ Section "-un.kleopatra"
   Delete "$INSTDIR\libkleo.dll"
   Delete "$INSTDIR\kgpgconf.exe"
   Delete "$INSTDIR\kwatchgnupg.exe"
+  Delete "$INSTDIR\libkleopatraclientcore.dll"
 
   Delete "$INSTDIR\share\locale\de\entry.desktop"
   Delete "$INSTDIR\share\locale\de\LC_MESSAGES\timezones4.mo"
