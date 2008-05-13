@@ -3,7 +3,7 @@
 # The version number given below are for the standard installers as
 # distributed by www.gpg4win.org.
 
-Noteworthy changes in version 1.9.1
+Noteworthy changes in version 1.9.1 (2008-05-13)
 ------------------------------------------------
 
 (en) This is a BETA version of the new Gpg4win/2 architecture.
@@ -14,9 +14,9 @@ Noteworthy changes in version 1.9.1
 
 ~~~~~~~~~~~~~~~
 GnuPG:        1.4.9 
-GnuPG2:       2.0.10-svn4752
+GnuPG2:       2.0.10-svn4762
 DirMngr:      1.0.2-svn297
-Kleopatra:    20080421
+Kleopatra:    20080512
 GPA:          0.7.7-svn859
 GpgOL:        0.10.13
 GpgEX:        0.9.0
