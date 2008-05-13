@@ -1,5 +1,7 @@
 2008-05-13  Marcus Brinkmann  <marcus@ulysses.g10code.com>
 
+	Release 1.9.1 beta version.
+
 	* packages/packages.current: Update kdelibs and kleopatra.
 	* src/inst-kleopatra.nsi, src/uninst-kleopatra.nsi: Install and
 	remove libkleopatraclientcore.dll.
