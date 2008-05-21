@@ -1,0 +1,73 @@
+#! /bin/sh
+patch -p0 -f $* < $0
+exit $?
+
+2008-05-21  Marcus Brinkmann  <marcus@ulysses.g10code.com>
+
+	* call-agent.c (gpgsm_agent_nop) [HAVE_W32_SYSTEM]: New function.
+	* export.c (export_p12) [HAVE_W32_SYSTEM]: Call gpgsm_agent_nop.
+	* import.c (parse_p12) [HAVE_W32_SYSTEM]: Call gpgsm_agent_nop.
+
+
+Index: sm/call-agent.c
+===================================================================
+--- sm/call-agent.c	(revision 4765)
++++ sm/call-agent.c	(working copy)
+@@ -802,3 +802,23 @@
+                         default_inq_cb, ctrl, NULL, NULL);
+   return rc;
+ }
++
++
++#ifdef HAVE_W32_SYSTEM
++/* Ensure that the agent is up and running.  Only for Windows, as in
++   Unix the agent may be started in pipe server mode rather than
++   daemon mode.  */
++gpg_error_t
++gpgsm_agent_nop (ctrl_t ctrl)
++{
++  int rc;
++
++  rc = start_agent (ctrl);
++  if (rc)
++    return rc;
++
++  rc = assuan_transact (agent_ctx, "NOP", NULL, NULL,
++                        default_inq_cb, ctrl, NULL, NULL);
++  return rc;
++}
++#endif
+Index: sm/import.c
+===================================================================
+--- sm/import.c	(revision 4765)
++++ sm/import.c	(working copy)
+@@ -507,6 +507,12 @@
+   pid_t pid = -1;
+   int bad_pass = 0;
+ 
++#ifdef HAVE_W32_SYSTEM
++  err = gpgsm_agent_nop (ctrl);
++  if (err)
++    return err;
++#endif
++
+   if (!opt.protect_tool_program || !*opt.protect_tool_program)
+     pgmname = gnupg_module_name (GNUPG_MODULE_NAME_PROTECT_TOOL);
+   else
+Index: sm/export.c
+===================================================================
+--- sm/export.c	(revision 4765)
++++ sm/export.c	(working copy)
+@@ -616,6 +616,12 @@
+   pid_t pid = -1;
+   int bad_pass = 0;
+ 
++#ifdef HAVE_W32_SYSTEM
++  err = gpgsm_agent_nop (ctrl);
++  if (err)
++    return err;
++#endif
++
+   if (!opt.protect_tool_program || !*opt.protect_tool_program)
+     pgmname = gnupg_module_name (GNUPG_MODULE_NAME_PROTECT_TOOL);
+   else
