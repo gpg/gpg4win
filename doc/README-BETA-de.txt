@@ -1,7 +1,17 @@
 Wichtige Informationen zum Einsatz von Gpg4win 1.9-BETA
 #######################################################
 
-Stand: Gpg4win-1.9.0 (20080423)
+  Achtung: Dies ist eine BETA-Version von Gpg4win.
+  Das bedeutet, dass der Funktionsumfang an einigen
+  Stellen nicht vollständig implementiert ist oder auch
+  noch Fehler vorliegen können.
+
+  Eine BETA-Version dient dem Test durch erfahrene
+  Anwender oder Administratoren um die künftige
+  neue Version kennenzulernen und Verbesserungsvorschläge
+  einzubringen.
+
+Stand: Gpg4win-1.9.1 (20080514)
 
 Hier finden sich wichtige Informationen die bei der
 Entscheidung helfen sollen, ob Gpg4win 1.9 schon für
@@ -14,6 +24,9 @@ Gpg4win 2.0 an neuer Funktionalität zu erwarten ist.
 Die 1.9er Versionen sind der Beta-Test-Zyklus. Ist er
 abgeschlossen wird Version 2.0 freigegeben.
 
+Änderungsinformationen gegenüber den Vorherigen
+Beta-Versionen finden sich am Ende dieses Dokumentes.
+
 Rückmeldung erwünscht!
   Bitte lassen Sie uns wissen ob sie Gpg4win 1.9
   erfolgreich getestet haben oder auch ob Sie auch
@@ -23,6 +36,15 @@ Rückmeldung erwünscht!
   Berichte der anderen lesen:
 
   http://lists.wald.intevation.org/mailman/listinfo/gpg4win-users-de
+
+
+Inhalt dieses Dokumentes:
+
+* Wichtige Hinweise zur vorliegenden Version
+* Wichtige Hinweise zur Verwendung von S/MIME
+* Migration
+* Wichtigste Änderungen von Gpg4win 1.9 gegenüber 1.1
+* Wichtigste Änderungen von Gpg4win 1.9.1 gegenüber 1.9.0
 
 
 Wichtige Hinweise zur vorliegenden Version
@@ -66,12 +88,12 @@ Wichtige Hinweise zur vorliegenden Version
     Verschlüsselten/Signierten E-Mails, z.B. in PST-Dateien
     machen!
 
-  * Verschlüsselte E-Mails unverschlüsselt auf Server:
-    Es kann vorkommen, dass verschlüsselte E-Mails
-    in entschlüsselter Form auf dem E-Mail-Server
-    zu liegen kommen.
-    Betroffen sind nur eigentlichen "E-Mail-Bodies",
-    für Anhänge passiert das nicht.
+  * Verschlüsselte E-Mails unverschlüsselt auf E-Mail-Server:
+    Es kann vorkommen, dass Teile von verschlüsselten E-Mails
+    in entschlüsselter/unverschlüsselter Form auf dem E-Mail-Server
+    (IMAP oder MAPI) zu liegen kommen wenn man sie erstellt/liesst.
+    Betroffen sind nur der Inhalt des Anzeigefensters von Outlook,
+    also der "E-Mail-Body". Anhänge sind nicht betroffen.
     Schaltet man die Voransicht von Outlook ab, so
     verringert sich die Wahrscheinlichkeit dafür deutlich.
 
@@ -103,25 +125,27 @@ durchzuführen.
   Eine Erstellung *neuer* S/MIME-Schlüssel ist
   noch nicht vollständig in Kleopatra implementiert.
 
+- S/MIME-Zertifikatskette für persönlichen Schlüssel importieren:
+  Die zum geheimen Schlüssel zugehörige Zertifikatskette
+  als P7C-Datei importieren (Menü Datei->Zertifikate importieren).
+  Es werden auch andere Suffixes für solche Dateien verwendet.
+  Typischerweise besteht die Kette aus dem Wurzel-Zertifkat,
+  einem CA-Zertifikat und dem persönlichen Zertifikat.
+
 - Geheimen S/MIME Schlüssel importieren:
   Den persönlichen geheimen Schlüssel als P12-Datei
   über Kleopatra importieren (Menü Datei->Zertifikate
-  importieren)
-
-- S/MIME-Zertifikatskette für persönlichen Schlüssel importieren:
-  Die zum geheimen Schlüssel zugehörige Zertifikatskette
-  als P7C-Datei importieren. Es werden auch andere
-  Suffixes für solche Dateien verwendet. Einfach über
-  das gleiche Menü wie die P12-Datei importieren.
-  Typischerweise besteht die Kette aus dem Wurzel-Zertifkat,
-  einem CA-Zertifikat und dem persönlichen Zertifikat.
+  importieren).
+  Achtung: Der P12 import funktioniert nur, wenn
+  der vohergehende Schritt auch tatsächlich durchgeführt
+  wurde.
 
 - S/MIME-Zertifkate der E-Mail Empfänger importieren:
   Alle sonstigen wichtigen Zertifikate, z.B. von
   Kommunikationspartner auf die gleiche Weise importieren
   (am besten jeweils mit der kompletten Kette)
 
-- Wurzelzertifkate als Vertrauenswürdig markieren:
+- Wurzelzertifikate als Vertrauenswürdig markieren:
   Wenn Sie "GnuPG Backend einrichten" Konfiguration-Dialog
   von Kleopatra "Gpg Agent: allow clients
   to mark keys as trusted" aktivieren, so werden Sie
@@ -177,8 +201,8 @@ Migration
   HKCU\Software\GNU\GnuPG\gpgProgramm
 
 
-Wichtigste Änderungen von Gpg4win 1.9
-=====================================
+Wichtigste Änderungen von Gpg4win 1.9 gegenüber 1.1
+===================================================
 
 
 Entfallen:
@@ -190,7 +214,7 @@ Entfallen:
 Aktualisiert:
 -------------
 
-- Claws Mail: Version 3.1.0cvs70
+- Claws Mail: Version 3.4.0
   NNTP- und IMAP-Unterstützung ist seitens Gpg4win ein Stück
   weiter vorbereitet, aber noch nicht verfügbar.
   Seitens Claws Mail ist die SSL-Unterstützung ebenfalls
@@ -218,6 +242,10 @@ Aktualisiert:
       Kleopatra verwendet. Kleopatra bietet einheitliche
       Dialoge für Krypto-Operationen.
 
+    - Unterstützung folgender Plattformen:
+      Betriebssystem: Windows 2000, XP (32/64), Vista (32/64)
+      Outlook: 2003, 2007
+
 Neu:
 ----
 
@@ -241,3 +269,20 @@ Neu:
   * Kleopatra ist noch in Entwicklung:
     Es fehlen noch einzelne Funktionalitäten für OpenPGP.
     Dafür kann alternativ auf GPA oder WinPT zurückgegriffen werden.
+
+
+Wichtigste Änderungen von Gpg4win 1.9.1 gegenüber 1.9.0
+=======================================================
+
+ * Claws Mail: Update von 3.1.0cvs370 auf 3.4.0
+
+ * GpgOL: Verwendet nun Icons (toolbar etc)
+
+ * Kleopatra:
+  * Selbständiger Test auf mögliche Ausführungsprobleme
+  * Prüfungsergebnis nun in eigenem Dialog; gleicht der
+    in KMail verwendeten Form
+  * Signatur/Verschlüsselung: Die Dialog-Sequenz wurde überarbeitet.
+  * Audit-Log Unterstützung
+  * Fortschrittsbalken bei der Behandlung von Dateien
+  * Zwischenablage Unterstützung

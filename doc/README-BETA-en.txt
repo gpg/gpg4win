@@ -1,7 +1,15 @@
 Important Hints for Using Gpg4win 1.9-BETA
 ##########################################
 
-Status: Gpg4win-1.9.0 (20080423)
+  Attention: This is a BETA version of Gpg4win.
+  This means, some functionalities might be
+  missing or not working correctly.
+
+  Beta versions are intended for testing by
+  experienced users or administrators to learn
+  about the upcoming version and suggest changes.
+
+Status: Gpg4win-1.9.1 (20080514)
 
 This text covers information that are
 intended to help judging whether Gpg4win 1.9
@@ -12,6 +20,9 @@ Furthermore, this text lays out the new functionality
 of Gpg4win 2.0. The 1.9.X releases represent the
 beta-cycle. Once this cycle is finished, version
 2.0 will be released.
+
+For changes compared to previous beta release see
+bottom of this document.
 
 Feedback welcome!
   Please let us know whether your tests of Gpg4win 1.9
@@ -24,6 +35,15 @@ Feedback welcome!
   http://lists.wald.intevation.org/mailman/listinfo/gpg4win-users-en
 
 
+Contents of this document:
+
+* Important hints for present version
+* Important hints for using S/MIME
+* Migration
+* Most important changes in Gpg4win 1.9 compared to 1.1
+* Most important changes in Gpg4win 1.9.1 compared to 1.9.0
+
+
 Important hints for present version
 ===================================
 
@@ -31,7 +51,7 @@ Important hints for present version
   In case you are running a very strict firewall,
   you might run into problems because Kleopatra
   communicates with the other componentes via
-  a so-called port a "localhost".
+  a so-called port at "localhost".
   Switching off the respective rule should help.
 
 - Installation package almost 40 MByte:
@@ -61,16 +81,17 @@ Important hints for present version
   * You defintely should create copies of your old
     encrypted/signed emails, e.g. in the form of PST files.
 
-  * Encrypted E-Mails occuring decrypted on Server:
-    It can happend that encrypted emails will be copied
-    to your email server in decrypted form.
-    Affected are the so-called email bodies while
-    this will not happen for attachments.
+  * Encrypted E-Mails occuring un-encrypted on the email server:
+    It can happend that parts of encrypted emails are copied
+    to your email server (IMAP or MAPI) in un-encrypted/decrypted
+    form when creating or viewing them.
+    Affected is the content of the email view windows, thus usually
+    the so-called email body. Attachments are not affected.
     Switching off the Outlook Preview will lower
     the probability of this to happen.
 
   * Emails will be stored on the server in Microsoft specific
-    forma and thus not be readable via other email programs.
+    format and thus not be readable via other email programs.
 
 
 Important hints for using S/MIME
@@ -95,20 +116,22 @@ these steps.
   The creation of a *new* S/MIME key is
   not yet fully implemented Kleopatra.
 
-- Import secret S/MIME key:
-  The personal secret key can be imported as P12 file
-  via Kleopatra (menu File->Import certificates)
-
 - Import S/MIME certificate chain for personal key:
   The certificate chain the belongs to your secret key
   is to be imported as P7C file (other suffixes for
   such files do occur as well).
-  Simply use the same menu item as for P12 import.
+  See menu File->Import certificates.
   Typically the chain consists of a root certificate,
   a CA certificate and your personal certificate.
 
-- Import S/MIME certificate of email receipient:
-  Now import the certificates of your email receipients
+- Import secret S/MIME key:
+  The personal secret key can be imported as P12 file
+  via Kleopatra (menu File->Import certificates).
+  Important: P12 import will only work
+  if you did the previous step first!
+
+- Import S/MIME certificate of email recipient:
+  Now import the certificates of your email recipients
   in the same way, ideally also always including the
   complete chain.
 
@@ -128,11 +151,11 @@ these steps.
   %INSTALL_DIR%\etc\dirmngr\trusted-certs\
 
 - Problems with certificate revocation lists (CRLs):
-  The S/MIME concept considers the use of recocation lists
+  The S/MIME concept considers the use of revocation lists
   to check validity of a certificate.
 
-  This check may fail due to various probelems which do not
-  all result in a helpul error report yet.
+  This check may fail due to various problems which do not
+  all result in a helpful error message yet.
 
   In case that a S/MIME operation does not work as expected,
   you may switch of CRL checks temporarily and try again whether the
@@ -153,7 +176,7 @@ Migration
 
   If there was an older 1.9 version installed, then
   it is mandadory to reboot the system in case the
-  installation routine suggested (via preselection) so.
+  installation routine demands (via preselection) so.
   Else you will run into major errors during cryptographic
   operations.
 
@@ -164,8 +187,8 @@ Migration
   remove this registry entry:
   HKCU\Software\GNU\GnuPG\gpgProgramm
 
-Most important changes in Gpg4win 1.9
-=====================================
+Most important changes in Gpg4win 1.9 compared to 1.1
+=====================================================
 
 
 Removed:
@@ -177,7 +200,7 @@ Removed:
 Updated:
 --------
 
-- Claws Mail: Version 3.1.0cvs70
+- Claws Mail: Version 3.4.0
   NNTP- and IMAP-Support has been further worked on
   by Gg4win but is not yet available.
   On the Claws Mail side, work has continued on the SSL support,
@@ -201,6 +224,10 @@ Updated:
       Instead of implementing dialogs of its own, GpgOL
       uses the unified dialogs of Kleopatra (see below).
 
+    - Support of these platforms:
+      Operating Systems: Windows 2000, XP (32/64), Vista (32/64)
+      Outlook: 2003, 2007
+
 Neu:
 ----
 
@@ -223,3 +250,20 @@ Neu:
   * Kleopatra is still in development:
     Some functionalities for OpenPGP are still missing.
     You can use GPA or WinPT for the missing functionality.
+
+
+Most important changes in Gpg4win 1.9.1 compared to 1.9.0
+=========================================================
+
+ * Claws Mail: Update from 3.1.0cvs370 to 3.4.0
+
+ * GpgOL: Now uses Icons (toolbar etc).
+
+ * Kleopatra:
+  * Integrated test for potential execution problems
+  * Verfification results now in a special dialog; applies
+    similar appearance as KMail does
+  * Sign/Encrypt: Dialog sequence has been reworked.
+  * Audit-Log support
+  * Progress bar when handling files
+  * Clipboard support
