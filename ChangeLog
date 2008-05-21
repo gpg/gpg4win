@@ -1,3 +1,8 @@
+2008-05-21  Marcus Brinkmann  <marcus@ulysses.g10code.com>
+
+	* patches/gnupg2/02-p12-hack.patch: New file.
+	* Makefile.am (EXTRA_DIST): Add this patch.
+
 2008-05-13  Marcus Brinkmann  <marcus@ulysses.g10code.com>
 
 	Release 1.9.1 beta version.
