@@ -286,8 +286,12 @@ chk  7a4b3a8340087ed360269b567881ebfb9b67441b
 file libgcrypt/libgcrypt-1.4.0.tar.bz2
 chk  cd1b52e8ecfa361737c6f130ed2f1d850e312c16
 
+file libassuan/libassuan-1.0.5.tar.bz2
+chk  f6c36e9d99736883a8ce5b80b0a51d854cbbbc70
+
 file pinentry/pinentry-0.7.5.tar.gz
 chk  6699a1ff94c649e8905199d480c6412cc43bad3d 
+
 
 # (Snapshots)
 server ftp://ftp.g10code.com/g10code/scratch
@@ -298,8 +302,6 @@ chk  6140c65d71af3349bfaccdccdc4d89f25399f2f9
 file gpgme-1.1.7-svn1313.tar.bz2
 chk  526325d020e533a0a9ebe4b34b581ad287c08d18
 
-file libassuan-1.0.5-svn284.tar.bz2
-chk  be26eeb3f73c2eafb0e65e94b341092cf90267e1
 
 #
 # adns

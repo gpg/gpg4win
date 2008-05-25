@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Gpg4Win\n"
 "Report-Msgid-Bugs-To: gpg4win-devel@wald.intevation.org\n"
-"POT-Creation-Date: 2008-05-08 18:15+0200\n"
+"POT-Creation-Date: 2008-05-09 19:09+0200\n"
 "PO-Revision-Date: 2008-03-11 23:52+0200\n"
 "Last-Translator: Ahmad Gharbeia <ahmad@gharbeia.org>\n"
 "Language-Team: Arabic <doc@arabeyes.org>\n"
@@ -320,7 +320,7 @@ msgctxt "DESC_SEC_eudoragpg"
 msgid "EudoraGPG is a plugin for the Eudora mail program"
 msgstr "˛EudoraGPG ÂÌ „·Õﬁ… ·»—„ÃÌ… «·»—Ìœ Eudora"
 
-#: src/inst-gnupg2.nsi:117
+#: src/inst-gnupg2.nsi:118
 msgctxt "DESC_SEC_gnupg2"
 msgid "GNU Privacy Guard with S/MIME support"
 msgstr "Õ«—” Œ’Ê’Ì… Ã‰Ê „⁄ œ⁄„ S/MIME"

@@ -1,3 +1,7 @@
+2008-05-25  Werner Koch  <wk@g10code.com>
+
+	* packages/packages.current: Update libassuan.
+
 2008-05-21  Marcus Brinkmann  <marcus@ulysses.g10code.com>
 
 	* patches/gnupg2/02-p12-hack.patch: New file.
