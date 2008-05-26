@@ -50,12 +50,6 @@ Inhalt dieses Dokumentes:
 Wichtige Hinweise zur vorliegenden Version
 ==========================================
 
-- Firewall-Probleme:
-  Ist eine strenge Firewall-Regel in Betrieb, kann es
-  zu Problemen kommen, da Kleopatra über einen sog. Port
-  an "localhost" mit den anderen Komponenten kommuniziert.
-  Schalten Sie entsprechende Regeln Ihrer Firewall ggf. aus.
-
 - Installationpaket knapp 40 MByte:
   Derzeit sind die Programme mit umfangreichen
   Debug-Informationen ausgestattet, so dass bei auftauchen
@@ -95,11 +89,14 @@ Wichtige Hinweise zur vorliegenden Version
     Betroffen sind nur der Inhalt des Anzeigefensters von Outlook,
     also der "E-Mail-Body". Anhänge sind nicht betroffen.
     Schaltet man die Voransicht von Outlook ab, so
-    verringert sich die Wahrscheinlichkeit dafür deutlich.
+    verringert sich die Wahrscheinlichkeit dafür deutlich,
+    aber es kann trotzdem noch passieren.
+    Eine Lösung hierfür ist in Arbeit.
 
   * E-Mails werden auf dem Server in Microsoft-spezifischen
     Formaten gespeichert und können von anderen E-Mail-Programmen
     dann nicht mehr interpretiert und die Inhalte angezeigt werden.
+    Eine Migrations-Lösung hierfür ist in Arbeit.
 
 
 Wichtige Hinweise zur Verwendung von S/MIME
@@ -179,6 +176,13 @@ durchzuführen.
   "GPG for S/MIME: never consult a CRL" aktivieren im
   "GnuPG Backend einrichten" Konfiguration-Dialog von Kleopatra.
   Danach neu einloggen um die Änderung zu aktivieren.
+
+- LDAP Server und DirMngr Konfigurations-Dialog hat keine Wirkung:
+  Derzeit erlauben die Konfigurationsdialog die über Kleopatra
+  geöffnet werden könne, LDAP-Server sowie allgemeine DirMngr
+  (Sperrlisten-Optionen) zu konfigurieren. Diese Einstellungen
+  haben aber keine Wirkung, da nur der Systemadministrator sie
+  in den Konfigurations-Textdateien vornehmen kann.
 
 
 Migration

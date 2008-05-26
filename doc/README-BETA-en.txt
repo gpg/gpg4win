@@ -47,13 +47,6 @@ Contents of this document:
 Important hints for present version
 ===================================
 
-- Firewall problems:
-  In case you are running a very strict firewall,
-  you might run into problems because Kleopatra
-  communicates with the other componentes via
-  a so-called port at "localhost".
-  Switching off the respective rule should help.
-
 - Installation package almost 40 MByte:
   The tools curently contain comprehensive debug information.
   This helps to analyse problems as they occur.
@@ -88,10 +81,12 @@ Important hints for present version
     Affected is the content of the email view windows, thus usually
     the so-called email body. Attachments are not affected.
     Switching off the Outlook Preview will lower
-    the probability of this to happen.
+    the probability of this to happen, but not eliminate the problem.
+    A solution is being worked on.
 
   * Emails will be stored on the server in Microsoft specific
     format and thus not be readable via other email programs.
+    A migration solution is being worked on.
 
 
 Important hints for using S/MIME
@@ -168,6 +163,13 @@ these steps.
   "Configure GnuPG Backend" dialog of Kleopatra.
   Then log out and in again to activate your change.
 
+- LDAP Server and DirMngr configuration dialogs have no effect:
+  Currently configuration dialogs for LDAP server and
+  DirMngr (CRL options) are avaiable via Kleopatra.
+  Changing the values has no effect.
+  The configirations need to be done by system administrator
+  in the global configuration text files.
+
 
 Migration
 =========
@@ -225,7 +227,7 @@ Updated:
       uses the unified dialogs of Kleopatra (see below).
 
     - Support of these platforms:
-      Operating Systems: Windows 2000, XP (32/64), Vista (32/64)
+      Operating System: Windows 2000, XP (32/64), Vista (32/64)
       Outlook: 2003, 2007
 
 Neu:
