@@ -377,17 +377,18 @@ chk  a4e673c1b1b1cc420e771413edc53ef89fe7773a
 
 server ftp://ftp.kdab.net/pub/gpg4win
 
-name kdelibs-20080526-bin.zip
-file kdelibs-for-kleo-20080526-bin.zip
-chk  cffd6f95db3c0fd52623c6805943b09cc768a31e
+name kdelibs-20080526-2-bin.zip
+file kdelibs-for-kleo-20080526-2-bin.zip
+chk  1380ab5075f1fca903cb073552fabc7107582a43
 
-name kdelibs-20080526-lib.zip
-file kdelibs-for-kleo-20080526-dev.zip
+name kdelibs-20080526-2-lib.zip
+file kdelibs-for-kleo-20080526-2-dev.zip
 chk  5cb519634735479ec7138fa0324ac5ec82371a2a
 
-name kdelibs-20080526-src.zip
-file kdelibs-for-kleo-20080526-src.zip
+name kdelibs-20080526-2-src.zip
+file kdelibs-for-kleo-20080526-2-src.zip
 chk  d8ea0b5558fc56d8320368d0c671b28a2e93a00f
+
 
 # Kleopatra
 
