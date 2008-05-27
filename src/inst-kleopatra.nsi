@@ -39,6 +39,7 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
   File ${prefix}/bin/kwatchgnupg.exe
   File ${prefix}/bin/libkleo.dll
   File ${prefix}/bin/libkleopatraclientcore.dll
+  File ${prefix}/bin/libkleopatraclientgui.dll
   File ${prefix}/lib/kde4/kcm_kleopatra.dll
 
   SetOutPath "$INSTDIR\share\applications\kde4"
@@ -105,9 +106,7 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
 
   File ${prefix}/share/icons/oxygen/scalable/apps/kleopatra.svgz
 
-  # FIXME: The kcm .desktop files belong to share/kde4/services
-  # actually, but are not found if installed there.
-  SetOutPath "$INSTDIR\share\applications\kde4"
+  SetOutPath "$INSTDIR\share\kde4\services"
 
   File ${prefix}/share/kde4/services/kleopatra_config_appear.desktop
   File ${prefix}/share/kde4/services/kleopatra_config_dirserv.desktop

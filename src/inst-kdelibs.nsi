@@ -42,17 +42,12 @@ Section "-kdelibs" SEC_kdelibs
   File ${prefix}/bin/libgpgme++-glib.dll
   File ${prefix}/bin/libgpgme++-qt.dll
   File ${prefix}/bin/libgpgme++.dll
+  File ${prefix}/bin/libkdecore.dll
+  File ${prefix}/bin/libkdeui.dll
   File ${prefix}/bin/libkmime.dll
   File ${prefix}/bin/libqgpgme.dll
   File ${prefix}/lib/libkcmutils.dll
-  File ${prefix}/lib/libkdecore.dll
-  File ${prefix}/lib/libkdeinit4_kbuildsycoca4.dll
-  File ${prefix}/lib/libkdeui.dll
   File ${prefix}/lib/kde4/kded_globalaccel.dll
-
-  SetOutPath "$INSTDIR\etc\xdg\menus"
-
-  File ${prefix}/etc/xdg/menus/applications.menu
 
   SetOutPath "$INSTDIR\share\apps\kcharselect"
 
@@ -81,12 +76,16 @@ Section "-kdelibs" SEC_kdelibs
   File ${prefix}/share/apps/kdeui/about/box-top-right.png
   File ${prefix}/share/apps/kdeui/about/kde_infopage.css
   File ${prefix}/share/apps/kdeui/about/kde_infopage_rtl.css
-  File ${prefix}/share/apps/kdeui/about/top-left.png
   File ${prefix}/share/apps/kdeui/about/top-middle.png
+  File ${prefix}/share/apps/kdeui/about/top-right.png
 
   SetOutPath "$INSTDIR\share\apps\kdeui\pics"
 
   File ${prefix}/share/apps/kdeui/pics/aboutkde.png
+  File ${prefix}/share/apps/kdeui/pics/kdeprint_nup1.png
+  File ${prefix}/share/apps/kdeui/pics/kdeprint_nup2.png
+  File ${prefix}/share/apps/kdeui/pics/kdeprint_nup4.png
+  File ${prefix}/share/apps/kdeui/pics/kdeprint_nupother.png
   File ${prefix}/share/apps/kdeui/pics/ktip-bulb.png
 
   SetOutPath "$INSTDIR\share\config\colors"
@@ -112,6 +111,7 @@ Section "-kdelibs" SEC_kdelibs
 
   SetOutPath "$INSTDIR\share\kde4\servicetypes"
 
+  File ${prefix}/share/kde4/servicetypes/kconfigbackend.desktop
   File ${prefix}/share/kde4/servicetypes/kplugininfo.desktop
   File ${prefix}/share/kde4/servicetypes/sonnetspeller.desktop
 

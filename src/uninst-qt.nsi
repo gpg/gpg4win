@@ -34,12 +34,10 @@ Section "-un.qt"
   Delete "$INSTDIR\qt.conf"
 
   Delete "$INSTDIR\Qt3Support4.dll"
-  Delete "$INSTDIR\QtAssistantClient4.dll"
   Delete "$INSTDIR\QtCore4.dll"
   Delete "$INSTDIR\QtDBus4.dll"
-  Delete "$INSTDIR\QtDesigner4.dll"
-  Delete "$INSTDIR\QtDesignerComponents4.dll"
   Delete "$INSTDIR\QtGui4.dll"
+  Delete "$INSTDIR\QtHelp4.dll"
   Delete "$INSTDIR\QtNetwork4.dll"
   Delete "$INSTDIR\QtOpenGL4.dll"
   Delete "$INSTDIR\QtScript4.dll"
@@ -61,6 +59,7 @@ Section "-un.qt"
 
   RMDir "$INSTDIR\plugins\codecs"
 
+  Delete "$INSTDIR\plugins\designer\qwebview.dll"
   Delete "$INSTDIR\plugins\designer\qt3supportwidgets.dll"
   # Not in Qt anymore since 4.3.3.
   Delete "$INSTDIR\plugins\designer\arthurplugin.dll"
@@ -76,6 +75,7 @@ Section "-un.qt"
   RMDir "$INSTDIR\plugins\iconengines"
 
   Delete "$INSTDIR\plugins\imageformats\qgif4.dll"
+  Delete "$INSTDIR\plugins\imageformats\qico4.dll"
   Delete "$INSTDIR\plugins\imageformats\qjpeg4.dll"
   Delete "$INSTDIR\plugins\imageformats\qmng4.dll"
   Delete "$INSTDIR\plugins\imageformats\qsvg4.dll"
@@ -83,49 +83,39 @@ Section "-un.qt"
 
   RMDir "$INSTDIR\plugins\imageformats"
 
-  Delete "$INSTDIR\plugins\plugins\accessible\qtaccessiblecompatwidgetsd4.dll"
-  Delete "$INSTDIR\plugins\plugins\accessible\qtaccessiblewidgetsd4.dll"
+  Delete "$INSTDIR\plugins\script\qtscriptdbus4.dll"
 
-  RMDir "$INSTDIR\plugins\plugins\accessible"
-
-  Delete "$INSTDIR\plugins\plugins\codecs\qcncodecsd4.dll"
-  Delete "$INSTDIR\plugins\plugins\codecs\qjpcodecsd4.dll"
-  Delete "$INSTDIR\plugins\plugins\codecs\qkrcodecsd4.dll"
-  Delete "$INSTDIR\plugins\plugins\codecs\qtwcodecsd4.dll"
-
-  RMDir "$INSTDIR\plugins\plugins\codecs"
-
-  Delete "$INSTDIR\plugins\plugins\iconengines\qsvgd4.dll"
-
-  RMDir "$INSTDIR\plugins\plugins\iconengines"
-
-  Delete "$INSTDIR\plugins\plugins\imageformats\qgifd4.dll"
-  Delete "$INSTDIR\plugins\plugins\imageformats\qjpegd4.dll"
-  Delete "$INSTDIR\plugins\plugins\imageformats\qmngd4.dll"
-  Delete "$INSTDIR\plugins\plugins\imageformats\qsvgd4.dll"
-  Delete "$INSTDIR\plugins\plugins\imageformats\qtiffd4.dll"
-
-  RMDir "$INSTDIR\plugins\plugins\imageformats"
-
-  Delete "$INSTDIR\plugins\plugins\sqldrivers\qsqlited4.dll"
-
-  RMDir "$INSTDIR\plugins\plugins\sqldrivers"
-
-  Delete "$INSTDIR\plugins\sqldrivers\qsqlite4.dll"
-
-  RMDir "$INSTDIR\plugins\sqldrivers"
+  RMDir "$INSTDIR\plugins\script"
   RMDir "$INSTDIR\plugins"
 
+  Delete "$INSTDIR\translations\assistant_adp_de.qm"
+#  Delete "$INSTDIR\translations\assistant_adp_ja.qm"
+#  Delete "$INSTDIR\translations\assistant_adp_pl.qm"
+#  Delete "$INSTDIR\translations\assistant_adp_zh_CN.qm"
+#  Delete "$INSTDIR\translations\assistant_adp_zh_TW.qm"
   Delete "$INSTDIR\translations\assistant_de.qm"
-#  Delete "$INSTDIR\translations\assistant_ja.qm"
+#  Delete "$INSTDIR\translations\assistant_pl.qm"
+#  Delete "$INSTDIR\translations\assistant_zh_CN.qm"
+#  Delete "$INSTDIR\translations\assistant_zh_TW.qm"
   Delete "$INSTDIR\translations\designer_de.qm"
 #  Delete "$INSTDIR\translations\designer_ja.qm"
+#  Delete "$INSTDIR\translations\designer_pl.qm"
+#  Delete "$INSTDIR\translations\designer_zh_CN.qm"
+#  Delete "$INSTDIR\translations\designer_zh_TW.qm"
+  Delete "$INSTDIR\translations\linguist_de.qm"
 #  Delete "$INSTDIR\translations\linguist_ja.qm"
+#  Delete "$INSTDIR\translations\linguist_pl.qm"
+#  Delete "$INSTDIR\translations\linguist_zh_CN.qm"
+#  Delete "$INSTDIR\translations\linguist_zh_TW.qm"
 #  Delete "$INSTDIR\translations\qt_ar.qm"
   Delete "$INSTDIR\translations\qt_de.qm"
 #  Delete "$INSTDIR\translations\qt_es.qm"
 #  Delete "$INSTDIR\translations\qt_fr.qm"
 #  Delete "$INSTDIR\translations\qt_iw.qm"
+  Delete "$INSTDIR\translations\qt_help_de.qm"
+#  Delete "$INSTDIR\translations\qt_help_pl.qm"
+#  Delete "$INSTDIR\translations\qt_help_zh_CN.qm"
+#  Delete "$INSTDIR\translations\qt_help_zh_TW.qm"
 #  Delete "$INSTDIR\translations\qt_ja_jp.qm"
 #  Delete "$INSTDIR\translations\qt_pt.qm"
 #  Delete "$INSTDIR\translations\qt_ru.qm"
@@ -133,6 +123,7 @@ Section "-un.qt"
 #  Delete "$INSTDIR\translations\qt_sv.qm"
 #  Delete "$INSTDIR\translations\qt_uk.qm"
 #  Delete "$INSTDIR\translations\qt_zh_CN.qm"
+#  Delete "$INSTDIR\translations\qt_zh_TW.qm"
 
   RMDir "$INSTDIR\translations"
 

@@ -36,18 +36,17 @@ Section "-un.kleopatra"
   RMDir "$INSTDIR\bin"
   Delete "$INSTDIR\kleopatra.exe"
 
-  # FIXME: See inst-kleopatra.nsi
-
-  Delete "$INSTDIR\share\applications\kde4\kleopatra_config_smimevalidation.desktop"
-  Delete "$INSTDIR\share\applications\kde4\kleopatra_config_dnorder.desktop"
-  Delete "$INSTDIR\share\applications\kde4\kleopatra_config_dirserv.desktop"
-  Delete "$INSTDIR\share\applications\kde4\kleopatra_config_appear.desktop"
+  Delete "$INSTDIR\share\kde4\services\kleopatra_config_smimevalidation.desktop"
+  Delete "$INSTDIR\share\kde4\services\kleopatra_config_dnorder.desktop"
+  Delete "$INSTDIR\share\kde4\services\kleopatra_config_dirserv.desktop"
+  Delete "$INSTDIR\share\kde4\services\kleopatra_config_appear.desktop"
 
   Delete "$INSTDIR\kcm_kleopatra.dll"
   Delete "$INSTDIR\libkleo.dll"
   Delete "$INSTDIR\kgpgconf.exe"
   Delete "$INSTDIR\kwatchgnupg.exe"
   Delete "$INSTDIR\libkleopatraclientcore.dll"
+  Delete "$INSTDIR\libkleopatraclientgui.dll"
 
   Delete "$INSTDIR\share\locale\de\entry.desktop"
   Delete "$INSTDIR\share\locale\de\LC_MESSAGES\timezones4.mo"

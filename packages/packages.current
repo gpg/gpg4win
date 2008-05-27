@@ -273,18 +273,14 @@ server ftp://ftp.gnupg.org/gcrypt
 file gnupg/gnupg-1.4.9.tar.bz2
 chk  826f4bef1effce61c3799c8f7d3cc8313b340b55
 
-name gnupg2-2.0.10-svn4762.tar.bz2
-file alpha/gnupg/gnupg-2.0.10-svn4762.tar.bz2
-chk  7f871edf72f0bcd6dbe21b5bfdef0e4ff02635e0
-
 file libgpg-error/libgpg-error-1.6.tar.bz2
 chk  2f387d0c34dd55eaf3b5f3c2570e9033eb540bc3
 
 file libksba/libksba-1.0.3.tar.bz2
 chk  7a4b3a8340087ed360269b567881ebfb9b67441b
 
-file libgcrypt/libgcrypt-1.4.0.tar.bz2
-chk  cd1b52e8ecfa361737c6f130ed2f1d850e312c16
+file libgcrypt/libgcrypt-1.4.1.tar.bz2
+chk  367fe7fecd2ed4ab743849279dbc2f7e148f9956
 
 file libassuan/libassuan-1.0.5.tar.bz2
 chk  f6c36e9d99736883a8ce5b80b0a51d854cbbbc70
@@ -296,8 +292,12 @@ chk  6699a1ff94c649e8905199d480c6412cc43bad3d
 # (Snapshots)
 server ftp://ftp.g10code.com/g10code/scratch
 
-file dirmngr-1.0.2-svn297.tar.bz2
-chk  6140c65d71af3349bfaccdccdc4d89f25399f2f9
+name gnupg2-2.0.10-svn4773.tar.bz2
+file gnupg-2.0.10-svn4773.tar.bz2
+chk  6040e890f4383700b7459b02f94381c31a663813
+
+file dirmngr-1.0.2-svn299.tar.bz2
+chk  53547434d5a2de17891a68ef8cbfdd450833a6e7
 
 file gpgme-1.1.7-svn1313.tar.bz2
 chk  526325d020e533a0a9ebe4b34b581ad287c08d18
@@ -330,17 +330,17 @@ chk  3f855b5dcae2159602cfad7d5757f776fa5532e9
 #
 server ftp://ftp.kdab.net/pub/gpg4win
 
-name qt-4.3.3-1-bin.zip
-file qt-gpg4win-4.3.3-1-bin.zip
-chk  ce4af57778a63b0a1369ae230a5cdf71735b2db5
+name qt-4.4.0-4-bin.zip
+file qt-gpg4win-4.4.0-4-bin.zip
+chk  363e017b4018d34a0340ef69b907c609c345f388
 
-name qt-4.3.3-1-lib.zip
-file qt-gpg4win-4.3.3-1-lib.zip
-chk  6f33ba41210d18d59b93cd331d0bdc6b107e132b
+name qt-4.4.0-4-lib.zip
+file qt-gpg4win-4.4.0-4-lib.zip
+chk  731e7bc44b4a71d75b012c43e080f7c67aa2acf7
 
-name qt-4.3.3-1-src.zip
-file qt-gpg4win-4.3.3-1-src.zip
-chk  3f918cc7d0a4e039db53df97cdce7aeac408d90c
+name qt-4.4.0-4-src.zip
+file qt-gpg4win-4.4.0-4-src.zip
+chk  3c86381ba5c416c6728ff5b839379cca9208f0c3
 
 #
 # Qt contains DBus and thus depends on kdesupport, which is a random
@@ -349,16 +349,16 @@ chk  3f918cc7d0a4e039db53df97cdce7aeac408d90c
 
 server ftp://ftp.kdab.net/pub/gpg4win
 
-file kdesupport-4.0.0-3-bin.zip
-chk 3f853554066e49cd2f91f82215cfce72edbebb14
+file kdesupport-4.1-bin.zip
+chk 313b92fe2f706820ce554ae4cefbd1d3c294fc91
 
 # FIXME: This does not actually contain the development files, but
 # further binary files we need.
-file kdesupport-4.0.0-3-lib.zip
-chk 92ed0b77f4bcf7faae0924c92d382c64804686a1
+file kdesupport-4.1-lib.zip
+chk 2165a07dadcb34e3e3ef2a28a166df22cb35dd5c
 
-file kdesupport-4.0.0-3-src.zip
-chk 8a23a3ba8158b64cd5362cf88a58cd44be8a8b73
+file kdesupport-4.1-src.zip
+chk 09cf97659df49f3bb78152dfc2e6e3e30bb6455a
 
 # oxygen-icons
 #
@@ -366,36 +366,35 @@ chk 8a23a3ba8158b64cd5362cf88a58cd44be8a8b73
 
 server ftp://ftp.kdab.net/pub/gpg4win
 
-name oxygen-icons-20080104-bin.zip
-file oxygen-icons-20080104.zip
-chk  1aba4fc844259a20c72ca0a2718462efc1b1fc66
+name oxygen-icons-20080526-bin.zip
+file oxygen-icons-20080526.zip
+chk  86c68eef7ac8231124d5b594a65b9518b5450237
 
-file oxygen-icons-20080104-src.zip
-chk  ced2b1f3b111cf7f6cc28c4f7863a29cda05114b
-
+file oxygen-icons-20080526-src.zip
+chk  a4e673c1b1b1cc420e771413edc53ef89fe7773a
 
 # kdelibs
 
 server ftp://ftp.kdab.net/pub/gpg4win
 
-name kdelibs-20080512-bin.zip
-file kdelibs-for-kleo-20080512-bin.zip
-chk  b71eee889dc1c03e3d1c6e70b5503d71fd61a91a
+name kdelibs-20080526-bin.zip
+file kdelibs-for-kleo-20080526-bin.zip
+chk  cffd6f95db3c0fd52623c6805943b09cc768a31e
 
-name kdelibs-20080512-lib.zip
-file kdelibs-for-kleo-20080512-dev.zip
-chk  b51fb0d976ca46413e16894f3f6036604bf9f067
+name kdelibs-20080526-lib.zip
+file kdelibs-for-kleo-20080526-dev.zip
+chk  5cb519634735479ec7138fa0324ac5ec82371a2a
 
-name kdelibs-20080512-src.zip
-file kdelibs-for-kleo-20080512-src.zip
-chk  ad606f7010263aaea1d3a23d55eb7a0bb212a87e
+name kdelibs-20080526-src.zip
+file kdelibs-for-kleo-20080526-src.zip
+chk  d8ea0b5558fc56d8320368d0c671b28a2e93a00f
 
 # Kleopatra
 
 server ftp://ftp.kdab.net/pub/gpg4win
 
-file kleopatra-20080512-bin.zip
-chk  9e3907f2d66f063df64206b10dfcd21bc53d99d1
+file kleopatra-20080526-bin.zip
+chk  6ead93dff24f9a39e101b7e3e7731d3c9a40224b
 
-file kleopatra-20080512-src.zip
-chk  35bd995414ea5f397e70f8c82ea051013a075d87
+file kleopatra-20080526-src.zip
+chk  7b1cc5a7bb1e397ae928b09d4bec0799c6f2a4fe
