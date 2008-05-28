@@ -1,5 +1,7 @@
 2008-05-28  Werner Koch  <wk@g10code.com>
 
+	Release 1.9.2 beta version.
+
 	* src/inst-kleopatra.nsi: Update description in installer.
 
 	* src/inst-kdelibs.nsi: Install kbuildsycoca4 into bin/.
