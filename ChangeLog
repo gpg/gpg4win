@@ -1,5 +1,9 @@
 2008-05-28  Werner Koch  <wk@g10code.com>
 
+	* src/inst-kdelibs.nsi: Install kbuildsycoca4 into bin/.
+	* src/uninst-kdelibs.nsi: Uninstall it.
+	* src/kleowrap.c (run_kbuildsycoca): Execute kbuildsycoca4 via bin/.
+
 	* patches/gpa/01-no-uiserver.patch: Remove.
 
 	* patches/gpgol/01-last-minute.patch: Remove.

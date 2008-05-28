@@ -33,6 +33,7 @@ Section "-un.kdelibs"
 
   # FIXME: See inst-kleopatra.nsi
   Delete "$INSTDIR\bin\kcmdwrapper.exe"
+  Delete "$INSTDIR\bin\kbuildsycoca4.exe"
   RMDir "$INSTDIR\bin"
 
   Delete "$INSTDIR\kded_globalaccel.dll"
@@ -44,6 +45,7 @@ Section "-un.kdelibs"
   Delete "$INSTDIR\libgpgme++.dll"
   Delete "$INSTDIR\libgpgme++-qt.dll"
   Delete "$INSTDIR\libgpgme++-glib.dll"
+  # Old (but correct) location, better delete it too.
   Delete "$INSTDIR\kbuildsycoca4.exe"
 
   Delete "$INSTDIR\share\locale\all_languages"

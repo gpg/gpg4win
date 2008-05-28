@@ -36,9 +36,9 @@ Section "-kdelibs" SEC_kdelibs
   # Relocate this when dbus-daemon is relocated.
   SetOutPath "$INSTDIR\bin"
   File ${prefix}/bin/kcmdwrapper.exe
+  File ${prefix}/bin/kbuildsycoca4.exe
   SetOutPath "$INSTDIR"
 
-  File ${prefix}/bin/kbuildsycoca4.exe
   File ${prefix}/bin/libgpgme++-glib.dll
   File ${prefix}/bin/libgpgme++-qt.dll
   File ${prefix}/bin/libgpgme++.dll

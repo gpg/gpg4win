@@ -236,9 +236,9 @@ run_kbuildsycoca (void)
     }
 
   argv[0] = NULL;
-  rc = spawn_process_and_wait ("kbuildsycoca4.exe", argv);
+  rc = spawn_process_and_wait ("bin\\kbuildsycoca4.exe", argv);
   if (rc)
-    fprintf (stderr, "Executing kbuildsycoca4.exe failed: %i\n", rc);
+    fprintf (stderr, "Executing bin\\kbuildsycoca4.exe failed: %i\n", rc);
 
   return rc;
 }
