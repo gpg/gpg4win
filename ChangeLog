@@ -1,5 +1,7 @@
 2008-05-28  Werner Koch  <wk@g10code.com>
 
+	* src/inst-kleopatra.nsi: Update description in installer.
+
 	* src/inst-kdelibs.nsi: Install kbuildsycoca4 into bin/.
 	* src/uninst-kdelibs.nsi: Uninstall it.
 	* src/kleowrap.c (run_kbuildsycoca): Execute kbuildsycoca4 via bin/.

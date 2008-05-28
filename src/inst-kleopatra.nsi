@@ -193,7 +193,8 @@ ${MementoSectionEnd}
 
 
 LangString DESC_SEC_kleopatra ${LANG_ENGLISH} \
-   "Kleopatra"
+   "Keymanager for OpenPGP and X.509 and common crypto dialogs."
+
 
 LangString DESC_Menu_kleopatra ${LANG_ENGLISH} \
    "Run the Kleopatra key management tool."
