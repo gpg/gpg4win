@@ -230,8 +230,8 @@ chk   050f93a0d74385ce90e8934e49c11f171d495c5a
 #
 server ftp://ftp.g10code.com/g10code/gpgol/alpha
 
-file gpgol-0.10.13.tar.bz2
-chk  bd65353b20c53201e307d6f0cfecb71b666a1c51
+file gpgol-0.10.14.tar.bz2
+chk  79a44c9b4eb6ca996ef26659255e4dd86af03b80
 
 
 #
@@ -303,6 +303,7 @@ file gpgme-1.1.7-svn1313.tar.bz2
 chk  526325d020e533a0a9ebe4b34b581ad287c08d18
 
 
+
 #
 # adns
 #
@@ -321,8 +322,8 @@ chk  6255a7958dc9e735c3f76595cd973abca09c1f93
 #chk  bb9182cd4c6bd6677ba9cdcca262dcc1b1d22c3c
 
 server ftp://ftp.g10code.com/g10code/scratch
-file gpa-0.7.7-svn859.tar.bz2
-chk  3f855b5dcae2159602cfad7d5757f776fa5532e9
+file gpa-0.7.7-svn897.tar.bz2
+chk  712f829ae5f5c44665371ace1810ab95fa646f39
 
 
 #
