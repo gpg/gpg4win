@@ -10,7 +10,7 @@
 
 	* patches/gpgol/01-last-minute.patch: Remove.
 
-	* packages/packages.current: Update gpgol and gpa.
+	* packages/packages.current: Update gpgol, gpa and kleopatra.
 
 2008-05-27  Werner Koch  <wk@g10code.com>
 
