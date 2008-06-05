@@ -1735,6 +1735,13 @@ daher ist der erste Schritt ein Verzeichnis für
 das Logbuch zu erstellen. Denkbar ist z.B.
 \Filename{C:\back{}TEMP\back{}kleologdir}.
 
+Bitte beachten Sie hierbei, dass es hier um Einstellungen
+des Anwenders, nicht des Systemadministrators geht.
+Die Einstellungen müssen also für jeden Anwender der ein
+Logbuch erstellen möchte separat vorgenommen werden und dabei
+insbesondere aufgepasst werden, dass unterschiedliche \Filename{kleologdir}
+Verzeichnisse verwendet werden.
+
 Der Pfad zu diesem Verzeichnis muss nun in der Umgebungsvariable
 ,,KLEOPATRA\_LOGDIR'' vermerkt werden:
 
@@ -1782,7 +1789,8 @@ in einer Eingabeaufforderung das Kommando \verb:regedit: ausführt.
 Wählen Sie nun das GpgOL Verzeichnis
 (\verb:HKEY_CURRENT_USER\Software\GNU\GpgOL:)
 im auf der linken Seite dargestellten
-Verzeichnisbaum.
+Verzeichnisbaum. Existiert dieser Registry-Pfad noch nicht, so
+legen Sie ihn zunächst an.
 
 Auf der rechten Seite wählen Sie nun über die rechte Maustaste den
 Menüeintrag ,,Neu/Zeichenfolge''.
