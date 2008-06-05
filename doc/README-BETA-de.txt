@@ -11,7 +11,7 @@ Wichtige Informationen zum Einsatz von Gpg4win 1.9-BETA
   neue Version kennenzulernen und Verbesserungsvorschläge
   einzubringen.
 
-Stand: Gpg4win-1.9.1 (20080514)
+Stand: Gpg4win-1.9.2 (20080605)
 
 Hier finden sich wichtige Informationen die bei der
 Entscheidung helfen sollen, ob Gpg4win 1.9 schon für
@@ -44,7 +44,7 @@ Inhalt dieses Dokumentes:
 * Wichtige Hinweise zur Verwendung von S/MIME
 * Migration
 * Wichtigste Änderungen von Gpg4win 1.9 gegenüber 1.1
-* Wichtigste Änderungen von Gpg4win 1.9.1 gegenüber 1.9.0
+* Wichtigste Änderungen von Gpg4win 1.9.2 gegenüber 1.9.1
 
 
 Wichtige Hinweise zur vorliegenden Version
@@ -166,7 +166,7 @@ durchzuführen.
   noch nicht alle mit aussagekräftigen Fehlermeldungen
   ausgestattet sind.
 
-  Solle also eine S/MIME Operation nicht funktionieren,
+  Solle also eine S/MIME Operation (egal welche) nicht funktionieren,
   schalten sie testweise die Verwendung von Sperrlisten aus
   und prüfen Sie ob das Problem dann nicht mehr auftritt ist.
   Berichten Sie anschliessen Ihre Beobachtung an das Gpg4win
@@ -275,18 +275,15 @@ Neu:
     Dafür kann alternativ auf GPA oder WinPT zurückgegriffen werden.
 
 
-Wichtigste Änderungen von Gpg4win 1.9.1 gegenüber 1.9.0
+Wichtigste Änderungen von Gpg4win 1.9.2 gegenüber 1.9.1
 =======================================================
 
- * Claws Mail: Update von 3.1.0cvs370 auf 3.4.0
-
- * GpgOL: Verwendet nun Icons (toolbar etc)
+ * GpgOL, GnuPG, Installer und Kleopatra: Es sind viele kleine
+   und mittlere Probleme und Fehler behoben worden.
 
  * Kleopatra:
-  * Selbständiger Test auf mögliche Ausführungsprobleme
-  * Prüfungsergebnis nun in eigenem Dialog; gleicht der
-    in KMail verwendeten Form
-  * Signatur/Verschlüsselung: Die Dialog-Sequenz wurde überarbeitet.
-  * Audit-Log Unterstützung
-  * Fortschrittsbalken bei der Behandlung von Dateien
-  * Zwischenablage Unterstützung
+   * Es fand ein Wechsel der zugrundliegenden Bilbiotheken
+     statt (u.a. QT 4.3 auf QT 4.4).
+     Einige Fehler der graphischen Oberfläche sind nun weg,
+     ein paar andere sind neu aufgetaucht. Deren Beseitigung
+     ist für 1.9.3 geplant.

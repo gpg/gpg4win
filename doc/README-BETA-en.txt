@@ -9,7 +9,7 @@ Important Hints for Using Gpg4win 1.9-BETA
   experienced users or administrators to learn
   about the upcoming version and suggest changes.
 
-Status: Gpg4win-1.9.1 (20080514)
+Status: Gpg4win-1.9.2 (20080605)
 
 This text covers information that are
 intended to help judging whether Gpg4win 1.9
@@ -41,7 +41,7 @@ Contents of this document:
 * Important hints for using S/MIME
 * Migration
 * Most important changes in Gpg4win 1.9 compared to 1.1
-* Most important changes in Gpg4win 1.9.1 compared to 1.9.0
+* Most important changes in Gpg4win 1.9.2 compared to 1.9.1
 
 
 Important hints for present version
@@ -254,18 +254,13 @@ Neu:
     You can use GPA or WinPT for the missing functionality.
 
 
-Most important changes in Gpg4win 1.9.1 compared to 1.9.0
+Most important changes in Gpg4win 1.9.2 compared to 1.9.1
 =========================================================
 
- * Claws Mail: Update from 3.1.0cvs370 to 3.4.0
-
- * GpgOL: Now uses Icons (toolbar etc).
+ * GpgOL, GnuPG, Installer and Kleopatra: Several minor
+   and medium problems and errors were fixed.
 
  * Kleopatra:
-  * Integrated test for potential execution problems
-  * Verfification results now in a special dialog; applies
-    similar appearance as KMail does
-  * Sign/Encrypt: Dialog sequence has been reworked.
-  * Audit-Log support
-  * Progress bar when handling files
-  * Clipboard support
+   * The base libraries have been upgraded (QT 4.3 to QT 4.4 among others).
+     Due to this, several errors in the GUI are gone now,
+     but some others are newly introduced. Fixing these is planned for 1.9.3.
