@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gpg4win 1.1.1-svn417\n"
 "Report-Msgid-Bugs-To: gpg4win-devel@wald.intevation.org\n"
-"POT-Creation-Date: 2008-05-28 11:25+0200\n"
+"POT-Creation-Date: 2008-06-05 21:09+0200\n"
 "PO-Revision-Date: 2008-05-28 11:48+0200\n"
 "Last-Translator: Marcus Brinkmann <mb@g10code.com>\n"
 "Language-Team: German <translation-team-de@lists.sourceforge.net>\n"
@@ -379,16 +379,8 @@ msgid "EudoraGPG is a plugin for the Eudora mail program"
 msgstr ""
 "EudoraGPG ist ein Plugin zur Verschlüsselung für das Eudora Mailprogramm"
 
-#: src/inst-gnupg2.nsi:118
+#: src/inst-gnupg2.nsi:141
 msgctxt "DESC_SEC_gnupg2"
-msgid "GNU Privacy Guard with S/MIME support"
-msgstr ""
-"Diese Version von GnuPG kann zusätzlich installiert werden um "
-"Verschlüsselung mittels S/MIME bereitzustellen.  Bitte beachten Sie, daß "
-"diese Option noch nicht vollständig unterstützt ist."
-
-#: src/inst-gnupg.nsi:108
-msgctxt "DESC_SEC_gnupg"
 msgid "GNU Privacy Guard"
 msgstr ""
 "Der GNU Privacy Guard (GnuPG) ist der Kernbestandteil dieser Software.  "
@@ -412,12 +404,12 @@ msgstr ""
 "Das Schlüsselverwaltungsprogramm GNU Privacy Assistent aufrufen.  Dies ist "
 "eine Alternative zu dem WinPT Programm."
 
-#: src/inst-gpg4win.nsi:43
+#: src/inst-gpg4win.nsi:66
 msgctxt "DESC_Menu_gpg4win_readme"
 msgid "General information on Gpg4Win"
 msgstr "Allgemeine Informationen zu Gpg4Win"
 
-#: src/inst-gpg4win.nsi:46
+#: src/inst-gpg4win.nsi:69
 msgctxt "DESC_Menu_gnupg_faq"
 msgid "Show the Frequently Asked Questions Document for GnuPG"
 msgstr "Das Dokument mit den häufig gestellten Fragen (FAQ) zu GnuPG anzeigen"
@@ -466,7 +458,9 @@ msgstr ""
 #: src/inst-kleopatra.nsi:195
 msgctxt "DESC_SEC_kleopatra"
 msgid "Keymanager for OpenPGP and X.509 and common crypto dialogs."
-msgstr "Schlüsselmanager für OpenPGP und X.509 (S/MIME) sowie einheitliche Benutzerführung für alle Krypto-Operationen."
+msgstr ""
+"Schlüsselmanager für OpenPGP und X.509 (S/MIME) sowie einheitliche "
+"Benutzerführung für alle Krypto-Operationen."
 
 #: src/inst-kleopatra.nsi:199
 msgctxt "DESC_Menu_kleopatra"
@@ -551,4 +545,3 @@ msgstr ""
 "Das Schlüsselverwaltungsprogramm Windows Privacy Tray aufrufen.  Dies ist "
 "ein vielseitiges Programm zur Schlüsselverwaltung und Verschlüsselung.  Es "
 "installiert sich in die Startleiste."
-

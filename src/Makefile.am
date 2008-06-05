@@ -1,5 +1,5 @@
 # Makefile.am - Installer for GnuPG 4 Windows Makefile.
-# Copyright (C) 2005, 2006, 2007 g10 Code GmbH
+# Copyright (C) 2005, 2006, 2007, 2008 g10 Code GmbH
 # 
 # This file is part of Gpg4win.
 # 
@@ -37,7 +37,6 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi config.site \
         inst-gettext.nsi	   uninst-gettext.nsi	      \
         inst-glib.nsi		   uninst-glib.nsi	      \
         inst-gnupg2.nsi		   uninst-gnupg2.nsi	      \
-        inst-gnupg.nsi		   uninst-gnupg.nsi	      \
         inst-gpa.nsi		   uninst-gpa.nsi	      \
         inst-gpgee.nsi		   uninst-gpgee.nsi	      \
         inst-gpgme.nsi		   uninst-gpgme.nsi	      \
@@ -74,10 +73,11 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi config.site \
 
 # Need to clean the dll because we bypassed automake.
 CLEANFILES = g4wihelp.dll versioninfo.txt README.en.txt README.de.txt \
-             installer-options.ini NEWS.tmp gpgwrap.exe kleowrap.exe
+             installer-options.ini NEWS.tmp \
+	     gpgwrap.exe gpgwrap-2.exe kleowrap.exe
 
 # Supported source packages.
-gpg4win_spkgs = glib gnupg libgpg-error gpgme gpgol gpgex \
+gpg4win_spkgs = glib libgpg-error gpgme gpgol gpgex \
 		gpa winpt libgsasl libtasn1 opencdk gnutls \
                 libetpan claws-mail gnupg2 pinentry \
 		libassuan libksba libgcrypt adns dirmngr w32pth
@@ -91,29 +91,18 @@ gpg4win_pkg_glib_configure = \
 
 # The GnuPG package provides man pages which we have to convert.
 # We also create the MO files here.
-define gpg4win_pkg_gnupg_post_install	
-(man -Tlatin1 -l $$$${pkgidir}/share/man/man1/gpg.1 | \
- sed `printf "s/_\b//g;s/\b.//g"` | \
- sed -e 's/$$$$/\r/' > $$$${pkgidir}/share/man/man1/gpg.man; \
-man -Tlatin1 -l $$$${pkgidir}/share/man/man1/gpgv.1 | \
- sed `printf "s/_\b//g;s/\b.//g"` | \
- sed -e 's/$$$$/\r/' > $$$${pkgidir}/share/man/man1/gpgv.man; \
-man -Tlatin1 -l $$$${pkgidir}/share/man/man7/gnupg.7 | \
- sed `printf "s/_\b//g;s/\b.//g"` | \
- sed -e 's/$$$$/\r/' > $$$${pkgidir}/share/man/man7/gnupg.man)
-endef
-
-
-# The fields FAQ and faq.html conflict with those in GnuPG1.
-# For now remove them.
-define gpg4win_pkg_gnupg2_post_install	
-( rm $$$${pkgidir}/share/gnupg/FAQ; \
-  rm $$$${pkgidir}/share/gnupg/faq.html; \
-  for i in `$(tsdir)/src/potomo --get-linguas $$$${pkgsdir}/po` ; do \
+define gpg4win_pkg_gnupg2_post_install
+(for i in gpg2 gpgv2 gpgsm gpg-agent scdaemon gpg-connect-agent gpgconf ; \
+  do man -Tlatin1 -l $$$${pkgidir}/share/man/man1/$$$${i}.1 | \
+    sed `printf "s/_\b//g;s/\b.//g"` | \
+    sed -e 's/$$$$/\r/' > $$$${pkgidir}/share/man/man1/$$$${i}.man ; \
+ done ; \
+ for i in `$(tsdir)/src/potomo --get-linguas $$$${pkgsdir}/po` ; do \
      $(tsdir)/src/potomo $$$${pkgsdir}/po/$$$${i}.po \
                       $$$${pkgidir}/share/gnupg/$$$${i}.mo ; \
-  done)
+ done)
 endef
+
 
 
 # Build the reference manual.
@@ -148,15 +137,13 @@ gpg4win_pkg_dirmngr_configure = \
   --with-libassuan-prefix=$(idir) \
   --with-pth-prefix=$(idir)
 
-gpg4win_pkg_gnupg_configure = \
-  --with-bzip2=$(idir) 
-
 gpg4win_pkg_gnupg2_configure = \
   --with-gpg-error-prefix=$(idir) \
   --with-ksba-prefix=$(idir) \
   --with-libgcrypt-prefix=$(idir) \
   --with-libassuan-prefix=$(idir) \
   --with-zlib=$(idir) \
+  --with-bzip2=$(idir) \
   --with-pth-prefix=$(idir) \
   --with-adns=$(idir) \
   --without-included-gettext \
@@ -407,19 +394,21 @@ README.de.txt : versioninfo.txt NEWS.tmp $(top_srcdir)/doc/README.de.txt
 # if makensis changed to the directory of the source file at startup.
 # So we have to pull a couple of strings to correct this.
 gpg4win-$(VERSION).exe: gpg4win.nsi $(common_nsi) stamps/stamp-final \
-                        g4wihelp.dll gpgwrap.exe kleowrap.exe README.en.txt \
+                        g4wihelp.dll gpgwrap.exe gpgwrap-2.exe kleowrap.exe \
+                        README.en.txt \
 			README.de.txt installer-options.ini versioninfo.txt
 	$(MAKENSIS) -V3 -DBUILD_DIR=`pwd` -DTOP_SRCDIR=$(top_srcdir) \
 		-DSRCDIR=$(srcdir) $(srcdir)/gpg4win.nsi
 
 gpg4win-light-$(VERSION).exe: gpg4win.nsi $(common_nsi) stamps/stamp-final \
-                        g4wihelp.dll gpgwrap.exe kleowrap.exe README.en.txt \
+                        g4wihelp.dll gpgwrap.exe gpgwrap-2.exe kleowrap.exe \
+                        README.en.txt \
 			README.de.txt installer-options.ini versioninfo.txt
 	$(MAKENSIS) -V3 -DBUILD_DIR=`pwd` -DTOP_SRCDIR=$(top_srcdir) \
 		-DSRCDIR=$(srcdir) -DGPG4WIN_LIGHT=1 $(srcdir)/gpg4win.nsi
 
 gpg4win-$(VERSION).wix: gpg4win.nsi $(common_nsi) stamps/stamp-final \
-			gpgwrap.exe kleowrap.exe README.en.txt \
+			gpgwrap.exe gpgwrap-2.exe kleowrap.exe README.en.txt \
 			README.de.txt versioninfo.txt
 	perl make-msi.pl --guids $(srcdir)/make-msi.guids \
 		--manifest gpg4win-$(VERSION).files \
@@ -427,7 +416,7 @@ gpg4win-$(VERSION).wix: gpg4win.nsi $(common_nsi) stamps/stamp-final \
 		-DSRCDIR=$(srcdir) $(srcdir)/gpg4win.nsi > $@
 
 gpg4win-light-$(VERSION).wix: gpg4win.nsi $(common_nsi) stamps/stamp-final \
-			gpgwrap.exe kleowrap.exe README.en.txt \
+			gpgwrap.exe gpgwrap-2.exe kleowrap.exe README.en.txt \
 			README.de.txt versioninfo.txt
 	perl make-msi.pl --guids $(srcdir)/make-msi.guids \
 		--manifest gpg4win-light-$(VERSION).files \
@@ -454,6 +443,10 @@ g4wihelp.dll: g4wihelp.c exdll.h
 
 gpgwrap.exe: gpgwrap.c
 	$(CC) -I. -I.. -DHAVE_CONFIG_H -O2 -o $@ $^
+	$(STRIP) $@
+
+gpgwrap-2.exe: gpgwrap.c
+	$(CC) -I. -I.. -DHAVE_CONFIG_H -DGPGWRAP_VARIANT=2 -O2 -o $@ $^
 	$(STRIP) $@
 
 kleowrap.exe: kleowrap.c

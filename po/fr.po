@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ngoinabox\n"
 "Report-Msgid-Bugs-To: gpg4win-devel@wald.intevation.org\n"
-"POT-Creation-Date: 2008-05-28 11:25+0200\n"
+"POT-Creation-Date: 2008-06-05 21:09+0200\n"
 "PO-Revision-Date: 2008-03-10 16:46+0100\n"
 "Last-Translator: Fabian Rodriguez <magicfab@member.fsf.org>\n"
 "Language-Team: FRENCH <aep.lists@it46.se>\n"
@@ -333,13 +333,9 @@ msgid "EudoraGPG is a plugin for the Eudora mail program"
 msgstr ""
 "EudoraGPG est un plugin pour le logiciel de courrier électronique d'Eudora"
 
-#: src/inst-gnupg2.nsi:118
+#: src/inst-gnupg2.nsi:141
+#, fuzzy
 msgctxt "DESC_SEC_gnupg2"
-msgid "GNU Privacy Guard with S/MIME support"
-msgstr "GNU Privacy Guard avec l'appui de S/MIME"
-
-#: src/inst-gnupg.nsi:108
-msgctxt "DESC_SEC_gnupg"
 msgid "GNU Privacy Guard"
 msgstr "GNU Privacy Guard"
 
@@ -357,12 +353,12 @@ msgstr ""
 "Courez le GNU Privacy Assistant outil pour gestionner le clé. C'est une "
 "alternative à l'outil de gestion de clé de WinPT."
 
-#: src/inst-gpg4win.nsi:43
+#: src/inst-gpg4win.nsi:66
 msgctxt "DESC_Menu_gpg4win_readme"
 msgid "General information on Gpg4Win"
 msgstr "Informations générales sur Gpg4Win"
 
-#: src/inst-gpg4win.nsi:46
+#: src/inst-gpg4win.nsi:69
 msgctxt "DESC_Menu_gnupg_faq"
 msgid "Show the Frequently Asked Questions Document for GnuPG"
 msgstr "Montrez le document fréquemment demandé de questions pour GnuPG"
@@ -491,6 +487,10 @@ msgid ""
 msgstr ""
 "Courez l'outil de gestion de clé de plateau d'privé de Windows. C'est une "
 "clé souple outil de gestion de clé et de cryptage."
+
+#~ msgctxt "DESC_SEC_gnupg2"
+#~ msgid "GNU Privacy Guard with S/MIME support"
+#~ msgstr "GNU Privacy Guard avec l'appui de S/MIME"
 
 #~ msgctxt "DESC_SEC_kleopatra"
 #~ msgid "Kleopatra"

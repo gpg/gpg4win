@@ -14,10 +14,16 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
- * MA 02110-1301, USA.
+ * along with this program; if not, see <http://www.gnu.org/licenses/>.
  */
+
+/* The operation mode of this wrapper can be controlled by the
+   GPGWRAP_VARIANT macro.  The following variants are defined:
+
+     0 = Standard.
+     2 = Also insert a "2" right before the .exe.
+
+*/
 
 #ifdef HAVE_CONFIG_H
 #include <config.h>
@@ -27,6 +33,13 @@
 #include <string.h>
 #include <process.h>
 #include <windows.h>
+
+
+#if GPGWRAP_VARIANT == 2
+# define PGM_SUFFIX "-2"
+#else
+# define PGM_SUFFIX ""
+#endif
 
 
 /* Return a copy of ARGV, but with proper quoting.  To release the
@@ -108,7 +121,8 @@ main (int argc, const char * const *argv)
   char *p, *p0;
   char **argv_quoted;
 
-  if (!GetModuleFileNameA (NULL, pgm, sizeof (pgm) - 1))
+  /* Note: We decrement by one to allow inserting one character.  */
+  if (!GetModuleFileNameA (NULL, pgm, sizeof (pgm) - 1 - 1))
     {
       fprintf (stderr, "gpgwrap: error getting my own name: rc=%d\n",
                GetLastError());
@@ -128,6 +142,16 @@ main (int argc, const char * const *argv)
     *p0++ = *p++;
   *p0 = 0;
 
+#if GPGWRAP_VARIANT == 2
+  p = strrchr (pgm, '.');
+  if (p)
+    {
+      memmove (p+1, p, strlen (p)+1);
+      *p = '2';
+    }
+#endif /* GPGWRAP_VARIANT == 2 */
+
+
   /* Hack to output our own version along with the real file name
      before the actual, we require that the --version option is given
      twice. */
@@ -135,7 +159,7 @@ main (int argc, const char * const *argv)
       && !strcmp(argv[1], "--version")
       && !strcmp(argv[2], "--version"))
     {
-      fputs ("gpgwrap (Gpg4win) " PACKAGE_VERSION " ;", stdout);
+      fputs ("gpgwrap" PGM_SUFFIX " (Gpg4win) " PACKAGE_VERSION " ;", stdout);
       fputs (pgm, stdout);
       fputc ('\n', stdout);
       fflush (stdout);

@@ -30,7 +30,7 @@ Section "-un.libetpan"
   Call un.SourceDelete
 !else
 
-  Delete "$INSTDIR\libetpan-11.dll"
+  Delete "$INSTDIR\libetpan-13.dll"
   RMDir "$INSTDIR"
 !endif
 SectionEnd

@@ -1,3 +1,27 @@
+2008-06-05  Werner Koch  <wk@g10code.com>
+
+	* src/uninst-libetpan.nsi: Remove libetpan-13.
+	* src/uninst-kleopatra.nsi: Remove kwatchgnupg dirs.
+	* src/uninst-qt.nsi: Remove two resource dlls.
+	* src/uninst-gtk+.nsi: Remove foo-properties.mo.
+
+	* packages/packages.current: Remove GnuPG-1.  Remove WinPT.
+	* configure.ac: Remove gnupg and replace by gnupg2.  Remove GPGee.
+	* include/config.nsi.in: Remove GnuPG.
+	* src/inst-gnupg2.nsi: Update to fully replace gnupg1.
+	* src/inst-gnupg.nsi: Remove.  Move some common code to ...
+	* src/inst-gpg4win.nsi: .. here.
+	* src/uninst-gnupg.nsi: Remove. Move some common code to ..
+	* src/uninst-gpg4win.nsi: .. here.
+	* src/inst-sections.nsi: Remove inst-gnupg.nsi and uninst-gnupg.nsi.
+	* src/Makefile.am: Ditto.
+	(gpg4win_pkg_gnupg_post_install): Remove.
+	(gpg4win_pkg_gnupg2_post_install): Convert man pages.
+	(gpg4win_pkg_gnupg2_configure): Add --with-bzip2. 
+
+	* src/Makefile.am (gpgwrap-2.exe): New.
+	* src/gpgwrap.c (main): Support variant 2 of that program.
+
 2008-05-28  Werner Koch  <wk@g10code.com>
 
 	Release 1.9.2 beta version.

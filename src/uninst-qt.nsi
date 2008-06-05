@@ -71,6 +71,7 @@ Section "-un.qt"
   RMDir "$INSTDIR\plugins\designer"
 
   Delete "$INSTDIR\plugins\iconengines\qsvg4.dll"
+  Delete "$INSTDIR\plugins\iconengines\qsvgicon4.dll"
 
   RMDir "$INSTDIR\plugins\iconengines"
 
@@ -84,9 +85,12 @@ Section "-un.qt"
   RMDir "$INSTDIR\plugins\imageformats"
 
   Delete "$INSTDIR\plugins\script\qtscriptdbus4.dll"
-
   RMDir "$INSTDIR\plugins\script"
-  RMDir "$INSTDIR\plugins"
+
+  Delete "$INSTDIR\plugins\sqldrivers\qsqlite4.dll"
+  RMDir  "$INSTDIR\plugins\sqldrivers"
+
+  RMDir  "$INSTDIR\plugins"
 
   Delete "$INSTDIR\translations\assistant_adp_de.qm"
 #  Delete "$INSTDIR\translations\assistant_adp_ja.qm"

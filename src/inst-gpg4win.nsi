@@ -36,6 +36,29 @@ Section "-gpg4win" SEC_gpg4win
   FileWrite $0 "${VERSION}$\r$\n"
   FileClose $0
 
+  # Register the install directory.
+  WriteRegStr HKLM "Software\GNU\GnuPG" "Install Directory" $INSTDIR
+
+  # We used to determine the language using a Registry entry.
+  # Although we don't want to delete the user's Lang Resgistry Setting
+  # becuase he might have have selected a different language than his
+  # default.  We delete the global Lang of the installation.
+  DeleteRegValue HKLM "Software\GNU\GnuPG" "Lang" 
+
+  # This old key is required for GPGee.  Please do not use in new
+  # applications.
+  # Note: We don't use it anymore so that gpgme decides what gpg to use
+  #       For the new gpg4win we actually use gpg2.exe.
+  #       To cope with old installations we actually remove this value.
+  #       However we can only remove the HKLM version not those set by
+  #       the user under HKCU.
+  #WriteRegStr HKLM "Software\GNU\GnuPG" "gpgProgram" "$INSTDIR\gpg.exe"
+  DeleteRegValue HKLM "Software\GNU\GnuPG" "gpgProgram"
+
+  # Add the public directory to the PATH
+  Push "$INSTDIR\pub"
+  Call AddToPath
+
 !endif
 
 SectionEnd

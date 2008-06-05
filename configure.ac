@@ -25,8 +25,8 @@ min_automake_version="1.9.3"
 # Set my_issvn to "yes" for non-released code.  Remember to run an
 # "svn up" and "autogen.sh" right before creating a distribution.
 # Right after a release the make target "copy-news" is to be called!
-m4_define([my_version], [1.9.2-beta])
-m4_define([my_issvn], [no])
+m4_define([my_version], [1.9.3-beta])
+m4_define([my_issvn], [svn])
 
 m4_define([svn_revision], m4_esyscmd([echo -n $( (svn info 2>/dev/null \
           ||echo 'Revision: 0')|sed -n '/^Revision:/ s/[^0-9]//gp'|head -1)]))
@@ -182,8 +182,6 @@ GPG4WIN_BPKG_GTK_DEV([atk], [glib pkgconfig])
 GPG4WIN_BPKG_GTK_DEV([pango], [glib pkgconfig])
 GPG4WIN_BPKG_GTK_DEV([cairo], [glib pkgconfig])
 
-GPG4WIN_BPKG_BINSRC([GPGee], [gnupg])
-
 GPG4WIN_SPKG([bzip2])
 GPG4WIN_SPKG([adns])
 GPG4WIN_SPKG([libgpg-error], [libiconv gettext])
@@ -193,15 +191,14 @@ GPG4WIN_SPKG([libassuan], [w32pth])
 GPG4WIN_SPKG([dirmngr], [libgpg-error libgcrypt libassuan libksba])
 GPG4WIN_SPKG([w32pth])
 GPG4WIN_SPKG([pinentry], [libiconv gtk+])
-GPG4WIN_SPKG([gpgme], [libgpg-error gnupg glib])
-GPG4WIN_SPKG([gnupg], [libiconv bzip2])
+GPG4WIN_SPKG([gpgme], [libgpg-error gnupg2 glib])
 GPG4WIN_SPKG([gnupg2], [libiconv libgcrypt libksba libassuan libgpg-error dnl
                         w32pth zlib bzip2 adns pinentry])
 GPG4WIN_SPKG([pthreads-w32])
 GPG4WIN_SPKG([gpgol], [gpgme libassuan])
 GPG4WIN_SPKG([gpgex], [libassuan])
 GPG4WIN_SPKG([gpa], [libiconv gettext zlib gtk+ libpng glib gpgme])
-GPG4WIN_SPKG([winpt], [gpgme gnupg])
+GPG4WIN_SPKG([winpt], [gpgme gnupg2])
 GPG4WIN_SPKG([libgsasl])
 GPG4WIN_SPKG([libtasn1])
 GPG4WIN_SPKG([opencdk], [libgpg-error libgcrypt])
@@ -221,7 +218,7 @@ GPG4WIN_BPKG_GNUWIN32([kdesupport])
 GPG4WIN_BPKG_GNUWIN32([qt], [kdesupport])
 GPG4WIN_BPKG_BINSRC([oxygen-icons])
 GPG4WIN_BPKG_GNUWIN32([kdelibs], [qt oxygen-icons])
-GPG4WIN_BPKG_BINSRC([kleopatra], [gpgme gnupg gnupg2 kdelibs])
+GPG4WIN_BPKG_BINSRC([kleopatra], [gpgme gnupg2 kdelibs])
 
 GPG4WIN_FINALIZE
 

@@ -23,9 +23,6 @@
 
 !include "inst-gpg4win.nsi"
 
-!ifdef HAVE_PKG_GNUPG
-!include "inst-gnupg.nsi"
-!endif
 !ifdef HAVE_PKG_GNUPG2
 !include "inst-gnupg2.nsi"
 !endif
@@ -109,9 +106,6 @@
 !endif
 !ifdef HAVE_PKG_WINPT
 !include "inst-winpt.nsi"
-!endif
-!ifdef HAVE_PKG_GPGEE
-!include "inst-gpgee.nsi"
 !endif
 !ifdef HAVE_PKG_LIBGSASL
 !include "inst-libgsasl.nsi"
@@ -213,9 +207,6 @@
 !ifdef HAVE_PKG_LIBGSASL
 !include "uninst-libgsasl.nsi"
 !endif
-!ifdef HAVE_PKG_GPGEE
-!include "uninst-gpgee.nsi"
-!endif
 !ifdef HAVE_PKG_WINPT
 !include "uninst-winpt.nsi"
 !endif
@@ -302,9 +293,6 @@
 !ifdef HAVE_PKG_GNUPG2
 !include "uninst-gnupg2.nsi"
 !endif
-!ifdef HAVE_PKG_GNUPG
-!include "uninst-gnupg.nsi"
-!endif
 
 !include "uninst-gpg4win.nsi"
 
@@ -389,17 +377,6 @@ calc_defaults_gpa_done:
   StrCmp $R0 "0" 0 calc_defaults_winpt_done
    !insertmacro UnselectSection ${SEC_winpt}
 calc_defaults_winpt_done:
-!endif
-
-!ifdef HAVE_PKG_GPGEE
-  g4wihelp::config_fetch_bool "inst_gpgee"
-  StrCmp $R0 "1" 0 calc_defaults_gpgee_not_one
-   !insertmacro SelectSection ${SEC_gpgee}
-   Goto calc_defaults_gpgee_done
-  calc_defaults_gpgee_not_one:
-  StrCmp $R0 "0" 0 calc_defaults_gpgee_done
-   !insertmacro UnselectSection ${SEC_gpgee}
-calc_defaults_gpgee_done:
 !endif
 
 !ifdef HAVE_PKG_CLAWS_MAIL
@@ -560,11 +537,10 @@ Function CalcDepends
   !insertmacro UnselectSection ${SEC_kdelibs}
 !endif
 
-  # Always install gnupg and gnupg2.  This is also ensured by putting
+  # Always install gnupg2.  This is also ensured by putting
   # these packages in the RO section and enabling them by default, but
   # it doesn't harm to add it explicitely here as well.
 
-  !insertmacro SelectSection ${SEC_gnupg}
   !insertmacro SelectSection ${SEC_gnupg2}
 
   # Then enable all dependencies in reverse build list order!
@@ -608,19 +584,12 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_adns}
   !insertmacro SelectSection ${SEC_pinentry}
   !insertmacro SelectSection ${SEC_dirmngr}
-  # Because we need pinnetry, we also need to install GTK+
+  # Because we need pinentry, we also need to install GTK+
   !insertmacro SelectSection ${SEC_zlib}
   !insertmacro SelectSection ${SEC_gtk_}
   !insertmacro SelectSection ${SEC_libpng}
   !insertmacro SelectSection ${SEC_glib}
   skip_gnupg2:
-!endif
-
-!ifdef HAVE_PKG_GPGEE
-  !insertmacro SectionFlagIsSet ${SEC_gpgee} ${SF_SELECTED} have_gpgee skip_gpgee
-  have_gpgee:
-  !insertmacro SelectSection ${SEC_gpgme}
-  skip_gpgee:
 !endif
 
 !ifdef HAVE_PKG_WINPT
@@ -757,7 +726,7 @@ Function CalcDepends
   !insertmacro SectionFlagIsSet ${SEC_gpgme} \
 		${SF_SELECTED} have_gpgme skip_gpgme
   have_gpgme:
-  # GPGME does not depend on gnupg or gnupg2.  Do this in the
+  # GPGME does not depend on gnupg2.  Do this in the
   # actual application instead.
   !insertmacro SelectSection ${SEC_libgpg_error}
 !ifdef HAVE_PKG_QT
@@ -776,14 +745,6 @@ Function CalcDepends
   # Package "zlib" has no dependencies.
   # Package "pkgconfig" has no dependencies.
   # Package "libgpg-error" has no dependencies.
-
-!ifdef HAVE_PKG_GNUPG
-  !insertmacro SectionFlagIsSet ${SEC_gnupg} ${SF_SELECTED} have_gnupg skip_gnupg
-  have_gnupg:
-  !insertmacro SelectSection ${SEC_libiconv}
-  skip_gnupg:
-!endif
-
   # Package "libiconv" has no dependencies.
 
 !ifdef HAVE_PKG_KDELIBS
@@ -891,9 +852,6 @@ FunctionEnd
 # This must be in a central place.  Urgs.
 
 !insertmacro MUI_FUNCTION_DESCRIPTION_BEGIN
-!ifdef HAVE_PKG_GNUPG
-  !insertmacro MUI_DESCRIPTION_TEXT ${SEC_gnupg} $(DESC_SEC_gnupg)
-!endif
 !ifdef HAVE_PKG_GNUPG2
   !insertmacro MUI_DESCRIPTION_TEXT ${SEC_gnupg2} $(DESC_SEC_gnupg2)
 !endif
@@ -908,9 +866,6 @@ FunctionEnd
 !endif
 !ifdef HAVE_PKG_WINPT
   !insertmacro MUI_DESCRIPTION_TEXT ${SEC_winpt} $(DESC_SEC_winpt)
-!endif
-!ifdef HAVE_PKG_GPGEE
-  !insertmacro MUI_DESCRIPTION_TEXT ${SEC_gpgee} $(DESC_SEC_gpgee)
 !endif
 !ifdef HAVE_PKG_CLAWS_MAIL
   !insertmacro MUI_DESCRIPTION_TEXT ${SEC_claws_mail} $(DESC_SEC_claws_mail)
@@ -1059,16 +1014,6 @@ Section "-startmenu"
   no_man_advanced_de_menu:
 !endif
 
-!ifdef HAVE_PKG_GPGEE
-    SectionGetFlags ${SEC_gpgee} $R0 
-    IntOp $R0 $R0 & ${SF_SELECTED} 
-    IntCmp $R0 ${SF_SELECTED} 0 no_gpgee_menu 
-    CreateShortCut \
-        "$SMPROGRAMS\$STARTMENU_FOLDER\$(DESC_Menu_manuals)\GPGee Manual.lnk" \
-	"$INSTDIR\GPGee.hlp" "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_gpgee_hlp)
-  no_gpgee_menu:
-!endif
-
     CreateShortCut \
       "$SMPROGRAMS\$STARTMENU_FOLDER\$(DESC_Menu_manuals)\GnuPG FAQ.lnk" \
       "$INSTDIR\share\gnupg\faq.html" \
@@ -1209,15 +1154,6 @@ Section "-startmenu"
 	"$INSTDIR\share\gpg4win\durchblicker.pdf" \
         "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_man_advanced_de)
   no_man_advanced_de_desktop:
-!endif
-
-!ifdef HAVE_PKG_GPGEE
-    SectionGetFlags ${SEC_gpgee} $R0 
-    IntOp $R0 $R0 & ${SF_SELECTED} 
-    IntCmp $R0 ${SF_SELECTED} 0 no_gpgee_desktop
-    CreateShortCut "$DESKTOP\GPGee Manual.lnk" \
-	"$INSTDIR\GPGee.hlp" "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_gpgee_hlp)
-  no_gpgee_desktop:
 !endif
 
     CreateShortCut "$DESKTOP\$(DESC_Desktop_manuals)\GnuPG FAQ.lnk" \

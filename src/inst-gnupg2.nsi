@@ -1,5 +1,5 @@
 # inst-gnupg2.nsi - Installer snippet for gnupg2.     -*- coding: latin-1; -*-
-# Copyright (C) 2007 g10 Code GmbH
+# Copyright (C) 2007, 2008 g10 Code GmbH
 # 
 # This file is part of Gpg4win.
 # 
@@ -34,7 +34,12 @@ ${MementoSection} "GnuPG2" SEC_gnupg2
   File "${gpg4win_pkg_gnupg2}"
 !else
   File "${prefix}/bin/gpg2.exe"
+  File "${prefix}/bin/gpgv2.exe"
   File "${prefix}/bin/gpgsm.exe"
+
+  # Fixme: gpgsplit is missing.  I doubt that it makes sense to rename
+  # it like we did with gpg.  It might be better to install this tool
+  # into a subdirectory.
 
   ClearErrors
   SetOverwrite try
@@ -60,10 +65,18 @@ ${MementoSection} "GnuPG2" SEC_gnupg2
   File "${prefix}/libexec/gpg-protect-tool.exe"
   File "${prefix}/libexec/gpg-preset-passphrase.exe"
 
+  # Install the wrappers into the PATH included directory.  These are
+  # our poor hacker's symlinks.  We always install wrappers
+  # gpg[v]->gpg[v]2.  If old applications are not able to to work with
+  # gpg2, they may still install a gpg1 version and use the installed
+  # version directly without the wrapper.
   SetOutPath "$INSTDIR\pub"
+  File /oname=gpg.exe       "${BUILD_DIR}/gpgwrap-2.exe"
+  File /oname=gpgv.exe      "${BUILD_DIR}/gpgwrap-2.exe"
   File /oname=gpg2.exe      "${BUILD_DIR}/gpgwrap.exe"
   File /oname=gpgsm.exe     "${BUILD_DIR}/gpgwrap.exe"
   File /oname=gpg-connect-agent.exe  "${BUILD_DIR}/gpgwrap.exe"
+  # fixme: gpgsplit is missing; see above
 
   SetOutPath "$INSTDIR\share\gnupg"
   File "${prefix}/share/gnupg/qualified.txt"
@@ -71,11 +84,21 @@ ${MementoSection} "GnuPG2" SEC_gnupg2
   # common certificates anymore.
   #File "${prefix}/share/gnupg/com-certs.pem"
   File "${prefix}/share/gnupg/gpg-conf.skel"
+  # [fixme: Missing in gnupg2] File "${prefix}/share/gnupg/options.skel"
+  # [fixme: Missing in gnupg2] File "${prefix}/share/gnupg/FAQ"
+  # [fixme: Missing in gnupg2] File "${prefix}/share/gnupg/faq.html"
+  File "${prefix}/share/man/man1/gpg2.man"
+  File "${prefix}/share/man/man1/gpgv2.man"
+  File "${prefix}/share/man/man1/gpgsm.man"
+  File "${prefix}/share/man/man1/gpg-agent.man"
+  File "${prefix}/share/man/man1/scdaemon.man"
+  File "${prefix}/share/man/man1/gpg-connect-agent.man"
+  File "${prefix}/share/man/man1/gpgconf.man"
 
   # Install the language files for gpg.  Note that the PO files are
   # required to be UTF-8 encoded and that the post-install macro in
   # Makefile.am needs to build them.  The language used is selected by
-  # using a Registry entry; see ints-gnupg.nsi.
+  # using a Registry entry; see inst-gnupg.nsi.
   File /nonfatal "${prefix}/share/gnupg/help.*.txt"
   SetOutPath "$INSTDIR\gnupg2.nls"
   File /nonfatal "${prefix}/share/gnupg/*.mo"
@@ -116,4 +139,4 @@ ${MementoSection} "GnuPG2" SEC_gnupg2
 ${MementoSectionEnd}
 
 LangString DESC_SEC_gnupg2 ${LANG_ENGLISH} \
-   "GNU Privacy Guard with S/MIME support"
+   "GNU Privacy Guard"

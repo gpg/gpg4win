@@ -84,10 +84,6 @@
 !define gpg4win_pkg_adns @gpg4win_pkg_adns@
 !define gpg4win_pkg_adns_version @gpg4win_pkg_adns_version@
 
-@HAVE_PKG_GNUPG@
-!define gpg4win_pkg_gnupg @gpg4win_pkg_gnupg@
-!define gpg4win_pkg_gnupg_version @gpg4win_pkg_gnupg_version@
-
 @HAVE_PKG_GNUPG2@
 !define gpg4win_pkg_gnupg2 @gpg4win_pkg_gnupg2@
 !define gpg4win_pkg_gnupg2_version @gpg4win_pkg_gnupg2_version@
@@ -111,11 +107,6 @@
 @HAVE_PKG_WINPT@
 !define gpg4win_pkg_winpt @gpg4win_pkg_winpt@
 !define gpg4win_pkg_winpt_version @gpg4win_pkg_winpt_version@
-
-@HAVE_PKG_GPGEE@
-!define gpg4win_pkg_gpgee @gpg4win_pkg_gpgee@
-!define gpg4win_pkg_gpgee_version @gpg4win_pkg_gpgee_version@
-!define gpg4win_pkg_gpgee_src @gpg4win_pkg_gpgee_src@
 
 @HAVE_PKG_LIBGSASL@
 !define gpg4win_pkg_libgsasl @gpg4win_pkg_libgsasl@

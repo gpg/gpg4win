@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Gpg4Win\n"
 "Report-Msgid-Bugs-To: gpg4win-devel@wald.intevation.org\n"
-"POT-Creation-Date: 2008-05-28 11:25+0200\n"
+"POT-Creation-Date: 2008-06-05 21:09+0200\n"
 "PO-Revision-Date: 2008-03-11 23:52+0200\n"
 "Last-Translator: Ahmad Gharbeia <ahmad@gharbeia.org>\n"
 "Language-Team: Arabic <doc@arabeyes.org>\n"
@@ -320,13 +320,9 @@ msgctxt "DESC_SEC_eudoragpg"
 msgid "EudoraGPG is a plugin for the Eudora mail program"
 msgstr "şEudoraGPG åí ãáÍŞÉ áÈÑãÌíÉ ÇáÈÑíÏ Eudora"
 
-#: src/inst-gnupg2.nsi:118
+#: src/inst-gnupg2.nsi:141
+#, fuzzy
 msgctxt "DESC_SEC_gnupg2"
-msgid "GNU Privacy Guard with S/MIME support"
-msgstr "ÍÇÑÓ ÎÕæÕíÉ Ìäæ ãÚ ÏÚã S/MIME"
-
-#: src/inst-gnupg.nsi:108
-msgctxt "DESC_SEC_gnupg"
 msgid "GNU Privacy Guard"
 msgstr "ÍÇÑÓ ÎÕæÕíÉ Ìäæ"
 
@@ -344,12 +340,12 @@ msgstr ""
 "ÔÛá ÃÏÇÉ ÅÏÇÑÉ ÇáãİÇÊíÍ ãÓÇÚÏ ÎÕæÕíÉ Ìäæ. åĞå ÈÏíá áÃÏÇÉ ÅÏÇÑÉ ÇáãİÇÊíÍ "
 "WinPT."
 
-#: src/inst-gpg4win.nsi:43
+#: src/inst-gpg4win.nsi:66
 msgctxt "DESC_Menu_gpg4win_readme"
 msgid "General information on Gpg4Win"
 msgstr "ãÚáæãÇÊ ÚÇãÉ Úä Gpg4Win"
 
-#: src/inst-gpg4win.nsi:46
+#: src/inst-gpg4win.nsi:69
 msgctxt "DESC_Menu_gnupg_faq"
 msgid "Show the Frequently Asked Questions Document for GnuPG"
 msgstr "ØÇáÚ ÇáÃÓÆáÉ ÇáÔÇÆÚÉ Íæá GnuPG"
@@ -472,6 +468,10 @@ msgid ""
 msgstr ""
 "ÔÛá ÃÏÇÉ ÅÏÇÑÉ ÇáãİÇÊíÍ áæÍÉ ÎÕæÕíÉ æíäÏæÒ. åĞå ÃÏÇÉ ÅÏÇÑÉ ãİÇÊíÍ æÊÚãíÉ "
 "ãÊÚÏÏÉ ÇáÇÓÊÚãÇáÇÊ."
+
+#~ msgctxt "DESC_SEC_gnupg2"
+#~ msgid "GNU Privacy Guard with S/MIME support"
+#~ msgstr "ÍÇÑÓ ÎÕæÕíÉ Ìäæ ãÚ ÏÚã S/MIME"
 
 #~ msgctxt "DESC_SEC_kleopatra"
 #~ msgid "Kleopatra"

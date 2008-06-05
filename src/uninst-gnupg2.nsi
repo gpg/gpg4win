@@ -32,13 +32,17 @@ Section "-un.gnupg2"
   Call un.SourceDelete
 !else
   Delete "$INSTDIR\gpg2.exe"
+  Delete "$INSTDIR\gpgv2.exe"
   Delete "$INSTDIR\gpgsm.exe"
   Delete "$INSTDIR\gpg-agent.exe"
   Delete "$INSTDIR\scdaemon.exe"
   Delete "$INSTDIR\gpgconf.exe"
   Delete "$INSTDIR\gpg-connect-agent.exe"
+  Delete "$INSTDIR\gpgsplit.exe"
 
+  Delete "$INSTDIR\pub\gpg.exe"
   Delete "$INSTDIR\pub\gpg2.exe"
+  Delete "$INSTDIR\pub\gpgv.exe"
   Delete "$INSTDIR\pub\gpgsm.exe"
   Delete "$INSTDIR\pub\gpg-connect-agent.exe"
   RMDir "$INSTDIR\pub"
@@ -55,6 +59,7 @@ Section "-un.gnupg2"
   Delete "$INSTDIR\share\gnupg\com-certs.pem"
   Delete "$INSTDIR\share\gnupg\gpg-conf.skel"
   Delete "$INSTDIR\share\gnupg\help.*.txt"
+  Delete "$INSTDIR\share\gnupg\*.man"
   RMDir "$INSTDIR\share\gnupg"
   RMDir "$INSTDIR\share"
 
@@ -62,8 +67,8 @@ Section "-un.gnupg2"
   RMDir  "$INSTDIR\etc\gnupg"
   RMDir  "$INSTDIR\etc"
 
-  Delete "$INSTDIR\gnupg.nls\*.mo"
-  RMDir  "$INSTDIR\gnupg.nls"
+  Delete "$INSTDIR\gnupg2.nls\*.mo"
+  RMDir  "$INSTDIR\gnupg2.nls"
 
   RMDir "$INSTDIR"
 

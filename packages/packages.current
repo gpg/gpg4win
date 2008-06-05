@@ -200,8 +200,9 @@ server http://wald.intevation.org/frs/download.php
 #file  272/winpt-1.0.1.tar.bz2
 #chk   574b7766701aaaef6e388d8b3ad68a171c9c071f
 
-file  312/winpt-1.2.0.tar.bz2
-chk   050f93a0d74385ce90e8934e49c11f171d495c5a
+# No more WinPT - at least for now
+#file  312/winpt-1.2.0.tar.bz2
+#chk   050f93a0d74385ce90e8934e49c11f171d495c5a
 
 
 #
@@ -269,9 +270,6 @@ chk  ae1b992721198b93198aa36eb7a3a7d074417f47
 # GnuPG et al.
 #
 server ftp://ftp.gnupg.org/gcrypt
-
-file gnupg/gnupg-1.4.9.tar.bz2
-chk  826f4bef1effce61c3799c8f7d3cc8313b340b55
 
 file libgpg-error/libgpg-error-1.6.tar.bz2
 chk  2f387d0c34dd55eaf3b5f3c2570e9033eb540bc3
