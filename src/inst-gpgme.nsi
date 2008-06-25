@@ -35,6 +35,7 @@ Section "-gpgme" SEC_gpgme
   ClearErrors
   SetOverwrite try
   File "${prefix}/bin/libgpgme-11.dll"
+
   SetOverwrite lastused
   ifErrors 0 +3
       File /oname=libgpgme-11.dll.tmp "${prefix}/bin/libgpgme-11.dll"
@@ -57,6 +58,8 @@ Section "-gpgme" SEC_gpgme
       File /oname=libgpgme-qt-11.dll.tmp "${prefix}/bin/libgpgme-qt-11.dll"
       Rename /REBOOTOK libgpgme-qt-11.dll.tmp libgpgme-qt-11.dll
 !endif
+
+  File "${prefix}/libexec/gpgme-w32spawn.exe"
 
 !endif
 SectionEnd

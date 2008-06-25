@@ -33,6 +33,7 @@ Section "-un.gpgme"
   Delete "$INSTDIR\libgpgme-11.dll"
   Delete "$INSTDIR\libgpgme-glib-11.dll"
   Delete "$INSTDIR\libgpgme-qt-11.dll"
+  Delete "$INSTDIR\gpgme-w32spawn.dll"
   RMDir "$INSTDIR"
 !endif
 SectionEnd
