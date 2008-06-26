@@ -1,3 +1,11 @@
+2008-06-24  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+	
+	* website/ShortStudy-Sustainable-FS-example-Gpg4win.htm4, 
+	website/ShortStudy-Enduring-FS-example-Gpg4win.htm4,
+	website/Kurzstudie-Nachhaltige-FS-Beispiel-Gpg4win.htm4,
+	website/template_link_boxes_en.m4: Change word ('enduring' to
+	'sustainable') in content and file names.
+
 2008-06-05  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
 
 	* website/download.htm4, website/download-de.htm4: Updated to 1.9.2.

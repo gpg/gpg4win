@@ -8,12 +8,12 @@ PAGE_START
 
 <p>
 Available for download: <a
-    href="http://wald.intevation.org/frs/download.php/458/ShortStudy-Enduring-FS-example-Gpg4win-20071005.pdf">This text as pdf document</a>
+    href="http://wald.intevation.org/frs/download.php/465/ShortStudy-Sustainable-FS-example-Gpg4win-20071005.pdf">This text as pdf document</a>
 (ca. 740 KByte)
 </p>
 
 <h1>Short Study</h1>
-<h1 style="text-align: left; padding-bottom: 6px;">Enduring Free Software: 
+<h1 style="text-align: left; padding-bottom: 6px;">Sustainable Free Software: 
     From project to permanent activity, using the example Gpg4win</h1>
 
 <IMG SRC="pix/intevation-logo.png" NAME="Grafik17">
@@ -162,7 +162,7 @@ Gpg4win.</P>
 <P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
 Starting point for the short study are the general success factors
 for Free Software projects, as well as the problems regarding an
-enduring further development of GnuPP, Windows Privacy Tools <A CLASS="sdfootnoteanc" NAME="sdfootnote3anc" HREF="#sdfootnote3sym"><SUP>3</SUP></A>
+sustainable further development of GnuPP, Windows Privacy Tools <A CLASS="sdfootnoteanc" NAME="sdfootnote3anc" HREF="#sdfootnote3sym"><SUP>3</SUP></A>
 and comparable approaches.</P>
 <P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
 While this study is concerned with Gpg4win, more general conclusions
@@ -273,7 +273,7 @@ other, for example, contributors with power users and developers.</P>
 <P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
     <P STYLE="margin-top: 0.21cm">
     <IMG
-    SRC="pix/ShortStudy-Enduring-FS-example-Gpg4win-20071005_html_1f01bb96.png"
+    SRC="pix/ShortStudy-Sustainable-FS-example-Gpg4win-20071005_html_1f01bb96.png"
     NAME="Grafik3" WIDTH=700px ><BR CLEAR=LEFT>
     <I>Figure
 	1: Participant make-up of a successful Free Software project: The
@@ -767,7 +767,7 @@ successful Free Software project (see Figure 1, pg. 6).</P>
 
 <P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
 <P STYLE="margin-top: 0.21cm">
-<IMG SRC="pix/ShortStudy-Enduring-FS-example-Gpg4win-20071005_html_13cf2deb.png"
+<IMG SRC="pix/ShortStudy-Sustainable-FS-example-Gpg4win-20071005_html_13cf2deb.png"
 NAME="Grafik1" WIDTH=700px ALIGN=LEFT BORDER=0><BR CLEAR=LEFT>
    <I>Figure 2: Current make-up of participants for Gpg4win: While there is a
 	broad basis of users, there are no levels of power users,
