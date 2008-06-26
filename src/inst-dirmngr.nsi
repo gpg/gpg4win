@@ -42,21 +42,23 @@ Section "-dirmngr" SEC_dirmngr
   File "${prefix}/libexec/dirmngr_ldap.exe"
 
   # Create a directory for extra certs for documentation reasons.
-  SetOutPath "$INSTDIR\lib\dirmngr\extra-certs"
+  SetShellVarContext all
+  SetOutPath "$APPDATA\GNU\lib\dirmngr\extra-certs"
 
   # Note: The make-msi.pl script ignores the following line, which is
   # ok, because the Windows installer does not override locally
   # modified files.
-  ifFileExists "$INSTDIR\etc\dirmngr\dirmngr.conf" dirmngr_no_conf 0
-   SetOutPath "$INSTDIR\etc\dirmngr"
+  ifFileExists "$APPDATA\GNU\etc\dirmngr\dirmngr.conf" dirmngr_no_conf 0
+   SetOutPath "$APPDATA\GNU\etc\dirmngr"
 
    File "${SRCDIR}/dirmngr.conf"
    File "${prefix}/share/doc/dirmngr/examples/bnetza-10r-ocsp.signer"
 
-   SetOutPath "$INSTDIR\etc\dirmngr\trusted-certs"
+   SetOutPath "$APPDATA\GNU\etc\dirmngr\trusted-certs"
    File "${prefix}/share/doc/dirmngr/examples/trusted-certs/README"
    File "${prefix}/share/doc/dirmngr/examples/trusted-certs/bnetza-10r-ca.crt"
   dirmngr_no_conf:
+  SetShellVarContext current
 
   SetOutPath "$INSTDIR"
 
@@ -73,6 +75,7 @@ Section "-dirmngr" SEC_dirmngr
   g4wihelp::service_start "DirMngr" 0
 
   # If requested, install the configuration files.
+  # Fixme:  I don't think that is right (wk)!
   ReadRegStr $0 HKCU "Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders" AppData
   StrCmp $0 "" no_config_dirmngr_files
   CreateDirectory "$0\gnupg"

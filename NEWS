@@ -11,13 +11,19 @@ Noteworthy changes in version 1.9.3
 (de) Dies ist eine BETA Version der neuen Gpg4win/2 Architektur.
      Diese Version soll nicht in einer Produktivumgebung
      eingesetzt werden.
+(en) Global configuration is now stored below CSIDL_COMMON_APPDATA\GNU
+     and not anymore below the installation directory.  Similar to
+     user setttings, these configuration files are not removed or
+     overwritten during an uninstall or an reinstall.
+
+
 
 ~~~~~~~~~~~~~~~
 GnuPG:        2.0.10-svn4773
 DirMngr:      1.0.2-svn299
 Kleopatra:    20080526-2
-GPA:          0.7.7-svn897
-GpgOL:        0.10.14
+GPA:          0.7.7-svn899
+GpgOL:        0.10.15-svn260
 GpgEX:        0.9.0
 Claws-Mail:   3.4.0
 Novices:      1.0.0

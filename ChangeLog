@@ -1,8 +1,25 @@
+2008-06-26  Werner Koch  <wk@g10code.com>
+
+	* packages/packages.current: Update gpa, gpgol, gpgme, kdelibs and
+	kleopatra.
+
 2008-06-25  Marcus Brinkmann  <marcus@g10code.de>
 
 	* packages/packages.current: Update gpgme.
 	* src/inst-gpgme.nsi: Install gpgme-w32spawn.exe.
 	* src/uninst-gpgme.nsi: Uninstall it.
+
+2008-06-19  Werner Koch  <wk@g10code.com>
+
+	* src/inst-gnupg2.nsi: Rename the section to just gnupg.
+	* src/uninst-gnupg2.nsi: Ditto.
+
+2008-06-16  Werner Koch  <wk@g10code.com>
+
+	* src/inst-gnupg2.nsi: Move installation of gpgconf-conf.skel to
+	COMMON_APPDATA. Try to stop gpg-agent first.
+	* src/inst-dirmngr.nsi: Likewise.
+	* src/uninst-gnupg2.nsi: Try to stop a running gpg-agent first.
 
 2008-06-05  Werner Koch  <wk@g10code.com>
 

@@ -229,11 +229,13 @@ server http://wald.intevation.org/frs/download.php
 #
 # GpgOL
 #
-server ftp://ftp.g10code.com/g10code/gpgol/alpha
+#server ftp://ftp.g10code.com/g10code/gpgol/alpha
 
-file gpgol-0.10.14.tar.bz2
-chk  79a44c9b4eb6ca996ef26659255e4dd86af03b80
-
+#file gpgol-0.10.14.tar.bz2
+#chk  79a44c9b4eb6ca996ef26659255e4dd86af03b80
+server ftp://ftp.g10code.com/g10code/scratch
+file gpgol-0.10.15-svn260.tar.bz2
+chk 4449a5c004fc38a45c57a6c96c04ed5d2db6dcbb  
 
 #
 # GpgEX
@@ -294,12 +296,11 @@ name gnupg2-2.0.10-svn4773.tar.bz2
 file gnupg-2.0.10-svn4773.tar.bz2
 chk  6040e890f4383700b7459b02f94381c31a663813
 
-file dirmngr-1.0.2-svn299.tar.bz2
-chk  53547434d5a2de17891a68ef8cbfdd450833a6e7
+file dirmngr-1.0.2-XXXXX.tar.bz2
+chk  
 
-file gpgme-1.1.7-svn1321.tar.bz2
-chk  d0fe53b17270512e3669d1d2b6a1ebcf8d8bf894
-
+file gpgme-1.1.7-svn1322.tar.bz2
+chk  353773b96e783bafd10f9bcd66831f8423838964
 
 #
 # adns
@@ -319,8 +320,8 @@ chk  6255a7958dc9e735c3f76595cd973abca09c1f93
 #chk  bb9182cd4c6bd6677ba9cdcca262dcc1b1d22c3c
 
 server ftp://ftp.g10code.com/g10code/scratch
-file gpa-0.7.7-svn897.tar.bz2
-chk  712f829ae5f5c44665371ace1810ab95fa646f39
+file gpa-0.7.7-svn899.tar.bz2
+chk  98b95913307da43cc34447223e84247753b7e4b4
 
 
 #
@@ -375,25 +376,24 @@ chk  a4e673c1b1b1cc420e771413edc53ef89fe7773a
 
 server ftp://ftp.kdab.net/pub/gpg4win
 
-name kdelibs-20080526-2-bin.zip
-file kdelibs-for-kleo-20080526-2-bin.zip
-chk  1380ab5075f1fca903cb073552fabc7107582a43
+name kdelibs-20080625-bin.zip
+file kdelibs-for-kleo-20080625-bin.zip
+chk  17dc52abcbcd454857e0768e86f62db6aadec096
 
-name kdelibs-20080526-2-lib.zip
-file kdelibs-for-kleo-20080526-2-dev.zip
-chk  5cb519634735479ec7138fa0324ac5ec82371a2a
+name kdelibs-20080625-lib.zip
+file kdelibs-for-kleo-20080625-dev.zip
+chk  076d83746bd4db2f4719899ca0cdd723df418ddf
 
-name kdelibs-20080526-2-src.zip
-file kdelibs-for-kleo-20080526-2-src.zip
-chk  d8ea0b5558fc56d8320368d0c671b28a2e93a00f
-
+name kdelibs-20080625-src.zip
+file kdelibs-for-kleo-20080625-src.zip
+chk  990eb139dece3a8dc0d3837f9c919c17c5c19b74
 
 # Kleopatra
 
 server ftp://ftp.kdab.net/pub/gpg4win
 
-file kleopatra-20080526-2-bin.zip
-chk  606d1f8f4ec30c3e8df254effd7ac3ecb6f4ce6a
+file kleopatra-20080625-bin.zip
+chk f7f9b7fdcef901a4455fc399085f7770783b4181
 
-file kleopatra-20080526-2-src.zip
-chk  7b1cc5a7bb1e397ae928b09d4bec0799c6f2a4fe
+file kleopatra-20080625-src.zip
+chk 796abb71a32b71b28192f975c030fb9dfe91b907 

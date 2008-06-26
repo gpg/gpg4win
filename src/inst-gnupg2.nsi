@@ -26,7 +26,7 @@
 !define source ${bpdir}/gnupg2-${gpg4win_pkg_gnupg2_version}
 
 
-${MementoSection} "GnuPG2" SEC_gnupg2
+${MementoSection} "GnuPG" SEC_gnupg2
   SectionIn RO
 
   SetOutPath "$INSTDIR"
@@ -40,6 +40,11 @@ ${MementoSection} "GnuPG2" SEC_gnupg2
   # Fixme: gpgsplit is missing.  I doubt that it makes sense to rename
   # it like we did with gpg.  It might be better to install this tool
   # into a subdirectory.
+
+  # If we are reinstalling, try to kill a possible running agent 
+  ifFileExists "$INSTDIR\gpg-connect-agent.exe"  0 no_gpg_connect_agent
+    ExecWait '"$INSTDIR\gpg-connect-agent.exe" killagent /bye'
+  no_gpg_connect_agent:
 
   ClearErrors
   SetOverwrite try
@@ -103,9 +108,11 @@ ${MementoSection} "GnuPG2" SEC_gnupg2
   SetOutPath "$INSTDIR\gnupg2.nls"
   File /nonfatal "${prefix}/share/gnupg/*.mo"
 
-
-  SetOutPath "$INSTDIR\etc\gnupg"
+  # Always install the new template into COMMON_APPDATA folder.
+  SetShellVarContext all
+  SetOutPath "$APPDATA\GNU\etc\gnupg"
   File /oname=gpgconf-conf.skel "${source}/doc/examples/gpgconf.conf"
+  SetShellVarContext current
 
 
   # If requested, install the configuration files.

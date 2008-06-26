@@ -41,12 +41,14 @@ Section "-un.dirmngr"
   Delete "$INSTDIR\dirmngr_ldap.exe"
   RMDir "$INSTDIR\cache"
 
-  # Remove the extra-certs directory.  Obviously this works only if the
-  # user has not populated it.
+  # The next thing is only to cleanup cruft from versions < 1.9.3.
+  # Newer versions install them into COMMON_APPDATA and they are not
+  # removed on purpose.  Remove the extra-certs directory.  Obviously
+  # this works only if the user has not populated it.
   RMDir "$INSTDIR\lib\dirmngr\extra-certs"
   RMDir "$INSTDIR\lib\dirmngr"
 
-  # Remove etc files.
+  # Remove etc files.  This is only useful for installer < 1.9.3.
 
   Delete "$INSTDIR\etc\dirmngr\dirmngr.conf"
   Delete "$INSTDIR\etc\dirmngr\bnetza-10r-ocsp.signer"
