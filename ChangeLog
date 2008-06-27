@@ -1,3 +1,7 @@
+2008-06-27  Werner Koch  <wk@g10code.com>
+
+	* packages/packages.current: Update gnupg and dirmngr.
+
 2008-06-26  Werner Koch  <wk@g10code.com>
 
 	* packages/packages.current: Update gpa, gpgol, gpgme, kdelibs and
