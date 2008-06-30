@@ -6,13 +6,19 @@ m4_define(`EN')
 m4_define(`DE_FILE', `build-installer-de.html')
 PAGE_START
 
-<h1>Build Installer Package</h1>
+<h1>Build Gpg4win installer packages on your own</h1>
+
+<h2>Conventional ".exe installer"</h2>
 
 <p>
 Building a new Gpg4win installer package is
 mostly automized. The build procedure can be executed
 on a GNU/Linux system or within a virtual maschine also
 on Windows and other systems.
+</p>
+
+<p>
+What you need is:
 </p>
 
 <ul>
@@ -44,9 +50,137 @@ on Windows and other systems.
      </p>
 </ul>
 
+<h2>MSI Installer</h2>
+
+<b>Attention:</b> The Gpg4win MSI Installer is only supported since Gpg4win 1.9.0beta.
+
 <p>
-Typical tasks:
-<ul
-<li> Update a single module (occasionally, ca. 1-4 hours)
-</ul>
+What you need is:
 </p>
+
+<ul>
+<li> A complete conventional installer as described above with the same version and
+     the contents as you want for the MSI package.
+
+<li> Perl 5 on the  GNU/Linux System.
+
+     <p>
+     On Debian GNU/Linux 4.0 you can install Perl 5 this way:<br>
+     <em># apt-get install perl</em>
+     </p>
+
+<li> A Windows XP SP2 system, with the following tools installed.
+
+<li> Windows Installer XML (WiX) toolset Version 3.0. This can be downloaded from
+     <a href="http://wix.sourceforge.net/">http://wix.sourceforge.net/</a>.
+
+<li> WiX requires the .NET Framework. Successfully tested is
+     <a href="http://www.microsoft.com/downloads/details.aspx?FamilyID=0856EACB-4362-4B0D-8EDD-AAB15C5E04F5"
+     >.NET 2.0</a>
+
+<li> Finally, you need a method to access the file tree where your built your conventional installer
+     from your Windows system
+     These could done via a SMB network connection  or simply by transferring the whole file
+     tree to Windows (attention: it is a couple of 100 MBytes). See also the section below.
+</ul>
+
+<p>
+Now you need to execute the following steps:
+</p>
+
+<ol>
+<li> Change into the src/ directory of the Gpg4win source code where you built the
+     conventional installer before (compare
+     <a href="build-installer-gnulinux.html">Build Gpg4win under GNU/Linux</a>):<br>
+     <em>$ cd src</em>
+
+<li> Execute make-msi.pl to create the required WiX source files:<br>
+     <em>$ make msi</em>
+
+<li> No change into the same directory ("src") on the Windows system
+     and execute script "make-msi.bat" to create the MSI package:</br>
+     <em>&gt; make-msi.bat gpg4win-Version.wix</em><br>
+     or</br>
+     <em>&gt; make-msi.bat gpg4win-light-Version.wix</em>
+
+     <p>where "Version" is the complete version number of the just created concentional installer, e.g.
+     "1.9.0-svn595". You will find the resulting .wix files in the same directory.</p>
+
+    <p>This routine assumes that WiX is installed in a default location.
+    In case it is not, you need to adapt the search path (PATH system variable).</p>
+
+<li> The MSI package is not ready and stored as file "gpg4win.msi".
+     You can install it in the following way:<br>
+     <em>&gt; msiexec /i gpg4win.msi</em><br>
+     and also de-install it:<br>
+     <em>&gt; msiexec /x gpg4win.msi</em>
+</ol>
+
+m4_dnl <h3>Wie man von Windows aus auf den Gpg4win Bau-Dateibaum Zugang erhält</h3>
+m4_dnl 
+m4_dnl Die WiX Programme benötigen Zugriff auf den Dateibaum in dem der
+m4_dnl herkömmliche Installer hergestellt wurde.
+m4_dnl Dafür gibt es viele Wege, drei davon sind hier illustriert.
+m4_dnl Es sind keine Schritt-für-Schritt Anleitungen, benötigen also noch
+m4_dnl Anpassungen an die individuelle Umgebung.
+m4_dnl 
+m4_dnl <ul>
+m4_dnl <li>Mounten einer virtuellen ext3 Build-Partition:
+m4_dnl   <p>
+m4_dnl     Wenn gpg4win wie in
+m4_dnl     der <a href="build-installer-on-vm-de.html">speziellen
+m4_dnl     Anleitung</a> beschrieben unter Windows in einem virtualisierten
+m4_dnl     GNU/Linux System gebaut wurde liegt der benötigte Dateibaum auf
+m4_dnl     einem Festplatten Image namens <code>build.img</code>.  Dieses
+m4_dnl     kann mit Hilfe der freien Tools ext2fsd und FileDisk unter Windows
+m4_dnl     direkt verwendet werden.
+m4_dnl   </p>
+m4_dnl   <p>
+m4_dnl     Wenn ext2fsd und FileDisk wie in der
+m4_dnl     Anleitung <a href="build-installer-on-vm-de.html#I-2b">beschrieben</a>
+m4_dnl     installiert wurden, kann die Build-Partition <em>nach
+m4_dnl     herunterfahren des virtuellen GNU/Linux Systems</em> mit folgendem
+m4_dnl     Befehl unter Windows gemountet werden:
+m4_dnl   </p>
+m4_dnl   <pre>
+m4_dnl   
+m4_dnl     filedisk /mount 0 C:\path\to\build.img H:  
+m4_dnl 
+m4_dnl   </pre>
+m4_dnl   <p>
+m4_dnl     Wobei 'C:\path\to\build.img' natürlich durch den tatsächlichen
+m4_dnl     Pfad zu der Image-Datei ersetzt werden muss.
+m4_dnl     Danach ist die Build-Partition als Laufwerk H: unter Windows
+m4_dnl     verfügbar.
+m4_dnl   </p>
+m4_dnl 
+m4_dnl <li>Ubuntu mit VirtualBox und Samba:
+m4_dnl 
+m4_dnl    <p>Man kann Windows XP als Virtuelle Maschiene unter VirtualBox
+m4_dnl    laufen lassen und auf den Dateibaum via SMB zugreifen in dem man auf
+m4_dnl    dem Linux Host-System einen Samba-Server startet.
+m4_dnl    Der Bau-Dateibaum wird als sog. "Share" freigebeben (z.B. über
+m4_dnl    Rechte-Maustasten-Menü auf den entsprechenden Ordner "gpg4win" in Nautilus).
+m4_dnl    Danach kann diese Netzwerkfreigabe in Windows eingebunden werden:<br>
+m4_dnl    <em>&gt; net use H: \\10.0.2.2\gpg4win</em><br>
+m4_dnl    Wobei H: der dann zu verwendende Laufwerksbuchstabe ist und gpg4win
+m4_dnl    der Name der Netzwerkfreigabe.
+m4_dnl    </p>
+m4_dnl 
+m4_dnl <li>Mit Achivierungsprogramm "tar":
+m4_dnl 
+m4_dnl     <p>Eine Liste aller notwendigen Dateien wird durch make-msi.pl
+m4_dnl     in de Datei make-msi.files gespeichert. Diese Liste kann nun
+m4_dnl     benutzt werden um alle benötigten Dateien einzuopacken und zu transportieren:<br>
+m4_dnl     <em>$ cd gpg4win</em><br>
+m4_dnl     <em>$ tar -T src/gpg4win-Version.files cjf gpg4win-msi.tar.bz2</em>
+m4_dnl     </p>
+m4_dnl 
+m4_dnl      <p>wobei "Version" die vollständige Versionsnummer des aktuell erzeugten Installers
+m4_dnl      ist, beispielsweise "1.9.0-svn595". Sie finden auch die entsprechenden .files-Dateien
+m4_dnl      im Verzeichnis "src".</p>
+m4_dnl 
+m4_dnl    <p>Neben gpg4win-msi.tar.bz wird ausserdem src/gpg4win-Version.wix und
+m4_dnl    src/make-msi.bat auf dem Windows-System benötigt. Sie sollten dort
+m4_dnl    auch wieder in das src/ Verzeichnis abgelgegt werden.
+m4_dnl </ul>
