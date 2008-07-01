@@ -116,71 +116,69 @@ Now you need to execute the following steps:
      <em>&gt; msiexec /x gpg4win.msi</em>
 </ol>
 
-m4_dnl <h3>Wie man von Windows aus auf den Gpg4win Bau-Dateibaum Zugang erhält</h3>
-m4_dnl 
-m4_dnl Die WiX Programme benötigen Zugriff auf den Dateibaum in dem der
-m4_dnl herkömmliche Installer hergestellt wurde.
-m4_dnl Dafür gibt es viele Wege, drei davon sind hier illustriert.
-m4_dnl Es sind keine Schritt-für-Schritt Anleitungen, benötigen also noch
-m4_dnl Anpassungen an die individuelle Umgebung.
-m4_dnl 
-m4_dnl <ul>
-m4_dnl <li>Mounten einer virtuellen ext3 Build-Partition:
-m4_dnl   <p>
-m4_dnl     Wenn gpg4win wie in
-m4_dnl     der <a href="build-installer-on-vm-de.html">speziellen
-m4_dnl     Anleitung</a> beschrieben unter Windows in einem virtualisierten
-m4_dnl     GNU/Linux System gebaut wurde liegt der benötigte Dateibaum auf
-m4_dnl     einem Festplatten Image namens <code>build.img</code>.  Dieses
-m4_dnl     kann mit Hilfe der freien Tools ext2fsd und FileDisk unter Windows
-m4_dnl     direkt verwendet werden.
-m4_dnl   </p>
-m4_dnl   <p>
-m4_dnl     Wenn ext2fsd und FileDisk wie in der
-m4_dnl     Anleitung <a href="build-installer-on-vm-de.html#I-2b">beschrieben</a>
-m4_dnl     installiert wurden, kann die Build-Partition <em>nach
-m4_dnl     herunterfahren des virtuellen GNU/Linux Systems</em> mit folgendem
-m4_dnl     Befehl unter Windows gemountet werden:
-m4_dnl   </p>
-m4_dnl   <pre>
-m4_dnl   
-m4_dnl     filedisk /mount 0 C:\path\to\build.img H:  
-m4_dnl 
-m4_dnl   </pre>
-m4_dnl   <p>
-m4_dnl     Wobei 'C:\path\to\build.img' natürlich durch den tatsächlichen
-m4_dnl     Pfad zu der Image-Datei ersetzt werden muss.
-m4_dnl     Danach ist die Build-Partition als Laufwerk H: unter Windows
-m4_dnl     verfügbar.
-m4_dnl   </p>
-m4_dnl 
-m4_dnl <li>Ubuntu mit VirtualBox und Samba:
-m4_dnl 
-m4_dnl    <p>Man kann Windows XP als Virtuelle Maschiene unter VirtualBox
-m4_dnl    laufen lassen und auf den Dateibaum via SMB zugreifen in dem man auf
-m4_dnl    dem Linux Host-System einen Samba-Server startet.
-m4_dnl    Der Bau-Dateibaum wird als sog. "Share" freigebeben (z.B. über
-m4_dnl    Rechte-Maustasten-Menü auf den entsprechenden Ordner "gpg4win" in Nautilus).
-m4_dnl    Danach kann diese Netzwerkfreigabe in Windows eingebunden werden:<br>
-m4_dnl    <em>&gt; net use H: \\10.0.2.2\gpg4win</em><br>
-m4_dnl    Wobei H: der dann zu verwendende Laufwerksbuchstabe ist und gpg4win
-m4_dnl    der Name der Netzwerkfreigabe.
-m4_dnl    </p>
-m4_dnl 
-m4_dnl <li>Mit Achivierungsprogramm "tar":
-m4_dnl 
-m4_dnl     <p>Eine Liste aller notwendigen Dateien wird durch make-msi.pl
-m4_dnl     in de Datei make-msi.files gespeichert. Diese Liste kann nun
-m4_dnl     benutzt werden um alle benötigten Dateien einzuopacken und zu transportieren:<br>
-m4_dnl     <em>$ cd gpg4win</em><br>
-m4_dnl     <em>$ tar -T src/gpg4win-Version.files cjf gpg4win-msi.tar.bz2</em>
-m4_dnl     </p>
-m4_dnl 
-m4_dnl      <p>wobei "Version" die vollständige Versionsnummer des aktuell erzeugten Installers
-m4_dnl      ist, beispielsweise "1.9.0-svn595". Sie finden auch die entsprechenden .files-Dateien
-m4_dnl      im Verzeichnis "src".</p>
-m4_dnl 
-m4_dnl    <p>Neben gpg4win-msi.tar.bz wird ausserdem src/gpg4win-Version.wix und
-m4_dnl    src/make-msi.bat auf dem Windows-System benötigt. Sie sollten dort
-m4_dnl    auch wieder in das src/ Verzeichnis abgelgegt werden.
-m4_dnl </ul>
+<h3>How to access the Gpg4win build files from Windows</h3>
+
+The WiX software requires access to the file tree where the
+conventional intaller was created.
+This is possible in many ways of which three opportunities are
+illustrated here.
+These are not step-by-step preocedures and thus need
+to be adapted for your individual environment.
+
+<ul>
+<li>Mounting a virtual ext3 build partition:
+  <p>
+    If you build Gpg4win as described on the
+    der <a href="build-installer-on-vm.html">special guide</a> for Windows
+    in a virtual GNU/Linux system, then the required file tree is located
+    inside a hard disk image named <code>build.img</code>.
+    It can be accessed directly from Windows with the free tools ext2fsd and FileDisk.
+  </p>
+  <p>
+    If ext2fsd and FileDisk are installed
+    <a href="build-installer-on-vm-de.html#I-2b">as described</a>,
+    you can mount the build partition <em>after shutdown of the virtual
+    GNU/Linux</em> with this command:
+  </p>
+  <pre>
+
+    filedisk /mount 0 C:\path\to\build.img H:  
+
+  </pre>
+  <p>
+    Of course 'C:\path\to\build.img' needs to be replaced with the
+    actial path to the image file.
+    Now the build partition is available as drive H: on your Windows
+    system.
+  </p>
+
+<li>Ubuntu with VirtualBox and Samba:
+
+   <p>You can run Windows XP as a virtual maschine under VirtualBox
+   laufen and access the file tree via SMB by running a Smaba server on
+   the Linux host system.
+   Der file tree is accessable as a so-called "Share" (e.g. via
+   the right mouse button menu for the respective folder "gpg4win" in Nautilus).
+   After this, the network share can be a made available in Windows:<br>
+   <em>&gt; net use H: \\10.0.2.2\gpg4win</em><br>
+   Where H: is the drive letter to use and gpg4win
+   the name of the network share.
+   </p>
+
+<li>Using the archive tool "tar":
+
+    <p>A list of all required files is stored in the file make-msi.files by
+    the script make-msi.pl. This list can now be used to pack all required files
+    for transport:<br>
+    <em>$ cd gpg4win</em><br>
+    <em>$ tar -T src/gpg4win-Version.files cjf gpg4win-msi.tar.bz2</em>
+    </p>
+
+     <p>where "Version" should be the complete version numbe of the current installer,
+     e.g. "1.9.0-svn595". You will find the respective .files files
+     in directory "src".</p>
+
+   <p>Additional to gpg4win-msi.tar.bz you need src/gpg4win-Version.wix and
+   src/make-msi.bat on your Windows system. You should store them in the
+   respective src/ directory.
+</ul>
