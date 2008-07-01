@@ -1,5 +1,12 @@
 2008-07-01  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
 
+	* manual/gpg4win-compendium-de.tex: New. Combines "einsteiger"
+	and "durchblicker". Starts with copy of einsteiger.tex.
+
+	* manual/Makefile.am: Added handling for gpg4win-compendium-de.
+
+2008-07-01  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
+
 	* website/build-installer.htm4: Completed sync with advanced german
 	version.
 

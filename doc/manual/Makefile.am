@@ -73,7 +73,7 @@ eps_files_png  = $(eps_files:.eps.gz=.png)
 #eps_files_pdf = $(eps_files:.eps.gz=.pdf)
 png_files_eps = $(png_files:.png=.eps) 
 
-EXTRA_DIST = fdl.tex einsteiger.tex durchblicker.tex novices.tex \
+EXTRA_DIST = fdl.tex gpg4win-compendium-de.tex einsteiger.tex durchblicker.tex novices.tex \
 	     $(eps_files) $(png_files) $(web_png_files) \
 	     was-ist-gpg4win.tex what-is-gpg4win.tex \
              macros.tex macros-en.tex version.tex.in \
@@ -84,14 +84,17 @@ CLEANFILES = $(eps_files_bb) $(png_files_eps) \
              *.dvi *.pdf *.pdf *.toc *.log *.aux *.out
 DISTCLEANFILES = version.tex $(eps_files_png)
 
-pkgdata_DATA = einsteiger.pdf durchblicker.pdf novices.pdf 
+pkgdata_DATA = gpg4win-compendium-de.pdf einsteiger.pdf durchblicker.pdf novices.pdf 
 # advanced.pdf
 
 BUILT_SOURCES = $(eps_files_bb) $(png_files_eps) $(eps_files_png)
 
-all-local: einsteiger.pdf durchblicker.pdf novices.pdf 
+all-local: gpg4win-compendium-de.pdf einsteiger.pdf durchblicker.pdf novices.pdf 
 # advanced.pdf
 
+gpg4win-compendium-de.pdf : $(eps_files_bb) $(png_files_eps) $(eps_files_png)
+gpg4win-compendium-de.dvi : version.tex macros.tex $(eps_files_bb)
+gpg4win-compendium-de.html : version.tex macros.tex $(eps_files_png)
 einsteiger.pdf : $(eps_files_bb) $(png_files_eps) $(eps_files_png)
 einsteiger.dvi : version.tex macros.tex $(eps_files_bb)
 einsteiger.html : version.tex macros.tex $(eps_files_png)
@@ -105,11 +108,11 @@ novices.html : version.tex macros-en.tex $(eps_files_png)
 #advanced.dvi : version.tex macros-en.tex $(eps_files_bb)
 #advanced.html : version.tex macros-en.tex $(eps_files_png)
 
-htmlversion: einsteiger.html durchblicker.html novices.html
+htmlversion: gpg4win-compendium-de.html einsteiger.html durchblicker.html novices.html
 # advanced.html
 	rm -rf html
 	mkdir html
-	cp einsteiger*.html durchblicker*.html novices*.html html/
+	cp gpg4win-compendium-de*.html einsteiger*.html durchblicker*.html novices*.html html/
 	cp $(web_png_files) $(png_files) $(eps_files_png) gpg4win-logo.png html/
 
 online: htmlversion
