@@ -380,14 +380,12 @@ Außerdem ist die ganze Angelegenheit ziemlich spannend$\ldots$
 Weiter geben wir Ihnen dort einige Tipps, mit denen Sie sich einen sicheren
 und trotzdem leicht zu merkenden Passphrase ausdenken können.
 
-\textbf{
-\OtherBook{} Lesen Sie jetzt im Handbuch 
+\textbf{ \OtherBook{} Lesen Sie jetzt im Handbuch 
 "`\xlink{Gpg4win für Durchblicker}{durchblicker.html}"'
              die Kapitel 3 und 4, und lesen Sie bitte erst danach hier weiter.
 }
 
-\textbf{
-Für Informationen zur automatischen Installation von Gpg4win wie sie
+\textbf{Für Informationen zur automatischen Installation von Gpg4win wie sie
 zum Beispiel für Softwareverteilungs-Systeme interessant ist, lesen Sie bitte im
 Anhang \ref{ch:auto} "`Automatische Installation von Gpg4win"' weiter.
 }
@@ -411,8 +409,9 @@ und zwar das Public-Key-Verfahren. Was heisst das?
 Nehmen wir an, die \Email{} oder die Datei sei in einer Truhe verschlossen.
 Im Gegensatz zu einem "`normalen"' Schloss mit einem Schlüssel gibt es beim
 Public-Key-Verfahren zum Verschlüsseln/Entschlüsseln \textbf{ein Schlüsselpaar}.
-So gibt es einen beglaubigten Schlüssel zum Verschlüsseln der \textbf{"`Zertifikat"'} und
-einen Schlüssel zum Entschlüsseln \textbf{"`Geheimer Schlüssel"'}.
+So gibt es einen beglaubigten Schlüssel zum Verschlüsseln (das
+\textbf{"`Zertifikat"'}) und einen Schlüssel zum Entschlüsseln (der 
+\textbf{"`Geheimer Schlüssel"'}).
 
 Klingt zwar komisch wann man an echte Schlösser denkt, aber bei
 Software löst diese Idee das Problem, dass ich meinen Schlüssel
@@ -437,8 +436,7 @@ OpenPGP und S/MIME aber zum Beispiel bei der Schlüsselerzeugung.
 Falls Sie sich fragen, wie das Public-Key-Verfahren so funktionieren kann, und
 warum das sicher ist:
 
-\textbf{
-\OtherBook{} Lesen Sie jetzt im Handbuch 
+\textbf{\OtherBook{} Lesen Sie jetzt im Handbuch 
 "`\xlink{Gpg4win für Durchblicker}{durchblicker.html}"'
              die Kapitel 13 und 14.
  }
@@ -454,8 +452,8 @@ Um die Authentizität des Absenders festzustellen, ist bei S/MIME
 ein Zertifikat notwendig, welches die Authentizität des Schlüssel-Besitzers
 unzweifelhaft beglaubigt.
 Das heisst, dass ich meinen Schlüssel von einer dazu
-berechtigten Organisation zertifizieren lassen muss, bevor er daruch wirklich nutzbar wird.
-Diese Organisation wurde wiederum von einer höher stehenden Organisaiton zertifiziert
+berechtigten Organisation zertifizieren lassen muss, bevor er dadurch wirklich nutzbar wird.
+Diese Organisation wurde wiederum von einer höher stehenden Organisation zertifiziert
 usw. bis man zu einem Wurzel-Zertifikat kommt. Vertaut man nun diesem Wurzel-Zertifkat,
 so vertaut man automatisch allen darunter liegenden Zertfizierungen. Das nennt
 man hierarchisches Vertrauenskonzept. Zumeist ist die Kette nur 3 Elemente
@@ -471,8 +469,7 @@ also die Möglichkeit, ohne eine Zertifizierung einer höheren Stelle verschlüssel
 \Email{}s auszutauschen. Dafür reicht es aus, wenn Sie der \Email{}-Adresse
 und dem dazugehörigen Zertifikat ihres Kommunikationspartners vertrauen.
 
-\textbf{
-\OtherBook{} Nähere Informationen zu Authentifizierungswegen wie zum Beispiel
+\textbf{\OtherBook{} Nähere Informationen zu Authentifizierungswegen wie zum Beispiel
 Web-of-Trust finden Sie im Handbuch
 "`\xlink{Gpg4win für Durchblicker}{durchblicker.html}"'
              im Kapitel 3.
@@ -504,14 +501,14 @@ zu welchem Konzept welche Erklärung gehört.
 
 \clearpage
 %% Original page 15
-\section{Sie erzeugen Ihr  Schlüsselpaar}
+\section{Sie erzeugen Ihr Schlüsselpaar}
+\label{createKeyPair}
 
 Nachdem Sie gelesen haben, warum GnuPG so sicher ist und wie ein guter
 Passphrase als Schutz für Ihren geheimen Schlüssel entsteht, werden
 wir Ihr Schlüsselpaar erzeugen.
 
-\textbf{
-Eigentlich müsste man so einen wichtigen Schritt ein paar Mal üben
+\textbf{Eigentlich müsste man so einen wichtigen Schritt ein paar Mal üben
 können$\ldots$
 }
 
@@ -535,162 +532,433 @@ machen. Doch dazu später mehr.
 %% Original page 16
 \textbf{Los geht's!}
 
-Rufen Sie das Programm GPA über das Windows Startmenü auf:
+Rufen Sie das Programm Kleopatra über das Windows Startmenü auf:
 
-% screenshot Startmenu with GPA highlighted
+% TODO screenshot Startmenu with Kleopatra highlighted
 \begin{center}
-\IncludeImage[width=0.4\textwidth]{sc-gpa-rungpa}
+\IncludeImage[width=0.45\textwidth]{sc-kleopatra-startmenu_de}
 \end{center}
 
-Daraufhin sehen Sie diesen Dialog:
+Daraufhin sehen Sie die Kleopatra-Zertifikatsverwaltung:
 
-% screenshot: GPA erste Schlüsselerzeugung
+% TODO screenshot: Kleopatra main window
 \begin{center}
-\IncludeImage[width=0.9\textwidth]{sc-gpa-nokey}
+\IncludeImage[width=0.6\textwidth]{sc-kleopatra-mainwindow-empty_de}
 \end{center}
 
-Klicken Sie auf \Button{Jetzt~Schlüssel~erzeugen}.
+Zu Beginn ist diese Übersicht leer, da wir noch keine 
+Zertifikate oder Schlüssel erstellt haben. Dies wollen wir jetzt
+nachholen:
 
+Klicken Sie auf \Menu{Datei$\rightarrow$Neues~Zertifikat}. \\
+Im folgenden Dialog entscheiden Sie sich für ein Format,
+für das anschließend ein Zertifikat erstellt werden soll.
+Sie haben die Wahl: \textbf{OpenPGP} (PGP/MIME) oder \textbf{X.509} (S/MIME).
 
-\clearpage
+\label{chooseCertificateFormat}
+% TODO screenshot: Kleopatra - New certificate - Choose format
+\begin{center}
+\IncludeImage[width=0.6\textwidth]{sc-kleopatra-ChooseCertificateFormat_de}
+\end{center}
+
 %% Original page 17
 
-\textbf{Wenn Sie die Schlüsselerzeugung} zunächst einmal testen wollen, dann
-können Sie im nun folgenden Fenster einen beliebigen Namen eingeben,
-z.B. "`Heinrich Heine"'.
+Die weitere Vorgehensweise zum Erzeugen eines Schlüsselpaars
+gliedert sich an dieser Stelle in zwei Abschnitte: 
+\textbf{OpenPGP-Schlüsselpaar erstellen}  und 
+\textbf{X.509-Schlüsselpaar erstellen}.
+Lesen Sie den entsprechenden Abschnitt weiter, für deren Zertifikatsformat 
+Sie sich oben entschieden haben.
 
-% screenshot: Key generation wizard first page
+
+
+%% OpenPGP %%
+%% Original page 18
+\subsection*{OpenPGP-Schlüsselpaar erstellen}
+Klicken Sie im obigen Auswahldialog auf 
+%TODO:german
+\Button{Create a personal OpenPGP key pair}. %TODO vgl. Abb
+
+Geben Sie im nun folgenden Fenster Ihren Namen und Ihre
+\Email{}-Adresse an.
+
+% TODO screenshot: New Certificate - Personal details
 \begin{center}
-\IncludeImage[width=0.6\textwidth]{sc-gpa-gen-name}
+\IncludeImage[width=0.6\textwidth]{sc-kleopatra-openpgp-personalDetails_de}
 \end{center}
 
-Oder Sie können auch gleich "`Ernst machen"' und Ihren richtigen Namen
-eingeben.
 
-Klicken Sie auf \Button{Weiter}, wenn Sie fertig sind.
+Wenn Sie die Schlüsselerzeugung zunächst einmal \textbf{testen} wollen, dann
+können Sie einfach einen beliebigen Namen und irgendeine ausgedachte
+\Email{}-Adresse eingeben, z.B. "`Heinrich Heine"' und "`\verb-heinrichh@gpg4win.de-"'.
+
+Optional können Sie einen Kommentar zum Schlüssel eingeben.
+Normalerweise bleibt dieses Feld leer; wenn sie aber einen
+Testschlüssel erzeugen, sollten Sie dort als Erinnerung "`test"'
+eingeben.  Dieser Kommentar ist Teil Ihrer User-ID und genau wie der
+Name und die \Email{}-Adresse später öffentlich sichtbar.
 
 \clearpage
-%% Original page 18
-Als nächstes geben Sie Ihre eigene \Email{}-Adresse an.
+Möchten Sie die vorgeschlagenen \textbf{erweiterten Einstellungen}
+ändern, klicken Sie auf den Button 
+%TODO:german
+\Button{Advanced Settings}.
+Unter dem Reiter \textit{Technische Details} lässt sich beispielsweise die
+Gültigkeitsdauer des Schlüssels festlegen: 
 
-Wieder gilt: Sie können die Schlüsselerzeugung zunächst einmal mit
-irgendeiner ausgedachten \Email{}-Adresse durchtesten, z.B.
-"`\verb-heinrichh@gpg4win.de-"'
-
-% screenshot: Wizard email address
+% TODO screenshot: New Certificate - Advanced Settings
 \begin{center}
-\IncludeImage[width=0.6\textwidth]{sc-gpa-gen-email}
+\IncludeImage[width=0.45\textwidth]{sc-kleopatra-openpgp-technicalDetails_de}
 \end{center}
 
-Oder Sie können auch gleich Ihre echte \Email{}-Adresse eingeben.
+Am einfachsten übernehmen Sie alle Voreinstellungen und klicken (im
+vorherigen Eingabedialog) auf \Button{Weiter}.
 
-Klicken Sie auf \Button{Weiter}, wenn Sie die \Email{}-Adresse eingegeben
-haben.
 
-Anschliessend können Sie einen Kommentar zum Schlüssel eingeben.
-Normalerweise bleibt dieses Feld leer; wenn sie aber einen
-Testschlüssel erzeugen sollten Sie dort als Erinnerung "`test"'
-eingeben.  Dieser Kommentar ist Teil Ihrer User-ID und genau wie der
-Name und die \Email{}-Adresse später öffentlich sichtbar.  Klicken Sie
-auch dort anschließend auf \Button{Weiter}.
+\clearpage
+Es werden nun noch einmal alle Eingaben und Einstellungen zur
+\textbf{Kontrolle} aufgelistet. Aktivieren Sie die Option 
+% TODO:german
+\textit{Show all details} um alle Paramter einzusehen.
+
+% TODO screenshot: New Certificate - Review Parameters
+\begin{center}
+\IncludeImage[width=0.6\textwidth]{sc-kleopatra-openpgp-reviewParameters_de}
+\end{center}
+
+Sofern alles korrekt ist, klicken Sie anschließend auf 
+%TODO:german
+\Button{Create Key}. 
 
 
 \clearpage
 %% Original page 19
-Jetzt folgt der wichtigste Teil: die
-Eingabe Ihrer Passphrase.
+Jetzt folgt der wichtigste Teil: Die Eingabe Ihrer \textbf{Passphrase}!
 
-Erinnern Sie sich an das Kapitel 4, "`Die Passphrase"' im Handbuch
-"`Gpg4win für Durchblicker"' das Sie eben durchgelesen haben? Wir haben
-Ihnen dort einige Tipps zur Erzeugung einer sicheren Passphrase
-gegeben.
+Während der Schlüsselgenerierung werden Sie aufgefordert hier Ihre
+Passphrase einzugeben:
 
-Dann sollten Sie nun einen geheimen, einfach zu merkenden und schwer
-zu knackenden Passphrase parat haben und hier eintragen.
-
-% screenshot: Wizard, Enter passphrase
+%TODO screenshot: New certificate - pinentry
 \begin{center}
-\IncludeImage[width=0.6\textwidth]{sc-gpa-gen-passwd}
+\IncludeImage[width=0.45\textwidth]{sc-kleopatra-openpgp-pinentry_de}
 \end{center}
 
-Falls die Passphrase nicht sicher genug sein sollte, werden Sie
-darauf hingewiesen.
+Im Kapitel~\ref{passphrase} geben wir Ihnen einige 
+wertvolle Tipps, was Sie bei der Erzeugung einer \textbf{sicheren
+Passphrase} beachten sollten. Nehmen Sie die Sicherheit Ihrer
+Passphrase ernst!
 
-\textbf{Auch an dieser Stelle können Sie} ­-- wenn Sie wollen ­-- zunächst
-eine Test-Passphrase eingeben oder auch gleich "`Ernst machen"'.
+Sie sollten nun eine geheime, einfach zu merkende und schwer
+zu knackende Passphrase parat haben und im obigen Dialog eintragen.
 
-Wenn Sie Ihre geheime Passphrase zweimal eingegeben haben, klicken
-Sie auf \Button{Weiter}.
-%%Oder lieber so:  Dann mussen wir den Button in GPA aber ändern.
-%%Fertig? Dann klicken Sie auf \Button{Fertig} und Ihre Schlüssel werden
-%%endgültig erzeugt.
+%TODO#: ist derzeit nich so:
+%Falls die Passphrase nicht sicher genug sein sollte, werden Sie
+%darauf hingewiesen.
+
+Auch an dieser Stelle können Sie ­-- wenn Sie wollen ­-- zunächst
+eine \textbf{Test-Passphrase} eingeben oder auch gleich "`Ernst machen"'.
+
+Sie müssen Ihre geheime Passphrase zweimal eingegeben. Bestätigen Sie
+Ihre Eingabe jeweils mit \Button{OK}.\\
+
+
+Nun wird Ihr OpenPGP-Schlüsselpaar angelegt: 
+% TODO screenshot: New Certificate - Create Key
+\begin{center}
+\IncludeImage[width=0.6\textwidth]{sc-kleopatra-openpgp-createKey_de}
+\end{center}
+
+Dies kann u.U. einige Minuten dauern. Sie können in der Zwischenzeit
+mit einer anderen Anwendung Ihres Rechner weiterarbeiten und erhöhen
+hierdurch sogar leicht die Qualität des erzeugten Schlüsselpaars.
+%TODO# ggf. noch mehr erläutern!
+
+\clearpage
+Sobald die \textbf{Schlüsselgenerierung erfolgreich} abgeschlossen ist,
+erhalten Sie folgenden Dialog:
+
+%TODO screenshot: New certificate - key successfully created
+\begin{center}
+\IncludeImage[width=0.6\textwidth]{sc-kleopatra-openpgp-keyPairCreated_de}
+\end{center}
+
+Im Ergebnis-Textfeld wird der 40-stelligen Fingerabdruck Ihres neu
+generierten OpenPGP-Schlüssels angezeigt. Dieser sogenannte
+Fingerprint ist weltweit eindeutig, d.h. keine andere Person besitzt
+einen Schlüssel mit identischem Fingerabdruck. Sie brauchen sich die
+Zeichenkette hier nicht abschreiben. In den Zertifikatsdetails von
+Kleopatra können Sie sich diese jederzeit später anzeigen lassen.
+
+Als nächstes \textit{können} Sie eine (oder mehrere) der folgenden
+drei Möglichkeiten durchführen:
+\begin{description}
+    \item[Erstellen Sie eine Sicherungskopie Ihres
+        OpenPGP-Schlüsselpaares.] 
+        %TODO#: Paar od. geheimer Schluessel? Dateiformat?
+    
+    ~\\Klicken Sie dazu auf den Button 
+    %TODO:german
+    \Button{Make a Backup Of Your Certificate...}
+
+    Geben Sie hier den Pfad an, wohin Ihr geheimer Schlüssel
+    exportiert werden soll:
+
+    % TODO screenshot: New certificate - export key
+    \begin{center}
+    \IncludeImage[width=0.45\textwidth]{sc-kleopatra-openpgp-exportSecretKey_de}
+    \end{center}
+
+    Klicken Sie anschließend auf
+    \Button{OK}. 
+
+    \textbf{Wichtig:} Falls Sie die Datei auf der Festplatte
+    abgespeichert haben, so sollten Sie
+    baldmöglichst diese Datei auf einen anderen Datenträger (USB
+    Stick, Diskette oder CDROM) kopieren und diese Orginaldatei
+    löschen. Bewahren Sie diesen Datenträger sicher auf. 
+
+    Sie können eine Sicherungskopie auch jederzeit später anlegen;
+    wählen Sie hierzu aus dem Kleopatra-Hauptmenü:
+    \Menu{Datei$\rightarrow$Geheimen Schlüssel exportieren...} 
+
+    \item[Versenden Sie den erstellten Schlüssel per \Email{}.]
+    ~\\Klicken Sie auf den Button 
+    %TODO:german
+    \Button{Send Certificate By EMail}.
+
+    Es wird eine neue \Email{} erstellt -- mit Ihrem neuen
+    Zertifikat (nur Ihr \textit{öffentlicher} OpenPGP-Schlüssel)
+    im Anhang. Geben Sie eine  Empfänger-\Email{}-Adresse an und
+    ergänzen Sie ggf. den vorbereiteten Text dieser \Email{}.
+    
+    %TODO# Wird hier nur der öffentliche Schlüssel versendet?
+
+    % ggf TODO screenshot: New certificate - send openpgp key per email
+   \begin{center}
+   \IncludeImage[width=0.6\textwidth]{sc-ol-sendNewOpenpgpCertificate_de}
+   \end{center}
+
+
+    \item[Speichern Sie Ihren neuen Schlüssel im Verzeichnisdienst.]
+    ~\\Klicken Sie auf 
+    %TODO:german
+    \Button{Upload Certificate To Directory Service...}
+    und folgen Sie den Anweisungen. Sie müssen dafür vorher ein
+    Verzeichnisdienst in Kleopatra konfiguriert haben.
+
+    %TODO#: Mehr Erläuterungen nötig?  
+
+\end{description}
+
+~\\
+Beenden Sie anschließend den Kleopatra-Assistenten mit 
+%TODO:german
+\Button{Finish}, um die Erstellung Ihres OpenPGP-Schlüsselpaars
+abzuschließen.
+
+Weiter geht's mit dem Abschnitt \textit{Schlüsselpaar-Erstellung abgeschlossen} 
+auf Seite~\pageref{finishKeyPairGeneration}. Von da an
+sind die Erklärungen für OpenPGP und X.509 wieder identisch.
+
+
+
+%% X.509 %%
+%% Original page 21
+\clearpage
+\subsection*{X.509-Schlüsselpaar erstellen}
+
+Klicken Sie im Zertifikatsformat-Auswahldialog von
+Seite~\pageref{chooseCertificateFormat} auf
+%TODO:german
+\Button{Create a personal X.509 key pair and certification request}. 
+%TODO# ggf "vgl. Abb"
+
+Geben Sie im nun folgenden Fenster Ihren Namen (CN), Ihre
+\Email{}-Adresse (EMAIL), Ihre Organisation (O) und Ihren Ländercode
+(C) an. Optional können Sie noch Ort (L) und Abteilung (OU) ergänzen. 
+
+% TODO screenshot: New X.509 Certificate - Personal details
+\begin{center}
+\IncludeImage[width=0.6\textwidth]{sc-kleopatra-x509-personalDetails_de}
+\end{center}
+
+
+Wenn Sie die Schlüsselerzeugung zunächst einmal \textbf{testen} wollen, dann
+machen Sie beliebige Angaben für Name, Organisation und
+Ländercode sowie geben irgendeine ausgedachte \Email{}-Adresse
+ein, z.B. \texttt{CN=Heinrich Heine, O=Test, C=DE} und
+"`\verb-heinrichh@gpg4win.de-"'.
+
+\clearpage
+Möchten Sie die vorgeschlagenen \textbf{erweiterten Einstellungen}
+ändern, klicken Sie auf den Button
+%TODO:german
+\Button{Advanced Settings}: 
+
+% TODO screenshot: New Certificate - Advanced Settings
+\begin{center}
+\IncludeImage[width=0.45\textwidth]{sc-kleopatra-x509-technicalDetails_de}
+\end{center}
+
+Am einfachsten lassen Sie alle Voreinstellungen unverändert und klicken 
+(im vorherigen Eingabedialog) auf \Button{Weiter}.
+
+\clearpage
+Es werden nun noch einmal alle Eingaben und Einstellungen zur
+\textbf{Kontrolle} aufgelistet. Aktivieren Sie die Option 
+% TODO:german
+\textit{Show all details} um alle Paramter einzusehen.
+
+% TODO screenshot: New Certificate - Review Parameters
+\begin{center}
+\IncludeImage[width=0.6\textwidth]{sc-kleopatra-x509-reviewParameters_de}
+\end{center}
+
+Sofern alles korrekt ist, klicken Sie anschließend auf 
+%TODO:german
+\Button{Create Key}. 
 
 
 \clearpage
-%% Original page 21
+%% Original page 19
+Jetzt folgt der wichtigste Teil: Die Eingabe Ihrer \textbf{Passphrase}!
 
-Nun wird Ihr Schlüsselpaar angelegt.  Dies kann kann u.U. einige
-Minuten dauern.  Sie können in der Zwischenzeit mit einer anderen
-Anwendung Ihres Rechner weiterarbeiten und erhöhen hierdurch sogar
-leicht die Qualität des erzeugten Schlüsselpaars.
+Während der Schlüsselgenerierung werden Sie aufgefordert hier Ihre
+Passphrase einzugeben:
 
-Sobald die Schlüsselgenerierung abgeschlossen ist, werden Sie den
-folgenden Dialog sehen:
-
-% screenshot: Wizard, backup
+%TODO screenshot: New certificate - pinentry
 \begin{center}
-\IncludeImage[width=0.6\textwidth]{sc-gpa-gen-backup}
+\IncludeImage[width=0.45\textwidth]{sc-kleopatra-x509-pinentry_de}
 \end{center}
 
-Sie werden hier gebeten, eine Sicherheitskopie Ihres Schlüssels
-anzulegen. Tun Sie das jetzt, auch wenn Sie den Ablauf nur üben:
+Im Kapitel~\ref{passphrase} geben wir Ihnen einige 
+wertvolle Tipps, was Sie bei der Erzeugung einer \textbf{sicheren
+Passphrase} beachten sollten. Nehmen Sie die Sicherheit Ihrer
+Passphrase ernst!
 
-Wenn Sie mit dem voreingestellten Dateinamen zufrieden sind, so 
-klicken Sie auf \Button{OK}.  Falls Sie das Backup woanders speichern
-möchten, so wählen Sie bitte vorher einen anderen Dateinamen aus.
+Sie sollten nun eine geheime, einfach zu merkende und schwer
+zu knackende Passphrase parat haben und im obigen Dialog eintragen.
 
-\textbf{Wichtig:} Falls Sie die Datei --- wie voreingestellt --- auf der
-Festplatte abgespeichert haben, so sollten Sie baldmöglichst diese
-Datei auf einen anderen Datenträger (USB Stick, Diskette oder CDROM)
-kopieren und diese Orginaldatei löschen.  Bewahren Sie diesen
-Datenträger sicher auf. 
+Falls die Passphrase nicht sicher genug sein sollte (z.B. weil sie zu kurz
+ist oder keine Zahlen/Sonderzeichen enthält), werden Sie darauf hingewiesen.
 
-Sie können eine Sicherungskopie auch jederzeit später anlegen; wählen
-Sie hierzu aus dem Hauptmenü
-\Menu{Schlüssel$\rightarrow$Sicherheitskopie~anlegen}.
+Auch an dieser Stelle können Sie ­-- wenn Sie wollen ­-- zunächst
+eine \textbf{Test-Passphrase} eingeben oder auch gleich "`Ernst machen"'.
+
+Sie müssen Ihre geheime Passphrase dreimal eingegeben. Bestätigen Sie
+Ihre Eingabe jeweils mit \Button{OK}.\\
+
+
+Nun wird Ihr Schlüsselpaar angelegt: 
+% TODO screenshot: New Certificate - Create Key
+\begin{center}
+\IncludeImage[width=0.6\textwidth]{sc-kleopatra-x509-createKey_de}
+\end{center}
+
+Dies kann u.U. einige Minuten dauern. Sie können in der Zwischenzeit
+mit einer anderen Anwendung Ihres Rechner weiterarbeiten und erhöhen
+hierdurch sogar leicht die Qualität des erzeugten Schlüsselpaars.
+%TODO# ggf. noch mehr erläutern!
+
+\clearpage
+Sobald die \textbf{Schlüsselgenerierung erfolgreich} abgeschlossen ist,
+erhalten Sie folgenden Dialog:
+
+%TODO screenshot: New certificate - key successfully created
+\begin{center}
+\IncludeImage[width=0.6\textwidth]{sc-kleopatra-x509-keyPairCreated_de}
+\end{center}
+
+
+Als nächstes \textit{können} Sie einen (oder mehrere) der folgenden
+drei Möglichkeiten durchführen:
+\begin{description}
+    \item[Speichern Sie Ihren Zertifikats-Request als Datei.] 
+        %TODO#: Dateiformat p10? Korrekt? 
+        % Sicherheitswarnung (Request = sicherheitskritische Datei)?
+    
+    ~\\Klicken Sie dazu auf den Button 
+    %TODO:german
+    \Button{Save Request To File...}
+
+    Geben Sie den genauen Pfad an, wohin Ihr X.509-Zertifikats-Request
+    gespeichert werden soll und bestätigen Sie Ihre Eingabe.
+
+    
+    \item[Versenden Sie den Zertifikats-Request per \Email{}.]
+    ~\\Klicken Sie auf den Button 
+    %TODO:german
+    \Button{Send Certificate By EMail}.
+
+    Es wird eine neue \Email{} erstellt -- mit dem soeben erstellen
+    Zertifikats-Request im Anhang. 
+    Geben Sie eine  Empfänger-\Email{}-Adresse an (in der Regel Ihre
+    zuständige CA-\Email{}-Adresse) und ergänzen Sie ggf. den 
+    vorbereiteten Text dieser \Email{}.
+    
+    % ggf TODO screenshot: New certificate - send openpgp key per email
+   \begin{center}
+   \IncludeImage[width=0.6\textwidth]{sc-ol-sendNewX509Certificate_de}
+   \end{center}
+    
+    %TODO#:korrekt?
+    Sobald der Request von der CA bestätigt wurde, erhalten Sie von
+    Ihrem zuständigen CA-Systemadministrator das fertige X.509-Zertifikat.
+\end{description}
+
+\clearpage
+Beenden Sie anschließend den Kleopatra-Assistenten mit 
+%TODO:german
+\Button{Finish}.
+
+Weiter geht's mit dem Abschnitt \textit{Schlüsselpaar-Erstellung abgeschlossen} 
+auf der nächsten Seite. Von nun an
+sind die Erklärungen für OpenPGP und X.509 wieder identisch.
 
 
 \clearpage
 %% Original page 23
-\textbf{
-Damit ist die Installation von Gpg4win und die Erzeugung Ihres
-Schlüsselpaares abgeschlossen.  Sie besitzen nun einen einmaligen und
-sicheren digitalen Schlüssel.
-}
 
-Sie sehen jetzt wieder das Hauptfenster von GPA. In der Mitte des
-Fensters ­-- hinter dem Symbol der doppelten Schlüssel ­-- sehen Sie
-Ihr soeben erzeugtes Schlüsselpaar.
+\subsection*{Schlüsselpaar-Erstellung abgeschlossen}
+\label{finishKeyPairGeneration}
 
-Wenn Sie Ihr Schlüsselpaar anklicken, sehen Sie einige Details, die
-Sie gleich nachlesen können.
+\textbf{Damit ist die Erzeugung Ihres OpenPGP- bzw. X.509-Schlüsselpaares abgeschlossen.  
+Sie besitzen nun einen einmaligen und sicheren digitalen Schlüssel.}
 
-% screenshot: keymanger mit einem Schlüssel.
+Sie sehen jetzt wieder das Hauptfenster von Kleopatra. 
+Das soeben erzeugte OpenPGP-/X.509-Schlüs\-selpaar finden Sie in der
+Zertifikatsverwaltung unter dem Reiter \textit{Meine Zertifikate} 
+(hier ist exemplarisch das OpenPGP-Zertifikat sichtbar):
+
+%TODO screenshot: Kleopatra with new openpgp certificate
 \begin{center}
-\IncludeImage[width=0.9\textwidth]{sc-gpa-first-key}
+\IncludeImage[width=0.6\textwidth]{sc-kleopatra-withOpenpgpTestkey_de}
 \end{center}
 
-Was bedeuten die Anmerkungen über Ihren Schlüssel?  Ihr Schlüssel ist
-unbegrenzt gültig d.h., er hat kein "`eingebautes Verfallsdatum"'. Man
-kann die Gültigkeit nachträglich verändern ­-- dazu später mehr.
+Doppelklicken Sie auf Ihr neues Zertifikat, um alle Zertifikatsdetails
+nachlesen zu können (hier exemplarisch für das OpenPGP-Zertifikat):
+
+%TODO screenshot: details of openpgp certificate
+\begin{center}
+\IncludeImage[width=0.6\textwidth]{sc-kleopatra-openpgp-certificateDetails_de}
+\end{center}
+
+Was bedeuten die einzelnen Zertifikatsdetails? 
+
+Ihr Schlüssel ist unbegrenzt gültig d.h., er hat kein 
+"`eingebautes Verfallsdatum"'. Um die Gültigkeit nachträglich 
+zu verändern, klicken Sie auf \Button{Ablaufdatum ändern}.
 
 Ein Schlüssel mit einer Länge von 1024 Bit ist ein sicherer Schlüssel,
 der trotzdem nicht zuviel Rechenkraft auf Ihrem Computer beansprucht.
+%TODO# DSA erklären
 
-\textbf{ \OtherBook{} Lesen Sie nun im Handbuch "`\xlink{Gpg4win für
-    Durchblicker}{durchblicker.html}"' Kapitel 5 "`Schlüssel im
-  Detail"' weiter.  Sie können dieses Kapitel jetzt lesen oder später,
-  wenn Sie diese Informationen benötigen }
+\textbf{Weitere Informationen zu den Zertifikatsdetails finden Sie im
+Kapitel~\ref{KeyDetails}. 
+Sie können dieses Kapitel jetzt lesen oder später, wenn Sie diese
+Informationen benötigen.}
+
+
 
 \clearpage
 %% Original page 24
@@ -709,8 +977,7 @@ Korrespondenzpartnern haben --- je mehr, desto besser.
 
 Denn:
 
-\textbf{
-Um sichere \Email{}s austauschen zu können, müssen beide Partner jeweils
+\textbf{Um sichere \Email{}s austauschen zu können, müssen beide Partner jeweils
 den öffentlichen Schlüssel des anderen besitzen und benutzen. Natürlich
 braucht der Empfänger auch ein Programm, das mit den Schlüsseln umgehen
 kann, wie zum Beispiel Gpg4win.
@@ -1326,9 +1593,8 @@ natürlich sollten Ihre \Email{}s \textbf{nicht} \verb-heinrichh@gpg4win.de- als
 Absender haben, sondern Ihre eigene \Email{}-Adresse.  Denn sonst werden
 Sie nie Antwort von Adele bekommen$\ldots$
 
-\textbf{
-Herzlichen Glückwunsch!  Sie haben Ihre erste \Email{} verschlüsselt!
-}
+\textbf{Herzlichen Glückwunsch!  Sie haben Ihre erste \Email{}
+verschlüsselt!}
 
 \clearpage
 %% Original page 47
@@ -1391,18 +1657,15 @@ die GnuPG direkt unterstützen.
 \textbf{Das war's! Willkommen in der Welt der freien und sicheren
 \Email{}-Verschlüsselung!}
 
-\textbf{
-\OtherBook{} Lesen Sie nun die Kapitel 10 bis 12 im Handbuch "`\xlink{Gpg4win
+\textbf{\OtherBook{} Lesen Sie nun die Kapitel 10 bis 12 im Handbuch "`\xlink{Gpg4win
 für Durchblicker}{durchblicker.html}"'.  Sie erfahren dort unter anderem, wie man \Email{}s
 signiert und einen bereits vorhandenen Geheimschlüssel in GnuPG
-importiert und verwendet.
-}
+importiert und verwendet.}
 
-\textbf{
-\OtherBook{} Ab Kapitel 13 des Handbuchs "`\xlink{Gpg4win für Durchblicker}{durchblicker.html}"'
+\textbf{\OtherBook{} Ab Kapitel 13 des Handbuchs "`\xlink{Gpg4win für
+Durchblicker}{durchblicker.html}"' 
 können Sie weiterhin in zwei spannenden Kapiteln lesen, auf welchen
-Verfahren die Sicherheit von GnuPG beruht.
-}
+Verfahren die Sicherheit von GnuPG beruht.}
 
 Und Sie können lesen, wie die geheimnisvolle Mathematik hinter GnuPG
 im Detail funktioniert.
@@ -1783,6 +2046,7 @@ Schlüsselbund.
 \clearpage
 %% Original page 20
 \section{Die Passphrase}
+\label{passphrase}
 
 Wie Sie oben gesehen haben, ist der private Schlüssel eine der
 wichtigsten Komponenten im Public-Key Verschlüsselungssystem. Man muss
@@ -1944,8 +2208,8 @@ Informationen gelesen hat.
 Seien Sie kreativ. Denken Sie sich jetzt eine Passphrase aus.
 Unvergesslich und unknackbar.
 
-Lesen Sie dann im Handbuch "`Gpg4win für Einsteiger"', Kapitel 4 ("`Sie
-erzeugen Ihre Schlüsselpaar"') weiter.
+Lesen Sie dann im Kapitel~\ref{createKeyPair} weiter, um Ihre 
+Passphrase bei der Erzeugung Ihres Schlüsselpaars festzulegen.
 
 
 
@@ -1953,6 +2217,7 @@ erzeugen Ihre Schlüsselpaar"') weiter.
 \clearpage
 %% Original page 24
 \section{Schlüssel im Detail}
+\label{KeyDetails}
 Der Schlüssel, den Sie erzeugt
 haben, besitzt einige
 Kennzeichen:
