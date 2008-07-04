@@ -299,8 +299,9 @@ chk  8618af7e9fa3cc0d0d13ccc997e96b3520b39471
 file dirmngr-1.0.2-svn302.tar.bz2
 chk  624ee2038378f70a3ab1906cb2431306d104b202
 
-file gpgme-1.1.7-svn1322.tar.bz2
-chk  353773b96e783bafd10f9bcd66831f8423838964
+file gpgme-1.1.7-svn1327.tar.bz2
+chk  4a0b67c6678cfe5b1e8c0fb3cef5a14677015221
+
 
 #
 # adns
