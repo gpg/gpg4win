@@ -1,7 +1,7 @@
 % gpg4win-compendium-de.tex
 % Note, that this a HyperLaTeX source and not plain LaTeX!
 
-\documentclass[a4paper,11pt,twoside,titlepage,dvips]{scrartcl}
+\documentclass[a4paper,11pt,twoside,openright,titlepage,dvips]{scrbook}
 \usepackage{hyperlatex}
 \usepackage{a4wide}
 \usepackage{times}
@@ -26,6 +26,7 @@
 \input{macros.tex}
 \newcommand{\manualversion}{\manualversionEinsteiger}
 \newcommand{\manualdate}{\manualdateEinsteiger}
+\newcommand\margin[1]{\marginline {\sffamily\scriptsize #1}}
 
 \T\fancyhead{} % clear all fields
 \T\fancyhead[LO,RE]{Das Gpg4win Kompendium \manualversion\ \manualinprogress}
@@ -120,7 +121,9 @@ sondern für jedermann.
 
 \clearpage
 %% Orginal page 7
-\section{Über dieses Handbuch}
+\chapter*{Über dieses Handbuch}
+\T\addcontentsline{toc}{chapter}{Über dieses Handbuch}
+
 
 Das Gpg4win-Anleitungs- und Übungsmaterial besteht aus drei Teilen:
 
@@ -171,17 +174,25 @@ läuft dort noch immer. "`Gpg4win für Einsteiger"' verwendet diesen
 zuverlässigen Übungsroboter und dankt den Inhabern von gnupp.de
 für den Betrieb von Adele.
 
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Part I
+
 \clearpage
 \part{Einsteiger}
+\addtocontents{toc}{\protect\vspace{0.3cm}}
 
 %% Orginal page 8
-\section{Was ist Gpg4win?}
+\chapter{Was ist Gpg4win?}
 
 \input{was-ist-gpg4win.tex}
 
 \clearpage
 %% Orginal page 9
-\section{Sie installieren Gpg4win}
+\chapter{Sie installieren Gpg4win}
 
 Sollte bereits eine GnuPG basierte Anwendung, wie z.B. GnuPP, GnuPT,
 WinPT oder GnuPG Basics, auf Ihrem System installiert sein, so lesen
@@ -391,7 +402,7 @@ Anhang \ref{ch:auto} "`Automatische Installation von Gpg4win"' weiter.
 }
 
 \clearpage
-\section{Zwei Wege, ein Ziel: OpenPGP \& S/MIME}
+\chapter{Zwei Wege, ein Ziel: OpenPGP \& S/MIME}
 
 Wie so oft gibt es für das gleiche Ziel verschiedene Wege, ähnlich ist
 es auch in der Verschlüsselung Ihrer \Email{}s mit den Standards OpenPGP
@@ -501,7 +512,7 @@ zu welchem Konzept welche Erklärung gehört.
 
 \clearpage
 %% Original page 15
-\section{Sie erzeugen Ihr Schlüsselpaar}
+\chapter{Sie erzeugen Ihr Schlüsselpaar}
 \label{createKeyPair}
 
 Nachdem Sie gelesen haben, warum GnuPG so sicher ist und wie ein guter
@@ -531,7 +542,6 @@ machen. Doch dazu später mehr.
 \clearpage
 %% Original page 16
 \textbf{Los geht's!}
-
 Rufen Sie das Programm Kleopatra über das Windows Startmenü auf:
 
 % TODO screenshot Startmenu with Kleopatra highlighted
@@ -572,12 +582,17 @@ Sie sich oben entschieden haben.
 
 
 
+
+
 %% OpenPGP %%
 %% Original page 18
-\subsection*{OpenPGP-Schlüsselpaar erstellen}
+\section*{OpenPGP-Schlüsselpaar erstellen}
+
 Klicken Sie im obigen Auswahldialog auf 
 %TODO:german
 \Button{Create a personal OpenPGP key pair}. %TODO vgl. Abb
+
+\margin{\IncludeImage[width=1.5cm]{openpgp-icon}}
 
 Geben Sie im nun folgenden Fenster Ihren Namen und Ihre
 \Email{}-Adresse an.
@@ -765,13 +780,15 @@ sind die Erklärungen für OpenPGP und X.509 wieder identisch.
 %% X.509 %%
 %% Original page 21
 \clearpage
-\subsection*{X.509-Schlüsselpaar erstellen}
+\section*{X.509-Schlüsselpaar erstellen \margin{\IncludeImage[width=1.5cm]{smime-icon}} }
 
-Klicken Sie im Zertifikatsformat-Auswahldialog von
+Klicken Sie im Zertifikatsformat-Auswahldialog von 
 Seite~\pageref{chooseCertificateFormat} auf
 %TODO:german
 \Button{Create a personal X.509 key pair and certification request}. 
 %TODO# ggf "vgl. Abb"
+
+
 
 Geben Sie im nun folgenden Fenster Ihren Namen (CN), Ihre
 \Email{}-Adresse (EMAIL), Ihre Organisation (O) und Ihren Ländercode
@@ -919,7 +936,7 @@ sind die Erklärungen für OpenPGP und X.509 wieder identisch.
 \clearpage
 %% Original page 23
 
-\subsection*{Schlüsselpaar-Erstellung abgeschlossen}
+\section*{Schlüsselpaar-Erstellung abgeschlossen}
 \label{finishKeyPairGeneration}
 
 \textbf{Damit ist die Erzeugung Ihres OpenPGP- bzw. X.509-Schlüsselpaares abgeschlossen.  
@@ -963,7 +980,7 @@ Informationen benötigen.}
 \clearpage
 %% Original page 24
 
-\section{Sie veröffentlichen Ihren Schlüssel per \Email{}}
+\chapter{Sie veröffentlichen Ihren Schlüssel per \Email{}}
 
 Beim täglichen Gebrauch von Gpg4win ist es sehr praktisch, dass Sie es
 beim Ver- und Entschlüsseln stets nur mit den "`ungeheimen"'
@@ -1150,7 +1167,7 @@ Kapitel jetzt lesen oder später, wenn Sie diese Funktion benötigen.
 
 \clearpage
 %% Original page 30
-\section{Sie veröffentlichen Ihren Schlüssel per Keyserver}
+\chapter{Sie veröffentlichen Ihren Schlüssel per Keyserver}
 
 Diese Möglichkeit bietet sich eigentlich immer an, selbst wenn Sie nur
 mit wenigen Partnern verschlüsselte \Email{}s austauschen.  Ihr
@@ -1194,7 +1211,7 @@ Schlüssel auf einen Schlüsselserver im Internet schicken können.
 
 \clearpage
 %% Original page 31
-\section{Sie entschlüsseln eine \Email{}}
+\chapter{Sie entschlüsseln eine \Email{}}
 
 Adele erhält nun Ihren öffentlichen Schlüssel, verschüsselt damit eine
 \Email{} und sendet sie an Sie zurück.  Nach kurzer Zeit erhalten Sie
@@ -1353,7 +1370,7 @@ oder dessen signierte Mails überprüfen.
 
 \clearpage
 %% Original page 37
-\section{Sie befestigen einen Schlüssel am Schlüsselbund}
+\chapter{Sie befestigen einen Schlüssel am Schlüsselbund}
 
 Ihr Korrespondenzpartner muss nicht etwa jedes Mal seinen Schlüssel
 mitschicken, wenn er Ihnen signiert schreibt. Sie bewahren seinen
@@ -1522,7 +1539,7 @@ jedoch auch bedeuten, dass der Text nachträglich verändert wurde.
 
 \clearpage
 %% Original page 42
-\section{Sie verschlüsseln eine \Email{}}
+\chapter{Sie verschlüsseln eine \Email{}}
 
 Jetzt wird es nochmal spannend:
 
@@ -1598,7 +1615,7 @@ verschlüsselt!}
 
 \clearpage
 %% Original page 47
-\section{Wie Sie Ihre \Email{}s verschlüsselt archivieren}
+\chapter{Wie Sie Ihre \Email{}s verschlüsselt archivieren}
 
 Eine Einstellung müssen Sie noch vornehmen, damit Sie Ihre \Email{}s
 verschlüsselt aufbewahren können.  Natürlich können Sie einfach eine
@@ -1676,12 +1693,25 @@ sondern
 
 \textbf{für jedermann.}
 
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Part II
+
+% page break in toc
+\addtocontents{toc}{\protect\newpage}
+
 \clearpage
 \part{Fortgeschrittene}
+\addtocontents{toc}{\protect\vspace{0.3cm}}
 
 \clearpage
 %% Original page 6
-\section{Warum überhaupt  verschlüsseln?}
+\chapter{Warum überhaupt  verschlüsseln?}
 
 Die Verschlüsselung von Nachrichten wird manchmal als das zweitälteste
 Gewerbe der Welt bezeichnet. Verschlüsselungstechniken benutzten schon
@@ -1774,7 +1804,7 @@ und die wir im Folgenden besprechen:
 
 \clearpage
 %% Original page 9
-\section{Wie funktioniert Gpg4win?}
+\chapter{Wie funktioniert Gpg4win?}
 Das Besondere an Gpg4win und der zugrundeliegenden Public-Key Methode
 ist, dass sie jeder verstehen kann und soll. Nichts daran ist
 Geheimwissen ­-- es ist nicht einmal besonders schwer zu verstehen.
@@ -2045,7 +2075,7 @@ Schlüsselbund.
 
 \clearpage
 %% Original page 20
-\section{Die Passphrase}
+\chapter{Die Passphrase}
 \label{passphrase}
 
 Wie Sie oben gesehen haben, ist der private Schlüssel eine der
@@ -2216,7 +2246,7 @@ Passphrase bei der Erzeugung Ihres Schlüsselpaars festzulegen.
 
 \clearpage
 %% Original page 24
-\section{Schlüssel im Detail}
+\chapter{Schlüssel im Detail}
 \label{KeyDetails}
 Der Schlüssel, den Sie erzeugt
 haben, besitzt einige
@@ -2263,7 +2293,7 @@ und "`Schlüsselvertrauen"' in Kapitel \ref{ch:trust}.
 
 \clearpage
 %% Original page 25
-\section{Die Schlüsselserver}
+\chapter{Die Schlüsselserver}
 Um verschlüsselt mit anderen zu kommunizieren, müssen die Partner ihre
 Schlüssel veröffentlichen und austauschen. Dazu ist --- Sie erinnern
 sich an Kapitel 1 --- keine Geheimniskrämerei notwendig, denn Ihr
@@ -2414,7 +2444,7 @@ Schlüsselverwaltungs-Fenster an.
 
 \clearpage
 %% Original page 29
-\section{Der Schlüssel als Dateianhang}
+\chapter{Der Schlüssel als Dateianhang}
 
 Im Einsteiger Handbuch Kapitel 5 ("`Sie veröffentlichen Ihren Schlüssel
 per \Email{}"') haben Sie gesehen, wie einfach man
@@ -2440,7 +2470,7 @@ Datei, und senden sie ihn an den Empfänger.
 
 \clearpage
 %% Original page 30
-\section{PlugIns für \Email{}-Programme}
+\chapter{PlugIns für \Email{}-Programme}
 
 Im "`Einsteiger-Handbuch"' haben wir im Kapitel 7 ("`Sie entschlüsseln
 eine \Email{}"') erwähnt, dass es PlugIns für bestimmte \Email{}-Programme
@@ -2483,7 +2513,7 @@ Sicherheit in der Informationstechnik.
 
 \clearpage
 %% Original page 31
-\section{Die Schlüsselprüfung}
+\chapter{Die Schlüsselprüfung}
 \label{ch:trust}
 
 Woher wissen Sie eigentlich, dass der fremde öffentliche Schlüssel
@@ -2668,7 +2698,7 @@ das Sie ebenfalls im Internet finden
 
 \clearpage
 %% Original page 37
-\section{\Email{}s signieren}
+\chapter{\Email{}s signieren}
 
 Ganz am Anfang dieses Handbuchs haben wir die \Email{}-Kommunikation mit
 dem Versenden einer Postkarte verglichen. Erst die Verschlüsselung
@@ -2707,7 +2737,7 @@ genau denselben Zweck.
 
 \clearpage
 %% Original page 38
-\subsection{Signieren mit dem Geheimschlüssel}
+\section{Signieren mit dem Geheimschlüssel}
 
 Tatsächlich ist die Signierung einer \Email{} noch einfacher als die
 Verschlüsselung: Wie im "`Einsteiger-Handbuch"' im Kapitel 9, "`Sie
@@ -2786,7 +2816,7 @@ fehlgeschlagen"' beim Empfänger versehen, sobald die Signatur
 
 \clearpage
 %% Original page 40
-\subsection{Andere Gründe für eine gebrochene Signatur}
+\section{Andere Gründe für eine gebrochene Signatur}
 
 Es gibt aber noch zwei weitere Gründe, die zu einem Bruch der Signatur
 führen können. Wenn Sie eine \Email{} mit dem Vermerk "`Bad signature"'
@@ -2819,7 +2849,7 @@ erneut anfordern.
 
 \clearpage
 %% Original page 41
-\subsection{Dateien signieren}
+\section{Dateien signieren}
 
 Nicht nur \Email{}s, auch Dateien --­ z.B. ein PDF-Dokument --- kann
 man signieren, bevor man sie per \Email{} verschickt oder per Diskette
@@ -2881,7 +2911,7 @@ ungültig angezeigt.
 
 \clearpage
 %% Original page 42
-\subsection{Verschlüsseln und signieren}
+\section{Verschlüsseln und signieren}
 
 Normalerweise verschlüsselt man eine Nachricht mit dem öffentlichen
 Schlüssel des Korrespondenzpartners, der ihn mit seinem privaten
@@ -2933,7 +2963,7 @@ ganz einfach.
 \clearpage
 %% Original page 43
 
-\section{Dateianhänge verschlüsseln}
+\chapter{Dateianhänge verschlüsseln}
 
 Was tun, wenn Sie zusammen mit Ihrer \Email{} eine Datei versenden und
 diese ebenfalls verschlüsseln wollen? Die Verschlüsselung, wie wir sie
@@ -2972,7 +3002,7 @@ beschrieben Verfahren automatisch durchführen.
 
 
 \clearpage
-\section{Dateien: Verschlüsselung und Signaturen}
+\chapter{Dateien: Verschlüsselung und Signaturen}
 
 Dieser Abschnitt ist noch nicht ausformuliert.
 Er wird die Anwendung von GpgEX beschreiben.
@@ -2980,7 +3010,7 @@ Er wird die Anwendung von GpgEX beschreiben.
 
 \clearpage
 %% Original page 45
-\section{Im- und Export eines geheimen Schlüssels}
+\chapter{Im- und Export eines geheimen Schlüssels}
 
 Im "`Schnellstart"'-Handbuch haben wir in den Kapiteln 5, 6 und 8 den
 Im- und Export eines öffentlichen Schlüssels besprochen. Wir haben
@@ -3034,7 +3064,7 @@ nicht funktionieren, so setzen Sie die Passphrase in PGP auf
 
 \clearpage
 %% Original page 47
-\subsection{Export eines GnuPG-Schlüssels}
+\section{Export eines GnuPG-Schlüssels}
 
 Immer wenn Sie einen GnuPG-Schlüssel auf einen anderen Rechner
 transferieren oder auf einer anderen Festplattenpartition bzw. einer
@@ -3073,7 +3103,7 @@ Damit haben Sie erfolgreich einen GnuPG-Schlüssel exportiert und
 wieder importiert.
 
 \clearpage
-\section{Systemweite Konfigurationen und Vorbelegungen für S/MIME}
+\chapter{Systemweite Konfigurationen und Vorbelegungen für S/MIME}
 
 Im Rahmen von Softwareverteilung oder sonstigen Umgebungen
 in denen viele Anwender auf einem System arbeiten,
@@ -3125,9 +3155,9 @@ Einige typische systemweite Einrichtungen sind:
 \end{itemize}
 
 \clearpage
-\section{Bekannte Probleme und was man tun kann}
+\chapter{Bekannte Probleme und was man tun kann}
 
-\subsection{GpgOL Menüs und Dialog nicht mehr in Outlook zu finden}
+\section{GpgOL Menüs und Dialog nicht mehr in Outlook zu finden}
 
 Es kann vorkommen, dass trotz Aktualisierung von Gpg4win
 die Menüs und Dialog die von GpgOL zu Outlook hinzugefügt
@@ -3139,7 +3169,7 @@ und Outlook aus diesem Grund das GpgOL Element deaktiviert.
 Reaktivieren Sie GpgOL über das Menü
 ,,Hilfe-> Info-> Deaktivierte Elemente''.
 
-\subsection{Systemdienst ,,DirMngr'' läuft nicht}
+\section{Systemdienst ,,DirMngr'' läuft nicht}
 
 ,,DirMngr'' ist ein über Gpg4win installierter Dienst der
 die Zugriffe auf Verzeichnisdienste
@@ -3159,9 +3189,9 @@ In der Liste finden Sie ,,DirMngr'' -
 über das Kontextmenü kann der Dienst neu gestartet werden.
 
 \clearpage
-\section{Wo finde ich die Dateien und Einstellungen von Gpg4win?}
+\chapter{Wo finde ich die Dateien und Einstellungen von Gpg4win?}
 
-\subsection{Persönliche Einstellungen der Anwender}
+\section{Persönliche Einstellungen der Anwender}
 
 Die persönlichen Einstellungen für jeden Anwender befinden sich
 im Verzeichnis \Filename{\%APPDATA\%\back{}gnupg}. Oft entspricht das dem
@@ -3178,7 +3208,7 @@ also die persönlichen Schlüssel, Zertifikate, Vertrauenseinstellungen und
 Programmkonfigurationen.
 \\
 
-\subsection{Zwischengespeicherte Sperrlisten}
+\section{Zwischengespeicherte Sperrlisten}
 
 Der systemweite Dienst ,,DirMngr'' prüft unter anderem ob
 ein Zertifkate gesperrt und daher nicht verwendet werden darf.
@@ -3196,7 +3226,7 @@ Ansicht eingestellt ist, dass auch geschützte Dateien angezeigt werden sollen.
 
 In diesem Verzeichnis sollten keine Änderungen vorgenommen werden.
 
-\subsection{Vertrauenswürdige Wurzeln von DirMngr \label{trustedrootcertsdirmngr}}
+\section{Vertrauenswürdige Wurzeln von DirMngr \label{trustedrootcertsdirmngr}}
 
 Für eine vollständige Prüfung von Zertifkats-Gültigkeiten
 muss auch den Wurzel-Zertifkaten vertraut werden, in deren
@@ -3209,7 +3239,7 @@ Prüfungen vertrauen soll liegt unter\newline
 Für systemweite Vorgaben sollten hier die Wurzel-Zertifkate abgelegt werden
 denen alle Anwender vertrauen können.
 
-\subsection{Weitere Zertifikate von DirMngr \label{extracertsdirmngr}}
+\section{Weitere Zertifikate von DirMngr \label{extracertsdirmngr}}
 
 Um wie oeben beschrieben die Zertifizierungskette zu
 prüfen sind auch die Zertifkate der Zertifizierungsstellen
@@ -3226,7 +3256,7 @@ verfügbar, per Hand importiert werden.
 Es ist also sinnvoll im Rahmen von systemweiten Vorgaben hier die
 wichtigsten CA-Zertifkate abzulegen.
 
-\subsection{Konfiguration zur Verwendung externer LDAP Verrzeichnisdienste \label{ldapservers}}
+\section{Konfiguration zur Verwendung externer LDAP Verrzeichnisdienste \label{ldapservers}}
 
 GnuPG kann so konfiguriert werden, dass bei Bedarf fehlende Zertifkate
 oder Sperrlisten auf externen Verzeichnisdiensten gesucht werden.
@@ -3246,7 +3276,7 @@ Die genaue Syntax für die Einträge lautet übrigens:
 
 \verb#HOSTNAME:PORT:USERNAME:PASSWORD:BASE_DN#
 
-\subsection{Systemweite vertrauenswürdige Wurzel-Zertifikate \label{systemtrustedrootcerts}}
+\section{Systemweite vertrauenswürdige Wurzel-Zertifikate \label{systemtrustedrootcerts}}
 
 Die systemweit als vertrauenswürdig vorbelegten Zertifkate werden
 in der Datei\newline
@@ -3254,7 +3284,7 @@ in der Datei\newline
 definiert.
 
 \clearpage
-\section{Fehler in den Gpg4win Programmen aufspüren}
+\chapter{Fehler in den Gpg4win Programmen aufspüren}
 
 Es kann vorkommen, dass eines der Gpg4win Programme
 nicht wie erwartet zu funktionieren scheint.
@@ -3289,7 +3319,7 @@ Im folgenden werden verschieden Möglichkeiten beschrieben
 wie Programm-Ablauf-Informationen (darum handelt es sich
 letztlich bei den Logbüchern) eingeschaltet werden können.
 
-\subsection{Logbuch von Kleopatra einschalten}
+\section{Logbuch von Kleopatra einschalten}
 
 Das Logbuch von Kleopatra besteht aus vielen Dateien,
 daher ist der erste Schritt ein Verzeichnis für
@@ -3340,7 +3370,7 @@ reaktivieren). Vergessen Sie nicht, die Logbücher zu löschen falls
 sie umfangreich geworden sind oder es sehr viele Dateien sind. Am besten immer
 bevor Sie eine neue Aufzeichnung machen.
 
-\subsection{Logbuch von GpgOL einschalten}
+\section{Logbuch von GpgOL einschalten}
 
 Für das Einschalten des Logbuches von GpgOL müssen Sie ihrem normalen
 Benutzerkonto (also nicht als Administrator) den Registrierungs-Editor
@@ -3376,7 +3406,7 @@ Bedenken Sie, dass diese Datei ggf. im weiteren Verlauf sehr
 umfangreich werden kann. Stelle Sie ,,enableDebug'' auf ,,0'' wenn
 Sie kein Logbuch mehr benötigen.
 
-\subsection{Logbuch von DirMngr einschalten}
+\section{Logbuch von DirMngr einschalten}
 
 Bei DirMngr handelt es sich um einen systemweiten Dienst und daher
 ist das Einschalten des Logbuches nur mit Administator-Rechten
@@ -3395,7 +3425,7 @@ log-file C:\TEMP\dirmngr.log
 Starten Sie dann den Dienst neu, so dass er die geänderte Konfiguration
 einliesst.
 
-\subsection{Logbuch von GPG für S/MIME, GPG Agent oder Smartcard Daemon einschalten}
+\section{Logbuch von GPG für S/MIME, GPG Agent oder Smartcard Daemon einschalten}
 
 Für die Programme GPG für S/MIME (Kommandozeilen-Name GpgSM), GPG Agent (gpg-agent) und
 Smarcard Daemon (scdaemon) können Anwender persönliche Konfigurationen vornehmen.
@@ -3411,7 +3441,7 @@ Dateien. Daher sollten Sie die Logbücher wieder ausschalten wenn Sie nicht mehr 
 
 \clearpage
 %% Original page 49
-\section{Warum Gpg4win nicht zu knacken ist~$\ldots$}
+\chapter{Warum Gpg4win nicht zu knacken ist~$\ldots$}
 \label{ch:themath}
 
 $\ldots$ jedenfalls nicht mit heute bekannten Methoden und sofern die
@@ -3444,7 +3474,7 @@ Hier beginnt also sozusagen die Kür nach dem Pflichtteil:
 
 \clearpage
 %% Original page 50
-\section{GnuPG und das Geheimnis der großen Zahlen}
+\chapter{GnuPG und das Geheimnis der großen Zahlen}
 
 {\Large Kryptographie für Nicht-Mathematiker}
 
@@ -3510,7 +3540,7 @@ haben. Dieser Algorithmus verwendet einen Typ der Arithmetik, die
 Rechnen mit Restklassen oder "`Modulo-Arithmetik"' heißt.
 
 %% Original page 53
-\subsection{Das Rechnen mit Restklassen}
+\section{Das Rechnen mit Restklassen}
 
 Wenn man mit Restklassen rechnet, so bedeutet dies, dass man
 nur mit dem "`Rest"' rechnet, der nach einer ganzzahligen Teilung durch eine
@@ -3620,7 +3650,7 @@ Arithmetik gerechnet $ 13 * 11 = 143 $ und $ 143 = 8 * 17 + 7 $ ist.
 
 \clearpage
 %% Original page 56
-\subsection{RSA-Algorithmus und Rechnen mit Restklassen}
+\section{RSA-Algorithmus und Rechnen mit Restklassen}
 
 Computer speichern Buchstaben als Zahlen. Alle Buchstaben und Symbole
 auf der Computertastatur werden in Wirklichkeit als Zahlen
@@ -3685,7 +3715,7 @@ Botschaft entschlüsseln.
 
 \clearpage 
 %% Original page 58
-\subsection{RSA Verschlüsselung mit kleinen Zahlen}
+\section{RSA Verschlüsselung mit kleinen Zahlen}
 
 Wir verwenden hier erst einmal kleine Zahlen, um deutlich
 zu machen, wie die Methode funktioniert. In der Praxis verwendet
@@ -3876,7 +3906,7 @@ jedenfalls nicht in vertretbarer Zeit.
 
 \clearpage
 %% Original page 64
-\subsection{Die Darstellung mit verschiedenen Basiszahlen}
+\section{Die Darstellung mit verschiedenen Basiszahlen}
 
 Um zu verstehen, wie Nachrichten verschlüsselt werden, sollte man
 wissen, wie ein Computer Zahlen speichert und vor allem, wie sie in
@@ -4182,10 +4212,21 @@ tiefergehende Details sind leicht in anderen Büchern (z.B. R.~Wobst,
 \Email{}s zu schaffen macht, ist er durchaus so lange damit beschäftigt,
 dass er dann keine Lust mehr haben kann sie auch noch zu lesen\ldots
 
-\appendix
-\part{Appendix}
 
-\section{Hinweise zum Outlook Plugin \emph{GPGol}}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Appendix
+
+% page break in toc
+\addtocontents{toc}{\protect\newpage}
+
+\appendix
+\part{Anhang}
+\addtocontents{toc}{\protect\vspace{0.3cm}}
+
+\chapter{Hinweise zum Outlook Plugin \emph{GPGol}}
 
 GPGol ist ein Plugin für Microsoft Outlook, es integriert dort die
 Bedienung von GnuPG.  Wir geben hier einige Hinweise zur Benutzung.
@@ -4210,7 +4251,7 @@ Bitte beachten Sie die beiden folgenden Einschränkungen:
 \end{itemize}
 
 
-\subsection{Installation}
+\section{Installation}
 
 Die Installation wird durch den Gpg4win Installer vorgenommen.  Beim nächsten
 Start von Outlook findet sich im Menü
@@ -4264,7 +4305,7 @@ Bildschirmausdruck entsprechen:
 \end{center}
 
 
-\subsection{Häufig gestellte Fragen}
+\section{Häufig gestellte Fragen}
 
 \begin{description}
 \item[Die Icons zur Verschlüsselung fehlen in der Symbolleiste] 
@@ -4339,7 +4380,7 @@ Bildschirmausdruck entsprechen:
 \end{description}
 
 \clearpage
-\section{Automatische Installation von Gpg4win}
+\chapter{Automatische Installation von Gpg4win}
 \label{ch:auto}
 
 In diesem Kapitel wird die automatisierte Installation, also
@@ -4430,7 +4471,7 @@ Steuerungsdatei \verb-gpg4win.ini- und einem Installationspfad
 \end{verbatim}
 
 \clearpage
-\section{Umstieg von anderen GnuPG Programmen}
+\chapter{Umstieg von anderen GnuPG Programmen}
 \label{ch:migration}
 
 Wir werden hier erläutern, wie Sie von anderen GnuPG basierten
@@ -4473,7 +4514,7 @@ GPA.\footnote{Dies ist nicht der offizielle Weg, funktioniert aber
 
 
 \clearpage
-\section{History}
+\chapter{History}
 
 \begin{itemize}
 \item  "`GnuPP für Einsteiger"', 1. Auflage März 2002 und
@@ -4503,7 +4544,7 @@ GPA.\footnote{Dies ist nicht der offizielle Weg, funktioniert aber
 
 
 \clearpage
-\section{Deinstallation von Gpg4win}
+\chapter{Deinstallation von Gpg4win}
 
 %  TODO: Wenn die Kapitel zu S/MIME fertig sind, sollten Verweise zum Sichern
 %  von Zertifikaten und Schlüssel eingefügt werden

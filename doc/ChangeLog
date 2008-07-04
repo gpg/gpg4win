@@ -1,3 +1,8 @@
+2008-07-04  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+	
+	* manual/gpg4win-compendium-de.tex: Changed scrartcl to scrbook.
+	Reformatting and restructuring.
+
 2008-07-03  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 	
 	* manual/gpg4win-compendium-de.tex: Reworked section 5 "Sie
