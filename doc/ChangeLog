@@ -1,3 +1,12 @@
+2008-07-02  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
+
+	* manual/gpg4win-compendium-de.tex: Improved chapter on key creation.
+
+	* manual/sc-kleopatra-openpgp-technicalDetails_de.png,
+	manual/sc-kleopatra-x509-technicalDetails_de.png: Removed.
+
+	* manual/Makefile.am: Removed consideration of the deleted png files.
+
 2008-07-04  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 	
 	* manual/gpg4win-compendium-de.tex: Changed scrartcl to scrbook.

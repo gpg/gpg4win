@@ -23,7 +23,6 @@ png_files = \
 		sc-kleopatra-mainwindow-empty_de.png\
 		sc-kleopatra-ChooseCertificateFormat_de.png\
 		sc-kleopatra-openpgp-personalDetails_de.png\
-		sc-kleopatra-openpgp-technicalDetails_de.png\
 		sc-kleopatra-openpgp-reviewParameters_de.png\
 		sc-kleopatra-openpgp-createKey_de.png\
 		sc-kleopatra-openpgp-pinentry_de.png\
@@ -33,7 +32,6 @@ png_files = \
 		sc-kleopatra-withOpenpgpTestkey_de.png\
 		sc-kleopatra-openpgp-certificateDetails_de.png\
 		sc-kleopatra-x509-personalDetails_de.png\
-		sc-kleopatra-x509-technicalDetails_de.png\
 		sc-kleopatra-x509-reviewParameters_de.png\
 		sc-kleopatra-x509-createKey_de.png\
 		sc-kleopatra-x509-pinentry_de.png\
