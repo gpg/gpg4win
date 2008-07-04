@@ -1,4 +1,11 @@
-2008-07-02  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
+2008-07-04  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+	
+	* manual/gpg4win-compendium-de.tex,
+	manual/was-ist-gpg4win.tex,
+	manual/Makefile.am: Reformatting and restructuring.
+	Added new screenshot and labels. Reworked some chapter.
+
+2008-07-04  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
 
 	* manual/gpg4win-compendium-de.tex: Improved chapter on key creation.
 
@@ -17,7 +24,7 @@
 	* manual/gpg4win-compendium-de.tex: Reworked section 5 "Sie
 	erzeugen Ihr Schlüsselpaar"
 
-	* manual/Makefile.am: Added new png scrennshot images.
+	* manual/Makefile.am: Added new png screenshot images.
 	
 2008-07-03  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 	

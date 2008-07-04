@@ -37,25 +37,26 @@ png_files = \
 		sc-kleopatra-x509-pinentry_de.png\
 		sc-kleopatra-x509-keyPairCreated_de.png\
 		sc-ol-sendNewX509Certificate_de.png\
+		sc-kleopatra-exportCertificateToServer_de.png\
         sc-inst-welcome.png sc-inst-license.png \
         sc-inst-components.png sc-inst-directory.png \
         sc-inst-options.png \
         sc-inst-startmenu.png sc-inst-ready.png \
         sc-inst-finished.png sc-inst-finished2.png \
-	sc-winpt-sign-passwd.png \
+		sc-winpt-sign-passwd.png \
         sc-gpgee-ctxmenu.png sc-gpgee-signmenu.png \
-	sc-gpa-gen-backup.png sc-gpa-gen-backup-warn.png \
-	sc-gpgol-options.png sc-gpgol-noword.png \
-	sc-en-inst-welcome.png sc-en-inst-license.png \
+		sc-gpa-gen-backup.png sc-gpa-gen-backup-warn.png \
+		sc-gpgol-options.png sc-gpgol-noword.png \
+		sc-en-inst-welcome.png sc-en-inst-license.png \
         sc-en-inst-components.png sc-en-inst-directory.png \
         sc-en-inst-options.png \
         sc-en-inst-startmenu.png sc-en-inst-ready.png \
         sc-en-inst-finished.png \
-	sc-en-gpa-gen-backup.png sc-en-gpa-gen-backup-warn.png \
-	sc-en-gpa-first-key.png sc-en-gpa-gen-email.png \
-	sc-en-gpa-gen-name.png sc-en-gpa-gen-passwd.png \
-	sc-en-gpa-ks-export-p.png sc-en-gpa-nokey.png \
-	sc-en-gpa-rungpa.png sc-en-gpa-two-keys.png
+		sc-en-gpa-gen-backup.png sc-en-gpa-gen-backup-warn.png \
+		sc-en-gpa-first-key.png sc-en-gpa-gen-email.png \
+		sc-en-gpa-gen-name.png sc-en-gpa-gen-passwd.png \
+		sc-en-gpa-ks-export-p.png sc-en-gpa-nokey.png \
+		sc-en-gpa-rungpa.png sc-en-gpa-two-keys.png
 
 
 web_png_files = blank.png next.png previous.png up.png \

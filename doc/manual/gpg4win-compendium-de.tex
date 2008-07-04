@@ -83,7 +83,7 @@ Copyright \copyright{} 2005 g10 Code GmbH\\
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.2 or
 any later version published by the Free Software Foundation; with no
-Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A
+Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts. A
 copy of the license is included in the section entitled "`GNU Free
 Documentation License"'.
 
@@ -97,7 +97,7 @@ unveränderlichen Abschnitte, keinen vorderen Umschlagtext und keinen
 hinteren Umschlagtext.  Eine Kopie der "`GNU Free Documentation
 License"' findet sich im Anhang mit dem gleichnamigen Titel.
 Inoffizielle Übersetzungen dieser Lizenz finden Sie unter
-http://www.gnu.org/licenses/translations.html .
+http://www.gnu.org/licenses/translations.html.
 
 %%\htmlonly{Die aktuelle PDF Version dieses Dokuments finden sie unter
 %%\xlink{\EinsteigerPDFURL}{\EinsteigerPDFURL}.}
@@ -129,39 +129,33 @@ Das Gpg4win-Anleitungs- und Übungsmaterial besteht aus drei Teilen:
 
 \begin{itemize}
 
-\item \textbf{dem Schnelleinstieg, "`Gpg4win für Einsteiger"',} in dem
-  Sie gerade lesen,
+\item \textbf{Teil~\ref{part:Einsteiger} für Einsteiger}: Der
+    Schnelleinstieg in Gpg4win.
 
-\item \textbf{dem Handbuch "`Gpg4win für Durchblicker"'} im PDF-Format, welches
-  Sie nach der Installation von Gpg4win auf Ihrer Festplatte finden, oder auf der
-  Projekt-Homepage.
+\item \textbf{Teil~\ref{part:Fortgeschrittene} für Fortgeschrittene}:
+    Das Hintergrundwissen für Gpg4win.
 
-\item \textbf{dem Übungsroboter Adele,} mit dem Sie die \Email{}-Ver- und
-  Entschlüsselung so oft üben können, wie Sie wollen. Um mit Adele zu
-  üben, brauchen Sie eine Internet-Verbindung.
+\item \textbf{Der Übungsroboter Adele,} mit dem Sie die \Email{}-Ver- und
+  Entschlüsselung so oft üben können, wie Sie wollen.
 \end{itemize}
 
 
-\textbf{"`Gpg4win für Einsteiger"'} führt Sie kurz und knapp durch die Installation
+\textbf{Teil~\ref{part:Einsteiger} für "`Einsteiger"'} führt Sie kurz
+und knapp durch die Installation
 und die alltägliche Benutzung der Gpg4win-Software. Der Zeitbedarf
 für das Durcharbeiten des Schnelleinstiegs hängt unter anderem davon
 ab, wie gut Sie sich mit Ihrem PC und Windows auskennen. Sie sollten sich in
 etwa eine halbe Stunde Zeit nehmen.
 
-\textbf{"`Gpg4win für Durchblicker"'} liefert Hintergrundwissen, das Ihnen die
+\textbf{Teil~\ref{part:Fortgeschrittene} für "`Fortgeschrittene"'}
+liefert Hintergrundwissen, das Ihnen die
 grundlegenden Mechanismen von Gpg4win verdeutlicht und die etwas
 seltener benutzten Fähigkeiten erläutert.
 
-Beide Handbuchteile liegen als PDF Dateien vor.  Falls Sie keine
-gedruckte Version erhalten haben, so können Sie sie auch selbst
-ausdrucken.
-
-Die Handbuchteile können unabhängig voneinander benutzt werden. Zu
+Beide Handbuchteile können unabhängig voneinander benutzt werden. Zu
 Ihrem besseren Ver\-ständnis sollten Sie aber möglichst beide Teile in
 der angegebenen Reihenfolge lesen.
 
-\OtherBook{} Dieses Symbol weist auf auf den Wechsel in das andere Buch
-hin.
 
 \textbf{Der Übungsroboter Adele} steht Ihnen im Internet zur
 Verfügung. Adele empfängt und sendet verschlüsselte \Email{}s und
@@ -183,11 +177,11 @@ für den Betrieb von Adele.
 
 \clearpage
 \part{Einsteiger}
+\label{part:Einsteiger}
 \addtocontents{toc}{\protect\vspace{0.3cm}}
-
+ 
 %% Orginal page 8
 \chapter{Was ist Gpg4win?}
-
 \input{was-ist-gpg4win.tex}
 
 \clearpage
@@ -220,6 +214,7 @@ mit \Button{Ja}.
 
 Es begrüßt Sie dieser Screen:
 
+\T\enlargethispage{2\baselineskip}
 % screenshot:  Welcome Seite Installer
 \begin{center}
 \IncludeImage{sc-inst-welcome}
@@ -373,9 +368,7 @@ Klicken Sie hier auch auf \Button{Fertig stellen}.
 
 \textbf{Das war's schon!}
 
-
-Sie haben Gpg4win installiert und
-können es gleich zum ersten Mal
+Sie haben Gpg4win installiert und können es gleich zum ersten Mal
 starten.
 
 Vorher sollten Sie aber im Handbuch "`Gpg4win für Durchblicker"'
@@ -391,15 +384,16 @@ Außerdem ist die ganze Angelegenheit ziemlich spannend$\ldots$
 Weiter geben wir Ihnen dort einige Tipps, mit denen Sie sich einen sicheren
 und trotzdem leicht zu merkenden Passphrase ausdenken können.
 
-\textbf{ \OtherBook{} Lesen Sie jetzt im Handbuch 
-"`\xlink{Gpg4win für Durchblicker}{durchblicker.html}"'
-             die Kapitel 3 und 4, und lesen Sie bitte erst danach hier weiter.
-}
+\textbf{Bevor Sie weiterlesen und im Kapitel~\ref{ch:CreateKeyPair} mit
+der Schlüsselpaarerzeugung beginnen, ist es wichtig zu verstehen, wie
+Gpg4win funktioniert und warum die Passphrase dabei so bedeutend ist.
+Lesen Sie dazu bitte jetzt die Kapitel~\ref{ch:FunctionOfGpg4win} und
+\ref{ch:passphrase}.}
 
-\textbf{Für Informationen zur automatischen Installation von Gpg4win wie sie
-zum Beispiel für Softwareverteilungs-Systeme interessant ist, lesen Sie bitte im
-Anhang \ref{ch:auto} "`Automatische Installation von Gpg4win"' weiter.
-}
+\textbf{Für Informationen zur automatischen Installation von Gpg4win (wie sie
+zum Beispiel für Soft\-ware\-verteilungs-Systeme interessant ist), 
+lesen Sie bitte im Anhang \ref{ch:auto} "`Automatische Installation von Gpg4win"' 
+weiter.}
 
 \clearpage
 \chapter{Zwei Wege, ein Ziel: OpenPGP \& S/MIME}
@@ -443,22 +437,19 @@ transportieren, selbst wenn er einen anderen Weg als die Truhe zu Ihnen nehmen
 würde.
 
 Trotz dieses gleichen Ansatzes zur Geheimhaltung unterscheiden sich
-OpenPGP und S/MIME aber zum Beispiel bei der Schlüsselerzeugung.
+OpenPGP und S/MIME aber zum Beispiel bei der Schlüsselerzeugung (vgl.
+Kapitel~\ref{ch:CreateKeyPair}).
 
-Falls Sie sich fragen, wie das Public-Key-Verfahren so funktionieren kann, und
-warum das sicher ist:
-
-\textbf{\OtherBook{} Lesen Sie jetzt im Handbuch 
-"`\xlink{Gpg4win für Durchblicker}{durchblicker.html}"'
-             die Kapitel 13 und 14.
- }
+\textbf{Falls Sie sich fragen, wie das Public-Key-Verfahren so funktionieren kann, und
+warum das sicher ist, lesen Sie jetzt die Kapitel~\ref{ch:themath} und
+\ref{ch:secretGnupg}.}
 
 Mit ein wenig Interesse und Zeit kann man dort auch die kleinen mathematischen
 Geheimnisse verstehen. Viel Spaß beim Entdecken.
 
 % TODO: Grafik?! (z.B. Alice - Bob Transport-Problem)
 
-Der wesentlichste Unterschied zwischen OpenPGP und S/MIME liegt
+Der wesentlichste \textbf{Unterschied zwischen OpenPGP und S/MIME} liegt
 im Bereich der Authentifizierung.
 Um die Authentizität des Absenders festzustellen, ist bei S/MIME
 ein Zertifikat notwendig, welches die Authentizität des Schlüssel-Besitzers
@@ -472,7 +463,7 @@ man hierarchisches Vertrauenskonzept. Zumeist ist die Kette nur 3 Elemente
 lang: Wurzel, Zertifizierungsstelle (auch CA für Certificate Authority genannt), Anwender.
 Wurzel zertifiziert CA, CA zertifiziert Anwender.
 
-Im Gegensatz dazu erlaubt OpenPGP neben dieser baum-artigen Zertifizierung
+Im Gegensatz dazu erlaubt OpenPGP neben dieser baumartigen Zertifizierung
 zusätzlich auch eine direkte "`\textbf{peer-to-peer}"' Zertifizierung (Anwender A zertfiziert
 Anwender B, B zertifiziert A und C usw.) und macht damit
 aus einem Zertifizierungs-Baum ein Zertifizierungs-Netz, das sogenannte
@@ -481,14 +472,14 @@ also die Möglichkeit, ohne eine Zertifizierung einer höheren Stelle verschlüssel
 \Email{}s auszutauschen. Dafür reicht es aus, wenn Sie der \Email{}-Adresse
 und dem dazugehörigen Zertifikat ihres Kommunikationspartners vertrauen.
 
-\textbf{\OtherBook{} Nähere Informationen zu Authentifizierungswegen wie zum Beispiel
-Web-of-Trust finden Sie im Handbuch
-"`\xlink{Gpg4win für Durchblicker}{durchblicker.html}"'
-             im Kapitel 3.
-}
+\textbf{Nähere Informationen zu Authentifizierungswegen wie zum Beispiel
+Web-of-Trust finden Sie im Kapitel~\ref{ch:FunctionOfGpg4win}.}
+%TODO#: Verweis korrekt? Nichts über web-of-trust. Verweis kam oben
+%schon einmal.
+
 
 % TODO: Grafik?! (z.B. Alice - Bob Authentizität-Problem)
-
+~\\
 Zusammengefasst bedeutet das für Sie:
 \begin{itemize}
 \item sowohl \textbf{OpenPGP} als auch \textbf{S/MIME} kann Ihnen die notwendige Sicherheit
@@ -514,47 +505,54 @@ zu welchem Konzept welche Erklärung gehört.
 \clearpage
 %% Original page 15
 \chapter{Sie erzeugen Ihr Schlüsselpaar}
-\label{createKeyPair}
+\label{ch:CreateKeyPair}
 
 Spätestens nachdem Sie gelesen haben, warum GnuPG eigentlich so sicher ist
 (Kapitel \ref{ch:themath}, Seite \pageref{ch:themath})
-und wie eine gute
-Passphrase als Schutz für Ihren geheimen Schlüssel entsteht (Kapitel \ref{passphrase},
-Seite \pageref{passphrase}), möchten Sie
-nun Ihr persönliches Schlüsselpaar erzeugen.
+und wie eine gute Passphrase als Schutz für Ihren geheimen Schlüssel
+entsteht (Kapitel \ref{ch:passphrase}, Seite \pageref{ch:passphrase}),
+möchten Sie nun Ihr persönliches Schlüsselpaar erzeugen.
 
-\textbf{Eigentlich müsste man so einen wichtigen Schritt ein paar Mal üben
-können$\ldots$
-}
+Ein Schlüsselpaar besteht, wie wir im letzten Kapitel gelernt haben,
+aus einem \textbf{Zertifikat} und einem  \textbf{geheimen Schlüssel}.
+Das gilt sowohl für OpenPGP wie auch für S/MIME (X.509).
 
-\textbf{Und genau das können Sie auch tun:} Sie können den gesamten Ablauf der
-Schlüsselerzeugung, Verschlüsselung und Entschlüsselung durchspielen,
+~\\
+\textbf{Eigentlich müsste man diesen wichtigen Schritt der
+Schlüsselpaarerzeugung ein paar Mal üben können$\ldots$}
+
+Genau das können Sie tun - und zwar für OpenPGP:
+
+\margin{\IncludeImage[width=1.5cm]{openpgp-icon}}
+Sie können den gesamten Ablauf der Schlüsselerzeugung,
+Verschlüsselung und Entschlüsselung durchspielen,
 so oft Sie wollen, bis Sie ganz sicher sind.
 
 Ihr Vertrauen in Gpg4win wird sich durch diese "`Trockenübung"' festigen,
-und die "`heisse Phase"' der Schlüsselerzeugung wird danach kein
+und die "`heisse Phase"' der OpenPGP-Schlüsselerzeugung wird danach kein
 Problem mehr sein.
 
-Ihr Partner bei diesen Übungen wird Adele sein.
+Ihr Partner bei diesen Übungen wird \textbf{Adele} sein.
 
 Adele ist ein Testservice, der noch aus dem alten GnuPP Projekt
-stammt, bis auf weiteres noch in Betrieb und antürlich auch für Gpg4win
-verwendet werden kann. Mit Hilfe von Adele können Sie Ihre Schlüssel, die wir gleich
-erzeugen werden, ausprobieren und testen, bevor Sie damit Ernst
-machen. Doch dazu später mehr.
+stammt, bis auf weiteres noch in Betrieb und natürlich auch für Gpg4win
+verwendet werden kann. Mit Hilfe von Adele können Sie Ihr
+OpenPGP-Schlüsselpaar, das wir gleich erzeugen werden, ausprobieren und
+testen, bevor Sie damit Ernst machen. Doch dazu später mehr.
 
 
 \clearpage
 %% Original page 16
 \textbf{Los geht's!}
-Rufen Sie das Programm Kleopatra über das Windows Startmenü auf:
+Rufen Sie das Programm Kleopatra über das Windows-Startmenü auf:
 
 % TODO screenshot Startmenu with Kleopatra highlighted
 \begin{center}
 \IncludeImage[width=0.45\textwidth]{sc-kleopatra-startmenu_de}
 \end{center}
 
-Daraufhin sehen Sie die Kleopatra-Zertifikatsverwaltung:
+Daraufhin sehen Sie das Hauptfenster von Kleopatra -- die
+Zertifikatsverwaltung:
 
 % TODO screenshot: Kleopatra main window
 \begin{center}
@@ -610,7 +608,7 @@ Geben Sie im nun folgenden Fenster Ihren Namen und Ihre
 \end{center}
 
 
-Wenn Sie die Schlüsselerzeugung zunächst einmal \textbf{testen} wollen, dann
+Wenn Sie die OpenPGP-Schlüsselpaarerzeugung zunächst einmal \textbf{testen} wollen, dann
 können Sie einfach einen beliebigen Namen und irgendeine ausgedachte
 \Email{}-Adresse eingeben, z.B. "`Heinrich Heine"' und "`\verb-heinrichh@gpg4win.de-"'.
 
@@ -654,10 +652,10 @@ Passphrase einzugeben:
 \IncludeImage[width=0.45\textwidth]{sc-kleopatra-openpgp-pinentry_de}
 \end{center}
 
-Im Kapitel~\ref{passphrase}, Seite \pageref{passphrase}, geben wir Ihnen einige
-wertvolle Tipps, was Sie bei der Erzeugung einer \textbf{sicheren
-Passphrase} beachten sollten. Nehmen Sie die Sicherheit Ihrer
-Passphrase ernst!
+Im Kapitel~\ref{ch:passphrase}, Seite \pageref{ch:passphrase}, geben
+wir Ihnen einige wertvolle Tipps, was Sie bei der Erzeugung einer
+\textbf{sicheren Passphrase} beachten sollten. Nehmen Sie die
+Sicherheit Ihrer Passphrase ernst!
 
 Sie sollten nun eine geheime, einfach zu merkende und schwer
 zu knackende Passphrase parat haben und im obigen Dialog eintragen.
@@ -685,7 +683,7 @@ hierdurch sogar leicht die Qualität des erzeugten Schlüsselpaars.
 %TODO# ggf. noch mehr erläutern!
 
 \clearpage
-Sobald die \textbf{Schlüsselgenerierung erfolgreich} abgeschlossen ist,
+Sobald die \textbf{Schlüsselpaargenerierung erfolgreich} abgeschlossen ist,
 erhalten Sie folgenden Dialog:
 
 %TODO screenshot: New certificate - key successfully created
@@ -694,7 +692,7 @@ erhalten Sie folgenden Dialog:
 \end{center}
 
 Im Ergebnis-Textfeld wird der 40-stelligen Fingerabdruck Ihres neu
-generierten OpenPGP-Schlüssels angezeigt. Dieser sogenannte
+generierten OpenPGP-Schlüsselpaars angezeigt. Dieser sogenannte
 Fingerprint ist weltweit eindeutig, d.h. keine andere Person besitzt
 einen Schlüssel mit identischem Fingerabdruck. Es ist sogar vielmeher so,
 dass es schon mit 8 Zeichen ein ausserordentlicher Zufall wäre wenn
@@ -709,10 +707,10 @@ Als nächstes \textit{können} Sie eine (oder mehrere) der folgenden
 drei Möglichkeiten durchführen:
 \begin{description}
     \item[Erstellen Sie eine Sicherungskopie Ihres
-        OpenPGP-Schlüsselpaares.] 
+        OpenPGP-Schlüsselpaares.]
         %TODO#: Paar od. geheimer Schluessel? Dateiformat?
     
-    ~\\Klicken Sie dazu auf den Button 
+    ~\\Klicken Sie dazu auf den Button
     %TODO:german
     \Button{Make a Backup Of Your Certificate...}
 
@@ -737,16 +735,17 @@ drei Möglichkeiten durchführen:
     wählen Sie hierzu aus dem Kleopatra-Hauptmenü:
     \Menu{Datei$\rightarrow$Geheimen Schlüssel exportieren...} 
 
-    \item[Versenden Sie den erstellten Schlüssel per \Email{}.]
+    \item[Versenden Sie Ihr erstelltes Zertifikat per \Email{}.]
     ~\\Klicken Sie auf den Button 
     %TODO:german
     \Button{Send Certificate By EMail}.
 
     Es wird eine neue \Email{} erstellt -- mit Ihrem neuen
-    Zertifikat (nur Ihr \textit{öffentlicher} OpenPGP-Schlüssel)
-    im Anhang. Geben Sie eine  Empfänger-\Email{}-Adresse an und
+    Zertifikat im Anhang. Ihr geheimer OpenPGP-Schlüssel wird
+    selbstversändlich \textit{nicht} versendet.
+    Geben Sie eine Empfänger-\Email{}-Adresse an und
     ergänzen Sie ggf. den vorbereiteten Text dieser \Email{}.
-    
+
     %TODO# Wird hier nur der öffentliche Schlüssel versendet?
 
     % ggf TODO screenshot: New certificate - send openpgp key per email
@@ -762,17 +761,20 @@ drei Möglichkeiten durchführen:
     und folgen Sie den Anweisungen. Sie müssen dafür vorher ein
     Verzeichnisdienst in Kleopatra konfiguriert haben.
 
+    Wie Sie Ihr OpenPGP-Zertifikat auf einen weltweit verfügbaren Keyserver
+    veröffentlichen, erfahren Sie in Kaptel~\ref{ch:keyserver}.
+
     %TODO#: Mehr Erläuterungen nötig?  
 
 \end{description}
 
 ~\\
-Beenden Sie anschließend den Kleopatra-Assistenten mit 
+Beenden Sie anschließend den Kleopatra-Assistenten mit
 %TODO:german
 \Button{Finish}, um die Erstellung Ihres OpenPGP-Schlüsselpaars
 abzuschließen.
 
-Weiter geht's mit dem Abschnitt \textit{Schlüsselpaar-Erstellung abgeschlossen} 
+Weiter geht's mit dem Abschnitt \textit{Schlüsselpaar-Erstellung abgeschlossen}
 auf Seite~\pageref{finishKeyPairGeneration}. Von da an
 sind die Erklärungen für OpenPGP und X.509 wieder identisch.
 
@@ -783,17 +785,17 @@ sind die Erklärungen für OpenPGP und X.509 wieder identisch.
 \clearpage
 \section*{X.509-Schlüsselpaar erstellen \margin{\IncludeImage[width=1.5cm]{smime-icon}} }
 
-Klicken Sie im Zertifikatsformat-Auswahldialog von 
+Klicken Sie im Zertifikatsformat-Auswahldialog von
 Seite~\pageref{chooseCertificateFormat} auf
 %TODO:german
-\Button{Create a personal X.509 key pair and certification request}. 
+\Button{Create a personal X.509 key pair and certification request}.
 %TODO# ggf "vgl. Abb"
 
 
 
 Geben Sie im nun folgenden Fenster Ihren Namen (CN), Ihre
 \Email{}-Adresse (EMAIL), Ihre Organisation (O) und Ihren Ländercode
-(C) an. Optional können Sie noch Ort (L) und Abteilung (OU) ergänzen. 
+(C) an. Optional können Sie noch Ort (L) und Abteilung (OU) ergänzen.
 
 % TODO screenshot: New X.509 Certificate - Personal details
 \begin{center}
@@ -801,7 +803,7 @@ Geben Sie im nun folgenden Fenster Ihren Namen (CN), Ihre
 \end{center}
 
 
-Wenn Sie die Schlüsselerzeugung zunächst einmal \textbf{testen} wollen, dann
+Wenn Sie die X.509-Schlüsselpaarerzeugung zunächst einmal \textbf{testen} wollen, dann
 machen Sie beliebige Angaben für Name, Organisation und
 Ländercode sowie geben irgendeine ausgedachte \Email{}-Adresse
 ein, z.B. \texttt{CN=Heinrich Heine, O=Test, C=DE} und
@@ -841,10 +843,10 @@ Passphrase einzugeben:
 \IncludeImage[width=0.45\textwidth]{sc-kleopatra-x509-pinentry_de}
 \end{center}
 
-Im Kapitel~\ref{passphrase}, Seite \pageref{passphrase}, geben wir Ihnen einige
-wertvolle Tipps, was Sie bei der Erzeugung einer \textbf{sicheren
-Passphrase} beachten sollten. Nehmen Sie die Sicherheit Ihrer
-Passphrase ernst!
+Im Kapitel~\ref{ch:passphrase}, Seite \pageref{ch:passphrase}, geben
+wir Ihnen einige wertvolle Tipps, was Sie bei der Erzeugung einer
+\textbf{sicheren Passphrase} beachten sollten. Nehmen Sie die
+Sicherheit Ihrer Passphrase ernst!
 
 Sie sollten nun eine geheime, einfach zu merkende und schwer
 zu knackende Passphrase parat haben und im obigen Dialog eintragen.
@@ -859,7 +861,7 @@ Sie müssen Ihre geheime Passphrase dreimal eingegeben. Bestätigen Sie
 Ihre Eingabe jeweils mit \Button{OK}.\\
 
 
-Nun wird Ihr Schlüsselpaar angelegt: 
+Nun wird Ihr X.509-Schlüsselpaar angelegt: 
 % TODO screenshot: New Certificate - Create Key
 \begin{center}
 \IncludeImage[width=0.6\textwidth]{sc-kleopatra-x509-createKey_de}
@@ -871,7 +873,7 @@ hierdurch sogar leicht die Qualität des erzeugten Schlüsselpaars.
 %TODO# ggf. noch mehr erläutern!
 
 \clearpage
-Sobald die \textbf{Schlüsselgenerierung erfolgreich} abgeschlossen ist,
+Sobald die \textbf{Schlüsselpaargenerierung erfolgreich} abgeschlossen ist,
 erhalten Sie folgenden Dialog:
 
 %TODO screenshot: New certificate - key successfully created
@@ -884,19 +886,15 @@ Als nächstes \textit{können} Sie einen (oder mehrere) der folgenden
 drei Möglichkeiten durchführen:
 \begin{description}
     \item[Speichern Sie Ihre Zertifizierungs-Anfrage als Datei.] 
-        %TODO#: Dateiformat p10? Korrekt? Ja.
-        % Sicherheitswarnung (Request = sicherheitskritische Datei)? nein.
-    
     ~\\Klicken Sie dazu auf den Button 
     %TODO:german
     \Button{Save Request To File...}
 
     Geben Sie den genauen Pfad an, wohin Ihre X.509 Zertifizierungs-Anfrage
-    gespeichert werden soll und bestätigen Sie Ihre Eingabe. Sie könnne diese
-    Datei dann später auf verschiedene Weise an eine Zertifizierungsstelle
-    geben.
+    gespeichert werden soll. Als Dateiendung wählen Sie *.p10 und
+    bestätigen Sie Ihre Eingabe. Sie könnne diese Datei dann später
+    auf verschiedene Weise an eine Zertifizierungsstelle geben.
 
-    
     \item[Versenden Sie die Zertifizierungs-Anfrage per \Email{}.]
     ~\\Klicken Sie auf den Button 
     %TODO:german
@@ -904,10 +902,10 @@ drei Möglichkeiten durchführen:
 
     Es wird eine neue \Email{} erstellt -- mit der soeben erstellen
     Zertifizierungs-Anfrage im Anhang.
-    Geben Sie eine  Empfänger-\Email{}-Adresse an (in der Regel die Ihre
-    zuständige Zertifizierungsstelle (CA)) und ergänzen Sie ggf. den
+    Geben Sie eine Empfänger-\Email{}-Adresse an (in der Regel die
+    Ihrer zuständigen Zertifizierungsstelle (CA)) und ergänzen Sie ggf. den
     vorbereiteten Text dieser \Email{}.
-    
+
     % ggf TODO screenshot: New certificate - send openpgp key per email
    \begin{center}
    \IncludeImage[width=0.6\textwidth]{sc-ol-sendNewX509Certificate_de}
@@ -949,7 +947,7 @@ Zertifikatsverwaltung unter dem Reiter \textit{Meine Zertifikate}
 \end{center}
 
 Doppelklicken Sie auf Ihr neues Zertifikat, um alle Zertifikatsdetails
-nachlesen zu können (hier exemplarisch für das OpenPGP-Zertifikat):
+nachlesen zu können:
 
 %TODO screenshot: details of openpgp certificate
 \begin{center}
@@ -976,52 +974,49 @@ Informationen benötigen.}
 \clearpage
 %% Original page 24
 
-\chapter{Sie veröffentlichen Ihren Schlüssel per \Email{}}
+\chapter{Sie veröffentlichen Ihre Zertifikat per \Email{}}
 
 Beim täglichen Gebrauch von Gpg4win ist es sehr praktisch, dass Sie es
-beim Ver- und Entschlüsseln stets nur mit den "`ungeheimen"'
-öffentlichen Schlüsseln zu tun haben. Solange Ihr eigener geheimer
-Schlüssel und die ihn schützende Passphrase sicher sind, haben
-Sie das Wichtigste zur Geheimhaltung bereits erledigt.
+beim Ver- und Entschlüsseln stets nur mit dem "`ungeheimen"'
+Zertifikat (Ihren öffentlichen Schlüssel) zu tun haben. Solange Ihr
+eigener geheimer Schlüssel und die ihn schützende Passphrase sicher
+sind, haben Sie das Wichtigste zur Geheimhaltung bereits erledigt.
 
-Jedermann darf und soll Ihren öffentlichen Schlüssel haben, und Sie
-können und sollen öffentliche Schlüssel von Ihren
-Korrespondenzpartnern haben --- je mehr, desto besser.
+Jedermann darf und soll Ihr Zertifikat haben, und Sie können und sollen 
+Zertifikate von Ihren Korrespondenzpartnern haben --- je mehr, desto besser.
 
 Denn:
 
 \textbf{Um sichere \Email{}s austauschen zu können, müssen beide Partner jeweils
-den öffentlichen Schlüssel des anderen besitzen und benutzen. Natürlich
-braucht der Empfänger auch ein Programm, das mit den Schlüsseln umgehen
-kann, wie zum Beispiel Gpg4win.
-}
+das Zertifikat des anderen besitzen und benutzen. Natürlich
+braucht der Empfänger auch ein Programm, das mit den Zertifikaten umgehen
+kann, wie zum Beispiel Gpg4win.}
 
 Wenn Sie also an jemanden verschlüsselte \Email{}s schicken wollen,
-müssen Sie dessen öffentlichen Schlüssel haben und zum Verschlüsseln
-benutzen.
+müssen Sie dessen Zertifikat haben und zum Verschlüsseln benutzen.
 
 Wenn ­-- andersherum ­-- jemand Ihnen verschlüsselte \Email{}s schicken
-will, muss er Ihren öffentlichen Schlüssel haben und zum Verschlüsseln
+will, muss er Ihr Zertifikat haben und zum Verschlüsseln
 benutzen.
 
-Deshalb werden Sie nun Ihren öffentlichen Schlüssel öffentlich
+Deshalb werden Sie nun Ihr Zertifikat öffentlich
 zugänglich machen. Je nachdem, wie groß der Kreis Ihrer
-Korrespondenzpartner ist, gibt es zwei Möglichkeiten:
+Korrespondenzpartner ist und welches Zertifikatsformat Sie einsetzen, 
+gibt es zwei Möglichkeiten:
 
 \begin{itemize}
-\item \textbf{direkt per \Email{}} an bestimmte Korrespondenzpartner
-\item \textbf{oder auf einem Schlüsselserver} --- weltweit für jedermann zugänglich
+\item Das Zertifikat \textbf{direkt per \Email{}} an bestimmte
+    Korrespondenzpartner schicken (gilt für OpenPGP und S/MIME).
+\item Das Zertifikat \textbf{auf einem OpenPGP-Schlüsselserver}
+    veröffentlichen -- weltweit für jedermann zugänglich
+    (\textit{Achtung: gilt nur für OpenPGP!}).
 \end{itemize}
 
-Die erste Möglichkeit, Ihren öffentlichen Schlüssel zu verbreiten,
-besteht wie gesagt darin, dass Sie ihn per \Email{} an einen oder
-mehrere Korrespondenzpartner schicken.
-Bei der zweiten Möglichkeit ist Ihre \Email{}-Adresse weltweit für
-jedermann zugänglich. Dies birgt leider das Risiko, dass Ihnen
+Beachten Sie, dass bei der zweiten Möglichkeit Ihre \Email{}-Adresse für
+jedermann zugänglich ist. Dies birgt leider das Risiko, dass Ihnen
 auch ungebetene Personen \Email{}s schreiben können und die
 SPAM-Menge für Ihre \Email{}-Adresse dadurch zunehmen kann.
-Sie sollten daher im zweiten Fall einen ausreichenden
-SPAM-Schutz nutzen.
+Sie sollten daher im zweiten Fall einen ausreichenden SPAM-Schutz nutzen.
 
 
 \clearpage
@@ -1053,6 +1048,7 @@ wie die Ihrer echten Korrespondenzpartner.  Andererseits können Sie
 mit Adele so oft üben, wie Sie wollen ­-- was Ihnen ein menschlicher
 Adressat wahrscheinlich ziemlich übel nehmen würde.
 
+%TODO#: nur OpenPGP mit Adele?
 Wir exportieren also nun Ihren öffentlichen Schlüssel, kopieren ihn in
 eine \Email{} und senden diese an Adele.
 
@@ -1151,9 +1147,9 @@ worden.
 öffentlichen Schlüssel per \Email{} an einen Korrespondenzpartner
 geschickt.
 
-\textbf{ \OtherBook{} Im Handbuch "`\xlink{Gpg4win für
-    Durchblicker}{durchblicker.html}"' Kapitel 7 beschreiben wir, wie
-  Sie Ihren Schlüssel auch als Dateianhang versenden.  }
+~\\
+\textbf{Im Kapitel~\ref{ch:attachment} beschreiben wir, wie
+Sie Ihren Schlüssel auch als Dateianhang versenden.}
 
 Das ist oftmals das einfachere und gebräuchlichere Verfahren. Wir haben Ihnen hier
 die "`Copy \& Paste"'-Methode zuerst vorgestellt, weil sie
@@ -1163,12 +1159,17 @@ Kapitel jetzt lesen oder später, wenn Sie diese Funktion benötigen.
 
 \clearpage
 %% Original page 30
-\chapter{Sie veröffentlichen Ihren Schlüssel per Keyserver}
+\chapter{Sie veröffentlichen Ihren OpenPGP-Schlüssel per Keyserver}
+
 
 Diese Möglichkeit bietet sich eigentlich immer an, selbst wenn Sie nur
 mit wenigen Partnern verschlüsselte \Email{}s austauschen.  Ihr
 Schlüssel ist dann sozusagen "`stets griffbereit"' auf einem Server im
 Internet vorhanden.
+
+\textbf{Wichtig: Die Veröffentlichung Ihres Schlüssels auf einem Keyserver ist
+nur für OpenPGP-Schlüssel möglich!}
+\margin{\IncludeImage[width=1.5cm]{openpgp-icon}}
 
 \textsc{Vorsicht: Obwohl es noch keine Hinweise gibt, dass Spammer
   Adressen wirklich von den Keyservern sammeln, so ist dies jedoch
@@ -1176,18 +1177,23 @@ Internet vorhanden.
   sollten Sie u.U.\ von der Veröffentlichung Ihres Schlüssels auf einem
   Keyserver absehen.}
 
-Klicken Sie Ihren Schlüssel an und wählen Sie dann den Menüpunkt
-\Menu{Server$\rightarrow$Schlüssel~verschicken}. 
+Wählen Sie Ihren OpenPGP-Schlüssel in Kleopatra aus und klicken im
+Menü auf
+%TODO:german
+\Menu{Datei$\rightarrow$Export Certificate to Server...}. 
 
 % screenshot: GPA export key to keyserver
 \begin{center}
-\IncludeImage[width=0.4\textwidth]{sc-gpa-ks-export-p}
+\IncludeImage[width=0.45\textwidth]{sc-kleopatra-exportCertificateToServer_de}
 \end{center}
 
-Wie Sie sehen, ist ein Keyserver bereits voreingestellt. Wenn Sie auf
-\Button{Ja} klicken, wird der Schlüssel an den Server geschickt und von dort
-aus an die anderen, weltweit verbundenen Keyserver weitergereicht.
-Jedermann kann ihn von dort herunterladen und dazu benutzen, Ihnen
+Wie Sie sehen, ist ein öffentlicher Keyserver bereits voreingestellt
+(\texttt{keys.gnupg.net}). Wenn Sie auf
+\Button{Fortsetzen} klicken, wird der Schlüssel an diesen Server
+geschickt. Von dort aus wird Ihr Schlüssel an alle, weltweit 
+verbundenen Keyserver weitergereicht.
+Jedermann kann Ihren Schlüssel dann von einen dieser Keyserver 
+herunterladen und dazu benutzen, Ihnen
 eine sichere \Email{} zu schreiben.
 
 Wenn Sie den Ablauf im Moment nur testen, dann schicken Sie den
@@ -1199,9 +1205,9 @@ Clinton"' dort herumliegen ­ schon seit Jahren$\ldots$
 \textbf{Fassen wir kurz zusammen:} Sie wissen nun, wie Sie Ihren
 Schlüssel auf einen Schlüsselserver im Internet schicken können.
 
-\textbf{ \OtherBook{} Wie Sie den Schlüssel eines Partners auf den
-  Schlüsselservern suchen und finden, beschreiben wir im Handbuch
-  "`\xlink{Gpg4win für Durchblicker}{durchblicker.html}"' Kapitel 6.
+\textbf{Wie Sie den Schlüssel eines Partners auf den
+  Schlüsselservern suchen und finden, beschreiben wir im 
+  Kapitel~\ref{ch:keyserver}.
   Sie können dieses Kapitel jetzt lesen oder später, wenn Sie diese
   Funktion benötigen.  }
 
@@ -1212,6 +1218,8 @@ Schlüssel auf einen Schlüsselserver im Internet schicken können.
 Adele erhält nun Ihren öffentlichen Schlüssel, verschüsselt damit eine
 \Email{} und sendet sie an Sie zurück.  Nach kurzer Zeit erhalten Sie
 Adeles Antwort.
+
+\margin{\IncludeImage[width=1.5cm]{openpgp-icon}}
 
 % cartoon: Adele typing and sending a mail
 \begin{center}
@@ -1260,10 +1268,9 @@ Für die meisten Mailprogramme --­ z.B. MS Outlook für Windows, gibt es
 außerdem spezielle PlugIns, mit denen die Ver- und Entschlüsselung
 direkt im jeweiligen Mailprogramm erledigt werden kann.
 
-\textbf{ \OtherBook{} Hinweise zu diesen Lösungen finden Sie im
-  Handbuch "`\xlink{Gpg4win für Durchblicker}{durchblicker.html}"'
-  Kapitel 8. Sie können dieses Kapitel jetzt lesen oder später, wenn
-  Sie diese Funktion benötigen.  }
+\textbf{Hinweise zu diesen Lösungen finden Sie im
+  Kapitel~\ref{ch:plugins}. Sie können dieses Kapitel jetzt lesen oder später, wenn
+  Sie diese Funktion benötigen. }
 
 WinPT hat dagegen den Vorteil, dass es nicht mit einem bestimmten,
 sondern mit jedem Mailprogramm funktioniert. Es erledigt nämlich
@@ -1367,6 +1374,7 @@ oder dessen signierte Mails überprüfen.
 \clearpage
 %% Original page 37
 \chapter{Sie befestigen einen Schlüssel am Schlüsselbund}
+\label{ch:keyring}
 
 Ihr Korrespondenzpartner muss nicht etwa jedes Mal seinen Schlüssel
 mitschicken, wenn er Ihnen signiert schreibt. Sie bewahren seinen
@@ -1442,25 +1450,25 @@ verschlüsselte Nachrichten an den Besitzer dieses Schlüssels zu
 senden und Signaturen zu prüfen.
 
 \textbf{Bevor wir weitermachen, eine wichtige Frage:}\\
-woher wissen Sie eigentlich, dass der fremde öffentliche Schlüssel
+Woher wissen Sie eigentlich, dass der fremde öffentliche Schlüssel
 wirklich von Adele stammt? Man kann \Email{}s auch unter falschem Namen
-versenden ­-- die Absenderangabe besagt eigentlich gar nichts.
+versenden -- die Absenderangabe besagt eigentlich gar nichts.
 
 Wie können Sie also sichergehen, dass ein Schlüssel auch wirklich
 seinem Absender gehört?
 
-\textbf{ \OtherBook{} Diese Kernfrage besprechen wir im Handbuch
-  "`\xlink{Gpg4win für Durchblicker}{durchblicker.html}"' Kapitel 9:
-  "`Die Schlüsselprüfung"'. Lesen Sie jetzt bitte dort weiter, bevor
-  Sie danach an dieser Stelle fortfahren.  }
+
+\textbf{Die Kernfrage der Schlüsselprüfung besprechen wir im
+Kapitel~\ref{ch:trust}. Lesen Sie jetzt bitte dort weiter, bevor
+Sie danach an dieser Stelle fortfahren.}
 
 \clearpage
 %% Original page 40
-Sie haben in Kapitel 9 des Handbuchs "`Gpg4win für Durchblicker"'
-gelesen, wie man sich von der Echtheit eines Schlüssels überzeugt und
-ihn dann mit seinem eigenen geheimen Schlüssel signiert.
+Sie haben in Kapitel~\ref{ch:trust} gelesen, wie man sich von der
+Echtheit eines Schlüssels überzeugt und ihn dann mit seinem eigenen
+geheimen Schlüssel signiert.
 
-In Kapitel 10 des Handbuchs "`Gpg4win für Durchblicker"' besprechen wir,
+In Kapitel~\ref{ch:sign} besprechen wir,
 wie man nicht nur einen Schlüssel, sondern auch eine komplette
 \Email{}-Nachricht signieren kann. Das bedeutet, dass man die \Email{} mit
 einer Art elektronischem Siegel versieht.
@@ -1471,8 +1479,8 @@ und das die \Email{} wirklich von Ihnen stammt.
 
 Die Überprüfung einer solchen Signatur ist sehr einfach. Sie müssen
 dazu natürlich den öffentlichen Schlüssel des Absenders bereits an
-Ihrem Gpg4win-"`Schlüsselbund"' befestigt haben, wie in Kapitel 8
-von "`Gpg4win für Einsteiger"' besprochen.
+Ihrem Gpg4win-"`Schlüsselbund"' befestigt haben, wie in
+Kapitel~\ref{ch:keyring} besprochen.
 
 % cartoon:  Müller mit Schlüssel
 \begin{center}
@@ -1527,11 +1535,10 @@ verändert wurde. Das ist zunächst der wahrscheinlichste Fall. Es kann
 jedoch auch bedeuten, dass der Text nachträglich verändert wurde.
 
 
-\textbf{ \OtherBook{} Wie Sie in einem solchen Fall vorgehen sollten,
-  erfahren Sie im Handbuch "`\xlink{Gpg4win für
-    Durchblicker}{durchblicker.html}"' Kapitel 10.  "`\Email{}s
-  signieren"'. Lesen Sie jetzt bitte dort weiter, bevor Sie danach an
-  dieser Stelle fortfahren.  }
+\textbf{Wie Sie in einem solchen Fall vorgehen sollten,
+erfahren Sie im Kapitel~\ref{ch:sign}, "`\Email{}s signieren"'.
+Lesen Sie jetzt bitte dort weiter, bevor Sie danach an
+dieser Stelle fortfahren.}
 
 \clearpage
 %% Original page 42
@@ -1703,6 +1710,7 @@ sondern
 
 \clearpage
 \part{Fortgeschrittene}
+\label{part:Fortgeschrittene}
 \addtocontents{toc}{\protect\vspace{0.3cm}}
 
 \clearpage
@@ -1801,6 +1809,8 @@ und die wir im Folgenden besprechen:
 \clearpage
 %% Original page 9
 \chapter{Wie funktioniert Gpg4win?}
+\label{ch:FunctionOfGpg4win}
+
 Das Besondere an Gpg4win und der zugrundeliegenden Public-Key Methode
 ist, dass sie jeder verstehen kann und soll. Nichts daran ist
 Geheimwissen ­-- es ist nicht einmal besonders schwer zu verstehen.
@@ -2072,7 +2082,7 @@ Schlüsselbund.
 \clearpage
 %% Original page 20
 \chapter{Die Passphrase}
-\label{passphrase}
+\label{ch:passphrase}
 
 Wie Sie oben gesehen haben, ist der private Schlüssel eine der
 wichtigsten Komponenten im Public-Key Verschlüsselungssystem. Man muss
@@ -2234,7 +2244,7 @@ Informationen gelesen hat.
 Seien Sie kreativ. Denken Sie sich jetzt eine Passphrase aus.
 Unvergesslich und unknackbar.
 
-Lesen Sie dann im Kapitel~\ref{createKeyPair} weiter, um Ihre 
+Lesen Sie dann im Kapitel~\ref{ch:CreateKeyPair} weiter, um Ihre 
 Passphrase bei der Erzeugung Ihres Schlüsselpaars festzulegen.
 
 
@@ -2290,6 +2300,8 @@ und "`Schlüsselvertrauen"' in Kapitel \ref{ch:trust}.
 \clearpage
 %% Original page 25
 \chapter{Die Schlüsselserver}
+\label{ch:keyserver}
+
 Um verschlüsselt mit anderen zu kommunizieren, müssen die Partner ihre
 Schlüssel veröffentlichen und austauschen. Dazu ist --- Sie erinnern
 sich an Kapitel 1 --- keine Geheimniskrämerei notwendig, denn Ihr
@@ -2441,6 +2453,7 @@ Schlüsselverwaltungs-Fenster an.
 \clearpage
 %% Original page 29
 \chapter{Der Schlüssel als Dateianhang}
+\label{ch:attachment}
 
 Im Einsteiger Handbuch Kapitel 5 ("`Sie veröffentlichen Ihren Schlüssel
 per \Email{}"') haben Sie gesehen, wie einfach man
@@ -2467,6 +2480,7 @@ Datei, und senden sie ihn an den Empfänger.
 \clearpage
 %% Original page 30
 \chapter{PlugIns für \Email{}-Programme}
+\label{ch:plugins}
 
 Im "`Einsteiger-Handbuch"' haben wir im Kapitel 7 ("`Sie entschlüsseln
 eine \Email{}"') erwähnt, dass es PlugIns für bestimmte \Email{}-Programme
@@ -2695,6 +2709,7 @@ das Sie ebenfalls im Internet finden
 \clearpage
 %% Original page 37
 \chapter{\Email{}s signieren}
+\label{ch:sign}
 
 Ganz am Anfang dieses Handbuchs haben wir die \Email{}-Kommunikation mit
 dem Versenden einer Postkarte verglichen. Erst die Verschlüsselung
@@ -3471,6 +3486,7 @@ Hier beginnt also sozusagen die Kür nach dem Pflichtteil:
 \clearpage
 %% Original page 50
 \chapter{GnuPG und das Geheimnis der großen Zahlen}
+\label{ch:secretGnupg}
 
 {\Large Kryptographie für Nicht-Mathematiker}
 
