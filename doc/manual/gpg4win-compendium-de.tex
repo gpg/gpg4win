@@ -974,7 +974,7 @@ Informationen benötigen.}
 \clearpage
 %% Original page 24
 
-\chapter{Sie veröffentlichen Ihre Zertifikat per \Email{}}
+\chapter{Sie veröffentlichen Ihr Zertifikat}
 
 Beim täglichen Gebrauch von Gpg4win ist es sehr praktisch, dass Sie es
 beim Ver- und Entschlüsseln stets nur mit dem "`ungeheimen"'
@@ -1002,28 +1002,41 @@ benutzen.
 Deshalb werden Sie nun Ihr Zertifikat öffentlich
 zugänglich machen. Je nachdem, wie groß der Kreis Ihrer
 Korrespondenzpartner ist und welches Zertifikatsformat Sie einsetzen, 
-gibt es zwei Möglichkeiten:
+gibt es verschiedene Möglichkeiten. Verbreiten Sie Ihr Zertifikat
+beispielsweise ...
 
 \begin{itemize}
-\item Das Zertifikat \textbf{direkt per \Email{}} an bestimmte
-    Korrespondenzpartner schicken (gilt für OpenPGP und S/MIME).
-\item Das Zertifikat \textbf{auf einem OpenPGP-Schlüsselserver}
-    veröffentlichen -- weltweit für jedermann zugänglich
-    (\textit{Achtung: gilt nur für OpenPGP!}).
+    \item ... direkt per \textbf{\Email{}} an bestimmte
+    Korrespondenzpartner (vgl. Abschnitt~\ref{publishPerEmail}).
+    \item ... auf einem \textbf{OpenPGP-Schlüsselserver};
+    gilt \textit{nur} für OpenPGP (vgl. Abschnitt~\ref{publishPerKeyserver}).
+    \item ... über die eigene Homepage.
+    \item ... persönlich, z.B. per USB-Stick.
 \end{itemize}
 
-Beachten Sie, dass bei der zweiten Möglichkeit Ihre \Email{}-Adresse für
-jedermann zugänglich ist. Dies birgt leider das Risiko, dass Ihnen
-auch ungebetene Personen \Email{}s schreiben können und die
-SPAM-Menge für Ihre \Email{}-Adresse dadurch zunehmen kann.
-Sie sollten daher im zweiten Fall einen ausreichenden SPAM-Schutz nutzen.
+Die ersten beiden Varianten werden wir uns auf den folgenden Seiten
+näher anschauen.
 
-
-\clearpage
 %% Original page 25
-Zum Üben dieses Vorgangs kommt nun Adele ins Spiel:
+\clearpage
+\section{Veröffentlichen per \Email{}}
+\label{publishPerEmail}
 
-Adele ist ein sehr netter \Email{}-Roboter, mit dem Sie zwanglos
+Sie wollen Ihr Zertifikat Ihrem Korrespondenzpartner bekannt machen?
+Schicken Sie ihm doch einfach ihr exportiertes Zertifikat per
+\Email{}. Wie das genau funktioniert, erfahren Sie in diesem
+Abschnitt.
+
+~\\
+Üben Sie jetzt diesen Vorgang einmal mit Ihrem OpenPGP-Zertifikat!
+Adele soll uns dabei behilflich sein. \textit{Achtung: Die folgenden
+Übungen gelten nur für OpenPGP! Anmerkungen zur Veröffentlichung von
+X.509-Zertifikaten finden Sie auf
+Seite~\pageref{publischPerEmailx509}.}
+\margin{\IncludeImage[width=1.5cm]{openpgp-icon}}
+
+\textbf{Adele}
+ist ein sehr netter \Email{}-Roboter, mit dem Sie zwanglos
 korrespondieren können. Weil man gewöhnlich mit einer klugen und
 netten jungen Dame lieber korrespondiert als mit einem Stück Software
 (was Adele in Wirklichkeit natürlich ist), haben wir sie uns so
@@ -1034,9 +1047,9 @@ vorgestellt:
 \IncludeImage{adele01}
 \end{center}
 
-Adele schicken Sie zunächst Ihren öffentlichen Schlüssel. Wenn Adele
-Ihren Schlüssel empfangen hat, verschlüsselt sie damit eine \Email{} an
-Sie und sendet sie zurück.
+Adele schicken Sie zunächst Ihr OpenPGP-Zertifikat. Wenn Adele
+diesen öffentlichen Schlüssel empfangen hat, verschlüsselt sie damit
+eine \Email{} an Sie und sendet sie zurück.
 
 Diese Antwort von Adele entschlüsseln Sie mit Ihrem eigenen geheimen
 Schlüssel. Damit Sie wiederum Adele verschlüsselt antworten können,
@@ -1048,51 +1061,61 @@ wie die Ihrer echten Korrespondenzpartner.  Andererseits können Sie
 mit Adele so oft üben, wie Sie wollen ­-- was Ihnen ein menschlicher
 Adressat wahrscheinlich ziemlich übel nehmen würde.
 
-%TODO#: nur OpenPGP mit Adele?
-Wir exportieren also nun Ihren öffentlichen Schlüssel, kopieren ihn in
-eine \Email{} und senden diese an Adele.
+Wir exportieren also nun Ihr OpenPGP-Zertifikat und senden dieses per
+\Email{} an Adele. Wie das geht, erfahren Sie auf den nächsten Seiten.
 
 
 \clearpage
 %% Original page 26
-Die hier zuerst gezeigte Möglichkeit funktioniert immer, selbst wenn
-Sie ­-- z.B. bei manchen \Email{}-Services im Web ­-- keine Dateien
-anhängen können. Zudem bekommen Sie so Ihren Schlüssel zum ersten Mal
-zu Gesicht und wissen, was sich dahinter verbirgt und woraus der
-Schlüssel eigentlich besteht.
-
-Und so geht's:\\
-Selektieren Sie den zu exportierenden Schlüssel (durch klicken auf die
-entsprechende Zeile in der Liste der Schlüssel) und klicken Sie dann
-auf \Button{Export} in der Iconleiste von GPA.  Wählen Sie dann einen
-geeigneten Ordner auf Ihrem PC aus und speichern Sie den Schlüssel
-dort z.B. als\\ \Filename{mein-key.asc}.
-
-Über den Erfolg dieser Operation werden Sie durch eine Hinweisbox
-informiert.  Klicken Sie dort dann auf \Button{OK}.
 
 
-\clearpage
+
+\subsubsection{Exportieren Ihres OpenPGP-Zertifikats}
+
+Selektieren Sie in Kleopatra das zu exportierende Zertifikat
+(durch Klicken auf die entsprechende Zeile in der Liste der
+Zertifikate) und klicken Sie dann auf
+\Menu{Datei$\rightarrow$Zertifikate exportieren~...} im Menü.
+Wählen Sie einen geeigneten Ordner auf Ihrem PC aus und
+speichern Sie das Zertifikat im Dateityp \textit{*.asc} ab --
+z.B.: \Filename{mein-OpenPGP-Zertifikat.asc}.
+
+\textbf{Wichtig:} Achten Sie beim Auswählen des Menüpunktes darauf,
+dass Sie auch wirklich nur Ihr (öffentliches) Zertifikat exportieren
+-- und \textit{nicht} aus Versehen Ihren zugehörigen geheimen
+Schlüssel exportieren.
+
+
 %% Original page 27
+Sehen Sie sich zur Kontrolle diese Datei an. Nutzen Sie dazu Ihren
+Windows Explorer und wählen denselben Ordern aus, den Sie beim
+Exportieren angegeben haben.
 
-Sehen Sie sich dann diese Datei mit dem Explorer an. Sie müssen hierzu
-denselben Ordern auswählen, den Sie beim Exportieren angegeben haben.
-
-Öffnen Sie diese Datei mit einem Texteditor, z.B. mit WordPad.  Sie
-sehen Ihren öffentlichen Schlüssel im Texteditor so, wie er wirklich
-aussieht ­-- ein ziemlich wirrer Text- und Zahlenblock:
+\textbf{Öffnen} Sie die exportierte Zertifikats-Datei mit einem
+Texteditor, z.B. mit WordPad. Sie sehen Ihr OpenPGP-Zertifikat im
+Texteditor so, wie es wirklich aussieht -- ein ziemlich wirrer Text-
+und Zahlenblock:
 
 % screenshot: Editor mit ascii armored key
 \begin{center}
-\IncludeImage[width=0.9\textwidth]{sc-misc-mein-key-asc}
+\IncludeImage[width=0.75\textwidth]{sc-misc-mein-key-asc}
 \end{center}
 
 
 \clearpage
 %% Original page 28
 
-Markieren Sie nun den gesamten Schlüssel von
+\subsubsection{Variante 1: OpenPGP-Zertifikat als \Email{}-Text
+versenden}
 
+Die hier zuerst gezeigte Möglichkeit funktioniert immer, selbst wenn
+Sie ­-- z.B. bei manchen \Email{}-Services im Web ­-- keine Dateien
+anhängen können. Zudem bekommen Sie so Ihr Zertifikat zum ersten Mal
+zu Gesicht und wissen, was sich dahinter verbirgt und woraus der
+Schlüssel eigentlich besteht.
+
+\textbf{Markieren} Sie nun im Texteditor den gesamten öffentlichen
+Schlüssel von
 \begin{verbatim}
 -----BEGIN PGP PUBLIC KEY BLOCK-----
 \end{verbatim}
@@ -1101,115 +1124,186 @@ bis
 -----END PGP PUBLIC KEY BLOCK-----
 \end{verbatim}
 
-und kopieren Sie ihn mit dem Menübefehl oder mit dem Tastaturkürzel
-Strg+C. Damit haben Sie den Schlüssel in den Speicher Ihres Rechners
-­-- bei Windows Zwischenablage genannt ­-- kopiert.
+und \textbf{kopieren} Sie ihn mit dem Menübefehl oder mit dem
+Tastaturkürzel Strg+C. Damit haben Sie den Schlüssel in den Speicher
+Ihres Rechners (bei Windows Zwischenablage genannt) kopiert.
 
 Nun starten Sie Ihr Mailprogramm ­-- es spielt keine Rolle, welches
-Sie benutzen ­-- und fügen Ihren öffentlichen Schlüssel in eine leere
-\Email{} ein. Der Tastaturbefehl zum Einfügen ("`Paste"') lautet bei
-Windows Strg+V.  Es ist sinnvoll vorher das Mailprogramm so zu
-konfigurieren, dass reine Textnachrichten gesendet werden und keine HTML
-formatierte Nachrichten.
+Sie benutzen ­-- und fügen Ihr Zertifikat in eine leere \Email{} ein.
+Der Tastaturbefehl zum Einfügen ("`Paste"') lautet bei Windows Strg+V.
+Es ist sinnvoll vorher das Mailprogramm so zu konfigurieren, dass
+reine Textnachrichten gesendet werden und keine HTML formatierte
+Nachrichten.
 
 Diesen Vorgang ­-- Kopieren und Einfügen ­-- kennen Sie sicher als
-"`Copy \& Paste"'.
+"`Copy \& Paste"'.\\
 
-Adressieren Sie nun diese \Email{} an \verb-adele@gnupp.de- und
-schreiben in die Betreffzeile:
+\textbf{Adressieren} Sie nun diese \Email{} an \verb-adele@gnupp.de- und
+schreiben in die Betreffzeile z.B.:
 
-\textbf{mein öffentlicher Schlüssel}
+\textit{Mein OpenPGP-Zertifikat}
 
 So etwa sollte Ihre \Email{} nun aussehen:
 
-% screenshot:  Eines composer Windows.
+%TODO (zertifikat statt schlüssel) screenshot:  Eines composer Windows.
 \begin{center}
-\IncludeImage[width=0.9\textwidth]{sc-ol-send-test-key}
+\IncludeImage[width=0.75\textwidth]{sc-ol-send-test-key}
 \end{center}
 
-Schicken Sie die \Email{} an Adele nun ab. Nur zur Vorsicht: natürlich
-sollten Ihre \Email{}s \textbf{nicht} \verb-heinrichh@gpg4win.de- oder ein andere
-Beispieladresse als Absender haben, sondern \emph{Ihre eigene
+\T\enlargethispage{2\baselineskip}
+Schicken Sie die \Email{} an Adele ab.
+
+Nur zur Vorsicht: Natürlich
+sollten Ihre \Email{}s \textit{nicht} \verb-heinrichh@gpg4win.de- oder ein andere
+Beispieladresse als Absender haben, sondern \textit{Ihre eigene
   \Email{}-Adresse}. Denn sonst werden Sie nie Antwort von Adele
 bekommen$\ldots$
 
 
 \clearpage
 %% Original page 29
+\subsubsection{Variante 2: OpenPGP-Zertifikat als \Email{}-Anhang
+versenden}
 
-Genauso gehen Sie vor, wenn Sie Ihren Schlüssel an eine echte
-\Email{}-Adresse senden. Natürlich können Sie dann auch noch ein paar
-erklärende Sätze dazuschreiben. Adele braucht diese Erklärung nicht,
-denn sie ist zu nichts anderem als zu diesem Zweck programmiert
-worden.
-
-\textbf{Fassen wir kurz zusammen:} Sie haben Ihren
-öffentlichen Schlüssel per \Email{} an einen Korrespondenzpartner
-geschickt.
-
-~\\
-\textbf{Im Kapitel~\ref{ch:attachment} beschreiben wir, wie
-Sie Ihren Schlüssel auch als Dateianhang versenden.}
-
-Das ist oftmals das einfachere und gebräuchlichere Verfahren. Wir haben Ihnen hier
+Alternativ zu Variante 1 können Sie natürlich Ihr exportiertes
+OpenPGP-Zertifikat auch direkt als \textbf{\Email{}-Dateianhang}
+versenden. Das ist oftmals das
+einfachere und gebräuchlichere Verfahren. Wir haben Ihnen oben
 die "`Copy \& Paste"'-Methode zuerst vorgestellt, weil sie
-transparenter und leichter nachzuvollziehen ist.  Sie können dieses
-Kapitel jetzt lesen oder später, wenn Sie diese Funktion benötigen.
+transparenter und leichter nachzuvollziehen ist.
+
+Schreiben wir Adele nun noch einmal eine neue Mail mit der
+Zertifikatsdatei im Anhang:
+
+Fügen Sie die exportierte Zertifikatsdatei als Anhang zu Ihrer neuen
+\Email{} hinzu -- genauso wie Sie es mit jeder anderen Datei auch
+machen (z.B. durch Ziehen der Datei in das leere \Email-Fenster). 
+Ergänzen Sie den Empfänger
+(\verb-adele@gnupp.de-) und einen Betreff, z.B.
+\textit{Mein OpenPGP-Zertifikat - als Dateianhang}.
+
+Selbstverständlich dürfen Sie auch noch ein paar erklärende Sätze dazuschreiben.
+Adele braucht diese Erklärung jedoch nicht, denn sie ist zu nichts anderem
+als zu diesem Übungszweck programmiert worden.
+
+Ihre fertige \Email{} sollte dann etwa so aussehen:
+
+%TODO (zertifikat statt schlüssel) screenshot:  Eines composer Windows.
+\begin{center}
+\IncludeImage[width=0.9\textwidth]{sc-ol-send-test-key}
+\end{center}
+
+Senden Sie nun die \Email{} mit Anhang an Adele ab.
+
+\clearpage
+\subsubsection{Fassen wir kurz zusammen...}
+
+Sie haben Ihr OpenPGP-Zertifikat in
+Kleopatra in eine Datei exportiert. Anschließend haben wir einmal den
+Inhalt der Datei direkt in eine \Email{} kopiert und einmal die
+komplette Datei als \Email{}-Anhang eingefügt. Beide \Email{}s haben
+wir an einen Korrespondenzpartner (in unserem Fall Adele) geschickt.
+
+Genauso gehen Sie vor, wenn Sie Ihr Zertifikat an eine echte
+\Email{}-Adresse senden. Sie entscheiden sich dabei natürlich für eine
+der beiden oben vorgestellten Varianten -- in der Regel sollten Sie
+Ihr OpenPGP-Zertifikat per Dateianhang versenden. Dies ist für Sie und
+Ihren Empfänger das Einfachste. Und es hat den Vorteil, dass
+Ihr Empfänger Ihre Zertifikatsdatei direkt (ohne Umwege) in seine Zertifikatsverwaltung
+(z.B. Kleopatra) importieren kann.
+%TODO: ggf Verweis auf Zertifikats-Import
+
+~\\\label{publischPerEmailx509}
+Nachdem Sie gelernt haben, wie Sie Ihr OpenPGP-Zertifikat per
+\margin{\IncludeImage[width=1.5cm]{smime-icon}}
+\Email{} veröffentlichen, wird Sie sicher interessieren wie das
+Gleiche für \textbf{X.509-Zertifikate} funktioniert (vgl. auch
+Kapitel~\ref{ch:openpgpsmime}).
+
+Die Antwort lautet: Genauso wie bei OpenPGP! Sie exportieren
+Ihr X.509-Zertifikat in Kleopatra, speichern dieses z.B. im Dateiformat
+\textit{*.pem} ab und versenden die Datei als \Email{}-Anhang.
+
+Der einzige Unterschied zum oben beschriebenen OpenPGP-Vorgehen: Sie
+können Adele nicht benutzen! \textbf{Adele unterstützt nur OpenPGP!} 
+Zum Üben sollten Sie sich also einen anderen Korrespondenzpartner
+aussuchen oder Sie schreiben testweise an sich selber.
+
+Beim Exportieren Ihres X.509-Zertifikats haben Sie die Wahl, ob Sie
+die ganze (öffentliche) Zertifikatskette (in der Regel: Wurzel --
+Zertifizierungsstelle -- Ihr Zertifikat) oder \textit{nur} Ihr Zertifikat in
+eine Datei abspeichern wollen. Ersteres empfiehlt sich immer dann,
+wenn Sie nicht genau wissen, ob Ihr Korrespondenzpartner Ihr
+Wurzelzertifikat schon besitzt.
 
 
 \clearpage
 %% Original page 30
-\chapter{Sie veröffentlichen Ihren OpenPGP-Schlüssel per Keyserver}
+\section{Veröffentlichen per Schlüsselserver}
+\label{publishPerKeyserver}
 
-
-Diese Möglichkeit bietet sich eigentlich immer an, selbst wenn Sie nur
-mit wenigen Partnern verschlüsselte \Email{}s austauschen.  Ihr
-Schlüssel ist dann sozusagen "`stets griffbereit"' auf einem Server im
-Internet vorhanden.
-
-\textbf{Wichtig: Die Veröffentlichung Ihres Schlüssels auf einem Keyserver ist
-nur für OpenPGP-Schlüssel möglich!}
+\textbf{Wichtig: Die Veröffentlichung Ihres Zertifikats auf einem
+Schlüsselserver (Keyserver) ist nur für OpenPGP-Zertifikate möglich!}
 \margin{\IncludeImage[width=1.5cm]{openpgp-icon}}
 
-\textsc{Vorsicht: Obwohl es noch keine Hinweise gibt, dass Spammer
-  Adressen wirklich von den Keyservern sammeln, so ist dies jedoch
-  technisch möglich.  Falls Sie keinen wirksamen Spamfilter benutzen,
-  sollten Sie u.U.\ von der Veröffentlichung Ihres Schlüssels auf einem
-  Keyserver absehen.}
+Die Veröffentlichung Ihres OpenPGP-Zertifikats auf einem
+internationalen Schlüsselserver bietet sich eigentlich
+immer an, selbst wenn Sie nur mit wenigen Partnern verschlüsselte
+\Email{}s austauschen. Ihr Zertifikat ist dann für jedermann
+zugänglich auf einem Server im Internet verfügbar. Sie ersparen sich
+dadurch die Versendung Ihres Zertifikats per \Email{} an jeden Ihrer
+Korrespondenzpartner.
 
-Wählen Sie Ihren OpenPGP-Schlüssel in Kleopatra aus und klicken im
+
+\textsc{Vorsicht: Die Veröffentlichung Ihrer \Email{}-Adresse
+auf einem Keyserver birgt leider das Risiko, dass Ihnen
+auch ungebetene Personen \Email{}s schreiben können und die
+SPAM-Menge für Ihre \Email{}-Adresse dadurch zunehmen kann.
+Sie sollten daher im zweiten Fall einen ausreichenden SPAM-Schutz nutzen.
+Falls Sie keinen wirksamen Spamfilter benutzen,
+sollten Sie u.U.\ von der Veröffentlichung Ihres Schlüssels auf einem
+Keyserver absehen.}
+
+~\\
+\textbf{Und so geht's:} Wählen Sie Ihr OpenPGP-Zertifikat in Kleopatra aus und klicken im
 Menü auf
 %TODO:german
-\Menu{Datei$\rightarrow$Export Certificate to Server...}. 
+\Menu{Datei$\rightarrow$Export Certificate to Server...}.
+
+Sofern Sie noch keinen Schlüsselserver
+definiert haben, bekommen Sie eine Warnmeldung:
 
 % screenshot: GPA export key to keyserver
 \begin{center}
 \IncludeImage[width=0.45\textwidth]{sc-kleopatra-exportCertificateToServer_de}
 \end{center}
 
-Wie Sie sehen, ist ein öffentlicher Keyserver bereits voreingestellt
-(\texttt{keys.gnupg.net}). Wenn Sie auf
-\Button{Fortsetzen} klicken, wird der Schlüssel an diesen Server
-geschickt. Von dort aus wird Ihr Schlüssel an alle, weltweit 
+Wie Sie an der Meldung erkennen können, ist der öffentliche Schlüsselserver
+\texttt{keys.gnupg.net} bereits voreingestellt.
+Klicken Sie auf \Button{Fortsetzen}, um Ihren ausgewählten Schlüssel an
+diesen Server zu schicken. Von dort aus wird Ihr Schlüssel an alle, weltweit
 verbundenen Keyserver weitergereicht.
-Jedermann kann Ihren Schlüssel dann von einen dieser Keyserver 
-herunterladen und dazu benutzen, Ihnen
-eine sichere \Email{} zu schreiben.
+Jedermann kann Ihren Schlüssel dann von einen dieser Keyserver
+herunterladen und dazu benutzen, Ihnen eine sichere \Email{} zu schreiben.
 
 Wenn Sie den Ablauf im Moment nur testen, dann schicken Sie den
-Übungsschlüssel nicht ab.  Er ist wertlos und kann nicht
+Übungsschlüssel bitte nicht ab.  Er ist wertlos und kann nicht
 mehr vom Schlüsselserver entfernt werden. Sie glauben nicht, wieviele
 Testkeys mit Namen wie "`Julius Caesar"', "`Helmut Kohl"' oder "`Bill
-Clinton"' dort herumliegen ­ schon seit Jahren$\ldots$
+Clinton"' dort schon seit Jahren herumliegen$\ldots$
 
-\textbf{Fassen wir kurz zusammen:} Sie wissen nun, wie Sie Ihren
-Schlüssel auf einen Schlüsselserver im Internet schicken können.
+\clearpage
+\subsubsection{Fassen wir kurz zusammen$\ldots$}
+Sie wissen nun, wie Sie Ihr OpenPGP-Zertifikat auf einem
+Schlüsselserver im Internet veröffentlichen.
 
-\textbf{Wie Sie den Schlüssel eines Partners auf den
-  Schlüsselservern suchen und finden, beschreiben wir im 
+\textbf{Wie Sie das OpenPGP-Zertifikat eines Korrespondenzpartners auf
+  Schlüsselservern suchen und finden, beschreiben wir im
   Kapitel~\ref{ch:keyserver}.
   Sie können dieses Kapitel jetzt lesen oder später, wenn Sie diese
-  Funktion benötigen.  }
+  Funktion benötigen.}
+
+
 
 \clearpage
 %% Original page 31
@@ -2299,65 +2393,41 @@ und "`Schlüsselvertrauen"' in Kapitel \ref{ch:trust}.
 
 \clearpage
 %% Original page 25
-\chapter{Die Schlüsselserver}
+\chapter{Die OpenPGP-Schlüsselserver}
 \label{ch:keyserver}
 
-Um verschlüsselt mit anderen zu kommunizieren, müssen die Partner ihre
-Schlüssel veröffentlichen und austauschen. Dazu ist --- Sie erinnern
-sich an Kapitel 1 --- keine Geheimniskrämerei notwendig, denn Ihr
-öffentlicher Schlüsselteil ist ja ganz und gar "`ungeheim"'.
+Die Nutzung eines Schlüsselservers zum Verbreiten Ihres
+OpenPGP-Zertifikats haben wir Ihnen bereits im
+Abschnitt~\ref{publishPerKeyserver} einführend erläutert. Dieses
+Kapitel beschäftigt sich mit den Details von Schlüsselservern.
 
-Im Internetzeitalter ist eine möglichst große Verbreitung Ihres
-öffentlichen Schlüssels überhaupt kein Problem. Sie können ihn z.B.
-über internationale Keyserver oder per \Email{} publizieren --- diese
-beiden Möglichkeiten haben wir Ihnen im "`Einsteiger-Handbuch"'
-vorgeschlagen. Es gibt aber noch andere:
-
-\begin{itemize}
-\item Verbreitung des Schlüssels über die eigene Homepage
-
-\item als Dateianhang an einer \Email{}
-
-\item last but not least: persönlich per USB-Stick oder Diskette
-\end{itemize}
-
-
-\clearpage
 %% Original page 26
 
-Am praktischsten ist sicher die Veröffentlichung über die Keyserver,
-die von allen Programmen nach dem OpenPGP-Standard benutzt werden
-können. Diese Möglichkeit haben wir bereits im Handbuch
-"`Gpg4win für Einsteiger"' Kapitel 6 ("`Sie veröffentlichen Ihren
-Schlüssel per Keyserver"') vorgestellt. Es genügt, den
-Schlüssel an irgendeinen der Keyserver zu senden, denn fast alle
-synchronsieren sich weltweit miteinander.
+Schlüsselserver können von allen Programmen benutzt werden, die den
+OpenPGP-Standard unterstützen.
 
-\textsc{Vorsicht: Obwohl es noch keine Hinweise gibt, dass Spammer
-  Adressen wirklich von den Keyservern sammeln, so ist dies jedoch
-  technisch möglich.  Falls Sie keinen wirksamen Spamfilter benutzen,
-  sollten Sie u.U.\ von der Veröffentlichung Ihres Schlüssels auf einem
-  Keyserver absehen.}
-
-Ein Keyserver ist in Gpg4win stets voreingestellt. Ein Mausklick genügt,
-und Ihr Schlüssel ist unterwegs rund um die Welt.  Es kann ein,
-zwei Tage dauern, bis er wirklich überall verfügbar ist, aber dann
-haben Sie einen globalen Schlüssel!  Die Schlüsselserver sind
-dezentral organisiert, aktuelle Statistiken über ihre Zahl oder die
-Anzahl der dort liegenden Schlüssel gibt es nicht.
+In Kleopatra ist ein Keyserver bereits voreingestellt:
+\texttt{hkp://keys.gnupg.net}.
+Ein Mausklick unter
+%TODO:german
+\Menu{Datei$\rightarrow$Export Certificate to Server...}.
+genügt, und Ihr Schlüssel ist unterwegs rund um die Welt.
+Es genügt, den Schlüssel an irgendeinen der verfügbaren
+Keyserver zu senden, denn fast alle synchronsieren sich weltweit
+miteinander.
+Es kann ein, zwei Tage dauern, bis Ihr Zertifikat wirklich überall
+verfügbar ist, aber dann haben Sie einen globales Zertifikat!
 
 \begin{center}
 \IncludeImage[width=0.3\textwidth]{keyserver-world}
 \end{center}
 
-Dieses verteilte Netz von Keyservern sorgt für eine bessere
+Die Schlüsselserver sind dezentral organisiert, aktuelle Statistiken
+über ihre Zahl oder die Anzahl der dort liegenden Schlüssel gibt es
+nicht.  Dieses verteilte Netz von Keyservern sorgt für eine bessere
 Verfügbarkeit und verhindert dass einzelne Systemandministratoren
 Schlüssel löschen um so die Kommunikation unmöglich zu machen
 ("`Denial of Service"'-Angriff).
-
-%% Keyserver.net sind proprietar und funktionieren überhaupt nicht.
-%% Nur weil PRZ den Hersteller berät, sollte man nicht glauben, dass sie
-%% funktionieren.
 
 %%%Das OpenPGP-Netz http://www.keyserver.net/ ist zum Beispiel der
 %%%Sammelpunkt für ein ganzes Netz dieser Server, oft benutzt werden
@@ -2368,7 +2438,11 @@ Wir raten dazu, nur moderne Keyserver zu verwendet (auf denen die SKS
 Software läuft), da nur diese mit den neueren Merkmalen von OpenPGP
 umgehen können.
 
-Hier eine Auswahl von gut funktionierenden Keyservern:
+
+\clearpage
+\subsubsection{Adressen einiger Schlüsselserver}
+
+Hier eine Auswahl von gut funktionierenden Schlüsselservern:
 \begin{itemize}
 \item hkp://blackhole.pca.dfn.de
 \item hkp://pks.gpg.cz
@@ -2380,7 +2454,7 @@ Hier eine Auswahl von gut funktionierenden Keyservern:
 \item http://keyserver.pramberger.at
 \end{itemize}   
 Sollte Sie Probleme mit einer Firewall haben, so versuchen Sie am
-besten die Keyserver, deren Namen mit \verb-http://- beginnen.
+besten die Keyserver, deren URL mit \verb-http://- beginnen.
 
 Die Keyserver unter den Adressen
 \begin{itemize}
@@ -2390,92 +2464,54 @@ Die Keyserver unter den Adressen
 sind ein Sammelpunkt für ein ganzes Netz dieser Server, es wird
 dann zufällig ein konkreter Server ausgewählt.
 
-Achtung: Der Keyserver \verb=ldap://keyserver.pgp.com= synchronisiert
+\textbf{Achtung:} Der Keyserver \verb=ldap://keyserver.pgp.com= synchronisiert
 sich nicht mit den anderen Servern und sollte i.d.R. nicht benutzt
 werden.
 
 
 
 \clearpage
+\subsubsection{Zertifikate auf Schlüsselservern suchen}
 %% Original page 27
-%%% FIXME: needs a rework
-Genauso einfach wie Sie einen Schlüssel hochladen, können Sie auf den
-Keyservern nach einem öffentlichen
-Schlüssel suchen.  Geben Sie in das Suchfeld den Namen des
-Schlüsselbesitzers ein oder seine \Email{}-Adresse.  Als Ergebnis sehen
-Sie etwa eine solche Ausgabe:
 
-pub 1024/1CE0C630
-2006/01/01 ... usw.
+Genauso einfach wie Sie ein Zertifikat auf Schlüsselserver hochladen,
+können Sie auch nach Zertifikaten suchen.
 
-und evtl. noch
+Klicken Sie dazu in Kleopatra auf 
+\Menu{Datei$\rightarrow$Zertifikate auf Server suchen...}. Sie
+erhalten ein Zertifikatssuchdialog, in dessen Suchfeld Sie den
+Namen des Zertifikatsbesitzers oder seine \Email{}-Adresse eingeben
+können:
 
-sig 1CE0C630 ... usw.
-sig 5B0358A2 ... usw.
+%screenshot: Kleopatra certification search dialog
+\begin{center}
+\IncludeImage[width=0.6\textwidth]{sc-kleopatra-certificateSearchOnKeyserver_de}
+\end{center}
 
-Alle drei Eintragungen sind Bestandteil des Schlüssels.
+Um die Details eines ausgewählten Zertifikats zu sehen, klicken Sie
+auf den Button \Button{Details}.
 
-% screenshot with the frontpage of keyserver.net - no reason to put it
-% here. In particular not keyserver.net.
-
-Sie benötigen aber nur den ersten Teil: das ist der öffentliche
-Schlüssel. Der zweite Teil ist die sogenannte Selbstzertifizierung,
-der dritte eine Bestätigung der Identität des Schlüsselinhabers.
-
-
-\clearpage
+\subsubsection{Zertifikate vom Schlüsselservern importieren}
 %% Original page 28
-%%% FIXME: needs a rework
-Klicken Sie nun den Link des ersten Schlüsselteils (pub usw.)  an:
+Möchten Sie eines der gefundenen Zertifikate in Ihre lokale
+Zertifikatssammlung hinzufügen? Dann selektieren Sie das
+Zertifikat aus der Liste der Suchergebnisse und
+klicken Sie auf \Button{Importieren}!
 
-Sie sehen den Ihnen schon bekannten Textblock, der den eigentlichen
-öffentlichen Schlüssel bildet.
+Kleopatra zeigt Ihnen anschließend einen Dialog mit den
+Ergebnissen des Importvorgangs an. Bestätigen Sie diesen mit
+\Button{OK}. 
 
-Im "`Schnelleinstieg"', Kapitel 7 ("`Sie entschlüsseln eine \Email{}"')
-und 8 ("`Sie befestigen einen Schlüssel am Schlüsselbund"')
-zeigen wir Ihnen, wie man
-diesen Schlüssel importiert, d.h. am eigenen Gpg4win Schlüsselbund
-befestigt, und damit eine \Email{} an den Besitzer verschlüsselt.
+War der Import erfolgreich, finden Sie das ausgewählte Zertifikat in
+der Kleopatra-Zertifikatsverwaltung.
 
-Diese Suche nach einem Schlüssel funktioniert auch direkt aus Gpg4win:
-Sie können einfach die \Email{}-Adresse des Schlüsselbesitzers eingeben,
-oder auch die Schlüsselkennung, falls Ihnen diese bekannt ist. Klicken
-Sie dazu auf "`Import"', und dort auf "`Schlüssel vom Key-Server
-empfangen"'.
-
-
-% screenshot: GPA import from keyserver
-
-Gpg4win sucht dann den Schlüssel, importiert ihn und zeigt ihn im
-Schlüsselverwaltungs-Fenster an.
+%Im "`Schnelleinstieg"', Kapitel 7 ("`Sie entschlüsseln eine \Email{}"')
+%und 8 ("`Sie befestigen einen Schlüssel am Schlüsselbund"')
+%zeigen wir Ihnen, wie man
+%diesen Schlüssel importiert, d.h. am eigenen Gpg4win Schlüsselbund
+%befestigt, und damit eine \Email{} an den Besitzer verschlüsselt.
 
 
-\clearpage
-%% Original page 29
-\chapter{Der Schlüssel als Dateianhang}
-\label{ch:attachment}
-
-Im Einsteiger Handbuch Kapitel 5 ("`Sie veröffentlichen Ihren Schlüssel
-per \Email{}"') haben Sie gesehen, wie einfach man
-seinen öffentlichen Schlüssel per \Email{} verschicken kann. Wir haben
-dabei den Schlüssel in einen Ordner exportiert, geöffnet und in die
-Zwischenablage kopiert.  Von dort aus wurde der Schlüssel in ein
-\Email{}-Programm kopiert und schließlich versandt. Noch einfacher geht
-es, wenn man den Schlüssel --­ genau wie im vorherigen Beispiel ­--
-exportiert und dann direkt als \Email{}-Anhang verschickt.
-
-Dazu klicken Sie auf im GNU Privacy Assistant auf \Button{Export} in
-der Iconleiste und dann in dem sich öffnenden Dialog auf
-\Button{Exportieren~in~Datei}. Wählen Sie mit \Button{Durchsuchen...}
-einen geeigneten Ordner auf Ihrem PC, z.B.
-\Filename{C:\back{}Eigene Dateien\back{}} und speichern Sie
-den Schlüssel dort z.B. als \Filename{mein-key.asc}.
-
-Nun ziehen Sie den exportierten Schlüssel als Dateianhang in das
-entsprechende Fenster Ihres \Email{}programms, genauso wie jede andere
-Datei, und senden sie ihn an den Empfänger.
-
-% screenshot: GPA key export
 
 \clearpage
 %% Original page 30
@@ -3022,6 +3058,7 @@ Er wird die Anwendung von GpgEX beschreiben.
 \clearpage
 %% Original page 45
 \chapter{Im- und Export eines geheimen Schlüssels}
+\label{ch:ImExport}
 
 Im "`Schnellstart"'-Handbuch haben wir in den Kapiteln 5, 6 und 8 den
 Im- und Export eines öffentlichen Schlüssels besprochen. Wir haben

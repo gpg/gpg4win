@@ -38,6 +38,7 @@ png_files = \
 		sc-kleopatra-x509-keyPairCreated_de.png\
 		sc-ol-sendNewX509Certificate_de.png\
 		sc-kleopatra-exportCertificateToServer_de.png\
+		sc-kleopatra-certificateSearchOnKeyserver_de.png\
         sc-inst-welcome.png sc-inst-license.png \
         sc-inst-components.png sc-inst-directory.png \
         sc-inst-options.png \

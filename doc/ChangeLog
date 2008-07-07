@@ -1,3 +1,9 @@
+2008-07-07  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+	
+	* manual/gpg4win-compendium-de.tex, manual/Makefile.am:
+	Reworked and merged chapter on publishing key and keyserver.
+	Added new screenshot.
+
 2008-07-04  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 	
 	* manual/gpg4win-compendium-de.tex,
