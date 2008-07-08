@@ -12,6 +12,7 @@ d75a8790-3457-49aa-ac8d-946a33c7bb1a /PRODUCT/1.9.0.668
 7a0ce0e2-f75c-4f08-83dd-fd8fc4bcddfe /PRODUCT/1.9.0.691
 7498403e-77cd-4bed-9a65-d8cc29a5dc01 /PRODUCT/1.9.0.741
 088e4467-e83f-4da5-bbdc-6e45e2101266 /PRODUCT/1.9.0.795
+521ae57f-c5a0-4d9f-8c17-2f34ab452fbd /PRODUCT/1.9.1.804
 fb54db39-2456-4fcc-9550-2790db663015 /REGISTRY/HKLM/Software\GNU\GnuPG/Install Directory
 ad23691b-1734-4dec-b91a-d4ff286190ea /REGISTRY/HKLM/Software\GNU\GnuPG/gpgProgram
 e0807a2f-4e70-48f8-b047-c5d3e219c3e7 /UPGRADE/1
@@ -102,6 +103,7 @@ cc503b23-d91a-4a62-b718-d3d8421ab7b4 jpegtran.exe
 22438687-b122-4e40-976b-6dd2d26b167d kgpgconf.exe
 92c55686-77ac-4be1-9c11-b4b29ae221ee kleopatra.bat
 476c0bd9-e925-4799-b8ba-4f08b087c58c kleopatra.exe
+b932b01a-7401-45b6-b2de-3b5f9ad39ead kwatchgnupg.exe
 30e04a1f-e9d3-4e1c-bfa6-404dc4e7be1d lib\claws-mail\plugins\pgpcore.dll
 6094a185-ac8e-4acb-808f-5112d1c67d84 lib\claws-mail\plugins\pgpinline.deps
 5e4270af-56f7-4dd6-a169-69d0bf9b8885 lib\claws-mail\plugins\pgpinline.dll
@@ -151,6 +153,7 @@ ad4bf37f-e64c-4540-ac82-2fc9d36e6ecd lib\locale\fr\LC_MESSAGES\gtk20.mo
 3faefe08-8263-460b-809d-74b6b41bf1b6 lib\locale\ru\LC_MESSAGES\atk10.mo
 b9d1f0bc-fc62-4d98-88a6-2ad4f5b63b0d lib\locale\ru\LC_MESSAGES\gtk20-properties.mo
 3fe4f87e-10bc-4093-940a-627f8656128c lib\locale\ru\LC_MESSAGES\gtk20.mo
+b39ae719-5b23-4076-94fd-ba9e5f307e4c libadns-1.dll
 b7eb067b-886c-4797-82d1-38a43e03e7c9 libatk-1.0-0.dll
 12c77de4-ff42-4ce6-8e34-18f4a7222ee2 libcairo-2.dll
 a36b79c8-0394-4e90-9019-a9cb18690fbf libdbus-1.dll
@@ -296,6 +299,9 @@ f6279939-8b37-4785-9645-c2414ea6f83f share\apps\kleopatra\pics\kleopatra_splashs
 d115318a-50be-4fe3-bba0-ff87bef7c091 share\apps\kleopatra\pics\kleopatra_splashscreen.svgz
 b5071d73-efa9-4a44-a4ae-f6d21befb5b0 share\apps\kleopatra\pics\kleopatra_wizard.png
 c43ec930-8830-423f-947b-b9e64939bd74 share\apps\kleopatra\pics\kleopatra_wizard.svgz
+c6cd0842-cdbf-414d-b83e-17a65a61e8e9 share\apps\kwatchgnupg\kwatchgnupgui.rc
+32c82abe-cb57-498c-992d-9ec7906df31b share\apps\kwatchgnupg\pics\kwatchgnupg.png
+a37b37fc-6844-4620-b8af-341d6843eba4 share\apps\kwatchgnupg\pics\kwatchgnupg2.png
 d7843f8f-6c59-4304-8724-df9fc5f947f2 share\apps\libkleopatra\pics\chiasmus_chi.png
 7f963d02-2670-49e7-bfcd-05cf5332826d share\apps\libkleopatra\pics\key.png
 467ecd20-9654-4ac2-bbbd-94aa7d3e509b share\apps\libkleopatra\pics\key_bad.png

@@ -50,9 +50,6 @@ ${MementoSection} "GPA" SEC_gpa
   File ${prefix}/share/locale/ru/LC_MESSAGES/gpa.mo
 
   SetOutPath "$INSTDIR\share\gpa"
-  # tip files are not anymore used with newer GPAs.
-  File /nonfatal ${prefix}/share/gpa/gpa_tips.en
-  File /nonfatal ${prefix}/share/gpa/gpa_tips.de
   File ${prefix}/share/gpa/gpa_logo.ppm
   File ${prefix}/share/gpa/gpa.png
 
