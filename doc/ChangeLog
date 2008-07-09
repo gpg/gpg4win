@@ -1,3 +1,9 @@
+2008-07-09  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+	
+	* manual/gpg4win-compendium-de.tex, manual/Makefile.am:
+	Include "What is gpg4win" chapter. Reworked chapter on decryption.
+	Rename GPGol to GpgOL. Add new screenshots.
+
 2008-07-07  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 	
 	* manual/gpg4win-compendium-de.tex, manual/Makefile.am:
