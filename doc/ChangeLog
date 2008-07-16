@@ -1,3 +1,10 @@
+2008-07-16  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+	
+	* manual/gpg4win-compendium-de.tex, manual/Makefile.am:
+	Reworked and merged chapters on certificate import, encryption,
+	signature, verification. Reformatting and restructuring.
+	Add new screenshots.
+
 2008-07-09  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 	
 	* manual/gpg4win-compendium-de.tex, manual/Makefile.am:

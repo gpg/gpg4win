@@ -1,7 +1,7 @@
 % gpg4win-compendium-de.tex
 % Note, that this a HyperLaTeX source and not plain LaTeX!
 
-\documentclass[a4paper,11pt,twoside,openright,titlepage,dvips]{scrbook}
+\documentclass[a4paper,11pt, oneside,openright,titlepage,dvips]{scrbook}
 \usepackage{hyperlatex}
 \usepackage{a4wide}
 \usepackage{times}
@@ -28,8 +28,10 @@
 \newcommand{\manualdate}{\manualdateEinsteiger}
 \newcommand\margin[1]{\marginline {\sffamily\scriptsize #1}}
 
+
 \T\fancyhead{} % clear all fields
-\T\fancyhead[LO,RE]{Das Gpg4win Kompendium \manualversion\ \manualinprogress}
+\T\fancyhead[LO,RE]{Das Gpg4win Kompendium \manualversion \manualinprogress \\ 
+    \itshape\nouppercase{\leftmark}}
 \T\fancyhead[RO,LE]{\thepage}
 \T\fancyfoot[C]{\includegraphics[width=1cm]{gpg4win-logo}}
 
@@ -1048,7 +1050,7 @@ eigener geheimer Schlüssel und die ihn schützende Passphrase sicher
 sind, haben Sie das Wichtigste zur Geheimhaltung bereits erledigt.
 
 Jedermann darf und soll Ihr Zertifikat haben, und Sie können und sollen 
-Zertifikate von Ihren Korrespondenzpartnern haben --- je mehr, desto besser.
+Zertifikate von Ihren Korrespondenzpartnern haben -- je mehr, desto besser.
 
 Denn:
 
@@ -1368,6 +1370,7 @@ Schlüsselserver im Internet veröffentlichen.
 \clearpage
 %% Original page 31
 \chapter{Sie entschlüsseln eine \Email{}}
+\label{ch:decrypt}
 
 Sie bekommen verschlüsselte Nachrichten Ihrer Korrespondenzpartner
 und wollen diese nun entschlüsseln? 
@@ -1382,11 +1385,12 @@ Wir üben jetzt diesen Vorgang einmal mit Adele und Ihrem
 OpenPGP-Zertifikat!\\
 \textit{Achtung: Die folgenden Übungen gelten nur für OpenPGP!
 Anmerkungen zur Entschlüsselung von S/MIME-\Email{}s finden Sie am
-Ende dieses Kaptiels.} %TODO:Seitenzahl
-\margin{\IncludeImage[width=1.5cm]{openpgp-icon}}
+Ende dieses Kapitels.} %TODO:Seitenzahl
+\margin{\IncludeImage[width=1.5cm]{openpgp-icon}}\\
+
 
 Im Abschnitt~\ref{publishPerEmail} haben Sie Adele Ihr
-OpenPGP-Zertifikat -- Ihren öffentlichen Schlüssel -- geschickt.
+OpenPGP-Zertifikat -- also Ihr öffentlicher Schlüssel -- geschickt.
 Mit Hilfe dieses Zertifikats verschüsselt Adele nun eine
 \Email{} und sendet sie an Sie zurück. Nach kurzer Zeit sollen Sie
 Adeles Antwort erhalten.
@@ -1400,7 +1404,7 @@ Adeles Antwort erhalten.
 
 \clearpage
 %% Orginal page 32
-\subsubsection{Nachricht mit Outlook und GpgOL entschlüsseln}
+\subsubsection{Nachricht mit MS Outlook und GpgOL entschlüsseln}
 
 Für die meisten Mailprogramme gibt es spezielle Erweiterungen
 (sogenannte Plugins), mit denen die Ver- und Entschlüsselung direkt im
@@ -1414,15 +1418,16 @@ Sie können dieses Kapitel jetzt lesen oder später, wenn Sie diese Funktion benöt
 
 ~\\
 Starten Sie MS Outlook und öffnen Sie die Antwort-\Email{} von Adele.
-Kleopatra kennt alle Ihre eigenen Zertifikate und die Ihrer
+
+Kleopatra verwaltet alle Ihre eigenen Zertifikate und die Ihrer
 Korrespondenzpartner. Somit eignet sich Kleopatra gut zur Überprüfung
 der \Email{}. Kleopatra erkennt eine verschlüsselte \Email{} von
-Adele, die mit Ihrem OpenPGP-Zertifikat verschlüsselt wurde. Um die
+Adele. Diese \Email{} hat Adele mit Ihrem OpenPGP-Zertifikat verschlüsselt. Um die
 Nachricht zu entschlüsseln, fragt Kleopatra Sie nun nach Ihrer (zum
 Schlüsselpaar gehörigen) Passphrase. Geben Sie diese in den
 aufkommenden Dialog ein. Sofern Ihre Eingabe korrekt war, erhalten Sie
-einen Statusdialog, der Ihnen die Möglichkeit bietet mit \Button{Details einblenden}
-weitere Informationen zur Überprüfung anzuzeigen:
+einen Statusdialog. Mit \Button{Details einblenden} können Sie sich
+weitere Informationen der \Email{}-Überprüfung anzeigen lassen:
 
 %TODO screenshot: Kleopatra - successfully encrypt/verify dialog
 \begin{center}
@@ -1432,7 +1437,7 @@ weitere Informationen zur Überprüfung anzuzeigen:
 Die Entschlüsselung war erfolgreich! Schließen Sie den Dialog, um die
 entschlüsselte \Email{} zu lesen.
 
-Möchten Sie den Prüfdialog nach dem Lesen der Mail noch einmal manuell aufrufen, s
+Möchten Sie den Prüfdialog nach dem Lesen der Mail noch einmal manuell aufrufen,
 so klicken Sie im Menü der geöffneten \Email{} auf \Menu{Extras$\rightarrow$GpgOL
 Enschlüsseln/Prüfen}.
 
@@ -1479,7 +1484,7 @@ Doch nun wollen wir das Ergebnis, die entschlüsselte Nachricht, endlich einmal s
 
 Die entschlüsselte Antwort von Adele sieht in etwa so aus\footnote{Abhängig
   von der Softwareversion von Adele kann dies auch etwas
-  unterschiedlich aussehen}:
+  unterschiedlich aussehen.}:
 %TODO: lieber ein OL-Screenshot der mail.
 
 \begin{verbatim}
@@ -1518,135 +1523,411 @@ oder dessen signierte Mails überprüfen.
   Schlüssel beigelegt, damit Sie ihm verschlüsselt antworten können.
 \end{enumerate}
 
+~\\Nachdem \label{publischPerEmailx509}
+Sie gelernt haben, wie Sie \Email{}s mit Ihrem OpenPGP-Zertifikat
+\margin{\IncludeImage[width=1.5cm]{smime-icon}}
+entschlüsseln, werden Sie nun noch erfahren, wie Sie verschlüsselte 
+\textbf{S/MIME}-\Email{}s entschlüsseln.
+
+Die Antwort lautet auch hier: Genauso wie bei OpenPGP! Sie öffnen in
+MS Outlook eine S/MIME-verschlüsselte \Email{} und geben im aufgehenden
+Dialog Ihre Passphrase ein. Sie bekommen einen ähnlichen Statusdialog
+wie bei OpgenPGP. Nach dem Schließen dieses Dialogs sehen Sie die
+entschlüsselte S/MIME-\Email{}.
+
+
+
 
 \clearpage
 %% Original page 37
-\chapter{Sie befestigen einen Schlüssel am Schlüsselbund}
+\chapter{Sie importieren ein Zertifikat}
 \label{ch:keyring}
 
-Ihr Korrespondenzpartner muss nicht etwa jedes Mal seinen Schlüssel
-mitschicken, wenn er Ihnen signiert schreibt. Sie bewahren seinen
-öffentlichen Schlüssel einfach an Ihrem GnuPG-"`Schlüsselbund"' auf.
-
-\textbf{1. Möglichkeit:}
-
-Um einen öffentlichen Schlüssel zu importieren (an Ihrem Schlüsselbund
-zu befestigen), speichern Sie ihn am einfachsten als Textblock ab, so
-wie Sie es vorhin schon bei Ihrem eigenen Schlüssel getan haben.
+Ihr Korrespondenzpartner muss nicht jedes Mal sein Zertifikat 
+mitschicken, wenn er Ihnen signiert schreibt.
+Sie bewahren seinen öffentlichen Schlüssel einfach an 
+Ihrem GnuPG-"`Schlüsselbund"' (oder besser: "`Zertifikatsbund"') auf.
 
 
-Also:
+\subsubsection{Zertifikat abspeichern}
+
+Bevor Sie ein Zertifikat in Kleopatra importieren,
+müssen Sie es in einer Datei abspeichern. Abhängig davon, ob Sie das
+Zertifikat als \Email{}-Dateianhang oder als Textblock innerhalb Ihrer
+\Email{} bekommen haben, gehen Sie wie folgt vor:
+
+\begin{itemize}
+    \item Liegt das Zertifikat einer \Email{} als \textbf{Dateianhang} bei, speichern
+Sie es (wie Sie es in Ihrem Mailprogramm gewohnt sind)
+auf einem Ort Ihrer Festplatte ab.
 
 
-markieren Sie den öffentlichen
-Schlüssel, den Sie von Ihrem
-Korrespondenzpartner erhalten
-haben, von
+\item Sollte das Zertifikat als \textbf{Textblock} innerhalb Ihrer \Email{}
+übermittelt worden sein, so müssen Sie zunächst das vollständige
+Zertifikat markieren: 
 
-\begin{verbatim}
------BEGIN PGP PUBLIC KEY BLOCK-----
-\end{verbatim}
-bis
-\begin{verbatim}
------END PGP PUBLIC KEY BLOCK-----
-\end{verbatim}
+Bei OpenPGP-Zertifikaten markieren Sie den Bereich von
 
-und setzen ihn mit Copy \& Paste in einen Texteditor ein. Speichern
-Sie den Schlüssel unter einem Namen in einem Ordner, den Sie leicht
-wiederfinden, z.B. als \Filename{adeles-key.asc} im Ordner
-\Filename{Eigene Dateien}.
+\verb+-----BEGIN PGP PUBLIC KEY BLOCK-----+\\
+bis\\
+\verb+-----END PGP PUBLIC KEY BLOCK-----+
+
+so wie Sie es im Abschnitt~\ref{publishPerEmail} schon getan haben.
+
+Setzen Sie den markierten Abschnitt per Copy \& Paste in einen
+Texteditor ein und speichern Sie das Zertifikat ab. Als Dateiendung
+sollten Sie für OpenPGP-Zertifikate \textit{*.asc} und für X.509-Zertifikate 
+z.B. \textit{*.pem} wählen.
+
+\end{itemize}
+
+%% Original page 38/39
+\clearpage
+\subsubsection{Zertifikat in Kleopatra importieren}
+
+Ob Sie nun das Zertifikat als \Email{}-Anhang oder als Textblock abgespeichert
+haben, ist egal: In beiden Fällen importieren Sie dieses
+abgespeicherte Zertifikat in Ihre Zertifikatsverwaltung
+\textbf{Kleopatra}.
+
+
+Starten Sie dafür Kleopatra, sofern das Programm noch nicht läuft.
+
+Klicken Sie im Menü auf
+\Menu{Datei$\rightarrow$Zertifikat importieren...},
+suchen das eben abgespeicherte Zertifikat aus und laden es.
+Sie erhalten einen Infodialog mit dem Ergebnis des Importvorgangs:
+
+%TODO screenshot: Kleopatra - successfully encrypt/verify dialog
+\begin{center}
+\IncludeImage[width=0.45\textwidth]{sc-kleopatra-encryptVerify_de}
+\end{center}
+
+%TODO: Insgesamt bearbeitet, Importiert, Unverändert, ...
+
+Das erfolgreich importierte Zertifikat wird nun in Kleopatra angezeigt
+-- und zwar unter einem separatem Reiter "`Importierte
+Zertifikate von \textit{<Pfad-zur-Zertifikatsdatei>}"':
+
+%TODO screenshot Kleopatra with new certificate
+\begin{center}
+\IncludeImage[width=0.6\textwidth]{sc-kleopatra-withOpenpgpTestkey_de}
+\end{center}
+
+Schließen Sie diesen Reiter mit dem rot-weißen Schließen-Button am
+Rechten Fensterrand.
+
+Wechseln Sie auf den Tab "`Andere Zertifikate"'. Hier sollten Sie nun
+das von Ihnen importierte Zertifikat sehen.
+
+Damit haben Sie ein fremdes Zertifikat­-- in diesem Beispiel das
+OpenPGP-Zertifikat von Adele -- importiert und an Ihrem Schlüsselbund
+befestigt. Sie können dieses Zertifikat jederzeit benutzen, um
+verschlüsselte Nachrichten an den Besitzer dieses Zertifikats zu
+senden und Signaturen zu prüfen.
+
+\clearpage
+\subsubsection{Bevor wir weitermachen, eine wichtige
+Frage:}
+Woher wissen Sie eigentlich, dass das fremde
+OpenPGP-Zertifikat wirklich von Adele stammt? Man kann \Email{}s auch
+unter falschem Namen versenden -- die Absenderangabe besagt eigentlich
+gar nichts.
+
+Wie können Sie also sichergehen, dass ein Zertifikat auch wirklich
+seinem Absender gehört?
+
+\textbf{Die Kernfrage der Zertifikatsprüfung erläutern wir im
+Kapitel~\ref{ch:trust}. Lesen Sie bitte jetzt dort weiter, bevor
+Sie danach an dieser Stelle fortfahren.}
+
+
+
+\clearpage
+%% Original page 42
+\chapter{Sie verschlüsseln eine \Email{}}
+\label{ch:encrypt}
+
+Jetzt wird es noch einmal spannend: Wir versenden eine verschlüsselte \Email{}!
+
+Starten brauchen dazu Outlook, Kleopatra und natürlich ein Zertifikat
+Ihres Korrespondenzpartners.
+
+Die Schritte zum Verschlüsseln unterscheiden sich für OpenPGP und
+S/MIME, so dass wir das Vorgehen auf den nächsten Seiten in getrennten
+Abschnitten behandeln.
+
+Erstellen Sie zunächst in Outlook eine neue \Email, die Sie nun
+verschlüsselt versenden möchten.
+
+\clearpage
+%% Original page 45
+\section{Mit OpenPGP verschlüsseln}
+
+\margin{\IncludeImage[width=1.5cm]{openpgp-icon}}
+Sie können zum Üben dieses Vorgangs wieder Adele nutzen.
+Adressieren Sie dazu Ihre zu verschlüsselnde \Email{} an
+\verb-adele@gnupp.de-.
+Wenn Sie einen ebenso geduldigen menschlichen Korrespondenzpartner
+haben, dann adressieren Sie Ihre \Email{} eben an diesen.
+
+Schreiben Sie eine Nachricht -- es ist egal, was: Adele kann nicht wirklich lesen$\ldots$
+
+Wählen Sie im Menü des geöffneten Nachrichtenfensters
+\Menu{Extras$\rightarrow$GnuPG Protokoll$\rightarrow$PGP/MIME} aus.
+
+Sofern Sie die Auswahl auf \textit{automatisch} lassen, haben Sie
+später noch die Möglichkeit zwischen PGP/MIME und S/MIME zu wählen.
+
+Haben Sie ein bevorzugtes GnuPG-Protokoll? Dann können Sie unter den
+den GpgOL-Optionen
+(\Menu{Extras$\rightarrow$Optionen$\rightarrow$GpgOL}) 
+PGP/MIME oder S/MIME als Voreinstellung definieren.
+Nach der Installation von Gpg4win ist PGP/MIME hier aktiviert und
+S/MIME deaktiviert.
+
+Geben Sie nun an, dass Sie Ihre Nachricht verschlüsselt senden wollen:
+Wählen Sie \Menu{Extras$\rightarrow$Nachrichten mit GnuPG
+verschlüsseln}. Die Schaltfläche mit dem gelb/roten Icon in der
+Symbolleiste ist aktiviert (Sie können auch gleich direkt auf diese
+Schaltfläche klicken):
+
+% TODO screenshot: OL composer with Adele's address and body text
+\begin{center}
+\IncludeImage[width=0.9\textwidth]{sc-ol-send-enc-msg1}
+\end{center}
+Um Ihre Nachricht doch unverschlüsselt zu
+senden, deaktivieren Sie mit einem erneuten Klick die
+Verschlüsselungsoption.
+
+Klicken Sie nun auf \Button{Senden}.
+
+\clearpage
+Daraufhin öffnet sich ein Fenster mit den Zertifikaten, die Sie in
+Ihrere Zertifikatsverwaltung haben. 
+In unserem Beispiel sind das Adeles OpenPGP-Zertifikat und 
+Ihr eigenes OpenPGP-Zertifikat.
+
+% TODO screenshot: kleopatra encryption dialog - certificate selection
+% (with Adele + my own certificate)
+\begin{center}
+\IncludeImage[width=0.7\textwidth]{sc-winpt-sel-enc-key}
+\end{center}
+
+Klicken Sie auf Adeles Zertifikat, denn damit muss die Nachricht ja
+verschlüsselt werden.
+
+Sie erinnern sich an den Grundsatz:
+
+\begin{quote}
+    \textbf{Wenn Sie an jemanden verschlüsselte \Email{}s schicken wollen,
+  müssen Sie dessen Zertifikat haben und zum Verschlüsseln benutzen.}
+\end{quote}
+
+Nachdem Sie auf \Button{OK} geklickt haben, wird Ihre Nachricht
+verschlüsselt und Sie erhalten eine Meldung, die Ihnen dies
+bestätigt.
+
+% TODO screenshot: kleopatra encryption successfully
+
+
+\textbf{Herzlichen Glückwunsch!  Sie haben Ihre erste \Email{}
+verschlüsselt!}
+
+\clearpage
+\section{Mit S/MIME verschlüsseln}
+\margin{\IncludeImage[width=1.5cm]{smime-icon}}
+
+
+\clearpage
+%% Original page 37 & 40
+\chapter{Sie signieren eine \Email{}}
+\label{ch:sign}
+
+Sie haben in Kapitel~\ref{ch:trust} gelesen, wie Sie sich von der
+Echtheit eines OpenPGP-Zertifikats überzeugen und es dann mit Ihrem eigenen
+geheimen OpenPGP-Schlüssel signieren können.
+
+In diesem Kapitel wollen wir uns damit beschäftigen,
+wie Sie nicht nur ein Zertifikat, sondern auch eine komplette
+\textbf{\Email{} signieren} können. Das bedeutet, dass Sie die \Email{} mit
+einer elektronischen Unterschrift (eine Art elektronisches Siegel) versehen.
+
+Der Text ist dann zwar noch für jeden lesbar, aber Ihr Empfänger kann
+feststellen, ob die \Email{} unterwegs manipuliert oder verändert
+wurde.
+
+Die Signatur garantiert Ihrem Empfänger, dass die Nachricht
+tatsächlich von Ihnen stammt. Und: wenn Sie mit jemandem
+korrespondieren, dessen öffentlichen Schlüssel Sie nicht haben~(aus welchem
+Grund auch immer), können Sie so die Nachricht wenigstens
+mit Ihrem eigenen privaten Schlüssel "`versiegeln"'.
+
+\textbf{Achtung:} Verwechseln Sie diese elektronische Signatur nicht mit den
+\Email{}-"`Signaturen"', die man unter eine \Email{} setzt und die zum
+Beispiel Ihre Telefonnummer, Ihre Adresse und Ihre Webseite enthalten.
+
+Während diese \Email{}-Signaturen einfach nur als eine Art Visitenkarte
+fungieren, schützt die elektronische Signatur Ihre \Email{} vor
+Manipulationen und bestätigt den Absender.
+
+Übrigens ist diese elektronische Unterschrift auch nicht mit der
+qualifizierten digitalen Signatur gleichzusetzen, wie sie im
+Signaturgesetz vom 22.~Mai 2001 in Kraft getreten ist. Für die
+private oder berufliche \Email{}-Kommunikation erfüllt sie allerdings
+genau denselben Zweck.
+
+% cartoon:  Müller mit Schlüssel
+\begin{center}
+\IncludeImage[width=0.35\textwidth]{man-with-signed-key}
+\end{center}
+
+
 
 
 
 \clearpage
 %% Original page 38
-\textbf{2. Möglichkeit:}
+\section{Signieren}
 
-Der Schlüssel liegt der \Email{} als Dateianhang bei. Welches
-Mailprogramm Sie auch immer benutzen, Sie können stets Dateianhänge
-("`Attachments"') auf Ihrer Festplatte abspeichern. Tun Sie das jetzt
-(am besten wieder in einem Ordner, den Sie leicht wiederfinden, z.B.
-\Filename{Eigene~Dateien}).
+Tatsächlich ist die Signierung einer \Email{} noch einfacher als die
+Verschlüsselung: Wie im Kapitel~\ref{ch:encrypt}) besprochen,
+schreiben Sie Ihre Nachricht und ..%TODO
 
-Ob Sie nun den Schlüssel als Text oder als \Email{}-Anhang abgespeichert
-haben, ist egal: in beiden Fällen importieren Sie diesen
-abgespeicherten Schlüssel in den GnuPG-"`Schlüsselbund"'.
-
-% screenshot:  Startmenu, Auswahl GPA
-
-Und zwar so:
-
-Starten Sie den GNU Privacy Assistant (GPA) im Windows-Menü, falls Sie ihn
-in der letzten Übung ausgeschaltet haben.
+Sie können nun entscheiden ob Sie eine völlig unverschlüsselte, eine
+signierte oder eine komplett verschlüsselte Mail versenden wollen ­--
+je nachdem, wie wichtig und schutzbedürftig der Inhalt ist.
 
 
-\clearpage
+Anders als beim Verschlüsseln öffnet sich daraufhin ein Fenster 
+mit Ihrem \textit{eigenen} Zertifikat. Denn:
+
+\begin{quote}
+    \textbf{Signieren können Sie nur mit Ihrem eigenen geheimen Schlüssel.}
+\end{quote}
+
+Logisch, denn nur Ihr eigener geheimer Schlüssel bestätigt Ihre
+Identität. Der Korrespondenzpartner kann nun mit Ihrem Zertifikat, das
+er bereits hat oder sich besorgen kann, Ihre Identität überprüfen.
+Denn nur Ihr geheimer Schlüssel passt ja zu Ihrem Zertifikat.
+
+%TODO: Buttons prüfen
+Klicken Sie also auf Ihr eigenes Zertifikat, mit dem Sie die
+\Email{} signieren wollen und bestätigen Sie mit \Button{OK}. 
+Im folgenden Fenster geben Sie Ihre geheime
+Passphrase ein und bestätigen Sie wieder mit \Button{OK}. Ein
+kurzer Hinweis erscheint sobald der Text signiert ist.
+
+
+% screenshot: WinPT signing - enter passphrase
+\begin{center}
+\IncludeImage{sc-winpt-sign-passwd}
+\end{center}
+
+
+%\clearpage
 %% Original page 39
-Wenn der GNU Privacy Assistant läuft, klicken Sie auf die Schaltfläche
-Import, suchen die eben abgespeicherte Schlüsseldatei und laden sie. Der
-importierte Schlüssel wird nun im GNU Privacy Assistant angezeigt:
-
-% screenshot GPA Schlüsselverwaltung mit zwei Schlüsseln
-\begin{center}
-\IncludeImage[width=0.9\textwidth]{sc-gpa-two-keys}
-\end{center}
-
-Damit haben Sie einen fremden öffentlichen Schlüssel ­-- in diesem
-Beispiel den von Adele ­-- importiert und an Ihrem Schlüsselbund
-befestigt. Sie können diesen Schlüssel jederzeit benutzen, um
-verschlüsselte Nachrichten an den Besitzer dieses Schlüssels zu
-senden und Signaturen zu prüfen.
-
-\textbf{Bevor wir weitermachen, eine wichtige Frage:}\\
-Woher wissen Sie eigentlich, dass der fremde öffentliche Schlüssel
-wirklich von Adele stammt? Man kann \Email{}s auch unter falschem Namen
-versenden -- die Absenderangabe besagt eigentlich gar nichts.
-
-Wie können Sie also sichergehen, dass ein Schlüssel auch wirklich
-seinem Absender gehört?
+Ihre Nachricht ist nun erfolgreich signiert.
 
 
-\textbf{Die Kernfrage der Schlüsselprüfung besprechen wir im
-Kapitel~\ref{ch:trust}. Lesen Sie jetzt bitte dort weiter, bevor
-Sie danach an dieser Stelle fortfahren.}
+%\begin{verbatim}
+%-----BEGIN PGP SIGNED MESSAGE-----
+%Hash: SHA1
+%
+%Werte Adele,
+%
+%Wenn ich in deine Augen seh,
+%So schwindet all mein Leid und Weh;
+%Doch wenn ich küsse deinen Mund,
+%So werd ich ganz und gar gesund.
+%
+%    Harry
+%-----BEGIN PGP SIGNATURE-----
+%Version: GnuPG v1.4.3-cvs (MingW32)
+%
+%iD8DBQFD36LVVyUTMs2Gh/YRAn2sAJ4wH2h8g+rFyxXQSsuYzZWzYMKTdgCeK0sK
+%CEL3//4INzHUNA/eqR3XMi0=
+%=tiQ5
+%-----END PGP SIGNATURE-----
+%\end{verbatim}
 
-\clearpage
-%% Original page 40
-Sie haben in Kapitel~\ref{ch:trust} gelesen, wie man sich von der
-Echtheit eines Schlüssels überzeugt und ihn dann mit seinem eigenen
-geheimen Schlüssel signiert.
-
-In Kapitel~\ref{ch:sign} besprechen wir,
-wie man nicht nur einen Schlüssel, sondern auch eine komplette
-\Email{}-Nachricht signieren kann. Das bedeutet, dass man die \Email{} mit
-einer Art elektronischem Siegel versieht.
-
-Der Text ist dann zwar noch für jeden lesbar, aber der Empfänger kann
-feststellen, ob die \Email{} unterwegs manipuliert oder verändert wurde
-und das die \Email{} wirklich von Ihnen stammt.
-
-Die Überprüfung einer solchen Signatur ist sehr einfach. Sie müssen
-dazu natürlich den öffentlichen Schlüssel des Absenders bereits an
-Ihrem Gpg4win-"`Schlüsselbund"' befestigt haben, wie in
-Kapitel~\ref{ch:keyring} besprochen.
-
-% cartoon:  Müller mit Schlüssel
-\begin{center}
-\IncludeImage[width=0.4\textwidth]{man-with-signed-key}
-\end{center}
+%Wenn Frau Adele diese \Email{}
+%erhält, kann sie sicher sein,
+%\begin{enumerate}
+%\item dass die Nachricht von Herrn Heine stammt
+%\item dass sie nicht verändert wurde
+%\end{enumerate}
+%
+%Hätte zum Beispiel jemand das "`gesund"' in dem obigen Beispiel zu
+%"`krank"' verändert, wäre die Signatur "`gebrochen"', dass heißt, die
+%\Email{} wäre mit dem Vermerk "`Bad signature"' oder "`Überprüfung
+%fehlgeschlagen"' beim Empfänger versehen, sobald die Signatur
+%überprüft wird.
 
 
 \clearpage
+\section{Signatur mit GpgOL überprüfen}
 %% Original page 41
-Wenn Sie eine signierte \Email{} erhalten, sehen Sie, dass der Text am
-Anfang und Ende von einer Signatur eingerahmt ist.  Sie beginnt mit
+
+Die Überprüfung einer solchen elektronischen Signatur ist sehr einfach.
+Alles was Sie dazu brauchen, ist das OpenPGP- oder X.509-Zertifikat
+Ihres Korrespondenzpartners, dessen Signatur Sie überprüfen möchten.
+Dessen Zertifikat sollten Sie vor der Überprüfung bereits
+in Ihre Kleopatra Zertifikatsverwaltung importiert haben
+(vgl. Kapitel~\ref{ch:keyring}).
+
+Um eine signierte OpenPGP- oder S/MIME-\Email{} zu überprüfen,
+gehen Sie genauso vor, wie bei der Entschlüsselung einer \Email{}
+(vgl. Kapitel~\ref{ch:decrypt}):
+
+Starten Sie Outlook und öffnen Sie die signierte \Email{}.
+
+GpgOL überprüft nun automatisch die Signatur und meldet das Ergebnis
+in einem Statusdialog:
+
+%TODO screenshot: Kleopatra - successfully encrypt/verify dialog
+\begin{center}
+\IncludeImage[width=0.45\textwidth]{sc-kleopatra-encryptVerify_de}
+\end{center}
+
+Die Entschlüsselung war erfolgreich! Schließen Sie den Dialog, um die
+signierte \Email{} zu lesen.
+
+Möchten Sie die Überprüfung noch einmal manuell aufrufen,
+so wählen Sie im Menü der geöffneten \Email{} \Menu{Extras$\rightarrow$GpgOL
+Enschlüsseln/Prüfen}.
+
+Sollte die Signaturprüfung fehlt schlagen,
+% TODO: ggf. Screenshot mit neg. Meldung.
+wurde die Nachricht bei der Übertragung verändert.
+Aufgrund der technischen Gegebenheiten im Internet ist es
+nicht auszuschließen, dass die \Email{} durch eine fehlerhafte Übertragung
+verändert wurde. Das ist zunächst der wahrscheinlichste Fall. Es kann
+jedoch auch bedeuten, dass der Text nachträglich verändert wurde.
+
+Wie Sie in einem solchen Fall vorgehen sollten,
+erfahren Sie im Abschnitt~\ref{brokenSignature}.
+
+
+\clearpage
+\subsubsection{Übrigens...}
+Wenn Sie kein Gpg4win installiert haben und eine signierte
+\Email{} öffnen, lässt sich die Signatur natürlich nicht überprüfen.
+Sie sehen dann den \Email-Text umrahmt von merkwürdigen Zeilen -- das
+ist die Signatur.
+
+Exemplarisch für OpenPGP zeigen wir Ihnen, wie dann so eine
+OpenPGP-signierte \Email{} in Ihrem \Email-Programm aussieht:
+
+Die \Email{} beginnt mit:
+\margin{\IncludeImage[width=1.5cm]{openpgp-icon}}
 
 \begin{verbatim}
 -----BEGIN PGP SIGNED MESSAGE-----
 Hash: SHA1
 \end{verbatim} 
 
-und endet unter der \Email{}-Nachricht mit
+und endet unter der \Email{}-Nachricht mit:
 
 \begin{verbatim}
 -----BEGIN PGP SIGNATURE-----
@@ -1658,111 +1939,101 @@ ytRsEXgzCrfPnjGrDDtb7QZIAn17B8l8gFQ3WIUUDCMfA5cQajHcm
 -----END PGP SIGNATURE-----
 \end{verbatim}
 
-Markieren Sie den gesamten Text von \textsl{BEGIN PGP SIGNED MESSAGE}
-bis \textsl{END PGP SIGNATURE} und kopieren Sie ihn mit Strg+C in die
-Zwischenablage.
-
-Nun fahren Sie genauso fort wie bei der Entschlüsselung einer \Email{},
-wie wir es in Kapitel 7 dieses Handbuchs besprochen haben:
-
-Sie öffnen WinPT aus der Windows-Taskleiste und wählen \newline
-\Menu{Zwischenablage$\rightarrow$ Entschlüsseln/Überprüfen}.
-
-Sie sollte daraufhin folgendes Fenster sehen:
-
-% screenshot: WinPT good signature.
-\begin{center}
-\IncludeImage[width=0.7\textwidth]{sc-winpt-good-sig}
-\end{center}
-
-Falls Sie dort aber in der Statusspalte \emph{Die Signatur ist nicht
-  gültig!}  erhalten, wurde die Nachricht bei der Übertragung
-verändert.  Aufgrund der technischen Gegebenheiten im Internet ist es
-nicht auszuschließen, dass die \Email{} durch eine fehlerhafte Übertragung
-verändert wurde. Das ist zunächst der wahrscheinlichste Fall. Es kann
-jedoch auch bedeuten, dass der Text nachträglich verändert wurde.
+\textit{Dies ist ein Beispiel -- Abwandlungen sind natürlich möglich.}
 
 
-\textbf{Wie Sie in einem solchen Fall vorgehen sollten,
-erfahren Sie im Kapitel~\ref{ch:sign}, "`\Email{}s signieren"'.
-Lesen Sie jetzt bitte dort weiter, bevor Sie danach an
-dieser Stelle fortfahren.}
+\clearpage
+%% Original page 40
+\section{Gründe für eine gebrochene Signatur}
+\label{brokenSignature}
+
+
+Es gibt mehrere Gründe, die zu einem Bruch einer Signatur
+führen können. Wenn Sie eine \Email{} mit dem Vermerk "`Bad signature"'
+oder "`Überprüfung fehlgeschlagen"' erhalten, ist das ein Warnsignal,
+dass Ihre \Email{} manipuliert sein könnte; d.h. jemand hat vielleicht
+den Inhalt oder den Betreff der \Email{} verändert.
+
+Eine gebrochene Signatur muss aber nicht zwangsläufig bedeuten, 
+dass Ihre \Email{} manipuliert wurde:
+
+\begin{enumerate}
+\item Aufgrund der technischen Gegebenheiten ist es nicht
+  auszuschließen, dass die \Email{} durch eine fehlerhafte Übertragung
+  über das Internet verändert wurde.
+\item Das \Email{}-Programm des Absenders oder Empfängers kann falsch eingestellt sein.
+  Wenn man eine signierte \Email{} verschickt, sollte man unbedingt
+  darauf achten, dass im \Email{}-Programm alle Optionen ausgeschaltet
+  sind, die \Email{} schon beim Versand verändern. Dazu zählt
+  "`HTML-Mails"' und "`Word Wrap"'.
+
+  "`Word Wrap"' bezeichnet den Umbruch von Zeilen in der \Email{}. Beides
+  verändert natürlich die \Email{} und "`bricht"' die Signatur, obwohl
+  niemand sie willentlich verändert hat.  Bei Outlook Express
+  beispielsweise muss diese Option unter
+  \Menu{Extras$\rightarrow$Optionen$\rightarrow$Senden$\rightarrow$NurText-Einstellungen$\rightarrow$Textkodierung
+  mit Keine} aktiviert sein, wie es auch standardmäßig voreingestellt ist.
+\end{enumerate}
+
+Häufig sind falsche Einstellungen am \Email{}-Programm der Grund für
+eine gebrochene Signatur. 
+
+\textbf{In jedem Fall sollten Sie die \Email{} erneut beim Absender anfordern!}
+
+
 
 \clearpage
 %% Original page 42
-\chapter{Sie verschlüsseln eine \Email{}}
+\section{Verschlüsseln und signieren}
 
-Jetzt wird es nochmal spannend:
+Normalerweise verschlüsseln Sie eine Nachricht mit dem Zertifikat 
+Ihres Korrespondenzpartners, der dann mit seinem geheimen Schlüssel die
+\Email{} entschlüsselt.
 
-Sie verschlüsseln eine \Email{} und senden sie an Adele. Wenn Sie einen
-ebenso geduldigen menschlichen Korrespondenzpartner haben, dann senden
-Sie Ihre \Email{} eben an diesen.
+Die umgekehrte Möglichkeit -- man würde mit dem geheimen Schlüssel
+verschlüsseln --, ist technisch nicht möglich und macht keinen Sinn,
+weil alle Welt das dazugehörigen (öffentliche) Zertifikat kennt und die
+Nachricht damit entschlüsseln könnte.
 
-Starten Sie nun Ihr \Email{}programm. Schreiben Sie eine Nachricht ­--
-es ist egal, was: Adele kann nicht wirklich lesen$\ldots$
+Es gibt aber ein anderes Verfahren, um mit Ihrem geheimen Schlüssel
+eine Datei zu erzeugen: Die Signatur, wie wir sie oben bereits
+beschrieben haben. Solch eine digitale Signatur bestätigt eindeutig
+die Urheberschaft -- denn wenn jemand Ihr Zertifikat
+auf diese Datei (die Signatur) anwendet und die Ausgabe dieser Prüfung
+ist "`gültig"', so kann diese Datei nur von Ihrem privaten Schlüssel
+kodiert worden sein. Und zu dem dürfen ja nur Sie selbst Zugang
+haben.
 
-Nun markieren Sie den gesamten Text und kopieren Sie ihn mit dem
-entsprechenden Menübefehl oder Tastaturkürzel (Strg+C).  Damit haben
-Sie den Text in den Speicher Ihres Rechners ­-- bei Windows
-Zwischenablage oder Clipboard genannt ­-- kopiert.
+Wenn Sie ganz sicher gehen will, können Sie beide Möglichkeiten
+kombinieren, also die \Email{} verschlüsseln und signieren:
 
-% screenshot: composer mit mail an Adele, body markiert
-\begin{center}
-\IncludeImage[width=0.9\textwidth]{sc-ol-send-enc-msg1}
-\end{center}
+\begin{enumerate}
+    \item Sie \textbf{signieren} die Botschaft mit Ihren eigenen geheimen
+  Schlüssel. Damit ist die Urheberschaft nachweisbar.
+\item Dann \textbf{verschlüsseln} Sie den Text mit dem Zertifikat
+  des Korrespondenzpartners.
+\end{enumerate}
 
-Sie öffnen nun WinPT aus der Windows-Taskleiste und wählen
-\Menu{Zwischenablage$\rightarrow$Verschlüsseln}.
+Damit hat die Botschaft sozusagen zwei Briefumschläge:
 
+\begin{enumerate}
+\item Einen Innenumschlag, der mit einem Siegel verschlossen ist (die
+  Signatur mit Ihrem eigenen geheimen Schlüssel).
+\item Einen soliden äußeren Umschlag (die Verschlüsselung mit dem
+  Zertifikat des Korrespondenzpartners).
+\end{enumerate}
 
-\clearpage
-%% Original page 45
-Daraufhin öffnet sich ein Fenster mit den Schlüsseln, die Sie an Ihrem
-Schlüsselbund haben. In unserem Beispiel sind das Adeles Schlüssel,
-den sie Ihnen vorhin geschickt hat, und Ihr eigener Schlüssel, den Sie
-in Kapitel 2 erzeugt haben.
+Ihr Briefpartner öffnet die äußere, starke Hülle mit seinem eigenen
+geheimen Schlüssel. Hiermit ist die Geheimhaltung gewährleistet, denn
+nur dieser Schlüssel kann den Text dekodieren. Die innere, versiegelte
+Hülle öffnet er mit Ihrem Zertifikat und hat den Beweis Ihrer
+Urheberschaft, denn wenn Ihr Zertifikat passt, kann er nur mit Ihrem
+Geheimschlüssel kodiert worden sein.
 
-% screenshot: Winpt encryption key selection
-\begin{center}
-\IncludeImage[width=0.7\textwidth]{sc-winpt-sel-enc-key}
-\end{center}
-
-Klicken Sie auf Adeles Schlüssel, denn damit muss die Nachricht ja
-verschlüsselt werden.
-
-Sie erinnern sich an den Grundsatz:
-
-\textbf{Wenn Sie an jemanden verschlüsselte \Email{}s schicken wollen,
-  müssen Sie dessen öffentlichen Schlüssel haben und zum Verschlüsseln
-  benutzen.}
-
-
-Nachdem Sie auf \Button{OK} geklickt haben, wird Ihre Nachricht
-verschlüsselt. Nach kurzer Zeit erscheint eine Meldung die dies
-bestätigt.
+Sehr trickreich und­-- wenn man ein wenig darüber nachdenkt -- auch
+ganz einfach.
 
 
-\clearpage
-%% Original page 46
-Die verschlüsselte Nachricht befindet sich noch in der Zwischenablage
-(Clipboard) und kann nun mühelos in das \Email{}-Fenster hineinkopiert
-werden.  Löschen Sie den unverschlüsselten Text oder kopieren die den
-Inhalt der Zwischenablage einfach darüber.
-
-So ähnlich sollte das Ergebnis aussehen:
-
-% screenshot: composer Windows mit enrcypted text 
-\begin{center}
-\IncludeImage[width=0.9\textwidth]{sc-ol-send-enc-msg2}
-\end{center}
-
-Senden Sie nun Ihre \Email{} wieder an Adele.  Nur zur Vorsicht:
-natürlich sollten Ihre \Email{}s \textbf{nicht} \verb-heinrichh@gpg4win.de- als
-Absender haben, sondern Ihre eigene \Email{}-Adresse.  Denn sonst werden
-Sie nie Antwort von Adele bekommen$\ldots$
-
-\textbf{Herzlichen Glückwunsch!  Sie haben Ihre erste \Email{}
-verschlüsselt!}
 
 \clearpage
 %% Original page 47
@@ -1863,7 +2134,8 @@ sondern
 
 \clearpage
 %% Original page 6
-\chapter{Warum überhaupt  verschlüsseln?}
+\chapter{Warum überhaupt verschlüsseln?}
+\label{ch:why}
 
 Die Verschlüsselung von Nachrichten wird manchmal als das zweitälteste
 Gewerbe der Welt bezeichnet. Verschlüsselungstechniken benutzten schon
@@ -1900,7 +2172,7 @@ man selbst und niemand sonst.
 
 Diese Entscheidungsfreiheit haben wir bei \Email{} nicht. Eine normale
 \Email{} ist immer offen wie eine Postkarte, und der elektronische
-"`Briefträger"' --- und andere --- können sie immer lesen. Die Sache
+"`Briefträger"' -- und andere -- können sie immer lesen. Die Sache
 ist sogar noch schlimmer: die Computertechnik bietet nicht nur die
 Möglichkeiten, die vielen Millionen \Email{}s täglich zu befördern und
 zu verteilen, sondern auch, sie zu kontrollieren.
@@ -1933,7 +2205,7 @@ für wichtig und schützenswert halten oder nicht.
 
 Das ist der Kern des Rechts auf Brief-, Post- und Fernmeldegeheimnis
 im Grundgesetz, und dieses Recht können Sie mit Hilfe der Software
-Gpg4win wahrnehmen. Sie müssen sie nicht benutzen --- Sie müssen ja auch
+Gpg4win wahrnehmen. Sie müssen sie nicht benutzen -- Sie müssen ja auch
 keinen Briefumschlag benutzen. Aber es ist Ihr gutes Recht.
 
 Um dieses Recht zu sichern, bietet Gpg4win Ihnen sogenannte "`starke
@@ -1980,7 +2252,7 @@ knacken ist.
 \textbf{Der Herr der Schlüsselringe}
 
 Wenn man etwas sehr Wertvolles sichern will, schließt man es am besten
-ein --- mit einem Schlüssel. Noch besser mit einem Schlüssel, den es
+ein -- mit einem Schlüssel. Noch besser mit einem Schlüssel, den es
 nur einmal gibt und den man ganz sicher aufbewahrt.
 
 \begin{center}
@@ -2012,7 +2284,7 @@ und dass sowohl der Absender als auch der Empfänger diesen geheimen
 Schlüssel kennen.
 
 Dies führt zu einer ziemlich paradoxen Situation: Bevor man mit einem
-solchen System ein Geheimnis --­ eine verschlüsselte Nachricht ---
+solchen System ein Geheimnis --­ eine verschlüsselte Nachricht --
 mitteilen kann, muss man schon vorher ein anderes Geheimnis --­ den
 Schlüssel ­-- mitgeteilt haben.  Und da liegt der Hase im Pfeffer: man
 muss sich ständig mit dem Problem herumärgern, dass der Schlüssel
@@ -2024,7 +2296,7 @@ Dritten abgefangen werden darf.
 \clearpage
 %% Original page 12
 
-Gpg4win dagegen arbeitet ­-- außer mit dem Geheimschlüssel --- mit einem
+Gpg4win dagegen arbeitet ­-- außer mit dem Geheimschlüssel -- mit einem
 weiteren Schlüssel ("`key"'), der vollkommen frei und öffentlich
 ("`public"') zugänglich ist.
 
@@ -2145,8 +2417,8 @@ Vergessen wir diese Möglichkeit am besten sofort wieder\ldots
 
 Sie installieren wieder einen Briefkasten vor Ihrem Haus.  Aber:
 dieser Briefkasten ist ­-- ganz im Gegensatz zu dem ersten Beispiel
---- stets offen.  Direkt daneben hängt --­ weithin öffentlich sichtbar
---- ein Schlüssel, mit dem jedermann den Briefkasten zuschließen kann.
+-- stets offen.  Direkt daneben hängt --­ weithin öffentlich sichtbar
+-- ein Schlüssel, mit dem jedermann den Briefkasten zuschließen kann.
 
 \textbf{Zuschließen, aber nicht aufschließen:} das ist der Trick.
 
@@ -2154,7 +2426,7 @@ dieser Briefkasten ist ­-- ganz im Gegensatz zu dem ersten Beispiel
 \IncludeImage[width=0.9\textwidth]{pk-safe-open}
 \end{center}
 
-Dieser Schlüssel gehört Ihnen, und --- Sie ahnen es: es ist Ihr
+Dieser Schlüssel gehört Ihnen, und -- Sie ahnen es: es ist Ihr
 öffentlicher Schlüssel.
 
 Wenn jemand Ihnen eine geheime Nachricht hinterlassen will, legt er
@@ -2214,10 +2486,10 @@ niemals einem Dritten mitgeteilt ­-- die Notwendigkeit einer geheimen
 Übergabe entfällt, sie verbietet sich sogar.
 
 Es muss überhaupt nichts Geheimes mehr zwischen Absender und Empfänger
-ausgetauscht werden --- weder eine geheime Vereinbarung noch ein
+ausgetauscht werden -- weder eine geheime Vereinbarung noch ein
 geheimes Codewort.
 
-Das ist ­-- im wahrsten Sinne des Wortes --- der Knackpunkt: alle
+Das ist ­-- im wahrsten Sinne des Wortes -- der Knackpunkt: alle
 "`alten"' Verschlüsselungsverfahren können geknackt werden, weil ein
 Dritter sich beim Schlüsselaustausch in den Besitz des Schlüssels
 bringen kann.
@@ -2260,7 +2532,7 @@ sein.  Der geheime Schlüssel befindet sich dort in eine Datei mit dem
 Namen \verb=secring.gpg=.
 
 Dieser Schutz allein ist allerdings nicht ausreichend: Zum einen kann
-der Administrator des Rechners immer auf alle Dateien zugreifen ---
+der Administrator des Rechners immer auf alle Dateien zugreifen --
 also auch auf Ihren geheimen Schlüssel.  Zum anderen könnte der Rechner
 abhanden kommen oder durch "`Malware"' (Viren-, Würmer-,
 Trojanersoftware) kompromittiert werden. 
@@ -2310,7 +2582,7 @@ Verwenden Sie kleine und große Buchstaben, Nummern, Sonder- und
 Leerzeichen durcheinander. Im Prinzip ist alles erlaubt, auch "`Ö"',
 "`ß"', "`\$"' usw.
 
-Aber Vorsicht --- falls Sie Ihren geheimen Schlüssel im Ausland an
+Aber Vorsicht -- falls Sie Ihren geheimen Schlüssel im Ausland an
 einem fremden Rechner benutzen wollen, bedenken Sie, dass
 fremdsprachige Tastaturen diese Sonderzeichen oft nicht haben.
 Beispielsweise werden Sie kein "`ä"' auf einer englischen
@@ -2613,138 +2885,175 @@ Sicherheit in der Informationstechnik.
 
 \clearpage
 %% Original page 31
-\chapter{Die Schlüsselprüfung}
+\chapter{Die Zertifikatsprüfung}
 \label{ch:trust}
 
-Woher wissen Sie eigentlich, dass der fremde öffentliche Schlüssel
-wirklich vom Absender stammt? Und umgekehrt --- warum sollte Ihr
-Korrespondenzpartner glauben, dass der öffentliche Schlüssel, den Sie
+Woher wissen Sie eigentlich, dass das fremde Zertifikat
+wirklich vom Absender stammt? Und umgekehrt -- warum sollte Ihr
+Korrespondenzpartner glauben, dass das Zertifikat, das Sie
 ihm geschickt haben, auch wirklich von Ihnen stammt?  Die
 Absenderangabe auf einer \Email{} besagt eigentlich gar nichts.
 
 Wenn Ihre Bank z.B. eine \Email{} mit Ihrem Namen und der Anweisung
-erhält, Ihre sämtliche Guthaben auf ein Nummernkonto auf den Bahamas
-zu überweisen, wird sie sich hoffentlich weigern --- \Email{}-Adresse
+erhält, Ihr sämtliches Guthaben auf ein Nummernkonto auf den Bahamas
+zu überweisen, wird sie sich hoffentlich weigern -- \Email{}-Adresse
 hin oder her.  Eine \Email{}-Adresse besagt überhaupt nichts über die
 Identität des Absenders.
 
+\clearpage
+\subsubsection{Der Fingerabdruck}
 Wenn Sie nur einen kleinen Kreis von Korrespondenzpartnern haben, ist
 die Sache mit der Identität schnell geregelt: Sie prüfen den
-Fingerabdruck des anderen Schlüssels.
+Fingerabdruck des anderen Zertifikats.
 
-Jeder öffentliche Schlüssel trägt eine einmalige Kennzeichnung, die
-ihn zweifelsfrei identifiziert; besser noch als ein Fingerabdruck
-einen Menschen.  Deshalb bezeichnet man diese Kennzeichnung eben als
+Jedes Zertifikat trägt eine einmalige Kennzeichnung, die
+es zweifelsfrei identifiziert; besser noch als ein Fingerabdruck
+eines Menschen. Deshalb bezeichnet man diese Kennzeichnung eben als
 "`Fingerprint"'.
 
-\clearpage
+Wenn Sie sich zu einem Zertifikat die Details in Kleopatra anzeigen
+lassen (z.B. durch Doppelklick auf das Zertifikat), sehen Sie u.a.
+dessen 40-stelligen Fingerabdruck:
 
-Wenn Sie einen Schlüssel im GNU Privacy Assistant anklicken, sehen Sie
-im unteren Teil des Fensters u.a. den Fingerprint:
-
+%TODO: mit Adeles Zertifikat
 % screenshot:  GPA key listing with fingerprint
 \begin{center}
-\IncludeImage[width=0.9\textwidth]{sc-gpa-two-keys}
+\IncludeImage[width=0.6\textwidth]{sc-kleopatra-openpgp-certificateDetails_de}
 \end{center}
 
-Der Fingerprint von Adeles Schlüssel ist also:
-\begin{verbatim}
-DD87 8C06 E8C2 BEDD D4A4  40D3 E573 3469 92AB 3FF7
-\end{verbatim}
+Der Fingerprint von Adeles OpenPGP-Zertifikat ist also:\\
+%TODO
+\verb+DD87 8C06 E8C2 BEDD D4A4 40D3 E573 3469 92AB 3FF7+
 
 
 
-\clearpage
 %% Original page 32
-
-Wie gesagt --- der Fingerprint identifiziert den Schlüssel und seinen
+~\\
+Wie gesagt -- der Fingerabdruck identifiziert das Zertifikat und seinen
 Besitzer eindeutig.
 
 Rufen Sie Ihren Korrespondenzpartner einfach an, und lassen Sie sich
-von ihm den Fingerprint seines Schlüssels vorlesen.  Wenn die Angaben
-mit dem Ihnen vorliegenden Schlüssel übereinstimmen, haben Sie
-eindeutig den richtigen Schlüssel.
+von ihm den Fingerprint seines Zertifikats vorlesen. Wenn die Angaben
+mit dem Ihnen vorliegenden Zertifikat übereinstimmen, haben Sie
+eindeutig das richtige Zertifikat.
 
 Natürlich können Sie sich auch persönlich mit dem Eigentümer des
-Schlüssels treffen oder auf jedem anderen Wege mit ihm kommunizieren,
-solange Sie ganz sicher sind, dass Schlüssel und Eigentümer zusammen
-gehören.  Häufig ist der Fingerprint auch auf Visitenkarten abgedruckt;
+Zertifikats treffen oder auf jedem anderen Wege mit ihm kommunizieren,
+solange Sie ganz sicher sind, dass Zertifikat und Eigentümer zusammen
+gehören. Häufig ist der Fingerprint auch auf Visitenkarten abgedruckt;
 wenn Sie also eine authentische Visitenkarte haben, so können Sie sich
 den Anruf ersparen.
 
-%%% FIXME Muss neu geschrieben werden von HIER...
-
-Nachdem Sie sich "`per Fingerabdruck"' von der Echtheit des
-öffentlichen Schlüssel überzeugt haben, sollten Sie ihn signieren.
-Damit teilen Sie anderen Gpg4win-Benutzern mit, dass Sie diesen Schlüssel
-für echt halten: Sie übernehmen so etwas wie die "`Patenschaft"' über
-diesen Schlüssel und erhöhen das allgemeine Vertrauen in seine
-Echtheit.
-
-Klicken Sie dazu den betreffenden Schlüssel an und wählen Sie dann
-"`Signieren"' aus der GPA-Menüleiste. Klicken Sie im nun folgenden
-Hinweis nur dann auf \Button{Ja}, wenn Sie hundertprozentig sicher sind, den
-richtigen Schlüssel zu signieren.
-
-%% Original page 33
-
-Geben Sie nun Ihre Passphrase ein und klicken Sie auf \Button{OK}.
-Damit haben Sie mit Ihrem geheimen Schlüssel die Echtheit des
-Schlüssels bestätigt.
-
-Da --- wie Sie wissen --- geheimer und öffentlicher Schlüssel
-untrennbar zusammengehören, kann jedermann mit Hilfe Ihres
-öffentlichen Schlüssels überprüfen, dass diese Signatur von Ihnen
-stammt und dass der Schlüssel nicht verändert wurde, also authentisch
-ist.  Damit ist für einen Dritten --- wenn auch indirekt --- ein
-gewisses Vertrauen in die Echtheit und Gültigkeit des signierten
-Schlüssels gegeben.
 
 \clearpage
-%% Original page 34
+\subsubsection{OpenPGP-Zertifikat signieren}
 
-\textbf{Das Netz des Vertrauens}
+Nachdem Sie sich "`per Fingerabdruck"' von der Echtheit des
+Zertifikats überzeugt haben, haben Sie nun die Möglichkeit,
+dieses Zertifikat zu signieren.
 
-So entsteht --- auch über den Kreis von
-Gpg4win-Benutzern Ihrer täglichen Korrespondenz hinaus --- ein "`Netz
+
+\textit{Beachten Sie: \margin{\IncludeImage[width=1.5cm]{openpgp-icon}}
+Signieren von Zertifikaten ist nur mit OpenPGP
+möglich. X.509 bietet dieses Verfahren nicht!}
+
+Durch das Signieren eines (fremden) Zertifikats teilen Sie anderen
+(Gpg4win-)Benutzern mit, dass Sie dieses
+Zertifikat für echt halten: Sie übernehmen so etwas wie die "`Patenschaft"' über
+dieses Zertifikat und erhöhen das allgemeine Vertrauen in seiner
+Echtheit.
+
+\textbf{Wie funktioniert das Signieren nun genau?}\\
+Selektieren Sie in Kleopatra das OpenPGP-Zertifikat, dass Sie für echt
+halten und signieren möchten. Wählen Sie anschließend im Menü:
+%TODO:german
+\Menu{Zertifikate$\rightarrow$Certify
+Certificate...}
+
+Im nachfolgenden Dialog wählen Sie nun noch einmal das zu signierende
+OpenPGP-Zertifikat aus:
+
+% TODO screenshot: Kleopatra certify certificate 1
+\begin{center}
+\IncludeImage[width=0.6\textwidth]{sc-kleopatra-certifyCertificate1_de}
+\end{center}
+Bestätigen Sie Ihre Auswahl mit \Button{Weiter}.
+
+\clearpage
+Im nächsten Schritt wählen Sie \textit{Ihr} OpenPGP-Zertifikat aus, mit dem Sie das
+(im letzten Schritt ausgewählte) Zertifikat signieren wollen:
+% TODO screenshot: Kleopatra certify certificate 2
+\begin{center}
+\IncludeImage[width=0.6\textwidth]{sc-kleopatra-certifyCertificate2_de}
+\end{center}
+
+%TODO:german
+Entscheiden Sie hier, ob die Signierung nur für Sie lokal 
+\Button{Certify only for myself} oder für alle sichtbar
+\Button{Certify for everyone to see} werden soll. Bei
+letzterer Variante haben Sie die Option, das signierte Zertifikat
+anschließend auf einen Keyserver hochzuladen.
+
+Bestätigen Sie Ihre Auswahl mit \Button{Certify}.
+
+%TODO#:Passphrase eingeben!
+
+%\clearpage
+Bei erfolgreicher Signierung erhalten Sie folgendes Fenster:
+% TODO screenshot: Kleopatra certify certificate 3
+\begin{center}
+\IncludeImage[width=0.6\textwidth]{sc-kleopatra-certifyCertificate3_de}
+\end{center}
+
+
+
+\clearpage
+%% Original page 33/34
+
+\subsubsection{Das Netz des Vertrauens}
+
+So entsteht -- auch über den Kreis von
+Gpg4win-Benutzern und Ihrer täglichen Korrespondenz hinaus -- ein "`Netz
 des Vertrauens"', bei dem Sie nicht mehr zwangsläufig darauf
-angewiesen sind, einen Schlüssel direkt zu prüfen.
+angewiesen sind, ein OpenPGP-Zertifikat direkt zu prüfen.
+\margin{\IncludeImage[width=1.5cm]{openpgp-icon}}
 
 \begin{center}
 \IncludeImage[width=0.9\textwidth]{key-with-sigs}
 \end{center}
 
-Natürlich steigt das Vertrauen in die Gültigkeit eines Schlüssels,
-wenn mehrere Leute ihn signieren. Ihr eigener öffentlicher Schlüssel
+Natürlich steigt das Vertrauen in die Gültigkeit eines Zertifikats,
+wenn mehrere Leute ihn signieren. Ihr eigenes OpenPGP-Zertifikat
 wird im Laufe der Zeit die Signatur vieler anderer GnuPG-Benutzer
-tragen. Damit können immer mehr Menschen darauf vertrauen, dass dieser
-öffentliche Schlüssel wirklich Ihnen und niemandem sonst gehört.
+tragen. Damit können immer mehr Menschen darauf vertrauen, dass dieses
+Zertifikat wirklich Ihnen und niemandem sonst gehört.
 
 Wenn man dieses "`Web of Trust"' weiterspinnt, entsteht eine flexible
 Beglaubigungs-Infra\-struktur.
 
-Eine einzige Möglichkeit ist denkbar, mit dem man diese
-Schlüsselprüfung aushebeln kann: jemand schiebt Ihnen einen falschen
-öffentlichen Schlüssel unter. Also einen Schlüssel, der vorgibt, von X
+Eine einzige Möglichkeit ist denkbar, mit dem man diese Zertifikatsprüfung 
+aushebeln kann: jemand schiebt Ihnen einen falsches
+Zertifikat unter. Also einen öffentlicher OpenPGP-Schlüssel, der vorgibt, von X
 zu stammen, in Wirklichkeit aber von Y ausgetauscht wurde.  Wenn ein
-solcher gefälschter Schlüssel signiert wird, hat das "`Netz des
+solches gefälschtes Zertifikat signiert wird, hat das "`Netz des
 Vertrauens"' natürlich ein Loch. Deshalb ist es so wichtig, sich zu
-vergewissern, ob ein öffentlicher Schlüssel, wirklich zu der Person
+vergewissern, ob ein Zertifikat, wirklich zu der Person
 gehört, der er zu gehören vorgibt.
 
 Was aber, wenn eine Bank oder Behörde überprüfen möchte, ob die
-Schlüssel ihrer Kunden echt sind? Alle anzurufen, kann hier sicher
+Zertifikate ihrer Kunden echt sind? Alle anzurufen, kann hier sicher
 nicht die Lösung sein\ldots
 
 
 \clearpage
 %% Original page 35
-\textbf{Zertifizierungsinstanzen}
+\subsubsection{Zertifizierungsinstanzen}
 
 Hier braucht man eine "`übergeordnete"' Instanz, der alle Benutzer
 vertrauen können.  Sie überprüfen ja auch nicht persönlich den
-Personalausweis eines Unbekannten durch einen Anruf beim
-Einwohnermeldeamt, sondern vertrauen darauf, dass die ausstellende
+Personalausweis eines Unbekannten durch einen Anruf beim Ein\-wohner\-melde\-amt,
+\margin{\IncludeImage[width=1.5cm]{openpgp-icon}}
+ sondern vertrauen darauf, dass die ausstellende
 Behörde diese Überprüfung korrekt durchgeführt und beglaubigt hat.
 
 Solche Zertifizierungsinstanzen gibt es auch bei der Public-Key
@@ -2752,15 +3061,18 @@ Verschlüsselung. In Deutschland bietet unter anderem z.B. die
 Zeitschrift c't schon lange einen solchen Dienst kostenlos an, ebenso
 wie viele Universitäten.
 
-Wenn man also einen öffentlichen Schlüssel erhält, dem eine
+Wenn man also ein OpenPGP-Zertifikat erhält, dem eine
 Zertifizierungsstelle per Signatur seine Echtheit bestätigt, kann man
 sich darauf verlassen.
 
+~\\
 Derartige Beglaubigungsinstanzen oder "`Trust Center"' sind auch bei
-anderen Verschlüsselungssystemen vorgesehen, allerdings sind sie
-hierarchisch strukturiert: es gibt eine "`Oberste
-Beglaubigungsinstanz"', die "`Unterinstanzen"' mit dem Recht zur
-Beglaubigung besitzt.
+anderen Verschlüsselungssystemen -- wie z.B. S/MIME  --
+\margin{\IncludeImage[width=1.5cm]{smime-icon}}
+vorgesehen.
+Allerdings sind sie hierarchisch strukturiert: Es gibt eine "`Oberste
+Beglaubigungsinstanz"', die weitere "`Unterinstanzen"' besitzt mit dem Recht
+diese Unterinstanzen zu beglaubigen (vgl. Abschnitt~\ref{ch:openpgpsmime}).
 
 Am besten ist diese Infrastruktur mit einem Siegel vergleichbar: die
 Plakette auf Ihrem Autonummernschild kann Ihnen nur eine dazu
@@ -2774,292 +3086,27 @@ Mit der hierarchischen Zertifizierungs-Infrastruktur entspricht dieses
 Modell natürlich wesentlich besser den Bedürfnissen staatlicher und
 behördlicher Instanzen als das lose, auf gegenseitigem Vertrauen
 beruhende "`Web of Trust"' der GnuPG- und PGP-Modelle. Der Kern der
-Beglaubigung selbst ist allerdings völlig identisch: wenn man in
-Gpg4win zusätzlich eine hierarchische Zertifizierungsstruktur einbauen
-würde, dann würde auch Gpg4win dem strengen Signaturgesetz der
-Bundesrepublik entsprechen.
+Beglaubigung selbst ist allerdings völlig identisch: Gpg4win
+unterstützt neben dem "`Web of Trust"' (OpenPGP) zusätzlich auch 
+eine hierarchische Zertifizierungsstruktur (S/MIME). Demnach
+entspricht Gpg4win dem strengen Signaturgesetz der
+Bundesrepublik Deutschland.
 
-Wenn Sie sich weiter für dieses Thema interessieren (das zum Zeitpunkt
-der Arbeit an dieser Gpg4win-Ausgabe gerade in Bewegung ist), dann
-können Sie sich an der Quelle informieren: die Website "`\xlink{Sicherheit im
-Internet}{http://www.sicherheit-im-internet.de}"' des Bundesministeriums für Wirtschaft und Technologie
-\T(\href{http://www.sicherheit-im-internet.de}{www.sicherheit-im-internet.de})
+Wenn Sie sich weiter für dieses Thema interessieren, dann
+können Sie sich an der Quelle informieren: die Website 
+"`\xlink{Sicherheit im Internet}{http://www.sicherheit-im-internet.de}"' 
+des Bundesministeriums für Wirtschaft und Technologie
+\T\linebreak(\href{http://www.sicherheit-im-internet.de}{www.sicherheit-im-internet.de})
 hält Sie über dieses und viele andere
 Themen aktuell auf dem Laufenden.
 
 Eine weitere exzellente, mehr technische Informationsquelle zum Thema
 der Beglaubigungsinfrastrukturen bietet das 
 \xlink{Original GnuPG Handbuch}{http://www.gnupg.org/gph/de/manual},
-das Sie ebenfalls im Internet finden
-\T(\href{http://www.gnupg.org/gph/de/manual}{www.gnupg.org/gph/de/manual})%
-.
-
-%%% .. bis hier FIXME
-
-\clearpage
-%% Original page 37
-\chapter{\Email{}s signieren}
-\label{ch:sign}
-
-Ganz am Anfang dieses Handbuchs haben wir die \Email{}-Kommunikation mit
-dem Versenden einer Postkarte verglichen. Erst die Verschlüsselung
-macht daraus einen Brief mit verschlossenem Umschlag, den nicht mehr
-jedermann lesen kann.
-
-Gpg4win bietet zusätzlich zur kompletten Verschlüsselung einer \Email{}
-noch eine weitere Möglichkeit:
-\begin{itemize}
-\item man kann seine \Email{} signieren, mit anderen Worten die \Email{}
-  mit einer elektronischen Unterschrift versehen. Der Text ist dann zwar noch
-  für jeden lesbar, aber der Empfänger kann sicher sein, dass die
-  \Email{} unterwegs nicht manipuliert oder verändert wurde.
-\end{itemize}
-
-Außerdem garantiert die Signatur dem Empfänger, dass die Nachricht
-auch tatsächlich vom Absender stammt. Und: wenn man mit jemandem
-korrespondiert, dessen öffentlichen Schlüssel man ­-- aus welchem
-Grund auch immer --- nicht hat, kann man so die Nachricht wenigstens
-mit dem eigenen privaten Schlüssel "`versiegeln"'.
-
-Verwechseln Sie diese elektronische Signatur nicht mit den
-\Email{}-"`Signaturen"', die man unter eine \Email{} setzt und die zum
-Beispiel Ihre Telefonnummer, Ihre Adresse und Ihre Webseite enthalten.
-
-Während diese \Email{}-Signaturen einfach nur als eine Art Visitenkarte
-fungieren, schützt die elektronische Signatur Ihre \Email{} vor
-Manipulationen und bestätigt den Absender.
-
-Übrigens ist diese elektronische Unterschrift auch nicht mit der
-qualifizierten digitalen Signatur gleichzusetzen, wie sie im
-Signaturgesetz vom 22.\,Mai 2001 in Kraft getreten ist. Für die
-private oder berufliche \Email{}-Kommunikation erfüllt sie allerdings
-genau denselben Zweck.
+das Sie ebenfalls im Internet finden\linebreak
+\T(\href{http://www.gnupg.org/gph/de/manual}{www.gnupg.org/gph/de/manual}).
 
 
-\clearpage
-%% Original page 38
-\section{Signieren mit dem Geheimschlüssel}
-
-Tatsächlich ist die Signierung einer \Email{} noch einfacher als die
-Verschlüsselung: Wie im "`Einsteiger-Handbuch"' im Kapitel 9, "`Sie
-verschlüsseln eine \Email{}"', besprochen, schreiben Sie Ihre Nachricht
-und kopieren sie mit dem Menübefehl "`Kopieren"' oder mit dem
-Tastaturkürzel Strg+C in die Zwischenablage (Clipboard) Ihres
-Rechners.
-
-Sie können nun entscheiden ob Sie eine völlig unverschlüsselte, eine
-signierte oder eine komplett verschlüsselte Mail versenden wollen ­--
-je nachdem, wie wichtig und schutzbedürftig der Inhalt ist.
-
-Dann öffnen Sie WinPT mit der rechten Maustaste aus der Windows-Taskbar
-und wählen im erscheinenden WinPT Menü
-\Menu{Zwischenablage$\rightarrow$Signieren} aus.  Anders als beim
-Verschlüsseln öffnet sich daraufhin ein Fenster mit Ihrem eigenen
-Schlüssel. Denn:
-
-\textbf{Signieren können Sie nur mit Ihrem eigenen geheimen Schlüssel.}
-
-Logisch, denn nur Ihr eigener Schlüssel bestätigt Ihre Identität. Der
-Korrespondenzpartner kann nun mit Ihrem öffentlichen Schlüssel, den er
-bereits hat oder sich besorgen kann, Ihre Identität überprüfen.  Denn
-nur Ihr Geheimschlüssel passt ja zu Ihrem öffentlichen Schlüssel.
-
-Klicken Sie also auf Ihren eigenen Schlüssel und bestätigen Sie mit
-\Button{OK}. Im folgenden Fenster geben Sie Ihre geheime
-Passphrase ein und bestätigen Sie wieder mit \Button{OK}. Ein
-kurzer Hinweis erscheint sobald der Text signiert ist. Jetzt müssen
-Sie Ihren signierten Text nur noch in Ihr \Email{}- oder Textprogramm
-einfügen (Im WindowsMenü "`Einfügen"' oder einfach Strg+V).
-
-% screenshot: WinPT signing - enter passphrase
-\begin{center}
-\IncludeImage{sc-winpt-sign-passwd}
-\end{center}
-
-\clearpage
-%% Original page 39
-Ihre Nachricht ist nun am Anfang und Ende von einer Signatur
-eingerahmt:
-
-\begin{verbatim}
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
-
-Werte Adele,
-
-Wenn ich in deine Augen seh,
-So schwindet all mein Leid und Weh;
-Doch wenn ich küsse deinen Mund,
-So werd ich ganz und gar gesund.
-
-    Harry
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.3-cvs (MingW32)
-
-iD8DBQFD36LVVyUTMs2Gh/YRAn2sAJ4wH2h8g+rFyxXQSsuYzZWzYMKTdgCeK0sK
-CEL3//4INzHUNA/eqR3XMi0=
-=tiQ5
------END PGP SIGNATURE-----
-\end{verbatim}
-
-Wenn Frau Adele diese \Email{}
-erhält, kann sie sicher sein,
-\begin{enumerate}
-\item dass die Nachricht von Herrn Heine stammt
-\item dass sie nicht verändert wurde
-\end{enumerate}
-
-Hätte zum Beispiel jemand das "`gesund"' in dem obigen Beispiel zu
-"`krank"' verändert, wäre die Signatur "`gebrochen"', dass heißt, die
-\Email{} wäre mit dem Vermerk "`Bad signature"' oder "`Überprüfung
-fehlgeschlagen"' beim Empfänger versehen, sobald die Signatur
-überprüft wird.
-
-\clearpage
-%% Original page 40
-\section{Andere Gründe für eine gebrochene Signatur}
-
-Es gibt aber noch zwei weitere Gründe, die zu einem Bruch der Signatur
-führen können. Wenn Sie eine \Email{} mit dem Vermerk "`Bad signature"'
-oder "`Überprüfung fehlgeschlagen"' erhalten, ist das ein Warnsignal,
-muss aber nicht zwangsläufig bedeuten, dass Ihre \Email{} manipuliert
-wurde.
-
-\begin{enumerate}
-\item aufgrund der technischen Gegebenheiten ist es nicht
-  auszuschließen, dass die \Email{} durch eine fehlerhafte Übertragung
-  über das Internet verändert wurde.
-\item das \Email{}-Programm des Absenders oder Empfängers kann falsch eingestellt sein.
-  Wenn man eine signierte \Email{} verschickt, sollte man unbedingt
-  darauf achten, dass im \Email{}-Programm alle Optionen ausgeschaltet
-  sind, die \Email{} schon beim Versand verändern. Dazu zählt
-  "`HTML-Mails"' und "`Word Wrap"'.
-
-  "`Word Wrap"' bezeichnet den Umbruch von Zeilen in der \Email{}. Beides
-  verändert natürlich die \Email{} und "`bricht"' die Signatur, obwohl
-  niemand sie willentlich verändert hat.  Bei Outlook Express
-  beispielsweise muss diese Option unter "`Extras / Optionen / Senden /
-  NurText-Einstellungen / Textkodierung mit Keine"' aktiviert sein,
-  wie es auch standardmäßig voreingestellt ist.
-\end{enumerate}
-   
-Häufig ist sind falsche Einstellungen am \Email{}-Programm der Grund für
-eine gebrochene Signatur.  In beiden Fällen sollte man die \Email{}
-erneut anfordern.
-
-
-\clearpage
-%% Original page 41
-\section{Dateien signieren}
-
-Nicht nur \Email{}s, auch Dateien --­ z.B. ein PDF-Dokument --- kann
-man signieren, bevor man sie per \Email{} verschickt oder per Diskette
-weitergibt. Auch dabei kommt es nicht vorrangig auf die Geheimhaltung,
-sondern auf die Unverändertheit der Datei an.  
-
-Diese Funktion können Sie bequem mit GPGee aus dem Kontextmenü des
-Explorers ausführen.  Dazu öffnen Sie dessen Menü mit der rechten
-Maustaste:
-
-% screenshot GPGee contextmenu
-\begin{center}
-\IncludeImage{sc-gpgee-ctxmenu}
-\end{center}
-
-Dort wählen Sie \Menu{signieren} aus, woraufhin das folgende Fenster
-erscheint:
-
-\begin{center}
-\IncludeImage{sc-gpgee-signmenu}
-\end{center}
-
-Sie sehen in der Mitte eine Möglichkeit den Signaturschlüssel
-auszuwählen --- nutzen Sie dies, falls Sie mit einem anderen als
-Ihrem Standardschlüssel signieren möchten.
-
-Die drei Rahmen im unter Teil steuern die Signatur/Verschlüsselungs-Funktion;
-die Vorgaben sind in
-den meisten Fällen richtig.  Die linke untere Box, steuert die
-Verschlüsselung.  Da Sie lediglich signieren möchten ist hier
-"`Keine"' ausgewählt.
-
-In der mittleren Box können Sie die Art der Signatur wählen. Sie
-verwenden hier am besten eine "`abgetrennte"' Signatur; dies bedeutet,
-dass die zu signierende Datei unverändert bleibt und eine zweite Datei
-mit der eigentlichen Signatur erzeugt wird.  Um die Signatur später zu
-überprüfen sind dann beide Dateien notwendig.
-
-In der rechten Box finden Sie noch weitere Optionen.  "`Textausgabe"'
-ist dort vorgegeben.  Dies erzeugt eine abgetrennte Signaturdatei mit
-einem Dateinamen der auf "`.asc"' endet und die direkt mit jedem
-Texteditor lesbar ist --- sie würden dort den Buchstaben- und
-Ziffernsalat sehen, den Sie bereits kennen.  Wenn diese Option nicht
-ausgewählt ist, so wird eine Datei mit der Endung "`.sig"' erzeugt,
-die dann nicht direkt lesbar ist (binäre Datei).  Was Sie hier
-benutzen ist eigentlich gleichgültig; Gpg4win kommt mit beiden Arten
-klar.
-
-Zum Überprüfen der Unverändertheit und der Authentizität
-müssen die Original- und die signierte Datei im selben
-Verzeichnis liegen.  Man öffnet die signierte Datei --- also die mit der
-Endung "`.sig"' oder "`.asc"' --- wieder aus dem Kontextmenü des Explorers
-mit \Menu{GPGee$\rightarrow$Überprüfen/Entschlüsseln }.
-
-Daraufhin erhalten Sie eine Ausgabe, ob die Signatur gültig ist ---
-also die Datei nicht verändert wurde.  Selbst wenn nur ein Zeichen
-hinzugefügt, gelöscht oder geändert wurde, wird die Signatur als
-ungültig angezeigt.
-
-\clearpage
-%% Original page 42
-\section{Verschlüsseln und signieren}
-
-Normalerweise verschlüsselt man eine Nachricht mit dem öffentlichen
-Schlüssel des Korrespondenzpartners, der ihn mit seinem privaten
-Schlüssel entschlüsselt.
-
-Die umgekehrte Möglichkeit ­-- man würde mit dem privaten Schlüssel
-verschlüsseln ---, ist technisch nicht möglich und macht keinen Sinn,
-weil alle Welt den dazugehörigen öffentlichen Schlüssel kennt und die
-Nachricht damit entschlüsseln könnte.
-
-Es gibt aber ein anderes Verfahren um mit Ihrem geheimen Schlüssel
-eine Datei zu erzeugen: Die Signatur, wie wir sie oben bereits
-beschrieben haben.  Solch eine digitale Signatur bestätigt eindeutig
-die Urheberschaft --­ denn wenn jemand Ihren öffentlichen Schlüssel
-auf diese Datei (die Signatur) anwendet und die Ausgabe dieser Prüfung
-ist "`gültig"', so kann diese Datei nur von Ihrem privaten Schlüssel
-kodiert worden sein.  Und zu dem dürfen ja nur Sie selbst Zugang
-haben.
-
-Wenn man ganz sicher gehen will, kann man beide Möglichkeiten
-kombinieren, also die \Email{} verschlüsseln und signieren:
-
-\begin{enumerate}
-\item Man signiert die Botschaft mit seinem eigenen geheimen
-  Schlüssel. Damit ist die Urheberschaft nachweisbar.
-\item dann verschlüsselt man den Text mit dem öffentlichen Schlüssel
-  des Korrespondenzpartners.
-\end{enumerate}
-
-Damit hat die Botschaft sozusagen zwei Briefumschläge:
-
-\begin{enumerate}
-\item einen Innenumschlag der mit einem Siegel verschlossen ist (die
-  Signatur mit dem eigenen privaten Schlüssel) und
-\item einen soliden äußeren Umschlag (die Verschlüsselung mit dem
-  öffentlichen Schlüssel des Korrespondenzpartners).
-\end{enumerate}
-
-Der Briefpartner öffnet die äußere, starke Hülle mit seinem eigenen
-geheimen Schlüssel.  Hiermit ist die Geheimhaltung gewährleistet, denn
-nur dieser Schlüssel kann den Text dekodieren. Die innere, versiegelte
-Hülle öffnet er mit Ihrem öffentlichen Schlüssel und hat den Beweis
-Ihrer Urheberschaft, denn wenn Ihr öffentlicher Schlüssel passt, kann
-er nur mit Ihrem Geheimschlüssel kodiert worden sein.
-
-Sehr trickreich und ­-- wenn man ein wenig darüber nachdenkt --­ auch
-ganz einfach.
 
 \clearpage
 %% Original page 43
@@ -3096,7 +3143,7 @@ verschlüsselte Datei wie jede andere als Attachment an eine \Email{}
 angehängt werden.
 
 Viele Mailprogramme unterstützten das PGP/MIME Format, welches
-automatisch die Mail samt Anhängen verschlüsselt --- in diesem Fall
+automatisch die Mail samt Anhängen verschlüsselt -- in diesem Fall
 sollte das hier beschrieben Verfahren nicht angewandt werden.  Einige
 anderer Mailprogramme verfügen über eine Option die das oben
 beschrieben Verfahren automatisch durchführen.
@@ -3107,6 +3154,69 @@ beschrieben Verfahren automatisch durchführen.
 
 Dieser Abschnitt ist noch nicht ausformuliert.
 Er wird die Anwendung von GpgEX beschreiben.
+
+\clearpage
+%% Original page 41
+\section{Dateien signieren}
+
+Nicht nur \Email{}s, auch Dateien --­ z.B. ein PDF-Dokument -- kann
+man signieren, bevor man sie per \Email{} verschickt oder per
+USB-Stick weitergibt. Auch dabei kommt es nicht vorrangig auf die
+Geheimhaltung, sondern auf die Unverändertheit der Datei an.
+
+Diese Funktion können Sie bequem mit \textbf{GpgEX} aus dem Kontextmenü des
+Windows Explorers ausführen. Dazu öffnen Sie dessen Menü mit der rechten
+Maustaste:
+
+% TODO screenshot GpgEX contextmenu
+\begin{center}
+\IncludeImage{sc-gpgee-ctxmenu}
+\end{center}
+
+Dort wählen Sie \Menu{signieren} aus, woraufhin das folgende Fenster
+erscheint:
+
+%TODO screenshot GpgEX sign/encrypt file
+\begin{center}
+\IncludeImage{sc-gpgee-signmenu}
+\end{center}
+
+Sie sehen in der Mitte eine Möglichkeit den Signaturschlüssel
+auszuwählen -- nutzen Sie dies, falls Sie mit einem anderen als
+Ihrem Standardschlüssel signieren möchten.
+
+Die drei Rahmen im unter Teil steuern die Signatur/Verschlüsselungs-Funktion;
+die Vorgaben sind in
+den meisten Fällen richtig.  Die linke untere Box, steuert die
+Verschlüsselung.  Da Sie lediglich signieren möchten ist hier
+"`Keine"' ausgewählt.
+
+In der mittleren Box können Sie die Art der Signatur wählen. Sie
+verwenden hier am besten eine "`abgetrennte"' Signatur; dies bedeutet,
+dass die zu signierende Datei unverändert bleibt und eine zweite Datei
+mit der eigentlichen Signatur erzeugt wird.  Um die Signatur später zu
+überprüfen sind dann beide Dateien notwendig.
+
+In der rechten Box finden Sie noch weitere Optionen.  "`Textausgabe"'
+ist dort vorgegeben.  Dies erzeugt eine abgetrennte Signaturdatei mit
+einem Dateinamen der auf "`.asc"' endet und die direkt mit jedem
+Texteditor lesbar ist -- sie würden dort den Buchstaben- und
+Ziffernsalat sehen, den Sie bereits kennen.  Wenn diese Option nicht
+ausgewählt ist, so wird eine Datei mit der Endung "`.sig"' erzeugt,
+die dann nicht direkt lesbar ist (binäre Datei).  Was Sie hier
+benutzen ist eigentlich gleichgültig; Gpg4win kommt mit beiden Arten
+klar.
+
+Zum Überprüfen der Unverändertheit und der Authentizität
+müssen die Original- und die signierte Datei im selben
+Verzeichnis liegen.  Man öffnet die signierte Datei -- also die mit der
+Endung "`.sig"' oder "`.asc"' -- wieder aus dem Kontextmenü des Explorers
+mit \Menu{GPGee$\rightarrow$Überprüfen/Entschlüsseln }.
+
+Daraufhin erhalten Sie eine Ausgabe, ob die Signatur gültig ist --
+also die Datei nicht verändert wurde.  Selbst wenn nur ein Zeichen
+hinzugefügt, gelöscht oder geändert wurde, wird die Signatur als
+ungültig angezeigt.
 
 
 \clearpage
@@ -3160,7 +3270,7 @@ Gründen nicht unterstützt werden.  Um das Problem zu beheben,
 exportieren/importieren Sie den Schlüssel erneut.  Sollte dies auch
 nicht funktionieren, so setzen Sie die Passphrase in PGP auf
 "`leer"'; d.h. auf keinen Schutz und exportieren/importieren Sie wieder
---- In diesem Fall müssen Sie unbedingt sicherstellen, sowohl die
+-- In diesem Fall müssen Sie unbedingt sicherstellen, sowohl die
 \textbf{Datei sicher zu löschen als auch in PGP und in Gpg4win danach wieder
   eine echte Passphrase zu setzen.}
 
@@ -3551,7 +3661,7 @@ Implementierung der Programme frei von Fehlern ist.
 
 In der Realität sind genau solche Fehler in den Programmen, Fehler im
 Betriebssystem oder nicht zuletzt Fehler in der Benutzung der letzte Weg um
-doch noch an die geheimen Informationen zu gelangen --- Auch deshalb sollte
+doch noch an die geheimen Informationen zu gelangen -- Auch deshalb sollte
 Sie diese Handbücher bis hierhin gelesen haben.
 
 In jedem Beispiel dieses Handbuchs haben Sie gesehen, dass zwischen dem
@@ -3613,7 +3723,7 @@ angewandten Kryptographie.
 
 Im Folgenden erfahren Sie, wie diese mathematische Methode funktioniert. Nicht
 in allen Einzelheiten ­-- das würde den Rahmen dieser Anleitung bei
-weitem sprengen ---, aber doch so, dass Sie bei etwas Mitrechnen selbst
+weitem sprengen --, aber doch so, dass Sie bei etwas Mitrechnen selbst
 mathematisch korrekt ver- und entschlüsseln können und dabei das
 "`Geheimnis der großen Zahlen"' entdecken.
 
@@ -3652,8 +3762,8 @@ nennt man den "`Modul"' oder die "`Modulzahl"'. Wenn wir
 beispielsweise mit dem Teiler oder der Modulzahl 5 rechnen,
 sagen wir auch, "`wir rechnen modulo 5"'.
 
-Wie das Rechnen mit Restklassen --- auch Modulo-Arithmetik oder
-Kongruenzrechnung genannt --- funktioniert, kann man sich gut
+Wie das Rechnen mit Restklassen -- auch Modulo-Arithmetik oder
+Kongruenzrechnung genannt -- funktioniert, kann man sich gut
 klarmachen, wenn man sich das Zifferblattes einer Uhr vorstellt:
 
 \begin{center}
@@ -3661,7 +3771,7 @@ klarmachen, wenn man sich das Zifferblattes einer Uhr vorstellt:
 \end{center}
 
 Diese Uhr ist ein Beispiel für das Rechnen mit modulo 12 (der Teiler
-ist also 12) --- eine Uhr mit einem normalen Zifferblatt, allerdings
+ist also 12) -- eine Uhr mit einem normalen Zifferblatt, allerdings
 mit einer 0 anstelle der 12. Wir können damit Modulo-Arithmetik
 betreiben, indem wir einfach den gedachten Zeiger bewegen.
 
@@ -3684,7 +3794,7 @@ Beim Rechnen mit Restklassen addieren und teilen wir Zahlen also nach
 den normalen Regeln der Alltagsarithmetik, verwenden dabei jedoch
 immer nur den Rest nach der Teilung. Um anzuzeigen, dass wir nach den
 Regeln der Modulo-Arithmetik und nicht nach denen der üblichen
-Arithmetik rechnen, schreibt man den Modul (Sie wissen schon --- den
+Arithmetik rechnen, schreibt man den Modul (Sie wissen schon -- den
 Teiler) dazu. Man sagt dann zum Beispiel "`4 modulo 5"',
 schreibt aber kurz "`$4 \bmod 5$"'. 
 
@@ -3812,7 +3922,7 @@ nur den öffentlichen Schlüssel ($n$ und $e$).
 Die Trick des RSA Algorithmus liegt nun darin, dass es unmöglich ist,
 aus dem öffentlichen Schlüsselteil ($n$ und $e$) den geheimen
 Schlüsselteil ($d$) zu errechnen und damit die Botschaft zu
-entschlüsseln --- denn: Nur wer im Besitz von $d$ ist, kann die
+entschlüsseln -- denn: Nur wer im Besitz von $d$ ist, kann die
 Botschaft entschlüsseln.
 
 
@@ -3825,7 +3935,7 @@ zu machen, wie die Methode funktioniert. In der Praxis verwendet
 man jedoch viel größere Primzahlen, die aus ­zig Ziffern bestehen.
 
 Nehmen wir die Primzahlen 7 und 11. Damit verschlüsseln wir
-Zahlen ­-- oder Buchstaben, was für den Computer dasselbe ist ---
+Zahlen ­-- oder Buchstaben, was für den Computer dasselbe ist --
 nach dem RSA Algorithmus.
 
 Und zwar erzeugen wir zunächst den öffentlichen Schlüssel
@@ -3994,7 +4104,7 @@ Man muss die Primzahlen also nur groß genug wählen, damit ihre
 Berechnung aus dem Produkt so lange dauert, dass alle bekannten
 Methoden daran in der Praxis scheitern.  Außerdem nimmt der Anteil der
 Zahlen, die in sich selbst transformiert werden --­ wie wir sie oben
-in den Tabellen 1 und 2 gefunden haben --- stetig ab, je größer die
+in den Tabellen 1 und 2 gefunden haben -- stetig ab, je größer die
 Primzahlen werden.  Von Primzahlen in der Grössenordnung, die wir in der
 Praxis bei der Verschlüsselung verwenden, ist dieser Teil ist so
 klein, dass der RSA Algorithmus davon in keiner Weise beeinträchtigt
@@ -4131,8 +4241,8 @@ Die Zahl $10101_2$ zum Beispiel bedeutet im Binärsystem
 
 In der Computerei verwendet man auch Gruppen von acht Binärziffern,
 das wohlbekannte Byte. Ein Byte kann Werte zwischen 0 - dargestellt
-als Byte $00000000_2$ --- und 255 --- dargestellt als Byte
-$11111111_2$ --- annehmen. Ein Byte stellt also Zahlen zur Basis 256
+als Byte $00000000_2$ -- und 255 -- dargestellt als Byte
+$11111111_2$ -- annehmen. Ein Byte stellt also Zahlen zur Basis 256
 dar.
 
 Zwei weitere Beispiele:
@@ -4181,7 +4291,7 @@ Da die folgende Prozedur mehrere Schritte umfaßt, fassen wir
 sie zunächst zusammen und verfolgen dann die Einzelschritte:
 
 \begin{enumerate}
-\item Die Nachricht \emph{aba, cad, ada} wandeln wir --- wie gesehen --- in
+\item Die Nachricht \emph{aba, cad, ada} wandeln wir -- wie gesehen -- in
   Zahlen um.
 \item Diese Darstellung zur Basis 4 wandeln wir in eine Darstellung
   zur Basis 10 um, damit wir zur Verschlüsselung die Tabelle 1
@@ -4203,11 +4313,11 @@ sie zunächst zusammen und verfolgen dann die Einzelschritte:
 
 Und nun ausführlich:
 
-1. Die Nachricht \emph{aba, cad, ada} wandeln wir --- wie gesehen ---
+1. Die Nachricht \emph{aba, cad, ada} wandeln wir -- wie gesehen --
 in Zahlen um.
 
 Angenommen, wir beschränken uns bei den Nachrichten auf die 4
-Buchstaben a, b, c und d. In diesem --- wirklich sehr einfachen ---
+Buchstaben a, b, c und d. In diesem -- wirklich sehr einfachen --
 Beispiel können wir die vier Buchstaben durch die Zahlenwerte 0, 1, 2
 und 3 darstellen, und haben dann
 
@@ -4291,7 +4401,7 @@ Verwendung des geheimen Schlüssels (d.h.  erst Tabelle 2 benutzen)
 verschlüsseln, dann mit dem öffentlichen Schlüssel (d.h. Tabelle 1 als
 zweites benutzen) dekodieren und damit unsere ursprüngliche Zahl
 wieder herstellen. Das bedeutet --­ wie wir bereits im Handbuch
-"`Gpg4win für Einsteiger"' gesehen haben ---, dass der Inhaber des geheimen
+"`Gpg4win für Einsteiger"' gesehen haben --, dass der Inhaber des geheimen
 Schlüssels damit Nachrichten unter Verwendung des RSA Algorithmus
 verschlüsseln kann.  Damit ist bewiesen, dass sie eindeutig nur von
 ihm stammen können.
@@ -4443,7 +4553,7 @@ Bildschirmausdruck entsprechen:
   Verschlüsselung.  Outlook hat jedoch seit langem einen Fehler, der
   verhindert, dass diese Operation abgebrochen werden kann.  Als
   Gegenmaßnahme können Sie Outlook so konfigurieren, dass erstellte
-  Nachrichten nicht sofort versendet werden --- das gibt Ihnen die
+  Nachrichten nicht sofort versendet werden -- das gibt Ihnen die
   Möglichkeit die Nachricht noch nachträglich zu löschen.  Aus
   Sicherheitsgründen versucht GpgOL den Inhalt der Nachricht zu
   löschen wenn die Verschlüsselung abgebrochen wurde.  Dies ist
