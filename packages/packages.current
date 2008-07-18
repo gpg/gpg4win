@@ -381,10 +381,10 @@ server ftp://ftp.intevation.de/gpg4win
 file kdelibs-20080718-bin.zip
 chk  e5272ca1ed1f58ca0726bb9221a4424d23f11451
 
-file kdelibs-20080716-lib.zip
+file kdelibs-20080718-lib.zip
 chk  b51bb9593beb4bff00b9539b538aeb20a80af720
 
-file kdelibs-20080716-src.zip
+file kdelibs-20080718-src.zip
 chk  5119f967cc373c723ec0ec83251067484f6f83eb
 
 # Kleopatra
