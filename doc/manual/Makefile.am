@@ -46,7 +46,6 @@ png_files = \
 		sc-ol-sendNewX509Certificate_de.png\
 		sc-ol-adele-sendOpenpgpKey-inline_de.png\
 		sc-ol-adele-sendOpenpgpKey-attachment_de.png\
-		sc-wordpad-editOpenpgpKey_de.png\
 		sc-inst-welcome.png sc-inst-license.png \
 		sc-inst-components.png sc-inst-directory.png \
 		sc-inst-options.png \

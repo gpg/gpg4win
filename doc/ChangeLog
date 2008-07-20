@@ -1,3 +1,11 @@
+2008-07-21  Marcus Brinkmann  <marcus@ulysses.g10code.com>
+
+	* manual/gpg4win-compendium-de.tex (subsubsection{Exportieren
+	Ihres OpenPGP-Zertifikats}): Uncomment use of
+	sc-wordpad-editOpenpgpKey_de.png.
+	* manual/Makefile.am (png_files): Remove
+	sc-wordpad-editOpenpgpKey_de.png for now.
+
 2008-07-16  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 	
 	* manual/gpg4win-compendium-de.tex, manual/Makefile.am:
