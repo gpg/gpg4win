@@ -74,7 +74,6 @@ Eine Veröffentlichung des Gpg4win Projekts\\
 
 
 \section*{Impressum}
-
 \noindent
 Copyright \copyright{} 2002 Bundesministerium für Wirtschaft und
 Technologie\footnote{Wenn dieses Dokument kopiert, verteilt und/oder
@@ -249,6 +248,99 @@ zum Schutz des Internets finden Sie auf der Website
 \T\href{http://www.bsi-fuer-buerger.de}{www.bsi-fuer-buerger.de}
 des Bundesamtes für Sicherheit in der Informationstechnik.
 
+
+\clearpage
+%% Original page 6
+\chapter{Warum überhaupt verschlüsseln?}
+\label{ch:why}
+
+Die Verschlüsselung von Nachrichten wird manchmal als das zweitälteste
+Gewerbe der Welt bezeichnet. Verschlüsselungstechniken benutzten schon
+der Pharao Khnumhotep II, Herodot und Cäsar.  Dank Gpg4win ist
+Verschlüsselung nunmehr für jedermann frei und kostenlos
+zugänglich\ldots
+
+\begin{center}
+\IncludeImage[width=0.9\textwidth]{egyptian-stone}
+\end{center}
+
+Die Computertechnik hat uns phantastische Mittel in die Hand gegeben,
+um rund um den Globus miteinander zu kommunizieren und uns zu
+informieren. Aber Rechte und Freiheiten, die in anderen
+Kommunikationsformen längst selbstverständlich sind, müssen wir uns in
+den neuen Technologien erst sichern. Das Internet ist so schnell und
+massiv über uns hereingebrochen, dass wir mit der Wahrung unserer Rechte
+noch nicht so recht nachgekommen sind.
+
+
+Beim altmodischen Briefschreiben haben wir die Inhalte unserer
+Mitteilungen ganz selbstverständlich mit einem Briefumschlag
+geschützt. Der Umschlag schützt die Nachrichten vor fremden Blicken,
+eine Manipulation am Umschlag kann man leicht bemerken. Nur wenn etwas
+nicht ganz so wichtig ist, schreibt man es auf eine ungeschützte
+Postkarte, die auch der Briefträger oder andere lesen können.
+
+
+\clearpage
+%% Original page 7
+
+Ob die Nachricht wichtig, vertraulich oder geheim ist, das bestimmt
+man selbst und niemand sonst.
+
+Diese Entscheidungsfreiheit haben wir bei \Email{} nicht. Eine normale
+\Email{} ist immer offen wie eine Postkarte, und der elektronische
+"`Briefträger"' -- und andere -- können sie immer lesen. Die Sache
+ist sogar noch schlimmer: die Computertechnik bietet nicht nur die
+Möglichkeiten, die vielen Millionen \Email{}s täglich zu befördern und
+zu verteilen, sondern auch, sie zu kontrollieren.
+
+Niemand hätte je ernsthaft daran gedacht, alle Briefe und Postkarten zu
+sammeln, ihren Inhalt auszuwerten oder Absender und Empfänger zu
+protokollieren. Das wäre einfach nicht machbar gewesen, oder es hätte
+zu lange gedauert. Mit der modernen Computertechnik ist das technisch
+möglich. Es gibt mehr als einen Hinweis darauf, dass dies genau heute
+schon im großen Stil mit Ihrer und meiner \Email{}
+geschieht.\footnote{Hier sei nur an das \xlink{Echelon
+    System}{\EchelonUrl} erinnert%
+\T; siehe \href{\EchelonUrl}{\EchelonUrl}%
+.}.
+
+Denn: der Umschlag fehlt.
+
+\begin{center}
+\IncludeImage[width=0.3\textwidth]{sealed-envelope}
+\end{center}
+
+\clearpage
+%% Original page 8
+
+Was wir Ihnen hier vorschlagen, ist ein Umschlag für Ihre
+elektronischen Briefe. Ob Sie ihn benutzen, wann, für wen und wie oft,
+ist ganz allein Ihre Sache. Software wie Gpg4win gibt Ihnen lediglich
+die Wahlfreiheit zurück. Die Wahl, ob Sie persönlich eine Nachricht
+für wichtig und schützenswert halten oder nicht.
+
+Das ist der Kern des Rechts auf Brief-, Post- und Fernmeldegeheimnis
+im Grundgesetz, und dieses Recht können Sie mit Hilfe der Software
+Gpg4win wahrnehmen. Sie müssen sie nicht benutzen -- Sie müssen ja auch
+keinen Briefumschlag benutzen. Aber es ist Ihr gutes Recht.
+
+Um dieses Recht zu sichern, bietet Gpg4win Ihnen sogenannte "`starke
+Verschlüsselungstechnik"'. "`Stark"' bedeutet hier: mit keinem
+gegenwärtigen Mittel zu knacken. In vielen Ländern waren starke
+Verschlüsselungsmethoden bis vor ein paar Jahren den Militärs und
+Regierungsbehörden vorbehalten. Das Recht, sie für jeden Bürger
+nutzbar zu machen, haben sich die Internetnutzer mühsam erobert;
+manchmal auch mit der Hilfe von klugen und weitsichtigen Menschen in
+Regierungsinstitutionen, wie im Falle der Portierung von GnuPG auf
+Windows.  GnuPG wird von Sicherheitsexperten in aller Welt als eine
+praktikable und sichere Software angesehen.
+
+Wie wertvoll diese Sicherheit für Sie ist, liegt ganz in Ihrer Hand,
+denn Sie allein bestimmen das Verhältnis zwischen Bequemlichkeit bei
+der Verschlüsselung und größtmöglicher Sicherheit.  Dazu gehören die
+wenigen, aber umso wichtigeren Vorkehrungen, die Sie treffen müssen,
+und die wir im Folgenden besprechen:
 
 
 \clearpage
@@ -1164,9 +1256,9 @@ Texteditor so, wie es wirklich aussieht -- ein ziemlich wirrer Text-
 und Zahlenblock:
 
 % screenshot: Editor mit ascii armored key
-%\begin{center}
-%\IncludeImage[width=0.6\textwidth]{sc-wordpad-editOpenpgpKey_de}
-%\end{center}
+\begin{center}
+\IncludeImage[width=0.6\textwidth]{sc-wordpad-editOpenpgpKey_de}
+\end{center}
 
 
 \clearpage
@@ -1650,7 +1742,7 @@ Sie danach an dieser Stelle fortfahren.}
 
 Jetzt wird es noch einmal spannend: Wir versenden eine verschlüsselte \Email{}!
 
-Starten brauchen dazu Outlook, Kleopatra und natürlich ein Zertifikat
+Sie brauchen dazu Outlook, Kleopatra und natürlich ein Zertifikat
 Ihres Korrespondenzpartners.
 
 Die Schritte zum Verschlüsseln unterscheiden sich für OpenPGP und
@@ -1673,22 +1765,12 @@ haben, dann adressieren Sie Ihre \Email{} eben an diesen.
 
 Schreiben Sie eine Nachricht -- es ist egal, was: Adele kann nicht wirklich lesen$\ldots$
 
-Wählen Sie im Menü des geöffneten Nachrichtenfensters
-\Menu{Extras$\rightarrow$GnuPG Protokoll$\rightarrow$PGP/MIME} aus.
+Bestimmen Sie OpenPGP als Zertifikatstyp: Klicken Sie dazu im Menü des geöffneten 
+Outlook-Nachrichtenfensters auf \Menu{Extras$\rightarrow$GnuPG Protokoll$\rightarrow$PGP/MIME}.
 
-Sofern Sie die Auswahl auf \textit{automatisch} lassen, haben Sie
-später noch die Möglichkeit zwischen PGP/MIME und S/MIME zu wählen.
-
-Haben Sie ein bevorzugtes GnuPG-Protokoll? Dann können Sie unter den
-den GpgOL-Optionen
-(\Menu{Extras$\rightarrow$Optionen$\rightarrow$GpgOL}) 
-PGP/MIME oder S/MIME als Voreinstellung definieren.
-Nach der Installation von Gpg4win ist PGP/MIME hier aktiviert und
-S/MIME deaktiviert.
-
-Geben Sie nun an, dass Sie Ihre Nachricht verschlüsselt senden wollen:
-Wählen Sie \Menu{Extras$\rightarrow$Nachrichten mit GnuPG
-verschlüsseln}. Die Schaltfläche mit dem gelb/roten Icon in der
+Jetzt fehlt nur noch die Angabe, dass Sie Ihre Nachricht verschlüsselt senden wollen:
+Wählen Sie \Menu{Extras$\rightarrow$Nachrichten mit GnuPG verschlüsseln}. 
+Die Schaltfläche mit dem gelb/roten Icon in der
 Symbolleiste ist aktiviert (Sie können auch gleich direkt auf diese
 Schaltfläche klicken):
 
@@ -1696,25 +1778,39 @@ Schaltfläche klicken):
 \begin{center}
 \IncludeImage[width=0.9\textwidth]{sc-ol-send-enc-msg1}
 \end{center}
-Um Ihre Nachricht doch unverschlüsselt zu
-senden, deaktivieren Sie mit einem erneuten Klick die
-Verschlüsselungsoption.
+Um die Verschlüsselungsoption wieder zu deaktivieren genügt ein
+erneuter Klick auf die o.g. Schaltfläche.
 
 Klicken Sie nun auf \Button{Senden}.
 
 \clearpage
-Daraufhin öffnet sich ein Fenster mit den Zertifikaten, die Sie in
-Ihrere Zertifikatsverwaltung haben. 
-In unserem Beispiel sind das Adeles OpenPGP-Zertifikat und 
-Ihr eigenes OpenPGP-Zertifikat.
+Daraufhin öffnet Kleopatra ein Fenster, in dem Sie das Zertifikat des
+Empfängers angeben. Kleopatra wählt -- abhängig von der
+Empfänger-\Email{}-Adresse -- in der Regel das passende Zertifikat
+aus.
 
 % TODO screenshot: kleopatra encryption dialog - certificate selection
 % (with Adele + my own certificate)
 \begin{center}
-\IncludeImage[width=0.7\textwidth]{sc-winpt-sel-enc-key}
+\IncludeImage[width=0.7\textwidth]{sc-kleopatra-openpgp-encryptDialog_de}
 \end{center}
 
-Klicken Sie auf Adeles Zertifikat, denn damit muss die Nachricht ja
+Sollten zu einer \Email{}-Adresse mehrere Zertifikate existieren
+oder Sie bewusst ein anderes Zertifikat auswählen wollen, klicken Sie
+auf den \Button{...}-Button neben der Drop-Down-Liste.
+
+Sie bekommen ein Kleopatra-Dialog, der Ihnen alle OpenPGP-Zertifikate
+auflistet, die in Ihrer Zertifikatsverwaltung existieren (und von
+Ihnen importiert wurden).
+In unserem Beispiel sind das Adeles OpenPGP-Zertifikat und 
+Ihr eigenes OpenPGP-Zertifikat.
+
+% TODO screenshot: kleopatra encryption dialog 2 - openpgp certificate list
+\begin{center}
+\IncludeImage[width=0.7\textwidth]{sc-kleopatra-openpgp-encryptDialog_de}
+\end{center}
+
+Wählen Sie Adeles OpenPGP-Zertifikat aus, denn damit muss Ihre Nachricht ja
 verschlüsselt werden.
 
 Sie erinnern sich an den Grundsatz:
@@ -1724,12 +1820,18 @@ Sie erinnern sich an den Grundsatz:
   müssen Sie dessen Zertifikat haben und zum Verschlüsseln benutzen.}
 \end{quote}
 
-Nachdem Sie auf \Button{OK} geklickt haben, wird Ihre Nachricht
-verschlüsselt und Sie erhalten eine Meldung, die Ihnen dies
-bestätigt.
+
+Klicken Sie auf \Button{Weiter}. Ihre Nachricht wird nun
+verschlüsselt.
+
+\clearpage
+Wurde Ihre Nachricht erfolgreich verschlüsselt und versandt, erhalten
+Sie eine Meldung, die Ihnen dies bestätigt:
 
 % TODO screenshot: kleopatra encryption successfully
-
+\begin{center}
+\IncludeImage[width=0.7\textwidth]{sc-kleopatra-openpgp-encryptDialog_de}
+\end{center}
 
 \textbf{Herzlichen Glückwunsch!  Sie haben Ihre erste \Email{}
 verschlüsselt!}
@@ -1737,6 +1839,18 @@ verschlüsselt!}
 \clearpage
 \section{Mit S/MIME verschlüsseln}
 \margin{\IncludeImage[width=1.5cm]{smime-icon}}
+
+
+\clearpage
+Sofern Sie diese Auswahl auf der Voreinstellung \textit{automatisch} lassen, haben Sie
+später noch die Möglichkeit zwischen PGP/MIME und S/MIME zu wählen.
+
+Haben Sie ein bevorzugtes GnuPG-Protokoll? Dann können Sie unter den
+den GpgOL-Optionen
+(\Menu{Extras$\rightarrow$Optionen$\rightarrow$GpgOL}) 
+PGP/MIME oder S/MIME als Voreinstellung definieren.
+Nach der Installation von Gpg4win ist PGP/MIME hier aktiviert und
+S/MIME deaktiviert.
 
 
 \clearpage
@@ -2131,99 +2245,6 @@ sondern
 \part{Fortgeschrittene}
 \label{part:Fortgeschrittene}
 \addtocontents{toc}{\protect\vspace{0.3cm}}
-
-\clearpage
-%% Original page 6
-\chapter{Warum überhaupt verschlüsseln?}
-\label{ch:why}
-
-Die Verschlüsselung von Nachrichten wird manchmal als das zweitälteste
-Gewerbe der Welt bezeichnet. Verschlüsselungstechniken benutzten schon
-der Pharao Khnumhotep II, Herodot und Cäsar.  Dank Gpg4win ist
-Verschlüsselung nunmehr für jedermann frei und kostenlos
-zugänglich\ldots
-
-\begin{center}
-\IncludeImage[width=0.9\textwidth]{egyptian-stone}
-\end{center}
-
-Die Computertechnik hat uns phantastische Mittel in die Hand gegeben,
-um rund um den Globus miteinander zu kommunizieren und uns zu
-informieren. Aber Rechte und Freiheiten, die in anderen
-Kommunikationsformen längst selbstverständlich sind, müssen wir uns in
-den neuen Technologien erst sichern. Das Internet ist so schnell und
-massiv über uns hereingebrochen, dass wir mit der Wahrung unserer Rechte
-noch nicht so recht nachgekommen sind.
-
-
-Beim altmodischen Briefschreiben haben wir die Inhalte unserer
-Mitteilungen ganz selbstverständlich mit einem Briefumschlag
-geschützt. Der Umschlag schützt die Nachrichten vor fremden Blicken,
-eine Manipulation am Umschlag kann man leicht bemerken. Nur wenn etwas
-nicht ganz so wichtig ist, schreibt man es auf eine ungeschützte
-Postkarte, die auch der Briefträger oder andere lesen können.
-
-
-\clearpage
-%% Original page 7
-
-Ob die Nachricht wichtig, vertraulich oder geheim ist, das bestimmt
-man selbst und niemand sonst.
-
-Diese Entscheidungsfreiheit haben wir bei \Email{} nicht. Eine normale
-\Email{} ist immer offen wie eine Postkarte, und der elektronische
-"`Briefträger"' -- und andere -- können sie immer lesen. Die Sache
-ist sogar noch schlimmer: die Computertechnik bietet nicht nur die
-Möglichkeiten, die vielen Millionen \Email{}s täglich zu befördern und
-zu verteilen, sondern auch, sie zu kontrollieren.
-
-Niemand hätte je ernsthaft daran gedacht, alle Briefe und Postkarten zu
-sammeln, ihren Inhalt auszuwerten oder Absender und Empfänger zu
-protokollieren. Das wäre einfach nicht machbar gewesen, oder es hätte
-zu lange gedauert. Mit der modernen Computertechnik ist das technisch
-möglich. Es gibt mehr als einen Hinweis darauf, dass dies genau heute
-schon im großen Stil mit Ihrer und meiner \Email{}
-geschieht.\footnote{Hier sei nur an das \xlink{Echelon
-    System}{\EchelonUrl} erinnert%
-\T; siehe \href{\EchelonUrl}{\EchelonUrl}%
-.}.
-
-Denn: der Umschlag fehlt.
-
-\begin{center}
-\IncludeImage[width=0.3\textwidth]{sealed-envelope}
-\end{center}
-
-\clearpage
-%% Original page 8
-
-Was wir Ihnen hier vorschlagen, ist ein Umschlag für Ihre
-elektronischen Briefe. Ob Sie ihn benutzen, wann, für wen und wie oft,
-ist ganz allein Ihre Sache. Software wie Gpg4win gibt Ihnen lediglich
-die Wahlfreiheit zurück. Die Wahl, ob Sie persönlich eine Nachricht
-für wichtig und schützenswert halten oder nicht.
-
-Das ist der Kern des Rechts auf Brief-, Post- und Fernmeldegeheimnis
-im Grundgesetz, und dieses Recht können Sie mit Hilfe der Software
-Gpg4win wahrnehmen. Sie müssen sie nicht benutzen -- Sie müssen ja auch
-keinen Briefumschlag benutzen. Aber es ist Ihr gutes Recht.
-
-Um dieses Recht zu sichern, bietet Gpg4win Ihnen sogenannte "`starke
-Verschlüsselungstechnik"'. "`Stark"' bedeutet hier: mit keinem
-gegenwärtigen Mittel zu knacken. In vielen Ländern waren starke
-Verschlüsselungsmethoden bis vor ein paar Jahren den Militärs und
-Regierungsbehörden vorbehalten. Das Recht, sie für jeden Bürger
-nutzbar zu machen, haben sich die Internetnutzer mühsam erobert;
-manchmal auch mit der Hilfe von klugen und weitsichtigen Menschen in
-Regierungsinstitutionen, wie im Falle der Portierung von GnuPG auf
-Windows.  GnuPG wird von Sicherheitsexperten in aller Welt als eine
-praktikable und sichere Software angesehen.
-
-Wie wertvoll diese Sicherheit für Sie ist, liegt ganz in Ihrer Hand,
-denn Sie allein bestimmen das Verhältnis zwischen Bequemlichkeit bei
-der Verschlüsselung und größtmöglicher Sicherheit.  Dazu gehören die
-wenigen, aber umso wichtigeren Vorkehrungen, die Sie treffen müssen,
-und die wir im Folgenden besprechen:
 
 
 \clearpage
