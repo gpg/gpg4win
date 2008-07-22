@@ -1,5 +1,5 @@
 # inst-gpgme.nsi - Installer snippet for gpgme.     -*- coding: latin-1; -*-
-# Copyright (C) 2005, 2007 g10 Code GmbH
+# Copyright (C) 2005, 2007, 2008 g10 Code GmbH
 # 
 # This file is part of GPG4Win.
 # 

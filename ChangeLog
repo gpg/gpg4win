@@ -1,3 +1,7 @@
+2008-07-22  Marcus Brinkmann  <marcus@ulysses.g10code.com>
+
+	* src/uninst-gpgme.nsi: Fix typo.
+
 2008-07-21  Marcus Brinkmann  <marcus@g10code.de>
 
 	Release 1.9.2 beta version.

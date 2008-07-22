@@ -1,5 +1,5 @@
 # uninst-gpgme.nsi - Installer snippet for gpgme.   -*- coding: latin-1; -*-
-# Copyright (C) 2005, 2007 g10 Code GmbH
+# Copyright (C) 2005, 2007, 2008 g10 Code GmbH
 # 
 # This file is part of GPG4Win.
 # 
@@ -33,7 +33,7 @@ Section "-un.gpgme"
   Delete "$INSTDIR\libgpgme-11.dll"
   Delete "$INSTDIR\libgpgme-glib-11.dll"
   Delete "$INSTDIR\libgpgme-qt-11.dll"
-  Delete "$INSTDIR\gpgme-w32spawn.dll"
+  Delete "$INSTDIR\gpgme-w32spawn.exe"
   RMDir "$INSTDIR"
 !endif
 SectionEnd
