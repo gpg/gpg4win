@@ -217,24 +217,24 @@ von GnuPG eingesetzte Verschlüsselungstechnologie ist sehr
 sicher und kann nach dem heutigen
 Stand von Forschung und Technik nicht gebrochen werden.
 
-GnuPG ist Freie Software\footnote{oft ungenau auch als Open Source
+GnuPG ist \textbf{Freie Software}\footnote{oft ungenau auch als Open Source
 Software bezeichnet}. Das bedeutet, dass jedermann das Recht hat, sie
 nach Belieben kommerziell oder privat zu nutzen.  Jedermann darf den
 Quellcode, also die eigentliche Programmierung des Programms, genau
 untersuchen und auch selbst Änderungen durchführen und diese
 weitergeben.\footnote{Obwohl dies ausdrücklich erlaubt ist, sollte man
 ohne ausreichendes Fachwissen nicht leichtfertig Änderungen
-durchführen da hierdurch die Sicherheit der Software beeinträchtigt
+durchführen, da hierdurch die Sicherheit der Software beeinträchtigt
 werden kann.}
 
 Für eine Sicherheits-Software ist diese garantierte Transparenz des
 Quellcodes eine unverzichtbare Grundlage. Nur so läßt sich die
 Vertrauenswürdigkeit eines Programmes prüfen.
 
-GnuPG basiert auf dem internationalen Standard OpenPGP (RFC 2440), ist
+GnuPG basiert auf dem internationalen Standard \textbf{OpenPGP} (RFC 2440), ist
 vollständig kompatibel zu PGP und benutzt die gleiche Infrastruktur
 (Schlüsselserver etc.). Seit Version 2 von GnuPG wird auch der
-kryptographische Standard S/MIME (CMS/RFC 3852 bzw. X.509)
+kryptographische Standard \textbf{S/MIME} (CMS/RFC 3852 bzw. X.509)
 unterstützt.
 
 PGP ("`Pretty Good Privacy"') ist keine Freie Software, sie war
@@ -300,12 +300,12 @@ protokollieren. Das wäre einfach nicht machbar gewesen, oder es hätte
 zu lange gedauert. Mit der modernen Computertechnik ist das technisch
 möglich. Es gibt mehr als einen Hinweis darauf, dass dies genau heute
 schon im großen Stil mit Ihrer und meiner \Email{}
-geschieht.\footnote{Hier sei nur an das \xlink{Echelon
+geschieht\footnote{Hier sei nur an das \xlink{Echelon
     System}{\EchelonUrl} erinnert%
 \T; siehe \href{\EchelonUrl}{\EchelonUrl}%
 .}.
 
-Denn: der Umschlag fehlt.
+Denn: Der Umschlag fehlt.
 
 \begin{center}
 \IncludeImage[width=0.3\textwidth]{sealed-envelope}
@@ -336,56 +336,185 @@ Regierungsinstitutionen, wie im Falle der Portierung von GnuPG auf
 Windows.  GnuPG wird von Sicherheitsexperten in aller Welt als eine
 praktikable und sichere Software angesehen.
 
-Wie wertvoll diese Sicherheit für Sie ist, liegt ganz in Ihrer Hand,
-denn Sie allein bestimmen das Verhältnis zwischen Bequemlichkeit bei
+\textbf{Wie wertvoll diese Sicherheit für Sie ist, liegt ganz in Ihrer
+Hand.}
+
+Sie allein bestimmen das Verhältnis zwischen Bequemlichkeit bei
 der Verschlüsselung und größtmöglicher Sicherheit.  Dazu gehören die
 wenigen, aber umso wichtigeren Vorkehrungen, die Sie treffen müssen,
-und die wir im Folgenden besprechen:
+um Gpg4win richtig zu nutzen. In diesem Handbuch werden wir
+Ihnen dieses Vorgehen Schritt für Schritt erläutern...
+
+
+\clearpage
+\chapter{Zwei Wege, ein Ziel: OpenPGP \& S/MIME}
+\label{ch:openpgpsmime}
+
+Wie so oft gibt es für das gleiche Ziel verschiedene Wege, ähnlich ist
+es auch in der Verschlüsselung Ihrer \Email{}s mit den Standards OpenPGP
+und S/MIME. Beide Standards und ihre Umsetzungen in Software ermöglichen die
+\Email{}-Veschlüsselung mit Freier Software, wie zum Beispiel Gpg4win.
+
+Beim Verschlüsseln bzw. bei der Sicherheit der geheimen Datenübertragung
+sind zwei Perspektiven wichtig, einmal die Gewährleistung der \textbf{Geheimhaltung}
+und zum anderen die \textbf{Authentizität} des Absenders. Authentizität bedeutet
+hier, dass der Inhalt auch tatsächlich vom besagten Absender ist.
+
+\subsubsection{Die Gemeinsamkeit: Das Public-Key-Verfahren}
+Konzeptionell steckt hinter OpenPGP und S/MIME das gleiche System zur Geheimhaltung,
+und zwar das Public-Key-Verfahren. Was heisst das?
+
+Nehmen wir an, die \Email{} oder die Datei sei in einer Truhe verschlossen.
+Im Gegensatz zu einem "`normalen"' Schloss mit einem Schlüssel gibt es beim
+Public-Key-Verfahren zum Verschlüsseln/Entschlüsseln \textbf{ein Schlüsselpaar}.
+So gibt es einen beglaubigten Schlüssel zum Verschlüsseln (das
+\textbf{"`Zertifikat"'}) und einen Schlüssel zum Entschlüsseln (der 
+\textbf{"`Geheimer Schlüssel"'}).
+
+Klingt zwar komisch, wenn man an echte Schlösser denkt, aber bei
+Software löst diese Idee das Problem, dass ich meinen Schlüssel
+für jeden Empfänger aus der Hand geben müsste.
+Denn normalerweise muss ein Schlüssel zum Verschlüsseln/Abschließen auch
+zum Entschlüsseln bzw. Aufschließen benutzt werden. Also müsste ich Ihnen,
+wenn ich etwas für Sie in der Truhe verschließe, die Truhe \textbf{und}
+den Schlüssel geben. Wenn der Schlüssel bei der Übertragung
+abhanden kommt oder jemand davon eine Kopie erstellt, ist das ein
+großes Problem.
+
+Beim Public-Key-Verfahren verschließe ich mit Ihrem \textbf{"`Zertifikat"'}
+die Truhe und Sie schließen die Truhe mit Ihrem \textbf{"`Geheimen Schlüssel"'} auf.
+Ich muss also nur die Truhe zu Ihnen transportieren lassen.
+Das ist auf jeden Fall sicherer als den geheimen Schlüssel mit zu
+transportieren, selbst wenn er einen anderen Weg als die Truhe zu Ihnen nehmen
+würde.
+
+Trotz dieses gleichen Ansatzes zur Geheimhaltung unterscheiden sich
+OpenPGP und S/MIME aber zum Beispiel bei der Schlüsselerzeugung
+(Näheres erfahren wir später in Kapitel~\ref{ch:CreateKeyPair}).
+
+\textbf{Falls Sie sich jetzt fragen, wie das Public-Key-Verfahren so
+funktionieren kann, lesen Sie einmal
+Kapitel~\ref{ch:FunctionOfGpg4win}.}
+\textbf{Wenn Sie sich dann noch fragen, warum das Gpg4win so sicher ist,
+sind vermutlich die Kapitel~\ref{ch:themath} und
+\ref{ch:secretGnupg} genau das richtige für Sie!}
+Mit ein wenig Interesse und Zeit kann man dort auch die kleinen mathematischen
+Geheimnisse verstehen. Viel Spaß beim Entdecken.
+
+% TODO: Grafik?! (z.B. Alice - Bob Transport-Problem)
+
+\clearpage
+\subsubsection{Der Unterschied: Die Authentifizierung}
+
+Der wesentlichste Unterschied zwischen OpenPGP und S/MIME liegt
+im Bereich der Authentifizierung.
+
+Um die Authentizität des Absenders festzustellen, ist bei
+\textbf{S/MIME}
+ein Zertifikat notwendig, welches die Authentizität des Schlüssel-Besitzers
+unzweifelhaft beglaubigt.
+Das heisst, dass ich meinen öffentlichen Schlüssel von einer dazu
+berechtigten Organisation zertifizieren lassen muss, bevor er dadurch wirklich nutzbar wird.
+Diese Organisation wurde wiederum von einer höher stehenden Organisation zertifiziert
+usw. bis man zu einem Wurzel-Zertifikat kommt. Vertaut man nun diesem Wurzel-Zertifkat,
+so vertaut man automatisch allen darunter liegenden Zertfizierungen. Das nennt
+man \textbf{hierarchisches Vertrauenskonzept}. Zumeist ist die Kette nur 3 Elemente
+lang: Wurzel, Zertifizierungsstelle (auch CA für Certificate Authority genannt), Anwender.
+Wurzel zertifiziert CA, CA zertifiziert Anwender.
+
+Im Gegensatz dazu erlaubt \textbf{OpenPGP} neben dieser baumartigen Zertifizierung
+zusätzlich auch eine direkte "`peer-to-peer"' Zertifizierung (Anwender A zertfiziert
+Anwender B, B zertifiziert A und C usw.) und macht damit
+aus einem Zertifizierungs-Baum ein Zertifizierungs-Netz, das sogenannte
+\textbf{Web-of-Trust}. Im Fall der direkten Authentifizierung bei OpenPGP haben Sie
+also die Möglichkeit, \textit{ohne} die Zertifizierung von einer höheren Stelle verschlüsselte Daten und
+\Email{}s auszutauschen. Dafür reicht es aus, wenn Sie der \Email{}-Adresse
+und dem dazugehörigen Zertifikat ihres Kommunikationspartners vertrauen.
+
+\textbf{Nähere Informationen zu Authentifizierungswegen, wie zum Beispiel
+dem Web-of-Trust oder den Zertifizierunsstellen, erhalten Sie später in Kapitel~\ref{ch:trust}.}
+
+% TODO: Grafik?! (z.B. Alice - Bob Authentizität-Problem)
+
+\clearpage
+\subsubsection{Fassen wir kurz zusammen...}
+
+Was bedeutet das für Sie?
+\begin{itemize}
+\item Sowohl \textbf{OpenPGP} als auch \textbf{S/MIME} kann Ihnen die notwendige Sicherheit
+    bieten.
+\item Beide Verfahren sind \textbf{nicht kompatibel} miteinander. Sie
+    bieten zwei separate Wege bei der Authentifizierung Ihrer geheimen Kommunikation.
+    Man sagt, sie sind nicht interoperabel.
+\item \textbf{Gpg4win} als Freie Software ermöglicht Ihnen die bequeme
+\textbf{ parallele } Nutzung beider Systeme.
+\end{itemize}
+
+Falls Ihnen all das etwas zuviel Informationen waren, machen Sie sich keine
+Sorgen: In den folgenden Kapiteln wird jeder Schritt von der Installation bis
+hin zur Verschlüsselung  sowohl mit OpenPGP als auch
+mit S/MIME detailliert erklärt.
+
+Die beiden nachfolgenden Symbole weisen Sie in diesem Compendium
+auf spezifische Erklärungen zu OpenPGP bzw. S/MIME hin, so dass Sie immer
+schnell überblicken, welche Besonderheiten bei welchem Konzept zu
+beachten sind.
+
+\begin{center}
+\IncludeImage[width=3cm]{openpgp-icon}
+\hspace{1cm}
+\IncludeImage[width=3cm]{smime-icon}
+\end{center}
+
 
 
 \clearpage
 %% Orginal page 9
 \chapter{Sie installieren Gpg4win}
 
+Beginnen wir nun mit der Installation von Gpg4win. Beachten Sie, dass
+Sie dafür Administrator-Rechte auf Ihrem Windows-System benötigen.
+
 Sollte bereits eine GnuPG basierte Anwendung, wie z.B. Kleopatra, 
 GnuPP, GnuPT, WinPT oder GnuPG Basics, auf Ihrem System installiert sein, so lesen
 sie jetzt bitte zuerst den Anhang \ref{ch:migration}, um zu erfahren
-wie Sie Ihre vorhandenen Schlüssel übernehmen können.
+wie Sie Ihre vorhandenen Schlüssel und Zertifikate übernehmen können.
 
-Falls Sie Gpg4win auf einer CD-ROM erhalten haben:
-
-Legen Sie diese CD-ROM in das CD-ROM-Laufwerk Ihres PCs
-und melden Sie sich als Administrator an.  Öffnen Sie
-Ihren "`Arbeitsplatz"' und klicken Sie dort auf das CD-ROM- Icon mit
-dem Titel "`Gpg4win"'. Wenn sich das CD-ROM-Icon geöffnet hat, klicken
-Sie auf das Installations-Icon mit dem Titel "`Gpg4win"'.
-
-Haben Sie Gpg4win aus dem Internet heruntergeladen, so klicken Sie
-bitte auf diese neu abgespeicherte Datei, die den Namen
+Falls Sie Gpg4win aus dem Internet heruntergeladen haben:
+\vspace{-0.28cm}
+\begin{quote}
+Klicken Sie
+bitte auf diese neu abgespeicherte Datei, die den Namen\linebreak
 \texttt{gpg4win-\PackageVersion{}.exe} (oder höhere Versionnummer)
 haben sollte.  Achten Sie unbedingt darauf, dass Sie die Datei von
 einer vertrauenswürdigen Seite erhalten haben.
+\end{quote}
 
-Die weitere Installation ist dann identisch:
+Falls Sie Gpg4win auf einer CD-ROM erhalten haben:
+\vspace{-0.28cm}
+\begin{quote}
+    Legen Sie diese CD-ROM in das CD-ROM-Laufwerk Ihres PCs.
+ Öffnen Sie Ihren "`Arbeitsplatz"' und klicken Sie dort auf das CD-ROM-Icon mit
+dem Titel "`Gpg4win"'. Anschließen klicken Sie auf das Installations-Icon mit dem Titel "`Gpg4win"'.
+\end{quote}
 
+Die weitere Installation ist dann identisch:\\
 Die Frage, ob Sie das Programm installieren wollen, beantworten Sie
 mit \Button{Ja}.
 
 Es begrüßt Sie dieser Screen:
-
-\T\enlargethispage{2\baselineskip}
+\enlargethispage{2\baselineskip}
 % screenshot:  Welcome Seite Installer
 \begin{center}
 \IncludeImage{sc-inst-welcome}
 \end{center}
 
-Beenden Sie alle möglicherweise auf Ihrem Rechner laufenden Programme,
-und klicken Sie dann auf \Button{Weiter}.
+Beenden Sie alle auf Ihrem Rechner laufenden Programme, und klicken Sie dann auf \Button{Weiter}.
 
 \clearpage
 %% Orginal page 10
 
-Auf der Seite mit dem Lizenzabkommen, können Sie Informationen zu den
+Auf der Seite mit dem \textbf{Lizenzabkommen}, können Sie Informationen zu den
 Lizenzen dieser Software lesen. 
 
 Wenn Sie die Software lediglich installieren und einsetzen wollen, so
@@ -408,7 +537,7 @@ Klicken Sie auf \Button{Weiter}.
 \clearpage
 %% New page (not in original document)
 
-Auf der Seite mit der Komponentenauswahl können
+Auf der Seite mit der \textbf{Komponentenauswahl} können
 Sie entscheiden, welche Programme Sie installieren
 möchten.
 
@@ -424,7 +553,7 @@ hilft Ihnen vielleicht ebenfalls weiter.
 \IncludeImage{sc-inst-components}
 \end{center}
 
-Sinnvoll ist es, mindestens GnuPG, Kleopatra und die Handbücher
+Sinnvoll ist es, mindestens GnuPG, Kleopatra und das Gpg4win-Compendium
 zu installieren. Den Rest können Sie bei Bedarf auch später installieren.
 
 Klicken Sie auf \Button{Weiter}.
@@ -433,7 +562,7 @@ Klicken Sie auf \Button{Weiter}.
 \clearpage
 %% Original page 11
 
-In der nun folgenden Dateiauswahl können Sie einen Ordner auf Ihrem PC
+In der nun folgenden \textbf{Verzeichnisauswahl} können Sie eine Ordner auf Ihrem PC
 aussuchen, in dem Gpg4win installiert wird. Sie sollten hier im
 Normalfall den voreingestellten Ordner\\
 \Filename{C:$\backslash$Programme$\backslash$GNU$\backslash$GnuPG}\\
@@ -448,10 +577,11 @@ Klicken Sie anschließend auf \Button{Weiter}.
 
 \clearpage
 
-Auf der folgenden Seite können Sie festlegen, welche Verknüpfungen
-installiert werden.  Voreingestellt ist lediglich eine Verknüpfung mit
-dem Startmenü.  Bitte beachten Sie, daß sie diese Verknüpfungen auch
-jederzeit später mit den Bordmitteln von Windows verändern können.
+Auf der folgenden Seite können Sie festlegen, welche
+\textbf{Verknüpfungen} installiert werden.  Voreingestellt ist
+lediglich eine Verknüpfung mit dem Startmenü.  Bitte beachten Sie, daß
+sie diese Verknüpfungen auch jederzeit später mit den Bordmitteln von
+Windows verändern können.
 
 % screenshot: Auswahl des Links
 \begin{center}
@@ -463,8 +593,8 @@ Klicken Sie anschließend auf \Button{Weiter}.
 \clearpage
 %% Original page 12
 
-Falls Sie auf der vorhergehenden Seite eine Verknüpfung mit dem
-Startmenü ausgewählt haben (dies ist die Voreinstellung), so wird
+Falls Sie auf der vorhergehenden Seite eine \textbf{Verknüpfung mit dem
+Startmenü} ausgewählt haben (dies ist die Voreinstellung), so wird
 Ihnen nun eine Seite angezeigt, mit der Sie den Namen dieses
 Startmenüs auswählen können.
 
@@ -478,7 +608,7 @@ klicken dann auf \Button{Installieren}.
 
 \clearpage
 
-Während der nun folgenden Installation sehen Sie einen
+Während der nun folgenden \textbf{Installation} sehen Sie einen
 Fortschrittsbalken und Informationen, welche Datei momentan
 installiert wird.  Sie können jederzeit auf \Button{Details~anzeigen} drücken
 um ein Protokoll der Installation sichtbar zu machen.
@@ -494,14 +624,17 @@ Nachdem die Installation abgeschlossen ist, drücken Sie bitte auf
 \clearpage
 %% Original page 13
 
-Die letzte Seite des Installationsvorgangs wird nun angezeigt:
+Nach erfolgreicher Installation wird Ihnen diese letzte Seite des Installationsvorgangs angezeigt:
 
 % Screenshot: Finish page Installer
 \begin{center}
 \IncludeImage{sc-inst-finished} 
 \end{center}
 
-Klicken Sie auf \Button{Fertig stellen}.
+Sofern Sie die README-Datei nicht ansehen wollen, deaktivieren Sie die
+Option auf dieser Seite.
+
+Klicken Sie schließlich auf \Button{Fertig stellen}.
 
 \clearpage
 
@@ -527,12 +660,12 @@ Klicken Sie hier auch auf \Button{Fertig stellen}.
 
 \textbf{Das war's schon!}
 
-Sie haben Gpg4win installiert und können es gleich zum ersten Mal
+Sie haben Gpg4win erfolgreich installiert und können es gleich zum ersten Mal
 starten.
 
-Vorher sollten Sie aber im Handbuch "`Gpg4win für Durchblicker"'
-(PDF-Datei) die Kapitel 3 und 4 lesen. Wir erklären dort den genialen
-Trick, mit dem Gpg4win Ihre \Email{}s sicher und bequem verschlüsselt.
+Vorher sollten Sie aber Kapitel~\ref{ch:FunctionOfGpg4win} lesen.
+Wir erklären dort den genialen Trick, mit dem Gpg4win Ihre \Email{}s
+sicher und bequem verschlüsselt.
 Gpg4win funktioniert zwar auch, ohne dass Sie verstehen warum, aber im
 Gegensatz zu anderen Programmen wollen Sie Gpg4win schließlich Ihre
 geheime Korrespondenz anvertrauen. Da sollten Sie schon wissen, was
@@ -540,126 +673,15 @@ vor sich geht.
 
 Außerdem ist die ganze Angelegenheit ziemlich spannend$\ldots$
 
-Weiter geben wir Ihnen dort einige Tipps, mit denen Sie sich einen sicheren
+Weiter geben wir Ihnen in Kapitel~\ref{ch:passphrase} einige Tipps,
+mit denen Sie sich einen sicheren
 und trotzdem leicht zu merkenden Passphrase ausdenken können.
 
-\textbf{Bevor Sie weiterlesen und im Kapitel~\ref{ch:CreateKeyPair} mit
-der Schlüsselpaarerzeugung beginnen, ist es wichtig zu verstehen, wie
-Gpg4win funktioniert und warum die Passphrase dabei so bedeutend ist.
-Lesen Sie dazu bitte jetzt die Kapitel~\ref{ch:FunctionOfGpg4win} und
-\ref{ch:passphrase}.}
-
-\textbf{Für Informationen zur automatischen Installation von Gpg4win (wie sie
+Für Informationen zur \textbf{automatischen Installation} von Gpg4win (wie sie
 zum Beispiel für Soft\-ware\-verteilungs-Systeme interessant ist), 
 lesen Sie bitte im Anhang \ref{ch:auto} "`Automatische Installation von Gpg4win"' 
-weiter.}
+weiter.
 
-\clearpage
-\chapter{Zwei Wege, ein Ziel: OpenPGP \& S/MIME}
-\label{ch:openpgpsmime}
-
-Wie so oft gibt es für das gleiche Ziel verschiedene Wege, ähnlich ist
-es auch in der Verschlüsselung Ihrer \Email{}s mit den Standards OpenPGP
-und S/MIME. Beide Standards und ihre Umsetzungen in Software ermöglichen die
-\Email{}-Veschlüsselung mit Freier Software, wie zum Beispiel Gpg4win.
-
-Beim Verschlüsseln bzw. bei der Sicherheit der geheimen Daten-Übertragung
-sind 2 Perspektiven wichtig, einmal die Gewährleistung der \textbf{Geheimhaltung}
-und zum anderen die \textbf{Authentizität} des Absenders. Authentizität bedeutet
-hier, dass der Inhalt auch tatsächlich vom besagten Absender ist.
-
-Konzeptionell steckt hinter OpenPGP und S/MIME das gleiche System zur Geheimhaltung,
-und zwar das Public-Key-Verfahren. Was heisst das?
-
-Nehmen wir an, die \Email{} oder die Datei sei in einer Truhe verschlossen.
-Im Gegensatz zu einem "`normalen"' Schloss mit einem Schlüssel gibt es beim
-Public-Key-Verfahren zum Verschlüsseln/Entschlüsseln \textbf{ein Schlüsselpaar}.
-So gibt es einen beglaubigten Schlüssel zum Verschlüsseln (das
-\textbf{"`Zertifikat"'}) und einen Schlüssel zum Entschlüsseln (der 
-\textbf{"`Geheimer Schlüssel"'}).
-
-Klingt zwar komisch wann man an echte Schlösser denkt, aber bei
-Software löst diese Idee das Problem, dass ich meinen Schlüssel
-für jeden Empfänger aus der Hand geben müsste.
-Denn normalerweise muss der Schlüssel zum Verschlüsseln/Abschließen auch
-zum Entschlüsseln bzw. Aufschließen benutzt werden. Also muss ich Ihnen,
-wenn ich etwas für Sie in der Truhe verschließe, die Truhe \textbf{und}
-den Schlüssel geben. Wenn der Schlüssel bei der Übertragung
-abhanden kommt oder jemand davon eine Kopie erstellt, ist das ein
-grosses Problem.
-
-Beim Public-Key-Verfahren verschließe ich mit Ihrem \textbf{"`Zertifikat"'}
-die Truhe und Sie schließen die Truhe mit Ihrem \textbf{"`Geheimen Schlüssel"'} auf.
-Ich muss also nur die Truhe zu Ihnen transportieren lassen.
-Das ist auf jeden Fall sicherer als den geheimen Schlüssel mit zu
-transportieren, selbst wenn er einen anderen Weg als die Truhe zu Ihnen nehmen
-würde.
-
-Trotz dieses gleichen Ansatzes zur Geheimhaltung unterscheiden sich
-OpenPGP und S/MIME aber zum Beispiel bei der Schlüsselerzeugung (vgl.
-Kapitel~\ref{ch:CreateKeyPair}).
-
-\textbf{Falls Sie sich fragen, wie das Public-Key-Verfahren so funktionieren kann, und
-warum das sicher ist, lesen Sie jetzt die Kapitel~\ref{ch:themath} und
-\ref{ch:secretGnupg}.}
-
-Mit ein wenig Interesse und Zeit kann man dort auch die kleinen mathematischen
-Geheimnisse verstehen. Viel Spaß beim Entdecken.
-
-% TODO: Grafik?! (z.B. Alice - Bob Transport-Problem)
-
-Der wesentlichste \textbf{Unterschied zwischen OpenPGP und S/MIME} liegt
-im Bereich der Authentifizierung.
-Um die Authentizität des Absenders festzustellen, ist bei S/MIME
-ein Zertifikat notwendig, welches die Authentizität des Schlüssel-Besitzers
-unzweifelhaft beglaubigt.
-Das heisst, dass ich meinen Schlüssel von einer dazu
-berechtigten Organisation zertifizieren lassen muss, bevor er dadurch wirklich nutzbar wird.
-Diese Organisation wurde wiederum von einer höher stehenden Organisation zertifiziert
-usw. bis man zu einem Wurzel-Zertifikat kommt. Vertaut man nun diesem Wurzel-Zertifkat,
-so vertaut man automatisch allen darunter liegenden Zertfizierungen. Das nennt
-man hierarchisches Vertrauenskonzept. Zumeist ist die Kette nur 3 Elemente
-lang: Wurzel, Zertifizierungsstelle (auch CA für Certificate Authority genannt), Anwender.
-Wurzel zertifiziert CA, CA zertifiziert Anwender.
-
-Im Gegensatz dazu erlaubt OpenPGP neben dieser baumartigen Zertifizierung
-zusätzlich auch eine direkte "`\textbf{peer-to-peer}"' Zertifizierung (Anwender A zertfiziert
-Anwender B, B zertifiziert A und C usw.) und macht damit
-aus einem Zertifizierungs-Baum ein Zertifizierungs-Netz, das sogenannte
-\textbf{Web-of-Trust}. Im Fall der direkten Authentifizierung bei OpenPGP haben Sie
-also die Möglichkeit, ohne eine Zertifizierung einer höheren Stelle verschlüsselte Daten und
-\Email{}s auszutauschen. Dafür reicht es aus, wenn Sie der \Email{}-Adresse
-und dem dazugehörigen Zertifikat ihres Kommunikationspartners vertrauen.
-
-\textbf{Nähere Informationen zu Authentifizierungswegen wie zum Beispiel
-Web-of-Trust finden Sie im Kapitel~\ref{ch:FunctionOfGpg4win}.}
-%TODO#: Verweis korrekt? Nichts über web-of-trust. Verweis kam oben
-%schon einmal.
-
-
-% TODO: Grafik?! (z.B. Alice - Bob Authentizität-Problem)
-~\\
-Zusammengefasst bedeutet das für Sie:
-\begin{itemize}
-\item sowohl \textbf{OpenPGP} als auch \textbf{S/MIME} kann Ihnen die notwendige Sicherheit
- bieten,
-\item aber Sie sind \textbf{nicht kompatibel} miteinander, so dass die geheime
-	Kommunikation und die Authentifizierung nicht interoperabel sind.
-\item \textbf{Gpg4win} als Freie Software ermöglicht Ihnen die bequeme
-\textbf{ parallele } Nutzung beider Systeme.
-\end{itemize}
-
-Falls Ihnen all das etwas zuviel Informationen waren, machen Sie sich keine
-Sorgen, in den folgenden Kapiteln wird jeder Schritt von der Installation bis
-hin zur Verschlüsselung  sowohl mit OpenPGP als auch
-mit S/MIME detailliert erklärt. Außerdem weisen Sie besondere Symbole für OpenPGP und S/MIME auf
-Erklärungen zu den verschiedenen Konzepten hin, so dass immer sofort ersichtlich ist,
-zu welchem Konzept welche Erklärung gehört.
-
-\begin{center}
-\IncludeImage{openpgp-icon}
-\IncludeImage{smime-icon}
-\end{center}
 
 \clearpage
 %% Original page 15
@@ -667,12 +689,12 @@ zu welchem Konzept welche Erklärung gehört.
 \label{ch:CreateKeyPair}
 
 Spätestens nachdem Sie gelesen haben, warum GnuPG eigentlich so sicher ist
-(Kapitel \ref{ch:themath}, Seite \pageref{ch:themath})
+(Kapitel \ref{ch:themath})
 und wie eine gute Passphrase als Schutz für Ihren geheimen Schlüssel
-entsteht (Kapitel \ref{ch:passphrase}, Seite \pageref{ch:passphrase}),
+entsteht (Kapitel \ref{ch:passphrase}),
 möchten Sie nun Ihr persönliches Schlüsselpaar erzeugen.
 
-Ein Schlüsselpaar besteht, wie wir im letzten Kapitel gelernt haben,
+Ein Schlüsselpaar besteht, wie wir im Kapitel~\ref{ch:openpgpsmime} gelernt haben,
 aus einem \textbf{Zertifikat} und einem  \textbf{geheimen Schlüssel}.
 Das gilt sowohl für OpenPGP wie auch für S/MIME (X.509).
 
@@ -769,7 +791,7 @@ Geben Sie im nun folgenden Fenster Ihren Namen und Ihre
 
 Wenn Sie die OpenPGP-Schlüsselpaarerzeugung zunächst einmal \textbf{testen} wollen, dann
 können Sie einfach einen beliebigen Namen und irgendeine ausgedachte
-\Email{}-Adresse eingeben, z.B. "`Heinrich Heine"' und "`\verb-heinrichh@gpg4win.de-"'.
+\Email{}-Adresse eingeben, z.B.:\\ \verb-Heinrich Heine- und \verb-heinrichh@gpg4win.de-.
 
 Optional können Sie einen Kommentar zum Schlüssel eingeben.
 Normalerweise bleibt dieses Feld leer; wenn sie aber einen
@@ -778,7 +800,7 @@ eingeben.  Dieser Kommentar ist Teil Ihrer User-ID und genau wie der
 Name und die \Email{}-Adresse später öffentlich sichtbar.
 
 Die \textbf{erweiterten Einstellungen} benötigen Sie nur in Ausnahmefällen.
-Sie können Sich im Kleopatra Handbuch (über \Menu{Hilfe$\rightarrow$Kleopatra Handbuch})
+Sie können sich im Kleopatra Handbuch (über \Menu{Hilfe$\rightarrow$Kleopatra Handbuch})
 über die Details informieren.
 
 \clearpage
@@ -839,7 +861,6 @@ Nun wird Ihr OpenPGP-Schlüsselpaar angelegt:
 Dies kann u.U. einige Minuten dauern. Sie können in der Zwischenzeit
 mit einer anderen Anwendung Ihres Rechner weiterarbeiten und erhöhen
 hierdurch sogar leicht die Qualität des erzeugten Schlüsselpaars.
-%TODO# ggf. noch mehr erläutern!
 
 \clearpage
 Sobald die \textbf{Schlüsselpaargenerierung erfolgreich} abgeschlossen ist,
@@ -966,7 +987,7 @@ Wenn Sie die X.509-Schlüsselpaarerzeugung zunächst einmal \textbf{testen} wollen
 machen Sie beliebige Angaben für Name, Organisation und
 Ländercode sowie geben irgendeine ausgedachte \Email{}-Adresse
 ein, z.B. \texttt{CN=Heinrich Heine, O=Test, C=DE} und
-"`\verb-heinrichh@gpg4win.de-"'.
+\verb-heinrichh@gpg4win.de-.
 
 Die \textbf{erweiterten Einstellungen} benötigen Sie nur in Ausnahmefällen.
 Sie können Sich im Kleopatra Handbuch (über \Menu{Hilfe$\rightarrow$Kleopatra Handbuch})
@@ -1029,7 +1050,6 @@ Nun wird Ihr X.509-Schlüsselpaar angelegt:
 Dies kann u.U. einige Minuten dauern. Sie können in der Zwischenzeit
 mit einer anderen Anwendung Ihres Rechner weiterarbeiten und erhöhen
 hierdurch sogar leicht die Qualität des erzeugten Schlüsselpaars.
-%TODO# ggf. noch mehr erläutern!
 
 \clearpage
 Sobald die \textbf{Schlüsselpaargenerierung erfolgreich} abgeschlossen ist,
@@ -1041,7 +1061,7 @@ erhalten Sie folgenden Dialog:
 \end{center}
 
 
-Als nächstes \textit{können} Sie einen (oder mehrere) der folgenden
+Als nächstes \textit{können} Sie eine (oder mehrere) der folgenden
 drei Möglichkeiten durchführen:
 \begin{description}
     \item[Speichern Sie Ihre Zertifizierungs-Anfrage als Datei.] 
@@ -1050,7 +1070,8 @@ drei Möglichkeiten durchführen:
     \Button{Save Request To File...}
 
     Geben Sie den genauen Pfad an, wohin Ihre X.509 Zertifizierungs-Anfrage
-    gespeichert werden soll. Als Dateiendung wählen Sie *.p10 und
+    gespeichert werden soll. Als Dateiendung wählen Sie
+    \textit{*.p10} und
     bestätigen Sie Ihre Eingabe. Sie könnne diese Datei dann später
     auf verschiedene Weise an eine Zertifizierungsstelle geben.
 
@@ -1069,8 +1090,7 @@ drei Möglichkeiten durchführen:
    \begin{center}
    \IncludeImage[width=0.6\textwidth]{sc-ol-sendNewX509Certificate_de}
    \end{center}
-    
-    %TODO#:korrekt?
+
     Sobald der Request von der CA bestätigt wurde, erhalten Sie von
     Ihrem zuständigen CA-Systemadministrator das fertige und unterzeichnete
     X.509-Zertifikat.
@@ -1388,7 +1408,9 @@ die ganze (öffentliche) Zertifikatskette (in der Regel: Wurzel --
 Zertifizierungsstelle -- Ihr Zertifikat) oder \textit{nur} Ihr Zertifikat in
 eine Datei abspeichern wollen. Ersteres empfiehlt sich immer dann,
 wenn Sie nicht genau wissen, ob Ihr Korrespondenzpartner Ihr
-Wurzelzertifikat schon besitzt.
+Wurzelzertifikat schon besitzt. Klicken Sie dazu in Kleopatra alle Kettenelemente mit
+gedrückter Shift-Taste an und exportieren Sie diese markierten
+Elemente nach oben beschriebener Regel.
 
 
 \clearpage
@@ -1452,7 +1474,7 @@ Sie wissen nun, wie Sie Ihr OpenPGP-Zertifikat auf einem
 Schlüsselserver im Internet veröffentlichen.
 
 \textbf{Wie Sie das OpenPGP-Zertifikat eines Korrespondenzpartners auf
-  Schlüsselservern suchen und finden, beschreiben wir im
+  Schlüsselservern suchen und importieren, beschreiben wir im
   Kapitel~\ref{ch:keyserver}.
   Sie können dieses Kapitel jetzt lesen oder später, wenn Sie diese
   Funktion benötigen.}
@@ -1482,7 +1504,7 @@ Ende dieses Kapitels.} %TODO:Seitenzahl
 
 
 Im Abschnitt~\ref{publishPerEmail} haben Sie Adele Ihr
-OpenPGP-Zertifikat -- also Ihr öffentlicher Schlüssel -- geschickt.
+OpenPGP-Zertifikat geschickt.
 Mit Hilfe dieses Zertifikats verschüsselt Adele nun eine
 \Email{} und sendet sie an Sie zurück. Nach kurzer Zeit sollen Sie
 Adeles Antwort erhalten.
@@ -1514,7 +1536,9 @@ Starten Sie MS Outlook und öffnen Sie die Antwort-\Email{} von Adele.
 Kleopatra verwaltet alle Ihre eigenen Zertifikate und die Ihrer
 Korrespondenzpartner. Somit eignet sich Kleopatra gut zur Überprüfung
 der \Email{}. Kleopatra erkennt eine verschlüsselte \Email{} von
-Adele. Diese \Email{} hat Adele mit Ihrem OpenPGP-Zertifikat verschlüsselt. Um die
+Adele. Diese \Email{} hat Adele mit \textit{Ihrem} OpenPGP-Zertifikat verschlüsselt. 
+
+Um die
 Nachricht zu entschlüsseln, fragt Kleopatra Sie nun nach Ihrer (zum
 Schlüsselpaar gehörigen) Passphrase. Geben Sie diese in den
 aufkommenden Dialog ein. Sofern Ihre Eingabe korrekt war, erhalten Sie
