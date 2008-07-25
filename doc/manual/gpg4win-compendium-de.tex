@@ -1620,11 +1620,11 @@ Viele Grüße,
 adele@gnupp.de
 \end{verbatim}
 
-Der Textblock, der darauf folgt, ist der öffentliche Schlüssel von
-Adele.
+Der Textblock, der darauf folgt, ist das Zertifikat von Adele.
 
-Wir werden anschließend diesen öffentlichen Schlüssel importieren und
-an Ihrem Schlüsselbund befestigen. So können Sie ihn jederzeit zum
+Wir werden im nächsten Kapitel dieses Zertifikat importieren und
+an Ihrem Schlüsselbund befestigen. Importierte Zertifikate können
+Sie jederzeit zum
 Verschlüsseln von Nachrichten an Ihren Korrespondenzpartner benutzen
 oder dessen signierte Mails überprüfen.
 
@@ -1635,8 +1635,8 @@ oder dessen signierte Mails überprüfen.
 \item Sie haben eine verschlüsselte \Email{} mit Ihrem geheimen
   Schlüssel entschlüsselt.
 
-\item Der Korrespondenzpartner hat seinen eigenen öffentlichen
-  Schlüssel beigelegt, damit Sie ihm verschlüsselt antworten können.
+\item Der Korrespondenzpartner hat sein eigenes Zertifikat
+    beigelegt, damit Sie ihm verschlüsselt antworten können.
 \end{enumerate}
 
 ~\\Nachdem \label{publischPerEmailx509}
@@ -1645,10 +1645,15 @@ Sie gelernt haben, wie Sie \Email{}s mit Ihrem OpenPGP-Zertifikat
 entschlüsseln, werden Sie nun noch erfahren, wie Sie verschlüsselte 
 \textbf{S/MIME}-\Email{}s entschlüsseln.
 
-Die Antwort lautet auch hier: Genauso wie bei OpenPGP! Sie öffnen in
-MS Outlook eine S/MIME-verschlüsselte \Email{} und geben im aufgehenden
-Dialog Ihre Passphrase ein. Sie bekommen einen ähnlichen Statusdialog
-wie bei OpgenPGP. Nach dem Schließen dieses Dialogs sehen Sie die
+Die Antwort lautet auch hier: Genauso wie bei OpenPGP!
+Der Unterschied zu OpenPGP ist lediglich, dass S/MIME \textit{nicht}
+von Adele unterstützt wird und somit die obige Übung nur für OpenPGP
+gilt.
+
+Zum entschlüsseln einer S/MIME-verschlüsselten \Email{} öffnen Sie
+die Nachricht in Outlook und geben im aufgehenden Dialog Ihre Passphrase ein. 
+Sie bekommen einen ähnlichen
+Statusdialog wie bei OpgenPGP. Nach dem Schließen dieses Dialogs sehen Sie die
 entschlüsselte S/MIME-\Email{}.
 
 
@@ -1769,38 +1774,69 @@ Jetzt wird es noch einmal spannend: Wir versenden eine verschlüsselte \Email{}!
 Sie brauchen dazu Outlook, Kleopatra und natürlich ein Zertifikat
 Ihres Korrespondenzpartners.
 
-Die Schritte zum Verschlüsseln unterscheiden sich für OpenPGP und
-S/MIME, so dass wir das Vorgehen auf den nächsten Seiten in getrennten
-Abschnitten behandeln.
+~\\
+Erstellen Sie zunächst in Outlook eine neue \Email und adressieren Sie diese an Ihren
+Korrespondenzpartner.
 
-Erstellen Sie zunächst in Outlook eine neue \Email, die Sie nun
-verschlüsselt versenden möchten.
+%% Original page 45
+
+
+\textit{Hinweis nur für OpenPGP:}\\Sie können zum Üben dieses Vorgangs
+mit OpenPGP wieder Adele nutzen. S/MIME wird von Adele nicht
+unterstützt! \margin{\IncludeImage[width=1.5cm]{openpgp-icon}}
+Adressieren Sie dazu Ihre zu verschlüsselnde \Email{} an
+\verb-adele@gnupp.de-. Der Inhalt der Nachricht ist egal -- Adele kann
+nicht wirklich lesen...
 
 \clearpage
-%% Original page 45
-\section{Mit OpenPGP verschlüsseln}
+\subsubsection{Protokoll bestimmen -- PGP/MIME oder S/MIME}
+\label{encryptProtocol}
+Bestimmen Sie nun das Protokoll -- PGP/MIME oder S/MIME --
+mit der Sie Ihre Nachricht verschlüsseln wollen. Die hängt davon ab,
+in welchem Format das Zertifikat Ihres Korrespondenzpartners bei Ihnen
+vorliegt.
+Klicken Sie dazu im Menü \Menu{Extras$\rightarrow$GnuPG Protokoll} des geöffneten
+Outlook-Nachrichtenfensters auf:
+\textit{PGP/MIME}, \textit{S/MIME} oder \textit{automatisch}.
 
-\margin{\IncludeImage[width=1.5cm]{openpgp-icon}}
-Sie können zum Üben dieses Vorgangs wieder Adele nutzen.
-Adressieren Sie dazu Ihre zu verschlüsselnde \Email{} an
-\verb-adele@gnupp.de-.
-Wenn Sie einen ebenso geduldigen menschlichen Korrespondenzpartner
-haben, dann adressieren Sie Ihre \Email{} eben an diesen.
+Sofern Sie diese Auswahl auf der Voreinstellung \textit{automatisch} lassen, haben Sie
+später im Verschlüsselungsprozess noch die Möglichkeit zwischen PGP/MIME und S/MIME zu wählen.
 
-Schreiben Sie eine Nachricht -- es ist egal, was: Adele kann nicht wirklich lesen$\ldots$
+Haben Sie ein bevorzugtes GnuPG-Protokoll? Dann können Sie unter den
+den GpgOL-Optionen
+(\Menu{Extras$\rightarrow$Optionen$\rightarrow$GpgOL}) 
+PGP/MIME oder S/MIME als Voreinstellung definieren.
 
-Bestimmen Sie OpenPGP als Zertifikatstyp: Klicken Sie dazu im Menü des geöffneten 
-Outlook-Nachrichtenfensters auf \Menu{Extras$\rightarrow$GnuPG Protokoll$\rightarrow$PGP/MIME}.
-
-Jetzt fehlt nur noch die Angabe, dass Sie Ihre Nachricht verschlüsselt senden wollen:
-Wählen Sie \Menu{Extras$\rightarrow$Nachrichten mit GnuPG verschlüsseln}. 
-Die Schaltfläche mit dem gelb/roten Icon in der
-Symbolleiste ist aktiviert (Sie können auch gleich direkt auf diese
-Schaltfläche klicken):
+~\\
+\textbf{Wichtiger Hinweis nur für S/MIME:}\\
+Nach der Installation von Gpg4win ist die
+\margin{\IncludeImage[width=1.5cm]{smime-icon}}
+S/MIME-Funktionalität in GpgOl deaktiviert. Wenn Sie S/MIME nutzen
+möchten, sollten Sie zuvor unter
+\Menu{Extras$\rightarrow$Optionen$\rightarrow$GpgOL} die Option
+\textit{S/MIME Unterstützung einschalten} aktivieren:
 
 % TODO screenshot: OL composer with Adele's address and body text
 \begin{center}
-\IncludeImage[width=0.9\textwidth]{sc-ol-send-enc-msg1}
+\IncludeImage[width=0.45\textwidth]{sc-gpgol-options_de}
+\end{center}
+
+
+\clearpage
+\subsubsection{Verschlüsselung aktivieren}
+Jetzt fehlt nur noch die Angabe, dass Sie Ihre Nachricht auch wirklich
+verschlüsselt versenden wollen:
+Wählen Sie \Menu{Extras$\rightarrow$Nachricht mit GnuPG verschlüsseln}.
+Die Schaltfläche mit dem Schloss-Icon in der
+Symbolleiste ist aktiviert (Sie können auch gleich direkt auf diese
+Schaltfläche klicken).
+
+Ihre Outlook-Nachrichtenfenster sollte nun etwas so aussehen
+(exemplarisch wurde hier OpenPGP als Verschlüsselungstechnik gewählt):
+
+% TODO screenshot: OL composer with Adele's address and body text
+\begin{center}
+\IncludeImage[width=0.7\textwidth]{sc-ol-sendEncryptedMail_de}
 \end{center}
 Um die Verschlüsselungsoption wieder zu deaktivieren genügt ein
 erneuter Klick auf die o.g. Schaltfläche.
@@ -1808,10 +1844,11 @@ erneuter Klick auf die o.g. Schaltfläche.
 Klicken Sie nun auf \Button{Senden}.
 
 \clearpage
+\subsubsection{Zertifikatsauswahl}
 Daraufhin öffnet Kleopatra ein Fenster, in dem Sie das Zertifikat des
 Empfängers angeben. Kleopatra wählt -- abhängig von der
 Empfänger-\Email{}-Adresse -- in der Regel das passende Zertifikat
-aus.
+automatisch aus.
 
 % TODO screenshot: kleopatra encryption dialog - certificate selection
 % (with Adele + my own certificate)
@@ -1819,65 +1856,53 @@ aus.
 \IncludeImage[width=0.7\textwidth]{sc-kleopatra-openpgp-encryptDialog_de}
 \end{center}
 
-Sollten zu einer \Email{}-Adresse mehrere Zertifikate existieren
-oder Sie bewusst ein anderes Zertifikat auswählen wollen, klicken Sie
+Im Normalfall können Sie dieses vorausgewähte Zertifikat mit
+\Button{Weiter} bestätigen.
+
+\clearpage
+Sollte es jedoch nicht das richtige Zertifikat sein -- z.B. weil zu der \Email{}-Adresse 
+mehrere Zertifikate existieren oder Sie bewusst ein anderes Zertifikat
+auswählen wollen -- klicken Sie
 auf den \Button{...}-Button neben der Drop-Down-Liste.
 
-Sie bekommen ein Kleopatra-Dialog, der Ihnen alle OpenPGP-Zertifikate
-auflistet, die in Ihrer Zertifikatsverwaltung existieren (und von
-Ihnen importiert wurden).
-In unserem Beispiel sind das Adeles OpenPGP-Zertifikat und 
-Ihr eigenes OpenPGP-Zertifikat.
+Sie bekommen einen Kleopatra-Dialog mit einer Auflistung aller Zertifikate des
+gewählten Zertifikatstyps, die in Ihrer Zertifikatsverwaltung
+existieren (also von Ihnen bis dahin importiert wurden).
+Exemplarisch sehen Sie hier eine Auswahl von verfügbaren
+OpenPGP-Zertifikaten:
 
 % TODO screenshot: kleopatra encryption dialog 2 - openpgp certificate list
 \begin{center}
-\IncludeImage[width=0.7\textwidth]{sc-kleopatra-openpgp-encryptDialog_de}
+\IncludeImage[width=0.7\textwidth]{sc-kleopatra-encryption-chooseOpenpgpCertificate_de}
 \end{center}
 
-Wählen Sie Adeles OpenPGP-Zertifikat aus, denn damit muss Ihre Nachricht ja
+Wählen Sie das korrekte Zertifikat Ihres Korrespondenzpartners aus, denn damit muss Ihre Nachricht ja
 verschlüsselt werden.
 
 Sie erinnern sich an den Grundsatz:
-
 \begin{quote}
     \textbf{Wenn Sie an jemanden verschlüsselte \Email{}s schicken wollen,
   müssen Sie dessen Zertifikat haben und zum Verschlüsseln benutzen.}
 \end{quote}
 
-
-Klicken Sie auf \Button{Weiter}. Ihre Nachricht wird nun
-verschlüsselt.
+Klicken Sie auf \Button{Weiter}. Ihre Nachricht wird nun verschlüsselt.
 
 \clearpage
+\subsubsection{Verschlüsselung abschließen}
 Wurde Ihre Nachricht erfolgreich verschlüsselt und versandt, erhalten
 Sie eine Meldung, die Ihnen dies bestätigt:
 
 % TODO screenshot: kleopatra encryption successfully
 \begin{center}
-\IncludeImage[width=0.7\textwidth]{sc-kleopatra-openpgp-encryptDialog_de}
+\IncludeImage[width=0.7\textwidth]{sc-kleopatra-encryption-successful_de}
 \end{center}
 
-\textbf{Herzlichen Glückwunsch!  Sie haben Ihre erste \Email{}
+\textbf{Herzlichen Glückwunsch! Sie haben Ihre erste \Email{}
 verschlüsselt!}
 
-\clearpage
-\section{Mit S/MIME verschlüsseln}
-\margin{\IncludeImage[width=1.5cm]{smime-icon}}
 
 
-\clearpage
-Sofern Sie diese Auswahl auf der Voreinstellung \textit{automatisch} lassen, haben Sie
-später noch die Möglichkeit zwischen PGP/MIME und S/MIME zu wählen.
 
-Haben Sie ein bevorzugtes GnuPG-Protokoll? Dann können Sie unter den
-den GpgOL-Optionen
-(\Menu{Extras$\rightarrow$Optionen$\rightarrow$GpgOL}) 
-PGP/MIME oder S/MIME als Voreinstellung definieren.
-Nach der Installation von Gpg4win ist PGP/MIME hier aktiviert und
-S/MIME deaktiviert.
-
-
-\clearpage
 %% Original page 37 & 40
 \chapter{Sie signieren eine \Email{}}
 \label{ch:sign}
@@ -1897,19 +1922,18 @@ wurde.
 
 Die Signatur garantiert Ihrem Empfänger, dass die Nachricht
 tatsächlich von Ihnen stammt. Und: wenn Sie mit jemandem
-korrespondieren, dessen öffentlichen Schlüssel Sie nicht haben~(aus welchem
+korrespondieren, dessen Zertifikat Sie nicht haben~(aus welchem
 Grund auch immer), können Sie so die Nachricht wenigstens
 mit Ihrem eigenen privaten Schlüssel "`versiegeln"'.
 
 \textbf{Achtung:} Verwechseln Sie diese elektronische Signatur nicht mit den
 \Email{}-"`Signaturen"', die man unter eine \Email{} setzt und die zum
 Beispiel Ihre Telefonnummer, Ihre Adresse und Ihre Webseite enthalten.
-
 Während diese \Email{}-Signaturen einfach nur als eine Art Visitenkarte
 fungieren, schützt die elektronische Signatur Ihre \Email{} vor
 Manipulationen und bestätigt den Absender.
 
-Übrigens ist diese elektronische Unterschrift auch nicht mit der
+Übrigens ist die elektronische Unterschrift auch nicht mit der
 qualifizierten digitalen Signatur gleichzusetzen, wie sie im
 Signaturgesetz vom 22.~Mai 2001 in Kraft getreten ist. Für die
 private oder berufliche \Email{}-Kommunikation erfüllt sie allerdings
@@ -1917,10 +1941,8 @@ genau denselben Zweck.
 
 % cartoon:  Müller mit Schlüssel
 \begin{center}
-\IncludeImage[width=0.35\textwidth]{man-with-signed-key}
+\IncludeImage[width=0.4\textwidth]{man-with-signed-key}
 \end{center}
-
-
 
 
 
@@ -1929,87 +1951,168 @@ genau denselben Zweck.
 \section{Signieren}
 
 Tatsächlich ist die Signierung einer \Email{} noch einfacher als die
-Verschlüsselung: Wie im Kapitel~\ref{ch:encrypt}) besprochen,
-schreiben Sie Ihre Nachricht und ..%TODO
+Verschlüsselung (vgl. Kapitel~\ref{ch:encrypt}). Nachdem Sie eine neue
+\Email{} verfasst haben, gehen wir -- analog zur Verschlüsselung --
+folgende Schritte durch:
 
-Sie können nun entscheiden ob Sie eine völlig unverschlüsselte, eine
-signierte oder eine komplett verschlüsselte Mail versenden wollen ­--
-je nachdem, wie wichtig und schutzbedürftig der Inhalt ist.
+\begin{itemize}
+    \item Protokoll bestimmen -- PGP/MIME oder S/MIME
+    \item Signierung aktivieren
+    \item Zertifikatsauswahl
+    \item Signierung abschließen
+\end{itemize}
+
+Auf den nächsten Seiten beschreiben wir diese Schritte im Detail.
+
+\clearpage
+\subsubsection{Protokoll bestimmen -- PGP/MIME oder S/MIME}
+Genauso wie beim Verschlüsseln von \Email{}s müssen Sie vorher das
+Protokoll bestimmen, nach welchem Verfahren signiert bzw.
+verschlüsselt werden soll.
+
+Nutzen Sie dazu das Menü
+\Menu{Extras$\rightarrow$GnuPG Protokoll} im
+Outlook-Nachrichtenfenster und wählen Sie \textit{PGP/MIME},
+\textit{S/MIME} oder \textit{automatisch}. -- Die Erklärungen und
+Hinweise vom Verschlüsseln (siehe Seite~\pageref{encryptProtocol}) gelten auch
+für das Signieren.
 
 
-Anders als beim Verschlüsseln öffnet sich daraufhin ein Fenster 
-mit Ihrem \textit{eigenen} Zertifikat. Denn:
+\subsubsection{Signierung aktivieren}
+Bevor Sie Ihre Nachricht abschicken, geben Sie noch an, dass 
+Ihre Nachricht signiert versendet werden soll:
 
+Dazu aktivieren Sie den Menüeintrag \Menu{Extras$\rightarrow$Nachricht
+mit GnuPG signieren}. Die Schaltfläche mit dem unterschreibenden Stift
+wird aktiviert.
+
+Ihr \Email{}-Fenster sollte anschließend etwa so aussehen (als
+Protokoll wurde hier exemplarisch OpenPGP gewählt):
+% TODO screenshot: OL composer with Adele's address and body text
+\begin{center}
+\IncludeImage[width=0.7\textwidth]{sc-ol-sendSignedMail_de}
+\end{center}
+
+Wie beim Verschlüsseln können Sie natürlich auch die Signieroption
+jederzeit mit einem erneuten Klick auf die Schlatfläche wieder deaktivieren.
+
+Klicken Sie nun auf \Button{Senden}.
+
+\clearpage
+\subsubsection{Zertifikatsauswahl}
+Daraufhin öffnet Kleopatra ein Fenster, in dem -- anders als beim
+Verschlüsseln -- Ihre \textit{eigenen} Zertifikate angezeigt werden.
+
+
+% TODO screenshot: kleopatra sign dialog - certificate selection
+\begin{center}
+\IncludeImage[width=0.7\textwidth]{sc-kleopatra-openpgp-signDialog_de}
+\end{center}
+
+Denn:
 \begin{quote}
     \textbf{Signieren können Sie nur mit Ihrem eigenen geheimen Schlüssel.}
 \end{quote}
-
 Logisch, denn nur Ihr eigener geheimer Schlüssel bestätigt Ihre
-Identität. Der Korrespondenzpartner kann nun mit Ihrem Zertifikat, das
+Identität. Der Korrespondenzpartner kann dann mit Ihrem Zertifikat, das
 er bereits hat oder sich besorgen kann, Ihre Identität überprüfen.
-Denn nur Ihr geheimer Schlüssel passt ja zu Ihrem Zertifikat.
-
-%TODO: Buttons prüfen
-Klicken Sie also auf Ihr eigenes Zertifikat, mit dem Sie die
-\Email{} signieren wollen und bestätigen Sie mit \Button{OK}. 
-Im folgenden Fenster geben Sie Ihre geheime
-Passphrase ein und bestätigen Sie wieder mit \Button{OK}. Ein
-kurzer Hinweis erscheint sobald der Text signiert ist.
+Denn nur Ihr geheimer Schlüssel passt zu Ihrem Zertifikat.
 
 
-% screenshot: WinPT signing - enter passphrase
+Im Normalfall können Sie im obigen Dialog Ihr vorausgewähtes Zertifikat mit
+\Button{Weiter} bestätigen. Beim ersten Durchlauf des Signierprozesses müssen
+Sie jedoch zunächst Kleopatra Ihr bevorzugtes Zertifikat für OpenPGP
+bzw. S/MIME mitteilen.
+
+Sollte also noch kein Zertifikat ausgewählt oder nicht Ihr richtiges
+Zertifikat angezeigt sein -- z.B. weil Sie mehrere Zertifikate
+besitzen -- klicken Sie auf \Button{Signaturzertifikate ändern ...}.
+
+
+\clearpage
+Sie bekommen einen Auswahl-Dialog mit einer Auflistung aller Ihrer
+eigenen Zertifikate, die in Ihrer Zertifikatsverwaltung existieren.
+Nachfolgend der Dialog, gefüllt mit Beispielzertifikaten für OpenPGP
+und S/MIME:
+% TODO screenshot: kleopatra sign dialog 2 - choose certificate
 \begin{center}
-\IncludeImage{sc-winpt-sign-passwd}
+\IncludeImage[width=0.7\textwidth]{sc-kleopatra-sign-chooseOpenpgpCertificate_de}
 \end{center}
 
+Wählen Sie Ihr korrektes Zertifikat aus, mit dem Sie Ihre Nachricht
+signieren wollen.
 
-%\clearpage
-%% Original page 39
-Ihre Nachricht ist nun erfolgreich signiert.
+Klicken Sie anschließend auf \Button{OK}. Ihr ausgewähltes Zertifikat
+wird in den letzten "`\Email{} signieren"'-Dialog übernommen.
+
+Bestätigen Sie Ihr Zertifikat mit \Button{Weiter}.
 
 
-%\begin{verbatim}
-%-----BEGIN PGP SIGNED MESSAGE-----
-%Hash: SHA1
-%
-%Werte Adele,
-%
-%Wenn ich in deine Augen seh,
-%So schwindet all mein Leid und Weh;
-%Doch wenn ich küsse deinen Mund,
-%So werd ich ganz und gar gesund.
-%
-%    Harry
-%-----BEGIN PGP SIGNATURE-----
-%Version: GnuPG v1.4.3-cvs (MingW32)
-%
-%iD8DBQFD36LVVyUTMs2Gh/YRAn2sAJ4wH2h8g+rFyxXQSsuYzZWzYMKTdgCeK0sK
-%CEL3//4INzHUNA/eqR3XMi0=
-%=tiQ5
-%-----END PGP SIGNATURE-----
-%\end{verbatim}
+\clearpage
+\subsubsection{Signierung abschließen}
+Um die Signierung Ihrer \Email{} abzuschließen, werden Sie
+aufgefordert im folgenden Fenster Ihre geheime Passphrase einzugeben:
 
-%Wenn Frau Adele diese \Email{}
-%erhält, kann sie sicher sein,
-%\begin{enumerate}
-%\item dass die Nachricht von Herrn Heine stammt
-%\item dass sie nicht verändert wurde
-%\end{enumerate}
-%
-%Hätte zum Beispiel jemand das "`gesund"' in dem obigen Beispiel zu
-%"`krank"' verändert, wäre die Signatur "`gebrochen"', dass heißt, die
-%\Email{} wäre mit dem Vermerk "`Bad signature"' oder "`Überprüfung
-%fehlgeschlagen"' beim Empfänger versehen, sobald die Signatur
-%überprüft wird.
+% TODO screenshot: kleopatra sign dialog 2 - choose certificate
+\begin{center}
+\IncludeImage[width=0.45\textwidth]{sc-kleopatra-sign-OpenpgpPinentry_de}
+\end{center}
+
+Dies ist notwendig, weil Sie mit Ihrem eignen geheimen Schlüssel
+signieren. Bestätigen Sie Ihre Eingabe mit \Button{OK}.
+
+Ihre Nachricht wird nun signiert und versandt.
+Nach erfolgreicher Signierung Ihrer Nachricht, erhalten
+Sie folgenden Dialog:
+
+% TODO screenshot: kleopatra sign successful
+\begin{center}
+\IncludeImage[width=0.7\textwidth]{sc-kleopatra-sign-successful_de}
+\end{center}
+
+\textbf{Herzlichen Glückwunsch! Sie haben Ihre erste \Email{}
+signiert!}
+
+
+\clearpage
+\subsubsection{Fassen wir kurz zusammen...}
+Sie haben gelernt, wie Sie eine \Email{} mit Ihrem eigenen Zertifikat
+\textbf{signieren}.
+
+Seit dem letzten Kapitel wissen Sie nun auch, wie Sie eine
+\Email{} mit dem Zertifikat Ihres Korrespondenzpartners
+\textbf{verschlüsseln}.
+
+Damit beherschen Sie nun die beiden wichtigsten Techniken für einen
+sicheren \Email{}-Versand.
+
+Natürlich können Sie beide Techniken auch kombinieren. Entscheiden Sie
+ab sofort bei jeder neuen \Email{}, wie Sie Ihre Nachricht versenden wollen
+-- je nachdem, wie wichtig und schutzbedürftig der
+Inhalt Ihrer \Email{} ist:
+
+\begin{itemize}
+    \item unverschlüsselt
+    \item verschlüsselt
+    \item signiert
+    \item signiert und verschlüsselt \textit{(Mehr dazu im
+        Abschnitt~\ref{encsig}, S.~\pageref{encsig})}
+\end{itemize}
+
+Diese vier Kombinationen können Sie entweder mit OpenPGP oder mit
+S/MIME realisieren.
+
 
 
 \clearpage
 \section{Signatur mit GpgOL überprüfen}
 %% Original page 41
+Angenommen Sie erhalten eine signierte \Email{} Ihres
+Korrespondenzpartners.
 
-Die Überprüfung einer solchen elektronischen Signatur ist sehr einfach.
+Die Überprüfung dieser elektronischen Signatur ist sehr einfach.
 Alles was Sie dazu brauchen, ist das OpenPGP- oder X.509-Zertifikat
-Ihres Korrespondenzpartners, dessen Signatur Sie überprüfen möchten.
+Ihres Korrespondenzpartners.
 Dessen Zertifikat sollten Sie vor der Überprüfung bereits
 in Ihre Kleopatra Zertifikatsverwaltung importiert haben
 (vgl. Kapitel~\ref{ch:keyring}).
@@ -2028,7 +2131,7 @@ in einem Statusdialog:
 \IncludeImage[width=0.45\textwidth]{sc-kleopatra-encryptVerify_de}
 \end{center}
 
-Die Entschlüsselung war erfolgreich! Schließen Sie den Dialog, um die
+Die Signaturprüfung war erfolgreich! Schließen Sie den Dialog, um die
 signierte \Email{} zu lesen.
 
 Möchten Sie die Überprüfung noch einmal manuell aufrufen,
@@ -2043,7 +2146,7 @@ nicht auszuschließen, dass die \Email{} durch eine fehlerhafte Übertragung
 verändert wurde. Das ist zunächst der wahrscheinlichste Fall. Es kann
 jedoch auch bedeuten, dass der Text nachträglich verändert wurde.
 
-Wie Sie in einem solchen Fall vorgehen sollten,
+Wie Sie in einem solchen Fall mit der gebrochenen Signatur umgehen sollten,
 erfahren Sie im Abschnitt~\ref{brokenSignature}.
 
 
@@ -2107,10 +2210,10 @@ dass Ihre \Email{} manipuliert wurde:
 
   "`Word Wrap"' bezeichnet den Umbruch von Zeilen in der \Email{}. Beides
   verändert natürlich die \Email{} und "`bricht"' die Signatur, obwohl
-  niemand sie willentlich verändert hat.  Bei Outlook Express
+  niemand sie willentlich verändert hat.  Bei Outlook 2003
   beispielsweise muss diese Option unter
-  \Menu{Extras$\rightarrow$Optionen$\rightarrow$Senden$\rightarrow$NurText-Einstellungen$\rightarrow$Textkodierung
-  mit Keine} aktiviert sein, wie es auch standardmäßig voreingestellt ist.
+  \Menu{Extras$\rightarrow$Optionen$\rightarrow$E-Mail-Format} das Nachrichtenformat
+  auf \textit{Nur Text} eingestellt sein.
 \end{enumerate}
 
 Häufig sind falsche Einstellungen am \Email{}-Programm der Grund für
@@ -2123,6 +2226,7 @@ eine gebrochene Signatur.
 \clearpage
 %% Original page 42
 \section{Verschlüsseln und signieren}
+\label{encsig}
 
 Normalerweise verschlüsseln Sie eine Nachricht mit dem Zertifikat 
 Ihres Korrespondenzpartners, der dann mit seinem geheimen Schlüssel die
@@ -2142,7 +2246,7 @@ ist "`gültig"', so kann diese Datei nur von Ihrem privaten Schlüssel
 kodiert worden sein. Und zu dem dürfen ja nur Sie selbst Zugang
 haben.
 
-Wenn Sie ganz sicher gehen will, können Sie beide Möglichkeiten
+Wenn Sie ganz sicher gehen wollen, können Sie beide Möglichkeiten
 kombinieren, also die \Email{} verschlüsseln und signieren:
 
 \begin{enumerate}
@@ -2168,7 +2272,7 @@ Hülle öffnet er mit Ihrem Zertifikat und hat den Beweis Ihrer
 Urheberschaft, denn wenn Ihr Zertifikat passt, kann er nur mit Ihrem
 Geheimschlüssel kodiert worden sein.
 
-Sehr trickreich und­-- wenn man ein wenig darüber nachdenkt -- auch
+Sehr trickreich und~-- wenn man ein wenig darüber nachdenkt -- auch
 ganz einfach.
 
 
@@ -2177,44 +2281,50 @@ ganz einfach.
 %% Original page 47
 \chapter{Wie Sie Ihre \Email{}s verschlüsselt archivieren}
 
-Eine Einstellung müssen Sie noch vornehmen, damit Sie Ihre \Email{}s
-verschlüsselt aufbewahren können.  Natürlich können Sie einfach eine
-Klartextversion Ihrer Texte aufbewahren, aber das wäre eigentlich
-nicht angebracht. Wenn Ihre Mitteilung geheimhaltungsbedürftig war,
-sollte sie auch nicht im Klartext auf Ihrem Rechner gespeichert sein.
-Also sollte immer eine verschlüsselte Kopie der \Email{} aufbewahrt
-werden.
+Eine Einstellung müssen Sie nun noch vornehmen: Es geht um Ihre
+\Email{}s, die Sie verschlüsselt versendetet haben.
 
-Sie ahnen das Problem: zum Entschlüsseln der archivierten \Email{}s
-braucht man den geheimen Schlüssel des Empfängers ­-- und den haben
-Sie nicht und werden Sie nie haben$\ldots$
+Wie können Sie diese wichtigen Nachrichten sicher archivieren?
+Natürlich können Sie einfach eine Klartextversion Ihrer Texte aufbewahren,
+aber das wäre eigentlich nicht angebracht. Wenn Ihre Mitteilung geheimhaltungsbedürftig war,
+sollte sie auch nicht im Klartext auf Ihrem Rechner gespeichert sein.
+Sie sollten also stets Ihre verschlüsselt gesendeten \Email{}s auch
+\textit{verschlüsselt} aufbewahren!
+
+Sie ahnen das Problem: zum Entschlüsseln Ihrer archivierten
+(versendeten) \Email{}s braucht Sie aber den geheimen Schlüssel des
+Empfängers -- und den haben Sie nicht und werden Sie nie haben$\ldots$
 
 Also was tun?
 
-Ganz einfach: Sie verschlüsseln zusätzlich auch an sich selbst.
+Ganz einfach: \textbf{Sie verschlüsseln zusätzlich auch an sich
+selbst!}
 
-Die Nachricht wird für den eigentlichen Empfänger (z.B. Adele), als
-auch mit Ihren eigenen öffenlichen Schlüssel verschlüsselt.  So können
-Sie den Text auch später noch einfach mit Ihrem eigenen
-Geheimschlüssel wieder lesbar machen.
+Die Nachricht wird einmal für Ihren eigentlichen Korrespondenzpartner
+(z.B. Adele) verschlüsselt und ein weiteres Mal auch für Sie, mit
+Hilfe Ihres eigenen Zertifikats. So können Sie die \Email{} auch später noch einfach
+mit Ihrem eigenen geheimen Schlüssel wieder lesbar machen.
 
-Da Gpg4win nicht wissen kann, welchen Schlüssel Sie benutzen ­-- Sie
-können ja auch mehrere haben --­ müssen Sie dem Programm dies
-mitteilen.
+Da Gpg4win nicht wissen kann, welchen Schlüssel Sie benutzen (Sie
+können ja auch mehrere haben) müssen Sie dem Programm dies
+mitteilen. 
+
+Wie? -- Das erfahren Sie auf der nächsten Seite.
 
 \clearpage
 %% Original page 48
-Um diese Option zu nutzen, genügt ein Mausklick: Öffnen Sie WinPT und
-dort das Menü \Menu{Einstellungen $\rightarrow$ GPG}.
+%TODO#: Encrypt to this key - Wo in den Einstellungen?
+Um diese Option zu nutzen, genügt ein Mausklick: Öffnen Sie Kleopatra und
+dort das Menü \Menu{TODO}.
 
 % screenshot: Winpt configuration dialog
-\begin{center}
-\IncludeImage[width=0.7\textwidth]{sc-winpt-enctoself}
-\end{center}
+%\begin{center}
+%\IncludeImage[width=0.7\textwidth]{sc-winpt-enctoself}
+%\end{center}
 
-In dem Einstellungsfenster, das sich nun öffnet, tragen Sie unter
-"`Encrypt to this key"' Ihren Schlüssel ein bzw. die
-dazugehörige \Email{}-Adresse.
+%In dem Einstellungsfenster, das sich nun öffnet, tragen Sie unter
+%"`Encrypt to this key"' Ihren Schlüssel ein bzw. die
+%dazugehörige \Email{}-Adresse.
 
 Eine entsprechende Option finden Sie auch bei allen \Email{}programmen,
 die GnuPG direkt unterstützen.
@@ -2222,36 +2332,30 @@ die GnuPG direkt unterstützen.
 
 \clearpage
 %% Original page 49
-\textbf{Fassen wir kurz zusammen:}
+\subsubsection{Fassen wir kurz zusammen...}
 
 \begin{enumerate}
-\item Sie haben mit dem öffentlichen Schlüssel Ihres Partners eine
+\item Sie haben mit dem Zertifikat Ihres Korrespondenzpartners eine
   \Email{} verschlüsselt und ihm damit geantwortet.
-\item Sie haben WinPT mitgeteilt, dass Archivkopien Ihrer \Email{}s auch
-  zusätzlich mit Ihrem eigenen Schlüssel verschlüsselt werden sollen.
+\item Kleopatra verschlüsselt Ihre gesendeten verschlüsselten \Email{}s auch
+  zusätzlich mit Ihrem eigenen Zertifikat, so dass die Nachrichten für
+  Sie lesbar bleiben.
 \end{enumerate}
 
-\textbf{Das war's! Willkommen in der Welt der freien und sicheren
-\Email{}-Verschlüsselung!}
+\vspace{2cm}
+\textbf{Das war's! Zum Ende dieses ersten Teils des Compendiums werden
+Sie nun ein sehr fundiertes Einsteigerwissen über Gpg4win besitzen.}
 
-\textbf{\OtherBook{} Lesen Sie nun die Kapitel 10 bis 12 im Handbuch "`\xlink{Gpg4win
-für Durchblicker}{durchblicker.html}"'.  Sie erfahren dort unter anderem, wie man \Email{}s
-signiert und einen bereits vorhandenen Geheimschlüssel in GnuPG
-importiert und verwendet.}
+\textbf{Willkommen in der Welt der freien und sicheren \Email{}-Verschlüsselung!}
 
-\textbf{\OtherBook{} Ab Kapitel 13 des Handbuchs "`\xlink{Gpg4win für
-Durchblicker}{durchblicker.html}"' 
-können Sie weiterhin in zwei spannenden Kapiteln lesen, auf welchen
-Verfahren die Sicherheit von GnuPG beruht.}
+Für ein noch besseres Verständnis, wie Gpg4win im Hintergrund wirklich
+funktioniert, empfehlen wir Ihnen sich nun mit dem zweiten,
+fortgeschrittenen Teil von Gpg4win zu beschäftigten. Wir versprechen
+Ihnen, Sie werden viele spannende Dinge darin entdecken!
 
-Und Sie können lesen, wie die geheimnisvolle Mathematik hinter GnuPG
-im Detail funktioniert.
-
-Genau wie das Kryptographiesystem Gpg4win wurden diese Texte nicht nur
+Genau wie das Kryptographiesystem Gpg4win wurden dieses Compendium nicht nur
 für Mathematiker, Geheimdienstler und Kryptographen geschrieben,
-sondern
-
-\textbf{für jedermann.}
+sondern \textbf{für jedermann.}
 
 
 

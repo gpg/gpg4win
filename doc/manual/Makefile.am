@@ -46,6 +46,16 @@ png_files = \
 		sc-ol-sendNewX509Certificate_de.png\
 		sc-ol-adele-sendOpenpgpKey-inline_de.png\
 		sc-ol-adele-sendOpenpgpKey-attachment_de.png\
+		sc-kleopatra-import-certificate_de.png\
+		sc-kleopatra-encryption-chooseOpenpgpCertificate_de.png\
+		sc-kleopatra-encryption-successful_de.png\
+		sc-ol-sendEncryptedMail_de.png\
+		sc-ol-sendSignedMail_de.png\
+		sc-gpgol-options_de.png\
+		sc-kleopatra-openpgp-signDialog_de.png\
+		sc-kleopatra-sign-chooseOpenpgpCertificate_de.png\
+		sc-kleopatra-sign-OpenpgpPinentry_de.png\
+		sc-kleopatra-sign-successful_de.png\
 		sc-wordpad-editOpenpgpKey_de.png\
 		\
 		sc-inst-welcome.png sc-inst-license.png \
