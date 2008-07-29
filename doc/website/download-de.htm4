@@ -32,14 +32,14 @@ kann hier herunter geladen werden:</p>
   haben.  Danach folgen Sie den Hinweisen zur Installation
   im <a href="/handbuecher/einsteiger.html">Handbuch</a>.
 
-<h2>Gpg4win 1.9.5-BETA</h2>
+<h2>Gpg4win 1.9.2-BETA</h2>
 
 <p>Sie können eine BETA-Version der nächsten Generation hier herunterladen
 (diese Version wird <b>nicht für den produktiven Einsatz empfohlen</b> und es wird dringend
 angeraten sorgfältig die <a href="http://wald.intevation.org/plugins/scmsvn/viewcvs.php/trunk/doc/README-BETA-de.txt?root=gpg4win&view=markup">Hinweise zu BETA-Version</a> zu lesen bevor man die BETA-Verstion testet):
 </p>
 
-<a href="http://ftp.gpg4win.org/Beta/gpg4win-1.9.5-beta.exe" class="dlbutton2">gpg4win&nbsp;1.9.5 BETA<br>
+<a href="http://ftp.gpg4win.org/Beta/gpg4win-1.9.2-beta.exe" class="dlbutton2">gpg4win&nbsp;1.9.2 BETA<br>
 <span class="version">Größe: 41 MByte<br></span></a> 
 
 <p>Signaturen und Quelltexte finden sich hier: <a href="http://ftp.gpg4win.org/Beta/">http://ftp.gpg4win.org/Beta/</a>.

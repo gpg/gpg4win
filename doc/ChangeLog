@@ -1,3 +1,8 @@
+2008-07-29  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+
+	* website/download.htm4, website/download-de.htm4: Back to version
+	1.9.2 (because 1.9.5 not a good public beta).
+
 2008-07-25  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
 	* manual/gpg4win-compendium-de.tex, manual/Makefile.am:
