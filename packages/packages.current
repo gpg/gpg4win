@@ -288,6 +288,9 @@ chk  f6c36e9d99736883a8ce5b80b0a51d854cbbbc70
 file pinentry/pinentry-0.7.5.tar.gz
 chk  6699a1ff94c649e8905199d480c6412cc43bad3d 
 
+file dirmngr/dirmngr-1.0.2.tar.bz2
+chk  55c82f918731f142cbe26d598a97c0c08bd7d1f8
+
 
 # (Snapshots)
 server ftp://ftp.g10code.com/g10code/scratch
@@ -295,9 +298,6 @@ server ftp://ftp.g10code.com/g10code/scratch
 name gnupg2-2.0.10-svn4797.tar.bz2
 file gnupg-2.0.10-svn4797.tar.bz2
 chk  8618af7e9fa3cc0d0d13ccc997e96b3520b39471
-
-file dirmngr-1.0.2-svn302.tar.bz2
-chk  624ee2038378f70a3ab1906cb2431306d104b202
 
 file gpgme-1.1.7-svn1327.tar.bz2
 chk  4a0b67c6678cfe5b1e8c0fb3cef5a14677015221
