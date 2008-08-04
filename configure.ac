@@ -1,5 +1,5 @@
 # configure.ac for GPG4Win
-# Copyright (C) 2005, 2006, 2007 g10 Code GmbH
+# Copyright (C) 2005, 2006, 2007, 2008 g10 Code GmbH
 # 
 # This file is part of GPG4Win
 # 
@@ -26,7 +26,7 @@ min_automake_version="1.9.3"
 # "svn up" and "autogen.sh" right before creating a distribution.
 # Right after a release the make target "copy-news" is to be called!
 m4_define([my_version], [1.9.5-beta])
-m4_define([my_issvn], [no])
+m4_define([my_issvn], [yes])
 
 m4_define([svn_revision], m4_esyscmd([echo -n $( (svn info 2>/dev/null \
           ||echo 'Revision: 0')|sed -n '/^Revision:/ s/[^0-9]//gp'|head -1)]))

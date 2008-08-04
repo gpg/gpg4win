@@ -1,3 +1,7 @@
+2008-08-04  Marcus Brinkmann  <marcus@ulysses.g10code.com>
+
+	* configure.ac: Post-release fixup.
+
 2008-08-01  Marcus Brinkmann  <marcus@g10code.de>
 
 	* src/pkg-config: Return exit code of pkg-config.
