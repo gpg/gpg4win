@@ -375,29 +375,31 @@ chk  a4e673c1b1b1cc420e771413edc53ef89fe7773a
 
 # kdelibs
 
-#server ftp://ftp.kdab.net/pub/gpg4win
-server ftp://ftp.intevation.de/gpg4win
+server ftp://ftp.kdab.net/pub/gpg4win
 
-file kdelibs-20080718-bin.zip
-chk  e5272ca1ed1f58ca0726bb9221a4424d23f11451
+name kdelibs-20080804-bin.zip
+file kdelibs-for-kleo-20080804-bin.zip
+chk  c17712641e982172d9e9e43f6ac90a3424fd3681
 
-file kdelibs-20080718-lib.zip
-chk  b51bb9593beb4bff00b9539b538aeb20a80af720
+name kdelibs-20080804-lib.zip
+file kdelibs-for-kleo-20080804-dev.zip
+chk  7a598444b7cb40cef5a9a4cc26d040745f4a2cb9
 
-file kdelibs-20080718-src.zip
-chk  5119f967cc373c723ec0ec83251067484f6f83eb
+name kdelibs-20080804-src.zip
+file kdelibs-for-kleo-20080804-src.zip
+chk  cd726b91b33bd5739fa68e923209cf860dc99276
 
 # Kleopatra
 
 server ftp://ftp.kdab.net/pub/gpg4win
 
-file kleopatra-20080706-bin.zip
-chk  5050a8393e34376825a5915299e41326a2885591
+file kleopatra-20080804-bin.zip
+chk  df35c527764b5b3b148274ab5ebfb83e37394937
 
 # FIXME: These belong in the bin package.
-name kleopatra-20080706-lib.zip
-file kleopatra-20080706-doc.zip
-chk  3a8b9d529f8682b6249bd77fc521129c8e5e6a70
+name kleopatra-20080804-lib.zip
+file kleopatra-20080804-doc.zip
+chk  cfd728ea56587518362c668695cf3d639ca4d43d
 
-file kleopatra-20080706-src.zip
-chk  a01812755881dc7519ecd820486db30ba5f39fb4
+file kleopatra-20080804-src.zip
+chk  403e6d831f3bcf3f4e82adfcdbfe38d30ed2902b
