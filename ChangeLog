@@ -1,3 +1,7 @@
+2008-08-06  Marcus Brinkmann  <mb@10code.com>
+
+	* packages/packages.current: Update dirmngr and gnupg2.
+
 2008-08-06  Werner Koch  <wk@g10code.com>
 
 	* src/inst-gpgol.nsi: Install form files.
