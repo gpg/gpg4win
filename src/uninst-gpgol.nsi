@@ -30,6 +30,10 @@ Section "-un.gpgol"
   Call un.SourceDelete
 !else
 
+  Delete "$INSTDIR\share\gpgol\*.cfg"
+  Delete "$INSTDIR\share\gpgol\*.ico"
+  RMDir "$INSTDIR\share\gpgol"
+
   Delete "$INSTDIR\share\doc\gpgol\gpgol.pdf"
   RMDir "$INSTDIR\share\doc\gpgol"
   RMDir "$INSTDIR\share\doc"

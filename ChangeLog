@@ -1,3 +1,10 @@
+2008-08-06  Werner Koch  <wk@g10code.com>
+
+	* src/inst-gpgol.nsi: Install form files.
+	* src/uninst-gpgol.nsi: Unintsall form files.
+
+	* packages/packages.current: Update GpgOL.
+
 2008-08-05  Marcus Brinkmann  <marcus@ulysses.g10code.com>
 
 	* packages/packages.current: Update kdelibs and kleopatra.

@@ -3,6 +3,29 @@
 # The version number given below are for the standard installers as
 # distributed by www.gpg4win.org.
 
+Noteworthy changes in version 1.9.6
+------------------------------------------------
+
+(en) This is a BETA version of the new Gpg4win/2 architecture.
+     This version shall not be used in a production environment. 
+(de) Dies ist eine BETA Version der neuen Gpg4win/2 Architektur.
+     Diese Version soll nicht in einer Produktivumgebung
+     eingesetzt werden.
+
+~~~~~~~~~~~~~~~
+GnuPG:        2.0.10-svn4797
+DirMngr:      1.0.2
+Kleopatra:    20080804
+GPA:          0.7.7-svn899
+GpgOL:        0.10.15
+GpgEX:        0.9.0
+Claws-Mail:   3.4.0
+Novices:      1.0.0
+Einsteiger:   2.0.2
+Durchblicker: 2.0.2
+~~~~~~~~~~~~~~~
+
+
 Noteworthy changes in version 1.9.5 (2008-07-21)
 ------------------------------------------------
 
@@ -18,29 +41,6 @@ DirMngr:      1.0.2-svn302
 Kleopatra:    20080718
 GPA:          0.7.7-svn899
 GpgOL:        0.10.15-svn260
-GpgEX:        0.9.0
-Claws-Mail:   3.4.0
-Novices:      1.0.0
-Einsteiger:   2.0.2
-Durchblicker: 2.0.2
-~~~~~~~~~~~~~~~
-
-
-Noteworthy changes in version 1.9.6
-------------------------------------------------
-
-(en) This is a BETA version of the new Gpg4win/2 architecture.
-     This version shall not be used in a production environment. 
-(de) Dies ist eine BETA Version der neuen Gpg4win/2 Architektur.
-     Diese Version soll nicht in einer Produktivumgebung
-     eingesetzt werden.
-
-~~~~~~~~~~~~~~~
-GnuPG:        
-DirMngr:      1.0.2
-Kleopatra:    
-GPA:          
-GpgOL:        
 GpgEX:        0.9.0
 Claws-Mail:   3.4.0
 Novices:      1.0.0
