@@ -1,3 +1,7 @@
+2008-08-08  Marcus Brinkmann  <mb@g10code.com>
+
+	* packages/packages.current: Update gnupg2.
+
 2008-08-06  Marcus Brinkmann  <mb@10code.com>
 
 	* packages/packages.current: Update dirmngr and gnupg2.

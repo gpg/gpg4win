@@ -292,9 +292,9 @@ chk  6699a1ff94c649e8905199d480c6412cc43bad3d
 # (Snapshots)
 server ftp://ftp.g10code.com/g10code/scratch
 
-name gnupg2-2.0.10-svn4806.tar.bz
-file gnupg-2.0.10-svn4806.tar.bz
-chk  faa6d73d586233a37cab70845a8bf7595cb0c50c
+name gnupg2-2.0.10-svn4809.tar.bz
+file gnupg-2.0.10-svn4809.tar.bz
+chk  c784ecad4ee8e15c1cc9431ef5f20d372bb4f9f5
 
 file gpgme-1.1.7-svn1327.tar.bz2
 chk  4a0b67c6678cfe5b1e8c0fb3cef5a14677015221
