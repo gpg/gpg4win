@@ -1,3 +1,7 @@
+2008-08-08  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+
+	* packages/packages.current: Update kdelibs and kleopatra.
+
 2008-08-08  Marcus Brinkmann  <mb@g10code.com>
 
 	* packages/packages.current: Update gnupg2.
