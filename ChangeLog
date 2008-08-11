@@ -1,3 +1,8 @@
+2008-08-11  Marcus Brinkmann  <marcus@g10code.com>
+
+	* src/inst-sections.nsi: Reorder installation and uninstallation
+	sections.
+
 2008-08-11  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
 	* packages/packages.current: Add Kleopatra icons for start menu,

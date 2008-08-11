@@ -23,128 +23,32 @@
 
 !include "inst-gpg4win.nsi"
 
-!ifdef HAVE_PKG_GNUPG2
-!include "inst-gnupg2.nsi"
-!endif
-!ifdef HAVE_PKG_PINENTRY
-!include "inst-pinentry.nsi"
-!endif
-!ifdef HAVE_PKG_LIBGPG_ERROR
-!include "inst-libgpg-error.nsi"
-!endif
-!ifdef HAVE_PKG_W32PTH
-!include "inst-w32pth.nsi"
-!endif
-!ifdef HAVE_PKG_LIBASSUAN
-!include "inst-libassuan.nsi"
-!endif
-!ifdef HAVE_PKG_LIBKSBA
-!include "inst-libksba.nsi"
-!endif
-!ifdef HAVE_PKG_LIBGCRYPT
-!include "inst-libgcrypt.nsi"
-!endif
+# The order of installation must be the same as the build order.  You
+# can use tsort on the info in configure.ac, or just check out
+# gpg4win_build_list in config.nsi.
 !ifdef HAVE_PKG_ADNS
 !include "inst-adns.nsi"
 !endif
-!ifdef HAVE_PKG_LIBICONV
-!include "inst-libiconv.nsi"
-!endif
-!ifdef HAVE_PKG_PKGCONFIG
-!include "inst-pkgconfig.nsi"
-!endif
-!ifdef HAVE_PKG_ZLIB
-!include "inst-zlib.nsi"
+!ifdef HAVE_PKG_BZIP2
+!include "inst-bzip2.nsi"
 !endif
 !ifdef HAVE_PKG_CRYPT
 !include "inst-crypt.nsi"
 !endif
-!ifdef HAVE_PKG_REGEX
-!include "inst-regex.nsi"
-!endif
-!ifdef HAVE_PKG_DIRMNGR
-!include "inst-dirmngr.nsi"
-!endif
-!ifdef HAVE_PKG_PTHREADS_W32
-!include "inst-pthreads-w32.nsi"
-!endif
-!ifdef HAVE_PKG_GPGME
-!include "inst-gpgme.nsi"
-!endif
-!ifdef HAVE_PKG_GETTEXT
-!include "inst-gettext.nsi"
-!endif
-!ifdef HAVE_PKG_GLIB
-!include "inst-glib.nsi"
-!endif
-!ifdef HAVE_PKG_LIBPNG
-!include "inst-libpng.nsi"
-!endif
 !ifdef HAVE_PKG_JPEG
 !include "inst-jpeg.nsi"
 !endif
-!ifdef HAVE_PKG_GPGOL
-!include "inst-gpgol.nsi"
-!endif
-!ifdef HAVE_PKG_GPGEX
-!include "inst-gpgex.nsi"
-!endif
-!ifdef HAVE_PKG_PANGO
-!include "inst-pango.nsi"
-!endif
-!ifdef HAVE_PKG_CAIRO
-!include "inst-cairo.nsi"
-!endif
-!ifdef HAVE_PKG_ATK
-!include "inst-atk.nsi"
-!endif
-!ifdef HAVE_PKG_GTK_
-!include "inst-gtk+.nsi"
-!endif
-!ifdef HAVE_PKG_GPA
-!include "inst-gpa.nsi"
-!endif
-!ifdef HAVE_PKG_WINPT
-!include "inst-winpt.nsi"
+!ifdef HAVE_PKG_KDESUPPORT
+!include "inst-kdesupport.nsi"
 !endif
 !ifdef HAVE_PKG_LIBGSASL
 !include "inst-libgsasl.nsi"
 !endif
+!ifdef HAVE_PKG_LIBICONV
+!include "inst-libiconv.nsi"
+!endif
 !ifdef HAVE_PKG_LIBTASN1
 !include "inst-libtasn1.nsi"
-!endif
-!ifdef HAVE_PKG_OPENCDK
-!include "inst-opencdk.nsi"
-!endif
-!ifdef HAVE_PKG_GNUTLS
-!include "inst-gnutls.nsi"
-!endif
-!ifdef HAVE_PKG_LIBETPAN
-!include "inst-libetpan.nsi"
-!endif
-!ifdef HAVE_PKG_CLAWS_MAIL
-!include "inst-claws-mail.nsi"
-!endif
-#!ifdef HAVE_PKG_EUDORAGPG
-#!include "inst-eudoragpg.nsi"
-#!endif
-!ifdef HAVE_PKG_KDESUPPORT
-!include "inst-kdesupport.nsi"
-!endif
-!ifdef HAVE_PKG_QT
-!include "inst-qt.nsi"
-!endif
-!ifdef HAVE_PKG_OXYGEN_ICONS
-!include "inst-oxygen-icons.nsi"
-!endif
-!ifdef HAVE_PKG_KDELIBS
-!include "inst-kdelibs.nsi"
-!endif
-!ifdef HAVE_PKG_KLEOPATRA
-!include "inst-kleopatra.nsi"
-!endif
-!ifdef HAVE_PKG_MAN_NOVICE_EN
-!include "inst-man_novice_en.nsi"
 !endif
 !ifdef HAVE_PKG_MAN_ADVANCED_EN
 !include "inst-man_advanced_en.nsi"
@@ -155,10 +59,212 @@
 !ifdef HAVE_PKG_MAN_ADVANCED_DE
 !include "inst-man_advanced_de.nsi"
 !endif
+!ifdef HAVE_PKG_MAN_NOVICE_EN
+!include "inst-man_novice_en.nsi"
+!endif
+!ifdef HAVE_PKG_OXYGEN_ICONS
+!include "inst-oxygen-icons.nsi"
+!endif
+!ifdef HAVE_PKG_PKGCONFIG
+!include "inst-pkgconfig.nsi"
+!endif
+!ifdef HAVE_PKG_PTHREADS_W32
+!include "inst-pthreads-w32.nsi"
+!endif
+!ifdef HAVE_PKG_REGEX
+!include "inst-regex.nsi"
+!endif
+!ifdef HAVE_PKG_W32PTH
+!include "inst-w32pth.nsi"
+!endif
+!ifdef HAVE_PKG_ZLIB
+!include "inst-zlib.nsi"
+!endif
+!ifdef HAVE_PKG_QT
+!include "inst-qt.nsi"
+!endif
+!ifdef HAVE_PKG_GETTEXT
+!include "inst-gettext.nsi"
+!endif
+!ifdef HAVE_PKG_LIBPNG
+!include "inst-libpng.nsi"
+!endif
+!ifdef HAVE_PKG_LIBETPAN
+!include "inst-libetpan.nsi"
+!endif
+!ifdef HAVE_PKG_LIBASSUAN
+!include "inst-libassuan.nsi"
+!endif
+!ifdef HAVE_PKG_KDELIBS
+!include "inst-kdelibs.nsi"
+!endif
+!ifdef HAVE_PKG_LIBGPG_ERROR
+!include "inst-libgpg-error.nsi"
+!endif
+!ifdef HAVE_PKG_GLIB
+!include "inst-glib.nsi"
+!endif
+!ifdef HAVE_PKG_GPGEX
+!include "inst-gpgex.nsi"
+!endif
+!ifdef HAVE_PKG_LIBKSBA
+!include "inst-libksba.nsi"
+!endif
+!ifdef HAVE_PKG_LIBGCRYPT
+!include "inst-libgcrypt.nsi"
+!endif
+!ifdef HAVE_PKG_CAIRO
+!include "inst-cairo.nsi"
+!endif
+!ifdef HAVE_PKG_PANGO
+!include "inst-pango.nsi"
+!endif
+!ifdef HAVE_PKG_ATK
+!include "inst-atk.nsi"
+!endif
+!ifdef HAVE_PKG_OPENCDK
+!include "inst-opencdk.nsi"
+!endif
+!ifdef HAVE_PKG_DIRMNGR
+!include "inst-dirmngr.nsi"
+!endif
+!ifdef HAVE_PKG_GTK_
+!include "inst-gtk+.nsi"
+!endif
+!ifdef HAVE_PKG_GNUTLS
+!include "inst-gnutls.nsi"
+!endif
+!ifdef HAVE_PKG_PINENTRY
+!include "inst-pinentry.nsi"
+!endif
+!ifdef HAVE_PKG_GNUPG2
+!include "inst-gnupg2.nsi"
+!endif
+!ifdef HAVE_PKG_GPGME
+!include "inst-gpgme.nsi"
+!endif
+!ifdef HAVE_PKG_KLEOPATRA
+!include "inst-kleopatra.nsi"
+!endif
+!ifdef HAVE_PKG_CLAWS_MAIL
+!include "inst-claws-mail.nsi"
+!endif
+!ifdef HAVE_PKG_GPA
+!include "inst-gpa.nsi"
+!endif
+!ifdef HAVE_PKG_GPGOL
+!include "inst-gpgol.nsi"
+!endif
+!ifdef HAVE_PKG_WINPT
+!include "inst-winpt.nsi"
+!endif
+#!ifdef HAVE_PKG_EUDORAGPG
+#!include "inst-eudoragpg.nsi"
+#!endif
+
 !include "inst-final.nsi"
 
 # We have to invoke the uninstallers in reverse order!
 
+#!ifdef HAVE_PKG_EUDORAGPG
+#!include "uninst-eudoragpg.nsi"
+#!endif
+!ifdef HAVE_PKG_WINPT
+!include "uninst-winpt.nsi"
+!endif
+!ifdef HAVE_PKG_GPGOL
+!include "uninst-gpgol.nsi"
+!endif
+!ifdef HAVE_PKG_GPA
+!include "uninst-gpa.nsi"
+!endif
+!ifdef HAVE_PKG_CLAWS_MAIL
+!include "uninst-claws-mail.nsi"
+!endif
+!ifdef HAVE_PKG_KLEOPATRA
+!include "uninst-kleopatra.nsi"
+!endif
+!ifdef HAVE_PKG_GPGME
+!include "uninst-gpgme.nsi"
+!endif
+!ifdef HAVE_PKG_GNUPG2
+!include "uninst-gnupg2.nsi"
+!endif
+!ifdef HAVE_PKG_PINENTRY
+!include "uninst-pinentry.nsi"
+!endif
+!ifdef HAVE_PKG_GNUTLS
+!include "uninst-gnutls.nsi"
+!endif
+!ifdef HAVE_PKG_GTK_
+!include "uninst-gtk+.nsi"
+!endif
+!ifdef HAVE_PKG_DIRMNGR
+!include "uninst-dirmngr.nsi"
+!endif
+!ifdef HAVE_PKG_OPENCDK
+!include "uninst-opencdk.nsi"
+!endif
+!ifdef HAVE_PKG_ATK
+!include "uninst-atk.nsi"
+!endif
+!ifdef HAVE_PKG_PANGO
+!include "uninst-pango.nsi"
+!endif
+!ifdef HAVE_PKG_CAIRO
+!include "uninst-cairo.nsi"
+!endif
+!ifdef HAVE_PKG_LIBGCRYPT
+!include "uninst-libgcrypt.nsi"
+!endif
+!ifdef HAVE_PKG_LIBKSBA
+!include "uninst-libksba.nsi"
+!endif
+!ifdef HAVE_PKG_GPGEX
+!include "uninst-gpgex.nsi"
+!endif
+!ifdef HAVE_PKG_GLIB
+!include "uninst-glib.nsi"
+!endif
+!ifdef HAVE_PKG_LIBGPG_ERROR
+!include "uninst-libgpg-error.nsi"
+!endif
+!ifdef HAVE_PKG_KDELIBS
+!include "uninst-kdelibs.nsi"
+!endif
+!ifdef HAVE_PKG_LIBASSUAN
+!include "uninst-libassuan.nsi"
+!endif
+!ifdef HAVE_PKG_LIBETPAN
+!include "uninst-libetpan.nsi"
+!endif
+!ifdef HAVE_PKG_LIBPNG
+!include "uninst-libpng.nsi"
+!endif
+!ifdef HAVE_PKG_GETTEXT
+!include "uninst-gettext.nsi"
+!endif
+!ifdef HAVE_PKG_QT
+!include "uninst-qt.nsi"
+!endif
+!ifdef HAVE_PKG_ZLIB
+!include "uninst-zlib.nsi"
+!endif
+!ifdef HAVE_PKG_W32PTH
+!include "uninst-w32pth.nsi"
+!endif
+!ifdef HAVE_PKG_REGEX
+!include "uninst-regex.nsi"
+!endif
+!ifdef HAVE_PKG_PTHREADS_W32
+!include "uninst-pthreads-w32.nsi"
+!endif
+!ifdef HAVE_PKG_PKGCONFIG
+!include "uninst-pkgconfig.nsi"
+!endif
+!ifdef HAVE_PKG_OXYGEN_ICONS
+!include "uninst-oxygen-icons.nsi"
+!endif
 !ifdef HAVE_PKG_MAN_ADVANCED_DE
 !include "uninst-man_advanced_de.nsi"
 !endif
@@ -171,127 +277,29 @@
 !ifdef HAVE_PKG_MAN_NOVICE_EN
 !include "uninst-man_novice_en.nsi"
 !endif
-!ifdef HAVE_PKG_KLEOPATRA
-!include "uninst-kleopatra.nsi"
-!endif
-!ifdef HAVE_PKG_KDELIBS
-!include "uninst-kdelibs.nsi"
-!endif
-!ifdef HAVE_PKG_OXYGEN_ICONS
-!include "uninst-oxygen-icons.nsi"
-!endif
-!ifdef HAVE_PKG_QT
-!include "uninst-qt.nsi"
-!endif
-!ifdef HAVE_PKG_KDESUPPORT
-!include "uninst-kdesupport.nsi"
-!endif
-#!ifdef HAVE_PKG_EUDORAGPG
-#!include "uninst-eudoragpg.nsi"
-#!endif
-!ifdef HAVE_PKG_CLAWS_MAIL
-!include "uninst-claws-mail.nsi"
-!endif
-!ifdef HAVE_PKG_LIBETPAN
-!include "uninst-libetpan.nsi"
-!endif
-!ifdef HAVE_PKG_GNUTLS
-!include "uninst-gnutls.nsi"
-!endif
-!ifdef HAVE_PKG_OPENCDK
-!include "uninst-opencdk.nsi"
-!endif
 !ifdef HAVE_PKG_LIBTASN1
 !include "uninst-libtasn1.nsi"
-!endif
-!ifdef HAVE_PKG_LIBGSASL
-!include "uninst-libgsasl.nsi"
-!endif
-!ifdef HAVE_PKG_WINPT
-!include "uninst-winpt.nsi"
-!endif
-!ifdef HAVE_PKG_GPA
-!include "uninst-gpa.nsi"
-!endif
-!ifdef HAVE_PKG_GTK_
-!include "uninst-gtk+.nsi"
-!endif
-!ifdef HAVE_PKG_ATK
-!include "uninst-atk.nsi"
-!endif
-!ifdef HAVE_PKG_CAIRO
-!include "uninst-cairo.nsi"
-!endif
-!ifdef HAVE_PKG_PANGO
-!include "uninst-pango.nsi"
-!endif
-!ifdef HAVE_PKG_GPGEX
-!include "uninst-gpgex.nsi"
-!endif
-!ifdef HAVE_PKG_GPGOL
-!include "uninst-gpgol.nsi"
-!endif
-!ifdef HAVE_PKG_LIBPNG
-!include "uninst-libpng.nsi"
-!endif
-!ifdef HAVE_PKG_JPEG
-!include "uninst-jpeg.nsi"
-!endif
-!ifdef HAVE_PKG_GLIB
-!include "uninst-glib.nsi"
-!endif
-!ifdef HAVE_PKG_GETTEXT
-!include "uninst-gettext.nsi"
-!endif
-!ifdef HAVE_PKG_GPGME
-!include "uninst-gpgme.nsi"
-!endif
-!ifdef HAVE_PKG_PTHREADS_W32
-!include "uninst-pthreads-w32.nsi"
-!endif
-!ifdef HAVE_PKG_DIRMNGR
-!include "uninst-dirmngr.nsi"
-!endif
-!ifdef HAVE_PKG_REGEX
-!include "uninst-regex.nsi"
-!endif
-!ifdef HAVE_PKG_CRYPT
-!include "uninst-crypt.nsi"
-!endif
-!ifdef HAVE_PKG_ZLIB
-!include "uninst-zlib.nsi"
-!endif
-!ifdef HAVE_PKG_PKGCONFIG
-!include "uninst-pkgconfig.nsi"
 !endif
 !ifdef HAVE_PKG_LIBICONV
 !include "uninst-libiconv.nsi"
 !endif
+!ifdef HAVE_PKG_LIBGSASL
+!include "uninst-libgsasl.nsi"
+!endif
+!ifdef HAVE_PKG_KDESUPPORT
+!include "uninst-kdesupport.nsi"
+!endif
+!ifdef HAVE_PKG_JPEG
+!include "uninst-jpeg.nsi"
+!endif
+!ifdef HAVE_PKG_CRYPT
+!include "uninst-crypt.nsi"
+!endif
+!ifdef HAVE_PKG_BZIP2
+!include "uninst-bzip2.nsi"
+!endif
 !ifdef HAVE_PKG_ADNS
 !include "uninst-adns.nsi"
-!endif
-!ifdef HAVE_PKG_LIBGCRYPT
-!include "uninst-libgcrypt.nsi"
-!endif
-!ifdef HAVE_PKG_LIBKSBA
-!include "uninst-libksba.nsi"
-!endif
-!ifdef HAVE_PKG_LIBASSUAN
-!include "uninst-libassuan.nsi"
-!endif
-!ifdef HAVE_PKG_W32PTH
-!include "uninst-w32pth.nsi"
-!endif
-!ifdef HAVE_PKG_LIBGPG_ERROR
-# Note that the uninstaller of libgpg-error is supposed to remove the shareed
-# directories.  We might want to move this to an extra section.
-!include "uninst-libgpg-error.nsi"
-!endif
-!ifdef HAVE_PKG_PINENTRY
-!include "uninst-pinentry.nsi"
-!endif
-!ifdef HAVE_PKG_GNUPG2
-!include "uninst-gnupg2.nsi"
 !endif
 
 !include "uninst-gpg4win.nsi"
