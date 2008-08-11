@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gpg4win 1.1.1-svn417\n"
 "Report-Msgid-Bugs-To: gpg4win-devel@wald.intevation.org\n"
-"POT-Creation-Date: 2008-06-05 21:09+0200\n"
+"POT-Creation-Date: 2008-08-11 21:23+0200\n"
 "PO-Revision-Date: 2008-05-28 11:48+0200\n"
 "Last-Translator: Marcus Brinkmann <mb@g10code.com>\n"
 "Language-Team: German <translation-team-de@lists.sourceforge.net>\n"
@@ -379,7 +379,7 @@ msgid "EudoraGPG is a plugin for the Eudora mail program"
 msgstr ""
 "EudoraGPG ist ein Plugin zur Verschlüsselung für das Eudora Mailprogramm"
 
-#: src/inst-gnupg2.nsi:141
+#: src/inst-gnupg2.nsi:148
 msgctxt "DESC_SEC_gnupg2"
 msgid "GNU Privacy Guard"
 msgstr ""
@@ -387,7 +387,7 @@ msgstr ""
 "GnuPG stellt die eigentliche Verschlüsselung sowie die Verwaltung der "
 "Schlüssel bereit."
 
-#: src/inst-gpa.nsi:75
+#: src/inst-gpa.nsi:72
 msgctxt "DESC_SEC_gpa"
 msgid "GNU Privacy Assistant"
 msgstr ""
@@ -395,7 +395,7 @@ msgstr ""
 "welches für mehrere Plattformen verfügbar ist.  Es kann zusammen oder "
 "anstatt von WinPT benutzt werden."
 
-#: src/inst-gpa.nsi:78
+#: src/inst-gpa.nsi:75
 msgctxt "DESC_Menu_gpa"
 msgid ""
 "Run the GNU Privacy Assistant key management tool. This is an alternative to "
@@ -443,26 +443,26 @@ msgstr ""
 "GPG Shell Extension (GpgEX) ist eine Erweiterung für den Explorer, die es "
 "ermöglicht, Dateien über das Kontextmenü zu verschlüsseln."
 
-#: src/inst-gpgol.nsi:57
+#: src/inst-gpgol.nsi:61
 msgctxt "T_GpgOL_RegFailed"
 msgid "Warning: Registration of the GpgOL Outlook pluginfailed."
 msgstr "Warnung: Registration des GpgOL Outlook Plugin ist fehlgeschlagen."
 
-#: src/inst-gpgol.nsi:60
+#: src/inst-gpgol.nsi:64
 msgctxt "DESC_SEC_gpgol"
 msgid "GnuPG for Outlook"
 msgstr ""
 "GnuPG für Outlook (GpgOL) is eine Erweiterung für Outlook 2003, die "
 "verwendet wird um Nachrichten mit OpenPGP oder S/MIME zu verschlüsseln."
 
-#: src/inst-kleopatra.nsi:195
+#: src/inst-kleopatra.nsi:227
 msgctxt "DESC_SEC_kleopatra"
 msgid "Keymanager for OpenPGP and X.509 and common crypto dialogs."
 msgstr ""
 "Schlüsselmanager für OpenPGP und X.509 (S/MIME) sowie einheitliche "
 "Benutzerführung für alle Krypto-Operationen."
 
-#: src/inst-kleopatra.nsi:199
+#: src/inst-kleopatra.nsi:231
 msgctxt "DESC_Menu_kleopatra"
 msgid "Run the Kleopatra key management tool."
 msgstr "Das Schlüsselverwaltungsprogramm Kleopatra aufrufen."

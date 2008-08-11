@@ -2,6 +2,8 @@
 
 	Released 1.9.6-beta.
 
+	* src/inst-sections.nsi: Fix last change.
+
 	* packages/packages.current: Update kleopatra source package.
 
 2008-08-11  Emanuel Schuetze  <emanuel.schuetze@intevation.de>

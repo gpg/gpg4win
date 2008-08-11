@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Gpg4Win\n"
 "Report-Msgid-Bugs-To: gpg4win-devel@wald.intevation.org\n"
-"POT-Creation-Date: 2008-06-05 21:09+0200\n"
+"POT-Creation-Date: 2008-08-11 21:23+0200\n"
 "PO-Revision-Date: 2008-03-11 23:52+0200\n"
 "Last-Translator: Ahmad Gharbeia <ahmad@gharbeia.org>\n"
 "Language-Team: Arabic <doc@arabeyes.org>\n"
@@ -320,18 +320,18 @@ msgctxt "DESC_SEC_eudoragpg"
 msgid "EudoraGPG is a plugin for the Eudora mail program"
 msgstr "˛EudoraGPG ÂÌ „·Õﬁ… ·»—„ÃÌ… «·»—Ìœ Eudora"
 
-#: src/inst-gnupg2.nsi:141
+#: src/inst-gnupg2.nsi:148
 #, fuzzy
 msgctxt "DESC_SEC_gnupg2"
 msgid "GNU Privacy Guard"
 msgstr "Õ«—” Œ’Ê’Ì… Ã‰Ê"
 
-#: src/inst-gpa.nsi:75
+#: src/inst-gpa.nsi:72
 msgctxt "DESC_SEC_gpa"
 msgid "GNU Privacy Assistant"
 msgstr "„”«⁄œ Œ’Ê’Ì… Ã‰Ê"
 
-#: src/inst-gpa.nsi:78
+#: src/inst-gpa.nsi:75
 msgctxt "DESC_Menu_gpa"
 msgid ""
 "Run the GNU Privacy Assistant key management tool. This is an alternative to "
@@ -375,22 +375,22 @@ msgctxt "DESC_SEC_gpgex"
 msgid "GnuPG Shell Extension"
 msgstr "„·Õﬁ GnuPG ··’¯ÛœÛ›…"
 
-#: src/inst-gpgol.nsi:57
+#: src/inst-gpgol.nsi:61
 msgctxt "T_GpgOL_RegFailed"
 msgid "Warning: Registration of the GpgOL Outlook pluginfailed."
 msgstr " Õ–Ì—: ›‘·  ”ÃÌ· „·Õﬁ… GpgOL ·√Ê ·Êﬂ."
 
-#: src/inst-gpgol.nsi:60
+#: src/inst-gpgol.nsi:64
 msgctxt "DESC_SEC_gpgol"
 msgid "GnuPG for Outlook"
 msgstr "˛GnuPG ·√Ê ·Êﬂ"
 
-#: src/inst-kleopatra.nsi:195
+#: src/inst-kleopatra.nsi:227
 msgctxt "DESC_SEC_kleopatra"
 msgid "Keymanager for OpenPGP and X.509 and common crypto dialogs."
 msgstr ""
 
-#: src/inst-kleopatra.nsi:199
+#: src/inst-kleopatra.nsi:231
 msgctxt "DESC_Menu_kleopatra"
 msgid "Run the Kleopatra key management tool."
 msgstr "‘€· √œ«… ≈œ«—… «·„›« ÌÕ ﬂ·ÌÊ»« —«."
