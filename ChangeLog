@@ -1,3 +1,9 @@
+2008-08-11  Werner Koch  <wk@g10code.com>
+
+	Released 1.9.6-beta.
+
+	* packages/packages.current: Update kleopatra source package.
+
 2008-08-11  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
 	* packages/packages.current: Update kleopatra.
