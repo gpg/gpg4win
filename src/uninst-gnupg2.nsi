@@ -32,9 +32,11 @@ Section "-un.gnupg"
   Call un.SourceDelete
 !else
   # Try to stop a running agent.  This is only for the admin but in
-  # some cases that is actually useful
+  # some cases that is actually useful.
   ifFileExists "$INSTDIR\gpg-connect-agent.exe" 0 no_u_gpg_connect_agent
-    ExecWait '"$INSTDIR\gpg-connect-agent.exe" killagent /bye'
+    ifFileExists "$INSTDIR\libgpg-error-0.dll" 0 no_u_gpg_connect_agent
+      ifFileExists "$INSTDIR\libw32pth-0.dll" 0 no_u_gpg_connect_agent
+        ExecWait '"$INSTDIR\gpg-connect-agent.exe" killagent /bye'
   no_u_gpg_connect_agent:
 
   Delete "$INSTDIR\gpg2.exe"
