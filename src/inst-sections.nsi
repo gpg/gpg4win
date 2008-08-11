@@ -25,7 +25,9 @@
 
 # The order of installation must be the same as the build order.  You
 # can use tsort on the info in configure.ac, or just check out
-# gpg4win_build_list in config.nsi.
+# gpg4win_build_list in config.nsi.  The order determines also the
+# order in the packages selection dialog.
+
 !ifdef HAVE_PKG_ADNS
 !include "inst-adns.nsi"
 !endif
@@ -49,18 +51,6 @@
 !endif
 !ifdef HAVE_PKG_LIBTASN1
 !include "inst-libtasn1.nsi"
-!endif
-!ifdef HAVE_PKG_MAN_ADVANCED_EN
-!include "inst-man_advanced_en.nsi"
-!endif
-!ifdef HAVE_PKG_MAN_NOVICE_DE
-!include "inst-man_novice_de.nsi"
-!endif
-!ifdef HAVE_PKG_MAN_ADVANCED_DE
-!include "inst-man_advanced_de.nsi"
-!endif
-!ifdef HAVE_PKG_MAN_NOVICE_EN
-!include "inst-man_novice_en.nsi"
 !endif
 !ifdef HAVE_PKG_OXYGEN_ICONS
 !include "inst-oxygen-icons.nsi"
@@ -104,9 +94,6 @@
 !ifdef HAVE_PKG_GLIB
 !include "inst-glib.nsi"
 !endif
-!ifdef HAVE_PKG_GPGEX
-!include "inst-gpgex.nsi"
-!endif
 !ifdef HAVE_PKG_LIBKSBA
 !include "inst-libksba.nsi"
 !endif
@@ -143,14 +130,67 @@
 !ifdef HAVE_PKG_GPGME
 !include "inst-gpgme.nsi"
 !endif
+
+# These are displayed in the selection dialog.
+
 !ifdef HAVE_PKG_KLEOPATRA
 !include "inst-kleopatra.nsi"
+!endif
+!ifdef HAVE_PKG_GPA
+!include "inst-gpa.nsi"
+!endif
+!ifdef HAVE_PKG_WINPT
+!include "inst-winpt.nsi"
+!endif
+!ifdef HAVE_PKG_GPGOL
+!include "inst-gpgol.nsi"
+!endif
+!ifdef HAVE_PKG_GPGEX
+!include "inst-gpgex.nsi"
 !endif
 !ifdef HAVE_PKG_CLAWS_MAIL
 !include "inst-claws-mail.nsi"
 !endif
-!ifdef HAVE_PKG_GPA
-!include "inst-gpa.nsi"
+#!ifdef HAVE_PKG_EUDORAGPG
+#!include "inst-eudoragpg.nsi"
+#!endif
+!ifdef HAVE_PKG_MAN_NOVICE_EN
+!include "inst-man_novice_en.nsi"
+!endif
+!ifdef HAVE_PKG_MAN_ADVANCED_EN
+!include "inst-man_advanced_en.nsi"
+!endif
+!ifdef HAVE_PKG_MAN_NOVICE_DE
+!include "inst-man_novice_de.nsi"
+!endif
+!ifdef HAVE_PKG_MAN_ADVANCED_DE
+!include "inst-man_advanced_de.nsi"
+!endif
+
+!include "inst-final.nsi"
+
+# We have to invoke the uninstallers in reverse order!
+
+!ifdef HAVE_PKG_MAN_ADVANCED_DE
+!include "inst-man_advanced_de.nsi"
+!endif
+!ifdef HAVE_PKG_MAN_NOVICE_DE
+!include "inst-man_novice_de.nsi"
+!endif
+!ifdef HAVE_PKG_MAN_ADVANCED_EN
+!include "inst-man_advanced_en.nsi"
+!endif
+!ifdef HAVE_PKG_MAN_NOVICE_EN
+!include "inst-man_novice_en.nsi"
+!endif
+#!ifdef HAVE_PKG_EUDORAGPG
+#!include "inst-eudoragpg.nsi"
+#!endif
+!ifdef HAVE_PKG_CLAWS_MAIL
+!include "inst-claws-mail.nsi"
+!endif
+!ifdef HAVE_PKG_GPGEX
+!include "inst-gpgex.nsi"
 !endif
 !ifdef HAVE_PKG_GPGOL
 !include "inst-gpgol.nsi"
@@ -158,32 +198,13 @@
 !ifdef HAVE_PKG_WINPT
 !include "inst-winpt.nsi"
 !endif
-#!ifdef HAVE_PKG_EUDORAGPG
-#!include "inst-eudoragpg.nsi"
-#!endif
-
-!include "inst-final.nsi"
-
-# We have to invoke the uninstallers in reverse order!
-
-#!ifdef HAVE_PKG_EUDORAGPG
-#!include "uninst-eudoragpg.nsi"
-#!endif
-!ifdef HAVE_PKG_WINPT
-!include "uninst-winpt.nsi"
-!endif
-!ifdef HAVE_PKG_GPGOL
-!include "uninst-gpgol.nsi"
-!endif
 !ifdef HAVE_PKG_GPA
-!include "uninst-gpa.nsi"
-!endif
-!ifdef HAVE_PKG_CLAWS_MAIL
-!include "uninst-claws-mail.nsi"
+!include "inst-gpa.nsi"
 !endif
 !ifdef HAVE_PKG_KLEOPATRA
-!include "uninst-kleopatra.nsi"
+!include "inst-kleopatra.nsi"
 !endif
+
 !ifdef HAVE_PKG_GPGME
 !include "uninst-gpgme.nsi"
 !endif
