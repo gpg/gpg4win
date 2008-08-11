@@ -1,3 +1,8 @@
+2008-08-11  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+
+	* packages/packages.current: Add Kleopatra icons for start menu,
+	desktop, quicklaunch shortcuts
+
 2008-08-08  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
 	* packages/packages.current: Update kdelibs and kleopatra.
