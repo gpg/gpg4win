@@ -11,7 +11,7 @@ Wichtige Informationen zum Einsatz von Gpg4win 1.9-BETA
   neue Version kennenzulernen und Verbesserungsvorschläge
   einzubringen.
 
-Stand: Gpg4win-1.9.2 (20080605)
+Stand: Gpg4win-1.9.6 (20080812)
 
 Hier finden sich wichtige Informationen die bei der
 Entscheidung helfen sollen, ob Gpg4win 1.9 schon für
@@ -44,13 +44,13 @@ Inhalt dieses Dokumentes:
 * Wichtige Hinweise zur Verwendung von S/MIME
 * Migration
 * Wichtigste Änderungen von Gpg4win 1.9 gegenüber 1.1
-* Wichtigste Änderungen von Gpg4win 1.9.2 gegenüber 1.9.1
+* Wichtigste Änderungen von Gpg4win 1.9.6 gegenüber 1.9.2
 
 
 Wichtige Hinweise zur vorliegenden Version
 ==========================================
 
-- Installationpaket knapp 40 MByte:
+- Installationpaket ca. 40 MByte:
   Derzeit sind die Programme mit umfangreichen
   Debug-Informationen ausgestattet, so dass bei auftauchen
   eines Fehlers unmittelbar eine Fehleranalyse
@@ -85,7 +85,7 @@ Wichtige Hinweise zur vorliegenden Version
   * Verschlüsselte E-Mails unverschlüsselt auf E-Mail-Server:
     Es kann vorkommen, dass Teile von verschlüsselten E-Mails
     in entschlüsselter/unverschlüsselter Form auf dem E-Mail-Server
-    (IMAP oder MAPI) zu liegen kommen wenn man sie erstellt/liesst.
+    (IMAP oder MAPI) zu liegen kommen, wenn man sie erstellt/liesst.
     Betroffen sind nur der Inhalt des Anzeigefensters von Outlook,
     also der "E-Mail-Body". Anhänge sind nicht betroffen.
     Schaltet man die Voransicht von Outlook ab, so
@@ -119,8 +119,13 @@ durchzuführen.
   Beachten Sie den Warnhinweis der darauf hin erscheint.
 
 - Neue S/MIME Schlüssel herstellen:
-  Eine Erstellung *neuer* S/MIME-Schlüssel ist
-  noch nicht vollständig in Kleopatra implementiert.
+  Unter Kleopatra im Menü Datei->Neues Zertifikat wählen Sie "X.509" aus.
+  Sie werden mit Hilfe des Assisstenten durch die Zertifikatserstellung
+  geleitet.
+  Beachten Sie, dass Sie als Ergebnis nur eine Zertifikats-Anfrage
+  (p10-Datei) erhalten. Sie müssen diese anschließend an Ihre
+  Zertifizierungsstelle weiterleiten, um Ihr neues X.509-Zertifikat
+  zu erhalten.
 
 - S/MIME-Zertifikatskette für persönlichen Schlüssel importieren:
   Die zum geheimen Schlüssel zugehörige Zertifikatskette
@@ -143,9 +148,9 @@ durchzuführen.
   (am besten jeweils mit der kompletten Kette)
 
 - Wurzelzertifikate als Vertrauenswürdig markieren:
-  Wenn Sie "GnuPG Backend einrichten" Konfiguration-Dialog
-  von Kleopatra "Gpg Agent: allow clients
-  to mark keys as trusted" aktivieren, so werden Sie
+  Wenn Sie im Kleopatra-Menü "Extras->GnuPG Backend einrichten"
+  unter "GpgAgent" die Option "erlaube Aufrufern Schlüssel als
+  'vertrauenswürdig' zu markieren" aktivieren, so werden Sie
   beim Gebrauch eines bisher nicht vertrauenswürdig
   eingestuften Wurzel-Zertifkats gefragt, ob Sie es
   nun als Vertrauenswürdig einstufen wollen.
@@ -155,14 +160,14 @@ durchzuführen.
 - Vetrauen für Wurzel-Zertifkate für DirMngr aussprechen:
   Die entsprechenden Wurzel-Zertifikate müssen als DER-Dateien
   mit Dateinamen-Endung ".crt" im Verzeichnis
-  %INSTALL_DIR%\etc\dirmngr\trusted-certs\
+  %ALLUSERSPROFILE%\Anwendungsdaten\GNU\etc\dirmngr\trusted-certs\
   abgelegt werden.
 
 - Probleme mit Sperrlisten (CRLs):
   Das S/MIME Verfahren beinhaltet die Verwendung von
   Sperrlisten um die Gültigkeit von Zertifkaten zu prüfen.
 
-  Hierbei kann es zu verschiedenen Problmen kommen, die
+  Hierbei kann es zu verschiedenen Problemen kommen, die
   noch nicht alle mit aussagekräftigen Fehlermeldungen
   ausgestattet sind.
 
@@ -172,17 +177,17 @@ durchzuführen.
   Berichten Sie anschliessen Ihre Beobachtung an das Gpg4win
   Entwicklungs-Team um eine Lösung zu finden.
 
-  Man kann die CRL-Prüfungen so ausschalten:
-  "GPG for S/MIME: never consult a CRL" aktivieren im
-  "GnuPG Backend einrichten" Konfiguration-Dialog von Kleopatra.
-  Danach neu einloggen um die Änderung zu aktivieren.
+  Man kann die CRL-Prüfungen wie folgt ausschalten:
+  Im Kleopatra-Menü "Extras->GnuPG Backend einrichten"
+  unter "GPG for S/MIME" die Option "Niemals eine CRL konsultieren"
+  aktivieren. Danach neu einloggen um die Änderung zu aktivieren.
 
-- LDAP Server und DirMngr Konfigurations-Dialog hat keine Wirkung:
-  Derzeit erlauben die Konfigurationsdialog die über Kleopatra
-  geöffnet werden könne, LDAP-Server sowie allgemeine DirMngr
-  (Sperrlisten-Optionen) zu konfigurieren. Diese Einstellungen
-  haben aber keine Wirkung, da nur der Systemadministrator sie
-  in den Konfigurations-Textdateien vornehmen kann.
+- DirMngr Konfigurations-Dialog nicht editierbar:
+  Der Konfigurationsdialog unter "DirectoryManager" im GnuPG Backend
+  ist nicht editierbar, da deren Einstellungen nur vom Systemadministrator
+  in den dazugehörigen systemweiten Konfigurations-Textdateien
+  vorgenommen werden kann. Gleiches gilt für die Proxy-Einstellung im Menü
+  "Einstellungen->Kleopatra einrichten..." unter "S/MIME-Prüfung".
 
 
 Migration
@@ -267,7 +272,7 @@ Neu:
     deren Funktionalität von Kleopatra vollständig abgedeckt wird.
 
   * Kleopatra läuft in der Regel permanent als Dienst (siehe
-    Icon im System-Tray) sobald dessen Dienste einmal im Verlauf
+    Icon im System-Tray), sobald dessen Dienste einmal im Verlauf
     der Sitzung abgefragt wurden.
 
   * Kleopatra ist noch in Entwicklung:
@@ -275,15 +280,31 @@ Neu:
     Dafür kann alternativ auf GPA oder WinPT zurückgegriffen werden.
 
 
-Wichtigste Änderungen von Gpg4win 1.9.2 gegenüber 1.9.1
+Wichtigste Änderungen von Gpg4win 1.9.6 gegenüber 1.9.2
 =======================================================
+
+Anmerkung:
+Die Versionen 1.9.3 bis 1.9.5 hatten jeweils einige Probleme und wurden
+nicht zum Einsatz empfohlen.
 
  * GpgOL, GnuPG, Installer und Kleopatra: Es sind viele kleine
    und mittlere Probleme und Fehler behoben worden.
 
  * Kleopatra:
-   * Es fand ein Wechsel der zugrundliegenden Bilbiotheken
-     statt (u.a. QT 4.3 auf QT 4.4).
-     Einige Fehler der graphischen Oberfläche sind nun weg,
-     ein paar andere sind neu aufgetaucht. Deren Beseitigung
-     ist für 1.9.3 geplant.
+   * diverse Instabilitäten konnten beseitigt werden
+   * korrektes signieren/verschlüsseln von OpenPGP und S/MIME E-Mails
+   * korrektes verifizieren/entschlüsseln von OpenPGP und S/MIME E-Mails
+   * Konfiguration von LDAP-Servern repariert
+   * Suche von Zertifikaten auf Server repariert
+   * Zertifikatserstellung (für OpenPGP und X.509) fertiggestellt
+   * Signaturprüfung repariert
+   * Inhabervertrauen für OpenPGP-Zertifikate hinzugefügt
+   * Ablaufdatum-Änderungen für OpenPGP-Zertifikate repariert
+   * Benutzerspezifische Proxyeinstellungen deaktiviert (systemweite
+     Konfiguration erforderlich)
+   * Sperrlisten-Zwischenspeicher leeren/anzeigen aus Menü entfernt
+   * Zertifikats-Export-Dialoge mit Dateifilter ergänzt
+   * Systemweiten Konfigurationspfad angepasst
+   * Icons (signiert, verschlüsselt) in Outlook-Nachrichtenliste hinzugefügt
+   * Übersetzungs-Strings vervollständigt
+   * Kleopatra in Windows-Oberfläche mit Icon versehen

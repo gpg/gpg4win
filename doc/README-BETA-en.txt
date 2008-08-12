@@ -9,7 +9,7 @@ Important Hints for Using Gpg4win 1.9-BETA
   experienced users or administrators to learn
   about the upcoming version and suggest changes.
 
-Status: Gpg4win-1.9.2 (20080605)
+Status: Gpg4win-1.9.6 (20080812)
 
 This text covers information that are
 intended to help judging whether Gpg4win 1.9
@@ -41,13 +41,13 @@ Contents of this document:
 * Important hints for using S/MIME
 * Migration
 * Most important changes in Gpg4win 1.9 compared to 1.1
-* Most important changes in Gpg4win 1.9.2 compared to 1.9.1
+* Most important changes in Gpg4win 1.9.6 compared to 1.9.2
 
 
 Important hints for present version
 ===================================
 
-- Installation package almost 40 MByte:
+- Installation package ca. 40 MByte:
   The tools curently contain comprehensive debug information.
   This helps to analyse problems as they occur.
   For version 2.0 this debug information will be skipped
@@ -107,9 +107,12 @@ these steps.
   you have to explicitely enable S/MIME support.
   Please consider the warning dialog seriously.
 
-- Create new S/MIME key:
-  The creation of a *new* S/MIME key is
-  not yet fully implemented Kleopatra.
+- Create new S/MIME certificate:
+  In Kleopatra menu File->New Certificates choose "X.509".
+  The wizard will help you in the creation process.
+  Please note that your result is a certificate request only.
+  You have to send this request to your CA to get your new
+  X.509 certificate.
 
 - Import S/MIME certificate chain for personal key:
   The certificate chain the belongs to your secret key
@@ -131,11 +134,10 @@ these steps.
   complete chain.
 
 - Mark root certifactes as trusted:
-  If you activate "Gpg Agent: allow clients
-  to mark keys as trusted" in the GnuPG Backend configuration
-  reachable via Kleopatra menu, then you will be asked
-  whether you want to trust a root certificate at the moment
-  of use.
+  If you activate the option "allow clients to mark keys as
+  trusted" in the GnuPG Backend configuration (section "Gpg Agent")
+  reachable via Kleopatra menu, then you will be asked whether 
+  you want to trust a root certificate at the moment of use.
   Please note that you need to restart gpg-agent to
   get the configuration change into effect.
   This is done e.g. by logging out an in again.
@@ -143,7 +145,7 @@ these steps.
 - Mark root certificates as trusted for DirMngr:
   Place the respective root certificates as DER files
   (with filename suffix ".crt" into the directory
-  %INSTALL_DIR%\etc\dirmngr\trusted-certs\
+  %ALLUSERSPROFILE%\Application Data\GNU\etc\dirmngr\trusted-certs\
 
 - Problems with certificate revocation lists (CRLs):
   The S/MIME concept considers the use of revocation lists
@@ -163,12 +165,12 @@ these steps.
   "Configure GnuPG Backend" dialog of Kleopatra.
   Then log out and in again to activate your change.
 
-- LDAP Server and DirMngr configuration dialogs have no effect:
-  Currently configuration dialogs for LDAP server and
-  DirMngr (CRL options) are avaiable via Kleopatra.
-  Changing the values has no effect.
-  The configirations need to be done by system administrator
-  in the global configuration text files.
+- DirMngr configuration dialog read-only:
+  The dialog of GnuPG Backend->Directory Manager is not editable
+  because the configurations need to be done by system administrator
+  in the global configuration text files. 
+  The same applies to proxy settings in Kleopatra configuration
+  dialog, page S/MIME-Validity.
 
 
 Migration
@@ -188,6 +190,7 @@ Migration
   GnuPG Installation on your system, then you might need to
   remove this registry entry:
   HKCU\Software\GNU\GnuPG\gpgProgramm
+
 
 Most important changes in Gpg4win 1.9 compared to 1.1
 =====================================================
@@ -230,7 +233,7 @@ Updated:
       Operating System: Windows 2000, XP (32/64), Vista (32/64)
       Outlook: 2003, 2007
 
-Neu:
+New:
 ----
 
 - GpgEX: The new plugin for Microsoft Explorer.
@@ -254,13 +257,30 @@ Neu:
     You can use GPA or WinPT for the missing functionality.
 
 
-Most important changes in Gpg4win 1.9.2 compared to 1.9.1
+Most important changes in Gpg4win 1.9.6 compared to 1.9.2
 =========================================================
+Note:
+The versions 1.9.3 to 1.9.5 had problems and were not recommended to use.
 
  * GpgOL, GnuPG, Installer and Kleopatra: Several minor
    and medium problems and errors were fixed.
 
  * Kleopatra:
-   * The base libraries have been upgraded (QT 4.3 to QT 4.4 among others).
-     Due to this, several errors in the GUI are gone now,
-     but some others are newly introduced. Fixing these is planned for 1.9.3.
+   * various instabilities eliminated
+   * correct sign/encrypt of OpenPGP and S/MIME E-Mails
+   * correct verify/decrypt of OpenPGP und S/MIME E-Mails
+   * LDAP server configuration repaired
+   * search of certificates on server repaired
+   * certificate creation (for OpenPGP and X.509) completed
+   * signature validity repaired
+   * trust level for OpenPGP certificates added
+   * expiry date changes for OpenPGP-Zertifikate repaired
+   * user specific proxy settings disabled (global configuration necessary)
+   * menu entry show/clear CRL-cache removed
+   * file type filter for certificate export dialogs added
+   * global configuration path changed (from "%PROGRAMFILES%\GNU\GnuPG\etc\" to
+     "%ALLUSERSPROFILE%\Application Data\GNU\etc\")
+   * Icons (sign, encrypt) in Outlook message list added
+   * translation strings completed
+   * new Kleopatra Icon added for Kleopatra.exe, start menu, desktop and
+     quicklaunch
