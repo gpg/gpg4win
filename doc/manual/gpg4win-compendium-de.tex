@@ -2398,7 +2398,7 @@ knacken ist.
 
 \clearpage
 %% Original page 10
-\textbf{Der Herr der Schlüsselringe}
+\subsubsection{Der Herr der Schlüsselringe}
 
 Wenn man etwas sehr Wertvolles sichern will, schließt man es am besten
 ein -- mit einem Schlüssel. Noch besser mit einem Schlüssel, den es
@@ -2433,9 +2433,9 @@ und dass sowohl der Absender als auch der Empfänger diesen geheimen
 Schlüssel kennen.
 
 Dies führt zu einer ziemlich paradoxen Situation: Bevor man mit einem
-solchen System ein Geheimnis --­ eine verschlüsselte Nachricht --
-mitteilen kann, muss man schon vorher ein anderes Geheimnis --­ den
-Schlüssel ­-- mitgeteilt haben.  Und da liegt der Hase im Pfeffer: man
+solchen System ein Geheimnis (eine verschlüsselte Nachricht)
+mitteilen kann, muss man schon vorher ein anderes Geheimnis (den
+Schlüssel) mitgeteilt haben.  Und da liegt der Hase im Pfeffer: man
 muss sich ständig mit dem Problem herumärgern, dass der Schlüssel
 unbedingt ausgetauscht werden muss, aber auf keinen Fall von einem
 Dritten abgefangen werden darf.
@@ -2455,7 +2455,7 @@ Gpg4win als einem "`Public-Key"' Verschlüsselungssystem.
 Das klingt widersinnig, ist es aber nicht. Der Witz an der Sache: es
 muss kein Geheimschlüssel mehr ausgetauscht werden. Im Gegenteil: der
 Geheimschlüssel darf auf keinen Fall ausgetauscht werden!
-Weitergegeben wird nur der öffentliche Schlüssel ­-- und den kennt
+Weitergegeben wird nur der öffentliche Schlüssel (das Zertifikat)­-- und den kennt
 sowieso jeder.
 
 Mit Gpg4win benutzen Sie also ein Schlüsselpaar ­-- eine geheime und
@@ -2482,30 +2482,37 @@ Das Gpg4win-Prinzip ist wie gesagt recht einfach:
 Der \textbf{geheime Schlüssel}, auch \textbf{private Schlüssel} genannt
 (secret oder private key), muss geheim gehalten werden.
 
-Der \textbf{öffentliche Schlüssel} (public key) soll so
+Der \textbf{öffentliche Schlüssel}, auch \textbf{Zertifikat} genannt
+(public key), soll so
 öffentlich wie möglich gemacht werden.
 
 Beide Schlüsselteile haben ganz und gar unterschiedliche Aufgaben:
 
 \bigskip
 
-der geheime Schlüsselteil \textbf{entschlüsselt} Nachrichten
+\begin{quote}
+    Der geheime Schlüsselteil \textbf{entschlüsselt} Nachrichten.
+\end{quote}
 
 \begin{center}
 \IncludeImage[width=0.9\textwidth]{key-with-shadow-bit}
 \end{center}
 
-der öffentliche Schlüsselteil \textbf{verschlüsselt}.
+\begin{quote}
+    Der öffentliche Schlüsselteil \textbf{verschlüsselt} Nachrichten.
+\end{quote}
 
 
 \clearpage
 %% Original page 14
 
-\textbf{Der öffentliche Safe}
+\subsubsection{Der öffentliche Safe}
 
 In einem kleinen Gedankenspiel
 wird die Methode des Public-Key Verschlüsselungssystems
-und ihr Unterschied zur "`nicht-public-key"' Methode deutlicher:
+und ihr Unterschied zur "`nicht-public-key"' Methode deutlicher...
+
+\bigskip
 
 \textbf{Die "`nicht-Public-Key Methode"' geht so:}
 
@@ -2531,8 +2538,11 @@ und eine Geheimnachricht deponieren zu können.
 Diesen Schlüssel müssen Sie Ihrem Korrespondenzpartner auf geheimem
 Wege übergeben.
 
+\bigskip
+\bigskip
+
 \begin{center}
-\IncludeImage[width=0.9\textwidth]{secret-key-exchange}
+\IncludeImage[width=0.7\textwidth]{secret-key-exchange}
 \end{center}
 
 \clearpage
@@ -2549,8 +2559,8 @@ Aber ­-- eigentlich könnten Sie ihm bei dieser Gelegenheit ja auch
 gleich die geheime Mitteilung übergeben\ldots
 
 
-\textbf{Übertragen auf die \Email{}-Verschlüsselung:} weltweit müssten alle
-\Email{}teilnehmer geheime Schlüssel besitzen und auf geheimem Wege
+\textbf{Übertragen auf die \Email{}-Verschlüsselung:} Weltweit müssten alle
+\Email{}-Teilnehmer geheime Schlüssel besitzen und auf geheimem Wege
 austauschen, bevor sie geheime Nachrichten per \Email{} versenden
 könnten.
 
@@ -2569,10 +2579,10 @@ dieser Briefkasten ist ­-- ganz im Gegensatz zu dem ersten Beispiel
 -- stets offen.  Direkt daneben hängt --­ weithin öffentlich sichtbar
 -- ein Schlüssel, mit dem jedermann den Briefkasten zuschließen kann.
 
-\textbf{Zuschließen, aber nicht aufschließen:} das ist der Trick.
+\textbf{Zuschließen, aber nicht aufschließen:} das ist der Trick!
 
 \begin{center}
-\IncludeImage[width=0.9\textwidth]{pk-safe-open}
+\IncludeImage[width=0.7\textwidth]{pk-safe-open}
 \end{center}
 
 Dieser Schlüssel gehört Ihnen, und -- Sie ahnen es: es ist Ihr
@@ -2596,7 +2606,7 @@ Schlüssel: Ihrem eigenen geheimen oder privaten Schlüsselteil.
 \clearpage
 %% Original page 18
 
-\textbf{Wieder übertragen auf die \Email{}-Verschlüsselung:} jedermann
+\textbf{Wieder übertragen auf die \Email{}-Verschlüsselung:} Jedermann
 kann eine \Email{} an Sie verschlüsseln. Er benötigt dazu keineswegs
 einen geheimen, sondern ganz im Gegenteil einen vollkommen
 öffentlichen, "`ungeheimen"' Schlüssel. Nur ein einziger Schlüssel
@@ -2624,7 +2634,7 @@ und die Nachricht lesen.
 
 \clearpage
 %% Original page 19 
-\textbf{Was ist nun eigentlich gewonnen:} es gibt immer noch einen
+\textbf{Was ist nun eigentlich gewonnen:} Es gibt immer noch einen
 geheimen Schlüssel!?
 
 Der Unterschied gegenüber der "`nicht-Public-Key Methode"' ist
@@ -2653,17 +2663,17 @@ Schlüsselbund.
 \chapter{Die Passphrase}
 \label{ch:passphrase}
 
-Wie Sie oben gesehen haben, ist der private Schlüssel eine der
+Wie Sie im letzten Kapitel gelesen haben, ist der private Schlüssel eine der
 wichtigsten Komponenten im Public-Key Verschlüsselungssystem. Man muss
 (und darf) ihn zwar nicht mehr auf geheimem Wege mit seinen
 Korrespondenzpartnern austauschen, aber nach wie vor ist seine
 Sicherheit der Schlüssel zur Sicherheit des "`ganzen"' Systems.
 
-Es ist deswegen eminent wichtig, diesen private Schlüssel sicher
+Es ist deswegen eminent wichtig, diesen privaten Schlüssel sicher
 abzuspeichern. Dies geschieht auf zweierlei Weise:
 
 \begin{center}
-\IncludeImage[width=0.4\textwidth]{think-passphrase}
+\IncludeImage[width=0.3\textwidth]{think-passphrase}
 \end{center}
 
 Jeder andere Benutzer des Rechners, auf dessen Festplatte dieser
@@ -2693,31 +2703,35 @@ Die Passphrase sollte aus einem Satz und nicht nur aus einem Wort
 bestehen. Sie müssen diese Passphrase wirklich "`im Kopf"'
 haben und niemals aufschreiben müssen.
 
-Trotzdem darf er nicht erraten werden können. Das klingt vielleicht
+Trotzdem darf sie nicht erraten werden können. Das klingt vielleicht
 widersprüchlich, ist es aber nicht. Es gibt einige erprobte Tricks,
-mit deren Hilfe man sich einen völlig individuellen, leicht zu
-merkenden und nur sehr schwer zu erratende Passphrase ausdenken
-kann.
+mit deren Hilfe Sie sich eine völlig individuelle, leicht zu
+merkende und nur sehr schwer zu erratende Passphrase ausdenken
+können.
 
 
 \clearpage
 %% Original page 21
-Eine gute Passphrase kann so entstehen:
+Eine \textbf{gute Passphrase} kann so entstehen:
 
-Denken Sie an einen Ihnen gut bekannten Satz, z.B.: Ein blindes Huhn
-findet auch einmal ein Korn
+Denken Sie an einen Ihnen gut bekannten Satz, z.B.: 
 
-Aus diesem Satz nehmen Sie zum Beispiel jeden dritten Buchstaben:
+$\qquad$\verb-Ein blindes Huhn findet auch einmal ein Korn.-
 
-\verb-nieuf dahn lnr-
+Aus diesem Satz nehmen Sie beispielsweise jeden dritten Buchstaben:
 
-%%% FIXME: Das ist eine schlechte Memotechnik --- Neu schreiben.
+$\qquad$\verb-nieufdahnlnr- 
+\texttt{\scriptsize{(Ei\textbf{n}
+bl\textbf{i}nd\textbf{e}s H\textbf{u}hn \textbf{f}in\textbf{d}et
+\textbf{a}uc\textbf{h} ei\textbf{n}ma\textbf{l} ei\textbf{n}
+Ko\textbf{r}n.)}}
 
-Diesen Buchstabensalat kann man sich zunächst nicht unbedingt gut
-merken, aber man kann ihn eigentlich nie vergessen, solange man den
-ursprünglichen Satz im Kopf hat. Im Laufe der Zeit und je öfter man
-ihn benutzt, prägt sich so eine Passphrase ins Gedächtnis. Erraten
-kann ihn niemand.
+
+Diesen Buchstabensalat können Sie sich zunächst sicher nicht gut
+merken, aber Sie werden ihn eigentlich nie vergessen, solange Sie den
+ursprünglichen Satz im Kopf haben. Im Laufe der Zeit und je öfter Sie
+ihn benutzen, prägt sich so eine Passphrase in Ihr Gedächnis. Erraten
+kann diese Passphrase niemand.
 
 
 Denken Sie an ein Ereignis, das sich bereits fest in Ihrem
@@ -2741,47 +2755,46 @@ Tastatur finden.
 %% Original page  22
 Machen Sie Rechtschreibfehler, z.B. "`feLer"' statt "`Fehler"'.
 Natürlich müssen Sie sich diese "`feLer"' gut merken können.  Oder
-wechseln Sie mittendrin die Sprache.  Aus dem schönen Satz
+wechseln Sie mittendrin die Sprache.  Aus dem schönen Satz:
 
-In München steht ein Hofbräuhaus
+$\qquad$\verb-In München steht ein Hofbräuhaus.-
 
 könnten man beispielsweise diese Passphrase machen:
 
-\verb-inMinschen stet 1h0f breuhome-
+$\qquad$\verb-inMinschen stet 1h0f breuhome-
 
-denken Sie sich einen Satz aus, der möglichst unsinnig ist, den Sie
+Denken Sie sich einen Satz aus, der möglichst unsinnig ist, den Sie
 sich aber doch merken können, wie z.B.:
 
-Es blaut so garstig beim Walfang, neben Taschengeld, auch im Winter.
+$\qquad$\verb-Es blaut so garstig beim Walfang, neben Taschengeld, auch im Winter.-
 
-Eine Passphrase in dieser Länge ist ein sicherer Schutz für den
+Eine Passphrase in dieser Länge ist ein sicherer Schutz für Ihren
 geheimen Schlüssel.
 
-
-Es darf auch kürzer sein, wenn Sie einige Buchstaben groß schreiben,
+Sie darf auch kürzer sein, wenn Sie einige Buchstaben groß schreiben,
 z.B. so:
 
-Es blAut nEBen TaschengeLd auch im WiNter.
+$\qquad$\verb-Es blAut nEBen TaschengeLd auch im WiNter.-
 
-Kürzer, aber nicht mehr so leicht merken. Wenn Sie eine noch kürzere
-Passphrase verwenden, indem Sie hier und da Sonderzeichen benutzen,
+Das ist nun kürzer, aber nicht mehr so leicht zu merken. 
+Wenn Sie eine noch kürzere Passphrase verwenden, 
+indem Sie hier und da Sonderzeichen benutzen,
 haben Sie zwar bei der Eingabe weniger zu tippen, aber die
 Wahrscheinlichkeit, dass Sie Ihre Passphrase vergessen, wird dabei
 noch größer.
 
-Ein extremes Beispiel für einen möglichst kurzen, aber dennoch sehr
+Ein extremes Beispiel für eine möglichst kurze, aber dennoch sehr
 sichere Passphrase ist dieses hier:
 
-\verb-R!Qw"s,UIb *7\$-
+$\qquad$\verb-R!Qw"s,UIb *7\$-
 
 In der Praxis haben sich solche Zeichenfolgen allerdings als recht
 wenig brauchbar herausgestellt, da man einfach zu wenig Anhaltspunkte
 für die Erinnerung hat.
 
+\clearpage
 %% Original page 23
-Eine schlechte Passphrase
-ist blitzschnell geknackt,
-wenn er:
+Eine \textbf{schlechte Passphrase} ist blitzschnell geknackt, wenn sie:
 
 \begin{itemize}
 \item schon für einen anderen Zweck benutzt wird; z.B. für einen
@@ -2803,17 +2816,19 @@ wenn er:
 
 \end{itemize}
 
-Wenn Sie nun Ihre Passphrase zusammenstellen, nehmen Sie auf gar
-keinen Fall eines der oben angeführten Beispiele.  Denn es liegt auf
-der Hand, dass jemand, der sich ernsthaft darum bemüht, Ihre
-Passphrase herauszubekommen, zuerst ausprobieren würde, ob Sie
-nicht eines dieser Beispiele genommen haben, falls er auch diese
+Wenn Sie nun Ihre Passphrase zusammenstellen, nehmen Sie
+\textit{auf gar keinen Fall} eines der oben angeführten Beispiele.  Denn es liegt auf
+der Hand: Wenn sich jemand ernsthaft darum bemüht Ihre
+Passphrase herauszubekommen, würde er zuerst ausprobieren, ob Sie
+nicht eines dieser Beispiele genommen haben -- sofern er auch diese
 Informationen gelesen hat.
 
-Seien Sie kreativ. Denken Sie sich jetzt eine Passphrase aus.
+\bigskip
+
+\textbf{Seien Sie kreativ!} Denken Sie sich jetzt eine Passphrase aus!
 Unvergesslich und unknackbar.
 
-Lesen Sie dann im Kapitel~\ref{ch:CreateKeyPair} weiter, um Ihre 
+Lesen Sie dann im Kapitel~\ref{ch:CreateKeyPair} weiter, um Ihre neue
 Passphrase bei der Erzeugung Ihres Schlüsselpaars festzulegen.
 
 
@@ -2875,6 +2890,7 @@ Die Nutzung eines Schlüsselservers zum Verbreiten Ihres
 OpenPGP-Zertifikats haben wir Ihnen bereits im
 Abschnitt~\ref{publishPerKeyserver} einführend erläutert. Dieses
 Kapitel beschäftigt sich mit den Details von Schlüsselservern.
+\margin{\IncludeImage[width=1.5cm]{openpgp-icon}}
 
 %% Original page 26
 
@@ -2886,11 +2902,11 @@ In Kleopatra ist ein Keyserver bereits voreingestellt:
 Ein Mausklick unter
 %TODO:german
 \Menu{Datei$\rightarrow$Export Certificate to Server...}.
-genügt, und Ihr Schlüssel ist unterwegs rund um die Welt.
+genügt, und Ihr öffentlicher Schlüssel ist unterwegs rund um die Welt.
 Es genügt, den Schlüssel an irgendeinen der verfügbaren
 Keyserver zu senden, denn fast alle synchronsieren sich weltweit
 miteinander.
-Es kann ein, zwei Tage dauern, bis Ihr Zertifikat wirklich überall
+Es kann ein, zwei Tage dauern, bis Ihr OpenPGP-Zertifikat wirklich überall
 verfügbar ist, aber dann haben Sie einen globales Zertifikat!
 
 \begin{center}
@@ -2980,12 +2996,6 @@ Ergebnissen des Importvorgangs an. Bestätigen Sie diesen mit
 War der Import erfolgreich, finden Sie das ausgewählte Zertifikat in
 der Kleopatra-Zertifikatsverwaltung.
 
-%Im "`Schnelleinstieg"', Kapitel 7 ("`Sie entschlüsseln eine \Email{}"')
-%und 8 ("`Sie befestigen einen Schlüssel am Schlüsselbund"')
-%zeigen wir Ihnen, wie man
-%diesen Schlüssel importiert, d.h. am eigenen Gpg4win Schlüsselbund
-%befestigt, und damit eine \Email{} an den Besitzer verschlüsselt.
-
 
 
 \clearpage
@@ -2993,23 +3003,21 @@ der Kleopatra-Zertifikatsverwaltung.
 \chapter{Plugins für \Email{}-Programme}
 \label{ch:plugins}
 
-Im "`Einsteiger-Handbuch"' haben wir im Kapitel 7 ("`Sie entschlüsseln
-eine \Email{}"') erwähnt, dass es Plugins für bestimmte \Email{}-Programme
-gibt, die die Ver- und Entschlüsselung erleichtern. Die im
-Schnelleinstieg vorgestellte Methode mit dem Frontend WinPT
-funktioniert einfach und schnell, und zwar mit jedem beliebigen
-\Email{}- und Text-Programm. Trotzdem ist für viele \Email{}-Anwender ein
-spezieller Programmzusatz in ihrem Lieblings-\Email{}er ein Vorteil.
+Im Kapitel~\ref{ch:decrypt} haben wir erwähnt, dass es Plugins für bestimmte
+\Email{}-Programme gibt, die die Ver- und Entschlüsselung erleichtern.
+Es ist ein großer Vorteil, wenn Sie die ganze
+GnuPG-\Email{}-Verschlüsselungstechnik in Ihrem
+bevorzugten \Email{}-Programm nutzen können.
 
 Plugins für GnuPG gibt es im Moment für folgende Windows-Mailprogramme:
 
 \begin{description}
 \item[Thunderbird] mit Plugin \textbf{Enigmail},
 \item[Outlook 2003] mit Plugin \textbf{GpgOL}, welches in Gpg4win
-  enthalten ist.  Läuft nur unter Windows; Outlook sollte nur dann
+  enthalten ist. Läuft nur unter Windows. Outlook sollte nur dann
   verwendet werden wenn andere organisatorische Vorgaben es
   bedingen.
-\item[Claws Mail], welches in Gpg4win enthalten.  Hier sind im
+\item[Claws Mail] ist ebenfalls in Gpg4win enthalten.  Hier sind im
   Konfigurationsmenü die Plugins für "`PGP/Mime"' und "`PGP inline"'
   zu laden, bei einer Installation über Gpg4win ist das bereits
   geschehen.
@@ -3020,17 +3028,27 @@ Plugins für GnuPG gibt es im Moment für folgende Windows-Mailprogramme:
 \end{description}
 
 Desweiteren verfügen praktisch alle Mailprogramme, die unter GNU/Linux oder
-anderen Unix Varianten laufen, über komfortablen und integrierten
-GnuPG Support.
+anderen Unix Varianten laufen, über eine komfortable und integrierte
+GnuPG-Unterstützung.
 
-Da sämtliche Komponenten des Gpg4win Pakets als Freie Software
+Da sämtliche Komponenten des Gpg4win-Pakets als Freie Software
 entstehen, ist die Entwicklung stark im Fluss.
 
-Aktuelle Informationen über die Komponenten finden Sie unter www.gpg4win.de.
+Aktuelle Informationen über die Komponenten finden Sie unter
+\W\xlink{www.gpg4win.de}{http://www.gpg4win.de}
+\T\href{http://www.gpg4win.de}{www.gpg4win.de}
+.
 
 Informationen zu den Themen IT-Sicherheit, Gpg4win, GnuPG und anderer Software finden
-Sie auf der Website www.bsi-fuer-buerger.de und www.bsi.de des Bundesamtes für
-Sicherheit in der Informationstechnik.
+Sie auf der Website
+\W\xlink{www.bsi-fuer-buerger.de}{http://www.bsi-fuer-buerger.de}
+\T\href{http://www.bsi-fuer-buerger.de}{www.bsi-fuer-buerger.de}
+und
+\W\xlink{www.bsi.de}{http://www.bsi.de}
+\T\href{http://www.bsi.de}{www.bsi.de}
+des Bundesamtes für Sicherheit in der Informationstechnik.
+
+
 
 \clearpage
 %% Original page 31
@@ -3038,7 +3056,7 @@ Sicherheit in der Informationstechnik.
 \label{ch:trust}
 
 Woher wissen Sie eigentlich, dass das fremde Zertifikat
-wirklich vom Absender stammt? Und umgekehrt -- warum sollte Ihr
+wirklich vom genannten Absender stammt? Und umgekehrt -- warum sollte Ihr
 Korrespondenzpartner glauben, dass das Zertifikat, das Sie
 ihm geschickt haben, auch wirklich von Ihnen stammt?  Die
 Absenderangabe auf einer \Email{} besagt eigentlich gar nichts.
@@ -3155,6 +3173,7 @@ Bei erfolgreicher Signierung erhalten Sie folgendes Fenster:
 \end{center}
 
 
+%TODO#: Wie kann man Signierung überprüfen? -> Zertifikatsdetails...
 
 \clearpage
 %% Original page 33/34
@@ -3181,7 +3200,7 @@ Wenn man dieses "`Web of Trust"' weiterspinnt, entsteht eine flexible
 Beglaubigungs-Infra\-struktur.
 
 Eine einzige Möglichkeit ist denkbar, mit dem man diese Zertifikatsprüfung 
-aushebeln kann: jemand schiebt Ihnen einen falsches
+aushebeln kann: Jemand schiebt Ihnen einen falsches
 Zertifikat unter. Also einen öffentlicher OpenPGP-Schlüssel, der vorgibt, von X
 zu stammen, in Wirklichkeit aber von Y ausgetauscht wurde.  Wenn ein
 solches gefälschtes Zertifikat signiert wird, hat das "`Netz des
@@ -3201,14 +3220,14 @@ nicht die Lösung sein\ldots
 Hier braucht man eine "`übergeordnete"' Instanz, der alle Benutzer
 vertrauen können.  Sie überprüfen ja auch nicht persönlich den
 Personalausweis eines Unbekannten durch einen Anruf beim Ein\-wohner\-melde\-amt,
-\margin{\IncludeImage[width=1.5cm]{openpgp-icon}}
- sondern vertrauen darauf, dass die ausstellende
+sondern vertrauen darauf, dass die ausstellende
 Behörde diese Überprüfung korrekt durchgeführt und beglaubigt hat.
 
 Solche Zertifizierungsinstanzen gibt es auch bei der Public-Key
-Verschlüsselung. In Deutschland bietet unter anderem z.B. die
+Verschlüsselung für OpenPGP. In Deutschland bietet unter anderem z.B. die
 Zeitschrift c't schon lange einen solchen Dienst kostenlos an, ebenso
 wie viele Universitäten.
+\margin{\IncludeImage[width=1.5cm]{openpgp-icon}}
 
 Wenn man also ein OpenPGP-Zertifikat erhält, dem eine
 Zertifizierungsstelle per Signatur seine Echtheit bestätigt, kann man
@@ -3264,8 +3283,8 @@ das Sie ebenfalls im Internet finden\linebreak
 
 Was tun, wenn Sie zusammen mit Ihrer \Email{} eine Datei versenden und
 diese ebenfalls verschlüsseln wollen? Die Verschlüsselung, wie wir sie
-in Kapitel 9 von "`Gpg4win für Einsteiger"' erklärt haben, erfasst nur
-den Text der \Email{}, nicht aber eine gleichzeitig versandte,
+in Kapitel~\ref{ch:encrypt} erklärt haben, erfasst nur
+den Text einer \Email{}, nicht aber eine gleichzeitig versandte,
 angehängte Datei. 
 
 Ganz einfach: Sie verschlüsseln den Anhang getrennt und hängen ihn
@@ -3301,8 +3320,7 @@ beschrieben Verfahren automatisch durchführen.
 \clearpage
 \chapter{Dateien: Verschlüsselung und Signaturen}
 
-Dieser Abschnitt ist noch nicht ausformuliert.
-Er wird die Anwendung von GpgEX beschreiben.
+In diesem Kapitel wird die Anwendung von GpgEX beschrieben.
 
 \clearpage
 %% Original page 41
@@ -3314,58 +3332,177 @@ USB-Stick weitergibt. Auch dabei kommt es nicht vorrangig auf die
 Geheimhaltung, sondern auf die Unverändertheit der Datei an.
 
 Diese Funktion können Sie bequem mit \textbf{GpgEX} aus dem Kontextmenü des
-Windows Explorers ausführen. Dazu öffnen Sie dessen Menü mit der rechten
-Maustaste:
+Windows Explorers ausführen. Selektieren Sie eine Datei und öffnen Sie 
+mit der rechten Maustaste das Kontextmenü:
 
-% TODO screenshot GpgEX contextmenu
+% TODO screenshot GpgEX contextmenu sign/encrypt
 \begin{center}
-\IncludeImage{sc-gpgee-ctxmenu}
+\IncludeImage[width=0.25\textwidth]{sc-gpgex-contextmenu-signEncrypt_de}
 \end{center}
 
-Dort wählen Sie \Menu{signieren} aus, woraufhin das folgende Fenster
-erscheint:
+Dort wählen Sie \Menu{Verschlüsseln und Signieren} aus.
 
-%TODO screenshot GpgEX sign/encrypt file
+\clearpage
+Es erscheint folgendes Fenster:
+
+%TODO screenshot GpgEX sign file, step 1
 \begin{center}
-\IncludeImage{sc-gpgee-signmenu}
+\IncludeImage[width=0.7\textwidth]{sc-kleopatra-signFile1_de}
 \end{center}
 
-Sie sehen in der Mitte eine Möglichkeit den Signaturschlüssel
-auszuwählen -- nutzen Sie dies, falls Sie mit einem anderen als
-Ihrem Standardschlüssel signieren möchten.
+Selektieren Sie die Option \Menu{Nur unterschreiben}.
 
-Die drei Rahmen im unter Teil steuern die Signatur/Verschlüsselungs-Funktion;
-die Vorgaben sind in
-den meisten Fällen richtig.  Die linke untere Box, steuert die
-Verschlüsselung.  Da Sie lediglich signieren möchten ist hier
-"`Keine"' ausgewählt.
+Der darunter liegende Rahmen \Menu{Verschlüsselungseinstellungen}
+wird dadurch ausgegraut, da sie ja lediglich signieren möchten.
 
-In der mittleren Box können Sie die Art der Signatur wählen. Sie
-verwenden hier am besten eine "`abgetrennte"' Signatur; dies bedeutet,
-dass die zu signierende Datei unverändert bleibt und eine zweite Datei
-mit der eigentlichen Signatur erzeugt wird.  Um die Signatur später zu
-überprüfen sind dann beide Dateien notwendig.
+Im letzten Abschnitt \Menu{Signatur-Zertifikate} wählen Sie -- sofern nicht
+schon vorausgewählt -- Ihr (OpenPGP oder S/MIME) Standardzertifikat aus, mit dem Sie die
+Datei signieren möchten.
 
-In der rechten Box finden Sie noch weitere Optionen.  "`Textausgabe"'
-ist dort vorgegeben.  Dies erzeugt eine abgetrennte Signaturdatei mit
-einem Dateinamen der auf "`.asc"' endet und die direkt mit jedem
-Texteditor lesbar ist -- sie würden dort den Buchstaben- und
-Ziffernsalat sehen, den Sie bereits kennen.  Wenn diese Option nicht
-ausgewählt ist, so wird eine Datei mit der Endung "`.sig"' erzeugt,
-die dann nicht direkt lesbar ist (binäre Datei).  Was Sie hier
-benutzen ist eigentlich gleichgültig; Gpg4win kommt mit beiden Arten
-klar.
+Klicken Sie nun auf \Button{Weiter}.
+
+\clearpage
+Wählen Sie hier noch einmal die Datei aus, die Sie signieren möchten.
+
+%TODO screenshot GpgEX sign/encrypt file, step 2: choose object
+\begin{center}
+\IncludeImage[width=0.7\textwidth]{sc-kleopatra-signEncryptFile2_de}
+\end{center}
+
+Bestätigen Sie Ihre Auswahl mit \Button{Weiter}.
+
+Sie müssen nun Ihre Passphrase in das aufkommende Pinentry-Fenster
+eingeben.
+
+\clearpage
+Nach erfolgreicher Signierung erhalten Sie folgendes Fenster:
+
+%TODO screenshot GpgEX sign file, step 3: finish
+\begin{center}
+\IncludeImage[width=0.7\textwidth]{sc-kleopatra-signFile3_de}
+\end{center}
+
+Sie haben damit Ihre Datei erfolgreich signiert.
+
+Abhängig davon, ob Sie OpenPGP oder S/MIME zum Signieren genutzt
+haben, erhalten Sie als Ergebnis eine Datei mit der Endung
+\textit{*.sig} (bei OpenPGP) oder \textit{*.p7s} (bei S/MIME).
+
+Beim Signieren einer Datei wird stets eine "`abgetrennte"' Signatur
+verwendet. Dies bedeutet, dass Ihre zu signierende Datei unverändert bleibt 
+und eine zweite Datei mit der eigentlichen Signatur erzeugt wird.
+Um die Signatur später zu überprüfen, sind beide Dateien notwendig.
+
+Folgendes Beispiel zeigt noch einmal, welche neue Datei Sie erhalten,
+wenn Sie Ihre ausgewählte Datei (hier \texttt{<dateiname>.txt}) mit OpenPGP
+bzw. S/MIME signieren:
+
+\begin{quote}
+    \textbf{OpenPGP: \texttt{<dateiname>.txt $\rightarrow$ <dateiname>.txt.sig}}
+
+    \textbf{S/MIME:~~ \texttt{<dateiname>.txt $\rightarrow$ <dateiname>.txt.p7s}}
+\end{quote}
+
+
+\clearpage
+\subsubsection{Signatur verifizieren}
+Wir wollen nun überprüfen, ob die eben signierte Datei korrekt ist.
+
 
 Zum Überprüfen der Unverändertheit und der Authentizität
-müssen die Original- und die signierte Datei im selben
-Verzeichnis liegen.  Man öffnet die signierte Datei -- also die mit der
-Endung "`.sig"' oder "`.asc"' -- wieder aus dem Kontextmenü des Explorers
-mit \Menu{GPGee$\rightarrow$Überprüfen/Entschlüsseln }.
+müssen die Signatur-Datei und die unterschriebene Datei (Originaldatei) im selben
+Verzeichnis liegen. Selektieren Sie die Signatur-Datei -- also die mit der
+Endung \textit{*.sig} oder \textit{*.p7s} -- und wählen Sie aus dem Kontextmenü des Explorers
+den Eintrag  \Menu{Entschlüsseln und Verifizieren}:
 
-Daraufhin erhalten Sie eine Ausgabe, ob die Signatur gültig ist --
+% TODO screenshot GpgEX contextmenu verifiy/decrypt
+\begin{center}
+\IncludeImage[width=0.25\textwidth]{sc-gpgex-contextmenu-verifyDecrypt_de}
+\end{center}
+
+\clearpage
+Daraufhin erhalten Sie folgendes Fenster:
+% TODO screenshot kleopatra verify file, step 1
+\begin{center}
+\IncludeImage[width=0.7\textwidth]{sc-kleopatra-verifyFile1_de}
+\end{center}
+Kleopatra listet unter \textit{Eingabe-Datei} den vollständigen 
+Pfad zur ausgewählten Signatur-Datei auf.
+
+Die Option \Menu{Eingabe-Datei ist eine angehängte Unterschrift} ist
+aktiviert, da wir ja unsere Originaldatei
+(hier: \textit{unterschriebene Daten}) mit der Eingabe-Datei signiert haben.
+Kleopatra findet automatisch die zugehörige unterschriebene
+Originaldatei.
+
+Automatisch ist auch der \textit{Ausgabe-Ordner} auf den gleichen
+Pfad (wo die beiden oberen Dateien liegen) ausgewählt.
+
+Bestätigen Sie die gegebenen Operationen mit
+\Button{Entschlüsseln/überprüfen}.
+
+\clearpage
+Nach erfolgreicher Überprüfung der Signatur erhalten Sie folgendes
+Fenster:
+
+% TODO screenshot kleopatra verify file, step 2
+\begin{center}
+\IncludeImage[width=0.7\textwidth]{sc-kleopatra-verifyFile2_de}
+\end{center}
+
+Das Ergebnis zeigt, dass die Signatur gültig ist --
 also die Datei nicht verändert wurde.  Selbst wenn nur ein Zeichen
 hinzugefügt, gelöscht oder geändert wurde, wird die Signatur als
 ungültig angezeigt.
+
+
+\clearpage
+\section{Dateien verschlüsseln und entschlüsseln}
+
+%In der rechten Box finden Sie noch weitere Optionen.  "`Textausgabe"'
+%ist dort vorgegeben.  Dies erzeugt eine abgetrennte Signaturdatei mit
+%einem Dateinamen der auf "`.asc"' endet und die direkt mit jedem
+%Texteditor lesbar ist -- sie würden dort den Buchstaben- und
+%Ziffernsalat sehen, den Sie bereits kennen.  Wenn diese Option nicht
+%ausgewählt ist, so wird eine Datei mit der Endung "`.sig"' erzeugt,
+%die dann nicht direkt lesbar ist (binäre Datei).  Was Sie hier
+%benutzen ist eigentlich gleichgültig; Gpg4win kommt mit beiden Arten
+%klar.
+
+
+% TODO screenshot kleopatra encrypt file, step 1
+\begin{center}
+\IncludeImage[width=0.7\textwidth]{sc-kleopatra-encryptFile1_de}
+\end{center}
+
+\clearpage
+% TODO screenshot kleopatra sign/encrypt file, step 2
+\begin{center}
+\IncludeImage[width=0.7\textwidth]{sc-kleopatra-signEncryptFile2_de}
+\end{center}
+
+\clearpage
+% TODO screenshot kleopatra encrypt file, step 3
+\begin{center}
+\IncludeImage[width=0.7\textwidth]{sc-kleopatra-encryptFile3_de}
+\end{center}
+
+\clearpage
+% TODO screenshot kleopatra encrypt file, step 4
+\begin{center}
+\IncludeImage[width=0.7\textwidth]{sc-kleopatra-encryptFile4_de}
+\end{center}
+
+
+\clearpage
+\subsubsection{Datei entschlüsseln}
+Wir wollen nun die zuvor verschlüsselte Datei zum Testen einmal entschlüsseln.
+
+% TODO screenshot kleopatra decrypt file, step 1
+\begin{center}
+\IncludeImage[width=0.7\textwidth]{sc-kleopatra-decryptFile1_de}
+\end{center}
+
 
 
 \clearpage
