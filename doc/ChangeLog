@@ -1,3 +1,9 @@
+2008-06-24  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+	
+	* website/ShortStudy-Sustainable-FS-example-Gpg4win.htm4,
+	website/Kurzstudie-Nachhaltige-FS-Beispiel-Gpg4win.htm4:
+	Update pdf download link.
+
 2008-08-13  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
 	* manual/gpg4win-compendium-de.tex, manual/Makefile.am:
