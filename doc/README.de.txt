@@ -115,7 +115,7 @@ zugleich alle erlaubten Schlüsselworte zeigt:
   scdaemon.conf = D:\config\scdaemon-site.txt
   gpa.conf = D:\config\gpa-site.conf
 
-Ein entsprechender Aufruf zur automatichen Installation könnte also
+Ein entsprechender Aufruf zur automatischen Installation könnte also
 wie folgt aussehen:
 
 gpg4win.exe /S /C=C:\TEMP\gpg4win.ini /D=D:\Programme\Gpg4win
