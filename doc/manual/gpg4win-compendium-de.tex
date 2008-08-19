@@ -24,8 +24,8 @@
 
 % Macros specific to this package
 \input{macros.tex}
-\newcommand{\manualversion}{\manualversionEinsteiger}
-\newcommand{\manualdate}{\manualdateEinsteiger}
+\newcommand{\manualversion}{\compendiumVersionDE}
+\newcommand{\manualdate}{\compendiumDateDE}
 \newcommand\margin[1]{\marginline {\sffamily\scriptsize #1}}
 
 
@@ -59,7 +59,7 @@ Eine Veröffentlichung des Gpg4win Projekts\\
 \T\\ \
   \small Überarbeitet von
 \T\\
-  \small Werner Koch}
+  \small Werner Koch, Emanuel Schütze und Jan-Oliver Wagner}
 \date{Version \manualversion\ vom \manualdate\ \manualinprogress}
 
 
@@ -146,7 +146,7 @@ und knapp durch die Installation
 und die alltägliche Benutzung der Gpg4win-Software. Der Zeitbedarf
 für das Durcharbeiten des Schnelleinstiegs hängt unter anderem davon
 ab, wie gut Sie sich mit Ihrem PC und Windows auskennen. Sie sollten sich in
-etwa eine halbe Stunde Zeit nehmen.
+etwa eine Stunde Zeit nehmen.
 
 \textbf{Teil~\ref{part:Fortgeschrittene} für "`Fortgeschrittene"'}
 liefert Hintergrundwissen, das Ihnen die
@@ -165,7 +165,7 @@ Verschlüsselungsdialog so lange üben, bis Sie sich völlig mit dem
 Gebrauch der Software vertraut gemacht haben.
 
 Adele ist im Rahmen des alten GnuPP Projektes entstanden und
-läuft dort noch immer. "`Gpg4win für Einsteiger"' verwendet diesen
+läuft dort noch immer. "`Das Gpg4win Kompendium"' verwendet diesen
 zuverlässigen Übungsroboter und dankt den Inhabern von gnupp.de
 für den Betrieb von Adele.
 
@@ -184,29 +184,27 @@ für den Betrieb von Adele.
 %% Orginal page 8
 \chapter{Was ist Gpg4win?}
 
-\textbf{Das Projekt Gpg4win (GNU Privacy Guard for Windows) ist eine vom
-Bundesamt für Sicherheit in der Informationstechnik beauftragte
-\Email{}-Verschlüsselungssoftware. Gpg4win bezeichnet ein Gesamtpaket,
-welches die folgenden Programme umfasst:}
+\textbf{Das Projekt Gpg4win (GNU Privacy Guard for Windows) ist eine
+Verschlüsselungssoftware für \Email{}s und Dateien.
+Gpg4win bezeichnet ein Gesamtpaket, welches in Version 2 die folgenden
+Programme umfasst:}
 
 \begin{description}
     \item[GnuPG:] GnuPG ist das Kernstück von Gpg4win: Die Verschlüsselungs-Software.
     \item[Kleopatra:] Die zentrale Zertifkatsverwaltung von Gpg4win.
-        Unterstützt OpenPGP und X.509\linebreak (S/MIME) und bietet
+        Unterstützt OpenPGP und X.509\linebreak (S/MIME) und sorgt für
         eine einheitliche Benutzerführung für alle
-        Krypto-Opertationen.
+        kryptographischen Operationen.
     \item[GpgOL:] GnuPG für Outlook (GpgOL) ist eine Erweiterung für Microsoft
-        Outlook 2003, die verwendet wird um Nachrichten mit OpenPGP
+        Outlook 2003 und 2007, die verwendet wird um Nachrichten mit OpenPGP
         oder S/MIME zu verschlüsseln.
-    \item[GpgEX:] GPG Shell Extension (GpgEX) ist eine Erweiterung für
+    \item[GpgEX:] GPG Explorer eXtension (GpgEX) ist eine Erweiterung für
         den Windows Explorer, die es ermöglicht, Dateien über das
         Kontextmenü zu verschlüsseln.
-    \item[GPA:] Der GNU Privacy Assistent (GPA) ist ein Programm zum
-        Verwalten von Schlüsseln welches für mehrere Plattformen
-        verfügbar ist.
+    \item[GPA:] Der GNU Privacy Assistent (GPA) ist neben Kleoaptra ein
+        alternatives Programm zum Verwalten von OpenPGP Schlüsseln.
     \item[Claws Mail:] Claws Mail ist ein vollständiges
         \Email{}-Programm mit sehr guter Unterstützug für GnuPG.
-GnuPG-Bedienung.
 \end{description}
 
 
@@ -241,6 +239,11 @@ PGP ("`Pretty Good Privacy"') ist keine Freie Software, sie war
 lediglich vor vielen Jahren kurzzeitig zu ähnlichen Bedingungen wie
 GnuPG erhältlich.  Diese Version entspricht aber schon lange nicht
 mehr dem Stand der Technik.
+
+Die Vorläufer von Gpg4win wurden durch das Bundesministerium für
+Wirtschaft und Technologie, Gpg4win und Gpg4win-2
+durch das Bundesamt für Sicherheit in der Informationstechnik
+unterstützt.
 
 Weitere Informationen zu GnuPG und den Projekten der Bundesregierung
 zum Schutz des Internets finden Sie auf der Website
@@ -455,7 +458,7 @@ Sorgen: In den folgenden Kapiteln wird jeder Schritt von der Installation bis
 hin zur Verschlüsselung  sowohl mit OpenPGP als auch
 mit S/MIME detailliert erklärt.
 
-Die beiden nachfolgenden Symbole weisen Sie in diesem Compendium
+Die beiden nachfolgenden Symbole weisen Sie in diesem Kompendium
 auf spezifische Erklärungen zu OpenPGP bzw. S/MIME hin, so dass Sie immer
 schnell überblicken, welche Besonderheiten bei welchem Konzept zu
 beachten sind.
@@ -475,7 +478,7 @@ beachten sind.
 Beginnen wir nun mit der Installation von Gpg4win. Beachten Sie, dass
 Sie dafür Administrator-Rechte auf Ihrem Windows-System benötigen.
 
-Sollte bereits eine GnuPG basierte Anwendung, wie z.B. Kleopatra, 
+Sollte bereits eine GnuPG basierte Anwendung, wie z.B.
 GnuPP, GnuPT, WinPT oder GnuPG Basics, auf Ihrem System installiert sein, so lesen
 sie jetzt bitte zuerst den Anhang \ref{ch:migration}, um zu erfahren
 wie Sie Ihre vorhandenen Schlüssel und Zertifikate übernehmen können.
@@ -502,7 +505,7 @@ Die weitere Installation ist dann identisch:\\
 Die Frage, ob Sie das Programm installieren wollen, beantworten Sie
 mit \Button{Ja}.
 
-Es begrüßt Sie dieser Screen:
+Es begrüßt Sie dieser Dialog:
 \enlargethispage{2\baselineskip}
 % screenshot:  Welcome Seite Installer
 \begin{center}
@@ -553,8 +556,8 @@ hilft Ihnen vielleicht ebenfalls weiter.
 \IncludeImage{sc-inst-components}
 \end{center}
 
-Sinnvoll ist es, mindestens GnuPG, Kleopatra und das Gpg4win-Compendium
-zu installieren. Den Rest können Sie bei Bedarf auch später installieren.
+Alle sinnvollen Komponenten sind bereits vorausgewählt.
+Den Rest können Sie bei Bedarf auch später installieren.
 
 Klicken Sie auf \Button{Weiter}.
 
@@ -696,7 +699,8 @@ möchten Sie nun Ihr persönliches Schlüsselpaar erzeugen.
 
 Ein Schlüsselpaar besteht, wie wir im Kapitel~\ref{ch:openpgpsmime} gelernt haben,
 aus einem \textbf{Zertifikat} und einem  \textbf{geheimen Schlüssel}.
-Das gilt sowohl für OpenPGP wie auch für S/MIME (X.509).
+Das gilt sowohl für OpenPGP wie auch für S/MIME (die Schlüssel
+und Zertifikate entsprechen einem Standard mit der Bezeichnung X.509).
 
 ~\\
 \textbf{Eigentlich müsste man diesen wichtigen Schritt der
@@ -1405,12 +1409,20 @@ aussuchen oder Sie schreiben testweise an sich selber.
 Beim Exportieren Ihres X.509-Zertifikats haben Sie die Wahl, ob Sie
 die ganze (öffentliche) Zertifikatskette (in der Regel: Wurzel --
 Zertifizierungsstelle -- Ihr Zertifikat) oder \textit{nur} Ihr Zertifikat in
-eine Datei abspeichern wollen. Ersteres empfiehlt sich immer dann,
-wenn Sie nicht genau wissen, ob Ihr Korrespondenzpartner Ihr
-Wurzelzertifikat schon besitzt. Klicken Sie dazu in Kleopatra alle Kettenelemente mit
+eine Datei abspeichern wollen. Ersteres ist empfehlenswert, denn
+Ihrem Korrespondenzpartner fehlen möglicherweise Teile der Kette die er sonst
+zusammensuchen müsste.
+Klicken Sie dazu in Kleopatra alle Kettenelemente mit
 gedrückter Shift-Taste an und exportieren Sie diese markierten
 Elemente nach oben beschriebener Regel.
 
+Hatte Ihr Korrespondenzpartner das Wurzel-Zertifkat noch nicht,
+so muss er dieser Wurzel das Vertrauen aussprechen bzw. durch
+einen Administrator ausprechen lassen um letztlich auch Ihnen
+zu vertrauen. Ist das bereits vorher geschehen (z.B. weil sie
+beide zur selben Wurzel gehören, selbst bei unterschiedlichen
+Zertifizierungstellen), dann besteht das Vertrauen unmittelbar
+mit der Verfügbarkeit der Kette.
 
 \clearpage
 %% Original page 30
@@ -1532,10 +1544,18 @@ Sie können dieses Kapitel jetzt lesen oder später, wenn Sie diese Funktion benöt
 ~\\
 Starten Sie MS Outlook und öffnen Sie die Antwort-\Email{} von Adele.
 
-Kleopatra verwaltet alle Ihre eigenen Zertifikate und die Ihrer
-Korrespondenzpartner. Somit eignet sich Kleopatra gut zur Überprüfung
-der \Email{}. Kleopatra erkennt eine verschlüsselte \Email{} von
-Adele. Diese \Email{} hat Adele mit \textit{Ihrem} OpenPGP-Zertifikat verschlüsselt. 
+Kleopatra haben wir bisher nur als Zertifikatsverwaltung kennengelernt.
+Das Programm leistet aber weitaus mehr: Es kann die eigentliche Verschlüsselungs-Software
+GnuPG steuern und damit nicht nur Schlüssel und Zertifikate verwalten sondern
+auch sämtliche kryptografischen Aufgaben (eben mit Hilfe von GnuPG) erledigen.
+Kleopatra sorgt für die graphische Benutzeroberfläche, also die Dialoge
+die Sie als Benutzer sehen während Sie eine \Email ver- oder entschlüsseln.
+Das heisst auch, dass Sie immer die gleichen Dialog sehen, egal ob
+Sie mit Outlook, einem anderen \Email-Programm oder auch mit dem Windows Explorer
+etwas verschlüsseln.
+
+Kleopatra bearbeitet also die verschlüsselte \Email{} von
+Adele. Diese \Email{} hat Adele mit \textit{Ihrem} OpenPGP-Zertifikat verschlüsselt.
 
 Um die
 Nachricht zu entschlüsseln, fragt Kleopatra Sie nun nach Ihrer (zum
@@ -1716,7 +1736,7 @@ Starten Sie dafür Kleopatra, sofern das Programm noch nicht läuft.
 Klicken Sie im Menü auf
 \Menu{Datei$\rightarrow$Zertifikat importieren...},
 suchen das eben abgespeicherte Zertifikat aus und laden es.
-Sie erhalten einen Infodialog mit dem Ergebnis des Importvorgangs:
+Sie erhalten einen Informations-Dialog mit dem Ergebnis des Importvorgangs:
 
 %TODO screenshot: Kleopatra - certificate import dialog
 \begin{center}
@@ -1734,8 +1754,9 @@ Zertifikate von \textit{<Pfad-zur-Zertifikatsdatei>}"':
 \IncludeImage[width=0.6\textwidth]{sc-kleopatra-withOpenpgpTestkey_de}
 \end{center}
 
-Schließen Sie diesen Reiter mit dem rot-weißen Schließen-Button am
-Rechten Fensterrand.
+Dieser Reiter dient zur Kontrolle, weil einer Datei durchaus auch mehr als nur ein
+Zertifikat enthalten kann. Schließen Sie diesen Reiter mit
+dem rot-weißen Schließen-Button am Rechten Fensterrand.
 
 Wechseln Sie auf den Tab "`Andere Zertifikate"'. Hier sollten Sie nun
 das von Ihnen importierte Zertifikat sehen.
@@ -1774,7 +1795,7 @@ Sie brauchen dazu Outlook, Kleopatra und natürlich ein Zertifikat
 Ihres Korrespondenzpartners.
 
 ~\\
-Erstellen Sie zunächst in Outlook eine neue \Email und adressieren Sie diese an Ihren
+Erstellen Sie zunächst in Outlook eine neue \Email{} und adressieren Sie diese an Ihren
 Korrespondenzpartner.
 
 %% Original page 45
@@ -1820,6 +1841,9 @@ möchten, sollten Sie zuvor unter
 \IncludeImage[width=0.45\textwidth]{sc-gpgol-options_de}
 \end{center}
 
+Lesen Sie sich die angezeigten Informationen sorgfältig durch,
+vor allem dann wenn Sie schon vorher mit S/MIME über ein anderes Plugin-Produkt
+gearbeitet haben.
 
 \clearpage
 \subsubsection{Verschlüsselung aktivieren}
@@ -2122,7 +2146,8 @@ gehen Sie genauso vor, wie bei der Entschlüsselung einer \Email{}
 
 Starten Sie Outlook und öffnen Sie die signierte \Email{}.
 
-GpgOL überprüft nun automatisch die Signatur und meldet das Ergebnis
+GpgOL übergibt die \Email{} automatisch an Kleopatra zur
+Prüfung der Signatur. Kleopatra  meldet das Ergebnis
 in einem Statusdialog:
 
 %TODO screenshot: Kleopatra - successfully encrypt/verify dialog
@@ -2342,7 +2367,7 @@ die GnuPG direkt unterstützen.
 \end{enumerate}
 
 \vspace{2cm}
-\textbf{Das war's! Zum Ende dieses ersten Teils des Compendiums werden
+\textbf{Das war's! Zum Ende dieses ersten Teils des Kompendiums werden
 Sie nun ein sehr fundiertes Einsteigerwissen über Gpg4win besitzen.}
 
 \textbf{Willkommen in der Welt der freien und sicheren \Email{}-Verschlüsselung!}
@@ -2352,7 +2377,7 @@ funktioniert, empfehlen wir Ihnen sich nun mit dem zweiten,
 fortgeschrittenen Teil von Gpg4win zu beschäftigten. Wir versprechen
 Ihnen, Sie werden viele spannende Dinge darin entdecken!
 
-Genau wie das Kryptographiesystem Gpg4win wurden dieses Compendium nicht nur
+Genau wie das Kryptographiesystem Gpg4win wurden dieses Kompendium nicht nur
 für Mathematiker, Geheimdienstler und Kryptographen geschrieben,
 sondern \textbf{für jedermann.}
 

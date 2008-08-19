@@ -9,3 +9,5 @@
 \newcommand{\manualdateNovices}{@MANUALDATE_NOVICES@}
 \newcommand{\manualversionAdvanced}{@MANUALVERSION_ADVANCED@}
 \newcommand{\manualdateAdvanced}{@MANUALDATE_ADVANCED@}
+\newcommand{\compendiumVersionDE}{@COMPENDIUM_VERSION_DE@}
+\newcommand{\compendiumDateDE}{@COMPENDIUM_DATE_DE@}
