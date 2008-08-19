@@ -1,3 +1,9 @@
+2008-08-19  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
+
+	* configure.ac: Added COMPENDIUM_VERSION_DE and COMPENDIUM_DATE_DE for the
+	new compendium document, also turning to version 3.0.0-beta for the
+	compendium documentation as it is the third generation.
+
 2008-08-11  Werner Koch  <wk@g10code.com>
 
 	Released 1.9.6-beta.
