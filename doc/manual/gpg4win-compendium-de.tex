@@ -926,9 +926,7 @@ drei Möglichkeiten durchführen:
     Geben Sie eine Empfänger-\Email{}-Adresse an und
     ergänzen Sie ggf. den vorbereiteten Text dieser \Email{}.
 
-    %TODO# Wird hier nur der öffentliche Schlüssel versendet?
-
-    % ggf TODO screenshot: New certificate - send openpgp key per email
+    % TODO screenshot: New certificate - send openpgp key per email
    \begin{center}
    \IncludeImage[width=0.6\textwidth]{sc-ol-sendNewOpenpgpCertificate_de}
    \end{center}
@@ -1154,6 +1152,7 @@ Informationen benötigen.}
 %% Original page 24
 
 \chapter{Sie veröffentlichen Ihr Zertifikat}
+\label{ch:publishCertificate}
 
 Beim täglichen Gebrauch von Gpg4win ist es sehr praktisch, dass Sie es
 beim Ver- und Entschlüsseln stets nur mit dem "`ungeheimen"'
@@ -1719,12 +1718,12 @@ Klicken Sie im Menü auf
 suchen das eben abgespeicherte Zertifikat aus und laden es.
 Sie erhalten einen Infodialog mit dem Ergebnis des Importvorgangs:
 
-%TODO screenshot: Kleopatra - successfully encrypt/verify dialog
+%TODO screenshot: Kleopatra - certificate import dialog
 \begin{center}
-\IncludeImage[width=0.45\textwidth]{sc-kleopatra-encryptVerify_de}
+\IncludeImage[width=0.45\textwidth]{sc-kleopatra-import-certificate_de}
 \end{center}
 
-%TODO: Insgesamt bearbeitet, Importiert, Unverändert, ...
+%TODO#: Anmerkungen zu Insgesamt bearbeitet, Importiert, Unverändert, ...
 
 Das erfolgreich importierte Zertifikat wird nun in Kleopatra angezeigt
 -- und zwar unter einem separatem Reiter "`Importierte
@@ -3318,20 +3317,40 @@ beschrieben Verfahren automatisch durchführen.
 
 
 \clearpage
-\chapter{Dateien: Verschlüsselung und Signaturen}
+\chapter{Dateien signieren und verschlüsseln}
 
-In diesem Kapitel wird die Anwendung von GpgEX beschrieben.
+Nicht nur \Email{}s, sondern auch einzelne Dateien können Sie mit
+Gpg4win signieren und verschlüsseln. Das Prinzip ist das gleiche: 
+
+\begin{itemize}
+    \item Sie \textbf{signieren} eine Datei mit Ihrem Zertifikat, um sicherzugehen, dass die
+      Datei unverändert bei Ihrem Empfänger ankommt.
+
+  \item Sie \textbf{verschlüsseln} eine Datei mit dem Zertifikat des Empfängers, um
+        die Datei vor unbefugten Personen geheim zu halten.
+\end{itemize}
+
+
+
+Mit der Anwendung \textbf{GpgEx} können Sie Dateien ganz einfach aus
+Ihrem Windows Explorer heraus signieren oder verschlüsseln -- egal ob
+OpenPGP oder S/MIME.
+Dieses Kapitel erläutert Ihnen, wie das genau funktioniert.
+
+Sollten Sie eine Datei als \Email{}-Anhang verschicken, übernimmt z.B. GpgOL
+automatisch die Signierung bzw. Verschlüsselung der Datei zusammen mit
+Ihrer \Email{}.
+
 
 \clearpage
 %% Original page 41
-\section{Dateien signieren}
+\section{Dateien signieren und überprüfen}
+\label{signFile}
 
-Nicht nur \Email{}s, auch Dateien --­ z.B. ein PDF-Dokument -- kann
-man signieren, bevor man sie per \Email{} verschickt oder per
-USB-Stick weitergibt. Auch dabei kommt es nicht vorrangig auf die
+Beim Signieren einer Datei kommt es nicht vorrangig auf die
 Geheimhaltung, sondern auf die Unverändertheit der Datei an.
 
-Diese Funktion können Sie bequem mit \textbf{GpgEX} aus dem Kontextmenü des
+Die Signierung können Sie bequem mit \textbf{GpgEX} aus dem Kontextmenü des
 Windows Explorers ausführen. Selektieren Sie eine Datei und öffnen Sie 
 mit der rechten Maustaste das Kontextmenü:
 
@@ -3397,15 +3416,16 @@ Folgendes Beispiel zeigt noch einmal, welche neue Datei Sie erhalten,
 wenn Sie Ihre ausgewählte Datei (hier \texttt{<dateiname>.txt}) mit OpenPGP
 bzw. S/MIME signieren:
 
-\begin{quote}
-    \textbf{OpenPGP: \texttt{<dateiname>.txt $\rightarrow$ <dateiname>.txt.sig}}
-
-    \textbf{S/MIME:~~ \texttt{<dateiname>.txt $\rightarrow$ <dateiname>.txt.p7s}}
-\end{quote}
+\begin{description}
+    \item[OpenPGP:]~\\
+        \texttt{<dateiname>.txt $\rightarrow$ <dateiname>.txt\textbf{.sig}}
+    \item[S/MIME:]~\\
+        \texttt{<dateiname>.txt $\rightarrow$ <dateiname>.txt\textbf{.p7s}}
+\end{description}
 
 
 \clearpage
-\subsubsection{Signatur verifizieren}
+\subsubsection{Signatur überprüfen}
 Wir wollen nun überprüfen, ob die eben signierte Datei korrekt ist.
 
 
@@ -3436,7 +3456,7 @@ Kleopatra findet automatisch die zugehörige unterschriebene
 Originaldatei.
 
 Automatisch ist auch der \textit{Ausgabe-Ordner} auf den gleichen
-Pfad (wo die beiden oberen Dateien liegen) ausgewählt.
+Pfad ausgewählt, wo auch die beiden oberen Dateien liegen.
 
 Bestätigen Sie die gegebenen Operationen mit
 \Button{Entschlüsseln/überprüfen}.
@@ -3459,49 +3479,174 @@ ungültig angezeigt.
 \clearpage
 \section{Dateien verschlüsseln und entschlüsseln}
 
-%In der rechten Box finden Sie noch weitere Optionen.  "`Textausgabe"'
-%ist dort vorgegeben.  Dies erzeugt eine abgetrennte Signaturdatei mit
-%einem Dateinamen der auf "`.asc"' endet und die direkt mit jedem
-%Texteditor lesbar ist -- sie würden dort den Buchstaben- und
-%Ziffernsalat sehen, den Sie bereits kennen.  Wenn diese Option nicht
-%ausgewählt ist, so wird eine Datei mit der Endung "`.sig"' erzeugt,
-%die dann nicht direkt lesbar ist (binäre Datei).  Was Sie hier
-%benutzen ist eigentlich gleichgültig; Gpg4win kommt mit beiden Arten
-%klar.
+Genauso wie \Email{}s lassen sich Dateien nicht nur signieren, sondern auch
+verschlüsseln. Das wollen wir im folgenden Abschnitt mit GpgEX und
+Kleopatra einmal durchspielen.
 
+Selektieren Sie eine Datei und öffenen Sie mit der rechten Maustaste
+das Kontextmenü:
 
+% TODO screenshot GpgEX contextmenu sign/encrypt
+\begin{center}
+\IncludeImage[width=0.25\textwidth]{sc-gpgex-contextmenu-signEncrypt_de}
+\end{center}
+
+Wählen Sie hier \Menu{Verschlüsseln und Signieren} aus.
+
+\clearpage
+Sie erhalten den Dialog, den Sie vom Signieren einer Datei (vgl.
+Abschnitt~\ref{signFile}) schon kennen:
 % TODO screenshot kleopatra encrypt file, step 1
 \begin{center}
 \IncludeImage[width=0.7\textwidth]{sc-kleopatra-encryptFile1_de}
 \end{center}
 
+Entscheiden Sie sich im oberen Feld für die Option \Menu{Nur
+Verschlüsseln}.
+
+Die Verschlüsselungseinstellungen sollten Sie nur bei Bedarf
+umstellen:
+\begin{description}
+    \item[Ausgabe als Text (ASCII-Mantel):] Bei Aktivierung dieser
+        Option erhalten Sie die verschlüsselte Datei mit der
+        Dateiendung \textit{*.asc} (OpenPGP) bzw. \textit{*.pem} (S/MIME). 
+        Diese Dateitypen sind mit jedem Texteditor lesbar -- Sie würden dort
+        den Buchstaben- und Ziffernsalat sehen, den Sie schon kennen.
+
+        Ist diese Option nicht ausgewählt (Standard), so wird
+        eine verschlüsselte Datei mit der Endung \textit{*.gpg}
+        (OpenPGP) bzw. \textit{*.p7m} (S/MIME) angelegt. Diese Dateien
+        sind Binärdateien -- eine Betrachtung im Texteditor ist also
+        sinnlos.
+
+        Was Sie hier benutzen ist eigentlich gleichgültig;
+        Gpg4win kommt mit beiden Arten klar.
+
+    \item[Unverschlüsseltes Original anschließend löschen:] Ist diese
+        Option aktiviert, wird Ihre ausgewählte Originaldatei nach dem
+        Verschlüsseln gelöscht.
+\end{description}
+
+
+Klicken Sie auf \Button{Weiter}.
+
 \clearpage
+Wählen Sie noch einmal die Datei aus, die sie verschlüsseln möchten:
 % TODO screenshot kleopatra sign/encrypt file, step 2
 \begin{center}
 \IncludeImage[width=0.7\textwidth]{sc-kleopatra-signEncryptFile2_de}
 \end{center}
 
+Bestätigen Sie Ihre Auswahl mit \Button{Weiter}.
+
+
 \clearpage
+An wen soll die Datei verschlüsselt werden? Wählen Sie im folgenden
+Dialog einen oder mehrere Empfänger aus:
 % TODO screenshot kleopatra encrypt file, step 3
 \begin{center}
 \IncludeImage[width=0.7\textwidth]{sc-kleopatra-encryptFile3_de}
 \end{center}
 
+Klicken Sie dazu auf \Button{Empfänger hinzufügen...} und wählen aus
+Ihrer Zertifikatsliste den oder die Empfänger aus. Abhängig vom
+gewählten Empfänger-Zertifikat und deren Typ (OpenPGP oder S/MIME) wird Ihre
+Datei anschließend für OpenPGP und/oder S/MIME verschlüsselt. Haben
+Sie also ein OpenPGP-Zertifikat \textit{und} ein S/MIME-Zertifikat ausgewählt,
+werden Sie zwei verschlüsselte Dateien erhalten.
+Die möglichen Dateitypen der verschlüsselten Dateien finden Sie auf der nächsten Seite.
+
+Klicken Sie nun auf \Button{Weiter}, um Ihre Datei zu verschlüsseln.
+
 \clearpage
+Nach erfolgreicher Verschlüsselung sollte Ihr Ergebnisfenster etwa so
+aussehen:
 % TODO screenshot kleopatra encrypt file, step 4
 \begin{center}
 \IncludeImage[width=0.7\textwidth]{sc-kleopatra-encryptFile4_de}
 \end{center}
 
+Das war's! Sie haben Ihre Datei erfolgreich verschlüsselt!
+
+Wie beim Signieren einer Datei hängt das Ergebnis von der gewählten
+Verschlüsselungsmethode (OpenPGP oder S/MIME) ab.
+
+Beim Verschlüsseln Ihrer Originaldatei (hier \texttt{<dateiname>.txt})
+sind insgesamt vier Dateitypen als Ergebnis möglich:
+
+\begin{description}
+    \item[OpenPGP:]~\\
+    \texttt{<dateiname>.txt $\rightarrow$ <dateiname>.txt\textbf{.gpg}}\\
+    \texttt{<dateiname>.txt $\rightarrow$ <dateiname>.txt\textbf{.asc}}
+    ~ \small (bei Ausgabe als Text/ASCII-Mantel)
+    \normalsize
+
+    \item[S/MIME:]~\\
+    \texttt{<dateiname>.txt $\rightarrow$ <dateiname>.txt\textbf{.p7m}}\\
+    \texttt{<dateiname>.txt $\rightarrow$ <dateiname>.txt\textbf{.pem}}
+    ~ \small{ (bei Ausgabe als Text/ASCII-Mantel)}
+    \normalsize
+\end{description}
+
+Eine der vier verschlüsselten Ergebnisdateien geben Sie nun an Ihren ausgewählten
+Empfänger weiter. Anders als beim Signieren einer Datei wird die
+unverschlüsselte Originaldatei natürlich \textit{nicht} weitergegeben.
 
 \clearpage
 \subsubsection{Datei entschlüsseln}
 Wir wollen nun die zuvor verschlüsselte Datei zum Testen einmal entschlüsseln.
 
+Dazu sollten Sie vorher beim Verschlüsseln auch an Ihr eigenes Zertifikat
+verschlüsselt haben -- andernfalls können Sie die Datei nicht mit
+Ihrer Passphrase entschlüsseln.
+
+Selektieren Sie die verschlüsselte Datei -- also die mit der
+Endung \textit{*.gpg}, \textit{*.asc}, \textit{*.p7m} oder \textit{*.pem} -- 
+und wählen Sie aus dem Kontextmenü des Explorers
+den Eintrag \Menu{Entschlüsseln und Verifizieren}:
+
+% TODO screenshot GpgEX contextmenu verifiy/decrypt
+\begin{center}
+\IncludeImage[width=0.25\textwidth]{sc-gpgex-contextmenu-verifyDecrypt_de}
+\end{center}
+
+
+\clearpage
+Im folgenden Entschlüsselungsdialog können Sie, bei Bedarf, noch den
+Ausgabe-Ordner verändern.
+
 % TODO screenshot kleopatra decrypt file, step 1
 \begin{center}
 \IncludeImage[width=0.7\textwidth]{sc-kleopatra-decryptFile1_de}
 \end{center}
+
+Klicken Sie auf \Button{Entschlüsseln/überprüfen}.
+
+Geben Sie anschließend Ihre Passphrase ein.
+
+
+\clearpage
+Das Ergebnis zeigt, dass die Entschlüsselung erfolgreich war:
+
+% TODO# screenshot kleopatra decrypt file, step 2
+\begin{center}
+\IncludeImage[width=0.7\textwidth]{sc-kleopatra-decryptFile2_de}
+\end{center}
+
+Sie sollten nun die entschlüsselte Datei problemlos entziffern können.
+
+\clearpage
+\subsubsection{Fassen wir kurz zusammen...}
+Sie haben gelern, wie Sie mit GpgEX:
+\begin{itemize}
+    \item Dateien signieren
+    \item signierte Dateien verifizieren
+    \item Dateien verschlüsseln
+    \item verschlüsselte Dateien entschlüsseln
+\end{itemize}
+
+Möchten Sie Dateien signieren \textit{und} verschlüsseln ist das
+derzeit nur mit OpenPGP möglich.
 
 
 
@@ -3510,43 +3655,97 @@ Wir wollen nun die zuvor verschlüsselte Datei zum Testen einmal entschlüsseln.
 \chapter{Im- und Export eines geheimen Schlüssels}
 \label{ch:ImExport}
 
-Im "`Schnellstart"'-Handbuch haben wir in den Kapiteln 5, 6 und 8 den
-Im- und Export eines öffentlichen Schlüssels besprochen. Wir haben
-Ihren eigenen öffentlichen Schlüssel exportiert, um ihn zu
-veröffentlichen, und wir haben den öffentlichen Schlüssel Ihres
-Korrespondenzpartners importiert und "`am Schlüsselbund"' befestigt.
+In den Kapiteln \ref{ch:publishCertificate} und \ref{ch:keyring} haben
+wir den Im- und Export von Zertifikaten besprochen. Wir haben
+Ihr eigenes Zertifikat exportiert, um es zu veröffentlichen, 
+und wir haben das Zertifikat Ihres Korrespondenzpartners importiert 
+und am "`Schlüsselbund"' befestigt.
 
-Dabei ging es stets um den öffentlichen Schlüssel. Es gibt aber auch
-hin und wieder die Notwendigkeit, einen geheimen Schlüssel zu im- oder
-exportieren. Wenn Sie zum Beispiel einen bereits vorhandenen
-PGP-Schlüssel mit Gpg4win weiterbenutzen wollen, müssen Sie ihn
-importieren.  Oder wenn Sie Gpg4win von einem anderen Rechner aus
-benutzen wollen, muss ebenfalls zunächst der gesamte Schlüssel dorthin
-transferiert werden --­ der öffentliche und der private Schlüssel.
+Dabei ging es stets um den \textit{öffentlichen} Schlüssel -- das Zertifikat. Es gibt aber auch
+hin und wieder die Notwendigkeit, einen \textit{geheimen} Schlüssel zu im- oder
+exportieren. Wenn Sie zum Beispiel ein bereits vorhandenes 
+(OpenPGP oder S/MIME) Schlüsselpaar mit Gpg4win weiterbenutzen wollen,
+müssen Sie es importieren. Oder wenn Sie Gpg4win von einem anderen Rechner aus
+benutzen wollen, muss ebenfalls zunächst das gesamte Schlüsselpaar dorthin
+transferiert werden --~der öffentliche und der private Schlüssel.
 
-%\clearpage
+
 %% Original page 46
+\clearpage
+\section{Export}
+Immer wenn Sie einen geheimen Schlüssel auf einen anderen Rechner
+transferieren oder auf einer anderen Festplattenpartition bzw. einem
+Sicherungsmedium speichern wollen, müssen Sie mit Kleopatra eine
+Sicherungskopie erstellen.
 
-Wir gehen im folgenden von der zur Zeit aktuellen PGP-Version 7 aus, in allen
-anderen ist der Vorgang ähnlich.
+So eine Sicherungskopie haben Sie evtl. schon einmal am Ende Ihrer
+OpenPGP-Zertifikatserzeugung angelegt. Da Ihr OpenPGP-Zertifikat aber inzwischen weitere
+Schlüsselunterschriften haben kann, sollte Sie die Sicherung erneut durchführen.
 
-Zunächst speichern Sie beiden PGP-Schlüsselteile ab. Dazu müssen Sie
-in "`PGPkeys"' Ihren Schlüssel anklicken und "`Keys / Export"'
-anwählen. Auf dem Dateiauswahldialog "`Export Key to File"' sehen Sie
-unten links eine Checkbox "`Include Private Keys"', den Sie anklicken
-und mit einem Häkchen versehen müssen. PGP speichert beide
-Schlüsselteile in eine Datei ab, die Sie entsprechend benennen, zum
-Beispiel \Filename{geheimer-key.asc}.  
 
-Öffnen Sie nun GPA oder WinPT und importieren sie einfach diese Datei.
-Es werden dann sowohl der geheime als auch der öffentliche Schlüssel
-importiert; sie sind dann sofort sichtbar. \textbf{Löschen Sie danach
-  unbedingt die Datei \Filename{geheimer-key.asc} wieder und entfernen
-  Sie diesen auch aus dem "`Papierkorb"'.}  Damit haben Sie einen
-PGP-Schlüssel erfolgreich in Gpg4win importiert und können ihn dort
-genau wie einen normalen GnuPG-Schlüssel benutzen.
+Öffnen Sie Kleopatra. Selektieren Sie Ihr eigenes Zertifikat und
+klicken Sie auf \Menu{Datei$\rightarrow$Geheimen Schlüssel
+exportieren}.
 
-Es kann in einigen Fällen vorkommen, dass Sie einen importierten
+% TODO# screenshot kleopatra decrypt file, step 2
+\begin{center}
+\IncludeImage[width=0.45\textwidth]{sc-kleopatra-openpgp-exportSecretKey_de}
+\end{center}
+
+Wählen Sie den Pfad und den Dateinamen der Ausgabedatei.
+Der Dateityp wird automatisch gesetzt. Abhängig davon ob Sie einen
+geheimen OpenPGP- oder S/MIME-Schlüssel exportieren wollen, ist
+standardmäßig die Dateiendung \textit{*.gpg} (OpenPGP) oder \textit{*.der} (S/MIME)
+ausgewählt. Bei diesen Dateien handelt es sich um Binärdateien -- eine Betrachtung im
+Texteditor ist hier also sinnlos.
+
+Bei Aktivierung der Option
+%TODO check german translation
+\Menu{Ausgabe als Text (ASCII-Mantel)}
+erhalten Sie die Dateiendung 
+\textit{*.asc} (OpenPGP) bzw. \textit{*.pem} (S/MIME).
+Diese beiden Dateitypen sind mit jedem Texteditor lesbar -- Sie würden dort
+den üblichen Buchstaben- und Ziffernsalat sehen.\\
+Ob Sie diese Option nutzen oder nicht ist eigentlich gleichgültig;
+Gpg4win kommt mit beiden Arten klar.
+
+Beide Schlüsselteile -- der öffentliche und der geheime -- werden von
+Kleopatra in dieser einen Datei abgespeichert.
+
+\textbf{Achtung:} Behandeln Sie diese Datei sehr sorgfältig. Sie enthält Ihren
+geheimen Schlüssel und damit sicherheitskritische Informationen!
+
+\clearpage
+\section{Import}
+Zum Importieren Ihres vorher exportierten geheimen Schlüssels
+in Kleopatra, gehen Sie so vor, wie Sie es beim
+Importieren von (fremden) Zertifikaten gewohnt sind:
+
+\Menu{Datei$\rightarrow$Zertifikat importieren...}, Datei auswählen
+und bestätigen (vgl. Kapitel~\ref{ch:keyring}). Fertig.
+
+Sie erhalten einen Infodialog, der Ihnen die Ergebnisse des
+Importvorgangs auflistet; hier am Beispiel eines geheimen
+OpenPGP-Schlüssels:
+% TODO# screenshot kleopatra decrypt file, step 2
+\begin{center}
+\IncludeImage[width=0.45\textwidth]{sc-kleopatra-import-openpgp-secret-key_de}
+\end{center}
+
+Kleopatra hat damit sowohl den geheimen als auch den
+öffentlichen Schlüssel aus der Sicherungsdatei importiert. Ihr
+Zertifikat ist damit unter "`Meine Zertifikate"' in der
+Zertifikatsverwaltung von Kleopatra sichtbar.
+
+\textit{\textbf{Achtung:} Löschen Sie danach unbedingt die oben erstellte
+Sicherungskopie Ihres geheimen Schlüssels von Ihrer Festplatte und
+sichern Sie vorher diese wichtige Datei möglicht irgendwo auf einem externen Medium.
+Denken Sie daran die gelöschte Datei aus Ihrem "`Papierkorb"' zu
+entfernen. Andernfalls stellt diese Datei ein Sicherheitsrisiko für
+Ihre geheime \Email{}-Verschlüsselung dar!}
+
+%TODO#: Gültig auch für Gpg4win2?
+\textit{Anmerkung:} Es kann in einigen Fällen vorkommen, dass Sie einen importierten
 Schlüssel nicht direkt benutzen können.  Dies äußert sich darin, dass
 Sie die richtige Passphrase eingeben, dieser aber nicht akzeptiert
 wird.  Das kommt daher, dass einige Versionen von PGP intern den
@@ -3560,45 +3759,10 @@ nicht funktionieren, so setzen Sie die Passphrase in PGP auf
 \textbf{Datei sicher zu löschen als auch in PGP und in Gpg4win danach wieder
   eine echte Passphrase zu setzen.}
 
-\clearpage
-%% Original page 47
-\section{Export eines GnuPG-Schlüssels}
+~\\
+\textbf{Herzlichen Glückwunsch! Sie haben damit erfolgreich Ihr Schlüsselpaar exportiert und
+wieder importiert.}
 
-Immer wenn Sie einen GnuPG-Schlüssel auf einen anderen Rechner
-transferieren oder auf einer anderen Festplattenpartition bzw. einer
-Sicherungsdiskette speichern wollen, müssen Sie mit WinPT oder GPA ein Backup erstellen.
-Dies entspricht dem Backup, welches Sie bei der Schlüsselerzeugung
-auch schon durchgeführt haben.  Da Ihr Schlüssel inzwischen weitere
-Schlüsselunterschriften haben kann, sollte Sie es erneut durchführen.
-
-Klicken Sie in der GPA-Schlüsselverwaltung den Schlüssel an, den Sie sichern
-wollen und wählen
-Sie dann den Menüpunkt \Menu{Schlüssel$\rightarrow$Sicherheitskopie anlegen}.
-
-% screenshot: GPA, Backup erzeugen
-\begin{center}
-\IncludeImage[width=0.6\textwidth]{sc-gpa-gen-backup}
-\end{center}
-
-Bestätigen Sie den Dateinamen oder wählen Sie einen anderen und GPA
-wird eine Sicherheitskopie bestehend aus dem geheimen und öffentlichen
-Schlüssel anlegen. Danach werden Sie noch daran erinnert, dass Sie
-diese Datei sehr sorgfältig zu handhaben ist:
-
-% screenshot: GPA, Backup Hinweis
-\begin{center}
-\IncludeImage[width=0.6\textwidth]{sc-gpa-gen-backup-warn}
-\end{center}
-
-
-Beim Import, also zum Beispiel auf einem anderen Rechner, importieren
-Sie einfach diese Sicherheitskopie in WinPT oder GPA.
-Gpg4win wird dann sowohl den
-geheimen als auch den öffentlichen Schlüssel aus dieser Datei
-importieren.
-
-Damit haben Sie erfolgreich einen GnuPG-Schlüssel exportiert und
-wieder importiert.
 
 \clearpage
 \chapter{Systemweite Konfigurationen und Vorbelegungen für S/MIME}
@@ -3613,44 +3777,53 @@ Einige typische systemweite Einrichtungen sind:
 \begin{itemize}
 \item Vertrauenswürdige Wurzel-Zertifikate
 
-	Um zu vermeiden, dass jeder Anwender selbst die notwendigen
-	Wurzelzertifikate suchen und installieren sowie Vertrauenswürdigkeit
-	prüfen und setzen muss, ist eine systemweite Vorbelegung der
-	wichtigsten Wurzel-Zertifikate sinnvoll.
+    Um zu vermeiden, dass jeder Anwender selbst die notwendigen
+    Wurzelzertifikate suchen und installieren sowie Vertrauenswürdigkeit
+    prüfen und setzen muss, ist eine systemweite Vorbelegung der
+    wichtigsten Wurzel-Zertifikate sinnvoll.
 
-	Dafür sind folgende Schritte durchzuführen:
-	\begin{enumerate}
-	\item Die Wurzel-Zertifkate ablegen wie unter Abschnitt \ref{trustedrootcertsdirmngr}
-		beschrieben.
-	\item Die vertrauenswürdigen Wurzeln definieren wie unter Abschnitt \ref{systemtrustedrootcerts}
-		beschrieben.
-	\end{enumerate}
+    Dafür sind folgende Schritte durchzuführen:
+    \begin{enumerate}
+    \item Die Wurzel-Zertifkate ablegen wie unter Abschnitt \ref{trustedrootcertsdirmngr}
+    beschrieben.
+    \item Die vertrauenswürdigen Wurzeln definieren wie unter Abschnitt \ref{systemtrustedrootcerts}
+    beschrieben.
+    \end{enumerate}
 
 \item Direkt verfügbare CA-Zertifkate
 
-	Um den Anwendern zusätzlich die Mühe zu ersparen, die Zertifkate der Zertifizierungsstellen
-	(Certificate Authorities, CAs) zu suchen und zu importieren, ist auch hier
-	eine systemweite Vorbelegung der wichtigesten CA-Zertifkate sinnvoll.
+    Um den Anwendern zusätzlich die Mühe zu ersparen, die Zertifkate der Zertifizierungsstellen
+    (Certificate Authorities, CAs) zu suchen und zu importieren, ist auch hier
+    eine systemweite Vorbelegung der wichtigsten CA-Zertifkate sinnvoll.
 
-	Folgen Sie dazu der Beschreibung unter Abschnitt \ref{extracertsdirmngr}
+    Folgen Sie dazu der Beschreibung unter Abschnitt
+    \ref{extracertsdirmngr}.
 
 \item Proxy für Verzeichnisdienst-Suche
 
-	Es kommt vor, dass interne Netzwerke keine direkten Verbindungen der einzelnen
-	Systeme nach aussen zulassen, sondern einen sogenannten Proxy vorsehen.
+    Es kommt vor, dass interne Netzwerke keine direkten Verbindungen der einzelnen
+    Systeme nach aussen zulassen, sondern einen sogenannten Proxy vorsehen.
 
-	Ist dies in Ihrem Netzwerk auch für die bei GnuPG bzw. S/MIME wichtigen
-	LDAP-Abfragen, so führen Sie folgende Schritte durch:
+    Ist dies in Ihrem Netzwerk auch für die bei GnuPG bzw. S/MIME wichtigen
+    LDAP-Abfragen, so führen Sie folgende Schritte durch:
 
-	\begin{enumerate}
-	\item Stellen Sie Verzeichnisdienst-Suchen auf Ihren Proxy wie unter Abschnitt \ref{ldapservers} ein.
-	\item Stellen Sie Sperrlisten-Suchen auf Ihren Proxy ein, in dem Sie einen Eintrag
-		wie beispielsweise \verb@http-proxy http://proxy.mydomain.example:8080@ (ggf. analog
-		für LDAP) als Administrator in die Datei\newline
-		\Filename{C:\back{}Programme\back{}GNU\back{}GnuPG\back{}etc\back{}dirmngr\back{}dirmngr.conf}\newline
-		eintragen.
-	\end{enumerate}
+    \begin{enumerate}
+    \item Stellen Sie Verzeichnisdienst-Suchen auf Ihren Proxy wie unter Abschnitt \ref{ldapservers} ein.
+    \item Stellen Sie Sperrlisten-Suchen auf Ihren Proxy ein, in dem Sie einen Eintrag
+        wie z.B.:
+        \small
+        \verb@http-proxy http://proxy.mydomain.example:8080@\\
+        \normalsize
+        (ggf. analog für LDAP) als Administrator in die Datei\newline
+        \small
+        \Filename{C:\back{}Dokumente und Einstellungen\back{}All
+        Users\back{}GNU\back{}etc\back{}dirmngr\back{}dirmngr.conf}\newline
+        \normalsize
+        eintragen.
+    \end{enumerate}
 \end{itemize}
+
+
 
 \clearpage
 \chapter{Bekannte Probleme und was man tun kann}
@@ -3664,13 +3837,13 @@ werden nicht mehr zu finden sind.
 Das ist dann der Fall wenn ein technisches Problem auftrat
 und Outlook aus diesem Grund das GpgOL Element deaktiviert.
 
-Reaktivieren Sie GpgOL über das Menü
-,,Hilfe-> Info-> Deaktivierte Elemente''.
+Reaktivieren Sie GpgOL über das Outlook-Menü
+\Menu{Hilfe$\rightarrow$Info$\rightarrow$Deaktivierte Elemente}.
 
 \section{Systemdienst ,,DirMngr'' läuft nicht}
 
-,,DirMngr'' ist ein über Gpg4win installierter Dienst der
-die Zugriffe auf Verzeichnisdienste
+Der \textit{Directory Manager} (\textit{DirMngr}) ist ein über 
+Gpg4win installierter Dienst der die Zugriffe auf Verzeichnisdienste
 (z.B. LDAP) verwaltet. Eine der häufigsten Aufgaben ist das Laden
 von Sperrlisten für S/MIME Zertifikate.
 
@@ -3679,12 +3852,16 @@ Ver- oder Entschlüsselung) nicht durchgeführt werden können, weil
 ,,DirMngr'' nicht verfügbar ist. In der Voreinstellung von Gpg4win
 ist es zwingend notwendig, dass ,,DirMngr'' die Sperrliste prüft,
 geschieht das nicht, darf die jeweilige Operation nicht ausgeführt
-werden da möglicherweise ein kompromittiertes Zertifkat genutzt wird.
+werden, da möglicherweise ein kompromittiertes Zertifkat genutzt wird.
 
-Abhilfe: Neustart des ,,DirMngr'' durch den Systemadministrator.
-Dies erfolgt über Systemsteuerung -> Verwaltung -> Dienste:
-In der Liste finden Sie ,,DirMngr'' -
+Abhilfe schaffe ein Neustart des ,,DirMngr'' durch den
+Systemadministrator.
+Dies erfolgt über \linebreak
+\Menu{Systemsteuerung$\rightarrow$Verwaltung$\rightarrow$Dienste}.
+In der Liste finden Sie ,,DirMngr'' --
 über das Kontextmenü kann der Dienst neu gestartet werden.
+
+
 
 \clearpage
 \chapter{Wo finde ich die Dateien und Einstellungen von Gpg4win?}

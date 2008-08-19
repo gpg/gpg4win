@@ -47,6 +47,7 @@ png_files = \
 		sc-ol-adele-sendOpenpgpKey-inline_de.png\
 		sc-ol-adele-sendOpenpgpKey-attachment_de.png\
 		sc-kleopatra-import-certificate_de.png\
+		sc-kleopatra-import-openpgp-secret-key_de.png\
 		sc-kleopatra-encryption-chooseOpenpgpCertificate_de.png\
 		sc-kleopatra-encryption-successful_de.png\
 		sc-ol-sendEncryptedMail_de.png\

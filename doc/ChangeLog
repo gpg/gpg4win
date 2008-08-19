@@ -1,9 +1,14 @@
+2008-08-19  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+
+	* manual/gpg4win-compendium-de.tex, manual/Makefile.am:
+	Reworked some chapter in part two and added a new screenshot.
+
 2008-08-15  Bernhard Reiter <bernhard.reiter@intevation.de>
 
 	* README-de.txt: fixed one minor typo.
 
 2008-08-14  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
-	
+
 	* website/ShortStudy-Sustainable-FS-example-Gpg4win.htm4,
 	website/Kurzstudie-Nachhaltige-FS-Beispiel-Gpg4win.htm4:
 	Update pdf download link.
