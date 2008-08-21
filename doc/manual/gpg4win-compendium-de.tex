@@ -3895,36 +3895,41 @@ In der Liste finden Sie ,,DirMngr'' --
 
 Die persönlichen Einstellungen für jeden Anwender befinden sich
 im Verzeichnis \Filename{\%APPDATA\%\back{}gnupg}. Oft entspricht das dem
-Verzeichnis \newline
-\Filename{C:\back{}Dokumente und Einstellungen\back{}name\back{}Anwendungsdaten\back{}gnupg}.
+Verzeichnis: \newline
+\Filename{C:\back{}Dokumente und Einstellungen\back{}\textit{<name>}\back{}Anwendungsdaten\back{}gnupg\back{}}
 
 Beachten Sie, dass es sich um ein verstecktes Verzeichnis handelt.
-Im Explorer müssen Sie über das Menü ,,Extras-> Ordneroptionen''
-dann im Reiter ,,Ansicht'' für ,,Versteckte Dateien und Ordner''
-auf ,,Alle Dateien und Ordner anzeigen'' umstellen.
+Um es sichtbar zu schalten, müssen Sie im Explorer über das Menü
+\Menu{Extras$\rightarrow$Ordneroptionen}
+im Reiter \Menu{Ansicht} die Option \Menu{Alle Dateien und Ordner
+anzeigen} unter der Rubrik \Menu{Versteckte Dateien und Ordner} aktivieren.
 
-In diesem Ordner befinden sich sämtliche persönlichen GnuPG Daten,
+In diesem gnupg-Verzeichnis befinden sich sämtliche persönlichen GnuPG Daten,
 also die persönlichen Schlüssel, Zertifikate, Vertrauenseinstellungen und
 Programmkonfigurationen.
-\\
+
 
 \section{Zwischengespeicherte Sperrlisten}
 
-Der systemweite Dienst ,,DirMngr'' prüft unter anderem ob
+Der systemweite Dienst ,,DirMngr'' (Directory Manager) prüft unter anderem, ob
 ein Zertifkate gesperrt und daher nicht verwendet werden darf.
 Dafür werden Sperrlisten von den Ausgabestellen der Zertifikate
 (,,Trust-Center'') abgeholt und für die Dauer ihrer Gültigkeit
 zwischengespeichert.
 
-Abgelegt werden diese Sperrlisten unter\newline
+%TODO#: korrekter Pfad?
+Abgelegt werden diese Sperrlisten unter:\newline
 \Filename{C:\back{}Dokumente und Einstellungen\back{}LocalService\back{}Lokale\newline
 Einstellungen\back{}Anwendungsdaten\back{}GNU\back{}cache\back{}dirmngr\back{}crls.d\back{}}
 
-Hierbei handelt es sich um einen sogenannten ,,geschützten'' Bereich
-und kann daher nur mit dem Explorer eingesehen werden, wenn für die
-Ansicht eingestellt ist, dass auch geschützte Dateien angezeigt werden sollen.
+Hierbei handelt es sich um \textit{geschützte} Dateien,
+die standardmäßig vom Explorer nicht angezeigt werden. Sollten Sie
+dennoch die Anzeige dieser Dateien wünschen, deaktivieren Sie die
+Option \Menu{Geschützte Systemdateien ausblenden} in den
+Ansicht-Einstellungen des Explorers.
 
 In diesem Verzeichnis sollten keine Änderungen vorgenommen werden.
+
 
 \section{Vertrauenswürdige Wurzeln von DirMngr \label{trustedrootcertsdirmngr}}
 
@@ -3932,38 +3937,46 @@ Für eine vollständige Prüfung von Zertifkats-Gültigkeiten
 muss auch den Wurzel-Zertifkaten vertraut werden, in deren
 Zertifizierungskette die Sperrlisten unterschrieben wurden.
 
-Die Liste der Wurzel-Zertifkate denen DirMngr bei den
-Prüfungen vertrauen soll liegt unter\newline
-\Filename{C:\back{}Programme\back{}GNU\back{}GnuPG\back{}etc\back{}dirmngr\back{}trusted-certs\back{}}
+Die Liste der Wurzel-Zertifkate, denen DirMngr bei den
+Prüfungen vertrauen soll, liegt unter:\newline
+\Filename{C:\back{}Dokumente und Einstellungen\back{}All
+Users\back{}Anwendungsdaten\back{}GNU\back{}\newline
+etc\back{}dirmngr\back{}trusted-certs\back{}}
 
 Für systemweite Vorgaben sollten hier die Wurzel-Zertifkate abgelegt werden
 denen alle Anwender vertrauen können.
 
+
 \section{Weitere Zertifikate von DirMngr \label{extracertsdirmngr}}
 
-Um wie oeben beschrieben die Zertifizierungskette zu
+Um, wie oben beschrieben, die Zertifizierungskette zu
 prüfen sind auch die Zertifkate der Zertifizierungsstellen
 (Certificate Authorities, CAs) zu prüfen.
 
-Für eine direkte Verfügbarkeit können sie in diesem Verzeichnis abgelegt
+Für eine direkte Verfügbarkeit können sie in diesem (systemweiten) Verzeichnis abgelegt
 werden:\newline
-\Filename{C:\back{}Programme\back{}GNU\back{}GnuPG\back{}lib\back{}dirmngr\back{}extra-certs\back{}}
+\Filename{C:\back{}Dokumente und Einstellungen\back{}All 
+Users\back{}Anwendungsdaten\back{}GNU\back{}\newline 
+lib\back{}dirmngr\back{}extra-certs\back{}}
 
-Zertifkate die nicht hier oder bei den Anwendern vorliegen müssen
-entweder automatisch von LDAP-Servern geladen werden oder, falls so nicht
-verfügbar, per Hand importiert werden.
+Zertifkate, die nicht hier oder bei den Anwendern vorliegen, müssen
+entweder automatisch von LDAP-Servern geladen werden oder (falls so nicht
+verfügbar) per Hand importiert werden.
 
 Es ist also sinnvoll im Rahmen von systemweiten Vorgaben hier die
 wichtigsten CA-Zertifkate abzulegen.
+
 
 \section{Konfiguration zur Verwendung externer LDAP Verrzeichnisdienste \label{ldapservers}}
 
 GnuPG kann so konfiguriert werden, dass bei Bedarf fehlende Zertifkate
 oder Sperrlisten auf externen Verzeichnisdiensten gesucht werden.
 
-Der Systemdienst ,,DirMngr'' verwendet dafür die Liste der Dienste die
+Der Systemdienst ,,DirMngr'' verwendet dafür die Liste der Dienste, die
 in der Datei\newline
-\Filename{C:\back{}Programme\back{}GNU\back{}GnuPG\back{}etc\back{}dirmngr\back{}ldapservers.conf}\newline
+\Filename{C:\back{}Dokumente und Einstellungen\back{}All
+Users\back{}Anwendungsdaten\back{}GNU\back{}\\
+etc\back{}dirmngr\back{}ldapservers.conf}\\
 angegeben sind.
 
 Sind im internen Netz die Zugänge zu externen LDAP-Servern gesperrt, so
@@ -3978,47 +3991,55 @@ Die genaue Syntax für die Einträge lautet übrigens:
 
 \section{Systemweite vertrauenswürdige Wurzel-Zertifikate \label{systemtrustedrootcerts}}
 
-Die systemweit als vertrauenswürdig vorbelegten Zertifkate werden
-in der Datei\newline
-\Filename{C:\back{}Programme\back{}GNU\back{}GnuPG\back{}etc\back{}gnupg\back{}trustlist.txt}\newline
+Die systemweit als vertrauenswürdig vorbelegten Wurzel-Zertifkate werden
+in der Datei\\
+\Filename{C:\back{}Dokumente und Einstellungen\back{}All
+Users\back{}Anwendungsdaten\back{}GNU\back{}\\
+etc\back{}gnupg\back{}trustlist.txt}\\
 definiert.
 
-\clearpage
-\chapter{Fehler in den Gpg4win Programmen aufspüren}
+%TODO#: Beispiel zur Syntax-Erklärung? 'Fingerprint S', was bedeutet S?
 
-Es kann vorkommen, dass eines der Gpg4win Programme
+
+
+\clearpage
+\chapter{Fehler in den Gpg4win-Programmen aufspüren}
+
+Es kann vorkommen, dass eines der Gpg4win-Programme
 nicht wie erwartet zu funktionieren scheint.
 
 Nicht selten ist dabei eine Besonderheit der
-Arbeitsumgebung, so dass die Software-Entwickler
-das beobachtete Problem gar nicht selbst nachvollziehen können.
+Arbeitsumgebung verantwortlich, so dass die Software-Entwickler von
+Gpg4win das beobachtete Problem gar nicht selbst nachvollziehen können.
 
 Um die Software-Entwickler bei der Problemsuche zu
-unterstützen oder auch um mal selbst in die technischen
-Detail-Abläufe reinzuschnuppern bieten die Gpg4win Programme
+unterstützen oder um auch einmal selbst in die technischen
+Detail-Abläufe reinzuschnuppern, bieten die Gpg4win-Programme
 Unterstützung an.
 
-In der Regel muss diese Unterstützun aber erst einmal
-eingeschaltet werden. Eine der wichtigesten Hilfsmittel sind
+In der Regel muss diese Unterstützung aber erst einmal
+eingeschaltet werden. Eine der wichtigsten Hilfsmittel sind
 Logbücher. Dort werden detaillierte Informationen zu den
 technischen Vorgängen vermerkt. Ein Software-Entwickler kann
-ein Problem und die mögliche Lösung oft leicht ablesen,
+ein Problem und die mögliche Lösung oft leicht daran ablesen,
 auch wenn es auf den ersten Blick sehr unverständlich
 und viel zu umfangreich wirken mag.
 
 Wenn Sie einen Fehler-Bericht an die Software-Entwickler
 senden wollen, so finden Sie auf dieser Web-Seite einige Hinweise:
 
-http://www.gpg4win.de/reporting-bugs-de.html
+\url{http://www.gpg4win.de/reporting-bugs-de.html}
 
-Als dort erwähnte ,,Debug-Informationen''
-sind Logbücher besonders wertvoll
-und sollten mitgeschickt werden.
+Logbücher -- unter o.g. URL als ,,Debug-Informationen'' erwähnt --
+sind besonders wertvoll und sollten bei einem Fehler-Bericht 
+mitgeschickt werden.
 
-Im folgenden werden verschieden Möglichkeiten beschrieben
-wie Programm-Ablauf-Informationen (darum handelt es sich
-letztlich bei den Logbüchern) eingeschaltet werden können.
+In diesem Kapitel wird beschrieben, wie Sie 
+Programmablauf-Informationen (darum handelt es sich
+letztlich bei den Logbüchern) zu den einzelnen Gpg4win-Programmen
+einschalten können.
 
+\clearpage
 \section{Logbuch von Kleopatra einschalten}
 
 Das Logbuch von Kleopatra besteht aus vielen Dateien,
@@ -4033,17 +4054,19 @@ Logbuch erstellen möchte separat vorgenommen werden und dabei
 insbesondere aufgepasst werden, dass unterschiedliche \Filename{kleologdir}
 Verzeichnisse verwendet werden.
 
-Der Pfad zu diesem Verzeichnis muss nun in der Umgebungsvariable
-,,KLEOPATRA\_LOGDIR'' vermerkt werden:
+Der Pfad zu diesem Verzeichnis muss nun in der neuen Umgebungsvariable
+\Filename{KLEOPATRA\_LOGDIR} vermerkt werden:
 
-Öffnen Sie dazu die Systemsteuerung, wählen dort ,,System'', dann
-den Reiter ,,Erweitert'' und schließlich den Knopf \Button{Umgebungsvariablen}.
+Öffnen Sie dazu die Systemsteuerung, wählen dort \Menu{System}, dann
+den Reiter \Menu{Erweitert} und schließlich den Knopf \Button{Umgebungsvariablen}.
 
-Fügen Sie dort nun folgende neue Benutzervariable ein:
+Fügen Sie dort folgende neue \textit{Benutzer}variable ein:
 
-Name: KLEOPATRA\_LOGDIR
+\begin{quote}
+    Name der Variable: \Filename{KLEOPATRA\_LOGDIR}
 
-Wert: \Filename{C:\back{}TEMP\back{}kleologdir}
+    Wert der Variable: ~~\Filename{C:\back{}TEMP\back{}kleologdir}
+\end{quote}
 
 Beachten Sie, dass das angegebene Verzeichnis existieren muss. Sie können es
 auch nachträglich erstellen.
@@ -4056,10 +4079,15 @@ Während Kleopatra nun verwendet wird, zeichnet es viele Daten in die
 Datei \Filename{kleo-log} (Haupt-Logbuch) sowie möglicherweise viele Dateien
 \Filename{pipe-input-ZEITSTEMPEL-ZUFALLSZEICHEN}.
 
-Möglicherweise reichen diese Informationen einem Software-Entwickler nicht
-um den Fehler zu erkennen, er wird Sie dann bitten die Umgebungsvariable
-,,KLEOPATRA\_LOGOPTIONS'' auf den Wert ,,all'' zu setzen wie Sie schon
-die andere Variable oben gesetzt haben.
+Möglicherweise reichen diese Informationen einem Software-Entwickler
+nicht, um den Fehler zu erkennen. Er wird Sie dann bitten, eine weitere
+Umgebungsvariable anzulegen
+-- so wie Sie es schon oben getan haben:
+\begin{quote}
+    Name der Variable: \Filename{KLEOPATRA\_LOGPTIONS}
+
+    Wert der Variable: ~~\Filename{all}
+\end{quote}
 
 Möglicherweise werden die Logbuch-Dateien sehr schnell sehr groß.
 Sie sollten diese Logbuch-Aufzeichnung nur einschalten und dann
@@ -4070,41 +4098,46 @@ reaktivieren). Vergessen Sie nicht, die Logbücher zu löschen falls
 sie umfangreich geworden sind oder es sehr viele Dateien sind. Am besten immer
 bevor Sie eine neue Aufzeichnung machen.
 
+\clearpage
 \section{Logbuch von GpgOL einschalten}
 
-Für das Einschalten des Logbuches von GpgOL müssen Sie ihrem normalen
-Benutzerkonto (also nicht als Administrator) den Registrierungs-Editor
-starten. Das kann man z.B. machen in dem man
-in einer Eingabeaufforderung das Kommando \verb:regedit: ausführt.
+%TODO#: Logbuch erstellen geht auch als Administrator!
+Für das Einschalten des Logbuches von GpgOL müssen Sie mit Ihrem
+normalen Benutzerkonto (also nicht als Administrator) den Registrierungs-Editor
+starten. Geben Sie dazu das Kommando \verb:regedit: unter
+\Menu{Start$\rightarrow$Ausführen} oder in einer Eingabeaufforderung ein.
 
-Wählen Sie nun das GpgOL Verzeichnis
-(\verb:HKEY_CURRENT_USER\Software\GNU\GpgOL:)
-im auf der linken Seite dargestellten
-Verzeichnisbaum. Existiert dieser Registry-Pfad noch nicht, so
-legen Sie ihn zunächst an.
+Wählen Sie nun aus dem Verzeichnisbaum auf der linken Seite das
+folgende GpgOL-Verzeichnis aus:\\
+\verb:HKEY_CURRENT_USER\Software\GNU\GpgOL:
 
-Auf der rechten Seite wählen Sie nun über die rechte Maustaste den
-Menüeintrag ,,Neu/Zeichenfolge''.
-Bennennen Sie den neuen Eintrag ,,enableDebug'' und setzte Sie dessen Wert
-auf ,,1''.
+Auf der rechten Seite sehen Sie nun eine Liste von Einträgen
+(sogenannte Zeichenfolgen) mit teilweise bereits vordefinierten Werten. 
+Diese Einträge werden nach dem ersten Start von Outlook mit GpgOL
+angelegt.
 
-Man erhält umso mehr interne Programmablaufinformationen
-je größere man den Wert von ,,enableDebug'' wählt.
-Es ist empfehlenswert
-mit ,,1'' zu beginnen und nur höhere Werte einzusetzen, falls
-es eine tiefere Programmablaufanalyse erfordern sollte.
+Zum Aktivieren des GpgOL-Logbuchs Doppelklicken Sie auf den Eintrag 
+\Filename{enableDebug} und setzte Sie dessen Wert auf \Filename{1}.
 
-Erstellen Sie nun eine weitere Zeichnfolge mit dem Namen ,,logFile''
-und als Wert ein Dateiname in die das Logbuch geschrieben werden soll,
-beispielsweise
-\Filename{C:\back{}TEMP\back{}gpgollog.txt}.
-Evtl. existierte dieser Eintrag schon ohne Angabe eines Dateinamens,
-in diesem Fall reicht ein Doppel-Click auf den Eintrag um den Wert
-dann zu ändern.
+Je größer Sie den Wert von \Filename{enableDebug} wählen, umso mehr 
+interne Programmablaufinformationen werden im Logbuch gespeichert.
+Es ist empfehlenswert mit \Filename{1} zu beginnen und nur 
+höhere Werte einzusetzen, falls es eine tiefere 
+Programmablaufanalyse erfordern sollte.
+
+%TODO#: Mögliche Werte für enableDebug ergeben sich aus 2er Potenzen?
+%also: 0-1-2-4-8-.. etc. 
+% Genauer Wertebereich?
+
+
+Als Wert für \Filename{logFile} geben Sie nun einen Dateinamen an,
+wohin das Logbuch geschrieben werden soll; z.B.:
+\Filename{C:\back{}TEMP\back{}gpgol.log}.
 
 Bedenken Sie, dass diese Datei ggf. im weiteren Verlauf sehr
-umfangreich werden kann. Stelle Sie ,,enableDebug'' auf ,,0'' wenn
-Sie kein Logbuch mehr benötigen.
+umfangreich werden kann. Stelle Sie \Filename{enableDebug} auf
+\Filename{0}, sobald Sie das GpgOL-Logbuch nicht mehr benötigen.
+
 
 \section{Logbuch von DirMngr einschalten}
 
@@ -4113,31 +4146,58 @@ ist das Einschalten des Logbuches nur mit Administator-Rechten
 möglich.
 
 Um das Logbuch einzuschalten, tragen Sie folgende zwei Zeilen in
-die Datei\newline
-\Filename{C:\back{}Programme\back{}GNU\back{}GnuPG\back{}etc\back{}dirmngr\back{}dirmngr.conf}\newline
+die Datei\\
+\Filename{C:\back{}Dokumente und Einstellungen\back{}All
+Users\back{}Anwendungsdaten\back{}GNU\back{}\\
+etc\back{}dirmngr\back{}dirmngr.conf}\\
 ein:
 
-\begin{verbatim}
-debug-all
-log-file C:\TEMP\dirmngr.log
-\end{verbatim}
+\begin{quote}
+       \verb@debug-all@ \\
+       \verb@log-file C:\TEMP\dirmngr.log@
+\end{quote}
 
-Starten Sie dann den Dienst neu, so dass er die geänderte Konfiguration
-einliesst.
+Starten Sie anschließend den Dienst unter
+\Menu{Systemsteuerung$\rightarrow$Verwaltung$\rightarrow$Dienste} neu,
+so dass die geänderte Konfiguration eingelesen werden.
 
-\section{Logbuch von GPG für S/MIME, GPG Agent oder Smartcard Daemon einschalten}
+\clearpage
+\section{Logbuch von GnuPG einschalten}
 
-Für die Programme GPG für S/MIME (Kommandozeilen-Name GpgSM), GPG Agent (gpg-agent) und
-Smarcard Daemon (scdaemon) können Anwender persönliche Konfigurationen vornehmen.
+%TODO#: Titel ok?
+
+Für folgende GnuPG-Programme können Sie jeweils einzeln ein Logbuch
+einschalten:
+\begin{itemize}
+    \item GPG Agent
+    \item GPG für S/MIME
+    \item GPG für OpenPGP
+    \item Smartcard Daemon
+\end{itemize}
+
+Für diese Programme können Anwender persönliche Konfigurationen vornehmen.
 Dazu gehört auch das Einstellen einer Protokolldatei für den Programmablauf.
 
-Eingeschaltet wird das jeweilige Logbuch in dem über das Kleopatra Menü
-,,Einstellungen/GnuPG Backend einrichten...'' zum jeweiligen Programm
-die beiden Einstellungen ,,Schreibe im Servermodus Logs in DATEI'' z.B. auf
-,,\Filename{C:\back{}TEMP\back{}gpgsm.log}'' und ,,Die Debugstufe auf NAME setzten''
-auf ,,guru'' setzen. Letzteres ist die höchtste Stufe und erzeugt entsprechend große
-Dateien. Daher sollten Sie die Logbücher wieder ausschalten wenn Sie nicht mehr benötigt werden
-(Debugstufe ,,none'').
+Eingeschaltet wird das jeweilige Logbuch im GnuPG Backend --
+erreichbar über das Kleopatra Menü
+\Menu{Einstellungen$\rightarrow$GnuPG Backend einrichten...}.
+Für jede der o.g. vier Programme existieren in diesem
+Konfigurationsfenster zwei Debug-Optionen:
+\begin{itemize}
+    \item \textbf{Option "`Setze die Debug-Stufe auf"'}\\
+        Hier definiern Sie die Ausführlichkeit der aufzuzeichnenden
+        Informationen. Die Debugstufe \texttt{guru} ist die höchtste Stufe und 
+        erzeugt entsprechend große Dateien.
+        Schalten Sie daher die Logbücher wieder aus (Debugstufe
+        \texttt{none}), wenn Sie diese nicht mehr benötigen.
+
+    \item \textbf{Option "`Schreibe im Servermodus Logs auf DATEI"'}\\ 
+        Geben Sie hier die Logdatei an, in der alle Debug-Informationen
+        gespeichert werden sollen; z.B.
+        \Filename{C:\back{}TEMP\back{}gpgsm.log}.
+\end{itemize}
+
+
 
 \clearpage
 %% Original page 49
@@ -4147,12 +4207,12 @@ Dateien. Daher sollten Sie die Logbücher wieder ausschalten wenn Sie nicht mehr 
 $\ldots$ jedenfalls nicht mit heute bekannten Methoden und sofern die
 Implementierung der Programme frei von Fehlern ist. 
 
-In der Realität sind genau solche Fehler in den Programmen, Fehler im
-Betriebssystem oder nicht zuletzt Fehler in der Benutzung der letzte Weg um
-doch noch an die geheimen Informationen zu gelangen -- Auch deshalb sollte
-Sie diese Handbücher bis hierhin gelesen haben.
+In der Realität sind genau solche Fehler in den Programmen, im
+Betriebssystem oder nicht zuletzt in der Benutzung der letzte
+Weg, um doch noch an die geheimen Informationen zu gelangen. -- 
+Auch deshalb sollte Sie dieses Kompendium bis hierhin gelesen haben.
 
-In jedem Beispiel dieses Handbuchs haben Sie gesehen, dass zwischen dem
+In jedem Beispiel dieses Kompendiums haben Sie gesehen, dass zwischen dem
 geheimen und dem öffentlichen Schlüsselteil eine geheimnisvolle
 Verbindung besteht. Nur wenn beide zueinander passen, kann man
 Geheimbotschaften entschlüsseln.
@@ -4177,26 +4237,28 @@ Hier beginnt also sozusagen die Kür nach dem Pflichtteil:
 \chapter{GnuPG und das Geheimnis der großen Zahlen}
 \label{ch:secretGnupg}
 
-{\Large Kryptographie für Nicht-Mathematiker}
+{\Large Kryptographie für Nicht-Mathematiker}\\
 
 Es ist schon versucht worden, den RSA Algorithmus, auf dem GnuPG
-basiert\footnote{Wir verwenden hier RSA als Beispiel da dieser
-  einfacher zu verstehen ist als der Elgamal Algorithmus der als
+basiert\footnote{Wir verwenden hier RSA als Beispiel. RSA ist
+  einfacher zu verstehen als der Elgamal Algorithmus, der als
   Voreinstellung von GnuPG benutzt wird.}, zu "`knacken"', also einen
 privaten Schlüssel zu berechnen, wenn man lediglich den
 öffentlichen Schlüssel kennt.  Diese Berechnung ist aber noch nie für
 Schlüssellängen (1024 Bit und mehr), die in GnuPG verwendet werden,
-gelungen.  Es ist theoretisch zwar möglich, aber praktisch
-undurchführbar da selbst bei genügend vorhandener Zeit (viele Jahre)
-und Abertausenden von vernetzten Rechnern niemals genügen Speicher zur
-Verfügung stehen wird, um den letzten Schritt dieser Berechnung
+gelungen.  Es ist zwar \textit{theoretisch} möglich, aber
+\textit{praktisch} nicht durchführbar! Denn selbst bei genügend vorhandener 
+Zeit (viele Jahre)
+und Abertausenden von vernetzten Rechnern würde niemals genügen Speicher zur
+Verfügung stehen, um den letzten Schritt dieser Berechnung
 durchführen zu können.
 
-Es kann allerdings durchaus möglich sein, dass eines Tage eine geniale
+Es kann allerdings durchaus möglich sein, dass eines Tages eine geniale
 Idee die Mathematik revolutioniert und eine schnelle Lösung des mathematischen
 Problems, welches hinter RSA steckt, liefert.  Dies wird aber wohl
 kaum von heute auf morgen geschehen.
-Das Bundesamt für Sicherheit in der Informationstechnik veröffentlicht von Zeit zu Zeit
+Das Bundesamt für Sicherheit in der Informationstechnik (BSI) 
+veröffentlicht von Zeit zu Zeit
 Prognosen und Einschätzungen, welche Schlüssellängen noch wieviele
 Jahre für absolute Geheimhaltung benutzt werden sollen.  GnuPG
 überschreitet mit seinen Standardeinstellungen noch weit diese
@@ -4205,41 +4267,44 @@ Mathematik der mit Abstand sicherste Teil an der ganzen praktisch
 angewandten Kryptographie.
 
 
-
 \clearpage
 %% Original page  52
 
 Im Folgenden erfahren Sie, wie diese mathematische Methode funktioniert. Nicht
-in allen Einzelheiten ­-- das würde den Rahmen dieser Anleitung bei
-weitem sprengen --, aber doch so, dass Sie bei etwas Mitrechnen selbst
+in allen Einzelheiten (das würde den Rahmen dieser Anleitung bei
+weitem sprengen), aber doch so, dass Sie bei etwas Mitrechnen selbst
 mathematisch korrekt ver- und entschlüsseln können und dabei das
 "`Geheimnis der großen Zahlen"' entdecken.
 
 Man kann diese komplexe mathematische Methode auch als
 Normalsterblicher und Nichtmathematiker verstehen. Sie müssen nur
-einfache Additionen und Multiplikationen beherrschen. Wie gesagt: hier
+einfache Additionen und Multiplikationen beherrschen. Wie gesagt: Hier
 beginnt der Kürteil, und bei der Kür geht es immer etwas mehr zur
 Sache als im Pflichtprogramm.  Letztendlich versteht man dann aber,
 warum GnuPG sicher ist.
 
 Eine Begriffsklärung vorneweg:
 
-ein \emph{Algorithmus} ist eine mathematische Prozedur zur Veränderung oder
-Transformation von Daten oder Informationen.
+\begin{quote}
 
-\emph{Arithmetik} ist die Methode, nach der wir Zahlen addieren und
-multiplizieren.
+    \textit{Ein \textbf{Algorithmus} ist eine mathematische Prozedur zur Veränderung oder
+    Transformation von Daten oder Informationen.}
+
+    \textit{\textbf{Arithmetik} ist die Methode, nach der wir Zahlen addieren und
+    multiplizieren.}
+\end{quote}
 
 
 Die Verschlüsselung mit GnuPG basiert auf dem sogenannten
 RSA-Algorithmus\footnote{RSA ist eigentlich optional, da aus
   Patentgründen der Elgamal Algorithmus, beruhend auf dem schwieriger
-  zu erklärenden Problem des diskreten Logarithmus, als Standard
-  verwendet wird.}.  RSA steht für die Nachnamen von Ron Rivest, Ami
+  zu erklärenden Problem des diskreten Logarithmus, als Standard in
+  GnuPG verwendet wird.}.  RSA steht für die Nachnamen von Ron Rivest, Ami
 Shamir und Ben Adleman, die diesen Algorithmus im Jahr 1978 entdeckt
 haben. Dieser Algorithmus verwendet einen Typ der Arithmetik, die
 Rechnen mit Restklassen oder "`Modulo-Arithmetik"' heißt.
 
+\clearpage
 %% Original page 53
 \section{Das Rechnen mit Restklassen}
 
@@ -4305,7 +4370,7 @@ vorgehen, weil wir nämlich auch schreiben können:
 Denn 4 ist dasselbe wie 9, und 2 dasselbe wie 7, da wir uns ja nur für
 den jeweiligen Rest nach der Teilung durch 5 interessieren.  Daran
 wird deutlich, dass wir bei dieser Art der Arithmetik jederzeit 5 oder
-ein Vielfaches von 5, wie 10, 15 und so weiter nehmen können,und das
+ein Vielfaches von 5, wie 10, 15 und so weiter nehmen können, und das
 Ergebnis stets dasselbe ist.
 
 
@@ -4355,7 +4420,7 @@ Arithmetik gerechnet $ 13 * 11 = 143 $ und $ 143 = 8 * 17 + 7 $ ist.
 
 Computer speichern Buchstaben als Zahlen. Alle Buchstaben und Symbole
 auf der Computertastatur werden in Wirklichkeit als Zahlen
-gespeichert, die zwischen zwischen 0 und 255 liegen.
+gespeichert, die zwischen 0 und 255 liegen.
 
 Wir können also eine Nachricht auch in eine Zahlenfolge umwandeln.
 Nach welcher Methode (oder Algorithmus) dies geschieht, wird im
@@ -4439,7 +4504,7 @@ Und zwar erzeugen wir zunächst den öffentlichen Schlüssel
   komplizierten Verfahren errechnet, welches wir jetzt erklären:
 \end{description}
 
-zunächst ziehen wir von unseren Primzahlen 7 und 11 jeweils die Zahl 1
+Zunächst ziehen wir von unseren Primzahlen 7 und 11 jeweils die Zahl 1
 ab (also $7 - 1$ und $11 - 1$) und multiplizieren die beiden
 resultierenden Zahlen miteinander. In unserem Beispiel ergibt das 60:
 $( 7 - 1 ) * ( 11 - 1) = 60$. 60 ist unsere Modulzahl für die
@@ -4628,7 +4693,7 @@ Kilometerzähler im Auto: das rechte Rad zählt nach jedem
 Kilometer eine Stelle weiter und zwar nach der vertrauten Abfolge
 der Zahlen
 
-0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2
+0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, ...
 
 und so weiter. Jedesmal, wenn das rechte Rad wieder 0 erreicht, zählt
 das Rad links davon eine Stelle hoch. Und jedesmal, wenn dieses zweite
@@ -4681,7 +4746,7 @@ Unser Tacho zur Basis 8 stellt zum Beispiel folgende Zahl dar:
 
 \[ 356 \]
 
-Die 6 auf dem rechte Rädchen zählt einzelne Kilometer, also 6
+Die 6 auf dem rechten Rädchen zählt einzelne Kilometer, also 6
 Kilometer.\\
 Die 5 auf dem Rädchen daneben für $5 * 8$, also 40 Kilometer.\\
 Die 3 links steht für je 64 Kilometer pro Umdrehung, also hier
@@ -4801,8 +4866,9 @@ sie zunächst zusammen und verfolgen dann die Einzelschritte:
 
 Und nun ausführlich:
 
-1. Die Nachricht \emph{aba, cad, ada} wandeln wir -- wie gesehen --
-in Zahlen um.
+\begin{enumerate}
+    \item Die Nachricht \emph{aba, cad, ada} wandeln wir -- wie gesehen --
+        in Zahlen um.
 
 Angenommen, wir beschränken uns bei den Nachrichten auf die 4
 Buchstaben a, b, c und d. In diesem -- wirklich sehr einfachen --
@@ -4817,9 +4883,10 @@ diese Nachricht mit Hilfe der Primzahlen 7 und 11, mit dem
 Schlüssel 37.  Dieses Beispiel kennen wir bereits aus dem früheren
 Kapitel: wir haben damit die Tabellen 1 und 2 konstruiert.
 
-2. Diese Darstellung zur Basis 4 wandeln wir in eine Darstellung zur
+\item Diese Darstellung zur Basis 4 wandeln wir in eine Darstellung zur
 Basis 10 um, damit wir zur Verschlüsselung die Tabelle 1 benutzen
-können, in denen die Zahlen ja auch auf 10er-Basis dargestellt werden.
+können, in denen die Zahlen ja auch auf 10er-Basis dargestellt
+werden.
 
 Weil wir vier Buchstaben für die Nachricht verwenden, rechnen wir zur
 Basis 4. Für die Rechnung modulo 77 müssen wir die Nachricht in Stücke
@@ -4841,9 +4908,9 @@ darstellen.
 
 %% Original page 71
 Da wir die Buchstaben durch die Zahlen a = 0, b = 1, c = 2, d
-= 3 darstellen, wird die Nachricht zu
+= 3 darstellen, wird die Nachricht zu:
 
-\[ 010_4, 203_4, 020_4 \].
+\[ 010_4, 203_4, 020_4 \]
 
 Zur Basis 10 wird diese Nachricht durch die Zahlenfolge 4, 35,
 8 dargestellt. Warum? Nehmen wir zum Beispiel das mittlere
@@ -4859,8 +4926,11 @@ Stück $203_4$:
 % file.  Without it the footer logo is not correctly rendered, instead
 % a tiny image of the next graphic is shown.  The clearpage somehow
 % solves it.
+
+
+
 \clearpage
-3. Jetzt können wir zur Verschlüsselung die Tabelle 1 benutzen, die ja
+\item Jetzt können wir zur Verschlüsselung die Tabelle 1 benutzen, die ja
 zur Basis 10 berechnet wurde. Diese Tabelle benutzen wir, weil wir mit
 dem schon bekannten Schlüsselpaar arbeiten wollen. Dabei entsteht eine
 kodierte Nachricht zur Basis 10.
@@ -4872,7 +4942,7 @@ Die Nachricht wird nun zu der Zahlenfolge 53, 63, 50 (zur Basis 10).
 
 
 %% Original page 72
-4. Wiederum zur Basis 4 konvertiert, entsteht die verschlüsselte
+\item Wiederum zur Basis 4 konvertiert, entsteht die verschlüsselte
 Nachricht.
 
 Wird sie nun wieder zur Basis 4 konvertiert, ergibt die Nachricht nun
@@ -4888,30 +4958,29 @@ Anhand der Tabellen 1 und 2 können wir ebensogut Nachrichten unter
 Verwendung des geheimen Schlüssels (d.h.  erst Tabelle 2 benutzen)
 verschlüsseln, dann mit dem öffentlichen Schlüssel (d.h. Tabelle 1 als
 zweites benutzen) dekodieren und damit unsere ursprüngliche Zahl
-wieder herstellen. Das bedeutet --­ wie wir bereits im Handbuch
-"`Gpg4win für Einsteiger"' gesehen haben --, dass der Inhaber des geheimen
+wieder herstellen. Das bedeutet, dass der Inhaber des geheimen
 Schlüssels damit Nachrichten unter Verwendung des RSA Algorithmus
 verschlüsseln kann.  Damit ist bewiesen, dass sie eindeutig nur von
 ihm stammen können.
-
+\end{enumerate}
 
 \clearpage
 %% Original page 73
-\texttt{Fazit:}
+\subsubsection{Fazit:}
 
 Wie Sie gesehen haben, ist die ganze Angelegenheit zwar im Detail
 kompliziert, im Prinzip aber durchaus nachvollziehbar. Sie sollen
-schließlich nicht nur einer Methode einfach nur vertrauen, sondern ­--
+schließlich nicht einer Methode einfach nur vertrauen, sondern ­--
 zumindest ansatzweise ­-- ihre Funktionsweise durchschauen. Sehr viele
-tiefergehende Details sind leicht in anderen Büchern (z.B. R.~Wobst,
+tiefergehende Details sind leicht in anderen Büchern (z.B.: R.~Wobst,
 "`Abenteuer Kryptologie"') oder im Internet zu finden.
 
 
 \vfill
 
-\textbf{Immerhin wissen Sie nun:} wenn jemand sich an Ihren verschlüsselten
+\textbf{Immerhin wissen Sie nun:} Wenn jemand sich an Ihren verschlüsselten
 \Email{}s zu schaffen macht, ist er durchaus so lange damit beschäftigt,
-dass er dann keine Lust mehr haben kann sie auch noch zu lesen\ldots
+dass er dann keine Lust mehr haben dürfte diese auch noch zu lesen\ldots
 
 
 
@@ -4950,7 +5019,6 @@ Bitte beachten Sie die beiden folgenden Einschränkungen:
   Die Entschlüsselung  und Signaturprüfung einfacher (nicht verschachtelter)
   PGP/MIME \Email{}s stellt hingegen kein Problem dar.
 \end{itemize}
-
 
 \section{Installation}
 

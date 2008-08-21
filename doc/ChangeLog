@@ -1,3 +1,8 @@
+2008-08-21  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+
+	* manual/gpg4win-compendium-de.tex:
+	Improved last chapters (23 to 26) of part two.
+
 2008-08-19  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
 
 	* manual/version.tex.in: Added compendiumVersionDE and compendiumDateDE.
