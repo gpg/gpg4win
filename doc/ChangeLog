@@ -1,3 +1,9 @@
+2008-08-22  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+
+	* manual/gpg4win-compendium-de.tex, manual/Makefile.am:
+	Improved appendix. Added new screenshots. Added new fdl file for
+	latex book style.
+
 2008-08-21  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
 	* manual/gpg4win-compendium-de.tex:

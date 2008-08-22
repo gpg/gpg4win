@@ -53,6 +53,7 @@ png_files = \
 		sc-ol-sendEncryptedMail_de.png\
 		sc-ol-sendSignedMail_de.png\
 		sc-gpgol-options_de.png\
+		sc-gpgol-options-textformat_de.png\
 		sc-kleopatra-openpgp-signDialog_de.png\
 		sc-kleopatra-sign-chooseOpenpgpCertificate_de.png\
 		sc-kleopatra-sign-OpenpgpPinentry_de.png\

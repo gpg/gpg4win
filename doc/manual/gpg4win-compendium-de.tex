@@ -1831,12 +1831,12 @@ PGP/MIME oder S/MIME als Voreinstellung definieren.
 \textbf{Wichtiger Hinweis nur für S/MIME:}\\
 Nach der Installation von Gpg4win ist die
 \margin{\IncludeImage[width=1.5cm]{smime-icon}}
-S/MIME-Funktionalität in GpgOl deaktiviert. Wenn Sie S/MIME nutzen
+S/MIME-Funktionalität in GpgOL deaktiviert. Wenn Sie S/MIME nutzen
 möchten, sollten Sie zuvor unter
 \Menu{Extras$\rightarrow$Optionen$\rightarrow$GpgOL} die Option
 \textit{S/MIME Unterstützung einschalten} aktivieren:
 
-% TODO screenshot: OL composer with Adele's address and body text
+% TODO screenshot: GpgOL options
 \begin{center}
 \IncludeImage[width=0.45\textwidth]{sc-gpgol-options_de}
 \end{center}
@@ -5008,11 +5008,13 @@ in der aktuellen Version nur mit Outlook 2003 SP2 und gibt einen
 Warnhinweis aus, falls eine ältere Outlook Version benutzt wird.
 
 Bitte beachten Sie die beiden folgenden Einschränkungen:
+%TODO#: Einschränkungen noch aktuell? FIXME wichtig?
 
 \begin{itemize}
 \item Als Texteditor darf nicht das Programm Word eingestellt sein.
 % FIXME:  Wir müssen erklären wie man Word als Standard Editor in
 % Outlook ausschaltet.
+
 \item Sogenanntes Inline-PGP oder traditionelles PGP wird voll
   unterstützt.  Es können jedoch keine PGP/MIME \Email{}s erstellt werden.
 
@@ -5020,131 +5022,151 @@ Bitte beachten Sie die beiden folgenden Einschränkungen:
   PGP/MIME \Email{}s stellt hingegen kein Problem dar.
 \end{itemize}
 
-\section{Installation}
 
+\clearpage
+\section{Installation}
+\label{gpgolInstallation}
 Die Installation wird durch den Gpg4win Installer vorgenommen.  Beim nächsten
 Start von Outlook findet sich im Menü
-\Menu{Extras$\rightarrow$Optionen} eine Karteikarte \Menu{GnuPG}:
+\Menu{Extras$\rightarrow$Optionen} eine Karteikarte \Menu{GpgOL}:
 
+% TODO screenshot: GpgOL options
 \begin{center}
-\IncludeImage[width=0.7\textwidth]{sc-gpgol-options}
+\IncludeImage[width=0.45\textwidth]{sc-gpgol-options_de}
 \end{center}
 
-Die beiden ersten Optionen steuern ob per Voreinstellung Nachrichten
-verschlüsselt oder signiert werden sollen.  Sie können dies aber immer
-noch bei der Erstellung der Nachricht individuell verändern.
+Die Karteikarte GpgOL unterteilt sich in drei Kästen:
+\begin{enumerate}
+    \item \textbf{Allgemein:}
 
-Die Option "`Entschlüsselte Attachments automatisch speichern"'
-speichert Anhänge nach der Entschlüsselung im Klartext ab, so dass
-sie dann jederzeit ohne erneute Entschlüsselung gelesen werden können.
+        Nach der Installation von Gpg4win ist die 
+        \margin{\IncludeImage[width=1.5cm]{smime-icon}}
+        S/MIME-Funktionalität in GpgOL deaktiviert. 
+        
+        \textbf{Wichtig:} Wenn Sie S/MIME nutzen
+        möchten, müssen Sie zuvor die Option
+        \textit{S/MIME Unterstützung einschalten} aktivieren.
 
-Die Option "`Automatisch Attachments signieren"' sorgt dafür, dass mit
-dem Signieren des Haupttexts auch die Anhänge signiert werden.
-Dazu wird für jeden Anhang ein weiterer Anhang mit der
-Signatur angelegt.
+    \item \textbf{Senden von Nachrichten:}
 
-Wenn Sie "`Nachricht ebenfalls mit voreingestelltem Schlüssel
-verschlüsseln"' ankreuzen und in das Eingabefeld die Key-ID Ihres
-eigenen Schlüssels eintragen, so werden Ihre Nachrichten automatisch
-auch an sie selbst verschlüsselt. Dies ermöglicht die Nachricht dann
-selber noch im Order für gesendete Nachrichten entschlüsseln und lesen zu können.
+        Die beiden ersten Optionen in diesem Kasten steuern, ob per
+        Voreinstellung neue Nachrichten verschlüsselt und/oder signiert
+        werden sollen. Sie können dies aber immer noch bei der
+        Erstellung einer Nachricht individuell verändern.
 
-Die Option "`Im Vorschaufenster entschlüsseln"' kann nur sinnvoll auf
-schnellen Rechnern eingesetzt werden und funktioniert z.Z. nur
-eingeschränkt.
+        Die beiden letzten Optionen definieren, ob PGP/MIME
+        \textit{oder} S/MIME per Voreinstellung verwendet werden soll.
+        Auch hier können Sie diese Entscheidung immer noch vor dem
+        Senden jeder Nachricht manuell verändern.
+    \item \textbf{Lesen von Nachrichten:}
 
-Die Option "`Wenn möglich, HTML Version anzeigen"' kann benutzt
-werden, um die HTML Version einer Nachricht anzuzeigen.  Im Normalfall
-oder falls keine HTML Version vorhanden ist, wird die Text Version
-angezeigt.  
+        \textit{Auch im Vorschaufenster entschlüsseln}
+        %TODO#: Folgende Einschränkung noch gültig?
+        %Die Option "`Im Vorschaufenster entschlüsseln"' kann nur sinnvoll auf
+        %schnellen Rechnern eingesetzt werden und funktioniert z.Z. nur
+        %eingeschränkt.
 
-Alle Optionen sind nach einer Neuinstallation bereits sinnvoll vorbelegt.  Um
-aber verschlüsselte Nachrichten versenden zu können, sollten Sie
-sicherstellen, daß Sie \textbf{nicht Microsoft Word zum Verfassen} der
-Nachrichten benutzen.  Desweiteren ist dringend anzuraten auf HTML
-Nachrichten zu verzichten.
+        Die Option  \textit{HTML Darstellung anzeigen wenn möglich}
+        kann benutzt werden, um die HTML Version einer Nachricht 
+        anzuzeigen.  Im Normalfall oder falls keine HTML Version vorhanden 
+        ist, wird die Text Version dargestellt.
 
+        \textit{Verschlüsselte Nachricht als Anlage anzeigen}
+        %TODO#?
+
+\end{enumerate}
+
+
+
+Alle Optionen sind nach einer Neuinstallation bereits sinnvoll vorbelegt.
+
+%TODO#: noch relevant?
+\label{OLandWord}
+Um aber verschlüsselte Nachrichten versenden zu können, sollten Sie
+sicherstellen, daß Sie \textbf{nicht Microsoft Word} zum Verfassen der
+Nachrichten benutzen.
+
+Desweiteren ist dringend anzuraten auf HTML Nachrichten zu verzichten.
 Bitte kontrollieren Sie dies im Menüpunkt
 \Menu{Extras$\rightarrow$Optionen} auf der Karteikarte
-\Menu{E-Mail-Format}.  Ihre Einstellungen sollten dem folgenden
-Bildschirmausdruck entsprechen:
+\Menu{E-Mail-Format}.  Das Nachrichtenformat sollte auf
+\textbf{"`Nur-Text"'} eingestellt sein (siehe rot markierter Bereich):
 
+% screenshot: Outlook E-Mail-Format options
 \begin{center}
-\IncludeImage[width=0.7\textwidth]{sc-gpgol-noword}
+\IncludeImage[width=0.45\textwidth]{sc-gpgol-options-textformat_de}
 \end{center}
 
-
+\clearpage
 \section{Häufig gestellte Fragen}
 
 \begin{description}
-\item[Die Icons zur Verschlüsselung fehlen in der Symbolleiste] 
+\item[Wo finde ich die Icons zum Signieren/Verschlüsseln in der Symbolleiste?]
 
-  Wenn bereits viele Icons vorhanden sind, so zeigt Outlook diese
-  Icons nicht unbedingt direkt an.  Sie können diese anzeigen lassen,
+  Wenn bereits\linebreak viele Icons in der Symbolleiste des Nachrichtenfensters 
+  vorhanden sind, so zeigt Outlook die Signieren/Verschlüsseln-Icons nicht 
+  unbedingt direkt an. Sie können diese aber anzeigen lassen,
   indem Sie in der Symbolleiste auf das kleine Icon mit dem Pfeil nach
-  unten klicken ("`Optionen für Symbolleiste"').  Dort finden Sie dann
-  alle nicht angezeigten Icons. Ein Klick auf eines dieser Icons
-  verschiebt es in die Symbolleiste.  Dasselbe gilt für das Icon zum
-  Aufruf der Schlüsselverwaltung.
+  unten klicken (\textit{Optionen für Symbolleiste}):  Sie erhalten
+  eine Übersicht aller nicht angezeigten Icons. Ein Klick auf eines dieser Icons
+  verschiebt es in den sichtbaren Teil der Symbolleiste.
+  %TODO#: Gibt es das Icon noch?
+  %Dasselbe gilt für das Icon zum Aufruf der Schlüsselverwaltung.
 
   Achten Sie auch darauf, daß Sie nicht Microsoft Word zum Verfassen
-  von Nachrichten benuzten.  Siehe Installationsanleitung.
+  von Nachrichten benuzten (vgl. Seite~\pageref{OLandWord}).
 
-\item[Was bedeuten die Buchstaben im Übersichtsdialog?]
+%TODO#: Noch aktuell?
+%\item[Was bedeuten die Buchstaben im Übersichtsdialog?]
+%
+%  Bei der Entschlüsselung oder Signaturprüfung von Nachrichten mit
+%  Anhängen zeigt GpgOL eine Liste mit den einzelnen Bestandteilen
+%  und deren Dateinamen dar. Vor dem Dateinamen steht eine "`E"' falls
+%  es sich um einen verschlüsselten Anhang handelt oder eine "`S"'
+%  für einen signierten Anhang.
 
-  Bei der Entschlüsselung oder Signaturprüfung von Nachrichten mit
-  Anhängen zeigt GpgOL eine Liste mit den einzelnen Bestandteilen
-  und deren Dateinamen dar. Vor dem Dateinamen steht eine "`E"' falls
-  es sich um einen verschlüsselten Anhang handelt oder eine "`S"'
-  für einen signierten Anhang.
+
+\item[Wo finde ich Informationen zur aktuellen Version von GpgOL?]       
+
+  Öffnen Sie in die GpgOL-Optionen
+  (\Menu{Extras$\rightarrow$Optionen$\rightarrow$GpgOL}). 
+  Rechts unten sehen Sie die aktuelle installierte GpgOL-Version.
+  Klicken Sie auf das g10Code-Logo links unten, um auf die
+  Website\linebreak
+  \url{http://www.g10code.com/p-gpgol.html} zu gelangen. Dort erhalten
+  Sie alle aktuellen Informationen zu GpgOL.
 
 
-\item[Wie finde ich Informationen zur aktuellen Version von GpgOL?]       
+%TODO#: Noch aktuell?
+%\item[Warum kann eine Verschlüsselung nicht abgebrochen werden?] 
+%
+%  Wenn Sie auf Senden ge\-klickt haben, beginnt GpgOL mit der
+%  Verschlüsselung.  Outlook hat jedoch seit langem einen Fehler, der
+%  verhindert, dass diese Operation abgebrochen werden kann.  Als
+%  Gegenmaßnahme können Sie Outlook so konfigurieren, dass erstellte
+%  Nachrichten nicht sofort versendet werden -- das gibt Ihnen die
+%  Möglichkeit die Nachricht noch nachträglich zu löschen.  Aus
+%  Sicherheitsgründen versucht GpgOL den Inhalt der Nachricht zu
+%  löschen wenn die Verschlüsselung abgebrochen wurde.  Dies ist
+%  aber nicht immer erfolgreich.
 
-  Klicken Sie in den Optionen für GnuPG auf das Logo links unten.
+%TODO#: Noch aktuell?
+%\item[Warum erscheint der Bestätigungsdialog beim Zugriff auf
+%  bestimmte \Email{}s?]
+%
+%  Ist \linebreak{} GpgOL nicht als vertrauenswürdiges Plugin
+%  installiert worden, nimmt Outlook an, das Plugin versucht
+%  unberechtigt auf interne Informationen zuzugreifen.  GpgOL versucht
+%  derartige Zugriffe zu vermeiden, in einige Fällen sind sie aber
+%  notwendig um verschlüsselte oder signierte \Email{}s anzeigen zu
+%  können.
+%
+%  GpgOL ist noch in Entwicklung. Einer der offenen Punkte ist
+%  die Registrierung als vertrauenswürdiges Plugin. Zukünftige
+%  Versionen sollten die Unanehmlichkeit der expliziten Bestätigung
+%  lösen.
 
-\item[Warum kann eine Verschlüsselung nicht abgebrochen werden?] 
 
-  Wenn Sie auf Senden ge\-klickt haben, beginnt GpgOL mit der
-  Verschlüsselung.  Outlook hat jedoch seit langem einen Fehler, der
-  verhindert, dass diese Operation abgebrochen werden kann.  Als
-  Gegenmaßnahme können Sie Outlook so konfigurieren, dass erstellte
-  Nachrichten nicht sofort versendet werden -- das gibt Ihnen die
-  Möglichkeit die Nachricht noch nachträglich zu löschen.  Aus
-  Sicherheitsgründen versucht GpgOL den Inhalt der Nachricht zu
-  löschen wenn die Verschlüsselung abgebrochen wurde.  Dies ist
-  aber nicht immer erfolgreich.
-
-\item[Warum erscheint der Bestätigungsdialog beim Zugriff auf
-  bestimmte \Email{}s?]
-
-  Ist \linebreak{} GpgOL nicht als vertrauenswürdiges Plugin
-  installiert worden, nimmt Outlook an, das Plugin versucht
-  unberechtigt auf interne Informationen zuzugreifen.  GpgOL versucht
-  derartige Zugriffe zu vermeiden, in einige Fällen sind sie aber
-  notwendig um verschlüsselte oder signierte \Email{}s anzeigen zu
-  können.
-
-  GpgOL ist noch in Entwicklung. Einer der offenen Punkte ist
-  die Registrierung als vertrauenswürdiges Plugin. Zukünftige
-  Versionen sollten die Unanehmlichkeit der expliziten Bestätigung
-  lösen.
-
-\item[Warum kann GpgOL keine PGP/MIME Nachrichten erzeugen?]
-
-  Es ist keine Möglichkeit bekannt, Outlook mitzuteilen, dass eine
-  PGP/MIME Nachricht erzeugt werden soll.  Outlook legt immer selbst
-  den sogenannten "`Content-Type"' fest und ein Plugin ist nicht in
-  der Lage, einen bestimmten Typ vorzugeben.  Bitte wenden Sie sich
-  direkt an Microsoft um sich über dieses Verhalten bzw. die fehlende
-  Dokumentation zu beschweren.
-
-\item[Warum werden Signatur-Prüfungen nicht automatisch durchgeführt?]
-
-  In der Tat ist eine wahlweise einschaltbare automatische
-  Signaturprüfung beim öffnen einer \Email{} in Vorbereitung.
-  Eine gute benutzbare Lösung ist jedoch aufgrund technischer
-  Schwierigkeiten bei Outlook nicht einfach zu realisieren.
 
 \end{description}
 
@@ -5152,36 +5174,40 @@ Bildschirmausdruck entsprechen:
 \chapter{Automatische Installation von Gpg4win}
 \label{ch:auto}
 
-In diesem Kapitel wird die automatisierte Installation, also
-ohne Benutzerdialoge, erläutert.
+In diesem Kapitel wird die automatisierte Installation (ohne
+Benutzerdialoge) erläutert.
 
-In einigen Fällen wie zum Beispiel für Software-Verteilungssysteme ist
+In einigen Fällen, wie zum Beispiel für Software-Verteilungssysteme, ist
 es hilfreich, wenn die Installation von Gpg4win ohne die Interaktion
 über Dialoge funktioniert. Um aber trotzdem vorab alle
 Installationseinstellungen bestimmen zu können, unterstützt der Gpg4win
 Installer eine Option für den Standard-Installationspfad auf der
 Kommandozeile als auch eine Steuerungsdatei.
 
-Der Standard-Installationspfad kann mit der Option \verb-/D=PFAD- angegeben
+Der Standard-Installationspfad kann mit der Option \verb-/D=<PFAD>- angegeben
 werden, welche als letzte Option auf der Kommandozeile erscheinen muß.
-Der Dateiname der Installerdatei kann je nach Version variieren.
-Die Groß-/Kleinschreibung bei der Eingabe Optionsschalter in der
-Konsole ist hierbei wichtig. Eventuell sind Schreib-/Leserechte zu
-setzen.
+Der Installerdateiname (hier: \verb-gpg4win.exe-) kann je nach Version variieren.
+Die Groß-/Kleinschreibung bei der Eingabe der Optionsschalter in der
+Kommandozeile ist hierbei wichtig. Eventuell sind noch vorher
+entsprechende Schreib-/Leserechte zu setzen.
 
 Ein Beispiel:
 
 \begin{verbatim}
-> gpg4win.exe /D=D:\Programme\Gpg4win
+  > gpg4win.exe /D=D:\Programme\Gpg4win
 \end{verbatim}
 
-Außerdem unterstützt der Gpg4win Installer eine Steurungsdatei, mit
-der Option \verb-/S- für automatischen Ablauf der Installation und der
-Option \verb-/C=INIFILE- wird eine Steuerungsdatei (Name endet
-üblicherweise auf .ini) angegeben.
+Mit der Option \verb-/S- läuft die Installation "`still"' (also
+automatischen ohne grafische Oberfläche) ab. Ohne Angabe von weiteren
+Parametern, werden alle Voreinstellungen des Installers übernommen.
 
+Der Gpg4win-Installer unterstützt auch eine sogenannte Steurungsdatei.
+Mit der Option \verb-/C=INIFILE- kann eine Steuerungsdatei (Name endet
+üblicherweise auf \textit{.ini}) angegeben werden. 
+
+Ein weiteres Beispiel:
 \begin{verbatim}
-> gpg4win.exe /S /C=C:\TEMP\gpg4win.ini
+  > gpg4win.exe /S /C=C:\TEMP\gpg4win.ini
 \end{verbatim}
 
 Diese .ini Datei sollte genau einen Abschnitt \verb-[gpg4win]- enthalten.
@@ -5192,10 +5218,13 @@ Arbeitsverzeichnis, dürfen hier nicht angegeben werden. Absolute Pfade
 enthalten den vollständigen Pfad inkusive der Partitionsangabe.
 In der Regel sind die Einstellungen dann anzugeben falls nicht
 die Voreinstellung verwendet werden soll.
-Ausnahmen davon sind im Beispiel unten dokumentiert.
+Ausnahmen davon sind im Beispiel auf der nächsten Seite dokumentiert.
 
+\clearpage
 Hier ist ein Beispiel für eine Steuerungsdatei, die
 zugleich alle erlaubten Schlüsselworte zeigt:
+
+%TODO#: Installer Einstellungen anpassen! Kleopatra hinzu, winpt raus etc.
 
 \begin{verbatim}
 [gpg4win]
@@ -5236,7 +5265,7 @@ Steuerungsdatei \verb-gpg4win.ini- und einem Installationspfad
 \verb-D:\Programme\Gpg4win- könnte also wie folgt aussehen:
 
 \begin{verbatim}
-> gpg4win.exe /S /C=C:\TEMP\gpg4win.ini /D=D:\Programme\Gpg4win
+  > gpg4win.exe /S /C=C:\TEMP\gpg4win.ini /D=D:\Programme\Gpg4win
 \end{verbatim}
 
 \clearpage
@@ -5255,38 +5284,36 @@ Der einzige sinnvolle Weg dies zu tun, ist unter Verwendung der im
 alten System vorhandenen Möglichkeiten.  Suchen Sie nach einem
 Menüpunkt um die eigenen privaten (geheimen) Schlüssel zu sichern als
 auch nach einem Menüpunkt um alle vorhandenen öffentlichen Schlüssel
-zu sichern.  Sichern Sie diese dann in eine oder zwei Dateien.
+und Zertifikate zu sichern. Sichern Sie diese dann in eine oder
+mehrere Dateien.
 
-Sobald Sie dann Gpg4win installiert haben, prüfen Sie, ob Ihre
-alten Schlüssel bereits vorhanden sind.  Sie können dies mit GPA oder
-WinPT machen.  Sind die Schlüssel schon vorhanden, so entsprach das
+Sobald Sie Gpg4win installiert haben, prüfen Sie, ob Ihre
+alten Schlüssel bereits vorhanden sind. Sie können dies mit Kleopatra
+oder GPA machen. Sind die Schlüssel schon vorhanden, so entsprach das
 alte System bereits den neuen Konventionen zum Speicherort für die
 Schlüssel und Sie müssen nichts weiter unternehmen.
 
 Wenn die alten Schlüssel nicht erscheinen, so importieren Sie diese
-einfach aus den erstellten Sicherungsdateien.  Lesen Sie hierzu das
-Kapitel 12 im Handbuch "`\xlink{Gpg4win für
-  Durchblicker}{durchblicker.html}"'.
+einfach aus den erstellten Sicherungsdateien. Lesen Sie hierzu das
+Kapitel~\ref{ch:ImExport}.
 
-Falls das alte System auch GPA verwendet, so können Sie die dort
-vorhandene Backupmöglichkeit benutzen.  Diese sollte sehr ähnlich zu
+Falls das alte System GPA verwendet, so können Sie die dort
+vorhandene Backupmöglichkeit benutzen. Diese sollte sehr ähnlich zu
 der Funktion in der GPA Version aus Gpg4win sein.
 
 Falls Sie keinen anderen Weg finden, Ihre alten Schlüssel
-wiederzufinden, so suchen Sie bitte mit den Bordmittel von Windows
+wiederzufinden, so suchen Sie bitte mit den Bordmitteln von Windows
 nach Dateien mit den Namen \Filename{secring.gpg} und
 \Filename{pubring.gpg} und importieren diese beiden Dateien mittels
-GPA.\footnote{Dies ist nicht der offizielle Weg, funktioniert aber
-  noch mit allen aktuellen GnuPG Versionen.}
-
-
+Kleopatra\footnote{Dies ist nicht der offizielle Weg, funktioniert aber
+noch mit allen aktuellen GnuPG Versionen.}.
 
 
 \clearpage
 \chapter{History}
 
 \begin{itemize}
-\item  "`GnuPP für Einsteiger"', 1. Auflage März 2002 und
+\item  "`GnuPP für Einsteiger"', 1. Auflage März 2002 und\\
        "`GnuPP für Durchblicker"', Auflage März 2002,\\
   Autoren: Manfred J. Heinze, TextLab text+media\\
   Beratung: Lutz Zolondz, G-N-U GmbH\\
@@ -5297,9 +5324,9 @@ GPA.\footnote{Dies ist nicht der offizielle Weg, funktioniert aber
   Herausgegeben vom Bundesministerium für Wirtschaft und
   Technologie (BMWi).\\
   Verfügbar unter
-  \verb-http://www.gnupp.de/pdf/einsteiger.pdf-.
-  und
-  \verb-http://www.gnupp.de/pdf/durchblicker.pdf-.
+  \url{http://www.gnupp.de/pdf/einsteiger.pdf}
+  und\\
+  \url{http://www.gnupp.de/pdf/durchblicker.pdf}.
 %    Der Abschnitt "`History"' ist im Originaldokument nicht vorhanden
 %    und wurde von Werner Koch beigefügt.
 \item Revidierte nicht-veröffentlichte Version von TextLab text+media.      
@@ -5321,45 +5348,66 @@ GPA.\footnote{Dies ist nicht der offizielle Weg, funktioniert aber
 Soll Gpg4win von Ihrem System entfernt, also deinstalliert werden,
 dann sollten Sie zunächst alle nicht notwendigen
 Anwendungen beenden und alle Schlüssel und Zertifikate sichern.
-Falls Sie auf ihrem Rechner mit eingeschränkten Rechten arbeiten
+Falls Sie auf Ihrem Rechner mit eingeschränkten Rechten arbeiten
 sollten, ist es für die Deinstallation außerdem notwendig mit
-\verb-Administratorenrechten- angemeldet zu sein.
+\textbf{Administratorenrechten} angemeldet zu sein.
 Wurde die Installation bereits über Ihr Benutzerkonto
-durchgeführt, so verfügt es über Administratorenrechten.
+durchgeführt, so verfügt es über Administratorenrechte.
 
 Es gibt zwei Möglichkeiten die Deinstallation auszuführen:
 
 \begin{itemize}
-\item Einmal mit den Bordmitteln von Microsoft Windows. Hierfür gehen
-Sie über das \verb-Startmenü- zur \verb-Systemsteuerung-.
+\item Einmal mit den Bordmitteln von Microsoft Windows:
 
-Öffnen Sie das Modul \verb-Software-
-und wählen Sie dann \verb-GnuPG for Windows- aus.
+    Öffnen Sie
+\Menu{Start$\rightarrow$Einstellungen$\rightarrow$Systemsteuerung$\rightarrow$Software}
+und wählen Sie dann \textit{GnuPG for Windows} aus.
 
-Mit dem Knopf \verb-Entfernen- deinstallieren Sie \verb-GnuPG for Windows- bzw. \verb-Gpg4win- von Ihrem System.
-\item Die zweite Möglichkeit zur Deinstallation bietet die ausführbare Datei
-\texttt{gpg4win-uninstall.exe}. Sie wird mit Gpg4win mitgeliefert und
-liegt im Verzeichnis \Filename{C:$\backslash$Programme$\backslash$GNU$\backslash$GnuPG}.\\
+Mit dem Knopf \Button{Entfernen} deinstallieren Sie \textit{GnuPG for
+Windows} bzw. \textit{Gpg4win} von Ihrem System.
+
+\item Die zweite Möglichkeit zur Deinstallation von Gpg4win bietet
+    Ihnen die ausführbare Datei \texttt{gpg4win-uninstall.exe}. 
+    Sie wird mit Gpg4win mitgeliefert und
+liegt im Installationsverzeichnis (in der Regel 
+\Filename{C:$\backslash$Programme$\backslash$GNU$\backslash$GnuPG$\backslash$}).
 Falls Sie bei der Installation einen anderen als den voreingestellten Pfad
 gewählt hatten, werden Sie das Deinstallationsprogramm an entsprechender
 Stelle finden.
 \end{itemize}
 
-In beiden Fällen werden die allgemeinen Systemdaten von Gpg4win, aber
-nicht die persönlichen Daten gelöscht.
+In beiden Fällen werden alle allgemeinen Systemdaten von Gpg4win aus dem
+Installationsverzeichnis sowie die Verknüpfungen im Startmenü, Desktop
+und Schnellstartleiste entfernt.
+
+\textit{Nicht} gelöscht werden die benutzerspezifischen und
+systemweiten Anwendungsverzeichnisse mit den Konfigurationseinstellungen:
+
+\begin{itemize}
+    \item Benutzerspezifische Anwendungsdaten
+        (\Filename{\%APPDATA\%\back{}gnupg})\\
+        entspricht in der Regel dem Verzeichnis: \newline
+\Filename{C:\back{}Dokumente und Einstellungen\back{}\textit{<name>}\back{}Anwendungsdaten\back{}gnupg\back{}}
+
+    \item systemweite Anwendungsdaten
+        (\Filename{\%COMMON\_APPDATA\%\back{}GNU})\\
+        entspricht in der Regel dem Verzeichnis: \Filename{C:\back{}Dokumente und Einstellungen\back{}All
+Users\back{}Anwendungsdaten\back{}GNU\back{}}
+
+\end{itemize}
+
+
 
 Es kommt vor, dass nach der Deinstallation noch einige Systemdaten
 die zwischenzeitlich von Gpg4win erstellt wurden, zurückbleiben.
 Falls Sie sich sicher sind, dass diese Daten nicht gesichert
 werden sollen, können Sie das Installationsverzeichnis,
 also zum Beispiel
-\Filename{C:$\backslash$Programme$\backslash$GNU$\backslash$GnuPG},\\
+\Filename{C:$\backslash$Programme$\backslash$GNU$\backslash$GnuPG},\linebreak
 über den Dateimanager vollständig löschen.
 
 
 \clearpage
-\T\selectlanguage{english}
-\input{fdl.tex}
+\input{fdl-book.tex}
 
 \end{document}
-
