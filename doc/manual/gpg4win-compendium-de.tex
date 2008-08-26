@@ -2,6 +2,8 @@
 % Note, that this a HyperLaTeX source and not plain LaTeX!
 
 \documentclass[a4paper,11pt, oneside,openright,titlepage,dvips]{scrbook}
+
+% define packages
 \usepackage{hyperlatex}
 \usepackage{a4wide}
 \usepackage{times}
@@ -11,76 +13,165 @@
 \usepackage{graphicx}
 \usepackage{alltt}
 \usepackage{moreverb}
+\usepackage{ifthen}
 \usepackage{fancyhdr}
 \W\usepackage{rhxpanel}
 \W\usepackage{sequential}
 
-
-\T\DeclareGraphicsExtensions{.eps.gz,.eps}
-
-
 % Hyperref should be among the last packages loaded
 \usepackage{hyperref}
 
-% Macros specific to this package
-\input{macros.tex}
-\newcommand{\manualversion}{\compendiumVersionDE}
-\newcommand{\manualdate}{\compendiumDateDE}
-\newcommand\margin[1]{\marginline {\sffamily\scriptsize #1}}
-
-
+% page header
 \T\fancyhead{} % clear all fields
-\T\fancyhead[LO,RE]{Das Gpg4win Kompendium \manualversion \manualinprogress \\ 
-    \itshape\nouppercase{\leftmark}}
+\T\fancyhead[LO,RE]{Das Gpg4win Kompendium \compendiumVersionDE \manualinprogress \\ \itshape\nouppercase{\leftmark}}
 \T\fancyhead[RO,LE]{\thepage}
 \T\fancyfoot[C]{\includegraphics[width=1cm]{gpg4win-logo}}
+\T\pagestyle{fancy}
 
+% define custom commands
+\newcommand{\Button}[1]{[\,#1\,]}
+\newcommand{\Menu}[1]{\emph{#1}}
+\newcommand{\Filename}[1]{\texttt{#1}}
+\newcommand{\Email}{E-Mail}
+\newcommand{\EchelonUrl}{http://www.heise.de/tp/r4/artikel/6/6928/1.html}
+\newcommand\margin[1]{\marginline {\sffamily\scriptsize #1}}
+\newcommand{\IncludeImage}[2][]{\texorhtml{%
+\includegraphics[#1]{#2}%
+}{%
+\htmlimg{#2.png}%
+}}
 
-% Title stuff 
-\htmltitle{Gpg4win Kompendium}
-%\htmladdress{Gpg4win Project, \today}
-\title{
-\IncludeImage[width=8cm]{gpg4win-logo}
-\\
-Das Gpg4win Kompendium}
-
-\author{\htmlonly{\xml{p}\small
-\xlink{Downloadübersicht aller PDF Versionen}{http://wald.intevation.org/frs/?group_id=11}\xml{br}
-Zu \xlink{Gpg4win für Durchblicker}{durchblicker.html}\xml{br}
-Zu \xlink{Englische Version dieses Handbuchs}{novices.html}\xml{br}
-Zur \xlink{Gpg4win Homepage}{http://www.gpg4win.de/}\xml{p}
-}%
-Eine Veröffentlichung des Gpg4win Projekts\\
-  \small Basierend auf einem Original von 
-\T\\
-  \small Manfred J. Heinze, Karl Bihlmeier, Isabel Kramer
-\T\\
-  \small Dr. Francis Wray und Ute Bahn.
-\T\\ \
-  \small Überarbeitet von
-\T\\
-  \small Werner Koch, Emanuel Schütze und Jan-Oliver Wagner}
-\date{Version \manualversion\ vom \manualdate\ \manualinprogress}
-
-
-\begin{document}
-\thispagestyle{empty}
-\pagestyle{fancy}
-\T\parindent0cm
+\T\DeclareGraphicsExtensions{.eps.gz,.eps}
+\T\parindent 0cm
 \T\parskip\medskipamount
 
+% Get the version information from another file.
+% That file is created by the configure script.
+\input{version.tex}
+
+
+% Define universal url command.
+% Used for latex _and_ hyperlatex (redefine see below).
+% 1. parameter = link text (optional);
+% 2. parameter = url
+% e.g.: \uniurl[example link]{http:\\example.com}
+\newcommand{\uniurl}[2][]{%
+\ifthenelse{\equal{#1}{}}
+{\texorhtml{\href{#2}{#2}}{\xlink{#2}{#2}}}
+{\texorhtml{\href{#2}{#1}}{\xlink{#1}{#2}}}}
+
+
+%%% HYPERLATEX %%%
+\begin{ifhtml}
+    % HTML title
+    \htmltitle{Gpg4win Kompendium}
+    % TOC link in panel
+    \htmlpanelfield{Inhalt}{hlxcontents}
+    % redefine bmod
+    \newcommand{\bmod}{mod}
+    % redefine &
+    \NotSpecial{\do\&}
+    % use hlx icons (default path)
+    \newcommand{\HlxIcons}{}
+
+    % Footer
+    \htmladdress{$\copyright$ \compendiumDateDE, v\compendiumVersionDE
+    \html{br/}
+    \html{small}
+    Das Gpg4win Kompendium ist unter der
+    \link{GNU Free Documentation License v1.2}{fdl} lizensiert.
+    \html{/small}}
+
+    % Changing the formatting of footnotes
+    \renewenvironment{thefootnotes}{\chapter*{Fußnoten}\begin{description}}{\end{description}}
+
+    % redefine universal url for hyperlatex (details see above)
+    \newcommand{\linktext}{0}
+    \renewcommand{\uniurl}[2][]{%
+        \renewcommand{\linktext}{1}%
+        % link text is not set
+        \begin{ifequal}{#1}{}%
+            \xlink{#2}{#2}%
+            \renewcommand{linktext}{0}%
+        \end{ifequal}
+        % link text is set
+        \begin{ifset}{linktext}%
+             \xlink{#1}{#2}%
+    \end{ifset}}
+
+    % german style
+    \htmlpanelgerman
+    \extrasgerman
+    \dategerman
+    \captionsgerman
+
+
+    % SECTIONING:
+    %
+    % on _startpage_: show short(!) toc (only part+chapter)
+    \setcounter {htmlautomenu}{1}
+    % chapters should be <H1>, Sections <H2> etc. (see hyperlatex package book.hlx)
+    \setcounter{HlxSecNumBase}{-1}
+    % show _numbers_ of parts, chapters and sections in toc
+    \setcounter {secnumdepth}{1}
+    % show parts, chapters and sections in toc (no subsections, etc.)
+    \setcounter {tocdepth}{2}
+    % show every chapter (with its sections) in _one_ html file
+    \setcounter{htmldepth}{2}
+
+    % set counters and numberstyles
+    \newcounter{part}
+    \renewcommand{\thepart}{\arabic{part}}
+    \newcounter{chapter}
+    \renewcommand{\thecapter}{\arabic{chapter}}
+    \newcounter{section}[chapter]
+    \renewcommand{\thesection}{\thechapter.\arabic{section}}
+\end{ifhtml}
+
+
+%%% TITLEPAGE %%%
+
+\title{\IncludeImage[width=8cm]{gpg4win-logo}\\ Das Gpg4win Kompendium}
+
+\author{ \
+    % Hyperlatex: Add links to pdf versions and Homepage
+    \htmlonly{
+        \xml{p}\small
+        \xlink{Downloadübersicht aller PDF Versionen}{http://wald.intevation.org/frs/?group_id=11}\xml{br}
+        Zur \xlink{Gpg4win Homepage}{http://www.gpg4win.de/}\xml{p}
+    }
+    % Authors
+    Eine Veröffentlichung des Gpg4win Projekts\\
+      \small Basierend auf einem Original von
+    \T\\
+      \small Manfred J. Heinze, Karl Bihlmeier, Isabel Kramer
+    \T\\[-0.2cm]
+      \small Dr. Francis Wray und Ute Bahn.
+    \\[0.2cm]
+      \small Überarbeitet von
+    \T\\
+      \small Werner Koch, Emanuel Schütze und Jan-Oliver Wagner.
+}
+
+\date{Version \compendiumVersionDE~vom \compendiumDateDE \manualinprogress}
+
+
+%%% BEGIN DOCUMENT %%%
+
+\begin{document}
 
 \maketitle
 
-
-\section*{Impressum}
-\noindent
+\T\section*{Impressum}
+\W\chapter*{Impressum}
+\thispagestyle{empty}
 Copyright \copyright{} 2002 Bundesministerium für Wirtschaft und
 Technologie\footnote{Wenn dieses Dokument kopiert, verteilt und/oder
 verändert wird, soll in keiner Form der Eindruck eines Zusammenhanges
 mit dem Bundesministerium für Wirtschaft und Technologie erweckt
 werden.}\\
-Copyright \copyright{} 2005 g10 Code GmbH\\
+Copyright \copyright{} 2005 g10 Code GmbH
+
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.2 or
 any later version published by the Free Software Foundation; with no
@@ -100,14 +191,9 @@ License"' findet sich im Anhang mit dem gleichnamigen Titel.
 Inoffizielle Übersetzungen dieser Lizenz finden Sie unter
 http://www.gnu.org/licenses/translations.html.
 
-%%\htmlonly{Die aktuelle PDF Version dieses Dokuments finden sie unter
-%%\xlink{\EinsteigerPDFURL}{\EinsteigerPDFURL}.}
-
 Wie das Kryptographieprogramm Gpg4win selbst, wurde diese Dokument
 nicht für Mathematiker, Geheimdienstler und Kryptographen geschrieben,
 sondern für jedermann.
-
-
 
 \clearpage %% End of original page 4.
 
@@ -117,14 +203,12 @@ sondern für jedermann.
 %% Orginal page  6
 %% We don't use these foreword anymore because Mr. Müller is not
 %% anymore minister of economic and technology.  We might want to ask
-%% for a new foreword by the current head of that ministr
-%%
+%% for a new foreword by the current head of that minister.
 
 \clearpage
 %% Orginal page 7
-\chapter*{Über dieses Handbuch}
-\T\addcontentsline{toc}{chapter}{Über dieses Handbuch}
-
+\chapter*{Über dieses Handbuch \htmlonly{\html{br}\html{br}}}
+\addcontentsline{toc}{chapter}{Über dieses Handbuch}
 
 Das Gpg4win-Anleitungs- und Übungsmaterial besteht aus drei Teilen:
 
@@ -139,7 +223,6 @@ Das Gpg4win-Anleitungs- und Übungsmaterial besteht aus drei Teilen:
 \item \textbf{Der Übungsroboter Adele,} mit dem Sie die \Email{}-Ver- und
   Entschlüsselung so oft üben können, wie Sie wollen.
 \end{itemize}
-
 
 \textbf{Teil~\ref{part:Einsteiger} für "`Einsteiger"'} führt Sie kurz
 und knapp durch die Installation
@@ -157,7 +240,6 @@ Beide Handbuchteile können unabhängig voneinander benutzt werden. Zu
 Ihrem besseren Ver\-ständnis sollten Sie aber möglichst beide Teile in
 der angegebenen Reihenfolge lesen.
 
-
 \textbf{Der Übungsroboter Adele} steht Ihnen im Internet zur
 Verfügung. Adele empfängt und sendet verschlüsselte \Email{}s und
 entschlüsselt sie auch. Sie können also mit Adele einen kompletten
@@ -171,15 +253,15 @@ für den Betrieb von Adele.
 
 
 
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Part I
-
 \clearpage
-\part{Einsteiger}
+\T\part{Einsteiger}
+\W\part*{\textbf{I Einsteiger}}
 \label{part:Einsteiger}
 \addtocontents{toc}{\protect\vspace{0.3cm}}
+\addtocontents{toc}{\protect\vspace{0.3cm}}
+
 
 %% Orginal page 8
 \chapter{Was ist Gpg4win?}
@@ -247,8 +329,7 @@ unterstützt.
 
 Weitere Informationen zu GnuPG und den Projekten der Bundesregierung
 zum Schutz des Internets finden Sie auf der Website
-\W\xlink{www.bsi-fuer-buerger.de}{http://www.bsi-fuer-buerger.de}
-\T\href{http://www.bsi-fuer-buerger.de}{www.bsi-fuer-buerger.de}
+\uniurl[www.bsi-fuer-buerger.de]{http://www.bsi-fuer-buerger.de}
 des Bundesamtes für Sicherheit in der Informationstechnik.
 
 
@@ -264,6 +345,7 @@ Verschlüsselung nunmehr für jedermann frei und kostenlos
 zugänglich\ldots
 
 \begin{center}
+\htmlattributes*{img}{width=300}
 \IncludeImage[width=0.9\textwidth]{egyptian-stone}
 \end{center}
 
@@ -303,14 +385,15 @@ protokollieren. Das wäre einfach nicht machbar gewesen, oder es hätte
 zu lange gedauert. Mit der modernen Computertechnik ist das technisch
 möglich. Es gibt mehr als einen Hinweis darauf, dass dies genau heute
 schon im großen Stil mit Ihrer und meiner \Email{}
-geschieht\footnote{Hier sei nur an das \xlink{Echelon
-    System}{\EchelonUrl} erinnert%
-\T; siehe \href{\EchelonUrl}{\EchelonUrl}%
+geschieht\footnote{Hier sei nur an das 
+\uniurl[Echelon System]{\EchelonUrl} erinnert%
+\T; siehe \uniurl{\EchelonUrl}%
 .}.
 
 Denn: Der Umschlag fehlt.
 
 \begin{center}
+\htmlattributes*{img}{width=300}
 \IncludeImage[width=0.3\textwidth]{sealed-envelope}
 \end{center}
 
@@ -501,13 +584,15 @@ Falls Sie Gpg4win auf einer CD-ROM erhalten haben:
 dem Titel "`Gpg4win"'. Anschließen klicken Sie auf das Installations-Icon mit dem Titel "`Gpg4win"'.
 \end{quote}
 
-Die weitere Installation ist dann identisch:\\
+Die weitere Installation ist dann identisch:
+
 Die Frage, ob Sie das Programm installieren wollen, beantworten Sie
 mit \Button{Ja}.
 
+\clearpage
 Es begrüßt Sie dieser Dialog:
-\enlargethispage{2\baselineskip}
-% screenshot:  Welcome Seite Installer
+
+% TODO screenshot:  Welcome Seite Installer
 \begin{center}
 \IncludeImage{sc-inst-welcome}
 \end{center}
@@ -708,7 +793,7 @@ Schlüsselpaarerzeugung ein paar Mal üben können$\ldots$}
 
 Genau das können Sie tun - und zwar für OpenPGP:
 
-\margin{\IncludeImage[width=1.5cm]{openpgp-icon}}
+\T\margin{\IncludeImage[width=1.5cm]{openpgp-icon}}
 Sie können den gesamten Ablauf der Schlüsselerzeugung,
 Verschlüsselung und Entschlüsselung durchspielen,
 so oft Sie wollen, bis Sie ganz sicher sind.
@@ -733,6 +818,7 @@ Rufen Sie das Programm Kleopatra über das Windows-Startmenü auf:
 
 % TODO screenshot Startmenu with Kleopatra highlighted
 \begin{center}
+\htmlattributes*{img}{width=400}
 \IncludeImage[width=0.45\textwidth]{sc-kleopatra-startmenu_de}
 \end{center}
 
@@ -741,6 +827,7 @@ Zertifikatsverwaltung:
 
 % TODO screenshot: Kleopatra main window
 \begin{center}
+\htmlattributes*{img}{width=508}
 \IncludeImage[width=0.6\textwidth]{sc-kleopatra-mainwindow-empty_de}
 \end{center}
 
@@ -776,13 +863,13 @@ Sie sich oben entschieden haben.
 
 %% OpenPGP %%
 %% Original page 18
-\section*{OpenPGP-Schlüsselpaar erstellen}
+\section{OpenPGP-Schlüsselpaar erstellen}
 
 Klicken Sie im obigen Auswahldialog auf 
 %TODO:german
 \Button{Create a personal OpenPGP key pair}. %TODO vgl. Abb
 
-\margin{\IncludeImage[width=1.5cm]{openpgp-icon}}
+\T\margin{\IncludeImage[width=1.5cm]{openpgp-icon}}
 
 Geben Sie im nun folgenden Fenster Ihren Namen und Ihre
 \Email{}-Adresse an.
@@ -932,6 +1019,7 @@ drei Möglichkeiten durchführen:
 
     % TODO screenshot: New certificate - send openpgp key per email
    \begin{center}
+   \htmlattributes*{img}{width=508}
    \IncludeImage[width=0.6\textwidth]{sc-ol-sendNewOpenpgpCertificate_de}
    \end{center}
 
@@ -965,13 +1053,13 @@ sind die Erklärungen für OpenPGP und X.509 wieder identisch.
 %% X.509 %%
 %% Original page 21
 \clearpage
-\section*{X.509-Schlüsselpaar erstellen \margin{\IncludeImage[width=1.5cm]{smime-icon}} }
-
+\section{X.509-Schlüsselpaar erstellen}
 Klicken Sie im Zertifikatsformat-Auswahldialog von
 Seite~\pageref{chooseCertificateFormat} auf
 %TODO:german
 \Button{Create a personal X.509 key pair and certification request}.
 %TODO# ggf "vgl. Abb"
+\T\margin{\IncludeImage[width=1.5cm]{smime-icon}}
 
 
 
@@ -1090,6 +1178,7 @@ drei Möglichkeiten durchführen:
 
     % ggf TODO screenshot: New certificate - send openpgp key per email
    \begin{center}
+   \htmlattributes*{img}{width=508}
    \IncludeImage[width=0.6\textwidth]{sc-ol-sendNewX509Certificate_de}
    \end{center}
 
@@ -1111,7 +1200,7 @@ sind die Erklärungen für OpenPGP und X.509 wieder identisch.
 \clearpage
 %% Original page 23
 
-\section*{Schlüsselpaar-Erstellung abgeschlossen}
+\section{Schlüsselpaar-Erstellung abgeschlossen}
 \label{finishKeyPairGeneration}
 
 \textbf{Damit ist die Erzeugung Ihres OpenPGP- bzw. X.509-Schlüsselpaares abgeschlossen.  
@@ -1124,6 +1213,7 @@ Zertifikatsverwaltung unter dem Reiter \textit{Meine Zertifikate}
 
 %TODO screenshot: Kleopatra with new openpgp certificate
 \begin{center}
+\htmlattributes*{img}{width=508}
 \IncludeImage[width=0.6\textwidth]{sc-kleopatra-withOpenpgpTestkey_de}
 \end{center}
 
@@ -1132,6 +1222,7 @@ nachlesen zu können:
 
 %TODO screenshot: details of openpgp certificate
 \begin{center}
+\htmlattributes*{img}{width=508}
 \IncludeImage[width=0.6\textwidth]{sc-kleopatra-openpgp-certificateDetails_de}
 \end{center}
 
@@ -1215,7 +1306,7 @@ Adele soll uns dabei behilflich sein. \textit{Achtung: Die folgenden
 Übungen gelten nur für OpenPGP! Anmerkungen zur Veröffentlichung von
 X.509-Zertifikaten finden Sie auf
 Seite~\pageref{publischPerEmailx509}.}
-\margin{\IncludeImage[width=1.5cm]{openpgp-icon}}
+\T\margin{\IncludeImage[width=1.5cm]{openpgp-icon}}
 
 \textbf{Adele}
 ist ein sehr netter \Email{}-Roboter, mit dem Sie zwanglos
@@ -1392,7 +1483,7 @@ Ihr Empfänger Ihre Zertifikatsdatei direkt (ohne Umwege) in seine Zertifikatsver
 
 ~\\Nachdem \label{publischPerEmailx509}
 Sie gelernt haben, wie Sie Ihr OpenPGP-Zertifikat per
-\margin{\IncludeImage[width=1.5cm]{smime-icon}}
+\T\margin{\IncludeImage[width=1.5cm]{smime-icon}}
 \Email{} veröffentlichen, wird Sie sicher interessieren wie das
 Gleiche für \textbf{X.509-Zertifikate} funktioniert (vgl. auch
 Kapitel~\ref{ch:openpgpsmime}).
@@ -1431,7 +1522,7 @@ mit der Verfügbarkeit der Kette.
 
 \textbf{Wichtig: Die Veröffentlichung Ihres Zertifikats auf einem
 Schlüsselserver (Keyserver) ist nur für OpenPGP-Zertifikate möglich!}
-\margin{\IncludeImage[width=1.5cm]{openpgp-icon}}
+\T\margin{\IncludeImage[width=1.5cm]{openpgp-icon}}
 
 Die Veröffentlichung Ihres OpenPGP-Zertifikats auf einem
 internationalen Schlüsselserver bietet sich eigentlich
@@ -1442,10 +1533,10 @@ dadurch die Versendung Ihres Zertifikats per \Email{} an jeden Ihrer
 Korrespondenzpartner.
 
 
-\textsc{Vorsicht: Die Veröffentlichung Ihrer \Email{}-Adresse
+\textsc{Vorsicht: Die Veröffentlichung Ihrer E-Mail-Adresse
 auf einem Keyserver birgt leider das Risiko, dass Ihnen
-auch ungebetene Personen \Email{}s schreiben können und die
-SPAM-Menge für Ihre \Email{}-Adresse dadurch zunehmen kann.
+auch ungebetene Personen E-Mails schreiben können und die
+SPAM-Menge für Ihre E-Mail-Adresse dadurch zunehmen kann.
 Sie sollten daher im zweiten Fall einen ausreichenden SPAM-Schutz nutzen.
 Falls Sie keinen wirksamen Spamfilter benutzen,
 sollten Sie u.U.\ von der Veröffentlichung Ihres Schlüssels auf einem
@@ -1511,7 +1602,7 @@ OpenPGP-Zertifikat!\\
 \textit{Achtung: Die folgenden Übungen gelten nur für OpenPGP!
 Anmerkungen zur Entschlüsselung von S/MIME-\Email{}s finden Sie am
 Ende dieses Kapitels.} %TODO:Seitenzahl
-\margin{\IncludeImage[width=1.5cm]{openpgp-icon}}\\
+\T\margin{\IncludeImage[width=1.5cm]{openpgp-icon}}\\
 
 
 Im Abschnitt~\ref{publishPerEmail} haben Sie Adele Ihr
@@ -1660,7 +1751,7 @@ oder dessen signierte Mails überprüfen.
 
 ~\\Nachdem \label{publischPerEmailx509}
 Sie gelernt haben, wie Sie \Email{}s mit Ihrem OpenPGP-Zertifikat
-\margin{\IncludeImage[width=1.5cm]{smime-icon}}
+\T\margin{\IncludeImage[width=1.5cm]{smime-icon}}
 entschlüsseln, werden Sie nun noch erfahren, wie Sie verschlüsselte 
 \textbf{S/MIME}-\Email{}s entschlüsseln.
 
@@ -1803,7 +1894,7 @@ Korrespondenzpartner.
 
 \textit{Hinweis nur für OpenPGP:}\\Sie können zum Üben dieses Vorgangs
 mit OpenPGP wieder Adele nutzen. S/MIME wird von Adele nicht
-unterstützt! \margin{\IncludeImage[width=1.5cm]{openpgp-icon}}
+unterstützt! \T\margin{\IncludeImage[width=1.5cm]{openpgp-icon}}
 Adressieren Sie dazu Ihre zu verschlüsselnde \Email{} an
 \verb-adele@gnupp.de-. Der Inhalt der Nachricht ist egal -- Adele kann
 nicht wirklich lesen...
@@ -1830,7 +1921,7 @@ PGP/MIME oder S/MIME als Voreinstellung definieren.
 ~\\
 \textbf{Wichtiger Hinweis nur für S/MIME:}\\
 Nach der Installation von Gpg4win ist die
-\margin{\IncludeImage[width=1.5cm]{smime-icon}}
+\T\margin{\IncludeImage[width=1.5cm]{smime-icon}}
 S/MIME-Funktionalität in GpgOL deaktiviert. Wenn Sie S/MIME nutzen
 möchten, sollten Sie zuvor unter
 \Menu{Extras$\rightarrow$Optionen$\rightarrow$GpgOL} die Option
@@ -1964,6 +2055,7 @@ genau denselben Zweck.
 
 % cartoon:  Müller mit Schlüssel
 \begin{center}
+\htmlattributes*{img}{width=300}
 \IncludeImage[width=0.4\textwidth]{man-with-signed-key}
 \end{center}
 
@@ -2185,7 +2277,7 @@ Exemplarisch für OpenPGP zeigen wir Ihnen, wie dann so eine
 OpenPGP-signierte \Email{} in Ihrem \Email-Programm aussieht:
 
 Die \Email{} beginnt mit:
-\margin{\IncludeImage[width=1.5cm]{openpgp-icon}}
+\T\margin{\IncludeImage[width=1.5cm]{openpgp-icon}}
 
 \begin{verbatim}
 -----BEGIN PGP SIGNED MESSAGE-----
@@ -2303,7 +2395,7 @@ ganz einfach.
 
 \clearpage
 %% Original page 47
-\chapter{Wie Sie Ihre \Email{}s verschlüsselt archivieren}
+\chapter{Wie Sie Ihre \Email{}s verschlüsselt archivieren \htmlonly{\html{br}\html{br}}}
 
 Eine Einstellung müssen Sie nun noch vornehmen: Es geht um Ihre
 \Email{}s, die Sie verschlüsselt versendetet haben.
@@ -2394,7 +2486,8 @@ sondern \textbf{für jedermann.}
 \addtocontents{toc}{\protect\newpage}
 
 \clearpage
-\part{Fortgeschrittene}
+\T\part{Fortgeschrittene}
+\W\part*{\textbf{II Fortgeschrittene}}
 \label{part:Fortgeschrittene}
 \addtocontents{toc}{\protect\vspace{0.3cm}}
 
@@ -2429,6 +2522,7 @@ ein -- mit einem Schlüssel. Noch besser mit einem Schlüssel, den es
 nur einmal gibt und den man ganz sicher aufbewahrt.
 
 \begin{center}
+\htmlattributes*{img}{width=300}
 \IncludeImage[width=0.4\textwidth]{schlapphut-with-key}
 \end{center}
 
@@ -2448,6 +2542,7 @@ geheimhielt.  Dies wirklich sicher zu machen ist sehr umständlich und
 dazu auch sehr fehleranfällig.
 
 \begin{center}
+\htmlattributes*{img}{width=300}
 \IncludeImage[width=0.4\textwidth]{tangled-schlapphut}
 \end{center}
 
@@ -2495,6 +2590,7 @@ funktioniert.
 % Source"' and ``gratis"' - need to replace with something better.
 % What about ``Artikel 10"' and ``von GnuPG erzeugt"'?
 \begin{center}
+\htmlattributes*{img}{width=300}
 \IncludeImage[width=0.4\textwidth]{verleihnix}
 \end{center}
 
@@ -2519,6 +2615,7 @@ Beide Schlüsselteile haben ganz und gar unterschiedliche Aufgaben:
 \end{quote}
 
 \begin{center}
+\htmlattributes*{img}{width=300}
 \IncludeImage[width=0.9\textwidth]{key-with-shadow-bit}
 \end{center}
 
@@ -2549,6 +2646,7 @@ etwas hineinlegen oder herausnehmen. Damit sind Ihre geheimen
 Nachrichten zunächst einmal gut gesichert.
 
 \begin{center}
+\htmlattributes*{img}{width=300}
 \IncludeImage[width=0.9\textwidth]{letter-into-safe}
 \end{center}
 
@@ -2566,6 +2664,7 @@ Wege übergeben.
 \bigskip
 
 \begin{center}
+\htmlattributes*{img}{width=300}
 \IncludeImage[width=0.7\textwidth]{secret-key-exchange}
 \end{center}
 
@@ -2591,6 +2690,7 @@ könnten.
 Vergessen wir diese Möglichkeit am besten sofort wieder\ldots
 
 \begin{center}
+\htmlattributes*{img}{width=300}
 \IncludeImage[width=0.9\textwidth]{letter-out-of-safe}
 \end{center}
 
@@ -2606,6 +2706,7 @@ dieser Briefkasten ist ­-- ganz im Gegensatz zu dem ersten Beispiel
 \textbf{Zuschließen, aber nicht aufschließen:} das ist der Trick!
 
 \begin{center}
+\htmlattributes*{img}{width=300}
 \IncludeImage[width=0.7\textwidth]{pk-safe-open}
 \end{center}
 
@@ -2652,6 +2753,7 @@ Empfänger kann den Briefkasten mit seinem privaten Schlüssel öffnen
 und die Nachricht lesen.
 
 \begin{center}
+\htmlattributes*{img}{width=300}
 \IncludeImage[width=0.9\textwidth]{pk-safe-opened-with-sk}
 \end{center}
 
@@ -2697,6 +2799,7 @@ Es ist deswegen eminent wichtig, diesen privaten Schlüssel sicher
 abzuspeichern. Dies geschieht auf zweierlei Weise:
 
 \begin{center}
+\htmlattributes*{img}{width=300}
 \IncludeImage[width=0.3\textwidth]{think-passphrase}
 \end{center}
 
@@ -2914,7 +3017,7 @@ Die Nutzung eines Schlüsselservers zum Verbreiten Ihres
 OpenPGP-Zertifikats haben wir Ihnen bereits im
 Abschnitt~\ref{publishPerKeyserver} einführend erläutert. Dieses
 Kapitel beschäftigt sich mit den Details von Schlüsselservern.
-\margin{\IncludeImage[width=1.5cm]{openpgp-icon}}
+\T\margin{\IncludeImage[width=1.5cm]{openpgp-icon}}
 
 %% Original page 26
 
@@ -2934,6 +3037,7 @@ Es kann ein, zwei Tage dauern, bis Ihr OpenPGP-Zertifikat wirklich überall
 verfügbar ist, aber dann haben Sie einen globales Zertifikat!
 
 \begin{center}
+\htmlattributes*{img}{width=300}
 \IncludeImage[width=0.3\textwidth]{keyserver-world}
 \end{center}
 
@@ -3059,17 +3163,13 @@ Da sämtliche Komponenten des Gpg4win-Pakets als Freie Software
 entstehen, ist die Entwicklung stark im Fluss.
 
 Aktuelle Informationen über die Komponenten finden Sie unter
-\W\xlink{www.gpg4win.de}{http://www.gpg4win.de}
-\T\href{http://www.gpg4win.de}{www.gpg4win.de}
-.
+\uniurl[www.gpg4win.de]{http://www.gpg4win.de}.
 
 Informationen zu den Themen IT-Sicherheit, Gpg4win, GnuPG und anderer Software finden
 Sie auf der Website
-\W\xlink{www.bsi-fuer-buerger.de}{http://www.bsi-fuer-buerger.de}
-\T\href{http://www.bsi-fuer-buerger.de}{www.bsi-fuer-buerger.de}
+\uniurl[www.bsi-fuer-buerger.de]{http://www.bsi-fuer-buerger.de}
 und
-\W\xlink{www.bsi.de}{http://www.bsi.de}
-\T\href{http://www.bsi.de}{www.bsi.de}
+\uniurl[www.bsi.de]{http://www.bsi.de}
 des Bundesamtes für Sicherheit in der Informationstechnik.
 
 
@@ -3144,7 +3244,7 @@ Zertifikats überzeugt haben, haben Sie nun die Möglichkeit,
 dieses Zertifikat zu signieren.
 
 
-\textit{Beachten Sie: \margin{\IncludeImage[width=1.5cm]{openpgp-icon}}
+\textit{Beachten Sie: \T\margin{\IncludeImage[width=1.5cm]{openpgp-icon}}
 Signieren von Zertifikaten ist nur mit OpenPGP
 möglich. X.509 bietet dieses Verfahren nicht!}
 
@@ -3208,9 +3308,10 @@ So entsteht -- auch über den Kreis von
 Gpg4win-Benutzern und Ihrer täglichen Korrespondenz hinaus -- ein "`Netz
 des Vertrauens"', bei dem Sie nicht mehr zwangsläufig darauf
 angewiesen sind, ein OpenPGP-Zertifikat direkt zu prüfen.
-\margin{\IncludeImage[width=1.5cm]{openpgp-icon}}
+\T\margin{\IncludeImage[width=1.5cm]{openpgp-icon}}
 
 \begin{center}
+\htmlattributes*{img}{width=300}
 \IncludeImage[width=0.9\textwidth]{key-with-sigs}
 \end{center}
 
@@ -3251,7 +3352,7 @@ Solche Zertifizierungsinstanzen gibt es auch bei der Public-Key
 Verschlüsselung für OpenPGP. In Deutschland bietet unter anderem z.B. die
 Zeitschrift c't schon lange einen solchen Dienst kostenlos an, ebenso
 wie viele Universitäten.
-\margin{\IncludeImage[width=1.5cm]{openpgp-icon}}
+\T\margin{\IncludeImage[width=1.5cm]{openpgp-icon}}
 
 Wenn man also ein OpenPGP-Zertifikat erhält, dem eine
 Zertifizierungsstelle per Signatur seine Echtheit bestätigt, kann man
@@ -3260,7 +3361,7 @@ sich darauf verlassen.
 ~\\
 Derartige Beglaubigungsinstanzen oder "`Trust Center"' sind auch bei
 anderen Verschlüsselungssystemen -- wie z.B. S/MIME  --
-\margin{\IncludeImage[width=1.5cm]{smime-icon}}
+\T\margin{\IncludeImage[width=1.5cm]{smime-icon}}
 vorgesehen.
 Allerdings sind sie hierarchisch strukturiert: Es gibt eine "`Oberste
 Beglaubigungsinstanz"', die weitere "`Unterinstanzen"' besitzt mit dem Recht
@@ -3286,17 +3387,18 @@ Bundesrepublik Deutschland.
 
 Wenn Sie sich weiter für dieses Thema interessieren, dann
 können Sie sich an der Quelle informieren: die Website 
-"`\xlink{Sicherheit im Internet}{http://www.sicherheit-im-internet.de}"' 
+\uniurl["`Sicherheit im Internet"']{http://www.sicherheit-im-internet.de}
+\T(\uniurl[www.sicherheit-im-internet.de]{http://www.sicherheit-im-internet.de})
 des Bundesministeriums für Wirtschaft und Technologie
-\T\linebreak(\href{http://www.sicherheit-im-internet.de}{www.sicherheit-im-internet.de})
 hält Sie über dieses und viele andere
 Themen aktuell auf dem Laufenden.
 
 Eine weitere exzellente, mehr technische Informationsquelle zum Thema
 der Beglaubigungsinfrastrukturen bietet das 
-\xlink{Original GnuPG Handbuch}{http://www.gnupg.org/gph/de/manual},
-das Sie ebenfalls im Internet finden\linebreak
-\T(\href{http://www.gnupg.org/gph/de/manual}{www.gnupg.org/gph/de/manual}).
+\uniurl[Original GnuPG Handbuch]{http://www.gnupg.org/gph/de/manual},
+das Sie ebenfalls im Internet finden%
+\T\linebreak(\uniurl[www.gnupg.org/gph/de/manual]{http://www.gnupg.org/gph/de/manual})
+.
 
 
 
@@ -3989,7 +4091,8 @@ Die genaue Syntax für die Einträge lautet übrigens:
 
 \verb#HOSTNAME:PORT:USERNAME:PASSWORD:BASE_DN#
 
-\section{Systemweite vertrauenswürdige Wurzel-Zertifikate \label{systemtrustedrootcerts}}
+\section{Systemweite vertrauenswürdige Wurzel-Zertifikate}
+\label{systemtrustedrootcerts}
 
 Die systemweit als vertrauenswürdig vorbelegten Wurzel-Zertifkate werden
 in der Datei\\
@@ -4028,7 +4131,7 @@ und viel zu umfangreich wirken mag.
 Wenn Sie einen Fehler-Bericht an die Software-Entwickler
 senden wollen, so finden Sie auf dieser Web-Seite einige Hinweise:
 
-\url{http://www.gpg4win.de/reporting-bugs-de.html}
+\uniurl{http://www.gpg4win.de/reporting-bugs-de.html}
 
 Logbücher -- unter o.g. URL als ,,Debug-Informationen'' erwähnt --
 sind besonders wertvoll und sollten bei einem Fehler-Bericht 
@@ -4234,7 +4337,7 @@ Hier beginnt also sozusagen die Kür nach dem Pflichtteil:
 
 \clearpage
 %% Original page 50
-\chapter{GnuPG und das Geheimnis der großen Zahlen}
+\chapter{GnuPG und das Geheimnis der großen Zahlen \htmlonly{\html{p}} }
 \label{ch:secretGnupg}
 
 {\Large Kryptographie für Nicht-Mathematiker}\\
@@ -4320,6 +4423,7 @@ Kongruenzrechnung genannt -- funktioniert, kann man sich gut
 klarmachen, wenn man sich das Zifferblattes einer Uhr vorstellt:
 
 \begin{center}
+\htmlattributes*{img}{width=300}
 \IncludeImage[width=0.25\textwidth]{clock-face}
 \end{center}
 
@@ -4556,7 +4660,10 @@ In der linken Spalte stehen die 10er-Stellen, in der oberen Zeile die
 
 % FIXME: Replace the table by a LaTeX table and use realistc examples
 % e.g. from the HAC.
+\begin{center}
+\htmlattributes*{img}{width=500}
 \IncludeImage[width=0.9\textwidth]{table-1}
+\end{center}
 
 \clearpage
 %% Original page 60
@@ -4572,8 +4679,10 @@ ergibt. Das andere Beispiel: die Zahl $47 \bmod 77$ wird zur Zahl $75
 \bmod 77$ dekodiert.
 
 Tabelle 2 zeigt die genaue Zuordnung der 77 Zahlen zwischen 0 und 76.
-
+\begin{center}
+\htmlattributes*{img}{width=500}
 \IncludeImage[width=0.9\textwidth]{table-2}
+\end{center}
 %\caption{Tabelle 2: Zahlentransformation modulo77, unter Verwendung
 %des geheimen Schlüssels 37}
 
@@ -4630,8 +4739,10 @@ Folglich kann man den Code in diesem einfachen Beispiel leicht
 knacken. Der scharfsinnige Leser wird auch bemerkt haben, dass etliche
 Zahlen, zum Beispiel die Zahl 11 und ihr Vielfaches (also 22, 33 etc.)
 und die benachbarten Zahlen sich in sich selbst umwandeln.
-
+\begin{center}
+\htmlattributes*{img}{width=500}
 \IncludeImage[width=0.9\textwidth]{table-3}
+\end{center}
 
 \clearpage
 
@@ -4672,7 +4783,8 @@ jedenfalls nicht in vertretbarer Zeit.
 
 \clearpage
 %% Original page 64
-\section{Die Darstellung mit verschiedenen Basiszahlen}
+\section{Die Darstellung mit verschiedenen Basiszahlen
+\htmlonly{\html{br}\html{br}} }
 
 Um zu verstehen, wie Nachrichten verschlüsselt werden, sollte man
 wissen, wie ein Computer Zahlen speichert und vor allem, wie sie in
@@ -4703,6 +4815,7 @@ weiter.
 %% Original page 65
 
 \begin{center}
+\htmlattributes*{img}{width=300}
 \IncludeImage[width=0.4\textwidth]{mileage-indicator}
 \end{center}
 
@@ -4937,9 +5050,10 @@ kodierte Nachricht zur Basis 10.
 
 Zum Verschlüsseln der Nachricht nehmen wir jetzt Tabelle 1 zur Hilfe.
 Die Nachricht wird nun zu der Zahlenfolge 53, 63, 50 (zur Basis 10).
-
+\begin{center}
+\htmlattributes*{img}{width=500}
 \IncludeImage[width=0.9\textwidth]{table-1}
-
+\end{center}
 
 %% Original page 72
 \item Wiederum zur Basis 4 konvertiert, entsteht die verschlüsselte
@@ -4993,10 +5107,12 @@ dass er dann keine Lust mehr haben dürfte diese auch noch zu lesen\ldots
 \addtocontents{toc}{\protect\newpage}
 
 \appendix
-\part{Anhang}
+\T\part{Anhang}
+\W\part*{\textbf{III Anhang}}
 \addtocontents{toc}{\protect\vspace{0.3cm}}
 
-\chapter{Hinweise zum Outlook Plugin \emph{GpgOL}}
+\T\chapter{Hinweise zum Outlook Plugin \emph{GpgOL}}
+\W\chapter*{A Hinweise zum Outlook Plugin \emph{GpgOL}}
 
 GpgOL ist ein Plugin für Microsoft Outlook, es integriert dort die
 Bedienung von GnuPG.  Wir geben hier einige Hinweise zur Benutzung.
@@ -5024,7 +5140,8 @@ Bitte beachten Sie die beiden folgenden Einschränkungen:
 
 
 \clearpage
-\section{Installation}
+\T\section{Installation}
+\W\section*{A.1 Installation}
 \label{gpgolInstallation}
 Die Installation wird durch den Gpg4win Installer vorgenommen.  Beim nächsten
 Start von Outlook findet sich im Menü
@@ -5040,7 +5157,7 @@ Die Karteikarte GpgOL unterteilt sich in drei Kästen:
     \item \textbf{Allgemein:}
 
         Nach der Installation von Gpg4win ist die 
-        \margin{\IncludeImage[width=1.5cm]{smime-icon}}
+        \T\margin{\IncludeImage[width=1.5cm]{smime-icon}}
         S/MIME-Funktionalität in GpgOL deaktiviert. 
         
         \textbf{Wichtig:} Wenn Sie S/MIME nutzen
@@ -5098,7 +5215,8 @@ Bitte kontrollieren Sie dies im Menüpunkt
 \end{center}
 
 \clearpage
-\section{Häufig gestellte Fragen}
+\T\section{Häufig gestellte Fragen}
+\W\section*{A.2 Häufig gestellte Fragen}
 
 \begin{description}
 \item[Wo finde ich die Icons zum Signieren/Verschlüsseln in der Symbolleiste?]
@@ -5133,7 +5251,7 @@ Bitte kontrollieren Sie dies im Menüpunkt
   Rechts unten sehen Sie die aktuelle installierte GpgOL-Version.
   Klicken Sie auf das g10Code-Logo links unten, um auf die
   Website\linebreak
-  \url{http://www.g10code.com/p-gpgol.html} zu gelangen. Dort erhalten
+  \uniurl{http://www.g10code.com/p-gpgol.html} zu gelangen. Dort erhalten
   Sie alle aktuellen Informationen zu GpgOL.
 
 
@@ -5171,7 +5289,8 @@ Bitte kontrollieren Sie dies im Menüpunkt
 \end{description}
 
 \clearpage
-\chapter{Automatische Installation von Gpg4win}
+\T\chapter{Automatische Installation von Gpg4win}
+\W\chapter*{B Automatische Installation von Gpg4win}
 \label{ch:auto}
 
 In diesem Kapitel wird die automatisierte Installation (ohne
@@ -5269,7 +5388,8 @@ Steuerungsdatei \verb-gpg4win.ini- und einem Installationspfad
 \end{verbatim}
 
 \clearpage
-\chapter{Umstieg von anderen GnuPG Programmen}
+\T\chapter{Umstieg von anderen GnuPG Programmen}
+\W\chapter*{C Umstieg von anderen GnuPG Programmen}
 \label{ch:migration}
 
 Wir werden hier erläutern, wie Sie von anderen GnuPG basierten
@@ -5310,7 +5430,8 @@ noch mit allen aktuellen GnuPG Versionen.}.
 
 
 \clearpage
-\chapter{History}
+\T\chapter{History}
+\W\chapter*{D History}
 
 \begin{itemize}
 \item  "`GnuPP für Einsteiger"', 1. Auflage März 2002 und\\
@@ -5324,9 +5445,9 @@ noch mit allen aktuellen GnuPG Versionen.}.
   Herausgegeben vom Bundesministerium für Wirtschaft und
   Technologie (BMWi).\\
   Verfügbar unter
-  \url{http://www.gnupp.de/pdf/einsteiger.pdf}
+  \uniurl{http://www.gnupp.de/pdf/einsteiger.pdf}
   und\\
-  \url{http://www.gnupp.de/pdf/durchblicker.pdf}.
+  \uniurl{http://www.gnupp.de/pdf/durchblicker.pdf}.
 %    Der Abschnitt "`History"' ist im Originaldokument nicht vorhanden
 %    und wurde von Werner Koch beigefügt.
 \item Revidierte nicht-veröffentlichte Version von TextLab text+media.      
@@ -5340,7 +5461,8 @@ noch mit allen aktuellen GnuPG Versionen.}.
 
 
 \clearpage
-\chapter{Deinstallation von Gpg4win}
+\T\chapter{Deinstallation von Gpg4win}
+\W\chapter*{E Deinstallation von Gpg4win}
 
 %  TODO: Wenn die Kapitel zu S/MIME fertig sind, sollten Verweise zum Sichern
 %  von Zertifikaten und Schlüssel eingefügt werden

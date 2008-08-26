@@ -1,3 +1,10 @@
+2008-08-21  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+
+	* manual/gpg4win-compendium-de.tex, manual/fdl-book.tex:
+	Many improvements for hyperlatex output.
+	Resolved macros.tex input (because moved to
+	gpg4win-compendium-de.tex and modified).
+
 2008-08-22  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
 	* manual/gpg4win-compendium-de.tex, manual/Makefile.am:
