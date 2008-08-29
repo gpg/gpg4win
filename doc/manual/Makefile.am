@@ -126,7 +126,8 @@ eps_files_png  = $(eps_files:.eps.gz=.png)
 #eps_files_pdf = $(eps_files:.eps.gz=.pdf)
 png_files_eps = $(png_files:.png=.eps) 
 
-EXTRA_DIST = fdl.tex gpg4win-compendium-de.tex einsteiger.tex durchblicker.tex novices.tex \
+EXTRA_DIST = fdl.tex fdl-book.tex gpg4win-compendium-de.tex \
+	     einsteiger.tex durchblicker.tex novices.tex \
 	     $(eps_files) $(png_files) $(web_png_files) \
 	     was-ist-gpg4win.tex what-is-gpg4win.tex \
              macros.tex macros-en.tex version.tex.in \
