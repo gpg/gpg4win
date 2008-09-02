@@ -1,3 +1,7 @@
+2008-09-02  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+
+	* packages/packages.current: Update kdelibs, kdesupport and kleopatra.
+
 2008-08-19  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
 
 	* configure.ac: Added COMPENDIUM_VERSION_DE and COMPENDIUM_DATE_DE for the

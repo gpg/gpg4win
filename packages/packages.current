@@ -349,16 +349,16 @@ chk  3c86381ba5c416c6728ff5b839379cca9208f0c3
 
 server ftp://ftp.kdab.net/pub/gpg4win
 
-file kdesupport-4.1-bin.zip
-chk 313b92fe2f706820ce554ae4cefbd1d3c294fc91
+file kdesupport-20080828-bin.zip
+chk 65c049db1f992843be8e12a886117f524433d690
 
 # FIXME: This does not actually contain the development files, but
 # further binary files we need.
-file kdesupport-4.1-lib.zip
-chk 2165a07dadcb34e3e3ef2a28a166df22cb35dd5c
+file kdesupport-20080828-lib.zip
+chk ffa95f4546a801c6e0f5726de4f16669f94cee51
 
-file kdesupport-4.1-src.zip
-chk 09cf97659df49f3bb78152dfc2e6e3e30bb6455a
+file kdesupport-20080828-src.zip
+chk 2fa67502e00872d5e3ece1682d71383ca8cbf1e0
 
 # oxygen-icons
 #
@@ -377,30 +377,30 @@ chk  a4e673c1b1b1cc420e771413edc53ef89fe7773a
 
 server ftp://ftp.kdab.net/pub/gpg4win
 
-name kdelibs-20080807-bin.zip
-file kdelibs-for-kleo-20080807-bin.zip
-chk  fde9ca5f9078d8cd558833684357d9de985fa329
+name kdelibs-20080828-bin.zip
+file kdelibs-for-kleo-20080828-bin.zip 
+chk  6f456936bd48f0342a29e0a656a8e45850de1b0e
 
-name kdelibs-20080807-lib.zip
-file kdelibs-for-kleo-20080807-dev.zip
-chk  b07ddaf7819268cd8485a7e9b2f21109e0dfbc62
+name kdelibs-20080828-lib.zip
+file kdelibs-for-kleo-20080828-dev.zip
+chk  890d47e54883d3ccfe9a651362bc0f56d1c788ba
 
-name kdelibs-20080807-src.zip
-file kdelibs-for-kleo-20080807-src.zip
-chk  cd726b91b33bd5739fa68e923209cf860dc99276
+name kdelibs-20080828-src.zip
+file kdelibs-for-kleo-20080828-src.zip
+chk  1404910047a6da3af962f1d0a05ba44698f913ba
 
 # Kleopatra
 
 server ftp://ftp.kdab.net/pub/gpg4win
 
-file kleopatra-20080811-6-bin.zip
-chk  ac4ac7d691328cded24f4d54d101113fc72921b8
+file kleopatra-20080828-bin.zip
+chk  cb7110723ea565046f997708ca2a1edea926c44f
 
 # FIXME: These belong in the bin package.
 name kleopatra-20080811-6-lib.zip
 file kleopatra-20080811-6-doc.zip
 chk  6d705d70948559c0f3cf0c3defc7521114b22cd9
 
-file kleopatra-20080811-6-src.zip
-chk  ebc5acf84bed56fedd053a718adbd0cec486bc2b
+file kleopatra-20080828-src.zip
+chk  29daadbb960411bc7374222b01d2b930e2796900
 
