@@ -27,14 +27,10 @@
 # For the "light" version of the package, we explicitely disable some
 # of the packages right after including config.nsi.
 !ifdef GPG4WIN_LIGHT
-!undef HAVE_PKG_MAN_NOVICE_DE
+!undef HAVE_PKG_COMPENDIUM_DE
 !undef HAVE_PKG_MAN_NOVICE_EN
-!undef HAVE_PKG_MAN_ADVANCED_DE
 !ifdef HAVE_PKG_KLEOPATRA
 !undef HAVE_PKG_KLEOPATRA
-!endif
-!ifdef HAVE_PKG_GPGEX
-!undef HAVE_PKG_GPGEX
 !endif
 !ifdef HAVE_PKG_KDELIBS
 !undef HAVE_PKG_KDELIBS
@@ -62,8 +58,8 @@
 !define VERSION "${_VERSION}"
 !define PROD_VERSION "${_BUILD_FILEVERSION}"
 !define COMPANY "g10 Code GmbH"
-!define COPYRIGHT "Copyright (C) 2007 g10 Code GmbH"
-!define DESCRIPTION "Gpg4win: The GNU Privacy Guard and tools for Windows"
+!define COPYRIGHT "Copyright (C) 2008 g10 Code GmbH"
+!define DESCRIPTION "Gpg4win: The GNU Privacy Guard and Tools for Windows"
 
 !define INSTALL_DIR "GnuPG"
 

@@ -210,10 +210,8 @@ GPG4WIN_SPKG([gnutls], [libgsasl libtasn1 opencdk])
 GPG4WIN_SPKG([libetpan], [pthreads-w32])
 GPG4WIN_SPKG([claws-mail], [libiconv gettext zlib gtk+ libpng jpeg glib dnl
                             gpgme pthreads-w32 crypt regex libetpan gnutls])
-# The Eudora license (the one for the EMS API) is still not acceptable.
-#GPG4WIN_SPKG([eudoragpg])
-GPG4WIN_IPKG([man_novice_de])
-GPG4WIN_IPKG([man_advanced_de])
+
+GPG4WIN_IPKG([compendium_de])
 GPG4WIN_IPKG([man_novice_en])
 #GPG4WIN_IPKG([man_advanced_en])
 

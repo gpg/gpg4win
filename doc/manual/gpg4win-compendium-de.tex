@@ -35,6 +35,7 @@
 \newcommand{\Email}{E-Mail}
 \newcommand{\EchelonUrl}{http://www.heise.de/tp/r4/artikel/6/6928/1.html}
 \newcommand\margin[1]{\marginline {\sffamily\scriptsize #1}}
+% Note: Do not include more than one image on a source line.
 \newcommand{\IncludeImage}[2][]{\texorhtml{%
 \includegraphics[#1]{#2}%
 }{%
@@ -110,7 +111,8 @@
     %
     % on _startpage_: show short(!) toc (only part+chapter)
     \setcounter {htmlautomenu}{1}
-    % chapters should be <H1>, Sections <H2> etc. (see hyperlatex package book.hlx)
+    % chapters should be <H1>, Sections <H2> etc.
+    % (see hyperlatex package book.hlx)
     \setcounter{HlxSecNumBase}{-1}
     % show _numbers_ of parts, chapters and sections in toc
     \setcounter {secnumdepth}{1}
@@ -290,7 +292,7 @@ Programme umfasst:}
     \item[GpgEX:] GPG Explorer eXtension (GpgEX) ist eine Erweiterung für
         den Windows Explorer, die es ermöglicht, Dateien über das
         Kontextmenü zu verschlüsseln.
-    \item[GPA:] Der GNU Privacy Assistent (GPA) ist neben Kleoaptra ein
+    \item[GPA:] Der GNU Privacy Assistent (GPA) ist neben Kleopatra ein
         alternatives Programm zum Verwalten von OpenPGP Schlüsseln.
     \item[Claws Mail:] Claws Mail ist ein vollständiges
         \Email{}-Programm mit sehr guter Unterstützug für GnuPG.
@@ -4352,9 +4354,9 @@ Verbindung besteht. Nur wenn beide zueinander passen, kann man
 Geheimbotschaften entschlüsseln.
 
 Das Geheimnis dieser mathematischen Verbindung müssen Sie nicht
-unbedingt kennen ­-- Gpg4win funktioniert für Sie auch so. Man kann diese komplexe
-mathematische Methode aber auch als Normalsterblicher und
-Nichtmathematiker verstehen. Sie müssen eigentlich nur einfache
+unbedingt kennen ­-- Gpg4win funktioniert für Sie auch so. Man kann
+diese komplexe mathematische Methode aber auch als Normalsterblicher
+und Nichtmathematiker verstehen. Sie müssen eigentlich nur einfache
 Additionen ($2 + 3$) und Multiplikationen ($5 * 7$) beherrschen.
 Allerdings in einer ganzen anderen Rechenmethode als der, die Sie im
 Alltag benutzen.  Es gehört sowohl zur Sicherheitsphilosophie der

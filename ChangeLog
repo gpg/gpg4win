@@ -1,12 +1,28 @@
+2008-09-03  Werner Koch  <wk@g10code.com>
+
+	* configure.ac: Remove man_novice_de and man_advanced_de.  Add
+	compendium_de.
+
+	* src/gpg4win.nsi: Do not include it in the light installer.
+	* src/uninst-compendium_de.nsi: New.
+	* src/inst-compendium_de.nsi: New.
+	* src/inst-sections.nsi: Include them.
+	* src/installer-finish.nsi: Ditto.
+
 2008-09-02  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
 	* packages/packages.current: Update kdelibs, kdesupport and kleopatra.
 
+2008-08-28  Werner Koch  <wk@g10code.com>
+
+	* src/gpg4win.nsi: Include gpgex in the light build.
+
 2008-08-19  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
 
-	* configure.ac: Added COMPENDIUM_VERSION_DE and COMPENDIUM_DATE_DE for the
-	new compendium document, also turning to version 3.0.0-beta for the
-	compendium documentation as it is the third generation.
+	* configure.ac: Added COMPENDIUM_VERSION_DE and COMPENDIUM_DATE_DE
+	for the new compendium document, also turning to version
+	3.0.0-beta for the compendium documentation as it is the third
+	generation.
 
 2008-08-11  Werner Koch  <wk@g10code.com>
 

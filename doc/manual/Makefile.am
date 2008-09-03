@@ -135,16 +135,19 @@ EXTRA_DIST = fdl.tex fdl-book.tex gpg4win-compendium-de.tex \
 # advanced.tex
 
 CLEANFILES = $(eps_files_bb) $(png_files_eps) \
-             *.dvi *.pdf *.pdf *.toc *.log *.aux *.out
+             *.dvi *.pdf *.pdf *.toc *.log *.aux *.out \
+	     gpg4win-compendium-de.html.d/*
 DISTCLEANFILES = version.tex $(eps_files_png)
 
-pkgdata_DATA = gpg4win-compendium-de.pdf einsteiger.pdf durchblicker.pdf novices.pdf 
+pkgdata_DATA = gpg4win-compendium-de.pdf novices.pdf 
 # advanced.pdf
 
 BUILT_SOURCES = $(eps_files_bb) $(png_files_eps) $(eps_files_png)
 
-all-local: gpg4win-compendium-de.pdf einsteiger.pdf durchblicker.pdf novices.pdf 
+all-local: gpg4win-compendium-de.pdf novices.pdf \
+	   gpg4win-compendium-de.html.d
 # advanced.pdf
+
 
 gpg4win-compendium-de.pdf : $(eps_files_bb) $(png_files_eps) $(eps_files_png)
 gpg4win-compendium-de.dvi : version.tex macros.tex $(eps_files_bb)
@@ -162,18 +165,21 @@ novices.html : version.tex macros-en.tex $(eps_files_png)
 #advanced.dvi : version.tex macros-en.tex $(eps_files_bb)
 #advanced.html : version.tex macros-en.tex $(eps_files_png)
 
-htmlversion: gpg4win-compendium-de.html einsteiger.html durchblicker.html novices.html
-# advanced.html
+# Note:  This is only used for the old manuals.
+htmlversion:  einsteiger.html durchblicker.html novices.html
 	rm -rf html
 	mkdir html
-	cp gpg4win-compendium-de*.html einsteiger*.html durchblicker*.html novices*.html html/
-	cp $(web_png_files) $(png_files) $(eps_files_png) gpg4win-logo.png html/
+	cp einsteiger*.html durchblicker*.html novices*.html html/
+	cp $(web_png_files) $(png_files) $(eps_files_png) \
+	 gpg4win-logo.png html/
 
-online: htmlversion
+online: htmlversion gpg4win-compendium-de.html.d
 	set -e; \
 	echo "Going to put current manuals online for www.gpg4win.org ..."; \
         user=`svn info | sed -n '/^URL:/ s,.*svn+ssh://\\([^@]*\\).*,\\1,p'`;\
 	( cd html ; rsync -v * \
+	  $${user}@wald.intevation.org:/gpg4win/htdocs/handbuecher/ )
+	( cd gpg4win-compendium-de.html.d ; rsync -v * \
 	  $${user}@wald.intevation.org:/gpg4win/htdocs/handbuecher/ )
 
 preview: htmlversion
@@ -203,3 +209,21 @@ preview: htmlversion
 
 %.html : %.tex
 	hyperlatex $<
+
+
+# The html.d directories are used to collect all relevant files for
+# the NSI scripts.  Fixme: We should better use proper installation
+# directories with the internal packages as well.
+%.html.d-stamp : %.html
+	@rm -f $@.tmp
+	@touch $@.tmp
+	-rm -rf $@
+	mkdir $@
+	(src=$$(echo $@ | sed 's/.html.d$$/.tex/'); \
+         echo $@ | sed  's/.d$$//'; \
+         LC_CTYPE=C sed -n 's/.*\\xname{\([^}]*\).*/\1.html/p' $$src;\
+         LC_CTYPE=C sed -n 's/.*\\IncludeImage\[.*\]){\([^}]*\).*/\1.png/p' \
+                  $$src;\
+         LC_CTYPE=C sed -n 's/.*\\IncludeImage{\([^}]*\).*/\1.png/p' $$src \
+	) | sort | uniq | xargs $(INSTALL_DATA) -t $@ 
+	@mv -f $@.tmp $@

@@ -16,4 +16,5 @@ src/inst-man_advanced_de.nsi
 src/inst-man_advanced_en.nsi
 src/inst-man_novice_de.nsi
 src/inst-man_novice_en.nsi
+src/inst-compendium_de.nsi
 src/inst-winpt.nsi
