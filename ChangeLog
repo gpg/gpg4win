@@ -1,3 +1,15 @@
+2008-09-03  Marcus Brinkmann  <marcus@g10code.com>
+
+	* include/config.nsi.in: Add scute support.
+	* src/inst-sections.nsi: Likewise.
+	* src/inst-scute.nsi, src/uninst-scute.nsi: New files.
+	* src/Makefile.am (gpg4win_pkg_scute_configure): New variable.
+	(EXTRA_DIST): Add inst-scute.nsi and uninst-scute.nsi.
+	(gpg4win_spkgs): Add scute.
+	* configure.ac: Add scute.
+	* Makefile.am (EXTRA_DIST): Add patches/scute-1.2.0/01-bugfixes.patch.
+	* patches/scute-1.2.0/01-bugfixes.patch: New file.
+
 2008-09-03  Werner Koch  <wk@g10code.com>
 
 	* configure.ac: Remove man_novice_de and man_advanced_de.  Add

@@ -52,7 +52,8 @@ EXTRA_DIST = autogen.sh README.SVN \
 	patches/gnupg2-2.0.9/03-i18n+etc.patch \
 	patches/gnupg2-2.0.9/04-ks-w32init.patch \
 	patches/gnupg2-2.0.9/05-w32-http.patch \
-	patches/gpgol-0.9.91/01-gpgme.patch
+	patches/gpgol-0.9.91/01-gpgme.patch \
+        patches/scute-1.2.0/01-bugfixes.patch
 
 copy-news:
 	cp NEWS doc/website/NEWS.last

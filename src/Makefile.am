@@ -40,6 +40,7 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi config.site \
         inst-gpa.nsi		   uninst-gpa.nsi	      \
         inst-gpgee.nsi		   uninst-gpgee.nsi	      \
         inst-gpgme.nsi		   uninst-gpgme.nsi	      \
+        inst-scute.nsi		   uninst-scute.nsi	      \
         inst-gpgol.nsi		   uninst-gpgol.nsi	      \
         inst-gpgex.nsi		   uninst-gpgex.nsi	      \
         inst-gtk+.nsi		   uninst-gtk+.nsi	      \
@@ -81,7 +82,7 @@ CLEANFILES = g4wihelp.dll versioninfo.txt README.en.txt README.de.txt \
 gpg4win_spkgs = glib libgpg-error gpgme gpgol gpgex \
 		gpa winpt libgsasl libtasn1 opencdk gnutls \
                 libetpan claws-mail gnupg2 pinentry \
-		libassuan libksba libgcrypt adns dirmngr w32pth
+		libassuan libksba libgcrypt adns dirmngr w32pth scute
 
 # Extra options to configure for individual packages.
 # We can use $(idir) here for the installation prefix.
@@ -207,6 +208,9 @@ gpg4win_pkg_claws_mail_configure = \
   --disable-mathml-viewer-plugin --disable-clamav-plugin \
   --disable-spamassassin-plugin --disable-bogofilter-plugin \
   --disable-valgrind --disable-networkmanager-support
+
+gpg4win_pkg_scute_configure = --silent \
+  --with-gpgme-prefix=$(idir) --with-libassuan-prefix=$(idir)
 
 # Supported make-only source packages.
 gpg4win_mpkgs = pthreads-w32 bzip2

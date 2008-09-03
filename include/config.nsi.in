@@ -245,6 +245,10 @@
 !define gpg4win_pkg_kleopatra_version @gpg4win_pkg_kleopatra_version@
 !define gpg4win_pkg_kleopatra_src @gpg4win_pkg_kleopatra_src@
 
+@HAVE_PKG_SCUTE@
+!define gpg4win_pkg_scute @gpg4win_pkg_scute@
+!define gpg4win_pkg_scute_version @gpg4win_pkg_scute_version@
+
 # Internal packages.
 @HAVE_PKG_COMPENDIUM_DE@
 

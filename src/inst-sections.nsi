@@ -148,6 +148,9 @@
 !ifdef HAVE_PKG_GPGEX
 !include "inst-gpgex.nsi"
 !endif
+!ifdef HAVE_PKG_SCUTE
+!include "inst-scute.nsi"
+!endif
 !ifdef HAVE_PKG_CLAWS_MAIL
 !include "inst-claws-mail.nsi"
 !endif
@@ -190,10 +193,13 @@
 !include "uninst-man_novice_en.nsi"
 !endif
 #!ifdef HAVE_PKG_EUDORAGPG
-#!include "inst-eudoragpg.nsi"
+#!include "uninst-eudoragpg.nsi"
 #!endif
 !ifdef HAVE_PKG_CLAWS_MAIL
 !include "uninst-claws-mail.nsi"
+!endif
+!ifdef HAVE_PKG_SCUTE
+!include "uninst-scute.nsi"
 !endif
 !ifdef HAVE_PKG_GPGEX
 !include "uninst-gpgex.nsi"
@@ -246,9 +252,6 @@
 !endif
 !ifdef HAVE_PKG_LIBKSBA
 !include "uninst-libksba.nsi"
-!endif
-!ifdef HAVE_PKG_GPGEX
-!include "uninst-gpgex.nsi"
 !endif
 !ifdef HAVE_PKG_GLIB
 !include "uninst-glib.nsi"
@@ -390,6 +393,17 @@ calc_defaults_gpgol_done:
   StrCmp $R0 "0" 0 calc_defaults_gpgex_done
    !insertmacro UnselectSection ${SEC_gpgex}
 calc_defaults_gpgex_done:
+!endif
+
+!ifdef HAVE_PKG_SCUTE
+  g4wihelp::config_fetch_bool "inst_scute"
+  StrCmp $R0 "1" 0 calc_defaults_scute_not_one
+   !insertmacro SelectSection ${SEC_scute}
+   Goto calc_defaults_scute_done
+  calc_defaults_scute_not_one:
+  StrCmp $R0 "0" 0 calc_defaults_scute_done
+   !insertmacro UnselectSection ${SEC_scute}
+calc_defaults_scute_done:
 !endif
 
 !ifdef HAVE_PKG_GPA
@@ -606,6 +620,14 @@ Function CalcDepends
   have_gpgex:
   !insertmacro SelectSection ${SEC_kleopatra}
   skip_gpgex:
+!endif
+
+!ifdef HAVE_PKG_SCUTE
+  !insertmacro SectionFlagIsSet ${SEC_scute} \
+		${SF_SELECTED} have_scute skip_scute
+  have_scute:
+  # All dependencies are linked in statically.
+  skip_scute:
 !endif
 
 !ifdef HAVE_PKG_KLEOPATRA
@@ -906,6 +928,9 @@ FunctionEnd
 !endif
 !ifdef HAVE_PKG_GPGEX
   !insertmacro MUI_DESCRIPTION_TEXT ${SEC_gpgex} $(DESC_SEC_gpgex)
+!endif
+!ifdef HAVE_PKG_SCUTE
+  !insertmacro MUI_DESCRIPTION_TEXT ${SEC_scute} $(DESC_SEC_scute)
 !endif
 !ifdef HAVE_PKG_GPA
   !insertmacro MUI_DESCRIPTION_TEXT ${SEC_gpa} $(DESC_SEC_gpa)
