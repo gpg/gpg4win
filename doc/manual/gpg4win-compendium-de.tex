@@ -83,7 +83,7 @@
     \html{/small}}
 
     % Changing the formatting of footnotes
-    \renewenvironment{thefootnotes}{\chapter*{Fußnoten}\begin{description}}{\end{description}}
+    \renewenvironment{thefootnotes}{\xname{fussnoten}\chapter*{Fußnoten}\begin{description}}{\end{description}}
 
     % redefine universal url for hyperlatex (details see above)
     \newcommand{\linktext}{0}
@@ -131,7 +131,7 @@
 
 %%% TITLEPAGE %%%
 
-\title{\IncludeImage[width=8cm]{gpg4win-logo}\\ Das Gpg4win Kompendium}
+\title{\htmlattributes*{img}{width=300}\IncludeImage[width=8cm]{gpg4win-logo}\\ Das Gpg4win Kompendium}
 
 \author{ \
     % Hyperlatex: Add links to pdf versions and Homepage
@@ -162,8 +162,10 @@
 
 \maketitle
 
+\xname{impressum}
 \T\section*{Impressum}
 \W\chapter*{Impressum}
+
 \thispagestyle{empty}
 Copyright \copyright{} 2002 Bundesministerium für Wirtschaft und
 Technologie\footnote{Wenn dieses Dokument kopiert, verteilt und/oder
@@ -195,8 +197,10 @@ Wie das Kryptographieprogramm Gpg4win selbst, wurde diese Dokument
 nicht für Mathematiker, Geheimdienstler und Kryptographen geschrieben,
 sondern für jedermann.
 
+
 \clearpage %% End of original page 4.
 
+\xname{inhalt}
 \tableofcontents
 
 %%\clearpage
@@ -207,6 +211,7 @@ sondern für jedermann.
 
 \clearpage
 %% Orginal page 7
+\xname{ueber-dieses-handbuch}
 \chapter*{Über dieses Handbuch \htmlonly{\html{br}\html{br}}}
 \addcontentsline{toc}{chapter}{Über dieses Handbuch}
 
@@ -256,6 +261,7 @@ für den Betrieb von Adele.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Part I
 \clearpage
+\xname{einsteiger}
 \T\part{Einsteiger}
 \W\part*{\textbf{I Einsteiger}}
 \label{part:Einsteiger}
@@ -264,6 +270,7 @@ für den Betrieb von Adele.
 
 
 %% Orginal page 8
+\xname{was-ist-gpg4win}
 \chapter{Was ist Gpg4win?}
 
 \textbf{Das Projekt Gpg4win (GNU Privacy Guard for Windows) ist eine
@@ -335,6 +342,7 @@ des Bundesamtes für Sicherheit in der Informationstechnik.
 
 \clearpage
 %% Original page 6
+\xname{warum-ueberhaupt-verschluesseln}
 \chapter{Warum überhaupt verschlüsseln?}
 \label{ch:why}
 
@@ -433,6 +441,7 @@ Ihnen dieses Vorgehen Schritt für Schritt erläutern...
 
 
 \clearpage
+\xname{zwei-wege-ein-ziel}
 \chapter{Zwei Wege, ein Ziel: OpenPGP \& S/MIME}
 \label{ch:openpgpsmime}
 
@@ -555,6 +564,7 @@ beachten sind.
 
 
 \clearpage
+\xname{sie-installieren-gpg4win}
 %% Orginal page 9
 \chapter{Sie installieren Gpg4win}
 
@@ -772,6 +782,7 @@ weiter.
 
 
 \clearpage
+\xname{sie-erzeugen-ihr-schluesselpaar}
 %% Original page 15
 \chapter{Sie erzeugen Ihr Schlüsselpaar}
 \label{ch:CreateKeyPair}
@@ -1045,7 +1056,7 @@ Beenden Sie anschließend den Kleopatra-Assistenten mit
 abzuschließen.
 
 Weiter geht's mit dem Abschnitt \textit{Schlüsselpaar-Erstellung abgeschlossen}
-auf Seite~\pageref{finishKeyPairGeneration}. Von da an
+auf Seite~\pageref{sec_finishKeyPairGeneration}. Von da an
 sind die Erklärungen für OpenPGP und X.509 wieder identisch.
 
 
@@ -1201,7 +1212,7 @@ sind die Erklärungen für OpenPGP und X.509 wieder identisch.
 %% Original page 23
 
 \section{Schlüsselpaar-Erstellung abgeschlossen}
-\label{finishKeyPairGeneration}
+\label{sec_finishKeyPairGeneration}
 
 \textbf{Damit ist die Erzeugung Ihres OpenPGP- bzw. X.509-Schlüsselpaares abgeschlossen.  
 Sie besitzen nun einen einmaligen und sicheren digitalen Schlüssel.}
@@ -1244,8 +1255,8 @@ Informationen benötigen.}
 
 
 \clearpage
+\xname{sie-veroeffentlichen-ihr-zertifikat}
 %% Original page 24
-
 \chapter{Sie veröffentlichen Ihr Zertifikat}
 \label{ch:publishCertificate}
 
@@ -1280,9 +1291,9 @@ beispielsweise ...
 
 \begin{itemize}
     \item ... direkt per \textbf{\Email{}} an bestimmte
-    Korrespondenzpartner (vgl. Abschnitt~\ref{publishPerEmail}).
+    Korrespondenzpartner (vgl. Abschnitt~\ref{sec_publishPerEmail}).
     \item ... auf einem \textbf{OpenPGP-Schlüsselserver};
-    gilt \textit{nur} für OpenPGP (vgl. Abschnitt~\ref{publishPerKeyserver}).
+    gilt \textit{nur} für OpenPGP (vgl. Abschnitt~\ref{sec_publishPerKeyserver}).
     \item ... über die eigene Homepage.
     \item ... persönlich, z.B. per USB-Stick.
 \end{itemize}
@@ -1293,7 +1304,7 @@ näher anschauen.
 %% Original page 25
 \clearpage
 \section{Veröffentlichen per \Email{}}
-\label{publishPerEmail}
+\label{sec_publishPerEmail}
 
 Sie wollen Ihr Zertifikat Ihrem Korrespondenzpartner bekannt machen?
 Schicken Sie ihm doch einfach ihr exportiertes Zertifikat per
@@ -1518,7 +1529,7 @@ mit der Verfügbarkeit der Kette.
 \clearpage
 %% Original page 30
 \section{Veröffentlichen per Schlüsselserver}
-\label{publishPerKeyserver}
+\label{sec_publishPerKeyserver}
 
 \textbf{Wichtig: Die Veröffentlichung Ihres Zertifikats auf einem
 Schlüsselserver (Keyserver) ist nur für OpenPGP-Zertifikate möglich!}
@@ -1585,6 +1596,7 @@ Schlüsselserver im Internet veröffentlichen.
 
 \clearpage
 %% Original page 31
+\xname{sie-entschluesseln-eine-email}
 \chapter{Sie entschlüsseln eine \Email{}}
 \label{ch:decrypt}
 
@@ -1605,7 +1617,7 @@ Ende dieses Kapitels.} %TODO:Seitenzahl
 \T\margin{\IncludeImage[width=1.5cm]{openpgp-icon}}\\
 
 
-Im Abschnitt~\ref{publishPerEmail} haben Sie Adele Ihr
+Im Abschnitt~\ref{sec_publishPerEmail} haben Sie Adele Ihr
 OpenPGP-Zertifikat geschickt.
 Mit Hilfe dieses Zertifikats verschüsselt Adele nun eine
 \Email{} und sendet sie an Sie zurück. Nach kurzer Zeit sollen Sie
@@ -1771,6 +1783,7 @@ entschlüsselte S/MIME-\Email{}.
 
 \clearpage
 %% Original page 37
+\xname{sie-importieren-ein-zertifikat}
 \chapter{Sie importieren ein Zertifikat}
 \label{ch:keyring}
 
@@ -1803,7 +1816,7 @@ Bei OpenPGP-Zertifikaten markieren Sie den Bereich von
 bis\\
 \verb+-----END PGP PUBLIC KEY BLOCK-----+
 
-so wie Sie es im Abschnitt~\ref{publishPerEmail} schon getan haben.
+so wie Sie es im Abschnitt~\ref{sec_publishPerEmail} schon getan haben.
 
 Setzen Sie den markierten Abschnitt per Copy \& Paste in einen
 Texteditor ein und speichern Sie das Zertifikat ab. Als Dateiendung
@@ -1877,6 +1890,7 @@ Sie danach an dieser Stelle fortfahren.}
 
 \clearpage
 %% Original page 42
+\xname{sie-verschluesseln-eine-email}
 \chapter{Sie verschlüsseln eine \Email{}}
 \label{ch:encrypt}
 
@@ -2018,6 +2032,7 @@ verschlüsselt!}
 
 
 %% Original page 37 & 40
+\xname{sie-signieren-eine-email}
 \chapter{Sie signieren eine \Email{}}
 \label{ch:sign}
 
@@ -2211,7 +2226,7 @@ Inhalt Ihrer \Email{} ist:
     \item verschlüsselt
     \item signiert
     \item signiert und verschlüsselt \textit{(Mehr dazu im
-        Abschnitt~\ref{encsig}, S.~\pageref{encsig})}
+        Abschnitt~\ref{sec_encsig}, S.~\pageref{sec_encsig})}
 \end{itemize}
 
 Diese vier Kombinationen können Sie entweder mit OpenPGP oder mit
@@ -2263,7 +2278,7 @@ verändert wurde. Das ist zunächst der wahrscheinlichste Fall. Es kann
 jedoch auch bedeuten, dass der Text nachträglich verändert wurde.
 
 Wie Sie in einem solchen Fall mit der gebrochenen Signatur umgehen sollten,
-erfahren Sie im Abschnitt~\ref{brokenSignature}.
+erfahren Sie im Abschnitt~\ref{sec_brokenSignature}.
 
 
 \clearpage
@@ -2302,7 +2317,7 @@ ytRsEXgzCrfPnjGrDDtb7QZIAn17B8l8gFQ3WIUUDCMfA5cQajHcm
 \clearpage
 %% Original page 40
 \section{Gründe für eine gebrochene Signatur}
-\label{brokenSignature}
+\label{sec_brokenSignature}
 
 
 Es gibt mehrere Gründe, die zu einem Bruch einer Signatur
@@ -2342,7 +2357,7 @@ eine gebrochene Signatur.
 \clearpage
 %% Original page 42
 \section{Verschlüsseln und signieren}
-\label{encsig}
+\label{sec_encsig}
 
 Normalerweise verschlüsseln Sie eine Nachricht mit dem Zertifikat 
 Ihres Korrespondenzpartners, der dann mit seinem geheimen Schlüssel die
@@ -2395,6 +2410,7 @@ ganz einfach.
 
 \clearpage
 %% Original page 47
+\xname{wie-sie-ihre-emails-verschluesselt-archivieren}
 \chapter{Wie Sie Ihre \Email{}s verschlüsselt archivieren \htmlonly{\html{br}\html{br}}}
 
 Eine Einstellung müssen Sie nun noch vornehmen: Es geht um Ihre
@@ -2486,6 +2502,7 @@ sondern \textbf{für jedermann.}
 \addtocontents{toc}{\protect\newpage}
 
 \clearpage
+\xname{fortgeschrittene}
 \T\part{Fortgeschrittene}
 \W\part*{\textbf{II Fortgeschrittene}}
 \label{part:Fortgeschrittene}
@@ -2494,6 +2511,7 @@ sondern \textbf{für jedermann.}
 
 \clearpage
 %% Original page 9
+\xname{wie-funktioniert-gpg4win}
 \chapter{Wie funktioniert Gpg4win?}
 \label{ch:FunctionOfGpg4win}
 
@@ -2786,6 +2804,7 @@ Schlüsselbund.
 
 \clearpage
 %% Original page 20
+\xname{die-passphrase}
 \chapter{Die Passphrase}
 \label{ch:passphrase}
 
@@ -2963,6 +2982,7 @@ Passphrase bei der Erzeugung Ihres Schlüsselpaars festzulegen.
 
 \clearpage
 %% Original page 24
+\xname{schluessel-im-detail}
 \chapter{Schlüssel im Detail}
 \label{KeyDetails}
 Der Schlüssel, den Sie erzeugt
@@ -3010,12 +3030,13 @@ und "`Schlüsselvertrauen"' in Kapitel \ref{ch:trust}.
 
 \clearpage
 %% Original page 25
+\xname{die-openpgp-schluesselserver}
 \chapter{Die OpenPGP-Schlüsselserver}
 \label{ch:keyserver}
 
 Die Nutzung eines Schlüsselservers zum Verbreiten Ihres
 OpenPGP-Zertifikats haben wir Ihnen bereits im
-Abschnitt~\ref{publishPerKeyserver} einführend erläutert. Dieses
+Abschnitt~\ref{sec_publishPerKeyserver} einführend erläutert. Dieses
 Kapitel beschäftigt sich mit den Details von Schlüsselservern.
 \T\margin{\IncludeImage[width=1.5cm]{openpgp-icon}}
 
@@ -3128,6 +3149,7 @@ der Kleopatra-Zertifikatsverwaltung.
 
 \clearpage
 %% Original page 30
+\xname{plugins-fuer-email-programme}
 \chapter{Plugins für \Email{}-Programme}
 \label{ch:plugins}
 
@@ -3176,6 +3198,7 @@ des Bundesamtes für Sicherheit in der Informationstechnik.
 
 \clearpage
 %% Original page 31
+\xname{die-zertifikatspruefung}
 \chapter{Die Zertifikatsprüfung}
 \label{ch:trust}
 
@@ -3404,7 +3427,7 @@ das Sie ebenfalls im Internet finden%
 
 \clearpage
 %% Original page 43
-
+\xname{dateianhaenge-verschluesseln}
 \chapter{Dateianhänge verschlüsseln}
 
 Was tun, wenn Sie zusammen mit Ihrer \Email{} eine Datei versenden und
@@ -3444,6 +3467,7 @@ beschrieben Verfahren automatisch durchführen.
 
 
 \clearpage
+\xname{dateien-signieren-und-verschluesseln}
 \chapter{Dateien signieren und verschlüsseln}
 
 Nicht nur \Email{}s, sondern auch einzelne Dateien können Sie mit
@@ -3472,7 +3496,7 @@ Ihrer \Email{}.
 \clearpage
 %% Original page 41
 \section{Dateien signieren und überprüfen}
-\label{signFile}
+\label{sec_signFile}
 
 Beim Signieren einer Datei kommt es nicht vorrangig auf die
 Geheimhaltung, sondern auf die Unverändertheit der Datei an.
@@ -3622,7 +3646,7 @@ Wählen Sie hier \Menu{Verschlüsseln und Signieren} aus.
 
 \clearpage
 Sie erhalten den Dialog, den Sie vom Signieren einer Datei (vgl.
-Abschnitt~\ref{signFile}) schon kennen:
+Abschnitt~\ref{sec_signFile}) schon kennen:
 % TODO screenshot kleopatra encrypt file, step 1
 \begin{center}
 \IncludeImage[width=0.7\textwidth]{sc-kleopatra-encryptFile1_de}
@@ -3779,6 +3803,7 @@ derzeit nur mit OpenPGP möglich.
 
 \clearpage
 %% Original page 45
+\xname{im-und-export-eines-geheimen-schluessels}
 \chapter{Im- und Export eines geheimen Schlüssels}
 \label{ch:ImExport}
 
@@ -3892,6 +3917,7 @@ wieder importiert.}
 
 
 \clearpage
+\xname{systemweite-konfiguration-und-vorbelegungen-fuer-smime}
 \chapter{Systemweite Konfigurationen und Vorbelegungen für S/MIME}
 
 Im Rahmen von Softwareverteilung oder sonstigen Umgebungen
@@ -3913,7 +3939,8 @@ Einige typische systemweite Einrichtungen sind:
     \begin{enumerate}
     \item Die Wurzel-Zertifkate ablegen wie unter Abschnitt \ref{trustedrootcertsdirmngr}
     beschrieben.
-    \item Die vertrauenswürdigen Wurzeln definieren wie unter Abschnitt \ref{systemtrustedrootcerts}
+    \item Die vertrauenswürdigen Wurzeln definieren wie unter
+        Abschnitt \ref{sec_systemtrustedrootcerts}
     beschrieben.
     \end{enumerate}
 
@@ -3953,6 +3980,7 @@ Einige typische systemweite Einrichtungen sind:
 
 
 \clearpage
+\xname{bekannte-probleme-und-was-man-tun-kann}
 \chapter{Bekannte Probleme und was man tun kann}
 
 \section{GpgOL Menüs und Dialog nicht mehr in Outlook zu finden}
@@ -3991,6 +4019,7 @@ In der Liste finden Sie ,,DirMngr'' --
 
 
 \clearpage
+\xname{wo-finde-ich-die-dateien-und-einstellungen-von-gpg4win}
 \chapter{Wo finde ich die Dateien und Einstellungen von Gpg4win?}
 
 \section{Persönliche Einstellungen der Anwender}
@@ -4092,7 +4121,7 @@ Die genaue Syntax für die Einträge lautet übrigens:
 \verb#HOSTNAME:PORT:USERNAME:PASSWORD:BASE_DN#
 
 \section{Systemweite vertrauenswürdige Wurzel-Zertifikate}
-\label{systemtrustedrootcerts}
+\label{sec_systemtrustedrootcerts}
 
 Die systemweit als vertrauenswürdig vorbelegten Wurzel-Zertifkate werden
 in der Datei\\
@@ -4106,6 +4135,7 @@ definiert.
 
 
 \clearpage
+\xname{fehler-in-den-gpg4win-programmen-aufspueren}
 \chapter{Fehler in den Gpg4win-Programmen aufspüren}
 
 Es kann vorkommen, dass eines der Gpg4win-Programme
@@ -4304,6 +4334,7 @@ Konfigurationsfenster zwei Debug-Optionen:
 
 \clearpage
 %% Original page 49
+\xname{warum-gpg4win-nicht-zu-knacken-ist}
 \chapter{Warum Gpg4win nicht zu knacken ist~$\ldots$}
 \label{ch:themath}
 
@@ -4337,6 +4368,7 @@ Hier beginnt also sozusagen die Kür nach dem Pflichtteil:
 
 \clearpage
 %% Original page 50
+\xname{gnupg-und-das-geheimnis-der-grossen-zahlen}
 \chapter{GnuPG und das Geheimnis der großen Zahlen \htmlonly{\html{p}} }
 \label{ch:secretGnupg}
 
@@ -5106,11 +5138,14 @@ dass er dann keine Lust mehr haben dürfte diese auch noch zu lesen\ldots
 % page break in toc
 \addtocontents{toc}{\protect\newpage}
 
+\xname{anhang}
 \appendix
 \T\part{Anhang}
 \W\part*{\textbf{III Anhang}}
 \addtocontents{toc}{\protect\vspace{0.3cm}}
 
+
+\xname{hinweise-zum-outlook-plugin-gpgol}
 \T\chapter{Hinweise zum Outlook Plugin \emph{GpgOL}}
 \W\chapter*{A Hinweise zum Outlook Plugin \emph{GpgOL}}
 
@@ -5142,7 +5177,7 @@ Bitte beachten Sie die beiden folgenden Einschränkungen:
 \clearpage
 \T\section{Installation}
 \W\section*{A.1 Installation}
-\label{gpgolInstallation}
+\label{sec_gpgolInstallation}
 Die Installation wird durch den Gpg4win Installer vorgenommen.  Beim nächsten
 Start von Outlook findet sich im Menü
 \Menu{Extras$\rightarrow$Optionen} eine Karteikarte \Menu{GpgOL}:
@@ -5289,6 +5324,7 @@ Bitte kontrollieren Sie dies im Menüpunkt
 \end{description}
 
 \clearpage
+\xname{automatische-installation-von-gpg4win}
 \T\chapter{Automatische Installation von Gpg4win}
 \W\chapter*{B Automatische Installation von Gpg4win}
 \label{ch:auto}
@@ -5388,6 +5424,7 @@ Steuerungsdatei \verb-gpg4win.ini- und einem Installationspfad
 \end{verbatim}
 
 \clearpage
+\xname{umstieg-von-anderen-gnupg-programmen}
 \T\chapter{Umstieg von anderen GnuPG Programmen}
 \W\chapter*{C Umstieg von anderen GnuPG Programmen}
 \label{ch:migration}
@@ -5430,6 +5467,7 @@ noch mit allen aktuellen GnuPG Versionen.}.
 
 
 \clearpage
+\xname{history}
 \T\chapter{History}
 \W\chapter*{D History}
 
@@ -5461,6 +5499,7 @@ noch mit allen aktuellen GnuPG Versionen.}.
 
 
 \clearpage
+\xname{deinstallation-von-gpg4win}
 \T\chapter{Deinstallation von Gpg4win}
 \W\chapter*{E Deinstallation von Gpg4win}
 
