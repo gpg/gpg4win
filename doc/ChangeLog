@@ -1,3 +1,7 @@
+2008-09-04  Werner Koch  <wk@g10code.com>
+
+	* manual/Makefile.am (%.html.d-stamp): New to replace %.html.d.
+
 2008-09-03  Werner Koch  <wk@g10code.com>
 
 	* manual/Makefile.am (pkgdata_DATA): Remove einsteiger.pdf and

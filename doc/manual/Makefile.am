@@ -136,6 +136,7 @@ EXTRA_DIST = fdl.tex fdl-book.tex gpg4win-compendium-de.tex \
 
 CLEANFILES = $(eps_files_bb) $(png_files_eps) \
              *.dvi *.pdf *.pdf *.toc *.log *.aux *.out \
+	     gpg4win-compendium-de.html.d-stamp \
 	     gpg4win-compendium-de.html.d/*
 DISTCLEANFILES = version.tex $(eps_files_png)
 
@@ -145,7 +146,7 @@ pkgdata_DATA = gpg4win-compendium-de.pdf novices.pdf
 BUILT_SOURCES = $(eps_files_bb) $(png_files_eps) $(eps_files_png)
 
 all-local: gpg4win-compendium-de.pdf novices.pdf \
-	   gpg4win-compendium-de.html.d
+	   gpg4win-compendium-de.html.d-stamp
 # advanced.pdf
 
 
@@ -217,13 +218,15 @@ preview: htmlversion
 %.html.d-stamp : %.html
 	@rm -f $@.tmp
 	@touch $@.tmp
-	-rm -rf $@
-	mkdir $@
-	(src=$$(echo $@ | sed 's/.html.d$$/.tex/'); \
-         echo $@ | sed  's/.d$$//'; \
+	set -e; \
+	 src=$$(echo $@ | sed 's/.html.d-stamp$$/.tex/'); \
+	 srcd=$$(echo $$src | sed  's/.tex$$/.html.d/'); \
+         rm -rf $$srcd || true;\
+         mkdir $$srcd;\
+        (echo $$src | sed  's/.tex$$/.html/'; \
          LC_CTYPE=C sed -n 's/.*\\xname{\([^}]*\).*/\1.html/p' $$src;\
-         LC_CTYPE=C sed -n 's/.*\\IncludeImage\[.*\]){\([^}]*\).*/\1.png/p' \
+         LC_CTYPE=C sed -n 's/.*\\IncludeImage\[.*\]{\([^}]*\).*/\1.png/p' \
                   $$src;\
          LC_CTYPE=C sed -n 's/.*\\IncludeImage{\([^}]*\).*/\1.png/p' $$src \
-	) | sort | uniq | xargs $(INSTALL_DATA) -t $@ 
+	) | sort | uniq | xargs $(INSTALL_DATA) -t $$srcd
 	@mv -f $@.tmp $@
