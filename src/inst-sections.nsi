@@ -157,14 +157,14 @@
 #!ifdef HAVE_PKG_EUDORAGPG
 #!include "inst-eudoragpg.nsi"
 #!endif
+!ifdef HAVE_PKG_COMPENDIUM_DE
+!include "inst-compendium_de.nsi"
+!endif
 !ifdef HAVE_PKG_MAN_NOVICE_EN
 !include "inst-man_novice_en.nsi"
 !endif
 !ifdef HAVE_PKG_MAN_ADVANCED_EN
 !include "inst-man_advanced_en.nsi"
-!endif
-!ifdef HAVE_PKG_COMPENDIUM_DE
-!include "inst-compendium_de.nsi"
 !endif
 !ifdef HAVE_PKG_MAN_NOVICE_DE
 !include "inst-man_novice_de.nsi"
@@ -183,14 +183,14 @@
 !ifdef HAVE_PKG_MAN_NOVICE_DE
 !include "uninst-man_novice_de.nsi"
 !endif
-!ifdef HAVE_PKG_COMPENDIUM_DE
-!include "uninst-compendium_de.nsi"
-!endif
 !ifdef HAVE_PKG_MAN_ADVANCED_EN
 !include "uninst-man_advanced_en.nsi"
 !endif
 !ifdef HAVE_PKG_MAN_NOVICE_EN
 !include "uninst-man_novice_en.nsi"
+!endif
+!ifdef HAVE_PKG_COMPENDIUM_DE
+!include "uninst-compendium_de.nsi"
 !endif
 #!ifdef HAVE_PKG_EUDORAGPG
 #!include "uninst-eudoragpg.nsi"
@@ -1099,10 +1099,11 @@ Section "-startmenu"
   no_man_advanced_de_menu:
 !endif
 
-    CreateShortCut \
-      "$SMPROGRAMS\$STARTMENU_FOLDER\$(DESC_Menu_manuals)\GnuPG FAQ.lnk" \
-      "$INSTDIR\share\gnupg\faq.html" \
-      "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_gnupg_faq)
+# The FAQ is totally outdated, better don't show it.
+#    CreateShortCut \
+#      "$SMPROGRAMS\$STARTMENU_FOLDER\$(DESC_Menu_manuals)\GnuPG FAQ.lnk" \
+#      "$INSTDIR\share\gnupg\faq.html" \
+#      "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_gnupg_faq)
 
     CreateShortCut \
       "$SMPROGRAMS\$STARTMENU_FOLDER\$(DESC_Menu_manuals)\Gpg4Win README.lnk" \
@@ -1254,9 +1255,10 @@ Section "-startmenu"
   no_man_advanced_de_desktop:
 !endif
 
-    CreateShortCut "$DESKTOP\$(DESC_Desktop_manuals)\GnuPG FAQ.lnk" \
-                   "$INSTDIR\share\gnupg\faq.html" \
-                   "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_gnupg_faq)
+# The GnuPG FAQ is totally out of date
+#    CreateShortCut "$DESKTOP\$(DESC_Desktop_manuals)\GnuPG FAQ.lnk" \
+#                   "$INSTDIR\share\gnupg\faq.html" \
+#                   "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_gnupg_faq)
 
 no_desktop:
 

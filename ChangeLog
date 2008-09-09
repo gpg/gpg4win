@@ -1,9 +1,17 @@
 2008-09-09  Werner Koch  <wk@g10code.com>
 
+	Release 1.9.7-beta.
+
+	* src/inst-sections.nsi: Remove the links to the GnuPG FAQ.
+
+	* src/inst-oxygen-icons.nsi: Add more icons.
+	* src/uninst-oxygen-icons.nsi: Use wildcards to delete icons.
+	Delete 22x22 and 64x64 icons.
+
 	* patches/gnupg2/03-argv-quote-fix.patch: New. 
 	* Makefile.am (EXTRA_DIST): Add it.
 
-	* packages/packages.current: Update GPA.
+	* packages/packages.current: Update GPA and GpgEx.
 
 2008-09-09  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
