@@ -315,15 +315,9 @@ chk  6255a7958dc9e735c3f76595cd973abca09c1f93
 #
 # GPA
 #
-
-#server http://wald.intevation.org/frs/download.php
-#file 350/gpa-0.7.6.tar.bz2
-#chk  bb9182cd4c6bd6677ba9cdcca262dcc1b1d22c3c
-
-server ftp://ftp.g10code.com/g10code/scratch
-file gpa-0.7.7-svn899.tar.bz2
-chk  98b95913307da43cc34447223e84247753b7e4b4
-
+server http://wald.intevation.org/frs/download.php
+file   491/gpa-0.8.0.tar.bz2
+chk    c519af3ccd3c7e518458e143b2001a8cc6d90467
 
 #
 # Qt

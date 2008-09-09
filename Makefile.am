@@ -47,6 +47,7 @@ EXTRA_DIST = autogen.sh README.SVN \
 	patches/winpt/01-gpg-path.patch \
 	patches/gnupg2/01-version.patch.in \
 	patches/gnupg2/02-p12-hack.patch \
+        patches/gnupg2/03-argv-quote-fix.patch \
 	patches/gnupg2-2.0.9/01-close-all-handle.patch \
 	patches/gnupg2-2.0.9/02-de.po-fix.patch \
 	patches/gnupg2-2.0.9/03-i18n+etc.patch \

@@ -1,0 +1,28 @@
+#! /bin/sh
+patch -p0 -f $* < $0
+exit $?
+
+2008-09-04  Werner Koch  <wk@g10code.com>
+
+	* certdump.c (gpgsm_format_keydesc): Work around a mingw32 bug.
+
+
+--- sm/certdump.c       (revision 4822)
++++ sm/certdump.c       (working copy)
+@@ -979,7 +979,13 @@
+   buffer = p = xtrymalloc (strlen (name) * 3 + 1);
+   for (s=name; *s; s++)
+     {
+-      if (*s < ' ' || *s == '+')
++      /* We also escape the quote character to work around a bug in
++         the mingw32 runtime which does not correcty handle command
++         line quoting.  We correctly double the quote mark when
++         calling a program (i.e. gpg-protect-tool), but the pre-main
++         code does not notice the double quote as an escaped
++         quote.  */
++      if (*s < ' ' || *s == '+' || *s == '\"')
+         {
+           sprintf (p, "%%%02X", *(unsigned char *)s);
+           p += 3;
+
+

@@ -1,3 +1,10 @@
+2008-09-09  Werner Koch  <wk@g10code.com>
+
+	* patches/gnupg2/03-argv-quote-fix.patch: New. 
+	* Makefile.am (EXTRA_DIST): Add it.
+
+	* packages/packages.current: Update GPA.
+
 2008-09-09  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
 	* packages/packages.current: Update kleopatra.
