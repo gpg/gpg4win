@@ -1,3 +1,16 @@
+2008-09-09  Werner Koch  <wk@g10code.com>
+
+	* manual/macros-en.tex: Remove version.tex include.
+	* manual/macros.tex: Ditto
+	* manual/novices.tex: Include version.tex.
+	* manual/durchblicker.tex: Ditto.
+	* manual/einsteiger.tex: Ditto.
+
+	* manual/Makefile.am (htmlversion): Remove.
+	(online, preview): Take data from build directories.
+	(%.html.d): Remove.
+	(%.html.d-stamp): New for %.tex files.
+
 2008-09-09  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
 	* README-BETA-de.txt, README-BETA-en.txt: Updates for 1.9.7.

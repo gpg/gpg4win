@@ -1,5 +1,5 @@
 # Makefile.am - Building the manuals
-# Copyright (C) 2005 g10 Code GmbH
+# Copyright (C) 2005, 2008 g10 Code GmbH
 # 
 # This file is part of GPG4Win.
 # 
@@ -136,8 +136,7 @@ EXTRA_DIST = fdl.tex fdl-book.tex gpg4win-compendium-de.tex \
 
 CLEANFILES = $(eps_files_bb) $(png_files_eps) \
              *.dvi *.pdf *.pdf *.toc *.log *.aux *.out \
-	     gpg4win-compendium-de.html.d-stamp \
-	     gpg4win-compendium-de.html.d/*
+	     *.html.d-stamp  *.html.d/*
 DISTCLEANFILES = version.tex $(eps_files_png)
 
 pkgdata_DATA = gpg4win-compendium-de.pdf novices.pdf 
@@ -152,41 +151,42 @@ all-local: gpg4win-compendium-de.pdf novices.pdf \
 
 gpg4win-compendium-de.pdf : $(eps_files_bb) $(png_files_eps) $(eps_files_png)
 gpg4win-compendium-de.dvi : version.tex macros.tex $(eps_files_bb)
-gpg4win-compendium-de.html : version.tex macros.tex $(eps_files_png)
+gpg4win-compendium-de.html.d-stamp : version.tex macros.tex $(eps_files_png)
 einsteiger.pdf : $(eps_files_bb) $(png_files_eps) $(eps_files_png)
 einsteiger.dvi : version.tex macros.tex $(eps_files_bb)
-einsteiger.html : version.tex macros.tex $(eps_files_png)
+einsteiger.html.d-stamp : version.tex macros.tex $(eps_files_png)
 durchblicker.pdf : $(eps_files_bb) $(png_files_eps) $(eps_files_png)
 durchblicker.dvi : version.tex macros.tex $(eps_files_bb)
-durchblicker.html : version.tex macros.tex $(eps_files_png)
+durchblicker.html.d-stamp : version.tex macros.tex $(eps_files_png)
 novices.pdf : $(eps_files_bb) $(png_files_eps) $(eps_files_png)
 novices.dvi : version.tex macros-en.tex $(eps_files_bb) $(eps_files_png)
-novices.html : version.tex macros-en.tex $(eps_files_png)
+novices.html.d-stamp : version.tex macros-en.tex $(eps_files_png)
 #advanced.pdf : $(eps_files_bb) $(png_files_eps) $(eps_files_png)
 #advanced.dvi : version.tex macros-en.tex $(eps_files_bb)
 #advanced.html : version.tex macros-en.tex $(eps_files_png)
 
-# Note:  This is only used for the old manuals.
-htmlversion:  einsteiger.html durchblicker.html novices.html
-	rm -rf html
-	mkdir html
-	cp einsteiger*.html durchblicker*.html novices*.html html/
-	cp $(web_png_files) $(png_files) $(eps_files_png) \
-	 gpg4win-logo.png html/
-
-online: htmlversion gpg4win-compendium-de.html.d
+online: gpg4win-compendium-de.html.d-stamp novices.html.d-stamp
 	set -e; \
 	echo "Going to put current manuals online for www.gpg4win.org ..."; \
         user=`svn info | sed -n '/^URL:/ s,.*svn+ssh://\\([^@]*\\).*,\\1,p'`;\
-	( cd html ; rsync -v * \
-	  $${user}@wald.intevation.org:/gpg4win/htdocs/handbuecher/ )
-	( cd gpg4win-compendium-de.html.d ; rsync -v * \
-	  $${user}@wald.intevation.org:/gpg4win/htdocs/handbuecher/ )
+	for d in $^; do \
+          (x=$$(echo $$d | sed  's/.d-stamp$$/.d/') ;\
+	   echo "Cding to: $$x";\
+           cd $$x ;\
+           rsync -v * \
+             $${user}@wald.intevation.org:/gpg4win/htdocs/handbuecher/ ); \
+	done
 
-preview: htmlversion
+
+preview: gpg4win-compendium-de.html.d-stamp novices.html.d-stamp
 	set -e; \
 	echo "Rsyncing the HTML manuals to the preview host ..."; \
-	( cd html ; rsync -v * ${PREVIEWHOST}/ )
+	for d in $^; do \
+          (x=$$(echo $$d | sed  's/.d-stamp$$/.d/') ;\
+	   echo "cd to $$x" ;\
+           cd $$x ;\
+           rsync -v * ${PREVIEWHOST}/ ) ;\
+	done
 
 %.eps.bb : %.eps.gz
 	$(ZCAT) `test -f '$<' || echo '$(srcdir)/'`$< \
@@ -208,25 +208,31 @@ preview: htmlversion
 #	$(ZCAT) `test -f '$<' || echo '$(srcdir)/'`$< \
 #         | epstopdf -f > $@
 
-%.html : %.tex
-	hyperlatex $<
-
-
 # The html.d directories are used to collect all relevant files for
-# the NSI scripts.  Fixme: We should better use proper installation
-# directories with the internal packages as well.
-%.html.d-stamp : %.html
+# the NSI scripts.  This is also required because hyperlatex is not
+# able to work in VPATH environment. 
+%.html.d-stamp : %.tex
 	@rm -f $@.tmp
 	@touch $@.tmp
-	set -e; \
-	 src=$$(echo $@ | sed 's/.html.d-stamp$$/.tex/'); \
-	 srcd=$$(echo $$src | sed  's/.tex$$/.html.d/'); \
-         rm -rf $$srcd || true;\
-         mkdir $$srcd;\
-        (echo $$src | sed  's/.tex$$/.html/'; \
-         LC_CTYPE=C sed -n 's/.*\\xname{\([^}]*\).*/\1.html/p' $$src;\
-         LC_CTYPE=C sed -n 's/.*\\IncludeImage\[.*\]{\([^}]*\).*/\1.png/p' \
-                  $$src;\
-         LC_CTYPE=C sed -n 's/.*\\IncludeImage{\([^}]*\).*/\1.png/p' $$src \
-	) | sort | uniq | xargs $(INSTALL_DATA) -t $$srcd
+	set -e; LC_CTYPE=C; export LC_CTYPE; \
+         src=$$(test -f '$<' || echo '$(srcdir)/')$< ; \
+	 wdir=$$(echo $@ | sed  's/.d-stamp$$/.d/') ; \
+         rm -rf $$wdir || true;\
+         mkdir $$wdir;\
+         files=$$( (echo $$src; \
+            sed -n 's/.*\\IncludeImage\[.*\]{\([^}]*\).*/\1.png/p' $$src;\
+            sed -n 's/.*\\IncludeImage{\([^}]*\).*/\1.png/p' $$src ;\
+            sed -n 's/.*\\input{\([^}]*\).*/\1/p' $$src ) \
+          | sort | uniq) ;\
+	 for f in $$files; do \
+	   if [ -f "$$f" ]; then cp "$$f" $$wdir ;\
+	   elif [ -f "$(srcdir)/$$f" ]; then cp "$(srcdir)/$$f" $$wdir ;\
+	   fi ;\
+         done ;\
+         cd $$wdir ;\
+	 hyperlatex $$(basename $$src) ;\
+	 for f in $$files; do \
+	    x=$$(basename "$$f") ;\
+	    case $$x in *.png) : ;; *) rm -f $$x ;; esac ;\
+	 done
 	@mv -f $@.tmp $@
