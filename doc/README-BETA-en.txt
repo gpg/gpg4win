@@ -9,7 +9,7 @@ Important Hints for Using Gpg4win 1.9-BETA
   experienced users or administrators to learn
   about the upcoming version and suggest changes.
 
-Status: Gpg4win-1.9.6 (20080812)
+Status: Gpg4win-1.9.7 (20080909)
 
 This text covers information that are
 intended to help judging whether Gpg4win 1.9
@@ -41,7 +41,7 @@ Contents of this document:
 * Important hints for using S/MIME
 * Migration
 * Most important changes in Gpg4win 1.9 compared to 1.1
-* Most important changes in Gpg4win 1.9.6 compared to 1.9.2
+* Most important changes in Gpg4win 1.9.7 compared to 1.9.6
 
 
 Important hints for present version
@@ -55,10 +55,13 @@ Important hints for present version
   to 10 MByte or even less.
 
 - Manuals not updated:
-  The manuals "Gpg4win for Novices" and "Gpg4win für Durchblicker"
-  are not updated to the new tools yet.
-  However, the manuals that are installed with the 1.9 version
-  are more advanced than the downloadable version 2.0.2 of the manuals.
+  The manual "Gpg4win for Novices" is not updated to the new
+  tools yet. Since Gpg4win-1.9.7-beta both german manuals 
+  ("Einsteiger" and "Durchblicker") are combined to the new
+  "Gpg4win Compendium" (German only).
+  However, the manual for novices and the german Compendium
+  (installed with the 1.9 version) are more advanced than
+  the downloadable version 2.0.2 of the manuals.
 
 - Encrypt to self:
   It is highly recommended to configure your certificates for
@@ -257,30 +260,26 @@ New:
     You can use GPA or WinPT for the missing functionality.
 
 
-Most important changes in Gpg4win 1.9.6 compared to 1.9.2
+Most important changes in Gpg4win 1.9.7 compared to 1.9.6
 =========================================================
-Note:
-The versions 1.9.3 to 1.9.5 had problems and were not recommended to use.
 
- * GpgOL, GnuPG, Installer and Kleopatra: Several minor
-   and medium problems and errors were fixed.
+ - Gpg4win Compendium replaced german 'Einsteiger' and 'Durchblicker' manual
 
- * Kleopatra:
-   * various instabilities eliminated
-   * correct sign/encrypt of OpenPGP and S/MIME E-Mails
-   * correct verify/decrypt of OpenPGP und S/MIME E-Mails
-   * LDAP server configuration repaired
-   * search of certificates on server repaired
-   * certificate creation (for OpenPGP and X.509) completed
-   * signature validity repaired
-   * trust level for OpenPGP certificates added
-   * expiry date changes for OpenPGP-Zertifikate repaired
-   * user specific proxy settings disabled (global configuration necessary)
-   * menu entry show/clear CRL-cache removed
-   * file type filter for certificate export dialogs added
-   * global configuration path changed (from "%PROGRAMFILES%\GNU\GnuPG\etc\" to
-     "%ALLUSERSPROFILE%\Application Data\GNU\etc\")
-   * Icons (sign, encrypt) in Outlook message list added
-   * translation strings completed
-   * new Kleopatra Icon added for Kleopatra.exe, start menu, desktop and
-     quicklaunch
+ - Kleopatra:
+    * Deleting of root certificates repaired [#165470]
+    * Certificate chain shows correct after view refresh [#168910]
+    * Default size of Kleopatra's main window optimized [#167146]
+    * E-Mail decryption: status message improved [#170241]
+    * Dialog behaviour improved [#169973]
+    * Large improvements in crypto operations of files (GpgEX)
+      -> encrypt/decrypt/sign/verify with S/MIME and OpenPGP nun successful.
+      [#169985, #169983, #170240, #169377]
+    * Info dialog about limit of LDAP search results added (if number >10)
+    * Signature certificate choice shows selected protocol only [#166733]
+    * translation strings completed
+    * several minor and medium improvements
+    -> [#xxxxxx] marks the Kleopatra bug number. With this number you
+       can see all bug details on http://bugs.kde.org.
+
+ - GpgOL, GnuPG and Installer: Several minor and medium problems 
+   and errors were fixed.

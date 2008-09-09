@@ -11,7 +11,7 @@ Wichtige Informationen zum Einsatz von Gpg4win 1.9-BETA
   neue Version kennenzulernen und Verbesserungsvorschläge
   einzubringen.
 
-Stand: Gpg4win-1.9.6 (20080812)
+Stand: Gpg4win-1.9.7 (20080909)
 
 Hier finden sich wichtige Informationen die bei der
 Entscheidung helfen sollen, ob Gpg4win 1.9 schon für
@@ -44,7 +44,7 @@ Inhalt dieses Dokumentes:
 * Wichtige Hinweise zur Verwendung von S/MIME
 * Migration
 * Wichtigste Änderungen von Gpg4win 1.9 gegenüber 1.1
-* Wichtigste Änderungen von Gpg4win 1.9.6 gegenüber 1.9.2
+* Wichtigste Änderungen von Gpg4win 1.9.7 gegenüber 1.9.6
 
 
 Wichtige Hinweise zur vorliegenden Version
@@ -59,33 +59,36 @@ Wichtige Hinweise zur vorliegenden Version
   und das Installationpaket deutlich kleiner (knapp 10 MByte,
   eventuell auch weniger).
 
-- Handbücher noch nicht aktualisiert:
-  Die beiden Hanbücher "Gpg4win für Einsteiger" und "Gpg4win
-  für Durchblicker" sind noch nicht vollständig aktualisiert.
-  Die Versionen, die mit dem 1.9er Paket installiert werden,
-  enthalten jedoch einige Erweiterungen und sollte der
-  offiziell herunterladbaren Version 2.0.2 vorgezogen werden.
+- Handbücher vs. Kompendium:
+  Die beiden Handbücher "Gpg4win für Einsteiger" und "Gpg4win
+  für Durchblicker" sind ab Gpg4win-1.9.7-beta in einem Dokument,
+  (dem "Gpg4win Kompendium") vereint und umfangreich überarbeitet
+  worden. Das Kompendium ist jedoch noch nicht vollständig
+  aktualisiert, sollte aber den offiziell herunterladbaren
+  Handbüchern (Version 2.0.2) vorgezogen werden.
+  Das Gpg4win Kompendium wird mit dem 1.9er Paket im pdf und html
+  Format installiert.
 
 - An sich selbst verschlüsseln:
-  Es ist unbedingt empfehlenswert für OpenPGP und S/MIME
-  seine Zertifikate konfigurieren
-  für die die Emails auch immer verschlüsselt werden sollen.
-  Dazu jeweils im GnuPG Konfigurations-Dialog von Kleopatra
-  "GPG for S/MIME: encrypt to user ID NAME as well" und
-  "GPG for OpenPGP: encrypt to user ID NAME as well"
-  jeweils den Fingerprint des jeweiligen Zertifikates
-  einfügen.
+  Es ist unbedingt empfehlenswert, dass Sie Ihre verschlüsselten
+  OpenPGP- und S/MIME-Emails zusätzlich mit Ihrem Zertifikat
+  an sich selbst verschlüsseln. Nur so können Sie diese Nachrichten
+  später auch wieder entschlüsseln.
+  Dazu in Kleopatra unter "Extras->GnuPG-Backend einrichten..." 
+  jeweils in die Textfelder:
+  "GPG for S/MIME: Auch an NAME verschlüsseln" und
+  "GPG for OpenPGP: Auch an NAME verschlüsseln"
+  den Fingerprint Ihres jeweiligen Zertifikates einfügen.
 
 - Verwendung von Outlook Plugin "GpgOL":
 
-  * Sie Sollten unbedingt Sicherheitskopien Ihrere alten
-    Verschlüsselten/Signierten E-Mails, z.B. in PST-Dateien
-    machen!
+  * Sie sollten unbedingt Sicherheitskopien Ihrer alten
+    verschlüsselten/signierten E-Mails machen; z.B. in PST-Dateien!
 
   * Verschlüsselte E-Mails unverschlüsselt auf E-Mail-Server:
     Es kann vorkommen, dass Teile von verschlüsselten E-Mails
     in entschlüsselter/unverschlüsselter Form auf dem E-Mail-Server
-    (IMAP oder MAPI) zu liegen kommen, wenn man sie erstellt/liesst.
+    (IMAP oder MAPI) zu liegen kommen, wenn man sie erstellt/liest.
     Betroffen sind nur der Inhalt des Anzeigefensters von Outlook,
     also der "E-Mail-Body". Anhänge sind nicht betroffen.
     Schaltet man die Voransicht von Outlook ab, so
@@ -116,12 +119,12 @@ durchzuführen.
 - S/MIME für GpgOL einschalten:
   Unter Outlook im Menü Extras->Optionen, Reiter "GpgOL"
   muss S/MIME explizit eingeschaltet werden.
-  Beachten Sie den Warnhinweis der darauf hin erscheint.
+  Beachten Sie den Warnhinweis, der darauf hin erscheint.
 
-- Neue S/MIME Schlüssel herstellen:
-  Unter Kleopatra im Menü Datei->Neues Zertifikat wählen Sie "X.509" aus.
-  Sie werden mit Hilfe des Assisstenten durch die Zertifikatserstellung
-  geleitet.
+- Neue S/MIME-Schlüssel herstellen:
+  Unter Kleopatra im Menü Datei->Neues Zertifikat wählen Sie
+  "X.509" aus. Sie werden mit Hilfe des Assisstenten durch die
+  Zertifikatserstellung geleitet.
   Beachten Sie, dass Sie als Ergebnis nur eine Zertifikats-Anfrage
   (p10-Datei) erhalten. Sie müssen diese anschließend an Ihre
   Zertifizierungsstelle weiterleiten, um Ihr neues X.509-Zertifikat
@@ -134,18 +137,17 @@ durchzuführen.
   Typischerweise besteht die Kette aus dem Wurzel-Zertifkat,
   einem CA-Zertifikat und dem persönlichen Zertifikat.
 
-- Geheimen S/MIME Schlüssel importieren:
+- Geheimen S/MIME-Schlüssel importieren:
   Den persönlichen geheimen Schlüssel als P12-Datei
   über Kleopatra importieren (Menü Datei->Zertifikate
   importieren).
-  Achtung: Der P12 import funktioniert nur, wenn
-  der vohergehende Schritt auch tatsächlich durchgeführt
-  wurde.
+  Achtung: Der P12 import funktioniert nur, wenn der vohergehende
+  Schritt auch tatsächlich durchgeführt wurde.
 
 - S/MIME-Zertifkate der E-Mail Empfänger importieren:
-  Alle sonstigen wichtigen Zertifikate, z.B. von
-  Kommunikationspartner auf die gleiche Weise importieren
-  (am besten jeweils mit der kompletten Kette)
+  Alle sonstigen wichtigen Zertifikate (z.B. von
+  Kommunikationspartner) auf die gleiche Weise importieren;
+  am besten jeweils mit der kompletten Kette
 
 - Wurzelzertifikate als Vertrauenswürdig markieren:
   Wenn Sie im Kleopatra-Menü "Extras->GnuPG Backend einrichten"
@@ -280,31 +282,29 @@ Neu:
     Dafür kann alternativ auf GPA oder WinPT zurückgegriffen werden.
 
 
-Wichtigste Änderungen von Gpg4win 1.9.6 gegenüber 1.9.2
+Wichtigste Änderungen von Gpg4win 1.9.7 gegenüber 1.9.6
 =======================================================
 
-Anmerkung:
-Die Versionen 1.9.3 bis 1.9.5 hatten jeweils einige Probleme und wurden
-nicht zum Einsatz empfohlen.
+ - Gpg4win Kompendium ersetzt deutsche Einsteiger- und Durchblicker-Handbücher
 
- * GpgOL, GnuPG, Installer und Kleopatra: Es sind viele kleine
-   und mittlere Probleme und Fehler behoben worden.
+ - Kleopatra:
+    * Löschen von Wurzelzertifikaten repariert [#165470]
+    * Zertifikatsketten verschwinden nicht mehr beim Aktualisieren [#168910]
+    * Standardgröße des Kleopatra-Hauptfensters optimiert [#167146]
+    * E-Mail-Entschlüsselung: Statusmeldung verbessert [#170241]
+    * Kleopatra-Dialogverhalten verbessert (Dialoge sind nicht mehr im
+      Hintergrund gesperrt) [#169973]
+    * Umfangreiche Verbesserungen bei Crypto-Operationen von Dateien (GpgEX)
+      -> verschlüsseln/entschlüsseln/signieren/verifizieren mit
+         S/MIME und OpenPGP nun erfolgreich.
+      [u.a. #169985, #169983, #170240, #169377]
+    * Hinweisdialog auf Beschränkung der LDAP-Suchergebnisse (bei Anzahl >10)
+    * Kleopatra berücksichtigt (in GpgOL) gewähltes Protokoll für die
+      Anzeige der Signaturzertifikate [#166733]
+    * Übersetzungs-Strings ergänzt
+    * diverse kleinere Stabilitäts- und GUI-Verbesserungen
+    -> [#xxxxxx] markiert die Kleopatra-Bugnummer. Bugdetails können mit 
+       dieser Nummer unter http://bugs.kde.org/ eingesehen werden.
 
- * Kleopatra:
-   * diverse Instabilitäten konnten beseitigt werden
-   * korrektes signieren/verschlüsseln von OpenPGP und S/MIME E-Mails
-   * korrektes verifizieren/entschlüsseln von OpenPGP und S/MIME E-Mails
-   * Konfiguration von LDAP-Servern repariert
-   * Suche von Zertifikaten auf Server repariert
-   * Zertifikatserstellung (für OpenPGP und X.509) fertiggestellt
-   * Signaturprüfung repariert
-   * Inhabervertrauen für OpenPGP-Zertifikate hinzugefügt
-   * Ablaufdatum-Änderungen für OpenPGP-Zertifikate repariert
-   * Benutzerspezifische Proxyeinstellungen deaktiviert (systemweite
-     Konfiguration erforderlich)
-   * Sperrlisten-Zwischenspeicher leeren/anzeigen aus Menü entfernt
-   * Zertifikats-Export-Dialoge mit Dateifilter ergänzt
-   * Systemweiten Konfigurationspfad angepasst
-   * Icons (signiert, verschlüsselt) in Outlook-Nachrichtenliste hinzugefügt
-   * Übersetzungs-Strings vervollständigt
-   * Kleopatra in Windows-Oberfläche mit Icon versehen
+ - GpgOL, GnuPG und Installer: Es sind viele kleine und mittlere 
+   Probleme und Fehler behoben worden.
