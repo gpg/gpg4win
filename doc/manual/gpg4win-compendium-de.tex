@@ -18,6 +18,13 @@
 \W\usepackage{rhxpanel}
 \W\usepackage{sequential}
 
+% write any html files directly into this directory
+% XXX: This is currently deactivated, but sooner or later
+% we need this to not let smae filenames overwrite each other
+% when we have more than one compendium. The Makefile.am needs
+% to be updated for this as well - not a trivial change.
+%\W\htmldirectory{./compendium-de-html}
+
 % Hyperref should be among the last packages loaded
 \usepackage{hyperref}
 
@@ -994,7 +1001,7 @@ drei Möglichkeiten durchführen:
         OpenPGP-Schlüsselpaares.]
         %TODO#: Paar od. geheimer Schluessel? Dateiformat?
     
-    ~\\Klicken Sie dazu auf den Button
+    ~\\Klicken Sie dazu auf die Schaltfläche
     %TODO:german
     \Button{Make a Backup Of Your Certificate...}
 
@@ -1020,7 +1027,7 @@ drei Möglichkeiten durchführen:
     \Menu{Datei$\rightarrow$Geheimen Schlüssel exportieren...} 
 
     \item[Versenden Sie Ihr erstelltes Zertifikat per \Email{}.]
-    ~\\Klicken Sie auf den Button 
+    ~\\Klicken Sie auf die Schaltfläche
     %TODO:german
     \Button{Send Certificate By EMail}.
 
@@ -1168,7 +1175,7 @@ Als nächstes \textit{können} Sie eine (oder mehrere) der folgenden
 drei Möglichkeiten durchführen:
 \begin{description}
     \item[Speichern Sie Ihre Zertifizierungs-Anfrage als Datei.] 
-    ~\\Klicken Sie dazu auf den Button 
+    ~\\Klicken Sie dazu auf die Schaltfläche
     %TODO:german
     \Button{Save Request To File...}
 
@@ -1179,7 +1186,7 @@ drei Möglichkeiten durchführen:
     auf verschiedene Weise an eine Zertifizierungsstelle geben.
 
     \item[Versenden Sie die Zertifizierungs-Anfrage per \Email{}.]
-    ~\\Klicken Sie auf den Button 
+    ~\\Klicken Sie auf die Schaltfläche
     %TODO:german
     \Button{Send Certificate By EMail}.
 
@@ -2585,8 +2592,8 @@ Dritten abgefangen werden darf.
 %% Original page 12
 
 Gpg4win dagegen arbeitet ­-- außer mit dem Geheimschlüssel -- mit einem
-weiteren Schlüssel ("`key"'), der vollkommen frei und öffentlich
-("`public"') zugänglich ist.
+weiteren Schlüssel (engl. "`key"'), der vollkommen frei und öffentlich
+(engl. "`public"') zugänglich ist.
 
 Man spricht daher auch von
 Gpg4win als einem "`Public-Key"' Verschlüsselungssystem.
@@ -2602,8 +2609,8 @@ eine zweite öffentliche Schlüsselhälfte.  Beide Hälften sind durch
 eine komplexe mathematische Formel untrennbar miteinander verbunden.
 Nach heutiger wissenschaftlicher und technischer Kenntnis ist es
 unmöglich, einen Schlüsselteil aus dem anderen zu berechnen und damit
-den Code zu knacken. In Kapitel \ref{ch:themath} erklären wir, wie das
-funktioniert.
+den Code zu knacken. In Kapitel \ref{ch:themath} erklären wir,
+warum das so ist.
 
 % Note: The texts on the signs are empty in the current revision.
 % However, I used the original images and wiped out the texts ``Open
@@ -2620,7 +2627,7 @@ funktioniert.
 Das Gpg4win-Prinzip ist wie gesagt recht einfach:
 
 Der \textbf{geheime Schlüssel}, auch \textbf{private Schlüssel} genannt
-(secret oder private key), muss geheim gehalten werden.
+(engl ,,secret key'' oder ,,private key''), muss geheim gehalten werden.
 
 Der \textbf{öffentliche Schlüssel}, auch \textbf{Zertifikat} genannt
 (public key), soll so
@@ -2968,8 +2975,7 @@ Wenn Sie nun Ihre Passphrase zusammenstellen, nehmen Sie
 \textit{auf gar keinen Fall} eines der oben angeführten Beispiele.  Denn es liegt auf
 der Hand: Wenn sich jemand ernsthaft darum bemüht Ihre
 Passphrase herauszubekommen, würde er zuerst ausprobieren, ob Sie
-nicht eines dieser Beispiele genommen haben -- sofern er auch diese
-Informationen gelesen hat.
+nicht eines dieser Beispiele genommen haben.
 
 \bigskip
 
@@ -3001,7 +3007,7 @@ Kennzeichen:
 \textbf{Die Benutzerkennung} besteht aus dem Namen und der
 \Email{}-Adresse, die Sie während der Schlüsselerzeugung eingegeben
 haben, also z.B. \newline
-\verb=-Heinrich Heine <heinrichh@gpg4win.de>=.
+\verb=Heinrich Heine <heinrichh@gpg4win.de>=
 
 \textbf{Die Schlüsselkennung} verwendet die Software intern um mehrere
 Schlüssel voneinander zu unterscheiden. Mit dieser Kennung kann man
@@ -3131,7 +3137,7 @@ können:
 \end{center}
 
 Um die Details eines ausgewählten Zertifikats zu sehen, klicken Sie
-auf den Button \Button{Details}.
+auf die Schaltfläche \Button{Details ...}.
 
 \subsubsection{Zertifikate vom Schlüsselservern importieren}
 %% Original page 28
@@ -3270,8 +3276,8 @@ dieses Zertifikat zu signieren.
 
 
 \textit{Beachten Sie: \T\margin{\IncludeImage[width=1.5cm]{openpgp-icon}}
-Signieren von Zertifikaten ist nur mit OpenPGP
-möglich. X.509 bietet dieses Verfahren nicht!}
+Signieren von Zertifikaten durch Benutzer ist nur mit OpenPGP
+möglich. Bei X.509 ist das authorisierten Stellen vorbehalten!}
 
 Durch das Signieren eines (fremden) Zertifikats teilen Sie anderen
 (Gpg4win-)Benutzern mit, dass Sie dieses
@@ -3286,14 +3292,13 @@ halten und signieren möchten. Wählen Sie anschließend im Menü:
 \Menu{Zertifikate$\rightarrow$Certify
 Certificate...}
 
-Im nachfolgenden Dialog wählen Sie nun noch einmal das zu signierende
-OpenPGP-Zertifikat aus:
+Im nachfolgenden Dialog bestätigen Sie nun noch einmal das zu signierende
+OpenPGP-Zertifikat mit \Button{Weiter}:
 
 % TODO screenshot: Kleopatra certify certificate 1
 \begin{center}
 \IncludeImage[width=0.6\textwidth]{sc-kleopatra-certifyCertificate1_de}
 \end{center}
-Bestätigen Sie Ihre Auswahl mit \Button{Weiter}.
 
 \clearpage
 Im nächsten Schritt wählen Sie \textit{Ihr} OpenPGP-Zertifikat aus, mit dem Sie das
@@ -3388,9 +3393,10 @@ Derartige Beglaubigungsinstanzen oder "`Trust Center"' sind auch bei
 anderen Verschlüsselungssystemen -- wie z.B. S/MIME  --
 \T\margin{\IncludeImage[width=1.5cm]{smime-icon}}
 vorgesehen.
-Allerdings sind sie hierarchisch strukturiert: Es gibt eine "`Oberste
-Beglaubigungsinstanz"', die weitere "`Unterinstanzen"' besitzt mit dem Recht
-diese Unterinstanzen zu beglaubigen (vgl. Abschnitt~\ref{ch:openpgpsmime}).
+Im Gegensatz zum ,,Web of Trust'' sind sie hierarchisch strukturiert: Es gibt eine "`Oberste
+Beglaubigungsinstanz"', die weitere "`Unterinstanzen"' beglaubigt und
+ihnen das Recht vergibt, Benutzerzertifikate zu beglaubigen
+(vgl. Kapitel~\ref{ch:openpgpsmime}).
 
 Am besten ist diese Infrastruktur mit einem Siegel vergleichbar: die
 Plakette auf Ihrem Autonummernschild kann Ihnen nur eine dazu
@@ -3403,17 +3409,17 @@ berichtigte Institution geben, die die Befugnis dazu wiederum von einer
 Mit der hierarchischen Zertifizierungs-Infrastruktur entspricht dieses
 Modell natürlich wesentlich besser den Bedürfnissen staatlicher und
 behördlicher Instanzen als das lose, auf gegenseitigem Vertrauen
-beruhende "`Web of Trust"' der GnuPG- und PGP-Modelle. Der Kern der
+beruhende "`Web of Trust"' von GnuPG. Der Kern der
 Beglaubigung selbst ist allerdings völlig identisch: Gpg4win
 unterstützt neben dem "`Web of Trust"' (OpenPGP) zusätzlich auch 
 eine hierarchische Zertifizierungsstruktur (S/MIME). Demnach
-entspricht Gpg4win dem strengen Signaturgesetz der
-Bundesrepublik Deutschland.
+bietet Gpg4win eine Grundlage um dem strengen Signaturgesetz der
+Bundesrepublik Deutschland zu entsprechen.
 
 Wenn Sie sich weiter für dieses Thema interessieren, dann
 können Sie sich an der Quelle informieren: die Website 
-\uniurl["`Sicherheit im Internet"']{http://www.sicherheit-im-internet.de}
-\T(\uniurl[www.sicherheit-im-internet.de]{http://www.sicherheit-im-internet.de})
+\uniurl["`Sicherheit im Internet"']{http://www.bsi-fuer-buerger.de}
+\T(\uniurl[www.bsi-fuer-buerger.de]{http://www.bsi-fuer-buerger.de})
 des Bundesministeriums für Wirtschaft und Technologie
 hält Sie über dieses und viele andere
 Themen aktuell auf dem Laufenden.
@@ -3485,7 +3491,7 @@ Gpg4win signieren und verschlüsseln. Das Prinzip ist das gleiche:
 
 
 
-Mit der Anwendung \textbf{GpgEx} können Sie Dateien ganz einfach aus
+Mit der Anwendung \textbf{GpgEX} können Sie Dateien ganz einfach aus
 Ihrem Windows Explorer heraus signieren oder verschlüsseln -- egal ob
 OpenPGP oder S/MIME.
 Dieses Kapitel erläutert Ihnen, wie das genau funktioniert.
@@ -3493,6 +3499,7 @@ Dieses Kapitel erläutert Ihnen, wie das genau funktioniert.
 Sollten Sie eine Datei als \Email{}-Anhang verschicken, übernimmt z.B. GpgOL
 automatisch die Signierung bzw. Verschlüsselung der Datei zusammen mit
 Ihrer \Email{}.
+Sie brauchen sich in diesem Fall nicht gesondert darum kümmern.
 
 
 \clearpage
@@ -3504,7 +3511,7 @@ Beim Signieren einer Datei kommt es nicht vorrangig auf die
 Geheimhaltung, sondern auf die Unverändertheit der Datei an.
 
 Die Signierung können Sie bequem mit \textbf{GpgEX} aus dem Kontextmenü des
-Windows Explorers ausführen. Selektieren Sie eine Datei und öffnen Sie 
+Windows Explorer ausführen. Selektieren Sie eine Datei und öffnen Sie 
 mit der rechten Maustaste das Kontextmenü:
 
 % TODO screenshot GpgEX contextmenu sign/encrypt
@@ -3534,7 +3541,8 @@ Datei signieren möchten.
 Klicken Sie nun auf \Button{Weiter}.
 
 \clearpage
-Wählen Sie hier noch einmal die Datei aus, die Sie signieren möchten.
+Nun haben Sie die Möglichkeit, die Auswahl der zu bearbeitenden Dateien
+zu bestätigen oder ggf. die Auswahl zu korrigieren.
 
 %TODO screenshot GpgEX sign/encrypt file, step 2: choose object
 \begin{center}
@@ -3543,8 +3551,7 @@ Wählen Sie hier noch einmal die Datei aus, die Sie signieren möchten.
 
 Bestätigen Sie Ihre Auswahl mit \Button{Weiter}.
 
-Sie müssen nun Ihre Passphrase in das aufkommende Pinentry-Fenster
-eingeben.
+Sie müssen nun Ihre Passphrase in den aufkommende Dialog eingeben.
 
 \clearpage
 Nach erfolgreicher Signierung erhalten Sie folgendes Fenster:
@@ -3585,7 +3592,7 @@ Wir wollen nun überprüfen, ob die eben signierte Datei korrekt ist.
 Zum Überprüfen der Unverändertheit und der Authentizität
 müssen die Signatur-Datei und die unterschriebene Datei (Originaldatei) im selben
 Verzeichnis liegen. Selektieren Sie die Signatur-Datei -- also die mit der
-Endung \textit{*.sig} oder \textit{*.p7s} -- und wählen Sie aus dem Kontextmenü des Explorers
+Endung \textit{*.sig} oder \textit{*.p7s} -- und wählen Sie aus dem Kontextmenü des Windows Explorer
 den Eintrag  \Menu{Entschlüsseln und Verifizieren}:
 
 % TODO screenshot GpgEX contextmenu verifiy/decrypt
@@ -3609,7 +3616,9 @@ Kleopatra findet automatisch die zugehörige unterschriebene
 Originaldatei.
 
 Automatisch ist auch der \textit{Ausgabe-Ordner} auf den gleichen
-Pfad ausgewählt, wo auch die beiden oberen Dateien liegen.
+Pfad ausgewählt.
+Der wird aber erst relevant wenn Sie mehr als eine Datei gleichzeitig
+verarbeiten.
 
 Bestätigen Sie die gegebenen Operationen mit
 \Button{Entschlüsseln/überprüfen}.
@@ -3628,6 +3637,7 @@ also die Datei nicht verändert wurde.  Selbst wenn nur ein Zeichen
 hinzugefügt, gelöscht oder geändert wurde, wird die Signatur als
 ungültig angezeigt.
 
+% TODO: hier ein Screenshot wie es aussueht, wenn die Datei kompromittiert wurde (rot)
 
 \clearpage
 \section{Dateien verschlüsseln und entschlüsseln}
@@ -3666,7 +3676,7 @@ umstellen:
         Diese Dateitypen sind mit jedem Texteditor lesbar -- Sie würden dort
         den Buchstaben- und Ziffernsalat sehen, den Sie schon kennen.
 
-        Ist diese Option nicht ausgewählt (Standard), so wird
+        Ist diese Option nicht ausgewählt (Voreinstellung), so wird
         eine verschlüsselte Datei mit der Endung \textit{*.gpg}
         (OpenPGP) bzw. \textit{*.p7m} (S/MIME) angelegt. Diese Dateien
         sind Binärdateien -- eine Betrachtung im Texteditor ist also
@@ -3684,13 +3694,15 @@ umstellen:
 Klicken Sie auf \Button{Weiter}.
 
 \clearpage
-Wählen Sie noch einmal die Datei aus, die sie verschlüsseln möchten:
+Nun haben Sie wieder die Möglichkeit, die Auswahl zu bestätigen oder
+zu korrigieren:
+
 % TODO screenshot kleopatra sign/encrypt file, step 2
 \begin{center}
 \IncludeImage[width=0.7\textwidth]{sc-kleopatra-signEncryptFile2_de}
 \end{center}
 
-Bestätigen Sie Ihre Auswahl mit \Button{Weiter}.
+Bestätigen Sie abschliessend mit \Button{Weiter}.
 
 
 \clearpage
@@ -3755,7 +3767,7 @@ Ihrer Passphrase entschlüsseln.
 
 Selektieren Sie die verschlüsselte Datei -- also die mit der
 Endung \textit{*.gpg}, \textit{*.asc}, \textit{*.p7m} oder \textit{*.pem} -- 
-und wählen Sie aus dem Kontextmenü des Explorers
+und wählen Sie aus dem Kontextmenü des Windows Explorer
 den Eintrag \Menu{Entschlüsseln und Verifizieren}:
 
 % TODO screenshot GpgEX contextmenu verifiy/decrypt
@@ -3786,7 +3798,8 @@ Das Ergebnis zeigt, dass die Entschlüsselung erfolgreich war:
 \IncludeImage[width=0.7\textwidth]{sc-kleopatra-decryptFile2_de}
 \end{center}
 
-Sie sollten nun die entschlüsselte Datei problemlos entziffern können.
+Sie sollten nun die entschlüsselte Datei problemlos entziffern
+oder mit einem entsprechenden Programm verwenden können.
 
 \clearpage
 \subsubsection{Fassen wir kurz zusammen...}
@@ -3797,6 +3810,20 @@ Sie haben gelern, wie Sie mit GpgEX:
     \item Dateien verschlüsseln
     \item verschlüsselte Dateien entschlüsseln
 \end{itemize}
+
+\subsubsection{Gleichzeitig signieren und verschlüsseln}
+
+Ihnen ist diese Option bestimmt schon in den entsprechenden
+Dialogen aufgefallen.
+Wählen Sie sie aus, dann kombiniert GpgEX beide Aufgaben in einem
+Schritt.
+
+Bechten Sie, dass immer {\em zuerst signiert} erst danach verschlüsselt
+wird.
+
+Die Unterschrift wird also immer als geheim mitverschlüsselt.
+Sie kann nur von denjenigen gesehen und geprüft werden,
+die die Datei erfolgreich entschlüsseln konnten.
 
 Möchten Sie Dateien signieren \textit{und} verschlüsseln ist das
 derzeit nur mit OpenPGP möglich.
@@ -3927,6 +3954,10 @@ in denen viele Anwender auf einem System arbeiten,
 ist es sinnvoll einige systemweite Vorgaben und Vorberlegungen
 für Gpg4win einzurichten.
 
+Das betrifft vor allem S/MIME, denn bei streng vorgegebenen
+Vertrauensketten macht es Sinn dass die Anwender die Informationen
+dazu miteinander Teilen.
+
 Einige typische systemweite Einrichtungen sind:
 
 \begin{itemize}
@@ -3961,10 +3992,10 @@ Einige typische systemweite Einrichtungen sind:
     Systeme nach aussen zulassen, sondern einen sogenannten Proxy vorsehen.
 
     Ist dies in Ihrem Netzwerk auch für die bei GnuPG bzw. S/MIME wichtigen
-    LDAP-Abfragen, so führen Sie folgende Schritte durch:
+    LDAP-Abfragen der Fall, so führen Sie folgende Schritte durch:
 
     \begin{enumerate}
-    \item Stellen Sie Verzeichnisdienst-Suchen auf Ihren Proxy wie unter Abschnitt \ref{ldapservers} ein.
+    \item Stellen Sie LDAP-Verzeichnisdienst-Suchen auf Ihren Proxy wie unter Abschnitt \ref{ldapservers} ein.
     \item Stellen Sie Sperrlisten-Suchen auf Ihren Proxy ein, in dem Sie einen Eintrag
         wie z.B.:
         \small
@@ -3997,7 +4028,7 @@ und Outlook aus diesem Grund das GpgOL Element deaktiviert.
 Reaktivieren Sie GpgOL über das Outlook-Menü
 \Menu{Hilfe$\rightarrow$Info$\rightarrow$Deaktivierte Elemente}.
 
-\section{Systemdienst ,,DirMngr'' läuft nicht}
+\section{Keine S/MIME Operationen mehr möglich (Systemdienst ,,DirMngr'' läuft nicht)}
 
 Der \textit{Directory Manager} (\textit{DirMngr}) ist ein über 
 Gpg4win installierter Dienst der die Zugriffe auf Verzeichnisdienste
@@ -4045,7 +4076,7 @@ Programmkonfigurationen.
 \section{Zwischengespeicherte Sperrlisten}
 
 Der systemweite Dienst ,,DirMngr'' (Directory Manager) prüft unter anderem, ob
-ein Zertifkate gesperrt und daher nicht verwendet werden darf.
+ein Zertifkat gesperrt ist und daher nicht verwendet werden darf.
 Dafür werden Sperrlisten von den Ausgabestellen der Zertifikate
 (,,Trust-Center'') abgeholt und für die Dauer ihrer Gültigkeit
 zwischengespeichert.
@@ -4059,7 +4090,7 @@ Hierbei handelt es sich um \textit{geschützte} Dateien,
 die standardmäßig vom Explorer nicht angezeigt werden. Sollten Sie
 dennoch die Anzeige dieser Dateien wünschen, deaktivieren Sie die
 Option \Menu{Geschützte Systemdateien ausblenden} in den
-Ansicht-Einstellungen des Explorers.
+Ansicht-Einstellungen des Windows Explorer.
 
 In diesem Verzeichnis sollten keine Änderungen vorgenommen werden.
 
@@ -4165,7 +4196,7 @@ senden wollen, so finden Sie auf dieser Web-Seite einige Hinweise:
 
 \uniurl{http://www.gpg4win.de/reporting-bugs-de.html}
 
-Logbücher -- unter o.g. URL als ,,Debug-Informationen'' erwähnt --
+Logbücher -- unter o.g. URL als ,,Debug-Informationen'' bezeichnet --
 sind besonders wertvoll und sollten bei einem Fehler-Bericht 
 mitgeschickt werden.
 
@@ -4321,7 +4352,7 @@ Konfigurationsfenster zwei Debug-Optionen:
 \begin{itemize}
     \item \textbf{Option "`Setze die Debug-Stufe auf"'}\\
         Hier definiern Sie die Ausführlichkeit der aufzuzeichnenden
-        Informationen. Die Debugstufe \texttt{guru} ist die höchtste Stufe und 
+        Informationen. Die Debugstufe \texttt{guru} ist die höchste Stufe und
         erzeugt entsprechend große Dateien.
         Schalten Sie daher die Logbücher wieder aus (Debugstufe
         \texttt{none}), wenn Sie diese nicht mehr benötigen.
