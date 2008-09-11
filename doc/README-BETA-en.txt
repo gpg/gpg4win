@@ -56,12 +56,7 @@ Important hints for present version
 
 - Manuals not updated:
   The manual "Gpg4win for Novices" is not updated to the new
-  tools yet. Since Gpg4win-1.9.7-beta both german manuals 
-  ("Einsteiger" and "Durchblicker") are combined to the new
-  "Gpg4win Compendium" (German only).
-  However, the manual for novices and the german Compendium
-  (installed with the 1.9 version) are more advanced than
-  the downloadable version 2.0.2 of the manuals.
+  tools yet.
 
 - Encrypt to self:
   It is highly recommended to configure your certificates for
@@ -204,6 +199,10 @@ Removed:
 
 - GpgEE: This module is replaced by GpgEX (see below)
 
+- WinPT: It's functionality is now provided via Kleopatra (see below)
+
+- German manuals "Einsteiger" and "Durchblicker": Superceeded
+  by the german Gpg4win Kompendium (see below)
 
 Updated:
 --------
@@ -249,15 +248,18 @@ New:
     interface for cryptographic operations and thus unifies the
     user interaction.
 
-  * WinPT and GPA will eventually removed from Gpg4win as soon
-    as their functionality is fully replaced by Kleopatra.
-
   * Kleopatra usually runs permanently as a service (see your system tray)
     from the time one when its service has been requested in your session.
 
   * Kleopatra is still in development:
     Some functionalities for OpenPGP are still missing.
     You can use GPA or WinPT for the missing functionality.
+
+- German Gpg4win Kompendium: The new documentation for Gpg4win.
+  This combines the previous "Einsteiger" and "Durchblicker" manuals.
+  All chapters were reworked and extended to descibe the new Gpg4win Version 2.0.
+  Among other things, this means adaption to Kelopatra GpgEX
+  and PGP/MIME and new texts for S/MIME and X.509.
 
 
 Most important changes in Gpg4win 1.9.7 compared to 1.9.6
@@ -266,6 +268,8 @@ Most important changes in Gpg4win 1.9.7 compared to 1.9.6
  - Gpg4win Compendium replaced german 'Einsteiger' and 'Durchblicker' manual
 
  - Kleopatra:
+    Note: [#xxxxxx] marks the Kleopatra bug number. With this number you
+       can see all bug details on http://bugs.kde.org.
     * Deleting of root certificates repaired [#165470]
     * Certificate chain shows correct after view refresh [#168910]
     * Default size of Kleopatra's main window optimized [#167146]
@@ -278,8 +282,6 @@ Most important changes in Gpg4win 1.9.7 compared to 1.9.6
     * Signature certificate choice shows selected protocol only [#166733]
     * translation strings completed
     * several minor and medium improvements
-    -> [#xxxxxx] marks the Kleopatra bug number. With this number you
-       can see all bug details on http://bugs.kde.org.
 
  - GpgOL, GnuPG and Installer: Several minor and medium problems 
    and errors were fixed.

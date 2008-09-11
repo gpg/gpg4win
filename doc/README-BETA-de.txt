@@ -59,16 +59,6 @@ Wichtige Hinweise zur vorliegenden Version
   und das Installationpaket deutlich kleiner (knapp 10 MByte,
   eventuell auch weniger).
 
-- Handbücher vs. Kompendium:
-  Die beiden Handbücher "Gpg4win für Einsteiger" und "Gpg4win
-  für Durchblicker" sind ab Gpg4win-1.9.7-beta in einem Dokument,
-  (dem "Gpg4win Kompendium") vereint und umfangreich überarbeitet
-  worden. Das Kompendium ist jedoch noch nicht vollständig
-  aktualisiert, sollte aber den offiziell herunterladbaren
-  Handbüchern (Version 2.0.2) vorgezogen werden.
-  Das Gpg4win Kompendium wird mit dem 1.9er Paket im pdf und html
-  Format installiert.
-
 - An sich selbst verschlüsseln:
   Es ist unbedingt empfehlenswert, dass Sie Ihre verschlüsselten
   OpenPGP- und S/MIME-Emails zusätzlich mit Ihrem Zertifikat
@@ -221,6 +211,11 @@ Entfallen:
 
 - GpgEE: Dieses Modul wird ersetzt durch GpgEX (siehe unten)
 
+- WinPT: Die Funktionalitäten wird nun durch Kleopatra abgedeckt
+  (siehe unten).
+
+- Hanbdücher "Gpg4win für Einsteiger" und "Gpg4win für Durckblicker":
+  Diese Werden ersetzt durch das "Gpg4win Kompendium" (siehe unten).
 
 Aktualisiert:
 -------------
@@ -270,9 +265,6 @@ Neu:
     für sämtliche Kryptografischen Operationen und vereinheitlich
     damit die grafische Benutzerführung.
 
-  * WinPT und GPA werden erst aus dem Gpg4win Paket entfernt, wenn
-    deren Funktionalität von Kleopatra vollständig abgedeckt wird.
-
   * Kleopatra läuft in der Regel permanent als Dienst (siehe
     Icon im System-Tray), sobald dessen Dienste einmal im Verlauf
     der Sitzung abgefragt wurden.
@@ -281,6 +273,12 @@ Neu:
     Es fehlen noch einzelne Funktionalitäten für OpenPGP.
     Dafür kann alternativ auf GPA oder WinPT zurückgegriffen werden.
 
+- Gpg4win Kompendium: Die neue Dokumentation zu Gpg4win.
+  Es vereinigt die alten Handbücher "Einsteiger" und "Durchblicker".
+  Desweiteren wurden sämtliche Kapitel für Gpg4win Version 2.0
+  aktualisiert, also unter anderem angepasst auf Kleopatra, GpgEX und
+  PGP/MIME sowie ergänzt um S/MIME bzw. X.509.
+
 
 Wichtigste Änderungen von Gpg4win 1.9.7 gegenüber 1.9.6
 =======================================================
@@ -288,6 +286,8 @@ Wichtigste Änderungen von Gpg4win 1.9.7 gegenüber 1.9.6
  - Gpg4win Kompendium ersetzt deutsche Einsteiger- und Durchblicker-Handbücher
 
  - Kleopatra:
+   Hinweis: [#xxxxxx] markiert im Folgenden die Kleopatra-Fehlermeldungs-Nummer.
+            Details können mit dieser Nummer unter http://bugs.kde.org/ eingesehen werden.
     * Löschen von Wurzelzertifikaten repariert [#165470]
     * Zertifikatsketten verschwinden nicht mehr beim Aktualisieren [#168910]
     * Standardgröße des Kleopatra-Hauptfensters optimiert [#167146]
@@ -303,8 +303,6 @@ Wichtigste Änderungen von Gpg4win 1.9.7 gegenüber 1.9.6
       Anzeige der Signaturzertifikate [#166733]
     * Übersetzungs-Strings ergänzt
     * diverse kleinere Stabilitäts- und GUI-Verbesserungen
-    -> [#xxxxxx] markiert die Kleopatra-Bugnummer. Bugdetails können mit 
-       dieser Nummer unter http://bugs.kde.org/ eingesehen werden.
 
- - GpgOL, GnuPG und Installer: Es sind viele kleine und mittlere 
+ - GpgOL, GnuPG und Installer: Es sind viele kleine und mittlere
    Probleme und Fehler behoben worden.
