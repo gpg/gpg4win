@@ -1,3 +1,16 @@
+2008-09-19  Marcus Brinkmann  <marcus@g10code.com>
+
+	* configure.ac: Add gnutls as dependency for libetpan.
+	* src/Makefile.am (gpg4win_pkg_libetpan_configure): Add --with-gnutls.
+	Submitted by Colin Leroy.
+	* packages/packages.current: Update claws and libetpan.
+	* THANKS: New file.
+	* Makefile.am (EXTRA_DIST): Add ...
+	* patches/claws-mail-3.5.0cvs114/01-gtk-input-add.patch,
+	patches/claws-mail-3.5.0cvs114/02-pgpcore.patch,
+	patches/claws-mail-3.5.0cvs114/03-smime.patch,
+	patches/claws-mail-3.5.0cvs114/99-auto.patch: ... these new files.
+
 2008-09-18  Werner Koch  <wk@g10code.com>
 
 	* packages/packages.current: Update libgcrypt.

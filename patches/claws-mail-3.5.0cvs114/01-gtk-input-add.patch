@@ -1,0 +1,22 @@
+#! /bin/sh
+patch -p1 -f $* < $0
+exit $?
+
+This change is probably wrong, but compiles at least.
+
+--- claws-mail-3.5.0cvs114/src/gtk/gtkutils.c.old	2008-09-19 17:44:06.000000000 +0200
++++ claws-mail-3.5.0cvs114/src/gtk/gtkutils.c	2008-09-19 17:44:21.000000000 +0200
+@@ -1613,7 +1613,6 @@ GtkUIManager *gtkut_ui_manager(void)
+ 	return gui_manager;
+ }
+ 
+-#ifdef G_OS_UNIX
+ #define READ_CONDITION (G_IO_IN | G_IO_HUP | G_IO_ERR)
+ #define WRITE_CONDITION (G_IO_OUT | G_IO_ERR)
+ #define EXCEPTION_CONDITION (G_IO_PRI)
+@@ -1690,5 +1689,3 @@ claws_input_add    (gint	      source,
+ 
+   return result;
+ }
+-
+-#endif

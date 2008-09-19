@@ -40,6 +40,10 @@ EXTRA_DIST = autogen.sh README.SVN \
 	patches/claws-mail-3.4.0/03-smime-plugin.patch \
 	patches/claws-mail-3.4.0/04-gnutls.patch \
 	patches/claws-mail-3.4.0/99-auto.patch \
+	patches/claws-mail-3.5.0cvs114/01-gtk-input-add.patch \
+	patches/claws-mail-3.5.0cvs114/02-pgpcore.patch \
+	patches/claws-mail-3.5.0cvs114/03-smime.patch \
+	patches/claws-mail-3.5.0cvs114/99-auto.patch \
 	patches/gpgme/01-gpg2.patch \
 	patches/gpgme/02-kleo-bugs-workaround.patch \
 	patches/libetpan-0.54/01-config.patch \

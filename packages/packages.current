@@ -93,8 +93,8 @@ chk  ee059b846b6a4a969afaa104b677b42d2270be2f
 # (Kept on our own mirror due to Sourceforge peculiarities.)
 server ftp://ftp.g10code.com/mirrors/claws
 
-file libetpan-0.54.tar.gz
-chk  15c42e2b6593fc6583782f7475f7267c9ed32f47
+file libetpan-0.56.tar.gz
+chk  b75a493f6f6a82bd19acb41e459f76dc6c27e2c8
 
 #
 # Claws
@@ -102,8 +102,8 @@ chk  15c42e2b6593fc6583782f7475f7267c9ed32f47
 # (Kept on our own mirror due to Sourceforge peculiarities.)
 server ftp://ftp.g10code.com/mirrors/claws
 
-file  claws-mail-3.4.0.tar.bz2
-chk   67cf9bc9b9fe917fb4c2b895e6bc9291e5e6497c
+file  claws-mail-3.5.0cvs114.tar.bz2
+chk   7894e66b5037294b918fe1b976e7105960ff0462
 
 #
 # Pthreads for Windows.

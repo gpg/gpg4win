@@ -208,7 +208,7 @@ GPG4WIN_SPKG([libgsasl])
 GPG4WIN_SPKG([libtasn1])
 GPG4WIN_SPKG([opencdk], [libgpg-error libgcrypt])
 GPG4WIN_SPKG([gnutls], [libgsasl libtasn1 opencdk])
-GPG4WIN_SPKG([libetpan], [pthreads-w32])
+GPG4WIN_SPKG([libetpan], [pthreads-w32 gnutls])
 GPG4WIN_SPKG([claws-mail], [libiconv gettext zlib gtk+ libpng jpeg glib dnl
                             gpgme pthreads-w32 crypt regex libetpan gnutls])
 

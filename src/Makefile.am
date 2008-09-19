@@ -195,7 +195,7 @@ gpg4win_pkg_gnutls_configure = \
   --disable-cxx
 
 # The CFLAGS are needed to find pthread-w32.
-gpg4win_pkg_libetpan_configure = \
+gpg4win_pkg_libetpan_configure = --with-gnutls \
   CPPFLAGS=\"-I$(idir)/include\" LIBS=\"-L$(idir)/lib\"
 
 gpg4win_pkg_claws_mail_configure = \
