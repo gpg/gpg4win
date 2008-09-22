@@ -275,8 +275,8 @@ server ftp://ftp.gnupg.org/gcrypt
 file libgpg-error/libgpg-error-1.6.tar.bz2
 chk  2f387d0c34dd55eaf3b5f3c2570e9033eb540bc3
 
-file libksba/libksba-1.0.3.tar.bz2
-chk  7a4b3a8340087ed360269b567881ebfb9b67441b
+file libksba/libksba-1.0.4.tar.bz2
+chk  05d0b803bac34b53e07619ca52425452be535792
 
 file libgcrypt/libgcrypt-1.4.3.tar.bz2
 chk  bdc67c1fdcec464a94dca691615f2335a12db5ce
