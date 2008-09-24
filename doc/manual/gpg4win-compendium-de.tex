@@ -1880,6 +1880,12 @@ befestigt. Sie können dieses Zertifikat jederzeit benutzen, um
 verschlüsselte Nachrichten an den Besitzer dieses Zertifikats zu
 senden und Signaturen zu prüfen.
 
+Sobald sie E-Mail-Verschlüsselung häufiger und mit vielen
+Korrspondenzpartnern betreiben, werden Sie aus Gründen des Komforts
+die Zertifikate über weltweite Verteilungsdienste suchen und importieren
+wollen. Wie das geht, können Sie in Kapitel~\ref{ch:keyserver} nachlesen.
+
+
 \clearpage
 \subsubsection{Bevor wir weitermachen, eine wichtige
 Frage:}
@@ -3156,55 +3162,6 @@ der Kleopatra-Zertifikatsverwaltung.
 
 
 \clearpage
-%% Original page 30
-\xname{plugins-fuer-email-programme}
-\chapter{Plugins für \Email{}-Programme}
-\label{ch:plugins}
-
-Im Kapitel~\ref{ch:decrypt} haben wir erwähnt, dass es Plugins für bestimmte
-\Email{}-Programme gibt, die die Ver- und Entschlüsselung erleichtern.
-Es ist ein großer Vorteil, wenn Sie die ganze
-GnuPG-\Email{}-Verschlüsselungstechnik in Ihrem
-bevorzugten \Email{}-Programm nutzen können.
-
-Plugins für GnuPG gibt es im Moment für folgende Windows-Mailprogramme:
-
-\begin{description}
-\item[Thunderbird] mit Plugin \textbf{Enigmail},
-\item[Outlook 2003] mit Plugin \textbf{GpgOL}, welches in Gpg4win
-  enthalten ist. Läuft nur unter Windows. Outlook sollte nur dann
-  verwendet werden wenn andere organisatorische Vorgaben es
-  bedingen.
-\item[Claws Mail] ist ebenfalls in Gpg4win enthalten.  Hier sind im
-  Konfigurationsmenü die Plugins für "`PGP/Mime"' und "`PGP inline"'
-  zu laden, bei einer Installation über Gpg4win ist das bereits
-  geschehen.
-%\item[PostMe] nur Windows.
-%% FIXME Postme und mail: Prüfen ob noch verfügbar
-%\item[Eudora] Das Plugin wird in Gpg4win enthalten sein, falls
-%  einige rechtliche Fragen zufriedenstellend geklärt werden.
-\end{description}
-
-Desweiteren verfügen praktisch alle Mailprogramme, die unter GNU/Linux oder
-anderen Unix Varianten laufen, über eine komfortable und integrierte
-GnuPG-Unterstützung.
-
-Da sämtliche Komponenten des Gpg4win-Pakets als Freie Software
-entstehen, ist die Entwicklung stark im Fluss.
-
-Aktuelle Informationen über die Komponenten finden Sie unter
-\uniurl[www.gpg4win.de]{http://www.gpg4win.de}.
-
-Informationen zu den Themen IT-Sicherheit, Gpg4win, GnuPG und anderer Software finden
-Sie auf der Website
-\uniurl[www.bsi-fuer-buerger.de]{http://www.bsi-fuer-buerger.de}
-und
-\uniurl[www.bsi.de]{http://www.bsi.de}
-des Bundesamtes für Sicherheit in der Informationstechnik.
-
-
-
-\clearpage
 %% Original page 31
 \xname{die-zertifikatspruefung}
 \chapter{Die Zertifikatsprüfung}
@@ -3438,45 +3395,28 @@ das Sie ebenfalls im Internet finden%
 \xname{dateianhaenge-verschluesseln}
 \chapter{Dateianhänge verschlüsseln}
 
-Was tun, wenn Sie zusammen mit Ihrer \Email{} eine Datei versenden und
-diese ebenfalls verschlüsseln wollen? Die Verschlüsselung, wie wir sie
-in Kapitel~\ref{ch:encrypt} erklärt haben, erfasst nur
-den Text einer \Email{}, nicht aber eine gleichzeitig versandte,
-angehängte Datei. 
+Wenn Sie eine verschlüsselte \Email{} versenden und
+Dateien anhängen, so wollen Sie in der Regel sicherlich auch, dass
+die Anhänge verschüsselt werden.
 
+Bei einer komfortablen Integration von GnuPG in Ihr \Email{}-Programm
+sollten Anhänge genauso behandelt werden wie der eigentlichen
+Text Ihrer \Email{}, also signiert, verschlüsselt oder beides zusammen.
+
+Bei weniger komfortablen Integrationen müssen Sie aufpassen: Die
+Anhänge werden oft unverschlüsselte mitgesendet.
+
+Was kann man in so einem Fall tun?
 Ganz einfach: Sie verschlüsseln den Anhang getrennt und hängen ihn
 dann in verschlüsseltem Zustand an die \Email{} an.
-
-Und zwar so:
-
-Klicken Sie die Datei mit der rechten Maustaste an und wählen Sie aus
-dem Menü \linebreak \Menu{GPGee$\rightarrow$Verschlüsseln (PK)}.  Sie
-sehen daraufhin das Fenster welches Sie schon im Kapitel "`Dateien
-signieren"' kennengelernt haben.
-
-Hier ist nun in der unteren linken Box "`Public-Key"' markiert.  Sie
-müssen jetzt im oberen Fenster auswählen, an welche Empfänger sie
-verschlüsseln wollen,  kreuzen Sie einfach die entsprechenden Schlüsseln an.
-
-Möchten Sie diese Datei (und damit auch den Dateianhang) auch noch
-signieren, so können Sie dies in der mittleren unteren Box auswählen
-("`Angehängt"').
-
-Die Datei wird verschlüsselt und mit der Endung \verb-.gpg- im
-gleichen Ordner abgelegt wie die Originaldatei. Nun kann die
-verschlüsselte Datei wie jede andere als Attachment an eine \Email{}
-angehängt werden.
-
-Viele Mailprogramme unterstützten das PGP/MIME Format, welches
-automatisch die Mail samt Anhängen verschlüsselt -- in diesem Fall
-sollte das hier beschrieben Verfahren nicht angewandt werden.  Einige
-anderer Mailprogramme verfügen über eine Option die das oben
-beschrieben Verfahren automatisch durchführen.
+Es läuft also auf ein ganz normales verschlüsseln von Dateien hinaus.
+Und das ist in Kapitel~\ref{ch:EncFiles} beschrieben.
 
 
 \clearpage
 \xname{dateien-signieren-und-verschluesseln}
 \chapter{Dateien signieren und verschlüsseln}
+\label{ch:EncFiles}
 
 Nicht nur \Email{}s, sondern auch einzelne Dateien können Sie mit
 Gpg4win signieren und verschlüsseln. Das Prinzip ist das gleiche: 
@@ -5355,6 +5295,53 @@ Bitte kontrollieren Sie dies im Menüpunkt
 
 
 \end{description}
+
+
+\clearpage
+\xname{gnupg-mit-anderen-email-programme-nutzen}
+\chapter{GnuPG mit anderen \Email{}-Programme nutzen}
+\label{ch:plugins}
+
+Das Gpg4win Kompendium geht vor allem auf das \Email{}-Programm
+Outlook ein. GnuPG ist jedoch mit allen anderen E-Mail Proragmmen
+auch verwendbar. Unterschiede gibt es im Komfort: je besser GnuPG
+für ein \Email{}-Programm integriert ist, desto einfache die Verwendung.
+
+Die primitivste Methode, also wenn ein \Email{}-Programm überhaupt nichts
+über GnuPG weiss, ist die Verschlüsselung via Zwischenablage mit Hilfe von
+Kleopatra. Dies funktioniert nur für OpenPGP, für S/MIME und kompliziertere
+PGP/MIME \Email{}s werden Sie über eine Zwischenspeicherung als Datei
+gehen müssen. Beide Methoden werden im ersten Teil dieses Kompendiums beschrieben.
+
+Ein Integration für GnuPG wird derzeit für folgende Windows-Mailprogramme angeboten:
+
+\begin{description}
+\item[Thunderbird] mit Plugin \textbf{Enigmail}\footnote{http://www.thunderbird-mail.de/wiki/Enigmail\_OpenPGP}.
+
+\item[Outlook ab Version 2003] mit Plugin \textbf{GpgOL}. Dies ist in Gpg4win
+  fest integriert.
+
+\item[Claws Mail]: Dieses \Email{}-Programm wird komplett mit Gpg4win
+  mitgeliefert und kann optional mitinstalliert werden.
+  Diese Installation über Gpg4win konfiguriert bereits Plugins für
+  die Verwendung von PGP/MIME und S/MIME. Diese Plugins verwenden
+  jedoch nicht Kleopatra und bieten daher nicht denselben Komfort
+  wie es derzeit das Outlook Plugin bietet.
+
+\item[Kontact]: Die komfortabelste und erprobteste Integration von
+  GnuPG bietet dieses \Email{}-Programm. Es ist für jedes
+  System auf dem die KDE-Umgebung\footnote{http://www.kde.de} installiert ist verfügbar,
+  also für nahezu jedes GNU/Linux System.
+
+  Eine Windows-Version von Kontact steht derzeit bereits als erste Test-Version
+  zur Verfügung.
+\end{description}
+
+Desweiteren verfügen praktisch alle Mailprogramme, die unter GNU/Linux oder
+anderen Unix Varianten laufen, über eine komfortable und integrierte
+GnuPG-Unterstützung. Hervorzuheben ist hier das Programm ,,Kontact'' der
+KDE-Umgebung. Dort wird eine umfangreiche und sehr komfortable Integration
+angeboten.
 
 \clearpage
 \xname{automatische-installation-von-gpg4win}

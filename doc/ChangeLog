@@ -1,5 +1,11 @@
 2008-09-11  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
 
+	* manual/gpg4win-compendium-de.tex: Part 2: Some fixes,
+	moved chapter about E-Mail programmes into appendix and rewrote
+	chapter about email attachments.
+
+2008-09-11  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
+
 	* manual/gpg4win-compendium-de.tex: Part 2: Various little fixes
 	and improvements (result of proof-reading).
 
