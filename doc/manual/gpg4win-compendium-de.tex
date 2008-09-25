@@ -3069,7 +3069,7 @@ Es genügt, den Schlüssel an irgendeinen der verfügbaren
 Keyserver zu senden, denn fast alle synchronsieren sich weltweit
 miteinander.
 Es kann ein, zwei Tage dauern, bis Ihr OpenPGP-Zertifikat wirklich überall
-verfügbar ist, aber dann haben Sie einen globales Zertifikat!
+verfügbar ist, aber dann haben Sie ein globales Zertifikat!
 
 \begin{center}
 \htmlattributes*{img}{width=300}
@@ -3077,46 +3077,46 @@ verfügbar ist, aber dann haben Sie einen globales Zertifikat!
 \end{center}
 
 Die Schlüsselserver sind dezentral organisiert, aktuelle Statistiken
-über ihre Zahl oder die Anzahl der dort liegenden Schlüssel gibt es
-nicht.  Dieses verteilte Netz von Keyservern sorgt für eine bessere
+über ihre Zahl gibt es nicht.  Eine Statistik über die aktuelle Anzahl
+von Schlüsseln sowie anderer Betriebsparameter können auf der Seite
+\uniurl{http://keystats.gnupg.net} eingesehen werden.
+
+  Dieses verteilte Netz von Keyservern sorgt für eine bessere
 Verfügbarkeit und verhindert dass einzelne Systemandministratoren
 Schlüssel löschen um so die Kommunikation unmöglich zu machen
 ("`Denial of Service"'-Angriff).
 
-%%%Das OpenPGP-Netz http://www.keyserver.net/ ist zum Beispiel der
-%%%Sammelpunkt für ein ganzes Netz dieser Server, oft benutzt werden
-%%%ebenfalls http://germany.  keyserver.net/en/ oder der Keyserver des
-%%%Deutschen Forschungsnetzes DFN http://www.dfn.pca.de/pgpkserv/. 
-
-Wir raten dazu, nur moderne Keyserver zu verwendet (auf denen die SKS
-Software läuft), da nur diese mit den neueren Merkmalen von OpenPGP
-umgehen können.
+Wir raten dringend dazu, nur moderne Keyserver zu verwendet (auf denen
+die SKS Software läuft), da nur diese mit den neueren Merkmalen von
+OpenPGP umgehen können.
 
 
 \clearpage
 \subsubsection{Adressen einiger Schlüsselserver}
 
-Hier eine Auswahl von gut funktionierenden Schlüsselservern:
+Hier eine Auswahl von hoch verfügbaren SKS Schlüsselservern:
 \begin{itemize}
-\item hkp://blackhole.pca.dfn.de
+\item hkp://pgpkeys.pca.dfn.de
+\item hkp://pgp.uni-mainz.de
+\item hkp://minsky.surfnet.nl
+\item hkp://keyserver.pramberger.at
 \item hkp://pks.gpg.cz
 \item hkp://pgp.cns.ualberta.ca
-\item hkp://minsky.surfnet.nl
 \item hkp://keyserver.ubuntu.com
-\item hkp://keyserver.pramberger.at
+\item http://pgpkeys.pca.dfn.de
 \item http://gpg-keyserver.de
+\item http://minsky.surfnet.nl
 \item http://keyserver.pramberger.at
-\end{itemize}   
-Sollte Sie Probleme mit einer Firewall haben, so versuchen Sie am
-besten die Keyserver, deren URL mit \verb-http://- beginnen.
-
-Die Keyserver unter den Adressen
-\begin{itemize}
 \item hkp://keys.gnupg.net
-\item hkp://subkeys.pgp.net
-\end{itemize}
-sind ein Sammelpunkt für ein ganzes Netz dieser Server, es wird
-dann zufällig ein konkreter Server ausgewählt.
+\item http://http-keys.gnupg.net
+\end{itemize}   
+
+Die Schlüsselserver deren Adressen auf \verb-gnupg.net- enden, sind
+ein Sammelpunkt für ein ganzes Netz dieser Server; es wird dann
+zufällig ein konkreter Server ausgewählt.
+
+Sollten Sie Probleme mit einer Firewall haben, so versuchen Sie am
+besten die Keyserver, deren URL mit \verb-http://- beginnen.
 
 \textbf{Achtung:} Der Keyserver \verb=ldap://keyserver.pgp.com= synchronisiert
 sich nicht mit den anderen Servern und sollte i.d.R. nicht benutzt
@@ -3869,7 +3869,7 @@ Ihre geheime \Email{}-Verschlüsselung dar!}
 \textit{Anmerkung:} Es kann in einigen Fällen vorkommen, dass Sie einen importierten
 Schlüssel nicht direkt benutzen können.  Dies äußert sich darin, dass
 Sie die richtige Passphrase eingeben, dieser aber nicht akzeptiert
-wird.  Das kommt daher, dass einige Versionen von PGP intern den
+wird.  Das kommt daher, dass ältere Versionen von PGP intern den
 IDEA Algorithmus verwenden.  Dieser kann von GnuPG aus rechtlichen
 Gründen nicht unterstützt werden.  Um das Problem zu beheben,
 ändern Sie in PGP einfach die Passphrase und
