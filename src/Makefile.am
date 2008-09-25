@@ -204,7 +204,7 @@ gpg4win_pkg_claws_mail_configure = \
   --with-gpg-error-prefix=$(idir) --with-gpgme-prefix=$(idir) \
   --with-config-dir="Claws-mail" --enable-pthread --enable-gnutls \
   --enable-libetpan --disable-aspell --disable-enchant \
-  --disable-trayicon-plugin \
+  --disable-trayicon-plugin --disable-dbus \
   --disable-openssl --disable-dillo-viewer-plugin --disable-gnomeprint \
   --disable-jpilot --disable-startup-notification --disable-ipv6 \
   --disable-mathml-viewer-plugin --disable-clamav-plugin \

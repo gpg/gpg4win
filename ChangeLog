@@ -1,3 +1,10 @@
+2008-09-25  Colin Leroy  <colin@colino.net>
+
+	* src/Makefile.am (gpg4win_pkg_claws_mail_configure): Add
+	--disable-dbus. No more patches!
+	* packages/packages.current: Update claws and change claws
+	and libetpan's sources
+
 2008-09-22  Marcus Brinkmann  <marcus@g10code.com>
 
 	* src/Makefile.am (gpg4win_pkg_claws_mail_configure): Add
