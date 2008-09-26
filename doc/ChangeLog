@@ -1,3 +1,9 @@
+2008-09-26  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+
+	* manual/gpg4win-compendium-de.tex, manual/Makefile.am, README-BETA-de.txt:
+	Some (compendium) fixes. Added screenshots. Added $(web_png_files) for html
+	compendium.
+
 2008-09-11  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
 
 	* manual/gpg4win-compendium-de.tex: Part 2: Some fixes,

@@ -71,6 +71,9 @@ png_files = \
 		sc-gpgex-contextmenu-signEncrypt_de.png\
 		sc-gpgex-contextmenu-verifyDecrypt_de.png\
 		sc-wordpad-editOpenpgpKey_de.png\
+		sc-kleopatra-backend-openpgpWithFingerprint_de.png\
+		sc-pinentry-p12-import-a_de.png\
+		sc-pinentry-p12-import-b_de.png\
 		\
 		sc-inst-welcome.png sc-inst-license.png \
 		sc-inst-components.png sc-inst-directory.png \
@@ -151,7 +154,7 @@ all-local: gpg4win-compendium-de.pdf novices.pdf \
 
 gpg4win-compendium-de.pdf : $(eps_files_bb) $(png_files_eps) $(eps_files_png)
 gpg4win-compendium-de.dvi : version.tex macros.tex $(eps_files_bb)
-gpg4win-compendium-de.html.d-stamp : version.tex macros.tex $(eps_files_png)
+gpg4win-compendium-de.html.d-stamp : version.tex macros.tex $(eps_files_png) $(web_png_files)
 einsteiger.pdf : $(eps_files_bb) $(png_files_eps) $(eps_files_png)
 einsteiger.dvi : version.tex macros.tex $(eps_files_bb)
 einsteiger.html.d-stamp : version.tex macros.tex $(eps_files_png)

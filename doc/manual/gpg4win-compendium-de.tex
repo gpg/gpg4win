@@ -853,9 +853,11 @@ Zertifikatsverwaltung:
 
 Zu Beginn ist diese Übersicht leer, da wir noch keine 
 Zertifikate oder Schlüssel erstellt haben. Dies wollen wir jetzt
-nachholen:
+nachholen...
 
-Klicken Sie auf \Menu{Datei$\rightarrow$Neues~Zertifikat}. \\
+\clearpage
+Klicken Sie auf \Menu{Datei$\rightarrow$Neues~Zertifikat}. 
+
 Im folgenden Dialog entscheiden Sie sich für ein Format,
 für das anschließend ein Zertifikat erstellt werden soll.
 Sie haben die Wahl: \textbf{OpenPGP} (PGP/MIME) oder \textbf{X.509} (S/MIME).
@@ -870,20 +872,28 @@ Seite \pageref{ch:openpgpsmime}.
 
 %% Original page 17
 
-Die weitere Vorgehensweise zum Erzeugen eines Schlüsselpaars
-gliedert sich an dieser Stelle in zwei Abschnitte: 
-\textbf{OpenPGP-Schlüsselpaar erstellen}  und 
-\textbf{X.509-Schlüsselpaar erstellen}.
+~\\Die weitere Vorgehensweise zum Erzeugen eines Schlüsselpaars
+gliedert sich an dieser Stelle in zwei Abschnitte:
+
+\begin{itemize}
+    \item Abschnitt \ref{createKeyPairOpenpgp}: \textbf{OpenPGP-Schlüsselpaar erstellen}
+     \T(siehe nächste Seite)
+     und
+    \item Abschnitt \ref{createKeyPairX509}:
+        \textbf{X.509-Schlüsselpaar erstellen} 
+        \T (siehe Seite \pageref{createKeyPairX509})
+        .
+\end{itemize}
+
 Lesen Sie den entsprechenden Abschnitt weiter, für deren Zertifikatsformat 
 Sie sich oben entschieden haben.
 
 
-
-
-
+\clearpage
 %% OpenPGP %%
 %% Original page 18
 \section{OpenPGP-Schlüsselpaar erstellen}
+\label{createKeyPairOpenpgp}
 
 Klicken Sie im obigen Auswahldialog auf 
 %TODO:german
@@ -944,8 +954,9 @@ Passphrase einzugeben:
 \IncludeImage[width=0.45\textwidth]{sc-kleopatra-openpgp-pinentry_de}
 \end{center}
 
-Im Kapitel~\ref{ch:passphrase}, Seite \pageref{ch:passphrase}, geben
-wir Ihnen einige wertvolle Tipps, was Sie bei der Erzeugung einer
+Im Kapitel~\ref{ch:passphrase} 
+\T (Seite \pageref{ch:passphrase})
+geben wir Ihnen einige wertvolle Tipps, was Sie bei der Erzeugung einer
 \textbf{sicheren Passphrase} beachten sollten. Nehmen Sie die
 Sicherheit Ihrer Passphrase ernst!
 
@@ -999,7 +1010,7 @@ drei Möglichkeiten durchführen:
 \begin{description}
     \item[Erstellen Sie eine Sicherungskopie Ihres
         OpenPGP-Schlüsselpaares.]
-        %TODO#: Paar od. geheimer Schluessel? Dateiformat?
+        %TODO#: Dateiformat?
     
     ~\\Klicken Sie dazu auf die Schaltfläche
     %TODO:german
@@ -1074,12 +1085,12 @@ sind die Erklärungen für OpenPGP und X.509 wieder identisch.
 %% Original page 21
 \clearpage
 \section{X.509-Schlüsselpaar erstellen}
+\label{createKeyPairX509}
+
 Klicken Sie im Zertifikatsformat-Auswahldialog von
-Seite~\pageref{chooseCertificateFormat} auf
-%TODO:german
-\Button{Create a personal X.509 key pair and certification request}.
-%TODO# ggf "vgl. Abb"
 \T\margin{\IncludeImage[width=1.5cm]{smime-icon}}
+Seite~\pageref{chooseCertificateFormat} auf die Schaltfläche\\
+\Button{Persönliches X.509-Schlüsselpaar und Beglaubigungs-Anfrage erstellen}.
 
 
 
@@ -1215,6 +1226,45 @@ Beenden Sie anschließend den Kleopatra-Assistenten mit
 Weiter geht's mit dem Abschnitt \textit{Schlüsselpaar-Erstellung abgeschlossen} 
 auf der nächsten Seite. Von nun an
 sind die Erklärungen für OpenPGP und X.509 wieder identisch.
+
+
+\subsubsection{Erstellung eines X.509-Schlüsselpaars mit www.cacert.org}
+CAcert ist eine gemeinschaftsbetriebene, nicht-kommerzielle
+Zertifizierungsstelle (CA), die kostenlos X.509-Zertifikate ausstellt.
+
+Damit Sie sich ein (Client-)Zertifikat bei CAcert erstellen können, müssen Sie
+sich zunächst unter \uniurl[www.cacert.org]{http://www.cacert.org}
+registrieren.
+
+Anschließend können Sie sich mit Ihrem CAcert-Account ein (oder
+mehrere) Client-Zertifikat(e) erstellen: Sie sollten dabei auf eine hohe
+Schlüsselgröße achten. Im dem startenden Assistenten legen Sie
+Ihre sichere Passphrase für Ihr Zertifikat fest.
+
+Ihre X.509-Zertifikatsanfrage wird nun erstellt.
+
+Im Anschluß daran erhalten Sie eine \Email{} mit zwei Links zu Ihrem neu
+erstellten X.509-Zertifikat und dem dazugehörigen CAcert-Root-Zertifikat.
+Laden Sie sich beide Zertifikate herunter.
+
+Folgen Sie den Anweisungen und installieren Ihr Zertifikat mit Ihrem
+Browser. Mit Firefox können Sie danach z.B. über
+\Menu{Bearbeiten$\rightarrow$Einstellungen$\rightarrow$Erweitert$\rightarrow$Zertifikate}
+Ihr installiertes Zertifikat unter dem ersten Reiter "`Ihre
+Zertifikate"' mit dem Namen \textit{CAcert WoT User} finden. 
+
+Wenn Sie sich von anderen Mitglieder des CACert-Web-of-Trust
+bestätigen lassen, können Sie auch personalisierte Zertifikate mit
+Ihrem Namen (CN) ausstellen.
+
+Speichern Sie abschließend eine Sicherungskopie Ihres X.509-Zertifikatspaars in einer *.p12
+Datei.
+\textbf{Achtung:} Diese *.p12 Datei enthält Ihr (öffentliches) Zertifikat und Ihren
+zugehörigen \textit{geheimen} Schlüssel. Achten Sie darauf, dass diese
+Datei nicht in unbefugte Hände gelangt.
+
+Wie Sie Ihr X.509-Schlüsselpaar in Kleopatra importieren erfahren Sie
+in Kapitel \ref{ch:ImExport}.
 
 
 \clearpage
@@ -1601,6 +1651,14 @@ Schlüsselserver im Internet veröffentlichen.
   Sie können dieses Kapitel jetzt lesen oder später, wenn Sie diese
   Funktion benötigen.}
 
+~\\Die Veröffentlichung von X.509-Zertifikaten erfolgt in einigen
+\T\margin{\IncludeImage[width=1.5cm]{smime-icon}}
+Fällen durch die Zertifizierungsstelle. Das passiert typischerweise
+über LDAP-Server.
+Im Unterschied zu den OpenPGP-Schlüsselservern synchronisieren sich
+die LDAP-Server jedoch nicht weltweit untereinander.
+
+
 
 
 \clearpage
@@ -1781,7 +1839,7 @@ Der Unterschied zu OpenPGP ist lediglich, dass S/MIME \textit{nicht}
 von Adele unterstützt wird und somit die obige Übung nur für OpenPGP
 gilt.
 
-Zum entschlüsseln einer S/MIME-verschlüsselten \Email{} öffnen Sie
+Zum Entschlüsseln einer S/MIME-verschlüsselten \Email{} öffnen Sie
 die Nachricht in Outlook und geben im aufgehenden Dialog Ihre Passphrase ein. 
 Sie bekommen einen ähnlichen
 Statusdialog wie bei OpgenPGP. Nach dem Schließen dieses Dialogs sehen Sie die
@@ -1974,8 +2032,7 @@ Die Schaltfläche mit dem Schloss-Icon in der
 Symbolleiste ist aktiviert (Sie können auch gleich direkt auf diese
 Schaltfläche klicken).
 
-Ihre Outlook-Nachrichtenfenster sollte nun etwas so aussehen
-(exemplarisch wurde hier OpenPGP als Verschlüsselungstechnik gewählt):
+Ihre Outlook-Nachrichtenfenster sollte nun etwas so aussehen:
 
 % TODO screenshot: OL composer with Adele's address and body text
 \begin{center}
@@ -2449,29 +2506,38 @@ selbst!}
 
 Die Nachricht wird einmal für Ihren eigentlichen Korrespondenzpartner
 (z.B. Adele) verschlüsselt und ein weiteres Mal auch für Sie, mit
-Hilfe Ihres eigenen Zertifikats. So können Sie die \Email{} auch später noch einfach
+Hilfe Ihres eigenen Zertifikats. So können Sie die \Email{} später einfach
 mit Ihrem eigenen geheimen Schlüssel wieder lesbar machen.
 
 Da Gpg4win nicht wissen kann, welchen Schlüssel Sie benutzen (Sie
 können ja auch mehrere haben) müssen Sie dem Programm dies
-mitteilen. 
+mitteilen.
 
 Wie? -- Das erfahren Sie auf der nächsten Seite.
 
 \clearpage
 %% Original page 48
-%TODO#: Encrypt to this key - Wo in den Einstellungen?
-Um diese Option zu nutzen, genügt ein Mausklick: Öffnen Sie Kleopatra und
-dort das Menü \Menu{TODO}.
+Um diese Option zu nutzen, genügen einige wenige Mausklicks:
 
-% screenshot: Winpt configuration dialog
-%\begin{center}
-%\IncludeImage[width=0.7\textwidth]{sc-winpt-enctoself}
-%\end{center}
+Öffnen Sie Kleopatra und dort das GnuPG-Backend über \Menu{Extras$\rightarrow$GnuPG-Backend
+einrichten...}.
+
+Wählen Sie \textit{GPG for OpenPGP} bzw.
+\textit{GPG for S/MIME} und geben Sie in das Textfeld an der Stelle
+\textbf{\Menu{Auch an NAME verschlüsseln}} 
+den vollständigen Fingerabdruck Ihres Zertifikats an:
+
+
+% TODO screenshot: Kleopatra GnuPG Backend - Gpg for OpenPGP with fingerprint
+\begin{center}
+\IncludeImage[width=0.7\textwidth]{sc-kleopatra-backend-openpgpWithFingerprint_de}
+\end{center}
 
 %In dem Einstellungsfenster, das sich nun öffnet, tragen Sie unter
 %"`Encrypt to this key"' Ihren Schlüssel ein bzw. die
 %dazugehörige \Email{}-Adresse.
+
+Den Fingerabdruck finden Sie in den Zertifikatsdetails.
 
 Eine entsprechende Option finden Sie auch bei allen \Email{}programmen,
 die GnuPG direkt unterstützen.
@@ -2489,7 +2555,7 @@ die GnuPG direkt unterstützen.
   Sie lesbar bleiben.
 \end{enumerate}
 
-\vspace{2cm}
+\vspace{1cm}
 \textbf{Das war's! Zum Ende dieses ersten Teils des Kompendiums werden
 Sie nun ein sehr fundiertes Einsteigerwissen über Gpg4win besitzen.}
 
@@ -3069,7 +3135,7 @@ Es genügt, den Schlüssel an irgendeinen der verfügbaren
 Keyserver zu senden, denn fast alle synchronsieren sich weltweit
 miteinander.
 Es kann ein, zwei Tage dauern, bis Ihr OpenPGP-Zertifikat wirklich überall
-verfügbar ist, aber dann haben Sie ein globales Zertifikat!
+verfügbar ist, aber dann haben Sie einen globales Zertifikat!
 
 \begin{center}
 \htmlattributes*{img}{width=300}
@@ -3077,46 +3143,46 @@ verfügbar ist, aber dann haben Sie ein globales Zertifikat!
 \end{center}
 
 Die Schlüsselserver sind dezentral organisiert, aktuelle Statistiken
-über ihre Zahl gibt es nicht.  Eine Statistik über die aktuelle Anzahl
-von Schlüsseln sowie anderer Betriebsparameter können auf der Seite
-\uniurl{http://keystats.gnupg.net} eingesehen werden.
-
-  Dieses verteilte Netz von Keyservern sorgt für eine bessere
+über ihre Zahl oder die Anzahl der dort liegenden Schlüssel gibt es
+nicht.  Dieses verteilte Netz von Keyservern sorgt für eine bessere
 Verfügbarkeit und verhindert dass einzelne Systemandministratoren
 Schlüssel löschen um so die Kommunikation unmöglich zu machen
 ("`Denial of Service"'-Angriff).
 
-Wir raten dringend dazu, nur moderne Keyserver zu verwendet (auf denen
-die SKS Software läuft), da nur diese mit den neueren Merkmalen von
-OpenPGP umgehen können.
+%%%Das OpenPGP-Netz http://www.keyserver.net/ ist zum Beispiel der
+%%%Sammelpunkt für ein ganzes Netz dieser Server, oft benutzt werden
+%%%ebenfalls http://germany.  keyserver.net/en/ oder der Keyserver des
+%%%Deutschen Forschungsnetzes DFN http://www.dfn.pca.de/pgpkserv/. 
+
+Wir raten dazu, nur moderne Keyserver zu verwendet (auf denen die SKS
+Software läuft), da nur diese mit den neueren Merkmalen von OpenPGP
+umgehen können.
 
 
 \clearpage
 \subsubsection{Adressen einiger Schlüsselserver}
 
-Hier eine Auswahl von hoch verfügbaren SKS Schlüsselservern:
+Hier eine Auswahl von gut funktionierenden Schlüsselservern:
 \begin{itemize}
-\item hkp://pgpkeys.pca.dfn.de
-\item hkp://pgp.uni-mainz.de
-\item hkp://minsky.surfnet.nl
-\item hkp://keyserver.pramberger.at
+\item hkp://blackhole.pca.dfn.de
 \item hkp://pks.gpg.cz
 \item hkp://pgp.cns.ualberta.ca
+\item hkp://minsky.surfnet.nl
 \item hkp://keyserver.ubuntu.com
-\item http://pgpkeys.pca.dfn.de
+\item hkp://keyserver.pramberger.at
 \item http://gpg-keyserver.de
-\item http://minsky.surfnet.nl
 \item http://keyserver.pramberger.at
-\item hkp://keys.gnupg.net
-\item http://http-keys.gnupg.net
 \end{itemize}   
-
-Die Schlüsselserver deren Adressen auf \verb-gnupg.net- enden, sind
-ein Sammelpunkt für ein ganzes Netz dieser Server; es wird dann
-zufällig ein konkreter Server ausgewählt.
-
-Sollten Sie Probleme mit einer Firewall haben, so versuchen Sie am
+Sollte Sie Probleme mit einer Firewall haben, so versuchen Sie am
 besten die Keyserver, deren URL mit \verb-http://- beginnen.
+
+Die Keyserver unter den Adressen
+\begin{itemize}
+\item hkp://keys.gnupg.net
+\item hkp://subkeys.pgp.net
+\end{itemize}
+sind ein Sammelpunkt für ein ganzes Netz dieser Server, es wird
+dann zufällig ein konkreter Server ausgewählt.
 
 \textbf{Achtung:} Der Keyserver \verb=ldap://keyserver.pgp.com= synchronisiert
 sich nicht mit den anderen Servern und sollte i.d.R. nicht benutzt
@@ -3202,7 +3268,7 @@ dessen 40-stelligen Fingerabdruck:
 
 Der Fingerprint von Adeles OpenPGP-Zertifikat ist also:\\
 %TODO
-\verb+DD87 8C06 E8C2 BEDD D4A4 40D3 E573 3469 92AB 3FF7+
+\verb+BA90 087D 0C6C 7F4D EAF0 0907 BCFA 2133 DDC8 CA90+
 
 
 
@@ -3840,12 +3906,31 @@ geheimen Schlüssel und damit sicherheitskritische Informationen!
 \section{Import}
 Zum Importieren Ihres vorher exportierten geheimen Schlüssels
 in Kleopatra, gehen Sie so vor, wie Sie es beim
-Importieren von (fremden) Zertifikaten gewohnt sind:
+Importieren von (fremden) Zertifikaten gewohnt sind (vgl. Kapitel~\ref{ch:keyring}):
 
-\Menu{Datei$\rightarrow$Zertifikat importieren...}, Datei auswählen
-und bestätigen (vgl. Kapitel~\ref{ch:keyring}). Fertig.
+Klicken Sie auf \Menu{Datei$\rightarrow$Zertifikat importieren...} und
+wählen Sie die zu importierende Datei aus.
+Handelt es sich um eine PKCS12-Datei (z.B. vom Typ *.p12), so werden
+Sie zunächst nach der Passphrase zum Entsprerren des privaten Schlüssels
+gefragt:
+% TODO# screenshot pinentry p12 import (I)
+\begin{center}
+\IncludeImage[width=0.45\textwidth]{sc-pinentry-p12-import-a_de}
+\end{center}
 
-Sie erhalten einen Infodialog, der Ihnen die Ergebnisse des
+Setzen Sie nun eine (ggf. neue) Passphrase, die nach dem Importvorgang Ihrem privaten
+Schlüssel zugeordnet werden soll:
+% TODO# screenshot pinentry p12 import (II)
+\begin{center}
+\IncludeImage[width=0.45\textwidth]{sc-pinentry-p12-import-b_de}
+\end{center}
+
+Wiederholen Sie Ihre Passphraseeingabe.
+Sollte Ihre Passphrase zu kurz oder nur aus Buchstaben bestehen,
+werden Sie entsprechend gewarnt.
+
+\clearpage
+Nach erfolgreichem Importieren erhalten Sie einen Infodialog, der Ihnen die Ergebnisse des
 Importvorgangs auflistet; hier am Beispiel eines geheimen
 OpenPGP-Schlüssels:
 % TODO# screenshot kleopatra decrypt file, step 2
@@ -3869,7 +3954,7 @@ Ihre geheime \Email{}-Verschlüsselung dar!}
 \textit{Anmerkung:} Es kann in einigen Fällen vorkommen, dass Sie einen importierten
 Schlüssel nicht direkt benutzen können.  Dies äußert sich darin, dass
 Sie die richtige Passphrase eingeben, dieser aber nicht akzeptiert
-wird.  Das kommt daher, dass ältere Versionen von PGP intern den
+wird.  Das kommt daher, dass einige Versionen von PGP intern den
 IDEA Algorithmus verwenden.  Dieser kann von GnuPG aus rechtlichen
 Gründen nicht unterstützt werden.  Um das Problem zu beheben,
 ändern Sie in PGP einfach die Passphrase und
@@ -3944,10 +4029,11 @@ Einige typische systemweite Einrichtungen sind:
         (ggf. analog für LDAP) als Administrator in die Datei\newline
         \small
         \Filename{C:\back{}Dokumente und Einstellungen\back{}All
-        Users\back{}GNU\back{}etc\back{}dirmngr\back{}dirmngr.conf}\newline
+        Users\back{}GNU\back{}etc\back{}dirmngr\back{}\\ dirmngr.conf}\newline
         \normalsize
         eintragen.
-    \end{enumerate}
+    \item Starten Sie den DirMngr neu (siehe Abschnitt \ref{dirmngr-restart}).
+\end{enumerate}
 \end{itemize}
 
 
@@ -3969,6 +4055,7 @@ Reaktivieren Sie GpgOL über das Outlook-Menü
 \Menu{Hilfe$\rightarrow$Info$\rightarrow$Deaktivierte Elemente}.
 
 \section{Keine S/MIME Operationen mehr möglich (Systemdienst ,,DirMngr'' läuft nicht)}
+\label{dirmngr-restart}
 
 Der \textit{Directory Manager} (\textit{DirMngr}) ist ein über 
 Gpg4win installierter Dienst der die Zugriffe auf Verzeichnisdienste

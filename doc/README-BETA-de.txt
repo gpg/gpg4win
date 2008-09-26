@@ -214,8 +214,8 @@ Entfallen:
 - WinPT: Die Funktionalitäten wird nun durch Kleopatra abgedeckt
   (siehe unten).
 
-- Hanbdücher "Gpg4win für Einsteiger" und "Gpg4win für Durckblicker":
-  Diese Werden ersetzt durch das "Gpg4win Kompendium" (siehe unten).
+- Handbücher "Gpg4win für Einsteiger" und "Gpg4win für Durckblicker":
+  Diese werden ersetzt durch das "Gpg4win Kompendium" (siehe unten).
 
 Aktualisiert:
 -------------
@@ -287,7 +287,8 @@ Wichtigste Änderungen von Gpg4win 1.9.7 gegenüber 1.9.6
 
  - Kleopatra:
    Hinweis: [#xxxxxx] markiert im Folgenden die Kleopatra-Fehlermeldungs-Nummer.
-            Details können mit dieser Nummer unter http://bugs.kde.org/ eingesehen werden.
+            Details können mit dieser Nummer unter http://bugs.kde.org/ 
+            eingesehen werden.
     * Löschen von Wurzelzertifikaten repariert [#165470]
     * Zertifikatsketten verschwinden nicht mehr beim Aktualisieren [#168910]
     * Standardgröße des Kleopatra-Hauptfensters optimiert [#167146]
