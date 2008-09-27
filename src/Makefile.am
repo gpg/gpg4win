@@ -30,6 +30,7 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi config.site \
         inst-opencdk.nsi	   uninst-opencdk.nsi         \
         inst-gnutls.nsi		   uninst-gnutls.nsi	      \
         inst-curl.nsi		   uninst-curl.nsi	      \
+        inst-libxml2.nsi	   uninst-libxml2.nsi	      \
         inst-libetpan.nsi	   uninst-libetpan.nsi        \
         inst-claws-mail.nsi	   uninst-claws-mail.nsi      \
         inst-notification_plugin.nsi	   uninst-notification_plugin.nsi      \
@@ -84,7 +85,7 @@ CLEANFILES = g4wihelp.dll versioninfo.txt README.en.txt README.de.txt \
 
 # Supported source packages.
 gpg4win_spkgs = glib libgpg-error gpgme gpgol gpgex \
-		gpa winpt libgsasl libtasn1 opencdk gnutls curl \
+		gpa winpt libgsasl libtasn1 opencdk gnutls curl libxml2 \
                 libetpan claws-mail notification_plugin gtkhtml2_viewer \
 		vcalendar gnupg2 pinentry libassuan libksba libgcrypt \
 		adns dirmngr w32pth scute
@@ -201,6 +202,9 @@ gpg4win_pkg_gnutls_configure = \
 
 gpg4win_pkg_curl_configure = \
   --with-gnutls --without-ca-bundle
+
+gpg4win_pkg_libxml2_configure = \
+  --enable-shared --without-python
 
 # The CFLAGS are needed to find pthread-w32.
 gpg4win_pkg_libetpan_configure = --with-gnutls \
@@ -354,6 +358,12 @@ define gpg4win_pkg_kdesupport_post_install
  rm -fR "$$$${pkgidir_dev}/share/apps/cmake/modules")
 endef
 
+# libxml2 ships some binaries, which we already have from kdesupport.  Remove a stow
+# conflict about that. 
+define gpg4win_pkg_libxml2_post_install
+(rm -f "$$$${pkgidir}/bin/xmllint.exe"; \
+ rm -f "$$$${pkgidir}/bin/xmlcatalog.exe")
+endef
 
 # Supported internal packages.  Internal packages do not require any
 # special support.  Thus, this variable is actually unused, and no

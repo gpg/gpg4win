@@ -3,6 +3,20 @@
 	* configure.ac,
 	src/Makefile.am,
 	include/config.nsi.in,
+	src/inst-sections.nsi,
+	packages/packages.current: Add libxml2 for Claws plugins.
+	* src/inst-libxml2.nsi, src/uninst-libxml2.nsi,
+	New files for libxml2.
+
+2008-09-27  Colin Leroy  <colin@colino.net>
+
+	* packages/packages.current: Update claws (fixes its build).
+
+2008-09-27  Colin Leroy  <colin@colino.net>
+
+	* configure.ac,
+	src/Makefile.am,
+	include/config.nsi.in,
 	src/gpg4win.nsi,
 	src/inst-sections.nsi,
 	packages/packages.current: Add Curl, Claws plugins Gtkhtml,

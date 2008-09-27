@@ -124,6 +124,9 @@
 !ifdef HAVE_PKG_CURL
 !include "inst-curl.nsi"
 !endif
+!ifdef HAVE_PKG_LIBXML2
+!include "inst-libxml2.nsi"
+!endif
 !ifdef HAVE_PKG_PINENTRY
 !include "inst-pinentry.nsi"
 !endif
@@ -252,6 +255,9 @@
 !endif
 !ifdef HAVE_PKG_CURL
 !include "uninst-curl.nsi"
+!endif
+!ifdef HAVE_PKG_LIBXML2
+!include "uninst-libxml2.nsi"
 !endif
 !ifdef HAVE_PKG_GTK_
 !include "uninst-gtk+.nsi"
@@ -587,6 +593,9 @@ Function CalcDepends
 !ifdef HAVE_PKG_CURL
   !insertmacro UnselectSection ${SEC_curl}
 !endif
+!ifdef HAVE_PKG_LIBXML2
+  !insertmacro UnselectSection ${SEC_libxml2}
+!endif
 !ifdef HAVE_PKG_LIBGPG_ERROR
   !insertmacro UnselectSection ${SEC_libgpg_error}
 !endif
@@ -720,7 +729,7 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_libetpan}
   !insertmacro SelectSection ${SEC_gnutls}
   !insertmacro SelectSection ${SEC_curl}
-  !insertmacro SelectSection ${SEC_kdesupport}
+  !insertmacro SelectSection ${SEC_libxml2}
   skip_claws_mail:
 !endif
 
@@ -741,6 +750,13 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_zlib}
   !insertmacro SelectSection ${SEC_gnutls}
   skip_curl:
+!endif
+
+!ifdef HAVE_PKG_LIBXML2
+  !insertmacro SectionFlagIsSet ${SEC_libxml2} ${SF_SELECTED} have_libxml2 skip_libxml2
+  have_libxml2:
+  !insertmacro SelectSection ${SEC_zlib}
+  skip_libxml2:
 !endif
 
 !ifdef HAVE_PKG_OPENCDK
