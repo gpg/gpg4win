@@ -110,8 +110,8 @@ chk   fffb34be2e3c66e58a5d3daaf8aa38cae33b284f
 # (Kept on our own mirror due to Sourceforge peculiarities.)
 server http://www.claws-mail.org/win32
 
-file  claws-mail-3.5.0cvs132.tar.bz2
-chk   d9507ecf51ab7738fc121890be606a5bd3543459
+file  claws-mail-3.5.0cvs135.tar.bz2
+chk   08f2afb30e70ef6027ade6295688872858a6032b
 
 #
 # Claws plugins
@@ -125,8 +125,8 @@ file  gtkhtml2_viewer-0.19cvs11.tar.gz
 chk   5d104416873512e175c54a3c0a914116ec2acd14
 
 server http://www.claws-mail.org/win32
-file  vcalendar-2.0cvs15.tar.gz
-chk   690fbff01f97899fcc5a95b076919f80cbc5d075
+file  vcalendar-2.0cvs16.tar.gz
+chk   5ba40a81fa7fa9122bd967eda0cb03a566e58246
 
 #
 # Pthreads for Windows.
