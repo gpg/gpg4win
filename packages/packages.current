@@ -97,13 +97,36 @@ file libetpan-0.56.tar.gz
 chk  b75a493f6f6a82bd19acb41e459f76dc6c27e2c8
 
 #
+# curl for Claws plugins
+#
+
+server http://curl.haxx.se/download
+file  curl-7.19.0.tar.bz2
+chk   fffb34be2e3c66e58a5d3daaf8aa38cae33b284f
+
+#
 # Claws
 #
 # (Kept on our own mirror due to Sourceforge peculiarities.)
 server http://www.claws-mail.org/win32
 
-file  claws-mail-3.5.0cvs131.tar.bz2
-chk   1c3956988a861dbb371dfe942c1ad93a31a042bc
+file  claws-mail-3.5.0cvs132.tar.bz2
+chk   d9507ecf51ab7738fc121890be606a5bd3543459
+
+#
+# Claws plugins
+#
+server http://www.claws-mail.org/win32
+file  notification_plugin-0.17cvs6.tar.gz
+chk   c3ca1de4e6e6d2a611397b7910b3fbf0a09fd7bf
+
+server http://www.claws-mail.org/win32
+file  gtkhtml2_viewer-0.19cvs11.tar.gz
+chk   5d104416873512e175c54a3c0a914116ec2acd14
+
+server http://www.claws-mail.org/win32
+file  vcalendar-2.0cvs15.tar.gz
+chk   690fbff01f97899fcc5a95b076919f80cbc5d075
 
 #
 # Pthreads for Windows.

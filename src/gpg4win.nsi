@@ -35,9 +35,6 @@
 !ifdef HAVE_PKG_KDELIBS
 !undef HAVE_PKG_KDELIBS
 !endif
-!ifdef HAVE_PKG_KDESUPPORT
-!undef HAVE_PKG_KDESUPPORT
-!endif
 !ifdef HAVE_PKG_OXYGEN_ICONS
 !undef HAVE_PKG_OXYGEN_ICONS
 !endif

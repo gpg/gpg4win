@@ -29,8 +29,12 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi config.site \
         inst-libtasn1.nsi	   uninst-libtasn1.nsi        \
         inst-opencdk.nsi	   uninst-opencdk.nsi         \
         inst-gnutls.nsi		   uninst-gnutls.nsi	      \
+        inst-curl.nsi		   uninst-curl.nsi	      \
         inst-libetpan.nsi	   uninst-libetpan.nsi        \
         inst-claws-mail.nsi	   uninst-claws-mail.nsi      \
+        inst-notification_plugin.nsi	   uninst-notification_plugin.nsi      \
+        inst-gtkhtml2_viewer.nsi   uninst-gtkhtml2_viewer.nsi      \
+        inst-vcalendar.nsi	   uninst-vcalendar.nsi      \
         inst-crypt.nsi		   uninst-crypt.nsi	      \
         inst-dirmngr.nsi	   uninst-dirmngr.nsi	      \
         inst-eudoragpg.nsi	   uninst-eudoragpg.nsi	      \
@@ -80,9 +84,10 @@ CLEANFILES = g4wihelp.dll versioninfo.txt README.en.txt README.de.txt \
 
 # Supported source packages.
 gpg4win_spkgs = glib libgpg-error gpgme gpgol gpgex \
-		gpa winpt libgsasl libtasn1 opencdk gnutls \
-                libetpan claws-mail gnupg2 pinentry \
-		libassuan libksba libgcrypt adns dirmngr w32pth scute
+		gpa winpt libgsasl libtasn1 opencdk gnutls curl \
+                libetpan claws-mail notification_plugin gtkhtml2_viewer \
+		vcalendar gnupg2 pinentry libassuan libksba libgcrypt \
+		adns dirmngr w32pth scute
 
 # Extra options to configure for individual packages.
 # We can use $(idir) here for the installation prefix.
@@ -194,6 +199,9 @@ gpg4win_pkg_winpt_configure = --silent \
 gpg4win_pkg_gnutls_configure = \
   --disable-cxx
 
+gpg4win_pkg_curl_configure = \
+  --with-gnutls --without-ca-bundle
+
 # The CFLAGS are needed to find pthread-w32.
 gpg4win_pkg_libetpan_configure = --with-gnutls \
   CPPFLAGS=\"-I$(idir)/include\" LIBS=\"-L$(idir)/lib\"
@@ -210,6 +218,16 @@ gpg4win_pkg_claws_mail_configure = \
   --disable-mathml-viewer-plugin --disable-clamav-plugin \
   --disable-spamassassin-plugin --disable-bogofilter-plugin \
   --disable-valgrind --disable-networkmanager-support
+
+gpg4win_pkg_notification_plugin_configure = \
+  --with-lib-prefix=$(idir) --with-libiconv-prefix=$(idir) \
+  --disable-libnotify --disable-lcdproc
+
+gpg4win_pkg_gtkhtml2_viewer_configure = \
+  --with-lib-prefix=$(idir) --with-libiconv-prefix=$(idir) LIBS=\"-L$(idir)/bin\"
+
+gpg4win_pkg_vcalendar_configure = \
+  --with-lib-prefix=$(idir) --with-libiconv-prefix=$(idir) LIBS=\"-L$(idir)/bin\"
 
 gpg4win_pkg_scute_configure = --silent \
   --with-gpgme-prefix=$(idir) --with-libassuan-prefix=$(idir)

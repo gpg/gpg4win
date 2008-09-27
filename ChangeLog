@@ -1,9 +1,24 @@
+2008-09-27  Colin Leroy  <colin@colino.net>
+
+	* configure.ac,
+	src/Makefile.am,
+	include/config.nsi.in,
+	src/gpg4win.nsi,
+	src/inst-sections.nsi,
+	packages/packages.current: Add Curl, Claws plugins Gtkhtml,
+	Vcalendar and Notification.
+	* src/inst-curl.nsi, src/uninst-curl.nsi,
+	src/inst-gtkhtml2_viewer.nsi, src/uninst-gtkhtml2_viewer.nsi,
+	src/inst-vcalendar.nsi, src/uninst-vcalendar.nsi,
+	src/inst-notifiation_plugin.nsi, src/uninst-notification_plugin.nsi:
+	New files for these new packages
+
 2008-09-25  Colin Leroy  <colin@colino.net>
 
 	* src/Makefile.am (gpg4win_pkg_claws_mail_configure): Add
-	--disable-dbus. No more patches!
+	--disable-dbus.  No more patches!
 	* packages/packages.current: Update claws and change claws
-	and libetpan's sources
+	and libetpan's sources.
 
 2008-09-22  Marcus Brinkmann  <marcus@g10code.com>
 

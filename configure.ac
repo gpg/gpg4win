@@ -209,9 +209,12 @@ GPG4WIN_SPKG([libtasn1])
 GPG4WIN_SPKG([opencdk], [libgpg-error libgcrypt])
 GPG4WIN_SPKG([gnutls], [libgsasl libtasn1 opencdk])
 GPG4WIN_SPKG([libetpan], [pthreads-w32 gnutls])
+GPG4WIN_SPKG([curl], [zlib gnutls kdesupport])
 GPG4WIN_SPKG([claws-mail], [libiconv gettext zlib gtk+ libpng jpeg glib dnl
                             gpgme pthreads-w32 crypt regex libetpan gnutls])
-
+GPG4WIN_SPKG([notification_plugin], [claws-mail])
+GPG4WIN_SPKG([gtkhtml2_viewer], [curl claws-mail])
+GPG4WIN_SPKG([vcalendar], [curl claws-mail])
 GPG4WIN_IPKG([compendium_de])
 GPG4WIN_IPKG([man_novice_en])
 #GPG4WIN_IPKG([man_advanced_en])

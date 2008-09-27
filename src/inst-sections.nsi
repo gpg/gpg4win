@@ -121,6 +121,9 @@
 !ifdef HAVE_PKG_GNUTLS
 !include "inst-gnutls.nsi"
 !endif
+!ifdef HAVE_PKG_CURL
+!include "inst-curl.nsi"
+!endif
 !ifdef HAVE_PKG_PINENTRY
 !include "inst-pinentry.nsi"
 !endif
@@ -153,6 +156,15 @@
 !endif
 !ifdef HAVE_PKG_CLAWS_MAIL
 !include "inst-claws-mail.nsi"
+!endif
+!ifdef HAVE_PKG_NOTIFICATION_PLUGIN
+!include "inst-notification_plugin.nsi"
+!endif
+!ifdef HAVE_PKG_GTKHTML2_VIEWER
+!include "inst-gtkhtml2_viewer.nsi"
+!endif
+!ifdef HAVE_PKG_VCALENDAR
+!include "inst-vcalendar.nsi"
 !endif
 #!ifdef HAVE_PKG_EUDORAGPG
 #!include "inst-eudoragpg.nsi"
@@ -198,6 +210,15 @@
 !ifdef HAVE_PKG_CLAWS_MAIL
 !include "uninst-claws-mail.nsi"
 !endif
+!ifdef HAVE_PKG_NOTIFICATION_PLUGIN
+!include "uninst-notification_plugin.nsi"
+!endif
+!ifdef HAVE_PKG_GTKHTML2_VIEWER
+!include "uninst-gtkhtml2_viewer.nsi"
+!endif
+!ifdef HAVE_PKG_VCALENDAR
+!include "uninst-vcalendar.nsi"
+!endif
 !ifdef HAVE_PKG_SCUTE
 !include "uninst-scute.nsi"
 !endif
@@ -228,6 +249,9 @@
 !endif
 !ifdef HAVE_PKG_GNUTLS
 !include "uninst-gnutls.nsi"
+!endif
+!ifdef HAVE_PKG_CURL
+!include "uninst-curl.nsi"
 !endif
 !ifdef HAVE_PKG_GTK_
 !include "uninst-gtk+.nsi"
@@ -560,6 +584,9 @@ Function CalcDepends
 !ifdef HAVE_PKG_GNUTLS
   !insertmacro UnselectSection ${SEC_gnutls}
 !endif
+!ifdef HAVE_PKG_CURL
+  !insertmacro UnselectSection ${SEC_curl}
+!endif
 !ifdef HAVE_PKG_LIBGPG_ERROR
   !insertmacro UnselectSection ${SEC_libgpg_error}
 !endif
@@ -692,6 +719,8 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_regex}
   !insertmacro SelectSection ${SEC_libetpan}
   !insertmacro SelectSection ${SEC_gnutls}
+  !insertmacro SelectSection ${SEC_curl}
+  !insertmacro SelectSection ${SEC_kdesupport}
   skip_claws_mail:
 !endif
 
@@ -704,6 +733,14 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_libtasn1}
   !insertmacro SelectSection ${SEC_opencdk}
   skip_gnutls:
+!endif
+
+!ifdef HAVE_PKG_CURL
+  !insertmacro SectionFlagIsSet ${SEC_curl} ${SF_SELECTED} have_curl skip_curl
+  have_curl:
+  !insertmacro SelectSection ${SEC_zlib}
+  !insertmacro SelectSection ${SEC_gnutls}
+  skip_curl:
 !endif
 
 !ifdef HAVE_PKG_OPENCDK

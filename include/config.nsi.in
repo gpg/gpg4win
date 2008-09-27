@@ -124,6 +124,11 @@
 !define gpg4win_pkg_gnutls @gpg4win_pkg_gnutls@
 !define gpg4win_pkg_gnutls_version @gpg4win_pkg_gnutls_version@
 
+@HAVE_PKG_CURL@
+!define gpg4win_pkg_curl @gpg4win_pkg_curl@
+!define gpg4win_pkg_curl_version @gpg4win_pkg_curl_version@
+
+
 @HAVE_PKG_LIBETPAN@
 !define gpg4win_pkg_libetpan @gpg4win_pkg_libetpan@
 !define gpg4win_pkg_libetpan_version @gpg4win_pkg_libetpan_version@
@@ -131,6 +136,18 @@
 @HAVE_PKG_CLAWS_MAIL@
 !define gpg4win_pkg_claws_mail @gpg4win_pkg_claws_mail@
 !define gpg4win_pkg_claws_mail_version @gpg4win_pkg_claws_mail_version@
+
+@HAVE_PKG_NOTIFICATION_PLUGIN@
+!define gpg4win_pkg_notification_plugin @gpg4win_pkg_notification_plugin@
+!define gpg4win_pkg_notification_plugin_version @gpg4win_pkg_notification_plugin_version@
+
+@HAVE_PKG_GTKHTML2_VIEWER@
+!define gpg4win_pkg_gtkhtml2_viewer @gpg4win_pkg_gtkhtml2_viewer@
+!define gpg4win_pkg_gtkhtml2_viewer_version @gpg4win_pkg_gtkhtml2_viewer_version@
+
+@HAVE_PKG_VCALENDAR@
+!define gpg4win_pkg_vcalendar @gpg4win_pkg_vcalendar@
+!define gpg4win_pkg_vcalendar_version @gpg4win_pkg_vcalendar_version@
 
 #@HAVE_PKG_EUDORAGPG@
 #!define gpg4win_pkg_eudoragpg @gpg4win_pkg_eudoragpg@
