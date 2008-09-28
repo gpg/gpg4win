@@ -136,8 +136,8 @@ file  vcalendar-2.0cvs17.tar.gz
 chk   048810daa354443181a30ed29c806644831c45fe
 
 server http://www.claws-mail.org/win32
-file  rssyl-0.20cvs16.tar.gz
-chk   50e18b8f73d8e388326e5067607aebb3e277d387
+file  rssyl-0.20cvs17.tar.gz
+chk   1e62044490ba6d82fe4c2d4ab7472942cf50d885
 
 #
 # Pthreads for Windows.

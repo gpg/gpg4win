@@ -1,5 +1,9 @@
 2008-09-28  Colin Leroy  <colin@colino.net>
 
+	* packages/packages.current: Update RSSyl Claws plugin.
+
+2008-09-28  Colin Leroy  <colin@colino.net>
+
 	* configure.ac,
 	src/Makefile.am,
 	include/config.nsi.in,
