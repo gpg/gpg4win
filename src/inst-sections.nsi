@@ -169,6 +169,9 @@
 !ifdef HAVE_PKG_VCALENDAR
 !include "inst-vcalendar.nsi"
 !endif
+!ifdef HAVE_PKG_RSSYL
+!include "inst-rssyl.nsi"
+!endif
 #!ifdef HAVE_PKG_EUDORAGPG
 #!include "inst-eudoragpg.nsi"
 #!endif
@@ -221,6 +224,9 @@
 !endif
 !ifdef HAVE_PKG_VCALENDAR
 !include "uninst-vcalendar.nsi"
+!endif
+!ifdef HAVE_PKG_RSSYL
+!include "uninst-rssyl.nsi"
 !endif
 !ifdef HAVE_PKG_SCUTE
 !include "uninst-scute.nsi"

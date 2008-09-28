@@ -105,28 +105,39 @@ file  curl-7.19.0.tar.bz2
 chk   fffb34be2e3c66e58a5d3daaf8aa38cae33b284f
 
 #
+# libxml2 for Claws plugins
+
+server ftp://xmlsoft.org/libxml2
+file   libxml2-2.7.1.tar.gz
+chk    54b2d24ce0b716054628303bff47cf0db2966d84
+
+#
 # Claws
 #
 # (Kept on our own mirror due to Sourceforge peculiarities.)
-server http://www.claws-mail.org/win32
 
-file  claws-mail-3.5.0cvs135.tar.bz2
-chk   08f2afb30e70ef6027ade6295688872858a6032b
+server http://www.claws-mail.org/win32
+file  claws-mail-3.5.0cvs136.tar.bz2
+chk   e0e8a900f3a8f7d8ba6faf93fa07453a65851af7
 
 #
 # Claws plugins
 #
 server http://www.claws-mail.org/win32
 file  notification_plugin-0.17cvs6.tar.gz
-chk   c3ca1de4e6e6d2a611397b7910b3fbf0a09fd7bf
+chk   51677d8135e318de404d6894894431fa59a18562
 
 server http://www.claws-mail.org/win32
 file  gtkhtml2_viewer-0.19cvs11.tar.gz
-chk   5d104416873512e175c54a3c0a914116ec2acd14
+chk   83827c420941bee213b19a215175fc04eb0c7bc4
 
 server http://www.claws-mail.org/win32
-file  vcalendar-2.0cvs16.tar.gz
-chk   5ba40a81fa7fa9122bd967eda0cb03a566e58246
+file  vcalendar-2.0cvs17.tar.gz
+chk   048810daa354443181a30ed29c806644831c45fe
+
+server http://www.claws-mail.org/win32
+file  rssyl-0.20cvs16.tar.gz
+chk   50e18b8f73d8e388326e5067607aebb3e277d387
 
 #
 # Pthreads for Windows.

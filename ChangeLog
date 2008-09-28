@@ -1,3 +1,13 @@
+2008-09-28  Colin Leroy  <colin@colino.net>
+
+	* configure.ac,
+	src/Makefile.am,
+	include/config.nsi.in,
+	src/inst-sections.nsi,
+	packages/packages.current: Add RSSyl Claws plugin.
+	* src/inst-rssyl.nsi, src/uninst-rssyl.nsi,
+	New files for RSSyl.
+
 2008-09-27  Colin Leroy  <colin@colino.net>
 
 	* configure.ac,

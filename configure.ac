@@ -216,6 +216,7 @@ GPG4WIN_SPKG([claws-mail], [libiconv gettext zlib gtk+ libpng jpeg glib dnl
 GPG4WIN_SPKG([notification_plugin], [claws-mail])
 GPG4WIN_SPKG([gtkhtml2_viewer], [curl claws-mail libxml2])
 GPG4WIN_SPKG([vcalendar], [curl claws-mail])
+GPG4WIN_SPKG([rssyl], [curl claws-mail])
 GPG4WIN_IPKG([compendium_de])
 GPG4WIN_IPKG([man_novice_en])
 #GPG4WIN_IPKG([man_advanced_en])

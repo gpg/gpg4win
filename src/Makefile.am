@@ -36,6 +36,7 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi config.site \
         inst-notification_plugin.nsi	   uninst-notification_plugin.nsi      \
         inst-gtkhtml2_viewer.nsi   uninst-gtkhtml2_viewer.nsi      \
         inst-vcalendar.nsi	   uninst-vcalendar.nsi      \
+        inst-rssyl.nsi		   uninst-rssyl.nsi      \
         inst-crypt.nsi		   uninst-crypt.nsi	      \
         inst-dirmngr.nsi	   uninst-dirmngr.nsi	      \
         inst-eudoragpg.nsi	   uninst-eudoragpg.nsi	      \
@@ -87,7 +88,7 @@ CLEANFILES = g4wihelp.dll versioninfo.txt README.en.txt README.de.txt \
 gpg4win_spkgs = glib libgpg-error gpgme gpgol gpgex \
 		gpa winpt libgsasl libtasn1 opencdk gnutls curl libxml2 \
                 libetpan claws-mail notification_plugin gtkhtml2_viewer \
-		vcalendar gnupg2 pinentry libassuan libksba libgcrypt \
+		vcalendar rssyl gnupg2 pinentry libassuan libksba libgcrypt \
 		adns dirmngr w32pth scute
 
 # Extra options to configure for individual packages.
@@ -231,6 +232,9 @@ gpg4win_pkg_gtkhtml2_viewer_configure = \
   --with-lib-prefix=$(idir) --with-libiconv-prefix=$(idir) LIBS=\"-L$(idir)/bin\"
 
 gpg4win_pkg_vcalendar_configure = \
+  --with-lib-prefix=$(idir) --with-libiconv-prefix=$(idir) LIBS=\"-L$(idir)/bin\"
+
+gpg4win_pkg_rssyl_configure = \
   --with-lib-prefix=$(idir) --with-libiconv-prefix=$(idir) LIBS=\"-L$(idir)/bin\"
 
 gpg4win_pkg_scute_configure = --silent \
