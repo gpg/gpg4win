@@ -35,5 +35,6 @@ Section "-un.pinentry"
   Delete "$INSTDIR\pinentry-gtk-2.exe"
   Delete "$INSTDIR\pinentry.exe"
 
+  RMDir "$INSTDIR"
 !endif
 SectionEnd

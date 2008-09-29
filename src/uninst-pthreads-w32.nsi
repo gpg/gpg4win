@@ -31,5 +31,6 @@ Section "-un.pthreads-w32"
   Call un.SourceDelete
 !else
   Delete "$INSTDIR\pthreadGC2.dll"
+  RMDir "$INSTDIR"
 !endif
 SectionEnd

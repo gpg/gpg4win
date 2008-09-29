@@ -31,5 +31,6 @@ Section "-un.cairo"
   Call un.SourceDelete
 !else
   Delete "$INSTDIR\libcairo-2.dll"
+  RMDir "$INSTDIR"
 !endif
 SectionEnd
