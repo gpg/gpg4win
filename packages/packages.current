@@ -117,8 +117,8 @@ chk    54b2d24ce0b716054628303bff47cf0db2966d84
 # (Kept on our own mirror due to Sourceforge peculiarities.)
 
 server http://www.claws-mail.org/win32
-file  claws-mail-3.5.0cvs136.tar.bz2
-chk   e0e8a900f3a8f7d8ba6faf93fa07453a65851af7
+file  claws-mail-3.5.0cvs138.tar.bz2
+chk   c7beafe14d2d82d3c4e53b88ac219bb87a2aafbc
 
 #
 # Claws plugins
@@ -132,8 +132,8 @@ file  gtkhtml2_viewer-0.19cvs11.tar.gz
 chk   83827c420941bee213b19a215175fc04eb0c7bc4
 
 server http://www.claws-mail.org/win32
-file  vcalendar-2.0cvs17.tar.gz
-chk   048810daa354443181a30ed29c806644831c45fe
+file  vcalendar-2.0cvs18.tar.gz
+chk   cf8e651185fa2fd95331e6a69d6eebd11220a6d4
 
 server http://www.claws-mail.org/win32
 file  rssyl-0.20cvs17.tar.gz
