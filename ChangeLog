@@ -1,3 +1,10 @@
+2008-09-29  Werner Koch  <wk@g10code.com>
+
+	* patches/gnupg2/02-p12-hack.patch: Remove. 
+	* patches/gnupg2/03-argv-quote-fix.patch: Remove. 
+
+	* packages/packages.current: Update GnuPG.
+
 2008-09-29  Colin Leroy  <colin@colino.net>
 
 	* packages/packages.current: Update Claws and VCalendar (bugfixes).
