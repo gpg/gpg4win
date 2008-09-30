@@ -1,3 +1,7 @@
+2008-09-30  Colin Leroy  <colin@colino.net>
+
+	* packages/packages.current: Update Claws, vcalendar and rssyl.
+
 2008-09-30  Werner Koch  <wk@g10code.com>
 
 	* src/uninst-scute.nsi, src/inst-scute.nsi: Fix DLL name.  Always
