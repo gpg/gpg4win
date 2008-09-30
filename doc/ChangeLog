@@ -1,3 +1,10 @@
+2008-08-14  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+
+	* website/index.htm4, website/index-de.htm4 
+	website/ShortStudy-Sustainable-FS-example-Gpg4win.htm4,
+	website/Kurzstudie-Nachhaltige-FS-Beispiel-Gpg4win.htm4:
+	Changed new address of Intevation office.
+
 2008-09-26  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
 	* manual/gpg4win-compendium-de.tex, manual/Makefile.am, README-BETA-de.txt:
