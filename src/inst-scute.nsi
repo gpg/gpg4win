@@ -23,22 +23,27 @@
 !endif
 !define prefix ${ipdir}/scute-${gpg4win_pkg_scute_version}
 
-${MementoSection} "Scute" SEC_scute
+
+!ifdef DEBUG
+Section "Scute" SEC_scute
+!else
+Section "-Scute" SEC_scute
+!endif
   SetOutPath "$INSTDIR"
 !ifdef SOURCES
   File "${gpg4win_pkg_scute}"
 !else
   ClearErrors
   SetOverwrite try
-  File "${prefix}/bin/libscute-0.dll"
+  File "${prefix}/bin/scute.dll"
 
   SetOverwrite lastused
   ifErrors 0 +3
-      File /oname=libscute-0.dll.tmp "${prefix}/bin/libscute-0.dll"
-      Rename /REBOOTOK libscute-0.dll.tmp libscute-0.dll
+      File /oname=scute.dll.tmp "${prefix}/bin/scute.dll"
+      Rename /REBOOTOK scute.dll.tmp scute.dll
 
 !endif
-${MementoSectionEnd}
+SectionEnd
 
 
 LangString DESC_SEC_scute ${LANG_ENGLISH} \

@@ -30,7 +30,7 @@ Section "-un.scute"
   Push "${gpg4win_pkg_scute}"
   Call un.SourceDelete
 !else
-  Delete "$INSTDIR\libscute-0.dll"
+  Delete "$INSTDIR\scute.dll"
   RMDir "$INSTDIR"
 !endif
 SectionEnd
