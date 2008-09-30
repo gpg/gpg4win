@@ -172,6 +172,9 @@
 !ifdef HAVE_PKG_RSSYL
 !include "inst-rssyl.nsi"
 !endif
+!ifdef HAVE_PKG_TNEF_PARSE
+!include "inst-tnef_parse.nsi"
+!endif
 #!ifdef HAVE_PKG_EUDORAGPG
 #!include "inst-eudoragpg.nsi"
 #!endif
@@ -227,6 +230,9 @@
 !endif
 !ifdef HAVE_PKG_RSSYL
 !include "uninst-rssyl.nsi"
+!endif
+!ifdef HAVE_PKG_TNEF_PARSE
+!include "uninst-tnef_parse.nsi"
 !endif
 !ifdef HAVE_PKG_SCUTE
 !include "uninst-scute.nsi"

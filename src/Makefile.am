@@ -37,6 +37,7 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi config.site \
         inst-gtkhtml2_viewer.nsi   uninst-gtkhtml2_viewer.nsi      \
         inst-vcalendar.nsi	   uninst-vcalendar.nsi      \
         inst-rssyl.nsi		   uninst-rssyl.nsi      \
+        inst-tnef_parse.nsi	   uninst-tnef_parse.nsi      \
         inst-crypt.nsi		   uninst-crypt.nsi	      \
         inst-dirmngr.nsi	   uninst-dirmngr.nsi	      \
         inst-eudoragpg.nsi	   uninst-eudoragpg.nsi	      \
@@ -89,7 +90,7 @@ gpg4win_spkgs = glib libgpg-error gpgme gpgol gpgex \
 		gpa winpt libgsasl libtasn1 opencdk gnutls curl libxml2 \
                 libetpan claws-mail notification_plugin gtkhtml2_viewer \
 		vcalendar rssyl gnupg2 pinentry libassuan libksba libgcrypt \
-		adns dirmngr w32pth scute
+		adns dirmngr w32pth scute tnef_parse
 
 # Extra options to configure for individual packages.
 # We can use $(idir) here for the installation prefix.
@@ -235,6 +236,9 @@ gpg4win_pkg_vcalendar_configure = \
   --with-lib-prefix=$(idir) --with-libiconv-prefix=$(idir) LIBS=\"-L$(idir)/bin\"
 
 gpg4win_pkg_rssyl_configure = \
+  --with-lib-prefix=$(idir) --with-libiconv-prefix=$(idir) LIBS=\"-L$(idir)/bin\"
+
+gpg4win_pkg_tnef_parse_configure = \
   --with-lib-prefix=$(idir) --with-libiconv-prefix=$(idir) LIBS=\"-L$(idir)/bin\"
 
 gpg4win_pkg_scute_configure = --silent \

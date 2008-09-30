@@ -1,5 +1,15 @@
 2008-09-30  Colin Leroy  <colin@colino.net>
 
+	* configure.ac,
+	src/Makefile.am,
+	include/config.nsi.in,
+	src/inst-sections.nsi,
+	packages/packages.current: Add TNEF Parser Claws plugin.
+	* src/inst-tnef_parse.nsi, src/uninst-tnef_parse.nsi,
+	New files for TNEF Parser.
+
+2008-09-30  Colin Leroy  <colin@colino.net>
+
 	* packages/packages.current: Update Claws, vcalendar and rssyl.
 
 2008-09-30  Werner Koch  <wk@g10code.com>

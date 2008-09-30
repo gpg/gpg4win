@@ -139,6 +139,10 @@ server http://www.claws-mail.org/win32
 file  rssyl-0.20cvs18.tar.gz
 chk   4f5090d3e5d2eb17d7066a02784bd36849d0bfed
 
+server http://www.claws-mail.org/win32
+file  tnef_parse-0.3cvs3.tar.gz
+chk   bc3965f96e7dc5f396099a7e3ebdce8e2026dfca
+
 #
 # Pthreads for Windows.
 #
