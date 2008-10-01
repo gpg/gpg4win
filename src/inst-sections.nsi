@@ -647,6 +647,9 @@ Function CalcDepends
 !ifdef HAVE_PKG_RSSYL
   !insertmacro UnselectSection ${SEC_rssyl}
 !endif
+!ifdef HAVE_PKG_TNEF_PARSE
+  !insertmacro UnselectSection ${SEC_tnef_parse}
+!endif
 !ifdef HAVE_PKG_KDESUPPORT
   !insertmacro UnselectSection ${SEC_kdesupport}
 !endif
@@ -771,6 +774,7 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_gtkhtml2_viewer}
   !insertmacro SelectSection ${SEC_vcalender}
   !insertmacro SelectSection ${SEC_rssyl}
+  !insertmacro SelectSection ${SEC_tnef_parse}
   skip_claws_mail:
 !endif
 

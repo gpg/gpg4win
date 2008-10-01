@@ -1,3 +1,8 @@
+2008-10-01  Colin Leroy  <colin@colino.net>
+
+	* configure.ac, src/inst-sections.nsi: Add forgotten TNEF Parser 
+	Claws plugin.
+
 2008-10-01  Marcus Brinkmann  <marcus@g10code.com>
 
 	* src/inst-sections.nsi (CalcDepends): Add claws extensions, and
