@@ -560,12 +560,6 @@ Function CalcDepends
 !ifdef HAVE_PKG_REGEX
   !insertmacro UnselectSection ${SEC_regex}
 !endif
-!ifdef HAVE_PKG_DIRMNGR
-  !insertmacro UnselectSection ${SEC_dirmngr}
-!endif
-!ifdef HAVE_PKG_PTHREADS_W32
-  !insertmacro UnselectSection ${SEC_pthreads_w32}
-!endif
 !ifdef HAVE_PKG_LIBPNG
   !insertmacro UnselectSection ${SEC_libpng}
 !endif
@@ -581,14 +575,47 @@ Function CalcDepends
 !ifdef HAVE_PKG_ATK
   !insertmacro UnselectSection ${SEC_atk}
 !endif
-!ifdef HAVE_PKG_CAIRO
-  !insertmacro UnselectSection ${SEC_cairo}
-!endif
 !ifdef HAVE_PKG_PANGO
   !insertmacro UnselectSection ${SEC_pango}
 !endif
+!ifdef HAVE_PKG_CAIRO
+  !insertmacro UnselectSection ${SEC_cairo}
+!endif
 !ifdef HAVE_PKG_GTK_
   !insertmacro UnselectSection ${SEC_gtk_}
+!endif
+!ifdef HAVE_PKG_BZIP2
+  !insertmacro UnselectSection ${SEC_bzip2}
+!endif
+!ifdef HAVE_PKG_ADNS
+  !insertmacro UnselectSection ${SEC_adns}
+!endif
+!ifdef HAVE_PKG_LIBGPG_ERROR
+  !insertmacro UnselectSection ${SEC_libgpg_error}
+!endif
+!ifdef HAVE_PKG_LIBGCRYPT
+  !insertmacro UnselectSection ${SEC_libgcrypt}
+!endif
+!ifdef HAVE_PKG_LIBKSBA
+  !insertmacro UnselectSection ${SEC_libksba}
+!endif
+!ifdef HAVE_PKG_W32PTH
+  !insertmacro UnselectSection ${SEC_w32pth}
+!endif
+!ifdef HAVE_PKG_LIBASSUAN
+  !insertmacro UnselectSection ${SEC_libassuan}
+!endif
+!ifdef HAVE_PKG_DIRMNGR
+  !insertmacro UnselectSection ${SEC_dirmngr}
+!endif
+!ifdef HAVE_PKG_PINENTRY
+  !insertmacro UnselectSection ${SEC_pinentry}
+!endif
+!ifdef HAVE_PKG_GPGME
+  !insertmacro UnselectSection ${SEC_gpgme}
+!endif
+!ifdef HAVE_PKG_PTHREADS_W32
+  !insertmacro UnselectSection ${SEC_pthreads_w32}
 !endif
 !ifdef HAVE_PKG_LIBGSASL
   !insertmacro UnselectSection ${SEC_libgsasl}
@@ -608,29 +635,17 @@ Function CalcDepends
 !ifdef HAVE_PKG_LIBXML2
   !insertmacro UnselectSection ${SEC_libxml2}
 !endif
-!ifdef HAVE_PKG_LIBGPG_ERROR
-  !insertmacro UnselectSection ${SEC_libgpg_error}
+!ifdef HAVE_PKG_NOTIFICATION_PLUGIN
+  !insertmacro UnselectSection ${SEC_notification_plugin}
 !endif
-!ifdef HAVE_PKG_GPGME
-  !insertmacro UnselectSection ${SEC_gpgme}
+!ifdef HAVE_PKG_GTKHTML2_VIEWER
+  !insertmacro UnselectSection ${SEC_gtkhtml2_viewer}
 !endif
-!ifdef HAVE_PKG_LIBKSBA
-  !insertmacro UnselectSection ${SEC_libksba}
+!ifdef HAVE_PKG_VCALENDER
+  !insertmacro UnselectSection ${SEC_vcalender}
 !endif
-!ifdef HAVE_PKG_W32PTH
-  !insertmacro UnselectSection ${SEC_w32pth}
-!endif
-!ifdef HAVE_PKG_LIBASSUAN
-  !insertmacro UnselectSection ${SEC_libassuan}
-!endif
-!ifdef HAVE_PKG_LIBGCRYPT
-  !insertmacro UnselectSection ${SEC_libgcrypt}
-!endif
-!ifdef HAVE_PKG_ADNS
-  !insertmacro UnselectSection ${SEC_adns}
-!endif
-!ifdef HAVE_PKG_PINENTRY
-  !insertmacro UnselectSection ${SEC_pinentry}
+!ifdef HAVE_PKG_RSSYL
+  !insertmacro UnselectSection ${SEC_rssyl}
 !endif
 !ifdef HAVE_PKG_KDESUPPORT
   !insertmacro UnselectSection ${SEC_kdesupport}
@@ -651,7 +666,29 @@ Function CalcDepends
 
   !insertmacro SelectSection ${SEC_gnupg2}
 
-  # Then enable all dependencies in reverse build list order!
+  # Then enable all dependencies, mostly in reverse build list order!
+  # An exception are the claws plugins, which are build after claws,
+  # but are installed as a dependency of claws.
+
+  # First the explicitely installed packages.
+
+!ifdef HAVE_PKG_SCUTE
+  !insertmacro SectionFlagIsSet ${SEC_scute} \
+		${SF_SELECTED} have_scute skip_scute
+  have_scute:
+  # All dependencies are linked in statically.
+  skip_scute:
+!endif
+
+!ifdef HAVE_PKG_GPGEX
+  !insertmacro SectionFlagIsSet ${SEC_gpgex} \
+		${SF_SELECTED} have_gpgex skip_gpgex
+  have_gpgex:
+  # This is not a build dependency, but it is a run-t
+  !insertmacro SelectSection ${SEC_kleopatra}
+  # Other dependencies are linked in statically.
+  skip_gpgex:
+!endif
 
 !ifdef HAVE_PKG_GPGOL
   !insertmacro SectionFlagIsSet ${SEC_gpgol} \
@@ -660,22 +697,6 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_gpgme}
   !insertmacro SelectSection ${SEC_kleopatra}
   skip_gpgol:
-!endif
-
-!ifdef HAVE_PKG_GPGEX
-  !insertmacro SectionFlagIsSet ${SEC_gpgex} \
-		${SF_SELECTED} have_gpgex skip_gpgex
-  have_gpgex:
-  !insertmacro SelectSection ${SEC_kleopatra}
-  skip_gpgex:
-!endif
-
-!ifdef HAVE_PKG_SCUTE
-  !insertmacro SectionFlagIsSet ${SEC_scute} \
-		${SF_SELECTED} have_scute skip_scute
-  have_scute:
-  # All dependencies are linked in statically.
-  skip_scute:
 !endif
 
 !ifdef HAVE_PKG_KLEOPATRA
@@ -718,6 +739,8 @@ Function CalcDepends
 !ifdef HAVE_PKG_GPA
   !insertmacro SectionFlagIsSet ${SEC_gpa} ${SF_SELECTED} have_gpa skip_gpa
   have_gpa:
+  !insertmacro SelectSection ${SEC_libiconv}
+  !insertmacro SelectSection ${SEC_gettext}
   !insertmacro SelectSection ${SEC_zlib}
   !insertmacro SelectSection ${SEC_gtk_}
   !insertmacro SelectSection ${SEC_libpng}
@@ -729,6 +752,8 @@ Function CalcDepends
 !ifdef HAVE_PKG_CLAWS_MAIL
   !insertmacro SectionFlagIsSet ${SEC_claws_mail} ${SF_SELECTED} have_claws_mail skip_claws_mail
   have_claws_mail:
+  !insertmacro SelectSection ${SEC_libiconv}
+  !insertmacro SelectSection ${SEC_gettext}
   !insertmacro SelectSection ${SEC_zlib}
   !insertmacro SelectSection ${SEC_gtk_}
   !insertmacro SelectSection ${SEC_libpng}
@@ -740,145 +765,16 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_regex}
   !insertmacro SelectSection ${SEC_libetpan}
   !insertmacro SelectSection ${SEC_gnutls}
-  !insertmacro SelectSection ${SEC_curl}
-  !insertmacro SelectSection ${SEC_libxml2}
+  # These are not build dependencies, but we always want to install
+  # all plugins.
+  !insertmacro SelectSection ${SEC_notification_plugin}
+  !insertmacro SelectSection ${SEC_gtkhtml2_viewer}
+  !insertmacro SelectSection ${SEC_vcalender}
+  !insertmacro SelectSection ${SEC_rssyl}
   skip_claws_mail:
 !endif
 
-!ifdef HAVE_PKG_GNUTLS
-  !insertmacro SectionFlagIsSet ${SEC_gnutls} ${SF_SELECTED} have_gnutls skip_gnutls
-  have_gnutls:
-  !insertmacro SelectSection ${SEC_zlib}
-  !insertmacro SelectSection ${SEC_libgcrypt}
-  !insertmacro SelectSection ${SEC_libgsasl}
-  !insertmacro SelectSection ${SEC_libtasn1}
-  !insertmacro SelectSection ${SEC_opencdk}
-  skip_gnutls:
-!endif
-
-!ifdef HAVE_PKG_CURL
-  !insertmacro SectionFlagIsSet ${SEC_curl} ${SF_SELECTED} have_curl skip_curl
-  have_curl:
-  !insertmacro SelectSection ${SEC_zlib}
-  !insertmacro SelectSection ${SEC_gnutls}
-  skip_curl:
-!endif
-
-!ifdef HAVE_PKG_LIBXML2
-  !insertmacro SectionFlagIsSet ${SEC_libxml2} ${SF_SELECTED} have_libxml2 skip_libxml2
-  have_libxml2:
-  !insertmacro SelectSection ${SEC_zlib}
-  skip_libxml2:
-!endif
-
-!ifdef HAVE_PKG_OPENCDK
-  !insertmacro SectionFlagIsSet ${SEC_opencdk} ${SF_SELECTED} have_opencdk skip_opencdk
-  have_opencdk:
-  !insertmacro SelectSection ${SEC_libgcrypt}
-  !insertmacro SelectSection ${SEC_libgpg_error}
-  skip_opencdk:
-!endif
-
-!ifdef HAVE_PKG_GTK_
-  !insertmacro SectionFlagIsSet ${SEC_gtk_} \
-		${SF_SELECTED} have_gtk_ skip_gtk_
-  have_gtk_:
-  !insertmacro SelectSection ${SEC_atk}
-  !insertmacro SelectSection ${SEC_cairo}
-  !insertmacro SelectSection ${SEC_pango}
-  !insertmacro SelectSection ${SEC_glib}
-  !insertmacro SelectSection ${SEC_libiconv}
-  !insertmacro SelectSection ${SEC_gettext}
-  !insertmacro SelectSection ${SEC_pkgconfig}
-  skip_gtk_:
-!endif
-
-!ifdef HAVE_PKG_ATK
-  !insertmacro SectionFlagIsSet ${SEC_atk} \
-		${SF_SELECTED} have_atk skip_atk
-  have_atk:
-  !insertmacro SelectSection ${SEC_glib}
-  !insertmacro SelectSection ${SEC_pkgconfig}
-  skip_atk:
-!endif
-
-!ifdef HAVE_PKG_CAIRO
-  !insertmacro SectionFlagIsSet ${SEC_cairo} \
-		${SF_SELECTED} have_cairo skip_cairo
-  have_cairo:
-  !insertmacro SelectSection ${SEC_glib}
-  !insertmacro SelectSection ${SEC_pkgconfig}
-  skip_cairo:
-!endif
-
-!ifdef HAVE_PKG_PANGO
-  !insertmacro SectionFlagIsSet ${SEC_pango} \
-		${SF_SELECTED} have_pango skip_pango
-  have_pango:
-  !insertmacro SelectSection ${SEC_glib}
-  !insertmacro SelectSection ${SEC_pkgconfig}
-  skip_pango:
-!endif
-
-!ifdef HAVE_PKG_LIBPNG
-  !insertmacro SectionFlagIsSet ${SEC_libpng} \
-		${SF_SELECTED} have_libpng skip_libpng
-  have_libpng:
-  !insertmacro SelectSection ${SEC_pkgconfig}
-  skip_libpng:
-!endif
-
-!ifdef HAVE_PKG_DIRMNGR
-  !insertmacro SectionFlagIsSet ${SEC_dirmngr} ${SF_SELECTED} have_dirmngr skip_dirmngr
-  have_dirmngr:
-  !insertmacro SelectSection ${SEC_libgcrypt}
-  !insertmacro SelectSection ${SEC_libksba}
-  !insertmacro SelectSection ${SEC_libassuan}
-  !insertmacro SelectSection ${SEC_libgpg_error}
-  !insertmacro SelectSection ${SEC_w32pth}
-  skip_dirmngr:
-!endif
-
-!ifdef HAVE_PKG_GLIB
-  !insertmacro SectionFlagIsSet ${SEC_glib} \
-		${SF_SELECTED} have_glib skip_glib
-  have_glib:
-  !insertmacro SelectSection ${SEC_pkgconfig}
-  skip_glib:
-!endif
-
-!ifdef HAVE_PKG_GETTEXT
-  !insertmacro SectionFlagIsSet ${SEC_gettext} \
-		${SF_SELECTED} have_gettext skip_gettext
-  have_gettext:
-  !insertmacro SelectSection ${SEC_libiconv}
-  skip_gettext:
-!endif
-
-!ifdef HAVE_PKG_GPGME
-  !insertmacro SectionFlagIsSet ${SEC_gpgme} \
-		${SF_SELECTED} have_gpgme skip_gpgme
-  have_gpgme:
-  # GPGME does not depend on gnupg2.  Do this in the
-  # actual application instead.
-  !insertmacro SelectSection ${SEC_libgpg_error}
-!ifdef HAVE_PKG_QT
-  !insertmacro SelectSection ${SEC_qt}
-!endif  
-   skip_gpgme:
-!endif
-
-!ifdef HAVE_PKG_LIBGCRYPT
-  !insertmacro SectionFlagIsSet ${SEC_libgcrypt} ${SF_SELECTED} have_libgcrypt skip_libgcrypt
-  have_libgcrypt:
-  !insertmacro SelectSection ${SEC_libgpg_error}
-  skip_libgcrypt:
-!endif
-
-  # Package "zlib" has no dependencies.
-  # Package "pkgconfig" has no dependencies.
-  # Package "libgpg-error" has no dependencies.
-  # Package "libiconv" has no dependencies.
+  # Now the implicitely installed packages.
 
 !ifdef HAVE_PKG_KDELIBS
   !insertmacro SectionFlagIsSet ${SEC_kdelibs} \
@@ -899,6 +795,216 @@ Function CalcDepends
 
   # Package "kdesupport" has no dependencies.
   # Package "oxygen-icons" has no dependencies.
+
+!ifdef HAVE_PKG_RSSYL
+  !insertmacro SectionFlagIsSet ${SEC_rssyl} ${SF_SELECTED} have_rssyl skip_rssyl
+  have_rssyl:
+  !insertmacro SelectSection ${SEC_curl}
+  skip_rssyl:
+!endif
+
+!ifdef HAVE_PKG_VCALENDER
+  !insertmacro SectionFlagIsSet ${SEC_vcalender} ${SF_SELECTED} have_vcalender skip_vcalender
+  have_vcalender:
+  !insertmacro SelectSection ${SEC_curl}
+  skip_vcalender:
+!endif
+
+!ifdef HAVE_PKG_GTKHTML2_VIEWER
+  !insertmacro SectionFlagIsSet ${SEC_gtkhtml2_viewer} ${SF_SELECTED} have_gtkhtml2_viewer skip_gtkhtml2_viewer
+  have_gtkhtml2_viewer:
+  !insertmacro SelectSection ${SEC_curl}
+  !insertmacro SelectSection ${SEC_libxml2}
+  skip_gtkhtml2_viewer:
+!endif
+
+!ifdef HAVE_PKG_NOTIFICATION_PLUGIN
+  !insertmacro SectionFlagIsSet ${SEC_notification_plugin} ${SF_SELECTED} have_notification_plugin skip_notification_plugin
+  have_notification_plugin:
+  !insertmacro SelectSection ${SEC_curl}
+  skip_notification_plugin:
+!endif
+
+!ifdef HAVE_PKG_LIBXML2
+  !insertmacro SectionFlagIsSet ${SEC_libxml2} ${SF_SELECTED} have_libxml2 skip_libxml2
+  have_libxml2:
+  !insertmacro SelectSection ${SEC_zlib}
+  skip_libxml2:
+!endif
+
+!ifdef HAVE_PKG_CURL
+  !insertmacro SectionFlagIsSet ${SEC_curl} ${SF_SELECTED} have_curl skip_curl
+  have_curl:
+  !insertmacro SelectSection ${SEC_zlib}
+  !insertmacro SelectSection ${SEC_gnutls}
+  skip_curl:
+!endif
+
+!ifdef HAVE_PKG_LIBETPAN
+  !insertmacro SectionFlagIsSet ${SEC_libetpan} ${SF_SELECTED} have_libetpan skip_libetpan
+  have_libetpan:
+  !insertmacro SelectSection ${SEC_pthreads_w32}
+  !insertmacro SelectSection ${SEC_gnutls}
+  skip_libetpan:
+!endif
+
+!ifdef HAVE_PKG_GNUTLS
+  !insertmacro SectionFlagIsSet ${SEC_gnutls} ${SF_SELECTED} have_gnutls skip_gnutls
+  have_gnutls:
+  !insertmacro SelectSection ${SEC_libgsasl}
+  !insertmacro SelectSection ${SEC_libtasn1}
+  !insertmacro SelectSection ${SEC_opencdk}
+  skip_gnutls:
+!endif
+
+!ifdef HAVE_PKG_OPENCDK
+  !insertmacro SectionFlagIsSet ${SEC_opencdk} ${SF_SELECTED} have_opencdk skip_opencdk
+  have_opencdk:
+  !insertmacro SelectSection ${SEC_libgcrypt}
+  !insertmacro SelectSection ${SEC_libgpg_error}
+  skip_opencdk:
+!endif
+
+  # Package "libtasn1" has no dependencies.
+  # Package "libgsasl" has no dependencies.
+  # Package "pthreads-w32" has no dependencies.
+
+!ifdef HAVE_PKG_GPGME
+  !insertmacro SectionFlagIsSet ${SEC_gpgme} \
+		${SF_SELECTED} have_gpgme skip_gpgme
+  have_gpgme:
+  # GPGME does not depend on gnupg2.  Do this in the
+  # actual application instead.
+  !insertmacro SelectSection ${SEC_libgpg_error}
+!ifdef HAVE_PKG_QT
+  !insertmacro SelectSection ${SEC_qt}
+!endif  
+   skip_gpgme:
+!endif
+
+!ifdef HAVE_PKG_PINENTRY
+  !insertmacro SectionFlagIsSet ${SEC_pinentry} \
+		${SF_SELECTED} have_pinentry skip_pinentry
+  have_pinentry:
+  !insertmacro SelectSection ${SEC_libiconv}
+  !insertmacro SelectSection ${SEC_gtk_}
+   skip_pinentry:
+!endif
+
+!ifdef HAVE_PKG_DIRMNGR
+  !insertmacro SectionFlagIsSet ${SEC_dirmngr} ${SF_SELECTED} have_dirmngr skip_dirmngr
+  have_dirmngr:
+  !insertmacro SelectSection ${SEC_libgpg_error}
+  !insertmacro SelectSection ${SEC_libgcrypt}
+  !insertmacro SelectSection ${SEC_libassuan}
+  !insertmacro SelectSection ${SEC_libksba}
+  !insertmacro SelectSection ${SEC_w32pth}
+  skip_dirmngr:
+!endif
+
+!ifdef HAVE_PKG_LIBASSUAN
+  !insertmacro SectionFlagIsSet ${SEC_libassuan} ${SF_SELECTED} have_libassuan skip_libassuan
+  have_libassuan:
+  !insertmacro SelectSection ${SEC_libgpg_error}
+  !insertmacro SelectSection ${SEC_w32pth}
+  skip_libassuan:
+!endif
+
+  # Package "w32pth" has no dependencies.
+
+!ifdef HAVE_PKG_LIBKSBA
+  !insertmacro SectionFlagIsSet ${SEC_libksba} ${SF_SELECTED} have_libksba skip_libksba
+  have_libksba:
+  !insertmacro SelectSection ${SEC_libgpg_error}
+  skip_libksba:
+!endif
+
+!ifdef HAVE_PKG_LIBGPG_ERROR
+  !insertmacro SectionFlagIsSet ${SEC_libgpg_error} ${SF_SELECTED} have_libgpg_error skip_libgpg_error
+  have_libgpg_error:
+  !insertmacro SelectSection ${SEC_iconv}
+  !insertmacro SelectSection ${SEC_gettext}
+  skip_libgpg_error:
+!endif
+
+  # Package "adns" has no dependencies.
+  # Package "bzip2" has no dependencies.
+
+!ifdef HAVE_PKG_GTK_
+  !insertmacro SectionFlagIsSet ${SEC_gtk_} \
+		${SF_SELECTED} have_gtk_ skip_gtk_
+  have_gtk_:
+  !insertmacro SelectSection ${SEC_libiconv}
+  !insertmacro SelectSection ${SEC_gettext}
+  !insertmacro SelectSection ${SEC_pkgconfig}
+  !insertmacro SelectSection ${SEC_atk}
+  !insertmacro SelectSection ${SEC_pango}
+  !insertmacro SelectSection ${SEC_glib}
+  !insertmacro SelectSection ${SEC_cairo}
+  skip_gtk_:
+!endif
+
+!ifdef HAVE_PKG_CAIRO
+  !insertmacro SectionFlagIsSet ${SEC_cairo} \
+		${SF_SELECTED} have_cairo skip_cairo
+  have_cairo:
+  !insertmacro SelectSection ${SEC_glib}
+  !insertmacro SelectSection ${SEC_pkgconfig}
+  skip_cairo:
+!endif
+
+!ifdef HAVE_PKG_PANGO
+  !insertmacro SectionFlagIsSet ${SEC_pango} \
+		${SF_SELECTED} have_pango skip_pango
+  have_pango:
+  !insertmacro SelectSection ${SEC_glib}
+  !insertmacro SelectSection ${SEC_pkgconfig}
+  skip_pango:
+!endif
+
+!ifdef HAVE_PKG_ATK
+  !insertmacro SectionFlagIsSet ${SEC_atk} \
+		${SF_SELECTED} have_atk skip_atk
+  have_atk:
+  !insertmacro SelectSection ${SEC_glib}
+  !insertmacro SelectSection ${SEC_pkgconfig}
+  skip_atk:
+!endif
+
+!ifdef HAVE_PKG_GLIB
+  !insertmacro SectionFlagIsSet ${SEC_glib} \
+		${SF_SELECTED} have_glib skip_glib
+  have_glib:
+  !insertmacro SelectSection ${SEC_libiconv}
+  !insertmacro SelectSection ${SEC_gettext}
+  !insertmacro SelectSection ${SEC_pkgconfig}
+  skip_glib:
+!endif
+
+  # Package "pkgconfig" has no dependencies.
+  # Package "jpeg" has no dependencies.
+
+!ifdef HAVE_PKG_LIBPNG
+  !insertmacro SectionFlagIsSet ${SEC_libpng} \
+		${SF_SELECTED} have_libpng skip_libpng
+  have_libpng:
+  !insertmacro SelectSection ${SEC_pkgconfig}
+  skip_libpng:
+!endif
+
+  # Package "regex" has no dependencies.
+  # Package "crypt" has no dependencies.
+  # Package "zlib" has no dependencies.
+
+!ifdef HAVE_PKG_GETTEXT
+  !insertmacro SectionFlagIsSet ${SEC_gettext} \
+		${SF_SELECTED} have_gettext skip_gettext
+  have_gettext:
+  !insertmacro SelectSection ${SEC_libiconv}
+  skip_gettext:
+!endif
+
+  # Package "libiconv" has no dependencies.
 
 FunctionEnd
 
