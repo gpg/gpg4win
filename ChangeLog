@@ -1,5 +1,9 @@
 2008-10-01  Colin Leroy  <colin@colino.net>
 
+	* packages/packages.current: Update vcalendar (bugfix)
+
+2008-10-01  Colin Leroy  <colin@colino.net>
+
 	* configure.ac, src/inst-sections.nsi: Add forgotten TNEF Parser 
 	Claws plugin.
 
