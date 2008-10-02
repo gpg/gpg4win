@@ -1,5 +1,9 @@
 2008-10-02  Colin Leroy  <colin@colino.net>
 
+	* src/gpg4win.nsi: Fix build with manuals disabled.
+
+2008-10-02  Colin Leroy  <colin@colino.net>
+
 	* packages/packages.current: Update vcalendar (bugfix) and
 	Claws Mail (crasher fix)
 
