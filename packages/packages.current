@@ -117,31 +117,31 @@ chk    54b2d24ce0b716054628303bff47cf0db2966d84
 # (Kept on our own mirror due to Sourceforge peculiarities.)
 
 server http://www.claws-mail.org/win32
-file  claws-mail-3.5.0cvs144.tar.bz2
-chk   5b47784e9df2d5febd9f4aaa8c599ea896afb749
+file  claws-mail-3.6.0.tar.bz2
+chk   87b185e98eb365a71af079971a7278bbb5661cc1
 
 #
 # Claws plugins
 #
 server http://www.claws-mail.org/win32
-file  notification_plugin-0.17cvs6.tar.gz
-chk   51677d8135e318de404d6894894431fa59a18562
+file  notification_plugin-0.18.tar.gz
+chk   9fc477bfdcbbaaaa7541c89c6642fe9647b7a164
 
 server http://www.claws-mail.org/win32
-file  gtkhtml2_viewer-0.19cvs11.tar.gz
-chk   83827c420941bee213b19a215175fc04eb0c7bc4
+file  gtkhtml2_viewer-0.20.tar.gz
+chk   014874ce017023c87bddb4e6b545ef4dc1eca794
 
 server http://www.claws-mail.org/win32
-file  vcalendar-2.0cvs22.tar.gz
-chk   e587fdd561954d667fe3eea600ea4cbb76a386b5
+file  vcalendar-2.0.1.tar.gz
+chk   7e9381cd9a15b4edeb582b32e212fb3a48d4f806
 
 server http://www.claws-mail.org/win32
-file  rssyl-0.20cvs18.tar.gz
-chk   4f5090d3e5d2eb17d7066a02784bd36849d0bfed
+file  rssyl-0.21.tar.gz
+chk   1285b79faf5567ff2c8784fc1cb0042fb57866a3
 
 server http://www.claws-mail.org/win32
-file  tnef_parse-0.3cvs3.tar.gz
-chk   bc3965f96e7dc5f396099a7e3ebdce8e2026dfca
+file  tnef_parse-0.3.1.tar.gz
+chk   466232643e40b6c53e17449f4ee0c8bf1189d0b9
 
 #
 # Pthreads for Windows.

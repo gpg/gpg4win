@@ -1,3 +1,8 @@
+2008-10-03  Colin Leroy  <colin@colino.net>
+
+	* packages/packages.current: Update Claws and its plugins
+	(release 3.6.0)
+
 2008-10-02  Colin Leroy  <colin@colino.net>
 
 	* src/gpg4win.nsi: Fix build with manuals disabled.
