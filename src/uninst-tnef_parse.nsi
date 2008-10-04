@@ -33,6 +33,11 @@ Section "-un.tnef_parse"
   RMDir "$INSTDIR\lib\claws-mail\plugins"
   RMDir "$INSTDIR\lib\claws-mail"
   RMDir "$INSTDIR\lib"
+  Delete "$INSTDIR\share\locale\fr\LC_MESSAGES\tnef_parse.mo"
+  RMDir "$INSTDIR\share\locale\fr\LC_MESSAGES"
+  RMDir "$INSTDIR\share\locale\fr"
+  RMDir "$INSTDIR\share\locale"
+  RMDir "$INSTDIR\share"
   RMDir "$INSTDIR"
 
 !endif

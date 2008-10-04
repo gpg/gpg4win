@@ -35,5 +35,9 @@ Section "-rssyl" SEC_rssyl
   SetOutPath "$INSTDIR\lib\claws-mail\plugins"
   File ${prefix}/lib/claws-mail/plugins/rssyl.dll
 
+  SetOutPath "$INSTDIR\share\locale\fr\LC_MESSAGES"
+  File ${prefix}/share/locale/fr/LC_MESSAGES/rssyl.mo
+  SetOutPath "$INSTDIR\share\locale\de\LC_MESSAGES"
+  File ${prefix}/share/locale/de/LC_MESSAGES/rssyl.mo
 !endif
 SectionEnd

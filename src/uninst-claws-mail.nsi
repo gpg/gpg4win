@@ -46,6 +46,12 @@ Section "-un.claws-mail"
   RMDir "$INSTDIR\lib"
 
   Delete "$INSTDIR\share\locale\de\LC_MESSAGES\claws-mail.mo"
+  Delete "$INSTDIR\share\locale\fr\LC_MESSAGES\claws-mail.mo"
+  RMDir "$INSTDIR\share\locale\de\LC_MESSAGES"
+  RMDir "$INSTDIR\share\locale\de"
+  RMDir "$INSTDIR\share\locale\fr\LC_MESSAGES"
+  RMDir "$INSTDIR\share\locale\fr"
+  RMDir "$INSTDIR\share\locale"
 
   RMDir "$INSTDIR\share\claws-mail"
   RMDir "$INSTDIR\share"

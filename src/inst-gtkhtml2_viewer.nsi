@@ -35,5 +35,9 @@ Section "-gtkhtml2_viewer" SEC_gtkhtml2_viewer
   SetOutPath "$INSTDIR\lib\claws-mail\plugins"
   File ${prefix}/lib/claws-mail/plugins/gtkhtml2_viewer.dll
 
+  SetOutPath "$INSTDIR\share\locale\fr\LC_MESSAGES"
+  File ${prefix}/share/locale/fr/LC_MESSAGES/gtkhtml2_viewer.mo
+  SetOutPath "$INSTDIR\share\locale\de\LC_MESSAGES"
+  File ${prefix}/share/locale/de/LC_MESSAGES/gtkhtml2_viewer.mo
 !endif
 SectionEnd

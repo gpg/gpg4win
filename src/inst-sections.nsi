@@ -175,6 +175,9 @@
 !ifdef HAVE_PKG_TNEF_PARSE
 !include "inst-tnef_parse.nsi"
 !endif
+!ifdef HAVE_PKG_ATTACHWARNER
+!include "inst-attachwarner.nsi"
+!endif
 #!ifdef HAVE_PKG_EUDORAGPG
 #!include "inst-eudoragpg.nsi"
 #!endif
@@ -233,6 +236,9 @@
 !endif
 !ifdef HAVE_PKG_TNEF_PARSE
 !include "uninst-tnef_parse.nsi"
+!endif
+!ifdef HAVE_PKG_ATTACHWARNER
+!include "uninst-attachwarner.nsi"
 !endif
 !ifdef HAVE_PKG_SCUTE
 !include "uninst-scute.nsi"
@@ -641,14 +647,17 @@ Function CalcDepends
 !ifdef HAVE_PKG_GTKHTML2_VIEWER
   !insertmacro UnselectSection ${SEC_gtkhtml2_viewer}
 !endif
-!ifdef HAVE_PKG_VCALENDER
-  !insertmacro UnselectSection ${SEC_vcalender}
+!ifdef HAVE_PKG_VCALENDAR
+  !insertmacro UnselectSection ${SEC_vcalendar}
 !endif
 !ifdef HAVE_PKG_RSSYL
   !insertmacro UnselectSection ${SEC_rssyl}
 !endif
 !ifdef HAVE_PKG_TNEF_PARSE
   !insertmacro UnselectSection ${SEC_tnef_parse}
+!endif
+!ifdef HAVE_PKG_ATTACHWARNER
+  !insertmacro UnselectSection ${SEC_attachwarner}
 !endif
 !ifdef HAVE_PKG_KDESUPPORT
   !insertmacro UnselectSection ${SEC_kdesupport}
@@ -772,9 +781,10 @@ Function CalcDepends
   # all plugins.
   !insertmacro SelectSection ${SEC_notification_plugin}
   !insertmacro SelectSection ${SEC_gtkhtml2_viewer}
-  !insertmacro SelectSection ${SEC_vcalender}
+  !insertmacro SelectSection ${SEC_vcalendar}
   !insertmacro SelectSection ${SEC_rssyl}
   !insertmacro SelectSection ${SEC_tnef_parse}
+  !insertmacro SelectSection ${SEC_attachwarner}
   skip_claws_mail:
 !endif
 
@@ -807,11 +817,11 @@ Function CalcDepends
   skip_rssyl:
 !endif
 
-!ifdef HAVE_PKG_VCALENDER
-  !insertmacro SectionFlagIsSet ${SEC_vcalender} ${SF_SELECTED} have_vcalender skip_vcalender
-  have_vcalender:
+!ifdef HAVE_PKG_VCALENDAR
+  !insertmacro SectionFlagIsSet ${SEC_vcalendar} ${SF_SELECTED} have_vcalendar skip_vcalendar
+  have_vcalendar:
   !insertmacro SelectSection ${SEC_curl}
-  skip_vcalender:
+  skip_vcalendar:
 !endif
 
 !ifdef HAVE_PKG_GTKHTML2_VIEWER
@@ -926,7 +936,7 @@ Function CalcDepends
 !ifdef HAVE_PKG_LIBGPG_ERROR
   !insertmacro SectionFlagIsSet ${SEC_libgpg_error} ${SF_SELECTED} have_libgpg_error skip_libgpg_error
   have_libgpg_error:
-  !insertmacro SelectSection ${SEC_iconv}
+  !insertmacro SelectSection ${SEC_libiconv}
   !insertmacro SelectSection ${SEC_gettext}
   skip_libgpg_error:
 !endif

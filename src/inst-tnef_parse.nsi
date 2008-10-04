@@ -35,5 +35,7 @@ Section "-tnef_parse" SEC_tnef_parse
   SetOutPath "$INSTDIR\lib\claws-mail\plugins"
   File ${prefix}/lib/claws-mail/plugins/tnef_parse.dll
 
+  SetOutPath "$INSTDIR\share\locale\fr\LC_MESSAGES"
+  File ${prefix}/share/locale/fr/LC_MESSAGES/tnef_parse.mo
 !endif
 SectionEnd

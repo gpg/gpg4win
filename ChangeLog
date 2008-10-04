@@ -1,3 +1,27 @@
+2008-10-04  Colin Leroy  <colin@colino.net>
+
+	* configure.ac,
+	* packages/packages.current,
+	* include/config.nsi.in: Add Attachwarner plugin; fix a few
+	typos
+	* src/inst-attachwarner.nsi,
+	* src/uninst-attachwarner.nsi,
+	* src/inst-gtkhtml2_viewer.nsi,
+	* src/uninst-gtkhtml2_viewer.nsi,
+	* src/inst-notification_plugin,
+	* src/uninst-notification_plugin,
+	* src/inst-tnef_parse.nsi,
+	* src/uninst-tnef_parse.nsi,
+	* src/inst-rssyl.nsi,
+	* src/uninst-rssyl.nsi,
+	* src/inst-vcalendar.nsi,
+	* src/uninst-vcalendar.nsi,
+	* src/inst-claws-mail.nsi,
+	* src/uninst-claws-mail.nsi,
+	* src/inst-sections.nsi,
+	* src/Makefile.am: Add Attachwarner plugin; add fr and de 
+	translations where possible; fix a few typos.
+
 2008-10-03  Colin Leroy  <colin@colino.net>
 
 	* packages/packages.current: Update Claws and its plugins

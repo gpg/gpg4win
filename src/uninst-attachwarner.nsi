@@ -1,4 +1,4 @@
-# uninst-notification_plugin.nsi - Installer snippet for notification_plugin.-*- coding: latin-1; -*-
+# uninst-attachwarner.nsi - Installer snippet for attachwarner.-*- coding: latin-1; -*-
 # Copyright (C) 2005, 2007 g10 Code GmbH
 # 
 # This file is part of GPG4Win.
@@ -20,24 +20,27 @@
 !ifdef prefix
 !undef prefix
 !endif
-!define prefix ${ipdir}/notification_plugin-${gpg4win_pkg_notification_plugin_version}
+!define prefix ${ipdir}/attachwarner-${gpg4win_pkg_attachwarner_version}
 
 
 ; Uninstaller section.
-Section "-un.notification_plugin"
+Section "-un.attachwarner"
 !ifdef SOURCES
-  Push "${gpg4win_pkg_notification_plugin}"
+  Push "${gpg4win_pkg_attachwarner}"
   Call un.SourceDelete
 !else
-  Delete "$INSTDIR\lib\claws-mail\plugins\notification_plugin.dll"
+  Delete "$INSTDIR\lib\claws-mail\plugins\attachwarner.dll"
   RMDir "$INSTDIR\lib\claws-mail\plugins"
   RMDir "$INSTDIR\lib\claws-mail"
-  RMDir "$INSTDIR\lib"
-  Delete "$INSTDIR\share\locale\fr\LC_MESSAGES\notification_plugin.mo"
+  Delete "$INSTDIR\share\locale\de\LC_MESSAGES\attachwarner.mo"
+  Delete "$INSTDIR\share\locale\fr\LC_MESSAGES\attachwarner.mo"
+  RMDir "$INSTDIR\share\locale\de\LC_MESSAGES"
+  RMDir "$INSTDIR\share\locale\de"
   RMDir "$INSTDIR\share\locale\fr\LC_MESSAGES"
   RMDir "$INSTDIR\share\locale\fr"
   RMDir "$INSTDIR\share\locale"
   RMDir "$INSTDIR\share"
+  RMDir "$INSTDIR\lib"
   RMDir "$INSTDIR"
 
 !endif

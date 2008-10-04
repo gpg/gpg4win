@@ -160,6 +160,10 @@
 !define gpg4win_pkg_tnef_parse @gpg4win_pkg_tnef_parse@
 !define gpg4win_pkg_tnef_parse_version @gpg4win_pkg_tnef_parse_version@
 
+@HAVE_PKG_ATTACHWARNER@
+!define gpg4win_pkg_attachwarner @gpg4win_pkg_attachwarner@
+!define gpg4win_pkg_attachwarner_version @gpg4win_pkg_attachwarner_version@
+
 #@HAVE_PKG_EUDORAGPG@
 #!define gpg4win_pkg_eudoragpg @gpg4win_pkg_eudoragpg@
 #!define gpg4win_pkg_eudoragpg_version @gpg4win_pkg_eudoragpg_version@

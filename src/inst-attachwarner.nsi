@@ -1,4 +1,4 @@
-# inst-notification_plugin.nsi - Installer snippet for notification_plugin.        -*- coding: latin-1; -*-
+# inst-attachwarner.nsi - Installer snippet for attachwarner.        -*- coding: latin-1; -*-
 # Copyright (C) 2005, 2007, 2008 g10 Code GmbH
 # 
 # This file is part of GPG4Win.
@@ -20,22 +20,24 @@
 !ifdef prefix
 !undef prefix
 !endif
-!define prefix ${ipdir}/notification_plugin-${gpg4win_pkg_notification_plugin_version}
+!define prefix ${ipdir}/attachwarner-${gpg4win_pkg_attachwarner_version}
 
 !ifdef DEBUG
-Section "notification_plugin" SEC_notification_plugin
+Section "attachwarner" SEC_attachwarner
 !else
-Section "-notification_plugin" SEC_notification_plugin
+Section "-attachwarner" SEC_attachwarner
 !endif
   SetOutPath "$INSTDIR"
 !ifdef SOURCES
-  File ${gpg4win_pkg_notification_plugin}
+  File ${gpg4win_pkg_attachwarner}
 !else
 
   SetOutPath "$INSTDIR\lib\claws-mail\plugins"
-  File ${prefix}/lib/claws-mail/plugins/notification_plugin.dll
+  File ${prefix}/lib/claws-mail/plugins/attachwarner.dll
 
   SetOutPath "$INSTDIR\share\locale\fr\LC_MESSAGES"
-  File ${prefix}/share/locale/fr/LC_MESSAGES/notification_plugin.mo
+  File ${prefix}/share/locale/fr/LC_MESSAGES/attachwarner.mo
+  SetOutPath "$INSTDIR\share\locale\de\LC_MESSAGES"
+  File ${prefix}/share/locale/de/LC_MESSAGES/attachwarner.mo
 !endif
 SectionEnd

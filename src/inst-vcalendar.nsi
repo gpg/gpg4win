@@ -35,5 +35,9 @@ Section "-vcalendar" SEC_vcalendar
   SetOutPath "$INSTDIR\lib\claws-mail\plugins"
   File ${prefix}/lib/claws-mail/plugins/vcalendar.dll
 
+  SetOutPath "$INSTDIR\share\locale\fr\LC_MESSAGES"
+  File ${prefix}/share/locale/fr/LC_MESSAGES/vcalendar.mo
+  SetOutPath "$INSTDIR\share\locale\de\LC_MESSAGES"
+  File ${prefix}/share/locale/de/LC_MESSAGES/vcalendar.mo
 !endif
 SectionEnd

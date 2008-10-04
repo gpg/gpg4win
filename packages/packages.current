@@ -143,6 +143,10 @@ server http://www.claws-mail.org/win32
 file  tnef_parse-0.3.1.tar.gz
 chk   66b5caf669206a22a6be2c507197335669bd16f5
 
+server http://www.claws-mail.org/win32
+file  attachwarner-0.2.13cvs1.tar.gz
+chk   c3d2408fd4add2660dec5941814d73c83625d590
+
 #
 # Pthreads for Windows.
 #
