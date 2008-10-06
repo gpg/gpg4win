@@ -132,8 +132,8 @@ file  gtkhtml2_viewer-0.20cvs2.tar.gz
 chk   a990ace766a32090adcf79d121596ef5cb495a96
 
 server http://www.claws-mail.org/win32
-file  vcalendar-2.0.1cvs3.tar.gz
-chk   7487bec8ed9582a7e8e4eb8274c0793ae47fb4a6
+file  vcalendar-2.0.1cvs4.tar.gz
+chk   c590a944cff41bd8de46718590da9bcf39670593
 
 server http://www.claws-mail.org/win32
 file  rssyl-0.21cvs2.tar.gz
