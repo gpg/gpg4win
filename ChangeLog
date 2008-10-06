@@ -1,3 +1,10 @@
+2008-10-06  Colin Leroy  <colin@colino.net>
+
+	* packages/packages.current: Update libetpan (gnutls fix),
+	Claws Mail (gnutls fix, toolbar fix), 
+	Attachwarner (translation fix),
+	VCalendar (double-free crasher fix)
+
 2008-10-04  Colin Leroy  <colin@colino.net>
 
 	* configure.ac,
