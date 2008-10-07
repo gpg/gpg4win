@@ -428,13 +428,13 @@ chk  374053bce21eb09e28bb8aee9cc866bddfd02280
 
 server ftp://ftp.kdab.net/pub/gpg4win
 
-file kleopatra-20081007-bin.zip
+file kleopatra-20081007-2-bin.zip
 chk  0ee04522e9d36bef2a46e9d0e26c82edf0aaecef
 
 # FIXME: These belong in the bin package.
-name kleopatra-20081007-lib.zip
-file kleopatra-20081007-doc.zip
-chk  5f44b7e3343a9bf13d5a30c8a581923fb65fb226
+name kleopatra-20081007-2-lib.zip
+file kleopatra-20081007-2-doc.zip
+chk  375afcf982d9fe4c87a244198bbe5989af11c181
 
-file kleopatra-20081007-src.zip
+file kleopatra-20081007-2-src.zip
 chk  5b4fa319f0948e329c91295a8afb06d937f97c58
