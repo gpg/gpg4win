@@ -1,3 +1,7 @@
+2008-10-07  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+
+	* packages/packages.current: Update kdelibs, kleopatra, libxml2
+
 2008-10-06  Colin Leroy  <colin@colino.net>
 
 	* packages/packages.current: Update vCalendar 

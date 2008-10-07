@@ -108,8 +108,8 @@ chk   fffb34be2e3c66e58a5d3daaf8aa38cae33b284f
 # libxml2 for Claws plugins
 
 server ftp://xmlsoft.org/libxml2
-file   libxml2-2.7.1.tar.gz
-chk    54b2d24ce0b716054628303bff47cf0db2966d84
+file   libxml2-2.7.2.tar.gz
+chk    750b2bcd4ee3bf8595baf97e1881f1a57b1ef363
 
 #
 # Claws
@@ -412,29 +412,29 @@ chk  a4e673c1b1b1cc420e771413edc53ef89fe7773a
 
 server ftp://ftp.kdab.net/pub/gpg4win
 
-name kdelibs-20080904-bin.zip
-file kdelibs-for-kleo-20080904-bin.zip
-chk  88378048292388928d4f1518fe09fb5eda2a5b76
+name kdelibs-20081007-bin.zip
+file kdelibs-for-kleo-20081007-bin.zip
+chk  0f08cfffdc8769084b5dac3d06cbb2d29c81abaf
 
-name kdelibs-20080904-lib.zip
-file kdelibs-for-kleo-20080904-dev.zip
-chk  ba44536dac83d54cdbeca2c83baf46b7f5d0d089
+name kdelibs-20081007-lib.zip
+file kdelibs-for-kleo-20081007-dev.zip
+chk  a469bf193dacebbe790792859dbe257c691176a3
 
-name kdelibs-20080904-src.zip
-file kdelibs-for-kleo-20080904-src.zip
-chk  f28036419a8cefa4adf5cb954b88c71d384e2069
+name kdelibs-20081007-src.zip
+file kdelibs-for-kleo-20081007-src.zip
+chk  374053bce21eb09e28bb8aee9cc866bddfd02280
 
 # Kleopatra
 
 server ftp://ftp.kdab.net/pub/gpg4win
 
-file kleopatra-20080908-2-bin.zip
-chk  76f03bdf54fad075c9d610947bec6892b2cd36d9
+file kleopatra-20081007-bin.zip
+chk  0ee04522e9d36bef2a46e9d0e26c82edf0aaecef
 
 # FIXME: These belong in the bin package.
-name kleopatra-20080908-2-lib.zip
-file kleopatra-20080908-2-doc.zip
-chk  3cfe06473f4501648d36fa4846a99147b4eb61f9
+name kleopatra-20081007-lib.zip
+file kleopatra-20081007-doc.zip
+chk  5f44b7e3343a9bf13d5a30c8a581923fb65fb226
 
-file kleopatra-20080908-2-src.zip
-chk  14df51762fc7eb683011cc63febc7517307e0bd5
+file kleopatra-20081007-src.zip
+chk  5b4fa319f0948e329c91295a8afb06d937f97c58
