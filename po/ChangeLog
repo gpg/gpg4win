@@ -1,3 +1,7 @@
+2008-10-07  Marcus Brinkmann  <marcus@g10code.com>
+
+	* de.po: Add string for T_FoundExistingOldVersion.
+
 2008-04-25  Marcus Brinkmann  <marcus@ulysses.g10code.com>
 
 	* POTFILES.in: Remove src/inst-sylpheed.nsi.

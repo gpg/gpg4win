@@ -36,8 +36,12 @@ Section "-gpg4win" SEC_gpg4win
   FileWrite $0 "${VERSION}$\r$\n"
   FileClose $0
 
-  # Register the install directory.
+  # Register the install directory for the GnuPG suite.
   WriteRegStr HKLM "Software\GNU\GnuPG" "Install Directory" $INSTDIR
+
+  # Also write it to be recalled on new installation.  Currently
+  # disabled.
+  # WriteRegStr HKLM "Software\GNU\${PRETTY_PACKAGE_SHORT}" "Install Directory" $INSTDIR
 
   # We used to determine the language using a Registry entry.
   # Although we don't want to delete the user's Lang Resgistry Setting

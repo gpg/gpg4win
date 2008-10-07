@@ -153,7 +153,10 @@ no_quick_launch_uninstall:
   # Clean the registry.
   DeleteRegValue HKLM "Software\GNU\${PRETTY_PACKAGE_SHORT}" \
         "Install Directory"
-  DeleteRegKey /ifempty HKLM "Software\GNU\${PRETTY_PACKAGE_SHORT}" \
+  DeleteRegKey /ifempty HKLM "Software\GNU\${PRETTY_PACKAGE_SHORT}"
+  DeleteRegKey /ifempty HKLM "Software\GNU\GnuPG"
+  DeleteRegKey /ifempty HKLM "Software\GNU"
+
   # Remove Windows Add/Remove Programs support.
   DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRETTY_PACKAGE_SHORT}"
 SectionEnd

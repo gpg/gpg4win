@@ -1,3 +1,20 @@
+2008-10-07  Marcus Brinkmann  <marcus@g10code.com>
+
+	Release 1.9.8-beta.
+
+	* configure.ac: Make gnupg2 dependent on curl.
+	* src/inst-sections.nsi (CalcDepends): Likewise.
+	* packages/packages.current: Update dirmngr.
+	* src/installer.nsi: Test for major upgrade.
+	(T_FoundExistingOldVersion): New translatable string.
+	* src/installer-finish.nsi (Uninstall): Clean up more registry
+	keys.
+	* src/installer.nsi (MUI_STARTMENUPAGE_REGISTRY_ROOT): Use HKLM
+	instead of HKCU.
+	* packages/packages.current: Update kleopatra.
+	* src/inst-kleopatra.nsi, src/uninst-kleopatra.nsi: Install
+	handbook.
+
 2008-10-07  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
 	* packages/packages.current: Update kleopatra

@@ -337,11 +337,11 @@ name gnupg2-2.0.10-svn4835.tar.bz2
 file gnupg-2.0.10-svn4835.tar.bz2
 chk  aaaa650f4ae5ef01dca554b241be77ac1dfce7ac
 
-file gpgme-1.1.7-svn1327.tar.bz2
-chk  4a0b67c6678cfe5b1e8c0fb3cef5a14677015221
+file gpgme-1.1.7-svn1334.tar.bz2
+chk  ffd778b51b8db2e72cccf4d03250a40428fb243b
 
-file dirmngr-1.0.3-svn307.tar.bz2
-chk  57e70e72f8cbd99a2adadc6c9db5255929c48a26
+file dirmngr-1.0.3-svn309.tar.bz2
+chk  5f8d228c55ff2b6ebf244bdf01dff2b8f7051107
 
 
 #
@@ -428,13 +428,13 @@ chk  374053bce21eb09e28bb8aee9cc866bddfd02280
 
 server ftp://ftp.kdab.net/pub/gpg4win
 
-file kleopatra-20081007-2-bin.zip
-chk  0ee04522e9d36bef2a46e9d0e26c82edf0aaecef
+file kleopatra-20081007-3-bin.zip
+chk  9cc0b6626a20abe1f02a9765f4d4e8cb54255e70
 
 # FIXME: These belong in the bin package.
-name kleopatra-20081007-2-lib.zip
-file kleopatra-20081007-2-doc.zip
+name kleopatra-20081007-3-lib.zip
+file kleopatra-20081007-3-doc.zip
 chk  375afcf982d9fe4c87a244198bbe5989af11c181
 
-file kleopatra-20081007-2-src.zip
-chk  5b4fa319f0948e329c91295a8afb06d937f97c58
+file kleopatra-20081007-3-src.zip
+chk  3fff1ddc1a87c69c055ca8e8253615884263e45d

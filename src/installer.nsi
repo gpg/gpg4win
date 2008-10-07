@@ -148,7 +148,7 @@ Var STARTMENU_FOLDER
 
 !define MUI_PAGE_CUSTOMFUNCTION_PRE CheckIfStartMenuWanted
 !define MUI_STARTMENUPAGE_NODISABLE
-!define MUI_STARTMENUPAGE_REGISTRY_ROOT "HKCU"
+!define MUI_STARTMENUPAGE_REGISTRY_ROOT "HKLM"
 !define MUI_STARTMENUPAGE_REGISTRY_KEY "Software\GNU\${PRETTY_PACKAGE_SHORT}"
 !define MUI_STARTMENUPAGE_REGISTRY_VALUENAME "Start Menu Folder"
 
@@ -362,6 +362,13 @@ Function CheckExistingVersion
   Call TrimNewLines
   Pop $R1
 
+  # Extract major version.
+  StrCpy $0 $R1 2
+  StrCmp $0 "1." 0 secondtest
+    MessageBox MB_YESNO "$(T_FoundExistingOldVersion)" IDYES leave
+    Abort
+
+ secondtest:
   MessageBox MB_YESNO "$(T_FoundExistingVersion)" IDYES leave
   Abort
 
@@ -469,6 +476,11 @@ LangString T_InstOptFieldC  ${LANG_ENGLISH} \
 LangString T_FoundExistingVersion ${LANG_ENGLISH} \
      "Version $R1 has already been installed.  $\r$\n\
       Do you want to overwrite it with version ${VERSION}?"
+LangString T_FoundExistingOldVersion ${LANG_ENGLISH} \
+     "An old version $R1 has already been installed.  It is \
+      strongly recommended to deinstall previous versions on \
+      major upgrades. $\r$\n\
+      Do you want to continue installing Gpg4win ${VERSION} anyway?"
 LangString T_FoundExistingVersionB ${LANG_ENGLISH} \
      "A version of Gpg4Win has already been installed on the system. \
       There will be no problem installing and thus overwriting this \

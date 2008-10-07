@@ -732,6 +732,7 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_zlib}
   !insertmacro SelectSection ${SEC_adns}
   !insertmacro SelectSection ${SEC_pinentry}
+  !insertmacro SelectSection ${SEC_curl}
   !insertmacro SelectSection ${SEC_dirmngr}
   # Because we need pinentry, we also need to install GTK+
   !insertmacro SelectSection ${SEC_zlib}

@@ -25,8 +25,8 @@ min_automake_version="1.9.3"
 # Set my_issvn to "yes" for non-released code.  Remember to run an
 # "svn up" and "autogen.sh" right before creating a distribution.
 # Right after a release the make target "copy-news" is to be called!
-m4_define([my_version], [1.9.8])
-m4_define([my_issvn], [yes])
+m4_define([my_version], [1.9.8-beta])
+m4_define([my_issvn], [no])
 
 m4_define([svn_revision], m4_esyscmd([echo -n $( (svn info 2>/dev/null \
           ||echo 'Revision: 0')|sed -n '/^Revision:/ s/[^0-9]//gp'|head -1)]))
@@ -196,8 +196,9 @@ GPG4WIN_SPKG([libassuan], [libgpg-error w32pth])
 GPG4WIN_SPKG([dirmngr], [libgpg-error libgcrypt libassuan libksba w32pth])
 GPG4WIN_SPKG([pinentry], [libiconv gtk+])
 GPG4WIN_SPKG([gpgme], [libgpg-error gnupg2 glib])
+GPG4WIN_SPKG([curl], [zlib gnutls])
 GPG4WIN_SPKG([gnupg2], [libiconv libgcrypt libksba libassuan libgpg-error dnl
-                        w32pth zlib bzip2 adns pinentry])
+                        w32pth zlib bzip2 adns pinentry curl])
 GPG4WIN_SPKG([pthreads-w32])
 GPG4WIN_SPKG([gpgol], [gpgme libassuan])
 GPG4WIN_SPKG([gpgex], [libassuan])
@@ -209,7 +210,6 @@ GPG4WIN_SPKG([libtasn1])
 GPG4WIN_SPKG([opencdk], [libgpg-error libgcrypt])
 GPG4WIN_SPKG([gnutls], [libgsasl libtasn1 opencdk])
 GPG4WIN_SPKG([libetpan], [pthreads-w32 gnutls])
-GPG4WIN_SPKG([curl], [zlib gnutls])
 GPG4WIN_SPKG([libxml2], [zlib])
 GPG4WIN_SPKG([claws-mail], [libiconv gettext zlib gtk+ libpng jpeg glib dnl
                             gpgme pthreads-w32 crypt regex libetpan gnutls])
