@@ -9,7 +9,7 @@ Important Hints for Using Gpg4win 1.9-BETA
   experienced users or administrators to learn
   about the upcoming version and suggest changes.
 
-Status: Gpg4win-1.9.7 (20080909)
+Status: Gpg4win-1.9.8 (20081007)
 
 This text covers information that are
 intended to help judging whether Gpg4win 1.9
@@ -41,13 +41,13 @@ Contents of this document:
 * Important hints for using S/MIME
 * Migration
 * Most important changes in Gpg4win 1.9 compared to 1.1
-* Most important changes in Gpg4win 1.9.7 compared to 1.9.6
+* Most important changes in Gpg4win 1.9.8 compared to 1.9.7
 
 
 Important hints for present version
 ===================================
 
-- Installation package ca. 40 MByte:
+- Installation package ca. 47 MByte:
   The tools curently contain comprehensive debug information.
   This helps to analyse problems as they occur.
   For version 2.0 this debug information will be skipped
@@ -104,6 +104,10 @@ these steps.
   In Outlook menu Extras->Options, tab "GpgOL"
   you have to explicitely enable S/MIME support.
   Please consider the warning dialog seriously.
+  Note: In the current BETA version you have to enable 
+  the S/MIME support to get a correct verification of 
+  OpenPGP signatures. It's a known problem and will be 
+  solved in one of the next versions.
 
 - Create new S/MIME certificate:
   In Kleopatra menu File->New Certificates choose "X.509".
@@ -123,8 +127,6 @@ these steps.
 - Import secret S/MIME key:
   The personal secret key can be imported as P12 file
   via Kleopatra (menu File->Import certificates).
-  Important: P12 import will only work
-  if you did the previous step first!
 
 - Import S/MIME certificate of email recipient:
   Now import the certificates of your email recipients
@@ -186,8 +188,9 @@ Migration
 
   In case you have installed Gpg4win 1.x or any other
   GnuPG Installation on your system, then you might need to
-  remove this registry entry:
+  remove these registry entries:
   HKCU\Software\GNU\GnuPG\gpgProgramm
+  HKLM\Software\GNU\GnuPG\gpgProgramm
 
 
 Most important changes in Gpg4win 1.9 compared to 1.1
@@ -207,7 +210,7 @@ Removed:
 Updated:
 --------
 
-- Claws Mail: Version 3.4.0
+- Claws Mail: Version 3.6.0cvs7
   NNTP- and IMAP-Support has been further worked on
   by Gg4win but is not yet available.
   On the Claws Mail side, work has continued on the SSL support,
@@ -253,7 +256,7 @@ New:
 
   * Kleopatra is still in development:
     Some functionalities for OpenPGP are still missing.
-    You can use GPA or WinPT for the missing functionality.
+    You can use GPA for the missing functionality.
 
 - German Gpg4win Kompendium: The new documentation for Gpg4win.
   This combines the previous "Einsteiger" and "Durchblicker" manuals.
@@ -262,26 +265,30 @@ New:
   and PGP/MIME and new texts for S/MIME and X.509.
 
 
-Most important changes in Gpg4win 1.9.7 compared to 1.9.6
+Most important changes in Gpg4win 1.9.8 compared to 1.9.7
 =========================================================
-
- - Gpg4win Compendium replaced german 'Einsteiger' and 'Durchblicker' manual
 
  - Kleopatra:
     Note: [#xxxxxx] marks the Kleopatra bug number. With this number you
        can see all bug details on http://bugs.kde.org.
-    * Deleting of root certificates repaired [#165470]
-    * Certificate chain shows correct after view refresh [#168910]
-    * Default size of Kleopatra's main window optimized [#167146]
-    * E-Mail decryption: status message improved [#170241]
-    * Dialog behaviour improved [#169973]
-    * Large improvements in crypto operations of files (GpgEX)
-      -> encrypt/decrypt/sign/verify with S/MIME and OpenPGP nun successful.
-      [#169985, #169983, #170240, #169377]
-    * Info dialog about limit of LDAP search results added (if number >10)
-    * Signature certificate choice shows selected protocol only [#166733]
-    * translation strings completed
-    * several minor and medium improvements
+     * Encrypt file: Option "delete unencrypted original" repaired [#169978]
+     * OpenPGP-S/MIME choice in Kleopatras sign dialog
+     * certificate tabs in Kleopatra updated automatically
+       (e.g. after import) [#167142]
+     * Repeating the certify of a certificate ends now correct with an
+       error message [#170917]
+     * Kleopatra handbook added (html version) [#170905]
+     * translation strings completed
+     * several minor and medium improvements
+
+ - New Claws version (3.6.0cvs7) integrated
+
+ - Uninstalling improved (removes dispensable registry entries)
+
+ - Gpg4win update alert dialog improved (recommendation to uninstall
+   the old version)
+
+ - Gpg4win Compendium improved
 
  - GpgOL, GnuPG and Installer: Several minor and medium problems 
    and errors were fixed.

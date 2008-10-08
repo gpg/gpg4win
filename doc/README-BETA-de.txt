@@ -11,7 +11,7 @@ Wichtige Informationen zum Einsatz von Gpg4win 1.9-BETA
   neue Version kennenzulernen und Verbesserungsvorschläge
   einzubringen.
 
-Stand: Gpg4win-1.9.7 (20080909)
+Stand: Gpg4win-1.9.8 (20081007)
 
 Hier finden sich wichtige Informationen die bei der
 Entscheidung helfen sollen, ob Gpg4win 1.9 schon für
@@ -44,13 +44,13 @@ Inhalt dieses Dokumentes:
 * Wichtige Hinweise zur Verwendung von S/MIME
 * Migration
 * Wichtigste Änderungen von Gpg4win 1.9 gegenüber 1.1
-* Wichtigste Änderungen von Gpg4win 1.9.7 gegenüber 1.9.6
+* Wichtigste Änderungen von Gpg4win 1.9.8 gegenüber 1.9.7
 
 
 Wichtige Hinweise zur vorliegenden Version
 ==========================================
 
-- Installationpaket ca. 40 MByte:
+- Installationpaket ca. 47 MByte:
   Derzeit sind die Programme mit umfangreichen
   Debug-Informationen ausgestattet, so dass bei auftauchen
   eines Fehlers unmittelbar eine Fehleranalyse
@@ -110,6 +110,9 @@ durchzuführen.
   Unter Outlook im Menü Extras->Optionen, Reiter "GpgOL"
   muss S/MIME explizit eingeschaltet werden.
   Beachten Sie den Warnhinweis, der darauf hin erscheint.
+  Achtung: In der aktuellen Beta muss S/MIME auch für eine korrete Überprüfung
+  einer OpenPGP-Signatur eingeschaltet sein. Dieses Problem ist bekannt
+  und an einer Lösung wird gearbeitet.
 
 - Neue S/MIME-Schlüssel herstellen:
   Unter Kleopatra im Menü Datei->Neues Zertifikat wählen Sie
@@ -131,21 +134,19 @@ durchzuführen.
   Den persönlichen geheimen Schlüssel als P12-Datei
   über Kleopatra importieren (Menü Datei->Zertifikate
   importieren).
-  Achtung: Der P12 import funktioniert nur, wenn der vohergehende
-  Schritt auch tatsächlich durchgeführt wurde.
 
 - S/MIME-Zertifkate der E-Mail Empfänger importieren:
   Alle sonstigen wichtigen Zertifikate (z.B. von
   Kommunikationspartner) auf die gleiche Weise importieren;
-  am besten jeweils mit der kompletten Kette
+  am besten jeweils mit der kompletten Kette.
 
-- Wurzelzertifikate als Vertrauenswürdig markieren:
+- Wurzelzertifikate als vertrauenswürdig markieren:
   Wenn Sie im Kleopatra-Menü "Extras->GnuPG Backend einrichten"
   unter "GpgAgent" die Option "erlaube Aufrufern Schlüssel als
   'vertrauenswürdig' zu markieren" aktivieren, so werden Sie
   beim Gebrauch eines bisher nicht vertrauenswürdig
   eingestuften Wurzel-Zertifkats gefragt, ob Sie es
-  nun als Vertrauenswürdig einstufen wollen.
+  nun als vertrauenswürdig einstufen wollen.
   Beachten Sie, dass der gpg-agent neu gestartet
   werden muss, z.B: durch ausloggen und wieder einloggen.
 
@@ -157,7 +158,7 @@ durchzuführen.
 
 - Probleme mit Sperrlisten (CRLs):
   Das S/MIME Verfahren beinhaltet die Verwendung von
-  Sperrlisten um die Gültigkeit von Zertifkaten zu prüfen.
+  Sperrlisten, um die Gültigkeit von Zertifkaten zu prüfen.
 
   Hierbei kann es zu verschiedenen Problemen kommen, die
   noch nicht alle mit aussagekräftigen Fehlermeldungen
@@ -167,12 +168,12 @@ durchzuführen.
   schalten sie testweise die Verwendung von Sperrlisten aus
   und prüfen Sie ob das Problem dann nicht mehr auftritt ist.
   Berichten Sie anschliessen Ihre Beobachtung an das Gpg4win
-  Entwicklungs-Team um eine Lösung zu finden.
+  Entwicklungs-Team, um eine Lösung zu finden.
 
   Man kann die CRL-Prüfungen wie folgt ausschalten:
   Im Kleopatra-Menü "Extras->GnuPG Backend einrichten"
   unter "GPG for S/MIME" die Option "Niemals eine CRL konsultieren"
-  aktivieren. Danach neu einloggen um die Änderung zu aktivieren.
+  aktivieren. Danach neu einloggen, um die Änderung zu aktivieren.
 
 - DirMngr Konfigurations-Dialog nicht editierbar:
   Der Konfigurationsdialog unter "DirectoryManager" im GnuPG Backend
@@ -197,14 +198,14 @@ Migration
 * Von einer Gpg4win 1.X  oder sonstigen GnuPG Version:
 
   Sollte Gpg4win 1.x oder irgendeine andere GnuPG Installation
-  auf Ihrem System installiert gewesen sein, so muss ein ggf. noch
-  zurückgebliebener Registry-Eintrage entfernt werden:
+  auf Ihrem System installiert gewesen sein, so muss ggf. noch
+  zurückgebliebene Registry-Eintrage entfernt werden:
   HKCU\Software\GNU\GnuPG\gpgProgramm
+  HKLM\Software\GNU\GnuPG\gpgProgramm
 
 
 Wichtigste Änderungen von Gpg4win 1.9 gegenüber 1.1
 ===================================================
-
 
 Entfallen:
 ----------
@@ -220,7 +221,7 @@ Entfallen:
 Aktualisiert:
 -------------
 
-- Claws Mail: Version 3.4.0
+- Claws Mail: Version 3.6.0cvs7
   NNTP- und IMAP-Unterstützung ist seitens Gpg4win ein Stück
   weiter vorbereitet, aber noch nicht verfügbar.
   Seitens Claws Mail ist die SSL-Unterstützung ebenfalls
@@ -271,7 +272,7 @@ Neu:
 
   * Kleopatra ist noch in Entwicklung:
     Es fehlen noch einzelne Funktionalitäten für OpenPGP.
-    Dafür kann alternativ auf GPA oder WinPT zurückgegriffen werden.
+    Dafür kann alternativ auf GPA zurückgegriffen werden.
 
 - Gpg4win Kompendium: Die neue Dokumentation zu Gpg4win.
   Es vereinigt die alten Handbücher "Einsteiger" und "Durchblicker".
@@ -280,30 +281,32 @@ Neu:
   PGP/MIME sowie ergänzt um S/MIME bzw. X.509.
 
 
-Wichtigste Änderungen von Gpg4win 1.9.7 gegenüber 1.9.6
+Wichtigste Änderungen von Gpg4win 1.9.8 gegenüber 1.9.7
 =======================================================
-
- - Gpg4win Kompendium ersetzt deutsche Einsteiger- und Durchblicker-Handbücher
 
  - Kleopatra:
    Hinweis: [#xxxxxx] markiert im Folgenden die Kleopatra-Fehlermeldungs-Nummer.
             Details können mit dieser Nummer unter http://bugs.kde.org/ 
             eingesehen werden.
-    * Löschen von Wurzelzertifikaten repariert [#165470]
-    * Zertifikatsketten verschwinden nicht mehr beim Aktualisieren [#168910]
-    * Standardgröße des Kleopatra-Hauptfensters optimiert [#167146]
-    * E-Mail-Entschlüsselung: Statusmeldung verbessert [#170241]
-    * Kleopatra-Dialogverhalten verbessert (Dialoge sind nicht mehr im
-      Hintergrund gesperrt) [#169973]
-    * Umfangreiche Verbesserungen bei Crypto-Operationen von Dateien (GpgEX)
-      -> verschlüsseln/entschlüsseln/signieren/verifizieren mit
-         S/MIME und OpenPGP nun erfolgreich.
-      [u.a. #169985, #169983, #170240, #169377]
-    * Hinweisdialog auf Beschränkung der LDAP-Suchergebnisse (bei Anzahl >10)
-    * Kleopatra berücksichtigt (in GpgOL) gewähltes Protokoll für die
-      Anzeige der Signaturzertifikate [#166733]
-    * Übersetzungs-Strings ergänzt
-    * diverse kleinere Stabilitäts- und GUI-Verbesserungen
+     * Datei verschlüsseln: Option "unverschlüsseltes Original löschen" 
+       repariert [#169978]
+     * OpenPGP-S/MIME-Auswahl in Kleopatras Signierdialog
+     * Automatische Aktualisierung der Zertifikatsreiter in Kleopatra
+       (z.B. nach Import) repariert [#167142]
+     * Wiederholtes beglaubigen von Zertifikaten schließt nun mit 
+       entsprechender Fehlermeldung ab [#170917]
+     * Kleopatra Handbuch hinzugefügt [#170905]
+     * Übersetzungs-Strings ergänzt
+     * diverse kleinere Stabilitäts- und GUI-Verbesserungen
+
+ - Neue Claws Version (3.6.0cvs7) integriert
+
+ - Verbesserte Deinstallation (löscht überflüssige Registryeinträge)
+
+ - Gpg4win-Update-Warndialog überarbeitet (Empfehlung zur Deinstallation
+   der alten Version)
+
+ - Gpg4win Kompendium überarbeitet
 
  - GpgOL, GnuPG und Installer: Es sind viele kleine und mittlere
    Probleme und Fehler behoben worden.
