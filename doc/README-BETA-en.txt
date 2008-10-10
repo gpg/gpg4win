@@ -73,13 +73,13 @@ Important hints for present version
     encrypted/signed emails, e.g. in the form of PST files.
 
   * Encrypted E-Mails occuring un-encrypted on the email server:
-    It can happend that parts of encrypted emails are copied
+    It can happens that parts of encrypted emails are copied
     to your email server (IMAP or MAPI) in un-encrypted/decrypted
     form when creating or viewing them.
     Affected is the content of the email view windows, thus usually
     the so-called email body. Attachments are not affected.
-    Switching off the Outlook Preview will lower
-    the probability of this to happen, but not eliminate the problem.
+    Switching off the Outlook preview will lower
+    the probability of this to happen, but not eliminate the issue.
     A solution is being worked on.
 
   * Emails will be stored on the server in Microsoft specific
@@ -106,7 +106,7 @@ these steps.
   Please consider the warning dialog seriously.
   Note: In the current BETA version you have to enable 
   the S/MIME support to get a correct verification of 
-  OpenPGP signatures. It's a known problem and will be 
+  OpenPGP signatures. It's a known issue and will be 
   solved in one of the next versions.
 
 - Create new S/MIME certificate:
@@ -290,5 +290,5 @@ Most important changes in Gpg4win 1.9.8 compared to 1.9.7
 
  - Gpg4win Compendium improved
 
- - GpgOL, GnuPG and Installer: Several minor and medium problems 
+ - GpgOL, GnuPG and Installer: Several minor and medium issues
    and errors were fixed.
