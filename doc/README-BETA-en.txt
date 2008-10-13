@@ -211,12 +211,8 @@ Updated:
 --------
 
 - Claws Mail: Version 3.6.0cvs7
-  NNTP- and IMAP-Support has been further worked on
-  by Gg4win but is not yet available.
-  On the Claws Mail side, work has continued on the SSL support,
-  but there are still problems with the Windows version.
-  During 2008 it is expected to finalize the integration of SSL, NNTP and
-  IMAP for the Windows-Version of Claws Mail.
+  Main new features: Support of SSL, NNTP and IMAP in the
+  Windows-Version of Claws Mail.
 
 - GpgOL: This component has been comprehensively updated.
 
