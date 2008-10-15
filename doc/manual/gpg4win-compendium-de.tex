@@ -4054,6 +4054,18 @@ und Outlook aus diesem Grund das GpgOL Element deaktiviert.
 Reaktivieren Sie GpgOL über das Outlook-Menü
 \Menu{Hilfe$\rightarrow$Info$\rightarrow$Deaktivierte Elemente}.
 
+\section{GpgOL Icons zum Signieren/Verschlüsseln fehlen in der Symbolleiste}
+
+Wenn bereits viele Icons in der Symbolleiste des Nachrichtenfensters
+vorhanden sind, so zeigt Outlook die Signieren/Verschlüsseln-Icons nicht
+unbedingt direkt an.
+
+Sie können diese aber anzeigen lassen,
+indem Sie in der Symbolleiste auf das kleine Icon mit dem Pfeil nach
+unten klicken (\textit{Optionen für Symbolleiste}):  Sie erhalten
+eine Übersicht aller nicht angezeigten Icons. Ein Klick auf eines dieser Icons
+verschiebt es in den sichtbaren Teil der Symbolleiste.
+
 \section{Keine S/MIME Operationen mehr möglich (Systemdienst ,,DirMngr'' läuft nicht)}
 \label{dirmngr-restart}
 
@@ -5210,34 +5222,14 @@ dass er dann keine Lust mehr haben dürfte diese auch noch zu lesen\ldots
 \W\chapter*{A Hinweise zum Outlook Plugin \emph{GpgOL}}
 
 GpgOL ist ein Plugin für Microsoft Outlook, es integriert dort die
-Bedienung von GnuPG.  Wir geben hier einige Hinweise zur Benutzung.
+Bedienung von GnuPG.
 
-Aufgrund technischer Schwierigkeiten der Integration von OpenPGP in
-Outlook ist dieses Plugin nicht so komfortabel zu bedienen wie die
-OpenPGP Unterstützung in anderen \Email{}-Programmen.  GpgOL funktioniert
-in der aktuellen Version nur mit Outlook 2003 SP2 und gibt einen
-Warnhinweis aus, falls eine ältere Outlook Version benutzt wird.
+Da Outlook ein proprietäres Produkt, also nicht als Freie Software
+mit Quelltext verfügbar ist, hat die Integration eine Reihe von
+,,Ecken und Kanten''. Oder mit anderen Worten: Die Bediendung ist nicht
+so komfortabel wie es beispielsweise die Benutzer des E-Mail Programmes
+Kontact gewöhnt sind.
 
-Bitte beachten Sie die beiden folgenden Einschränkungen:
-%TODO#: Einschränkungen noch aktuell? FIXME wichtig?
-
-\begin{itemize}
-\item Als Texteditor darf nicht das Programm Word eingestellt sein.
-% FIXME:  Wir müssen erklären wie man Word als Standard Editor in
-% Outlook ausschaltet.
-
-\item Sogenanntes Inline-PGP oder traditionelles PGP wird voll
-  unterstützt.  Es können jedoch keine PGP/MIME \Email{}s erstellt werden.
-
-  Die Entschlüsselung  und Signaturprüfung einfacher (nicht verschachtelter)
-  PGP/MIME \Email{}s stellt hingegen kein Problem dar.
-\end{itemize}
-
-
-\clearpage
-\T\section{Installation}
-\W\section*{A.1 Installation}
-\label{sec_gpgolInstallation}
 Die Installation wird durch den Gpg4win Installer vorgenommen.  Beim nächsten
 Start von Outlook findet sich im Menü
 \Menu{Extras$\rightarrow$Optionen} eine Karteikarte \Menu{GpgOL}:
@@ -5253,8 +5245,15 @@ Die Karteikarte GpgOL unterteilt sich in drei Kästen:
 
         Nach der Installation von Gpg4win ist die 
         \T\margin{\IncludeImage[width=1.5cm]{smime-icon}}
-        S/MIME-Funktionalität in GpgOL deaktiviert. 
-        
+        S/MIME-Funktionalität in GpgOL deaktiviert.
+        Damit ist die S/MIME Unterstützung von GnuPG gemeint.
+        Outlook selbst unterstützt ebenfalls X.509 und S/MIME,
+        arbeitet aber natürlich nicht mit den Gpg4win Komponenten
+        zusammen. Konkret heisst das, dass alle Einstellungen,
+        das SChlüsselmanagement und die Benutzerdialoge unterschiedlich
+        sind. Es ist beachten, dass Outlook keine OpenPGP
+        Unterstützung anbietet.
+
         \textbf{Wichtig:} Wenn Sie S/MIME nutzen
         möchten, müssen Sie zuvor die Option
         \textit{S/MIME Unterstützung einschalten} aktivieren.
@@ -5264,7 +5263,8 @@ Die Karteikarte GpgOL unterteilt sich in drei Kästen:
         Die beiden ersten Optionen in diesem Kasten steuern, ob per
         Voreinstellung neue Nachrichten verschlüsselt und/oder signiert
         werden sollen. Sie können dies aber immer noch bei der
-        Erstellung einer Nachricht individuell verändern.
+        Erstellung einer Nachricht individuell verändern. Lediglich
+        die Schaltflächen sind schon entsprechend aktiviert.
 
         Die beiden letzten Optionen definieren, ob PGP/MIME
         \textit{oder} S/MIME per Voreinstellung verwendet werden soll.
@@ -5273,10 +5273,16 @@ Die Karteikarte GpgOL unterteilt sich in drei Kästen:
     \item \textbf{Lesen von Nachrichten:}
 
         \textit{Auch im Vorschaufenster entschlüsseln}
-        %TODO#: Folgende Einschränkung noch gültig?
-        %Die Option "`Im Vorschaufenster entschlüsseln"' kann nur sinnvoll auf
-        %schnellen Rechnern eingesetzt werden und funktioniert z.Z. nur
-        %eingeschränkt.
+
+        Soll im Vorschaufenster die entschlüsselte Fassung erscheinen,
+        so ist diese Option einzuschalten.
+
+        Sie sollten dabei bedenken, dass dadurch bereits beim durchblättern
+        durch Ihre Nachrichten die Entschlüsselungs- und Prüfroutinen ausgeführt
+        werden. Das heisst, es werden Dialog zum Status der E-Mails angezeigt
+        und ggf. werden Sie nach einer Passphrase zur Entschlüsselung gefragt.
+
+        \textit{HTML Darstellung anzeigen wenn möglich}
 
         Die Option  \textit{HTML Darstellung anzeigen wenn möglich}
         kann benutzt werden, um die HTML Version einer Nachricht 
@@ -5284,8 +5290,10 @@ Die Karteikarte GpgOL unterteilt sich in drei Kästen:
         ist, wird die Text Version dargestellt.
 
         \textit{Verschlüsselte Nachricht als Anlage anzeigen}
-        %TODO#?
 
+        Der verschlüsselte Teil der Nachricht wird zusätzlich als Anhang
+        angezeigt. Der Anwender kann so den verschlüsselten Teil separat
+        speichern oder auf andere Weise weiterverarbeiten.
 \end{enumerate}
 
 
@@ -5308,80 +5316,6 @@ Bitte kontrollieren Sie dies im Menüpunkt
 \begin{center}
 \IncludeImage[width=0.45\textwidth]{sc-gpgol-options-textformat_de}
 \end{center}
-
-\clearpage
-\T\section{Häufig gestellte Fragen}
-\W\section*{A.2 Häufig gestellte Fragen}
-
-\begin{description}
-\item[Wo finde ich die Icons zum Signieren/Verschlüsseln in der Symbolleiste?]
-
-  Wenn bereits\linebreak viele Icons in der Symbolleiste des Nachrichtenfensters 
-  vorhanden sind, so zeigt Outlook die Signieren/Verschlüsseln-Icons nicht 
-  unbedingt direkt an. Sie können diese aber anzeigen lassen,
-  indem Sie in der Symbolleiste auf das kleine Icon mit dem Pfeil nach
-  unten klicken (\textit{Optionen für Symbolleiste}):  Sie erhalten
-  eine Übersicht aller nicht angezeigten Icons. Ein Klick auf eines dieser Icons
-  verschiebt es in den sichtbaren Teil der Symbolleiste.
-  %TODO#: Gibt es das Icon noch?
-  %Dasselbe gilt für das Icon zum Aufruf der Schlüsselverwaltung.
-
-  Achten Sie auch darauf, daß Sie nicht Microsoft Word zum Verfassen
-  von Nachrichten benuzten (vgl. Seite~\pageref{OLandWord}).
-
-%TODO#: Noch aktuell?
-%\item[Was bedeuten die Buchstaben im Übersichtsdialog?]
-%
-%  Bei der Entschlüsselung oder Signaturprüfung von Nachrichten mit
-%  Anhängen zeigt GpgOL eine Liste mit den einzelnen Bestandteilen
-%  und deren Dateinamen dar. Vor dem Dateinamen steht eine "`E"' falls
-%  es sich um einen verschlüsselten Anhang handelt oder eine "`S"'
-%  für einen signierten Anhang.
-
-
-\item[Wo finde ich Informationen zur aktuellen Version von GpgOL?]       
-
-  Öffnen Sie in die GpgOL-Optionen
-  (\Menu{Extras$\rightarrow$Optionen$\rightarrow$GpgOL}). 
-  Rechts unten sehen Sie die aktuelle installierte GpgOL-Version.
-  Klicken Sie auf das g10Code-Logo links unten, um auf die
-  Website\linebreak
-  \uniurl{http://www.g10code.com/p-gpgol.html} zu gelangen. Dort erhalten
-  Sie alle aktuellen Informationen zu GpgOL.
-
-
-%TODO#: Noch aktuell?
-%\item[Warum kann eine Verschlüsselung nicht abgebrochen werden?] 
-%
-%  Wenn Sie auf Senden ge\-klickt haben, beginnt GpgOL mit der
-%  Verschlüsselung.  Outlook hat jedoch seit langem einen Fehler, der
-%  verhindert, dass diese Operation abgebrochen werden kann.  Als
-%  Gegenmaßnahme können Sie Outlook so konfigurieren, dass erstellte
-%  Nachrichten nicht sofort versendet werden -- das gibt Ihnen die
-%  Möglichkeit die Nachricht noch nachträglich zu löschen.  Aus
-%  Sicherheitsgründen versucht GpgOL den Inhalt der Nachricht zu
-%  löschen wenn die Verschlüsselung abgebrochen wurde.  Dies ist
-%  aber nicht immer erfolgreich.
-
-%TODO#: Noch aktuell?
-%\item[Warum erscheint der Bestätigungsdialog beim Zugriff auf
-%  bestimmte \Email{}s?]
-%
-%  Ist \linebreak{} GpgOL nicht als vertrauenswürdiges Plugin
-%  installiert worden, nimmt Outlook an, das Plugin versucht
-%  unberechtigt auf interne Informationen zuzugreifen.  GpgOL versucht
-%  derartige Zugriffe zu vermeiden, in einige Fällen sind sie aber
-%  notwendig um verschlüsselte oder signierte \Email{}s anzeigen zu
-%  können.
-%
-%  GpgOL ist noch in Entwicklung. Einer der offenen Punkte ist
-%  die Registrierung als vertrauenswürdiges Plugin. Zukünftige
-%  Versionen sollten die Unanehmlichkeit der expliziten Bestätigung
-%  lösen.
-
-
-
-\end{description}
 
 
 \clearpage
@@ -5574,38 +5508,6 @@ noch mit allen aktuellen GnuPG Versionen.}.
 
 
 \clearpage
-\xname{history}
-\T\chapter{History}
-\W\chapter*{D History}
-
-\begin{itemize}
-\item  "`GnuPP für Einsteiger"', 1. Auflage März 2002 und\\
-       "`GnuPP für Durchblicker"', Auflage März 2002,\\
-  Autoren: Manfred J. Heinze, TextLab text+media\\
-  Beratung: Lutz Zolondz, G-N-U GmbH\\
-  Illustrationen: Karl Bihlmeier, Bihlmeier \& Kramer GbR\\
-  Layout: Isabel Kramer, Bihlmeier \& Kramer GbR\\
-  Fachtext: Dr. Francis Wray, e-mediate Ltd.\\
-  Redaktion: Ute Bahn, TextLab text+media\\
-  Herausgegeben vom Bundesministerium für Wirtschaft und
-  Technologie (BMWi).\\
-  Verfügbar unter
-  \uniurl{http://www.gnupp.de/pdf/einsteiger.pdf}
-  und\\
-  \uniurl{http://www.gnupp.de/pdf/durchblicker.pdf}.
-%    Der Abschnitt "`History"' ist im Originaldokument nicht vorhanden
-%    und wurde von Werner Koch beigefügt.
-\item Revidierte nicht-veröffentlichte Version von TextLab text+media.      
-\item "`Gpg4win für Einsteiger"' und "`Gpg4win für Durchblicker"', Dezember 2005\\
-      Autoren:  Werner Koch, g10 Code GmbH\\
-      Herausgegeben durch das Gpg4win Projekt.
-\item Aufgrund einer Erlaubniss des BMWi vom 14. November 2007 wurde
-      die Invariant Section "`Impressum"' entfernt und an die aktuelle
-      Version angepasst.
-\end{itemize}
-
-
-\clearpage
 \xname{deinstallation-von-gpg4win}
 \T\chapter{Deinstallation von Gpg4win}
 \W\chapter*{E Deinstallation von Gpg4win}
@@ -5674,6 +5576,42 @@ also zum Beispiel
 \Filename{C:$\backslash$Programme$\backslash$GNU$\backslash$GnuPG},\linebreak
 über den Dateimanager vollständig löschen.
 
+
+\clearpage
+\xname{history}
+\T\chapter{History}
+\W\chapter*{D History}
+
+\begin{itemize}
+\item  "`GnuPP für Einsteiger"', 1. Auflage März 2002 und\\
+       "`GnuPP für Durchblicker"', Auflage März 2002,\\
+  Autoren: Manfred J. Heinze, TextLab text+media\\
+  Beratung: Lutz Zolondz, G-N-U GmbH\\
+  Illustrationen: Karl Bihlmeier, Bihlmeier \& Kramer GbR\\
+  Layout: Isabel Kramer, Bihlmeier \& Kramer GbR\\
+  Fachtext: Dr. Francis Wray, e-mediate Ltd.\\
+  Redaktion: Ute Bahn, TextLab text+media\\
+  Herausgegeben vom Bundesministerium für Wirtschaft und
+  Technologie (BMWi).\\
+  Verfügbar unter
+  \uniurl{http://www.gnupp.de/pdf/einsteiger.pdf}
+  und\\
+  \uniurl{http://www.gnupp.de/pdf/durchblicker.pdf}.
+%    Der Abschnitt "`History"' ist im Originaldokument nicht vorhanden
+%    und wurde von Werner Koch beigefügt.
+\item Revidierte nicht-veröffentlichte Version von TextLab text+media.      
+\item "`Gpg4win für Einsteiger"' und "`Gpg4win für Durchblicker"', Dezember 2005\\
+      Autoren:  Werner Koch, g10 Code GmbH\\
+      Herausgegeben durch das Gpg4win Projekt.
+\item Aufgrund einer Erlaubniss des BMWi vom 14. November 2007 wurde
+      die Invariant Section "`Impressum"' entfernt und an die aktuelle
+      Version angepasst.
+\item Das ,,Gpg4win Kompendium 3.0" fasst "`Gpg4win für Einsteiger"' und "`Gpg4win für Durchblicker"'
+      zusammen und ist umfassend für Gpg4win 2.0 aktualisiert und ergänzt worden.\\
+      Diese wurde hauptsächlich durchgeführt von:\\
+      Emanuel Schütze, Intevation GmbH\\
+      Dr. Jan-Oliver Wagner, Intevation GmbH
+\end{itemize}
 
 \clearpage
 \input{fdl-book.tex}

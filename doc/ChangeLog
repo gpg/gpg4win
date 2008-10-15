@@ -1,3 +1,10 @@
+2008-10-15  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
+
+	* manual/gpg4win-compendium-de.tex: Reworked appendix: section
+	about GpgOL shortened, remaining FAQ moved to corresponding
+	chapter in Part 2. Made "History" the last chapter before license
+	and added item about Compendium.
+
 2008-10-13  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
 	* README-BETA-de.txt, README-BETA-en.txt: Claws mail changes updated.
