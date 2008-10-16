@@ -30,6 +30,7 @@ png_files = \
 		sc-kleopatra-openpgp-exportSecretKey_de.png\
 		sc-ol-sendNewOpenpgpCertificate_de.png\
 		sc-kleopatra-withOpenpgpTestkey_de.png\
+		sc-kleopatra-withAdeleKey_de.png\
 		sc-kleopatra-openpgp-certificateDetails_de.png\
 		sc-kleopatra-x509-personalDetails_de.png\
 		sc-kleopatra-x509-reviewParameters_de.png\
