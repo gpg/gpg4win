@@ -337,8 +337,8 @@ name gnupg2-2.0.10-svn4835.tar.bz2
 file gnupg-2.0.10-svn4835.tar.bz2
 chk  aaaa650f4ae5ef01dca554b241be77ac1dfce7ac
 
-file gpgme-1.1.7-svn1334.tar.bz2
-chk  ffd778b51b8db2e72cccf4d03250a40428fb243b
+file gpgme-1.1.7.tar.bz2
+chk  c735bb90431667e3d020aa3adcf0efa858c992af
 
 file dirmngr-1.0.3-svn309.tar.bz2
 chk  5f8d228c55ff2b6ebf244bdf01dff2b8f7051107
