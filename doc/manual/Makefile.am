@@ -43,6 +43,7 @@ png_files = \
 		sc-kleopatra-certifyCertificate1_de.png \
 		sc-kleopatra-certifyCertificate2_de.png \
 		sc-kleopatra-certifyCertificate3_de.png \
+		sc-kleopatra-configureKeyserver_de.png\
 		sc-kleopatra-openpgp-encryptDialog_de.png \
 		sc-ol-sendNewX509Certificate_de.png\
 		sc-ol-adele-sendOpenpgpKey-inline_de.png\

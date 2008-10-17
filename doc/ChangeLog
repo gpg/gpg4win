@@ -1,7 +1,24 @@
+2008-10-17  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+
+	* manual/gpg4win-compendium-de.tex:
+	Some fixes and additions in chapter 14 to 21.
+	* manual/Makefile.am, manual/sc-kleopatra-configureKeyserver_de.png:
+	Added new screenshot.
+	* manual/sc-kleopatra-decryptFile2_de.png:
+	Updated screenshot.
+
 2008-10-16  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
-	* manual/gpg4win-compendium-de.tex, manual/Makefile.am:
+	* manual/gpg4win-compendium-de.tex:
 	Some fixes and updates in chapter 1 to 13.
+	* manual/Makefile.am, manual/sc-kleopatra-withAdeleKey_de.png:
+	Added new screenshot.
+	* manual/sc-kleopatra-encryptVerify_de.png,
+	manual/sc-kleopatra-import-certificate_de.png:
+	Updated screenshots.
+	* manual/sc-ol-sendNewOpenpgpCertificate_de.png,
+	manual/sc-ol-sendNewX509Certificate_de.png:
+	Removed screenshots.
 
 2008-10-15  Jan-Oliver Wagner  <jan-oliver.wagner@intevation.de>
 
