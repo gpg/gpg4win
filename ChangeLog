@@ -1,5 +1,7 @@
 2008-10-17  Marcus Brinkmann  <marcus@g10code.com>
 
+	* packages/packages.current: Update w32pth.
+
 	* packages/packages.current: Update gpgme.
 
 2008-10-07  Marcus Brinkmann  <marcus@g10code.com>

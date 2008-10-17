@@ -292,13 +292,10 @@ chk  6d3a76adfaaf60375889a8eeb59117321fc42271
 # Pth emulation
 #
 
-#server ftp://ftp.g10code.com/g10code/w32pth
-#file w32pth-2.0.1.tar.bz2
-#chk  e74a770a58f08ba02f311d16c5debe79c218ee5d
-
-server ftp://ftp.g10code.com/g10code/scratch
-file w32pth-2.0.2-svn24.tar.bz2
-chk  9f68a7bf5bae408978b3f3b899655dfa79cb6cb2
+#server ftp://ftp.g10code.com/g10code/scratch
+server ftp://ftp.g10code.com/g10code/w32pth
+file w32pth-2.0.2.tar.bz2
+chk  9f43acb64867fb54b456f8a1187307ceb7bdf183
 
 #
 # Stripped down version of BZIP2
