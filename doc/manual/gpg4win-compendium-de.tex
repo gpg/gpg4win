@@ -4034,6 +4034,7 @@ wieder importiert.}
 \clearpage
 \xname{systemweite-konfiguration-und-vorbelegungen-fuer-smime}
 \chapter{Systemweite Konfigurationen und Vorbelegungen für S/MIME}
+\T\margin{\IncludeImage[width=1.5cm]{smime-icon}}
 
 Im Rahmen von Softwareverteilung oder sonstigen Umgebungen
 in denen viele Anwender auf einem System arbeiten,
@@ -4129,6 +4130,7 @@ verschiebt es in den sichtbaren Teil der Symbolleiste.
 
 \section{Keine S/MIME Operationen mehr möglich (Systemdienst ,,DirMngr'' läuft nicht)}
 \label{dirmngr-restart}
+\T\margin{\IncludeImage[width=1.5cm]{smime-icon}}
 
 Der \textit{Directory Manager} (\textit{DirMngr}) ist ein über 
 Gpg4win installierter Dienst, der die Zugriffe auf Verzeichnisdienste
@@ -4170,18 +4172,20 @@ anzeigen} unter der Rubrik \Menu{Versteckte Dateien und Ordner} aktivieren.
 
 In diesem gnupg-Verzeichnis befinden sich sämtliche persönlichen GnuPG Daten,
 also die persönlichen Schlüssel, Zertifikate, Vertrauenseinstellungen und
-Programmkonfigurationen.
+Programmkonfigurationen. Bei einer Deinstallation von Gpg4win wird dieses
+Verzeichnis \textit{nicht} gelöscht. Denken Sie daran, sich regelmäßig
+Sicherheitskopieen von diesem Verzeichnis anzulegen.
 
 
 \section{Zwischengespeicherte Sperrlisten}
+\T\margin{\IncludeImage[width=1.5cm]{smime-icon}}
 
 Der systemweite Dienst ,,DirMngr'' (Directory Manager) prüft unter anderem, ob
-ein Zertifkat gesperrt ist und daher nicht verwendet werden darf.
+ein X.509-Zertifkat gesperrt ist und daher nicht verwendet werden darf.
 Dafür werden Sperrlisten von den Ausgabestellen der Zertifikate
 (,,Trust-Center'') abgeholt und für die Dauer ihrer Gültigkeit
 zwischengespeichert.
 
-%TODO#: korrekter Pfad?
 Abgelegt werden diese Sperrlisten unter:\newline
 \Filename{C:\back{}Dokumente und Einstellungen\back{}LocalService\back{}Lokale\newline
 Einstellungen\back{}Anwendungsdaten\back{}GNU\back{}cache\back{}dirmngr\back{}crls.d\back{}}
@@ -4194,26 +4198,37 @@ Ansicht-Einstellungen des Windows Explorer.
 
 In diesem Verzeichnis sollten keine Änderungen vorgenommen werden.
 
+\section{Vertrauenswürdige Wurzeln von DirMngr}
+\label{trustedrootcertsdirmngr}
+\T\margin{\IncludeImage[width=1.5cm]{smime-icon}}
 
-\section{Vertrauenswürdige Wurzeln von DirMngr \label{trustedrootcertsdirmngr}}
-
-Für eine vollständige Prüfung von Zertifkats-Gültigkeiten
+Für eine vollständige Prüfung von X.509-Zertifkats-Gültigkeiten
 muss auch den Wurzel-Zertifkaten vertraut werden, in deren
 Zertifizierungskette die Sperrlisten unterschrieben wurden.
 
-Die Liste der Wurzel-Zertifkate, denen DirMngr bei den
-Prüfungen vertrauen soll, liegt unter:\newline
+Die Wurzel-Zertifkate, denen der DirMngr bei den
+Prüfungen vertrauen soll, müssen im folgenden Verzeichnis abgelegt
+werden:
+
 \Filename{C:\back{}Dokumente und Einstellungen\back{}All
 Users\back{}Anwendungsdaten\back{}GNU\back{}\newline
 etc\back{}dirmngr\back{}trusted-certs\back{}}
 
-Für systemweite Vorgaben sollten hier die Wurzel-Zertifkate abgelegt werden
-denen alle Anwender vertrauen können.
+\textbf{Wichtig:} Die entsprechenden Wurzel-Zertifikate müssen als
+DER-Dateien mit Dateinamen-Endung "`.crt"' im o.g. Verzeichnis vorliegen.
 
+Der DirMngr läuft als systemweiter Dienst und muss nach Änderungen im
+"`trusted-certs"'-Verzeichnis neu gestartet werden. Anschließend
+sind die dort abgelegten Wurzelzertifikaten für alle Anwender
+vertrauenswürdig.
+
+\textit{Beachten Sie auch Abschnitt \ref{sec_systemtrustedrootcerts}, um den
+Wurzel-Zertifikaten vollständig (systemweit) zu vertrauen.}
 
 \section{Weitere Zertifikate von DirMngr \label{extracertsdirmngr}}
+\T\margin{\IncludeImage[width=1.5cm]{smime-icon}}
 
-Um, wie oben beschrieben, die Zertifizierungskette zu
+Um, wie oben beschrieben, die X.509-Zertifizierungskette zu
 prüfen sind auch die Zertifkate der Zertifizierungsstellen
 (Certificate Authorities, CAs) zu prüfen.
 
@@ -4232,8 +4247,9 @@ wichtigsten CA-Zertifkate abzulegen.
 
 
 \section{Konfiguration zur Verwendung externer LDAP Verrzeichnisdienste \label{ldapservers}}
+\T\margin{\IncludeImage[width=1.5cm]{smime-icon}}
 
-GnuPG kann so konfiguriert werden, dass bei Bedarf fehlende Zertifkate
+GnuPG kann so konfiguriert werden, dass bei Bedarf fehlende X.509-Zertifkate
 oder Sperrlisten auf externen Verzeichnisdiensten gesucht werden.
 
 Der Systemdienst ,,DirMngr'' verwendet dafür die Liste der Dienste, die
@@ -4253,8 +4269,10 @@ Die genaue Syntax für die Einträge lautet übrigens:
 
 \verb#HOSTNAME:PORT:USERNAME:PASSWORD:BASE_DN#
 
+\clearpage
 \section{Systemweite vertrauenswürdige Wurzel-Zertifikate}
 \label{sec_systemtrustedrootcerts}
+\T\margin{\IncludeImage[width=1.5cm]{smime-icon}}
 
 Die systemweit als vertrauenswürdig vorbelegten Wurzel-Zertifkate werden
 in der Datei\\
@@ -4263,9 +4281,18 @@ Users\back{}Anwendungsdaten\back{}GNU\back{}\\
 etc\back{}gnupg\back{}trustlist.txt}\\
 definiert.
 
-%TODO#: Beispiel zur Syntax-Erklärung? 'Fingerprint S', was bedeutet S?
+Die genaue Syntax für die Einträge lautet hier:
 
+\verb#FINGERPRINT S#
 
+also z.B.:\\
+\verb+BA90087D0C6C7F4DEAF00907BCFA2133DDC8CA90 S+
+
+\textbf{Wichtig:} Damit Wurzel-Zertifikate in Kleopatra vollständig als
+vertrauenswürdig markiert werden (Zertifikat wird blau hinterlegt),
+müssen die Wurzel-Zertifikate zusätzlich für den DirMngr abgelegt
+werden, wie unter Abschnitt
+\ref{trustedrootcertsdirmngr} beschrieben.
 
 \clearpage
 \xname{fehler-in-den-gpg4win-programmen-aufspueren}
@@ -4400,6 +4427,9 @@ Als Wert für \Filename{logFile} geben Sie nun einen Dateinamen an,
 wohin das Logbuch geschrieben werden soll; z.B.:
 \Filename{C:\back{}TEMP\back{}gpgol.log}.
 
+
+Starten Sie Outlook neu, um die Aufzeichnung zu starten.
+
 Bedenken Sie, dass diese Datei ggf. im weiteren Verlauf sehr
 umfangreich werden kann. Stelle Sie \Filename{enableDebug} auf
 \Filename{0}, sobald Sie das GpgOL-Logbuch nicht mehr benötigen.
@@ -4455,7 +4485,7 @@ Konfigurationsfenster zwei Debug-Optionen:
         Informationen. Die Debugstufe \texttt{guru} ist die höchste Stufe und
         erzeugt entsprechend große Dateien.
         Schalten Sie daher die Logbücher wieder aus (Debugstufe
-        \texttt{none}), wenn Sie diese nicht mehr benötigen.
+        \texttt{Keine}), wenn Sie diese nicht mehr benötigen.
 
     \item \textbf{Option "`Schreibe im Servermodus Logs auf DATEI"'}\\ 
         Geben Sie hier die Logdatei an, in der alle Debug-Informationen
@@ -4463,7 +4493,9 @@ Konfigurationsfenster zwei Debug-Optionen:
         \Filename{C:\back{}TEMP\back{}gpgsm.log}.
 \end{itemize}
 
-
+Starten Sie anschließend Kleopatra neu (ggf. müssen Sie zuvor einen
+noch laufenden gpg-agent über den Task-Manager beenden -- oder aber Sie
+loggen sich aus und melden sich neu an Ihrem Windows-System an).
 
 \clearpage
 %% Original page 49
