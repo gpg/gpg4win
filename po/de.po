@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gpg4win 1.1.1-svn417\n"
 "Report-Msgid-Bugs-To: gpg4win-devel@wald.intevation.org\n"
-"POT-Creation-Date: 2008-10-07 19:57+0200\n"
+"POT-Creation-Date: 2008-10-20 12:14+0200\n"
 "PO-Revision-Date: 2008-09-09 13:24+0200\n"
 "Last-Translator: Marcus Brinkmann <mb@g10code.com>\n"
 "Language-Team: German <translation-team-de@lists.sourceforge.net>\n"
@@ -416,12 +416,12 @@ msgstr ""
 "Das Schlüsselverwaltungsprogramm GNU Privacy Assistent aufrufen.  Dies ist "
 "eine Alternative zu dem WinPT Programm."
 
-#: src/inst-gpg4win.nsi:66
+#: src/inst-gpg4win.nsi:70
 msgctxt "DESC_Menu_gpg4win_readme"
 msgid "General information on Gpg4Win"
 msgstr "Allgemeine Informationen zu Gpg4win"
 
-#: src/inst-gpg4win.nsi:69
+#: src/inst-gpg4win.nsi:73
 msgctxt "DESC_Menu_gnupg_faq"
 msgid "Show the Frequently Asked Questions Document for GnuPG"
 msgstr "Das Dokument mit den häufig gestellten Fragen (FAQ) zu GnuPG anzeigen"

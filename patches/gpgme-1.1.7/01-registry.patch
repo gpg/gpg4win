@@ -1,0 +1,66 @@
+#! /bin/sh
+patch -p0 -f $* < $0
+exit $?
+
+2008-10-18  Marcus Brinkmann  <marcus@g10code.com>
+
+	* w32-util.c (find_program_in_registry): Don't define.
+	(_gpgme_get_gpg_path, _gpgme_get_gpgsm_path)
+	(_gpgme_get_gpgconf_path): Do not check for fooProgram in the
+	registry anymore.  It is now no longer possible to overwrite the
+	default location in that way.
+
+
+Index: gpgme/w32-util.c
+===================================================================
+--- gpgme/w32-util.c	(revision 1337)
++++ gpgme/w32-util.c	(revision 1338)
+@@ -225,6 +225,7 @@
+ }
+ 
+ 
++#if 0
+ static char *
+ find_program_in_registry (const char *name)
+ {
+@@ -245,6 +246,7 @@
+     }
+   return program;
+ }
++#endif
+ 
+ 
+ static char *
+@@ -307,8 +309,10 @@
+   static char *gpg_program;
+ 
+   LOCK (get_path_lock);
++#if 0
+   if (!gpg_program)
+     gpg_program = find_program_in_registry ("gpgProgram");
++#endif
+   if (!gpg_program)
+     gpg_program = find_program_in_inst_dir ("gpg.exe");
+   if (!gpg_program)
+@@ -324,8 +328,10 @@
+   static char *gpgsm_program;
+ 
+   LOCK (get_path_lock);
++#if 0
+   if (!gpgsm_program)
+     gpgsm_program = find_program_in_registry ("gpgsmProgram");
++#endif
+   if (!gpgsm_program)
+     gpgsm_program = find_program_in_inst_dir ("gpgsm.exe");
+   if (!gpgsm_program)
+@@ -341,8 +347,10 @@
+   static char *gpgconf_program;
+ 
+   LOCK (get_path_lock);
++#if 0
+   if (!gpgconf_program)
+     gpgconf_program = find_program_in_registry ("gpgconfProgram");
++#endif
+   if (!gpgconf_program)
+     gpgconf_program = find_program_in_inst_dir ("gpgconf.exe");
+   if (!gpgconf_program)

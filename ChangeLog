@@ -1,5 +1,9 @@
 2008-10-20  Marcus Brinkmann  <marcus@g10code.com>
 
+	* Makefile.am (EXTRA_DIST): Add gpgme-1.1.7/01-registry.patch.
+
+2008-10-20  Marcus Brinkmann  <marcus@g10code.com>
+
 	* packages/packages.current: Fix gpgme location.
 
 2008-10-17  Marcus Brinkmann  <marcus@g10code.com>
