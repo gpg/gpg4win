@@ -28,7 +28,6 @@ png_files = \
 		sc-kleopatra-openpgp-pinentry_de.png\
 		sc-kleopatra-openpgp-keyPairCreated_de.png\
 		sc-kleopatra-openpgp-exportSecretKey_de.png\
-		sc-ol-sendNewOpenpgpCertificate_de.png\
 		sc-kleopatra-withOpenpgpTestkey_de.png\
 		sc-kleopatra-withAdeleKey_de.png\
 		sc-kleopatra-openpgp-certificateDetails_de.png\
@@ -45,7 +44,6 @@ png_files = \
 		sc-kleopatra-certifyCertificate3_de.png \
 		sc-kleopatra-configureKeyserver_de.png\
 		sc-kleopatra-openpgp-encryptDialog_de.png \
-		sc-ol-sendNewX509Certificate_de.png\
 		sc-ol-adele-sendOpenpgpKey-inline_de.png\
 		sc-ol-adele-sendOpenpgpKey-attachment_de.png\
 		sc-kleopatra-import-certificate_de.png\

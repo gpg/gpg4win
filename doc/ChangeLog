@@ -1,3 +1,8 @@
+2008-10-21  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+	* manual/Makefile.am:
+	Removed sc-ol-sendNewOpenpgpCertificate_de.png and
+	sc-ol-sendNewX509Certificate_de.png
+
 2008-10-20  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
 	* manual/gpg4win-compendium-de.tex:
