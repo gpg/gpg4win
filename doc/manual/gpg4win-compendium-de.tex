@@ -17,6 +17,9 @@
 \usepackage{fancyhdr}
 \W\usepackage{rhxpanel}
 \W\usepackage{sequential}
+\usepackage[table]{xcolor}
+\usepackage{color}
+
 
 % write any html files directly into this directory
 % XXX: This is currently deactivated, but sooner or later
@@ -49,6 +52,10 @@
 \htmlimg{#2.png}%
 }}
 
+% custom colors
+\definecolor{gray}{rgb}{0.4,0.4,0.4}
+\definecolor{lightgray}{rgb}{0.7,0.7,0.7}
+
 \T\DeclareGraphicsExtensions{.eps.gz,.eps}
 \T\parindent 0cm
 \T\parskip\medskipamount
@@ -77,8 +84,6 @@
     \htmlpanelfield{Inhalt}{hlxcontents}
     % redefine bmod
     \newcommand{\bmod}{mod}
-    % redefine &
-    \NotSpecial{\do\&}
     % use hlx icons (default path)
     \newcommand{\HlxIcons}{}
 
@@ -2200,7 +2205,7 @@ Daraufhin öffnet Kleopatra ein Fenster, in dem -- anders als beim
 Verschlüsseln -- Ihre \textit{eigenen} Zertifikate angezeigt werden.
 
 
-% TODO# screenshot: kleopatra sign dialog - certificate selection
+% TODO screenshot: kleopatra sign dialog - certificate selection
 \begin{center}
 \IncludeImage[width=0.7\textwidth]{sc-kleopatra-openpgp-signDialog_de}
 \end{center}
@@ -3862,7 +3867,7 @@ Geben Sie anschließend Ihre Passphrase ein.
 \clearpage
 Das Ergebnis zeigt, dass die Entschlüsselung erfolgreich war:
 
-% TODO# screenshot kleopatra decrypt file, step 2
+% TODO screenshot kleopatra decrypt file, step 2
 \begin{center}
 \IncludeImage[width=0.7\textwidth]{sc-kleopatra-decryptFile2_de}
 \end{center}
@@ -4394,7 +4399,6 @@ bevor Sie eine neue Aufzeichnung machen.
 \clearpage
 \section{Logbuch von GpgOL einschalten}
 
-%TODO#: Logbuch erstellen geht auch als Administrator!
 Für das Einschalten des Logbuches von GpgOL müssen Sie mit Ihrem
 normalen Benutzerkonto (also nicht als Administrator) den Registrierungs-Editor
 starten. Geben Sie dazu das Kommando \verb:regedit: unter
@@ -4418,7 +4422,7 @@ Es ist empfehlenswert mit \Filename{1} zu beginnen und nur
 höhere Werte einzusetzen, falls es eine tiefere 
 Programmablaufanalyse erfordern sollte.
 
-%TODO#: Mögliche Werte für enableDebug ergeben sich aus 2er Potenzen?
+%TODO: Mögliche Werte für enableDebug ergeben sich aus 2er Potenzen?
 %also: 0-1-2-4-8-.. etc. 
 % Genauer Wertebereich?
 
@@ -4459,8 +4463,6 @@ so dass die geänderte Konfiguration eingelesen werden.
 
 \clearpage
 \section{Logbuch von GnuPG einschalten}
-
-%TODO#: Titel ok?
 
 Für folgende GnuPG-Programme können Sie jeweils einzeln ein Logbuch
 einschalten:
@@ -4852,15 +4854,44 @@ Wenn man eine solche Rechnung für alle Zahlen zwischen 0 und 76
 durchführt und die Ergebnisse in eine Tabelle einsetzt, sieht diese so
 aus:
 
+\W\xmlattributes*{table}{BORDER}
+\htmlattributes*{td}{BGCOLOR="gray"}
+\begin{table}[htbp]
+\begin{center}
+\begin{Label}{table1}
+\begin{tabular}{|r||r|r|r|r|r|r|r|r|r|r|}
+\hline
+\bf \T\cellcolor{gray}
+&\bf 0&\bf 1&\bf 2&\bf 3&\bf 4&\bf 5&\bf 6&\bf 7& \bf 8&\bf 9\\
+\hline
+\hline
+\bf 0& 0& 1& 30& 38& 53& 26& 62& 35& 50& 58\\
+\hline
+\bf 10& 10& 11& 12& 41& 49& 64& 37& 73& 46& 61\\
+\hline
+\bf 20& 69& 21& 22& 23& 52& 60& 75& 48& 7& 57\\
+\hline
+\bf 30& 72& 3& 32& 33& 34& 63& 71& 9& 59& 18\\
+\hline
+\bf 40& 68& 6& 14& 43& 44& 45& 74& 5& 20& 70\\
+\hline
+\bf 50& 29& 2& 17& 25& 54& 55& 56& 8& 16& 31\\
+\hline
+\bf 60& 4& 40& 13& 28& 36& 65& 66& 67& 19& 27\\
+\hline
+\bf 70& 42& 15& 51& 24& 39& 47& 76
+\htmlattributes*{td}{BGCOLOR="gray"} & \T\cellcolor{gray}
+\htmlattributes*{td}{BGCOLOR="gray"} & \T\cellcolor{gray}
+\htmlattributes*{td}{BGCOLOR="gray"} & \T\cellcolor{gray}
+\T\\
+\hline
+\end{tabular}
+\texorhtml{\caption}{\htmlcaption}{~}
+\end{Label}\end{center}
+\end{table}
+
 In der linken Spalte stehen die 10er-Stellen, in der oberen Zeile die
 1er-Stellen.
-
-% FIXME: Replace the table by a LaTeX table and use realistc examples
-% e.g. from the HAC.
-\begin{center}
-\htmlattributes*{img}{width=500}
-\IncludeImage[width=0.9\textwidth]{table-1}
-\end{center}
 
 \clearpage
 %% Original page 60
@@ -4875,23 +4906,55 @@ Diese wiederholte Multiplikation ergibt eine Zahl die $2 \bmod 77$
 ergibt. Das andere Beispiel: die Zahl $47 \bmod 77$ wird zur Zahl $75
 \bmod 77$ dekodiert.
 
-Tabelle 2 zeigt die genaue Zuordnung der 77 Zahlen zwischen 0 und 76.
-\begin{center}
-\htmlattributes*{img}{width=500}
-\IncludeImage[width=0.9\textwidth]{table-2}
-\end{center}
-%\caption{Tabelle 2: Zahlentransformation modulo77, unter Verwendung
-%des geheimen Schlüssels 37}
+Tabelle \ref{table2} zeigt die genaue Zuordnung der 77 Zahlen zwischen 0 und 76.
 
-Um eine Zahl mit Tabelle 2 zu transformieren, gehen wir nach der
-gleichen Methode vor wie bei Tabelle 1. Ein Beispiel: 60 wird
+\W\xmlattributes*{table}{BORDER}
+\htmlattributes*{td}{BGCOLOR="gray"}
+\begin{table}[htbp]
+\begin{center}
+\begin{Label}{table2}
+\begin{tabular}{|r||r|r|r|r|r|r|r|r|r|r|}
+\hline
+\bf \T\cellcolor{gray}
+&\bf 0&\bf 1&\bf 2&\bf 3&\bf 4&\bf 5&\bf 6&\bf 7& \bf 8&\bf 9\\
+\hline
+\hline
+\bf 0& 0& 1& 51& 31& 60& 47& 41& 28& 57& 37\\
+\hline
+\bf 10& 10& 11& 12& 62& 42& 71& 58& 52& 39& 68\\
+\hline
+\bf 20& 48& 21& 22& 23& 73& 53& 5& 69& 63& 50\\
+\hline
+\bf 30& 2& 59& 32& 33& 34& 7& 64& 16& 3& 74\\
+\hline
+\bf 40& 61& 13& 70& 43& 44& 45& 18& 75& 27& 14\\
+\hline
+\bf 50& 8& 72& 24& 4& 54& 55& 56& 29& 9& 38\\
+\hline
+\bf 60& 25& 19& 6& 35& 15& 65& 66& 67& 40& 20\\
+\hline
+\bf 70& 49& 36& 30& 17& 46& 26& 76
+\htmlattributes*{td}{BGCOLOR="gray"} & \T\cellcolor{gray}
+\htmlattributes*{td}{BGCOLOR="gray"} & \T\cellcolor{gray}
+\htmlattributes*{td}{BGCOLOR="gray"} & \T\cellcolor{gray}
+\T\\
+\hline
+\end{tabular}
+\texorhtml{\caption}{\htmlcaption}{Zahlentransformation modulo77, unter Verwendung
+des geheimen Schlüssels 37}
+\end{Label}\end{center}
+\end{table}
+
+
+Um eine Zahl mit Tabelle \ref{table2} zu transformieren, gehen wir nach der
+gleichen Methode vor wie bei Tabelle~\ref{table1}. Ein Beispiel: 60 wird
 transformiert in die Zahl in Zeile 60 und Spalte 0. Also wird 60 zu 25
 transformiert.
 
 Das überrascht nicht, denn wenn wir davon ausgehen, dass wir bei der
-Umwandlung von 25 mit Hilfe von Tabelle 1 als Ergebnis 60 erhalten,
+Umwandlung von 25 mit Hilfe von Tabelle~\ref{table1} als Ergebnis 60 erhalten,
 dann sollten wir auch bei der Transformation von 60 mit Hilfe von
-Tabelle 2 zum Ergebnis 25 gelangen. Dabei haben wir den öffentlichen
+Tabelle \ref{table2} zum Ergebnis 25 gelangen. Dabei haben wir den öffentlichen
 Schlüssel, 13, zur Umwandlung bzw.  Kodierung einer Zahl verwendet,
 und den geheimen Schlüssel 37, um sie zurückzuwandeln bzw. zu
 dekodieren. Sowohl für die Verschlüsselung als auch für die
@@ -4924,7 +4987,7 @@ Beispiel recht kompliziert geworden ist. In diesem Fall hat die
 Person, die den Schlüssel öffentlich gemacht hat, die Zahlen 77 und 13
 als öffentlichen Schlüssel bekanntgegeben.  Damit kann jedermann dieser
 Person mit der oben beschriebenen Methode --­ wie im Beispiel der
-Tabelle 1 --­ eine verschlüsselte Zahl oder Zahlenfolge schicken. Der
+Tabelle~\ref{table1} --­ eine verschlüsselte Zahl oder Zahlenfolge schicken. Der
 rechtmäßige Empfänger der verschlüsselten Zahlenfolge kann diese dann
 mit Hilfe der Zahl 77 und dem geheimen Schlüssel 37 dekodieren.
 
@@ -4936,10 +4999,64 @@ Folglich kann man den Code in diesem einfachen Beispiel leicht
 knacken. Der scharfsinnige Leser wird auch bemerkt haben, dass etliche
 Zahlen, zum Beispiel die Zahl 11 und ihr Vielfaches (also 22, 33 etc.)
 und die benachbarten Zahlen sich in sich selbst umwandeln.
+
+\W\xmlattributes*{table}{BORDER}
+\htmlattributes*{td}{BGCOLOR="gray"}
+\begin{table}[htbp]
 \begin{center}
-\htmlattributes*{img}{width=500}
-\IncludeImage[width=0.9\textwidth]{table-3}
-\end{center}
+\begin{Label}{table3}
+\begin{tabular}{|r||r|r|r|r|r|r|r|r|r|r|}
+\hline
+\bf \T\cellcolor{gray}
+&\bf 0&\bf 1&\bf 2&\bf 3&\bf 4&\bf 5&\bf 6&\bf 7& \bf 8&\bf 9\\
+\hline
+\hline
+\bf 0& 0& 1& 51& 31& 60& 47& 41& 28& 57& 37\\
+\hline
+\bf 10
+\htmlattributes*{td}{BGCOLOR="lightgray"} & \T\cellcolor{lightgray}
+10 \htmlattributes*{td}{BGCOLOR="lightgray"} & \T\cellcolor{lightgray}
+11 \htmlattributes*{td}{BGCOLOR="lightgray"} & \T\cellcolor{lightgray}
+12& 62& 42& 71& 58& 52& 39& 68\\
+\hline
+\bf 20& 48 \htmlattributes*{td}{BGCOLOR="lightgray"} & \T\cellcolor{lightgray}
+21 \htmlattributes*{td}{BGCOLOR="lightgray"} & \T\cellcolor{lightgray}
+22 \htmlattributes*{td}{BGCOLOR="lightgray"} & \T\cellcolor{lightgray}
+23& 73& 53& 5& 69& 63& 50\\
+\hline
+\bf 30& 2& 59
+\htmlattributes*{td}{BGCOLOR="lightgray"} & \T\cellcolor{lightgray}
+32 \htmlattributes*{td}{BGCOLOR="lightgray"} & \T\cellcolor{lightgray}
+33 \htmlattributes*{td}{BGCOLOR="lightgray"} & \T\cellcolor{lightgray}
+34& 7& 64& 16& 3& 74\\
+\hline
+\bf 40& 61& 13& 70 \htmlattributes*{td}{BGCOLOR="lightgray"} & \T\cellcolor{lightgray}
+43 \htmlattributes*{td}{BGCOLOR="lightgray"} & \T\cellcolor{lightgray}
+44 \htmlattributes*{td}{BGCOLOR="lightgray"} & \T\cellcolor{lightgray} 
+45& 18& 75& 27& 14\\
+\hline
+\bf 50& 8& 72& 24& 4 \htmlattributes*{td}{BGCOLOR="lightgray"} & \T\cellcolor{lightgray}
+54 \htmlattributes*{td}{BGCOLOR="lightgray"} & \T\cellcolor{lightgray}
+55 \htmlattributes*{td}{BGCOLOR="lightgray"} & \T\cellcolor{lightgray} 
+56& 29& 9& 38\\
+\hline
+\bf 60& 25& 19& 6& 35& 15 \htmlattributes*{td}{BGCOLOR="lightgray"} & \T\cellcolor{lightgray}
+65 \htmlattributes*{td}{BGCOLOR="lightgray"} & \T\cellcolor{lightgray}
+66 \htmlattributes*{td}{BGCOLOR="lightgray"} & \T\cellcolor{lightgray} 
+67& 40& 20\\
+\hline
+\bf 70& 49& 36& 30& 17& 46& 26& 76
+\htmlattributes*{td}{BGCOLOR="gray"} & \T\cellcolor{gray}
+\htmlattributes*{td}{BGCOLOR="gray"} & \T\cellcolor{gray}
+\htmlattributes*{td}{BGCOLOR="gray"} & \T\cellcolor{gray}
+\T\\
+\hline
+\end{tabular}
+\texorhtml{\caption}{\htmlcaption}{~}
+\end{Label}\end{center}
+\end{table}
+
+
 
 \clearpage
 
@@ -4949,10 +5066,13 @@ Algorithmus dadurch beeinträchtigt würde.  Doch stellen Sie sich nun
 vor, das Produkt zweier grosser Primzahlen, die auf absolut
 willkürliche Art und Weise gewählt werden, ergäbe
 
-114,381,625,757,888,867,669,235,779,976,146,612,010,\\
-218,296,721,242,362,562,561,842,935,706,935,245,733,\\
-897,830,597,123,563,958,705,058,989,075,147,599,290,\\
+
+\begin{verbatim}
+114,381,625,757,888,867,669,235,779,976,146,612,010,
+218,296,721,242,362,562,561,842,935,706,935,245,733,
+897,830,597,123,563,958,705,058,989,075,147,599,290,
 026,879,543,541
+\end{verbatim}
 
 %% Original page 63
 Hier ist überhaupt nicht mehr ersichtlich, welche die beiden zugrunde
@@ -4965,7 +5085,7 @@ Man muss die Primzahlen also nur groß genug wählen, damit ihre
 Berechnung aus dem Produkt so lange dauert, dass alle bekannten
 Methoden daran in der Praxis scheitern.  Außerdem nimmt der Anteil der
 Zahlen, die in sich selbst transformiert werden --­ wie wir sie oben
-in den Tabellen 1 und 2 gefunden haben -- stetig ab, je größer die
+in den Tabellen~\ref{table1} und \ref{table2} gefunden haben -- stetig ab, je größer die
 Primzahlen werden.  Von Primzahlen in der Grössenordnung, die wir in der
 Praxis bei der Verschlüsselung verwenden, ist dieser Teil ist so
 klein, dass der RSA Algorithmus davon in keiner Weise beeinträchtigt
@@ -5157,7 +5277,8 @@ sie zunächst zusammen und verfolgen dann die Einzelschritte:
 \item Die Nachricht \emph{aba, cad, ada} wandeln wir -- wie gesehen -- in
   Zahlen um.
 \item Diese Darstellung zur Basis 4 wandeln wir in eine Darstellung
-  zur Basis 10 um, damit wir zur Verschlüsselung die Tabelle 1
+  zur Basis 10 um, damit wir zur Verschlüsselung die
+  Tabelle~\ref{table1}
   benutzen können, in denen die Zahlen ja auch auf 10er-Basis
   dargestellt werden.  Dabei entsteht eine kodierte Nachricht zur
   Basis 10.
@@ -5191,10 +5312,10 @@ Wir wollen nun die Nachricht "`abacadaca"' verschlüsseln. Wir kodieren
 diese Nachricht mit Hilfe der Primzahlen 7 und 11, mit dem
 öffentlichen Schlüssel 77 und 13 und dem dazugehörenden geheimen
 Schlüssel 37.  Dieses Beispiel kennen wir bereits aus dem früheren
-Kapitel: wir haben damit die Tabellen 1 und 2 konstruiert.
+Kapitel: wir haben damit die Tabellen~\ref{table1} und \ref{table2} konstruiert.
 
 \item Diese Darstellung zur Basis 4 wandeln wir in eine Darstellung zur
-Basis 10 um, damit wir zur Verschlüsselung die Tabelle 1 benutzen
+    Basis 10 um, damit wir zur Verschlüsselung die Tabelle~\ref{table1} benutzen
 können, in denen die Zahlen ja auch auf 10er-Basis dargestellt
 werden.
 
@@ -5227,10 +5348,13 @@ Zur Basis 10 wird diese Nachricht durch die Zahlenfolge 4, 35,
 Stück $203_4$:
 
 \T\begin{eqnarray*}
+\W\begin{tabular}{rrr}
  3 * 4^0, & ~\mbox{also}~ 3 * 1, & ~\mbox{also}~ 3 \\
  0 * 4^1, & ~\mbox{also}~ 0 * 4, & ~\mbox{also}~ 0 \\
- 2 * 4^2, & ~\mbox{also}~ 2 * 16, & ~\mbox{also}~ 32
+ 2 * 4^2, & ~\mbox{also}~ 2 * 16, & ~\mbox{also}~ 32\\
+\W\end{tabular}
 \T\end{eqnarray*}
+
 
 % The next clearpage is just to over come a problem with the PDF
 % file.  Without it the footer logo is not correctly rendered, instead
@@ -5240,12 +5364,12 @@ Stück $203_4$:
 
 
 \clearpage
-\item Jetzt können wir zur Verschlüsselung die Tabelle 1 benutzen, die ja
+\item Jetzt können wir zur Verschlüsselung die Tabelle~\ref{table1} benutzen, die ja
 zur Basis 10 berechnet wurde. Diese Tabelle benutzen wir, weil wir mit
 dem schon bekannten Schlüsselpaar arbeiten wollen. Dabei entsteht eine
 kodierte Nachricht zur Basis 10.
 
-Zum Verschlüsseln der Nachricht nehmen wir jetzt Tabelle 1 zur Hilfe.
+Zum Verschlüsseln der Nachricht nehmen wir jetzt Tabelle~\ref{table1} zur Hilfe.
 Die Nachricht wird nun zu der Zahlenfolge 53, 63, 50 (zur Basis 10).
 \begin{center}
 \htmlattributes*{img}{width=500}
@@ -5262,12 +5386,13 @@ Buchstabensequenz, erhält man dbb, ddd, dac, was sich nun erheblich
 von der ursprünglichen Nachricht unterscheidet.
 
 Man kehrt nun also den Prozeß um und transformiert die Zahlenfolge 53,
-63, 50 mit Tabelle 2 und erhält die Sequenz 4, 35, 8. Und das
+63, 50 mit Tabelle~\ref{table2} und erhält die Sequenz 4, 35, 8. Und das
 entspricht, als Zahlenfolge genau der ursprünglichen Nachricht.
 
-Anhand der Tabellen 1 und 2 können wir ebensogut Nachrichten unter
-Verwendung des geheimen Schlüssels (d.h.  erst Tabelle 2 benutzen)
-verschlüsseln, dann mit dem öffentlichen Schlüssel (d.h. Tabelle 1 als
+Anhand der Tabellen \ref{table1} und \ref{table2} können wir ebensogut Nachrichten unter
+Verwendung des geheimen Schlüssels (d.h. erst Tabelle~\ref{table2} benutzen)
+verschlüsseln, dann mit dem öffentlichen Schlüssel (d.h.
+Tabelle~\ref{table1} als
 zweites benutzen) dekodieren und damit unsere ursprüngliche Zahl
 wieder herstellen. Das bedeutet, dass der Inhaber des geheimen
 Schlüssels damit Nachrichten unter Verwendung des RSA Algorithmus
@@ -5332,19 +5457,20 @@ Start von Outlook findet sich im Menü
 \IncludeImage[width=0.45\textwidth]{sc-gpgol-options_de}
 \end{center}
 
-Die Karteikarte GpgOL unterteilt sich in drei Kästen:
+\clearpage
+Die Karteikarte \textit{GpgOL} unterteilt sich in drei Kästen:
 \begin{enumerate}
     \item \textbf{Allgemein:}
 
         Nach der Installation von Gpg4win ist die 
         \T\margin{\IncludeImage[width=1.5cm]{smime-icon}}
-        S/MIME-Funktionalität in GpgOL deaktiviert.
+        S/MIME Funktionalität in GpgOL deaktiviert.
         Damit ist die S/MIME Unterstützung von GnuPG gemeint.
         Outlook selbst unterstützt ebenfalls X.509 und S/MIME,
-        arbeitet aber natürlich nicht mit den Gpg4win Komponenten
+        arbeitet aber natürlich nicht mit den Gpg4win-Komponenten
         zusammen. Konkret heisst das, dass alle Einstellungen,
-        das SChlüsselmanagement und die Benutzerdialoge unterschiedlich
-        sind. Es ist beachten, dass Outlook keine OpenPGP
+        das Schlüsselmanagement und die Benutzerdialoge unterschiedlich
+        sind. Es ist zu beachten, dass Outlook keine OpenPGP
         Unterstützung anbietet.
 
         \textbf{Wichtig:} Wenn Sie S/MIME nutzen
@@ -5363,23 +5489,22 @@ Die Karteikarte GpgOL unterteilt sich in drei Kästen:
         \textit{oder} S/MIME per Voreinstellung verwendet werden soll.
         Auch hier können Sie diese Entscheidung immer noch vor dem
         Senden jeder Nachricht manuell verändern.
+
     \item \textbf{Lesen von Nachrichten:}
 
         \textit{Auch im Vorschaufenster entschlüsseln}
 
         Soll im Vorschaufenster die entschlüsselte Fassung erscheinen,
         so ist diese Option einzuschalten.
-
-        Sie sollten dabei bedenken, dass dadurch bereits beim durchblättern
+        Sie sollten dabei bedenken, dass dadurch bereits beim Durchblättern
         durch Ihre Nachrichten die Entschlüsselungs- und Prüfroutinen ausgeführt
         werden. Das heisst, es werden Dialog zum Status der E-Mails angezeigt
         und ggf. werden Sie nach einer Passphrase zur Entschlüsselung gefragt.
 
         \textit{HTML Darstellung anzeigen wenn möglich}
 
-        Die Option  \textit{HTML Darstellung anzeigen wenn möglich}
-        kann benutzt werden, um die HTML Version einer Nachricht 
-        anzuzeigen.  Im Normalfall oder falls keine HTML Version vorhanden 
+        Diese Option kann benutzt werden, um die HTML Version einer Nachricht
+        anzuzeigen. Im Normalfall oder falls keine HTML Version vorhanden 
         ist, wird die Text Version dargestellt.
 
         \textit{Verschlüsselte Nachricht als Anlage anzeigen}
@@ -5393,9 +5518,9 @@ Die Karteikarte GpgOL unterteilt sich in drei Kästen:
 
 Alle Optionen sind nach einer Neuinstallation bereits sinnvoll vorbelegt.
 
-%TODO#: noch relevant?
+\clearpage
 \label{OLandWord}
-Um aber verschlüsselte Nachrichten versenden zu können, sollten Sie
+Um verschlüsselte Nachrichten mit Outlook versenden zu können, sollten Sie
 sicherstellen, daß Sie \textbf{nicht Microsoft Word} zum Verfassen der
 Nachrichten benutzen.
 
@@ -5435,14 +5560,14 @@ Ein Integration für GnuPG wird derzeit für folgende Windows-Mailprogramme angebo
 \item[Outlook ab Version 2003] mit Plugin \textbf{GpgOL}. Dies ist in Gpg4win
   fest integriert.
 
-\item[Claws Mail]: Dieses \Email{}-Programm wird komplett mit Gpg4win
+\item[Claws Mail:] Dieses \Email{}-Programm wird komplett mit Gpg4win
   mitgeliefert und kann optional mitinstalliert werden.
   Diese Installation über Gpg4win konfiguriert bereits Plugins für
   die Verwendung von PGP/MIME und S/MIME. Diese Plugins verwenden
   jedoch nicht Kleopatra und bieten daher nicht denselben Komfort
   wie es derzeit das Outlook Plugin bietet.
 
-\item[Kontact]: Die komfortabelste und erprobteste Integration von
+\item[Kontact:] Die komfortabelste und erprobteste Integration von
   GnuPG bietet dieses \Email{}-Programm. Es ist für jedes
   System auf dem die KDE-Umgebung\footnote{http://www.kde.de} installiert ist verfügbar,
   also für nahezu jedes GNU/Linux System.
@@ -5504,7 +5629,7 @@ Dort können diverse Einstellungen vorgenommen werden, darunter
 absolute Pfade für die zu installierenden Konfigurationsdateien.
 Relative Pfade, also abhänig vom aktuellem
 Arbeitsverzeichnis, dürfen hier nicht angegeben werden. Absolute Pfade
-enthalten den vollständigen Pfad inkusive der Partitionsangabe.
+enthalten den vollständigen Pfad inkusive der Laufwerksangabe.
 In der Regel sind die Einstellungen dann anzugeben falls nicht
 die Voreinstellung verwendet werden soll.
 Ausnahmen davon sind im Beispiel auf der nächsten Seite dokumentiert.
@@ -5568,7 +5693,7 @@ Programmen auf Gpg4win umsteigen können.  Das Installationsprogramm
 erkennt einige dieser Programme und warnt Sie in diesem Fall.
 
 Generell ist es ratsam, eine vorhandene Installation eines anderen
-GnuPG basierten Programms zu entfernen bevor Gpg4win installiert wird.
+GnuPG basierten Programms zu entfernen, bevor Gpg4win installiert wird.
 Es ist hier wichtig, die vorhandenen Schlüssel vorher zu sichern.
 
 Der einzige sinnvolle Weg dies zu tun, ist unter Verwendung der im
@@ -5650,7 +5775,12 @@ systemweiten Anwendungsverzeichnisse mit den Konfigurationseinstellungen:
     \item Benutzerspezifische Anwendungsdaten
         (\Filename{\%APPDATA\%\back{}gnupg})\\
         entspricht in der Regel dem Verzeichnis: \newline
-\Filename{C:\back{}Dokumente und Einstellungen\back{}\textit{<name>}\back{}Anwendungsdaten\back{}gnupg\back{}}
+\Filename{C:\back{}Dokumente und
+Einstellungen\back{}\textit{<name>}\back{}Anwendungsdaten\back{}gnupg\back{}}
+
+        In diesem gnupg-Verzeichnis befinden sich sämtliche persönlichen GnuPG Daten,
+        also die persönlichen Schlüssel, Zertifikate, Vertrauenseinstellungen und
+        Programmkonfigurationen.
 
     \item systemweite Anwendungsdaten
         (\Filename{\%COMMON\_APPDATA\%\back{}GNU})\\
@@ -5661,8 +5791,8 @@ Users\back{}Anwendungsdaten\back{}GNU\back{}}
 
 
 
-Es kommt vor, dass nach der Deinstallation noch einige Systemdaten
-die zwischenzeitlich von Gpg4win erstellt wurden, zurückbleiben.
+Es kann vorkommen, dass nach der Deinstallation noch einige Systemdaten
+(die zwischenzeitlich von Gpg4win erstellt wurden) zurückbleiben.
 Falls Sie sich sicher sind, dass diese Daten nicht gesichert
 werden sollen, können Sie das Installationsverzeichnis,
 also zum Beispiel
@@ -5699,7 +5829,7 @@ also zum Beispiel
 \item Aufgrund einer Erlaubniss des BMWi vom 14. November 2007 wurde
       die Invariant Section "`Impressum"' entfernt und an die aktuelle
       Version angepasst.
-\item Das ,,Gpg4win Kompendium 3.0" fasst "`Gpg4win für Einsteiger"' und "`Gpg4win für Durchblicker"'
+\item Das "`Gpg4win Kompendium 3.0"' fasst "`Gpg4win für Einsteiger"' und "`Gpg4win für Durchblicker"'
       zusammen und ist umfassend für Gpg4win 2.0 aktualisiert und ergänzt worden.\\
       Diese wurde hauptsächlich durchgeführt von:\\
       Emanuel Schütze, Intevation GmbH\\
