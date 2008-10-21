@@ -1,3 +1,8 @@
+2008-10-21  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+
+	* manual/gpg4win-compendium-de.tex (Automatische
+	Installation von Gpg4win): Fix missing ini settings.
+
 2008-10-21  Marcus Brinkmann  <marcus@g10code.com>
 
 	* manual/gpg4win-compendium-de.tex (Automatische
