@@ -65,16 +65,17 @@ all possible keys:
 
 [gpg4win]
   ; Installer settings.  Do not define or leave empty for defaults.
-  inst_gnupg2 = false
   inst_gpgol = true
   inst_gpgex = true
+  inst_kleopatra = true
   inst_gpa = true
-  inst_winpt = true
-  inst_gpgee = true
+  inst_scute = true
   inst_claws_mail = false
+  inst_compendium_de = true
   inst_novice_manual_en = true
   inst_novice_manual_de = true
   inst_advanced_manual_de = true
+  inst_advanced_manual_en = true
 
   ; Where to install short-cuts.
   inst_start_menu = true

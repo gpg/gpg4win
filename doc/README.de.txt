@@ -84,18 +84,18 @@ zugleich alle erlaubten Schlüsselworte zeigt:
 [gpg4win]
   ; Installer Einstellungen.
   ; Weg- oder leer-lassen bedeutet, dass die Voreinstellung
-  ; verwendet wird.
-  inst_gnupg2 = true
+  ; verwendet wird. 
   inst_gpgol = true
   inst_gpgex = true
+  inst_kleopatra = true
   inst_gpa = true
-  inst_winpt = true
-  inst_gpgee = true
+  inst_scute = true
   inst_claws_mail = false
-  inst_man_novice_de = true
-  inst_man_novice_en = true
-  inst_man_advanced_de = true
-  inst_man_advanced_en = true
+  inst_compendium_de = true
+  inst_novice_manual_en = true
+  inst_novice_manual_de = true
+  inst_advanced_manual_de = true
+  inst_advanced_manual_en = true
 
   ; Die Stellen, an denen Verknüpfungen erzeugt werden sollen.
   inst_start_menu = true
