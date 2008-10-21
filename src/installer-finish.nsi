@@ -1,5 +1,5 @@
 # installer-finish.nsi - Installer for GPG4Win.      -*- coding: latin-1; -*-
-# Copyright (C) 2005 g10 Code GmbH
+# Copyright (C) 2005, 2008 g10 Code GmbH
 # 
 # This file is part of GPG4Win.
 # 
@@ -55,7 +55,7 @@ Section Uninstall
   StrCpy $MYTMP $R0
   Delete "$SMPROGRAMS\$MYTMP\*.lnk"
   Delete "$SMPROGRAMS\$MYTMP\$(DESC_Menu_manuals)\*.lnk"
-  Delete "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_man_novice_de).lnk"
+  RMDir "$SMPROGRAMS\$MYTMP\$(DESC_Menu_manuals)"
 
   RMDir "$SMPROGRAMS\$MYTMP\$(DESC_Desktop_manuals)"
   StrCpy $MYTMP "$SMPROGRAMS\$MYTMP"
@@ -69,6 +69,7 @@ Section Uninstall
 
   DeleteRegValue HKLM "Software\GNU\${PRETTY_PACKAGE_SHORT}" \
         "Start Menu Folder"
+
 
   # Delete Desktop links.
 !ifdef HAVE_PKG_WINPT
@@ -145,7 +146,6 @@ Section Uninstall
 no_quick_launch_uninstall:
 
 !endif
-
 
   Delete "$INSTDIR\${PACKAGE}-uninstall.exe"
   RMDir "$INSTDIR"
