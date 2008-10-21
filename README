@@ -50,6 +50,7 @@ at least the following packages need to be installed:
  imagemagick
  tetex-bin
  tetex-extra
+ latex-xcolor (for the compendium)
  tr
  gs-common
  hyperlatex
