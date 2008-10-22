@@ -1,3 +1,8 @@
+2008-10-22  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+
+	* configure.ac: Change COMPENDIUM_DATE_DE for 
+	compendium 3.0.0-beta1 release.
+
 2008-10-21  Marcus Brinkmann  <marcus@g10code.com>
 
 	* src/installer-finish.nsi (no_quick_launch_uninstall): Remove
