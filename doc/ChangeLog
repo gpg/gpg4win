@@ -1,5 +1,9 @@
 2008-10-22  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
+	* manual/gpg4win-compendium-de.tex: Add pdf link for html version
+
+2008-10-22  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+
 	* manual/gpg4win-compendium-de.tex: Preparations for
 	compendium 3.0.0-beta1 release.
 
