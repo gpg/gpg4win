@@ -1,4 +1,10 @@
 2008-10-22  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+	* website/download.htm4, website/download-de.htm4:
+	Added link to Compendium 3.0.0-beta1.
+	* website/index.htm4, website/index-de.htm4:
+	Added link to beta downloads. Updated aim comments.
+
+2008-10-22  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
 	* manual/gpg4win-compendium-de.tex: Add pdf link for html version
 
