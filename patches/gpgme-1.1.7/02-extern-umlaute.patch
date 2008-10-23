@@ -1,0 +1,65 @@
+#! /bin/sh
+patch -p0 -f $* < $0
+exit $?
+
+2008-10-23  Marcus Brinkmann  <marcus@g10code.de>
+
+	* rungpg.c (gpg_keylist_preprocess): Convert percent escaped
+	string to C coded string.
+
+Index: gpgme/rungpg.c
+===================================================================
+--- gpgme/rungpg.c	(revision 1336)
++++ gpgme/rungpg.c	(working copy)
+@@ -1878,12 +1878,47 @@
+ 	 HTTP Keyserver Protocol (draft). 
+ 
+ 	 We want:
+-	 uid:o<flags>::::<creatdate>:<expdate>:::<uid>:
++	 uid:o<flags>::::<creatdate>:<expdate>:::<c-coded uid>:
+       */
+ 
+-      if (asprintf (r_line, "uid:o%s::::%s:%s:::%s:",
+-		    field[4], field[2], field[3], field[1]) < 0)
+-	return gpg_error_from_errno (errno);
++      {
++	/* The user ID is percent escaped, but we want c-coded.
++	   Because we have to replace each '%HL' by '\xHL', we need at
++	   most 4/3 th the number of bytes.  But because this 
++	   security software, we err on the good side and allocate
++	   twice as much.  */
++	char *uid = malloc (2 * strlen (field[1]) + 1);
++	char *src;
++	char *dst;
++
++	if (! uid)
++	  return gpg_error_from_errno (errno);
++	src = field[1];
++	dst = uid;
++	while (*src)
++	  {
++	    if (*src == '%')
++	      {
++		*(dst++) = '\\';
++		*(dst++) = 'x';
++		src++;
++		/* Copy the next two bytes unconditionally.  This is
++		   what reduces the maximum number of needed bytes
++		   from 2n+1 to (4/3)n+1, even for invalid strings.  */
++		if (*src)
++		  *(dst++) = *(src++);
++		if (*src)
++		  *(dst++) = *(src++);
++	      }
++	    else
++	      *(dst++) = *(src++);
++	  }
++	*dst = '\0';
++
++	if (asprintf (r_line, "uid:o%s::::%s:%s:::%s:",
++		      field[4], field[2], field[3], uid) < 0)
++	  return gpg_error_from_errno (errno);
++      }
+       return 0;
+ 
+     case RT_NONE:

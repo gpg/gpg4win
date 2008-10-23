@@ -1,3 +1,8 @@
+2008-10-23  Marcus Brinkmann  <marcus@g10code.de>
+
+	* patches/gpgme-1.1.7/02-extern-umlaute.patch: New file.
+	* Makefile.am (EXTRA_DIST): Add it here.
+
 2008-10-23  Marcus Brinkmann  <marcus@g10code.com>
 
 	* packages/packages.current: Update libtasn1, libgsasl, gnutls.

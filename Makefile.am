@@ -47,6 +47,7 @@ EXTRA_DIST = autogen.sh README.SVN \
 	patches/gpgme/01-gpg2.patch \
 	patches/gpgme/02-kleo-bugs-workaround.patch \
 	patches/gpgme-1.1.7/01-registry.patch \
+	patches/gpgme-1.1.7/02-extern-umlaute.patch \
 	patches/libetpan-0.54/01-config.patch \
 	patches/libetpan-0.54/02-index.patch \
 	patches/winpt/01-gpg-path.patch \
