@@ -31,19 +31,6 @@ EXTRA_DIST = autogen.sh README.SVN \
         patches/glib-2.12.12/01-giowin32.patch \
         patches/glib-2.12.12/02-gspawn-w32.patch \
         patches/glib-2.12.12/03-gspawn-w32-fixup.patch \
-	patches/claws-mail-3.1.0cvs70/01-w32-logo.patch \
-	patches/claws-mail-3.1.0cvs70/02-w32-icon.patch \
-	patches/claws-mail-3.1.0cvs70/03-smime-plugin.patch \
-	patches/claws-mail-3.1.0cvs70/99-auto.patch \
-	patches/claws-mail-3.4.0/01-w32-logo.patch \
-	patches/claws-mail-3.4.0/02-w32-icon.patch \
-	patches/claws-mail-3.4.0/03-smime-plugin.patch \
-	patches/claws-mail-3.4.0/04-gnutls.patch \
-	patches/claws-mail-3.4.0/99-auto.patch \
-	patches/claws-mail-3.5.0cvs114/01-gtk-input-add.patch \
-	patches/claws-mail-3.5.0cvs114/02-pgpcore.patch \
-	patches/claws-mail-3.5.0cvs114/03-smime.patch \
-	patches/claws-mail-3.5.0cvs114/99-auto.patch \
 	patches/gpgme/01-gpg2.patch \
 	patches/gpgme/02-kleo-bugs-workaround.patch \
 	patches/gpgme-1.1.7/01-registry.patch \
