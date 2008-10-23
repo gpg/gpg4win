@@ -69,21 +69,18 @@ chk  b9faae10efae552f23c213891a3ed8187cb7d017
 # GNU TLS and support libraries
 #
 
-server http://josefsson.org/gsasl/releases
+server ftp://alpha.gnu.org/gnu/gsasl
 
-file libgsasl-0.2.25.tar.gz
-chk  aa38392b835adb7a4102970f9c262a83e2f75f3d
+file libgsasl-0.2.29.tar.gz
+chk  188c9a18db481f968cadb7c77a5a24f4cbf3d03d
 
-server http://josefsson.org/gnutls/releases
+server ftp://ftp.gnu.org/pub/gnu/gnutls
 
-file libtasn1/libtasn1-1.4.tar.gz
-chk  684c9dc343b0155a074c2127ac8050f983528bc8
+file libtasn1-1.5.tar.gz
+chk  b60dafd5c25af38f434175faf5efa82767653d05
 
-file opencdk/opencdk-0.6.6.tar.bz2
-chk  ad333a55632eca9b7d035d3cc5c7f0b0342cb14e
-
-file gnutls-2.3.7.tar.bz2
-chk  ee059b846b6a4a969afaa104b677b42d2270be2f
+file gnutls-2.6.0.tar.bz2
+chk  bbd9e5f3a77bfcbef5a769c67d1576e7a6e4bda5
 
 
 #

@@ -109,9 +109,6 @@
 !ifdef HAVE_PKG_ATK
 !include "inst-atk.nsi"
 !endif
-!ifdef HAVE_PKG_OPENCDK
-!include "inst-opencdk.nsi"
-!endif
 !ifdef HAVE_PKG_DIRMNGR
 !include "inst-dirmngr.nsi"
 !endif
@@ -282,9 +279,6 @@
 !endif
 !ifdef HAVE_PKG_DIRMNGR
 !include "uninst-dirmngr.nsi"
-!endif
-!ifdef HAVE_PKG_OPENCDK
-!include "uninst-opencdk.nsi"
 !endif
 !ifdef HAVE_PKG_ATK
 !include "uninst-atk.nsi"
@@ -629,9 +623,6 @@ Function CalcDepends
 !ifdef HAVE_PKG_LIBTASN1
   !insertmacro UnselectSection ${SEC_libtasn1}
 !endif
-!ifdef HAVE_PKG_OPENCDK
-  !insertmacro UnselectSection ${SEC_opencdk}
-!endif
 !ifdef HAVE_PKG_GNUTLS
   !insertmacro UnselectSection ${SEC_gnutls}
 !endif
@@ -868,16 +859,7 @@ Function CalcDepends
   have_gnutls:
   !insertmacro SelectSection ${SEC_libgsasl}
   !insertmacro SelectSection ${SEC_libtasn1}
-  !insertmacro SelectSection ${SEC_opencdk}
   skip_gnutls:
-!endif
-
-!ifdef HAVE_PKG_OPENCDK
-  !insertmacro SectionFlagIsSet ${SEC_opencdk} ${SF_SELECTED} have_opencdk skip_opencdk
-  have_opencdk:
-  !insertmacro SelectSection ${SEC_libgcrypt}
-  !insertmacro SelectSection ${SEC_libgpg_error}
-  skip_opencdk:
 !endif
 
   # Package "libtasn1" has no dependencies.

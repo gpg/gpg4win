@@ -1,3 +1,12 @@
+2008-10-23  Marcus Brinkmann  <marcus@g10code.com>
+
+	* packages/packages.current: Update libtasn1, libgsasl, gnutls.
+	Remove opencdk, which is now included in gnutls.
+	* include/config.nsi.in: Remove opencdk support.
+	* src/inst-sections.nsi: Likewise.
+	* src/Makefile.in (gpg4win_spkgs, EXTRA_DIST): Remove opencdk.
+	* src/inst-opencdk.nsi, src/uninst-opencdk.nsi: Removed.
+
 2008-10-22  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
 	* configure.ac: Change COMPENDIUM_DATE_DE for 
