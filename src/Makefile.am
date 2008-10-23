@@ -115,7 +115,6 @@ define gpg4win_pkg_gnupg2_post_install
 endef
 
 
-
 # Build the reference manual.
 define gpg4win_pkg_gpgol_post_install
 ( cd $$$${pkgndir}/doc; make pdf )
@@ -128,6 +127,16 @@ endef
 #  --with-libiconv-prefix=$(idir) --with-libintl-prefix=$(idir)
 gpg4win_pkg_libgpg_error_configure = --silent \
   CPPFLAGS=-I$(idir)/include LDFLAGS=-L$(idir)/lib
+
+# We convert the PO files to UTF-8.  FIXME: This should be done in
+# libgpg-error proper.
+define gpg4win_pkg_libgpg_error_post_install
+(for i in `$(tsdir)/src/potomo --get-linguas $$$${pkgsdir}/po` ; do \
+     rm $$$${pkgidir}/share/locale/$$$${i}/LC_MESSAGES/libgpg-error.mo; \
+     $(tsdir)/src/potomo $$$${pkgsdir}/po/$$$${i}.po \
+                      $$$${pkgidir}/share/locale/$$$${i}/LC_MESSAGES/libgpg-error.mo; \
+ done)
+endef
 
 gpg4win_pkg_libassuan_configure =  --silent \
   --disable-shared \
