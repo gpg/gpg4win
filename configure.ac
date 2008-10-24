@@ -198,7 +198,7 @@ GPG4WIN_SPKG([pinentry], [libiconv gtk+])
 GPG4WIN_SPKG([gpgme], [libgpg-error gnupg2 glib])
 GPG4WIN_SPKG([curl], [zlib gnutls])
 GPG4WIN_SPKG([gnupg2], [libiconv libgcrypt libksba libassuan libgpg-error dnl
-                        w32pth zlib bzip2 adns pinentry curl])
+                        w32pth zlib bzip2 adns pinentry])
 GPG4WIN_SPKG([pthreads-w32])
 GPG4WIN_SPKG([gpgol], [gpgme libassuan])
 GPG4WIN_SPKG([gpgex], [libassuan])
