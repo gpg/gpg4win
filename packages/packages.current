@@ -336,9 +336,8 @@ name gnupg2-2.0.10-svn4859.tar.bz2
 file gnupg-2.0.10-svn4859.tar.bz2
 chk  f5cfb43e15c454da64168eea0d2e1f26a9a67f4d  
 
-file dirmngr-1.0.3-svn309.tar.bz2
-chk  5f8d228c55ff2b6ebf244bdf01dff2b8f7051107
-
+file dirmngr-1.0.3-svn310.tar.bz2
+chk  e3f6df819419f1bff8f707cff41220a556c0b272  
 
 #
 # adns
