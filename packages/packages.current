@@ -324,8 +324,8 @@ chk  f6c36e9d99736883a8ce5b80b0a51d854cbbbc70
 file pinentry/pinentry-0.7.5.tar.gz
 chk  6699a1ff94c649e8905199d480c6412cc43bad3d 
 
-file gpgme/gpgme-1.1.7.tar.bz2
-chk  c735bb90431667e3d020aa3adcf0efa858c992af
+#file gpgme/gpgme-1.1.7.tar.bz2
+#chk  c735bb90431667e3d020aa3adcf0efa858c992af
 
 
 # (Snapshots)
@@ -337,6 +337,10 @@ chk  f5cfb43e15c454da64168eea0d2e1f26a9a67f4d
 
 file dirmngr-1.0.3-svn310.tar.bz2
 chk  e3f6df819419f1bff8f707cff41220a556c0b272  
+
+file gpgme-1.1.8-svn1341.tar.bz2
+chk  7fe96c4149fc46b02a824370fe63ae3c7df7fd8c
+
 
 #
 # adns
