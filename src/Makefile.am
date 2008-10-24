@@ -27,7 +27,6 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi config.site \
         inst-cairo.nsi		   uninst-cairo.nsi	      \
         inst-libgsasl.nsi	   uninst-libgsasl.nsi        \
         inst-libtasn1.nsi	   uninst-libtasn1.nsi        \
-        inst-opencdk.nsi	   uninst-opencdk.nsi         \
         inst-gnutls.nsi		   uninst-gnutls.nsi	      \
         inst-curl.nsi		   uninst-curl.nsi	      \
         inst-libxml2.nsi	   uninst-libxml2.nsi	      \
