@@ -4,11 +4,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gpg4win 1.1.1-svn417\n"
+"Project-Id-Version: gpg4win 2.0\n"
 "Report-Msgid-Bugs-To: gpg4win-devel@wald.intevation.org\n"
-"POT-Creation-Date: 2008-10-27 10:01+0100\n"
-"PO-Revision-Date: 2008-09-09 13:24+0200\n"
-"Last-Translator: Marcus Brinkmann <mb@g10code.com>\n"
+"POT-Creation-Date: 2008-10-27 19:49+0100\n"
+"PO-Revision-Date: 2008-10-27 20:16+0100\n"
+"Last-Translator: Werner Koch <wk@g10code.com>\n"
 "Language-Team: German <translation-team-de@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
@@ -418,12 +418,12 @@ msgstr ""
 
 #: src/inst-gpg4win.nsi:70
 msgctxt "DESC_Menu_gpg4win_readme"
-msgid "General information on Gpg4Win"
+msgid "General information on Gpg4win"
 msgstr "Allgemeine Informationen zu Gpg4win"
 
 #: src/inst-gpg4win.nsi:73
 msgctxt "DESC_Menu_gnupg_faq"
-msgid "Show the Frequently Asked Questions Document for GnuPG"
+msgid "Show the Frequently Asked Questions document for GnuPG"
 msgstr "Das Dokument mit den häufig gestellten Fragen (FAQ) zu GnuPG anzeigen"
 
 #: src/inst-gpgee.nsi:65
@@ -502,7 +502,7 @@ msgstr "Durchblickerhandbuch (Englisch)"
 #: src/inst-man_advanced_en.nsi:42
 msgctxt "DESC_SEC_man_advanced_en"
 msgid "Gpg4Win Manual for the Advanced User"
-msgstr "Gpg4win Handbuch für den Durchblicker (Englisch)"
+msgstr "Gpg4win Handbuch für den Durchblicker (englisch)"
 
 #: src/inst-man_advanced_en.nsi:45
 msgctxt "DESC_Menu_man_advanced_en"
@@ -527,33 +527,43 @@ msgstr "Das Online-Handbuch von Gpg4win für den Einsteiger anzeigen"
 
 #: src/inst-man_novice_en.nsi:39
 msgctxt "DESC_Name_man_novice_en"
-msgid "Novice Manual"
-msgstr "Einsteigerhandbuch (Englisch)"
+msgid "Novice Manual (pdf, English)"
+msgstr "Gpg4win Einsteigerhandbuch (pdf, englisch)"
 
 #: src/inst-man_novice_en.nsi:42
 msgctxt "DESC_SEC_man_novice_en"
-msgid "Gpg4Win Manual for the Novice User"
-msgstr "Englisches Gpg4win Handbuch für den Einsteiger"
+msgid "Gpg4win Manual for the Novice User (English)"
+msgstr "Gpg4win Einsteigerhandbuch (englisch)"
 
 #: src/inst-man_novice_en.nsi:45
 msgctxt "DESC_Menu_man_novice_en"
-msgid "Show the online manual of Gpg4Win for novice users"
-msgstr "Das englische Online-Handbuch von Gpg4win für den Einsteiger anzeigen"
+msgid "Show the Gpg4win manual for novice users (pdf, English)"
+msgstr "Gpg4win  Einsteigerhandbuch (pdf, englisch)"
 
-#: src/inst-compendium_de.nsi:39
+#: src/inst-compendium_de.nsi:40
 msgctxt "DESC_Name_compendium_de"
-msgid "Gpg4win Kompendium"
-msgstr "Gpg4win Kompendium"
+msgid "Gpg4win Kompendium (pdf, German)"
+msgstr "Gpg4win Kompendium (pdf, deutsch)"
 
-#: src/inst-compendium_de.nsi:42
+#: src/inst-compendium_de.nsi:44
+msgctxt "DESC_Name_compendium_de_html"
+msgid "Gpg4win Kompendium (html, German)"
+msgstr "Gpg4win Kompendium (html, deutsch)"
+
+#: src/inst-compendium_de.nsi:48
 msgctxt "DESC_SEC_compendium_de"
 msgid "Gpg4win compendium (German)"
 msgstr "Gpg4win Kompendium (deutsch)"
 
-#: src/inst-compendium_de.nsi:45
-msgctxt "DESC_Menu_compendum_de"
-msgid "Show the German Gpg4win compendium (PDF)"
-msgstr "Das deutsche Gpg4win Kompendium anzeigen"
+#: src/inst-compendium_de.nsi:52
+msgctxt "DESC_Menu_compendium_de"
+msgid "Show the Gpg4win compendium (pdf, German)"
+msgstr "Gpg4win Kompendium (pdf, deutsch)"
+
+#: src/inst-compendium_de.nsi:56
+msgctxt "DESC_Menu_compendium_de_html"
+msgid "Show the Gpg4win compendium (html, German)"
+msgstr "Gpg4win Kompendium (html, deutsch)"
 
 #: src/inst-winpt.nsi:46
 msgctxt "DESC_SEC_winpt"

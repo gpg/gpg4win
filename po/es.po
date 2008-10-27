@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gpg4win 1.1.1-svn417\n"
 "Report-Msgid-Bugs-To: gpg4win-devel@wald.intevation.org\n"
-"POT-Creation-Date: 2008-10-27 10:01+0100\n"
+"POT-Creation-Date: 2008-10-27 19:49+0100\n"
 "PO-Revision-Date: 2008-01-30 17:07+0100\n"
 "Last-Translator: Diego Escalante Urrelo <diegoe@gnome.org>\n"
 "Language-Team: Spanish <diegoe@gnome.org>\n"
@@ -364,13 +364,15 @@ msgstr ""
 "una alternativa a la herramienta de manejo de llaves WinPT."
 
 #: src/inst-gpg4win.nsi:70
+#, fuzzy
 msgctxt "DESC_Menu_gpg4win_readme"
-msgid "General information on Gpg4Win"
+msgid "General information on Gpg4win"
 msgstr "Información general de Gpg4Win"
 
 #: src/inst-gpg4win.nsi:73
+#, fuzzy
 msgctxt "DESC_Menu_gnupg_faq"
-msgid "Show the Frequently Asked Questions Document for GnuPG"
+msgid "Show the Frequently Asked Questions document for GnuPG"
 msgstr "Mostrar las preguntas frecuentes (FAQ) sobre GnuPG"
 
 #: src/inst-gpgee.nsi:65
@@ -467,34 +469,48 @@ msgid "Show the German online manual of Gpg4Win for novice users"
 msgstr "Mostrar el manual del principiante de Gpg4Win, en línea (en Alemán)"
 
 #: src/inst-man_novice_en.nsi:39
+#, fuzzy
 msgctxt "DESC_Name_man_novice_en"
-msgid "Novice Manual"
-msgstr "Manuel del principiante (Inglés)"
+msgid "Novice Manual (pdf, English)"
+msgstr "Manual del principiante (Alemán)"
 
 #: src/inst-man_novice_en.nsi:42
+#, fuzzy
 msgctxt "DESC_SEC_man_novice_en"
-msgid "Gpg4Win Manual for the Novice User"
-msgstr "Manual de Gpg4Win para el principiante (Inglés)"
+msgid "Gpg4win Manual for the Novice User (English)"
+msgstr "Manual del principiante de Gpg4Win (Alemán)"
 
 #: src/inst-man_novice_en.nsi:45
+#, fuzzy
 msgctxt "DESC_Menu_man_novice_en"
-msgid "Show the online manual of Gpg4Win for novice users"
+msgid "Show the Gpg4win manual for novice users (pdf, English)"
 msgstr "Mostrar el manual en línea de Gpg4Win para principiantes"
 
-#: src/inst-compendium_de.nsi:39
+#: src/inst-compendium_de.nsi:40
 #, fuzzy
 msgctxt "DESC_Name_compendium_de"
-msgid "Gpg4win Kompendium"
+msgid "Gpg4win Kompendium (pdf, German)"
 msgstr "Documentación de Gpg4win"
 
-#: src/inst-compendium_de.nsi:42
+#: src/inst-compendium_de.nsi:44
+#, fuzzy
+msgctxt "DESC_Name_compendium_de_html"
+msgid "Gpg4win Kompendium (html, German)"
+msgstr "Documentación de Gpg4win"
+
+#: src/inst-compendium_de.nsi:48
 msgctxt "DESC_SEC_compendium_de"
 msgid "Gpg4win compendium (German)"
 msgstr ""
 
-#: src/inst-compendium_de.nsi:45
-msgctxt "DESC_Menu_compendum_de"
-msgid "Show the German Gpg4win compendium (PDF)"
+#: src/inst-compendium_de.nsi:52
+msgctxt "DESC_Menu_compendium_de"
+msgid "Show the Gpg4win compendium (pdf, German)"
+msgstr ""
+
+#: src/inst-compendium_de.nsi:56
+msgctxt "DESC_Menu_compendium_de_html"
+msgid "Show the Gpg4win compendium (html, German)"
 msgstr ""
 
 #: src/inst-winpt.nsi:46
@@ -510,6 +526,14 @@ msgid ""
 msgstr ""
 "Ejecutar la herramienta de gestión de llaves Windows Privacy Tray. Ésta es "
 "una herramienta  versátil para la gestión de llaves y cifrado."
+
+#~ msgctxt "DESC_Name_man_novice_en"
+#~ msgid "Novice Manual"
+#~ msgstr "Manuel del principiante (Inglés)"
+
+#~ msgctxt "DESC_SEC_man_novice_en"
+#~ msgid "Gpg4Win Manual for the Novice User"
+#~ msgstr "Manual de Gpg4Win para el principiante (Inglés)"
 
 #~ msgctxt "DESC_SEC_gnupg2"
 #~ msgid "GNU Privacy Guard with S/MIME support"

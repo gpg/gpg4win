@@ -68,7 +68,7 @@ Section "-gpg4win" SEC_gpg4win
 SectionEnd
 
 LangString DESC_Menu_gpg4win_readme ${LANG_ENGLISH} \
-   "General information on Gpg4Win"
+   "General information on Gpg4win"
 
 LangString DESC_Menu_gnupg_faq ${LANG_ENGLISH} \
-   "Show the Frequently Asked Questions Document for GnuPG"
+   "Show the Frequently Asked Questions document for GnuPG"

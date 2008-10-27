@@ -97,7 +97,7 @@ png_files = \
 
 
 web_png_files = blank.png next.png previous.png up.png \
-                 home.png nonext.png noprevious.png noup.png
+                home.png nonext.png noprevious.png noup.png
 
 
 eps_files = adele01.eps.gz adele02.eps.gz man-with-signed-key.eps.gz \
@@ -227,7 +227,7 @@ preview: gpg4win-compendium-de.html.d-stamp novices.html.d-stamp
             sed -n 's/.*\\IncludeImage{\([^}]*\).*/\1.png/p' $$src ;\
             sed -n 's/.*\\input{\([^}]*\).*/\1/p' $$src ) \
           | sort | uniq) ;\
-	 for f in $$files; do \
+	 for f in $$files $(web_png_files); do \
 	   if [ -f "$$f" ]; then cp "$$f" $$wdir ;\
 	   elif [ -f "$(srcdir)/$$f" ]; then cp "$(srcdir)/$$f" $$wdir ;\
 	   fi ;\

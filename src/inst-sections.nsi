@@ -1239,8 +1239,12 @@ Section "-startmenu"
     IntOp $R0 $R0 & ${SF_SELECTED} 
     IntCmp $R0 ${SF_SELECTED} 0 no_compendium_de_menu 
     CreateShortCut \
-        "$SMPROGRAMS\$STARTMENU_FOLDER\$(DESC_Menu_manuals)\$(DESC_Name_compendium_de).lnk" \
+        "$SMPROGRAMS\$STARTMENU_FOLDER\$(DESC_Menu_manuals)\$(DESC_Name_compendium_de_html).lnk" \
 	"$INSTDIR\share\gpg4win\html-de\gpg4win-compendium-de.html" \
+        "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_compendium_de_html)
+    CreateShortCut \
+        "$SMPROGRAMS\$STARTMENU_FOLDER\$(DESC_Menu_manuals)\$(DESC_Name_compendium_de).lnk" \
+	"$INSTDIR\share\gpg4win\gpg4win-compendium-de.pdf" \
         "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_compendium_de)
   no_compendium_de_menu:
 !endif
@@ -1303,6 +1307,7 @@ Section "-startmenu"
   Delete "$DESKTOP\Claws-Mail.lnk"
   Delete "$DESKTOP\Claws-Mail Manual.lnk"
   Delete "$DESKTOP\$(DESC_Name_compendium_de).lnk"
+  Delete "$DESKTOP\$(DESC_Name_compendium_de_html).lnk"
   Delete "$DESKTOP\$(DESC_Name_man_novice_de).lnk"
   Delete "$DESKTOP\$(DESC_Name_man_novice_en).lnk"
   Delete "$DESKTOP\$(DESC_Name_man_advanced_de).lnk"
@@ -1311,6 +1316,7 @@ Section "-startmenu"
   Delete "$DESKTOP\Gpg4Win README.lnk"
   Delete "$DESKTOP\$(DESC_Desktop_manuals)\Claws-Mail Manual.lnk"
   Delete "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_compendium_de).lnk"
+  Delete "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_compendium_de_html).lnk"
   Delete "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_man_novice_de).lnk"
   Delete "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_man_novice_en).lnk"
   Delete "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_man_advanced_de).lnk"
@@ -1395,8 +1401,12 @@ Section "-startmenu"
     IntOp $R0 $R0 & ${SF_SELECTED} 
     IntCmp $R0 ${SF_SELECTED} 0 no_compendium_de_desktop
     CreateShortCut \
-        "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_compendium_de).lnk" \
+        "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_compendium_de_html).lnk" \
 	"$INSTDIR\share\gpg4win\html-de\gpg4win-compendium-de.html" \
+        "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_compendium_de_html)
+    CreateShortCut \
+        "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_compendium_de).lnk" \
+	"$INSTDIR\share\gpg4win\gpg4win-compendium-de.pdf" \
         "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_compendium_de)
   no_compendium_de_desktop:
 !endif

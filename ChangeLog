@@ -7,6 +7,10 @@
 
 2008-10-27  Werner Koch  <wk@g10code.com>
 
+	* src/inst-sections.nsi: Install PDF versions of the compendium.
+	* src/inst-compendium_de.nsi: Change the strings.
+	* src/inst-man_novice_en.nsi: Ditto.
+
 	* src/inst-kleopatra.nsi: Install kdeqt.mo.
 	* src/uninst-kleopatra.nsi: Uninstall kdeqt.mo.
 

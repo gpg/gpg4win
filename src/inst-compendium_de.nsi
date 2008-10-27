@@ -36,11 +36,23 @@ ${MementoSection} "$(DESC_Name_compendium_de)" SEC_compendium_de
 ${MementoSectionEnd}
 
 
+# The name of the link.
 LangString DESC_Name_compendium_de ${LANG_ENGLISH} \
-   "Gpg4win Kompendium"
+   "Gpg4win Kompendium (pdf, German)"
 
+# The name of the HTML version of the link
+LangString DESC_Name_compendium_de_html ${LANG_ENGLISH} \
+   "Gpg4win Kompendium (html, German)"
+
+# The text used in the installer selection dialog.
 LangString DESC_SEC_compendium_de ${LANG_ENGLISH} \
    "Gpg4win compendium (German)"
 
-LangString DESC_Menu_compendum_de ${LANG_ENGLISH} \
-   "Show the German Gpg4win compendium (PDF)"
+# The string displayed in the startmenu for the PDF version.
+LangString DESC_Menu_compendium_de ${LANG_ENGLISH} \
+   "Show the Gpg4win compendium (pdf, German)"
+
+# The string displayed in the startmenu for the HTML version.
+LangString DESC_Menu_compendium_de_html ${LANG_ENGLISH} \
+   "Show the Gpg4win compendium (html, German)"
+

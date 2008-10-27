@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Gpg4Win\n"
 "Report-Msgid-Bugs-To: gpg4win-devel@wald.intevation.org\n"
-"POT-Creation-Date: 2008-10-27 10:01+0100\n"
+"POT-Creation-Date: 2008-10-27 19:49+0100\n"
 "PO-Revision-Date: 2008-03-11 23:52+0200\n"
 "Last-Translator: Ahmad Gharbeia <ahmad@gharbeia.org>\n"
 "Language-Team: Arabic <doc@arabeyes.org>\n"
@@ -354,13 +354,15 @@ msgstr ""
 "WinPT."
 
 #: src/inst-gpg4win.nsi:70
+#, fuzzy
 msgctxt "DESC_Menu_gpg4win_readme"
-msgid "General information on Gpg4Win"
+msgid "General information on Gpg4win"
 msgstr "„⁄·Ê„«  ⁄«„… ⁄‰ Gpg4Win"
 
 #: src/inst-gpg4win.nsi:73
+#, fuzzy
 msgctxt "DESC_Menu_gnupg_faq"
-msgid "Show the Frequently Asked Questions Document for GnuPG"
+msgid "Show the Frequently Asked Questions document for GnuPG"
 msgstr "ÿ«·⁄ «·√”∆·… «·‘«∆⁄… ÕÊ· GnuPG"
 
 #: src/inst-gpgee.nsi:65
@@ -454,34 +456,48 @@ msgid "Show the German online manual of Gpg4Win for novice users"
 msgstr "«⁄—÷ œ·Ì· Gpg4Win »«·√·„«‰Ì… ⁄·Ï «·Ê» ··„” Œœ„Ì‰ «·„» œ∆Ì‰"
 
 #: src/inst-man_novice_en.nsi:39
+#, fuzzy
 msgctxt "DESC_Name_man_novice_en"
-msgid "Novice Manual"
-msgstr "œ·Ì· «·„» œ∆Ì‰"
+msgid "Novice Manual (pdf, English)"
+msgstr "œ·Ì· «·„» œ∆Ì‰ (»«·√·„«‰Ì…)"
 
 #: src/inst-man_novice_en.nsi:42
+#, fuzzy
 msgctxt "DESC_SEC_man_novice_en"
-msgid "Gpg4Win Manual for the Novice User"
-msgstr "œ·Ì· Gpg4Win ··„” Œœ„Ì‰ «·„» œ∆Ì‰"
+msgid "Gpg4win Manual for the Novice User (English)"
+msgstr "œ·Ì· Gpg4Win ··„” Œœ„Ì‰ «·„» œ∆Ì‰ (»«·√·„«‰Ì…)"
 
 #: src/inst-man_novice_en.nsi:45
+#, fuzzy
 msgctxt "DESC_Menu_man_novice_en"
-msgid "Show the online manual of Gpg4Win for novice users"
+msgid "Show the Gpg4win manual for novice users (pdf, English)"
 msgstr "«⁄—÷ œ·Ì· Gpg4Win ⁄·Ï «·Ê» ··„” Œœ„Ì‰ «·„» œ∆Ì‰"
 
-#: src/inst-compendium_de.nsi:39
+#: src/inst-compendium_de.nsi:40
 #, fuzzy
 msgctxt "DESC_Name_compendium_de"
-msgid "Gpg4win Kompendium"
+msgid "Gpg4win Kompendium (pdf, German)"
 msgstr "ÊÀ«∆ﬁ Gpg4win"
 
-#: src/inst-compendium_de.nsi:42
+#: src/inst-compendium_de.nsi:44
+#, fuzzy
+msgctxt "DESC_Name_compendium_de_html"
+msgid "Gpg4win Kompendium (html, German)"
+msgstr "ÊÀ«∆ﬁ Gpg4win"
+
+#: src/inst-compendium_de.nsi:48
 msgctxt "DESC_SEC_compendium_de"
 msgid "Gpg4win compendium (German)"
 msgstr ""
 
-#: src/inst-compendium_de.nsi:45
-msgctxt "DESC_Menu_compendum_de"
-msgid "Show the German Gpg4win compendium (PDF)"
+#: src/inst-compendium_de.nsi:52
+msgctxt "DESC_Menu_compendium_de"
+msgid "Show the Gpg4win compendium (pdf, German)"
+msgstr ""
+
+#: src/inst-compendium_de.nsi:56
+msgctxt "DESC_Menu_compendium_de_html"
+msgid "Show the Gpg4win compendium (html, German)"
 msgstr ""
 
 #: src/inst-winpt.nsi:46
@@ -497,6 +513,14 @@ msgid ""
 msgstr ""
 "‘€· √œ«… ≈œ«—… «·„›« ÌÕ ·ÊÕ… Œ’Ê’Ì… ÊÌ‰œÊ“. Â–Â √œ«… ≈œ«—… „›« ÌÕ Ê ⁄„Ì… "
 "„ ⁄œœ… «·«” ⁄„«·« ."
+
+#~ msgctxt "DESC_Name_man_novice_en"
+#~ msgid "Novice Manual"
+#~ msgstr "œ·Ì· «·„» œ∆Ì‰"
+
+#~ msgctxt "DESC_SEC_man_novice_en"
+#~ msgid "Gpg4Win Manual for the Novice User"
+#~ msgstr "œ·Ì· Gpg4Win ··„” Œœ„Ì‰ «·„» œ∆Ì‰"
 
 #~ msgctxt "DESC_SEC_gnupg2"
 #~ msgid "GNU Privacy Guard with S/MIME support"

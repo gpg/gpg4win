@@ -37,10 +37,10 @@ ${MementoSectionEnd}
 
 
 LangString DESC_Name_man_novice_en ${LANG_ENGLISH} \
-   "Novice Manual"
+   "Novice Manual (pdf, English)"
 
 LangString DESC_SEC_man_novice_en ${LANG_ENGLISH} \
-   "Gpg4Win Manual for the Novice User"
+   "Gpg4win Manual for the Novice User (English)"
 
 LangString DESC_Menu_man_novice_en ${LANG_ENGLISH} \
-   "Show the online manual of Gpg4Win for novice users"
+   "Show the Gpg4win manual for novice users (pdf, English)"
