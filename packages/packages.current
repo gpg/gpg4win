@@ -274,8 +274,9 @@ server http://wald.intevation.org/frs/download.php
 #chk  0dd28112046fd69d9ca2108c0fda7a835cb3c569
 
 server ftp://ftp.g10code.com/g10code/scratch
-file gpgol-0.10.16-svn276.tar.bz2
-chk  0b27904551a1f9caa9bd7b5e20b782dcad5d079c
+file gpgol-0.10.16-svn277.tar.bz2
+chk  004866206677b70232f0205f15671afd15f17aa2 
+
 
 #
 # GpgEX
