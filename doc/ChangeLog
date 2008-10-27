@@ -1,3 +1,9 @@
+2008-10-27  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+
+	* manual/gpg4win-compendium-de.tex: Changed logo and page numbers.
+	Moved first chapter (about compendium).
+
+
 2008-10-22  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 	* website/download.htm4, website/download-de.htm4:
 	Fixed a typo.

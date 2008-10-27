@@ -37,8 +37,8 @@
    %\T\manualinprogress
     \T\\
     \T\itshape\nouppercase{\leftmark}}
-\T\fancyhead[RO,LE]{\thepage}
-\T\fancyfoot[C]{\includegraphics[width=1cm]{gpg4win-logo}}
+\T\fancyhead[RO,LE]{\includegraphics[width=1cm]{gpg4win-logo}}
+\T\fancyfoot[C]{\thepage}
 \T\pagestyle{fancy}
 
 % define custom commands
@@ -218,10 +218,6 @@ nicht für Mathematiker, Geheimdienstler und Kryptographen geschrieben,
 sondern für jedermann.
 
 
-\clearpage %% End of original page 4.
-
-\xname{inhalt}
-\tableofcontents
 
 %%\clearpage
 %% Orginal page  6
@@ -233,7 +229,6 @@ sondern für jedermann.
 %% Orginal page 7
 \xname{ueber-dieses-handbuch}
 \chapter*{Über dieses Handbuch \htmlonly{\html{br}\html{br}}}
-\addcontentsline{toc}{chapter}{Über dieses Handbuch}
 
 Das Gpg4win-Anleitungs- und Übungsmaterial besteht aus drei Teilen:
 
@@ -275,6 +270,14 @@ Adele ist im Rahmen des alten GnuPP Projektes entstanden und
 läuft dort noch immer. "`Das Gpg4win Kompendium"' verwendet diesen
 zuverlässigen Übungsroboter und dankt den Inhabern von gnupp.de
 für den Betrieb von Adele.
+
+
+
+\clearpage %% End of original page 4.
+
+\xname{inhalt}
+\tableofcontents
+
 
 
 
@@ -2005,8 +2008,8 @@ Outlook-Nachrichtenfensters auf:
 Sofern Sie diese Auswahl auf der Voreinstellung \textit{automatisch} lassen, haben Sie
 später im Verschlüsselungsprozess noch die Möglichkeit zwischen PGP/MIME und S/MIME zu wählen.
 
-Haben Sie ein bevorzugtes GnuPG-Protokoll? Dann können Sie unter den
-GpgOL-Optionen
+Haben Sie ein bevorzugtes GnuPG-Protokoll?\\
+Dann können Sie unter den GpgOL-Optionen
 (\Menu{Extras$\rightarrow$Optionen$\rightarrow$GpgOL}) 
 PGP/MIME oder S/MIME als Voreinstellung definieren.
 
