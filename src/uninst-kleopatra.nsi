@@ -52,6 +52,7 @@ Section "-un.kleopatra"
   Delete "$INSTDIR\libkleopatraclientcore.dll"
   Delete "$INSTDIR\libkleopatraclientgui.dll"
 
+  Delete "$INSTDIR\share\locale\de\LC_MESSAGES\kdeqt.mo"
   Delete "$INSTDIR\share\locale\de\LC_MESSAGES\timezones4.mo"
   Delete "$INSTDIR\share\locale\de\LC_MESSAGES\phonon_kde.mo"
   Delete "$INSTDIR\share\locale\de\LC_MESSAGES\libphonon.mo"

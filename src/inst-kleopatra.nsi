@@ -219,6 +219,7 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
   File ${prefix}/share/locale/de/LC_MESSAGES/libphonon.mo
   File ${prefix}/share/locale/de/LC_MESSAGES/phonon_kde.mo
   File ${prefix}/share/locale/de/LC_MESSAGES/timezones4.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/kdeqt.mo
 
   SetOutPath "$INSTDIR\share\doc\HTML\en\kleopatra"
 
