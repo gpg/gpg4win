@@ -1,3 +1,7 @@
+2008-10-27  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+	* packages/packages.current: Update kleopatra and kdelibs (without
+	source).
+
 2008-10-27  Werner Koch  <wk@g10code.com>
 
 	* src/inst-kleopatra.nsi: Install kdeqt.mo.
