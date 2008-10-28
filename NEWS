@@ -14,6 +14,27 @@ Noteworthy changes in version 1.9.9 (unreleased)
 
 ~~~~~~~~~~~~~~~
 GnuPG:        2.0.10-svn4835
+DirMngr:      1.0.3-svn310
+Kleopatra:    20081028
+GPA:          0.8.0
+GpgOL:        0.10.16-svn280
+GpgEX:        0.9.1
+Claws-Mail:   3.6.0cvs7
+Kompendium:   3.0.0-beta
+~~~~~~~~~~~~~~~
+
+
+Noteworthy changes in version 1.9.9 (2008-10-28)
+------------------------------------------------
+
+(en) This is a BETA version of the new Gpg4win/2 architecture.
+     This version shall not be used in a production environment. 
+(de) Dies ist eine BETA Version der neuen Gpg4win/2 Architektur.
+     Diese Version soll nicht in einer Produktivumgebung
+     eingesetzt werden.
+
+~~~~~~~~~~~~~~~
+GnuPG:        2.0.10-svn4862
 DirMngr:      1.0.3-svn309
 Kleopatra:    20081007-3
 GPA:          0.8.0

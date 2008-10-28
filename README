@@ -12,22 +12,18 @@ Instructions:
    [...]
    $ cd ..
 
-   If you have downloaded gnupg-2.x, you need to rename that tarball.
-   e.g.:
-   
-     mv gnupg-2.0.5.tar.bz2 gnupg2-2.0.5.tar.bz2
-
 2. Configure the source tree for cross compilation:
 
-   $ configure --host=i586-mingw32msvc
+   $ ./autogen.sh --build-w32
 
 3. Build the installer:
 
    $ make
 
-The installer will be made available in two files:
+The installer will be made available in three files:
 
 src/gpg4win-X.Y.Z.exe
+src/gpg4win-light-X.Y.Z.exe
 src/gpg4win-src-X.Y.Z.exe
 
 
