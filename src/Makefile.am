@@ -209,7 +209,9 @@ gpg4win_pkg_winpt_configure = --silent \
   --with-gpgme-prefix=$(idir) --with-gpg-error-prefix=$(idir)
 
 gpg4win_pkg_gnutls_configure = \
-  --disable-cxx
+  --disable-cxx \
+  --with-libtasn1-prefix=$(idir) \
+  --with-libgcrypt-prefix=$(idir)
 
 gpg4win_pkg_curl_configure = \
   --with-gnutls --without-ca-bundle
