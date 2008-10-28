@@ -432,11 +432,17 @@ file kleopatra-20081028-bin.zip
 chk  7b269465911b3ec753922f0e885f2c86db6120f7
 
 # FIXME: These belong in the bin package.
-name kleopatra-20081028-lib.zip
-file kleopatra-20081028-doc.zip
-chk  649d08bd02104d5c89f2d2fcb42d5740026e0054
+# Broken.  For fixed version see below.
+#name kleopatra-20081028-lib.zip
+#file kleopatra-20081028-doc.zip
+#chk  649d08bd02104d5c89f2d2fcb42d5740026e0054
 
 file kleopatra-20081028-src.zip
 chk  cb21cdf3f94eeebad7294c8c941d01fe02074038
+
+server ftp://ftp.g10code.com/g10code/scratch
+file kleopatra-20081028-lib.zip
+chk  f6bc32a3f29f41fb39412ad0f0fa344435d30ff6 
+
 
 

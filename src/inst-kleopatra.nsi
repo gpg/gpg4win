@@ -117,19 +117,12 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
   File ${prefix}/share/kde4/services/kleopatra_signencryptfiles.desktop
   File ${prefix}/share/kde4/services/kleopatra_decryptverifyfiles.desktop
 
-
-  # FIXME: From the lib package.  This is wrong.
-!undef prefix
-!define prefix ${ipdir}/kleopatra-dev-${gpg4win_pkg_kleopatra_version}
-
   SetOutPath "$INSTDIR\share\locale\de\LC_MESSAGES"
 
   File ${prefix}/share/locale/de/LC_MESSAGES/akonaditray.mo
   File ${prefix}/share/locale/de/LC_MESSAGES/akregator.mo
-  File ${prefix}/share/locale/de/LC_MESSAGES/desktop_kdelibs.mo
   File ${prefix}/share/locale/de/LC_MESSAGES/desktop_kdepim.mo
   File ${prefix}/share/locale/de/LC_MESSAGES/desktop_kdepimlibs.mo
-  File ${prefix}/share/locale/de/LC_MESSAGES/desktop_l10n.mo
   File ${prefix}/share/locale/de/LC_MESSAGES/kabc.mo
   File ${prefix}/share/locale/de/LC_MESSAGES/kabc2mutt.mo
   File ${prefix}/share/locale/de/LC_MESSAGES/kabc_dir.mo
@@ -142,22 +135,13 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
   File ${prefix}/share/locale/de/LC_MESSAGES/kabcformat_binary.mo
   File ${prefix}/share/locale/de/LC_MESSAGES/kaddressbook.mo
   File ${prefix}/share/locale/de/LC_MESSAGES/kalarm.mo
-  File ${prefix}/share/locale/de/LC_MESSAGES/katepart4.mo
-  File ${prefix}/share/locale/de/LC_MESSAGES/kcertpart.mo
-  File ${prefix}/share/locale/de/LC_MESSAGES/kcm_phonon.mo
-  File ${prefix}/share/locale/de/LC_MESSAGES/kcmcrypto.mo
   File ${prefix}/share/locale/de/LC_MESSAGES/kcmkabconfig.mo
   File ${prefix}/share/locale/de/LC_MESSAGES/kcmkontactnt.mo
-  File ${prefix}/share/locale/de/LC_MESSAGES/kdelibs4.mo
-  File ${prefix}/share/locale/de/LC_MESSAGES/kdelibs_colors4.mo
   File ${prefix}/share/locale/de/LC_MESSAGES/kdepimresources.mo
   File ${prefix}/share/locale/de/LC_MESSAGES/kdepimwizards.mo
   File ${prefix}/share/locale/de/LC_MESSAGES/kdgantt1.mo
   File ${prefix}/share/locale/de/LC_MESSAGES/kfile_vcf.mo
-  File ${prefix}/share/locale/de/LC_MESSAGES/kfileaudiopreview4.mo
-  File ${prefix}/share/locale/de/LC_MESSAGES/kio4.mo
   File ${prefix}/share/locale/de/LC_MESSAGES/kio_groupwise.mo
-  File ${prefix}/share/locale/de/LC_MESSAGES/kio_help4.mo
   File ${prefix}/share/locale/de/LC_MESSAGES/kio_imap4.mo
   File ${prefix}/share/locale/de/LC_MESSAGES/kio_ldap.mo
   File ${prefix}/share/locale/de/LC_MESSAGES/kio_mbox.mo
@@ -194,7 +178,6 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
   File ${prefix}/share/locale/de/LC_MESSAGES/kres_scalix.mo
   File ${prefix}/share/locale/de/LC_MESSAGES/kres_tvanytime.mo
   File ${prefix}/share/locale/de/LC_MESSAGES/kres_xmlrpc.mo
-  File ${prefix}/share/locale/de/LC_MESSAGES/ktexteditor_plugins.mo
   File ${prefix}/share/locale/de/LC_MESSAGES/ktexteditorkabcbridge_plugin.mo
   File ${prefix}/share/locale/de/LC_MESSAGES/ktimetracker.mo
   File ${prefix}/share/locale/de/LC_MESSAGES/ktnef.mo
@@ -216,11 +199,32 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
   File ${prefix}/share/locale/de/LC_MESSAGES/libktnef.mo
   File ${prefix}/share/locale/de/LC_MESSAGES/libkxmlrpcclient.mo
   File ${prefix}/share/locale/de/LC_MESSAGES/libmailtransport.mo
+
+
+  # FIXME: From the lib package.  This is wrong.
+!undef prefix
+!define prefix ${ipdir}/kleopatra-dev-${gpg4win_pkg_kleopatra_version}
+
+  SetOutPath "$INSTDIR\share\locale\de\LC_MESSAGES"
+
+  File ${prefix}/share/locale/de/LC_MESSAGES/desktop_kdelibs.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/desktop_l10n.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/katepart4.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/kcertpart.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/kcm_phonon.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/kcmcrypto.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/kdelibs4.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/kdelibs_colors4.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/kdeqt.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/kfileaudiopreview4.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/kio4.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/kio_help4.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/ktexteditor_plugins.mo
   File ${prefix}/share/locale/de/LC_MESSAGES/libphonon.mo
   File ${prefix}/share/locale/de/LC_MESSAGES/phonon_kde.mo
   File ${prefix}/share/locale/de/LC_MESSAGES/timezones4.mo
-  File ${prefix}/share/locale/de/LC_MESSAGES/kdeqt.mo
 
+  
   SetOutPath "$INSTDIR\share\doc\HTML\en\kleopatra"
 
   File ${prefix}/share/doc/HTML/en/kleopatra/admin-key-filters.html

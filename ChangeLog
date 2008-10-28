@@ -2,6 +2,8 @@
 
 	Release 1.9.9.
 	
+	* src/inst-kleopatra.nsi: Move files around
+
 	* README (Instructions): Update.
 
 	* configure.ac: Make gnutls depend on libgcrypt.
