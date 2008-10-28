@@ -9,7 +9,7 @@ Important Hints for Using Gpg4win 1.9-BETA
   experienced users or administrators to learn
   about the upcoming version and suggest changes.
 
-Status: Gpg4win-1.9.8 (20081007)
+Status: Gpg4win-1.9.9 (20081028)
 
 This text covers information that are
 intended to help judging whether Gpg4win 1.9
@@ -41,7 +41,7 @@ Contents of this document:
 * Important hints for using S/MIME
 * Migration
 * Most important changes in Gpg4win 1.9 compared to 1.1
-* Most important changes in Gpg4win 1.9.8 compared to 1.9.7
+* Most important changes in Gpg4win 1.9.9 compared to 1.9.8
 
 
 Important hints for present version
@@ -144,7 +144,7 @@ these steps.
 
 - Mark root certificates as trusted for DirMngr:
   Place the respective root certificates as DER files
-  (with filename suffix ".crt" into the directory
+  (with filename suffix ".crt" or ".der" into the directory
   %ALLUSERSPROFILE%\Application Data\GNU\etc\dirmngr\trusted-certs\
 
 - Problems with certificate revocation lists (CRLs):
@@ -267,24 +267,34 @@ Most important changes in Gpg4win 1.9.8 compared to 1.9.7
  - Kleopatra:
     Note: [#xxxxxx] marks the Kleopatra bug number. With this number you
        can see all bug details on http://bugs.kde.org.
-     * Encrypt file: Option "delete unencrypted original" repaired [#169978]
-     * OpenPGP-S/MIME choice in Kleopatras sign dialog
-     * certificate tabs in Kleopatra updated automatically
-       (e.g. after import) [#167142]
-     * Repeating the certify of a certificate ends now correct with an
-       error message [#170917]
-     * Kleopatra handbook added (html version) [#170905]
-     * translation strings completed
+
+     * Im- and export of *.p12 files repaired [#173369;#172716]
+     * Export of public certificates now supports *.asc/*.pem and
+       *.gpg/*.der files [#172531;#172787]
+     * File filter for certificate import repaired [#173676;#173677]
+     * Signatur certificates choice dialog limited to selected
+       protocol [#172786]
+     * Summary shows "Not enough information to validate the signature" 
+       now with green background [#172350]
+     * Support for 'autom' protocol mode of GpgOL improved [#166732]
+     * Passphrase changes (for OpenPGP certificates) are saved [#166139]
+     * translations completed [#170244;#172731;#172732;#172734;#172735]
      * several minor and medium improvements
 
- - New Claws version (3.6.0cvs7) integrated
 
- - Uninstalling improved (removes dispensable registry entries)
+ - GpgOL:
+     * Verify and encrypt of inlinePGP emails repaired
+     * Tooltips of sign and encrypt buttons renamed
+     * Warning if try to sending an empty signed or encrypted email
+     * Forwarding of signed mails: no "gpgol000.txt" file attached
 
- - Gpg4win update alert dialog improved (recommendation to uninstall
-   the old version)
+ - Backend:
+     * DirMngr supports now user specific trust definitions for 
+       root certificates
+     * DirMngr supports additional *.der files in 'trusted-certs' directory
+     * Umlauts in OpenPGP certificate details on keyserver are now correct
 
- - Gpg4win Compendium improved
+ - Gpg4win Compendium 3.0.0-beta1 release (2008-10-22) integrated
 
- - GpgOL, GnuPG and Installer: Several minor and medium issues
-   and errors were fixed.
+ - Backend and Installer: Several minor and medium issues and 
+   errors were fixed.

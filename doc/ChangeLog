@@ -1,14 +1,19 @@
+2008-10-28  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+
+	* README-BETA-de.txt, README-BETA-en.txt: Updated to 1.9.9.
+
 2008-10-27  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
 	* manual/gpg4win-compendium-de.tex: Changed logo and page numbers.
 	Moved first chapter (about compendium).
 
-
 2008-10-22  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+
 	* website/download.htm4, website/download-de.htm4:
 	Fixed a typo.
 
 2008-10-22  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+
 	* website/download.htm4, website/download-de.htm4:
 	Added link to Compendium 3.0.0-beta1.
 	* website/index.htm4, website/index-de.htm4:

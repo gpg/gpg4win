@@ -11,7 +11,7 @@ Wichtige Informationen zum Einsatz von Gpg4win 1.9-BETA
   neue Version kennenzulernen und Verbesserungsvorschläge
   einzubringen.
 
-Stand: Gpg4win-1.9.8 (20081007)
+Stand: Gpg4win-1.9.9 (20081028)
 
 Hier finden sich wichtige Informationen die bei der
 Entscheidung helfen sollen, ob Gpg4win 1.9 schon für
@@ -44,7 +44,7 @@ Inhalt dieses Dokumentes:
 * Wichtige Hinweise zur Verwendung von S/MIME
 * Migration
 * Wichtigste Änderungen von Gpg4win 1.9 gegenüber 1.1
-* Wichtigste Änderungen von Gpg4win 1.9.8 gegenüber 1.9.7
+* Wichtigste Änderungen von Gpg4win 1.9.9 gegenüber 1.9.8
 
 
 Wichtige Hinweise zur vorliegenden Version
@@ -150,9 +150,9 @@ durchzuführen.
   Beachten Sie, dass der gpg-agent neu gestartet
   werden muss, z.B: durch ausloggen und wieder einloggen.
 
-- Vetrauen für Wurzel-Zertifkate für DirMngr aussprechen:
+- Systemweites Vetrauen für Wurzel-Zertifkate für DirMngr aussprechen:
   Die entsprechenden Wurzel-Zertifikate müssen als DER-Dateien
-  mit Dateinamen-Endung ".crt" im Verzeichnis
+  mit Dateinamen-Endung ".crt" oder ".der" im Verzeichnis
   %ALLUSERSPROFILE%\Anwendungsdaten\GNU\etc\dirmngr\trusted-certs\
   abgelegt werden.
 
@@ -276,32 +276,45 @@ Neu:
   PGP/MIME sowie ergänzt um S/MIME bzw. X.509.
 
 
-Wichtigste Änderungen von Gpg4win 1.9.8 gegenüber 1.9.7
+Wichtigste Änderungen von Gpg4win 1.9.9 gegenüber 1.9.8
 =======================================================
 
  - Kleopatra:
    Hinweis: [#xxxxxx] markiert im Folgenden die Kleopatra-Fehlermeldungs-Nummer.
             Details können mit dieser Nummer unter http://bugs.kde.org/ 
             eingesehen werden.
-     * Datei verschlüsseln: Option "unverschlüsseltes Original löschen" 
-       repariert [#169978]
-     * OpenPGP-S/MIME-Auswahl in Kleopatras Signierdialog
-     * Automatische Aktualisierung der Zertifikatsreiter in Kleopatra
-       (z.B. nach Import) repariert [#167142]
-     * Wiederholtes beglaubigen von Zertifikaten schließt nun mit 
-       entsprechender Fehlermeldung ab [#170917]
-     * Kleopatra Handbuch hinzugefügt [#170905]
-     * Übersetzungs-Strings ergänzt
+     * Im- und Export von *.p12-Dateien korrigiert [#173369;#172716]
+     * Export öffentlicher Zertifikate neben *.asc/*.pem nun auch
+       als *.gpg/*.der Dateien möglich [#172531;#172787]
+     * Zertifikatsimportfilter korrigiert [#173676;#173677]
+     * Signatur-Zertifikatsauswahl auf ausgewähltes Protokoll reduziert [#172786]
+     * Farbe des Signaturprüfdialogs ("nicht genügend Informationen")
+       ist nun gelb anstatt grün [#172350]
+     * bessere Unterstützung des Protokollmodus "automatisch" von GpgOL
+       zur Auswahl von PGP/MIME bzw. S/MIME [#166732]
+     * Passphrase-Änderungen (für OpenPGP-Zertifikate) werden nun gespeichert 
+       [#166139]
+     * Übersetzungen ergänzt / korrigiert
+       [#170244;#172731;#172732;#172734;#172735]
      * diverse kleinere Stabilitäts- und GUI-Verbesserungen
 
- - Neue Claws Version (3.6.0cvs7) integriert
+ - GpgOL:
+     * Verifizieren und Entschlüsseln von InlinePGP-Nachrichten korrigiert
+     * Tooltip für Verschlüsseln- und Signieren-Button umbenannt
+     * Warndialog beim Versuch eine leere signierte oder verschlüsselte 
+       Nachricht zu senden 
+     * Weitergeleitete signierte Mails: keine "gpgol000.txt" Datei mehr
+       im Anhang 
 
- - Verbesserte Deinstallation (löscht überflüssige Registryeinträge)
+ - Backend:
+     * DirMngr unterstützt nun anwenderspezifische Vertrauensdefinitionen für
+       Wurzelzertifkate
+     * DirMngr unterstützt zusätzlich *.der Dateien im Verzeichnis 
+       'trusted-certs'
+     * Umlaute in OpenPGP-Zertifikatsdetails auf Keyservern werden nun 
+       korrekt dargestellt
 
- - Gpg4win-Update-Warndialog überarbeitet (Empfehlung zur Deinstallation
-   der alten Version)
+ - Gpg4win Kompendium 3.0.0-beta1 Release (vom 22.10.2008) integriert
 
- - Gpg4win Kompendium überarbeitet
-
- - GpgOL, GnuPG und Installer: Es sind viele kleine und mittlere
+ - Backend und Installer: Es sind viele kleine und mittlere
    Probleme und Fehler behoben worden.
