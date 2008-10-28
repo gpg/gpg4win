@@ -1,9 +1,11 @@
 2008-10-28  Werner Koch  <wk@g10code.com>
 
+	Release 1.9.9.
+	
 	* README (Instructions): Update.
 
 	* configure.ac: Make gnutls depend on libgcrypt.
-
+	
 	* src/Makefile.am (gpg4win_pkg_gnutls_configure): Add more prefix
 	options.
 
