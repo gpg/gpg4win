@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gpg4win 2.0\n"
 "Report-Msgid-Bugs-To: gpg4win-devel@wald.intevation.org\n"
-"POT-Creation-Date: 2008-10-27 19:49+0100\n"
+"POT-Creation-Date: 2008-10-28 18:46+0100\n"
 "PO-Revision-Date: 2008-10-27 20:16+0100\n"
 "Last-Translator: Werner Koch <wk@g10code.com>\n"
 "Language-Team: German <translation-team-de@lists.sourceforge.net>\n"
@@ -467,14 +467,14 @@ msgstr ""
 "GnuPG für Outlook (GpgOL) is eine Erweiterung für Outlook 2003, die "
 "verwendet wird um Nachrichten mit OpenPGP oder S/MIME zu verschlüsseln."
 
-#: src/inst-kleopatra.nsi:300
+#: src/inst-kleopatra.nsi:304
 msgctxt "DESC_SEC_kleopatra"
 msgid "Keymanager for OpenPGP and X.509 and common crypto dialogs."
 msgstr ""
 "Schlüsselmanager für OpenPGP und X.509 (S/MIME) sowie einheitliche "
 "Benutzerführung für alle Krypto-Operationen."
 
-#: src/inst-kleopatra.nsi:304
+#: src/inst-kleopatra.nsi:308
 msgctxt "DESC_Menu_kleopatra"
 msgid "Run the Kleopatra key management tool."
 msgstr "Das Schlüsselverwaltungsprogramm Kleopatra aufrufen."

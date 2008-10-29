@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Gpg4Win\n"
 "Report-Msgid-Bugs-To: gpg4win-devel@wald.intevation.org\n"
-"POT-Creation-Date: 2008-10-27 19:49+0100\n"
+"POT-Creation-Date: 2008-10-28 18:46+0100\n"
 "PO-Revision-Date: 2008-03-11 23:52+0200\n"
 "Last-Translator: Ahmad Gharbeia <ahmad@gharbeia.org>\n"
 "Language-Team: Arabic <doc@arabeyes.org>\n"
@@ -400,12 +400,12 @@ msgctxt "DESC_SEC_gpgol"
 msgid "GnuPG for Outlook"
 msgstr "˛GnuPG ·√Ê ·Êﬂ"
 
-#: src/inst-kleopatra.nsi:300
+#: src/inst-kleopatra.nsi:304
 msgctxt "DESC_SEC_kleopatra"
 msgid "Keymanager for OpenPGP and X.509 and common crypto dialogs."
 msgstr ""
 
-#: src/inst-kleopatra.nsi:304
+#: src/inst-kleopatra.nsi:308
 msgctxt "DESC_Menu_kleopatra"
 msgid "Run the Kleopatra key management tool."
 msgstr "‘€· √œ«… ≈œ«—… «·„›« ÌÕ ﬂ·ÌÊ»« —«."

@@ -332,9 +332,9 @@ chk  6699a1ff94c649e8905199d480c6412cc43bad3d
 # (Snapshots)
 server ftp://ftp.g10code.com/g10code/scratch
 
-name gnupg2-2.0.10-svn4862.tar.bz2
-file gnupg-2.0.10-svn4862.tar.bz2
-chk  dfbeedb3bf18e44aa393eb77142bbf3184ea4f93
+name gnupg2-2.0.10-svn4864.tar.bz2
+file gnupg-2.0.10-svn4864.tar.bz2
+chk  ac037216e60cf8624b4e2cbe4628da3d5b7f5178
 
 file dirmngr-1.0.3-svn310.tar.bz2
 chk  e3f6df819419f1bff8f707cff41220a556c0b272  

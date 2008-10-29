@@ -1,7 +1,9 @@
-2008-10-28  Werner Koch  <wk@g10code.com>
+2008-10-29  Werner Koch  <wk@g10code.com>
 
 	Release 1.9.9.
-	
+
+2008-10-28  Werner Koch  <wk@g10code.com>
+
 	* src/inst-kleopatra.nsi: Move files around
 
 	* README (Instructions): Update.
