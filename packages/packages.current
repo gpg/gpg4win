@@ -419,30 +419,22 @@ name kdelibs-20081027-lib.zip
 file kdelibs-for-kleo-20081027-dev.zip
 chk  575720aba0778041abc95264f76b7e749734c450
 
-name kdelibs-20081024-src.zip
-file kdelibs-for-kleo-20081024-src.zip
-chk  0f7319ad1caff1a0f258ffd57c013ba38f52d76a
+name kdelibs-20081027-src.zip
+file kdelibs-for-kleo-20081027-src.zip
+chk  db5cc8277414384b955abb43099f1abf27af19d5
 
 
 # Kleopatra
 
 server ftp://ftp.kdab.net/pub/gpg4win
 
-file kleopatra-20081028-bin.zip
-chk  7b269465911b3ec753922f0e885f2c86db6120f7
+file kleopatra-20081028-3-bin.zip
+chk  4fd2601032b8d9e66dfc5fb5ecd22cd556be61d1
 
 # FIXME: These belong in the bin package.
-# Broken.  For fixed version see below.
-#name kleopatra-20081028-lib.zip
-#file kleopatra-20081028-doc.zip
-#chk  649d08bd02104d5c89f2d2fcb42d5740026e0054
+name kleopatra-20081028-3-lib.zip
+file kleopatra-20081028-3-doc.zip
+chk  649d08bd02104d5c89f2d2fcb42d5740026e0054
 
-file kleopatra-20081028-src.zip
+file kleopatra-20081028-3-src.zip
 chk  cb21cdf3f94eeebad7294c8c941d01fe02074038
-
-server ftp://ftp.g10code.com/g10code/scratch
-file kleopatra-20081028-lib.zip
-chk  f6bc32a3f29f41fb39412ad0f0fa344435d30ff6 
-
-
-
