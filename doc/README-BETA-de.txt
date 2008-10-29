@@ -11,7 +11,7 @@ Wichtige Informationen zum Einsatz von Gpg4win 1.9-BETA
   neue Version kennenzulernen und Verbesserungsvorschläge
   einzubringen.
 
-Stand: Gpg4win-1.9.9 (20081028)
+Stand: Gpg4win-1.9.9 (20081029)
 
 Hier finden sich wichtige Informationen die bei der
 Entscheidung helfen sollen, ob Gpg4win 1.9 schon für
@@ -50,7 +50,7 @@ Inhalt dieses Dokumentes:
 Wichtige Hinweise zur vorliegenden Version
 ==========================================
 
-- Installationpaket ca. 47 MByte:
+- Installationpaket ca. 45 MByte:
   Derzeit sind die Programme mit umfangreichen
   Debug-Informationen ausgestattet, so dass bei auftauchen
   eines Fehlers unmittelbar eine Fehleranalyse
