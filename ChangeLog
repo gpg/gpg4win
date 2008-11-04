@@ -1,3 +1,10 @@
+2008-11-04  Colin Leroy  <colin@colino.net>
+
+	* packages/packages.current: Update Claws Mail, libetpan
+	and Claws mail plugins.
+	* src/inst-claws.nsi: Add the ability to register as default
+	email client.
+
 2008-10-29  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
 	* packages/packages.current: Update kleopatra and kdelibs.

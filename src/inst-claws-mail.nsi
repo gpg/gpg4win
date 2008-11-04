@@ -23,6 +23,9 @@
 !endif
 !define prefix ${ipdir}/claws-mail-${gpg4win_pkg_claws_mail_version}
 
+LangString T_SetDefaultClient ${LANG_ENGLISH} \
+     "Do you want to make Claws Mail your default mail client?"
+     
 
 ${MementoUnselectedSection} "Claws-Mail" SEC_claws_mail
   SetOutPath "$INSTDIR"
@@ -48,6 +51,26 @@ ${MementoUnselectedSection} "Claws-Mail" SEC_claws_mail
   File ${prefix}/share/locale/de/LC_MESSAGES/claws-mail.mo
   SetOutPath "$INSTDIR\share\locale\fr\LC_MESSAGES"
   File ${prefix}/share/locale/fr/LC_MESSAGES/claws-mail.mo
+
+  MessageBox MB_YESNO "$(T_SetDefaultClient)" IDNO skip_default_client
+
+  WriteRegStr HKCU "Software\Classes\mailto" "" "URL:MailTo-Protocol"
+  WriteRegStr HKCU "Software\Classes\mailto" "URL Protocol" ""
+  WriteRegDword HKCU "Software\Classes\mailto" "EditFlags" 2
+
+  WriteRegStr HKCU "Software\Classes\mailto\DefaultIcon" "" "$INSTDIR\claws-mail.exe,0"
+  WriteRegStr HKCU "Software\Classes\mailto\shell\open\command" "" "$INSTDIR\claws-mail.exe --compose %1"
+  WriteRegStr HKCU "SOFTWARE\Clients\Mail" "" "Claws Mail"
+skip_default_client:
+  WriteRegStr HKCU "SOFTWARE\Clients\Mail\Claws Mail" "" "Claws Mail"
+  WriteRegStr HKCU "SOFTWARE\Clients\Mail\Claws Mail" "DLLPath" ""
+  WriteRegStr HKCU "SOFTWARE\Clients\Mail\Claws Mail\Protocols\mailto" "" "URL:MailTo-Protocol"
+  WriteRegStr HKCU "SOFTWARE\Clients\Mail\Claws Mail\Protocols\mailto" "URL Protocol" ""
+  WriteRegDword HKCU "SOFTWARE\Clients\Mail\Claws Mail\Protocols\mailto" "EditFlags" 2
+  WriteRegStr HKCU "SOFTWARE\Clients\Mail\Claws Mail\Protocols\mailto\DefaultIcon" "" "$INSTDIR\claws-mail.exe,0"
+  WriteRegStr HKCU "SOFTWARE\Clients\Mail\Claws Mail\Protocols\mailto\shell\open\command" "" "$INSTDIR\claws-mail.exe --compose %1"
+  WriteRegStr HKCU "SOFTWARE\Clients\Mail\Claws Mail\shell\open\command" "" "$INSTDIR\claws-mail.exe"
+
 !endif
 ${MementoSectionEnd}
 

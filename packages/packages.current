@@ -90,8 +90,8 @@ chk  bbd9e5f3a77bfcbef5a769c67d1576e7a6e4bda5
 # (Kept on our own mirror due to Sourceforge peculiarities.)
 server http://www.claws-mail.org/win32
 
-file libetpan-0.56cvs2.tar.gz
-chk  eae069f349c0232c17794fecc005335d2574cbe4
+file libetpan-0.57.tar.gz
+chk  7c4dfb78614c51e2ff4c9d7082b492f1c697f021
 
 #
 # curl for Claws plugins
@@ -114,35 +114,35 @@ chk    750b2bcd4ee3bf8595baf97e1881f1a57b1ef363
 # (Kept on our own mirror due to Sourceforge peculiarities.)
 
 server http://www.claws-mail.org/win32
-file  claws-mail-3.6.0cvs7.tar.bz2
-chk   8125a1932dc94fbaaa6af15542525fa95a319e43
+file  claws-mail-3.6.1cvs16.tar.bz2
+chk   363b3fb159561bcf0b262687375d1cc678d06f27
 
 #
 # Claws plugins
 #
 server http://www.claws-mail.org/win32
-file  notification_plugin-0.18cvs2.tar.gz
-chk   e563592f3b1de440350140a6b0908e45eef84cbb
+file  notification_plugin-0.19.tar.gz
+chk   59d2605b38a74a95af3fb3cd6fc6278fc2c3f901
 
 server http://www.claws-mail.org/win32
-file  gtkhtml2_viewer-0.20cvs2.tar.gz
-chk   a990ace766a32090adcf79d121596ef5cb495a96
+file  gtkhtml2_viewer-0.21.tar.gz
+chk   bfca75eb7945236a3b27a3a9f87f931120c28c5f
 
 server http://www.claws-mail.org/win32
-file  vcalendar-2.0.1cvs4.tar.gz
-chk   c590a944cff41bd8de46718590da9bcf39670593
+file  vcalendar-2.0.2.tar.gz
+chk   a8c1f6fff73aa79e561dc0f18c16fef50337a684
 
 server http://www.claws-mail.org/win32
-file  rssyl-0.21cvs2.tar.gz
-chk   c3b0e0926c3383a77854631f578801bf3c9cdbc1
+file  rssyl-0.22.tar.gz
+chk   51a5772ad2e27d5aafcef553747b61ad68fcc786
 
 server http://www.claws-mail.org/win32
-file  tnef_parse-0.3.1cvs3.tar.gz
-chk   4905f6af2d0f97d37503c4ddbf5fe3f4f5697aec
+file  tnef_parse-0.3.2.tar.gz
+chk   24cdc54491518245eecd8bcb4e12b35d99467325
 
 server http://www.claws-mail.org/win32
-file  attachwarner-0.2.13cvs4.tar.gz
-chk   5f632802b5ec31eb9b108765609c1a1b35aca2cd
+file  attachwarner-0.2.14.tar.gz
+chk   2c166fce4c6068c4acf32133774c9ffa36f46554
 
 #
 # Pthreads for Windows.
