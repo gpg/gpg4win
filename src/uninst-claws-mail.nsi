@@ -56,5 +56,7 @@ Section "-un.claws-mail"
   RMDir "$INSTDIR\share\claws-mail"
   RMDir "$INSTDIR\share"
   RMDir "$INSTDIR"
+  DeleteRegKey HKLM "SOFTWARE\Clients\Mail\Claws Mail"
+
 !endif
 SectionEnd
