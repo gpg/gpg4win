@@ -114,8 +114,8 @@ chk    750b2bcd4ee3bf8595baf97e1881f1a57b1ef363
 # (Kept on our own mirror due to Sourceforge peculiarities.)
 
 server http://www.claws-mail.org/win32
-file  claws-mail-3.6.1cvs16.tar.bz2
-chk   363b3fb159561bcf0b262687375d1cc678d06f27
+file  claws-mail-3.6.1cvs18.tar.bz2
+chk   32938915f8d038994f556c9181d8ce0b8d75843f
 
 #
 # Claws plugins

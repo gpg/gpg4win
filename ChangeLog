@@ -1,5 +1,9 @@
 2008-11-05  Colin Leroy  <colin@colino.net>
 
+	* packages/packages.current: Update Claws Mail.
+
+2008-11-05  Colin Leroy  <colin@colino.net>
+
 	* src/inst-claws.nsi: Setting the Mail start menu item in
 	HKCU confuses the Internet Options dialog. Do it in HKLM as
 	this dialog does.
