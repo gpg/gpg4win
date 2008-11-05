@@ -62,7 +62,7 @@ ${MementoUnselectedSection} "Claws-Mail" SEC_claws_mail
 
   WriteRegStr HKCU "Software\Classes\mailto\DefaultIcon" "" "$INSTDIR\claws-mail.exe,0"
   WriteRegStr HKCU "Software\Classes\mailto\shell\open\command" "" "$INSTDIR\claws-mail.exe --compose %1"
-  WriteRegStr HKCU "SOFTWARE\Clients\Mail" "" "Claws Mail"
+  WriteRegStr HKLM "SOFTWARE\Clients\Mail" "" "Claws Mail"
 skip_default_client:
 
 #just register Claws in the list of available mailers
