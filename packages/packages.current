@@ -114,12 +114,12 @@ chk    750b2bcd4ee3bf8595baf97e1881f1a57b1ef363
 # (Kept on our own mirror due to Sourceforge peculiarities.)
 
 server http://www.claws-mail.org/win32
-file  claws-mail-3.6.1cvs18.tar.bz2
-chk   32938915f8d038994f556c9181d8ce0b8d75843f
+file  claws-mail-3.6.1cvs20.tar.bz2
+chk   5cc66e4c95fee469964e998ed79c223c3ed14a75
 
 #
 # Claws plugins
-#
+
 server http://www.claws-mail.org/win32
 file  notification_plugin-0.19.tar.gz
 chk   59d2605b38a74a95af3fb3cd6fc6278fc2c3f901
