@@ -1,3 +1,8 @@
+2008-11-10  Marcus Brinkmann  <marcus@g10code.com>
+
+	* src/installer.nsi: Give German translation for language setup.
+	Clarify string.
+
 2008-11-08  Colin Leroy  <colin@colino.net>
 
 	* packages/packages.current: Update Claws Mail.
