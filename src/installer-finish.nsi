@@ -150,6 +150,11 @@ no_quick_launch_uninstall:
   Delete "$INSTDIR\${PACKAGE}-uninstall.exe"
   RMDir "$INSTDIR"
 
+  # If we installed in the default location, try to be really, really
+  # nice with sugar on it to clean up behind us.
+  StrCmp "$INSTDIR" "$PROGRAMFILES\GNU\${INSTALL_DIR}" 0 +2
+  RMDir "$PROGRAMFILES\GNU"
+
   # Clean the registry.
   DeleteRegValue HKLM "Software\GNU\${PRETTY_PACKAGE_SHORT}" \
         "Install Directory"
