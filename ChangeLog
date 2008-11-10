@@ -1,5 +1,9 @@
 2008-11-10  Marcus Brinkmann  <marcus@g10code.com>
 
+	* src/inst-gpa.nsi (DESC_Menu_Gpa): Remove winpt reference.
+
+2008-11-10  Marcus Brinkmann  <marcus@g10code.com>
+
 	* src/installer.nsi: Give German translation for language setup.
 	Clarify string.
 
