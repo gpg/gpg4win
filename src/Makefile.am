@@ -108,7 +108,7 @@ define gpg4win_pkg_gnupg2_post_install
     sed -e 's/$$$$/\r/' > $$$${pkgidir}/share/man/man1/$$$${i}.man ; \
  done ; \
  for i in `$(tsdir)/src/potomo --get-linguas $$$${pkgsdir}/po` ; do \
-     $(MKDIR_P) $$$${pkgidir}/share/locale/$$$${i}/LC_MESSAGES || true; \
+     $(mkdir_p) $$$${pkgidir}/share/locale/$$$${i}/LC_MESSAGES || true; \
      rm $$$${pkgidir}/share/locale/$$$${i}/LC_MESSAGES/gnupg2.mo || true; \
      $(tsdir)/src/potomo $$$${pkgsdir}/po/$$$${i}.po \
               $$$${pkgidir}/share/locale/$$$${i}/LC_MESSAGES/gnupg2.mo; \
