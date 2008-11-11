@@ -274,8 +274,8 @@ server http://wald.intevation.org/frs/download.php
 #chk  0dd28112046fd69d9ca2108c0fda7a835cb3c569
 
 server ftp://ftp.g10code.com/g10code/scratch
-file gpgol-0.10.16-svn280.tar.bz2
-chk  6204b69300ff6b15751229abc80c50fe4052a471
+file gpgol-0.10.16-svn283.tar.bz2
+chk  2458ed8b1a8b4b006003c8b91a396743ded9dd88 
 
 
 #
@@ -332,9 +332,9 @@ chk  6699a1ff94c649e8905199d480c6412cc43bad3d
 # (Snapshots)
 server ftp://ftp.g10code.com/g10code/scratch
 
-name gnupg2-2.0.10-svn4864.tar.bz2
-file gnupg-2.0.10-svn4864.tar.bz2
-chk  ac037216e60cf8624b4e2cbe4628da3d5b7f5178
+name gnupg2-2.0.10-svn4869.tar.bz2
+file gnupg-2.0.10-svn4869.tar.bz2
+chk  80d63e34bf6caa7067da4cf50f4bc81e390030c5
 
 file dirmngr-1.0.3-svn310.tar.bz2
 chk  e3f6df819419f1bff8f707cff41220a556c0b272  

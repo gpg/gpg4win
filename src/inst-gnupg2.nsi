@@ -102,11 +102,73 @@ ${MementoSection} "GnuPG" SEC_gnupg2
 
   # Install the language files for gpg.  Note that the PO files are
   # required to be UTF-8 encoded and that the post-install macro in
-  # Makefile.am needs to build them.  The language used is selected by
-  # using a Registry entry; see inst-gnupg.nsi.
+  # Makefile.am needs to build them.  The language used depends on the
+  # current locale of the session and may be overriden using LC_ALL,
+  # LC_MESSAGES or LANG.
+
+  # 1. Remove posible left over files from old versions.
+  Delete "$INSTDIR\gnupg2.nls\*.mo"
+  RMDir  "$INSTDIR\gnupg2.nls"
+
+  # 2. Install the help files
   File /nonfatal "${prefix}/share/gnupg/help.*.txt"
-  SetOutPath "$INSTDIR\gnupg2.nls"
-  File /nonfatal "${prefix}/share/gnupg/*.mo"
+
+  # 3. Install the mo files.
+  SetOutPath "$INSTDIR\share\locale\be\LC_MESSAGES"
+  File /nonfatal ${prefix}/share/locale/be/LC_MESSAGES/gnupg2.mo
+  SetOutPath "$INSTDIR\share\locale\ca\LC_MESSAGES"
+  File /nonfatal ${prefix}/share/locale/ca/LC_MESSAGES/gnupg2.mo
+  SetOutPath "$INSTDIR\share\locale\cs\LC_MESSAGES"
+  File /nonfatal ${prefix}/share/locale/cs/LC_MESSAGES/gnupg2.mo
+  SetOutPath "$INSTDIR\share\locale\da\LC_MESSAGES"
+  File /nonfatal ${prefix}/share/locale/da/LC_MESSAGES/gnupg2.mo
+  SetOutPath "$INSTDIR\share\locale\de\LC_MESSAGES"
+  File /nonfatal ${prefix}/share/locale/de/LC_MESSAGES/gnupg2.mo
+  SetOutPath "$INSTDIR\share\locale\el\LC_MESSAGES"
+  File /nonfatal ${prefix}/share/locale/el/LC_MESSAGES/gnupg2.mo
+  SetOutPath "$INSTDIR\share\locale\eo\LC_MESSAGES"
+  File /nonfatal ${prefix}/share/locale/eo/LC_MESSAGES/gnupg2.mo
+  SetOutPath "$INSTDIR\share\locale\es\LC_MESSAGES"
+  File /nonfatal ${prefix}/share/locale/es/LC_MESSAGES/gnupg2.mo
+  SetOutPath "$INSTDIR\share\locale\et\LC_MESSAGES"
+  File /nonfatal ${prefix}/share/locale/et/LC_MESSAGES/gnupg2.mo
+  SetOutPath "$INSTDIR\share\locale\fi\LC_MESSAGES"
+  File /nonfatal ${prefix}/share/locale/fi/LC_MESSAGES/gnupg2.mo
+  SetOutPath "$INSTDIR\share\locale\fr\LC_MESSAGES"
+  File /nonfatal ${prefix}/share/locale/fr/LC_MESSAGES/gnupg2.mo
+  SetOutPath "$INSTDIR\share\locale\gl\LC_MESSAGES"
+  File /nonfatal ${prefix}/share/locale/gl/LC_MESSAGES/gnupg2.mo
+  SetOutPath "$INSTDIR\share\locale\hu\LC_MESSAGES"
+  File /nonfatal ${prefix}/share/locale/hu/LC_MESSAGES/gnupg2.mo
+  SetOutPath "$INSTDIR\share\locale\id\LC_MESSAGES"
+  File /nonfatal ${prefix}/share/locale/id/LC_MESSAGES/gnupg2.mo
+  SetOutPath "$INSTDIR\share\locale\it\LC_MESSAGES"
+  File /nonfatal ${prefix}/share/locale/it/LC_MESSAGES/gnupg2.mo
+  SetOutPath "$INSTDIR\share\locale\ja\LC_MESSAGES"
+  File /nonfatal ${prefix}/share/locale/ja/LC_MESSAGES/gnupg2.mo
+  SetOutPath "$INSTDIR\share\locale\nb\LC_MESSAGES"
+  File /nonfatal ${prefix}/share/locale/nb/LC_MESSAGES/gnupg2.mo
+  SetOutPath "$INSTDIR\share\locale\pl\LC_MESSAGES"
+  File /nonfatal ${prefix}/share/locale/pl/LC_MESSAGES/gnupg2.mo
+  SetOutPath "$INSTDIR\share\locale\pt_BR\LC_MESSAGES"
+  File /nonfatal ${prefix}/share/locale/pt_BR/LC_MESSAGES/gnupg2.mo
+  SetOutPath "$INSTDIR\share\locale\pt\LC_MESSAGES"
+  File /nonfatal ${prefix}/share/locale/pt/LC_MESSAGES/gnupg2.mo
+  SetOutPath "$INSTDIR\share\locale\ro\LC_MESSAGES"
+  File /nonfatal ${prefix}/share/locale/ro/LC_MESSAGES/gnupg2.mo
+  SetOutPath "$INSTDIR\share\locale\ru\LC_MESSAGES"
+  File /nonfatal ${prefix}/share/locale/ru/LC_MESSAGES/gnupg2.mo
+  SetOutPath "$INSTDIR\share\locale\sk\LC_MESSAGES"
+  File /nonfatal ${prefix}/share/locale/sk/LC_MESSAGES/gnupg2.mo
+  SetOutPath "$INSTDIR\share\locale\sv\LC_MESSAGES"
+  File /nonfatal ${prefix}/share/locale/sv/LC_MESSAGES/gnupg2.mo
+  SetOutPath "$INSTDIR\share\locale\tr\LC_MESSAGES"
+  File /nonfatal ${prefix}/share/locale/tr/LC_MESSAGES/gnupg2.mo
+  SetOutPath "$INSTDIR\share\locale\zh_CN\LC_MESSAGES"
+  File /nonfatal ${prefix}/share/locale/zh_CN/LC_MESSAGES/gnupg2.mo
+  SetOutPath "$INSTDIR\share\locale\zh_TW\LC_MESSAGES"
+  File /nonfatal ${prefix}/share/locale/zh_TW/LC_MESSAGES/gnupg2.mo
+
 
   # Always install the new template into COMMON_APPDATA folder.
   SetShellVarContext all

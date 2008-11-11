@@ -71,16 +71,35 @@ Section "-un.gnupg"
   RMDir "$INSTDIR\share\gnupg"
   RMDir "$INSTDIR\share"
 
-  # This file is not anymore used but was used by older versions
-  # (prior to 1.9.3 - always remove it.
-  Delete "$INSTDIR\etc\gnupg\gpgconf-conf.skel"
-  RMDir  "$INSTDIR\etc\gnupg"
-  RMDir  "$INSTDIR\etc"
 
-  Delete "$INSTDIR\gnupg2.nls\*.mo"
-  RMDir  "$INSTDIR\gnupg2.nls"
+  Delete "$INSTDIR\share\locale\be\LC_MESSAGES\gnupg2.mo"
+  Delete "$INSTDIR\share\locale\ca\LC_MESSAGES\gnupg2.mo"
+  Delete "$INSTDIR\share\locale\cs\LC_MESSAGES\gnupg2.mo"
+  Delete "$INSTDIR\share\locale\da\LC_MESSAGES\gnupg2.mo"
+  Delete "$INSTDIR\share\locale\de\LC_MESSAGES\gnupg2.mo"
+  Delete "$INSTDIR\share\locale\el\LC_MESSAGES\gnupg2.mo"
+  Delete "$INSTDIR\share\locale\eo\LC_MESSAGES\gnupg2.mo"
+  Delete "$INSTDIR\share\locale\es\LC_MESSAGES\gnupg2.mo"
+  Delete "$INSTDIR\share\locale\et\LC_MESSAGES\gnupg2.mo"
+  Delete "$INSTDIR\share\locale\fi\LC_MESSAGES\gnupg2.mo"
+  Delete "$INSTDIR\share\locale\fr\LC_MESSAGES\gnupg2.mo"
+  Delete "$INSTDIR\share\locale\gl\LC_MESSAGES\gnupg2.mo"
+  Delete "$INSTDIR\share\locale\hu\LC_MESSAGES\gnupg2.mo"
+  Delete "$INSTDIR\share\locale\id\LC_MESSAGES\gnupg2.mo"
+  Delete "$INSTDIR\share\locale\it\LC_MESSAGES\gnupg2.mo"
+  Delete "$INSTDIR\share\locale\ja\LC_MESSAGES\gnupg2.mo"
+  Delete "$INSTDIR\share\locale\nb\LC_MESSAGES\gnupg2.mo"
+  Delete "$INSTDIR\share\locale\pl\LC_MESSAGES\gnupg2.mo"
+  Delete "$INSTDIR\share\locale\pt_BR\LC_MESSAGES\gnupg2.mo"
+  Delete "$INSTDIR\share\locale\pt\LC_MESSAGES\gnupg2.mo"
+  Delete "$INSTDIR\share\locale\ro\LC_MESSAGES\gnupg2.mo"
+  Delete "$INSTDIR\share\locale\ru\LC_MESSAGES\gnupg2.mo"
+  Delete "$INSTDIR\share\locale\sk\LC_MESSAGES\gnupg2.mo"
+  Delete "$INSTDIR\share\locale\sv\LC_MESSAGES\gnupg2.mo"
+  Delete "$INSTDIR\share\locale\tr\LC_MESSAGES\gnupg2.mo"
+  Delete "$INSTDIR\share\locale\zh_CN\LC_MESSAGES\gnupg2.mo"
+  Delete "$INSTDIR\share\locale\zh_TW\LC_MESSAGES\gnupg2.mo"
 
-  RMDir "$INSTDIR"
 
 !endif
 SectionEnd
