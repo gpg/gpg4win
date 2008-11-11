@@ -1,3 +1,13 @@
+2008-11-11  Werner Koch  <wk@g10code.com>
+
+	Release 1.9.11.
+
+	* packages/packages.current: Update GpgOL.
+
+	* src/Makefile.am (gpg4win_pkg_gnupg2_post_install): Do not let a
+	mkdir -p or rm fail.  Use mkdir_p and not MKDIR_P for automake
+	compatibility.
+
 2008-11-11  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
 	* packages/packages.current: Update kleopatra.and kdelibs.

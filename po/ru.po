@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Gpg4Win Installer\n"
 "Report-Msgid-Bugs-To: gpg4win-devel@wald.intevation.org\n"
-"POT-Creation-Date: 2008-10-28 18:46+0100\n"
+"POT-Creation-Date: 2008-11-11 17:52+0100\n"
 "PO-Revision-Date: 2008-04-22 11:57+0200\n"
 "Last-Translator: Sergei Smirnov <moscow@hro.org>\n"
 "Language-Team: Human Rights Network <moscow@hro.org>\n"
@@ -89,12 +89,12 @@ msgctxt "T_AboutGpg4winSrcReleaseDate"
 msgid "release date ${_BUILD_ISODATE}"
 msgstr "Дата релиза ${_BUILD_ISODATE}"
 
-#: src/installer.nsi:217
+#: src/installer.nsi:221
 msgctxt "T_LangCode"
 msgid "en"
 msgstr "ru"
 
-#: src/installer.nsi:220
+#: src/installer.nsi:224
 msgctxt "T_GPLHeader"
 msgid ""
 "This software is licensed under the terms of the GNU General Public License "
@@ -104,7 +104,7 @@ msgstr ""
 "License (GPL). Вы можете свободно распространять эту программу и вносить в "
 "нее изменения."
 
-#: src/installer.nsi:225
+#: src/installer.nsi:229
 msgctxt "T_GPLShort"
 msgid ""
 "In short: You are allowed to run this software for any purpose. You may "
@@ -115,77 +115,77 @@ msgstr ""
 "распространять ее при условии, что не будете ограничивать права других "
 "пользователей программы."
 
-#: src/installer.nsi:230
+#: src/installer.nsi:234
 msgctxt "T_RunKeyManager"
 msgid "Run the key manager"
 msgstr "Запуск менеджера ключей"
 
-#: src/installer.nsi:233
+#: src/installer.nsi:237
 msgctxt "T_MoreInfo"
 msgid "Click here for the project's homepage"
 msgstr "Веб-сайт проекта"
 
-#: src/installer.nsi:235
+#: src/installer.nsi:239
 msgctxt "T_MoreInfoURL"
 msgid "http://www.gpg4win.org"
 msgstr "http://www.gpg4win.org"
 
-#: src/installer.nsi:237
+#: src/installer.nsi:241
 msgctxt "T_ShowReadme"
 msgid "Show the README file"
 msgstr "Показать файл README"
 
-#: src/installer.nsi:240
+#: src/installer.nsi:244
 msgctxt "T_NoKeyManager"
 msgid "No key manager has been installed, thus we can't run one now."
 msgstr "Ошибка запуска менеджера ключей: ни один из менеджеров не установлен."
 
-#: src/installer.nsi:245
+#: src/installer.nsi:249
 msgctxt "DESC_Menu_manuals"
 msgid "Documentation"
 msgstr "Документация"
 
-#: src/installer.nsi:249
+#: src/installer.nsi:253
 msgctxt "DESC_Desktop_manuals"
 msgid "Gpg4win Documentation"
 msgstr "Документация Gpg4win"
 
-#: src/installer.nsi:453
+#: src/installer.nsi:457
 msgctxt "T_InstallOptions"
 msgid "Install Options"
 msgstr "Параметры установки"
 
-#: src/installer.nsi:456
+#: src/installer.nsi:460
 msgctxt "T_InstallOptLinks"
 msgid "Start links"
 msgstr "Ярлыки Gpg4win"
 
-#: src/installer.nsi:458
+#: src/installer.nsi:462
 msgctxt "T_InstOptLabelA"
 msgid "Please select where Gpg4win shall install links:"
 msgstr "Где создавать ярлыки Gpg4win:"
 
-#: src/installer.nsi:461
+#: src/installer.nsi:465
 msgctxt "T_InstOptLabelB"
 msgid "(Only programs will be linked into the quick launch bar.)"
 msgstr "(В панели быстрого запуска будут ссылки только на программы)."
 
-#: src/installer.nsi:464
+#: src/installer.nsi:468
 msgctxt "T_InstOptFieldA"
 msgid "Start Menu"
 msgstr "Меню Пуск"
 
-#: src/installer.nsi:467
+#: src/installer.nsi:471
 msgctxt "T_InstOptFieldB"
 msgid "Desktop"
 msgstr "Рабочий стол"
 
-#: src/installer.nsi:470
+#: src/installer.nsi:474
 msgctxt "T_InstOptFieldC"
 msgid "Quick Launch Bar"
 msgstr "Панель быстрого запуска"
 
-#: src/installer.nsi:476
+#: src/installer.nsi:480
 msgctxt "T_FoundExistingVersion"
 msgid ""
 "Version $R1 has already been installed.\n"
@@ -194,7 +194,7 @@ msgstr ""
 "Версия $R1 уже установлена.\n"
 "Перезаписать ее версией ${VERSION}?"
 
-#: src/installer.nsi:479
+#: src/installer.nsi:483
 #, fuzzy
 msgctxt "T_FoundExistingOldVersion"
 msgid ""
@@ -207,7 +207,7 @@ msgstr ""
 "\n"
 "Продолжить установку Gpg4Win?"
 
-#: src/installer.nsi:484
+#: src/installer.nsi:488
 msgctxt "T_FoundExistingVersionB"
 msgid ""
 "A version of Gpg4Win has already been installed on the system. There will be "
@@ -220,7 +220,7 @@ msgstr ""
 "\n"
 "Продолжить установку Gpg4Win?"
 
-#: src/installer.nsi:495
+#: src/installer.nsi:499
 msgctxt "T_FoundOldSeeManual"
 msgid ""
 "Please see the Gpg4win user manual to learn how to migrate existing keys "
@@ -229,7 +229,7 @@ msgstr ""
 "Вопросы переноса ключей из других программ в Gpg4Win рассматриваются в "
 "руководстве пользователя Gpg4Win."
 
-#: src/installer.nsi:500
+#: src/installer.nsi:504
 msgctxt "T_FoundOldGnuPP"
 msgid ""
 "An old installation of GnuPP (GNU Privacy Project) has been been detected.  "
@@ -243,7 +243,7 @@ msgstr ""
 "\n"
 "Продолжить установку Gpg4Win (а с GnuPP разберемся потом)?"
 
-#: src/installer.nsi:509
+#: src/installer.nsi:513
 msgctxt "T_FoundOldGnuPT"
 msgid ""
 "An installation of GnuPT has been been detected.  This may cause problems "
@@ -256,7 +256,7 @@ msgstr ""
 "\n"
 "Продолжить установку Gpg4win?"
 
-#: src/installer.nsi:516
+#: src/installer.nsi:520
 msgctxt "T_FoundOldWinPTSF"
 msgid ""
 "An old installation of the Sourceforge hosted WinPT has been been detected.  "
@@ -271,7 +271,7 @@ msgstr ""
 "\n"
 "Продолжить установку Gpg4win (а со старой программой разберемся потом)?"
 
-#: src/installer.nsi:526
+#: src/installer.nsi:530
 msgctxt "T_FoundOldGnuPack"
 msgid ""
 "An installation of GnuPG-Pack has been been detected. You need to uninstall "
@@ -285,7 +285,7 @@ msgstr ""
 "\n"
 "Установка прервана!"
 
-#: src/installer.nsi:535
+#: src/installer.nsi:539
 msgctxt "T_BetaWarning"
 msgid ""
 "Note: This is a BETA version of Gpg4win.\n"
@@ -294,13 +294,13 @@ msgid ""
 "production environment."
 msgstr ""
 
-#: src/installer.nsi:542
+#: src/installer.nsi:546
 msgctxt "T_AdminNeeded"
 msgid ""
 "Warning: Administrator permissions required for a successful installation"
 msgstr "Для успешной установки требуются права администратора"
 
-#: src/installer.nsi:546
+#: src/installer.nsi:550
 msgctxt "T_CloseOtherApps"
 msgid ""
 "Please make sure that other applications are not running. In particular you "
@@ -311,27 +311,32 @@ msgstr ""
 "Outlook и Explorer. Если это не сделать, Gpg4Win все равно будет "
 "установлена, но потребуется перезагрузка."
 
-#: src/installer.nsi:551
+#: src/installer.nsi:555
 msgctxt "T_ShuttingDownWinPT"
 msgid "Trying to shutdown a possible running instance of WinPT."
 msgstr "Возможно, запущена программа WinPT. Попробуем закрыть ее."
 
-#: src/installer.nsi:553
+#: src/installer.nsi:557
 msgctxt "T_ShuttingDownDirMngr"
 msgid "Trying to shutdown a possible running instance of DirMngr."
 msgstr "Возможно, запущена программа DirMngr. Попробуем закрыть ее."
 
-#: src/inst-claws-mail.nsi:55
+#: src/inst-claws-mail.nsi:26
+msgctxt "T_SetDefaultClient"
+msgid "Do you want to make Claws Mail your default mail client?"
+msgstr ""
+
+#: src/inst-claws-mail.nsi:82
 msgctxt "DESC_SEC_claws_mail"
 msgid "Claws Mail-User-Agent"
 msgstr "Почтовый клиент Claws"
 
-#: src/inst-claws-mail.nsi:58
+#: src/inst-claws-mail.nsi:85
 msgctxt "DESC_Menu_claws_mail"
 msgid "Run the Claws mailprogram."
 msgstr "Запуск почтовой программы Claws."
 
-#: src/inst-claws-mail.nsi:61
+#: src/inst-claws-mail.nsi:88
 msgctxt "DESC_Menu_claws_mail_pdf"
 msgid "Show the online manual of Claws Mail"
 msgstr "Показать онлайновое руководство к почтовому клиенту Claws Mail"
@@ -341,7 +346,7 @@ msgctxt "DESC_SEC_eudoragpg"
 msgid "EudoraGPG is a plugin for the Eudora mail program"
 msgstr "EudoraGPG - расширение почтового клиента Eudora"
 
-#: src/inst-gnupg2.nsi:148
+#: src/inst-gnupg2.nsi:210
 #, fuzzy
 msgctxt "DESC_SEC_gnupg2"
 msgid "GNU Privacy Guard"
@@ -353,11 +358,10 @@ msgid "GNU Privacy Assistant"
 msgstr "GNU Privacy Assistant"
 
 #: src/inst-gpa.nsi:75
+#, fuzzy
 msgctxt "DESC_Menu_gpa"
-msgid ""
-"Run the GNU Privacy Assistant key management tool. This is an alternative to "
-"the WinPT key management tool."
-msgstr "Запуск менеджера ключей GNU Privacy Assistant (альтернатива WinPT)."
+msgid "Run the GNU Privacy Assistant key management tool."
+msgstr "Запуск менеджера ключей Kleopatra."
 
 #: src/inst-gpg4win.nsi:70
 #, fuzzy
@@ -521,6 +525,12 @@ msgid ""
 msgstr ""
 "Запуск Windows Privacy Tray. Это универсальный инструмент управления ключами "
 "и шифрования данных."
+
+#~ msgctxt "DESC_Menu_gpa"
+#~ msgid ""
+#~ "Run the GNU Privacy Assistant key management tool. This is an alternative "
+#~ "to the WinPT key management tool."
+#~ msgstr "Запуск менеджера ключей GNU Privacy Assistant (альтернатива WinPT)."
 
 #~ msgctxt "DESC_Name_man_novice_en"
 #~ msgid "Novice Manual"

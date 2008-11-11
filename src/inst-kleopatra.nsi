@@ -117,6 +117,11 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
   File ${prefix}/share/kde4/services/kleopatra_signencryptfiles.desktop
   File ${prefix}/share/kde4/services/kleopatra_decryptverifyfiles.desktop
 
+  # FIXME: From the lib package.  This is wrong.
+!undef prefix
+!define prefix ${ipdir}/kleopatra-dev-${gpg4win_pkg_kleopatra_version}
+
+
   SetOutPath "$INSTDIR\share\locale\de\LC_MESSAGES"
 
   File ${prefix}/share/locale/de/LC_MESSAGES/akonaditray.mo
@@ -199,13 +204,6 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
   File ${prefix}/share/locale/de/LC_MESSAGES/libktnef.mo
   File ${prefix}/share/locale/de/LC_MESSAGES/libkxmlrpcclient.mo
   File ${prefix}/share/locale/de/LC_MESSAGES/libmailtransport.mo
-
-
-  # FIXME: From the lib package.  This is wrong.
-!undef prefix
-!define prefix ${ipdir}/kleopatra-dev-${gpg4win_pkg_kleopatra_version}
-
-  SetOutPath "$INSTDIR\share\locale\de\LC_MESSAGES"
 
   File ${prefix}/share/locale/de/LC_MESSAGES/desktop_kdelibs.mo
   File ${prefix}/share/locale/de/LC_MESSAGES/desktop_l10n.mo

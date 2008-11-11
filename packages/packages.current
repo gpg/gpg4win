@@ -268,14 +268,16 @@ server http://wald.intevation.org/frs/download.php
 #
 # GpgOL
 #
-#server ftp://ftp.g10code.com/g10code/gpgol/alpha
+server ftp://ftp.g10code.com/g10code/gpgol/alpha
 
-#file gpgol-0.10.15.tar.bz2
-#chk  0dd28112046fd69d9ca2108c0fda7a835cb3c569
+file gpgol-0.10.16.tar.bz2
+chk  64ecf9b1e8bddab9380f205d90df888e9096d874  
 
-server ftp://ftp.g10code.com/g10code/scratch
-file gpgol-0.10.16-svn283.tar.bz2
-chk  2458ed8b1a8b4b006003c8b91a396743ded9dd88 
+
+#server ftp://ftp.g10code.com/g10code/scratch
+#file gpgol-0.10.16-svn283.tar.bz2
+#chk  2458ed8b1a8b4b006003c8b91a396743ded9dd88 
+
 
 
 #
