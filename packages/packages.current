@@ -434,7 +434,7 @@ chk  eb8c915a15df0d6d0f24f09d850f77af3317a8b5
 # FIXME: These belong in the bin package.
 name kleopatra-20081110-lib.zip
 file kleopatra-20081110-doc.zip
-chk  da39a3ee5e6b4b0d3255bfef95601890afd80709
+chk  e1eca574e5e086179b4aa9009c13fd9aaf64fdbe
 
 file kleopatra-20081110-src.zip
 chk  1bdd6893f2b8287a605afe7b827783206b4c868b

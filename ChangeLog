@@ -1,3 +1,7 @@
+2008-11-11  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+
+	* packages/packages.current: Update sha1sum of kleopatra.
+
 2008-11-11  Werner Koch  <wk@g10code.com>
 
 	* packages/packages.current: Update gnupg.
