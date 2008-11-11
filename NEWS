@@ -13,11 +13,11 @@ Noteworthy changes in version 1.9.10
      eingesetzt werden.
 
 ~~~~~~~~~~~~~~~
-GnuPG:        2.0.10-svn4864
+GnuPG:        2.0.10-svn4870
 DirMngr:      1.0.3-svn309
 Kleopatra:    
 GPA:          0.8.0
-GpgOL:        0.10.15
+GpgOL:        0.10.16-svn283
 GpgEX:        0.9.1
 Claws-Mail:   3.6.0cvs7
 Kompendium:   3.0.0-beta
@@ -34,7 +34,7 @@ Noteworthy changes in version 1.9.9 (2008-10-29)
      eingesetzt werden.
 
 ~~~~~~~~~~~~~~~
-GnuPG:        2.0.10-svn4864
+GnuPG:        2.0.10-svn4870
 DirMngr:      1.0.3-svn309
 Kleopatra:    20081007-3
 GPA:          0.8.0
