@@ -411,16 +411,16 @@ chk  a4e673c1b1b1cc420e771413edc53ef89fe7773a
 
 server ftp://ftp.kdab.net/pub/gpg4win
 
-name kdelibs-20081110-bin.zip
-file kdelibs-for-kleo-20081110-bin.zip
-chk  1bb882f18e0e17eef7b17fab0238f6d3320cc7ea
+name kdelibs-20081111-bin.zip
+file kdelibs-for-kleo-20081111-bin.zip
+chk  170cd58cde7b82721e1a00e15386cf2e7b9ae26f
 
-name kdelibs-20081110-lib.zip
-file kdelibs-for-kleo-20081110-dev.zip
-chk  0fd45cc4b6718f60a6c9844b35f11f3e5ef96514
+name kdelibs-20081111-lib.zip
+file kdelibs-for-kleo-20081111-dev.zip
+chk  e32e3029435759bba9e1f1ba479940fead743545
 
-name kdelibs-20081110-src.zip
-file kdelibs-for-kleo-20081110-src.zip
+name kdelibs-20081111-src.zip
+file kdelibs-for-kleo-20081111-src.zip
 chk  37e27c938f2ad568665029559596b9a246c2d412
 
 
@@ -428,13 +428,13 @@ chk  37e27c938f2ad568665029559596b9a246c2d412
 
 server ftp://ftp.kdab.net/pub/gpg4win
 
-file kleopatra-20081110-bin.zip
-chk  eb8c915a15df0d6d0f24f09d850f77af3317a8b5
+file kleopatra-20081111-bin.zip
+chk  aac14db17ce1818c53f80e4a01b629118e3fe2c6
 
 # FIXME: These belong in the bin package.
-name kleopatra-20081110-lib.zip
-file kleopatra-20081110-doc.zip
+name kleopatra-20081111-lib.zip
+file kleopatra-20081111-doc.zip
 chk  e1eca574e5e086179b4aa9009c13fd9aaf64fdbe
 
-file kleopatra-20081110-src.zip
+file kleopatra-20081111-src.zip
 chk  1bdd6893f2b8287a605afe7b827783206b4c868b
