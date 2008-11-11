@@ -413,15 +413,15 @@ server ftp://ftp.kdab.net/pub/gpg4win
 
 name kdelibs-20081110-bin.zip
 file kdelibs-for-kleo-20081110-bin.zip
-chk  0e9b38e2f35def3cc8523c239498045d6a2a66ac
+chk  1bb882f18e0e17eef7b17fab0238f6d3320cc7ea
 
 name kdelibs-20081110-lib.zip
 file kdelibs-for-kleo-20081110-dev.zip
-chk  575720aba0778041abc95264f76b7e749734c450
+chk  0fd45cc4b6718f60a6c9844b35f11f3e5ef96514
 
 name kdelibs-20081110-src.zip
 file kdelibs-for-kleo-20081110-src.zip
-chk  db5cc8277414384b955abb43099f1abf27af19d5
+chk  37e27c938f2ad568665029559596b9a246c2d412
 
 
 # Kleopatra
@@ -429,12 +429,12 @@ chk  db5cc8277414384b955abb43099f1abf27af19d5
 server ftp://ftp.kdab.net/pub/gpg4win
 
 file kleopatra-20081110-bin.zip
-chk  4fd2601032b8d9e66dfc5fb5ecd22cd556be61d1
+chk  eb8c915a15df0d6d0f24f09d850f77af3317a8b5
 
 # FIXME: These belong in the bin package.
 name kleopatra-20081110-lib.zip
 file kleopatra-20081110-doc.zip
-chk  649d08bd02104d5c89f2d2fcb42d5740026e0054
+chk  da39a3ee5e6b4b0d3255bfef95601890afd80709
 
 file kleopatra-20081110-src.zip
-chk  cb21cdf3f94eeebad7294c8c941d01fe02074038
+chk  1bdd6893f2b8287a605afe7b827783206b4c868b
