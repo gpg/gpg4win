@@ -1,5 +1,11 @@
 2008-11-12  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
+	* manual/gpg4win-compendium-de.tex: Modify section numbering
+	of appendix D and E for hyperlatex. 
+	Add manualinprogress command.
+
+2008-11-12  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+
 	* website/download.htm4, website/download-de.htm4,
 	  website/template_header.m4, website/gpg4win.css:
 	Updated to 1.9.11. Added 1.9.11 into dowload box.
