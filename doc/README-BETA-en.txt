@@ -9,7 +9,7 @@ Important Hints for Using Gpg4win 1.9-BETA
   experienced users or administrators to learn
   about the upcoming version and suggest changes.
 
-Status: Gpg4win-1.9.9 (20081029)
+Status: Gpg4win-1.9.11 (20081112)
 
 This text covers information that are
 intended to help judging whether Gpg4win 1.9
@@ -41,13 +41,13 @@ Contents of this document:
 * Important hints for using S/MIME
 * Migration
 * Most important changes in Gpg4win 1.9 compared to 1.1
-* Most important changes in Gpg4win 1.9.9 compared to 1.9.8
+* Most important changes in Gpg4win 1.9.11 compared to 1.9.9
 
 
 Important hints for present version
 ===================================
 
-- Installation package ca. 45 MByte:
+- Installation package ca. 32 MByte:
   The tools curently contain comprehensive debug information.
   This helps to analyse problems as they occur.
   For version 2.0 this debug information will be skipped
@@ -84,7 +84,9 @@ Important hints for present version
 
   * Emails will be stored on the server in Microsoft specific
     format and thus not be readable via other email programs.
-    A migration solution is being worked on.
+    GpgOL provides a re-migration solution in the "tools"
+    menu of Outlook to remove GpgOL information of the selected 
+    mail folder.
 
 
 Important hints for using S/MIME
@@ -106,7 +108,7 @@ these steps.
   Please consider the warning dialog seriously.
   Note: In the current BETA version you have to enable 
   the S/MIME support to get a correct verification of 
-  OpenPGP signatures. It's a known issue and will be 
+  inlinePGP signatures. It's a known issue and will be 
   solved in one of the next versions.
 
 - Create new S/MIME certificate:
@@ -210,7 +212,7 @@ Removed:
 Updated:
 --------
 
-- Claws Mail: Version 3.6.0cvs7
+- Claws Mail: Version 3.6.1cvs20
   Main new features: Support of SSL, NNTP and IMAP in the
   Windows-Version of Claws Mail.
 
@@ -261,40 +263,22 @@ New:
   and PGP/MIME and new texts for S/MIME and X.509.
 
 
-Most important changes in Gpg4win 1.9.8 compared to 1.9.7
-=========================================================
+Most important changes in Gpg4win 1.9.11 compared to 1.9.9
+==========================================================
+ Note: The version number 1.9.10 was skiped.
 
  - Kleopatra:
-    Note: [#xxxxxx] marks the Kleopatra bug number. With this number you
-       can see all bug details on http://bugs.kde.org.
-
-     * Im- and export of *.p12 files repaired [#173369;#172716]
-     * Export of public certificates now supports *.asc/*.pem and
-       *.gpg/*.der files [#172531;#172787]
-     * File filter for certificate import repaired [#173676;#173677]
-     * Signatur certificates choice dialog limited to selected
-       protocol [#172786]
-     * Summary shows "Not enough information to validate the signature" 
-       now with green background [#172350]
-     * Support for 'autom' protocol mode of GpgOL improved [#166732]
-     * Passphrase changes (for OpenPGP certificates) are saved [#166139]
-     * translations completed [#170244;#172731;#172732;#172734;#172735]
+     * pgp files are identified as encrypted files
+     * translations completed 
      * several minor and medium improvements
 
-
  - GpgOL:
-     * Verify and encrypt of inlinePGP emails repaired
-     * Tooltips of sign and encrypt buttons renamed
-     * Warning if try to sending an empty signed or encrypted email
-     * Forwarding of signed mails: no "gpgol000.txt" file attached
+     * latency reduced if sending signed or encrypted messages with 
+       large attachments
+     * new dialog to restart Kleopatra if Outlook/GpgOL can not start 
+       Kleopatra timely
 
- - Backend:
-     * DirMngr supports now user specific trust definitions for 
-       root certificates
-     * DirMngr supports additional *.der files in 'trusted-certs' directory
-     * Umlauts in OpenPGP certificate details on keyserver are now correct
-
- - Gpg4win Compendium 3.0.0-beta1 release (2008-10-22) integrated
+ - Gpg4win Compendium 3.0.0-beta1 reworked
 
  - Backend and Installer: Several minor and medium issues and 
    errors were fixed.

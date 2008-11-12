@@ -11,7 +11,7 @@ Wichtige Informationen zum Einsatz von Gpg4win 1.9-BETA
   neue Version kennenzulernen und Verbesserungsvorschläge
   einzubringen.
 
-Stand: Gpg4win-1.9.9 (20081029)
+Stand: Gpg4win-1.9.11 (20081112)
 
 Hier finden sich wichtige Informationen die bei der
 Entscheidung helfen sollen, ob Gpg4win 1.9 schon für
@@ -44,13 +44,13 @@ Inhalt dieses Dokumentes:
 * Wichtige Hinweise zur Verwendung von S/MIME
 * Migration
 * Wichtigste Änderungen von Gpg4win 1.9 gegenüber 1.1
-* Wichtigste Änderungen von Gpg4win 1.9.9 gegenüber 1.9.8
+* Wichtigste Änderungen von Gpg4win 1.9.11 gegenüber 1.9.9
 
 
 Wichtige Hinweise zur vorliegenden Version
 ==========================================
 
-- Installationpaket ca. 45 MByte:
+- Installationpaket ca. 32 MByte:
   Derzeit sind die Programme mit umfangreichen
   Debug-Informationen ausgestattet, so dass bei auftauchen
   eines Fehlers unmittelbar eine Fehleranalyse
@@ -89,7 +89,9 @@ Wichtige Hinweise zur vorliegenden Version
   * E-Mails werden auf dem Server in Microsoft-spezifischen
     Formaten gespeichert und können von anderen E-Mail-Programmen
     dann nicht mehr interpretiert und die Inhalte angezeigt werden.
-    Eine Migrations-Lösung hierfür ist in Arbeit.
+    Eine Re-Migrations-Lösung bietet GpgOL im Outlook-Menü 
+    "Extras->GpgOL Eigenschaften aus diesem Ordner enfernen".
+    Detail dazu im Gpg4win-Kompendium (Anhang E).
 
 
 Wichtige Hinweise zur Verwendung von S/MIME
@@ -111,7 +113,7 @@ durchzuführen.
   muss S/MIME explizit eingeschaltet werden.
   Beachten Sie den Warnhinweis, der darauf hin erscheint.
   Achtung: In der aktuellen Beta muss S/MIME auch für eine korrete Überprüfung
-  einer OpenPGP-Signatur eingeschaltet sein. Dieses Problem ist bekannt
+  einer inlinePGP-Signatur eingeschaltet sein. Dieses Problem ist bekannt
   und an einer Lösung wird gearbeitet.
 
 - Neue S/MIME-Schlüssel herstellen:
@@ -221,7 +223,7 @@ Entfallen:
 Aktualisiert:
 -------------
 
-- Claws Mail: Version 3.6.0cvs7
+- Claws Mail: Version 3.6.1cvs20
   Wesentliche Neuerungen: Unterstützung von SSL, NNTP und IMAP
   in der Windows-Version von Claws Mail.
 
@@ -276,45 +278,25 @@ Neu:
   PGP/MIME sowie ergänzt um S/MIME bzw. X.509.
 
 
-Wichtigste Änderungen von Gpg4win 1.9.9 gegenüber 1.9.8
-=======================================================
+Wichtigste Änderungen von Gpg4win 1.9.11 gegenüber 1.9.9
+========================================================
+ Anmerkung: Die Versionsnummer 1.9.10 wurde übersprungen.
 
  - Kleopatra:
-   Hinweis: [#xxxxxx] markiert im Folgenden die Kleopatra-Fehlermeldungs-Nummer.
-            Details können mit dieser Nummer unter http://bugs.kde.org/ 
-            eingesehen werden.
-     * Im- und Export von *.p12-Dateien korrigiert [#173369;#172716]
-     * Export öffentlicher Zertifikate neben *.asc/*.pem nun auch
-       als *.gpg/*.der Dateien möglich [#172531;#172787]
-     * Zertifikatsimportfilter korrigiert [#173676;#173677]
-     * Signatur-Zertifikatsauswahl auf ausgewähltes Protokoll reduziert [#172786]
-     * Farbe des Signaturprüfdialogs ("nicht genügend Informationen")
-       ist nun gelb anstatt grün [#172350]
-     * bessere Unterstützung des Protokollmodus "automatisch" von GpgOL
-       zur Auswahl von PGP/MIME bzw. S/MIME [#166732]
-     * Passphrase-Änderungen (für OpenPGP-Zertifikate) werden nun gespeichert 
-       [#166139]
+     * pgp-Dateien werden nun als verschlüsselte Dateien erkannt
      * Übersetzungen ergänzt / korrigiert
-       [#170244;#172731;#172732;#172734;#172735]
      * diverse kleinere Stabilitäts- und GUI-Verbesserungen
 
  - GpgOL:
-     * Verifizieren und Entschlüsseln von InlinePGP-Nachrichten korrigiert
-     * Tooltip für Verschlüsseln- und Signieren-Button umbenannt
-     * Warndialog beim Versuch eine leere signierte oder verschlüsselte 
-       Nachricht zu senden 
-     * Weitergeleitete signierte Mails: keine "gpgol000.txt" Datei mehr
-       im Anhang 
+     * Wartezeit beim Senden von signiert oder verschlüsselten Nachrichten
+       mit großem Anhang verkürzt
+     * neuer Dialog mit Möglichkeit zum erneuten Starten von Kleopatra,
+       sofern beim Ausführen von Outlook Kleopatra nicht rechtzeitig 
+       gestartet wurde (Outlook muss dadurch nicht mehr neu gestartet werden).
+     * Funktion zur Re-Migration (Outlook-Mailordner von GpgOL-Informationen
+       bereinigen)
 
- - Backend:
-     * DirMngr unterstützt nun anwenderspezifische Vertrauensdefinitionen für
-       Wurzelzertifkate
-     * DirMngr unterstützt zusätzlich *.der Dateien im Verzeichnis 
-       'trusted-certs'
-     * Umlaute in OpenPGP-Zertifikatsdetails auf Keyservern werden nun 
-       korrekt dargestellt
-
- - Gpg4win Kompendium 3.0.0-beta1 Release (vom 22.10.2008) integriert
+ - Gpg4win Kompendium 3.0.0-beta1 weiter überarbeitet
 
  - Backend und Installer: Es sind viele kleine und mittlere
    Probleme und Fehler behoben worden.

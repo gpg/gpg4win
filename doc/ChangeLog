@@ -1,5 +1,9 @@
 2008-11-12  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
+	* README-BETA-de.txt, README-BETA-en.txt: Updated to 1.9.11.
+
+2008-11-12  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+
 	* manual/gpg4win-compendium-de.tex: Modify section numbering
 	of appendix D and E for hyperlatex. 
 	Add manualinprogress command.
