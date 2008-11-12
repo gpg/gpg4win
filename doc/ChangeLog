@@ -1,3 +1,9 @@
+2008-11-12  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+
+	* website/download.htm4, website/download-de.htm4,
+	  website/template_header.m4, website/gpg4win.css:
+	Updated to 1.9.11. Added 1.9.11 into dowload box.
+
 2008-11-10  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
 	* manual/gpg4win-compendium-de.tex: update some sections in

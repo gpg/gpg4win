@@ -41,7 +41,7 @@ m4_ifdef(`__TMPL_PAGE_TITLE',,`m4_define(`__TMPL_PAGE_TITLE',`Gpg4win - '__TITLE
           </td>
           <td class="center">
             <a href="DLPAGE" class="dlbutton">Download<br> 
-              <span class="version">Gpg4win VERSION (DL_DATE)<br></a>
+              <span class="version">Gpg4win VERSION <small>(DL_DATE)</small><br>Gpg4win 1.9.11 BETA <small>(2008-11-12)</small><br></a>
                 &nbsp;&nbsp;<a href="I18N(`EN', `./package-integrity.html') I18N(`DE', `./package-integrity-de.html')"
                   >SHA1/MD5/OpenPGP-Sig</a>
       </td></tr>

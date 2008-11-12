@@ -32,7 +32,7 @@ kann hier herunter geladen werden:</p>
   haben.  Danach folgen Sie den Hinweisen zur Installation
   im <a href="/handbuecher/einsteiger.html">Handbuch</a>.
 
-<h2>Gpg4win 1.9.9-BETA</h2>
+<h2>Gpg4win 1.9.11-BETA</h2>
 
 <p>Sie können eine BETA-Version der nächsten Generation hier herunterladen
 (diese Version wird <b>nicht für den produktiven Einsatz empfohlen</b> und es wird dringend
@@ -41,10 +41,14 @@ href="http://wald.intevation.org/plugins/scmsvn/viewcvs.php/trunk/doc/README-BET
 zur BETA-Version</a> zu lesen bevor man die BETA-Verstion testet):
 </p>
 
-<a href="http://ftp.gpg4win.org/Beta/gpg4win-1.9.9-beta.exe" class="dlbutton2">gpg4win&nbsp;1.9.9 BETA<br>
-<span class="version">Größe: 45 MByte<br></span></a> 
+<a href="http://ftp.gpg4win.org/Beta/gpg4win-1.9.11-beta.exe" class="dlbutton2">gpg4win&nbsp;1.9.11 BETA<br>
+<span class="version">Größe: 32 MByte<br></span></a> 
 
-<p>Signaturen und Quelltexte finden sich hier: <a href="http://ftp.gpg4win.org/Beta/">http://ftp.gpg4win.org/Beta/</a>.
+<p>Signaturen und Quelltexte finden sich hier: <a
+    href="http://ftp.gpg4win.org/Beta/">http://ftp.gpg4win.org/Beta/</a></p>
+<p>Anmerkung: Im Gpg4win-light-Installer ist die
+Zertifikatsverwaltung Kleopatra und das Gpg4win Kompendium
+bzw. Einsteigerhandbuch <b>nicht</b> enthalten.</p>
 
 <h2>Gpg4win Kompendium 3.0.0-BETA1</h2>
 
