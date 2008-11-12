@@ -458,14 +458,15 @@ gpg4win-$(VERSION).exe: gpg4win.nsi $(common_nsi) stamps/stamp-final \
                         README.en.txt \
 			README.de.txt installer-options.ini versioninfo.txt
 	$(MAKENSIS) -V3 -DBUILD_DIR=`pwd` -DTOP_SRCDIR=$(top_srcdir) \
-		-DSRCDIR=$(srcdir) $(srcdir)/gpg4win.nsi
+           -DSRCDIR=$(srcdir) $(EXTRA_MAKENSIS_FLAGS) $(srcdir)/gpg4win.nsi
 
 gpg4win-light-$(VERSION).exe: gpg4win.nsi $(common_nsi) stamps/stamp-final \
                         g4wihelp.dll gpgwrap.exe gpgwrap-2.exe kleowrap.exe \
                         README.en.txt \
 			README.de.txt installer-options.ini versioninfo.txt
 	$(MAKENSIS) -V3 -DBUILD_DIR=`pwd` -DTOP_SRCDIR=$(top_srcdir) \
-		-DSRCDIR=$(srcdir) -DGPG4WIN_LIGHT=1 $(srcdir)/gpg4win.nsi
+           -DSRCDIR=$(srcdir) $(EXTRA_MAKENSIS_FLAGS) \
+           -DGPG4WIN_LIGHT=1 $(srcdir)/gpg4win.nsi
 
 gpg4win-$(VERSION).wix: gpg4win.nsi $(common_nsi) stamps/stamp-final \
 			gpgwrap.exe gpgwrap-2.exe kleowrap.exe README.en.txt \
@@ -494,7 +495,7 @@ stamps/stamp-dist-self: versioninfo.txt
 gpg4win-src-$(VERSION).exe: gpg4win-src.nsi $(common_nsi) stamps/stamp-final \
                             stamps/stamp-dist-self installer-options.ini
 	$(MAKENSIS) -V3 -DBUILD_DIR=`pwd` -DTOP_SRCDIR=$(top_srcdir) \
-		-DSRCDIR=$(srcdir) $(srcdir)/gpg4win-src.nsi
+	  -DSRCDIR=$(srcdir) $(EXTRA_MAKENSIS_FLAGS) $(srcdir)/gpg4win-src.nsi
 
 g4wihelp.dll: g4wihelp.c exdll.h
 	$(CC) -I. -shared -O2 -o g4wihelp.dll $(srcdir)/g4wihelp.c \

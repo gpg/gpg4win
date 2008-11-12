@@ -44,8 +44,8 @@ Section "-gpg4win" SEC_gpg4win
   # WriteRegStr HKLM "Software\GNU\${PRETTY_PACKAGE_SHORT}" "Install Directory" $INSTDIR
 
   # We used to determine the language using a Registry entry.
-  # Although we don't want to delete the user's Lang Resgistry Setting
-  # becuase he might have have selected a different language than his
+  # Although we don't want to delete the user's Lang Registry Setting
+  # because he might have have selected a different language than his
   # default.  We delete the global Lang of the installation.
   DeleteRegValue HKLM "Software\GNU\GnuPG" "Lang" 
 

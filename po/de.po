@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gpg4win 2.0\n"
 "Report-Msgid-Bugs-To: gpg4win-devel@wald.intevation.org\n"
-"POT-Creation-Date: 2008-11-11 17:52+0100\n"
-"PO-Revision-Date: 2008-10-27 20:16+0100\n"
+"POT-Creation-Date: 2008-11-11 18:53+0100\n"
+"PO-Revision-Date: 2008-11-12 10:39+0100\n"
 "Last-Translator: Werner Koch <wk@g10code.com>\n"
 "Language-Team: German <translation-team-de@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -371,7 +371,7 @@ msgstr "Ein möglicherweise laufender DirMngr wird jetzt automatisch beendet."
 #: src/inst-claws-mail.nsi:26
 msgctxt "T_SetDefaultClient"
 msgid "Do you want to make Claws Mail your default mail client?"
-msgstr ""
+msgstr "Möchten Sie Claws-Mail als Ihr E-Mail-Standardprogramm auswählen?"
 
 #: src/inst-claws-mail.nsi:82
 msgctxt "DESC_SEC_claws_mail"
@@ -409,14 +409,12 @@ msgctxt "DESC_SEC_gpa"
 msgid "GNU Privacy Assistant"
 msgstr ""
 "GNU Privacy Assistent (GPA) ist ein Programm zum Verwalten von Schlüsseln "
-"welches für mehrere Plattformen verfügbar ist.  Es kann zusammen oder "
-"anstatt von WinPT benutzt werden."
+"welches für mehrere Plattformen verfügbar ist."
 
 #: src/inst-gpa.nsi:75
-#, fuzzy
 msgctxt "DESC_Menu_gpa"
 msgid "Run the GNU Privacy Assistant key management tool."
-msgstr "Das Schlüsselverwaltungsprogramm Kleopatra aufrufen."
+msgstr "Das Schlüsselverwaltungsprogramm GPA aufrufen."
 
 #: src/inst-gpg4win.nsi:70
 msgctxt "DESC_Menu_gpg4win_readme"
@@ -469,14 +467,14 @@ msgstr ""
 "GnuPG für Outlook (GpgOL) is eine Erweiterung für Outlook 2003, die "
 "verwendet wird um Nachrichten mit OpenPGP oder S/MIME zu verschlüsseln."
 
-#: src/inst-kleopatra.nsi:304
+#: src/inst-kleopatra.nsi:302
 msgctxt "DESC_SEC_kleopatra"
 msgid "Keymanager for OpenPGP and X.509 and common crypto dialogs."
 msgstr ""
 "Schlüsselmanager für OpenPGP und X.509 (S/MIME) sowie einheitliche "
 "Benutzerführung für alle Krypto-Operationen."
 
-#: src/inst-kleopatra.nsi:308
+#: src/inst-kleopatra.nsi:306
 msgctxt "DESC_Menu_kleopatra"
 msgid "Run the Kleopatra key management tool."
 msgstr "Das Schlüsselverwaltungsprogramm Kleopatra aufrufen."

@@ -94,11 +94,12 @@
 
 # Select the best compression algorithm available.  The dictionary
 # size is the default (8 MB). 
+!ifndef DISABLE_LZMA
 !ifndef SOURCES
 SetCompressor lzma
 # SetCompressorDictSize 8
 !endif
-
+!endif
 
 # Now include the generic parts.
 !define HAVE_STARTMENU

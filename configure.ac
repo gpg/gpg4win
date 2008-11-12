@@ -25,8 +25,8 @@ min_automake_version="1.9.3"
 # Set my_issvn to "yes" for non-released code.  Remember to run an
 # "svn up" and "autogen.sh" right before creating a distribution.
 # Right after a release the make target "copy-news" is to be called!
-m4_define([my_version], [1.9.11-beta])
-m4_define([my_issvn], [no])
+m4_define([my_version], [1.9.12])
+m4_define([my_issvn], [yes])
 
 m4_define([svn_revision], m4_esyscmd([echo -n $( (svn info 2>/dev/null \
           ||echo 'Revision: 0')|sed -n '/^Revision:/ s/[^0-9]//gp'|head -1)]))
@@ -126,6 +126,17 @@ AC_ARG_ENABLE(light-installer,
                     build_light_installer=yes)
 AC_MSG_RESULT($light_installer)
 AM_CONDITIONAL(BUILD_LIGHT_INSTALLER, test "$build_light_installer" = yes)
+
+AC_ARG_ENABLE(fast-makensis,
+    AC_HELP_STRING([--enable-fast-makensis],
+                   [Use a less efficient compressor to speed up building]),
+                    use_fast_makensis=$enableval,
+                    use_fast_makensis=no)
+AC_MSG_RESULT($light_installer)
+if test "$use_fast_makensis" = yes; then
+  EXTRA_MAKENSIS_FLAGS="${EXTRA_MAKENSIS_FLAGS} -DDISABLE_LZMA=1"
+fi
+AC_SUBST(EXTRA_MAKENSIS_FLAGS)
 
 
 # Required tools.
