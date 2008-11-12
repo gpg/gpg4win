@@ -50,9 +50,6 @@
 
 2008-11-10  Marcus Brinkmann  <marcus@g10code.com>
 
-	* src/installer-finish.nsi (no_quick_launch_uninstall): Clean up
-	GNU directory, if empty.
-
 	* src/inst-gpa.nsi (DESC_Menu_Gpa): Remove winpt reference.
 
 	* src/installer.nsi: Give German translation for language setup.
