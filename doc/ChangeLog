@@ -1,5 +1,13 @@
 2008-11-12  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
+	* website/download.htm4, website/download-de.htm4:
+	Added link to Gpg4win compendium (html version)
+	* manual/gpg4win-compendium-de.tex:
+	Changed xnames of parts (conflict with 'einsteiger.html' 
+	manual). Added manualinprogress for html footer.
+
+2008-11-12  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+
 	* README-BETA-de.txt, README-BETA-en.txt: Updated to 1.9.11.
 
 2008-11-12  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
