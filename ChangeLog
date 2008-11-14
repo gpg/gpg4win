@@ -1,3 +1,7 @@
+2008-11-14  Werner Koch  <wk@g10code.com>
+
+	* packages/packages.current: Update GpgOL.
+
 2008-11-12  Werner Koch  <wk@g10code.com>
 
 	* configure.ac: Add option --enable-fast-makensis.
