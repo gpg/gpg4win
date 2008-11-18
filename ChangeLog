@@ -1,3 +1,7 @@
+2008-11-18  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+
+	* packages/packages.current: Update kleopatra and kdelibs.
+
 2008-11-16  Colin Leroy  <colin@colino.net>
 
 	* packages/packages.current: Update Claws Mail.
