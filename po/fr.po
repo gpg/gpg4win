@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ngoinabox\n"
 "Report-Msgid-Bugs-To: gpg4win-devel@wald.intevation.org\n"
-"POT-Creation-Date: 2008-11-11 18:53+0100\n"
+"POT-Creation-Date: 2008-11-18 18:51+0100\n"
 "PO-Revision-Date: 2008-03-10 16:46+0100\n"
 "Last-Translator: Fabian Rodriguez <magicfab@member.fsf.org>\n"
 "Language-Team: FRENCH <aep.lists@it46.se>\n"
@@ -20,12 +20,12 @@ msgctxt "T_AlreadyRunning"
 msgid "An instance of this installer is already running."
 msgstr "Une instance de cet installateur fonctionne déjà."
 
-#: src/gpg4win.nsi:114
+#: src/gpg4win.nsi:115
 msgctxt "T_WelcomeTitleGpg4win"
 msgid "Welcome to the installation of Gpg4win"
 msgstr "Bienvenue à l'installation de Gpg4win"
 
-#: src/gpg4win.nsi:118
+#: src/gpg4win.nsi:119
 msgctxt "T_AboutGpg4win"
 msgid ""
 "GnuPG is GNU's tool for secure communication and data storage. It can be "
@@ -39,17 +39,17 @@ msgstr ""
 "est conforme avec l'OpenPGP proposé Internet standard as described in "
 "RFC2440."
 
-#: src/gpg4win.nsi:124
+#: src/gpg4win.nsi:125
 msgctxt "T_AboutGpg4winVersion"
 msgid "This is Gpg4win version ${VERSION}"
 msgstr "This is Gpg4win version ${VERSION}"
 
-#: src/gpg4win.nsi:127
+#: src/gpg4win.nsi:128
 msgctxt "T_AboutGpg4winFileVersion"
 msgid "file version ${PROD_VERSION}"
 msgstr "file version ${PROD_VERSION}"
 
-#: src/gpg4win.nsi:130
+#: src/gpg4win.nsi:131
 msgctxt "T_AboutGpg4winReleaseDate"
 msgid "release date ${_BUILD_ISODATE}"
 msgstr "release date ${_BUILD_ISODATE}"

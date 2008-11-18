@@ -1,3 +1,10 @@
+2008-11-18  Werner Koch  <wk@g10code.com>
+
+	Release 1.9.12.
+
+	* patches/gpgme-1.1.7/03-error-parsing.patch: New.
+	* Makefile.am (EXTRA_DIST): Add patch.
+
 2008-11-18  Colin Leroy  <colin@colino.net>
 
 	* packages/packages.current: Update Claws-Mail Vcalendar
