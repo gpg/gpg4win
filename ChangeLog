@@ -1,5 +1,10 @@
 2008-11-18  Colin Leroy  <colin@colino.net>
 
+	* packages/packages.current: Update Claws-Mail Vcalendar
+	(fixes build)
+
+2008-11-18  Colin Leroy  <colin@colino.net>
+
 	* packages/packages.current: Update Claws-Mail again (fix
 	crash when browsing for attachments).
 
