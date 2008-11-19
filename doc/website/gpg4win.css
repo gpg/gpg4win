@@ -101,7 +101,6 @@ TD {
 
 .dlbutton:hover {
     background-color: #fdd347;
-    cursor: pointer;
 }
 
 .dlbutton2 {
@@ -118,7 +117,6 @@ TD {
 
 .dlbutton2:hover {
     background-color: #fdd347;
-    cursor: crosshair;
 }
 
 /* STRUCTURE ELEMENTS */

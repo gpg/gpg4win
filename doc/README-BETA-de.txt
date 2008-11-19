@@ -11,7 +11,7 @@ Wichtige Informationen zum Einsatz von Gpg4win 1.9-BETA
   neue Version kennenzulernen und Verbesserungsvorschläge
   einzubringen.
 
-Stand: Gpg4win-1.9.11 (20081112)
+Stand: Gpg4win-1.9.12 (20081118)
 
 Hier finden sich wichtige Informationen die bei der
 Entscheidung helfen sollen, ob Gpg4win 1.9 schon für
@@ -24,8 +24,16 @@ Gpg4win 2.0 an neuer Funktionalität zu erwarten ist.
 Die 1.9er Versionen sind der Beta-Test-Zyklus. Ist er
 abgeschlossen wird Version 2.0 freigegeben.
 
-Änderungsinformationen gegenüber den Vorherigen
+Änderungsinformationen gegenüber den vorherigen
 Beta-Versionen finden sich am Ende dieses Dokumentes.
+
+Hilfe bei der Benutzung von Gpg4win bietet Ihnen
+das Gpg4win-Kompendium. Sie finden es nach der
+Installation von Gpg4win-1.9.x im Gpg4win-Startmenü
+unter 'Dokumentation' oder direkt online unter:
+
+  http://gpg4win.de/handbuecher/gpg4win-compendium-de.html
+
 
 Rückmeldung erwünscht!
   Bitte lassen Sie uns wissen ob sie Gpg4win 1.9
@@ -41,34 +49,17 @@ Rückmeldung erwünscht!
 Inhalt dieses Dokumentes:
 
 * Wichtige Hinweise zur vorliegenden Version
-* Wichtige Hinweise zur Verwendung von S/MIME
 * Migration
 * Wichtigste Änderungen von Gpg4win 1.9 gegenüber 1.1
-* Wichtigste Änderungen von Gpg4win 1.9.11 gegenüber 1.9.9
+* Wichtigste Änderungen von Gpg4win 1.9.12 gegenüber 1.9.11
 
 
 Wichtige Hinweise zur vorliegenden Version
 ==========================================
 
 - Installationpaket ca. 32 MByte:
-  Derzeit sind die Programme mit umfangreichen
-  Debug-Informationen ausgestattet, so dass bei auftauchen
-  eines Fehlers unmittelbar eine Fehleranalyse
-  durchgeführt werden kann. Für Version 2.0
-  werden diese Debug-Informationen wieder entfernt
-  und das Installationpaket deutlich kleiner (knapp 10 MByte,
-  eventuell auch weniger).
-
-- An sich selbst verschlüsseln:
-  Es ist unbedingt empfehlenswert, dass Sie Ihre verschlüsselten
-  OpenPGP- und S/MIME-Emails zusätzlich mit Ihrem Zertifikat
-  an sich selbst verschlüsseln. Nur so können Sie diese Nachrichten
-  später auch wieder entschlüsseln.
-  Dazu in Kleopatra unter "Extras->GnuPG-Backend einrichten..." 
-  jeweils in die Textfelder:
-  "GPG for S/MIME: Auch an NAME verschlüsseln" und
-  "GPG for OpenPGP: Auch an NAME verschlüsseln"
-  den Fingerprint Ihres jeweiligen Zertifikates einfügen.
+  Das Paket ist noch nicht bzgl. Größe optimiert.
+  Es wird angestrebt den Umfang mit der Zeit zu reduzieren.
 
 - Verwendung von Outlook Plugin "GpgOL":
 
@@ -86,124 +77,30 @@ Wichtige Hinweise zur vorliegenden Version
     aber es kann trotzdem noch passieren.
     Eine Lösung hierfür ist in Arbeit.
 
-  * E-Mails werden auf dem Server in Microsoft-spezifischen
-    Formaten gespeichert und können von anderen E-Mail-Programmen
-    dann nicht mehr interpretiert und die Inhalte angezeigt werden.
-    Eine Re-Migrations-Lösung bietet GpgOL im Outlook-Menü 
-    "Extras->GpgOL Eigenschaften aus diesem Ordner enfernen".
-    Detail dazu im Gpg4win-Kompendium (Anhang E).
-
-
-Wichtige Hinweise zur Verwendung von S/MIME
-===========================================
-
-S/MIME ist ein für Gpg4win 2.0 neu hinzukommendes
-E-Mail Verschlüsselungsverfahren.
-
-Grundsätzlich ist es empfehlenswert sich mit
-dem Konzept von S/MIME auseinanderzusetzen bevor
-man es einsetzt.
-
-Konfiguration für S/MIME:
-Für die Inbetriebnahme sind folgende Schritte
-durchzuführen.
-
-- S/MIME für GpgOL einschalten:
-  Unter Outlook im Menü Extras->Optionen, Reiter "GpgOL"
-  muss S/MIME explizit eingeschaltet werden.
-  Beachten Sie den Warnhinweis, der darauf hin erscheint.
-  Achtung: In der aktuellen Beta muss S/MIME auch für eine korrete Überprüfung
-  einer inlinePGP-Signatur eingeschaltet sein. Dieses Problem ist bekannt
-  und an einer Lösung wird gearbeitet.
-
-- Neue S/MIME-Schlüssel herstellen:
-  Unter Kleopatra im Menü Datei->Neues Zertifikat wählen Sie
-  "X.509" aus. Sie werden mit Hilfe des Assisstenten durch die
-  Zertifikatserstellung geleitet.
-  Beachten Sie, dass Sie als Ergebnis nur eine Zertifikats-Anfrage
-  (p10-Datei) erhalten. Sie müssen diese anschließend an Ihre
-  Zertifizierungsstelle weiterleiten, um Ihr neues X.509-Zertifikat
-  zu erhalten.
-
-- S/MIME-Zertifikatskette für persönlichen Schlüssel importieren:
-  Die zum geheimen Schlüssel zugehörige Zertifikatskette
-  als P7C-Datei importieren (Menü Datei->Zertifikate importieren).
-  Es werden auch andere Suffixes für solche Dateien verwendet.
-  Typischerweise besteht die Kette aus dem Wurzel-Zertifkat,
-  einem CA-Zertifikat und dem persönlichen Zertifikat.
-
-- Geheimen S/MIME-Schlüssel importieren:
-  Den persönlichen geheimen Schlüssel als P12-Datei
-  über Kleopatra importieren (Menü Datei->Zertifikate
-  importieren).
-
-- S/MIME-Zertifkate der E-Mail Empfänger importieren:
-  Alle sonstigen wichtigen Zertifikate (z.B. von
-  Kommunikationspartner) auf die gleiche Weise importieren;
-  am besten jeweils mit der kompletten Kette.
-
-- Wurzelzertifikate als vertrauenswürdig markieren:
-  Wenn Sie im Kleopatra-Menü "Extras->GnuPG Backend einrichten"
-  unter "GpgAgent" die Option "erlaube Aufrufern Schlüssel als
-  'vertrauenswürdig' zu markieren" aktivieren, so werden Sie
-  beim Gebrauch eines bisher nicht vertrauenswürdig
-  eingestuften Wurzel-Zertifkats gefragt, ob Sie es
-  nun als vertrauenswürdig einstufen wollen.
-  Beachten Sie, dass der gpg-agent neu gestartet
-  werden muss, z.B: durch ausloggen und wieder einloggen.
-
-- Systemweites Vetrauen für Wurzel-Zertifkate für DirMngr aussprechen:
-  Die entsprechenden Wurzel-Zertifikate müssen als DER-Dateien
-  mit Dateinamen-Endung ".crt" oder ".der" im Verzeichnis
-  %ALLUSERSPROFILE%\Anwendungsdaten\GNU\etc\dirmngr\trusted-certs\
-  abgelegt werden.
-
-- Probleme mit Sperrlisten (CRLs):
-  Das S/MIME Verfahren beinhaltet die Verwendung von
-  Sperrlisten, um die Gültigkeit von Zertifkaten zu prüfen.
-
-  Hierbei kann es zu verschiedenen Problemen kommen, die
-  noch nicht alle mit aussagekräftigen Fehlermeldungen
-  ausgestattet sind.
-
-  Solle also eine S/MIME Operation (egal welche) nicht funktionieren,
-  schalten sie testweise die Verwendung von Sperrlisten aus
-  und prüfen Sie ob das Problem dann nicht mehr auftritt ist.
-  Berichten Sie anschliessen Ihre Beobachtung an das Gpg4win
-  Entwicklungs-Team, um eine Lösung zu finden.
-
-  Man kann die CRL-Prüfungen wie folgt ausschalten:
-  Im Kleopatra-Menü "Extras->GnuPG Backend einrichten"
-  unter "GPG for S/MIME" die Option "Niemals eine CRL konsultieren"
-  aktivieren. Danach neu einloggen, um die Änderung zu aktivieren.
-
-- DirMngr Konfigurations-Dialog nicht editierbar:
-  Der Konfigurationsdialog unter "DirectoryManager" im GnuPG Backend
-  ist nicht editierbar, da deren Einstellungen nur vom Systemadministrator
-  in den dazugehörigen systemweiten Konfigurations-Textdateien
-  vorgenommen werden kann. Gleiches gilt für die Proxy-Einstellung im Menü
-  "Einstellungen->Kleopatra einrichten..." unter "S/MIME-Prüfung".
-
 
 Migration
 =========
 
 * Von einer älteren Gpg4win 1.9er Version:
 
-  Ist eine alte Version der 1.9er vorher installiert
-  gewesen, so muss unbedingt ein Neustart des Systems
-  erfolgen wenn die Installationsroutine dies (durch Vorauswahl)
-  empfohlen hat.
-  Ansonsten wird es zwangsläufig zu Fehlfunktionen
-  bei Verschlüsselungsoperationen kommen.
+  Ist eine alte Gpg4win-1.9.x Version vorher installiert
+  gewesen, deinstallieren Sie diese bitte, bevor Sie die neue
+  Gpg4win-Version installieren.
+
+  Starten Sie Ihr System neu, sofern Sie nach der Installation dazu 
+  aufgefordert werden. Andernfalls wird es zwangsläufig 
+  zu Fehlfunktionen bei Verschlüsselungsoperationen kommen.
 
 * Von einer Gpg4win 1.X  oder sonstigen GnuPG Version:
 
-  Sollte Gpg4win 1.x oder irgendeine andere GnuPG Installation
-  auf Ihrem System installiert gewesen sein, so muss ggf. noch
-  zurückgebliebene Registry-Eintrage entfernt werden:
-  HKCU\Software\GNU\GnuPG\gpgProgramm
-  HKLM\Software\GNU\GnuPG\gpgProgramm
+  Es wird dingend empfohlen zunächst Gpg4win-1.1.3 zu
+  deinstallieren bevor anschließend Gpg4win-2.0.0 installiert wird.
+
+  Starten Sie Ihr System neu, sofern Sie nach der Installation dazu 
+  aufgefordert werden. Andernfalls wird es zwangsläufig 
+  zu Fehlfunktionen bei Verschlüsselungsoperationen kommen.
+
+Beachten Sie auch die Migrationshinweise im Anhang des Gpg4win Kompendiums.
 
 
 Wichtigste Änderungen von Gpg4win 1.9 gegenüber 1.1
@@ -232,9 +129,8 @@ Aktualisiert:
   * Wesentliche Neuerungen sind:
 
     - Unterstützung von OpenPGP/MIME:
-      Bisher wurde nur das sog. "inline-PGP" unterstützt.
-      Nun können unter anderem auch
-      Anhänge direkt verarbeitet werden.
+      Bisher wurde nur das sog. "inline-PGP" unterstützt. Nun
+      können unter anderem auch Anhänge direkt verarbeitet werden.
 
     - Unterstützung von S/MIME
       GpgOL unterstützt nun das auf X.509 basierende
@@ -278,25 +174,22 @@ Neu:
   PGP/MIME sowie ergänzt um S/MIME bzw. X.509.
 
 
-Wichtigste Änderungen von Gpg4win 1.9.11 gegenüber 1.9.9
-========================================================
- Anmerkung: Die Versionsnummer 1.9.10 wurde übersprungen.
+Wichtigste Änderungen von Gpg4win 1.9.12 gegenüber 1.9.11
+=========================================================
 
  - Kleopatra:
-     * pgp-Dateien werden nun als verschlüsselte Dateien erkannt
+     * Beglaubigen von OpenPGP-Zertifikaten korrigiert
+     * Entschlüsseln von *.pgp-Dateien korrigiert
      * Übersetzungen ergänzt / korrigiert
      * diverse kleinere Stabilitäts- und GUI-Verbesserungen
 
  - GpgOL:
-     * Wartezeit beim Senden von signiert oder verschlüsselten Nachrichten
-       mit großem Anhang verkürzt
-     * neuer Dialog mit Möglichkeit zum erneuten Starten von Kleopatra,
-       sofern beim Ausführen von Outlook Kleopatra nicht rechtzeitig 
-       gestartet wurde (Outlook muss dadurch nicht mehr neu gestartet werden).
-     * Funktion zur Re-Migration (Outlook-Mailordner von GpgOL-Informationen
-       bereinigen)
+     * Wartezeit beim Signieren/Verschlüsseln und
+       Verifizieren/Entschlüsseln von Nachrichten mit großem Anhang
+       deutlich verkürzt
 
- - Gpg4win Kompendium 3.0.0-beta1 weiter überarbeitet
+ - Gpg4win Kompendium:
+     * weitere kleinere Überarbeitungen
 
- - Backend und Installer: Es sind viele kleine und mittlere
+ - Backend und Installer: Es sind einige kleine und mittlere
    Probleme und Fehler behoben worden.

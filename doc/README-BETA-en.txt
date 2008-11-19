@@ -9,7 +9,7 @@ Important Hints for Using Gpg4win 1.9-BETA
   experienced users or administrators to learn
   about the upcoming version and suggest changes.
 
-Status: Gpg4win-1.9.11 (20081112)
+Status: Gpg4win-1.9.12 (20081118)
 
 This text covers information that are
 intended to help judging whether Gpg4win 1.9
@@ -23,6 +23,16 @@ beta-cycle. Once this cycle is finished, version
 
 For changes compared to previous beta release see
 bottom of this document.
+
+Read the Gpg4win compendium to get help for using
+Gpg4win. Note: It's currently in German only!
+A translation in English is scheduled.
+You can find the compendium (after the installation
+of Gpg4win-1.9.x) in the Gpg4win start 
+menu -> 'Dokumentation' or directly online:
+
+  http://gpg4win.de/handbuecher/gpg4win-compendium-de.html
+
 
 Feedback welcome!
   Please let us know whether your tests of Gpg4win 1.9
@@ -38,34 +48,17 @@ Feedback welcome!
 Contents of this document:
 
 * Important hints for present version
-* Important hints for using S/MIME
 * Migration
 * Most important changes in Gpg4win 1.9 compared to 1.1
-* Most important changes in Gpg4win 1.9.11 compared to 1.9.9
+* Most important changes in Gpg4win 1.9.12 compared to 1.9.11
 
 
 Important hints for present version
 ===================================
 
 - Installation package ca. 32 MByte:
-  The tools curently contain comprehensive debug information.
-  This helps to analyse problems as they occur.
-  For version 2.0 this debug information will be skipped
-  and the installation package is expected to shrink
-  to 10 MByte or even less.
-
-- Manuals not updated:
-  The manual "Gpg4win for Novices" is not updated to the new
-  tools yet.
-
-- Encrypt to self:
-  It is highly recommended to configure your certificates for
-  OpenPGP and S/MIME so that emails are always also encrypted
-  for yourself.
-  For this, enter the GnuPG configuration dialog of Kleopatra
-  and insert the fingerprints of your certificates for
-  "GPG for S/MIME: encrypt to user ID NAME as well" and
-  "GPG for OpenPGP: encrypt to user ID NAME as well".
+  The installer isn't optimzed concerning package size.
+  It is aspired to shrink the size in the next time.
 
 - Using the Outlook Plugin "GpgOL":
 
@@ -82,103 +75,14 @@ Important hints for present version
     the probability of this to happen, but not eliminate the issue.
     A solution is being worked on.
 
-  * Emails will be stored on the server in Microsoft specific
-    format and thus not be readable via other email programs.
-    GpgOL provides a re-migration solution in the "tools"
-    menu of Outlook to remove GpgOL information of the selected 
-    mail folder.
-
-
-Important hints for using S/MIME
-================================
-
-The email encryption method S/MIME is added for
-Gpg4win 2.0.
-
-It is recommended to make yourself familiar with
-the concept of S/MIME before using it.
-
-Configuration of S/MIME:
-For making S/MIME ready to work, you need to follow
-these steps.
-
-- Enable S/MIME for GpgOL:
-  In Outlook menu Extras->Options, tab "GpgOL"
-  you have to explicitely enable S/MIME support.
-  Please consider the warning dialog seriously.
-  Note: In the current BETA version you have to enable 
-  the S/MIME support to get a correct verification of 
-  inlinePGP signatures. It's a known issue and will be 
-  solved in one of the next versions.
-
-- Create new S/MIME certificate:
-  In Kleopatra menu File->New Certificates choose "X.509".
-  The wizard will help you in the creation process.
-  Please note that your result is a certificate request only.
-  You have to send this request to your CA to get your new
-  X.509 certificate.
-
-- Import S/MIME certificate chain for personal key:
-  The certificate chain the belongs to your secret key
-  is to be imported as P7C file (other suffixes for
-  such files do occur as well).
-  See menu File->Import certificates.
-  Typically the chain consists of a root certificate,
-  a CA certificate and your personal certificate.
-
-- Import secret S/MIME key:
-  The personal secret key can be imported as P12 file
-  via Kleopatra (menu File->Import certificates).
-
-- Import S/MIME certificate of email recipient:
-  Now import the certificates of your email recipients
-  in the same way, ideally also always including the
-  complete chain.
-
-- Mark root certifactes as trusted:
-  If you activate the option "allow clients to mark keys as
-  trusted" in the GnuPG Backend configuration (section "Gpg Agent")
-  reachable via Kleopatra menu, then you will be asked whether 
-  you want to trust a root certificate at the moment of use.
-  Please note that you need to restart gpg-agent to
-  get the configuration change into effect.
-  This is done e.g. by logging out an in again.
-
-- Mark root certificates as trusted for DirMngr:
-  Place the respective root certificates as DER files
-  (with filename suffix ".crt" or ".der" into the directory
-  %ALLUSERSPROFILE%\Application Data\GNU\etc\dirmngr\trusted-certs\
-
-- Problems with certificate revocation lists (CRLs):
-  The S/MIME concept considers the use of revocation lists
-  to check validity of a certificate.
-
-  This check may fail due to various problems which do not
-  all result in a helpful error message yet.
-
-  In case that a S/MIME operation does not work as expected,
-  you may switch of CRL checks temporarily and try again whether the
-  operation works now.
-  If so, please report your obervation to the Gpg4win development
-  team or the users mailing list.
-
-  CRL checks are switched this way:
-  Activate "GPG for S/MIME: never consult a CRL" in
-  "Configure GnuPG Backend" dialog of Kleopatra.
-  Then log out and in again to activate your change.
-
-- DirMngr configuration dialog read-only:
-  The dialog of GnuPG Backend->Directory Manager is not editable
-  because the configurations need to be done by system administrator
-  in the global configuration text files. 
-  The same applies to proxy settings in Kleopatra configuration
-  dialog, page S/MIME-Validity.
-
 
 Migration
 =========
 
 * From an older Gpg4win 1.9 Version:
+
+  Please uninstall the older Gpg4win-1.9.x version
+  before you installed the new version.
 
   If there was an older 1.9 version installed, then
   it is mandadory to reboot the system in case the
@@ -188,11 +92,14 @@ Migration
 
 * From a Gpg4win 1.X or other GnuPG Version:
 
-  In case you have installed Gpg4win 1.x or any other
-  GnuPG Installation on your system, then you might need to
-  remove these registry entries:
-  HKCU\Software\GNU\GnuPG\gpgProgramm
-  HKLM\Software\GNU\GnuPG\gpgProgramm
+  It's very important to uninstall the older Gpg4win 1.x
+  version before you start the installation of Gpg4win 1.9.x.
+
+  Reboot the system in case the installation routine
+  demands so. Else you will run into major errors during 
+  cryptographic operations.
+
+Note the migration hints in the Gpg4win Compendium (see appendix).
 
 
 Most important changes in Gpg4win 1.9 compared to 1.1
@@ -263,20 +170,18 @@ New:
   and PGP/MIME and new texts for S/MIME and X.509.
 
 
-Most important changes in Gpg4win 1.9.11 compared to 1.9.9
-==========================================================
- Note: The version number 1.9.10 was skiped.
+Most important changes in Gpg4win 1.9.12 compared to 1.9.11
+===========================================================
 
  - Kleopatra:
-     * pgp files are identified as encrypted files
+     * certify OpenPGP certificates improved
+     * decrypt of *.pgp files corrected
      * translations completed 
      * several minor and medium improvements
 
  - GpgOL:
-     * latency reduced if sending signed or encrypted messages with 
-       large attachments
-     * new dialog to restart Kleopatra if Outlook/GpgOL can not start 
-       Kleopatra timely
+     * latency improved for sign/encrypt and verify/decrypt 
+       messages with large attachments
 
  - Gpg4win Compendium 3.0.0-beta1 reworked
 
