@@ -1,3 +1,8 @@
+2008-11-19  Colin Leroy  <colin@colino.net>
+
+	* packages/packages.current: Update Claws-Mail Vcalendar
+	(replace broken tarball)
+
 2008-11-18  Werner Koch  <wk@g10code.com>
 
 	Release 1.9.12.
