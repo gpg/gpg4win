@@ -1,3 +1,7 @@
+2008-11-20  Werner Koch  <wk@g10code.com>
+
+	* packages/packages.current: Update GnuPG.
+
 2008-11-19  Colin Leroy  <colin@colino.net>
 
 	* packages/packages.current: Update Claws-Mail Vcalendar

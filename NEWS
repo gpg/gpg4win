@@ -6,6 +6,23 @@
 Noteworthy changes in version 1.9.13
 -------------------------------------------------
 
+(en) This is a BETA version of the new Gpg4win/2 architecture.
+     This version shall not be used in a production environment. 
+(de) Dies ist eine BETA Version der neuen Gpg4win/2 Architektur.
+     Diese Version soll nicht in einer Produktivumgebung
+     eingesetzt werden.
+
+~~~~~~~~~~~~~~~
+GnuPG:        2.0.10-svn4880
+DirMngr:      1.0.3-svn310
+Kleopatra:    20081117
+GPA:          0.8.0
+GpgOL:        0.10.17
+GpgEX:        0.9.1
+Claws-Mail:   3.6.1cvs32
+Kompendium:   3.0.0-beta
+~~~~~~~~~~~~~~~
+
 
 Noteworthy changes in version 1.9.12 (2008-11-18)
 -------------------------------------------------
