@@ -4162,7 +4162,8 @@ Lösen können Sie dieses Problem, in dem Sie den Outlook-internen
 (gecachten) Plugin-Pfad zurücksetzen.
 Löschen Sie dazu bitte folgende Datei:\\
 \Filename{\%APPDATA\%\back{}Lokale
-Einstellungen\back{}Anwendungsdaten\back{}Microsoft\back{}Outlook\back{}\\ extend.dat}
+Einstellungen\back{}Anwendungsdaten\back{}Microsoft\back{}Outlook\back{}\T\\ 
+extend.dat}
 
 Dabei sollte Outlook natürlich nicht laufen. Anschließend starten Sie
 Outlook erneut. Outlook und GpgOL sollte nun problemlos starten.
@@ -4226,7 +4227,7 @@ Dafür werden Sperrlisten von den Ausgabestellen der Zertifikate
 zwischengespeichert.
 
 Abgelegt werden diese Sperrlisten unter:\newline
-\Filename{C:\back{}Dokumente und Einstellungen\back{}LocalService\back{}Lokale\newline
+\Filename{C:\back{}Dokumente und Einstellungen\back{}LocalService\back{}Lokale\T\newline
 Einstellungen\back{}Anwendungsdaten\back{}GNU\back{}cache\back{}dirmngr\back{}crls.d\back{}}
 
 Hierbei handelt es sich um \textit{geschützte} Dateien,
@@ -4250,11 +4251,12 @@ Prüfungen vertrauen soll, müssen im folgenden Verzeichnis abgelegt
 werden:
 
 \Filename{C:\back{}Dokumente und Einstellungen\back{}All
-Users\back{}Anwendungsdaten\back{}GNU\back{}\newline
+Users\back{}Anwendungsdaten\back{}GNU\back{}\T\newline
 etc\back{}dirmngr\back{}trusted-certs\back{}}
 
-\textbf{Wichtig:} Die entsprechenden Wurzel-Zertifikate müssen als
-DER-Dateien mit Dateinamen-Endung "`.crt"' im o.g. Verzeichnis vorliegen.
+\W~\\\\
+\textbf{Wichtig:} Die entsprechenden Wurzel-Zertifikate müssen als DER-Dateien mit Dateinamen-Endung "`.crt"' oder "`.der"'
+im o.g. Verzeichnis vorliegen.
 
 Der DirMngr läuft als systemweiter Dienst und muss nach Änderungen im
 "`trusted-certs"'-Verzeichnis neu gestartet werden. Anschließend
@@ -4274,7 +4276,7 @@ prüfen sind auch die Zertifkate der Zertifizierungsstellen
 Für eine direkte Verfügbarkeit können sie in diesem (systemweiten) Verzeichnis abgelegt
 werden:\newline
 \Filename{C:\back{}Dokumente und Einstellungen\back{}All 
-Users\back{}Anwendungsdaten\back{}GNU\back{}\newline 
+Users\back{}Anwendungsdaten\back{}GNU\back{}\T\newline 
 lib\back{}dirmngr\back{}extra-certs\back{}}
 
 Zertifkate, die nicht hier oder bei den Anwendern vorliegen, müssen
@@ -4294,7 +4296,7 @@ oder Sperrlisten auf externen Verzeichnisdiensten gesucht werden.
 Der Systemdienst ,,DirMngr'' verwendet dafür die Liste der Dienste, die
 in der Datei\newline
 \Filename{C:\back{}Dokumente und Einstellungen\back{}All
-Users\back{}Anwendungsdaten\back{}GNU\back{}\\
+Users\back{}Anwendungsdaten\back{}GNU\back{}\T\\
 etc\back{}dirmngr\back{}ldapservers.conf}\\
 angegeben sind.
 
@@ -4316,7 +4318,7 @@ Die genaue Syntax für die Einträge lautet übrigens:
 Die systemweit als vertrauenswürdig vorbelegten Wurzel-Zertifkate werden
 in der Datei\\
 \Filename{C:\back{}Dokumente und Einstellungen\back{}All
-Users\back{}Anwendungsdaten\back{}GNU\back{}\\
+Users\back{}Anwendungsdaten\back{}GNU\back{}\T\\
 etc\back{}gnupg\back{}trustlist.txt}\\
 definiert.
 
@@ -4327,11 +4329,23 @@ Die genaue Syntax für die Einträge lautet hier:
 also z.B.:\\
 \verb+BA90087D0C6C7F4DEAF00907BCFA2133DDC8CA90 S+
 
-\textbf{Wichtig:} Damit Wurzel-Zertifikate in Kleopatra vollständig als
-vertrauenswürdig markiert werden (Zertifikat wird blau hinterlegt),
-müssen die Wurzel-Zertifikate zusätzlich für den DirMngr abgelegt
-werden, wie unter Abschnitt
+\textbf{Wichtig:} Damit Wurzel-Zertifikate in Kleopatra vollständig als vertrauenswürdig markiert werden (Zertifikat wird blau hinterlegt), müssen die Wurzel-Zertifikate zusätzlich für den DirMngr abgelegt werden, wie unter Abschnitt
 \ref{trustedrootcertsdirmngr} beschrieben.
+
+
+\section{Vertrauenswürdigkeit der Wurzel-Zertifikate durch Benutzer markieren}
+
+Wurzel-Zertifikate können auch jeweils von den einzelnen Benutzern als
+vertrauenswürdig markiert werden -- eine systemweite Konfiguration
+(siehe Abschnitt \ref{trustedrootcertsdirmngr} und \ref{sec_systemtrustedrootcerts}) ist dann nicht erforderlich.
+
+Wenn Sie im Kleopatra-Menü \Menu{Extras$\rightarrow$GnuPG Backend} 
+einrichten unter \textit{GpgAgent} die Option \textit{erlaube Aufrufern 
+Schlüssel als 'vertrauenswürdig' zu markieren} aktivieren, so werden Sie
+beim Gebrauch eines bisher nicht vertrauenswürdig eingestuften 
+Wurzel-Zertifkats gefragt, ob Sie es nun als vertrauenswürdig einstufen wollen.
+Beachten Sie, dass der gpg-agent neu gestartet werden muss, 
+z.B: durch ausloggen und wieder einloggen.
 
 \clearpage
 \xname{fehler-in-den-gpg4win-programmen-aufspueren}
