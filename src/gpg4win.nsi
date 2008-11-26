@@ -54,7 +54,7 @@
 # NOTE: Please keep the capitalization of PRETTY_PACKAGE_SHORT as it is
 # used as registry key.
 !define PACKAGE "${_PACKAGE}"
-!define PRETTY_PACKAGE "GnuPG For Windows"
+!define PRETTY_PACKAGE "GnuPG for Windows"
 !define PRETTY_PACKAGE_SHORT "GPG4Win"
 !define VERSION "${_VERSION}"
 !define PROD_VERSION "${_BUILD_FILEVERSION}"
