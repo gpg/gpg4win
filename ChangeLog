@@ -1,3 +1,13 @@
+2008-11-26  Werner Koch  <wk@g10code.com>
+
+	* packages/packages.current: Update libgpg-error.
+
+	* src/installer-finish.nsi: Put version into the displayed name of
+	the last section.
+
+	* src/gpg4win.nsi (PRETTY_PACKAGE): Downcase the "for".
+	* src/gpg4win-src.nsi (PRETTY_PACKAGE): Ditto.
+
 2008-11-20  Werner Koch  <wk@g10code.com>
 
 	* packages/packages.current: Update GnuPG.

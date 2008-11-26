@@ -24,10 +24,14 @@ Section
   WriteUninstaller "$INSTDIR\${PACKAGE}-uninstall.exe"
 
   # Windows Add/Remove Programs support
+  # Note that the version is appended to the DisplayName, despite that
+  # this is not necessary as a click on "support information" gives
+  # the version number.  Some tools do that, other don't.  I don't
+  # like it but others want me to do that.  -wk
   StrCpy $MYTMP "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRETTY_PACKAGE_SHORT}"
   WriteRegExpandStr HKLM $MYTMP "UninstallString" '"$INSTDIR\${PACKAGE}-uninstall.exe"'
   WriteRegExpandStr HKLM $MYTMP "InstallLocation" "$INSTDIR"
-  WriteRegStr       HKLM $MYTMP "DisplayName"     "${PRETTY_PACKAGE}"
+  WriteRegStr       HKLM $MYTMP "DisplayName"     "${PRETTY_PACKAGE} (${VERSION})"
   WriteRegStr       HKLM $MYTMP "DisplayIcon"     "$INSTDIR\gpg.exe,0"
   WriteRegStr       HKLM $MYTMP "DisplayVersion"  "${VERSION}"
   WriteRegStr       HKLM $MYTMP "Publisher"       "The Gpg4win Project"

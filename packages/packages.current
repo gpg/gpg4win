@@ -306,8 +306,8 @@ chk  ae1b992721198b93198aa36eb7a3a7d074417f47
 #
 server ftp://ftp.gnupg.org/gcrypt
 
-file libgpg-error/libgpg-error-1.6.tar.bz2
-chk  2f387d0c34dd55eaf3b5f3c2570e9033eb540bc3
+file libgpg-error/libgpg-error-1.7.tar.bz2
+chk  bf8c6babe1e28cae7dd6374ca24ddcc42d57e902 
 
 file libksba/libksba-1.0.4.tar.bz2
 chk  05d0b803bac34b53e07619ca52425452be535792
