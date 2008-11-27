@@ -74,6 +74,7 @@ png_files = \
 		sc-kleopatra-backend-openpgpWithFingerprint_de.png\
 		sc-pinentry-p12-import-a_de.png\
 		sc-pinentry-p12-import-b_de.png\
+		sc-inst-language_de.png\
 		\
 		sc-inst-welcome.png sc-inst-license.png \
 		sc-inst-components.png sc-inst-directory.png \

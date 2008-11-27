@@ -1,3 +1,10 @@
+2008-11-27  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+
+	* manual/gpg4win-compendium-de.tex: Added and updated some
+	sections in chapter 22. Added installer language screenshot. Some minor changes.
+	* manual/Makefile.am, manual/sc-inst-language_de.png:
+	Added new screenshot.
+
 2008-11-25  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
 	* manual/gpg4win-compendium-de.tex: Some minor changes in chapter 22.

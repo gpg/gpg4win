@@ -309,7 +309,7 @@ Programme umfasst:}
         eine einheitliche Benutzerführung für alle
         kryptographischen Operationen.
     \item[GpgOL:] GnuPG für Outlook (GpgOL) ist eine Erweiterung für Microsoft
-        Outlook 2003 und 2007, die verwendet wird um Nachrichten mit OpenPGP
+        Outlook 2003 und 2007, die verwendet wird, um Nachrichten mit OpenPGP
         oder S/MIME zu verschlüsseln.
     \item[GpgEX:] GPG Explorer eXtension (GpgEX) ist eine Erweiterung für
         den Windows Explorer, die es ermöglicht, Dateien über das
@@ -486,8 +486,9 @@ und zwar das Public-Key-Verfahren. Was heisst das?
 Nehmen wir an, die \Email{} oder die Datei sei in einer Truhe verschlossen.
 Im Gegensatz zu einem "`normalen"' Schloss mit einem Schlüssel gibt es beim
 Public-Key-Verfahren zum Verschlüsseln/Entschlüsseln \textbf{ein Schlüsselpaar}.
-So gibt es einen beglaubigten Schlüssel zum Verschlüsseln (das
-\textbf{"`Zertifikat"'}) und einen Schlüssel zum Entschlüsseln (der 
+So gibt es einen beglaubigten Schlüssel zum Verschlüsseln (der
+\textbf{"`beglaubigte öffentliche Schlüssel"'}, oder besser: das
+\textbf{"`Zertifikat"'}) und einen Schlüssel zum Entschlüsseln (der
 \textbf{"`Geheimer Schlüssel"'}).
 
 Klingt zwar komisch, wenn man an echte Schlösser denkt, aber bei
@@ -604,10 +605,12 @@ Falls Sie Gpg4win aus dem Internet heruntergeladen haben:
 \vspace{-0.28cm}
 \begin{quote}
 Klicken Sie
-bitte auf diese neu abgespeicherte Datei, die den Namen\linebreak
-\texttt{gpg4win-\PackageVersion{}.exe} (oder höhere Versionnummer)
-haben sollte.  Achten Sie unbedingt darauf, dass Sie die Datei von
-einer vertrauenswürdigen Seite erhalten haben.
+bitte auf diese neu abgespeicherte Datei, die folgenden Namen haben
+sollte:\\
+\texttt{gpg4win-\PackageVersion{}.exe} (oder höhere Versionnummer)\\
+Achten Sie unbedingt darauf, dass Sie die Datei von
+einer vertrauenswürdigen Seite erhalten haben (z.B.
+\texttt{http://www.gpg4win.de}).
 \end{quote}
 
 Falls Sie Gpg4win auf einer CD-ROM erhalten haben:
@@ -624,7 +627,15 @@ Die Frage, ob Sie das Programm installieren wollen, beantworten Sie
 mit \Button{Ja}.
 
 \clearpage
-Es begrüßt Sie dieser Dialog:
+Der Installationsassistent startet und befragt Sie zuerst nach der
+Sprache für den Installationsvorgang:
+% TODO screenshot: Installer Sprachenauswahl
+\begin{center}
+\IncludeImage[width=0.45\textwidth]{sc-inst-language_de}
+\end{center}
+
+
+Anschließend begrüßt Sie dieser Dialog:
 
 % TODO screenshot: Installer Willkommensseite
 \begin{center}
@@ -4119,32 +4130,55 @@ Einige typische systemweite Einrichtungen sind:
 \xname{bekannte-probleme-und-was-man-tun-kann}
 \chapter{Bekannte Probleme und was man tun kann}
 
-\section{GpgOL Menüs und Dialog nicht mehr in Outlook zu finden}
+\section{GpgOL Menüs und Dialoge nicht mehr in Outlook zu finden}
 
 Es kann vorkommen, dass trotz Aktualisierung von Gpg4win
-die Menüs und Dialog die von GpgOL zu Outlook hinzugefügt
-werden nicht mehr zu finden sind.
+die Menüs und Dialoge (die von GpgOL zu Outlook hinzugefügt
+werden) nicht mehr zu finden sind.
 
 Das ist dann der Fall wenn ein technisches Problem auftrat
 und Outlook aus diesem Grund das GpgOL Element deaktiviert.
 
-Reaktivieren Sie GpgOL über das Outlook-Menü
-\Menu{Hilfe$\rightarrow$Info$\rightarrow$Deaktivierte Elemente}.
+Reaktivieren Sie GpgOL über das Outlook-Menü:\\
+Outlook2007: \Menu{?$\rightarrow$Deaktivierte Elemente}\\
+Outlook2003: \Menu{?$\rightarrow$Info$\rightarrow$Deaktivierte Elemente}
 
-\section{GpgOL Icons zum Signieren/Verschlüsseln fehlen in der Symbolleiste}
+Um unter Outlook2003 GpgOL manuell zu (de-)aktivieren nutzen Sie den Add-In-Manager von
+Outlook:
+\Menu{Extras$\rightarrow$Optionen$\rightarrow$Weitere$\rightarrow$Erweiterte
+Optionen...$\rightarrow$Add-In-Manger...}
 
-Wenn bereits viele Icons in der Symbolleiste des Nachrichtenfensters
-vorhanden sind, so zeigt Outlook die Signieren/Verschlüsseln-Icons nicht
-unbedingt direkt an.
 
-Sie können diese aber anzeigen lassen,
+\section{GpgOL-Schaltflächen sind in Outlook2003 nicht in der Symbolleiste}
+
+Wenn bereits viele Schaltflächen in der Symbolleiste des Nachrichtenfensters
+vorhanden sind, so stellt Outlook2003 die
+Signieren/Verschlüsseln-Icons von GpgOL nicht unbedingt sofort sichtbar dar.
+
+Sie können diese Schaltflächen aber anzeigen lassen,
 indem Sie in der Symbolleiste auf das kleine Icon mit dem Pfeil nach
 unten klicken (\textit{Optionen für Symbolleiste}):  Sie erhalten
-eine Übersicht aller nicht angezeigten Icons. Ein Klick auf eines dieser Icons
-verschiebt es in den sichtbaren Teil der Symbolleiste.
+eine Übersicht aller nicht angezeigten Schaltflächen. Ein Klick auf
+eines dieser Einträge verschiebt ihn in den sichtbaren Teil der Symbolleiste.
 
 
-\section{GpgOL startet nicht mehr, wenn Gpg4win vorher auf einem anderen Laufwerk installiert war}
+\section{GpgOL-Schaltflächen sind in Outlook2007 unter "`Add-Ins"'}
+
+Mit Outlook2007 wurde die sogenannte \textit{Ribbon}-Oberfläche
+eingeführt. Diese Multifunktionsleiste im Outlook-Nachrichtenfenster
+besitzt verschiedene Registerkarten.
+Die GpgOL-Schaltflächen (für Verschlüssln, Signieren etc.) sind
+unter der Registerkarte "`Add-Ins"' eingeordnet; so wie alle
+Schaltflächen von Erweiterungen durch Outlook dort angelegt werden. 
+Eine Integration der GpgOL-Schaltflächen z.B. unter "`Nachrichten"' 
+ist nicht möglich.
+
+Was Sie machen können, ist Ihre \textit{Symbolleiste für den
+Schnellzugriff} anzupassen und die Symbolleistenbefehle der Add-In-Registerkarte 
+aufnehmen.
+
+
+\section{Fehler beim Start von GpgOL}
 
 Haben Sie Gpg4win (und damit GpgOL) auf einem Laufwerk
 installiert, anschließend wieder deinstalliert und unter einem anderen
@@ -4167,6 +4201,28 @@ extend.dat}
 
 Dabei sollte Outlook natürlich nicht laufen. Anschließend starten Sie
 Outlook erneut. Outlook und GpgOL sollte nun problemlos starten.
+
+Beachten Sie bitte auch, dass eine Installation von Gpg4win auf einem
+(mit dem Befehl \texttt{subst} simulierten) \textbf{virtuellen
+Laufwerk} nicht
+möglich ist. Diese virtuellen Laufwerke sind nur lokal für den
+aktuellen Benutzer nutzbar. Systemdienste (wie der \textit{DirMngr})
+sehen diese Laufwerke nicht. Der Installationspfad ist damit ungültig
+- die Installation stoppt mit einem Fehler in der Art \textit{error:StartService: ec=3}.
+Installieren Sie bitte Gpg4win auf einem systemweit gültigen Laufwerk.
+
+
+\section{GpgOL überprüft keine inlinePGP E-Mails von \textit{CryptoEx}}
+
+Um signierte bzw. verschlüsselte inlinePGP E-Mails, die von
+\textit{CryptoEx} versandt wurden, zu verifizieren bzw. zu
+entschlüsseln, muss in den GpgOL-Optionen die S/MIME-Unterstützung
+eingeschaltet sein.
+
+Aktivieren Sie dazu in Outlook unter
+\Menu{Extras$\rightarrow$Optionen$\rightarrow$GpgOL} die Option:\\
+\textit{S/MIME Unterstützung einschalten}.
+
 
 \section{Keine S/MIME Operationen mehr möglich (Systemdienst ,,DirMngr'' läuft nicht)}
 \label{dirmngr-restart}
