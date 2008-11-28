@@ -1,3 +1,8 @@
+2008-11-28  Colin Leroy  <colin@colino.net>
+
+	* packages/packages.current: Update GtkHtml Viewer plugin 
+	("broken" image got referenced as the real image)
+
 2008-11-27  Colin Leroy  <colin@colino.net>
 
 	* packages/packages.current: Update Claws-Mail (fixes, leak

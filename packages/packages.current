@@ -125,8 +125,8 @@ file  notification_plugin-0.19cvs1.tar.gz
 chk   04a2c4c37f9d143422a381174b82b282f90c6bde
 
 server http://www.claws-mail.org/win32
-file  gtkhtml2_viewer-0.21cvs1.tar.gz
-chk   eda3412505af833beaf95aea1d379d2e0c0539fd
+file  gtkhtml2_viewer-0.21cvs3.tar.gz
+chk   872ced539a75af7a8c06e6346350145c6413626c
 
 server http://www.claws-mail.org/win32
 file  vcalendar-2.0.2cvs2.tar.gz
