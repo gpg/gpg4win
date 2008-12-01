@@ -11,7 +11,7 @@ Wichtige Informationen zum Einsatz von Gpg4win 1.9-BETA
   neue Version kennenzulernen und Verbesserungsvorschläge
   einzubringen.
 
-Stand: Gpg4win-1.9.12 (20081118)
+Stand: Gpg4win-1.9.13 (20081202)
 
 Hier finden sich wichtige Informationen die bei der
 Entscheidung helfen sollen, ob Gpg4win 1.9 schon für
@@ -51,7 +51,7 @@ Inhalt dieses Dokumentes:
 * Wichtige Hinweise zur vorliegenden Version
 * Migration
 * Wichtigste Änderungen von Gpg4win 1.9 gegenüber 1.1
-* Wichtigste Änderungen von Gpg4win 1.9.12 gegenüber 1.9.11
+* Wichtigste Änderungen von Gpg4win 1.9.13 gegenüber 1.9.12
 
 
 Wichtige Hinweise zur vorliegenden Version
@@ -120,7 +120,7 @@ Entfallen:
 Aktualisiert:
 -------------
 
-- Claws Mail: Version 3.6.1cvs20
+- Claws Mail: Version 3.6.1cvs47
   Wesentliche Neuerungen: Unterstützung von SSL, NNTP und IMAP
   in der Windows-Version von Claws Mail.
 
@@ -174,22 +174,28 @@ Neu:
   PGP/MIME sowie ergänzt um S/MIME bzw. X.509.
 
 
-Wichtigste Änderungen von Gpg4win 1.9.12 gegenüber 1.9.11
+Wichtigste Änderungen von Gpg4win 1.9.13 gegenüber 1.9.12
 =========================================================
-
  - Kleopatra:
-     * Beglaubigen von OpenPGP-Zertifikaten korrigiert
-     * Entschlüsseln von *.pgp-Dateien korrigiert
-     * Übersetzungen ergänzt / korrigiert
-     * diverse kleinere Stabilitäts- und GUI-Verbesserungen
+    * Einholen von Beglaubigungen bei Zertifikakten auf Keyservern
+      deaktiviert (nicht erlaubt)
+    * Menüeintrag "Passphrase ändern" nur für eigene Zertifikate
+      aktiviert
+    * Eigenes S/MIME-Zertifikat erscheint nun (mit gesamter Ketter)
+      unter dem Reiter "Vertrauenswürdige Zertifikate"
+    * Übersetzungen ergänzt / korrigiert
+    * diverse kleinere Stabilitäts- und GUI-Verbesserungen
 
  - GpgOL:
-     * Wartezeit beim Signieren/Verschlüsseln und
-       Verifizieren/Entschlüsseln von Nachrichten mit großem Anhang
-       deutlich verkürzt
+    * Nach einem GpgOL-Update erscheint der "Einstellungen-Prüfen-Dialog"
+      einmalig direkt nach dem ersten Outlook-Start
+    * Übersetzungen ergänzt / korrigiert
 
  - Gpg4win Kompendium:
-     * weitere kleinere Überarbeitungen
+    * weitere Überarbeitungen
 
- - Backend und Installer: Es sind einige kleine und mittlere
-   Probleme und Fehler behoben worden.
+ - Backend und Installer:
+    * kritischer Fehler (bei dem pubring.gpg geleert wurde) gelöst
+    * Installationspaket zu "Gpg4win" und Kurztext auf Willkommensseite geändert
+    * Gpg4win-Versionsnummer hinzugefügt unter "Systemsteuerung->Software"
+    * diverse kleinere Verbesserungen

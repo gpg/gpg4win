@@ -9,7 +9,7 @@ Important Hints for Using Gpg4win 1.9-BETA
   experienced users or administrators to learn
   about the upcoming version and suggest changes.
 
-Status: Gpg4win-1.9.12 (20081118)
+Status: Gpg4win-1.9.13 (20081202)
 
 This text covers information that are
 intended to help judging whether Gpg4win 1.9
@@ -50,7 +50,7 @@ Contents of this document:
 * Important hints for present version
 * Migration
 * Most important changes in Gpg4win 1.9 compared to 1.1
-* Most important changes in Gpg4win 1.9.12 compared to 1.9.11
+* Most important changes in Gpg4win 1.9.13 compared to 1.9.12
 
 
 Important hints for present version
@@ -119,7 +119,7 @@ Removed:
 Updated:
 --------
 
-- Claws Mail: Version 3.6.1cvs20
+- Claws Mail: Version 3.6.1cvs47
   Main new features: Support of SSL, NNTP and IMAP in the
   Windows-Version of Claws Mail.
 
@@ -170,20 +170,28 @@ New:
   and PGP/MIME and new texts for S/MIME and X.509.
 
 
-Most important changes in Gpg4win 1.9.12 compared to 1.9.11
+Most important changes in Gpg4win 1.9.13 compared to 1.9.12
 ===========================================================
 
  - Kleopatra:
-     * certify OpenPGP certificates improved
-     * decrypt of *.pgp files corrected
-     * translations completed 
+     * load certifications of OpenPGP certificates on keyserver
+       disabled (not allowed)
+     * Menu entry "Change passphrase" enabled for own certificates 
+       only
+     * Own S/MIME certificate (width trusted root) is shown under
+       the tab "Trusted Certificates"
+     * translations added
      * several minor and medium improvements
 
  - GpgOL:
-     * latency improved for sign/encrypt and verify/decrypt 
-       messages with large attachments
+     * After a GpgOL update the check options dialog comes up one-time only
+     * translations added
 
  - Gpg4win Compendium 3.0.0-beta1 reworked
 
- - Backend and Installer: Several minor and medium issues and 
-   errors were fixed.
+ - Backend and Installer: 
+     * critical error (which cleared pupring.gpg) resolved
+     * Installer full name changed to "Gpg4win", German about text
+       of wellcome page changed
+     * Gpg4win version number added under "Control Panel -> Software"
+     * Several minor and medium issues and errors were fixed.
