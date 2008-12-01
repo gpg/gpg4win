@@ -33,8 +33,10 @@ msgid ""
 "advanced key management facility and is compliant with the proposed OpenPGP "
 "Internet standard as described in RFC2440."
 msgstr ""
-"GnuPG ist das Werkzeug aus dem GNU Projekt zur sicheren Kommunikation sowie "
-"zum sicheren Speichern von Daten."
+"Gpg4win ist ein Installationspaket für Windows zur Nutzung von E-Mail- und "
+"Datei-Verschlüsselung unter Verwendung der Kernkomponente GnuPG für Windows. "
+"Die beiden relevanten kryptographischen Standards OpenPGP und S/MIME werden "
+"unterstützt. Gpg4win und die in Gpg4win enthaltene Software sind Freie Software."
 
 #: src/gpg4win.nsi:125
 msgctxt "T_AboutGpg4winVersion"
@@ -464,7 +466,7 @@ msgstr "Warnung: Registration des GpgOL Outlook Plugin ist fehlgeschlagen."
 msgctxt "DESC_SEC_gpgol"
 msgid "GnuPG for Outlook"
 msgstr ""
-"GnuPG für Outlook (GpgOL) is eine Erweiterung für Outlook 2003, die "
+"GnuPG für Outlook (GpgOL) is eine Erweiterung für Outlook 2003 und 2007, die "
 "verwendet wird um Nachrichten mit OpenPGP oder S/MIME zu verschlüsseln."
 
 #: src/inst-kleopatra.nsi:302
