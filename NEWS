@@ -3,7 +3,7 @@
 # The version number given below are for the standard installers as
 # distributed by www.gpg4win.org.
 
-Noteworthy changes in version 1.9.13
+Noteworthy changes in version 1.9.13 (2008-12-02)
 -------------------------------------------------
 
 (en) This is a BETA version of the new Gpg4win/2 architecture.
@@ -15,11 +15,11 @@ Noteworthy changes in version 1.9.13
 ~~~~~~~~~~~~~~~
 GnuPG:        2.0.10-svn4880
 DirMngr:      1.0.3-svn310
-Kleopatra:    20081117
+Kleopatra:    20081128
 GPA:          0.8.0
-GpgOL:        0.10.17
+GpgOL:        0.10.18-svn290
 GpgEX:        0.9.1
-Claws-Mail:   3.6.1cvs32
+Claws-Mail:   3.6.1cvs47
 Kompendium:   3.0.0-beta
 ~~~~~~~~~~~~~~~
 

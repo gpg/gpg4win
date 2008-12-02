@@ -1,8 +1,12 @@
+2008-12-02  Werner Koch  <wk@g10code.com>
+
+	Release 1.9.13.
+
 2008-12-01  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
-	* src/gpg4win.nsi, src/gpg4win-src.nsi: PRETTY_PACKAGE changed 
-	  to Gpg4win
-	* po/de.po: About Gpg4win message changed; Added Outlook 2007 to
+	* src/gpg4win.nsi, src/gpg4win-src.nsi: Change PRETTY_PACKAGE to 
+	Gpg4win
+	* po/de.po: Change Gpg4win about message.  Add Outlook 2007 to
 	GpgOL description
 
 2008-12-01  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
