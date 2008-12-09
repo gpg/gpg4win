@@ -1,3 +1,7 @@
+2008-12-09  Werner Koch  <wk@g10code.com>
+
+	* packages/packages.current: Update gnupg
+
 2008-12-02  Werner Koch  <wk@g10code.com>
 
 	Release 1.9.13.
