@@ -1,3 +1,8 @@
+2008-12-12  Colin Leroy  <colin@colino.net>
+
+	* packages/packages.current: Update Claws Mail and plugins
+	Fixes bug 184, 'Claws doesn't start when username contains Umlauts'
+
 2008-12-09  Werner Koch  <wk@g10code.com>
 
 	* packages/packages.current: Update gnupg
