@@ -76,11 +76,11 @@ chk  188c9a18db481f968cadb7c77a5a24f4cbf3d03d
 
 server ftp://ftp.gnu.org/pub/gnu/gnutls
 
-file libtasn1-1.5.tar.gz
-chk  b60dafd5c25af38f434175faf5efa82767653d05
+file libtasn1-1.7.tar.gz
+chk  2d7bfe0d84f38a5450d8bab511eb1ec4036f18ec
 
-file gnutls-2.6.0.tar.bz2
-chk  bbd9e5f3a77bfcbef5a769c67d1576e7a6e4bda5
+file gnutls-2.6.3.tar.bz2
+chk  f9b6a1d6135ef0a57a5cdd9fcb3e82bc62a27dcd
 
 
 #

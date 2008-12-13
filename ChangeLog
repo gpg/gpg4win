@@ -1,3 +1,8 @@
+2008-12-13  Colin Leroy  <colin@colino.net>
+
+	* packages/packages.current: Update GnuTLS and libtasn - CVE-2008-4989
+	http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4989
+
 2008-12-12  Colin Leroy  <colin@colino.net>
 
 	* packages/packages.current: Update Claws Mail and plugins
