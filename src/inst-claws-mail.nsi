@@ -38,6 +38,9 @@ ${MementoUnselectedSection} "Claws-Mail" SEC_claws_mail
   File ${prefix}/share/doc/claws-mail/manual/en/claws-mail-manual.pdf
 !endif
 
+  SetOutPath "$INSTDIR\share\claws-mail"
+  File ${prefix}/share/claws-mail/ca-certificates.crt
+
   SetOutPath "$INSTDIR\lib\claws-mail\plugins"
   File ${prefix}/lib/claws-mail/plugins/pgpcore.dll
   File ${prefix}/lib/claws-mail/plugins/pgpinline.dll

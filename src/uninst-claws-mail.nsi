@@ -34,6 +34,7 @@ Section "-un.claws-mail"
 
   Delete "$INSTDIR\claws-mail-manual.pdf"
 
+  Delete "$INSTDIR\share\claws-mail\ca-certificates.crt"
   Delete "$INSTDIR\lib\claws-mail\plugins\pgpcore.dll"
   Delete "$INSTDIR\lib\claws-mail\plugins\pgpinline.dll"
   Delete "$INSTDIR\lib\claws-mail\plugins\pgpinline.deps"
@@ -43,7 +44,9 @@ Section "-un.claws-mail"
   Delete "$INSTDIR\lib\claws-mail\plugins\smime.deps"
   RMDir "$INSTDIR\lib\claws-mail\plugins"
   RMDir "$INSTDIR\lib\claws-mail"
+  RMDir "$INSTDIR\share\claws-mail"
   RMDir "$INSTDIR\lib"
+  RMDir "$INSTDIR\share"
 
   Delete "$INSTDIR\share\locale\de\LC_MESSAGES\claws-mail.mo"
   Delete "$INSTDIR\share\locale\fr\LC_MESSAGES\claws-mail.mo"

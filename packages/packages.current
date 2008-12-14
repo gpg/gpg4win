@@ -114,8 +114,8 @@ chk    750b2bcd4ee3bf8595baf97e1881f1a57b1ef363
 # (Kept on our own mirror due to Sourceforge peculiarities.)
 
 server http://www.claws-mail.org/win32
-file   claws-mail-3.6.1cvs72.tar.bz2
-chk    ee8ad3eadf4d1f00d5e745351a4e92f7c75c2542
+file   claws-mail-3.6.1cvs75.tar.bz2
+chk    409f5dafba04aa508745f2f56ade769a85bfd69b
 
 server http://www.claws-mail.org/win32
 file   attachwarner-0.2.14cvs3.tar.gz
