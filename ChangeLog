@@ -1,3 +1,9 @@
+2008-12-14  Colin Leroy  <colin@colino.net>
+
+	* packages/packages.current, src/inst-claws-mail.nsi,
+	src/uninst-claws-mail.nsi: Update Claws Mail, and install 
+	ca-certificates.crt to be able to verify certificates
+
 2008-12-13  Colin Leroy  <colin@colino.net>
 
 	* packages/packages.current: Update GnuTLS and libtasn - CVE-2008-4989
