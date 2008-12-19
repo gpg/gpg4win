@@ -1,3 +1,7 @@
+2008-12-19  Colin Leroy  <colin@colino.net>
+
+	* packages/packages.current: Update Claws Mail to 3.7.0
+
 2008-12-14  Colin Leroy  <colin@colino.net>
 
 	* packages/packages.current, src/inst-claws-mail.nsi,
