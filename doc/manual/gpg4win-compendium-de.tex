@@ -236,7 +236,6 @@ sondern für jedermann.
 Das Gpg4win-Anleitungs- und Übungsmaterial besteht aus drei Teilen:
 
 \begin{itemize}
-%TODO
 \item \textbf{Teil~\ref{part:Einsteiger} "`Für Einsteiger"'}: Der
     Schnelleinstieg in Gpg4win.
 
@@ -307,7 +306,7 @@ Programme umfasst:}
 
 \begin{description}
     \item[GnuPG:] GnuPG ist das Kernstück von Gpg4win: Die Verschlüsselungs-Software.
-    \item[Kleopatra:] Die zentrale Zertifkatsverwaltung von Gpg4win.
+    \item[Kleopatra:] Die zentrale Zertifikatsverwaltung von Gpg4win.
         Unterstützt OpenPGP und X.509\linebreak (S/MIME) und sorgt für
         eine einheitliche Benutzerführung für alle
         kryptographischen Operationen.
@@ -493,9 +492,9 @@ So gibt es einen beglaubigten Schlüssel zum Verschlüsseln (der
 \textbf{"`öffentliche Schlüssel"'}) und einen Schlüssel zum Entschlüsseln (der
 \textbf{"`geheime Schlüssel"'}).
 
-Betrachtet man den öffentlichen bzw. geheimen Schlüssel zusammen mit
+Betrachtet man den öffentlichen Schlüssel zusammen mit
 Angaben über den Schlüssel (sogenannten Metadaten), so spricht man
-von einem öffentlichen bzw. geheimen \textbf{Zertifikat}.
+von einem öffentlichen \textbf{Zertifikat}.
 Metadaten können z.B. die zum Schlüssel zugehörige \Email{}-Adresse,
 die Benutzer-ID oder der Gültigkeitszeitraum sein (vgl.
 Kapitel~\ref{ch:CertificateDetails}).
@@ -511,16 +510,17 @@ den Gpg4win-Pro\-grammkomponenten).
 
 Bezogen auf das obige Beispiel mit der Truhe klingt es komisch,
 ein öffentlichen und geheimen Schlüssel zu haben. Aber bei
-Software löst diese Idee das Problem, dass ich meinen Schlüssel
+Software löst diese Idee das Problem, dass man seinen Schlüssel
 für jeden Empfänger aus der Hand geben müsste.
 Denn normalerweise muss ein Schlüssel zum Verschlüsseln/Abschließen auch
-zum Entschlüsseln bzw. Aufschließen benutzt werden. Also müsste ich Ihnen,
-wenn ich etwas für Sie in der Truhe verschließe, die Truhe \textbf{und}
+zum Entschlüsseln bzw. Aufschließen benutzt werden. Also müsste man Ihnen,
+wenn man etwas für Sie in der Truhe verschließt, die Truhe \textbf{und}
 den Schlüssel geben. Wenn der Schlüssel bei der Übertragung
 abhanden kommt oder jemand davon eine Kopie erstellt, ist das ein
 großes Problem.
 
-Beim "`Public-Key"' Verfahren verschließe ich mit Ihrem \textbf{"`Zertifikat"'}
+Beim "`Public-Key"' Verfahren verschließt man mit Ihrem
+\textbf{"`öffentlichen Zertifikat"'}
 die Truhe und Sie schließen die Truhe mit Ihrem \textbf{"`geheimen Schlüssel"'} auf.
 Ich muss also nur die Truhe zu Ihnen transportieren lassen.
 Das ist auf jeden Fall sicherer als den geheimen Schlüssel mit zu
@@ -528,8 +528,8 @@ transportieren, selbst wenn er einen anderen Weg als die Truhe zu Ihnen nehmen
 würde.
 
 Trotz dieses gleichen Ansatzes zur Geheimhaltung unterscheiden sich
-OpenPGP und S/MIME aber z.B. bei der Zertifikaterstellung
-(Näheres erfahren Sie später in Kapitel~\ref{ch:CreateKeyPair}).
+OpenPGP und S/MIME aber z.B. bei der Schlüsselerzeugung
+(Näheres erfahren Sie später im Kapitel~\ref{ch:CreateKeyPair}).
 
 \textbf{Falls Sie sich jetzt fragen, wie das "`Public-Key"' Verfahren so
 funktionieren kann, lesen Sie einmal
@@ -550,7 +550,7 @@ im Bereich der Authentisierung.
 
 Um die Authentizität des Absenders festzustellen, ist bei
 \textbf{S/MIME} ein Zertifikat notwendig, welches die Authentizität
-des Schlüssel-Besitzers unzweifelhaft beglaubigt.  Das heißt, dass
+des Schlüsselpaar-Besitzers unzweifelhaft beglaubigt.  Das heißt, dass
 Sie Ihren öffentlichen Schlüssel von einer dazu berechtigten
 Organisation zertifizieren lassen muss, bevor er dadurch wirklich
 nutzbar wird. Diese Organisation wurde wiederum von einer höher
@@ -573,7 +573,8 @@ Zertifizierung von einer höheren Stelle verschlüsselte Daten und
 \Email{}-Adresse und dem dazugehörigen Zertifikat ihres
 Kommunikationspartners vertrauen.
 
-\textbf{Nähere Informationen zu Authentisierungswegen, wie z.B. dem Web-of-Trust oder den Zertifizierunsstellen, erhalten Sie
+\textbf{Nähere Informationen zu Authentisierungswegen, wie z.B. dem
+Web-of-Trust oder den Zertifizierunsstellen, erhalten Sie
 später in Kapitel~\ref{ch:trust}.}
 
 % TODO: Grafik?! (z.B. Alice - Bob Authentizität-Problem)
@@ -698,11 +699,7 @@ Sie entscheiden, welche Programme Sie installieren
 möchten.
 
 Eine Vorauswahl der normalerweise installierende Komponenten ist
-bereits getroffen.
-%TODO
-Alle sinnvollen Komponenten sind bereits vorausgewählt.
-Den Rest können Sie bei Bedarf auch später installieren.
-
+bereits getroffen. Den Rest können Sie bei Bedarf auch später installieren.
 
 Wenn Sie mit der Maus über die Auswahl laufen, dann erscheint
 jeweils rechts eine Kurzbeschreibung die Ihnen bei der
@@ -859,24 +856,24 @@ Ein Schlüsselpaar besteht, wie Sie im Kapitel~\ref{ch:openpgpsmime} gelernt habe
 aus einem \textbf{öffentlichen} und einem  \textbf{geheimen Schlüssel}.
 Ergänzt mit den Metadaten (\Email{}-Adresse, Benutzer-ID etc.), die
 Sie bei der Erstellung Ihres Schlüsselpaars angeben, erhalten Sie Ihr
-öffentliches und geheimes Zertifikat.
+Zertifikat mit dem öffentlichen und geheimen Schlüssel.
 
 Diese Definition gilt sowohl für OpenPGP wie auch für S/MIME (die Zertifikate
 entsprechen einem Standard mit der Bezeichnung "`X.509"').
 
 ~\\
 \textbf{Eigentlich müsste man diesen wichtigen Schritt der
-Schlüsselpaarerzeugung ein paar Mal üben können$\ldots$}
+Schlüsselpaar-Erzeugung ein paar Mal üben können$\ldots$}
 
 Genau das können Sie tun -- und zwar für OpenPGP:
 
 \T\margin{\IncludeImage[width=1.5cm]{openpgp-icon}}
-Sie können den gesamten Ablauf der Schlüsselerzeugung,
+Sie können den gesamten Ablauf der Schlüsselpaar-Erzeugung,
 Verschlüsselung und Entschlüsselung durchspielen,
 so oft Sie wollen, bis Sie ganz sicher sind.
 
 Ihr Vertrauen in Gpg4win wird sich durch diese "`Trockenübung"' festigen,
-und die "`heisse Phase"' der OpenPGP-Schlüsselerzeugung wird danach kein
+und die "`heisse Phase"' der OpenPGP-Schlüsselpaar-Erzeugung wird danach kein
 Problem mehr sein.
 
 Ihr Partner bei diesen Übungen wird \textbf{Adele} sein.
@@ -917,7 +914,7 @@ Klicken Sie auf \Menu{Datei$\rightarrow$Neues~Zertifikat}.
 
 Im folgenden Dialog entscheiden Sie sich für ein Format,
 für das anschließend ein Zertifikat erstellt werden soll.
-Sie haben die Wahl: \textbf{OpenPGP} (PGP/MIME) oder \textbf{X.509} (S/MIME).
+Sie haben die Wahl zwischen \textbf{OpenPGP} (PGP/MIME) oder \textbf{X.509} (S/MIME).
 Zu den Unterschieden lesen Sie bitte Kapitel \ref{ch:openpgpsmime} auf
 Seite \pageref{ch:openpgpsmime}.
 
@@ -966,7 +963,7 @@ Geben Sie im nun folgenden Fenster Ihren Namen und Ihre
 \end{center}
 
 
-Wenn Sie die OpenPGP-Schlüsselpaarerzeugung zunächst einmal \textbf{testen} wollen, dann
+Wenn Sie die OpenPGP-Schlüsselpaar-Erzeugung zunächst einmal \textbf{testen} wollen, dann
 können Sie einfach einen beliebigen Namen und irgendeine ausgedachte
 \Email{}-Adresse eingeben, z.B.:\\ \verb-Heinrich Heine- und \verb-heinrichh@gpg4win.de-.
 
@@ -1063,22 +1060,22 @@ Als nächstes \textit{können} Sie eine (oder mehrere) der folgenden
 drei Möglichkeiten durchführen:
 \begin{description}
     \item[Erstellen Sie eine Sicherungskopie Ihres
-        geheimen und öffentlichen OpenPGP-Zertifikats.]
+        Zertifikats des OpenPGP-Schlüsselpaars.]
 
     ~\\Klicken Sie dazu auf die Schaltfläche
-    %TODO: Kleo ändern
+    %TODO-Kleo ändern
     \Button{Sicherheitskopie Ihres Zertifikats erstellen...}
 
-    Geben Sie hier den Pfad an, wohin Ihr geheimes Zertifikat
+    Geben Sie hier den Pfad an, wohin Ihr Zertifikat
     exportiert werden soll:
 
     % TODO screenshot: New certificate - export key
     \begin{center}
     \IncludeImage[width=0.45\textwidth]{sc-kleopatra-openpgp-exportSecretKey_de}
     \end{center}
- 
+
     Kleopatra wählt automatisch den Dateityp und speichert Ihr
-    öffentliches und geheimes OpenPGP-Zertifikat
+    Zertifikat des Schlüsselpaars
     als \textit{.asc} bzw. \textit{.gpg} Datei ab --
     abhängig davon, ob Sie die Option \textit{ASCII-Mantel} (engl.
     "`ASCII armor"') ein- bzw. ausschalten.
@@ -1102,7 +1099,7 @@ drei Möglichkeiten durchführen:
     \Button{Zertifikat per \Email{} versenden}.
 
     Es sollte dabei eine neue \Email{} erstellt werden -- mit Ihrem neuen
-    öffentlichen Zertifikat im Anhang. Ihr geheimes OpenPGP-Zertifikat wird
+    öffentlichen Zertifikat im Anhang. Ihr geheimer OpenPGP-Schlüssel wird
     selbstversändlich \textit{nicht} versendet.
     Geben Sie eine Empfänger-\Email{}-Adresse an und
     ergänzen Sie ggf. den vorbereiteten Text dieser \Email{}.
@@ -1110,30 +1107,30 @@ drei Möglichkeiten durchführen:
     \textbf{Beachten Sie:} Nicht alle
     \Email{}-Programme unterstützen diese Funktion. Sollte kein neues
     \Email{}-Fenster aufgehen, so beenden Sie den
-    Zertifikatserstellungsdialog, speichern Ihr
-    \textit{öffentliches} Zertifikat durch
+    Zertifikatserstellungs-Assistenten, speichern Ihr
+    öffentliches Zertifikat durch
     \Menu{Datei$\rightarrow$Zertifikat exportieren} und versenden
     diese Datei per \Email{} an Ihre Korrespondenzpartner 
     (Details im Abschnitt \ref{sec_publishPerEmail}).
 
     %TODO-Kleo: Verzeichnisdienst -> Zertifikatsserver
-    \item[Speichern Sie Ihren neues Zertifikat auf einem
+    \item[Speichern Sie Ihr öffentliches Zertifikat auf einem
         OpenPGP-Zertifikatsserver.]
     ~\\Klicken Sie auf 
     \Button{Zertifikate zu Zertifikatsserver senden...}
     und folgen Sie den Anweisungen.
 
     Wie genau Sie einen weltweit verfügbaren Zertifikatsserver
-    in Kleopatra einrichten und wie Sie anschließend Ihr Zertifikat
-    auf diesen Server veröffentlichen, erfahren Sie in Kapitel~\ref{ch:keyserver}.
+    in Kleopatra einrichten und wie Sie anschließend Ihr öffentliches Zertifikat
+    auf diesen Server publizieren, erfahren Sie in Kapitel~\ref{ch:keyserver}.
 \end{description}
 
 ~\\
 Beenden Sie anschließend den Kleopatra-Assistenten mit
-\Button{Fertigstellen}, um die Erstellung Ihres OpenPGP-Zertifikats
+\Button{Fertigstellen}, um die Erzeugung Ihres OpenPGP-Zertifikats
 abzuschließen.
 
-Weiter geht's mit dem Abschnitt \textit{Schlüsselpaar-Erstellung abgeschlossen}
+Weiter geht's mit dem Abschnitt \textit{Schlüsselpaar-Erzeugung abgeschlossen}
 auf Seite~\pageref{sec_finishKeyPairGeneration}. Von da an
 sind die Erklärungen für OpenPGP und X.509 wieder identisch.
 
@@ -1155,7 +1152,7 @@ Geben Sie im nun folgenden Fenster Ihren Namen (CN), Ihre
 \Email{}-Adresse (EMAIL), Ihre Organisation (O) und Ihren Ländercode
 (C) an. Optional können Sie noch Ort (L) und Abteilung (OU) ergänzen.
 
-Wenn Sie die X.509-Schlüsselpaarerzeugung zunächst einmal \textbf{testen} wollen, dann
+Wenn Sie die X.509-Schlüsselpaar-Erzeugung zunächst einmal \textbf{testen} wollen, dann
 machen Sie beliebige Angaben für Name, Organisation und
 Ländercode sowie geben irgendeine ausgedachte \Email{}-Adresse
 ein, z.B. \texttt{CN=Heinrich Heine, O=Test, C=DE} und
@@ -1225,7 +1222,7 @@ Zertifikatsanfrage mit Ihrem neuen geheimen Schlüssel zu signieren.
 Bestätigen Sie Ihre Eingaben jeweils mit \Button{OK}.\\
 
 \clearpage
-Nun wird Ihr X.509-Schlüsselpaar angelegt: 
+Nun wird Ihr X.509-Schlüsselpaar angelegt:
 % TODO screenshot: New Certificate - Create Key
 \begin{center}
 \IncludeImage[width=0.6\textwidth]{sc-kleopatra-x509-createKey_de}
@@ -1276,14 +1273,13 @@ drei Möglichkeiten durchführen:
 
     Sobald der Request von der CA bestätigt wurde, erhalten Sie von
     Ihrem zuständigen CA-Systemadministrator das fertige und unterzeichnete
-    X.509-Zertifikat. Dieses müssen Sie dann nur noch in Kleopatra
+    X.509-Zertifikat Ihres Schlüsselpaars. Dieses müssen Sie dann nur noch in Kleopatra
     importieren (vgl. Kapitel \ref{ch:ImExport}).
 \end{description}
 
 
 Beenden Sie anschließend den Kleopatra-Assistenten mit 
-%TODO:german
-\Button{Finish}.
+\Button{Fertigstellen}.
 
 
 
@@ -1312,11 +1308,14 @@ Folgen Sie den Anweisungen und installieren Ihr Zertifikat mit Ihrem
 Browser. Mit Firefox können Sie danach z.B. über
 \Menu{Bearbeiten$\rightarrow$Einstellungen$\rightarrow$Erweitert$\rightarrow$Zertifikate}
 Ihr installiertes Zertifikat unter dem ersten Reiter "`Ihre
-Zertifikate"' mit dem Namen \textit{CAcert WoT User} finden. 
+Zertifikate"' mit dem Namen (CN) \textit{CAcert WoT User} finden.
 
-Wenn Sie sich von anderen Mitglieder des CACert-Web-of-Trust
-bestätigen lassen, können Sie auch personalisierte Zertifikate mit
-Ihrem Namen (CN) ausstellen.
+\textbf{Anmerkung:} Sie können auch ein personalisiertes Zertifikat ausstellen, das z.B.
+Ihren Namen (im CN-Feld) trägt. Dazu müssen Sie sich mit Ihrem
+CAcert-Account von anderen Mitglieder bestätigen lassen. Das
+sogenannte "`CACert-Web-of-Trust"' wächst dadurch. Was Sie für so eine
+Bestätigung tun müssen, erfahren Sie auf den Internetseiten von
+CAcert.
 
 Speichern Sie abschließend eine Sicherungskopie Ihres
 X.509-Schlüsselpaars in einem X.509-Zertifikat (\textit{.p12}
@@ -1366,7 +1365,7 @@ nachlesen zu können:
 
 Was bedeuten die einzelnen Zertifikatsdetails?
 
-Ihr Schlüssel ist unbegrenzt gültig, d.h. er hat kein
+Ihr Zertifikat ist unbegrenzt gültig, d.h. er hat kein
 "`eingebautes Verfallsdatum"'. Um die Gültigkeit nachträglich
 zu verändern, klicken Sie auf \Button{Ablaufdatum ändern}
 
@@ -1390,26 +1389,26 @@ eigener geheimer Schlüssel und die ihn schützende Passphrase sicher
 sind, haben Sie das Wichtigste zur Geheimhaltung bereits erledigt.
 
 Jedermann darf und soll Ihr öffentliches Zertifikat haben, und Sie können und sollen 
-Zertifikate von Ihren Korrespondenzpartnern haben -- je mehr, desto besser.
+öffentliche Zertifikate von Ihren Korrespondenzpartnern haben -- je mehr, desto besser.
 
 Denn:
 
 \textbf{Um sichere \Email{}s austauschen zu können, müssen beide Partner jeweils
-das Zertifikat des anderen besitzen und benutzen. Natürlich
-braucht der Empfänger auch ein Programm, das mit den Zertifikaten umgehen
-kann, wie z.B. Gpg4win.}
+das öffentliche Zertifikat des anderen besitzen und benutzen. Natürlich
+braucht der Empfänger auch ein Programm, das mit Zertifikaten umgehen
+kann, wie z.B. das Softwarepaket Gpg4win mit der Zertifikatsverwaltung Kleopatra.}
 
 Wenn Sie also an jemanden verschlüsselte \Email{}s schicken wollen,
-müssen Sie dessen Zertifikat haben und zum Verschlüsseln benutzen.
+müssen Sie dessen öffentliches Zertifikat haben und zum Verschlüsseln benutzen.
 
 Wenn ­-- andersherum ­-- jemand Ihnen verschlüsselte \Email{}s schicken
-will, muss er Ihr Zertifikat haben und zum Verschlüsseln
+will, muss er Ihr öffentliches Zertifikat haben und zum Verschlüsseln
 benutzen.
 
-Deshalb werden Sie nun Ihr Zertifikat öffentlich
+Deshalb sollten Sie nun Ihr öffentliches Zertifikat frei
 zugänglich machen. Je nachdem, wie groß der Kreis Ihrer
 Korrespondenzpartner ist und welches Zertifikatsformat Sie einsetzen, 
-gibt es verschiedene Möglichkeiten. Verbreiten Sie Ihr Zertifikat
+gibt es verschiedene Möglichkeiten. Verbreiten Sie Ihr öffentliches Zertifikat
 beispielsweise...
 
 \begin{itemize}
@@ -1429,17 +1428,17 @@ näher anschauen.
 \section{Veröffentlichen per \Email{}}
 \label{sec_publishPerEmail}
 
-Sie wollen Ihr Zertifikat Ihrem Korrespondenzpartner bekannt machen?
-Schicken Sie ihm doch einfach ihr exportiertes Zertifikat per
+Sie wollen Ihr öffentliches Zertifikat Ihrem Korrespondenzpartner bekannt machen?
+Schicken Sie ihm doch einfach ihr exportiertes öffentliches Zertifikat per
 \Email{}. Wie das genau funktioniert, erfahren Sie in diesem
 Abschnitt.
 
 ~\\
-Üben Sie jetzt diesen Vorgang einmal mit Ihrem OpenPGP-Zertifikat!
-Adele soll Ihnen dabei behilflich sein. \textit{Achtung: Die folgenden
-Übungen gelten nur für OpenPGP! Anmerkungen zur Veröffentlichung von
-X.509-Zertifikaten finden Sie auf
-Seite~\pageref{publishPerEmailx509}.}
+Üben Sie jetzt diesen Vorgang einmal mit Ihrem öffentlichen OpenPGP-Zertifikat!
+Adele soll Ihnen dabei behilflich sein. \textbf{Achtung:} Die folgenden
+Übungen gelten nur für OpenPGP! Anmerkungen zur Publizierung von
+öffentlichen X.509-Zertifikaten finden Sie auf
+Seite~\pageref{publishPerEmailx509}.
 \T\margin{\IncludeImage[width=1.5cm]{openpgp-icon}}
 
 \textbf{Adele}
@@ -1454,43 +1453,41 @@ vorgestellen:
 \IncludeImage{adele01}
 \end{center}
 
-Adele schicken Sie zunächst Ihr OpenPGP-Zertifikat. Wenn Adele
-diesen öffentlichen Schlüssel empfangen hat, verschlüsselt sie damit
-eine \Email{} an Sie und sendet sie zurück.
+Schicken Sie zunächst Adele Ihr öffentliches OpenPGP-Zertifikat. Mit
+Hilfe des öffentlichen Schlüssel aus diesem Zertifikat sendet 
+Ihnen Adele eine verschlüsselte \Email{} an Sie zurück.
 
 Diese Antwort von Adele entschlüsseln Sie mit Ihrem eigenen geheimen
 Schlüssel. Damit Sie wiederum Adele verschlüsselt antworten können,
-legt Adele ihren eigenen öffentlichen Schlüssel bei.
+legt Adele ihr eigenes öffentliches Zertifikat bei.
 
 Adele verhält sich also genau wie ein richtiger Korrespondenzpartner.
 Allerdings sind Adeles \Email{}s leider bei weitem nicht so interessant
-wie die Ihrer echten Korrespondenzpartner.  Andererseits können Sie
-mit Adele so oft üben, wie Sie wollen ­-- was Ihnen ein menschlicher
+wie die Ihrer echten Korrespondenzpartner. Andererseits können Sie
+mit Adele so oft üben, wie Sie wollen -- was Ihnen ein menschlicher
 Adressat wahrscheinlich ziemlich übel nehmen würde.
 
-Exportieren Sie also nun Ihr OpenPGP-Zertifikat und senden dieses per
+Exportieren Sie also nun Ihr öffentliches OpenPGP-Zertifikat und senden dieses per
 \Email{} an Adele. Wie das geht, erfahren Sie auf den nächsten Seiten.
 
 
 \clearpage
 %% Original page 26
+\subsubsection{Exportieren Ihres öffentlichen OpenPGP-Zertifikats}
 
-
-
-\subsubsection{Exportieren Ihres OpenPGP-Zertifikats}
-
-Selektieren Sie in Kleopatra das zu exportierende Zertifikat
+Selektieren Sie in Kleopatra das zu exportierende öffentliche Zertifikat
 (durch Klicken auf die entsprechende Zeile in der Liste der
 Zertifikate) und klicken Sie dann auf
 \Menu{Datei$\rightarrow$Zertifikate exportieren...} im Menü.
 Wählen Sie einen geeigneten Dateiordner auf Ihrem PC aus und
-speichern Sie das Zertifikat im Dateityp \textit{.asc} ab --
+speichern Sie das öffentliche Zertifikat im Dateityp \textit{.asc},
+\textit{.gpg} oder \textit{.pgp} ab --
 z.B.: \Filename{mein-OpenPGP-Zertifikat.asc}.
 
 \textbf{Wichtig:} Achten Sie beim Auswählen des Menüpunktes darauf,
-dass Sie auch wirklich nur Ihr (öffentliches) Zertifikat exportieren
--- und \textit{nicht} aus Versehen Ihres zugehöriges geheimes
-Zertifikat exportieren.
+dass Sie auch wirklich nur Ihr öffentliches Zertifikat exportieren
+-- und \textit{nicht} aus Versehen Ihr Zertifikat des Schlüsselpaar mit Ihrem
+zugehörigen geheimen Schlüssel exportieren.
 
 
 %% Original page 27
@@ -1499,7 +1496,7 @@ Windows Explorer und wählen denselben Ordern aus, den Sie beim
 Exportieren angegeben haben.
 
 \textbf{Öffnen} Sie die exportierte Zertifikats-Datei mit einem
-Texteditor, z.B. mit WordPad. Sie sehen Ihr OpenPGP-Zertifikat im
+Texteditor, z.B. mit WordPad. Sie sehen Ihr öffentliches OpenPGP-Zertifikat im
 Texteditor so, wie es wirklich aussieht -- ein ziemlich wirrer Text-
 und Zahlenblock:
 
@@ -1512,28 +1509,28 @@ und Zahlenblock:
 \clearpage
 %% Original page 28
 
-\subsubsection{Variante 1: OpenPGP-Zertifikat als \Email{}-Text
+\subsubsection{Variante 1: Öffentliches OpenPGP-Zertifikat als \Email{}-Text
 versenden}
 
 Die hier zuerst gezeigte Möglichkeit funktioniert immer, selbst wenn
 Sie ­-- z.B. bei manchen \Email{}-Services im Web ­-- keine Dateien
-anhängen können. Zudem bekommen Sie so Ihr Zertifikat zum ersten Mal
-zu Gesicht und wissen, was sich dahinter verbirgt und woraus der
-Schlüssel eigentlich besteht.
+anhängen können. Zudem bekommen Sie so Ihr öffentliches Zertifikat zum ersten Mal
+zu Gesicht und wissen, was sich dahinter verbirgt und woraus das
+Zertifikat eigentlich besteht.
 
-\textbf{Markieren} Sie nun im Texteditor den gesamten öffentlichen
-Schlüssel von
+\textbf{Markieren} Sie nun im Texteditor das gesamte öffentliche
+Zertifikat von
 
 \verb+-----BEGIN PGP PUBLIC KEY BLOCK-----+\\
 bis\\
 \verb+-----END PGP PUBLIC KEY BLOCK-----+
 
-und \textbf{kopieren} Sie ihn mit dem Menübefehl oder mit dem
-Tastaturkürzel Strg+C. Damit haben Sie den Schlüssel in den Speicher
+und \textbf{kopieren} Sie es mit dem Menübefehl oder mit dem
+Tastaturkürzel Strg+C. Damit haben Sie das Zertifikat in den Speicher
 Ihres Rechners (bei Windows Zwischenablage genannt) kopiert.
 
 Nun starten Sie Ihr \Email{}-Programm ­-- es spielt keine Rolle, welches
-Sie benutzen -- und fügen Ihr Zertifikat in eine leere \Email{} ein.
+Sie benutzen -- und fügen Ihr öffentliches Zertifikat in eine leere \Email{} ein.
 Der Tastaturbefehl zum Einfügen ("`Paste"') lautet bei Windows Strg+V.
 Es ist sinnvoll vorher das \Email{}-Programm so zu konfigurieren, dass
 reine Textnachrichten gesendet werden und keine HTML formatierte
@@ -1543,11 +1540,11 @@ Diesen Vorgang ­-- Kopieren und Einfügen ­-- kennen Sie sicher als
 "`Copy \& Paste"'.
 
 \textbf{Adressieren} Sie nun diese \Email{} an \verb-adele@gnupp.de- und
-schreiben in die Betreffzeile z.B.: \textit{Mein OpenPGP-Zertifikat}.
+schreiben in die Betreffzeile z.B.: \textit{Mein öffentliches OpenPGP-Zertifikat}.
 
 So etwa sollte Ihre \Email{} nun aussehen:
 
-%TODO screenshot:  Outlook composer fenster mit openpgp zertifikat.
+%TODO screenshot:  #öffentlich ergänzen# Outlook composer fenster mit openpgp zertifikat.
 \begin{center}
 \IncludeImage[width=0.55\textwidth]{sc-ol-adele-sendOpenpgpKey-inline_de}
 \end{center}
@@ -1564,11 +1561,11 @@ bekommen$\ldots$
 
 \clearpage
 %% Original page 29
-\subsubsection{Variante 2: OpenPGP-Zertifikat als \Email{}-Anhang
+\subsubsection{Variante 2: Öffentliches OpenPGP-Zertifikat als \Email{}-Anhang
 versenden}
 
 Alternativ zu Variante 1 können Sie natürlich Ihr exportiertes
-OpenPGP-Zertifikat auch direkt als \textbf{\Email{}-Dateianhang}
+öffentliches OpenPGP-Zertifikat auch direkt als \textbf{\Email{}-Dateianhang}
 versenden. Das ist oftmals das
 einfachere und gebräuchlichere Verfahren. Sie haben oben
 die "`Copy \& Paste"'-Methode zuerst kennengelernt, weil sie
@@ -1577,12 +1574,12 @@ transparenter und leichter nachzuvollziehen ist.
 Schreiben Sie Adele nun noch einmal eine neue \Email{} mit der
 Zertifikatsdatei im Anhang:
 
-Fügen Sie die exportierte Zertifikatsdatei als Anhang zu Ihrer neuen
+Fügen Sie die oben exportierte Zertifikatsdatei als Anhang zu Ihrer neuen
 \Email{} hinzu -- genauso wie Sie es mit jeder anderen Datei auch
-machen (z.B. durch Ziehen der Datei in das leere \Email-Fenster). 
+machen (z.B. durch Ziehen der Datei in das leere \Email-Fenster).
 Ergänzen Sie den Empfänger
 (\verb-adele@gnupp.de-) und einen Betreff, z.B.:
-\textit{Mein OpenPGP-Zertifikat - als Dateianhang}.
+\textit{Mein öffentliches OpenPGP-Zertifikat - als Dateianhang}.
 
 Selbstverständlich dürfen Sie auch noch ein paar erklärende Sätze dazuschreiben.
 Adele braucht diese Erklärung jedoch nicht, denn sie ist zu nichts anderem
@@ -1600,33 +1597,33 @@ Senden Sie nun die \Email{} mit Anhang an Adele ab.
 \clearpage
 \subsubsection{Kurz zusammengefasst}
 
-Sie haben Ihr OpenPGP-Zertifikat in
+Sie haben Ihr öffentliches OpenPGP-Zertifikat in
 Kleopatra in eine Datei exportiert. Anschließend haben Sie einmal den
 Inhalt der Datei direkt in eine \Email{} kopiert und einmal die
 komplette Datei als \Email{}-Anhang eingefügt. Beide \Email{}s haben
 Sie an einen Korrespondenzpartner (in Ihrem Fall Adele) geschickt.
 
-Genauso gehen Sie vor, wenn Sie Ihr Zertifikat an eine echte
+Genauso gehen Sie vor, wenn Sie Ihr öffentliches Zertifikat an eine echte
 \Email{}-Adresse senden. Sie entscheiden sich dabei natürlich für eine
 der beiden oben vorgestellten Varianten -- in der Regel sollten Sie
-Ihr OpenPGP-Zertifikat per Dateianhang versenden. Dies ist für Sie und
+Ihr öffentliches OpenPGP-Zertifikat per Dateianhang versenden. Dies ist für Sie und
 Ihren Empfänger das Einfachste. Und es hat den Vorteil, dass
 Ihr Empfänger Ihre Zertifikatsdatei direkt (ohne Umwege) in seine Zertifikatsverwaltung
 (z.B. Kleopatra) importieren kann.
 
 ~\\Nachdem \label{publishPerEmailx509}
-Sie gelernt haben, wie Sie Ihr OpenPGP-Zertifikat per
+Sie gelernt haben, wie Sie Ihr öffentliches OpenPGP-Zertifikat per
 \T\margin{\IncludeImage[width=1.5cm]{smime-icon}}
 \Email{} veröffentlichen, wird Sie sicher interessieren wie das
-Gleiche für \textbf{X.509-Zertifikate} funktioniert (vgl. auch
+Gleiche für öffentliche \textbf{X.509-Zertifikate} funktioniert (vgl. auch
 Kapitel~\ref{ch:openpgpsmime}).
 
 Die Antwort lautet: Sie können es ganuso wie bei OpenPGP machen. Sie exportieren
-Ihr X.509-Zertifikat in Kleopatra, speichern dieses z.B. im Dateiformat
+Ihr öffentliches X.509-Zertifikat in Kleopatra, speichern dieses z.B. im Dateiformat
 \textit{.pem} ab und versenden die Datei als \Email{}-Anhang.
 Aber im konkreten Fall ist es unnötig. Es genügt, wenn Sie Ihrem
 Korrespondenzpartner eine signierte S/MIME-\Email{} senden.
-Ihr X.509-Zertifikat ist in dieser Signatur enthalten und kann von dem
+Ihr öffentliches X.509-Zertifikat ist in dieser Signatur enthalten und kann von dem
 Empfänger in die Zertifikatsverwaltung importiert werden.
 
 Der einzige Unterschied zum oben beschriebenen OpenPGP-Vorgehen: Sie
@@ -1634,10 +1631,10 @@ können Adele nicht benutzen! \textbf{Adele unterstützt nur OpenPGP!}
 Zum Üben sollten Sie sich also einen anderen Korrespondenzpartner
 aussuchen oder Sie schreiben testweise an sich selber.
 
-Beim Exportieren Ihres X.509-Zertifikats haben Sie die Wahl, ob Sie
-die ganze (öffentliche) Zertifikatskette (in der Regel:
-Wurzelzertifikat --
-Zertifizierungsstelle -- Ihr Zertifikat) oder nur Ihr Zertifikat in
+Beim Exportieren Ihres öffentlichen X.509-Zertifikats haben Sie die Wahl, ob Sie
+die ganze öffentliche Zertifikatskette (in der Regel:
+Wurzelzertifikat -- CA-Zertifikat -- Ihr Zertifikat) oder nur Ihr
+öffentliches Zertifikat in
 eine Datei abspeichern wollen. Ersteres ist empfehlenswert, denn
 Ihrem Korrespondenzpartner fehlen möglicherweise Teile der Kette die er sonst
 zusammensuchen müsste.
@@ -1658,15 +1655,14 @@ mit der Verfügbarkeit der Kette.
 \section{Veröffentlichen per OpenPGP-Zertifikatsserver}
 \label{sec_publishPerKeyserver}
 
-\textbf{Wichtig: Die Veröffentlichung Ihres Zertifikats auf einem
-OpenPGP-Zertifikatsserver ist
-nur für OpenPGP-Zertifikate möglich!}
+\textbf{Wichtig: Die Verbreitung Ihres öffentlichen Zertifikats auf einem
+OpenPGP-Zertifikatsserver ist nur für OpenPGP-Zertifikate möglich!}
 \T\margin{\IncludeImage[width=1.5cm]{openpgp-icon}}
 
 Die Publizierung Ihres öffentlichen OpenPGP-Zertifikats auf einem
 öffentlichen Zertifikatsserver bietet sich eigentlich
 immer an, selbst wenn Sie nur mit wenigen Partnern verschlüsselte
-\Email{}s austauschen. Ihr Zertifikat ist dann für jedermann
+\Email{}s austauschen. Ihr öffentliches Zertifikat ist dann für jedermann
 zugänglich auf einem Server im Internet verfügbar. Sie ersparen sich
 dadurch die Versendung Ihres Zertifikats per \Email{} an jeden Ihrer
 Korrespondenzpartner.
@@ -1678,11 +1674,12 @@ auch ungebetene Personen \Email{}s schreiben können und die
 SPAM-Menge für Ihre \Email{}-Adresse dadurch zunehmen kann.
 Sie sollten daher im zweiten Fall einen ausreichenden SPAM-Schutz nutzen.
 Falls Sie keinen wirksamen Spamfilter benutzen,
-sollten Sie u.U. von der Veröffentlichung Ihres Schlüssels auf einem
+sollten Sie u.U. von der Veröffentlichung Ihres öffentlichen Zertifikats auf einem
 Zertifikatsserver absehen.}
 
 ~\\
-\textbf{Und so geht's:} Wählen Sie Ihr OpenPGP-Zertifikat in Kleopatra aus und klicken im
+\textbf{Und so geht's:} Wählen Sie Ihr öffentliches 
+OpenPGP-Zertifikat in Kleopatra aus und klicken im
 Menü auf \Menu{Datei$\rightarrow$Zertifikate nach Server exportieren...}.
 
 Sofern Sie noch keinen Zertifikatsserver
@@ -1697,7 +1694,7 @@ Wie Sie an der Meldung erkennen können, ist der öffentliche
 OpenPGP-Zertifikatsserver
 \texttt{keys.gnupg.net} bereits voreingestellt.
 Klicken Sie auf \Button{Fortsetzen}, um Ihr ausgewähltes öffentliches Zertifikat an
-diesen Server zu schicken. Von dort aus wird Ihr Zertifikat an alle, weltweit
+diesen Server zu schicken. Von dort aus wird Ihr öffentliches Zertifikat an alle, weltweit
 verbundenen Zertifikatsserver weitergereicht.
 Jedermann kann Ihr öffentliches Zertifikat dann von einen dieser
 OpenPGP-Zertifikatsserver
@@ -1712,16 +1709,16 @@ Clinton"' dort schon seit Jahren herumliegen$\ldots$
 
 \clearpage
 \subsubsection{Kurz zusammengefasst}
-Sie wissen nun, wie Sie Ihr OpenPGP-Zertifikat auf einen
-OpenPGP-Zertifikatsserver im Internet veröffentlichen.
+Sie wissen nun, wie Sie Ihr öffentliches OpenPGP-Zertifikat auf einen
+OpenPGP-Zertifikatsserver im Internet publizieren.
 
-\textbf{Wie Sie das OpenPGP-Zertifikat eines Korrespondenzpartners auf
+\textbf{Wie Sie das öffentliche OpenPGP-Zertifikat eines Korrespondenzpartners auf
   Zertifikatsservern suchen und importieren, erfahren Sie im
   Kapitel~\ref{ch:keyserver}.
   Sie können dieses Kapitel jetzt lesen oder später, wenn Sie diese
   Funktion benötigen.}
 
-~\\Die Veröffentlichung von X.509-Zertifikaten erfolgt in einigen
+~\\Die Verbreitung von öffentlichen X.509-Zertifikaten erfolgt in einigen
 \T\margin{\IncludeImage[width=1.5cm]{smime-icon}}
 Fällen durch die Zertifizierungsstelle. Das passiert typischerweise
 über X.509-Zertifikatsserver, die per LDAP erreichbar sind.
@@ -1738,9 +1735,9 @@ die X.509-Zertifikatsserver jedoch nicht weltweit untereinander.
 \label{ch:decrypt}
 
 Sie bekommen verschlüsselte Nachrichten Ihrer Korrespondenzpartner
-und wollen diese nun entschlüsseln? 
-Alles was Sie dazu brauchen ist Gpg4win, Ihr Schlüsselpaar und
-natürlich ganz wichtig: ihre Passphrase.
+und wollen diese nun entschlüsseln?
+Alles was Sie dazu brauchen ist Gpg4win, das Zertifikat Ihres
+Schlüsselpaars und natürlich ganz wichtig: Ihre Passphrase.
 
 In diesem Kapitel bekommen Sie Schritt für Schritt erklärt, wie Sie Ihre
 \Email{}s in Microsoft Outlook mit der Gpg4win-Programmkomponente
@@ -1748,7 +1745,7 @@ GpgOL entschlüsseln.
 
 ~\\
 Üben Sie jetzt diesen Vorgang einmal mit Adele und Ihrem
-OpenPGP-Zertifikat!\\
+öffentlichen OpenPGP-Zertifikat!\\
 \textit{Achtung: Die folgenden Übungen gelten nur für OpenPGP!
 Anmerkungen zur Entschlüsselung von S/MIME-\Email{}s finden Sie am
 Ende dieses Kapitels auf Seite \pageref{encrypt-smime}.}
@@ -1756,10 +1753,10 @@ Ende dieses Kapitels auf Seite \pageref{encrypt-smime}.}
 
 
 Im Abschnitt~\ref{sec_publishPerEmail} haben Sie Adele Ihr
-OpenPGP-Zertifikat geschickt.
+öffentliches OpenPGP-Zertifikat geschickt.
 Mit Hilfe dieses Zertifikats verschüsselt Adele nun eine
-\Email{} und sendet sie an Sie zurück. Nach kurzer Zeit sollten Sie
-Adeles Antwort erhalten.
+\Email{} und sendet die Nachricht an Sie zurück.
+Nach kurzer Zeit sollten Sie Adeles Antwort erhalten.
 
 
 % cartoon: Adele typing and sending a mail
@@ -1787,7 +1784,7 @@ Starten Sie MS Outlook und öffnen Sie die Antwort-\Email{} von Adele.
 
 Kleopatra haben Sie bisher nur als Zertifikatsverwaltung kennengelernt.
 Das Programm leistet aber weitaus mehr: Es kann die eigentliche Verschlüsselungs-Software
-GnuPG steuern und damit nicht nur Schlüssel und Zertifikate verwalten, sondern
+GnuPG steuern und damit nicht nur Ihre Zertifikate verwalten, sondern
 auch sämtliche kryptografischen Aufgaben (eben mit Hilfe von GnuPG) erledigen.
 Kleopatra sorgt für die graphische Benutzeroberfläche, also die
 Dialoge, die Sie als Benutzer sehen während Sie eine \Email{} ver- oder entschlüsseln.
@@ -1796,7 +1793,8 @@ Sie mit Outlook, einem anderen \Email{}-Programm oder auch mit dem Windows Explo
 etwas verschlüsseln.
 
 Kleopatra bearbeitet also die verschlüsselte \Email{} von
-Adele. Diese \Email{} hat Adele mit \textit{Ihrem} OpenPGP-Zertifikat verschlüsselt.
+Adele. Diese \Email{} hat Adele mit \textit{Ihrem} öffentlichen
+OpenPGP-Schlüssel verschlüsselt.
 
 Um die
 Nachricht zu entschlüsseln, fragt Kleopatra Sie nun nach Ihrer (zum
@@ -1804,7 +1802,7 @@ Schlüsselpaar gehörigen) Passphrase. Geben Sie diese in den
 aufkommenden Dialog ein. Sofern Ihre Eingabe korrekt war, erhalten Sie
 einen Statusdialog (siehe nachfolgende Abbildung).
 Mit 
-%TODO Buttonname ändern/prüfen
+%TODO-Kleo: Buttonname ändern/prüfen
 \Button{Details einblenden} können Sie sich
 weitere Informationen der \Email{}-Überprüfung anzeigen lassen.
 
@@ -1865,6 +1863,7 @@ Die entschlüsselte Antwort von Adele sieht in etwa so aus\footnote{Abhängig
   von der Softwareversion von Adele kann dies auch etwas
   unterschiedlich aussehen.}:
 %TODO: lieber ein OL-Screenshot der mail.
+%TODO: Schlüssel -> Zertifikat
 
 \begin{verbatim}
 Hallo Heinrich Heine,
@@ -1883,31 +1882,29 @@ Viele Grüße,
 adele@gnupp.de
 \end{verbatim}
 
-Der Textblock, der darauf folgt, ist das Zertifikat von Adele.
+Der Textblock, der darauf folgt, ist das öffentliche Zertifikat von Adele.
 
 Im nächsten Kapitel werden Sie dieses Zertifikat importieren und
-Ihrem Schlüsselbund hinzufügen. Importierte Zertifikate können
-Sie jederzeit zum
-Verschlüsseln von Nachrichten an Ihren Korrespondenzpartner benutzen
-oder dessen signierte \Email{}s überprüfen.
+zu Ihrer Zertifikatsverwaltung hinzufügen. Importierte öffentliche Zertifikate können
+Sie jederzeit zum Verschlüsseln von Nachrichten an Ihren
+Korrespondenzpartner benutzen oder dessen signierte \Email{}s überprüfen.
 
 \clearpage
 \subsubsection{Kurz zusammengefasst}
-
 
 \begin{enumerate}
 \item Sie haben eine verschlüsselte \Email{} mit Ihrem geheimen
   Schlüssel entschlüsselt.
 
-\item Der Korrespondenzpartner hat sein eigenes Zertifikat
+\item Ihr Korrespondenzpartner hat sein eigenes öffentliches Zertifikat
     beigelegt, damit Sie ihm verschlüsselt antworten können.
 \end{enumerate}
 
 \label{encrypt-smime}
 ~\\Nachdem 
-Sie gelernt haben, wie Sie \Email{}s mit Ihrem OpenPGP-Zertifikat
+Sie gelernt haben, wie Sie \Email{}s mit Ihrem geheimen OpenPGP-Schlüssel
 \T\margin{\IncludeImage[width=1.5cm]{smime-icon}}
-entschlüsseln, werden Sie nun noch erfahren, wie Sie verschlüsselte 
+entschlüsseln, werden Sie nun noch erfahren, wie Sie verschlüsselte
 \textbf{S/MIME}-\Email{}s entschlüsseln.
 
 Die Antwort lautet auch hier: Genauso wie bei OpenPGP!
@@ -1916,44 +1913,42 @@ von Adele unterstützt wird und somit die obige Übung nur für OpenPGP
 gilt.
 
 Zum Entschlüsseln einer S/MIME-verschlüsselten \Email{} öffnen Sie
-die Nachricht in Outlook und geben im Pinentry-Dialog Ihre Passphrase ein. 
+die Nachricht in Outlook und geben im Pinentry-Dialog Ihre Passphrase ein.
 Sie bekommen einen ähnlichen
 Statusdialog wie bei OpgenPGP. Nach dem Schließen dieses Dialogs sehen Sie die
 entschlüsselte S/MIME \Email{}.
 
 
-
-
 \clearpage
 %% Original page 37
 \xname{sie-importieren-ein-zertifikat}
-\chapter{Sie importieren ein Zertifikat}
-\label{ch:keyring}
+\chapter{Sie importieren ein öffentliches Zertifikat}
+\label{ch:importCertificate}
 
-Ihr Korrespondenzpartner muss nicht jedes Mal sein Zertifikat 
+Ihr Korrespondenzpartner muss nicht jedes Mal sein öffentliches Zertifikat
 mitschicken, wenn er Ihnen signiert schreibt.
-Sie bewahren seinen öffentlichen Schlüssel einfach an 
-Ihrem GnuPG-"`Schlüsselbund"' (oder besser: "`Zertifikatsbund"') auf.
+Sie bewahren sein öffentliches Zertifikat einfach in Ihrer
+Zertifikatsverwaltung (z.B. Kleopatra) auf.
 
 
-\subsubsection{Zertifikat abspeichern}
+\subsubsection{Öffentliches Zertifikat abspeichern}
 
-Bevor Sie ein Zertifikat in Kleopatra importieren,
+Bevor Sie ein öffentliches Zertifikat in Kleopatra importieren,
 müssen Sie es in einer Datei abspeichern. Abhängig davon, ob Sie das
 Zertifikat als \Email{}-Dateianhang oder als Textblock innerhalb Ihrer
 \Email{} bekommen haben, gehen Sie wie folgt vor:
 
 \begin{itemize}
-\item Liegt das Zertifikat einer \Email{} als \textbf{Dateianhang}
+\item Liegt das öffentliche Zertifikat einer \Email{} als \textbf{Dateianhang}
     bei, speichern Sie es (wie Sie es in Ihrem \Email{}-Programm
     gewohnt sind) auf einem Ort Ihrer Festplatte ab.
 
 
-\item Sollte das Zertifikat als \textbf{Textblock} innerhalb Ihrer
+\item Sollte das öffentliche Zertifikat als \textbf{Textblock} innerhalb Ihrer
     \Email{} übermittelt worden sein, so müssen Sie zunächst das
-    vollständige Zertifikat markieren: 
+    vollständige Zertifikat markieren:
 
-Bei OpenPGP-Zertifikaten markieren Sie den Bereich von
+Bei (öffentlichen) OpenPGP-Zertifikaten markieren Sie den Bereich von
 
 \verb+-----BEGIN PGP PUBLIC KEY BLOCK-----+\\
 bis\\
@@ -1962,27 +1957,27 @@ bis\\
 so wie Sie es im Abschnitt~\ref{sec_publishPerEmail} schon getan haben.
 
 Setzen Sie den markierten Abschnitt per Copy \& Paste in einen
-Texteditor ein und speichern Sie das Zertifikat ab. Als Dateiendung
-sollten Sie für OpenPGP-Zertifikate \textit{.asc} und für X.509-Zertifikate 
-z.B. \textit{.pem} wählen.
+Texteditor ein und speichern Sie das öffentliche Zertifikat ab. Als Dateiendung
+sollten Sie für OpenPGP-Zertifikate \textit{.asc} oder \textit{.gpg} und für X.509-Zertifikate 
+\textit{.pem} oder \textit{.der} wählen.
 
 \end{itemize}
 
 %% Original page 38/39
 \clearpage
-\subsubsection{Zertifikat in Kleopatra importieren}
+\subsubsection{Öffentliches Zertifikat in Kleopatra importieren}
 
-Ob Sie nun das Zertifikat als \Email{}-Anhang oder als Textblock abgespeichert
+Ob Sie nun das öffentliche Zertifikat als \Email{}-Anhang oder als Textblock abgespeichert
 haben, ist egal: In beiden Fällen importieren Sie dieses
-abgespeicherte Zertifikat in Ihre Zertifikatsverwaltung
-\textbf{Kleopatra}.
+abgespeicherte Zertifikat in Ihre Zertifikatsverwaltung Kleopatra.
 
 
 Starten Sie dafür Kleopatra, sofern das Programm noch nicht läuft.
 
 Klicken Sie im Menü auf
 \Menu{Datei$\rightarrow$Zertifikat importieren...},
-suchen das eben abgespeicherte Zertifikat aus und laden es.
+suchen das eben abgespeicherte öffentliche Zertifikat aus und
+importieren es.
 Sie erhalten einen Informations-Dialog mit dem Ergebnis des Importvorgangs:
 
 % screenshot: Kleopatra - certificate import dialog
@@ -1991,7 +1986,7 @@ Sie erhalten einen Informations-Dialog mit dem Ergebnis des Importvorgangs:
 \end{center}
 
 
-Das erfolgreich importierte Zertifikat wird nun in Kleopatra angezeigt
+Das erfolgreich importierte, öffentliche Zertifikat wird nun in Kleopatra angezeigt
 -- und zwar unter einem separatem Reiter "`Importierte
 Zertifikate von \textit{<Pfad-zur-Zertifikatsdatei>}"':
 
@@ -2001,16 +1996,16 @@ Zertifikate von \textit{<Pfad-zur-Zertifikatsdatei>}"':
 \end{center}
 
 Dieser Reiter dient zur Kontrolle, weil einer Datei durchaus auch mehr als nur ein
-Zertifikat enthalten kann. Schließen Sie diesen Reiter mit
-dem Menü %TODO .. Menü
-dem rot-weißen Schließen-Button am rechten Fensterrand.
+Zertifikat enthalten kann. Schließen Sie diesen Reiter über
+das Menü \Menu{Fenster$\rightarrow$Reiter schließen} (oder über die
+"`Reiter-schließen"' Schaltfläche am rechten Fensterrand.
 
 Wechseln Sie auf den Tab "`Andere Zertifikate"'. Hier sollten Sie nun
-das von Ihnen importierte Zertifikat sehen.
+das von Ihnen importierte öffentliche Zertifikat sehen.
 
 Damit haben Sie ein fremdes Zertifikat~-- in diesem Beispiel das
-OpenPGP-Zertifikat von Adele -- importiert und an Ihrem Schlüsselbund
-befestigt. Sie können dieses Zertifikat jederzeit benutzen, um
+öffentliche OpenPGP-Zertifikat von Adele -- in Ihre
+Zertifikatsverwaltung importiert. Sie können dieses Zertifikat jederzeit benutzen, um
 verschlüsselte Nachrichten an den Besitzer dieses Zertifikats zu
 senden und Signaturen zu prüfen.
 
@@ -2023,12 +2018,12 @@ wollen. Wie das geht, können Sie im Kapitel~\ref{ch:keyserver} nachlesen.
 \clearpage
 \subsubsection{Bevor Sie weitermachen, eine wichtige
 Frage:}
-Woher wissen Sie eigentlich, dass das fremde
+Woher wissen Sie eigentlich, dass das öffentliche
 OpenPGP-Zertifikat wirklich von Adele stammt? Man kann \Email{}s auch
 unter falschem Namen versenden -- die Absenderangabe besagt eigentlich
 gar nichts.
 
-Wie können Sie also sichergehen, dass ein Zertifikat auch wirklich
+Wie können Sie also sichergehen, dass ein öffentliches Zertifikat auch wirklich
 seinem Absender gehört?
 
 \textbf{Die Kernfrage der Zertifikatsprüfung wird im
@@ -2046,11 +2041,11 @@ Sie danach an dieser Stelle fortfahren.}
 Jetzt wird es noch einmal spannend: Sie versenden eine verschlüsselte \Email{}!
 
 In diesem Beispiel brauchen Sie dazu Outlook (es geht auch mit anderen
-\Email{}-Klienten, die Krypto unterstützen), Kleopatra und natürlich ein Zertifikat
-Ihres Korrespondenzpartners.
+\Email{}-Klienten, die Krypto unterstützen), Kleopatra und natürlich
+ein öffentliches Zertifikat Ihres Korrespondenzpartners.
 
 %% Original page 45
-\textit{Hinweis nur für OpenPGP:}\\Sie können zum Üben dieses Vorgangs
+\textbf{Hinweis nur für OpenPGP:}\\Sie können zum Üben dieses Vorgangs
 mit OpenPGP wieder Adele nutzen. S/MIME wird von Adele nicht
 unterstützt! \T\margin{\IncludeImage[width=1.5cm]{openpgp-icon}}
 Adressieren Sie dazu Ihre zu verschlüsselnde \Email{} an
@@ -2058,44 +2053,12 @@ Adressieren Sie dazu Ihre zu verschlüsselnde \Email{} an
 nicht wirklich lesen...
 
 
-~\\
-Erstellen Sie zunächst in Outlook eine neue \Email{} und adressieren Sie diese an Ihren
-Korrespondenzpartner.
-
-
-Sagen Sie nun, dass Sie Ihre Nachricht verschlüsseln wollen. Klicken Sie 
-dazu auf die GpgOL-Verschlüsseln-Schaltfläche in der Outlook-Symbolleiste oder
-im Menü auf \Menu{Extras->Nachricht verschlüsseln}.
-
-Klicken Sie schließlich auf \Button{Senden}.
-
-%TODO:
-
-%\clearpage
-%\subsubsection{Protokoll bestimmen -- PGP/MIME oder S/MIME}
-\label{encryptProtocol}
-Bestimmen Sie nun das Protokoll -- PGP/MIME oder S/MIME --
-mit der Sie Ihre Nachricht verschlüsseln wollen. Die hängt davon ab,
-in welchem Format das Zertifikat Ihres Korrespondenzpartners bei Ihnen
-vorliegt.
-Klicken Sie dazu im Menü \Menu{Extras$\rightarrow$GnuPG Protokoll} des geöffneten
-Outlook-Nachrichtenfensters auf:
-\textit{PGP/MIME}, \textit{S/MIME} oder \textit{automatisch}.
-
-Sofern Sie diese Auswahl auf der Voreinstellung \textit{automatisch} lassen, haben Sie
-später im Verschlüsselungsprozess noch die Möglichkeit zwischen PGP/MIME und S/MIME zu wählen.
-
-Haben Sie ein bevorzugtes GnuPG-Protokoll?\\
-Dann können Sie unter den GpgOL-Optionen
-(\Menu{Extras$\rightarrow$Optionen$\rightarrow$GpgOL}) 
-PGP/MIME oder S/MIME als Voreinstellung definieren.
-
-~\\
-\textbf{Wichtiger Hinweis nur für S/MIME:}\\
+\textbf{Hinweis nur für S/MIME:}\\
 Nach der Installation von Gpg4win ist die
 \T\margin{\IncludeImage[width=1.5cm]{smime-icon}}
-S/MIME-Funktionalität in GpgOL deaktiviert. Wenn Sie S/MIME nutzen
-möchten, sollten Sie zuvor unter
+S/MIME-Funktionalität in GpgOL deaktiviert. Wenn Sie S/MIME (mit
+GnuPG) nutzen möchten, müssen Sie zuvor wie in dem nachfolgend
+dargestellten GpgOL-Optionsdialog unter
 \Menu{Extras$\rightarrow$Optionen$\rightarrow$GpgOL} die Option
 \textit{S/MIME Unterstützung einschalten} aktivieren:
 
@@ -2109,10 +2072,15 @@ vor allem dann wenn Sie schon vorher mit S/MIME unter einem anderen
 Krypto-Produkt gearbeitet haben.
 
 \clearpage
-\subsubsection{Verschlüsselung aktivieren}
+\subsubsection{Nachricht verschlüsselt versenden}
+
+Verfassen Sie zunächst in Outlook eine neue \Email{} und adressieren Sie diese an Ihren
+Korrespondenzpartner.
+
 Jetzt fehlt nur noch die Angabe, dass Sie Ihre Nachricht auch wirklich
 verschlüsselt versenden wollen:
-Wählen Sie \Menu{Extras$\rightarrow$Nachricht verschlüsseln}.
+Wählen Sie im Menü des Nachrichtenfensters den Punkt
+\Menu{Extras$\rightarrow$Nachricht verschlüsseln}.
 Die Schaltfläche mit dem Schloss-Icon in der
 Symbolleiste ist aktiviert (Sie können auch gleich direkt auf diese
 Schaltfläche klicken).
@@ -2128,12 +2096,43 @@ erneuter Klick auf die o.g. Schaltfläche.
 
 Klicken Sie nun auf \Button{Senden}.
 
+~\\
+\textbf{Hinweis:}\\
+\label{encryptProtocol}
+Im Normalfall erkennt Gpg4win automatisch in welchem Protokoll
+(OpenPGP oder S/MIME) das passende öffentliche Zertifikat Ihres
+Korrespondenzpartners vorliegt.
+
+Bei Bedarf können Sie das Protokoll explizit für diese \Email{}
+über das Menü \Menu{Extras$\rightarrow$GnuPG Protokoll}
+im geöffneten Outlook-Nachrichtenfensters auf
+\textit{PGP/MIME}, \textit{S/MIME} oder \textit{automatisch}
+(Standardeinstellung) setzen.
+
+Wenn Sie sich unsicher sind, belassen Sie es bei der Voreinstellung
+\textit{automatisch}. Sie haben später im Verschlüsselungsprozess
+noch die Möglichkeit zwischen PGP/MIME und
+S/MIME zu wählen.
+
+Haben Sie ein bevorzugtes GnuPG-Protokoll?\\
+Dann können Sie unter den GpgOL-Optionen
+(\Menu{Extras$\rightarrow$Optionen$\rightarrow$GpgOL})
+PGP/MIME oder S/MIME für alle signierte und verschlüsselte
+Nachrichten als Voreinstellung definieren.
+
+
+
 \clearpage
 \subsubsection{Zertifikatsauswahl}
-Daraufhin öffnet Kleopatra ein Fenster, in dem Sie das Zertifikat des
-Empfängers angeben. Kleopatra wählt -- abhängig von der
-Empfänger-\Email{}-Adresse -- in der Regel das passende Zertifikat
-automatisch aus.
+Daraufhin öffnet Kleopatra ein Fenster, in dem Sie das öffentliche Zertifikat des
+Empfängers bestätigen müssen. Kleopatra wählt -- abhängig von der
+Empfänger-\Email{}-Adresse -- in der Regel das passende öffentliche Zertifikat aus
+Ihrer Zertifikatsverwaltung automatisch aus.
+
+Sollte Kleopatra das öffentliche Zertifikat Ihres Korrespondenzpartners nicht
+finden, haben Sie es vermutlich noch nicht in Ihrer
+Zertifikatsverwaltung importiert (vgl.
+Kapitel~\ref{ch:importCertificate}).
 
 % TODO screenshot: kleopatra encryption dialog - certificate selection
 % (with Adele + my own certificate)
@@ -2141,23 +2140,25 @@ automatisch aus.
 \IncludeImage[width=0.7\textwidth]{sc-kleopatra-openpgp-encryptDialog_de}
 \end{center}
 
-Im Normalfall können Sie dieses vorausgewähte Zertifikat mit
+Im Normalfall können Sie dieses vorausgewähte öffentliche Zertifikat mit
 \Button{Weiter} bestätigen.
 
 \clearpage
-Sollte es jedoch nicht das richtige Zertifikat sein -- z.B. weil zu der \Email{}-Adresse 
-mehrere Zertifikate existieren, dann drücken Sie auf den \Button{...}-Button neben der Drop-Down-Liste.
+Sollte Kleopatra im Dialog auf der vorherigen Seite
+\textbf{nicht} das richtige öffentliche Zertifikat ausgewählt haben (z.B. weil zu
+der Empfänger-\Email{}-Adresse 
+mehrere öffentliche Zertifikate existieren), dann drücken Sie auf den
+\Button{...}-Button neben der Auswahlliste.
 
-%TODO
-Sie können hier auch Bewusst ein anderes Zertifikat an eine andere
-\Email{}-Adresse auswählen, dass ist aber ziehmlich krank und kann
-Probleme machen...
+Sie können hier auch bewusst ein anderes öffentliches Zertifikat (,dass nicht zu
+der \Email{}-Adresse passt) auswählen. Das macht praktisch aber keinen
+Sinn und kann Ihnen (und Ihrem Empfänger) eher Probleme bereiten...
 
-
-Sie bekommen einen Kleopatra-Dialog mit einer Auflistung aller Zertifikate des
+Sie bekommen einen Kleopatra-Dialog mit einer Auflistung aller
+öffentlichen Zertifikate des
 gewählten Zertifikatstyps, die in Ihrer Zertifikatsverwaltung
-existieren (also Zertifikate, die von Ihnen bis dahin importiert wurden).
-Exemplarisch sehen Sie hier eine Auswahl von verfügbaren
+existieren (also öffentliche Zertifikate, die von Ihnen bis dahin importiert wurden).
+Exemplarisch sehen Sie hier eine Auswahl von verfügbaren öffentlichen
 OpenPGP-Zertifikaten:
 
 % TODO screenshot: kleopatra encryption dialog 2 - openpgp certificate list
@@ -2165,13 +2166,13 @@ OpenPGP-Zertifikaten:
 \IncludeImage[width=0.7\textwidth]{sc-kleopatra-encryption-chooseOpenpgpCertificate_de}
 \end{center}
 
-Wählen Sie das korrekte Zertifikat Ihres Korrespondenzpartners aus, denn damit muss Ihre Nachricht ja
-verschlüsselt werden.
+Wählen Sie das korrekte öffentliche Zertifikat Ihres Korrespondenzpartners aus, denn
+damit muss Ihre Nachricht ja verschlüsselt werden.
 
 Sie erinnern sich an den Grundsatz:
 \begin{quote}
     \textbf{Wenn Sie an jemanden verschlüsselte \Email{}s schicken wollen,
-  müssen Sie dessen Zertifikat haben und zum Verschlüsseln benutzen.}
+  müssen Sie dessen öffentliches Zertifikat haben und zum Verschlüsseln benutzen.}
 \end{quote}
 
 Klicken Sie auf \Button{Weiter}. Ihre Nachricht wird nun verschlüsselt.
@@ -2198,7 +2199,7 @@ verschlüsselt!}
 \label{ch:sign}
 
 Sie haben in Kapitel~\ref{ch:trust} gelesen, wie Sie sich von der
-Echtheit eines OpenPGP-Zertifikats überzeugen und es dann mit Ihrem eigenen
+Echtheit eines öffentlichen OpenPGP-Zertifikats überzeugen und es dann mit Ihrem eigenen
 geheimen OpenPGP-Schlüssel signieren können.
 
 Dieses Kapitel beschäftigt sich damit,
@@ -2212,7 +2213,7 @@ wurde.
 
 Die Signatur garantiert Ihrem Empfänger, dass die Nachricht
 tatsächlich von Ihnen stammt. Und: wenn Sie mit jemandem
-korrespondieren, dessen Zertifikat Sie nicht haben~(aus welchem
+korrespondieren, dessen öffentliches Zertifikat Sie nicht haben~(aus welchem
 Grund auch immer), können Sie so die Nachricht wenigstens
 mit Ihrem eigenen privaten Schlüssel "`versiegeln"'.
 
@@ -2241,6 +2242,7 @@ genau denselben Zweck.
 %% Original page 38
 \section{Signieren mit GpgOL}
 
+
 Tatsächlich ist die Signierung einer \Email{} noch einfacher als die
 Verschlüsselung (vgl. Kapitel~\ref{ch:encrypt}). Nachdem Sie eine neue
 \Email{} verfasst haben, gehen Sie -- analog zur Verschlüsselung --
@@ -2249,8 +2251,7 @@ folgende Schritte durch:
 \begin{itemize}
         %TODO: automodus nutzen, aber nicht beschreiben! So einfach
         %wie möglich! Nicht das Verfahren beschreiben!
-    \item Protokoll bestimmen -- PGP/MIME oder S/MIME
-    \item Signierung aktivieren
+    \item Nachricht signiert versenden
     \item Zertifikatsauswahl
     \item Signierung abschließen
 \end{itemize}
@@ -2258,30 +2259,23 @@ folgende Schritte durch:
 Auf den nächsten Seiten werden diese Schritte im Detail beschrieben.
 
 \clearpage
-\subsubsection{Protokoll bestimmen -- PGP/MIME oder S/MIME}
-%TODO Auto sollte default sein. Nur erwähnen. Empfehlung 
-Genauso wie beim Verschlüsseln von \Email{}s müssen Sie vorher das
-Protokoll bestimmen, nach welchem Verfahren signiert bzw.
-verschlüsselt werden soll.
+\subsubsection{Nachricht signiert versenden}
 
-Nutzen Sie dazu das Menü
-\Menu{Extras$\rightarrow$GnuPG Protokoll} im
-Outlook-Nachrichtenfenster und wählen Sie \textit{PGP/MIME},
-\textit{S/MIME} oder \textit{automatisch} -- die Erläuterungen und
-Hinweise vom Verschlüsseln (siehe Seite~\pageref{encryptProtocol}) gelten auch
-für das Signieren.
+Verfassen Sie zunächst in Outlook eine neue \Email{} und addressieren
+Sie diese an Ihren Korrespondenzpartner.
 
 
-\subsubsection{Signierung aktivieren}
-Bevor Sie Ihre Nachricht abschicken, geben Sie noch an, dass 
+%TODO: Kleo-Protokoll-Auswahl-Dialog beschreiben (sofern Kleo das
+%nicht mehr ändert)!
+
+
+Bevor Sie Ihre Nachricht abschicken, geben Sie noch an, dass
 Ihre Nachricht signiert versendet werden soll:
-
 Dazu aktivieren Sie den Menüeintrag \Menu{Extras$\rightarrow$Nachricht
 signieren}. Die Schaltfläche mit dem signierenden Stift
 wird aktiviert.
 
-Ihr \Email{}-Fenster sollte anschließend etwa so aussehen (als
-Protokoll wurde hier exemplarisch OpenPGP gewählt):
+Ihr \Email{}-Fenster sollte anschließend etwa so aussehen:
 % TODO screenshot: OL composer with Adele's address and body text
 \begin{center}
 \IncludeImage[width=0.7\textwidth]{sc-ol-sendSignedMail_de}
@@ -2292,10 +2286,26 @@ jederzeit mit einem erneuten Klick auf die Schlatfläche wieder deaktivieren.
 
 Klicken Sie nun auf \Button{Senden}.
 
+~\\
+\textbf{Hinweis:}\\
+Genauso wie beim Verschlüsseln von \Email{}s erkennt Gpg4win
+automatisch in welchen Protokoll (OpenPGP oder S/MIME) Ihre eignes
+Zertifikat (mit dem geheimen Schlüssel zum Signieren) vorliegt.
+
+Sollen Sie das Protokoll manuell setzen wollen, nutzen Sie dazu 
+das Menü \Menu{Extras$\rightarrow$GnuPG Protokoll} im
+Outlook-Nachrichtenfenster und wählen Sie \textit{PGP/MIME},
+\textit{S/MIME} oder \textit{automatisch} -- die Erläuterungen und
+Hinweise vom Verschlüsseln (siehe Seite~\pageref{encryptProtocol}) gelten auch
+für das Signieren.
+
+
 \clearpage
 \subsubsection{Zertifikatsauswahl}
 Daraufhin öffnet Kleopatra ein Fenster, in dem -- anders als beim
-Verschlüsseln -- Ihre \textit{eigenen} Zertifikate angezeigt werden.
+Verschlüsseln -- Ihre \textbf{eigenen} Zertifikate (also alle die
+Zertifikate, zu denen Ihnen jeweils ein geheimer Schlüssel vorliegt)
+angezeigt werden.
 
 
 % TODO screenshot: kleopatra sign dialog - certificate selection
@@ -2307,27 +2317,32 @@ Denn:
 \begin{quote}
     \textbf{Signieren können Sie nur mit Ihrem eigenen geheimen Schlüssel.}
 \end{quote}
-Logisch, denn nur Ihr eigenes geheimes Zertifikat bestätigt Ihre
-Identität. Der Korrespondenzpartner kann dann mit Ihrem Zertifikat, das
+Logisch, denn nur Ihr geheimer Schlüssel bestätigt Ihre
+Identität. Der Korrespondenzpartner kann dann mit Ihrem öffentlichen Zertifikat, das
 er bereits hat oder sich besorgen kann, Ihre Identität überprüfen.
-Denn nur Ihr geheimer Schlüssel passt zu Ihrem Zertifikat.
+Denn nur Ihr geheimer Schlüssel passt zu Ihrem öffentlichen Zertifikat.
 
 
 Im Normalfall können Sie im obigen Dialog Ihr vorausgewähtes Zertifikat mit
-\Button{Weiter} bestätigen. Beim ersten Durchlauf des Signierprozesses müssen
-Sie jedoch zunächst Kleopatra Ihr bevorzugtes Zertifikat für OpenPGP
-bzw. S/MIME mitteilen.
+\Button{Weiter} bestätigen.
 
+Beim ersten Durchlauf des Signierprozesses müssen
+Sie zunächst Kleopatra Ihr bevorzugtes Zertifikat zum Signieren  mit OpenPGP
+bzw. S/MIME mitteilen.
 Sollte also noch kein Zertifikat ausgewählt oder nicht Ihr richtiges
 Zertifikat angezeigt sein -- z.B. weil Sie mehrere Zertifikate
 besitzen -- klicken Sie auf \Button{Signaturzertifikate ändern...}.
 
 
 \clearpage
-Sie bekommen einen Auswahl-Dialog mit einer Auflistung aller Ihrer
-eigenen Zertifikate, die in Ihrer Zertifikatsverwaltung existieren.
-Nachfolgend der Dialog, gefüllt mit Beispielzertifikaten für OpenPGP
-und S/MIME:
+Sie möchten Ihr Signaturzertifikat ändern?
+
+Dann erhalten Sie an dieser Stelle einen Auswahl-Dialog
+mit einer Auflistung aller Ihrer
+eigenen Zertifikate des vorher gewählten Protokolls,
+die in Ihrer Zertifikatsverwaltung existieren.
+
+Nachfolgend ein Beispieldialog für OpenPGP:
 % TODO screenshot: kleopatra sign dialog 2 - choose certificate
 \begin{center}
 \IncludeImage[width=0.7\textwidth]{sc-kleopatra-sign-chooseOpenpgpCertificate_de}
@@ -2371,10 +2386,10 @@ signiert!}
 \clearpage
 \subsubsection{Kurz zusammengefasst}
 Sie haben gelernt, wie Sie eine \Email{} mit Ihrem eigenen Zertifikat
-\textbf{signieren}.
+(das Ihren geheimen Schüssel enthält) \textbf{signieren}.
 
 Seit dem letzten Kapitel wissen Sie nun auch, wie Sie eine
-\Email{} mit dem Zertifikat Ihres Korrespondenzpartners
+\Email{} mit dem öffentlichen Zertifikat Ihres Korrespondenzpartners
 \textbf{verschlüsseln}.
 
 Damit beherschen Sie nun die beiden wichtigsten Techniken für einen
@@ -2405,11 +2420,11 @@ Angenommen Sie erhalten eine signierte \Email{} Ihres
 Korrespondenzpartners.
 
 Die Überprüfung dieser elektronischen Signatur ist sehr einfach.
-Alles was Sie dazu brauchen, ist das OpenPGP- oder X.509-Zertifikat
+Alles was Sie dazu brauchen, ist das öffentliche OpenPGP- oder X.509-Zertifikat
 Ihres Korrespondenzpartners.
-Dessen Zertifikat sollten Sie vor der Überprüfung bereits
-in Ihre Kleopatra Zertifikatsverwaltung importiert haben
-(vgl. Kapitel~\ref{ch:keyring}).
+Dessen öffentliches Zertifikat sollten Sie vor der Überprüfung bereits
+in Ihre Zertifikatsverwaltung importiert haben
+(vgl. Kapitel~\ref{ch:importCertificate}).
 
 Um eine signierte OpenPGP- oder S/MIME-\Email{} zu überprüfen,
 gehen Sie genauso vor, wie bei der Entschlüsselung einer \Email{}
@@ -2521,20 +2536,20 @@ auf \textit{Nur Text} umstellen.
 \section{Verschlüsseln und Signieren}
 \label{sec_encsig}
 
-Normalerweise verschlüsseln Sie eine Nachricht mit dem Zertifikat 
+Normalerweise verschlüsseln Sie eine Nachricht mit dem öffentlichen Zertifikat 
 Ihres Korrespondenzpartners, der dann mit seinem geheimen Schlüssel die
 \Email{} entschlüsselt.
 
 Die umgekehrte Möglichkeit -- man würde mit dem geheimen Schlüssel
 verschlüsseln -- macht zum Verschlüsseln keinen Sinn,
-weil alle Welt das dazugehörigen (öffentliche) Zertifikat kennt und die
+weil alle Welt das dazugehörigen öffentliche Zertifikat kennt und die
 Nachricht damit entschlüsseln könnte.
 
 Es gibt aber ein anderes Verfahren, um mit Ihrem geheimen Schlüssel
 eine Datei zu erzeugen: die Signatur (wie Sie am Anfang dieses
 Kapitels bereits gelesen haben).
 Solch eine elektronische Signatur bestätigt eindeutig
-die Urheberschaft -- denn wenn jemand Ihr Zertifikat
+die Urheberschaft -- denn wenn jemand Ihr öffentliches Zertifikat
 auf diese Datei (die Signatur) anwendet und die Ausgabe dieser Prüfung
 ist valide, so kann diese Datei nur von Ihrem privaten Schlüssel
 kodiert worden sein. Und zu dem dürfen ja nur Sie selbst Zugang
@@ -2546,25 +2561,24 @@ kombinieren, also die \Email{} verschlüsseln und signieren:
 \begin{enumerate}
     \item Sie \textbf{signieren} die Botschaft mit Ihren eigenen geheimen
   Schlüssel. Damit ist die Urheberschaft nachweisbar.
-\item Dann \textbf{verschlüsseln} Sie den Text mit dem Zertifikat
+\item Dann \textbf{verschlüsseln} Sie den Text mit dem öffentlichen Zertifikat
   des Korrespondenzpartners.
 \end{enumerate}
 
-%TODO: kein Innenbrief!
 Damit hat die Botschaft sozusagen zwei Sicherheitsmerkmale:
 
 \begin{enumerate}
 \item Ihren Siegel auf der Nachricht (die
-  Signatur mit Ihrem eigenen geheimen Schlüssel). %TODO: Zertifikat?
+  Signatur mit Ihrem geheimen Schlüssel).
 \item Einen soliden äußeren Umschlag (die Verschlüsselung mit dem
-  öffentlichen Schlüssel des Korrespondenzpartners).
+  öffentlichen Zertifikat des Korrespondenzpartners).
 \end{enumerate}
 
 Ihr Korrespondenzpartner öffnet die äußere, starke Hülle mit seinem eigenen
 geheimen Schlüssel. Hiermit ist die Geheimhaltung gewährleistet, denn
-nur dieser Schlüssel kann den Text dekodieren. Das Siegel liest 
-er mit Ihrem Zertifikat und hat den Beweis Ihrer
-Urheberschaft, denn wenn Ihr Zertifikat passt, kann er nur mit Ihrem
+nur dieser Schlüssel kann den Text dekodieren. Das Siegel liest
+er mit Ihrem öffentlichen Zertifikat und hat den Beweis Ihrer
+Urheberschaft, denn wenn Ihr öffentliches Zertifikat passt, kann er nur mit Ihrem
 geheimen Schlüssel kodiert worden sein.
 
 Sehr trickreich und~-- wenn man ein wenig darüber nachdenkt -- auch
@@ -2600,7 +2614,7 @@ selbst!}
 
 Die Nachricht wird einmal für Ihren eigentlichen Korrespondenzpartner
 (z.B. Adele) verschlüsselt und ein weiteres Mal auch für Sie, mit
-Hilfe Ihres eigenen Zertifikats. So können Sie die \Email{} später einfach
+Hilfe Ihres eigenen öffentlichen Zertifikats. So können Sie die \Email{} später einfach
 mit Ihrem eigenen geheimen Schlüssel wieder lesbar machen.
 
 Da Gpg4win nicht wissen kann, welchen Schlüssel Sie benutzen (Sie
@@ -2631,7 +2645,8 @@ den vollständigen Fingerabdruck Ihres Zertifikats an, z.B.:
 %"`Encrypt to this key"' Ihren Schlüssel ein bzw. die
 %dazugehörige \Email{}-Adresse.
 
-Den Fingerabdruck finden Sie in den Zertifikatsdetails.
+Den Fingerabdruck finden Sie in den Zertifikatsdetails Ihres
+Zertifikat.
 
 Eine entsprechende Option finden Sie auch bei allen \Email{}-Programmen,
 die GnuPG direkt unterstützen.
@@ -2641,13 +2656,11 @@ die GnuPG direkt unterstützen.
 %% Original page 49
 \subsubsection{Kurz zusammengefasst}
 
-%TODO: ###
-
 \begin{enumerate}
-\item Sie haben mit dem öffentlichen Schlüssel Ihres Korrespondenzpartners eine
+\item Sie haben mit dem öffentlichen Zertifikat Ihres Korrespondenzpartners eine
   \Email{} verschlüsselt und ihm damit geantwortet.
 \item Kleopatra verschlüsselt Ihre gesendeten verschlüsselten \Email{}s auch
-  zusätzlich mit Ihrem eigenen Schlüssel, so dass die Nachrichten für
+  zusätzlich mit Ihrem eigenen öffentlichen Zertifikat, so dass die Nachrichten für
   Sie lesbar bleiben.
 \end{enumerate}
 
@@ -3124,8 +3137,9 @@ Eine \textbf{schlechte Passphrase} ist blitzschnell "`geknackt"', wenn
 sie...
 
 \begin{itemize}
-\item ... schon für einen anderen Zweck benutzt wird; z.B. für einen
-  \Email{}-Account oder Ihr Handy. %TODO: Hinweis: Passwort bekannt!
+\item ... schon für einen anderen Zweck benutzt wird (z.B. für einen
+  \Email{}-Account oder Ihr Handy). Die gleiche Passphrase wäre damit
+  bereits einer anderen, möglicherweise unsicheren Software bekannt.
 
 \item ... aus einem Wörterbuch stammt. Passphrase-Knackprogramme
     überprüfen binnen Minuten umfangreiche elektronische Wörterbücher.
@@ -3307,7 +3321,7 @@ Hier eine Auswahl von gut funktionierenden Zertifikatsservern:
 
 Sollte Sie Probleme mit einer Firewall haben, so versuchen Sie am
 besten die Zertifikatsserver, deren URL mit \verb-http://- beginnen.
-%TODO: Verweis auf Proxy-Konfiguration
+%TODO#: Verweis auf Proxy-Konfiguration
 
 Die Zertifikatsserver unter den Adressen
 \begin{itemize}
@@ -4106,7 +4120,8 @@ derzeit nur mit OpenPGP möglich.
 \chapter{Im- und Export eines geheimen Schlüssels}
 \label{ch:ImExport}
 
-In den Kapiteln \ref{ch:publishCertificate} und \ref{ch:keyring}
+In den Kapiteln \ref{ch:publishCertificate} und
+\ref{ch:importCertificate}
 wurde der Im- und Export von Zertifikaten erläutert. Sie haben
 Ihr eigenes Zertifikat exportiert, um es zu veröffentlichen, 
 und das Zertifikat Ihres Korrespondenzpartners importiert 
@@ -4169,7 +4184,7 @@ geheimen Schlüssel und damit sicherheitskritische Informationen!
 Zum Importieren Ihres vorher exportierten geheimen Zertifikats
 in Kleopatra, gehen Sie so vor, wie Sie es beim
 Importieren von öffentlichen (fremden) Zertifikaten gewohnt sind 
-(vgl. Kapitel~\ref{ch:keyring}):
+(vgl. Kapitel~\ref{ch:importCertificate}):
 
 Klicken Sie auf \Menu{Datei$\rightarrow$Zertifikat importieren...} und
 wählen Sie die zu importierende Datei aus.
@@ -4277,7 +4292,7 @@ Einige typische systemweite Einstellungen sind:
 
 
 \item Proxy für Zertifikatsserver-Suche
-    %TODO: Proxy für OpenPGP-Zertifikatsserver - Syntax beschreiben.
+    %TODO#: Proxy für OpenPGP-Zertifikatsserver - Syntax beschreiben.
 
     Es kommt vor, dass interne Netzwerke keine direkten Verbindungen der einzelnen
     Rechner nach aussen zulassen, sondern einen sogenannten Proxy vorsehen.
@@ -4714,7 +4729,7 @@ gespeichert. Es ist empfehlenswert mit \Filename{1} zu beginnen und
 nur höhere Werte einzusetzen, falls es eine tiefere
 Programmablaufanalyse erfordern sollte.
 
-%TODO: Mögliche Werte für enableDebug ergeben sich aus 2er Potenzen?
+%TODO#: Mögliche Werte für enableDebug ergeben sich aus 2er Potenzen?
 %also: 0-1-2-4-8-.. etc. 
 % Genauer Wertebereich?
 
@@ -5669,7 +5684,7 @@ kodierte Nachricht zur Basis 10.
 Zum Verschlüsseln der Nachricht nehmen Sie jetzt Tabelle~\ref{table1} zur Hilfe.
 Die Nachricht wird nun zu der Zahlenfolge 53, 63, 50 (zur Basis 10).
 
-%TODO: convert in Latex
+%TODO#: convert in Latex
 \begin{center}
 \htmlattributes*{img}{width=500}
 \IncludeImage[width=0.9\textwidth]{table-1}
@@ -5761,7 +5776,7 @@ Start von Outlook findet sich im Menü
 Die Karteikarte \textit{GpgOL} unterteilt sich in drei Bereiche:
 \begin{enumerate}
     \item \textbf{Allgemein:}
-        %TODO: ÜBerarbeiten
+        %TODO#: ÜBerarbeiten
         Nach der Installation von Gpg4win ist die 
         \T\margin{\IncludeImage[width=1.5cm]{smime-icon}}
         S/MIME Funktionalität in GpgOL deaktiviert.
@@ -5904,14 +5919,10 @@ Der Dateiname (hier: \verb-gpg4win.exe-) kann je nach Version variieren.
 Die Groß-/Kleinschreibung bei der Eingabe in der
 Kommandozeile ist hierbei wichtig. Eventuell sind noch Zugriffrechte
 (z.B. lesen und schreiben) auf den Installationsordner zu setzen.
+Ein Beispiel:\\
+\verb-  gpg4win.exe /D=D:\Programme\Gpg4win-
 
-Ein Beispiel:
-%TODO: weniger Leerzeilen!!
-\begin{verbatim}
-  gpg4win.exe /D=D:\Programme\Gpg4win
-\end{verbatim}
-
-Mit der Option \verb-/S- läuft die Installation "`still"' (also
+~\\Mit der Option \verb-/S- läuft die Installation "`still"' (also
 ohne Dialog) ab. Ohne Angabe von weiteren
 Parametern, werden alle Voreinstellungen übernommen.
 
@@ -5919,12 +5930,10 @@ Gpg4win unterstützt auch eine sogenannte Steurungsdatei.
 Mit der Option \verb-/C=INIFILE- kann eine Steuerungsdatei (Name endet
 üblicherweise auf \textit{.ini}) angegeben werden. 
 
-Ein weiteres Beispiel:
-\begin{verbatim}
-  gpg4win.exe /S /C=C:\TEMP\gpg4win.ini
-\end{verbatim}
+Ein weiteres Beispiel:\\
+\verb-  gpg4win.exe /S /C=C:\TEMP\gpg4win.ini-
 
-Diese \textit{.ini} Datei sollte genau einen Abschnitt \verb-[gpg4win]- enthalten.
+~\\Diese \textit{.ini} Datei sollte genau einen Abschnitt \verb-[gpg4win]- enthalten.
 Dort können diverse Einstellungen vorgenommen werden, darunter
 absolute Pfadangaben für die zu installierenden Konfigurationsdateien.
 Relative Pfade, also abhängig vom aktuellem
