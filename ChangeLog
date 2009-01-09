@@ -1,3 +1,17 @@
+2009-01-09  Colin Leroy  <colin@colino.net>
+
+	* patches/claws-mail-3.7.0/01-bug_1810.patch
+		Fix crash when hitting 'o' (disabled Open With)
+	* patches/claws-mail-3.7.0/02-bug_1813.patch
+		Fix themes installation
+	* patches/claws-mail-3.7.0/03-bug_1814.patch
+		Workaround wrong window positioning when taskbar
+		is on top
+	* patches/claws-mail-3.7.0/04-bug_1815.patch
+		Fix Drag-n-drop to Compose window
+	* patches/claws-mail-3.7.0/05-bug_1816.patch
+		Fix bogus --attach error message
+
 2008-12-19  Colin Leroy  <colin@colino.net>
 
 	* packages/packages.current: Update Claws Mail to 3.7.0

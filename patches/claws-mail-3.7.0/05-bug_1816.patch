@@ -1,0 +1,24 @@
+#! /bin/sh
+patch -p0 -f $* < $0
+exit $?
+
+Index: src/main.c
+===================================================================
+RCS file: /srv/cvs/claws-mail/claws/src/main.c,v
+retrieving revision 1.115.2.216
+diff -u -p -u -r1.115.2.216 main.c
+--- src/main.c	26 Nov 2008 11:59:57 -0000	1.115.2.216
++++ src/main.c	9 Jan 2009 09:44:35 -0000
+@@ -2341,10 +2341,9 @@ static void lock_socket_input_cb(gpointe
+ 		mailto = g_strdup(buf + strlen("compose_attach") + 1);
+ 		files = g_ptr_array_new();
+ 		while (fd_gets(sock, buf, sizeof(buf)) > 0) {
+-			if (buf[0] == '.' && buf[1] == '\n') {
+-				break;
+-			}
+ 			strretchomp(buf);
++			if (!strcmp2(buf, "."))
++				break;
+ 			g_ptr_array_add(files, g_strdup(buf));
+ 		}
+ 		open_compose_new(mailto, files);

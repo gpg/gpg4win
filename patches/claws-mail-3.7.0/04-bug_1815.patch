@@ -1,0 +1,69 @@
+#! /bin/sh
+patch -p0 -f $* < $0
+exit $?
+
+Index: src/compose.c
+===================================================================
+RCS file: /srv/cvs/claws-mail/claws/src/compose.c,v
+retrieving revision 1.382.2.492
+diff -u -p -u -r1.382.2.492 compose.c
+--- src/compose.c	28 Dec 2008 16:23:07 -0000	1.382.2.492
++++ src/compose.c	9 Jan 2009 09:27:58 -0000
+@@ -10086,8 +10086,10 @@ static void compose_attach_drag_received
+ 	Compose *compose = (Compose *)user_data;
+ 	GList *list, *tmp;
+ 
+-	if (gdk_atom_name(data->type) && 
+-	    !strcmp(gdk_atom_name(data->type), "text/uri-list")
++	if (((gdk_atom_name(data->type) && !strcmp(gdk_atom_name(data->type), "text/uri-list"))
++#ifdef G_OS_WIN32
++	 || (gdk_atom_name(data->type) && !strcmp(gdk_atom_name(data->type), "DROPFILES_DND")))
++#endif
+ 	    && gtk_drag_get_source_widget(context) != 
+ 	        summary_get_main_widget(mainwindow_get_mainwindow()->summaryview)) {
+ 		list = uri_list_extract_filenames((const gchar *)data->data);
+@@ -10153,11 +10155,18 @@ static void compose_insert_drag_received
+ 
+ 	/* strangely, testing data->type == gdk_atom_intern("text/uri-list", TRUE)
+ 	 * does not work */
++	debug_print("drop: %s (%s)\n", gdk_atom_name(data->type)?gdk_atom_name(data->type):"nul",
++		data->data?data->data:"nul");
++#ifndef G_OS_WIN32
+ 	if (gdk_atom_name(data->type) && !strcmp(gdk_atom_name(data->type), "text/uri-list")) {
++#else
++	if (gdk_atom_name(data->type) && !strcmp(gdk_atom_name(data->type), "DROPFILES_DND")) {
++#endif
+ 		AlertValue val = G_ALERTDEFAULT;
+ 
+ 		list = uri_list_extract_filenames((const gchar *)data->data);
+-
++		debug_print("list: %p (%s)\n", list, 
++			data->data?data->data:"nul");
+ 		if (list == NULL && strstr((gchar *)(data->data), "://")) {
+ 			/* Assume a list of no files, and data has ://, is a remote link */
+ 			gchar *tmpdata = g_strstrip(g_strdup((const gchar *)data->data));
+Index: src/common/utils.c
+===================================================================
+RCS file: /srv/cvs/claws-mail/claws/src/common/utils.c,v
+retrieving revision 1.36.2.161
+diff -u -p -u -r1.36.2.161 utils.c
+--- src/common/utils.c	9 Jan 2009 08:02:05 -0000	1.36.2.161
++++ src/common/utils.c	9 Jan 2009 09:28:01 -0000
+@@ -1396,6 +1396,7 @@ GList *uri_list_extract_filenames(const 
+ 		     * g_filename_from_uri() rejects escaped/locale encoded uri
+ 		     * string which come from Nautilus.
+ 		     */
++#ifndef G_OS_WIN32
+ 					if (g_utf8_validate(file, -1, NULL))
+ 						locale_file
+ 							= conv_codeset_strdup(
+@@ -1404,6 +1405,9 @@ GList *uri_list_extract_filenames(const 
+ 								conv_get_locale_charset_str());
+ 					if (!locale_file)
+ 						locale_file = g_strdup(file + 5);
++#else
++					locale_file = g_filename_from_uri(file, NULL, NULL);
++#endif
+ 					result = g_list_append(result, locale_file);
+ 				}
+ 			}
