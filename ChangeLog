@@ -1,3 +1,7 @@
+2009-01-12  Werner Koch  <wk@g10code.com>
+
+	* packages/packages.current: Update gnupg and libksba.
+
 2009-01-09  Colin Leroy  <colin@colino.net>
 
 	* patches/claws-mail-3.7.0/01-bug_1810.patch
