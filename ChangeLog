@@ -1,3 +1,7 @@
+2009-01-16  Werner Koch  <wk@g10code.com>
+
+	* packages/packages.current: Update gpgol.
+
 2009-01-12  Werner Koch  <wk@g10code.com>
 
 	* packages/packages.current: Update gnupg and libksba.
