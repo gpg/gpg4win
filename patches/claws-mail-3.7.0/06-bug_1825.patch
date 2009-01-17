@@ -15,7 +15,7 @@ diff -u -p -u -r1.115.2.218 -r1.115.2.219
  	int flags;
  
 -	mem_notify_fd = open("/dev/mem_notify", O_RDONLY|O_NONBLOCK);
-+	mem_notify_fd = g_open("/dev/mem_notify", O_RDONLY|O_NONBLOCK);
++	mem_notify_fd = g_open("/dev/mem_notify", O_RDONLY|O_NONBLOCK, 0);
  	if (mem_notify_fd == -1) {
  		debug_print("/dev/mem_notify not available (%s)\n", 
  			strerror(errno));
@@ -32,10 +32,10 @@ diff -u -p -u -r1.28.2.44 -r1.28.2.45
  
  #if HAVE_FLOCK
 -		if ((lockfd = open(base, O_RDWR)) < 0) {
-+		if ((lockfd = g_open(base, O_RDWR)) < 0) {
++		if ((lockfd = g_open(base, O_RDWR, 0)) < 0) {
  #else
 -		if ((lockfd = open(base, O_RDWR)) < 0) {
-+		if ((lockfd = g_open(base, O_RDWR)) < 0) {
++		if ((lockfd = g_open(base, O_RDWR, 0)) < 0) {
  #endif
  			FILE_OP_ERROR(base, "open");
  			return -1;
@@ -52,7 +52,7 @@ diff -u -p -u -r1.2.2.6 -r1.2.2.7
  	size_t total = 0; /* total length read */
  	int num_alloc = 1; /* number of blocks allocated */
 -	int fd = open(file, O_RDONLY);
-+	int fd = g_open(file, O_RDONLY);
++	int fd = g_open(file, O_RDONLY, 0);
  
  	if (fd == -1) {
  		FILE_OP_ERROR(file, "open");
@@ -240,7 +240,7 @@ diff -u -p -u -r1.36.2.163 -r1.36.2.164
  #else	  
  	/* test whether the file is readable without blocking */
 -	fd = open(file, O_RDONLY | O_NONBLOCK);
-+	fd = g_open(file, O_RDONLY | O_NONBLOCK);
++	fd = g_open(file, O_RDONLY | O_NONBLOCK, 0);
  	if (fd == -1) {
  		FILE_OP_ERROR(file, "open");
  		return NULL;
@@ -286,7 +286,7 @@ diff -u -p -u -r1.1.4.107 -r1.1.4.108
  	size = stat_buf.st_size;
  	
 -	fd = open(param->filename, O_RDONLY);
-+	fd = g_open(param->filename, O_RDONLY);
++	fd = g_open(param->filename, O_RDONLY, 0);
  	if (fd < 0) {
  		result->error = MAILIMAP_ERROR_APPEND;
  		return;
@@ -295,7 +295,7 @@ diff -u -p -u -r1.1.4.107 -r1.1.4.108
  	   SSH might do something stupid like trying to use it instead
  	   of running $SSH_ASKPASS. Doh. */
 -	fd = open("/dev/tty", O_RDONLY);
-+	fd = g_open("/dev/tty", O_RDONLY);
++	fd = g_open("/dev/tty", O_RDONLY, 0);
  	if (fd != -1) {
  		ioctl(fd, TIOCNOTTY, NULL);
  		close(fd);

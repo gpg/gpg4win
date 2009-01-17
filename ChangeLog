@@ -1,6 +1,11 @@
 2009-01-17  Colin Leroy  <colin@colino.net>
 
 	* patches/claws-mail-3.7.0/06-bug_1825.patch
+		Fix patch.
+
+2009-01-17  Colin Leroy  <colin@colino.net>
+
+	* patches/claws-mail-3.7.0/06-bug_1825.patch
 		Fix opening IMAP mails in non-ascii folders.
 
 2009-01-16  Werner Koch  <wk@g10code.com>
