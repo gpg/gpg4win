@@ -1,3 +1,8 @@
+2009-01-19  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+
+	* manual/gpg4win-compendium-de.tex: Change Email command inside
+	of textsc command (because hyperlatex error).
+
 2008-12-19  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
 	* manual/gpg4win-compendium-de.tex: Many minor changes in all
