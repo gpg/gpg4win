@@ -1,3 +1,8 @@
+2009-01-20  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+
+	* src/installer.nsi: Change german translation of
+	MUI_LANGDLL_INFO.
+
 2009-01-17  Colin Leroy  <colin@colino.net>
 
 	* patches/claws-mail-3.7.0/06-bug_1825.patch

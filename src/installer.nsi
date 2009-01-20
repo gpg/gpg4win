@@ -124,7 +124,7 @@ Var OtherGnuPGDetected
 
 # No Umlaute, please!
 !define MUI_LANGDLL_INFO "Please choose a language for the setup.$\r$\n\
-Bitte Sprache des Setups angeben."
+Bitte die Sprache des Installations-Vorgangs angeben."
 
 # The list of wizard pages.
 
