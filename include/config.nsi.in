@@ -277,6 +277,10 @@
 !define gpg4win_pkg_scute @gpg4win_pkg_scute@
 !define gpg4win_pkg_scute_version @gpg4win_pkg_scute_version@
 
+@HAVE_PKG_PAPERKEY@
+!define gpg4win_pkg_paperkey @gpg4win_pkg_paperkey@
+!define gpg4win_pkg_paperkey_version @gpg4win_pkg_paperkey_version@
+
 # Internal packages.
 @HAVE_PKG_COMPENDIUM_DE@
 

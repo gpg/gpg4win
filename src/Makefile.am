@@ -48,6 +48,7 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi config.site \
         inst-gpgee.nsi		   uninst-gpgee.nsi	      \
         inst-gpgme.nsi		   uninst-gpgme.nsi	      \
         inst-scute.nsi		   uninst-scute.nsi	      \
+        inst-paperkey.nsi	   uninst-paperkey.nsi	      \
         inst-gpgol.nsi		   uninst-gpgol.nsi	      \
         inst-gpgex.nsi		   uninst-gpgex.nsi	      \
         inst-gtk+.nsi		   uninst-gtk+.nsi	      \
@@ -90,7 +91,7 @@ gpg4win_spkgs = glib libgpg-error gpgme gpgol gpgex \
 		gpa winpt libgsasl libtasn1 opencdk gnutls curl libxml2 \
                 libetpan claws-mail notification_plugin gtkhtml2_viewer \
 		vcalendar rssyl gnupg2 pinentry libassuan libksba libgcrypt \
-		adns dirmngr w32pth scute tnef_parse attachwarner
+		adns dirmngr w32pth scute paperkey tnef_parse attachwarner
 
 # Extra options to configure for individual packages.
 # We can use $(idir) here for the installation prefix.
@@ -114,6 +115,16 @@ define gpg4win_pkg_gnupg2_post_install
               $$$${pkgidir}/share/locale/$$$${i}/LC_MESSAGES/gnupg2.mo; \
  done)
 endef
+
+# Paperkey comes with a man pages which we have to convert.
+define gpg4win_pkg_paperkey_post_install
+(for i in paperkey ; \
+  do man -Tlatin1 -l $$$${pkgidir}/share/man/man1/$$$${i}.1 | \
+    sed `printf "s/_\b//g;s/\b.//g"` | \
+    sed -e 's/$$$$/\r/' > $$$${pkgidir}/share/man/man1/$$$${i}.man ; \
+ done)
+endef
+
 
 
 # Build the reference manual.
@@ -259,6 +270,8 @@ gpg4win_pkg_attachwarner_configure = \
 
 gpg4win_pkg_scute_configure = --silent \
   --with-gpgme-prefix=$(idir) --with-libassuan-prefix=$(idir)
+
+gpg4win_pkg_paperkey_configure = --silent
 
 # Supported make-only source packages.
 gpg4win_mpkgs = pthreads-w32 bzip2

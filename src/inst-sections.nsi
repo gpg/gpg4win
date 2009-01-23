@@ -1,5 +1,5 @@
 # inst-sections.nsi - Installer for GPG4Win sections.  -*- coding: latin-1; -*-
-# Copyright (C) 2005, 2006, 2007, 2008 g10 Code GmbH
+# Copyright (C) 2005, 2006, 2007, 2008, 2009 g10 Code GmbH
 # 
 # This file is part of GPG4Win.
 # 
@@ -14,9 +14,7 @@
 # GNU General Public License for more details.
 # 
 # You should have received a copy of the GNU General Public License
-# along with this program; if not, write to the Free Software
-# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,
-# USA.
+# along with this program; if not, see <http://www.gnu.org/licenses/>.
 
 
 # Sections
@@ -154,6 +152,9 @@
 !ifdef HAVE_PKG_SCUTE
 !include "inst-scute.nsi"
 !endif
+!ifdef HAVE_PKG_PAPERKEY
+!include "inst-paperkey.nsi"
+!endif
 !ifdef HAVE_PKG_CLAWS_MAIL
 !include "inst-claws-mail.nsi"
 !endif
@@ -236,6 +237,9 @@
 !endif
 !ifdef HAVE_PKG_ATTACHWARNER
 !include "uninst-attachwarner.nsi"
+!endif
+!ifdef HAVE_PKG_PAPERKEY
+!include "uninst-paperkey.nsi"
 !endif
 !ifdef HAVE_PKG_SCUTE
 !include "uninst-scute.nsi"
@@ -446,6 +450,17 @@ calc_defaults_gpgex_done:
   StrCmp $R0 "0" 0 calc_defaults_scute_done
    !insertmacro UnselectSection ${SEC_scute}
 calc_defaults_scute_done:
+!endif
+
+!ifdef HAVE_PKG_PAPERKEY
+  g4wihelp::config_fetch_bool "inst_paperkey"
+  StrCmp $R0 "1" 0 calc_defaults_paperkey_not_one
+   !insertmacro SelectSection ${SEC_paperkey}
+   Goto calc_defaults_paperkey_done
+  calc_defaults_paperkey_not_one:
+  StrCmp $R0 "0" 0 calc_defaults_paperkey_done
+   !insertmacro UnselectSection ${SEC_paperkey}
+calc_defaults_paperkey_done:
 !endif
 
 !ifdef HAVE_PKG_GPA
@@ -681,6 +696,14 @@ Function CalcDepends
   have_scute:
   # All dependencies are linked in statically.
   skip_scute:
+!endif
+
+!ifdef HAVE_PKG_PAPERKEY
+  !insertmacro SectionFlagIsSet ${SEC_paperkey} \
+		${SF_SELECTED} have_paperkey skip_paperkey
+  have_paperkey:
+  # All dependencies are linked in statically.
+  skip_paperkey:
 !endif
 
 !ifdef HAVE_PKG_GPGEX
@@ -1099,6 +1122,9 @@ FunctionEnd
 !endif
 !ifdef HAVE_PKG_SCUTE
   !insertmacro MUI_DESCRIPTION_TEXT ${SEC_scute} $(DESC_SEC_scute)
+!endif
+!ifdef HAVE_PKG_PAPERKEY
+  !insertmacro MUI_DESCRIPTION_TEXT ${SEC_paperkey} $(DESC_SEC_paperkey)
 !endif
 !ifdef HAVE_PKG_GPA
   !insertmacro MUI_DESCRIPTION_TEXT ${SEC_gpa} $(DESC_SEC_gpa)
