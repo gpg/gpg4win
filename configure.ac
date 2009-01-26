@@ -172,12 +172,14 @@ for i in DLLTOOL MAKE UNZIP TAR MKDIR CP RM STOW MAKENSIS ZCAT TEXI2DVI \
 done
 
 
+
 # Optional tools.
 
 AC_CHECK_PROGS(WGET, wget)
 
 
 # Packages.
+gpg4win_dup_sources=""
 
 GPG4WIN_BPKG_GNU([libiconv])
 GPG4WIN_BPKG_GNU([gettext], [libiconv])
@@ -281,6 +283,16 @@ if test -n "$missing_tools"; then
 *** Required tools not found. Please consult the above messages
 *** and install them before running configure again.
 ***]])
+fi
+
+# Throw an error if any duplicate source packages have been found
+if test -n "$gpg4win_dup_sources"; then
+    tmp=
+    for i in $gpg4win_dup_sources; do 
+      tmp="$tmp
+$i"
+    done
+    AC_MSG_ERROR([Packages with more that one source version:$tmp])
 fi
 
 

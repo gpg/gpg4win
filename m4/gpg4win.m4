@@ -152,7 +152,8 @@ AC_DEFUN([GPG4WIN_FIND],
   _gpg4win_found=
   for _gpg4win_f in $_gpg4win_file; do
       AS_IF([test "$_gpg4win_found" = yes],
-            AC_MSG_ERROR(found more than one sources for $1 in $_gpg4win_dir))
+            [AC_MSG_WARN(found more than one sources for $1 in $_gpg4win_dir)
+             gpg4win_dup_sources="$gpg4win_dup_sources $1"])
       _gpg4win_found=yes
   done
 

@@ -1,3 +1,9 @@
+2009-01-26  Werner Koch  <wk@g10code.com>
+
+	* configure.ac: Print an error message listing all duplicate packages.
+	* m4/gpg4win.m4 (GPG4WIN_FIND): Do not bail out on duplicate
+	packages.
+
 2009-01-23  Werner Koch  <wk@g10code.com>
 
 	* src/inst-paperkey.nsi, src/uninst-paperkey.nsi: New.
