@@ -34,7 +34,13 @@ Section "-kdesupport" SEC_kdesupport
 !else
   # FIXME: Figure out how to relocate dbus-daemon (and kleopatra).
   SetOutPath "$INSTDIR\bin"
+  ClearErrors
+  SetOverwrite try
   File ${prefix}/bin/dbus-daemon.exe
+  SetOverwrite lastused
+  IfErrors 0 +3
+      File /oname=dbus-daemon.exe.tmp ${prefix}/bin/dbus-daemon.exe
+      Rename /REBOOTOK dbus-daemon.exe.tmp dbus-daemon.exe
   SetOutPath "$INSTDIR"
 
   File ${prefix}/bin/dbus-launch.exe
@@ -53,8 +59,23 @@ Section "-kdesupport" SEC_kdesupport
 
   SetOutPath "$INSTDIR"
   File ${prefix}/bin/giflib4.dll
+
+  ClearErrors
+  SetOverwrite try
   File ${prefix}/bin/libdbus-1.dll
+  SetOverwrite lastused
+  IfErrors 0 +3
+      File /oname=libdbus-1.dll.tmp ${prefix}/bin/libdbus-1.dll
+      Rename /REBOOTOK libdbus-1.dll.tmp libdbus-1.dll
+
+  ClearErrors
+  SetOverwrite try
   File ${prefix}/bin/libexpat.dll
+  SetOverwrite lastused
+  IfErrors 0 +3
+      File /oname=libexpat.dll.tmp ${prefix}/bin/libexpat.dll
+      Rename /REBOOTOK libexpat.dll.tmp libexpat.dll
+
   File ${prefix}/bin/libexpatw.dll
   File ${prefix}/bin/libexslt.dll
   File ${prefix}/bin/libkdewin32.dll

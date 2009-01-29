@@ -31,7 +31,7 @@ Section "-un.kdesupport"
   Call un.SourceDelete
 !else
   # FIXME: See inst-kdesupport.nsi.
-  Delete "$INSTDIR\bin\dbus-daemon.exe"
+  Delete /REBOOTOK "$INSTDIR\bin\dbus-daemon.exe"
   RMDir "$INSTDIR\bin"
 
   Delete "$INSTDIR\dbus-env.bat"
@@ -45,8 +45,10 @@ Section "-un.kdesupport"
   Delete "$INSTDIR\xsltproc.exe"
 
   Delete "$INSTDIR\giflib4.dll"
-  Delete "$INSTDIR\libdbus-1.dll"
-  Delete "$INSTDIR\libexpat.dll"
+  # We can not force down dbus-daemon, because it may be in use by
+  # non-gpg4win components (like KoWi).
+  Delete /REBOOTOK "$INSTDIR\libdbus-1.dll"
+  Delete /REBOOTOK "$INSTDIR\libexpat.dll"
   Delete "$INSTDIR\libexpatw.dll"
   Delete "$INSTDIR\libexslt.dll"
   Delete "$INSTDIR\libkdewin32.dll"
