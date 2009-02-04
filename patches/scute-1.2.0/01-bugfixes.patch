@@ -1,0 +1,54 @@
+#! /bin/sh
+patch -p0 -f $* < $0
+exit $?
+
+
+diff -rup src/Makefile.am src/Makefile.am
+--- src/Makefile.am	2008-09-02 16:08:09.000000000 +0200
++++ src/Makefile.am	2008-09-03 19:29:28.000000000 +0200
+@@ -146,7 +146,7 @@ clean-local:
+ 
+ scute_LDADD = @LTLIBOBJS@ $(srcdir)/scute.def -L. -lassuan -lgpg-error -lws2_32
+ 
+-#.rc.o:
+-#	$(RC) -I $(srcdir) -I . `test -f '$<' || echo '$(srcdir)/'`$< $@
++.rc.o:
++	$(RC) -I $(srcdir) -I . `test -f '$<' || echo '$(srcdir)/'`$< $@
+ 
+ endif
+diff -rup src/Makefile.in src/Makefile.in
+--- src/Makefile.in	2008-09-02 18:37:38.000000000 +0200
++++ src/Makefile.in	2008-09-03 19:29:46.000000000 +0200
+@@ -210,7 +210,7 @@ am__objects_2 = locking.$(OBJEXT) error-
+ 	p11-verifyrecoverinit.$(OBJEXT) p11-verifyupdate.$(OBJEXT) \
+ 	p11-waitforslotevent.$(OBJEXT) p11-wrapkey.$(OBJEXT)
+ @HAVE_W32_SYSTEM_TRUE@am_scute_OBJECTS = dllmain.$(OBJEXT) \
+-@HAVE_W32_SYSTEM_TRUE@	$(am__objects_2)
++@HAVE_W32_SYSTEM_TRUE@	$(am__objects_2) versioninfo.$(OBJEXT)
+ scute_OBJECTS = $(am_scute_OBJECTS)
+ DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir)
+ depcomp = $(SHELL) $(top_srcdir)/depcomp
+@@ -1456,8 +1456,8 @@ uninstall-am: uninstall-binPROGRAMS unin
+ @HAVE_W32_SYSTEM_TRUE@clean-local:
+ @HAVE_W32_SYSTEM_TRUE@	rm -f libgpg-error.a libassuan.a
+ 
+-#.rc.o:
+-#	$(RC) -I $(srcdir) -I . `test -f '$<' || echo '$(srcdir)/'`$< $@
++@HAVE_W32_SYSTEM_TRUE@.rc.o:
++@HAVE_W32_SYSTEM_TRUE@	$(RC) -I $(srcdir) -I . `test -f '$<' || echo '$(srcdir)/'`$< $@
+ # Tell versions [3.59,3.63) of GNU make to not export all variables.
+ # Otherwise a system limit (for SysV at least) may be exceeded.
+ .NOEXPORT:
+diff -rup src/support.h src/support.h
+--- src/support.h	2008-08-08 17:50:53.000000000 +0200
++++ src/support.h	2008-09-03 19:29:28.000000000 +0200
+@@ -53,7 +53,8 @@ scute_copy_string (char *dest, char *src
+ }
+ 
+ #ifndef HAVE_STPCPY
+-#include "stpcpy.h"
++/* Copy SRC to DST, returning the address of the terminating '\0' in DST.  */
++extern char *stpcpy (char *dst, const char *src);
+ #endif
+ 
+ /*-- Simple replacement functions. */

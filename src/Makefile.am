@@ -38,6 +38,8 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi config.site \
         inst-gpgme.nsi		   uninst-gpgme.nsi	      \
         inst-gpgol.nsi		   uninst-gpgol.nsi	      \
         inst-gpgex.nsi		   uninst-gpgex.nsi	      \
+        inst-scute.nsi		   uninst-scute.nsi	      \
+        inst-paperkey.nsi	   uninst-paperkey.nsi	      \
         inst-gtk+.nsi		   uninst-gtk+.nsi	      \
         inst-jpeg.nsi		   uninst-jpeg.nsi	      \
         inst-libassuan.nsi	   uninst-libassuan.nsi	      \
@@ -45,6 +47,7 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi config.site \
         inst-libgpg-error.nsi	   uninst-libgpg-error.nsi    \
         inst-libiconv.nsi	   uninst-libiconv.nsi	      \
         inst-libksba.nsi	   uninst-libksba.nsi	      \
+        inst-adns.nsi	           uninst-adns.nsi	      \
         inst-libpng.nsi		   uninst-libpng.nsi	      \
         inst-man_advanced_de.nsi   uninst-man_advanced_de.nsi \
         inst-man_advanced_en.nsi   uninst-man_advanced_en.nsi \
@@ -71,7 +74,7 @@ CLEANFILES = g4wihelp.dll versioninfo.txt README.en.txt README.de.txt \
 gpg4win_spkgs = glib gnupg libgpg-error gpgme gpgol gpgex \
 		gpa winpt sylpheed-claws \
 	        claws-mail gnupg2 pinentry libassuan libksba \
-		libgcrypt dirmngr w32pth
+		libgcrypt dirmngr w32pth adns scute paperkey
 
 # Extra options to configure for individual packages.
 # We can use $(idir) here for the installation prefix.
@@ -100,11 +103,21 @@ endef
 
 
 # The fields FAQ and faq.html conflict with those in GnuPG1.
-# For now removes them.
+# For now remove them.
 define gpg4win_pkg_gnupg2_post_install	
-( rm $$$${pkgidir}/share/gnupg/FAQ; \
-  rm $$$${pkgidir}/share/gnupg/faq.html )
+( rm $$$${pkgidir}/share/gnupg/FAQ || true; \
+  rm $$$${pkgidir}/share/gnupg/faq.html || true)
 endef
+
+# Paperkey comes with a man pages which we have to convert.
+define gpg4win_pkg_paperkey_post_install
+(for i in paperkey ; \
+  do man -Tlatin1 -l $$$${pkgidir}/share/man/man1/$$$${i}.1 | \
+    sed `printf "s/_\b//g;s/\b.//g"` | \
+    sed -e 's/$$$$/\r/' > $$$${pkgidir}/share/man/man1/$$$${i}.man ; \
+ done)
+endef
+
 
 # We would like to use --with-libiconv-prefix and
 # --with-libintl-prefix, but these don't work with the cheesy
@@ -140,7 +153,9 @@ gpg4win_pkg_gnupg2_configure = \
   --with-libgcrypt-prefix=$(idir) \
   --with-libassuan-prefix=$(idir) \
   --with-zlib=$(idir) \
+  --with-bzip2=$(idir) \
   --with-pth-prefix=$(idir) \
+  --with-adns=$(idir) \
   --without-included-gettext \
   --disable-regex
 
@@ -196,6 +211,12 @@ gpg4win_pkg_claws_mail_configure = --silent \
   --disable-mathml-viewer-plugin --disable-clamav-plugin \
   --disable-spamassassin-plugin --disable-bogofilter-plugin \
   --disable-valgrind
+
+gpg4win_pkg_scute_configure = --silent \
+  --with-gpg-error-prefix=$(idir) \
+  --with-libassuan-prefix=$(idir)
+
+gpg4win_pkg_paperkey_configure = --silent
 
 # Supported make-only source packages.
 gpg4win_mpkgs = pthreads-w32 bzip2

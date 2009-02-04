@@ -58,5 +58,7 @@ Section "-gpgme" SEC_gpgme
       Rename /REBOOTOK libgpgme-qt-11.dll.tmp libgpgme-qt-11.dll
 !endif
 
+  File "${prefix}/libexec/gpgme-w32spawn.exe"
+
 !endif
 SectionEnd

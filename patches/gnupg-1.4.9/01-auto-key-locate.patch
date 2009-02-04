@@ -1,0 +1,24 @@
+#! /bin/sh
+patch -p0 -f $* < $0
+exit $?
+
+	* getkey.c (parse_auto_key_locate): Ignore nodefault and local
+	methods.
+
+
+--- g10/getkey.c    (.../tags/gnupg-1.4.9/g10/getkey.c)     (revision 4925)
++++ g10/getkey.c    (.../branches/STABLE-BRANCH-1-4/g10/getkey.c)   (revision 4925)
+@@ -2962,6 +3008,12 @@
+       if(tok[0]=='\0')
+        continue;
+ 
++      /* For now we silently ignore the new methods introduced with
++         2.0.10. */ 
++      if (!ascii_strcasecmp (tok,"nodefault")
++          || !ascii_strcasecmp (tok,"local"))
++        continue;
++
+       akl=xmalloc_clear(sizeof(*akl));
+ 
+       if(ascii_strcasecmp(tok,"ldap")==0)
+

@@ -182,8 +182,6 @@ chk   050f93a0d74385ce90e8934e49c11f171d495c5a
 #
 # GPGee
 #
-# 2007-09-11: Replaced by gpgex.
-#
 # Note that the -bin package has been repackaged from the
 # -noinstaller package using these commands:
 #    mkdir gpgee-tmp
@@ -192,8 +190,9 @@ chk   050f93a0d74385ce90e8934e49c11f171d495c5a
 #    unzip GPGee.zip
 #    rm GPGee/uninst.exe 
 #    zip ../GPGee-1.2.3-bin.zip GPGee/*
-# server ftp://ftp.gnupg.org/gcrypt/gpgee
-#
+
+server ftp://ftp.gnupg.org/gcrypt/gpgee
+
 file GPGee-1.3.1-noinstaller.zip
 chk  6e44bbf61776e0a6c8714a514fa39489e94c0179
 file GPGee-1.3.1-source.zip
@@ -207,22 +206,15 @@ server ftp://ftp.g10code.com/g10code/gpgol
 
 file gpgol-0.9.92.tar.bz2
 chk  98c14c731f8e69e26d243fb4e830c0afa9a66cb7
-#
-# GpgEX
-#
 
-#server ftp://ftp.g10code.com/g10code/scratch
-#
-#file gpgex-0.0.0-svn18.tar.bz2
-#chk  825320edd689cd221f189ec308531817663295fc
 
 #
 # Pth emulation
 #
 server ftp://ftp.g10code.com/g10code/w32pth
 
-file w32pth-2.0.1.tar.bz2
-chk  e74a770a58f08ba02f311d16c5debe79c218ee5d
+file w32pth-2.0.2.tar.bz2
+chk  9f43acb64867fb54b456f8a1187307ceb7bdf183
 
 #
 # Stripped down version of BZIP2
@@ -238,34 +230,52 @@ chk  ae1b992721198b93198aa36eb7a3a7d074417f47
 #
 server ftp://ftp.gnupg.org/gcrypt
 
-file gnupg/gnupg-1.4.7.tar.bz2
-chk  22149105845c79068771837c8deb7d5ba0854927
+file gnupg/gnupg-1.4.9.tar.bz2
+chk  826f4bef1effce61c3799c8f7d3cc8313b340b55
 
-name gnupg2-2.0.7.tar.bz2
-file gnupg/gnupg-2.0.7.tar.bz2
-chk  f7d9ae7695bd9b849475b482bb7b027ec6fadbae
+name gnupg2-2.0.10.tar.bz2
+file gnupg/gnupg-2.0.10.tar.bz2
+chk  d25e41a8cc607334b707d13af819ceaa217800b5
 
-file libgpg-error/libgpg-error-1.5.tar.bz2
-chk  1f83d9af8e8ed3bcbf3a5e9018db257dc6336655
+file libgpg-error/libgpg-error-1.7.tar.bz2
+chk  bf8c6babe1e28cae7dd6374ca24ddcc42d57e902 
 
-file libksba/libksba-1.0.2.tar.bz2
-chk  4d2c4a99c313b799590bf3fc223179c454e268b5
+file libksba/libksba-1.0.5.tar.bz2
+chk  2d5939d21f02142197158cd252b2725414a64b33
 
-file alpha/libassuan/libassuan-1.0.3-svn262.tar.bz2 
-chk  8ff570cd6cc4961658664944e5d0088ca4db389b
+file libassuan/libassuan-1.0.5.tar.bz2
+chk  f6c36e9d99736883a8ce5b80b0a51d854cbbbc70
 
-file alpha/libgcrypt/libgcrypt-1.3.0.tar.bz2
-chk  38361925fef99715eccb8a1f73110ce2f3c3896a
+file libgcrypt/libgcrypt-1.4.4.tar.bz2
+chk  3987f0efcbb7048c136d5c859e88eee1763a14f6
 
-file pinentry/pinentry-0.7.3.tar.gz
-chk  557b886bc7a7030fd185fbc085703ef1ed304db8
+file pinentry/pinentry-0.7.5.tar.gz
+chk  6699a1ff94c649e8905199d480c6412cc43bad3d 
 
-file alpha/gpgme/gpgme-1.1.6-svn1258.tar.bz2
-chk  aa4299ec21c3cd5bb4614c45388e9c89ab64093a 
+file gpgme/gpgme-1.1.8.tar.bz2
+chk  e56da614f3e6acc1cb51af767c77f4a95b05b1e8
 
 server ftp://ftp.g10code.com/g10code/scratch
-file dirmngr-1.0.2-svn267.tar.bz2
-chk  408e9ab1d4755b1fa2ac66ed503bbbe2d791c4e8
+file dirmngr-1.0.3-svn310.tar.bz2
+chk  e3f6df819419f1bff8f707cff41220a556c0b272  
+
+
+#
+#  GnuPG utilities
+#
+server http://www.jabberwocky.com/software/paperkey
+
+file paperkey-1.0.tar.gz
+chk  ddb5fa5612df365ae0ba324ba307d3aa2e549981  
+
+
+#
+# adns
+#
+server ftp://ftp.g10code.com/g10code/adns
+
+file adns-1.4-g10-2.tar.bz2
+chk  6255a7958dc9e735c3f76595cd973abca09c1f93
 
 
 #
@@ -273,24 +283,6 @@ chk  408e9ab1d4755b1fa2ac66ed503bbbe2d791c4e8
 #
 server http://wald.intevation.org/frs/download.php
 
-file 350/gpa-0.7.6.tar.bz2
-chk  bb9182cd4c6bd6677ba9cdcca262dcc1b1d22c3c
+file   491/gpa-0.8.0.tar.bz2
+chk    c519af3ccd3c7e518458e143b2001a8cc6d90467
 
-
-#
-# Qt
-#
-server http://www.kdab.net/~frank/qt-win
-
-name qt-4.3.1-bin.zip
-file Qt-Win-Opensource-4.3.1.zip
-chk 36da6ba5a271bb66dd4e92a6b237ec8051edbf92
-
-name qt-4.3.1-lib.zip
-file Qt-Win-Opensource-4.3.1-dev.zip
-chk c73998ac45b17ec4b7a52de6ef8f7f0e95d9818a
-
-server ftp://ftp.trolltech.com/pub/qt/source
-name qt-4.3.1-src.zip
-file qt-win-opensource-src-4.3.1.zip
-chk 7dcdaafe5ab451b1bc9af0e5db080e7b5d484732

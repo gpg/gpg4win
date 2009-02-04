@@ -1,3 +1,22 @@
+2009-02-04  Werner Koch  <wk@g10code.com>
+
+	* src/inst-gpa.nsi: Adjust for newer GPA.
+
+	* patches/gpgme-1.1.8/01-spawn-prototype.patch: New.
+	
+	* patches/gnupg-1.4.9/01-auto-key-locate.patch: New
+
+	* patches/gnupg2/01-version.patch.in: New.
+	* configure.ac (AC_CONFIG_FILES): Patch the version of GnuPG.
+	(AC_CONFIG_COMMANDS): New.
+
+	* include/config.nsi.in: Support adns, paperkey and scute.
+	* src/inst-paperkey.nsi, src/uninst-paperkey.nsi: New. 
+	* src/inst-scute.nsi, src/uninst-scute.nsi: New. 
+	* src/inst-adns.nsi, src/uninst-adns.nsi: New. 
+	* src/inst-sections.nsi: Add new packages.
+	* src/Makefile: Add new packages.
+	
 2007-09-17  Werner Koch  <wk@g10code.com>
 
 	Released 0.9.92.

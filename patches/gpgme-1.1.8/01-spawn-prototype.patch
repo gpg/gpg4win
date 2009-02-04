@@ -1,0 +1,39 @@
+#! /bin/sh
+patch -p0 -f $* < $0
+exit $?
+
+
+	* w32-glib-io.c (_gpgme_io_spawn): Make ARGV argument const to
+	match prototype.
+	* w32-qt-io.cpp (_gpgme_io_spawn): Ditto.
+
+
+
+Index: src/w32-qt-io.cpp
+===================================================================
+--- src/w32-qt-io.cpp	(revision 1352)
++++ src/w32-qt-io.cpp	(working copy)
+@@ -397,7 +397,7 @@
+ 
+ 
+ int
+-_gpgme_io_spawn (const char *path, char **argv,
++_gpgme_io_spawn (const char *path, char * const argv[],
+ 		 struct spawn_fd_item_s *fd_list, pid_t *r_pid)
+ {
+   SECURITY_ATTRIBUTES sec_attr;
+Index: src/w32-glib-io.c
+===================================================================
+--- src/w32-glib-io.c	(revision 1352)
++++ src/w32-glib-io.c	(working copy)
+@@ -448,7 +448,7 @@
+ 
+ 
+ int
+-_gpgme_io_spawn (const char *path, char **argv,
++_gpgme_io_spawn (const char *path, char * const argv[],
+ 		 struct spawn_fd_item_s *fd_list, pid_t *r_pid)
+ {
+   SECURITY_ATTRIBUTES sec_attr;
+
+

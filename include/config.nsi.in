@@ -78,6 +78,10 @@
 !define gpg4win_pkg_gpgme @gpg4win_pkg_gpgme@
 !define gpg4win_pkg_gpgme_version @gpg4win_pkg_gpgme_version@
 
+@HAVE_PKG_ADNS@
+!define gpg4win_pkg_adns @gpg4win_pkg_adns@
+!define gpg4win_pkg_adns_version @gpg4win_pkg_adns_version@
+
 @HAVE_PKG_GNUPG@
 !define gpg4win_pkg_gnupg @gpg4win_pkg_gnupg@
 !define gpg4win_pkg_gnupg_version @gpg4win_pkg_gnupg_version@
@@ -209,6 +213,14 @@
 !define gpg4win_pkg_qt_version @gpg4win_pkg_qt_version@
 !define gpg4win_pkg_qt_dev @gpg4win_pkg_qt_dev@
 !define gpg4win_pkg_qt_src @gpg4win_pkg_qt_src@
+
+@HAVE_PKG_SCUTE@
+!define gpg4win_pkg_scute @gpg4win_pkg_scute@
+!define gpg4win_pkg_scute_version @gpg4win_pkg_scute_version@
+
+@HAVE_PKG_PAPERKEY@
+!define gpg4win_pkg_paperkey @gpg4win_pkg_paperkey@
+!define gpg4win_pkg_paperkey_version @gpg4win_pkg_paperkey_version@
 
 # Internal packages.
 @HAVE_PKG_MAN_NOVICE_DE@

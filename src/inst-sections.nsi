@@ -23,6 +23,9 @@
 
 !include "inst-gpg4win.nsi"
 
+!ifdef HAVE_PKG_ADNS
+!include "inst-adns.nsi"
+!endif
 !ifdef HAVE_PKG_GNUPG
 !include "inst-gnupg.nsi"
 !endif
@@ -88,6 +91,12 @@
 !endif
 !ifdef HAVE_PKG_GPGEX
 !include "inst-gpgex.nsi"
+!endif
+!ifdef HAVE_PKG_SCUTE
+!include "inst-scute.nsi"
+!endif
+!ifdef HAVE_PKG_PAPERKEY
+!include "inst-paperkey.nsi"
 !endif
 !ifdef HAVE_PKG_PANGO
 !include "inst-pango.nsi"
@@ -160,6 +169,12 @@
 !endif
 !ifdef HAVE_PKG_SYLPHEED_CLAWS
 !include "uninst-sylpheed-claws.nsi"
+!endif
+!ifdef HAVE_PKG_PAPERKEY
+!include "uninst-paperkey.nsi"
+!endif
+!ifdef HAVE_PKG_SCUTE
+!include "uninst-scute.nsi"
 !endif
 !ifdef HAVE_PKG_GPGEE
 !include "uninst-gpgee.nsi"
@@ -250,6 +265,9 @@
 !ifdef HAVE_PKG_GNUPG
 !include "uninst-gnupg.nsi"
 !endif
+!ifdef HAVE_PKG_ADNS
+!include "uninst-adns.nsi"
+!endif
 
 !include "uninst-gpg4win.nsi"
 
@@ -310,6 +328,28 @@ calc_defaults_gpgol_done:
   StrCmp $R0 "0" 0 calc_defaults_gpgex_done
    !insertmacro UnselectSection ${SEC_gpgex}
 calc_defaults_gpgex_done:
+!endif
+
+!ifdef HAVE_PKG_SCUTE
+  g4wihelp::config_fetch_bool "inst_scute"
+  StrCmp $R0 "1" 0 calc_defaults_scute_not_one
+   !insertmacro SelectSection ${SEC_scute}
+   Goto calc_defaults_scute_done
+  calc_defaults_scute_not_one:
+  StrCmp $R0 "0" 0 calc_defaults_scute_done
+   !insertmacro UnselectSection ${SEC_scute}
+calc_defaults_scute_done:
+!endif
+
+!ifdef HAVE_PKG_PAPERKEY
+  g4wihelp::config_fetch_bool "inst_paperkey"
+  StrCmp $R0 "1" 0 calc_defaults_paperkey_not_one
+   !insertmacro SelectSection ${SEC_paperkey}
+   Goto calc_defaults_paperkey_done
+  calc_defaults_paperkey_not_one:
+  StrCmp $R0 "0" 0 calc_defaults_paperkey_done
+   !insertmacro UnselectSection ${SEC_paperkey}
+calc_defaults_paperkey_done:
 !endif
 
 !ifdef HAVE_PKG_GPA
@@ -454,6 +494,9 @@ Function CalcDepends
 !ifdef HAVE_PKG_GTK_
   !insertmacro UnselectSection ${SEC_gtk_}
 !endif
+!ifdef HAVE_PKG_ADNS
+  !insertmacro UnselectSection ${SEC_adns}
+!endif
 !ifdef HAVE_PKG_LIBGPG_ERROR
   !insertmacro UnselectSection ${SEC_libgpg_error}
 !endif
@@ -491,6 +534,7 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_libgpg_error}
   !insertmacro SelectSection ${SEC_w32pth}
   !insertmacro SelectSection ${SEC_zlib}
+  !insertmacro SelectSection ${SEC_adns}
   !insertmacro SelectSection ${SEC_pinentry}
   !insertmacro SelectSection ${SEC_dirmngr}
   skip_gnupg2:
@@ -606,6 +650,22 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_gpgme}
   !insertmacro SelectSection ${SEC_gnupg}
   skip_gpgol:
+!endif
+
+!ifdef HAVE_PKG_SCUTE
+  !insertmacro SectionFlagIsSet ${SEC_scute} \
+		${SF_SELECTED} have_scute skip_scute
+  have_scute:
+  # All dependencies are linked in statically.
+  skip_scute:
+!endif
+
+!ifdef HAVE_PKG_PAPERKEY
+  !insertmacro SectionFlagIsSet ${SEC_paperkey} \
+		${SF_SELECTED} have_paperkey skip_paperkey
+  have_paperkey:
+  # All dependencies are linked in statically.
+  skip_paperkey:
 !endif
 
 !ifdef HAVE_PKG_GPGEX
@@ -755,6 +815,12 @@ FunctionEnd
 !endif
 !ifdef HAVE_PKG_GPGEX
   !insertmacro MUI_DESCRIPTION_TEXT ${SEC_gpgex} $(DESC_SEC_gpgex)
+!endif
+!ifdef HAVE_PKG_SCUTE
+  !insertmacro MUI_DESCRIPTION_TEXT ${SEC_scute} $(DESC_SEC_scute)
+!endif
+!ifdef HAVE_PKG_PAPERKEY
+  !insertmacro MUI_DESCRIPTION_TEXT ${SEC_paperkey} $(DESC_SEC_paperkey)
 !endif
 !ifdef HAVE_PKG_GPA
   !insertmacro MUI_DESCRIPTION_TEXT ${SEC_gpa} $(DESC_SEC_gpa)

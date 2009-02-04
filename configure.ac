@@ -1,5 +1,5 @@
 # configure.ac for GPG4Win
-# Copyright (C) 2005, 2006, 2007 g10 Code GmbH
+# Copyright (C) 2005, 2006, 2007, 2009 g10 Code GmbH
 # 
 # This file is part of GPG4Win
 # 
@@ -26,7 +26,7 @@ min_automake_version="1.9.3"
 # Set my_issvn to "yes" for non-released code.  Remember to run an
 # "svn up" and "autogen.sh" right before creating a distribution.
 # Right after a release the make target "copy-news" is to be called!
-m4_define([my_version], [1.1.3])
+m4_define([my_version], [1.1.4rc1])
 m4_define([my_issvn], [no])
 
 m4_define([svn_revision], m4_esyscmd([echo -n $( (svn info 2>/dev/null \
@@ -185,6 +185,7 @@ GPG4WIN_BPKG_GTK_DEV([cairo], [glib pkgconfig])
 GPG4WIN_BPKG_BINSRC([GPGee], [gnupg])
 
 GPG4WIN_SPKG([bzip2])
+GPG4WIN_SPKG([adns])
 GPG4WIN_SPKG([libgpg-error], [libiconv gettext])
 GPG4WIN_SPKG([libgcrypt], [libgpg-error])
 GPG4WIN_SPKG([libksba], [libgpg-error])
@@ -195,11 +196,13 @@ GPG4WIN_SPKG([pinentry], [libiconv])
 GPG4WIN_SPKG([gpgme], [libgpg-error gnupg glib])
 GPG4WIN_SPKG([gnupg], [libiconv bzip2])
 GPG4WIN_SPKG([gnupg2], [libiconv libgcrypt libksba libassuan libgpg-error dnl
-                        w32pth zlib bzip2])
+                        w32pth zlib bzip2 adns])
 GPG4WIN_SPKG([pthreads-w32])
 GPG4WIN_SPKG([pinentry])
 GPG4WIN_SPKG([gpgol], [gpgme])
 GPG4WIN_SPKG([gpgex], [libassuan])
+GPG4WIN_SPKG([scute], [libgpg-error libassuan])
+GPG4WIN_SPKG([paperkey])
 GPG4WIN_SPKG([gpa], [libiconv gettext zlib gtk+ libpng glib gpgme])
 GPG4WIN_SPKG([winpt], [gpgme gnupg])
 GPG4WIN_SPKG([sylpheed-claws], [libiconv gettext zlib gtk+ libpng jpeg glib dnl
@@ -232,6 +235,9 @@ fi
 
 
 # Finalize.
+AC_CONFIG_COMMANDS([gpg4win-conf],[[
+chmod +x patches/gnupg2/01-version.patch
+]])
 
 AC_CONFIG_FILES(Makefile)
 AC_CONFIG_FILES(packages/Makefile include/Makefile src/Makefile po/Makefile.in)
@@ -240,4 +246,5 @@ AC_CONFIG_FILES(doc/Makefile)
 AC_CONFIG_FILES(doc/logo/Makefile)
 AC_CONFIG_FILES(doc/manual/Makefile doc/manual/version.tex)
 AC_CONFIG_FILES(doc/website/Makefile)
+AC_CONFIG_FILES(patches/gnupg2/01-version.patch)
 AC_OUTPUT

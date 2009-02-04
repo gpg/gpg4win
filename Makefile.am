@@ -48,7 +48,13 @@ EXTRA_DIST = autogen.sh README.SVN \
 	patches/claws-mail-3.0.0-rc2/03-smime-plugin.patch \
 	patches/claws-mail-3.0.0-rc2/04-cvs116.patch \
 	patches/claws-mail-3.0.0-rc2/99-auto.patch \
-	patches/gpgol-0.9.91/01-gpgme.patch
+	patches/gpgme-1.1.8/01-spawn-prototype.patch \
+	patches/gpgme/01-gpg2.patch \
+	patches/gpgme/02-kleo-bugs-workaround.patch \
+        patches/gnupg-1.4.9/01-auto-key-locate.patch \
+	patches/gnupg2/01-version.patch.in \
+	patches/gpgol-0.9.91/01-gpgme.patch \
+        patches/scute-1.2.0/01-bugfixes.patch
 
 copy-news:
 	cp NEWS doc/website/NEWS.last

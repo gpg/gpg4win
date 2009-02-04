@@ -37,9 +37,19 @@ Section "GPA" SEC_gpa
   SetOutPath "$INSTDIR\share\locale\de\LC_MESSAGES"
   File ${prefix}/share/locale/de/LC_MESSAGES/gpa.mo
 
+  SetOutPath "$INSTDIR\share\locale\ar\LC_MESSAGES"
+  File ${prefix}/share/locale/ar/LC_MESSAGES/gpa.mo
+
+  SetOutPath "$INSTDIR\share\locale\es\LC_MESSAGES"
+  File ${prefix}/share/locale/es/LC_MESSAGES/gpa.mo
+
+  SetOutPath "$INSTDIR\share\locale\fr\LC_MESSAGES"
+  File ${prefix}/share/locale/fr/LC_MESSAGES/gpa.mo
+
+  SetOutPath "$INSTDIR\share\locale\ru\LC_MESSAGES"
+  File ${prefix}/share/locale/ru/LC_MESSAGES/gpa.mo
+
   SetOutPath "$INSTDIR\share\gpa"
-  File ${prefix}/share/gpa/gpa_tips.en
-  File ${prefix}/share/gpa/gpa_tips.de
   File ${prefix}/share/gpa/gpa_logo.ppm
   File ${prefix}/share/gpa/gpa.png
 
