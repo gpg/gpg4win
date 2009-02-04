@@ -1,0 +1,21 @@
+#! /bin/sh
+patch -p0 -f $* < $0
+exit $?
+
+Make --version also print the version number of Gpg4win so that we 
+can see in bug reports what patches have been used.
+
+
+
+
+--- util/argparse.c~	2008-03-20 10:06:44.000000000 +0100
++++ util/argparse.c	2009-02-04 17:58:00.000000000 +0100
+@@ -845,7 +845,7 @@
+     fputs(strusage(11), stdout);
+     if( (s=strusage(12)) )
+ 	printf(" (%s)", s );
+-    printf(" %s\n", strusage(13) );
++    printf(" %s %s\n", strusage(13), "(Gpg4win @PACKAGE_VERSION@)");
+     /* additional version lines */
+     for(i=20; i < 30; i++ )
+ 	if( (s=strusage(i)) )

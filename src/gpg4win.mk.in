@@ -59,6 +59,7 @@ define SETVARS
 	pkgsdir="$(bdir)/$$$${pkg_version}";				\
 	pkgbdir="$(bdir)/$$$${pkg_version}-build";			\
 	pkgpdir="$(pdir)/$$$${pkg_version}";				\
+	pkgpbdir="$(pdir)/$(1)";	          			\
 	pkgidir="$(ipdir)/$$$${pkg_version}";				\
 	pkg_dev="$(call GETVAR,gpg4win_pkg_$(1)_dev)";			\
 	pkg_version_dev="$(1)-dev-$(call GETVAR,gpg4win_pkg_$(1)_version)"; \
@@ -116,7 +117,7 @@ stamps/stamp-$(1)-00-unpack: stamps/stamp-directories
 stamps/stamp-$(1)-01-patch: stamps/stamp-$(1)-00-unpack
 	(shopt -s nullglob;				\
 	 $(call SETVARS,$(1));				\
-	 for pfile in "$$$${pkgpdir}"/*.patch ; do	\
+	 for pfile in "$$$${pkgpbdir}"/*.patch "$$$${pkgpdir}"/*.patch ; do  \
 	   (cd "$$$${pkgsdir}"; "$$$${pfile}")		\
 	 done)
 	touch stamps/stamp-$(1)-01-patch
@@ -184,7 +185,7 @@ stamps/stamp-$(1)-00-unpack: stamps/stamp-directories
 stamps/stamp-$(1)-01-patch: stamps/stamp-$(1)-00-unpack
 	(shopt -s nullglob;				\
 	 $(call SETVARS,$(1));				\
-	 for pfile in "$$$${pkgpdir}"/*.patch ; do	\
+	 for pfile in "$$$${pkgpbdir}"/*.patch "$$$${pkgpdir}"/*.patch ; do \
 	   (cd "$$$${pkgsdir}"; "$$$${pfile}")		\
 	 done)
 	touch stamps/stamp-$(1)-01-patch

@@ -1,11 +1,17 @@
 2009-02-04  Werner Koch  <wk@g10code.com>
 
+	* src/gpg4win.mk.in (SETVARS): Add new var PKGPBDIR.
+	(SPKG_template) <stamps/stamp-$(1)-01-patch>: Allow for patches
+	without the version name of the package.
+	(MPKG_template) <stamps/stamp-$(1)-01-patch>: Ditto.
+
 	* src/inst-gpa.nsi: Adjust for newer GPA.
 
 	* patches/gpgme-1.1.8/01-spawn-prototype.patch: New.
 	
 	* patches/gnupg-1.4.9/01-auto-key-locate.patch: New
 
+	* patches/gnupg/01-version.patch.in: New.
 	* patches/gnupg2/01-version.patch.in: New.
 	* configure.ac (AC_CONFIG_FILES): Patch the version of GnuPG.
 	(AC_CONFIG_COMMANDS): New.

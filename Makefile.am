@@ -52,6 +52,7 @@ EXTRA_DIST = autogen.sh README.SVN \
 	patches/gpgme/01-gpg2.patch \
 	patches/gpgme/02-kleo-bugs-workaround.patch \
         patches/gnupg-1.4.9/01-auto-key-locate.patch \
+	patches/gnupg/01-version.patch.in \
 	patches/gnupg2/01-version.patch.in \
 	patches/gpgol-0.9.91/01-gpgme.patch \
         patches/scute-1.2.0/01-bugfixes.patch
