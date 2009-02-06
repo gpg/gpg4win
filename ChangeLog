@@ -1,5 +1,12 @@
 2009-02-06  Marc Mutz <marc@kdab.net>
 
+	* packages/packages.current: update kdelibs, kleopatra
+	* src/inst-kleopatra.nsi, src/uninst-kleopatra.nsi: adjust to new
+	package layout, disable Kleopatra HTML handbook until we can built
+	it in an automated fashion.
+
+2009-02-06  Marc Mutz <marc@kdab.net>
+
 	* configure.ac: Kleopatra is now a GPG4WIN_BPKG_BINSRC
 	
 2009-02-06  Marc Mutz <marc@kdab.net>
