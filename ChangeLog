@@ -1,5 +1,9 @@
 2009-02-06  Marc Mutz <marc@kdab.net>
 
+	* configure.ac: Kleopatra is now a GPG4WIN_BPKG_BINSRC
+	
+2009-02-06  Marc Mutz <marc@kdab.net>
+
 	* src/gpg4win.mk.in: Inject $(GPG4WIN_PARALLEL) for building
 	individual packages. Try twice with it, once without, before
 	finally failing. Speeds up builds on n-core machines, n>1.
