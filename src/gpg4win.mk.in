@@ -137,6 +137,8 @@ stamps/stamp-$(1)-02-configure: stamps/stamp-$(1)-01-patch
 stamps/stamp-$(1)-03-make: stamps/stamp-$(1)-02-configure
 	($(call SETVARS,$(1));				\
 	  cd "$$$${pkgbdir}";				\
+	  $(MAKE) $(AM_MAKEFLAGS) $(GPG4WIN_PARALLEL) $$$${pkgmkargs} || \
+	  $(MAKE) $(AM_MAKEFLAGS) $(GPG4WIN_PARALLEL) $$$${pkgmkargs} || \
 	  $(MAKE) $(AM_MAKEFLAGS) $$$${pkgmkargs})
 	touch stamps/stamp-$(1)-03-make
 

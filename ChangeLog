@@ -1,3 +1,9 @@
+2009-02-06  Marc Mutz <marc@kdab.net>
+
+	* src/gpg4win.mk.in: Inject $(GPG4WIN_PARALLEL) for building
+	individual packages. Try twice with it, once without, before
+	finally failing. Speeds up builds on n-core machines, n>1.
+
 2009-02-06  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
 	* packages/packages.current: Update kleopatra and kdelibs. Clear
