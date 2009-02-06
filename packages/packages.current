@@ -172,7 +172,7 @@ server ftp://ftp.gtk.org/pub/gtk/v2.10/win32/dependencies
 file atk-1.12.2.zip
 chk  c4dd9617e96f03a6856cc99dec407bc9e8f28a98
 file atk-dev-1.12.2.zip
-chk  168ebd566ab4913cb8b03b11d7bc7a038bf27273 
+chk  168ebd566ab4913cb8b03b11d7bc7a038bf27273
 
 
 #
@@ -193,7 +193,7 @@ chk  3ffdfe8f49421e5c0f8608c113ee6920316b9562
 server http://cairographics.org/releases
 
 file cairo-1.4.2.tar.gz
-chk  9e7a323fc7d81d5011044d7eb22db3bf26ff7314 
+chk  9e7a323fc7d81d5011044d7eb22db3bf26ff7314
 
 server ftp://ftp.gtk.org/pub/gtk/v2.10
 
@@ -232,7 +232,7 @@ chk  1019c8027c0cf94bca680886f4e2ae4e629a2a97
 server http://wald.intevation.org/frs/download.php
 
 #file  265/winpt-1.0.0.tar.bz2
-#chk   7a3589a0ce3a81e3b94547ffdd76bf53d51e919f  
+#chk   7a3589a0ce3a81e3b94547ffdd76bf53d51e919f
 #file  272/winpt-1.0.1.tar.bz2
 #chk   574b7766701aaaef6e388d8b3ad68a171c9c071f
 
@@ -252,7 +252,7 @@ server http://wald.intevation.org/frs/download.php
 #    unzip ../GPGee-1.2.3-noinstaller.zip
 #    gpg --verify GPGee.zip.asc
 #    unzip GPGee.zip
-#    rm GPGee/uninst.exe 
+#    rm GPGee/uninst.exe
 #    zip ../GPGee-1.2.3-bin.zip GPGee/*
 # server ftp://ftp.gnupg.org/gcrypt/gpgee
 #
@@ -268,7 +268,7 @@ server http://wald.intevation.org/frs/download.php
 server ftp://ftp.g10code.com/g10code/gpgol/alpha
 
 file gpgol-0.10.18.tar.bz2
-chk  e746ceea56684f773d2540d3af3b1e46157e3c54  
+chk  e746ceea56684f773d2540d3af3b1e46157e3c54
 
 #
 # GpgEX
@@ -276,7 +276,7 @@ chk  e746ceea56684f773d2540d3af3b1e46157e3c54
 server ftp://ftp.g10code.com/g10code/gpgex
 
 file gpgex-0.9.2.tar.bz2
-chk  6f57fa2ed0d1bb59de9d619930ab0ee242edf680  
+chk  6f57fa2ed0d1bb59de9d619930ab0ee242edf680
 
 #
 # Pth emulation
@@ -293,7 +293,7 @@ chk  9f43acb64867fb54b456f8a1187307ceb7bdf183
 server ftp://ftp.g10code.com/g10code/bzip2
 
 file bzip2-1.0.4-g10.tar.gz
-chk  ae1b992721198b93198aa36eb7a3a7d074417f47  
+chk  ae1b992721198b93198aa36eb7a3a7d074417f47
 
 
 #
@@ -302,7 +302,7 @@ chk  ae1b992721198b93198aa36eb7a3a7d074417f47
 server ftp://ftp.gnupg.org/gcrypt
 
 file libgpg-error/libgpg-error-1.7.tar.bz2
-chk  bf8c6babe1e28cae7dd6374ca24ddcc42d57e902 
+chk  bf8c6babe1e28cae7dd6374ca24ddcc42d57e902
 
 file libksba/libksba-1.0.5.tar.bz2
 chk  2d5939d21f02142197158cd252b2725414a64b33
@@ -314,7 +314,7 @@ file libassuan/libassuan-1.0.5.tar.bz2
 chk  f6c36e9d99736883a8ce5b80b0a51d854cbbbc70
 
 file pinentry/pinentry-0.7.5.tar.gz
-chk  6699a1ff94c649e8905199d480c6412cc43bad3d 
+chk  6699a1ff94c649e8905199d480c6412cc43bad3d
 
 #file gpgme/gpgme-1.1.7.tar.bz2
 #chk  c735bb90431667e3d020aa3adcf0efa858c992af
@@ -328,7 +328,7 @@ chk  d25e41a8cc607334b707d13af819ceaa217800b5
 server ftp://ftp.g10code.com/g10code/scratch
 
 file dirmngr-1.0.3-svn310.tar.bz2
-chk  e3f6df819419f1bff8f707cff41220a556c0b272  
+chk  e3f6df819419f1bff8f707cff41220a556c0b272
 
 file gpgme-1.1.8-svn1341.tar.bz2
 chk  7fe96c4149fc46b02a824370fe63ae3c7df7fd8c
@@ -340,7 +340,7 @@ chk  7fe96c4149fc46b02a824370fe63ae3c7df7fd8c
 server http://www.jabberwocky.com/software/paperkey
 
 file paperkey-1.0.tar.gz
-chk  ddb5fa5612df365ae0ba324ba307d3aa2e549981  
+chk  ddb5fa5612df365ae0ba324ba307d3aa2e549981
 
 #
 # adns
@@ -410,30 +410,27 @@ chk  a4e673c1b1b1cc420e771413edc53ef89fe7773a
 
 server ftp://ftp.kdab.net/pub/gpg4win
 
-name kdelibs-20081128-bin.zip
-file kdelibs-for-kleo-20081128-bin.zip
-chk  75f7088875ee7ec39e492a947edcfd0a4b824727
+file kdelibs-20090205-bin.zip
+chk  45fa7aea9d204a31e75bf4293902666183715185
 
-name kdelibs-20081128-lib.zip
-file kdelibs-for-kleo-20081128-dev.zip
-chk  ba3b0b1643ddcbf10e4d1dc926a9ee4a412127c3
+file kdelibs-20090205-lib.zip
+chk  65e03c698f3d61871f998abf1d5b8c595c5d6197
 
-name kdelibs-20081128-src.zip
-file kdelibs-for-kleo-20081128-src.zip
-chk  677dae4507950e71563748710282a1390f65a1d1
+file kdelibs-20090205-src.zip
+chk  f42912f2028c7ef13826d235eabce70f960c7b77
 
 
 # Kleopatra
 
 server ftp://ftp.kdab.net/pub/gpg4win
 
-file kleopatra-20081128-bin.zip
-chk  651848286667bc660737da749513371cd2c02d69
+file kleopatra-20090205-bin.zip
+chk  4cbe19a5f9d2384a6cdfd6789c2080a0ca290425
 
 # FIXME: These belong in the bin package.
-name kleopatra-20081128-lib.zip
-file kleopatra-20081128-doc.zip
-chk  3dbcc84ce76031274c52e816835ff547423fc660
+#name kleopatra-20081128-lib.zip
+#file kleopatra-20081128-doc.zip
+#chk  3dbcc84ce76031274c52e816835ff547423fc660
 
-file kleopatra-20081128-src.zip
-chk  fc283208477d29e77e0da5fa77b388e340b6c1d1
+file kleopatra-20090205-src.zip
+chk  7f8a7f02460664be2aed68e2059d72f5fa96487d

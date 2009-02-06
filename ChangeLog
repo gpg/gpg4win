@@ -1,3 +1,8 @@
+2009-02-06  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+
+	* packages/packages.current: Update kleopatra and kdelibs. Clear
+	some whitespaces.
+
 2009-02-04  Werner Koch  <wk@g10code.com>
 
 	* patches/gnupg2/02-default-3des.patch: New.
