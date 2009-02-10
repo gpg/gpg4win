@@ -467,8 +467,8 @@ msgstr "Warnung: Registration des GpgOL Outlook Plugin ist fehlgeschlagen."
 msgctxt "DESC_SEC_gpgol"
 msgid "GnuPG for Outlook"
 msgstr ""
-"GnuPG für Outlook (GpgOL) is eine Erweiterung für Outlook 2003 und 2007, die "
-"verwendet wird um Nachrichten mit OpenPGP oder S/MIME zu verschlüsseln."
+"GnuPG für Outlook (GpgOL) ist eine Erweiterung für Outlook 2003 und 2007, die "
+"verwendet wird, um Nachrichten mit OpenPGP oder S/MIME zu verschlüsseln."
 
 #: src/inst-kleopatra.nsi:302
 msgctxt "DESC_SEC_kleopatra"

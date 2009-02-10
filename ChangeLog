@@ -1,3 +1,7 @@
+2009-02-06  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+
+	* po/de.po: Fix two typos.
+
 2009-02-06  Marc Mutz <marc@kdab.net>
 
 	* packages/packages.current: update kdelibs, kleopatra
