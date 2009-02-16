@@ -1,3 +1,9 @@
+2009-02-16  Marcus Brinkmann  <marcus@g10code.de>
+
+	* src/inst-sections.nsi: Install an uninstall entry into the start
+	menu.
+	* src/inst-finish.nsi: Add translation for uninstall entry.
+
 2009-02-06  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
 	* po/de.po: Fix two typos.

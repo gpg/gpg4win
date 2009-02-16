@@ -23,6 +23,20 @@ Var MYTMP
 Section
   WriteUninstaller "$INSTDIR\${PACKAGE}-uninstall.exe"
 
+!ifdef HAVE_STARTMENU
+  # Check if the start menu entries where requested.
+  !insertmacro MUI_INSTALLOPTIONS_READ $R0 "installer-options.ini" \
+        "Field 2" "State"
+  IntCmp $R0 0 no_start_menu_uninstall
+
+  # Create a shortcut named "new shortcut" in the start menu programs
+  # directory point the new shortcut at the program uninstaller
+  CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\Uninstall.lnk" \
+    "$INSTDIR\${PACKAGE}-uninstall.exe" \
+    "" "$INSTDIR\${PACKAGE}-uninstall.exe" "" SW_SHOWNORMAL "" $(DESC_Menu_uninstall)
+  no_start_menu_uninstall:
+!endif
+
   # Windows Add/Remove Programs support
   # Note that the version is appended to the DisplayName, despite that
   # this is not necessary as a click on "support information" gives

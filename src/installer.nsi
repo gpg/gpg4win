@@ -249,6 +249,9 @@ LangString T_NoKeyManager ${LANG_ENGLISH} \
 LangString DESC_Menu_manuals ${LANG_ENGLISH} \
    "Documentation"
 
+LangString DESC_Menu_uninstall ${LANG_ENGLISH} \
+   "Uninstall"
+
 # Used as subdirectory name on Desktop.
 LangString DESC_Desktop_manuals ${LANG_ENGLISH} \
    "Gpg4win Documentation"
