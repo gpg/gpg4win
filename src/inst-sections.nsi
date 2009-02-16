@@ -710,8 +710,14 @@ Function CalcDepends
   !insertmacro SectionFlagIsSet ${SEC_gpgex} \
 		${SF_SELECTED} have_gpgex skip_gpgex
   have_gpgex:
-  # This is not a build dependency, but it is a run-t
+
+  # This is not a build dependency, but it is a run-time dependency.
+  !insertmacro SectionFlagIsSet ${SEC_gpa} \
+		${SF_SELECTED} skip_gpgex_dep_kleopatra need_gpgex_dep_kleopatra
+  need_gpgex_dep_kleopatra:
   !insertmacro SelectSection ${SEC_kleopatra}
+  skip_gpgex_dep_kleopatra:
+
   # Other dependencies are linked in statically.
   skip_gpgex:
 !endif
@@ -721,7 +727,14 @@ Function CalcDepends
 		${SF_SELECTED} have_gpgol skip_gpgol
   have_gpgol:
   !insertmacro SelectSection ${SEC_gpgme}
+
+  # This is not a build dependency, but it is a run-time dependency.
+  !insertmacro SectionFlagIsSet ${SEC_gpa} \
+		${SF_SELECTED} skip_gpgol_dep_kleopatra need_gpgol_dep_kleopatra
+  need_gpgol_dep_kleopatra:
   !insertmacro SelectSection ${SEC_kleopatra}
+  skip_gpgol_dep_kleopatra:
+
   skip_gpgol:
 !endif
 
