@@ -1,3 +1,20 @@
+2009-02-17  Werner Koch  <wk@g10code.com>
+
+	Release 1.1.4.
+
+	* src/inst-sections.nsi: Change order of gnupg2 and dirmngr
+	installation.
+
+	* src/uninst-gnupg2.nsi: Take a nap after killing the agent.
+
+	* src/uninst-gpgme.nsi: Delete gpgme-w32spawn.
+
+	* src/inst-dirmngr.nsi: Update to matcyhncurrent dirmngr.
+	* src/dirmngr.conf: New.
+	* src/Makefile.am (EXTRA_DIST): Add dirmngr.conf.
+
+	* packages/packages.current: Update paperkey.
+
 2009-02-10  Werner Koch  <wk@g10code.com>
 
 	Release 1.1.4rc1.

@@ -41,24 +41,22 @@ Section "-dirmngr" SEC_dirmngr
   File "${prefix}/bin/dirmngr-client.exe"
   File "${prefix}/libexec/dirmngr_ldap.exe"
 
-  SetOutPath "$INSTDIR\etc\dirmngr"
+  # Create a directory for extra certs for documentation reasons.
+  SetShellVarContext all
+  SetOutPath "$APPDATA\GNU\lib\dirmngr\extra-certs"
 
-  ifFileExists "$INSTDIR\etc\dirmngr\dirmngr.conf" dirmngr_no_conf 0
-   File /nonfatal "${prefix}/share/doc/dirmngr/examples/dirmngr.conf"
-   File /nonfatal "${prefix}/share/doc/dirmngr/examples/bnetza-10r-ocsp.signer"
+  ifFileExists "$APPDATA\GNU\etc\dirmngr\dirmngr.conf" dirmngr_no_conf 0
+   SetOutPath "$APPDATA\GNU\etc\dirmngr"
+   File "${SRCDIR}/dirmngr.conf"
+   File "${prefix}/share/doc/dirmngr/examples/bnetza-10r-ocsp.signer"
 
-   SetOutPath "$INSTDIR\etc\dirmngr\trusted-certs"
-   File /nonfatal "${prefix}/share/doc/dirmngr/examples/trusted-certs/README"
-   File /nonfatal "${prefix}/share/doc/dirmngr/examples/trusted-certs/*.crt"
-
+   SetOutPath "$APPDATA\GNU\etc\dirmngr\trusted-certs"
+   File "${prefix}/share/doc/dirmngr/examples/trusted-certs/README"
+   File "${prefix}/share/doc/dirmngr/examples/trusted-certs/bnetza-10r-ca.crt"
   dirmngr_no_conf:
+  SetShellVarContext current
 
   SetOutPath "$INSTDIR"
-
-  # We need to create the cache directory, as this is not
-  # automatically created by dirmngr.  Actually, the default should be
-  # different.  FIXME.
-  CreateDirectory "$INSTDIR\cache"
 
   StrCmp $DirMngrStatus "MISSING" 0 dirmngr_created
     # Create the service.
@@ -88,6 +86,21 @@ Section "-dirmngr" SEC_dirmngr
   no_config_dirmngr_ldapservers_conf:
 
   no_config_dirmngr_files:
+
+  # Try to delete certain trusted certificates installed by default
+  # with gpg4win 1.1.3.  They are not useful at this location anymore.
+  # We only delete the certificates we know about and not just all of
+  # them.
+  Delete "$INSTDIR\etc\dirmngr"
+  Delete "$INSTDIR\etc\dirmngr\bnetza-10r-ocsp.signer"
+  Delete "$INSTDIR\etc\dirmngr\dirmngr.conf"
+  Delete "$INSTDIR\etc\dirmngr\trusted-certs"
+  Delete "$INSTDIR\etc\dirmngr\trusted-certs\bnetza-10r-ca.crt"
+  Delete "$INSTDIR\etc\dirmngr\trusted-certs\README"
+  Delete "$INSTDIR\etc\dirmngr\trusted-certs\S-TRUSTQualifiedRootCA2008-001.final.v3.509.crt"
+  Delete "$INSTDIR\etc\dirmngr\trusted-certs\S-TRUSTQualifiedRootCA2008-002.final.v3.509.crt"
+  RMDir "$INSTDIR\etc\dirmngr"
+  RMDir "$INSTDIR\etc"
 
 !endif
 SectionEnd

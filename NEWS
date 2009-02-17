@@ -3,11 +3,17 @@
 # The version number given below are for the standard installers as
 # distributed by www.gpg4win.org.
 
-Noteworthy changes in version 1.1.4
+Noteworthy changes in version 1.1.4 (2009-02-17)
 ------------------------------------------------
 
-(en) Update GnuPG to 1.4.9 to solve problems on Windows Vista.
+(en) Updated GnuPG to 1.4.9 to solve problems on Windows Vista.
 (de) GnuPG wurde auf 1.4.9 aktualisiert um Probleme unter Windws Vista zu lösen.
+
+(en) Updated the optional GnuPG-2 components.
+(de) Die optionalen GnuPG-2 Komponenten wurden aktualisert.
+
+(en) Included the Paperkey and Scute utilities.
+(de) Die Hilfsprogramme Paperkey und Scute sind jetzt enthalten.
 
 ~~~~~~~~~~~~~~~
 GnuPG:  1.4.9

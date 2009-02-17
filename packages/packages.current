@@ -265,8 +265,8 @@ chk  e3f6df819419f1bff8f707cff41220a556c0b272
 #
 server http://www.jabberwocky.com/software/paperkey
 
-file paperkey-1.0.tar.gz
-chk  ddb5fa5612df365ae0ba324ba307d3aa2e549981  
+file paperkey-1.1.tar.gz
+chk  3953e853b8ee11ca476670e7f97e94a18bca83e3 
 
 
 #

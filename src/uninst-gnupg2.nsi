@@ -31,12 +31,15 @@ Section "-un.gnupg2"
   Push "${gpg4win_pkg_gnupg2}"
   Call un.SourceDelete
 !else
+
   # Try to stop a running agent.  This is only for the admin but in
-  # some cases that is actually useful.
+  # some cases that is actually useful.  We sleep for awhile to give
+  # scdaemon a chance to commit suicide.
   ifFileExists "$INSTDIR\gpg-connect-agent.exe" 0 no_u_gpg_connect_agent
     ifFileExists "$INSTDIR\libgpg-error-0.dll" 0 no_u_gpg_connect_agent
       ifFileExists "$INSTDIR\libw32pth-0.dll" 0 no_u_gpg_connect_agent
         ExecWait '"$INSTDIR\gpg-connect-agent.exe" killagent /bye'
+        Sleep 3000
   no_u_gpg_connect_agent:
 
   Delete "$INSTDIR\gpg2.exe"

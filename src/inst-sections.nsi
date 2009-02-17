@@ -23,14 +23,15 @@
 
 !include "inst-gpg4win.nsi"
 
+# Note: First install the libraries, then the applications.  This is
+# required so that the uninstaller will first remove the application
+# and then the libraries.
+
 !ifdef HAVE_PKG_ADNS
 !include "inst-adns.nsi"
 !endif
 !ifdef HAVE_PKG_GNUPG
 !include "inst-gnupg.nsi"
-!endif
-!ifdef HAVE_PKG_GNUPG2
-!include "inst-gnupg2.nsi"
 !endif
 !ifdef HAVE_PKG_PINENTRY
 !include "inst-pinentry.nsi"
@@ -65,9 +66,6 @@
 !ifdef HAVE_PKG_REGEX
 !include "inst-regex.nsi"
 !endif
-!ifdef HAVE_PKG_DIRMNGR
-!include "inst-dirmngr.nsi"
-!endif
 !ifdef HAVE_PKG_PTHREADS_W32
 !include "inst-pthreads-w32.nsi"
 !endif
@@ -85,6 +83,12 @@
 !endif
 !ifdef HAVE_PKG_JPEG
 !include "inst-jpeg.nsi"
+!endif
+!ifdef HAVE_PKG_DIRMNGR
+!include "inst-dirmngr.nsi"
+!endif
+!ifdef HAVE_PKG_GNUPG2
+!include "inst-gnupg2.nsi"
 !endif
 !ifdef HAVE_PKG_GPGOL
 !include "inst-gpgol.nsi"
@@ -203,6 +207,12 @@
 !ifdef HAVE_PKG_GPGOL
 !include "uninst-gpgol.nsi"
 !endif
+!ifdef HAVE_PKG_GNUPG2
+!include "uninst-gnupg2.nsi"
+!endif
+!ifdef HAVE_PKG_DIRMNGR
+!include "uninst-dirmngr.nsi"
+!endif
 !ifdef HAVE_PKG_LIBPNG
 !include "uninst-libpng.nsi"
 !endif
@@ -220,9 +230,6 @@
 !endif
 !ifdef HAVE_PKG_PTHREADS_W32
 !include "uninst-pthreads-w32.nsi"
-!endif
-!ifdef HAVE_PKG_DIRMNGR
-!include "uninst-dirmngr.nsi"
 !endif
 !ifdef HAVE_PKG_REGEX
 !include "uninst-regex.nsi"
@@ -252,15 +259,12 @@
 !include "uninst-w32pth.nsi"
 !endif
 !ifdef HAVE_PKG_LIBGPG_ERROR
-# Note that the uninstaller of libgpg-error is supposed to remove the shareed
+# Note that the uninstaller of libgpg-error is supposed to remove the shared
 # directories.  We might want to move this to an extra section.
 !include "uninst-libgpg-error.nsi"
 !endif
 !ifdef HAVE_PKG_PINENTRY
 !include "uninst-pinentry.nsi"
-!endif
-!ifdef HAVE_PKG_GNUPG2
-!include "uninst-gnupg2.nsi"
 !endif
 !ifdef HAVE_PKG_GNUPG
 !include "uninst-gnupg.nsi"

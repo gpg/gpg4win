@@ -24,6 +24,12 @@ Section "-un.gpg4win"
   Delete "gpg4win-${VERSION}.tar.bz2"
 !else
 
+  DeleteRegValue HKLM "Software\GNU\GnuPG" "Install Directory"
+
+  # Remove the public directory from the PATH
+  Push "$INSTDIR\pub"
+  Call un.RemoveFromPath
+
   # Delete cruft from version prior to 0.8
   Delete "$INSTDIR\share\eudoragpg\eudoragpg.html"
   RMDir "$INSTDIR\share\eudoragpg"
@@ -38,6 +44,7 @@ Section "-un.gpg4win"
   RMDir "$INSTDIR\share\gpg4win"
 
   # Try to remove other top directories.
+  RMDir "$INSTDIR\pub"
   RMDir "$INSTDIR\lib"
   RMDir "$INSTDIR\share"
   RMDir "$INSTDIR"

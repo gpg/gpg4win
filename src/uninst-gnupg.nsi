@@ -59,11 +59,5 @@ Section "-un.gnupg"
   Delete "$INSTDIR\gnupg.nls\de.mo"
   RMDir  "$INSTDIR\gnupg.nls"
 
-  DeleteRegValue HKLM "Software\GNU\GnuPG" "Install Directory"
-
-  # Remove the public directory from the PATH
-  Push "$INSTDIR\pub"
-  Call un.RemoveFromPath
-
 !endif
 SectionEnd

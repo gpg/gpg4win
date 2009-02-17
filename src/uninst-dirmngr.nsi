@@ -42,5 +42,6 @@ Section "-un.dirmngr"
   RMDir "$INSTDIR\cache"
   RMDir "$INSTDIR"
 
+
 !endif
 SectionEnd
