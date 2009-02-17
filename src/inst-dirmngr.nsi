@@ -99,6 +99,8 @@ Section "-dirmngr" SEC_dirmngr
   Delete "$INSTDIR\etc\dirmngr\trusted-certs\README"
   Delete "$INSTDIR\etc\dirmngr\trusted-certs\S-TRUSTQualifiedRootCA2008-001.final.v3.509.crt"
   Delete "$INSTDIR\etc\dirmngr\trusted-certs\S-TRUSTQualifiedRootCA2008-002.final.v3.509.crt"
+
+  RMDir "$INSTDIR\etc\dirmngr\trusted-certs"
   RMDir "$INSTDIR\etc\dirmngr"
   RMDir "$INSTDIR\etc"
 
