@@ -1176,6 +1176,9 @@ FunctionEnd
 
 Section "-startmenu"
 
+  # NOT SetOutPath.
+  StrCpy $OUTDIR "%HOMEDRIVE%%HOMEPATH%"
+
 !ifdef HAVE_STARTMENU
   # Make sure that the context of the automatic variables has been set to
   # the "all users" shell folder.  This guarantees that the menu gets written
