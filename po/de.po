@@ -456,7 +456,8 @@ msgctxt "DESC_SEC_gpgex"
 msgid "GnuPG Shell Extension"
 msgstr ""
 "GPG Shell Extension (GpgEX) ist eine Erweiterung für den Explorer, die es "
-"ermöglicht, Dateien über das Kontextmenü zu verschlüsseln."
+"ermöglicht, Dateien über das Kontextmenü zu verschlüsseln. "
+"Benötigt Kleopatra oder GPA."
 
 #: src/inst-gpgol.nsi:61
 msgctxt "T_GpgOL_RegFailed"
@@ -468,7 +469,8 @@ msgctxt "DESC_SEC_gpgol"
 msgid "GnuPG for Outlook"
 msgstr ""
 "GnuPG für Outlook (GpgOL) ist eine Erweiterung für Outlook 2003 und 2007, die "
-"verwendet wird, um Nachrichten mit OpenPGP oder S/MIME zu verschlüsseln."
+"verwendet wird, um Nachrichten mit OpenPGP oder S/MIME zu verschlüsseln. "
+"Benötigt Kleopatra oder GPA."
 
 #: src/inst-kleopatra.nsi:302
 msgctxt "DESC_SEC_kleopatra"
