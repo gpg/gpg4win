@@ -1,0 +1,26 @@
+#! /bin/sh
+patch -p0 -f $* < $0
+exit $?
+
+Disable checksum commands.
+
+
+diff -rup src/gpgex.cc src/gpgex.cc
+--- src/gpgex.cc	2008-09-09 11:02:17.000000000 +0200
++++ src/gpgex.cc	2009-02-25 14:24:44.000000000 +0100
+@@ -356,12 +356,14 @@ gpgex_t::QueryContextMenu (HMENU hMenu, 
+   if (res)
+     res = InsertMenu (popup, idx++, MF_BYPOSITION | MF_STRING,
+ 		      idCmdFirst + ID_CMD_IMPORT, ID_CMD_STR_IMPORT);
++#if 0
+   if (res)
+     res = InsertMenu (popup, idx++, MF_BYPOSITION | MF_STRING,
+ 		      idCmdFirst + ID_CMD_CREATE_CHECKSUMS, ID_CMD_STR_CREATE_CHECKSUMS);
+   if (res)
+     res = InsertMenu (popup, idx++, MF_BYPOSITION | MF_STRING,
+ 		      idCmdFirst + ID_CMD_VERIFY_CHECKSUMS, ID_CMD_STR_VERIFY_CHECKSUMS);
++#endif
+   if (res)
+     res = InsertMenu (popup, idx++, MF_BYPOSITION | MF_SEPARATOR, 0, NULL);
+   if (res)
+

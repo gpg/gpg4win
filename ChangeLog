@@ -1,5 +1,8 @@
 2009-02-25  Marcus Brinkmann  <marcus@g10code.de>
 
+	* Makefile.am (EXTRA_DIST): Add patches/gpgex/01-no-checksums.patch.
+	* patches/gpgex/01-no-checksums.patch: New file.
+
 	* src/installer-finish.nsi (Section "Uninstall"): Also remove
 	compendium html link from desktop.
 

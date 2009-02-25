@@ -39,6 +39,7 @@ EXTRA_DIST = autogen.sh README.SVN \
 	patches/libetpan-0.54/01-config.patch \
 	patches/libetpan-0.54/02-index.patch \
 	patches/winpt/01-gpg-path.patch \
+	patches/gpgex/01-no-checksums.patch \
 	patches/gnupg2/01-version.patch.in \
 	patches/gnupg2/02-default-3des.patch \
 	patches/gnupg2-2.0.9/01-close-all-handle.patch \
