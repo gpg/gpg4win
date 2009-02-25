@@ -169,9 +169,12 @@ no_quick_launch_uninstall:
   RMDir "$INSTDIR"
 
   # If we installed in the default location, try to be really, really
-  # nice with sugar on it to clean up behind us.
+  # nice with sugar on it to clean up behind us.  In any case, try very
+  # hard to get rid of directories which could have REBOOTOK files.
+  RMDir /REBOOTOK "$INSTDIR\bin"
+  RMDir /REBOOTOK "$INSTDIR"
   StrCmp "$INSTDIR" "$PROGRAMFILES\GNU\${INSTALL_DIR}" 0 +2
-  RMDir "$PROGRAMFILES\GNU"
+  RMDir /REBOOTOK "$PROGRAMFILES\GNU"
 
   # Clean the registry.
   DeleteRegValue HKLM "Software\GNU\${PRETTY_PACKAGE_SHORT}" \
