@@ -110,6 +110,7 @@ Section Uninstall
   Delete "$DESKTOP\$(DESC_Desktop_manuals)\Claws-Mail Manual.lnk"
 !endif
 !ifdef HAVE_PKG_COMPENDIUM_DE
+  Delete "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_compendium_de_html).lnk"
   Delete "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_compendium_de).lnk"
 !endif
 !ifdef HAVE_PKG_MAN_NOVICE_DE
