@@ -1,3 +1,7 @@
+2009-02-27  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+
+	* packages/packages.current: Update kleopatra and kdelibs.
+
 2009-02-27  Marcus Brinkmann  <marcus@g10code.de>
 
 	* packages/packages.current: Update gpgme.
