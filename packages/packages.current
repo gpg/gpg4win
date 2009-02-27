@@ -330,9 +330,8 @@ server ftp://ftp.g10code.com/g10code/scratch
 file dirmngr-1.0.3-svn310.tar.bz2
 chk  e3f6df819419f1bff8f707cff41220a556c0b272
 
-file gpgme-1.1.8-svn1341.tar.bz2
-chk  7fe96c4149fc46b02a824370fe63ae3c7df7fd8c
-
+file gpgme-1.1.9-svn1357.tar.bz2
+chk  02752ef4450aef89f2c114088ba6c2f3b2d13076
 
 #
 #  GnuPG utilities

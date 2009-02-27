@@ -1,3 +1,7 @@
+2009-02-27  Marcus Brinkmann  <marcus@g10code.de>
+
+	* packages/packages.current: Update gpgme.
+
 2009-02-27  Werner Koch  <wk@g10code.com>
 
 	* src/inst-gpa.nsi: Change logo name.
