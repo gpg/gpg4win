@@ -267,8 +267,8 @@ server http://wald.intevation.org/frs/download.php
 #
 server ftp://ftp.g10code.com/g10code/gpgol/alpha
 
-file gpgol-0.10.18.tar.bz2
-chk  e746ceea56684f773d2540d3af3b1e46157e3c54
+file gpgol-0.10.19.tar.bz2
+chk  a16918820a96b7b2820ab1723a38d62bff0cc863
 
 #
 # GpgEX
@@ -339,8 +339,8 @@ chk  7fe96c4149fc46b02a824370fe63ae3c7df7fd8c
 #
 server http://www.jabberwocky.com/software/paperkey
 
-file paperkey-1.0.tar.gz
-chk  ddb5fa5612df365ae0ba324ba307d3aa2e549981
+file paperkey-1.1.tar.gz
+chk  3953e853b8ee11ca476670e7f97e94a18bca83e3 
 
 #
 # adns

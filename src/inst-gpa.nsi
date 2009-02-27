@@ -50,7 +50,8 @@ ${MementoSection} "GPA" SEC_gpa
   File ${prefix}/share/locale/ru/LC_MESSAGES/gpa.mo
 
   SetOutPath "$INSTDIR\share\gpa"
-  File ${prefix}/share/gpa/gpa_logo.ppm
+  File /nonfatal ${prefix}/share/gpa/gpa_logo.ppm
+  File /nonfatal ${prefix}/share/gpa/gpa-logo.ppm
   File ${prefix}/share/gpa/gpa.png
 
   # If requested, install the configuration files.

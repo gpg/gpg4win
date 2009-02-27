@@ -1,3 +1,12 @@
+2009-02-27  Werner Koch  <wk@g10code.com>
+
+	* src/inst-gpa.nsi: Change logo name.
+
+	* packages/packages.current: Update paperkey and GpgOL.
+
+	* patches/gpgme/01-gpg2.patch:  Change directory name. 
+	* patches/gpgme/02-kleo-bugs-workaround.patch: Ditto.
+
 2009-02-25  Marcus Brinkmann  <marcus@g10code.de>
 
 	* Makefile.am (EXTRA_DIST): Add patches/gpgex/01-no-checksums.patch.

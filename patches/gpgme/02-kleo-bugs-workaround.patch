@@ -4,9 +4,9 @@ exit $?
 
 Work around bugs in kleopatra 20080706.
 
-diff -rup gpgme/keylist.c gpgme/keylist.c
---- gpgme/keylist.c	2008-01-28 19:06:04.000000000 +0100
-+++ gpgme/keylist.c	2008-07-08 21:16:39.000000000 +0200
+diff -rup src/keylist.c src/keylist.c
+--- src/keylist.c	2008-01-28 19:06:04.000000000 +0100
++++ src/keylist.c	2008-07-08 21:16:39.000000000 +0200
 @@ -918,6 +918,14 @@ gpgme_op_keylist_end (gpgme_ctx_t ctx)
    if (!ctx)
      return gpg_error (GPG_ERR_INV_VALUE);
@@ -22,9 +22,9 @@ diff -rup gpgme/keylist.c gpgme/keylist.c
    return 0;
  }
  
-diff -rup gpgme/w32-io.c gpgme/w32-io.c
---- gpgme/w32-io.c	2008-06-26 15:03:27.000000000 +0200
-+++ gpgme/w32-io.c	2008-07-08 18:20:12.000000000 +0200
+diff -rup src/w32-io.c src/w32-io.c
+--- src/w32-io.c	2008-06-26 15:03:27.000000000 +0200
++++ src/w32-io.c	2008-07-08 18:20:12.000000000 +0200
 @@ -53,8 +53,8 @@
  #define READBUF_SIZE 4096
  #define WRITEBUF_SIZE 4096
@@ -36,9 +36,9 @@ diff -rup gpgme/w32-io.c gpgme/w32-io.c
  
  static struct
  {
-diff -rup gpgme/wait-global.c gpgme/wait-global.c
---- gpgme/wait-global.c	2008-07-04 16:15:41.000000000 +0200
-+++ gpgme/wait-global.c	2008-07-08 21:15:03.000000000 +0200
+diff -rup src/wait-global.c src/wait-global.c
+--- src/wait-global.c	2008-07-04 16:15:41.000000000 +0200
++++ src/wait-global.c	2008-07-08 21:15:03.000000000 +0200
 @@ -386,5 +386,13 @@ gpgme_wait (gpgme_ctx_t ctx, gpgme_error
      }
    while (hang);
@@ -53,9 +53,9 @@ diff -rup gpgme/wait-global.c gpgme/wait-global.c
 +
    return ctx;
  }
-diff -rup gpgme/wait-private.c gpgme/wait-private.c
---- gpgme/wait-private.c	2008-07-04 16:15:41.000000000 +0200
-+++ gpgme/wait-private.c	2008-07-08 21:17:05.000000000 +0200
+diff -rup src/wait-private.c src/wait-private.c
+--- src/wait-private.c	2008-07-04 16:15:41.000000000 +0200
++++ src/wait-private.c	2008-07-08 21:17:05.000000000 +0200
 @@ -31,6 +31,7 @@
  #include "ops.h"
  #include "priv-io.h"
