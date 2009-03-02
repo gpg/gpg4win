@@ -9,7 +9,7 @@ Important Hints for Using Gpg4win 1.9-BETA
   experienced users or administrators to learn
   about the upcoming version and suggest changes.
 
-Status: Gpg4win-1.9.13 (20081202)
+Status: Gpg4win-1.9.14 (20090303)
 
 This text covers information that are
 intended to help judging whether Gpg4win 1.9
@@ -50,13 +50,13 @@ Contents of this document:
 * Important hints for present version
 * Migration
 * Most important changes in Gpg4win 1.9 compared to 1.1
-* Most important changes in Gpg4win 1.9.13 compared to 1.9.12
+* Most important changes in Gpg4win 1.9.14 compared to 1.9.13
 
 
 Important hints for present version
 ===================================
 
-- Installation package ca. 32 MByte:
+- Installation package ca. 45 MByte:
   The installer isn't optimzed concerning package size.
   It is aspired to shrink the size in the next time.
 
@@ -119,7 +119,7 @@ Removed:
 Updated:
 --------
 
-- Claws Mail: Version 3.6.1cvs47
+- Claws Mail: Version 3.7.0
   Main new features: Support of SSL, NNTP and IMAP in the
   Windows-Version of Claws Mail.
 
@@ -170,28 +170,40 @@ New:
   and PGP/MIME and new texts for S/MIME and X.509.
 
 
-Most important changes in Gpg4win 1.9.13 compared to 1.9.12
+Most important changes in Gpg4win 1.9.14 compared to 1.9.13
 ===========================================================
 
  - Kleopatra:
-     * load certifications of OpenPGP certificates on keyserver
-       disabled (not allowed)
-     * Menu entry "Change passphrase" enabled for own certificates 
-       only
-     * Own S/MIME certificate (width trusted root) is shown under
-       the tab "Trusted Certificates"
-     * translations added
-     * several minor and medium improvements
+    * Better error strings and dialog layout for add user id dialog.
+    * Remove unused temp dir in uiserver. The socket is created in
+      ~/.gnupg nowadays. Leaves temp dirs around on crash, so remove.
+    * ImportCertificateCommand: use a short tab title, and put the 
+      path of the file from which we imported into the tab's tooltip instead.
+    * Fix header resizing in the mainwindow.
+    * ownertrust dialog: Disable the OK button until a change has actually 
+      been made
+    * mainwindow: Hide the tab bar reliably when only one tab is used
+    * File->Quit message box: Make "Only Close Window" the default.
+    * Add File->Save Icon Usage Log, which we'll ship for the next two 
+      releases or so, and then bury again. Helps to determine which of the
+      myriad of KDE icons we're actually using.
+    * import certificates: try not to pop up the result message box in the background
+    * Make Kleopatra take 75% less CPU on startup.
+    * various other (gui) optimizations
+    * update/add new translation strings
+    * Make the timing stuff end up in the kleo_log
 
  - GpgOL:
-     * After a GpgOL update the check options dialog comes up one-time only
-     * translations added
+    * sign/encrypt state of emails saved in drafts now
+    * forwarded emails (as attachment) will show as *.eml
+      (and not as gpgolXXX.dat).
+    * pass sender address if encrypt a message (requirement to
+      encrypt automatically to yourself; function comes in a
+      fututre realease)
+    * translations updated
 
  - Gpg4win Compendium 3.0.0-beta1 reworked
 
  - Backend and Installer: 
-     * critical error (which cleared pupring.gpg) resolved
-     * Installer full name changed to "Gpg4win", German about text
-       of wellcome page changed
-     * Gpg4win version number added under "Control Panel -> Software"
-     * Several minor and medium issues and errors were fixed.
+    * Uninstall process improved and start menu entry added
+    * Several minor and medium issues and errors were fixed.

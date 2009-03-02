@@ -11,7 +11,7 @@ Wichtige Informationen zum Einsatz von Gpg4win 1.9-BETA
   neue Version kennenzulernen und Verbesserungsvorschläge
   einzubringen.
 
-Stand: Gpg4win-1.9.13 (20081202)
+Stand: Gpg4win-1.9.14 (20090303)
 
 Hier finden sich wichtige Informationen die bei der
 Entscheidung helfen sollen, ob Gpg4win 1.9 schon für
@@ -51,13 +51,13 @@ Inhalt dieses Dokumentes:
 * Wichtige Hinweise zur vorliegenden Version
 * Migration
 * Wichtigste Änderungen von Gpg4win 1.9 gegenüber 1.1
-* Wichtigste Änderungen von Gpg4win 1.9.13 gegenüber 1.9.12
+* Wichtigste Änderungen von Gpg4win 1.9.14 gegenüber 1.9.13
 
 
 Wichtige Hinweise zur vorliegenden Version
 ==========================================
 
-- Installationpaket ca. 32 MByte:
+- Installationpaket ca. 45 MByte:
   Das Paket ist noch nicht bzgl. Größe optimiert.
   Es wird angestrebt den Umfang mit der Zeit zu reduzieren.
 
@@ -120,7 +120,7 @@ Entfallen:
 Aktualisiert:
 -------------
 
-- Claws Mail: Version 3.6.1cvs47
+- Claws Mail: Version 3.7.0
   Wesentliche Neuerungen: Unterstützung von SSL, NNTP und IMAP
   in der Windows-Version von Claws Mail.
 
@@ -174,28 +174,43 @@ Neu:
   PGP/MIME sowie ergänzt um S/MIME bzw. X.509.
 
 
-Wichtigste Änderungen von Gpg4win 1.9.13 gegenüber 1.9.12
+Wichtigste Änderungen von Gpg4win 1.9.14 gegenüber 1.9.13
 =========================================================
  - Kleopatra:
-    * Einholen von Beglaubigungen bei Zertifikakten auf Keyservern
-      deaktiviert (nicht erlaubt)
-    * Menüeintrag "Passphrase ändern" nur für eigene Zertifikate
-      aktiviert
-    * Eigenes S/MIME-Zertifikat erscheint nun (mit gesamter Ketter)
-      unter dem Reiter "Vertrauenswürdige Zertifikate"
+    * verbesserte Fehlermeldungen und Layout für Dialog
+     "BenutzerID hinzufügen"
+    * nicht benötigte temporäre Dateiordner werden gelöscht
+    * Reiternamen für "Importierte Zertifikate" reduziert
+      (mit Pfad im Tooltip)
+    * verbessertes Spalten-Verhalten im Hauptfenster (z.B. beim
+      Verändern der Breite)
+    * Inhabervertrauen: OK-Button deaktiviert solange keine Änderungen
+      gemacht werden
+    * Hauptfenster: Blendet Reiterleiste aus, wenn nur ein Reiter
+      angezeigt wird
+    * Datei->Beenden Meldung: "Nur das Fenster" als Voreinstellung gesetzt
+    * "Datei->Symbolbenutzungs-Protokoll speichern" wird nur für die
+      nächsten ca. 2 Beta-Versionen integriert. Unterstützt beim
+      Bestimmen der benötigten KDE-Icons.
+    * Zertifikatsimport: Ergebnisdialog nun stets im Vordergrund
+    * Kleopatra benötigt beim Starten 75% weniger CPU
+    * Kleo-Log-Ausgabe korrigiert
     * Übersetzungen ergänzt / korrigiert
     * diverse kleinere Stabilitäts- und GUI-Verbesserungen
 
  - GpgOL:
-    * Nach einem GpgOL-Update erscheint der "Einstellungen-Prüfen-Dialog"
-      einmalig direkt nach dem ersten Outlook-Start
+    * signiert/verschlüsselt-Status wird nun auch in "Entwürfe"
+      gespeichert
+    * im Anhang weitergeleitete E-Mails werden nicht mehr als
+      gpgolXXX.dat sondern als *.eml Datei angezeigt
+    * beim Verschlüsseln wird intern nun der Absender übergeben
+      (Voraussetzung für automatische Verschlüsselung an sich selbst;
+      Funktion folgt in nächsten Versionen)
     * Übersetzungen ergänzt / korrigiert
 
  - Gpg4win Kompendium:
     * weitere Überarbeitungen
 
  - Backend und Installer:
-    * kritischer Fehler (bei dem pubring.gpg geleert wurde) gelöst
-    * Installationspaket zu "Gpg4win" und Kurztext auf Willkommensseite geändert
-    * Gpg4win-Versionsnummer hinzugefügt unter "Systemsteuerung->Software"
+    * Deinstallation verbessert und Startmenü-Eintrag ergänzt
     * diverse kleinere Verbesserungen
