@@ -1,3 +1,7 @@
+2009-03=02  Marc Mutz  <marc@kdab.net>
+
+	* packages/packages.current: Update kdelibs, kleopatra.
+
 2009-02-27  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
 	* packages/packages.current: Update kleopatra and kdelibs.

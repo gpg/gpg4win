@@ -339,7 +339,7 @@ chk  02752ef4450aef89f2c114088ba6c2f3b2d13076
 server http://www.jabberwocky.com/software/paperkey
 
 file paperkey-1.1.tar.gz
-chk  3953e853b8ee11ca476670e7f97e94a18bca83e3 
+chk  3953e853b8ee11ca476670e7f97e94a18bca83e3
 
 #
 # adns
@@ -409,27 +409,27 @@ chk  a4e673c1b1b1cc420e771413edc53ef89fe7773a
 
 server ftp://ftp.kdab.net/pub/gpg4win
 
-file kdelibs-20090227-bin.zip
-chk  87c5a9de5b4d35655a711873673a4f65848520ed
+file kdelibs-20090302-bin.zip
+chk  6b0efdfa47afbde9cc46e0bc7bab000f128f55be
 
-file kdelibs-20090227-lib.zip
-chk  1b2d184b70890d727f4228da8c1c8e453fbd0197
+file kdelibs-20090302-lib.zip
+chk  ae0774166b2b5d495dc07c9262c8bd5daba93b39
 
-file kdelibs-20090227-src.zip
-chk  319617b7ca12e9cbc4c51194d475d1fc74f9b94d
+file kdelibs-20090302-src.zip
+chk  170d91439cec16507bad5d51acc61ced57899268
 
 
 # Kleopatra
 
 server ftp://ftp.kdab.net/pub/gpg4win
 
-file kleopatra-20090227-bin.zip
-chk  b2bd324920b0a0c0d55b1519f15b7e84f647357c
+file kleopatra-20090302-bin.zip
+chk  cf2bf73db94f7af8fea3555abd3b5baee68b7051
 
 # FIXME: These belong in the bin package.
 #name kleopatra-20081128-lib.zip
 #file kleopatra-20081128-doc.zip
 #chk  3dbcc84ce76031274c52e816835ff547423fc660
 
-file kleopatra-20090227-src.zip
-chk  84585f94a3cf6d3069bd746e4e16d2f92f69fb07
+file kleopatra-20090302-src.zip
+chk  d861f0701065a5b9337bef4c3f66232368336656
