@@ -195,14 +195,14 @@ Wichtigste Änderungen von Gpg4win 1.9.14 gegenüber 1.9.13
     * Zertifikatsimport: Ergebnisdialog nun stets im Vordergrund
     * Kleopatra benötigt beim Starten 75% weniger CPU
     * Kleo-Log-Ausgabe korrigiert
-    * Übersetzungen ergänzt / korrigiert
-    * diverse kleinere Stabilitäts- und GUI-Verbesserungen
+    * zahlreiche Übersetzungen ergänzt / korrigiert
+    * viele kleinere Stabilitäts- und GUI-Verbesserungen
 
  - GpgOL:
-    * signiert/verschlüsselt-Status wird nun auch in "Entwürfe"
-      gespeichert
-    * im Anhang weitergeleitete E-Mails werden nicht mehr als
-      gpgolXXX.dat sondern als *.eml Datei angezeigt
+    * speichert Krypto-Einstellungen nun auch für Nachrichten-Entwürfe
+    * unbenannte Anhänge werden nun mit einem zum MIME-Type passenden
+      Suffix angezeigt (z.B. als Anhang weitergeleitete E-Mails
+      als *.eml Datei)
     * beim Verschlüsseln wird intern nun der Absender übergeben
       (Voraussetzung für automatische Verschlüsselung an sich selbst;
       Funktion folgt in nächsten Versionen)

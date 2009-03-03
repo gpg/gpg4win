@@ -187,23 +187,24 @@ Most important changes in Gpg4win 1.9.14 compared to 1.9.13
     * Add File->Save Icon Usage Log, which we'll ship for the next two 
       releases or so, and then bury again. Helps to determine which of the
       myriad of KDE icons we're actually using.
-    * import certificates: try not to pop up the result message box in the background
+    * Import certificates: try not to pop up the result message box in 
+      the background.
     * Make Kleopatra take 75% less CPU on startup.
-    * various other (gui) optimizations
-    * update/add new translation strings
-    * Make the timing stuff end up in the kleo_log
+    * Various other (gui) optimizations.
+    * Update/add new translation strings.
+    * Make the timing stuff end up in the kleo_log.
 
  - GpgOL:
-    * sign/encrypt state of emails saved in drafts now
-    * forwarded emails (as attachment) will show as *.eml
-      (and not as gpgolXXX.dat).
-    * pass sender address if encrypt a message (requirement to
+    * Save the crypto settings in a message draft.
+    * Unnamed attachments are now shown with a suffix matching
+      its MIME type.
+    * Pass sender address if encrypt a message (requirement to
       encrypt automatically to yourself; function comes in a
-      fututre realease)
+      fututre realease).
     * translations updated
 
  - Gpg4win Compendium 3.0.0-beta1 reworked
 
  - Backend and Installer: 
-    * Uninstall process improved and start menu entry added
+    * Uninstall process improved and start menu entry added.
     * Several minor and medium issues and errors were fixed.
