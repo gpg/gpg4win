@@ -1,3 +1,13 @@
+2009-03-03  Werner Koch  <wk@g10code.com>
+
+	Release 1.9.14.
+
+	* packages/packages.current: Update GnuPG.
+
+2009-03-02  Werner Koch  <wk@g10code.com>
+
+	* patches/gnupg2/02-default-3des.patch: Remove.
+
 2009-03-02  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
 	* NEWS: Change compendium version.

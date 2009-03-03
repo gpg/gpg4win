@@ -5,11 +5,11 @@ exit $?
 Make --version also print the version number of Gpg4win so that we 
 can see in bug reports what patches have been used.
 
-
+(For version < 2.0.11 chnage the patch line from 1023 to 868.)
 
 --- jnlib/argparse.c
 +++ jnlib/argparse.c
-@@ -868,7 +868,7 @@
+@@ -1023,7 +1023,7 @@
    fputs (strusage (11), stdout);
    if ((s=strusage (12)))
      printf (" (%s)", s );
@@ -18,5 +18,4 @@ can see in bug reports what patches have been used.
    /* Additional version lines. */
    for (i=20; i < 30; i++)
      if ((s=strusage (i)))
-
 
