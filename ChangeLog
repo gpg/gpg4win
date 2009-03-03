@@ -1,3 +1,8 @@
+2009-03-03  Colin Leroy  <colin@colino.net>
+
+	* patches/claws-mail-3.7.0/07-bug_1865.patch
+		Fix filtering rules after renaming IMAP account.
+
 2009-03-03  Werner Koch  <wk@g10code.com>
 
 	Release 1.9.14.

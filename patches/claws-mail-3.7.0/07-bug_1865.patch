@@ -1,0 +1,82 @@
+#! /bin/sh
+patch -p0 -f $* < $0
+exit $?
+
+Index: src/prefs_filtering.c
+===================================================================
+RCS file: /srv/cvs/claws-mail/claws/src/prefs_filtering.c,v
+retrieving revision 1.59.2.78
+diff -u -p -u -r1.59.2.78 prefs_filtering.c
+--- src/prefs_filtering.c	23 Feb 2009 16:55:43 -0000	1.59.2.78
++++ src/prefs_filtering.c	3 Mar 2009 14:14:22 -0000
+@@ -653,9 +653,13 @@ static void rename_path(GSList * filters
+ 	gint oldpathlen;
+         GSList * action_cur;
+         GSList * cur;
+-
++	const gchar *separator=G_DIR_SEPARATOR_S;
++	gboolean matched = FALSE;
++#ifdef G_OS_WIN32
++again:
++#endif
+ 	oldpathlen = strlen(old_path);
+-	old_path_with_sep = g_strconcat(old_path,G_DIR_SEPARATOR_S,NULL);
++	old_path_with_sep = g_strconcat(old_path,separator,NULL);
+ 
+ 	for (cur = filters; cur != NULL; cur = cur->next) {
+ 		FilteringProp   *filtering = (FilteringProp *)cur->data;
+@@ -685,28 +689,30 @@ static void rename_path(GSList * filters
+                                         while (*base == G_DIR_SEPARATOR) base++;
+                                         if (*base == '\0')
+                                                 dest_path = g_strconcat(prefix,
+-                                                    G_DIR_SEPARATOR_S,
++                                                    separator,
+                                                     new_path, NULL);
+                                         else
+                                                 dest_path = g_strconcat(prefix,
+-                                                    G_DIR_SEPARATOR_S,
++                                                    separator,
+                                                     new_path,
+-                                                    G_DIR_SEPARATOR_S,
++                                                    separator,
+                                                     base, NULL);
+                                         
+                                         g_free(prefix);
+                                         g_free(action->destination);
+                                         action->destination = dest_path;
++					matched = TRUE;
+                                 } else { /* for non-leaf folders */
+                                         /* compare with trailing slash */
+                                         if (!strncmp(old_path_with_sep, action->destination, oldpathlen+1)) {
+                                                 
+                                                 suffix = action->destination + oldpathlen + 1;
+                                                 dest_path = g_strconcat(new_path,
+-                                                    G_DIR_SEPARATOR_S,
++                                                    separator,
+                                                     suffix, NULL);
+                                                 g_free(action->destination);
+                                                 action->destination = dest_path;
++						matched = TRUE;
+                                         }
+                                 }
+                         } else {
+@@ -715,10 +721,19 @@ static void rename_path(GSList * filters
+                                         dest_path = g_strdup(new_path);
+                                         g_free(action->destination);
+                                         action->destination = dest_path;
++					matched = TRUE;
+                                 }
+                         }
+                 }
+         }
++	
++	g_free(old_path_with_sep);
++#ifdef G_OS_WIN32
++	if (!strcmp(separator, G_DIR_SEPARATOR_S) && !matched) {
++		separator = "/";
++		goto again;
++	}
++#endif
+ }
+ 
+ static gboolean prefs_filtering_rename_path_func(GNode *node, gpointer data)
