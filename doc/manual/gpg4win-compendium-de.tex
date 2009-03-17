@@ -1086,7 +1086,7 @@ drei Schaltflächen betätigen:
 
     Kleopatra wählt automatisch den Dateityp und speichert Ihr
     Zertifikat als \textit{.asc} bzw. \textit{.gpg} Datei ab --
-    abhängig davon, ob Sie die Option \textit{ASCII-Mantel} (engl.
+    abhängig davon, ob Sie die Option \textit{ASCII-geschützt} (engl.
     "`ASCII armor"') ein- bzw. ausschalten.
 
     Klicken Sie anschließend zum Exportieren auf \Button{OK}.
@@ -3956,7 +3956,7 @@ Verschlüsseln}:
 Die Verschlüsselungseinstellungen sollten Sie nur bei Bedarf
 umstellen:
 \begin{description}
-    \item[Ausgabe als Text (ASCII-Mantel):] Bei Aktivierung dieser
+    \item[Ausgabe als Text (ASCII-geschützt (ASCII armor)):] Bei Aktivierung dieser
         Option erhalten Sie die verschlüsselte Datei mit der
         Dateiendung \textit{.asc} (OpenPGP) bzw. \textit{.pem} (S/MIME). 
         Diese Dateitypen sind mit jedem Texteditor lesbar -- Sie würden dort
@@ -4029,13 +4029,13 @@ sind insgesamt vier Dateitypen als Ergebnis möglich:
     \item[OpenPGP:]~\\
     \texttt{<dateiname>.txt $\rightarrow$ <dateiname>.txt\textbf{.gpg}}\\
     \texttt{<dateiname>.txt $\rightarrow$ <dateiname>.txt\textbf{.asc}}
-    ~ \small (bei Ausgabe als Text/ASCII-Mantel)
+    ~ \small (bei Ausgabe als Text/ASCII-armor))
     \normalsize
 
     \item[S/MIME:]~\\
     \texttt{<dateiname>.txt $\rightarrow$ <dateiname>.txt\textbf{.p7m}}\\
     \texttt{<dateiname>.txt $\rightarrow$ <dateiname>.txt\textbf{.pem}}
-    ~ \small{ (bei Ausgabe als Text/ASCII-Mantel)}
+    ~ \small{ (bei Ausgabe als Text/ASCII-armor)}
     \normalsize
 \end{description}
 
@@ -4165,11 +4165,13 @@ exportieren}.
 Wählen Sie den Pfad und den Dateinamen der Ausgabedatei.
 Der Dateityp wird automatisch gesetzt. Abhängig davon ob Sie einen
 geheimen OpenPGP- oder S/MIME-Schlüssel exportieren wollen, ist
-standardmäßig die Dateiendung \textit{.gpg} (OpenPGP) oder \textit{.der} (S/MIME)
-ausgewählt. Bei diesen Dateien handelt es sich um Binärdateien -- eine Betrachtung im
+standardmäßig die Dateiendung \textit{.gpg} (OpenPGP) oder
+\textit{.p12} (S/MIME)
+ausgewählt. Bei diesen Dateien handelt es sich um Binärdateien, die
+Ihr Zertifikat (inkl. geheimen Schlüssel) verschlüsselt enthalten -- eine Betrachtung im
 Texteditor ist hier also sinnlos, aber möglich (probieren Sie es aus).
 
-Bei Aktivierung der Option \Menu{ASCII-Mantel}
+Bei Aktivierung der Option \Menu{ASCII-geschützt (ASCII armor)}
 erhalten Sie die Dateiendung 
 \textit{.asc} (OpenPGP) bzw. \textit{.pem} (S/MIME).
 Auch diese beiden Dateitypen sind mit jedem Texteditor lesbar -- Sie würden dort
@@ -4263,8 +4265,8 @@ ist es sinnvoll einige systemweite Vorgaben und Vorberlegungen
 für Gpg4win einzurichten.
 
 Das betrifft vor allem S/MIME, denn bei streng vorgegebenen
-Vertrauensketten macht es Sinn dass die Anwender die Informationen
-dazu miteinander Teilen.
+Vertrauensketten macht es Sinn, dass die Anwender die Informationen
+dazu miteinander teilen.
 
 Einige typische systemweite Einstellungen sind:
 
@@ -4273,7 +4275,8 @@ Einige typische systemweite Einstellungen sind:
 
     Um zu vermeiden, dass jeder Anwender selbst die notwendigen
     Wurzelzertifikate suchen und installieren sowie deren Vertrauenswürdigkeit
-    prüfen und bestätigen (beglaubigen) muss, ist eine systemweite Vorbelegung der
+    prüfen und bestätigen (beglaubigen) muss (vgl.
+    Abschnitt~\ref{sec_allow-mark-trusted}), ist eine systemweite Vorbelegung der
     wichtigsten Wurzelzertifikate sinnvoll.
 
     Dafür sind folgende Schritte durchzuführen:
@@ -4593,6 +4596,7 @@ beschrieben.
 
 
 \section{Vertrauenswürdigkeit der Wurzelzertifikate durch Benutzer markieren}
+\label{sec_allow-mark-trusted}
 
 Wurzelzertifikate können auch jeweils von den einzelnen Benutzern als
 vertrauenswürdig markiert werden -- eine systemweite Konfiguration
