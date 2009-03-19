@@ -68,6 +68,9 @@
 !ifdef HAVE_PKG_ZLIB
 !include "inst-zlib.nsi"
 !endif
+!ifdef HAVE_PKG_BSFILTER
+!include "inst-bsfilter.nsi"
+!endif
 !ifdef HAVE_PKG_QT
 !include "inst-qt.nsi"
 !endif
@@ -176,6 +179,9 @@
 !ifdef HAVE_PKG_ATTACHWARNER
 !include "inst-attachwarner.nsi"
 !endif
+!ifdef HAVE_PKG_BSFILTER_PLUGIN
+!include "inst-bsfilter_plugin.nsi"
+!endif
 #!ifdef HAVE_PKG_EUDORAGPG
 #!include "inst-eudoragpg.nsi"
 #!endif
@@ -237,6 +243,9 @@
 !endif
 !ifdef HAVE_PKG_ATTACHWARNER
 !include "uninst-attachwarner.nsi"
+!endif
+!ifdef HAVE_PKG_BSFILTER_PLUGIN
+!include "uninst-bsfilter_plugin.nsi"
 !endif
 !ifdef HAVE_PKG_PAPERKEY
 !include "uninst-paperkey.nsi"
@@ -322,6 +331,9 @@
 !endif
 !ifdef HAVE_PKG_QT
 !include "uninst-qt.nsi"
+!endif
+!ifdef HAVE_PKG_BSFILTER
+!include "uninst-bsfilter.nsi"
 !endif
 !ifdef HAVE_PKG_ZLIB
 !include "uninst-zlib.nsi"
@@ -569,6 +581,9 @@ Function CalcDepends
 !ifdef HAVE_PKG_ZLIB
   !insertmacro UnselectSection ${SEC_zlib}
 !endif
+!ifdef HAVE_PKG_BSFILTER
+  !insertmacro UnselectSection ${SEC_bsfilter}
+!endif
 !ifdef HAVE_PKG_CRYPT
   !insertmacro UnselectSection ${SEC_crypt}
 !endif
@@ -664,6 +679,9 @@ Function CalcDepends
 !endif
 !ifdef HAVE_PKG_ATTACHWARNER
   !insertmacro UnselectSection ${SEC_attachwarner}
+!endif
+!ifdef HAVE_PKG_BSFILTER_PLUGIN
+  !insertmacro UnselectSection ${SEC_bsfilter_plugin}
 !endif
 !ifdef HAVE_PKG_KDESUPPORT
   !insertmacro UnselectSection ${SEC_kdesupport}
@@ -807,12 +825,14 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_gnutls}
   # These are not build dependencies, but we always want to install
   # all plugins.
+  !insertmacro SelectSection ${SEC_bsfilter}
   !insertmacro SelectSection ${SEC_notification_plugin}
   !insertmacro SelectSection ${SEC_gtkhtml2_viewer}
   !insertmacro SelectSection ${SEC_vcalendar}
   !insertmacro SelectSection ${SEC_rssyl}
   !insertmacro SelectSection ${SEC_tnef_parse}
   !insertmacro SelectSection ${SEC_attachwarner}
+  !insertmacro SelectSection ${SEC_bsfilter_plugin}
   skip_claws_mail:
 !endif
 

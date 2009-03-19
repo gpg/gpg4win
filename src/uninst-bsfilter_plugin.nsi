@@ -1,5 +1,5 @@
-# uninst-libiconv.nsi - Installer snippet for libiconv.-*- coding: latin-1; -*-
-# Copyright (C) 2005 g10 Code GmbH
+# uninst-bsfilter_plugin.nsi - Installer snippet for bsfilter_plugin.-*- coding: latin-1; -*-
+# Copyright (C) 2005, 2007 g10 Code GmbH
 # 
 # This file is part of GPG4Win.
 # 
@@ -17,24 +17,28 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
-
 !ifdef prefix
 !undef prefix
 !endif
-!define prefix ${ipdir}/libiconv-${gpg4win_pkg_libiconv_version}
+!define prefix ${ipdir}/bsfilter_plugin-${gpg4win_pkg_bsfilter_plugin_version}
 
 
 ; Uninstaller section.
-Section "-un.libiconv"
+Section "-un.bsfilter_plugin"
 !ifdef SOURCES
-  Push "${gpg4win_pkg_libiconv_src}"
+  Push "${gpg4win_pkg_bsfilter_plugin}"
   Call un.SourceDelete
 !else
-  Delete "$INSTDIR\pub\iconv.dll"
-!ifdef DEBUG
-  Delete "$INSTDIR\pub\charset.dll"
-  Delete "$INSTDIR\pub\iconv.exe"
-!endif
+  Delete "$INSTDIR\lib\claws-mail\plugins\bsfilter.dll"
+  RMDir "$INSTDIR\lib\claws-mail\plugins"
+  RMDir "$INSTDIR\lib\claws-mail"
+  Delete "$INSTDIR\share\locale\fr\LC_MESSAGES\bsfilter_plugin.mo"
+  RMDir "$INSTDIR\share\locale\fr\LC_MESSAGES"
+  RMDir "$INSTDIR\share\locale\fr"
+  RMDir "$INSTDIR\share\locale"
+  RMDir "$INSTDIR\share"
+  RMDir "$INSTDIR\lib"
   RMDir "$INSTDIR"
+
 !endif
 SectionEnd

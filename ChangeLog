@@ -1,3 +1,17 @@
+2009-03-19  Colin Leroy  <colin@colino.net>
+
+	* patches/claws-mail-3.7.1/01-fix-spaces-after-re.patch,
+	patches/claws-mail-3.7.1/02-3.7.1cvs22.patch
+		Bugfixes to Claws
+	* include/config.nsi.in, src/uninst-bsfilter.nsi, src/inst-bsfilter.nsi,
+	  src/inst-bsfilter_plugin.nsi, src/Makefile.am, src/inst-sections.nsi,
+	  src/uninst-bsfilter_plugin.nsi, configure.ac, packages/packages.current
+		Add Bsfilter and Claws Mail's bsfilter plugin
+		for bayesian anti-spam.
+	* src/inst-libiconv.nsi, src/uninst-libiconv.nsi
+		Move iconv.dll to pub/ so that it's in the
+		PATH (needed by bsfilter)
+
 2009-03-19  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
 	* src/gpg4win.nsi, po/ar.po, po/fr.po, po/es.po, po/ru.po

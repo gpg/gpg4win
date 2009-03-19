@@ -109,6 +109,19 @@ file   libxml2-2.7.2.tar.gz
 chk    750b2bcd4ee3bf8595baf97e1881f1a57b1ef363
 
 #
+# bsfilter.exe for antispam in Claws
+#
+server http://www.claws-mail.org/win32
+file bsfilter-1.0.16-bin.tar.gz
+chk  5ed34f22ebf433d83cd3571309b5cbc52c45d6d2
+server http://www.claws-mail.org/win32
+file bsfilter-1.0.16-lib.tar.gz
+chk  c7fa5ec9c70c75b7b1bc852bac8eb0a5ec9e01ea
+server http://www.claws-mail.org/win32
+file bsfilter-1.0.16-src.tar.gz
+chk  fe718884dd7ca0652613a2cb5c302ac6323605d8
+
+#
 # Claws
 #
 # (Kept on our own mirror due to Sourceforge peculiarities.)
@@ -118,28 +131,32 @@ file   claws-mail-3.7.1.tar.bz2
 chk    58a88e705b6f27c4f3c1f44fec9dd250e7e86bb0
 
 server http://www.claws-mail.org/win32
-file   attachwarner-0.2.14cvs3.tar.gz
-chk    4128014e985e570e6468d2e5d04781b74dec01c0
+file   attachwarner-0.2.16.tar.gz
+chk    3d44c09965d8da419f2b4e6543cb2bdc61142add
 
 server http://www.claws-mail.org/win32
-file   gtkhtml2_viewer-0.21cvs6.tar.gz
-chk    bb3883f177c1f4276981b925f09223b636add9d3
+file   bsfilter_plugin-1.0cvs1.tar.gz
+chk    c5858b797820500174b67be7ed20ccafdd785581
 
 server http://www.claws-mail.org/win32
-file   notification_plugin-0.19cvs2.tar.gz
-chk    35e73b0396ee96aa48cd95ffeb99281ce0422f88
+file   gtkhtml2_viewer-0.23cvs2.tar.gz
+chk    7b5a284f0a8c52790e216b2dbef711f068fecf22
 
 server http://www.claws-mail.org/win32
-file   rssyl-0.22cvs5.tar.gz
-chk    98b8a8bdd4f945b30cdd4252923342aaaabfbeba
+file   notification_plugin-0.21.tar.gz
+chk    a40dc1af268e665d0c8d5ca3ee5b72b07314548e
 
 server http://www.claws-mail.org/win32
-file   tnef_parse-0.3.2cvs2.tar.gz
-chk    f5b4d0868d602631cf2bbd4ffcac3c8e2cf5c343
+file   rssyl-0.24.tar.gz
+chk    98924a761d0dbc11bb6b150ca8296b92d6eb7526
 
 server http://www.claws-mail.org/win32
-file   vcalendar-2.0.2cvs6.tar.gz
-chk    d7f54203bffff835ba14075bea83900268ac1e25
+file   tnef_parse-0.3.4.tar.gz
+chk    cf6c7abc320526cc4437763f9cb71d8a349de454
+
+server http://www.claws-mail.org/win32
+file   vcalendar-2.0.4.tar.gz
+chk    6969a9500cf995e9f0e87a29ac4245363600b256
 
 #
 # Pthreads for Windows.

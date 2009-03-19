@@ -1,4 +1,4 @@
-# uninst-libiconv.nsi - Installer snippet for libiconv.-*- coding: latin-1; -*-
+# inst-bsfilter.nsi - Installer snippet for bsfilter.      -*- coding: latin-1; -*-
 # Copyright (C) 2005 g10 Code GmbH
 # 
 # This file is part of GPG4Win.
@@ -21,20 +21,18 @@
 !ifdef prefix
 !undef prefix
 !endif
-!define prefix ${ipdir}/libiconv-${gpg4win_pkg_libiconv_version}
+!define prefix ${ipdir}/bsfilter-${gpg4win_pkg_bsfilter_version}
 
-
-; Uninstaller section.
-Section "-un.libiconv"
-!ifdef SOURCES
-  Push "${gpg4win_pkg_libiconv_src}"
-  Call un.SourceDelete
-!else
-  Delete "$INSTDIR\pub\iconv.dll"
 !ifdef DEBUG
-  Delete "$INSTDIR\pub\charset.dll"
-  Delete "$INSTDIR\pub\iconv.exe"
+Section "bsfilter" SEC_bsfilter
+!else
+Section "-bsfilter" SEC_bsfilter
 !endif
-  RMDir "$INSTDIR"
+  SetOutPath "$INSTDIR\pub"
+!ifdef SOURCES
+  File ${gpg4win_pkg_bsfilter_src}
+!else
+  File ${prefix}/bin/bsfilterw.exe
+  File ${prefix}/bin/bsfilter.exe
 !endif
 SectionEnd

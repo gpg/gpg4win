@@ -29,7 +29,7 @@ Section "libiconv" SEC_libiconv
 !else
 Section "-libiconv" SEC_libiconv
 !endif
-  SetOutPath "$INSTDIR"
+  SetOutPath "$INSTDIR\pub"
 !ifdef SOURCES
   File "${gpg4win_pkg_libiconv_src}"
 !else

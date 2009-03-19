@@ -38,6 +38,7 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi config.site \
         inst-rssyl.nsi		   uninst-rssyl.nsi      \
         inst-tnef_parse.nsi	   uninst-tnef_parse.nsi      \
         inst-attachwarner.nsi	   uninst-attachwarner.nsi      \
+        inst-bsfilter_plugin.nsi   uninst-bsfilter_plugin.nsi      \
         inst-crypt.nsi		   uninst-crypt.nsi	      \
         inst-dirmngr.nsi	   uninst-dirmngr.nsi	      \
         inst-eudoragpg.nsi	   uninst-eudoragpg.nsi	      \
@@ -73,6 +74,7 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi config.site \
         inst-w32pth.nsi		   uninst-w32pth.nsi	      \
         inst-winpt.nsi		   uninst-winpt.nsi	      \
         inst-zlib.nsi        	   uninst-zlib.nsi            \
+	inst-bsfilter.nsi          uninst-bsfilter.nsi        \
         inst-qt.nsi        	   uninst-qt.nsi              \
         inst-kdesupport.nsi   	   uninst-kdesupport.nsi      \
         inst-oxygen-icons.nsi  	   uninst-oxygen-icons.nsi    \
@@ -91,7 +93,8 @@ gpg4win_spkgs = glib libgpg-error gpgme gpgol gpgex \
 		gpa winpt libgsasl libtasn1 opencdk gnutls curl libxml2 \
                 libetpan claws-mail notification_plugin gtkhtml2_viewer \
 		vcalendar rssyl gnupg2 pinentry libassuan libksba libgcrypt \
-		adns dirmngr w32pth scute paperkey tnef_parse attachwarner
+		adns dirmngr w32pth scute paperkey tnef_parse attachwarner \
+		bsfilter_plugin
 
 # Extra options to configure for individual packages.
 # We can use $(idir) here for the installation prefix.
@@ -268,6 +271,9 @@ gpg4win_pkg_tnef_parse_configure = \
 gpg4win_pkg_attachwarner_configure = \
   --with-lib-prefix=$(idir) --with-libiconv-prefix=$(idir) LIBS=\"-L$(idir)/bin\"
 
+gpg4win_pkg_bsfilter_plugin_configure = \
+  --with-lib-prefix=$(idir) --with-libiconv-prefix=$(idir) LIBS=\"-L$(idir)/bin\"
+
 gpg4win_pkg_scute_configure = --silent \
   --with-gpgme-prefix=$(idir) --with-libassuan-prefix=$(idir)
 
@@ -294,7 +300,7 @@ gpg4win_pkg_bzip2_make_args_inst = \
 # Supported binary packages.
 gpg4win_bpkgs = libiconv gettext pkgconfig zlib libpng jpeg pango cairo \
 	        atk gtk+ gpgee crypt regex qt kdesupport oxygen-icons kdelibs \
-		kleopatra
+		kleopatra bsfilter
 
 # libiconv needs some special magic to generate a usable import
 # library.
