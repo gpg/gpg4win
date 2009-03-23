@@ -78,10 +78,11 @@ LangString T_WelcomeTitleGpg4winSrc ${LANG_ENGLISH} \
 
 # The About string as displayed on the first page.
 LangString T_AboutGpg4winSrc ${LANG_ENGLISH} \
- "GnuPG is GNU's tool for secure communication and data storage. \
-  It can be used to encrypt data and to create digital signatures. \
-  It includes an advanced key management facility and is compliant \
-  with the proposed OpenPGP Internet standard as described in RFC2440."
+ "Gpg4win is a installer package for Windows for EMail and \
+  file encryption using the core componenent GnuPG for Windows. \
+  Both relevant cryptography standards are supported, OpenPGP \
+  and S/MIME. Gpg4win and the software included with Gpg4win \
+  are Free Software."
 
 LangString T_AboutGpg4winSrcVersion ${LANG_ENGLISH} \
  "This is Gpg4win version ${VERSION}"

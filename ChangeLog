@@ -1,3 +1,7 @@
+2009-03-23  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+
+	* src/gpg4win-src.nsi: Change English T_AboutGpg4win text.
+
 2009-03-19  Colin Leroy  <colin@colino.net>
 
 	* patches/claws-mail-3.7.1/01-fix-spaces-after-re.patch,
