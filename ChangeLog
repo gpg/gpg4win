@@ -1,3 +1,8 @@
+2009-03-24  Marc Mutz <marc@kdab.net>
+
+	* src/inst-kleopatra.nsi, src/uninst-kleopatra.nsi:
+	  Add new files gpg4win.png, kleopatra_config_gnupgsystem.desktop
+
 2009-03-23  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
 	* src/gpg4win-src.nsi: Change English T_AboutGpg4win text.
