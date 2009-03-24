@@ -425,8 +425,7 @@ chk  a4e673c1b1b1cc420e771413edc53ef89fe7773a
 
 # kdelibs + kleopatra
 
-#server ftp://ftp.kdab.net/pub/gpg4win
-server ftp://ftp.intevation.de/gpg4win
+server ftp://ftp.kdab.net/pub/gpg4win
 
 file kdelibs-20090323-bin.zip
 chk  27b6518450d66adf0136952ce5e1843c8f4c25f1
