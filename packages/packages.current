@@ -292,8 +292,8 @@ chk  a16918820a96b7b2820ab1723a38d62bff0cc863
 #
 server ftp://ftp.g10code.com/g10code/gpgex
 
-file gpgex-0.9.2.tar.bz2
-chk  6f57fa2ed0d1bb59de9d619930ab0ee242edf680
+file gpgex-0.9.3.tar.bz2
+chk  ebc64e2d00bf6cc68f7637413c0edf14a535341b 
 
 #
 # Pth emulation
@@ -336,9 +336,9 @@ chk  6699a1ff94c649e8905199d480c6412cc43bad3d
 #file gpgme/gpgme-1.1.7.tar.bz2
 #chk  c735bb90431667e3d020aa3adcf0efa858c992af
 
-name gnupg2-2.0.11.tar.bz2
-file gnupg/gnupg-2.0.11.tar.bz2
-chk  9f71a342c5be686b0dcef082078af693802a558f
+#name gnupg2-2.0.11.tar.bz2
+#file gnupg/gnupg-2.0.11.tar.bz2
+#chk  9f71a342c5be686b0dcef082078af693802a558f
 
 
 # (Snapshots)
@@ -423,31 +423,22 @@ chk  86c68eef7ac8231124d5b594a65b9518b5450237
 file oxygen-icons-20080526-src.zip
 chk  a4e673c1b1b1cc420e771413edc53ef89fe7773a
 
-# kdelibs
+# kdelibs + kleopatra
 
-server ftp://ftp.kdab.net/pub/gpg4win
+#server ftp://ftp.kdab.net/pub/gpg4win
+server ftp://ftp.intevation.de/gpg4win
 
-file kdelibs-20090302-bin.zip
+file kdelibs-20090323-bin.zip
 chk  27b6518450d66adf0136952ce5e1843c8f4c25f1
 
-file kdelibs-20090302-lib.zip
+file kdelibs-20090323-lib.zip
 chk  d3a81f2e92c2fc023abc9f5af2494b2eca5e2d8d
 
-file kdelibs-20090302-src.zip
+file kdelibs-20090323-src.zip
 chk  799823278cf9f99f1ce52ad3245fc3645a0b8189
 
+file kleopatra-20090324-bin.zip
+chk  42dcb9f60c7b179f1bb4db9b7060beb354161504
 
-# Kleopatra
-
-server ftp://ftp.kdab.net/pub/gpg4win
-
-file kleopatra-20090302-bin.zip
-chk  cf2bf73db94f7af8fea3555abd3b5baee68b7051
-
-# FIXME: These belong in the bin package.
-#name kleopatra-20081128-lib.zip
-#file kleopatra-20081128-doc.zip
-#chk  3dbcc84ce76031274c52e816835ff547423fc660
-
-file kleopatra-20090302-src.zip
-chk  d861f0701065a5b9337bef4c3f66232368336656
+file kleopatra-20090324-src.zip
+chk  8698453df553a6b083060b009b1f8c9dd2d2abd3

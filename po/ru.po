@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Gpg4Win Installer\n"
 "Report-Msgid-Bugs-To: gpg4win-devel@wald.intevation.org\n"
-"POT-Creation-Date: 2008-11-18 18:51+0100\n"
+"POT-Creation-Date: 2009-03-24 20:31+0100\n"
 "PO-Revision-Date: 2008-04-22 11:57+0200\n"
 "Last-Translator: Sergei Smirnov <moscow@hro.org>\n"
 "Language-Team: Human Rights Network <moscow@hro.org>\n"
@@ -29,11 +29,10 @@ msgstr "Добро пожаловать в программу установки Gpg4win!"
 #: src/gpg4win.nsi:119
 msgctxt "T_AboutGpg4win"
 msgid ""
-"Gpg4win is a installer package for Windows for EMail and "
-"file encryption using the core componenent GnuPG for Windows. "
-"Both relevant cryptography standards are supported, OpenPGP "
-"and S/MIME. Gpg4win and the software included with Gpg4win "
-"are Free Software."
+"Gpg4win is a installer package for Windows for EMail and file encryption "
+"using the core componenent GnuPG for Windows. Both relevant cryptography "
+"standards are supported, OpenPGP and S/MIME. Gpg4win and the software "
+"included with Gpg4win are Free Software."
 msgstr ""
 "GnuPG - бесплатная программа с открытым кодом, которая предназначена для "
 "защиты информации. С помощью GnuPG можно шифровать данные и добавлять к ним "
@@ -41,17 +40,17 @@ msgstr ""
 "шифровальными ключами и совместима со стандартом OpenPGP, описанным в "
 "документе RFC2440."
 
-#: src/gpg4win.nsi:125
+#: src/gpg4win.nsi:126
 msgctxt "T_AboutGpg4winVersion"
 msgid "This is Gpg4win version ${VERSION}"
 msgstr "Версия Gpg4win ${VERSION}"
 
-#: src/gpg4win.nsi:128
+#: src/gpg4win.nsi:129
 msgctxt "T_AboutGpg4winFileVersion"
 msgid "file version ${PROD_VERSION}"
 msgstr "Версия файла ${PROD_VERSION}"
 
-#: src/gpg4win.nsi:131
+#: src/gpg4win.nsi:132
 msgctxt "T_AboutGpg4winReleaseDate"
 msgid "release date ${_BUILD_ISODATE}"
 msgstr "Дата релиза ${_BUILD_ISODATE}"
@@ -64,11 +63,10 @@ msgstr "Установка компонентов Gpg4Win"
 #: src/gpg4win-src.nsi:80
 msgctxt "T_AboutGpg4winSrc"
 msgid ""
-"Gpg4win is a installer package for Windows for EMail and "
-"file encryption using the core componenent GnuPG for Windows. "
-"Both relevant cryptography standards are supported, OpenPGP "
-"and S/MIME. Gpg4win and the software included with Gpg4win "
-"are Free Software."
+"Gpg4win is a installer package for Windows for EMail and file encryption "
+"using the core componenent GnuPG for Windows. Both relevant cryptography "
+"standards are supported, OpenPGP and S/MIME. Gpg4win and the software "
+"included with Gpg4win are Free Software."
 msgstr ""
 "GnuPG - бесплатная программа с открытым кодом, которая предназначена для "
 "защиты информации. С помощью GnuPG можно шифровать данные и добавлять к ним "
@@ -76,17 +74,17 @@ msgstr ""
 "шифровальными ключами и совместима со стандартом OpenPGP, описанным в "
 "документе RFC2440."
 
-#: src/gpg4win-src.nsi:86
+#: src/gpg4win-src.nsi:87
 msgctxt "T_AboutGpg4winSrcVersion"
 msgid "This is Gpg4win version ${VERSION}"
 msgstr "Версия Gpg4win ${VERSION}"
 
-#: src/gpg4win-src.nsi:89
+#: src/gpg4win-src.nsi:90
 msgctxt "T_AboutGpg4winSrcFileVersion"
 msgid "file version ${PROD_VERSION}"
 msgstr "Версия файла ${PROD_VERSION}"
 
-#: src/gpg4win-src.nsi:92
+#: src/gpg4win-src.nsi:93
 msgctxt "T_AboutGpg4winSrcReleaseDate"
 msgid "release date ${_BUILD_ISODATE}"
 msgstr "Дата релиза ${_BUILD_ISODATE}"
@@ -147,47 +145,52 @@ msgctxt "DESC_Menu_manuals"
 msgid "Documentation"
 msgstr "Документация"
 
-#: src/installer.nsi:253
+#: src/installer.nsi:252
+msgctxt "DESC_Menu_uninstall"
+msgid "Uninstall"
+msgstr ""
+
+#: src/installer.nsi:256
 msgctxt "DESC_Desktop_manuals"
 msgid "Gpg4win Documentation"
 msgstr "Документация Gpg4win"
 
-#: src/installer.nsi:457
+#: src/installer.nsi:460
 msgctxt "T_InstallOptions"
 msgid "Install Options"
 msgstr "Параметры установки"
 
-#: src/installer.nsi:460
+#: src/installer.nsi:463
 msgctxt "T_InstallOptLinks"
 msgid "Start links"
 msgstr "Ярлыки Gpg4win"
 
-#: src/installer.nsi:462
+#: src/installer.nsi:465
 msgctxt "T_InstOptLabelA"
 msgid "Please select where Gpg4win shall install links:"
 msgstr "Где создавать ярлыки Gpg4win:"
 
-#: src/installer.nsi:465
+#: src/installer.nsi:468
 msgctxt "T_InstOptLabelB"
 msgid "(Only programs will be linked into the quick launch bar.)"
 msgstr "(В панели быстрого запуска будут ссылки только на программы)."
 
-#: src/installer.nsi:468
+#: src/installer.nsi:471
 msgctxt "T_InstOptFieldA"
 msgid "Start Menu"
 msgstr "Меню Пуск"
 
-#: src/installer.nsi:471
+#: src/installer.nsi:474
 msgctxt "T_InstOptFieldB"
 msgid "Desktop"
 msgstr "Рабочий стол"
 
-#: src/installer.nsi:474
+#: src/installer.nsi:477
 msgctxt "T_InstOptFieldC"
 msgid "Quick Launch Bar"
 msgstr "Панель быстрого запуска"
 
-#: src/installer.nsi:480
+#: src/installer.nsi:483
 msgctxt "T_FoundExistingVersion"
 msgid ""
 "Version $R1 has already been installed.\n"
@@ -196,7 +199,7 @@ msgstr ""
 "Версия $R1 уже установлена.\n"
 "Перезаписать ее версией ${VERSION}?"
 
-#: src/installer.nsi:483
+#: src/installer.nsi:486
 #, fuzzy
 msgctxt "T_FoundExistingOldVersion"
 msgid ""
@@ -209,7 +212,7 @@ msgstr ""
 "\n"
 "Продолжить установку Gpg4Win?"
 
-#: src/installer.nsi:488
+#: src/installer.nsi:491
 msgctxt "T_FoundExistingVersionB"
 msgid ""
 "A version of Gpg4Win has already been installed on the system. There will be "
@@ -222,7 +225,7 @@ msgstr ""
 "\n"
 "Продолжить установку Gpg4Win?"
 
-#: src/installer.nsi:499
+#: src/installer.nsi:502
 msgctxt "T_FoundOldSeeManual"
 msgid ""
 "Please see the Gpg4win user manual to learn how to migrate existing keys "
@@ -231,7 +234,7 @@ msgstr ""
 "Вопросы переноса ключей из других программ в Gpg4Win рассматриваются в "
 "руководстве пользователя Gpg4Win."
 
-#: src/installer.nsi:504
+#: src/installer.nsi:507
 msgctxt "T_FoundOldGnuPP"
 msgid ""
 "An old installation of GnuPP (GNU Privacy Project) has been been detected.  "
@@ -245,7 +248,7 @@ msgstr ""
 "\n"
 "Продолжить установку Gpg4Win (а с GnuPP разберемся потом)?"
 
-#: src/installer.nsi:513
+#: src/installer.nsi:516
 msgctxt "T_FoundOldGnuPT"
 msgid ""
 "An installation of GnuPT has been been detected.  This may cause problems "
@@ -258,7 +261,7 @@ msgstr ""
 "\n"
 "Продолжить установку Gpg4win?"
 
-#: src/installer.nsi:520
+#: src/installer.nsi:523
 msgctxt "T_FoundOldWinPTSF"
 msgid ""
 "An old installation of the Sourceforge hosted WinPT has been been detected.  "
@@ -273,7 +276,7 @@ msgstr ""
 "\n"
 "Продолжить установку Gpg4win (а со старой программой разберемся потом)?"
 
-#: src/installer.nsi:530
+#: src/installer.nsi:533
 msgctxt "T_FoundOldGnuPack"
 msgid ""
 "An installation of GnuPG-Pack has been been detected. You need to uninstall "
@@ -287,7 +290,7 @@ msgstr ""
 "\n"
 "Установка прервана!"
 
-#: src/installer.nsi:539
+#: src/installer.nsi:542
 msgctxt "T_BetaWarning"
 msgid ""
 "Note: This is a BETA version of Gpg4win.\n"
@@ -296,13 +299,13 @@ msgid ""
 "production environment."
 msgstr ""
 
-#: src/installer.nsi:546
+#: src/installer.nsi:549
 msgctxt "T_AdminNeeded"
 msgid ""
 "Warning: Administrator permissions required for a successful installation"
 msgstr "Для успешной установки требуются права администратора"
 
-#: src/installer.nsi:550
+#: src/installer.nsi:553
 msgctxt "T_CloseOtherApps"
 msgid ""
 "Please make sure that other applications are not running. In particular you "
@@ -313,12 +316,12 @@ msgstr ""
 "Outlook и Explorer. Если это не сделать, Gpg4Win все равно будет "
 "установлена, но потребуется перезагрузка."
 
-#: src/installer.nsi:555
+#: src/installer.nsi:558
 msgctxt "T_ShuttingDownWinPT"
 msgid "Trying to shutdown a possible running instance of WinPT."
 msgstr "Возможно, запущена программа WinPT. Попробуем закрыть ее."
 
-#: src/installer.nsi:557
+#: src/installer.nsi:560
 msgctxt "T_ShuttingDownDirMngr"
 msgid "Trying to shutdown a possible running instance of DirMngr."
 msgstr "Возможно, запущена программа DirMngr. Попробуем закрыть ее."
@@ -328,17 +331,17 @@ msgctxt "T_SetDefaultClient"
 msgid "Do you want to make Claws Mail your default mail client?"
 msgstr ""
 
-#: src/inst-claws-mail.nsi:82
+#: src/inst-claws-mail.nsi:85
 msgctxt "DESC_SEC_claws_mail"
 msgid "Claws Mail-User-Agent"
 msgstr "Почтовый клиент Claws"
 
-#: src/inst-claws-mail.nsi:85
+#: src/inst-claws-mail.nsi:88
 msgctxt "DESC_Menu_claws_mail"
 msgid "Run the Claws mailprogram."
 msgstr "Запуск почтовой программы Claws."
 
-#: src/inst-claws-mail.nsi:88
+#: src/inst-claws-mail.nsi:91
 msgctxt "DESC_Menu_claws_mail_pdf"
 msgid "Show the online manual of Claws Mail"
 msgstr "Показать онлайновое руководство к почтовому клиенту Claws Mail"
@@ -354,12 +357,12 @@ msgctxt "DESC_SEC_gnupg2"
 msgid "GNU Privacy Guard"
 msgstr "GNU Privacy Guard"
 
-#: src/inst-gpa.nsi:72
+#: src/inst-gpa.nsi:73
 msgctxt "DESC_SEC_gpa"
 msgid "GNU Privacy Assistant"
 msgstr "GNU Privacy Assistant"
 
-#: src/inst-gpa.nsi:75
+#: src/inst-gpa.nsi:76
 #, fuzzy
 msgctxt "DESC_Menu_gpa"
 msgid "Run the GNU Privacy Assistant key management tool."
@@ -412,12 +415,12 @@ msgctxt "DESC_SEC_gpgol"
 msgid "GnuPG for Outlook"
 msgstr "GnuPG для MS Outlook"
 
-#: src/inst-kleopatra.nsi:302
+#: src/inst-kleopatra.nsi:200
 msgctxt "DESC_SEC_kleopatra"
 msgid "Keymanager for OpenPGP and X.509 and common crypto dialogs."
 msgstr ""
 
-#: src/inst-kleopatra.nsi:306
+#: src/inst-kleopatra.nsi:204
 msgctxt "DESC_Menu_kleopatra"
 msgid "Run the Kleopatra key management tool."
 msgstr "Запуск менеджера ключей Kleopatra."

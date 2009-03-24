@@ -1,16 +1,21 @@
+2009-03-24  Werner Koch  <wk@g10code.com>
+
+	* packages/packages.current: Update kleopatra and kdelibs tarballs
+	from the Intevation server.  Update gpgex.
+	
 2009-03-24  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
 	* packages/packages.current: Update kdelibs.
 
 2009-03-24  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
-	* src/inst-kleopatra.nsi, src/uninst-kleopatra.nsi:
-	  Add new file gpg4win-compact.png
+	* src/inst-kleopatra.nsi, src/uninst-kleopatra.nsi: Add new file
+	gpg4win-compact.png.
 
 2009-03-24  Marc Mutz <marc@kdab.net>
 
-	* src/inst-kleopatra.nsi, src/uninst-kleopatra.nsi:
-	  Add new files gpg4win.png, kleopatra_config_gnupgsystem.desktop
+	* src/inst-kleopatra.nsi, src/uninst-kleopatra.nsi: Add new files
+	gpg4win.png, kleopatra_config_gnupgsystem.desktop.
 
 2009-03-23  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
@@ -19,21 +24,20 @@
 2009-03-19  Colin Leroy  <colin@colino.net>
 
 	* patches/claws-mail-3.7.1/01-fix-spaces-after-re.patch,
-	patches/claws-mail-3.7.1/02-3.7.1cvs22.patch
-		Bugfixes to Claws
-	* include/config.nsi.in, src/uninst-bsfilter.nsi, src/inst-bsfilter.nsi,
-	  src/inst-bsfilter_plugin.nsi, src/Makefile.am, src/inst-sections.nsi,
-	  src/uninst-bsfilter_plugin.nsi, configure.ac, packages/packages.current
-		Add Bsfilter and Claws Mail's bsfilter plugin
-		for bayesian anti-spam.
-	* src/inst-libiconv.nsi, src/uninst-libiconv.nsi
-		Move iconv.dll to pub/ so that it's in the
-		PATH (needed by bsfilter)
+	* patches/claws-mail-3.7.1/02-3.7.1cvs22.patch: Bugfixes to Claws.
+	* include/config.nsi.in, src/uninst-bsfilter.nsi
+	* src/inst-bsfilter.nsi, src/inst-bsfilter_plugin.nsi
+	* src/Makefile.am, src/inst-sections.nsi
+	* src/uninst-bsfilter_plugin.nsi, configure.ac
+	* packages/packages.current: Add Bsfilter and Claws Mail's
+	bsfilter plugin for bayesian anti-spam.
+	* src/inst-libiconv.nsi, src/uninst-libiconv.nsi: Move iconv.dll
+	to pub/ so that it's in the PATH (needed by bsfilter)
 
 2009-03-19  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
 	* src/gpg4win.nsi, po/ar.po, po/fr.po, po/es.po, po/ru.po
-	  po/de.po: Change English T_AboutGpg4win text.
+	* po/de.po: Change English T_AboutGpg4win text.
 
 2009-03-06  Colin Leroy  <colin@colino.net>
 
@@ -46,8 +50,8 @@
 
 2009-03-03  Colin Leroy  <colin@colino.net>
 
-	* patches/claws-mail-3.7.0/07-bug_1865.patch
-		Fix filtering rules after renaming IMAP account.
+	* patches/claws-mail-3.7.0/07-bug_1865.patch: Fix filtering rules
+	after renaming IMAP account.
 
 2009-03-03  Werner Koch  <wk@g10code.com>
 
@@ -201,16 +205,15 @@
 
 2009-01-09  Colin Leroy  <colin@colino.net>
 
-	* patches/claws-mail-3.7.0/01-bug_1810.patch
+	* patches/claws-mail-3.7.0/01-bug_1810.patch:
 		Fix crash when hitting 'o' (disabled Open With)
-	* patches/claws-mail-3.7.0/02-bug_1813.patch
+	* patches/claws-mail-3.7.0/02-bug_1813.patch:
 		Fix themes installation
-	* patches/claws-mail-3.7.0/03-bug_1814.patch
-		Workaround wrong window positioning when taskbar
-		is on top
-	* patches/claws-mail-3.7.0/04-bug_1815.patch
+	* patches/claws-mail-3.7.0/03-bug_1814.patch:
+		Workaround wrong window positioning when taskbar is on top
+	* patches/claws-mail-3.7.0/04-bug_1815.patch:
 		Fix Drag-n-drop to Compose window
-	* patches/claws-mail-3.7.0/05-bug_1816.patch
+	* patches/claws-mail-3.7.0/05-bug_1816.patch:
 		Fix bogus --attach error message
 
 2008-12-19  Colin Leroy  <colin@colino.net>
@@ -219,8 +222,8 @@
 
 2008-12-14  Colin Leroy  <colin@colino.net>
 
-	* packages/packages.current, src/inst-claws-mail.nsi,
-	src/uninst-claws-mail.nsi: Update Claws Mail, and install 
+	* packages/packages.current, src/inst-claws-mail.nsi
+	* src/uninst-claws-mail.nsi: Update Claws Mail, and install 
 	ca-certificates.crt to be able to verify certificates
 
 2008-12-13  Colin Leroy  <colin@colino.net>
