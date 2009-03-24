@@ -149,6 +149,7 @@ Section "-un.kleopatra"
   Delete "$INSTDIR\share\apps\kleopatra\pics\kleopatra_splashscreen.svgz"
   Delete "$INSTDIR\share\apps\kleopatra\pics\kleopatra_splashscreen.png"
   Delete "$INSTDIR\share\apps\kleopatra\pics\gpg4win.png"
+  Delete "$INSTDIR\share\apps\kleopatra\pics\gpg4win-compact.png"
   Delete "$INSTDIR\share\apps\kleopatra\kleopatra.rc"
   Delete "$INSTDIR\share\applications\kde4\kleopatra_import.desktop"
 

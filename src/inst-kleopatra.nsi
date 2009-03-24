@@ -57,6 +57,7 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
   File ${prefix}/share/apps/kleopatra/pics/kleopatra_wizard.png
   File ${prefix}/share/apps/kleopatra/pics/kleopatra_wizard.svgz
   File ${prefix}/share/apps/kleopatra/pics/gpg4win.png
+  File ${prefix}/share/apps/kleopatra/pics/gpg4win-compact.png
 
   SetOutPath "$INSTDIR\share\apps\kwatchgnupg"
 
