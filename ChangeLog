@@ -1,5 +1,9 @@
 2009-03-24  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
+	* packages/packages.current: Update kdelibs.
+
+2009-03-24  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+
 	* src/inst-kleopatra.nsi, src/uninst-kleopatra.nsi:
 	  Add new file gpg4win-compact.png
 

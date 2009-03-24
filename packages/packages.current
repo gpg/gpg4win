@@ -428,13 +428,13 @@ chk  a4e673c1b1b1cc420e771413edc53ef89fe7773a
 server ftp://ftp.kdab.net/pub/gpg4win
 
 file kdelibs-20090302-bin.zip
-chk  6b0efdfa47afbde9cc46e0bc7bab000f128f55be
+chk  27b6518450d66adf0136952ce5e1843c8f4c25f1
 
 file kdelibs-20090302-lib.zip
-chk  ae0774166b2b5d495dc07c9262c8bd5daba93b39
+chk  d3a81f2e92c2fc023abc9f5af2494b2eca5e2d8d
 
 file kdelibs-20090302-src.zip
-chk  170d91439cec16507bad5d51acc61ced57899268
+chk  799823278cf9f99f1ce52ad3245fc3645a0b8189
 
 
 # Kleopatra
