@@ -9,7 +9,7 @@ Important Hints for Using Gpg4win 1.9-BETA
   experienced users or administrators to learn
   about the upcoming version and suggest changes.
 
-Status: Gpg4win-1.9.14 (20090303)
+Status: Gpg4win-1.9.15 (20090325)
 
 This text covers information that are
 intended to help judging whether Gpg4win 1.9
@@ -50,7 +50,7 @@ Contents of this document:
 * Important hints for present version
 * Migration
 * Most important changes in Gpg4win 1.9 compared to 1.1
-* Most important changes in Gpg4win 1.9.14 compared to 1.9.13
+* Most important changes in Gpg4win 1.9.15 compared to 1.9.14
 
 
 Important hints for present version
@@ -170,41 +170,25 @@ New:
   and PGP/MIME and new texts for S/MIME and X.509.
 
 
-Most important changes in Gpg4win 1.9.14 compared to 1.9.13
+Most important changes in Gpg4win 1.9.15 compared to 1.9.14
 ===========================================================
-
  - Kleopatra:
-    * Better error strings and dialog layout for add user id dialog.
-    * Remove unused temp dir in uiserver. The socket is created in
-      ~/.gnupg nowadays. Leaves temp dirs around on crash, so remove.
-    * ImportCertificateCommand: use a short tab title, and put the 
-      path of the file from which we imported into the tab's tooltip instead.
-    * Fix header resizing in the mainwindow.
-    * ownertrust dialog: Disable the OK button until a change has actually 
-      been made
-    * mainwindow: Hide the tab bar reliably when only one tab is used
-    * File->Quit message box: Make "Only Close Window" the default.
-    * Add File->Save Icon Usage Log, which we'll ship for the next two 
-      releases or so, and then bury again. Helps to determine which of the
-      myriad of KDE icons we're actually using.
-    * Import certificates: try not to pop up the result message box in 
-      the background.
-    * Make Kleopatra take 75% less CPU on startup.
-    * Various other (gui) optimizations.
+    * Centralize config dialogs: "GnuPG Backend" now integrated
+      in "Configure Kleopatra"
+    * File open/save dialogs shows to user folder by default
+    * progress bar (in status bar) improved
+    * new "About Gpg4win" dialog in Help menu
     * Update/add new translation strings.
     * Make the timing stuff end up in the kleo_log.
 
- - GpgOL:
-    * Save the crypto settings in a message draft.
-    * Unnamed attachments are now shown with a suffix matching
-      its MIME type.
-    * Pass sender address if encrypt a message (requirement to
-      encrypt automatically to yourself; function comes in a
-      fututre realease).
-    * translations updated
+ - Backend und Installer:
+    * Verbesserung der "allow-mark-trusted"-Funktion: die trustlist.txt
+      kann nun um Fingerprints erweitert werden, die der Nutzer explizit
+      nicht vertraut.
 
  - Gpg4win Compendium 3.0.0-beta1 reworked
 
- - Backend and Installer: 
-    * Uninstall process improved and start menu entry added.
+ - Backend and Installer:
+    * "allow-mark-trusted" function improved: trustlist.txt save
+      the fingerprints which are explicit not allowed by the user.
     * Several minor and medium issues and errors were fixed.

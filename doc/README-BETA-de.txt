@@ -11,7 +11,7 @@ Wichtige Informationen zum Einsatz von Gpg4win 1.9-BETA
   neue Version kennenzulernen und Verbesserungsvorschläge
   einzubringen.
 
-Stand: Gpg4win-1.9.14 (20090303)
+Stand: Gpg4win-1.9.15 (20090325)
 
 Hier finden sich wichtige Informationen die bei der
 Entscheidung helfen sollen, ob Gpg4win 1.9 schon für
@@ -51,7 +51,7 @@ Inhalt dieses Dokumentes:
 * Wichtige Hinweise zur vorliegenden Version
 * Migration
 * Wichtigste Änderungen von Gpg4win 1.9 gegenüber 1.1
-* Wichtigste Änderungen von Gpg4win 1.9.14 gegenüber 1.9.13
+* Wichtigste Änderungen von Gpg4win 1.9.15 gegenüber 1.9.14
 
 
 Wichtige Hinweise zur vorliegenden Version
@@ -93,7 +93,7 @@ Migration
 
 * Von einer Gpg4win 1.X  oder sonstigen GnuPG Version:
 
-  Es wird dingend empfohlen zunächst Gpg4win-1.1.3 zu
+  Es wird dingend empfohlen zunächst Gpg4win-1.x zu
   deinstallieren bevor anschließend Gpg4win-2.0.0 installiert wird.
 
   Starten Sie Ihr System neu, sofern Sie nach der Installation dazu 
@@ -174,43 +174,23 @@ Neu:
   PGP/MIME sowie ergänzt um S/MIME bzw. X.509.
 
 
-Wichtigste Änderungen von Gpg4win 1.9.14 gegenüber 1.9.13
+Wichtigste Änderungen von Gpg4win 1.9.15 gegenüber 1.9.14
 =========================================================
  - Kleopatra:
-    * verbesserte Fehlermeldungen und Layout für Dialog
-     "BenutzerID hinzufügen"
-    * nicht benötigte temporäre Dateiordner werden gelöscht
-    * Reiternamen für "Importierte Zertifikate" reduziert
-      (mit Pfad im Tooltip)
-    * verbessertes Spalten-Verhalten im Hauptfenster (z.B. beim
-      Verändern der Breite)
-    * Inhabervertrauen: OK-Button deaktiviert solange keine Änderungen
-      gemacht werden
-    * Hauptfenster: Blendet Reiterleiste aus, wenn nur ein Reiter
-      angezeigt wird
-    * Datei->Beenden Meldung: "Nur das Fenster" als Voreinstellung gesetzt
-    * "Datei->Symbolbenutzungs-Protokoll speichern" wird nur für die
-      nächsten ca. 2 Beta-Versionen integriert. Unterstützt beim
-      Bestimmen der benötigten KDE-Icons.
-    * Zertifikatsimport: Ergebnisdialog nun stets im Vordergrund
-    * Kleopatra benötigt beim Starten 75% weniger CPU
-    * Kleo-Log-Ausgabe korrigiert
-    * zahlreiche Übersetzungen ergänzt / korrigiert
-    * viele kleinere Stabilitäts- und GUI-Verbesserungen
-
- - GpgOL:
-    * speichert Krypto-Einstellungen nun auch für Nachrichten-Entwürfe
-    * unbenannte Anhänge werden nun mit einem zum MIME-Type passenden
-      Suffix angezeigt (z.B. als Anhang weitergeleitete E-Mails
-      als *.eml Datei)
-    * beim Verschlüsseln wird intern nun der Absender übergeben
-      (Voraussetzung für automatische Verschlüsselung an sich selbst;
-      Funktion folgt in nächsten Versionen)
-    * Übersetzungen ergänzt / korrigiert
+    * Konfigurationsdialoge zusammengefasst: "GnuPG-Backend" nun
+      unter "Kleopatra einrichten" integriert
+    * Datei öffnen/speichern-Dialoge zeigen nun standardmäßig
+      auf das Nutzerverzeichnis
+    * Verhalten des Fortschrittsbalkens (in der Statusleiste) verbessert
+    * neuer "Über Gpg4win"-Dialog im Hilfe-Menü
+    * diverse Übersetzungen ergänzt / korrigiert
+    * diverse kleinere Stabilitäts- und GUI-Verbesserungen
 
  - Gpg4win Kompendium:
-    * weitere Überarbeitungen
+    * weitere kleinere Überarbeitungen
 
  - Backend und Installer:
-    * Deinstallation verbessert und Startmenü-Eintrag ergänzt
+    * Verbesserung der "allow-mark-trusted"-Funktion: die trustlist.txt
+      kann nun um Fingerprints erweitert werden, die der Nutzer explizit
+      nicht vertraut.
     * diverse kleinere Verbesserungen
