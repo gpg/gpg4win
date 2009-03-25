@@ -1,3 +1,12 @@
+2009-03-25  Werner Koch  <wk@g10code.com>
+
+	* manual/gpg4win-compendium-de.tex (chapter*{F Historie}): Replace
+	umlaut after a forced line break by \" notation to fix a
+	hyperlatex problem.
+
+	* manual/fdl-book.tex (chapter*{G GNU Free Documentation
+	License}): Change chapter number.
+
 2009-03-17  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
 	* manual/gpg4win-compendium-de.tex: Some minor changes.

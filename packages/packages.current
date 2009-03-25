@@ -336,10 +336,9 @@ chk  6699a1ff94c649e8905199d480c6412cc43bad3d
 #file gpgme/gpgme-1.1.7.tar.bz2
 #chk  c735bb90431667e3d020aa3adcf0efa858c992af
 
-#name gnupg2-2.0.11.tar.bz2
-#file gnupg/gnupg-2.0.11.tar.bz2
-#chk  9f71a342c5be686b0dcef082078af693802a558f
-
+name gnupg2-2.0.12-svn4966.tar.bz2
+file alpha/gnupg/gnupg-2.0.12-svn4966.tar.bz2
+chk  daec822acfc4d0f97ad131df7ad4720677208fe7
 
 # (Snapshots)
 server ftp://ftp.g10code.com/g10code/scratch

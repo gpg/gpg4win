@@ -1,6 +1,13 @@
+2009-03-25  Werner Koch  <wk@g10code.com>
+
+	Release 1.9.15.
+
+	* packages/packages.current: Update GnuPG.
+
 2009-03-24  Marc Mutz <marc@kdab.net>
 
-	* poackages/packages.current: ftp.intevation.org -> ftp.kdab.net for kleopatra packages.
+	* packages/packages.current: ftp.intevation.org -> ftp.kdab.net
+	for kleopatra packages.
 
 2009-03-24  Werner Koch  <wk@g10code.com>
 
