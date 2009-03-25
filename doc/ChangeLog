@@ -1,5 +1,10 @@
 2009-03-25  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
+	* website/download.htm4, website/download-de.htm4,
+	website/template_header.m4 : Updated to 1.9.15.
+
+2009-03-25  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+
 	* README-BETA-de.txt, READEME-BETA-en.txt: Updated to 1.9.15.
 
 2009-03-25  Werner Koch  <wk@g10code.com>
