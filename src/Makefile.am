@@ -101,7 +101,7 @@ gpg4win_spkgs = glib libgpg-error gpgme gpgol gpgex \
 
 gpg4win_pkg_glib_configure = \
   --with-lib-prefix=$(idir) --with-libiconv-prefix=$(idir) \
-  CPPFLAGS=-I$(idir)/include LDFLAGS=-L$(idir)/lib
+  CPPFLAGS=-I$(idir)/include LDFLAGS=-L$(idir)/lib CCC=i586-mingw32msvc-g++
 
 # The GnuPG package provides man pages which we have to convert.
 # We also create the MO files here.
