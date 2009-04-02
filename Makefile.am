@@ -47,6 +47,9 @@ EXTRA_DIST = autogen.sh README.SVN \
 	patches/gnupg2-2.0.9/04-ks-w32init.patch \
 	patches/gnupg2-2.0.9/05-w32-http.patch \
 	patches/gpgol-0.9.91/01-gpgme.patch \
+	patches/claws-3.7.1/01-fix-spaces-after-re.patch \
+	patches/claws-3.7.1/02-3.7.1cvs22.patch \
+        patches/claws-3.7.1/03-pipe.patch \
         patches/scute-1.2.0/01-bugfixes.patch
 
 copy-news:
