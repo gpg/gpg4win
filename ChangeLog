@@ -1,3 +1,9 @@
+2009-04-03  Marcus Brinkmann  <marcus@g10code.de>
+
+	* src/Makefile.am (gpg4win_pkg_qt_post_install): New macro.
+	* src/QtCore.pc, src/QtGui.pc: New files.
+	* src/gpg4win.mk.in: Clear PKG_CONFIG_LIBDIR.
+
 2009-04-02  Marcus Brinkmann  <marcus@g10code.de>
 
 	* Makefile.am (EXTRA_DIST): Remove

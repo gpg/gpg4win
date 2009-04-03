@@ -393,6 +393,12 @@ cd $$$${pkgidir}/lib;					\
 $(DLLTOOL) --output-lib libiconv.dll.a --def libiconv.def)
 endef
 
+# Qt is missing the pkgconfig files.
+define gpg4win_pkg_qt_post_install
+(mkdir $$$${pkgidir_dev}/lib/pkgconfig; \
+ cp $(srcdir)/QtCore.pc $(srcdir)/QtGui.pc $$$${pkgidir_dev}/lib/pkgconfig/)
+endef
+
 
 # kdesupport ships gettext, which we already have.  Remove a stow
 # conflict about that.  Also remove a stow conflict with kdelibs-lib.

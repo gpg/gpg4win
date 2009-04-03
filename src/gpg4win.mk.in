@@ -69,6 +69,7 @@ define SETVARS
 	pkgmkargs_inst="$(call GETVAR,gpg4win_pkg_$(1)_make_args_inst)";\
 	export PKG_CONFIG="$(tsdir)/src/pkg-config";			\
 	export PKG_CONFIG_PATH="$(idir)/lib/pkgconfig";			\
+	export PKG_CONFIG_LIBDIR="";					\
 	export PATH="$(idir)/bin:$${PATH}";				\
 	export SYSROOT="$(idir)";					\
 	export CONFIG_SITE="$(tsdir)/src/config.site"
