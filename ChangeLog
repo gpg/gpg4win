@@ -1,5 +1,15 @@
 2009-04-03  Marcus Brinkmann  <marcus@g10code.de>
 
+	* packages/packages.current: Update pinentry, libpng, glib, atk,
+	pango, cairo, gtk+, pkgconfig.
+	* configure.ac: libpng is now from GTK.
+	* src/inst-atk.nsi, src/uninst-atk.nsi, src/inst-pango.nsi,
+	src/inst-libpng.nsi, src/uninst-glib.nsi, src/uninst-libpng.nsi,
+	src/inst-gtk+.nsi, src/uninst-gtk+.nsi, src/inst-glib.nsi,
+	src/uninst-pango.nsi: Update for new version of the packages.
+	* src/Makefile.am (gpg4win_pkg_libpng_post_install): Fix path for
+	new package version.
+
 	* src/Makefile.am (gpg4win_pkg_qt_post_install): New macro.
 	* src/QtCore.pc, src/QtGui.pc: New files.
 	* src/gpg4win.mk.in: Clear PKG_CONFIG_LIBDIR.

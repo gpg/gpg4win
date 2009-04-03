@@ -34,20 +34,20 @@ Section "-atk" SEC_atk
 !else
   File ${prefix}/bin/libatk-1.0-0.dll
 
-  SetOutPath "$INSTDIR\lib\locale\de\LC_MESSAGES"
-  File ${prefix}/lib/locale/de/LC_MESSAGES/atk10.mo
+  SetOutPath "$INSTDIR\share\locale\de\LC_MESSAGES"
+  File ${prefix}/share/locale/de/LC_MESSAGES/atk10.mo
 
-  SetOutPath "$INSTDIR\lib\locale\ar\LC_MESSAGES"
-  File ${prefix}/lib/locale/ar/LC_MESSAGES/atk10.mo
+  SetOutPath "$INSTDIR\share\locale\ar\LC_MESSAGES"
+  File ${prefix}/share/locale/ar/LC_MESSAGES/atk10.mo
 
-  SetOutPath "$INSTDIR\lib\locale\es\LC_MESSAGES"
-  File ${prefix}/lib/locale/es/LC_MESSAGES/atk10.mo
+  SetOutPath "$INSTDIR\share\locale\es\LC_MESSAGES"
+  File ${prefix}/share/locale/es/LC_MESSAGES/atk10.mo
 
-  SetOutPath "$INSTDIR\lib\locale\fr\LC_MESSAGES"
-  File ${prefix}/lib/locale/fr/LC_MESSAGES/atk10.mo
+  SetOutPath "$INSTDIR\share\locale\fr\LC_MESSAGES"
+  File ${prefix}/share/locale/fr/LC_MESSAGES/atk10.mo
 
-  SetOutPath "$INSTDIR\lib\locale\ru\LC_MESSAGES"
-  File ${prefix}/lib/locale/ru/LC_MESSAGES/atk10.mo
+  SetOutPath "$INSTDIR\share\locale\ru\LC_MESSAGES"
+  File ${prefix}/share/locale/ru/LC_MESSAGES/atk10.mo
 
 !endif
 SectionEnd

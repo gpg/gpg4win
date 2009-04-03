@@ -36,14 +36,20 @@ Section "-gtk+" SEC_gtk_
   File ${prefix}/bin/libgdk-win32-2.0-0.dll
   File ${prefix}/bin/libgtk-win32-2.0-0.dll
 
+  File ${prefix}/bin/libgailutil-18.dll
+  File ${prefix}/bin/gdk-pixbuf-query-loaders.exe
+  File ${prefix}/bin/gtk-query-immodules-2.0.exe
+
   SetOutPath "$INSTDIR\etc\gtk-2.0"
   File ${prefix}/etc/gtk-2.0/gdk-pixbuf.loaders
   File ${prefix}/etc/gtk-2.0/gtk.immodules
+  File ${prefix}/etc/gtk-2.0/im-multipress.conf
 
   SetOutPath "$INSTDIR\lib\gtk-2.0\2.10.0\loaders"
   File ${prefix}/lib/gtk-2.0/2.10.0/loaders/libpixbufloader-ani.dll
   File ${prefix}/lib/gtk-2.0/2.10.0/loaders/libpixbufloader-bmp.dll
   File ${prefix}/lib/gtk-2.0/2.10.0/loaders/libpixbufloader-gif.dll
+  File ${prefix}/lib/gtk-2.0/2.10.0/loaders/libpixbufloader-icns.dll
   File ${prefix}/lib/gtk-2.0/2.10.0/loaders/libpixbufloader-ico.dll
   File ${prefix}/lib/gtk-2.0/2.10.0/loaders/libpixbufloader-jpeg.dll
   File ${prefix}/lib/gtk-2.0/2.10.0/loaders/libpixbufloader-pcx.dll
@@ -56,17 +62,17 @@ Section "-gtk+" SEC_gtk_
   File ${prefix}/lib/gtk-2.0/2.10.0/loaders/libpixbufloader-xbm.dll
   File ${prefix}/lib/gtk-2.0/2.10.0/loaders/libpixbufloader-xpm.dll
 
-  SetOutPath "$INSTDIR\lib\gtk-2.0\2.10.0\immodules"
-  File ${prefix}/lib/gtk-2.0/2.10.0/immodules/im-am-et.dll
-  File ${prefix}/lib/gtk-2.0/2.10.0/immodules/im-cedilla.dll
-  File ${prefix}/lib/gtk-2.0/2.10.0/immodules/im-cyrillic-translit.dll
-  File ${prefix}/lib/gtk-2.0/2.10.0/immodules/im-ime.dll
-  File ${prefix}/lib/gtk-2.0/2.10.0/immodules/im-inuktitut.dll
-  File ${prefix}/lib/gtk-2.0/2.10.0/immodules/im-ipa.dll
-  File ${prefix}/lib/gtk-2.0/2.10.0/immodules/im-thai.dll
-  File ${prefix}/lib/gtk-2.0/2.10.0/immodules/im-ti-er.dll
-  File ${prefix}/lib/gtk-2.0/2.10.0/immodules/im-ti-et.dll
-  File ${prefix}/lib/gtk-2.0/2.10.0/immodules/im-viqr.dll
+#  SetOutPath "$INSTDIR\lib\gtk-2.0\2.10.0\immodules"
+#  File ${prefix}/lib/gtk-2.0/2.10.0/immodules/im-am-et.dll
+#  File ${prefix}/lib/gtk-2.0/2.10.0/immodules/im-cedilla.dll
+#  File ${prefix}/lib/gtk-2.0/2.10.0/immodules/im-cyrillic-translit.dll
+#  File ${prefix}/lib/gtk-2.0/2.10.0/immodules/im-ime.dll
+#  File ${prefix}/lib/gtk-2.0/2.10.0/immodules/im-inuktitut.dll
+#  File ${prefix}/lib/gtk-2.0/2.10.0/immodules/im-ipa.dll
+#  File ${prefix}/lib/gtk-2.0/2.10.0/immodules/im-thai.dll
+#  File ${prefix}/lib/gtk-2.0/2.10.0/immodules/im-ti-er.dll
+#  File ${prefix}/lib/gtk-2.0/2.10.0/immodules/im-ti-et.dll
+#  File ${prefix}/lib/gtk-2.0/2.10.0/immodules/im-viqr.dll
 
   SetOutPath "$INSTDIR\lib\gtk-2.0\2.10.0\engines"
   File ${prefix}/lib/gtk-2.0/2.10.0/engines/libpixmap.dll
@@ -84,25 +90,25 @@ Section "-gtk+" SEC_gtk_
   SetOutPath "$INSTDIR\share\themes\MS-Windows\gtk-2.0"
   File ${prefix}/share/themes/MS-Windows/gtk-2.0/gtkrc
 
-  SetOutPath "$INSTDIR\lib\locale\de\LC_MESSAGES"
-  File ${prefix}/lib/locale/de/LC_MESSAGES/gtk20.mo
-  File ${prefix}/lib/locale/de/LC_MESSAGES/gtk20-properties.mo
+  SetOutPath "$INSTDIR\share\locale\de\LC_MESSAGES"
+  File ${prefix}/share/locale/de/LC_MESSAGES/gtk20.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/gtk20-properties.mo
 
-  SetOutPath "$INSTDIR\lib\locale\ar\LC_MESSAGES"
-  File ${prefix}/lib/locale/ar/LC_MESSAGES/gtk20.mo
-  File ${prefix}/lib/locale/ar/LC_MESSAGES/gtk20-properties.mo
+  SetOutPath "$INSTDIR\share\locale\ar\LC_MESSAGES"
+  File ${prefix}/share/locale/ar/LC_MESSAGES/gtk20.mo
+  File ${prefix}/share/locale/ar/LC_MESSAGES/gtk20-properties.mo
 
-  SetOutPath "$INSTDIR\lib\locale\es\LC_MESSAGES"
-  File ${prefix}/lib/locale/es/LC_MESSAGES/gtk20.mo
-  File ${prefix}/lib/locale/es/LC_MESSAGES/gtk20-properties.mo
+  SetOutPath "$INSTDIR\share\locale\es\LC_MESSAGES"
+  File ${prefix}/share/locale/es/LC_MESSAGES/gtk20.mo
+  File ${prefix}/share/locale/es/LC_MESSAGES/gtk20-properties.mo
 
-  SetOutPath "$INSTDIR\lib\locale\fr\LC_MESSAGES"
-  File ${prefix}/lib/locale/fr/LC_MESSAGES/gtk20.mo
-  File ${prefix}/lib/locale/fr/LC_MESSAGES/gtk20-properties.mo
+  SetOutPath "$INSTDIR\share\locale\fr\LC_MESSAGES"
+  File ${prefix}/share/locale/fr/LC_MESSAGES/gtk20.mo
+  File ${prefix}/share/locale/fr/LC_MESSAGES/gtk20-properties.mo
 
-  SetOutPath "$INSTDIR\lib\locale\ru\LC_MESSAGES"
-  File ${prefix}/lib/locale/ru/LC_MESSAGES/gtk20.mo
-  File ${prefix}/lib/locale/ru/LC_MESSAGES/gtk20-properties.mo
+  SetOutPath "$INSTDIR\share\locale\ru\LC_MESSAGES"
+  File ${prefix}/share/locale/ru/LC_MESSAGES/gtk20.mo
+  File ${prefix}/share/locale/ru/LC_MESSAGES/gtk20-properties.mo
 
 !endif
 SectionEnd

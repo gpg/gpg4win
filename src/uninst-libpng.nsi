@@ -30,7 +30,11 @@ Section "-un.libpng"
   Push "${gpg4win_pkg_libpng_src}"
   Call un.SourceDelete
 !else
+  Delete "$INSTDIR\libpng12-0.dll"
+
+  # Old versions:
   Delete "$INSTDIR\libpng13.dll"
+
 !ifdef DEBUG
   Delete "$INSTDIR\png2pnm.exe"
   Delete "$INSTDIR\pngtest.exe"

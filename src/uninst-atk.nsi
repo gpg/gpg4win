@@ -30,6 +30,7 @@ Section "-un.atk"
   Push "${gpg4win_pkg_atk_src}"
   Call un.SourceDelete
 !else
+  # Old stuff.
   Delete "$INSTDIR\lib\locale\de\LC_MESSAGES\atk10.mo"
   RMDir "$INSTDIR\lib\locale\de\LC_MESSAGES"
   RMDir "$INSTDIR\lib\locale\de"
@@ -47,6 +48,25 @@ Section "-un.atk"
   RMDir "$INSTDIR\lib\locale\ru"
   RMDir "$INSTDIR\lib\locale"
   RMDir "$INSTDIR\lib"
+
+  # Current stuff.
+  Delete "$INSTDIR\share\locale\de\LC_MESSAGES\atk10.mo"
+  RMDir "$INSTDIR\share\locale\de\LC_MESSAGES"
+  RMDir "$INSTDIR\share\locale\de"
+  Delete "$INSTDIR\share\locale\ar\LC_MESSAGES\atk10.mo"
+  RMDir "$INSTDIR\share\locale\ar\LC_MESSAGES"
+  RMDir "$INSTDIR\share\locale\ar"
+  Delete "$INSTDIR\share\locale\es\LC_MESSAGES\atk10.mo"
+  RMDir "$INSTDIR\share\locale\es\LC_MESSAGES"
+  RMDir "$INSTDIR\share\locale\es"
+  Delete "$INSTDIR\share\locale\fr\LC_MESSAGES\atk10.mo"
+  RMDir "$INSTDIR\share\locale\fr\LC_MESSAGES"
+  RMDir "$INSTDIR\share\locale\fr"
+  Delete "$INSTDIR\share\locale\ru\LC_MESSAGES\atk10.mo"
+  RMDir "$INSTDIR\share\locale\ru\LC_MESSAGES"
+  RMDir "$INSTDIR\share\locale\ru"
+  RMDir "$INSTDIR\share\locale"
+  RMDir "$INSTDIR\share"
 
   Delete "$INSTDIR\libatk-1.0-0.dll"
 !endif

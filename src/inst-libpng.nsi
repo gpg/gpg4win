@@ -32,7 +32,7 @@ Section "-libpng" SEC_libpng
 !ifdef SOURCES
   File "${gpg4win_pkg_libpng_src}"
 !else
-  File ${prefix}/bin/libpng13.dll
+  File ${prefix}/bin/libpng12-0.dll
 !ifdef DEBUG
   # We install a couple of binaries that may be useful for testing.
   File ${prefix}/bin/png2pnm.exe

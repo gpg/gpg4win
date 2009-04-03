@@ -39,12 +39,12 @@ chk  fe2ee77293da3361b1f2710d1bd62f27b2ae64b0
 file zlib-1.2.3-src.zip
 chk  0e18fcd7f1a585f825c210a1bb2456b4aa8fcc0d
 
-file libpng-1.2.8-bin.zip
-chk  32876271847afed0ed721fb1b5913a2ce5f25168
-file libpng-1.2.8-lib.zip
-chk  834e1567813506525c0f1003a048df0353b1bb36
-file libpng-1.2.8-src.zip
-chk  f00a86596d804fb62e912cf575983124692858fa
+# file libpng-1.2.8-bin.zip
+# chk  32876271847afed0ed721fb1b5913a2ce5f25168
+# file libpng-1.2.8-lib.zip
+# chk  834e1567813506525c0f1003a048df0353b1bb36
+# file libpng-1.2.8-src.zip
+# chk  f00a86596d804fb62e912cf575983124692858fa
 
 file jpeg-6b-4-bin.zip
 chk  d6309212c783cffe8ea9d2c7c8913b69709796fe
@@ -170,78 +170,107 @@ chk  e9f66acde58136ab67e2167412773f727cd13a9d
 #
 # GLIB
 #
-server ftp://ftp.gtk.org/pub/glib/2.12
+server http://ftp.gnome.org/pub/gnome/sources/glib/2.20
 
-file glib-2.12.12.tar.bz2
-chk  527bced2e6d38169c08c8712d5e3b6ebb0dc46b5
-
+file glib-2.20.0.tar.bz2
+chk  4d653ef39fd1ebe7b64217fd824dfb1bbbde7007
 
 #
 # ATK
 #
-server ftp://ftp.gnome.org/pub/gnome/sources/atk/1.12
+server http://ftp.gnome.org/pub/gnome/sources/atk/1.24
 
-file atk-1.12.2.tar.bz2
-chk  8c59f23a90e6b4ddcff0712dcbf1bfdaa9fc35cb
+file atk-1.24.0.tar.bz2
+chk  85ff5bd8f1879d2a43dfcf4842fc5ea9125dec11
 
-server ftp://ftp.gtk.org/pub/gtk/v2.10/win32/dependencies
+server http://ftp.gnome.org/pub/gnome/binaries/win32/atk/1.24
 
-file atk-1.12.2.zip
-chk  c4dd9617e96f03a6856cc99dec407bc9e8f28a98
-file atk-dev-1.12.2.zip
-chk  168ebd566ab4913cb8b03b11d7bc7a038bf27273
-
+name atk-1.24.0.zip
+file atk_1.24.0-1_win32.zip
+chk  206a90bd5c03d4349c83c760916eca2b5eeeb08a
+name atk-dev-1.24.0.zip
+file atk-dev_1.24.0-1_win32.zip
+chk  cee1664fde5109ad3715a57e6b7c642f3a749b6e
 
 #
 # PANGO
 #
-server ftp://ftp.gtk.org/pub/pango/1.16
+server http://ftp.gnome.org/pub/gnome/sources/pango/1.24
 
-file pango-1.16.4.tar.bz2
-chk  6a21126632ed99950818c64d8598b6e92fa7da58
-file win32/pango-1.16.4.zip
-chk  c0dbdaf50465c28ba0686f7d125a6cddc70e40fb
-file win32/pango-dev-1.16.4.zip
-chk  3ffdfe8f49421e5c0f8608c113ee6920316b9562
+file pango-1.24.0.tar.bz2
+chk  32e99f3f1b4ca550225837bf35d581d4d92d08a9
+
+server http://ftp.gnome.org/pub/gnome/binaries/win32/pango/1.24
+
+name pango-1.24.0.zip
+file pango_1.24.0-1_win32.zip
+chk  ddb16003b42644b6e12cba81961e1928c453a732
+name pango-dev-1.24.0.zip
+file pango-dev_1.24.0-1_win32.zip
+chk  baabaae320c2278695da571928c29602b941a1d1
 
 #
 # CAIRO
 #
 server http://cairographics.org/releases
 
-file cairo-1.4.2.tar.gz
-chk  9e7a323fc7d81d5011044d7eb22db3bf26ff7314
+file cairo-1.8.6.tar.gz
+chk  d1e5479d4eeb7b1a3589672e3ef8f4899e7c5eba
 
-server ftp://ftp.gtk.org/pub/gtk/v2.10
-
-file win32/cairo-1.4.2.zip
-chk  33d5308b94c967bfbf2d94a9ec7eda170411d628
-file win32/cairo-dev-1.4.2.zip
-chk  689f8959f69cff6b086846d3f25c361cd6800cb6
-
-
+server http://ftp.gnome.org/pub/gnome/binaries/win32/dependencies
+       
+name cairo-1.8.6.zip
+file cairo_1.8.6-1_win32.zip
+chk  d41dc913befc827e3776ad356ba424350a6a2e49
+name cairo-dev-1.8.6.zip
+file cairo-dev_1.8.6-1_win32.zip
+chk  74f6da5762bbd1ff79ea34b4dc5309ce8a9f25c5
 
 #
 # GTK+
 #
-server ftp://ftp.gtk.org/pub/gtk/v2.10
+server http://ftp.gnome.org/pub/gnome/sources/gtk+/2.16
 
-file gtk+-2.10.13.tar.bz2
-chk  8d00b928a8788ff86d97197c20c18d41f9a1b1cd
-file win32/gtk+-2.10.13.zip
-chk  1cb9e220adcd784ef92d147d2c5d72545eb9c226
-file win32/gtk+-dev-2.10.13.zip
-chk  e3a8e235fef16c01291e683214fb82e19be61844
+file gtk+-2.16.0.tar.bz2
+chk  b737ad4b224a3cff966ef43b2682c696d756764c
+
+server http://ftp.gnome.org/pub/gnome/binaries/win32/gtk+/2.16
+name gtk+-2.16.0.zip
+file gtk+_2.16.0-2_win32.zip
+chk  f4834c74e8da1ed4ab3ad0e5ed0cb43e235a9dd2
+name gtk+-dev-2.16.0.zip
+file gtk+-dev_2.16.0-2_win32.zip
+chk  5d1a1ae730786d2698eaa309ee0da7127a88e30e
+
 
 #
 # GIMP stuff for W32
 #
-server http://www.gimp.org/~tml/gimp/win32
+server http://ftp.gnome.org/pub/gnome/binaries/win32/dependencies
 
-file pkgconfig-0.15.zip
-chk  fc4b38b372e1559cbfafc169f528efcb31c9dd94
-file pkgconfig-0.15.0.tar.gz
-chk  1019c8027c0cf94bca680886f4e2ae4e629a2a97
+name pkgconfig-0.23.tar.gz
+file pkg-config-0.23.tar.gz
+chk  b59dddd6b5320bd74c0f74b3339618a327096b2a
+name pkgconfig-0.23.zip
+file pkg-config-0.23-2.zip
+chk  2d300159d8c5ebd4f7c139aa9e320e194106d003
+
+
+# PNG
+
+server http://dfn.dl.sourceforge.net/sourceforge/libpng
+
+file libpng-1.2.34.tar.gz
+chk  8b1e1e544660e918af75d8af2c078f85c022db68
+
+server http://ftp.gnome.org/pub/gnome/binaries/win32/dependencies
+
+name libpng-1.2.34.zip
+file libpng_1.2.34-1_win32.zip
+chk  5de32013ebad64ec7c592103d8e7b6806851197d
+name libpng-dev-1.2.34.zip
+file libpng-dev_1.2.34-1_win32.zip
+chk  509a4cea2fd45fccd0660980a3257cb29398fbeb
 
 #
 # WinPT
@@ -330,8 +359,8 @@ chk  3987f0efcbb7048c136d5c859e88eee1763a14f6
 file libassuan/libassuan-1.0.5.tar.bz2
 chk  f6c36e9d99736883a8ce5b80b0a51d854cbbbc70
 
-file pinentry/pinentry-0.7.5.tar.gz
-chk  6699a1ff94c649e8905199d480c6412cc43bad3d
+#file pinentry-0.7.6-svn197.tar.gz
+#chk  982297616aa78550dd838dc6f4339f52bb4e50d9
 
 #file gpgme/gpgme-1.1.7.tar.bz2
 #chk  c735bb90431667e3d020aa3adcf0efa858c992af
@@ -348,6 +377,9 @@ chk  e3f6df819419f1bff8f707cff41220a556c0b272
 
 file gpgme-1.1.9-svn1357.tar.bz2
 chk  02752ef4450aef89f2c114088ba6c2f3b2d13076
+
+file pinentry-0.7.6-svn199.tar.gz
+chk  a259477abe529a6b51d77df071c5ed44b1d6d70e
 
 #
 #  GnuPG utilities

@@ -382,7 +382,7 @@ endef
 # In libpng, the pkg-config files are surprisingly found in the
 # runtime package.
 define gpg4win_pkg_libpng_post_install
- (cd $$$${pkgidir};							\
+ (cd $$$${pkgidir_dev};							\
  perl -pi -e 's/^prefix=.*$$$$/prefix=\/usr/' `find . -name \*.pc`)
 endef
 

@@ -54,6 +54,7 @@ Section "-un.glib"
   Delete "$INSTDIR\libgmodule-2.0-0.dll"
   Delete "$INSTDIR\libgobject-2.0-0.dll"
   Delete "$INSTDIR\libgthread-2.0-0.dll"
+  Delete "$INSTDIR\libgio-2.0-0.dll"
   RMDir "$INSTDIR"
 !endif
 SectionEnd

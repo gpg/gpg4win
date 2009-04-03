@@ -35,7 +35,7 @@ Section "-un.pango"
   Delete "$INSTDIR\libpangowin32-1.0-0.dll"
   Delete "$INSTDIR\libpangocairo-1.0-0.dll"
 
-  Delete "$INSTDIR\etc\pango\pango.aliases"
+
   Delete "$INSTDIR\etc\pango\pango.modules"
   RMDir "$INSTDIR\etc\pango"
   RMDir "$INSTDIR\etc"
@@ -54,8 +54,11 @@ Section "-un.pango"
   RMDir "$INSTDIR\lib\pango\1.4.0\modules"
   RMDir "$INSTDIR\lib\pango\1.4.0"
   RMDir "$INSTDIR\lib\pango"
-
   RMDir "$INSTDIR\lib"
+
+  Delete "$INSTDIR\etc\pango\pango.aliases"
+  RMDir "$INSTDIR\etc\pango"
+  RMDir "$INSTDIR\etc"
   RMDir "$INSTDIR"
 !endif
 SectionEnd

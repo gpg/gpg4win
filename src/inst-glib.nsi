@@ -37,6 +37,7 @@ Section "-glib" SEC_glib
   File ${prefix}/bin/libgmodule-2.0-0.dll
   File ${prefix}/bin/libgobject-2.0-0.dll
   File ${prefix}/bin/libgthread-2.0-0.dll
+  File ${prefix}/bin/libgio-2.0-0.dll
 
   SetOutPath "$INSTDIR\share\locale\de\LC_MESSAGES"
   File ${prefix}/share/locale/de/LC_MESSAGES/glib20.mo

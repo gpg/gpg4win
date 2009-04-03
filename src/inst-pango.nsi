@@ -38,7 +38,7 @@ Section "-pango" SEC_pango
   File ${prefix}/bin/libpangocairo-1.0-0.dll
 
   SetOutPath "$INSTDIR\etc\pango"
-  File ${prefix}/etc/pango/pango.aliases
+#  File ${prefix}/etc/pango/pango.aliases
   File ${prefix}/etc/pango/pango.modules
 
 !endif
