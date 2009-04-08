@@ -1,3 +1,13 @@
+2009-04-08  Marcus Brinkmann  <marcus@g10code.de>
+
+	* Makefile.am (EXTRA_DIST): Remove glib-2.9.2 patches and add
+	patches/glib-2.20.0/01-socket.patch.
+	* patches/glib-2.12.12/01-socket.patch: New file.
+	* patches/glib-2.9.2-wk1/01-giowin32.patch,
+	patches/glib-2.9.2-wk1/02-gspawn-w32.patch,
+	patches/glib-2.9.2-wk1/03-gspawn-w32-fixup.patch,
+	patches/glib-2.9.2-wk1/04-gspawn-w32-buffering.patch: Removed.
+
 2009-04-03  Marcus Brinkmann  <marcus@g10code.de>
 
 	* packages/packages.current: Update pinentry, libpng, glib, atk,

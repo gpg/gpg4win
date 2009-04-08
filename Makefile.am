@@ -24,13 +24,10 @@ SUBDIRS = po packages include doc src
 
 EXTRA_DIST = autogen.sh README.SVN \
         patches/pthreads-w32-2-7-0-release/01-make.patch \
-        patches/glib-2.9.2-wk1/01-giowin32.patch \
-        patches/glib-2.9.2-wk1/02-gspawn-w32.patch \
-        patches/glib-2.9.2-wk1/03-gspawn-w32-fixup.patch \
-        patches/glib-2.9.2-wk1/04-gspawn-w32-buffering.patch \
         patches/glib-2.12.12/01-giowin32.patch \
         patches/glib-2.12.12/02-gspawn-w32.patch \
         patches/glib-2.12.12/03-gspawn-w32-fixup.patch \
+        patches/glib-2.20.0/01-socket.patch \
 	patches/gpgme/01-gpg2.patch \
 	patches/gpgme-1.1.7/01-registry.patch \
 	patches/gpgme-1.1.7/02-extern-umlaute.patch \
