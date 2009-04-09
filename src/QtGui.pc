@@ -6,7 +6,7 @@ includedir=${prefix}/include/QtGui
 Name: Qtgui
 Description: Qtgui Library
 Version: 4.5.0
-Libs: -L${libdir} -lQtGui 
-Cflags: -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_NO_DEBUG -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I/usr/include -I${includedir}
+Libs: -L${libdir} -lQtGui4
+Cflags: -DQT_GUI_LIB -I${includedir}
 Requires: QtCore
 
