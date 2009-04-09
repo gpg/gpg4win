@@ -375,11 +375,12 @@ server ftp://ftp.g10code.com/g10code/scratch
 file dirmngr-1.0.3-svn310.tar.bz2
 chk  e3f6df819419f1bff8f707cff41220a556c0b272
 
-file gpgme-1.1.9-svn1357.tar.bz2
-chk  02752ef4450aef89f2c114088ba6c2f3b2d13076
+file gpgme-1.1.9-svn1362.tar.bz2
+chk  0236ef406d3373b0d98ff913c943c248f6aa5550
 
-file pinentry-0.7.6-svn199.tar.gz
-chk  a259477abe529a6b51d77df071c5ed44b1d6d70e
+
+file pinentry-0.7.6-svn202.tar.gz
+chk  859df18ce7fb32dcc27b9e1e900a6205b03f0ffe
 
 #
 #  GnuPG utilities
