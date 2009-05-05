@@ -218,7 +218,7 @@ file cairo-1.8.6.tar.gz
 chk  d1e5479d4eeb7b1a3589672e3ef8f4899e7c5eba
 
 server http://ftp.gnome.org/pub/gnome/binaries/win32/dependencies
-       
+
 name cairo-1.8.6.zip
 file cairo_1.8.6-1_win32.zip
 chk  d41dc913befc827e3776ad356ba424350a6a2e49
@@ -322,7 +322,7 @@ chk  a16918820a96b7b2820ab1723a38d62bff0cc863
 server ftp://ftp.g10code.com/g10code/gpgex
 
 file gpgex-0.9.3.tar.bz2
-chk  ebc64e2d00bf6cc68f7637413c0edf14a535341b 
+chk  ebc64e2d00bf6cc68f7637413c0edf14a535341b
 
 #
 # Pth emulation
@@ -455,21 +455,24 @@ chk  86c68eef7ac8231124d5b594a65b9518b5450237
 file oxygen-icons-20080526-src.zip
 chk  a4e673c1b1b1cc420e771413edc53ef89fe7773a
 
+
+#
 # kdelibs + kleopatra
+#
+#
+server http://files.kolab.org/local/gpg4win
 
-server ftp://ftp.kdab.net/pub/gpg4win
+file kdelibs-20090505-bin.zip
+chk  147e23842cd3162b9b660f63a10a8533d4ba87b8
 
-file kdelibs-20090323-bin.zip
-chk  27b6518450d66adf0136952ce5e1843c8f4c25f1
+file kdelibs-20090505-lib.zip
+chk  4c650af0a7f9bb70e1dd56a973ca33566737394c
 
-file kdelibs-20090323-lib.zip
-chk  d3a81f2e92c2fc023abc9f5af2494b2eca5e2d8d
+file kdelibs-20090505-src.zip
+chk  42ea20cb3105086699faa65a4d4b576b3d973464
 
-file kdelibs-20090323-src.zip
-chk  799823278cf9f99f1ce52ad3245fc3645a0b8189
+file kleopatra-20090505-bin.zip
+chk  eb7625c30bdc88e9a1d8527b9bce4f292c0c98f6
 
-file kleopatra-20090324-bin.zip
-chk  42dcb9f60c7b179f1bb4db9b7060beb354161504
-
-file kleopatra-20090324-src.zip
-chk  8698453df553a6b083060b009b1f8c9dd2d2abd3
+file kleopatra-20090505-src.zip
+chk  f40dcc0d65cf11afd6e42de03a544fb724021d3e
