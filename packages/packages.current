@@ -365,9 +365,9 @@ chk  f6c36e9d99736883a8ce5b80b0a51d854cbbbc70
 #file gpgme/gpgme-1.1.7.tar.bz2
 #chk  c735bb90431667e3d020aa3adcf0efa858c992af
 
-name gnupg2-2.0.12-svn4966.tar.bz2
-file alpha/gnupg/gnupg-2.0.12-svn4966.tar.bz2
-chk  daec822acfc4d0f97ad131df7ad4720677208fe7
+name gnupg2-2.0.12-svn5008.tar.bz2
+file alpha/gnupg/gnupg-2.0.12-svn5008.tar.bz2
+chk  4291c1cd6d2662cc9f3362cc51c08c43af255d82
 
 # (Snapshots)
 server ftp://ftp.g10code.com/g10code/scratch
@@ -375,12 +375,12 @@ server ftp://ftp.g10code.com/g10code/scratch
 file dirmngr-1.0.3-svn310.tar.bz2
 chk  e3f6df819419f1bff8f707cff41220a556c0b272
 
-file gpgme-1.1.9-svn1362.tar.bz2
-chk  0236ef406d3373b0d98ff913c943c248f6aa5550
+#file gpgme-1.1.9-svn1362.tar.bz2
+#chk  0236ef406d3373b0d98ff913c943c248f6aa5550
 
 
-file pinentry-0.7.6-svn202.tar.gz
-chk  859df18ce7fb32dcc27b9e1e900a6205b03f0ffe
+#file pinentry-0.7.6-svn202.tar.gz
+#chk  859df18ce7fb32dcc27b9e1e900a6205b03f0ffe
 
 #
 #  GnuPG utilities
@@ -402,9 +402,13 @@ chk  6255a7958dc9e735c3f76595cd973abca09c1f93
 #
 # GPA
 #
-server http://wald.intevation.org/frs/download.php
-file   491/gpa-0.8.0.tar.bz2
-chk    c519af3ccd3c7e518458e143b2001a8cc6d90467
+#server http://wald.intevation.org/frs/download.php
+#file   491/gpa-0.8.0.tar.bz2
+#chk    c519af3ccd3c7e518458e143b2001a8cc6d90467
+
+server ftp://ftp.g10code.com/g10code/scratch
+file gpa-0.9.0-svn994.tar.bz2
+chk  9bc0b64d41854d0acf6bf4ae52b74dd8cc68118b
 
 
 #
