@@ -359,12 +359,6 @@ chk  3987f0efcbb7048c136d5c859e88eee1763a14f6
 file libassuan/libassuan-1.0.5.tar.bz2
 chk  f6c36e9d99736883a8ce5b80b0a51d854cbbbc70
 
-#file pinentry-0.7.6-svn197.tar.gz
-#chk  982297616aa78550dd838dc6f4339f52bb4e50d9
-
-#file gpgme/gpgme-1.1.7.tar.bz2
-#chk  c735bb90431667e3d020aa3adcf0efa858c992af
-
 name gnupg2-2.0.12-svn5008.tar.bz2
 file alpha/gnupg/gnupg-2.0.12-svn5008.tar.bz2
 chk  4291c1cd6d2662cc9f3362cc51c08c43af255d82
@@ -375,12 +369,11 @@ server ftp://ftp.g10code.com/g10code/scratch
 file dirmngr-1.0.3-svn310.tar.bz2
 chk  e3f6df819419f1bff8f707cff41220a556c0b272
 
-#file gpgme-1.1.9-svn1362.tar.bz2
-#chk  0236ef406d3373b0d98ff913c943c248f6aa5550
+file gpgme-1.1.9-svn1362.tar.bz2
+chk  0236ef406d3373b0d98ff913c943c248f6aa5550
 
-
-#file pinentry-0.7.6-svn202.tar.gz
-#chk  859df18ce7fb32dcc27b9e1e900a6205b03f0ffe
+file pinentry-0.7.6-svn202.tar.gz
+chk  859df18ce7fb32dcc27b9e1e900a6205b03f0ffe
 
 #
 #  GnuPG utilities

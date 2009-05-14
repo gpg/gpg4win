@@ -1,3 +1,7 @@
+2009-05-14  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+
+	* packages/packages.current: Update pinentry and gpgme.
+
 2009-05-13  Werner Koch  <wk@g10code.com>
 
 	* packages/packages.current: Update GnuPG and GPA.
