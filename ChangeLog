@@ -1,3 +1,7 @@
+2009-05-14  Werner Koch  <wk@g10code.com>
+
+	Release 1.9.16.
+
 2009-05-14  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
 	* packages/packages.current: Update kdelibs and kleopatra.
