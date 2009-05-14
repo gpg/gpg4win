@@ -11,7 +11,7 @@ Wichtige Informationen zum Einsatz von Gpg4win 1.9-BETA
   neue Version kennenzulernen und Verbesserungsvorschläge
   einzubringen.
 
-Stand: Gpg4win-1.9.15 (20090325)
+Stand: Gpg4win-1.9.16 (20090514)
 
 Hier finden sich wichtige Informationen die bei der
 Entscheidung helfen sollen, ob Gpg4win 1.9 schon für
@@ -51,13 +51,13 @@ Inhalt dieses Dokumentes:
 * Wichtige Hinweise zur vorliegenden Version
 * Migration
 * Wichtigste Änderungen von Gpg4win 1.9 gegenüber 1.1
-* Wichtigste Änderungen von Gpg4win 1.9.15 gegenüber 1.9.14
+* Wichtigste Änderungen von Gpg4win 1.9.16 gegenüber 1.9.15
 
 
 Wichtige Hinweise zur vorliegenden Version
 ==========================================
 
-- Installationpaket ca. 45 MByte:
+- Installationpaket ca. 47 MByte:
   Das Paket ist noch nicht bzgl. Größe optimiert.
   Es wird angestrebt den Umfang mit der Zeit zu reduzieren.
 
@@ -120,7 +120,7 @@ Entfallen:
 Aktualisiert:
 -------------
 
-- Claws Mail: Version 3.7.0
+- Claws Mail: Version 3.7.1
   Wesentliche Neuerungen: Unterstützung von SSL, NNTP und IMAP
   in der Windows-Version von Claws Mail.
 
@@ -174,23 +174,30 @@ Neu:
   PGP/MIME sowie ergänzt um S/MIME bzw. X.509.
 
 
-Wichtigste Änderungen von Gpg4win 1.9.15 gegenüber 1.9.14
+Wichtigste Änderungen von Gpg4win 1.9.16 gegenüber 1.9.15
 =========================================================
  - Kleopatra:
-    * Konfigurationsdialoge zusammengefasst: "GnuPG-Backend" nun
-      unter "Kleopatra einrichten" integriert
-    * Datei öffnen/speichern-Dialoge zeigen nun standardmäßig
-      auf das Nutzerverzeichnis
-    * Verhalten des Fortschrittsbalkens (in der Statusleiste) verbessert
-    * neuer "Über Gpg4win"-Dialog im Hilfe-Menü
+    * verschlüsselte Nachricht wird automatisch auch an den Sender
+      verschlüsselt (Senderinformationen erscheinen in der Zertifikatsauswahl)
+    * HTTP-Proxy-Konfiguration für OpenPGP-Zertifikatsserver nun auch
+      rudimentär über den "Zertifikatsserver einrichten" Dialog möglich.
+      Syntax: "<servername> http-proxy=proxy.example.com"
+    * Löschen von geheimen Zertifikaten nun möglich;
+      neuer Bestätigungsdialog; Löschen mehrerer Zertifikate oder
+      ganzer X.509-Ketten möglich.
     * diverse Übersetzungen ergänzt / korrigiert
     * diverse kleinere Stabilitäts- und GUI-Verbesserungen
 
- - Gpg4win Kompendium:
-    * weitere kleinere Überarbeitungen
+ - GPA:
+    * SmartCard Unterstützung hinzugefügt
+    * GPA benötigt nun gpg2
+    * X.509-Unterstützung ist standardmäßig eingeschaltet
 
- - Backend und Installer:
-    * Verbesserung der "allow-mark-trusted"-Funktion: die trustlist.txt
-      kann nun um Fingerprints erweitert werden, die der Nutzer explizit
-      nicht vertraut.
+ - Backend:
+    * GnuPG: SmartCard Unterstützung für 2048bit-OpenPGP- und 
+      Telesec-Netkey-3-Karten
+    * Pinentry-Dialog erscheint nun stets im Vodergrund
+      (gpg-protect-tool benutzt gpg-agent über libassuan)
+    * Pinentry: Dialog-Reihenfolge bei wiederholter
+      Passphrase-Eingabe korrigiert (beim Setzen/Ändern der Passphrase)
     * diverse kleinere Verbesserungen

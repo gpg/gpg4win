@@ -9,7 +9,7 @@ Important Hints for Using Gpg4win 1.9-BETA
   experienced users or administrators to learn
   about the upcoming version and suggest changes.
 
-Status: Gpg4win-1.9.15 (20090325)
+Status: Gpg4win-1.9.16 (20090514)
 
 This text covers information that are
 intended to help judging whether Gpg4win 1.9
@@ -50,13 +50,13 @@ Contents of this document:
 * Important hints for present version
 * Migration
 * Most important changes in Gpg4win 1.9 compared to 1.1
-* Most important changes in Gpg4win 1.9.15 compared to 1.9.14
+* Most important changes in Gpg4win 1.9.16 compared to 1.9.15
 
 
 Important hints for present version
 ===================================
 
-- Installation package ca. 45 MByte:
+- Installation package ca. 47 MByte:
   The installer isn't optimzed concerning package size.
   It is aspired to shrink the size in the next time.
 
@@ -119,7 +119,7 @@ Removed:
 Updated:
 --------
 
-- Claws Mail: Version 3.7.0
+- Claws Mail: Version 3.7.1
   Main new features: Support of SSL, NNTP and IMAP in the
   Windows-Version of Claws Mail.
 
@@ -170,25 +170,27 @@ New:
   and PGP/MIME and new texts for S/MIME and X.509.
 
 
-Most important changes in Gpg4win 1.9.15 compared to 1.9.14
+Most important changes in Gpg4win 1.9.16 compared to 1.9.15
 ===========================================================
  - Kleopatra:
-    * Centralize config dialogs: "GnuPG Backend" now integrated
-      in "Configure Kleopatra"
-    * File open/save dialogs shows to user folder by default
-    * progress bar (in status bar) improved
-    * new "About Gpg4win" dialog in Help menu
+    * Encrypted message will be encrypted automatically to the sender
+      (sender information are shown in the certificate choice wizard).
+    * Configure HTTP proxy for OpenPGP certificate servers are now
+      possible with the certificate server dialog.
+      Syntax: "<servername> http-proxy=proxy.example.com"
+    * Supports deletion of secret certificates; new dialog to confirm;
+      delete multiple certificates or certificate chains possible.
     * Update/add new translation strings.
-    * Make the timing stuff end up in the kleo_log.
+    * Various other (gui) optimizations.
 
- - Backend und Installer:
-    * Verbesserung der "allow-mark-trusted"-Funktion: die trustlist.txt
-      kann nun um Fingerprints erweitert werden, die der Nutzer explizit
-      nicht vertraut.
+ - GPA:
+    * Add a smartcard manager and the option --card.
+    * GPA now requires gpg2.
+    * X.509 support is now always enabled.
 
- - Gpg4win Compendium 3.0.0-beta1 reworked
-
- - Backend and Installer:
-    * "allow-mark-trusted" function improved: trustlist.txt save
-      the fingerprints which are explicit not allowed by the user.
+ - Backend:
+    * GnuPG: Support for 2048 bit OpenPGP and Telesec Netkey 3 cards.
+    * The Pinentry will now be put into the foreground.
+      (The gpg-protect-tool now uses gpg-agent via libassuan.)
+    * Pinentry: dialog sequence of repeatedly passphrase input rectified.
     * Several minor and medium issues and errors were fixed.
