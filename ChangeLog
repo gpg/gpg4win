@@ -1,3 +1,8 @@
+2009-05-26  Marcus Brinkmann  <marcus@g10code.com>
+
+	* src/inst-pinentry.nsi: Install pinentry-qt-4.
+	* src/uninst-pinentry.nsi: Uninstall pinentry-qt-4.
+
 2009-05-14  Werner Koch  <wk@g10code.com>
 
 	Release 1.9.16.

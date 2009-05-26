@@ -36,6 +36,7 @@ Section "-Pinentry" SEC_pinentry
 
   File "${prefix}/bin/pinentry-w32.exe"
   File "${prefix}/bin/pinentry-gtk-2.exe"
+  File "${prefix}/bin/pinentry-qt4.exe"
   File /oname=pinentry.exe "${prefix}/bin/pinentry-gtk-2.exe"
 
 !endif
