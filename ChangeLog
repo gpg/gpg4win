@@ -1,3 +1,7 @@
+2009-06-08  Werner Koch  <wk@g10code.com>
+
+	* packages/packages.current: Update GnuPG and GPA.
+
 2009-06-05  Werner Koch  <wk@g10code.com>
 
 	* packages/packages.current: Update libksba.

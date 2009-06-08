@@ -359,12 +359,18 @@ chk  3987f0efcbb7048c136d5c859e88eee1763a14f6
 file libassuan/libassuan-1.0.5.tar.bz2
 chk  f6c36e9d99736883a8ce5b80b0a51d854cbbbc70
 
-name gnupg2-2.0.12-svn5008.tar.bz2
-file alpha/gnupg/gnupg-2.0.12-svn5008.tar.bz2
-chk  4291c1cd6d2662cc9f3362cc51c08c43af255d82
+#name gnupg2-2.0.12-svn5008.tar.bz2
+#file alpha/gnupg/gnupg-2.0.12-svn5008.tar.bz2
+#chk  4291c1cd6d2662cc9f3362cc51c08c43af255d82
+
 
 # (Snapshots)
 server ftp://ftp.g10code.com/g10code/scratch
+
+name gnupg2-2.0.12-svn5040.tar.bz2
+file gnupg-2.0.12-svn5040.tar.bz2
+chk  05f05f36226e1c93fd5a94ed5235e68918641379
+
 
 file dirmngr-1.0.3-svn310.tar.bz2
 chk  e3f6df819419f1bff8f707cff41220a556c0b272
@@ -400,9 +406,8 @@ chk  6255a7958dc9e735c3f76595cd973abca09c1f93
 #chk    c519af3ccd3c7e518458e143b2001a8cc6d90467
 
 server ftp://ftp.g10code.com/g10code/scratch
-file gpa-0.9.0-svn994.tar.bz2
-chk  9bc0b64d41854d0acf6bf4ae52b74dd8cc68118b
-
+file gpa-0.9.0-svn1000.tar.bz2
+chk  e109aaee029b07927ce7e40559766d6078f7e808  
 
 #
 # Qt
