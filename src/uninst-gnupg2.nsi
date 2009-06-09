@@ -53,6 +53,7 @@ Section "-un.gnupg"
   Delete "$INSTDIR\pub\gpgv.exe"
   Delete "$INSTDIR\pub\gpgsm.exe"
   Delete "$INSTDIR\pub\gpg-connect-agent.exe"
+  Delete "$INSTDIR\pub\gpgconf.exe"
   RMDir "$INSTDIR\pub"
 
   Delete "$INSTDIR\gpg2keys_finger.exe"

@@ -72,7 +72,7 @@ ${MementoSection} "GnuPG" SEC_gnupg2
 
   # Install the wrappers into the PATH included directory.  These are
   # our poor hacker's symlinks.  We always install wrappers
-  # gpg[v]->gpg[v]2.  If old applications are not able to to work with
+  # gpg[v]->gpg[v]2.  If old applications are not able to work with
   # gpg2, they may still install a gpg1 version and use the installed
   # version directly without the wrapper.
   SetOutPath "$INSTDIR\pub"
@@ -81,6 +81,7 @@ ${MementoSection} "GnuPG" SEC_gnupg2
   File /oname=gpg2.exe      "${BUILD_DIR}/gpgwrap.exe"
   File /oname=gpgsm.exe     "${BUILD_DIR}/gpgwrap.exe"
   File /oname=gpg-connect-agent.exe  "${BUILD_DIR}/gpgwrap.exe"
+  File /oname=gpgconf.exe   "${BUILD_DIR}/gpgwrap.exe"
   # fixme: gpgsplit is missing; see above
 
   SetOutPath "$INSTDIR\share\gnupg"

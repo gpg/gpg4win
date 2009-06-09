@@ -1,3 +1,10 @@
+2009-06-09  Werner Koch  <wk@g10code.com>
+
+	* src/inst-gnupg2.nsi: Install gpgconf into pub/.
+	* src/uninst-gnupg2.nsi: Uninsteall wrapped gpgconf.
+
+	* packages/packages.current: Update GPGME, GPA and GnuPG.
+
 2009-06-08  Werner Koch  <wk@g10code.com>
 
 	* packages/packages.current: Update GnuPG and GPA.

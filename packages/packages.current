@@ -367,16 +367,16 @@ chk  f6c36e9d99736883a8ce5b80b0a51d854cbbbc70
 # (Snapshots)
 server ftp://ftp.g10code.com/g10code/scratch
 
-name gnupg2-2.0.12-svn5040.tar.bz2
-file gnupg-2.0.12-svn5040.tar.bz2
-chk  05f05f36226e1c93fd5a94ed5235e68918641379
+name gnupg2-2.0.12-svn5041.tar.bz2
+file gnupg-2.0.12-svn5041.tar.bz2
+chk  36f350a1c79e46893e4d06a7acfd641501ce25a4
 
 
 file dirmngr-1.0.3-svn310.tar.bz2
 chk  e3f6df819419f1bff8f707cff41220a556c0b272
 
-file gpgme-1.1.9-svn1362.tar.bz2
-chk  0236ef406d3373b0d98ff913c943c248f6aa5550
+file gpgme-1.1.9-svn1373.tar.bz2
+chk  7e4406731ee4a2f9804d8a36f28ac38693edc3c1
 
 file pinentry-0.7.6-svn202.tar.gz
 chk  859df18ce7fb32dcc27b9e1e900a6205b03f0ffe
@@ -406,8 +406,8 @@ chk  6255a7958dc9e735c3f76595cd973abca09c1f93
 #chk    c519af3ccd3c7e518458e143b2001a8cc6d90467
 
 server ftp://ftp.g10code.com/g10code/scratch
-file gpa-0.9.0-svn1000.tar.bz2
-chk  e109aaee029b07927ce7e40559766d6078f7e808  
+file gpa-0.9.0-svn1002.tar.bz2
+chk  d369d555f07d67383612181284fd9612e554f2df
 
 #
 # Qt
