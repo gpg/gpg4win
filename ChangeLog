@@ -1,3 +1,7 @@
+2009-06-17  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+
+	* packages/packages.current: Update kdesupport.
+
 2009-06-17  Werner Koch  <wk@g10code.com>
 
 	* packages/packages.current: Update GnuPG and Dirmngr.

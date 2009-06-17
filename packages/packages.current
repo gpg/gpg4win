@@ -428,15 +428,16 @@ chk  3c86381ba5c416c6728ff5b839379cca9208f0c3
 
 server ftp://ftp.kdab.net/pub/gpg4win
 
-file kdesupport-20080828-bin.zip
-chk 65c049db1f992843be8e12a886117f524433d690
+file kdesupport-20090610-dbus4win-bin.zip
+chk 5031766ab8753ecdad7f52e3016ef8f1c1ff6361
 
-# FIXME: This does not actually contain the development files, but
-# further binary files we need.
-file kdesupport-20080828-lib.zip
-chk ffa95f4546a801c6e0f5726de4f16669f94cee51
+file kdesupport-20090610-dbus4win-dev.zip
+chk 1d98cf5df0da4fd64ae6bcb192d30b3c27b89816
 
-file kdesupport-20080828-src.zip
+file kdesupport-20090610-dbus4win-lib.zip
+chk 18acdd627c4482afe39dc25c3844574b84126398
+
+file kdesupport-20090610-dbus4win-src.zip
 chk 2fa67502e00872d5e3ece1682d71383ca8cbf1e0
 
 # oxygen-icons
