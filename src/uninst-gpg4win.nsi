@@ -101,6 +101,10 @@ Section "-un.gpg4win"
 
   RMDir "$INSTDIR\share\locale"
 
+  # Try again to remove teh scdaemon.  This is useful because scdaemon
+  # needs some time to stop after gpg-agent has been stopped.
+  Delete "$INSTDIR\scdaemon.exe"
+
   # Try to remove other top directories.
   RMDir "$INSTDIR\lib"
   RMDir "$INSTDIR\share"

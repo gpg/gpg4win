@@ -360,15 +360,15 @@ file libassuan/libassuan-1.0.5.tar.bz2
 chk  f6c36e9d99736883a8ce5b80b0a51d854cbbbc70
 
 name gnupg2-2.0.12.tar.bz2
-file alpha/gnupg/gnupg-2.0.12.tar.bz2
+file gnupg/gnupg-2.0.12.tar.bz2
 chk  91856f917c13a1a12622ef39995eaf59c46f7502
+
+file dirmngr/dirmngr-1.0.3.tar.bz2
+chk  437d381c937b1f1d0699d1ed37cf50f14bfbcd32
 
 
 # (Snapshots)
 server ftp://ftp.g10code.com/g10code/scratch
-
-file dirmngr-1.0.3-svn310.tar.bz2
-chk  e3f6df819419f1bff8f707cff41220a556c0b272
 
 file gpgme-1.1.9-svn1373.tar.bz2
 chk  7e4406731ee4a2f9804d8a36f28ac38693edc3c1
