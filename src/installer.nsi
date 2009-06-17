@@ -285,9 +285,9 @@ Function CustomPageOptions
 FunctionEnd
 
 # Display a warning if this is a Beta version.
-Function PrintBetaWarning
-   MessageBox MB_OK "$(T_BetaWarning)"
-FunctionEnd
+#Function PrintBetaWarning
+#   MessageBox MB_OK "$(T_BetaWarning)"
+#FunctionEnd
 
 
 # Display a warning if GnuPP has been detected and allow the user to abort
@@ -398,7 +398,7 @@ FunctionEnd
 # diagnostic if this is not the case and abort installation.
 Function PrintNonAdminWarning
 
-  Call PrintBetaWarning
+  #Call PrintBetaWarning
 
   ClearErrors
   UserInfo::GetName

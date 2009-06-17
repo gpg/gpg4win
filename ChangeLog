@@ -1,3 +1,14 @@
+2009-06-17  Werner Koch  <wk@g10code.com>
+
+	* packages/packages.current: Update GnuPG.
+
+	* src/installer.nsi (PrintBetaWarning): Comment out.
+	(PrintNonAdminWarning): Do not call beta warning.
+
+2009-06-10  Werner Koch  <wk@g10code.com>
+
+	* src/uninst-gpg4win.nsi: Remove pub/.
+
 2009-06-09  Werner Koch  <wk@g10code.com>
 
 	* src/inst-gnupg2.nsi: Install gpgconf into pub/.
