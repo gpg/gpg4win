@@ -1,3 +1,7 @@
+2009-06-18  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+
+	* packages/packages.current: Update kdesupport.
+
 2009-06-18  Marcus Brinkmann  <marcus@g10code.com>
 
 	* packages/packages.current: Update gpgme to 1.2.0.
