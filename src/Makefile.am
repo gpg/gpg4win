@@ -114,7 +114,8 @@ define gpg4win_pkg_gnupg2_post_install
  done ; \
  for i in `$(tsdir)/src/potomo --get-linguas $$$${pkgsdir}/po` ; do \
      $(mkdir_p) $$$${pkgidir}/share/locale/$$$${i}/LC_MESSAGES || true; \
-     rm $$$${pkgidir}/share/locale/$$$${i}/LC_MESSAGES/gnupg2.mo || true; \
+     rm $$$${pkgidir}/share/locale/$$$${i}/LC_MESSAGES/gnupg2.mo 2>/dev/null \
+       || true; \
      $(tsdir)/src/potomo $$$${pkgsdir}/po/$$$${i}.po \
               $$$${pkgidir}/share/locale/$$$${i}/LC_MESSAGES/gnupg2.mo; \
  done)
@@ -148,7 +149,8 @@ gpg4win_pkg_libgpg_error_configure = --silent \
 # libgpg-error proper.
 define gpg4win_pkg_libgpg_error_post_install
 (for i in `$(tsdir)/src/potomo --get-linguas $$$${pkgsdir}/po` ; do \
-   rm $$$${pkgidir}/share/locale/$$$${i}/LC_MESSAGES/libgpg-error.mo || true; \
+   rm $$$${pkgidir}/share/locale/$$$${i}/LC_MESSAGES/libgpg-error.mo \
+       2>/dev/null|| true; \
    $(tsdir)/src/potomo $$$${pkgsdir}/po/$$$${i}.po \
              $$$${pkgidir}/share/locale/$$$${i}/LC_MESSAGES/libgpg-error.mo; \
  done)
