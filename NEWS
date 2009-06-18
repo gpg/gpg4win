@@ -11,12 +11,11 @@ Noteworthy changes in version 2.0.0
      the serious bugs.
 (de) Dies ist das erste produktionsreife Version der neuen Gpg4win
      Architektur.  In den vergangenen 14 Monaten wurden 15 Beta
-     Versionen veröffentlich um die meisten der gravierenden
+     Versionen veröffentlicht um die meisten der gravierenden
      Programmfehler zu beseitigen.
 
 ~~~~~~~~~~~~~~~
 GnuPG:        2.0.12
-DirMngr:      1.0.3
 Kleopatra:    20090514
 GPA:          0.9.0
 GpgOL:        0.10.19

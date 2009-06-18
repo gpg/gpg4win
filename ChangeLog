@@ -1,3 +1,7 @@
+2009-06-18  Werner Koch  <wk@g10code.com>
+
+	* packages/packages.current: Use name directive for kdesupport.
+
 2009-06-18  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
 	* packages/packages.current: Update kdesupport.
