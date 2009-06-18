@@ -366,12 +366,11 @@ chk  91856f917c13a1a12622ef39995eaf59c46f7502
 file dirmngr/dirmngr-1.0.3.tar.bz2
 chk  437d381c937b1f1d0699d1ed37cf50f14bfbcd32
 
+file gpgme/gpgme-1.2.0.tar.bz2
+chk  2f4f6c4b85f2b5a2c4dcf2167342ed6c41efcd1c
 
 # (Snapshots)
 server ftp://ftp.g10code.com/g10code/scratch
-
-file gpgme-1.1.9-svn1373.tar.bz2
-chk  7e4406731ee4a2f9804d8a36f28ac38693edc3c1
 
 file pinentry-0.7.6-svn202.tar.gz
 chk  859df18ce7fb32dcc27b9e1e900a6205b03f0ffe
