@@ -1,5 +1,8 @@
 2009-06-19  Marcus Brinkmann  <marcus@g10code.de>
 
+	* src/Makefile.am (gpg4win_pkg_scute_configure): Fix typo, should
+	have been gpg-error, not gpgme.
+
 	* Makefile.am (EXTRA_DIST): Fix path to gnupg2 patch file.
 
 2009-06-19  Emanuel Schuetze  <emanuel.schuetze@intevation.de>

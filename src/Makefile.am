@@ -21,7 +21,7 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi config.site \
         installer-options.ini.in libiconv.def libintl.def loreley.mid \
         gpg4win-splash.wav gpgwrap.c exdll.h g4wihelp.c g4wihelp.nsi \
         inst-sections.nsi installer.nsi installer-finish.nsi  \
-	QtCore.pc QtGui.pc \ 
+	QtCore.pc QtGui.pc \
         qt.conf kleowrap.c potomo Memento.nsh dirmngr.conf    \
         inst-gpg4win.nsi	   uninst-gpg4win.nsi	      \
         inst-atk.nsi               uninst-atk.nsi	      \
@@ -278,7 +278,7 @@ gpg4win_pkg_bsfilter_plugin_configure = \
   --with-lib-prefix=$(idir) --with-libiconv-prefix=$(idir) LIBS=\"-L$(idir)/bin\"
 
 gpg4win_pkg_scute_configure = --silent \
-  --with-gpgme-prefix=$(idir) --with-libassuan-prefix=$(idir)
+  --with-gpg-error-prefix=$(idir) --with-libassuan-prefix=$(idir)
 
 gpg4win_pkg_paperkey_configure = --silent
 
@@ -448,13 +448,13 @@ common_nsi = inst-sections.nsi installer.nsi installer-finish.nsi	\
 # writes the file with DOS line endings.  This helps to avoid
 # duplicate entries in case one package has been rebuild (which is
 # common when developing a new version).
-versioninfo.txt : playground/build/versioninfo.txt
-	set -e; \
-	( while read a b; do echo "$$a $$(basename $$b)"; \
-            done < playground/build/versioninfo.txt \
-          | sort -k2 -sf | tac | uniq -f1 ; \
-          echo '=========== SHA-1 checksum ============= == package ==' \
-         ) | tac | awk '{printf "%s\r\n", $$0}' > versioninfo.txt
+# Support macro.  Record version number of file $(1).
+define VERSIONINFO_macro
+         $(SHA1SUM) "$(1)" >> 
+endef
+
+versioninfo.txt:
+	$(SHA1SUM) $(pkg_files) >> versioninfo.txt
 
 NEWS.tmp : $(top_srcdir)/NEWS
 	sed -e '/^#/d' <$(top_srcdir)/NEWS >NEWS.tmp
