@@ -369,11 +369,11 @@ chk  437d381c937b1f1d0699d1ed37cf50f14bfbcd32
 file gpgme/gpgme-1.2.0.tar.bz2
 chk  2f4f6c4b85f2b5a2c4dcf2167342ed6c41efcd1c
 
-# (Snapshots)
-server ftp://ftp.g10code.com/g10code/scratch
+file pinentry/pinentry-0.7.6.tar.gz
+chk  0c525ce81e5589bc9a4f2eb72705bed2b3e9a8b9
 
-file pinentry-0.7.6-svn202.tar.gz
-chk  859df18ce7fb32dcc27b9e1e900a6205b03f0ffe
+# (Snapshots)
+# server ftp://ftp.g10code.com/g10code/scratch
 
 #
 #  GnuPG utilities
