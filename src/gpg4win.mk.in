@@ -1,5 +1,5 @@
 # gpg4win.m4.in - Installer for GnuPG 4 Windows Makefile.   -*- makefile -*-
-# Copyright (C) 2005 g10 Code GmbH
+# Copyright (C) 2005, 2009 g10 Code GmbH
 # 
 # This file is part of GPG4Win.
 # 
@@ -29,6 +29,8 @@ ipdir := $(root)/install/pkgs
 tsdir := $(shell pwd)/${top_srcdir}
 pdir := $(shell pwd)/${top_srcdir}/patches
 
+# We collect the names of all pkg files used.
+pkg_files =
 
 # The playground area is our scratch area, where we unpack, build and
 # install the packages.
@@ -75,11 +77,6 @@ define SETVARS
 	export CONFIG_SITE="$(tsdir)/src/config.site"
 endef
 
-# Support macro.  Record version number of file $(1).
-define VERSIONINFO_macro
-         $(SHA1SUM) "$(1)" >> "$(bdir)/versioninfo.txt" 
-endef
-
 # Support macro.  Unpack the archive $(1).
 define DEFLATE_macro
 	case "$(1)" in			\
@@ -104,15 +101,20 @@ define STRIP_macro
 	fi
 endef
 
+define GETDEPS
+  $(addprefix stamps/stamp-final-, $(call GETVAR,gpg4win_pkg_$(1)_deps))
+endef
+
 
 # Template for source packages.
 
-define SPKG_template
+define SPKG_template_
 
-stamps/stamp-$(1)-00-unpack: stamps/stamp-directories 
+pkg_files += $(call GETVAR,gpg4win_pkg_$(1))
+
+stamps/stamp-$(1)-00-unpack: stamps/stamp-directories $(call GETDEPS,$(1))
 	(cd $(bdir);					\
 	 $(call SETVARS,$(1));				\
-	 $(call VERSIONINFO_macro,$$$${pkg});           \
 	 $(call DEFLATE_macro,$$$${pkg}))
 	touch stamps/stamp-$(1)-00-unpack
 
@@ -173,16 +175,22 @@ clean-$(1):
 
 endef
 
+define SPKG_template
+$(if $(filter-out no, $(call GETVAR,gpg4win_pkg_$(1))),
+  $(call SPKG_template_,$1))
+endef
+
 
 # Template for source packages using only make and no build
 # directory.
 
-define MPKG_template
+define MPKG_template_
 
-stamps/stamp-$(1)-00-unpack: stamps/stamp-directories 
+pkg_files += $(call GETVAR,gpg4win_pkg_$(1))
+
+stamps/stamp-$(1)-00-unpack: stamps/stamp-directories $(call GETDEPS,$(1))
 	(cd $(bdir);					\
 	 $(call SETVARS,$(1));				\
-	 $(call VERSIONINFO_macro,$$$${pkg});           \
 	 $(call DEFLATE_macro,$$$${pkg}))
 	touch stamps/stamp-$(1)-00-unpack
 
@@ -227,17 +235,24 @@ clean-$(1):
 
 endef
 
+define MPKG_template
+$(if $(filter-out no, $(call GETVAR,gpg4win_pkg_$(1))),
+  $(call MPKG_template_,$1))
+endef
+
 
 
 # Template for binary packages.
 
-define BPKG_template
+define BPKG_template_
 
-stamps/stamp-$(1)-00-install: stamps/stamp-directories 
+pkg_files += $(call GETVAR,gpg4win_pkg_$(1))
+pkg_files += $(call GETVAR,gpg4win_pkg_$(1)_dev)
+
+stamps/stamp-$(1)-00-install: stamps/stamp-directories $(call GETDEPS,$(1))
 	($(call SETVARS,$(1));				\
 	 $(MKDIR) "$$$${pkgidir}";			\
 	 cd $$$${pkgidir};				\
-	 $(call VERSIONINFO_macro,$$$${pkg});           \
 	 $(call DEFLATE_macro,$$$${pkg}))
 	touch stamps/stamp-$(1)-00-install
 
@@ -247,7 +262,6 @@ stamps/stamp-$(1)-01-install-dev: stamps/stamp-$(1)-00-install
 	($(call SETVARS,$(1));				\
 	 $(MKDIR) "$$$${pkgidir_dev}";			\
 	 (cd $$$${pkgidir_dev};				\
-          $(call VERSIONINFO_macro,$$$${pkg_dev});      \
 	  $(call DEFLATE_macro,$$$${pkg_dev}));		\
 	 $(call gpg4win_pkg_$(call FROB_macro,$(1))_post_install))
 	touch stamps/stamp-$(1)-01-install-dev
@@ -278,12 +292,17 @@ clean-$(1):
 
 endef
 
+define BPKG_template
+$(if $(filter-out no, $(call GETVAR,gpg4win_pkg_$(1))),
+  $(call BPKG_template_,$1))
+endef
 
-# Template for source packages.
+
+# Template for internal packages.
 
 define IPKG_template
 
-stamps/stamp-final-$(1): stamps/stamp-directories 
+stamps/stamp-final-$(1): stamps/stamp-directories $(call GETDEPS,$(1))
 	touch stamps/stamp-final-$(1)
 endef
 
@@ -303,6 +322,10 @@ $(foreach ipkg, $(gpg4win_ipkgs), $(eval $(call IPKG_template,$(ipkg))))
 stamps/stamp-final: stamps/stamp-directories
 stamps/stamp-final: $(addprefix stamps/stamp-final-,$(gpg4win_build_list))
 	touch stamps/stamp-final
+
+$(bdir)/versioninfo.txt: stamps/stamp-final
+	touch $(bdir)/versioninfo.txt
+
 
 all-gpg4win: stamps/stamp-final
 

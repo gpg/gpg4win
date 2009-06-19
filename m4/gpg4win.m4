@@ -1,5 +1,5 @@
 dnl gpg4win.m4 - macros to configure gpg4win.
-dnl Copyright (C) 2005 g10 Code GmbH
+dnl Copyright (C) 2005, 2009 g10 Code GmbH
 dnl
 dnl This file is part of GPG4Win.
 dnl
@@ -226,6 +226,10 @@ AC_DEFUN([GPG4WIN_IPKG],
     _gpg4win_pkg=$enableval,
     _gpg4win_pkg=yes)
 
+  # gpg4win_pkg_PKGNAME_deps=DEPS
+  gpg4win_pkg_[]m4_translit([$1],[A-Z+-],[a-z__])[]_deps="$2"
+  AC_SUBST(gpg4win_pkg_[]m4_translit([$1],[A-Z+-],[a-z__])[]_deps)
+
   AC_MSG_RESULT($_gpg4win_pkg)
 
   AS_IF([test "$_gpg4win_pkg" != no],
@@ -271,6 +275,10 @@ AC_DEFUN([GPG4WIN_SPKG],
   gpg4win_pkg_[]m4_translit([$1],[-+],[__])[]_version=$_gpg4win_version
   AC_SUBST(gpg4win_pkg_[]m4_translit([$1],[-+],[__])[]_version)
 
+  # gpg4win_pkg_PKGNAME_deps=DEPS
+  gpg4win_pkg_[]m4_translit([$1],[A-Z+-],[a-z__])[]_deps="$2"
+  AC_SUBST(gpg4win_pkg_[]m4_translit([$1],[A-Z+-],[a-z__])[]_deps)
+
   AS_IF([test "$_gpg4win_spkg" != no],
     _gpg4win_pkgs="$_gpg4win_pkgs $1"
     GPG4WIN_DEFINE(HAVE_PKG_[]m4_translit([$1],[a-z+-],[A-Z__]))
@@ -314,6 +322,10 @@ AC_DEFUN([GPG4WIN_BPKG_GNUWIN32],
   # gpg4win_pkg_PKGNAME_version=VERSION
   gpg4win_pkg_[]m4_translit([$1],[-+],[__])[]_version=$_gpg4win_version
   AC_SUBST(gpg4win_pkg_[]m4_translit([$1],[-+],[__])[]_version)
+
+  # gpg4win_pkg_PKGNAME_deps=DEPS
+  gpg4win_pkg_[]m4_translit([$1],[A-Z+-],[a-z__])[]_deps="$2"
+  AC_SUBST(gpg4win_pkg_[]m4_translit([$1],[A-Z+-],[a-z__])[]_deps)
 
   AS_IF([test $_gpg4win_bpkg != no],
     GPG4WIN_FIND($1-lib, [$1-\(.*\)-lib],,
@@ -428,6 +440,10 @@ AC_DEFUN([GPG4WIN_BPKG_GTK],
   gpg4win_pkg_[]m4_translit([$1],[-+],[__])[]_version=$_gpg4win_version
   AC_SUBST(gpg4win_pkg_[]m4_translit([$1],[-+],[__])[]_version)
 
+  # gpg4win_pkg_PKGNAME_deps=DEPS
+  gpg4win_pkg_[]m4_translit([$1],[A-Z+-],[a-z__])[]_deps="$2"
+  AC_SUBST(gpg4win_pkg_[]m4_translit([$1],[A-Z+-],[a-z__])[]_deps)
+
   AS_IF([test $_gpg4win_bpkg != no],
     [GPG4WIN_FIND($1,,tar, $_gpg4win_pkg, _gpg4win_bpkg=$gpg4win_val,
        AC_MSG_ERROR(can not find sources for package $1))]
@@ -479,6 +495,10 @@ AC_DEFUN([GPG4WIN_BPKG_GTK_DEV],
   # gpg4win_pkg_PKGNAME_version=VERSION
   gpg4win_pkg_[]m4_translit([$1],[-+],[__])[]_version=$_gpg4win_version
   AC_SUBST(gpg4win_pkg_[]m4_translit([$1],[-+],[__])[]_version)
+
+  # gpg4win_pkg_PKGNAME_deps=DEPS
+  gpg4win_pkg_[]m4_translit([$1],[A-Z+-],[a-z__])[]_deps="$2"
+  AC_SUBST(gpg4win_pkg_[]m4_translit([$1],[A-Z+-],[a-z__])[]_deps)
 
   AS_IF([test $_gpg4win_bpkg != no],
     [GPG4WIN_FIND($1-dev,,, $_gpg4win_pkg, _gpg4win_bpkg=$gpg4win_val,
@@ -547,6 +567,10 @@ AC_DEFUN([GPG4WIN_BPKG_GNU],
   gpg4win_pkg_[]m4_translit([$1],[-+],[__])[]_version=$_gpg4win_version
   AC_SUBST(gpg4win_pkg_[]m4_translit([$1],[-+],[__])[]_version)
 
+  # gpg4win_pkg_PKGNAME_deps=DEPS
+  gpg4win_pkg_[]m4_translit([$1],[A-Z+-],[a-z__])[]_deps="$2"
+  AC_SUBST(gpg4win_pkg_[]m4_translit([$1],[A-Z+-],[a-z__])[]_deps)
+
   AS_IF([test $_gpg4win_bpkg != no],
     [GPG4WIN_FIND($1,,tar, $_gpg4win_pkg, _gpg4win_bpkg=$gpg4win_val,
        AC_MSG_ERROR(can not find sources for package $1))]
@@ -604,6 +628,10 @@ AC_DEFUN([GPG4WIN_BPKG_BINSRC],
   # gpg4win_pkg_PKGNAME_version=VERSION
   gpg4win_pkg_[]m4_translit([$1],[A-Z+-],[a-z__])[]_version=$_gpg4win_version
   AC_SUBST(gpg4win_pkg_[]m4_translit([$1],[A-Z+-],[a-z__])[]_version)
+
+  # gpg4win_pkg_PKGNAME_deps=DEPS
+  gpg4win_pkg_[]m4_translit([$1],[A-Z+-],[a-z__])[]_deps="$2"
+  AC_SUBST(gpg4win_pkg_[]m4_translit([$1],[A-Z+-],[a-z__])[]_deps)
 
   AS_IF([test $_gpg4win_bpkg != no],
     tmp_binsrc=yes

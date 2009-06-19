@@ -1,3 +1,16 @@
+2009-06-20  Marcus Brinkmann  <marcus@g10code.com>
+
+	* m4/gpg4win.m4 (GPG4WIN_IPKG, GPG4WIN_SPKG, GPG4WIN_BPKG,
+	GPG4WIN_MPKG): Define new substitution variables
+	gpg4win_pkg_PKGNAME_deps, to transfer the knowledge of the
+	dependency tree to the Makefiles.
+	* src/gpg4win.mk.in (SPKG_template, BPKG_template): Wrap it in a
+	test for package name being NO.
+	(pkg_files): New variable, listing all package files.
+	(VERSIONINFO_macro): Removed.
+	(GETDEPS): New macro.
+	* src/Makefile.am (versioninfo.txt): Use pkg_files to create versioninfo.txt.
+
 2009-06-20  Werner Koch  <wk@g10code.com>
 
 	* packages/packages.current: Update GPA.
