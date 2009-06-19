@@ -454,7 +454,7 @@ define VERSIONINFO_macro
 endef
 
 versioninfo.txt:
-	$(SHA1SUM) $(pkg_files) >> versioninfo.txt
+	$(SHA1SUM) $(pkg_files) > versioninfo.txt
 
 NEWS.tmp : $(top_srcdir)/NEWS
 	sed -e '/^#/d' <$(top_srcdir)/NEWS >NEWS.tmp
