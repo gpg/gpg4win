@@ -328,7 +328,7 @@ Programme umfasst:}
         den Windows Explorer, die es ermöglicht, Dateien über das
         Kontextmenü zu signieren / verschlüsseln.
     \item[GPA:] Der GNU Privacy Assistent (GPA) ist neben Kleopatra ein
-        alternatives Programm zum Verwalten von OpenPGP-Zertifikaten.
+        alternatives Programm zum Verwalten von OpenPGP- und X.509-Zertifikaten.
     \item[Claws Mail:] Claws Mail ist ein vollständiges
         \Email{}-Programm mit sehr guter Unterstützung für GnuPG.
 \end{description}
@@ -507,7 +507,7 @@ Betrachtet man den öffentlichen Schlüssel zusammen mit
 Angaben über den Schlüssel (sogenannten Metadaten), so spricht man
 von einem öffentlichen \textbf{Zertifikat}.
 Metadaten können z.B. die zum Schlüssel zugehörige \Email{}-Adresse,
-die Benutzer-ID oder der Gültigkeitszeitraum sein (vgl.
+die Benutzer-Kennung oder der Gültigkeitszeitraum sein (vgl.
 Kapitel~\ref{ch:CertificateDetails}).
 
 Die Eigenschaften geheim / privat bzw. öffentlich / publik sind völlig
@@ -866,7 +866,7 @@ möchten Sie nun Ihr persönliches Schlüsselpaar erzeugen.
 
 Ein Schlüsselpaar besteht, wie Sie im Kapitel~\ref{ch:openpgpsmime} gelernt haben,
 aus einem \textbf{öffentlichen} und einem  \textbf{geheimen Schlüssel}.
-Ergänzt mit den Metadaten (\Email{}-Adresse, Benutzer-ID etc.), die
+Ergänzt mit den Metadaten (\Email{}-Adresse, Benutzer-Kennung etc.), die
 Sie bei der Erstellung Ihres Schlüsselpaars angeben, erhalten Sie Ihr
 Zertifikat mit dem öffentlichen und geheimen Schlüssel.
 
@@ -2719,7 +2719,7 @@ wie Gpg4win funktioniert ­-- nicht in allen Details, aber so, dass die Prinzipie
 dahinter deutlicher werden. Wenn Sie diese Prinzipien kennen, werden
 Sie ein hohes Vertrauen in die Sicherheit von Gpg4win gewinnen.
 
-Ganz am Ende dieses Buches, in Kapitel \ref{ch:themath}, können Sie
+Am Ende dieses Buches, in Kapitel \ref{ch:themath}, können Sie
 ­-- wenn Sie wollen ­-- auch noch die letzten Geheimnisse um die
 "`Public-Key"' Kryptographie lüften und entdecken, warum mit Gpg4win
 verschlüsselte Nachrichten nach heutigem Stand der Technik nicht zu
@@ -3192,22 +3192,22 @@ Punkte (beachten Sie dabei die Unterschiede für
 OpenPGP- und X.509-Zertifikate):
 
 \begin{itemize}
-\item die Benutzer-ID
+\item die Benutzer-Kennung
 \item den Fingerabdruck
 \item die Gültigkeit
-\item das Inhabervertrauen \textit{(nur OpenPGP)}
+\item das Vertrauen in den Zertifikatsinhaber\textit{(nur OpenPGP)}
 \item die Beglaubigungen \textit{(nur OpenPGP)}
 \end{itemize}
 
-\textbf{Die Benutzer-ID} besteht aus dem Namen und der
+\textbf{Die Benutzer-Kennung} besteht aus dem Namen und der
 \Email{}-Adresse, die Sie während der Zertifikatserzeugung eingegeben
 haben, also z.B.: \verb=Heinrich Heine <heinrichh@gpg4win.de>=\\
 Für OpenPGP-Zertifikate können Sie mit Kleopatra über den Menüpunkt
-\Menu{Zertifikate$\rightarrow$Benutzer-ID hinzufügen...} Ihr
-Zertifikat um weitere Benutzerkennungen erweitern. Das ist dann
+\Menu{Zertifikate$\rightarrow$Benutzer-Kennung hinzufügen...} Ihr
+Zertifikat um weitere Benutzer-Kennungen erweitern. Das ist dann
 sinnvoll, wenn Sie z.B. für eine weitere \Email{}-Adressen Ihr gleiches
 Zertifikat nutzen möchten.\\
-\textit{Beachten Sie: Hinzufügen neuer Benutzer-IDs ist in Kleopatra
+\textit{Beachten Sie: Hinzufügen neuer Benutzer-Kennungen ist in Kleopatra
 nur für OpenPGP-Zertifikate (nicht aber für X.509) möglich.}
 
 \textbf{Der Fingerabdruck} wird verwendet, um mehrere
@@ -3224,24 +3224,24 @@ selbständig mit Kleopatra ändern, indem Sie auf die Schaltfläche
 "`Ablaufdatum ändern"' in den Zertifikatsdetails klicken (oder den Menü
 \Menu{Zertifikate$\rightarrow$Ablaufdatum ändern} auswählen) 
 und ein neues Datum eintragen. Damit können
-Sie Zertifkate nur für eine begrenzte Zeit gültig erklären, z.B., 
+Sie Zertifkate nur für eine begrenzte Zeit gültig erklären, z.B. 
 um sie an externe Mitarbeiter auszugeben.\\
 Die Gültigkeit von X.509-Zertifikaten wird bei der Zertifkatsausstellung
 von der Zertifizierungsstelle (CA) festgelegt und kann nicht vom Nutzer
 geändert werden.
 
-\textbf{Das Inhabervertrauen} beschreibt das Maß an Zuversicht, das
+\textbf{Das Vertrauen in den Zertifikatsinhaber} beschreibt das Maß an Zuversicht, das
 Sie subjektiv in den Besitzer des OpenPGP-Zertifikats setzen, andere
 OpenPGP-Zertifikate korrekt zu beglaubigen.
-Sie können das Vertrauen über die Schaltfläche \Button{Vertraue durch dieses Zertifikat
-ausgestellte Beglaubigungen} in den Zertifikatsdetails (oder über das Menü
-\Menu{Zertifikate$\rightarrow$Inhabervertrauen ändern}) einstellen.\\
-\textit{Beachten Sie: Das Inhabervertrauen ist nur für OpenPGP-Zertifikate
+Sie können das Vertrauen über die Schaltfläche \Button{Vertrauen in
+den Zertifikatsinhaber ändern} in den Zertifikatsdetails (oder über das Menü
+\Menu{Zertifikate$\rightarrow$Vertrauensstatus ändern}) einstellen.\\
+\textit{Beachten Sie: Der Vertrauensstatus ist nur für OpenPGP-Zertifikate
 relevant. Für X.509-Zertifikate gibt es diese Vertrauensmethode
 nicht.}
 
 \textbf{Die Beglaubigungen} Ihres OpenPGP-Zertifikats beinhalten die
-Benutzer-IDs derjenigen Zertifikatsinhaber, die sich von der Echtheit
+Benutzer-Kennungen derjenigen Zertifikatsinhaber, die sich von der Echtheit
 Ihres Zertifikats überzeugt und es dann auch beglaubigt haben. Das
 Vertrauen in die Echtkeit Ihres Zertifikats steigt mit der Anzahl an
 Beglaubigungen, die Sie von anderen Nutzern erhalten.\\
@@ -3275,18 +3275,13 @@ OpenPGP- bzw. X.509-Standard unterstützen.
 
 Kleopatra unterstützt zwei Arten von Zertifikatsservern:
 \begin{itemize}
-    \item OpenPGP-Zertifikatsserver (siehe Abschnitt \ref{openpgpCertificateServer})
-    \item X.509-Zertifikatsserver (siehe Abschnitt
-        \ref{x509CertificateServer}, Seite \pageref{x509CertificateServer})
-
+    \item OpenPGP-Zertifikatsserver
+    \item X.509-Zertifikatsserver
 \end{itemize}
 
 
-
-\section{OpenPGP-Zertifikatsserver}
-\label{openpgpCertificateServer}
-
-OpenPGP-Zertifikatsserver (im Englischen auch "`key server"' genannt)
+\begin{description}
+    \item[OpenPGP-Zertifikatsserver] (im Englischen auch "`key server"' genannt)
 sind dezentral organisiert und synchronisieren sich weltweit
 miteinander. Aktuelle Statistiken
 über ihre Zahl oder die Anzahl der dort liegenden OpenPGP-Zertifikate gibt es
@@ -3296,18 +3291,82 @@ OpenPGP-Zertifikatsservern sorgt für eine bessere
 Verfügbarkeit und verhindert, dass einzelne Systemadministratoren
 Zertifikate löschen, um so die Kommunikation unmöglich zu machen
 ("`Denial of Service"'-Angriff).
-
 \begin{center}
 \htmlattributes*{img}{width=300}
 \IncludeImage[width=0.3\textwidth]{keyserver-world}
 \end{center}
+
+\item[X.509-Zertifikatsserver]
+   werden in der Regel
+von den Zertifizierungsstellen (CA) über LDAP bereitgestellt und
+\T\margin{\IncludeImage[width=1.5cm]{smime-icon}} werden manchmal
+auch als Verzeichnisdienste für X.509-Zertifikate
+bezeichnet.
+\end{description}
+
+
+
+
+\clearpage
+\section{Zertifikatsserver einrichten}
+\label{configureCertificateServer}
+
+Öffnen Sie den Konfigurationsdialog von Kleopatra:
+\Menu{Einstellungen$\rightarrow$Kleopatra einrichten...}
+
+Legen Sie unter der Gruppe
+\Menu{Zertifikatsserver} einen neuen
+Zertifikatsserver an, indem Sie auf die Schaltfläche \Menu{Neu}
+klicken. Wählen Sie zwischen \Menu{OpenPGP} oder \Menu{X.509}.
+
+Bei \Menu{OpenPGP} wird in die Liste ein voreingestellter OpenPGP-Zertifikatsserver 
+mit der Serveradresse \verb=hkp://keys.gnupg.net= (Port: 11371,
+Protokoll: hkp) hinzugefügt. Sie können diesen ohne Änderung direkt
+verwenden - oder Sie nutzen eine der vorgeschlagenen
+OpenPGP-Serveradressen von der nächsten Seite.
+
+Bei \Menu{X.509} erhalten Sie folgende Vorbelegungen für einen
+X.509-Zertifikatsserver: (Protokoll: ldap, Severname: server,
+Server-Port: 389).
+Vervollständigen Sie die Angaben zu Servername und
+Basis-DN Ihres X.509-Zertifikatsservers und überprüfen Sie den
+Server-Port.
+
+Sollte Ihr Zertifikatsserver Benutzername und
+Passwort fordern, so aktivieren Sie die Option
+\Menu{Benutzerauthentisierung notwendig} und tragen Ihre
+gewünschten Angaben ein.
+
+Der folgende Screenshot zeigt ein konfigurierten
+OpenPGP-Zertifikatsserver:
+%TODO screenshot: Kleopatra OpenPGP certificate server config dialog
+\begin{center}
+\IncludeImage[width=0.6\textwidth]{sc-kleopatra-configureKeyserver_de}
+\end{center}
+
+
+Bestätigen Sie abschließend Ihre Konfiguration mit \Button{OK}. Ihr
+Zertifikatsserver ist nun erfolgreich eingerichtet.
+
+Um sicherzugehen, dass Sie den Zertifikatsserver korrekt konfiguriert
+haben, ist es hilfreich z.B. eine Zerifikatssuche auf dem Server zu
+starten (Anleitung siehe Abschnitt~\label{searchAndImportCertificateFromServer}).
+
+\textbf{Proxy-Einstellung:} Falls Sie einen Proxy in Ihrem
+Netzwerk nutzen, sollten Sie die Zertifikatsserver-Adresse in der
+Spalte "`Servername"' um den Parameter
+\texttt{http-proxy=<proxydomain>} ergänzen. Der vollständige
+Servername könnte also z.B. lauten:
+\texttt{keys.gnupg.net http-proxy=proxy.hq}.
+Kontrollieren und ggf. korrigieren können Sie die Zertifikatsserver-Konfigurationen auch in
+der Datei: \Filename{\%APPDATA\%\back{}gnupg\back{}gpg.conf}
 
 
 
 %% Original page 26
 \clearpage
 \subsubsection{OpenPGP-Zertifikatsserver-Adressen}
-
+\T\margin{\IncludeImage[width=1.5cm]{openpgp-icon}}
 Es wird empfohlen, nur moderne OpenPGP-Zertifikatsserver zu verwenden,
 da nur diese mit den neueren Merkmalen von OpenPGP umgehen können.
 
@@ -3329,7 +3388,8 @@ besten die Zertifikatsserver, deren URL mit \verb-http://- beginnen.
 
 Die Zertifikatsserver unter den Adressen
 \begin{itemize}
-\item hkp://keys.gnupg.net
+    \item hkp://keys.gnupg.net \textit{(Vorauswahl von Kleopatra,
+        siehe letzte Seite)}
 \item hkp://subkeys.pgp.net
 \end{itemize}
 sind ein Sammelpunkt für ein ganzes Netz dieser Server; es wird
@@ -3340,76 +3400,19 @@ sich nicht mit den anderen Servern und sollte i.d.R. nicht benutzt
 werden.
 
 \clearpage
-\subsubsection{OpenPGP-Zertifikatsserver einrichten}
-
-Öffnen Sie die Kleopatra-Einstellungen:
-\Menu{Einstellungen$\rightarrow$Kleopatra einrichten...}
-
-Legen Sie unter der Rubrik
-"`Zertifikatsserver"' einen neuen
-OpenPGP-Zertifikatsserver an, indem Sie auf \Menu{Neu$\rightarrow$OpenPGP}
-klicken. In der Liste wird ein voreingestellter Zertifikatsserver mit
-der folgenden Adresse hinzugefügt:\\
-\verb=hkp://keys.gnupg.net= (Port 11371)
-
-
-%TODO screenshot: Kleopatra OpenPGP certificate server config dialog
-\begin{center}
-\IncludeImage[width=0.6\textwidth]{sc-kleopatra-configureKeyserver_de}
-\end{center}
-
-Passen Sie den Eintrag nach Bedarf an (z.B. indem Sie eine
-der vorgeschlagenen Serveradressen von der letzten Seite hier
-übernehmen).
-
-Bestätigen Sie abschließend Ihre Konfiguration mit \Button{OK}. Ihr
-OpenPGP-Zertifikatsserver ist nun erfolgreich eingerichtet.
-
-Sie können nun Zertifikate auf diesen Server exportieren, suchen
-und von dort aus in Ihre Zertifikatsverwaltung
-importieren. Wie das genau geht, erfahren Sie auf den nächsten Seiten.
-
-Um sicherzugehen, dass Sie den Zertifikatsserver korrekt konfiguriert
-haben, ist es hilfreich z.B. eine Zerifikatssuche auf dem Server zu
-starten (Anleitung dazu auf der nächsten Seite).
-
-
-\clearpage
-\subsubsection{Zertifikate auf OpenPGP-Zertifikatsserver exportieren}
-
-Wenn Sie einen OpenPGP-Zertifikatsserver eingerichtet haben (siehe
-letzte Seite), genügt ein Maus\-klick und Ihr öffentliches OpenPGP-Zertifikat
-ist unterwegs rund um die Welt:
-
-Wählen Sie Ihr OpenPGP-Zertifikat in Kleopatra aus und klicken 
-anschließend auf den Menüeintrag:
-\Menu{Datei$\rightarrow$Zertifikate nach Server exportieren...}.
-
-Sie brauchen Ihr Zertifikat nur an irgendeinen der verfügbaren
-OpenPGP-Zertifikatsserver zu senden, denn fast alle synchronsieren sich weltweit
-miteinander. Es kann ein, zwei Tage dauern, bis Ihr OpenPGP-Zertifikat wirklich überall
-verfügbar ist, aber dann haben Sie ein "`globales"' Zertifikat.
-
-Sollten Sie Ihr Zertifikat exportieren ohne zuvor einen
-OpenPGP-Zertifikatsserver eingerichtet zu haben, so schlägt Ihnen
-Kleopatra den bereits voreingestellten Server
-\texttt{hkp://keys.gnupg.net} zur Verwendung vor.
-
-
-\subsubsection{Zertifikate auf OpenPGP-Zertifikatsserver suchen und importieren}
+\section{Zertifikate auf Zertifikatsserver suchen und importieren}
 \label{searchAndImportCertificateFromServer}
 %% Original page 27
+Nachdem Sie mindestens einen Zertifikatsserver eingerichtet haben,
+können Sie nun dort nach Zertifikaten suchen und diese anschließend
+importieren.
 
-Genauso einfach wie Sie ein Zertifikat auf einen OpenPGP-Zertifikatsserver 
-exportieren, können Sie auch nach Zertifikaten suchen und diese später importieren.
+Klicken Sie dazu in Kleopatra auf
+\Menu{Datei$\rightarrow$Zertifikate auf Server suchen...}.
 
-Klicken Sie dazu in Kleopatra auf 
-\Menu{Datei$\rightarrow$Zertifikate auf Server suchen...}. 
-
-Sie
-erhalten einen Suchdialog, in dessen Eingabefeld Sie den
-Namen des Zertifikatsbesitzers, oder besser, seine \Email{}-Adresse
-oder sein Fingerabdruck des Zertifikat eingeben können.
+Sie erhalten einen Suchdialog, in dessen Eingabefeld Sie den
+Namen des Zertifikatsbesitzers, oder besser eindeutiger, seine \Email{}-Adresse
+oder sein Fingerabdruck des Zertifikats eingeben können.
 
 %TODO screenshot: Kleopatra certification search dialog
 \begin{center}
@@ -3431,58 +3434,32 @@ Ergebnissen des Importvorgangs an. Bestätigen Sie diesen mit
 \Button{OK}.
 
 War der Import erfolgreich, finden Sie nun das ausgewählte Zertifikat in
-der Kleopatra-Zertifikatsverwaltung.
-
-\textbf{Anmerkung:} Dieser Vorgang des Suchens und Importierens von Zertifikaten gilt
-genauso auch für X.509-Zertifikatsserver.
-
-\clearpage
-\section{X.509-Zertifikatsserver}
-\label{x509CertificateServer}
-
-\T\margin{\IncludeImage[width=1.5cm]{smime-icon}}
-X.509-Zertifikatsserver werden in der Regel
-von den Zertifizierungsstellen (CA) über LDAP bereitgestellt und
-werden manchmal auch als Verzeichnisdienste für X.509-Zertifikate
-bezeichnet.
-
-\subsubsection{X.509-Zertifikatsserver einrichten}
-
-Öffnen Sie die Kleopatra-Einstellungen:
-\Menu{Einstellungen$\rightarrow$Kleopatra einrichten...}
-
-Legen Sie unter der Rubrik
-"`Zertifikatsserver"' einen neuen
-X.509-Zertifikatsserver an, indem Sie auf \Menu{Neu$\rightarrow$X.509}
-klicken. In der Liste erscheint ein neuer Eintrag mit dem Protokoll
-\texttt{ldap}, dem Servernamen \texttt{server} und dem Server-Port
-\texttt{389}. Vervollständigen Sie nun die Angaben zu Servername und
-Basis-DN Ihres X.509-Zertifikatsservers und überprüfen Sie den
-Server-Port.
-
-Erfordert Ihr Zertifikatsserver Benutzername und
-Passwort, so aktivieren Sie die Option \textit{Benutzername und
-Passwort anzeigen} und tragen Ihre gewünschten Angaben ein.
+der Zertifikatsverwaltung von Kleopatra.
 
 
 
-%TODO screenshot: Kleopatra OpenPGP certificate server config dialog
-\begin{center}
-\IncludeImage[width=0.6\textwidth]{sc-kleopatra-configureKeyserver_de}
-\end{center}
+\section{Zertifikate auf OpenPGP-Zertifikatsserver exportieren}
 
-Bestätigen Sie abschließend Ihre Konfiguration mit \Button{OK}. Ihr
-OpenPGP-Zertifikatsserver ist nun erfolgreich eingerichtet.
+Wenn Sie einen OpenPGP-Zertifikatsserver eingerichtet haben (siehe
+\T\margin{\IncludeImage[width=1.5cm]{openpgp-icon}}
+Abschnitt \ref{configureCertificateServer}), genügt ein Maus\-klick
+und Ihr öffentliches OpenPGP-Zertifikat ist unterwegs rund um die Welt:
 
-Sie können nun Zertifikate auf diesem Server suchen
-und von dort aus in Ihre Zertifikatsverwaltung
-importieren. 
+Wählen Sie Ihr OpenPGP-Zertifikat in Kleopatra aus und klicken 
+anschließend auf den Menüeintrag:
+\Menu{Datei$\rightarrow$Zertifikate nach Server exportieren...}.
 
-Das Vorgehen beim \textbf{Suchen und Importieren} eines
-X.509-Zertifikats auf einem X.509-Zertifikatsserver ist identisch zu dem
-Suchen und Importieren von OpenPGP-Zertifikaten auf einem
-OpenPGP-Zertifikatsserver. Eine genaue Anleitung dazu finden Sie auf
-Seite~\pageref{searchAndImportCertificateFromServer}.
+Sie brauchen Ihr Zertifikat nur an irgendeinen der verfügbaren
+OpenPGP-Zertifikatsserver zu senden, denn fast alle synchronsieren sich weltweit
+miteinander. Es kann ein, zwei Tage dauern, bis Ihr OpenPGP-Zertifikat wirklich überall
+verfügbar ist, aber dann haben Sie ein "`globales"' Zertifikat.
+
+Sollten Sie Ihr Zertifikat exportieren ohne zuvor einen
+OpenPGP-Zertifikatsserver eingerichtet zu haben, so schlägt Ihnen
+Kleopatra den bereits voreingestellten Server
+\texttt{hkp://keys.gnupg.net} zur Verwendung vor.
+
+
 
 
 \clearpage
@@ -3614,11 +3591,11 @@ Nach erfolgreicher Beglaubigung erhalten Sie folgendes Fenster:
 ~\\
 Wollen Sie nun einmal die erfolgte Beglaubigung überprüfen?\\
 Dann öffnen Sie die Zertifikatsdetails des eben beglaubigten
-Zertifikats. Wählen Sie den Reiter \textit{Benutzer-IDs und
+Zertifikats. Wählen Sie den Reiter \textit{Benutzer-Kennungen und
 Beglaubigungen} und klicken auf die Schaltfläche \Button{Hole
 Beglaubigungen ein}.
 
-Sortiert nach den Benutzer-IDs sehen sie alle Beglaubigungen, die in
+Sortiert nach den Benutzer-Kennungen sehen sie alle Beglaubigungen, die in
 diesem Zertifikat enthalten sind. Hier sollte Sie auch Ihre
 Zertifikat wiederfinden, mit dem Sie eben beglaubigt haben.
 
@@ -3802,11 +3779,11 @@ mit der rechten Maustaste das Kontextmenü:
 \IncludeImage[width=0.25\textwidth]{sc-gpgex-contextmenu-signEncrypt_de}
 \end{center}
 
-Dort wählen Sie \Menu{Verschlüsseln und Signieren} aus.
+Dort wählen Sie \Menu{Signieren und verschlüsseln} aus.
 
 \clearpage
 Selektieren Sie im erscheinenden Fenster die Option \Menu{Nur
-siegnieren}:
+signieren}:
 
 %TODO screenshot GpgEX sign file, step 1
 \begin{center}
@@ -3939,7 +3916,7 @@ das Kontextmenü:
 \IncludeImage[width=0.25\textwidth]{sc-gpgex-contextmenu-signEncrypt_de}
 \end{center}
 
-Wählen Sie hier \Menu{Verschlüsseln und Signieren} aus.
+Wählen Sie hier \Menu{Signieren und verschlüsseln} aus.
 
 \clearpage
 Sie erhalten den Dialog, den Sie vom Signieren einer Datei (vgl.
@@ -4235,7 +4212,7 @@ Denken Sie daran die gelöschte Datei aus Ihrem "`Papierkorb"' zu
 entfernen. Andernfalls stellt diese Datei ein Sicherheitsrisiko für
 Ihre geheime \Email{}-Verschlüsselung dar!}
 
-\textit{Anmerkung:} Es kann in einigen Fällen vorkommen, dass Sie einen importierten
+\textbf{Anmerkung:} Es kann in einigen Fällen vorkommen, dass Sie einen importierten
 Schlüssel nicht direkt benutzen können.  Dies äußert sich darin, dass
 Sie die richtige Passphrase eingeben, dieser aber nicht akzeptiert
 wird.  Das kommt daher, dass einige Versionen von PGP intern den
@@ -4258,8 +4235,8 @@ wieder importiert.}
 \xname{systemweite-konfiguration-und-vorbelegungen-fuer-smime}
 \chapter{Systemweite Konfigurationen und Vorbelegungen für S/MIME}
 \T\margin{\IncludeImage[width=1.5cm]{smime-icon}}
-
-Im Rahmen von Softwareverteilung oder sonstigen Umgebungen
+\T\enlargethispage{\baselineskip}
+Im Rahmen von Softwareverteilung oder sonstigen Umgebungen,
 in denen viele Anwender auf einem Rechner arbeiten,
 ist es sinnvoll einige systemweite Vorgaben und Vorberlegungen
 für Gpg4win einzurichten.
@@ -4393,7 +4370,7 @@ geladen werden. Das Problem kann u.U. durch das Benutzen von 'Erkennen
 und Reparieren' in der Hilfe behoben werden.}
 
 Lösen können Sie dieses Problem, in dem Sie den Outlook-internen
-(zwischengespeicherten) Programmerweiterungs-Pfad zurücksetzen.
+(zwischengespeicherten)\linebreak Programmerweiterungs-Pfad zurücksetzen.
 Löschen Sie dazu bitte folgende Datei:\\
 \Filename{\%APPDATA\%\back{}Lokale
 Einstellungen\back{}Anwendungsdaten\back{}Microsoft\back{}Outlook\back{}\T\\ 
@@ -4464,7 +4441,7 @@ Beachten Sie, dass es sich um einen versteckten Dateiordner handelt.
 Um es sichtbar zu schalten, müssen Sie im Explorer über das Menü
 \Menu{Extras$\rightarrow$Ordneroptionen}
 im Reiter \Menu{Ansicht} die Option \Menu{Alle Dateien und Ordner
-anzeigen} unter der Rubrik \Menu{Versteckte Dateien und Ordner} aktivieren.
+anzeigen} unter der Gruppe \Menu{Versteckte Dateien und Ordner} aktivieren.
 
 In diesem Dateiordner befinden sich sämtliche persönlichen
 GnuPG-Daten,
@@ -4571,6 +4548,7 @@ Die genaue Syntax für die Einträge lautet übrigens:
 
 \verb#HOSTNAME:PORT:USERNAME:PASSWORD:BASE_DN#
 
+
 \clearpage
 \section{Systemweite vertrauenswürdige Wurzelzertifikate}
 \label{sec_systemtrustedrootcerts}
@@ -4583,10 +4561,12 @@ Users\back{}Anwendungsdaten\back{}GNU\back{}\T\\
 etc\back{}gnupg\back{}trustlist.txt}
 
 Die genaue Syntax für die Einträge lautet hier:
-\verb#<FINGERPRINT> S#
+\verb#<FINGERPRINT> S#\\
+Anschließend muss eine Leerzeile folgen.
+
 
 Also z.B.:\\
-\verb+BA90087D0C6C7F4DEAF00907BCFA2133DDC8CA90 S+
+\verb+BA90087D0C6C7F4DEAF00907BCFA2133DDC8CA90 S+\\
 
 \textbf{Wichtig:} Damit Wurzelzertifikate in Kleopatra vollständig als
 vertrauenswürdig markiert werden (Zertifikat wird blau hinterlegt),
@@ -4602,17 +4582,19 @@ Wurzelzertifikate können auch jeweils von den einzelnen Benutzern als
 vertrauenswürdig markiert werden -- eine systemweite Konfiguration
 (siehe Abschnitt \ref{trustedrootcertsdirmngr} und \ref{sec_systemtrustedrootcerts}) ist dann nicht erforderlich.
 
-Wenn Sie im Kleopatra-Menü \Menu{Extras$\rightarrow$GnuPG Backend} 
-einrichten unter \textit{GpgAgent} die Option \textit{erlaube Aufrufern 
-Schlüssel als 'vertrauenswürdig' zu markieren} aktivieren, so werden Sie
+Öffnen Sie das Kleopatra-Menü \Menu{Einstellungen$\rightarrow$Kleopatra
+einrichten} und anschließend die Gruppe \Menu{GnuPG-System} und dann
+\Menu{GpgAgent}.\\
+Aktivieren Sie hier die Option \textit{Erlaube Aufrufern 
+Schlüssel als 'vertrauenswürdig' zu markieren}. Dadurch werden Sie
 beim Gebrauch eines bisher nicht vertrauenswürdig eingestuften 
 Wurzelzertifkats gefragt, ob Sie es nun als vertrauenswürdig einstufen wollen.
-Beachten Sie, dass der gpg-agent neu gestartet werden muss
+Beachten Sie, dass der gpg-agent ggf. neu gestartet werden muss
 (z.B. durch ausloggen und wieder einloggen).
 
 \clearpage
 \xname{fehler-in-den-gpg4win-programmen-aufspueren}
-\chapter{Fehler in den Gpg4win-Programmen aufspüren}
+\chapter{Probleme in den Gpg4win-Programmen aufspüren}
 
 Es kann vorkommen, dass eine der Gpg4win-Programmkomponenten
 nicht wie erwartet zu funktionieren scheint.
@@ -4695,7 +4677,7 @@ nicht, um den Fehler zu erkennen. Er wird Sie dann bitten, eine weitere
 Umgebungsvariable anzulegen
 -- so wie Sie es schon oben getan haben:
 \begin{quote}
-    Name der Variable: \Filename{KLEOPATRA\_LOGPTIONS}
+    Name der Variable: \Filename{KLEOPATRA\_LOGOPTIONS}
 
     Wert der Variable: ~~\Filename{all}
 \end{quote}
@@ -4714,7 +4696,7 @@ ebenfalls sinnvoll die Logdateien zu löschen.
 \clearpage
 \section{Logdatei von GpgOL einschalten}
 
-Für das Einschalten der Loglogdatei von GpgOL müssen Sie den Registrierungs-Editor
+Für das Einschalten der Logdatei von GpgOL müssen Sie den Registrierungs-Editor
 starten. Geben Sie dazu das Kommando \verb:regedit: unter
 \Menu{Start$\rightarrow$Ausführen} oder in einer Eingabeaufforderung ein.
 
@@ -4753,7 +4735,7 @@ ist das Einschalten der Logdatei nur mit Administatorrechten
 möglich.
 
 Um die Logdatei einzuschalten, öffnen Sie zunächst folgende
-Konfigurationsdatei:
+Konfigurationsdatei:\\
 \Filename{C:\back{}Dokumente und Einstellungen\back{}All
 Users\back{}Anwendungsdaten\back{}GNU\back{}\\
 etc\back{}dirmngr\back{}dirmngr.conf}
@@ -5676,19 +5658,16 @@ Stück $203_4$:
 
 
 \clearpage
-\item Jetzt können Sie zur Verschlüsselung die Tabelle~\ref{table1} benutzen, die ja
+\item Jetzt können Sie zur Verschlüsselung die Tabelle~\ref{table1}
+    von Seite \pageref{table1} benutzen, die ja
 zur Basis 10 berechnet wurde. Diese Tabelle benutzen wir, weil Sie mit
 dem schon bekannten Schlüsselpaar arbeiten wollen. Dabei entsteht eine
 kodierte Nachricht zur Basis 10.
 
-Zum Verschlüsseln der Nachricht nehmen Sie jetzt Tabelle~\ref{table1} zur Hilfe.
+Zum Verschlüsseln der Nachricht nehmen Sie jetzt die o.g.
+Tabelle~\ref{table1} zur Hilfe.
 Die Nachricht wird nun zu der Zahlenfolge 53, 63, 50 (zur Basis 10).
 
-%TODO#: convert in Latex
-\begin{center}
-\htmlattributes*{img}{width=500}
-\IncludeImage[width=0.9\textwidth]{table-1}
-\end{center}
 
 %% Original page 72
 \item Wiederum zur Basis 4 konvertiert, entsteht die verschlüsselte
@@ -5748,15 +5727,15 @@ dass er dann keine Lust mehr haben dürfte diese auch noch zu lesen\ldots
 \W\part*{\textbf{III Anhang}}
 \addtocontents{toc}{\protect\vspace{0.3cm}}
 
-\xname{glossar}
-\T\chapter{Glossar}
-\W\chapter*{A Glossar}
-\label{glossar}
-
-\begin{description}
-    \item[OpenPGP] xyz
-    \item[X.509] xyz
-\end{description}
+%\xname{glossar}
+%\T\chapter{Glossar}
+%\W\chapter*{A Glossar}
+%\label{glossar}
+%
+%\begin{description}
+%    \item[OpenPGP] xyz
+%    \item[X.509] xyz
+%\end{description}
 
 
 
@@ -5854,7 +5833,10 @@ Desweiteren ist anzuraten auf HTML Nachrichten zu verzichten.
 Sie können dies im Menüpunkt
 \Menu{Extras$\rightarrow$Optionen} auf der Karteikarte
 \Menu{E-Mail-Format} kontrollieren.  Das Nachrichtenformat sollte auf
-\textit{Nur-Text} eingestellt sein (siehe markierter Bereich):
+\textit{Nur-Text} eingestellt sein (siehe markierter Bereich).
+Sollten Sie dennoch HTML für signierte oder verschlüsselte \Email{}s
+verwenden, können dabei beim Empfänger die Formatierungsinformationen vorloren
+gehen.
 
 % screenshot: Outlook E-Mail-Format options
 \begin{center}
@@ -6216,8 +6198,7 @@ Dateiordner bzw. Registryschlüssel zurück:
   Layout: Isabel Kramer, Bihlmeier \& Kramer GbR\\
   Fachtext: Dr. Francis Wray, e-mediate Ltd.\\
   Redaktion: Ute Bahn, TextLab text+media\\
-  Herausgegeben vom Bundesministerium für Wirtschaft und
-  Technologie (BMWi).\\
+  Herausgegeber: Bundesministerium für Wirtschaft und Technologie (BMWi)\\
   Verfügbar unter
   \uniurl{http://www.gnupp.de/pdf/einsteiger.pdf}
   und\\
@@ -6226,13 +6207,13 @@ Dateiordner bzw. Registryschlüssel zurück:
 %    und wurde von Werner Koch beigefügt.
 \item Revidierte nicht-veröffentlichte Version von TextLab text+media.      
 \item "`Gpg4win für Einsteiger"' und "`Gpg4win für Durchblicker"', Dezember 2005\\
-      Autoren:  Werner Koch, g10 Code GmbH\\
-      Herausgegeben durch das Gpg4win Projekt.
-\item Aufgrund einer Erlaubniss des BMWi vom 14. November 2007 wurde
-      die Invariant Section "`Impressum"' entfernt und an die aktuelle
+      Überarbeitung: Werner Koch, g10 Code GmbH\\
+      Herausgegeber: das Gpg4win-Projekt
+\item Dank der Erlaubnis des BMWi vom 14. November 2007 wurde
+      der unveränderbare Abschnitt "`Impressum"' entfernt und an die aktuelle
       Version angepasst.
 \item Das "`Gpg4win-Kompendium"' fasst "`Gpg4win für Einsteiger"' und "`Gpg4win für Durchblicker"'
-      zusammen und ist umfassend für Gpg4win 2.0 aktualisiert und 
+      zusammen und ist umfassend für Gpg4win2 aktualisiert und 
       ergänzt worden.\\
       \"Uberarbeitung:\\
       Emanuel Schütze, Intevation GmbH\\
