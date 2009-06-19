@@ -1,4 +1,7 @@
 2009-06-19  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+	* manual/Makefile.am: Fixed removed sc-inst-finished2.png.
+
+2009-06-19  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 	* manual/gpg4win-compendium-de.tex:
 	Changed manualinprogress command for version date.
 
