@@ -80,7 +80,7 @@ png_files = \
 		sc-inst-options_de.png \
 		sc-inst-startmenu_de.png sc-inst-ready_de.png \
 		sc-inst-finished_de.png sc-inst-finished2_de.png \
-		sc-inst-finished.png\
+		sc-inst-finished2.png\
 		sc-winpt-sign-passwd.png \
 		sc-gpgee-ctxmenu.png sc-gpgee-signmenu.png \
 		sc-gpa-gen-backup.png sc-gpa-gen-backup-warn.png \
