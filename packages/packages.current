@@ -372,6 +372,9 @@ chk  2f4f6c4b85f2b5a2c4dcf2167342ed6c41efcd1c
 file pinentry/pinentry-0.7.6.tar.gz
 chk  0c525ce81e5589bc9a4f2eb72705bed2b3e9a8b9
 
+file scute/scute-1.3.0.tar.bz2
+chk  0d20924a5411a6699f54ced11128029dedff3211  
+
 # (Snapshots)
 # server ftp://ftp.g10code.com/g10code/scratch
 

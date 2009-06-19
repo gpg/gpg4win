@@ -35,11 +35,11 @@ Section "-Scute" SEC_scute
 !else
   ClearErrors
   SetOverwrite try
-  File "${prefix}/bin/scute.dll"
+  File /oname=scute.dll "${prefix}/bin/libscute-0.dll"
 
   SetOverwrite lastused
   ifErrors 0 +3
-      File /oname=scute.dll.tmp "${prefix}/bin/scute.dll"
+      File /oname=scute.dll.tmp "${prefix}/bin/libscute-0.dll"
       Rename /REBOOTOK scute.dll.tmp scute.dll
 
 !endif
