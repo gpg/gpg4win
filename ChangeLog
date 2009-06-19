@@ -1,6 +1,10 @@
+2009-06-20  Werner Koch  <wk@g10code.com>
+
+	* packages/packages.current: Update GPA.
+
 2009-06-19  Werner Koch  <wk@g10code.com>
 
-	* packages/packages.current: Add Scute.
+	* packages/packages.current: Add Scute.  Update GpgOL.
 
 	* src/inst-scute.nsi: Need to use libscute-0.dll now.
 
