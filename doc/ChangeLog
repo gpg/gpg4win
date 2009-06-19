@@ -1,6 +1,42 @@
 2009-06-19  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
 	* manual/gpg4win-compendium-de.tex: some minor changes.
+	Screenshots updated.
+
+	* manual/Makefile.am, manual/sc-inst-license_de.png,
+	manual/sc-inst-components_de.png,
+	manual/sc-inst-directory_de.png,
+	manual/sc-inst-options_de.png,
+	manual/sc-inst-startmenu_de.png,
+	manual/sc-inst-ready_de.png,
+	manual/sc-inst-finished_de.png,
+	manual/sc-inst-finished2_de.png:
+	Added new screenshot.
+
+	* manual/sc-kleopatra-x509-reviewParameters_de.png,
+	manual/sc-kleopatra-mainwindow-empty_de.png,
+	manual/sc-gpgol-options_de.png,
+	manual/sc-kleopatra-startmenu_de.png,
+	manual/sc-kleopatra-ChooseCertificateFormat_de.png,
+	manual/sc-kleopatra-x509-personalDetails_de.png,
+	manual/sc-kleopatra-configureKeyserver_de.png,
+	manual/sc-gpgex-contextmenu-verifyDecrypt_de.png,
+	manual/sc-kleopatra-openpgp-personalDetails_de.png,
+	manual/sc-kleopatra-openpgp-keyPairCreated_de.png,
+	manual/sc-gpgex-contextmenu-signEncrypt_de.png,
+	manual/sc-kleopatra-openpgp-reviewParameters_de.png,
+	manual/sc-kleopatra-x509-keyPairCreated_de.png,
+	manual/sc-kleopatra-x509-createKey_de.png,
+	manual/sc-kleopatra-openpgp-createKey_de.png,
+	manual/sc-kleopatra-openpgp-exportSecretKey_de.png:
+	Updated screenshot.
+
+	* manual/sc-kleopatra-backend-openpgpWithFingerprint_de.png:
+	Removed screenshot.
+
+2009-06-19  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+
+	* manual/gpg4win-compendium-de.tex: some minor changes.
 
 2009-05-14  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 

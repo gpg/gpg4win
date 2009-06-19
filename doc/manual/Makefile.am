@@ -76,11 +76,11 @@ png_files = \
 		sc-pinentry-p12-import-b_de.png\
 		sc-inst-language_de.png\
 		\
-		sc-inst-welcome.png sc-inst-license.png \
-		sc-inst-components.png sc-inst-directory.png \
-		sc-inst-options.png \
-		sc-inst-startmenu.png sc-inst-ready.png \
-		sc-inst-finished.png sc-inst-finished2.png \
+		sc-inst-welcome.png sc-inst-license_de.png \
+		sc-inst-components_de.png sc-inst-directory_de.png \
+		sc-inst-options_de.png \
+		sc-inst-startmenu_de.png sc-inst-ready_de.png \
+		sc-inst-finished_de.png sc-inst-finished2_de.png \
 		sc-winpt-sign-passwd.png \
 		sc-gpgee-ctxmenu.png sc-gpgee-signmenu.png \
 		sc-gpa-gen-backup.png sc-gpa-gen-backup-warn.png \

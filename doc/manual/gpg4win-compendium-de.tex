@@ -664,7 +664,7 @@ mit \Button{Ja}.
 \clearpage
 Der Installationsassistent startet und befragt Sie zuerst nach der
 Sprache für den Installationsvorgang:
-% TODO screenshot: Installer Sprachenauswahl
+% screenshot: Installer Sprachenauswahl
 \begin{center}
 \IncludeImage[width=0.45\textwidth]{sc-inst-language_de}
 \end{center}
@@ -675,7 +675,7 @@ Anschließend begrüßt Sie dieser Willkommensdialog:
 
 % TODO screenshot: Installer Willkommensseite
 \begin{center}
-\IncludeImage{sc-inst-welcome}
+\IncludeImage[width=0.6\textwidth]{sc-inst-welcome}
 \end{center}
 
 Beenden Sie alle auf Ihrem Rechner laufenden Programme, und klicken Sie dann auf \Button{Weiter}.
@@ -694,9 +694,9 @@ Geben Sie allerdings diese Software weiter oder wollen Sie sie
 verändern, so müssen Sie sich mit den Bedingungen der Lizenzen vertraut
 machen.  
 
-% TODO screenshot: Lizenzseite des Installers
+% screenshot: Lizenzseite des Installers
 \begin{center}
-\IncludeImage{sc-inst-license}
+\IncludeImage[width=0.6\textwidth]{sc-inst-license_de}
 \end{center}
 
 
@@ -720,9 +720,9 @@ Entscheidung hilft.
 Die Anzeige des benötigen Speichers auf der Festplatte
 hilft Ihnen vielleicht ebenfalls weiter.
 
-% TODO sreenshot: Auswahl zu installierender Komponenten
+% screenshot: Auswahl zu installierender Komponenten
 \begin{center}
-\IncludeImage{sc-inst-components}
+\IncludeImage[width=0.6\textwidth]{sc-inst-components_de}
 \end{center}
 
 Klicken Sie auf \Button{Weiter}.
@@ -737,9 +737,9 @@ aussuchen, in dem Gpg4win installiert wird. Sie können hier in der
 Regel den vorgeschlagenen Programme-Ordner übernehmen, z.B.:
 \Filename{C:$\backslash$Programme$\backslash$GNU$\backslash$GnuPG}
 
-% TODO screenshot: Auswahl des Installationsverzeichnis.
+% screenshot: Auswahl des Installationsverzeichnis.
 \begin{center}
-\IncludeImage{sc-inst-directory}
+\IncludeImage[width=0.6\textwidth]{sc-inst-directory_de}
 \end{center}
 
 Klicken Sie anschließend auf \Button{Weiter}.
@@ -752,9 +752,9 @@ lediglich eine Verknüpfung mit dem Startmenü.
 Diese Verknüpfungen können auch jederzeit später mit den Bordmitteln von
 Windows verändert werden.
 
-% TODO screenshot: Auswahl der Startlinks
+% screenshot: Auswahl der Startlinks
 \begin{center}
-\IncludeImage{sc-inst-options}
+\IncludeImage[width=0.6\textwidth]{sc-inst-options_de}
 \end{center}
 
 Klicken Sie anschließend auf \Button{Weiter}.
@@ -767,9 +767,9 @@ Startmenü} ausgewählt haben (dies ist die Voreinstellung), so wird
 Ihnen nun eine Seite angezeigt, mit der Sie den Namen dieses
 Startmenüs festlegen können.
 
-% TODO screenshot:  Startmenu auswählen
+% screenshot:  Startmenu auswählen
 \begin{center}
-\IncludeImage{sc-inst-startmenu}
+\IncludeImage[width=0.6\textwidth]{sc-inst-startmenu_de}
 \end{center}
 
 Am einfachsten übernehmen Sie den vorgeschlagenen Namen und
@@ -782,9 +782,9 @@ Fortschrittsbalken und Informationen, welche Datei momentan
 installiert wird.  Sie können jederzeit auf \Button{Details~anzeigen}
 drücken, um ein Protokoll der Installation sichtbar zu machen.
 
-% TODO screenshot: Ready page Installer
+% screenshot: Ready page Installer
 \begin{center}
-\IncludeImage{sc-inst-ready}
+\IncludeImage[width=0.6\textwidth]{sc-inst-ready_de}
 \end{center}
 
 Nachdem die Installation abgeschlossen ist, drücken Sie bitte auf
@@ -795,9 +795,9 @@ Nachdem die Installation abgeschlossen ist, drücken Sie bitte auf
 
 Nach erfolgreicher Installation wird Ihnen diese letzte Seite des Installationsvorgangs angezeigt:
 
-% TODO screenshot: Finish page Installer
+% screenshot: Finish page Installer
 \begin{center}
-\IncludeImage{sc-inst-finished} 
+\IncludeImage[width=0.6\textwidth]{sc-inst-finished_de}
 \end{center}
 
 Sofern Sie die README-Datei nicht ansehen wollen, deaktivieren Sie die
@@ -810,9 +810,9 @@ Klicken Sie schließlich auf \Button{Fertig stellen}.
 In einigen Fällen kann es vorkommen, dass Windows neu gestartet werden
 muss.  In diesem Fall sehen Sie statt der vorherigen die folgende Seite:
 
-% TODO screenshot: Finish page Installer with reboot
+% screenshot: Finish page Installer with reboot
 \begin{center}
-\IncludeImage{sc-inst-finished2}
+\IncludeImage[width=0.6\textwidth]{sc-inst-finished2_de}
 \end{center}
 
 Sie können hier auswählen, ob Windows sofort oder später manuell neu gestartet werden
@@ -2621,39 +2621,12 @@ Die Nachricht wird einmal für Ihren eigentlichen Korrespondenzpartner
 Hilfe Ihres eigenen öffentlichen Zertifikats. So können Sie die \Email{} später einfach
 mit Ihrem eigenen geheimen Schlüssel wieder lesbar machen.
 
-Da Gpg4win nicht wissen kann, welchen Schlüssel Sie benutzen (Sie
-können ja auch mehrere haben) müssen Sie dem Programm dies
-mitteilen.
+Jede verschlüsselte Nachricht wird von Gpg4win automatisch auch an ihr
+eigenes Zertifikat verschlüsselt. Dazu nutzt Gpg4win Ihre
+Absender-E-Mail-Adresse. Sollten Sie mehrere Zertifikate zu einer
+Adresse besitzen, so müssen Sie sich beim Verschlüsselungsvorgang
+entscheiden, an welches Zertifikat verschlüsselt werden soll.
 
-Wie? -- Das erfahren Sie auf der nächsten Seite.
-
-\clearpage
-%% Original page 48
-Um diese Option zu nutzen, genügen einige wenige Mausklicks:
-
-Öffnen Sie Kleopatra und dort das GnuPG-Backend über \Menu{Extras$\rightarrow$GnuPG-Backend
-einrichten...}.
-
-Wählen Sie \textit{GPG for OpenPGP} bzw.
-\textit{GPG for S/MIME} und geben Sie in das Textfeld an der Stelle
-\textbf{\Menu{Auch an NAME verschlüsseln}} 
-den vollständigen Fingerabdruck Ihres Zertifikats an, z.B.:
-
-
-% TODO screenshot: Kleopatra GnuPG Backend - Gpg for OpenPGP with fingerprint
-\begin{center}
-\IncludeImage[width=0.7\textwidth]{sc-kleopatra-backend-openpgpWithFingerprint_de}
-\end{center}
-
-%In dem Einstellungsfenster, das sich nun öffnet, tragen Sie unter
-%"`Encrypt to this key"' Ihren Schlüssel ein bzw. die
-%dazugehörige \Email{}-Adresse.
-
-Den Fingerabdruck finden Sie in den Zertifikatsdetails Ihres
-Zertifikat.
-
-Eine entsprechende Option finden Sie auch bei allen \Email{}-Programmen,
-die GnuPG direkt unterstützen.
 
 
 \clearpage
@@ -3857,7 +3830,7 @@ Dateiordner liegen. Selektieren Sie die Signatur-Datei -- also die mit der
 Endung \textit{.sig} oder \textit{.p7s} -- und wählen Sie aus dem Kontextmenü des Windows Explorer
 den Eintrag  \Menu{Entschlüsseln und überprüfen}:
 
-% TODO screenshot GpgEX contextmenu verifiy/decrypt
+% screenshot GpgEX contextmenu verifiy/decrypt
 \begin{center}
 \IncludeImage[width=0.25\textwidth]{sc-gpgex-contextmenu-verifyDecrypt_de}
 \end{center}
