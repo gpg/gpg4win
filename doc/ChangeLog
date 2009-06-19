@@ -1,4 +1,11 @@
 2009-06-19  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+	* manual/gpg4win-compendium-de.tex:
+	Changed manualinprogress command for version date.
+
+	* manual/Makefile.am: Removed png screenshot.
+
+
+2009-06-19  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
 	* manual/gpg4win-compendium-de.tex: some minor changes.
 	Screenshots updated.

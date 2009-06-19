@@ -71,7 +71,6 @@ png_files = \
 		sc-gpgex-contextmenu-signEncrypt_de.png\
 		sc-gpgex-contextmenu-verifyDecrypt_de.png\
 		sc-wordpad-editOpenpgpKey_de.png\
-		sc-kleopatra-backend-openpgpWithFingerprint_de.png\
 		sc-pinentry-p12-import-a_de.png\
 		sc-pinentry-p12-import-b_de.png\
 		sc-inst-language_de.png\
