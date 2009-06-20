@@ -86,7 +86,7 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi config.site \
 
 # Need to clean the dll because we bypassed automake.
 CLEANFILES = g4wihelp.dll versioninfo.txt README.en.txt README.de.txt \
-             installer-options.ini NEWS.tmp \
+             installer-options.ini NEWS.tmp versioninfo.tmp \
 	     gpgwrap.exe gpgwrap-2.exe kleowrap.exe
 
 # Supported source packages.
@@ -448,13 +448,15 @@ common_nsi = inst-sections.nsi installer.nsi installer-finish.nsi	\
 # writes the file with DOS line endings.  This helps to avoid
 # duplicate entries in case one package has been rebuild (which is
 # common when developing a new version).
-# Support macro.  Record version number of file $(1).
-define VERSIONINFO_macro
-         $(SHA1SUM) "$(1)" >> 
-endef
-
 versioninfo.txt:
-	$(SHA1SUM) $(pkg_files) > versioninfo.txt
+	$(SHA1SUM) $(pkg_files) > versioninfo.tmp
+	set -e; \
+	( while read a b; do echo "$$a $$(basename $$b)"; \
+            done < versioninfo.tmp \
+          | sort -k2 -sf | tac | uniq -f1 ; \
+          echo '=========== SHA-1 checksum ============= == package ==' \
+         ) | tac | awk '{printf "%s\r\n", $$0}' > versioninfo.txt
+	-rm versioninfo.tmp
 
 NEWS.tmp : $(top_srcdir)/NEWS
 	sed -e '/^#/d' <$(top_srcdir)/NEWS >NEWS.tmp

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gpg4win 2.0\n"
 "Report-Msgid-Bugs-To: gpg4win-devel@wald.intevation.org\n"
-"POT-Creation-Date: 2009-03-24 20:31+0100\n"
+"POT-Creation-Date: 2009-06-20 10:50+0200\n"
 "PO-Revision-Date: 2008-11-12 10:39+0100\n"
 "Last-Translator: Werner Koch <wk@g10code.com>\n"
 "Language-Team: German <translation-team-de@lists.sourceforge.net>\n"
@@ -407,7 +407,7 @@ msgid "EudoraGPG is a plugin for the Eudora mail program"
 msgstr ""
 "EudoraGPG ist ein Plugin zur Verschlüsselung für das Eudora Mailprogramm"
 
-#: src/inst-gnupg2.nsi:210
+#: src/inst-gnupg2.nsi:211
 msgctxt "DESC_SEC_gnupg2"
 msgid "GNU Privacy Guard"
 msgstr ""
