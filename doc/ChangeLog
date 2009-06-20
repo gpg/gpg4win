@@ -1,3 +1,26 @@
+2009-06-20  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+	* manual/
+	sc-kleopatra-certifyCertificate1_de.png,
+	sc-kleopatra-certifyCertificate2_de.png,
+	sc-kleopatra-certifyCertificate3_de.png,
+	sc-kleopatra-encryption-successful_de.png,
+	sc-kleopatra-exportCertificateToServer_de.png,
+	sc-kleopatra-openpgp-certificateDetails_de.png,
+	sc-kleopatra-openpgp-encryptDialog_de.png,
+	sc-kleopatra-openpgp-exportSecretKey_de.png,
+	sc-kleopatra-openpgp-keyPairCreated_de.png,
+	sc-kleopatra-openpgp-pinentry_de.png,
+	sc-kleopatra-openpgp-signDialog_de.png,
+	sc-kleopatra-sign-OpenpgpPinentry_de.png,
+	sc-kleopatra-sign-chooseOpenpgpCertificate_de.png,
+	sc-kleopatra-sign-successful_de.png,
+	sc-kleopatra-withOpenpgpTestkey_de.png,
+	sc-kleopatra-x509-keyPairCreated_de.png,
+	sc-kleopatra-x509-pinentry_de.png,
+	sc-pinentry-p12-import-a_de.png,
+	sc-pinentry-p12-import-b_de.png:
+	Updated screenshots.
+
 2009-06-19  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 	* manual/gpg4win-compendium-de.tex: Fix umlauts problem with hyperlatex 2.9a-3.
 
