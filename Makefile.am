@@ -47,6 +47,7 @@ EXTRA_DIST = autogen.sh README.SVN \
 	patches/claws-mail-3.7.1/01-fix-spaces-after-re.patch \
 	patches/claws-mail-3.7.1/02-3.7.1cvs22.patch \
         patches/claws-mail-3.7.1/03-pipe.patch \
+        patches/gpa-0.9.0/01-title-prop.patch \
         patches/scute-1.2.0/01-bugfixes.patch
 
 copy-news:

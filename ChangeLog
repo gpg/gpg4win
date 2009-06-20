@@ -1,5 +1,7 @@
 2009-06-20  Werner Koch  <wk@g10code.com>
 
+	* patches/gpa-0.9.0/01-title-prop.patch: New.
+
 	* src/Makefile.am (versioninfo.txt): Add old pipeline to properly
 	format the list.
 	(CLEANFILES): Add versioninfo.tmp.
