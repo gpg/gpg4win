@@ -31,10 +31,12 @@ Basic requirements
 ==================
 
 A decent POSIX system is required for building this software as well
-as GNU make.  We are using Debian GNU/Linux (Sid), however it should
-work with current Testing (as of Februar 2006) too.  It might work with
-Sarge - this has not been tested.  To satisfy all needs of configure
-at least the following packages need to be installed:
+as GNU make.  We are using Debian GNU/Linux (Lenny); due to a little
+bug in the mingw32 compiler it is highly suggested to put a line
+  deb http://apt.intevation.org lenny/mingw .
+into /etc/apt/sources and update the mingw packages.  To satisfy all
+needs of configure at least the following packages need to be
+installed:
 
  build-essential (libc6-dev, gcc, g++, make)
  automake, autoconf (if building from SVN)
@@ -114,7 +116,7 @@ Copyright
 
 The entire Gpg4win package is
 
-  Copyright (C) 2005, 2006, 2007, 2008 g10 Code GmbH
+  Copyright (C) 2005, 2006, 2007, 2008, 2009 g10 Code GmbH
   
   GPG4Win is free software; you can redistribute it and/or modify it
   under the terms of the GNU General Public License as published by

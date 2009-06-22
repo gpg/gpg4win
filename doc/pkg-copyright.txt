@@ -4,7 +4,7 @@ last updated 2008-04-23]
 
 Gpg4win is
 
-  Copyright (C) 2005, 2006, 2007, 2008 g10 Code GmbH
+  Copyright (C) 2005, 2006, 2007, 2008, 2009 g10 Code GmbH
   
   Gpg4win is free software; you can redistribute it and/or modify it
   under the terms of the GNU General Public License as published by
@@ -24,8 +24,8 @@ Gpg4win is
 
 GnuPG is
 
-  Copyright 1998, 1999, 2000, 2001, 2002, 2003, 2004, 
-            2005, 2006, 2007, 2008 Free Software Foundation, Inc.
+  Copyright 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005,
+            2006, 2007, 2008, 2009 Free Software Foundation, Inc.
 
   GnuPG is free software; you can redistribute it and/or modify it
   under the terms of the GNU General Public License as published by
@@ -107,7 +107,7 @@ GPA is
 
   Copyright (C) 2000-2002 G-N-U GmbH (http://www.g-n-u.de)
   Copyright (C) 2002-2003 Miguel Coca.
-  Copyright (C) 2005, 2008 g10 Code GmbH.
+  Copyright (C) 2005, 2008, 2009 g10 Code GmbH.
   
   GPA uses fragments from the following programs and libraries:
   JNLIB, Copyright (C) 1998-2000 Free Software Foundation, Inc.
@@ -132,7 +132,8 @@ GPA is
 GPGME is
 
   Copyright (C) 2000 Werner Koch (dd9jn)
-  Copyright (C) 2001, 2002, 2003, 2004, 2005, 2007 g10 Code GmbH
+  Copyright (C) 2001, 2002, 2003, 2004, 2005, 2007, 2008,
+                2009 g10 Code GmbH
 
   GPGME is free software; you can redistribute it and/or modify it
   under the terms of the GNU Lesser General Public License as
@@ -154,7 +155,7 @@ GPGME is
 GpgOL is
 
   Copyright (C) 2001 G Data Software AG, http://www.gdata.de
-  Copyright (C) 2004, 2005, 2007, 2008 g10 Code GmbH
+  Copyright (C) 2004, 2005, 2007, 2008, 2009 g10 Code GmbH
   
   GpgOL is free software; you can redistribute it and/or
   modify it under the terms of the GNU Lesser General Public
@@ -226,25 +227,6 @@ Claws Mail is
   For more details see the file COPYING.
 
 
-WinPT is
-
-  Copyright (C) 2000-2006 Timo Schulz
-  
-  WinPT is free software; you can redistribute it and/or modify
-  it under the terms of the GNU General Public License as published by
-  the Free Software Foundation; either version 2 of the License, or
-  (at your option) any later version.
-  
-  WinPT is distributed in the hope that it will be useful,
-  but WITHOUT ANY WARRANTY; without even the implied warranty of
-  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-  GNU General Public License for more details.
-  
-  You should have received a copy of the GNU General Public License
-  along with WinPT; if not, write to the Free Software Foundation, 
-  Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
-
- 
 BZIP2 is 
 
   This program, "bzip2", the associated library "libbzip2", and all
@@ -334,3 +316,23 @@ Paperkey
  
   Examples have been taken from David Shaw's README. The license is
   the same as for Paperkey.
+
+
+Scute
+
+  Copyright 2006, 2008 g10 Code GmbH
+
+  Scute is licensed under the GNU General Pubic License, either
+  version 2, or (at your option) any later version with this special
+  exception:
+
+  In addition, as a special exception, g10 Code GmbH gives permission
+  to link this library: with the Mozilla Foundation's code for
+  Mozilla (or with modified versions of it that use the same license
+  as the "Mozilla" code), and distribute the linked executables.  You
+  must obey the GNU General Public License in all respects for all of
+  the code used other than "Mozilla".  If you modify the software, you
+  may extend this exception to your version of the software, but you
+  are not obligated to do so.  If you do not wish to do so, delete this
+  exception statement from your version and from all source files.
+

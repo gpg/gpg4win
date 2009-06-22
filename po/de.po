@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: gpg4win 2.0\n"
 "Report-Msgid-Bugs-To: gpg4win-devel@wald.intevation.org\n"
 "POT-Creation-Date: 2009-06-20 10:50+0200\n"
-"PO-Revision-Date: 2008-11-12 10:39+0100\n"
+"PO-Revision-Date: 2009-06-22 15:29+0200\n"
 "Last-Translator: Werner Koch <wk@g10code.com>\n"
 "Language-Team: German <translation-team-de@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -148,7 +148,7 @@ msgstr "Dokumentation"
 #: src/installer.nsi:252
 msgctxt "DESC_Menu_uninstall"
 msgid "Uninstall"
-msgstr ""
+msgstr "Deinstallieren"
 
 #: src/installer.nsi:256
 msgctxt "DESC_Desktop_manuals"
