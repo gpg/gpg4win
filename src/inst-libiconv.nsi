@@ -29,7 +29,7 @@ Section "libiconv" SEC_libiconv
 !else
 Section "-libiconv" SEC_libiconv
 !endif
-  SetOutPath "$INSTDIR\pub"
+  SetOutPath "$INSTDIR"
 !ifdef SOURCES
   File "${gpg4win_pkg_libiconv_src}"
 !else
@@ -42,6 +42,17 @@ Section "-libiconv" SEC_libiconv
       File /oname=iconv.dll.tmp "${prefix}/bin/iconv.dll"
       Rename /REBOOTOK iconv.dll.tmp iconv.dll
 
+  # Install a copy in pub; this is a bad hack and should be removed ASAP.
+  SetOutPath "$INSTDIR\pub"
+  ClearErrors
+  SetOverwrite try
+  File "${prefix}/bin/iconv.dll"
+  SetOverwrite lastused
+  ifErrors 0 +3
+      File /oname=iconv.dll.tmp "${prefix}/bin/iconv.dll"
+      Rename /REBOOTOK iconv.dll.tmp iconv.dll
+
+  SetOutPath "$INSTDIR"
 
 !ifdef DEBUG
   # We install a couple of binaries that may be useful for testing.

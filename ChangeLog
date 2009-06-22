@@ -1,10 +1,22 @@
+2009-06-22  Werner Koch  <wk@g10code.com>
+
+	* Release 2.0.0.
+
+	* src/gpg4win.mk.in: Remove possible triple make invocation to
+	get again duplicable results.
+
 2009-06-22  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
 	* packages/packages.current: Update kleopatra, kdelibs.
 
 2009-06-22  Werner Koch  <wk@g10code.com>
 
-	Release 2.0.0.
+	* src/inst-libiconv.nsi: Install in stop dir again and keep a copy
+	in pub for now.
+	* src/uninst-libiconv.nsi: Change rules accordingly.
+
+	* src/Makefile.am (versioninfo.txt): Allow for 0 packages which
+	may happen in a make distcheck.
 
 2009-06-22  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 

@@ -449,7 +449,7 @@ common_nsi = inst-sections.nsi installer.nsi installer-finish.nsi	\
 # duplicate entries in case one package has been rebuild (which is
 # common when developing a new version).
 versioninfo.txt:
-	$(SHA1SUM) $(pkg_files) > versioninfo.tmp
+	$(SHA1SUM) $(pkg_files) </dev/null > versioninfo.tmp
 	set -e; \
 	( while read a b; do echo "$$a $$(basename $$b)"; \
             done < versioninfo.tmp \
