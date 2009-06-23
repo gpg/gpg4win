@@ -1,6 +1,8 @@
-2009-06-22  Werner Koch  <wk@g10code.com>
+2009-06-23  Werner Koch  <wk@g10code.com>
 
-	* Release 2.0.0.
+	Release 2.0.0rc1.
+
+2009-06-22  Werner Koch  <wk@g10code.com>
 
 	* src/gpg4win.mk.in: Remove possible triple make invocation to
 	get again duplicable results.
