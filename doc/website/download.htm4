@@ -30,14 +30,15 @@ Gpg4win VERSION here:</p>
   your Gpg4win package.  Then double-click on the file you downloaded and
   follow the instructions on the screen.</p>
 
-<h2>Gpg4win 1.9.16-BETA</h2>
+<h2>Gpg4win 2.0.0-RC1</h2>
 
 <p>You can download a BETA version of the next generation here
 (This release is <b>not recommended for production use</b> and it is highly
 recommended to carefully read the <a href="http://wald.intevation.org/plugins/scmsvn/viewcvs.php/trunk/doc/README-BETA-en.txt?root=gpg4win&view=markup">notes about this BETA release</a> before testing it):
 </p>
 
-<a href="http://ftp.gpg4win.org/Beta/gpg4win-1.9.16-beta.exe" class="dlbutton2">gpg4win&nbsp;1.9.16 BETA<br>
+<a href="http://ftp.gpg4win.org/Beta/gpg4win-2.0.0rc1.exe"
+    class="dlbutton2">gpg4win&nbsp;2.0.0-RC1<br>
 <span class="version">Size: 47 MByte<br></span></a> 
 
 <p>Signatures and source codes can be found here: <a href="http://ftp.gpg4win.org/Beta/">http://ftp.gpg4win.org/Beta/</a>.
@@ -46,14 +47,15 @@ recommended to carefully read the <a href="http://wald.intevation.org/plugins/sc
 Kleopatra and the manuals "Gpg4win Compendium" and "Gpg4win for Novices".</p>
 
 
-<h2>Gpg4win Compendium 3.0.0-BETA1 (german!)</h2>
+<h2>Gpg4win Compendium 3.0.0-BETA2 (german!)</h2>
 
 <p>You can download the first BETA version of Gpg4win compendium as
 PDF version here:</p>
 
-<a href="http://wald.intevation.org/frs/download.php/514/gpg4win-compendium-de-3.0.0-beta1.pdf"
-   class="dlbutton2">gpg4win&nbsp;compendium 3.0.0-BETA1 (german!)<br>
-<span class="version">Size: 3.5 MByte<br></span></a> 
+<a
+    href="http://wald.intevation.org/frs/download.php/606/gpg4win-compendium-de-3.0.0-beta2.pdf"
+   class="dlbutton2">gpg4win&nbsp;compendium 3.0.0-BETA2 (german!)<br>
+<span class="version">Size: 2.3 MByte<br></span></a> 
 HTML version: <a
     href="http://gpg4win.de/handbuecher/gpg4win-compendium-de.html">http://gpg4win.de/handbuecher/gpg4win-compendium-de.html</a>
 

@@ -1,4 +1,10 @@
 2009-06-23  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+
+	* website/download.htm4, website/download-de.htm4,
+	website/template_header.m4 : Updated to 2.0.0-RC1 and 
+	Compendium 3.0.0-BETA2.
+
+2009-06-23  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 	* manual/gpg4win-compendium-de.tex: Minor changes.
 	
 	* manual/Makefile.am, manual/sc-inst-welcome_de.png,
