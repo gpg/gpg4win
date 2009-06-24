@@ -75,6 +75,7 @@ png_files = \
 		sc-pinentry-p12-import-b_de.png\
 		sc-inst-language_de.png\
 		\
+		sc-inst-welcome_de.png\
 		sc-inst-welcome.png sc-inst-license_de.png \
 		sc-inst-components_de.png sc-inst-directory_de.png \
 		sc-inst-options_de.png \

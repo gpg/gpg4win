@@ -1,3 +1,10 @@
+2009-06-23  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+	* manual/gpg4win-compendium-de.tex: Minor changes.
+	
+	* manual/Makefile.am, manual/sc-inst-welcome_de.png,
+	  manual/sc-inst-finished_de.png:
+	  Updateded screenshot.
+
 2009-06-20  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 	* manual/
 	sc-kleopatra-certifyCertificate1_de.png,
