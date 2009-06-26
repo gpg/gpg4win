@@ -428,20 +428,20 @@ chk  3c86381ba5c416c6728ff5b839379cca9208f0c3
 
 server ftp://ftp.kdab.net/pub/gpg4win
 
-name kdesupport-20090612-bin.zip
-file kdesupport-20090612-dbus4win-bin.zip
+name kdesupport-20090612-2-bin.zip
+file kdesupport-20090612-2-dbus4win-bin.zip
 chk 02bc4fab05ccf037daad184c06a13c00d3f0d542
 
-name kdesupport-20090612-dev.zip
-file kdesupport-20090612-dbus4win-dev.zip
+name kdesupport-20090612-2-dev.zip
+file kdesupport-20090612-2-dbus4win-dev.zip
 chk ddc85461dd0e358b6e5289a93c02ac5310491bb8
 
-name kdesupport-20090612-lib.zip
-file kdesupport-20090612-dbus4win-lib.zip
-chk d34c348e569d76dc6311b32d08c183e9832ed06f
+name kdesupport-20090612-2-lib.zip
+file kdesupport-20090612-2-dbus4win-lib.zip
+chk aa636f23978fef3875506ab2232a121b4d7ec9da
 
-name kdesupport-20090612-src.zip
-file kdesupport-20090612-dbus4win-src.zip
+name kdesupport-20090612-2-src.zip
+file kdesupport-20090612-2-dbus4win-src.zip
 chk 2fa67502e00872d5e3ece1682d71383ca8cbf1e0
 
 # oxygen-icons
