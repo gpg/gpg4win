@@ -1,3 +1,12 @@
+2009-06-26  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+
+	* website/download.htm4, website/download-de.htm4:
+	Updated link to current html version of compendium
+
+	* manual/gpg4win-compendium-de.tex, manual/fdl-book.tex:
+	Removed xnames and added new html file name
+	(compendium_de_*.html) for hyperlatex version
+
 2009-06-23  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
 	* website/download.htm4, website/download-de.htm4,

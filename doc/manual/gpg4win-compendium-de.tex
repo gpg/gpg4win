@@ -85,6 +85,8 @@
     \htmltitle{Gpg4win-Kompendium}
     % TOC link in panel
     \htmlpanelfield{Inhalt}{hlxcontents}
+    % name of the html files
+    \htmlname{compendium_de}
     % redefine bmod
     \newcommand{\bmod}{mod}
     % use hlx icons (default path)
@@ -100,7 +102,7 @@
     \html{/small}}
 
     % Changing the formatting of footnotes
-    \renewenvironment{thefootnotes}{\xname{fussnoten}\chapter*{Fußnoten}\begin{description}}{\end{description}}
+    \renewenvironment{thefootnotes}{\chapter*{Fußnoten}\begin{description}}{\end{description}}
 
     % redefine universal url for hyperlatex (details see above)
     \newcommand{\linktext}{0}
@@ -183,7 +185,6 @@ Das Gpg4win-Kompendium}
 
 \maketitle
 
-\xname{impressum}
 \T\section*{Impressum}
 \W\chapter*{Impressum}
 
@@ -230,7 +231,6 @@ sondern für jedermann.
 
 \clearpage
 %% Orginal page 7
-\xname{ueber-dieses-kompendium}
 \chapter*{Über dieses Kompendium \htmlonly{\html{br}\html{br}}}
 
 Das Gpg4win-Kompendium besteht aus drei Teilen:
@@ -289,7 +289,6 @@ Themen rund um Gpg4win, unter anderem zum Outlook-Plugin
 
 \clearpage %% End of original page 4.
 
-\xname{inhalt}
 \tableofcontents
 
 
@@ -298,7 +297,6 @@ Themen rund um Gpg4win, unter anderem zum Outlook-Plugin
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Part I
 \clearpage
-\xname{1-einsteiger}
 \T\part{Für Einsteiger}
 \W\part*{\textbf{I Für Einsteiger}}
 \label{part:Einsteiger}
@@ -307,7 +305,6 @@ Themen rund um Gpg4win, unter anderem zum Outlook-Plugin
 
 
 %% Orginal page 8
-\xname{was-ist-gpg4win}
 \chapter{Was ist Gpg4win?}
 
 \textbf{Das Projekt Gpg4win (GNU Privacy Guard for Windows) ist eine
@@ -380,7 +377,6 @@ des Bundesamtes für Sicherheit in der Informationstechnik.
 
 \clearpage
 %% Original page 6
-\xname{warum-ueberhaupt-verschluesseln}
 \chapter{Warum überhaupt verschlüsseln?}
 \label{ch:why}
 
@@ -478,7 +474,6 @@ Ihnen dieses Vorgehen Schritt für Schritt erläutern...
 
 
 \clearpage
-\xname{zwei-wege-ein-ziel}
 \chapter{Zwei Wege, ein Ziel: OpenPGP \& S/MIME}
 \label{ch:openpgpsmime}
 
@@ -623,7 +618,6 @@ beachten sind.
 
 
 \clearpage
-\xname{sie-installieren-gpg4win}
 %% Orginal page 9
 \chapter{Sie installieren Gpg4win}
 
@@ -853,7 +847,6 @@ weiter.
 
 
 \clearpage
-\xname{sie-erzeugen-ihr-schluesselpaar}
 %% Original page 15
 \chapter{Sie erzeugen Ihr Schlüsselpaar}
 \label{ch:CreateKeyPair}
@@ -1379,7 +1372,6 @@ Informationen benötigen.}
 
 
 \clearpage
-\xname{sie-publizieren-ihr-oeffentliches-zertifikat}
 %% Original page 24
 \chapter{Sie publizieren Ihr öffentliches Zertifikat}
 \label{ch:publishCertificate}
@@ -1734,7 +1726,6 @@ die X.509-Zertifikatsserver jedoch nicht weltweit untereinander.
 
 \clearpage
 %% Original page 31
-\xname{sie-entschluesseln-eine-email}
 \chapter{Sie entschlüsseln eine \Email{}}
 \label{ch:decrypt}
 
@@ -1925,7 +1916,6 @@ entschlüsselte S/MIME \Email{}.
 
 \clearpage
 %% Original page 37
-\xname{sie-importieren-ein-zertifikat}
 \chapter{Sie importieren ein öffentliches Zertifikat}
 \label{ch:importCertificate}
 
@@ -2038,7 +2028,6 @@ Sie danach an dieser Stelle fortfahren.}
 
 \clearpage
 %% Original page 42
-\xname{sie-verschluesseln-eine-email}
 \chapter{Sie verschlüsseln eine \Email{}}
 \label{ch:encrypt}
 
@@ -2198,7 +2187,6 @@ verschlüsselt!}
 
 
 %% Original page 37 & 40
-\xname{sie-signieren-eine-email}
 \chapter{Sie signieren eine \Email{}}
 \label{ch:sign}
 Sie haben in Kapitel~\ref{ch:trust} gelesen, wie Sie sich von der
@@ -2591,7 +2579,6 @@ ganz einfach.
 
 \clearpage
 %% Original page 47
-\xname{wie-sie-ihre-emails-verschluesselt-archivieren}
 \chapter{Wie Sie Ihre \Email{}s verschlüsselt archivieren \htmlonly{\html{br}\html{br}}}
 \label{ch:archive}
 
@@ -2668,7 +2655,6 @@ sondern \textbf{für jedermann.}
 \addtocontents{toc}{\protect\newpage}
 
 \clearpage
-\xname{2-fortgeschrittene}
 \T\part{Für Fortgeschrittene}
 \W\part*{\textbf{II Für Fortgeschrittene}}
 \label{part:Fortgeschrittene}
@@ -2677,7 +2663,6 @@ sondern \textbf{für jedermann.}
 
 \clearpage
 %% Original page 9
-\xname{wie-funktioniert-gpg4win}
 \chapter{Wie funktioniert Gpg4win?}
 \label{ch:FunctionOfGpg4win}
 
@@ -2971,7 +2956,6 @@ wird und sich nur an einem einzigen Ort befindet: dem eigenen Schlüsselbund.
 
 \clearpage
 %% Original page 20
-\xname{die-passphrase}
 \chapter{Die Passphrase}
 \label{ch:passphrase}
 
@@ -3152,7 +3136,6 @@ Passphrase bei der Erzeugung Ihres Schlüsselpaars festzulegen.
 
 \clearpage
 %% Original page 24
-\xname{schluessel-im-detail}
 \chapter{Zertifikat im Detail}
 \label{ch:CertificateDetails}
 
@@ -3231,7 +3214,6 @@ Wie Sie fremde Zertifikate prüfen und beglaubigen und was genau das
 
 \clearpage
 %% Original page 25
-\xname{die-zertifikatsserver}
 \chapter{Die Zertifikatsserver}
 \label{ch:keyserver}
 
@@ -3436,7 +3418,6 @@ Kleopatra den bereits voreingestellten Server
 
 \clearpage
 %% Original page 31
-\xname{die-zertifikatspruefung}
 \chapter{Die Zertifikatsprüfung}
 \label{ch:trust}
 
@@ -3679,7 +3660,6 @@ das Sie ebenfalls im Internet finden%
 
 \clearpage
 %% Original page 43
-\xname{dateianhaenge-verschluesseln}
 \chapter{Dateianhänge verschlüsseln}
 
 Wenn Sie eine verschlüsselte \Email{} versenden und
@@ -3705,7 +3685,6 @@ hinaus, das in Kapitel~\ref{ch:EncFiles} beschrieben ist.
 
 
 \clearpage
-\xname{dateien-signieren-und-verschluesseln}
 \chapter{Dateien signieren und verschlüsseln}
 \label{ch:EncFiles}
 
@@ -4069,7 +4048,6 @@ derzeit nur mit OpenPGP möglich.
 
 \clearpage
 %% Original page 45
-\xname{im-und-export-eines-geheimen-schluessels}
 \chapter{Im- und Export eines geheimen Schlüssels}
 \label{ch:ImExport}
 
@@ -4204,7 +4182,6 @@ wieder importiert.}
 
 
 \clearpage
-\xname{systemweite-konfiguration-und-vorbelegungen-fuer-smime}
 \chapter{Systemweite Konfigurationen und Vorbelegungen für S/MIME}
 \T\margin{\IncludeImage[width=1.5cm]{smime-icon}}
 \T\enlargethispage{\baselineskip}
@@ -4277,7 +4254,6 @@ Einige typische systemweite Einstellungen sind:
 
 
 \clearpage
-\xname{bekannte-probleme-und-was-man-tun-kann}
 \chapter{Bekannte Probleme und was man tun kann}
 
 \section{GpgOL Menüs und Dialoge nicht mehr in Outlook zu finden}
@@ -4399,7 +4375,6 @@ In der Liste finden Sie ,,DirMngr'' --
 
 
 \clearpage
-\xname{wo-finde-ich-die-dateien-und-einstellungen-von-gpg4win}
 \chapter{Wo finde ich die Dateien und Einstellungen von Gpg4win?}
 
 \section{Persönliche Einstellungen der Anwender}
@@ -4565,7 +4540,6 @@ Beachten Sie, dass der gpg-agent ggf. neu gestartet werden muss
 (z.B. durch ausloggen und wieder einloggen).
 
 \clearpage
-\xname{fehler-in-den-gpg4win-programmen-aufspueren}
 \chapter{Probleme in den Gpg4win-Programmen aufspüren}
 
 Es kann vorkommen, dass eine der Gpg4win-Programmkomponenten
@@ -4765,7 +4739,6 @@ loggen sich aus und melden sich neu an Ihrem Windows-System an).
 
 \clearpage
 %% Original page 49
-\xname{warum-gpg4win-nicht-zu-knacken-ist}
 \chapter{Warum Gpg4win nicht zu knacken ist~$\ldots$}
 \label{ch:themath}
 
@@ -4800,7 +4773,6 @@ Hier beginnt also sozusagen die Kür nach dem Pflichtteil:
 
 \clearpage
 %% Original page 50
-\xname{gnupg-und-das-geheimnis-der-grossen-zahlen}
 \chapter{GnuPG und das Geheimnis der großen Zahlen \htmlonly{\html{p}} }
 \label{ch:secretGnupg}
 
@@ -5693,13 +5665,11 @@ dass er dann keine Lust mehr haben dürfte diese auch noch zu lesen\ldots
 % page break in toc
 %\addtocontents{toc}{\protect\newpage}
 
-\xname{3-anhang}
 \appendix
 \T\part{Anhang}
 \W\part*{\textbf{III Anhang}}
 \addtocontents{toc}{\protect\vspace{0.3cm}}
 
-%\xname{glossar}
 %\T\chapter{Glossar}
 %\W\chapter*{A Glossar}
 %\label{glossar}
@@ -5711,7 +5681,6 @@ dass er dann keine Lust mehr haben dürfte diese auch noch zu lesen\ldots
 
 
 
-\xname{hinweise-zu-gpgol}
 \T\chapter{Hinweise zur Outlook-Programmerweiterung GpgOL}
 \W\chapter*{A Hinweise zur Outlook-Programmerweiterung GpgOL}
 \label{appendix:gpgol}
@@ -5817,7 +5786,6 @@ gehen.
 
 
 \clearpage
-\xname{gnupg-mit-anderen-email-programme-nutzen}
 \T\chapter{GnuPG mit anderen \Email{}-Programme nutzen}
 \W\chapter*{B GnuPG mit anderen \Email{}-Programme nutzen}
 \label{ch:plugins}
@@ -5862,7 +5830,6 @@ Ein Integration in GnuPG wird derzeit für folgende
 
 
 \clearpage
-\xname{automatische-installation-von-gpg4win}
 \T\chapter{Automatische Installation von Gpg4win}
 \W\chapter*{C Automatische Installation von Gpg4win}
 \label{ch:auto}
@@ -5954,7 +5921,6 @@ Steuerungsdatei \verb-gpg4win.ini- und einem Installationspfad
 \end{verbatim}
 
 \clearpage
-\xname{umstieg-von-anderen-programmen}
 \T\chapter{Umstieg von anderen Programmen}
 \W\chapter*{D Umstieg von anderen Programmen}
 \label{ch:migration}
@@ -6043,7 +6009,6 @@ mehr auf dem System vorhanden).
 
 
 \clearpage
-\xname{deinstallation-von-gpg4win}
 \T\chapter{Deinstallation von Gpg4win}
 \W\chapter*{E Deinstallation von Gpg4win}
 
@@ -6157,7 +6122,6 @@ Dateiordner bzw. Registryschlüssel zurück:
 
 
 \clearpage
-\xname{history}
 \T\chapter{Historie}
 \W\chapter*{F Historie}
 
