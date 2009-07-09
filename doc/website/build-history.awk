@@ -62,7 +62,7 @@ BEGIN {
     "m4_define(`DE_FILE', `change-history-de.html')\n" \
     "PAGE_START\n" \
     "<h1>Change History of Gpg4win</h1>\n" \
-    "<p>Please note that old release still contain meanwhile fixed\n" \
+    "<p>Please note that old releases still contain meanwhile fixed\n" \
     "security issues.</p>\n" ;
 
   header_text["de"] = "" \
