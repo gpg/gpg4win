@@ -45,6 +45,9 @@ EXTRA_DIST = autogen.sh README.SVN \
 	patches/gnupg2-2.0.9/05-w32-http.patch \
 	patches/gnupg2-2.0.12/01-scd-pw2.patch \
 	patches/gnupg2-2.0.12/02-pth-estream.patch \
+	patches/gnupg2-2.0.12/03-opgp-writekey.patch \
+	patches/gnupg2-2.0.12/04-hash-prefs.patch \
+	patches/gnupg2-2.0.12/05-dns-sd.patch \
 	patches/gpgol-0.9.91/01-gpgme.patch \
 	patches/claws-mail-3.7.1/01-fix-spaces-after-re.patch \
 	patches/claws-mail-3.7.1/02-3.7.1cvs22.patch \

@@ -1,3 +1,10 @@
+2009-07-09  Werner Koch  <wk@g10code.com>
+
+	* patches/gnupg2-2.0.12/03-opgp-writekey.patch: New.
+	* patches/gnupg2-2.0.12/04-hash-prefs.patch: New.
+	* patches/gnupg2-2.0.12/05-dns-sd.patch: New.
+	* Makefile.am (EXTRA_DIST): Add them.
+	
 2009-06-26  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
 	* packages/packages.current: Update kdesupport.
