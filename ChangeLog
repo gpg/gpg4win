@@ -1,3 +1,7 @@
+2009-07-10  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+
+	* packages/packages.current: Update kdesupport.
+
 2009-07-09  Werner Koch  <wk@g10code.com>
 
 	* patches/gnupg2-2.0.12/03-opgp-writekey.patch: New.
