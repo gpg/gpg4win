@@ -8,13 +8,14 @@ m4_define(`DE_FILE', `index-de.html')
 PAGE_START
 <h2>New User?</h2>
 
-Gpg4win is a installer package for Windows (2000/XP/2003/Vista)
-with computer programs and handbooks for EMail and file encryption.
-Both relevant cryptography standards are supported, OpenPGP and S/MIME
-(the latter is in progress and currently works with GnuPG2 and Claws Mail).
+Gpg4win is a installer package for Windows (2000/XP/2003/Vista) with
+computer programs and handbooks for EMail and file encryption.  Both
+relevant cryptography standards are supported, OpenPGP and S/MIME (the
+latter is in progress and currently works with GnuPG2 and Claws Mail).
 Gpg4win and the software included with Gpg4win
 are <a href="http://www.fsf.org/licensing/essays/free-sw.html">Free
-Software</a>.
+Software</a> (among other things free of charge for all commercial and
+non-commercial purposes).
 
 <p>
 You can <b>choose all or some of the following modules</b> during installation:
