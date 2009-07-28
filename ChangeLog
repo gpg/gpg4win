@@ -1,3 +1,14 @@
+2009-07-28  Colin Leroy  <colin@colino.net>
+
+	* patches/libetpan-0.54: Removed
+	* patches/claws-mail-3.7.0: Removed
+	* patches/claws-mail-3.7.1: Removed
+	* patches/libetpan-0.57/01-gnutls_compat.patch: New. Fixes
+	connection to some non-compliant servers
+	* Makefile.am: Reflect patches/ changes
+	* packages/packages.current: Update Claws Mail and its
+	plugins
+
 2009-07-17  Marcus Brinkmann  <marcus@g10code.de>
 
 	* patches/gpgex-0.9.3/01-full-browser.patch: New file.

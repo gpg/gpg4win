@@ -33,8 +33,6 @@ EXTRA_DIST = autogen.sh README.SVN \
 	patches/gpgme-1.1.7/02-extern-umlaute.patch \
 	patches/gpgme-1.1.7/03-error-parsing.patch \
         patches/gpgme-1.2.0/01-w32-io-threads.patch \
-	patches/libetpan-0.54/01-config.patch \
-	patches/libetpan-0.54/02-index.patch \
 	patches/winpt/01-gpg-path.patch \
 	patches/gpgex/01-no-checksums.patch \
 	patches/gpgex-0.9.3/01-full-browser.patch \
@@ -52,10 +50,8 @@ EXTRA_DIST = autogen.sh README.SVN \
         patches/gnupg2-2.0.12/06-opgp-sign3072.patch \
         patches/gnupg2-2.0.12/07-gpg-no-detached.patch \
 	patches/gpgol-0.9.91/01-gpgme.patch \
-	patches/claws-mail-3.7.1/01-fix-spaces-after-re.patch \
-	patches/claws-mail-3.7.1/02-3.7.1cvs22.patch \
-        patches/claws-mail-3.7.1/03-pipe.patch \
         patches/gpa-0.9.0/01-title-prop.patch \
+	patches/libetpan-0.57/01-gnutls_compat.patch \
         patches/scute-1.2.0/01-bugfixes.patch
 
 copy-news:
