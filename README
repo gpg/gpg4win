@@ -111,6 +111,27 @@ Then run the usual "./autogen.sh" to create the actual configure file
 and run configure as described above.
 
 
+Version numbers
+===============
+
+We use a specific order of version numbers.  This is best shown by an
+example:
+
+  1.0.0             - The final 1.0.0 release. 
+  1.0.1-svn1234     - A snapshot based on SVN revision 1234
+  1.0.1-svn1235     - A newer snapshot
+  1.0.1rc1-svn1236  - A snapshot while preparing for a release candidate
+  1.0.1rc1          - The first release candidate for 1.0.1
+  1.0.1-svn1240     - yet another snapshot
+  1.0.1             - The final 1.0.1 release
+
+The important point is that we bump up the version number before we do
+an release and append a suffix to mark it as a development version.
+This allows other software to use a configure check for the next to be
+released version of gpg4win.
+
+
+
 Copyright
 =========
 
