@@ -1,3 +1,7 @@
+2009-07-30  Werner Koch  <wk@g10code.com>
+
+	* patches/gnupg2-2.0.12/08-sm-learn-card.patch: New.
+
 2009-07-29  Colin Leroy  <colin@colino.net>
 
 	* packages/packages.current: Update Claws Mail (focus
