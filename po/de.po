@@ -174,7 +174,7 @@ msgstr "Bitte wählen Sie, welche Verknüpfungen angelegt werden sollen:"
 msgctxt "T_InstOptLabelB"
 msgid "(Only programs will be linked into the quick launch bar.)"
 msgstr ""
-"(In die Schnellstartleiste werden nur Verknüpfungen für Programme angelegt.)"
+"(In der Schnellstartleiste werden nur Verknüpfungen für Programme angelegt.)"
 
 #: src/installer.nsi:471
 msgctxt "T_InstOptFieldA"
