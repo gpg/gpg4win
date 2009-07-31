@@ -50,6 +50,7 @@ EXTRA_DIST = autogen.sh README.SVN \
         patches/gnupg2-2.0.12/06-opgp-sign3072.patch \
         patches/gnupg2-2.0.12/07-gpg-no-detached.patch \
         patches/gnupg2-2.0.12/08-sm-learn-card.patch \
+	patches/gnupg2-2.0.12/09-sm-keylist.patch \
 	patches/gpgol-0.9.91/01-gpgme.patch \
         patches/gpa-0.9.0/01-title-prop.patch \
 	patches/libetpan-0.57/01-gnutls_compat.patch \

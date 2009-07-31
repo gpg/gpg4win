@@ -1,6 +1,6 @@
 #! /usr/bin/perl -w
 # make-msi.pl - MSI Installer for GnuPG 4 Windows.
-# Copyright (C) 2007 g10 Code GmbH
+# Copyright (C) 2007, 2008 g10 Code GmbH
 # 
 # This file is part of Gpg4win.
 # 
@@ -1591,11 +1591,23 @@ dump_all2 ($parser);
 # Removed this, because it is not localized:
 #    <UIRef Id='WixUI_ErrorProgressText' />
 
+# We could do this, but we how to select on language?
+# Probably some conditional can be used.
+#    <CustomAction Id="ShowReadMe" BinaryKey="WixCA" DllEntry="WixShellExec"
+#                  Execute="immediate" Return="check" Impersonate="yes" />
+#    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" Value="Show README" />
+#    <Property Id="WixShellExecTarget" Value="[#f_Kontact_0]" />
+#    <UI>
+#      <Publish Dialog="ExitDialog" Control="Finish" Event="DoAction"
+#               Value="ShowReadMe"
+#               Order="1">WIXUI_EXITDIALOGOPTIONALCHECKBOX</Publish>
+#    </UI>
+
 print <<EOF;
     </Feature>
 
     <WixVariable Id='WixUILicenseRtf' Value='gpl.rtf'/>
-    <UIRef Id='WixUI_Mondo' />
+    <UIRef Id='WixUI_Gpg4Win' />
 
   </Product>
 </Wix>
