@@ -1,3 +1,9 @@
+2009-08-03  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+
+	* src/uninst-kleopatra.nsi, src/inst-kleopatra.nsi:
+	  Add smarcard icon and kleopatra handbook (HTML).
+	* packages/packages.current: Update kleopatra and kdelibs.
+
 2009-07-31  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
 	* po/de.po: Fix typo in german installer.
