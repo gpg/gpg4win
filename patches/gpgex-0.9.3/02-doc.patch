@@ -1,0 +1,133 @@
+#! /bin/sh
+patch -p0 -f $* < $0
+exit $?
+
+
+Index: doc/gpgex-de.html
+===================================================================
+--- doc/gpgex-de.html	(revision 69)
++++ doc/gpgex-de.html	(working copy)
+@@ -15,15 +15,15 @@
+       Kleopatra über die Kontext-Menüs von Dateien aufzurufen.
+     </p>
+     <h2>Befehle</h2>
+-    <h3>Entschlüsseln und verifizieren, Entschlüsseln, Verifizieren</h3>
++    <h3>Entschlüsseln und überprüfen, Entschlüsseln, Überprüfen</h3>
+     <p>
+-      Entschlüsselt und/oder verifiziert die ausgewählten Dateien.
++      Entschlüsselt und/oder überprüft die ausgewählten Dateien.
+       FIXME: Hier wird ein Link zur Kleopatra-Dokumentation für die
+       Entschlüssel- und Verifizier-Funktionen eingestellt.
+     </p>
+-    <h3>Verschlüsseln und signieren, Verschlüsseln, Signieren</h3>
++    <h3>Signieren und verschlüsseln, Signieren, Verschlüsseln</h3>
+     <p>
+-      Verschlüsselt und/oder signiert die ausgewählten Dateien.
++      Signiert und/oder verschlüsselt die ausgewählten Dateien.
+       FIXME: Hier wird ein Link zur Kleopatra-Dokumentation für die
+       Verschlüssel- und Signier-Funktionen eingestellt.
+     </p>
+@@ -33,18 +33,6 @@
+       wird ein Link zur Kleopatra-Dokumentation für die
+       Import-Funktion eingestellt.
+     <p>
+-    <h3>Prüfsummen erstellen</h3>
+-    <p>
+-      Erstellt Prüfsummen für die ausgewählten Dateien.  FIXME: Hier
+-      wird ein Link zur Kleopatra-Dokumentation für die Funktionen zur
+-      Erstellung von Prüfsummen eingestellt.
+-    </p>
+-    <h3>Prüfsummen verifizieren</h3>
+-    <p>
+-      Verifiziert die Prüfsummen für die ausgewählten Dateien.  FIXME:
+-      Hier wird ein Link zur Kleopatra-Dokumentation für die Funktion
+-      zur Verifikation von Prüfsummen eingestellt.
+-    </p>
+     <h3>Hilfe zu GpgEX</h3>
+     <p>
+       Stellt diese Hilfe dar.
+@@ -54,16 +42,24 @@
+       Falls nicht auf Kleopatra zugegriffen werden kann, wird ein
+       Nachrichtenfenster mit einer Fehlermeldung angezeigt.  Um mehr
+       Informationen zu erhalten, kann der Fehlerbericht von Kleopatra
+-      eingesehen werden, oder es kann eine Debug Datei im Registry Eintrag
+-      <code>GpgEX Debug File</code> zum Schlüssel
+-      <code>HKLM\Software\GNU\GnuPG</code> angegeben werden.
+-      Informationen zum Protokoll werden dann ggf. nach einem Neustart
+-      an diese Datei angehangen.
++      eingesehen werden (Anleitung siehe Gpg4win-Kompendium), 
++      oder es kann eine GpgEX-Diagnosedatei angegeben werden. Dazu
++      im Registrierungs-Editor den Schlüssel
++      <code><acronym title="HKEY_LOCAL_MACHINE">HKLM</acronym>\Software\GNU\GnuPG</code>
++      auswählen, eine neue "Zeichenfolge" mit dem Namen <code>GpgEX Debug File</code> 
++      anlegen und als Wert einen Dateinamen (z.B. <code>c:\temp\gpgex-debug-file.log</code>)
++      angeben. Informationen zum Protokoll werden dann nach
++      einem Neustart von Windows an diese Datei angehangen.
+     </p>
+-    <h2>Verweise</h2>
++    <h2>Hinweis</h2>
+     <p>
+-      Mehr Informationen und aktuelle Versionen sind auf der 
+-      <a href="http://www.gpg4win.org/">Gpg4win Webpräsenz</a>
++      Mehr Informationen über die Krypto-Operationen befinden sich im
++      <a href="../HTML/en/kleopatra/index.html">Kleopatra Handbuch</a>
++      (Englisch).
++    </p>
++    <p>
++      Mehr Informationen und aktuelle Programmversionen sind auf der 
++      <a href="http://www.gpg4win.de">Gpg4win Webpräsenz</a>
+       verfügbar.
+     </p>
+   </body>
+Index: doc/gpgex-en.html
+===================================================================
+--- doc/gpgex-en.html	(revision 69)
++++ doc/gpgex-en.html	(working copy)
+@@ -32,18 +32,6 @@
+       Import certificates in the selected files.  FIXME: Here will be
+       a link to the Kleopatra documentation for the import function.
+     <p>
+-    <h3>Create checksums</h3>
+-    <p>
+-      Create checksums for the selected files.  FIXME: Here will be a
+-      link to the Kleopatra documentation for the create checksum
+-      function.
+-    </p>
+-    <h3>Verify checksums</h3>
+-    <p>
+-      Verify the checksums for the selected files.  FIXME: Here will
+-      be a link to the Kleopatra documentation for the verify checksum
+-      function.
+-    </p>
+     <h3>Help on GpgEX</h3>
+     <p>
+       Display this help.
+@@ -52,15 +40,21 @@
+     <p>
+       If Kleopatra can not be accessed, a message box with an error
+       message will be displayed.  To get more information, you can
+-      either check the error log of Kleopatra, or specify a debug file
+-      with the registry value <code>GpgEX Debug File</code> in the key
+-      <code>HKLM\Software\GNU\GnuPG</code>.  To this file logging
+-      information is appended, after a restart if necessary.
++      either check the error log of Kleopatra, or specify a debug
++      file: Select the key <code><acronym title="HKEY_LOCAL_MACHINE">HKLM</acronym>\Software\GNU\GnuPG</code>
++      in the registry editor, create a new string value with the name
++      <code>GpgEX Debug File</code> and the value of the debug filename
++      (e.g. <code>c:\temp\gpgex-debug-file.log</code>).  To this file
++      logging information is appended, after a restart if necessary.
+     </p>
+-    <h2>References</h2>
++    <h2>Reference</h2>
+     <p>
+-      Please find more information and new versions at
+-      the <a href="http://www.gpg4win.org/">Gpg4win web-site</a>.
++      More information about these crypto operations can be found in
++      the <a href="../HTML/en/kleopatra/index.html">Kleopatra
++      manual</a>.
++
++      Please find more information and new software versions at
++      the <a href="http://www.gpg4win.org/">Gpg4win website</a>.
+     </p>
+   </body>
+ </html>

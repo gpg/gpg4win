@@ -132,5 +132,12 @@ Section "-qt" SEC_qt
 #  File ${prefix}/translations/qvfb_zh_CN.qm
 #  File ${prefix}/translations/qvfb_zh_TW.qm
 
+  # FIXME: From the lib package.  This is wrong.
+!undef prefix
+!define prefix ${ipdir}/qt-dev-${gpg4win_pkg_qt_version}
+
+  SetOutPath "$INSTDIR"
+  File ${prefix}/bin/qdbus.exe
+
 !endif
 SectionEnd

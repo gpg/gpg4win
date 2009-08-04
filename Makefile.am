@@ -36,6 +36,7 @@ EXTRA_DIST = autogen.sh README.SVN \
 	patches/winpt/01-gpg-path.patch \
 	patches/gpgex/01-no-checksums.patch \
 	patches/gpgex-0.9.3/01-full-browser.patch \
+	patches/gpgex-0.9.3/02-doc.patch \
 	patches/gnupg2/01-version.patch.in \
 	patches/gnupg2-2.0.9/01-close-all-handle.patch \
 	patches/gnupg2-2.0.9/02-de.po-fix.patch \

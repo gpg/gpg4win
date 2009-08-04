@@ -33,6 +33,8 @@ Section "-un.qt"
   Delete "$INSTDIR\mingwm10.dll"
   Delete "$INSTDIR\qt.conf"
 
+  Delete "$INSTDIR\qdbus.exe"
+
   Delete "$INSTDIR\Qt3Support4.dll"
   Delete "$INSTDIR\QtCore4.dll"
   Delete "$INSTDIR\QtDBus4.dll"

@@ -30,6 +30,9 @@ Section "-un.kleopatra"
   Push "${gpg4win_pkg_kleopatra_src}"
   Call un.SourceDelete
 !else
+  # Try to terminate kleopatra.
+  ExecWait '"$INSTDIR\qdbus.exe" org.kde.kleopatra /MainApplication quit'
+  Sleep 1000
 
   # FIXME: See inst-kleopatra.nsi
   Delete "$INSTDIR\bin\kleopatra.exe"
@@ -76,6 +79,7 @@ Section "-un.kleopatra"
   Delete "$INSTDIR\share\doc\HTML\en\kleopatra\common\favicon.ico"
   Delete "$INSTDIR\share\doc\HTML\en\kleopatra\common\fdl-license"
   Delete "$INSTDIR\share\doc\HTML\en\kleopatra\common\fdl-license.html"
+  Delete "$INSTDIR\share\doc\HTML\en\kleopatra\common\fdl-notice.html"
   Delete "$INSTDIR\share\doc\HTML\en\kleopatra\common\flat.css"
   Delete "$INSTDIR\share\doc\HTML\en\kleopatra\common\footer.html"
   Delete "$INSTDIR\share\doc\HTML\en\kleopatra\common\gpl-license"
@@ -124,6 +128,7 @@ Section "-un.kleopatra"
   Delete "$INSTDIR\share\doc\HTML\en\kleopatra\menusettings.html"
   Delete "$INSTDIR\share\doc\HTML\en\kleopatra\menutools.html"
   Delete "$INSTDIR\share\doc\HTML\en\kleopatra\menuwindow.html"
+  Delete "$INSTDIR\share\doc\HTML\en\kleopatra\menuview.html"
 
   RMDir "$INSTDIR\share\doc\HTML\en\kleopatra"
   RMDir "$INSTDIR\share\doc\HTML\en"
