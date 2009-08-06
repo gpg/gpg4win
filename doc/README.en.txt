@@ -7,17 +7,16 @@
                    English README file for Gpg4win
                    ===============================
 
-This is GnuPG for Windows, vesion !VERSION!.
+This is GnuPG for Windows, version !VERSION!.
 
 Content:
 
      1. Important notes
-     2. Changes
-     3. Version numbers 
-     4. Installer options
-     5. Legal notices 
-
-
+     2. Known bugs
+     3. Changes
+     4. Version numbers 
+     5. Installer options
+     6. Legal notices 
 
 
 1. Important Notes
@@ -27,22 +26,65 @@ Manuals describing the installation of Gpg4win are currently only
 available in German.  Check out http://www/gpg4win.org for latest
 news.
 
+If you used an older version of Gpg4win in the past, please check
+out the migration hints in the Gpg4win Compendium's appendix.
+
+
+2. Known Bugs
+=============
+
+  * Kleopatra is still under development: Some functionalities for
+    OpenPGP are still missing.  You can use GPA for the missing
+    functionality.
 
 
 
-2. Record of Changes (NEWS file)
-================================
+3. Changes
+==========
 
-An up-to-date list of changes is also available at
-http://www.gpg4win.de/change-history.html .  Below you find the raw
-NEWS file:
+Gpg4win/2 has major changes compared to Gpg4win 1.x.  Below is a list
+of the most important ones:
+
+- Kleopatra is the new certificate manager.  Kleopatra is the S/MIME
+  certificate manager of KDE (a desktop environment used on many
+  GNU/Linux systems).  For use in Gpg4win it has been extended to
+  support OpenPGP and to act as a graphical user interface for all
+  cryptographic operations.  It is automagically started if another
+  component requests its services and then runs permanently in your
+  system tray.  WinPT has been dropped.
+
+- GpgEX is the new plugin for the Explorer and replaces GpgEE.
+
+- The mail program Claws Mail has been updated to a modern version.
+  It now supports SSL, NNTP and IMAP.
+
+- GpgOL, the plugin for Outlook 2003 and 2007 has been comprehensively
+  updated.  It now supports PGP/MIME and thus makes the use of
+  encrypted or signed attachments much easier and standard conform.
+  Support for S/MIME has been added.  Most dialogs are now provided by
+  Kleopatra for graphical user dialogs.
+
+- The German Gpg4win Kompendium is the new documentation for Gpg4win.
+  This combines the previous "Einsteiger" and "Durchblicker" manuals.
+  All chapters were reworked and extended to describe the new Gpg4win
+  Version 2.0.  Among other things, this means adaption to Kleopatra,
+  GpgEX and PGP/MIME and new texts for S/MIME and X.509.
+
+
+3.1 Version history
+-------------------
+
+Find below the changes as recorded in the source distribution's NEWS
+file.  An up-to-date list of changes is also available at
+http://www.gpg4win.de/change-history.html .
+
 
 !NEWSFILE!
 
 
 
 
-3. Version Numbers of Included Software
+4. Version Numbers of Included Software
 =======================================
 
 !VERSIONINFO!
@@ -50,7 +92,7 @@ NEWS file:
 
 
 
-4. Installer Options
+5. Installer Options
 ====================
 
 The default installation path can be speficied with the /D=PATH
@@ -113,7 +155,7 @@ installation of short cuts are currently not supported through the MSI
 installer.
 
 
-5. Legal notices pertaining to the individual packets
+6. Legal notices pertaining to the individual packets
 =====================================================
 
 Gpg4win consist of several independent developed packages, available

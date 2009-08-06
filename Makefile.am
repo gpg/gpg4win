@@ -22,7 +22,7 @@ DISTCHECK_CONFIGURE_FLAGS = --host=i586-mingw32msvc --disable-pkg-man_advanced_e
 
 SUBDIRS = po packages include doc src
 
-EXTRA_DIST = autogen.sh README.SVN \
+EXTRA_DIST = autogen.sh README.SVN ONEWS \
         patches/pthreads-w32-2-7-0-release/01-make.patch \
         patches/glib-2.12.12/01-giowin32.patch \
         patches/glib-2.12.12/02-gspawn-w32.patch \
