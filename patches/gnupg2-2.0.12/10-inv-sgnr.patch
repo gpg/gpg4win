@@ -1,0 +1,355 @@
+#! /bin/sh
+patch -p0 -f $* < $0
+exit $?
+
+[sm]
+2009-08-06  Werner Koch  <wk@g10code.com>
+
+	* sign.c (gpgsm_sign): Print INV_SNDR for a bad default key.
+
+	* server.c (cmd_signer): Remove unneeded case for -1.  Send
+	INV_SGNR.  Use new map function.
+	(cmd_recipient): Use new map function.
+	* gpgsm.c (do_add_recipient): Use new map function for INV_RECP.
+	(main): Ditto.  Also send INV_SGNR.
+
+[g10]
+2009-08-06  Werner Koch  <wk@g10code.com>
+
+	* skclist.c (build_sk_list): Print INV_SGNR status line.
+	* seckey-cert.c (do_check): Return G10ERR_UNU_SECKEY instead of
+	general error.
+
+[common]
+2009-08-06  Werner Koch  <wk@g10code.com>
+
+	* status.h (STATUS_INV_SGNR, STATUS_NO_SGNR): New.
+	* status.c (get_inv_recpsgnr_code): New.
+
+
+Index: sm/sign.c
+===================================================================
+--- sm/sign.c	(revision 5105)
++++ sm/sign.c	(working copy)
+@@ -372,6 +372,8 @@
+       if (!cert)
+         {
+           log_error ("no default signer found\n");
++          gpgsm_status2 (ctrl, STATUS_INV_SGNR, 
++                         get_inv_recpsgnr_code (GPG_ERR_NO_SECKEY), NULL);
+           rc = gpg_error (GPG_ERR_GENERAL);
+           goto leave;
+         }
+@@ -382,8 +384,16 @@
+       if (!rc)
+         rc = gpgsm_validate_chain (ctrl, cert, "", NULL, 0, NULL, 0, NULL);
+       if (rc)
+-        goto leave;
++        {
++          char *tmpfpr;
+ 
++          tmpfpr = gpgsm_get_fingerprint_hexstring (cert, 0);
++          gpgsm_status2 (ctrl, STATUS_INV_SGNR, 
++                         get_inv_recpsgnr_code (rc), tmpfpr, NULL);
++          xfree (tmpfpr);
++          goto leave;
++        }
++
+       /* That one is fine - create signerlist. */
+       signerlist = xtrycalloc (1, sizeof *signerlist);
+       if (!signerlist)
+Index: sm/server.c
+===================================================================
+--- sm/server.c	(revision 5105)
++++ sm/server.c	(working copy)
+@@ -384,20 +384,8 @@
+                                 &ctrl->server_local->recplist, 0);
+   if (rc)
+     {
+-      gpg_err_code_t r = gpg_err_code (rc);
+       gpgsm_status2 (ctrl, STATUS_INV_RECP,
+-                   r == -1? "1":
+-                   r == GPG_ERR_NO_PUBKEY?       "1":
+-                   r == GPG_ERR_AMBIGUOUS_NAME?  "2":
+-                   r == GPG_ERR_WRONG_KEY_USAGE? "3":
+-                   r == GPG_ERR_CERT_REVOKED?    "4":
+-                   r == GPG_ERR_CERT_EXPIRED?    "5":
+-                   r == GPG_ERR_NO_CRL_KNOWN?    "6":
+-                   r == GPG_ERR_CRL_TOO_OLD?     "7":
+-                   r == GPG_ERR_NO_POLICY_MATCH? "8":
+-                   r == GPG_ERR_MISSING_CERT?   "11":
+-                   "0",
+-                   line, NULL);
++                     get_inv_recpsgnr_code (rc), line, NULL);
+     }
+ 
+   return rc;
+@@ -415,10 +403,7 @@
+   has to take care of this.  All SIGNER commands are cumulative until
+   a RESET but they are *not* reset by an SIGN command becuase it can
+   be expected that set of signers are used for more than one sign
+-  operation.  
+-
+-  Note that this command returns an INV_RECP status which is a bit
+-  strange, but they are very similar.  */
++  operation.  */
+ static int 
+ cmd_signer (assuan_context_t ctx, char *line)
+ {
+@@ -429,21 +414,12 @@
+                               &ctrl->server_local->signerlist, 0);
+   if (rc)
+     {
+-      gpg_err_code_t r = gpg_err_code (rc);
+-      gpgsm_status2 (ctrl, STATUS_INV_RECP,
+-                   r == -1?                          "1":
+-                   r == GPG_ERR_NO_PUBKEY?           "1":
+-                   r == GPG_ERR_AMBIGUOUS_NAME?      "2":
+-                   r == GPG_ERR_WRONG_KEY_USAGE?     "3":
+-                   r == GPG_ERR_CERT_REVOKED?        "4":
+-                   r == GPG_ERR_CERT_EXPIRED?        "5":
+-                   r == GPG_ERR_NO_CRL_KNOWN?        "6":
+-                   r == GPG_ERR_CRL_TOO_OLD?         "7":
+-                   r == GPG_ERR_NO_POLICY_MATCH?     "8":
+-                   r == GPG_ERR_NO_SECKEY?           "9":
+-                   r == GPG_ERR_MISSING_CERT?       "11":
+-                   "0",
+-                  line, NULL);
++      gpgsm_status2 (ctrl, STATUS_INV_SGNR, 
++                     get_inv_recpsgnr_code (rc), line, NULL);
++      /* For compatibiliy reasons we also issue the old code after the
++         new one.  */
++      gpgsm_status2 (ctrl, STATUS_INV_RECP, 
++                     get_inv_recpsgnr_code (rc), line, NULL);
+     }
+   return rc;
+ }
+Index: sm/gpgsm.c
+===================================================================
+--- sm/gpgsm.c	(revision 5105)
++++ sm/gpgsm.c	(working copy)
+@@ -704,17 +704,7 @@
+         {
+           log_error ("can't encrypt to `%s': %s\n", name, gpg_strerror (rc));
+           gpgsm_status2 (ctrl, STATUS_INV_RECP,
+-                     gpg_err_code (rc) == -1?                         "1":
+-                     gpg_err_code (rc) == GPG_ERR_NO_PUBKEY?          "1":
+-                     gpg_err_code (rc) == GPG_ERR_AMBIGUOUS_NAME?     "2":
+-                     gpg_err_code (rc) == GPG_ERR_WRONG_KEY_USAGE?    "3":
+-                     gpg_err_code (rc) == GPG_ERR_CERT_REVOKED?       "4":
+-                     gpg_err_code (rc) == GPG_ERR_CERT_EXPIRED?       "5":
+-                     gpg_err_code (rc) == GPG_ERR_NO_CRL_KNOWN?       "6":
+-                     gpg_err_code (rc) == GPG_ERR_CRL_TOO_OLD?        "7":
+-                     gpg_err_code (rc) == GPG_ERR_NO_POLICY_MATCH?    "8":
+-                     "0",
+-                     name, NULL);
++                         get_inv_recpsgnr_code (rc), name, NULL);
+         }
+       else
+         log_info (_("NOTE: won't be able to encrypt to `%s': %s\n"),
+@@ -1570,19 +1560,10 @@
+             {
+               log_error (_("can't sign using `%s': %s\n"),
+                          sl->d, gpg_strerror (rc));
++              gpgsm_status2 (&ctrl, STATUS_INV_SGNR,
++                             get_inv_recpsgnr_code (rc), sl->d, NULL);
+               gpgsm_status2 (&ctrl, STATUS_INV_RECP,
+-                         gpg_err_code (rc) == -1?                      "1":
+-                         gpg_err_code (rc) == GPG_ERR_NO_PUBKEY?       "1":
+-                         gpg_err_code (rc) == GPG_ERR_AMBIGUOUS_NAME?  "2":
+-                         gpg_err_code (rc) == GPG_ERR_WRONG_KEY_USAGE? "3":
+-                         gpg_err_code (rc) == GPG_ERR_CERT_REVOKED?    "4":
+-                         gpg_err_code (rc) == GPG_ERR_CERT_EXPIRED?    "5":
+-                         gpg_err_code (rc) == GPG_ERR_NO_CRL_KNOWN?    "6":
+-                         gpg_err_code (rc) == GPG_ERR_CRL_TOO_OLD?     "7":
+-                         gpg_err_code (rc) == GPG_ERR_NO_POLICY_MATCH? "8":
+-                         gpg_err_code (rc) == GPG_ERR_NO_SECKEY?       "9":
+-                         "0",
+-                         sl->d, NULL);
++                             get_inv_recpsgnr_code (rc), sl->d, NULL);
+             }
+         }
+       
+
+Index: common/status.c
+===================================================================
+--- common/status.c	(revision 5105)
++++ common/status.c	(working copy)
+@@ -36,3 +36,30 @@
+     return statusstr_msgstr + statusstr_msgidx[idx];
+ }
+ 
++
++const char *
++get_inv_recpsgnr_code (gpg_error_t err)
++{
++  const char *errstr;
++  
++  switch (gpg_err_code (err))
++    {
++    case GPG_ERR_NO_PUBKEY:       errstr = "1"; break;
++    case GPG_ERR_AMBIGUOUS_NAME:  errstr = "2"; break;
++    case GPG_ERR_WRONG_KEY_USAGE: errstr = "3"; break;
++    case GPG_ERR_CERT_REVOKED:    errstr = "4"; break;
++    case GPG_ERR_CERT_EXPIRED:    errstr = "5"; break;
++    case GPG_ERR_NO_CRL_KNOWN:    errstr = "6"; break;
++    case GPG_ERR_CRL_TOO_OLD:     errstr = "7"; break;
++    case GPG_ERR_NO_POLICY_MATCH: errstr = "8"; break;
++
++    case GPG_ERR_UNUSABLE_SECKEY:
++    case GPG_ERR_NO_SECKEY:       errstr = "9"; break;
++
++    case GPG_ERR_NOT_TRUSTED:     errstr = "10"; break;
++    case GPG_ERR_MISSING_CERT:    errstr = "11"; break;
++    default:                      errstr = "0"; break;
++    }
++
++  return errstr;
++}
+
+Index: common/status.h
+===================================================================
+--- common/status.h	(revision 5105)
++++ common/status.h	(working copy)
+@@ -91,7 +91,9 @@
+     STATUS_USERID_HINT,
+     STATUS_UNEXPECTED,
+     STATUS_INV_RECP,
++    STATUS_INV_SGNR,
+     STATUS_NO_RECP,
++    STATUS_NO_SGNR,
+ 
+     STATUS_ALREADY_SIGNED,
+     STATUS_KEYEXPIRED,
+@@ -127,6 +129,7 @@
+ 
+ 
+ const char *get_status_string (int code);
++const char *get_inv_recpsgnr_code (gpg_error_t err);
+ 
+ 
+ #endif /*GNUPG_COMMON_STATUS_H*/
+
+
+
+Index: g10/cpr.c
+===================================================================
+--- g10/cpr.c	(revision 5105)
++++ g10/cpr.c	(working copy)
+@@ -202,6 +202,12 @@
+             if (first && string) {
+                 fputs (string, statusfp);
+                 count += strlen (string);
++                /* Make sure that there is space after the string.  */
++                if (*string && string[strlen (string)-1] != ' ')
++                  {
++                    putc (' ', statusfp);
++                    count++;
++                  }
+             }
+             first = 0;
+         }
+Index: g10/skclist.c
+===================================================================
+--- g10/skclist.c	(revision 5105)
++++ g10/skclist.c	(working copy)
+@@ -128,6 +128,8 @@
+ 	if( (rc = get_seckey_byname( sk, NULL, unlock )) ) {
+ 	  free_secret_key( sk ); sk = NULL;
+ 	  log_error("no default secret key: %s\n", g10_errstr(rc) );
++          write_status_text (STATUS_INV_SGNR,
++                             get_inv_recpsgnr_code (GPG_ERR_NO_SECKEY));
+ 	}
+ 	else if( !(rc=openpgp_pk_test_algo2 (sk->pubkey_algo, use)) )
+ 	  {
+@@ -138,6 +140,8 @@
+ 		log_info(_("key is not flagged as insecure - "
+ 			   "can't use it with the faked RNG!\n"));
+ 		free_secret_key( sk ); sk = NULL;
++                write_status_text (STATUS_INV_SGNR, 
++                                   get_inv_recpsgnr_code (GPG_ERR_NOT_TRUSTED));
+ 	      }
+ 	    else
+ 	      {
+@@ -152,6 +156,7 @@
+ 	  {
+ 	    free_secret_key( sk ); sk = NULL;
+ 	    log_error("invalid default secret key: %s\n", g10_errstr(rc) );
++            write_status_text (STATUS_INV_SGNR, get_inv_recpsgnr_code (rc));
+ 	  }
+       }
+     else {
+@@ -176,6 +181,9 @@
+ 		free_secret_key( sk ); sk = NULL;
+ 		log_error(_("skipped \"%s\": %s\n"),
+ 			  locusr->d, g10_errstr(rc) );
++                write_status_text_and_buffer 
++                  (STATUS_INV_SGNR, get_inv_recpsgnr_code (rc), 
++                   locusr->d, strlen (locusr->d), -1);
+ 	      }
+             else if ( key_present_in_sk_list(sk_list, sk) == 0) {
+                 free_secret_key(sk); sk = NULL;
+@@ -186,6 +194,9 @@
+ 		free_secret_key( sk ); sk = NULL;
+ 		log_error(_("skipped \"%s\": %s\n"),
+ 			  locusr->d, g10_errstr(rc) );
++                write_status_text_and_buffer 
++                  (STATUS_INV_SGNR, get_inv_recpsgnr_code (rc), 
++                   locusr->d, strlen (locusr->d), -1);
+ 	      }
+ 	    else if( !(rc=openpgp_pk_test_algo2 (sk->pubkey_algo, use)) ) {
+ 		SK_LIST r;
+@@ -197,11 +208,19 @@
+ 			     _("this is a PGP generated Elgamal key which"
+ 			       " is not secure for signatures!"));
+ 		    free_secret_key( sk ); sk = NULL;
++                    write_status_text_and_buffer 
++                      (STATUS_INV_SGNR, 
++                       get_inv_recpsgnr_code (GPG_ERR_WRONG_KEY_USAGE), 
++                       locusr->d, strlen (locusr->d), -1);
+ 		  }
+ 		else if( random_is_faked() && !is_insecure( sk ) ) {
+ 		    log_info(_("key is not flagged as insecure - "
+ 			       "can't use it with the faked RNG!\n"));
+ 		    free_secret_key( sk ); sk = NULL;
++                    write_status_text_and_buffer 
++                      (STATUS_INV_SGNR, 
++                       get_inv_recpsgnr_code (GPG_ERR_NOT_TRUSTED), 
++                       locusr->d, strlen (locusr->d), -1);
+ 		}
+ 		else {
+ 		    r = xmalloc( sizeof *r );
+@@ -214,6 +233,9 @@
+ 	    else {
+ 		free_secret_key( sk ); sk = NULL;
+ 		log_error("skipped \"%s\": %s\n", locusr->d, g10_errstr(rc) );
++                write_status_text_and_buffer 
++                  (STATUS_INV_SGNR, get_inv_recpsgnr_code (rc), 
++                   locusr->d, strlen (locusr->d), -1);
+ 	    }
+ 	}
+     }
+@@ -221,6 +243,7 @@
+ 
+     if( !rc && !sk_list ) {
+ 	log_error("no valid signators\n");
++        write_status_text (STATUS_NO_SGNR, "0");
+ 	rc = G10ERR_NO_USER_ID;
+     }
+ 
+Index: g10/seckey-cert.c
+===================================================================
+--- g10/seckey-cert.c	(revision 5105)
++++ g10/seckey-cert.c	(working copy)
+@@ -53,7 +53,7 @@
+ 
+ 	if( sk->protect.s2k.mode == 1001 ) {
+ 	    log_info(_("secret key parts are not available\n"));
+-	    return G10ERR_GENERAL;
++	    return G10ERR_UNU_SECKEY;
+ 	}
+ 	if( sk->protect.algo == CIPHER_ALGO_NONE )
+ 	    BUG();
+
+
+
