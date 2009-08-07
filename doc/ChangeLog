@@ -1,5 +1,6 @@
 2009-08-07  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
+	* manual/gpg4win-compendium-de.tex: Sync install options with Readme.
 	* README.en.txt: Update.
 	* README.de.txt: Translate into German.
 
