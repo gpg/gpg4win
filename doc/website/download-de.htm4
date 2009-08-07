@@ -15,16 +15,15 @@ kann hier herunter geladen werden:</p>
 <a href="DOWNLOAD_URL" class="dlbutton2">gpg4win&nbsp;VERSION<br>
 <span class="version">Größe: DL_SIZE<br></span></a> 
 
-<h2>Gpg4win light VERSION</h2>
+<h4>Gpg4win light VERSION</h4>
 
 <p>Die light Version von Gpg4win VERSION enthält alles aus der
-  Vollversion, außer den Handbüchern und den Kommandozeilenwerkzeugen
-  aus GnuPG2.  Die light Version kann hier
-  herunter geladen werden:</p>
+Vollversion, <em>außer</em> den Zertifikatsmanager Kleopatra und den
+Handbüchern. Die light Version kann hier herunter geladen werden:</p>
 <a href="LDOWNLOAD_URL" class="dlbutton2">gpg4win&nbsp;light&nbsp;VERSION<br>
 <span class="version">Größe: LDL_SIZE<br></span></a> 
 
-<h2>Installation</h2>
+<h4>Installation</h4>
 
 <p>Nach Beendigung des
   Downloads <a href="package-integrity-de.html">verifizieren</a> Sie
@@ -32,33 +31,14 @@ kann hier herunter geladen werden:</p>
   haben.  Danach folgen Sie den Hinweisen zur Installation
   im <a href="/handbuecher/einsteiger.html">Handbuch</a>.
 
-<h2>Gpg4win 2.0.0-RC1</h2>
-
-<p>Sie können eine BETA-Version der nächsten Generation hier herunterladen
-(diese Version wird <b>nicht für den produktiven Einsatz empfohlen</b> und es wird dringend
-angeraten sorgfältig die <a
-href="http://wald.intevation.org/plugins/scmsvn/viewcvs.php/trunk/doc/README-BETA-de.txt?root=gpg4win&view=markup">Hinweise
-zur BETA-Version</a> zu lesen bevor man die BETA-Verstion testet):
-</p>
-
-<a href="http://ftp.gpg4win.org/Beta/gpg4win-2.0.0rc1.exe"
-    class="dlbutton2">gpg4win&nbsp;2.0.0-RC1<br>
-<span class="version">Größe: 47 MByte<br></span></a> 
-
-<p>Signaturen und Quelltexte finden sich hier: <a
-    href="http://ftp.gpg4win.org/Beta/">http://ftp.gpg4win.org/Beta/</a></p>
-<p>Anmerkung: Im Gpg4win-light-Installer ist die
-Zertifikatsverwaltung Kleopatra und das Gpg4win Kompendium
-bzw. Einsteigerhandbuch <b>nicht</b> enthalten.</p>
-
 <h2>Gpg4win Kompendium 3.0.0-BETA2</h2>
 
 <p>Die erste BETA-Version des Gpg4win Kompendiums kann hier als
 PDF-Datei herunter geladen werden:</p>
 
 <a
-    href="http://wald.intevation.org/frs/download.php/606/gpg4win-compendium-de-3.0.0-beta2.pdf"
-    class="dlbutton2">gpg4win&nbsp;Kompendium 3.0.0-BETA2<br>
+    href="http://wald.intevation.org/frs/?group_id=11"
+    class="dlbutton2">gpg4win&nbsp;Kompendium 3.0.0-BETA3<br>
 <span class="version">Größe: 2.3 MByte<br></span></a> 
 HTML-Version: <a
     href="http://gpg4win.de/handbuecher/compendium_de.html">http://gpg4win.de/handbuecher/compendium_de.html</a>

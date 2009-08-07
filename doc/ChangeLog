@@ -1,4 +1,9 @@
 2009-08-07  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+	* doc/website/
+	  index.htm4, index-de.htm4,
+	  download-de.htm4, download.htm4,
+	  versions.m4, template_header.m4, NEWS.last:
+	  First preparation for 2.0.0.
 	* manual/sc-kleopatra-certificateSearchOnKeyserver_de.png,
 	  manual/sc-inst-options_de.png: Update screenshots.
 	* manual/gpg4win-compendium-de.tex: Fix and remove many TODOs in tex file.

@@ -11,10 +11,10 @@ PAGE_START
 Gpg4win ist ein Installationspaket für Windows (2000/XP/2003/Vista)
 mit Computer-Programmen und Handbüchern für EMail- und Datei-Verschlüsselung.
 Die beiden relevanten kryptographischen Standards OpenPGP und S/MIME werden
-unterstützt (letzterer ist in Arbeit und funktioniert aktuell mit GnuPG2 und Claws Mail).
+unterstützt.
 Gpg4win und die in Gpg4win enthaltene Software
 sind <a href="http://www.fsfe.de/documents/freesoftware.de.html">Freie
-Software</a> Software</a> (u.a. kostenlose gewerbliche und private Nutzung).
+Software</a> (u.a. kostenlose gewerbliche und private Nutzung).
 
 
 <p>
@@ -23,43 +23,36 @@ Wahlweise können <b>alle oder einige der folgenden Module</b> installiert werden
 <table>
   <tr>
     <td>GnuPG:</td>
-    <td>Das Kernstück, das eigentliche Verschlüsselungsprogramm</td>
+    <td>Das Kernstück, das eigentliche Verschlüsselungsprogramm.</td>
   </tr>
   <tr>
-    <td>WinPT:</td>
-    <td>Ein Schlüsselmanager und Helfer bei vielen anderen Verschlüsselungs-Fragen</td>
+    <td>Kleopatra:</td>
+    <td>Ein Zertifikatsmanager für OpenPGP und X.509 (S/MIME); stellt
+einheitliche Benutzerführung für alle Krypto-Dialoge bereit. </td>
   </tr>
   <tr>
     <td>GPA:</td>
-    <td>Ein anderer Schlüsselmanager, die Geschmäcker sind nunmal verschieden</td>
+    <td>Ein anderer Zertifikatsmanager für OpenPGP und X.509 (S/MIME).</td>
   </tr>
   <tr>
-    <td>GPGol:</td>
-    <td>Ein Plugin für Microsoft Outlook 2003 (EMail-Verschlüsselung)</td>
+    <td>GpgOL:</td>
+    <td>Eine Programmerweiterung für Microsoft Outlook 2003 und 2007 (EMail-Verschlüsselung).</td>
   </tr>
   <tr>
-    <td>GPGee:</td>
-    <td>Ein Plugin für den Microsoft Explorer (Datei-Verschlüsselung)</td>
+    <td>GpgEX:</td>
+    <td>Eine Programmerweiterung für den Microsoft Explorer (Datei-Verschlüsselung).</td>
   </tr>
   <tr>
     <td>Claws Mail:</td>
-    <td>Ein komplettes EMail-Programm inklusive Plugin für GnuPG</td>
+    <td>Ein komplettes EMail-Programm inklusive Programmerweiterung für GnuPG.</td>
+  </tr>
+  <tr>
+    <td>Gpg4win-Kompendium:</td>
+    <td>Die neue deutschsprachige Dokumentation zu Gpg4win2 (für
+Einsteiger und Fortgeschrittene).</td>
   </tr>
 </table>
 
-<p>
-Dokumentation:
-</p>
-<table>
-  <tr>
-    <td>Gpg4win für Einsteiger:</td>
-    <td>Ein Handbuch speziell für Neulinge</td>
-  </tr>
-  <tr>
-    <td>Gpg4win für Durchblicker:</td>
-    <td>Ein Handbuch zu den Hintergründen, für Anfänger</td>
-  </tr>
-</table>
 
 <p>
 <b>Gpg4win ist mit wenigen Mausklicks installiert</b> und kann ausprobiert werden.
@@ -67,32 +60,30 @@ Sie sollten aber auf Ihrem System Administrator sein oder Administrationsrechte
 besitzen.
 </p>
 <p>
-Am besten beginnt man mit dem recht anschaulichen
-Handbuch <em>Gpg4win für Einsteiger</em>.
+Beginnen Sie am besten mit dem anschaulichen <em>Gpg4win-Kompendium</em>.
 </p>
 <p>
 Wir empfehlen, sich in die
 <a href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-announce"
-  >Gpg4win Bekanntmachungs-Email-Liste</a> einzuschreiben
+  >Gpg4win Bekanntmachungs-Email-Liste</a> einzuschreiben,
 um automatisch über neue Versionen und andere wichtige
 Neuigkeiten zu Gpg4win informiert zu werden.
 </p>
 
 <h2>Über Gpg4win</h2>
 
-Das Gpg4win Projekt <b>hat das Ziel</b>
-das Gpg4win Windows-Installationspaket für
+Das Gpg4win-Projekt hat das <b>Ziel</b>
+das Gpg4win-Windows-Installationspaket für
 die Verschlüsselungs-Software
 GnuPG sowie zugehörige Anwendungen
 und Dokumentation <b>kontinuierlich zu aktualisieren</b>.
-Insbsondere wird die Dokumentation (Handbücher "Einsteiger"
-und "Durchblicker") direkt beim Gpg4win Projekt gepflegt.
+Insbsondere wird die Dokumentation ("Gpg4win-Kompendium")
+direkt beim Gpg4win-Projekt gepflegt.
 
 <p>
-Ein weiteres zenrales Ziel ist die <b>vereinigte Unterstützung
-für die beiden relevanten kryptographischen Standards OpenPGP
-und S/MIME</b>. Dies befindet sich noch in Arbeit. Aktuelle BETA-Versionen 
-von Gpg4win2 sind unter <a href="download-de.html">Download</a> bereits verfügbar.
+Ein weiteres zenrales Ziel ist die vereinigte Unterstützung
+für die beiden relevanten kryptographischen <b>Standards OpenPGP
+und S/MIME</b>. 
 </p>
 
 <p>
@@ -127,9 +118,9 @@ sowie Signaturen (gpg4win-n.n.n.exe.sig) und zugehörige Quelltextpakete
 </p>
 <p>
 Gpg4win Kern-Quelltextpakete (gpg4win-n.n.n.tar.bz2 mit gpg4win-n.n.n.tar.bz2.sig)
-sowie <em>Gpg4win für Einsteiger</em> und <em>Gpg4win für Durchblicker</em>
-als separate PDF-Dokumente (gpg4win-fuer-einsteiger-n.n.n.pdf und
-gpg4win-fuer-durchblicker-n.n.n.pdf):
+sowie die Dokumentationen <em>Gpg4win-Kompendium</em>, <em>Gpg4win für
+Einsteiger</em> und <em>Gpg4win für Durchblicker</em> als separate
+PDF-Dokumente:
 </p>
 <p>
 <a href="http://wald.intevation.org/frs/?group_id=11">http://wald.intevation.org/frs/?group_id=11</a>
