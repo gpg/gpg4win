@@ -7,17 +7,17 @@
                    English README file for Gpg4win
                    ===============================
 
-This is GnuPG for Windows, version !VERSION!.
+This is Gpg4win, version !VERSION!.
 
 Content:
 
-     1. Important notes
+     1. Important Notes
      2. Changes
-     3. Known bugs
-     4. Version history
-     5. Version numbers
-     6. Installer options
-     7. Legal notices
+     3. Known Bugs (and Workarounds)
+     4. Version History
+     5. Version Numbers of Included Software
+     6. Installer Options
+     7. Legal Notices
 
 
 1. Important Notes
@@ -37,7 +37,7 @@ Gpg4win.
 2. Changes
 ==========
 
-Gpg4win/2 has major changes compared to Gpg4win 1.x.  Below is a list
+Gpg4win2 has major changes compared to Gpg4win 1.x.  Below is a list
 of the most important ones:
 
 - Kleopatra is the new certificate manager.  Kleopatra is the S/MIME
@@ -48,7 +48,7 @@ of the most important ones:
   component requests its services and then runs permanently in your
   system tray.  WinPT has been dropped.
 
-- GpgEX is the new plugin for the Explorer and replaces GpgEE.
+- GpgEX is the new plugin for the Microsoft Explorer and replaces GpgEE.
 
 - The mail program Claws Mail has been updated to a modern version.
   It now supports SSL, NNTP and IMAP.
@@ -65,27 +65,32 @@ of the most important ones:
   Version 2.0. Among other things, this means adaption to Kleopatra,
   GpgEX and PGP/MIME and new texts for S/MIME and X.509.
 
+- Support of these platforms:
+  Operating System: Windows 2000, XP (32/64), Vista (32/64)
+  Outlook: 2003, 2007
 
-3. Known Bugs
-=============
+
+3. Known Bugs (and Workarounds)
+===============================
 
 - Using smart card with Kleopatra...
 
    * ... and OpenPGP card:
      Use the gpg command line tool to create a new OpenPGP certificate
      on your card.
+     - Insert card.
      - Run "gpg --card-edit".
      - Switch to admin modus by enter: "admin".
      - Enter "generate" to create a new certificate.
      After finishing the process your new certificate is shown in
-     Kleopatra with a smart card icon.
+     Kleopatra (marked with a smart card icon).
 
    * ... and Telesec Netkey 3 card:
      Use the gpgsm command line tool to initializing your card.
-     - Insert your card.
+     - Insert card.
      - Run "gpgsm --learn-card".
      After this the certificates from your card are shown in
-     Kleopatra with a smart card icon.
+     Kleopatra (marked with a smart card icon).
 
    A good (graphical) alternative for setting up your smart
    card and changing PIN is GPA.
@@ -106,6 +111,19 @@ of the most important ones:
 
   * Sending signed or encrypted messages via an Exchange based account
     does not yet work.
+
+- Using GpgEX with Windows x64:
+
+   * GpgEX is a (32bit) plugin for the (32bit) Windows
+     Explorer and it does _not_ run in a 64bit Explorer
+     (= default for a Windows 64bit system).
+
+     Workaround: Run the 32bit Explorer to use GpgEX.
+     Click "Start" -> "Run", type the following in the box, and then
+     click OK:
+         C:\windows\syswow64\explorer.exe /separate
+     Note: Adjust the path to your x64-based version of Windows if
+     necessary.
 
 
 4. Version History
@@ -144,13 +162,9 @@ all possible keys:
   inst_gpgex = true
   inst_kleopatra = true
   inst_gpa = true
-  inst_scute = true
   inst_claws_mail = false
   inst_compendium_de = true
-  inst_novice_manual_en = true
-  inst_novice_manual_de = true
-  inst_advanced_manual_de = true
-  inst_advanced_manual_en = true
+  inst_man_novice_en = true
 
   ; Where to install short-cuts.
   inst_start_menu = true
@@ -160,7 +174,7 @@ all possible keys:
   ; Contrary to other settings in this file, the start menu folder
   ; setting here will override the user selection at installation
   ; time.
-  inst_start_menu_folder = GnuPG for Windows
+  inst_start_menu_folder = Gpg4win
 
   ; Additional configuration files to install.
   gpg.conf = D:\config\gpg-site.conf

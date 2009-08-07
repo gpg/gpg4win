@@ -5,47 +5,150 @@
 ;; replaced by the Makefile; those words are enclosed by exclamation
 ;; marks.
 
-                  Deutsche README Datei for Gpg4win
+                  Deutsche README Datei für Gpg4win
                   =================================
                                    
-Dies ist GnuPG for Windows, Version !VERSION!.
+Dies ist Gpg4win, Version !VERSION!.
 
 Inhalt:
 
      1. Wichtige Hinweise
      2. Änderungen
-     3. Versionsnummern
-     4. Installer Optionen
-     5. Rechtliche Hinweise
-
-
+     3. Bekannte Probleme (und Abhilfe)
+     4. Versionshistorie
+     5. Versionsnummern der einzelnen Programmteile
+     6. Installer Optionen
+     7. Rechtliche Hinweise
 
 
 1. Wichtige Hinweise
 ====================
 
-Informationen zur Benutzung sind den Handbüchern "Gpg4win für
-Einsteiger" und "Gpg4win für Durchblicker" zu entnehmen.  Diese können
-Sie auch, in einer möglicherweise bereits überarbeiteten Fassung,
-online unter http://www.gpg4win.de lesen.
+Hilfe bei der Benutzung von Gpg4win bietet Ihnen das
+Gpg4win-Kompendium. Sie finden es nach der Installation von
+Gpg4win2 im Gpg4win-Startmenü unter 'Dokumentation' oder
+(in aktueller Fassung) direkt online unter http://www.gpg4win.de.
+
+Falls Sie eine ältere Version von Gpg4win benutzt haben, beachten Sie
+bitte auch die Migrationshinweise im Anhang des Gpg4win-Kompendiums.
+
+Bitte lesen Sie den Abschnitt "Bekannte Probleme", bevor Sie damit
+beginnen Gpg4win zu nutzen.
 
 
+2. Änderungen
+=============
+
+Gpg4win2 bringt große Änderungen im Vergleich zu Gpg4win 1.x mit
+sich. Nachstehend die wichtigsten Änderungen:
+
+- Kleopatra ist der neue Zertifikatsmanager.  Kleopatra ist der
+  bisherige S/MIME Zertifikatsmanager von KDE (a desktop environment
+  used on many GNU/Linux systems).  Für die Verwendung in Gpg4win
+  ist Kleopatra um die Unterstützung von OpenPGP und um eine
+  vereinheitlichte grafische Oberfläche für alle kryptografischen
+  Operationen erweitert worden.  Kleopatra läuft in der Regel
+  permanent als Dienst (siehe Icon im System-Tray), sobald dessen
+  Dienste einmal im Verlauf der Sitzung abgefragt wurden.
+  Die Funktionalitäten von WinPT werden nun durch Kleopatra
+  abgedeckt. WinPT wurde aus Gpg4win2 entfernt.
+
+- GpgEX ist die neue Programmerweiterung für den Microsoft Explorer
+  and ersetzt GpgEE.
+
+- Das E-Mail-Programm Claws Mail wurde auf eine modernere Version
+  aktualisiert und unterstützt nun SSL, NNTP und IMAP.
+
+- GpgOL, die Programmerweiterung für Outlook 2003 und 2007, wurde
+  umfassend überarbeitet.  Es unterstützt nun PGP/MIME und macht
+  damit die Verwendung von verschlüsselten und signierten Anhängen
+  viel einfacher und standardkonformer.  Die Unterstützung von S/MIME
+  wurde ergänzt.  Für die grafischen Benutzerdialoge aller Krypto-
+  Operationen wird nun verwendet.
+
+- Das "Gpg4win-Kompendium" ist die neue deutschsprachige Dokumentation
+  zu Gpg4win. Es vereinigt die alten Handbücher "Einsteiger" und
+  "Durchblicker".  Desweiteren wurden sämtliche Kapitel für Gpg4win
+  Version 2.0 aktualisiert, also unter anderem angepasst auf
+  Kleopatra, GpgEX und PGP/MIME sowie ergänzt um S/MIME bzw. X.509.
+
+- Unterstützung folgender Plattformen:
+  Betriebssystem: Windows 2000, XP (32/64), Vista (32/64)
+  MS Outlook: 2003, 2007
 
 
-3. Liste der Änderungen an Gpg4win
+3. Bekannte Probleme (und Abhilfe)
 ==================================
 
-Eine aktuelle deutschsprachige Übersicht der Änderungen finden online
+- Smartcard-Nutzung mit Kleopatra...
+
+   * ... und einer OpenPGP Karte:
+     Verwenden Sie das gpg-Kommandozeilen-Werkzeug, um ein neues
+     OpenPGP-Zertifikat auf Ihrer Karte zu erzeugen.
+     - Karte einlegen.
+     - Führen Sie "gpg --card-edit" aus.
+     - Wechseln Sie in den Admin-Modus mit "admin".
+     - Geben Sie "generate" ein und folgen Sie den Anweisungen, um
+       ein neues Zertifiakt zu erzeugen.
+     Anschließend wird Ihr neues Zertifikat in Kleopatra angezeigt
+     (markiert mit einem Smartcard Icon).
+
+   * ... und einer Telesec Netkey 3 Karte:
+     Verwenden Sie das gpgsm-Kommandozeilen-Werkzeug, um Ihre Karte
+     (einmalig) zu initialisieren.
+     - Karte einlegen.
+     - Führen Sie "gpgsm --learn-card" aus.
+     Anschließend werden Ihr Zertifiakte von Ihrer Karte in Kleopatra
+     angezeigt (markiert mit einem Smartcard Icon).
+
+   Eine gute (grafische) Alternative ist GPA um Ihre Karte korrekt zu
+   konfigurieren und ggf. Ihre PIN zu ändern.
+
+- Verwendung der Outlook-Programmerweiterung "GpgOL":
+
+  * Sie sollten unbedingt Sicherheitskopien Ihrer alten
+    verschlüsselten/signierten E-Mails machen; z.B. in PST-Dateien!
+
+  * Verschlüsselte E-Mails unverschlüsselt auf E-Mail-Server:
+    Es kann vorkommen, dass Teile von verschlüsselten E-Mails
+    in entschlüsselter/unverschlüsselter Form auf dem E-Mail-Server
+    (IMAP oder MAPI) zu liegen kommen, wenn man sie erstellt/liest.
+    Betroffen sind nur der Inhalt des Anzeigefensters von Outlook,
+    also der "E-Mail-Body".  Anhänge sind nicht betroffen.
+    Schaltet man die Voransicht von Outlook ab, so
+    verringert sich die Wahrscheinlichkeit dafür deutlich,
+    aber es kann trotzdem noch passieren.
+    Eine Lösung hierfür ist in Arbeit.
+
+  * Senden von signierten oder verschlüsselten Nachrichten über ein
+    Exchange basiertes Konto funktioniert nicht.
+
+- Verwendung von GpgEX unter Windows x64:
+
+   * GpgEX ist eine (32bit) Erweiterung für den (32bit) Windows
+     Explorer und läuft _nicht_ in einem 64bit Explorer
+     (= voreingestellter Explorer in einem Windows 64bit System).
+
+     Abhilfe: Starten Sie den 32bit Explorer, um GpgEX nutzen zu können.
+     Klicken Sie auf "Start" -> "Ausführen" und geben Sie folgenden
+     Befehl ein:
+         C:\windows\syswow64\explorer.exe /separate
+     Beachten Sie, dass Sie ggf. den Pfad zu Ihrer x64-basierten 
+     Version von Windows anpassen müssen.
+
+
+4. Versionshistorie
+===================
+
+Eine aktuelle deutschsprachige Übersicht der Änderungen finden Sie online
 unter http://www.gpg4win.de/change-history-de.html .  Im weiteren
 finden Sie die Einträge aus der englischen NEWS Datei:
 
 !NEWSFILE!
 
 
-
-
-3. Versionsnummern der einzenen Bestandteile
-============================================
+5. Versionsnummern der einzelnen Programmteile
+==============================================
 
 Zur Übersicht sind hier die Prüfsummen sowie die Namen der einzelnen
 Bestandteile aufgelistet.  Sie finden dieselben Informationen auch in
@@ -54,57 +157,50 @@ der Datei versioninfo.txt.
 !VERSIONINFO!
 
 
-
-
-4. Installer Optionen
+6. Installer Optionen
 =====================
 
-Hinweis: Dies ist eine kurze Zusammenfassung. Im Anhang des
-Handbuches "Gpg4win für Einsteiger" findet sich ein ähnlicher Text
-der ggf. für Anwender angepasst wurde.
+Hinweis: Dies ist eine kurze Zusammenfassung. Beachten Sie bitte
+auch die Hinweise zur Automatischen Installation im Anhang des
+Gpg4win-Kompendiums.
 
-In einigen Fällen wie zum Beispiel für Software-Verteilungssysteme ist
-es hilfreich, wenn die Installation von Gpg4win ohne Dialoge funktioniert,
-man aber trotzdem vorab alle Installationseinstellungen bestimmen kann.
+In einigen Fällen (wie zum Beispiel für Software-Verteilungssysteme)
+ist es hilfreich, wenn die Installation von Gpg4win ohne Dialoge
+funktioniert, man aber trotzdem vorab alle Installationseinstellungen
+bestimmen kann.
 
 Der Standard-Installationspfad kann mit der Option /D=PFAD angegeben
 werden, welche als letzte auf der Kommandozeile erscheinen muß.
 
+Der Gpg4win Installer unterstützt die Option /S für automatischen
+Ablauf der Installation, und die Option /C=INIFILE, durch welche eine
+Steuerungsdatei (Name endet üblicherweise auf .ini) angegeben werden
+kann.  Diese Datei sollte genau einen Abschnitt "[gpg4win]"
+enthalten, in der absolute Pfade für die zu installierenden
+Konfigurationsdateien vorgegeben werden.
 
-Der Gpg4win Installer unterstützt die Option /S für automatischen Ablauf der
-Installation, und die Option /C=INIFILE, durch welche eine Steuerungsdatei
-(Name endet üblicherweise auf .ini) angegeben werden kann.
-Diese Datei sollte genau einen Abschnitt "[gpg4win]" enthalten,
-in der absolute Pfade für die zu installierenden Konfigurationsdateien
-vorgegeben werden.
-
-Hier ist eine Beispieldatei, die
-zugleich alle erlaubten Schlüsselworte zeigt:
+Hier ist eine Beispieldatei, die zugleich alle erlaubten
+Schlüsselworte zeigt: 
 
 [gpg4win]
-  ; Installer Einstellungen.
-  ; Weg- oder leer-lassen bedeutet, dass die Voreinstellung
-  ; verwendet wird. 
+  ; Installationseinstellungen. Weg- oder leerlassen für 
+  ; Voreinstellung
   inst_gpgol = true
   inst_gpgex = true
   inst_kleopatra = true
   inst_gpa = true
-  inst_scute = true
   inst_claws_mail = false
   inst_compendium_de = true
-  inst_novice_manual_en = true
-  inst_novice_manual_de = true
-  inst_advanced_manual_de = true
-  inst_advanced_manual_en = true
+  inst_man_novice_en = true
 
   ; Die Stellen, an denen Verknüpfungen erzeugt werden sollen.
   inst_start_menu = true
   inst_desktop = false
   inst_quick_launch_bar = false
 
-  ; Im Gegensatz zu den anderen Optionen überschreibt diese Option die
-  ; Einstellung des Benutzers im Installer.
-  inst_start_menu_folder = GnuPG for Windows
+  ; Im Gegensatz zu den anderen Optionen überschreibt diese Option
+  ; die Einstellung des Benutzers im Installationsassistenten.
+  inst_start_menu_folder = Gpg4win
 
   ; Standard-Konfigurationsdateien.
   gpg.conf = D:\config\gpg-site.conf
