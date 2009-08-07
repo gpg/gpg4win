@@ -30,7 +30,7 @@ Gpg4win2 im Gpg4win-Startmenü unter 'Dokumentation' oder
 (in aktueller Fassung) direkt online unter http://www.gpg4win.de.
 
 Falls Sie eine ältere Version von Gpg4win benutzt haben, beachten Sie
-bitte auch die Migrationshinweise im Anhang des Gpg4win-Kompendiums.
+bitte die Migrationshinweise im Anhang des Gpg4win-Kompendiums.
 
 Bitte lesen Sie den Abschnitt "Bekannte Probleme", bevor Sie damit
 beginnen Gpg4win zu nutzen.
@@ -43,10 +43,10 @@ Gpg4win2 bringt große Änderungen im Vergleich zu Gpg4win 1.x mit
 sich. Nachstehend die wichtigsten Änderungen:
 
 - Kleopatra ist der neue Zertifikatsmanager.  Kleopatra ist der
-  bisherige S/MIME Zertifikatsmanager von KDE (a desktop environment
-  used on many GNU/Linux systems).  Für die Verwendung in Gpg4win
-  ist Kleopatra um die Unterstützung von OpenPGP und um eine
-  vereinheitlichte grafische Oberfläche für alle kryptografischen
+  bisherige S/MIME Zertifikatsmanager von KDE (eine auf vielen
+  GNU/Linux-Systemen benutzte Arbeitsumgebung).  Für die Verwendung
+  in Gpg4win ist Kleopatra um die Unterstützung von OpenPGP und u  eine
+  vereinheitlichte grafische Oberfläche für alle kryptografischen 
   Operationen erweitert worden.  Kleopatra läuft in der Regel
   permanent als Dienst (siehe Icon im System-Tray), sobald dessen
   Dienste einmal im Verlauf der Sitzung abgefragt wurden.
@@ -64,7 +64,7 @@ sich. Nachstehend die wichtigsten Änderungen:
   damit die Verwendung von verschlüsselten und signierten Anhängen
   viel einfacher und standardkonformer.  Die Unterstützung von S/MIME
   wurde ergänzt.  Für die grafischen Benutzerdialoge aller Krypto-
-  Operationen wird nun verwendet.
+  Operationen wird nun Kleopatra verwendet.
 
 - Das "Gpg4win-Kompendium" ist die neue deutschsprachige Dokumentation
   zu Gpg4win. Es vereinigt die alten Handbücher "Einsteiger" und
