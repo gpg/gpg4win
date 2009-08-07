@@ -1,3 +1,25 @@
+2009-07-31  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+
+	* po/de.po: Fix typo in german installer.
+
+2009-03-19  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+
+	* src/gpg4win.nsi, po/ar.po, po/fr.po, po/es.po, po/ru.po
+	* po/de.po: Change English T_AboutGpg4win text.
+
+2009-02-20  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+
+	* po/de.po: Add description for GpgOL and GpgEX: Kleo or GPA needed.
+
+2009-02-06  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+
+	* po/de.po: Fix two typos.
+
+2008-12-01  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+
+	* po/de.po: Change Gpg4win about message.  Add Outlook 2007 to
+	GpgOL description
+
 2008-10-27  Werner Koch  <wk@g10code.com>
 
 	* de.po: Updated.
