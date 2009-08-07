@@ -14,35 +14,39 @@ Content:
      1. Important notes
      2. Changes
      3. Known bugs
-     4. Version numbers
-     5. Installer options
-     6. Legal notices
+     4. Version history
+     5. Version numbers
+     6. Installer options
+     7. Legal notices
 
 
 1. Important Notes
 ==================
 
 Manuals describing the installation of Gpg4win are currently only
-available in German. Check out http://www/gpg4win.org for latest
+available in German.  Check out http://www/gpg4win.org for latest
 news.
 
 If you used an older version of Gpg4win in the past, please check
 out the migration hints in the Gpg4win Compendium's appendix.
 
+Please read the "Known bugs" section before you start working with
+Gpg4win.
+
 
 2. Changes
 ==========
 
-Gpg4win/2 has major changes compared to Gpg4win 1.x. Below is a list
+Gpg4win/2 has major changes compared to Gpg4win 1.x.  Below is a list
 of the most important ones:
 
 - Kleopatra is the new certificate manager.  Kleopatra is the S/MIME
   certificate manager of KDE (a desktop environment used on many
-  GNU/Linux systems). For use in Gpg4win it has been extended to
+  GNU/Linux systems).  For use in Gpg4win it has been extended to
   support OpenPGP and to act as a graphical user interface for all
-  cryptographic operations. It is automatically started if another
+  cryptographic operations.  It is automatically started if another
   component requests its services and then runs permanently in your
-  system tray. WinPT has been dropped.
+  system tray.  WinPT has been dropped.
 
 - GpgEX is the new plugin for the Explorer and replaces GpgEE.
 
@@ -50,9 +54,9 @@ of the most important ones:
   It now supports SSL, NNTP and IMAP.
 
 - GpgOL, the plugin for Outlook 2003 and 2007 has been comprehensively
-  updated. It now supports PGP/MIME and thus makes the use of
+  updated.  It now supports PGP/MIME and thus makes the use of
   encrypted or signed attachments much easier and standard conform.
-  Support for S/MIME has been added. Most dialogs are now provided by
+  Support for S/MIME has been added.  Most dialogs are now provided by
   Kleopatra for graphical user dialogs.
 
 - The German "Gpg4win-Kompendium" is the new documentation for Gpg4win.
@@ -62,38 +66,24 @@ of the most important ones:
   GpgEX and PGP/MIME and new texts for S/MIME and X.509.
 
 
-2.1 Version history
--------------------
-
-Find below the changes as recorded in the source distribution's NEWS
-file. An up-to-date list of changes is also available at
-http://www.gpg4win.de/change-history.html .
-
-!NEWSFILE!
-
-
 3. Known Bugs
 =============
-
-  * Kleopatra is still under development: Some functionalities for
-    OpenPGP are still missing. You can use GPA for the missing
-    functionality.
 
 - Using smart card with Kleopatra...
 
    * ... and OpenPGP card:
      Use the gpg command line tool to create a new OpenPGP certificate
      on your card.
-     Run "gpg --card-edit".
-     Switch to admin modus by enter: "admin".
-     Run "generate" to create a new certificate.
+     - Run "gpg --card-edit".
+     - Switch to admin modus by enter: "admin".
+     - Enter "generate" to create a new certificate.
      After finishing the process your new certificate is shown in
      Kleopatra with a smart card icon.
 
    * ... and Telesec Netkey 3 card:
      Use the gpgsm command line tool to initializing your card.
-     Insert your card.
-     Run "gpgsm --learn-card".
+     - Insert your card.
+     - Run "gpgsm --learn-card".
      After this the certificates from your card are shown in
      Kleopatra with a smart card icon.
 
@@ -102,32 +92,40 @@ http://www.gpg4win.de/change-history.html .
 
 - Using the Outlook Plugin "GpgOL":
 
-  * You defintely should create copies of your old
-    encrypted/signed emails, e.g. in the form of PST files.
+  * You defintely should create copies of your old encrypted/signed
+    emails, e.g. in the form of PST files.
 
-  * Encrypted E-Mails occuring un-encrypted on the email server:
-    It can happens that parts of encrypted emails are copied
-    to your email server (IMAP or MAPI) in un-encrypted/decrypted
-    form when creating or viewing them.
-    Affected is the content of the email view windows, thus usually
-    the so-called email body. Attachments are not affected.
-    Switching off the Outlook preview will lower
-    the probability of this to happen, but not eliminate the issue.
+  * Encrypted E-Mails occuring un-encrypted on the email server: It
+    can happen that parts of encrypted emails are copied to your email
+    server (IMAP or MAPI) in un-encrypted/decrypted form when creating
+    or viewing them.  Affected is the content of the email view
+    window, thus usually the so-called email body.  Attachments are
+    not affected.  Switching off the Outlook preview will lower the
+    probability of this to happen, but not eliminate the issue.
     A solution is being worked on.
 
-  * Sending signed or encrypted maessages via an Exchange based
-    account doesn't work.
+  * Sending signed or encrypted messages via an Exchange based account
+    does not yet work.
 
 
+4. Version History
+==================
 
-4. Version Numbers of Included Software
+Find below the changes as recorded in the source distribution's NEWS
+file.  An up-to-date list of changes is also available at
+http://www.gpg4win.de/change-history.html .
+
+!NEWSFILE!
+
+
+5. Version Numbers of Included Software
 =======================================
 
 !VERSIONINFO!
 
 
 
-5. Installer Options
+6. Installer Options
 ====================
 
 The default installation path can be speficied with the /D=PATH
@@ -190,7 +188,7 @@ installation of short cuts are currently not supported through the MSI
 installer.
 
 
-6. Legal notices pertaining to the individual packets
+7. Legal notices pertaining to the individual packets
 =====================================================
 
 Gpg4win consist of several independent developed packages, available

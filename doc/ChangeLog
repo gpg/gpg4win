@@ -1,55 +1,16 @@
+2009-08-07  Werner Koch  <wk@g10code.com>
+
+	* README.en.txt: Change order of sections.
+
 2009-08-07  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
-    * doc/README.en.txt: Updated.
-	* manual/gpg4win-compendium-de.tex: Changed html file names 
-	(start menu link didn't found files). Changed pdf link to gpg4win
+	* README.en.txt: Update.
+	
+	* manual/gpg4win-compendium-de.tex: Change html file names 
+	(start menu link didn't found files): Change pdf link to gpg4win
 	file page of wald.
-	* manual/gpg4win-compendium-de.tex: Many minor changes.
-	* manual/
-	Makefile.am,
-	sc-kleopatra-encryption-successful_de.png,
-	sc-kleopatra-withOpenpgpTestkey_de.png,
-	sc-inst-components_de.png,
-	sc-kleopatra-signFile3_de.png,
-	sc-kleopatra-decryptFile1_de.png,
-	sc-kleopatra-mainwindow-empty_de.png,
-	sc-kleopatra-openpgp-pinentry_de.png,
-	sc-gpgol-options_de.png,
-	sc-kleopatra-encryptFile3_de.png,
-	sc-kleopatra-sign-chooseOpenpgpCertificate_de.png,
-	sc-kleopatra-signFile1_de.png,
-	sc-kleopatra-openpgp-certificateDetails_de.png,
-	sc-ol-sendEncryptedMail_de.png,
-	sc-ol-adele-sendOpenpgpKey-inline_de.png,
-	sc-inst-directory_de.png,
-	sc-kleopatra-sign-OpenpgpPinentry_de.png,
-	sc-kleopatra-encryptFile1_de.png,
-	sc-kleopatra-configureKeyserver_de.png,
-	sc-inst-welcome_de.png,
-	sc-kleopatra-verifyFile2_de.png,
-	sc-kleopatra-openpgp-keyPairCreated_de.png,
-	sc-kleopatra-openpgp-encryptDialog_de.png,
-	sc-inst-startmenu_de.png,
-	sc-inst-license_de.png,
-	sc-kleopatra-verifyFile1_de.png,
-	sc-kleopatra-openpgp-signDialog_de.png,
-	sc-kleopatra-encryptVerify_de.png,
-	sc-kleopatra-withAdeleKey_de.png,
-	sc-ol-adele-sendOpenpgpKey-attachment_de.png,
-	sc-wordpad-editOpenpgpKey_de.png,
-	sc-kleopatra-openpgp-exportSecretKey_de.png,
-	sc-kleopatra-sign-successful_de.png,
-	sc-ol-sendSignedMail_de.png,
-	sc-kleopatra-decryptFile2_de.png:
-	Modified screenshots.
-	* manual/
-	sc-kleopatra-signFile2_de.png,
-	sc-kleopatra-encryptFile2_de.png,
-	sc-kleopatra-verifyFile2a-badSignature_de.png,
-	sc-inst-progress_de.png:
-	Added new screenshots.
-	* manual/sc-kleopatra-encryptFile4_de.png:
-	Deleted screenshots
+	* manual/gpg4win-compendium-de.tex: Apply minor changes.
+	* manual/:  Modify most screenshots.
 
 2009-08-06  Werner Koch  <wk@g10code.com>
 

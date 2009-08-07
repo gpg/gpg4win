@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gpg4win 2.0\n"
 "Report-Msgid-Bugs-To: gpg4win-devel@wald.intevation.org\n"
-"POT-Creation-Date: 2009-06-20 10:50+0200\n"
+"POT-Creation-Date: 2009-08-07 10:41+0200\n"
 "PO-Revision-Date: 2009-06-22 15:29+0200\n"
 "Last-Translator: Werner Koch <wk@g10code.com>\n"
 "Language-Team: German <translation-team-de@lists.sourceforge.net>\n"
@@ -480,14 +480,14 @@ msgstr ""
 "die verwendet wird, um Nachrichten mit OpenPGP oder S/MIME zu verschlüsseln. "
 "Benötigt Kleopatra oder GPA."
 
-#: src/inst-kleopatra.nsi:200
+#: src/inst-kleopatra.nsi:203
 msgctxt "DESC_SEC_kleopatra"
 msgid "Keymanager for OpenPGP and X.509 and common crypto dialogs."
 msgstr ""
 "Zertifikatsmanager für OpenPGP und X.509 (S/MIME) sowie einheitliche "
 "Benutzerführung für alle Krypto-Operationen."
 
-#: src/inst-kleopatra.nsi:204
+#: src/inst-kleopatra.nsi:207
 msgctxt "DESC_Menu_kleopatra"
 msgid "Run the Kleopatra key management tool."
 msgstr "Das Schlüsselverwaltungsprogramm Kleopatra aufrufen."
@@ -549,8 +549,9 @@ msgid "Gpg4win Manual for the Novice User (English)"
 msgstr "Gpg4win-Einsteigerhandbuch (englisch)"
 
 #: src/inst-man_novice_en.nsi:45
+#, fuzzy
 msgctxt "DESC_Menu_man_novice_en"
-msgid "Show the Gpg4win manual for novice users (English)"
+msgid "Show the Gpg4win manual for novice users (pdf, English)"
 msgstr "Gpg4win-Einsteigerhandbuch (englisch)"
 
 #: src/inst-compendium_de.nsi:40
