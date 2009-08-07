@@ -1,5 +1,8 @@
 2009-08-07  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
+	* manual/gpg4win-compendium-de.tex: Changed html file names 
+	(start menu link didn't found files). Changed pdf link to gpg4win
+	file page of wald.
 	* manual/gpg4win-compendium-de.tex: Many minor changes.
 	* manual/
 	Makefile.am,
