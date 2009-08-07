@@ -1,5 +1,9 @@
 2009-08-07  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
+	* NEWS: Change compendium version.
+
+	* configure.ac: Change compendium-de date and version (3.0.0-beta3).
+
 	* ChangeLog, po/ChangeLog: Move old ChangeLog entries of
 	po files to po/ChangeLog.
 
