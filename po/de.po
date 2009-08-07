@@ -419,7 +419,7 @@ msgstr ""
 msgctxt "DESC_SEC_gpa"
 msgid "GNU Privacy Assistant"
 msgstr ""
-"GNU Privacy Assistent (GPA) ist ein Programm zum Verwalten von Schlüsseln "
+"GNU Privacy Assistent (GPA) ist ein Programm zum Verwalten von Zertifikaten "
 "welches für mehrere Plattformen verfügbar ist."
 
 #: src/inst-gpa.nsi:76
@@ -484,7 +484,7 @@ msgstr ""
 msgctxt "DESC_SEC_kleopatra"
 msgid "Keymanager for OpenPGP and X.509 and common crypto dialogs."
 msgstr ""
-"Schlüsselmanager für OpenPGP und X.509 (S/MIME) sowie einheitliche "
+"Zertifikatsmanager für OpenPGP und X.509 (S/MIME) sowie einheitliche "
 "Benutzerführung für alle Krypto-Operationen."
 
 #: src/inst-kleopatra.nsi:204
@@ -546,37 +546,37 @@ msgstr "Gpg4win Einsteigerhandbuch (pdf, englisch)"
 #: src/inst-man_novice_en.nsi:42
 msgctxt "DESC_SEC_man_novice_en"
 msgid "Gpg4win Manual for the Novice User (English)"
-msgstr "Gpg4win Einsteigerhandbuch (englisch)"
+msgstr "Gpg4win-Einsteigerhandbuch (englisch)"
 
 #: src/inst-man_novice_en.nsi:45
 msgctxt "DESC_Menu_man_novice_en"
-msgid "Show the Gpg4win manual for novice users (pdf, English)"
-msgstr "Gpg4win  Einsteigerhandbuch (pdf, englisch)"
+msgid "Show the Gpg4win manual for novice users (English)"
+msgstr "Gpg4win-Einsteigerhandbuch (englisch)"
 
 #: src/inst-compendium_de.nsi:40
 msgctxt "DESC_Name_compendium_de"
 msgid "Gpg4win Kompendium (pdf, German)"
-msgstr "Gpg4win Kompendium (pdf, deutsch)"
+msgstr "Gpg4win-Kompendium (pdf, deutsch)"
 
 #: src/inst-compendium_de.nsi:44
 msgctxt "DESC_Name_compendium_de_html"
 msgid "Gpg4win Kompendium (html, German)"
-msgstr "Gpg4win Kompendium (html, deutsch)"
+msgstr "Gpg4win-Kompendium (html, deutsch)"
 
 #: src/inst-compendium_de.nsi:48
 msgctxt "DESC_SEC_compendium_de"
 msgid "Gpg4win compendium (German)"
-msgstr "Gpg4win Kompendium (deutsch)"
+msgstr "Gpg4win-Kompendium (deutsch)"
 
 #: src/inst-compendium_de.nsi:52
 msgctxt "DESC_Menu_compendium_de"
 msgid "Show the Gpg4win compendium (pdf, German)"
-msgstr "Gpg4win Kompendium (pdf, deutsch)"
+msgstr "Gpg4win-Kompendium (pdf, deutsch)"
 
 #: src/inst-compendium_de.nsi:56
 msgctxt "DESC_Menu_compendium_de_html"
 msgid "Show the Gpg4win compendium (html, German)"
-msgstr "Gpg4win Kompendium (html, deutsch)"
+msgstr "Gpg4win-Kompendium (html, deutsch)"
 
 #: src/inst-winpt.nsi:46
 msgctxt "DESC_SEC_winpt"

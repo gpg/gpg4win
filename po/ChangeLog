@@ -1,3 +1,8 @@
+2009-08-07  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+
+	* po/de.po: Changed "Schluessel" to "Zertifikat". Updated
+	Kompendium strings.
+
 2009-07-31  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
 	* po/de.po: Fix typo in german installer.
