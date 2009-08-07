@@ -546,13 +546,13 @@ msgstr "Gpg4win Einsteigerhandbuch (pdf, englisch)"
 #: src/inst-man_novice_en.nsi:42
 msgctxt "DESC_SEC_man_novice_en"
 msgid "Gpg4win Manual for the Novice User (English)"
-msgstr "Gpg4win-Einsteigerhandbuch (englisch)"
+msgstr "Gpg4win Einsteigerhandbuch (englisch)"
 
 #: src/inst-man_novice_en.nsi:45
 #, fuzzy
 msgctxt "DESC_Menu_man_novice_en"
 msgid "Show the Gpg4win manual for novice users (pdf, English)"
-msgstr "Gpg4win-Einsteigerhandbuch (englisch)"
+msgstr "Gpg4win Einsteigerhandbuch (englisch)"
 
 #: src/inst-compendium_de.nsi:40
 msgctxt "DESC_Name_compendium_de"
