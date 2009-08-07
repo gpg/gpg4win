@@ -273,18 +273,6 @@ Wie das Kryptographie-Programmpaket Gpg4win selbst, wurde diese Dokument
 nicht für Mathematiker, Geheimdienstler und Kryptographen geschrieben,
 sondern für jedermann.
 
-%TODO: Adele
-%\textbf{Der Übungsroboter Adele} steht Ihnen im Internet zur
-%Verfügung. Adele empfängt und sendet verschlüsselte OpenPGP \Email{}s und
-%entschlüsselt sie auch. Sie können also mit Adele einen kompletten
-%Verschlüsselungsdialog so lange üben, bis Sie sich völlig mit dem
-%Gebrauch der Software vertraut gemacht haben.
-
-%Adele ist im Rahmen des alten GnuPP Projektes entstanden und
-%läuft dort noch immer. "`Das Gpg4win-Kompendium"' verwendet diesen
-%zuverlässigen Übungsroboter und dankt den Inhabern von gnupp.de
-%für den Betrieb von Adele.
-
 
 
 \clearpage %% End of original page 4.
@@ -816,7 +804,7 @@ soll.
 Klicken Sie auf \Button{Fertig stellen}.
 
 
-% FIXME TODO:  Wir müssen erklären wie man Word als Standard Editor in
+% TODO:  Wir müssen erklären wie man Word als Standard Editor in
 % Outlook ausschaltet.
 
 \clearpage
@@ -899,7 +887,7 @@ testen, bevor Sie damit Ernst machen. Doch dazu später mehr.
 \textbf{Los geht's!}
 Rufen Sie das Programm Kleopatra über das Windows-Startmenü auf:
 
-% TODO screenshot Startmenu with Kleopatra highlighted
+% screenshot Startmenu with Kleopatra highlighted
 \begin{center}
 \htmlattributes*{img}{width=400}
 \IncludeImage[width=0.45\textwidth]{sc-kleopatra-startmenu_de}
@@ -908,7 +896,7 @@ Rufen Sie das Programm Kleopatra über das Windows-Startmenü auf:
 Daraufhin sehen Sie das Hauptfenster von Kleopatra -- die
 Zertifikatsverwaltung:
 
-% TODO screenshot: Kleopatra main window
+% screenshot: Kleopatra main window
 \begin{center}
 \htmlattributes*{img}{width=508}
 \IncludeImage[width=0.6\textwidth]{sc-kleopatra-mainwindow-empty_de}
@@ -927,7 +915,7 @@ Sie haben die Wahl zwischen \textbf{OpenPGP} (PGP/MIME) oder \textbf{X.509} (S/M
 Zu deren Unterschieden lesen Sie bitte Kapitel \ref{ch:openpgpsmime}.
 
 \label{chooseCertificateFormat}
-% TODO screenshot: Kleopatra - New certificate - Choose format
+% screenshot: Kleopatra - New certificate - Choose format
 \begin{center}
 \IncludeImage[width=0.6\textwidth]{sc-kleopatra-ChooseCertificateFormat_de}
 \end{center}
@@ -965,7 +953,7 @@ Klicken Sie im obigen Auswahldialog auf die Schaltfläche
 Geben Sie im nun folgenden Fenster Ihren Namen und Ihre
 \Email{}-Adresse an.
 
-% TODO screenshot: New Certificate - Personal details
+% screenshot: Creating OpenPGP Certificate - Personal details
 \begin{center}
 \IncludeImage[width=0.6\textwidth]{sc-kleopatra-openpgp-personalDetails_de}
 \end{center}
@@ -993,7 +981,7 @@ Es werden nun noch einmal alle wesentlichen Eingaben und Einstellungen zur
 (voreingestellten) Experten-Einstellungen interessieren, können Sie
 diese über die Option \textit{Alle Details} einsehen.
 
-% TODO screenshot: New Certificate - Review Parameters
+% screenshot: Creating OpenPGP Certificate - Review Parameters
 \begin{center}
 \IncludeImage[width=0.6\textwidth]{sc-kleopatra-openpgp-reviewParameters_de}
 \end{center}
@@ -1032,7 +1020,7 @@ Ihre Eingabe jeweils mit \Button{OK}.\\
 
 
 Nun wird Ihr OpenPGP-Schlüsselpaar angelegt: 
-% TODO screenshot: New Certificate - Create Key
+% screenshot: Creating OpenPGP Certificate - Create Key
 \begin{center}
 \IncludeImage[width=0.6\textwidth]{sc-kleopatra-openpgp-createKey_de}
 \end{center}
@@ -1045,7 +1033,7 @@ hierdurch sogar leicht die Qualität des erzeugten Schlüsselpaars.
 Sobald die \textbf{Schlüsselpaargenerierung erfolgreich} abgeschlossen ist,
 erhalten Sie folgenden Dialog:
 
-%TODO screenshot: New certificate - key successfully created
+% screenshot: Creating OpenPGP certificate - key successfully created
 \begin{center}
 \IncludeImage[width=0.6\textwidth]{sc-kleopatra-openpgp-keyPairCreated_de}
 \end{center}
@@ -1072,7 +1060,7 @@ drei Schaltflächen betätigen:
     Geben Sie hier den Pfad an, wohin Ihr vollständiges Zertifikat
     (das Ihr neues Schlüsselpaar enthält) exportiert werden soll:
 
-    % TODO screenshot: New certificate - export key
+    % screenshot: New OpenPGP certificate - export key
     \begin{center}
     \IncludeImage[width=0.45\textwidth]{sc-kleopatra-openpgp-exportSecretKey_de}
     \end{center}
@@ -1113,7 +1101,6 @@ drei Schaltflächen betätigen:
     diese Datei per \Email{} an Ihre Korrespondenzpartner 
     (Details im Abschnitt \ref{sec_publishPerEmail}).
 
-    %TODO-Kleo: Verzeichnisdienst -> Zertifikatsserver
     \item[Zertifikate zu Zertifikatsserver senden...]~\\
     Wie genau Sie einen weltweit verfügbaren OpenPGP-Zertifikatsserver
     in Kleopatra einrichten und wie Sie anschließend Ihr öffentliches Zertifikat
@@ -1152,7 +1139,7 @@ machen Sie beliebige Angaben für Name, Organisation und
 Ländercode sowie geben irgendeine ausgedachte \Email{}-Adresse
 ein, z.B. \texttt{CN=Heinrich Heine,O=Test,C=DE,EMAIL=heinrichh@gpg4win.de}.
 
-% TODO screenshot: New X.509 Certificate - Personal details
+% screenshot: New X.509 Certificate - Personal details
 \begin{center}
 \IncludeImage[width=0.6\textwidth]{sc-kleopatra-x509-personalDetails_de}
 \end{center}
@@ -1170,7 +1157,7 @@ Es werden nun noch einmal alle Eingaben und Einstellungen zur
 (voreingestellten) Experten-Einstellungen interessieren, können Sie
 diese über die Option \textit{Alle Details} einsehen.
 
-% TODO screenshot: New Certificate - Review Parameters
+% screenshot: New X.509 Certificate - Review Parameters
 \begin{center}
 \IncludeImage[width=0.6\textwidth]{sc-kleopatra-x509-reviewParameters_de}
 \end{center}
@@ -1186,7 +1173,7 @@ Jetzt folgt der wichtigste Teil: Die Eingabe Ihrer \textbf{Passphrase}!
 Während der Schlüsselgenerierung werden Sie aufgefordert Ihre
 Passphrase einzugeben:
 
-%TODO screenshot: New certificate - pinentry
+% screenshot: New X.509 certificate - pinentry
 \begin{center}
 \IncludeImage[width=0.45\textwidth]{sc-kleopatra-x509-pinentry_de}
 \end{center}
@@ -1217,7 +1204,7 @@ Bestätigen Sie Ihre Eingaben jeweils mit \Button{OK}.\\
 
 \clearpage
 Nun wird Ihr X.509-Schlüsselpaar angelegt:
-% TODO screenshot: New Certificate - Create Key
+% screenshot: New  X.509 Certificate - Create Key
 \begin{center}
 \IncludeImage[width=0.6\textwidth]{sc-kleopatra-x509-createKey_de}
 \end{center}
@@ -1230,7 +1217,7 @@ hierdurch sogar leicht die Qualität des erzeugten Schlüsselpaars.
 Sobald die \textbf{Schlüsselpaargenerierung erfolgreich} abgeschlossen ist,
 erhalten Sie folgenden Dialog:
 
-%TODO screenshot: New certificate - key successfully created
+% screenshot: New X.509 certificate - key successfully created
 \begin{center}
 \IncludeImage[width=0.6\textwidth]{sc-kleopatra-x509-keyPairCreated_de}
 \end{center}
@@ -1334,20 +1321,21 @@ einzigartigen elektronischen Schlüssel.}
 
 %TODO: X.509-Zertifikat noch nicht in Kleopatra sichtbar!
 Sie sehen jetzt wieder das Hauptfenster von Kleopatra. 
-Das soeben erzeugte OpenPGP- oder X.509-Schlüs\-selpaar finden Sie in der
+Das soeben erzeugte OpenPGP-Schlüs\-selpaar finden Sie in der
 Zertifikatsverwaltung unter dem Reiter \textit{Meine Zertifikate} 
 (hier und im weiteren wird exemplarisch ein OpenPGP-Zertifikat verwendet):
 
-%TODO screenshot: Kleopatra with new openpgp certificate
+% screenshot: Kleopatra with new openpgp certificate
 \begin{center}
 \htmlattributes*{img}{width=508}
 \IncludeImage[width=0.6\textwidth]{sc-kleopatra-withOpenpgpTestkey_de}
 \end{center}
 
+
 Doppelklicken Sie auf Ihr neues Zertifikat, um alle Zertifikatsdetails
 sehen zu können:
 
-%TODO screenshot: details of openpgp certificate
+% screenshot: details of openpgp certificate
 \begin{center}
 \htmlattributes*{img}{width=508}
 \IncludeImage[width=0.6\textwidth]{sc-kleopatra-openpgp-certificateDetails_de}
@@ -1537,7 +1525,7 @@ schreiben in die Betreffzeile z.B. \textit{Mein öffentliches OpenPGP-Zertifikat}
 
 So etwa sollte Ihre \Email{} nun aussehen:
 
-%TODO screenshot:  #öffentlich ergänzen# Outlook composer fenster mit openpgp zertifikat.
+% screenshot: Outlook composer fenster mit openpgp zertifikat.
 \begin{center}
 \IncludeImage[width=0.55\textwidth]{sc-ol-adele-sendOpenpgpKey-inline_de}
 \end{center}
@@ -1580,7 +1568,7 @@ als zu diesem Übungszweck programmiert worden.
 
 Ihre fertige \Email{} sollte dann etwa so aussehen:
 
-%TODO screenshot: Outlook composer fenster mit openpgp zertifikat im Anhang
+% screenshot: Outlook composer fenster mit openpgp zertifikat im Anhang
 \begin{center}
 \IncludeImage[width=0.6\textwidth]{sc-ol-adele-sendOpenpgpKey-attachment_de}
 \end{center}
@@ -1678,7 +1666,7 @@ Menü auf \Menu{Datei$\rightarrow$Zertifikate nach Server exportieren...}.
 Sofern Sie noch keinen Zertifikatsserver
 definiert haben, bekommen Sie eine Warnmeldung:
 
-% TODO screenshot: Kleopatra keyserver export warning
+% screenshot: Kleopatra keyserver export warning
 \begin{center}
 \IncludeImage[width=0.45\textwidth]{sc-kleopatra-exportCertificateToServer_de}
 \end{center}
@@ -1794,11 +1782,10 @@ privaten Schlüssel schützenden) Passphrase. Geben Sie diese in den
 aufkommenden Dialog ein. Sofern Ihre Eingabe korrekt war, erhalten Sie
 einen Statusdialog (siehe nachfolgende Abbildung).
 Mit 
-%TODO-Kleo: Buttonname ändern/prüfen
 \Button{Details anzeigen} können Sie sich
 weitere Informationen der \Email{}-Überprüfung anzeigen lassen.
 
-%TODO screenshot: Kleopatra - successfully encrypt/verify dialog
+% screenshot: Kleopatra - successfully encrypt/verify dialog
 \begin{center}
 \IncludeImage[width=0.45\textwidth]{sc-kleopatra-encryptVerify_de}
 \end{center}
@@ -1854,7 +1841,7 @@ Doch nun wollen Sie sicher das Ergebnis, die entschlüsselte Nachricht, endlich e
 Die entschlüsselte Antwort von Adele sieht in etwa so aus\footnote{Abhängig
   von der Softwareversion von Adele kann dies auch etwas
   unterschiedlich aussehen.}:
-%TODO: lieber ein OL-Screenshot der mail.
+%TODO: besser ein Screenshot von einer Adele-Mail in OL.
 %TODO: Schlüssel -> Zertifikat
 
 \begin{verbatim}
@@ -2052,7 +2039,7 @@ dargestellten GpgOL-Optionsdialog unter
 \Menu{Extras$\rightarrow$Optionen$\rightarrow$GpgOL} die Option
 \textit{S/MIME Unterstützung einschalten} aktivieren:
 
-% TODO screenshot: GpgOL options
+% screenshot: GpgOL options
 \begin{center}
 \IncludeImage[width=0.45\textwidth]{sc-gpgol-options_de}
 \end{center}
@@ -2077,7 +2064,7 @@ Schaltfläche klicken).
 
 Ihre Outlook-Nachrichtenfenster sollte nun etwa so aussehen:
 
-% TODO screenshot: OL composer with Adele's address and body text
+% screenshot: OL composer with Adele's address and body text
 \begin{center}
 \IncludeImage[width=0.7\textwidth]{sc-ol-sendEncryptedMail_de}
 \end{center}
@@ -2123,7 +2110,7 @@ finden, haben Sie es vermutlich noch nicht in Ihrer
 Zertifikatsverwaltung importiert (vgl.
 Kapitel~\ref{ch:importCertificate}).
 
-% TODO screenshot: kleopatra encryption dialog - certificate selection
+% screenshot: kleopatra encryption dialog - certificate selection
 % (with Adele + my own certificate)
 \begin{center}
 \IncludeImage[width=0.7\textwidth]{sc-kleopatra-openpgp-encryptDialog_de}
@@ -2151,7 +2138,7 @@ existieren (also der öffentlichen Zertifikate, die von Ihnen bis dahin importier
 Exemplarisch sehen Sie hier eine Auswahl von verfügbaren öffentlichen
 OpenPGP-Zertifikaten:
 
-% TODO screenshot: kleopatra encryption dialog 2 - openpgp certificate list
+% screenshot: kleopatra encryption dialog 2 - openpgp certificate list
 \begin{center}
 \IncludeImage[width=0.7\textwidth]{sc-kleopatra-encryption-chooseOpenpgpCertificate_de}
 \end{center}
@@ -2172,7 +2159,7 @@ Klicken Sie auf \Button{Weiter}. Ihre Nachricht wird nun verschlüsselt.
 Wurde Ihre Nachricht erfolgreich verschlüsselt und versandt, erhalten
 Sie eine Meldung, die Ihnen dies bestätigt:
 
-% TODO screenshot: kleopatra encryption successfully
+% screenshot: kleopatra encryption successfully
 \begin{center}
 \IncludeImage[width=0.7\textwidth]{sc-kleopatra-encryption-successful_de}
 \end{center}
@@ -2237,8 +2224,6 @@ Verschlüsselung (vgl. Kapitel~\ref{ch:encrypt}). Nachdem Sie eine neue
 folgende Schritte durch:
 
 \begin{itemize}
-        %TODO: automodus nutzen, aber nicht beschreiben! So einfach
-        %wie möglich! Nicht das Verfahren beschreiben!
     \item Nachricht signiert versenden
     \item Zertifikatsauswahl
     \item Signierung abschließen
@@ -2253,8 +2238,6 @@ Verfassen Sie zunächst in Outlook eine neue \Email{} und addressieren
 Sie diese an Ihren Korrespondenzpartner.
 
 
-%TODO: Kleo-Protokoll-Auswahl-Dialog beschreiben (sofern Kleo das
-%nicht mehr ändert)!
 
 
 Bevor Sie Ihre Nachricht abschicken, geben Sie noch an, dass
@@ -2264,7 +2247,8 @@ signieren}. Die Schaltfläche mit dem signierenden Stift
 wird aktiviert.
 
 Ihr \Email{}-Fenster sollte anschließend etwa so aussehen:
-% TODO screenshot: OL composer with Adele's address and body text
+
+% screenshot: OL composer with Adele's address and body text
 \begin{center}
 \IncludeImage[width=0.7\textwidth]{sc-ol-sendSignedMail_de}
 \end{center}
@@ -2295,8 +2279,7 @@ Verschlüsseln -- Ihre \textbf{eigenen} Zertifikate (also alle die
 Zertifikate, zu denen Ihnen jeweils ein geheimer Schlüssel vorliegt)
 angezeigt werden.
 
-
-% TODO screenshot: kleopatra sign dialog - certificate selection
+% screenshot: kleopatra sign dialog - certificate selection
 \begin{center}
 \IncludeImage[width=0.7\textwidth]{sc-kleopatra-openpgp-signDialog_de}
 \end{center}
@@ -2331,7 +2314,7 @@ eigenen Zertifikate des vorher gewählten Protokolls,
 die in Ihrer Zertifikatsverwaltung existieren.
 
 Nachfolgend ein Beispieldialog für OpenPGP:
-% TODO screenshot: kleopatra sign dialog 2 - choose certificate
+% screenshot: kleopatra sign dialog 2 - choose certificate
 \begin{center}
 \IncludeImage[width=0.45\textwidth]{sc-kleopatra-sign-chooseOpenpgpCertificate_de}
 \end{center}
@@ -2350,7 +2333,7 @@ Bestätigen Sie Ihr Zertifikat mit \Button{Weiter}.
 Um die Signierung Ihrer \Email{} abzuschließen, werden Sie
 aufgefordert im folgenden Fenster Ihre geheime Passphrase einzugeben:
 
-% TODO screenshot: kleopatra sign dialog 2 - choose certificate
+% screenshot: kleopatra sign dialog 2 - choose certificate
 \begin{center}
 \IncludeImage[width=0.45\textwidth]{sc-kleopatra-sign-OpenpgpPinentry_de}
 \end{center}
@@ -2362,7 +2345,7 @@ Ihre Nachricht wird nun signiert und versandt.
 Nach erfolgreicher Signierung Ihrer Nachricht, erhalten
 Sie folgenden Dialog:
 
-% TODO screenshot: kleopatra sign successful
+% screenshot: kleopatra sign successful
 \begin{center}
 \IncludeImage[width=0.7\textwidth]{sc-kleopatra-sign-successful_de}
 \end{center}
@@ -2424,7 +2407,7 @@ GpgOL übergibt die \Email{} automatisch an Kleopatra zur
 Prüfung der Signatur. Kleopatra  meldet das Ergebnis
 in einem Statusdialog, z.B.:
 
-%TODO screenshot: Kleopatra - successfully encrypt/verify dialog
+% screenshot: Kleopatra - successfully encrypt/verify dialog
 \begin{center}
 \IncludeImage[width=0.45\textwidth]{sc-kleopatra-encryptVerify_de}
 \end{center}
@@ -3292,7 +3275,7 @@ gewünschten Angaben ein.
 
 Der folgende Screenshot zeigt einen konfigurierten
 OpenPGP-Zertifikatsserver:
-%TODO screenshot: Kleopatra OpenPGP certificate server config dialog
+% screenshot: Kleopatra OpenPGP certificate server config dialog
 \begin{center}
 \IncludeImage[width=0.6\textwidth]{sc-kleopatra-configureKeyserver_de}
 \end{center}
@@ -3337,7 +3320,6 @@ Hier eine Auswahl von gut funktionierenden Zertifikatsservern:
 
 Sollte Sie Probleme mit einer Firewall haben, so versuchen Sie am
 besten die Zertifikatsserver, deren URL mit \verb-http://- beginnen.
-%TODO#: Verweis auf Proxy-Konfiguration
 
 Die Zertifikatsserver unter den Adressen
 \begin{itemize}
@@ -3366,7 +3348,7 @@ Namen des Zertifikatsbesitzers, oder eindeutiger und daher besser
 geeignet, seine \Email{}-Adresse
 oder den Fingerabdruck seines Zertifikats eingeben können.
 
-%TODO screenshot: Kleopatra certification search dialog
+% screenshot: Kleopatra certification search dialog
 \begin{center}
 \IncludeImage[width=0.6\textwidth]{sc-kleopatra-certificateSearchOnKeyserver_de}
 \end{center}
@@ -3447,8 +3429,7 @@ Wenn Sie sich zu einem Zertifikat die Details in Kleopatra anzeigen
 lassen (z.B. durch Doppelklick auf das Zertifikat), sehen Sie u.a.
 dessen 40-stelligen Fingerabdruck:
 
-%TODO: mit Adeles Zertifikat
-% screenshot:  GPA key listing with fingerprint
+% screenshot: GPA key listing with fingerprint
 \begin{center}
 \IncludeImage[width=0.6\textwidth]{sc-kleopatra-openpgp-certificateDetails_de}
 \end{center}
@@ -3502,7 +3483,7 @@ halten und beglaubigen möchten. Wählen Sie anschließend im Menü:
 Im nachfolgenden Dialog bestätigen Sie nun noch einmal das zu
 beglaubigende OpenPGP-Zertifikat mit \Button{Weiter}:
 
-% TODO screenshot: Kleopatra certify certificate 1
+% screenshot: Kleopatra certify certificate 1
 \begin{center}
 \IncludeImage[width=0.6\textwidth]{sc-kleopatra-certifyCertificate1_de}
 \end{center}
@@ -3510,7 +3491,7 @@ beglaubigende OpenPGP-Zertifikat mit \Button{Weiter}:
 \clearpage
 Im nächsten Schritt wählen Sie Ihr eigenes OpenPGP-Zertifikat aus, mit dem Sie das
 (im letzten Schritt ausgewählte) Zertifikat beglaubigen wollen:
-% TODO screenshot: Kleopatra certify certificate 2
+% screenshot: Kleopatra certify certificate 2
 \begin{center}
 \IncludeImage[width=0.6\textwidth]{sc-kleopatra-certifyCertificate2_de}
 \end{center}
@@ -3532,7 +3513,7 @@ Erst nach korrekter Eingabe ist die Beglaubigung abgeschlossen.
 \clearpage 
 
 Nach erfolgreicher Beglaubigung erhalten Sie folgendes Fenster:
-% TODO screenshot: Kleopatra certify certificate 3
+% screenshot: Kleopatra certify certificate 3
 \begin{center}
 \IncludeImage[width=0.6\textwidth]{sc-kleopatra-certifyCertificate3_de}
 \end{center}
@@ -3721,7 +3702,7 @@ Die Signierung können Sie bequem mit \textbf{GpgEX} aus dem Kontextmenü des
 Windows Explorer ausführen. Selektieren Sie eine (oder mehrere)
 Datei(en) und öffnen Sie mit der rechten Maustaste das Kontextmenü:
 
-% TODO screenshot GpgEX contextmenu sign/encrypt
+% screenshot GpgEX contextmenu sign/encrypt
 \begin{center}
 \IncludeImage[width=0.25\textwidth]{sc-gpgex-contextmenu-signEncrypt_de}
 \end{center}
@@ -3731,7 +3712,7 @@ Dort wählen Sie \Menu{Signieren und verschlüsseln} aus.
 \clearpage
 Selektieren Sie im erscheinenden Fenster die Option \Menu{Signieren}:
 
-%TODO screenshot GpgEX sign file, step 1
+% screenshot sign file, step 1
 \begin{center}
 \IncludeImage[width=0.7\textwidth]{sc-kleopatra-signFile1_de}
 \end{center}
@@ -3744,9 +3725,7 @@ Im folgenden Dialog wählen Sie -- sofern nicht
 schon vorausgewählt -- Ihr privates (OpenPGP oder S/MIME) Zertifikat
 aus, mit dem Sie die Datei signieren möchten.
 
-% screenshot sign/encrypt file, step 2: choose sign certificates
-
-%TODO###
+% screenshot sign file, step 2: choose sign certificates
 \begin{center}
 \IncludeImage[width=0.7\textwidth]{sc-kleopatra-signFile2_de}
 \end{center}
@@ -3758,7 +3737,7 @@ Sie müssen nun Ihre Passphrase in den aufkommenden Pinentry-Dialog eingeben.
 \clearpage
 Nach erfolgreicher Signierung erhalten Sie folgendes Fenster:
 
-%TODO screenshot GpgEX sign file, step 3: finish
+% screenshot sign file, step 3: finish
 \begin{center}
 \IncludeImage[width=0.7\textwidth]{sc-kleopatra-signFile3_de}
 \end{center}
@@ -3806,7 +3785,7 @@ den Eintrag  \Menu{Entschlüsseln und überprüfen}:
 
 \clearpage
 Daraufhin erhalten Sie folgendes Fenster:
-% TODO screenshot kleopatra verify file, step 1
+% screenshot kleopatra verify file, step 1
 \begin{center}
 \IncludeImage[width=0.7\textwidth]{sc-kleopatra-verifyFile1_de}
 \end{center}
@@ -3860,7 +3839,7 @@ Kleopatra einmal durchspielen.
 Selektieren Sie eine (oder mehrere) Datei(en) und öffenen Sie mit der rechten Maustaste
 das Kontextmenü:
 
-% TODO screenshot GpgEX contextmenu sign/encrypt
+% screenshot GpgEX contextmenu sign/encrypt
 \begin{center}
 \IncludeImage[width=0.25\textwidth]{sc-gpgex-contextmenu-signEncrypt_de}
 \end{center}
@@ -3874,7 +3853,7 @@ Abschnitt~\ref{sec_signFile}) schon kennen.
 Entscheiden Sie sich im oberen Feld für die Option \Menu{Nur
 Verschlüsseln}:
 
-% TODO screenshot kleopatra encrypt file, step 1
+% screenshot kleopatra encrypt file, step 1
 \begin{center}
 \IncludeImage[width=0.7\textwidth]{sc-kleopatra-encryptFile1_de}
 \end{center}
@@ -3911,7 +3890,7 @@ Klicken Sie auf \Button{Weiter}.
 \clearpage
 An wen soll die Datei verschlüsselt werden? Wählen Sie im folgenden
 Dialog einen oder mehrere Empfängerzertifikate aus:
-% TODO screenshot kleopatra encrypt file, step 2
+% screenshot kleopatra encrypt file, step 2
 \begin{center}
 \IncludeImage[width=0.7\textwidth]{sc-kleopatra-encryptFile2_de}
 \end{center}
@@ -3933,7 +3912,7 @@ Klicken Sie nun auf \Button{Verschlüsseln}, um Ihre Datei zu verschlüsseln.
 \clearpage
 Nach erfolgreicher Verschlüsselung sollte Ihr Ergebnisfenster etwa so
 aussehen:
-% TODO screenshot kleopatra encrypt file, step 3: successful
+% screenshot kleopatra encrypt file, step 3: successful
 \begin{center}
 \IncludeImage[width=0.7\textwidth]{sc-kleopatra-encryptFile3_de}
 \end{center}
@@ -3978,7 +3957,7 @@ Endung \textit{.gpg}, \textit{.asc}, \textit{.p7m} oder \textit{.pem} --
 und wählen Sie aus dem Kontextmenü des Windows Explorer
 den Eintrag \Menu{Entschlüsseln und überprüfen}:
 
-% TODO screenshot GpgEX contextmenu verifiy/decrypt
+% screenshot contextmenu verifiy/decrypt
 \begin{center}
 \IncludeImage[width=0.25\textwidth]{sc-gpgex-contextmenu-verifyDecrypt_de}
 \end{center}
@@ -3988,7 +3967,7 @@ den Eintrag \Menu{Entschlüsseln und überprüfen}:
 Im folgenden Entschlüsselungsdialog können Sie, bei Bedarf, noch den
 Ausgabe-Ordner verändern.
 
-% TODO screenshot kleopatra decrypt file, step 1
+% screenshot kleopatra decrypt file, step 1
 \begin{center}
 \IncludeImage[width=0.7\textwidth]{sc-kleopatra-decryptFile1_de}
 \end{center}
@@ -4001,7 +3980,7 @@ Geben Sie anschließend Ihre Passphrase ein.
 \clearpage
 Das Ergebnis zeigt, dass die Entschlüsselung erfolgreich war:
 
-% TODO screenshot kleopatra decrypt file, step 2
+% screenshot kleopatra decrypt file, step 2
 \begin{center}
 \IncludeImage[width=0.7\textwidth]{sc-kleopatra-decryptFile2_de}
 \end{center}
@@ -4077,7 +4056,7 @@ Beglaubigungen haben kann, sollten Sie die Sicherung erneut durchführen.
 klicken Sie auf \Menu{Datei$\rightarrow$Geheimen Schlüssel
 exportieren}.
 
-% TODO screenshot kleopatra export secret key
+% screenshot kleopatra export secret key
 \begin{center}
 \IncludeImage[width=0.45\textwidth]{sc-kleopatra-openpgp-exportSecretKey_de}
 \end{center}
@@ -4117,14 +4096,14 @@ wählen Sie die zu importierende Datei aus.
 Handelt es sich um eine PKCS12-Datei (z.B. vom Typ \textit{.p12}), so werden
 Sie zunächst nach der Passphrase zum Entsprerren des privaten Schlüssels
 gefragt:
-% ggf TODO screenshot pinentry p12 import (I)
+% screenshot pinentry p12 import (I)
 \begin{center}
 \IncludeImage[width=0.45\textwidth]{sc-pinentry-p12-import-a_de}
 \end{center}
 
 Setzen Sie nun eine (ggf. neue) Passphrase, die nach dem Importvorgang Ihrem privaten
 Schlüssel zugeordnet werden soll:
-% ggf TODO screenshot pinentry p12 import (II)
+% screenshot pinentry p12 import (II)
 \begin{center}
 \IncludeImage[width=0.45\textwidth]{sc-pinentry-p12-import-b_de}
 \end{center}
@@ -4138,7 +4117,7 @@ Nach dem erfolgreichen Importieren sehen Sie ein Informationsfenster,
 das Ihnen die Ergebnisse des
 Importvorgangs auflistet; hier am Beispiel eines geheimen
 OpenPGP-Zertifikats:
-% TODO screenshot kleopatra import secret key - status
+% screenshot kleopatra import secret key - status
 \begin{center}
 \IncludeImage[width=0.45\textwidth]{sc-kleopatra-import-openpgp-secret-key_de}
 \end{center}
@@ -4218,8 +4197,6 @@ Einige typische systemweite Einstellungen sind:
 
 
 \item Proxy für Zertifikatsserver-Suche
-    %TODO#: Proxy für OpenPGP-Zertifikatsserver - Syntax beschreiben.
-
     Es kommt vor, dass interne Netzwerke keine direkten Verbindungen der einzelnen
     Rechner nach aussen zulassen, sondern einen sogenannten Proxy vorsehen.
 
@@ -5728,7 +5705,7 @@ GpgOL wird durch den Gpg4win-Installationsassistenten installiert.  Beim nächste
 Start von Outlook findet sich im Menü
 \Menu{Extras$\rightarrow$Optionen} eine Karteikarte \Menu{GpgOL}:
 
-% TODO screenshot: GpgOL options
+% screenshot: GpgOL options
 \begin{center}
 \IncludeImage[width=0.45\textwidth]{sc-gpgol-options_de}
 \end{center}
@@ -5737,7 +5714,6 @@ Start von Outlook findet sich im Menü
 Die Karteikarte \textit{GpgOL} unterteilt sich in drei Bereiche:
 \begin{enumerate}
     \item \textbf{Allgemein:}
-        %TODO#: ÜBerarbeiten
         Nach der Installation von Gpg4win ist die 
         \T\margin{\IncludeImage[width=1.5cm]{smime-icon}}
         S/MIME Funktionalität in GpgOL deaktiviert.
@@ -6037,8 +6013,7 @@ mehr auf dem System vorhanden).
 \T\chapter{Deinstallation von Gpg4win}
 \W\chapter*{E Deinstallation von Gpg4win}
 
-%  TODO: Wenn die Kapitel zu S/MIME fertig sind, sollten Verweise zum Sichern
-%  von Zertifikaten und Schlüssel eingefügt werden
+%TODO: Verweise zum Sichern von Zertifikaten einfügen
 
 Soll Gpg4win deinstalliert werden,
 dann sollten Sie zunächst alle nicht notwendigen

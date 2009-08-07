@@ -1,5 +1,7 @@
 2009-08-07  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
-
+	* manual/sc-kleopatra-certificateSearchOnKeyserver_de.png,
+	  manual/sc-inst-options_de.png: Update screenshots.
+	* manual/gpg4win-compendium-de.tex: Fix and remove many TODOs in tex file.
 	* README.de.txt: Minor changes.
 	* manual/gpg4win-compendium-de.tex: Sync install options with Readme.
 	* README.en.txt: Update.
