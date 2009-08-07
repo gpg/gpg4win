@@ -1,3 +1,10 @@
+2009-08-07  Werner Koch  <wk@g10code.com>
+
+	Release 2.0.0.
+
+	* patches/dirmngr-1.0.3/01-ldaphttp.patch: New.
+	* Makefile.am (EXTRA_DIST): Add it.
+
 2009-08-07  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
 	* packages/packages.current: Update kleopatra and kdelibs.

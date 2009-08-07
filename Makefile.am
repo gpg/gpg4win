@@ -54,6 +54,7 @@ EXTRA_DIST = autogen.sh README.SVN ONEWS \
         patches/gnupg2-2.0.12/08-sm-learn-card.patch \
 	patches/gnupg2-2.0.12/09-sm-keylist.patch \
 	patches/gnupg2-2.0.12/10-inv-sgnr.patch \
+	patches/dirmngr-1.0.3/01-ldaphttp.patch \
 	patches/gpgol-0.9.91/01-gpgme.patch \
         patches/gpa-0.9.0/01-title-prop.patch \
 	patches/libetpan-0.57/01-gnutls_compat.patch \
