@@ -171,7 +171,8 @@ Das Gpg4win-Kompendium}
     \\[0.2cm]
       \small Überarbeitet von
     \T\\
-      \small Werner Koch, Emanuel Schütze und Jan-Oliver Wagner.
+      \small Werner Koch, Emanuel Schütze, Dr. Jan-Oliver Wagner und
+      Florian v. Samson.
 }
 
 \date{Version \compendiumVersionDE~vom \compendiumDateDE
@@ -217,10 +218,6 @@ License"' findet sich im Anhang mit dem gleichnamigen Titel.
 Inoffizielle Übersetzungen dieser Lizenz finden Sie unter
 http://www.gnu.org/licenses/translations.html.
 
-Wie das Kryptographie-Programmpaket Gpg4win selbst, wurde diese Dokument
-nicht für Mathematiker, Geheimdienstler und Kryptographen geschrieben,
-sondern für jedermann.
-
 
 
 %%\clearpage
@@ -241,7 +238,7 @@ Das Gpg4win-Kompendium besteht aus drei Teilen:
 
 \item \textbf{Teil~\ref{part:Fortgeschrittene} "`Für
     Fortgeschrittene"'}:
-    Das Hintergrundwissen für Gpg4win.
+    Das Hintergrundwissen zu Gpg4win.
 
 \item \textbf{Anhang}: Weiterführende technische Informationen zu
     Gpg4win.\\
@@ -250,9 +247,9 @@ Das Gpg4win-Kompendium besteht aus drei Teilen:
 \textbf{Teil~\ref{part:Einsteiger} "`Für Einsteiger"'} führt Sie kurz
 und knapp durch die Installation
 und die alltägliche Benutzung der Gpg4win-Programmkomponenten.
-Der Übungsroboters \textbf{Adele} wird Ihnen dabei behilflich sein und
+Der Übungsroboter \textbf{Adele} wird Ihnen dabei behilflich sein und
 ermöglicht Ihnen, die \Email{}-Ver- und Entschlüsselung 
-(mit OpenPGP) so lange zu üben, bis Sie sich ganz vertraut im Umgang mit
+(mit OpenPGP) so lange zu üben, bis Sie sich vertraut im Umgang mit
 Gpg4win gemacht haben.
 
 Der Zeitbedarf für das Durcharbeiten des Schnelleinstiegs hängt unter anderem davon
@@ -270,8 +267,11 @@ der angegebenen Reihenfolge lesen.\\
 
 Im \textbf{Anhang} finden Sie Details zu spezifischen technischen
 Themen rund um Gpg4win, unter anderem zum Outlook-Plugin
-\textit{GpgOL}.
+\textit{GpgOL}.\\
 
+Wie das Kryptographie-Programmpaket Gpg4win selbst, wurde diese Dokument
+nicht für Mathematiker, Geheimdienstler und Kryptographen geschrieben,
+sondern für jedermann.
 
 %TODO: Adele
 %\textbf{Der Übungsroboter Adele} steht Ihnen im Internet zur
@@ -312,34 +312,34 @@ Verschlüsselungssoftware für \Email{}s und Dateien.
 Gpg4win bezeichnet ein Gesamtpaket, welches in Version 2 die folgenden
 Programme umfasst:}
 
-\begin{description}
-    \item[GnuPG:] GnuPG ist das Kernstück von Gpg4win: Die Verschlüsselungs-Software.
-    \item[Kleopatra:] Die zentrale Zertifikatsverwaltung von Gpg4win.
+\begin{itemize}
+    \item \textbf{GnuPG}\\ GnuPG ist das Kernstück von Gpg4win: Die Verschlüsselungs-Software.
+    \item \textbf{Kleopatra}\\ Die zentrale Zertifikatsverwaltung von Gpg4win.
         Unterstützt OpenPGP und X.509\linebreak (S/MIME) und sorgt für
         eine einheitliche Benutzerführung für alle
         kryptographischen Operationen.
-    \item[GpgOL:] GnuPG für Outlook (GpgOL) ist eine Erweiterung für Microsoft
+    \item \textbf{GpgOL}\\ GnuPG für Outlook (GpgOL) ist eine Erweiterung für Microsoft
         Outlook 2003 und 2007, die verwendet wird, um Nachrichten mit OpenPGP
         oder S/MIME zu signieren / verschlüsseln.
-    \item[GpgEX:] GPG Explorer eXtension (GpgEX) ist eine Erweiterung für
+    \item \textbf{GpgEX}\\ GPG Explorer eXtension (GpgEX) ist eine Erweiterung für
         den Windows Explorer, die es ermöglicht, Dateien über das
         Kontextmenü zu signieren / verschlüsseln.
-    \item[GPA:] Der GNU Privacy Assistent (GPA) ist neben Kleopatra ein
+    \item \textbf{GPA}\\ Der GNU Privacy Assistent (GPA) ist neben Kleopatra ein
         alternatives Programm zum Verwalten von OpenPGP- und X.509-Zertifikaten.
-    \item[Claws Mail:] Claws Mail ist ein vollständiges
+    \item \textbf{Claws Mail}\\ Claws Mail ist ein vollständiges
         \Email{}-Programm mit sehr guter Unterstützung für GnuPG.
-\end{description}
+\end{itemize}
 
 
 Mit dem Verschlüsselungsprogramm GnuPG (GNU Privacy Guard) kann
 jedermann \Email{}s  sicher, einfach und kostenlos verschlüsseln. GnuPG
 kann ohne jede Restriktion privat oder kommerziell benutzt werden. Die
-von GnuPG eingesetzte Verschlüsselungstechnologie ist sehr
+von GnuPG eingesetzte Verschlüsselungstechnologie ist 
 sicher und kann nach dem heutigen
 Stand von Forschung und Technik nicht gebrochen werden.
 
 GnuPG ist \textbf{Freie Software}\footnote{oft auch als Open Source
-Software bezeichnet}. Das bedeutet, dass jedermann das Recht hat, sie
+Software (OSS) bezeichnet}. Das bedeutet, dass jedermann das Recht hat, sie
 nach Belieben kommerziell oder privat zu nutzen.  Jedermann darf den
 Quellcode, also die eigentliche Programmierung des Programms, genau
 untersuchen und auch selbst Änderungen durchführen und diese
@@ -350,13 +350,13 @@ werden kann.}
 
 Für eine Sicherheits-Software ist diese garantierte Transparenz des
 Quellcodes eine unverzichtbare Grundlage. Nur so läßt sich die
-Vertrauenswürdigkeit eines Programmes prüfen.
+Vertrauenswürdigkeit eines Programmes wirklich prüfen.
 
 GnuPG basiert auf dem internationalen Standard \textbf{OpenPGP} (RFC 2440), ist
-vollständig kompatibel zu PGP und benutzt die gleiche Infrastruktur
-(Zertifikatsserver etc.). Seit Version 2 von GnuPG wird auch der
-kryptographische Standard \textbf{S/MIME} (CMS/RFC 3852 bzw. X.509)
-unterstützt.
+vollständig kompatibel zu PGP und benutzt auch die gleiche Infrastruktur
+(Zertifikatsserver etc.) wie dieser. Seit Version 2 von GnuPG wird auch der
+kryptographische Standard \textbf{S/MIME} (IETF RFC 3851, ITU-T X.509
+und ISIS-MTT/Common PKI) unterstützt.
 
 PGP ("`Pretty Good Privacy"') ist keine Freie Software, sie war
 lediglich vor vielen Jahren kurzzeitig zu ähnlichen Bedingungen wie
@@ -368,7 +368,7 @@ Wirtschaft und Technologie, Gpg4win und Gpg4win2
 durch das Bundesamt für Sicherheit in der Informationstechnik
 unterstützt.
 
-Weitere Informationen zu GnuPG und den Projekten der Bundesregierung
+Weitere Informationen zu GnuPG und weiteren Projekten der Bundesregierung
 zum Schutz des Internets finden Sie auf den Webseiten
 \uniurl[www.bsi.de]{http://www.bsi.de} und
 \uniurl[www.bsi-fuer-buerger.de]{http://www.bsi-fuer-buerger.de}
@@ -384,7 +384,7 @@ Die Verschlüsselung von Nachrichten wird manchmal als das zweitälteste
 Gewerbe der Welt bezeichnet. Verschlüsselungstechniken benutzten schon
 der Pharao Khnumhotep II, Herodot und Cäsar.  Dank Gpg4win ist
 Verschlüsselung nunmehr für jedermann frei und kostenlos
-zugänglich\ldots
+zugänglich.
 
 \begin{center}
 \htmlattributes*{img}{width=300}
@@ -470,7 +470,7 @@ Sie allein bestimmen das Verhältnis zwischen Bequemlichkeit bei
 der Verschlüsselung und größtmöglicher Sicherheit.  Dazu gehören die
 wenigen, aber umso wichtigeren Vorkehrungen, die Sie treffen müssen,
 um Gpg4win richtig zu nutzen. In diesem Kompendium werden wir
-Ihnen dieses Vorgehen Schritt für Schritt erläutern...
+Ihnen dieses Vorgehen Schritt für Schritt erläutern.
 
 
 \clearpage
@@ -485,7 +485,8 @@ und S/MIME. Beide Standards und ihre Umsetzungen in Software ermöglichen die
 Beim Verschlüsseln bzw. bei der Sicherheit der geheimen Datenübertragung
 sind zwei Perspektiven wichtig, einmal die Gewährleistung der \textbf{Geheimhaltung}
 und zum anderen die \textbf{Authentizität} des Absenders. Authentizität bedeutet
-hier, dass der Inhalt auch tatsächlich vom besagten Absender ist.
+hier, dass der Inhalt auch tatsächlich vom besagten Absender versandt
+wurde.
 
 \subsubsection{Die Gemeinsamkeit: Das "`Public-Key"' Verfahren}
 Konzeptionell steckt hinter OpenPGP und S/MIME die gleiche Methode zur Geheimhaltung,
@@ -526,7 +527,7 @@ abhanden kommt oder jemand davon eine Kopie erstellt, ist das ein
 großes Problem.
 
 Beim "`Public-Key"' Verfahren verschließt man mit Ihrem
-\textbf{öffentlichen Zertifikat}
+\textbf{öffentlichen Schlüssel} (aus dem Zertifikat)
 die Truhe und Sie schließen die Truhe mit Ihrem \textbf{geheimen Schlüssel} auf.
 Man muss also nur die Truhe zu Ihnen transportieren lassen.
 Das ist auf jeden Fall sicherer als den geheimen Schlüssel mit zu
@@ -549,39 +550,38 @@ Geheimnisse verstehen. Viel Spaß beim Entdecken.
 % TODO: Grafik?! (z.B. Alice - Bob Transport-Problem)
 
 \clearpage
-\subsubsection{Der Unterschied: Die Authentisierung}
+\subsubsection{Der Unterschied: Die Authentisierung / Beglaubigungen}
 
-Der wesentlichste Unterschied zwischen OpenPGP und S/MIME liegt
-im Bereich der Authentisierung.
+Der wesentliche Unterschied zwischen OpenPGP und S/MIME liegt
+im Bereich der Authentisierung / Beglaubigungen.
 
 Um die Authentizität des Absenders festzustellen, ist bei
 \textbf{S/MIME} ein Zertifikat notwendig, welches die Authentizität
 des Schlüsselpaar-Besitzers unzweifelhaft beglaubigt.  Das heißt, dass
 Sie Ihren öffentlichen Schlüssel von einer dazu berechtigten
-Organisation zertifizieren lassen muss, bevor er dadurch wirklich
-nutzbar wird. Diese Organisation wurde wiederum von einer höher
-stehenden Organisation zertifiziert usw. bis man zu einem
-Wurzelzertifikat kommt. Vertaut man nun diesem Wurzelzertifkat, so
-vertaut man automatisch allen darunter liegenden Zertfizierungen. Das
+Organisation beglaubigen lassen müssen, bevor er wirklich
+nutzbar wird. Das Zertifikat dieser Organisation wurde wiederum mit
+dem Zertifikat einer höher stehenden Organisation beglaubigt usw. bis man zu einem
+Wurzelzertifikat kommt. Vertraut man nun diesem Wurzelzertifkat, so
+vertraut man automatisch allen darunter liegenden Zertifikaten. Das
 nennt man \textbf{hierarchisches Vertrauenskonzept}. Zumeist ist die
-Kette nur 3 Komponenten lang: Wurzelzertifikat, Zertifizierungsstelle
-(auch CA für Certificate Authority genannt), Anwender.  Die "`Wurzel"'
-zertifiziert CA, die CA zertifiziert den Anwender.
+Kette nur 3 Komponenten lang: Wurzelzertifikat, Zertifikat der Zertifizierungsstelle
+(auch CA für Certificate Authority genannt), Anwenderzertifikat.
 
 Im Gegensatz dazu verwendet \textbf{OpenPGP} in der Regel eine direkte
-"`peer-to-peer"' Zertifizierung (Anwender A zertfiziert Anwender B, B
-zertifiziert A und C usw.) und macht damit aus einem
-Zertifizierungs-Baum ein Zertifizierungs-Netz, das sogenannte
+("`peer-to-peer"') Beglaubigung (Anwender A beglaubigt Anwender B, B
+beglaubigt A und C usw.) und macht damit aus einem
+Beglaubigungs-Baum ein Beglaubigungs-Netz, das sogenannte
 \textbf{Web-of-Trust}. Im Fall der direkten Authentisierung bei
 OpenPGP haben Sie also die Möglichkeit, \textit{ohne} die
-Zertifizierung von einer höheren Stelle, verschlüsselte Daten und
+Beglaubigung von einer höheren Stelle, verschlüsselte Daten und
 \Email{}s auszutauschen. Dafür reicht es aus, wenn Sie der
 \Email{}-Adresse und dem dazugehörigen Zertifikat ihres
 Kommunikationspartners vertrauen.
 
 \textbf{Nähere Informationen zu Authentisierungswegen, wie z.B. dem
-Web-of-Trust oder den Zertifizierunsstellen, erhalten Sie
-später in Kapitel~\ref{ch:trust}.}
+Web-of-Trust oder den Zertifizierungsstellen, erhalten Sie
+in Kapitel~\ref{ch:trust}.}
 
 % TODO: Grafik?! (z.B. Alice - Bob Authentizität-Problem)
 
@@ -610,9 +610,9 @@ schnell überblicken, welche Besonderheiten bei welchem Konzept zu
 beachten sind.
 
 \begin{center}
-\IncludeImage[width=3cm]{openpgp-icon}
+\IncludeImage[width=2cm]{openpgp-icon}
 \hspace{1cm}
-\IncludeImage[width=3cm]{smime-icon}
+\IncludeImage[width=2cm]{smime-icon}
 \end{center}
 
 
@@ -660,7 +660,7 @@ Der Installationsassistent startet und befragt Sie zuerst nach der
 Sprache für den Installationsvorgang:
 % screenshot: Installer Sprachenauswahl
 \begin{center}
-\IncludeImage[width=0.45\textwidth]{sc-inst-language_de}
+\IncludeImage[width=0.35\textwidth]{sc-inst-language_de}
 \end{center}
 
 Bestätigen Sie Ihre Sprachauswahl mit \Button{OK}.
@@ -707,12 +707,13 @@ möchten.
 Eine Vorauswahl der normalerweise installierende Komponenten ist
 bereits getroffen. Den Rest können Sie bei Bedarf auch später installieren.
 
-Wenn Sie mit der Maus über die Auswahl laufen, dann erscheint
+Wenn Sie die Maus über eine Gpg4win-Komponente ziehen, dann erscheint
 jeweils rechts eine Kurzbeschreibung die Ihnen bei der
 Entscheidung hilft.
 
-Die Anzeige des benötigen Speichers auf der Festplatte
-hilft Ihnen vielleicht ebenfalls weiter.
+Die Anzeige des benötigen Speichers auf der Festplatte von allen zur
+Installation ausgewählten\linebreak Gpg4win-Komponenten kann auch sehr
+hilfreich sein.
 
 % screenshot: Auswahl zu installierender Komponenten
 \begin{center}
@@ -728,7 +729,7 @@ Klicken Sie auf \Button{Weiter}.
 In der nun folgenden \textbf{Installationsverzeichnis-Auswahl} können Sie 
 einen Dateiordner auf Ihrem PC
 aussuchen, in dem Gpg4win installiert wird. Sie können hier in der
-Regel den vorgeschlagenen Programme-Ordner übernehmen, z.B.:
+Regel den vorgeschlagenen Programm-Ordner übernehmen, z.B.:
 \Filename{C:$\backslash$Programme$\backslash$GNU$\backslash$GnuPG}
 
 % screenshot: Auswahl des Installationsverzeichnis.
@@ -778,7 +779,7 @@ drücken, um ein Protokoll der Installation sichtbar zu machen.
 
 % screenshot: Ready page Installer
 \begin{center}
-\IncludeImage[width=0.6\textwidth]{sc-inst-ready_de}
+\IncludeImage[width=0.6\textwidth]{sc-inst-progress_de}
 \end{center}
 
 Nachdem die Installation abgeschlossen ist, drücken Sie bitte auf
@@ -861,7 +862,7 @@ Ein Schlüsselpaar besteht, wie Sie im Kapitel~\ref{ch:openpgpsmime} gelernt habe
 aus einem \textbf{öffentlichen} und einem  \textbf{geheimen Schlüssel}.
 Ergänzt mit den Metadaten (\Email{}-Adresse, Benutzer-Kennung etc.), die
 Sie bei der Erstellung Ihres Schlüsselpaars angeben, erhalten Sie Ihr
-Zertifikat mit dem öffentlichen und geheimen Schlüssel.
+persönliches Zertifikat mit dem öffentlichen und geheimen Schlüssel.
 
 Diese Definition gilt sowohl für OpenPGP wie auch für S/MIME (die Zertifikate
 entsprechen einem Standard mit der Bezeichnung "`X.509"').
@@ -921,10 +922,9 @@ nachholen...
 Klicken Sie auf \Menu{Datei$\rightarrow$Neues~Zertifikat}. 
 
 Im folgenden Dialog entscheiden Sie sich für ein Format,
-für das anschließend ein Zertifikat erstellt werden soll.
+in dem anschließend ein Zertifikat erstellt werden soll.
 Sie haben die Wahl zwischen \textbf{OpenPGP} (PGP/MIME) oder \textbf{X.509} (S/MIME).
-Zu den Unterschieden lesen Sie bitte Kapitel \ref{ch:openpgpsmime} auf
-Seite \pageref{ch:openpgpsmime}.
+Zu deren Unterschieden lesen Sie bitte Kapitel \ref{ch:openpgpsmime}.
 
 \label{chooseCertificateFormat}
 % TODO screenshot: Kleopatra - New certificate - Choose format
@@ -947,13 +947,13 @@ gliedert sich an dieser Stelle in zwei Abschnitte:
         
 \end{itemize}
 
-Lesen Sie den entsprechenden Abschnitt weiter, für deren Zertifikatsformat 
-Sie sich oben entschieden haben.
+Lesen Sie den entsprechenden Abschnitt weiter, je nachdem für welches Zertifikatsformat 
+Sie sich entschieden haben.
 
 
 \clearpage
 %% OpenPGP %%
-%% Original page 18
+%% Original page 1
 \section{OpenPGP-Schlüsselpaar erstellen}
 \label{createKeyPairOpenpgp}
 
@@ -1026,7 +1026,8 @@ zu knackende Passphrase parat haben und im obigen Dialog eintragen.
 Auch an dieser Stelle können Sie ­-- wenn Sie wollen ­-- zunächst
 eine \textbf{Test-Passphrase} eingeben oder auch gleich "`Ernst machen"'.
 
-Sie müssen Ihre geheime Passphrase zweimal eingegeben. Bestätigen Sie
+Um sicher zu gehen, dass Sie sich nicht vertippen, müssen Ihre geheime
+Passphrase zweimal eingeben. Bestätigen Sie
 Ihre Eingabe jeweils mit \Button{OK}.\\
 
 
@@ -1059,16 +1060,15 @@ diese weltweit ein zweites mal vorkämen. Daher werden oft nur die letzten
 Dieser Fingerabdruck identifiziert die Identität des Zertifikats wie
 der Fingerabdruck einer Person.
 
-Sie brauchen sich die
-Zeichenkette nicht zu merken oder abschzureiben. In den Zertifikatsdetails von
-Kleopatra können Sie sich diese jederzeit später anzeigen lassen.
+Sie brauchen sich den Fingerabdruck nicht zu merken oder abschzureiben.
+In den Zertifikatsdetails von Kleopatra können Sie sich diese jederzeit
+später anzeigen lassen.
 
 \clearpage
 Als nächstes \textit{können} Sie eine oder mehrere der folgenden
 drei Schaltflächen betätigen:
 \begin{description}
-    \item[Sicherungskopie Ihres Zertifikats erstellen ...]
-
+    \item[Sicherheitskopie Ihres (geheimen) Zertifikats erstellen...]~\\
     Geben Sie hier den Pfad an, wohin Ihr vollständiges Zertifikat
     (das Ihr neues Schlüsselpaar enthält) exportiert werden soll:
 
@@ -1091,13 +1091,12 @@ drei Schaltflächen betätigen:
     rückstandslos löschen (nicht im Papierkorb belassen).
     Bewahren Sie diesen Datenträger sicher auf.
 
-    Sie können eine Sicherungskopie auch jederzeit später anlegen;
+    Sie können eine Sicherheitskopie auch jederzeit später anlegen;
     wählen Sie hierzu aus dem Kleopatra-Hauptmenü:
     \Menu{Datei$\rightarrow$Geheimes Zertifiakt exportieren...} (vgl.
     Kapitel \ref{ch:ImExport}).
 
-    \item[Zertifikat per \Email{} versenden]
-
+    \item[Zertifikat per \Email{} versenden...]~\\
     Nach Drücken dieser Schaltfläche sollte eine neue \Email{} erstellt
     werden -- mit Ihrem neuen öffentlichen Zertifikat im Anhang. 
     Ihr geheimer OpenPGP-Schlüssel wird
@@ -1115,8 +1114,7 @@ drei Schaltflächen betätigen:
     (Details im Abschnitt \ref{sec_publishPerEmail}).
 
     %TODO-Kleo: Verzeichnisdienst -> Zertifikatsserver
-    \item[Zertifikate zu Zertifikatsserver senden...]
-
+    \item[Zertifikate zu Zertifikatsserver senden...]~\\
     Wie genau Sie einen weltweit verfügbaren OpenPGP-Zertifikatsserver
     in Kleopatra einrichten und wie Sie anschließend Ihr öffentliches Zertifikat
     auf diesen Server publizieren, erfahren Sie in Kapitel~\ref{ch:keyserver}.
@@ -1152,8 +1150,7 @@ Geben Sie im nun folgenden Fenster Ihren Namen (CN), Ihre
 Wenn Sie die X.509-Schlüsselpaar-Erzeugung zunächst einmal \textbf{testen} wollen, dann
 machen Sie beliebige Angaben für Name, Organisation und
 Ländercode sowie geben irgendeine ausgedachte \Email{}-Adresse
-ein, z.B. \texttt{CN=Heinrich Heine, O=Test, C=DE} und
-\verb-heinrichh@gpg4win.de-.
+ein, z.B. \texttt{CN=Heinrich Heine,O=Test,C=DE,EMAIL=heinrichh@gpg4win.de}.
 
 % TODO screenshot: New X.509 Certificate - Personal details
 \begin{center}
@@ -1243,18 +1240,16 @@ Als nächstes \textit{können} Sie eine oder mehrere der folgenden
 drei Schaltflächen betätigen:
 
 \begin{description}
-    \item[Anfrage in Datei speichern...] 
-
-    Geben Sie den genauen Pfad an, wohin Ihre X.509-Zertifizierungs-Anfrage
+    \item[Anfrage in Datei speichern...]~\\
+    Geben Sie den genauen Pfad an, wohin Ihre X.509-Zertifikatsanfrage
     gespeichert werden soll und bestätigen Sie Ihre Eingabe.
     Kleopatra fügt beim Speichern automatisch die Dateiendung 
     \textit{.p10} hinzu. Sie könnne diese Datei dann später
     auf verschiedene Weise an eine Zertifizierungsstelle geben.
 
-    \item[Anfrage per \Email{} versenden]
-
+    \item[Anfrage per \Email{} versenden...]~\\
     Es wird eine neue \Email{} erstellt -- mit der soeben erstellen
-    Zertifizierungs-Anfrage im Anhang.
+    Zertifikatsanfrage im Anhang.
     Geben Sie eine Empfänger-\Email{}-Adresse an (in der Regel die
     Ihrer zuständigen Zertifizierungsstelle (CA)) und ergänzen Sie ggf. den
     vorbereiteten Text dieser \Email{}.
@@ -1312,7 +1307,7 @@ Bestätigung tun müssen, erfahren Sie auf den Internetseiten von
 CAcert.
 
 Speichern Sie abschließend eine Sicherungskopie Ihres
-X.509-Schlüsselpaars in einem X.509-Zertifikat (\textit{.p12}
+X.509-Schlüsselpaars in einem X.509-Zerti\-fikat (\textit{.p12}
 Datei).
 \textbf{Achtung:} Diese \textit{.p12} Datei enthält Ihren
 öffentlichen und Ihren zugehörigen geheimen Schlüssel.
@@ -1339,7 +1334,7 @@ einzigartigen elektronischen Schlüssel.}
 
 %TODO: X.509-Zertifikat noch nicht in Kleopatra sichtbar!
 Sie sehen jetzt wieder das Hauptfenster von Kleopatra. 
-Das soeben erzeugte OpenPGP-/X.509-Schlüs\-selpaar finden Sie in der
+Das soeben erzeugte OpenPGP- oder X.509-Schlüs\-selpaar finden Sie in der
 Zertifikatsverwaltung unter dem Reiter \textit{Meine Zertifikate} 
 (hier und im weiteren wird exemplarisch ein OpenPGP-Zertifikat verwendet):
 
@@ -1350,7 +1345,7 @@ Zertifikatsverwaltung unter dem Reiter \textit{Meine Zertifikate}
 \end{center}
 
 Doppelklicken Sie auf Ihr neues Zertifikat, um alle Zertifikatsdetails
-nachlesen zu können:
+sehen zu können:
 
 %TODO screenshot: details of openpgp certificate
 \begin{center}
@@ -1360,7 +1355,7 @@ nachlesen zu können:
 
 Was bedeuten die einzelnen Zertifikatsdetails?
 
-Ihr Zertifikat ist unbegrenzt gültig, d.h. er hat kein
+Ihr Zertifikat ist unbegrenzt gültig, d.h. es hat kein
 "`eingebautes Verfallsdatum"'. Um die Gültigkeit nachträglich
 zu verändern, klicken Sie auf \Button{Ablaufdatum ändern}.
 
@@ -1377,8 +1372,9 @@ Informationen benötigen.}
 \label{ch:publishCertificate}
 
 Beim täglichen Gebrauch von Gpg4win ist es sehr praktisch, dass Sie es
-beim Ver- und Entschlüsseln stets nur mit dem "`ungeheimen"'
-Zertifikat (das Ihren öffentlichen Schlüssel enthält) zu tun haben. Solange Ihr
+beim Verschlüsseln und Signaturprüfen stets nur mit 
+"`ungeheimen"' (also öffentlichen) Zertifikaten zu tun haben, die nur 
+öffentliche Schlüssel enthalten. Solange Ihr
 eigener geheimer Schlüssel und die ihn schützende Passphrase sicher
 sind, haben Sie das Wichtigste zur Geheimhaltung bereits erledigt.
 
@@ -1399,7 +1395,7 @@ Wenn ­-- andersherum ­-- jemand Ihnen verschlüsselte \Email{}s schicken
 will, muss er Ihr öffentliches Zertifikat haben und zum Verschlüsseln
 benutzen.
 
-Deshalb sollten Sie nun Ihr öffentliches Zertifikat frei
+Deshalb sollten Sie nun Ihr öffentliches Zertifikat 
 zugänglich machen. Je nachdem, wie groß der Kreis Ihrer
 Korrespondenzpartner ist und welches Zertifikatsformat Sie einsetzen, 
 gibt es verschiedene Möglichkeiten. Verbreiten Sie Ihr öffentliches Zertifikat
@@ -1430,7 +1426,7 @@ Abschnitt.
 ~\\
 Üben Sie jetzt diesen Vorgang einmal mit Ihrem öffentlichen OpenPGP-Zertifikat!
 Adele soll Ihnen dabei behilflich sein. \textbf{Achtung:} Die folgenden
-Übungen gelten nur für OpenPGP! Anmerkungen zur Publizierung von
+Übungen gelten nur für OpenPGP! Anmerkungen zum Publizieren von
 öffentlichen X.509-Zertifikaten finden Sie auf
 Seite~\pageref{publishPerEmailx509}.
 \T\margin{\IncludeImage[width=1.5cm]{openpgp-icon}}
@@ -1474,21 +1470,21 @@ Selektieren Sie in Kleopatra das zu exportierende öffentliche Zertifikat
 Zertifikate) und klicken Sie dann auf
 \Menu{Datei$\rightarrow$Zertifikate exportieren...} im Menü.
 Wählen Sie einen geeigneten Dateiordner auf Ihrem PC aus und
-speichern Sie das öffentliche Zertifikat im Dateityp \textit{.asc},
-ab -- z.B.: \Filename{mein-OpenPGP-Zertifikat.asc}.
+speichern Sie das öffentliche Zertifikat im Dateityp \textit{.asc}
+ab, z.B.: \Filename{mein-OpenPGP-Zertifikat.asc}.
 (Die beiden anderen zur Auswahl stehenden Dateitypen, \textit{.gpg} oder
-\textit{.pgp}, speichern Ihr Zertifikat im Binärformat. D.h. es ist,
-anders als die \textit{.asc}-Datei, nicht im Texteditor lesbar.)
+\textit{.pgp}, speichern Ihr Zertifikat im Binärformat. D.h. sie sind,
+anders als eine \textit{.asc}-Datei, nicht im Texteditor lesbar.)
 
 \textbf{Wichtig:} Achten Sie beim Auswählen des Menüpunktes darauf,
 dass Sie auch wirklich nur Ihr öffentliches Zertifikat exportieren
 -- und \textit{nicht} aus Versehen das Zertifikat Ihres kompletten
-Schlüsselpaars mit Ihrem zugehörigen geheimen Schlüssel.
+Schlüsselpaars mit zugehörigem geheimen Schlüssel.
 
 
 %% Original page 27
-Sehen Sie sich zur Kontrolle diese Datei an. Nutzen Sie dazu Ihren
-Windows Explorer und wählen denselben Ordern aus, den Sie beim
+Sehen Sie sich zur Kontrolle diese Datei an. Nutzen Sie dazu den
+Windows Explorer und wählen denselben Order aus, den Sie beim
 Exportieren angegeben haben.
 
 \textbf{Öffnen} Sie die exportierte Zertifikats-Datei mit einem
@@ -1522,21 +1518,22 @@ bis\\
 \verb+-----END PGP PUBLIC KEY BLOCK-----+
 
 und \textbf{kopieren} Sie es mit dem Menübefehl oder mit dem
-Tastaturkürzel Strg+C. Damit haben Sie das Zertifikat in den Speicher
+Tastaturkürzel \texttt{Strg+C}. Damit haben Sie das Zertifikat in den Speicher
 Ihres Rechners (bei Windows Zwischenablage genannt) kopiert.
 
 Nun starten Sie Ihr \Email{}-Programm ­-- es spielt keine Rolle, welches
 Sie benutzen -- und fügen Ihr öffentliches Zertifikat in eine leere \Email{} ein.
-Der Tastaturbefehl zum Einfügen ("`Paste"') lautet bei Windows Strg+V.
+Der Tastaturbefehl zum Einfügen ("`Paste"') lautet bei Windows
+\texttt{Strg+V}.
 Es ist sinnvoll vorher das \Email{}-Programm so zu konfigurieren, dass
-reine Textnachrichten gesendet werden und keine HTML formatierte
+reine Textnachrichten gesendet werden und keine HTML-formatierte
 Nachrichten (vgl. Abschnitt \ref{sec_brokenSignature} und Anhang \ref{appendix:gpgol}).
 
-Diesen Vorgang ­-- Kopieren und Einfügen ­-- kennen Sie sicher als
+Diesen Vorgang ­-- Kopieren und Einfügen ­-- kennen Sie vielleicht als
 "`Copy \& Paste"'.
 
 \textbf{Adressieren} Sie nun diese \Email{} an \verb-adele@gnupp.de- und
-schreiben in die Betreffzeile z.B.: \textit{Mein öffentliches OpenPGP-Zertifikat}.
+schreiben in die Betreffzeile z.B. \textit{Mein öffentliches OpenPGP-Zertifikat}.
 
 So etwa sollte Ihre \Email{} nun aussehen:
 
@@ -1567,7 +1564,7 @@ einfachere und gebräuchlichere Verfahren. Sie haben oben
 die "`Copy \& Paste"'-Methode zuerst kennengelernt, weil sie
 transparenter und leichter nachzuvollziehen ist.
 
-Schreiben Sie Adele nun noch einmal eine neue \Email{} mit der
+Schreiben Sie Adele nun noch einmal eine neue \Email{} -- diesmal mit der
 Zertifikatsdatei im Anhang:
 
 Fügen Sie die oben exportierte Zertifikatsdatei als Anhang zu Ihrer neuen
@@ -1596,13 +1593,13 @@ Senden Sie nun die \Email{} mit Anhang an Adele ab.
 Sie haben Ihr öffentliches OpenPGP-Zertifikat in
 Kleopatra in eine Datei exportiert. Anschließend haben Sie einmal den
 Inhalt der Datei direkt in eine \Email{} kopiert und einmal die
-komplette Datei als \Email{}-Anhang eingefügt. Beide \Email{}s haben
+komplette Datei als \Email{}-Anhang beigefügt. Beide \Email{}s haben
 Sie an einen Korrespondenzpartner (in Ihrem Fall Adele) geschickt.
 
 Genauso gehen Sie vor, wenn Sie Ihr öffentliches Zertifikat an eine echte
 \Email{}-Adresse senden. Sie entscheiden sich dabei natürlich für eine
 der beiden oben vorgestellten Varianten -- in der Regel sollten Sie
-Ihr öffentliches OpenPGP-Zertifikat per Dateianhang versenden. Dies ist für Sie und
+öffentliche Zertifikate als Dateianhang versenden. Dies ist für Sie und
 Ihren Empfänger das Einfachste. Und es hat den Vorteil, dass
 Ihr Empfänger Ihre Zertifikatsdatei direkt (ohne Umwege) in seine Zertifikatsverwaltung
 (z.B. Kleopatra) importieren kann.
@@ -1614,10 +1611,10 @@ Sie gelernt haben, wie Sie Ihr öffentliches OpenPGP-Zertifikat per
 Gleiche für öffentliche \textbf{X.509-Zertifikate} funktioniert (vgl. auch
 Kapitel~\ref{ch:openpgpsmime}).
 
-Die Antwort lautet: Sie können es ganuso wie bei OpenPGP machen. Sie exportieren
+Die Antwort lautet: Sie können es so wie bei OpenPGP machen. Sie exportieren
 Ihr öffentliches X.509-Zertifikat in Kleopatra, speichern dieses z.B. im Dateiformat
 \textit{.pem} ab und versenden die Datei als \Email{}-Anhang.
-Aber im konkreten Fall ist es unnötig. Es genügt, wenn Sie Ihrem
+Aber konkret ist das bei S/MIME unnötig. Es genügt, wenn Sie Ihrem
 Korrespondenzpartner eine signierte S/MIME-\Email{} senden.
 Ihr öffentliches X.509-Zertifikat ist in dieser Signatur enthalten und kann von dem
 Empfänger in die Zertifikatsverwaltung importiert werden.
@@ -1628,22 +1625,22 @@ Zum Üben sollten Sie sich also einen anderen Korrespondenzpartner
 aussuchen oder Sie schreiben testweise an sich selber.
 
 Beim Exportieren Ihres öffentlichen X.509-Zertifikats haben Sie die Wahl, ob Sie
-die ganze öffentliche Zertifikatskette (in der Regel:
-Wurzelzertifikat -- CA-Zertifikat -- Ihr Zertifikat) oder nur Ihr
+die vollständige öffentliche Zertifikatskette (in der Regel:
+Wurzelzertifikat -- CA-Zertifikat -- Persöngliches Zertifikat) oder nur Ihr
 öffentliches Zertifikat in
 eine Datei abspeichern wollen. Ersteres ist empfehlenswert, denn
-Ihrem Korrespondenzpartner fehlen möglicherweise Teile der Kette die er sonst
+Ihrem Korrespondenzpartner fehlen möglicherweise Teile der Kette, die er sonst
 zusammensuchen müsste.
-Klicken Sie dazu in Kleopatra alle Kettenkomponenten mit
+Klicken Sie dazu in Kleopatra alle Elemente einer Zertifikatskette mit
 gedrückter Shift-Taste an und exportieren Sie diese markierten
-Komponenten nach oben beschriebener Regel.
+Komponenten.
 
 Hatte Ihr Korrespondenzpartner das Wurzelzertifkat noch nicht,
 so muss er diesem Wurzelzertifikat das Vertrauen aussprechen bzw. durch
-einen Administrator ausprechen lassen um letztlich auch Ihnen
+einen Administrator ausprechen lassen, um letztlich auch Ihnen
 zu vertrauen. Ist das bereits vorher geschehen (z.B. weil sie
-beide zur selben "`Wurzel"` gehören, selbst bei unterschiedlichen
-Zertifizierungstellen), dann besteht das Vertrauen unmittelbar
+beide zu der selben "`Wurzel"' gehören), dann besteht diese
+Vertrauensstellung bereits, und ist wirksam unmittelbar
 mit der Verfügbarkeit der Kette.
 
 \clearpage
@@ -1664,7 +1661,7 @@ dadurch die Versendung Ihres Zertifikats per \Email{} an jeden Ihrer
 Korrespondenzpartner.
 
 
-\textsc{Vorsicht: Die Veröffentlichung Ihrer E-Mail-Adresse
+\textbf{Vorsicht: Die Veröffentlichung Ihrer E-Mail-Adresse
 auf einem Zertifikatsserver birgt leider das Risiko, dass Ihnen
 auch ungebetene Personen E-Mails schreiben können und die
 SPAM-Menge für Ihre E-Mail-Adresse dadurch zunehmen kann.
@@ -1687,7 +1684,7 @@ definiert haben, bekommen Sie eine Warnmeldung:
 \end{center}
 
 Wie Sie an der Meldung erkennen können, ist der öffentliche
-OpenPGP-Zertifikatsserver
+OpenPGP-Zertifikatsserver\linebreak
 \texttt{keys.gnupg.net} bereits voreingestellt.
 Klicken Sie auf \Button{Fortsetzen}, um Ihr ausgewähltes öffentliches Zertifikat an
 diesen Server zu schicken. Von dort aus wird Ihr öffentliches Zertifikat an alle, weltweit
@@ -1792,13 +1789,13 @@ Adele. Diese \Email{} hat Adele mit \textit{Ihrem} öffentlichen
 OpenPGP-Schlüssel verschlüsselt.
 
 Um die
-Nachricht zu entschlüsseln, fragt Kleopatra Sie nun nach Ihrer (zum
-Schlüsselpaar gehörigen) Passphrase. Geben Sie diese in den
+Nachricht zu entschlüsseln, fragt Kleopatra Sie nun nach Ihrer (Ihren
+privaten Schlüssel schützenden) Passphrase. Geben Sie diese in den
 aufkommenden Dialog ein. Sofern Ihre Eingabe korrekt war, erhalten Sie
 einen Statusdialog (siehe nachfolgende Abbildung).
 Mit 
 %TODO-Kleo: Buttonname ändern/prüfen
-\Button{Details einblenden} können Sie sich
+\Button{Details anzeigen} können Sie sich
 weitere Informationen der \Email{}-Überprüfung anzeigen lassen.
 
 %TODO screenshot: Kleopatra - successfully encrypt/verify dialog
@@ -1866,8 +1863,8 @@ Hallo Heinrich Heine,
 hier ist die verschlüsselte Antwort auf Ihre E-Mail.
 
 Ihr öffentlicher Schlüssel mit der Schlüssel-ID
-BCFA2133DDC8CA90 und der Bezeichnung
-`Heinrich Heine <heinrichh@duesseldorf.de>'
+0EA6E039B5821A91 und der Bezeichnung
+`Heinrich Heine <heinrichh@gpg4win.de>'
 wurde von mir empfangen.
 
 Anbei der öffentliche Schlüssel von adele@gnupp.de,
@@ -1882,7 +1879,7 @@ Der Textblock, der darauf folgt, ist das öffentliche Zertifikat von Adele.
 Im nächsten Kapitel werden Sie dieses Zertifikat importieren und
 zu Ihrer Zertifikatsverwaltung hinzufügen. Importierte öffentliche Zertifikate können
 Sie jederzeit zum Verschlüsseln von Nachrichten an Ihren
-Korrespondenzpartner benutzen oder dessen signierte \Email{}s überprüfen.
+Korrespondenzpartner benutzen oder dessen signierte \Email{}s prüfen.
 
 \clearpage
 \subsubsection{Kurz zusammengefasst}
@@ -2001,7 +1998,7 @@ Damit haben Sie ein fremdes Zertifikat~-- in diesem Beispiel das
 öffentliche OpenPGP-Zertifikat von Adele -- in Ihre
 Zertifikatsverwaltung importiert. Sie können dieses Zertifikat jederzeit benutzen, um
 verschlüsselte Nachrichten an den Besitzer dieses Zertifikats zu
-senden und Signaturen zu prüfen.
+senden und dessen Signaturen zu prüfen.
 
 Sobald Sie \Email{}-Verschlüsselung häufiger und mit vielen
 Korrspondenzpartnern betreiben, werden Sie aus Gründen des Komforts
@@ -2020,7 +2017,7 @@ gar nichts.
 Wie können Sie also sichergehen, dass ein öffentliches Zertifikat auch wirklich
 seinem Absender gehört?
 
-\textbf{Die Kernfrage der Zertifikatsprüfung wird im
+\textbf{Diese Kernfrage der Zertifikatsprüfung wird im
 Kapitel~\ref{ch:trust} erläutert. Lesen Sie bitte jetzt dort weiter, bevor
 Sie danach an dieser Stelle fortfahren.}
 
@@ -2033,8 +2030,8 @@ Sie danach an dieser Stelle fortfahren.}
 
 Jetzt wird es noch einmal spannend: Sie versenden eine verschlüsselte \Email{}!
 
-In diesem Beispiel brauchen Sie dazu Outlook (es geht auch mit anderen
-\Email{}-Klienten, die Krypto unterstützen), Kleopatra und natürlich
+In diesem Beispiel brauchen Sie dazu Outlook (das geht auch mit anderen
+\Email{}-Klienten, die Kryptographie unterstützen), Kleopatra und natürlich
 ein öffentliches Zertifikat Ihres Korrespondenzpartners.
 
 %% Original page 45
@@ -2090,8 +2087,7 @@ erneuter Klick auf die o.g. Schaltfläche.
 Klicken Sie nun auf \Button{Senden}.
 
 ~\\
-\textbf{Hinweis:}\\
-\label{encryptProtocol}
+\textbf{Hinweis:}\label{encryptProtocol}\\
 Im Normalfall erkennt Gpg4win automatisch in welchem Protokoll
 (OpenPGP oder S/MIME) das passende öffentliche Zertifikat Ihres
 Korrespondenzpartners vorliegt.
@@ -2140,17 +2136,18 @@ Im Normalfall können Sie dieses vorausgewähte öffentliche Zertifikat mit
 Sollte Kleopatra im Dialog auf der vorherigen Seite
 \textbf{nicht} das richtige öffentliche Zertifikat ausgewählt haben (z.B. weil zu
 der Empfänger-\Email{}-Adresse 
-mehrere öffentliche Zertifikate existieren), dann drücken Sie auf den
-\Button{...}-Button neben der Auswahlliste.
+mehrere öffentliche Zertifikate existieren), dann drücken Sie auf die
+\Button{...}-Schaltfläche neben der Auswahlliste.
 
-Sie können hier auch bewusst ein anderes öffentliches Zertifikat (,dass nicht zu
-der \Email{}-Adresse passt) auswählen. Das macht praktisch aber keinen
-Sinn und kann Ihnen (und Ihrem Empfänger) eher Probleme bereiten...
+Sie können hier auch bewusst ein anderes öffentliches Zertifikat
+(eines das nicht zu der \Email{}-Adresse passt) auswählen. Das macht
+praktisch aber wenig Sinn und kann Ihnen (und Ihrem Empfänger) eher
+Probleme bereiten...
 
-Sie bekommen einen Kleopatra-Dialog mit einer Auflistung aller
+Sie bekommen einen Kleopatra-Dialog mit einer Liste aller
 öffentlichen Zertifikate des
-gewählten Zertifikatstyps, die in Ihrer Zertifikatsverwaltung
-existieren (also öffentliche Zertifikate, die von Ihnen bis dahin importiert wurden).
+gewählten Zertifikatstyps angezeigt, die in Ihrer Zertifikatsverwaltung
+existieren (also der öffentlichen Zertifikate, die von Ihnen bis dahin importiert wurden).
 Exemplarisch sehen Sie hier eine Auswahl von verfügbaren öffentlichen
 OpenPGP-Zertifikaten:
 
@@ -2160,7 +2157,7 @@ OpenPGP-Zertifikaten:
 \end{center}
 
 Wählen Sie das korrekte öffentliche Zertifikat Ihres Korrespondenzpartners aus, denn
-damit muss Ihre Nachricht ja verschlüsselt werden.
+damit muss Ihre Nachricht schließlich verschlüsselt werden.
 
 Sie erinnern sich an den Grundsatz:
 \begin{quote}
@@ -2273,7 +2270,7 @@ Ihr \Email{}-Fenster sollte anschließend etwa so aussehen:
 \end{center}
 
 Wie beim Verschlüsseln können Sie natürlich auch die Signieroption
-jederzeit mit einem erneuten Klick auf die Schlatfläche wieder deaktivieren.
+jederzeit mit einem erneuten Klick auf die Schaltfläche wieder deaktivieren.
 
 Klicken Sie nun auf \Button{Senden}.
 
@@ -2310,7 +2307,7 @@ Denn:
 \end{quote}
 Logisch, denn nur Ihr geheimer Schlüssel bestätigt Ihre
 Identität. Der Korrespondenzpartner kann dann mit Ihrem öffentlichen Zertifikat, das
-er bereits hat oder sich besorgen kann, Ihre Identität überprüfen.
+er bereits hat oder sich besorgen kann, Ihre Identität prüfen.
 Denn nur Ihr geheimer Schlüssel passt zu Ihrem öffentlichen Zertifikat.
 
 
@@ -2405,7 +2402,7 @@ S/MIME realisieren.
 
 
 \clearpage
-\section{Signatur mit GpgOL überprüfen}
+\section{Signatur mit GpgOL prüfen}
 %% Original page 41
 Angenommen Sie erhalten eine signierte \Email{} Ihres
 Korrespondenzpartners.
@@ -2417,7 +2414,7 @@ Dessen öffentliches Zertifikat sollten Sie vor der Überprüfung bereits
 in Ihre Zertifikatsverwaltung importiert haben
 (vgl. Kapitel~\ref{ch:importCertificate}).
 
-Um eine signierte OpenPGP- oder S/MIME-\Email{} zu überprüfen,
+Um eine signierte OpenPGP- oder S/MIME-\Email{} zu prüfen,
 gehen Sie genauso vor, wie bei der Entschlüsselung einer \Email{}
 (vgl. Kapitel~\ref{ch:decrypt}):
 
@@ -2445,7 +2442,7 @@ wurde die Nachricht bei der Übertragung verändert.
 Aufgrund der technischen Gegebenheiten im Internet ist es
 nicht auszuschließen, dass die \Email{} durch eine fehlerhafte Übertragung
 verändert wurde. Das ist zunächst der wahrscheinlichste Fall. Es kann
-jedoch auch bedeuten, dass der Text nachträglich verändert wurde.
+jedoch auch bedeuten, dass der Text absichtlich verändert wurde.
 
 Wie Sie in einem solchen Fall mit der gebrochenen Signatur umgehen sollten,
 erfahren Sie im Abschnitt~\ref{sec_brokenSignature}.
@@ -2454,7 +2451,7 @@ erfahren Sie im Abschnitt~\ref{sec_brokenSignature}.
 \clearpage
 \subsubsection{Übrigens...}
 Wenn Sie kein Gpg4win installiert haben und eine signierte
-\Email{} öffnen, lässt sich die Signatur natürlich nicht überprüfen.
+\Email{} öffnen, lässt sich die Signatur natürlich nicht prüfen.
 Sie sehen dann den \Email-Text umrahmt von merkwürdigen Zeilen -- das
 ist die Signatur.
 
@@ -2513,8 +2510,8 @@ Es wird grundsätzlich empfohlen Ihr \Email{}-Programm  so
 einzustellen, dass Sie \Email{}s nur im "`Text"'-Format und
 \textbf{nicht} im "`HTML"'-Format versenden.
 Sollten Sie dennoch HTML für signierte oder verschlüsselte \Email{}s
-verwenden, können dabei beim Empfänger die Formatierungsinformationen vorloren 
-gehen.
+verwenden, können dabei beim Empfänger die Formatierungsinformationen
+verloren gehen.
 
 Bei Outlook 2003 und 2007 können Sie unter
 \Menu{Extras$\rightarrow$Optionen$\rightarrow$E-Mail-Format} das Nachrichtenformat
@@ -2541,8 +2538,8 @@ eine Datei zu erzeugen: die Signatur (wie Sie am Anfang dieses
 Kapitels bereits gelesen haben).
 Solch eine elektronische Signatur bestätigt eindeutig
 die Urheberschaft -- denn wenn jemand Ihr öffentliches Zertifikat
-auf diese Datei (die Signatur) anwendet und die Ausgabe dieser Prüfung
-ist valide, so kann diese Datei nur von Ihrem privaten Schlüssel
+auf diese Datei (die Signatur) anwendet und diese Prüfung erfolgreich
+ist, so kann diese Datei nur von Ihrem privaten Schlüssel
 kodiert worden sein. Und zu dem dürfen ja nur Sie selbst Zugang
 haben.
 
@@ -2767,7 +2764,7 @@ erklärt, warum das so ist.
 
 \clearpage
 %% Original page 13
-Das Gpg4win-Prinzip ist wie gesagt recht einfach:
+Das Prinzip ist wie gesagt recht einfach:
 
 Der \textbf{geheime Schlüssel}, auch \textbf{private Schlüssel} genannt
 (engl. ,,secret key'' oder ,,private key''), muss geheim gehalten werden.
@@ -2785,7 +2782,7 @@ Beide Schlüsselteile haben ganz und gar unterschiedliche Aufgaben:
 
 \begin{center}
 \htmlattributes*{img}{width=300}
-\IncludeImage[width=0.9\textwidth]{key-with-shadow-bit}
+\IncludeImage[width=0.7\textwidth]{key-with-shadow-bit}
 \end{center}
 
 \begin{quote}
@@ -2801,11 +2798,11 @@ Beide Schlüsselteile haben ganz und gar unterschiedliche Aufgaben:
 
 In einem kleinen Gedankenspiel
 wird die Methode des "`Public-Key"' Verschlüsselungssystems
-und ihr Unterschied zur "`None-Public-Key"' Methode deutlicher...
+und ihr Unterschied zur "`Non-Public-Key"' Methode deutlicher...
 
 \bigskip
 
-\textbf{Die "`None-Public-Key"' Methode geht so:}
+\textbf{Die "`Non-Public-Key"' Methode geht so:}
 
 Stellen Sie sich vor, Sie stellen einen Brieftresor vor Ihrem Haus
 auf, über den Sie geheime Nachrichten übermitteln wollen.
@@ -2817,7 +2814,7 @@ Nachrichten zunächst einmal gut gesichert.
 
 \begin{center}
 \htmlattributes*{img}{width=300}
-\IncludeImage[width=0.9\textwidth]{letter-into-safe}
+\IncludeImage[width=0.7\textwidth]{letter-into-safe}
 \end{center}
 
 Da es nur einen Schlüssel gibt, muss Ihr Korrespondenzpartner denselben
@@ -2861,12 +2858,12 @@ Vergessen Sie diese Möglichkeit am besten sofort wieder\ldots
 
 \begin{center}
 \htmlattributes*{img}{width=300}
-\IncludeImage[width=0.9\textwidth]{letter-out-of-safe}
+\IncludeImage[width=0.7\textwidth]{letter-out-of-safe}
 \end{center}
 
 \clearpage
 %% Original page 17
-\textbf{Jetzt die "`Public-Key"' Methode:}
+\textbf{Nun zur "`Public-Key"' Methode:}
 
 Sie installieren wieder einen Brieftresor vor Ihrem Haus.  Aber:
 dieser Brieftresor ist ­-- ganz im Gegensatz zu dem ersten Beispiel
@@ -2897,7 +2894,7 @@ Botschaft nachträglich zu verändern.
 Denn die öffentliche Schlüsselhälfte taugt ja nur zum Abschließen.
 
 Aufschließen kann man den Brieftresor nur mit einem einzigen
-Schlüssel: Ihrem eigenen geheimen oder privaten Schlüsselteil.
+Schlüssel: Ihrem eigenen geheimen, privaten Schlüsselteil.
 
 \clearpage
 %% Original page 18
@@ -2925,7 +2922,7 @@ und die Nachricht lesen.
 
 \begin{center}
 \htmlattributes*{img}{width=300}
-\IncludeImage[width=0.9\textwidth]{pk-safe-opened-with-sk}
+\IncludeImage[width=0.7\textwidth]{pk-safe-opened-with-sk}
 \end{center}
 
 
@@ -2934,7 +2931,7 @@ und die Nachricht lesen.
 \textbf{Was ist nun eigentlich gewonnen:} Es gibt immer noch einen
 geheimen Schlüssel!?
 
-Der Unterschied gegenüber der "`None-Public-Key"' Methode ist
+Der Unterschied gegenüber der "`Non-Public-Key"' Methode ist
 allerdings ein gewaltiger:
 
 Ihren privater Schlüssel kennen und benutzen nur Sie selbst.  Er wird
@@ -2979,7 +2976,7 @@ Jeder andere Benutzer des Rechners, auf dessen Festplatte dieser
 Schlüssel gespeichert ist, darf keinen Zugriff auf ihn erhalten --
 weder zum Schreiben noch zum Lesen.  Es ist deswegen unbedingt zu
 vermeiden, den Schlüssel in einem öffentlichen Dateiordner
-(z.B. \verb=c:\Temp= oder \verb=c:\WINNT=) abzulegen.  Gpg4win
+(z.B. \verb=C:\Temp= oder \verb=C:\WINNT=) abzulegen.  Gpg4win
 speichert den Schlüssel deswegen im sogenannten "`Heimatverzeichnis"'
 ("`Eigene Dateien"') von GnuPG ab.
 Dies kann sich je nach konfiguriertem Betriebssystem an unterschiedlichen Orten
@@ -3065,7 +3062,9 @@ $\qquad$\verb-inMinschen stet 1h0f breuhome-
 Denken Sie sich einen Satz aus, der möglichst unsinnig ist, den Sie
 sich aber doch merken können, wie z.B.:
 
-$\qquad$\verb-Es blaut so garstig beim Walfang, neben Taschengeld, auch im Winter.-
+$\qquad$\verb-Es blaut so garstig beim Walfang, neben Taschengeld, auch im-
+
+$\qquad$\verb-Winter.-
 
 Eine Passphrase in dieser Länge ist ein sicherer Schutz für Ihren
 geheimen Schlüssel.
@@ -3102,7 +3101,7 @@ sie...
   bereits einer anderen, möglicherweise unsicheren Software bekannt.
 
 \item ... aus einem Wörterbuch stammt. Passphrase-Knackprogramme
-    überprüfen binnen Minuten umfangreiche elektronische Wörterbücher.
+    prüfen binnen Minuten umfangreiche elektronische Wörterbücher.
 
 \item ... aus einem Geburtsdatum, einem Namen oder anderen öffenlichen
     Informationen besteht. Wer vorhat, Ihre \Email{}
@@ -3110,7 +3109,7 @@ sie...
 
 \item ... ein landläufiges Zitat ist; wie z.B. "`das wird böse enden"' oder "`to
   be or not to be"'. Auch mit derartigen gängigen Zitaten testen
-  Passwphrase-Knackprogramm routinemäßig und blitzschnell eine Passphrase.
+  Passphrase-Knackprogramme routinemäßig und blitzschnell eine Passphrase.
 
 \item ... aus nur einem Wort oder aus weniger als 8 Zeichen besteht.
   Denken Sie sich unbedingt eine längere Passphrase aus.
@@ -3150,7 +3149,7 @@ OpenPGP- und X.509-Zertifikate):
 \item die Benutzer-Kennung
 \item den Fingerabdruck
 \item die Gültigkeit
-\item das Vertrauen in den Zertifikatsinhaber\textit{(nur OpenPGP)}
+\item das Vertrauen in den Zertifikatsinhaber \textit{(nur OpenPGP)}
 \item die Beglaubigungen \textit{(nur OpenPGP)}
 \end{itemize}
 
@@ -3158,9 +3157,9 @@ OpenPGP- und X.509-Zertifikate):
 \Email{}-Adresse, die Sie während der Zertifikatserzeugung eingegeben
 haben, also z.B.: \verb=Heinrich Heine <heinrichh@gpg4win.de>=\\
 Für OpenPGP-Zertifikate können Sie mit Kleopatra über den Menüpunkt
-\Menu{Zertifikate$\rightarrow$Benutzer-Kennung hinzufügen...} Ihr
+\Menu{Zertifikate $\rightarrow$ Benutzer-Kennung hinzufügen...} Ihr
 Zertifikat um weitere Benutzer-Kennungen erweitern. Das ist dann
-sinnvoll, wenn Sie z.B. für eine weitere \Email{}-Adressen Ihr gleiches
+sinnvoll, wenn Sie z.B. für eine weitere \Email{}-Adressen das selbe
 Zertifikat nutzen möchten.\\
 \textit{Beachten Sie: Hinzufügen neuer Benutzer-Kennungen ist in Kleopatra
 nur für OpenPGP-Zertifikate (nicht aber für X.509) möglich.}
@@ -3179,7 +3178,7 @@ selbständig mit Kleopatra ändern, indem Sie auf die Schaltfläche
 "`Ablaufdatum ändern"' in den Zertifikatsdetails klicken (oder den Menü
 \Menu{Zertifikate$\rightarrow$Ablaufdatum ändern} auswählen) 
 und ein neues Datum eintragen. Damit können
-Sie Zertifkate nur für eine begrenzte Zeit gültig erklären, z.B. 
+Sie Zertifkate als nur für eine begrenzte Zeit gültig erklären, z.B. 
 um sie an externe Mitarbeiter auszugeben.\\
 Die Gültigkeit von X.509-Zertifikaten wird bei der Zertifkatsausstellung
 von der Zertifizierungsstelle (CA) festgelegt und kann nicht vom Nutzer
@@ -3252,7 +3251,7 @@ Zertifikate löschen, um so die Kommunikation unmöglich zu machen
 
 \item[X.509-Zertifikatsserver]
    werden in der Regel
-von den Zertifizierungsstellen (CA) über LDAP bereitgestellt und
+von den Zertifizierungsstellen (CAs) über LDAP bereitgestellt und
 \T\margin{\IncludeImage[width=1.5cm]{smime-icon}} werden manchmal
 auch als Verzeichnisdienste für X.509-Zertifikate
 bezeichnet.
@@ -3283,7 +3282,7 @@ Bei \Menu{X.509} erhalten Sie folgende Vorbelegungen für einen
 X.509-Zertifikatsserver: (Protokoll: ldap, Severname: server,
 Server-Port: 389).
 Vervollständigen Sie die Angaben zu Servername und
-Basis-DN Ihres X.509-Zertifikatsservers und überprüfen Sie den
+Basis-DN Ihres X.509-Zertifikatsservers und prüfen Sie den
 Server-Port.
 
 Sollte Ihr Zertifikatsserver Benutzername und
@@ -3291,7 +3290,7 @@ Passwort fordern, so aktivieren Sie die Option
 \Menu{Benutzerauthentisierung notwendig} und tragen Ihre
 gewünschten Angaben ein.
 
-Der folgende Screenshot zeigt ein konfigurierten
+Der folgende Screenshot zeigt einen konfigurierten
 OpenPGP-Zertifikatsserver:
 %TODO screenshot: Kleopatra OpenPGP certificate server config dialog
 \begin{center}
@@ -3303,15 +3302,15 @@ Bestätigen Sie abschließend Ihre Konfiguration mit \Button{OK}. Ihr
 Zertifikatsserver ist nun erfolgreich eingerichtet.
 
 Um sicherzugehen, dass Sie den Zertifikatsserver korrekt konfiguriert
-haben, ist es hilfreich z.B. eine Zerifikatssuche auf dem Server zu
+haben, ist es hilfreich z.B. eine Zertifikatssuche auf dem Server zu
 starten (Anleitung siehe Abschnitt~\label{searchAndImportCertificateFromServer}).
 
 \textbf{Proxy-Einstellung:} Falls Sie einen Proxy in Ihrem
 Netzwerk nutzen, sollten Sie die Zertifikatsserver-Adresse in der
 Spalte "`Servername"' um den Parameter
 \texttt{http-proxy=<proxydomain>} ergänzen. Der vollständige
-Servername könnte also z.B. lauten:
-\texttt{keys.gnupg.net http-proxy=proxy.hq}.
+Servername könnte also z.B. lauten:\\
+\texttt{keys.gnupg.net http-proxy=proxy.hq}\\
 Kontrollieren und ggf. korrigieren können Sie die Zertifikatsserver-Konfigurationen auch in
 der Datei: \Filename{\%APPDATA\%\back{}gnupg\back{}gpg.conf}
 
@@ -3332,8 +3331,8 @@ Hier eine Auswahl von gut funktionierenden Zertifikatsservern:
 \item hkp://minsky.surfnet.nl
 \item hkp://keyserver.ubuntu.com
 \item hkp://keyserver.pramberger.at
-\item http://gpg-keyserver.de
 \item http://keyserver.pramberger.at
+\item http://gpg-keyserver.de
 \end{itemize}
 
 Sollte Sie Probleme mit einer Firewall haben, so versuchen Sie am
@@ -3349,9 +3348,7 @@ Die Zertifikatsserver unter den Adressen
 sind ein Sammelpunkt für ein ganzes Netz dieser Server; es wird
 dann zufällig ein konkreter Server ausgewählt.
 
-\textbf{Achtung:} Der Zertifikatsserver \verb=ldap://keyserver.pgp.com= synchronisiert
-sich nicht mit den anderen Servern und sollte i.d.R. nicht benutzt
-werden.
+\textbf{Achtung:} Nicht \verb=ldap://keyserver.pgp.com= als Zertifikatsserver benutzen, weil er sich nicht mit den anderen Servern synchronisiert (Stand: August 2009).
 
 \clearpage
 \section{Zertifikate auf Zertifikatsserver suchen und importieren}
@@ -3365,8 +3362,9 @@ Klicken Sie dazu in Kleopatra auf
 \Menu{Datei$\rightarrow$Zertifikate auf Server suchen...}.
 
 Sie erhalten einen Suchdialog, in dessen Eingabefeld Sie den
-Namen des Zertifikatsbesitzers, oder besser eindeutiger, seine \Email{}-Adresse
-oder sein Fingerabdruck des Zertifikats eingeben können.
+Namen des Zertifikatsbesitzers, oder eindeutiger und daher besser
+geeignet, seine \Email{}-Adresse
+oder den Fingerabdruck seines Zertifikats eingeben können.
 
 %TODO screenshot: Kleopatra certification search dialog
 \begin{center}
@@ -3455,9 +3453,8 @@ dessen 40-stelligen Fingerabdruck:
 \IncludeImage[width=0.6\textwidth]{sc-kleopatra-openpgp-certificateDetails_de}
 \end{center}
 
-Der Fingerabdruck von Adeles OpenPGP-Zertifikat ist also:\\
-%TODO
-\verb+BA90 087D 0C6C 7F4D EAF0 0907 BCFA 2133 DDC8 CA90+
+Der Fingerabdruck des oben dargestellten OpenPGP-Zertifikats ist also:\\
+\texttt{88B7ECA18E9EDA347436D7690EA6E039B5821A91}
 
 
 
@@ -3472,8 +3469,7 @@ mit dem Ihnen vorliegenden Zertifikat übereinstimmen, haben Sie
 eindeutig das richtige Zertifikat.
 
 Natürlich können Sie sich auch persönlich mit dem Eigentümer des
-Zertifikats treffen oder auf jedem anderen Wege mit ihm kommunizieren,
-solange Sie ganz sicher sind, dass Zertifikat und Eigentümer zusammen
+Zertifikats treffen oder auf jedem anderen Wege sicher stellen, dass Zertifikat und Eigentümer zusammen
 gehören. Häufig ist der Fingerabdruck auch auf Visitenkarten abgedruckt;
 wenn Sie also eine authentische Visitenkarte haben, so können Sie sich
 den Anruf ersparen.
@@ -3489,7 +3485,7 @@ dieses Zertifikat zu beglaubigen.
 
 \textit{Beachten Sie: \T\margin{\IncludeImage[width=1.5cm]{openpgp-icon}}
 Beglaubigen von Zertifikaten durch Benutzer ist nur mit OpenPGP
-möglich. Bei X.509 ist das authorisierten Stellen vorbehalten!}
+möglich. Bei X.509 ist das Zertifizierungsstellen (CAs) vorbehalten!}
 
 Durch das Beglaubigen eines (fremden) Zertifikats teilen Sie anderen
 (Gpg4win-)Benutzern mit, dass Sie dieses
@@ -3512,7 +3508,7 @@ beglaubigende OpenPGP-Zertifikat mit \Button{Weiter}:
 \end{center}
 
 \clearpage
-Im nächsten Schritt wählen Sie \textit{Ihr} OpenPGP-Zertifikat aus, mit dem Sie das
+Im nächsten Schritt wählen Sie Ihr eigenes OpenPGP-Zertifikat aus, mit dem Sie das
 (im letzten Schritt ausgewählte) Zertifikat beglaubigen wollen:
 % TODO screenshot: Kleopatra certify certificate 2
 \begin{center}
@@ -3542,14 +3538,14 @@ Nach erfolgreicher Beglaubigung erhalten Sie folgendes Fenster:
 \end{center}
 
 ~\\
-Wollen Sie nun einmal die erfolgte Beglaubigung überprüfen?\\
+Wollen Sie die erfolgte Beglaubigung nun einmal prüfen?\\
 Dann öffnen Sie die Zertifikatsdetails des eben beglaubigten
-Zertifikats. Wählen Sie den Reiter \textit{Benutzer-Kennungen und
+Zertifikats. Wählen Sie den Reiter \linebreak \textit{Benutzer-Kennungen und
 Beglaubigungen} und klicken auf die Schaltfläche \Button{Hole
 Beglaubigungen ein}.
 
 Sortiert nach den Benutzer-Kennungen sehen sie alle Beglaubigungen, die in
-diesem Zertifikat enthalten sind. Hier sollte Sie auch Ihre
+diesem Zertifikat enthalten sind. Hier sollte Sie auch Ihr
 Zertifikat wiederfinden, mit dem Sie eben beglaubigt haben.
 
 \clearpage
@@ -3579,14 +3575,14 @@ Beglaubigungs-Infra\-struktur.
 
 Eine einzige Möglichkeit ist denkbar, mit dem man diese Zertifikatsprüfung 
 aushebeln kann: Jemand schiebt Ihnen einen falsches
-Zertifikat unter. Also einen öffentlicher OpenPGP-Schlüssel, der vorgibt, von X
+Zertifikat unter. Also einen öffentlichen OpenPGP-Schlüssel, der vorgibt, von X
 zu stammen, in Wirklichkeit aber von Y ausgetauscht wurde.  Wenn ein
 solches gefälschtes Zertifikat beglaubigt wird, hat das "`Netz des
 Vertrauens"' natürlich ein Loch. Deshalb ist es so wichtig, sich zu
 vergewissern, ob ein Zertifikat, wirklich zu der Person
-gehört, der er zu gehören vorgibt.
+gehört, der es zu gehören vorgibt.
 
-Was aber, wenn eine Bank oder Behörde überprüfen möchte, ob die
+Was aber, wenn eine Bank oder Behörde prüfen möchte, ob die
 Zertifikate ihrer Kunden echt sind? Alle anzurufen, kann hier sicher
 nicht die Lösung sein\ldots
 
@@ -3596,7 +3592,7 @@ nicht die Lösung sein\ldots
 \subsubsection{Zertifizierungsinstanzen}
 
 Hier braucht man eine "`übergeordnete"' Instanz, der alle Benutzer
-vertrauen können.  Sie überprüfen ja auch nicht persönlich den
+vertrauen können.  Sie prüfen ja auch nicht persönlich den
 Personalausweis eines Unbekannten durch einen Anruf beim Ein\-wohner\-melde\-amt,
 sondern vertrauen darauf, dass die ausstellende
 Behörde diese Überprüfung korrekt durchgeführt und beglaubigt hat.
@@ -3645,7 +3641,7 @@ können Sie sich z.B. bei folgenden Webadressen
 über dieses und viele andere IT-Sicherheits-Themen informieren:
 \begin{itemize}
     \item \uniurl[www.bsi.de]{http://www.bsi.de} des BSIs,
-    \item \uniurl[www.bsi-fuer-buerger.de]{http://www.bsi-fuer-buerger.de})
+    \item \uniurl[www.bsi-fuer-buerger.de]{http://www.bsi-fuer-buerger.de}
     \item \uniurl[www.gpg4win.de]{http://www.bsi.de}
 \end{itemize}
 
@@ -3664,7 +3660,7 @@ das Sie ebenfalls im Internet finden%
 
 Wenn Sie eine verschlüsselte \Email{} versenden und
 Dateien anhängen, so wollen Sie in der Regel sicherlich auch, dass
-die Anhänge verschüsselt werden.
+diese Anhänge verschüsselt werden.
 
 Bei einer komfortablen Integration von GnuPG in Ihr \Email{}-Programm
 sollten Anhänge genauso behandelt werden wie der eigentlichen
@@ -3675,7 +3671,7 @@ Anhängen automatisch.}
 
 Bei weniger komfortabel in einem \Email{}-Programm integrierten
 Verschlüsselungswerkzeug müssen Sie aufpassen: Die
-Anhänge werden oft unverschlüsselte mitgesendet.
+Anhänge werden oft unverschlüsselt mitgesendet.
 
 Was kann man in so einem Fall tun?
 Ganz einfach: Sie verschlüsseln den Anhang getrennt und hängen ihn
@@ -3715,15 +3711,15 @@ Sie brauchen sich in diesem Fall nicht gesondert darum kümmern.
 
 \clearpage
 %% Original page 41
-\section{Dateien signieren und überprüfen}
+\section{Dateien signieren und prüfen}
 \label{sec_signFile}
 
-Beim Signieren einer Datei kommt es nicht vorrangig auf die
+Beim Signieren einer Datei kommt es vorrangig nicht auf die
 Geheimhaltung, sondern auf die Unverändertheit (Integrität) der Datei an.
 
 Die Signierung können Sie bequem mit \textbf{GpgEX} aus dem Kontextmenü des
-Windows Explorer ausführen. Selektieren Sie eine Datei und öffnen Sie 
-mit der rechten Maustaste das Kontextmenü:
+Windows Explorer ausführen. Selektieren Sie eine (oder mehrere)
+Datei(en) und öffnen Sie mit der rechten Maustaste das Kontextmenü:
 
 % TODO screenshot GpgEX contextmenu sign/encrypt
 \begin{center}
@@ -3733,34 +3729,29 @@ mit der rechten Maustaste das Kontextmenü:
 Dort wählen Sie \Menu{Signieren und verschlüsseln} aus.
 
 \clearpage
-Selektieren Sie im erscheinenden Fenster die Option \Menu{Nur
-signieren}:
+Selektieren Sie im erscheinenden Fenster die Option \Menu{Signieren}:
 
 %TODO screenshot GpgEX sign file, step 1
 \begin{center}
 \IncludeImage[width=0.7\textwidth]{sc-kleopatra-signFile1_de}
 \end{center}
 
-
-Der darunter liegende Rahmen \Menu{Verschlüsselungseinstellungen}
-wird dadurch ausgegraut, da sie ja lediglich signieren möchten.
-
-Im letzten Abschnitt \Menu{Signatur-Zertifikate} wählen Sie -- sofern nicht
-schon vorausgewählt -- Ihr (OpenPGP oder S/MIME) Zertifikat aus, mit dem Sie die
-Datei signieren möchten.
-
-Klicken Sie nun auf \Button{Weiter}.
+Klicken Sie anschließend auf \Button{Weiter}.
 
 \clearpage
-Nun haben Sie die Möglichkeit, die Auswahl der zu bearbeitenden Dateien
-zu bestätigen und ggf. die Auswahl zu korrigieren.
 
-%TODO screenshot GpgEX sign/encrypt file, step 2: choose object
+Im folgenden Dialog wählen Sie -- sofern nicht
+schon vorausgewählt -- Ihr privates (OpenPGP oder S/MIME) Zertifikat
+aus, mit dem Sie die Datei signieren möchten.
+
+% screenshot sign/encrypt file, step 2: choose sign certificates
+
+%TODO###
 \begin{center}
-\IncludeImage[width=0.7\textwidth]{sc-kleopatra-signEncryptFile2_de}
+\IncludeImage[width=0.7\textwidth]{sc-kleopatra-signFile2_de}
 \end{center}
 
-Bestätigen Sie Ihre Auswahl mit \Button{Weiter}.
+Bestätigen Sie Ihre Auswahl mit \Button{Signieren}.
 
 Sie müssen nun Ihre Passphrase in den aufkommenden Pinentry-Dialog eingeben.
 
@@ -3781,7 +3772,7 @@ haben, erhalten Sie als Ergebnis eine Datei mit der Endung
 Beim Signieren einer Datei wird stets eine "`abgetrennte"' (separate) Signatur
 verwendet. Dies bedeutet, dass Ihre zu signierende Datei unverändert bleibt 
 und eine zweite Datei mit der eigentlichen Signatur erzeugt wird.
-Um die Signatur später zu überprüfen, sind beide Dateien notwendig.
+Um die Signatur später zu prüfen, sind beide Dateien notwendig.
 
 Folgendes Beispiel zeigt noch einmal, welche neue Datei Sie erhalten,
 wenn Sie Ihre ausgewählte Datei (hier \texttt{<dateiname>.txt}) mit OpenPGP
@@ -3796,9 +3787,9 @@ bzw. S/MIME signieren:
 
 
 \clearpage
-\subsubsection{Signatur überprüfen}
-Wir wollen nun überprüfen, ob die eben signierte Datei integer
-(inkorrekt) ist.
+\subsubsection{Signatur prüfen}
+Wir wollen nun prüfen, ob die eben signierte Datei integer
+(korrekt) ist.
 
 
 Zum Überprüfen der Unverändertheit (Integrität) und der Authentizität
@@ -3826,7 +3817,7 @@ Die Option \Menu{Eingabe-Datei ist eine angehängte Signatur} ist
 aktiviert, da Sie ja Ihre Originaldatei
 (hier: \textit{signierte Datei}) mit der Eingabe-Datei signiert haben.
 Kleopatra findet automatisch die zugehörige signierte
-Originaldatei.
+Originaldatei in demselbem Datei-Ordner.
 
 Automatisch ist auch der \textit{Ausgabe-Ordner} auf den gleichen
 Pfad ausgewählt.
@@ -3834,23 +3825,30 @@ Der wird aber erst relevant wenn Sie mehr als eine Datei gleichzeitig
 verarbeiten.
 
 Bestätigen Sie die gegebenen Operationen mit
-\Button{Entschlüsseln/überprüfen}.
+\Button{Entschlüsseln/prüfen}.
 
 \clearpage
 Nach erfolgreicher Überprüfung der Signatur erhalten Sie folgendes
 Fenster:
 
-% TODO screenshot kleopatra verify file, step 2
+% screenshot kleopatra verify file, step 2
 \begin{center}
 \IncludeImage[width=0.7\textwidth]{sc-kleopatra-verifyFile2_de}
 \end{center}
 
-Das Ergebnis zeigt, dass die Signatur valide ist --
-also die Datei \textbf{nicht} verändert wurde.  Selbst wenn nur ein Zeichen
-hinzugefügt, gelöscht oder geändert wurde, wird die Signatur als
-gebrochen angezeigt.
+Das Ergebnis zeigt, dass die Signatur korrekt ist --
+also die Datei interger ist und somit \textbf{nicht} verändert wurde.
 
-% TODO: hier ein Screenshot wie es aussueht, wenn die Datei kompromittiert wurde (rot)
+Selbst wenn nur ein Zeichen in der Originaldatei hinzugefügt, 
+gelöscht oder geändert wurde, wird die Signatur als gebrochen
+angezeigt (Kleopatra stellt das Ergebnis als rote Warnung dar):
+
+% screenshot kleopatra verify file, step 2a (bad signature)
+\begin{center}
+\IncludeImage[width=0.7\textwidth]{sc-kleopatra-verifyFile2a-badSignature_de}
+\end{center}
+
+
 
 \clearpage
 \section{Dateien verschlüsseln und entschlüsseln}
@@ -3859,7 +3857,7 @@ Genauso wie \Email{}s lassen sich Dateien nicht nur signieren, sondern auch
 verschlüsseln. Das sollten Sie im folgenden Abschnitt mit GpgEX und
 Kleopatra einmal durchspielen.
 
-Selektieren Sie eine Datei und öffenen Sie mit der rechten Maustaste
+Selektieren Sie eine (oder mehrere) Datei(en) und öffenen Sie mit der rechten Maustaste
 das Kontextmenü:
 
 % TODO screenshot GpgEX contextmenu sign/encrypt
@@ -3884,7 +3882,7 @@ Verschlüsseln}:
 Die Verschlüsselungseinstellungen sollten Sie nur bei Bedarf
 umstellen:
 \begin{description}
-    \item[Ausgabe als Text (ASCII-geschützt (ASCII armor)):] Bei Aktivierung dieser
+    \item[Ausgabe als Text (ASCII-geschützt / ASCII armor):] Bei Aktivierung dieser
         Option erhalten Sie die verschlüsselte Datei mit der
         Dateiendung \textit{.asc} (OpenPGP) bzw. \textit{.pem} (S/MIME). 
         Diese Dateitypen sind mit jedem Texteditor lesbar -- Sie würden dort
@@ -3907,42 +3905,37 @@ umstellen:
 
 Klicken Sie auf \Button{Weiter}.
 
-\clearpage
-Nun haben Sie wieder die Möglichkeit, die Auswahl zu bestätigen oder
-zu korrigieren:
 
-% TODO screenshot kleopatra sign/encrypt file, step 2
-\begin{center}
-\IncludeImage[width=0.7\textwidth]{sc-kleopatra-signEncryptFile2_de}
-\end{center}
-
-Bestätigen Sie mit \Button{Weiter}.
 
 
 \clearpage
 An wen soll die Datei verschlüsselt werden? Wählen Sie im folgenden
-Dialog einen oder mehrere Empfänger aus:
-% TODO screenshot kleopatra encrypt file, step 3
+Dialog einen oder mehrere Empfängerzertifikate aus:
+% TODO screenshot kleopatra encrypt file, step 2
 \begin{center}
-\IncludeImage[width=0.7\textwidth]{sc-kleopatra-encryptFile3_de}
+\IncludeImage[width=0.7\textwidth]{sc-kleopatra-encryptFile2_de}
 \end{center}
 
-Klicken Sie dazu auf \Button{Empfänger hinzufügen...} und wählen aus
-Ihrer Zertifikatsliste den oder die Empfänger aus. Abhängig vom
-gewählten Empfänger-Zertifikat und deren Typ (OpenPGP oder S/MIME) wird Ihre
-Datei anschließend für OpenPGP und / oder S/MIME verschlüsselt. Haben
+Zum Auswählen selektierten Sie im oberen Teil die gewünschten
+Zertifikate und drücken Sie auf \Button{Hinzufügen}.
+Sie bekommen alle ausgewählten Zertifikate im unteren Dialogteil zur
+Kontrolle noch einmal angezeigt.
+
+Abhängig vom gewählten Empfänger-Zertifikat und dessen Typ (OpenPGP oder S/MIME) 
+wird Ihre
+Datei anschließend mit Hilfe von OpenPGP und / oder S/MIME verschlüsselt. Haben
 Sie also ein OpenPGP-Zertifikat \textbf{und} ein S/MIME-Zertifikat ausgewählt,
 werden Sie zwei verschlüsselte Dateien erhalten.
 Die möglichen Dateitypen der verschlüsselten Dateien finden Sie auf der nächsten Seite.
 
-Klicken Sie nun auf \Button{Weiter}, um Ihre Datei zu verschlüsseln.
+Klicken Sie nun auf \Button{Verschlüsseln}, um Ihre Datei zu verschlüsseln.
 
 \clearpage
 Nach erfolgreicher Verschlüsselung sollte Ihr Ergebnisfenster etwa so
 aussehen:
-% TODO screenshot kleopatra encrypt file, step 4
+% TODO screenshot kleopatra encrypt file, step 3: successful
 \begin{center}
-\IncludeImage[width=0.7\textwidth]{sc-kleopatra-encryptFile4_de}
+\IncludeImage[width=0.7\textwidth]{sc-kleopatra-encryptFile3_de}
 \end{center}
 
 Das war's! Sie haben Ihre Datei erfolgreich verschlüsselt!
@@ -3957,7 +3950,7 @@ sind insgesamt vier Dateitypen als Ergebnis möglich:
     \item[OpenPGP:]~\\
     \texttt{<dateiname>.txt $\rightarrow$ <dateiname>.txt\textbf{.gpg}}\\
     \texttt{<dateiname>.txt $\rightarrow$ <dateiname>.txt\textbf{.asc}}
-    ~ \small (bei Ausgabe als Text/ASCII-armor))
+    ~ \small (bei Ausgabe als Text/ASCII-armor)
     \normalsize
 
     \item[S/MIME:]~\\
@@ -3967,7 +3960,7 @@ sind insgesamt vier Dateitypen als Ergebnis möglich:
     \normalsize
 \end{description}
 
-Eine der vier verschlüsselten Ergebnisdateien geben Sie nun an Ihren ausgewählten
+Eine dieser vier möglichen verschlüsselten Ergebnisdateien geben Sie nun an Ihren ausgewählten
 Empfänger weiter. Anders als beim Signieren einer Datei wird die
 unverschlüsselte Originaldatei natürlich \textbf{nicht} weitergegeben.
 
@@ -4000,7 +3993,7 @@ Ausgabe-Ordner verändern.
 \IncludeImage[width=0.7\textwidth]{sc-kleopatra-decryptFile1_de}
 \end{center}
 
-Klicken Sie auf \Button{Entschlüsseln/überprüfen}.
+Klicken Sie auf \Button{Entschlüsseln/prüfen}.
 
 Geben Sie anschließend Ihre Passphrase ein.
 
@@ -4021,7 +4014,7 @@ oder mit einem entsprechenden Programm verwenden können.
 Sie haben gelernt, wie Sie mit GpgEX:
 \begin{itemize}
     \item Dateien signieren,
-    \item signierte Dateien überprüfen,
+    \item signierte Dateien prüfen,
     \item Dateien verschlüsseln und
     \item verschlüsselte Dateien entschlüsseln
 \end{itemize}
@@ -4056,7 +4049,7 @@ In den Kapiteln \ref{ch:publishCertificate} und
 wurde der Im- und Export von Zertifikaten erläutert. Sie haben
 Ihr eigenes Zertifikat exportiert, um es zu veröffentlichen, 
 und das Zertifikat Ihres Korrespondenzpartners importiert 
-und am "`Schlüsselbund"' befestigt.
+und am "`Schlüsselbund befestigt"'.
 
 Dabei ging es stets um den \textit{öffentlichen} Schlüssel. Es gibt aber auch
 hin und wieder die Notwendigkeit, einen \textit{geheimen} Schlüssel zu im- oder
@@ -4075,9 +4068,9 @@ transferieren oder auf einer anderen Festplattenpartition bzw. einem
 Sicherungsmedium speichern wollen, müssen Sie mit Kleopatra eine
 Sicherungskopie erstellen.
 
-So eine Sicherungskopie haben Sie evtl. schon einmal am Ende Ihrer
-OpenPGP-Zertifikatserzeugung angelegt. Da Ihr OpenPGP-Zertifikat aber inzwischen weitere
-Beglaubigungen haben kann, sollte Sie die Sicherung erneut durchführen.
+Solch eine Sicherungskopie haben Sie evtl. schon einmal am Ende Ihrer
+OpenPGP-Zertifikats\-erzeu\-gung angelegt. Da Ihr OpenPGP-Zertifikat aber inzwischen weitere
+Beglaubigungen haben kann, sollten Sie die Sicherung erneut durchführen.
 
 
 Öffnen Sie Kleopatra. Selektieren Sie Ihr eigenes Zertifikat und
@@ -4107,10 +4100,10 @@ Ob Sie diese Option nutzen oder nicht, ist eigentlich gleichgültig;
 Gpg4win kommt mit beiden Varianten klar.
 
 Beide Schlüsselteile -- der öffentliche und der geheime -- werden von
-Kleopatra in diesem \textbf{einen} geheimen Zertifikat abgespeichert.
+Kleopatra in \textbf{einem} einzigen geheimen Zertifikat abgespeichert.
 
 \textbf{Achtung:} Behandeln Sie diese Datei sehr sorgfältig. Sie enthält Ihren
-geheimen Schlüssel und damit sicherheitskritische Informationen!
+geheimen Schlüssel und damit eine sehr sicherheitskritische Informationen!
 
 \clearpage
 \section{Import}
@@ -4159,7 +4152,7 @@ Zertifikatsverwaltung von Kleopatra sichtbar.
 Sicherungskopie Ihres geheimen Schlüssels von Ihrer Festplatte und
 sichern Sie vorher diese wichtige Datei möglicht irgendwo auf einem externen Medium.
 Denken Sie daran die gelöschte Datei aus Ihrem "`Papierkorb"' zu
-entfernen. Andernfalls stellt diese Datei ein Sicherheitsrisiko für
+entfernen. Andernfalls stellt diese Datei ein großes Sicherheitsrisiko für
 Ihre geheime \Email{}-Verschlüsselung dar!}
 
 \textbf{Anmerkung:} Es kann in einigen Fällen vorkommen, dass Sie einen importierten
@@ -4258,7 +4251,7 @@ Einige typische systemweite Einstellungen sind:
 
 \section{GpgOL Menüs und Dialoge nicht mehr in Outlook zu finden}
 
-Es kann vorkommen, dass trotz Aktualisierung von Gpg4win
+Es kann vorkommen, dass trotz einer Aktualisierung von Gpg4win
 die von GpgOL zu Outlook hinzugefügten Menüs und Dialoge nicht mehr zu finden sind.
 
 Das kann dann vorkommen, wenn ein technisches Problem auftrat
@@ -4337,10 +4330,10 @@ sehen diese Laufwerke nicht. Der Installationspfad ist damit ungültig
 Installieren Sie bitte Gpg4win auf einem systemweit verfügbaren Laufwerk.
 
 
-\section{GpgOL überprüft keine inlinePGP \Email{}s von \textit{CryptoEx}}
+\section{GpgOL überprüft keine InlinePGP \Email{}s von \textit{CryptoEx}}
 
-Um signierte bzw. verschlüsselte inlinePGP \Email{}s, die von
-\textit{CryptoEx} versandt wurden, zu überprüfen bzw. zu
+Um signierte bzw. verschlüsselte InlinePGP \Email{}s, die von
+\textit{CryptoEx} versandt wurden, zu prüfen bzw. zu
 entschlüsseln, muss in den GpgOL-Optionen die S/MIME-Unterstützung
 eingeschaltet sein.
 
@@ -4361,7 +4354,7 @@ von Sperrlisten (CRLs) für S/MIME Zertifikate.
 Es kann vorkommen, dass die S/MIME Operationen (Signatur, Prüfung,
 Ver- oder Entschlüsselung) nicht durchgeführt werden können, weil
 ,,DirMngr'' nicht verfügbar ist. In der Voreinstellung von Gpg4win
-ist es zwingend notwendig, dass ,,DirMngr'' die Sperrliste prüft,
+ist es zwingend notwendig, dass ,,DirMngr'' die Sperrliste prüft --
 geschieht das nicht, darf die jeweilige Operation nicht ausgeführt
 werden, da möglicherweise ein kompromittiertes Zertifkat genutzt wird.
 
@@ -4380,7 +4373,9 @@ In der Liste finden Sie ,,DirMngr'' --
 \section{Persönliche Einstellungen der Anwender}
 
 Die persönlichen Einstellungen für jeden Anwender befinden sich
-im Dateiordner \Filename{\%APPDATA\%\back{}gnupg}. Oft entspricht das dem
+im Dateiordner:\\ 
+\Filename{\%APPDATA\%\back{}gnupg}\\
+Oft entspricht das dem
 Dateiordner: \newline
 \Filename{C:\back{}Dokumente und Einstellungen\back{}\textit{<name>}\back{}Anwendungsdaten\back{}gnupg\back{}}
 
@@ -4392,7 +4387,7 @@ anzeigen} unter der Gruppe \Menu{Versteckte Dateien und Ordner} aktivieren.
 
 In diesem Dateiordner befinden sich sämtliche persönlichen
 GnuPG-Daten,
-also die persönlichen Schlüssel, Zertifikate, Vertrauensstellungen und
+also die privaten Schlüssel, Zertifikate, Vertrauensstellungen und
 Konfigurationen. Bei einer Deinstallation von Gpg4win wird dieser
 Ordner \textit{nicht} gelöscht. Denken Sie daran, sich regelmäßig
 Sicherheitskopien von diesem Ordner anzulegen.
@@ -4437,7 +4432,7 @@ etc\back{}dirmngr\back{}trusted-certs\back{}}
 
 \W~\\\\
 \textbf{Wichtig:} Die entsprechenden Wurzelzertifikate müssen 
-als Dateien im Dateiformat \textit{DER} mit Dateinamens-Erweiterung
+als Dateien im Dateiformat \textit{DER} mit \linebreak Dateinamens\--Erweiterung
 \textit{.crt} oder \textit{.der}
 im o.g. Dateiordners vorliegen.
 
@@ -4491,7 +4486,7 @@ konfigurieren, wie folgende Zeile im Beispiel illustriert:
 
 \verb#proxy.mydomain.example:389:::O=myorg,C=de#
 
-Die genaue Syntax für die Einträge lautet übrigens:
+Die genaue Syntax für die Einträge lautet:
 
 \verb#HOSTNAME:PORT:USERNAME:PASSWORD:BASE_DN#
 
@@ -4507,13 +4502,47 @@ werden definiert in der Datei\\
 Users\back{}Anwendungsdaten\back{}GNU\back{}\T\\
 etc\back{}gnupg\back{}trustlist.txt}
 
-Die genaue Syntax für die Einträge lautet hier:
-\verb#<FINGERPRINT> S#\\
-Anschließend muss eine Leerzeile folgen.
+Um ein Wurzelzertifikat als vertrauenswürdig zu markieren, muss der
+entsprechende Fingerabdruck des Zertifikats gefolgt von einem
+Leerzeichen und einem großen \texttt{S} in die
+o.g. Datei eingetragen werden.
+Ein Zertifikat wird explizit als nicht vertrauenswürdig markiert, wenn
+die Zeile mit dem Prefix \texttt{!} beginnt.
+Sie können hier auch mehrere Wurzelzertifikate eintragen. Zu beachten
+ist dann, dass jeder Fingerprint in einer neuen Zeile steht.
+
+Wichtig: Abschließend (am Ende der Datei) muss eine Leerzeile erfolgen.
+
+Ein Beispiel:
+\begin{verbatim}
+# CN=Wurzel ZS 3,O=Intevation GmbH,C=DE
+A6935DD34EF3087973C706FC311AA2CCF733765B S
+
+# CN=PCA-1-Verwaltung-02/O=PKI-1-Verwaltung/C=DE
+DC:BD:69:25:48:BD:BB:7E:31:6E:BB:80:D3:00:80:35:D4:F8:A6:CD S
+
+# CN=Root-CA/O=Schlapphuete/L=Pullach/C=DE
+!14:56:98:D3:FE:9C:CA:5A:31:6E:BC:81:D3:11:4E:00:90:A3:44:C2 S
+
+\end{verbatim}
+
+Es kann in einigen Fällen sinnvoll sein, die Kriterien an die
+Überprüfung der Wurzelzertifikate zu verringern.
+Sie können dazu hinter \texttt{S} eine weitere Flagge \texttt{relax}
+setzen: \verb#<FINGERPRINT> S relax#\\
+Wichtig: Die Verwendung von \texttt{relax} setzt die Sicherheit herab
+und sollte nur von Administratoren entschieden und nur bei Problemen
+verwendet werden.
+
+Genauere Details finden Sie in der aktuellen GnuPG-Dokumentation
+(Punkt "`trustlist.txt"'):\\
+\uniurl{http://www.gnupg.org/documentation/manuals/gnupg/Agent-Configuration.html}
 
 
-Also z.B.:\\
-\verb+BA90087D0C6C7F4DEAF00907BCFA2133DDC8CA90 S+\\
+Die genaue Syntax für die Einträge in die trustlist.txt lautet also:\\
+\texttt{[!]<FINGERPRINT> S [relax]}\\
+wobei \texttt{!} und \texttt{relax} optional sind.
+
 
 \textbf{Wichtig:} Damit Wurzelzertifikate in Kleopatra vollständig als
 vertrauenswürdig markiert werden (Zertifikat wird blau hinterlegt),
@@ -4614,7 +4643,7 @@ und neu gestartet werden und der Dateiordner der Logdatei existieren,
 sowie für Kleopatra beschreibbar sein.
 
 Während Kleopatra verwendet wird, zeichnet es Ablauf-Informationen in die
-Datei \Filename{kleo-log} (Haupt-Logdatei) auf, sowie möglicherweise
+Datei \Filename{kleo-log}\linebreak (Haupt-Logdatei) auf, sowie möglicherweise
 viele Dateien mit einem Namen nach dem Schema:\\
 \Filename{pipe-input-ZEITSTEMPEL-ZUFALLSZEICHEN}
 
@@ -4629,12 +4658,12 @@ Umgebungsvariable anzulegen
 \end{quote}
 
 Möglicherweise werden die Logdateien sehr schnell sehr groß.
-Sie sollten diese Logdatei-Aufzeichnung nur einschalten, um
+Sie sollten diese Logdatei\--Auf\-zeich\-nung nur einschalten, um
 ein bestimmtes Fehlverhalten zu provozieren und danach aufzuzeichnen.
 Anschliessend schalten
 Sie die Aufzeichnung wieder aus indem Sie die Umgebungsvariable
 löschen oder den Namen dieser leicht variieren (für späteres leichtes
-Reaktivieren). Vergessen Sie nicht, die Logbücher zu löschen gerade
+Reaktivieren). Vergessen Sie nicht, die Logdateien zu löschen gerade
 wenn sie sehr umfangreich geworden sind oder es sich um sehr viele
 Dateien handelt. Bevor Sie eine neue Aufzeichnung beginnen, ist es
 ebenfalls sinnvoll die Logdateien zu löschen.
@@ -4686,7 +4715,7 @@ Konfigurationsdatei:\\
 Users\back{}Anwendungsdaten\back{}GNU\back{}\\
 etc\back{}dirmngr\back{}dirmngr.conf}
 
-Fügen Sie die folgenden zwei Zeilen in die Konfiguratinsdatei hinzu
+Fügen Sie die folgenden zwei Zeilen in die Konfigurationsdatei hinzu
 (den Pfad zur Logdatei können Sie natürlich anpassen):
 
 \begin{quote}
@@ -4724,7 +4753,7 @@ Konfigurationsfenster zwei Debug-Optionen:
         Hier definieren Sie die Ausführlichkeit der aufzuzeichnenden
         Informationen. Die Debugstufe \textit{Guru} ist die höchste Stufe und
         erzeugt dem entsprechend große Dateien.
-        Schalten Sie daher die Logbücher wieder aus (Debugstufe
+        Schalten Sie daher die Logdateien wieder aus (Debugstufe
         \textit{Keine}), wenn Sie diese nicht mehr benötigen.
 
     \item Option \textit{Schreibe im Servermodus Logs auf DATEI}\\
@@ -4742,7 +4771,7 @@ loggen sich aus und melden sich neu an Ihrem Windows-System an).
 \chapter{Warum Gpg4win nicht zu knacken ist~$\ldots$}
 \label{ch:themath}
 
-$\ldots$ jedenfalls nicht mit heute bekannten Methoden und sofern die
+$\ldots$, jedenfalls nicht mit heute bekannten Methoden und sofern die
 Implementierung der Programme frei von Fehlern ist. Soweit die
 Theorie.
 
@@ -4752,9 +4781,9 @@ Weg, um doch noch an die geheimen Informationen zu gelangen --
 auch deshalb sollte Sie dieses Kompendium bis hierhin gelesen haben.
 
 In jedem Beispiel dieses Kompendiums haben Sie gesehen, dass zwischen dem
-geheimen und dem öffentlichen Schlüssel eine geheimnisvolle
-Verbindung besteht. Nur wenn beide zueinander passen, können
-geheime Botschaften entschlüsselt werden.
+geheimen und dem öffentlichen Schlüssel eine Verbindung besteht. Nur
+wenn beide zueinander passen, können geheime Botschaften entschlüsselt
+werden.
 
 Das Geheimnis dieser mathematischen Verbindung müssen Sie nicht
 unbedingt kennen -- Gpg4win funktioniert für Sie auch so. Man kann
@@ -4779,9 +4808,9 @@ Hier beginnt also sozusagen die Kür nach dem Pflichtteil:
 {\Large Kryptographie für Nicht-Mathematiker}\\
 
 Es ist schon versucht worden, den RSA Algorithmus, auf dem GnuPG
-basiert\footnote{Sie verwenden hier RSA als Beispiel. RSA ist
-  einfacher zu verstehen als der Elgamal Algorithmus, der als
-  Voreinstellung von GnuPG benutzt wird.}, zu "`knacken"', also einen
+basiert\footnote{Es wird hier RSA als Beispiel verwendet, da RSA
+einfacher zu verstehen ist, als der Elgamal Algorithmus, der als
+Voreinstellung von GnuPG benutzt wird.}, zu "`knacken"', also einen
 privaten Schlüssel zu berechnen, wenn man lediglich den
 öffentlichen Schlüssel kennt.  Diese Berechnung ist aber noch nie für
 Schlüssellängen (1024 Bit und mehr), die in GnuPG verwendet werden,
@@ -4800,9 +4829,9 @@ Das Bundesamt für Sicherheit in der Informationstechnik (BSI)
 veröffentlicht von Zeit zu Zeit
 Prognosen und Einschätzungen, welche Schlüssellängen noch wieviele
 Jahre für absolute Geheimhaltung benutzt werden sollen.  GnuPG
-überschreitet mit seinen Standardeinstellungen noch weit diese
+überschreitet mit seinen Standardeinstellungen diese
 Mindestanforderungen.  Wie im vorigen Kapitel schon angerissen, ist die
-Mathematik der mit Abstand sicherste Teil an der ganzen praktisch
+Mathematik der mit Abstand sicherste Teil der praktisch
 angewandten Kryptographie.
 
 
@@ -5136,12 +5165,12 @@ In der linken Spalte stehen die 10er-Stellen, in der oberen Zeile die
 \subsubsection{Entschlüsseln Sie eine Nachricht mit dem privaten Schlüssel}
 
 Um das Beispiel mit der 2 von oben umzukehren, also die Nachricht zu
-dekodieren, multiplizieren Sie 30 (die umgewandelte 2) unter
-Verwendung der Modulzahl 77 37 mal mit sich selbst.  Sie erinnern
+dekodieren, multiplizieren Sie 30 (die umgewandelte 2) 37 mal mit sich selbst.
+Das Ergebnis wird modulo der Modulzahl 77 gerechnet. Sie erinnern
 sich: 37 ist der geheime Schlüssel.
 
 Diese wiederholte Multiplikation ergibt eine Zahl die $2 \bmod 77$
-ergibt. Das andere Beispiel: Die Zahl $47 \bmod 77$ wird zur Zahl $75
+ist. Das andere Beispiel: Die Zahl $47 \bmod 77$ wird zur Zahl $75
 \bmod 77$ dekodiert.
 
 Tabelle \ref{table2} zeigt die genaue Zuordnung der 77 Zahlen zwischen 0 und 76.
@@ -5383,7 +5412,7 @@ Kilometer.
 Nach dem gleichen Prinzip stellen Sie ja auch Ihre normale Zahlen
 mit den Ziffern 0 bis 9 dar.
 
-"`578"', z.B., bedeutet $5 * 100 + 7 * 10 + 8$, und dies
+"`578"', z.B., bedeutet $5 * 10^2 + 7 * 10^1 + 8 * 10^0 = 500 + 70 + 8$, und dies
 entspricht 578.
 
 Hier haben Sie die "`5"' stellvertretend für fünfhundert, "`7"' für
@@ -5408,24 +5437,24 @@ Angenommen, die Anzeige des Kilometerzählers hätte statt der Ziffern 0
 bis 9 nur noch 0 bis 7. Das rechte Rädchen würde nach jedem Kilometer
 um eine Ziffer höher zählen, wobei die Zahlenfolge so aussehen würde:
 
-\[ 0, 1, 2, 3, 4, 5, 6, 7, 0, 1, 2, und so weiter. \]
+\[ 0, 1, 2, 3, 4, 5, 6, 7, 0, 1, 2, ... \]
 
 Ihr Tacho zur Basis 8 stellt z.B. folgende Zahl dar:
 
 \[ 356 \]
 
-Die 6 auf dem rechten Rädchen zählt einzelne Kilometer, also 6
+Die 6 auf dem rechten Rädchen zählt einzelne Kilometer, also $6*8^0=6$
 Kilometer.\\
-Die 5 auf dem Rädchen daneben für $5 * 8$, also 40 Kilometer.\\
+Die 5 auf dem Rädchen daneben für $5 * 8^1$, also 40 Kilometer.\\
 Die 3 links steht für je 64 Kilometer pro Umdrehung, also hier
-$3 * 8 * 8$ Kilometer.
+$3 * 8^2$ Kilometer.
 
 So rechnet man also mit Zahlen zur Basis 8. Ein Beispiel: 728 bedeutet
-$7 * 8 + 2$, und das ist gleich "`58"'. Bei dieser Art der Darstellung
+$7 * 8^1 + 2 * 8^0$, und das ist gleich "`58"'. Bei dieser Art der Darstellung
 steht die "`2"' aus der 72 für 2, aber die "`7"' steht für $7 * 8$.
 
 Größere Zahlen werden schrittweise genauso aufgebaut, so dass
-$453_8$ eigentlich $4 * 64 + 5 * 8 + 3$ bedeutet, was 299 ergibt.
+$453_8$ eigentlich $4 * 64 + 5 * 8 + 3$ bedeutet, was $299_{10}$ ergibt.
 
 Bei $453_8$ steht die "`3"' für 3, die "`5"' für $5 * 8$ und die "`4"'
 für $4 * 64$, wobei sich die "`64"' wiederum aus $8 * 8$ herleitet.
@@ -5458,12 +5487,12 @@ Sie würden die Kilometer mit einem Tachometer zählen, auf
 dessen Rädchen sich nur zwei Ziffern befinden: 0 und 1.
 Die Zahl $10101_2$ z.B. bedeutet im Binärsystem
 
-\[ 1 * 16 + 0 * 8 + 1 * 4 + 0 * 2 + 1 = 21 \].
+\[ 1*2^4+0*2^3+1*2^2+0*2^1+1*2^0 = 1 * 16 + 0 * 8 + 1 * 4 + 0 * 2 + 1 = 21 \].
 
 In der Computerei verwendet man auch Gruppen von acht Binärziffern,
 das wohlbekannte Byte. Ein Byte kann Werte zwischen 0 - dargestellt
 als Byte $00000000_2$ -- und 255 -- dargestellt als Byte
-$11111111_2$ -- annehmen. Ein Byte stellt also Zahlen zur Basis 256
+$11111111_2$ -- annehmen. Ein Byte stellt also Zahlen zur Basis $2^8 = 256$
 dar.
 
 Zwei weitere Beispiele:
@@ -5515,7 +5544,8 @@ werden:
 \begin{enumerate}
 \item Die Nachricht \emph{aba, cad, ada} wandeln Sie -- wie gesehen -- in
   Zahlen um.
-\item Diese Darstellung zur Basis 4 wandeln Sie in eine Darstellung
+\item Diese Darstellung, beispielhaft zur Basis $2^2=4$ (statt
+    $2^8=256$), wandeln Sie in eine Darstellung
   zur Basis 10 um, damit Sie zur Verschlüsselung die
   Tabelle~\ref{table1}
   benutzen können, in denen die Zahlen ja auch auf 10er-Basis
@@ -5564,7 +5594,7 @@ zur Basis 4 die $333_4$ ist. Zur Basis 10
 hat diese Zahl den Wert 63.
 
 Würden Sie stattdessen die Nachricht in vier Zeichen lange Stücke
-zerlegen, würde die Zahl zu Basis 4 den Wert 76 übersteigen und es
+zerlegen, würde $3333_4$ den Wert $76_{10}$ übersteigen und es
 würden unerwünschte Doppeldeutigkeiten entstehen.\\
 Folglich würde die Nachricht in dreiziffrigen Stücken nun 
 
@@ -5587,9 +5617,9 @@ Stück $203_4$:
 
 \T\begin{eqnarray*}
 \W\begin{tabular}{rrr}
- 3 * 4^0, & ~\mbox{also}~ 3 * 1, & ~\mbox{also}~ 3 \\
- 0 * 4^1, & ~\mbox{also}~ 0 * 4, & ~\mbox{also}~ 0 \\
- 2 * 4^2, & ~\mbox{also}~ 2 * 16, & ~\mbox{also}~ 32\\
+ 3 * 4^0, & ~\mbox{also}~ 3 * 1, & ~\mbox{also}~ 3. \\
+ 0 * 4^1, & ~\mbox{also}~ 0 * 4, & ~\mbox{also}~ 0. \\
+ 2 * 4^2, & ~\mbox{also}~ 2 * 16, & ~\mbox{also}~ 32.\\
 \W\end{tabular}
 \T\end{eqnarray*}
 
@@ -5653,7 +5683,7 @@ tiefergehende Details sind leicht in anderen Büchern (z.B.: R.~Wobst,
 
 \textbf{Immerhin wissen Sie nun:} Wenn jemand sich an Ihren verschlüsselten
 \Email{}s zu schaffen macht, ist er durchaus so lange damit beschäftigt,
-dass er dann keine Lust mehr haben dürfte diese auch noch zu lesen\ldots
+dass er dann keine Lust mehr haben dürfte diese dann noch zu lesen\ldots
 
 
 
@@ -5776,8 +5806,8 @@ Sie können dies im Menüpunkt
 \Menu{E-Mail-Format} kontrollieren.  Das Nachrichtenformat sollte auf
 \textit{Nur-Text} eingestellt sein (siehe markierter Bereich).
 Sollten Sie dennoch HTML für signierte oder verschlüsselte \Email{}s
-verwenden, können dabei beim Empfänger die Formatierungsinformationen vorloren
-gehen.
+verwenden, können dabei beim Empfänger die Formatierungsinformationen
+verloren gehen.
 
 % screenshot: Outlook E-Mail-Format options
 \begin{center}
@@ -5815,16 +5845,13 @@ Ein Integration in GnuPG wird derzeit für folgende
   mitgeliefert und kann optional installiert werden.
   Eine solche Installation konfiguriert bereits die Programmerweiterung für
   die Verwendung von PGP/MIME und S/MIME. Diese Erweiterung verwendet
-  jedoch nicht Kleopatra und bieten daher nicht denselben Komfort
-  wie es derzeit die Outlook-Erweiterung GpgOL bietet.
+  jedoch nicht Kleopatra und bieten daher derzeit nicht denselben Komfort
+  wie es die Outlook-Erweiterung GpgOL bietet.
 
 \item[Kontact:] Eine komfortable und erprobte Integration von
-  GnuPG bieten KMail / Kontact.
-  Es ist für jedes
-  System verfügbar, auf dem die
-  KDE-Oberfläche\footnote{http://www.kde.de} installiert ist,
-  also für nahezu jedes GNU/Linux-System und neuerdings auch für
-  Windows und MacOS X.
+  GnuPG bieten KMail und Kontact.
+  Sie sind für nahezu jedes GNU/Linux-System und neuerdings auch für
+  Windows und MacOS X verfügbar.
 \end{description}
 
 
@@ -5881,7 +5908,8 @@ Hier ist ein Beispiel für den Inhalt einer Steuerungsdatei, das
 
 \begin{verbatim}
 [gpg4win]
-  ; Installationseinstellungen. Weg- oder leerlassen für Voreinstellung
+  ; Installationseinstellungen. Weg- oder leerlassen für 
+  ; Voreinstellung
   inst_gpgol = true
   inst_gpgex = true
   inst_kleopatra = true
@@ -5962,15 +5990,15 @@ Kleopatra\footnote{Dies ist nicht der offizielle Weg, funktioniert aber
 noch mit allen aktuellen GnuPG Versionen.}.
 
 \clearpage
-\T\section*{Migration von Gpg4win-1.1.3 nach Gpg4win-2.0.0}
-\W\section*{D.1 Migration von Gpg4win-1.1.3 nach Gpg4win-2.0.0}
+\T\section*{Migration von Gpg4win-1.1.x nach Gpg4win-2.0.x}
+\W\section*{D.1 Migration von Gpg4win-1.1.x nach Gpg4win-2.0.x}
 
-Es wird dingend empfohlen zunächst Gpg4win-1.1.3 zu deinstallieren
-bevor anschließend Gpg4win-2.0.0 installiert wird.
+Es wird dingend empfohlen zunächst Gpg4win-1.1.x zu deinstallieren
+bevor anschließend Gpg4win-2.0.x installiert wird.
 
 \subsubsection{Technischer Hintergrund}
 Das Problem bei einer Migration \textit{ohne} Deinstallation von
-Gpg4win-1.1.3 ist folgende Sequenz:
+Gpg4win-1.1.x ist folgende Sequenz:
 
 1. Installation von Version X, inkl. Komponente K.\\
 2. Installation von Version X+1, aber Komponente K wird diesmal deselektiert.
@@ -5986,24 +6014,24 @@ Mögliche Lösung:
 Der Installationsassistent ruft die aktuelle Deinstallation für die Komponente K auf, falls
 diese selektiert war, aber nicht mehr selektiert ist.
 Diese Lösung wäre allerdings ein erheblicher Programmier- und Testaufwand,
-da dies nicht von NSIS einfach unterstützt wird.
+da dies nicht von dem Installationsprogramm NSIS einfach unterstützt wird.
 
 Alternative:
 Installierte Komponenten dürfen bei einem Update nicht deselektiert
-werden. Der Aufwand wäre vermutlich geringern.
-Allerdings keine perfekte Lösung. Grund: NSIS fehlt ein vollständiges
-Paketmanagement.
+werden. Der Aufwand wäre vermutlich geringer, dies ist allerdings 
+keine perfekte Lösung.\\
+Technischer Grund: NSIS fehlt ein vollständiges Paketmanagement.
 
-Diese Beschränkung ist in Gpg4win seit der ersten Version.
+Dies ist eine Beschränkung von Gpg4win seit der ersten Version.
 
-\textit{Anmerkung 1}: Bei Sprung von 1.1.3 auf 2.0.0 tritt dieser Fall
+\textit{Anmerkung 1}: Bei Sprung von 1.1.x auf 2.0.x tritt dieser Fall
 \textit{immer} ein, da bestimmte Komponenten K nicht mehr existieren, 
 also auf jeden Fall (automatisch) als deselektiert zu betrachten sind.
 
 \textit{Anmerkung 2}: Im Falle von MSI übernimmt Windows die Aufgabe, nicht mehr verwendete
 Komponenten zu entfernen.  Das bedeutet, dass der
 MSI-Installationsassistent in dem obigen
-Szenario korrekt ist (alte Komponente K in Version X ist nach Schritt 2 nicht
+Szenario korrekt handelt (alte Komponente K in Version X ist nach Schritt 2 nicht
 mehr auf dem System vorhanden).
 
 
@@ -6080,8 +6108,9 @@ systemweiten Anwendungs-Dateiordner mit den Konfigurationseinstellungen:
     \item Benutzerspezifische GnuPG-Anwendungsdaten\\
         in \Filename{\%APPDATA\%\back{}gnupg}, das
         entspricht in der Regel dem Dateiordner: \\
-\Filename{C:\back{}Dokumente und
-Einstellungen\back{}\textit{<Benutzername>}\back{}Anwendungsdaten\back{}gnupg\back{}}
+\small{\Filename{C:\back{}Dokumente und
+Einstellungen\back{}\textit{<Benutzername>}\back{}Anwendungsdaten\back{}gnupg\back{}}}
+\normalsize
 
         In diesem \texttt{gnupg}-Dateiordner befinden sich sämtliche
         persönlichen GnuPG-Daten,
@@ -6090,7 +6119,7 @@ Einstellungen\back{}\textit{<Benutzername>}\back{}Anwendungsdaten\back{}gnupg\ba
 
     \item Systemweite GnuPG-Anwendungsdaten\\
         in \Filename{\%COMMON\_APPDATA\%\back{}GNU}, das
-        entspricht in der Regel dem Dateiordner: 
+        entspricht in der Regel dem Dateiordner: \\
         \Filename{C:\back{}Dokumente und Einstellungen\back{}All
 Users\back{}Anwendungsdaten\back{}GNU\back{}}
 
@@ -6108,7 +6137,7 @@ Dateiordner bzw. Registryschlüssel zurück:
     \item \Filename{\%APPDATA\%$\backslash$gnupg}\\
         (Wichtig: Hier sind
         Ihre persönlichen privaten und öffentlichen Schlüssel und 
-        GnuPG-Einstellungen enthalten.)
+        GnuPG-Ein\-stellungen enthalten.)
 
     \item Registryschlüssel:\\
         \Filename{HKLM$\backslash$Software$\backslash$GNU$\backslash$GnuPG}
@@ -6148,12 +6177,15 @@ Dateiordner bzw. Registryschlüssel zurück:
 \item Dank der Erlaubnis des BMWi vom 14. November 2007 wurde
       der unveränderbare Abschnitt "`Impressum"' entfernt und an die aktuelle
       Version angepasst.
-\item Das "`Gpg4win-Kompendium"' fasst "`Gpg4win für Einsteiger"' und "`Gpg4win für Durchblicker"'
-      zusammen und ist umfassend für Gpg4win2 aktualisiert und 
-      ergänzt worden.\\
+\item Das "`Gpg4win-Kompendium"' fasst "`Gpg4win für Einsteiger"' und "`Gpg4win für 
+      Durchblicker"' zusammen und ist im Jahre 2009 umfassend für Gpg4win2 
+      aktualisiert und ergänzt worden.\\
       \"Uberarbeitung:\\
       Emanuel Schütze, Intevation GmbH\\
-      Dr. Jan-Oliver Wagner, Intevation GmbH
+      Dr. Jan-Oliver Wagner, Intevation GmbH\\
+      Florian v. Samson, Bundesamt für Sicherheit in der
+      Informationstechnik\\
+      Werner Koch, g10 Code GmbH\\
 \end{itemize}
 
 \clearpage

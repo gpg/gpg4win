@@ -59,15 +59,16 @@ png_files = \
 		sc-kleopatra-sign-OpenpgpPinentry_de.png\
 		sc-kleopatra-sign-successful_de.png\
 		sc-kleopatra-encryptFile1_de.png\
+		sc-kleopatra-encryptFile2_de.png\
 		sc-kleopatra-encryptFile3_de.png\
-		sc-kleopatra-encryptFile4_de.png\
 		sc-kleopatra-signFile1_de.png\
-		sc-kleopatra-signEncryptFile2_de.png\
+		sc-kleopatra-signFile2_de.png\
 		sc-kleopatra-signFile3_de.png\
 		sc-kleopatra-decryptFile1_de.png\
 		sc-kleopatra-decryptFile2_de.png\
 		sc-kleopatra-verifyFile1_de.png\
 		sc-kleopatra-verifyFile2_de.png\
+		sc-kleopatra-verifyFile2a-badSignature_de.png\
 		sc-gpgex-contextmenu-signEncrypt_de.png\
 		sc-gpgex-contextmenu-verifyDecrypt_de.png\
 		sc-wordpad-editOpenpgpKey_de.png\
@@ -80,6 +81,7 @@ png_files = \
 		sc-inst-components_de.png sc-inst-directory_de.png \
 		sc-inst-options_de.png \
 		sc-inst-startmenu_de.png sc-inst-ready_de.png \
+		sc-inst-progress_de.png \
 		sc-inst-finished_de.png sc-inst-finished2_de.png \
 		sc-inst-finished2.png\
 		sc-winpt-sign-passwd.png \
