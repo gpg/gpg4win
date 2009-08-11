@@ -4,8 +4,8 @@ m4_dnl DONT USE THIS FILE DIRECTLY
 m4_ifdef(`__TMPL_ROOT',,`m4_define(`__TMPL_ROOT',`')')
 
 m4_define(`__TITLE',m4_dnl
-I18N(`EN',`EMail-Security using GnuPG for Windows')`'m4_dnl
-I18N(`DE',`EMail-Sicherheit mit GnuPG für Windows'))
+I18N(`EN',`Email-Security using GnuPG for Windows')`'m4_dnl
+I18N(`DE',`Email-Sicherheit mit GnuPG für Windows'))
 
 m4_ifdef(`__TMPL_PAGE_TITLE',,`m4_define(`__TMPL_PAGE_TITLE',`Gpg4win - '__TITLE)')
 
@@ -46,7 +46,7 @@ m4_ifdef(`__TMPL_PAGE_TITLE',,`m4_define(`__TMPL_PAGE_TITLE',`Gpg4win - '__TITLE
               </span>
             </a>
                 &nbsp;&nbsp;<a href="I18N(`EN', `./package-integrity.html') I18N(`DE', `./package-integrity-de.html')"
-                  >SHA1/MD5/OpenPGP-Sig</a>
+                  >SHA1/OpenPGP-Sig</a>
       </td></tr>
     </table>
   </div>

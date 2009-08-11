@@ -22,7 +22,8 @@ SHA1_SRC  gpg4win-VERSION.tar.bz2
 </pre>
 
 <h2>MD5 Prüfsummen</h2>
-
+<b>Achtung: Die Nutzung von MD5 ist unsicher!
+Möglichst nur noch SHA1 verwenden.</b>
 <pre>
 MD5_EXE  gpg4win-VERSION.exe
 MD5_EXL  gpg4win-light-VERSION.exe
@@ -49,14 +50,14 @@ gpg4win-VERSION.tar.bz2.sig welches
 <a href="http://wald.intevation.org/frs/?group_id=11">hier</a> zu finden ist.
 
 <p>
-Die Signaturen wurden mit dem Schlüssel mit der ID <em>1CE0C630</em> erstellt
-und kann über PGP Schlüsselserver abgeholt werden.
+Die Signaturen wurden mit dem OpenPGP-Zertifikat mit der ID <em>1CE0C630</em> erstellt
+und kann über OpenPGP-Zertifikatsserver abgeholt werden.
 </p>
 
 <p>
-Einen Schlüssel von einem Schlüsselserver abholen geht z.B. mit
-GPA oder WinPT. Die Prüfung einer Signatur kann man leicht mit GPGee
-über den Explorer erledigen.
+Ein Zertifikat von einem Zertifikatsserver abholen geht z.B. mit
+Kleopatra oder GPA. Die Prüfung einer Signatur kann man leicht mit
+GpgEX über den Explorer erledigen.
 </p>
 
 

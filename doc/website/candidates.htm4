@@ -24,12 +24,3 @@ an encryption tool which encrypts e-mails in the
 background, hence eliminating the need for a plugin for any e-mail
 tool of your choice.
 </p>
-
-<h2>GPGoe - Plugin for Microsoft Outlook Express</h2>
-
-<p>
-
-<a href="http://wald.intevation.org/projects/gpgoe/">GPGoe</a> is a
-plugin for GPG encryption via the clipboard
-for the email tool Microsoft Outlook Express.
-</p>

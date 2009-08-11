@@ -1,4 +1,16 @@
 2009-08-07  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+	* doc/website/template_link_boxes_de.m4,
+	  package-integrity.htm4, index.htm4,
+	  candidates-de.htm4, download-de.htm4,
+	  reporting-bugs-de.htm4, candidates.htm4,
+	  contribute-de.htm4, download.htm4,
+	  versions.m4, template_link_boxes_en.m4,
+	  build-installer-de.htm4, template_header.m4,
+	  gpg4win.css, package-integrity-de.htm4,
+	  index-de.htm4, support-de.htm4, NEWS.last:
+	  Update for 2.0.0 (German pages almost ready).
+
+2009-08-07  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 	* doc/website/
 	  index.htm4, index-de.htm4,
 	  download-de.htm4, download.htm4,

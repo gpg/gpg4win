@@ -10,9 +10,9 @@ PAGE_START
 
 <h2>Gpg4win VERSION</h2>
 
-<p>You can download the full version (including the German manuals) of
-Gpg4win VERSION here:</p>
-<a href="DOWNLOAD_URL" class="dlbutton2">gpg4win&nbsp;VERSION<br>
+<p>You can download the full version (including the German compendium
+and the English novice manual) of Gpg4win VERSION here:</p>
+<a href="DOWNLOAD_URL" class="dlbutton2">Gpg4win&nbsp;VERSION<br>
 <span class="version">Size: DL_SIZE<br></span></a> 
 
 <h4>Gpg4win light VERSION</h4>
@@ -21,7 +21,7 @@ Gpg4win VERSION here:</p>
 full version, <em>except</em> the certificate manager Kleopatra and the
 Gpg4win manuals.
   You can download the light version here:</p>
-<a href="LDOWNLOAD_URL" class="dlbutton2">gpg4win&nbsp;light&nbsp;VERSION<br>
+<a href="LDOWNLOAD_URL" class="dlbutton2">Gpg4win&nbsp;light&nbsp;VERSION<br>
 <span class="version">Size: LDL_SIZE<br></span></a> 
 
 <h4>Installation</h4>
@@ -31,19 +31,26 @@ Gpg4win manuals.
   your Gpg4win package.  Then double-click on the file you downloaded and
   follow the instructions on the screen.</p>
 
-<h2>Gpg4win Compendium 3.0.0-BETA3 (german!)</h2>
+<h2>Gpg4win Compendium COMPENDIUM_VERSION_DE (German!)</h2>
 
 <p>You can download the BETA version of Gpg4win compendium as
 PDF version here:</p>
 
-<a
-    href="http://wald.intevation.org/frs/?group_id=11"
-   class="dlbutton2">gpg4win&nbsp;compendium 3.0.0-BETA3 (german!)<br>
-<span class="version">Size: 2.3 MByte<br></span></a> 
+<a href="DOWNLOAD_URL_COMPENDIUM_DE"
+    class="dlbutton2">Gpg4win Compendium COMPENDIUM_VERSION_DE<br>
+<span class="version"><small>Größe: DL_SIZE_COMPENDIUM_DE | 
+Veröffentlicht: COMPENDIUM_DATE_DE</small></span>
+</a>
 HTML version: <a
-    href="http://gpg4win.de/handbuecher/compendium_de.html">http://gpg4win.de/handbuecher/compendium_de.html</a>
+    href="./doc/gpg4win-compendium_de.html">http://gpg4win.org/doc/gpg4win-compendium_de.html</a>
 
-<h2>Change history and old releases of Gpg4win</h2>
+
+<h2>All Downloads</h2>
+
+<p>Current and all previous Gpg4win installers as well as signatures and corresponding
+source code packages are available under:
+<a href="http://ftp.gpg4win.org/">http://ftp.gpg4win.org/</a>
+</p>
 
 <p>
 In the  <a href="change-history.html">change history</a>
@@ -56,6 +63,15 @@ Also, you will find direct download link for the old releases.
 Please note that old release still contain meanwhile fixed security issues.
 </p>
 
+<p>
+Gpg4win core source code package (as tar.bz2 archives)
+as well as the documentation (e.g. <em>Gpg4win Compendium</em> and
+<em>Gpg4win for Novices</em>) as separate PDF documents are available
+under:
+<a href="http://wald.intevation.org/frs/?group_id=11">http://wald.intevation.org/frs/?group_id=11</a>
+</p>
+
+
 <h2>Hints</h2>
 
 <p>
@@ -66,12 +82,8 @@ to be automatically informed about new releases and other
 important Gpg4win news.
 
 <p>
-Is downloading very slow? Try one of the mirror servers: 
+Is downloading very slow? Try this mirror server:
 <dl>
-  <dt><a href="MIRROR_IE_URL">Gpg4win mirror server in Ireland</a>
-  <dd>run by <a href="http://ftp.heanet.ie/about/">HEAnet</a>.
-
-  <dt><a href="MIRROR_NO_URL">Gpg4win mirror server in Norway</a>
-  <dd>run by Trond.Endrestol-a.t-fagskolen.gjovik.no from the
-      Gjøvik Technical College.
-<dl>      
+  <dt><a href="MIRROR_IE_URL">Gpg4win mirror server in Ireland</a></dt>
+  <dd>run by <a href="http://ftp.heanet.ie/about/">HEAnet</a>.</dd>
+</dl>

@@ -50,13 +50,14 @@ gpg4win-VERSION.tar.bz2.sig which can be found
 <a href="http://wald.intevation.org/frs/?group_id=11">here</a>.
 
 <p>
-The signatures have been created with the key with the ID <em>1CE0C630</em>
-and can be retrieved from PGP keyservers.
+The signatures have been created with the OpenPGP certificate with the ID <em>1CE0C630</em>
+and can be retrieved from OpenPGP certificate servers.
 </p>
 
 <p>
-Loading a key from a keyserver can be done e.g. via GPA or WinPT.
-Checking the the signature of a file is best done with GPGee via
+Loading a certificate from a certificate server can be done e.g. via
+Kleopatra or GPA.
+Checking the the signature of a file is best done with GpgEX via
 the Explorer.
 </p>
 

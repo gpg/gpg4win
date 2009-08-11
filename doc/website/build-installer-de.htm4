@@ -8,6 +8,9 @@ PAGE_START
 
 <h1>Gpg4win Installationspaket selbst herstellen</h1>
 
+<p><em>Achtung: Diese Seite (und die Unterseiten zum Bau von Gpg4win) ist noch nicht 
+vollständig auf Gpg4win2 aktualisiert.</em></p>
+
 <h2>Herkömmlicher ".exe-Installer"</h2>
 
 <p>

@@ -45,7 +45,7 @@ sich. Nachstehend die wichtigsten Änderungen:
 - Kleopatra ist der neue Zertifikatsmanager.  Kleopatra ist der
   bisherige S/MIME Zertifikatsmanager von KDE (eine auf vielen
   GNU/Linux-Systemen benutzte Arbeitsumgebung).  Für die Verwendung
-  in Gpg4win ist Kleopatra um die Unterstützung von OpenPGP und u  eine
+  in Gpg4win ist Kleopatra um die Unterstützung von OpenPGP und eine
   vereinheitlichte grafische Oberfläche für alle kryptografischen 
   Operationen erweitert worden.  Kleopatra läuft in der Regel
   permanent als Dienst (siehe Icon im System-Tray), sobald dessen
@@ -54,7 +54,7 @@ sich. Nachstehend die wichtigsten Änderungen:
   abgedeckt. WinPT wurde aus Gpg4win2 entfernt.
 
 - GpgEX ist die neue Programmerweiterung für den Microsoft Explorer
-  and ersetzt GpgEE.
+  und ersetzt GpgEE.
 
 - Das E-Mail-Programm Claws Mail wurde auf eine modernere Version
   aktualisiert und unterstützt nun SSL, NNTP und IMAP.

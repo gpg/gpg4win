@@ -23,12 +23,3 @@ ein Verschlüsselungsprogramm welches im Hintergrund E-Mails
 verschlüsselt, so dass kein Plugin für das E-Mail Programm notwendig
 ist.
 </p>
-
-<h2>GPGoe - Plugin für Microsoft Outlook Express</h2>
-
-<p>
-<a href="http://wald.intevation.org/projects/gpgoe/">GPGoe</a> ist ein
-Plugin für GPG-Verschlüsselung über das Clipboard
-für das E-Mail Programm Microsoft Outlook Express.
-</p>
-

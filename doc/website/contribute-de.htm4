@@ -8,13 +8,13 @@ PAGE_START
 
 <h1>Zu Gpg4win beitragen</h1>
 
-Sie finden Gpg4win gut? Dann unterstützen Sie das Projekt.
+<p>Sie finden Gpg4win gut? Dann unterstützen Sie das Projekt.
 Es ist leichter als allgemein angenommen und selbst Wenig
 kann Erstaunliches bewirken.
 Wie bei jeder Freien Software können Sie entweder
-Zeit oder Geld geben.
+Zeit oder Geld geben.</p>
 
-<p>
+
 
 <h2>Als Freiwilliger</h2>
 
@@ -24,7 +24,8 @@ sie können Gpg4win mit Tat zur Seite stehen:
 <ul>
 
 <li> Arbeiten Sie sich ein und werden Sie erst engagierter Anwender und dann
-Beitragender.  Beteiligen Sie sich an Foren oder Mailinglisten. Schon kleine
+Beitragender.  Beteiligen Sie sich an <a
+href="community-de.html">Foren oder Mailinglisten</a>. Schon kleine
 Hinweise von Ihnen können andere Nutzer von Gpg4win oder einer Komponente
 freuen. Nehmen Sie sich einfach eine Aufgabe, sagen auf der Mailingliste
 Bescheid und fangen Sie damit an.
@@ -55,6 +56,19 @@ andere zur Nutzung.
 
 <p>
 
+<p>Sie suchen konkrete Anleitungen für eine mögliche Mithilfe?
+Schauen Sie doch einmal hier rein:
+<ul>
+<li><a href="reporting-bugs-de.html">Berichten von Problemen</a></li>
+<li><a href="build-installer-de.html">Installationspaket
+herstellen</a></li>
+<li><a href="website-maintenance-de.html">Website pflegen</a></li>
+<li><a href="localize-gpg4win.html">Gpg4win in your language</a></li>
+</ul>
+</p>
+<p>Noch nichts passendes dabei? Dann fragen Sie doch einmal auf der
+Entwickler-Mailingliste nach!</p>
+
 <h2>Als Geldgeber</h2>
 
 <ul>
@@ -74,7 +88,7 @@ Hauptstrom zu Gute kommt.
 
 <p>
 
-<li> Als Unternehmen oder Behörde beauftragen Sie die unfangreichere
+<li> Als Unternehmen oder Behörde beauftragen Sie die umfangreicheren
 Maßnahmen zur Sicherung einer nachhaltige und eigenständigen
 Fortführung des Projekts.
 Sie erhalten damit Gpg4win dauerhaft für Ihre Organisation.
