@@ -11,7 +11,6 @@ m4_dnl DONT USE THIS FILE DIRECTLY
   <a href="documentation-de.html">Dokumentation</a><br>
   <a href="community-de.html">Gemeinschaft (Kontakt)</a><br>
   <a href="contribute-de.html">&nbsp;- Mitmachen</a><br>
-  <!--<a href="mailinglists-de.html">&nbsp;- Mailinglisten</a><br>-->
   <a href="reporting-bugs-de.html">&nbsp;- Probleme melden</a><br>
   <a href="http://wald.intevation.org/projects/gpg4win/">&nbsp;- Entwicklungsseite</a><br>
   <a href="support-de.html">Professioneller Support</a><br>
@@ -43,10 +42,8 @@ m4_dnl DONT USE THIS FILE DIRECTLY
       type="radio" name="os0" value="Nein" checked>Nein
     </p>
   </form>
-
   </p>
 </div>
-
 <div class="box">
   <h1>Sonstiges</h1>
   <a href="Kurzstudie-Nachhaltige-FS-Beispiel-Gpg4win.html">Kurzstudie: "Nachhaltige Freie Software: Vom Projekt zur Dauertätigkeit am Beispiel Gpg4win"</a>

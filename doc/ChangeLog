@@ -1,5 +1,22 @@
-2009-08-07  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
-	* doc/website/template_link_boxes_de.m4,
+2009-08-12  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+	* website/index.htm4, index-de.htm4,
+	  contribute.htm4, contribute-de.htm4,
+	  links.htm4, links-de.htm4,
+	  download.htm4, download-de.htm4,
+	  reporting-bugs.htm4, reporting-bugs-de.htm4,
+	  support.htm4, support-de.htm4,
+	  build-installer.htm4:
+	 Modify pages for 2.0.0.
+
+	* website/about.htm4, about-de.htm4,
+	  documentation.htm4, documentation-de.htm4,
+	  impressum.htm4, impressum-de.htm4,
+	  community.htm4, community-de.htm4,
+	  news-20090812.htm4, news-20090812-de.htm4:
+	 Add new pages for 2.0.0.
+
+2009-08-11  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+	* website/template_link_boxes_de.m4,
 	  package-integrity.htm4, index.htm4,
 	  candidates-de.htm4, download-de.htm4,
 	  reporting-bugs-de.htm4, candidates.htm4,
@@ -11,7 +28,7 @@
 	  Update for 2.0.0 (German pages almost ready).
 
 2009-08-07  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
-	* doc/website/
+	* website/
 	  index.htm4, index-de.htm4,
 	  download-de.htm4, download.htm4,
 	  versions.m4, template_header.m4, NEWS.last:

@@ -16,7 +16,7 @@ PAGE_START
 <h2>Gpg4win 2.0.0</h2>
 
 Gpg4win ist ein Installationspaket für Windows (2000/XP/2003/Vista)
-mit Computer-Programmen und Handbüchern für Email- und Datei-Verschlüsselung.
+mit Computer-Programmen und Handbüchern für Email- und Dateiverschlüsselung.
 Die beiden relevanten kryptographischen Standards OpenPGP und S/MIME werden
 unterstützt.
 Gpg4win und die in Gpg4win enthaltene Software
@@ -44,11 +44,11 @@ einheitliche Benutzerführung für alle Krypto-Dialoge bereit. </td>
   <tr>
     <td>GpgOL:</td>
     <td>Eine Programmerweiterung für Microsoft Outlook 2003 und 2007
-(Email-Verschlüsselung).</td>
+(Emailverschlüsselung).</td>
   </tr>
   <tr>
     <td>GpgEX:</td>
-    <td>Eine Programmerweiterung für den Microsoft Explorer (Datei-Verschlüsselung).</td>
+    <td>Eine Programmerweiterung für den Microsoft Explorer (Dateiverschlüsselung).</td>
   </tr>
   <tr>
     <td>Claws Mail:</td>

@@ -15,12 +15,12 @@ Der Download-Knopf im oberen Brereich der Gpg4win Heimatseite
 zeigt die jeweils aktuellste Version von Gpg4win an.
 </p>
 
-<!--
 <p>
-TODO: Where can you see the version number of a installed
-package?
+Die Versionsnummer Ihrer installierten Gpg4win-Version finden Sie
+z.B. in der README-Datei (erreichbar über das Gpg4win-Startmenü) oder unter
+<em>Start->Einstellungen->Systemsteuerung->Software</em>.
 </p>
--->
+
 
 <h2>2. Prüfen, ob es sich überhaupt um einen Fehler von Gpg4win handelt</h2>
 
@@ -54,9 +54,11 @@ Natürlich ist es nicht immer einfach zu entscheiden,
 ob es sich um einen Fehler von Gpg4win handelt oder
 um einen Fehler in einem der Module.
 In diesem Fall sollte, abhängig von der Art des Problems,
-entweder auf einem der Mailinglisten oder Foren von Gpg4win
-um Rat gefragt oder ein Problembericht in den Bug Tracker
-von Gpg4win eingetragen werden.
+entweder auf einem der <a href="community-de.html">Mailinglisten oder
+Foren</a> von Gpg4win um Rat gefragt oder ein Problembericht in den
+<a
+href="http://wald.intevation.org/tracker/?atid=126&group_id=11&func=browse">
+Gpg4win Bug Tracker</a> eingetragen werden.
 </p>
 
 

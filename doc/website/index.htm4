@@ -6,18 +6,25 @@ m4_define(`EN')
 m4_define(`DE_FILE', `index-de.html')
 
 PAGE_START
-<h2>New User?</h2>
+<h2>News</h2>
+<p>
+<dl>
+<dt><b>+++ 20090812 Gpg4win 2.0.0 is released +++</b></dd>
+<dd>Read the <a href="news-20090812-de.html">Press statement</a>.</dd>
+</dl>
+
+<h2>Gpg4win 2.0.0</h2>
 
 Gpg4win is a installer package for Windows (2000/XP/2003/Vista) with
-computer programs and handbooks for EMail and file encryption.  Both
-relevant cryptography standards are supported, OpenPGP and S/MIME .
+computer programs and handbooks for Email and file encryption.  Both
+relevant cryptography standards are supported, OpenPGP and S/MIME.
 Gpg4win and the software included with Gpg4win
 are <a href="http://www.fsf.org/licensing/essays/free-sw.html">Free
 Software</a> (among other things free of charge for all commercial and
 non-commercial purposes).
 
 <p>
-You can <b>choose all or some of the following modules</b> during installation:
+You can choose all or some of the following <b>modules</b> during installation:
 </p>
 <table>
   <tr>
@@ -34,19 +41,19 @@ You can <b>choose all or some of the following modules</b> during installation:
   </tr>
   <tr>
     <td>GpgOL:</td>
-    <td>A plugin for Microsoft Outlook 2003 and 2007 (email encryption)</td>
+    <td>A plugin for Microsoft Outlook 2003 and 2007 (email encryption).</td>
   </tr>
   <tr>
     <td>GpgEX:</td>
-    <td>A plugin for Microsoft Explorer (file encryption)</td>
+    <td>A plugin for Microsoft Explorer (file encryption).</td>
   </tr>
   <tr>
     <td>Claws Mail:</td>
-    <td>A complete email program including the plugin for GnuPG</td>
+    <td>A complete email program including the plugin for GnuPG.</td>
   </tr>
   <tr>
     <td>Gpg4win Compendium:</td>
-    <td>The new (German!) documentation about Gpg4win2 (translation already scheduled)</td>
+    <td>The new (German!) documentation about Gpg4win2 (translation already scheduled).</td>
   </tr>
   <tr>
     <td>Gpg4win for Novices:</td>
@@ -61,7 +68,7 @@ rights.
 </p>
 <p>
 The best point to start is with the illustrative handbook
-<em>Gpg4win for Novices</em>.
+<a href="documentation.html">Gpg4win for Novices</a>.
 </p>
 <p>
 We recommend to subscribe to the

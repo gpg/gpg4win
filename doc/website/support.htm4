@@ -9,7 +9,8 @@ PAGE_START
 <h1>Professional Support for Gpg4win</h1>
 
 <p>
-The support available through mailing lists, web forums and bug tracker
+The support available through <a href="community.html">mailing lists,
+web forums and bug tracker</a>
 is usually provided by volunteers.
 Due to the huge number of users, there is a good chance to
 receive helpful answers.
@@ -19,18 +20,20 @@ Naturally, timely and exhaustive answers can not be guaranteed.
 <p>
 In case timely answers, quick software modification or general
 consultancy for using Gpg4win (installation, configuration etc.) is
-needed, the companies
-<a href="http://www.intevation.net">Intevation GmbH</a>
-and <a href="http://www.g10code.de">g10code GmbH</a> jointly
-offer respective support.
+needed, the German free software companies
+<a href="http://www.intevation.de">Intevation
+GmbH</a>, <a href="http://www.g10code.de">g10code GmbH</a> und 
+<a href="http://www.kdab.de">KDAB</a> jointly
+offer respective professional support.
 With each customer we have a individual support agreement
 optimzed for their needs, so you
 will not find a price table for the Gpg4win support.
 </p>
 
 <p>
-Please contact <em>info@intevation.de</em>
-if you plan to buy professional support from Intevation and g10code.
+Please contact us about the contact form below or directly to <a
+href="mailto:gpg4win-professional@intevation.de">gpg4win-professional@intevation.de</a>
+if you plan to buy professional support from the three above-named companies.
 With your inquiry please describe your needs (e.g. which of the Gpg4win
 applications to be supported, which crypto-workflows you have or
 want to establish), the number of users, your IT infratructure (e.g.
@@ -42,3 +45,87 @@ tasks you want to do on your own and finally what you expect from us.
 We will come to you with a estimation of costs and/or questions to
 clarify some aspects for better understanding.
 </p>
+
+
+<h2>Request offer</h2>
+
+<p>
+Fill out this request form to receive an individual offer.
+</p>
+
+<form action="support-de.html" method="get">
+
+<table cellpadding="10">
+<tr valign="top">
+
+  <td><b>Kind of support</b></td>
+  <td>
+    I am interested in ...
+    <p>
+        <input type="radio" name="product" value="support" 
+        checked>professional support for using <b>Gpg4win 2.0.0</b>.<br>
+        (You have e.g. a problem with the configuration in your
+         company or you need support for your productiv use of Gpg4win? 
+         Then we offer you our technical support.)
+    </p>
+    <p>
+        <input type="radio" name="product" value="development"
+        >further development of <b>Gpg4win 2.0.0</b>.<br>
+        (You miss an important feature in Gpg4win? You have special
+        ideas to aid the further development of Gpg4win2? 
+        Then please contact us! We will arrange for you an individual
+        offer - after estimation with our developer.)
+    </p>
+    </td>
+</tr>
+<tr valign="top">
+  <td><b>Company / Organization</b></td>
+  <td><input name="company" type="text" size="50" maxlength="50"></td>
+</tr>
+<tr valign="top">
+  <td><b>Address</b></td>
+  <td>
+    <textarea name="address" cols="50" rows="4"></textarea>
+  </td>
+</tr>
+<tr valign="top">
+  <td><b>Contact person</b></td>
+  <td><input name="name" type="text" size="50" maxlength="50"></td>
+</tr>
+<tr valign="top">
+  <td><b>Email</b></td>
+  <td><input name="email" type="text" size="50" maxlength="50"></td>
+</tr>
+<tr valign="top">
+  <td><b>Telephon</b></td>
+  <td><input name="phone" type="text" size="50" maxlength="50"></td>
+</tr>
+<tr valign="top">
+  <td><b>Preferred contact method</b></td>
+  <td>
+    <input type="radio" name="preferred_contact" value="email" checked><b>Email</b>
+    <input type="radio" name="preferred_contact" value="postal"><b>By Post</b>
+    <input type="radio" name="preferred_contact" value="phone"><b>Telephon</b>
+  </td>
+</tr>
+<tr valign="top">
+  <td><b>Deductions</b></td>
+  <td>
+    <input type="checkbox" name="discount" value="public">Public/non-profit organization (administration, university, etc)<br>
+    <input type="checkbox" name="discount" value="naming">Naming as customer (public naming as customer of Greenbone permitted)<br>
+  </td>
+
+</tr>
+<tr valign="top">
+  <td><b>Comment</b></td>
+  <td>
+    <textarea name="comment" cols="50" rows="10"></textarea>
+  </td>
+</tr>
+</table>
+
+<p align="center">
+  <input type="submit" value="Send Request for Offer">
+</p>
+
+</form>

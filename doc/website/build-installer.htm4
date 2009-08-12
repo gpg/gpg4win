@@ -8,6 +8,9 @@ PAGE_START
 
 <h1>Build Gpg4win installer packages on your own</h1>
 
+<p><em>Attention: This page (and the other pages to build Gpg4win) is
+not yet updated to Gpg4win2.</em></p>
+
 <h2>Conventional ".exe installer"</h2>
 
 <p>

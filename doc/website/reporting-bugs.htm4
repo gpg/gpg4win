@@ -15,12 +15,11 @@ The download button ontop of the Gpg4win homepage shows
 the current version of Gpg4win.
 </p>
 
-<!--
 <p>
-TODO: Where can you see the version number of a installed
-package?
+You can find your installed Gpg4win version number
+in the README file (via start menu folder of Gpg4win) or open
+<em>start->Settings->Control Panel->Programs</em>.
 </p>
--->
 
 <h2>2. Check whether it is really a Gpg4win bug</h2>
 
@@ -38,29 +37,25 @@ register before submitting or commenting a bug):
 </p>
 
 <ul>
-<li><a href="http://www.stud.uni-hannover.de/~twoaday/bugs.html">
-    WinPT bug tracking</a>
-     <p>
 <li><a href="http://bugs.kde.org/component-report.cgi?product=kleopatra">
-    Kleopatra Bug Tracking</a>
-     <p>
-<li><a href="http://www.excelcia.org/modules.php?name=Forums&file=viewforum&f=1">
-    GPGee Forum</a> (GPGee has no bug tracker, users are asked to report
-    problems in the forum)
+    Kleopatra Bug Tracker</a>
      <p>
 <li><a href="http://www.thewildbeast.co.uk/claws-mail/bugzilla/index.cgi">
-    Claws Mail bug tracking</a>
+    Claws Mail Bug Tracker</a>
      <p>
 <li><a href="http://www.gnupg.org/documentation/bts.html">
-    GnuPG, GPA, GpgOL and GpgEX bug tracking</a>
+    GnuPG, GPA, GpgOL und GpgEX Bug Tracker</a>
 </ul>
 
 <p>
 Of course, it is not always easy to decide whether
 it is a bug of Gpg4win or a module.
 In these cases and depending on the type of the
-problem, either ask on one of the Gpg4win forums
-or mailing lists for advice or create a Gpg4win bug report.
+problem, either ask on one of the Gpg4win <a
+href="community.html">mailing lists or forums</a>
+for advice or create a bug report in the <a
+href="http://wald.intevation.org/tracker/?atid=126&group_id=11&func=browse">
+Gpg4win bug tracker</a>.
 </p>
 
 
@@ -92,23 +87,10 @@ how you reproduce the bug.
 <p>
 If appropriate, attach a debug log of the
 procedure where you produced the bug.
-</p>
+Look at the instructions for the several Gpg4win components in the
+<a href="./doc/gpg4win-compendium_de_28.html">Gpg4win Compendium</a>
+(sorry, currently in German only).
 
-<h3>Creating debug log information</h3>
-
-<p>
-GpgOL has an extra debug options which helps to understand the
-internal communication between Outlook and GpgOL.
-To enable it, go to the GnuPG tab in Outlook's option page, click on
-the "Advanced" button and enter
-</p>
-
-<pre>
-c:\temp\gpgol.log
-</pre>
-
-<p>
-into the "Debug output" field.
 </p>
 
 <p>

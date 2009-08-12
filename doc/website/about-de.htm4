@@ -1,0 +1,58 @@
+m4_dnl -*-html-*-
+m4_include(`template.m4')
+m4_dnl $Id$
+
+m4_define(`DE')
+m4_define(`EN_FILE', `about.html')
+PAGE_START
+
+<h1>Über Gpg4win</h2>
+
+<p>Die Gpg4win-Initiative hat das <b>Ziel</b>
+das Gpg4win-Windows-Installationspaket für
+die Verschlüsselungssoftware
+GnuPG sowie zugehörige Anwendungen
+<b>kontinuierlich zu aktualisieren</b>.
+Insbesondere wird die <a href="documentation-de.html">Dokumentation</a>
+("Gpg4win-Kompendium") direkt von den Gpg4win-Machern gepflegt.</p>
+
+<p>
+Ein weiteres zentrales Ziel ist die vereinigte Unterstützung
+für die beiden relevanten kryptographischen Standards <b>OpenPGP
+und S/MIME</b>.
+</p>
+
+<p>
+Gpg4win ist ein internationales Projekt, aufgrund der Herkunft
+des Projektes und vieler Beteiligter liegt eine
+<b>vollständige deutsche Übersetzung</b> vor.
+</p>
+
+<p>
+Der Hauptunterschied zu den bisherigen Ansätzen
+(vor allem GnuPP, GnuPT, Windows Privacy Tools und GnuPG-Basics)
+ist, dass zunächst der <b>Gpg4win-Builder</b> entwickelt wurde.
+Dieser erlaubt es, sehr leicht neue gpg4win.exe-Installer
+mit aktualisierten Komponenten herzustellen.
+Und zwar auf einem GNU/Linux System. Fast alle Produkte
+werden dabei sogar automatisch per Cross-Compilation erstellt.
+</p>
+
+<p>
+Damit verbindet sich die Hoffnung, der <b>schnellen Alterung von Installer-Paketen
+entgegenzuwirken</b>, denn eine Aktualisierung wird deutlich einfacher
+und hängt eben nicht von einer Einzelperson ab.
+</p>
+
+<p><br>
+Im Vorfeld der Beauftragung und Entwicklung von Gpg4win2 wurde eine Kurzstudie
+zum Thema <a
+href="Kurzstudie-Nachhaltige-FS-Beispiel-Gpg4win.html">"Nachhaltige
+Freie Software: Vom Projekt zur Dauertätigkeit
+am Beispiel Gpg4win"</a> verfasst.
+</p>
+
+
+<h2>Bildschirmfotos</h2>
+
+<p>...folgen in Kürze.</p>

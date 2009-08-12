@@ -25,7 +25,7 @@ you can get active for Gpg4win:
 
 <li> Make yourself familiar with Gpg4win and first become a
      engaged user and then a contributor.
-     Participate in the forums or mailing lists.
+     Participate in the <a href="community.html">forums or mailing lists</a>.
      Your hints can make users of Gpg4win or one of its
      components happy.
      Just pick yourself a task, let others know about on the
@@ -58,7 +58,21 @@ you can get active for Gpg4win:
 
 </ul>
 
-<p>
+<p></p>
+
+<p>You are looking for a concrete instructinos to getting involved?
+Just look at these pages:
+<ul>
+<li><a href="reporting-bugs.html">How to report a problem?</a></li>
+<li><a href="build-installer.html">Build Gp4win installer package</a></li>
+<li><a href="website-maintenance.html">Maintaining the Gpg4win website</a></li>
+<li><a href="localize-gpg4win.html">Gpg4win in your language</a></li>
+</ul>
+</p>
+<p>You havn't found anything? Then please ask on the <a
+href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-devel/">developer
+mailing list</a> what you can do!</p>
+
 
 <h2>As financial backer</h2>
 

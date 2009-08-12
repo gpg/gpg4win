@@ -1,0 +1,76 @@
+m4_dnl -*-html-*-
+m4_include(`template.m4')
+m4_dnl $Id$
+
+m4_define(`EN')
+m4_define(`DE_FILE', `documentation-de.html')
+PAGE_START
+
+<h1>Documentation</h1>
+
+<p></p>
+
+<h2>Gpg4win Compendium</h2>
+
+<p>The "Gpg4win Compendium" is the new overview documentation for
+  Gpg4win2. This combines on about 180 pages the previous German
+  manuals "Einsteiger" and "Durchblicker".
+  All chapters were reworked and extended to describe the new Gpg4win
+  Version 2.0. Among other things, this means adaption to Kleopatra,
+  GpgEX and PGP/MIME and new texts for S/MIME and X.509.
+</p>
+
+<p>Note: The Gpg4win Compendium is currently availabe in <b>German
+only</b>. It is currently still a <b>BETA</b> version.
+The final version 3.0.0 of the German Compendium is scheduled for end
+of 2009. Afterwards the translation into English will started.
+Translations into other language are very welcome!
+Please contact the
+<a href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-devel">
+Gpg4win developer mailing list</a> if you want to start with a new
+translation (Read also <a href="localize-gpg4win.html">Gpg4win into your language</a>).</p>
+
+<p>After install Gpg4win 2.0.0 the Compendium (in
+pdf and html version) is available via start menu in the folder
+<em>Gpg4win->Documentation</em>.</p>
+
+You can download the current <b>pdf</b> version of the Gpg4win Compendium here:
+<a href="DOWNLOAD_URL_COMPENDIUM_DE"
+    class="dlbutton2">Gpg4win-Kompendium COMPENDIUM_VERSION_DE<br>
+<span class="version"><small>Size: DL_SIZE_COMPENDIUM_DE | 
+Released: COMPENDIUM_DATE_DE</small></span>
+</a>
+
+The current <a href="./doc/gpg4win-compendium_de.html">HTML
+     version</a> of the compendium.
+
+
+<h2>Old Documentation</h2>
+<p>Please note: With Gpg4win2 and the new Gpg4win Compendium 
+all following Gpg4win manuals are now <b>out of date</b> (and will no
+longer updated):
+
+<dl>
+  <dt><b>Gpg4win for Novices</b> (Englisch translation of "Gpg4win für Einsteiger")</dt>
+  <dd>Last version: 1.0.0 (2006-11-30)<br>
+   <a href="http://wald.intevation.org/frs/?group_id=11">All
+PDF versions</a> | <a
+href="http://gpg4win.de/handbuecher/novices.html">Last HTML version</a>
+  </dd>
+  </dd>.
+
+  <dt><b>Gpg4win für Einsteiger</b> (German)</dt>
+  <dd>Last version: 2.0.2 (2006-05-30)<br>
+    <a href="http://wald.intevation.org/frs/?group_id=11">All PDF
+versions</a> | <a
+href="http://gpg4win.de/handbuecher/einsteiger.html">Last HTML version</a>
+  </dd>.
+
+  <dt><b>Gpg4win für Durchblicker</b> (German)</dt>
+  <dd>Last version: 2.0.2 (2006-05-30)<br>
+    <a href="http://wald.intevation.org/frs/?group_id=11">All
+PDF versions</a> |
+    <a href="http://gpg4win.de/handbuecher/durchblicker.html">Last
+HTML version</a>
+  </dd>.</dl>
+

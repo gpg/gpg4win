@@ -8,32 +8,14 @@ m4_dnl DONT USE THIS FILE DIRECTLY
   <a href="index.html">Home</a><br>
   <a href="about.html">About Gpg4win</a><br>
   <a href="download.html">Download</a><br>
-  <a href="change-history.html">Change History</a><br>
+  <a href="documentation-de.html">Dokumentation</a><br>
+  <a href="community.html">Community (Contact)</a><br>
+  <a href="contribute.html">&nbsp;- Getting involved</a><br>
+  <a href="reporting-bugs.html">&nbsp;- Report problems</a><br>
+  <a href="http://wald.intevation.org/projects/gpg4win/">&nbsp;- Development Site</a><br>
+  <a href="support.html">Professional Support</a><br>
   <a href="links.html">Links</a><br>
   <a href="impressum.html">Impressum</a><br>
-</div>
-
-<div class="box">
-  <h1>Support</h1>
-  Mailinglist Discussion:<br>
-  <a href="http://lists.wald.intevation.org/pipermail/gpg4win-users-en/">Archive</a>
-  | <a href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-users-en">Subscribe</a><br>
-  Mailinglist Announcements:<br>
-  <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/">Archive</a>
-  | <a href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-announce">Subscribe</a>
-  <p>Web Forums:<br>
-  <a href="http://wald.intevation.org/forum/forum.php?forum_id=21">Help</a>
-  | <a
-  href="http://wald.intevation.org/forum/forum.php?forum_id=20">Discussion</a>
-  </p>
-  <p>Bug Reports (<a href="reporting-bugs.html">howto</a>):<br>
-  <a
-  href="http://wald.intevation.org/tracker/?atid=126&amp;group_id=11&amp;func=browse">Bug
-  Tracker</a>
-  </p>
-  <p>
-  <a href="support.html">Professional Support</a>
-  </p>
 </div>
 <div class="box">
   <h1>Sponsorship</h1>
@@ -65,19 +47,8 @@ m4_dnl DONT USE THIS FILE DIRECTLY
   </p>
 </div>
 <div class="box">
-  <h1>Getting involved</h1>
-  <a href="contribute.html">Contributing to Gpg4win</a><br>
-  <a href="http://wald.intevation.org/projects/gpg4win/">Project Site</a><br>
-  <a href="candidates.html">Candidates for Integration</a><br>
-  <p>Howtos:<br>
-  <a href="build-installer.html">Build Installer Package</a><br>
-  <a href="website-maintenance.html">Maintaining Website</a><br>
-  <a href="localize-gpg4win.html">Gpg4win in your language</a><br>
-  </p>
-</div>
-<div class="box">
   <h1>Miscellaneous</h1>
-  <a href="ShortStudy-Sustainable-FS-example-Gpg4win.html">Short Study: Sustainable Free Software: 
-    From project to permanent activity, using the example Gpg4win</a>
+  <a href="ShortStudy-Sustainable-FS-example-Gpg4win.html">Short Study: "Sustainable Free Software: 
+    From project to permanent activity, using the example Gpg4win"</a>
 </div>
 </div>

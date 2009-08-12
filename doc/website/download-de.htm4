@@ -37,7 +37,7 @@ Handbüchern. Die light Version kann hier herunter geladen werden:</p>
 <h2>Gpg4win-Kompendium COMPENDIUM_VERSION_DE</h2>
 
 <p>Die BETA-Version COMPENDIUM_VERSION_DE des Gpg4win-Kompendiums kann hier als
-PDF-Datei herunter geladen werden:</p>
+<b>PDF</b>-Datei herunter geladen werden:</p>
 
 <a href="DOWNLOAD_URL_COMPENDIUM_DE"
     class="dlbutton2">Gpg4win-Kompendium COMPENDIUM_VERSION_DE<br>
@@ -47,11 +47,14 @@ Veröffentlicht: COMPENDIUM_DATE_DE</small></span>
 
 Die aktuelle <a href="./doc/gpg4win-compendium_de.html">HTML-Version</a> des Kompendiums.
 
+<p>Lesen Sie die <a href="documentation.html">Dokumentationsseite</a>
+für weitere Informationen über verfügbare Gpg4win Dokumentationen.</p>
+
 
 <h2>Alle Downloads</h2>
 
-<p>Alle bisherigen Gpg4win-Installer sowie Signaturen und zugehörige
-Quelltextpakete finden Sie unter: <a href="http://ftp.gpg4win.org/">http://ftp.gpg4win.org/</a>
+<p>Alle aktuellen und bisherigen Gpg4win-Installer sowie Signaturen und zugehörige
+Quelltextpakete finden Sie unter: <a href="http://ftp.gpg4win.org">http://ftp.gpg4win.org</a>
 </p>
 
 <p>
@@ -64,7 +67,6 @@ enhalten waren) als auch einen direkten Download dieser alten Versionen.
 Bitte beachten Sie, dass die alten Versionen die ggf. zwischenzeitlich beseitigten
 Sicherheitslöcher weiterhin enthalten!
 </p>
-
 
 <p>
 Die Gpg4win Kern-Quelltextpakete (als tar.bz2 Archive)

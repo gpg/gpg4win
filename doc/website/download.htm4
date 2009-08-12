@@ -11,9 +11,11 @@ PAGE_START
 <h2>Gpg4win VERSION</h2>
 
 <p>You can download the full version (including the German compendium
-and the English novice manual) of Gpg4win VERSION here:</p>
+and the English novice manual) of Gpg4win VERSION here (<a
+    href="change-history.html">change history</a>):</p>
 <a href="DOWNLOAD_URL" class="dlbutton2">Gpg4win&nbsp;VERSION<br>
-<span class="version">Size: DL_SIZE<br></span></a> 
+    <span class="version"><small>Size: DL_SIZE | Released: DL_DATE</small></span>
+</a>
 
 <h4>Gpg4win light VERSION</h4>
 
@@ -22,34 +24,38 @@ full version, <em>except</em> the certificate manager Kleopatra and the
 Gpg4win manuals.
   You can download the light version here:</p>
 <a href="LDOWNLOAD_URL" class="dlbutton2">Gpg4win&nbsp;light&nbsp;VERSION<br>
-<span class="version">Size: LDL_SIZE<br></span></a> 
+<span class="version"><small>Size: LDL_SIZE | Released: DL_DATE</small></a> 
 
 <h4>Installation</h4>
 
 <p>After downloading
   please <a href="package-integrity.html">verify</a> the integrity of
   your Gpg4win package.  Then double-click on the file you downloaded and
-  follow the instructions on the screen.</p>
+  follow the instructions on the screen (or look at the <a
+      href="documentation.html">documentation</a>).</p>
 
 <h2>Gpg4win Compendium COMPENDIUM_VERSION_DE (German!)</h2>
 
-<p>You can download the BETA version of Gpg4win compendium as
-PDF version here:</p>
+<p>You can download the BETA version COMPENDIUM_VERSION_DE of Gpg4win compendium as
+<b>PDF</b> file here:</p>
 
 <a href="DOWNLOAD_URL_COMPENDIUM_DE"
     class="dlbutton2">Gpg4win Compendium COMPENDIUM_VERSION_DE<br>
-<span class="version"><small>Größe: DL_SIZE_COMPENDIUM_DE | 
-Veröffentlicht: COMPENDIUM_DATE_DE</small></span>
+<span class="version"><small>Size: DL_SIZE_COMPENDIUM_DE | 
+Released: COMPENDIUM_DATE_DE</small></span>
 </a>
-HTML version: <a
-    href="./doc/gpg4win-compendium_de.html">http://gpg4win.org/doc/gpg4win-compendium_de.html</a>
+ The current <a href="./doc/gpg4win-compendium_de.html">HTML
+     version</a> of the compendium.
+
+ <p>Read the <a href="documentation.html">documentation page</a> for
+ more information about available Gpg4win documentation.</p>
 
 
 <h2>All Downloads</h2>
 
 <p>Current and all previous Gpg4win installers as well as signatures and corresponding
 source code packages are available under:
-<a href="http://ftp.gpg4win.org/">http://ftp.gpg4win.org/</a>
+<a href="http://ftp.gpg4win.org">http://ftp.gpg4win.org</a>
 </p>
 
 <p>
@@ -83,7 +89,5 @@ important Gpg4win news.
 
 <p>
 Is downloading very slow? Try this mirror server:
-<dl>
-  <dt><a href="MIRROR_IE_URL">Gpg4win mirror server in Ireland</a></dt>
-  <dd>run by <a href="http://ftp.heanet.ie/about/">HEAnet</a>.</dd>
-</dl>
+<a href="MIRROR_IE_URL">Gpg4win mirror server in Ireland</a> (run by
+<a href="http://ftp.heanet.ie/about/">HEAnet</a>)
