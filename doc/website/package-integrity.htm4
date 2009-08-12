@@ -23,7 +23,8 @@ SHA1_SRC  gpg4win-VERSION.tar.bz2
 </pre>
 
 <h2>MD5 checksums</h2>
-
+<b>Attention: Using of MD5 is insecure!
+Please use SHA1 only.</b>
 <pre>
 MD5_EXE  gpg4win-VERSION.exe
 MD5_EXL  gpg4win-light-VERSION.exe
