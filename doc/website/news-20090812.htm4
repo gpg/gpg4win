@@ -6,95 +6,91 @@ m4_define(`EN')
 m4_define(`DE_FILE', `news-20090812-de.html')
 PAGE_START
 
-<h1>Presseerklärung</h1>
+<h1>Press release</h1>
 
 
-<h4>Sichere Email Kommunikation mit Gpg4win 2.0.0</h4>
-<!--Gpg4win 2.0.0 fertig, endlich mit S/MIME und Anhängen
-Endlich kann ich Dir sicher was anhängen,.. Gpg4win 2.0.0 ist da.--!
+<h4>Gpg4win 2.0.0 is ready, it does S/MIME and secure attachments</h4>
 
-<p><em>Osnabrück, Düsseldorf, 12.08.2009</em></p>
+<p><em>Osnabrück, Düsseldorf (Germany), 2009-08-12</em></p>
 
-<p>Seit heute ist Version 2.0.0 der gleichnamigen, kostenfreien
-Verschlüsselungssoftware für Windows von gpg4win.de verfügbar.
-Entwickelt wurde Gpg4win2 innerhalb der letzten zwei Jahre und löst
-Version 1.1.4 als stabile Version ab.</p>
+<p>Today, Gpg4win 2.0.0 was announced on www.gpg4win.org. It is a crypto
+software for Windows that can be downloaded without fees. Version 2.0.0
+follows version 1.1.4 as a stable product line and includes the progress
+of the last two years of development.</p>
 
-<p>GpgOL - eine Erweiterung für MS-Outlook, kann erstmals auch mit
-MIME-konformen Emails umgehen; Anhänge sind damit wesentlich einfacher
-zu verschlüsseln oder zu signieren, als mit dem Vorgänger. Neben
-OpenPGP wird erstmals auch S/MIME unterstützt.<br>
-GpgOL ist für diese Funktionen komplett neu geschrieben worden. Damit
-unterstützt Gpg4win jetzt beide Krypto-Standards für Email, auch mit
-den modernen 2048 Bit RSA Smartcards.</p>
+<p>GpgOL - a plugin for MS Outlook - can handle MIME emails now, making
+signing and encrypting attachments much easier compared
+to the last version. Support for S/MIME has also been added for the first time.
+GpgOL has been completely rewritten for this functionality. 
+Now Gpg4win supports both standard crypto formats for Email: OpenPGP and S/MIME,
+both with modern 2048 bit RSA smart cards.</p>
 
-<p>S/MIME setzt auf ein hierachisches Vertrauenskonzept, d.h. Nutzer
-brauchen ein Zertifikat, welches von einer vertrauenswürdigen Stelle
-unterschrieben ist. Das macht Gpg4win2 für den Einsatz in mittleren
-und großen Organisationen interessant, welche auf eine
-Public-Key-Infrastruktur (PKI) zurückgreifen.</p>
+<p>S/MIME uses a hierarchical concept of trust, meaning users
+have to acquire an x509 certificate signed by a trustworthy authority
+in a public key infrastructure (PKI). Many medium and large organisations
+already use a PKI making Gpg4win2 interesting for them for
+end-to-end email security.</p>
 
-<p>Privatanwender finden in Gpg4win2 ebenfalls eine einfach zu
-handhabende Sicherheitssoftware zum Verschlüsseln und Signieren ihrer
-Emails und Dateien unter Windows - egal ob mit OpenPGP oder
-S/MIME.</p>
+<p>Of course Gpg4win2 also aims to be an easy-to-use application for private
+users, who wish to encrypt or sign their email or files under Windows
+with S/MIME or OpenPGP.</p>
 
-<p>Neben GpgOL (für Outlook 2003 und 2007) enthält das Paket auch die
-eigenständige Email-Anwendung Claws Mail, GpgEX, GnuPG, eine
-175-seitige Dokumentation und zwei alternative Zertifikatsmanager.
-Gpg4win2 arbeitet mit der Groupware- und Email-Anwendung "Kontact auf
-Windows" zusammen und unterstützt die Betriebssysteme Windows 2000,
-XP, 2003 und Vista.<br>
-Die Dialogführung am Bildschirm sowie das Gpg4win-Kompendium - die
-neue, komplett überarbeitete Dokumentation über Email-Kryptographie -
-sind in Deutsch verfasst.</p>
+<p>Besides GpgOL (for Outlook 2003 and 2007) the Gpg4win package
+contains the standalone email application Claws Mail, GpgEX, GnuPG,
+175-page documentation and a choice of two certificate managers.
+Gpg4win2 works together with "Kontact for Windows", a Free Software groupware 
+and email application and supports Windows 2000, XP, 2003 and Vista.
+In addition to English, all dialogs are available in German. The
+reworked and updated documentation called Gpg4win Compendium is
+available in German only. An English version is planned
+for the end of the year.</p>
 
-<p>Gpg4win steht für "GNU Privacy Guard for Windows" und ist eine
-Sammlung bestehender Freier Software (Open Source) und steht selbst
-ebenfalls unter GNU GPL-Lizenz. Die Version 2.0.0 kann mit Quelltexten
-von http://www.gpg4win.de geladen werden. Die Nutzung für jeden
-Bereich, das Überprüfen, Verändern und Weitergeben der Software ist
-erlaubt und erwünscht. Wer das Installationspaket weitergibt, muss
-jedoch auch für die Weitergabe der Quellen sorgen, die übliche
-Regelung bei der GNU GPL.</p>
+<p>Gpg4win stands for "GNU Privacy Guard for Windows" and is a
+collection of existing Free Software (Open Source) components 
+and is licensed under the GNU GPL. Version 2.0.0 can be
+downloaded with accompanying source code from http://www.gpg4win.org .
+Using the software for any purpose, analysing, modifying and
+redistributing it is explicitly allowed and encouraged. Redistributors
+are required to provide the source code - the usual rule with the GNU
+GPL.</p>
 
-<p>Die zentrale Krypto-Komponente von Gpg4win2 ist GnuPG2.  Beide
-Zertifikatsmanager (GPA und Kleopatra) unterstützen OpenPGP und
-S/MIME. Mittelfristig sollen diese Multi-Platform-Komponenten die
-Benutzbarkeit von Krypto-Lösungen verbessern, da sie Dienste für die
-Zertifikatsauswahl für alle Anwendungen zur Verfügung stellen.
-GpgEX erweitert das Kontextmenü des (32bit) Microsoft Explorers um die
-Möglichkeit, direkt Krypto-Operationen auf Dateien durchzuführen.</p>
+<p>The central crypto-component of Gpg4win2 is GnuPG2. Both certificate
+managers (GPA and Kleopatra) support OpenPGP and S/MIME. In the medium term,
+these cross-platform components are intended to improve the usability
+of crypto solutions because they offer certificate selection services 
+to all applications.</p>
 
-<p>Experten hatten auf eine frühere Veröffentlichung von Gpg4win2
-gehofft, da über das letzte Jahr hinweg immer wieder Vorabversionen
-veröffentlicht worden sind. Schwierigkeiten für die Entwickler ergaben
-sich aus dem neuen Konzept des vereinigten Zertifikatsmanagers
-Kleopatra und der Windowsplattform. Das proprietäre Outlook war eine
-große Hürde für GpgOL, da das Zusammenspiel mit eingebauten
-MIME-Funktionen nicht immer reibungslos funktioniert.</p>
+<p>GpgEX adds crypto-operations on files to the context menu of the (32bit)
+Microsoft Explorer.</p>
 
-<p>Für technische Fragen und Anregungen stehen den Nutzern neben dem
-Gpg4win-Kompendium eine deutschsprachige Anwender-Mailingliste und
-Webforen zur Verfügung.</p>
+<p>Observers had hoped for an earlier release of Gpg4win 2.0.0 because
+several beta versions had been released throughout the last 12 months.
+The developers had to overcome difficulties with the new concept of the
+combined certificate manager Kleopatra and with the windows platform.
+The proprietary software Outlook also posed a problem for GpgOL
+development because the built-in MIME functions do not always work as
+expected.</p>
 
-<p>Die Macher von Gpg4win sind die deutschen Freien Software Unternehmen
-<a href="http://www.intevation.de">Intevation GmbH</a> (Projektmanagement),
+<p>New users can check out the compendium or go to the public mailing lists or
+web forums for technical questions or to give feedback to the Gpg4win 
+community.</p>
+
+<p>Makers of Gpg4win2 are the Germany based Free Software companies 
+<a href="http://www.intevation.net">Intevation GmbH</a> (Pproject coordination), 
 <a href="http://www.g10code.com">g10 Code GmbH</a>
-(Kryptographiefunktionen, GpgOL, GpgEX, GPA) und <a
-href="http://www.kdab.de">KDAB (Kleopatra)</a>.<br>
-Sie bieten professionelle Unterstützung für die Weiterentwicklung,
-Installation und den Betrieb des Email-Sicherheitspakets an - z.B.
-individuelle Lösungen für den Einsatz in großen Unternehmen. Details
-dazu auf der Website.</p>
+(Crypto, GpgOL, GpgEX, GPA) and <a href="http://www.kdab.com">KDAB</a> (Kleopatra).
+They offer professional support, consulting 
+and individual solution development for email security with
+Gpg4win.</p>
 
 <p><a href="http://www.gpg4win.org">www.gpg4win.org</a></p>
+
 <br>
-<p><b>Ansprechpartner:</b><br>
-  Emanuel Schütze, <a href="http://www.intevation.de">Intevation GmbH</a><br>
+<p><b>Contact:</b><br>
+  Emanuel Schütze, <a href="http://www.intevation.net">Intevation GmbH</a><br>
   Neuer Graben 17<br>
   49074 Osnabrück<br>
   Email: <a href="mailto:emanuel.schuetze@intevation.de">emanuel.schuetze@intevation.de
 </a><br>
-  Tel: 0541 / 335083-746
+  Tel: +49 541 - 335083 - 746
 </p>
