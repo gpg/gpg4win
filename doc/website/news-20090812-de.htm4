@@ -6,7 +6,7 @@ m4_define(`DE')
 m4_define(`EN_FILE', `news-20090812.html')
 PAGE_START
 
-<h1>Presseerklärung</h1>
+<h1>Pressemitteilung</h1>
 
 
 <h4>Sichere Email Kommunikation mit Gpg4win 2.0.0</h4>
