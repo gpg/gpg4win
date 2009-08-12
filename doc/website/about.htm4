@@ -8,25 +8,25 @@ PAGE_START
 
 <h1>About Gpg4win</h2>
 
-<p>The Gpg4win initiative <b>aims at updating</b> the Gpg4win Windows installation
-package with GnuPG encryption tool, associated applications on a regular basis.
-Especially the <a href="documentation.html">documentation</a>
-("Gpg4win Compendium" and "Novices") are directly maintained
+<p>The Gpg4win initiative aims <b>to provide a current</b> Gpg4win Windows installation
+package including the GnuPG encryption tool and associated applications.
+The <a href="documentation.html">documentation</a>
+("Gpg4win Compendium" and "Novices") is directly maintained
 as part of the Gpg4win project.</p>
 
 <p>
-Another central aim is the united support of both relevant cryptographic standards,
-<b>OpenPGP and S/MIME</b>.
+Another goal is to support both relevant cryptographic standards,
+<b>OpenPGP and S/MIME</b> in a unified way.
 </p>
 
 <p>
-Gpg4win is an international project. Due to the origin of the project and
-many members, German language is fully supported as well.
-Any additional translators are very welcome!
+Gpg4win is an international effort. Due to the origin of the project and
+many members, there is a full German translation.
+Additional translators are welcome!
 </p>
 
 <p>
-The main difference compared to all other similar approaches
+The main difference compared to all similar approaches
 (mainly GnuPP, GnuPT, Windows Privacy Tools and GnuPG-Basics)
 is that the first piece developed was the <b>Gpg4win-Builder</b>.
 This builder allows to easily create new gpg4win.exe installers
@@ -37,17 +37,17 @@ the installer.
 </p>
 
 <p>
-With this concept it is hoped to good practical support to <b>prevent
-quick aging of the installer package</b>. Because updating is much easier
+This concept raises hope to practically <b>prevent
+quick aging of the installer package</b>  because updating is easier
 and does not depend on a single person.
 </p>
 
 <p><br>
-Before starting the contract and development of Gpg4win2 a 
-short story dealing with <a
-href="ShortStudy-Sustainable-FS-example-Gpg4win.html">"Sustainable
+Before starting getting contracted to develop Gpg4win2, 
+Jan-Oliver Wagner and Bernhard Reiter wrote a short study
+about <a href="ShortStudy-Sustainable-FS-example-Gpg4win.html">"Sustainable
 Free Software: From project to permanent activity, using the example
-Gpg4wind"</a> was created.
+Gpg4win"</a>.
 </p>
 
 
