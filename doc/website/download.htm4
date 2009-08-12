@@ -30,7 +30,7 @@ Gpg4win manuals.
 
 <p>After downloading
   please <a href="package-integrity.html">verify</a> the integrity of
-  your Gpg4win package.  Then double-click on the file you downloaded and
+  your Gpg4win package.  Then double-click on the file you have downloaded and
   follow the instructions on the screen (or look at the <a
       href="documentation.html">documentation</a>).</p>
 
@@ -48,7 +48,7 @@ Released: COMPENDIUM_DATE_DE</small></span>
      version</a> of the compendium.
 
  <p>Read the <a href="documentation.html">documentation page</a> for
- more information about available Gpg4win documentation.</p>
+ more information about the available Gpg4win documentation.</p>
 
 
 <h2>All Downloads</h2>
@@ -66,7 +66,7 @@ Also, you will find direct download link for the old releases.
 </p>
 
 <p>
-Please note that old release still contain meanwhile fixed security issues.
+Please note that old releases may still contain meanwhile fixed security issues.
 </p>
 
 <p>
