@@ -1,3 +1,16 @@
+2009-08-12  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+
+	* website/index.htm4, website/template_link_boxes_en.m4: Fix typo.
+
+	* website/about.htm4, website/about-de.htm4
+	* website/pix/sc-kleopatra-encryptFile1_de.png
+	* website/pix/sc-kleopatra-withOpenpgpTestkey_de.png
+	* website/pix/sc-kleopatra-openpgp-certificateDetails_de.png
+	* website/pix/sc-kleopatra-decrypt-verify-openpgp-email.png:
+	Added new screenshots.
+
+	* manual/gpg4win-compendium-de.tex: Add TODO marker.
+
 2009-08-12  Werner Koch  <wk@g10code.com>
 
 	* website/versions.m4: Fix release date.

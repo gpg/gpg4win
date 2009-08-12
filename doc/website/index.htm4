@@ -15,8 +15,8 @@ PAGE_START
 
 <h2>Gpg4win 2.0.0</h2>
 
-Gpg4win is a installer package for Windows (2000/XP/2003/Vista) with
-computer programs and handbooks for Email and file encryption.  Both
+Gpg4win is an installer package for Windows (2000/XP/2003/Vista) with
+computer programs and handbooks for email and file encryption.  Both
 relevant cryptography standards are supported, OpenPGP and S/MIME.
 Gpg4win and the software included with Gpg4win
 are <a href="http://www.fsf.org/licensing/essays/free-sw.html">Free
