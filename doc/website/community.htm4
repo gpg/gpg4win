@@ -8,20 +8,18 @@ PAGE_START
 
 <h1>Gpg4win Community</h1>
 
-<p>Like any Free Software community Gpg4win needs persons
+<p>Like any Free Software community Gpg4win needs people
 who <a href="contribute.html">get involved</a> with the initiative.
-One step is e.g. to <a href="reporting-bugs-de.html">reporting bugs</a>.</p>
+One step is e.g. to <a href="reporting-bugs-de.html">reporting problems</a>.</p>
 
-<p>You can communicate with the Gpg4win community via different media:
-Mailing lists, web forums and IRC:</p>
+<p>You can communicate with the Gpg4win community via 
+mailing lists, web forums and IRC:</p>
 
 <h2>Mailing lists</h2>
 
-<p>There are following mailing lists (in English and German language) for the
-Gpg4win community.<br>
 <em>Note:</em>
-Please subscribe first if you want to send an email to a list. Therby
-you avoid that your message wait for affirmation by the list moderator.
+Please subscribe before you are sending an email to a list. Thereby
+you avoid that your message gets hold for moderation first.
 </p>
 
 <dl>
@@ -66,7 +64,7 @@ href="http://lists.wald.intevation.org/pipermail/gpg4win-devel/">Archive</a>
   </dd>
 
   <dt><b>Gpg4win-commits</b></dt>
-  <dd>SVN-Commits for developer (English)<br>
+  <dd>SVN-Commits for developers (English)<br>
     <a
 href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-commits/">Subscribe</a>
 | <a
@@ -77,7 +75,7 @@ href="http://lists.wald.intevation.org/pipermail/gpg4win-commits/">Archive</a>
 
 <h2>Web Forums</h2>
 
-<p>As alternative to mailing lists you can use following Gpg4win web
+<p>As an alternative to mailing lists you can use following Gpg4win web
 forums for your questions and discussions.<br>
 <em>Note:</em> 
 You have to <a
