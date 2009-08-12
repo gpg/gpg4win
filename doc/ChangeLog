@@ -1,5 +1,11 @@
 2009-08-12  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
+	 * website/documentation.htm4, website/documentation-de.htm4
+	 * website/reporting-bugs.htm4, website/reporting-bugs-de.htm4
+	 * website/download.htm4, website/download-de.htm4
+	 * website/template_link_boxes_en.m4, website/index-de.htm4:
+	 Fix compendium HTML link.
+
 	 * website/index.htm4,  website/news-20090812-de.htm4
 	 * website/news-20090812.htm4: Add English press release. Fix some
 	 typo.

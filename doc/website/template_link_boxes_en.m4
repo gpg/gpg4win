@@ -8,7 +8,7 @@ m4_dnl DONT USE THIS FILE DIRECTLY
   <a href="index.html">Home</a><br>
   <a href="about.html">About Gpg4win</a><br>
   <a href="download.html">Download</a><br>
-  <a href="documentation-de.html">Documentation</a><br>
+  <a href="documentation.html">Documentation</a><br>
   <a href="community.html">Community (Contact)</a><br>
   <a href="contribute.html">&nbsp;- Getting involved</a><br>
   <a href="reporting-bugs.html">&nbsp;- Reporting problems</a><br>
