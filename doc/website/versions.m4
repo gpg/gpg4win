@@ -3,7 +3,7 @@ m4_define(`DOWNLOAD_URL',`http://ftp.gpg4win.org/gpg4win-VERSION.exe')
 m4_define(`DL_SIZE',`35 MByte')
 m4_define(`LDOWNLOAD_URL',`http://ftp.gpg4win.org/gpg4win-light-VERSION.exe')
 m4_define(`LDL_SIZE',`12 MByte')
-m4_define(`DL_DATE',`2009-08-10')
+m4_define(`DL_DATE',`2009-08-07')
 m4_define(`SHA1_SRC',`f5457f61c8544cbae856738aabfff1a140c754b6')
 m4_define(`SHA1_EXE',`5a900a6807d2b4753d88cdb9548c528cf4bbbe3e')
 m4_define(`SHA1_EXL',`d00fe78e71a55861a4ccbf92d6e06f4dcbe6aa82')
@@ -20,7 +20,7 @@ m4_define(`DLPAGE',`I18N(`EN',`download.html')`'I18N(`DE',`download-de.html')')
 m4_define(`MIRROR_IE_URL',`http://ftp.heanet.ie/mirrors/ftp.gpg4win.org/')
 m4_define(`SOFTWARE',`
 I18N(`EN', `<a href="http://www.gnupg.org/">GnuPG</a>')I18N(`DE', `<a href="http://www.gnupg.de/">GnuPG</a>') 2.0.12
-<a href="http://kde.org">Kleopatra</a> 2.0.11-svn1008232 (20090807)
+<a href="http://kde.org">Kleopatra</a> 20090807
 I18N(`EN', `<a href="http://www.gnupg.org/related_software/gpa/index.html">GPA</a>')I18N(`DE', `<a href="http://www.gnupg.de/related_software/gpa/index.html">GPA</a>') 0.9.0
 <a href="http://www.g10code.de/p-gpgol.html">GpgOL</a> 1.0.0
 <a href="http://cvs.gnupg.org/cgi-bin/viewcvs.cgi/?root=GpgEX">GpgEX</a> 0.9.3
