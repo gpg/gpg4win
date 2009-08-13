@@ -30,8 +30,9 @@ customer so that we do not show a price table here.
 </p>
 
 <p>
-Please contact us with the contact form below or via email to <a
-href="mailto:gpg4win-professional@intevation.de">gpg4win-professional@intevation.de</a>
+Please contact us with the contact 
+<!--form below or-->
+via email to <a href="mailto:gpg4win-professional@intevation.de">gpg4win-professional@intevation.de</a>
 if you plan to buy professional support from the three companies named above.
 Please describe your needs (e.g. which of the Gpg4win
 applications you want support for, which crypto-workflows you have or
@@ -45,7 +46,7 @@ We will get back to you with cost estimates and, if necessary, questions to
 clarify what you need.
 </p>
 
-
+<!--
 <h2>Request offer</h2>
 
 <p>
@@ -128,3 +129,4 @@ Fill out this request form to receive an individual offer.
 </p>
 
 </form>
+-->
