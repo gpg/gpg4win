@@ -9,6 +9,12 @@ I18N(`DE',`Email-Sicherheit mit GnuPG für Windows'))
 
 m4_ifdef(`__TMPL_PAGE_TITLE',,`m4_define(`__TMPL_PAGE_TITLE',`Gpg4win - '__TITLE)')
 
+m4_define(`LINK',
+    `m4_ifelse($1, NO_LINK_FOR,
+        `<b>$2</b><br />',
+        `<a href="$1">$2</a><br />')')
+
+
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">

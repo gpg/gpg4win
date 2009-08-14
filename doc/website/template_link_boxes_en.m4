@@ -5,17 +5,17 @@ m4_dnl DONT USE THIS FILE DIRECTLY
 <div id="boxes">
 <div class="box">
   <h1>Navigation</h1>
-  <a href="index.html">Home</a><br>
-  <a href="about.html">About Gpg4win</a><br>
-  <a href="download.html">Download</a><br>
-  <a href="documentation.html">Documentation</a><br>
-  <a href="community.html">Community (Contact)</a><br>
-  <a href="contribute.html">&nbsp;- Getting involved</a><br>
-  <a href="reporting-bugs.html">&nbsp;- Reporting problems</a><br>
+  LINK(`index.html', `Home')
+  LINK(`about.html', `About Gpg4win')
+  LINK(`download.html', `Download')
+  LINK(`documentation.html', `Documentation')
+  LINK(`community.html', `Community (Contact)')
+  LINK(`contribute.html', `&nbsp;- Getting involved')
+  LINK(`reporting-bugs.html', `&nbsp;- Reporting problems')
   <a href="http://wald.intevation.org/projects/gpg4win/">&nbsp;- Development Site</a><br>
-  <a href="support.html">Professional Support</a><br>
-  <a href="links.html">Links</a><br>
-  <a href="impressum.html">Impressum</a><br>
+  LINK(`support.html', `Professional Support')
+  LINK(`links.html', `Links')
+  LINK(`impressum.html', `Impressum')
 </div>
 <div class="box">
   <h1>Sponsorship</h1>
@@ -48,7 +48,7 @@ m4_dnl DONT USE THIS FILE DIRECTLY
 </div>
 <div class="box">
   <h1>Miscellaneous</h1>
-  <a href="ShortStudy-Sustainable-FS-example-Gpg4win.html">Short Study: "Sustainable Free Software: 
-    From project to permanent activity, using the example Gpg4win"</a>
+  LINK(`ShortStudy-Sustainable-FS-example-Gpg4win.html', `Short Study: "Sustainable Free Software: 
+    From project to permanent activity, using the example Gpg4win')
 </div>
 </div>

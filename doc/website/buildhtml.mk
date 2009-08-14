@@ -26,7 +26,7 @@ CURDIR=$(shell pwd)
 .SUFFIXES: .html .htm4
 
 .htm4.html:
-	$(PP) $(PPFLAGS) $< > $@
+	$(PP) -DNO_LINK_FOR=$@ $(PPFLAGS) $< > $@
 
 all: $(TARGETS) subdirs
 
