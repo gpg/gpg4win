@@ -1,5 +1,7 @@
 2009-08-14  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
+	 * manual/gpg4win-compendium-de.tex: Many typos.
+
 	 * website/buildhtml.mk, website/template_header.m4
 	 * website/template_link_boxes_de.m4, website/template_link_boxes_en.m4:
 	 Change navigation link status for current page.
