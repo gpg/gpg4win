@@ -1,3 +1,11 @@
+2009-08-14  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+
+	 * website/buildhtml.mk, website/template_header.m4
+	 * website/template_link_boxes_de.m4, website/template_link_boxes_en.m4:
+	 Change navigation link status for current page.
+
+	 * website/download-de.htm4: Fix documentation link.
+
 2009-08-13  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
 	 * website/support.htm4, website/support-de.htm4: Disable support
