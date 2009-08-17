@@ -267,7 +267,7 @@ der angegebenen Reihenfolge lesen.\\
 
 Im \textbf{Anhang} finden Sie Details zu spezifischen technischen
 Themen rund um Gpg4win, unter anderem zur Outlook-Programmerweiterung
-\textit{GpgOL}.\\
+GpgOL.\\
 
 Wie das Kryptographie-Programmpaket Gpg4win selbst, wurde diese Dokument
 nicht für Mathematiker, Geheimdienstler und Kryptographen geschrieben,
@@ -494,7 +494,7 @@ Metadaten können z.B. die zum Schlüssel zugehörige \Email{}-Adresse,
 die Benutzer-Kennung oder der Gültigkeitszeitraum sein (vgl.
 Kapitel~\ref{ch:CertificateDetails}).
 
-Die Eigenschaften geheim / privat bzw. öffentlich / publik sind völlig
+Die Eigenschaften geheim / privat bzw. öffentlich sind völlig
 unabhängig (orthogonal) davon, ob sie sich auf einen reinen
 ("`nackten"') Schlüssel oder ein Zertifikat (Schlüssel mit Metadaten)
 beziehen.\\
@@ -553,8 +553,12 @@ dem Zertifikat einer höher stehenden Organisation beglaubigt usw. bis man zu ein
 Wurzelzertifikat kommt. Vertraut man nun diesem Wurzelzertifikat, so
 vertraut man automatisch allen darunter liegenden Zertifikaten. Das
 nennt man \textbf{hierarchisches Vertrauenskonzept}. Zumeist ist die
-Kette nur 3 Komponenten lang: Wurzelzertifikat, Zertifikat der Zertifizierungsstelle
-(auch CA für Certificate Authority genannt), Anwenderzertifikat.
+Kette nur 3 Komponenten lang: Wurzelzertifikat, Zertifikat des
+Zertifikatsausstellers (auch CA für Certificate Authority genannt), Anwenderzertifikat.
+Technisch ist eine Beglaubigung nichts anderes als eine Signatur des
+Beglaubigenden: hier wird also das aus der Zertifikatsanfrage
+erstellte x.509-Zertifikat von dem Zertifikatsaussteller signiert und
+diese Signatur an das Zertifikat angefügt.
 
 Im Gegensatz dazu verwendet \textbf{OpenPGP} in der Regel eine direkte
 ("`peer-to-peer"') Beglaubigung (Anwender A beglaubigt Anwender B, B
@@ -568,7 +572,7 @@ Beglaubigung von einer höheren Stelle, verschlüsselte Daten und
 Kommunikationspartners vertrauen.
 
 \textbf{Nähere Informationen zu Authentisierungswegen, wie z.B. dem
-Web-of-Trust oder den Zertifizierungsstellen, erhalten Sie
+Web-of-Trust oder den Beglaubigungsinstanzen (CAs), erhalten Sie
 in Kapitel~\ref{ch:trust}.}
 
 % TODO: Grafik?! (z.B. Alice - Bob Authentizität-Problem)
@@ -804,8 +808,7 @@ soll.
 Klicken Sie auf \Button{Fertig stellen}.
 
 
-% TODO:  Wir müssen erklären wie man Word als Standard Editor in
-% Outlook ausschaltet.
+% TODO:  Erklären wie man Word als Standard Editor in Outlook ausschaltet.
 
 \clearpage
 %% Original page 14
@@ -850,7 +853,7 @@ Ein Schlüsselpaar besteht, wie Sie im Kapitel~\ref{ch:openpgpsmime} gelernt habe
 aus einem \textbf{öffentlichen} und einem  \textbf{geheimen Schlüssel}.
 Ergänzt mit den Metadaten (\Email{}-Adresse, Benutzer-Kennung etc.), die
 Sie bei der Erstellung Ihres Schlüsselpaars angeben, erhalten Sie Ihr
-persönliches Zertifikat mit dem öffentlichen und geheimen Schlüssel.
+Zertifikat mit dem öffentlichen und geheimen Schlüssel.
 
 Diese Definition gilt sowohl für OpenPGP wie auch für S/MIME (die Zertifikate
 entsprechen einem Standard mit der Bezeichnung "`X.509"').
@@ -1104,7 +1107,7 @@ drei Schaltflächen betätigen:
     \item[Zertifikate zu Zertifikatsserver senden...]~\\
     Wie genau Sie einen weltweit verfügbaren OpenPGP-Zertifikatsserver
     in Kleopatra einrichten und wie Sie anschließend Ihr öffentliches Zertifikat
-    auf diesen Server publizieren, erfahren Sie in Kapitel~\ref{ch:keyserver}.
+    auf diesen Server veröffenlichen, erfahren Sie in Kapitel~\ref{ch:keyserver}.
 \end{description}
 
 ~\\
@@ -1232,20 +1235,20 @@ drei Schaltflächen betätigen:
     gespeichert werden soll und bestätigen Sie Ihre Eingabe.
     Kleopatra fügt beim Speichern automatisch die Dateiendung 
     \textit{.p10} hinzu. Sie können diese Datei dann später
-    auf verschiedene Weise an eine Zertifizierungsstelle geben.
+    auf verschiedene Weise an eine Beglaubigungsinstanz geben.
 
     \item[Anfrage per \Email{} versenden...]~\\
     Es wird eine neue \Email{} erstellt -- mit der soeben erstellen
     Zertifikatsanfrage im Anhang.
     Geben Sie eine Empfänger-\Email{}-Adresse an (in der Regel die
-    Ihrer zuständigen Zertifizierungsstelle (CA)) und ergänzen Sie ggf. den
+    Ihrer zuständigen Beglaubigungsinstanz (CA)) und ergänzen Sie ggf. den
     vorbereiteten Text dieser \Email{}.
 
     \textbf{Beachten Sie:} Nicht alle
     \Email{}-Programme unterstützen diese Funktion. Sollte kein neues
     \Email{}-Fenster aufgehen, so speichern Sie Ihre Anfrage zunächst in eine
     Datei (siehe oben) und versenden diese Datei per \Email{} an 
-    Ihre Zertifizierungsstelle.
+    Ihre Beglaubigungsinstanz.
 
     Sobald die Anfrage von der CA bestätigt wurde, erhalten Sie von
     Ihrem zuständigen CA-Systemadministrator das fertige und unterzeichnete
@@ -1262,7 +1265,7 @@ Beenden Sie anschließend den Kleopatra-Assistenten mit
 \clearpage
 \subsubsection{Erstellung eines X.509-Schlüsselpaars mit www.cacert.org}
 CAcert ist eine gemeinschaftsbetriebene, nicht-kommerzielle
-Zertifizierungsstelle (CA), die kostenlos X.509-Zertifikate ausstellt.
+Beglaubigungsinstanz (CA), die kostenlos X.509-Zertifikate ausstellt.
 
 Damit Sie sich ein (Client-)Zertifikat bei CAcert erstellen können, müssen Sie
 sich zunächst unter \uniurl[www.cacert.org]{http://www.cacert.org}
@@ -1284,7 +1287,7 @@ Folgen Sie den Anweisungen und installieren Ihr Zertifikat mit Ihrem
 Browser. Mit Firefox können Sie danach z.B. über
 \Menu{Bearbeiten$\rightarrow$Einstellungen$\rightarrow$Erweitert$\rightarrow$Zertifikate}
 Ihr installiertes Zertifikat unter dem ersten Reiter "`Ihre
-Zertifikate"' mit dem Namen (CN) \textit{CAcert WoT User} finden.
+Zertifikate"' mit dem Namen (CN) \textbf{CAcert WoT User} finden.
 
 \textbf{Anmerkung:} Sie können auch ein personalisiertes Zertifikat ausstellen, das z.B.
 Ihren Namen (im CN-Feld) trägt. Dazu müssen Sie sich mit Ihrem
@@ -1294,9 +1297,9 @@ Bestätigung tun müssen, erfahren Sie auf den Internetseiten von
 CAcert.
 
 Speichern Sie abschließend eine Sicherungskopie Ihres
-X.509-Schlüsselpaars in einem X.509-Zerti\-fikat (\textit{.p12}
-Datei).
-\textbf{Achtung:} Diese \textit{.p12} Datei enthält Ihren
+X.509-Schlüsselpaars in einem X.509-Zerti\-fikat (\texttt{.p12}
+Datei).\\
+\textbf{Achtung:} Diese \texttt{.p12} Datei enthält Ihren
 öffentlichen und Ihren zugehörigen geheimen Schlüssel.
 Achten Sie darauf, dass diese Datei nicht in unbefugte Hände gelangt.
 
@@ -1356,7 +1359,7 @@ Informationen benötigen.}
 
 \clearpage
 %% Original page 24
-\chapter{Sie publizieren Ihr öffentliches Zertifikat}
+\chapter{Sie veröffentlichen Ihr öffentliches Zertifikat}
 \label{ch:publishCertificate}
 
 Beim täglichen Gebrauch von Gpg4win ist es sehr praktisch, dass Sie es
@@ -1414,7 +1417,7 @@ Abschnitt.
 ~\\
 Üben Sie jetzt diesen Vorgang einmal mit Ihrem öffentlichen OpenPGP-Zertifikat!
 Adele soll Ihnen dabei behilflich sein. \textbf{Achtung:} Die folgenden
-Übungen gelten nur für OpenPGP! Anmerkungen zum Publizieren von
+Übungen gelten nur für OpenPGP! Anmerkungen zum Veröffentlichen von
 öffentlichen X.509-Zertifikaten finden Sie auf
 Seite~\pageref{publishPerEmailx509}.
 \T\margin{\IncludeImage[width=1.5cm]{openpgp-icon}}
@@ -1691,7 +1694,7 @@ Clinton"' dort schon seit Jahren herumliegen$\ldots$
 \clearpage
 \subsubsection{Kurz zusammengefasst}
 Sie wissen nun, wie Sie Ihr öffentliches OpenPGP-Zertifikat auf einen
-OpenPGP-Zertifikatsserver im Internet publizieren.
+OpenPGP-Zertifikatsserver im Internet veröffentlichen.
 
 \textbf{Wie Sie das öffentliche OpenPGP-Zertifikat eines Korrespondenzpartners auf
   Zertifikatsservern suchen und importieren, erfahren Sie im
@@ -1701,7 +1704,7 @@ OpenPGP-Zertifikatsserver im Internet publizieren.
 
 ~\\Die Verbreitung von öffentlichen X.509-Zertifikaten erfolgt in einigen
 \T\margin{\IncludeImage[width=1.5cm]{smime-icon}}
-Fällen durch die Zertifizierungsstelle. Das passiert typischerweise
+Fällen durch die Beglaubigungsinstanz. Das passiert typischerweise
 über X.509-Zertifikatsserver, die per LDAP erreichbar sind.
 Im Unterschied zu den OpenPGP-Zertifikatsservern synchronisieren sich
 die X.509-Zertifikatsserver jedoch nicht weltweit untereinander.
@@ -2046,7 +2049,7 @@ dargestellten GpgOL-Optionsdialog unter
 
 Lesen Sie sich die angezeigten Informationen sorgfältig durch,
 vor allem dann wenn Sie schon vorher mit S/MIME unter einem anderen
-Krypto-Produkt gearbeitet haben.
+Kryptographie-Produkt gearbeitet haben.
 
 \clearpage
 \subsubsection{Nachricht verschlüsselt versenden}
@@ -3164,7 +3167,7 @@ und ein neues Datum eintragen. Damit können
 Sie Zertifikate als nur für eine begrenzte Zeit gültig erklären, z.B. 
 um sie an externe Mitarbeiter auszugeben.\\
 Die Gültigkeit von X.509-Zertifikaten wird bei der Zertifikatsausstellung
-von der Zertifizierungsstelle (CA) festgelegt und kann nicht vom Nutzer
+von der Beglaubigungsinstanz (CA) festgelegt und kann nicht vom Nutzer
 geändert werden.
 
 \textbf{Das Vertrauen in den Zertifikatsinhaber} beschreibt das Maß an Zuversicht, das
@@ -3234,7 +3237,7 @@ Zertifikate löschen, um so die Kommunikation unmöglich zu machen
 
 \item[X.509-Zertifikatsserver]
    werden in der Regel
-von den Zertifizierungsstellen (CAs) über LDAP bereitgestellt und
+von den Beglaubigungsinstanzen (CAs) über LDAP bereitgestellt und
 \T\margin{\IncludeImage[width=1.5cm]{smime-icon}} werden manchmal
 auch als Verzeichnisdienste für X.509-Zertifikate
 bezeichnet.
@@ -3466,7 +3469,7 @@ dieses Zertifikat zu beglaubigen.
 
 \textit{Beachten Sie: \T\margin{\IncludeImage[width=1.5cm]{openpgp-icon}}
 Beglaubigen von Zertifikaten durch Benutzer ist nur mit OpenPGP
-möglich. Bei X.509 ist das Zertifizierungsstellen (CAs) vorbehalten!}
+möglich. Bei X.509 ist das Beglaubigungsinstanzen (CAs) vorbehalten!}
 
 Durch das Beglaubigen eines (fremden) Zertifikats teilen Sie anderen
 (Gpg4win-)Benutzern mit, dass Sie dieses
@@ -3570,7 +3573,7 @@ nicht die Lösung sein\ldots
 
 \clearpage
 %% Original page 35
-\subsubsection{Zertifizierungsinstanzen}
+\subsubsection{Beglaubigungsinstanzen}
 
 Hier braucht man eine "`übergeordnete"' Instanz, der alle Benutzer
 vertrauen können.  Sie prüfen ja auch nicht persönlich den
@@ -3578,14 +3581,14 @@ Personalausweis eines Unbekannten durch einen Anruf beim Ein\-wohner\-melde\-amt
 sondern vertrauen darauf, dass die ausstellende
 Behörde diese Überprüfung korrekt durchgeführt und beglaubigt hat.
 
-Solche Zertifizierungsinstanzen gibt es auch für OpenPGP.
+Solche Beglaubigungsinstanzen gibt es auch für OpenPGP.
 In Deutschland bietet unter anderem z.B. die
 Zeitschrift c't schon lange einen solchen Dienst kostenlos an, ebenso
 wie viele Universitäten.
 \T\margin{\IncludeImage[width=1.5cm]{openpgp-icon}}
 
-Wenn man also ein OpenPGP-Zertifikat erhält, dem eine
-Zertifizierungsstelle per Beglaubigung seine Echtheit bestätigt, kann man
+Wenn man also ein OpenPGP-Zertifikat erhält, das durch den
+Zertifikatsaussteller per Beglaubigung seine Echtheit bestätigt, kann man
 sich darauf verlassen.
 
 ~\\
@@ -3602,17 +3605,20 @@ Am besten ist diese Infrastruktur mit einem Siegel vergleichbar: Die
 Plakette auf Ihrem Autonummernschild kann Ihnen nur eine dazu
 berichtigte Institution geben, die die Befugnis dazu wiederum von einer
 übergeordneten Stelle erhalten hat.
+Technisch ist eine Beglaubigung nichts anderes als eine Signatur eines
+Zertifikates durch den Beglaubigenden.
+
 
 
 %% Original page 36
 
-Mit der hierarchischen Zertifizierungs-Infrastruktur entspricht dieses
+Mit der hierarchischen Beglaubigungs-Infrastruktur entspricht dieses
 Modell natürlich wesentlich besser den Bedürfnissen staatlicher und
 behördlicher Instanzen als das lose, auf gegenseitigem Vertrauen
 beruhende "`Web of Trust"' von GnuPG. Der Kern der
 Beglaubigung selbst ist allerdings völlig identisch: Gpg4win
 unterstützt neben dem "`Web of Trust"' (OpenPGP) zusätzlich auch 
-eine hierarchische Zertifizierungsstruktur (S/MIME). Demnach
+eine hierarchische Beglaubigungsstruktur (S/MIME). Demnach
 bietet Gpg4win eine Grundlage um dem strengen Signaturgesetz der
 Bundesrepublik Deutschland zu entsprechen.
 
@@ -3767,8 +3773,8 @@ bzw. S/MIME signieren:
 
 \clearpage
 \subsubsection{Signatur prüfen}
-Wir wollen nun prüfen, ob die eben signierte Datei integer
-(korrekt) ist.
+Prüfen Sie nun, ob die eben signierte Datei integer
+(korrekt) ist!
 
 
 Zum Überprüfen der Unverändertheit (Integrität) und der Authentizität
@@ -4188,8 +4194,9 @@ Einige typische systemweite Einstellungen sind:
 
 \item Direkt verfügbare CA-Zertifikate
 
-    Um den Anwendern zusätzlich die Mühe zu ersparen, die Zertifikate der Zertifizierungsstellen
-    (Certificate Authorities, CAs) zu suchen und zu importieren, ist auch hier
+    Um den Anwendern zusätzlich die Mühe zu ersparen, die Zertifikate
+    der Beglaubigungsinstanzen (Certificate Authorities, CAs) zu
+    suchen und zu importieren, ist auch hier
     eine systemweite Vorbelegung der wichtigsten CA-Zertifikate sinnvoll.
 
     Folgen Sie dazu der Beschreibung unter Abschnitt
@@ -4426,9 +4433,9 @@ Wurzelzertifikaten vollständig (systemweit) zu vertrauen.
 \section{Weitere Zertifikate von DirMngr \label{extracertsdirmngr}}
 \T\margin{\IncludeImage[width=1.5cm]{smime-icon}}
 
-Wenn vor einer Krypto-Operation die X.509-Zertifizierungskette zu
-prüfen ist, ist somit auch das jeweiliges Zertifikat der Zertifizierungsstelle
-("`Certificate Authority"', CA) zu prüfen.
+Wenn vor einer Krypto-Operation die X.509-Zertifikatskette zu
+prüfen ist, ist somit auch das jeweiliges Zertifikat der
+Beglaubigungsinstanz ("`Certificate Authority"', CA) zu prüfen.
 
 Für eine direkte Verfügbarkeit können CA-Zertifikate in diesem (systemweiten) 
 Dateiordner abgelegt werden:\newline
@@ -4487,7 +4494,7 @@ o.g. Datei eingetragen werden.
 Ein Zertifikat wird explizit als nicht vertrauenswürdig markiert, wenn
 die Zeile mit dem Präfix "`\texttt{!}"' beginnt.
 Sie können hier auch mehrere Wurzelzertifikate eintragen. Zu beachten
-ist dann, dass jeder Fingerprint in einer neuen Zeile steht.
+ist dann, dass jeder Fingerabdruck in einer neuen Zeile steht.
 
 Wichtig: Abschließend (am Ende der Datei) muss eine Leerzeile erfolgen.
 
@@ -4507,7 +4514,7 @@ DC:BD:69:25:48:BD:BB:7E:31:6E:BB:80:D3:00:80:35:D4:F8:A6:CD S
 Es kann in einigen Fällen sinnvoll sein, die Kriterien an die
 Überprüfung der Wurzelzertifikate zu verringern.
 Sie können dazu hinter \texttt{S} eine weitere Flagge \texttt{relax}
-setzen: \verb#<FINGERPRINT> S relax#\\
+setzen: \verb#<FINGERABDRUCK> S relax#\\
 Wichtig: Die Verwendung von \texttt{relax} setzt die Sicherheit herab
 und muss individuell entschieden werden und sollte nur bei Problemen
 verwendet werden.
@@ -4517,7 +4524,7 @@ Genauere Details finden Sie in der aktuellen GnuPG-Dokumentation
 \uniurl{http://www.gnupg.org/documentation/manuals/gnupg/Agent-Configuration.html}
 
 Die genaue Syntax für die Einträge in die trustlist.txt lautet also:\\
-\texttt{[!]<FINGERPRINT> S [relax]}\\
+\texttt{[!]<FINGERABDRUCK> S [relax]}\\
 wobei \texttt{!} und \texttt{relax} optional sind.
 
 Anstelle der Flagge \texttt{S} sind noch die Werte \texttt{P} und
@@ -4997,7 +5004,7 @@ werden.  Das sind die Grundlagen des RSA Algorithmus:
 Sie selbst haben bei der Installation von Gpg4win während der Eingabe
 Ihrer Passphrase zwei große Primzahlen erzeugt, ohne es zu
 bemerken (dieser werden mit $p$ und $q$ bezeichnet). Nur Sie --­ oder
-in der Praxis Ihr Computer --­ kennen diese beiden Primzahlen, und Sie
+in der Praxis Ihr Rechner --­ kennen diese beiden Primzahlen, und Sie
 müssen für ihre Geheimhaltung sorgen.
 
 %% Original page 57
@@ -5049,7 +5056,7 @@ zu machen, wie die Methode funktioniert. In der Praxis verwendet
 man jedoch viel größere Primzahlen, die aus ­zig Ziffern bestehen.
 
 Nehmen Sie die Primzahlen 7 und 11. Damit verschlüsseln Sie
-Zahlen ­-- oder Buchstaben, was für den Computer dasselbe ist --
+Zahlen ­-- oder Buchstaben, was für den Rechner dasselbe ist --
 nach dem RSA Algorithmus.
 
 Und zwar erzeugen Sie zunächst den öffentlichen Schlüssel.
@@ -5225,7 +5232,7 @@ Entschlüsselung haben Sie sich der Modulo-77 Arithmetik bedient.
 
 Sie haben\ldots
 \begin{itemize}
-\item durch den Computer zwei zufällige Primzahlen erzeugen lassen;
+\item durch den Rechner zwei zufällige Primzahlen erzeugen lassen;
 
 \item daraus das Produkt und den öffentlichen und den geheimen Subkey
   gebildet;
@@ -5337,7 +5344,7 @@ willkürliche Art und Weise gewählt werden, ergäbe
 Hier ist überhaupt nicht mehr ersichtlich, welche die beiden zugrunde
 liegenden Primzahlen sind. Folglich ist es sehr schwierig, aufgrund
 des öffentlichen Schlüssels den geheimen Schlüssel zu ermitteln.
-Selbst den schnellsten Computern der Welt würde es gewaltige Probleme
+Selbst den schnellsten Rechner der Welt würde es gewaltige Probleme
 bereiten, die beiden Primzahlen zu errechnen.
 
 Man muss die Primzahlen also nur groß genug wählen, damit ihre
@@ -5363,7 +5370,7 @@ jedenfalls nicht in vertretbarer Zeit.
 \htmlonly{\html{br}\html{br}} }
 
 Um zu verstehen, wie Nachrichten verschlüsselt werden, sollte man
-wissen, wie ein Computer Zahlen speichert und vor allem, wie sie in
+wissen, wie ein Rechner Zahlen speichert und vor allem, wie sie in
 unterschiedlichen Zahlenbasen dargestellt werden können.
 
 Dazu machen Sie sich zunächst mit den Zahlenpotenzen vertraut.
@@ -5472,7 +5479,7 @@ man als $11_8$, "`73"' schreibt man als $111_8$.
 \clearpage
 %% Original page 67
 
-Computer speichern Zahlen als eine Folge von Nullen und Einsen.
+Rechner speichern Zahlen als eine Folge von Nullen und Einsen.
 Man nennt dies Binärsystem oder Rechnen mit der Basiszahl 2,
 weil Sie nur die Ziffern 0 und 1 verwenden. Stellen Sie sich vor,
 Sie würden die Kilometer mit einem Tachometer zählen, auf
@@ -5492,19 +5499,19 @@ Zwei weitere Beispiele:
 \[ 10101010_2 = 170 \] und
 \[ 00000101_2 = 5 \].
 
-Da der Computer die Buchstaben, Ziffern und Satzzeichen als Bytes
+Da der Rechner die Buchstaben, Ziffern und Satzzeichen als Bytes
 speichert, schauen Sie sich an, welche Rolle dabei die Darstellung zur
 Basis 256 spielt.
 
 
 \clearpage
 %% Original page 68
-Nehmen Sie die Silbe "`un"'. Das "`u"' wird im Computer als 117
+Nehmen Sie die Silbe "`un"'. Das "`u"' wird im Rechner als 117
 gespeichert und das "`n"' als 110.
 
-Diese Zahlenwerte sind für alle Computer standardisiert und werden
+Diese Zahlenwerte sind für alle Rechner standardisiert und werden
 ASCII-Code genannt. Um alle Zahlen und Symbole darstellen zu können,
-benötigen Sie auf dem Computer die 256 Zahlen von 0 bis 255.
+benötigen Sie auf dem Rechner die 256 Zahlen von 0 bis 255.
 
 Sie können also die Silbe "`un"' durch die Zahl $117 * 256 + 110$
 darstellen.\\
@@ -5736,7 +5743,7 @@ Die Karteikarte \textit{GpgOL} unterteilt sich in drei Bereiche:
         Outlook selbst unterstützt ebenfalls X.509 und S/MIME,
         arbeitet aber natürlich nicht mit den Gpg4win-Komponenten.
         Konkret heißt das, dass alle Einstellungen,
-        das Schlüsselmanagement und die Benutzerdialoge unterschiedlich
+        das Zertifikatsmanagement und die Benutzerdialoge unterschiedlich
         sind. Es ist zu beachten, dass Outlook keine OpenPGP
         Unterstützung anbietet.
 
@@ -5947,30 +5954,29 @@ erkennt einige dieser Programme und warnt Sie in diesem Fall.
 
 Generell ist es ratsam, eine vorhandene Installation eines anderen
 GnuPG basierten Programms zu entfernen, bevor Gpg4win installiert wird.
-Es ist hier wichtig, die vorhandenen Schlüssel vorher zu sichern.
+Es ist hier wichtig, die vorhandenen Zertifikate vorher zu sichern.
 
 Der einzige sinnvolle Weg dies zu tun, ist unter Verwendung der im
-alten System vorhandenen Möglichkeiten.  Suchen Sie nach einem
-Menüpunkt um die eigenen privaten (geheimen) Schlüssel zu sichern als
-auch nach einem Menüpunkt um alle vorhandenen öffentlichen Schlüssel
-und Zertifikate zu sichern. Sichern Sie diese dann in eine oder
-mehrere Dateien.
+alten Programm vorhandenen Möglichkeiten.  Suchen Sie nach einem
+Menüpunkt um Ihre privaten (geheimen) Zertifikate zu sichern als
+auch nach einem Menüpunkt um alle vorhandenen öffentlichen Zertifiakte
+zu sichern. Sichern Sie diese dann in eine oder mehrere Dateien.
 
 Sobald Sie Gpg4win installiert haben, prüfen Sie, ob Ihre
-alten Schlüssel bereits vorhanden sind. Sie können dies mit Kleopatra
-oder GPA machen. Sind die Schlüssel schon vorhanden, so entsprach das
-alte System bereits den neuen Konventionen zum Speicherort für die
-Schlüssel und Sie müssen nichts weiter unternehmen.
+alten Zertifikate bereits vorhanden sind. Sie können dies mit Kleopatra
+oder GPA machen. Sind die Zertifikate schon vorhanden, so entsprach das
+alte Verschlüsselungssystem bereits den neuen Konventionen zum Speicherort für die
+Zertifikate und Sie müssen nichts weiter unternehmen.
 
-Wenn die alten Schlüssel nicht erscheinen, so importieren Sie diese
+Wenn die alten Zertifikate nicht erscheinen, so importieren Sie diese
 einfach aus den erstellten Sicherungsdateien. Lesen Sie hierzu das
 Kapitel~\ref{ch:ImExport}.
 
-Falls das alte System GPA verwendet, so können Sie die dort
+Falls Ihr altes Kryptographiesystem GPA verwendet, so können Sie die dort
 vorhandene Backupmöglichkeit benutzen. Diese sollte sehr ähnlich zu
 der Funktion in der GPA Version aus Gpg4win sein.
 
-Falls Sie keinen anderen Weg finden, Ihre alten Schlüssel
+Falls Sie keinen anderen Weg finden, Ihre alten Zertifikate
 wiederzufinden, so suchen Sie bitte mit den Bordmitteln von Windows
 nach Dateien mit den Namen \Filename{secring.gpg} und
 \Filename{pubring.gpg} und importieren diese beiden Dateien mittels
@@ -6020,7 +6026,7 @@ also auf jeden Fall (automatisch) als deselektiert zu betrachten sind.
 Komponenten zu entfernen.  Das bedeutet, dass der
 MSI-Installationsassistent in dem obigen
 Szenario korrekt handelt (alte Komponente K in Version X ist nach Schritt 2 nicht
-mehr auf dem System vorhanden).
+mehr auf dem Betriebssystem vorhanden).
 
 
 
@@ -6032,7 +6038,7 @@ mehr auf dem System vorhanden).
 
 Soll Gpg4win deinstalliert werden,
 dann sollten Sie zunächst alle nicht notwendigen
-Anwendungen beenden und alle Schlüssel und Zertifikate sichern.
+Anwendungen beenden und alle Zertifikate sichern.
 Falls Sie auf Ihrem Rechner mit eingeschränkten Rechten arbeiten
 sollten, ist es für die Deinstallation außerdem notwendig mit
 \textbf{Administratorrechten} angemeldet zu sein.
@@ -6046,7 +6052,7 @@ mit GpgOL bearbeiteten \Email{}s in Outlook von den
 GpgOL-Informationen "`bereinigen"'. Denn: Gpg4win / GpgOL
 setzt für jede Krypto-\Email{} in Outlook eine bestimmten Markierung.
 Sie müssen vor der Deinstallation diese Markierung zurücksetzen,
-damit andere Krypto-Software Ihre \Email{}s später korrekt
+damit andere Kryptographiesoftware Ihre \Email{}s später korrekt
 lesen und z.B. entschlüsseln kann.
 
 GpgOL stellt Ihnen für diese \textbf{Re-Migration} direkt in Outlook folgende Funktion bereit:\\
@@ -6101,7 +6107,7 @@ Einstellungen\back{}\textit{<Benutzername>}\back{}Anwendungsdaten\back{}gnupg\ba
 
         In diesem \texttt{gnupg}-Dateiordner befinden sich sämtliche
         persönlichen GnuPG-Daten,
-        also die persönlichen Zertifikate (Schlüssel), Vertrauenseinstellungen und
+        also die persönlichen Zertifikate, Vertrauenseinstellungen und
         Programmkonfigurationen.
 
     \item Systemweite GnuPG-Anwendungsdaten\\
@@ -6123,7 +6129,7 @@ Dateiordner bzw. Registryschlüssel zurück:
 \begin{itemize}
     \item \Filename{\%APPDATA\%$\backslash$gnupg}\\
         (Wichtig: Hier sind
-        Ihre persönlichen privaten und öffentlichen Schlüssel und 
+        Ihre persönlichen privaten und öffentlichen Zertifikat und 
         GnuPG-Ein\-stellungen enthalten.)
 
     \item Registryschlüssel:\\
