@@ -63,11 +63,11 @@ ${MementoSection} "GpgEX" SEC_gpgex
   SetOutPath "$INSTDIR\share\locale\de\LC_MESSAGES"
   File ${prefix}/share/locale/de/LC_MESSAGES/gpgex.mo
   SetOutPath "$INSTDIR\share\locale\ar\LC_MESSAGES"
-  File ${prefix}/share/locale/es/LC_MESSAGES/gpgex.mo
+  File ${prefix}/share/locale/ar/LC_MESSAGES/gpgex.mo
   SetOutPath "$INSTDIR\share\locale\es\LC_MESSAGES"
   File ${prefix}/share/locale/es/LC_MESSAGES/gpgex.mo
   SetOutPath "$INSTDIR\share\locale\ru\LC_MESSAGES"
-  File ${prefix}/share/locale/es/LC_MESSAGES/gpgex.mo
+  File ${prefix}/share/locale/ru/LC_MESSAGES/gpgex.mo
 
   SetOutPath "$INSTDIR\share\doc\gpgex"
   File ${prefix}/share/doc/gpgex/gpgex-en.html
