@@ -34,15 +34,17 @@ translation (Read also <a href="localize-gpg4win.html">Gpg4win into your languag
 pdf and html version) is available via start menu in the folder
 <em>Gpg4win->Documentation</em>.</p>
 
-You can download the current <b>pdf</b> version of the Gpg4win Compendium here:
+You find the current PDF and HTML version of the Gpg4win Compendium here:
 <a href="DOWNLOAD_URL_COMPENDIUM_DE"
-    class="dlbutton2">Gpg4win-Kompendium COMPENDIUM_VERSION_DE<br>
+    class="dlbutton2">Gpg4win-Kompendium COMPENDIUM_VERSION_DE (PDF)<br>
 <span class="version"><small>Size: DL_SIZE_COMPENDIUM_DE | 
 Released: COMPENDIUM_DATE_DE</small></span>
 </a>
 
-The current <a href="./doc/gpg4win-compendium-de.html">HTML
-     version</a> of the compendium.
+<a href="./doc/gpg4win-compendium-de.html"
+    class="dlbutton2">Gpg4win-Kompendium COMPENDIUM_VERSION_DE (HTML)<br>
+<span class="version"><small>Released: COMPENDIUM_DATE_DE</small></span>
+</a>
 
 
 <h2>Old Documentation</h2>

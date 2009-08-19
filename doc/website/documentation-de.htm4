@@ -29,18 +29,21 @@ Gpg4win-Entwickler-Mailingliste</a> (Lesen sie auch <a
 href="localize-gpg4win.html">Gpg4win into your language</a>).</p>
 
 <p>Nach der Installation von Gpg4win 2.0.0 ist das Kompendium (in
-der pdf und html Fassung) über das Startmenü im Ordner
+der PDF- und HTML-Fassung) über das Startmenü im Ordner
 <em>Gpg4win->Dokumentation</em> verfügbar.</p>
 
-Die aktuelle <b>pdf</b>-Version des Gpg4win-Kompendiums zum Download finden
+Die aktuelle PDF- und HTML-Version des Gpg4win-Kompendiums finden
 Sie hier:
 <a href="DOWNLOAD_URL_COMPENDIUM_DE"
-    class="dlbutton2">Gpg4win-Kompendium COMPENDIUM_VERSION_DE<br>
+    class="dlbutton2">Gpg4win-Kompendium COMPENDIUM_VERSION_DE (PDF)<br>
 <span class="version"><small>Größe: DL_SIZE_COMPENDIUM_DE | 
 Veröffentlicht: COMPENDIUM_DATE_DE</small></span>
 </a>
 
-Die aktuelle <a href="./doc/gpg4win-compendium-de.html">HTML-Version</a> des Kompendiums.
+<a href="./doc/gpg4win-compendium-de.html"
+    class="dlbutton2">Gpg4win-Kompendium COMPENDIUM_VERSION_DE (HTML)<br>
+<span class="version"><small>Veröffentlicht: COMPENDIUM_DATE_DE</small></span>
+</a>
 
 
 <h2>Alte Dokumentationen</h2>

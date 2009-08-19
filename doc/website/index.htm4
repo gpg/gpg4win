@@ -9,6 +9,11 @@ PAGE_START
 <h2>News</h2>
 <p>
 <dl>
+
+<dt><b>+++ 20090819 Using smart cards with Gpg4win 2.0.0 +++</b></dd>
+<dd>Hints for using the supported OpenPGP and X.509 smart cards with
+Kleopatra are available in the updated <a href="doc/README.en.txt">README file</a>.</dd>
+
 <dt><b>+++ 20090812 Gpg4win 2.0.0 is released +++</b></dd>
 <dd>Read the <a href="news-20090812.html">Press release</a>.</dd>
 </dl>

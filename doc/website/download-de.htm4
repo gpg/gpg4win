@@ -38,16 +38,19 @@ Handbüchern. Die light Version kann hier herunter geladen werden:</p>
 
 <h2>Gpg4win-Kompendium COMPENDIUM_VERSION_DE</h2>
 
-<p>Die BETA-Version COMPENDIUM_VERSION_DE des Gpg4win-Kompendiums kann hier als
-<b>PDF</b>-Datei herunter geladen werden:</p>
+<p>Die aktuelle PDF- und HTML-Version des Gpg4win-Kompendiums finden
+Sie hier:</p>
 
 <a href="DOWNLOAD_URL_COMPENDIUM_DE"
-    class="dlbutton2">Gpg4win-Kompendium COMPENDIUM_VERSION_DE<br>
+    class="dlbutton2">Gpg4win-Kompendium COMPENDIUM_VERSION_DE (PDF)<br>
 <span class="version"><small>Größe: DL_SIZE_COMPENDIUM_DE | 
 Veröffentlicht: COMPENDIUM_DATE_DE</small></span>
 </a>
 
-Die aktuelle <a href="./doc/gpg4win-compendium-de.html">HTML-Version</a> des Kompendiums.
+<a href="./doc/gpg4win-compendium-de.html"
+    class="dlbutton2">Gpg4win-Kompendium COMPENDIUM_VERSION_DE (HTML)<br>
+<span class="version"><small>Veröffentlicht: COMPENDIUM_DATE_DE</small></span>
+</a>
 
 <p>Lesen Sie die <a href="documentation-de.html">Dokumentationsseite</a>
 für weitere Informationen über verfügbare Gpg4win Dokumentationen.</p>

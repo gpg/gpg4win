@@ -1,3 +1,12 @@
+2009-08-19  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+
+	 * README.en.txt, README.de.txt: Update smart card instructions.
+
+	 * index.htm4, index-de.htm4: Add smart card news an link to README files.
+
+	 * documentation.htm4, documentation-de.htm4, download-de.htm4
+	 * download.htm4: Add link to HTML version of compendium.
+
 2009-08-18  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
 	 * website/download.htm4, website/download-de.htm4: Add link to

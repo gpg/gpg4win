@@ -38,19 +38,21 @@ Gpg4win manuals.
 
 <h2>Gpg4win Compendium COMPENDIUM_VERSION_DE (German!)</h2>
 
-<p>You can download the BETA version COMPENDIUM_VERSION_DE of Gpg4win compendium as
-<b>PDF</b> file here:</p>
-
+You find the current PDF and HTML version of the Gpg4win Compendium here:
 <a href="DOWNLOAD_URL_COMPENDIUM_DE"
-    class="dlbutton2">Gpg4win Compendium COMPENDIUM_VERSION_DE<br>
+    class="dlbutton2">Gpg4win-Kompendium COMPENDIUM_VERSION_DE (PDF)<br>
 <span class="version"><small>Size: DL_SIZE_COMPENDIUM_DE | 
 Released: COMPENDIUM_DATE_DE</small></span>
 </a>
- The current <a href="./doc/gpg4win-compendium-de.html">HTML
-     version</a> of the compendium.
 
- <p>Read the <a href="documentation.html">documentation page</a> for
- more information about the available Gpg4win documentation.</p>
+<a href="./doc/gpg4win-compendium-de.html"
+    class="dlbutton2">Gpg4win-Kompendium COMPENDIUM_VERSION_DE (HTML)<br>
+<span class="version"><small>Released: COMPENDIUM_DATE_DE</small></span>
+</a>
+
+<p>The compendium is currently availabe in <b>German only</b>!
+Read the <a href="documentation.html">documentation page</a> for
+ more information about available Gpg4win documentation.</p>
 
 
 <h2>All Downloads</h2>

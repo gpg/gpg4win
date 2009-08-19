@@ -73,27 +73,41 @@ of the most important ones:
 3. Known Bugs (and Workarounds)
 ===============================
 
-- Using smart card with Kleopatra...
+- Using smart card with Kleopatra
 
-   * ... and OpenPGP card:
+   The initial setting of smart cards with Kleopatra is currently not
+   yet possible. Please run the following steps one-time to use your
+   smart card with Kleopatra.
+
+   * OpenPGP card
      Use the gpg command line tool to create a new OpenPGP certificate
-     on your card.
-     - Insert card.
-     - Run "gpg --card-edit".
-     - Switch to admin modus by enter: "admin".
-     - Enter "generate" to create a new certificate.
-     After finishing the process your new certificate is shown in
-     Kleopatra (marked with a smart card icon).
+     on your card (a) or to activate your existing certificate of
+     your card (b):
 
-   * ... and Telesec Netkey 3 card:
-     Use the gpgsm command line tool to initializing your card.
+     (a) Create new certificate
+       - Insert card.
+       - Run "gpg --card-edit".
+       - Switch to admin modus by enter: "admin".
+       - Enter "generate" to create a new certificate.
+
+     (b) Activate existing certificate of your card
+       - Import associated (public) certificate of your card (e.g.
+         from certificate server or from a exported certificate file).
+       - Insert card.
+       - Run "gpg --card-status".
+
+   * X.509 Telesec Netkey 3 card
+     Use the gpgsm command line tool to initializing your card:
      - Insert card.
      - Run "gpgsm --learn-card".
-     After this the certificates from your card are shown in
-     Kleopatra (marked with a smart card icon).
+
+   After finishing these steps your OpenPGP / X.509 certificate
+   from your smart card is shown in Kleopatra under the tab
+   "My certificates" (marked with a smart card icon).
 
    A good (graphical) alternative for setting up your smart
-   card and changing PIN is GPA.
+   card and changing PIN is GPA. A better smart card support for
+   Kleopatra is in process.
 
 - Using the Outlook Plugin "GpgOL":
 

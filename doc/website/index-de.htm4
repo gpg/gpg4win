@@ -9,6 +9,12 @@ PAGE_START
 <h2>Neuigkeiten</h2>
 <p>
 <dl>
+
+<dt><b>+++ 20090819 Smartcards verwenden mit Gpg4win 2.0.0 +++</b></dd>
+<dd>Hinweise für die Nutzung der unterstützen OpenPGP- und
+X.509-Smartcards mit Kleopatra finden Sie in der aktualisierten <a
+href="doc/README.de.txt">README-Datei</a>.</dd>
+
 <dt><b>+++ 20090812 Gpg4win 2.0.0 ist veröffentlicht +++</b></dd>
 <dd>Hier die <a href="news-20090812-de.html">Pressemitteilung</a>.</dd>
 </dl>

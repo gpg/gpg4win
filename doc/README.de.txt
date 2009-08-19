@@ -7,7 +7,7 @@
 
                   Deutsche README Datei für Gpg4win
                   =================================
-                                   
+
 Dies ist Gpg4win, Version !VERSION!.
 
 Inhalt:
@@ -80,29 +80,44 @@ sich. Nachstehend die wichtigsten Änderungen:
 3. Bekannte Probleme (und Abhilfe)
 ==================================
 
-- Smartcard-Nutzung mit Kleopatra...
+- Smartcard-Nutzung mit Kleopatra
 
-   * ... und einer OpenPGP Karte:
+   Die Einrichtung von Smartcards unter Kleopatra ist derzeit noch
+   nicht möglich. Bitte führen Sie folgende Schritte einmalig durch,
+   um Ihre Smartcard anschließend unter Kleopatra nutzen zu können.
+
+   * OpenPGP Karte
      Verwenden Sie das gpg-Kommandozeilen-Werkzeug, um ein neues
-     OpenPGP-Zertifikat auf Ihrer Karte zu erzeugen.
-     - Karte einlegen.
-     - Führen Sie "gpg --card-edit" aus.
-     - Wechseln Sie in den Admin-Modus mit "admin".
-     - Geben Sie "generate" ein und folgen Sie den Anweisungen, um
-       ein neues Zertifiakt zu erzeugen.
-     Anschließend wird Ihr neues Zertifikat in Kleopatra angezeigt
-     (markiert mit einem Smartcard Icon).
+     OpenPGP-Zertifikat auf Ihrer Karte zu erzeugen (a) oder Ihr
+     vohandenes Zertifikat von Ihrer Karte zu aktivieren (b):
 
-   * ... und einer Telesec Netkey 3 Karte:
+     (a) Neue Zertifikat erzeugen
+       - Karte einlegen.
+       - Führen Sie "gpg --card-edit" auf der Kommandozeile aus.
+       - Wechseln Sie in den Admin-Modus mit "admin".
+       - Geben Sie "generate" ein und folgen Sie den Anweisungen, um
+         ein neues Zertifiakt zu erzeugen.
+
+     (b) Vorhandenes Zertifikat von der Karte aktivieren
+       - Das (zu der Karte) zugehörige öffentliche Zertifikat
+         importieren (z.B. von einem Zertifikatsserver oder von einer
+         vorher exportierten Zertifikatsdatei).
+       - Karte einlegen.
+       - Führen Sie "gpg --card-status" auf der Kommandozeile aus.
+
+   * X.509 Telesec Netkey 3 Karte
      Verwenden Sie das gpgsm-Kommandozeilen-Werkzeug, um Ihre Karte
-     (einmalig) zu initialisieren.
+     (einmalig) zu initialisieren:
      - Karte einlegen.
      - Führen Sie "gpgsm --learn-card" aus.
-     Anschließend werden Ihr Zertifiakte von Ihrer Karte in Kleopatra
-     angezeigt (markiert mit einem Smartcard Icon).
 
-   Eine gute (grafische) Alternative ist GPA um Ihre Karte korrekt zu
-   konfigurieren und ggf. Ihre PIN zu ändern.
+   Anschließend wird Ihr OpenPGP- bzw. X.509-Smartcard-Zertifikat in
+   Kleopatra unter dem Reiter "Meine Zertifikate" angezeigt (markiert mit
+   einem Smartcard Icon).
+
+   Eine gute (grafische) Alternative ist GPA, um Ihre Karte korrekt zu
+   konfigurieren und ggf. Ihre PIN zu ändern. Eine verbesserte
+   Smartcard-Unterstützung für Kleopatra ist in Arbeit
 
 - Verwendung der Outlook-Programmerweiterung "GpgOL":
 
