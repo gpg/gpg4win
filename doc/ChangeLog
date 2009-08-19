@@ -1,5 +1,8 @@
 2009-08-19  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
+	 * README.ar.txt, README.es.txt, README.fr.txt, README.ru.txt:
+	 Add English README file for other supported installer languages.
+
 	 * README.en.txt, README.de.txt: Update smart card instructions.
 
 	 * index.htm4, index-de.htm4: Add smart card news an link to README files.
