@@ -311,10 +311,10 @@ server http://wald.intevation.org/frs/download.php
 #
 # GpgOL
 #
-server ftp://ftp.g10code.com/g10code/gpgol
+server ftp://ftp.g10code.com/g10code/gpgol/alpha
 
-file gpgol-1.0.0.tar.bz2
-chk  b5ceb5e8854dd9508d5fcff40f4d57c1f6196b90
+file gpgol-1.0.1-svn308.tar.bz2
+chk  28dc1cda1990bed93346a057a7a2a2d943a2e5a8
 
 #
 # GpgEX
