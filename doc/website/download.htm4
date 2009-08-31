@@ -36,6 +36,24 @@ Gpg4win manuals.
   </p>
   <p>Read the current <a href="./doc/README.en.txt">README file</a>.
 
+
+<h2>Gpg4win 2.0.1 RC1</h2>
+
+<p><b>Warning: This is the first release candidate of Gpg4win 2.0.1
+    for testing! Not recommended for productive use.</b></p>
+<p>This version fixs some critical bugs in Gpg4win 2.0.0 (with GpgOL
+1.0.0).
+Opening links and MS Office documents should work without time lags
+in this version. Please send your test reports to the Gpg4win <a
+    href="community.html">developer mailing list</a>.</p>
+<a href="DOWNLOAD_URL" class="dlbutton2">Gpg4win&nbsp;2.0.1 RC1<br>
+<span class="version"><small>Size: 25 MByte | Released: 2009-08-31</small></span>
+</a>
+
+All Beta releases (with OpenPGP-Signatures): <a
+    href="http://ftp.gpg4win.org/Beta">ftp.gpg4win.org/Beta/</a>
+
+
 <h2>Gpg4win Compendium COMPENDIUM_VERSION_DE (German!)</h2>
 
 You find the current PDF and HTML version of the Gpg4win Compendium here:

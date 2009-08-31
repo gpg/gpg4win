@@ -36,6 +36,23 @@ Handbüchern. Die light Version kann hier herunter geladen werden:</p>
   </p>
   <p>Lesen Sie die aktuelle <a href="./doc/README.de.txt">README-Datei</a>.
 
+<h2>Gpg4win 2.0.1 RC1</h2>
+
+<p><b>Achtung: Dies ist eine Vorabversion von Gpg4win 2.0.1 zum Testen! Nicht für den
+    produktiven Einsatz empfohlen.</b></p>
+<p>Diese Version beseitigt einige kritische Fehler, die bei der Verwendung
+von GpgOL 1.0.0 mit Gpg4win 2.0.0 auftreten. Das verzögerungsfreie Öffnen von Links und 
+MS Office-Dokumenten bei aktiviertem GpgOL sollte mit dieser Version
+nun behoben sein. Testberichte bitte an die <a
+    href="community-de.html">Entwicklerliste</a>.</p>
+<a href="DOWNLOAD_URL" class="dlbutton2">Gpg4win&nbsp;2.0.1 RC1<br>
+<span class="version"><small>Größe: 25 MByte | Veröffentlicht: 2009-08-31</small></span>
+</a>
+
+Alle Beta-Versionen (inkl. OpenPGP-Signaturen) unter: <a
+    href="http://ftp.gpg4win.org/Beta">ftp.gpg4win.org/Beta/</a>
+
+
 <h2>Gpg4win-Kompendium COMPENDIUM_VERSION_DE</h2>
 
 <p>Die aktuelle PDF- und HTML-Version des Gpg4win-Kompendiums finden
