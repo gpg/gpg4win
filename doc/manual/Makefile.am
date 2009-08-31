@@ -22,6 +22,7 @@ png_files = \
 		sc-kleopatra-startmenu_de.png\
 		sc-kleopatra-mainwindow-empty_de.png\
 		sc-kleopatra-ChooseCertificateFormat_de.png\
+		sc-kleopatra-openpgp-decrypt-email_de.png\
 		sc-kleopatra-openpgp-personalDetails_de.png\
 		sc-kleopatra-openpgp-reviewParameters_de.png\
 		sc-kleopatra-openpgp-createKey_de.png\

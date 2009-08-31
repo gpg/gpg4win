@@ -1,3 +1,12 @@
+2009-08-31  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+
+	 *  manual/gpg4win-compendium-de.tex:
+	 Formatting.
+
+	 * manual/Makefile.am
+	 * manual/sc-kleopatra-openpgp-decrypt-email_de.png:
+	 Add new screenshot.
+
 2009-08-19  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
 	 * README.ar.txt, README.es.txt, README.fr.txt, README.ru.txt:
