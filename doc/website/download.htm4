@@ -41,7 +41,7 @@ Gpg4win manuals.
 
 <p><b>Warning: This is the first release candidate of Gpg4win 2.0.1
     for testing! Not recommended for productive use.</b></p>
-<p>This version fixs some critical bugs in Gpg4win 2.0.0 (with GpgOL
+<p>This version fixes some critical bugs in Gpg4win 2.0.0 (with GpgOL
 1.0.0).
 Opening links and MS Office documents should work without time lags
 in this version. Please send your test reports to the Gpg4win <a

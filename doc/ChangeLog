@@ -1,9 +1,13 @@
+2009-09-01  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+
+	 * website/index.htm4, website/download.htm4
+	 * website/index-de.htm4: Add 2.0.1 RC1 announcement.
+
 2009-08-31  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
-	 * download-de.htm4, download.htm4: Add 2.0.1 RC1 download section.
+	 * website/download-de.htm4, website/download.htm4: Add 2.0.1 RC1 download section.
 
-	 *  manual/gpg4win-compendium-de.tex:
-	 Formatting.
+	 * manual/gpg4win-compendium-de.tex: Formatting.
 
 	 * manual/Makefile.am
 	 * manual/sc-kleopatra-openpgp-decrypt-email_de.png:
