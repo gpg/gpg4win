@@ -1,3 +1,9 @@
+2009-09-01  Colin Leroy  <colin@colino.net>
+
+	* packages/packages.current: update Claws Mail - bugfixes
+	(bad outgoing encoding in japanese, early crash accessing
+	IMAP, LDAP crash on non-existent server)
+
 2009-08-31  Werner Koch  <wk@g10code.com>
 
 	Release 2.0.1rc1.
