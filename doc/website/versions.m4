@@ -20,7 +20,7 @@ m4_define(`DLPAGE',`I18N(`EN',`download.html')`'I18N(`DE',`download-de.html')')
 m4_define(`MIRROR_IE_URL',`http://ftp.heanet.ie/mirrors/ftp.gpg4win.org/')
 m4_define(`SOFTWARE',`
 I18N(`EN', `<a href="http://www.gnupg.org/">GnuPG</a>')I18N(`DE', `<a href="http://www.gnupg.de/">GnuPG</a>') 2.0.12
-<a href="http://kde.org">Kleopatra</a> 20090807
+I18N(`EN', `<a href="http://docs.kde.org/stable/en/kdepim/kleopatra/">Kleopatra</a>')I18N(`DE', `<a href="http://docs.kde.org/stable/de/kdepim/kleopatra/">Kleopatra</a>') 20090807
 I18N(`EN', `<a href="http://www.gnupg.org/related_software/gpa/index.html">GPA</a>')I18N(`DE', `<a href="http://www.gnupg.de/related_software/gpa/index.html">GPA</a>') 0.9.0
 <a href="http://www.g10code.de/p-gpgol.html">GpgOL</a> 1.0.0
 <a href="http://cvs.gnupg.org/cgi-bin/viewcvs.cgi/?root=GpgEX">GpgEX</a> 0.9.3
