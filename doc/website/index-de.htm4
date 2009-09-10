@@ -10,9 +10,12 @@ PAGE_START
 <p>
 <dl>
 
-<dt><b>+++ 20090901 Gpg4win 2.0.1 RC1 ist veröffentlicht +++</b></dd>
-<dd>Diese Vorabversion behebt einige kritische Fehler bei der
-Verwendung von GpgOL. Mehr Details in der <a
+<dt><b>+++ 20090901 Outlook-Nutzer sollten Gpg4win 2.0.1 RC1 herunterladen +++</b></dd>
+<dd>
+Verzögerungen machten Outlook 2003 oder 2007 für viele Anwender unbenutzbar;
+Gpg4win 2.0.1 RC1 adressiert diese Probleme.
+Hinweis: Emails per Exchange von Outlook/GpgOl zu senden geht weiterhin nicht.
+Hier ist die <a
 href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2009-September/000001.html">Bekanntmachung</a>.</dd>
 
 <dt><b>+++ 20090819 Smartcards verwenden mit Gpg4win 2.0.0 +++</b></dd>

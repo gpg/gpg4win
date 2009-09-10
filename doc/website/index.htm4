@@ -10,9 +10,10 @@ PAGE_START
 <p>
 <dl>
 
-<dt><b>+++ 20090901 Gpg4win 2.0.1 RC1 released +++</b></dd>
-<dd>The first release candidate of Gpg4win 2.0.1 is available for
-download and fixes some critical bugs in GpgOL. See the <a
+<dt><b>+++ 20090901 Outlook users should download Gpg4win 2.0.1 RC1 +++</b></dd>
+<dd>The delay problems frequently reported with Outlook 2003 and 2007 
+are addressed by Gpg4win 2.0.1RC1. Note that sending emails with Outlook/GpgOL
+over Exchange still does not work. See the <a
 href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2009-September/000039.html">announcement</a>
 for details.</dd>
 

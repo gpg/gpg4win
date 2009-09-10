@@ -34,6 +34,7 @@ BUILDING:
 
 Building the web site is _not_ incorporated into the autotools based
 build process.
+WARNING: you might need a latin1 locale for m4 to work correctly.
 
 To build to web sites use the file `buildhtml.mk':
 

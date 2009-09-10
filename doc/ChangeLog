@@ -1,3 +1,11 @@
+2009-09-10  Bernhard Reiter <bernhard@intevation.de>
+
+	* website/index.htm4, website/index-de.htm4: Added stronger hints
+	  for Outlook users to use 2.0.1rc1.
+
+	* website/README: Added warning that latin1 locale might be needed
+	  for building.
+
 2009-09-03  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
 	 * website/versions.m4: Update Kleopatra link.
