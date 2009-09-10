@@ -1,4 +1,6 @@
 2009-09-10  Bernhard Reiter <bernhard@intevation.de>
+        * website/download-de.htm4, website/download.htm4: Moved 2.0.1rc1
+	  to the top. Added sha1sum and direct link to the OpenPGP sig to it.
 
 	* website/index.htm4, website/index-de.htm4: Added stronger hints
 	  for Outlook users to use 2.0.1rc1.

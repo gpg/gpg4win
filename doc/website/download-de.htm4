@@ -8,6 +8,34 @@ m4_define(`EN_FILE', `download.html')
 PAGE_START
 <h1>Download</h1>
 
+<h2>Gpg4win 2.0.1 RC1</h2>
+
+<p><b>Outlook Nutzer sollten diese Version nehmen, hier sind 
+      Verzögerungsprobleme gelöst. 
+      Hinweis: Emails per Exchange von Outlook/GpgOl zu senden 
+      geht weiterhin nicht.
+    </b></p>
+<p>
+Das verzögerungsfreie Öffnen von Links und 
+MS Office-Dokumenten bei aktiviertem GpgOL sollte mit dieser Version
+nun behoben sein. Testberichte bitte an die <a
+    href="community-de.html">Entwicklerliste</a>.</p>
+<a href="http://ftp.gpg4win.org/Beta/gpg4win-2.0.1rc1.exe" class="dlbutton2">Gpg4win&nbsp;2.0.1 RC1<br>
+<span class="version"><small>Größe: 25 MByte | Veröffentlicht: 2009-08-31</small></span>
+</a>
+
+<a href="http://ftp.gpg4win.org/Beta/gpg4win-2.0.1rc1.exe.sig"
+>OpenPGP Signatur</a>
+&nbsp; &nbsp; &nbsp;
+<code>
+sha1sum: 42fb52dfad8132d6c1884accdbb16792a6b54793  gpg4win-2.0.1rc1.exe
+</code>
+
+<p>
+Quelltexte und andere Varianten (mit OpenPGP-Signatures) von: 
+    <a href="http://ftp.gpg4win.org/Beta">ftp.gpg4win.org/Beta/</a>
+
+
 <h2>Gpg4win VERSION</h2>
 
 <p>Die Vollversion (inklusive des deutschen Gpg4win-Kompendiums) von Gpg4win VERSION
@@ -35,23 +63,6 @@ Handbüchern. Die light Version kann hier herunter geladen werden:</p>
   im <a href="./doc/gpg4win-compendium-de.html">Gpg4win-Kompendium</a>.
   </p>
   <p>Lesen Sie die aktuelle <a href="./doc/README.de.txt">README-Datei</a>.
-
-<h2>Gpg4win 2.0.1 RC1</h2>
-
-<p><b>Achtung: Dies ist eine Vorabversion von Gpg4win 2.0.1 zum Testen! Nicht für den
-    produktiven Einsatz empfohlen.</b></p>
-<p>Diese Version beseitigt einige kritische Fehler, die bei der Verwendung
-von GpgOL 1.0.0 mit Gpg4win 2.0.0 auftreten. Das verzögerungsfreie Öffnen von Links und 
-MS Office-Dokumenten bei aktiviertem GpgOL sollte mit dieser Version
-nun behoben sein. Testberichte bitte an die <a
-    href="community-de.html">Entwicklerliste</a>.</p>
-<a href="http://ftp.gpg4win.org/Beta/gpg4win-2.0.1rc1.exe" class="dlbutton2">Gpg4win&nbsp;2.0.1 RC1<br>
-<span class="version"><small>Größe: 25 MByte | Veröffentlicht: 2009-08-31</small></span>
-</a>
-
-Alle Beta-Versionen (inkl. OpenPGP-Signaturen) unter: <a
-    href="http://ftp.gpg4win.org/Beta">ftp.gpg4win.org/Beta/</a>
-
 
 <h2>Gpg4win-Kompendium COMPENDIUM_VERSION_DE</h2>
 
@@ -84,6 +95,10 @@ Die <a href="change-history-de.html">Änderungshistorie</a> gibt
 sowohl Hinweise auf die wichtigsten Änderungen (welche Versionen der Produkte jeweils
 enhalten waren) als auch einen direkten Download dieser alten Versionen.
 </p>
+
+<p>
+Alle Beta-Versionen (inkl. OpenPGP-Signaturen) unter: <a
+    href="http://ftp.gpg4win.org/Beta">ftp.gpg4win.org/Beta/</a>
 
 <p>
 Bitte beachten Sie, dass die alten Versionen die ggf. zwischenzeitlich beseitigten
