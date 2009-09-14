@@ -1,5 +1,8 @@
 2009-09-14  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
+	* manual/fdl-book.tex: Change appendix chapter numbering (for
+	hyperlatex) after adding glossary.
+
 	* manual/gpg4win-compendium-de.tex: Add glossary and legend.
 
 	* manual/gpg4win-compendium-de.tex: Add comment about AES and OL.
