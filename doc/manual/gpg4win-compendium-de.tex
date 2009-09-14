@@ -273,6 +273,33 @@ Wie das Kryptographie-Programmpaket Gpg4win selbst, wurde diese Dokument
 nicht für Mathematiker, Geheimdienstler und Kryptographen geschrieben,
 sondern für jedermann.
 
+\clearpage
+\chapter*{Legende \htmlonly{\html{br}\html{br}}}
+
+In diesem Kompendium werden folgende Textauszeichnungen benutzen:
+\begin{itemize}
+    \item \textit{Kursiv} wird dann verwendet, wenn etwas auf dem
+        Bildschirm erscheint (z.B. in Menüs oder Dialogen).
+        Zum Kennzeichnen von \Button{Schaltflächen} werden zusäztlich
+eckige Klammern benutzt.
+
+        Kursiv werden vereinzelt auch einzelne Wörter im Text gesetzt,
+        wenn deren Bedeutung in einem Satz betont werden soll, das
+        Schriftbild aber nicht durch die Auszeichnung "`fett"' gestört
+        werden soll (z.B.: \textit{nur} OpenPGP).
+
+    \item \textbf{Fett} wird für einzelne Wörter oder Sätze
+        verwendet, die besonders wichtig und damit hervorzuheben sind.
+        Diese Auszeichnung unterstützt dem Leser bei der schnelleren Erfassung
+        hervorgehobener Schlüsselbegriffe und wichtiger Passagen.
+
+    \item \texttt{Feste Laufweite} sind für alle Dateinamen,
+        Pfadangaben, URLs, Quellcode sowie Ein- und Ausgaben (z.B.
+        von Kommandozeilen) reserviert.
+
+
+\end{itemize}
+
 
 
 \clearpage %% End of original page 4.
@@ -4582,7 +4609,8 @@ Für die trustlist.txt gilt die gleiche Syntax wie im Abschnitt~\ref{sec_systemtr
 beschrieben.
 
 
-
+% page break in toc
+\addtocontents{toc}{\protect\newpage}
 \clearpage
 \chapter{Probleme in den Gpg4win-Programmen aufspüren}
 
@@ -5715,14 +5743,14 @@ dass er dann keine Lust mehr haben dürfte diese dann noch zu lesen\ldots
 \W\part*{\textbf{III Anhang}}
 \addtocontents{toc}{\protect\vspace{0.3cm}}
 
-%\T\chapter{Glossar}
-%\W\chapter*{A Glossar}
-%\label{glossar}
-%
-%\begin{description}
-%    \item[OpenPGP] xyz
-%    \item[X.509] xyz
-%\end{description}
+\T\chapter{Glossar}
+\W\chapter*{A Glossar}
+\label{glossar}
+[Dieses Glossar ist noch in Arbeit.]
+\begin{description}
+    \item[OpenPGP] ...
+    \item[X.509] ...
+\end{description}
 
 
 
