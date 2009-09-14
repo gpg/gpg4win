@@ -1,5 +1,9 @@
+2009-09-14  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+
+	* manual/gpg4win-compendium-de.tex: Add comment about AES and OL.
+
 2009-09-10  Bernhard Reiter <bernhard@intevation.de>
-        * website/download-de.htm4, website/download.htm4: Moved 2.0.1rc1
+	* website/download-de.htm4, website/download.htm4: Moved 2.0.1rc1
 	  to the top. Added sha1sum and direct link to the OpenPGP sig to it.
 
 	* website/index.htm4, website/index-de.htm4: Added stronger hints
