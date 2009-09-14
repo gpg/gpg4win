@@ -1,4 +1,7 @@
-2009-08-07  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+2009-09-14  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+
+	* configure.ac: Change compendium-de date and version
+	(3.0.0-beta4-svn1286).
 
 	* configure.ac: Change compendium-de date and version
 	(3.0.0-beta4-svn1284).
