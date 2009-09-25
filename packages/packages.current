@@ -473,8 +473,8 @@ chk  388c634773e327a90cc48a248358a632a6fe5081
 file kdelibs-20090807-src.zip
 chk  3f2b4aff160b2e55a2be9282ff620928fb691eb2
 
-file kleopatra-20090807-bin.zip
-chk  ee3d33d32ec45037c13bcb67b7409bf6537955c8
+file kleopatra-20090925-bin.zip
+chk  3c492a5f4db8fcdd9f9983c1094651513d51e033
 
-file kleopatra-20090807-src.zip
-chk  ff96e119adb48a091e0058197b98604abea5251c
+file kleopatra-20090925-src.zip
+chk  0e837d11c4cb4d276d18e978f640cc65069c569f

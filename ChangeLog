@@ -1,3 +1,8 @@
+2009-09-25  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+
+	* packages/packages.current: Update kleopatra (changed gpg4win version 
+          number '2.0.1' only).
+
 2009-09-14  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
 	* configure.ac: Change compendium-de date and version
