@@ -1,3 +1,11 @@
+2009-09-28  Werner Koch  <wk@g10code.com>
+
+	Release 2.0.1.
+
+	* packages/packages.current: Update gpgol to 1.0.1.
+
+	* patches/gnupg2-2.0.12/11-photoid-sk.patch: New.
+
 2009-09-25  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
 	* packages/packages.current: Update kleopatra (changed gpg4win version 
