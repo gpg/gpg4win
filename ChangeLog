@@ -2,6 +2,15 @@
 
 	Release 2.0.1.
 
+	* src/gpg4win.mk.in (README_template): New.
+	* src/Makefile.am (README.en.txt, README.de.txt): Remove
+	(gpg4win_readme_ll): New.
+	(README_files): New.
+	(CLEANFILES): Delete all README files.
+	(gpg4win-$(VERSION).exe, gpg4win-light-$(VERSION).exe)
+	(gpg4win-$(VERSION).wix, gpg4win-light-$(VERSION).wix): Depend on
+	all readme files.
+
 	* src/inst-gpg4win.nsi: Install ar, es, fr and ru REDME files.
 	* src/uninst-gpg4win.nsi: Uninstall them.
 

@@ -1,5 +1,5 @@
 # Makefile.am - Installer for GnuPG 4 Windows Makefile.
-# Copyright (C) 2005, 2006, 2007, 2008 g10 Code GmbH
+# Copyright (C) 2005, 2006, 2007, 2008, 2009 g10 Code GmbH
 # 
 # This file is part of Gpg4win.
 # 
@@ -33,7 +33,7 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi config.site \
         inst-libxml2.nsi	   uninst-libxml2.nsi	      \
         inst-libetpan.nsi	   uninst-libetpan.nsi        \
         inst-claws-mail.nsi	   uninst-claws-mail.nsi      \
-        inst-notification_plugin.nsi	   uninst-notification_plugin.nsi      \
+        inst-notification_plugin.nsi	uninst-notification_plugin.nsi  \
         inst-gtkhtml2_viewer.nsi   uninst-gtkhtml2_viewer.nsi      \
         inst-vcalendar.nsi	   uninst-vcalendar.nsi      \
         inst-rssyl.nsi		   uninst-rssyl.nsi      \
@@ -84,8 +84,14 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi config.site \
 	inst-bzip2.nsi             uninst-bzip2.nsi           \
         inst-final.nsi
 
+
+gpg4win_readme_ll = en de ar es fr ru
+
+README_files = $(addsuffix .txt,$(addprefix README.,$(gpg4win_readme_ll)))
+
+
 # Need to clean the dll because we bypassed automake.
-CLEANFILES = g4wihelp.dll versioninfo.txt README.en.txt README.de.txt \
+CLEANFILES = g4wihelp.dll versioninfo.txt $(README_files) \
              installer-options.ini NEWS.tmp versioninfo.tmp \
 	     gpgwrap.exe gpgwrap-2.exe kleowrap.exe
 
@@ -461,54 +467,38 @@ versioninfo.txt:
 NEWS.tmp : $(top_srcdir)/NEWS
 	sed -e '/^#/d' <$(top_srcdir)/NEWS >NEWS.tmp
 
-README.en.txt : versioninfo.txt NEWS.tmp $(top_srcdir)/doc/README.en.txt
-	sed -e '/^;.*/d;/!VERSIONINFO!/{r versioninfo.txt' -e 'd;}' \
-	-e '/!NEWSFILE!/{r NEWS.tmp' -e 'd;}' \
-        -e '/!PKG-COPYRIGHT!/{r $(top_srcdir)/doc/pkg-copyright.txt' -e 'd;}' \
-        -e 's,!VERSION!,$(VERSION),g' \
-	   < $(top_srcdir)/doc/README.en.txt \
-           | awk '{printf "%s\r\n", $$0}' >README.en.txt
 
 installer-options.ini : $(top_srcdir)/src/installer-options.ini.in
 	cat $(top_srcdir)/src/installer-options.ini.in >installer-options.ini
 
-README.de.txt : versioninfo.txt NEWS.tmp $(top_srcdir)/doc/README.de.txt
-	sed -e '/^;.*/d;/!VERSIONINFO!/{r versioninfo.txt' -e 'd;}' \
-	-e '/!NEWSFILE!/{r NEWS.tmp' -e 'd;}' \
-        -e '/!PKG-COPYRIGHT!/{r $(top_srcdir)/doc/pkg-copyright.txt' -e 'd;}' \
-        -e 's,!VERSION!,$(VERSION),g' \
-	   < $(top_srcdir)/doc/README.de.txt \
-           | awk '{printf "%s\r\n", $$0}' >README.de.txt
 
 # For some nut-crazy reason someone thought it would be a great idea
 # if makensis changed to the directory of the source file at startup.
 # So we have to pull a couple of strings to correct this.
 gpg4win-$(VERSION).exe: gpg4win.nsi $(common_nsi) stamps/stamp-final \
                         g4wihelp.dll gpgwrap.exe gpgwrap-2.exe kleowrap.exe \
-                        README.en.txt \
-			README.de.txt installer-options.ini versioninfo.txt
+			$(README_files) installer-options.ini versioninfo.txt
 	$(MAKENSIS) -V3 -DBUILD_DIR=`pwd` -DTOP_SRCDIR=$(top_srcdir) \
            -DSRCDIR=$(srcdir) $(EXTRA_MAKENSIS_FLAGS) $(srcdir)/gpg4win.nsi
 
 gpg4win-light-$(VERSION).exe: gpg4win.nsi $(common_nsi) stamps/stamp-final \
                         g4wihelp.dll gpgwrap.exe gpgwrap-2.exe kleowrap.exe \
-                        README.en.txt \
-			README.de.txt installer-options.ini versioninfo.txt
+			$(README_files) installer-options.ini versioninfo.txt
 	$(MAKENSIS) -V3 -DBUILD_DIR=`pwd` -DTOP_SRCDIR=$(top_srcdir) \
            -DSRCDIR=$(srcdir) $(EXTRA_MAKENSIS_FLAGS) \
            -DGPG4WIN_LIGHT=1 $(srcdir)/gpg4win.nsi
 
 gpg4win-$(VERSION).wix: gpg4win.nsi $(common_nsi) stamps/stamp-final \
-			gpgwrap.exe gpgwrap-2.exe kleowrap.exe README.en.txt \
-			README.de.txt versioninfo.txt
+			gpgwrap.exe gpgwrap-2.exe kleowrap.exe \
+			$(README_files) versioninfo.txt
 	perl make-msi.pl --guids $(srcdir)/make-msi.guids \
 		--manifest gpg4win-$(VERSION).files \
 		-DBUILD_DIR=. -DTOP_SRCDIR=$(top_srcdir) \
 		-DSRCDIR=$(srcdir) $(srcdir)/gpg4win.nsi > $@
 
 gpg4win-light-$(VERSION).wix: gpg4win.nsi $(common_nsi) stamps/stamp-final \
-			gpgwrap.exe gpgwrap-2.exe kleowrap.exe README.en.txt \
-			README.de.txt versioninfo.txt
+			gpgwrap.exe gpgwrap-2.exe kleowrap.exe \
+			$(README_files) versioninfo.txt
 	perl make-msi.pl --guids $(srcdir)/make-msi.guids \
 		--manifest gpg4win-light-$(VERSION).files \
 		-DBUILD_DIR=. -DTOP_SRCDIR=$(top_srcdir) \

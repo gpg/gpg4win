@@ -306,6 +306,18 @@ stamps/stamp-final-$(1): stamps/stamp-directories $(call GETDEPS,$(1))
 	touch stamps/stamp-final-$(1)
 endef
 
+# Template for README files
+
+define README_template
+README.$(1).txt : versioninfo.txt NEWS.tmp $(top_srcdir)/doc/README.$(1).txt
+	sed -e '/^;.*/d;/!VERSIONINFO!/{r versioninfo.txt' -e 'd;}' \
+	-e '/!NEWSFILE!/{r NEWS.tmp' -e 'd;}' \
+        -e '/!PKG-COPYRIGHT!/{r $(top_srcdir)/doc/pkg-copyright.txt' -e 'd;}' \
+        -e 's,!VERSION!,$(VERSION),g' \
+	   < $(top_srcdir)/doc/README.$(1).txt \
+           | awk '{printf "%s\r\n", $$$$0}' >README.$(1).txt
+endef
+
 
 # Insert the template for each source package.
 $(foreach spkg, $(gpg4win_spkgs), $(eval $(call SPKG_template,$(spkg))))
@@ -318,6 +330,9 @@ $(foreach bpkg, $(gpg4win_bpkgs), $(eval $(call BPKG_template,$(bpkg))))
 
 # Insert the template for each internal package.
 $(foreach ipkg, $(gpg4win_ipkgs), $(eval $(call IPKG_template,$(ipkg))))
+
+# Insert the template for each README file.
+$(foreach rll, $(gpg4win_readme_ll), $(eval $(call README_template,$(rll))))
 
 stamps/stamp-final: stamps/stamp-directories
 stamps/stamp-final: $(addprefix stamps/stamp-final-,$(gpg4win_build_list))
