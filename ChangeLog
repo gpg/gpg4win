@@ -1,3 +1,9 @@
+2009-09-28  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+
+	* NEWS: Add Kleo version number.
+	
+	* configure.ac: Change compendiuim-de date and version (3.0.0-beta4)
+
 2009-09-28  Werner Koch  <wk@g10code.com>
 
 	Release 2.0.1.
