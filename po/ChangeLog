@@ -1,3 +1,7 @@
+2009-09-28  Comisión Rectoría  <rectoria@hanaq.org>  (wk)
+
+	* es.po (T_FoundExistingOldVersion): Fix translation.
+
 2009-08-07  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
 	* po/de.po: Fix typo.
