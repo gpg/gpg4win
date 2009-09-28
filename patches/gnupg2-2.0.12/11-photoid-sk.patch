@@ -10,34 +10,19 @@ exit $?
        (get_validity_string): Ditto.
 
 
-
-Index: g10/trustdb.c
-===================================================================
---- g10/trustdb.c       (revision 5159)
-+++ g10/trustdb.c       (working copy)
-@@ -1176,12 +1176,15 @@
- int
- get_validity_info (PKT_public_key *pk, PKT_user_id *uid)
+--- g10/trustdb.c.orig  2008-12-09 09:26:37.000000000 +0100
++++ g10/trustdb.c       2009-09-28 11:06:28.000000000 +0200
+@@ -1157,6 +1157,9 @@
  {
--    int trustlevel;
--
--    trustlevel = get_validity (pk, uid);
--    if( trustlevel & TRUST_FLAG_REVOKED )
--       return 'r';
--    return trust_letter ( trustlevel );
-+  int trustlevel;
-+  
-+  if (!pk)
-+    return '?';  /* Just in case a NULL PK is passed.  */
-+  
-+  trustlevel = get_validity (pk, uid);
-+  if ( (trustlevel & TRUST_FLAG_REVOKED) )
-+    return 'r';
-+  return trust_letter (trustlevel);
- }
+     int trustlevel;
  
- const char *
-@@ -1189,6 +1192,9 @@
++    if (!pk)
++        return '?';  /* Just in case a NULL PK is passed.  */
++
+     trustlevel = get_validity (pk, uid);
+     if( trustlevel & TRUST_FLAG_REVOKED )
+        return 'r';
+@@ -1168,6 +1171,9 @@
  {
    int trustlevel;
  
