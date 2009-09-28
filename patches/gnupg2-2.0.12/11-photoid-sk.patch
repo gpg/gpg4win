@@ -1,0 +1,51 @@
+#! /bin/sh
+patch -p0 -f $* < $0
+exit $?
+
+[g10]
+2009-09-28  Werner Koch  <wk@g10code.com>
+
+       * trustdb.c (get_validity_info): Take care of a NULL PK.  Fixes
+       bug#1138.
+       (get_validity_string): Ditto.
+
+
+
+Index: g10/trustdb.c
+===================================================================
+--- g10/trustdb.c       (revision 5159)
++++ g10/trustdb.c       (working copy)
+@@ -1176,12 +1176,15 @@
+ int
+ get_validity_info (PKT_public_key *pk, PKT_user_id *uid)
+ {
+-    int trustlevel;
+-
+-    trustlevel = get_validity (pk, uid);
+-    if( trustlevel & TRUST_FLAG_REVOKED )
+-       return 'r';
+-    return trust_letter ( trustlevel );
++  int trustlevel;
++  
++  if (!pk)
++    return '?';  /* Just in case a NULL PK is passed.  */
++  
++  trustlevel = get_validity (pk, uid);
++  if ( (trustlevel & TRUST_FLAG_REVOKED) )
++    return 'r';
++  return trust_letter (trustlevel);
+ }
+ 
+ const char *
+@@ -1189,6 +1192,9 @@
+ {
+   int trustlevel;
+ 
++  if (!pk)
++    return "err";  /* Just in case a NULL PK is passed.  */
++
+   trustlevel = get_validity (pk, uid);
+   if( trustlevel & TRUST_FLAG_REVOKED )
+     return _("revoked");
+
+
