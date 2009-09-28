@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Gpg4Win Installer\n"
 "Report-Msgid-Bugs-To: gpg4win-devel@wald.intevation.org\n"
-"POT-Creation-Date: 2009-08-07 10:41+0200\n"
+"POT-Creation-Date: 2009-09-28 15:16+0200\n"
 "PO-Revision-Date: 2008-04-22 11:57+0200\n"
 "Last-Translator: Sergei Smirnov <moscow@hro.org>\n"
 "Language-Team: Human Rights Network <moscow@hro.org>\n"
@@ -368,13 +368,13 @@ msgctxt "DESC_Menu_gpa"
 msgid "Run the GNU Privacy Assistant key management tool."
 msgstr "Запуск менеджера ключей Kleopatra."
 
-#: src/inst-gpg4win.nsi:70
+#: src/inst-gpg4win.nsi:75
 #, fuzzy
 msgctxt "DESC_Menu_gpg4win_readme"
 msgid "General information on Gpg4win"
 msgstr "Общая информация о Gpg4Win"
 
-#: src/inst-gpg4win.nsi:73
+#: src/inst-gpg4win.nsi:78
 #, fuzzy
 msgctxt "DESC_Menu_gnupg_faq"
 msgid "Show the Frequently Asked Questions document for GnuPG"

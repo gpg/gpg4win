@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gpg4win 2.0\n"
 "Report-Msgid-Bugs-To: gpg4win-devel@wald.intevation.org\n"
-"POT-Creation-Date: 2009-08-07 10:41+0200\n"
-"PO-Revision-Date: 2009-06-22 15:29+0200\n"
+"POT-Creation-Date: 2009-09-28 15:16+0200\n"
+"PO-Revision-Date: 2009-09-28 15:17+0200\n"
 "Last-Translator: Werner Koch <wk@g10code.com>\n"
 "Language-Team: German <translation-team-de@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -427,12 +427,12 @@ msgctxt "DESC_Menu_gpa"
 msgid "Run the GNU Privacy Assistant key management tool."
 msgstr "Das Schlüsselverwaltungsprogramm GPA aufrufen."
 
-#: src/inst-gpg4win.nsi:70
+#: src/inst-gpg4win.nsi:75
 msgctxt "DESC_Menu_gpg4win_readme"
 msgid "General information on Gpg4win"
 msgstr "Allgemeine Informationen zu Gpg4win"
 
-#: src/inst-gpg4win.nsi:73
+#: src/inst-gpg4win.nsi:78
 msgctxt "DESC_Menu_gnupg_faq"
 msgid "Show the Frequently Asked Questions document for GnuPG"
 msgstr "Das Dokument mit den häufig gestellten Fragen (FAQ) zu GnuPG anzeigen"
@@ -549,10 +549,9 @@ msgid "Gpg4win Manual for the Novice User (English)"
 msgstr "Gpg4win Einsteigerhandbuch (englisch)"
 
 #: src/inst-man_novice_en.nsi:45
-#, fuzzy
 msgctxt "DESC_Menu_man_novice_en"
 msgid "Show the Gpg4win manual for novice users (pdf, English)"
-msgstr "Gpg4win Einsteigerhandbuch (englisch)"
+msgstr "Gpg4win Einsteigerhandbuch (pdf, englisch)"
 
 #: src/inst-compendium_de.nsi:40
 msgctxt "DESC_Name_compendium_de"

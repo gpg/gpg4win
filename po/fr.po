@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ngoinabox\n"
 "Report-Msgid-Bugs-To: gpg4win-devel@wald.intevation.org\n"
-"POT-Creation-Date: 2009-08-07 10:41+0200\n"
+"POT-Creation-Date: 2009-09-28 15:16+0200\n"
 "PO-Revision-Date: 2008-03-10 16:46+0100\n"
 "Last-Translator: Fabian Rodriguez <magicfab@member.fsf.org>\n"
 "Language-Team: FRENCH <aep.lists@it46.se>\n"
@@ -373,13 +373,13 @@ msgctxt "DESC_Menu_gpa"
 msgid "Run the GNU Privacy Assistant key management tool."
 msgstr "Courez l'outil de gestion de clé de Kleopatra."
 
-#: src/inst-gpg4win.nsi:70
+#: src/inst-gpg4win.nsi:75
 #, fuzzy
 msgctxt "DESC_Menu_gpg4win_readme"
 msgid "General information on Gpg4win"
 msgstr "Informations générales sur Gpg4Win"
 
-#: src/inst-gpg4win.nsi:73
+#: src/inst-gpg4win.nsi:78
 #, fuzzy
 msgctxt "DESC_Menu_gnupg_faq"
 msgid "Show the Frequently Asked Questions document for GnuPG"

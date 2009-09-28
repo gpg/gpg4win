@@ -33,6 +33,11 @@ Section "-un.gpg4win"
   # Delete standard stuff.
   Delete "$INSTDIR\share\gpg4win\README.en.txt"
   Delete "$INSTDIR\share\gpg4win\README.de.txt"
+  Delete "$INSTDIR\share\gpg4win\README.ar.txt"
+  Delete "$INSTDIR\share\gpg4win\README.es.txt"
+  Delete "$INSTDIR\share\gpg4win\README.fr.txt"
+  Delete "$INSTDIR\share\gpg4win\README.ru.txt"
+
   Delete "$INSTDIR\share\gpg4win\versioninfo.txt"
 
   Delete "$INSTDIR\VERSION"

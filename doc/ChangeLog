@@ -1,3 +1,7 @@
+2009-09-28  Werner Koch  <wk@g10code.com>
+
+	* Makefile.am (EXTRA_DIST): Add the other README files.
+
 2009-09-14  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
 	* manual/fdl-book.tex: Change appendix chapter numbering (for
