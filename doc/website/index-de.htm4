@@ -10,6 +10,11 @@ PAGE_START
 <p>
 <dl>
 
+<dt><b>+++ 20090928 Gpg4win 2.0.1 ist veröffentlicht +++</b></dd>
+<dd>Diese Version ist praktisch identisch zu dem Release Candidate
+  2.0.1 RC1.</dd>
+</dl>
+
 <dt><b>+++ 20090901 Outlook-Nutzer sollten Gpg4win 2.0.1 RC1 herunterladen +++</b></dd>
 <dd>
 Verzögerungen machten Outlook 2003 oder 2007 für viele Anwender unbenutzbar;
@@ -27,7 +32,7 @@ href="doc/README.de.txt">README-Datei</a>.</dd>
 <dd>Hier die <a href="news-20090812-de.html">Pressemitteilung</a>.</dd>
 </dl>
 
-<h2>Gpg4win 2.0.0</h2>
+<h2>Gpg4win 2.0.x</h2>
 
 Gpg4win ist ein Installationspaket für Windows (2000/XP/2003/Vista)
 mit Computer-Programmen und Handbüchern für Email- und Dateiverschlüsselung.

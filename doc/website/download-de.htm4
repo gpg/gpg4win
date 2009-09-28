@@ -8,33 +8,6 @@ m4_define(`EN_FILE', `download.html')
 PAGE_START
 <h1>Download</h1>
 
-<h2>Gpg4win 2.0.1 RC1</h2>
-
-<p><b>Outlook Nutzer sollten diese Version nehmen, hier sind 
-      Verzögerungsprobleme gelöst. 
-      Hinweis: Emails per Exchange von Outlook/GpgOl zu senden 
-      geht weiterhin nicht.
-    </b></p>
-<p>
-Das verzögerungsfreie Öffnen von Links und 
-MS Office-Dokumenten bei aktiviertem GpgOL sollte mit dieser Version
-nun behoben sein. Testberichte bitte an die <a
-    href="community-de.html">Entwicklerliste</a>.</p>
-<a href="http://ftp.gpg4win.org/Beta/gpg4win-2.0.1rc1.exe" class="dlbutton2">Gpg4win&nbsp;2.0.1 RC1<br>
-<span class="version"><small>Größe: 25 MByte | Veröffentlicht: 2009-08-31</small></span>
-</a>
-
-<a href="http://ftp.gpg4win.org/Beta/gpg4win-2.0.1rc1.exe.sig"
->OpenPGP Signatur</a>
-&nbsp; &nbsp; &nbsp;
-<code>
-sha1sum: 42fb52dfad8132d6c1884accdbb16792a6b54793  gpg4win-2.0.1rc1.exe
-</code>
-
-<p>
-Quelltexte und andere Varianten (mit OpenPGP-Signatures) von: 
-    <a href="http://ftp.gpg4win.org/Beta">ftp.gpg4win.org/Beta/</a>
-
 
 <h2>Gpg4win VERSION</h2>
 

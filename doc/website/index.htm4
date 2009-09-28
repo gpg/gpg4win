@@ -10,9 +10,13 @@ PAGE_START
 <p>
 <dl>
 
+<dt><b>+++ 20090928 Gpg4win 2.0.1 released +++</b></dd>
+<dd>This is basically the same as the release 2.0.1 candidate.</dd>
+</dl>
+
 <dt><b>+++ 20090901 Outlook users should download Gpg4win 2.0.1 RC1 +++</b></dd>
 <dd>The delay problems frequently reported with Outlook 2003 and 2007 
-are addressed by Gpg4win 2.0.1RC1. Note that sending emails with Outlook/GpgOL
+are addressed by Gpg4win 2.0.1RC1.  Note that sending emails with Outlook/GpgOL
 over Exchange still does not work. See the <a
 href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2009-September/000039.html">announcement</a>
 for details.</dd>
@@ -25,7 +29,7 @@ Kleopatra are available in the updated <a href="doc/README.en.txt">README file</
 <dd>Read the <a href="news-20090812.html">Press release</a>.</dd>
 </dl>
 
-<h2>Gpg4win 2.0.0</h2>
+<h2>Gpg4win 2.0.x</h2>
 
 Gpg4win is an installer package for Windows (2000/XP/2003/Vista) with
 computer programs and handbooks for email and file encryption.  Both
