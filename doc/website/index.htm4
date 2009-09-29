@@ -11,7 +11,10 @@ PAGE_START
 <dl>
 
 <dt><b>+++ 20090928 Gpg4win 2.0.1 released +++</b></dt>
-<dd>This is basically the same as the release 2.0.1 candidate.</dd>
+<dd>This is basically the same as the release 2.0.1 candidate.
+See the <a
+href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2009-September/000040.html">announcement</a>
+for details.</dd>
 
 <dt><b>+++ 20090901 Outlook users should download Gpg4win 2.0.1 RC1
 +++</b></dt>

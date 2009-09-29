@@ -2,7 +2,8 @@
 
 	 * website/versions.m4: Update Kleopatra version.
 
-	 * website/index.htm4, website/index-de.htm4: Formatting.
+	 * website/index.htm4, website/index-de.htm4: Formatting. Add
+	 announcement.
 
 	 * website/documentation.htm4, website/documenation-de.htm4:
 	 Change gpg4win version.
