@@ -20,15 +20,15 @@ m4_define(`DLPAGE',`I18N(`EN',`download.html')`'I18N(`DE',`download-de.html')')
 m4_define(`MIRROR_IE_URL',`http://ftp.heanet.ie/mirrors/ftp.gpg4win.org/')
 m4_define(`SOFTWARE',`
 I18N(`EN', `<a href="http://www.gnupg.org/">GnuPG</a>')I18N(`DE', `<a href="http://www.gnupg.de/">GnuPG</a>') 2.0.12
-I18N(`EN', `<a href="http://docs.kde.org/stable/en/kdepim/kleopatra/">Kleopatra</a>')I18N(`DE', `<a href="http://docs.kde.org/stable/de/kdepim/kleopatra/">Kleopatra</a>') 20090807
+I18N(`EN', `<a href="http://docs.kde.org/stable/en/kdepim/kleopatra/">Kleopatra</a>')I18N(`DE', `<a href="http://docs.kde.org/stable/de/kdepim/kleopatra/">Kleopatra</a>') 2.0.11-svn1008232 (2009-08-07)
 I18N(`EN', `<a href="http://www.gnupg.org/related_software/gpa/index.html">GPA</a>')I18N(`DE', `<a href="http://www.gnupg.de/related_software/gpa/index.html">GPA</a>') 0.9.0
 <a href="http://www.g10code.de/p-gpgol.html">GpgOL</a> 1.0.1
 <a href="http://cvs.gnupg.org/cgi-bin/viewcvs.cgi/?root=GpgEX">GpgEX</a> 0.9.3
-<a href="http://www.claws-mail.org/">Claws Mail</a> 3.7.2
-I18N(`EN', `<a href="doc/gpg4win-compendium-de.html">Gpg4win Compendium</a> (German!)')I18N(`DE', `<a href="doc/gpg4win-compendium-de.html">Gpg4win-Kompendium</a>') 3.0.0-beta3
+<a href="http://www.claws-mail.org/">Claws Mail</a> 3.7.2cvs27
+I18N(`EN', `<a href="doc/gpg4win-compendium-de.html">Gpg4win Compendium</a> (German!)')I18N(`DE', `<a href="doc/gpg4win-compendium-de.html">Gpg4win-Kompendium</a>') 3.0.0-beta4
 I18N(`EN', `<a href="handbuecher/novices.html">Gpg4win for Novices</a> 1.0.0')')
 
 m4_define(`COMPENDIUM_VERSION_DE',`3.0.0-beta4')
 m4_define(`COMPENDIUM_DATE_DE',`2009-09-28')
-m4_define(`DOWNLOAD_URL_COMPENDIUM_DE',`http://wald.intevation.org/frs/download.php/613/gpg4win-compendium-de-3.0.0-beta4.pdf')
+m4_define(`DOWNLOAD_URL_COMPENDIUM_DE',`http://wald.intevation.org/frs/download.php/642/gpg4win-compendium-de-3.0.0-beta4.pdf')
 m4_define(`DL_SIZE_COMPENDIUM_DE',`2.3 MByte')

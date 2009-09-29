@@ -10,12 +10,12 @@ PAGE_START
 <p>
 <dl>
 
-<dt><b>+++ 20090928 Gpg4win 2.0.1 ist veröffentlicht +++</b></dd>
+<dt><b>+++ 20090928 Gpg4win 2.0.1 ist veröffentlicht +++</b></dt>
 <dd>Diese Version ist praktisch identisch zu dem Release Candidate
   2.0.1 RC1.</dd>
-</dl>
 
-<dt><b>+++ 20090901 Outlook-Nutzer sollten Gpg4win 2.0.1 RC1 herunterladen +++</b></dd>
+<dt><b>+++ 20090901 Outlook-Nutzer sollten Gpg4win 2.0.1 RC1
+herunterladen +++</b></dt>
 <dd>
 Verzögerungen machten Outlook 2003 oder 2007 für viele Anwender unbenutzbar;
 Gpg4win 2.0.1 RC1 adressiert diese Probleme.
@@ -23,12 +23,12 @@ Hinweis: Emails per Exchange von Outlook/GpgOl zu senden geht weiterhin nicht.
 Hier ist die <a
 href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2009-September/000001.html">Bekanntmachung</a>.</dd>
 
-<dt><b>+++ 20090819 Smartcards verwenden mit Gpg4win 2.0.0 +++</b></dd>
+<dt><b>+++ 20090819 Smartcards verwenden mit Gpg4win 2.0.0 +++</b></dt>
 <dd>Hinweise für die Nutzung der unterstützen OpenPGP- und
 X.509-Smartcards mit Kleopatra finden Sie in der aktualisierten <a
 href="doc/README.de.txt">README-Datei</a>.</dd>
 
-<dt><b>+++ 20090812 Gpg4win 2.0.0 ist veröffentlicht +++</b></dd>
+<dt><b>+++ 20090812 Gpg4win 2.0.0 ist veröffentlicht +++</b></dt>
 <dd>Hier die <a href="news-20090812-de.html">Pressemitteilung</a>.</dd>
 </dl>
 

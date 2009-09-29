@@ -1,3 +1,15 @@
+2009-09-29  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+
+	 * website/versions.m4: Update Kleopatra version.
+
+	 * website/index.htm4, website/index-de.htm4: Formatting.
+
+	 * website/documentation.htm4, website/documenation-de.htm4:
+	 Change gpg4win version.
+
+	 * website/download.htm4, website/download-de.htm4: Add more
+	 2.0.1 information and links. Formatting.
+
 2009-09-28  Werner Koch  <wk@g10code.com>
 
 	* Makefile.am (EXTRA_DIST): Add the other README files.

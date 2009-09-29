@@ -8,24 +8,37 @@ m4_define(`DE_FILE', `download-de.html')
 PAGE_START
 <h1>Download</h1>
 
-
 <h2>Gpg4win VERSION</h2>
 
 <p>You can download the full version (including the German compendium
-and the English novice manual) of Gpg4win VERSION here (<a
-    href="change-history.html">change history</a>):</p>
+and the English novice manual) of Gpg4win VERSION here:</p>
+
 <a href="DOWNLOAD_URL" class="dlbutton2">Gpg4win&nbsp;VERSION<br>
-    <span class="version"><small>Size: DL_SIZE | Released: DL_DATE</small></span>
+<span class="version"><small>Size: DL_SIZE | Released: DL_DATE</small></span>
 </a>
 
-<h4>Gpg4win light VERSION</h4>
+<ul>
+    <li><a href="http://ftp.gpg4win.org/gpg4win-VERSION.exe.sig"
+        >OpenPGP-Signatur</a> (for gpg4win-VERSION.exe)
+    <li><b>SHA1-Prüfsumme</b> (for gpg4win-VERSION.exe): <code>SHA1_EXE
+    gpg4win-VERSION.exe </code></li>
 
-<p>The light version of Gpg4win VERSION contains everything of the
-full version, <em>except</em> the certificate manager Kleopatra and the
-Gpg4win manuals.
-  You can download the light version here:</p>
-<a href="LDOWNLOAD_URL" class="dlbutton2">Gpg4win&nbsp;light&nbsp;VERSION<br>
-<span class="version"><small>Size: LDL_SIZE | Released: DL_DATE</small></a> 
+<li><a href="change-history.html">Change History</a></li>
+
+<li>Sources and other Gpg4win-VERSION variants:
+    <ul>
+    <li><a href="LDOWNLOAD_URL">gpg4win-light-VERSION.exe</a>
+    (Full version <em>without</em> Kleopatra and manuals); 
+    <small>Size: LDL_SIZE</small></li>
+    <li><a
+        href="http://ftp.gpg4win.org/gpg4win-VERSION.tar.bz2">gpg4win-VERSION.tar.bz2</a>
+    (source code package); <small>Size: 5 MByte</small></li>
+    <li>All versions and OpenPGP signatures: <a
+        href="http://ftp.gpg4win.org">ftp.gpg4win.org</a>.</li>
+    </ul>
+</li>
+</ul>
+
 
 <h4>Installation</h4>
 
