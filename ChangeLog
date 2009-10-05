@@ -1,3 +1,9 @@
+2009-10-05  Marcus Brinkmann  <marcus@g10code.com>
+
+	* src/inst-sections.nsi (calc_defaults_man_advanced_en_done):
+	Demagicize a couple of skip_* goto targets for MSI parsing.
+	* src/make-msi.pl: Support APPDATA.
+
 2009-09-28  Werner Koch  <wk@g10code.com>
 
 	Release 2.0.1.

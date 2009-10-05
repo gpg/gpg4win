@@ -768,11 +768,19 @@ sub gpg4win_nsis_stubs
 	    fail "$file:$.: syntax error" if ($#args != 0);
 
 	    my $outpath = $args[0];
-	    if (not $outpath =~ s/^"\$INSTDIR\\?(.*)"$/$1/)
+#	    if (not $outpath =~ s/^"\$INSTDIR\\?(.*)"$/$1/)
+	    if ($outpath =~ m/^"\$INSTDIR\\?(.*)"$/)
+	    {
+	        $parser->{outpath} = $1;
+	    }
+	    elsif ($outpath =~ m/^"\$APPDATA\\?(.*)"$/)
+	    {
+	        $parser->{outpath} = "%CommonAppDataFolder%\\" . $1;
+	    }
+	    else
 	    {
 		fail "$file:$.: unsupported out path: $args[0]";
 	    }
-	    $parser->{outpath} = $outpath;
 	}
 	elsif ($command eq 'File')
 	{
