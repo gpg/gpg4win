@@ -1,3 +1,8 @@
+2009-10-20  Marcus Brinkmann  <marcus@g10code.com>
+
+	* src/gpg4win.mk.in (SPKG stamps/stamp-$(1)-04-install): Remove
+	share/info/dir to avoid stow conflicts.
+
 2009-10-08  Marcus Brinkmann  <marcus@g10code.com>
 
 	* Makefile.am (EXTRA_DIST): Add

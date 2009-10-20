@@ -151,7 +151,8 @@ stamps/stamp-$(1)-04-install: stamps/stamp-$(1)-03-make
 	($(call SETVARS,$(1));				\
 	  cd "$$$${pkgbdir}";				\
 	  $(MAKE) $(AM_MAKEFLAGS) $$$${pkgmkargs_inst} install; \
-	  $(call STRIP_macro,"$$$${pkgidir}"); \
+	  $(call STRIP_macro,"$$$${pkgidir}");		\
+	  rm -f "$$$${pkgidir}/share/info/dir";		\
 	  $(call gpg4win_pkg_$(call FROB_macro,$(1))_post_install))
 	touch stamps/stamp-$(1)-04-install
 
