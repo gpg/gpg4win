@@ -27,7 +27,7 @@ LangString T_SetDefaultClient ${LANG_ENGLISH} \
      "Do you want to make Claws Mail your default mail client?"
      
 
-${MementoUnselectedSection} "Claws-Mail" SEC_claws_mail
+${MementoSection} "Claws-Mail" SEC_claws_mail
   SetOutPath "$INSTDIR"
 !ifdef SOURCES
   File "${gpg4win_pkg_claws_mail}"
@@ -62,6 +62,7 @@ ${MementoUnselectedSection} "Claws-Mail" SEC_claws_mail
   WriteRegStr HKCU "Software\Classes\mailto" "" "URL:MailTo-Protocol"
   WriteRegStr HKCU "Software\Classes\mailto" "URL Protocol" ""
   WriteRegDword HKCU "Software\Classes\mailto" "EditFlags" 2
+  WriteRegStr HKCU "Software\Classes\mailto" "FriendlyTypeName" "Claws-Mail URL"
 
   WriteRegStr HKCU "Software\Classes\mailto\DefaultIcon" "" "$INSTDIR\claws-mail.exe,0"
   WriteRegStr HKCU "Software\Classes\mailto\shell\open\command" "" "$INSTDIR\claws-mail.exe --compose %1"
@@ -73,11 +74,19 @@ skip_default_client:
   WriteRegStr HKLM "SOFTWARE\Clients\Mail\Claws Mail" "DLLPath" ""
   WriteRegStr HKLM "SOFTWARE\Clients\Mail\Claws Mail\Protocols\mailto" "" "URL:MailTo-Protocol"
   WriteRegStr HKLM "SOFTWARE\Clients\Mail\Claws Mail\Protocols\mailto" "URL Protocol" ""
+  WriteRegStr HKLM "SOFTWARE\Clients\Mail\Claws Mail\Protocols\mailto" "FriendlyTypeName" "Claws-Mail URL"
   WriteRegDword HKLM "SOFTWARE\Clients\Mail\Claws Mail\Protocols\mailto" "EditFlags" 2
   WriteRegStr HKLM "SOFTWARE\Clients\Mail\Claws Mail\Protocols\mailto\DefaultIcon" "" "$INSTDIR\claws-mail.exe,0"
   WriteRegStr HKLM "SOFTWARE\Clients\Mail\Claws Mail\Protocols\mailto\shell\open\command" "" "$INSTDIR\claws-mail.exe --compose %1"
   WriteRegStr HKLM "SOFTWARE\Clients\Mail\Claws Mail\shell\open\command" "" "$INSTDIR\claws-mail.exe"
 
+  WriteRegStr HKLM "SOFTWARE\Classes\Claws-Mail.Url.mailto" "" "Claws-Mail URL"
+  WriteRegStr HKLM "SOFTWARE\Classes\Claws-Mail.Url.mailto" "FriendlyTypeName" "Claws-Mail URL"
+  WriteRegStr HKLM "SOFTWARE\Classes\Claws-Mail.Url.mailto" "URL Protocol" ""
+  WriteRegDword HKLM "SOFTWARE\Classes\Claws-Mail.Url.mailto" "EditFlags" 2
+
+  WriteRegStr HKLM "SOFTWARE\Classes\Claws-Mail.Url.mailto\DefaultIcon" "" "$INSTDIR\claws-mail.exe,0"
+  WriteRegStr HKLM "SOFTWARE\Classes\Claws-Mail.Url.mailto\mailto\shell\open\command" "" "$INSTDIR\claws-mail.exe --compose %1"
 !endif
 ${MementoSectionEnd}
 

@@ -1,3 +1,9 @@
+2009-12-08  Colin Leroy  <colin@colino.net>
+
+	* src/inst-claws-mail.nsi, src/uninst-claws-mail.nsi, 
+	src/Makefile.am, packages/packages.current: Update Claws Mail
+	and its plugins.
+
 2009-10-20  Marcus Brinkmann  <marcus@g10code.com>
 
 	* src/gpg4win.mk.in (SPKG stamps/stamp-$(1)-04-install): Remove

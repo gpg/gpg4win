@@ -263,7 +263,7 @@ gpg4win_pkg_claws_mail_configure = \
 
 gpg4win_pkg_notification_plugin_configure = \
   --with-lib-prefix=$(idir) --with-libiconv-prefix=$(idir) \
-  --disable-libnotify --disable-lcdproc
+  --disable-libnotify --disable-lcdproc --disable-hotkeys
 
 gpg4win_pkg_gtkhtml2_viewer_configure = \
   --with-lib-prefix=$(idir) --with-libiconv-prefix=$(idir) LIBS=\"-L$(idir)/bin\"
