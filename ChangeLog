@@ -1,3 +1,7 @@
+2009-12-15  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+
+	* packages/packages.current: Update gnupg, kleopatra and kdelibs.
+
 2009-12-08  Colin Leroy  <colin@colino.net>
 
 	* src/inst-claws-mail.nsi, src/uninst-claws-mail.nsi, 

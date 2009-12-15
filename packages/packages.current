@@ -144,7 +144,7 @@ chk    4423bf561895b6377133b508b512b766cf22b4b3
 
 server http://www.claws-mail.org/win32
 file   notification_plugin-0.23cvs2.tar.gz
-chk    102bf9a3aa5a401c936c92ff2cf89bcc242342e4
+chk    9aa7239bce142e931b9257ee40edae278ac5bdcf
 
 server http://www.claws-mail.org/win32
 file   rssyl-0.25.tar.gz
@@ -360,9 +360,9 @@ chk  3987f0efcbb7048c136d5c859e88eee1763a14f6
 file libassuan/libassuan-1.0.5.tar.bz2
 chk  f6c36e9d99736883a8ce5b80b0a51d854cbbbc70
 
-name gnupg2-2.0.12.tar.bz2
-file gnupg/gnupg-2.0.12.tar.bz2
-chk  91856f917c13a1a12622ef39995eaf59c46f7502
+name gnupg2-2.0.13.tar.bz2
+file gnupg/gnupg-2.0.13.tar.bz2
+chk  2ff42aff14cdddafc291d44ac1968af5f09a9d4d
 
 file dirmngr/dirmngr-1.0.3.tar.bz2
 chk  437d381c937b1f1d0699d1ed37cf50f14bfbcd32
@@ -465,17 +465,17 @@ chk  a4e673c1b1b1cc420e771413edc53ef89fe7773a
 #
 server http://files.kolab.org/local/gpg4win
 
-file kdelibs-20090807-bin.zip
-chk  2ef66b1b4269b3acfb785b3d8dcbe4af60effaa4
+file kdelibs-20091207-bin.zip
+chk  1401415caaa1b56e579890bee37d02e9f8fcfae9
 
-file kdelibs-20090807-lib.zip
-chk  388c634773e327a90cc48a248358a632a6fe5081
+file kdelibs-20091207-lib.zip
+chk  3ed16fd23dcc9a5f5ab6c954b2f05d2a53e1055c
 
-file kdelibs-20090807-src.zip
-chk  3f2b4aff160b2e55a2be9282ff620928fb691eb2
+file kdelibs-20091207-src.zip
+chk  b08ab06f22a6173b916a96b01135353a1b418315
 
-file kleopatra-20090925-bin.zip
-chk  3c492a5f4db8fcdd9f9983c1094651513d51e033
+file kleopatra-20091207-bin.zip
+chk  d9e034f1165bc4a2d68d8023a64b472f08b58424
 
-file kleopatra-20090925-src.zip
-chk  0e837d11c4cb4d276d18e978f640cc65069c569f
+file kleopatra-20091207-src.zip
+chk  5b4e90d538640c0a7a44f95193daf9cc868d057c
