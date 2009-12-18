@@ -61,8 +61,6 @@ OutFile "${PACKAGE}-light-${VERSION}.exe"
 OutFile "${PACKAGE}-${VERSION}.exe"
 !endif
 
-Icon "${TOP_SRCDIR}/doc/logo/gpg4win-logo-icon.ico"
-UninstallIcon "${TOP_SRCDIR}/doc/logo/gpg4win-logo-icon.ico"
 
 # Set the installation directory.
 !ifndef INSTALL_DIR
@@ -110,11 +108,17 @@ Var OtherGnuPGDetected
 !define MUI_FINISHPAGE_NOAUTOCLOSE
 !define MUI_UNFINISHPAGE_NOAUTOCLOSE
 
-#!define MUI_HEADERIMAGE
-#!define MUI_HEADERIMAGE_BITMAP \
-#               "${TOP_SRCDIR}/doc/logo/gpg4win-logo-150x57.bmp"
+!define MUI_HEADERIMAGE
+!define MUI_HEADERIMAGE_BITMAP \
+               "${TOP_SRCDIR}/doc/logo/gpg4win-nsis-header-install-150x57.bmp"
+!define MUI_HEADERIMAGE_UNBITMAP \
+               "${TOP_SRCDIR}/doc/logo/gpg4win-nsis-header-uninstall-150x57.bmp"
 !define MUI_WELCOMEFINISHPAGE_BITMAP \
-               "${TOP_SRCDIR}/doc/logo/gpg4win-logo-164x314.bmp"
+               "${TOP_SRCDIR}/doc/logo/gpg4win-nsis-wizard-install-164x314.bmp"
+!define MUI_UNWELCOMEFINISHPAGE_BITMAP \
+               "${TOP_SRCDIR}/doc/logo/gpg4win-nsis-wizard-uninstall-164x314.bmp"
+!define MUI_ICON "${TOP_SRCDIR}/doc/logo/gpg4win-nsis-install.ico"
+!define MUI_UNICON "${TOP_SRCDIR}/doc/logo/gpg4win-nsis-uninstall.ico"
 
 # Remember the installer language
 
@@ -177,9 +181,10 @@ Var STARTMENU_FOLDER
 
 # Uninstaller pages.
 
+!insertmacro MUI_UNPAGE_WELCOME
 !insertmacro MUI_UNPAGE_CONFIRM
 !insertmacro MUI_UNPAGE_INSTFILES
-
+!insertmacro MUI_UNPAGE_FINISH
 
 #Page license
 #Page components

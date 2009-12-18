@@ -1,3 +1,14 @@
+2009-12-18  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+
+	* src/installer.nsi,
+	  doc/logo/gpg4win-nsis-wizard-install-164x314.bmp,
+	  doc/logo/gpg4win-nsis-wizard-uninstall-164x314.bmp,
+	  doc/logo/gpg4win-nsis-install.ico,
+	  doc/logo/gpg4win-nsis-header-install-150x57.bmp,
+  	  doc/logo/gpg4win-nsis-uninstall.ico,
+	  doc/logo/gpg4win-nsis-header-uninstall-150x57.bmp:
+	  Add new bitmaps and icons for nsis installer.
+
 2009-12-15  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
 	* packages/packages.current: Update gnupg, kleopatra and kdelibs.
