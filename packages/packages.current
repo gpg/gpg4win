@@ -313,8 +313,8 @@ server http://wald.intevation.org/frs/download.php
 #
 server ftp://ftp.g10code.com/g10code/gpgol
 
-file gpgol-1.0.1.tar.bz2
-chk  1721fa05378a72f50d92dc6e8c04660dfd89c6c0
+file alpha/gpgol-1.1.0-svn326.tar.bz2
+chk  7589277ecb956309d6231d70fa79db4e4063e67f
 
 
 #
@@ -354,15 +354,15 @@ chk  bf8c6babe1e28cae7dd6374ca24ddcc42d57e902
 file libksba/libksba-1.0.7.tar.bz2
 chk  c8d269fb15869b59204ef3f5d46ceb2c44dbeab3
 
-file libgcrypt/libgcrypt-1.4.4.tar.bz2
-chk  3987f0efcbb7048c136d5c859e88eee1763a14f6
+file libgcrypt/libgcrypt-1.4.5.tar.bz2
+chk  ef7ecbd3a03a7978094366bcd1257b3654608d28
 
 file libassuan/libassuan-1.0.5.tar.bz2
 chk  f6c36e9d99736883a8ce5b80b0a51d854cbbbc70
 
-name gnupg2-2.0.13.tar.bz2
-file gnupg/gnupg-2.0.13.tar.bz2
-chk  2ff42aff14cdddafc291d44ac1968af5f09a9d4d
+name gnupg2-2.0.14.tar.bz2
+file gnupg/gnupg-2.0.14.tar.bz2
+chk  cc5e4637f37f5bc82b00c73fc094ddadb7401821
 
 file dirmngr/dirmngr-1.0.3.tar.bz2
 chk  437d381c937b1f1d0699d1ed37cf50f14bfbcd32
