@@ -103,7 +103,7 @@ AC_DEFUN([GPG4WIN_FIND],
 
   # Only check if critical or auto detection is requested.
   AS_IF([test $_gpg4win_auto_detection = yes -o $_gpg4win_critical = yes],
-    [AS_IF([test -z "$_gpg4win_dir" -o x$_gpg4win_dir = xyes -o x$_gpg4win_dir = xmaybe],
+    [AS_IF([test -z "$_gpg4win_dir" -o "$_gpg4win_dir" = yes -o "$_gpg4win_dir" = maybe],
           [_gpg4win_dir=$gpg4win_packages])
 
     # Install pattern.
@@ -207,7 +207,7 @@ AC_DEFUN([GPG4WIN_FINALIZE],
     AS_HELP_STRING([--enable-debug], [enable debugging [[no]]]),
     _gpg4win_debug=$enableval)
 
-  AS_IF([test "x${_gpg4win_debug}" != "xno"],
+  AS_IF([test "x${_gpg4win_debug}" != no],
     GPG4WIN_DEFINE(GPG4WIN_DEBUG))
 ])
 
@@ -260,7 +260,7 @@ AC_DEFUN([GPG4WIN_SPKG],
     _gpg4win_pkg=$enableval)
   _gpg4win_spkg=no
   _gpg4win_version=
-  AS_IF([test x$_gpg4win_pkg != xno],
+  AS_IF([test "$_gpg4win_pkg" != no],
         [GPG4WIN_FIND($1,,, $_gpg4win_pkg,
 	 _gpg4win_spkg=$gpg4win_val
 	 _gpg4win_version=$gpg4win_version)])
@@ -307,7 +307,7 @@ AC_DEFUN([GPG4WIN_BPKG_GNUWIN32],
     _gpg4win_pkg=$enableval)
   _gpg4win_bpkg=no
   _gpg4win_version=
-  AS_IF([test x$_gpg4win_pkg != xno],
+  AS_IF([test "$_gpg4win_pkg" != no],
         [GPG4WIN_FIND($1-bin, [$1-\(.*\)-bin],,
          $_gpg4win_pkg,
          _gpg4win_bpkg=$gpg4win_val
@@ -327,7 +327,7 @@ AC_DEFUN([GPG4WIN_BPKG_GNUWIN32],
   gpg4win_pkg_[]m4_translit([$1],[A-Z+-],[a-z__])[]_deps="$2"
   AC_SUBST(gpg4win_pkg_[]m4_translit([$1],[A-Z+-],[a-z__])[]_deps)
 
-  AS_IF([test $_gpg4win_bpkg != no],
+  AS_IF([test "$_gpg4win_bpkg" != "no" ],
     GPG4WIN_FIND($1-lib, [$1-\(.*\)-lib],,
                  $_gpg4win_pkg, _gpg4win_bpkg=$gpg4win_val,
        AC_MSG_ERROR(can not find development package for package $1))
@@ -371,7 +371,7 @@ AC_DEFUN([GPG4WIN_BPKG_GNUWIN32_LIB],
     _gpg4win_pkg=$enableval)
   _gpg4win_bpkg=no
   _gpg4win_version=
-  AS_IF([test x$_gpg4win_pkg != xno],
+  AS_IF([test "$_gpg4win_pkg" != no],
         [GPG4WIN_FIND($1-lib, [$1-\(.*\)-lib],,
          $_gpg4win_pkg,
          _gpg4win_bpkg=$gpg4win_val
@@ -387,7 +387,7 @@ AC_DEFUN([GPG4WIN_BPKG_GNUWIN32_LIB],
   gpg4win_pkg_[]m4_translit([$1],[-+],[__])[]_version=$_gpg4win_version
   AC_SUBST(gpg4win_pkg_[]m4_translit([$1],[-+],[__])[]_version)
 
-  AS_IF([test $_gpg4win_bpkg != no],
+  AS_IF([test "$_gpg4win_bpkg" != no],
     GPG4WIN_FIND($1-src, [$1-\(.*\)-src],,
                  $_gpg4win_pkg, _gpg4win_bpkg=$gpg4win_val,
        AC_MSG_ERROR(can not find sources for package $1))
@@ -425,7 +425,7 @@ AC_DEFUN([GPG4WIN_BPKG_GTK],
     _gpg4win_pkg=$enableval)
   _gpg4win_bpkg=no
   _gpg4win_version=
-  AS_IF([test x$_gpg4win_pkg != xno],
+  AS_IF([test "$_gpg4win_pkg" != no],
         [GPG4WIN_FIND($1,,zip, $_gpg4win_pkg,
          _gpg4win_bpkg=$gpg4win_val
 	 _gpg4win_version=$gpg4win_version)])
@@ -444,7 +444,7 @@ AC_DEFUN([GPG4WIN_BPKG_GTK],
   gpg4win_pkg_[]m4_translit([$1],[A-Z+-],[a-z__])[]_deps="$2"
   AC_SUBST(gpg4win_pkg_[]m4_translit([$1],[A-Z+-],[a-z__])[]_deps)
 
-  AS_IF([test $_gpg4win_bpkg != no],
+  AS_IF([test "$_gpg4win_bpkg" != no],
     [GPG4WIN_FIND($1,,tar, $_gpg4win_pkg, _gpg4win_bpkg=$gpg4win_val,
        AC_MSG_ERROR(can not find sources for package $1))]
     # gpg4win_pkg_PKGNAME_src=FILENAME_OF_SOURCE
@@ -481,7 +481,7 @@ AC_DEFUN([GPG4WIN_BPKG_GTK_DEV],
     _gpg4win_pkg=$enableval)
   _gpg4win_bpkg=no
   _gpg4win_version=
-  AS_IF([test x$_gpg4win_pkg != xno],
+  AS_IF([test "$_gpg4win_pkg" != no],
         [GPG4WIN_FIND($1,,zip, $_gpg4win_pkg,
          _gpg4win_bpkg=$gpg4win_val
 	 _gpg4win_version=$gpg4win_version)])
@@ -500,7 +500,7 @@ AC_DEFUN([GPG4WIN_BPKG_GTK_DEV],
   gpg4win_pkg_[]m4_translit([$1],[A-Z+-],[a-z__])[]_deps="$2"
   AC_SUBST(gpg4win_pkg_[]m4_translit([$1],[A-Z+-],[a-z__])[]_deps)
 
-  AS_IF([test $_gpg4win_bpkg != no],
+  AS_IF([test "$_gpg4win_bpkg" != no],
     [GPG4WIN_FIND($1-dev,,, $_gpg4win_pkg, _gpg4win_bpkg=$gpg4win_val,
        AC_MSG_ERROR(can not find development package for package $1))]
     # gpg4win_pkg_PKGNAME_dev=FILENAME_OF_BINARY_DEVEL
@@ -544,7 +544,7 @@ AC_DEFUN([GPG4WIN_BPKG_GNU],
   _gpg4win_bpkg=no
   _gpg4win_version=
 
-  AS_IF([test x$_gpg4win_pkg != xno],
+  AS_IF([test "$_gpg4win_pkg" != no],
         [
           # For some shameful reason, the gettext package is actually called
           # gettext-runtime!
@@ -571,7 +571,7 @@ AC_DEFUN([GPG4WIN_BPKG_GNU],
   gpg4win_pkg_[]m4_translit([$1],[A-Z+-],[a-z__])[]_deps="$2"
   AC_SUBST(gpg4win_pkg_[]m4_translit([$1],[A-Z+-],[a-z__])[]_deps)
 
-  AS_IF([test $_gpg4win_bpkg != no],
+  AS_IF([test "$_gpg4win_bpkg" != no],
     [GPG4WIN_FIND($1,,tar, $_gpg4win_pkg, _gpg4win_bpkg=$gpg4win_val,
        AC_MSG_ERROR(can not find sources for package $1))]
     # gpg4win_pkg_PKGNAME_src=FILENAME_OF_SOURCE
@@ -608,12 +608,12 @@ AC_DEFUN([GPG4WIN_BPKG_BINSRC],
     _gpg4win_pkg=$enableval)
   _gpg4win_bpkg=no
   _gpg4win_version=
-  AS_IF([test x$_gpg4win_pkg != xno],
+  AS_IF([test "$_gpg4win_pkg" != no],
         [GPG4WIN_FIND($1-bin, [$1-\(.*\)-bin],,
          $_gpg4win_pkg,
          _gpg4win_bpkg=$gpg4win_val
 	 _gpg4win_version=$gpg4win_version)])
-  AS_IF([test x$_gpg4win_pkg != xno -a x$_gpg4win_bpkg = xno],
+  AS_IF([test "$_gpg4win_pkg" != no -a "$_gpg4win_bpkg" = no],
         [GPG4WIN_FIND($1-noinstaller, [$1-\(.*\)-noinstaller],,
          $_gpg4win_pkg,
          _gpg4win_bpkg=$gpg4win_val
@@ -633,7 +633,7 @@ AC_DEFUN([GPG4WIN_BPKG_BINSRC],
   gpg4win_pkg_[]m4_translit([$1],[A-Z+-],[a-z__])[]_deps="$2"
   AC_SUBST(gpg4win_pkg_[]m4_translit([$1],[A-Z+-],[a-z__])[]_deps)
 
-  AS_IF([test $_gpg4win_bpkg != no],
+  AS_IF([test "$_gpg4win_bpkg" != no],
     tmp_binsrc=yes
     GPG4WIN_FIND($1-src, [$1-\(.*\)-src],,
                  $_gpg4win_pkg, _gpg4win_bpkg=$gpg4win_val, tmp_binsrc=no)
