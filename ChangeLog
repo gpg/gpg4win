@@ -1,9 +1,12 @@
 2010-01-05  Werner Koch  <wk@g10code.com>
 
+	* packages/download.sh: Add option --quiet.
+
 	* m4/gpg4win.m4: Quote variables in test comamnds instead of using
 	instead of comparing against xno or xyes.
 
-	* packages/packages.current: Update gpgex and gpgol.
+	* packages/packages.current: Update gpgex and gpgol.  Update
+	libpng and pkgconfig.
 
 2009-12-22  Werner Koch  <wk@g10code.com>
 

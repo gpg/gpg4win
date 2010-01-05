@@ -41,12 +41,14 @@ usage()
 Usage: $0 [OPTIONS]
 Options:
 	[--force]
+        [--quiet]
 EOF
     exit $1
 }
 
 
 force=no
+quiet=no
 #keep_list=no
 #sig_check=yes
 while [ $# -gt 0 ]; do
@@ -70,6 +72,9 @@ while [ $# -gt 0 ]; do
         --no-sig-check)
             # Now a dummy
             sig_check=no
+            ;;
+        --quiet)
+            quiet=yes
             ;;
 	*)
 	    usage 1 1>&2
@@ -124,7 +129,7 @@ while read key value ; do
            exit 1
        fi
        name="$value"
-       echo "using name  \`$name'"
+       [ $quiet = no ] && echo "using name  \`$name'"
        ;;
     file)
        if [ -z "$value" ]; then
@@ -140,7 +145,7 @@ while read key value ; do
            name=`basename "$value"`
        fi
        if [ -f "$name" -a "$force" = "no" ]; then
-           echo "package     \`$url' ... already exists"
+           [ $quiet = no ] && echo "package     \`$url' ... already exists"
        else
            echo -n "downloading \`$url' ..."
            if ${WGET} -c -q "$url" -O "$name" ; then
@@ -161,7 +166,7 @@ while read key value ; do
            exit 1
        fi
        if [ -f "$value" -a "$force" = "no" ]; then
-           echo "package     \`$value' ... already exists"
+           [ $quiet = no ] && echo "package     \`$value' ... already exists"
        else
            echo -n "linking \`$value' to \`$name' ..."
 	   if ln -f "$name" "$value"; then
@@ -181,11 +186,12 @@ while read key value ; do
            echo "no file name for chk statement, line $lnr" >&2
            exit 1
        fi
-       echo -n "checking    \`$name' ..."
+       [ $quiet = no ] && echo -n "checking    \`$name' ..."
        if echo "$value *$name" | sha1sum -c >/dev/null 2>&1 ; then
-           echo " okay"
+           [ $quiet = no ] && echo " okay"
        else
-           echo " FAILED (line $lnr)"
+           [ $quiet = no ] && echo " FAILED (line $lnr)"
+           [ $quiet = no ] || echo "checking    \`$name' FAILED (line $lnr)"
            echo "line $lnr: checking $name failed" >> '.#download.failed'
        fi
        name=

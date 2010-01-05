@@ -252,25 +252,25 @@ name pkgconfig-0.23.tar.gz
 file pkg-config-0.23.tar.gz
 chk  b59dddd6b5320bd74c0f74b3339618a327096b2a
 name pkgconfig-0.23.zip
-file pkg-config-0.23-2.zip
-chk  2d300159d8c5ebd4f7c139aa9e320e194106d003
+file pkg-config_0.23-3_win32.zip
+chk  d063e705812e1ee7feb8f35d51b3cad04ca13b0d
 
 
 # PNG
 
 server http://dfn.dl.sourceforge.net/sourceforge/libpng
 
-file libpng-1.2.34.tar.gz
-chk  8b1e1e544660e918af75d8af2c078f85c022db68
+file libpng-1.2.40.tar.gz
+chk  a3f2df01871da15d66f103a5b4e793601e4d1043
 
 server http://ftp.gnome.org/pub/gnome/binaries/win32/dependencies
 
-name libpng-1.2.34.zip
-file libpng_1.2.34-1_win32.zip
-chk  5de32013ebad64ec7c592103d8e7b6806851197d
-name libpng-dev-1.2.34.zip
-file libpng-dev_1.2.34-1_win32.zip
-chk  509a4cea2fd45fccd0660980a3257cb29398fbeb
+name libpng-1.2.40.zip
+file libpng_1.2.40-1_win32.zip
+chk  918523518a0eba14965035c6a06ec4357816bad2
+name libpng-dev-1.2.40.zip
+file libpng-dev_1.2.40-1_win32.zip
+chk  6834194cfb9824be53be352e3c9a4548512e355d
 
 #
 # WinPT
