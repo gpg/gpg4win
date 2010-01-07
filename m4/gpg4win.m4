@@ -207,7 +207,7 @@ AC_DEFUN([GPG4WIN_FINALIZE],
     AS_HELP_STRING([--enable-debug], [enable debugging [[no]]]),
     _gpg4win_debug=$enableval)
 
-  AS_IF([test "x${_gpg4win_debug}" != no],
+  AS_IF([test "${_gpg4win_debug}" != no],
     GPG4WIN_DEFINE(GPG4WIN_DEBUG))
 ])
 
