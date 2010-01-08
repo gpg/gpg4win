@@ -322,8 +322,8 @@ chk  da5f48448fe7e19ad831fc5d6f833e60104faaa4
 #
 server ftp://ftp.g10code.com/g10code/gpgex
 
-file gpgex-0.9.4.tar.bz2
-chk 18dc43f1e6a8e0a780f2cc5cad2d2bd656a4e61a
+file gpgex-0.9.5.tar.bz2
+chk  8f42f3e5a5189c3c2c216f7ff924a1714a5fde6d
 
 #
 # Pth emulation

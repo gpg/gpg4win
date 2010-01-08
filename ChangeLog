@@ -1,5 +1,7 @@
 2010-01-08  Marcus Brinkmann  <marcus@g10code.de>
 
+	* packages/packages.current: Update gpgex.
+
 	* src/Makefile.am (gpg4win_pkg_gpgme_configure): Disable Qt support.
 	* src/inst-gpgme.nsi: Do not install qt version.
 
