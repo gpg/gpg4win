@@ -209,13 +209,13 @@ gpg4win_pkg_pinentry_configure = \
 gpg4win_pkg_gpgme_configure = --silent \
   --with-gpg-error-prefix=$(idir) --enable-static \
   `test -n "@HAVE_PKG_GLIB@" && echo "--enable-w32-glib"` \
-  `test -n "@HAVE_PKG_QT@" && echo "--enable-w32-qt"` \
-  LDFLAGS=-L$(idir)/lib \
-  QT4_CORE_CFLAGS=\"-DQT_LARGEFILE_SUPPORT -DQT_DLL \
-                   -DQT_NO_DEBUG -DQT_CORE_LIB -DQT_THREAD_SUPPORT \
-                   -I$(idir)/include/QtCore -I$(idir)/include \
-		   -I$(idir)/mkspecs/win32-g++\" \
-  QT4_CORE_LIBS=\"-L$(idir)/lib -lQtCore4\"
+  --disable-w32-qt LDFLAGS=-L$(idir)/lib
+#  `test -n "@HAVE_PKG_QT@" && echo "--disable-w32-qt"` \
+#  QT4_CORE_CFLAGS=\"-DQT_LARGEFILE_SUPPORT -DQT_DLL \
+#                   -DQT_NO_DEBUG -DQT_CORE_LIB -DQT_THREAD_SUPPORT \
+#                   -I$(idir)/include/QtCore -I$(idir)/include \
+#		   -I$(idir)/mkspecs/win32-g++\" \
+#  QT4_CORE_LIBS=\"-L$(idir)/lib -lQtCore4\"
 
 gpg4win_pkg_gpa_configure = --silent \
   --with-libiconv-prefix=$(idir) --with-libintl-prefix=$(idir) \
