@@ -132,11 +132,11 @@ chk    2c845295a694cf3b41b91c136bc4cf661d143c94
 
 server http://www.claws-mail.org/win32
 file   attachwarner-0.2.17.tar.gz
-chk    2f0e49bd6b14fdb627bbe9b716a60fc90afc9f4f
+chk    65d92cfb41f48679cadc8fa8db17a55fdc0d6c0b
 
 server http://www.claws-mail.org/win32
 file   bsfilter_plugin-1.0.2.tar.gz
-chk    334c5f7e2dc7a10921f0e73cd2c4a4d882510c1a
+chk    d63faf92b02cb807f89221be17246a8d591b28cb
 
 server http://www.claws-mail.org/win32
 file   gtkhtml2_viewer-0.25cvs1.tar.gz
@@ -152,7 +152,7 @@ chk    b0ccac7dd30ba4bd4da396970fc9ec35586592e3
 
 server http://www.claws-mail.org/win32
 file   tnef_parse-0.3.6.tar.gz
-chk    e82d4748dabc4e3081cee4e5df8bf7f75ffaeb65
+chk    117b5c225ccbf7feaac7e58c644245d7e461387c
 
 server http://www.claws-mail.org/win32
 file   vcalendar-2.0.6cvs1.tar.gz

@@ -1,3 +1,7 @@
+2010-01-11  Werner Koch  <wk@g10code.com>
+
+	* packages/packages.current: Update checksums of some claws plugins.
+
 2010-01-08  Marcus Brinkmann  <marcus@g10code.de>
 
 	* packages/packages.current: Update gpgex.

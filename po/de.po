@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gpg4win 2.0\n"
 "Report-Msgid-Bugs-To: gpg4win-devel@wald.intevation.org\n"
-"POT-Creation-Date: 2009-09-28 15:16+0200\n"
+"POT-Creation-Date: 2010-01-07 19:19+0100\n"
 "PO-Revision-Date: 2009-09-28 15:17+0200\n"
 "Last-Translator: Werner Koch <wk@g10code.com>\n"
 "Language-Team: German <translation-team-de@lists.sourceforge.net>\n"
@@ -88,12 +88,12 @@ msgctxt "T_AboutGpg4winSrcReleaseDate"
 msgid "release date ${_BUILD_ISODATE}"
 msgstr "Releasedatum ${_BUILD_ISODATE}"
 
-#: src/installer.nsi:221
+#: src/installer.nsi:226
 msgctxt "T_LangCode"
 msgid "en"
 msgstr "de"
 
-#: src/installer.nsi:224
+#: src/installer.nsi:229
 msgctxt "T_GPLHeader"
 msgid ""
 "This software is licensed under the terms of the GNU General Public License "
@@ -102,7 +102,7 @@ msgstr ""
 "Diese Software ist unter der GNU General Public License (GPL) lizensiert; "
 "dies gibt Ihnen die Freiheit, sie zu ändern und weiterzugeben."
 
-#: src/installer.nsi:229
+#: src/installer.nsi:234
 msgctxt "T_GPLShort"
 msgid ""
 "In short: You are allowed to run this software for any purpose. You may "
@@ -113,85 +113,85 @@ msgstr ""
 "einzusetzen.  Sie können die Software weitergeben, sofern Sie dem Empfänger "
 "dieselben Rechte einräumen, die auch Sie erhalten haben."
 
-#: src/installer.nsi:234
+#: src/installer.nsi:239
 msgctxt "T_RunKeyManager"
 msgid "Run the key manager"
 msgstr "Die Schlüsselverwaltung aufrufen"
 
-#: src/installer.nsi:237
+#: src/installer.nsi:242
 msgctxt "T_MoreInfo"
 msgid "Click here for the project's homepage"
 msgstr "Hier klicken um zur Homepage des Projekts zu gelangen"
 
-#: src/installer.nsi:239
+#: src/installer.nsi:244
 msgctxt "T_MoreInfoURL"
 msgid "http://www.gpg4win.org"
 msgstr "http://www.gpg4win.de"
 
-#: src/installer.nsi:241
+#: src/installer.nsi:246
 msgctxt "T_ShowReadme"
 msgid "Show the README file"
 msgstr "Die README Datei anzeigen"
 
-#: src/installer.nsi:244
+#: src/installer.nsi:249
 msgctxt "T_NoKeyManager"
 msgid "No key manager has been installed, thus we can't run one now."
 msgstr ""
 "Es wurde keine Schlüsselverwaltung installiert.  Deswegen kann sie jetzt "
 "auch nicht ausgeführt werden."
 
-#: src/installer.nsi:249
+#: src/installer.nsi:254
 msgctxt "DESC_Menu_manuals"
 msgid "Documentation"
 msgstr "Dokumentation"
 
-#: src/installer.nsi:252
+#: src/installer.nsi:257
 msgctxt "DESC_Menu_uninstall"
 msgid "Uninstall"
 msgstr "Deinstallieren"
 
-#: src/installer.nsi:256
+#: src/installer.nsi:261
 msgctxt "DESC_Desktop_manuals"
 msgid "Gpg4win Documentation"
 msgstr "Gpg4win Dokumentation"
 
-#: src/installer.nsi:460
+#: src/installer.nsi:465
 msgctxt "T_InstallOptions"
 msgid "Install Options"
 msgstr "Installationsoptionen"
 
-#: src/installer.nsi:463
+#: src/installer.nsi:468
 msgctxt "T_InstallOptLinks"
 msgid "Start links"
 msgstr "Startlinks"
 
-#: src/installer.nsi:465
+#: src/installer.nsi:470
 msgctxt "T_InstOptLabelA"
 msgid "Please select where Gpg4win shall install links:"
 msgstr "Bitte wählen Sie, welche Verknüpfungen angelegt werden sollen:"
 
-#: src/installer.nsi:468
+#: src/installer.nsi:473
 msgctxt "T_InstOptLabelB"
 msgid "(Only programs will be linked into the quick launch bar.)"
 msgstr ""
 "(In der Schnellstartleiste werden nur Verknüpfungen für Programme angelegt.)"
 
-#: src/installer.nsi:471
+#: src/installer.nsi:476
 msgctxt "T_InstOptFieldA"
 msgid "Start Menu"
 msgstr "Startmenü"
 
-#: src/installer.nsi:474
+#: src/installer.nsi:479
 msgctxt "T_InstOptFieldB"
 msgid "Desktop"
 msgstr "Arbeitsfläche"
 
-#: src/installer.nsi:477
+#: src/installer.nsi:482
 msgctxt "T_InstOptFieldC"
 msgid "Quick Launch Bar"
 msgstr "Schnellstartleiste"
 
-#: src/installer.nsi:483
+#: src/installer.nsi:488
 msgctxt "T_FoundExistingVersion"
 msgid ""
 "Version $R1 has already been installed.\n"
@@ -203,7 +203,7 @@ msgstr ""
 "(Sie können in jedem Fall mit JA antworten, falls es sich um eine neuere "
 "oder dieselbe Version handelt.)"
 
-#: src/installer.nsi:486
+#: src/installer.nsi:491
 msgctxt "T_FoundExistingOldVersion"
 msgid ""
 "An old version $R1 has already been installed.  It is strongly recommended "
@@ -215,7 +215,7 @@ msgstr ""
 "deinstallieren.\n"
 "Möchten Sie trotzdem fortfahren, Version ${VERSION} zu installieren?"
 
-#: src/installer.nsi:491
+#: src/installer.nsi:496
 msgctxt "T_FoundExistingVersionB"
 msgid ""
 "A version of Gpg4Win has already been installed on the system. There will be "
@@ -228,7 +228,7 @@ msgstr ""
 "\n"
 "Möchten die die Installation von Gpg4win fortführen?"
 
-#: src/installer.nsi:502
+#: src/installer.nsi:507
 msgctxt "T_FoundOldSeeManual"
 msgid ""
 "Please see the Gpg4win user manual to learn how to migrate existing keys "
@@ -239,7 +239,7 @@ msgstr ""
 "überführen.  Es wird dringend geraten Gpg4win nicht zusammen mit diesen "
 "anderen Installation zu betreiben."
 
-#: src/installer.nsi:507
+#: src/installer.nsi:512
 msgctxt "T_FoundOldGnuPP"
 msgid ""
 "An old installation of GnuPP (GNU Privacy Project) has been been detected.  "
@@ -262,7 +262,7 @@ msgstr ""
 "Möchten Sie die Installation von Gpg4win weiter durchführen und sich dann "
 "später um die Entfernung von GnuPP kümmern?"
 
-#: src/installer.nsi:516
+#: src/installer.nsi:521
 msgctxt "T_FoundOldGnuPT"
 msgid ""
 "An installation of GnuPT has been been detected.  This may cause problems "
@@ -285,7 +285,7 @@ msgstr ""
 "\n"
 "Möchten Sie die Installation von Gpg4win fortführen?"
 
-#: src/installer.nsi:523
+#: src/installer.nsi:528
 msgctxt "T_FoundOldWinPTSF"
 msgid ""
 "An old installation of the Sourceforge hosted WinPT has been been detected.  "
@@ -310,7 +310,7 @@ msgstr ""
 "\n"
 "Möchten Sie die Installation von Gpg4win trotzdem jetzt weiter durchführen?"
 
-#: src/installer.nsi:533
+#: src/installer.nsi:538
 msgctxt "T_FoundOldGnuPack"
 msgid ""
 "An installation of GnuPG-Pack has been been detected. You need to uninstall "
@@ -324,7 +324,7 @@ msgstr ""
 "\n"
 "Die Installation von Gpg4win wird nun abgebrochen!"
 
-#: src/installer.nsi:542
+#: src/installer.nsi:547
 msgctxt "T_BetaWarning"
 msgid ""
 "Note: This is a BETA version of Gpg4win.\n"
@@ -348,7 +348,7 @@ msgstr ""
 "\n"
 "  http://www.gpg4win.de/download-de.html  "
 
-#: src/installer.nsi:549
+#: src/installer.nsi:554
 msgctxt "T_AdminNeeded"
 msgid ""
 "Warning: Administrator permissions required for a successful installation"
@@ -356,7 +356,7 @@ msgstr ""
 "Achtung: Für eine erfolgreiche Installation werden Administratorrechte "
 "benötigt."
 
-#: src/installer.nsi:553
+#: src/installer.nsi:558
 msgctxt "T_CloseOtherApps"
 msgid ""
 "Please make sure that other applications are not running. In particular you "
@@ -369,12 +369,12 @@ msgstr ""
 "eine Installation durchzuführen; es ist dann aber u.U. notwendig, das System "
 "neu zu starten."
 
-#: src/installer.nsi:558
+#: src/installer.nsi:563
 msgctxt "T_ShuttingDownWinPT"
 msgid "Trying to shutdown a possible running instance of WinPT."
 msgstr "Ein möglicherweise laufendes WinPT wird jetzt automatisch beendet."
 
-#: src/installer.nsi:560
+#: src/installer.nsi:565
 msgctxt "T_ShuttingDownDirMngr"
 msgid "Trying to shutdown a possible running instance of DirMngr."
 msgstr "Ein möglicherweise laufender DirMngr wird jetzt automatisch beendet."
@@ -384,19 +384,19 @@ msgctxt "T_SetDefaultClient"
 msgid "Do you want to make Claws Mail your default mail client?"
 msgstr "Möchten Sie Claws-Mail als Ihr E-Mail-Standardprogramm auswählen?"
 
-#: src/inst-claws-mail.nsi:85
+#: src/inst-claws-mail.nsi:94
 msgctxt "DESC_SEC_claws_mail"
 msgid "Claws Mail-User-Agent"
 msgstr ""
 "Claws Mail ist ein vollständiges Mail- und News-Programm mit sehr guter "
 "Unterstützung für GnuPG."
 
-#: src/inst-claws-mail.nsi:88
+#: src/inst-claws-mail.nsi:97
 msgctxt "DESC_Menu_claws_mail"
 msgid "Run the Claws mailprogram."
 msgstr "Das Mailprogramm Claws Mail aufrufen."
 
-#: src/inst-claws-mail.nsi:91
+#: src/inst-claws-mail.nsi:100
 msgctxt "DESC_Menu_claws_mail_pdf"
 msgid "Show the online manual of Claws Mail"
 msgstr "Das englische Handbuch zu Claws Mail anzeigen"
