@@ -1,3 +1,7 @@
+2010-01-15  Colin Leroy  <colin@colino.net>
+
+	* packages/packages.current: Update libetpan, claws-mail and plugins.
+
 2010-01-13  Werner Koch  <wk@g10code.com>
 
 	* packages/packages.current: Update gpgol.

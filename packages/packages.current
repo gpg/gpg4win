@@ -90,8 +90,8 @@ chk  f9b6a1d6135ef0a57a5cdd9fcb3e82bc62a27dcd
 # (Kept on our own mirror due to Sourceforge peculiarities.)
 server http://www.claws-mail.org/win32
 
-file libetpan-0.57.tar.gz
-chk  7c4dfb78614c51e2ff4c9d7082b492f1c697f021
+file libetpan-0.58.tar.gz
+chk  98a5689bbe99dc77d689c2ea1e8294f217a3b49c
 
 #
 # curl for Claws plugins
@@ -127,36 +127,36 @@ chk  fe718884dd7ca0652613a2cb5c302ac6323605d8
 # (Kept on our own mirror due to Sourceforge peculiarities.)
 
 server http://www.claws-mail.org/win32
-file   claws-mail-3.7.3cvs54.tar.bz2
-chk    2c845295a694cf3b41b91c136bc4cf661d143c94
+file   claws-mail-3.7.4cvs1.tar.bz2
+chk    7dd53f05b0e2546f21496402a07dbf437071e735
 
 server http://www.claws-mail.org/win32
-file   attachwarner-0.2.17.tar.gz
-chk    65d92cfb41f48679cadc8fa8db17a55fdc0d6c0b
+file   attachwarner-0.2.18.tar.gz
+chk    385af974cd6b75df357f90ec4299922639fbabfa
 
 server http://www.claws-mail.org/win32
-file   bsfilter_plugin-1.0.2.tar.gz
-chk    d63faf92b02cb807f89221be17246a8d591b28cb
+file   bsfilter_plugin-1.0.3.tar.gz
+chk    2259b415556fef757ea16fd790946e6ebb0c0b9a
 
 server http://www.claws-mail.org/win32
-file   gtkhtml2_viewer-0.25cvs1.tar.gz
-chk    11bd73dfedeb5cd7243f491b0950e9a0ea120717
+file   gtkhtml2_viewer-0.26.tar.gz
+chk    47ec0054cfe163e27ada862a5d6dcd208d27c9e6
 
 server http://www.claws-mail.org/win32
-file   notification_plugin-0.23cvs11.tar.gz
-chk    0160943f7206ef2afd934f4b0a7fe4be271e9a5a
+file   notification_plugin-0.24.tar.gz
+chk    bd3aa9e3b3ec84dc01886fde777b3dd7e2fa90c9
 
 server http://www.claws-mail.org/win32
-file   rssyl-0.25cvs8.tar.gz
-chk    b0ccac7dd30ba4bd4da396970fc9ec35586592e3
+file   rssyl-0.26.tar.gz
+chk    efb796fd7c15d2cece1ede9b5d47411c0b9ecfc4
 
 server http://www.claws-mail.org/win32
-file   tnef_parse-0.3.6.tar.gz
-chk    117b5c225ccbf7feaac7e58c644245d7e461387c
+file   tnef_parse-0.3.7.tar.gz
+chk    24921cf6386f88dccaded782066726414417587d
 
 server http://www.claws-mail.org/win32
-file   vcalendar-2.0.6cvs1.tar.gz
-chk    24bb62c05485ebcc0c322f9686b567ec6e262952
+file   vcalendar-2.0.7.tar.gz
+chk    f193c1e089713c3d550a20ae002b18fc101fe0ab
 
 #
 # Pthreads for Windows.
