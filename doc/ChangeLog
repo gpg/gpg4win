@@ -1,3 +1,9 @@
+2010-01-21  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+
+	 * website/reporting-bugs-de.htm4, website/reporting-bugs.htm4: fixed
+	 link to the compendium subpage that has the problem seeking
+	 instructions.
+
 2009-09-29  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
 	 * website/versions.m4: Update Kleopatra version.
