@@ -1,0 +1,149 @@
+#! /bin/sh
+patch -p0 -f $* < $0
+exit $?
+
+2010-01-22  Werner Koch  <wk@g10code.com>
+
+	* w32-io.c (writer): Try to use send first.
+	(reader): Try to use recv first.
+
+
+--- src/w32-io.c	(revision 1445)
++++ src/w32-io.c	(working copy)
+@@ -49,6 +49,7 @@
+ #define handle_to_fd(a)  ((int)(a))
+ #define pid_to_handle(a) ((HANDLE)(a))
+ #define handle_to_pid(a) ((int)(a))
++#define handle_to_socket(a)  ((unsigned int)(a))
+ 
+ #define READBUF_SIZE 4096
+ #define WRITEBUF_SIZE 4096
+@@ -180,6 +181,7 @@
+   struct reader_context_s *ctx = arg;
+   int nbytes;
+   DWORD nread;
++  int try_recv = 1;
+   TRACE_BEG1 (DEBUG_SYSIO, "gpgme:reader", ctx->file_hd,
+ 	      "thread=%p", ctx->thread_hd);
+ 
+@@ -211,21 +213,52 @@
+       UNLOCK (ctx->mutex);
+       
+       TRACE_LOG1 ("reading %d bytes", nbytes);
+-      if (!ReadFile (ctx->file_hd,
+-		     ctx->buffer + ctx->writepos, nbytes, &nread, NULL))
+-	{
+-	  ctx->error_code = (int) GetLastError ();
+-	  if (ctx->error_code == ERROR_BROKEN_PIPE)
+-	    {
+-	      ctx->eof = 1;
+-	      TRACE_LOG ("got EOF (broken pipe)");
++
++      if (try_recv)
++        {
++          int n;
++
++          n = recv (handle_to_socket (ctx->file_hd),
++                    ctx->buffer + ctx->writepos, nbytes, 0);
++          if (n < 0 && WSAGetLastError () == WSAENOTSOCK)
++            try_recv = 0;
++          else if (n < 0)
++            {
++              ctx->error_code = (int) WSAGetLastError ();
++              if (ctx->error_code == ERROR_BROKEN_PIPE)
++                {
++                  ctx->eof = 1;
++                  TRACE_LOG ("got EOF (broken connection)");
++                }
++              else
++                {
++                  ctx->error = 1;
++                  TRACE_LOG1 ("recv error: ec=%d", ctx->error_code);
++                }
++              break;
+             }
+-	  else
+-	    {
+-	      ctx->error = 1;
+-	      TRACE_LOG1 ("read error: ec=%d", ctx->error_code);
++          else
++            nread = n;
++          
++        }
++      if (!try_recv)
++        {
++          if (!ReadFile (ctx->file_hd,
++                         ctx->buffer + ctx->writepos, nbytes, &nread, NULL))
++            {
++              ctx->error_code = (int) GetLastError ();
++              if (ctx->error_code == ERROR_BROKEN_PIPE)
++                {
++                  ctx->eof = 1;
++                  TRACE_LOG ("got EOF (broken pipe)");
++                }
++              else
++                {
++                  ctx->error = 1;
++                  TRACE_LOG1 ("read error: ec=%d", ctx->error_code);
++                }
++              break;
+             }
+-	  break;
+         }
+       if (!nread)
+ 	{
+@@ -507,6 +540,7 @@
+ {
+   struct writer_context_s *ctx = arg;
+   DWORD nwritten;
++  int try_send = 1;
+   TRACE_BEG1 (DEBUG_SYSIO, "gpgme:writer", ctx->file_hd,
+ 	      "thread=%p", ctx->thread_hd);
+ 
+@@ -541,14 +575,37 @@
+       /* Note that CTX->nbytes is not zero at this point, because
+ 	 _gpgme_io_write always writes at least 1 byte before waking
+ 	 us up, unless CTX->stop_me is true, which we catch above.  */
+-      if (!WriteFile (ctx->file_hd, ctx->buffer,
+-		      ctx->nbytes, &nwritten, NULL))
+-	{
+-	  ctx->error_code = (int) GetLastError ();
+-	  ctx->error = 1;
+-	  TRACE_LOG1 ("write error: ec=%d", ctx->error_code);
+-	  break;
+-	}
++      if (try_send)
++        {
++          /* We need to try send first because a socket handle can't
++             be used with WriteFile.  */
++          int n;
++          
++          n = send (handle_to_socket (ctx->file_hd),
++                    ctx->buffer, ctx->nbytes, 0);
++          if (n < 0 && WSAGetLastError () == WSAENOTSOCK)
++            try_send = 0;
++          else if (n < 0)
++            {
++              ctx->error_code = (int) WSAGetLastError ();
++              ctx->error = 1;
++              TRACE_LOG1 ("send error: ec=%d", ctx->error_code);
++              break;
++            }
++          else
++            nwritten = n;
++        }
++      if (!try_send)
++        {
++          if (!WriteFile (ctx->file_hd, ctx->buffer,
++                          ctx->nbytes, &nwritten, NULL))
++            {
++              ctx->error_code = (int) GetLastError ();
++              ctx->error = 1;
++              TRACE_LOG1 ("write error: ec=%d", ctx->error_code);
++              break;
++            }
++        }
+       TRACE_LOG1 ("wrote %d bytes", (int) nwritten);
+       
+       LOCK (ctx->mutex);
+

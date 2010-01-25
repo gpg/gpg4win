@@ -1,3 +1,8 @@
+2010-01-22  Werner Koch  <wk@g10code.com>
+
+	* patches/gpgme-1.2.0/03-w32-socket.patch: New.
+	* Makefile.am (EXTRA_DIST): Add it.
+
 2010-01-15  Colin Leroy  <colin@colino.net>
 
 	* packages/packages.current: Update libetpan, claws-mail and plugins.
