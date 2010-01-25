@@ -6,6 +6,7 @@ exit $?
 
 	* w32-io.c (writer): Try to use send first.
 	(reader): Try to use recv first.
+        (_gpgme_io_connect): Fix return code check to make it work.
 
 
 --- src/w32-io.c	(revision 1445)
@@ -146,4 +147,13 @@ exit $?
        TRACE_LOG1 ("wrote %d bytes", (int) nwritten);
        
        LOCK (ctx->mutex);
+@@ -1563,7 +1620,7 @@
+              "addr=%p, addrlen=%i", addr, addrlen);
+ 
+   res = connect (fd, addr, addrlen);
+-  if (!res)
++  if (res)
+     {
+       errno = wsa2errno (WSAGetLastError ());
+       return TRACE_SYSRES (-1);
 
