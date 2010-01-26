@@ -1,3 +1,8 @@
+2010-01-26  Werner Koch  <wk@g10code.com>
+
+	* patches/gnupg2-2.0.14/01-encode-s2k.patch: New.
+	* Makefile.am (EXTRA_DIST): Add it.
+
 2010-01-25  Werner Koch  <wk@g10code.com>
 
 	* patches/gpgme-1.2.0/03-w32-socket.patch: Fix patch.
