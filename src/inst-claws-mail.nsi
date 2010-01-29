@@ -27,7 +27,7 @@ LangString T_SetDefaultClient ${LANG_ENGLISH} \
      "Do you want to make Claws Mail your default mail client?"
      
 
-${MementoSection} "Claws-Mail" SEC_claws_mail
+${MementoUnselectedSection} "Claws-Mail" SEC_claws_mail
   SetOutPath "$INSTDIR"
 !ifdef SOURCES
   File "${gpg4win_pkg_claws_mail}"

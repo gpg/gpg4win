@@ -1,3 +1,7 @@
+2010-01-29  Colin Leroy  <colin@colino.net>
+
+	* src/inst-claws-mail.nsi: Don't install Claws Mail by default.
+
 2010-01-26  Werner Koch  <wk@g10code.com>
 
 	* patches/gnupg2-2.0.14/01-encode-s2k.patch: New.
