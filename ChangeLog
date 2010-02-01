@@ -1,5 +1,6 @@
 2010-02-01  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
+	* NEWS: Update claws and kleaopatra.
 	* packages/packages.current: Update new oxygen, kdelibs (debug!) 
 	  and kleoaptra (debug!) packages
 	* src/inst-oxygen-icons.nsi: Update oxygen icons.
