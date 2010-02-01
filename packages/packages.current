@@ -450,7 +450,7 @@ chk 2fa67502e00872d5e3ece1682d71383ca8cbf1e0
 
 server http://files.kolab.org/local/gpg4win
 
-name oxygen-icons-20100201-bin.zip
+file oxygen-icons-20100201-bin.zip
 chk  5db34fe34885e58e1c925877faa1b4003ccda081
 
 file oxygen-icons-20100201-src.zip
