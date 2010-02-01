@@ -97,10 +97,9 @@ msgstr "de"
 msgctxt "T_GPLHeader"
 msgid ""
 "This software is licensed under the terms of the GNU General Public License "
-"(GPL) which guarantees your freedom to share and change Free Software."
+"(GPL)."
 msgstr ""
-"Diese Software ist unter der GNU General Public License (GPL) lizensiert; "
-"dies gibt Ihnen die Freiheit, sie zu ändern und weiterzugeben."
+"Diese Software ist unter der GNU General Public License (GPL) lizensiert."
 
 #: src/installer.nsi:234
 msgctxt "T_GPLShort"

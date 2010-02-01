@@ -1,3 +1,8 @@
+2010-02-01  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+
+        * ar.po, de.po, es.po, fr.po, ru.po (T_GPLHeader): 
+ 	Abridge GPL header to display bigger header image.
+
 2009-09-28  Comisión Rectoría  <rectoria@hanaq.org>  (wk)
 
 	* es.po (T_FoundExistingOldVersion): Fix translation.
@@ -119,4 +124,5 @@
 	* Makefile.in.in: New file, from gettext-0.16.1.
 	* remove-potcdate.sin: New file, from gettext-0.16.1.
 	* POTFILES.in: New file.
+M      de.po
 
