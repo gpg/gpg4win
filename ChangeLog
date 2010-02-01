@@ -1,3 +1,7 @@
+2010-02-01  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+
+	* src/installer.nsi: Abridge GPL header for display bigger header image.
+
 2010-01-29  Colin Leroy  <colin@colino.net>
 
 	* src/inst-claws-mail.nsi: Don't install Claws Mail by default.

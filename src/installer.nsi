@@ -228,8 +228,7 @@ LangString T_LangCode ${LANG_ENGLISH} "en"
 # Startup page
 LangString T_GPLHeader ${LANG_ENGLISH} \
   "This software is licensed under the terms of the GNU General Public \
-   License (GPL) which guarantees your freedom to share and change Free \
-   Software."
+   License (GPL)."
 
 LangString T_GPLShort ${LANG_ENGLISH} \
   "In short: You are allowed to run this software for any purpose. \
