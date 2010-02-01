@@ -1,5 +1,9 @@
 2010-02-01  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
+	* packages/packages.current: Update new oxygen, kdelibs (debug!) 
+	  and kleoaptra (debug!) packages
+	* src/inst-oxygen-icons.nsi: Update oxygen icons.
+	* src/kleopatra.nsi: Remove desktop file.
 	* src/installer.nsi: Abridge GPL header for display bigger header image.
 
 2010-01-29  Colin Leroy  <colin@colino.net>

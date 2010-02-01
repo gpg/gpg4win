@@ -448,14 +448,13 @@ chk 2fa67502e00872d5e3ece1682d71383ca8cbf1e0
 #
 # Source package is identical to binary package.
 
-server ftp://ftp.kdab.net/pub/gpg4win
+server http://files.kolab.org/local/gpg4win
 
-name oxygen-icons-20080526-bin.zip
-file oxygen-icons-20080526.zip
-chk  86c68eef7ac8231124d5b594a65b9518b5450237
+name oxygen-icons-20100201-bin.zip
+chk  5db34fe34885e58e1c925877faa1b4003ccda081
 
-file oxygen-icons-20080526-src.zip
-chk  a4e673c1b1b1cc420e771413edc53ef89fe7773a
+file oxygen-icons-20100201-src.zip
+chk  507836a661a663dedf8b8fc5b4df972d38c331df
 
 
 #
@@ -464,17 +463,17 @@ chk  a4e673c1b1b1cc420e771413edc53ef89fe7773a
 #
 server http://files.kolab.org/local/gpg4win
 
-file kdelibs-20091207-bin.zip
-chk  1401415caaa1b56e579890bee37d02e9f8fcfae9
+file kdelibs-20100201-bin.zip
+chk  6c243a9f89234a7d2230ab02902df52d25221f30
 
-file kdelibs-20091207-lib.zip
-chk  3ed16fd23dcc9a5f5ab6c954b2f05d2a53e1055c
+file kdelibs-20100201-lib.zip
+chk  c1b64a36f9c28015f46e68834d31a9db352ca153
 
-file kdelibs-20091207-src.zip
-chk  b08ab06f22a6173b916a96b01135353a1b418315
+file kdelibs-20100201-src.zip
+chk  0d9f1bec04d15c3e8746eb2c7cfca609fd40f680
 
-file kleopatra-20091207-bin.zip
-chk  d9e034f1165bc4a2d68d8023a64b472f08b58424
+file kleopatra-20100201-bin.zip
+chk  59ca3151c91aef3f0a3aae81d15075e2b3c6d53d
 
-file kleopatra-20091207-src.zip
-chk  5b4e90d538640c0a7a44f95193daf9cc868d057c
+file kleopatra-20100201-src.zip
+chk  0287d8cce4953237aa59f22f6798769733a79c06

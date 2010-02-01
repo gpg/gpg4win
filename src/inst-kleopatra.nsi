@@ -113,7 +113,6 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
 
   File ${prefix}/share/kde4/services/kleopatra_config_appear.desktop
   File ${prefix}/share/kde4/services/kleopatra_config_dirserv.desktop
-  File ${prefix}/share/kde4/services/kleopatra_config_dnorder.desktop
   File ${prefix}/share/kde4/services/kleopatra_config_smimevalidation.desktop
   File ${prefix}/share/kde4/services/kleopatra_config_gnupgsystem.desktop
   File ${prefix}/share/kde4/services/kleopatra_signencryptfolders.desktop
