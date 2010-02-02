@@ -1,3 +1,8 @@
+2010-02-02  Colin Leroy  <colin@colino.net>
+
+	* patches/claws-mail-3.7.4cvs1/01-bug_2098.patch: Add patch from 
+	upstream to fix double-free crash on PGP core. 
+
 2010-02-02  Werner Koch  <wk@g10code.com>
 
 	* src/gpg4win.mk.in (README.$(1).txt): Implement beta-warning hack.
