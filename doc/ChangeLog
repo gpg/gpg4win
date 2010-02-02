@@ -1,3 +1,8 @@
+2010-02-02  Werner Koch  <wk@g10code.com>
+
+	* beta-warning.txt: New.
+	* README.en.txt, README.de.txt: Add Beta warning tag.
+
 2010-02-01  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
  
 	 * logo/gpg4win-nsis-wizard-uninstall-164x314.bmp: Update image.

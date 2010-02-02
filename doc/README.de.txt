@@ -7,7 +7,7 @@
 
                   Deutsche README Datei für Gpg4win
                   =================================
-
+!BETA-WARNING!
 Dies ist Gpg4win, Version !VERSION!.
 
 Inhalt:

@@ -6,7 +6,7 @@
 
                    English README file for Gpg4win
                    ===============================
-
+!BETA-WARNING!
 +++ You are welcome to translate this file into French!
 Please contact the Gpg4win developer mailing list for contributing
 and look at http://gpg4win.de/localize-gpg4win.html +++

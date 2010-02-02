@@ -6,7 +6,7 @@
 
                    English README file for Gpg4win
                    ===============================
-
+!BETA-WARNING!
 This is Gpg4win, version !VERSION!.
 
 Content:
