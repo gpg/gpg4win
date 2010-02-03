@@ -1,6 +1,6 @@
-2010-02-01  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+2010-02-03  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
-	* packages/packages.current: Update kdelibs and kleopatra
+	* packages/packages.current, NEWS: Update kdelibs and kleopatra
 
 2010-02-02  Colin Leroy  <colin@colino.net>
 
