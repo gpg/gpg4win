@@ -1,3 +1,7 @@
+2010-02-03  Werner Koch  <wk@g10code.com>
+
+	Release 2.0.2rc1.
+
 2010-02-03  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
 	* packages/packages.current, NEWS: Update kdelibs and kleopatra
