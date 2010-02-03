@@ -463,17 +463,17 @@ chk  507836a661a663dedf8b8fc5b4df972d38c331df
 #
 server http://files.kolab.org/local/gpg4win
 
-file kdelibs-20100201-bin.zip
-chk  6c243a9f89234a7d2230ab02902df52d25221f30
+file kdelibs-20100202-bin.zip
+chk  404ecdccfae59e1aa4f32ce597ec8a2e55bc8d87
 
-file kdelibs-20100201-lib.zip
-chk  c1b64a36f9c28015f46e68834d31a9db352ca153
+file kdelibs-20100202-lib.zip
+chk  07b679ad81ceb49e2ec4ba8fa6e61d12851a989f 
 
-file kdelibs-20100201-src.zip
-chk  0d9f1bec04d15c3e8746eb2c7cfca609fd40f680
+file kdelibs-20100202-src.zip
+chk  22a9898b36b949cc9161c8e9ca3158d1a6ba1794 
 
-file kleopatra-20100201-bin.zip
-chk  59ca3151c91aef3f0a3aae81d15075e2b3c6d53d
+file kleopatra-20100202-bin.zip
+chk  f95d4410eb1ca03c2230116520d2f3cbb4bd217c
 
-file kleopatra-20100201-src.zip
-chk  0287d8cce4953237aa59f22f6798769733a79c06
+file kleopatra-20100202-src.zip
+chk  05b7c4ac6121e5d38c8c01425fc954766c193289 
