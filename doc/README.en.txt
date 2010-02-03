@@ -97,9 +97,10 @@ of the most important ones:
        - Run "gpg --card-status".
 
    * X.509 Telesec Netkey 3 card
-     Use the gpgsm command line tool to initializing your card:
+     Use Kleopatra to initializing your card:
      - Insert card.
-     - Run "gpgsm --learn-card".
+     - Click at the Kleopatra systemtray icon (or use the context menu of
+       the systemtray icon and run the learn card command).
 
    After finishing these steps your OpenPGP / X.509 certificate
    from your smart card is shown in Kleopatra under the tab
@@ -127,8 +128,14 @@ of the most important ones:
     does not yet work.
 
 - Using GpgEX with Windows x64:
+  
+   * In some cases sign/encrypt or decrypt/verify via GpgEX doesn't work 
+     correctly (Kleopatra freezed). Then you should kill Kleopatra via 
+     task manager and run the file crypto operation directly in Kleopatra
+     (see file menu).
 
-   * GpgEX is a (32bit) plugin for the (32bit) Windows
+   * Problems with Windows x64:
+     GpgEX is a (32bit) plugin for the (32bit) Windows
      Explorer and it does _not_ run in a 64bit Explorer
      (= default for a Windows 64bit system).
 
@@ -139,6 +146,13 @@ of the most important ones:
      Note: Adjust the path to your x64-based version of Windows if
      necessary.
 
+- sign/encrypt files with archive function:
+
+   * The new Kleopatra function to sign/encrypt files as archive
+     is currently not full implemented. It's for testing for 
+     expert users only. An extra archive application is required.
+     Configure the pack command in the config file of Kleopatra:
+     	C:\Programme\GNU\GnuPG\share\config\libkleopatrarc
 
 4. Version History
 ==================

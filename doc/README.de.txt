@@ -106,10 +106,11 @@ sich. Nachstehend die wichtigsten Änderungen:
        - Führen Sie "gpg --card-status" auf der Kommandozeile aus.
 
    * X.509 Telesec Netkey 3 Karte
-     Verwenden Sie das gpgsm-Kommandozeilen-Werkzeug, um Ihre Karte
-     (einmalig) zu initialisieren:
+     Verwenden Sie Kleopatra, um Ihre Karte (einmalig) zu initialisieren:
      - Karte einlegen.
-     - Führen Sie "gpgsm --learn-card" aus.
+     - Auf das blinkende Kleopatra-Smartcard-Systemtray-Icon klicken 
+       (oder diret das Systemtray-Kontextmenü "Smartcard" aufrufen und dort
+        den Punkt "LearnCard"-Befehl aufrufen).
 
    Anschließend wird Ihr OpenPGP- bzw. X.509-Smartcard-Zertifikat in
    Kleopatra unter dem Reiter "Meine Zertifikate" angezeigt (markiert mit
@@ -138,9 +139,17 @@ sich. Nachstehend die wichtigsten Änderungen:
   * Senden von signierten oder verschlüsselten Nachrichten über ein
     Exchange basiertes Konto funktioniert nicht.
 
-- Verwendung von GpgEX unter Windows x64:
+- Verwendung von GpgEX:
+  
+   * Es kann teilweise vorkommen, dass beim Versuch Dateien mit GpgEX 
+     aus dem Explorer zu signieren/verschlüsseln bzw. zu entschlüsseln/prüfen, 
+     Kleopatra und das aktive Explorerfenster nicht mehr reagiert. 
+     Sie sollten Kleopatra dann über den Task-Manager beendet und die 
+     Datei-Krypto-Opteration nicht über GpgEX sondern direkt über 
+     Kleopatra (per Datei-Menü) ausführen.
 
-   * GpgEX ist eine (32bit) Erweiterung für den (32bit) Windows
+   * Probleme unter Windows x64:
+     GpgEX ist eine (32bit) Erweiterung für den (32bit) Windows
      Explorer und läuft _nicht_ in einem 64bit Explorer
      (= voreingestellter Explorer in einem Windows 64bit System).
 
@@ -150,6 +159,15 @@ sich. Nachstehend die wichtigsten Änderungen:
          C:\windows\syswow64\explorer.exe /separate
      Beachten Sie, dass Sie ggf. den Pfad zu Ihrer x64-basierten 
      Version von Windows anpassen müssen.
+
+- Dateien signieren/verschlüsseln mit Archiv-Funktion:
+
+   * Die Kleopatra-Funktion zum Signieren/Verschlüsseln 
+     mehrerer Dateien als ein Archiv ist derzeit noch nicht 
+     voll funktionsfähig und nur zum Testen für erfahrene Nutzer geeignet. 
+     Es wird ein separates Packprogramm benötigt; die Konfiguration 
+     des Pack-Befehls muss über die Konfigruationsdatei von Kleopatra erfolgen:
+     	C:\Programme\GNU\GnuPG\share\config\libkleopatrarc
 
 
 4. Versionshistorie
