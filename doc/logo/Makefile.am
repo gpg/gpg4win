@@ -14,14 +14,18 @@
 # GNU General Public License for more details.
 # 
 # You should have received a copy of the GNU General Public License
-# along with this program; if not, write to the Free Software
-# Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
+# along with this program; if not, see <http://www.gnu.org/licenses/>.
 
 EXTRA_DIST = gpg4win-logo.eps         \
              gpg4win-logo-400px.png   \
              gpg4win-logo-400px.bmp   \
              gpg4win-logo-favicon.bmp \
              gpg4win-logo-icon.ico \
-             gpg4win-logo-164x314.bmp
-
+             gpg4win-logo-164x314.bmp \
+             gpg4win-nsis-header-install-150x57.bmp    \
+             gpg4win-nsis-header-uninstall-150x57.bmp  \
+             gpg4win-nsis-install.ico		       \
+             gpg4win-nsis-uninstall.ico		       \
+             gpg4win-nsis-wizard-install-164x314.bmp   \
+             gpg4win-nsis-wizard-uninstall-164x314.bmp
 
