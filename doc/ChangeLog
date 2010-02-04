@@ -1,3 +1,9 @@
+2010-02-04  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+
+	 * website/index.htm4, website/index-de.htm4,
+	 website/download.htm4, website/download-de.htm4,
+	 website/tmeplate_header.m4: Update for 2.0.2-rc1 release
+
 2010-02-03  Werner Koch  <wk@g10code.com>
 
 	* logo/Makefile.am (EXTRA_DIST): Add missing nsis icons.

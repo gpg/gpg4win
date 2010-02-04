@@ -10,6 +10,9 @@ PAGE_START
 <p>
 <dl>
 
+<dt><b>+++ 20100204 Gpg4win 2.0.2 RC1 released +++</b></dt>
+<dd>with a lot of improvements in Kleopatra, GpgOL and GnuPG.</dd>.
+
 <dt><b>+++ 20090928 Gpg4win 2.0.1 released +++</b></dt>
 <dd>This is basically the same as the release 2.0.1 candidate.
 See the <a
