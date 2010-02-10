@@ -40,7 +40,6 @@ Section "-kdelibs" SEC_kdelibs
   SetOutPath "$INSTDIR"
 
   File ${prefix}/bin/libgpgme++-glib.dll
-  File ${prefix}/bin/libgpgme++-qt.dll
   File ${prefix}/bin/libgpgme++.dll
   File ${prefix}/bin/libkdecore.dll
   File ${prefix}/bin/libkdeui.dll

@@ -1,5 +1,7 @@
 2010-02-10  Marcus Brinkmann  <marcus@g10code.de>
 
+	* src/inst-kdelibs.nsi: Remove ${prefix}/bin/libgpgme++-qt.dll.
+
 	* patches/gpgex-0.9.5/01-default-no-suffix.patch: Add patch.
 	* Makefile.am (EXTRA_DIST): Add this and remove gpgex-0.9.3 patches.
 
