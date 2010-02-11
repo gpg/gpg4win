@@ -258,7 +258,7 @@ chk  d063e705812e1ee7feb8f35d51b3cad04ca13b0d
 
 # PNG
 
-server http://dfn.dl.sourceforge.net/sourceforge/libpng
+server http://kent.dl.sourceforge.net/project/libpng/00-libpng-stable/1.2.40
 
 file libpng-1.2.40.tar.gz
 chk  a3f2df01871da15d66f103a5b4e793601e4d1043
