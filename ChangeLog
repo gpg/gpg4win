@@ -1,3 +1,8 @@
+2010-02-19  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+	* src/uninst-oxygen-icons.nsi, src/inst-oxygen-icons.nsi,
+ 	  packages/packages.current: Update oxygen icons.
+
+
 2010-02-11  Marc Mutz <marc@kdab.com>
 
 	* packages/packages.current: Use a different sf.net mirror.
