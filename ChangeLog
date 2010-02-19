@@ -2,6 +2,8 @@
 	* src/uninst-oxygen-icons.nsi, src/inst-oxygen-icons.nsi,
  	  packages/packages.current: Update oxygen icons.
 
+	* src/uninst-kleopatra.nsi, src/inst-kleopatra.nsi,
+ 	  packages/packages.current: Update kdelibs and kleoaptra.
 
 2010-02-11  Marc Mutz <marc@kdab.com>
 

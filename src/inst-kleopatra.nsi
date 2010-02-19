@@ -120,6 +120,85 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
   File ${prefix}/share/kde4/services/kleopatra_signencryptfiles.desktop
   File ${prefix}/share/kde4/services/kleopatra_decryptverifyfiles.desktop
 
+SetOutPath "$INSTDIR\share\doc\HTML\common"
+
+  File ${prefix}/share/doc/HTML/common/1.png
+  File ${prefix}/share/doc/HTML/common/10.png
+  File ${prefix}/share/doc/HTML/common/2.png
+  File ${prefix}/share/doc/HTML/common/3.png
+  File ${prefix}/share/doc/HTML/common/4.png
+  File ${prefix}/share/doc/HTML/common/5.png
+  File ${prefix}/share/doc/HTML/common/6.png
+  File ${prefix}/share/doc/HTML/common/7.png
+  File ${prefix}/share/doc/HTML/common/8.png
+  File ${prefix}/share/doc/HTML/common/9.png
+  File ${prefix}/share/doc/HTML/common/CMakeLists.txt
+  File ${prefix}/share/doc/HTML/common/Doxyfile.global
+  File ${prefix}/share/doc/HTML/common/README.Doxygen
+  File ${prefix}/share/doc/HTML/common/artistic-license.html
+  File ${prefix}/share/doc/HTML/common/block_title_bottom.png
+  File ${prefix}/share/doc/HTML/common/block_title_mid.png
+  File ${prefix}/share/doc/HTML/common/block_title_top.png
+  File ${prefix}/share/doc/HTML/common/bottom-left.png
+  File ${prefix}/share/doc/HTML/common/bottom-middle.png
+  File ${prefix}/share/doc/HTML/common/bottom-right.png
+  File ${prefix}/share/doc/HTML/common/bsd-license.html
+  File ${prefix}/share/doc/HTML/common/doxygen.css
+  File ${prefix}/share/doc/HTML/common/favicon.ico
+  File ${prefix}/share/doc/HTML/common/fdl-license
+  File ${prefix}/share/doc/HTML/common/fdl-license.html
+  File ${prefix}/share/doc/HTML/common/fdl-notice.html
+  File ${prefix}/share/doc/HTML/common/flat.css
+  File ${prefix}/share/doc/HTML/common/footer.html
+  File ${prefix}/share/doc/HTML/common/gpl-license
+  File ${prefix}/share/doc/HTML/common/gpl-license.html
+  File ${prefix}/share/doc/HTML/common/header.html
+  File ${prefix}/share/doc/HTML/common/kde-default.css
+  File ${prefix}/share/doc/HTML/common/kde-docs.css
+  File ${prefix}/share/doc/HTML/common/kde-localised.css.template
+  File ${prefix}/share/doc/HTML/common/kde.css
+  File ${prefix}/share/doc/HTML/common/kde_logo.png
+  File ${prefix}/share/doc/HTML/common/kde_logo_bg.png
+  File ${prefix}/share/doc/HTML/common/lgpl-license
+  File ${prefix}/share/doc/HTML/common/lgpl-license.html
+  File ${prefix}/share/doc/HTML/common/mainfooter.html
+  File ${prefix}/share/doc/HTML/common/mainheader.html
+  File ${prefix}/share/doc/HTML/common/print.css
+  File ${prefix}/share/doc/HTML/common/qpl-license.html
+  File ${prefix}/share/doc/HTML/common/tabs.css
+  File ${prefix}/share/doc/HTML/common/top-kde.jpg
+  File ${prefix}/share/doc/HTML/common/top-left.jpg
+  File ${prefix}/share/doc/HTML/common/top-left.png
+  File ${prefix}/share/doc/HTML/common/top-middle.png
+  File ${prefix}/share/doc/HTML/common/top-right.jpg
+  File ${prefix}/share/doc/HTML/common/top-right.png
+  File ${prefix}/share/doc/HTML/common/top.jpg
+  File ${prefix}/share/doc/HTML/common/x11-license.html
+  File ${prefix}/share/doc/HTML/common/xml.dcl
+
+  SetOutPath "$INSTDIR\share\doc\HTML\de\kleopatra"
+
+  File ${prefix}/share/doc/HTML/de/kleopatra/admin-key-filters.html
+  File ${prefix}/share/doc/HTML/de/kleopatra/admin.html
+  File ${prefix}/share/doc/HTML/de/kleopatra/commandline-options.html
+  File ${prefix}/share/doc/HTML/de/kleopatra/configuration-appearance.html
+  File ${prefix}/share/doc/HTML/de/kleopatra/configuration-dn-order.html
+  File ${prefix}/share/doc/HTML/de/kleopatra/configuration.html
+  File ${prefix}/share/doc/HTML/de/kleopatra/credits-and-license.html
+  File ${prefix}/share/doc/HTML/de/kleopatra/functions-keybox-management.html
+  File ${prefix}/share/doc/HTML/de/kleopatra/functions-newkey.html
+  File ${prefix}/share/doc/HTML/de/kleopatra/functions-search.html
+  File ${prefix}/share/doc/HTML/de/kleopatra/functions.html
+  File ${prefix}/share/doc/HTML/de/kleopatra/index.html
+  File ${prefix}/share/doc/HTML/de/kleopatra/introduction.html
+  File ${prefix}/share/doc/HTML/de/kleopatra/menu.html
+  File ${prefix}/share/doc/HTML/de/kleopatra/menucertificates.html
+  File ${prefix}/share/doc/HTML/de/kleopatra/menucrls.html
+  File ${prefix}/share/doc/HTML/de/kleopatra/menuhelp.html
+  File ${prefix}/share/doc/HTML/de/kleopatra/menusettings.html
+  File ${prefix}/share/doc/HTML/de/kleopatra/menutools.html
+  File ${prefix}/share/doc/HTML/de/kleopatra/menuview.html
+
   SetOutPath "$INSTDIR\share\doc\HTML\en\kleopatra"
 
   File ${prefix}/share/doc/HTML/en/kleopatra/admin-key-filters.html
@@ -133,7 +212,6 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
   File ${prefix}/share/doc/HTML/en/kleopatra/functions-newkey.html
   File ${prefix}/share/doc/HTML/en/kleopatra/functions-search.html
   File ${prefix}/share/doc/HTML/en/kleopatra/functions.html
-  File ${prefix}/share/doc/HTML/en/kleopatra/index.docbook
   File ${prefix}/share/doc/HTML/en/kleopatra/index.html
   File ${prefix}/share/doc/HTML/en/kleopatra/introduction.html
   File ${prefix}/share/doc/HTML/en/kleopatra/menu.html
@@ -144,56 +222,6 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
   File ${prefix}/share/doc/HTML/en/kleopatra/menuview.html
   File ${prefix}/share/doc/HTML/en/kleopatra/menuwindow.html
 
-  SetOutPath "$INSTDIR\share\doc\HTML\en\kleopatra\common"
-
-  File ${prefix}/share/doc/HTML/en/kleopatra/common/1.png
-  File ${prefix}/share/doc/HTML/en/kleopatra/common/10.png
-  File ${prefix}/share/doc/HTML/en/kleopatra/common/2.png
-  File ${prefix}/share/doc/HTML/en/kleopatra/common/3.png
-  File ${prefix}/share/doc/HTML/en/kleopatra/common/4.png
-  File ${prefix}/share/doc/HTML/en/kleopatra/common/5.png
-  File ${prefix}/share/doc/HTML/en/kleopatra/common/6.png
-  File ${prefix}/share/doc/HTML/en/kleopatra/common/7.png
-  File ${prefix}/share/doc/HTML/en/kleopatra/common/8.png
-  File ${prefix}/share/doc/HTML/en/kleopatra/common/9.png
-  File ${prefix}/share/doc/HTML/en/kleopatra/common/artistic-license.html
-  File ${prefix}/share/doc/HTML/en/kleopatra/common/block_title_bottom.png
-  File ${prefix}/share/doc/HTML/en/kleopatra/common/block_title_mid.png
-  File ${prefix}/share/doc/HTML/en/kleopatra/common/block_title_top.png
-  File ${prefix}/share/doc/HTML/en/kleopatra/common/bottom-left.png
-  File ${prefix}/share/doc/HTML/en/kleopatra/common/bottom-middle.png
-  File ${prefix}/share/doc/HTML/en/kleopatra/common/bottom-right.png
-  File ${prefix}/share/doc/HTML/en/kleopatra/common/bsd-license.html
-  File ${prefix}/share/doc/HTML/en/kleopatra/common/doxygen.css
-  File ${prefix}/share/doc/HTML/en/kleopatra/common/favicon.ico
-  File ${prefix}/share/doc/HTML/en/kleopatra/common/fdl-license
-  File ${prefix}/share/doc/HTML/en/kleopatra/common/fdl-license.html
-  File ${prefix}/share/doc/HTML/en/kleopatra/common/fdl-notice.html
-  File ${prefix}/share/doc/HTML/en/kleopatra/common/flat.css
-  File ${prefix}/share/doc/HTML/en/kleopatra/common/footer.html
-  File ${prefix}/share/doc/HTML/en/kleopatra/common/gpl-license
-  File ${prefix}/share/doc/HTML/en/kleopatra/common/gpl-license.html
-  File ${prefix}/share/doc/HTML/en/kleopatra/common/header.html
-  File ${prefix}/share/doc/HTML/en/kleopatra/common/kde-default.css
-  File ${prefix}/share/doc/HTML/en/kleopatra/common/kde.css
-  File ${prefix}/share/doc/HTML/en/kleopatra/common/kde_logo.png
-  File ${prefix}/share/doc/HTML/en/kleopatra/common/kde_logo_bg.png
-  File ${prefix}/share/doc/HTML/en/kleopatra/common/lgpl-license
-  File ${prefix}/share/doc/HTML/en/kleopatra/common/lgpl-license.html
-  File ${prefix}/share/doc/HTML/en/kleopatra/common/mainfooter.html
-  File ${prefix}/share/doc/HTML/en/kleopatra/common/mainheader.html
-  File ${prefix}/share/doc/HTML/en/kleopatra/common/print.css
-  File ${prefix}/share/doc/HTML/en/kleopatra/common/qpl-license.html
-  File ${prefix}/share/doc/HTML/en/kleopatra/common/tabs.css
-  File ${prefix}/share/doc/HTML/en/kleopatra/common/top-kde.jpg
-  File ${prefix}/share/doc/HTML/en/kleopatra/common/top-left.jpg
-  File ${prefix}/share/doc/HTML/en/kleopatra/common/top-left.png
-  File ${prefix}/share/doc/HTML/en/kleopatra/common/top-middle.png
-  File ${prefix}/share/doc/HTML/en/kleopatra/common/top-right.jpg
-  File ${prefix}/share/doc/HTML/en/kleopatra/common/top-right.png
-  File ${prefix}/share/doc/HTML/en/kleopatra/common/top.jpg
-  File ${prefix}/share/doc/HTML/en/kleopatra/common/x11-license.html
-  File ${prefix}/share/doc/HTML/en/kleopatra/common/xml.dcl
 
 !endif
 ${MementoSectionEnd}
