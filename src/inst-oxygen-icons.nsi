@@ -64,6 +64,10 @@ Section "-oxygen-icons" SEC_oxygen_icons
   File ${prefix}/share/icons/oxygen/128x128/categories/applications-graphics.png
   File ${prefix}/share/icons/oxygen/128x128/categories/preferences-system-network.png
 
+  SetOutPath "$INSTDIR\share\icons\oxygen\128x128\devices"
+
+  File ${prefix}/share/icons/oxygen/128x128/devices/secure-card.png
+
   SetOutPath "$INSTDIR\share\icons\oxygen\128x128\status"
 
   File ${prefix}/share/icons/oxygen/128x128/status/dialog-error.png
@@ -129,6 +133,10 @@ Section "-oxygen-icons" SEC_oxygen_icons
   File ${prefix}/share/icons/oxygen/16x16/actions/view-refresh.png
   File ${prefix}/share/icons/oxygen/16x16/actions/window-close.png
 
+  SetOutPath "$INSTDIR\share\icons\oxygen\16x16\animations"
+
+  File ${prefix}/share/icons/oxygen/16x16/animations/process-working-kde.png
+
   SetOutPath "$INSTDIR\share\icons\oxygen\16x16\apps"
 
   File ${prefix}/share/icons/oxygen/16x16/apps/kde.png
@@ -137,6 +145,10 @@ Section "-oxygen-icons" SEC_oxygen_icons
 
   File ${prefix}/share/icons/oxygen/16x16/categories/applications-graphics.png
   File ${prefix}/share/icons/oxygen/16x16/categories/preferences-system-network.png
+
+  SetOutPath "$INSTDIR\share\icons\oxygen\16x16\devices"
+
+  File ${prefix}/share/icons/oxygen/16x16/devices/secure-card.png
 
   SetOutPath "$INSTDIR\share\icons\oxygen\16x16\status"
 
@@ -203,6 +215,10 @@ Section "-oxygen-icons" SEC_oxygen_icons
   File ${prefix}/share/icons/oxygen/22x22/actions/view-refresh.png
   File ${prefix}/share/icons/oxygen/22x22/actions/window-close.png
 
+  SetOutPath "$INSTDIR\share\icons\oxygen\22x22\animations"
+
+  File ${prefix}/share/icons/oxygen/22x22/animations/process-working-kde.png
+
   SetOutPath "$INSTDIR\share\icons\oxygen\22x22\apps"
 
   File ${prefix}/share/icons/oxygen/22x22/apps/kde.png
@@ -211,6 +227,10 @@ Section "-oxygen-icons" SEC_oxygen_icons
 
   File ${prefix}/share/icons/oxygen/22x22/categories/applications-graphics.png
   File ${prefix}/share/icons/oxygen/22x22/categories/preferences-system-network.png
+
+  SetOutPath "$INSTDIR\share\icons\oxygen\22x22\devices"
+
+  File ${prefix}/share/icons/oxygen/22x22/devices/secure-card.png
 
   SetOutPath "$INSTDIR\share\icons\oxygen\22x22\status"
 
@@ -226,6 +246,10 @@ Section "-oxygen-icons" SEC_oxygen_icons
 
   File ${prefix}/share/icons/oxygen/256x256/categories/applications-graphics.png
   File ${prefix}/share/icons/oxygen/256x256/categories/preferences-system-network.png
+
+  SetOutPath "$INSTDIR\share\icons\oxygen\256x256\devices"
+
+  File ${prefix}/share/icons/oxygen/256x256/devices/secure-card.png
 
   SetOutPath "$INSTDIR\share\icons\oxygen\32x32\actions"
 
@@ -282,6 +306,10 @@ Section "-oxygen-icons" SEC_oxygen_icons
   File ${prefix}/share/icons/oxygen/32x32/actions/view-refresh.png
   File ${prefix}/share/icons/oxygen/32x32/actions/window-close.png
 
+  SetOutPath "$INSTDIR\share\icons\oxygen\32x32\animations"
+
+  File ${prefix}/share/icons/oxygen/32x32/animations/process-working-kde.png
+
   SetOutPath "$INSTDIR\share\icons\oxygen\32x32\apps"
 
   File ${prefix}/share/icons/oxygen/32x32/apps/kde.png
@@ -290,6 +318,10 @@ Section "-oxygen-icons" SEC_oxygen_icons
 
   File ${prefix}/share/icons/oxygen/32x32/categories/applications-graphics.png
   File ${prefix}/share/icons/oxygen/32x32/categories/preferences-system-network.png
+
+  SetOutPath "$INSTDIR\share\icons\oxygen\32x32\devices"
+
+  File ${prefix}/share/icons/oxygen/32x32/devices/secure-card.png
 
   SetOutPath "$INSTDIR\share\icons\oxygen\32x32\status"
 
@@ -356,6 +388,10 @@ Section "-oxygen-icons" SEC_oxygen_icons
   File ${prefix}/share/icons/oxygen/48x48/actions/view-refresh.png
   File ${prefix}/share/icons/oxygen/48x48/actions/window-close.png
 
+  SetOutPath "$INSTDIR\share\icons\oxygen\48x48\animations"
+
+  File ${prefix}/share/icons/oxygen/48x48/animations/process-working-kde.png
+
   SetOutPath "$INSTDIR\share\icons\oxygen\48x48\apps"
 
   File ${prefix}/share/icons/oxygen/48x48/apps/kde.png
@@ -364,6 +400,10 @@ Section "-oxygen-icons" SEC_oxygen_icons
 
   File ${prefix}/share/icons/oxygen/48x48/categories/applications-graphics.png
   File ${prefix}/share/icons/oxygen/48x48/categories/preferences-system-network.png
+
+  SetOutPath "$INSTDIR\share\icons\oxygen\48x48\devices"
+
+  File ${prefix}/share/icons/oxygen/48x48/devices/secure-card.png
 
   SetOutPath "$INSTDIR\share\icons\oxygen\48x48\status"
 
@@ -415,7 +455,6 @@ Section "-oxygen-icons" SEC_oxygen_icons
   SetOutPath "$INSTDIR\share\icons\oxygen"
 
   File ${prefix}/share/icons/oxygen/index.theme
-
 
 
 !endif
