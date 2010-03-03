@@ -1,3 +1,7 @@
+2010-03-03  Werner Koch  <wk@g10code.com>
+
+	* packages/packages.current: Update pinentry.
+
 2010-02-19  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 	* src/uninst-oxygen-icons.nsi, src/inst-oxygen-icons.nsi,
  	  packages/packages.current: Update oxygen icons.
