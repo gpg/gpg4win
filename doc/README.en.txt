@@ -128,7 +128,7 @@ of the most important ones:
     does not yet work.
 
 - Using GpgEX with Windows x64:
-  
+
    * In some cases sign/encrypt or decrypt/verify via GpgEX doesn't work 
      correctly (Kleopatra freezed). Then you should kill Kleopatra via 
      task manager and run the file crypto operation directly in Kleopatra
@@ -152,7 +152,14 @@ of the most important ones:
      is currently not full implemented. It's for testing for 
      expert users only. An extra archive application is required.
      Configure the pack command in the config file of Kleopatra:
-     	C:\Programme\GNU\GnuPG\share\config\libkleopatrarc
+       C:\Programme\GNU\GnuPG\share\config\libkleopatrarc
+     Here an exemple for the tool "7-ZIP" (http://www.7-zip.org):
+        [Archive Definition #0]
+        Name=TAR (via 7-ZIP)
+        id=7zip
+        extensions=tar
+        pack-command=7z a dummy -ttar -so
+
 
 4. Version History
 ==================

@@ -83,8 +83,9 @@ sich. Nachstehend die wichtigsten Änderungen:
 - Smartcard-Nutzung mit Kleopatra
 
    Die Einrichtung von Smartcards unter Kleopatra ist derzeit noch
-   nicht möglich. Bitte führen Sie folgende Schritte einmalig durch,
-   um Ihre Smartcard anschließend unter Kleopatra nutzen zu können.
+   nicht vollständig möglich. Bitte führen Sie folgende Schritte
+   einmalig durch, um Ihre Smartcard anschließend unter Kleopatra
+   nutzen zu können.
 
    * OpenPGP Karte
      Verwenden Sie das gpg-Kommandozeilen-Werkzeug, um ein neues
@@ -108,9 +109,9 @@ sich. Nachstehend die wichtigsten Änderungen:
    * X.509 Telesec Netkey 3 Karte
      Verwenden Sie Kleopatra, um Ihre Karte (einmalig) zu initialisieren:
      - Karte einlegen.
-     - Auf das blinkende Kleopatra-Smartcard-Systemtray-Icon klicken 
-       (oder diret das Systemtray-Kontextmenü "Smartcard" aufrufen und dort
-        den Punkt "LearnCard"-Befehl aufrufen).
+     - Auf das blinkende Kleopatra-Smartcard-Systemtray-Icon klicken
+       (oder direkt das Systemtray-Kontextmenü "Smartcard" aufrufen und dort
+        den "LearnCard"-Eintrag aufrufen).
 
    Anschließend wird Ihr OpenPGP- bzw. X.509-Smartcard-Zertifikat in
    Kleopatra unter dem Reiter "Meine Zertifikate" angezeigt (markiert mit
@@ -118,7 +119,7 @@ sich. Nachstehend die wichtigsten Änderungen:
 
    Eine gute (grafische) Alternative ist GPA, um Ihre Karte korrekt zu
    konfigurieren und ggf. Ihre PIN zu ändern. Eine verbesserte
-   Smartcard-Unterstützung für Kleopatra ist in Arbeit
+   Smartcard-Unterstützung für Kleopatra ist in Arbeit.
 
 - Verwendung der Outlook-Programmerweiterung "GpgOL":
 
@@ -140,12 +141,12 @@ sich. Nachstehend die wichtigsten Änderungen:
     Exchange basiertes Konto funktioniert nicht.
 
 - Verwendung von GpgEX:
-  
-   * Es kann teilweise vorkommen, dass beim Versuch Dateien mit GpgEX 
-     aus dem Explorer zu signieren/verschlüsseln bzw. zu entschlüsseln/prüfen, 
-     Kleopatra und das aktive Explorerfenster nicht mehr reagiert. 
-     Sie sollten Kleopatra dann über den Task-Manager beendet und die 
-     Datei-Krypto-Opteration nicht über GpgEX sondern direkt über 
+
+   * Es kann teilweise vorkommen, dass beim Versuch Dateien mit GpgEX
+     aus dem Explorer zu signieren/verschlüsseln bzw. zu entschlüsseln/prüfen,
+     Kleopatra und das aktive Explorerfenster nicht mehr reagiert.
+     Sie sollten Kleopatra dann über den Task-Manager beendet und die
+     Datei-Krypto-Opteration nicht über GpgEX sondern direkt über
      Kleopatra (per Datei-Menü) ausführen.
 
    * Probleme unter Windows x64:
@@ -156,7 +157,7 @@ sich. Nachstehend die wichtigsten Änderungen:
      Abhilfe: Starten Sie den 32bit Explorer, um GpgEX nutzen zu können.
      Klicken Sie auf "Start" -> "Ausführen" und geben Sie folgenden
      Befehl ein:
-         C:\windows\syswow64\explorer.exe /separate
+        C:\windows\syswow64\explorer.exe /separate
      Beachten Sie, dass Sie ggf. den Pfad zu Ihrer x64-basierten 
      Version von Windows anpassen müssen.
 
@@ -164,11 +165,17 @@ sich. Nachstehend die wichtigsten Änderungen:
 
    * Die Kleopatra-Funktion zum Signieren/Verschlüsseln 
      mehrerer Dateien als ein Archiv ist derzeit noch nicht 
-     voll funktionsfähig und nur zum Testen für erfahrene Nutzer geeignet. 
-     Es wird ein separates Packprogramm benötigt; die Konfiguration 
+     voll funktionsfähig und nur zum Testen für erfahrene Nutzer geeignet.
+     Es wird ein separates Packprogramm benötigt; die Konfiguration
      des Pack-Befehls muss über die Konfigruationsdatei von Kleopatra erfolgen:
-     	C:\Programme\GNU\GnuPG\share\config\libkleopatrarc
-
+        C:\Programme\GNU\GnuPG\share\config\libkleopatrarc
+     Exemplarisch die nötigen Konfigurationszeilen für das Programm
+     "7-ZIP" (http://www.7-zip.org):
+        [Archive Definition #0]
+        Name=TAR (via 7-ZIP)
+        id=7zip
+        extensions=tar
+        pack-command=7z a dummy -ttar -so
 
 4. Versionshistorie
 ===================

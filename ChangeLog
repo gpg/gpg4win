@@ -1,5 +1,6 @@
 2010-03-03  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 	* src/inst-pinentry.nsi: Set pinentry-qt4 as default.
+	* doc/README.en.txt, doc/README.de.txt: Update for 2.0.2-rc2
 
 2010-03-03  Werner Koch  <wk@g10code.com>
 
