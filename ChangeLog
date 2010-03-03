@@ -1,3 +1,6 @@
+2010-03-03  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+	* src/inst-pinentry.nsi: Set pinentry-qt4 as default.
+
 2010-03-03  Werner Koch  <wk@g10code.com>
 
 	* packages/packages.current: Update pinentry.
