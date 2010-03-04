@@ -1,3 +1,7 @@
+2010-03-04  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+
+	* News: Update kleopatra version number.
+
 2010-03-03  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
 	* src/inst-pinentry.nsi: Set pinentry-qt4 as default.
