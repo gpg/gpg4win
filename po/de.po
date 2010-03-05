@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gpg4win 2.0\n"
 "Report-Msgid-Bugs-To: gpg4win-devel@wald.intevation.org\n"
-"POT-Creation-Date: 2010-02-03 11:17+0100\n"
+"POT-Creation-Date: 2010-03-05 10:47+0100\n"
 "PO-Revision-Date: 2009-09-28 15:17+0200\n"
 "Last-Translator: Werner Koch <wk@g10code.com>\n"
 "Language-Team: German <translation-team-de@lists.sourceforge.net>\n"
@@ -479,14 +479,14 @@ msgstr ""
 "die verwendet wird, um Nachrichten mit OpenPGP oder S/MIME zu verschlüsseln. "
 "Benötigt Kleopatra oder GPA."
 
-#: src/inst-kleopatra.nsi:202
+#: src/inst-kleopatra.nsi:230
 msgctxt "DESC_SEC_kleopatra"
 msgid "Keymanager for OpenPGP and X.509 and common crypto dialogs."
 msgstr ""
 "Zertifikatsmanager für OpenPGP und X.509 (S/MIME) sowie einheitliche "
 "Benutzerführung für alle Krypto-Operationen."
 
-#: src/inst-kleopatra.nsi:206
+#: src/inst-kleopatra.nsi:234
 msgctxt "DESC_Menu_kleopatra"
 msgid "Run the Kleopatra key management tool."
 msgstr "Das Schlüsselverwaltungsprogramm Kleopatra aufrufen."
