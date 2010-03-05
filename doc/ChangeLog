@@ -1,3 +1,9 @@
+2010-03-05  Werner Koch  <wk@g10code.com>
+
+	* website/template_header.m4, website/index-de.htm4
+	* website/index.htm4, website/download-de.htm4
+	* website/download.htm4: Update for 2.0.2rc2.
+
 2010-02-04  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
 	 * website/index.htm4, website/index-de.htm4,

@@ -10,6 +10,9 @@ PAGE_START
 <p>
 <dl>
 
+<dt><b>+++ 20100305 Gpg4win 2.0.2 RC2 released +++</b></dt>
+<dd>with a lot of improvements in Kleopatra and Pinentry.</dd>.
+
 <dt><b>+++ 20100204 Gpg4win 2.0.2 RC1 released +++</b></dt>
 <dd>with a lot of improvements in Kleopatra, GpgOL and GnuPG.</dd>.
 
