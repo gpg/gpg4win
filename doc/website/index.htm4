@@ -11,7 +11,9 @@ PAGE_START
 <dl>
 
 <dt><b>+++ 20100305 Gpg4win 2.0.2 RC2 released +++</b></dt>
-<dd>with a lot of improvements in Kleopatra and Pinentry.</dd>
+<dd>with a lot of improvements in Kleopatra and Pinentry. See the <a
+href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2010-March/000041.html">announcement</a>
+for details.</dd>
 
 <dt><b>+++ 20100204 Gpg4win 2.0.2 RC1 released +++</b></dt>
 <dd>with a lot of improvements in Kleopatra, GpgOL and GnuPG.</dd>
