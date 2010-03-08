@@ -1,3 +1,7 @@
+2010-03-08  Bernhard Reiter <bernhard@intevation.de>
+	* website/download-de.htm4, website/download.htm4: Fixed download
+	text to say "second", for the rc2.
+
 2010-03-05  Werner Koch  <wk@g10code.com>
 
 	* website/template_header.m4, website/index-de.htm4
