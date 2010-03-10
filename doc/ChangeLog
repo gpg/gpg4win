@@ -1,3 +1,10 @@
+2010-03-10  Bernhard Reiter <bernhard@intevation.de>
+	* website/download-de.htm4: The 2.0.2rc2 sources and variants
+	section does not use the VERSION variable explicit anymore (
+	Thanks to  Rainer Simke for spotting this.)
+	Also added "Quelltexte" to the description to match the English
+	page version better.
+
 2010-03-08  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
 	 * website/index.htm4, website/index-de.html4: 
