@@ -22,7 +22,6 @@ png_files = \
 		sc-kleopatra-startmenu_de.png\
 		sc-kleopatra-mainwindow-empty_de.png\
 		sc-kleopatra-ChooseCertificateFormat_de.png\
-		sc-kleopatra-openpgp-decrypt-email_de.png\
 		sc-kleopatra-openpgp-personalDetails_de.png\
 		sc-kleopatra-openpgp-reviewParameters_de.png\
 		sc-kleopatra-openpgp-createKey_de.png\
@@ -39,24 +38,24 @@ png_files = \
 		sc-kleopatra-x509-keyPairCreated_de.png\
 		sc-kleopatra-exportCertificateToServer_de.png\
 		sc-kleopatra-certificateSearchOnKeyserver_de.png\
-		sc-kleopatra-encryptVerify_de.png \
+		sc-kleopatra-verifySignedMail_de.png \
 		sc-kleopatra-certifyCertificate1_de.png \
 		sc-kleopatra-certifyCertificate2_de.png \
 		sc-kleopatra-certifyCertificate3_de.png \
 		sc-kleopatra-configureKeyserver_de.png\
-		sc-kleopatra-openpgp-encryptDialog_de.png \
 		sc-ol-adele-sendOpenpgpKey-inline_de.png\
 		sc-ol-adele-sendOpenpgpKey-attachment_de.png\
 		sc-kleopatra-import-certificate_de.png\
 		sc-kleopatra-import-openpgp-secret-key_de.png\
 		sc-kleopatra-encryption-chooseOpenpgpCertificate_de.png\
 		sc-kleopatra-encryption-successful_de.png\
+		sc-kleopatra-format-choice_de.png\
+		sc-kleopatra-sign-selectCertificate_de.png\
+		sc-kleopatra-encrypt-selectCertificate_de.png\
 		sc-ol-sendEncryptedMail_de.png\
 		sc-ol-sendSignedMail_de.png\
 		sc-gpgol-options_de.png\
 		sc-gpgol-options-textformat_de.png\
-		sc-kleopatra-openpgp-signDialog_de.png\
-		sc-kleopatra-sign-chooseOpenpgpCertificate_de.png\
 		sc-kleopatra-sign-OpenpgpPinentry_de.png\
 		sc-kleopatra-sign-successful_de.png\
 		sc-kleopatra-encryptFile1_de.png\
