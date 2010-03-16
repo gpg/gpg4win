@@ -1,3 +1,7 @@
+2010-03-16  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+
+	* packages/packages.current: Update kleopatra
+
 2010-03-09  Werner Koch  <wk@g10code.com>
 
 	* patches/gpgme-1.2.0/04-check-agent.patch: New.
