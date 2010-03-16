@@ -1,6 +1,9 @@
 2010-03-16  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
 	* packages/packages.current: Update kleopatra
+	*  src/uninst-kleopatra.nsi: Update missing files for uninstall.
+	*  src/uninst-oxygen-icons.nsi: Update complete uninstall file 
+	   list by pkg-to-nsi.pl script.
 
 2010-03-09  Werner Koch  <wk@g10code.com>
 
