@@ -25,8 +25,8 @@ min_automake_version="1.9.3"
 # Set my_issvn to "yes" for non-released code.  Remember to run an
 # "svn up" and "autogen.sh" right before creating a distribution.
 # Right after a release the make target "copy-news" is to be called!
-m4_define([my_version], [2.0.2rc2])
-m4_define([my_issvn], [no])
+m4_define([my_version], [2.0.2])
+m4_define([my_issvn], [yes])
 
 m4_define([svn_revision], m4_esyscmd([echo -n $( (svn info 2>/dev/null \
           ||echo 'Revision: 0')|sed -n '/^Revision:/ s/[^0-9]//gp'|head -1)]))
@@ -81,6 +81,12 @@ AC_SUBST(MANUALINPROGRESS_EN)
 AC_SUBST(COMPENDIUM_VERSION_DE)
 AC_SUBST(COMPENDIUM_DATE_DE)
 
+if echo "${PACKAGE_VERSION}" | egrep 'svn|rc|beta|git' >/dev/null ; then 
+  IS_BETA_BUILD=yes
+else
+  IS_BETA_BUILD=no
+fi
+AC_SUBST(IS_BETA_BUILD)
 
 # Generate extended version information.  Note, that for NSIS use we
 # must not translate the dots to commas in the BUILD_FILEVERSION.
@@ -94,8 +100,7 @@ AC_SUBST(BUILD_TIMESTAMP)
 AC_SUBST(BUILD_ISODATE)
 AC_SUBST(BUILD_FILEVERSION)
 
-
-# To test tye manuals using an actual web server, the preview target
+# To test the manuals using an actual web server, the preview target
 # may be used in doc/manuals.  The default is my (wk) test environment
 # but may be overriden using another preview variable.  PREVIEWHOST is
 # expected to be the target for an rsync command.
@@ -104,6 +109,15 @@ if test -z "$PREVIEWHOST" ; then
 fi
 AC_SUBST(PREVIEWHOST)
 
+# The final release is copied to an archive server.  The default
+# location may be changed by setting the RELEASEHOST envvar.
+if test -z "$RELEASEHOST" ; then
+   RELEASEHOST="vigenere:tarballs/gpg4win"
+   if test "${IS_BETA_BUILD}" = yes ; then
+      RELEASEHOST="${RELEASEHOST}/Beta"
+   fi
+fi
+AC_SUBST(RELEASEHOST)
 
 # For development of this package it is useful to build without
 # creating the source installer (takes a long time).  This option may
@@ -113,7 +127,6 @@ AC_ARG_ENABLE(source-installer,
                    [Do not create the Source installer]),
                     build_source_installer=$enableval,
                     build_source_installer=yes)
-AC_MSG_RESULT($source_installer)
 AM_CONDITIONAL(BUILD_SOURCE_INSTALLER, test "$build_source_installer" = yes)
 
 
@@ -124,7 +137,6 @@ AC_ARG_ENABLE(light-installer,
                    [Do not create the light version of the installer]),
                     build_light_installer=$enableval,
                     build_light_installer=yes)
-AC_MSG_RESULT($light_installer)
 AM_CONDITIONAL(BUILD_LIGHT_INSTALLER, test "$build_light_installer" = yes)
 
 AC_ARG_ENABLE(fast-makensis,
@@ -132,7 +144,6 @@ AC_ARG_ENABLE(fast-makensis,
                    [Use a less efficient compressor to speed up building]),
                     use_fast_makensis=$enableval,
                     use_fast_makensis=no)
-AC_MSG_RESULT($light_installer)
 if test "$use_fast_makensis" = yes; then
   EXTRA_MAKENSIS_FLAGS="${EXTRA_MAKENSIS_FLAGS} -DDISABLE_LZMA=1"
 fi
