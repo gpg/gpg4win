@@ -1,7 +1,7 @@
 2010-03-17  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
 	* manual/gpg4win-compendium-de.tex: Changed chapter title, removed
-	mr. mueller comic.
+	mr. mueller comic.; Fix href problem.
 
 	 * website/download.htm4, website/download-de.htm4: 
 	Add README link.
