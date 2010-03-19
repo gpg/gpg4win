@@ -1,3 +1,7 @@
+2010-03-18  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+
+	* packages/packages.current: Update kleopatra
+
 2010-03-17  Werner Koch  <wk@g10code.com>
 
 	* patches/gnupg2-2.0.14/02-scd-no-service.patch: New.
