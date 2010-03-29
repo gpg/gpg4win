@@ -378,7 +378,7 @@ Bundesamtes für Sicherheit in der Informationstechnik.
 
 
 \clearpage
-\chapter{Warum überhaupt verschlüsseln?}
+\chapter{\Email{}s verschlüsseln: weil der Briefumschlag fehlt}
 \label{ch:why}
 
 Die Verschlüsselung von Nachrichten wird manchmal als das zweitälteste
@@ -915,7 +915,7 @@ Nachrichten schicken will, auch tatsächlich echt ist.
 \chapter{Zwei Wege, ein Ziel: OpenPGP \& S/MIME}
 \label{ch:openpgpsmime}
 
-Sie haben gesehen, wie wichtig der "Umschlag" um Ihre \Email{} ist und
+Sie haben gesehen, wie wichtig der "`Umschlag"' um Ihre \Email{} ist und
 wie man ihn mit den Mitteln der modernen Informationstechnologie
 bereitstellt: ein Brieftresor, in den jedermann verschlüsselte Mails
 legen kann, die nur Sie als Besitzer des Brieftresors entschlüsseln
@@ -957,7 +957,7 @@ können Sie mit Gpg4win beide Verfahren einsetzen.
 
 \clearpage
 Die Entsprechung des hierarchischen Vertrauenskonzepts hat den schönen
-Namen "Secure / Multipurpose Internet Mail Extension" oder
+Namen "`Secure / Multipurpose Internet Mail Extension"' oder
 \textbf{S/MIME}. Mit S/MIME müssen Sie Ihren öffentlichen Schlüssel
 von einer dazu berechtigten Organisation beglaubigen lassen, bevor er
 wirklich nutzbar wird. Das Zertifikat dieser Organisation wurde
@@ -1109,8 +1109,8 @@ Klicken Sie auf \Button{Weiter}.
 Nun wird Ihnen ein Ordner zur Installation vorgeschlagen, z.B.:
 \Filename{C:$\backslash$Programme$\backslash$GNU$\backslash$GnuPG}
 
-Übernehmen Sie den Vorschlag oder suchen Sie einen anderen Ordner aus
-in dem Sie Gpg4win installiert wollen. 
+Übernehmen Sie den Vorschlag oder suchen Sie einen anderen Ordner aus,
+in dem Sie Gpg4win installieren wollen.
 
 % screenshot: Auswahl des Installationsverzeichnis.
 \begin{center}
@@ -1323,7 +1323,7 @@ und irgendeine ausgedachte \Email{}-Adresse eingeben, z.B.:\\
 \Filename{Heinrich Heine} und \Filename{heinrich@gpg4win.de}.
 
 Optional können Sie einen Kommentar zum Schlüsselpaar eingeben.
-Normalerweise bleibt dieses Feld leer; wenn sie aber einen Schlüssel
+Normalerweise bleibt dieses Feld leer; wenn Sie aber einen Schlüssel
 zu Testzwecken erzeugen, sollten Sie dort als Erinnerung "`Test"'
 eingeben. Dieser Kommentar ist Teil Ihrer User-ID und genau wie der
 Name und die \Email{}-Adresse später öffentlich sichtbar.
@@ -1423,7 +1423,7 @@ drei Schaltflächen betätigen:
 \begin{description}
 
 \item[Sicherheitskopie Ihres (geheimen) Zertifikats erstellen...]~\\
-    Geben Sie hier den Pfad an, wohin Ihr vollständiges Zertifikat
+    Geben Sie hier den Pfad an, unter dem Ihr vollständiges Zertifikat
     (das Ihr neues Schlüsselpaar enthält) exportiert werden soll:
 
     % screenshot: New OpenPGP certificate - export key
@@ -1466,8 +1466,8 @@ drei Schaltflächen betätigen:
     Korrespondenzpartner Weitere Details finden Sie im
     Abschnitt~\ref{sec_publishPerEmail}.
 
-\item[Zertifikate zu Zertifikatsserver senden...]~\\ Wie genau Sie
-    einen weltweit verfügbaren OpenPGP-Zertifikatsserver in Kleopatra
+\item[Zertifikate zu Zertifikatsserver senden...]~\\ Wie Sie einen
+    weltweit verfügbaren OpenPGP-Zertifikatsserver in Kleopatra
     einrichten und wie Sie anschließend Ihr öffentliches Zertifikat
     auf diesen Server veröffenlichen, erfahren Sie in
     Kapitel~\ref{ch:keyserver}.
@@ -1638,10 +1638,10 @@ Damit Sie sich ein (Client-)Zertifikat bei CAcert erstellen können,
 müssen Sie sich zunächst unter
 \uniurl[www.cacert.org]{http://www.cacert.org} registrieren.
 
-Sofot anschließend können Sie ein oder mehrere Client-Zertifikat(e)
+Sofort anschließend können Sie ein oder mehrere Client-Zertifikat(e)
 erstellen: Sie sollten dabei auf eine ausreichende Schlüssellänge
 (z.B. 2048 Bit) achten. Im Assistenten legen Sie Ihre sichere
-Passphrase für Ihr Zertifikat fest.
+Pass\-phrase für Ihr Zertifikat fest.
 
 Ihre X.509-Zertifikatsanfrage wird nun erstellt.
 
@@ -1722,7 +1722,7 @@ Kapitel~\ref{ch:CertificateDetails}.}
 
 
 \clearpage
-\chapter{Sie veröffentlichen Ihr öffentliches Zertifikat}
+\chapter{Verbreitung des öffentlichen Zertifikats}
 \label{ch:publishCertificate}
 
 Beim täglichen Gebrauch von Gpg4win ist es sehr praktisch, dass Sie es
@@ -1775,7 +1775,7 @@ Seiten näher anschauen.
 \label{sec_publishPerEmail}
 
 Sie wollen Ihr öffentliches Zertifikat Ihrem Korrespondenzpartner
-bekannt machen?  Schicken Sie ihm doch einfach ihr exportiertes
+bekannt machen?  Schicken Sie ihm doch einfach Ihr exportiertes
 öffentliches Zertifikat per \Email{}. Wie das genau funktioniert,
 erfahren Sie in diesem Abschnitt.
 
@@ -2089,7 +2089,7 @@ Für die meisten \Email{}-Programme gibt es spezielle
 Programmerweiterungen (engl. "`plugins"'), mit denen die Ver- und
 Entschlüsselung direkt im jeweiligen \Email{}-Programm erledigt werden
 kann.  \textbf{GpgOL} ist eine solche Programmerweiterung für MS
-Outlook, dass in diesem Abschnitt benutzt wird, um die \Email{} von
+Outlook, das in diesem Abschnitt benutzt wird, um die \Email{} von
 Adele zu entschlüsseln. Hinweise zu weiteren Software-Lösungen finden
 Sie im Anhang~\ref{ch:plugins}.  Sie können diesen Abschnitt jetzt
 lesen oder später, wenn Sie diese Funktion benötigen.
@@ -2114,11 +2114,11 @@ Um die Nachricht zu entschlüsseln, fragt Kleopatra Sie nun nach Ihrer
 Passphrase, die Ihren privaten Schlüssel schützt. Geben Sie Ihre
 Passphrase ein.
 
-Die Entschlüsselung war erfolgreich, wenn Sie keinen Fehlerdialg
-bekommen!  Sie können nun die entschlüsselte \Email{} lesen.
+Die Entschlüsselung war erfolgreich, wenn Sie keinen Fehlerdialog
+bekommen! Sie können nun die entschlüsselte \Email{} lesen.
 
 Einen genauen Ergebnisdialog der Entschlüsselung können Sie manuell
-aufrufen, indem Sie Sie im Menü der geöffneten \Email{} 
+aufrufen, indem Sie im Menü der geöffneten \Email{}
 auf \Menu{Extras$\rightarrow$GpgOL Entschlüsseln / Prüfen} klicken.
 
 Doch nun wollen Sie sicher das Ergebnis, die entschlüsselte Nachricht, endlich einmal sehen...
@@ -2222,7 +2222,7 @@ Zertifikat als \Email{}-Dateianhang oder als Textblock innerhalb Ihrer
     \Filename{-----END PGP PUBLIC KEY BLOCK-----}
 
     so wie Sie es im Abschnitt~\ref{sec_publishPerEmail} schon
-    getanhaben.
+    getan haben.
 
     Setzen Sie den markierten Abschnitt per Copy \& Paste in einen
     Texteditor ein und speichern Sie das öffentliche Zertifikat ab.
@@ -2236,9 +2236,8 @@ Zertifikat als \Email{}-Dateianhang oder als Textblock innerhalb Ihrer
 \subsubsection{Öffentliches Zertifikat in Kleopatra importieren}
 
 Ob Sie nun das öffentliche Zertifikat als \Email{}-Anhang oder als
-Textblock abgespeichert haben, ist egal: In beiden Fällen importieren
-Sie dieses abgespeicherte Zertifikat in Ihre Zertifikatsverwaltung
-Kleopatra.
+Textblock abgespeichert haben -- in beiden Fällen importieren
+Sie es in Ihre Zertifikatsverwaltung Kleopatra.
 
 Starten Sie dafür Kleopatra, sofern das Programm noch nicht läuft.
 
@@ -2265,7 +2264,7 @@ Kleopatra angezeigt -- und zwar unter einem separatem Reiter
 Dieser Reiter dient zur Kontrolle, weil einer Datei durchaus auch mehr
 als nur ein Zertifikat enthalten kann. Schließen Sie diesen Reiter
 über das Menü \Menu{Fenster$\rightarrow$Reiter schließen} (oder über
-die "`Reiter-schließen"' Schaltfläche am rechten Fensterrand.
+die "`Reiter schließen"'-Schaltfläche am rechten Fensterrand.
 
 Wechseln Sie auf den Tab "`Andere Zertifikate"'. Hier sollten Sie nun
 das von Ihnen importierte öffentliche Zertifikat sehen.
@@ -2417,7 +2416,7 @@ Wählen Sie den Reiter \linebreak \Menu{Benutzer-Kennungen und
 Beglaubigungen} und klicken auf die Schaltfläche \Button{Hole
 Beglaubigungen ein}.
 
-Sortiert nach den Benutzer-Kennungen sehen sie alle Beglaubigungen,
+Sortiert nach den Benutzerkennungen sehen Sie alle Beglaubigungen,
 die in diesem Zertifikat enthalten sind. Hier sollte Sie auch Ihr
 Zertifikat wiederfinden, mit dem Sie eben beglaubigt haben.
 
@@ -2450,7 +2449,7 @@ Zertifikat unter. Also einen öffentlichen OpenPGP-Schlüssel, der
 vorgibt, von X zu stammen, in Wirklichkeit aber von Y ausgetauscht
 wurde.  Wenn ein solches gefälschtes Zertifikat beglaubigt wird, hat
 das "`Netz des Vertrauens"' natürlich ein Loch. Deshalb ist es so
-wichtig, sich zu vergewissern, ob ein Zertifikat, wirklich zu der
+wichtig, sich zu vergewissern, ob ein Zertifikat wirklich zu der
 Person gehört, der es zu gehören vorgibt.
 
 Was aber, wenn eine Bank oder Behörde prüfen möchte, ob die
@@ -2545,7 +2544,7 @@ GnuPG) ausschalten wollen -- um z.B. die Outlook eigene
 S/MIME-Funktionalität zu nutzen --, müssen Sie in dem folgenden
 GpgOL-Optionsdialog unter
 \Menu{Extras$\rightarrow$Optionen$\rightarrow$GpgOL} die Option
-\Menu{S/MIME Unterstützung einschalten} deaktiviere:
+\Menu{S/MIME Unterstützung einschalten} deaktivieren:
 
 % screenshot: GpgOL options
 \begin{center}
@@ -2721,10 +2720,10 @@ Klicken Sie nun auf \Button{Senden}.
 \subsubsection{Zertifikatsauswahl}
 
 Genauso wie beim Verschlüsseln von \Email{}s erkennt Gpg4win
-automatisch in welchem Protokoll -- OpenPGP oder S/MIME -- Ihre eignes
-Zertifikat (mit dem geheimen Schlüssel zum Signieren) vorliegt.
+automatisch, in welchem Protokoll -- OpenPGP oder S/MIME -- Ihre
+eignes Zertifikat (mit dem geheimen Schlüssel zum Signieren) vorliegt.
 
-Sollten Sie ein eigenes OpenPGP- \textit{und} S/MIME-Zertifiakte mit
+Sollten Sie ein eigenes OpenPGP- \textit{und} S/MIME-Zertifikat mit
 der gleichen \Email{}-Adresse besitzen, fragt Sie Kleopatra vor dem
 Signieren nach dem gewünschten Protokollverfahren:
 
@@ -2769,7 +2768,7 @@ nur Ihr geheimer Schlüssel passt zu Ihrem öffentlichen Zertifikat.
 Bestätigen Sie Ihre Passphrase-Eingabe mit \Button{OK}.  Ihre
 Nachricht wird nun signiert und versandt.
 
-Nach erfolgreicher Signierung Ihrer Nachricht, erhalten Sie folgenden
+Nach erfolgreicher Signierung Ihrer Nachricht erhalten Sie folgenden
 Ergebnisdialog:
 
 % screenshot: kleopatra sign successful
@@ -2810,7 +2809,7 @@ S/MIME realisieren.
 
 \clearpage
 \section{Signatur mit GpgOL prüfen}
-Angenommen Sie erhalten eine signierte \Email{} Ihres
+Angenommen, Sie erhalten eine signierte \Email{} Ihres
 Korrespondenzpartners.
 
 Die Überprüfung dieser elektronischen Signatur ist sehr einfach.
@@ -2841,7 +2840,7 @@ Möchten Sie die Überprüfung noch einmal manuell aufrufen, so wählen
 Sie im Menü der geöffneten \Email{} \Menu{Extras$\rightarrow$GpgOL
 Entschlüsseln/Prüfen}.
 
-Sollte die Signaturprüfung fehlt schlagen, dann bedeutet das, dass 
+Sollte die Signaturprüfung fehlschlagen, dann bedeutet das, dass
 % TODO: ggf. Screenshot mit neg. Meldung.
 die Nachricht bei der Übertragung verändert wurde.  Aufgrund der
 technischen Gegebenheiten im Internet ist es nicht auszuschließen,
@@ -2892,7 +2891,7 @@ Sie wissen: Normalerweise verschlüsseln Sie eine Nachricht mit dem
 seinem geheimen Schlüssel die \Email{} entschlüsselt.
 
 Die umgekehrte Möglichkeit -- Verschlüsselung mit dem geheimen
-Schlüssel -- macht keinen Sinn, weil alle Welt das dazugehörigen
+Schlüssel -- macht keinen Sinn, weil alle Welt das dazugehörige
 öffentliche Zertifikat kennt und die Nachricht damit entschlüsseln
 kann.
 
@@ -2966,7 +2965,7 @@ Hilfe Ihres eigenen öffentlichen Zertifikats. So können Sie die
 \Email{} später einfach mit Ihrem eigenen geheimen Schlüssel wieder
 lesbar machen.
 
-Jede verschlüsselte Nachricht wird von Gpg4win automatisch auch an ihr
+Jede verschlüsselte Nachricht wird von Gpg4win automatisch auch an Ihr
 eigenes Zertifikat verschlüsselt. Dazu nutzt Gpg4win Ihre
 Absender-E-Mail-Adresse. Sollten Sie mehrere Zertifikate zu einer
 Adresse besitzen, so müssen Sie sich beim Verschlüsselungsvorgang
@@ -2993,10 +2992,11 @@ entscheiden, an welches Zertifikat verschlüsselt werden soll.
     \textbf{Willkommen in der Welt der freien und sicheren \Email{}-Verschlüsselung!}
 
     Für ein noch besseres Verständnis, wie Gpg4win im Hintergrund wirklich
-    funktioniert, wird empfohlen, dass Sie sich nun mit dem zweiten,
-    fortgeschrittenen Teil von Gpg4win beschäftigten. Sie werden sehen,
+    funktioniert, wird empfohlen, dass Sie sich nun mit dem zweiten
+    Teil von Gpg4win beschäftigten. Sie werden sehen,
     dass Sie viele spannende Dinge darin entdecken werden!
 
+    %TODO: Satz besser am Anfang oder Ende des Kompendiums
     Genau wie das Kryptographiesystem Gpg4win wurden dieses Kompendium nicht nur
     für Mathematiker, Geheimdienstler und Kryptographen geschrieben,
     sondern \textbf{für jedermann.}
@@ -3098,7 +3098,7 @@ X.509-Zertifikate:
 \end{description}
 
 Diese Zertifikatsdetails müssen Sie für die tagtägliche Benutzung von
-Gpg4win nicht unbedingt kennen, aber Sie werden relevant, wenn Sie
+Gpg4win nicht unbedingt kennen, aber sie werden relevant, wenn Sie
 neue Zertifikate erhalten oder ändern wollen.
 
 Wie Sie fremde Zertifikate prüfen und beglaubigen und was genau das
@@ -3245,7 +3245,7 @@ Klicken Sie dazu in Kleopatra auf \Menu{Datei$\rightarrow$Zertifikate
 auf Server suchen...}.
 
 Sie erhalten einen Suchdialog, in dessen Eingabefeld Sie den Namen des
-Zertifikatsbesitzers, oder eindeutiger und daher besser geeignet,
+Zertifikatsbesitzers -- oder eindeutiger und daher besser geeignet --
 seine \Email{}-Adresse oder den Fingerabdruck seines Zertifikats
 eingeben können.
 
@@ -3336,8 +3336,8 @@ Gpg4win signieren und verschlüsseln. Das Prinzip ist das gleiche:
 
 Mit der Anwendung \textbf{GpgEX} können Sie Dateien ganz einfach aus
 Ihrem Windows Explorer heraus signieren oder verschlüsseln -- egal ob
-OpenPGP oder S/MIME.  Dieses Kapitel erläutert Ihnen, wie das genau
-funktioniert.
+mit OpenPGP oder S/MIME.  Dieses Kapitel erläutert Ihnen, wie das
+genau funktioniert.
 
 Sollten Sie eine Datei als \Email{}-Anhang verschicken, übernimmt z.B.
 GpgOL automatisch die Signierung bzw. Verschlüsselung der Datei
@@ -3455,7 +3455,7 @@ mit der Eingabe-Datei signiert haben.  Kleopatra findet automatisch
 die zugehörige signierte Originaldatei in demselben Datei-Ordner.
 
 Automatisch ist auch der \Menu{Ausgabe-Ordner} auf den gleichen Pfad
-ausgewählt.  Der wird aber erst relevant wenn Sie mehr als eine Datei
+ausgewählt.  Der wird aber erst relevant, wenn Sie mehr als eine Datei
 gleichzeitig verarbeiten.
 
 Bestätigen Sie die gegebenen Operationen mit
@@ -3519,7 +3519,7 @@ umstellen:
         Datei mit der Dateiendung \Filename{.asc} (OpenPGP) bzw.
         \Filename{.pem} (S/MIME).  Diese Dateitypen können mit jedem
         Texteditor geöffnet werden -- Sie sehen dort allerdings nur
-        den Buchstaben- und Ziffernsalat sehen, den Sie schon kennen.
+        den Buchstaben- und Ziffernsalat, den Sie schon kennen.
 
         Ist diese Option nicht ausgewählt -- das ist die
         Voreinstellung --, so wird eine verschlüsselte Datei mit der
@@ -3614,7 +3614,7 @@ den Eintrag \Menu{Entschlüsseln und überprüfen}:
 \end{center}
 
 \clearpage
-Im folgenden Entschlüsselungsdialog können Sie, bei Bedarf, noch den
+Im folgenden Entschlüsselungsdialog können Sie bei Bedarf noch den
 Ausgabe-Ordner verändern.
 
 % screenshot kleopatra decrypt file, step 1
@@ -3729,8 +3729,8 @@ Kleopatra in \textbf{einem} einzigen geheimen Zertifikat
 abgespeichert.
 
 \textbf{Achtung:} Behandeln Sie diese Datei sehr sorgfältig. Sie
-enthält Ihren geheimen Schlüssel und damit eine sehr
-sicherheitskritische Informationen!
+enthält Ihren geheimen Schlüssel und damit sehr sicherheitskritische
+Informationen!
 
 \clearpage
 \section{Import}
@@ -3809,39 +3809,44 @@ Schlüsselpaar exportiert und wieder importiert.}
 \T\margin{\IncludeImage[width=1.5cm]{smime-icon}}
 \T\enlargethispage{\baselineskip}
 Im Rahmen von Softwareverteilung oder sonstigen Umgebungen, in denen
-viele Anwender auf einem Rechner arbeiten, ist es sinnvoll einige
+viele Anwender auf einem Rechner arbeiten, ist es sinnvoll, einige
 systemweite Vorgaben und Vorbelegungen für Gpg4win einzurichten.
 
 Das betrifft vor allem S/MIME, denn bei streng vorgegebenen
-Vertrauensketten macht es Sinn, dass die Anwender die Informationen
+Vertrauensketten ist es sinnvoll, dass die Anwender die Informationen
 dazu miteinander teilen.
 
 Einige typische systemweite Einstellungen sind:
 
 \begin{itemize}
-\item Vertrauenswürdige Wurzelzertifikate Um zu vermeiden, dass jeder
-    Anwender selbst die notwendigen Wurzelzertifikate suchen und
-    installieren sowie deren Vertrauenswürdigkeit prüfen und
-    beglaubigen muss (vgl.  Abschnitt~\ref{sec_allow-mark-trusted}),
-    ist eine systemweite Vorbelegung der wichtigsten Wurzelzertifikate
-    sinnvoll.
+\item Vertrauenswürdige Wurzelzertifikate
+
+    Um zu vermeiden, dass jeder Anwender selbst die notwendigen
+    Wurzelzertifikate suchen und installieren sowie deren
+    Vertrauenswürdigkeit prüfen und beglaubigen muss (vgl.
+    Abschnitt~\ref{sec_allow-mark-trusted}), ist eine systemweite
+    Vorbelegung der wichtigsten Wurzelzertifikate sinnvoll.
 
     Dazu sollten die Wurzelzertifikate abgelegt -- wie in Abschnitt
     \ref{trustedrootcertsdirmngr} beschrieben -- und die
     vertrauenswürdigen Wurzelzertifikate definiert werden -- wie in
     Abschnitt \ref{sec_systemtrustedrootcerts} beschrieben.
 
-\item Direkt verfügbare CA-Zertifikate Um den Anwendern zusätzlich die
-    Mühe zu ersparen, die Zertifikate der Beglaubigungsinstanzen
-    (Certificate Authorities, CAs) zu suchen und zu importieren, ist
-    auch hier eine systemweite Vorbelegung der wichtigsten
-    CA-Zertifikate sinnvoll.  Eine Beschreibung hierzu finden Sie im
-    Abschnitt \ref{extracertsdirmngr}.
+\item Direkt verfügbare CA-Zertifikate
+
+    Um den Anwendern zusätzlich die Mühe zu ersparen, die Zertifikate
+    der Beglaubigungsinstanzen (Certificate Authorities, CAs) zu
+    suchen und zu importieren, ist auch hier eine systemweite
+    Vorbelegung der wichtigsten CA-Zertifikate sinnvoll.  Eine
+    Beschreibung hierzu finden Sie im Abschnitt
+    \ref{extracertsdirmngr}.
 
 
-\item Proxy für Zertifikatsserver-Suche Es kommt vor, dass interne
-    Netzwerke keine direkten Verbindungen der einzelnen Rechner nach
-    aussen zulassen, sondern einen sogenannten Proxy vorsehen.
+\item Proxy für Zertifikatsserver-Suche
+
+    Es kommt vor, dass interne Netzwerke keine direkten Verbindungen
+    der einzelnen Rechner nach aussen zulassen, sondern einen
+    sogenannten Proxy vorsehen.
 
     Ist dies in Ihrem Netzwerk auch für die bei GnuPG bzw. S/MIME
     wichtigen LDAP-Abfragen der Fall, so führen Sie folgende Schritte
@@ -3877,11 +3882,17 @@ Reaktivieren Sie GpgOL über das Outlook-Menü:\\ Outlook2007:
 \Menu{?$\rightarrow$Deaktivierte Elemente}\\ Outlook2003:
 \Menu{?$\rightarrow$Info$\rightarrow$Deaktivierte Elemente}
 
-Um unter Outlook2003 GpgOL manuell zu (de-)aktivieren nutzen Sie den
-Add-In-Manager von Outlook:
-\Menu{Extras$\rightarrow$Optionen$\rightarrow$Weitere$\rightarrow$Erweiterte
-Optionen...$\rightarrow$Add-In-Manger...}
-
+Um  GpgOL manuell zu (de-)aktivieren nutzen Sie den Add-In-Manager von
+Outlook:
+\begin{itemize}
+    \item \textbf{Outlook2003:}
+        \Menu{Extras$\rightarrow$Optionen$\rightarrow$Weitere$\rightarrow$Erweiterte
+        Optionen...$\rightarrow$Add-In-Manger...}
+    \item \textbf{Outlook2007:}
+        \Menu{Extras$\rightarrow$Vertrauensstellungscenter$\rightarrow$Add-Ins}
+        -- dann unter \Menu{Verwalten} die \newline \Menu{Exchange-Clienterweiterungen} auswählen 
+        und auf \Button{Gehe zu...} klicken.
+\end{itemize}
 
 \section{GpgOL-Schaltflächen sind in Outlook2003 nicht in der Symbolleiste}
 
@@ -3994,7 +4005,7 @@ dem Dateiordner: \newline \Filename{C:\back{}Dokumente und
 Einstellungen\back{}<name>\back{}Anwendungsdaten\back{}gnupg\back{}}
 
 Beachten Sie, dass es sich um einen versteckten Dateiordner handelt.
-Um es sichtbar zu schalten, müssen Sie im Explorer über das Menü
+Um ihn sichtbar zu schalten, müssen Sie im Explorer über das Menü
 \Menu{Extras$\rightarrow$Ordneroptionen} im Reiter \Menu{Ansicht} die
 Option \Menu{Alle Dateien und Ordner anzeigen} unter der Gruppe
 \Menu{Versteckte Dateien und Ordner} aktivieren.
@@ -4204,15 +4215,16 @@ Nicht selten ist dabei eine Besonderheit der Arbeitsumgebung
 verantwortlich, so dass die Softwareentwickler von Gpg4win das
 beobachtete Problem gar nicht selbst nachvollziehen können.
 
-Um die Softwareentwickler bei der Problemsuche zu unterstützen oder um
-auch einmal selbst in die technischen Detail-Abläufe reinzuschnuppern,
-bieten die Gpg4win-Programme Unterstützung an.
+Um die Softwareentwickler bei der Problemsuche zu unterstützen oder
+auch, damit der Anwender selbst einmal in die technischen
+Detail-Abläufe hineinschnuppern kann, bieten die Gpg4win-Programme
+Unterstützung an.
 
 In der Regel muss diese Unterstützung aber erst einmal eingeschaltet
 werden. Eine der wichtigsten Hilfsmittel sind Logdateien: Dort werden
 detaillierte Informationen zu den internen technischen Vorgängen
 festgehalten, wie in einer Logdatei.  Ein Softwareentwickler kann ein
-Problem und die mögliche Lösung oft leicht anhand dieser erkennen,
+Problem und die mögliche Lösung oft leicht anhand dieser Logdatei erkennen,
 auch wenn das Problem auf den ersten Blick sehr unverständlich und zu
 umfangreich wirken mag.
 
@@ -4232,13 +4244,14 @@ Logdateien) zu den einzelnen Gpg4win-Programmen einschalten können.
 \clearpage
 \section{Logdatei von Kleopatra einschalten}
 
-Die Logdatei von Kleopatra besteht aus vielen Dateien, daher ist der
-erste Schritt ein Dateiordner für die Logdatei zu erstellen. Denkbar
-ist z.B.: \Filename{C:\back{}TEMP\back{}kleologdir}
+Die Logdatei von Kleopatra besteht aus vielen Dateien, daher besteht
+der erste Schritt darin, zunächst einen Dateiordner für die Logdatei
+zu erstellen. Denkbar ist z.B.:
+\Filename{C:\back{}TEMP\back{}kleologdir}
 
 Bitte beachten Sie hierbei, dass es hier um Einstellungen des
 Anwenders, nicht des Systemadministrators geht.  Die Einstellungen
-müssen also für jeden Anwender der eine Logdatei erstellen möchte
+müssen also für jeden Anwender, der eine Logdatei erstellen möchte
 separat vorgenommen werden und darauf geachtet werden, dass
 unterschiedliche \Filename{kleologdir} Dateiordner verwendet werden.
 
@@ -4258,7 +4271,7 @@ Fügen Sie dort folgende neue \textbf{Benutzervariable} ein:
 \end{quote}
 
 Beachten Sie, dass der angegebene Dateiordner existieren muss. Sie
-können es auch nachträglich erstellen.
+können ihn auch nachträglich erstellen.
 
 Um die Logfunktion wirksam werden zu lassen, muss Kleopatra beendet
 und neu gestartet werden und der Dateiordner der Logdatei existieren,
@@ -4283,17 +4296,18 @@ haben:
 Möglicherweise werden die Logdateien sehr schnell sehr groß.  Sie
 sollten diese Logdatei\--Auf\-zeich\-nung nur einschalten, um ein
 bestimmtes Fehlverhalten zu provozieren und danach aufzuzeichnen.
-Anschliessend schalten Sie die Aufzeichnung wieder aus indem Sie die
-Umgebungsvariable löschen oder den Namen dieser leicht variieren (für
+
+Anschliessend schalten Sie die Aufzeichnung wieder aus, indem Sie die
+Umgebungsvariable löschen oder ihren Namen leicht variieren (für
 späteres leichtes Reaktivieren). Vergessen Sie nicht, die Logdateien
-zu löschen gerade wenn sie sehr umfangreich geworden sind oder es sich
+zu löschen, gerade wenn sie sehr umfangreich geworden sind oder es sich
 um sehr viele Dateien handelt. Bevor Sie eine neue Aufzeichnung
 beginnen, ist es ebenfalls sinnvoll die Logdateien zu löschen.
 
 \clearpage
 \section{Logdatei von GpgOL einschalten}
 
-Für das Einschalten der Logdatei von GpgOL müssen Sie den
+Um die Logdatei von GpgOL einzuschalten, müssen Sie den
 Registrierungs-Editor starten. Geben Sie dazu das Kommando
 \Filename{regedit} unter \Menu{Start$\rightarrow$Ausführen} oder in
 einer Eingabeaufforderung ein.
@@ -4308,20 +4322,20 @@ Werten.  Diese Einträge werden nach dem ersten Start von Outlook mit
 GpgOL angelegt.
 
 Zum Aktivieren der GpgOL-Logdatei führen Sie einen Doppelklick auf den
-Eintrag \Filename{enableDebug} aus und setzte Sie dessen Wert auf
+Eintrag \Filename{enableDebug} aus und setzen Sie dessen Wert auf
 \Filename{1}.
 
 Als Wert für \Filename{logFile} geben Sie nun einen Dateinamen an,
-wohin die Logdatei geschrieben werden soll, z.B.:
+in die die Logdatei geschrieben werden soll, z.B.:
 \Filename{C:\back{}TEMP\back{}gpgol.log}
 
 Starten Sie Outlook neu, um die Aufzeichnung zu starten.
 
-Bedenken Sie, dass diese Datei sehr umfangreich werden kann.  Stelle
+Bedenken Sie, dass diese Datei sehr umfangreich werden kann. Stellen
 Sie \Filename{enableDebug} auf \Filename{0}, sobald Sie die
 GpgOL-Logdatei nicht mehr benötigen.
 
-Sollen Sie sich für fortgeschrittene technische Informationen zu GpgOL
+Sollten Sie sich für fortgeschrittene technische Informationen zu GpgOL
 interessieren, dann lesen Sie einmal das technische
 (englischsprachige) Handbuch. Sie finden es in Ihrem
 Gpg4win-Installations\-verzeichnis, in der Regel:
@@ -4395,7 +4409,7 @@ Sie loggen sich aus und melden sich neu an Ihrem Windows-System an).
 \label{ch:themath}
 
 $\ldots$, jedenfalls nicht mit heute bekannten Methoden, und falls die
-Software frei von Fehlern ist. Soweit die Theorie.
+Software frei von Fehlern ist.
 
 In der Realität liefern allerdings genau diese Fehler in den
 Programmen, in ihrer Benutzung oder im Betriebssystem die
