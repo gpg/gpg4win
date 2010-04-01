@@ -19,21 +19,23 @@ wurden sämtliche Kapitel für Gpg4win Version 2.0 aktualisiert, also
 unter anderem angepasst auf Kleopatra, GpgEX und PGP/MIME sowie
 ergänzt um S/MIME bzw.  X.509.</p>
 
-<p>Beachten Sie: Das Gpg4win-Kompendium befindet sich aktuell noch in
-einer <b>BETA</b>-Fassung.
-  Die finale Version 3.0.0 des Kompendiums ist für Ende 2009 geplant.
-  Anschließend erfolgt die englische Übersetzung. Übersetzungen in
-  weitere Sprachen sind willkommen! Bitte wenden Sie sich dazu an die
-  <a href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-devel">
+<p>Beachten Sie: Das aktuelle Gpg4win-Kompendium ist eine
+letzte Vorabfassung (RC1) für die im April/Mail 2010 erscheinende
+finale Version 3.0.0 des Kompendiums. Kleinere Korrekturen können bis dahin
+noch vorgenommen werden.</p>
+
+<p>Anschließend erfolgt die englische Übersetzung. Übersetzungen in
+weitere Sprachen sind willkommen! Bitte wenden Sie sich dazu an die
+<a href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-devel">
 Gpg4win-Entwickler-Mailingliste</a> (Lesen sie auch <a
 href="localize-gpg4win.html">Gpg4win into your language</a>).</p>
 
-<p>Nach der Installation von Gpg4win VERSION ist das Kompendium (in
+<p>Nach der Installation von Gpg4win ist das Kompendium (in
 der PDF- und HTML-Fassung) über das Startmenü im Ordner
 <em>Gpg4win->Dokumentation</em> verfügbar.</p>
 
 Die aktuelle PDF- und HTML-Version des Gpg4win-Kompendiums finden
-Sie hier:
+Sie auch hier:
 <a href="DOWNLOAD_URL_COMPENDIUM_DE"
     class="dlbutton2">Gpg4win-Kompendium COMPENDIUM_VERSION_DE (PDF)<br>
 <span class="version"><small>Größe: DL_SIZE_COMPENDIUM_DE | 

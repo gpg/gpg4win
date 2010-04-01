@@ -10,35 +10,22 @@ PAGE_START
 <p>
 <dl>
 
-<dt><b>+++ 20100305 Gpg4win 2.0.2 RC2 released +++</b></dt>
+<dt><b>+++ 2010-04-01: German Gpg4win-Kompendium 3.0.0 RC1 released +++</b></dt>
+<dd>This is the last pre-release for the final version 3.0.0 of the
+German Gpg4win Kompendium - scheduled for april/may 2010. Afterwards
+the translation into English will start. </dd>
+
+<dt><b>+++ 2010-03-05: Gpg4win 2.0.2 RC2 released +++</b></dt>
 <dd>with a lot of improvements in Kleopatra and Pinentry. See the <a
 href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2010-March/000041.html">announcement</a>
 for details.</dd>
 
-<dt><b>+++ 20100204 Gpg4win 2.0.2 RC1 released +++</b></dt>
+<dt><b>+++ 2010-02-04: Gpg4win 2.0.2 RC1 released +++</b></dt>
 <dd>with a lot of improvements in Kleopatra, GpgOL and GnuPG.</dd>
 
-<dt><b>+++ 20090928 Gpg4win 2.0.1 released +++</b></dt>
-<dd>This is basically the same as the release 2.0.1 candidate.
-See the <a
-href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2009-September/000040.html">announcement</a>
-for details.</dd>
-
-<dt><b>+++ 20090901 Outlook users should download Gpg4win 2.0.1 RC1
-+++</b></dt>
-<dd>The delay problems frequently reported with Outlook 2003 and 2007 
-are addressed by Gpg4win 2.0.1RC1.  Note that sending emails with Outlook/GpgOL
-over Exchange still does not work. See the <a
-href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2009-September/000039.html">announcement</a>
-for details.</dd>
-
-<dt><b>+++ 20090819 Using smart cards with Gpg4win 2.0.0 +++</b></dt>
-<dd>Hints for using the supported OpenPGP and X.509 smart cards with
-Kleopatra are available in the updated <a href="doc/README.en.txt">README file</a>.</dd>
-
-<dt><b>+++ 20090812 Gpg4win 2.0.0 released +++</b></dt>
-<dd>Read the <a href="news-20090812.html">Press release</a>.</dd>
 </dl>
+
+More news in <a href="newsarchive.html">news archive</a>.
 
 <h2>Gpg4win 2.0.x</h2>
 

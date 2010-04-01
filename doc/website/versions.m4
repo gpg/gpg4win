@@ -28,7 +28,7 @@ I18N(`EN', `<a href="http://www.gnupg.org/related_software/gpa/index.html">GPA</
 I18N(`EN', `<a href="doc/gpg4win-compendium-de.html">Gpg4win Compendium</a> (German!)')I18N(`DE', `<a href="doc/gpg4win-compendium-de.html">Gpg4win-Kompendium</a>') 3.0.0-beta4
 I18N(`EN', `<a href="handbuecher/novices.html">Gpg4win for Novices</a> 1.0.0')')
 
-m4_define(`COMPENDIUM_VERSION_DE',`3.0.0-beta4')
-m4_define(`COMPENDIUM_DATE_DE',`2009-09-28')
-m4_define(`DOWNLOAD_URL_COMPENDIUM_DE',`http://wald.intevation.org/frs/download.php/642/gpg4win-compendium-de-3.0.0-beta4.pdf')
+m4_define(`COMPENDIUM_VERSION_DE',`3.0.0-rc1')
+m4_define(`COMPENDIUM_DATE_DE',`2010-04-01')
+m4_define(`DOWNLOAD_URL_COMPENDIUM_DE',`http://wald.intevation.org/frs/download.php/727/gpg4win-compendium-de-3.0.0-rc1.pdf')
 m4_define(`DL_SIZE_COMPENDIUM_DE',`2.3 MByte')

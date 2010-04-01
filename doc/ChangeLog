@@ -1,5 +1,12 @@
 2010-04-01  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
+	* website/index.htm4, website/index-de.htm4,
+	  website/documentation.htm4, website/documentation-de.htm4,
+	  website/versions.m4: Change compendium version. Add news.
+
+	* website/newsarchive.htm4, website/newsarchive-de.htm4,
+	  website/Makefile.am: Add news archive.
+
 	* manual/gpg4win-compendium-de.tex: Fixed typos. Added gpgme debug
 	section. Some minor changes.
 

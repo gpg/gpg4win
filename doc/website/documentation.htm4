@@ -21,28 +21,30 @@ PAGE_START
 </p>
 
 <p>Note: The Gpg4win Compendium is currently availabe in <b>German
-only</b>. It is currently still a <b>BETA</b> version.
-The final version 3.0.0 of the German Compendium is scheduled for end
-of 2009. Afterwards the translation into English will started.
+only</b>. It is currently the last pre-release.
+The final version 3.0.0 of the German Compendium is scheduled for
+april/may 2010.</p>
+
+<p> Afterwards the translation into English will start.
 Translations into other language are very welcome!
 Please contact the
 <a href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-devel">
 Gpg4win developer mailing list</a> if you want to start with a new
 translation (Read also <a href="localize-gpg4win.html">Gpg4win into your language</a>).</p>
 
-<p>After install Gpg4win VERSION the Compendium (in
+<p>After install Gpg4win the Compendium (in
 pdf and html version) is available via start menu in the folder
 <em>Gpg4win->Documentation</em>.</p>
 
 You find the current PDF and HTML version of the Gpg4win Compendium here:
 <a href="DOWNLOAD_URL_COMPENDIUM_DE"
-    class="dlbutton2">Gpg4win-Kompendium COMPENDIUM_VERSION_DE (PDF)<br>
+    class="dlbutton2">Gpg4win-Kompendium COMPENDIUM_VERSION_DE (PDF) - German!<br>
 <span class="version"><small>Size: DL_SIZE_COMPENDIUM_DE | 
 Released: COMPENDIUM_DATE_DE</small></span>
 </a>
 
 <a href="./doc/gpg4win-compendium-de.html"
-    class="dlbutton2">Gpg4win-Kompendium COMPENDIUM_VERSION_DE (HTML)<br>
+    class="dlbutton2">Gpg4win-Kompendium COMPENDIUM_VERSION_DE (HTML) - German!<br>
 <span class="version"><small>Released: COMPENDIUM_DATE_DE</small></span>
 </a>
 
