@@ -1,3 +1,8 @@
+2010-04-09  Marcus Brinkmann  <marcus@g10code.de>
+
+	* src/inst-pinentry.nsi: Install pinentry-gtk-2 as default if qt
+	is not available (should fix issue1315).
+
 2010-04-01  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
 	* configure.ac: Change compendium-de date.
