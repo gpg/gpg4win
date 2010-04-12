@@ -1,6 +1,10 @@
+2010-04-12  Werner Koch  <wk@g10code.com>
+
+	Release 2.0.2.
+
 2010-04-12  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
-	* configure.ac: Preparing 2.0.2 release.
+	* configure.ac: Prepare 2.0.2 release.
 
 	* NEWS: Change compendium-de version
 
@@ -23,7 +27,7 @@
 
 	* configure.ac (IS_BETA_BUILD): New.
 	(RELEASEHOST): New.
-	* src/gpg4win.mk (README.$(1).txt): Repalce egrep by IS_BETA_BUILD.
+	* src/gpg4win.mk (README.$(1).txt): Replace egrep by IS_BETA_BUILD.
 
 2010-03-16  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 

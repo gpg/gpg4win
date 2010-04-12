@@ -3,8 +3,12 @@
 # The version number given below are for the standard installers as
 # distributed by www.gpg4win.org.
 
-Noteworthy changes in version 2.0.2 (unreleased)
+Noteworthy changes in version 2.0.2 (2010-04-12)
 ------------------------------------------------
+
+(en) Bug fixes and UI improvements.
+
+(de) Fehler wurden beseitigt und die Benutzerschnittstelle verbessert.
 
 ~~~~~~~~~~~~~~~
 GnuPG:        2.0.14
