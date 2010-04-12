@@ -35,7 +35,6 @@ EXTRA_DIST = autogen.sh README.SVN ONEWS \
         patches/gpgme-1.2.0/01-w32-io-threads.patch \
 	patches/gpgme-1.2.0/02-inv-signer.patch \
 	patches/gpgme-1.2.0/03-w32-socket.patch \
-        patches/gpgme-1.2.0/04-check-agent.patch \
 	patches/winpt/01-gpg-path.patch \
 	patches/gpgex/01-no-checksums.patch \
 	patches/gpgex-0.9.5/01-default-no-suffix.patch \
@@ -57,7 +56,6 @@ EXTRA_DIST = autogen.sh README.SVN ONEWS \
 	patches/gnupg2-2.0.12/10-inv-sgnr.patch \
 	patches/gnupg2-2.0.12/11-photoid-sk.patch \
 	patches/gnupg2-2.0.14/01-encode-s2k.patch \
-	patches/gnupg2-2.0.14/02-scd-no-service.patch \
 	patches/dirmngr-1.0.3/01-ldaphttp.patch \
 	patches/gpgol-0.9.91/01-gpgme.patch \
         patches/gpa-0.9.0/01-title-prop.patch \
