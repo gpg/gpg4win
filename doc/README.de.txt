@@ -77,6 +77,51 @@ sich. Nachstehend die wichtigsten Änderungen:
   MS Outlook: 2003, 2007
 
 
+Kurzübersicht zu Änderungen gegenüber Version 2.0.1:
+----------------------------------------------------
+- Kleopatra:
+  * Zertifikatserzeugungsdialog für OpenPGP und X.509 verbessert
+  * Zertifikatsauswahldialog beim Signieren/Verschlüsseln wird nur noch im 
+    Konfliktfall angezeigt ("Viel-Benutzer-Modus")
+  * Ergebnisdialog für Signieren/Verschlüsseln in einem Dialog zusammengefasst
+  * Datei-Krypto-Operationen mit GpgEX stabilisiert
+  * SmartCard-Unterstützung für NetKey-Karten verbessert
+  * Rekursives signieren/verschlüsseln von Dateien/Ordnern grundsätzlich 
+    möglich; Bedingung: externes Archiv-Werkzeug nötig (Konfiguration siehe 
+    Punkt 3 dieser README)
+  * neues deutschsprachiges Handbuch für Kleopatra
+  * neue Oxygen-Icons
+  * diverse kleinere Stabilitäts- und GUI-Verbesserungen
+
+- GpgOL:
+  * verbesserter Symbol-Lademechanismus
+  * neue Icons (nun auch für Nachrichtenliste)
+
+- Pinentry:
+  * Voreinstellung umgestellt: von GTK auf QT4
+    (für gpg4win-light-Installer weiterhin GTK aktiv)
+  * neue Icons für pinentry-qt4
+  * Pinentry-qt4-Dialog erscheint nun immer im Vordergrund
+
+- GnuPG-Backend:
+  * Zertifikatserzeugung für OpenPGP/X.509: voreingestellte Schlüssellängen  
+    nach Algorithmenkatalogs des BSI angepasst (Default: RSA, 2048 bit);
+    außerdem Auswahlliste der Schlüssellängen in Kleopatra aktualisiert
+
+- Installer:
+  * neue NSIS-Installer-Grafiken
+
+- Die integrierten Gpg4win-Komponenten sind:
+    GnuPG:        2.0.14
+    Kleopatra:    2.0.14-svn1098530 (20100303)
+    GPA:          0.9.0
+    GpgOL:        1.1.1
+    GpgEX:        0.9.5
+    Claws-Mail:   3.7.4cvs1
+    Kompendium:   3.0.0-rc1
+
+
+
 3. Bekannte Probleme (und Abhilfe)
 ==================================
 
@@ -160,6 +205,7 @@ sich. Nachstehend die wichtigsten Änderungen:
         C:\windows\syswow64\explorer.exe /separate
      Beachten Sie, dass Sie ggf. den Pfad zu Ihrer x64-basierten 
      Version von Windows anpassen müssen.
+     Dieser separate Aufruf scheint aktuell in Win7/64bit defekt zu sein.
 
 - Dateien signieren/verschlüsseln mit Archiv-Funktion:
 

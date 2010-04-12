@@ -74,6 +74,47 @@ of the most important ones:
   Operating System: Windows 2000, XP (32/64), Vista (32/64)
   Outlook: 2003, 2007
 
+Short overview on changes compared to version 2.0.1:
+----------------------------------------------------
+- Kleopatra:
+  * New certificate wizard for OpenPGP and X.509 improved
+  * Certificate selection dialog for sign/encrypt comes up in case of  
+    conflict only
+  * Result dialog for sign/encrypt combined in one window
+  * File crypto operations with GpgEX stabilized
+  * SmartCard support for X.509 NetKey cards improved
+  * Rekursive sign/encrypt of files/directory now possible; condition:  
+    external archive tool required (see README file for configuration)
+  * new oxygen icons
+  * Several minor and medium issues and errors were fixed
+
+- GpgOL:
+  * Symbol load mechanism improved to add new icons
+    (now with crypto icons for the message list)
+
+- Pinentry:
+  * Change default: switch from GTK to QT4
+    (GTK still enabled for gpg4win-light installer)
+  * new icons for pinentry-qt4
+  * Pinentry-qt4 dialog always comes up in foreground
+
+- GnuPG-Backend:
+  * Generate new certificate for OpenPGP/X.509: default key length
+    updated (new Default: RSA, 2048 bit); 
+    furthermore select list of key length in Kleopatra updated
+
+- Installer:
+  * new images for NSIS installer
+
+- Included components are:
+    GnuPG:        2.0.14
+    Kleopatra:    2.0.14-svn1098530 (20100303)
+    GPA:          0.9.0
+    GpgOL:        1.1.1
+    GpgEX:        0.9.5
+    Claws-Mail:   3.7.4cvs1
+    Kompendium:   3.0.0-rc1
+
 
 3. Known Bugs (and Workarounds)
 ===============================
@@ -102,9 +143,10 @@ of the most important ones:
        - Run "gpg --card-status".
 
    * X.509 Telesec Netkey 3 card
-     Use the gpgsm command line tool to initializing your card:
+     Use Kleopatra to initializing your card:
      - Insert card.
-     - Run "gpgsm --learn-card".
+     - Click at the Kleopatra systemtray icon (or use the context menu of
+       the systemtray icon and run the learn card command).
 
    After finishing these steps your OpenPGP / X.509 certificate
    from your smart card is shown in Kleopatra under the tab
@@ -133,7 +175,13 @@ of the most important ones:
 
 - Using GpgEX with Windows x64:
 
-   * GpgEX is a (32bit) plugin for the (32bit) Windows
+   * In some cases sign/encrypt or decrypt/verify via GpgEX doesn't work 
+     correctly (Kleopatra freezed). Then you should kill Kleopatra via 
+     task manager and run the file crypto operation directly in Kleopatra
+     (see file menu).
+
+   * Problems with Windows x64:
+     GpgEX is a (32bit) plugin for the (32bit) Windows
      Explorer and it does _not_ run in a 64bit Explorer
      (= default for a Windows 64bit system).
 
@@ -142,7 +190,22 @@ of the most important ones:
      click OK:
          C:\windows\syswow64\explorer.exe /separate
      Note: Adjust the path to your x64-based version of Windows if
-     necessary.
+     necessary. 
+     This separate command seems to be currently broken in Win7/64bit.
+
+- sign/encrypt files with archive function:
+
+   * The new Kleopatra function to sign/encrypt files as archive
+     is currently not full implemented. It's for testing for 
+     expert users only. An extra archive application is required.
+     Configure the pack command in the config file of Kleopatra:
+       C:\Programme\GNU\GnuPG\share\config\libkleopatrarc
+     Here an exemple for the tool "7-ZIP" (http://www.7-zip.org):
+        [Archive Definition #0]
+        Name=TAR (via 7-ZIP)
+        id=7zip
+        extensions=tar
+        pack-command=7z a dummy -ttar -so
 
 
 4. Version History
