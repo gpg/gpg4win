@@ -1,5 +1,7 @@
 2010-04-12  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
+	* configure.ac: Preparing 2.0.2 release.
+
 	* NEWS: Change compendium-de version
 
 2010-04-09  Marcus Brinkmann  <marcus@g10code.de>
