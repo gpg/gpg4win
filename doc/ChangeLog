@@ -1,5 +1,8 @@
 2010-04-12  Werner Koch  <wk@g10code.com>
 
+	* website/versions.m4: Update to 2.0.2.
+	* website/download.htm4, website/download-de.htm4: Remove info
+	about rc2.
 	* website/Makefile.am (EXTRA_DIST): Fix newsarchive names.
 
 2010-04-12  Emanuel Schuetze  <emanuel.schuetze@intevation.de>

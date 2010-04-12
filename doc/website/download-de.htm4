@@ -9,36 +9,6 @@ PAGE_START
 <h1>Download</h1>
 
 
-<h2>Gpg4win 2.0.2 RC2</h2>
-
-<p>Der zweite "Release Candidat" (RC) der kommenden 2.0.2 Version von
-Gpg4win kann hier herunter geladen werden:</p>
-<a href="http://ftp.gpg4win.org/Beta/gpg4win-2.0.2rc2.exe"
-    class="dlbutton2">Gpg4win&nbsp;2.0.2 RC2<br>
-<span class="version"><small>Größe: 35 MByte | Veröffentlicht: 2010-03-05</small></span>
-</a>
-
-<ul>
-    <li><a href="http://ftp.gpg4win.org/Beta/gpg4win-2.0.2rc2.exe.sig"
-        >OpenPGP-Signatur</a> (für gpg4win-2.0.2rc2.exe)
-    <li><b>SHA1-Prüfsumme</b> (für gpg4win-2.0.2rc2.exe):
-    <code>7d9fcb05db414aa1f0f93578e69d9383b2a27b9a gpg4win-2.0.2rc2.exe </code></li>
-
-<li>Quelltexte und andere Gpg4win-2.0.2rc2-Varianten:
-    <ul>
-    <li><a href="http://ftp.gpg4win.org/Beta/gpg4win-light-2.0.2rc2.exe">gpg4win-light-2.0.2rc2.exe</a>
-    (Vollversion <em>ohne</em> Kleopatra und Handbücher); 
-    <small>Größe: 12 MByte</small></li>
-    <li><a
-        href="http://ftp.gpg4win.org/Beta/gpg4win-2.0.2rc2.tar.bz2">gpg4win-2.0.2rc2.tar.bz2</a>
-    (Quelltextpaket); <small>Größe: 5 MByte</small></li>
-    <li>Alle Versionen und OpenPGP-Signaturen unter <a
-        href="http://ftp.gpg4win.org/Beta">ftp.gpg4win.org/Beta</a>.</li>
-    </ul>
-</li>
-<li><a href="http://ftp.gpg4win.org/Beta/README-2.0.2rc2.de.txt">README-Datei</a>
-</ul>
-
 <h2>Gpg4win VERSION</h2>
 
 <p>Die Vollversion (inklusive des deutschen Gpg4win-Kompendiums) von Gpg4win VERSION
