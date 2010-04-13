@@ -57,9 +57,25 @@ Gpg4win"</a>.
 crypto dialogs (only in German - sorry):</p>
 
 <ul>
-<li>
-<p><b>Kleopatra - the certificate manager with an OpenPGP certificate:</b></p>
+<li><p><b>Gpg4win Installer - the welcome screen:</b></p>
+<a href="pix/sc-inst-welcome_de.png">
+<img src="pix/sc-inst-welcome_de.png"
+width="400px"
+alt="Gpg4win Installer - the (German) welcome screen"
+title="Gpg4win Installer - the (German) welcome screen">
+</a>
+</li>
 
+<li><p><b>Kleopatra - the creation of an OpenPGP certificate:</b></p>
+<a href="pix/sc-kleopatra-openpgp-personalDetails_de.png">
+<img src="pix/sc-kleopatra-openpgp-personalDetails_de.png"
+width="400px"
+alt="Kleopatra - the creation of an OpenPGP certificate"
+title="Kleopatra - the creation of an OpenPGP certificate">
+</a>
+</li>
+
+<li><p><b>Kleopatra - the certificate manager with an OpenPGP certificate:</b></p>
 <a href="pix/sc-kleopatra-withOpenpgpTestkey_de.png">
 <img src="pix/sc-kleopatra-withOpenpgpTestkey_de.png"
 width="400px"

@@ -1,5 +1,15 @@
 2010-04-12  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
+	* website/about.htm4, website/about-de.htm4,
+	website/pix/sc-inst-welcome_de.png,
+	website/pix/sc-kleopatra-openpgp-personalDetails_de.png: 
+	Add new screenshots.
+
+	* website/pix/sc-kleopatra-encryptFile1_de.png,
+	website/pix/sc-kleopatra-withOpenpgpTestkey_de.png,
+	website/pix/sc-kleopatra-openpgp-certificateDetails_de.png:
+	Update screenshots.
+
 	* website/index.htm4, website/index-de.htm4,
 	website/newsarchive.htm4, website/newsarchive-de.htm4:
 	Add link to 2.0.2 announcement.
