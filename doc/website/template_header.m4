@@ -48,7 +48,6 @@ m4_define(`LINK',
           <td class="center">
             <a href="DLPAGE" class="dlbutton">Download<br> 
               <span class="version">Gpg4win VERSION <small>(DL_DATE)</small><br>
-                Gpg4win 2.0.2 RC2 <small>(2010-03-05)</small><br>
               </span>
             </a>
                 &nbsp;&nbsp;<a href="I18N(`EN', `./package-integrity.html') I18N(`DE', `./package-integrity-de.html')"
