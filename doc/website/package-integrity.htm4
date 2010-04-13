@@ -47,8 +47,8 @@ For gpg4win-src-VERSION.exe:
   >http://ftp.gpg4win.org/gpg4win-src-VERSION.exe.sig</a><br>
 
 For gpg4win-VERSION.tar.bz2:
-gpg4win-VERSION.tar.bz2.sig which can be found
-<a href="http://wald.intevation.org/frs/?group_id=11">here</a>.
+<a href="http://ftp.gpg4win.org/gpg4win-VERSION.tar.bz2.sig"
+  >http://ftp.gpg4win.org/gpg4win-VERSION.tar.bz2.sig</a>
 
 <p>
 The signatures have been created with the OpenPGP certificate with the ID <em>1CE0C630</em>
