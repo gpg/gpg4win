@@ -1,5 +1,5 @@
 # configure.ac for GPG4Win
-# Copyright (C) 2005, 2006, 2007, 2008 g10 Code GmbH
+# Copyright (C) 2005, 2006, 2007, 2008, 2010 g10 Code GmbH
 # 
 # This file is part of GPG4Win
 # 
