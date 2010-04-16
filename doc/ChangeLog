@@ -1,3 +1,11 @@
+2010-04-12  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+
+	* website/index.htm4, website/index-de.htm4,
+	website/package-integrity.htm4, website/package-integrity-de.htm4,
+	website/newsarchive.htm4, website/newsarchive-de.htm4,
+	website/download.htm4, website/download-de.htm4:
+	Update something more for 2.0.2. Fix some typo.
+
 2010-04-12  Werner Koch  <wk@g10code.com>
 
 	* website/versions.m4: Update to 2.0.2.
