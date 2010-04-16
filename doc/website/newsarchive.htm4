@@ -14,8 +14,10 @@ PAGE_START
 <dl>
 
 <dt><b>+++ 2010-04-13: Gpg4win 2.0.2 released +++</b></dt>
-<dd>This is basically the same as the 2.0.2 release candidate 2 -
-additionally with the current compendium 3.0.0 RC1.
+<dd>This is basically the same as the 2.0.2 release candidate
+2 - additionally with the current compendium 3.0.0 RC1. See the <a
+href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2010-April/000043.html">announcement</a>
+for details.
 </dd>
 
 <dt><b>+++ 2010-04-01: German Gpg4win-Kompendium 3.0.0 RC1 released +++</b></dt>

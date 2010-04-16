@@ -1,6 +1,10 @@
 2010-04-12  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
 	* website/index.htm4, website/index-de.htm4,
+	website/newsarchive.htm4, website/newsarchive-de.htm4:
+	Add link to 2.0.2 announcement.
+
+	* website/index.htm4, website/index-de.htm4,
 	website/package-integrity.htm4, website/package-integrity-de.htm4,
 	website/newsarchive.htm4, website/newsarchive-de.htm4,
 	website/download.htm4, website/download-de.htm4:
