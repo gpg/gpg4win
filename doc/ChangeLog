@@ -1,3 +1,7 @@
+2010-04-16  Werner Koch  <wk@g10code.com>
+
+	* website/Makefile.am (EXTRA_DIST): Fix newsarchive names.
+
 2010-04-12  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
 	* website/about.htm4, website/about-de.htm4,

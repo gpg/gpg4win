@@ -6,9 +6,11 @@
 Noteworthy changes in version 2.1.0 (unreleased)
 ------------------------------------------------
 
-(en) Bug fixes and UI improvements.
+(en) Add tools sha1sum, md5sum and sha256sum.
 
 (de) Fehler wurden beseitigt und die Benutzerschnittstelle verbessert.
+
+
 
 ~~~~~~~~~~~~~~~
 GnuPG:        2.0.15

@@ -68,6 +68,12 @@ Section "-gpg4win" SEC_gpg4win
   Push "$INSTDIR\pub"
   Call AddToPath
 
+  # Install gpg4win included tools
+  SetOutPath "$INSTDIR"
+  File "${BUILD_DIR}/sha1sum.exe"
+  File "${BUILD_DIR}/sha256sum.exe"
+  File "${BUILD_DIR}/md5sum.exe"
+
 !endif
 
 SectionEnd

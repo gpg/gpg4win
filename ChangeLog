@@ -1,5 +1,12 @@
 2010-04-16  Werner Koch  <wk@g10code.com>
 
+	* src/sha1sum.c: New.
+	* src/Makefile.am (EXTRA_DIST): Add sha1sum.c and buld
+	sha1sum.exe, md5sum.exe and sha256sum.exe.
+	(sha1sum.exe, md5sum.exe, sha256sum.exe): New.
+	* src/inst-gpg4win.nsi: Install them.
+	* src/uninst-gpg4win.nsi: Uninstall them.
+
 	* patches/gpgme-1.2.0/05-is-socket.patch: New.
 
 2010-04-12  Werner Koch  <wk@g10code.com>

@@ -21,7 +21,7 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi config.site \
         installer-options.ini.in libiconv.def libintl.def loreley.mid \
         gpg4win-splash.wav gpgwrap.c exdll.h g4wihelp.c g4wihelp.nsi \
         inst-sections.nsi installer.nsi installer-finish.nsi  \
-	QtCore.pc QtGui.pc \
+	QtCore.pc QtGui.pc sha1sum.c \
         qt.conf kleowrap.c potomo Memento.nsh dirmngr.conf    \
         inst-gpg4win.nsi	   uninst-gpg4win.nsi	      \
         inst-atk.nsi               uninst-atk.nsi	      \
@@ -89,11 +89,12 @@ gpg4win_readme_ll = en de ar es fr ru
 
 README_files = $(addsuffix .txt,$(addprefix README.,$(gpg4win_readme_ll)))
 
+foosum_exe = sha1sum.exe md5sum.exe sha256sum.exe
 
 # Need to clean the dll because we bypassed automake.
 CLEANFILES = g4wihelp.dll versioninfo.txt $(README_files) \
              installer-options.ini NEWS.tmp versioninfo.tmp \
-	     gpgwrap.exe gpgwrap-2.exe kleowrap.exe
+	     gpgwrap.exe gpgwrap-2.exe kleowrap.exe $(foosum_exe)
 
 # Supported source packages.
 gpg4win_spkgs = glib libgpg-error gpgme gpgol gpgex \
@@ -477,12 +478,14 @@ installer-options.ini : $(top_srcdir)/src/installer-options.ini.in
 # So we have to pull a couple of strings to correct this.
 gpg4win-$(VERSION).exe: gpg4win.nsi $(common_nsi) stamps/stamp-final \
                         g4wihelp.dll gpgwrap.exe gpgwrap-2.exe kleowrap.exe \
+		        $(foosum_exe) \
 			$(README_files) installer-options.ini versioninfo.txt
 	$(MAKENSIS) -V3 -DBUILD_DIR=`pwd` -DTOP_SRCDIR=$(top_srcdir) \
            -DSRCDIR=$(srcdir) $(EXTRA_MAKENSIS_FLAGS) $(srcdir)/gpg4win.nsi
 
 gpg4win-light-$(VERSION).exe: gpg4win.nsi $(common_nsi) stamps/stamp-final \
                         g4wihelp.dll gpgwrap.exe gpgwrap-2.exe kleowrap.exe \
+		        $(foosum_exe) \
 			$(README_files) installer-options.ini versioninfo.txt
 	$(MAKENSIS) -V3 -DBUILD_DIR=`pwd` -DTOP_SRCDIR=$(top_srcdir) \
            -DSRCDIR=$(srcdir) $(EXTRA_MAKENSIS_FLAGS) \
@@ -490,6 +493,7 @@ gpg4win-light-$(VERSION).exe: gpg4win.nsi $(common_nsi) stamps/stamp-final \
 
 gpg4win-$(VERSION).wix: gpg4win.nsi $(common_nsi) stamps/stamp-final \
 			gpgwrap.exe gpgwrap-2.exe kleowrap.exe \
+		        $(foosum_exe) \
 			$(README_files) versioninfo.txt
 	perl make-msi.pl --guids $(srcdir)/make-msi.guids \
 		--manifest gpg4win-$(VERSION).files \
@@ -498,6 +502,7 @@ gpg4win-$(VERSION).wix: gpg4win.nsi $(common_nsi) stamps/stamp-final \
 
 gpg4win-light-$(VERSION).wix: gpg4win.nsi $(common_nsi) stamps/stamp-final \
 			gpgwrap.exe gpgwrap-2.exe kleowrap.exe \
+		        $(foosum_exe) \
 			$(README_files) versioninfo.txt
 	perl make-msi.pl --guids $(srcdir)/make-msi.guids \
 		--manifest gpg4win-light-$(VERSION).files \
@@ -533,6 +538,19 @@ gpgwrap-2.exe: gpgwrap.c
 kleowrap.exe: kleowrap.c
 	$(CC) -I. -I.. -DHAVE_CONFIG_H -O2 -mwindows -o $@ $^
 	$(STRIP) $@
+
+sha1sum.exe: sha1sum.c
+	$(CC) -O2 -o $@ $^
+	$(STRIP) $@
+
+md5sum.exe: sha1sum.c
+	$(CC) -DBUILD_MD5SUM -O2 -o $@ $^
+	$(STRIP) $@
+
+sha256sum.exe: sha1sum.c
+	$(CC) -DBUILD_SHA256SUM -O2 -o $@ $^
+	$(STRIP) $@
+
 
 if BUILD_SOURCE_INSTALLER
 all_src = gpg4win-src-$(VERSION).exe

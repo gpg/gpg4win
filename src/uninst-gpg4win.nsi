@@ -30,6 +30,11 @@ Section "-un.gpg4win"
   Push "$INSTDIR\pub"
   Call un.RemoveFromPath
 
+  # Delete gpg4win included tools
+  Delete "$INSTDIR\sha1sum.exe"
+  Delete "$INSTDIR\sha256sum.exe"
+  Delete "$INSTDIR\md5sum.exe"
+
   # Delete standard stuff.
   Delete "$INSTDIR\share\gpg4win\README.en.txt"
   Delete "$INSTDIR\share\gpg4win\README.de.txt"
