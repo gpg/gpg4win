@@ -1,3 +1,8 @@
+2010-03-16  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+
+	* manual/gpg4win-compendium-de.tex: Fix many spelling/grammar
+	mistakes and typos by external lector.
+
 2010-04-16  Werner Koch  <wk@g10code.com>
 
 	* website/Makefile.am (EXTRA_DIST): Fix newsarchive names.
