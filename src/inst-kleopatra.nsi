@@ -40,10 +40,14 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
   File ${prefix}/bin/libkleo.dll
   File ${prefix}/bin/libkleopatraclientcore.dll
   File ${prefix}/bin/libkleopatraclientgui.dll
+
+  SetOutPath "$INSTDIR\lib\kde4"
+
   File ${prefix}/lib/kde4/kcm_kleopatra.dll
 
   SetOutPath "$INSTDIR\share\applications\kde4"
 
+  File ${prefix}/share/applications/kde4/kleopatra.desktop
   File ${prefix}/share/applications/kde4/kleopatra_import.desktop
 
   SetOutPath "$INSTDIR\share\apps\kleopatra"
@@ -52,12 +56,12 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
 
   SetOutPath "$INSTDIR\share\apps\kleopatra\pics"
 
+  File ${prefix}/share/apps/kleopatra/pics/gpg4win-compact.png
+  File ${prefix}/share/apps/kleopatra/pics/gpg4win.png
   File ${prefix}/share/apps/kleopatra/pics/kleopatra_splashscreen.png
   File ${prefix}/share/apps/kleopatra/pics/kleopatra_splashscreen.svgz
   File ${prefix}/share/apps/kleopatra/pics/kleopatra_wizard.png
   File ${prefix}/share/apps/kleopatra/pics/kleopatra_wizard.svgz
-  File ${prefix}/share/apps/kleopatra/pics/gpg4win.png
-  File ${prefix}/share/apps/kleopatra/pics/gpg4win-compact.png
 
   SetOutPath "$INSTDIR\share\apps\kwatchgnupg"
 
@@ -71,6 +75,12 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
   SetOutPath "$INSTDIR\share\apps\libkleopatra\pics"
 
   File ${prefix}/share/apps/libkleopatra/pics/chiasmus_chi.png
+  File ${prefix}/share/apps/libkleopatra/pics/hi16-app-gpg.png
+  File ${prefix}/share/apps/libkleopatra/pics/hi16-app-gpgsm.png
+  File ${prefix}/share/apps/libkleopatra/pics/hi22-app-gpg.png
+  File ${prefix}/share/apps/libkleopatra/pics/hi22-app-gpgsm.png
+  File ${prefix}/share/apps/libkleopatra/pics/hi32-app-gpg.png
+  File ${prefix}/share/apps/libkleopatra/pics/hi32-app-gpgsm.png
   File ${prefix}/share/apps/libkleopatra/pics/key.png
   File ${prefix}/share/apps/libkleopatra/pics/key_bad.png
   File ${prefix}/share/apps/libkleopatra/pics/key_ok.png
@@ -81,46 +91,7 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
 
   File ${prefix}/share/config/libkleopatrarc
 
-  SetOutPath "$INSTDIR\share\icons\oxygen\128x128\apps"
-
-  File ${prefix}/share/icons/oxygen/128x128/apps/kleopatra.png
-
-  SetOutPath "$INSTDIR\share\icons\oxygen\16x16\apps"
-
-  File ${prefix}/share/icons/oxygen/16x16/apps/kleopatra.png
-
-  SetOutPath "$INSTDIR\share\icons\oxygen\22x22\apps"
-
-  File ${prefix}/share/icons/oxygen/22x22/apps/kleopatra.png
-
-  SetOutPath "$INSTDIR\share\icons\oxygen\32x32\apps"
-
-  File ${prefix}/share/icons/oxygen/32x32/apps/kleopatra.png
-
-  SetOutPath "$INSTDIR\share\icons\oxygen\48x48\apps"
-
-  File ${prefix}/share/icons/oxygen/48x48/apps/kleopatra.png
-
-  SetOutPath "$INSTDIR\share\icons\oxygen\64x64\apps"
-
-  File ${prefix}/share/icons/oxygen/64x64/apps/kleopatra.png
-
-  SetOutPath "$INSTDIR\share\icons\oxygen\scalable\apps"
-
-  File ${prefix}/share/icons/oxygen/scalable/apps/kleopatra.svgz
-
-  SetOutPath "$INSTDIR\share\kde4\services"
-
-  File ${prefix}/share/kde4/services/kleopatra_config_appear.desktop
-  File ${prefix}/share/kde4/services/kleopatra_config_dirserv.desktop
-  File ${prefix}/share/kde4/services/kleopatra_config_smimevalidation.desktop
-  File ${prefix}/share/kde4/services/kleopatra_config_gnupgsystem.desktop
-  File ${prefix}/share/kde4/services/kleopatra_signencryptfolders.desktop
-  File ${prefix}/share/kde4/services/kleopatra_decryptverifyfolders.desktop
-  File ${prefix}/share/kde4/services/kleopatra_signencryptfiles.desktop
-  File ${prefix}/share/kde4/services/kleopatra_decryptverifyfiles.desktop
-
-SetOutPath "$INSTDIR\share\doc\HTML\common"
+  SetOutPath "$INSTDIR\share\doc\HTML\common"
 
   File ${prefix}/share/doc/HTML/common/1.png
   File ${prefix}/share/doc/HTML/common/10.png
@@ -222,7 +193,50 @@ SetOutPath "$INSTDIR\share\doc\HTML\common"
   File ${prefix}/share/doc/HTML/en/kleopatra/menuview.html
   File ${prefix}/share/doc/HTML/en/kleopatra/menuwindow.html
 
+  SetOutPath "$INSTDIR\share\icons\oxygen\128x128\apps"
 
+  File ${prefix}/share/icons/oxygen/128x128/apps/kleopatra.png
+
+  SetOutPath "$INSTDIR\share\icons\oxygen\16x16\apps"
+
+  File ${prefix}/share/icons/oxygen/16x16/apps/kleopatra.png
+
+  SetOutPath "$INSTDIR\share\icons\oxygen\22x22\apps"
+
+  File ${prefix}/share/icons/oxygen/22x22/apps/kleopatra.png
+
+  SetOutPath "$INSTDIR\share\icons\oxygen\256x256\apps"
+
+  File ${prefix}/share/icons/oxygen/256x256/apps/kleopatra.png
+
+  SetOutPath "$INSTDIR\share\icons\oxygen\32x32\apps"
+
+  File ${prefix}/share/icons/oxygen/32x32/apps/kleopatra.png
+
+  SetOutPath "$INSTDIR\share\icons\oxygen\48x48\apps"
+
+  File ${prefix}/share/icons/oxygen/48x48/apps/kleopatra.png
+
+  SetOutPath "$INSTDIR\share\icons\oxygen\64x64\apps"
+
+  File ${prefix}/share/icons/oxygen/64x64/apps/kleopatra.png
+
+  SetOutPath "$INSTDIR\share\icons\oxygen\scalable\apps"
+
+  File ${prefix}/share/icons/oxygen/scalable/apps/kleopatra.svgz
+
+  SetOutPath "$INSTDIR\share\kde4\services"
+
+  File ${prefix}/share/kde4/services/kleopatra_config_appear.desktop
+  File ${prefix}/share/kde4/services/kleopatra_config_cryptooperations.desktop
+  File ${prefix}/share/kde4/services/kleopatra_config_dirserv.desktop
+  File ${prefix}/share/kde4/services/kleopatra_config_gnupgsystem.desktop
+  File ${prefix}/share/kde4/services/kleopatra_config_smimevalidation.desktop
+  File ${prefix}/share/kde4/services/kleopatra_decryptverifyfiles.desktop
+  File ${prefix}/share/kde4/services/kleopatra_decryptverifyfolders.desktop
+  File ${prefix}/share/kde4/services/kleopatra_signencryptfiles.desktop
+  File ${prefix}/share/kde4/services/kleopatra_signencryptfolders.desktop
+  
 !endif
 ${MementoSectionEnd}
 

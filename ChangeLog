@@ -1,3 +1,10 @@
+2010-04-21  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+
+	* packages/packages.current, src/uninst-kleopatra.nsi,
+        src/inst-kleopatra.nsi: Update kdelibs and kleopatra. 
+        Restructure kleopatra nsi files to reduce diff with src/pkg-to-nsi.pl 
+        script.
+
 2010-04-21  Marcus Brinkmann  <marcus@g10code.de>
 
 	* packages/packages.current: Update gpa, gpgol, gpgex, libassuan,
