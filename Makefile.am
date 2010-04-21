@@ -35,6 +35,7 @@ EXTRA_DIST = autogen.sh README.SVN ONEWS \
         patches/gpgme-1.2.0/01-w32-io-threads.patch \
 	patches/gpgme-1.2.0/02-inv-signer.patch \
 	patches/gpgme-1.2.0/03-w32-socket.patch \
+        patches/gpgme-1.2.0/05-is-socket.patch \
 	patches/winpt/01-gpg-path.patch \
 	patches/gpgex/01-no-checksums.patch \
 	patches/gpgex-0.9.5/01-default-no-suffix.patch \
