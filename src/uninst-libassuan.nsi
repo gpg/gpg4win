@@ -31,7 +31,7 @@ Section "-un.libassuan"
   Push "${gpg4win_pkg_libassuan}"
   Call un.SourceDelete
 !else
-  # Nothing to uninstall as we link static.
+  Delete "$INSTDIR\libassuan-0.dll"
 
 !endif
 SectionEnd

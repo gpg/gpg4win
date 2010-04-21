@@ -1,3 +1,12 @@
+2010-04-21  Marcus Brinkmann  <marcus@g10code.de>
+
+	* packages/packages.current: Update gpa, gpgol, gpgex, libassuan,
+	gnupg, dirmngr, gpgme and scute.	
+	* src/Makefile.am (gpg4win_pkg_libassuan_configure): Instead of
+	disable-shared, use enable-static.  Also, don't set pth path.
+	* src/inst-libassuan.nsi: Install libassuan-0.dll.
+	* src/uninst-libassuan.nsi: Uninstall it.	
+
 2010-04-16  Werner Koch  <wk@g10code.com>
 
 	* src/sha1sum.c: New.

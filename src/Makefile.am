@@ -164,8 +164,7 @@ define gpg4win_pkg_libgpg_error_post_install
 endef
 
 gpg4win_pkg_libassuan_configure =  --silent \
-  --disable-shared \
-  --with-pth-prefix=$(idir)
+  --enable-static
 
 gpg4win_pkg_libksba_configure = --silent \
   --with-gpg-error-prefix=$(idir)

@@ -34,7 +34,15 @@ Section "-libassuan" SEC_libassuan
 !ifdef SOURCES
   File "${gpg4win_pkg_libassuan}"
 !else
-  # Nothing to install as we link statically.
+  ClearErrors
+  SetOverwrite try
+  File "${prefix}/bin/libassuan-0.dll"
+
+  SetOverwrite lastused
+  ifErrors 0 +3
+      File /oname=libassuan-0.dll.tmp "${prefix}/bin/libassuan-0.dll"
+      Rename /REBOOTOK libassuan-0.dll.tmp libassuan-0.dll
+
 
 !endif
 SectionEnd
