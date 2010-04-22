@@ -1,4 +1,9 @@
-2010-03-16  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+2010-03-22  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+
+	* manual/gpg4win-compendium-de.tex: Normalize using of '...' an 
+	ldots command.
+
+2010-04-19  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
 	* manual/gpg4win-compendium-de.tex: Fix many spelling/grammar
 	mistakes and typos by external lector.
