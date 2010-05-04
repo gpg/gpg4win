@@ -289,10 +289,10 @@ gpg4win_pkg_scute_configure = --silent \
 gpg4win_pkg_paperkey_configure = --silent
 
 # Supported make-only source packages.
-gpg4win_mpkgs = pthreads-w32 bzip2
+gpg4win_mpkgs = pthreads-w32 bzip2 zlib
 
 # Extra options for the make invocations for individual packages.
-# make_flags is used fur building, make_args_inst is used for installing.
+# make_flags is used for building, make_args_inst is used for installing.
 gpg4win_pkg_pthreads_w32_make_args = \
   prefix=$(idir) CROSS=$(host_alias)- clean GC-inlined
 
@@ -305,9 +305,14 @@ gpg4win_pkg_bzip2_make_args = \
 gpg4win_pkg_bzip2_make_args_inst = \
   PREFIX=$$$${pkgidir} CC=$(CC) AR=$(AR) RANLIB=$(RANLIB)
 
+gpg4win_pkg_zlib_make_args = -fwin32/Makefile.gcc PREFIX=i586-mingw32msvc- IMPLIB=libz.dll.a
+
+gpg4win_pkg_zlib_make_args_inst = -fwin32/Makefile.gcc install \
+	BINARY_PATH=$$$${pkgidir}/bin INCLUDE_PATH=$$$${pkgidir}/include \
+	LIBRARY_PATH=$$$${pkgidir}/lib SHARED_MODE=1 IMPLIB=libz.dll.a
 
 # Supported binary packages.
-gpg4win_bpkgs = libiconv gettext pkgconfig zlib libpng jpeg pango cairo \
+gpg4win_bpkgs = libiconv gettext pkgconfig libpng jpeg pango cairo \
 	        atk gtk+ gpgee crypt regex qt kdesupport oxygen-icons kdelibs \
 		kleopatra bsfilter
 
@@ -332,14 +337,14 @@ endef
 
 # Zlib needs some special magic to generate a libtool file.
 define gpg4win_pkg_zlib_post_install
-(cd $$$${pkgidir_dev};					\
-echo "dlname='../bin/zlib1.dll'" > lib/libz.la;	\
+(cd $$$${pkgidir};					\
+echo "dlname='../bin/zlib1.dll'" > lib/libz.la;		\
 echo "library_names='libz.dll.a'" >> lib/libz.la;	\
 echo "old_library='libz.a'" >> lib/libz.la;		\
 echo "dependency_libs=''" >> lib/libz.la;		\
 echo "current=1" >> lib/libz.la;			\
 echo "age=2" >> lib/libz.la;				\
-echo "revision=3" >> lib/libz.la;			\
+echo "revision=5" >> lib/libz.la;			\
 echo "installed=yes" >> lib/libz.la;			\
 echo "shouldnotlink=no" >> lib/libz.la;			\
 echo "dlopen=''" >> lib/libz.la;			\

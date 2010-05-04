@@ -28,16 +28,15 @@ file libiconv/libiconv-1.9.1.tar.gz
 chk  f130c93fdf20903ca21bace8b8822f46468c9d65
 
 
+server http://zlib.net
+
+file zlib-1.2.5.tar.gz
+chk  8e8b93fa5eb80df1afe5422309dca42964562d7e
+
+
 # Gnuwin32 packages orginally hosted at sf.net but mirrored at g10code
 # for easier download.
 server ftp://ftp.g10code.com/mirrors/gnuwin32
-
-file zlib-1.2.3-bin.zip
-chk  becbcaf5076e307e743b1edc6a5645849eba9ebc
-file zlib-1.2.3-lib.zip
-chk  fe2ee77293da3361b1f2710d1bd62f27b2ae64b0
-file zlib-1.2.3-src.zip
-chk  0e18fcd7f1a585f825c210a1bb2456b4aa8fcc0d
 
 # file libpng-1.2.8-bin.zip
 # chk  32876271847afed0ed721fb1b5913a2ce5f25168

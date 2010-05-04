@@ -195,7 +195,7 @@ gpg4win_dup_sources=""
 GPG4WIN_BPKG_GNU([libiconv])
 GPG4WIN_BPKG_GNU([gettext], [libiconv])
 
-GPG4WIN_BPKG_GNUWIN32([zlib])
+GPG4WIN_SPKG([zlib])
 GPG4WIN_BPKG_GNUWIN32_LIB([crypt])
 GPG4WIN_BPKG_GNUWIN32([regex])
 GPG4WIN_BPKG_GNUWIN32([jpeg])
