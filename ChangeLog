@@ -1,5 +1,36 @@
 2010-05-04  Marcus Brinkmann  <marcus@g10code.de>
 
+	* packages/packages.current: Update to glib 2.24.0, atk 1.30.0,
+	pango 1.28.0, cairo 1.8.10, gtk+ 2.16.6.  Add expat, freetype and
+	fontconfig.  Update to libpng 1.4.1 and convert to source package.
+	* configure.ac: Add expat, freetype and fontconfig.  Make libpng
+	source package.
+	* include/config.nsi.in: Likewise.  Remove libpng dev and src
+	variables.
+	* src/Makefile.am (EXTRA_DIST): Add inst-expat.nsi,
+	uninst-expat.nsi, inst-freetype.nsi, uninst-freetype.nsi,
+	inst-fontconfig.nsi, uninst-fontconfig.nsi.
+	(gpg4win_pkg_freetype_post_install,
+	gpg4win_pkg_fontconfig_post_install): New.
+	(gpg4win_bpkgs): Add expat, freetype and fontconfig.
+	(gpg4win_spkgs): Add libpng.
+	(gpg4win_pkg_libpng_configure): New.
+	(gpg4win_pkg_libpng_post_install): Fix location.
+	(gpg4win_pkg_zlib_post_install): Include comment which is tested
+	by new libtool versions as safety check.
+	* src/inst-sections.nsi: Add support for expat, freetype and
+	fontconfig.
+	* src/inst-expat.nsi, src/uninst-expat.nsi, src/inst-freetype.nsi,
+	src/uninst-freetype.nsi, src/inst-fontconfig.nsi,
+	src/uninst-fontconfig.nsi: New files.
+	* src/uninst-bzip2.nsi, src/inst-zlib.nsi, src/uninst-zlib.nsi:
+	Fix source package file name.
+	* src/inst-libpng.nsi, src/uninst-libpng.nsi: Likewise, also
+	remove debug install and adjust shared library name.
+	* src/inst-gtk+.nsi: Remove pixbufloader modules (now included in
+	main loader) and install libgail.dll.
+	* src/uninst-gtk+.nsi: Uninstall libgail.dll.
+
 	* packages/packages.current: Update zlib to 1.2.5, now directly as
 	source package from zlib.net.
 	* configure.ac: Make zlib a source package.

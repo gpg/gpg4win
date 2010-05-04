@@ -30,7 +30,7 @@ Section "-zlib" SEC_zlib
 !endif
   SetOutPath "$INSTDIR"
 !ifdef SOURCES
-  File "${gpg4win_pkg_zlib_src}"
+  File "${gpg4win_pkg_zlib}"
 !else
   File ${prefix}/bin/zlib1.dll
 !endif

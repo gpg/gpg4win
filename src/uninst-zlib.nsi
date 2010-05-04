@@ -27,7 +27,7 @@
 ; Uninstaller section.
 Section "-un.zlib"
 !ifdef SOURCES
-  Push "${gpg4win_pkg_zlib_src}"
+  Push "${gpg4win_pkg_zlib}"
   Call un.SourceDelete
 !else
   Delete "$INSTDIR\zlib1.dll"

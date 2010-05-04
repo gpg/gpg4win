@@ -30,18 +30,8 @@ Section "-libpng" SEC_libpng
 !endif
   SetOutPath "$INSTDIR"
 !ifdef SOURCES
-  File "${gpg4win_pkg_libpng_src}"
+  File "${gpg4win_pkg_libpng}"
 !else
-  File ${prefix}/bin/libpng12-0.dll
-!ifdef DEBUG
-  # We install a couple of binaries that may be useful for testing.
-  # File ${prefix}/bin/png2pnm.exe
-  # File ${prefix}/bin/pngtest.exe
-  # File ${prefix}/bin/pnm2png.exe
-  # File ${prefix}/bin/rpng-win.exe
-  # File ${prefix}/bin/rpng2-win.exe
-  # File ${prefix}/bin/VisualPng.exe
-  # File ${prefix}/bin/wpng.exe
-!endif
+  File ${prefix}/bin/libpng14-14.dll
 !endif
 SectionEnd

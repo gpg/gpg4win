@@ -62,6 +62,9 @@ Section "-un.gtk+"
   RMDir "$INSTDIR\lib\gtk-2.0\2.4.0"
   RMDir "$INSTDIR\lib\gtk-2.0\2.10.0"
 
+  Delete "$INSTDIR\lib\gtk-2.0\modules\*.dll"
+  RMDir "$INSTDIR\lib\gtk-2.0\modules"
+
   RMDir "$INSTDIR\lib\gtk-2.0"
 
   Delete "$INSTDIR\lib\locale\de\LC_MESSAGES\gtk20.mo"

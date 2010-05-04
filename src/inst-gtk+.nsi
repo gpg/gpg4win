@@ -45,38 +45,12 @@ Section "-gtk+" SEC_gtk_
   File ${prefix}/etc/gtk-2.0/gtk.immodules
   File ${prefix}/etc/gtk-2.0/im-multipress.conf
 
-  SetOutPath "$INSTDIR\lib\gtk-2.0\2.10.0\loaders"
-  File ${prefix}/lib/gtk-2.0/2.10.0/loaders/libpixbufloader-ani.dll
-  File ${prefix}/lib/gtk-2.0/2.10.0/loaders/libpixbufloader-bmp.dll
-  File ${prefix}/lib/gtk-2.0/2.10.0/loaders/libpixbufloader-gif.dll
-  File ${prefix}/lib/gtk-2.0/2.10.0/loaders/libpixbufloader-icns.dll
-  File ${prefix}/lib/gtk-2.0/2.10.0/loaders/libpixbufloader-ico.dll
-  File ${prefix}/lib/gtk-2.0/2.10.0/loaders/libpixbufloader-jpeg.dll
-  File ${prefix}/lib/gtk-2.0/2.10.0/loaders/libpixbufloader-pcx.dll
-  File ${prefix}/lib/gtk-2.0/2.10.0/loaders/libpixbufloader-png.dll
-  File ${prefix}/lib/gtk-2.0/2.10.0/loaders/libpixbufloader-pnm.dll
-  File ${prefix}/lib/gtk-2.0/2.10.0/loaders/libpixbufloader-ras.dll
-  File ${prefix}/lib/gtk-2.0/2.10.0/loaders/libpixbufloader-tga.dll
-  File ${prefix}/lib/gtk-2.0/2.10.0/loaders/libpixbufloader-tiff.dll
-  File ${prefix}/lib/gtk-2.0/2.10.0/loaders/libpixbufloader-wbmp.dll
-  File ${prefix}/lib/gtk-2.0/2.10.0/loaders/libpixbufloader-xbm.dll
-  File ${prefix}/lib/gtk-2.0/2.10.0/loaders/libpixbufloader-xpm.dll
-
-#  SetOutPath "$INSTDIR\lib\gtk-2.0\2.10.0\immodules"
-#  File ${prefix}/lib/gtk-2.0/2.10.0/immodules/im-am-et.dll
-#  File ${prefix}/lib/gtk-2.0/2.10.0/immodules/im-cedilla.dll
-#  File ${prefix}/lib/gtk-2.0/2.10.0/immodules/im-cyrillic-translit.dll
-#  File ${prefix}/lib/gtk-2.0/2.10.0/immodules/im-ime.dll
-#  File ${prefix}/lib/gtk-2.0/2.10.0/immodules/im-inuktitut.dll
-#  File ${prefix}/lib/gtk-2.0/2.10.0/immodules/im-ipa.dll
-#  File ${prefix}/lib/gtk-2.0/2.10.0/immodules/im-thai.dll
-#  File ${prefix}/lib/gtk-2.0/2.10.0/immodules/im-ti-er.dll
-#  File ${prefix}/lib/gtk-2.0/2.10.0/immodules/im-ti-et.dll
-#  File ${prefix}/lib/gtk-2.0/2.10.0/immodules/im-viqr.dll
-
   SetOutPath "$INSTDIR\lib\gtk-2.0\2.10.0\engines"
   File ${prefix}/lib/gtk-2.0/2.10.0/engines/libpixmap.dll
   File ${prefix}/lib/gtk-2.0/2.10.0/engines/libwimp.dll
+
+  SetOutPath "$INSTDIR\lib\gtk-2.0\modules"
+  File ${prefix}/lib/gtk-2.0/modules/libgail.dll
 
   SetOutPath "$INSTDIR\share\themes\Default\gtk-2.0-key"
   File ${prefix}/share/themes/Default/gtk-2.0-key/gtkrc

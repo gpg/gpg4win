@@ -1,4 +1,4 @@
-# uninst-bzip2.nsi - Installer snippet.        -*- coding: latin-1; -*-
+# inst-expat.nsi - Installer snippet for Expat.     -*- coding: latin-1; -*-
 # Copyright (C) 2007 g10 Code GmbH
 # 
 # This file is part of Gpg4win.
@@ -15,22 +15,25 @@
 # 
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
-# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
-# MA 02110-1301, USA.
-
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,
+# USA.
 
 !ifdef prefix
 !undef prefix
 !endif
-!define prefix ${ipdir}/bzip2-${gpg4win_pkg_bzip2_version}
+!define prefix ${ipdir}/expat-${gpg4win_pkg_expat_version}
 
-
-; Uninstaller section.
-Section "-un.bzip2"
-!ifdef SOURCES
-  Push "${gpg4win_pkg_bzip2}"
-  Call un.SourceDelete
+!ifdef DEBUG
+Section "expat" SEC_expat
 !else
-  # Nothing to uninstall
+Section "-expat" SEC_expat
+!endif
+  SetOutPath "$INSTDIR"
+!ifdef SOURCES
+  File "${gpg4win_pkg_expat_src}"
+!else
+
+  File ${prefix}/bin/libexpat-1.dll
+
 !endif
 SectionEnd

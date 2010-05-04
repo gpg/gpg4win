@@ -101,6 +101,15 @@
 !ifdef HAVE_PKG_LIBGCRYPT
 !include "inst-libgcrypt.nsi"
 !endif
+!ifdef HAVE_PKG_EXPAT
+!include "inst-expat.nsi"
+!endif
+!ifdef HAVE_PKG_FREETYPE
+!include "inst-freetype.nsi"
+!endif
+!ifdef HAVE_PKG_FONTCONFIG
+!include "inst-fontconfig.nsi"
+!endif
 !ifdef HAVE_PKG_CAIRO
 !include "inst-cairo.nsi"
 !endif
@@ -301,6 +310,15 @@
 !endif
 !ifdef HAVE_PKG_CAIRO
 !include "uninst-cairo.nsi"
+!endif
+!ifdef HAVE_PKG_FONTCONFIG
+!include "uninst-fontconfig.nsi"
+!endif
+!ifdef HAVE_PKG_FREETYPE
+!include "uninst-freetype.nsi"
+!endif
+!ifdef HAVE_PKG_EXPAT
+!include "uninst-expat.nsi"
 !endif
 !ifdef HAVE_PKG_LIBGCRYPT
 !include "uninst-libgcrypt.nsi"
@@ -607,6 +625,15 @@ Function CalcDepends
 !endif
 !ifdef HAVE_PKG_PANGO
   !insertmacro UnselectSection ${SEC_pango}
+!endif
+!ifdef HAVE_PKG_EXPAT
+  !insertmacro UnselectSection ${SEC_expat}
+!endif
+!ifdef HAVE_PKG_FREETYPE
+  !insertmacro UnselectSection ${SEC_freetype}
+!endif
+!ifdef HAVE_PKG_FONTCONFIG
+  !insertmacro UnselectSection ${SEC_fontconfig}
 !endif
 !ifdef HAVE_PKG_CAIRO
   !insertmacro UnselectSection ${SEC_cairo}
@@ -1003,8 +1030,31 @@ Function CalcDepends
   have_cairo:
   !insertmacro SelectSection ${SEC_glib}
   !insertmacro SelectSection ${SEC_pkgconfig}
+  !insertmacro SelectSection ${SEC_expat}
+  !insertmacro SelectSection ${SEC_freetype}
+  !insertmacro SelectSection ${SEC_fontconfig}
   skip_cairo:
 !endif
+
+!ifdef HAVE_PKG_FONTCONFIG
+  !insertmacro SectionFlagIsSet ${SEC_fontconfig} \
+		${SF_SELECTED} have_fontconfig skip_fontconfig
+  have_fontconfig:
+  !insertmacro SelectSection ${SEC_pkgconfig}
+  !insertmacro SelectSection ${SEC_freetype}
+  skip_fontconfig:
+!endif
+
+!ifdef HAVE_PKG_FREETYPE
+  !insertmacro SectionFlagIsSet ${SEC_freetype} \
+		${SF_SELECTED} have_freetype skip_freetype
+  have_freetype:
+  !insertmacro SelectSection ${SEC_pkgconfig}
+  !insertmacro SelectSection ${SEC_expat}
+  skip_freetype:
+!endif
+
+# Package "expat" has no dependencies.
 
 !ifdef HAVE_PKG_PANGO
   !insertmacro SectionFlagIsSet ${SEC_pango} \

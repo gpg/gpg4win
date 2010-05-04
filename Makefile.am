@@ -28,6 +28,7 @@ EXTRA_DIST = autogen.sh README.SVN ONEWS \
         patches/glib-2.12.12/02-gspawn-w32.patch \
         patches/glib-2.12.12/03-gspawn-w32-fixup.patch \
         patches/glib-2.20.0/01-socket.patch \
+        patches/glib-2.24.0/01-socket.patch \
 	patches/gpgme/01-gpg2.patch \
 	patches/gpgme-1.1.7/01-registry.patch \
 	patches/gpgme-1.1.7/02-extern-umlaute.patch \

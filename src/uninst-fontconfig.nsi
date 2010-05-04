@@ -1,4 +1,4 @@
-# uninst-bzip2.nsi - Installer snippet.        -*- coding: latin-1; -*-
+# uninst-fontconfig.nsi - Installer snippet for fontconfig.   -*- coding: latin-1; -*-
 # Copyright (C) 2007 g10 Code GmbH
 # 
 # This file is part of Gpg4win.
@@ -15,22 +15,26 @@
 # 
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
-# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
-# MA 02110-1301, USA.
-
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,
+# USA.
 
 !ifdef prefix
 !undef prefix
 !endif
-!define prefix ${ipdir}/bzip2-${gpg4win_pkg_bzip2_version}
+!define prefix ${ipdir}/fontconfig-${gpg4win_pkg_fontconfig_version}
 
 
 ; Uninstaller section.
-Section "-un.bzip2"
+Section "-un.fontconfig"
 !ifdef SOURCES
-  Push "${gpg4win_pkg_bzip2}"
+  Push "${gpg4win_pkg_fontconfig_src}"
   Call un.SourceDelete
 !else
-  # Nothing to uninstall
+  Delete "$INSTDIR\libfontconfig-1.dll"
+  Delete "$INSTDIR\etc\fonts\fonts.conf"
+  RMDir "$INSTDIR\etc\fonts"
+  RMDir "$INSTDIR\etc"
+  RMDir "$INSTDIR"
+
 !endif
 SectionEnd

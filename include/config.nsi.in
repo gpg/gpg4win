@@ -177,8 +177,6 @@
 @HAVE_PKG_ZLIB@
 !define gpg4win_pkg_zlib @gpg4win_pkg_zlib@
 !define gpg4win_pkg_zlib_version @gpg4win_pkg_zlib_version@
-!define gpg4win_pkg_zlib_dev @gpg4win_pkg_zlib_dev@
-!define gpg4win_pkg_zlib_src @gpg4win_pkg_zlib_src@
 
 @HAVE_PKG_CRYPT@
 !define gpg4win_pkg_crypt @gpg4win_pkg_crypt@
@@ -201,8 +199,6 @@
 @HAVE_PKG_LIBPNG@
 !define gpg4win_pkg_libpng @gpg4win_pkg_libpng@
 !define gpg4win_pkg_libpng_version @gpg4win_pkg_libpng_version@
-!define gpg4win_pkg_libpng_dev @gpg4win_pkg_libpng_dev@
-!define gpg4win_pkg_libpng_src @gpg4win_pkg_libpng_src@
 
 @HAVE_PKG_JPEG@
 !define gpg4win_pkg_jpeg @gpg4win_pkg_jpeg@
@@ -226,6 +222,24 @@
 !define gpg4win_pkg_atk_version @gpg4win_pkg_atk_version@
 !define gpg4win_pkg_atk_dev @gpg4win_pkg_atk_dev@
 !define gpg4win_pkg_atk_src @gpg4win_pkg_atk_src@
+
+@HAVE_PKG_EXPAT@
+!define gpg4win_pkg_expat @gpg4win_pkg_expat@
+!define gpg4win_pkg_expat_version @gpg4win_pkg_expat_version@
+!define gpg4win_pkg_expat_dev @gpg4win_pkg_expat_dev@
+!define gpg4win_pkg_expat_src @gpg4win_pkg_expat_src@
+
+@HAVE_PKG_FREETYPE@
+!define gpg4win_pkg_freetype @gpg4win_pkg_freetype@
+!define gpg4win_pkg_freetype_version @gpg4win_pkg_freetype_version@
+!define gpg4win_pkg_freetype_dev @gpg4win_pkg_freetype_dev@
+!define gpg4win_pkg_freetype_src @gpg4win_pkg_freetype_src@
+
+@HAVE_PKG_FONTCONFIG@
+!define gpg4win_pkg_fontconfig @gpg4win_pkg_fontconfig@
+!define gpg4win_pkg_fontconfig_version @gpg4win_pkg_fontconfig_version@
+!define gpg4win_pkg_fontconfig_dev @gpg4win_pkg_fontconfig_dev@
+!define gpg4win_pkg_fontconfig_src @gpg4win_pkg_fontconfig_src@
 
 @HAVE_PKG_CAIRO@
 !define gpg4win_pkg_cairo @gpg4win_pkg_cairo@
