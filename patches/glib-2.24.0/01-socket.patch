@@ -1,0 +1,92 @@
+#! /bin/sh
+patch -p1 -f $* < $0
+exit $?
+
+Fix a couple of buglets in the I/O channel implementation.
+
+diff -rup glib-2.20.0-orig/glib/giowin32.c glib-2.20.0/glib/giowin32.c
+--- glib-2.20.0-orig/glib/giowin32.c	2009-03-13 05:09:59.000000000 +0100
++++ glib-2.20.0/glib/giowin32.c	2009-04-08 15:24:59.000000000 +0200
+@@ -285,7 +285,7 @@ g_io_channel_win32_init (GIOWin32Channel
+ 
+   channel->event_mask = 0;
+   channel->last_events = 0;
+-  channel->event = NULL;
++  channel->event = WSA_INVALID_EVENT;
+   channel->write_would_have_blocked = FALSE;
+   channel->ever_writable = FALSE;
+ }
+@@ -1144,7 +1144,7 @@ g_io_win32_free (GIOChannel *channel)
+ 	  g_free (emsg);
+ 	}
+ 
+-  if (win32_channel->event)
++  if (win32_channel->event != WSA_INVALID_EVENT)
+     if (!WSACloseEvent (win32_channel->event))
+       if (win32_channel->debug)
+ 	{
+@@ -1595,7 +1595,7 @@ g_io_win32_sock_create_watch (GIOChannel
+   
+   watch->condition = condition;
+ 
+-  if (win32_channel->event == 0)
++  if (win32_channel->event == WSA_INVALID_EVENT)
+     win32_channel->event = WSACreateEvent ();
+ 
+   watch->pollfd.fd = (gintptr) win32_channel->event;
+@@ -2161,7 +2161,54 @@ g_io_channel_win32_make_pollfd (GIOChann
+       break;
+ 
+     case G_IO_WIN32_SOCKET:
+-      fd->fd = (gintptr) WSACreateEvent ();
++      if (win32_channel->event == WSA_INVALID_EVENT)
++	win32_channel->event = WSACreateEvent ();
++      fd->fd = (gintptr) win32_channel->event;
++
++      if (fd->fd == (gintptr) WSA_INVALID_EVENT)
++	{
++	  gchar *emsg = g_win32_error_message (GetLastError ());
++	  
++	  g_error ("Error creating event: %s", emsg);
++	  g_free (emsg);
++	}
++      else
++	{
++	  int event_mask = 0;
++
++	  if (condition & G_IO_IN)
++	    event_mask |= (FD_READ | FD_ACCEPT);
++	  if (condition & G_IO_OUT)
++	    event_mask |= (FD_WRITE | FD_CONNECT);
++	  event_mask |= FD_CLOSE;
++
++	  ResetEvent ((WSAEVENT) fd->fd);
++
++	  if (win32_channel->debug)
++	    g_print ("WSAEventSelect(%d,%p,{%s})",
++		     win32_channel->fd, (HANDLE) fd->fd,
++		     event_mask_to_string (event_mask));
++	  if (WSAEventSelect (win32_channel->fd, (HANDLE) fd->fd,
++			      event_mask) == SOCKET_ERROR)
++	    if (win32_channel->debug)
++	      {
++		gchar *emsg = g_win32_error_message (WSAGetLastError ());
++
++		g_print (" failed: %s", emsg);
++		g_free (emsg);
++	      }
++	  if (win32_channel->debug)
++	    g_print ("\n");
++
++	  if ((event_mask & FD_WRITE) &&
++	      win32_channel->ever_writable &&
++	      !win32_channel->write_would_have_blocked)
++	    {
++	      if (win32_channel->debug)
++		g_print ("WSASetEvent(%p)\n", (WSAEVENT) fd->fd);
++	      WSASetEvent ((WSAEVENT) fd->fd);
++	    }
++	}
+       break;
+       
+     case G_IO_WIN32_WINDOWS_MESSAGES:
