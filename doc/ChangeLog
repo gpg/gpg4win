@@ -1,4 +1,7 @@
 2010-05-07  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+	* logo/gpg4win-nsis-wizard_install-uninstall-164x314.xcf, 
+	logo/gpg4win-nsis-header_install-uninstall-150x57.xcf:
+	Add gimp source file for nsis wizard and header image.
 
 	* website/documentation.htm4, website/documentation-de.htm4:
 	Update compendium release month.
