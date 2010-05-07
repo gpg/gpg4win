@@ -163,16 +163,15 @@ Das Gpg4win-Kompendium}
     }
     % Authors
     Eine Veröffentlichung des Gpg4win-Projekts\\
-      \small Basierend auf einem Original von
+      \small Basierend auf einer Fassung von
     \T\\
-      \small Manfred J. Heinze, Karl Bihlmeier, Isabel Kramer,
+      \small Ute Bahn, Karl Bihlmeier, Manfred J. Heinze,
     \T\\[-0.2cm]
-      \small Dr. Francis Wray und Ute Bahn.
+      \small Isabel Kramer und Dr. Francis Wray.
     \\[0.2cm]
-      \small Überarbeitet von
+      \small Grundlegend überarbeitet von
     \T\\
-      \small Werner Koch, Emanuel Schütze, Dr. Jan-Oliver Wagner und
-      Florian v. Samson.
+      \small Werner Koch, Florian v. Samson, Emanuel Schütze und Dr. Jan-Oliver Wagner.
 }
 
 \date{Version \compendiumVersionDE~vom \compendiumDateDE
@@ -224,10 +223,10 @@ http://www.gnu.org/licenses/translations.html.
 Das Gpg4win-Kompendium besteht aus drei Teilen:
 
 \begin{itemize}
-\item \textbf{Teil~\ref{part:Einsteiger} "`Für Einsteiger"'}: Der
+\item \textbf{Teil~\link*{1}[\ref{part:Einsteiger}]{part:Einsteiger} "`Für Einsteiger"'}: Der
     Schnelleinstieg in Gpg4win.
 
-\item \textbf{Teil~\ref{part:Fortgeschrittene} "`Für
+\item \textbf{Teil~\link*{2}[\ref{part:Fortgeschrittene}]{part:Fortgeschrittene} "`Für
     Fortgeschrittene"'}:
     Das Hintergrundwissen zu Gpg4win.
 
@@ -235,7 +234,7 @@ Das Gpg4win-Kompendium besteht aus drei Teilen:
     Gpg4win.\\
 \end{itemize}
 
-\textbf{Teil~\ref{part:Einsteiger} "`Für Einsteiger"'} führt Sie kurz
+\textbf{Teil~\link*{1}[\ref{part:Einsteiger}]{part:Einsteiger} "`Für Einsteiger"'} führt Sie kurz
 und knapp durch die Installation und die alltägliche Benutzung der
 Gpg4win-Programmkomponenten.  Der Übungsroboter \textbf{Adele} wird
 Ihnen dabei behilflich sein und ermöglicht Ihnen, die \Email{}-Ver-
@@ -246,7 +245,7 @@ Der Zeitbedarf für das Durcharbeiten des Schnelleinstiegs hängt unter
 anderem davon ab, wie gut Sie sich mit Ihrem PC und Windows auskennen.
 Sie sollten sich in etwa eine Stunde Zeit nehmen.\\
 
-\textbf{Teil~\ref{part:Fortgeschrittene} "`Für Fortgeschrittene"'}
+\textbf{Teil~\link*{2}[\ref{part:Fortgeschrittene}]{part:Fortgeschrittene} "`Für Fortgeschrittene"'}
 liefert Hintergrundwissen, das Ihnen die grundlegenden Mechanismen von
 Gpg4win verdeutlicht und die etwas seltener benutzten Fähigkeiten
 erläutert.
@@ -274,18 +273,18 @@ In diesem Kompendium werden folgende Textauszeichnungen benutzt:
 
         Kursiv werden vereinzelt auch einzelne Wörter im Text gesetzt,
         wenn deren Bedeutung in einem Satz betont, das
-        Schriftbild aber nicht durch die Auszeichnung "`fett"' gestört
+        Schriftbild aber nicht durch die Auszeichnung \textbf{fett} gestört
         werden soll (z.B.: \textit{nur} OpenPGP).
 
-    \item \textbf{Fett} wird für einzelne Wörter oder Sätze verwendet,
+    \item \textbf{Fett} werden einzelne Wörter oder Sätze gesetzt,
         die besonders wichtig und damit hervorzuheben sind.  Diese
         Auszeichnung unterstützt den Leser bei der schnelleren
         Erfassung hervorgehobener Schlüsselbegriffe und wichtiger
         Passagen.
 
-    \item \texttt{Feste Laufweite} ist für alle Dateinamen,
+    \item \texttt{Feste Laufweite} wird für alle Dateinamen,
         Pfadangaben, URLs, Quellcode sowie Ein- und Ausgaben (z.B.
-        von Kommandozeilen) reserviert.
+        von Kommandozeilen) verwendet.
 \end{itemize}
 
 \clearpage
@@ -304,14 +303,16 @@ In diesem Kompendium werden folgende Textauszeichnungen benutzt:
 
 \chapter{Gpg4win -- Kryptografie für alle}
 
-Was ist Gpg4win? Lassen wir diese Frage einfach von der deutschen
-Wikipedia beantworten: 
-
-Gpg4win ist ein Installationspaket für Windows (2000/XP/2003/Vista)
+Was ist Gpg4win? Die deutsche Wikipedia beantwortet diese Frage so: 
+\begin{quote}
+    \textit{Gpg4win ist ein Installationspaket für Windows (2000/XP/2003/Vista)
 mit Computer-Programmen und Handbüchern zur \Email{}- und
-Datei-Verschlüsselung.  Dazu gehören die Verschlüsselungs-Soft\-ware
+Dateiverschlüsselung.  Dazu gehören die Verschlüsselungs-Soft\-ware
 GnuPG sowie mehrere Anwendungen und die Dokumentation.  Gpg4win selbst
-und die in \linebreak Gpg4win enthaltenen Programme sind Freie Software.
+und die in Gpg4win enthaltenen Programme sind Freie
+Software.}
+
+\end{quote}
 
 Die Handbücher "`Einsteiger"' und "`Durchblicker"' wurden für die vorliegende
 zweite Version unter der Bezeichnung "`Kompendium"' zusammengeführt.
@@ -371,7 +372,7 @@ Internet"' unterstützt.  Gpg4win und Gpg4win2 wurden durch das
 Bundesamt für Sicherheit in der Informationstechnik (BSI) unterstützt.
 
 Weitere Informationen zu GnuPG und weiteren Projekten der
-Bundesregierung zum Schutz des Internets finden Sie auf den Webseiten
+Bundesregierung zum Schutz im Internet finden Sie auf den Webseiten
 \uniurl[www.bsi.de]{http://www.bsi.de} und
 \uniurl[www.bsi-fuer-buerger.de]{http://www.bsi-fuer-buerger.de} des
 Bundesamtes für Sicherheit in der Informationstechnik.
@@ -404,7 +405,7 @@ Beim altmodischen Briefschreiben schützen Sie die Inhalte von
 Mitteilungen ganz selbstverständlich mit einem Briefumschlag.  Der
 Umschlag schützt die Nachrichten vor fremden Blicken, eine
 Manipulation am Umschlag kann man leicht bemerken. Nur wenn etwas
-nicht ganz so wichtig ist, schreibt man es auf eine ungeschützte
+nicht so wichtig ist, schreibt man es auf eine ungeschützte
 Postkarte, die auch der Briefträger oder andere lesen können.
 
 \clearpage
@@ -423,12 +424,12 @@ zu sammeln, ihren Inhalt auszuwerten oder Absender und Empfänger zu
 protokollieren. Das wäre einfach nicht machbar gewesen oder es hätte
 zu lange gedauert. Mit der modernen Computertechnik ist es jedoch technisch
 möglich. Es gibt mehr als einen Hinweis darauf, dass dies genau heute
-schon im großen Stil mit Ihrer \Email{} geschieht. Ein Artikel der
-Wikipedia über das \uniurl[Echelon-System]{\EchelonUrl}
-\T\footnote{\href{\EchelonUrl}{\texttt{\EchelonUrl}\normalsize}}
+schon im großen Stil mit \Email{} geschieht. Ein Artikel der
+Wikipedia über das 
+Echelon-System\footnote{\uniurl[\EchelonUrl]{\EchelonUrl}}
 liefert dazu interessantes Hintergrundwissen.
 
-Denn: Der Umschlag fehlt.
+Denn: der Umschlag fehlt.
 
 \begin{center}
 \htmlattributes*{img}{width=300}
@@ -436,7 +437,7 @@ Denn: Der Umschlag fehlt.
 \end{center}
 
 \clearpage
-Was wir Ihnen hier vorschlagen, ist ein "`Umschlag"' für Ihre
+Was Ihnen hier vorgeschlagen wird, ist ein "`Umschlag"' für Ihre
 elektronischen Briefe. Ob Sie ihn benutzen, wann, für wen und wie oft,
 ist ganz allein Ihre Sache. Software wie Gpg4win gibt Ihnen lediglich
 die Wahlfreiheit zurück. Die Wahl, ob Sie persönlich eine Nachricht
@@ -450,7 +451,7 @@ ist Ihr gutes Recht.
 
 Um dieses Recht zu sichern, bietet Gpg4win Ihnen eine sogenannte
 "`starke Verschlüsselungstechnik"'. "`Stark"' bedeutet hier: mit keinem
-gegenwärtigen Mittel zu knacken. In vielen Ländern waren starke
+bekannten Mittel zu knacken. In vielen Ländern waren starke
 Verschlüsselungsmethoden bis vor ein paar Jahren den Militärs und
 Regierungsbehörden vorbehalten. Das Recht, sie für jeden Bürger
 nutzbar zu machen, haben sich die Internetnutzer mühsam erobert;
@@ -465,7 +466,7 @@ Hand.}
 Sie allein bestimmen das Verhältnis zwischen Bequemlichkeit bei der
 Verschlüsselung und größtmöglicher Sicherheit.  Dazu gehören die
 wenigen, aber umso wichtigeren Vorkehrungen, die Sie treffen müssen,
-um Gpg4win richtig zu nutzen. In diesem Kompendium werden wir Ihnen
+um Gpg4win richtig zu nutzen. In diesem Kompendium wird Ihnen
 dieses Vorgehen Schritt für Schritt erläutern.
 
 
@@ -519,8 +520,6 @@ dazu auch sehr fehleranfällig.
 \IncludeImage[width=0.4\textwidth]{tangled-schlapphut}
 \end{center}
 
-Sehen wir uns das Problem einmal genauer an:
-
 Das Grundproblem bei der "`gewöhnlichen"' geheimen
 Nachrichtenübermittlung ist, dass für Ver- und Entschlüsselung
 derselbe Schlüssel benutzt wird und dass sowohl der Absender als auch
@@ -547,7 +546,7 @@ Das klingt widersinnig, ist es aber nicht. Der Witz an der Sache: Es
 muss kein geheimer Schlüssel mehr ausgetauscht werden. Im Gegenteil:
 Der geheime Schlüssel darf auf keinen Fall ausgetauscht werden!
 Weitergegeben wird nur der öffentliche Schlüssel (im öffentlichen
-Zertifikat)~-- und den kann sowieso jeder kennen.
+Zertifikat)~-- und den darf sowieso jeder kennen.
 
 Mit Gpg4win benutzen Sie also ein Schlüsselpaar -- einen geheimen und
 einen zweiten öffentlichen Schlüssel.  Beide Schlüsselteile sind durch
@@ -569,8 +568,7 @@ In Kapitel \ref{ch:themath} bekommen Sie erklärt, warum das so ist.
 
 
 \clearpage
-Das Prinzip der Public-Key-Verschlüsselung ist, wie gesagt, recht
-einfach:
+Das Prinzip der Public-Key-Verschlüsselung ist recht einfach:
 
 Der \textbf{geheime} oder \textbf{private Schlüssel} (engl. ,,secret
 key'' oder ,,private key'') muss geheim gehalten werden.
@@ -666,7 +664,7 @@ Vergessen Sie diese Möglichkeit am besten sofort wieder ...
 \textbf{Nun zur "`Public-Key"'-Methode:}
 
 Sie installieren wieder einen Brieftresor vor Ihrem Haus.  Aber:
-dieser Brieftresor ist ­-- ganz im Gegensatz zu dem ersten Beispiel --
+Dieser Brieftresor ist ­-- ganz im Gegensatz zu dem ersten Beispiel --
 stets offen.  Direkt daneben hängt --­ weithin öffentlich sichtbar --
 ein Schlüssel, mit dem jedermann den Brieftresor zuschließen kann
 (asymmetrisches Verschlüsselungsverfahren).
@@ -705,7 +703,7 @@ einen vollkommen öffentlichen, "`ungeheimen"' Schlüssel. Nur ein
 einziger Schlüssel entschlüsselt die \Email{} wieder: Ihr privater,
 geheimer Schlüssel.
 
-Spielen Sie das Gedankenspiel noch einmal anders herum:
+Spielen Sie das Gedankenspiel noch einmal anders herum durch:
 
 Wenn Sie einem anderen eine geheime Nachricht zukommen lassen wollen,
 benutzen Sie dessen Brieftresor mit seinem öffentlichen, frei
@@ -749,8 +747,8 @@ Dieses Risiko entfällt, weil ein geheimer Schlüssel nicht ausgetauscht
 wird und sich nur an einem einzigen, sehr sicheren Ort befindet: dem
 eigenen Schlüsselbund -- letztendlich Ihrem eigenen Gedächtnis.
 
-Diese moderne Methode der Verschlüsselung mit einem nicht geheimen,
-öffentlichen und einem geheimen, privaten Schlüsselteil nennt man auch
+Diese moderne Methode der Verschlüsselung mit einem nicht geheimen und
+öffentlichen, sowie einem geheimen und privaten Schlüsselteil nennt man auch
 "`asymmetrische Verschlüsselung"'. 
 
 
@@ -1347,7 +1345,7 @@ Experten-Einstellungen interessieren, können Sie diese über die Option
 Wenn alles korrekt ist, klicken Sie anschließend auf \Button{Schlüssel
 erzeugen}.
 
-\clearpage Jetzt folgt der wichtigste Teil: Die Eingabe Ihrer
+\clearpage Jetzt folgt der wichtigste Teil: die Eingabe Ihrer
 \textbf{Passphrase}!
 
 Während der Schlüsselgenerierung müssen Sie Ihre persönliche
@@ -1529,7 +1527,7 @@ diese über die Option \Menu{Alle Details} einsehen.
 Wenn alles korrekt ist, klicken Sie auf \Button{Schlüssel erzeugen}.
 
 \clearpage
-Jetzt folgt der wichtigste Teil: Die Eingabe Ihrer \textbf{Passphrase}!
+Jetzt folgt der wichtigste Teil: die Eingabe Ihrer \textbf{Passphrase}!
 
 Während der Schlüsselgenerierung werden Sie aufgefordert, Ihre
 Passphrase einzugeben:
@@ -2175,7 +2173,7 @@ So werden also \Email{}s mit dem geheimen OpenPGP-Schlüssel
 entschlüsselt -- wie funktioniert das Ganze mit S/MIME?
 \T\margin{\IncludeImage[width=1.5cm]{smime-icon}}
 
-Die Antwort lautet auch hier: Genauso wie bei OpenPGP!
+Die Antwort lautet auch hier: genauso wie bei OpenPGP!
 
 Zum Entschlüsseln einer S/MIME-verschlüsselten \Email{} öffnen Sie die
 Nachricht in Outlook und geben im Pinentry-Dialog Ihre Passphrase ein.
@@ -2648,7 +2646,7 @@ der Empfänger kann feststellen, ob die \Email{} unterwegs manipuliert
 oder verändert wurde.
 
 Die Signatur garantiert Ihrem Empfänger, dass die Nachricht
-tatsächlich von Ihnen stammt. Und: wenn Sie mit jemandem
+tatsächlich von Ihnen stammt. Und: Wenn Sie mit jemandem
 korrespondieren, dessen öffentliches Zertifikat Sie nicht haben (aus
 welchem Grund auch immer), können Sie so die Nachricht wenigstens mit
 Ihrem eigenen privaten Schlüssel "`versiegeln"'.
@@ -3549,7 +3547,7 @@ S/MIME verschlüsselt. Haben Sie also ein OpenPGP-Zertifikat
 verschlüsselte Dateien erhalten.  Die möglichen Dateitypen der
 verschlüsselten Dateien finden Sie auf der nächsten Seite.
 
-Klicken Sie nun auf \Button{Verschlüsseln}: die Datei wird
+Klicken Sie nun auf \Button{Verschlüsseln}: Die Datei wird
 verschlüsselt.
 
 \clearpage
@@ -4442,11 +4440,10 @@ entschlüsselt werden.
 
 Das Geheimnis dieser mathematischen Verbindung müssen Sie nicht
 unbedingt kennen -- Gpg4win funktioniert für Sie auch so. Man kann
-diese komplexe mathematische Methode aber auch als Normalsterblicher
-und Nichtmathematiker verstehen. Sie müssen eigentlich nur einfache
-Additionen (z.B. $2 + 3$) und Multiplikationen (z.B. $5 * 7$)
-beherrschen -- allerdings in einer ganz anderen Rechenmethode als der,
-die Sie im Alltag benutzen. Es gehört sowohl zur
+diese komplexe mathematische Methode aber auch als Nichtmathematiker
+verstehen, da nur die Grundrechenarten (Addition, Subtraktion,
+Multiplikation, Division) benötigt werden, um eine spezielle Art der
+Addition und Multiplikation zu definieren.  Es gehört sowohl zur
 Sicherheitsphilosophie der Kryptografie wie auch zum Prinzip der
 Freien Software, dass es keine geheim gehaltenen Methoden und
 Algorithmen gibt. Letztendlich versteht man auch erst dadurch wirklich,
@@ -4472,19 +4469,19 @@ Schlüssel kennt.  Diese Berechnung ist aber noch nie für
 Schlüssellängen von 1.024 Bit und mehr gelungen, wie sie in GnuPG
 verwendet werden.  Es ist zwar theoretisch möglich, aber praktisch
 nicht durchführbar.  Denn selbst bei vielen Jahren Rechenzeit und
-Abertausenden von vernetzten Rechnern würde niemals genügend Speicher
+Abertausenden von vernetzten Rechnern würde nicht genügend Speicher
 zur Verfügung stehen, um den letzten Schritt dieser Berechnung
 durchführen zu können.
 
 Es kann allerdings durchaus möglich sein, dass eines Tages eine
 geniale Idee die Mathematik revolutioniert und eine schnelle Lösung
 des mathematischen Problems liefert, welches hinter RSA steckt --
-allerdings sicher nicht sehr bald.
+allerdings wohl nicht sehr bald.
 
 Das Bundesamt für Sicherheit in der Informationstechnik (BSI)
 veröffentlicht von Zeit zu Zeit Prognosen und Einschätzungen, welche
 Schlüssellängen noch wie viele Jahre für absolute Geheimhaltung benutzt
-werden sollen.  GnuPG überschreitet mit seinen Standardeinstellungen
+werden sollen.  GnuPG erfüllt mit seinen Standardeinstellungen
 diese Mindestanforderungen.  Wie im vorigen Kapitel schon angerissen,
 ist die Mathematik der mit Abstand sicherste Teil der praktisch
 angewandten Kryptografie.
@@ -4497,13 +4494,13 @@ Mitrechnen selbst mathematisch korrekt ver- und entschlüsseln können
 und dabei das "`Geheimnis der großen Zahlen"' entdecken.
 
 Man kann diese komplexe mathematische Methode auch als
-Normalsterblicher und Nichtmathematiker verstehen. Sie müssen nur
-einfache Additionen und Multiplikationen beherrschen. Wie gesagt: Hier
+Nichtmathematiker verstehen, da nur die Grundrechenarten benötigt
+werden. Wie gesagt: Hier
 beginnt der Kürteil, und bei der Kür geht es immer etwas mehr zur
 Sache als im Pflichtprogramm.  Letztendlich versteht man dann aber,
 warum GnuPG sicher ist.
 
-Eine Begriffsklärung vorneweg:
+Zwei Begriffsklärungen vorneweg:
 
 \begin{quote}
     Ein \textbf{Algorithmus} ist eine mathematische Prozedur zur
@@ -4541,10 +4538,11 @@ klarmachen, wenn man sich das Zifferblattes einer Uhr vorstellt:
 \IncludeImage[width=0.25\textwidth]{clock-face}
 \end{center}
 
-Diese Uhr ist ein Beispiel für das Rechnen mit modulo 12 (der Teiler
-ist also 12) -- eine Uhr mit einem normalen Zifferblatt, allerdings
-mit einer 0 anstelle der 12. Sie können damit Modulo-Arithmetik
-betreiben, indem Sie einfach den gedachten Zeiger bewegen.
+Diese Uhr ist ein Beispiel für das Rechnen mit modulo 12 (die
+Modulzahl ist also 12) -- eine Uhr mit einem normalen Zifferblatt,
+allerdings mit einer 0 anstelle der 12. Sie können damit
+Modulo-Arithmetik betreiben, indem Sie einfach den gedachten Zeiger
+bewegen.
 
 Um beispielsweise $3 + 2$ zu rechnen, beginnen Sie bei der Ziffer 2
 und drehen den Zeiger um 3 Striche weiter (oder Sie starten bei der 3
@@ -4572,26 +4570,29 @@ die 0, 1, 2, 3 und 4 gibt. Also:
 
 \[ 4 \bmod 5 + 3 \bmod 5 = 7 \bmod 5 = 2 \bmod 5 \]
 
-Anders ausgedrückt, ist in der Modulo-5 Arithmetik das Ergebnis
-aus 4 plus 3 gleich 2. Sie können also auch schreiben:
+Anders ausgedrückt, ist in der Modulo-5-Arithmetik das Ergebnis
+aus 4 plus 3 gleich 2. 
 
-\[ 9 \bmod 5 + 7 \bmod 5 = 16 \bmod 5 = 1 \bmod 5 \]
+Ein weiteres Beispiel in Modulo-5-Arithmetik:
+
+\[ 8 \bmod 5 + 6 \bmod 5 = 14 \bmod 5 = 4 \bmod 5 \]
 
 Sie sehen auch, dass es egal ist, in welcher Reihenfolge Sie
 vorgehen, weil Sie nämlich auch schreiben können:
 
-\[ 9 \bmod 5 + 7 \bmod5 = 4 \bmod 5 + 2 \bmod 5 = 6 \bmod 5 =
-   1 \bmod 5                                                   \]
+\[ 8 \bmod 5 + 6 \bmod 5 = 3 \bmod 5 + 1 \bmod 5 = 4 \bmod 5 \]
 
-Denn 4 ist dasselbe wie 9, und 2 dasselbe wie 7, da Sie sich ja nur
-für den jeweiligen Rest nach der Teilung durch 5 interessieren.  Daran
-wird deutlich, dass Sie bei dieser Art der Arithmetik jederzeit 5 oder
-ein Vielfaches von 5, wie 10, 15 und so weiter nehmen können, und das
-Ergebnis stets dasselbe ist.
+Denn 3 ist dasselbe wie 8, und 1 dasselbe wie 6, da Sie sich ja nur
+für den jeweiligen Rest nach der Teilung durch 5 interessieren.  
+
+An den letzten Beispielen wird deutlich, dass bei der
+Modulo-Arithmetik jederzeit ein ganzzahliges Vielfaches der Modulzahl
+(hier 5) addiert werden kann, das Rechenergebnis aber stets dasselbe
+bleibt.
 
 
 \clearpage
-Das funktioniert auch beim Multiplizieren (Malnehmen).
+Dieses Schema funktioniert auch beim Multiplizieren.
 
 Ein Beispiel:
 
@@ -4616,16 +4617,20 @@ Vielfache von 5 einfach weglassen.
 
 Da dadurch alles einfacher wird, machen Sie das, bevor Sie Zahlen
 addieren oder multiplizieren. Das bedeutet, dass Sie sich lediglich um
-die Zahlen 0, 1, 2, 3 und 4 kümmern müssen, wenn Sie mit der Modulo-5
-Arithmetik rechnen. Denn Sie können ja alles, was durch 5 teilbar ist,
-weglassen.  Dazu noch drei Beispiele:
+die Zahlen 0, 1, 2, 3 und 4 kümmern müssen, wenn Sie mit der
+Modulo-5-Arithmetik rechnen. Denn Sie können ja alles, was durch 5
+teilbar ist, weglassen.
 
-\[ 5 \bmod 11 * 3 \bmod 11 = 15 \bmod 11 = 4 \bmod 11 \]
-\[ 2 \bmod 7 * 4 \bmod 7 = 1 \bmod 7                  \]
-\[ 13 \bmod 17 * 11 \bmod 17 = 7 \bmod 17             \]
+Noch drei Beispiele mit anderen Modulzahlen:
 
-Das letzte Beispiel wird klar, wenn man bedenkt, dass in normaler
-Arithmetik gerechnet $ 13 * 11 = 143 $ und $ 143 = 8 * 17 + 7 $ ist.
+\begin{enumerate}
+    \item[I.] $ 5 \bmod 11 * 3 \bmod 11 = 15 \bmod 11 = 4 \bmod 11 $
+    \item[II.] $ 2 \bmod 7 * 4 \bmod 7 = 1 \bmod 7 $
+    \item[III.] $ 13 \bmod 17 * 11 \bmod 17 = 7 \bmod 17 $\\ Das letzte
+        Beispiel wird klar, wenn man bedenkt, dass in normaler
+        Arithmetik gerechnet $ 13 * 11 = 143 $ und $ 143 = 8 * 17 + 7
+        $ ist.
+\end{enumerate}
 
 
 \clearpage
@@ -4633,40 +4638,42 @@ Arithmetik gerechnet $ 13 * 11 = 143 $ und $ 143 = 8 * 17 + 7 $ ist.
 
 Computer speichern Buchstaben als Zahlen. Alle Buchstaben und Symbole
 auf der Computertastatur werden in Wirklichkeit als Zahlen
-gespeichert, die zwischen 0 und 255 liegen.
+gespeichert, die typisch zwischen 0 und 255 liegen.
 
 Sie können also eine Nachricht auch in eine Zahlenfolge umwandeln.
 Nach welcher Methode (oder welchem Algorithmus) dies geschieht, wird im
-nächsten Abschnitt beschrieben. Darin wird Ihnen die Methode
+nächsten Abschnitt beschrieben. Darin wird die Methode
 vorgestellt, nach der die Verschlüsselung mit GnuPG funktioniert: den
 RSA-Algorithmus. Dieser Algorithmus wandelt eine Zahlenfolge (die ja
 eine Nachricht darstellen kann) so in eine andere Zahlenfolge um
-(Transformation), dass die Nachricht dabei verschlüsselt wird. Wenn
-man dabei nach dem richtigen Verfahren vorgeht, wird die Nachricht
+(also eine Transformation), dass die Nachricht dabei verschlüsselt wird.
+Wenn man dabei nach dem richtigen Verfahren vorgeht, wird die Nachricht
 sicher kodiert und kann nur noch vom rechtmäßigen Empfänger dekodiert
-werden.  Das sind die Grundlagen des RSA-Algorithmus:
+werden.
 
-Sie selbst haben bei der Installation von Gpg4win während der Eingabe
+Das sind die Grundlagen des RSA-Algorithmus:
+
+Sie selbst haben bei der Erzeugung eines Zertifikats während der Eingabe
 Ihrer Passphrase zwei große Primzahlen erzeugt, ohne es zu bemerken
 (dieser werden mit $p$ und $q$ bezeichnet). Nur Sie --­ oder in der
 Praxis Ihr Rechner --­ kennen diese beiden Primzahlen und Sie müssen
-für ihre Geheimhaltung sorgen.
+für deren Geheimhaltung sorgen.
 
 Es werden daraus nun drei weitere Zahlen erzeugt:
 \begin{description}
 \item [Die erste Zahl] ist das Ergebnis der Multiplikation der beiden
-  Primzahlen, also ihr Produkt.  Dieses Produkt wird als Modulus und
-  mit dem Buchstaben $n$ bezeichnet.  Dies ist der Modul, mit dem Sie
-  später immer rechnen werden.
+  Primzahlen, also ihr Produkt.  Dieses Produkt wird als
+  \textit{Modulus} und mit dem Buchstaben $n$ bezeichnet.  Dies ist
+  die Modulzahl, mit der Sie später immer rechnen werden.
 
-\item [Die zweite Zahl] ist der sogenannte öffentliche Exponent und
-  eine Zahl, an die bestimmte Anforderungen gestellt werden
-  (teilerfremd zu $(p-1)(q-1)$); sie wird mit $e$ bezeichnet. Häufig
-  wird hier 3, 41 oder 65537 benutzt.
+\item [Die zweite Zahl] ist der sogenannte \textit{öffentliche
+  Exponent} $e$  und eine Zahl, an die bestimmte Anforderungen
+  gestellt werden: teilerfremd zu $(p-1)(q-1)$. Häufig wird hier 41
+  oder 65537 benutzt.
 
 \item [Die dritte Zahl] wird errechnet aus dem öffentlichen Exponent
   (der zweiten Zahl) und den beiden Primzahlen. Diese Zahl ist der
-  geheime Exponent und wird mit $d$ bezeichnet.  Die komplizierte
+  \textit{geheime Exponent} und wird mit $d$ bezeichnet.  Die
   Formel zur Berechnung lautet:
       \[ d = e^{-1} \bmod (p - 1)(q -1) \]
 \end{description}
@@ -4675,8 +4682,8 @@ Es werden daraus nun drei weitere Zahlen erzeugt:
 Die erste und die zweite Zahl werden veröffentlicht ­-- das ist Ihr
 öffentlicher Schlüssel.  Beide werden dazu benutzt, Nachrichten zu
 verschlüsseln. Die dritte Zahl muss von Ihnen geheim gehalten werden
-­-- es ist Ihr geheimer Schlüssel.  Die beiden Primzahlen werden
-danach nicht mehr benötigt.
+­-- es ist Ihr geheimer Schlüssel.  Die beiden Primzahlen ($p$ und $q$)
+werden danach nicht mehr benötigt.
 
 Wenn eine verschlüsselte Nachricht empfangen wird, kann sie
 entschlüsselt werden mit Hilfe der ersten ($n$) und der dritten Zahl
@@ -4696,7 +4703,7 @@ Botschaft entschlüsseln.
 
 Sie verwenden hier erst einmal kleine Zahlen, um deutlich zu machen,
 wie die Methode funktioniert. In der Praxis verwendet man jedoch viel
-größere Primzahlen, die aus ­zig Ziffern bestehen.
+größere Primzahlen, die aus vielen Ziffern bestehen.
 
 Nehmen Sie die Primzahlen 7 und 11. Damit verschlüsseln Sie Zahlen ­--
 oder Buchstaben, was für den Rechner dasselbe ist -- nach dem
@@ -4713,9 +4720,8 @@ Und zwar erzeugen Sie zunächst den öffentlichen Schlüssel.
 \item [Die zweite Zahl] ist der öffentliche Exponent. Sie wählen hier
     13.
 
-\item [Die dritte Zahl] ist der geheime Schlüssel. Diese Zahl wird in
-    einem komplizierten Verfahren errechnet, welches Sie jetzt erklärt
-    bekommen:
+\item [Die dritte Zahl] ist der geheime Schlüssel. Diese Zahl wird wie
+    folgt errechnet:
 
     Zunächst ziehen Sie von Ihren Primzahlen 7 und 11 jeweils die Zahl
     1 ab (also $7 - 1$ und $11 - 1$) und multiplizieren die beiden
@@ -4748,13 +4754,13 @@ Entschlüsselung verwenden den Modul 77 (das Produkt aus den Primzahlen
 7 und 11).
 
 Jede einzelne dieser Zahlen wird nun nach der Modulo-77-Arithmetik 13
-mal mit sich selbst multipliziert. Sie erinnern sich: Die 13 ist ja
+mal mit sich selbst multipliziert. Sie erinnern sich: Die 13 ist
 Ihr öffentlicher Schlüssel.
 
 Nehmen Sie ein Beispiel mit der Zahl 2: Sie wird in die Zahl 30
 umgewandelt, weil
  $ 2 * 2 * 2 * 2 * 2 * 2 * 2 * 2 * 2 * 2 * 2 * 2 * 2 * 2
- = 8192 = 30 \bmod 77 $ sind.
+ = 2^{13} = 8192 = 30 \bmod 77 $ sind.
 
 Ein weiteres Beispiel: 75 wird in die Zahl 47 umgewandelt, denn 75
 wird 13 mal mit sich selbst multipliziert und durch 77 geteilt, so
@@ -4789,8 +4795,7 @@ aus:
 \hline
 \bf 60& 4& 40& 13& 28& 36& 65& 66& 67& 19& 27\\
 \hline
-\bf 70& 42& 15& 51& 24& 39& 47& 76
-\htmlattributes*{td}{BGCOLOR="gray"} & \T\cellcolor{gray}
+\bf 70& 42& 15& 51& 24& 39& 47& 76\htmlattributes*{td}{BGCOLOR="gray"} & \T\cellcolor{gray}
 \htmlattributes*{td}{BGCOLOR="gray"} & \T\cellcolor{gray}
 \htmlattributes*{td}{BGCOLOR="gray"} & \T\cellcolor{gray}
 \T\\
@@ -4799,6 +4804,7 @@ aus:
 \texorhtml{\caption}{\htmlcaption}{~}
 \end{Label}\end{center}
 \end{table}
+\W\textit{Tabelle 1}\\\\\\
 
 In der linken Spalte stehen die 10er-Stellen, in der oberen Zeile die
 1er-Stellen.
@@ -4808,14 +4814,16 @@ In der linken Spalte stehen die 10er-Stellen, in der oberen Zeile die
 
 Um das Beispiel mit der 2 von oben umzukehren, also die Nachricht zu
 dekodieren, multiplizieren Sie 30 (die umgewandelte 2) 37 mal mit sich
-selbst.  Das Ergebnis wird modulo der Modulzahl 77 gerechnet. Sie
-erinnern sich: 37 ist der geheime Schlüssel.
+selbst ($30^{37}$).  Das Ergebnis wird modulo der Modulzahl 77
+gerechnet. Sie erinnern sich: 37 ist der geheime Schlüssel.
 
 Diese wiederholte Multiplikation ergibt eine Zahl, die $2 \bmod 77$
-ist. Das andere Beispiel: Die Zahl $47 \bmod 77$ wird zur Zahl $75
+ist. 
+
+Das andere Beispiel: Die Zahl $47 \bmod 77$ wird zur Zahl $75
 \bmod 77$ dekodiert.
 
-Tabelle \ref{table2} zeigt die genaue Zuordnung der 77 Zahlen zwischen 0 und 76.
+Tabelle \link*{2}[\ref{table2}]{table2} zeigt die genaue Zuordnung der 77 Zahlen zwischen 0 und 76.
 
 \W\xmlattributes*{table}{BORDER}
 \htmlattributes*{td}{BGCOLOR="gray"}
@@ -4842,28 +4850,33 @@ Tabelle \ref{table2} zeigt die genaue Zuordnung der 77 Zahlen zwischen 0 und 76.
 \hline
 \bf 60& 25& 19& 6& 35& 15& 65& 66& 67& 40& 20\\
 \hline
-\bf 70& 49& 36& 30& 17& 46& 26& 76
-\htmlattributes*{td}{BGCOLOR="gray"} & \T\cellcolor{gray}
+\bf 70& 49& 36& 30& 17& 46& 26& 76\htmlattributes*{td}{BGCOLOR="gray"} & \T\cellcolor{gray}
 \htmlattributes*{td}{BGCOLOR="gray"} & \T\cellcolor{gray}
 \htmlattributes*{td}{BGCOLOR="gray"} & \T\cellcolor{gray}
 \T\\
 \hline
 \end{tabular}
-\texorhtml{\caption}{\htmlcaption}{Zahlentransformation modulo77, unter Verwendung
-des geheimen Schlüssels 37}
+
+%TODO: Hyperlatex's htmlcaption generates wrong html code -> so set caption
+%part for tex only; and set htmlcaption as normal text below the table
+%\texorhtml{\caption}{\htmlcaption}{Zahlentransformation modulo 77, unter Verwendung
+%des geheimen Schlüssels 37}
+
+\T\caption{Zahlentransformation modulo 77, unter Verwendung des geheimen Schlüssels 37}
 \end{Label}\end{center}
 \end{table}
+\W\textit{Tabelle 2: Zahlentransformation modulo 77, unter Verwendung des geheimen Schlüssels 37}\\\\\\
 
-Um eine Zahl mit Tabelle \ref{table2} zu transformieren, gehen Sie
-nach der gleichen Methode vor wie bei Tabelle~\ref{table1}. Ein
+Um eine Zahl mit Tabelle \link*{2}[\ref{table2}]{table2} zu transformieren, gehen Sie
+nach der gleichen Methode vor wie bei Tabelle~\link*{1}[\ref{table1}]{table1}. Ein
 Beispiel: 60 wird transformiert in die Zahl in Zeile 60 und Spalte 0.
 Also wird 60 zu 25 transformiert.
 
 Das überrascht nicht, denn wenn man davon ausgeht, dass Sie bei der
-Umwandlung von 25 mit Hilfe von Tabelle~\ref{table1} als Ergebnis 60
+Umwandlung von 25 mit Hilfe von Tabelle~\link*{1}[\ref{table1}]{table1} als Ergebnis 60
 erhalten, dann sollten Sie auch bei der Transformation von 60 mit
-Hilfe von Tabelle \ref{table2} zum Ergebnis 25 gelangen. Dabei haben
-Sie den öffentlichen Schlüssel, 13, zur Umwandlung bzw. Kodierung
+Hilfe von Tabelle \link*{2}[\ref{table2}]{table2} zum Ergebnis 25 gelangen. Dabei haben
+Sie den öffentlichen Schlüssel, hier die 13, zur Umwandlung bzw. Kodierung
 einer Zahl verwendet und den geheimen Schlüssel 37, um sie
 zurückzuwandeln bzw. zu dekodieren. Sowohl für die Verschlüsselung als
 auch für die Entschlüsselung haben Sie sich der Modulo-77-Arithmetik
@@ -4876,14 +4889,12 @@ Sie haben ...
 \begin{itemize}
 \item durch den Rechner zwei zufällige Primzahlen erzeugen lassen;
 
-\item daraus das Produkt und den öffentlichen und den geheimen Subkey
-  gebildet;
+\item daraus das Produkt und den öffentlichen und den geheimen
+    Schlüssel gebildet;
 
-\item gezeigt, wie man mit dem öffentlichen Schlüssel Nachrichten
-  verschlüsselt;
+\item mit dem öffentlichen Schlüssel eine Nachricht verschlüsselt;
 
-\item gezeigt, wie man mit dem geheimen Schlüssel Nachrichten
-  entschlüsselt.
+\item mit dem geheimen Schlüssel eine Nachricht entschlüsselt.
 \end{itemize}
 
 Diese beiden Primzahlen können so groß gewählt werden, dass es
@@ -4891,11 +4902,11 @@ unmöglich ist, sie einzig aus dem öffentlich bekannt gemachten Produkt
 zu ermitteln. Das begründet die Sicherheit des RSA-Algorithmus.
 
 Sie haben gesehen, dass die Rechnerei sogar in diesem einfachen
-Beispiel recht kompliziert geworden ist. In diesem Fall hat die
+Beispiel recht aufwändig geworden ist. In diesem Fall hat die
 Person, die den Schlüssel öffentlich gemacht hat, die Zahlen 77 und 13
 als öffentlichen Schlüssel bekanntgegeben.  Damit kann jedermann
 dieser Person mit der oben beschriebenen Methode --­ wie im Beispiel
-der Tabelle~\ref{table1} --­ eine verschlüsselte Zahl oder Zahlenfolge
+der Tabelle~\link*{1}[\ref{table1}]{table1} --­ eine verschlüsselte Zahl oder Zahlenfolge
 schicken. Der rechtmäßige Empfänger der verschlüsselten Zahlenfolge
 kann diese dann mit Hilfe der Zahl 77 und dem geheimen Schlüssel 37
 dekodieren.
@@ -4904,7 +4915,7 @@ In diesem einfachen Beispiel ist die Verschlüsselung natürlich nicht
 sonderlich sicher. Es ist klar, dass 77 das Produkt aus 7 und 11 ist.
 
 Folglich kann man den Code in diesem einfachen Beispiel leicht
-knacken. Der scharfsinnige Leser wird auch bemerkt haben, dass etliche
+knacken. Ein aufmerksamer Leser wird auch bemerkt haben, dass etliche
 Zahlen, z.B. die Zahl 11 und ihr Vielfaches (also 22, 33 etc.) und die
 benachbarten Zahlen sich in sich selbst umwandeln.
 
@@ -4921,48 +4932,48 @@ benachbarten Zahlen sich in sich selbst umwandeln.
 \hline
 \bf 0& 0& 1& 51& 31& 60& 47& 41& 28& 57& 37\\
 \hline
-\bf 10
-\htmlattributes*{td}{BGCOLOR="lightgray"} & \T\cellcolor{lightgray}
-10 \htmlattributes*{td}{BGCOLOR="lightgray"} & \T\cellcolor{lightgray}
-11 \htmlattributes*{td}{BGCOLOR="lightgray"} & \T\cellcolor{lightgray}
+\bf 10\htmlattributes*{td}{BGCOLOR="lightgray"} & \T\cellcolor{lightgray}
+10\htmlattributes*{td}{BGCOLOR="lightgray"} & \T\cellcolor{lightgray}
+11\htmlattributes*{td}{BGCOLOR="lightgray"} & \T\cellcolor{lightgray}
 12& 62& 42& 71& 58& 52& 39& 68\\
 \hline
-\bf 20& 48 \htmlattributes*{td}{BGCOLOR="lightgray"} & \T\cellcolor{lightgray}
-21 \htmlattributes*{td}{BGCOLOR="lightgray"} & \T\cellcolor{lightgray}
-22 \htmlattributes*{td}{BGCOLOR="lightgray"} & \T\cellcolor{lightgray}
+\bf 20& 48\htmlattributes*{td}{BGCOLOR="lightgray"} & \T\cellcolor{lightgray}
+21\htmlattributes*{td}{BGCOLOR="lightgray"} & \T\cellcolor{lightgray}
+22\htmlattributes*{td}{BGCOLOR="lightgray"} & \T\cellcolor{lightgray}
 23& 73& 53& 5& 69& 63& 50\\
 \hline
-\bf 30& 2& 59
-\htmlattributes*{td}{BGCOLOR="lightgray"} & \T\cellcolor{lightgray}
-32 \htmlattributes*{td}{BGCOLOR="lightgray"} & \T\cellcolor{lightgray}
-33 \htmlattributes*{td}{BGCOLOR="lightgray"} & \T\cellcolor{lightgray}
+\bf 30& 2& 59\htmlattributes*{td}{BGCOLOR="lightgray"} & \T\cellcolor{lightgray}
+32\htmlattributes*{td}{BGCOLOR="lightgray"} & \T\cellcolor{lightgray}
+33\htmlattributes*{td}{BGCOLOR="lightgray"} & \T\cellcolor{lightgray}
 34& 7& 64& 16& 3& 74\\
 \hline
-\bf 40& 61& 13& 70 \htmlattributes*{td}{BGCOLOR="lightgray"} & \T\cellcolor{lightgray}
-43 \htmlattributes*{td}{BGCOLOR="lightgray"} & \T\cellcolor{lightgray}
-44 \htmlattributes*{td}{BGCOLOR="lightgray"} & \T\cellcolor{lightgray} 
+\bf 40& 61& 13& 70\htmlattributes*{td}{BGCOLOR="lightgray"} & \T\cellcolor{lightgray}
+43\htmlattributes*{td}{BGCOLOR="lightgray"} & \T\cellcolor{lightgray}
+44\htmlattributes*{td}{BGCOLOR="lightgray"} & \T\cellcolor{lightgray} 
 45& 18& 75& 27& 14\\
 \hline
-\bf 50& 8& 72& 24& 4 \htmlattributes*{td}{BGCOLOR="lightgray"} & \T\cellcolor{lightgray}
-54 \htmlattributes*{td}{BGCOLOR="lightgray"} & \T\cellcolor{lightgray}
-55 \htmlattributes*{td}{BGCOLOR="lightgray"} & \T\cellcolor{lightgray} 
+\bf 50& 8& 72& 24& 4\htmlattributes*{td}{BGCOLOR="lightgray"} & \T\cellcolor{lightgray}
+54\htmlattributes*{td}{BGCOLOR="lightgray"} & \T\cellcolor{lightgray}
+55\htmlattributes*{td}{BGCOLOR="lightgray"} & \T\cellcolor{lightgray} 
 56& 29& 9& 38\\
 \hline
-\bf 60& 25& 19& 6& 35& 15 \htmlattributes*{td}{BGCOLOR="lightgray"} & \T\cellcolor{lightgray}
-65 \htmlattributes*{td}{BGCOLOR="lightgray"} & \T\cellcolor{lightgray}
-66 \htmlattributes*{td}{BGCOLOR="lightgray"} & \T\cellcolor{lightgray} 
+\bf 60& 25& 19& 6& 35& 15\htmlattributes*{td}{BGCOLOR="lightgray"} & \T\cellcolor{lightgray}
+65\htmlattributes*{td}{BGCOLOR="lightgray"} & \T\cellcolor{lightgray}
+66\htmlattributes*{td}{BGCOLOR="lightgray"} & \T\cellcolor{lightgray} 
 67& 40& 20\\
 \hline
-\bf 70& 49& 36& 30& 17& 46& 26& 76
-\htmlattributes*{td}{BGCOLOR="gray"} & \T\cellcolor{gray}
+\bf 70& 49& 36& 30& 17& 46& 26& 76\htmlattributes*{td}{BGCOLOR="gray"} & \T\cellcolor{gray}
 \htmlattributes*{td}{BGCOLOR="gray"} & \T\cellcolor{gray}
 \htmlattributes*{td}{BGCOLOR="gray"} & \T\cellcolor{gray}
 \T\\
 \hline
 \end{tabular}
-\texorhtml{\caption}{\htmlcaption}{~}
+%TODO:
+%\texorhtml{\caption}{\htmlcaption}{~}
+\T\caption{~}
 \end{Label}\end{center}
 \end{table}
+\W\textit{Tabelle 3}\\\\\\
 
 
 \clearpage
@@ -4980,24 +4991,25 @@ willkürliche Art und Weise gewählt werden, ergäbe:
 \end{verbatim}
 
 Hier ist überhaupt nicht mehr ersichtlich, welche die beiden zugrunde
-liegenden Primzahlen sind. Folglich ist es sehr schwierig, aufgrund
+liegenden Primzahlen sind. Folglich ist es extrem aufwändig, aufgrund
 des öffentlichen Schlüssels den geheimen Schlüssel zu ermitteln.
-Selbst den schnellsten Rechnern der Welt würde es gewaltige Probleme
-bereiten, die beiden Primzahlen zu errechnen.
+Selbst die schnellsten Rechnern der Welt würden sehr lange benötigen,
+die beiden Primzahlen zu errechnen.
 
 Man muss die Primzahlen also nur groß genug wählen, damit ihre
 Berechnung aus dem Produkt so lange dauert, dass alle bekannten
 Methoden daran in der Praxis scheitern.  Außerdem nimmt der Anteil der
 Zahlen, die in sich selbst transformiert werden --­ wie man sie oben
-in den Tabellen~\ref{table1} und \ref{table2} findet -- stetig ab, je
+in den Tabellen~\link*{1}[\ref{table1}]{table1} und \link*{2}[\ref{table2}]{table2} 
+findet -- stetig ab, je
 größer die Primzahlen werden.  Von Primzahlen in der Größenordnung,
 die Sie in der Praxis bei der Verschlüsselung verwenden, ist dieser
 Teil ist so klein, dass der RSA-Algorithmus davon in keiner Weise
 beeinträchtigt wird.
 
 Je größer die Primzahlen, desto sicherer die Verschlüsselung.
-Trotzdem kann ein normaler PC ohne weiteres das Produkt aus den beiden
-großem Primzahlen bilden. Kein Rechner der Welt dagegen kann aus
+Trotzdem kann ein normaler PC ohne weiteres das Produkt aus zwei
+großen Primzahlen bilden. Kein Rechner der Welt dagegen kann aus
 diesem Produkt wieder die ursprünglichen Primzahlen herausrechnen --­
 jedenfalls nicht in vertretbarer Zeit.
 
@@ -5011,9 +5023,9 @@ unterschiedlichen Zahlenbasen dargestellt werden können.
 
 Dazu machen Sie sich zunächst mit den Zahlenpotenzen vertraut.
 
-Zwei hoch eins, das man als $2^1$ darstellt, ist gleich 2; zwei hoch
-drei, dargestellt als $2^3$, ist $2 * 2 * 2 = 8$; zwei hoch zehn,
-dargestellt als $2^{10}$, ist $2*2*2*2*2*2*2*2*2*2 = 1024$.
+Zwei hoch eins, dargestellt als $2^1 = 2$; \\
+zwei hoch drei, dargestellt als $2^3 = 2 * 2 * 2 = 8$;\\
+zwei hoch zehn, dargestellt als $2^{10} = 2*2*2*2*2*2*2*2*2*2 = 1024$.
 
 Jede Zahl hoch 0 ist gleich 1, z.B. $2^0 = 1$ und $5^0 = 1$.
 Verallgemeinert bedeutet dies, dass eine potenzierte Zahl so oft mit
@@ -5021,11 +5033,10 @@ sich selbst multipliziert wird, wie es die Hochzahl (Potenz) angibt.
 
 Das Konzept einer Zahlenbasis veranschaulicht z.B. ein Kilometerzähler
 im Auto: Das rechte Rad zählt nach jedem Kilometer eine Stelle weiter
-und zwar nach der vertrauten Abfolge der Zahlen
-
+und zwar nach der vertrauten Abfolge der Zahlen:\\
 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, ...
 
-und so weiter. Jedesmal, wenn das rechte Rad wieder 0 erreicht, zählt
+Jedesmal, wenn das rechte Rad wieder 0 erreicht, zählt
 das Rad links davon eine Stelle hoch. Und jedesmal, wenn dieses zweite
 Rad die 0 erreicht, erhöht das Rad links davon um eins ... und so
 weiter.
@@ -5070,42 +5081,43 @@ um eine Ziffer höher zählen, wobei die Zahlenfolge so aussehen würde:
 
 \[ 0, 1, 2, 3, 4, 5, 6, 7, 0, 1, 2, ... \]
 
-Ihr Tacho zur Basis 8 stellt z.B. folgende Zahl dar:
+
+Ihr dreistelliger Tacho zur Basis 8 stellt z.B. folgende Zahl dar:
 
 \[ 356 \]
 
 Die 6 auf dem rechten Rädchen zählt einzelne Kilometer, also $6*8^0=6$
 Kilometer.\\
-Die 5 auf dem Rädchen daneben für $5 * 8^1$, also 40 Kilometer.\\
+Die 5 auf dem Rädchen in der Mitte für $5 * 8^1$, also 40 Kilometer.\\
 Die 3 links steht für je 64 Kilometer pro Umdrehung, also hier
 $3 * 8^2$ Kilometer.
 
-So rechnet man also mit Zahlen zur Basis 8. Ein Beispiel: 728 bedeutet
-$7 * 8^1 + 2 * 8^0$, und das ist gleich "`58"'. Bei dieser Art der
-Darstellung steht die "`2"' aus der 72 für 2, aber die "`7"' steht für
-$7 * 8$.
+So rechnet man also mit Zahlen zur Basis 8. Ein Beispiel: $72_8$ bedeutet
+$7 * 8^1 + 2 * 8^0 =  58$. \\
+Bei dieser Art der Darstellung steht die "`2"' aus der 72 für 2, aber
+die "`7"' steht für $7 * 8$.
 
 Größere Zahlen werden schrittweise genauso aufgebaut, sodass
-$453_8$ eigentlich $4 * 64 + 5 * 8 + 3$ bedeutet, was $299_{10}$ ergibt.
-
+$453_8$ eigentlich $4 * 64 + 5 * 8 + 3$ bedeutet, was $299_{10}$
+ergibt.\\
 Bei $453_8$ steht die "`3"' für 3, die "`5"' für $5 * 8$ und die "`4"'
 für $4 * 64$, wobei sich die "`64"' wiederum aus $8 * 8$ herleitet.
 
 Im angeführten Beispiel werden die Ziffern, von rechts nach links
 gehend, mit aufsteigenden Potenzen von 8 multipliziert. Die rechte
-Ziffer wird mit 8 hoch 0 (das ist 1) multipliziert, die links daneben
-mit 8 hoch 1 (das ist 8), die nächste links davon mit 8 hoch 2 (das
-ist 64) und so weiter.\\
+Ziffer wird mit $8^0$ (das ist 1) multipliziert, die links daneben
+mit $8^1$ (das ist 8), die nächste links davon mit $8^2$ (das
+ist 64) und so weiter.
+
 Wenn man Zahlen zur Basis 10 darstellt, gibt es keine höhere Ziffer
 als 9 (also 10 minus 1). Sie verfügen also über keine Ziffer, die 10
 oder eine größere Zahl darstellt. Um 10 darzustellen, brauchen Sie
 zwei Ziffern, mit denen Sie dann die "`10"' schreiben können.\\
-Sie haben also nur die Ziffern 0 bis 9.
-
+Sie haben also nur die Ziffern 0 bis 9.\\
 So ähnlich ist es, wenn Sie mit der Basiszahl 8 rechnen: Dann haben
-Sie nur die Ziffern 0 bis 7.  Wollen Sie zu dieser Basis eine höhere
-Zahl als sieben darstellen, müssen Sie wieder zwei Ziffern verwenden.
-Z.B. "`9"' schreibt man als $11_8$, "`73"' schreibt man als $111_8$.
+Sie nur die Ziffern 0 bis 7 zur Verfügung.  Wollen Sie zu dieser Basis
+eine höhere Zahl als sieben darstellen, müssen Sie wieder zwei Ziffern
+verwenden -- z.B. $9_{10}$ ist $11_8$, $73_{10}$ ist $111_8$.
 
 \clearpage
 Rechner speichern Zahlen als eine Folge von Nullen und Einsen.  Man
@@ -5113,21 +5125,22 @@ nennt dies Binärsystem oder Rechnen mit der Basiszahl 2, weil Sie nur
 die Ziffern 0 und 1 verwenden. Stellen Sie sich vor, Sie würden die
 Kilometer mit einem Tachometer zählen, auf dessen Rädchen sich nur
 zwei Ziffern befinden: 0 und 1.  Die Zahl $10101_2$ z.B. bedeutet im
-Binärsystem
+Binärsystem:
 
-\[ 1*2^4+0*2^3+1*2^2+0*2^1+1*2^0 = 1 * 16 + 0 * 8 + 1 * 4 + 0 * 2 + 1 = 21 \].
+\[ 1*2^4+0*2^3+1*2^2+0*2^1+1*2^0 = 1 * 16 + 0 * 8 + 1 * 4 + 0 * 2 + 1 = 21 \]
 
-In der Computerei verwendet man auch Gruppen von acht Binärziffern,
-das wohlbekannte Byte. Ein Byte kann Werte zwischen 0 -- dargestellt
+In der Informatik verwendet man auch Gruppen von acht Binärziffern,
+genannt "`Byte"'. Ein Byte kann Werte zwischen 0 -- dargestellt
 als Byte $00000000_2$ -- und 255 -- dargestellt als Byte $11111111_2$
 -- annehmen. Ein Byte stellt also Zahlen zur Basis $2^8 = 256$ dar.
 
 Zwei weitere Beispiele:
 
-\[ 10101010_2 = 170 \] und
-\[ 00000101_2 = 5 \].
+$ 10101010_2 = 170 $
 
-Da der Rechner die Buchstaben, Ziffern und Satzzeichen als Bytes
+$ 00000101_2 = 5 $
+
+Da ein Rechner die Buchstaben, Ziffern und Satzzeichen als Bytes
 speichert, schauen Sie sich an, welche Rolle dabei die Darstellung zur
 Basis 256 spielt.
 
@@ -5136,9 +5149,8 @@ Basis 256 spielt.
 Nehmen Sie die Silbe "`un"'. Das "`u"' wird im Rechner als 117
 gespeichert und das "`n"' als 110.
 
-Diese Zahlenwerte sind für alle Rechner standardisiert und werden
-ASCII-Code genannt. Um alle Zahlen und Symbole darstellen zu können,
-benötigen Sie auf dem Rechner die 256 Zahlen von 0 bis 255.
+Diese Zahlenwerte sind für Rechner standardisiert und werden
+ASCII-Code genannt.
 
 Sie können also die Silbe "`un"' durch die Zahl $117 * 256 + 110$
 darstellen.\\
@@ -5157,21 +5169,19 @@ verschlüsseln.
 Sie dürfen allerdings dabei die Zahl, zu der die Nachricht
 verschlüsselt wird, nicht größer werden lassen als das Produkt der
 Primzahlen (Modulus). Ansonsten bekommen Sie Probleme, wie Sie gleich
-noch sehen werden.
+noch sehen werden.\\
 
-
-\clearpage
 Die folgende Prozedur umfasst mehrere Schritte, die hier zunächst 
 zusammengefasst und anschließend in Einzelschritten dargestellt
 werden:
 
 \begin{enumerate}
-\item Die Nachricht \emph{aba, cad, ada} wandeln Sie -- wie gesehen -- in
-  Zahlen um.
+\item Die Nachricht \emph{aba, cad, aca} wandeln Sie -- wie
+    beschrieben -- in Zahlen um.
 \item Diese Darstellung, beispielhaft zur Basis $2^2=4$ (statt
     $2^8=256$), wandeln Sie in eine Darstellung
   zur Basis 10 um, damit Sie zur Verschlüsselung die
-  Tabelle~\ref{table1}
+  Tabelle~\link*{1}[\ref{table1}]{table1}
   benutzen können, in der die Zahlen ja auch auf 10er-Basis
   dargestellt werden.  Dabei entsteht eine kodierte Nachricht zur
   Basis 10.
@@ -5180,7 +5190,7 @@ werden:
   rechnen Sie die zur Basis 10 kodierte Nachricht auf die Basis 4
   zurück und wandeln sie dann wieder in eine Buchstabensequenz.
 
-\item So entsteht aus der Nachricht \emph{aba, cad, ada} die
+\item So entsteht aus der Nachricht \emph{aba, cad, aca} die
     verschlüsselte Nachricht \emph{dbb, ddd, dac}.
 \end{enumerate}
 
@@ -5190,8 +5200,7 @@ Und nun ausführlich:
 
 \begin{enumerate}
 
-\item Die Nachricht \emph{aba, cad, ada} wandeln Sie -- wie
-        gesehen -- in Zahlen um.
+\item Die Nachricht \emph{aba, cad, aca} wandeln Sie in Zahlen um.
 
     Angenommen, Sie beschränken sich bei den Nachrichten auf die 4
     Buchstaben a, b, c und d. In diesem -- wirklich sehr einfachen --
@@ -5200,16 +5209,16 @@ Und nun ausführlich:
 
     \[ a = 0, b = 1, c = 2 ~\mbox{und}~ d = 3 \].
 
-    Verschlüsseln Sie nun die Nachricht "`abacadaca"'. Sie kodieren
+    Verschlüsseln Sie nun die Nachricht  \emph{aba, cad, aca}. Sie kodieren
     diese Nachricht mit Hilfe der Primzahlen 7 und 11, mit dem
     öffentlichen Schlüssel 77 und 13 und dem dazugehörenden geheimen
     Schlüssel 37.  Dieses Beispiel kennen Sie bereits aus dem früheren
-    Kapitel: Sie haben damit die Tabellen~\ref{table1} und
-    \ref{table2} konstruiert.
+    Kapitel: Sie haben damit die Tabellen~\link*{1}[\ref{table1}]{table1} und
+    \link*{2}[\ref{table2}]{table2} konstruiert.\\
 
 \item Diese Darstellung zur Basis 4 wandeln Sie in eine Darstellung
     zur Basis 10 um. Damit können Sie zur Verschlüsselung die
-    Tabelle~\ref{table1} benutzen, in denen die Zahlen ja auch auf
+    Tabelle~\link*{1}[\ref{table1}]{table1} benutzen, in denen die Zahlen ja auch auf
     10er-Basis dargestellt werden.
 
     Weil Sie vier Buchstaben für die Nachricht verwenden, rechnen Sie
@@ -5220,7 +5229,8 @@ Und nun ausführlich:
 
     Würden Sie stattdessen die Nachricht in vier Zeichen lange Stücke
     zerlegen, würde $3333_4$ den Wert $76_{10}$ übersteigen und es
-    würden unerwünschte Doppeldeutigkeiten entstehen.\\
+    würden unerwünschte Doppeldeutigkeiten entstehen.
+
     Folglich würde die Nachricht in dreiziffrigen Stücken nun
 
     \[ aba, cad, aca \]
@@ -5252,38 +5262,34 @@ Und nun ausführlich:
     % solves it.
     \clearpage
 
-\item Jetzt können Sie zur Verschlüsselung die Tabelle~\ref{table1}
+\item Jetzt können Sie zur Verschlüsselung die Tabelle~\link*{1}[\ref{table1}]{table1}
     von Seite \pageref{table1} benutzen, die ja zur Basis 10 berechnet
     wurde. Diese Tabelle benutzen wir, weil Sie mit dem schon
     bekannten Schlüsselpaar arbeiten wollen. Dabei entsteht eine
     kodierte Nachricht zur Basis 10.
 
     Zum Verschlüsseln der Nachricht nehmen Sie jetzt die o.g.
-    Tabelle~\ref{table1} zur Hilfe.  Die Nachricht wird nun zu der
-    Zahlenfolge 53, 63, 50 (zur Basis 10).
+    Tabelle~\link*{1}[\ref{table1}]{table1} zur Hilfe.  Die Nachricht wird nun zu der
+    Zahlenfolge 53, 63, 50 (zur Basis 10).\\
 
-\item Wiederum zur Basis 4 konvertiert, entsteht die verschlüsselte
-    Nachricht.
-
-    Wird sie nun wieder zur Basis 4 konvertiert, ergibt die Nachricht
+\item Wird sie nun wieder zur Basis 4 konvertiert, ergibt die Nachricht
     nun $311_4, 333_4, 302_4$.  Konvertiert man diese zu einer
-    Buchstabensequenz, erhält man dbb, ddd, dac, was sich nun
+    Buchstabensequenz, erhält man \emph{dbb, ddd, dac}, was sich nun
     erheblich von der ursprünglichen Nachricht unterscheidet.
 
     Man kehrt nun also den Prozess um und transformiert die
-    Zahlenfolge 53, 63, 50 mit Tabelle~\ref{table2} und erhält die
+    Zahlenfolge 53, 63, 50 mit Tabelle~\link*{2}[\ref{table2}]{table2} und erhält die
     Sequenz 4, 35, 8. Und das entspricht als Zahlenfolge genau der
     ursprünglichen Nachricht.
 
-    Anhand der Tabellen \ref{table1} und \ref{table2} können Sie
+    Anhand der Tabellen \link*{1}[\ref{table1}]{table1} und \link*{2}[\ref{table2}]{table2}  können Sie
     ebenso gut Nachrichten unter Verwendung des geheimen Schlüssels
-    (d.h., erst Tabelle~\ref{table2} benutzen) verschlüsseln, dann mit
-    dem öffentlichen Schlüssel (d.h., Tabelle~\ref{table1} als zweites
+    (d.h., erst Tabelle~\link*{2}[\ref{table2}]{table2}  benutzen) verschlüsseln, dann mit
+    dem öffentlichen Schlüssel (d.h., Tabelle~\link*{1}[\ref{table1}]{table1} als zweites
     benutzen) dekodieren und damit Ihre ursprüngliche Zahl wieder
     herstellen. Das bedeutet, dass der Inhaber des geheimen Schlüssels
     damit Nachrichten unter Verwendung des RSA-Algorithmus
-    verschlüsseln kann.  Damit ist bewiesen, dass sie eindeutig nur
-    von ihm stammen können.
+    verschlüsseln kann, die daher eindeutig nur von ihm stammen können.
 
 \end{enumerate}
 
@@ -5301,8 +5307,8 @@ R.~Wobst, "`Abenteuer Kryptologie"') oder im Internet zu finden.
 
 \textbf{Immerhin wissen Sie nun:} Wenn jemand sich an Ihren
 verschlüsselten \Email{}s zu schaffen macht, ist er durchaus so lange
-damit beschäftigt, dass er dann keine Lust mehr haben dürfte, diese
-dann noch zu lesen ...
+damit beschäftigt, dass er nicht mehr erleben dürfte, diese
+dann noch lesen zu können...
 
 
 
@@ -5354,23 +5360,25 @@ Beim nächsten Start von Outlook findet sich im Menü
 \clearpage
 Die Karteikarte \Menu{GpgOL} unterteilt sich in drei Bereiche:
 \begin{enumerate}
-    \item \textbf{Allgemein:}
+    \item \textit{\textbf{Allgemein:}}
 
         Nach der Installation von Gpg4win ist die
         \T\margin{\IncludeImage[width=1.5cm]{smime-icon}}
-        S/MIME-Funktionalität in GpgOL deaktiviert.  Damit ist die
+        S/MIME-Funktionalität in GpgOL aktiviert.  Damit ist die
         S/MIME-Unterstützung von GnuPG gemeint.  Outlook selbst unterstützt
         ebenfalls X.509 und S/MIME, arbeitet aber natürlich nicht mit
-        den Gpg4win-Komponenten.  Konkret heißt das, dass alle
+        der Gpg4win-Komponente GnuPG.  Konkret heißt das, dass alle
         Einstellungen, das Zertifikatsmanagement und die
         Benutzerdialoge unterschiedlich sind. Es ist zu beachten, dass
-        Outlook keine OpenPGP-Unterstützung anbietet.
+        Outlook von sich aus keine OpenPGP-Unterstützung anbietet.
 
-        \textbf{Wichtig:} Wenn Sie S/MIME in Outlook mit Gpg4win
-        nutzen möchten, müssen Sie zuvor die GpgOL-Option \Menu{S/MIME
-        Unterstützung einschalten} aktivieren.
+        Wenn Sie S/MIME in Outlook mit Gpg4win nutzen möchten,
+        lassen Sie die GpgOL-Option \Menu{S/MIME Unterstützung
+        einschalten} aktiviert. Sollten Sie das von Outlook
+        unterstützte S/MIME nutzen wollen, deaktivieren Sie diese
+        GpgOL-S/MIME-Option.
 
-    \item \textbf{Senden von Nachrichten:}
+    \item \textit{\textbf{Senden von Nachrichten:}}
 
         Die beiden ersten Optionen in diesem Bereich steuern, ob per
         Voreinstellung neue Nachrichten verschlüsselt und/oder
@@ -5379,22 +5387,12 @@ Die Karteikarte \Menu{GpgOL} unterteilt sich in drei Bereiche:
         Lediglich die Schaltflächen sind schon entsprechend
         aktiviert.
 
-        Die beiden letzten Optionen definieren, ob PGP/MIME
+        Die beiden letzten Optionen definieren, ob PGP/MIME (OpenPGP)
         \textit{oder} S/MIME per Voreinstellung verwendet werden soll.
         Auch hier können Sie diese Entscheidung immer noch vor dem
         Senden jeder Nachricht nachträglich ändern.
 
-    \item \textbf{Lesen von Nachrichten:}
-
-        \Menu{Auch im Vorschaufenster entschlüsseln}
-
-        Soll im Vorschaufenster die entschlüsselte Fassung erscheinen,
-        so ist diese Option einzuschalten.  Sie sollten dabei
-        bedenken, dass dadurch bereits beim Durchblättern durch Ihre
-        Nachrichten die Entschlüsselungs- und Prüfroutinen ausgeführt
-        werden. D.h., es werden Dialoge zum Status der \Email{}s
-        angezeigt und ggf. werden Sie nach einer Passphrase zur
-        Entschlüsselung gefragt.
+    \item \textit{\textbf{Lesen von Nachrichten:}}
 
         \Menu{HTML-Darstellung anzeigen wenn möglich}
 
@@ -5420,8 +5418,8 @@ Um verschlüsselte Nachrichten mit Outlook versenden zu können, müssen
 Sie sicherstellen, dass Sie \textbf{nicht} Microsoft Word zum
 Verfassen der Nachrichten benutzen.
 
-Des Weiteren ist anzuraten auf HTML-Nachrichten zu verzichten.  Sie
-können dies im Menüpunkt \Menu{Extras$\rightarrow$Optionen} auf der
+Des Weiteren ist anzuraten auf HTML-Nachrichten zu verzichten.\\
+Sie können dies im Menüpunkt \Menu{Extras$\rightarrow$Optionen} auf der
 Karteikarte \Menu{E-Mail-Format} kontrollieren.  Das Nachrichtenformat
 sollte auf \Menu{Nur-Text} eingestellt sein (siehe markierter
 Bereich).  Sollten Sie dennoch HTML für signierte oder verschlüsselte
@@ -5436,8 +5434,9 @@ Formatierungsinformationen verloren gehen.
 \textbf{Beachten Sie:}
 Mit der Programmerweiterung GpgOL von Gpg4win wird Outlook 2003/2007
 um die Möglichkeit erweitert, mit \Email{}s nach dem OpenPGP-Standard
-umzugehen.  Gpg4win befähigt Outlook 2007 unter WindowsXP und Outlook
-2003 generell, AES-verschlüsselte S/MIME-\Email{}s zu entschlüsseln und
+umzugehen. \\
+Gpg4win befähigt Outlook 2007 unter WindowsXP und Outlook 2003 auch,
+AES-verschlüsselte S/MIME-\Email{}s zu entschlüsseln und
 zu erzeugen, da Gpg4win mit GnuPG eine eigene, von Outlook und Windows
 unabhängige Kryptokomponente mitbringt. Nur Outlook 2007 unter Windows
 Vista beherrscht AES-verschlüsselte S/MIME-\Email{}s auch ohne Gpg4win.
@@ -5456,7 +5455,7 @@ einfacher die Verwendung.
 Die einfachste Methode, z.B. wenn ein \Email{}-Programm überhaupt
 nichts über GnuPG weiß, ist die Verschlüsselung via Zwischenablage
 mit Hilfe von Kleopatra. Dies funktioniert nur für OpenPGP, für S/MIME
-und kompliziertere PGP/MIME-\Email{}s werden Sie über eine
+und komplexe PGP/MIME-\Email{}s werden Sie über eine
 Zwischenspeicherung als Datei gehen müssen. Beide Methoden werden im
 ersten Teil dieses Kompendiums beschrieben.
 
@@ -5477,7 +5476,7 @@ Ein Integration in GnuPG wird derzeit für folgende
     jedoch nicht Kleopatra und besitzt daher derzeit nicht denselben
     Komfort, wie ihn die Outlook-Erweiterung GpgOL bietet.
 
-\item[Kontact:] Eine komfortable und erprobte Integration von GnuPG
+\item[KMail/Kontact:] Eine komfortable und erprobte Integration von GnuPG
     bieten KMail und Kontact. Sie sind für nahezu jedes
     GNU/Linux-System und neuerdings auch für Windows und MacOS X
     verfügbar.
@@ -5497,8 +5496,8 @@ In einigen Fällen, wie z.B. für Software-Verteilungssysteme, ist es
 notwendig, dass die Installation von Gpg4win ohne die Interaktion über
 Dialoge funktioniert. Um aber trotzdem vorab alle
 Installationseinstellungen bestimmen zu können, unterstützt Gpg4win
-das Setzen des Installationspfads auf der Kommandozeile wie auch eine
-Steuerungsdatei.
+das Setzen des Installationspfads und weiterer Optionen auf der
+Kommandozeile wie auch in einer Steuerungsdatei.
 
 Der Installationspfad kann mit der Option \Filename{/D=<PFAD>}
 angegeben werden, welche als letzte Option auf der Kommandozeile
@@ -5595,9 +5594,10 @@ nach einem Menüpunkt, um alle vorhandenen öffentlichen Zertifikate zu
 sichern. Sichern Sie diese dann in einer oder mehreren Dateien.
 
 Sobald Sie Gpg4win installiert haben, prüfen Sie, ob Ihre alten
-Zertifikate bereits vorhanden sind. Sie können dies mit Kleopatra oder
-GPA machen. Sind die Zertifikate schon vorhanden, so entsprach das
-alte Verschlüsselungssystem bereits den neuen Konventionen zum
+Zertifikate bereits vorhanden sind. Sie können dies mit den
+Zertifikatsmanagern Kleopatra oder GPA machen. Sind die Zertifikate
+schon vorhanden, so entsprach das alte Verschlüsselungssystem bereits
+den neuen Konventionen zum
 Speicherort für die Zertifikate und Sie müssen nichts weiter
 unternehmen.
 
@@ -5605,9 +5605,10 @@ Wenn die alten Zertifikate nicht erscheinen, so importieren Sie diese
 einfach aus den erstellten Sicherungsdateien. Lesen Sie hierzu das
 Kapitel~\ref{ch:ImExport}.
 
-Falls Ihr altes Kryptografiesystem GPA verwendet, so können Sie die
-dort vorhandene Backupmöglichkeit benutzen. Diese sollte sehr ähnlich
-zu der Funktion in der GPA-Version aus Gpg4win sein.
+Falls Ihr altes Kryptografiesystem den Zertifikatsmanager GPA
+verwendet, so können Sie die dort vorhandene Backupmöglichkeit
+benutzen. Diese sollte sehr ähnlich zu dieser Funktion der GPA-Version
+aus Gpg4win sein.
 
 Falls Sie keinen anderen Weg finden, Ihre alten Zertifikate
 wiederzufinden, so suchen Sie bitte mit den Bordmitteln von Windows
@@ -5617,44 +5618,31 @@ Kleopatra\footnote{Dies ist nicht der offizielle Weg, funktioniert
 aber noch mit allen aktuellen GnuPG-Versionen.}.
 
 \clearpage
-\T\section*{Migration von Gpg4win-1.1.x nach Gpg4win-2.0.x}
-\W\section*{D.1 Migration von Gpg4win-1.1.x nach Gpg4win-2.0.x}
+\T\section*{Migration von Gpg4win-1.1.x nach Gpg4win-2.x}
+\W\section*{D.1 Migration von Gpg4win-1.1.x nach Gpg4win-2.x}
 
 Es wird dringend empfohlen, zunächst Gpg4win-1.1.x zu deinstallieren,
-bevor anschließend Gpg4win-2.0.x installiert wird.
+bevor anschließend Gpg4win-2.x installiert wird.
 
 \subsubsection{Technischer Hintergrund}
 Das Problem bei einer Migration \textit{ohne} Deinstallation von
 Gpg4win-1.1.x ist folgende Sequenz:
 
-1. Installation von Version X, inkl. Komponente K.\\
-2. Installation von Version X+1, aber Komponente K wird diesmal deselektiert.
+1. Installation von Gpg4win in der Version X, inkl. Komponente K.\\
+2. Installation von Gpg4win in der Version X+1, aber Komponente K wird diesmal deselektiert.
 
 Effekt: Die alte Komponente von K bleibt installiert in der Version X.
 
-3. Deinstallation von Version X+1.
+3. Deinstallation von Gpg4win in der Version X+1.
 
-Effekt: Die Komponente K in der Version X bleibt auf dem Betriebssystem verwaist
-zurück.
-
-Mögliche Lösung:
-Der Installationsassistent ruft die aktuelle Deinstallation für die
-Komponente K auf, falls diese selektiert war, aber nicht mehr
-selektiert ist.  Diese Lösung wäre allerdings ein erheblicher
-Programmier- und Testaufwand, da dies nicht von dem
-Installationsprogramm NSIS einfach unterstützt wird.
-
-Alternative:
-Installierte Komponenten dürfen bei einem Update nicht deselektiert
-werden. Der Aufwand wäre vermutlich geringer, dies ist allerdings
-keine perfekte Lösung.\\
-Technischer Grund: NSIS fehlt ein vollständiges Paketmanagement.
+Effekt: Die Komponente K der Version X bleibt verwaist zurück.
 
 Dies ist eine Beschränkung von Gpg4win seit der ersten Version.
 
-\textbf{Anmerkung 1}: Beim Sprung von 1.1.x auf 2.0.x tritt dieser Fall
-\textit{immer} ein, da bestimmte Komponenten K nicht mehr existieren, 
-also auf jeden Fall (automatisch) als deselektiert zu betrachten sind.
+\textbf{Anmerkung 1}: Beim Sprung von 1.1.x auf 2.x tritt dieser Fall
+\textit{immer} ein, da bestimmte Komponenten K nicht mehr existieren
+(z.B. GpgEE), also auf jeden Fall (automatisch) als deselektiert zu
+betrachten sind.
 
 \textbf{Anmerkung 2}: Im Falle von MSI übernimmt Windows die Aufgabe,
 nicht mehr verwendete Komponenten zu entfernen.  Das bedeutet, dass
@@ -5696,14 +5684,15 @@ entfernen}.
 
 Sie werden darauf hingewiesen, dass GpgOL (für die anschließende
 Deinstallation) ausgeschaltet wird. Bestätigen Sie die Frage, ob Sie
-den Ordner von GpgOL befreien wollen, mit \Menu{Ja}.\\
+die \Email{}s der jeweiligen Ordner von den Markierungen durch GpgOL
+reinigen wollen, mit \Menu{Ja}.\\
 Führen Sie dieses Kommando nun für alle Outlook-Ordner durch.
 
 Nachdem Sie alle Ordner zurückgesetzt haben, beginnen Sie mit der
 Deinstallation von Gpg4win.
 
 ~\\
-Es gibt zwei Möglichkeiten die Deinstallation auszuführen:
+Es gibt drei Möglichkeiten die Deinstallation auszuführen:
 
 \begin{itemize}
 \item Einmal mit den Bordmitteln von Microsoft Windows:
@@ -5723,9 +5712,13 @@ Es gibt zwei Möglichkeiten die Deinstallation auszuführen:
     Falls Sie bei der Installation einen anderen als den
     voreingestellten Pfad gewählt hatten, werden Sie das
     Deinstallationsprogramm an entsprechender Stelle finden.
+
+\item Diese ausführbare Datei ist auch im Startmenü unter Gpg4win
+    vorhanden.
+
 \end{itemize}
 
-In beiden Fällen werden alle Dateien von Gpg4win aus dem
+In allen drei Fällen werden alle Dateien von Gpg4win aus dem
 Installationsordner sowie die Verknüpfungen in Startmenü, Desktop und
 Schnellstartleiste entfernt.
 
@@ -5741,7 +5734,7 @@ Konfigurationseinstellungen:
 
         In diesem \Filename{gnupg}-Dateiordner befinden sich sämtliche
         persönlichen GnuPG-Daten, also die persönlichen Zertifikate,
-        Vertrauenseinstellungen und Programmkonfigurationen.
+        Vertrauensstellungen und Programmkonfigurationen.
 
     \item Systemweite GnuPG-Anwendungsdaten\\ in
         \Filename{\%COMMON\_APPDATA\%\back{}GNU}, das entspricht in
@@ -5758,16 +5751,21 @@ Nach der Deinstallation von Gpg4win-1.1.3 bleiben folgende
 Dateiordner bzw. Registryschlüssel zurück:
 
 \begin{itemize}
-    \item \Filename{\%APPDATA\%$\backslash$gnupg}\\
-        (Wichtig: Hier sind Ihre persönlichen privaten und
-        öffentlichen Zertifikate und GnuPG-Ein\-stellungen enthalten.)
+    \item Dateinamen:\\
+        \Filename{\%APPDATA\%$\backslash$gnupg} (Wird von einer
+        Gpg4win2-Installation \textit{weiter} verwendet.)\\
+        Wichtig: Hier sind Ihre persönlichen privaten und
+        öffentlichen Zertifikate sowie GnuPG-Ein\-stellungen enthalten.
 
     \item Registryschlüssel:\\
         \Filename{HKLM$\backslash$Software$\backslash$GNU$\backslash$GnuPG}
-        (Wird in der Gpg4win-2.0.0-Installation entfernt.)\\
-        \Filename{HKCU$\backslash$Software$\backslash$GNU$\backslash$GPG4Win}\\
-        \Filename{HKCU$\backslash$Software$\backslash$GNU$\backslash$GpgOL} \\
+        (Wird von einer Gpg4win2-Installation \textit{nicht} mehr verwendet.)\\
+        \Filename{HKCU$\backslash$Software$\backslash$GNU$\backslash$GPG4Win}
+        (Wird von einer Gpg4win2-Installation \textit{nicht} mehr verwendet.)\\
+        \Filename{HKCU$\backslash$Software$\backslash$GNU$\backslash$GpgOL}
+        (Wird von einer Gpg4win2-Installation \textit{weiter} verwendet.)\\
         \Filename{HKCU$\backslash$Software$\backslash$GPGee}
+        (Wird von einer Gpg4win2-Installation \textit{nicht} mehr verwendet.)
 \end{itemize}
 
 
@@ -5794,20 +5792,20 @@ Dateiordner bzw. Registryschlüssel zurück:
 \item Revidierte nicht-veröffentlichte Version von TextLab text+media.      
 \item "`Gpg4win für Einsteiger"' und "`Gpg4win für Durchblicker"', Dezember 2005 \\
        \"Uberarbeitung: Werner Koch, g10 Code GmbH\\
-       Herausgeber: das Gpg4win-Projekt
+       Herausgeber: die Gpg4win-Initiative
 \item Dank der Erlaubnis des BMWi vom 14. November 2007 wurde
       der unveränderbare Abschnitt "`Impressum"' entfernt und an die aktuelle
       Version angepasst.
 \item Das "`Gpg4win-Kompendium"' fasst "`Gpg4win für Einsteiger"' und "`Gpg4win für 
       Durchblicker"' zusammen und ist im Jahre 2009 umfassend für Gpg4win2 
       aktualisiert und ergänzt worden.\\
-      \"Uberarbeitung:\\
-      Emanuel Sch\"utze, Intevation GmbH\\
-      Dr. Jan-Oliver Wagner, Intevation GmbH\\
+      Grundlegende \"Uberarbeitung:\\
+      Werner Koch, g10 Code GmbH\\
       Florian v. Samson, Bundesamt f\"ur Sicherheit in der
       Informationstechnik\\
-      Werner Koch, g10 Code GmbH\\
-\end{itemize}
+      Emanuel Sch\"utze, Intevation GmbH\\
+      Dr. Jan-Oliver Wagner, Intevation GmbH\\
+      \end{itemize}
 
 \clearpage
 \input{fdl-book.tex}
