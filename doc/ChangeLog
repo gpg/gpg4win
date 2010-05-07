@@ -1,5 +1,8 @@
 2010-05-07  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
-	
+
+	* website/documentation.htm4, website/documentation-de.htm4:
+	Update compendium release month.
+
 	* website/template_link_boxes_de.m4, website/template_link_boxes_en.m4:
 	Update sponsoring box (changed donation button etc).
 
