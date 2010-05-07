@@ -18,34 +18,27 @@ m4_dnl DONT USE THIS FILE DIRECTLY
   LINK(`impressum-de.html', `Impressum')
 </div>
 <div class="box">
-  <h1>Sponsoring</h1>
-
-  <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-    <input type="hidden" name="cmd" value="_xclick">
+  <h1>Sonstiges</h1>
+   LINK(`Kurzstudie-Nachhaltige-FS-Beispiel-Gpg4win.html', `Kurzstudie: "Nachhaltige Freie Software: Vom Projekt zur Dauertätigkeit am Beispiel Gpg4win"')
+</div>
+<div align="center">
+  <p/>
+  <b>Unterstützen Sie Gpg4win und spenden Sie jetzt:</b><br>
+  <form action="https://www.paypal.com/de/cgi-bin/webscr" method="post">
+    <input type="hidden" name="cmd" value="_donations">
     <input type="hidden" name="business" value="paypal@intevation.de">
     <input type="hidden" name="undefined_quantity" value="1">
     <input type="hidden" name="item_name" value="Gpg4win">
-    <input type="hidden" name="item_number" value="1000">
     <input type="hidden" name="no_shipping" value="1">
-    <input type="hidden" name="cn" value="Kommentar (Lob/Kritik)">
+    <input type="hidden" name="cn" value="Kommentar an das Gpg4win-Entwicklerteam (Lob/Kritik)">
     <input type="hidden" name="currency_code" value="EUR">
     <input type="hidden" name="bn" value="PP-BuyNowBF">
-
-    <input type="image" src="https://www.paypal.com/de_DE/i/btn/x-click-but02.gif"
-      border="0" name="submit" alt="Zahlen mit PayPal">
-
-    <p>
-    <input type="hidden" name="on0" value="Öffentliches Nennen des
-      Sponsorings erlaubt?">Öffentliches Nennen des Sponsorings erlaubt?
+    <input type="image" src="https://www.paypal.com/de_DE/DE/i/btn/btn_donate_LG.gif"
+      border="0" name="submit" alt="Jetzt einfach, schnell und sicher online spenden - mit PayPal.">
+    <input type="hidden" name="on0" value="Veröffentlichung der Spende zugestimmt?">
+    <input type="hidden" name="os0" value="Nein">
     <br/>
-    <input type="radio" name="os0" value="Ja">Ja&nbsp;<input
-      type="radio" name="os0" value="Nein" checked>Nein
-    </p>
+    <input type="checkbox" name="os0" value="Ja" checked>Spende veröffentlichen
   </form>
-  </p>
-</div>
-<div class="box">
-  <h1>Sonstiges</h1>
-   LINK(`Kurzstudie-Nachhaltige-FS-Beispiel-Gpg4win.html', `Kurzstudie: "Nachhaltige Freie Software: Vom Projekt zur Dauertätigkeit am Beispiel Gpg4win')
 </div>
 </div>

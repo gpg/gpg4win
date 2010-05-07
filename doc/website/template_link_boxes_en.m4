@@ -18,37 +18,28 @@ m4_dnl DONT USE THIS FILE DIRECTLY
   LINK(`impressum.html', `Impressum')
 </div>
 <div class="box">
-  <h1>Sponsorship</h1>
-
-  <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-    <input type="hidden" name="cmd" value="_xclick">
-    <input type="hidden" name="business" value="paypal@intevation.net">
-    <input type="hidden" name="undefined_quantity" value="1">
-    <input type="hidden" name="item_name" value="Gpg4win">
-    <input type="hidden" name="item_number" value="1000">
-    <input type="hidden" name="no_shipping" value="1">
-    <input type="hidden" name="cn" value="Comment (praise/criticism)">
-    <input type="hidden" name="currency_code" value="EUR">
-    <input type="hidden" name="bn" value="PP-BuyNowBF">
-
-    <input type="image" src="http://images.paypal.com/images/x-click-but02.gif"
-      border="0" name="submit" alt="Pay with PayPal">
-
-    <p>
-    <input type="hidden" name="on0" value="Allowed to publish
-      your sponsorship?">
-    Allowed to publish your sponsorship?
-    <br/>
-    <input type="radio" name="os0" value="Yes">Yes&nbsp;<input
-       type="radio" name="os0" value="No" checked>No
-    </p>
-  </form>
-
-  </p>
-</div>
-<div class="box">
   <h1>Miscellaneous</h1>
   LINK(`ShortStudy-Sustainable-FS-example-Gpg4win.html', `Short Study: "Sustainable Free Software: 
-    From project to permanent activity, using the example Gpg4win')
+    From project to permanent activity, using the example Gpg4win"')
+</div>
+<div align="center">
+  <p/>
+  <b>Please support Gpg4win and<br> make your donation now:</b><br>
+  <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+    <input type="hidden" name="cmd" value="_donations">
+    <input type="hidden" name="business" value="paypal@intevation.de">
+    <input type="hidden" name="undefined_quantity" value="1">
+    <input type="hidden" name="item_name" value="Gpg4win">
+    <input type="hidden" name="no_shipping" value="1">
+    <input type="hidden" name="cn" value="Comment to Gpg4win developer team (praise/criticism)">
+    <input type="hidden" name="currency_code" value="EUR">
+    <input type="hidden" name="bn" value="PP-BuyNowBF">
+    <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_donate_LG.gif"
+      border="0" name="submit" alt="Pay with PayPal">
+    <input type="hidden" name="on0" value="Allowed to publish of your donation?">
+    <input type="hidden" name="os0" value="No">
+    <br/>
+    <input type="checkbox" name="os0" value="Yes" checked>Publish my donation
+  </form>
 </div>
 </div>
