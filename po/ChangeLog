@@ -1,3 +1,8 @@
+2010-05-11  Marcus Brinkmann  <marcus@g10code.de>
+
+	* POTFILES.in: Remove inst-winpt.nsi, inst-gpgee.nsi,
+	inst-eudoragpg.nsi.
+
 2010-02-01  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
         * ar.po, de.po, es.po, fr.po, ru.po (T_GPLHeader): 
