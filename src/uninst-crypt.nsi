@@ -27,7 +27,7 @@
 ; Uninstaller section.
 Section "-un.crypt"
 !ifdef SOURCES
-  Push "${gpg4win_pkg_crypt_src}"
+  Push "${gpg4win_pkg_crypt}"
   Call un.SourceDelete
 !else
   # Nothing to uninstall

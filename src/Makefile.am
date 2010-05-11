@@ -45,19 +45,16 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi config.site \
         inst-bsfilter_plugin.nsi   uninst-bsfilter_plugin.nsi \
         inst-crypt.nsi		   uninst-crypt.nsi	      \
         inst-dirmngr.nsi	   uninst-dirmngr.nsi	      \
-        inst-eudoragpg.nsi	   uninst-eudoragpg.nsi	      \
         inst-gettext.nsi	   uninst-gettext.nsi	      \
         inst-glib.nsi		   uninst-glib.nsi	      \
         inst-gnupg2.nsi		   uninst-gnupg2.nsi	      \
         inst-gpa.nsi		   uninst-gpa.nsi	      \
-        inst-gpgee.nsi		   uninst-gpgee.nsi	      \
         inst-gpgme.nsi		   uninst-gpgme.nsi	      \
         inst-scute.nsi		   uninst-scute.nsi	      \
         inst-paperkey.nsi	   uninst-paperkey.nsi	      \
         inst-gpgol.nsi		   uninst-gpgol.nsi	      \
         inst-gpgex.nsi		   uninst-gpgex.nsi	      \
         inst-gtk+.nsi		   uninst-gtk+.nsi	      \
-        inst-jpeg.nsi		   uninst-jpeg.nsi	      \
         inst-libassuan.nsi	   uninst-libassuan.nsi	      \
         inst-libgcrypt.nsi	   uninst-libgcrypt.nsi	      \
         inst-libgpg-error.nsi	   uninst-libgpg-error.nsi    \
@@ -76,7 +73,6 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi config.site \
         inst-pthreads-w32.nsi	   uninst-pthreads-w32.nsi    \
         inst-regex.nsi		   uninst-regex.nsi	      \
         inst-w32pth.nsi		   uninst-w32pth.nsi	      \
-        inst-winpt.nsi		   uninst-winpt.nsi	      \
         inst-zlib.nsi        	   uninst-zlib.nsi            \
 	inst-bsfilter.nsi          uninst-bsfilter.nsi        \
         inst-qt.nsi        	   uninst-qt.nsi              \
@@ -101,11 +97,11 @@ CLEANFILES = g4wihelp.dll versioninfo.txt $(README_files) \
 
 # Supported source packages.
 gpg4win_spkgs = glib libgpg-error gpgme gpgol gpgex libpng \
-		gpa winpt libgsasl libtasn1 opencdk gnutls curl libxml2 \
+		gpa libgsasl libtasn1 opencdk gnutls curl libxml2 \
                 libetpan claws-mail notification_plugin gtkhtml2_viewer \
 		vcalendar rssyl gnupg2 pinentry libassuan libksba libgcrypt \
 		adns dirmngr w32pth scute paperkey tnef_parse attachwarner \
-		bsfilter_plugin
+		bsfilter_plugin regex
 
 # Extra options to configure for individual packages.
 # We can use $(idir) here for the installation prefix.
@@ -153,7 +149,8 @@ endef
 #gpg4win_pkg_libgpg_error_configure = \
 #  --with-libiconv-prefix=$(idir) --with-libintl-prefix=$(idir)
 gpg4win_pkg_libgpg_error_configure = --silent \
-  CPPFLAGS=-I$(idir)/include LDFLAGS=-L$(idir)/lib
+  CPPFLAGS=-I$(idir)/include LDFLAGS=-L$(idir)/lib \
+  --enable-static
 
 # We convert the PO files to UTF-8.  FIXME: This should be done in
 # libgpg-error proper.
@@ -235,9 +232,6 @@ gpg4win_pkg_gpgex_configure = --silent \
   --with-gpg-error-prefix=$(idir) \
   --with-libassuan-prefix=$(idir)
 
-gpg4win_pkg_winpt_configure = --silent \
-  --with-gpgme-prefix=$(idir) --with-gpg-error-prefix=$(idir)
-
 gpg4win_pkg_gnutls_configure = \
   --disable-cxx \
   --with-libtasn1-prefix=$(idir) \
@@ -294,7 +288,7 @@ gpg4win_pkg_scute_configure = --silent \
 gpg4win_pkg_paperkey_configure = --silent
 
 # Supported make-only source packages.
-gpg4win_mpkgs = pthreads-w32 bzip2 zlib
+gpg4win_mpkgs = pthreads-w32 bzip2 zlib crypt
 
 # Extra options for the make invocations for individual packages.
 # make_flags is used for building, make_args_inst is used for installing.
@@ -310,6 +304,12 @@ gpg4win_pkg_bzip2_make_args = \
 gpg4win_pkg_bzip2_make_args_inst = \
   PREFIX=$$$${pkgidir} CC=$(CC) AR=$(AR) RANLIB=$(RANLIB)
 
+gpg4win_pkg_crypt_make = \
+  CC=$(CC) AR=$(AR)
+
+gpg4win_pkg_crypt_make_args_inst = \
+  prefix=$$$${pkgidir}
+
 gpg4win_pkg_zlib_make_args = -fwin32/Makefile.gcc PREFIX=i586-mingw32msvc- IMPLIB=libz.dll.a
 
 gpg4win_pkg_zlib_make_args_inst = -fwin32/Makefile.gcc install \
@@ -317,9 +317,8 @@ gpg4win_pkg_zlib_make_args_inst = -fwin32/Makefile.gcc install \
 	LIBRARY_PATH=$$$${pkgidir}/lib SHARED_MODE=1 IMPLIB=libz.dll.a
 
 # Supported binary packages.
-gpg4win_bpkgs = libiconv gettext pkgconfig jpeg pango expat freetype fontconfig cairo \
-	        atk gtk+ gpgee crypt regex qt kdesupport oxygen-icons kdelibs \
-		kleopatra bsfilter
+gpg4win_bpkgs = libiconv gettext pkgconfig pango expat freetype fontconfig cairo \
+	        atk gtk+ qt kdesupport oxygen-icons kdelibs kleopatra bsfilter
 
 # libiconv needs some special magic to generate a usable import
 # library.
@@ -358,18 +357,10 @@ echo "dlpreopen=''" >> lib/libz.la;			\
 echo "libdir=\"$$$${pkgidir}/lib\"" >> lib/libz.la;)
 endef
 
-# To make shure that we link against the static versions we need
+# To make sure that we link against the static versions we need
 # remove the import libs from crypt
-define gpg4win_pkg_crypt_post_install
-(cd $$$${pkgidir}/lib && rm libcrypt.dll.a libcrypt.lib)
-endef
-
-# To make shure that we link against the static versions we need
-# remove the import libs from regex
-# FIXME: We need to shared version or libtool refuses to build the
-# claws plugin.
-#define gpg4win_pkg_regex_post_install
-#(cd $$$${pkgidir}/lib && rm libregex.dll.a libregex.lib)
+#define gpg4win_pkg_crypt_post_install
+#(cd $$$${pkgidir}/lib && rm libcrypt.dll.a libcrypt.lib)
 #endef
 
 # We need to fix the prefix in the various packages using pkgconfig,

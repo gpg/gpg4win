@@ -30,8 +30,8 @@ Section "-regex" SEC_regex
 !endif
   SetOutPath "$INSTDIR"
 !ifdef SOURCES
-  File "${gpg4win_pkg_regex_src}"
+  File "${gpg4win_pkg_regex}"
 !else
-  File ${prefix}/bin/regex.dll
+  File ${prefix}/bin/libregex-1.dll
 !endif
 SectionEnd

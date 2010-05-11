@@ -27,10 +27,13 @@
 ; Uninstaller section.
 Section "-un.regex"
 !ifdef SOURCES
-  Push "${gpg4win_pkg_regex_src}"
+  Push "${gpg4win_pkg_regex}"
   Call un.SourceDelete
 !else
+  # Old version.
   Delete "$INSTDIR\regex.dll"
+
+  Delete "$INSTDIR\libregex-1.dll"
 
   RMDir "$INSTDIR"
 !endif

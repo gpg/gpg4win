@@ -1,4 +1,4 @@
-# Makefile.am - Installer for GnuPG 4 Windows Makefile.
+	# Makefile.am - Installer for GnuPG 4 Windows Makefile.
 # Copyright (C) 2005, 2008 g10 Code GmbH
 # 
 # This file is part of GPG4Win.
@@ -23,7 +23,7 @@ DISTCHECK_CONFIGURE_FLAGS = --host=i586-mingw32msvc --disable-pkg-man_advanced_e
 SUBDIRS = po packages include doc src
 
 EXTRA_DIST = autogen.sh README.SVN ONEWS \
-        patches/pthreads-w32-2-7-0-release/01-make.patch \
+        patches/pthreads-w32-2-8-0-release/01-make.patch \
         patches/glib-2.12.12/01-giowin32.patch \
         patches/glib-2.12.12/02-gspawn-w32.patch \
         patches/glib-2.12.12/03-gspawn-w32-fixup.patch \
@@ -38,7 +38,6 @@ EXTRA_DIST = autogen.sh README.SVN ONEWS \
 	patches/gpgme-1.2.0/03-w32-socket.patch \
         patches/gpgme-1.2.0/04-check-agent.patch \
         patches/gpgme-1.2.0/05-is-socket.patch \
-	patches/winpt/01-gpg-path.patch \
 	patches/gpgex/01-no-checksums.patch \
 	patches/gpgex-0.9.5/01-default-no-suffix.patch \
 	patches/gnupg2/01-version.patch.in \

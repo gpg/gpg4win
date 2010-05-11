@@ -34,45 +34,20 @@ file zlib-1.2.5.tar.gz
 chk  8e8b93fa5eb80df1afe5422309dca42964562d7e
 
 
-# Gnuwin32 packages orginally hosted at sf.net but mirrored at g10code
-# for easier download.
-server ftp://ftp.g10code.com/mirrors/gnuwin32
-
-file jpeg-6b-4-bin.zip
-chk  d6309212c783cffe8ea9d2c7c8913b69709796fe
-file jpeg-6b-4-lib.zip
-chk  858cbedcefcc265e5eec35a5c7a20bcde3de4399
-file jpeg-6b-4-src.zip
-chk  fb46e04938e28bc1ecea1e7bb8b92414129faf96
-
-file crypt-2.2.5-lib.zip
-chk  77482f40ce2c65c0e1b807a07049f53823861266
-file crypt-2.2.5-src.zip
-chk  91c4c5e2790bc19909b03d6eaaf5d6c205b65f07
-
-file regex-0.12-bin.zip
-chk  13000b102f2e0ce5142ce0b5081820337c24da7d
-file regex-0.12-lib.zip
-chk  37e5aa61bdf26cd182ebc6169528c86f165c7e09
-file regex-0.12-src.zip
-chk  b9faae10efae552f23c213891a3ed8187cb7d017
-
 #
 # GNU TLS and support libraries
 #
 
-server ftp://alpha.gnu.org/gnu/gsasl
+server ftp://ftp.gnu.org/pub/gnu
 
-file libgsasl-0.2.29.tar.gz
-chk  188c9a18db481f968cadb7c77a5a24f4cbf3d03d
+file gsasl/libgsasl-1.4.4.tar.gz
+chk  d32d29a5c599b2d54f214fc5747559bc890f24de
 
-server ftp://ftp.gnu.org/pub/gnu/gnutls
+file gnutls/libtasn1-2.2.tar.gz
+chk  d6e0d449cf2da04c93f498d2cf4415f572611b46
 
-file libtasn1-1.7.tar.gz
-chk  2d7bfe0d84f38a5450d8bab511eb1ec4036f18ec
-
-file gnutls-2.6.3.tar.bz2
-chk  f9b6a1d6135ef0a57a5cdd9fcb3e82bc62a27dcd
+file gnutls/gnutls-2.8.6.tar.bz2
+chk  bff911d4fd7389aa6698a644b3748eb2d23715bc
 
 
 #
@@ -101,15 +76,31 @@ file   libxml2-2.7.2.tar.gz
 chk    750b2bcd4ee3bf8595baf97e1881f1a57b1ef363
 
 #
+# regex for Claws
+# (Kept on our own mirror due to Sourceforge and packaging pecularities.)
+# (Note that this is incompatible to various other variants of
+# regex.dll floating around, but this is what claws expects.)
+server ftp://ftp.g10code.com/g10code/scratch
+file   regex-20090805.tar.gz
+chk    56c87366f49916997729fc335747a6a55a2bacc3
+
+# Crypt for claws.
+# (Kept on our own mirror due to Sourceforge and packaging pecularities.)
+server ftp://ftp.g10code.com/g10code/scratch
+file   crypt-1.1.tar.gz
+chk    04b4c2ac296499d378f4a35bbeb1b129165b2e61
+
+#
 # bsfilter.exe for antispam in Claws
 #
 server http://www.claws-mail.org/win32
+
 file bsfilter-1.0.16-bin.tar.gz
 chk  5ed34f22ebf433d83cd3571309b5cbc52c45d6d2
-server http://www.claws-mail.org/win32
+
 file bsfilter-1.0.16-lib.tar.gz
 chk  c7fa5ec9c70c75b7b1bc852bac8eb0a5ec9e01ea
-server http://www.claws-mail.org/win32
+
 file bsfilter-1.0.16-src.tar.gz
 chk  fe718884dd7ca0652613a2cb5c302ac6323605d8
 
@@ -119,34 +110,28 @@ chk  fe718884dd7ca0652613a2cb5c302ac6323605d8
 # (Kept on our own mirror due to Sourceforge peculiarities.)
 
 server http://www.claws-mail.org/win32
+
 file   claws-mail-3.7.6.tar.bz2
 chk    9c695df08b125e8f1d343882975415315a454acc
 
-server http://www.claws-mail.org/win32
 file   attachwarner-0.2.19.tar.gz
 chk    14289b0906bb780712cedd9863b65885b0213465
 
-server http://www.claws-mail.org/win32
 file   bsfilter_plugin-1.0.4.tar.gz
 chk    0f8cbd7dce78f024423885eccade497c7f46d8b0
 
-server http://www.claws-mail.org/win32
 file   gtkhtml2_viewer-0.27cvs1.tar.gz
 chk    dab46ed8032a2f0b5605c3baf635a804fe567eac
 
-server http://www.claws-mail.org/win32
 file   notification_plugin-0.25cvs2.tar.gz
 chk    85fe535667d947c2fefcca4cd65421c6dae4e870
 
-server http://www.claws-mail.org/win32
 file   rssyl-0.27cvs1.tar.gz
 chk    27f1a319b5828310b254a7f909792fdedff8aa5c
 
-server http://www.claws-mail.org/win32
 file   tnef_parse-0.3.8.tar.gz
 chk    f99f5c08a99430fa63ccf4095137df5a0f6e566d
 
-server http://www.claws-mail.org/win32
 file   vcalendar-2.0.8.tar.gz
 chk    7717d49701a143a4dc8674865f9ef960d2fe7cbf
 
@@ -155,9 +140,8 @@ chk    7717d49701a143a4dc8674865f9ef960d2fe7cbf
 #
 server ftp://sources.redhat.com/pub
 
-file pthreads-win32/pthreads-w32-2-7-0-release.tar.gz
-chk  e9f66acde58136ab67e2167412773f727cd13a9d
-
+file pthreads-win32/pthreads-w32-2-8-0-release.tar.gz
+chk  da8371cb20e8e238f96a1d0651212f154d84a9ac
 
 #
 # GLIB
@@ -180,6 +164,7 @@ server http://ftp.gnome.org/pub/gnome/binaries/win32/atk/1.30
 name atk-1.30.0.zip
 file atk_1.30.0-1_win32.zip
 chk  542d772614266b7d18fa72b53ecd5abc82f938e3
+
 name atk-dev-1.30.0.zip
 file atk-dev_1.30.0-1_win32.zip
 chk  75913d22b51afe28c8a3057f6bf4b5b1aa2bf17d
@@ -266,9 +251,11 @@ file gtk+-2.16.6.tar.bz2
 chk  f69cb48311d60664bac7cf68351c175c7a214ae6
 
 server http://ftp.gnome.org/pub/gnome/binaries/win32/gtk+/2.16
+
 name gtk+-2.16.6.zip
 file gtk+_2.16.6-2_win32.zip
 chk  012853e6de814ebda0cc4459f9eed8ae680e6d17
+
 name gtk+-dev-2.16.6.zip
 file gtk+-dev_2.16.6-2_win32.zip
 chk  9f1bf652660076df7f70a855efc7eecbd1e8fced
@@ -281,6 +268,7 @@ server http://ftp.gnome.org/pub/gnome/binaries/win32/dependencies
 name pkgconfig-0.23.tar.gz
 file pkg-config-0.23.tar.gz
 chk  b59dddd6b5320bd74c0f74b3339618a327096b2a
+
 name pkgconfig-0.23.zip
 file pkg-config_0.23-3_win32.zip
 chk  d063e705812e1ee7feb8f35d51b3cad04ca13b0d
@@ -292,42 +280,6 @@ server http://download.sourceforge.net/libpng
 
 file libpng-1.4.1.tar.gz
 chk  7a3488f5844068d67074f2507dd8a7ed9c69ff04
-
-#
-# WinPT
-#
-server http://wald.intevation.org/frs/download.php
-
-#file  265/winpt-1.0.0.tar.bz2
-#chk   7a3589a0ce3a81e3b94547ffdd76bf53d51e919f
-#file  272/winpt-1.0.1.tar.bz2
-#chk   574b7766701aaaef6e388d8b3ad68a171c9c071f
-
-# No more WinPT - at least for now
-#file  312/winpt-1.2.0.tar.bz2
-#chk   050f93a0d74385ce90e8934e49c11f171d495c5a
-
-
-#
-# GPGee
-#
-# 2007-09-11: Replaced by gpgex.
-#
-# Note that the -bin package has been repackaged from the
-# -noinstaller package using these commands:
-#    mkdir gpgee-tmp
-#    unzip ../GPGee-1.2.3-noinstaller.zip
-#    gpg --verify GPGee.zip.asc
-#    unzip GPGee.zip
-#    rm GPGee/uninst.exe
-#    zip ../GPGee-1.2.3-bin.zip GPGee/*
-# server ftp://ftp.gnupg.org/gcrypt/gpgee
-#
-#file GPGee-1.3.1-noinstaller.zip
-#chk  6e44bbf61776e0a6c8714a514fa39489e94c0179
-#file GPGee-1.3.1-source.zip
-#chk  b04fa9ea81fc77844c7aa2e3eda042d819d8e9f1
-
 
 #
 # GpgOL

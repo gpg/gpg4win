@@ -30,7 +30,7 @@ Section "-crypt" SEC_crypt
 !endif
   SetOutPath "$INSTDIR"
 !ifdef SOURCES
-  File "${gpg4win_pkg_crypt_src}"
+  File "${gpg4win_pkg_crypt}"
 !else
   # Nothing to install as we link statically.
 !endif

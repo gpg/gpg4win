@@ -435,7 +435,6 @@ Function PrintCloseOtherApps
     IfFileExists $INSTDIR\winpt.exe print_warning
     IfFileExists $INSTDIR\gpa.exe   print_warning
     IfFileExists $INSTDIR\gpgol.dll print_warning
-    IfFileExists $INSTDIR\gpgee.dll print_warning
     IfFileExists $INSTDIR\dirmngr.exe print_warning
     Return
    print_warning:

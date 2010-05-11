@@ -30,6 +30,10 @@ Section "-un.claws-mail"
   Push "${gpg4win_pkg_claws_mail}"
   Call un.SourceDelete
 !else
+  # We delete this file from the old (and removed) jpeg package, that
+  # was only installed if claws was selected.
+  Delete "$INSTDIR\jpeg62.dll"
+
   Delete "$INSTDIR\claws-mail.exe"
 
   Delete "$INSTDIR\claws-mail-manual.pdf"

@@ -104,10 +104,6 @@
 !define gpg4win_pkg_gpa @gpg4win_pkg_gpa@
 !define gpg4win_pkg_gpa_version @gpg4win_pkg_gpa_version@
 
-@HAVE_PKG_WINPT@
-!define gpg4win_pkg_winpt @gpg4win_pkg_winpt@
-!define gpg4win_pkg_winpt_version @gpg4win_pkg_winpt_version@
-
 @HAVE_PKG_LIBGSASL@
 !define gpg4win_pkg_libgsasl @gpg4win_pkg_libgsasl@
 !define gpg4win_pkg_libgsasl_version @gpg4win_pkg_libgsasl_version@
@@ -137,6 +133,14 @@
 !define gpg4win_pkg_bsfilter_version @gpg4win_pkg_bsfilter_version@
 !define gpg4win_pkg_bsfilter_dev @gpg4win_pkg_bsfilter_dev@
 !define gpg4win_pkg_bsfilter_src @gpg4win_pkg_bsfilter_src@
+
+@HAVE_PKG_REGEX@
+!define gpg4win_pkg_regex @gpg4win_pkg_regex@
+!define gpg4win_pkg_regex_version @gpg4win_pkg_regex_version@
+
+@HAVE_PKG_CRYPT@
+!define gpg4win_pkg_crypt @gpg4win_pkg_crypt@
+!define gpg4win_pkg_crypt_version @gpg4win_pkg_crypt_version@
 
 @HAVE_PKG_CLAWS_MAIL@
 !define gpg4win_pkg_claws_mail @gpg4win_pkg_claws_mail@
@@ -170,23 +174,9 @@
 !define gpg4win_pkg_bsfilter_plugin @gpg4win_pkg_bsfilter_plugin@
 !define gpg4win_pkg_bsfilter_plugin_version @gpg4win_pkg_bsfilter_plugin_version@
 
-#@HAVE_PKG_EUDORAGPG@
-#!define gpg4win_pkg_eudoragpg @gpg4win_pkg_eudoragpg@
-#!define gpg4win_pkg_eudoragpg_version @gpg4win_pkg_eudoragpg_version@
-
 @HAVE_PKG_ZLIB@
 !define gpg4win_pkg_zlib @gpg4win_pkg_zlib@
 !define gpg4win_pkg_zlib_version @gpg4win_pkg_zlib_version@
-
-@HAVE_PKG_CRYPT@
-!define gpg4win_pkg_crypt @gpg4win_pkg_crypt@
-!define gpg4win_pkg_crypt_version @gpg4win_pkg_crypt_version@
-!define gpg4win_pkg_crypt_src @gpg4win_pkg_crypt_src@
-
-@HAVE_PKG_REGEX@
-!define gpg4win_pkg_regex @gpg4win_pkg_regex@
-!define gpg4win_pkg_regex_version @gpg4win_pkg_regex_version@
-!define gpg4win_pkg_regex_src @gpg4win_pkg_regex_src@
 
 @HAVE_PKG_PTHREADS_W32@
 !define gpg4win_pkg_pthreads_w32 @gpg4win_pkg_pthreads_w32@
@@ -199,12 +189,6 @@
 @HAVE_PKG_LIBPNG@
 !define gpg4win_pkg_libpng @gpg4win_pkg_libpng@
 !define gpg4win_pkg_libpng_version @gpg4win_pkg_libpng_version@
-
-@HAVE_PKG_JPEG@
-!define gpg4win_pkg_jpeg @gpg4win_pkg_jpeg@
-!define gpg4win_pkg_jpeg_version @gpg4win_pkg_jpeg_version@
-!define gpg4win_pkg_jpeg_dev @gpg4win_pkg_jpeg_dev@
-!define gpg4win_pkg_jpeg_src @gpg4win_pkg_jpeg_src@
 
 @HAVE_PKG_PKGCONFIG@
 !define gpg4win_pkg_pkgconfig @gpg4win_pkg_pkgconfig@

@@ -35,9 +35,6 @@
 !ifdef HAVE_PKG_CRYPT
 !include "inst-crypt.nsi"
 !endif
-!ifdef HAVE_PKG_JPEG
-!include "inst-jpeg.nsi"
-!endif
 !ifdef HAVE_PKG_KDESUPPORT
 !include "inst-kdesupport.nsi"
 !endif
@@ -152,9 +149,6 @@
 !ifdef HAVE_PKG_GPA
 !include "inst-gpa.nsi"
 !endif
-!ifdef HAVE_PKG_WINPT
-!include "inst-winpt.nsi"
-!endif
 !ifdef HAVE_PKG_GPGOL
 !include "inst-gpgol.nsi"
 !endif
@@ -191,9 +185,6 @@
 !ifdef HAVE_PKG_BSFILTER_PLUGIN
 !include "inst-bsfilter_plugin.nsi"
 !endif
-#!ifdef HAVE_PKG_EUDORAGPG
-#!include "inst-eudoragpg.nsi"
-#!endif
 !ifdef HAVE_PKG_COMPENDIUM_DE
 !include "inst-compendium_de.nsi"
 !endif
@@ -229,9 +220,6 @@
 !ifdef HAVE_PKG_COMPENDIUM_DE
 !include "uninst-compendium_de.nsi"
 !endif
-#!ifdef HAVE_PKG_EUDORAGPG
-#!include "uninst-eudoragpg.nsi"
-#!endif
 !ifdef HAVE_PKG_CLAWS_MAIL
 !include "uninst-claws-mail.nsi"
 !endif
@@ -267,9 +255,6 @@
 !endif
 !ifdef HAVE_PKG_GPGOL
 !include "uninst-gpgol.nsi"
-!endif
-!ifdef HAVE_PKG_WINPT
-!include "uninst-winpt.nsi"
 !endif
 !ifdef HAVE_PKG_GPA
 !include "uninst-gpa.nsi"
@@ -395,9 +380,6 @@
 !ifdef HAVE_PKG_KDESUPPORT
 !include "uninst-kdesupport.nsi"
 !endif
-!ifdef HAVE_PKG_JPEG
-!include "uninst-jpeg.nsi"
-!endif
 !ifdef HAVE_PKG_CRYPT
 !include "uninst-crypt.nsi"
 !endif
@@ -504,17 +486,6 @@ calc_defaults_paperkey_done:
 calc_defaults_gpa_done:
 !endif
 
-!ifdef HAVE_PKG_WINPT
-  g4wihelp::config_fetch_bool "inst_winpt"
-  StrCmp $R0 "1" 0 calc_defaults_winpt_not_one
-   !insertmacro SelectSection ${SEC_winpt}
-   Goto calc_defaults_winpt_done
-  calc_defaults_winpt_not_one:
-  StrCmp $R0 "0" 0 calc_defaults_winpt_done
-   !insertmacro UnselectSection ${SEC_winpt}
-calc_defaults_winpt_done:
-!endif
-
 !ifdef HAVE_PKG_CLAWS_MAIL
   g4wihelp::config_fetch_bool "inst_claws_mail"
   StrCmp $R0 "1" 0 calc_defaults_claws_mail_not_one
@@ -610,9 +581,6 @@ Function CalcDepends
 !endif
 !ifdef HAVE_PKG_LIBPNG
   !insertmacro UnselectSection ${SEC_libpng}
-!endif
-!ifdef HAVE_PKG_JPEG
-  !insertmacro UnselectSection ${SEC_jpeg}
 !endif
 !ifdef HAVE_PKG_PKGCONFIG
   !insertmacro UnselectSection ${SEC_pkgconfig}
@@ -814,13 +782,6 @@ Function CalcDepends
   skip_gnupg2:
 !endif
 
-!ifdef HAVE_PKG_WINPT
-  !insertmacro SectionFlagIsSet ${SEC_winpt} ${SF_SELECTED} have_winpt skip_winpt
-  have_winpt:
-  !insertmacro SelectSection ${SEC_gpgme}
-  skip_winpt:
-!endif
-
 !ifdef HAVE_PKG_GPA
   !insertmacro SectionFlagIsSet ${SEC_gpa} ${SF_SELECTED} have_gpa skip_gpa
   have_gpa:
@@ -842,7 +803,6 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_zlib}
   !insertmacro SelectSection ${SEC_gtk_}
   !insertmacro SelectSection ${SEC_libpng}
-  !insertmacro SelectSection ${SEC_jpeg}
   !insertmacro SelectSection ${SEC_glib}
   !insertmacro SelectSection ${SEC_gpgme}
   !insertmacro SelectSection ${SEC_pthreads_w32}
@@ -1085,7 +1045,6 @@ Function CalcDepends
 !endif
 
   # Package "pkgconfig" has no dependencies.
-  # Package "jpeg" has no dependencies.
 
 !ifdef HAVE_PKG_LIBPNG
   !insertmacro SectionFlagIsSet ${SEC_libpng} \
@@ -1179,14 +1138,6 @@ FunctionEnd
 #       Return
 #   no_gpa_avail:
 #!endif
-#!ifdef HAVE_PKG_WINPT
-#    SectionGetFlags ${SEC_winpt} $R0 
-#    IntOp $R0 $R0 & ${SF_SELECTED} 
-#    IntCmp $R0 ${SF_SELECTED} 0 no_winpt_avail
-#       Exec "$INSTDIR\WinPT.exe --keymanager"
-#       Return
-#   no_winpt_avail:
-#!endif
 #  MessageBox MB_OK "$(T_NoKeyManager)"
 #FunctionEnd
 
@@ -1212,15 +1163,9 @@ FunctionEnd
 !ifdef HAVE_PKG_GPA
   !insertmacro MUI_DESCRIPTION_TEXT ${SEC_gpa} $(DESC_SEC_gpa)
 !endif
-!ifdef HAVE_PKG_WINPT
-  !insertmacro MUI_DESCRIPTION_TEXT ${SEC_winpt} $(DESC_SEC_winpt)
-!endif
 !ifdef HAVE_PKG_CLAWS_MAIL
   !insertmacro MUI_DESCRIPTION_TEXT ${SEC_claws_mail} $(DESC_SEC_claws_mail)
 !endif
-#!ifdef HAVE_PKG_EUDORAGPG
-#  !insertmacro MUI_DESCRIPTION_TEXT ${SEC_eudoragpg} $(DESC_SEC_eudoragpg)
-#!endif
 !ifdef HAVE_PKG_KLEOPATRA
   !insertmacro MUI_DESCRIPTION_TEXT ${SEC_kleopatra} $(DESC_SEC_kleopatra)
 !endif
@@ -1268,16 +1213,6 @@ Section "-startmenu"
     CreateDirectory "$SMPROGRAMS\$STARTMENU_FOLDER"
     CreateDirectory "$SMPROGRAMS\$STARTMENU_FOLDER\$(DESC_Menu_manuals)"
 
-!ifdef HAVE_PKG_WINPT
-    SectionGetFlags ${SEC_winpt} $R0 
-    IntOp $R0 $R0 & ${SF_SELECTED} 
-    IntCmp $R0 ${SF_SELECTED} 0 no_winpt_menu 
-    CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\WinPT.lnk" \
-	"$INSTDIR\WinPT.exe" \
-        "" "$INSTDIR\WinPT.exe" "" SW_SHOWNORMAL "" $(DESC_Menu_winpt)
-   no_winpt_menu:
-!endif
-
 !ifdef HAVE_PKG_GPA
     SectionGetFlags ${SEC_gpa} $R0 
     IntOp $R0 $R0 & ${SF_SELECTED} 
@@ -1313,16 +1248,6 @@ Section "-startmenu"
 !endif
   no_claws_mail_menu:
 !endif
-
-#!ifdef HAVE_PKG_EUDORAGPG
-#    SectionGetFlags ${SEC_eudoragpg} $R0 
-#    IntOp $R0 $R0 & ${SF_SELECTED} 
-#    IntCmp $R0 ${SF_SELECTED} 0 no_eudoragpg_menu 
-#    CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\EudoraGPG Plugin.lnk" \
-#	"$INSTDIR\share\eudoragpg\eudoragpg.html" \
-#        "" "" "" SW_SHOWNORMAL "" ""
-#  no_eudoragpg_menu:
-#!endif
 
 !ifdef HAVE_PKG_MAN_NOVICE_EN
     SectionGetFlags ${SEC_man_novice_en} $R0 
@@ -1437,18 +1362,6 @@ Section "-startmenu"
   Delete "$DESKTOP\$(DESC_Desktop_manuals)\Gpg4Win README.lnk"
 
   CreateDirectory "$DESKTOP\$(DESC_Desktop_manuals)"
-
-!ifdef HAVE_PKG_WINPT
-    SectionGetFlags ${SEC_winpt} $R0 
-    IntOp $R0 $R0 & ${SF_SELECTED}
-    IntCmp $R0 ${SF_SELECTED} 0 no_winpt_desktop
-    # Create link which directly starts the WinPT key manager
-    CreateShortCut "$DESKTOP\WinPT.lnk" \
-	"$INSTDIR\winpt.exe" \
-        "--keymanager" "$INSTDIR\winpt.exe" "" \
-	SW_SHOWNORMAL "" $(DESC_Menu_winpt)
-   no_winpt_desktop:
-!endif
 
 !ifdef HAVE_PKG_GPA
     SectionGetFlags ${SEC_gpa} $R0 
@@ -1573,16 +1486,6 @@ no_desktop:
   Delete "$QUICKLAUNCH\GPGee Manual.lnk"
   Delete "$QUICKLAUNCH\GnuPG FAQ.lnk"
   Delete "$QUICKLAUNCH\Gpg4Win README.lnk"
-
-!ifdef HAVE_PKG_WINPT
-    SectionGetFlags ${SEC_winpt} $R0 
-    IntOp $R0 $R0 & ${SF_SELECTED}
-    IntCmp $R0 ${SF_SELECTED} 0 no_winpt_quicklaunch 
-    CreateShortCut "$QUICKLAUNCH\WinPT.lnk" \
-	"$INSTDIR\winpt.exe" \
-        "" "$INSTDIR\winpt.exe" "" SW_SHOWNORMAL "" $(DESC_Menu_winpt)
-   no_winpt_quicklaunch:
-!endif
 
 !ifdef HAVE_PKG_GPA
     SectionGetFlags ${SEC_gpa} $R0 

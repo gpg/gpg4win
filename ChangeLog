@@ -1,3 +1,39 @@
+2010-05-11  Marcus Brinkmann  <marcus@g10code.de>
+
+	* packages/packages.current: Remove libjpeg, it's not used in gtk+
+	anymore (which now uses W32 native GDI+ interface), and claws
+	relies on gtk+ for jpeg rendering.  Note that if you ever need to
+	reintroduce it: The upstream libjpeg v8a cross-builds fine.
+	Convert crypt and regex to source versions (source gotten from
+	MingW-SYS project).
+	Update libgsasl, libtasn1, gnutls, pthreads-w32
+	* configure.ac: Remove jpeg, winpt.  Update regex and crypt.
+	* Makefile.am: Remove patches/winpt/01-gpg-path.patch.  Update
+	pthreads-w32 patch.
+	* include/config.nsi.in: Remove winpt, eudoragpg and jpeg.  Update
+	crypt and regex.
+	* patches/pthreads-w32-2-8-0-release/01-make.patch: File removed.	
+	* src/Makefile.am (EXTRA_DIST): Remove inst-eudoragpg.nsi,
+	uninst-eudoragpg.nsi, inst-gpgee.nsi, uninst-gpgee.nsi,
+	inst-jpeg.nsi, uninst-jpeg.nsi, inst-winpt.nsi, uninst-winpt.nsi.
+	(gpg4win_spkgs): Remove libgsasl, add regex.
+	(gpg4win_mpkgs): Add crypt.
+	(gpg4win_bpkgs): Remove jpeg, gpgee, crypt, regex.
+	(gpg4win_pkg_crypt_make, gpg4win_pkg_crypt_make_args_inst): New.
+	(gpg4win_pkg_libgpg_error_configure): Add --enable-static.
+	(gpg4win_pkg_winpt_configure): Removed.
+	* src/inst-eudoragpg.nsi, src/uninst-eudoragpg.nsi,
+	src/inst-gpgee.nsi, src/uninst-gpgee.nsi, src/inst-jpeg.nsi,
+	src/uninst-jpeg.nsi, src/inst-winpt.nsi, src/uninst-winpt.nsi:
+	Files removed.	
+	* src/installer.nsi: Remove check for gpgee.dll.
+	* src/uninst-crypt.nsi: Update source path.
+	* src/inst-crypt.nsi: Update source path.
+	* src/uninst-regex.nsi: Update source path, update dll name.
+	* src/inst-regex.nsi: Update source path, update dll name.
+	* src/uninst-claws-mail.nsi: Delete jpeg62.dll.
+	* src/inst-sections.nsi: Remove support for jpeg, winpt, eudoragpg.
+
 2010-05-04  Marcus Brinkmann  <marcus@g10code.de>
 
 	* packages/packages.current: Update to glib 2.24.0, atk 1.30.0,
