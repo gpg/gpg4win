@@ -80,13 +80,13 @@ chk    750b2bcd4ee3bf8595baf97e1881f1a57b1ef363
 # (Kept on our own mirror due to Sourceforge and packaging pecularities.)
 # (Note that this is incompatible to various other variants of
 # regex.dll floating around, but this is what claws expects.)
-server ftp://ftp.g10code.com/g10code/scratch
+server ftp://ftp.g10code.com/g10code/misc
 file   regex-20090805.tar.gz
 chk    56c87366f49916997729fc335747a6a55a2bacc3
 
 # Crypt for claws.
 # (Kept on our own mirror due to Sourceforge and packaging pecularities.)
-server ftp://ftp.g10code.com/g10code/scratch
+server ftp://ftp.g10code.com/g10code/misc
 file   crypt-1.1.tar.gz
 chk    04b4c2ac296499d378f4a35bbeb1b129165b2e61
 
@@ -228,7 +228,7 @@ file fontconfig-dev_2.8.0-2_win32.zip
 chk  0b772aaeb0a7a0d5de21afd901d6cf00753efa51
 
 
-server ftp://ftp.g10code.com/g10code/scratch
+server ftp://ftp.g10code.com/g10code/misc
 file expat-2.0.1.tar.gz
 chk  663548c37b996082db1f2f2c32af060d7aa15c2d
 
