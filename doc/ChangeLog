@@ -3,6 +3,9 @@
 	* manual/gpg4win-compendium-de.tex: Changes by external
 	lector (part 2).
 
+	* manual/smime-icon.eps.gz, manual/openpgp-icon.eps.gz:
+	Redesign smime and openpgp icon for marginline.
+
 2010-05-11  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 	
 	* manual/gpg4win-compendium-de.tex: Enlarge images (screenshots,
