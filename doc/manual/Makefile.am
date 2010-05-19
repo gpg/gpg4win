@@ -97,8 +97,8 @@ png_files = \
 		sc-en-gpa-first-key.png sc-en-gpa-gen-email.png \
 		sc-en-gpa-gen-name.png sc-en-gpa-gen-passwd.png \
 		sc-en-gpa-ks-export-p.png sc-en-gpa-nokey.png \
-		sc-en-gpa-rungpa.png sc-en-gpa-two-keys.png
-
+		sc-en-gpa-rungpa.png sc-en-gpa-two-keys.png \
+		openpgp-icon.png smime-icon.png
 
 web_png_files = blank.png next.png previous.png up.png \
                 home.png nonext.png noprevious.png noup.png
@@ -125,8 +125,7 @@ eps_files = adele01.eps.gz adele02.eps.gz man-with-signed-key.eps.gz \
             sc-winpt-startmenu.eps.gz sc-winpt-trayicon.eps.gz \
 	    sc-winpt-clip-decrypt.eps.gz sc-winpt-good-sig.eps.gz \
             sc-winpt-sel-enc-key.eps.gz sc-winpt-enctoself.eps.gz \
-	    sc-misc-mein-key-asc.eps.gz \
-            openpgp-icon.eps.gz smime-icon.eps.gz
+	    sc-misc-mein-key-asc.eps.gz
 
 eps_files_bb  = $(eps_files:.gz=.bb)
 eps_files_png  = $(eps_files:.eps.gz=.png)

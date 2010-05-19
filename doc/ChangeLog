@@ -1,5 +1,11 @@
 2010-05-19  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
+	* manual/openpgp-icon.png, manual/smime-icon.png, manual/Makefile.am: 
+	  Add redesigned (png) icons for marginline. Replaced eps files.
+
+	* manual/smime-icon.eps.gz, manual/openpgp-icon.eps.gz:
+	  Remove icons, replaced by png icons.
+
 	* manual/gpg4win-compendium-de.tex: Fix overlapping lines. 
 	Some minor changes
 	
