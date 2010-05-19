@@ -1,5 +1,7 @@
 2010-05-19  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
+	* manual/gpg4win-compendium-de.tex: Fix overlapping lines.
+	
 	* manual/gpg4win-compendium-de.tex: Some changes 
 	(basically by external lector, part 3)
 
