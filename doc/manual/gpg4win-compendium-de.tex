@@ -2001,7 +2001,7 @@ eine Warnmeldung:
 \IncludeImage[width=0.6\textwidth]{sc-kleopatra-exportCertificateToServer_de}
 \end{center}
 
-Es ist der öffentliche OpenPGP-Zertifikatsserver\linebreak
+Es ist der öffentliche OpenPGP-Zertifikatsserver
 \Filename{keys.gnupg.net} bereits voreingestellt.  Klicken Sie auf
 \Button{Fortsetzen}, um Ihr ausgewähltes öffentliches Zertifikat an
 diesen Server zu schicken. Von dort aus wird Ihr öffentliches
@@ -3701,7 +3701,7 @@ derzeit nur mit OpenPGP möglich.
 
 
 \clearpage
-\chapter{Im- und Export eines geheimen Schlüssels}
+\chapter{Im- und Export eines geheimen Zertifikats}
 \label{ch:ImExport}
 
 In den Kapiteln \ref{ch:publishCertificate} und
@@ -4036,13 +4036,13 @@ Versichern Sie sich, dass die folgende Option in Outlook unter
 \label{dirmngr-restart}
 
 \T\marginSmime
-Der "`Directory Manager"' (DirMngr) ist ein über Gpg4win installierter
+Der "`Directory Manager"' (DirMngr) ist ein durch Gpg4win installierter
 Dienst, der die Zugriffe auf Zertifikatsserver verwaltet. Eine Aufgabe
 des DirMngr ist das Laden von Sperrlisten (CRLs) für
 S/MIME-Zertifikate.
 
-Es kann vorkommen, dass die S/MIME-Operationen (Signatur, Prüfung,
-Ver- oder Entschlüsselung) nicht durchgeführt werden können, weil
+Es kann vorkommen, dass die S/MIME-Operationen (Signaturerstellung und
+-prüfung, Ver- oder Entschlüsselung) nicht durchgeführt werden können, weil
 DirMngr nicht verfügbar ist. In der Voreinstellung von \linebreak
 Gpg4win ist es zwingend notwendig, dass DirMngr die Sperrlisten 
 prüft -- geschieht das nicht, darf die jeweilige Operation nicht
@@ -4061,15 +4061,15 @@ neu gestartet werden.
 \label{smime-problem-crl}
 
 \T\marginSmime
-Es kann vorkommen, dass die S/MIME-Operationen (Signatur, Prüfung,
-Ver- oder Entschlüsselung) nicht durchgeführt werden können, weil
+Es kann vorkommen, dass die S/MIME-Operationen (Signaturerstellung und
+-prüfung, Ver- oder Entschlüsselung) nicht durchgeführt werden können, weil
 CRLs nicht verfügbar sind. In der Voreinstellung von \linebreak
 Gpg4win ist es zwingend notwendig, dass Sperrlisten geprüft werden
 -- geschieht das nicht, darf die jeweilige Operation nicht
 ausgeführt werden, da möglicherweise ein kompromittiertes Zertifikat
 genutzt wird.
 
-Abhilfe schafft das einrichten eines Stellvertreterdienstes
+Abhilfe schafft das Einrichten eines Stellvertreterdienstes
 ("`Proxies"') für das Abholen der Sperrlisten (vgl.
 Abschnitt~\ref{x509CertificateServers}).
 
@@ -4078,10 +4078,10 @@ abschalten. Öffnen Sie dafür das Kleopatra-Menü
 \Menu{Einstellungen$\rightarrow$Kleopatra einrichten} und anschließend
 die Gruppe \Menu{S/MIME-Prüfung}.  Aktivieren Sie hier die Option
 \Menu{Nie Sperrlisten zu Rate ziehen}.\\
-\textbf{Achtung:} Machen Sie sich bewusst, dass in diesem Fall
-ein erhöhtes Risiko besteht, dass ein kompromittiertes Zertifikat genutzt
-wird. Die Einrichtung eines Proxies ist in jedem Fall dem Abschalten
-der Sperrlisten-Prüfung vorzuziehen.
+\textbf{Achtung:} Machen Sie sich bewusst, dass in diesem Fall ein
+wesentlich höheres Risiko besteht, ein kompromittiertes Zertifikat zu
+nutzen. Das Abschalten der Sperrlisten-Prüfung ist niemals einer Alternative
+zur Einrichtung eines Proxies.
 
 \clearpage
 \section{Keine S/MIME-Operationen möglich (Wurzelzertifikat nicht
@@ -4091,8 +4091,8 @@ vertrauenswürdig)}
 \T\marginSmime
 Für eine vollständige Prüfung von X.509-Zertifikatsketten muss dem
 jeweiligen Wurzelzertifikat vertraut werden.
-Andernfalls kann keine S/MIME-Operationen (Signatur, Prüfung,
-Ver- oder Entschlüsselung) durchgeführt werden.
+Andernfalls kann keine S/MIME-Operationen (Signaturerstellung und
+-prüfung, Ver- oder Entschlüsselung) durchgeführt werden.
 
 Um einem Wurzelzertifikat das Vertrauen auszusprechen, haben Sie zwei 
 Möglichkeiten:
@@ -4108,10 +4108,10 @@ Möglichkeiten:
         systemweite Anpassung nötig).
         Dazu müssen Sie einmalig die Option
         \Menu{Erlauben, Wurzelzertifikate als vertrauenswürdig zu
-        markieren} in den Kleopatraeinstellungen aktivieren.
+        markieren} in Kleopatras Einstellung aktivieren.
         Anschließend werden Sie nach jedem Importieren neuer
         Wurzelzertifikate gefragt, ob Sie diesem vertrauen wollen.
-        Genaueres im Abschnitt~\ref{sec_allow-mark-trusted}.
+        Genaueres dazu im Abschnitt~\ref{sec_allow-mark-trusted}.
 
 \end{itemize}
 
@@ -4282,16 +4282,11 @@ Konfigurationsdatei ergänzen (jede Option in einer Zeile):
 
         Diese Option sorgt dafür, dass DirMngr
         niemals irgendetwas anderes nutzt als den unter \linebreak
-        \Filename{ldap-proxy} konfigurierten Proxy. Denn: Normalerweise
+        \Filename{ldap-proxy} konfigurierten Proxy. Denn normalerweise
         versucht DirMngr andere konfigurierte Zertifikatsserver zu
         verwenden, wenn die Verbindung über \Filename{ldap-proxy} fehl schlägt.
 
 \end{itemize}
-
-
-
-
-       
 
 
 \clearpage
@@ -4790,7 +4785,7 @@ die 0, 1, 2, 3 und 4 gibt. Also:
 \[ 4 \bmod 5 + 3 \bmod 5 = 7 \bmod 5 = 2 \bmod 5 \]
 
 Anders ausgedrückt, ist in der Modulo-5-Arithmetik das Ergebnis
-aus 4 plus 3 gleich 2. 
+aus 4 plus 3 gleich 2. \\
 
 Ein weiteres Beispiel in Modulo-5-Arithmetik:
 
@@ -5431,9 +5426,9 @@ Und nun ausführlich:
     Angenommen, Sie beschränken sich bei den Nachrichten auf die 4
     Buchstaben a, b, c und d. In diesem -- wirklich sehr einfachen --
     Beispiel können Sie die vier Buchstaben durch die Zahlenwerte 0,
-    1, 2 und 3 darstellen und haben dann
+    1, 2 und 3 darstellen und haben dann:
 
-    \[ a = 0, b = 1, c = 2 ~\mbox{und}~ d = 3 \].
+    \[ a = 0, b = 1, c = 2 ~\mbox{und}~ d = 3 \]
 
     Verschlüsseln Sie nun die Nachricht  \emph{aba, cad, aca}. Sie kodieren
     diese Nachricht mit Hilfe der Primzahlen 7 und 11, mit dem
