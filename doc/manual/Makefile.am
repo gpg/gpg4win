@@ -98,7 +98,8 @@ png_files = \
 		sc-en-gpa-gen-name.png sc-en-gpa-gen-passwd.png \
 		sc-en-gpa-ks-export-p.png sc-en-gpa-nokey.png \
 		sc-en-gpa-rungpa.png sc-en-gpa-two-keys.png \
-		openpgp-icon.png smime-icon.png
+		openpgp-icon.png smime-icon.png \
+		verleihnix.png
 
 web_png_files = blank.png next.png previous.png up.png \
                 home.png nonext.png noprevious.png noup.png
@@ -107,7 +108,7 @@ web_png_files = blank.png next.png previous.png up.png \
 eps_files = adele01.eps.gz adele02.eps.gz man-with-signed-key.eps.gz \
             egyptian-stone.eps.gz sealed-envelope.eps.gz \
 	    schlapphut-with-key.eps.gz tangled-schlapphut.eps.gz \
-	    verleihnix.eps.gz key-with-shadow-bit.eps.gz \
+	    key-with-shadow-bit.eps.gz \
             letter-into-safe.eps.gz letter-out-of-safe.eps.gz \
             secret-key-exchange.eps.gz pk-safe-open.eps.gz \
             pk-safe-opened-with-sk.eps.gz think-passphrase.eps.gz \

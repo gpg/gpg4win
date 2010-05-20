@@ -2,6 +2,9 @@
 
 	* manual/gpg4win-compendium-de.tex: Add link to gpg4win website.
 	Update creation year of compendium.
+	
+	* manual/verleihnix.png, Makefile.am, manual/verleihnix.eps.gz: 
+	Add updated png image which replaced old (removed) eps comic image.
 
 2010-05-19  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
