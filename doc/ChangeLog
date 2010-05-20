@@ -1,10 +1,13 @@
 2010-05-20  Emanuel Schuetze <emanuel@intevation.de>
 
 	* manual/gpg4win-compendium-de.tex: Add link to gpg4win website.
-	Update creation year of compendium.
+	  Update creation year of compendium.
 	
 	* manual/verleihnix.png, Makefile.am, manual/verleihnix.eps.gz: 
-	Add updated png image which replaced old (removed) eps comic image.
+	  Add updated png image which replaced old (removed) eps comic image.
+
+	* manual/gpg4win-compendium-de.tex, manual/fdl-book.tex:
+	  Add index (makeindex).
 
 2010-05-19  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
