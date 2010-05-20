@@ -1,3 +1,8 @@
+2010-05-20  Emanuel Schuetze <emanuel@intevation.de>
+
+	* manual/gpg4win-compendium-de.tex: Add link to gpg4win website.
+	Update creation year of compendium.
+
 2010-05-19  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
 	* manual/openpgp-icon.png, manual/smime-icon.png, manual/Makefile.am: 
