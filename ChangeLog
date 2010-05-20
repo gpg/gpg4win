@@ -1,3 +1,7 @@
+2010-05-20  Emanuel Schuetze <emanuel@intevation.de>
+
+	* configure.ac: Change compendium-de date and version (3.0.0)
+
 2010-05-16  Werner Koch  <wk@g10code.com>
 
 	* packages/packages.current (expat, crypt, regex): Change source
