@@ -54,6 +54,10 @@
 	* manual/fdl-book.tex, manual/gpg4win-compendium-de.tex: Update
 	index.
 
+	* manual/Makefile.am: Integrate makeindex with style file in pdf
+	build process. Switch from pdflatex to texi2pdf.
+
+
 2010-05-20  Emanuel Schuetze <emanuel@intevation.de>
 
 	* manual/gpg4win-compendium-de.tex: Add link to gpg4win website.

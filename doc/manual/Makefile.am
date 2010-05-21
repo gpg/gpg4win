@@ -17,7 +17,8 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
-PDFLATEX = pdflatex
+TEXI2PDF = texi2pdf
+INDEX = makeindex
 
 png_files = \
 		sc-kleopatra-startmenu_de.png\
@@ -155,7 +156,6 @@ web_png_files = blank.png next.png previous.png up.png \
 
 eps_files = $(png_files:.png=.eps)
 
-
 EXTRA_DIST = gpg4win-compendium-de.tex \
 				fdl.tex fdl-book.tex version.tex.in  \
 		  		$(eps_files) $(png_files) $(web_png_files) \
@@ -166,7 +166,7 @@ EXTRA_DIST = gpg4win-compendium-de.tex \
 				# einsteiger.tex durchblicker.tex was-ist-gpg4win.tex macros.tex
 
 CLEANFILES = $(eps_files) \
-             *.dvi *.pdf *.pdf *.toc *.log *.aux *.out \
+             *.dvi *.pdf *.pdf *.toc *.log *.aux *.out *.idx *.ilg *.ind\
 	     	 *.html.d-stamp  *.html.d/*
 DISTCLEANFILES = version.tex
 
@@ -179,8 +179,8 @@ all-local: 	gpg4win-compendium-de.pdf \
 	   		gpg4win-compendium-de.html.d-stamp \
 			novices.pdf
 
-gpg4win-compendium-de.pdf : version.tex
-gpg4win-compendium-de.dvi : eps version.tex
+gpg4win-compendium-de.pdf : indexstyle.ist version.tex
+gpg4win-compendium-de.dvi : indexstyle.ist version.tex eps
 gpg4win-compendium-de.html.d-stamp : version.tex 
 einsteiger.dvi : version.tex macros.tex $(eps_files)
 einsteiger.html.d-stamp : version.tex macros.tex $(eps_files)
@@ -199,7 +199,8 @@ eps: $(eps_files)
 	$(TEXI2DVI) `test -f '$<' || echo '$(srcdir)/'`$< 
 
 %.pdf : %.tex
-	$(PDFLATEX) $<
+	export MAKEINDEX='makeindex -g -s indexstyle.ist'; \
+	$(TEXI2PDF) $<
 
 pdf-de: gpg4win-compendium-de.pdf
 
