@@ -1,11 +1,14 @@
 % novices.tex                
 % Note, that this a HyperLaTeX source and not plain LaTeX!
-\documentclass[a4paper,11pt,twoside,titlepage,dvips]{scrartcl}
+\documentclass[a4paper,11pt,twoside,titlepage]{scrartcl}
 \usepackage{hyperlatex}
 \usepackage{a4wide}
 \usepackage{times}
 \usepackage[latin1]{inputenc}
 \usepackage[T1]{fontenc}
+\T\usepackage[ngerman]{babel}
+\W\usepackage[german]{babel}
+\usepackage{ifpdf}
 \usepackage{graphicx}
 \usepackage{alltt}
 \usepackage{moreverb}
@@ -14,7 +17,13 @@
 \W\usepackage{sequential}
 
 
-\T\DeclareGraphicsExtensions{.eps.gz,.eps}
+\begin{latexonly}
+\ifpdf
+  \DeclareGraphicsExtensions{.png}
+\else
+  \DeclareGraphicsExtensions{.eps}
+\fi
+\end{latexonly}
 
 
 % Hyperref should be among the last packages loaded

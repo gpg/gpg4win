@@ -1,10 +1,15 @@
 2010-05-21  Emanuel Schuetze <emanuel@intevation.de>
 
+	* manual/novices.tex: Remove dvips, add graphic commands for build with pdflatex.
+
+
+2010-05-21  Emanuel Schuetze <emanuel@intevation.de>
+
 	* manual/gpg4win-compendium-de.tex: Switch from dvips to pdflatex. 
 	Update IncludeImage command and remove redundant center
 	environments. Update index.
 
-	* adele01.eps.gz, sc-winpt-sel-enc-key.eps.gz,
+	* manual/adele01.eps.gz, sc-winpt-sel-enc-key.eps.gz,
 	pk-safe-open.eps.gz, table-3.eps.gz, sc-gpa-rungpa.eps.gz,
 	sc-ol-send-enc-msg2.eps.gz, sc-misc-mein-key-asc.eps.gz,
 	pk-safe-opened-with-sk.eps.gz, table-2.eps.gz,
@@ -26,7 +31,7 @@
 	sealed-envelope.eps.gz: Remove eps.gz bitmap files (replaced by
 	converted png files).
 
-	* sc-gpa-rungpa.png, tangled-schlapphut.png, sc-gpa-two-keys.png,
+	* manual/sc-gpa-rungpa.png, tangled-schlapphut.png, sc-gpa-two-keys.png,
 	egyptian-stone.png, sc-ol-send-enc-msg1.png,
 	sc-winpt-sel-enc-key.png, letter-into-safe.png,
 	letter-out-of-safe.png, think-passphrase.png, clock-face.png,
@@ -44,9 +49,9 @@
 	man-with-signed-key.png: Add png file (converted from eps.gz
 	files).
 
-	* verleihnix.png: Update in original pixel size.
+	* manual/verleihnix.png: Update in original pixel size.
 
-	* Makefile.am: Remove eps.gz files, add converted png, modify
+	* manual/Makefile.am: Remove eps.gz files, add converted png, modify
 	rules to build latex documents.
 
 2010-05-20  Emanuel Schuetze <emanuel@intevation.de>
