@@ -348,14 +348,14 @@ Gpg4win umfasst in Version 2 die folgenden Programme:
         Gpg4win, die für eine einheitliche Benutzerführung bei allen
         kryptografischen Operationen sorgt.  
     \item \textbf{GNU Privacy Assistent (GPA)}\index{GNU Privacy
-        Assistent}\index{GPA}\\ ist ein alternatives Programm zum Verwalten
+        Assistent|see{GPA}}\index{GPA}\\ ist ein alternatives Programm zum Verwalten
         von Zertifikaten neben Kleopatra.
     \item \textbf{GnuPG für Outlook (GpgOL)}\index{GnuPG für
-        Outlook}\index{GpgOL}\\ ist eine Erweiterung für Microsoft Outlook 2003 und
+        Outlook|see{GpgOL}}\index{GpgOL}\\ ist eine Erweiterung für Microsoft Outlook 2003 und
         2007, die verwendet wird, um Nachrichten zu signieren bzw. zu
         verschlüsseln.
    \item \textbf{GPG Explorer eXtension (GpgEX)}\index{GPG Explorer
-       eXtension}\index{GpgEX}\\ ist eine Erweiterung für den
+       eXtension|see{GpgEX}}\index{GpgEX}\\ ist eine Erweiterung für den
        Windows-Explorer\index{Windows-Explorer}, mit der man Dateien
        über das Kontextmenü signieren bzw.  verschlüsseln kann.
     \item \textbf{Claws Mail}\index{Claws Mail}\\ ist ein vollständiges
@@ -588,7 +588,7 @@ In Kapitel \ref{ch:themath} bekommen Sie erklärt, warum das so ist.
 
 
 \clearpage
-Das Prinzip der Public-Key-Verschlüsselung\index{Public-Key-Methode}
+Das Prinzip der Public-Key-Verschlüsselung\index{Public-Key-Methode@""`Public-Key""'-Methode}
 ist recht einfach:
 
 Der \textbf{geheime} oder \textbf{private Schlüssel} (engl. ,,secret
@@ -1242,10 +1242,10 @@ festigen, und die "`heiße Phase"' der OpenPGP-Schlüsselpaar-Erzeugung
 wird danach kein Problem mehr sein.
 
 Ihr Partner bei diesen Übungen wird \textbf{Adele} sein.  Adele ist
-ein Testservice, der noch aus dem Vorgänger-Projekt GnuPP stammt und
-bis auf Weiteres in Betrieb ist.  Auch in diesem Kompendium können wir
-die Benutzung des Übungsroboters nur empfehlen. Wir bedanken uns bei
-den Inhabern von gnupp.de für den Betrieb von Adele.
+ein Testservice, der noch aus dem Vorgänger-Projekt GnuPP\index{GnuPP}
+stammt und bis auf Weiteres in Betrieb ist.  Auch in diesem Kompendium
+können wir die Benutzung des Übungsroboters nur empfehlen. Wir
+bedanken uns bei den Inhabern von gnupp.de für den Betrieb von Adele.
 
 Mit Hilfe von Adele können Sie Ihr OpenPGP-Schlüsselpaar, das Sie
 gleich erzeugen werden, ausprobieren und testen, bevor Sie damit Ernst
@@ -3806,8 +3806,8 @@ Einige typische systemweite Einstellungen sind:
     bis zum OSCP-Dienst erfolgt und daran auch
     gut erkannt werden kann, mit welchen Partnern gerade Nachrichten
     ausgetauscht werden. GnuPG kann mit beiden Möglichkeiten umgehen, es
-    ist die Komponente "`DirMngr"' \index{Directory Manager (DirMngr)},
-    welche als systemweiter Dienst läuft.
+    ist die Komponente "`DirMngr"' \index{Directory Manager|see{DirMngr}}
+    \index{DirMngr}, welche als systemweiter Dienst läuft.
 
     Es können interne Netzwerke keine direkten Verbindungen der
     einzelnen Rechner nach außen zulassen (zentrale Firewall), sondern
@@ -3957,11 +3957,10 @@ Versichern Sie sich, dass die folgende Option in Outlook unter
 \section{Keine S/MIME-Operationen möglich (Systemdienst
 "`DirMngr"' läuft nicht)}
 \label{dirmngr-restart}
-\index{Directory Manager (DirMngr)}
+\index{DirMngr}
 
 \T\marginSmime
-Der "`Directory Manager"' (DirMngr)\index{Directory
-Manager (DirMngr)} ist ein durch Gpg4win installierter
+Der "`Directory Manager"' (DirMngr) ist ein durch Gpg4win installierter
 Dienst, der die Zugriffe auf Zertifikatsserver verwaltet. Eine Aufgabe
 des DirMngr ist das Laden von Sperrlisten (CRLs) für
 S/MIME-Zertifikate.
@@ -4071,12 +4070,11 @@ regelmäßig Sicherheitskopien dieses Ordners anzulegen.
 \index{Sperrlisten}
 
 \T\marginSmime
-Der systemweite Dienst DirMngr (Directory Manager) 
-\index{Directory Manager (DirMngr)} prüft unter
-anderem, ob ein X.509-Zertifikat gesperrt ist und daher nicht
-verwendet werden darf.  Dafür werden Sperrlisten (CRLs) von den
-Ausgabestellen der Zertifikate (CAs) abgeholt und für die
-Dauer ihrer Gültigkeit zwischengespeichert.
+Der systemweite Dienst DirMngr (Directory Manager) \index{DirMngr}
+prüft unter anderem, ob ein X.509-Zertifikat gesperrt ist und daher
+nicht verwendet werden darf.  Dafür werden Sperrlisten (CRLs) von den
+Ausgabestellen der Zertifikate (CAs) abgeholt und für die Dauer ihrer
+Gültigkeit zwischengespeichert.
 
 Abgelegt werden diese Sperrlisten unter:\newline
 \Filename{C:\back{}Dokumente und
@@ -4094,7 +4092,7 @@ In diesem Dateiordner sollten keine Änderungen vorgenommen werden.
 \clearpage
 \section{Vertrauenswürdige Wurzelzertifikate von DirMngr}
 \label{trustedrootcertsdirmngr}
-\index{Directory Manager (DirMngr)}
+\index{DirMngr}
 \index{Vertrauenswürdige Wurzelzertifikate}
 \index{Wurzelzertifikate}
 
@@ -4125,7 +4123,6 @@ Wurzelzertifikaten vollständig (systemweit) zu vertrauen.
 
 
 \section{Weitere Zertifikate von DirMngr \label{extracertsdirmngr}}
-\index{Directory Manager (DirMngr)}
 
 \T\marginSmime
 Da vor einer Krypto-Operation die X.509-Zertifikatskette geprüft
@@ -4466,7 +4463,7 @@ Gpg4win-Installations\-verzeichnis, in der Regel:\newline
 
 \clearpage
 \section{Logdatei von DirMngr einschalten}
-\index{Directory Manager (DirMngr)}
+\index{DirMngr}
 \index{Logdatei!von DirMngr}
 
 Bei DirMngr handelt es sich um einen systemweiten Dienst und daher ist
@@ -5937,12 +5934,13 @@ Dateiordner bzw. Registryschlüssel zurück:
 \end{itemize}
 
 
+
 \clearpage
 \T\chapter{Historie}
 \W\chapter*{F Historie}
 
 \begin{itemize}
-\item  "`GnuPP für Einsteiger"', 1. Auflage März 2002 und\\
+\item  "`GnuPP\index{GnuPP} für Einsteiger"', 1. Auflage März 2002 und\\
        "`GnuPP für Durchblicker"', 1. Auflage März 2002,\\
   Autoren: Manfred J. Heinze, TextLab text+media\\
   Beratung: Lutz Zolondz, G-N-U GmbH\\
@@ -5986,11 +5984,9 @@ Dateiordner bzw. Registryschlüssel zurück:
 
 \clearpage
 % in Inhaltsverzeichnis aufnehmen
-\addcontentsline{toc}{chapter}{Index}
+\T\phantomsection
+\T\addcontentsline{toc}{chapter}{Index}
 % Index ausgeben
 \T\printindex
-
-
-
 
 \end{document}

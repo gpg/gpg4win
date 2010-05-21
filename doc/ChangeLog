@@ -1,10 +1,5 @@
 2010-05-21  Emanuel Schuetze <emanuel@intevation.de>
 
-	* manual/novices.tex: Remove dvips, add graphic commands for build with pdflatex.
-
-
-2010-05-21  Emanuel Schuetze <emanuel@intevation.de>
-
 	* manual/gpg4win-compendium-de.tex: Switch from dvips to pdflatex. 
 	Update IncludeImage command and remove redundant center
 	environments. Update index.
@@ -53,6 +48,11 @@
 
 	* manual/Makefile.am: Remove eps.gz files, add converted png, modify
 	rules to build latex documents.
+
+	* manual/novices.tex: Remove dvips, add graphic commands for build with pdflatex.
+
+	* manual/fdl-book.tex, manual/gpg4win-compendium-de.tex: Update
+	index.
 
 2010-05-20  Emanuel Schuetze <emanuel@intevation.de>
 
