@@ -17,6 +17,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
+PDFLATEX = pdflatex
 
 png_files = \
 		sc-kleopatra-startmenu_de.png\
@@ -75,145 +76,136 @@ png_files = \
 		sc-pinentry-p12-import-a_de.png\
 		sc-pinentry-p12-import-b_de.png\
 		sc-inst-language_de.png\
-		\
 		sc-inst-welcome_de.png\
-		sc-inst-welcome.png sc-inst-license_de.png \
-		sc-inst-components_de.png sc-inst-directory_de.png \
+		sc-inst-license_de.png \
+		sc-inst-components_de.png \
+		sc-inst-directory_de.png \
 		sc-inst-options_de.png \
-		sc-inst-startmenu_de.png sc-inst-ready_de.png \
+		sc-inst-startmenu_de.png \
+		sc-inst-ready_de.png \
 		sc-inst-progress_de.png \
-		sc-inst-finished_de.png sc-inst-finished2_de.png \
-		sc-inst-finished2.png\
+		sc-inst-finished_de.png \
+		sc-inst-finished2_de.png \
+		openpgp-icon.png \
+		smime-icon.png \
+		\
+		adele01.png \
+		adele02.png \
+		clock-face.png \
+		egyptian-stone.png \
+		keyserver-world.png \
+		key-with-shadow-bit.png \
+		key-with-sigs.png \
+		letter-into-safe.png \
+		letter-out-of-safe.png \
+		man-with-signed-key.png \
+		mileage-indicator.png \
+		pk-safe-opened-with-sk.png \
+		pk-safe-open.png \
+		schlapphut-with-key.png \
+		sealed-envelope.png \
+		secret-key-exchange.png \
+		tangled-schlapphut.png \
+		think-passphrase.png \
+		verleihnix.png \
+		\
+		table-1.png table-2.png table-3.png \
+        sc-gpa-first-key.png \
+        sc-gpa-gen-email.png sc-gpa-gen-name.png \
+        sc-gpa-gen-passwd.png sc-gpa-nokey.png \
+        sc-gpa-rungpa.png sc-gpa-ks-export-p.png \
+        sc-gpa-two-keys.png \
+        sc-ol-send-test-key.png sc-ol-send-enc-msg1.png \
+        sc-ol-send-enc-msg2.png \
+        sc-gpgol-set-icon.png \
+        sc-winpt-startmenu.png sc-winpt-trayicon.png \
+	   	sc-winpt-clip-decrypt.png sc-winpt-good-sig.png \
+        sc-winpt-sel-enc-key.png sc-winpt-enctoself.png \
+	   	sc-misc-mein-key-asc.png \
+		sc-inst-welcome.png \
+		sc-inst-finished2.png \
 		sc-winpt-sign-passwd.png \
-		sc-gpgee-ctxmenu.png sc-gpgee-signmenu.png \
-		sc-gpa-gen-backup.png sc-gpa-gen-backup-warn.png \
-		sc-gpgol-options.png sc-gpgol-noword.png \
-		sc-en-inst-welcome.png sc-en-inst-license.png \
-		sc-en-inst-components.png sc-en-inst-directory.png \
+		sc-gpgee-ctxmenu.png \
+		sc-gpgee-signmenu.png \
+		sc-gpa-gen-backup.png \
+	   	sc-gpa-gen-backup-warn.png \
+		sc-gpgol-options.png \
+		sc-gpgol-noword.png \
+		sc-en-inst-welcome.png \
+		sc-en-inst-license.png \
+		sc-en-inst-components.png \
+		sc-en-inst-directory.png \
 		sc-en-inst-options.png \
-		sc-en-inst-startmenu.png sc-en-inst-ready.png \
+		sc-en-inst-startmenu.png \
+		sc-en-inst-ready.png \
 		sc-en-inst-finished.png \
-		sc-en-gpa-gen-backup.png sc-en-gpa-gen-backup-warn.png \
-		sc-en-gpa-first-key.png sc-en-gpa-gen-email.png \
-		sc-en-gpa-gen-name.png sc-en-gpa-gen-passwd.png \
-		sc-en-gpa-ks-export-p.png sc-en-gpa-nokey.png \
-		sc-en-gpa-rungpa.png sc-en-gpa-two-keys.png \
-		openpgp-icon.png smime-icon.png \
-		verleihnix.png
+		sc-en-gpa-gen-backup.png \
+		sc-en-gpa-gen-backup-warn.png \
+		sc-en-gpa-first-key.png \
+	   	sc-en-gpa-gen-email.png \
+		sc-en-gpa-gen-name.png \
+		sc-en-gpa-gen-passwd.png \
+		sc-en-gpa-ks-export-p.png \
+		sc-en-gpa-nokey.png \
+		sc-en-gpa-rungpa.png \
+	   	sc-en-gpa-two-keys.png
 
 web_png_files = blank.png next.png previous.png up.png \
                 home.png nonext.png noprevious.png noup.png
 
+eps_files = $(png_files:.png=.eps)
 
-eps_files = adele01.eps.gz adele02.eps.gz man-with-signed-key.eps.gz \
-            egyptian-stone.eps.gz sealed-envelope.eps.gz \
-	    schlapphut-with-key.eps.gz tangled-schlapphut.eps.gz \
-	    key-with-shadow-bit.eps.gz \
-            letter-into-safe.eps.gz letter-out-of-safe.eps.gz \
-            secret-key-exchange.eps.gz pk-safe-open.eps.gz \
-            pk-safe-opened-with-sk.eps.gz think-passphrase.eps.gz \
-            keyserver-world.eps.gz key-with-sigs.eps.gz \
-	    clock-face.eps.gz mileage-indicator.eps.gz \
-	    table-1.eps.gz table-2.eps.gz table-3.eps.gz \
-            sc-gpa-first-key.eps.gz \
-            sc-gpa-gen-email.eps.gz sc-gpa-gen-name.eps.gz \
-            sc-gpa-gen-passwd.eps.gz sc-gpa-nokey.eps.gz \
-            sc-gpa-rungpa.eps.gz sc-gpa-ks-export-p.eps.gz \
-            sc-gpa-two-keys.eps.gz \
-            sc-ol-send-test-key.eps.gz sc-ol-send-enc-msg1.eps.gz \
-            sc-ol-send-enc-msg2.eps.gz \
-            sc-gpgol-set-icon.eps.gz \
-            sc-winpt-startmenu.eps.gz sc-winpt-trayicon.eps.gz \
-	    sc-winpt-clip-decrypt.eps.gz sc-winpt-good-sig.eps.gz \
-            sc-winpt-sel-enc-key.eps.gz sc-winpt-enctoself.eps.gz \
-	    sc-misc-mein-key-asc.eps.gz
 
-eps_files_bb  = $(eps_files:.gz=.bb)
-eps_files_png  = $(eps_files:.eps.gz=.png)
-#eps_files_pdf = $(eps_files:.eps.gz=.pdf)
-png_files_eps = $(png_files:.png=.eps) 
+EXTRA_DIST = gpg4win-compendium-de.tex \
+				fdl.tex fdl-book.tex version.tex.in  \
+		  		$(eps_files) $(png_files) $(web_png_files) \
+				gpg4win-logo.eps gpg4win-logo.png \
+				# needed for Englisch novices manual:
+	     		novices.tex what-is-gpg4win.tex macros-en.tex \
+				# needed for (old) German manuals: \
+				# einsteiger.tex durchblicker.tex was-ist-gpg4win.tex macros.tex
 
-EXTRA_DIST = fdl.tex fdl-book.tex gpg4win-compendium-de.tex \
-	     einsteiger.tex durchblicker.tex novices.tex \
-	     $(eps_files) $(png_files) $(web_png_files) \
-	     was-ist-gpg4win.tex what-is-gpg4win.tex \
-             macros.tex macros-en.tex version.tex.in \
-	     gpg4win-logo.eps gpg4win-logo.png
-# advanced.tex
-
-CLEANFILES = $(eps_files_bb) $(png_files_eps) \
+CLEANFILES = $(eps_files) \
              *.dvi *.pdf *.pdf *.toc *.log *.aux *.out \
-	     *.html.d-stamp  *.html.d/*
-DISTCLEANFILES = version.tex $(eps_files_png)
+	     	 *.html.d-stamp  *.html.d/*
+DISTCLEANFILES = version.tex
 
-pkgdata_DATA = gpg4win-compendium-de.pdf novices.pdf 
-# advanced.pdf
+pkgdata_DATA = 	gpg4win-compendium-de.pdf \
+				novices.pdf 
 
-BUILT_SOURCES = $(eps_files_bb) $(png_files_eps) $(eps_files_png)
+BUILT_SOURCES = $(png_files) 
 
-all-local: gpg4win-compendium-de.pdf novices.pdf \
-	   gpg4win-compendium-de.html.d-stamp
-# advanced.pdf
+all-local: 	gpg4win-compendium-de.pdf \
+	   		gpg4win-compendium-de.html.d-stamp \
+			novices.pdf
 
+gpg4win-compendium-de.pdf : version.tex
+gpg4win-compendium-de.dvi : eps version.tex
+gpg4win-compendium-de.html.d-stamp : version.tex 
+einsteiger.dvi : version.tex macros.tex $(eps_files)
+einsteiger.html.d-stamp : version.tex macros.tex $(eps_files)
+durchblicker.dvi : version.tex macros.tex $(eps_files)
+durchblicker.html.d-stamp : version.tex macros.tex 
+novices.dvi : version.tex macros-en.tex $(eps_files)
+novices.html.d-stamp : version.tex macros-en.tex 
 
-gpg4win-compendium-de.pdf : $(eps_files_bb) $(png_files_eps) $(eps_files_png)
-gpg4win-compendium-de.dvi : version.tex macros.tex $(eps_files_bb)
-gpg4win-compendium-de.html.d-stamp : version.tex macros.tex $(eps_files_png) $(web_png_files)
-einsteiger.pdf : $(eps_files_bb) $(png_files_eps) $(eps_files_png)
-einsteiger.dvi : version.tex macros.tex $(eps_files_bb)
-einsteiger.html.d-stamp : version.tex macros.tex $(eps_files_png)
-durchblicker.pdf : $(eps_files_bb) $(png_files_eps) $(eps_files_png)
-durchblicker.dvi : version.tex macros.tex $(eps_files_bb)
-durchblicker.html.d-stamp : version.tex macros.tex $(eps_files_png)
-novices.pdf : $(eps_files_bb) $(png_files_eps) $(eps_files_png)
-novices.dvi : version.tex macros-en.tex $(eps_files_bb) $(eps_files_png)
-novices.html.d-stamp : version.tex macros-en.tex $(eps_files_png)
-#advanced.pdf : $(eps_files_bb) $(png_files_eps) $(eps_files_png)
-#advanced.dvi : version.tex macros-en.tex $(eps_files_bb)
-#advanced.html : version.tex macros-en.tex $(eps_files_png)
-
-online: gpg4win-compendium-de.html.d-stamp novices.html.d-stamp
-	set -e; \
-	echo "Going to put current manuals online for www.gpg4win.org ..."; \
-        user=`svn info | sed -n '/^URL:/ s,.*svn+ssh://\\([^@]*\\).*,\\1,p'`;\
-	for d in $^; do \
-          (x=$$(echo $$d | sed  's/.d-stamp$$/.d/') ;\
-	   echo "Cding to: $$x";\
-           cd $$x ;\
-           rsync -v * \
-             $${user}@wald.intevation.org:/gpg4win/htdocs/handbuecher/ ); \
-	done
-
-
-preview: gpg4win-compendium-de.html.d-stamp novices.html.d-stamp
-	set -e; \
-	echo "Rsyncing the HTML manuals to the preview host ..."; \
-	for d in $^; do \
-          (x=$$(echo $$d | sed  's/.d-stamp$$/.d/') ;\
-	   echo "cd to $$x" ;\
-           cd $$x ;\
-           rsync -v * ${PREVIEWHOST}/ ) ;\
-	done
-
-%.eps.bb : %.eps.gz
-	$(ZCAT) `test -f '$<' || echo '$(srcdir)/'`$< \
-          | grep '^%%BoundingBox' | head -1 > $@
 
 %.eps : %.png
-	$(CONVERT) `test -f '$<' || echo '$(srcdir)/'`$< $@
+	$(CONVERT) $< eps2:$@
 
-%.png : %.eps.gz
-	$(CONVERT) -density 100x100 `test -f '$<' || echo '$(srcdir)/'`$< $@
+eps: $(eps_files)
 
-%.dvi : %.tex
+%.dvi : %.tex 
 	$(TEXI2DVI) `test -f '$<' || echo '$(srcdir)/'`$< 
 
-%.pdf : %.dvi
-	TEXPICTS=$(srcdir) $(DVIPDF)  $< $@
+%.pdf : %.tex
+	$(PDFLATEX) $<
 
-#%.pdf : %.eps.gz
-#	$(ZCAT) `test -f '$<' || echo '$(srcdir)/'`$< \
-#         | epstopdf -f > $@
+pdf-de: gpg4win-compendium-de.pdf
+
+dvi-de: gpg4win-compendium-de.dvi
+
+html-de: gpg4win-compendium-de.html.d-stamp
 
 # The html.d directories are used to collect all relevant files for
 # the NSI scripts.  This is also required because hyperlatex is not
@@ -243,3 +235,25 @@ preview: gpg4win-compendium-de.html.d-stamp novices.html.d-stamp
 	    case $$x in *.png) : ;; *) rm -f $$x ;; esac ;\
 	 done
 	@mv -f $@.tmp $@
+
+online: gpg4win-compendium-de.html.d-stamp novices.html.d-stamp
+	set -e; \
+	echo "Going to put current manuals online for www.gpg4win.org ..."; \
+        user=`svn info | sed -n '/^URL:/ s,.*svn+ssh://\\([^@]*\\).*,\\1,p'`;\
+	for d in $^; do \
+          (x=$$(echo $$d | sed  's/.d-stamp$$/.d/') ;\
+	   echo "Cding to: $$x";\
+           cd $$x ;\
+           rsync -v * \
+             $${user}@wald.intevation.org:/gpg4win/htdocs/handbuecher/ ); \
+	done
+
+preview: gpg4win-compendium-de.html.d-stamp novices.html.d-stamp
+	set -e; \
+	echo "Rsyncing the HTML manuals to the preview host ..."; \
+	for d in $^; do \
+          (x=$$(echo $$d | sed  's/.d-stamp$$/.d/') ;\
+	   echo "cd to $$x" ;\
+           cd $$x ;\
+           rsync -v * ${PREVIEWHOST}/ ) ;\
+	done

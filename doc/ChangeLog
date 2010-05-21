@@ -1,3 +1,54 @@
+2010-05-21  Emanuel Schuetze <emanuel@intevation.de>
+
+	* manual/gpg4win-compendium-de.tex: Switch from dvips to pdflatex. 
+	Update IncludeImage command and remove redundant center
+	environments. Update index.
+
+	* adele01.eps.gz, sc-winpt-sel-enc-key.eps.gz,
+	pk-safe-open.eps.gz, table-3.eps.gz, sc-gpa-rungpa.eps.gz,
+	sc-ol-send-enc-msg2.eps.gz, sc-misc-mein-key-asc.eps.gz,
+	pk-safe-opened-with-sk.eps.gz, table-2.eps.gz,
+	sc-winpt-trayicon.eps.gz, sc-winpt-good-sig.eps.gz,
+	sc-ol-send-enc-msg1.eps.gz, mileage-indicator.eps.gz,
+	think-passphrase.eps.gz, table-1.eps.gz,
+	tangled-schlapphut.eps.gz, key-with-shadow-bit.eps.gz,
+	sc-gpa-gen-passwd.eps.gz, clock-face.eps.gz,
+	sc-gpa-two-keys.eps.gz, letter-out-of-safe.eps.gz,
+	letter-into-safe.eps.gz, schlapphut-with-key.eps.gz,
+	sc-gpgol-set-icon.eps.gz, sc-gpa-gen-name.eps.gz,
+	sc-gpa-gen-email.eps.gz, sc-winpt-enctoself.eps.gz,
+	sc-gpa-first-key.eps.gz, sc-gpa-nokey.eps.gz,
+	sc-gpa-ks-export-p.eps.gz, sc-winpt-clip-decrypt.eps.gz,
+	keyserver-world.eps.gz, sc-ol-send-test-key.eps.gz,
+	adele02.eps.gz, man-with-signed-key.eps.gz,
+	sc-winpt-startmenu.eps.gz, secret-key-exchange.eps.gz,
+	key-with-sigs.eps.gz, egyptian-stone.eps.gz,
+	sealed-envelope.eps.gz: Remove eps.gz bitmap files (replaced by
+	converted png files).
+
+	* sc-gpa-rungpa.png, tangled-schlapphut.png, sc-gpa-two-keys.png,
+	egyptian-stone.png, sc-ol-send-enc-msg1.png,
+	sc-winpt-sel-enc-key.png, letter-into-safe.png,
+	letter-out-of-safe.png, think-passphrase.png, clock-face.png,
+	secret-key-exchange.png, schlapphut-with-key.png, adele01.png,
+	sc-misc-mein-key-asc.png, sc-gpa-first-key.png, table-2.png,
+	sc-gpgol-set-icon.png, sc-gpa-nokey.png, sealed-envelope.png,
+	sc-gpa-gen-name.png, pk-safe-open.png, sc-ol-send-test-key.png,
+	sc-ol-send-enc-msg2.png, sc-winpt-enctoself.png,
+	key-with-shadow-bit.png, keyserver-world.png, adele02.png,
+	mileage-indicator.png, sc-gpa-gen-passwd.png,
+	pk-safe-opened-with-sk.png, sc-winpt-startmenu.png, table-1.png,
+	table-3.png, sc-winpt-trayicon.png, sc-gpa-ks-export-p.png,
+	sc-winpt-clip-decrypt.png, key-with-sigs.png,
+	sc-gpa-gen-email.png, sc-winpt-good-sig.png,
+	man-with-signed-key.png: Add png file (converted from eps.gz
+	files).
+
+	* verleihnix.png: Update in original pixel size.
+
+	* Makefile.am: Remove eps.gz files, add converted png, modify
+	rules to build latex documents.
+
 2010-05-20  Emanuel Schuetze <emanuel@intevation.de>
 
 	* manual/gpg4win-compendium-de.tex: Add link to gpg4win website.
