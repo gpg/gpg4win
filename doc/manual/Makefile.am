@@ -196,6 +196,7 @@ novices.html.d-stamp : version.tex macros-en.tex
 eps: $(eps_files)
 
 %.dvi : %.tex 
+	export MAKEINDEX='makeindex -g -s indexstyle.ist'; \
 	$(TEXI2DVI) `test -f '$<' || echo '$(srcdir)/'`$< 
 
 %.pdf : %.tex
