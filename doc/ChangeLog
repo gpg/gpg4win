@@ -1,3 +1,10 @@
+2010-05-25  Emanuel Schuetze <emanuel@intevation.de>
+
+	* manual/fdl-book.tex, manual/gpg4win-compendium-de.tex:
+	Optimize for A4 and A5 papersize output. Add boolean var for
+	simple switching between these sizes. Prepare compendium book
+	printing.
+
 2010-05-21  Emanuel Schuetze <emanuel@intevation.de>
 
 	* manual/gpg4win-compendium-de.tex: Switch from dvips to pdflatex. 
