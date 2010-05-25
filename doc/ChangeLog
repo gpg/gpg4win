@@ -7,6 +7,9 @@
 
 	* manual/Makefile.am: Add makeindex command for dvi build.
 
+	* manual/gpg4win-compendium-de.tex: Repair link to index (add
+	phantomsection command).
+
 2010-05-21  Emanuel Schuetze <emanuel@intevation.de>
 
 	* manual/gpg4win-compendium-de.tex: Switch from dvips to pdflatex. 
