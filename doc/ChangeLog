@@ -10,6 +10,10 @@
 	* manual/gpg4win-compendium-de.tex: Repair link to index (add
 	phantomsection command).
 
+	* manual/gpg4win-compendium-de.tex: Set pdf meta information as
+	option in hperref package. Centering A5 title page. Fix html image
+	centering. And some minor format fixes.
+
 2010-05-21  Emanuel Schuetze <emanuel@intevation.de>
 
 	* manual/gpg4win-compendium-de.tex: Switch from dvips to pdflatex. 

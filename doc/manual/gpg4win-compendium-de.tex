@@ -45,7 +45,15 @@
 %\W\htmldirectory{./compendium-de-html}
 
 % Hyperref should be among the last packages loaded
-\usepackage[breaklinks]{hyperref}
+\usepackage[breaklinks,
+    pdftitle={Das Gpg4win-Kompendium},
+    pdfauthor={Emanuel Schütze et al.},
+    pdfsubject={E-Mail-Sicherheit mit GnuPG für Windows},
+    pdfkeywords={Gpg4win, E-Mail, Datei, verschlüsseln, entschlüsseln,
+    signieren, OpenPGP, S/MIME, X.509, Zertifikat, Kleopatra, GpgOL,
+    GpgEX, GnuPG, sicher, E-Mail-Sicherheit, Kryptografie, Public-Key,
+    Freie Software} 
+]{hyperref}
 
 % set graphic extension
 \begin{latexonly}
@@ -90,16 +98,15 @@
 \newcommand\margin[1]{\marginline {\sffamily\scriptsize #1}}
 \newcommand{\marginOpenpgp}{\marginline{\vspace{10pt}\includegraphics[width=1.5cm]{openpgp-icon}}}
 \newcommand{\marginSmime}{\marginline{\vspace{10pt}\includegraphics[width=1.5cm]{smime-icon}}}
-\newcommand{\IncludeImage}[2][]{\texorhtml{%
-\begin{center}%
+\newcommand{\IncludeImage}[2][]{
+\begin{center}
+\texorhtml{%
   \includegraphics[#1]{#2}%
-\end{center}%
 }{%
-  \htmlattributes*{DIV}{align=center}
-  \html{DIV}%
-  \htmlimage{#2.png}%
-  \html{/DIV}%
-}}
+  \htmlimg{#2.png}%
+}
+\end{center}
+}
 
 % custom colors
 \definecolor{gray}{rgb}{0.4,0.4,0.4}
@@ -122,15 +129,6 @@
 \ifthenelse{\equal{#1}{}}
 {\texorhtml{\href{#2}{\Filename{#2}}}{\xlink{#2}{#2}}}
 {\texorhtml{\href{#2}{\Filename{#1}}}{\xlink{#1}{#2}}}}
-
-%%% PDFINFO
-\begin{latexonly}
-\pdfinfo{
-   /Author (Emanuel Schütze et al.)
-   /Title  (Das Gpg4win-Kompendium)
-   /Subject (Gpg4win)
-}
-\end{latexonly}
 
 %%% HYPERLATEX %%%
 \begin{ifhtml}
@@ -237,7 +235,15 @@
 %%% BEGIN DOCUMENT %%%
 
 \begin{document}
-\maketitle
+
+% set title page
+\texorhtml{
+    \ifthenelse{\boolean{DIN-A5}}
+    {\noindent\hspace*{7mm}\parbox{\textwidth}{\centering\maketitle}\cleardoublepage}
+    {\maketitle}
+}
+{\maketitle}
+
 
 % improved handling of long (outstanding) lines
 \T\setlength\emergencystretch{3em} \tolerance=1000
@@ -1069,9 +1075,12 @@ zusammen.
 \begin{latexonly} %no hyperlatex
 Im weiteren Verlauf dieses Kompendiums weisen wir mit diesen beiden 
 Symbolen auf die beiden Alternativen hin:
-\IncludeImage[width=2.5cm]{openpgp-icon}
+
+\begin{center}
+\includegraphics[width=2.5cm]{openpgp-icon}
 \hspace{1cm}
-\IncludeImage[width=2.5cm]{smime-icon}
+\includegraphics[width=2.5cm]{smime-icon}
+\end{center}
 \end{latexonly}
 
 
@@ -5844,13 +5853,12 @@ Hier ist ein Beispiel für den Inhalt einer Steuerungsdatei, das
 Ein entsprechender Aufruf zur automatischen Installation mit einer
 Steuerungsdatei \Filename{gpg4win.ini} und einem Installationspfad
 \Filename{D:\back{}Programme\back{}Gpg4win} könnte also wie folgt
-aussehen:
-
-\T\ifthenelse{\boolean{DIN-A5}}{\scriptsize}{}
-\begin{verbatim}
-  gpg4win.exe /S /C=C:\TEMP\gpg4win.ini /D=D:\Programme\Gpg4win
-\end{verbatim}
-\T\ifthenelse{\boolean{DIN-A5}}{\normalsize}{}
+aussehen:\\
+\Filename{
+  \T\ifthenelse{\boolean{DIN-A5}}{\scriptsize}{}
+  gpg4win.exe /S /C=C:\back{}TEMP\back{}gpg4win.ini  /D=D:\back{}Programme\back{}Gpg4win
+  \T\ifthenelse{\boolean{DIN-A5}}{\normalsize}{}
+}
 
 \clearpage
 \T\chapter{Umstieg von anderen Programmen}
