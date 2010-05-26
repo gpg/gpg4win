@@ -49,12 +49,14 @@
     bookmarks,
     bookmarksnumbered,
     pdftitle={Das Gpg4win-Kompendium},
-    pdfauthor={Emanuel Schütze et al.},
-    pdfsubject={E-Mail-Sicherheit mit GnuPG für Windows},
+    pdfauthor={Emanuel Schütze, Werner Koch, Florian v. Samson, Dr.
+      Jan-Oliver Wagner, Ute Bahn, Karl Bihlmeier, Manfred J. Heinze,
+      Isabel Kramer und Dr. Francis Wray},
+    pdfsubject={Sichere E-Mail- und Datei-Verschlüsselung mit GnuPG für Windows},
     pdfkeywords={Gpg4win, E-Mail, Datei, verschlüsseln, entschlüsseln,
     signieren, OpenPGP, S/MIME, X.509, Zertifikat, Kleopatra, GpgOL,
     GpgEX, GnuPG, sicher, E-Mail-Sicherheit, Kryptografie, Public-Key,
-    Freie Software} 
+    Freie Software, Signatur, prüfen, FLOSS, Open Source Software, PKI, Ordner} 
 ]{hyperref}
 
 % set graphic extension
@@ -206,10 +208,24 @@
 
 \title{
     \htmlattributes*{img}{width=300}
-    \IncludeImage[width=0.5\textwidth]{gpg4win-logo}~\newline
-    Das Gpg4win-Kompendium }
-
-\author{ \
+    \IncludeImage[width=0.5\textwidth]{gpg4win-logo}%
+    \T~\newline
+    \T\ifthenelse{\boolean{DIN-A5}}%
+    % DIN A5:
+    {\begin{latexonly}
+        \LARGE Das Gpg4win-Kompendium \\[0.3cm]
+        \large \textmd{Sichere E-Mail- und Datei-Verschlüsselung
+        \\[-0.3cm] mit GnuPG für Windows}
+     \end{latexonly}  
+    }%
+    % DIN A4:
+    {Das Gpg4win-Kompendium \\
+      \texorhtml{\Large \textmd}{\large}
+      {Sichere E-Mail- und Datei-Verschlüsselung mit GnuPG für
+      Windows}
+    }
+}
+\author{
     % Hyperlatex: Add links to pdf versions and Homepage
     \htmlonly{
         \xml{p}\small
@@ -217,21 +233,33 @@
         Zur \xlink{Gpg4win-Homepage}{http://www.gpg4win.de/}\xml{p}
     }
     % Authors
-    Eine Veröffentlichung des Gpg4win-Projekts\\
+    \T\\[-1cm]
       \small Basierend auf einer Fassung von
-    \T\\
-      \small Ute Bahn, Karl Bihlmeier, Manfred J. Heinze,
     \T\\[-0.2cm]
+      \small Ute Bahn, Karl Bihlmeier, Manfred J. Heinze,
       \small Isabel Kramer und Dr. Francis Wray.
-    \\[0.2cm]
+      \texorhtml{\\[0.2cm]}{\\}
       \small Grundlegend überarbeitet von
-    \T\\
+    \T\\[-0.2cm]
       \small Werner Koch, Florian v. Samson, Emanuel Schütze und Dr. Jan-Oliver Wagner.
+    \T\\[0.4cm]
 }
 
-\date{Version \compendiumVersionDE~vom \compendiumDateDE
-    %\manualinprogress
+\date{
+    \T\ifthenelse{\boolean{DIN-A5}}%
+    % DIN A5:
+    {\begin{latexonly}
+        \large Eine Veröffentlichung der Gpg4win-Initiative
+        \\[0.2cm]
+        Version \compendiumVersionDE~vom \compendiumDateDE 
+     \end{latexonly}
+    }%
+    % DIN A4:
+    {Eine Veröffentlichung der Gpg4win-Initiative
+      \\[0.2cm]
+      Version \compendiumVersionDE~vom \compendiumDateDE 
     }
+}
 
 
 %%% BEGIN DOCUMENT %%%
@@ -6109,7 +6137,7 @@ Dateiordner bzw. Registryschlüssel zurück:
       verfügbar unter: 
       \T\ifthenelse{\boolean{DIN-A5}}{}{\\}
       \uniurl{http://www.gpg4win.de}
-      \end{itemize}
+\end{itemize}
 
 \clearpage
 %GNU Free Documentation License
@@ -6119,11 +6147,11 @@ Dateiordner bzw. Registryschlüssel zurück:
 \clearpage
 % in Inhaltsverzeichnis aufnehmen
 \T\pdfbookmark[-1]{Index}{Index}
-\begingroup
-  \let\WriteBookmarks\relax
+\T\begingroup
+  \T\let\WriteBookmarks\relax
   \T\phantomsection
   \T\addcontentsline{toc}{chapter}{Index}
-\endgroup
+\T\endgroup
 
 % Index ausgeben
 \T\printindex

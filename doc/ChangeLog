@@ -3,6 +3,9 @@
 	* manual/gpg4win-compendium-de.tex: Set additional pdf bookmarks
 	and options.
 
+	* manual/gpg4win-compendium-de.tex: Add pdf meta information. Add
+	subtitle and rearrange title page.
+
 2010-05-25  Emanuel Schuetze <emanuel@intevation.de>
 
 	* manual/fdl-book.tex, manual/gpg4win-compendium-de.tex:
