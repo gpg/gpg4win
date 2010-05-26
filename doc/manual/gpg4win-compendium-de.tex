@@ -46,6 +46,8 @@
 
 % Hyperref should be among the last packages loaded
 \usepackage[breaklinks,
+    bookmarks,
+    bookmarksnumbered,
     pdftitle={Das Gpg4win-Kompendium},
     pdfauthor={Emanuel Schütze et al.},
     pdfsubject={E-Mail-Sicherheit mit GnuPG für Windows},
@@ -235,7 +237,7 @@
 %%% BEGIN DOCUMENT %%%
 
 \begin{document}
-
+\T\pdfbookmark[0]{Titelseite}{titel}
 % set title page
 \texorhtml{
     \ifthenelse{\boolean{DIN-A5}}
@@ -358,7 +360,8 @@ In diesem Kompendium werden folgende Textauszeichnungen benutzt:
         von Kommandozeilen) verwendet.
 \end{itemize}
 
-\clearpage
+\cleardoublepage
+\T\pdfbookmark[0]{\contentsname}{toc}
 \tableofcontents
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -5592,9 +5595,8 @@ dann noch lesen zu können...
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Appendix
 
-% page break in toc
-%TODOA5
-\addtocontents{toc}{\protect\newpage}
+% page break in toc (for A5 paper only)
+\T\ifthenelse{\boolean{DIN-A5}}{addtocontents{toc}{\protect\newpage}}{}
 
 \appendix
 \T\part{Anhang}
@@ -6116,8 +6118,13 @@ Dateiordner bzw. Registryschlüssel zurück:
 
 \clearpage
 % in Inhaltsverzeichnis aufnehmen
-\T\phantomsection
-\T\addcontentsline{toc}{chapter}{Index}
+\T\pdfbookmark[-1]{Index}{Index}
+\begingroup
+  \let\WriteBookmarks\relax
+  \T\phantomsection
+  \T\addcontentsline{toc}{chapter}{Index}
+\endgroup
+
 % Index ausgeben
 \T\printindex
 
