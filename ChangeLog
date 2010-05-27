@@ -3,6 +3,8 @@
 	* doc: Remove doc dir.
 
 	* doc: Add doc dir from trunk.
+	
+  	* src/inst-pinentry.nsi: Set pinentry-gtk as default.
 
 2010-04-16  Werner Koch  <wk@g10code.com>
 

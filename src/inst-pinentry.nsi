@@ -45,7 +45,7 @@ Section "-Pinentry" SEC_pinentry
   !insertmacro SectionFlagIsSet ${SEC_qt} \
                 ${SF_SELECTED} inst_pinentry_have_qt inst_pinentry_skip_qt
   inst_pinentry_have_qt:
-  File /oname=pinentry.exe "${prefix}/bin/pinentry-qt4.exe"
+  File /oname=pinentry.exe "${prefix}/bin/pinentry-gtk-2.exe"
   Goto inst_pinentry_done
   inst_pinentry_skip_qt:
 !endif
