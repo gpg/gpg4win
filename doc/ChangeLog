@@ -1,3 +1,7 @@
+2010-05-27  Emanuel Schuetze <emanuel@intevation.de>
+
+	* manual/indexstyle.ist: Add makeindex style file.
+
 2010-05-26  Emanuel Schuetze <emanuel@intevation.de>
 
 	* manual/gpg4win-compendium-de.tex: Set additional pdf bookmarks
