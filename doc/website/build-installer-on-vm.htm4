@@ -1,0 +1,401 @@
+m4_dnl -*-html-*-
+m4_include(`template.m4')
+m4_dnl $Id$
+
+m4_define(`EN')
+m4_define(`DE_FILE', `build-installer-on-vm-de.html')
+PAGE_START
+
+<p>
+<b>Attention: Translation of page into english in progress</b>
+</p>
+
+<h1>Building of Gpg4win under Windows via virtual GNU/Linux</h1>
+
+<p><b>
+This example pracitcally describes how to build a new Gpg4win Installer on
+Windows XP/SP2 via Debian Etch 4.0 in QEMU. In principle also alternatives can
+be used for all of these three base components.
+</b></p>
+
+<p>
+Hints: <a href="build-installer-gnulinux.html">Building under GNU/Linux
+in more detail</a> and
+<a href="build-installer-on-w32-debian-screenshots.html">installation of
+Debian GNU/Linux Etch 4.0 within a virtual QEMU machine illustrated as
+screenshot-series.</a>.
+</p>
+
+<p>
+  <a href="build-installer.html">Back to the overview on building Gpg4win</a>
+</p>
+
+<h2>Contents</h2>
+
+<p>
+<a href="#intro">Introduction</a><br><br>
+<tt>I   - </tt><a href="#I">Installation of Debian GNU/Linux Etch 4.0 in a virtual environment</a><br>
+<tt>I-1 - </tt><a href="#I-1">Installation of QEMU</a><br>
+<tt>I-2 - </tt><a href="#I-2">Installation of PuTTY</a><br>
+<tt>I-3 - </tt><a href="#I-3">Getting a Debian Etch boot medium</a><br>
+<tt>I-4 - </tt><a href="#I-4">Open a CMD Shell</a><br>
+<tt>I-5 - </tt><a href="#I-5">Create the hard disk image</a><br>
+<tt>I-6 - </tt><a href="#I-6">Starting the Etch installation</a><br>
+<tt>I-7 - </tt><a href="#I-7">Finalize the Etch installation</a>
+<br><br>
+<tt>II   - </tt><a href="#II">Build of Gpg4win</a><br>
+<tt>II-1 - </tt><a href="#II-1">Start the virtual machine</a><br>
+<tt>II-2 - </tt><a href="#II-2">Installation of important packages for building Gpg4win</a><br>
+<tt>II-3 - </tt><a href="#II-3">Building Gpg4win installation packages</a><br>
+<tt>II-4 - </tt><a href="#II-4">Extraction of the final installation packages</a>
+<br><br>
+<a href="#references">References (URLs)</a>
+</p>
+
+
+<h2><a name="intro"></a>Introduction</h2>
+
+<p>
+ The building process of Gpg4win is aligned to a cross-compiling under
+ GNU/Linux. The creation of a suitable building environment under MS Windows or
+ for other operating system is possible in principle, but requires
+ comprehensive adjustment work on the modules integrated in Gpg4win.
+ The installation of a virtual GNU/Linux system is substantially simpler
+ within Windows, in which the building process can be accomplished then.
+</p>
+
+<p>
+ This manual describes, how such a virtual GNU/Linux can be installed with
+ Free Software and used for building of installation packages.
+ QEMU 0.9.0 <a href="#ref1">[1]</a>, standing under GNU GPL, is used as a
+ virtual machine. Debian Etch 4.0 [2] is used as GNU/Linux distribution.
+</p>
+
+<p>
+ This manual is divided in two parts:
+ <ol>
+   <li> The first part describes, how one installs the software QEMU for
+   virtualisation in the MS-Windows-environment,creates a virtual disk and
+   installs a minimum Debian Etch there.
+   <li> The second part describes, how the actual building process is supposed to
+   work. This corresponds to the building process under GNU/Linux,
+   which has already been documented. However, it is here again for the sake of
+   completeness.
+ </ol>
+</p>
+
+<h3><a name="I"></a>I - Installation of Debian GNU/Linux Etch  4.0 in a virtual environment</h3>
+
+<p>
+ The result of this section is a file, which will contain a partition image
+ of a rudimentary Debian Etch for QEMU (Virtual Machine monitor).
+ The final image file will need approximately 250MB. For the whole process at
+ least 1.5GB disk space should be available on the host system.
+</p>
+
+<h4><a name="I-1"></a> I-1 - Installation of QEMU</h4>
+
+<p>
+ QEMU is actually a hardware emulator. In other words, QEMU interprets
+ the machine code of the simulated guest system and executes it on
+ the host system. This would also allow to accomplish the
+ building of Gpg4win-packages on a PPC system under Mac OS X-host. In case of
+ an installation under MS Windows on a x86-architecture it is advisable to
+ install the virtualisation module KQEMU, the QEMU accelerator, addtional
+ to the actual emulator.
+ It provides for a direct execution of the
+ guest-system's machine code on the host system, which accelerates
+ the execution enormously, if the guest system likewise has a x86-architecture.
+</p>
+
+<p>
+ On the 'QEMU for Windows' <a href="#ref3">[3]</a> page you can get compiled
+ installation binaries for QEMU <a href="#ref4">[4]</a> and
+ KQEMU <a href="#ref5">[5]</a>.
+ After downloading the two Binaries they must be simply executed,
+ in order to install them. Please note the path for QEMU installation
+ (e.g. thus: C:\Programs\QEMU).
+</p>
+
+
+<h4><a name="I-2"></a>I-2 - Installation of PuTTY</h4>
+
+<p>
+ In order to be able to exchange data between host and guest system, there are
+ several possibilities. In this manual it is suggested to install a
+ Open SSH server on the guest system. In order to be able to communicate with
+ this, an appropriate client software is needed.
+ PuTTY <a href="#ref6">[6]</a> is well suitable for this. A Windows installer
+ can be found here <a href="#ref7">[7]</a>.
+ The installation is also started through file-execution. After the installation it
+ is recommended to extend the PATH variable by the path of Putty installation.
+ Later on the tools 'putty.exe' and 'pscp.exe' will be used.
+</p>
+
+<h4><a name="I-3"></a>I-3 - Getting a Debian Etch boot medium</h4>
+
+<p>
+ A fast Internet connection is assumed for downloading the packages necessary
+ to build Gpg4win anyway. It is sufficient to have the minimum
+ x86-Net-Installation-Image debian-40r0-i386-netinst.iso (159MB) or the even
+ smaller Business Card image debian-40r0-i386-businesscard.iso (32MB)
+ and to reload the rest of the Debian system during the installation over
+ the net. The Net-Installation image can be found under <a href="#ref8">[8]</a> 
+ and the Business image under  <a href=#ref9">[9]</a>  or alternatively
+ over the appropriate Debian Mirrors.
+</p>
+
+<p>
+ It is not necessary to burn those images on CD since QEMU can also boot
+ directly from them.
+</p>
+
+<h4><a name="I-4"></a> I-4 - Open a CMD-shell</h4>
+
+<p>
+ In Start-> Run-dialog please enter 'cmd' and confirm. Enter the following
+ lines in the CMD Shell:
+</p>
+
+<pre>
+   cd /d &lt;working directory&gt;
+   set QEMU=C:\Programs\Qemu
+   set PATH=%QEMU%;%PATH%
+</pre>
+
+<p>
+ Whereas &lt;working directory&gt; should be the directory, in which
+ the disk image is. E.g. C:\temp
+</p>
+
+<h4><a name="I-5"></a>I-5 - Create the hard disk image</h4>
+
+<p>
+ Enter the following in the opened CMD-shell:
+</p>
+
+<pre>
+
+   qemu-img create -f qcow2 install.img 2500M
+
+</pre>
+
+<p>
+ This sets a virtual disk file of the maximum size of 2500MB. The file is only
+ increased to this size if necessary.
+</p>
+
+<h4><a name="I-6"></a>I-6 - Start the Etch installation</h4>
+
+<p>
+ Enter the following command in one line in the shell
+</p>
+
+<pre>
+
+   qemu -k de -m 256 -boot d -L %QEMU%\pc-bios -hda install.img
+        -cdrom debian-40r0-i386-businesscard.iso -kernel-kqemu
+
+</pre>
+
+<p>
+ This starts a virtual PC with 256MB RAM, which boots the net installation
+ image and which gets the evenly produced virtual disk assigned. The path to
+ the boot image should be adapted certainly. The option '-k us' selects the 
+ english keyboard layout. The '-kernel kqemu' option activates the full
+ virtualisation of the emulated system, this increases/boosts the performance
+ drastically. If one gets during the start-up/boot-process messages of the form
+ 'hda: lost interrut', one should supplement additionally the option '-no-acpi'.
+ If it should come beyond that to unexpected problems with the virtual machine,
+ the flag should be removed '-kernel kqemu'. Details can be found in
+ the documentation to QEMU.
+</p>
+
+<p>
+ Now there should be a boot prompt of Debian installation in a actually opened
+ window. This can be started by confirming with the RETURN key. The installation
+ should be kept minimal. After choice of the language the complete virtual disk
+ should be used for the installation. A ext3-partition+swap are fully sufficient
+ for our purposes. The standard network configuration is sufficient likewise.
+</p>
+
+<p>
+ Beside the root user, a user account 'gpg4win' should be created. This user
+ account is used to complete the building process.
+</p>
+
+<h4><a name="I-7"></a>I-7 - Finalize the Etch installation</h4>
+
+<p>
+ The current security updates should be installed:
+ 
+ 'apt-get update &amp;&amp; apt-get upgrade'
+ 
+</p>
+
+<p>
+ Optionally for providing a reusable image:
+ 'apt-get clean; apt-get auto-clean' These commands deletes the cached downloads.
+</p>
+
+<p>
+ The guest system can be shut down now with: 'shutdown -h now'
+</p>
+
+<p>
+ If one wants to produce a reusable base image, you should clean and
+ transparently compress the image. The time and size of the image depends on,
+ whether you want to use Gpg4win permanently or only to try out on Windows.
+
+This can be accomplished on CMD-shell with the following commands:
+</p>
+
+<pre>
+
+   qemu-img convert -f qcov2 install.img -O qcow2 -c temp.img
+   copy temp.img install.img
+
+</pre>
+
+<p>
+ One should keep a copy of this image and supply regularly with security updates.
+</p>
+
+<h3><a name="II"></a>II - Construction of Gpg4win</h3>
+
+
+<h4><a name="II-1"></a>II-1 - Starting the virtual machine</h4>
+
+<p>
+ Please enter the following line in an open CMD-shell:
+</p>
+
+<pre>
+
+   qemu -redir tcp:5555::22 -m 256 -boot c -L %QEMU%\pc-bios
+        -hda install.img -kernel-kqemu
+
+</pre>
+
+<p>
+ The '-redir'-option ensures for the fact that TCP inquiries to the host
+ port 5555 are passed on to the host port 5555 to the guest port 22 (SSH).
+ If necessary, the firewall of Windows XP will ask whether the port 5555 is to
+ be blocked. You can confirm this, if you want to access the virtual
+ machine only from the local computer.
+ Otherwise you should allow to pass the inquiries.
+</p>
+
+<h4><a name="II-2"></a>II-2 - Installation of important packages for building Gpg4win</h4>
+
+<p>
+ After that, as a root user, one should get the sytem up-to-date with the following commands:
+ 'apt-get update &amp;&amp; apt-get upgrade'
+ </p>
+
+<pre>
+
+   apt-get install \
+     subversion autoconf automake gettext \
+     mingw32 nsis stow unzip texinfo imagemagick \
+     libglib2.0-dev tetex-bin tetex-extra gs-common hyperlatex \
+     make bzip2 gcc openssh-server
+
+</pre>
+
+<p>
+ <a href="http://en.wikipedia.org/wiki/Subversion_(Software)">Subversion</a>
+ (or the command svn) belonged to the source code management system used
+ for Gpg4win. It is needed only if one wants to build
+ Gpg4win directly from the svn source-code management system. If you use
+ archive files (ending .tar.gz or .tar .bz2) of a published version,
+ then one can do without subversion.
+</p>
+
+<p>
+ The <a href="http://de.wikipedia.org/wiki/OpenSSH">OpenSSH</a>-Server
+ facilitates communication with the virtual machine. You could
+ log-in with PuTTY as well as copy files with pscp in and out.
+ The first method offers quite usable working environment (e.g. copy &amp; paste),
+ the latter allows  to easily retrieve the resulting new installation packages.
+</p>
+
+<p>
+ If OpenSSH server is installed on the guest system and PuTTY on the
+ host system, one can log in with PuTTY into the guest. The connecting data
+ reads: gpg4win@localhost, port: 5555.
+ The password in the case of the finished image is 'gpg4win'.
+</p>
+
+<p>
+ In order to avoid problems with the 'Locale' (these are the settings for
+ the support of your language and other language specific settings), it is
+ recommendable to produce e.g. the de_DE-Locale (support for german as it is
+ used in Germany). For this please enter the following as root user:
+</p>
+
+<pre>
+
+  dpkg-reconfigure locales
+
+</pre>
+
+<p>
+ and tick the check mark of de_DE set.
+</p>
+
+<h4><a name="II-3"></a>II-3 - Building Gpg4win installation packages</h4>
+
+<p>
+ Logs in as user 'gpg4win' and enter the following on the Linux Shell,
+ in case you  want to build Gpg4win out of the SVN repository:
+</p>
+
+<pre>
+
+  export LANG=de_DE
+  svn co https://svn.wald.intevation.org/svn/gpg4win/trunk
+  cd trunk/packages
+  sh download.sh
+  cd ..
+  ./autogen.sh
+  ./autogen.sh --build-32 --enable-maintainer-mode
+  make
+
+</pre>
+
+<p>
+ When this was completed successfully, the new installation packages are
+ available under trunk/src.
+</p>
+
+<h4><a name="II-4"></a>II-4 - Extraction of the final installation packages</h4>
+
+<p>
+ Please enter the following command on a CMD Shell in the Windows host system:
+</p>
+
+<pre>
+
+  pscp -P 5555 gpg4win@localhost:trunk/src/gpg4win-*.exe .
+
+</pre>
+
+<p>
+ It is assumed that pscp.exe is in the PATH. After the successful transfer was
+ successfully locked, the guest Linux system can be shutdown.
+</p>
+
+<h2><a name="references"></a>References (URLs)</h2>
+
+<tt>
+<a name="ref1">[1]</a> <a href="http://fabrice.bellard.free.fr/qemu/">http://fabrice.bellard.free.fr/qemu/</a> <br>
+<a name="ref2">[2]</a> <a href="http://www.debian.org/">http://www.debian.org/</a> <br>
+<a name="ref3">[3]</a> <a href="http://www.h7.dion.ne.jp/~qemu-win/">http://www.h7.dion.ne.jp/~qemu-win/</a> <br>
+<a name="ref4">[4]</a> <a href="http://www.h6.dion.ne.jp/~kazuw/qemu-win/Qemu-0.9.0-install.exe">http://www.h6.dion.ne.jp/~kazuw/qemu-win/Qemu-0.9.0-install.exe</a> <br>
+<a name="ref5">[5]</a> <a href="http://www.h6.dion.ne.jp/~kazuw/qemu-win/Kqemu-1.3.0pre11-install.exe">http://www.h6.dion.ne.jp/~kazuw/qemu-win/Kqemu-1.3.0pre11-install.exe</a> <br>
+<a name="ref6">[6]</a> <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty">http://www.chiark.greenend.org.uk/~sgtatham/putty</a> <br>
+<a name="ref7">[7]</a> <a href="http://www.tartarus.org/~simon/putty-snapshots/x86/putty-installer.exe">http://www.tartarus.org/~simon/putty-snapshots/x86/putty-installer.exe</a> <br>
+<a name="ref8">[8]</a> <a href="http://cdimage.debian.org/debian-cd/4.0_r0/i386/iso-cd/debian-40r0-i386-netinst.iso">http://cdimage.debian.org/debian-cd/4.0_r0/i386/iso-cd/debian-40r0-i386-netinst.iso</a> <br>
+<a name="ref9">[9]</a> <a href="http://cdimage.debian.org/debian-cd/4.0_r0/i386/iso-cd/debian-40r0-i386-businesscard.iso">http://cdimage.debian.org/debian-cd/4.0_r0/i386/iso-cd/debian-40r0-i386-businesscard.iso</a> <br>
+</tt>

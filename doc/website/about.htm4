@@ -1,0 +1,112 @@
+m4_dnl -*-html-*-
+m4_include(`template.m4')
+m4_dnl $Id$
+
+m4_define(`EN')
+m4_define(`DE_FILE', `about-de.html')
+PAGE_START
+
+<h1>About Gpg4win</h2>
+
+<p>The Gpg4win initiative aims <b>to provide a current</b> Gpg4win Windows installation
+package including the GnuPG encryption tool and associated applications.
+The <a href="documentation.html">documentation</a>
+("Gpg4win Compendium" and "Novices") is directly maintained
+as part of the Gpg4win project.</p>
+
+<p>
+Another goal is to support both relevant cryptographic standards,
+<b>OpenPGP and S/MIME</b> in a unified way.
+</p>
+
+<p>
+Gpg4win is an international effort. Due to the origin of the project and
+many members, there is a full German translation.
+Additional translators are welcome!
+</p>
+
+<p>
+The main difference compared to all similar approaches
+(mainly GnuPP, GnuPT, Windows Privacy Tools and GnuPG-Basics)
+is that the first piece developed was the <b>Gpg4win-Builder</b>.
+This builder allows to easily create new gpg4win.exe installers
+with updated components.
+It runs best on a GNU/Linux system. Almost all products
+are even automatically cross-compiled for integration into
+the installer.
+</p>
+
+<p>
+This concept raises hope to practically <b>prevent
+quick aging of the installer package</b>  because updating is easier
+and does not depend on a single person.
+</p>
+
+<p><br>
+Before starting getting contracted to develop Gpg4win2, 
+Jan-Oliver Wagner and Bernhard Reiter wrote a short study
+about <a href="ShortStudy-Sustainable-FS-example-Gpg4win.html">"Sustainable
+Free Software: From project to permanent activity, using the example
+Gpg4win"</a>.
+</p>
+
+
+<h2>Screenshots</h2>
+
+<p>Some screenshots of the certificate manager Kleopatra and its
+crypto dialogs (only in German - sorry):</p>
+
+<ul>
+<li><p><b>Gpg4win Installer - the welcome screen:</b></p>
+<a href="pix/sc-inst-welcome_de.png">
+<img src="pix/sc-inst-welcome_de.png"
+width="400px"
+alt="Gpg4win Installer - the (German) welcome screen"
+title="Gpg4win Installer - the (German) welcome screen">
+</a>
+</li>
+
+<li><p><b>Kleopatra - the creation of an OpenPGP certificate:</b></p>
+<a href="pix/sc-kleopatra-openpgp-personalDetails_de.png">
+<img src="pix/sc-kleopatra-openpgp-personalDetails_de.png"
+width="400px"
+alt="Kleopatra - the creation of an OpenPGP certificate"
+title="Kleopatra - the creation of an OpenPGP certificate">
+</a>
+</li>
+
+<li><p><b>Kleopatra - the certificate manager with an OpenPGP certificate:</b></p>
+<a href="pix/sc-kleopatra-withOpenpgpTestkey_de.png">
+<img src="pix/sc-kleopatra-withOpenpgpTestkey_de.png"
+width="400px"
+alt="Kleopatra - the certificate manager with an OpenPGP certificate" title="Kleopatra - the certificate manager with an OpenPGP certificate">
+</a>
+</li>
+
+<li><p><b>Details of an OpenPGP certificate:</b></p>
+<a href="pix/sc-kleopatra-openpgp-certificateDetails_de.png">
+<img src="pix/sc-kleopatra-openpgp-certificateDetails_de.png"
+width="400px"
+alt="Details of an OpenPGP certificate" title="Details of an OpenPGP certificate">
+</a>
+</li>
+
+<li><p><b>Successful decryption and signature verification of an
+OpenPGP email:</b></p>
+<a href="pix/sc-kleopatra-decrypt-verify-openpgp-email.png">
+<img src="pix/sc-kleopatra-decrypt-verify-openpgp-email.png"
+width="400px"
+alt="Successful decryption and signature verification of an
+OpenPGP email" title="Successful decryption and signature verification of an
+OpenPGP email">
+</a>
+</li>
+
+<li><p><b>Dialog to encrypt and/or sign files with Kleopatra:</b></p>
+<a href="pix/sc-kleopatra-encryptFile1_de.png">
+<img src="pix/sc-kleopatra-encryptFile1_de.png"
+width="400px"
+alt="Dialog to encrypt and/or sign files with Kleopatra" title="Dialog to encrypt and/or sign files with Kleopatra">
+</a>
+</li>
+</ul>

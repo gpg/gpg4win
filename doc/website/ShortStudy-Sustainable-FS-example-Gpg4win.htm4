@@ -1,0 +1,1317 @@
+m4_dnl -*-html-*- vim:filetype=html:
+m4_include(`template.m4')
+m4_dnl $Id$
+
+m4_define(`EN')
+m4_define(`DE_FILE', `Kurzstudie-Nachhaltige-FS-Beispiel-Gpg4win.html')
+PAGE_START
+
+<p>
+Available for download: <a
+    href="http://wald.intevation.org/frs/download.php/480/ShortStudy-Sustainable-FS-example-Gpg4win-20071005.pdf">This text as pdf document</a>
+(ca. 1.3 MByte)
+</p>
+
+<h1>Short Study</h1>
+<h1 style="text-align: left; padding-bottom: 6px;">Sustainable Free Software: 
+    From project to permanent activity, using the example Gpg4win</h1>
+
+<IMG SRC="pix/intevation-logo.png" NAME="Grafik17">
+<BR>
+
+Authors:<BR>
+Dr. Jan-Oliver
+Wagner	&lt;jan-oliver.wagner@intevation.de&gt;<BR>
+Bernhard
+Reiter		&lt;bernhard.reiter@intevation.de&gt;<BR>
+Intevation GmbH, Neuer Graben 17, 49074 Osnabr&uuml;ck<BR>
+Tel: 0541/33508-30, Fax:
+0541/33508-59        
+<p>Translated from the German original by Brigitte Hamilton.</p>
+
+<P ALIGN=RIGHT STYLE="margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
+<B>As
+        at June 2006, </B>October 5, 2007 draft (Webversion: September 30, 2008)<br>(Translation from the German draft: October 5, 2007)
+</P>
+<DIV ID="Inhaltsverzeichnis1" DIR="LTR">
+	<DIV ID="Table of Contents1_Head" DIR="LTR">
+		<P STYLE="margin-top: 0.42cm; page-break-after: avoid"><FONT FACE="Nimbus Sans L, sans-serif"><FONT SIZE=4 STYLE="font-size: 16pt"><B>Table
+		of Contents</B></FONT></FONT></P>
+	</DIV>
+	<P STYLE="margin-bottom: 0cm">1  Summary	2</P>
+	<P STYLE="margin-bottom: 0cm">2  Introduction	3</P>
+	<P STYLE="margin-bottom: 0cm">3  Methodology	3</P>
+	<P STYLE="margin-bottom: 0cm">4  General success factors for Free
+	Software projects	4</P>
+	<P STYLE="margin-left: 0.5cm; margin-bottom: 0cm">4.1  Participant
+	structure	5</P>
+	<P STYLE="margin-left: 0.5cm; margin-bottom: 0cm">4.2  Examples of
+	successful projects	7</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">4.2.1  Apache	7</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">4.2.2  Samba	7</P>
+	<P STYLE="margin-bottom: 0cm">5  Examination of approaches to date
+	for GnuPG Windows Installer	8</P>
+	<P STYLE="margin-left: 0.5cm; margin-bottom: 0cm">5.1  GnuPP	8</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">5.1.1  History	8</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">5.1.2  User
+	acceptance	9</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">5.1.3  Problems	9</P>
+	<P STYLE="margin-left: 0.5cm; margin-bottom: 0cm">5.2  Windows
+	Privacy Tools	9</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">5.2.1  History	9</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">5.2.2  User
+	acceptance	10</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">5.2.3  Problems	10</P>
+	<P STYLE="margin-left: 0.5cm; margin-bottom: 0cm">5.3  GnuPT	10</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">5.3.1  History	10</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">5.3.2  User
+	acceptance	11</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">5.3.3  Problems	11</P>
+	<P STYLE="margin-left: 0.5cm; margin-bottom: 0cm">5.4  GnuPG-Pack
+	Basics	11</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">5.4.1  History	11</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">5.4.2  User
+	acceptance	11</P>
+	<P STYLE="margin-left: 1cm; margin-bottom: 0cm">5.4.3  Problems	11</P>
+	<P STYLE="margin-bottom: 0cm">6  Gpg4win successes to date	12</P>
+	<P STYLE="margin-bottom: 0cm">7  Possible courses of action	12</P>
+	<P STYLE="margin-left: 0.5cm; margin-bottom: 0cm">7.1  Basic
+	difficulties	12</P>
+	<P STYLE="margin-left: 0.5cm; margin-bottom: 0cm">7.2  Tasks and/or
+	required activities	14</P>
+	<P STYLE="margin-left: 0.5cm; margin-bottom: 0cm">7.3  Estimate of
+	costs for required activities	14</P>
+	<P STYLE="margin-left: 0.5cm; margin-bottom: 0cm">7.4  User
+	community	15</P>
+	<P STYLE="margin-left: 0.5cm; margin-bottom: 0cm">7.5 Commercial
+	stakeholders	15</P>
+	<P STYLE="margin-left: 0.5cm; margin-bottom: 0cm">7.6  What can a
+	one-time monetary contribution achieve? 	16</P>
+	<P STYLE="margin-bottom: 0cm">8  Conclusions and recommendations	18</P>
+	<P STYLE="margin-left: 0.5cm; margin-bottom: 0cm">8.1  Qualification
+	and integration	18</P>
+	<P STYLE="margin-left: 0.5cm; margin-bottom: 0cm">8.2  Commercial
+	stakeholders	19</P>
+	<P STYLE="margin-bottom: 0cm">Appendix A: Concrete recommendations
+	for action	20</P>
+	<P STYLE="margin-left: 0.5cm; margin-bottom: 0cm">A.1 As a volunteer
+		20</P>
+	<P STYLE="margin-left: 0.5cm; margin-bottom: 0cm">A.2 As a financial
+	contributor	20</P>
+</DIV>
+<H2 CLASS="western">1  Summary</H2>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+Anyone investing in the development of Free Software (Open Source)
+usually wants to achieve a long-lasting effect despite a limited
+budget. In addition, the promotion of open and independent further
+development is also an objective.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-before: auto; page-break-after: auto">
+Using the encryption solution &quot;Gpg4win&quot;, measures that can
+achieve this goal will be discussed. Starting point of the study is
+the analysis of to-date initiatives that are comparable to the
+Windows version of GnuPG software.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
+Two key factors emerge: 
+</P>
+<OL>
+	<LI><P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
+	Integration of additional individuals, up to a balanced participant
+	structure 
+	</P>
+	<LI><P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
+	Commercial stakeholders</P>
+</OL>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+A motivation and qualification process should be established for
+allocating and placing the necessary competencies. The promotion of
+commercial stakeholders is an ideal complement to this process. The
+long-term objective is the financing of a professional management for
+a portion of the required activities. The path leading to this
+objective must be made possible and also well communicated.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+How this could work for Gpg4win will be shown below. The technical
+progress achieved with Gpg4win's forms a basis for these measures. A
+slow withdrawal from an investment would be ideal, so that at each
+time other participants could take over.</P>
+
+<H2 CLASS="western">2  Introduction</H2>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+This short study was put together parallel to the product &quot;Gpg4win&quot;<A CLASS="sdfootnoteanc" NAME="sdfootnote1anc" HREF="#sdfootnote1sym"><SUP>1</SUP></A>.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+Gpg4win is an installation package for Microsoft Windows which
+contains numerous help programs and extensive German documentation
+besides the actual encryption application &quot;GnuPG&quot;. The
+objective of this project is to improve the usability of the
+encryption software GnuPG and to therefore facilitate the use and
+operation of cryptography for laymen computer users. For this
+purpose, in addition to the simple installation of the software, the
+integration of the command line tool GnuPG into graphics user
+interfaces such as &quot;Outlook 2003&quot; and &quot;Sylpheed Claws&quot;
+is also promoted.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+In this way Gpg4win intends to replace the outdated GnuPP<A CLASS="sdfootnoteanc" NAME="sdfootnote2anc" HREF="#sdfootnote2sym"><SUP>2</SUP></A>,
+which has not been updated for a while. It is hoped that such a
+standstill situation can be avoided for Gpg4win. The objective of
+this short study is to discuss the corresponding measures.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+Version 1.0 of Gpg4win has updated the software. This short study
+suggests a strategy of how a self-sustaining project can develop. The
+goal is to facilitate a more sustained further development of
+Gpg4win.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+Starting point for the short study are the general success factors
+for Free Software projects, as well as the problems regarding an
+sustainable further development of GnuPP, Windows Privacy Tools <A CLASS="sdfootnoteanc" NAME="sdfootnote3anc" HREF="#sdfootnote3sym"><SUP>3</SUP></A>
+and comparable approaches.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+While this study is concerned with Gpg4win, more general conclusions
+may also be drawn, especially for products which are the result of a
+bigger project and are targeted towards Microsoft Windows as the
+basic operating system.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+In the end, this study intends to highlight the issues. even though
+there are a number of additional aspects that are also worthy of
+examination but could not be mentioned or discussed. As a result this
+short study is meant as a starting point and motivating factor for
+thinking about the kind of questions which need to be asked regarding
+the sustained existence of Free Software products.</P>
+<H2 CLASS="western">3  Methodology</H2>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+The course of action used in this short study includes the following
+fundamental steps:</P>
+<UL>
+	<LI><P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
+	Search for comparable projects.</P>
+	<LI><P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
+	Investigation of publicly available information of comparable
+	projects, establishing contacts where possible.</P>
+	<LI><P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
+	Compilation of success factors for Free Software projects.</P>
+	<LI><P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
+	Analysis and comparison of Gpg4win and other comparable projects
+	using the authors' experiences and success factors. 
+	</P>
+</UL>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.32cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+A search of the literature regarding the main content areas &quot;Free
+Software in Windows&quot;, &quot;Security Software&quot; or
+&quot;Structure and sustainability as a result of a commercial
+development project&quot; did not yield any helpful results, whether
+in English or German. The literature is mainly limited to
+technological success factors for Free Software initiatives and the
+development of individual business models on the basis of Free
+Software products.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.32cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+Also included in this study are the many years of experience by the
+authors with Free Software, a topic with which they have dealt with
+exclusively and professionally since 1999. The authors have carried
+out a number of different projects for e-mail encryption with GnuPG
+since 2000.</P>
+
+<H2 CLASS="western">4  General success factors for Free Software projects</H2>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+What is a &quot;Free Software Project&quot;?</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+Free Software is software which is accompanied with a permanent
+authorisation that it can be used by anyone for any purpose. The
+distribution, improvement and copying of improvements of the software
+is also allowed. Here Free Software is used analogous to the term
+used by the Free Software Foundation Europe (FSFE). Other terms for
+Free Software are &quot;Open Source&quot; or &quot;Libre Software&quot;.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+In its original connotation, a project is a one-time undertaking.
+This meaning has changed somewhat for Free Software, as it no longer
+signifies just a one-time undertaking, but usually a sustained
+activity around a software, whereby the latter is created and further
+developed and maintained for an indefinite period of time. Besides
+the actual software, documentation, infrastructure, availability of
+information and participants also form a part of this activity.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+For each software project a number of different tasks must be carried
+out on a regular basis. The activity is said to function when these
+tasks are assumed by those who are directly involved. According to
+literature, participants in a Free Software project can be divided
+into four large groups:</P>
+<UL>
+	<LI><P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
+	Organisations/Businesses that are involved for their own purposes</P>
+	<LI><P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
+	Commissioned service providers</P>
+	<LI><P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
+	Individuals that involved in their free time</P>
+	<LI><P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
+	Research and education facilities for testing and demonstration
+	purposes.</P>
+</UL>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.32cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+See (Lakhani et al. 2002)<A CLASS="sdfootnoteanc" NAME="sdfootnote4anc" HREF="#sdfootnote4sym"><SUP>4</SUP></A>
+and (Reiter 2004) in German<A CLASS="sdfootnoteanc" NAME="sdfootnote5anc" HREF="#sdfootnote5sym"><SUP>5</SUP></A>.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.32cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+As a result, the following applies to each functioning Free Software
+project:</P>
+<UL>
+	<LI><P ALIGN=JUSTIFY STYLE="margin-top: 0.32cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
+	Which tasks must be assumed on a regular basis?</P>
+	<LI><P ALIGN=JUSTIFY STYLE="margin-top: 0.32cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
+	Who carries out these tasks?</P>
+</UL>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.32cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+Someone interested in Free Software can participate in two ways:
+contributing time/labour or money. The amount can be freely chosen.
+At the same time, tasks can only be carried out with labour, while
+contributed funds must be converted into labour. This brings up the
+question regarding qualification and business model.</P>
+
+
+<H2 CLASS="western">4.1  Participant structure</H2>
+<P>A successful Free Software project is
+characterised by a balanced cooperation of participants, as shown in
+Figure 1. As a rule, adjacent layers communicate actively with each
+other, for example, contributors with power users and developers.</P>
+
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
+    <P STYLE="margin-top: 0.21cm">
+    <IMG
+    SRC="pix/ShortStudy-Sustainable-FS-example-Gpg4win-20071005_html_1f01bb96.png"
+    NAME="Grafik3" WIDTH=700px ><BR CLEAR=LEFT>
+    <I>Figure
+	1: Participant make-up of a successful Free Software project: The
+	pyramid structure is composed of a broad basis of users, out of
+	which power users, contributors, developers and core developers lead
+	towards the development coordinator.</I></P>
+</P>
+<BR>
+
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; font-style: normal; line-height: 100%">
+<B>User:</B></P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
+Normal users of the software. They obtain information and advice from
+the documentation and from other, usually active, users.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+<SPAN STYLE="font-style: normal"><B>Power User</B></SPAN><SPAN STYLE="font-style: normal"><B>:</B></SPAN>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
+A user with more extensive technical know-how and knowledge, who uses
+the software more intensively than a normal user and assists others
+with operating the software. Usually power users are registered on
+the respective mailing lists or forums and will also answer questions
+from other users.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; font-style: normal; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+<B>Contributor:</B></P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
+A contributor makes a regular and active contribution to the
+respective Free Software project, however not usually with regards to
+source codes, but rather by assuming other activities such as writing
+documentation, testing experimental versions or formulation of
+requests.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; font-style: normal; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+<B>Developer:</B></P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
+Participants who in conjunction with others or independently carry
+out regular improvements to the software's source code. These
+improvements often include bug fixing or other small functional
+upgrades.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; font-style: normal; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+<B>Core developer:</B></P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
+Participating developers who possess good knowledge of the software's
+architecture and are actively involved in its further development.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; font-style: normal; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+<B>Development coordinator:</B></P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
+The individual in the circle of core developers who has the final
+word on decisions regarding architecture, the inclusion of new
+functions or similar items. This is not usually a position involving
+authoritative characteristics, but rather concerns the tasks of
+moderating discussions regarding architecture and functionalities.
+Issues regarding the rights, duties, election and replacement of the
+coordinator are handled differently in many Free Software projects.
+In the very rare event of a dissent that cannot be resolved, the Free
+Software project is split into two projects.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+The qualification and integration processes are very important for
+Free Software activities. If a project is able to turn users into
+power users, and power users into contributors etc., the result is an
+additional motivation as well as support for the original core
+developers. They are then able to push forward the product per se and
+thus concentrate on work that directly benefits users.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+Because of the type of structures that developed it is very difficult
+to directly recruit a core developer or developer. An individual must
+grow into this leadership position. For this reason, a large number
+of users is an important factor as it forms the basis for the
+integration. There are conventional ways of increasing the number of
+users and popularise the respective Free Software activities - in the
+case of Free Software, attaining new users is achieved mainly through
+globalisation, entry into different software indices and through
+personal contact on mailing lists and meetings.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+The transition from the first management group to the second is a
+critical item for each Free Software activity. Many times it is a
+very specific person who started and instilled life into the project.
+At some point this person loses interest in the software or is no
+longer able to continue working on it and must transfer
+responsibility for the project. At this point it becomes very evident
+whether there is enough critical mass to form a new management group.
+A positive aspect is if the work was already previously divided among
+several individuals. Hence, the broader the pyramid in Figure 1, the
+better.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+In order to participate in the qualification process, participants
+must be motivated to do so. In the case of volunteers it is clear
+that a certain level of enthusiasm or fun is helpful.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+According to Lakhani et al., the following are the most common
+motivations for developing Free Software:</P>
+<UL>
+	<LI><P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
+	Intellectual challenge</P>
+	<LI><P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
+	Improvement of own skills and knowledge</P>
+	<LI><P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
+	Improvement of personal work processes</P>
+	<LI><P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
+	Freedom of being able to modify the program.</P>
+</UL>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.32cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+A good infrastructure can be helpful for bundling communication
+requirements. This includes an appropriate amount of mailing lists,
+forums, websites, ticket systems for bug lists and requests, and an
+open version monitoring system. 
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.32cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+Both infrastructure and software/documentation must make it
+relatively easy for interested individuals to participate.
+Unnecessary difficulties should be avoided, this applies both to
+technical, language and organisational aspects.</P>
+<H2 CLASS="western" STYLE="page-break-before: always">4.2  Examples
+of successful projects</H2>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+The following two examples describe successful Free Software
+projects, the reasons for their success and how they differ from
+Gpg4win.</P>
+<H2 CLASS="western">4.2.1  Apache</H2>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+With over 60% market share<A CLASS="sdfootnoteanc" NAME="sdfootnote6anc" HREF="#sdfootnote6sym"><SUP>6</SUP></A>,
+the web server &quot;Apache&quot; has been a worldwide leading
+product for years. Apache was Free Software from the beginning and
+was further developed and improved by responsible system
+administrators one step at a time. Almost all work done on Apache was
+the result of concrete technical and in part urgently required
+requirements. These requirements originated mainly from a series of
+businesses which use the web server intensively.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+The large number of users and developers led to the creation of the
+Apache Software Foundation<A CLASS="sdfootnoteanc" NAME="sdfootnote7anc" HREF="#sdfootnote7sym"><SUP>7</SUP></A>
+(ASF). It now supports and coordinates over 30 individual projects in
+the area of web-based services. In total there are over 1,000 active
+developers registered with ASF.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+Certainly, decisive success factors include the existence of actual
+technical requirements and the fact that the users, hence also the
+administrators, are highly qualified on a technical level. Many users
+are capable of carrying out their own analysis and fixing of errors.
+Furthermore users and developers are able to use Apache on the
+software/hardware system they are familiar with, which is an
+additional motivating factor.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+In contract, Gpg4win users usually have less technical
+qualifications. Obviously, one reason for this is that Gpg4win is a
+program for end users rather than a server application which is
+geared towards administrators.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+Furthermore, Gpg4win automatically specifies the operating system.
+Gpg4win does not present a real challenge to programmers, since as a
+meta project it is not directed towards actual programming. Results
+obtained from other projects (e.g. GnuPG) are also taken in.</P>
+<H2 CLASS="western">4.2.2  Samba</H2>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+Samba is a Free Software implementation of data and print services
+for SMB/CIFS clients. SMB and CIFS are proprietary protocols of
+Microsoft. A Samba installation can seamlessly replace both a
+respective Windows client or Windows server for data and printing
+services, i.e. without the other systems in the network knowing or
+even being aware of its presence. At the same time it represents a
+bridge to data and printing services under GNU/Linux.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+In many companies Samba has replaced data servers by Microsoft or
+Novell. It is used anywhere where mixed environments consisting of
+GNU/Linux and Windows work places exist, and in part even in pure
+Windows environments.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
+The decisive success factor for Samba is the very real interest of
+many companies in utilising this solution. In addition, in its role
+as data server it also presents a critical application for almost all
+companies. which also means that budgets for this purpose will exist,
+which explains why there are now a number of companies which offer
+services for Samba. Some of these companies will also have employees
+who focus on the improvement and further development of Samba.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+In contrast to the Apache project there are significantly fewer
+administrators who are technically qualified to independently carry
+out improvements to Samba.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+In contrast to a data server, the encryption of e-mails is not
+considered a critical application for most companies. For this reason
+there are smaller budgets for maintenance and support contracts. In
+the case of Gpg4win it is more difficult for a commercial market to
+develop as easily and quickly as for Samba, because the latter was
+more suited for commercialisation due to its key significance for
+companies.</P>
+
+
+<p>
+<H2 CLASS="western">5  Examination of approaches to date for GnuPG
+Windows Installer</H2>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+An examination of approaches developed to date includes a historical
+perspective and in particular takes into account possible causes why
+a sustained independent solution through other projects could not be
+established to date.</P>
+<H2 CLASS="western">5.1  GnuPP</H2>
+<H2 CLASS="western">5.1.1  History</H2>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+At the end of 1999 the Federal Ministry for Economy and Technology
+began a promotional project with the objective of porting GnuPG to
+Windows, developing graphic user interfaces and preparing good
+quality German documentation.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+The name of the project was &quot;Free Software and IT Security&quot;.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+The major participants were G-N-U GmbH (development), Werner Koch
+Software-Systeme (replaced by OpenIT GmbH, development) and Linuxland
+International (marketing). Project manager was GUUG e.V. Intevation
+GmbH (project management and development) joined during the end phase
+of the project. One individual took over the project management
+function for the first number of months but left early on without
+being replaced.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+The project was finished successfully in 2000 and was subsequently
+presented at exhibitions. Also developed as part of the project were
+the graphics key manager Gnu Privacy Assistant (GPA), a revised
+GnuPG, the German web pages www.gnupg.de, the Gnu Privacy handbook in
+German and English, the crypto-programming library GpgME, several
+feasibility analyses on the integration into different e-mail
+programs, and integration into the e-mail program Sylpheed. Other
+items worthy of mention include the development of WinPT (support for
+the operation of the Windows clipboard for encryption purposes) and
+the Gdata Outlook plug-in for the use of GnuPG in the e-mail program
+Outlook. Both products were independently contributed by third
+parties and are therefore to be considered as a collateral benefit. 
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+As part of subsequent<SPAN STYLE="background: transparent"> financial
+support</SPAN> the project is renamed &quot;GnuPP&quot; (Gnu Privacy
+Project). GnuPP lasted from May 2001 to March 2002. The main
+objective and result of this project are an updated installation
+packet (GnuPP 1.1) as well as extensive illustrated handbooks, which
+were also published in brochure form at considerable print volumes
+(CD with brochure &quot;GnuPP for Novices&quot;). In addition, a
+project home page under www.gnupp.de was also created (although
+significantly reduced since that time), as were a user forum in the
+form of a mailing list and an automatic system (e-mail correspondence
+robot &quot;Adele&quot;) for testing purposes. The latter is used in
+line with the tutorial in &quot;GnuPP for Novices&quot;.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+<SPAN STYLE="background: transparent">As far as is known, only G-N-U
+GmbH was commissioned and participated.</SPAN> Brochures and
+illustrations were prepared by outside service providers.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+The web page, mailing list and correspondence robot &quot;Adele&quot;
+are still active. The installation packet GnuPP 1.1 is no longer
+offered as a download, whereas &quot;Novices&quot; and &quot;Experts&quot;
+are still available (as PDF documents).</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+The installation packet GnuPP can still be downloaded from different
+websites.</P>
+<H2 CLASS="western">5.1.2  User acceptance</H2>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+Initial user acceptance and attention for GnuPP can be characterised
+as considerable.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+The mailing list shows the following volumes: 2002: 881 e-mails,
+2003: 877, 2004: 671, 2005: approx. 200. Almost 500 individuals were
+active participants, while the number of registered persons is not
+known.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+The CD and brochure were published in a first edition in March 2002.
+The volume of the print run is not known, but is likely not less than
+5,000 copies. A second edition was considered but subsequently
+abandoned. The reasons for this are not known.</P>
+<H2 CLASS="western">5.1.3  Problems</H2>
+<P>Both GPA as well as GnuPP are not official projects under the GNU
+projects<A CLASS="sdfootnoteanc" NAME="sdfootnote8anc" HREF="#sdfootnote8sym"><SUP>8</SUP></A>,
+although the name would suggest as much. Only GnuPG itself is an
+official GNU project.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+It is thought that the lack of additional financial support caused
+G-N-U GmbH to stop offering active support at the end of 2002,
+although the company continues to operate the website and automated
+processes (user forum and &quot;Adele&quot;).</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+There were increasing incidents of problem reports on the mailing
+lists, and while they were partially corrected in the components
+themselves (e.g. GnuPG by the GnuPG developer team), no updated
+installation packets were made available.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+Neither the source code for the installer nor instructions for the
+assembly of an installer were provided on a general basis. However,
+it stands to reason that the sources were made available on explicit
+requests. Still, it must be mentioned that in the end an update of
+GnuPP by third parties never took place.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+Within the context of GnuPP there are no visible activities that are
+designed to interest and enable those with technical knowledge in
+order to entrust them with the updating of the installer or web page.
+It must be concluded then that this was not a declared objective of
+the project.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+In the meantime the GnuPP 1.1 installation packet has become
+hopelessly out of date with regard to the integrated components.</P>
+<H2 CLASS="western">5.2  Windows Privacy Tools</H2>
+<H2 CLASS="western">5.2.1  History</H2>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+The project <I>Windows Privacy Tools</I><A CLASS="sdfootnoteanc" NAME="sdfootnote9anc" HREF="#sdfootnote9sym"><SUP>9</SUP></A>
+(somewhat confusingly, its acronym <I>WinPT</I> is the same as the
+integrated software <I>Windows Privacy Tray</I><A CLASS="sdfootnoteanc" NAME="sdfootnote10anc" HREF="#sdfootnote10sym"><SUP>10</SUP></A>,
+hence the former will subsequently be abbreviated as <I>P-WinPT</I>)
+was registered on the software development platform Sourceforge in
+January 2003, therefore at a time at which GnuPP no longer
+demonstrated any further development. The driving force behind this
+effort was an individual from Canada.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+Objectives and requirements corresponded roughly with the GnuPP
+project, however with an additional focus on good multilingual
+support, i.e. globalisation. An English-language handbook was also
+prepared. The most recent version (2003) of the handbook has approx.
+40 pages and describes the installation and operation of WinPT, GnuPG
+and several plug-ins for e-mail programs.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+In principle, the only developer activity worthy of mention took
+place in 2003. The last publication of P-WinPT is version 1.0rc2 from
+27 April 2003.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+In May 2005 Fabian Rodriguez opened the position of project manager,
+since he had not been active for some time. However, it appears that
+no one indicated any interest in assuming this position.</P>
+<H2 CLASS="western">5.2.2  User acceptance</H2>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+Despite its short activity phase, the project appears to be very
+popular. Download volumes are quite impressive and are probably above
+those for GnuPP: P-WinPT 1.0rc2: more than 270,000, P-WinPT Handbook
+02rc2: more than 42,000. The reason for the large numbers is probably
+the fact that the project was able to speak to an international
+audience.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+There are approx. 1,000 individuals signed up on the announcements
+mailing list. There is no English mailing list per se, the mailing
+lists for the different languages (there is no German one) do not
+show any noticeable activity.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+Entries regarding problems, requests and queries continued to be made
+far beyond the active phase. Including a number of them as late as
+2006. They were not processed.</P>
+<H2 CLASS="western">5.2.3  Problems</H2>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+The activity of the project was closely tied to the activities by its
+initiator. When Fabian Rodriguez was no longer active, no new
+versions were published.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+One large problem was probably the fact that there was no English
+discussion list which would have allowed interest parties to
+coordinate their efforts.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+The fact that the links list did not make reference to either GnuPP
+or any other similar approaches can also be considered a weakness. It
+is only when one is aware of alternatives that comparisons can be
+made. The continued number of new entries in the Bug Tracker may also
+be a result of this being the only visible avenue for users to
+address problems associated with P-WinPT.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+The P-WinPT project finally attempted to integrate the software WinPT
+into itself. No links are found on the WinPT home page, where new
+versions were announced until August 2004 and downloads were also
+provided. Without carrying out additional research a user would not
+know that the software WinPT is an independent project which in the
+meantime has been extensively improved. As a result, this attempt can
+be seen as a tactical error.</P>
+<H2 CLASS="western">5.3  GnuPT</H2>
+<H2 CLASS="western">5.3.1  History</H2>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+The project Gnu Privacy Tools (GnuPT<A CLASS="sdfootnoteanc" NAME="sdfootnote11anc" HREF="#sdfootnote11sym"><SUP>11</SUP></A>)
+was initiated by one person from Germany, probably around January
+2004.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+According to statements by the initiator, new versions of Windows
+installation packet GnuPT have been published approximately every 2
+to 3 weeks since May 2004.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+The web portal to GnuPT is organised as a pure forum platform.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+According to the author the further development of GnuPT will soon
+cease in favour of Gpg4win.</P>
+<H2 CLASS="western">5.3.2  User acceptance</H2>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+Based on the statistics of the forum software one can assume that
+there are less than 50 active participants and less than 3,000
+readers. In general, it appears that all questions are answered on
+the forum, hence the support is considered as good.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+The number of downloads cannot be determined.</P>
+<H2 CLASS="western">5.3.3  Problems</H2>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+The forum structure is unwieldy since the entire project organisation
+is carried out through this forum. There is no separate bug tracking
+system, no mailing lists and no history for installation packets
+(only the most recent version may be downloaded). The project seems
+to be mainly operated in Germany and is not an official GNU project.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+Furthermore there is no source code for the installer, hence only the
+project manager can create a new version. As a result the installer
+itself is not considered Free Software.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+Overall there is a danger that it would be difficult for someone else
+to continue the project should the project manager lose interest or
+is prevented from continuing his work (e.g. through an accident).</P>
+<H2 CLASS="western">5.4  GnuPG-Pack Basics</H2>
+<H2 CLASS="western">5.4.1  History</H2>
+ The installation packet GnuPG Pack-Basics<A CLASS="sdfootnoteanc" NAME="sdfootnote12anc" HREF="#sdfootnote12sym"><SUP>12</SUP></A>
+has been maintained by a single individual in Germany since
+approximately 2003.</H2>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+Little is known as to its history, since there are no mailing lists,
+forums or similar which would enable the formulation of some
+conclusions.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+The author is not averse to coordinating or working with Gpg4win, but
+in the meantime GnuPG Pack Basics will continue to exist.</P>
+<H2 CLASS="western">5.4.2  User acceptance</H2>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+Not much is known as to how many users have this installation packet.
+From time to time users appear on the mailing lists of GnuPP or
+GnuPT.</P>
+<H2 CLASS="western">5.4.3  Problems</H2>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+Similar to GnuPT there is a risk that it would be difficult for
+someone to continue the project if the project manager loses interest
+or is prevented from continuing his work (e.g. through an accident).
+Furthermore, user guidance, documentation and discussion forums are
+only in German. GnuPT is not an official GNU project.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+In addition, there is no project-specific infrastructure in which
+users and potential developers could exchange ideas.The source code
+of the installation packet is also not made available. As a result
+the installer itself is not considered Free Software. Hence the
+project manager is the only person who can easily compile updates.</P>
+<H2 CLASS="western" STYLE="page-break-before: always">6  Gpg4win
+successes to date</H2>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+<SPAN STYLE="background: transparent">At the time of writing, the
+current version of Gpg4win was 1.0.2 (2006-05-30).</SPAN></P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+The following has been achieved on the technical page of the actual
+installation packet:</P>
+<UL>
+	<LI><P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
+	Updates of software components GnuPG, WinPT and GPA. In particular,
+	the current versions of GPA (0.7) were again made suitable for use
+	in Windows. After version 0.5 (included in GnuPP 1.1), GPA was only
+	being tested on GNU/Linux.</P>
+	<LI><P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
+	Integration of new modules: GPGol (Outlook Plugin), GPGee (Explorer
+	Plugin) and Sylpheed Claws (complete e-mail program including
+	plug-in for GnuPG). Particularly Sylpheed Claws was again made
+	suitable for use with Windows. GPGol was also significantly expanded
+	and improved.</P>
+	<LI><P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
+	Updates and extensions to handbooks &quot;Novices&quot; and
+	&quot;Experts&quot;. Both handbooks are available as both PDF as
+	well as on-line versions.</P>
+	<LI><P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
+	New installer technology (NSIS) with extensive automation.</P>
+</UL>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.39cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+Furthermore several measures were instituted which support a
+sustained and independent further development:</P>
+<UL>
+	<LI VALUE=1><P ALIGN=JUSTIFY STYLE="margin-top: 0.39cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
+	The mechanism for the assembly of installation packets is now
+	transparent, documented and completely Free Software. The packet
+	must be &ldquo;<SPAN STYLE="background: transparent">cross&rdquo;-</SPAN>built
+	on a GNU/Linux system. This has advantages regarding the automation
+	and integration of programs with GNU/Linux origins (GnuPG, GPA,
+	Sylpheed Claws), but also has the disadvantage that a pure Windows
+	developer cannot easily create an installation packet by himself.</P>
+	<LI><P ALIGN=JUSTIFY STYLE="margin-top: 0.39cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
+	A new home page summarises the most important information for
+	Gpg4win. It is also completely bilingual (English and German).</P>
+	<LI><P ALIGN=JUSTIFY STYLE="margin-top: 0.39cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
+	A technical infrastructure with the usual standard services is
+	available to the community of users and developers. It includes bug
+	tracker for error messages, mailing lists for discussions for each
+	users and developers, web forums for different discussion topics, as
+	well as a source code administration system for developers. All this
+	is implemented on the basis of a GForge platform which also allows
+	interested users and contributors both written or administrative
+	access to the individual components of the technical infrastructure.
+	All of these structures are already heavily used by users.</P>
+</UL>
+<H2 CLASS="western" STYLE="page-break-before: always">7  Possible
+courses of action</H2>
+<H2 CLASS="western">7.1  Basic difficulties</H2>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+The current participant structure for Gpg4win, GnuPP, GnuPT and GnuPG
+Basics does not correspond with the form that is needed for a
+successful Free Software project (see Figure 1, pg. 6).</P>
+
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
+<P STYLE="margin-top: 0.21cm">
+<IMG SRC="pix/ShortStudy-Sustainable-FS-example-Gpg4win-20071005_html_13cf2deb.png"
+NAME="Grafik1" WIDTH=700px ALIGN=LEFT BORDER=0><BR CLEAR=LEFT>
+   <I>Figure 2: Current make-up of participants for Gpg4win: While there is a
+	broad basis of users, there are no levels of power users,
+	contributors and developers. There is a team of core developers,
+	which in turn does not have an appointed development coordinator.</I>
+</P></P>
+
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
+The current Gpg4win participant structure is missing the groups of
+power users to developers, as illustrated by . In addition, there is
+no project coordinator in charge when the commissioned project for
+the development of Gpg4win has ended.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
+In comparison, GnuPP and WinPT are also missing its core developers,
+since development has been suspended.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+For GnuPT and GnuPG Basics the individual carrying out the
+coordinator function is identical with the levels for core developer
+and developer, hence a very thin layer.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+One difficulty for the qualification process from user to power user
+etc. certainly is the fact that it concerns the Microsoft Windows
+platform. As a result, compared to GNU/Linux there are typically less
+qualified users or fewer users who want to be qualified. The active
+participation in a project is a process that users of Free Software
+are very familiar with. GNU/Linux consists of Free Software. One
+could also say that GNU/Linux was predisposed to include users in the
+further development through motivation and qualification 
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+Added to that is that software development for Microsoft Windows is
+technically more demanding since most components are proprietary,
+unlike Free Software where they can be easily analysed and corrected
+where required. Within the framework of Gpg4win, GPGol (Outlook
+plug-in) is a good example for this situation &ndash; because of
+insufficient documentation and programming errors in Outlook a large
+part of time for labour was expended into so-called reverse
+engineering and the preparation of so-called workarounds, instead of
+designing functionality. Another difference is the availability of
+development tools - developers under Windows often have a proprietary
+tool kit which is also an obstacle if another developer wants to
+continue work at a certain spot. In the meantime, the resulting
+problem has moved Microsoft to remove some of the development tools
+from commercial distribution. However, despite their free
+availability the tools remain proprietary and are thus not available
+in the source code, among others.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+Since Gpg4win is security software, which in part requires knowledge
+of fairly sophisticated concepts, the circle of potential
+contributors is therefore limited. Alone the writing of good
+documentation material usually requires in-depth security knowledge.
+Also, in order to ensure consistent trust in the software, a
+corresponding quality management process is meaningful. This is not
+usually a fun task for most volunteers.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+Finally, one difference between GNU/Linux and Windows is that
+GNU/Linux distributions (Debian, SUSE, Fedora, etc.) integrate useful
+and good-quality products as fixed components. This is not the case
+for Windows, where products must be separately installed. Hence,
+while practically every GNU/Linux system comes pre-installed with
+GnuPG, software such as Gpg4win must be separately installed on each
+Windows computer.</P>
+<H2 CLASS="western">7.2  Tasks and/or required activities</H2>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+Gpg4win is a meta project. In this way it is different from many
+other projects which are each dedicated to a specific software
+implementation.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+Gpg4win integrated different products from other projects. The main
+result is an installation packet for Windows operating systems which
+is made available as a download. Besides the automated routine for
+the creation of installation packets, the handbooks &quot;Gpg4win for
+Novices&quot; and &quot;Gpg4win for Experts&quot; are also considered
+'real', proper parts of the project.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+It is possible to identify five tasks which must be carried out in
+the long-term on a continuing basis:</P>
+<P ALIGN=JUSTIFY STYLE="margin-left: 1.06cm; text-indent: -0.53cm; margin-top: 0.09cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+1.	<B>Updating of the installer</B></P>
+<P ALIGN=JUSTIFY STYLE="margin-left: 1.06cm; margin-top: 0.09cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+This requires certain technical knowledge. Training can be further
+facilitated with a good tutorial, which should consist of examples
+which illustrate what has been done to update one or other
+components. It should also take into account some 'extreme cases',
+e.g. modification of paths and environmental variables.</P>
+<P ALIGN=JUSTIFY STYLE="margin-left: 1.06cm; margin-top: 0.09cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+Another component of this task area is the processing of received
+error reports which are relevant to Gpg4win Installer. This may also
+include the addition of smaller new features.</P>
+<P ALIGN=JUSTIFY STYLE="margin-left: 1.06cm; text-indent: -0.53cm; margin-top: 0.09cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+2.	<B>Updating of handbooks</B></P>
+<P ALIGN=JUSTIFY STYLE="margin-left: 1.06cm; margin-top: 0.09cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+Through the update of the installer or individual components,
+dialogues and processes may also change. They must be worked into the
+handbooks.</P>
+<P ALIGN=JUSTIFY STYLE="margin-left: 1.06cm; text-indent: -0.53cm; margin-top: 0.09cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+3.	<B>Communication and public relations activities</B></P>
+<P ALIGN=JUSTIFY STYLE="margin-left: 1.06cm; margin-top: 0.09cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+Communication includes the maintenance of the website as well as
+announcements for significant updates. Public relations activities
+include advertising measures for attracting new users and additional
+contributors.</P>
+<P ALIGN=JUSTIFY STYLE="margin-left: 1.06cm; text-indent: -0.53cm; margin-top: 0.09cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+4.	<B>User support</B></P>
+<P ALIGN=JUSTIFY STYLE="margin-left: 1.06cm; margin-top: 0.09cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+User support includes responding on forums and mailing lists and, in
+the case of error reports, making assessments of whether they are
+relevant to Gpg4win or one of the components. In the latter case the
+error report must be entered in the respective project.</P>
+<P ALIGN=JUSTIFY STYLE="margin-left: 1.06cm; text-indent: -0.53cm; margin-top: 0.09cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+5.	<B>Technical administration</B></P>
+<P ALIGN=JUSTIFY STYLE="margin-left: 1.06cm; margin-top: 0.09cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+The main task here is the servicing of the technical infrastructure.
+Typical tasks include moderating e-mails that have been 'stuck' in
+the mailing lists and more general administrative duties connected
+with the development platform &quot;Gforge&quot; used by Gpg4win.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.39cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
+The task of coordinating and directing the entire project is done
+jointly by the active parties in these five areas. Added to that
+would be any extra efforts/costs required as a result of fundamental
+changes to the target platform or the distributed software products. 
+</P>
+<H2 CLASS="western">7.3  Estimate of costs for required activities</H2>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+The following estimates are the result of basic considerations and
+experience related to the development of Gpg4win up to version 1.0.2.</P>
+<P ALIGN=JUSTIFY STYLE="margin-left: 1.06cm; text-indent: -0.53cm; margin-top: 0.09cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+1.	<B>Updating of the installer:</B> approx. 12 hours per month.</P>
+<P ALIGN=JUSTIFY STYLE="margin-left: 1.06cm; margin-top: 0.09cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+This number is based on the following scenario - a single update
+usually takes 4 hours plus 2 hour testing. In general, it is expected
+that there is one update every two weeks.</P>
+<P ALIGN=JUSTIFY STYLE="margin-left: 1.06cm; text-indent: -0.53cm; margin-top: 0.09cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+2.	<B>Updating of handbooks: </B>irregular, as required.</P>
+<P ALIGN=JUSTIFY STYLE="margin-left: 1.06cm; margin-top: 0.09cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+In principle, changes to the handbooks would be fairly rare and only
+be done if significant changes to the components have been made or
+new components are introduced.</P>
+<P ALIGN=JUSTIFY STYLE="margin-left: 1.06cm; margin-top: 0.09cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+One can assume that an additional 2 to 3 additional components will
+be incorporated in the near future. Fundamental changes to existing
+components are not conceivable at this time.</P>
+<P ALIGN=JUSTIFY STYLE="margin-left: 1.06cm; margin-top: 0.09cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+Smaller changes to the installer itself can be expected in the near
+future and should be taken into account accordingly for the novice
+handbook.</P>
+<P ALIGN=JUSTIFY STYLE="margin-left: 1.06cm; text-indent: -0.53cm; margin-top: 0.09cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+3.	<B>Communications:</B> approx. 8 hours per month, on average.</P>
+<P ALIGN=JUSTIFY STYLE="margin-left: 1.06cm; text-indent: -0.53cm; margin-top: 0.09cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+4.	<B>User support:</B> approx. 8 hours per month, on average.</P>
+<P ALIGN=JUSTIFY STYLE="margin-left: 1.06cm; text-indent: -0.53cm; margin-top: 0.09cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+5.	<B>Technical administration:</B> approx. 2 hours per month, on
+average.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.39cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+The efforts required for the different tasks will increase in line
+with a growing user community.</P>
+<H2 CLASS="western">7.4  User community</H2>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+Gpg4win users can be roughly divided into three groups:
+Agencies/organisations, businesses and private individuals. This base
+can provide a pool of potential participants or a source of
+financing.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+Private users as well as individual users from companies and agencies
+will form the largest group, at least in the first years. To date,
+this group is also the largest player in GnuPP and GnuPT.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+For the systematic use of Gpg4win in companies and agencies only
+those versions for which standardised support services can be
+purchased are of interest. Where applicable, there may also be
+stronger interest in the direction of an installer which supports
+certain methods for software distribution.</P>
+<H2 CLASS="western">7.5 Commercial stakeholders</H2>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+Often it is the commercial interest in a Free Software that is the
+key to sustained further development. However, short-term economic
+individual interests should not become the main influencing factor,
+as this type of commercialisation would be damaging. Above all, the
+four freedoms, more precisely the licensing as Free Software, must be
+preserved. This still leaves room for profit and occupation - in
+fact, both of these are desirable. A level of professionalism has
+advantages, especially for the required tedious tasks and consistent
+quality.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-after: auto">
+Usually this can only be achieved with a balanced participant
+structure, not the other way around.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+The objective of commercial stakeholders is a more sustained linking
+of main developers to the project, as developers may be able to earn
+a part of their income by undertaking activities for the project.
+They are not subject to other obligations which could potentially
+interrupt or end participation fairly quickly. This point is
+particularly important in the case of Gpg4win, since the described
+difficulties (compare section 7.1) likely lead to a smaller number of
+volunteers than is the case for other Free Software products.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+It is recommended that a commercial stakeholder model is pursued for
+Gpg4win. There are different forms of support services which
+represent a meaningful business model. Anyone working with Gpg4win
+who is in part dependent on the flawless functioning of the software,
+has a strong interest in maintaining the continuity and quality of
+the software, as well as in having available contact persons with
+in-depth technical knowledge and quick response times. At the same
+time, a self-sustaining business is only created in steps. 
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
+<BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
+A suggestion:</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+Gpg4win already possesses a considerable number of users and has
+therefore achieved a certain level of visibility. This creates the
+basis for contacting sponsors/stakeholders from within the user
+community. Where required, these sponsors may also be requested to
+provide band width, financing or attend exhibitions or meetings.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+It is also important to establish the value of the software for the
+users on a more general level, because it has a direct relationship
+to the willingness to pay. Many Free Software projects already enable
+small payments, called 'donations'. This presents a large long-term
+potential<A CLASS="sdfootnoteanc" NAME="sdfootnote13anc" HREF="#sdfootnote13sym"><SUP>13</SUP></A>.
+A dialogue with sponsors and the number of donations provides
+valuable clues as to what has been solved particularly well in
+Gpg4win or where this is still room for improvement. The suggestions
+are valuable because there is a difference between the comment &quot;I
+would like to see function X in Gpg4win expanded&quot; and a donation
+of 100 Euro with the comment &quot;I found function Y very helpful,
+it would be nice if it could be expanded&quot;. The first could be a
+quick off-the-cuff comment, whereas the latter is generally well
+thought out.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+What to do with the money? Smaller amounts, hence amounts under EUR
+10,000 annually, should be used to bring in additional individuals.
+This means qualifying and motivating existing users or power users
+(public relations work and marketing, compare section 7.6). A direct,
+commissioned payment for development services will likely only be
+meaningful with larger amounts. In this case, measures for
+safeguarding a sustained further development should have priority.
+Furthermore the commissioning of further development of the basis
+components are also considered significant, as Gpg4win continues to
+be a meta project and to a certain extent represents the interface
+between Windows users and the actual software projects, hence the
+dissemination of information to users is not only fair on principle
+alone. It is also meaningful for the success of Gpg4win, because this
+meta project also benefits from the explicit goodwill of developers
+of the software module which forms its basis.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+Next steps may include the establishment of business models by the
+respective companies, such as those for maintenance, support
+services, training or continuing development.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+The safeguarding of the basic continuity may be provided by just one
+company which expresses sufficient interest, whether for utility or
+marketing value. Of course continuity would also be at risk in the
+case of withdrawal by this one supporter. Hence a further objective
+should be to find more than one supporter, and to ensure that these
+supporters are not dependent on the same source (e.g. a certain
+customer).</P>
+<H2 CLASS="western">7.6  What can a one-time monetary contribution
+achieve? 
+</H2>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+This section summarises ideas which promote the objective of a
+sustained independent further development, if a one-time monetary
+amount was available.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
+<BR>
+</P>
+<UL>
+	<LI><P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
+	<B>Improving the qualification process</B></P>
+	<UL>
+		<LI><P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
+		<I>Creation of an incentive program for the motivation and
+		qualification of users into power users, from power users to
+		contributors etc.</I></P>
+		<P STYLE="margin-bottom: 0cm">A financial incentive system does not
+		seem feasible or meaningful in this context. It will likely work
+		better on the basis of individual recognition.</P>
+		<P STYLE="margin-bottom: 0cm">One idea is the distribution,
+		assignment or loan of items that at the same represent a sense or
+		recognition of belonging. In the area of Free Software projects
+		this typically includes things such as T-shirts, coffee mugs or
+		lapel pins.</P>
+		<P STYLE="margin-bottom: 0cm">The following examples demonstrates
+		the concept of an incentive system based on the use of pins:</P>
+		<P STYLE="margin-bottom: 0cm">Bronze pin: recognition of extensive
+		support by the user in forums or valuable error reports (i.e. for
+		power users).</P>
+		<P STYLE="margin-bottom: 0cm">Silver pin: recognition of work for
+		web page maintenance, testing of error reports or work regarding
+		external communications (i.e. contributors).</P>
+		<P STYLE="margin-bottom: 0cm">Gold pin: recognition of the work in
+		actively fixing bugs, preparation of updated Gpg4win installers or
+		the integration of a new module (i.e. developers).</P>
+		<P STYLE="margin-bottom: 0cm">Platinum pin: recognition for the
+		core development on the actual components (i.e. core developers).</P>
+		<P STYLE="margin-bottom: 0cm">Blue pin: recognition for assuming
+		the role of project coordinator as of a certain number of months.</P>
+		<P STYLE="margin-bottom: 0cm">Green pin: recognition for financial
+		sponsorship as of a certain amount.</P>
+		<P STYLE="margin-bottom: 0cm">The awarding of pins would be
+		accompanied with a &quot;Hall of Fame&quot; which lists and thus
+		honours the recipients of the respective pins.</P>
+		<LI><P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
+		<I>Automations</I></P>
+		<P STYLE="margin-bottom: 0cm">The goal of automation is to allow
+		someone to focus on the interesting items instead of having to
+		manage or understand tedious material.</P>
+		<P STYLE="margin-bottom: 0cm">Possible further automation for
+		Gpg4win can be found in the area of installer assembly, preparation
+		of innovations and announcements, plausibility testing, testing for
+		more recent versions for module integrated in Gpg4win or the
+		publication procedure.</P>
+		<P STYLE="margin-bottom: 0cm">The first step prior to any
+		automation is the comprehensive documentation of the respective
+		processes.</P>
+		<LI><P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
+		<I>Documentation</I></P>
+		<P STYLE="margin-bottom: 0cm">Good documentation of the different
+		tasks, backgrounds and contexts will do more than facilitate the
+		qualification process. It can also support the motivation process,
+		since the documentation of tasks clarifies early on whether someone
+		feels up to the task. Many times this is also about showing that
+		tasks are significantly easier than one might think.</P>
+		<LI><P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
+		<I>Meetings</I></P>
+		<P STYLE="margin-bottom: 0cm">Meetings in person increase the
+		chances of forming a harmonised group and achieving its
+		qualification. Participation is open to power users and above. A
+		meeting may also be used for recognition purposes and sometimes for
+		the implementation of certain technical goals. A current example of
+		a successful, paid meeting with a technical objective is the Python
+		&quot;Sprint&quot;<A CLASS="sdfootnoteanc" NAME="sdfootnote14anc" HREF="#sdfootnote14sym"><SUP>14</SUP></A>
+		Other examples of motivating meetings are KDE Pim meetings which
+		have been held in Osnabr&uuml;ck every January for the last couple
+		of years.</P>
+		<P STYLE="margin-bottom: 0cm"></P>
+	</UL>
+	<LI><P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
+	<B>Increasing attractiveness for users:</B></P>
+	<UL>
+		<LI><P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
+		<I>Integration of additional modules for increasing the
+		attractiveness for private users:</I></P>
+		<P STYLE="margin-bottom: 0cm">GPGoe (plug-in for Outlook Express).</P>
+		<LI><P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
+		<I>Integration of additional modules for increasing the
+		attractiveness for frequent user installation:</I></P>
+		<P STYLE="margin-bottom: 0cm">GPGRelay (encryption in background,
+		therefore independent from e-mail program used)</P>
+		<LI><P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
+		<I>Support of software distribution systems for increased
+		attractiveness for businesses and agencies:</I></P>
+		<P STYLE="margin-bottom: 0cm">The creation of so-called MSI packets
+		is in the foreground of this process.</P>
+	</UL>
+	<LI><P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
+	<B>Active search for sponsors and supporters</B></P>
+	<LI><P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
+	<B>International marketing in government environment in order to
+	create interest for a regular inspection of Gpg4win.</B></P>
+	<LI><P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
+	<B>Inserting Gpg4Win in conventional software sources for Windows in
+	order to increase numbers of users.</B></P>
+</UL>
+<H2 CLASS="western">8  Conclusions and recommendations</H2>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+The objective is the sustained, independent and self-reliant
+continued existence of Gpg4win so that updated versions may be
+published, questions are answered and the web page is kept up to
+date.</P>
+<UL>
+	<LI><P STYLE="margin-bottom: 0cm">The most important part objective
+	is the establishment of a balanced participant structure, shown in
+	Figure 1, pg.6 It is recommended that users are motivated and
+	qualified, and that a process promoting this purpose be created.</P>
+	<LI><P STYLE="margin-bottom: 0cm">The second most important part
+	objective is the attainment of commercial stakeholders. It is
+	recommended that preparations are made towards creating a sponsoring
+	concept and being able to accept small payments.</P>
+	<LI><P STYLE="margin-bottom: 0cm">The technical tasks (Section 7.2)
+	represent the basis for the measures described above. For cost
+	reasons, in the short term this is only possible with the currently
+	active and hence familiar group.</P>
+</UL>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
+The ideal scenario is the financing by one sponsor, which would
+secure the implementation of all three items. The main objective here
+is the simultaneous step-by-step withdrawal from financial
+sponsorship as soon as the intended structures are able to support
+themselves and are beginning to grow in a sustained manner.</P>
+<H2 CLASS="western">8.1  Qualification and integration</H2>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+In order to increase the motivation of users, developers and
+sponsors, we recommend an incentive concept, such as special pins as
+proof/recognition of helpful assistance (compare Section 7.6). This
+concept requires a decision-making process for the awarding
+procedures as well as an individual who will send out the pins.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
+<BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+Also helpful are meetings which allow power users and developers to
+meet in person and directly coordinate further tasks.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
+The qualification process requires the existence of already qualified
+individuals who support the process. Steps should be taken to ensure
+that these already qualified individuals are included in the process
+accordingly.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+The duration of the qualification process up to the establishment of
+a balanced participant structure may be between 6 to 24 months. 
+</P>
+<H2 CLASS="western">8.2  Commercial stakeholders</H2>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+The recommendation is to work towards an commercial stakeholder
+scenario.</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+One recommended measure is a search for sponsors. This approach for
+fund raising is at the same time an indicator or a form of vote as to
+what extent there can/should be a next step towards more enhanced
+service offerings. 
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+Another recommendation for Gpg4win is to set up an opportunity to
+make monetary donations using the home page, and to find an
+organisational method for the acceptance and distribution of the
+funds (see Section 7.5).</P>
+<P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
+The next steps should be decided based on feedback for the two
+measures.</P>
+<H2 CLASS="western" STYLE="page-break-before: always">Appendix A:
+Concrete recommendations for action</H2>
+<P>Do you like Gpg4win? Then support the project. It is easier than
+one might think, and even a little amount can accomplish a surprising
+amount. As with any Free Software you have the option of contributing
+time or money<A CLASS="sdfootnoteanc" NAME="sdfootnote15anc" HREF="#sdfootnote15sym"><SUP>15</SUP></A>.</P>
+<H2 CLASS="western">A.1 As a volunteer 
+</H2>
+<P>You can provide active support for Gpg4win, regardless of your
+strengths.</P>
+<UL>
+	<LI><P STYLE="margin-bottom: 0cm">Obtain the necessary knowledge and
+	become at first a power user and then a contributor. Participate in
+	forums or mailing lists. Even small suggestions are welcomed by
+	users of Gpg4win or one of the components. Just pick a tasks, tell
+	the mailing list about it and you are on your way.</P>
+	<LI><P STYLE="margin-bottom: 0cm">Tell us what you think. What are
+	the good points? Any weaknesses? Is there a problem, and if yes,
+	where can it be found? Is the new version better? Please do this
+	respectfully, since the recipients of the mails often times are also
+	volunteers.</P>
+	<LI><P STYLE="margin-bottom: 0cm">Approach other volunteers and
+	financial sponsors for support. For example, you can approach other
+	users. If you know of a business or agency which is already using
+	Gpg4win, it might be in the form of a reminder about doing something
+	for securing the software. Some agencies have already supported
+	development. Let your voice be heard in the political process &ndash;
+	praise the results to date and demand a continuation of support.</P>
+	<LI><P STYLE="margin-bottom: 0cm">Actively support the distribution
+	of Gpg4win. You can write to newspapers and magazines, requesting
+	that this topic be covered, or advise other software distributors
+	that Gpg4win is not part of their current offering. Talk or write
+	about Gpg4win. Encourage others to use the software.</P>
+</UL>
+<H2 CLASS="western">A.2 As a financial contributor</H2>
+<UL>
+	<LI><P STYLE="margin-bottom: 0cm">Contribute a small amount using
+	the payment option on the website, accompanied with a short
+	commentary stating any improvements you would be willing to donate
+	for again, and any features you especially like about Gpg4win. Even
+	amounts under 10 Euro can provide a means of support and motivation.</P>
+	<LI><P STYLE="margin-bottom: 0cm">For a medium-sized amount, contact
+	one of the project participants and pay against an invoice. You may
+	also be able to commission a specific undertaking, such as updates,
+	fixing of a problem or addition of a function. Please ensure that
+	each commissioned improvement benefits Gpg4win as a whole.</P>
+	<LI><P STYLE="margin-bottom: 0cm">As a business or agency you can
+	commission the three measures outlined in Section 8 and thus ensure
+	the sustained continuation of the project. You would then obtain
+	Gpg4win for your organisation on a continuing basis. One of the
+	<SPAN STYLE="text-decoration: none">'collateral' benefits of this
+	activity is the</SPAN><SPAN STYLE="text-decoration: none">
+	</SPAN><SPAN STYLE="text-decoration: none">improvement of security
+	in data transmissions as a whole.</SPAN></P>
+</UL>
+<DIV ID="sdfootnote1">
+	<P CLASS="sdfootnote"><A CLASS="sdfootnotesym" NAME="sdfootnote1sym" HREF="#sdfootnote1anc">1</A><A HREF="http://www.gpg4win.de/">http://www.gpg4win.de/</A></P>
+</DIV>
+<DIV ID="sdfootnote2">
+	<P CLASS="sdfootnote"><A CLASS="sdfootnotesym" NAME="sdfootnote2sym" HREF="#sdfootnote2anc">2</A><A HREF="http://www.gnupp.de/start.html">http://www.gnupp.de/start.html</A></P>
+</DIV>
+<DIV ID="sdfootnote3">
+	<P CLASS="sdfootnote"><A CLASS="sdfootnotesym" NAME="sdfootnote3sym" HREF="#sdfootnote3anc">3</A><A HREF="http://sourceforge.net/projects/winpt/">http://sourceforge.net/projects/winpt/</A></P>
+</DIV>
+<DIV ID="sdfootnote4">
+	<P CLASS="sdfootnote"><A CLASS="sdfootnotesym" NAME="sdfootnote4sym" HREF="#sdfootnote4anc">4</A>Karim
+	Lakhani, Bob Wolf, Jeff Bates and Chris DiBona, Hacker Survey v0.73,
+	24.6.2002, Boston Consulting Group <A HREF="http://www.osdn.com/bcg/">http://www.osdn.com/bcg/</A></P>
+</DIV>
+<DIV ID="sdfootnote5">
+	<P CLASS="sdfootnote"><A CLASS="sdfootnotesym" NAME="sdfootnote5sym" HREF="#sdfootnote5anc">5</A>Bernhard
+	E. Reiter, Wandel der IT: Mehr als 20 Jahre Freie Software; in HMD,
+	Issue 238, August 2004, pgs. 83-91
+	<A HREF="http://intevation.de/~bernhard/publications/200408-hmd/200408-wandel_der_it_20j_fs.html">http://intevation.de/~bernhard/publications/200408-hmd/200408-wandel_der_it_20j_fs.html</A></P>
+</DIV>
+<DIV ID="sdfootnote6">
+	<P CLASS="sdfootnote"><A CLASS="sdfootnotesym" NAME="sdfootnote6sym" HREF="#sdfootnote6anc">6</A><A HREF="http://news.netcraft.com/">http://news.netcraft.com/</A></P>
+</DIV>
+<DIV ID="sdfootnote7">
+	<P CLASS="sdfootnote"><A CLASS="sdfootnotesym" NAME="sdfootnote7sym" HREF="#sdfootnote7anc">7</A><A HREF="http://www.apache.org/">http://www.apache.org/</A></P>
+</DIV>
+<DIV ID="sdfootnote8">
+	<P CLASS="sdfootnote"><A CLASS="sdfootnotesym" NAME="sdfootnote8sym" HREF="#sdfootnote8anc">8</A><A HREF="http://www.gnu.org/"><FONT SIZE=2>http://www.gnu.org/</FONT></A></P>
+</DIV>
+<DIV ID="sdfootnote9">
+	<P CLASS="sdfootnote"><A CLASS="sdfootnotesym" NAME="sdfootnote9sym" HREF="#sdfootnote9anc">9</A><A HREF="http://sourceforge.net/projects/winpt/">http://sourceforge.net/projects/winpt/</A></P>
+</DIV>
+<DIV ID="sdfootnote10">
+	<P CLASS="sdfootnote"><A CLASS="sdfootnotesym" NAME="sdfootnote10sym" HREF="#sdfootnote10anc">10</A><A HREF="http://www.winpt.org/">http://www.winpt.org/</A></P>
+</DIV>
+<DIV ID="sdfootnote11">
+	<P CLASS="sdfootnote"><A CLASS="sdfootnotesym" NAME="sdfootnote11sym" HREF="#sdfootnote11anc">11</A><A HREF="http://www.equipmente.de/">http://www.equipmente.de/</A></P>
+</DIV>
+<DIV ID="sdfootnote12">
+	<P CLASS="sdfootnote"><A CLASS="sdfootnotesym" NAME="sdfootnote12sym" HREF="#sdfootnote12anc">12</A><A HREF="http://people.freenet.de/rose-indorf/">http://people.freenet.de/rose-indorf/</A></P>
+</DIV>
+<DIV ID="sdfootnote13">
+	<P CLASS="sdfootnote"><A CLASS="sdfootnotesym" NAME="sdfootnote13sym" HREF="#sdfootnote13anc">13</A>On
+	this subject, see also Reiter 2002: Arbeitsteilung im Massenmarkt
+	(Division of Labour in the Mass Market), Linux-Magazin 06/2002,
+	<A HREF="http://www.linux-magazin.de/Artikel/ausgabe/2002/06/geld/geld.html">http://www.linux-magazin.de/Artikel/ausgabe/2002/06/geld/geld.html</A></P>
+</DIV>
+<DIV ID="sdfootnote14">
+	<P CLASS="sdfootnote"><A CLASS="sdfootnotesym" NAME="sdfootnote14sym" HREF="#sdfootnote14anc">14</A>see
+	<A HREF="http://lwn.net/Articles/185399/">http://lwn.net/Articles/185399/</A></P>
+</DIV>
+<DIV ID="sdfootnote15">
+	<P CLASS="sdfootnote" STYLE="margin-left: 0cm; text-indent: 0cm"><A CLASS="sdfootnotesym" NAME="sdfootnote15sym" HREF="#sdfootnote15anc">15</A>General	suggestions can often be found in Wiki
+	<A HREF="http://www.deshalbfrei.org/moinmoin/freiheit_helfen">http://www.deshalbfrei.org/moinmoin/freiheit_helfen</A>.</P>
+</DIV>
+<DIV TYPE=FOOTER>
+	<P ALIGN=CENTER STYLE="margin-top: 0.5cm; margin-bottom: 0cm">- <SDFIELD TYPE=PAGE SUBTYPE=RANDOM FORMAT=PAGE>2</SDFIELD>
+	/ <SDFIELD TYPE=DOCSTAT SUBTYPE=PAGE FORMAT=PAGE>23</SDFIELD> -</P>
+</DIV>
+

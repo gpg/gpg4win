@@ -1,0 +1,25 @@
+m4_dnl -*-html-*-
+m4_include(`template.m4')
+m4_dnl $Id$
+
+m4_define(`DE')
+m4_define(`EN_FILE', `candidates.html')
+PAGE_START
+
+<h1>Weitere Kandidaten zur Integration in Gpg4win</h1>
+
+<p>
+Folgende Software-Module könnten Gpg4win sinnvoll erweitern.
+Wer Interesse hat, kann die Integration selbst durchführen,
+dafür gibt es einige <a href="build-installer-de.html">Hilfestellungen
+zur Erweiterung von Gpg4win</a>.
+</p>
+
+<h2>GPGrelay - Verschlüsselung im Hintergrund für alle E-Mail Programme</h2>
+
+<p>
+<a href="http://sites.inka.de/tesla/gpgrelay.html">GPGrelay</a> ist
+ein Verschlüsselungsprogramm welches im Hintergrund E-Mails
+verschlüsselt, so dass kein Plugin für das E-Mail Programm notwendig
+ist.
+</p>

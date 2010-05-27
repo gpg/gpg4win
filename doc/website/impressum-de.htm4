@@ -1,0 +1,43 @@
+m4_dnl -*-html-*-
+m4_include(`template.m4')
+m4_dnl $Id$
+
+m4_define(`DE')
+m4_define(`EN_FILE', `impressum.html')
+PAGE_START
+
+<h1>Impressum</h1>
+
+<p>
+Die Web-Seiten von Gpg4win sowie die Projektseite werden von der Intevation GmbH
+bereitgestellt, der Download-Bereich ftp.gpg4win.org/gpg4win/ von der g10 Code GmbH.
+</p>
+
+<p>
+Die inhaltliche Gestaltung erfolgte und erfolgt durch die wechselnden
+aktiven Mitglieder des Gpg4win Projektes.
+</p>
+
+<p>
+<b>Intevation GmbH</b><br>
+Neuer Graben 17<br>
+49074 Osnabrück<br>
+Deutschland<br>
+<a href="http://www.intevation.de">www.intevation.de</a><br>
+Vertretungsberechtigt: Frank Koormann, Bernhard Reiter, Dr. Jan-Oliver Wagner<br>
+Registereintrag: HR B 18998, Amtsgericht Osnabrück<br>
+Umsatzsteuer-Identifikation: de 204 854 484<br>
+Telefon: 0541/335083-0<br>
+</p>
+
+<p>
+<b>g10 Code GmbH</b><br>
+Hüttenstr. 61<br>
+40699 Erkrath<br>
+Deutschland<br>
+<a href="http://www.g10code.com">www.g10code.com</a><br>
+Vertretungsberechtigt: Werner Koch<br>
+Registereintrag: HR B 14459, Amtsgericht Wuppertal<br>
+Umsatzsteuer-Identifikation: de 215605608<br>
+Telefon: 02104/173855<br>
+</p>

@@ -1,0 +1,132 @@
+m4_dnl -*-html-*-
+m4_include(`template.m4')
+m4_dnl $Id$
+
+m4_define(`EN')
+m4_define(`DE_FILE', `support-de.html')
+PAGE_START
+
+<h1>Professional Support for Gpg4win</h1>
+
+<p>
+The support available through <a href="community.html">mailing lists,
+web forums and bug tracker</a>
+is usually provided by volunteers.
+Due to the huge number of users, there is a good chance of
+receiving helpful answers.
+Naturally, timely and exhaustive answers can not be guaranteed.
+</p>
+
+<p>
+In case timely answers, quick software modification or general
+consulting for using Gpg4win (installation, configuration etc.) is
+needed, the German free software companies
+<a href="http://www.intevation.de">Intevation
+GmbH</a>, <a href="http://www.g10code.de">g10code GmbH</a> und 
+<a href="http://www.kdab.de">KDAB</a> jointly
+offer suitable professional support.
+The support contracts are tailored to the needs of the individual
+customer so that we do not show a price table here.
+</p>
+
+<p>
+Please contact us with the contact 
+<!--form below or-->
+via email to <a href="mailto:gpg4win-professional@intevation.de">gpg4win-professional@intevation.de</a>
+if you plan to buy professional support from the three companies named above.
+Please describe your needs (e.g. which of the Gpg4win
+applications you want support for, which crypto-workflows you have or
+want to establish), the number of users, your IT infrastructure (e.g.
+which Windows versions, terminal servers, virtual servers), which
+tasks you want to do yourself and what you expect from us.
+</p>
+
+<p>
+We will get back to you with cost estimates and, if necessary, questions to
+clarify what you need.
+</p>
+
+<!--
+<h2>Request offer</h2>
+
+<p>
+Fill out this request form to receive an individual offer.
+</p>
+
+<form action="support-de.html" method="get">
+
+<table cellpadding="10">
+<tr valign="top">
+
+  <td><b>Kind of support</b></td>
+  <td>
+    I am interested in ...
+    <p>
+        <input type="radio" name="product" value="support" 
+        checked>professional support for using <b>Gpg4win 2.0.0</b>.<br>
+        (You have, for instance, a problem with the configuration in your
+         company or you need support for your use of Gpg4win? 
+         Then we offer you our technical support.)
+    </p>
+    <p>
+        <input type="radio" name="product" value="development"
+        >further development of <b>Gpg4win 2.0.0</b>.<br>
+        (You miss an important feature in Gpg4win? You have
+        ideas for the further development of Gpg4win2? 
+        Then please contact us! We will make you an individual
+        offer.)
+    </p>
+    </td>
+</tr>
+<tr valign="top">
+  <td><b>Company / Organization</b></td>
+  <td><input name="company" type="text" size="50" maxlength="50"></td>
+</tr>
+<tr valign="top">
+  <td><b>Address</b></td>
+  <td>
+    <textarea name="address" cols="50" rows="4"></textarea>
+  </td>
+</tr>
+<tr valign="top">
+  <td><b>Contact person</b></td>
+  <td><input name="name" type="text" size="50" maxlength="50"></td>
+</tr>
+<tr valign="top">
+  <td><b>Email</b></td>
+  <td><input name="email" type="text" size="50" maxlength="50"></td>
+</tr>
+<tr valign="top">
+  <td><b>Telephone</b></td>
+  <td><input name="phone" type="text" size="50" maxlength="50"></td>
+</tr>
+<tr valign="top">
+  <td><b>Preferred contact method</b></td>
+  <td>
+    <input type="radio" name="preferred_contact" value="email" checked><b>Email</b>
+    <input type="radio" name="preferred_contact" value="postal"><b>By Post</b>
+    <input type="radio" name="preferred_contact" value="phone"><b>Telephone</b>
+  </td>
+</tr>
+<tr valign="top">
+  <td><b>Deductions</b></td>
+  <td>
+    <input type="checkbox" name="discount" value="public">Public/non-profit organization (administration, university, etc)<br>
+    <input type="checkbox" name="discount" value="naming">Naming as customer (public naming as customer permitted)<br>
+  </td>
+
+</tr>
+<tr valign="top">
+  <td><b>Comment</b></td>
+  <td>
+    <textarea name="comment" cols="50" rows="10"></textarea>
+  </td>
+</tr>
+</table>
+
+<p align="center">
+  <input type="submit" value="Send Request for Offer">
+</p>
+
+</form>
+-->

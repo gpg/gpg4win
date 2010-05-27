@@ -1,0 +1,121 @@
+m4_dnl -*-html-*-
+m4_include(`template.m4')
+m4_dnl $Id$
+
+m4_define(`EN')
+m4_define(`DE_FILE', `community-de.html')
+PAGE_START
+
+<h1>Gpg4win Community</h1>
+
+<p>Like any Free Software community Gpg4win needs people
+who <a href="contribute.html">get involved</a> with the initiative.
+One step is e.g. to <a href="reporting-bugs-de.html">reporting problems</a>.</p>
+
+<p>You can communicate with the Gpg4win community via 
+mailing lists, web forums and IRC:</p>
+
+<h2>Mailing lists</h2>
+
+<em>Note:</em>
+Please subscribe before you are sending an email to a list. Thereby
+you avoid that your message gets hold for moderation first.
+</p>
+
+<dl>
+  <dt><b>Gpg4win-announce</b></dt>
+  <dd>Announcements (English)<br>
+    <a
+href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-announce/">Subscribe</a>
+| <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/">Archive</a>
+  </dd>
+
+  <dt><b>Gpg4win-announce-de</b></dt>
+  <dd>Announcements (German)<br>
+    <a
+href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-announce-de/">Subscribe</a>
+| <a
+href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/">Archive</a>
+  </dd>
+
+  <dt><b>Gpg4win-users-en</b></dt>
+  <dd>User discussion (English)<br>
+    <a
+href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-users-en/">Subscribe</a>
+| <a
+href="http://lists.wald.intevation.org/pipermail/gpg4win-users-en/">Archive</a>
+  </dd>
+
+  <dt><b>Gpg4win-users-de</b></dt>
+  <dd>User discussion (German)<br>
+    <a
+href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-users-de/">Subscribe</a>
+| <a
+href="http://lists.wald.intevation.org/pipermail/gpg4win-users-de/">Archive</a>
+  </dd>
+
+
+  <dt><b>Gpg4win-devel</b></dt>
+  <dd>Developer discussion (English)<br>
+    <a
+href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-devel/">Subscribe</a>
+| <a
+href="http://lists.wald.intevation.org/pipermail/gpg4win-devel/">Archive</a>
+  </dd>
+
+  <dt><b>Gpg4win-commits</b></dt>
+  <dd>SVN-Commits for developers (English)<br>
+    <a
+href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-commits/">Subscribe</a>
+| <a
+href="http://lists.wald.intevation.org/pipermail/gpg4win-commits/">Archive</a>
+  </dd>
+ </dl>
+
+
+<h2>Web Forums</h2>
+
+<p>As an alternative to mailing lists you can use following Gpg4win web
+forums for your questions and discussions.<br>
+<em>Note:</em> 
+You have to <a
+href="https://wald.intevation.org/account/login.php">log in</a> before
+you can post a message.
+</p>
+
+<dl>
+ <dt><b>open-discussion</b></dt>
+  <dd>Forum for general discussion (English)<br>
+    <a
+href="http://wald.intevation.org/forum/forum.php?forum_id=20">Go to forum >></a>
+  </dd>
+
+  <dt><b>open-discussion-de</b></dt>
+  <dd>Forum for general discussion (German)<br>
+    <a
+href="http://wald.intevation.org/forum/forum.php?forum_id=83">Go to Forum >></a>
+  </dd>
+
+  <dt><b>help</b></dt>
+  <dd>Forum for problems and help (English)<br>
+    <a
+href="http://wald.intevation.org/forum/forum.php?forum_id=21">Go to Forum >></a>
+  </dd>
+
+  <dt><b>help-de</b></dt>
+  <dd>Forum for problems and help (German)<br>
+    <a
+href="http://wald.intevation.org/forum/forum.php?forum_id=84">Go to Forum >></a>
+  </dd>
+
+
+
+<h2>IRC</h2>
+
+<p>To contact Gpg4win users and developers in a chat you can use IRC:</p>
+
+<p>Network: <b>freenode</b><br>
+Channel: <b>#gpg4win</b></p>
+
+<p><a
+href="irc://irc.freenode.net/#gpg4win">irc://irc.freenode.net/#gpg4win</a></p>

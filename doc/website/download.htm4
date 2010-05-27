@@ -1,0 +1,116 @@
+m4_dnl -*-html-*-  vim:filetype=html:
+m4_include(`template.m4')
+m4_dnl $Id:$
+
+m4_define(`EN')
+m4_define(`DE_FILE', `download-de.html')
+
+PAGE_START
+<h1>Download</h1>
+
+
+<h2>Gpg4win VERSION</h2>
+
+<p>You can download the full version (including the German compendium
+and the English novice manual) of Gpg4win VERSION here:</p>
+
+<a href="DOWNLOAD_URL" class="dlbutton2">Gpg4win&nbsp;VERSION<br>
+<span class="version"><small>Size: DL_SIZE | Released: DL_DATE</small></span>
+</a>
+
+<ul>
+    <li><a href="http://ftp.gpg4win.org/gpg4win-VERSION.exe.sig"
+        >OpenPGP signatur</a> (for gpg4win-VERSION.exe)
+    <li><b>SHA1 checksum</b> (for gpg4win-VERSION.exe): <code>SHA1_EXE
+    gpg4win-VERSION.exe </code></li>
+
+<li><a href="change-history.html">Change History</a></li>
+
+<li>Sources and other Gpg4win-VERSION variants:
+    <ul>
+    <li><a href="LDOWNLOAD_URL">gpg4win-light-VERSION.exe</a>
+    (Full version <em>without</em> Kleopatra and manuals); 
+    <small>Size: LDL_SIZE</small></li>
+    <li><a
+        href="http://ftp.gpg4win.org/gpg4win-VERSION.tar.bz2">gpg4win-VERSION.tar.bz2</a>
+    (source code package); <small>Size: 5 MByte</small></li>
+    <li>All versions and OpenPGP signatures: <a
+        href="http://ftp.gpg4win.org">ftp.gpg4win.org</a>.</li>
+    </ul>
+</li>
+</ul>
+
+
+<h4>Installation</h4>
+
+<p>After downloading
+  please <a href="package-integrity.html">verify</a> the integrity of
+  your Gpg4win package.  Then double-click on the file you have downloaded and
+  follow the instructions on the screen (or look at the <a
+      href="documentation.html">documentation</a>).</p>
+  </p>
+  <p>Read the current <a
+      href="http://ftp.gpg4win.org/README-2.0.2.en.txt">README file</a>.
+
+<h2>Gpg4win Compendium COMPENDIUM_VERSION_DE (German!)</h2>
+
+You find the current PDF and HTML version of the Gpg4win Compendium here:
+<a href="DOWNLOAD_URL_COMPENDIUM_DE"
+    class="dlbutton2">Gpg4win-Kompendium COMPENDIUM_VERSION_DE (PDF)<br>
+<span class="version"><small>Size: DL_SIZE_COMPENDIUM_DE | 
+Released: COMPENDIUM_DATE_DE</small></span>
+</a>
+
+<a href="./doc/gpg4win-compendium-de.html"
+    class="dlbutton2">Gpg4win-Kompendium COMPENDIUM_VERSION_DE (HTML)<br>
+<span class="version"><small>Released: COMPENDIUM_DATE_DE</small></span>
+</a>
+
+<p>The compendium is currently availabe in <b>German only</b>!
+Read the <a href="documentation.html">documentation page</a> for
+ more information about available Gpg4win documentation.</p>
+
+
+<h2>All Downloads</h2>
+
+<p>Current and all previous Gpg4win installers as well as signatures and corresponding
+source code packages are available under:
+<a href="http://ftp.gpg4win.org">http://ftp.gpg4win.org</a>
+</p>
+
+<p>
+In the  <a href="change-history.html">change history</a>
+you will find information about the most relevant changes and which
+version of the products each of the releases contained.
+Also, you will find direct download link for the old releases.
+</p>
+
+All Beta releases (with OpenPGP-Signatures): 
+    <a href="http://ftp.gpg4win.org/Beta">ftp.gpg4win.org/Beta/</a>
+
+<p>
+Please note that old releases may still contain meanwhile fixed security issues.
+</p>
+
+<p>
+Gpg4win core source code package (as tar.bz2 archives)
+as well as the documentation (e.g. <em>Gpg4win Compendium</em> and
+<em>Gpg4win for Novices</em>) as separate PDF documents are available
+under:
+<a href="http://wald.intevation.org/frs/?group_id=11">http://wald.intevation.org/frs/?group_id=11</a>
+</p>
+
+
+<h2>Hints</h2>
+
+<p>
+We recommend to subscribe to the
+<a href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-announce"
+  >Gpg4win announcement mailing list</a>
+to be automatically informed about new releases and other
+important Gpg4win news.
+
+<p>
+Is downloading very slow? Try this mirror server:
+<a href="MIRROR_IE_URL">Gpg4win mirror server in Ireland</a> (run by
+<a href="http://ftp.heanet.ie/about/">HEAnet</a>)
