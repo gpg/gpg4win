@@ -6,6 +6,9 @@
 	website/versions.m4, website/template_header.m4:
 	Update to compendium-de version 3.0.0.
 
+	* website/template_header.m4: Change website title to compendium
+	subtitle.
+
 	
 2010-05-27  Emanuel Schuetze <emanuel@intevation.de>
 

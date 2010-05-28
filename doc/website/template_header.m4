@@ -4,8 +4,8 @@ m4_dnl DONT USE THIS FILE DIRECTLY
 m4_ifdef(`__TMPL_ROOT',,`m4_define(`__TMPL_ROOT',`')')
 
 m4_define(`__TITLE',m4_dnl
-I18N(`EN',`Email-Security using GnuPG for Windows')`'m4_dnl
-I18N(`DE',`Email-Sicherheit mit GnuPG für Windows'))
+I18N(`EN',`Secure E-Mail and File Encryption using GnuPG for Windows')`'m4_dnl
+I18N(`DE',`Sichere E-Mail- und Datei-Verschlüsselung mit GnuPG für Windows'))
 
 m4_ifdef(`__TMPL_PAGE_TITLE',,`m4_define(`__TMPL_PAGE_TITLE',`Gpg4win - '__TITLE)')
 
