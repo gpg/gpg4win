@@ -13,24 +13,20 @@ PAGE_START
 <h2>Gpg4win-Kompendium</h2>
 
 <p>Das "Gpg4win-Kompendium" ist die neue deutschsprachige
-Übersichtsdokumentation zu Gpg4win2. Es vereinigt auf knapp 180 Seiten
+Übersichtsdokumentation zu Gpg4win2. Es vereinigt auf knapp 190 Seiten
 die alten Handbücher "Einsteiger" und "Durchblicker".  Desweiteren
-wurden sämtliche Kapitel für Gpg4win Version 2.0 aktualisiert, also
+wurden sämtliche Kapitel für Gpg4win Version 2 aktualisiert, also
 unter anderem angepasst auf Kleopatra, GpgEX und PGP/MIME sowie
-ergänzt um S/MIME bzw.  X.509.</p>
+ergänzt um S/MIME bzw. X.509.</p>
 
-<p>Beachten Sie: Das aktuelle Gpg4win-Kompendium ist eine
-letzte Vorabfassung (RC1) für die im Mail 2010 erscheinende
-finale Version 3.0.0 des Kompendiums. Kleinere Korrekturen können bis dahin
-noch vorgenommen werden.</p>
-
-<p>Anschließend erfolgt die englische Übersetzung. Übersetzungen in
-weitere Sprachen sind willkommen! Bitte wenden Sie sich dazu an die
+<p>Die englische Übersetzung ist aktuell in Arbeit. Übersetzungen von 
+der deutschen Kompendium-Version in weitere Sprachen sind sehr willkommen! 
+Bitte wenden Sie sich dazu an die
 <a href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-devel">
 Gpg4win-Entwickler-Mailingliste</a> (Lesen sie auch <a
 href="localize-gpg4win.html">Gpg4win into your language</a>).</p>
 
-<p>Nach der Installation von Gpg4win ist das Kompendium (in
+<p>Nach der Installation des Softwarepaktes Gpg4win ist das Kompendium (in
 der PDF- und HTML-Fassung) über das Startmenü im Ordner
 <em>Gpg4win->Dokumentation</em> verfügbar.</p>
 

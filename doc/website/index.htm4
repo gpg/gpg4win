@@ -10,6 +10,14 @@ PAGE_START
 <p>
 <dl>
 
+<dt><b>+++ 2010-05-28: German Gpg4win-Kompendium 3.0.0 released +++</b></dt>
+<dd>This is the final version 3.0.0 of the German Gpg4win Compendium
+- a new overview documentation for Gpg4win2. The translation into
+  English is currently in progress.
+  See <a href="documentation.html">documentation page</a> for more
+details.
+</dd>
+
 <dt><b>+++ 2010-04-13: Gpg4win 2.0.2 released +++</b></dt>
 <dd>This is basically the same as the 2.0.2 release candidate
 2 - additionally with the current compendium 3.0.0 RC1. See the <a
@@ -17,24 +25,11 @@ href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2010-April/000
 for details.
 </dd>
 
-<dt><b>+++ 2010-04-01: German Gpg4win-Kompendium 3.0.0 RC1 released +++</b></dt>
-<dd>This is the last pre-release for the final version 3.0.0 of the
-German Gpg4win Kompendium - scheduled for april/may 2010. Afterwards
-the translation into English will start. </dd>
-
-<dt><b>+++ 2010-03-05: Gpg4win 2.0.2 RC2 released +++</b></dt>
-<dd>with a lot of improvements in Kleopatra and Pinentry. See the <a
-href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2010-March/000041.html">announcement</a>
-for details.</dd>
-
-<dt><b>+++ 2010-02-04: Gpg4win 2.0.2 RC1 released +++</b></dt>
-<dd>with a lot of improvements in Kleopatra, GpgOL and GnuPG.</dd>
-
 </dl>
 
 More news in <a href="newsarchive.html">news archive</a>.
 
-<h2>Gpg4win 2.0.x</h2>
+<h2>Gpg4win 2.x</h2>
 
 Gpg4win is an installer package for Windows (2000/XP/2003/Vista) with
 computer programs and handbooks for email and file encryption.  Both

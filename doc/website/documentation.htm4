@@ -13,20 +13,18 @@ PAGE_START
 <h2>Gpg4win Compendium</h2>
 
 <p>The "Gpg4win Compendium" is the new overview documentation for
-  Gpg4win2. This combines on about 180 pages the previous German
+  Gpg4win2. This combines on about 190 pages the previous German
   manuals "Einsteiger" and "Durchblicker".
   All chapters were reworked and extended to describe the new Gpg4win
-  Version 2.0. Among other things, this means adaption to Kleopatra,
+  Version 2. Among other things, this means adaption to Kleopatra,
   GpgEX and PGP/MIME and new texts for S/MIME and X.509.
 </p>
 
 <p>Note: The Gpg4win Compendium is currently availabe in <b>German
-only</b>. It is currently the last pre-release.
-The final version 3.0.0 of the German Compendium is scheduled for
-may 2010.</p>
+only</b>.</p>
 
-<p> Afterwards the translation into English will start.
-Translations into other language are very welcome!
+<p> The translation into English is currently in progress.
+Translations from German compendium into other language are very welcome!
 Please contact the
 <a href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-devel">
 Gpg4win developer mailing list</a> if you want to start with a new

@@ -1,3 +1,12 @@
+2010-05-28  Emanuel Schuetze <emanuel@intevation.de>
+
+	* website/index.htm4, website/index-de.htm4
+	website/documentation.htm4, website/documentation-de.htm4
+	website/newsarchive.htm4, website/newsarchive-de.htm4
+	website/versions.m4, website/template_header.m4:
+	Update to compendium-de version 3.0.0.
+
+	
 2010-05-27  Emanuel Schuetze <emanuel@intevation.de>
 
 	* manual/indexstyle.ist: Add makeindex style file.
