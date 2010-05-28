@@ -1,3 +1,10 @@
+2010-05-28  Emanuel Schuetze <emanuel@intevation.de>
+
+	* NEWS: Change compendium-de version
+
+	* configure.ac: Prepare 2.0.3 release. Change compendium-de
+	version and date.
+
 2010-05-27  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
 	* doc: Remove doc dir.
