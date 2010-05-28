@@ -1,3 +1,8 @@
+2010-05-28  Emanuel Schuetze <emanuel@intevation.de>
+
+	* README.es.txt, README.fr.txt, README.ru.txt, README.de.txt,
+	README.en.txt, README.ar.txt: Update for 2.0.3
+
 2010-05-27  Emanuel Schuetze <emanuel@intevation.de>
 
 	* manual/indexstyle.ist: Add makeindex style file.

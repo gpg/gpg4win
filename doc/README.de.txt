@@ -7,7 +7,7 @@
 
                   Deutsche README Datei für Gpg4win
                   =================================
-!BETA-WARNING!
+
 Dies ist Gpg4win, Version !VERSION!.
 
 Inhalt:
@@ -75,6 +75,30 @@ sich. Nachstehend die wichtigsten Änderungen:
 - Unterstützung folgender Plattformen:
   Betriebssystem: Windows 2000, XP (32/64), Vista (32/64)
   MS Outlook: 2003, 2007
+
+
+Kurzübersicht zu Änderungen gegenüber Version 2.0.2:
+----------------------------------------------------
+- Pinentry:
+  * Voreinstellung umgestellt: zurück von QT4 auf GTK 
+    (Grund: 2.0.2 hat Probleme mit pinentry-qt4;
+    siehe https://issues.kolab.org/issue4378)
+
+- GnuPG-Backend:
+  * "is-socket-patch" gegen gpgme 1.2.0 
+    (siehe https://issues.kolab.org/issue4302)
+
+- Gpg4win-Kompendium:
+  * Die finale 3.0.0 Version des Kompendiums ist integriert.
+
+- Die integrierten Gpg4win-Komponenten sind:
+    GnuPG:        2.0.14
+    Kleopatra:    2.0.14-svn1098530 (20100303)
+    GPA:          0.9.0
+    GpgOL:        1.1.1
+    GpgEX:        0.9.5
+    Claws-Mail:   3.7.4cvs1
+    Kompendium:   3.0.0
 
 
 Kurzübersicht zu Änderungen gegenüber Version 2.0.1:

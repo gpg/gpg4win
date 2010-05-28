@@ -6,7 +6,7 @@
 
                    English README file for Gpg4win
                    ===============================
-!BETA-WARNING!
+
 +++ You are welcome to translate this file into French!
 Please contact the Gpg4win developer mailing list for contributing
 and look at http://gpg4win.de/localize-gpg4win.html +++
@@ -73,6 +73,29 @@ of the most important ones:
 - Support of these platforms:
   Operating System: Windows 2000, XP (32/64), Vista (32/64)
   Outlook: 2003, 2007
+
+Short overview on changes compared to version 2.0.2:
+----------------------------------------------------
+- Pinentry:
+  * Change default: switch back from QT4 to GTK
+    (reason: 2.0.2 has a critical problem with pinentry-qt4; 
+    see https://issues.kolab.org/issue4378)
+
+- GnuPG-Backend:
+  * "is-socket-patch" agains gpgme 1.2.0 
+    (see https://issues.kolab.org/issue4302)
+
+- Gpg4win Compendium (German):
+  * Final version 3.0.0 added.
+
+- Included components are:
+    GnuPG:        2.0.14
+    Kleopatra:    2.0.14-svn1098530 (20100303)
+    GPA:          0.9.0
+    GpgOL:        1.1.1
+    GpgEX:        0.9.5
+    Claws-Mail:   3.7.4cvs1
+    Kompendium:   3.0.0
 
 Short overview on changes compared to version 2.0.1:
 ----------------------------------------------------
