@@ -156,14 +156,15 @@ web_png_files = blank.png next.png previous.png up.png \
 
 eps_files = $(png_files:.png=.eps)
 
-EXTRA_DIST = gpg4win-compendium-de.tex \
-				fdl.tex fdl-book.tex version.tex.in  \
-		  		$(eps_files) $(png_files) $(web_png_files) \
-				gpg4win-logo.eps gpg4win-logo.png \
-				# needed for Englisch novices manual:
-	     		novices.tex what-is-gpg4win.tex macros-en.tex \
-				# needed for (old) German manuals: \
-				# einsteiger.tex durchblicker.tex was-ist-gpg4win.tex macros.tex
+novices_extra_dist = novices.tex what-is-gpg4win.tex macros-en.tex 
+
+EXTRA_DIST = gpg4win-compendium-de.tex indexstyle.ist \
+	     fdl.tex fdl-book.tex version.tex.in  \
+	     $(eps_files) $(png_files) $(web_png_files) \
+	     gpg4win-logo.eps gpg4win-logo.png $(novices_extra_dist)
+
+# needed for (old) German manuals: \
+# einsteiger.tex durchblicker.tex was-ist-gpg4win.tex macros.tex
 
 CLEANFILES = $(eps_files) \
              *.dvi *.pdf *.pdf *.toc *.log *.aux *.out *.idx *.ilg *.ind\

@@ -1,3 +1,9 @@
+2010-05-29  Werner Koch  <wk@g10code.com>
+
+	* manual/indexstyle.ist: Add from trunk.
+	* manual/Makefile.am (EXTRA_DIST): Add it.
+	(novices_extra_dist): New.
+
 2010-05-28  Emanuel Schuetze <emanuel@intevation.de>
 
 	* README.es.txt, README.fr.txt, README.ru.txt, README.de.txt,
