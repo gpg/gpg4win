@@ -1,4 +1,8 @@
-2010-05-28  Emanuel Schuetze <emanuel@intevation.de>
+2010-05-29  Werner Koch  <wk@g10code.com>
+
+	* Release 2.0.3.
+
+2010-05-28  Emanuel Schuetze  <emanuel@intevation.de>
 
 	* NEWS: Change compendium-de version
 
@@ -7,11 +11,11 @@
 
 2010-05-27  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
-	* doc: Remove doc dir.
+	* doc/: Remove doc dir.
 
-	* doc: Add doc dir from trunk.
+	* doc/: Add doc dir from trunk.
 	
-  	* src/inst-pinentry.nsi: Set pinentry-gtk as default.
+	* src/inst-pinentry.nsi: Set pinentry-gtk as default.
 
 2010-04-16  Werner Koch  <wk@g10code.com>
 
