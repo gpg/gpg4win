@@ -79,7 +79,7 @@ copy-release: gpg4win-$(VERSION).tar.bz2 src/gpg4win-$(VERSION).exe
 	         src/gpg4win-light-$(VERSION).exe \
 	         src/gpg4win-src-$(VERSION).exe  $(RELEASEHOST)/ ;\
 	     for f in en de ; do \
-	       echo scp src/README.$$f.txt \
+	       scp src/README.$$f.txt \
 	             $(RELEASEHOST)/README-$(VERSION).$$f.txt; \
 	     done;\
 	fi
