@@ -10,6 +10,11 @@ PAGE_START
 <p>
 <dl>
 
+<dt><b>+++ 2010-05-29: Gpg4win 2.0.3 veröffentlicht +++</b></dt>
+<dd>Details in der <a
+href="http://ftp.gpg4win.org/README-2.0.3.de.txt">README</a>.
+</dd>
+
 <dt><b>+++ 2010-05-28: Gpg4win-Kompendium 3.0.0 ist veröffentlicht +++</b></dt>
 <dd>Diese vollständige überarbeitete, deutschprachige
 Übersichtsdokumentation zu Gpg4win2 ermöglicht Einsteigern und
@@ -18,16 +23,10 @@ Kryptografie mit Gpg4win. Das Kompendium ist verfügbar als <a
 href="documentation-de.html">PDF- und HTML-Fassung</a>.
 </dd>
 
-<dt><b>+++ 2010-04-13: Gpg4win 2.0.2 ist veröffentlicht +++</b></dt>
-<dd>Diese Version ist praktisch identisch zu dem Release Candidate
-2.0.2 RC2, bringt zusätzlich aber das Kompendium 3.0.0 RC1 mit.
-Detais in der <a
-href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2010-April/000007.html">Bekanntmachung</a>.
-</dd>
 
 </dl>
 
-Alle Neuigkeiten im <a href="newsarchive-de.html">Newsarchiv</a>.
+Ältere Neuigkeiten im <a href="newsarchive-de.html">Newsarchiv</a>.
 
 <h2>Gpg4win 2.x</h2>
 
