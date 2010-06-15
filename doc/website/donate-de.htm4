@@ -1,0 +1,50 @@
+m4_dnl -*-html-*-
+m4_include(`template.m4')
+m4_dnl $Id$
+
+m4_define(`DE')
+m4_define(`EN_FILE', `donate.html')
+PAGE_START
+
+<h1>Spenden</h1>
+
+<p><b>Unterstützen Sie Gpg4win!</b></p>
+
+Ihre Spende unterstützt die Pflege und Weiterentwicklung von Gpg4win
+sowie hilft uns die Freie Software Initiative Gpg4win voranzutreiben.
+Wir sind dankbar für jede finanzielle Unterstützung.
+
+<h2>Liste der Spender</h2>
+<p>Nachfolgend finden Sie eine Übersicht aller Spender, die bisher die
+Gpg4win-Initiative unterstützt haben und einer Veröffentlichung Ihrer
+Spende zugestimmt haben.</p>
+<p><b>Spenden Sie online und erscheinen Sie selbst in dieser Liste!</b>
+Nutzen Sie dafür die "Spenden"-Schaltfläche rechts auf dieser Seite.</p>
+
+<p>
+<ul>
+<li>Andrew Huang</li>     
+<li>Andy Fletcher</li> 
+<li>Armando Villani</li> 
+<li>Daniel Aleksandersen</li> 
+<li>Daniele Berti</li> 
+<li>Florian Töpfer</li> 
+<li>Gerd Schweinsberg</li>
+<li>Greg Robinson</li> 
+<li>Gunner Gewiß</li> 
+<li>Hendrik Jan Strijker</li> 
+<li>Hugh Glenister</li> 
+<li>Igor Sharov</li> 
+<li>Ingolf Petersohn</li> 
+<li>Johannes Egbert Münch</li> 
+<li>Mark Jennings</li> 
+<li>Markus Barkholz</li> 
+<li>Nelson Ingersoll</li> 
+<li>note.com LLC</li> 
+<li><a href="http://www.pcmasters.de/">PCMasters.de</a></li>
+<li>Peter Engel</li> 
+<li>Sebastian Morkisch</li> 
+<li>Tom Niderost</li> 
+<li>Wilford Isner III</li>
+</ul>
+</p>

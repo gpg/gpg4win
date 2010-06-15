@@ -38,7 +38,7 @@ m4_dnl DONT USE THIS FILE DIRECTLY
     <input type="hidden" name="on0" value="Veröffentlichung der Spende zugestimmt?">
     <input type="hidden" name="os0" value="Nein">
     <br/>
-    <input type="checkbox" name="os0" value="Ja" checked>Spende veröffentlichen
+    <input type="checkbox" name="os0" value="Ja" checked>Spende <a href="donate-de.html">hier</a> veröffentlichen
   </form>
 </div>
 </div>

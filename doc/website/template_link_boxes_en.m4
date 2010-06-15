@@ -39,7 +39,7 @@ m4_dnl DONT USE THIS FILE DIRECTLY
     <input type="hidden" name="on0" value="Allowed to publish of your donation?">
     <input type="hidden" name="os0" value="No">
     <br/>
-    <input type="checkbox" name="os0" value="Yes" checked>Publish my donation
+    <input type="checkbox" name="os0" value="Yes" checked>Publish my donation <a href="donate-de.html">here</a>
   </form>
 </div>
 </div>

@@ -1,3 +1,13 @@
+2010-06-15  Emanuel Schuetze <emanuel@intevation.de>
+
+	* website/template_link_boxes_de.m4, 
+	website/template_link_boxes_en.m4:
+	Add link to new donate page.
+	* website/index.htm4, website/index-de.htm4:
+	Add donate news.
+	* website/donate.htm4, website/donate-de.htm4:
+	Add new pages.
+
 2010-06-14  Emanuel Schuetze <emanuel@intevation.de>
 
 	* website/index.htm4, website/index-de.htm4,

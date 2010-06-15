@@ -1,0 +1,50 @@
+m4_dnl -*-html-*-
+m4_include(`template.m4')
+m4_dnl $Id$
+
+m4_define(`EN')
+m4_define(`DE_FILE', `donate-de.html')
+PAGE_START
+
+<h1>Donate</h1>
+
+<p><b>Please Support Gpg4win!</b></p>
+
+Your donation supports the maintenance and further development of Gpg4win
+and helps us to push the Free Software initiative Gpg4win.
+We are greatful for every financial aid.
+
+<h2>List of sponsors</h2>
+<p>The following list shows all sponsors who have supported 
+the Gpg4win initiative and accepted to publish their donation.</p>
+
+<p><b>Make your donation now and you will appear in this list!</b>
+Please click on the "Donate" button (on the right).</p>
+
+<p>
+<ul>
+<li>Andrew Huang</li>     
+<li>Andy Fletcher</li> 
+<li>Armando Villani</li> 
+<li>Daniel Aleksandersen</li> 
+<li>Daniele Berti</li> 
+<li>Florian Töpfer</li> 
+<li>Gerd Schweinsberg</li>
+<li>Greg Robinson</li> 
+<li>Gunner Gewiß</li> 
+<li>Hendrik Jan Strijker</li> 
+<li>Hugh Glenister</li> 
+<li>Igor Sharov</li> 
+<li>Ingolf Petersohn</li> 
+<li>Johannes Egbert Münch</li> 
+<li>Mark Jennings</li> 
+<li>Markus Barkholz</li> 
+<li>Nelson Ingersoll</li> 
+<li>note.com LLC</li> 
+<li><a href="http://www.pcmasters.de/">PCMasters.de</a></li>
+<li>Peter Engel</li> 
+<li>Sebastian Morkisch</li> 
+<li>Tom Niderost</li> 
+<li>Wilford Isner III</li>
+</ul>
+</p>
