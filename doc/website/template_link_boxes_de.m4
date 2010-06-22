@@ -29,6 +29,7 @@ m4_dnl DONT USE THIS FILE DIRECTLY
     <input type="hidden" name="business" value="paypal@intevation.de">
     <input type="hidden" name="undefined_quantity" value="1">
     <input type="hidden" name="item_name" value="Gpg4win">
+    <input type="hidden" name="item_number" value="1000">
     <input type="hidden" name="no_shipping" value="1">
     <input type="hidden" name="cn" value="Kommentar an das Gpg4win-Entwicklerteam (Lob/Kritik)">
     <input type="hidden" name="currency_code" value="EUR">
