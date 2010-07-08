@@ -38,7 +38,6 @@ EXTRA_DIST = autogen.sh README.SVN ONEWS \
 	patches/gpgme-1.2.0/03-w32-socket.patch \
         patches/gpgme-1.2.0/04-check-agent.patch \
         patches/gpgme-1.2.0/05-is-socket.patch \
-	patches/gpgex/01-no-checksums.patch \
 	patches/gpgex-0.9.5/01-default-no-suffix.patch \
 	patches/gnupg2/01-version.patch.in \
 	patches/gnupg2-2.0.9/01-close-all-handle.patch \

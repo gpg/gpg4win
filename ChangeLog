@@ -1,3 +1,8 @@
+2010-07-08  Emanuel Schuetze <emanuel@intevation.de>
+
+	* Makefile.am (EXTRA_DIST): Remove patches/gpgex/01-no-checksums.patch.
+	* patches/gpgex/01-no-checksums.patch: Remove file.
+
 2010-05-21  Emanuel Schuetze <emanuel@intevation.de>
 
 	* configure.ac: Change compendium-de date.
