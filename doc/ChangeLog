@@ -1,3 +1,8 @@
+2010-07-09  Emanuel Schuetze <emanuel@intevation.de>
+
+	* website/localize-gpg4win.htm4: Add compendium section. Remove
+	old manual sections (einsteiger, durchblicker).
+
 2010-07-06  Emanuel Schuetze <emanuel@intevation.de>
 
 	* website/donate.htm4, website/donate-de.htm4: Add new sponsor.

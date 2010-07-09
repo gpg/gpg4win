@@ -163,22 +163,26 @@ disciplin comes to play a role.
 Simply click on the top-right language you prefer.
 </p>
 
-<h2>Handbook Gpg4win for Novices</h2>
+<h2>Gpg4win Compendium</h2>
 
 <h4>Available languages</h4>
 
 <p>
-This handbook is available in english (<a href="http://www.gpg4win.de/handbuecher/novices.html">
-Gpg4win for Novices</a>)
-and german language (<a href="http://www.gpg4win.de/handbuecher/einsteiger.html">
-Gpg4win für Einsteiger</a>).
+This documentation is available in german language (<a
+href="http://www.gpg4win.de/doc/gpg4win-compendium-de.html">Gpg4win-Kompendium</a>).
+
+The translation into English is currently in progress (as of: July
+2010). Translations from German compendium into other language are
+very welcome! Please contact the Gpg4win developer mailing list if you
+want to start with a new translation.
 </p>
 
 <h4>How to initialize a new language</h4>
 
 <p>
-Basically you need to pick the file
-<a href="http://wald.intevation.org/plugins/scmsvn/viewcvs.php/trunk/doc/manual/novices.tex?root=gpg4win&view=log">doc/manual/novices.tex</a> and
+Basically you need to pick the German file
+<a
+href="http://wald.intevation.org/plugins/scmsvn/viewcvs.php/trunk/doc/manual/gpg4win-compendium-de.tex?root=gpg4win&view=log">doc/manual/gpg4win-compendium-de.tex</a> and
 translate the text to you language. Next there are many screenshots
 to be done with the software running in your language.
 </p>
@@ -199,8 +203,8 @@ developer mailing list) before you start.
 <h4>How to update an available language</h4>
 
 <p>
-The english version is the master version. Whenever a change
-is made to the english files, the other languages
+The german version is the master version. Whenever a change
+is made to the german files, the other languages
 must be synchronised. A good notification system
 for translators is the Gpg4win commit mailing list
 (<a href="http://lists.wald.intevation.org/pipermail/gpg4win-commits/">Archive</a>
@@ -208,7 +212,7 @@ for translators is the Gpg4win commit mailing list
 </p>
 
 <p>
-Currently, there is no automatic detection routine to mark non-english parts
+Currently, there is no automatic detection routine to mark non-german parts
 that have not been updated although the corresponding master has.
 And it is virtually impossible for the Gpg4win developer team to check the
 synchronisation work nor the correctness of translations. So, thats where
@@ -222,18 +226,6 @@ Simply read the text (html, pdf or print-outs) in one of the available
 languages.
 </p>
 
-<h2>Handbook Gpg4win für Durchblicker</h2>
-
-<p>
-This advanced manual is currently only available in german.
-Thus, first a translation into english is necessary to
-gain an adequate master.
-</p>
-
-<p>
-It is highly recommended to coordinate with the Gpg4win developers (via the Gpg4win
-developer mailing list) before you start working out an english or any other version.
-</p>
 
 <h2>Claws Mail</h2>
 
