@@ -11,8 +11,12 @@ PAGE_START
 <h2>Similar Projects</h2>
 
 <p>
-<a href="http://home.arcor.de/rose-indorf/">GnuPG-Basics</a>
-</p>
+<dl>
+<dt><a href="http://www.gpg4kde.org">Gpg4kde</a></dt>
+<dd><br></dd>
+
+<dt><a href="http://home.arcor.de/rose-indorf/">GnuPG-Basics</a></dt>
+<dd><br></dd>
 
 <dt><a href="http://sites.inka.de/tesla/gpgrelay.html">GPGrelay</a></dt>
 <dd>is an encryption tool which encrypts e-mails in the

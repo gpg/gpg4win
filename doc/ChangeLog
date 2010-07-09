@@ -3,6 +3,8 @@
 	* website/localize-gpg4win.htm4: Add compendium section. Remove
 	old manual sections (einsteiger, durchblicker).
 
+	* website/links.htm4, website/links-de.htm4: Add gpg4kde link.
+
 2010-07-06  Emanuel Schuetze <emanuel@intevation.de>
 
 	* website/donate.htm4, website/donate-de.htm4: Add new sponsor.
