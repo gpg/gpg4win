@@ -327,8 +327,8 @@ chk  bf8c6babe1e28cae7dd6374ca24ddcc42d57e902
 file libksba/libksba-1.0.7.tar.bz2
 chk  c8d269fb15869b59204ef3f5d46ceb2c44dbeab3
 
-file libgcrypt/libgcrypt-1.4.5.tar.bz2
-chk  ef7ecbd3a03a7978094366bcd1257b3654608d28
+file libgcrypt/libgcrypt-1.4.6.tar.bz2
+chk  445b9e158aaf91e24eae3d1040c6213e9d9f5ba6
 
 file libassuan/libassuan-2.0.0.tar.bz2
 chk  b03c586a4eefdfc0bb1ec65ecf958b9890d429f7

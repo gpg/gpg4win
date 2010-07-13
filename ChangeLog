@@ -1,3 +1,7 @@
+2010-07-13  Werner Koch  <wk@g10code.com>
+
+	* packages/packages.current: Update to libgcrypt 1.4.6.
+
 2010-07-08  Emanuel Schuetze <emanuel@intevation.de>
 
 	* Makefile.am (EXTRA_DIST): Remove patches/gpgex/01-no-checksums.patch.
