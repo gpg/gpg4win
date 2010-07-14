@@ -1,3 +1,10 @@
+2010-07-14  Emanuel Schuetze <emanuel@intevation.de>
+
+	* packages/packages.current, 
+	src/uninst-kleopatra.nsi, src/inst-kleopatra.nsi, 
+	src/uninst-kdelibs.nsi, src/inst-kdelibs.nsi: 
+	Update kdelibs and kleopatra (debug packages!). 
+
 2010-07-13  Werner Koch  <wk@g10code.com>
 
 	* packages/packages.current: Update to libgcrypt 1.4.6.

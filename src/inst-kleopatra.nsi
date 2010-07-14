@@ -172,14 +172,17 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
 
   SetOutPath "$INSTDIR\share\doc\HTML\en\kleopatra"
 
+  File ${prefix}/share/doc/HTML/en/kleopatra/admin-archive-definitions.html
+  File ${prefix}/share/doc/HTML/en/kleopatra/admin-checksum-definitions.html
   File ${prefix}/share/doc/HTML/en/kleopatra/admin-key-filters.html
   File ${prefix}/share/doc/HTML/en/kleopatra/admin.html
   File ${prefix}/share/doc/HTML/en/kleopatra/commandline-options.html
   File ${prefix}/share/doc/HTML/en/kleopatra/configuration-appearance.html
-  File ${prefix}/share/doc/HTML/en/kleopatra/configuration-dn-order.html
+  File ${prefix}/share/doc/HTML/en/kleopatra/configuration-crypto-operations.html
+  File ${prefix}/share/doc/HTML/en/kleopatra/configuration-gnupg-system.html
+  File ${prefix}/share/doc/HTML/en/kleopatra/configuration-smime-validation.html
   File ${prefix}/share/doc/HTML/en/kleopatra/configuration.html
   File ${prefix}/share/doc/HTML/en/kleopatra/credits-and-license.html
-  File ${prefix}/share/doc/HTML/en/kleopatra/functions-keybox-management.html
   File ${prefix}/share/doc/HTML/en/kleopatra/functions-newkey.html
   File ${prefix}/share/doc/HTML/en/kleopatra/functions-search.html
   File ${prefix}/share/doc/HTML/en/kleopatra/functions.html

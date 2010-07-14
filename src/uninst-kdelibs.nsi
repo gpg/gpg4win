@@ -36,6 +36,7 @@ Section "-un.kdelibs"
   Delete "$INSTDIR\bin\kbuildsycoca4.exe"
   RMDir "$INSTDIR\bin"
 
+  Delete "$INSTDIR\kdebugdialog.exe"
   Delete "$INSTDIR\kded_globalaccel.dll"
   Delete "$INSTDIR\libkdeui.dll"
   Delete "$INSTDIR\libkdecore.dll"
