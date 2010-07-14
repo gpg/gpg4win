@@ -5,6 +5,9 @@
 	src/uninst-kdelibs.nsi, src/inst-kdelibs.nsi: 
 	Update kdelibs and kleopatra (debug packages!). 
 
+	* src/installer-finish.nsi: Change DisplayIcon to kleopatra.
+        (A gpg lock icon whould be better.)
+
 2010-07-13  Werner Koch  <wk@g10code.com>
 
 	* packages/packages.current: Update to libgcrypt 1.4.6.

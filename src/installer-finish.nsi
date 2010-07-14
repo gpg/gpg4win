@@ -46,7 +46,7 @@ Section
   WriteRegExpandStr HKLM $MYTMP "UninstallString" '"$INSTDIR\${PACKAGE}-uninstall.exe"'
   WriteRegExpandStr HKLM $MYTMP "InstallLocation" "$INSTDIR"
   WriteRegStr       HKLM $MYTMP "DisplayName"     "${PRETTY_PACKAGE} (${VERSION})"
-  WriteRegStr       HKLM $MYTMP "DisplayIcon"     "$INSTDIR\gpg.exe,0"
+  WriteRegStr       HKLM $MYTMP "DisplayIcon"     "$INSTDIR\bin\kleopatra.exe,0"
   WriteRegStr       HKLM $MYTMP "DisplayVersion"  "${VERSION}"
   WriteRegStr       HKLM $MYTMP "Publisher"       "The Gpg4win Project"
   WriteRegStr       HKLM $MYTMP "URLInfoAbout"    "http://www.gpg4win.org/"
