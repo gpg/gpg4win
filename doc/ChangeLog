@@ -1,3 +1,13 @@
+2010-07-15  Emanuel Schuetze <emanuel@intevation.de>
+
+	* logo/gpg4win-msi-header_install-493x58.bmp,
+	logo/gpg4win-msi-header_uninstall-493x58.bmp,
+	logo/gpg4win-msi-header_install-uninstall-493x58.xcf,
+	logo/gpg4win-msi-wizard_install-493x312.bmp,
+	logo/gpg4win-msi-wizard_uninstall-493x312.bmp,
+	logo/gpg4win-msi-wizard_install-uninstall-493x312.xcf:
+	Add msi installer bitmaps and gimp source files (xcf).
+
 2010-07-09  Emanuel Schuetze <emanuel@intevation.de>
 
 	* website/localize-gpg4win.htm4: Add compendium section. Remove
