@@ -1,3 +1,7 @@
+2010-07-15  Werner Koch  <wk@g10code.com>
+
+	* packages/packages.current: Update libksba
+
 2010-07-15  Emanuel Schuetze <emanuel@intevation.de>
 
 	* src/uninst-kleopatra.nsi: Changed uninstall path from 
