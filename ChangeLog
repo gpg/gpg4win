@@ -1,3 +1,8 @@
+2010-07-15  Emanuel Schuetze <emanuel@intevation.de>
+
+	* src/uninst-kleopatra.nsi: Changed uninstall path from 
+	kcm_kleopatra.dll.
+
 2010-07-14  Emanuel Schuetze <emanuel@intevation.de>
 
 	* packages/packages.current, 
