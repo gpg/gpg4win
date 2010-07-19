@@ -47,6 +47,7 @@ Section "-un.gnupg"
   Delete "$INSTDIR\gpgconf.exe"
   Delete "$INSTDIR\gpg-connect-agent.exe"
   Delete "$INSTDIR\gpgsplit.exe"
+  Delete "$INSTDIR\gpgtar.exe"
 
   Delete "$INSTDIR\pub\gpg.exe"
   Delete "$INSTDIR\pub\gpg2.exe"

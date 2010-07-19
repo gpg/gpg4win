@@ -1,0 +1,2351 @@
+#! /bin/sh
+patch -p1 -f $* < $0
+exit $?
+
+2010-07-19  Werner Koch  <wk@g10code.com>
+
+	* Makefile.am (bin_PROGRAMS): Add gpgtar.
+	(gpgtar_SOURCES, gpgtar_CFLAGS, gpgtar_LDADD): New.
+
+        * gpgtar.c, gpgtar.h, gpgtar-create.c, gpgtar-extract.c
+        * gpgtar-list.c: New.  Take from GnuPG trunk and add missing
+         functions.
+
+diff -urNp orig/gnupg-2.0.16/tools/Makefile.am gnupg-2.0.16/tools/Makefile.am
+--- orig/gnupg-2.0.16/tools/Makefile.am	2009-09-21 18:53:44.000000000 +0200
++++ gnupg-2.0.16/tools/Makefile.am	2010-07-19 10:51:22.000000000 +0200
+@@ -42,7 +42,7 @@ else
+   symcryptrun =
+ endif
+ 
+-bin_PROGRAMS = gpgconf gpg-connect-agent gpgkey2ssh ${symcryptrun}
++bin_PROGRAMS = gpgconf gpg-connect-agent gpgkey2ssh ${symcryptrun} gpgtar
+ if !HAVE_W32_SYSTEM
+ bin_PROGRAMS += watchgnupg gpgparsemail
+ endif
+@@ -99,6 +99,15 @@ gpg_check_pattern_LDADD = $(common_libs)
+                           $(LIBINTL) $(LIBICONV) $(W32SOCKLIBS)
+ endif
+ 
++gpgtar_SOURCES = \
++	gpgtar.c gpgtar.h \
++	gpgtar-create.c \
++	gpgtar-extract.c \
++	gpgtar-list.c \
++	no-libgcrypt.c
++gpgtar_CFLAGS = $(GPG_ERROR_CFLAGS)
++gpgtar_LDADD = $(common_libs) $(GPG_ERROR_LIBS) $(W32SOCKLIBS)
++
+ # Make sure that all libs are build before we use them.  This is
+ # important for things like make -j2.
+ $(PROGRAMS): $(common_libs) $(pwquery_libs) ../common/libgpgrl.a
+diff -urNp orig/gnupg-2.0.16/tools/Makefile.in gnupg-2.0.16/tools/Makefile.in
+--- orig/gnupg-2.0.16/tools/Makefile.in	2010-07-19 09:05:41.000000000 +0200
++++ gnupg-2.0.16/tools/Makefile.in	2010-07-19 10:53:02.000000000 +0200
+@@ -87,7 +87,8 @@ DIST_COMMON = $(srcdir)/Makefile.am $(sr
+ @GNUPG_DIRMNGR_PGM_TRUE@am__append_5 = -DGNUPG_DEFAULT_DIRMNGR="\"@GNUPG_DIRMNGR_PGM@\""
+ @GNUPG_PROTECT_TOOL_PGM_TRUE@am__append_6 = -DGNUPG_DEFAULT_PROTECT_TOOL="\"@GNUPG_PROTECT_TOOL_PGM@\""
+ bin_PROGRAMS = gpgconf$(EXEEXT) gpg-connect-agent$(EXEEXT) \
+-	gpgkey2ssh$(EXEEXT) $(am__EXEEXT_1) $(am__EXEEXT_2)
++	gpgkey2ssh$(EXEEXT) $(am__EXEEXT_1) gpgtar$(EXEEXT) \
++	$(am__EXEEXT_2)
+ @HAVE_W32_SYSTEM_FALSE@am__append_7 = watchgnupg gpgparsemail
+ @DISABLE_REGEX_FALSE@libexec_PROGRAMS = gpg-check-pattern$(EXEEXT)
+ noinst_PROGRAMS = clean-sat$(EXEEXT) mk-tdata$(EXEEXT) \
+@@ -173,6 +174,14 @@ gpgsplit_OBJECTS = gpgsplit.$(OBJEXT)
+ gpgsplit_DEPENDENCIES = $(common_libs) $(am__DEPENDENCIES_1) \
+ 	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1) \
+ 	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1)
++am_gpgtar_OBJECTS = gpgtar-gpgtar.$(OBJEXT) \
++	gpgtar-gpgtar-create.$(OBJEXT) gpgtar-gpgtar-extract.$(OBJEXT) \
++	gpgtar-gpgtar-list.$(OBJEXT) gpgtar-no-libgcrypt.$(OBJEXT)
++gpgtar_OBJECTS = $(am_gpgtar_OBJECTS)
++gpgtar_DEPENDENCIES = $(common_libs) $(am__DEPENDENCIES_1) \
++	$(am__DEPENDENCIES_1)
++gpgtar_LINK = $(CCLD) $(gpgtar_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) \
++	$(LDFLAGS) -o $@
+ make_dns_cert_SOURCES = make-dns-cert.c
+ make_dns_cert_OBJECTS = make-dns-cert.$(OBJEXT)
+ make_dns_cert_LDADD = $(LDADD)
+@@ -201,13 +210,13 @@ LINK = $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(
+ SOURCES = clean-sat.c $(gpg_check_pattern_SOURCES) \
+ 	$(gpg_connect_agent_SOURCES) $(gpgconf_SOURCES) \
+ 	$(gpgkey2ssh_SOURCES) $(gpgparsemail_SOURCES) gpgsplit.c \
+-	make-dns-cert.c mk-tdata.c $(symcryptrun_SOURCES) \
+-	$(watchgnupg_SOURCES)
++	$(gpgtar_SOURCES) make-dns-cert.c mk-tdata.c \
++	$(symcryptrun_SOURCES) $(watchgnupg_SOURCES)
+ DIST_SOURCES = clean-sat.c $(am__gpg_check_pattern_SOURCES_DIST) \
+ 	$(gpg_connect_agent_SOURCES) $(gpgconf_SOURCES) \
+ 	$(gpgkey2ssh_SOURCES) $(gpgparsemail_SOURCES) gpgsplit.c \
+-	make-dns-cert.c mk-tdata.c $(symcryptrun_SOURCES) \
+-	$(watchgnupg_SOURCES)
++	$(gpgtar_SOURCES) make-dns-cert.c mk-tdata.c \
++	$(symcryptrun_SOURCES) $(watchgnupg_SOURCES)
+ ETAGS = etags
+ CTAGS = ctags
+ DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
+@@ -466,6 +475,15 @@ gpgkey2ssh_LDADD = $(common_libs) \
+ @DISABLE_REGEX_FALSE@gpg_check_pattern_LDADD = $(common_libs) $(LIBGCRYPT_LIBS) $(GPG_ERROR_LIBS) \
+ @DISABLE_REGEX_FALSE@                          $(LIBINTL) $(LIBICONV) $(W32SOCKLIBS)
+ 
++gpgtar_SOURCES = \
++	gpgtar.c gpgtar.h \
++	gpgtar-create.c \
++	gpgtar-extract.c \
++	gpgtar-list.c \
++	no-libgcrypt.c
++
++gpgtar_CFLAGS = $(GPG_ERROR_CFLAGS)
++gpgtar_LDADD = $(common_libs) $(GPG_ERROR_LIBS) $(W32SOCKLIBS)
+ all: all-am
+ 
+ .SUFFIXES:
+@@ -571,6 +589,9 @@ gpgparsemail$(EXEEXT): $(gpgparsemail_OB
+ gpgsplit$(EXEEXT): $(gpgsplit_OBJECTS) $(gpgsplit_DEPENDENCIES) 
+ 	@rm -f gpgsplit$(EXEEXT)
+ 	$(LINK) $(gpgsplit_OBJECTS) $(gpgsplit_LDADD) $(LIBS)
++gpgtar$(EXEEXT): $(gpgtar_OBJECTS) $(gpgtar_DEPENDENCIES) 
++	@rm -f gpgtar$(EXEEXT)
++	$(gpgtar_LINK) $(gpgtar_OBJECTS) $(gpgtar_LDADD) $(LIBS)
+ make-dns-cert$(EXEEXT): $(make_dns_cert_OBJECTS) $(make_dns_cert_DEPENDENCIES) 
+ 	@rm -f make-dns-cert$(EXEEXT)
+ 	$(LINK) $(make_dns_cert_OBJECTS) $(make_dns_cert_LDADD) $(LIBS)
+@@ -636,6 +657,11 @@ distclean-compile:
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gpgkey2ssh-gpgkey2ssh.Po@am__quote@
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gpgparsemail.Po@am__quote@
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gpgsplit.Po@am__quote@
++@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gpgtar-gpgtar-create.Po@am__quote@
++@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gpgtar-gpgtar-extract.Po@am__quote@
++@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gpgtar-gpgtar-list.Po@am__quote@
++@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gpgtar-gpgtar.Po@am__quote@
++@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gpgtar-no-libgcrypt.Po@am__quote@
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/make-dns-cert.Po@am__quote@
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mk-tdata.Po@am__quote@
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/no-libgcrypt.Po@am__quote@
+@@ -685,6 +711,76 @@ gpgkey2ssh-gpgkey2ssh.obj: gpgkey2ssh.c
+ @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+ @am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(gpgkey2ssh_CFLAGS) $(CFLAGS) -c -o gpgkey2ssh-gpgkey2ssh.obj `if test -f 'gpgkey2ssh.c'; then $(CYGPATH_W) 'gpgkey2ssh.c'; else $(CYGPATH_W) '$(srcdir)/gpgkey2ssh.c'; fi`
+ 
++gpgtar-gpgtar.o: gpgtar.c
++@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(gpgtar_CFLAGS) $(CFLAGS) -MT gpgtar-gpgtar.o -MD -MP -MF $(DEPDIR)/gpgtar-gpgtar.Tpo -c -o gpgtar-gpgtar.o `test -f 'gpgtar.c' || echo '$(srcdir)/'`gpgtar.c
++@am__fastdepCC_TRUE@	mv -f $(DEPDIR)/gpgtar-gpgtar.Tpo $(DEPDIR)/gpgtar-gpgtar.Po
++@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='gpgtar.c' object='gpgtar-gpgtar.o' libtool=no @AMDEPBACKSLASH@
++@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
++@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(gpgtar_CFLAGS) $(CFLAGS) -c -o gpgtar-gpgtar.o `test -f 'gpgtar.c' || echo '$(srcdir)/'`gpgtar.c
++
++gpgtar-gpgtar.obj: gpgtar.c
++@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(gpgtar_CFLAGS) $(CFLAGS) -MT gpgtar-gpgtar.obj -MD -MP -MF $(DEPDIR)/gpgtar-gpgtar.Tpo -c -o gpgtar-gpgtar.obj `if test -f 'gpgtar.c'; then $(CYGPATH_W) 'gpgtar.c'; else $(CYGPATH_W) '$(srcdir)/gpgtar.c'; fi`
++@am__fastdepCC_TRUE@	mv -f $(DEPDIR)/gpgtar-gpgtar.Tpo $(DEPDIR)/gpgtar-gpgtar.Po
++@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='gpgtar.c' object='gpgtar-gpgtar.obj' libtool=no @AMDEPBACKSLASH@
++@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
++@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(gpgtar_CFLAGS) $(CFLAGS) -c -o gpgtar-gpgtar.obj `if test -f 'gpgtar.c'; then $(CYGPATH_W) 'gpgtar.c'; else $(CYGPATH_W) '$(srcdir)/gpgtar.c'; fi`
++
++gpgtar-gpgtar-create.o: gpgtar-create.c
++@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(gpgtar_CFLAGS) $(CFLAGS) -MT gpgtar-gpgtar-create.o -MD -MP -MF $(DEPDIR)/gpgtar-gpgtar-create.Tpo -c -o gpgtar-gpgtar-create.o `test -f 'gpgtar-create.c' || echo '$(srcdir)/'`gpgtar-create.c
++@am__fastdepCC_TRUE@	mv -f $(DEPDIR)/gpgtar-gpgtar-create.Tpo $(DEPDIR)/gpgtar-gpgtar-create.Po
++@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='gpgtar-create.c' object='gpgtar-gpgtar-create.o' libtool=no @AMDEPBACKSLASH@
++@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
++@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(gpgtar_CFLAGS) $(CFLAGS) -c -o gpgtar-gpgtar-create.o `test -f 'gpgtar-create.c' || echo '$(srcdir)/'`gpgtar-create.c
++
++gpgtar-gpgtar-create.obj: gpgtar-create.c
++@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(gpgtar_CFLAGS) $(CFLAGS) -MT gpgtar-gpgtar-create.obj -MD -MP -MF $(DEPDIR)/gpgtar-gpgtar-create.Tpo -c -o gpgtar-gpgtar-create.obj `if test -f 'gpgtar-create.c'; then $(CYGPATH_W) 'gpgtar-create.c'; else $(CYGPATH_W) '$(srcdir)/gpgtar-create.c'; fi`
++@am__fastdepCC_TRUE@	mv -f $(DEPDIR)/gpgtar-gpgtar-create.Tpo $(DEPDIR)/gpgtar-gpgtar-create.Po
++@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='gpgtar-create.c' object='gpgtar-gpgtar-create.obj' libtool=no @AMDEPBACKSLASH@
++@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
++@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(gpgtar_CFLAGS) $(CFLAGS) -c -o gpgtar-gpgtar-create.obj `if test -f 'gpgtar-create.c'; then $(CYGPATH_W) 'gpgtar-create.c'; else $(CYGPATH_W) '$(srcdir)/gpgtar-create.c'; fi`
++
++gpgtar-gpgtar-extract.o: gpgtar-extract.c
++@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(gpgtar_CFLAGS) $(CFLAGS) -MT gpgtar-gpgtar-extract.o -MD -MP -MF $(DEPDIR)/gpgtar-gpgtar-extract.Tpo -c -o gpgtar-gpgtar-extract.o `test -f 'gpgtar-extract.c' || echo '$(srcdir)/'`gpgtar-extract.c
++@am__fastdepCC_TRUE@	mv -f $(DEPDIR)/gpgtar-gpgtar-extract.Tpo $(DEPDIR)/gpgtar-gpgtar-extract.Po
++@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='gpgtar-extract.c' object='gpgtar-gpgtar-extract.o' libtool=no @AMDEPBACKSLASH@
++@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
++@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(gpgtar_CFLAGS) $(CFLAGS) -c -o gpgtar-gpgtar-extract.o `test -f 'gpgtar-extract.c' || echo '$(srcdir)/'`gpgtar-extract.c
++
++gpgtar-gpgtar-extract.obj: gpgtar-extract.c
++@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(gpgtar_CFLAGS) $(CFLAGS) -MT gpgtar-gpgtar-extract.obj -MD -MP -MF $(DEPDIR)/gpgtar-gpgtar-extract.Tpo -c -o gpgtar-gpgtar-extract.obj `if test -f 'gpgtar-extract.c'; then $(CYGPATH_W) 'gpgtar-extract.c'; else $(CYGPATH_W) '$(srcdir)/gpgtar-extract.c'; fi`
++@am__fastdepCC_TRUE@	mv -f $(DEPDIR)/gpgtar-gpgtar-extract.Tpo $(DEPDIR)/gpgtar-gpgtar-extract.Po
++@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='gpgtar-extract.c' object='gpgtar-gpgtar-extract.obj' libtool=no @AMDEPBACKSLASH@
++@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
++@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(gpgtar_CFLAGS) $(CFLAGS) -c -o gpgtar-gpgtar-extract.obj `if test -f 'gpgtar-extract.c'; then $(CYGPATH_W) 'gpgtar-extract.c'; else $(CYGPATH_W) '$(srcdir)/gpgtar-extract.c'; fi`
++
++gpgtar-gpgtar-list.o: gpgtar-list.c
++@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(gpgtar_CFLAGS) $(CFLAGS) -MT gpgtar-gpgtar-list.o -MD -MP -MF $(DEPDIR)/gpgtar-gpgtar-list.Tpo -c -o gpgtar-gpgtar-list.o `test -f 'gpgtar-list.c' || echo '$(srcdir)/'`gpgtar-list.c
++@am__fastdepCC_TRUE@	mv -f $(DEPDIR)/gpgtar-gpgtar-list.Tpo $(DEPDIR)/gpgtar-gpgtar-list.Po
++@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='gpgtar-list.c' object='gpgtar-gpgtar-list.o' libtool=no @AMDEPBACKSLASH@
++@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
++@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(gpgtar_CFLAGS) $(CFLAGS) -c -o gpgtar-gpgtar-list.o `test -f 'gpgtar-list.c' || echo '$(srcdir)/'`gpgtar-list.c
++
++gpgtar-gpgtar-list.obj: gpgtar-list.c
++@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(gpgtar_CFLAGS) $(CFLAGS) -MT gpgtar-gpgtar-list.obj -MD -MP -MF $(DEPDIR)/gpgtar-gpgtar-list.Tpo -c -o gpgtar-gpgtar-list.obj `if test -f 'gpgtar-list.c'; then $(CYGPATH_W) 'gpgtar-list.c'; else $(CYGPATH_W) '$(srcdir)/gpgtar-list.c'; fi`
++@am__fastdepCC_TRUE@	mv -f $(DEPDIR)/gpgtar-gpgtar-list.Tpo $(DEPDIR)/gpgtar-gpgtar-list.Po
++@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='gpgtar-list.c' object='gpgtar-gpgtar-list.obj' libtool=no @AMDEPBACKSLASH@
++@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
++@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(gpgtar_CFLAGS) $(CFLAGS) -c -o gpgtar-gpgtar-list.obj `if test -f 'gpgtar-list.c'; then $(CYGPATH_W) 'gpgtar-list.c'; else $(CYGPATH_W) '$(srcdir)/gpgtar-list.c'; fi`
++
++gpgtar-no-libgcrypt.o: no-libgcrypt.c
++@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(gpgtar_CFLAGS) $(CFLAGS) -MT gpgtar-no-libgcrypt.o -MD -MP -MF $(DEPDIR)/gpgtar-no-libgcrypt.Tpo -c -o gpgtar-no-libgcrypt.o `test -f 'no-libgcrypt.c' || echo '$(srcdir)/'`no-libgcrypt.c
++@am__fastdepCC_TRUE@	mv -f $(DEPDIR)/gpgtar-no-libgcrypt.Tpo $(DEPDIR)/gpgtar-no-libgcrypt.Po
++@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='no-libgcrypt.c' object='gpgtar-no-libgcrypt.o' libtool=no @AMDEPBACKSLASH@
++@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
++@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(gpgtar_CFLAGS) $(CFLAGS) -c -o gpgtar-no-libgcrypt.o `test -f 'no-libgcrypt.c' || echo '$(srcdir)/'`no-libgcrypt.c
++
++gpgtar-no-libgcrypt.obj: no-libgcrypt.c
++@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(gpgtar_CFLAGS) $(CFLAGS) -MT gpgtar-no-libgcrypt.obj -MD -MP -MF $(DEPDIR)/gpgtar-no-libgcrypt.Tpo -c -o gpgtar-no-libgcrypt.obj `if test -f 'no-libgcrypt.c'; then $(CYGPATH_W) 'no-libgcrypt.c'; else $(CYGPATH_W) '$(srcdir)/no-libgcrypt.c'; fi`
++@am__fastdepCC_TRUE@	mv -f $(DEPDIR)/gpgtar-no-libgcrypt.Tpo $(DEPDIR)/gpgtar-no-libgcrypt.Po
++@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='no-libgcrypt.c' object='gpgtar-no-libgcrypt.obj' libtool=no @AMDEPBACKSLASH@
++@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
++@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(gpgtar_CFLAGS) $(CFLAGS) -c -o gpgtar-no-libgcrypt.obj `if test -f 'no-libgcrypt.c'; then $(CYGPATH_W) 'no-libgcrypt.c'; else $(CYGPATH_W) '$(srcdir)/no-libgcrypt.c'; fi`
++
+ ID: $(HEADERS) $(SOURCES) $(LISP) $(TAGS_FILES)
+ 	list='$(SOURCES) $(HEADERS) $(LISP) $(TAGS_FILES)'; \
+ 	unique=`for i in $$list; do \
+diff -urNp orig/gnupg-2.0.16/tools/gpgtar-create.c gnupg-2.0.16/tools/gpgtar-create.c
+--- orig/gnupg-2.0.16/tools/gpgtar-create.c	1970-01-01 01:00:00.000000000 +0100
++++ gnupg-2.0.16/tools/gpgtar-create.c	2010-07-19 11:10:34.000000000 +0200
+@@ -0,0 +1,831 @@
++/* gpgtar-create.c - Create a TAR archive
++ * Copyright (C) 2010 Free Software Foundation, Inc.
++ *
++ * This file is part of GnuPG.
++ *
++ * GnuPG is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 3 of the License, or
++ * (at your option) any later version.
++ *
++ * GnuPG is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, see <http://www.gnu.org/licenses/>.
++ */
++
++#include <config.h>
++#include <errno.h>
++#include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
++#include <sys/types.h>
++#include <sys/stat.h>
++#include <dirent.h>
++#ifdef HAVE_W32_SYSTEM
++# define WIN32_LEAN_AND_MEAN
++# include <windows.h>
++#else /*!HAVE_W32_SYSTEM*/
++# include <unistd.h>
++# include <pwd.h>
++# include <grp.h>
++#endif /*!HAVE_W32_SYSTEM*/
++#include <assert.h>
++
++#include "i18n.h"
++#include "../common/sysutils.h"
++#include "gpgtar.h"
++
++#ifndef HAVE_LSTAT
++#define lstat(a,b) stat ((a), (b))
++#endif
++
++
++/* Object to control the file scanning.  */
++struct scanctrl_s;
++typedef struct scanctrl_s *scanctrl_t;
++struct scanctrl_s
++{
++  tar_header_t flist;
++  tar_header_t *flist_tail;
++  int nestlevel;
++};
++
++
++
++
++/* Given a fresh header object HDR with only the name field set, try
++   to gather all available info.  This is the W32 version.  */
++#ifdef HAVE_W32_SYSTEM
++static gpg_error_t
++fillup_entry_w32 (tar_header_t hdr)
++{
++  char *p;
++  wchar_t *wfname;
++  WIN32_FILE_ATTRIBUTE_DATA fad;
++  DWORD attr;
++
++  for (p=hdr->name; *p; p++)
++    if (*p == '/')
++      *p = '\\';
++  wfname = utf8_to_wchar (hdr->name);
++  for (p=hdr->name; *p; p++)
++    if (*p == '\\')
++      *p = '/';
++  if (!wfname)
++    {
++      log_error ("error utf8-ing `%s': %s\n", hdr->name, w32_strerror (-1));
++      return gpg_error_from_syserror ();
++    }
++  if (!GetFileAttributesExW (wfname, GetFileExInfoStandard, &fad))
++    {
++      log_error ("error stat-ing `%s': %s\n", hdr->name, w32_strerror (-1));
++      xfree (wfname);
++      return gpg_error_from_syserror ();
++    }
++  xfree (wfname);
++
++  attr = fad.dwFileAttributes;
++
++  if ((attr & FILE_ATTRIBUTE_NORMAL))
++    hdr->typeflag = TF_REGULAR;
++  else if ((attr & FILE_ATTRIBUTE_DIRECTORY))
++    hdr->typeflag = TF_DIRECTORY;
++  else if ((attr & FILE_ATTRIBUTE_DEVICE))
++    hdr->typeflag = TF_NOTSUP;
++  else if ((attr & (FILE_ATTRIBUTE_OFFLINE | FILE_ATTRIBUTE_TEMPORARY)))
++    hdr->typeflag = TF_NOTSUP;
++  else
++    hdr->typeflag = TF_REGULAR;
++
++  /* Map some attributes to  USTAR defined mode bits.  */
++  hdr->mode = 0640;      /* User may read and write, group only read.  */
++  if ((attr & FILE_ATTRIBUTE_DIRECTORY))
++    hdr->mode |= 0110;   /* Dirs are user and group executable.  */
++  if ((attr & FILE_ATTRIBUTE_READONLY))
++    hdr->mode &= ~0200;  /* Clear the user write bit.  */
++  if ((attr & FILE_ATTRIBUTE_HIDDEN))
++    hdr->mode &= ~0707;  /* Clear all user and other bits.  */ 
++  if ((attr & FILE_ATTRIBUTE_SYSTEM))
++    hdr->mode |= 0004;   /* Make it readable by other.  */ 
++
++  /* Only set the size for a regular file.  */
++  if (hdr->typeflag == TF_REGULAR)
++    hdr->size = (fad.nFileSizeHigh * (unsigned long long)(MAXDWORD+1)
++                 + fad.nFileSizeLow);
++
++  hdr->mtime = (((unsigned long long)fad.ftLastWriteTime.dwHighDateTime << 32)
++                | fad.ftLastWriteTime.dwLowDateTime);
++  if (!hdr->mtime)
++    hdr->mtime = (((unsigned long long)fad.ftCreationTime.dwHighDateTime << 32)
++                  | fad.ftCreationTime.dwLowDateTime);
++  hdr->mtime -= 116444736000000000ULL; /* The filetime epoch is 1601-01-01.  */
++  hdr->mtime /= 10000000;  /* Convert from 0.1us to seconds. */
++
++  return 0;
++}
++#endif /*HAVE_W32_SYSTEM*/
++
++
++/* Given a fresh header obje`<ct HDR with only the name field set, try
++   to gather all available info.  This is the POSIX version.  */
++#ifndef HAVE_W32_SYSTEM
++static gpg_error_t
++fillup_entry_posix (tar_header_t hdr)
++{
++  gpg_error_t err;
++  struct stat sbuf;
++
++  if (lstat (hdr->name, &sbuf))
++    {
++      err = gpg_error_from_syserror ();
++      log_error ("error stat-ing `%s': %s\n", hdr->name, gpg_strerror (err));
++      return err;
++    }
++  
++  if (S_ISREG (sbuf.st_mode))
++    hdr->typeflag = TF_REGULAR;
++  else if (S_ISDIR (sbuf.st_mode))
++    hdr->typeflag = TF_DIRECTORY;
++  else if (S_ISCHR (sbuf.st_mode))
++    hdr->typeflag = TF_CHARDEV;
++  else if (S_ISBLK (sbuf.st_mode))
++    hdr->typeflag = TF_BLOCKDEV;
++  else if (S_ISFIFO (sbuf.st_mode))
++    hdr->typeflag = TF_FIFO;
++  else if (S_ISLNK (sbuf.st_mode))
++    hdr->typeflag = TF_SYMLINK;
++  else 
++    hdr->typeflag = TF_NOTSUP;
++
++  /* FIXME: Save DEV and INO? */
++
++  /* Set the USTAR defined mode bits using the system macros.  */
++  if (sbuf.st_mode & S_IRUSR)
++    hdr->mode |= 0400;
++  if (sbuf.st_mode & S_IWUSR)
++    hdr->mode |= 0200;
++  if (sbuf.st_mode & S_IXUSR)
++    hdr->mode |= 0100;
++  if (sbuf.st_mode & S_IRGRP)
++    hdr->mode |= 0040;
++  if (sbuf.st_mode & S_IWGRP)
++    hdr->mode |= 0020;
++  if (sbuf.st_mode & S_IXGRP)
++    hdr->mode |= 0010;
++  if (sbuf.st_mode & S_IROTH)
++    hdr->mode |= 0004;
++  if (sbuf.st_mode & S_IWOTH)
++    hdr->mode |= 0002;
++  if (sbuf.st_mode & S_IXOTH)
++    hdr->mode |= 0001;
++#ifdef S_IXUID
++  if (sbuf.st_mode & S_IXUID)
++    hdr->mode |= 04000;
++#endif
++#ifdef S_IXGID
++  if (sbuf.st_mode & S_IXGID)
++    hdr->mode |= 02000;
++#endif
++#ifdef S_ISVTX
++  if (sbuf.st_mode & S_ISVTX)
++    hdr->mode |= 01000;
++#endif
++
++  hdr->nlink = sbuf.st_nlink;
++
++  hdr->uid = sbuf.st_uid;
++  hdr->gid = sbuf.st_gid;
++
++  /* Only set the size for a regular file.  */
++  if (hdr->typeflag == TF_REGULAR)
++    hdr->size = sbuf.st_size;
++
++  hdr->mtime = sbuf.st_mtime;
++  
++  return 0;
++}
++#endif /*!HAVE_W32_SYSTEM*/
++
++
++/* Add a new entry.  The name of a director entry is ENTRYNAME; if
++   that is NULL, DNAME is the name of the directory itself.  Under
++   Windows ENTRYNAME shall have backslashes replaced by standard
++   slashes.  */
++static gpg_error_t
++add_entry (const char *dname, const char *entryname, scanctrl_t scanctrl)
++{
++  gpg_error_t err;
++  tar_header_t hdr;
++  char *p;
++  size_t dnamelen = strlen (dname);
++
++  assert (dnamelen);
++
++  hdr = xtrycalloc (1, sizeof *hdr + dnamelen + 1
++                    + (entryname? strlen (entryname) : 0) + 1);
++  if (!hdr)
++    return gpg_error_from_syserror ();
++
++  p = stpcpy (hdr->name, dname);
++  if (entryname)
++    {
++      if (dname[dnamelen-1] != '/')
++        *p++ = '/';
++      strcpy (p, entryname);
++    }
++  else
++    {
++      if (hdr->name[dnamelen-1] == '/')
++        hdr->name[dnamelen-1] = 0;
++    }
++#ifdef HAVE_DOSISH_SYSTEM
++  err = fillup_entry_w32 (hdr);
++#else
++  err = fillup_entry_posix (hdr);
++#endif
++  if (err)
++    xfree (hdr);
++  else
++    {
++      if (opt.verbose)
++        gpgtar_print_header (hdr, log_get_stream ());
++      *scanctrl->flist_tail = hdr;
++      scanctrl->flist_tail = &hdr->next;
++    }
++
++  return 0;
++}
++
++
++static gpg_error_t
++scan_directory (const char *dname, scanctrl_t scanctrl)
++{
++  gpg_error_t err = 0;
++
++#ifdef HAVE_W32_SYSTEM
++  WIN32_FIND_DATAW fi;
++  HANDLE hd = INVALID_HANDLE_VALUE;
++  char *p;
++
++  if (!*dname)
++    return 0;  /* An empty directory name has no entries.  */
++
++  {
++    char *fname;
++    wchar_t *wfname;
++
++    fname = xtrymalloc (strlen (dname) + 2 + 2 + 1);
++    if (!fname)
++      {
++        err = gpg_error_from_syserror ();
++        goto leave;
++      }
++    if (!strcmp (dname, "/"))
++      strcpy (fname, "/*"); /* Trailing slash is not allowed.  */
++    else if (!strcmp (dname, "."))
++      strcpy (fname, "*");
++    else if (*dname && dname[strlen (dname)-1] == '/')
++      strcpy (stpcpy (fname, dname), "*");
++    else if (*dname && dname[strlen (dname)-1] != '*')
++      strcpy (stpcpy (fname, dname), "/*");
++    else
++      strcpy (fname, dname);
++
++    for (p=fname; *p; p++)
++      if (*p == '/')
++        *p = '\\';
++    wfname = utf8_to_wchar (fname);
++    xfree (fname);
++    if (!wfname)
++      {
++        err = gpg_error_from_syserror ();
++        log_error (_("error reading directory `%s': %s\n"),
++                   dname, gpg_strerror (err));
++        goto leave;
++      }
++    hd = FindFirstFileW (wfname, &fi);
++    if (hd == INVALID_HANDLE_VALUE)
++      {
++        err = gpg_error_from_syserror ();
++        log_error (_("error reading directory `%s': %s\n"),
++                   dname, w32_strerror (-1));
++        xfree (wfname);
++        goto leave;
++      }
++    xfree (wfname);
++  }
++
++  do 
++    {
++      char *fname = wchar_to_utf8 (fi.cFileName);
++      if (!fname)
++        {
++          err = gpg_error_from_syserror ();
++          log_error ("error utf8-ing filename: %s\n", w32_strerror (-1));
++          break;
++        }
++      for (p=fname; *p; p++)
++        if (*p == '\\')
++          *p = '/';
++      if (!strcmp (fname, "." ) || !strcmp (fname, ".."))
++        err = 0; /* Skip self and parent dir entry.  */
++      else if (!strncmp (dname, "./", 2) && dname[2])
++        err = add_entry (dname+2, fname, scanctrl);
++      else
++        err = add_entry (dname, fname, scanctrl);
++      xfree (fname);
++    }
++  while (!err && FindNextFileW (hd, &fi));
++  if (err)
++    ;
++  else if (GetLastError () == ERROR_NO_MORE_FILES)
++    err = 0;
++  else
++    {
++      err = gpg_error_from_syserror (); 
++      log_error (_("error reading directory `%s': %s\n"),
++                 dname, w32_strerror (-1));
++    }
++  
++ leave:
++  if (hd != INVALID_HANDLE_VALUE)
++    FindClose (hd);
++
++#else /*!HAVE_W32_SYSTEM*/
++  DIR *dir;
++  struct dirent *de;
++
++  if (!*dname)
++    return 0;  /* An empty directory name has no entries.  */
++
++  dir = opendir (dname);
++  if (!dir)
++    {
++      err = gpg_error_from_syserror ();
++      log_error (_("error reading directory `%s': %s\n"),
++                 dname, gpg_strerror (err));
++      return err;
++    }
++  
++  while ((de = readdir (dir)))
++    {
++      if (!strcmp (de->d_name, "." ) || !strcmp (de->d_name, ".."))
++        continue; /* Skip self and parent dir entry.  */
++      
++      err = add_entry (dname, de->d_name, scanctrl);
++      if (err)
++        goto leave;
++     }
++
++ leave:
++  closedir (dir);
++#endif /*!HAVE_W32_SYSTEM*/
++  return err;
++}
++
++
++static gpg_error_t
++scan_recursive (const char *dname, scanctrl_t scanctrl)
++{
++  gpg_error_t err = 0;
++  tar_header_t hdr, *start_tail, *stop_tail;
++
++  if (scanctrl->nestlevel > 200)
++    {
++      log_error ("directories too deeply nested\n");
++      return gpg_error (GPG_ERR_RESOURCE_LIMIT);
++    }
++  scanctrl->nestlevel++;
++
++  assert (scanctrl->flist_tail);
++  start_tail = scanctrl->flist_tail;
++  scan_directory (dname, scanctrl);
++  stop_tail = scanctrl->flist_tail;
++  hdr = *start_tail;
++  for (; hdr && hdr != *stop_tail; hdr = hdr->next)
++    if (hdr->typeflag == TF_DIRECTORY)
++      {
++        if (opt.verbose > 1)
++          log_info ("scanning directory `%s'\n", hdr->name);
++        scan_recursive (hdr->name, scanctrl);
++      }
++  
++  scanctrl->nestlevel--;
++  return err;
++}
++
++
++/* Returns true if PATTERN is acceptable.  */
++static int
++pattern_valid_p (const char *pattern)
++{
++  if (!*pattern)
++    return 0;
++  if (*pattern == '.' && pattern[1] == '.')
++    return 0;
++  if (*pattern == '/' || *pattern == DIRSEP_C)
++    return 0; /* Absolute filenames are not supported.  */
++#ifdef HAVE_DRIVE_LETTERS
++  if (((*pattern >= 'a' && *pattern <= 'z')
++       || (*pattern >= 'A' && *pattern <= 'Z'))
++      && pattern[1] == ':')
++    return 0; /* Drive letter are not allowed either.  */
++#endif /*HAVE_DRIVE_LETTERS*/ 
++
++  return 1; /* Okay.  */
++}
++
++
++
++static void
++store_xoctal (char *buffer, size_t length, unsigned long long value)
++{
++  char *p, *pend;
++  size_t n;
++  unsigned long long v;
++
++  assert (length > 1);
++
++  v = value;
++  n = length;
++  p = pend = buffer + length;
++  *--p = 0; /* Nul byte.  */
++  n--;
++  do
++    {
++      *--p = '0' + (v % 8);
++      v /= 8;
++      n--;
++    }
++  while (v && n);
++  if (!v)
++    {
++      /* Pad.  */
++      for ( ; n; n--)
++        *--p = '0';
++    }
++  else /* Does not fit into the field.  Store as binary number.  */
++    {
++      v = value;
++      n = length;
++      p = pend = buffer + length;
++      do
++        {
++          *--p = v;
++          v /= 256;
++          n--;
++        }
++      while (v && n);
++      if (!v)
++        {
++          /* Pad.  */
++          for ( ; n; n--)
++            *--p = 0;
++          if (*p & 0x80)
++            BUG ();
++          *p |= 0x80; /* Set binary flag.  */
++        }
++      else
++        BUG ();
++    }
++}
++
++
++static void
++store_uname (char *buffer, size_t length, unsigned long uid)
++{
++  static int initialized;
++  static unsigned long lastuid;
++  static char lastuname[32];
++
++  if (!initialized || uid != lastuid)
++    {
++#ifdef HAVE_W32_SYSTEM
++      mem2str (lastuname, uid? "user":"root", sizeof lastuname); 
++#else
++      struct passwd *pw = getpwuid (uid);
++
++      lastuid = uid;
++      initialized = 1;
++      if (pw)
++        mem2str (lastuname, pw->pw_name, sizeof lastuname); 
++      else
++        {
++          log_info ("failed to get name for uid %lu\n", uid);
++          *lastuname = 0;
++        }
++#endif
++    }
++  mem2str (buffer, lastuname, length);
++}
++
++
++static void
++store_gname (char *buffer, size_t length, unsigned long gid)
++{
++  static int initialized;
++  static unsigned long lastgid;
++  static char lastgname[32];
++
++  if (!initialized || gid != lastgid)
++    {
++#ifdef HAVE_W32_SYSTEM
++      mem2str (lastgname, gid? "users":"root", sizeof lastgname); 
++#else
++      struct group *gr = getgrgid (gid);
++
++      lastgid = gid;
++      initialized = 1;
++      if (gr)
++        mem2str (lastgname, gr->gr_name, sizeof lastgname); 
++      else
++        {
++          log_info ("failed to get name for gid %lu\n", gid);
++          *lastgname = 0;
++        }
++#endif
++    }
++  mem2str (buffer, lastgname, length);
++}
++
++
++static gpg_error_t
++build_header (void *record, tar_header_t hdr)
++{
++  gpg_error_t err;
++  struct ustar_raw_header *raw = record;
++  size_t namelen, n;
++  unsigned long chksum;
++  unsigned char *p;
++
++  memset (record, 0, RECORDSIZE);
++
++  /* Store name and prefix.  */
++  namelen = strlen (hdr->name);
++  if (namelen < sizeof raw->name)
++    memcpy (raw->name, hdr->name, namelen);
++  else 
++    {
++      n = (namelen < sizeof raw->prefix)? namelen : sizeof raw->prefix;
++      for (n--; n ; n--)
++        if (hdr->name[n] == '/')
++          break;
++      if (namelen - n < sizeof raw->name)
++        {
++          /* Note that the N is < sizeof prefix and that the
++             delimiting slash is not stored.  */
++          memcpy (raw->prefix, hdr->name, n);
++          memcpy (raw->name, hdr->name+n+1, namelen - n);
++        }
++      else
++        {
++          err = gpg_error (GPG_ERR_TOO_LARGE);
++          log_error ("error storing file `%s': %s\n", 
++                     hdr->name, gpg_strerror (err));
++          return err;
++        }
++    }
++  
++  store_xoctal (raw->mode,  sizeof raw->mode,  hdr->mode);
++  store_xoctal (raw->uid,   sizeof raw->uid,   hdr->uid);
++  store_xoctal (raw->gid,   sizeof raw->gid,   hdr->gid);
++  store_xoctal (raw->size,  sizeof raw->size,  hdr->size);
++  store_xoctal (raw->mtime, sizeof raw->mtime, hdr->mtime);
++
++  switch (hdr->typeflag)
++    {
++    case TF_REGULAR:   raw->typeflag[0] = '0'; break;
++    case TF_HARDLINK:  raw->typeflag[0] = '1'; break;
++    case TF_SYMLINK:   raw->typeflag[0] = '2'; break;
++    case TF_CHARDEV:   raw->typeflag[0] = '3'; break;
++    case TF_BLOCKDEV:  raw->typeflag[0] = '4'; break;
++    case TF_DIRECTORY: raw->typeflag[0] = '5'; break;
++    case TF_FIFO:      raw->typeflag[0] = '6'; break;
++    default: return gpg_error (GPG_ERR_NOT_SUPPORTED);
++    }
++
++  memcpy (raw->magic, "ustar", 6);
++  raw->version[0] = '0';
++  raw->version[1] = '0';
++
++  store_uname (raw->uname, sizeof raw->uname, hdr->uid);
++  store_gname (raw->gname, sizeof raw->gname, hdr->gid);
++
++#ifndef HAVE_W32_SYSTEM
++  if (hdr->typeflag == TF_SYMLINK)
++    {
++      int nread;
++
++      nread = readlink (hdr->name, raw->linkname, sizeof raw->linkname -1);
++      if (nread < 0)
++        {
++          err = gpg_error_from_syserror ();
++          log_error ("error reading symlink `%s': %s\n", 
++                     hdr->name, gpg_strerror (err));
++          return err;
++        }
++      raw->linkname[nread] = 0;
++    }
++#endif /*HAVE_W32_SYSTEM*/
++
++  /* Compute the checksum.  */
++  memset (raw->checksum, ' ', sizeof raw->checksum);
++  chksum = 0;
++  p = record;
++  for (n=0; n < RECORDSIZE; n++)
++    chksum += *p++;
++  store_xoctal (raw->checksum, sizeof raw->checksum - 1, chksum);
++  raw->checksum[7] = ' ';
++
++  return 0;
++}
++
++
++static gpg_error_t
++write_file (estream_t stream, tar_header_t hdr)
++{
++  gpg_error_t err;
++  char record[RECORDSIZE];
++  estream_t infp;
++  size_t nread, nbytes;
++  int any;
++
++  err = build_header (record, hdr);
++  if (err)
++    {
++      if (gpg_err_code (err) == GPG_ERR_NOT_SUPPORTED)
++        {
++          log_info ("skipping unsupported file `%s'\n", hdr->name);
++          err = 0;
++        }
++      return err;
++    }
++
++  if (hdr->typeflag == TF_REGULAR)
++    {
++      infp = es_fopen (hdr->name, "rb");
++      if (!infp)
++        {
++          err = gpg_error_from_syserror ();
++          log_error ("can't open `%s': %s - skipped\n",
++                     hdr->name, gpg_strerror (err));
++          return err;
++        }
++    }
++  else
++    infp = NULL;
++
++  err = write_record (stream, record);
++  if (err)
++    goto leave;
++
++  if (hdr->typeflag == TF_REGULAR)
++    {
++      hdr->nrecords = (hdr->size + RECORDSIZE-1)/RECORDSIZE;
++      any = 0;
++      while (hdr->nrecords--)
++        {
++          nbytes = hdr->nrecords? RECORDSIZE : (hdr->size % RECORDSIZE);
++          if (!nbytes)
++            nbytes = RECORDSIZE;
++          nread = es_fread (record, 1, nbytes, infp);
++          if (nread != nbytes)
++            {
++              err = gpg_error_from_syserror ();
++              log_error ("error reading file `%s': %s%s\n",
++                         hdr->name, gpg_strerror (err),
++                         any? " (file shrunk?)":"");
++              goto leave;
++            }
++          any = 1;
++          err = write_record (stream, record);
++          if (err)
++            goto leave;
++        }
++      nread = es_fread (record, 1, 1, infp);
++      if (nread)
++        log_info ("note: file `%s' has grown\n", hdr->name);
++    }
++
++ leave:
++  if (err)
++    es_fclose (infp);
++  else if ((err = es_fclose (infp)))
++    log_error ("error closing file `%s': %s\n", hdr->name, gpg_strerror (err));
++      
++  return err;
++}
++
++
++static gpg_error_t
++write_eof_mark (estream_t stream)
++{
++  gpg_error_t err;
++  char record[RECORDSIZE];
++
++  memset (record, 0, sizeof record);
++  err = write_record (stream, record);
++  if (!err)
++    err = write_record (stream, record);
++  return err;
++}
++
++
++
++void
++gpgtar_create (char **inpattern)
++{
++  gpg_error_t err = 0;
++  const char *pattern;
++  struct scanctrl_s scanctrl_buffer;
++  scanctrl_t scanctrl = &scanctrl_buffer;
++  tar_header_t hdr, *start_tail;
++  estream_t outstream = NULL;
++
++  memset (scanctrl, 0, sizeof *scanctrl);
++  scanctrl->flist_tail = &scanctrl->flist;
++
++  for (; (pattern = *inpattern); inpattern++)
++    {
++      char *pat, *p;
++
++      if (!*pattern)
++        continue;
++
++      pat = xtrystrdup (pattern);
++      if (!pat)
++        {
++          err = gpg_error_from_syserror ();
++          log_error ("memory allocation problem: %s\n", gpg_strerror (err));
++          goto leave;
++        }
++      for (p=pat; *p; p++)
++        if (*p == '\\')
++          *p = '/';
++
++      if (opt.verbose > 1)
++        log_info ("scanning `%s'\n", pat);
++
++      start_tail = scanctrl->flist_tail;
++      if (!pattern_valid_p (pat))
++        log_error ("skipping invalid name `%s'\n", pat);
++      else if (!add_entry (pat, NULL, scanctrl)
++               && *start_tail && ((*start_tail)->typeflag & TF_DIRECTORY))
++        scan_recursive (pat, scanctrl);
++
++      xfree (pat);
++    }
++
++  if (opt.outfile)
++    {
++      outstream = es_fopen (opt.outfile, "wb");
++      if (!outstream)
++        {
++          err = gpg_error_from_syserror ();
++          log_error (_("can't create `%s': %s\n"),
++                     opt.outfile, gpg_strerror (err));
++          goto leave;
++        }
++    }
++  else
++    {
++      outstream = es_stdout;
++    }
++
++  for (hdr = scanctrl->flist; hdr; hdr = hdr->next)
++    {
++      err = write_file (outstream, hdr);
++      if (err)
++        goto leave;
++    }
++  err = write_eof_mark (outstream);
++
++ leave:
++  if (!err)
++    {
++      if (outstream != es_stdout)
++        err = es_fclose (outstream);
++      else
++        err = es_fflush (outstream);
++      outstream = NULL;
++    }
++  if (err)
++    {
++      log_error ("creating tarball `%s' failed: %s\n",
++                 es_fname_get (outstream), gpg_strerror (err));
++      if (outstream && outstream != es_stdout)
++        es_fclose (outstream);
++      if (opt.outfile)
++        remove (opt.outfile);
++    }
++  scanctrl->flist_tail = NULL;
++  while ( (hdr = scanctrl->flist) )
++    {
++      scanctrl->flist = hdr->next;
++      xfree (hdr);
++    }
++}
+diff -urNp orig/gnupg-2.0.16/tools/gpgtar-extract.c gnupg-2.0.16/tools/gpgtar-extract.c
+--- orig/gnupg-2.0.16/tools/gpgtar-extract.c	1970-01-01 01:00:00.000000000 +0100
++++ gnupg-2.0.16/tools/gpgtar-extract.c	2010-07-19 11:10:27.000000000 +0200
+@@ -0,0 +1,334 @@
++/* gpgtar-extract.c - Extract from a TAR archive
++ * Copyright (C) 2010 Free Software Foundation, Inc.
++ *
++ * This file is part of GnuPG.
++ *
++ * GnuPG is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 3 of the License, or
++ * (at your option) any later version.
++ *
++ * GnuPG is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, see <http://www.gnu.org/licenses/>.
++ */
++
++#include <config.h>
++#include <errno.h>
++#include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
++#include <sys/types.h>
++#include <sys/stat.h>
++#include <unistd.h>
++#include <assert.h>
++
++#include "i18n.h"
++#include "../common/sysutils.h"
++#include "gpgtar.h"
++
++#ifndef GPG_ERR_LIMIT_REACHED
++#define GPG_ERR_LIMIT_REACHED 183
++#endif
++
++
++static gpg_error_t
++extract_regular (estream_t stream, const char *dirname,
++                 tar_header_t hdr)
++{
++  gpg_error_t err;
++  char record[RECORDSIZE];
++  size_t n, nbytes, nwritten;
++  char *fname;
++  estream_t outfp = NULL;
++
++  fname = strconcat (dirname, "/", hdr->name, NULL);
++  if (!fname)
++    {
++      err = gpg_error_from_syserror ();
++      log_error ("error creating filename: %s\n", gpg_strerror (err));
++      goto leave;
++    }
++  else
++    err = 0;
++  
++  outfp = es_fopen (fname, "wb");
++  if (!outfp)
++    {
++      err = gpg_error_from_syserror ();
++      log_error ("error creating `%s': %s\n", fname, gpg_strerror (err));
++      goto leave;
++    }
++
++  for (n=0; n < hdr->nrecords;)
++    {
++      err = read_record (stream, record);
++      if (err)
++        goto leave;
++      n++;
++      nbytes = (n < hdr->nrecords)? RECORDSIZE : (hdr->size % RECORDSIZE);
++      nwritten = es_fwrite (record, 1, nbytes, outfp);
++      if (nwritten != nbytes)
++        {
++          err = gpg_error_from_syserror ();
++          log_error ("error writing `%s': %s\n", fname, gpg_strerror (err));
++          goto leave;
++        }
++    }
++  /* Fixme: Set permissions etc.  */
++
++ leave:
++  if (!err && opt.verbose)
++    log_info ("extracted `%s/'\n", fname);
++  es_fclose (outfp);
++  if (err && fname && outfp)
++    {
++      if (remove (fname))
++        log_error ("error removing incomplete file `%s': %s\n",
++                   fname, gpg_strerror (gpg_error_from_syserror ()));
++    }
++  xfree (fname);
++  return err;
++}
++
++
++static gpg_error_t
++extract_directory (const char *dirname, tar_header_t hdr)
++{
++  gpg_error_t err;
++  char *fname;
++  size_t prefixlen;
++  
++  prefixlen = strlen (dirname) + 1;
++  fname = strconcat (dirname, "/", hdr->name, NULL);
++  if (!fname)
++    {
++      err = gpg_error_from_syserror ();
++      log_error ("error creating filename: %s\n", gpg_strerror (err));
++      goto leave;
++    }
++  else
++    err = 0;
++
++  if (fname[strlen (fname)-1] == '/')
++    fname[strlen (fname)-1] = 0;
++
++ /* Note that we don't need to care about EEXIST because we always
++     extract into a new hierarchy.  */
++  if (gnupg_mkdir (fname, "-rwx------"))
++    {
++      err = gpg_error_from_syserror ();
++      if (gpg_err_code (err) == GPG_ERR_ENOENT)
++        {
++          /* Try to create the directory with parents but keep the
++             original error code in case of a failure.  */
++          char *p;
++          int rc = 0;
++          
++          for (p = fname+prefixlen; (p = strchr (p, '/')); p++)
++            {
++              *p = 0;
++              rc = gnupg_mkdir (fname, "-rwx------");
++              *p = '/';
++              if (rc)
++                break;
++            }
++          if (!rc && !gnupg_mkdir (fname, "-rwx------"))
++            err = 0;
++        }
++      if (err)
++        log_error ("error creating directory `%s': %s\n",
++                   fname, gpg_strerror (err));
++    }
++
++ leave:
++  if (!err && opt.verbose)
++    log_info ("created   `%s/'\n", fname);
++  xfree (fname);
++  return err;
++}
++
++
++static gpg_error_t
++extract (estream_t stream, const char *dirname, tar_header_t hdr)
++{
++  gpg_error_t err;
++  size_t n;
++
++  n = strlen (hdr->name);
++#ifdef HAVE_DOSISH_SYSTEM
++  if (strchr (hdr->name, '\\'))
++    {
++      log_error ("filename `%s' contains a backslash - "
++                 "can't extract on this system\n", hdr->name);
++      return gpg_error (GPG_ERR_INV_NAME);
++    }
++#endif /*HAVE_DOSISH_SYSTEM*/
++
++  if (!n
++      || strstr (hdr->name, "//") 
++      || strstr (hdr->name, "/../") 
++      || !strncmp (hdr->name, "../", 3)
++      || (n >= 3 && !strcmp (hdr->name+n-3, "/.." )))
++    {
++      log_error ("filename `%s' as suspicious parts - not extracting\n",
++                 hdr->name);
++      return gpg_error (GPG_ERR_INV_NAME);
++    }
++
++  if (hdr->typeflag == TF_REGULAR || hdr->typeflag == TF_UNKNOWN)
++    err = extract_regular (stream, dirname, hdr);
++  else if (hdr->typeflag == TF_DIRECTORY)
++    err = extract_directory (dirname, hdr);
++  else
++    {
++      char record[RECORDSIZE];
++
++      log_info ("unsupported file type %d for `%s' - skipped\n",
++                (int)hdr->typeflag, hdr->name);
++      for (err = 0, n=0; !err && n < hdr->nrecords; n++)
++        err = read_record (stream, record);
++    }
++  return err;
++}
++
++
++/* Create a new directory to be used for extracting the tarball.
++   Returns the name of the directory which must be freed by the
++   caller.  In case of an error a diagnostic is printed and NULL
++   returned.  */
++static char *
++create_directory (const char *dirprefix)
++{
++  gpg_error_t err = 0;
++  char *prefix_buffer = NULL;
++  char *dirname = NULL;
++  size_t n;
++  int idx;
++
++  /* Remove common suffixes.  */
++  n = strlen (dirprefix);
++  if (n > 4 && (!compare_filenames    (dirprefix + n - 4, EXTSEP_S "gpg")
++                || !compare_filenames (dirprefix + n - 4, EXTSEP_S "pgp")
++                || !compare_filenames (dirprefix + n - 4, EXTSEP_S "asc")
++                || !compare_filenames (dirprefix + n - 4, EXTSEP_S "pem")
++                || !compare_filenames (dirprefix + n - 4, EXTSEP_S "p7e")))
++    {
++      prefix_buffer = xtrystrdup (dirprefix);
++      if (!prefix_buffer)
++        {
++          err = gpg_error_from_syserror ();
++          goto leave;
++        }
++      prefix_buffer[n-4] = 0;
++      dirprefix = prefix_buffer;
++    }
++
++
++
++  for (idx=1; idx < 5000; idx++)
++    {
++      xfree (dirname);
++      dirname = xtryasprintf ("%s_%d_", dirprefix, idx);
++      if (!dirname)
++        {
++          err = gpg_error_from_syserror ();
++          goto leave;
++        }
++      if (!gnupg_mkdir (dirname, "-rwx------"))
++        goto leave; /* Ready.  */
++      if (errno != EEXIST && errno != ENOTDIR)
++        {
++          err = gpg_error_from_syserror ();
++          goto leave;
++        }
++    }
++  err = gpg_error (GPG_ERR_LIMIT_REACHED);
++
++ leave:
++  if (err)
++    {
++      log_error ("error creating an extract directory: %s\n",
++                 gpg_strerror (err));
++      xfree (dirname);
++      dirname = NULL;
++    }
++  xfree (prefix_buffer);
++  return dirname;
++}
++
++
++
++void
++gpgtar_extract (const char *filename)
++{
++  gpg_error_t err;
++  estream_t stream;
++  tar_header_t header = NULL;
++  const char *dirprefix = NULL;
++  char *dirname = NULL;
++
++  if (filename)
++    {
++      stream = es_fopen (filename, "rb");
++      if (!stream)
++        {
++          err = gpg_error_from_syserror ();
++          log_error ("error opening `%s': %s\n", filename, gpg_strerror (err));
++          return;
++        }
++    }
++  else
++    stream = es_stdin;  /* FIXME:  How can we enforce binary mode?  */
++
++
++  if (filename)
++    {
++      dirprefix = strrchr (filename, '/');
++      if (dirprefix)
++        dirprefix++;
++    }
++  else if (opt.filename)
++    {
++      dirprefix = strrchr (opt.filename, '/');
++      if (dirprefix)
++        dirprefix++;
++    }
++
++  if (!dirprefix || !*dirprefix)
++    dirprefix = "GPGARCH";
++
++  dirname = create_directory (dirprefix);
++  if (!dirname)
++    {
++      err = gpg_error (GPG_ERR_GENERAL);
++      goto leave;
++    }
++
++  if (opt.verbose)
++    log_info ("extracting to `%s/'\n", dirname);
++
++  for (;;)
++    {
++      header = gpgtar_read_header (stream);
++      if (!header)
++        goto leave;
++     
++      if (extract (stream, dirname, header))
++        goto leave;
++      xfree (header);
++      header = NULL;
++    }
++
++
++ leave:
++  xfree (header);
++  xfree (dirname);
++  if (stream != es_stdin)
++    es_fclose (stream);
++  return;
++}
+diff -urNp orig/gnupg-2.0.16/tools/gpgtar-list.c gnupg-2.0.16/tools/gpgtar-list.c
+--- orig/gnupg-2.0.16/tools/gpgtar-list.c	1970-01-01 01:00:00.000000000 +0100
++++ gnupg-2.0.16/tools/gpgtar-list.c	2010-07-19 10:52:02.000000000 +0200
+@@ -0,0 +1,323 @@
++/* gpgtar-list.c - List a TAR archive
++ * Copyright (C) 2010 Free Software Foundation, Inc.
++ *
++ * This file is part of GnuPG.
++ *
++ * GnuPG is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 3 of the License, or
++ * (at your option) any later version.
++ *
++ * GnuPG is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, see <http://www.gnu.org/licenses/>.
++ */
++
++#include <config.h>
++#include <errno.h>
++#include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
++#include <assert.h>
++
++#include "i18n.h"
++#include "gpgtar.h"
++
++
++
++static unsigned long long
++parse_xoctal (const void *data, size_t length, const char *filename)
++{
++  const unsigned char *p = data;
++  unsigned long long value;
++
++  if (!length)
++    value = 0;
++  else if ( (*p & 0x80))
++    {
++      /* Binary format.  */
++      value = (*p++ & 0x7f);
++      while (--length)
++        {
++          value <<= 8;
++          value |= *p++;
++        }
++    }
++  else
++    {
++      /* Octal format  */
++      value = 0;
++      /* Skip leading spaces and zeroes.  */
++      for (; length && (*p == ' ' || *p == '0'); length--, p++)
++        ;
++      for (; length && *p; length--, p++)
++        {
++          if (*p >= '0' && *p <= '7')
++            {
++              value <<= 3;
++              value += (*p - '0');
++            }
++          else
++            {
++              log_error ("%s: invalid octal number encountered - assuming 0\n", 
++                         filename);
++              value = 0;
++              break;
++            }
++        }
++    }
++  return value;
++}
++
++
++static tar_header_t
++parse_header (const void *record, const char *filename)
++{
++  const struct ustar_raw_header *raw = record;
++  size_t n, namelen, prefixlen;
++  tar_header_t header;
++  int use_prefix;
++
++  use_prefix = (!memcmp (raw->magic, "ustar", 5) 
++                && (raw->magic[5] == ' ' || !raw->magic[5]));
++
++
++  for (namelen=0; namelen < sizeof raw->name && raw->name[namelen]; namelen++)
++    ;
++  if (namelen == sizeof raw->name)
++    log_info ("%s: warning: name not terminated by a nul byte\n", filename);
++  for (n=namelen+1; n < sizeof raw->name; n++)
++    if (raw->name[n])
++      {
++        log_info ("%s: warning: garbage after name\n", filename);
++        break;
++      }
++
++
++  if (use_prefix && raw->prefix[0])
++    {
++      for (prefixlen=0; (prefixlen < sizeof raw->prefix
++                         && raw->prefix[prefixlen]); prefixlen++)
++        ;
++      if (prefixlen == sizeof raw->prefix)
++        log_info ("%s: warning: prefix not terminated by a nul byte\n",
++                  filename);
++      for (n=prefixlen+1; n < sizeof raw->prefix; n++)
++        if (raw->prefix[n])
++          {
++            log_info ("%s: warning: garbage after prefix\n", filename);
++            break;
++          }
++    }
++  else
++    prefixlen = 0;
++
++  header = xtrycalloc (1, sizeof *header + prefixlen + 1 + namelen);
++  if (!header)
++    {
++      log_error ("%s: error allocating header: %s\n",
++                 filename, gpg_strerror (gpg_error_from_syserror ()));
++      return NULL;
++    }
++  if (prefixlen)
++    {
++      n = prefixlen;
++      memcpy (header->name, raw->prefix, n);
++      if (raw->prefix[n-1] != '/')
++        header->name[n++] = '/';
++    }
++  else
++    n = 0;
++  memcpy (header->name+n, raw->name, namelen);
++  header->name[n+namelen] = 0;
++  
++  header->mode  = parse_xoctal (raw->mode, sizeof raw->mode, filename);
++  header->uid   = parse_xoctal (raw->uid, sizeof raw->uid, filename);
++  header->gid   = parse_xoctal (raw->gid, sizeof raw->gid, filename);
++  header->size  = parse_xoctal (raw->size, sizeof raw->size, filename);
++  header->mtime = parse_xoctal (raw->mtime, sizeof raw->mtime, filename);
++  /* checksum = */
++  switch (raw->typeflag[0])
++    {
++    case '0': header->typeflag = TF_REGULAR; break;
++    case '1': header->typeflag = TF_HARDLINK; break;
++    case '2': header->typeflag = TF_SYMLINK; break;
++    case '3': header->typeflag = TF_CHARDEV; break;
++    case '4': header->typeflag = TF_BLOCKDEV; break;
++    case '5': header->typeflag = TF_DIRECTORY; break;
++    case '6': header->typeflag = TF_FIFO; break;
++    case '7': header->typeflag = TF_RESERVED; break;
++    default:  header->typeflag = TF_UNKNOWN; break;
++    }
++
++
++  /* Compute the number of data records following this header.  */
++  if (header->typeflag == TF_REGULAR || header->typeflag == TF_UNKNOWN)
++    header->nrecords = (header->size + RECORDSIZE-1)/RECORDSIZE;
++  else
++    header->nrecords = 0;
++  
++
++  return header;
++}
++
++
++
++/* Read the next block, assming it is a tar header.  Returns a header
++   object on success or NULL one error.  In case of an error an error
++   message has been printed.  */
++static tar_header_t
++read_header (estream_t stream)
++{
++  gpg_error_t err;
++  char record[RECORDSIZE];
++  int i;
++
++  err = read_record (stream, record);
++  if (err)
++    return NULL;
++
++  for (i=0; i < RECORDSIZE && !record[i]; i++)
++    ;
++  if (i == RECORDSIZE)
++    {
++      /* All zero header - check whether it is the first part of an
++         end of archive mark.  */
++      err = read_record (stream, record);
++      if (err)
++        return NULL;
++      
++      for (i=0; i < RECORDSIZE && !record[i]; i++)
++        ;
++      if (i != RECORDSIZE)
++        log_info ("%s: warning: skipping empty header\n",
++                  es_fname_get (stream));
++      else
++        {
++          /* End of archive - FIXME: we might want to check for garbage.  */
++          return NULL;
++        }
++    }
++
++  return parse_header (record, es_fname_get (stream));
++}
++
++
++/* Skip the data records according to HEADER.  Prints an error message
++   on error and return -1. */
++static int
++skip_data (estream_t stream, tar_header_t header)
++{
++  char record[RECORDSIZE];
++  unsigned long long n;
++
++  for (n=0; n < header->nrecords; n++)
++    {
++      if (read_record (stream, record))
++        return -1;
++    }
++
++  return 0;
++}
++
++
++
++static void
++print_header (tar_header_t header, estream_t out)
++{
++  unsigned long mask;
++  char modestr[10+1];
++  int i;
++
++  *modestr = '?';
++  switch (header->typeflag)
++    {
++    case TF_REGULAR:  *modestr = '-'; break;
++    case TF_HARDLINK: *modestr = 'h'; break;
++    case TF_SYMLINK:  *modestr = 'l'; break;
++    case TF_CHARDEV:  *modestr = 'c'; break;
++    case TF_BLOCKDEV: *modestr = 'b'; break;
++    case TF_DIRECTORY:*modestr = 'd'; break;
++    case TF_FIFO:     *modestr = 'f'; break;
++    case TF_RESERVED: *modestr = '='; break;
++    case TF_UNKNOWN:  break;
++    case TF_NOTSUP:   break;
++    }
++  for (mask = 0400, i = 0; i < 9; i++, mask >>= 1)
++    modestr[1+i] = (header->mode & mask)? "rwxrwxrwx"[i]:'-';
++  if ((header->typeflag & 04000))
++    modestr[3] = modestr[3] == 'x'? 's':'S';
++  if ((header->typeflag & 02000))
++    modestr[6] = modestr[6] == 'x'? 's':'S';
++  if ((header->typeflag & 01000))
++    modestr[9] = modestr[9] == 'x'? 't':'T';
++  modestr[10] = 0;
++
++  es_fprintf (out, "%s %lu %lu/%lu %12llu %s %s\n",
++              modestr, header->nlink, header->uid, header->gid, header->size,
++              isotimestamp (header->mtime), header->name);
++}
++
++
++
++/* List the tarball FILENAME or, if FILENAME is NULL, the tarball read
++   from stdin.  */
++void
++gpgtar_list (const char *filename)
++{
++  gpg_error_t err;
++  estream_t stream;
++  tar_header_t header;
++
++  if (filename)
++    {
++      stream = es_fopen (filename, "rb");
++      if (!stream)
++        {
++          err = gpg_error_from_syserror ();
++          log_error ("error opening `%s': %s\n", filename, gpg_strerror (err));
++          return;
++        }
++    }
++  else
++    stream = es_stdin;  /* FIXME:  How can we enforce binary mode?  */
++
++  for (;;)
++    {
++      header = read_header (stream);
++      if (!header)
++        goto leave;
++      
++      print_header (header, es_stdout);
++      
++      if (skip_data (stream, header))
++        goto leave;
++      xfree (header);
++      header = NULL;
++    }
++
++
++ leave:
++  xfree (header);
++  if (filename)
++    es_fclose (stream);
++  return;
++}
++
++tar_header_t
++gpgtar_read_header (estream_t stream)
++{
++  /*FIXME: Change to return an error code.  */
++  return read_header (stream);
++}
++
++void
++gpgtar_print_header (tar_header_t header, estream_t out)
++{
++  if (header && out)
++    print_header (header, out);
++}
+diff -urNp orig/gnupg-2.0.16/tools/gpgtar.c gnupg-2.0.16/tools/gpgtar.c
+--- orig/gnupg-2.0.16/tools/gpgtar.c	1970-01-01 01:00:00.000000000 +0100
++++ gnupg-2.0.16/tools/gpgtar.c	2010-07-19 11:17:08.000000000 +0200
+@@ -0,0 +1,509 @@
++/* gpgtar.c - A simple TAR implementation mainly useful for Windows.
++ * Copyright (C) 2010 Free Software Foundation, Inc.
++ *
++ * This file is part of GnuPG.
++ *
++ * GnuPG is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 3 of the License, or
++ * (at your option) any later version.
++ *
++ * GnuPG is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, see <http://www.gnu.org/licenses/>.
++ */
++
++/* GnuPG comes with a shell script gpg-zip which creates archive files
++   in the same format as PGP Zip, which is actually a USTAR format.
++   That is fine and works nicely on all Unices but for Windows we
++   don't have a compatible shell and the supply of tar programs is
++   limited.  Given that we need just a few tar option and it is an
++   open question how many Unix concepts are to be mapped to Windows,
++   we might as well write our own little tar customized for use with
++   gpg.  So here we go.  */
++
++#include <config.h>
++#include <errno.h>
++#include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
++#include <assert.h>
++
++#include "util.h"
++#include "i18n.h"
++#include "sysutils.h"
++#include "../common/openpgpdefs.h"
++
++#include "gpgtar.h"
++
++
++/* Constants to identify the commands and options. */
++enum cmd_and_opt_values
++  {
++    aNull = 0,
++    aEncrypt    = 'e',
++    aDecrypt    = 'd',
++    aSign       = 's',
++
++    oSymmetric  = 'c',
++    oRecipient	= 'r',
++    oUser       = 'u',
++    oOutput	= 'o',
++    oQuiet      = 'q',
++    oVerbose	= 'v',
++    oNoVerbose	= 500,
++
++    aSignEncrypt,
++    oSkipCrypto,
++    oSetFilename,
++    aList
++  };
++
++
++/* The list of commands and options. */
++static ARGPARSE_OPTS opts[] = {
++  ARGPARSE_group (300, N_("@Commands:\n ")),
++    
++  ARGPARSE_c (aEncrypt,   "encrypt", N_("create an archive")),
++  ARGPARSE_c (aDecrypt,   "decrypt", N_("extract an archive")),
++  ARGPARSE_c (aSign,      "sign",    N_("create a signed archive")),
++  ARGPARSE_c (aList,      "list-archive", N_("list an archive")),
++
++  ARGPARSE_group (301, N_("@\nOptions:\n ")),
++
++  ARGPARSE_s_n (oSymmetric, "symmetric", N_("use symmetric encryption")),
++  ARGPARSE_s_s (oRecipient, "recipient", N_("|USER-ID|encrypt for USER-ID")),
++  ARGPARSE_s_s (oUser, "local-user",
++                N_("|USER-ID|use USER-ID to sign or decrypt")),
++  ARGPARSE_s_s (oOutput, "output", N_("|FILE|write output to FILE")),
++  ARGPARSE_s_n (oVerbose, "verbose", N_("verbose")),
++  ARGPARSE_s_n (oQuiet,	"quiet",  N_("be somewhat more quiet")),
++  ARGPARSE_s_n (oSkipCrypto, "skip-crypto", N_("skip the crypto processing")),
++  ARGPARSE_s_s (oSetFilename, "set-filename", "@"),
++
++  ARGPARSE_end ()
++};
++
++
++
++static void tar_and_encrypt (char **inpattern);
++static void decrypt_and_untar (const char *fname);
++static void decrypt_and_list (const char *fname);
++
++
++
++
++/* Print usage information and and provide strings for help. */
++static const char *
++my_strusage( int level )
++{
++  const char *p;
++
++  switch (level)
++    {
++    case 11: p = "gpgtar (GnuPG)";
++      break;
++    case 13: p = VERSION; break;
++    case 17: p = PRINTABLE_OS_NAME; break;
++    case 19: p = _("Please report bugs to <@EMAIL@>.\n"); break;
++
++    case 1:
++    case 40:
++      p = _("Usage: gpgtar [options] [files] [directories] (-h for help)");
++      break;
++    case 41:
++      p = _("Syntax: gpgtar [options] [files] [directories]\n"
++            "Encrypt or sign files into an archive\n");
++      break;
++
++    default: p = NULL; break;
++    }
++  return p;
++}
++
++
++static void
++set_cmd (enum cmd_and_opt_values *ret_cmd, enum cmd_and_opt_values new_cmd)
++{
++  enum cmd_and_opt_values cmd = *ret_cmd;
++
++  if (!cmd || cmd == new_cmd)
++    cmd = new_cmd;
++  else if (cmd == aSign && new_cmd == aEncrypt)
++    cmd = aSignEncrypt;
++  else if (cmd == aEncrypt && new_cmd == aSign)
++    cmd = aSignEncrypt;
++  else 
++    {
++      log_error (_("conflicting commands\n"));
++      exit (2);
++    }
++
++  *ret_cmd = cmd;
++}
++
++
++
++/* gpgtar main. */
++int
++main (int argc, char **argv)
++{
++  ARGPARSE_ARGS pargs;
++  const char *fname;
++  int no_more_options = 0;
++  enum cmd_and_opt_values cmd = 0;
++  int skip_crypto = 0;
++
++  assert (sizeof (struct ustar_raw_header) == 512);
++
++  gnupg_reopen_std ("gpgtar");
++  set_strusage (my_strusage);
++  log_set_prefix ("gpgtar", 1);
++
++  /* Make sure that our subsystems are ready.  */
++  i18n_init();
++  init_common_subsystems ();
++
++  /* Parse the command line. */
++  pargs.argc  = &argc;
++  pargs.argv  = &argv;
++  pargs.flags = ARGPARSE_FLAG_KEEP;
++  while (!no_more_options && optfile_parse (NULL, NULL, NULL, &pargs, opts))
++    {
++      switch (pargs.r_opt)
++        {
++        case oOutput:    opt.outfile = pargs.r.ret_str; break;
++        case oSetFilename: opt.filename = pargs.r.ret_str; break;
++	case oQuiet:     opt.quiet = 1; break;
++        case oVerbose:   opt.verbose++; break;
++        case oNoVerbose: opt.verbose = 0; break;
++          
++	case aList:
++        case aDecrypt:
++        case aEncrypt:
++        case aSign:
++          set_cmd (&cmd, pargs.r_opt);
++	  break;
++
++        case oSymmetric:
++          set_cmd (&cmd, aEncrypt);
++          opt.symmetric = 1;
++          break;
++
++        case oSkipCrypto:
++          skip_crypto = 1;
++          break;
++
++        default: pargs.err = 2; break;
++	}
++    }
++  
++  if (log_get_errorcount (0))
++    exit (2);
++
++  switch (cmd)
++    {
++    case aList:
++      if (argc > 1)
++        usage (1);
++      fname = argc ? *argv : NULL;
++      if (opt.filename)
++        log_info ("note: ignoring option --set-filename\n");
++      if (skip_crypto)
++        gpgtar_list (fname);
++      else
++        decrypt_and_list (fname);
++      break;
++
++    case aEncrypt:
++      if (!argc)
++        usage (1);
++      if (opt.filename)
++        log_info ("note: ignoring option --set-filename\n");
++      if (skip_crypto)
++        gpgtar_create (argv);
++      else
++        tar_and_encrypt (argv);
++      break;
++
++    case aDecrypt:
++      if (argc != 1)
++        usage (1);
++      if (opt.outfile)
++        log_info ("note: ignoring option --output\n");
++      fname = argc ? *argv : NULL;
++      if (skip_crypto)
++        gpgtar_extract (fname);
++      else
++        decrypt_and_untar (fname);
++      break;
++
++    default:
++      log_error (_("invalid command (there is no implicit command)\n"));
++      break;
++    }
++
++  return log_get_errorcount (0)? 1:0;
++}
++
++
++/* Read the next record from STREAM.  RECORD is a buffer provided by
++   the caller and must be at leadt of size RECORDSIZE.  The function
++   return 0 on success and and error code on failure; a diagnostic
++   printed as well.  Note that there is no need for an EOF indicator
++   because a tarball has an explicit EOF record. */
++gpg_error_t
++read_record (estream_t stream, void *record)
++{
++  gpg_error_t err;
++  size_t nread;
++
++  nread = es_fread (record, 1, RECORDSIZE, stream);
++  if (nread != RECORDSIZE)
++    {
++      err = gpg_error_from_syserror ();
++      if (es_ferror (stream))
++        log_error ("error reading `%s': %s\n",
++                   es_fname_get (stream), gpg_strerror (err));
++      else
++        log_error ("error reading `%s': premature EOF "
++                   "(size of last record: %zu)\n",
++                   es_fname_get (stream), nread);
++    }
++  else
++    err = 0;
++
++  return err;
++}
++
++
++/* Write the RECORD of size RECORDSIZE to STREAM.  FILENAME is the
++   name of the file used for diagnostics.  */
++gpg_error_t
++write_record (estream_t stream, const void *record)
++{
++  gpg_error_t err;
++  size_t nwritten;
++
++  nwritten = es_fwrite (record, 1, RECORDSIZE, stream);
++  if (nwritten != RECORDSIZE)
++    {
++      err = gpg_error_from_syserror ();
++      log_error ("error writing `%s': %s\n",
++                 es_fname_get (stream), gpg_strerror (err));
++    }
++  else
++    err = 0;
++  
++  return err;
++}
++
++
++/* Return true if FP is an unarmored OpenPGP message.  Note that this
++   fucntion reads a few bytes from FP but pushes them back.  */
++#if 0
++static int
++openpgp_message_p (estream_t fp)
++{
++  int ctb;
++
++  ctb = es_getc (fp);
++  if (ctb != EOF)
++    {
++      if (es_ungetc (ctb, fp))
++        log_fatal ("error ungetting first byte: %s\n", 
++                   gpg_strerror (gpg_error_from_syserror ()));
++      
++      if ((ctb & 0x80))
++        {
++          switch ((ctb & 0x40) ? (ctb & 0x3f) : ((ctb>>2)&0xf))
++            {
++            case PKT_MARKER:
++            case PKT_SYMKEY_ENC:
++            case PKT_ONEPASS_SIG:
++            case PKT_PUBKEY_ENC:
++            case PKT_SIGNATURE:
++            case PKT_COMMENT:
++            case PKT_OLD_COMMENT:
++            case PKT_PLAINTEXT:
++            case PKT_COMPRESSED:
++            case PKT_ENCRYPTED:
++              return 1; /* Yes, this seems to be an OpenPGP message.  */
++            default:
++              break;
++            }
++        }
++    }
++  return 0;
++}
++#endif
++
++
++
++
++static void
++tar_and_encrypt (char **inpattern)
++{
++  (void)inpattern;
++  log_error ("tar_and_encrypt has not yet been implemented\n");
++}
++
++
++
++static void
++decrypt_and_untar (const char *fname)
++{
++  (void)fname;
++  log_error ("decrypt_and_untar has not yet been implemented\n");
++}
++
++
++
++static void
++decrypt_and_list (const char *fname)
++{
++  (void)fname;
++  log_error ("decrypt_and_list has not yet been implemented\n");
++}
++
++
++
++
++/* A wrapper around mkdir which takes a string for the mode argument.
++   This makes it easier to handle the mode argument which is not
++   defined on all systems.  The format of the modestring is
++
++      "-rwxrwxrwx"
++      
++   '-' is a don't care or not set.  'r', 'w', 'x' are read allowed,
++   write allowed, execution allowed with the first group for the user,
++   the second for the group and the third for all others.  If the
++   string is shorter than above the missing mode characters are meant
++   to be not set.  */
++int
++gnupg_mkdir (const char *name, const char *modestr)
++{
++#ifdef HAVE_W32CE_SYSTEM
++  wchar_t *wname;
++  (void)modestr;
++  
++  wname = utf8_to_wchar (name);
++  if (!wname)
++    return -1;
++  if (!CreateDirectoryW (wname, NULL))
++    {
++      xfree (wname);
++      return -1;  /* ERRNO is automagically provided by gpg-error.h.  */
++    }
++  xfree (wname);
++  return 0;
++#elif MKDIR_TAKES_ONE_ARG
++  (void)modestr;
++  /* Note: In the case of W32 we better use CreateDirectory and try to
++     set appropriate permissions.  However using mkdir is easier
++     because this sets ERRNO.  */
++  return mkdir (name);
++#else
++  mode_t mode = 0;
++
++  if (modestr && *modestr)
++    {
++      modestr++;
++      if (*modestr && *modestr++ == 'r')
++        mode |= S_IRUSR;
++      if (*modestr && *modestr++ == 'w')
++        mode |= S_IWUSR;
++      if (*modestr && *modestr++ == 'x')
++        mode |= S_IXUSR;
++      if (*modestr && *modestr++ == 'r')
++        mode |= S_IRGRP;
++      if (*modestr && *modestr++ == 'w')
++        mode |= S_IWGRP;
++      if (*modestr && *modestr++ == 'x')
++        mode |= S_IXGRP;
++      if (*modestr && *modestr++ == 'r')
++        mode |= S_IROTH;
++      if (*modestr && *modestr++ == 'w')
++        mode |= S_IWOTH;
++      if (*modestr && *modestr++ == 'x')
++        mode |= S_IXOTH;
++    }
++  return mkdir (name, mode);
++#endif
++}
++
++#ifdef HAVE_W32_SYSTEM
++/* Return a malloced string encoded in UTF-8 from the wide char input
++   string STRING.  Caller must free this value.  Returns NULL and sets
++   ERRNO on failure.  Calling this function with STRING set to NULL is
++   not defined.  */
++char *
++wchar_to_utf8 (const wchar_t *string)
++{
++  int n;
++  char *result;
++
++  n = WideCharToMultiByte (CP_UTF8, 0, string, -1, NULL, 0, NULL, NULL);
++  if (n < 0)
++    {
++      errno = EINVAL;
++      return NULL;
++    }
++
++  result = xtrymalloc (n+1);
++  if (!result)
++    return NULL;
++
++  n = WideCharToMultiByte (CP_UTF8, 0, string, -1, result, n, NULL, NULL);
++  if (n < 0)
++    {
++      xfree (result);
++      errno = EINVAL;
++      result = NULL;
++    }
++  return result;
++}
++
++
++/* Return a malloced wide char string from an UTF-8 encoded input
++   string STRING.  Caller must free this value.  Returns NULL and sets
++   ERRNO on failure.  Calling this function with STRING set to NULL is
++   not defined.  */
++wchar_t *
++utf8_to_wchar (const char *string)
++{
++  int n;
++  size_t nbytes;
++  wchar_t *result;
++
++  n = MultiByteToWideChar (CP_UTF8, 0, string, -1, NULL, 0);
++  if (n < 0)
++    {
++      errno = EINVAL;
++      return NULL;
++    }
++
++  nbytes = (size_t)(n+1) * sizeof(*result);
++  if (nbytes / sizeof(*result) != (n+1)) 
++    {
++      errno = ENOMEM;
++      return NULL;
++    }
++  result = xtrymalloc (nbytes);
++  if (!result)
++    return NULL;
++
++  n = MultiByteToWideChar (CP_UTF8, 0, string, -1, result, n);
++  if (n < 0)
++    {
++      free (result);
++      errno = EINVAL;
++      result = NULL;
++    }
++  return result;
++}
++#endif /*HAVE_W32_SYSTEM*/
+diff -urNp orig/gnupg-2.0.16/tools/gpgtar.h gnupg-2.0.16/tools/gpgtar.h
+--- orig/gnupg-2.0.16/tools/gpgtar.h	1970-01-01 01:00:00.000000000 +0100
++++ gnupg-2.0.16/tools/gpgtar.h	2010-07-19 11:15:30.000000000 +0200
+@@ -0,0 +1,132 @@
++/* gpgtar.h - Global definitions for gpgtar
++ * Copyright (C) 2010 Free Software Foundation, Inc.
++ *
++ * This file is part of GnuPG.
++ *
++ * GnuPG is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 3 of the License, or
++ * (at your option) any later version.
++ *
++ * GnuPG is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, see <http://www.gnu.org/licenses/>.
++ */
++
++#ifndef GPGTAR_H
++#define GPGTAR_H
++
++#include "../common/util.h"
++#include "../common/estream.h"
++
++/* We keep all global options in the structure OPT.  */
++struct
++{
++  int verbose;
++  int quiet;
++  const char *outfile;
++  int symmetric;
++  const char *filename;
++} opt;
++
++
++/* The size of a tar record.  All IO is done in chunks of this size.
++   Note that we don't care about blocking because this version of tar
++   is not expected to be used directly on a tape drive in fact it is
++   used in a pipeline with GPG and thus any blocking would be
++   useless.  */
++#define RECORDSIZE 512 
++
++
++/* Description of the USTAR header format.  */
++struct ustar_raw_header
++{
++  char name[100];
++  char mode[8];
++  char uid[8];
++  char gid[8];
++  char size[12];
++  char mtime[12];
++  char checksum[8];
++  char typeflag[1];
++  char linkname[100];
++  char magic[6];
++  char version[2];
++  char uname[32];
++  char gname[32];   
++  char devmajor[8]; 
++  char devminor[8];
++  char prefix[155]; 
++  char pad[12];
++};
++
++
++/* Filetypes as defined by USTAR.  */
++typedef enum 
++  {
++    TF_REGULAR,
++    TF_HARDLINK,
++    TF_SYMLINK,
++    TF_CHARDEV,
++    TF_BLOCKDEV,
++    TF_DIRECTORY,
++    TF_FIFO,
++    TF_RESERVED,
++    TF_UNKNOWN,    /* Needs to be treated as regular file.  */
++    TF_NOTSUP      /* Not supported (used with --create).  */
++  } typeflag_t;
++
++
++/* The internal represenation of a TAR header.  */
++struct tar_header_s;
++typedef struct tar_header_s *tar_header_t;
++struct tar_header_s
++{
++  tar_header_t next;        /* Used to build a linked list iof entries.  */
++
++  unsigned long mode;       /* The file mode.  */
++  unsigned long nlink;      /* Number of hard links.  */
++  unsigned long uid;        /* The user id of the file.  */
++  unsigned long gid;        /* The group id of the file.  */
++  unsigned long long size;  /* The size of the file.  */
++  unsigned long long mtime; /* Modification time since Epoch.  Note
++                               that we don't use time_t here but a
++                               type which is more likely to be larger
++                               that 32 bit and thus allows to track
++                               times beyond 2106.  */
++  typeflag_t typeflag;      /* The type of the file.  */
++  
++
++  unsigned long long nrecords; /* Number of data records.  */
++
++  char name[1];             /* Filename (dynamically extended).  */
++};
++
++
++/*-- gpgtar.c --*/
++gpg_error_t read_record (estream_t stream, void *record);
++gpg_error_t write_record (estream_t stream, const void *record);
++
++int gnupg_mkdir (const char *name, const char *modestr);
++#ifdef HAVE_W32_SYSTEM
++char *wchar_to_utf8 (const wchar_t *string);
++wchar_t *utf8_to_wchar (const char *string);
++#endif
++
++/*-- gpgtar-create.c --*/
++void gpgtar_create (char **inpattern);
++
++/*-- gpgtar-extract.c --*/
++void gpgtar_extract (const char *filename);
++
++/*-- gpgtar-list.c --*/
++void gpgtar_list (const char *filename);
++tar_header_t gpgtar_read_header (estream_t stream);
++void gpgtar_print_header (tar_header_t header, estream_t out);
++
++
++#endif /*GPGTAR_H*/
