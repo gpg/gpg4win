@@ -1,3 +1,8 @@
+2010-07-20  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+
+	* LINGUAS: Add pt.
+	* pt.po: New Portuguese po file, contributed by Marco A.G.Pinto.
+
 2010-05-11  Marcus Brinkmann  <marcus@g10code.de>
 
 	* POTFILES.in: Remove inst-winpt.nsi, inst-gpgee.nsi,
