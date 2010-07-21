@@ -1,5 +1,7 @@
 2010-07-21  Werner Koch  <wk@g10code.com>
 
+	* src/uninst-gpgol.nsi, src/inst-gpgol.nsi: Install pt and sv locale.
+
 	* packages/packages.current: Update gpgex and libgpg-error.
 
 	* src/inst-gpgex.nsi: Install pt locale.

@@ -284,11 +284,11 @@ chk  7a3488f5844068d67074f2507dd8a7ed9c69ff04
 #
 # GpgOL
 #
-#server ftp://ftp.g10code.com/g10code/gpgol
-server ftp://ftp.g10code.com/g10code/scratch
+server ftp://ftp.g10code.com/g10code/gpgol
 
-file gpgol-1.1.2-svn334.tar.bz2
-chk  3938a9971f9db3e0f9887e4c8e12b55ba3daa433
+file gpgol-1.1.2.tar.bz2
+chk  de18deed0a4c199b2566287eea94a918ea4e2fc8 
+
 
 #
 # GpgEX
