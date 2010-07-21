@@ -19,7 +19,7 @@
 
 EXTRA_DIST = nsi-mode.el pkg-copyright.txt beta-warning.txt \
 	     README.ar.txt README.de.txt README.en.txt README.es.txt \
-	     README.fr.txt README.ru.txt
+	     README.fr.txt README.ru.txt README.pt.txt
 
 
 SUBDIRS = logo manual website

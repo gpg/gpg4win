@@ -84,7 +84,7 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi config.site \
         inst-final.nsi
 
 
-gpg4win_readme_ll = en de ar es fr ru
+gpg4win_readme_ll = en de ar es fr ru pt
 
 README_files = $(addsuffix .txt,$(addprefix README.,$(gpg4win_readme_ll)))
 
