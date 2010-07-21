@@ -58,6 +58,8 @@ ${MementoSection} "GnuPG" SEC_gnupg2
   File "${prefix}/bin/gpgconf.exe"
   File "${prefix}/bin/gpg-connect-agent.exe"
 
+  File /nonfatal "${prefix}/bin/gpgtar.exe"
+
 
   # As a special exception, these programs are not kept in
   # libexec/gnupg, where they belong.  Please see the comment in
