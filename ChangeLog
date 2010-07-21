@@ -1,3 +1,8 @@
+2010-07-21  Emanuel Schuetze <emanuel@intevation.de>
+	
+	* src/uninst-gpg4win.nsi, src/inst-gpg4win.nsi:
+	Update for install/uninstall new README.pt.txt file.
+
 2010-07-19  Werner Koch  <wk@g10code.com>
 
 	* src/uninst-gnupg2.nsi: Uninstall gpgtar.exe

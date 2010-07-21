@@ -32,6 +32,7 @@ Section "-gpg4win" SEC_gpg4win
   File "${BUILD_DIR}/README.es.txt"
   File "${BUILD_DIR}/README.fr.txt"
   File "${BUILD_DIR}/README.ru.txt"
+  File "${BUILD_DIR}/README.pt.txt"
 
   File "${BUILD_DIR}/versioninfo.txt"
 
