@@ -61,6 +61,7 @@ EXTRA_DIST = autogen.sh README.SVN ONEWS \
 	patches/gnupg2-2.0.14/02-scd-no-service.patch \
 	patches/gnupg2-2.0.16/01-estream.patch \
 	patches/gnupg2-2.0.16/02-gpgtar.patch \
+        patches/gnupg2-2.0.16/03-kbx-realloc.patch \
 	patches/dirmngr-1.0.3/01-ldaphttp.patch \
 	patches/gpgol-0.9.91/01-gpgme.patch \
         patches/gpa-0.9.0/01-title-prop.patch \
