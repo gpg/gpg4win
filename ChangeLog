@@ -1,3 +1,7 @@
+2010-07-23  Werner Koch  <wk@g10code.com>
+
+	* patches/gnupg2-2.0.16/03-kbx-realloc.patch: New.
+
 2010-07-22  Werner Koch  <wk@g10code.com>
 
 	* patches/gpgme/02-w32-io-threads.patch: Revert the theoretical
