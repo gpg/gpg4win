@@ -1,3 +1,7 @@
+2010-07-27  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+
+	* pt.po: Update po file by Marco. Remove unused lines.
+
 2010-07-20  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
 	* LINGUAS: Add pt.

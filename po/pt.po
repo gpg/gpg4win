@@ -1,5 +1,5 @@
-# Spanish translations for gpg4win package.
-# Copyright (C) 2007 g10 Code GmbH
+# Portuguese translations for gpg4win package.
+# Copyright (C) 2010 g10 Code GmbH
 # This file is distributed under the same license as the gpg4win package.
 #
 msgid ""
@@ -459,42 +459,7 @@ msgstr "Windows Privacy Tray (WinPT)."
 
 #: src/inst-winpt.nsi:49
 msgctxt "DESC_Menu_winpt"
-msgid "Run the Windows Privacy Tray key management tool. This is a versatile key management and encryption tool."
+msgid ""
+"Run the Windows Privacy Tray key management tool. This is a versatile key "
+"management and encryption tool."
 msgstr "Executar a ferramenta de gestão de chaves Windows Privacy Tray. Esta é uma ferramenta versátil para gestão de chaves e encriptação."
-
-#~ msgctxt "DESC_Menu_gpa"
-
-#~ msgid ""
-#~ "Run the GNU Privacy Assistant key management tool. This is an alternative "
-#~ "to the WinPT key management tool."
-#~ msgstr ""
-#~ "Ejecutar la herramienta de gestión de llaves GNU Privacy Assistant. Ésta "
-#~ "es una alternativa a la herramienta de manejo de llaves WinPT."
-#~ msgctxt "DESC_Name_man_novice_en"
-
-#~ msgid "Novice Manual"
-#~ msgstr "Manuel del principiante (Inglés)"
-#~ msgctxt "DESC_SEC_man_novice_en"
-
-#~ msgid "Gpg4Win Manual for the Novice User"
-#~ msgstr "Manual de Gpg4Win para el principiante (Inglés)"
-#~ msgctxt "DESC_SEC_gnupg2"
-
-#~ msgid "GNU Privacy Guard with S/MIME support"
-#~ msgstr "GNU Privacy Guard (GnuPG) con soporte para S/MIME"
-#~ msgctxt "DESC_SEC_kleopatra"
-
-#~ msgid "Kleopatra"
-#~ msgstr "Kleopatra"
-#~ msgctxt "DESC_SEC_sylpheed"
-
-#~ msgid "Sylpheed-Claws Mail-User-Agent"
-#~ msgstr "Cliente de correo Sylpheed-Claws"
-#~ msgctxt "DESC_Menu_sylpheed"
-
-#~ msgid "Run the Sylpheed-Claws mailprogram."
-#~ msgstr "Ejecutar el cliente de correo Sylpheed-Claws."
-#~ msgctxt "DESC_Menu_sylpheed_pdf"
-
-#~ msgid "Show the online manual of Sylpheed Claws"
-#~ msgstr "Mostrar el manual en línea de Sylpheed Claws"
