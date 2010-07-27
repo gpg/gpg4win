@@ -1,3 +1,7 @@
+2010-07-27  Werner Koch  <wk@g10code.com>
+
+	* src/sha1sum.c (unescapefname): Fix unescaping of \f,\v and \b.
+
 2010-07-23  Werner Koch  <wk@g10code.com>
 
 	* patches/gnupg2-2.0.16/03-kbx-realloc.patch: New.

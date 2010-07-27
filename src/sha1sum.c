@@ -755,9 +755,9 @@ unescapefname (char *fname)
             case '\\': *d++ = '\\'; break;
             case 'n': *d++ = '\n'; break;
             case 'r': *d++ = '\r'; break;
-            case 'f': *d++ = '\r'; break;
-            case 'v': *d++ = '\r'; break;
-            case 'b': *d++ = '\r'; break;
+            case 'f': *d++ = '\f'; break;
+            case 'v': *d++ = '\v'; break;
+            case 'b': *d++ = '\b'; break;
             default: *d++ = '\\'; *d++ = *s; break;
             }
         }
