@@ -68,8 +68,16 @@ of the most important ones:
   Operating System: Windows 2000, XP (32/64), Vista (32/64)
   Outlook: 2003, 2007
 
-Short overview on changes compared to version 2.0.2:
-----------------------------------------------------
+
+Short overview on changes of 2.0.4 compared to version 2.0.3:
+-------------------------------------------------------------
+- GnuPG-Backend:
+  * Patch for reallocation bug in GPGSM, agains gnupg 2.0.14
+    (see http://lists.gnupg.org/pipermail/gnupg-announce/2010q3/000302.html)
+
+
+Short overview on changes of 2.0.3 compared to version 2.0.2:
+-------------------------------------------------------------
 - Pinentry:
   * Change default: switch back from QT4 to GTK
     (reason: 2.0.2 has a critical problem with pinentry-qt4; 
@@ -90,47 +98,6 @@ Short overview on changes compared to version 2.0.2:
     GpgEX:        0.9.5
     Claws-Mail:   3.7.4cvs1
     Kompendium:   3.0.0
-
-Short overview on changes compared to version 2.0.1:
-----------------------------------------------------
-- Kleopatra:
-  * New certificate wizard for OpenPGP and X.509 improved
-  * Certificate selection dialog for sign/encrypt comes up in case of  
-    conflict only
-  * Result dialog for sign/encrypt combined in one window
-  * File crypto operations with GpgEX stabilized
-  * SmartCard support for X.509 NetKey cards improved
-  * Rekursive sign/encrypt of files/directory now possible; condition:  
-    external archive tool required (see README file for configuration)
-  * new oxygen icons
-  * Several minor and medium issues and errors were fixed
-
-- GpgOL:
-  * Symbol load mechanism improved to add new icons
-    (now with crypto icons for the message list)
-
-- Pinentry:
-  * Change default: switch from GTK to QT4
-    (GTK still enabled for gpg4win-light installer)
-  * new icons for pinentry-qt4
-  * Pinentry-qt4 dialog always comes up in foreground
-
-- GnuPG-Backend:
-  * Generate new certificate for OpenPGP/X.509: default key length
-    updated (new Default: RSA, 2048 bit); 
-    furthermore select list of key length in Kleopatra updated
-
-- Installer:
-  * new images for NSIS installer
-
-- Included components are:
-    GnuPG:        2.0.14
-    Kleopatra:    2.0.14-svn1098530 (20100303)
-    GPA:          0.9.0
-    GpgOL:        1.1.1
-    GpgEX:        0.9.5
-    Claws-Mail:   3.7.4cvs1
-    Kompendium:   3.0.0-rc1
 
 
 3. Known Bugs (and Workarounds)
