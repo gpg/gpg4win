@@ -1,7 +1,7 @@
 2010-05-28  Emanuel Schuetze  <emanuel@intevation.de>
 
-	* patches/gnupg2-2.0.14/02-gpgsm-realloc-bug.patch:
- 	Add gpgsm patch.
+	* patches/gnupg2-2.0.14/02-gpgsm-realloc-bug.patch,
+  	Makefile.am: Add gpgsm patch.
 
 	* Release 2.0.4.
 

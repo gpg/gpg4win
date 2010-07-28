@@ -57,6 +57,7 @@ EXTRA_DIST = autogen.sh README.SVN ONEWS \
 	patches/gnupg2-2.0.12/10-inv-sgnr.patch \
 	patches/gnupg2-2.0.12/11-photoid-sk.patch \
 	patches/gnupg2-2.0.14/01-encode-s2k.patch \
+	patches/gnupg2-2.0.14/02-gpgsm-realloc-bug.patch \
 	patches/dirmngr-1.0.3/01-ldaphttp.patch \
 	patches/gpgol-0.9.91/01-gpgme.patch \
         patches/gpa-0.9.0/01-title-prop.patch \
