@@ -4,6 +4,24 @@
 # distributed by www.gpg4win.org.
 
 
+Noteworthy changes in version 2.0.4 (2010-07-28)
+------------------------------------------------
+
+(en) GpgSM bug fix.
+
+(de) GpgSM Fehler wurde beseitigt.
+
+~~~~~~~~~~~~~~~
+GnuPG:        2.0.14
+Kleopatra:    2.0.14-svn1098530 (20100303)
+GPA:          0.9.0
+GpgOL:        1.1.1
+GpgEX:        0.9.5
+Claws-Mail:   3.7.4cvs1
+Kompendium:   3.0.0
+~~~~~~~~~~~~~~~
+
+
 Noteworthy changes in version 2.0.3 (2010-05-29)
 ------------------------------------------------
 
