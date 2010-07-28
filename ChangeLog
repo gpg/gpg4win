@@ -1,3 +1,8 @@
+2010-05-28  Emanuel Schuetze  <emanuel@intevation.de>
+
+	* patches/gnupg2-2.0.14/02-gpgsm-realloc-bug.patch:
+ 	Add gpgsm patch.
+
 2010-05-29  Werner Koch  <wk@g10code.com>
 
 	* Release 2.0.3.

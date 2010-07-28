@@ -1,0 +1,19 @@
+#! /bin/sh
+patch -p0 -f $* < $0
+exit $?
+
+kbx/
+2010-07-23  Werner Koch  <wk@g10code.com>
+
+        * keybox-blob.c (_keybox_create_x509_blob): Fix reallocation bug.
+
+--- kbx/keybox-blob.c   (revision 5367)
++++ kbx/keybox-blob.c   (working copy)
+@@ -898,6 +898,7 @@
+               rc = gpg_error_from_syserror ();
+               goto leave;
+             }
++          names = tmp;
+         }
+       names[blob->nuids++] = p;
+       if (!i && (p=x509_email_kludge (p)))
