@@ -4,6 +4,8 @@
 	website/newsarchive.htm4, website/newsarchive-de.htm4,
 	website/package-integrity-de.htm4, website/index-de.htm4,
 	website/NEWS.last: Update for 2.0.4.
+	* website/index.htm4, website/index-de.htm4: Add 2.0.4
+	announcement.
 
 2010-07-28  Emanuel Schuetze <emanuel@intevation.de>
 
