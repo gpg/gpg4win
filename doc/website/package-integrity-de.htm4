@@ -51,11 +51,13 @@ Für gpg4win-VERSION.tar.bz2:
 
 
 <p>
-Die Signaturen wurden mit dem OpenPGP-Zertifikat mit der ID <em>1CE0C630</em> erstellt
-und kann über OpenPGP-Zertifikatsserver abgeholt werden.
+Die Signaturen wurden mit folgendem OpenPGP-Zertifikat erstellt:<br>
+<b>Intevation File Distribution Key <distribution-key@intevation.de>
+(Schlüsselkennung: EC70B1B8)</b>
 </p>
 
 <p>
+Das Zertifikat kann über OpenPGP-Zertifikatsserver abgeholt werden.
 Ein Zertifikat von einem Zertifikatsserver abholen geht z.B. mit
 Kleopatra oder GPA. Die Prüfung einer Signatur kann man leicht mit
 GpgEX über den Explorer erledigen.

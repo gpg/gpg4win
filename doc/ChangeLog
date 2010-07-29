@@ -1,3 +1,10 @@
+2010-07-29  Emanuel Schuetze <emanuel@intevation.de>
+
+	* website/package-integrity.htm4, website/index.htm4,
+	website/newsarchive.htm4, website/newsarchive-de.htm4,
+	website/package-integrity-de.htm4, website/index-de.htm4,
+	website/NEWS.last: Update for 2.0.4.
+
 2010-07-28  Emanuel Schuetze <emanuel@intevation.de>
 
 	* website/versions.m4, website/NEWS.last: Update for 2.0.4 release.

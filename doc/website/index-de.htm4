@@ -10,6 +10,10 @@ PAGE_START
 <p>
 <dl>
 
+<dt><b>+++ 2010-07-28: Gpg4win 2.0.4 veröffentlicht +++</b></dt>
+<dd>Security-Fix für GPGSM. <!-- Details in der <a href="#">Bekanntmachung</a>.-->
+</dd>
+
 <dt><b>+++ 2010-06-15: Neue Gpg4win-Spenden-Seite +++</b></dt>
 <dd>Unterstützen Sie die Gpg4win-Initiative und erscheinen Sie auf
 dieser <a href="donate-de.html">Spenderliste</a>!

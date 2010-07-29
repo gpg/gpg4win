@@ -51,11 +51,13 @@ For gpg4win-VERSION.tar.bz2:
   >http://ftp.gpg4win.org/gpg4win-VERSION.tar.bz2.sig</a>
 
 <p>
-The signatures have been created with the OpenPGP certificate with the ID <em>1CE0C630</em>
-and can be retrieved from OpenPGP certificate servers.
+The signatures have been created with the following OpenPGP certificate<br>
+<b>Intevation File Distribution Key <distribution-key@intevation.de>
+(Key ID: EC70B1B8)</b>
 </p>
 
 <p>
+The certificate be retrieved from OpenPGP certificate servers.
 Loading a certificate from a certificate server can be done e.g. via
 Kleopatra or GPA.
 Checking the the signature of a file is best done with GpgEX via
