@@ -11,3 +11,5 @@
 \newcommand{\manualdateAdvanced}{@MANUALDATE_ADVANCED@}
 \newcommand{\compendiumVersionDE}{@COMPENDIUM_VERSION_DE@}
 \newcommand{\compendiumDateDE}{@COMPENDIUM_DATE_DE@}
+\newcommand{\compendiumVersionEN}{@COMPENDIUM_VERSION_EN@}
+\newcommand{\compendiumDateEN}{@COMPENDIUM_DATE_EN@}

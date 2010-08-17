@@ -9,6 +9,9 @@
 	manual/durchblicker.tex, manual/novices.tex,
 	manual/einsteiger.tex: Changed image path.
 
+	* manual/gpg4win-compendium-en.tex: Added English translation of
+	compendium by Brigitte Hamilton.
+	* manual/version.tex.in: Added English version number and date.
 
 2010-08-16  Emanuel Schuetze <emanuel@intevation.de>
 
