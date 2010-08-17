@@ -20,180 +20,231 @@
 TEXI2PDF = texi2pdf
 INDEX = makeindex
 
-png_files = \
-		sc-kleopatra-startmenu_de.png\
-		sc-kleopatra-mainwindow-empty_de.png\
-		sc-kleopatra-ChooseCertificateFormat_de.png\
-		sc-kleopatra-openpgp-personalDetails_de.png\
-		sc-kleopatra-openpgp-reviewParameters_de.png\
-		sc-kleopatra-openpgp-createKey_de.png\
-		sc-kleopatra-openpgp-pinentry_de.png\
-		sc-kleopatra-openpgp-keyPairCreated_de.png\
-		sc-kleopatra-openpgp-exportSecretKey_de.png\
-		sc-kleopatra-withOpenpgpTestkey_de.png\
-		sc-kleopatra-withAdeleKey_de.png\
-		sc-kleopatra-openpgp-certificateDetails_de.png\
-		sc-kleopatra-x509-personalDetails_de.png\
-		sc-kleopatra-x509-reviewParameters_de.png\
-		sc-kleopatra-x509-createKey_de.png\
-		sc-kleopatra-x509-pinentry_de.png\
-		sc-kleopatra-x509-keyPairCreated_de.png\
-		sc-kleopatra-exportCertificateToServer_de.png\
-		sc-kleopatra-certificateSearchOnKeyserver_de.png\
-		sc-kleopatra-verifySignedMail_de.png \
-		sc-kleopatra-certifyCertificate1_de.png \
-		sc-kleopatra-certifyCertificate2_de.png \
-		sc-kleopatra-certifyCertificate3_de.png \
-		sc-kleopatra-configureKeyserver_de.png\
-		sc-ol-adele-sendOpenpgpKey-inline_de.png\
-		sc-ol-adele-sendOpenpgpKey-attachment_de.png\
-		sc-kleopatra-import-certificate_de.png\
-		sc-kleopatra-import-openpgp-secret-key_de.png\
-		sc-kleopatra-encryption-chooseOpenpgpCertificate_de.png\
-		sc-kleopatra-encryption-successful_de.png\
-		sc-kleopatra-format-choice_de.png\
-		sc-kleopatra-sign-selectCertificate_de.png\
-		sc-kleopatra-encrypt-selectCertificate_de.png\
-		sc-ol-sendEncryptedMail_de.png\
-		sc-ol-sendSignedMail_de.png\
-		sc-gpgol-options_de.png\
-		sc-gpgol-options-textformat_de.png\
-		sc-kleopatra-sign-OpenpgpPinentry_de.png\
-		sc-kleopatra-sign-successful_de.png\
-		sc-kleopatra-encryptFile1_de.png\
-		sc-kleopatra-encryptFile2_de.png\
-		sc-kleopatra-encryptFile3_de.png\
-		sc-kleopatra-signFile1_de.png\
-		sc-kleopatra-signFile2_de.png\
-		sc-kleopatra-signFile3_de.png\
-		sc-kleopatra-decryptFile1_de.png\
-		sc-kleopatra-decryptFile2_de.png\
-		sc-kleopatra-verifyFile1_de.png\
-		sc-kleopatra-verifyFile2_de.png\
-		sc-kleopatra-verifyFile2a-badSignature_de.png\
-		sc-gpgex-contextmenu-signEncrypt_de.png\
-		sc-gpgex-contextmenu-verifyDecrypt_de.png\
-		sc-wordpad-editOpenpgpKey_de.png\
-		sc-pinentry-p12-import-a_de.png\
-		sc-pinentry-p12-import-b_de.png\
-		sc-inst-language_de.png\
-		sc-inst-welcome_de.png\
-		sc-inst-license_de.png \
-		sc-inst-components_de.png \
-		sc-inst-directory_de.png \
-		sc-inst-options_de.png \
-		sc-inst-startmenu_de.png \
-		sc-inst-ready_de.png \
-		sc-inst-progress_de.png \
-		sc-inst-finished_de.png \
-		sc-inst-finished2_de.png \
-		openpgp-icon.png \
-		smime-icon.png \
-		\
-		adele01.png \
-		adele02.png \
-		clock-face.png \
-		egyptian-stone.png \
-		keyserver-world.png \
-		key-with-shadow-bit.png \
-		key-with-sigs.png \
-		letter-into-safe.png \
-		letter-out-of-safe.png \
-		man-with-signed-key.png \
-		mileage-indicator.png \
-		pk-safe-opened-with-sk.png \
-		pk-safe-open.png \
-		schlapphut-with-key.png \
-		sealed-envelope.png \
-		secret-key-exchange.png \
-		tangled-schlapphut.png \
-		think-passphrase.png \
-		verleihnix.png \
-		\
-		table-1.png table-2.png table-3.png \
-        sc-gpa-first-key.png \
-        sc-gpa-gen-email.png sc-gpa-gen-name.png \
-        sc-gpa-gen-passwd.png sc-gpa-nokey.png \
-        sc-gpa-rungpa.png sc-gpa-ks-export-p.png \
-        sc-gpa-two-keys.png \
-        sc-ol-send-test-key.png sc-ol-send-enc-msg1.png \
-        sc-ol-send-enc-msg2.png \
-        sc-gpgol-set-icon.png \
-        sc-winpt-startmenu.png sc-winpt-trayicon.png \
-	   	sc-winpt-clip-decrypt.png sc-winpt-good-sig.png \
-        sc-winpt-sel-enc-key.png sc-winpt-enctoself.png \
-	   	sc-misc-mein-key-asc.png \
-		sc-inst-welcome.png \
-		sc-inst-finished2.png \
-		sc-winpt-sign-passwd.png \
-		sc-gpgee-ctxmenu.png \
-		sc-gpgee-signmenu.png \
-		sc-gpa-gen-backup.png \
-	   	sc-gpa-gen-backup-warn.png \
-		sc-gpgol-options.png \
-		sc-gpgol-noword.png \
-		sc-en-inst-welcome.png \
-		sc-en-inst-license.png \
-		sc-en-inst-components.png \
-		sc-en-inst-directory.png \
-		sc-en-inst-options.png \
-		sc-en-inst-startmenu.png \
-		sc-en-inst-ready.png \
-		sc-en-inst-finished.png \
-		sc-en-gpa-gen-backup.png \
-		sc-en-gpa-gen-backup-warn.png \
-		sc-en-gpa-first-key.png \
-	   	sc-en-gpa-gen-email.png \
-		sc-en-gpa-gen-name.png \
-		sc-en-gpa-gen-passwd.png \
-		sc-en-gpa-ks-export-p.png \
-		sc-en-gpa-nokey.png \
-		sc-en-gpa-rungpa.png \
-	   	sc-en-gpa-two-keys.png
+png_compendium_files = \
+	images-compendium/adele01.png \
+	images-compendium/adele02.png \
+	images-compendium/clock-face.png \
+	images-compendium/egyptian-stone.png \
+	images-compendium/gpg4win-logo.png \
+	images-compendium/keyserver-world.png \
+	images-compendium/key-with-shadow-bit.png \
+	images-compendium/key-with-sigs.png \
+	images-compendium/letter-into-safe.png \
+	images-compendium/letter-out-of-safe.png \
+	images-compendium/man-with-signed-key.png \
+	images-compendium/mileage-indicator.png \
+	images-compendium/openpgp-icon.png \
+	images-compendium/pk-safe-opened-with-sk.png \
+	images-compendium/pk-safe-open.png \
+	images-compendium/sc-gpgex-contextmenu-signEncrypt_de.png \
+	images-compendium/sc-gpgex-contextmenu-verifyDecrypt_de.png \
+	images-compendium/sc-gpgol-options_de.png \
+	images-compendium/sc-gpgol-options-textformat_de.png \
+	images-compendium/schlapphut-with-key.png \
+	images-compendium/sc-inst-components_de.png \
+	images-compendium/sc-inst-directory_de.png \
+	images-compendium/sc-inst-finished2_de.png \
+	images-compendium/sc-inst-finished_de.png \
+	images-compendium/sc-inst-language_de.png \
+	images-compendium/sc-inst-license_de.png \
+	images-compendium/sc-inst-options_de.png \
+	images-compendium/sc-inst-progress_de.png \
+	images-compendium/sc-inst-ready_de.png \
+	images-compendium/sc-inst-startmenu_de.png \
+	images-compendium/sc-inst-welcome_de.png \
+	images-compendium/sc-kleopatra-certificateSearchOnKeyserver_de.png \
+	images-compendium/sc-kleopatra-certifyCertificate1_de.png \
+	images-compendium/sc-kleopatra-certifyCertificate2_de.png \
+	images-compendium/sc-kleopatra-certifyCertificate3_de.png \
+	images-compendium/sc-kleopatra-ChooseCertificateFormat_de.png \
+	images-compendium/sc-kleopatra-configureKeyserver_de.png \
+	images-compendium/sc-kleopatra-decryptFile1_de.png \
+	images-compendium/sc-kleopatra-decryptFile2_de.png \ 
+	images-compendium/sc-kleopatra-encryptFile1_de.png \
+	images-compendium/sc-kleopatra-encryptFile2_de.png \
+	images-compendium/sc-kleopatra-encryptFile3_de.png \
+	images-compendium/sc-kleopatra-encryption-chooseOpenpgpCertificate_de.png \
+	images-compendium/sc-kleopatra-encryption-successful_de.png \
+	images-compendium/sc-kleopatra-encrypt-selectCertificate_de.png \
+	images-compendium/sc-kleopatra-exportCertificateToServer_de.png \
+	images-compendium/sc-kleopatra-format-choice_de.png \
+	images-compendium/sc-kleopatra-import-certificate_de.png \
+	images-compendium/sc-kleopatra-import-openpgp-secret-key_de.png \
+	images-compendium/sc-kleopatra-mainwindow-empty_de.png \
+	images-compendium/sc-kleopatra-openpgp-certificateDetails_de.png \
+	images-compendium/sc-kleopatra-openpgp-createKey_de.png \
+	images-compendium/sc-kleopatra-openpgp-exportSecretKey_de.png \
+	images-compendium/sc-kleopatra-openpgp-keyPairCreated_de.png \
+	images-compendium/sc-kleopatra-openpgp-personalDetails_de.png \
+	images-compendium/sc-kleopatra-openpgp-pinentry_de.png \
+	images-compendium/sc-kleopatra-openpgp-reviewParameters_de.png \
+	images-compendium/sc-kleopatra-signEncryptFile2_de.png \
+	images-compendium/sc-kleopatra-signFile1_de.png \
+	images-compendium/sc-kleopatra-signFile2_de.png \
+	images-compendium/sc-kleopatra-signFile3_de.png \
+	images-compendium/sc-kleopatra-sign-OpenpgpPinentry_de.png \
+	images-compendium/sc-kleopatra-sign-selectCertificate_de.png \
+	images-compendium/sc-kleopatra-sign-successful_de.png \
+	images-compendium/sc-kleopatra-startmenu_de.png \
+	images-compendium/sc-kleopatra-verifyFile1_de.png \
+	images-compendium/sc-kleopatra-verifyFile2a-badSignature_de.png \
+	images-compendium/sc-kleopatra-verifyFile2_de.png \
+	images-compendium/sc-kleopatra-verifySignedMail_de.png \
+	images-compendium/sc-kleopatra-withAdeleKey_de.png \
+	images-compendium/sc-kleopatra-withOpenpgpTestkey_de.png \
+	images-compendium/sc-kleopatra-x509-createKey_de.png \
+	images-compendium/sc-kleopatra-x509-keyPairCreated_de.png \
+	images-compendium/sc-kleopatra-x509-personalDetails_de.png \
+	images-compendium/sc-kleopatra-x509-pinentry_de.png \
+	images-compendium/sc-kleopatra-x509-reviewParameters_de.png \
+	images-compendium/sc-ol-adele-sendOpenpgpKey-attachment_de.png \
+	images-compendium/sc-ol-adele-sendOpenpgpKey-inline_de.png \
+	images-compendium/sc-ol-sendEncryptedMail_de.png \
+	images-compendium/sc-ol-sendSignedMail_de.png \
+	images-compendium/sc-pinentry-p12-import-a_de.png \
+	images-compendium/sc-pinentry-p12-import-b_de.png \
+	images-compendium/sc-wordpad-editOpenpgpKey_de.png \
+	images-compendium/sealed-envelope.png \
+	images-compendium/secret-key-exchange.png \
+	images-compendium/smime-icon.png \
+	images-compendium/tangled-schlapphut.png \
+	images-compendium/think-passphrase.png \
+	images-compendium/verleihnix.png 
 
-web_png_files = blank.png next.png previous.png up.png \
-                home.png nonext.png noprevious.png noup.png
+png_manual_files = \
+	images-manual/adele01.png \
+	images-manual/adele02.png \
+	images-manual/clock-face.png \
+	images-manual/egyptian-stone.png \
+	images-manual/gpg4win-logo.png \
+	images-manual/keyserver-world.png \
+	images-manual/key-with-shadow-bit.png \
+	images-manual/key-with-sigs.png \
+	images-manual/letter-into-safe.png \
+	images-manual/letter-out-of-safe.png \
+	images-manual/man-with-signed-key.png \
+	images-manual/mileage-indicator.png \
+	images-manual/openpgp-icon.png \
+	images-manual/pk-safe-opened-with-sk.png \
+	images-manual/pk-safe-open.png \
+	images-manual/sc-en-gpa-first-key.png \
+	images-manual/sc-en-gpa-gen-backup.png
+	images-manual/sc-en-gpa-gen-backup-warn.png \
+	images-manual/sc-en-gpa-gen-email.png \
+	images-manual/sc-en-gpa-gen-name.png \
+	images-manual/sc-en-gpa-gen-passwd.png \
+	images-manual/sc-en-gpa-ks-export-p.png \
+	images-manual/sc-en-gpa-nokey.png \
+	images-manual/sc-en-gpa-rungpa.png \
+	images-manual/sc-en-gpa-two-keys.png \
+	images-manual/sc-en-inst-components.png \
+	images-manual/sc-en-inst-directory.png \
+	images-manual/sc-en-inst-finished.png \
+	images-manual/sc-en-inst-license.png \
+	images-manual/sc-en-inst-options.png \
+	images-manual/sc-en-inst-ready.png \
+	images-manual/sc-en-inst-startmenu.png \
+	images-manual/sc-en-inst-welcome.png \
+	images-manual/sc-gpa-fihrst-key.png \
+	images-manual/sc-gpa-genn-backup.png \
+	images-manual/sc-gpa-genn-backup-warn.png \
+	images-manual/sc-gpa-genn-email.png \
+	images-manual/sc-gpa-genn-name.png \
+	images-manual/sc-gpa-gepn-passwd.png \
+	images-manual/sc-gpa-ksu-export-p.png \
+	images-manual/sc-gpa-nokey.png \
+	images-manual/sc-gpa-rungpa.png \
+	images-manual/sc-gpa-two-keys.png \
+	images-manual/sc-gpgee-ctxmenu.png \
+	images-manual/sc-gpgee-signmenu.png \
+	images-manual/sc-gpgol-icons-es.png \
+	images-manual/sc-gpgol-menu-es.png \
+	images-manual/sc-gpgol-noword.png \
+	images-manual/sc-gpgol-options.png \
+	images-manual/sc-gpgol-set-icon.png \
+	images-manual/schlapphut-with-key.png \
+	images-manual/sc-inst-components.png \
+	images-manual/sc-inst-directory.png \
+	images-manual/sc-inst-finished2.png \
+	images-manual/sc-inst-finished.png \
+	images-manual/sc-inst-license.png \
+	images-manual/sc-inst-options.png \
+	images-manual/sc-inst-ready.png \
+	images-manual/sc-inst-startmenu.png \
+	images-manual/sc-inst-welcome.png \
+	images-manual/sc-misc-mein-key-asc.png \
+	images-manual/sc-ol-send-enc-msg1.png \
+	images-manual/sc-ol-send-enc-msg2.png \
+	images-manual/sc-ol-send-test-key.png \
+	images-manual/sc-winpt-clip-decrypt.png \
+	images-manual/sc-winpt-enctoself.png \
+	images-manual/sc-winpt-good-sig.png \
+	images-manual/sc-winpt-sel-enc-key.png \
+	images-manual/sc-winpt-sign-passwd.png \
+	images-manual/sc-winpt-startmenu.png \
+	images-manual/sc-winpt-trayicon.png \
+	images-manual/sealed-envelope.png \
+	images-manual/secret-key-exchange.png \
+	images-manual/smime-icon.png \
+	images-manual/table-1.png \
+	images-manual/table-2.png \
+	images-manual/table-3.png \
+	images-manual/tangled-schlapphut.png \
+	images-manual/think-passphrase.png \
+	images-manual/verleihnix.png
 
-eps_files = $(png_files:.png=.eps)
+png_hyperlatex_files = \
+	images-hyperlatex/blank.png \
+	images-hyperlatex/home.png \
+	images-hyperlatex/next.png \
+	images-hyperlatex/nonext.png \
+	images-hyperlatex/noprevious.png \
+	images-hyperlatex/noup.png \
+	images-hyperlatex/previous.png \
+	images-hyperlatex/up.png
 
-EXTRA_DIST = gpg4win-compendium-de.tex \
-				fdl.tex fdl-book.tex version.tex.in  \
-		  		$(eps_files) $(png_files) $(web_png_files) \
-				gpg4win-logo.eps gpg4win-logo.png \
-				# needed for Englisch novices manual:
-	     		novices.tex what-is-gpg4win.tex macros-en.tex \
-				# needed for (old) German manuals: \
-				# einsteiger.tex durchblicker.tex was-ist-gpg4win.tex macros.tex
+eps_compendium_files = $(png_compendium_files:%.png=%.eps)
+eps_manual_files = $(png_manual_files:.png=.eps)
 
-CLEANFILES = $(eps_files) \
-             *.dvi *.pdf *.pdf *.toc *.log *.aux *.out *.idx *.ilg *.ind\
+
+EXTRA_DIST = 	gpg4win-compendium-de.tex \
+				fdl.tex fdl-book.tex version.tex.in indexstyle.ist \
+				$(png_compendium_files) $(png_hyperlatex_files) \
+				# needed for old manuals (English and German):
+			 		$(png_manual_files) $(eps_manual_files) \
+				    novices.tex what-is-gpg4win.tex macros-en.tex \
+					# einsteiger.tex durchblicker.tex was-ist-gpg4win.tex macros.tex
+
+CLEANFILES = $(eps_compendium_files) $(eps_manual_files) \
+             *.dvi *.pdf *.pdf *.toc *.log *.aux *.out *.idx *.ilg *.ind \
 	     	 *.html.d-stamp  *.html.d/*
 DISTCLEANFILES = version.tex
 
 pkgdata_DATA = 	gpg4win-compendium-de.pdf \
 				novices.pdf 
 
-BUILT_SOURCES = $(png_files) 
+BUILT_SOURCES = $(png_compendium_files) 
 
 all-local: 	gpg4win-compendium-de.pdf \
 	   		gpg4win-compendium-de.html.d-stamp \
-			novices.pdf
+			novices.pdf durchblicker.pdf
 
-gpg4win-compendium-de.pdf : indexstyle.ist version.tex
-gpg4win-compendium-de.dvi : indexstyle.ist version.tex eps
+gpg4win-compendium-de.pdf : version.tex
+gpg4win-compendium-en.pdf : version.tex
+gpg4win-compendium-de.dvi : version.tex $(eps_compendium_files)
+gpg4win-compendium-en.dvi : version.tex $(eps_compendium_files)
 gpg4win-compendium-de.html.d-stamp : version.tex 
-einsteiger.dvi : version.tex macros.tex $(eps_files)
-einsteiger.html.d-stamp : version.tex macros.tex $(eps_files)
-durchblicker.dvi : version.tex macros.tex $(eps_files)
+	
+einsteiger.dvi : version.tex macros.tex $(eps_manual_files)
+einsteiger.html.d-stamp : version.tex macros.tex $(eps_manual_files)
+durchblicker.dvi : version.tex macros.tex $(eps_manual_files)
 durchblicker.html.d-stamp : version.tex macros.tex 
-novices.dvi : version.tex macros-en.tex $(eps_files)
+novices.dvi : version.tex macros-en.tex $(eps_manual_files)
 novices.html.d-stamp : version.tex macros-en.tex 
 
 
 %.eps : %.png
 	$(CONVERT) $< eps2:$@
-
-eps: $(eps_files)
 
 %.dvi : %.tex 
 	export MAKEINDEX='makeindex -g -s indexstyle.ist'; \
@@ -204,8 +255,10 @@ eps: $(eps_files)
 	$(TEXI2PDF) $<
 
 pdf-de: gpg4win-compendium-de.pdf
+pdf-en: gpg4win-compendium-en.pdf
 
 dvi-de: gpg4win-compendium-de.dvi
+dvi-en: gpg4win-compendium-en.dvi
 
 html-de: gpg4win-compendium-de.html.d-stamp
 

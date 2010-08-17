@@ -86,7 +86,7 @@
         %\T\manualinprogress
         \T\\
         \T\itshape\nouppercase{\leftmark}}
-    \T\fancyhead[RO,LE]{\includegraphics[height=0.7cm]{gpg4win-logo}}
+    \T\fancyhead[RO,LE]{\includegraphics[height=0.7cm]{images-compendium/gpg4win-logo}}
     \T\fancyfoot[C]{\thepage}
     \T\pagestyle{fancy}
 }
@@ -100,14 +100,14 @@
 \newcommand{\Email}{E-Mail}
 \newcommand{\EchelonUrl}{http://www.heise.de/tp/r4/artikel/6/6928/1.html}
 \newcommand\margin[1]{\marginline {\sffamily\scriptsize #1}}
-\newcommand{\marginOpenpgp}{\marginline{\vspace{10pt}\includegraphics[width=1.5cm]{openpgp-icon}}}
-\newcommand{\marginSmime}{\marginline{\vspace{10pt}\includegraphics[width=1.5cm]{smime-icon}}}
+\newcommand{\marginOpenpgp}{\marginline{\vspace{10pt}\includegraphics[width=1.5cm]{images-compendium/openpgp-icon}}}
+\newcommand{\marginSmime}{\marginline{\vspace{10pt}\includegraphics[width=1.5cm]{images-compendium/smime-icon}}}
 \newcommand{\IncludeImage}[2][]{
 \begin{center}
 \texorhtml{%
-  \includegraphics[#1]{#2}%
+  \includegraphics[#1]{images-compendium/#2}%
 }{%
-  \htmlimg{#2.png}%
+  \htmlimg{images-compendium/#2.png}%
 }
 \end{center}
 }
@@ -1108,9 +1108,9 @@ Im weiteren Verlauf dieses Kompendiums weisen wir mit diesen beiden
 Symbolen auf die beiden Alternativen hin:
 
 \begin{center}
-\includegraphics[width=2.5cm]{openpgp-icon}
+\includegraphics[width=2.5cm]{images-compendium/openpgp-icon}
 \hspace{1cm}
-\includegraphics[width=2.5cm]{smime-icon}
+\includegraphics[width=2.5cm]{images-compendium/smime-icon}
 \end{center}
 \end{latexonly}
 
@@ -1774,7 +1774,6 @@ Doppelklicken Sie auf Ihr neues Zertifikat, um alle Zertifikatsdetails
 sehen zu können:
 
 % screenshot: details of openpgp certificate
-\htmlattributes*{img}{width=508}
 \IncludeImage[width=0.85\textwidth]{sc-kleopatra-openpgp-certificateDetails_de}
 
 Was bedeuten die einzelnen Zertifikatsdetails?
@@ -2570,7 +2569,7 @@ IT-Sicherheits-Themen informieren:
 \begin{itemize}
     \item \uniurl[www.bsi.de]{http://www.bsi.de}
     \item \uniurl[www.bsi-fuer-buerger.de]{http://www.bsi-fuer-buerger.de}
-    \item \uniurl[www.gpg4win.de]{http://www.bsi.de}
+    \item \uniurl[www.gpg4win.de]{http://www.gpg4win.de}
 \end{itemize}
 
 Eine weitere, eher technische Informationsquelle zum Thema
@@ -2737,7 +2736,6 @@ allerdings genau denselben Zweck.
 \htmlattributes*{img}{width=300}
 \T\ifthenelse{\boolean{DIN-A5}}
 \T{\IncludeImage[width=0.5\textwidth]{man-with-signed-key}}
-{\IncludeImage[width=0.35\textwidth]{man-with-signed-key}}
 
 
 \clearpage

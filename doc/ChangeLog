@@ -1,3 +1,15 @@
+2010-08-17  Emanuel Schuetze <emanuel@intevation.de>
+
+	* manual/*.png, manual/Makefile.am: Moved to images-compendium, images-manual and
+	images-hyperlatex. Grouped for better handling different, 
+	multi-language documentation.
+	
+	* manual/gpg4win-compendium-de.tex,
+	manual/macros-en.tex, manual/macros.tex,
+	manual/durchblicker.tex, manual/novices.tex,
+	manual/einsteiger.tex: Changed image path.
+
+
 2010-08-16  Emanuel Schuetze <emanuel@intevation.de>
 
 	* website/donate.htm4, website/donate-de.htm4: Add new sponsor. Remove links (needs decision of the community).

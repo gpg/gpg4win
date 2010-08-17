@@ -1,6 +1,6 @@
 % einsteiger.tex                
 % Note, that this a HyperLaTeX source and not plain LaTeX!
-\documentclass[a4paper,11pt,twoside,titlepage,dvips]{scrartcl}
+\documentclass[a4paper,11pt,twoside,titlepage]{scrartcl}
 \usepackage{hyperlatex}
 \usepackage{a4wide}
 \usepackage{times}
@@ -13,9 +13,15 @@
 \usepackage{fancyhdr}
 \W\usepackage{rhxpanel}
 \W\usepackage{sequential}
+\usepackage{ifpdf}
 
-
-\T\DeclareGraphicsExtensions{.eps.gz,.eps}
+\begin{latexonly}
+\ifpdf
+  \DeclareGraphicsExtensions{.png}
+\else
+  \DeclareGraphicsExtensions{.eps}
+\fi
+\end{latexonly}
 
 
 % Hyperref should be among the last packages loaded
@@ -32,7 +38,7 @@
 \T\fancyhead{} % clear all fields
 \T\fancyhead[LO,RE]{Gpg4win für Einsteiger \manualversion\ \manualinprogress}
 \T\fancyhead[RO,LE]{\thepage}
-\T\fancyfoot[C]{\includegraphics[width=1cm]{gpg4win-logo}}
+\T\fancyfoot[C]{\includegraphics[width=1cm]{images-manual/gpg4win-logo}}
 
 
 % Title stuff 
