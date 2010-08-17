@@ -1,3 +1,9 @@
+2010-08-17  Emanuel Schuetze <emanuel@intevation.de>
+
+	* configure.ac: Added date and version for English compendium.
+
+
+
 2010-07-27  Werner Koch  <wk@g10code.com>
 
 	* src/sha1sum.c (unescapefname): Fix unescaping of \f,\v and \b.
