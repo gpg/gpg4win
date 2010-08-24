@@ -331,8 +331,8 @@ chk  268e424e94e62abb51eeca9c66d886dbee8455ab
 file libgcrypt/libgcrypt-1.4.6.tar.bz2
 chk  445b9e158aaf91e24eae3d1040c6213e9d9f5ba6
 
-#file libassuan/libassuan-2.0.0.tar.bz2
-#chk  b03c586a4eefdfc0bb1ec65ecf958b9890d429f7
+file libassuan/libassuan-2.0.1.tar.bz2
+chk  b7e9dbd41769cc20b1fb7db9f2ecdf276ffc352c
 
 name gnupg2-2.0.16.tar.bz2
 file gnupg/gnupg-2.0.16.tar.bz2
@@ -352,9 +352,6 @@ server ftp://ftp.g10code.com/g10code/scratch
 
 file gpgme-1.3.1-svn1460.tar.bz2
 chk  a309ae1880c84bf7d76fea7186b3247ee70b1693
-
-file libassuan-2.0.1-svn378.tar.bz2
-chk  2dcfad0f3cf0ef65af382892d6cdfee573ff6c22
 
 
 #
