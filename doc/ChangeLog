@@ -4,7 +4,7 @@
 
 	* manual/gpg4win-compendium-en.tex: First formal review. (Needs a technical review.)
 
-	* Makefile.am: Added new English compendium. Removed old English novices manual.
+	* manual/Makefile.am: Added new English compendium. Removed old English novices manual.
 
 	* manual/images-compendium/
 	sc-inst-components_en.png, sc-inst-directory_en.png,
@@ -22,6 +22,9 @@
 	sc-kleopatra-x509-personalDetails_en.png, 
 	sc-kleopatra-x509-reviewParameters_en.png, Makefile.am, manual/gpg4win-compendium-en.tex: 
 	Added new English screenshots, part one (created by Drew Northup).
+
+	* manual/Makefile.am: Fix typo.
+
 
 2010-08-17  Emanuel Schuetze <emanuel@intevation.de>
 

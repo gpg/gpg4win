@@ -228,7 +228,7 @@ eps_manual_files = $(png_manual_files:.png=.eps)
 EXTRA_DIST = 	gpg4win-compendium-de.tex \
 				gpg4win-compendium-en.tex \ 
 				fdl.tex fdl-book.tex version.tex.in indexstyle.ist \
-				$(png_compendium_files) $(png_hyperlatex_files) \
+				$(png_compendium_files) $(png_hyperlatex_files) 
 
 CLEANFILES = $(eps_compendium_files) $(eps_manual_files) \
              *.dvi *.pdf *.pdf *.toc *.log *.aux *.out *.idx *.ilg *.ind \
