@@ -1,3 +1,7 @@
+2010-08-25  Emanuel Schuetze <emanuel@intevation.de>
+
+	* configure.ac: Change date and version of compendium-en.
+
 2010-08-25  Werner Koch  <wk@g10code.com>
 
 	* patches/gnupg2-2.0.16/04-gpgtar-2.patch: Update.
