@@ -208,12 +208,9 @@ eps_manual_files = $(png_manual_files:.png=.eps)
 
 
 EXTRA_DIST = 	gpg4win-compendium-de.tex \
+				gpg4win-compendium-en.tex \ 
 				fdl.tex fdl-book.tex version.tex.in indexstyle.ist \
 				$(png_compendium_files) $(png_hyperlatex_files) \
-				# needed for old manuals (English and German):
-			 		$(png_manual_files) $(eps_manual_files) \
-				    novices.tex what-is-gpg4win.tex macros-en.tex \
-					# einsteiger.tex durchblicker.tex was-ist-gpg4win.tex macros.tex
 
 CLEANFILES = $(eps_compendium_files) $(eps_manual_files) \
              *.dvi *.pdf *.pdf *.toc *.log *.aux *.out *.idx *.ilg *.ind \
@@ -221,19 +218,21 @@ CLEANFILES = $(eps_compendium_files) $(eps_manual_files) \
 DISTCLEANFILES = version.tex
 
 pkgdata_DATA = 	gpg4win-compendium-de.pdf \
-				novices.pdf 
+				gpg4win-compendium-en.pdf 
 
 BUILT_SOURCES = $(png_compendium_files) 
 
 all-local: 	gpg4win-compendium-de.pdf \
 	   		gpg4win-compendium-de.html.d-stamp \
-			novices.pdf durchblicker.pdf
+			gpg4win-compendium-en.pdf \
+	   		gpg4win-compendium-en.html.d-stamp
 
 gpg4win-compendium-de.pdf : version.tex
 gpg4win-compendium-en.pdf : version.tex
 gpg4win-compendium-de.dvi : version.tex $(eps_compendium_files)
 gpg4win-compendium-en.dvi : version.tex $(eps_compendium_files)
 gpg4win-compendium-de.html.d-stamp : version.tex 
+gpg4win-compendium-en.html.d-stamp : version.tex 
 	
 einsteiger.dvi : version.tex macros.tex $(eps_manual_files)
 einsteiger.html.d-stamp : version.tex macros.tex $(eps_manual_files)
@@ -261,6 +260,7 @@ dvi-de: gpg4win-compendium-de.dvi
 dvi-en: gpg4win-compendium-en.dvi
 
 html-de: gpg4win-compendium-de.html.d-stamp
+html-en: gpg4win-compendium-en.html.d-stamp
 
 # The html.d directories are used to collect all relevant files for
 # the NSI scripts.  This is also required because hyperlatex is not
@@ -278,7 +278,7 @@ html-de: gpg4win-compendium-de.html.d-stamp
             sed -n 's/.*\\IncludeImage{\([^}]*\).*/\1.png/p' $$src ;\
             sed -n 's/.*\\input{\([^}]*\).*/\1/p' $$src ) \
           | sort | uniq) ;\
-	 for f in $$files $(web_png_files); do \
+	 for f in $$files $(png_hyperlatex_files); do \
 	   if [ -f "$$f" ]; then cp "$$f" $$wdir ;\
 	   elif [ -f "$(srcdir)/$$f" ]; then cp "$(srcdir)/$$f" $$wdir ;\
 	   fi ;\
