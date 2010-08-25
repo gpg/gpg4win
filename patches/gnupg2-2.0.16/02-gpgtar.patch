@@ -1038,7 +1038,7 @@ diff -urNp orig/gnupg-2.0.16/tools/gpgtar-create.c gnupg-2.0.16/tools/gpgtar-cre
 diff -urNp orig/gnupg-2.0.16/tools/gpgtar-extract.c gnupg-2.0.16/tools/gpgtar-extract.c
 --- orig/gnupg-2.0.16/tools/gpgtar-extract.c	1970-01-01 01:00:00.000000000 +0100
 +++ gnupg-2.0.16/tools/gpgtar-extract.c	2010-07-19 11:10:27.000000000 +0200
-@@ -0,0 +1,334 @@
+@@ -0,0 +1,335 @@
 +/* gpgtar-extract.c - Extract from a TAR archive
 + * Copyright (C) 2010 Free Software Foundation, Inc.
 + *
@@ -1257,6 +1257,7 @@ diff -urNp orig/gnupg-2.0.16/tools/gpgtar-extract.c gnupg-2.0.16/tools/gpgtar-ex
 +                || !compare_filenames (dirprefix + n - 4, EXTSEP_S "pgp")
 +                || !compare_filenames (dirprefix + n - 4, EXTSEP_S "asc")
 +                || !compare_filenames (dirprefix + n - 4, EXTSEP_S "pem")
++                || !compare_filenames (dirprefix + n - 4, EXTSEP_S "p7m")
 +                || !compare_filenames (dirprefix + n - 4, EXTSEP_S "p7e")))
 +    {
 +      prefix_buffer = xtrystrdup (dirprefix);
