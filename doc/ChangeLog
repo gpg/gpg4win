@@ -2,6 +2,8 @@
 
 	* manual/gpg4win-compendium-de.tex: Some minor fixes and code restructur changes.
 
+	* manual/gpg4win-compendium-en.tex: First formal review. (Needs a technical review.)
+
 2010-08-17  Emanuel Schuetze <emanuel@intevation.de>
 
 	* manual/*.png, manual/Makefile.am: Moved to images-compendium, images-manual and
