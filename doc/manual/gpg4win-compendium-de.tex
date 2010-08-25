@@ -2316,7 +2316,7 @@ dem Ergebnis des Importvorgangs:
 Das erfolgreich importierte, öffentliche Zertifikat wird nun in
 Kleopatra angezeigt -- und zwar unter einem separaten Reiter
 \Menu{Importierte Zertifikate} von
-\Menu{<Pfad-zur-Zertifikatsdatei>}"':
+\Menu{<Pfad-zur-Zertifikatsdatei>}:
 
 % screenshot Kleopatra with new certificate
 \IncludeImage[width=0.85\textwidth]{sc-kleopatra-withAdeleKey_de}
@@ -2612,9 +2612,12 @@ müssen Sie in dem folgenden GpgOL-Optionsdialog unter
 \Menu{S/MIME Unterstützung einschalten} deaktivieren:
 
 % screenshot: GpgOL options
-\T\ifthenelse{\boolean{DIN-A5}}
-\T{\IncludeImage[width=0.75\textwidth]{sc-gpgol-options_de}}
-{\IncludeImage[width=0.55\textwidth]{sc-gpgol-options_de}}
+\T\ifthenelse{\boolean{DIN-A5}}{
+    \T\IncludeImage[width=0.75\textwidth]{sc-gpgol-options_de}
+\T}
+\T{
+    \IncludeImage[width=0.55\textwidth]{sc-gpgol-options_de}
+\T}
 
 
 \clearpage
@@ -2643,10 +2646,6 @@ Ihres Korrespondenzpartners vorliegt.
 Sofern die Zertifikatsauswahl eindeutig ist -- d.h., Sie haben nur ein
 Zertifikat, dass zu der Empfänger-\Email{}-Adresse passt -- wird Ihre
 Nachricht verschlüsselt und versendet.
-
-In den GpgOL-Optionen können Sie auch PGP/MIME oder S/MIME für alle
-signierten und verschlüsselten Nachrichten als Voreinstellung
-definieren: \Menu{Extras$\rightarrow$Optionen$\rightarrow$GpgOL}.
 
 
 \clearpage
@@ -2734,9 +2733,12 @@ allerdings genau denselben Zweck.
 
 % cartoon: Müller mit Schlüssel
 \htmlattributes*{img}{width=300}
-\T\ifthenelse{\boolean{DIN-A5}}
-\T{\IncludeImage[width=0.5\textwidth]{man-with-signed-key}}
-
+\T\ifthenelse{\boolean{DIN-A5}}{
+    \T\IncludeImage[width=0.5\textwidth]{man-with-signed-key}
+\T}
+\T{
+    \IncludeImage[width=0.35\textwidth]{man-with-signed-key}
+\T}
 
 \clearpage
 \section{Signieren mit GpgOL}
@@ -5311,8 +5313,7 @@ diesem Produkt wieder die ursprünglichen Primzahlen herausrechnen --­
 jedenfalls nicht in vertretbarer Zeit.
 
 \clearpage
-\section{Die Darstellung mit verschiedenen Basiszahlen
-\htmlonly{\html{br}\html{br}} }
+\section{Die Darstellung mit verschiedenen Basiszahlen}
 
 Um zu verstehen, wie Nachrichten verschlüsselt werden, sollte man
 wissen, wie ein Rechner Zahlen speichert, und vor allem, wie sie in
@@ -5561,10 +5562,6 @@ Und nun ausführlich:
     \T\end{eqnarray*}
 
 
-    % The next clearpage is just to over come a problem with the PDF
-    % file.  Without it the footer logo is not correctly rendered, instead
-    % a tiny image of the next graphic is shown.  The clearpage somehow
-    % solves it.
     \T\ifthenelse{\boolean{DIN-A5}}{}{\clearpage}
 
 \item Jetzt können Sie zur Verschlüsselung die Tabelle~\link*{1}[\ref{table1}]{table1}
@@ -5660,9 +5657,12 @@ Beim nächsten Start von Outlook findet sich im Menü
 \Menu{Extras$\rightarrow$Optionen} eine Karteikarte \Menu{GpgOL}:
 
 % screenshot: GpgOL options
-\T\ifthenelse{\boolean{DIN-A5}}
-\T{\IncludeImage[width=0.75\textwidth]{sc-gpgol-options_de}}
-{\IncludeImage[width=0.7\textwidth]{sc-gpgol-options_de}}
+\T\ifthenelse{\boolean{DIN-A5}}{
+    \T\IncludeImage[width=0.75\textwidth]{sc-gpgol-options_de}
+\T}
+\T{
+    \IncludeImage[width=0.65\textwidth]{sc-gpgol-options_de}
+\T}
 
 \clearpage
 Die Karteikarte \Menu{GpgOL} unterteilt sich in drei Bereiche:
@@ -5944,15 +5944,14 @@ bevor anschließend Gpg4win-2.x installiert wird.
 Das Problem bei einer Migration \textit{ohne} Deinstallation von
 Gpg4win-1.1.x ist folgende Sequenz:
 
-1. Installation von Gpg4win in der Version X, inkl. Komponente K.\\
-2. Installation von Gpg4win in der Version X+1, aber Komponente K wird diesmal deselektiert.
+1. Installation von Gpg4win in der Version X, inkl. Komponente K.
 
+2. Installation von Gpg4win in der Version X+1, aber Komponente K wird
+diesmal deselektiert.\\
 Effekt: Die alte Komponente von K bleibt installiert in der Version X.
 
-3. Deinstallation von Gpg4win in der Version X+1.
-
-Effekt: Die Komponente K der Version X bleibt verwaist zurück.
-
+3. Deinstallation von Gpg4win in der Version X+1.\\
+Effekt: Die Komponente K der Version X bleibt verwaist zurück.\\
 Dies ist eine Beschränkung von Gpg4win seit der ersten Version.
 
 \textbf{Anmerkung 1}: Beim Sprung von 1.1.x auf 2.x tritt dieser Fall
@@ -6006,9 +6005,8 @@ reinigen wollen, mit \Menu{Ja}.\\
 Führen Sie dieses Kommando nun für alle Outlook-Ordner durch.
 
 Nachdem Sie alle Ordner zurückgesetzt haben, beginnen Sie mit der
-Deinstallation von Gpg4win.
+Deinstallation von Gpg4win.\\
 
-~\\
 
 \T\ifthenelse{\boolean{DIN-A5}}{\newpage}{}
 Es gibt drei Möglichkeiten die Deinstallation auszuführen:
@@ -6037,6 +6035,7 @@ Es gibt drei Möglichkeiten die Deinstallation auszuführen:
 
 \end{itemize}
 
+\newpage
 In allen drei Fällen werden alle Dateien von Gpg4win aus dem
 Installationsordner sowie die Verknüpfungen in Startmenü, Desktop und
 Schnellstartleiste entfernt.
