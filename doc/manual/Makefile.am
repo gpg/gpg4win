@@ -42,21 +42,31 @@ png_compendium_files = \
 	images-compendium/sc-gpgol-options-textformat_de.png \
 	images-compendium/schlapphut-with-key.png \
 	images-compendium/sc-inst-components_de.png \
+	images-compendium/sc-inst-components_en.png \
 	images-compendium/sc-inst-directory_de.png \
+	images-compendium/sc-inst-directory_en.png \
 	images-compendium/sc-inst-finished2_de.png \
 	images-compendium/sc-inst-finished_de.png \
+	images-compendium/sc-inst-finished_en.png \
 	images-compendium/sc-inst-language_de.png \
+	images-compendium/sc-inst-language_en.png \
 	images-compendium/sc-inst-license_de.png \
+	images-compendium/sc-inst-license_en.png \
 	images-compendium/sc-inst-options_de.png \
+	images-compendium/sc-inst-options_en.png \
 	images-compendium/sc-inst-progress_de.png \
+	images-compendium/sc-inst-progress_en.png \
 	images-compendium/sc-inst-ready_de.png \
 	images-compendium/sc-inst-startmenu_de.png \
+	images-compendium/sc-inst-startmenu_en.png \
 	images-compendium/sc-inst-welcome_de.png \
+	images-compendium/sc-inst-welcome_en.png \
 	images-compendium/sc-kleopatra-certificateSearchOnKeyserver_de.png \
 	images-compendium/sc-kleopatra-certifyCertificate1_de.png \
 	images-compendium/sc-kleopatra-certifyCertificate2_de.png \
 	images-compendium/sc-kleopatra-certifyCertificate3_de.png \
 	images-compendium/sc-kleopatra-ChooseCertificateFormat_de.png \
+	images-compendium/sc-kleopatra-ChooseCertificateFormat_en.png \
 	images-compendium/sc-kleopatra-configureKeyserver_de.png \
 	images-compendium/sc-kleopatra-decryptFile1_de.png \
 	images-compendium/sc-kleopatra-decryptFile2_de.png \ 
@@ -71,13 +81,18 @@ png_compendium_files = \
 	images-compendium/sc-kleopatra-import-certificate_de.png \
 	images-compendium/sc-kleopatra-import-openpgp-secret-key_de.png \
 	images-compendium/sc-kleopatra-mainwindow-empty_de.png \
+	images-compendium/sc-kleopatra-mainwindow-empty_en.png \
 	images-compendium/sc-kleopatra-openpgp-certificateDetails_de.png \
+	images-compendium/sc-kleopatra-openpgp-certificateDetails_en.png \
 	images-compendium/sc-kleopatra-openpgp-createKey_de.png \
+	images-compendium/sc-kleopatra-openpgp-createKey_en.png \
 	images-compendium/sc-kleopatra-openpgp-exportSecretKey_de.png \
 	images-compendium/sc-kleopatra-openpgp-keyPairCreated_de.png \
 	images-compendium/sc-kleopatra-openpgp-personalDetails_de.png \
+	images-compendium/sc-kleopatra-openpgp-personalDetails_en.png \
 	images-compendium/sc-kleopatra-openpgp-pinentry_de.png \
 	images-compendium/sc-kleopatra-openpgp-reviewParameters_de.png \
+	images-compendium/sc-kleopatra-openpgp-reviewParameters_en.png \
 	images-compendium/sc-kleopatra-signEncryptFile2_de.png \
 	images-compendium/sc-kleopatra-signFile1_de.png \
 	images-compendium/sc-kleopatra-signFile2_de.png \
@@ -86,6 +101,7 @@ png_compendium_files = \
 	images-compendium/sc-kleopatra-sign-selectCertificate_de.png \
 	images-compendium/sc-kleopatra-sign-successful_de.png \
 	images-compendium/sc-kleopatra-startmenu_de.png \
+	images-compendium/sc-kleopatra-startmenu_en.png \
 	images-compendium/sc-kleopatra-verifyFile1_de.png \
 	images-compendium/sc-kleopatra-verifyFile2a-badSignature_de.png \
 	images-compendium/sc-kleopatra-verifyFile2_de.png \
@@ -95,8 +111,10 @@ png_compendium_files = \
 	images-compendium/sc-kleopatra-x509-createKey_de.png \
 	images-compendium/sc-kleopatra-x509-keyPairCreated_de.png \
 	images-compendium/sc-kleopatra-x509-personalDetails_de.png \
+	images-compendium/sc-kleopatra-x509-personalDetails_en.png \
 	images-compendium/sc-kleopatra-x509-pinentry_de.png \
 	images-compendium/sc-kleopatra-x509-reviewParameters_de.png \
+	images-compendium/sc-kleopatra-x509-reviewParameters_en.png \
 	images-compendium/sc-ol-adele-sendOpenpgpKey-attachment_de.png \
 	images-compendium/sc-ol-adele-sendOpenpgpKey-inline_de.png \
 	images-compendium/sc-ol-sendEncryptedMail_de.png \

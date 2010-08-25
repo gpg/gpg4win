@@ -6,6 +6,23 @@
 
 	* Makefile.am: Added new English compendium. Removed old English novices manual.
 
+	* manual/images-compendium/
+	sc-inst-components_en.png, sc-inst-directory_en.png,
+	sc-inst-finished_en.png, sc-inst-language_en.png,
+	sc-inst-license_en.png, sc-inst-options_en.png,
+	sc-inst-progress_en.png, sc-inst-startmenu_en.png,
+	sc-inst-welcome_en.png,
+	sc-kleopatra-ChooseCertificateFormat_en.png,
+	sc-kleopatra-mainwindow-empty_en.png,
+	sc-kleopatra-openpgp-certificateDetails_en.png,
+	sc-kleopatra-openpgp-createKey_en.png,
+	sc-kleopatra-openpgp-personalDetails_en.png,
+	sc-kleopatra-openpgp-reviewParameters_en.png,
+	sc-kleopatra-startmenu_en.png, sc-kleopatra-startmenu_en-tmp.png, 
+	sc-kleopatra-x509-personalDetails_en.png, 
+	sc-kleopatra-x509-reviewParameters_en.png, Makefile.am, manual/gpg4win-compendium-en.tex: 
+	Added new English screenshots, part one (created by Drew Northup).
+
 2010-08-17  Emanuel Schuetze <emanuel@intevation.de>
 
 	* manual/*.png, manual/Makefile.am: Moved to images-compendium, images-manual and
