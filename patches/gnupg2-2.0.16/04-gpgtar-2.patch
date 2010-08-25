@@ -257,3 +257,130 @@ diff -urpN orig/gnupg2-2.0.16/tools/gpgtar.c gnupg2-2.0.16/tools/gpgtar.c
          gpgtar_extract (fname);
 
 
+
+diff -urpN orig/gnupg2-2.0.16/tools/gpgtar.c gnupg2-2.0.16/tools/gpgtar.c
+--- orig/gnupg2-2.0.16/tools/gpgtar.c	2010-08-25 10:49:37.000000000 +0200
++++ gnupg2-2.0.16/tools/gpgtar.c	2010-08-25 10:51:26.000000000 +0200
+@@ -48,6 +48,7 @@ enum cmd_and_opt_values
+     aEncrypt    = 'e',
+     aDecrypt    = 'd',
+     aSign       = 's',
++    aList       = 't',
+ 
+     oSymmetric  = 'c',
+     oRecipient	= 'r',
+@@ -63,7 +64,6 @@ enum cmd_and_opt_values
+     oOpenPGP,
+     oCMS,
+     oSetFilename,
+-    aList,
+     oNull
+   };
+ 
+diff -urpN orig/gnupg2-2.0.16/tools/gpgtar-extract.c gnupg2-2.0.16/tools/gpgtar-extract.c
+--- orig/gnupg2-2.0.16/tools/gpgtar-extract.c	2010-08-25 10:49:37.000000000 +0200
++++ gnupg2-2.0.16/tools/gpgtar-extract.c	2010-08-25 10:51:35.000000000 +0200
+@@ -26,6 +26,9 @@
+ #include <sys/stat.h>
+ #include <unistd.h>
+ #include <assert.h>
++#ifdef HAVE_W32_SYSTEM
++# include <fcntl.h> /* for setmode() */
++#endif /*HAVE_W32_SYSTEM*/
+ 
+ #include "i18n.h"
+ #include "../common/sysutils.h"
+@@ -83,7 +86,7 @@ extract_regular (estream_t stream, const
+ 
+  leave:
+   if (!err && opt.verbose)
+-    log_info ("extracted `%s/'\n", fname);
++    log_info ("extracted `%s'\n", fname);
+   es_fclose (outfp);
+   if (err && fname && outfp)
+     {
+@@ -274,7 +277,10 @@ gpgtar_extract (const char *filename)
+ 
+   if (filename)
+     {
+-      stream = es_fopen (filename, "rb");
++      if (!strcmp (filename, "-"))
++        stream = es_stdin;
++      else
++        stream = es_fopen (filename, "rb");
+       if (!stream)
+         {
+           err = gpg_error_from_syserror ();
+@@ -283,20 +289,26 @@ gpgtar_extract (const char *filename)
+         }
+     }
+   else
+-    stream = es_stdin;  /* FIXME:  How can we enforce binary mode?  */
++    stream = es_stdin;
+ 
++  if (stream == es_stdin)
++    setmode (es_fileno (es_stdin), O_BINARY);
+ 
+-  if (filename)
++  if (filename && stream != es_stdin)
+     {
+       dirprefix = strrchr (filename, '/');
+       if (dirprefix)
+         dirprefix++;
++      else
++        dirprefix = filename;
+     }
+   else if (opt.filename)
+     {
+       dirprefix = strrchr (opt.filename, '/');
+       if (dirprefix)
+         dirprefix++;
++      else
++        dirprefix = opt.filename;
+     }
+ 
+   if (!dirprefix || !*dirprefix)
+diff -urpN orig/gnupg2-2.0.16/tools/gpgtar-list.c gnupg2-2.0.16/tools/gpgtar-list.c
+--- orig/gnupg2-2.0.16/tools/gpgtar-list.c	2010-08-25 10:49:37.000000000 +0200
++++ gnupg2-2.0.16/tools/gpgtar-list.c	2010-08-25 10:51:32.000000000 +0200
+@@ -23,6 +23,7 @@
+ #include <stdlib.h>
+ #include <string.h>
+ #include <assert.h>
++#include <fcntl.h>
+ 
+ #include "i18n.h"
+ #include "gpgtar.h"
+@@ -275,7 +276,10 @@ gpgtar_list (const char *filename)
+ 
+   if (filename)
+     {
+-      stream = es_fopen (filename, "rb");
++      if (!strcmp (filename, "-"))
++        stream = es_stdin;
++      else
++        stream = es_fopen (filename, "rb");
+       if (!stream)
+         {
+           err = gpg_error_from_syserror ();
+@@ -284,7 +288,10 @@ gpgtar_list (const char *filename)
+         }
+     }
+   else
+-    stream = es_stdin;  /* FIXME:  How can we enforce binary mode?  */
++    stream = es_stdin;
++
++  if (stream == es_stdin)
++    setmode (es_fileno (es_stdin), O_BINARY);
+ 
+   for (;;)
+     {
+@@ -303,7 +310,7 @@ gpgtar_list (const char *filename)
+ 
+  leave:
+   xfree (header);
+-  if (filename)
++  if (stream != es_stdin)
+     es_fclose (stream);
+   return;
+ }
