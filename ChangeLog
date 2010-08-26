@@ -5,6 +5,8 @@
 	src/inst-compendium_de.nsi, src/inst-compendium_en.nsi,
 	src/installer-finish.nsi, po/de.po: Install new compendium-en.
 
+	* packages/packages.current: Update kleopatra and kdelibs.
+
 2010-08-25  Emanuel Schuetze <emanuel@intevation.de>
 
 	* configure.ac: Change date and version of compendium-en.
