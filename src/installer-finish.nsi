@@ -111,7 +111,11 @@ Section Uninstall
 !endif
 !ifdef HAVE_PKG_COMPENDIUM_DE
   Delete "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_compendium_de_html).lnk"
-  Delete "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_compendium_de).lnk"
+  Delete "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_compendium_de_pdf).lnk"
+!endif
+!ifdef HAVE_PKG_COMPENDIUM_EN
+  Delete "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_compendium_en_html).lnk"
+  Delete "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_compendium_en_pdf).lnk"
 !endif
 !ifdef HAVE_PKG_MAN_NOVICE_DE
   Delete "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_man_novice_de).lnk"
@@ -150,6 +154,9 @@ Section Uninstall
 !endif
 !ifdef HAVE_PKG_COMPENDIUM_DE
   Delete "$QUICKLAUNCH\$(DESC_Name_compendium_de).lnk"
+!endif
+!ifdef HAVE_PKG_COMPENDIUM_EN
+  Delete "$QUICKLAUNCH\$(DESC_Name_compendium_en).lnk"
 !endif
 !ifdef HAVE_PKG_MAN_NOVICE_DE
   Delete "$QUICKLAUNCH\$(DESC_Name_man_novice_de).lnk"

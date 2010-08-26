@@ -251,7 +251,8 @@ GPG4WIN_SPKG([tnef_parse], [claws-mail])
 GPG4WIN_SPKG([attachwarner], [claws-mail])
 GPG4WIN_SPKG([bsfilter_plugin], [claws-mail])
 GPG4WIN_IPKG([compendium_de])
-GPG4WIN_IPKG([man_novice_en])
+GPG4WIN_IPKG([compendium_en])
+#GPG4WIN_IPKG([man_novice_en])
 #GPG4WIN_IPKG([man_advanced_en])
 
 # Qt related stuff.

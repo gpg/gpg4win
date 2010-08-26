@@ -188,6 +188,9 @@
 !ifdef HAVE_PKG_COMPENDIUM_DE
 !include "inst-compendium_de.nsi"
 !endif
+!ifdef HAVE_PKG_COMPENDIUM_EN
+!include "inst-compendium_en.nsi"
+!endif
 !ifdef HAVE_PKG_MAN_NOVICE_EN
 !include "inst-man_novice_en.nsi"
 !endif
@@ -219,6 +222,9 @@
 !endif
 !ifdef HAVE_PKG_COMPENDIUM_DE
 !include "uninst-compendium_de.nsi"
+!endif
+!ifdef HAVE_PKG_COMPENDIUM_EN
+!include "uninst-compendium_en.nsi"
 !endif
 !ifdef HAVE_PKG_CLAWS_MAIL
 !include "uninst-claws-mail.nsi"
@@ -506,6 +512,17 @@ calc_defaults_claws_mail_done:
   StrCmp $R0 "0" 0 calc_defaults_compendium_de_done
    !insertmacro UnselectSection ${SEC_compendium_de}
 calc_defaults_compendium_de_done:
+!endif
+
+!ifdef HAVE_PKG_COMPENDIUM_EN
+  g4wihelp::config_fetch_bool "inst_compendium_en"
+  StrCmp $R0 "1" 0 calc_defaults_compendium_en_not_one
+   !insertmacro SelectSection ${SEC_compendium_en}
+   Goto calc_defaults_compendium_en_done
+  calc_defaults_compendium_en_not_one:
+  StrCmp $R0 "0" 0 calc_defaults_compendium_en_done
+   !insertmacro UnselectSection ${SEC_compendium_en}
+calc_defaults_compendium_en_done:
 !endif
 
 !ifdef HAVE_PKG_MAN_NOVICE_DE
@@ -1178,6 +1195,9 @@ FunctionEnd
 !ifdef HAVE_PKG_COMPENDIUM_DE
   !insertmacro MUI_DESCRIPTION_TEXT ${SEC_compendium_de} $(DESC_SEC_compendium_de)
 !endif
+!ifdef HAVE_PKG_COMPENDIUM_EN
+  !insertmacro MUI_DESCRIPTION_TEXT ${SEC_compendium_en} $(DESC_SEC_compendium_en)
+!endif
 !ifdef HAVE_PKG_MAN_NOVICE_DE
   !insertmacro MUI_DESCRIPTION_TEXT ${SEC_man_novice_de} $(DESC_SEC_man_novice_de)
 !endif
@@ -1280,10 +1300,25 @@ Section "-startmenu"
 	"$INSTDIR\share\gpg4win\html-de\gpg4win-compendium-de.html" \
         "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_compendium_de_html)
     CreateShortCut \
-        "$SMPROGRAMS\$STARTMENU_FOLDER\$(DESC_Menu_manuals)\$(DESC_Name_compendium_de).lnk" \
+        "$SMPROGRAMS\$STARTMENU_FOLDER\$(DESC_Menu_manuals)\$(DESC_Name_compendium_de_pdf).lnk" \
 	"$INSTDIR\share\gpg4win\gpg4win-compendium-de.pdf" \
-        "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_compendium_de)
+        "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_compendium_de_pdf)
   no_compendium_de_menu:
+!endif
+
+!ifdef HAVE_PKG_COMPENDIUM_EN
+    SectionGetFlags ${SEC_compendium_en} $R0 
+    IntOp $R0 $R0 & ${SF_SELECTED} 
+    IntCmp $R0 ${SF_SELECTED} 0 no_compendium_en_menu 
+    CreateShortCut \
+        "$SMPROGRAMS\$STARTMENU_FOLDER\$(DESC_Menu_manuals)\$(DESC_Name_compendium_en_html).lnk" \
+	"$INSTDIR\share\gpg4win\html-en\gpg4win-compendium-en.html" \
+        "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_compendium_en_html)
+    CreateShortCut \
+        "$SMPROGRAMS\$STARTMENU_FOLDER\$(DESC_Menu_manuals)\$(DESC_Name_compendium_en_pdf).lnk" \
+	"$INSTDIR\share\gpg4win\gpg4win-compendium-en.pdf" \
+        "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_compendium_en_pdf)
+  no_compendium_en_menu:
 !endif
 
 !ifdef HAVE_PKG_MAN_NOVICE_DE
@@ -1343,8 +1378,10 @@ Section "-startmenu"
   Delete "$DESKTOP\Sylpheed.lnk"
   Delete "$DESKTOP\Claws-Mail.lnk"
   Delete "$DESKTOP\Claws-Mail Manual.lnk"
-  Delete "$DESKTOP\$(DESC_Name_compendium_de).lnk"
+  Delete "$DESKTOP\$(DESC_Name_compendium_de_pdf).lnk"
   Delete "$DESKTOP\$(DESC_Name_compendium_de_html).lnk"
+  Delete "$DESKTOP\$(DESC_Name_compendium_en_pdf).lnk"
+  Delete "$DESKTOP\$(DESC_Name_compendium_en_html).lnk"
   Delete "$DESKTOP\$(DESC_Name_man_novice_de).lnk"
   Delete "$DESKTOP\$(DESC_Name_man_novice_en).lnk"
   Delete "$DESKTOP\$(DESC_Name_man_advanced_de).lnk"
@@ -1352,8 +1389,10 @@ Section "-startmenu"
   Delete "$DESKTOP\GnuPG FAQ.lnk"
   Delete "$DESKTOP\Gpg4Win README.lnk"
   Delete "$DESKTOP\$(DESC_Desktop_manuals)\Claws-Mail Manual.lnk"
-  Delete "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_compendium_de).lnk"
+  Delete "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_compendium_de_pdf).lnk"
   Delete "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_compendium_de_html).lnk"
+  Delete "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_compendium_en_pdf).lnk"
+  Delete "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_compendium_en_html).lnk"
   Delete "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_man_novice_de).lnk"
   Delete "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_man_novice_en).lnk"
   Delete "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_man_advanced_de).lnk"
@@ -1430,10 +1469,25 @@ Section "-startmenu"
 	"$INSTDIR\share\gpg4win\html-de\gpg4win-compendium-de.html" \
         "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_compendium_de_html)
     CreateShortCut \
-        "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_compendium_de).lnk" \
+        "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_compendium_de_pdf).lnk" \
 	"$INSTDIR\share\gpg4win\gpg4win-compendium-de.pdf" \
-        "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_compendium_de)
+        "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_compendium_de_pdf)
   no_compendium_de_desktop:
+!endif
+
+!ifdef HAVE_PKG_COMPENDIUM_EN
+    SectionGetFlags ${SEC_compendium_en} $R0 
+    IntOp $R0 $R0 & ${SF_SELECTED} 
+    IntCmp $R0 ${SF_SELECTED} 0 no_compendium_en_desktop
+    CreateShortCut \
+        "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_compendium_en_html).lnk" \
+	"$INSTDIR\share\gpg4win\html-en\gpg4win-compendium-en.html" \
+        "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_compendium_en_html)
+    CreateShortCut \
+        "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_compendium_en_pdf).lnk" \
+	"$INSTDIR\share\gpg4win\gpg4win-compendium-en.pdf" \
+        "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_compendium_en_pdf)
+  no_compendium_en_desktop:
 !endif
 
 !ifdef HAVE_PKG_MAN_NOVICE_DE
@@ -1481,6 +1535,7 @@ no_desktop:
   Delete "$QUICKLAUNCH\Sylpheed.lnk"
   Delete "$QUICKLAUNCH\Claws-Mail.lnk"
   Delete "$QUICKLAUNCH\$(DESC_Name_compendium_de).lnk"
+  Delete "$QUICKLAUNCH\$(DESC_Name_compendium_en).lnk"
   Delete "$QUICKLAUNCH\$(DESC_Name_man_novice_de).lnk"
   Delete "$QUICKLAUNCH\$(DESC_Name_man_advanced_de).lnk"
   Delete "$QUICKLAUNCH\GPGee Manual.lnk"

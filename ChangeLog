@@ -1,3 +1,10 @@
+2010-08-26  Emanuel Schuetze <emanuel@intevation.de>
+
+	* configure.ac, include/config.nsi.in, src/Makefile.am,
+	src/uninst-compendium_en.nsi, src/inst-sections.nsi,
+	src/inst-compendium_de.nsi, src/inst-compendium_en.nsi,
+	src/installer-finish.nsi, po/de.po: Install new compendium-en.
+
 2010-08-25  Emanuel Schuetze <emanuel@intevation.de>
 
 	* configure.ac: Change date and version of compendium-en.

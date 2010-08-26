@@ -554,28 +554,63 @@ msgstr "Gpg4win Einsteigerhandbuch (pdf, englisch)"
 
 #: src/inst-compendium_de.nsi:40
 msgctxt "DESC_Name_compendium_de"
-msgid "Gpg4win Kompendium (pdf, German)"
-msgstr "Gpg4win-Kompendium (pdf, deutsch)"
+msgid "Gpg4win Compendium DE"
+msgstr "Gpg4win-Kompendium DE"
 
 #: src/inst-compendium_de.nsi:44
-msgctxt "DESC_Name_compendium_de_html"
-msgid "Gpg4win Kompendium (html, German)"
-msgstr "Gpg4win-Kompendium (html, deutsch)"
-
-#: src/inst-compendium_de.nsi:48
-msgctxt "DESC_SEC_compendium_de"
-msgid "Gpg4win compendium (German)"
-msgstr "Gpg4win-Kompendium (deutsch)"
-
-#: src/inst-compendium_de.nsi:52
-msgctxt "DESC_Menu_compendium_de"
-msgid "Show the Gpg4win compendium (pdf, German)"
+msgctxt "DESC_Name_compendium_de_pdf"
+msgid "Gpg4win Compendium (pdf, German)"
 msgstr "Gpg4win-Kompendium (pdf, deutsch)"
 
+#: src/inst-compendium_de.nsi:48
+msgctxt "DESC_Name_compendium_de_html"
+msgid "Gpg4win Compendium (html, German)"
+msgstr "Gpg4win-Kompendium (html, deutsch)"
+
+#: src/inst-compendium_de.nsi:52
+msgctxt "DESC_SEC_compendium_de"
+msgid "Gpg4win Compendium (German)"
+msgstr "Gpg4win-Kompendium (deutsch)"
+
 #: src/inst-compendium_de.nsi:56
+msgctxt "DESC_Menu_compendium_de_pdf"
+msgid "Show the Gpg4win Compendium (pdf, German)"
+msgstr "Gpg4win-Kompendium (pdf, deutsch)"
+
+#: src/inst-compendium_de.nsi:60
 msgctxt "DESC_Menu_compendium_de_html"
 msgid "Show the Gpg4win compendium (html, German)"
 msgstr "Gpg4win-Kompendium (html, deutsch)"
+
+#: src/inst-compendium_en.nsi:40
+msgctxt "DESC_Name_compendium_en"
+msgid "Gpg4win Compendium EN"
+msgstr "Gpg4win-Kompendium EN"
+
+#: src/inst-compendium_en.nsi:44
+msgctxt "DESC_Name_compendium_en_pdf"
+msgid "Gpg4win Compendium (pdf, English)"
+msgstr "Gpg4win-Kompendium (pdf, english)"
+
+#: src/inst-compendium_en.nsi:48
+msgctxt "DESC_Name_compendium_en_html"
+msgid "Gpg4win Compendium (html, English)"
+msgstr "Gpg4win-Kompendium (html, englisch)"
+
+#: src/inst-compendium_en.nsi:52
+msgctxt "DESC_SEC_compendium_en"
+msgid "Gpg4win Compendium (English)"
+msgstr "Gpg4win-Kompendium (englisch)"
+
+#: src/inst-compendium_en.nsi:56
+msgctxt "DESC_Menu_compendium_en_pdf"
+msgid "Show the Gpg4win Compendium (pdf, English)"
+msgstr "Gpg4win-Kompendium (pdf, englisch)"
+
+#: src/inst-compendium_en.nsi:60
+msgctxt "DESC_Menu_compendium_en_html"
+msgid "Show the Gpg4win compendium (html, English)"
+msgstr "Gpg4win-Kompendium (html, englisch)"
 
 #: src/inst-winpt.nsi:46
 msgctxt "DESC_SEC_winpt"
