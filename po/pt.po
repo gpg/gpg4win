@@ -7,16 +7,15 @@ msgstr ""
 "Project-Id-Version: gpg4win 1.1.1-svn417\n"
 "Report-Msgid-Bugs-To: gpg4win-devel@wald.intevation.org\n"
 "POT-Creation-Date: 2010-04-16 16:44+0200\n"
-"PO-Revision-Date: 2010-07-18 19:48-0000\n"
+"PO-Revision-Date: 2010-08-04 11:55-0000\n"
 "Last-Translator: Marco A.G.Pinto <marcoagpinto@mail.telepac.pt>\n"
 "Language-Team: Portuguese <marcoagpinto@mail.telepac.pt>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-Language: Portuguese\n"
 "X-Poedit-Country: PORTUGAL\n"
 "X-Poedit-SourceCharset: iso-8859-1\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/g4wihelp.nsi:21
 msgctxt "T_AlreadyRunning"
@@ -285,7 +284,7 @@ msgstr "Claws Mail-User-Agent"
 #: src/inst-claws-mail.nsi:97
 msgctxt "DESC_Menu_claws_mail"
 msgid "Run the Claws mailprogram."
-msgstr "Executar o program de e-mail Claws."
+msgstr "Executar o programa de e-mail Claws."
 
 #: src/inst-claws-mail.nsi:100
 msgctxt "DESC_Menu_claws_mail_pdf"
@@ -459,7 +458,6 @@ msgstr "Windows Privacy Tray (WinPT)."
 
 #: src/inst-winpt.nsi:49
 msgctxt "DESC_Menu_winpt"
-msgid ""
-"Run the Windows Privacy Tray key management tool. This is a versatile key "
-"management and encryption tool."
+msgid "Run the Windows Privacy Tray key management tool. This is a versatile key management and encryption tool."
 msgstr "Executar a ferramenta de gestão de chaves Windows Privacy Tray. Esta é uma ferramenta versátil para gestão de chaves e encriptação."
+

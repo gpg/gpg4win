@@ -1,3 +1,7 @@
+2010-08-26  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+
+	* pt.po: Update po file by Marco. Change fileformat from dos to unix.
+
 2010-07-27  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
 	* pt.po: Update po file by Marco. Remove unused lines.
