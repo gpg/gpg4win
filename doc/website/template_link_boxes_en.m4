@@ -28,6 +28,7 @@ m4_dnl DONT USE THIS FILE DIRECTLY
   <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
     <input type="hidden" name="cmd" value="_donations">
     <input type="hidden" name="business" value="paypal@intevation.de">
+    <input type="hidden" name="lc" value="US">
     <input type="hidden" name="undefined_quantity" value="1">
     <input type="hidden" name="item_name" value="Gpg4win">
     <input type="hidden" name="item_number" value="1000">
@@ -40,7 +41,7 @@ m4_dnl DONT USE THIS FILE DIRECTLY
     <input type="hidden" name="on0" value="Allowed to publish of your donation?">
     <input type="hidden" name="os0" value="No">
     <br/>
-    <input type="checkbox" name="os0" value="Yes" checked>Publish my donation <a href="donate-de.html">here</a>
+    <input type="checkbox" name="os0" value="Yes" checked>Publish my donation <a href="donate.html">here</a>
   </form>
 </div>
 </div>
