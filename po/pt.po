@@ -429,7 +429,7 @@ msgstr "Mostrar o Manual Gpg4win para Principiantes (pdf, Inglês)"
 #: src/inst-compendium_de.nsi:40
 msgctxt "DESC_Name_compendium_de"
 msgid "Gpg4win Compendium DE"
-msgstr "Gpg4win Compêndio (alemão)"
+msgstr "Gpg4win Compêndio DE"
 
 #: src/inst-compendium_de.nsi:44
 msgctxt "DESC_Name_compendium_de_pdf"
