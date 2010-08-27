@@ -257,14 +257,14 @@
     % DIN A5:
     {\begin{latexonly}
         \large A publication of the Gpg4win Initiative
-        \\[0.2cm] %TODO-en
-        Version \compendiumVersionEN~vom \compendiumDateEN 
+        \\[0.2cm]
+        Version \compendiumVersionEN~from \compendiumDateEN 
      \end{latexonly}
     }%
     % DIN A4:
     {A publication of the Gpg4win Initiative
       \\[0.2cm]
-      Version \compendiumVersionEN~vom \compendiumDateEN 
+      Version \compendiumVersionEN~from \compendiumDateEN 
     }
 }
 
@@ -416,7 +416,7 @@ Gpg4win includes the following programs:
     \item \textbf{GnuPG}\index{GnuPG}\\ GnuPG forms the heart of
         Gpg4win -- the actual encryption software.
     \item \textbf{Kleopatra}\index{Kleopatra}\\ The central
-        certificate administration\index{certificate administration} of
+        certificate administration\index{Certificate Administration} of
         Gpg4win, which ensures uniform user navigation for all
         cryptographic operations.
     \item \textbf{GNU Privacy Assistant (GPA)}\index{GNU Privacy
@@ -468,9 +468,9 @@ Gpg4win's predecessors were supported by the Bundesministerium für
 Wirtschaft und Technologie \index{Bundesministerium für Wirtschaft und
 Technologie} as part of the Security on the Internet initiative.
 Gpg4win and Gpg4win2 were supported by the Bundesamt für Sicherheit in
-der Informationstechnik (BSI) \index{Bundesamt für Sicherheit in der
+der Informationstechnik (BSI). \index{Bundesamt für Sicherheit in der
 Informationstechnik}
-.
+
 
 Additional information on GnuPG and other projects undertaken by the Federal Government for security on the Internet can be found on the webpages
 \uniurl[www.bsi.de]{http://www.bsi.de} and 
@@ -536,11 +536,11 @@ the right to choose to you.  The right to choose whether you think a message
 is important and requires protection. 
 
 This is the key aspect of the right to privacy of correspondence, post
-and telecommunications in \index{telecommunication secrecy}\index{mail
-secrecy}\index{correspondence secrecy} the Basic Law, and the Gpg4win
-program package allows you to exercise this right. You do not have to
-use this software, just as you are not required to use an envelope.
-But you have the right.
+and telecommunications in \index{Telecommunication secrecy}
+\index{Mail secrecy}\index{Correspondence secrecy} the Basic Law, and
+the Gpg4win program package allows you to exercise this right. You do
+not have to use this software, just as you are not required to use an
+envelope.  But you have the right.
 
 To secure this right, Gpg4win offers a so-called ``strong encryption
 technology''.  ``Strong'' in this sense means that it cannot be broken
@@ -565,7 +565,7 @@ process on a step-by-step basis.
 \chapter{How Gpg4win works}
 \label{ch:FunctionOfGpg4win}
 The special feature of Gpg4win and its underlying
-\textbf{``Public Key'' method}\index{public key method@""`Public Key""' Method}
+\textbf{``Public Key'' method}\index{public key method@``Public Key'' Method}
 is that anyone can and should understand it. There is nothing
 secretive about it -- it is not even very difficult to understand.
 
@@ -629,7 +629,7 @@ can never be exchanged! The only key that can be passed on is the
 public key (in the public certificate)~-- which anyone can know. 
 
 That means that when you use Gpg4win, you are actually using a pair of
-keys\index{key pair} -- a secret and a second public key. Both key
+keys\index{Key!pair} -- a secret and a second public key. Both key
 components are inextricably connected with a complex mathematical
 formula. Based on current scientific and technical knowledge, it is
 not possible to calculate one key component using the other, and it is
@@ -642,9 +642,9 @@ Section \ref{ch:themath} explains why that is.
 
 
 \clearpage
-The principle behind public key encryption\index{public key method@""`Public Key""' Method}
+The principle behind public key encryption\index{public key method@``Public Key'' Method}
 
-The \textbf{secret} or \textbf{private key } must be kept secret.
+The \textbf{secret} or \textbf{private key} must be kept secret.
 
 The \textbf{public key} should be as accessible to the general public as much as
 possible.
@@ -673,13 +673,13 @@ This small exercise is used to explain the difference between the
 ``public key'' encryption system and symmetric
 encryption\index{Symmetric encryption} (``non-public key''
 method)
-\index{non-public key mehtod@""`Non-Public Key""' Method|see{Symmetric encryption}} ...
+\index{non-public key mehtod@``Non-Public Key'' Method|see{Symmetric encryption}} ...
 
 \bigskip
 
 \textbf{The ``secret key method'' works like this:}
 
-Imagine that you have installed a mail stronbox in front of your
+Imagine that you have installed a mail strongbox in front of your
 house, which you want to use to send secret messages. 
 
 The strongbox has a lock for which there is only one single key. No
@@ -727,7 +727,7 @@ So we might as well forget about this option ...
 \clearpage
 \textbf{Now the ``public key'' method}
 
-You once again install a mail stronbox\index{mail stronbox} in front of
+You once again install a mail strongbox\index{Mail strongbox} in front of
 your house. But unlike the strongbox in the first example, this one
 is always open. On the box hangs a key --­ which is visible to
 everyone -- and which can be used by anyone to lock the strongbox
@@ -760,9 +760,9 @@ and private part of the key.
 Anyone can encrypt an \Email{} for you.  
 
 To do this, they do not need a secret key; quite the opposite, they
-only need a totally non-secret \index{key!public}, ``public'' key.
+only need a totally non-secret \index{Key!public}, ``public'' key.
 Only one key can be used to decrypt the \Email{}, namely your private
-and secret key\index{key!private}.
+and secret key\index{Key!private}.
 
 You can also play this scenario another way:
 
@@ -801,7 +801,7 @@ obtain the key while the key is being exchanged.
 
 This risk does not apply here, because there is no exchange of secret
 keys; rather, it can only be found in one and very secure location:
-your own keyring\index{key pair} -- your own memory.
+your own keyring\index{Key!pair} -- your own memory.
 
 This modern encryption method which uses a non-secret and public key,
 as well as a secret and private key part is also described as
@@ -829,7 +829,7 @@ file, it is secured in two ways:
 First, no other user may read or write in the file -- which is
 difficult to warrant, since computer administrators always have access
 to all files, and the computer may be lost or attacked 
-by viruses\index{viruses}, worms\index{worms} or
+by viruses\index{Viruses}, worms\index{Worms} or
 Trojans\index{Trojans} .
 
 For this reason we need another layer of protection: the passphrase.
@@ -843,8 +843,7 @@ finding very unique and easy to remember passphrases, which cannot be
 easily guessed.
 
 \clearpage
-
-%TODO-en: ``Denken Sie an einen Ihnen gut bekannten Satz, z.B.:''
+Think of a phrase that is very familiar to you, e.g.:
 
 $\qquad$\verb-People in glass houses should not be throwing stones.-
 
@@ -966,7 +965,7 @@ real.
 You have seen the importance of the ``envelope'' for your
 \Email{} and how to provide one 
 using tools of modern information technology: a mail
-strongbox,\index{mail strongbox} in which anyone can deposit encrypted
+strongbox,\index{Mail strongbox} in which anyone can deposit encrypted
 mails which only you, the owner of the strongbox, can decrypt. It is
 not possible to break the encryption as long as the private key to
 your ``strongbox'' remains your secret.
@@ -981,16 +980,16 @@ only rarely know all of the people you are corresponding with on a
 personal level -- and it is not usually easy to find out who is really
 behind an \Email{} address. Hence, we not only
 need to warrant the secrecy of the message, but also the identity of
-the sender -- specifically \textbf{authenticity}. \index{authenticity}
+the sender -- specifically \textbf{authenticity}. \index{Authenticity}
 
 Hence someone must authenticate that the person who wants to send you
 a secret message is real. In everyday life, we use ID, signatures or
 certificates authenticated by authorities or notaries for
-\index{authentication} ``authentication'' purposes. These
+\index{Authentication} ``authentication'' purposes. These
 institutions derive their right to issue notarisations from a
 higher-ranking authority and finally from legislators. Seen another
 way, it describes a chain of trust which
-runs \index{chain of trust} from ``the top'' to ``the bottom'', and is
+runs \index{Chain of trust} from ``the top'' to ``the bottom'', and is
 described as a \textbf{``hierarchical trust concept''}.
 \index{Hierarchical trust concept}
 
@@ -1014,7 +1013,7 @@ organisation in turn was authenticated by a higher-ranking
 organisation etc. -- until we arrive at a so-called root certificate.
 This hierarchical chain of trust usually has three links: the root
 certificate, the certificate of the issuer of the
-certificate\index{certificate issuer} (also CA\index{Certificate
+certificate\index{Certificate issuer} (also CA\index{Certificate
 Authority (CA)} for Certificate Authority), and finally your own user
 certificate.
 
@@ -1235,13 +1234,13 @@ Annex~\ref{ch:auto} ``Automatic installation of Gpg4win''.
 \clearpage
 \chapter{Creating a certificate}
 \label{ch:CreateKeyPair}
-\index{Create!certificate}
-\index{Create!key}
+\index{Certificate!create}
+\index{Key!create}
 
 Now that you have found out why GnuPG is so secure
 (Chapter~\ref{ch:FunctionOfGpg4win}), and how a good passphrase
 provides protection for your private key (Chapter~\ref{ch:passphrase}),
-you are now ready to create your own key pair\index{key pair} .
+you are now ready to create your own key pair\index{Key!pair} .
 
 As we saw in Chapter~\ref{ch:FunctionOfGpg4win}, a key pair consists of
 a public and a private key.  With the addition of an
@@ -1260,7 +1259,7 @@ step of creating a key pair ....}
 Not to worry, you can do just that -- but only with OpenPGP:
 
 If you decide for the OpenPGP method of authentication,
-\index{authentication} the ``Web of Trust'', then you can practice the
+\index{Authentication} the ``Web of Trust'', then you can practice the
 entire process for creating a key pair, encryption and decryption as
 often as you like, until you feel very comfortable.
 
@@ -1332,7 +1331,7 @@ read either:
 \clearpage
 \section{Creating an OpenPGP certificate}
 \label{createKeyPairOpenpgp}
-\index{OpenPGP!Create certificate}
+\index{OpenPGP!create certificate}
 
 \T\marginOpenpgp
 In the certificate option dialog, click on \Button{Create
@@ -1419,7 +1418,7 @@ will see the following dialog:
 % screenshot: Creating OpenPGP certificate - key successfully created
 \IncludeImage[width=0.85\textwidth]{sc-kleopatra-openpgp-keyPairCreated_de}
 
-The 40-digit ``fingerprint'' of your newly\index{fingerprint}
+The 40-digit ``fingerprint'' of your newly\index{Fingerprint}
 generated OpenPGP certificate is displayed in the results text field.
 This fingerprint is unique anywhere in the world, i.e. no other person
 will have a certificate with the same fingerprint. Actually, even at
@@ -1427,7 +1426,7 @@ will have a certificate with the same fingerprint. Actually, even at
 occur twice anywhere in world.  For this reason, it is often only the 
 last 8 digits of a
 fingerprint which are used or shown, and which are described as the
-\index{key ID} key ID\index{key!ID}. This fingerprint
+key ID.\index{Key!ID} This fingerprint
 identifies the identity of the certificate as well as the fingerprint
 of a person. 
 
@@ -1499,13 +1498,13 @@ the explanations for OpenPGP and X.509 will again be identical.
 \clearpage
 \section{Creating an X.509 certificate}
 \label{createKeyPairX509}
-\index{X.509!Create certificate}
+\index{X.509!create certificate}
 
 \T\marginSmime
 In the certificate format selection dialog on page~,
 \pageref{chooseCertificateFormat} click on the button\\
 \Button{Create personal X.509 key pair and authentication
-inquiry}.
+request}.
 
 In the following window, enter your name (CN = common name), your
 \Email{} address (EMAIL), organisation (O) and
@@ -1563,7 +1562,7 @@ in earnest; it's up to you.
 To make sure that you did not make any typing errors, the system will
 prompt you to enter your passphrase twice.  Finally, you will be asked
 to enter your passphrase a third time: By doing that, you are sending
-your certificate inquiry \index{certificate query} to the
+your certificate request \index{Certificate!request} to the
 authenticating instance in charge.  Always confirm your entries with
 \Button{OK}.
 
@@ -1590,8 +1589,8 @@ The next steps are triggered with the following buttons:
 
 \begin{description}
 
-\item[Save inquiry in file...]~\\Here, you enter the path under which
-    your X.509 certificate inquiry should be backed up, and confirm
+\item[Save request in file...]~\\Here, you enter the path under which
+    your X.509 certificate request should be backed up, and confirm
     your entry. Kleopatra will automatically add the file ending \Filename{.p10}
     during the saving process. This file can then be
     sent to an authentication instance (in short CA for Certificate
@@ -1600,9 +1599,9 @@ The next steps are triggered with the following buttons:
     authentication instance (CA) that issues X.509 certificates free
     of charge.
 
-\item[Sending an inquiry by \Email{}  
+\item[Sending an request by \Email{}  
     ...]~\\This
-    creates a new \Email{} with the certificate inquiry
+    creates a new \Email{} with the certificate request
     which has just been created in the attachment. Enter a recippient
     \Email{} address -- usually that of your
     certificate authority in charge; you can also add more text
@@ -1610,10 +1609,10 @@ The next steps are triggered with the following buttons:
 
     \textbf{Please note:} Not all \Email{} programs support this
     function. Of course you can also do this manually: If you do not
-    see a new \Email{}window, save your inquiry in a file (see above)
+    see a new \Email{}window, save your request in a file (see above)
     and send it by \Email{} to your certificate authority (CA). 
     
-    As soon as the CA has processed your inquiry, the CA system
+    As soon as the CA has processed your request, the CA system
     administrator will send you the completed X.509 certificate, which
     has been signed by the CA. You only need to import the file into
     Kleopatra (see Chapter~\ref{ch:ImExport}).
@@ -1716,7 +1715,7 @@ Chapter~\ref{ch:CertificateDetails}.}
 \clearpage
 \chapter{Distribution of public certificates}
 \label{ch:publishCertificate}
-\index{Public!certificate}
+\index{Certificate!public}
 
 When using Gpg4win on a daily basis, it is very practical that for the
 purpose of encrypting and checking signatures you are always dealing
@@ -1803,7 +1802,7 @@ So, now you export your public OpenPGP certificate and send it via
 
 \clearpage
 \subsubsection{Exporting your public OpenPGP certificate}
-\index{Zertifikat!exportieren}
+\index{Certificate!export}
 
 Select the public certificate to be exported in Kleopatra (by clicking
 on the corresponding line in the list of certificates) and then click
@@ -1998,10 +1997,10 @@ do not synchronize on a global basis, as is the case with OpenPGP key
 servers. 
 
 When you export your public X.509 certificate, you can highlight the
-entire public certificate chain\index{certificate chain} and save it
-in a file -- generally the root certificate, CA certificate\index{CA
-certificate} and personal certificate -- or only your public
-certificate. 
+entire public certificate chain\index{Certificate!chain} and save it
+in a file -- generally the root certificate, CA
+certificate\index{Certificate!CA} and personal certificate -- or only
+your public certificate. 
 
 The first is recommended since the person you are corresponding with
 may be missing some parts of the chain, which he otherwise would have
@@ -2019,14 +2018,14 @@ already been done (e.g. because they are both part of the same
 \clearpage
 \chapter{Decrypting \Email{}s, practicing for OpenPGP}
 \label{ch:decrypt}
-\index{ !decrypt}
+\index{E-mail!decrypt}
 
 Gpg4win, the certificate of your key pair and of course your
 passphrase are all you need to decrypt \Email{}s. 
 
 This Chapter shows you step for step how to decrypt \Email{}s in
 Microsoft Outlook using the Gpg4win program component GpgOL.
-\index{Outlook} \index{Outlook}
+\index{Outlook}
 
 \T\marginOpenpgp
 Initially, you can practice this process with Adele and your public
@@ -2149,7 +2148,7 @@ supports OpenPGP.
 \clearpage
 \chapter{Importing a public certificate}
 \label{ch:importCertificate}
-\index{Import!certificate}
+\index{Certificate!import}
 
 The person you are corresponding with does not always have to send
 their public certificate when they send signed \Email{}s to you. You can
@@ -2262,7 +2261,7 @@ itself does not really say anything about the sender's identity.
 
 \clearpage
 \subsubsection{Fingerprints}
-\index{Finger print}
+\index{Fingerprint}
 If you are only corresponding with a very small circle of people, it
 is easy to check their identity: You check the fingerprint of the
 other certificate.
@@ -2298,7 +2297,7 @@ guaranteed, you can save yourself a phone call.
 
 \clearpage
 \subsubsection{Authenticating an OpenPGP certificate}
-\index{Authenticate!certificate}
+\index{Certificate!authenticate}
 
 \T\marginOpenpgp
 Once you have obtained confirmation of the authenticity of the
@@ -2361,7 +2360,6 @@ this list, if you have just authenticated it.
 
 \clearpage
 \subsubsection{Web of trust}
-\index{Web of Trust|see{Web of Trust}}
 \index{Web of Trust}
 
 \T\marginOpenpgp
@@ -2429,7 +2427,7 @@ The best way to describe this infrastructure is to use the example of
 a seal: The sticker on your license plate can only be provided by an
 institution that is authorised to issue such stickers, and they have
 received that right from another superordinate body. On a technical
-level, an authentication is \index{authentication} nothing more than
+level, an authentication is \index{Authentication} nothing more than
 an authenticating party signing a certificate. 
 
 Of course, hierarchical authentication infrastructures are much better
@@ -2439,7 +2437,7 @@ the same time, the key aspect of the authentication is the same for
 both: Gpg4win also supports a hierarchical authentication (S/MIME) in
 addition to the ``Web of Trust'' (OpenPGP). Accordingly, Gpg4win
 offers a basis that corresponds with the Signature Act of the Federal
-Republic\index{signature law} of Germany.
+Republic\index{Signature law} of Germany.
 
 \T\ifthenelse{\boolean{DIN-A5}}{\newpage}{}
 If you would like to learn more about this topic, the following websites provide more information on this and other IT security topics:
@@ -2457,7 +2455,7 @@ found at:\\
 \clearpage
 \chapter{Encrypting \Email{}s}
 \label{ch:encrypt}
-\index{encrypt! }
+\index{E-mail!encrypt}
 
 Now it is getting exciting again: You are sending an encrypted
 \Email{}. 
@@ -2563,7 +2561,7 @@ receive a confirmation message:
 
 \chapter{Signing \Email{}s}
 \label{ch:sign}
-\index{Sign! }
+\index{E-mail!sign}
 
 In Chapter~\ref{ch:trust} you learnt more about verifying the
 authenticity of a public OpenPGP certificate, and signing it with your
@@ -2583,8 +2581,8 @@ reason), you can at least ``seal'' the message with your own private
 key.
 
 You have probably noticed that this digital
-signature\index{Signatur!digital} is not identical to an
-\Email{} ``signature", which is sometimes included at the end of an
+signature\index{Signature!digital} is not identical to an
+\Email{} ``signature'', which is sometimes included at the end of an
 \Email{} and includes such items as telephone number, address and
 website. While these \Email{} signatures simply function as a type of
 business card, a digital signature will protect your \Email{} from
@@ -2718,7 +2716,7 @@ You can use these four combinations with either OpenPGP or S/MIME.
 
 \clearpage
 \section{Checking signatures with GpgOL}
-\index{check!signature with GpgOL}
+\index{Check!signature with GpgOL}
 
 Let's assume you have received a signed \Email{} from the person you
 are corresponding with.
@@ -2792,7 +2790,7 @@ only} in
 \clearpage
 \section{Encryption and signature}
 \label{sec_encsig}
-\index{encrypt and sign! }
+\index{E-mail!encrypt and sign}
 
 You know: A message is usually encrypted using the public certificate
 of your correspondence partner, who then decrypts the \Email{} using
@@ -2845,7 +2843,7 @@ It is pretty tricky when you think about it, but also very simple.
 \clearpage
 \chapter{Archiving \Email{}s in an encrypted form\htmlonly{\html{br}\html{br}}}
 \label{ch:archive}
-\index{E-Mail!archive in encrypted form}
+\index{E-mail!archive in encrypted form}
 
 You should also archive your important -- and hence possibly encrypted
 -- \Email{}s in only one way: encrypted. 
@@ -2915,7 +2913,7 @@ compendium. It contains even more interesting stuff!
 \clearpage
 \chapter{Certificate details}
 \label{ch:CertificateDetails}
-\index{Certificate details}
+\index{Certificate!details}
 
 In Chapter~\ref{sec_finishKeyPairGeneration}, you have already seen
 the detailed dialog for the certificate you generated. It contains a
@@ -2927,8 +2925,8 @@ certificates, including:
 \begin{itemize}
 \item user ID\index{Certificate!User ID}
 \item fingerprints
-\item key ID\index{Key ID}\index{Key!ID}
-\item validity\index{Certificate!Validity}
+\item key ID\index{Key!ID}
+\item validity\index{Certificate!validity}
 \item trust in certificate holders \textbf{(OpenPGP only)}
 \item authentications \textbf{(OpenPGP only)}
 \end{itemize}
@@ -2960,7 +2958,7 @@ certificates, including:
     multiple hits (different certificates with the same ID).
 
 \item[The validity] of certificates describes the duration of their
-    validity and their expiry date, if applicable.\index{expiry date}
+    validity and their expiry date, if applicable.\index{Expiry date}
     
     In the case of OpenPGP certificates, the validity is usually set
     to \Menu{Indefinite} . You can change this in Kleopatra by
@@ -3010,7 +3008,8 @@ certificate and about the ``Web of Trust'' in Chapter~\ref{ch:trust}.
 \clearpage
 \chapter{The certificate server}
 \label{ch:keyserver}
-\index{Key server}
+\index{Certificate server}
+\index{Key server|see{Certificate server}}
 
 Section~\ref{sec_publishPerKeyserver} already provided a lot of information on how to use a certificate server to publish your public (OpenPGP or X.509) certificate. This section will take a closer look at certificate servers, and will show you how to use them with Kleopatra.
 
@@ -3046,7 +3045,7 @@ Key servers can be used by all programs that support the standards OpenPGP or X.
 \clearpage
 \section{Key server configuration}
 \label{configureCertificateServer}
-\index{Set up!certificate server}
+\index{Certificate server!set up}
 
 Open the configuration dialog in Kleopatra:\\
 \Menu{Settings $\rightarrow$ Configure Kleopatra...}
@@ -3137,8 +3136,8 @@ May 2010).
 \clearpage
 \section{Search and import certificates from certificate servers}
 \label{searchAndImportCertificateFromServer}
-\index{Certificate server!Search for certificates}
-\index{Import!certificate}
+\index{Certificate server!search for certificates}
+\index{Certificate!import}
 
 Once you have configured at least one certificate server, you can now look for
 and import certificates.
@@ -3169,7 +3168,7 @@ Kleopatra's certificate administration.
 
 
 \section{Export certificates to OpenPGP certificate servers}
-\index{Export!certificate}
+\index{Certificate!export}
 
 \T\marginOpenpgp
 If you have configured an OpenPGP certificate server as described in
@@ -3242,7 +3241,7 @@ with your \Email{}.  You do not have to do anything else.
 \clearpage
 \section{Signing and checking files}
 \label{sec_signFile}
-\index{Sign!file}
+\index{File!sign}
 
 When signing a file, you are mainly concerned about making sure it is
 not changed, rather than keeping it secret (Integrity).
@@ -3323,7 +3322,7 @@ S/MIME. There are four possibler esulting file types:
 
 \clearpage
 \subsubsection{Checking a signature}
-\index{File!Check signature}
+\index{File!check signature}
 
 Now check the integrity of the file that has just been signed, i.e.
 check that it is correct! 
@@ -3378,7 +3377,7 @@ Even if only one character is added to the original file, or is deleted or modif
 
 \clearpage
 \section{Encrypting and decrypting files}
-\index{Encrypt!file}
+\index{File!encrypt}
 
 Files can be signed and encrypted just like \Email{}s. You should
 practice it once more in the following section using GpgEX and
@@ -3480,7 +3479,7 @@ You now forward one of these four possible encrypted files to your selected reci
 
 \clearpage
 \subsubsection{Decrypting a file}
-\index{Decrypt!file}
+\index{File!decrypt}
 Now you can decrypt the previously encrypted file for test purposes. 
 
 To this end, you should also have encrypted to your own certificate
@@ -3550,7 +3549,7 @@ Chapters \ref{ch:publishCertificate} and \ref{ch:importCertificate}
 explained the import and export of certificates. You exported your own
 certificate in order to publish it, and you have imported the
 certificate of your correspondence partner and thus attached it to
-your ``key ring\index{key pair}'' (i.e. accepted it into your
+your ``key ring\index{Key!pair}'' (i.e. accepted it into your
 certificate administration).
 
 This process always referred to \textbf{public} keys. However,
@@ -3563,7 +3562,7 @@ key.
 
 \clearpage
 \section{Export}
-\index{Export!certificate}
+\index{Certificate!export}
 
 You must make up a backup copy using Kleopatra anytime you transfer a
 private certificate to another computer or want to save it to another
@@ -3606,8 +3605,8 @@ contains your private key and therefore information that is critical
 to security!
 
 \clearpage
-\section{import}
-\index{Import!certificate}
+\section{Import}
+\index{Certificate!import}
 
 To import your previously exported private certificate into Kleopatra,
 proceed as you would for importing other public certificates (see
@@ -3688,7 +3687,7 @@ Some typical system-wide settings include:
 \begin{description}
 \item[Trustworthy root certificates:]
     \index{Trustworthy root certificates}
-    \index{Root certificate} 
+    \index{Root certificates} 
     To avoid a situation where each user must search and install the
     required root certificates, and check and authenticate the
     trustworthiness of the same (see Section
@@ -3701,7 +3700,7 @@ Some typical system-wide settings include:
     the trustworthy root certificates should be defined -- as
     described in Section \ref{sec_systemtrustedrootcerts}.
     
-\item[Directly available CA certificates:] \index{CA certificate}    
+\item[Directly available CA certificates:] \index{Certificate!CA}    
     To save users from searching and importing the certificates of
     certificate authorities, it also makes sense to pre-populate the
     system with the most important CA certificates. For a description,
@@ -3712,7 +3711,7 @@ Some typical system-wide settings include:
     
     With respect to validity information, X.509 protocols offer
     different options. Most certification agencies publish certificate
-    revocation lists\index{certificate revocation lists} (also
+    revocation lists\index{Certificate Revocation Lists} (also
     described as CRLs \index{CRLs|see{Certificate Revocation Lists}},
     supported as per RFC5280) and  OSCP\index{OSCP} (as per RFC2560).
     OSCP has more recent information, but with the disadvantage that
@@ -3915,7 +3914,7 @@ proxy.
 
 \T\marginSmime
 The respective root certificate must be trusted for a full review of
-X.509 certificate chains\index{certificate chain}.  Otherwise it is
+X.509 certificate chains\index{Certificate!chain}.  Otherwise it is
 not possible to perform S/MIME operations (signature creation and
 check, encryption and decryption).
 
@@ -3962,7 +3961,7 @@ when Gpg4win is uninstalled. Please ensure that
 you make regular backup copies of this folder.
 
 \section{Cached certificate revocation lists}
-\index{Certificate revocation lists}
+\index{Certificate Revocation Lists}
 
 \T\marginSmime
 The system-wide service Mngr (Directory Manager) \index{DirMngr} also
@@ -3989,8 +3988,8 @@ No changes should be made to this file folder.
 \section{Trustworthy root certificates from DirMngr}
 \label{trustedrootcertsdirmngr}
 \index{DirMngr}
-\index{Trustworthy root certificates }
-\index{Root certificates }
+\index{Trustworthy root certificates}
+\index{Root certificates}
 
 \T\marginSmime
 For a full review of X.509 certificates, you must trust the root
@@ -4072,7 +4071,7 @@ configuration file is as follows:
 
 If access to external X.509 certificate servers is blocked by
 firewalls in the internal network, it is also possible to configure a
-proxy service\index{proxy} in \Filename{ldapservers.conf} for
+proxy service\index{Proxy} in \Filename{ldapservers.conf} for
 transmitting the certificate search, as illustrated in the following
 sample line:
 
@@ -4258,7 +4257,7 @@ programs.
 
 \clearpage
 \section{Activating Kleopatra log files}
-\index{Kleopatra log file!}
+\index{Log file!Kleopatra}
 
 Kleopatra log data consists of many files, therefore the first step is
 to create a file folder for the log files, for example:
@@ -4320,7 +4319,7 @@ recording.
 
 \clearpage
 \section{Activating GpgOL log files}
-\index{GpgOL log file!}
+\index{Log file!GpgOL}
                       
 To activate a GpgOL log file, you have to start a ``Registry Editor".
 To do this, enter the command \Filename{regedit} under
@@ -4360,7 +4359,7 @@ directory, usually: \newline
 \clearpage
 \section{Activating DirMngr log file}
 \index{DirMngr}
-\index{DirMngr log file!}
+\index{Log file!DirMngr}
 
 The DirMngr is a system-wide service, therefore log files can only be
 activated with administrator rights.
@@ -4393,7 +4392,7 @@ makes sense to remove the log file.
 
 \clearpage
 \section{Activating GnuPG log files}
-\index{GnuPG log files!}
+\index{Log file!GnuPG}
 
 You can activate the individual creation of a log file for each of the
 following GnuPG components:
@@ -4435,7 +4434,7 @@ makes sense to remove the log file.
 
 \clearpage
 \section{Activating GpgME log files}
-\index{GpgME log files!}
+\index{Log file!GpgME}
 
 The log file settings for GpgME (``GnuPG Made Easy'') must be made for
 each user -- just like in Kleopatra.
@@ -4493,7 +4492,7 @@ only uses basic arithmetic methods (addition, subtraction,
 multiplication and division) in order to define a special kind of
 addition and multiplication. The fact that there are no secret methods
 and algorithms is what is behind the security
-philosophy\index{security philosophy} of cryptography and the
+philosophy\index{Security philosophy} of cryptography and the
 principle of Free Software. Finally, this is also the best way of
 really understanding why GnuPG (the actual machinery behind Gpg4win)
 is so secure. 
@@ -4511,16 +4510,17 @@ compulsory portion begins.
 
 {\Large Cryptography for non-mathematicians}\\
 
-There have been several attempts at 'cracking' the RSA algorithm on
-which GnuPG is based\footnote{Here we use RSA as an example, since it
-is easier to understand than the ElGamal algorithm, which is used as a
-pre-setting to GnuPG.}, i.e. to calculate a private key when only the
-public key is known.  However, this type of calculation has never been
-successful for the key lengths (1024 Bit and above) that are used in
-GnuPG. While it might be possible on a theoretical level, it is
-practically impossible since even with plenty of time (many years) and
-thousands of networked computers, there would never by sufficient
-storage to complete the last steps of this calculation. 
+There have been several attempts at 'cracking' the RSA algorithm
+\index{RSA algorithm|(} on which GnuPG is based\footnote{Here we use
+RSA as an example, since it is easier to understand than the ElGamal
+algorithm, which is used as a pre-setting to GnuPG.}, i.e. to
+calculate a private key when only the public key is known.  However,
+this type of calculation has never been successful for the key lengths
+(1024 Bit and above) that are used in GnuPG. While it might be
+possible on a theoretical level, it is practically impossible since
+even with plenty of time (many years) and thousands of networked
+computers, there would never by sufficient storage to complete the
+last steps of this calculation. 
 
 At the same time, it is entirely possible that one day an ingenious
 mathemtatical idea will provide a solution to the mathematical issues
@@ -4694,7 +4694,7 @@ securely encoded and may only be decoded by the right recipient.
 
 These are the principles behind the RSA algorithm:
 
-You created two large prime numbers\index{prime numbers|(} when you
+You created two large prime numbers\index{Prime numbers|(} when you
 entered your passphrase for creating a certificate (they are described
 as $p$ and $q$). Only you, or actually your computer, knows these two
 prime numbers and you must ensure they stay secret. 
@@ -4890,11 +4890,10 @@ the 77 numbers between 0 and 76.
 %\texorhtml{\caption}{\htmlcaption}{Number conversion modulo 77, using 
 %the private key 37}
 
-%TODO-en
-\T\caption{Zahlentransformation modulo 77, unter Verwendung des geheimen Schlüssels 37}
+\T\caption{Number transformation modulo 77, using the private key 37}
 \end{Label}\end{center}
 \end{table}
-\W\textit{Tabelle 2: Zahlentransformation modulo 77, unter Verwendung des geheimen Schlüssels 37}\\\\\\
+\W\textit{Table 2: Number transformation modulo 77, using the private key 37}\\\\\\
 
 In order to transform a number using Table
 \link*{2}[\ref{table2}]{table2}, we use the same method as for
@@ -5237,7 +5236,7 @@ And now in detail:
     \[ a = 0, b = 1, c = 2 ~\mbox{und}~ d = 3 \]
 
     Now encrypt the message  \emph{aba, cad, aca}. Encode the message
-    using prime numbers\index{Primzahlen|)} 7 and 11, with the public
+    using prime numbers\index{Prime numbers|)} 7 and 11, with the public
     key 77 und 13 and associated private key 37.  You area already
     familiar with this example from an earlier chapter: You used it to
     construct the tables~\link*{1}[\ref{table1}]{table1} and
@@ -5324,7 +5323,7 @@ not just trust a method but also - at least on the basis of
 understanding the approach behind it - be able to see behind its mode
 of operation. Many of the other details can easily be found in other
 books (z.B.: R.~Wobst, ``Abenteuer Kryptologie'') or on the Internet.
-\index{RSA-Algorithmus|)}
+\index{RSA algorithm|)}
 \vfill
 
 \textbf{In any case, now you know:} if someone should ever attempt to
@@ -5359,7 +5358,7 @@ your messages\ldots...
 \T\chapter{Information on the GpgOL Outlook extension}
 \W\chapter*{Information on the GpgOL Outlook extension}
 \label{appendix:gpgol}
-\index{Outlook!Programmerweiterung}
+\index{Outlook!plugin}
 
 GpgOL is a program extension for Microsoft Outlook; it integrates the
 operation of GnuPG into Outlook.
@@ -5400,7 +5399,7 @@ The tab \Menu{GpgOL} is divided into three areas: \begin{enumerate}
         itself does not offer any OpenPGP support. 
 
         If you wish to use S/MIME with Gpg4win in Outlook, leave the
-        GpgOL-Option\index{GpgOL Options} \Menu{Activate S/MIME
+        GpgOL-Option\index{GpgOL options} \Menu{Activate S/MIME
         support} activated. If you wish to use S/MIME supported by
         Outlook, deactivate this GpgOL S/MIME option.
 
@@ -5668,9 +5667,9 @@ step 2).
 
 \clearpage
 \T\chapter{Uninstalling Gpg4win}
-\W\chapter*{E Deinstalling Gpg4win}
+\W\chapter*{E Uninstalling Gpg4win}
 
-\index{Deinstallation}
+\index{Uninstallation}
 
 If you wish to uninstall Gpg4win, you should first shut down all other
 applications that are not required, and backup all certificates. If
@@ -5690,7 +5689,7 @@ to reset this marker prior to uninstalling the program, so that other
 cryptography software can later read and encrypt your \Email{}s
 correctly.
 
-For the purpose of this \textbf{re-migration}\index{Re-Migration of
+For the purpose of this \textbf{re-migration}\index{Re-migration of
 GpgOL}, GpgOL will make the following function available in Outlook:\\
 Select an Outlook \Email{} folder, whose \Email{}s you wish to reset,
 then click on \Menu{Extras $\rightarrow$ Remove GpgOL features from

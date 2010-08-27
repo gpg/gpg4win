@@ -3,6 +3,8 @@
 	* website/template_link_boxes_en.m4: Fixed links to English donation page
 	and paypal.
 
+	* manual/gpg4win-compendium-en.tex: Update index.
+
 2010-08-25  Emanuel Schuetze <emanuel@intevation.de>
 
 	* manual/gpg4win-compendium-de.tex: Some minor fixes and code restructur changes.
