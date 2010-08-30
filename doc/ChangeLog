@@ -2,6 +2,35 @@
 
 	* website/donate.htm4, website/donate-de.htm4: Add two new sponsors.
 
+	* manual/Makefile.am, manual/gpg4win-compendium-en.tex,
+	manual/images-compendium/sc-kleopatra-certificateSearchOnKeyserver_en.png,
+	manual/images-compendium/sc-wordpad-editOpenpgpKey_en.png,
+	manual/images-compendium/sc-kleopatra-openpgp-exportSecretKey_en.png,
+	manual/images-compendium/sc-pinentry-p12-import-b_en.png,
+	manual/images-compendium/sc-kleopatra-decryptFile2_en.png,
+	manual/images-compendium/sc-inst-finished2_en.png,
+	manual/images-compendium/sc-kleopatra-withOpenpgpTestkey_en.png,
+	manual/images-compendium/sc-pinentry-p12-import-a_en.png,
+	manual/images-compendium/sc-kleopatra-decryptFile1_en.png,
+	manual/images-compendium/sc-kleopatra-certifyCertificate3_en.png,
+	manual/images-compendium/sc-kleopatra-openpgp-pinentry_en.png,
+	manual/images-compendium/sc-kleopatra-sign-selectCertificate_en.png,
+	manual/images-compendium/sc-kleopatra-certifyCertificate2_en.png,
+	manual/images-compendium/sc-kleopatra-encryptFile3_en.png,
+	manual/images-compendium/sc-kleopatra-certifyCertificate1_en.png,
+	manual/images-compendium/sc-kleopatra-encryptFile2_en.png,
+	manual/images-compendium/sc-kleopatra-encryptFile1_en.png,
+	manual/images-compendium/sc-kleopatra-x509-pinentry_en.png,
+	manual/images-compendium/sc-kleopatra-configureKeyserver_en.png,
+	manual/images-compendium/sc-kleopatra-verifyFile2_en.png,
+	manual/images-compendium/sc-kleopatra-verifyFile2a-badSignature_en.png,
+	manual/images-compendium/sc-kleopatra-verifyFile1_en.png,
+	manual/images-compendium/sc-kleopatra-x509-keyPairCreated_en.png,
+	manual/images-compendium/sc-kleopatra-verifySignedMail_en.png,
+	manual/images-compendium/sc-kleopatra-x509-createKey_en.png,
+	manual/images-compendium/sc-kleopatra-withAdeleKey_en.png:
+	Added new English screenshots.
+
 2010-08-27  Emanuel Schuetze <emanuel@intevation.de>
 
 	* website/template_link_boxes_en.m4: Fixed links to English donation page
