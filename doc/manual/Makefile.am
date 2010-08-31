@@ -77,8 +77,8 @@ png_compendium_files = \
 	images-compendium/sc-kleopatra-configureKeyserver_de.png \
 	images-compendium/sc-kleopatra-decryptFile1_de.png \
 	images-compendium/sc-kleopatra-decryptFile1_en.png \
-	images-compendium/sc-kleopatra-decryptFile2_de.png \ 
-	images-compendium/sc-kleopatra-decryptFile2_en.png \ 
+	images-compendium/sc-kleopatra-decryptFile2_de.png \
+	images-compendium/sc-kleopatra-decryptFile2_en.png \
 	images-compendium/sc-kleopatra-encryptFile1_de.png \
 	images-compendium/sc-kleopatra-encryptFile1_en.png \
 	images-compendium/sc-kleopatra-encryptFile2_de.png \
@@ -263,7 +263,7 @@ eps_manual_files = $(png_manual_files:.png=.eps)
 
 
 EXTRA_DIST = 	gpg4win-compendium-de.tex \
-				gpg4win-compendium-en.tex \ 
+				gpg4win-compendium-en.tex \
 				fdl.tex fdl-book.tex version.tex.in indexstyle.ist \
 				$(png_compendium_files) $(png_hyperlatex_files) 
 
