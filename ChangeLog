@@ -1,3 +1,7 @@
+2010-08-31  Emanuel Schuetze <emanuel@intevation.de>
+
+	* configure.ac: Updated compendium en version date.
+
 2010-08-26  Emanuel Schuetze <emanuel@intevation.de>
 
 	* configure.ac, include/config.nsi.in, src/Makefile.am,
