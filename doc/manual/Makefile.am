@@ -37,8 +37,11 @@ png_compendium_files = \
 	images-compendium/pk-safe-opened-with-sk.png \
 	images-compendium/pk-safe-open.png \
 	images-compendium/sc-gpgex-contextmenu-signEncrypt_de.png \
+	images-compendium/sc-gpgex-contextmenu-signEncrypt_en.png \
 	images-compendium/sc-gpgex-contextmenu-verifyDecrypt_de.png \
+	images-compendium/sc-gpgex-contextmenu-verifyDecrypt_en.png \
 	images-compendium/sc-gpgol-options_de.png \
+	images-compendium/sc-gpgol-options_en.png \
 	images-compendium/sc-gpgol-options-textformat_de.png \
 	images-compendium/schlapphut-with-key.png \
 	images-compendium/sc-inst-components_de.png \
@@ -117,6 +120,7 @@ png_compendium_files = \
 	images-compendium/sc-kleopatra-signFile3_de.png \
 	images-compendium/sc-kleopatra-signFile3_en.png \
 	images-compendium/sc-kleopatra-sign-OpenpgpPinentry_de.png \
+	images-compendium/sc-kleopatra-sign-OpenpgpPinentry_en.png \
 	images-compendium/sc-kleopatra-sign-selectCertificate_de.png \
 	images-compendium/sc-kleopatra-sign-selectCertificate_en.png \
 	images-compendium/sc-kleopatra-sign-successful_de.png \
@@ -147,6 +151,7 @@ png_compendium_files = \
 	images-compendium/sc-ol-adele-sendOpenpgpKey-attachment_de.png \
 	images-compendium/sc-ol-adele-sendOpenpgpKey-inline_de.png \
 	images-compendium/sc-ol-sendEncryptedMail_de.png \
+	images-compendium/sc-ol-sendEncryptedMail_en.png \
 	images-compendium/sc-ol-sendSignedMail_de.png \
 	images-compendium/sc-pinentry-p12-import-a_de.png \
 	images-compendium/sc-pinentry-p12-import-a_en.png \

@@ -1,3 +1,7 @@
+2010-08-31  Emanuel Schuetze <emanuel@intevation.de>
+
+	* manual/Makefile.am: Adapt Makefile.am to added screenshots.
+
 2010-08-30 Drew Northup <dnorthup@maine.edu>
 
 	* manual/images-compendium/sc-gpgol-options_en.png,
