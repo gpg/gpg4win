@@ -11,6 +11,17 @@
 	longer required in manual directory (see log dir for original EPS
 	file).
 
+	* manual/images-compendium/sc-kleopatra-encrypt-selectCertificate_en.png,
+	manual/images-compendium/sc-kleopatra-import-openpgp-secret-key_en.png,
+	manual/images-compendium/sc-kleopatra-import-certificate_en.png,
+	manual/images-compendium/sc-kleopatra-signFile3_en.png,
+	manual/images-compendium/sc-kleopatra-signFile2_en.png,
+	manual/images-compendium/sc-kleopatra-exportCertificateToServer_en.png,
+	manual/images-compendium/sc-kleopatra-signFile1_en.png,
+	manual/images-compendium/sc-kleopatra-openpgp-keyPairCreated_en.png:
+	Added new English screenshots.
+
+
 2010-08-30 Drew Northup <dnorthup@maine.edu>
 
 	* manual/images-compendium/sc-gpgol-options_en.png,
