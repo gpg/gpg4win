@@ -1,3 +1,13 @@
+2010-08-30 Drew Northup <dnorthup@maine.edu>
+
+	* manual/images-compendium/sc-gpgol-options_en.png,
+	manual/images-compendium/sc-ol-sendEncryptedMail_en.png,
+	manual/images-compendium/sc-kleopatra-sign-OpenpgpPinentry_en.png,
+	manual/images-compendium/sc-gpgex-contextmenu-verifyDecrypt_en.png,
+	manual/images-compendium/sc-gpgex-contextmenu-signEncrypt_en.png:
+	Adding some still missing English screenshots: GpgEX, Pinentry for
+	secret key, a couple more gpgol and outlook screenshots.
+
 2010-08-30  Emanuel Schuetze <emanuel@intevation.de>
 
 	* website/donate.htm4, website/donate-de.htm4: Add two new sponsors.
