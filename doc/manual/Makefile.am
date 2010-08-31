@@ -269,8 +269,14 @@ EXTRA_DIST = 	gpg4win-compendium-de.tex \
 
 CLEANFILES = $(eps_compendium_files) $(eps_manual_files) \
              *.dvi *.pdf *.pdf *.toc *.log *.aux *.out *.idx *.ilg *.ind \
-	     	 *.html.d-stamp  *.html.d/*
+	     	 *.html *.html.d-stamp* *.html.d
 DISTCLEANFILES = version.tex
+
+clean: 
+	rm -rf $(CLEANFILES)
+
+distclean:
+	rm -rf $(CLEANFILES) $(DISTCLEANFILES)
 
 pkgdata_DATA = 	gpg4win-compendium-de.pdf \
 				gpg4win-compendium-en.pdf 
@@ -314,6 +320,8 @@ pdf-en: gpg4win-compendium-en.pdf
 dvi-de: gpg4win-compendium-de.dvi
 dvi-en: gpg4win-compendium-en.dvi
 
+html: 	 gpg4win-compendium-de.html.d-stamp \
+   		 gpg4win-compendium-en.html.d-stamp
 html-de: gpg4win-compendium-de.html.d-stamp
 html-en: gpg4win-compendium-en.html.d-stamp
 
@@ -333,12 +341,24 @@ html-en: gpg4win-compendium-en.html.d-stamp
             sed -n 's/.*\\IncludeImage{\([^}]*\).*/\1.png/p' $$src ;\
             sed -n 's/.*\\input{\([^}]*\).*/\1/p' $$src ) \
           | sort | uniq) ;\
-	 for f in $$files $(png_hyperlatex_files); do \
+	 for f in $$files; do \
 	   if [ -f "$$f" ]; then cp "$$f" $$wdir ;\
 	   elif [ -f "$(srcdir)/$$f" ]; then cp "$(srcdir)/$$f" $$wdir ;\
 	   fi ;\
-         done ;\
-         cd $$wdir ;\
+     done ;\
+	 mkdir $$wdir/images-hyperlatex;\
+	 for f in $(png_hyperlatex_files); do \
+	   if [ -f "$$f" ]; then cp "$$f" $$wdir/images-hyperlatex ;\
+	   elif [ -f "$(srcdir)/$$f" ]; then cp "$(srcdir)/$$f" $$wdir/images-hyperlatex ;\
+	   fi ;\
+     done ;\
+	 mkdir $$wdir/images-compendium;\
+	 for f in $(png_compendium_files); do \
+	   if [ -f "$$f" ]; then cp "$$f" $$wdir/images-compendium ;\
+	   elif [ -f "$(srcdir)/$$f" ]; then cp "$(srcdir)/$$f" $$wdir/images-compendium ;\
+	   fi ;\
+     done ;\
+     cd $$wdir ;\
 	 hyperlatex $$(basename $$src) ;\
 	 for f in $$files; do \
 	    x=$$(basename "$$f") ;\
@@ -346,7 +366,7 @@ html-en: gpg4win-compendium-en.html.d-stamp
 	 done
 	@mv -f $@.tmp $@
 
-online: gpg4win-compendium-de.html.d-stamp novices.html.d-stamp
+online: gpg4win-compendium-de.html.d-stamp gpg4win-compendium-en.html.d-stamp
 	set -e; \
 	echo "Going to put current manuals online for www.gpg4win.org ..."; \
         user=`svn info | sed -n '/^URL:/ s,.*svn+ssh://\\([^@]*\\).*,\\1,p'`;\
@@ -355,10 +375,10 @@ online: gpg4win-compendium-de.html.d-stamp novices.html.d-stamp
 	   echo "Cding to: $$x";\
            cd $$x ;\
            rsync -v * \
-             $${user}@wald.intevation.org:/gpg4win/htdocs/handbuecher/ ); \
+             $${user}@wald.intevation.org:/gpg4win/htdocs/doc/ ); \
 	done
 
-preview: gpg4win-compendium-de.html.d-stamp novices.html.d-stamp
+preview: gpg4win-compendium-de.html.d-stamp gpg4win-compendium-en.html.d-stamp
 	set -e; \
 	echo "Rsyncing the HTML manuals to the preview host ..."; \
 	for d in $^; do \

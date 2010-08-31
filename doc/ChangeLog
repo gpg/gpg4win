@@ -2,6 +2,11 @@
 
 	* manual/Makefile.am: Adapt Makefile.am to added screenshots.
 
+	* manual/Makefile.am: Changed image path for compendium and
+	hyperlatex files.
+	* manual/gpg4win-compendium-de.tex: Added image-hyperlatex path
+	for hlxicons.
+
 2010-08-30 Drew Northup <dnorthup@maine.edu>
 
 	* manual/images-compendium/sc-gpgol-options_en.png,
