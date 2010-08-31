@@ -21,6 +21,9 @@
 	manual/images-compendium/sc-kleopatra-openpgp-keyPairCreated_en.png:
 	Added new English screenshots.
 
+	* manual/gpg4win-compendium-de.tex,
+	manual/gpg4win-compendium-en.tex:
+	Update pdf meta infos.
 
 2010-08-30 Drew Northup <dnorthup@maine.edu>
 

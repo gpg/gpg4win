@@ -46,20 +46,30 @@
 % to be updated for this as well - not a trivial change.
 %\W\htmldirectory{./compendium-de-html}
 
+
 % Hyperref should be among the last packages loaded
 \usepackage[breaklinks,
     bookmarks,
     bookmarksnumbered,
-    pdftitle={Das Gpg4win-Kompendium},
-    pdfauthor={Emanuel Schütze, Werner Koch, Florian v. Samson, Dr.
-      Jan-Oliver Wagner, Ute Bahn, Karl Bihlmeier, Manfred J. Heinze,
-      Isabel Kramer und Dr. Francis Wray},
-    pdfsubject={Sichere  - und Datei-Verschlüsselung mit GnuPG für Windows},
-    pdfkeywords={Gpg4win,  , Datei, verschlüsseln, entschlüsseln,
-    signieren, OpenPGP, S/MIME, X.509, Zertifikat, Kleopatra, GpgOL,
-    GpgEX, GnuPG, sicher,  -Sicherheit, Kryptografie, Public-Key,
-    Freie Software, Signatur, prüfen, FLOSS, Open Source Software, PKI, Ordner} 
+    pdftitle={The Gpg4win Compendium},
+    pdfauthor={Emanuel Schütze; Werner Koch; Florian v. Samson; Dr.
+      Jan-Oliver Wagner; Ute Bahn; Karl Bihlmeier; Manfred J. Heinze;
+      Isabel Kramer; Dr. Francis Wray},
+    pdfsubject={Secure e-mail and file encryption using GnuPG for Windows},
+    pdfkeywords={Gpg4win; e-mail; email; file; encrypt; decrypt; sign;
+    OpenPGP; S/MIME; X.509; certificate; Kleopatra; GpgOL; GpgEX;
+    GnuPG; secure; email security; cryptography; public key;
+    Free Software; signature; verify; FLOSS; Open Source Software;
+    PKI; folder} 
 ]{hyperref}
+
+%\IfFileExists{hyperxmp.sty}{
+%  \usepackage{hyperxmp}
+%  \hypersetup{
+%      pdfcopyright={GNU Free Documentation License (GFDL)},
+%      pdflicenseurl={http://www.gnu.org/copyleft/fdl.html}
+%  }
+%}
 
 % set graphic extension
 \begin{latexonly}
@@ -175,12 +185,6 @@
              \xlink{#1}{#2}%
     \end{ifset}}
 
-    % german style
-    %\htmlpanelgerman
-    %\extrasgerman
-    %\dategerman
-    %\captionsgerman
-
 
     % SECTIONING:
     %
@@ -216,14 +220,14 @@
     % DIN A5:
     {\begin{latexonly}
         \LARGE The Gpg4win Compendium\\[0.3cm]
-        \large \textmd{Safe   and file encryption
-       \\[-0.3cm] with GnuPG for Windows}
+        \large \textmd{Secure e-mail and file encryption
+        \\[-0.3cm] using GnuPG for Windows}
      \end{latexonly}  
     }%
     % DIN A4:
     {The Gpg4win Compendium \\
       \texorhtml{\Large \textmd}{\large}
-      {Secure   and file encryption using GnuPG for 
+      {Secure e-mail and file encryption using GnuPG for 
       Windows}
     }
 }
