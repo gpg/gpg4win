@@ -43,6 +43,7 @@ png_compendium_files = \
 	images-compendium/sc-gpgol-options_de.png \
 	images-compendium/sc-gpgol-options_en.png \
 	images-compendium/sc-gpgol-options-textformat_de.png \
+	images-compendium/sc-gpgol-options-textformat_en.png \
 	images-compendium/schlapphut-with-key.png \
 	images-compendium/sc-inst-components_de.png \
 	images-compendium/sc-inst-components_en.png \
@@ -66,6 +67,7 @@ png_compendium_files = \
 	images-compendium/sc-inst-welcome_de.png \
 	images-compendium/sc-inst-welcome_en.png \
 	images-compendium/sc-kleopatra-certificateSearchOnKeyserver_de.png \
+	images-compendium/sc-kleopatra-certificateSearchOnKeyserver_en.png \
 	images-compendium/sc-kleopatra-certifyCertificate1_de.png \
 	images-compendium/sc-kleopatra-certifyCertificate1_en.png \
 	images-compendium/sc-kleopatra-certifyCertificate2_de.png \
@@ -75,6 +77,7 @@ png_compendium_files = \
 	images-compendium/sc-kleopatra-ChooseCertificateFormat_de.png \
 	images-compendium/sc-kleopatra-ChooseCertificateFormat_en.png \
 	images-compendium/sc-kleopatra-configureKeyserver_de.png \
+	images-compendium/sc-kleopatra-configureKeyserver_en.png \
 	images-compendium/sc-kleopatra-decryptFile1_de.png \
 	images-compendium/sc-kleopatra-decryptFile1_en.png \
 	images-compendium/sc-kleopatra-decryptFile2_de.png \
@@ -149,10 +152,13 @@ png_compendium_files = \
 	images-compendium/sc-kleopatra-x509-reviewParameters_de.png \
 	images-compendium/sc-kleopatra-x509-reviewParameters_en.png \
 	images-compendium/sc-ol-adele-sendOpenpgpKey-attachment_de.png \
+	images-compendium/sc-ol-adele-sendOpenpgpKey-attachment_en.png \
 	images-compendium/sc-ol-adele-sendOpenpgpKey-inline_de.png \
+	images-compendium/sc-ol-adele-sendOpenpgpKey-inline_en.png \
 	images-compendium/sc-ol-sendEncryptedMail_de.png \
 	images-compendium/sc-ol-sendEncryptedMail_en.png \
 	images-compendium/sc-ol-sendSignedMail_de.png \
+	images-compendium/sc-ol-sendSignedMail_en.png \
 	images-compendium/sc-pinentry-p12-import-a_de.png \
 	images-compendium/sc-pinentry-p12-import-a_en.png \
 	images-compendium/sc-pinentry-p12-import-b_de.png \

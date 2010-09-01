@@ -1,3 +1,13 @@
+2010-09-01  Emanuel Schuetze <emanuel@intevation.de>
+
+	* manual/Makefile.am, manual/gpg4win-compendium-en.tex,
+	manual/images-compendium/sc-ol-sendSignedMail_en.png,
+	manual/images-compendium/sc-gpgol-options-textformat_en.png,
+	manual/images-compendium/sc-ol-sendEncryptedMail_en.png,
+	manual/images-compendium/sc-ol-adele-sendOpenpgpKey-inline_en.png,
+	manual/images-compendium/sc-ol-adele-sendOpenpgpKey-attachment_en.png: 
+	Add new English screenshots by Drew.
+
 2010-08-31  Emanuel Schuetze <emanuel@intevation.de>
 
 	* manual/Makefile.am: Adapt Makefile.am to added screenshots.
