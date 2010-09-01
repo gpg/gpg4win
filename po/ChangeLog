@@ -1,3 +1,10 @@
+2010-09-01  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+
+	* ar.po, es.po, fr.po, pt.po, ru.po, de.po: Updated.
+
+	* POTFILES.in: Remove inst-man_advanced_{de,en}, inst-man_novices_{de,en}.
+	Change inst-compendium_de.nsi to inst-compendium.nsi.
+
 2010-08-27  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
 	* pt.po: Added English compendium translations strings.

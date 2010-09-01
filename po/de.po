@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gpg4win 2.0\n"
 "Report-Msgid-Bugs-To: gpg4win-devel@wald.intevation.org\n"
-"POT-Creation-Date: 2010-04-16 16:44+0200\n"
+"POT-Creation-Date: 2010-09-01 16:57+0200\n"
 "PO-Revision-Date: 2009-09-28 15:17+0200\n"
 "Last-Translator: Werner Koch <wk@g10code.com>\n"
 "Language-Team: German <translation-team-de@lists.sourceforge.net>\n"
@@ -154,43 +154,43 @@ msgctxt "DESC_Desktop_manuals"
 msgid "Gpg4win Documentation"
 msgstr "Gpg4win Dokumentation"
 
-#: src/installer.nsi:464
+#: src/installer.nsi:463
 msgctxt "T_InstallOptions"
 msgid "Install Options"
 msgstr "Installationsoptionen"
 
-#: src/installer.nsi:467
+#: src/installer.nsi:466
 msgctxt "T_InstallOptLinks"
 msgid "Start links"
 msgstr "Startlinks"
 
-#: src/installer.nsi:469
+#: src/installer.nsi:468
 msgctxt "T_InstOptLabelA"
 msgid "Please select where Gpg4win shall install links:"
 msgstr "Bitte wählen Sie, welche Verknüpfungen angelegt werden sollen:"
 
-#: src/installer.nsi:472
+#: src/installer.nsi:471
 msgctxt "T_InstOptLabelB"
 msgid "(Only programs will be linked into the quick launch bar.)"
 msgstr ""
 "(In der Schnellstartleiste werden nur Verknüpfungen für Programme angelegt.)"
 
-#: src/installer.nsi:475
+#: src/installer.nsi:474
 msgctxt "T_InstOptFieldA"
 msgid "Start Menu"
 msgstr "Startmenü"
 
-#: src/installer.nsi:478
+#: src/installer.nsi:477
 msgctxt "T_InstOptFieldB"
 msgid "Desktop"
 msgstr "Arbeitsfläche"
 
-#: src/installer.nsi:481
+#: src/installer.nsi:480
 msgctxt "T_InstOptFieldC"
 msgid "Quick Launch Bar"
 msgstr "Schnellstartleiste"
 
-#: src/installer.nsi:487
+#: src/installer.nsi:486
 msgctxt "T_FoundExistingVersion"
 msgid ""
 "Version $R1 has already been installed.\n"
@@ -202,7 +202,7 @@ msgstr ""
 "(Sie können in jedem Fall mit JA antworten, falls es sich um eine neuere "
 "oder dieselbe Version handelt.)"
 
-#: src/installer.nsi:490
+#: src/installer.nsi:489
 msgctxt "T_FoundExistingOldVersion"
 msgid ""
 "An old version $R1 has already been installed.  It is strongly recommended "
@@ -214,7 +214,7 @@ msgstr ""
 "deinstallieren.\n"
 "Möchten Sie trotzdem fortfahren, Version ${VERSION} zu installieren?"
 
-#: src/installer.nsi:495
+#: src/installer.nsi:494
 msgctxt "T_FoundExistingVersionB"
 msgid ""
 "A version of Gpg4Win has already been installed on the system. There will be "
@@ -227,7 +227,7 @@ msgstr ""
 "\n"
 "Möchten die die Installation von Gpg4win fortführen?"
 
-#: src/installer.nsi:506
+#: src/installer.nsi:505
 msgctxt "T_FoundOldSeeManual"
 msgid ""
 "Please see the Gpg4win user manual to learn how to migrate existing keys "
@@ -238,7 +238,7 @@ msgstr ""
 "überführen.  Es wird dringend geraten Gpg4win nicht zusammen mit diesen "
 "anderen Installation zu betreiben."
 
-#: src/installer.nsi:511
+#: src/installer.nsi:510
 msgctxt "T_FoundOldGnuPP"
 msgid ""
 "An old installation of GnuPP (GNU Privacy Project) has been been detected.  "
@@ -261,7 +261,7 @@ msgstr ""
 "Möchten Sie die Installation von Gpg4win weiter durchführen und sich dann "
 "später um die Entfernung von GnuPP kümmern?"
 
-#: src/installer.nsi:520
+#: src/installer.nsi:519
 msgctxt "T_FoundOldGnuPT"
 msgid ""
 "An installation of GnuPT has been been detected.  This may cause problems "
@@ -284,7 +284,7 @@ msgstr ""
 "\n"
 "Möchten Sie die Installation von Gpg4win fortführen?"
 
-#: src/installer.nsi:527
+#: src/installer.nsi:526
 msgctxt "T_FoundOldWinPTSF"
 msgid ""
 "An old installation of the Sourceforge hosted WinPT has been been detected.  "
@@ -309,7 +309,7 @@ msgstr ""
 "\n"
 "Möchten Sie die Installation von Gpg4win trotzdem jetzt weiter durchführen?"
 
-#: src/installer.nsi:537
+#: src/installer.nsi:536
 msgctxt "T_FoundOldGnuPack"
 msgid ""
 "An installation of GnuPG-Pack has been been detected. You need to uninstall "
@@ -323,7 +323,7 @@ msgstr ""
 "\n"
 "Die Installation von Gpg4win wird nun abgebrochen!"
 
-#: src/installer.nsi:546
+#: src/installer.nsi:545
 msgctxt "T_BetaWarning"
 msgid ""
 "Note: This is a BETA version of Gpg4win.\n"
@@ -347,7 +347,7 @@ msgstr ""
 "\n"
 "  http://www.gpg4win.de/download-de.html  "
 
-#: src/installer.nsi:553
+#: src/installer.nsi:552
 msgctxt "T_AdminNeeded"
 msgid ""
 "Warning: Administrator permissions required for a successful installation"
@@ -355,7 +355,7 @@ msgstr ""
 "Achtung: Für eine erfolgreiche Installation werden Administratorrechte "
 "benötigt."
 
-#: src/installer.nsi:557
+#: src/installer.nsi:556
 msgctxt "T_CloseOtherApps"
 msgid ""
 "Please make sure that other applications are not running. In particular you "
@@ -368,12 +368,12 @@ msgstr ""
 "eine Installation durchzuführen; es ist dann aber u.U. notwendig, das System "
 "neu zu starten."
 
-#: src/installer.nsi:562
+#: src/installer.nsi:561
 msgctxt "T_ShuttingDownWinPT"
 msgid "Trying to shutdown a possible running instance of WinPT."
 msgstr "Ein möglicherweise laufendes WinPT wird jetzt automatisch beendet."
 
-#: src/installer.nsi:564
+#: src/installer.nsi:563
 msgctxt "T_ShuttingDownDirMngr"
 msgid "Trying to shutdown a possible running instance of DirMngr."
 msgstr "Ein möglicherweise laufender DirMngr wird jetzt automatisch beendet."
@@ -400,13 +400,7 @@ msgctxt "DESC_Menu_claws_mail_pdf"
 msgid "Show the online manual of Claws Mail"
 msgstr "Das englische Handbuch zu Claws Mail anzeigen"
 
-#: src/inst-eudoragpg.nsi:40
-msgctxt "DESC_SEC_eudoragpg"
-msgid "EudoraGPG is a plugin for the Eudora mail program"
-msgstr ""
-"EudoraGPG ist ein Plugin zur Verschlüsselung für das Eudora Mailprogramm"
-
-#: src/inst-gnupg2.nsi:211
+#: src/inst-gnupg2.nsi:213
 msgctxt "DESC_SEC_gnupg2"
 msgid "GNU Privacy Guard"
 msgstr ""
@@ -426,39 +420,22 @@ msgctxt "DESC_Menu_gpa"
 msgid "Run the GNU Privacy Assistant key management tool."
 msgstr "Das Schlüsselverwaltungsprogramm GPA aufrufen."
 
-#: src/inst-gpg4win.nsi:81
+#: src/inst-gpg4win.nsi:82
 msgctxt "DESC_Menu_gpg4win_readme"
 msgid "General information on Gpg4win"
 msgstr "Allgemeine Informationen zu Gpg4win"
 
-#: src/inst-gpg4win.nsi:84
+#: src/inst-gpg4win.nsi:85
 msgctxt "DESC_Menu_gnupg_faq"
 msgid "Show the Frequently Asked Questions document for GnuPG"
 msgstr "Das Dokument mit den häufig gestellten Fragen (FAQ) zu GnuPG anzeigen"
 
-#: src/inst-gpgee.nsi:65
-msgctxt "T_GPGee_RegFailed"
-msgid "Warning: Registration of the GPGee explorer extension failed."
-msgstr "Warnung: Registration der GPGee Explorer Extension ist fehlgeschlagen."
-
-#: src/inst-gpgee.nsi:68
-msgctxt "DESC_SEC_gpgee"
-msgid "GPG Explorer Extensions"
-msgstr ""
-"GPG Explorer Erweiterungen (GPGee) ist eine Erweiterung für den Explorer, "
-"die es ermöglicht, Dateien über das Kontextmenü zu verschlüsseln."
-
-#: src/inst-gpgee.nsi:71
-msgctxt "DESC_Menu_gpgee_hlp"
-msgid "Show the online manual of GPGee"
-msgstr "Das englische Handbuch zu GPGee anzeigen"
-
-#: src/inst-gpgex.nsi:80
+#: src/inst-gpgex.nsi:82
 msgctxt "T_GpgEX_RegFailed"
 msgid "Warning: Registration of the GpgEX plugin failed."
 msgstr "Warnung: Registration des GpgEX Plugin ist fehlgeschlagen."
 
-#: src/inst-gpgex.nsi:83
+#: src/inst-gpgex.nsi:85
 msgctxt "DESC_SEC_gpgex"
 msgid "GnuPG Shell Extension"
 msgstr ""
@@ -466,12 +443,12 @@ msgstr ""
 "ermöglicht, Dateien über das Kontextmenü zu verschlüsseln. Benötigt "
 "Kleopatra oder GPA."
 
-#: src/inst-gpgol.nsi:61
+#: src/inst-gpgol.nsi:65
 msgctxt "T_GpgOL_RegFailed"
 msgid "Warning: Registration of the GpgOL Outlook pluginfailed."
 msgstr "Warnung: Registration des GpgOL Outlook Plugin ist fehlgeschlagen."
 
-#: src/inst-gpgol.nsi:64
+#: src/inst-gpgol.nsi:68
 msgctxt "DESC_SEC_gpgol"
 msgid "GnuPG for Outlook"
 msgstr ""
@@ -479,156 +456,152 @@ msgstr ""
 "die verwendet wird, um Nachrichten mit OpenPGP oder S/MIME zu verschlüsseln. "
 "Benötigt Kleopatra oder GPA."
 
-#: src/inst-kleopatra.nsi:230
+#: src/inst-kleopatra.nsi:247
 msgctxt "DESC_SEC_kleopatra"
 msgid "Keymanager for OpenPGP and X.509 and common crypto dialogs."
 msgstr ""
 "Zertifikatsmanager für OpenPGP und X.509 (S/MIME) sowie einheitliche "
 "Benutzerführung für alle Krypto-Operationen."
 
-#: src/inst-kleopatra.nsi:234
+#: src/inst-kleopatra.nsi:251
 msgctxt "DESC_Menu_kleopatra"
 msgid "Run the Kleopatra key management tool."
 msgstr "Das Schlüsselverwaltungsprogramm Kleopatra aufrufen."
 
-#: src/inst-man_advanced_de.nsi:39
-msgctxt "DESC_Name_man_advanced_de"
-msgid "Advanced Manual (German)"
-msgstr "Durchblickerhandbuch"
+#: src/inst-compendium.nsi:47
+msgctxt "DESC_Name_compendium"
+msgid "Gpg4win Compendium"
+msgstr "Gpg4win-Kompendium"
 
-#: src/inst-man_advanced_de.nsi:42
-msgctxt "DESC_SEC_man_advanced_de"
-msgid "Gpg4Win Manual for the Advanced User (German)"
-msgstr "Gpg4win Handbuch für den Durchblicker"
+#: src/inst-compendium.nsi:50
+msgctxt "DESC_SEC_compendium"
+msgid "The Gpg4win documentation (English and German)"
+msgstr "Die Gpg4win Dokumentation (in deutsch und english)"
 
-#: src/inst-man_advanced_de.nsi:45
-msgctxt "DESC_Menu_man_advanced_de"
-msgid "Show the German online manual of Gpg4Win for advanced users"
-msgstr "Das Online-Handbuch von Gpg4win für den Durchblicker anzeigen"
-
-#: src/inst-man_advanced_en.nsi:39
-msgctxt "DESC_Name_man_advanced_en"
-msgid "Advanced Manual"
-msgstr "Durchblickerhandbuch (Englisch)"
-
-#: src/inst-man_advanced_en.nsi:42
-msgctxt "DESC_SEC_man_advanced_en"
-msgid "Gpg4Win Manual for the Advanced User"
-msgstr "Gpg4win Handbuch für den Durchblicker (englisch)"
-
-#: src/inst-man_advanced_en.nsi:45
-msgctxt "DESC_Menu_man_advanced_en"
-msgid "Show the online manual of Gpg4Win for advanced users"
-msgstr ""
-"Das englische Online-Handbuch von Gpg4win für den Durchblicker anzeigen"
-
-#: src/inst-man_novice_de.nsi:39
-msgctxt "DESC_Name_man_novice_de"
-msgid "Novice Manual (German)"
-msgstr "Einsteigerhandbuch"
-
-#: src/inst-man_novice_de.nsi:42
-msgctxt "DESC_SEC_man_novice_de"
-msgid "Gpg4Win Manual for the Novice User (German)"
-msgstr "Gpg4win Handbuch für den Einsteiger"
-
-#: src/inst-man_novice_de.nsi:45
-msgctxt "DESC_Menu_man_novice_de"
-msgid "Show the German online manual of Gpg4Win for novice users"
-msgstr "Das Online-Handbuch von Gpg4win für den Einsteiger anzeigen"
-
-#: src/inst-man_novice_en.nsi:39
-msgctxt "DESC_Name_man_novice_en"
-msgid "Novice Manual (pdf, English)"
-msgstr "Gpg4win Einsteigerhandbuch (pdf, englisch)"
-
-#: src/inst-man_novice_en.nsi:42
-msgctxt "DESC_SEC_man_novice_en"
-msgid "Gpg4win Manual for the Novice User (English)"
-msgstr "Gpg4win Einsteigerhandbuch (englisch)"
-
-#: src/inst-man_novice_en.nsi:45
-msgctxt "DESC_Menu_man_novice_en"
-msgid "Show the Gpg4win manual for novice users (pdf, English)"
-msgstr "Gpg4win Einsteigerhandbuch (pdf, englisch)"
-
-#: src/inst-compendium_de.nsi:40
-msgctxt "DESC_Name_compendium_de"
-msgid "Gpg4win Compendium DE"
-msgstr "Gpg4win-Kompendium DE"
-
-#: src/inst-compendium_de.nsi:44
+#: src/inst-compendium.nsi:54
 msgctxt "DESC_Name_compendium_de_pdf"
 msgid "Gpg4win Compendium (pdf, German)"
 msgstr "Gpg4win-Kompendium (pdf, deutsch)"
 
-#: src/inst-compendium_de.nsi:48
-msgctxt "DESC_Name_compendium_de_html"
-msgid "Gpg4win Compendium (html, German)"
-msgstr "Gpg4win-Kompendium (html, deutsch)"
-
-#: src/inst-compendium_de.nsi:52
-msgctxt "DESC_SEC_compendium_de"
-msgid "Gpg4win Compendium (German)"
-msgstr "Gpg4win-Kompendium (deutsch)"
-
-#: src/inst-compendium_de.nsi:56
-msgctxt "DESC_Menu_compendium_de_pdf"
-msgid "Show the Gpg4win Compendium (pdf, German)"
-msgstr "Gpg4win-Kompendium (pdf, deutsch)"
-
-#: src/inst-compendium_de.nsi:60
-msgctxt "DESC_Menu_compendium_de_html"
-msgid "Show the Gpg4win compendium (html, German)"
-msgstr "Gpg4win-Kompendium (html, deutsch)"
-
-#: src/inst-compendium_en.nsi:40
-msgctxt "DESC_Name_compendium_en"
-msgid "Gpg4win Compendium EN"
-msgstr "Gpg4win-Kompendium EN"
-
-#: src/inst-compendium_en.nsi:44
+#: src/inst-compendium.nsi:56
 msgctxt "DESC_Name_compendium_en_pdf"
 msgid "Gpg4win Compendium (pdf, English)"
 msgstr "Gpg4win-Kompendium (pdf, english)"
 
-#: src/inst-compendium_en.nsi:48
+#: src/inst-compendium.nsi:60
+msgctxt "DESC_Name_compendium_de_html"
+msgid "Gpg4win Compendium (html, German)"
+msgstr "Gpg4win-Kompendium (html, deutsch)"
+
+#: src/inst-compendium.nsi:62
 msgctxt "DESC_Name_compendium_en_html"
 msgid "Gpg4win Compendium (html, English)"
 msgstr "Gpg4win-Kompendium (html, englisch)"
 
-#: src/inst-compendium_en.nsi:52
-msgctxt "DESC_SEC_compendium_en"
-msgid "Gpg4win Compendium (English)"
-msgstr "Gpg4win-Kompendium (englisch)"
+#: src/inst-compendium.nsi:66
+msgctxt "DESC_Menu_compendium_de_pdf"
+msgid "Show the Gpg4win Compendium (pdf, German)"
+msgstr "Gpg4win-Kompendium (pdf, deutsch)"
 
-#: src/inst-compendium_en.nsi:56
+#: src/inst-compendium.nsi:68
 msgctxt "DESC_Menu_compendium_en_pdf"
 msgid "Show the Gpg4win Compendium (pdf, English)"
 msgstr "Gpg4win-Kompendium (pdf, englisch)"
 
-#: src/inst-compendium_en.nsi:60
+#: src/inst-compendium.nsi:72
+msgctxt "DESC_Menu_compendium_de_html"
+msgid "Show the Gpg4win Compendium (html, German)"
+msgstr "Gpg4win-Kompendium (html, deutsch)"
+
+#: src/inst-compendium.nsi:74
 msgctxt "DESC_Menu_compendium_en_html"
-msgid "Show the Gpg4win compendium (html, English)"
+msgid "Show the Gpg4win Compendium (html, English)"
 msgstr "Gpg4win-Kompendium (html, englisch)"
 
-#: src/inst-winpt.nsi:46
-msgctxt "DESC_SEC_winpt"
-msgid "Windows Privacy Tray"
-msgstr ""
-"Windows Privacy Tray (WinPT) ist ein vielseitiges Programm zur "
-"Schlüsselverwaltung sowie aller anderen Funktionen von GnuPG.  Es "
-"installiert sich in die Startleiste."
+#~ msgctxt "DESC_SEC_eudoragpg"
+#~ msgid "EudoraGPG is a plugin for the Eudora mail program"
+#~ msgstr ""
+#~ "EudoraGPG ist ein Plugin zur Verschlüsselung für das Eudora Mailprogramm"
 
-#: src/inst-winpt.nsi:49
-msgctxt "DESC_Menu_winpt"
-msgid ""
-"Run the Windows Privacy Tray key management tool. This is a versatile key "
-"management and encryption tool."
-msgstr ""
-"Das Schlüsselverwaltungsprogramm Windows Privacy Tray aufrufen.  Dies ist "
-"ein vielseitiges Programm zur Schlüsselverwaltung und Verschlüsselung.  Es "
-"installiert sich in die Startleiste."
+#~ msgctxt "T_GPGee_RegFailed"
+#~ msgid "Warning: Registration of the GPGee explorer extension failed."
+#~ msgstr ""
+#~ "Warnung: Registration der GPGee Explorer Extension ist fehlgeschlagen."
+
+#~ msgctxt "DESC_SEC_gpgee"
+#~ msgid "GPG Explorer Extensions"
+#~ msgstr ""
+#~ "GPG Explorer Erweiterungen (GPGee) ist eine Erweiterung für den Explorer, "
+#~ "die es ermöglicht, Dateien über das Kontextmenü zu verschlüsseln."
+
+#~ msgctxt "DESC_Menu_gpgee_hlp"
+#~ msgid "Show the online manual of GPGee"
+#~ msgstr "Das englische Handbuch zu GPGee anzeigen"
+
+#~ msgctxt "DESC_Name_man_advanced_de"
+#~ msgid "Advanced Manual (German)"
+#~ msgstr "Durchblickerhandbuch"
+
+#~ msgctxt "DESC_SEC_man_advanced_de"
+#~ msgid "Gpg4Win Manual for the Advanced User (German)"
+#~ msgstr "Gpg4win Handbuch für den Durchblicker"
+
+#~ msgctxt "DESC_Menu_man_advanced_de"
+#~ msgid "Show the German online manual of Gpg4Win for advanced users"
+#~ msgstr "Das Online-Handbuch von Gpg4win für den Durchblicker anzeigen"
+
+#~ msgctxt "DESC_Name_man_advanced_en"
+#~ msgid "Advanced Manual"
+#~ msgstr "Durchblickerhandbuch (Englisch)"
+
+#~ msgctxt "DESC_SEC_man_advanced_en"
+#~ msgid "Gpg4Win Manual for the Advanced User"
+#~ msgstr "Gpg4win Handbuch für den Durchblicker (englisch)"
+
+#~ msgctxt "DESC_Menu_man_advanced_en"
+#~ msgid "Show the online manual of Gpg4Win for advanced users"
+#~ msgstr ""
+#~ "Das englische Online-Handbuch von Gpg4win für den Durchblicker anzeigen"
+
+#~ msgctxt "DESC_Name_man_novice_de"
+#~ msgid "Novice Manual (German)"
+#~ msgstr "Einsteigerhandbuch"
+
+#~ msgctxt "DESC_SEC_man_novice_de"
+#~ msgid "Gpg4Win Manual for the Novice User (German)"
+#~ msgstr "Gpg4win Handbuch für den Einsteiger"
+
+#~ msgctxt "DESC_Menu_man_novice_de"
+#~ msgid "Show the German online manual of Gpg4Win for novice users"
+#~ msgstr "Das Online-Handbuch von Gpg4win für den Einsteiger anzeigen"
+
+#~ msgctxt "DESC_Name_man_novice_en"
+#~ msgid "Novice Manual (pdf, English)"
+#~ msgstr "Gpg4win Einsteigerhandbuch (pdf, englisch)"
+
+#~ msgctxt "DESC_SEC_man_novice_en"
+#~ msgid "Gpg4win Manual for the Novice User (English)"
+#~ msgstr "Gpg4win Einsteigerhandbuch (englisch)"
+
+#~ msgctxt "DESC_Menu_man_novice_en"
+#~ msgid "Show the Gpg4win manual for novice users (pdf, English)"
+#~ msgstr "Gpg4win Einsteigerhandbuch (pdf, englisch)"
+
+#~ msgctxt "DESC_SEC_winpt"
+#~ msgid "Windows Privacy Tray"
+#~ msgstr ""
+#~ "Windows Privacy Tray (WinPT) ist ein vielseitiges Programm zur "
+#~ "Schlüsselverwaltung sowie aller anderen Funktionen von GnuPG.  Es "
+#~ "installiert sich in die Startleiste."
+
+#~ msgctxt "DESC_Menu_winpt"
+#~ msgid ""
+#~ "Run the Windows Privacy Tray key management tool. This is a versatile key "
+#~ "management and encryption tool."
+#~ msgstr ""
+#~ "Das Schlüsselverwaltungsprogramm Windows Privacy Tray aufrufen.  Dies ist "
+#~ "ein vielseitiges Programm zur Schlüsselverwaltung und Verschlüsselung.  "
+#~ "Es installiert sich in die Startleiste."
 
 #~ msgctxt "DESC_Menu_gpa"
 #~ msgid ""

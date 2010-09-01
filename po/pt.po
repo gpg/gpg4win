@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gpg4win 1.1.1-svn417\n"
 "Report-Msgid-Bugs-To: gpg4win-devel@wald.intevation.org\n"
-"POT-Creation-Date: 2010-04-16 16:44+0200\n"
+"POT-Creation-Date: 2010-09-01 16:57+0200\n"
 "PO-Revision-Date: 2010-08-04 11:55-0000\n"
 "Last-Translator: Marco A.G.Pinto <marcoagpinto@mail.telepac.pt>\n"
 "Language-Team: Portuguese <marcoagpinto@mail.telepac.pt>\n"
@@ -29,8 +29,16 @@ msgstr "Bem-vindo à instalação do Gpg4win"
 
 #: src/gpg4win.nsi:119
 msgctxt "T_AboutGpg4win"
-msgid "Gpg4win is a installer package for Windows for EMail and file encryption using the core componenent GnuPG for Windows. Both relevant cryptography standards are supported, OpenPGP and S/MIME. Gpg4win and the software included with Gpg4win are Free Software."
-msgstr "O Gpg4win é um pacote de instalação Windows para encriptação de e-mails e ficheiros usando o componente core do GnuPG para Windows. Ambos os standards relevantes de criptografia são suportados, OpenPGP e S/MIME. O Gpg4win e o software incluído são Software Livre."
+msgid ""
+"Gpg4win is a installer package for Windows for EMail and file encryption "
+"using the core componenent GnuPG for Windows. Both relevant cryptography "
+"standards are supported, OpenPGP and S/MIME. Gpg4win and the software "
+"included with Gpg4win are Free Software."
+msgstr ""
+"O Gpg4win é um pacote de instalação Windows para encriptação de e-mails e "
+"ficheiros usando o componente core do GnuPG para Windows. Ambos os standards "
+"relevantes de criptografia são suportados, OpenPGP e S/MIME. O Gpg4win e o "
+"software incluído são Software Livre."
 
 #: src/gpg4win.nsi:126
 msgctxt "T_AboutGpg4winVersion"
@@ -54,8 +62,16 @@ msgstr "Bem-vindo à instalação do código fonte de Gpg4win"
 
 #: src/gpg4win-src.nsi:80
 msgctxt "T_AboutGpg4winSrc"
-msgid "Gpg4win is a installer package for Windows for EMail and file encryption using the core componenent GnuPG for Windows. Both relevant cryptography standards are supported, OpenPGP and S/MIME. Gpg4win and the software included with Gpg4win are Free Software."
-msgstr "O Gpg4win é um pacote de instalação Windows para encriptação de e-mails e ficheiros usando o componente core do GnuPG para Windows. Ambos os standards relevantes de criptografia são suportados, OpenPGP e S/MIME. O Gpg4win e o software incluído são Software Livre."
+msgid ""
+"Gpg4win is a installer package for Windows for EMail and file encryption "
+"using the core componenent GnuPG for Windows. Both relevant cryptography "
+"standards are supported, OpenPGP and S/MIME. Gpg4win and the software "
+"included with Gpg4win are Free Software."
+msgstr ""
+"O Gpg4win é um pacote de instalação Windows para encriptação de e-mails e "
+"ficheiros usando o componente core do GnuPG para Windows. Ambos os standards "
+"relevantes de criptografia são suportados, OpenPGP e S/MIME. O Gpg4win e o "
+"software incluído são Software Livre."
 
 #: src/gpg4win-src.nsi:87
 msgctxt "T_AboutGpg4winSrcVersion"
@@ -79,13 +95,22 @@ msgstr "pt"
 
 #: src/installer.nsi:229
 msgctxt "T_GPLHeader"
-msgid "This software is licensed under the terms of the GNU General Public License (GPL)."
-msgstr "Este software está licenciado sob os termos da GNU General Public License (GPL)."
+msgid ""
+"This software is licensed under the terms of the GNU General Public License "
+"(GPL)."
+msgstr ""
+"Este software está licenciado sob os termos da GNU General Public License "
+"(GPL)."
 
 #: src/installer.nsi:233
 msgctxt "T_GPLShort"
-msgid "In short: You are allowed to run this software for any purpose. You may distribute it as long as you give the recipients the same rights you have received."
-msgstr "Em suma: É permitido usar este software para quaisquer fins. Podes distribuí-lo desde que dês aos destinatários os mesmos direitos que recebeste."
+msgid ""
+"In short: You are allowed to run this software for any purpose. You may "
+"distribute it as long as you give the recipients the same rights you have "
+"received."
+msgstr ""
+"Em suma: É permitido usar este software para quaisquer fins. Podes distribuí-"
+"lo desde que dês aos destinatários os mesmos direitos que recebeste."
 
 #: src/installer.nsi:238
 msgctxt "T_RunKeyManager"
@@ -110,7 +135,9 @@ msgstr "Mostrar o ficheiro README"
 #: src/installer.nsi:248
 msgctxt "T_NoKeyManager"
 msgid "No key manager has been installed, thus we can't run one now."
-msgstr "Nenhum gestor de chaves está instalado, daí não ser possível executar um agora."
+msgstr ""
+"Nenhum gestor de chaves está instalado, daí não ser possível executar um "
+"agora."
 
 #: src/installer.nsi:253
 msgctxt "DESC_Menu_manuals"
@@ -127,42 +154,42 @@ msgctxt "DESC_Desktop_manuals"
 msgid "Gpg4win Documentation"
 msgstr "Documentação do Gpg4win"
 
-#: src/installer.nsi:464
+#: src/installer.nsi:463
 msgctxt "T_InstallOptions"
 msgid "Install Options"
 msgstr "Opções de instalação"
 
-#: src/installer.nsi:467
+#: src/installer.nsi:466
 msgctxt "T_InstallOptLinks"
 msgid "Start links"
 msgstr "Atalhos de início"
 
-#: src/installer.nsi:469
+#: src/installer.nsi:468
 msgctxt "T_InstOptLabelA"
 msgid "Please select where Gpg4win shall install links:"
 msgstr "Por favor selecciona onde o Gpg4win deverá instalar atalhos:"
 
-#: src/installer.nsi:472
+#: src/installer.nsi:471
 msgctxt "T_InstOptLabelB"
 msgid "(Only programs will be linked into the quick launch bar.)"
 msgstr "(Apenas os programas terão atalhos na barra de início rápido.)"
 
-#: src/installer.nsi:475
+#: src/installer.nsi:474
 msgctxt "T_InstOptFieldA"
 msgid "Start Menu"
 msgstr "Menu de Início"
 
-#: src/installer.nsi:478
+#: src/installer.nsi:477
 msgctxt "T_InstOptFieldB"
 msgid "Desktop"
 msgstr "Ambiente de trabalho"
 
-#: src/installer.nsi:481
+#: src/installer.nsi:480
 msgctxt "T_InstOptFieldC"
 msgid "Quick Launch Bar"
 msgstr "Barra de Início Rápido"
 
-#: src/installer.nsi:487
+#: src/installer.nsi:486
 msgctxt "T_FoundExistingVersion"
 msgid ""
 "Version $R1 has already been installed.\n"
@@ -171,102 +198,134 @@ msgstr ""
 "A versão $R1 já está instalada.\n"
 "Queres substituí-la com a versão ${VERSION}?"
 
-#: src/installer.nsi:490
+#: src/installer.nsi:489
 msgctxt "T_FoundExistingOldVersion"
 msgid ""
-"An old version $R1 has already been installed.  It is strongly recommended to deinstall previous versions on major upgrades.\n"
+"An old version $R1 has already been installed.  It is strongly recommended "
+"to deinstall previous versions on major upgrades.\n"
 "Do you want to continue installing Gpg4win ${VERSION} anyway?"
 msgstr ""
-"Uma versão antiga $R1 já foi instalada. Recomenda-se vivamente desinstalar versões anteriores em upgrades.\n"
+"Uma versão antiga $R1 já foi instalada. Recomenda-se vivamente desinstalar "
+"versões anteriores em upgrades.\n"
 "Queres continuar a instalar o Gpg4win ${VERSION} mesmo assim?"
 
-#: src/installer.nsi:495
+#: src/installer.nsi:494
 msgctxt "T_FoundExistingVersionB"
 msgid ""
-"A version of Gpg4Win has already been installed on the system. There will be no problem installing and thus overwriting this Version.\n"
+"A version of Gpg4Win has already been installed on the system. There will be "
+"no problem installing and thus overwriting this Version.\n"
 "\n"
 "Do you want to continue installing Gpg4win?"
 msgstr ""
-"Uma versão do Gpg4Win já se encontra instalada neste sistema. Não existe problema em instalar e daí substituir esta Versão.\n"
+"Uma versão do Gpg4Win já se encontra instalada neste sistema. Não existe "
+"problema em instalar e daí substituir esta Versão.\n"
 "\n"
 "Queres continuar a instalar o Gpg4Win?"
 
-#: src/installer.nsi:506
+#: src/installer.nsi:505
 msgctxt "T_FoundOldSeeManual"
-msgid "Please see the Gpg4win user manual to learn how to migrate existing keys from other GnuPG based installations to Gpg4win."
-msgstr "Por favor lê o manual de utilizador do Gpg4Win para aprenderes a migrar chaves existentes de outras instalações baseadas no GnuPG para o Gpg4Win."
+msgid ""
+"Please see the Gpg4win user manual to learn how to migrate existing keys "
+"from other GnuPG based installations to Gpg4win."
+msgstr ""
+"Por favor lê o manual de utilizador do Gpg4Win para aprenderes a migrar "
+"chaves existentes de outras instalações baseadas no GnuPG para o Gpg4Win."
 
-#: src/installer.nsi:511
+#: src/installer.nsi:510
 msgctxt "T_FoundOldGnuPP"
 msgid ""
-"An old installation of GnuPP (GNU Privacy Project) has been been detected.  That software is not maintained anymore and thus should be removed.\n"
+"An old installation of GnuPP (GNU Privacy Project) has been been detected.  "
+"That software is not maintained anymore and thus should be removed.\n"
 "\n"
-"Do you want to continue installing Gpg4win and take care of the old installation later?"
+"Do you want to continue installing Gpg4win and take care of the old "
+"installation later?"
 msgstr ""
-"Uma instalação antiga de GnuPP (GNU Privacy Project) foi detectada. Este software já não é suportado e deve ser removido.\n"
+"Uma instalação antiga de GnuPP (GNU Privacy Project) foi detectada. Este "
+"software já não é suportado e deve ser removido.\n"
 "\n"
-"Queres continuar a instalar o Gpg4Win e tratar da instalação antiga mais tarde?"
+"Queres continuar a instalar o Gpg4Win e tratar da instalação antiga mais "
+"tarde?"
 
-#: src/installer.nsi:520
+#: src/installer.nsi:519
 msgctxt "T_FoundOldGnuPT"
 msgid ""
-"An installation of GnuPT has been been detected.  This may cause problems when used along with Gpg4win.\n"
+"An installation of GnuPT has been been detected.  This may cause problems "
+"when used along with Gpg4win.\n"
 "\n"
 "Do you want to continue installing Gpg4win?"
 msgstr ""
-"Uma instalação de GnuPT foi detectada. Isto poderá causar problemas se usado com o Gpg4Win.\n"
+"Uma instalação de GnuPT foi detectada. Isto poderá causar problemas se usado "
+"com o Gpg4Win.\n"
 "\n"
 "Queres continuar a instalar o Gpg4Win?"
 
-#: src/installer.nsi:527
+#: src/installer.nsi:526
 msgctxt "T_FoundOldWinPTSF"
 msgid ""
-"An old installation of the Sourceforge hosted WinPT has been been detected.  That software is not maintained anymore and should be removed.\n"
+"An old installation of the Sourceforge hosted WinPT has been been detected.  "
+"That software is not maintained anymore and should be removed.\n"
 "\n"
-"Do you want to continue installing Gpg4win and take care of the old installation later?"
+"Do you want to continue installing Gpg4win and take care of the old "
+"installation later?"
 msgstr ""
-"Uma instalação antiga do WinPT hospedado por Sourceforge foi detectada. Esse software não é mais suportado e deve ser removido.\n"
+"Uma instalação antiga do WinPT hospedado por Sourceforge foi detectada. Esse "
+"software não é mais suportado e deve ser removido.\n"
 "\n"
-"Queres continuar a instalar o Gpg4Win e tratar da instalação antiga mais tarde?"
+"Queres continuar a instalar o Gpg4Win e tratar da instalação antiga mais "
+"tarde?"
 
-#: src/installer.nsi:537
+#: src/installer.nsi:536
 msgctxt "T_FoundOldGnuPack"
 msgid ""
-"An installation of GnuPG-Pack has been been detected. You need to uninstall it before you can continue with Gpg4win installation.\n"
+"An installation of GnuPG-Pack has been been detected. You need to uninstall "
+"it before you can continue with Gpg4win installation.\n"
 "\n"
 "The installation will be aborted now!"
 msgstr ""
-"Uma instalação do GnuPG-Pack foi detectada. Tens de desinstalá-la antes de prosseguir com a instalação do Gpg4Win.\n"
+"Uma instalação do GnuPG-Pack foi detectada. Tens de desinstalá-la antes de "
+"prosseguir com a instalação do Gpg4Win.\n"
 "\n"
 "A instalação será agora abortada!"
 
-#: src/installer.nsi:546
+#: src/installer.nsi:545
 msgctxt "T_BetaWarning"
 msgid ""
 "Note: This is a BETA version of Gpg4win.\n"
 "\n"
-"Beta versions are only intended for testing and shall not be used in a production environment."
+"Beta versions are only intended for testing and shall not be used in a "
+"production environment."
 msgstr ""
 "Nota: Esta é uma versão BETA do Gpg4win.\n"
 "\n"
-"As versões beta são apenas destinadas para testes e não devem ser utilizadas num ambiente de produção."
+"As versões beta são apenas destinadas para testes e não devem ser utilizadas "
+"num ambiente de produção."
 
-#: src/installer.nsi:553
+#: src/installer.nsi:552
 msgctxt "T_AdminNeeded"
-msgid "Warning: Administrator permissions required for a successful installation"
-msgstr "Aviso: São necessárias permissões de Administrador para uma instalação bem sucedida."
+msgid ""
+"Warning: Administrator permissions required for a successful installation"
+msgstr ""
+"Aviso: São necessárias permissões de Administrador para uma instalação bem "
+"sucedida."
 
-#: src/installer.nsi:557
+#: src/installer.nsi:556
 msgctxt "T_CloseOtherApps"
-msgid "Please make sure that other applications are not running. In particular you should close Outlook and all Explorer windows.  Gpg4win will try to install anyway but a reboot will be required then."
-msgstr "Por favor assegura-te que outras aplicações não estão a correr. Em  particular deves fechar o Outlook e todas as janelas do Windows Explorer. De qualquer forma o Gpg4win tentará instalar mas depois será necessário reiniciar o sistema."
+msgid ""
+"Please make sure that other applications are not running. In particular you "
+"should close Outlook and all Explorer windows.  Gpg4win will try to install "
+"anyway but a reboot will be required then."
+msgstr ""
+"Por favor assegura-te que outras aplicações não estão a correr. Em  "
+"particular deves fechar o Outlook e todas as janelas do Windows Explorer. De "
+"qualquer forma o Gpg4win tentará instalar mas depois será necessário "
+"reiniciar o sistema."
 
-#: src/installer.nsi:562
+#: src/installer.nsi:561
 msgctxt "T_ShuttingDownWinPT"
 msgid "Trying to shutdown a possible running instance of WinPT."
 msgstr "A tentar encerrar uma possível instância do WinPT em execução."
 
-#: src/installer.nsi:564
+#: src/installer.nsi:563
 msgctxt "T_ShuttingDownDirMngr"
 msgid "Trying to shutdown a possible running instance of DirMngr."
 msgstr "A tentar encerrar uma possível instância do DirMngr em execução."
@@ -291,12 +350,7 @@ msgctxt "DESC_Menu_claws_mail_pdf"
 msgid "Show the online manual of Claws Mail"
 msgstr "Mostrar o manual online do Claws Mail"
 
-#: src/inst-eudoragpg.nsi:40
-msgctxt "DESC_SEC_eudoragpg"
-msgid "EudoraGPG is a plugin for the Eudora mail program"
-msgstr "O EudoraGPG é um plugin para o programa de e-mail Eudora"
-
-#: src/inst-gnupg2.nsi:211
+#: src/inst-gnupg2.nsi:213
 msgctxt "DESC_SEC_gnupg2"
 msgid "GNU Privacy Guard"
 msgstr "GNU Privacy Guard"
@@ -311,191 +365,177 @@ msgctxt "DESC_Menu_gpa"
 msgid "Run the GNU Privacy Assistant key management tool."
 msgstr "Executar a ferramenta de gestão de chaves GNU Privacy Assistant."
 
-#: src/inst-gpg4win.nsi:81
+#: src/inst-gpg4win.nsi:82
 msgctxt "DESC_Menu_gpg4win_readme"
 msgid "General information on Gpg4win"
 msgstr "Informação geral sobre Gpg4Win"
 
-#: src/inst-gpg4win.nsi:84
+#: src/inst-gpg4win.nsi:85
 msgctxt "DESC_Menu_gnupg_faq"
 msgid "Show the Frequently Asked Questions document for GnuPG"
 msgstr "Mostrar o documento das Perguntas Frequentes (FAQ) do GnuPG"
 
-#: src/inst-gpgee.nsi:65
-msgctxt "T_GPGee_RegFailed"
-msgid "Warning: Registration of the GPGee explorer extension failed."
-msgstr "Aviso: O registo da extensão do explorador GPGee falhou."
-
-#: src/inst-gpgee.nsi:68
-msgctxt "DESC_SEC_gpgee"
-msgid "GPG Explorer Extensions"
-msgstr "GPG Explorer Extensions"
-
-#: src/inst-gpgee.nsi:71
-msgctxt "DESC_Menu_gpgee_hlp"
-msgid "Show the online manual of GPGee"
-msgstr "Mostrar o manual online de GPGee"
-
-#: src/inst-gpgex.nsi:80
+#: src/inst-gpgex.nsi:82
 msgctxt "T_GpgEX_RegFailed"
 msgid "Warning: Registration of the GpgEX plugin failed."
 msgstr "Aviso: O registo do plugin GpgEx falhou."
 
-#: src/inst-gpgex.nsi:83
+#: src/inst-gpgex.nsi:85
 msgctxt "DESC_SEC_gpgex"
 msgid "GnuPG Shell Extension"
 msgstr "GnuPG Shell Extension"
 
-#: src/inst-gpgol.nsi:61
+#: src/inst-gpgol.nsi:65
 msgctxt "T_GpgOL_RegFailed"
 msgid "Warning: Registration of the GpgOL Outlook pluginfailed."
 msgstr "Aviso: O registo do plugin GpgOL Outlook falhou."
 
-#: src/inst-gpgol.nsi:64
+#: src/inst-gpgol.nsi:68
 msgctxt "DESC_SEC_gpgol"
 msgid "GnuPG for Outlook"
 msgstr "GnuPG para Outlook"
 
-#: src/inst-kleopatra.nsi:230
+#: src/inst-kleopatra.nsi:247
 msgctxt "DESC_SEC_kleopatra"
 msgid "Keymanager for OpenPGP and X.509 and common crypto dialogs."
 msgstr "Gestor de Chaves para OpenPGP e X.509 e diálogos crypto comuns."
 
-#: src/inst-kleopatra.nsi:234
+#: src/inst-kleopatra.nsi:251
 msgctxt "DESC_Menu_kleopatra"
 msgid "Run the Kleopatra key management tool."
 msgstr "Executar a ferramenta de gestão de chaves Kleopatra."
 
-#: src/inst-man_advanced_de.nsi:39
-msgctxt "DESC_Name_man_advanced_de"
-msgid "Advanced Manual (German)"
-msgstr "Manual Avançado (Alemão)"
+#: src/inst-compendium.nsi:47
+msgctxt "DESC_Name_compendium"
+msgid "Gpg4win Compendium"
+msgstr "Gpg4win Compêndio"
 
-#: src/inst-man_advanced_de.nsi:42
-msgctxt "DESC_SEC_man_advanced_de"
-msgid "Gpg4Win Manual for the Advanced User (German)"
-msgstr "Manual do Gpg4win para o Utilizador Avançado (Alemão)"
+#: src/inst-compendium.nsi:50
+msgctxt "DESC_SEC_compendium"
+msgid "The Gpg4win documentation (English and German)"
+msgstr "Gpg4win Compêndio (Inglês e Alemão)"
 
-#: src/inst-man_advanced_de.nsi:45
-msgctxt "DESC_Menu_man_advanced_de"
-msgid "Show the German online manual of Gpg4Win for advanced users"
-msgstr "Mostrar o Manual online do Gpg4Win para utilizadores avançados em Alemão"
-
-#: src/inst-man_advanced_en.nsi:39
-msgctxt "DESC_Name_man_advanced_en"
-msgid "Advanced Manual"
-msgstr "Manual Avançado"
-
-#: src/inst-man_advanced_en.nsi:42
-msgctxt "DESC_SEC_man_advanced_en"
-msgid "Gpg4Win Manual for the Advanced User"
-msgstr "Manual do Gpg4win para Utilizadores Avançados"
-
-#: src/inst-man_advanced_en.nsi:45
-msgctxt "DESC_Menu_man_advanced_en"
-msgid "Show the online manual of Gpg4Win for advanced users"
-msgstr "Mostrar o Manual online do Gpg4Win para utilizadores avançados"
-
-#: src/inst-man_novice_de.nsi:39
-msgctxt "DESC_Name_man_novice_de"
-msgid "Novice Manual (German)"
-msgstr "Manual para Principiantes (Alemão)"
-
-#: src/inst-man_novice_de.nsi:42
-msgctxt "DESC_SEC_man_novice_de"
-msgid "Gpg4Win Manual for the Novice User (German)"
-msgstr "Manual do Gpg4Win para Principiantes (Alemão)"
-
-#: src/inst-man_novice_de.nsi:45
-msgctxt "DESC_Menu_man_novice_de"
-msgid "Show the German online manual of Gpg4Win for novice users"
-msgstr "Mostrar o Manual online do Gpg4Win para Principiantes em Alemão"
-
-#: src/inst-man_novice_en.nsi:39
-msgctxt "DESC_Name_man_novice_en"
-msgid "Novice Manual (pdf, English)"
-msgstr "Manual para Principiantes (pdf, Inglês)"
-
-#: src/inst-man_novice_en.nsi:42
-msgctxt "DESC_SEC_man_novice_en"
-msgid "Gpg4win Manual for the Novice User (English)"
-msgstr "Manual do Gpg4win para Principiantes (Inglês)"
-
-#: src/inst-man_novice_en.nsi:45
-msgctxt "DESC_Menu_man_novice_en"
-msgid "Show the Gpg4win manual for novice users (pdf, English)"
-msgstr "Mostrar o Manual Gpg4win para Principiantes (pdf, Inglês)"
-
-#: src/inst-compendium_de.nsi:40
-msgctxt "DESC_Name_compendium_de"
-msgid "Gpg4win Compendium DE"
-msgstr "Gpg4win Compêndio DE"
-
-#: src/inst-compendium_de.nsi:44
+#: src/inst-compendium.nsi:54
 msgctxt "DESC_Name_compendium_de_pdf"
 msgid "Gpg4win Compendium (pdf, German)"
 msgstr "Gpg4win Compêndio (pdf, Alemão)"
 
-#: src/inst-compendium_de.nsi:48
-msgctxt "DESC_Name_compendium_de_html"
-msgid "Gpg4win Compendium (html, German)"
-msgstr "Gpg4win Compêndio (html, Alemão)"
-
-#: src/inst-compendium_de.nsi:52
-msgctxt "DESC_SEC_compendium_de"
-msgid "Gpg4win Compendium (German)"
-msgstr "Compêndio Gpg4win (Alemão)"
-
-#: src/inst-compendium_de.nsi:56
-msgctxt "DESC_Menu_compendium_de_pdf"
-msgid "Show the Gpg4win Compendium (pdf, German)"
-msgstr "Mostrar o Compêndio Gpg4win (pdf, Alemão)"
-
-#: src/inst-compendium_de.nsi:60
-msgctxt "DESC_Menu_compendium_de_html"
-msgid "Show the Gpg4win compendium (html, German)"
-msgstr "Mostrar o Compêndio Gpg4win (html, Alemão)"
-
-#: src/inst-compendium_en.nsi:40
-msgctxt "DESC_Name_compendium_en"
-msgid "Gpg4win Compendium EN"
-msgstr "Gpg4win Compêndio EN"
-
-#: src/inst-compendium_en.nsi:44
+#: src/inst-compendium.nsi:56
 msgctxt "DESC_Name_compendium_en_pdf"
 msgid "Gpg4win Compendium (pdf, English)"
 msgstr "Gpg4win Compêndio (pdf, Inglês)"
 
-#: src/inst-compendium_en.nsi:48
+#: src/inst-compendium.nsi:60
+msgctxt "DESC_Name_compendium_de_html"
+msgid "Gpg4win Compendium (html, German)"
+msgstr "Gpg4win Compêndio (html, Alemão)"
+
+#: src/inst-compendium.nsi:62
 msgctxt "DESC_Name_compendium_en_html"
 msgid "Gpg4win Compendium (html, English)"
 msgstr "Gpg4win Compêndio (html, Inglês)"
 
-#: src/inst-compendium_en.nsi:52
-msgctxt "DESC_SEC_compendium_en"
-msgid "Gpg4win Compendium (English)"
-msgstr "Gpg4win Compêndio (Inglês)"
+#: src/inst-compendium.nsi:66
+msgctxt "DESC_Menu_compendium_de_pdf"
+msgid "Show the Gpg4win Compendium (pdf, German)"
+msgstr "Mostrar o Compêndio Gpg4win (pdf, Alemão)"
 
-#: src/inst-compendium_en.nsi:56
+#: src/inst-compendium.nsi:68
 msgctxt "DESC_Menu_compendium_en_pdf"
 msgid "Show the Gpg4win Compendium (pdf, English)"
 msgstr "Mostrar o Compêndio Gpg4win (pdf, Inglês)"
 
-#: src/inst-compendium_en.nsi:60
+#: src/inst-compendium.nsi:72
+msgctxt "DESC_Menu_compendium_de_html"
+msgid "Show the Gpg4win Compendium (html, German)"
+msgstr "Mostrar o Compêndio Gpg4win (html, Alemão)"
+
+#: src/inst-compendium.nsi:74
 msgctxt "DESC_Menu_compendium_en_html"
-msgid "Show the Gpg4win compendium (html, English)"
+msgid "Show the Gpg4win Compendium (html, English)"
 msgstr "Mostrar o Compêndio Gpg4win (html, Inglês)"
 
-#: src/inst-winpt.nsi:46
-msgctxt "DESC_SEC_winpt"
-msgid "Windows Privacy Tray"
-msgstr "Windows Privacy Tray (WinPT)."
+#~ msgctxt "DESC_SEC_eudoragpg"
+#~ msgid "EudoraGPG is a plugin for the Eudora mail program"
+#~ msgstr "O EudoraGPG é um plugin para o programa de e-mail Eudora"
 
+#~ msgctxt "T_GPGee_RegFailed"
+#~ msgid "Warning: Registration of the GPGee explorer extension failed."
+#~ msgstr "Aviso: O registo da extensão do explorador GPGee falhou."
 
+#~ msgctxt "DESC_SEC_gpgee"
+#~ msgid "GPG Explorer Extensions"
+#~ msgstr "GPG Explorer Extensions"
 
+#~ msgctxt "DESC_Menu_gpgee_hlp"
+#~ msgid "Show the online manual of GPGee"
+#~ msgstr "Mostrar o manual online de GPGee"
 
-#: src/inst-winpt.nsi:49
-msgctxt "DESC_Menu_winpt"
-msgid "Run the Windows Privacy Tray key management tool. This is a versatile key management and encryption tool."
-msgstr "Executar a ferramenta de gestão de chaves Windows Privacy Tray. Esta é uma ferramenta versátil para gestão de chaves e encriptação."
+#~ msgctxt "DESC_Name_man_advanced_de"
+#~ msgid "Advanced Manual (German)"
+#~ msgstr "Manual Avançado (Alemão)"
 
+#~ msgctxt "DESC_SEC_man_advanced_de"
+#~ msgid "Gpg4Win Manual for the Advanced User (German)"
+#~ msgstr "Manual do Gpg4win para o Utilizador Avançado (Alemão)"
+
+#~ msgctxt "DESC_Menu_man_advanced_de"
+#~ msgid "Show the German online manual of Gpg4Win for advanced users"
+#~ msgstr ""
+#~ "Mostrar o Manual online do Gpg4Win para utilizadores avançados em Alemão"
+
+#~ msgctxt "DESC_Name_man_advanced_en"
+#~ msgid "Advanced Manual"
+#~ msgstr "Manual Avançado"
+
+#~ msgctxt "DESC_SEC_man_advanced_en"
+#~ msgid "Gpg4Win Manual for the Advanced User"
+#~ msgstr "Manual do Gpg4win para Utilizadores Avançados"
+
+#~ msgctxt "DESC_Menu_man_advanced_en"
+#~ msgid "Show the online manual of Gpg4Win for advanced users"
+#~ msgstr "Mostrar o Manual online do Gpg4Win para utilizadores avançados"
+
+#~ msgctxt "DESC_Name_man_novice_de"
+#~ msgid "Novice Manual (German)"
+#~ msgstr "Manual para Principiantes (Alemão)"
+
+#~ msgctxt "DESC_SEC_man_novice_de"
+#~ msgid "Gpg4Win Manual for the Novice User (German)"
+#~ msgstr "Manual do Gpg4Win para Principiantes (Alemão)"
+
+#~ msgctxt "DESC_Menu_man_novice_de"
+#~ msgid "Show the German online manual of Gpg4Win for novice users"
+#~ msgstr "Mostrar o Manual online do Gpg4Win para Principiantes em Alemão"
+
+#~ msgctxt "DESC_Name_man_novice_en"
+#~ msgid "Novice Manual (pdf, English)"
+#~ msgstr "Manual para Principiantes (pdf, Inglês)"
+
+#~ msgctxt "DESC_SEC_man_novice_en"
+#~ msgid "Gpg4win Manual for the Novice User (English)"
+#~ msgstr "Manual do Gpg4win para Principiantes (Inglês)"
+
+#~ msgctxt "DESC_Menu_man_novice_en"
+#~ msgid "Show the Gpg4win manual for novice users (pdf, English)"
+#~ msgstr "Mostrar o Manual Gpg4win para Principiantes (pdf, Inglês)"
+
+#~ msgctxt "DESC_SEC_compendium_de"
+#~ msgid "Gpg4win Compendium (German)"
+#~ msgstr "Compêndio Gpg4win (Alemão)"
+
+#~ msgctxt "DESC_Name_compendium_en"
+#~ msgid "Gpg4win Compendium EN"
+#~ msgstr "Gpg4win Compêndio EN"
+
+#~ msgctxt "DESC_SEC_winpt"
+#~ msgid "Windows Privacy Tray"
+#~ msgstr "Windows Privacy Tray (WinPT)."
+
+#~ msgctxt "DESC_Menu_winpt"
+#~ msgid ""
+#~ "Run the Windows Privacy Tray key management tool. This is a versatile key "
+#~ "management and encryption tool."
+#~ msgstr ""
+#~ "Executar a ferramenta de gestão de chaves Windows Privacy Tray. Esta é "
+#~ "uma ferramenta versátil para gestão de chaves e encriptação."
