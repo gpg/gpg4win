@@ -42,7 +42,7 @@
 % we need this to not let smae filenames overwrite each other
 % when we have more than one compendium. The Makefile.am needs
 % to be updated for this as well - not a trivial change.
-%\W\htmldirectory{./compendium-de-html}
+\W\htmldirectory{compendium-html/de}
 
 % Hyperref should be among the last packages loaded
 \usepackage[breaklinks,
@@ -107,7 +107,7 @@
 \texorhtml{%
   \includegraphics[#1]{images-compendium/#2}%
 }{%
-  \htmlimg{images-compendium/#2.png}%
+  \htmlimg{../images-compendium/#2.png}%
 }
 \end{center}
 }
@@ -140,12 +140,15 @@
     \htmltitle{Gpg4win-Kompendium}
     % TOC link in panel
     \htmlpanelfield{Inhalt}{hlxcontents}
+    % link to EN version    
+    \htmlpanelfield{\htmlattributes*{img}{style=border:none title=English}
+        \htmlimg{../images-hyperlatex/english.png}{English}}{../en/\HlxThisUrl}
     % name of the html files
-    \htmlname{gpg4win-compendium-de}
+    \htmlname{gpg4win-compendium}
     % redefine bmod
     \newcommand{\bmod}{mod}
     % use hlx icons (default path)
-    \newcommand{\HlxIcons}{./images-hyperlatex}
+    \newcommand{\HlxIcons}{../images-hyperlatex}
 
     % Footer
     \htmladdress{$\copyright$ \compendiumDateDE, v\compendiumVersionDE

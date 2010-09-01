@@ -8,6 +8,12 @@
 	manual/images-compendium/sc-ol-adele-sendOpenpgpKey-attachment_en.png: 
 	Add new English screenshots by Drew.
 
+	* manual/Makefile.am, manual/gpg4win-compendium-de.tex,
+	manual/gpg4win-compendium-en.tex,
+	manual/images-hyperlatex/german.png,
+	manual/images-hyperlatex/english.png: Change html build and
+	directory strukture. Add language icons.
+
 2010-08-31  Emanuel Schuetze <emanuel@intevation.de>
 
 	* manual/Makefile.am: Adapt Makefile.am to added screenshots.

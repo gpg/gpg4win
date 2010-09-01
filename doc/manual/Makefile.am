@@ -19,6 +19,8 @@
 
 TEXI2PDF = texi2pdf
 INDEX = makeindex
+HYPERLATEX = hyperlatex
+HTML_DIR = compendium-html
 
 png_compendium_files = \
 	images-compendium/adele01.png \
@@ -262,7 +264,9 @@ png_hyperlatex_files = \
 	images-hyperlatex/noprevious.png \
 	images-hyperlatex/noup.png \
 	images-hyperlatex/previous.png \
-	images-hyperlatex/up.png
+	images-hyperlatex/up.png \
+	images-hyperlatex/german.png \
+	images-hyperlatex/english.png
 
 eps_compendium_files = $(png_compendium_files:%.png=%.eps)
 eps_manual_files = $(png_manual_files:.png=.eps)
@@ -275,7 +279,7 @@ EXTRA_DIST = 	gpg4win-compendium-de.tex \
 
 CLEANFILES = $(eps_compendium_files) $(eps_manual_files) \
              *.dvi *.pdf *.pdf *.toc *.log *.aux *.out *.idx *.ilg *.ind \
-	     	 *.html *.html.d-stamp* *.html.d
+	     	 *.html *.html.d-stamp* *.html.d $(HTML_DIR)
 DISTCLEANFILES = version.tex
 
 clean: 
@@ -290,9 +294,8 @@ pkgdata_DATA = 	gpg4win-compendium-de.pdf \
 BUILT_SOURCES = $(png_compendium_files) 
 
 all-local: 	gpg4win-compendium-de.pdf \
-	   		gpg4win-compendium-de.html.d-stamp \
 			gpg4win-compendium-en.pdf \
-	   		gpg4win-compendium-en.html.d-stamp
+			html
 
 gpg4win-compendium-de.pdf : version.tex
 gpg4win-compendium-en.pdf : version.tex
@@ -326,10 +329,32 @@ pdf-en: gpg4win-compendium-en.pdf
 dvi-de: gpg4win-compendium-de.dvi
 dvi-en: gpg4win-compendium-en.dvi
 
-html: 	 gpg4win-compendium-de.html.d-stamp \
-   		 gpg4win-compendium-en.html.d-stamp
-html-de: gpg4win-compendium-de.html.d-stamp
-html-en: gpg4win-compendium-en.html.d-stamp
+
+cleanhtml:
+	rm -rf $(HTML_DIR)
+
+html: 	cleanhtml html-de html-en html-images	
+
+html-de: 
+	$(HYPERLATEX) gpg4win-compendium-de
+
+html-en: 
+	$(HYPERLATEX) gpg4win-compendium-en
+
+html-images:
+	mkdir -p $(HTML_DIR)/images-hyperlatex;\
+	for f in $(png_hyperlatex_files); do \
+		if [ -f "$$f" ]; then cp "$$f" $(HTML_DIR)/images-hyperlatex ;\
+		elif [ -f "$(srcdir)/$$f" ]; then cp "$(srcdir)/$$f" $(HTML_DIR)/images-hyperlatex ;\
+		fi ;\
+	done ;\
+	mkdir -p $(HTML_DIR)/images-compendium;\
+	for f in $(png_compendium_files); do \
+		if [ -f "$$f" ]; then cp "$$f" $(HTML_DIR)/images-compendium ;\
+		elif [ -f "$(srcdir)/$$f" ]; then cp "$(srcdir)/$$f" $(HTML_DIR)/images-compendium ;\
+		fi ;\
+	done
+
 
 # The html.d directories are used to collect all relevant files for
 # the NSI scripts.  This is also required because hyperlatex is not
@@ -369,20 +394,23 @@ html-en: gpg4win-compendium-en.html.d-stamp
 	 for f in $$files; do \
 	    x=$$(basename "$$f") ;\
 	    case $$x in *.png) : ;; *) rm -f $$x ;; esac ;\
-	 done
-	@mv -f $@.tmp $@
+	 done ;\
+	 @mv -f $@.tmp $@
 
-online: gpg4win-compendium-de.html.d-stamp gpg4win-compendium-en.html.d-stamp
+online: html 
 	set -e; \
-	echo "Going to put current manuals online for www.gpg4win.org ..."; \
-        user=`svn info | sed -n '/^URL:/ s,.*svn+ssh://\\([^@]*\\).*,\\1,p'`;\
-	for d in $^; do \
-          (x=$$(echo $$d | sed  's/.d-stamp$$/.d/') ;\
-	   echo "Cding to: $$x";\
-           cd $$x ;\
-           rsync -v * \
-             $${user}@wald.intevation.org:/gpg4win/htdocs/doc/ ); \
-	done
+	echo "Going to put current compendium-html online for www.gpg4win.org ..."; \
+	user=`svn info | sed -n '/^URL:/ s,.*svn+ssh://\\([^@]*\\).*,\\1,p'`;\
+	echo user;\
+	rsync -rvz --delete $(HTML_DIR)/ $${user}@wald.intevation.org:/gpg4win/htdocs/doc/
+
+onlinedryrun: html 
+	set -e; \
+	echo "(DRY RUN) Going to put current compendium-html online for www.gpg4win.org ..."; \
+	user=`svn info | sed -n '/^URL:/ s,.*svn+ssh://\\([^@]*\\).*,\\1,p'`;\
+	echo user;\
+	rsync -rvzn --delete $(HTML_DIR)/ $${user}@wald.intevation.org:/gpg4win/htdocs/doc/
+
 
 preview: gpg4win-compendium-de.html.d-stamp gpg4win-compendium-en.html.d-stamp
 	set -e; \
