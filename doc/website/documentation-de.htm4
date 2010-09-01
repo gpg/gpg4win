@@ -19,7 +19,8 @@ wurden sämtliche Kapitel für Gpg4win Version 2 aktualisiert, also
 unter anderem angepasst auf Kleopatra, GpgEX und PGP/MIME sowie
 ergänzt um S/MIME bzw. X.509.</p>
 
-<p>Die englische Übersetzung ist aktuell in Arbeit. Übersetzungen von 
+<p>Die englische Übersetzung finden Sie <a
+href="documentation.html">hier</a>. Übersetzungen von 
 der deutschen Kompendium-Version in weitere Sprachen sind sehr willkommen! 
 Bitte wenden Sie sich dazu an die
 <a href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-devel">
@@ -27,19 +28,19 @@ Gpg4win-Entwickler-Mailingliste</a> (Lesen sie auch <a
 href="localize-gpg4win.html">Gpg4win into your language</a>).</p>
 
 <p>Nach der Installation des Softwarepaktes Gpg4win ist das Kompendium (in
-der PDF- und HTML-Fassung) über das Startmenü im Ordner
+der PDF- und HTML-Fassung, deutsch und english) über das Startmenü im Ordner
 <em>Gpg4win->Dokumentation</em> verfügbar.</p>
 
 Die aktuelle PDF- und HTML-Version des Gpg4win-Kompendiums finden
 Sie auch hier:
 <a href="DOWNLOAD_URL_COMPENDIUM_DE"
-    class="dlbutton2">Gpg4win-Kompendium COMPENDIUM_VERSION_DE (PDF)<br>
+    class="dlbutton2">Gpg4win-Kompendium COMPENDIUM_VERSION_DE (PDF, Deutsch)<br>
 <span class="version"><small>Größe: DL_SIZE_COMPENDIUM_DE | 
 Veröffentlicht: COMPENDIUM_DATE_DE</small></span>
 </a>
 
-<a href="./doc/gpg4win-compendium-de.html"
-    class="dlbutton2">Gpg4win-Kompendium COMPENDIUM_VERSION_DE (HTML)<br>
+<a href="./doc/de/gpg4win-compendium.html"
+    class="dlbutton2">Gpg4win-Kompendium COMPENDIUM_VERSION_DE (HTML, Deutsch)<br>
 <span class="version"><small>Veröffentlicht: COMPENDIUM_DATE_DE</small></span>
 </a>
 

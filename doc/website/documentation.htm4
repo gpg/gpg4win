@@ -20,30 +20,29 @@ PAGE_START
   GpgEX and PGP/MIME and new texts for S/MIME and X.509.
 </p>
 
-<p>Note: The Gpg4win Compendium is currently availabe in <b>German
-only</b>.</p>
+<p>Note: The English Gpg4win Compendium is currently availabe in a
+<b>first beta version</b>.</p>
 
-<p> The translation into English is currently in progress.
-Translations from German compendium into other language are very welcome!
-Please contact the
+<p>Translations from German (or final English) compendium into other
+language are very welcome!  Please contact the
 <a href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-devel">
 Gpg4win developer mailing list</a> if you want to start with a new
 translation (Read also <a href="localize-gpg4win.html">Gpg4win into your language</a>).</p>
 
-<p>After install Gpg4win the Compendium (in
-pdf and html version) is available via start menu in the folder
+<p>After install Gpg4win the Compendium (in pdf and html version,
+English and German) is available via start menu in the folder
 <em>Gpg4win->Documentation</em>.</p>
 
 You find the current PDF and HTML version of the Gpg4win Compendium here:
-<a href="DOWNLOAD_URL_COMPENDIUM_DE"
-    class="dlbutton2">Gpg4win-Kompendium COMPENDIUM_VERSION_DE (PDF) - German!<br>
-<span class="version"><small>Size: DL_SIZE_COMPENDIUM_DE | 
-Released: COMPENDIUM_DATE_DE</small></span>
+<a href="DOWNLOAD_URL_COMPENDIUM_EN"
+    class="dlbutton2">Gpg4win-Kompendium COMPENDIUM_VERSION_EN (PDF, English)<br>
+<span class="version"><small>Size: DL_SIZE_COMPENDIUM_EN | 
+Released: COMPENDIUM_DATE_EN</small></span>
 </a>
 
-<a href="./doc/gpg4win-compendium-de.html"
-    class="dlbutton2">Gpg4win-Kompendium COMPENDIUM_VERSION_DE (HTML) - German!<br>
-<span class="version"><small>Released: COMPENDIUM_DATE_DE</small></span>
+<a href="./doc/en/gpg4win-compendium.html"
+    class="dlbutton2">Gpg4win-Kompendium COMPENDIUM_VERSION_EN (HTML, English)<br>
+<span class="version"><small>Released: COMPENDIUM_DATE_EN</small></span>
 </a>
 
 <br>

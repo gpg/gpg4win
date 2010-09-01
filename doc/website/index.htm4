@@ -10,6 +10,14 @@ PAGE_START
 <p>
 <dl>
 
+
+<dt><b>+++ 2010-09-01: English Gpg4win Compendium 3.0.0-beta1 released +++</b></dt>
+<dd>This is the first beta version of the translated English Gpg4win documentation. 
+<!--See the <a
+href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2010-July/000046.html">announcement</a>
+for details.-->
+</dd>
+
 <dt><b>+++ 2010-07-28: Gpg4win 2.0.4 released +++</b></dt>
 <dd>Security fix for GPGSM (GnuPG). See the <a
 href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2010-July/000046.html">announcement</a>
@@ -37,7 +45,7 @@ details.
 
 </dl>
 
-Older news in <a href="newsarchive.html">news archive</a>.
+Older messages in <a href="newsarchive.html">news archive</a>.
 
 <h2>Gpg4win 2.x</h2>
 

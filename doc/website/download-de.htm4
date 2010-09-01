@@ -51,7 +51,7 @@ kann hier herunter geladen werden:</p>
   <p>Lesen Sie die aktuelle <a
       href="http://ftp.gpg4win.org/README-VERSION.de.txt">README-Datei</a>.
 
-<h2>Gpg4win-Kompendium COMPENDIUM_VERSION_DE</h2>
+<h2>Gpg4win-Kompendium COMPENDIUM_VERSION_DE (Deutsch)</h2>
 
 <p>Die aktuelle PDF- und HTML-Version des Gpg4win-Kompendiums finden
 Sie hier:</p>
@@ -62,7 +62,7 @@ Sie hier:</p>
 Veröffentlicht: COMPENDIUM_DATE_DE</small></span>
 </a>
 
-<a href="./doc/gpg4win-compendium-de.html"
+<a href="./doc/de/gpg4win-compendium.html"
     class="dlbutton2">Gpg4win-Kompendium COMPENDIUM_VERSION_DE (HTML)<br>
 <span class="version"><small>Veröffentlicht: COMPENDIUM_DATE_DE</small></span>
 </a>
