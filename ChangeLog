@@ -1,4 +1,5 @@
 2010-09-01  Emanuel Schuetze <emanuel@intevation.de>
+
 	* configure.ac, include/config.nsi.in, src/Makefile.am, 
 	src/inst-sections.nsi, src/installer-finish.nsi,
 	src/uninst-compendium.nsi, src/uninst-compendium_de.nsi, 
@@ -8,6 +9,7 @@
 	to one nsis section (un)inst-compendium. 
 	Changed and install new compendium-html path.
 
+	* NEWS: Update to 2.1.0-beta1.
 
 2010-08-31  Emanuel Schuetze <emanuel@intevation.de>
 

@@ -3,23 +3,58 @@
 # The version number given below are for the standard installers as
 # distributed by www.gpg4win.org.
 
-Noteworthy changes in version 2.1.0 (unreleased)
-------------------------------------------------
+Noteworthy changes in version 2.1.0-beta1 (2010-08-31)
+------------------------------------------------------
 
-(en) Add tools sha1sum, md5sum and sha256sum.
+(en) Add tools sha1sum, md5sum, sha256sum and gpgtar.
 
 (de) Fehler wurden beseitigt und die Benutzerschnittstelle verbessert.
 
+~~~~~~~~~~~~~~~
+GnuPG:          2.0.16
+Kleopatra:      2.1.0-svn1167864 (2010-08-11)
+GPA:            0.9.0
+GpgOL:          1.1.2
+GpgEX:          0.9.7
+Claws-Mail:     3.7.6
+Kompendium DE:  3.0.0
+Kompendium EN:  3.0.0-beta1
+~~~~~~~~~~~~~~~
 
+
+Noteworthy changes in version 2.0.4 (2010-07-28)
+------------------------------------------------
+
+(en) GpgSM bug fix.
+
+(de) GpgSM Fehler wurde beseitigt.
 
 ~~~~~~~~~~~~~~~
-GnuPG:        2.0.16
-Kleopatra:    2.0.xxx
+GnuPG:        2.0.14 + 02-gpgsm-realloc-bug.patch
+Kleopatra:    2.0.14-svn1098530 (20100303)
 GPA:          0.9.0
-GpgOL:        1.1.2
-GpgEX:        0.9.7
+GpgOL:        1.1.1
+GpgEX:        0.9.5
 Claws-Mail:   3.7.4cvs1
-Kompendium:   3.0.0-rc1
+Kompendium:   3.0.0
+~~~~~~~~~~~~~~~
+
+
+Noteworthy changes in version 2.0.3 (2010-05-29)
+------------------------------------------------
+
+(en) Bug fixes.
+
+(de) Fehler wurden beseitigt.
+
+~~~~~~~~~~~~~~~
+GnuPG:        2.0.14
+Kleopatra:    2.0.14-svn1098530 (20100303)
+GPA:          0.9.0
+GpgOL:        1.1.1
+GpgEX:        0.9.5
+Claws-Mail:   3.7.4cvs1
+Kompendium:   3.0.0
 ~~~~~~~~~~~~~~~
 
 
