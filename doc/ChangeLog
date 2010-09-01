@@ -12,7 +12,7 @@
 	manual/gpg4win-compendium-en.tex,
 	manual/images-hyperlatex/german.png,
 	manual/images-hyperlatex/english.png: Change html build and
-	directory strukture. Add language icons.
+	directory strukture. Add free language icons from http://www.famfamfam.com/lab/icons/flags/.
 
 	* website/index.htm4, website/index-de.htm4,
 	website/documentation.htm4, website/documentation-de.htm4,
