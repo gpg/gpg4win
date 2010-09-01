@@ -109,11 +109,9 @@ Section Uninstall
   Delete "$DESKTOP\Claws-Mail.lnk"
   Delete "$DESKTOP\$(DESC_Desktop_manuals)\Claws-Mail Manual.lnk"
 !endif
-!ifdef HAVE_PKG_COMPENDIUM_DE
+!ifdef HAVE_PKG_COMPENDIUM
   Delete "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_compendium_de_html).lnk"
   Delete "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_compendium_de_pdf).lnk"
-!endif
-!ifdef HAVE_PKG_COMPENDIUM_EN
   Delete "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_compendium_en_html).lnk"
   Delete "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_compendium_en_pdf).lnk"
 !endif
@@ -152,10 +150,8 @@ Section Uninstall
 !ifdef HAVE_PKG_CLAWS_MAIL
   Delete "$QUICKLAUNCH\Claws-Mail.lnk"
 !endif
-!ifdef HAVE_PKG_COMPENDIUM_DE
+!ifdef HAVE_PKG_COMPENDIUM
   Delete "$QUICKLAUNCH\$(DESC_Name_compendium_de).lnk"
-!endif
-!ifdef HAVE_PKG_COMPENDIUM_EN
   Delete "$QUICKLAUNCH\$(DESC_Name_compendium_en).lnk"
 !endif
 !ifdef HAVE_PKG_MAN_NOVICE_DE

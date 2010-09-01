@@ -62,8 +62,7 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi config.site \
         inst-libksba.nsi	   uninst-libksba.nsi	      \
         inst-adns.nsi	           uninst-adns.nsi	      \
         inst-libpng.nsi		   uninst-libpng.nsi	      \
-        inst-compendium_de.nsi	   uninst-compendium_de.nsi   \
-        inst-compendium_en.nsi	   uninst-compendium_en.nsi   \
+        inst-compendium.nsi	   uninst-compendium.nsi   \
         inst-man_advanced_de.nsi   uninst-man_advanced_de.nsi \
         inst-man_advanced_en.nsi   uninst-man_advanced_en.nsi \
         inst-man_novice_de.nsi	   uninst-man_novice_de.nsi   \
@@ -438,7 +437,7 @@ endef
 # special support.  Thus, this variable is actually unused, and no
 # rules are added in gpg4win.mk.
 gpg4win_ipkgs = man_novice_de man_advanced_de man_novice_en man_advanced_en \
-		compendium_de compendium_en
+		compendium
 
 
 # Now do the bunch of the work.  This is a bunch of dirty magic to

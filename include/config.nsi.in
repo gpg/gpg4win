@@ -290,8 +290,7 @@
 !define gpg4win_pkg_paperkey_version @gpg4win_pkg_paperkey_version@
 
 # Internal packages.
-@HAVE_PKG_COMPENDIUM_DE@
-@HAVE_PKG_COMPENDIUM_EN@
+@HAVE_PKG_COMPENDIUM@
 
 # @HAVE_PKG_MAN_NOVICE_EN@
 

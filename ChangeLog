@@ -1,3 +1,14 @@
+2010-09-01  Emanuel Schuetze <emanuel@intevation.de>
+	* configure.ac, include/config.nsi.in, src/Makefile.am, 
+	src/inst-sections.nsi, src/installer-finish.nsi,
+	src/uninst-compendium.nsi, src/uninst-compendium_de.nsi, 
+	src/uninst-compendium_en.nsi, src/inst-compendium_de.nsi,
+	src/inst-compendium.nsi, src/inst-compendium_en.nsi:
+	Merged (un)inst-compendium_de and (un)inst-compendium_en 
+	to one nsis section (un)inst-compendium. 
+	Changed and install new compendium-html path.
+
+
 2010-08-31  Emanuel Schuetze <emanuel@intevation.de>
 
 	* configure.ac: Updated compendium en version date.

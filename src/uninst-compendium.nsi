@@ -1,4 +1,4 @@
-# uninst-compendium_de.nsi - Installer snippet.     -*- coding: latin-1; -*-
+# uninst-compendium.nsi - Installer snippet.     -*- coding: latin-1; -*-
 # Copyright (C) 2008 g10 Code GmbH
 # 
 # This file is part of Gpg4win.
@@ -22,15 +22,18 @@
 !endif
 
 ; Uninstaller section.
-Section "-un.compendium_de"
+Section "-un.compendium"
 !ifdef SOURCES
-  #Push "${gpg4win_pkg_compendium_de}"
+  #Push "${gpg4win_pkg_compendium}"
   #Call un.SourceDelete
 !else
 
-  Delete "$INSTDIR\share\gpg4win\html-de\*"
-  RMDir "$INSTDIR\share\gpg4win\html-de"
-  Delete "$INSTDIR\share\gpg4win\gpg4win-compendium-de.pdf"
+  Delete "$INSTDIR\share\gpg4win\compendium-html\images-hyperlatex\*"
+  Delete "$INSTDIR\share\gpg4win\compendium-html\images-compendium\*"
+  Delete "$INSTDIR\share\gpg4win\compendium-html\de\*"
+  Delete "$INSTDIR\share\gpg4win\compendium-html\en\*"
+  RMDir "$INSTDIR\share\gpg4win\compendium-html"
+  Delete "$INSTDIR\share\gpg4win\gpg4win-compendium-*.pdf"
   RMDir "$INSTDIR\share\gpg4win"
   RMDir "$INSTDIR\share"
   RMDir "$INSTDIR"
