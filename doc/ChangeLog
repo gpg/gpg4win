@@ -19,6 +19,9 @@
 	website/download.htm4, website/download-de.htm4,
 	website/versions.m4: Add English Compendium 3.0.0-beta1.
 
+	* website/index.htm4, website/index-de.htm4:
+	Add announcement link.
+
 2010-08-31  Emanuel Schuetze <emanuel@intevation.de>
 
 	* manual/Makefile.am: Adapt Makefile.am to added screenshots.
