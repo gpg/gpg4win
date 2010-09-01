@@ -52,17 +52,17 @@ and the English novice manual) of Gpg4win VERSION here:</p>
   <p>Read the current <a
       href="http://ftp.gpg4win.org/README-VERSION.en.txt">README file</a>.
 
-<h2>Gpg4win Compendium COMPENDIUM_VERSION_EN (English)</h2>
+<h2>Gpg4win Compendium COMPENDIUM_VERSION_EN</h2>
 
 You find the current PDF and HTML version of the Gpg4win Compendium here:
 <a href="DOWNLOAD_URL_COMPENDIUM_DE"
-    class="dlbutton2">Gpg4win-Kompendium COMPENDIUM_VERSION_EN (PDF)<br>
+    class="dlbutton2">Gpg4win Compendium COMPENDIUM_VERSION_EN (PDF, English)<br>
 <span class="version"><small>Size: DL_SIZE_COMPENDIUM_EN | 
 Released: COMPENDIUM_DATE_EN</small></span>
 </a>
 
 <a href="./doc/en/gpg4win-compendium.html"
-    class="dlbutton2">Gpg4win-Kompendium COMPENDIUM_VERSION_DE (HTML)<br>
+    class="dlbutton2">Gpg4win Compendium COMPENDIUM_VERSION_DE (HTML, English)<br>
 <span class="version"><small>Released: COMPENDIUM_DATE_DE</small></span>
 </a>
 

@@ -51,19 +51,19 @@ kann hier herunter geladen werden:</p>
   <p>Lesen Sie die aktuelle <a
       href="http://ftp.gpg4win.org/README-VERSION.de.txt">README-Datei</a>.
 
-<h2>Gpg4win-Kompendium COMPENDIUM_VERSION_DE (Deutsch)</h2>
+<h2>Gpg4win-Kompendium COMPENDIUM_VERSION_DE</h2>
 
 <p>Die aktuelle PDF- und HTML-Version des Gpg4win-Kompendiums finden
 Sie hier:</p>
 
 <a href="DOWNLOAD_URL_COMPENDIUM_DE"
-    class="dlbutton2">Gpg4win-Kompendium COMPENDIUM_VERSION_DE (PDF)<br>
+    class="dlbutton2">Gpg4win-Kompendium COMPENDIUM_VERSION_DE (PDF, Deutsch)<br>
 <span class="version"><small>Größe: DL_SIZE_COMPENDIUM_DE | 
 Veröffentlicht: COMPENDIUM_DATE_DE</small></span>
 </a>
 
 <a href="./doc/de/gpg4win-compendium.html"
-    class="dlbutton2">Gpg4win-Kompendium COMPENDIUM_VERSION_DE (HTML)<br>
+    class="dlbutton2">Gpg4win-Kompendium COMPENDIUM_VERSION_DE (HTML, Deutsch)<br>
 <span class="version"><small>Veröffentlicht: COMPENDIUM_DATE_DE</small></span>
 </a>
 

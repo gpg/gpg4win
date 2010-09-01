@@ -35,13 +35,13 @@ English and German) is available via start menu in the folder
 
 You find the current PDF and HTML version of the Gpg4win Compendium here:
 <a href="DOWNLOAD_URL_COMPENDIUM_EN"
-    class="dlbutton2">Gpg4win-Kompendium COMPENDIUM_VERSION_EN (PDF, English)<br>
+    class="dlbutton2">Gpg4win Compendium COMPENDIUM_VERSION_EN (PDF, English)<br>
 <span class="version"><small>Size: DL_SIZE_COMPENDIUM_EN | 
 Released: COMPENDIUM_DATE_EN</small></span>
 </a>
 
 <a href="./doc/en/gpg4win-compendium.html"
-    class="dlbutton2">Gpg4win-Kompendium COMPENDIUM_VERSION_EN (HTML, English)<br>
+    class="dlbutton2">Gpg4win Compendium COMPENDIUM_VERSION_EN (HTML, English)<br>
 <span class="version"><small>Released: COMPENDIUM_DATE_EN</small></span>
 </a>
 
@@ -50,7 +50,7 @@ Released: COMPENDIUM_DATE_EN</small></span>
 <img src="http://bomots.de/Sichere_E-Mail/Sichere_E-Mail_Cover.jpg">
 </p>
 <p>
-The German Gpg4win-Kompendium (v3.0.0) is printed as book:
+The German Gpg4win Compendium (v3.0.0) is printed as book:
 
 <p>
 <b>"Sicher E-Mail"</b><br>
