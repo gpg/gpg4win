@@ -29,9 +29,13 @@ Section "-un.compendium"
 !else
 
   Delete "$INSTDIR\share\gpg4win\compendium-html\images-hyperlatex\*"
+  RMDir "$INSTDIR\share\gpg4win\compendium-html\images-hyperlatex"
   Delete "$INSTDIR\share\gpg4win\compendium-html\images-compendium\*"
+  RMDir "$INSTDIR\share\gpg4win\compendium-html\images-compendium"
   Delete "$INSTDIR\share\gpg4win\compendium-html\de\*"
+  RMDir "$INSTDIR\share\gpg4win\compendium-html\de"
   Delete "$INSTDIR\share\gpg4win\compendium-html\en\*"
+  RMDir "$INSTDIR\share\gpg4win\compendium-html\en"
   RMDir "$INSTDIR\share\gpg4win\compendium-html"
   Delete "$INSTDIR\share\gpg4win\gpg4win-compendium-*.pdf"
   RMDir "$INSTDIR\share\gpg4win"

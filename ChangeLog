@@ -1,3 +1,7 @@
+2010-09-02  Emanuel Schuetze <emanuel@intevation.de>
+
+	* src/uninst-compendium.nsi: Fix to remove compendium-html dirs.
+
 2010-09-01  Emanuel Schuetze <emanuel@intevation.de>
 
 	* configure.ac, include/config.nsi.in, src/Makefile.am, 
