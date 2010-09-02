@@ -16,6 +16,20 @@ PAGE_START
 <dt> The latest news are placed at the <a href="./">welcome page</a>.</dt>
 <dd>[..]</dd>
 
+<dt><b>+++ 2010-05-29: Gpg4win 2.0.3 released +++</b></dt>
+<dd>See the <a
+href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2010-June/000045.html">announcement</a>
+for details.
+</dd>
+
+<dt><b>+++ 2010-05-28: German Gpg4win Compendium 3.0.0 released +++</b></dt>
+<dd>This is the final version 3.0.0 of the German Gpg4win Compendium
+- a new overview documentation for Gpg4win2. The translation into
+  English is currently in progress.
+  See <a href="documentation.html">documentation page</a> for more
+details.
+</dd>
+
 <dt><b>+++ 2010-04-13: Gpg4win 2.0.2 released +++</b></dt>
 <dd>This is basically the same as the 2.0.2 release candidate
 2 - additionally with the current compendium 3.0.0 RC1. See the <a

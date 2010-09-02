@@ -8,6 +8,13 @@
 	* README.de.txt, README.en.txt: Update to 2.1.0-beta1
 	release. 
 
+	* website/index.htm4, website/index-de.htm4,
+	website/newsarchive.htm4, website/newsarchive-de.htm4,
+	website/reporting-bugs-de.htm4, website/reporting-bugs.htm4,
+	website/download-de.htm4, website/download.htm4,
+	website/versions.m4, website/localize-gpg4win.htm4:
+	Update for 2.1.0-beta1.
+
 2010-09-01  Emanuel Schuetze <emanuel@intevation.de>
 
 	* manual/Makefile.am, manual/gpg4win-compendium-en.tex,

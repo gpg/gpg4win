@@ -168,11 +168,14 @@ Simply click on the top-right language you prefer.
 <h4>Available languages</h4>
 
 <p>
-This documentation is available in german language (<a
-href="http://www.gpg4win.de/doc/gpg4win-compendium-de.html">Gpg4win-Kompendium</a>).
+The Gpg4win Compendium is available in 
+<a href="http://www.gpg4win.de/doc/de/gpg4win-compendium.html">German</a>
+and 
+<a href="http://www.gpg4win.de/doc/en/gpg4win-compendium.html">English</a>
+language.
 
-The translation into English is currently in progress (as of: July
-2010). Translations from German compendium into other language are
+The translation into English is currently not finished (as of:
+September 2010). Translations from German compendium into other language are
 very welcome! Please contact the Gpg4win developer mailing list if you
 want to start with a new translation.
 </p>

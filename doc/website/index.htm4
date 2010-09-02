@@ -10,6 +10,11 @@ PAGE_START
 <p>
 <dl>
 
+<dt><b>+++ 2010-09-02: Gpg4win 2.1.0-beta1 released +++</b></dt>
+<dd>with a lot of improvements in Kleopatra and GnuPG. See the
+<a href="http://ftp.gpg4win.org/Beta/README-2.1.0-beta1.en.txt">README</a>
+for details.
+</dd>
 
 <dt><b>+++ 2010-09-01: English Gpg4win Compendium 3.0.0-beta1 released +++</b></dt>
 <dd>This is the first beta version of the translated English Gpg4win
@@ -29,19 +34,6 @@ for details.
 href="donate.html">list of sponsors</a>.
 </dd>
 
-<dt><b>+++ 2010-05-29: Gpg4win 2.0.3 released +++</b></dt>
-<dd>See the <a
-href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2010-June/000045.html">announcement</a>
-for details.
-</dd>
-
-<dt><b>+++ 2010-05-28: German Gpg4win Compendium 3.0.0 released +++</b></dt>
-<dd>This is the final version 3.0.0 of the German Gpg4win Compendium
-- a new overview documentation for Gpg4win2. The translation into
-  English is currently in progress.
-  See <a href="documentation.html">documentation page</a> for more
-details.
-</dd>
 
 </dl>
 
@@ -101,8 +93,9 @@ Of course you should be administrator of your system or have administration
 rights.
 </p>
 <p>
-The best point to start is with the illustrative handbook
-<a href="documentation.html">Gpg4win for Novices</a>.
+The best point to start is with the illustrative
+<a
+href="./doc/en/gpg4win-compendium.html">Gpg4win Compendium</a>.
 </p>
 <p>
 We recommend subscribing to the

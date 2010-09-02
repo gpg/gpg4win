@@ -9,6 +9,12 @@ PAGE_START
 <h2>Neuigkeiten</h2>
 <p>
 <dl>
+<dt><b>+++ 2010-09-02: Gpg4win 2.1.0-beta1 veröffentlicht +++</b></dt>
+<dd>Diese Version bringt u.a. viele Verbesserungen in Kleopatra
+und GnuPG mit. Detail in der
+<a href="http://ftp.gpg4win.org/Beta/README-2.1.0-beta1.de.txt">README</a>
+for details.
+</dd>
 
 <dt><b>+++ 2010-09-01: Englisches Gpg4win-Kompendium 3.0.0-beta1 veröffentlicht +++</b></dt>
 <dd>Das Gpg4win-Kompendium ist in einer ersten englischen Übersetung
@@ -25,20 +31,6 @@ href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2010-July/0
 <dd>Unterstützen Sie die Gpg4win-Initiative und erscheinen Sie auf
 dieser <a href="donate-de.html">Spenderliste</a>!
 </dd>
-
-<dt><b>+++ 2010-05-29: Gpg4win 2.0.3 veröffentlicht +++</b></dt>
-<dd>Details in der <a
-href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2010-June/000009.html">Bekanntmachung</a>.
-</dd>
-
-<dt><b>+++ 2010-05-28: Gpg4win-Kompendium 3.0.0 ist veröffentlicht +++</b></dt>
-<dd>Diese vollständige überarbeitete, deutschprachige
-Übersichtsdokumentation zu Gpg4win2 ermöglicht Einsteigern und
-Fortgeschrittenen einen einfachen Einstieg in die Welt der
-Kryptografie mit Gpg4win. Das Kompendium ist verfügbar als <a
-href="documentation-de.html">PDF- und HTML-Fassung</a>.
-</dd>
-
 
 </dl>
 
@@ -101,7 +93,7 @@ besitzen.
 <p>
 Beginnen Sie am besten mit dem anschaulichen 
 <a
-href="http://gpg4win.de/doc/gpg4win-compendium-de.html">Gpg4win-Kompendium</a>.
+href="./doc/de/gpg4win-compendium.html">Gpg4win-Kompendium</a>.
 </p>
 <p>
 Wir empfehlen, sich in die

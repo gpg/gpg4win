@@ -25,7 +25,7 @@ I18N(`EN', `<a href="http://www.gnupg.org/related_software/gpa/index.html">GPA</
 <a href="http://www.g10code.de/p-gpgol.html">GpgOL</a> 1.1.1
 <a href="http://cvs.gnupg.org/cgi-bin/viewcvs.cgi/?root=GpgEX">GpgEX</a> 0.9.5
 <a href="http://www.claws-mail.org/">Claws Mail</a> 3.7.4cvs1
-I18N(`EN', `<a href="doc/gpg4win-compendium-de.html">Gpg4win Compendium</a> (German!)')I18N(`DE', `<a href="doc/de/gpg4win-compendium.html">Gpg4win-Kompendium</a>') 3.0.0
+I18N(`EN', `<a href="doc/de/gpg4win-compendium.html">Gpg4win Compendium</a> (German!)')I18N(`DE', `<a href="doc/de/gpg4win-compendium.html">Gpg4win-Kompendium</a>') 3.0.0
 I18N(`EN', `<a href="handbuecher/novices.html">Gpg4win for Novices</a> 1.0.0')')
 
 m4_define(`COMPENDIUM_VERSION_DE',`3.0.0')

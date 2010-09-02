@@ -8,6 +8,39 @@ m4_define(`DE_FILE', `download-de.html')
 PAGE_START
 <h1>Download</h1>
 
+<h2>Gpg4win 2.1.0-beta1</h2>
+
+<p>You can download the <b>first beta version</b> (including the
+English and German compendium) of Gpg4win 2.1.0 here:</p>
+
+<a href="http://ftp.gpg4win.org/Beta/gpg4win-2.1.0-beta1.exe" class="dlbutton2">Gpg4win&nbsp;2.1.0-beta1<br>
+<span class="version"><small>Size: 39 MByte | Released: 2010-09-02</small></span>
+</a>
+
+<ul>
+    <li><a href="http://ftp.gpg4win.org/Beta/gpg4win-2.1.0-beta1.exe.sig"
+        >OpenPGP signatur</a> (for gpg4win-2.1.0-beta1.exe)
+    <li><b>SHA1 checksum</b> (for gpg4win-2.1.0-beta1.exe): 
+    <code>56eb7d0549439bf247c5b8feaa622bcddba8bd40 gpg4win-2.1.0-beta1.exe </code></li>
+
+<!--<li><a href="change-history.html">Change History</a></li>-->
+
+<li>Sources and other Gpg4win-2.1.0-beta1 variants:
+    <ul>
+    <li><a href="http://ftp.gpg4win.org/Beta/gpg4win-light-2.1.0-beta1.exe">gpg4win-light-2.1.0-beta1.exe</a>
+    (Full version <em>without</em> Kleopatra and manuals); 
+    <small>Size: 23 MByte</small></li>
+    <li><a
+        href="http://ftp.gpg4win.org/Beta/gpg4win-2.1.0-beta1.tar.bz2">gpg4win-2.1.0-beta1.tar.bz2</a>
+    (source code package); <small>Size: 10 MByte</small></li>
+    <li>All versions and OpenPGP signatures: <a
+        href="http://ftp.gpg4win.org/Beta">ftp.gpg4win.org/Beta</a>.</li>
+    </ul>
+</li>
+</ul>
+<p>Read the current <a
+    href="http://ftp.gpg4win.org/Beta/README-2.1.0-beta1.en.txt">README file</a>.
+
 
 <h2>Gpg4win VERSION</h2>
 
