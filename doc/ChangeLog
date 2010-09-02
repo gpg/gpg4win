@@ -2,6 +2,9 @@
 
 	* website/documentation.htm4: Updated.
 
+	* manual/gpg4win-compendium-en.tex: Fixed typo (reported by
+	Wilfried Hennings).
+
 2010-09-01  Emanuel Schuetze <emanuel@intevation.de>
 
 	* manual/Makefile.am, manual/gpg4win-compendium-en.tex,
