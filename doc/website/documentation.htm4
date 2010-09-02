@@ -12,28 +12,32 @@ PAGE_START
 
 <h2>Gpg4win Compendium</h2>
 
-<p>The "Gpg4win Compendium" is the new overview documentation for
-  Gpg4win2. This combines on about 190 pages the previous German
-  manuals "Einsteiger" and "Durchblicker".
-  All chapters were reworked and extended to describe the new Gpg4win
-  Version 2. Among other things, this means adaption to Kleopatra,
-  GpgEX and PGP/MIME and new texts for S/MIME and X.509.
+<p>The "Gpg4win-Compendium" is the new end-user documentation for
+Gpg4win2. It combines the approximately 190 pages of the previously
+separate Gpg4win manuals "Einsteiger" and "Durchblicker". All chapters
+were reworked, extended, and updated to the new Gpg4win version 2.
+Among other enhancements, it now covers Kleopatra, GpgEX and PGP/MIME
+as well as S/MIME and X.509. 
 </p>
 
-<p>Note: The English Gpg4win Compendium is currently availabe in a
-<b>first beta version</b>.</p>
+<p>Note: The English language version of the Gpg4win-Compendium is
+currently available as a <b>first beta version</b>.</p>
 
-<p>Translations from German (or final English) compendium into other
-language are very welcome!  Please contact the
-<a href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-devel">
+<p>Translations based upon the German language version (or the final
+English language version) of the Gpg4win-compendium to any other
+language are very welcome! Please contact the <a
+href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-devel">
 Gpg4win developer mailing list</a> if you want to start with a new
-translation (Read also <a href="localize-gpg4win.html">Gpg4win into your language</a>).</p>
+translation; in this case, please also read  <a
+href="localize-gpg4win.html">Gpg4win into your language</a>.
+</p>
 
-<p>After install Gpg4win the Compendium (in pdf and html version,
-English and German) is available via start menu in the folder
+<p>After installation of the Gpg4win package, the Compendium (in pdf
+and html version, English and German) is available via start menu in
+the folderGerman) is available via start menu in the folder
 <em>Gpg4win->Documentation</em>.</p>
 
-You find the current PDF and HTML version of the Gpg4win Compendium here:
+The current PDF and HTML versions of the Gpg4win-Compendium are also available here:
 <a href="DOWNLOAD_URL_COMPENDIUM_EN"
     class="dlbutton2">Gpg4win Compendium COMPENDIUM_VERSION_EN (PDF, English)<br>
 <span class="version"><small>Size: DL_SIZE_COMPENDIUM_EN | 
@@ -50,7 +54,8 @@ Released: COMPENDIUM_DATE_EN</small></span>
 <img src="http://bomots.de/Sichere_E-Mail/Sichere_E-Mail_Cover.jpg">
 </p>
 <p>
-The German Gpg4win Compendium (v3.0.0) is printed as book:
+The German langauage version of the Gpg4win-Compendium (v3.0.0) is also 
+available as a printed book with CD:
 
 <p>
 <b>"Sicher E-Mail"</b><br>
