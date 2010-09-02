@@ -2,6 +2,8 @@
 
 	* src/uninst-compendium.nsi: Fix to remove compendium-html dirs.
 
+	* NEWS: Update release date.
+
 2010-09-01  Emanuel Schuetze <emanuel@intevation.de>
 
 	* configure.ac, include/config.nsi.in, src/Makefile.am, 
