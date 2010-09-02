@@ -69,46 +69,121 @@ of the most important ones:
   Operating System: Windows 2000, XP (32/64), Vista (32/64)
   Outlook: 2003, 2007
 
-Short overview on changes compared to version 2.0.1:
+
+Short overview on changes compared to version 2.0.4:
 ----------------------------------------------------
+[The following issue numbers reference to https://issues.kolab.org/.]
+
 - Kleopatra:
-  * New certificate wizard for OpenPGP and X.509 improved
-  * Certificate selection dialog for sign/encrypt comes up in case of  
-    conflict only
-  * Result dialog for sign/encrypt combined in one window
-  * File crypto operations with GpgEX stabilized
-  * SmartCard support for X.509 NetKey cards improved
-  * Rekursive sign/encrypt of files/directory now possible; condition:  
-    external archive tool required (see README file for configuration)
-  * new oxygen icons
-  * Several minor and medium issues and errors were fixed
+  * Conflict dialog 
+    - Certificate selection dialog now works context-sensitive
+      (dependent on selecting sign, encrypt or sign/encrypt)
+      [kolab/issue4492]
+    - Conflicts redefined and implemented, fixed errors
+      [kolab/issue4197,4234]
+    - New configuration option for "quick mode" (Power-User-Mode) to
+      sign and encrypt
+      [kolab/issue4136])
+    - No protocol (OpenPGP or S/MIME) pre-selection dialog required -
+      replaced by new certificate selection dialog.
+      [kolab/issue4213,4235]
+  * (recursive) sign/encrypt of files and folders possible (see
+    GnuPG-Backend)
+  * Create/verify checksum by sha1sum, sha256sum, md5sum possible
+    (see GnuPG-Backend)
+  * Certificate lookup on certificate server
+    - Search for fingerprint or key-id shows new information dialog 
+      (some server requires 0x-Präfix in search string)
+      [kolab/issue4453]
+  * Certify OpenPGP certificates
+    - Fingerprint and key-id in step 1 added
+      [kolab/issue4468,4458]
+    - Key-id in step 2 added
+      [kolab/issue4460]
+  * Several minor and medium (GUI) improvements:
+    - Export of secret X.509 certificats use new default (utf8) for
+      passphrase charset
+      [kolab/issue4454]
+    - Import certificate without file type improved (content checker)
+      [kolab/issue4457]
+    - Fix certificate list in delete confirm dialog
+      [kolab/issue4459] 
+    - New context menu entry for deleting certificate added
+      [kolab/issue4450]
+    - OwnerTrust added to tooltips and certificate details
+      [kolab/issue4198]
+    - Unit (Bits) to the key strength fields in NewCertificateWizard's
+      overview page added
+      [kolab/issue4183]
+    - E-Mail-Validator allows to delete '@' Zeichen
+      [kolab/issue4189]
+    - Trust/distrust root certificates via context menu
+      (write directly $GNUPGHOME\trustlist.txt)
+      [kolab/issue4190]
+    - For developer: KDebugDialog available (installed with Kleopatra,
+      run $INSTDIR\kdebugdialog.exe)
+      [kolab/issue4318]
+    - Hierarchical certificate list: toggling (regression)
+      [kolab/issue4327]
+    - Fixed exception for decrypt/verify special S/MIME e-mail
+      [kolab/issue4179]
+  * SmartCard 
+    - Detecting smartcard: Kleopatra's systemtray icon blinks after
+      inserting X.509 card. Click starts learn card command or opens
+      nullpin dialog.
+      [kolab/issue4191]
+    - Learn card commands suppress gpgsm error dialogs.
+      [kolab/issue4126]
+  * Miscellaneous
+    - Gpg4win credits added (see 'About Gpg4win' dialog)
+    - German translations fixed
+    - Several minor and medium issues and errors were fixed
 
 - GpgOL:
-  * Symbol load mechanism improved to add new icons
-    (now with crypto icons for the message list)
+  * Portuguese translation added
+  * updated to new libassuan2 interface and libgpg-error 1.9
+
+- GpgEX
+  * (recursive) sign/encrypt of files and folders possible (see
+    GnuPG-Backend)
+  * Create/verify checksum by sha1sum, sha256sum, md5sum possible
+    (see GnuPG-Backend)
+  * Portuguese translation added
+  * Updated to libgpg-error 1.9
 
 - Pinentry:
-  * Change default: switch from GTK to QT4
+  * Change default: switch to QT4
     (GTK still enabled for gpg4win-light installer)
-  * new icons for pinentry-qt4
-  * Pinentry-qt4 dialog always comes up in foreground
+    [kolab/issue4378]
+  * Fixed German translation for 'Cancel' cancel
+    [kolab/issue4132]
 
 - GnuPG-Backend:
-  * Generate new certificate for OpenPGP/X.509: default key length
-    updated (new Default: RSA, 2048 bit); 
-    furthermore select list of key length in Kleopatra updated
+  * NEW: (recursive) sign/encrypt of files and folders possible
+    [kolab/issue4298,4299,4300] 
+  * NEW: Create/verify checksum by sha1sum, sha256sum, md5sum
+    possible via GpgEX
+    [kolab/issue41634,294,4295,4296,4297,4321]
+  * Updated to new libassuan v2 interface
+  * Several minor and medium improvements of stability
+    [u.a.: kolab/issue4212] 
 
 - Installer:
-  * new images for NSIS installer
+  * NEW: English language version of the Gpg4win Compendium
+    (v3.0.0-beta1) added. Old novices manual removed.
+  * Installer was signed with a CodeSigning certificate of GlobalSign
+    (Publisher: "Intevation GmbH")
+  * Portuguese translation added
 
-- Included components are:
-    GnuPG:        2.0.14
-    Kleopatra:    2.0.14-svn1098530 (20100303)
-    GPA:          0.9.0
-    GpgOL:        1.1.1
-    GpgEX:        0.9.5
-    Claws-Mail:   3.7.4cvs1
-    Kompendium:   3.0.0-rc1
+- Included Gpg4win components are:
+    GnuPG:          2.0.16
+    Kleopatra:      2.1.0-svn1167864 (2010-08-11)
+    GPA:            0.9.0
+    GpgOL:          1.1.2
+    GpgEX:          0.9.7
+    Claws-Mail:     3.7.6
+    Kompendium DE:  3.0.0
+    Kompendium EN:  3.0.0-beta1
 
 
 3. Known Bugs (and Workarounds)
@@ -147,14 +222,19 @@ Short overview on changes compared to version 2.0.1:
    from your smart card is shown in Kleopatra under the tab
    "My certificates" (marked with a smart card icon).
 
-   A good (graphical) alternative for setting up your smart
-   card and changing PIN is GPA. A better smart card support for
-   Kleopatra is in process.
+   A better smart card support for Kleopatra is in process.
 
 - Using the Outlook Plugin "GpgOL":
 
   * You defintely should create copies of your old encrypted/signed
     emails, e.g. in the form of PST files.
+
+  * Sending signed or encrypted messages via an Exchange based account
+    does not yet work.
+    [see https://bugs.g10code.com/gnupg/issue1102]
+
+  * Outlook2007 crashes after opening attachments of an encrypted message
+    [see https://bugs.g10code.com/gnupg/issue1110]
 
   * Encrypted E-Mails occuring un-encrypted on the email server: It
     can happen that parts of encrypted emails are copied to your email
@@ -164,9 +244,6 @@ Short overview on changes compared to version 2.0.1:
     not affected.  Switching off the Outlook preview will lower the
     probability of this to happen, but not eliminate the issue.
     A solution is being worked on.
-
-  * Sending signed or encrypted messages via an Exchange based account
-    does not yet work.
 
 - Using GpgEX with Windows x64:
 
@@ -187,20 +264,6 @@ Short overview on changes compared to version 2.0.1:
      Note: Adjust the path to your x64-based version of Windows if
      necessary. 
      This separate command seems to be currently broken in Win7/64bit.
-
-- sign/encrypt files with archive function:
-
-   * The new Kleopatra function to sign/encrypt files as archive
-     is currently not full implemented. It's for testing for 
-     expert users only. An extra archive application is required.
-     Configure the pack command in the config file of Kleopatra:
-       C:\Programme\GNU\GnuPG\share\config\libkleopatrarc
-     Here an exemple for the tool "7-ZIP" (http://www.7-zip.org):
-        [Archive Definition #0]
-        Name=TAR (via 7-ZIP)
-        id=7zip
-        extensions=tar
-        pack-command=7z a dummy -ttar -so
 
 
 4. Version History

@@ -8,7 +8,7 @@
                   Deutsche README Datei für Gpg4win
                   =================================
 !BETA-WARNING!
-Dies ist Gpg4win, Version !VERSION!.
+Dies ist Gpg4win, Version !VERSION! (!BUILD_ISODATE!).
 
 Inhalt:
 
@@ -34,6 +34,10 @@ bitte die Migrationshinweise im Anhang des Gpg4win-Kompendiums.
 
 Bitte lesen Sie den Abschnitt "Bekannte Probleme", bevor Sie damit
 beginnen Gpg4win zu nutzen.
+
+- Unterstützung folgender Plattformen:
+  Betriebssystem: Windows 2000, XP (32/64), Vista (32/64)
+  MS Outlook: 2003, 2007
 
 
 2. Änderungen
@@ -76,50 +80,124 @@ sich. Nachstehend die wichtigsten Änderungen:
   Betriebssystem: Windows 2000, XP (32/64), Vista (32/64)
   MS Outlook: 2003, 2007
 
-
-Kurzübersicht zu Änderungen gegenüber Version 2.0.1:
+ 
+Kurzübersicht zu Änderungen gegenüber Version 2.0.4:
 ----------------------------------------------------
+[Die folgenden Fallnummer beziehen sich auf https://issues.kolab.org/.]
+
 - Kleopatra:
-  * Zertifikatserzeugungsdialog für OpenPGP und X.509 verbessert
-  * Zertifikatsauswahldialog beim Signieren/Verschlüsseln wird nur noch im 
-    Konfliktfall angezeigt ("Viel-Benutzer-Modus")
-  * Ergebnisdialog für Signieren/Verschlüsseln in einem Dialog zusammengefasst
-  * Datei-Krypto-Operationen mit GpgEX stabilisiert
-  * SmartCard-Unterstützung für NetKey-Karten verbessert
-  * Rekursives signieren/verschlüsseln von Dateien/Ordnern grundsätzlich 
-    möglich; Bedingung: externes Archiv-Werkzeug nötig (Konfiguration siehe 
-    Punkt 3 dieser README)
-  * neues deutschsprachiges Handbuch für Kleopatra
-  * neue Oxygen-Icons
-  * diverse kleinere Stabilitäts- und GUI-Verbesserungen
+  * Konfliktdialog 
+    - Zertifikatsauswahldialog nun kontextsensitiv (abhängig ob signiert,
+      verschlüsselt oder signiert/verschlüsselt gewählt wurde)
+      [kolab/issue4492]
+    - Konfliktfälle neu definiert und implementiert, Fehler behoben
+      [kolab/issue4197,4234]
+    - neue Konfigurationsoption für den "schnellen Modus"
+      (Viel-Benutzer-Modus) beim Signieren und Verschlüsseln
+      [kolab/issue4136])
+    - Kein extra Protokoll-Auswahldialog mehr erforderlich - Auswahl
+      von OpenPGP und S/MIME nun über neuen Zertifikatsauswahldialog möglich
+      [kolab/issue4213,4235]
+  * (rekursives) Signiern/Verschlüsseln von mehreren Dateien und
+    Ordnern möglich (siehe GnuPG-Backend)
+  * Prüfsummen erstellen/überprüfen (mittels sha1sum, sha256sum,
+    md5sum) möglich (siehe GnuPG-Backend)
+  * Zertifikatssuche auf Zertifiaktsserver
+    - Suche nach Fingerabdruck oder Schlüsselkennung: 
+      neuer Hinweisdialog (teiweise 0x-Präfix erforderlich)
+      [kolab/issue4453]
+  * Beglaubigen von OpenPGP-Zertifikaten
+    - Fingerabdruck und Schlüsselkennung in Schritt 1 hinzugefügt
+      [kolab/issue4468,4458]
+    - Schlüsselklennung in Schritt 2 hinzugefügt
+      [kolab/issue4460]
+  * Diverse kleinere GUI-Verbesserungen
+    - Export eines geheimen X.509-Zertifikats verwendet nun utf8 als
+      Vorgabe für Passphrase-Zeichensatz
+      [kolab/issue4454]
+    - Import eines Zeritifikats ohne Dateierweiterung verbessert
+      (content checker)
+      [kolab/issue4457]
+    - Anzeigen von Zertifikaten im Löschen-Bestätigungsdialog
+      korrigiert
+      [kolab/issue4459] 
+    - neuer Kontext-Menüeintrag zum Löschen von Zertifikaten
+      [kolab/issue4450]
+    - Vertrauen in den Zertifikatsinhaber/Benutzervertrauen nun in
+      den Zertifikatsdetails sichbar
+      [kolab/issue4198]
+    - Zertifikatserstellung: Einheit (Bits) für Schlüssellänge auf
+      Übersichtsprüfseite ergänzt
+      [kolab/issue4183]
+    - E-Mail-Validator: Löschen von '@' Zeichen erlaubt
+      [kolab/issue4189]
+    - X.509-Wurzelzertifikate vertrauen/misstrauen per Kontextmenü
+      ermöglicht (Schreiben von $GNUPGHOME\trustlist.txt)
+      [kolab/issue4190]
+    - Für Entwickler: KDebugDialog verfügbar (wird mit Kleopatra
+      installiert, separat startbar unter $INSTDIR\kdebugdialog.exe)
+      [kolab/issue4318]
+    - Hierarchische Zertifikatsliste: Ein-/Ausschalten korrigiert
+      [kolab/issue4327]
+    - Fehler beim Entschlüsseln/Prüfen einer speziellen S/MIME E-Mail
+      korrigiert
+      [kolab/issue4179]
+  * SmartCard 
+    - Blinkendes SystemTray Kleopatra-Icon beim Einlegen einer X.509
+      SmartCard. Klick startet learncard Befehl bzw. Nullpin Dialog.
+      [kolab/issue4191]
+    - Learncard Befehl unterdrückt nun gpgsm Fehlerdialog
+      [kolab/issue4126]
+  * Diverses
+    - Gpg4win-Credits hinzugefügt (im 'Über Gpg4win'-Dialog)
+    - DE: Deutsche Übersetzung angepasst
+    - diverse kleinere Stabilitäts- und GUI-Verbesserungen
 
 - GpgOL:
-  * verbesserter Symbol-Lademechanismus
-  * neue Icons (nun auch für Nachrichtenliste)
+  * portugiesische Übersetzung hinzugefügt
+  * aktualisiert auf neues libassuan2 Interface und libgpg-error 1.9
+
+- GpgEX
+  * (rekursives) Signiern/Verschlüsseln von mehreren Dateien und
+    Ordnern möglich (siehe GnuPG-Backend)
+  * Prüfsummen erstellen/überprüfen (mittels sha1sum, sha256sum,
+    md5sum) möglich (siehe GnuPG-Backend)
+  * portugiesische Übersetzung hinzugefügt
+  * aktualisiert auf libgpg-error 1.9
 
 - Pinentry:
-  * Voreinstellung umgestellt: von GTK auf QT4
+  * Voreinstellung wieder umgestellt auf QT4 
     (für gpg4win-light-Installer weiterhin GTK aktiv)
-  * neue Icons für pinentry-qt4
-  * Pinentry-qt4-Dialog erscheint nun immer im Vordergrund
+    [kolab/issue4378]
+  * DE: Übersetzung des Buttons 'Cancel' zu 'Abbrechen'
+    [kolab/issue4132]
 
 - GnuPG-Backend:
-  * Zertifikatserzeugung für OpenPGP/X.509: voreingestellte Schlüssellängen  
-    nach Algorithmenkatalogs des BSI angepasst (Default: RSA, 2048 bit);
-    außerdem Auswahlliste der Schlüssellängen in Kleopatra aktualisiert
+  * (rekursives) Signiern/Verschlüsseln mit gpgtar
+    [kolab/issue4298,4299,4300] 
+  * Prüfsummen erstellen/überprüfen (mittels sha1sum, sha256sum,
+    md5sum) über GpgEX möglich
+    [kolab/issue41634,294,4295,4296,4297,4321]
+  * Aktualisierung auf neues libassuan v2 Interface
+  * Diverse Stabilitätverbesserung 
+    [u.a.: kolab/issue4212] 
 
 - Installer:
-  * neue NSIS-Installer-Grafiken
+  * Englisches Kompendium v3.0.0-beta1 hinzugefügt, altes Handbuch
+    entfernt
+  * Installer mit CodeSigning-Zertifikat von GlobalSign signiert
+    (Herausgeber "Intevation GmbH")
+  * portugiesische Übersetzung hinzugefügt
 
 - Die integrierten Gpg4win-Komponenten sind:
-    GnuPG:        2.0.14
-    Kleopatra:    2.0.14-svn1098530 (20100303)
-    GPA:          0.9.0
-    GpgOL:        1.1.1
-    GpgEX:        0.9.5
-    Claws-Mail:   3.7.4cvs1
-    Kompendium:   3.0.0-rc1
-
+    GnuPG:          2.0.16
+    Kleopatra:      2.1.0-svn1167864 (2010-08-11)
+    GPA:            0.9.0
+    GpgOL:          1.1.2
+    GpgEX:          0.9.7
+    Claws-Mail:     3.7.6
+    Kompendium DE:  3.0.0
+    Kompendium EN:  3.0.0-beta1
 
 
 3. Bekannte Probleme (und Abhilfe)
@@ -156,20 +234,26 @@ Kurzübersicht zu Änderungen gegenüber Version 2.0.1:
      - Karte einlegen.
      - Auf das blinkende Kleopatra-Smartcard-Systemtray-Icon klicken
        (oder direkt das Systemtray-Kontextmenü "Smartcard" aufrufen und dort
-        den "LearnCard"-Eintrag aufrufen).
+       den "LearnCard"-Eintrag aufrufen).
 
    Anschließend wird Ihr OpenPGP- bzw. X.509-Smartcard-Zertifikat in
    Kleopatra unter dem Reiter "Meine Zertifikate" angezeigt (markiert mit
    einem Smartcard Icon).
 
-   Eine gute (grafische) Alternative ist GPA, um Ihre Karte korrekt zu
-   konfigurieren und ggf. Ihre PIN zu ändern. Eine verbesserte
-   Smartcard-Unterstützung für Kleopatra ist in Arbeit.
+   Eine verbesserte Smartcard-Unterstützung für Kleopatra ist in Arbeit.
 
 - Verwendung der Outlook-Programmerweiterung "GpgOL":
 
   * Sie sollten unbedingt Sicherheitskopien Ihrer alten
     verschlüsselten/signierten E-Mails machen; z.B. in PST-Dateien!
+
+  * Senden von signierten oder verschlüsselten Nachrichten über ein
+    Exchange basiertes Konto funktioniert nicht.
+    [siehe https://bugs.g10code.com/gnupg/issue1102]
+
+  * Outlook2007 stürzt beim Öffnen von Anhängen einer
+    verschlüsselten Nachricht ab
+    [see https://bugs.g10code.com/gnupg/issue1110]
 
   * Verschlüsselte E-Mails unverschlüsselt auf E-Mail-Server:
     Es kann vorkommen, dass Teile von verschlüsselten E-Mails
@@ -181,9 +265,6 @@ Kurzübersicht zu Änderungen gegenüber Version 2.0.1:
     verringert sich die Wahrscheinlichkeit dafür deutlich,
     aber es kann trotzdem noch passieren.
     Eine Lösung hierfür ist in Arbeit.
-
-  * Senden von signierten oder verschlüsselten Nachrichten über ein
-    Exchange basiertes Konto funktioniert nicht.
 
 - Verwendung von GpgEX:
 
@@ -207,21 +288,6 @@ Kurzübersicht zu Änderungen gegenüber Version 2.0.1:
      Version von Windows anpassen müssen.
      Dieser separate Aufruf scheint aktuell in Win7/64bit defekt zu sein.
 
-- Dateien signieren/verschlüsseln mit Archiv-Funktion:
-
-   * Die Kleopatra-Funktion zum Signieren/Verschlüsseln 
-     mehrerer Dateien als ein Archiv ist derzeit noch nicht 
-     voll funktionsfähig und nur zum Testen für erfahrene Nutzer geeignet.
-     Es wird ein separates Packprogramm benötigt; die Konfiguration
-     des Pack-Befehls muss über die Konfigruationsdatei von Kleopatra erfolgen:
-        C:\Programme\GNU\GnuPG\share\config\libkleopatrarc
-     Exemplarisch die nötigen Konfigurationszeilen für das Programm
-     "7-ZIP" (http://www.7-zip.org):
-        [Archive Definition #0]
-        Name=TAR (via 7-ZIP)
-        id=7zip
-        extensions=tar
-        pack-command=7z a dummy -ttar -so
 
 4. Versionshistorie
 ===================

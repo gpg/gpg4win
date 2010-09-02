@@ -1,9 +1,12 @@
 2010-09-02  Emanuel Schuetze <emanuel@intevation.de>
 
-	* website/documentation.htm4: Updated.
+	* website/documentation.htm4: Update.
 
-	* manual/gpg4win-compendium-en.tex: Fixed typo (reported by
+	* manual/gpg4win-compendium-en.tex: Fix typo (reported by
 	Wilfried Hennings).
+
+	* README.de.txt, README.en.txt: Update to 2.1.0-beta1
+	release. 
 
 2010-09-01  Emanuel Schuetze <emanuel@intevation.de>
 
