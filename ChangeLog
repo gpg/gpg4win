@@ -1,3 +1,7 @@
+2010-09-03  Emanuel Schuetze <emanuel@intevation.de>
+
+	* configure.ac: Changed compendium EN date format.
+
 2010-09-02  Emanuel Schuetze <emanuel@intevation.de>
 
 	* src/uninst-compendium.nsi: Fix to remove compendium-html dirs.
