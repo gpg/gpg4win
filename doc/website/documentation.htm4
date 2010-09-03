@@ -29,13 +29,13 @@ language are very welcome! Please contact the <a
 href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-devel">
 Gpg4win developer mailing list</a> if you want to start with a new
 translation; in this case, please also read  <a
-href="localize-gpg4win.html">Gpg4win into your language</a>.
+href="localize-gpg4win.html">How to translate all of Gpg4win into
+your language</a>.
 </p>
 
-<p>After installation of the Gpg4win package, the Compendium (in pdf
-and html version, English and German) is available via start menu in
-the folderGerman) is available via start menu in the folder
-<em>Gpg4win->Documentation</em>.</p>
+<p>After installation of the Gpg4win package, the Compendium (in PDF
+and HTML version, English and German) is available via start menu in
+the folder <em>Gpg4win->Documentation</em>.</p>
 
 The current PDF and HTML versions of the Gpg4win-Compendium are also available here:
 <a href="DOWNLOAD_URL_COMPENDIUM_EN"

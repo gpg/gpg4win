@@ -2,6 +2,8 @@
 
 	* website/template_header.m4: Add 2.1.0-beta1 to download box.
 	* website/index-de.htm4: Fix typo.
+	* website/documentation.htm4, manual/gpg4win-compendium-en.tex:
+	Fix typo.
 
 2010-09-02  Emanuel Schuetze <emanuel@intevation.de>
 
