@@ -49,8 +49,8 @@ m4_define(`LINK',
             <a href="DLPAGE" class="dlbutton">Download<br> 
               <span class="version">Gpg4win VERSION <small>(DL_DATE)</small><br>
               </span>
-              <!--<span class="version">Gpg4win-Kompendium COMPENDIUM_VERSION_DE <small>(COMPENDIUM_DATE_DE)</small><br>
-              </span>-->
+              <span class="version">Gpg4win 2.1.0-beta1 <small>(2010-09-02)</small><br>
+              </span>
             </a>
                 &nbsp;&nbsp;<a href="I18N(`EN', `./package-integrity.html') I18N(`DE', `./package-integrity-de.html')"
                   >SHA1/OpenPGP-Sig</a>

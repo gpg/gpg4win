@@ -1,3 +1,8 @@
+2010-09-03  Emanuel Schuetze <emanuel@intevation.de>
+
+	* website/template_header.m4: Add 2.1.0-beta1 to download box.
+	* website/index-de.htm4: Fix typo.
+
 2010-09-02  Emanuel Schuetze <emanuel@intevation.de>
 
 	* website/documentation.htm4: Update.
