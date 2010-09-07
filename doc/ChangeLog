@@ -1,3 +1,15 @@
+2010-09-07  Emanuel Schuetze <emanuel@intevation.de>
+
+	* website/about.htm4, website/about-de.htm4:
+	Change image path to doc/images-compendium.
+
+	* website/pix/sc-kleopatra-encryptFile1_de.png,
+	website/pix/sc-kleopatra-withOpenpgpTestkey_de.png,
+	website/pix/sc-kleopatra-openpgp-certificateDetails_de.png,
+	website/pix/sc-kleopatra-decrypt-verify-openpgp-email.png:
+	Remove old screenshots (now compendium screenshots will be used
+	for website).
+
 2010-09-03  Emanuel Schuetze <emanuel@intevation.de>
 
 	* website/template_header.m4: Add 2.1.0-beta1 to download box.

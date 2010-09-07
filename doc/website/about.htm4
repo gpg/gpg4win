@@ -54,21 +54,21 @@ Gpg4win"</a>.
 <h2>Screenshots</h2>
 
 <p>Some screenshots of the certificate manager Kleopatra and its
-crypto dialogs (only in German - sorry):</p>
+crypto dialogs:</p>
 
 <ul>
 <li><p><b>Gpg4win Installer - the welcome screen:</b></p>
-<a href="pix/sc-inst-welcome_de.png">
-<img src="pix/sc-inst-welcome_de.png"
+<a href="doc/images-compendium/sc-inst-welcome_en.png">
+<img src="doc/images-compendium/sc-inst-welcome_en.png"
 width="400px"
-alt="Gpg4win Installer - the (German) welcome screen"
-title="Gpg4win Installer - the (German) welcome screen">
+alt="Gpg4win Installer - the welcome screen"
+title="Gpg4win Installer - the welcome screen">
 </a>
 </li>
 
 <li><p><b>Kleopatra - the creation of an OpenPGP certificate:</b></p>
-<a href="pix/sc-kleopatra-openpgp-personalDetails_de.png">
-<img src="pix/sc-kleopatra-openpgp-personalDetails_de.png"
+<a href="doc/images-compendium/sc-kleopatra-openpgp-personalDetails_en.png">
+<img src="doc/images-compendium/sc-kleopatra-openpgp-personalDetails_en.png"
 width="400px"
 alt="Kleopatra - the creation of an OpenPGP certificate"
 title="Kleopatra - the creation of an OpenPGP certificate">
@@ -76,37 +76,29 @@ title="Kleopatra - the creation of an OpenPGP certificate">
 </li>
 
 <li><p><b>Kleopatra - the certificate manager with an OpenPGP certificate:</b></p>
-<a href="pix/sc-kleopatra-withOpenpgpTestkey_de.png">
-<img src="pix/sc-kleopatra-withOpenpgpTestkey_de.png"
+<a href="doc/images-compendium/sc-kleopatra-withOpenpgpTestkey_en.png">
+<img src="doc/images-compendium/sc-kleopatra-withOpenpgpTestkey_en.png"
 width="400px"
-alt="Kleopatra - the certificate manager with an OpenPGP certificate" title="Kleopatra - the certificate manager with an OpenPGP certificate">
+alt="Kleopatra - the certificate manager with an OpenPGP certificate" 
+title="Kleopatra - the certificate manager with an OpenPGP certificate">
 </a>
 </li>
 
 <li><p><b>Details of an OpenPGP certificate:</b></p>
-<a href="pix/sc-kleopatra-openpgp-certificateDetails_de.png">
-<img src="pix/sc-kleopatra-openpgp-certificateDetails_de.png"
+<a href="doc/images-compendium/sc-kleopatra-openpgp-certificateDetails_en.png">
+<img src="doc/images-compendium/sc-kleopatra-openpgp-certificateDetails_en.png"
 width="400px"
-alt="Details of an OpenPGP certificate" title="Details of an OpenPGP certificate">
-</a>
-</li>
-
-<li><p><b>Successful decryption and signature verification of an
-OpenPGP email:</b></p>
-<a href="pix/sc-kleopatra-decrypt-verify-openpgp-email.png">
-<img src="pix/sc-kleopatra-decrypt-verify-openpgp-email.png"
-width="400px"
-alt="Successful decryption and signature verification of an
-OpenPGP email" title="Successful decryption and signature verification of an
-OpenPGP email">
+alt="Details of an OpenPGP certificate" 
+title="Details of an OpenPGP certificate">
 </a>
 </li>
 
 <li><p><b>Dialog to encrypt and/or sign files with Kleopatra:</b></p>
-<a href="pix/sc-kleopatra-encryptFile1_de.png">
-<img src="pix/sc-kleopatra-encryptFile1_de.png"
+<a href="doc/images-compendium/sc-kleopatra-encryptFile1_en.png">
+<img src="doc/images-compendium/sc-kleopatra-encryptFile1_en.png"
 width="400px"
-alt="Dialog to encrypt and/or sign files with Kleopatra" title="Dialog to encrypt and/or sign files with Kleopatra">
+alt="Dialog to encrypt and/or sign files with Kleopatra" 
+title="Dialog to encrypt and/or sign files with Kleopatra">
 </a>
 </li>
 </ul>
