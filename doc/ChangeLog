@@ -10,6 +10,9 @@
 	Remove old screenshots (now compendium screenshots will be used
 	for website).
 
+	* website/index.htm4, website/index-de.htm4: Add announcement
+	link.
+
 2010-09-03  Emanuel Schuetze <emanuel@intevation.de>
 
 	* website/template_header.m4: Add 2.1.0-beta1 to download box.
