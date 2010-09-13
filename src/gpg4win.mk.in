@@ -318,6 +318,7 @@ README.$(1).txt : versioninfo.txt NEWS.tmp $(top_srcdir)/doc/README.$(1).txt \
 	-e '/!NEWSFILE!/{r NEWS.tmp' -e 'd;}' \
         -e '/!PKG-COPYRIGHT!/{r $(top_srcdir)/doc/pkg-copyright.txt' -e 'd;}' \
         -e 's,!VERSION!,$(VERSION),g' \
+	-e 's,!BUILD_ISODATE!,$(BUILD_ISODATE),g' \
 	   < $(top_srcdir)/doc/README.$(1).txt \
 	   | (if echo "$(VERSION)" | egrep 'svn|rc|beta' >/dev/null; then \
               sed -e '/!BETA-WARNING!/{r $(top_srcdir)/doc/beta-warning.txt' \

@@ -1,3 +1,7 @@
+2010-09-13  Emanuel Schuetze <emanuel@intevation.de>
+
+	* src/gpg4win.mk.in: Add !BUILD_ISODATE! for README template replacement.
+
 2010-09-03  Emanuel Schuetze <emanuel@intevation.de>
 
 	* configure.ac: Changed compendium EN date format.
