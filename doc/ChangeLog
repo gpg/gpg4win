@@ -1,3 +1,7 @@
+2010-09-13  Emanuel Schuetze <emanuel@intevation.de>
+
+	* README.en.txt: Added !BUILD_ISODATE!.
+
 2010-09-07  Emanuel Schuetze <emanuel@intevation.de>
 
 	* website/about.htm4, website/about-de.htm4:
