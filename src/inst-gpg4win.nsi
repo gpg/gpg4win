@@ -28,11 +28,11 @@ Section "-gpg4win" SEC_gpg4win
 
   File "${BUILD_DIR}/README.en.txt"
   File "${BUILD_DIR}/README.de.txt"
-  File "${BUILD_DIR}/README.ar.txt"
-  File "${BUILD_DIR}/README.es.txt"
-  File "${BUILD_DIR}/README.fr.txt"
-  File "${BUILD_DIR}/README.ru.txt"
-  File "${BUILD_DIR}/README.pt.txt"
+  File /oname=README.ar.txt "${BUILD_DIR}/README.en.txt"
+  File /oname=README.es.txt "${BUILD_DIR}/README.en.txt"
+  File /oname=README.fr.txt "${BUILD_DIR}/README.en.txt"
+  File /oname=README.ru.txt "${BUILD_DIR}/README.en.txt"
+  File /oname=README.pt.txt "${BUILD_DIR}/README.en.txt"
 
   File "${BUILD_DIR}/versioninfo.txt"
 
