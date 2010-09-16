@@ -1,0 +1,130 @@
+#! /bin/sh
+patch -p0 -f $* < $0
+exit $?
+
+
+[sm/]
+2010-09-16  Werner Koch  <wk@g10code.com>
+
+	* certchain.c (gpgsm_walk_cert_chain): Use GPG_ERR_MISSING_ISSUER_CERT.
+	(do_validate_chain): Ditto.
+	(gpgsm_basic_cert_check): Ditto.
+	* call-agent.c (learn_cb): Take care of new
+	GPG_ERR_MISSING_ISSUER_CERT.
+	* import.c (check_and_store): Ditto.
+	(check_and_store): Ditto.
+
+[common/]
+2010-09-16  Werner Koch  <wk@g10code.com>
+
+	* util.h: Add GPG_ERR_MISSING_ISSUER_CERT.
+	* status.c (get_inv_recpsgnr_code): Ditto.
+
+
+
+Index: sm/certchain.c
+===================================================================
+--- sm/certchain.c	(revision 5418)
++++ sm/certchain.c	(working copy)
+@@ -789,7 +789,7 @@
+          print an error here.  */
+       if (rc != -1 && opt.verbose > 1)
+         log_error ("failed to find issuer's certificate: rc=%d\n", rc);
+-      rc = gpg_error (GPG_ERR_MISSING_CERT);
++      rc = gpg_error (GPG_ERR_MISSING_ISSUER_CERT);
+       goto leave;
+     }
+ 
+@@ -1496,7 +1496,7 @@
+             }
+           else
+             log_error ("failed to find issuer's certificate: rc=%d\n", rc);
+-          rc = gpg_error (GPG_ERR_MISSING_CERT);
++          rc = gpg_error (GPG_ERR_MISSING_ISSUER_CERT);
+           goto leave;
+         }
+ 
+@@ -1897,7 +1897,7 @@
+             }
+           else
+             log_error ("failed to find issuer's certificate: rc=%d\n", rc);
+-          rc = gpg_error (GPG_ERR_MISSING_CERT);
++          rc = gpg_error (GPG_ERR_MISSING_ISSUER_CERT);
+           goto leave;
+         }
+       
+Index: sm/call-agent.c
+===================================================================
+--- sm/call-agent.c	(revision 5418)
++++ sm/call-agent.c	(working copy)
+@@ -887,7 +887,8 @@
+      because we can assume that the --learn-card command has been used
+      on purpose.  */
+   rc = gpgsm_basic_cert_check (parm->ctrl, cert);
+-  if (rc && gpg_err_code (rc) != GPG_ERR_MISSING_CERT)
++  if (rc && gpg_err_code (rc) != GPG_ERR_MISSING_CERT
++      && gpg_err_code (rc) != GPG_ERR_MISSING_ISSUER_CERT)
+     log_error ("invalid certificate: %s\n", gpg_strerror (rc));
+   else
+     {
+Index: sm/import.c
+===================================================================
+--- sm/import.c	(revision 5418)
++++ sm/import.c	(working copy)
+@@ -194,7 +194,8 @@
+   if (!rc && ctrl->with_validation)
+     rc = gpgsm_validate_chain (ctrl, cert, "", NULL, 0, NULL, 0, NULL);
+   if (!rc || (!ctrl->with_validation
+-              && gpg_err_code (rc) == GPG_ERR_MISSING_CERT) )
++              && (gpg_err_code (rc) == GPG_ERR_MISSING_CERT
++                  || gpg_err_code (rc) == GPG_ERR_MISSING_ISSUER_CERT)))
+     {
+       int existed;
+ 
+@@ -253,9 +254,14 @@
+       log_error (_("basic certificate checks failed - not imported\n"));
+       if (stats)
+         stats->not_imported++;
+-      print_import_problem (ctrl, cert,
+-                            gpg_err_code (rc) == GPG_ERR_MISSING_CERT? 2 :
+-                            gpg_err_code (rc) == GPG_ERR_BAD_CERT?     1 : 0);
++      /* We keep the test for GPG_ERR_MISSING_CERT only in case
++         GPG_ERR_MISSING_CERT has been used instead of the newer
++         GPG_ERR_MISSING_ISSUER_CERT.  */
++      print_import_problem 
++        (ctrl, cert,
++         gpg_err_code (rc) == GPG_ERR_MISSING_ISSUER_CERT? 2 :
++         gpg_err_code (rc) == GPG_ERR_MISSING_CERT? 2 :
++         gpg_err_code (rc) == GPG_ERR_BAD_CERT?     1 : 0);
+     }
+ }
+ 
+
+Index: common/util.h
+===================================================================
+--- common/util.h	(revision 5418)
++++ common/util.h	(working copy)
+@@ -33,6 +33,9 @@
+ #ifndef GPG_ERR_NOT_INITIALIZED
+ #define GPG_ERR_NOT_INITIALIZED 184
+ #endif
++#ifndef GPG_ERR_MISSING_ISSUER_CERT
++#define GPG_ERR_MISSING_ISSUER_CERT 185
++#endif
+ 
+ 
+ /* Hash function used with libksba. */
+ 
+ 	* homedir.c (gnupg_bindir) [W32CE]: Change to bin/.
+Index: common/status.c
+===================================================================
+--- common/status.c	(revision 5418)
++++ common/status.c	(working copy)
+@@ -58,6 +58,7 @@
+ 
+     case GPG_ERR_NOT_TRUSTED:     errstr = "10"; break;
+     case GPG_ERR_MISSING_CERT:    errstr = "11"; break;
++    case GPG_ERR_MISSING_ISSUER_CERT: errstr = "12"; break;
+     default:                      errstr = "0"; break;
+     }
+ 

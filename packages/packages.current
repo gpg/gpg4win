@@ -322,8 +322,8 @@ chk  ae1b992721198b93198aa36eb7a3a7d074417f47
 #
 server ftp://ftp.gnupg.org/gcrypt
 
-file libgpg-error/libgpg-error-1.9.tar.bz2
-chk 6836579e42320b057a2372bbcd0325130fe2561e
+#file libgpg-error/libgpg-error-1.9.tar.bz2
+#chk 6836579e42320b057a2372bbcd0325130fe2561e
 
 file libksba/libksba-1.0.8.tar.bz2
 chk  268e424e94e62abb51eeca9c66d886dbee8455ab
@@ -353,6 +353,8 @@ server ftp://ftp.g10code.com/g10code/scratch
 file gpgme-1.3.1-svn1460.tar.bz2
 chk  a309ae1880c84bf7d76fea7186b3247ee70b1693
 
+file libgpg-error-1.10-svn249.tar.bz2
+chk  71c16e8475dc3a75ac58f2b80eae6ec2a2a7e4a1
 
 #
 #  GnuPG utilities
