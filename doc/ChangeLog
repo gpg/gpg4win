@@ -1,3 +1,9 @@
+2010-09-21  Emanuel Schuetze <emanuel@intevation.de>
+
+	*  manual/version.tex.in, manual/gpg4win-compendium-de.tex,
+	manual/gpg4win-compendium-en.tex: Add new COMPENDIUMINPROGRESS
+	command for date output of last minor changes.
+
 2010-09-14  Emanuel Schuetze <emanuel@intevation.de>
 
 	* manual/gpg4win-compendium-en.tex: Fix typo.

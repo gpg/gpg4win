@@ -95,7 +95,6 @@
 {% DIN A4 
     \T\fancyhead{} % clear all fields
     \T\fancyhead[LO,RE]{The Gpg4win Compendium \compendiumVersionEN
-        %\T\manualinprogress
         \T\\
         \T\itshape\nouppercase{\leftmark}}
     \T\fancyhead[RO,LE]{\includegraphics[height=0.7cm]{images-compendium/gpg4win-logo}}
@@ -163,8 +162,7 @@
     \newcommand{\HlxIcons}{../images-hyperlatex}
 
     % Footer
-    \htmladdress{$\copyright$ \compendiumDateEN, v\compendiumVersionEN
-        %\manualinprogress
+    \htmladdress{$\copyright$ \compendiumDateEN, v\compendiumVersionEN~\compendiuminprogressEN
     \html{br/}
     \html{small}
     The Gpg4win Compendium is filed under the
@@ -271,7 +269,8 @@
     % DIN A4:
     {A publication of the Gpg4win Initiative
       \\[0.2cm]
-      Version \compendiumVersionEN~from \compendiumDateEN 
+      Version \compendiumVersionEN~from \compendiumDateEN\\
+      \small\compendiuminprogressDE%
     }
 }
 
