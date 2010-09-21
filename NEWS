@@ -3,6 +3,24 @@
 # The version number given below are for the standard installers as
 # distributed by www.gpg4win.org.
 
+Noteworthy changes in version 2.1.0-beta2 (unreleased)
+------------------------------------------------------
+
+(en) Add better error code for missing certificates.
+
+(de) Besserer Fehlercode für fehlendes Zertifikat wurde hinzugefügt.
+
+~~~~~~~~~~~~~~~
+GnuPG:          2.0.16 + 05-err-codes.patch
+Kleopatra:      2.1.0-svn1167864 (2010-08-11)
+GPA:            0.9.0
+GpgOL:          1.1.2
+GpgEX:          0.9.7
+Claws-Mail:     3.7.6
+Kompendium DE:  3.0.0
+Kompendium EN:  3.0.0-beta1
+~~~~~~~~~~~~~~~
+
 Noteworthy changes in version 2.1.0-beta1 (2010-09-02)
 ------------------------------------------------------
 

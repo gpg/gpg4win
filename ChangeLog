@@ -1,6 +1,9 @@
 2010-09-21  Emanuel Schuetze <emanuel@intevation.de>
 
 	* configure.ac: Add COMPENDIUMINPROGRESS_EN and _DE.
+	Switch to 2.1.0-beta2-svn version number.	
+
+	* NEWS: Prepare 2.1.0-beta2.
 
 2010-09-16  Werner Koch  <wk@g10code.com>
 
