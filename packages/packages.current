@@ -313,9 +313,8 @@ chk  9f43acb64867fb54b456f8a1187307ceb7bdf183
 #
 server ftp://ftp.g10code.com/g10code/bzip2
 
-file bzip2-1.0.4-g10.tar.gz
-chk  ae1b992721198b93198aa36eb7a3a7d074417f47
-
+file bzip2-1.0.6-g10.tar.gz
+chk  6e38be3377340a21a1f13ff84b5e6adce97cd1d4
 
 #
 # GnuPG et al.

@@ -1,3 +1,7 @@
+2010-09-23  Werner Koch  <wk@g10code.com>
+
+	* packages/packages.current: Update bzip2.
+
 2010-09-21  Emanuel Schuetze <emanuel@intevation.de>
 
 	* configure.ac: Add COMPENDIUMINPROGRESS_EN and _DE.
