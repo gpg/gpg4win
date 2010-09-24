@@ -1,3 +1,7 @@
+2010-09-24  Werner Koch  <wk@g10code.com>
+
+	* patches/gnupg2-2.0.16/06-reread-agent.patch: New.
+
 2010-09-23  Werner Koch  <wk@g10code.com>
 
 	* packages/packages.current: Update bzip2.
