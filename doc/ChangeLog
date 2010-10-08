@@ -9,6 +9,10 @@
 	README.en.txt. So these files not needed as long as there is no
 	translation for a README file available.
 
+	* manual/gpg4win-compendium-de.tex, manual/gpg4win-compendium-en.tex:
+	Update nsis 'inst_compendium' key word for automatic installation.
+	Fix path.
+
 2010-10-04  Emanuel Schuetze <emanuel@intevation.de>
 
 * website/donate.htm4, website/donate-de.htm4: Add new sponsor.
