@@ -15,75 +15,41 @@ Inhalt:
      1. Wichtige Hinweise
      2. Änderungen
      3. Bekannte Probleme (und Abhilfe)
-     4. Versionshistorie
-     5. Versionsnummern der einzelnen Programmteile
-     6. Installer Optionen
+     4. Installation
+     5. Versionshistorie
+     6. Versionsnummern der einzelnen Programmteile
      7. Rechtliche Hinweise
 
 
 1. Wichtige Hinweise
 ====================
 
-Hilfe bei der Benutzung von Gpg4win bietet Ihnen das
-Gpg4win-Kompendium. Sie finden es nach der Installation von
-Gpg4win2 im Gpg4win-Startmenü unter 'Dokumentation' oder
-(in aktueller Fassung) direkt online unter http://www.gpg4win.de.
+Hilfe bei der Installation und Benutzung von Gpg4win bietet Ihnen das
+Gpg4win-Kompendium. Sie finden es nach der Installation im
+Gpg4win-Startmenü unter 'Dokumentation' oder direkt online unter: 
+http://www.gpg4win.de/doc/de/gpg4win-compendium.html
 
-Falls Sie eine ältere Version von Gpg4win benutzt haben, beachten Sie
-bitte die Migrationshinweise im Anhang des Gpg4win-Kompendiums.
+Falls Sie von Gpg4win 1.x oder einem andern Proramm auf Gpg4win 2.x
+umsteigen wollen, beachten Sie bitte die Migrationshinweise im Anhang
+des Gpg4win-Kompendiums:
+http://www.gpg4win.de/doc/de/gpg4win-compendium_36.html
 
-Bitte lesen Sie den Abschnitt "Bekannte Probleme", bevor Sie damit
-beginnen Gpg4win zu nutzen.
+Bitte lesen Sie den Abschnitt "3. Bekannte Probleme (und Abhilfe)",
+bevor Sie damit beginnen Gpg4win zu nutzen.
 
-- Unterstützung folgender Plattformen:
-  Betriebssystem: Windows 2000, XP (32/64), Vista (32/64)
-  MS Outlook: 2003, 2007
+Gpg4win unterstützt folgende Plattformen:
+ * Betriebssystem: Windows 2000, XP (32/64), Vista (32/64), 7 (32/64)
+ * MS Outlook: 2003, 2007
+ Beachten Sie: GpgEX bietet aktuell keine Unterstützung für 64-bit Explorer! 
+ (Details unter Abschnitt 3, Punkt "Probleme unter Windows x64")
 
 
 2. Änderungen
 =============
 
-Gpg4win2 bringt große Änderungen im Vergleich zu Gpg4win 1.x mit
-sich. Nachstehend die wichtigsten Änderungen:
+Änderungen gegenüber Version 2.0.4:
 
-- Kleopatra ist der neue Zertifikatsmanager.  Kleopatra ist der
-  bisherige S/MIME Zertifikatsmanager von KDE (eine auf vielen
-  GNU/Linux-Systemen benutzte Arbeitsumgebung).  Für die Verwendung
-  in Gpg4win ist Kleopatra um die Unterstützung von OpenPGP und eine
-  vereinheitlichte grafische Oberfläche für alle kryptografischen 
-  Operationen erweitert worden.  Kleopatra läuft in der Regel
-  permanent als Dienst (siehe Icon im System-Tray), sobald dessen
-  Dienste einmal im Verlauf der Sitzung abgefragt wurden.
-  Die Funktionalitäten von WinPT werden nun durch Kleopatra
-  abgedeckt. WinPT wurde aus Gpg4win2 entfernt.
-
-- GpgEX ist die neue Programmerweiterung für den Microsoft Explorer
-  und ersetzt GpgEE.
-
-- Das E-Mail-Programm Claws Mail wurde auf eine modernere Version
-  aktualisiert und unterstützt nun SSL, NNTP und IMAP.
-
-- GpgOL, die Programmerweiterung für Outlook 2003 und 2007, wurde
-  umfassend überarbeitet.  Es unterstützt nun PGP/MIME und macht
-  damit die Verwendung von verschlüsselten und signierten Anhängen
-  viel einfacher und standardkonformer.  Die Unterstützung von S/MIME
-  wurde ergänzt.  Für die grafischen Benutzerdialoge aller Krypto-
-  Operationen wird nun Kleopatra verwendet.
-
-- Das "Gpg4win-Kompendium" ist die neue deutschsprachige Dokumentation
-  zu Gpg4win. Es vereinigt die alten Handbücher "Einsteiger" und
-  "Durchblicker".  Desweiteren wurden sämtliche Kapitel für Gpg4win
-  Version 2.0 aktualisiert, also unter anderem angepasst auf
-  Kleopatra, GpgEX und PGP/MIME sowie ergänzt um S/MIME bzw. X.509.
-
-- Unterstützung folgender Plattformen:
-  Betriebssystem: Windows 2000, XP (32/64), Vista (32/64)
-  MS Outlook: 2003, 2007
-
- 
-Kurzübersicht zu Änderungen gegenüber Version 2.0.4:
-----------------------------------------------------
-[Die folgenden Fallnummer beziehen sich auf https://issues.kolab.org/.]
+[Die folgenden Fallnummern beziehen sich auf https://issues.kolab.org/.]
 
 - Kleopatra:
   * Konfliktdialog 
@@ -215,7 +181,7 @@ Kurzübersicht zu Änderungen gegenüber Version 2.0.4:
      OpenPGP-Zertifikat auf Ihrer Karte zu erzeugen (a) oder Ihr
      vohandenes Zertifikat von Ihrer Karte zu aktivieren (b):
 
-     (a) Neue Zertifikat erzeugen
+     (a) Neues Zertifikat erzeugen
        - Karte einlegen.
        - Führen Sie "gpg --card-edit" auf der Kommandozeile aus.
        - Wechseln Sie in den Admin-Modus mit "admin".
@@ -253,7 +219,7 @@ Kurzübersicht zu Änderungen gegenüber Version 2.0.4:
 
   * Outlook2007 stürzt beim Öffnen von Anhängen einer
     verschlüsselten Nachricht ab
-    [see https://bugs.g10code.com/gnupg/issue1110]
+    [siehe https://bugs.g10code.com/gnupg/issue1110]
 
   * Verschlüsselte E-Mails unverschlüsselt auf E-Mail-Server:
     Es kann vorkommen, dass Teile von verschlüsselten E-Mails
@@ -287,9 +253,22 @@ Kurzübersicht zu Änderungen gegenüber Version 2.0.4:
      Beachten Sie, dass Sie ggf. den Pfad zu Ihrer x64-basierten 
      Version von Windows anpassen müssen.
      Dieser separate Aufruf scheint aktuell in Win7/64bit defekt zu sein.
+     Alternativ können Sie die Datei-Krypto-Operationen von GpgEX
+     auch direkt über das Datei-Menü von Kleopatra erreichen.
+ 
+
+4. Installation
+===============
+
+Eine Anleitung zur Installation von Gpg4win finden Sie im Gpg4win-Kompendium:
+http://www.gpg4win.de/doc/de/gpg4win-compendium_11.html
+
+Hinweise zur automatisierten Installation (ohne Benutzerdialoge)
+finden Sie im Anhang des Gpg4win-Komendiums:
+http://www.gpg4win.de/doc/de/gpg4win-compendium_35.html
 
 
-4. Versionshistorie
+5. Versionshistorie
 ===================
 
 Eine aktuelle deutschsprachige Übersicht der Änderungen finden Sie online
@@ -299,88 +278,16 @@ finden Sie die Einträge aus der englischen NEWS Datei:
 !NEWSFILE!
 
 
-5. Versionsnummern der einzelnen Programmteile
+6. Versionsnummern der einzelnen Programmteile
 ==============================================
 
 Zur Übersicht sind hier die Prüfsummen sowie die Namen der einzelnen
-Bestandteile aufgelistet.  Sie finden dieselben Informationen auch in
-der Datei versioninfo.txt.
+Bestandteile aufgelistet. 
 
 !VERSIONINFO!
 
 
-6. Installer Optionen
-=====================
-
-Hinweis: Dies ist eine kurze Zusammenfassung. Beachten Sie bitte
-auch die Hinweise zur Automatischen Installation im Anhang des
-Gpg4win-Kompendiums.
-
-In einigen Fällen (wie zum Beispiel für Software-Verteilungssysteme)
-ist es hilfreich, wenn die Installation von Gpg4win ohne Dialoge
-funktioniert, man aber trotzdem vorab alle Installationseinstellungen
-bestimmen kann.
-
-Der Standard-Installationspfad kann mit der Option /D=PFAD angegeben
-werden, welche als letzte auf der Kommandozeile erscheinen muß.
-
-Der Gpg4win Installer unterstützt die Option /S für automatischen
-Ablauf der Installation, und die Option /C=INIFILE, durch welche eine
-Steuerungsdatei (Name endet üblicherweise auf .ini) angegeben werden
-kann.  Diese Datei sollte genau einen Abschnitt "[gpg4win]"
-enthalten, in der absolute Pfade für die zu installierenden
-Konfigurationsdateien vorgegeben werden.
-
-Hier ist eine Beispieldatei, die zugleich alle erlaubten
-Schlüsselworte zeigt: 
-
-[gpg4win]
-  ; Installationseinstellungen. Weg- oder leerlassen für 
-  ; Voreinstellung
-  inst_gpgol = true
-  inst_gpgex = true
-  inst_kleopatra = true
-  inst_gpa = true
-  inst_claws_mail = false
-  inst_compendium_de = true
-  inst_man_novice_en = true
-
-  ; Die Stellen, an denen Verknüpfungen erzeugt werden sollen.
-  inst_start_menu = true
-  inst_desktop = false
-  inst_quick_launch_bar = false
-
-  ; Im Gegensatz zu den anderen Optionen überschreibt diese Option
-  ; die Einstellung des Benutzers im Installationsassistenten.
-  inst_start_menu_folder = Gpg4win
-
-  ; Standard-Konfigurationsdateien.
-  gpg.conf = D:\config\gpg-site.conf
-  gpg-agent.conf = D:\config\gpg-agent-site.conf
-  trustlist.txt = D:\config\trustlist-site.txt
-  dirmngr.conf = D:\config\dirmngr-site.conf
-  dirmngr_ldapserver.conf = D:\config\dirmngr_ldapserver-site.conf
-  scdaemon.conf = D:\config\scdaemon-site.txt
-  gpa.conf = D:\config\gpa-site.conf
-
-Ein entsprechender Aufruf zur automatischen Installation könnte also
-wie folgt aussehen:
-
-gpg4win.exe /S /C=C:\TEMP\gpg4win.ini /D=D:\Programme\Gpg4win
-
-Für den MSI installer gilt entsprechendes, mit folgenden Änderungen:
-Automatischer Ablauf wird wie üblich mit der Option /qb- zu msiexec
-erreicht.  Die Steuerungsdatei muss gpg4win.ini heißen und im
-Systemverzeichnis (C:\WINDOWS) vorliegen.  Der Installationspfad kann
-mit dem Eintrag "instdir" festgelegt werden.  Ausserdem können die
-Einstellungen auch auf der Kommandozeile mittels INSTDIR=... und
-INST_GPA=FALSE etc. angegeben werden (die Steuerungsdatei geht
-allerdings vor).  Die Angabe von Standard-Konfigurationsdateien, sowie
-die Angabe des Start Menu Verzeichnisses und die optionale Auswahl der
-Verknüpfungen wird vom MSI installer momentan nicht unterstützt.
-
-
-5. Rechtliche Hinweise zu den einzelnen Bestandteilen der Software
+7. Rechtliche Hinweise zu den einzelnen Bestandteilen der Software
 ==================================================================
 
 Gpw4win besteht aus einer ganzen Reihe von unabhängig entwickelten
@@ -389,7 +296,7 @@ dieser Software ist, wie Gpg4win selbst, steht unter der GNU General
 Public License (GNU GPL).  Gemeinsam ist allen, daß die Software ohne
 Restriktionen benutzt werden kann, verändert werden darf und
 Änderungen weitergeben dürfen.  Wenn die Quelltexte (also
-gpg4win-src-x.y.z.exe) mit weitergegeben werden und auf die die GNU
+gpg4win-x.y.z.tar.bz2) mit weitergegeben werden und auf die die GNU
 GPL hingewiesen wird, ist die Weitergabe in jedem Fall möglich.
 
 Zur Übersicht folgt eine Liste der Copyright Erklärungen.

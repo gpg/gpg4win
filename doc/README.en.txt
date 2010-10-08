@@ -14,64 +14,38 @@ Content:
      1. Important Notes
      2. Changes
      3. Known Bugs (and Workarounds)
-     4. Version History
-     5. Version Numbers of Included Software
-     6. Installer Options
+     4. Installation
+     5. Version History
+     6. Version Numbers of Included Software
      7. Legal Notices
 
 
 1. Important Notes
 ==================
 
-Manuals describing the installation of Gpg4win are currently only
-available in German.  Check out http://www/gpg4win.org for latest
-news.
+The Gpg4win Compendium describes the installation and use of Gpg4win.
+After installation it is available in the Gpg4win start menu or online:
+http://www.gpg4win.org/doc/en/gpg4win-compendium.html
 
-If you used an older version of Gpg4win in the past, please check
+If you used Gpg4win 1.x or another program in the past, please check
 out the migration hints in the Gpg4win Compendium's appendix.
+http://www.gpg4win.org/doc/en/gpg4win-compendium_36.html
 
-Please read the "Known bugs" section before you start working with
-Gpg4win.
+Please read the section "3. Known Bugs (and Workarounds)" before you
+start working with Gpg4win.
+
+Gpg4win supports these platforms:
+ * Operating System: Windows 2000, XP (32/64), Vista (32/64), 7 (32/64)
+ * MS Outlook: 2003, 2007
+ Note: Currently, there is no 64-bit support for GpgEX 
+ (see section 3, "Using GpgEX with Windows x64", for details)
 
 
 2. Changes
 ==========
 
-Gpg4win2 has major changes compared to Gpg4win 1.x.  Below is a list
-of the most important ones:
+Changes compared to version 2.0.4:
 
-- Kleopatra is the new certificate manager.  Kleopatra is the S/MIME
-  certificate manager of KDE (a desktop environment used on many
-  GNU/Linux systems).  For use in Gpg4win it has been extended to
-  support OpenPGP and to act as a graphical user interface for all
-  cryptographic operations.  It is automatically started if another
-  component requests its services and then runs permanently in your
-  system tray.  WinPT has been dropped.
-
-- GpgEX is the new plugin for the Microsoft Explorer and replaces GpgEE.
-
-- The mail program Claws Mail has been updated to a modern version.
-  It now supports SSL, NNTP and IMAP.
-
-- GpgOL, the plugin for Outlook 2003 and 2007 has been comprehensively
-  updated.  It now supports PGP/MIME and thus makes the use of
-  encrypted or signed attachments much easier and standard conform.
-  Support for S/MIME has been added.  Most dialogs are now provided by
-  Kleopatra for graphical user dialogs.
-
-- The German "Gpg4win-Kompendium" is the new documentation for Gpg4win.
-  This combines the previous "Einsteiger" and "Durchblicker" manuals.
-  All chapters were reworked and extended to describe the new Gpg4win
-  Version 2.0. Among other things, this means adaption to Kleopatra,
-  GpgEX and PGP/MIME and new texts for S/MIME and X.509.
-
-- Support of these platforms:
-  Operating System: Windows 2000, XP (32/64), Vista (32/64)
-  Outlook: 2003, 2007
-
-
-Short overview on changes compared to version 2.0.4:
-----------------------------------------------------
 [The following issue numbers reference to https://issues.kolab.org/.]
 
 - Kleopatra:
@@ -264,82 +238,34 @@ Short overview on changes compared to version 2.0.4:
      Note: Adjust the path to your x64-based version of Windows if
      necessary. 
      This separate command seems to be currently broken in Win7/64bit.
+     Alternatively you can use the file crypto operations of GpgEX
+     directly via the file menu of Kleopatra.
 
 
-4. Version History
+4. Installation
+===============
+
+For installation instructions please read the new Gpg4win Compendium:
+http://www.gpg4win.org/doc/en/gpg4win-compendium_11.html
+
+Hints for automated installations (without user dialogs):
+http://www.gpg4win.org/doc/en/gpg4win-compendium_35.html
+
+
+5. Version History
 ==================
 
 Find below the changes as recorded in the source distribution's NEWS
 file.  An up-to-date list of changes is also available at
-http://www.gpg4win.de/change-history.html .
+http://www.gpg4win.org/change-history.html .
 
 !NEWSFILE!
 
 
-5. Version Numbers of Included Software
+6. Version Numbers of Included Software
 =======================================
 
 !VERSIONINFO!
-
-
-
-6. Installer Options
-====================
-
-The default installation path can be speficied with the /D=PATH
-option, which must be last on the command line.  The installer
-supports the options /S for unattended installation, and the option
-/C=INIFILE to specify an .ini file which should contain exactly one
-section "[gpg4win]".  This section contains various installer settings
-and absolute file paths to configuration files that should be
-preinstalled.  Most options just set a different default value.
-Excetions are documented below.  Here is an example file which shows
-all possible keys:
-
-[gpg4win]
-  ; Installer settings.  Do not define or leave empty for defaults.
-  inst_gpgol = true
-  inst_gpgex = true
-  inst_kleopatra = true
-  inst_gpa = true
-  inst_claws_mail = false
-  inst_compendium_de = true
-  inst_man_novice_en = true
-
-  ; Where to install short-cuts.
-  inst_start_menu = true
-  inst_desktop = false
-  inst_quick_launch_bar = false
-
-  ; Contrary to other settings in this file, the start menu folder
-  ; setting here will override the user selection at installation
-  ; time.
-  inst_start_menu_folder = Gpg4win
-
-  ; Additional configuration files to install.
-  gpg.conf = D:\config\gpg-site.conf
-  gpg-agent.conf = D:\config\gpg-agent-site.conf
-  trustlist.txt = D:\config\trustlist-site.txt
-  dirmngr.conf = D:\config\dirmngr-site.conf
-  dirmngr_ldapserver.conf = D:\config\dirmngr_ldapserver-site.conf
-  scdaemon.conf = D:\config\scdaemon-site.txt
-  gpa.conf = D:\config\gpa-site.conf
-
-An example command for unattended installation could look like this:
-
-gpg4win.exe /S /C=C:\TEMP\gpg4win.ini /D=D:\Programme\Gpg4win
-
-For the MSI installer, the above also holds, with the following
-changes: Unattended installation is achieved as usual with the /qb-
-option to msiexec.  The control file must be called gpg4win.ini and
-reside in the system directory (C:\WINDOWS).  It is found
-automatically by the installer.  The installation directory can be
-specified with an entry for "instdir".  Also, each entry can be given
-in uppercase at the command line through INSTDIR=... and
-INST_GPA=FALSE etc. (the control file takes precedence, though).  The
-default config files as well as start menu directory and optional
-installation of short cuts are currently not supported through the MSI
-installer.
 
 
 7. Legal notices pertaining to the individual packets
