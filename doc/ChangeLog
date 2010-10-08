@@ -2,6 +2,13 @@
 
 	* README.de.txt, README.en.txt, pkg-copyright.txt: Update.
 
+	* README.ar.txt, README.es.txt, README.fr.txt, README.pt.txt,
+	README.ru.txt:
+	Clean duplicated English content. Add pointer to README.en.txt.
+	Note: Gpg4win Installer creates above-named README files by renaming
+	README.en.txt. So these files not needed as long as there is no
+	translation for a README file available.
+
 2010-10-04  Emanuel Schuetze <emanuel@intevation.de>
 
 * website/donate.htm4, website/donate-de.htm4: Add new sponsor.
