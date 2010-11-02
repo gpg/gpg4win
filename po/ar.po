@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Gpg4Win\n"
 "Report-Msgid-Bugs-To: gpg4win-devel@wald.intevation.org\n"
-"POT-Creation-Date: 2010-09-01 16:57+0200\n"
+"POT-Creation-Date: 2010-11-02 09:57+0100\n"
 "PO-Revision-Date: 2008-03-11 23:52+0200\n"
 "Last-Translator: Ahmad Gharbeia <ahmad@gharbeia.org>\n"
 "Language-Team: Arabic <doc@arabeyes.org>\n"
@@ -87,12 +87,12 @@ msgctxt "T_AboutGpg4winSrcReleaseDate"
 msgid "release date ${_BUILD_ISODATE}"
 msgstr " «—ÌŒ «·≈’œ«— ${_BUILD_ISODATE}"
 
-#: src/installer.nsi:226
+#: src/installer.nsi:236
 msgctxt "T_LangCode"
 msgid "en"
 msgstr "ar"
 
-#: src/installer.nsi:229
+#: src/installer.nsi:239
 msgctxt "T_GPLHeader"
 msgid ""
 "This software is licensed under the terms of the GNU General Public License "
@@ -101,7 +101,7 @@ msgstr ""
 "Â–Â «·»—„ÃÌ… „—Œ’… »—Œ’… Ã‰Ê «·⁄„Ê„Ì… «·⁄«„… (GPL) Ê«· Ì  „‰Õﬂ Õ—Ì… „‘«—ﬂ… "
 "Ê ⁄œÌ· «·»—„ÃÌ«  «·Õ—…."
 
-#: src/installer.nsi:233
+#: src/installer.nsi:243
 msgctxt "T_GPLShort"
 msgid ""
 "In short: You are allowed to run this software for any purpose. You may "
@@ -111,82 +111,82 @@ msgstr ""
 "»«Œ ’«—:  ” ÿÌ⁄  ‘€Ì· Â–Â «·»—„ÃÌ… ·√Ì €—÷. ÊÌ„ﬂ‰ﬂ  Ê“Ì⁄Â« „« œ„   ⁄ÿÌ "
 "«·„ ·ﬁÌ‰ ‰›” «·ÕﬁÊﬁ «· Ì Õ’·  ⁄·ÌÂ«."
 
-#: src/installer.nsi:238
+#: src/installer.nsi:248
 msgctxt "T_RunKeyManager"
 msgid "Run the key manager"
 msgstr "‘€¯· „œÌ— «·„›« ÌÕ"
 
-#: src/installer.nsi:241
+#: src/installer.nsi:251
 msgctxt "T_MoreInfo"
 msgid "Click here for the project's homepage"
 msgstr "«‰ﬁ— Â‰« · “Ê— ’›Õ… «·„‘—Ê⁄"
 
-#: src/installer.nsi:243
+#: src/installer.nsi:253
 msgctxt "T_MoreInfoURL"
 msgid "http://www.gpg4win.org"
 msgstr "http://www.gpg4win.org"
 
-#: src/installer.nsi:245
+#: src/installer.nsi:255
 msgctxt "T_ShowReadme"
 msgid "Show the README file"
 msgstr "ÿ«·⁄ „·› README"
 
-#: src/installer.nsi:248
+#: src/installer.nsi:258
 msgctxt "T_NoKeyManager"
 msgid "No key manager has been installed, thus we can't run one now."
 msgstr "·„ ÌıÀ»¯  √Ì „œÌ— „›« ÌÕ° ·–« ·« ‰” ÿÌ⁄  ‘€Ì·Â."
 
-#: src/installer.nsi:253
+#: src/installer.nsi:263
 msgctxt "DESC_Menu_manuals"
 msgid "Documentation"
 msgstr "«· ÊÀÌﬁ"
 
-#: src/installer.nsi:256
+#: src/installer.nsi:266
 msgctxt "DESC_Menu_uninstall"
 msgid "Uninstall"
 msgstr ""
 
-#: src/installer.nsi:260
+#: src/installer.nsi:270
 msgctxt "DESC_Desktop_manuals"
 msgid "Gpg4win Documentation"
 msgstr "ÊÀ«∆ﬁ Gpg4win"
 
-#: src/installer.nsi:463
+#: src/installer.nsi:473
 msgctxt "T_InstallOptions"
 msgid "Install Options"
 msgstr "ŒÌ«—«  «· À»Ì "
 
-#: src/installer.nsi:466
+#: src/installer.nsi:476
 msgctxt "T_InstallOptLinks"
 msgid "Start links"
 msgstr "Ê’·«  «·»œ¡"
 
-#: src/installer.nsi:468
+#: src/installer.nsi:478
 msgctxt "T_InstOptLabelA"
 msgid "Please select where Gpg4win shall install links:"
 msgstr "«Œ — √Ì‰ Ì ⁄Ì‰ À»Ì  «·Ê’·« :"
 
-#: src/installer.nsi:471
+#: src/installer.nsi:481
 msgctxt "T_InstOptLabelB"
 msgid "(Only programs will be linked into the quick launch bar.)"
 msgstr "(›ﬁÿ «·»—„ÃÌ«  ”Ì—»ÿ ≈·ÌÂ« ›Ì ‘—Ìÿ «·»œ¡ «·”—Ì⁄.)"
 
-#: src/installer.nsi:474
+#: src/installer.nsi:484
 msgctxt "T_InstOptFieldA"
 msgid "Start Menu"
 msgstr "ﬁ«∆„… «»œ√"
 
-#: src/installer.nsi:477
+#: src/installer.nsi:487
 msgctxt "T_InstOptFieldB"
 msgid "Desktop"
 msgstr "”ÿÕ «·„ﬂ »"
 
-#: src/installer.nsi:480
+#: src/installer.nsi:490
 msgctxt "T_InstOptFieldC"
 msgid "Quick Launch Bar"
 msgstr "‘—Ìÿ «·»œ¡ «·”—Ì⁄"
 
-#: src/installer.nsi:486
+#: src/installer.nsi:496
 msgctxt "T_FoundExistingVersion"
 msgid ""
 "Version $R1 has already been installed.\n"
@@ -195,7 +195,7 @@ msgstr ""
 "«·≈’œ«—… $R1 „À» … »«·›⁄·.\n"
 "√ —Ìœ «” »œ«·Â« »«·≈’œ«—…  ${VERSION}ø"
 
-#: src/installer.nsi:489
+#: src/installer.nsi:499
 #, fuzzy
 msgctxt "T_FoundExistingOldVersion"
 msgid ""
@@ -208,7 +208,7 @@ msgstr ""
 "\n"
 "√ —Ìœ „Ê«’·…  À»Ì  Gpg4winø"
 
-#: src/installer.nsi:494
+#: src/installer.nsi:504
 msgctxt "T_FoundExistingVersionB"
 msgid ""
 "A version of Gpg4Win has already been installed on the system. There will be "
@@ -221,7 +221,34 @@ msgstr ""
 "\n"
 "√ —Ìœ „Ê«’·…  À»Ì  Gpg4winø"
 
-#: src/installer.nsi:505
+#: src/installer.nsi:514
+msgctxt "T_SMIMEHeaderText"
+msgid "Define trustable root certificates"
+msgstr ""
+
+#: src/installer.nsi:516
+msgctxt "T_SMIMEHeaderSubtext"
+msgid "S/MIME configuration"
+msgstr ""
+
+#: src/installer.nsi:518
+msgctxt "T_SMIMETextTop"
+msgid "Gpg4win needs a list of root certificates which you trust."
+msgstr ""
+
+#: src/installer.nsi:520
+msgctxt "T_SMIMETextBottom"
+msgid ""
+"Therewith you can use S/MIME, the configuration is stringently required. "
+"Skip this configuration only if you don't want to use S/MIME."
+msgstr ""
+
+#: src/installer.nsi:524
+msgctxt "T_SMIMECheckboxText"
+msgid "Root certificate defined or skip configuration"
+msgstr ""
+
+#: src/installer.nsi:541
 msgctxt "T_FoundOldSeeManual"
 msgid ""
 "Please see the Gpg4win user manual to learn how to migrate existing keys "
@@ -230,7 +257,7 @@ msgstr ""
 "„‰ ›÷·ﬂ ÿ«·⁄ œ·Ì· „” Œœ„ Gpg4win · ﬁ—√ ⁄‰ ÿ—Ìﬁ… ‰ﬁ· «·„›« ÌÕ «·„ÊÃÊœ… „‰ ﬁ»· "
 "„‰  À»Ì «  ”«»ﬁ… „»‰Ì… ⁄·Ï GnuPG ≈·Ï Gpg4win."
 
-#: src/installer.nsi:510
+#: src/installer.nsi:546
 msgctxt "T_FoundOldGnuPP"
 msgid ""
 "An old installation of GnuPP (GNU Privacy Project) has been been detected.  "
@@ -244,7 +271,7 @@ msgstr ""
 "\n"
 "√ —Ìœ „Ê«’·…  À»Ì  Gpg4win Ê«· ⁄«„· „⁄ «· À»Ì  «·ﬁœÌ„ ·«Õﬁ«ø"
 
-#: src/installer.nsi:519
+#: src/installer.nsi:555
 msgctxt "T_FoundOldGnuPT"
 msgid ""
 "An installation of GnuPT has been been detected.  This may cause problems "
@@ -256,7 +283,7 @@ msgstr ""
 "\n"
 "√ —Ìœ „Ê«’·…  À»Ì  Gpg4winø"
 
-#: src/installer.nsi:526
+#: src/installer.nsi:562
 msgctxt "T_FoundOldWinPTSF"
 msgid ""
 "An old installation of the Sourceforge hosted WinPT has been been detected.  "
@@ -270,7 +297,7 @@ msgstr ""
 "\n"
 "√ —Ìœ „Ê«’·…  À»Ì  Gpg4win Ê«· ⁄«„· „⁄ «· À»Ì  «·ﬁœÌ„ ·«Õﬁ«ø"
 
-#: src/installer.nsi:536
+#: src/installer.nsi:572
 msgctxt "T_FoundOldGnuPack"
 msgid ""
 "An installation of GnuPG-Pack has been been detected. You need to uninstall "
@@ -282,7 +309,7 @@ msgstr ""
 "\n"
 "”ÌÊﬁ› «· À»Ì  «·¬‰!"
 
-#: src/installer.nsi:545
+#: src/installer.nsi:581
 msgctxt "T_BetaWarning"
 msgid ""
 "Note: This is a BETA version of Gpg4win.\n"
@@ -291,13 +318,13 @@ msgid ""
 "production environment."
 msgstr ""
 
-#: src/installer.nsi:552
+#: src/installer.nsi:588
 msgctxt "T_AdminNeeded"
 msgid ""
 "Warning: Administrator permissions required for a successful installation"
 msgstr " Õ–Ì—:  Õ «Ã ≈·Ï ’·«ÕÌ«  «·„œÌ— ·≈ „«„ «· À»Ì "
 
-#: src/installer.nsi:556
+#: src/installer.nsi:592
 #, fuzzy
 msgctxt "T_CloseOtherApps"
 msgid ""
@@ -308,12 +335,12 @@ msgstr ""
 "—Ã«¡  √ﬂœ „‰ ⁄œ„  ‘€Ì· √Ì  ÿ»Ìﬁ«  √Œ—Ï. ⁄·Ìﬂ Œ’Ê’« ≈€·«ﬁ ﬂ· ‰Ê«›– √Ê ·Êﬂ √Ê "
 "≈ﬂ”»·Ê——.  ”ÌÕ«Ê· Gpg4Win «·À»Ì  ⁄·Ï √Ì Õ«· ·ﬂ‰ ” Õ «Ã ≈·Ï ≈⁄«œ… «· ‘€Ì·."
 
-#: src/installer.nsi:561
+#: src/installer.nsi:597
 msgctxt "T_ShuttingDownWinPT"
 msgid "Trying to shutdown a possible running instance of WinPT."
 msgstr " Ã—Ì „Õ«Ê·… ≈€·«ﬁ ”Ì—Ê—… „Õ „·… ⁄«„·… „‰ WinPT."
 
-#: src/installer.nsi:563
+#: src/installer.nsi:599
 msgctxt "T_ShuttingDownDirMngr"
 msgid "Trying to shutdown a possible running instance of DirMngr."
 msgstr " Ã—Ì „Õ«Ê·… ≈€·«ﬁ ”Ì—Ê—… „Õ „·… ⁄«„·… „‰ DirMngr."
@@ -338,7 +365,7 @@ msgctxt "DESC_Menu_claws_mail_pdf"
 msgid "Show the online manual of Claws Mail"
 msgstr "«⁄—÷ ﬂ Ì¯» »—Ìœ Claws ⁄·Ï «·Ê»"
 
-#: src/inst-gnupg2.nsi:213
+#: src/inst-gnupg2.nsi:220
 #, fuzzy
 msgctxt "DESC_SEC_gnupg2"
 msgid "GNU Privacy Guard"
@@ -355,13 +382,18 @@ msgctxt "DESC_Menu_gpa"
 msgid "Run the GNU Privacy Assistant key management tool."
 msgstr "‘€· √œ«… ≈œ«—… «·„›« ÌÕ ﬂ·ÌÊ»« —«."
 
-#: src/inst-gpg4win.nsi:82
+#: src/inst-gpg4win.nsi:84
 #, fuzzy
 msgctxt "DESC_Menu_gpg4win_readme"
 msgid "General information on Gpg4win"
 msgstr "„⁄·Ê„«  ⁄«„… ⁄‰ Gpg4Win"
 
-#: src/inst-gpg4win.nsi:85
+#: src/inst-gpg4win.nsi:87
+msgctxt "DESC_Menu_gpg4win_howtosmime"
+msgid "Instruction to configure S/MIME"
+msgstr ""
+
+#: src/inst-gpg4win.nsi:90
 #, fuzzy
 msgctxt "DESC_Menu_gnupg_faq"
 msgid "Show the Frequently Asked Questions document for GnuPG"
