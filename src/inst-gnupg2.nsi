@@ -177,6 +177,13 @@ ${MementoSection} "GnuPG" SEC_gnupg2
   SetShellVarContext all
   SetOutPath "$APPDATA\GNU\etc\gnupg"
   File /oname=gpgconf-conf.skel "${source}/doc/examples/gpgconf.conf"
+  File /oname=trustlist.txt.example "${source}/doc/examples/trustlist.txt"
+  # create empty trustlist.txt if not exists
+  IfFileExists "$APPDATA\GNU\etc\gnupg\trustlist.txt" TrustlistExists TrustlistNotExists
+  TrustlistNotExists:
+    FileOpen $9 trustlist.txt w ;Open new file
+    FileClose $9 ;Closes file
+  TrustlistExists:
   SetShellVarContext current
 
 

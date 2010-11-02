@@ -1,3 +1,8 @@
+2010-11-02  Emanuel Schuetze <emanuel@intevation.de>
+
+	* src/inst-gnupg2.nsi: Install trustlist.txt and trustlist.txt.example
+	  into $APPDATA\GNU\etc\gnupg.
+
 2010-09-24  Werner Koch  <wk@g10code.com>
 
 	* patches/gnupg2-2.0.16/06-reread-agent.patch: New.
