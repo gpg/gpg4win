@@ -33,6 +33,8 @@ Section "-gpg4win" SEC_gpg4win
   File /oname=README.fr.txt "${BUILD_DIR}/README.en.txt"
   File /oname=README.ru.txt "${BUILD_DIR}/README.en.txt"
   File /oname=README.pt.txt "${BUILD_DIR}/README.en.txt"
+  File "${BUILD_DIR}/../doc/HOWTO-SMIME.en.txt"
+  File "${BUILD_DIR}/../doc/HOWTO-SMIME.de.txt"
 
   File "${BUILD_DIR}/versioninfo.txt"
 
@@ -81,6 +83,9 @@ SectionEnd
 
 LangString DESC_Menu_gpg4win_readme ${LANG_ENGLISH} \
    "General information on Gpg4win"
+
+LangString DESC_Menu_gpg4win_howtosmime ${LANG_ENGLISH} \
+   "Instruction to configure S/MIME"
 
 LangString DESC_Menu_gnupg_faq ${LANG_ENGLISH} \
    "Show the Frequently Asked Questions document for GnuPG"

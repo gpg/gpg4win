@@ -166,8 +166,18 @@ Var STARTMENU_FOLDER
 
 !define MUI_PAGE_CUSTOMFUNCTION_PRE PrintCloseOtherApps
 !insertmacro MUI_PAGE_INSTFILES
-
 !define MUI_PAGE_CUSTOMFUNCTION_PRE ShowFinalWarnings
+
+# SMIME configuration page
+!define MUI_PAGE_HEADER_TEXT "$(T_SMIMEHeaderText)"
+!define MUI_PAGE_HEADER_SUBTEXT "$(T_SMIMEHeaderSubtext)"
+!define MUI_LICENSEPAGE_TEXT_TOP "$(T_SMIMETextTop)"
+!define MUI_LICENSEPAGE_TEXT_BOTTOM "$(T_SMIMETextBottom)"
+!define MUI_LICENSEPAGE_CHECKBOX 
+!define MUI_LICENSEPAGE_CHECKBOX_TEXT "$(T_SMIMECheckboxText)"
+!insertmacro MUI_PAGE_LICENSE $(T_HowtoSmimeFile) 
+
+# Finish page
 !define MUI_FINISHPAGE_SHOWREADME "share\gpg4win\README.$(T_LangCode).txt"
 !define MUI_FINISHPAGE_SHOWREADME_TEXT "$(T_ShowReadme)"
 #!define MUI_FINISHPAGE_RUN
@@ -498,6 +508,32 @@ LangString T_FoundExistingVersionB ${LANG_ENGLISH} \
        $\r$\n\
       Do you want to continue installing Gpg4win?"
 
+#---------------------------------------------------
+# Strings pertaining to the SMIME configuration page
+#---------------------------------------------------
+LangString T_SMIMEHeaderText ${LANG_ENGLISH} \
+	"Define trustable root certificates"
+LangString T_SMIMEHeaderSubtext ${LANG_ENGLISH} \
+	"S/MIME configuration"
+LangString T_SMIMETextTop ${LANG_ENGLISH} \
+	"Gpg4win needs a list of root certificates which you trust."
+LangString T_SMIMETextBottom ${LANG_ENGLISH} \
+	"Therewith you can use S/MIME, the configuration is stringently \
+        required. Skip this configuration only if you don't want to use \
+        S/MIME."
+LangString T_SMIMECheckboxText ${LANG_ENGLISH} \
+	"Root certificate defined or skip configuration"
+
+LicenseLangString T_HowtoSmimeFile ${LANG_GERMAN} \
+	"${TOP_SRCDIR}/doc/HOWTO-SMIME.de.txt"
+LicenseLangString T_HowtoSmimeFile ${LANG_ENGLISH} \
+	"${TOP_SRCDIR}/doc/HOWTO-SMIME.en.txt"
+LicenseLangString T_HowtoSmimeFile ${LANG_FRENCH} \
+	"${TOP_SRCDIR}/doc/HOWTO-SMIME.en.txt"
+LicenseLangString T_HowtoSmimeFile ${LANG_SPANISH} \
+	"${TOP_SRCDIR}/doc/HOWTO-SMIME.en.txt"
+LicenseLangString T_HowtoSmimeFile ${LANG_PORTUGUESE} \
+	"${TOP_SRCDIR}/doc/HOWTO-SMIME.en.txt"
 
 #---------------------------------------------
 # From the old installation checking functions

@@ -44,6 +44,9 @@ Section "-un.gpg4win"
   Delete "$INSTDIR\share\gpg4win\README.ru.txt"
   Delete "$INSTDIR\share\gpg4win\README.pt.txt"
 
+  Delete "$INSTDIR\share\gpg4win\HOWTO-SMIME.en.txt"
+  Delete "$INSTDIR\share\gpg4win\HOWTO-SMIME.de.txt"
+
   Delete "$INSTDIR\share\gpg4win\versioninfo.txt"
 
   Delete "$INSTDIR\VERSION"

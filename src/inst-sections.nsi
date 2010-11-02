@@ -1328,6 +1328,20 @@ Section "-startmenu"
       "$INSTDIR\share\gpg4win\README.$(T_LangCode).txt" \
       "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_gpg4win_readme)
 
+ StrCmp $LANGUAGE ${LANG_GERMAN} 0 +7
+    # German
+    CreateShortCut \
+      "$SMPROGRAMS\$STARTMENU_FOLDER\$(DESC_Menu_manuals)\Gpg4Win HOWTO SMIME.lnk" \
+      "$INSTDIR\share\gpg4win\HOWTO-SMIME.de.txt" \
+      "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_gpg4win_howtosmime)
+    Goto leave
+    # English
+    CreateShortCut \
+      "$SMPROGRAMS\$STARTMENU_FOLDER\$(DESC_Menu_manuals)\Gpg4Win HOWTO SMIME.lnk" \
+      "$INSTDIR\share\gpg4win\HOWTO-SMIME.en.txt" \
+      "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_gpg4win_howtosmime)
+    leave:
+  
 # No more uninstall link because Windows has its own feature to call
 #  the uninstaller.
 #    CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\Uninstall.lnk" \
