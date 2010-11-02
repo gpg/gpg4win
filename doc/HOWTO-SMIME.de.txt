@@ -1,0 +1,102 @@
+(Um S/MIME-Zertifikate zum Signieren und Verschlüsseln zu verwenden, müssen Sie die Vertrauenswürdigkeit der X.509-Wurzelzertifikate festlegen.)
+
+Ein Wurzelzertifikat (auch: Root-CA) dient dazu, die Gültigkeit aller untergeordneten Zertifikate zu überprüfen. Wird dem Wurzelzertifikat vertraut, so vertraut man damit auch allen darunter liegenden Zertifikaten.
+
+Um zu vermeiden, dass jeder Anwender selbst die notwendigen Wurzelzertifikate suchen und installieren sowie deren Vertrauenswürdigkeit prüfen und beglaubigen muss, ist eine systemweite Vorbelegung der wichtigsten Wurzelzertifikate als Administrator wie folgt sinnvoll:
+
+1.  Ablegen der Wurzelzertifikate
+
+     Kopieren Sie eine Datei per Wurzelzertifikat nach:
+     [Windows 2000/XP]:
+        C:\Dokumente und Einstellungen\All Users\Anwendungsdaten\GNU\etc\
+        dirmngr\trusted-certs\
+     [Windows Vista/7]:
+        C:\ProgramData\GNU\etc\dirmngr\trusted-certs
+
+     Die Wurzelzertifikate müssen als Dateien im Format DER mit der 
+     Dateinamens-Erweiterung .crt oder .der zu liegen kommen.
+
+     Sie bekommen die Wurzelzertifikate von den jeweiligen CA-Administratoren.
+     Oftmals bieten die CA-Betreiber ihre Wurzelzertifikate auch auf Webseiten
+     zum Download an.
+
+     Ist der o.g. Ordner nicht sichtbar? 
+     Beachten Sie den Hinweis zu den Ansichtsoptionen [1].
+
+2.  Ultimativ vertrauenswürdig setzen
+ 
+     a) Öffnen Sie die folgende Datei mit einem Texteditor:
+         [Windows 2000/XP]:
+           C:\Dokumente und Einstellungen\All Users\Anwendungsdaten\GNU\etc\
+           gnupg\trustlist.txt
+         [Windows Vista/7]:
+           C:\ProgramData\GNU\etc\gnupg\trustlist.txt
+
+     b) Pro Wurzelzertifikat erstellen Sie eine Zeile mit dem
+         zugehörigen Fingerabdruck, wie:
+         <FINGERABDRUCK> S 
+
+         Den Fingerabdruck bekommen Sie direkt vom CA-Betreiber (oftmals verfügbar 
+         über die Webseite, wo das Zertifikat zum Download angeboten wird). 
+         Alternativ können sie den Fingerabdruck auch mit Hilfe des 
+         Kommandozeilenwerkzeugs "openssl" (nicht in Gpg4win enthalten) aus der 
+         Wurzelzertifikatsdatei herausbekommmen:
+           openssl x509 -in <root-certificate> -noout -fingerprint -sha1
+      
+         Wenn eine Zeile in der trustlist.txt mit einem "#"-Zeichen beginnt, ist 
+         diese Zeile ein Kommentar.
+         Abschließend (am Ende der Datei) muss eine Leerzeile erfolgen.
+
+         Beispiel für zwei Einträge mit Kommentar:
+           # CN=Wurzel ZS 3,O=Intevation GmbH,C=DE, eintragen Bernhard 20101021
+           A6935DD34EF3087973C706FC311AA2CCF733765B S
+
+           # CN=PCA-1-Verwaltung-02/O=PKI-1-Verwaltung/C=DE
+           DC:BD:69:25:48:BD:BB:7E:31:6E:BB:80:D3:00:80:35:D4:F8:A6:CD S
+  
+         Es kann in einigen Fällen sinnvoll sein, die Kriterien bei der Überprüfung
+         der Wurzelzertifikate zu verringern. Sie können dazu hinter "S" eine weitere
+         Flagge "relax" setzen: <FINGERABDRUCK> S relax
+
+         Wichtig: Die Verwendung von relax setzt die Sicherheit herab, muss daher
+         individuell entschieden werden und sollte nur bei Problemen verwendet
+         werden.
+
+3.  Gpg4win-Installation abschließen und Rechner neu starten
+
+     a) Aktivieren Sie "Wurzelzertifikte festgelegt oder überspringen".
+
+     b) Beenden Sie den Gpg4win-Installationsassistenten regulär.
+
+     c) Starten Sie Ihren Rechner neu! (Erforderlich, damit der DirMngr
+        Ihre unter (1) abgelegten Wurzelzertifikate neu einliest.)
+
+     Damit haben Sie die Konfiguration von S/MIME erfolgreich abgeschlossen.
+
+4.  Überprüfung später in Kleopatra: Zertifikatsketten importieren
+
+     Öffnen Sie Kleopatra und importieren Sie Ihre X.509-Zertifikatsketten. 
+     Die importierten Zertifikatsketten sollten unter dem Reiter 
+     "Vertrauenswürdige Zertifikate" erscheinen. Damit erkennt Gpg4win Ihre
+     importierten Wurzelzertifikate als vertrauenswürdig an.
+
+     Probleme? Wird Ihr Wurzelzertifikat nicht als vertrauenswürdig angezeigt?
+     Lösungsvorschläge:
+     * Klicken Sie in Kleopatra einmal auf "Aktualisieren", um die 
+        Zertifikatsansicht zu aktualisieren.
+     * Ergänzen Sie "relax" hinter dem betroffenen Wurzelzertifikat 
+        in der trustlist.xtxt - siehe Schritt (2).
+
+--
+Diese Anleitung finden Sie zum späteren Nachlesen im Gpg4win-Startmenü unter "Dokumentation".
+
+Weiterführende Informationen finden Sie im Gpg4win-Kompendium, Kapitel 22:
+     http://gpg4win.de/doc/de/gpg4win-compendium_28.html
+
+[1] Hinweis zu Ansichtsoptionen:
+     Stellen Sie sicher, dass Sie im Windows Explorer die nachfolgende
+     Ordneransichts-Option "Alle Dateien und Ordner anzeigen"
+     aktiviert haben.
+     Sie erreichen diese Option unter:
+      [Windows 2000/XP]: Extras > Ordneroptionen > Ansicht
+      [Windows Vista/7]: Organisieren > Ordner- und Suchoptionen > Ansicht
