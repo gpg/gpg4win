@@ -6,6 +6,8 @@
 	* src/uninst-gpg4win.nsi, src/installer.nsi, src/inst-gpg4win.nsi,
 	  src/inst-sections.nsi: Install HOWTO-SMIME.de.txt and HOWTO-SMIME.en.txt.
 
+	* packages/packages.current: Update kleopatra and kdelibs.
+
 2010-09-24  Werner Koch  <wk@g10code.com>
 
 	* patches/gnupg2-2.0.16/06-reread-agent.patch: New.
