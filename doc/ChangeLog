@@ -1,7 +1,7 @@
 2010-11-02  Emanuel Schuetze <emanuel@intevation.de>
 
 	* HOWTO-SMIME.en.txt, HOWTO-SMIME.de.txt: Add new HOWTO files for SMIME
-	  configuration (English file needs translation)
+	  configuration (English file needs translation). Fix typo.
 
 2010-10-29  Emanuel Schuetze <emanuel@intevation.de>
 

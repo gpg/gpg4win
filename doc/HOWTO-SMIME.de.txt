@@ -1,8 +1,14 @@
-(Um S/MIME-Zertifikate zum Signieren und Verschlüsseln zu verwenden, müssen Sie die Vertrauenswürdigkeit der X.509-Wurzelzertifikate festlegen.)
+(Um S/MIME-Zertifikate zum Signieren und Verschlüsseln zu verwenden, müssen Sie die
+Vertrauenswürdigkeit der X.509-Wurzelzertifikate festlegen.)
 
-Ein Wurzelzertifikat (auch: Root-CA) dient dazu, die Gültigkeit aller untergeordneten Zertifikate zu überprüfen. Wird dem Wurzelzertifikat vertraut, so vertraut man damit auch allen darunter liegenden Zertifikaten.
+Ein Wurzelzertifikat (auch: Root-CA) dient dazu, die Gültigkeit aller untergeordneten
+Zertifikate zu überprüfen. Wird dem Wurzelzertifikat vertraut, so vertraut man damit
+auch allen darunter liegenden Zertifikaten.
 
-Um zu vermeiden, dass jeder Anwender selbst die notwendigen Wurzelzertifikate suchen und installieren sowie deren Vertrauenswürdigkeit prüfen und beglaubigen muss, ist eine systemweite Vorbelegung der wichtigsten Wurzelzertifikate als Administrator wie folgt sinnvoll:
+Um zu vermeiden, dass jeder Anwender selbst die notwendigen Wurzelzertifikate suchen
+und installieren sowie deren Vertrauenswürdigkeit prüfen und beglaubigen muss, ist eine
+systemweite Vorbelegung der wichtigsten Wurzelzertifikate als Administrator wie folgt
+sinnvoll:
 
 1.  Ablegen der Wurzelzertifikate
 
@@ -85,18 +91,18 @@ Um zu vermeiden, dass jeder Anwender selbst die notwendigen Wurzelzertifikate su
      * Klicken Sie in Kleopatra einmal auf "Aktualisieren", um die 
         Zertifikatsansicht zu aktualisieren.
      * Ergänzen Sie "relax" hinter dem betroffenen Wurzelzertifikat 
-        in der trustlist.xtxt - siehe Schritt (2).
+        in der trustlist.txt - siehe Schritt (2).
 
 --
-Diese Anleitung finden Sie zum späteren Nachlesen im Gpg4win-Startmenü unter "Dokumentation".
+Diese Anleitung finden Sie zum späteren Nachlesen im Gpg4win-Startmenü unter
+"Dokumentation".
 
 Weiterführende Informationen finden Sie im Gpg4win-Kompendium, Kapitel 22:
      http://gpg4win.de/doc/de/gpg4win-compendium_28.html
 
 [1] Hinweis zu Ansichtsoptionen:
      Stellen Sie sicher, dass Sie im Windows Explorer die nachfolgende
-     Ordneransichts-Option "Alle Dateien und Ordner anzeigen"
-     aktiviert haben.
+     Ordneransichts-Option "Alle Dateien und Ordner anzeigen" aktiviert haben.
      Sie erreichen diese Option unter:
       [Windows 2000/XP]: Extras > Ordneroptionen > Ansicht
       [Windows Vista/7]: Organisieren > Ordner- und Suchoptionen > Ansicht
