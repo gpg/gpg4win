@@ -452,8 +452,8 @@ chk  4ef2416fe07ffb8cb3df77f01d23249d44f9a560
 file kdelibs-20101026-src.zip
 chk  2a9c77dd4bad9ca9da745a299dd31d59f4830f38
 
-file kleopatra-20101102-bin.zip
-chk  7de97bb177fb0091caa757e6d060b66093338527
+file kleopatra-20101104-bin.zip
+chk  452dd989bba35991ac4415a085bb067aa3894c45
 
-file kleopatra-20101102-src.zip
-chk  e5366fcdc09f6fbbf48d665e459d5fa2baf25981
+file kleopatra-20101104-src.zip
+chk  d7bb818f480d6f6976e8a0f1435238276fcfd28e

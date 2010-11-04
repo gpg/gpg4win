@@ -1,3 +1,7 @@
+2010-11-04  Emanuel Schuetze <emanuel@intevation.de>
+
+	* packages/packages.current: Update kleopatra.
+
 2010-11-02  Emanuel Schuetze <emanuel@intevation.de>
 
 	* src/inst-gnupg2.nsi: Install trustlist.txt and trustlist.txt.example
