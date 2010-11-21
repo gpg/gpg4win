@@ -1,4 +1,8 @@
-2010-11-04  Colin Leroy  <colin@colino.net>
+2010-11-21  Colin Leroy  <colin@colino.net>
+
+	* packages/packages.current: Update Claws Mail and plugins to 3.7.7.
+
+2010-11-21  Colin Leroy  <colin@colino.net>
 
 	* packages/packages.current: Fix libtasn1 download link.
 
