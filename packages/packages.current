@@ -43,7 +43,7 @@ server ftp://ftp.gnu.org/pub/gnu
 file gsasl/libgsasl-1.4.4.tar.gz
 chk  d32d29a5c599b2d54f214fc5747559bc890f24de
 
-file gnutls/libtasn1-2.2.tar.gz
+file libtasn1/libtasn1-2.2.tar.gz
 chk  d6e0d449cf2da04c93f498d2cf4415f572611b46
 
 file gnutls/gnutls-2.8.6.tar.bz2
