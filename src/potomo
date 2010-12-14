@@ -2,9 +2,9 @@
 # potomo - Convert a .po file to an utf-8 encoded .mo file.
 #
 # This script is used to create the mo files for applications using
-# the simplegetext implementaion as used by GnuPG and some other
+# the simple gettext implementation as used by GnuPG and some other
 # tools.  That gettext can only cope with utf-8 encoded mo files; thus
-# we make this sure while creating the mo.  A vonversion is not done
+# we make this sure while creating the mo.  A conversion is not done
 # if the source file does not exist or if it is not newer than the mo
 # file. 
 

@@ -66,6 +66,7 @@ EXTRA_DIST = autogen.sh README.SVN ONEWS \
 	patches/gnupg2-2.0.16/05-err-codes.patch \
 	patches/gnupg2-2.0.16/06-reread-agent.patch \
 	patches/dirmngr-1.0.3/01-ldaphttp.patch \
+	patches/dirmngr-1.1.0/01-mmap.patch \
 	patches/gpgol-0.9.91/01-gpgme.patch \
         patches/gpa-0.9.0/01-title-prop.patch \
 	patches/libetpan-0.57/01-gnutls_compat.patch \
