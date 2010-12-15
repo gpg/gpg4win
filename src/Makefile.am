@@ -174,7 +174,7 @@ gpg4win_pkg_libgcrypt_configure = --silent \
 
 gpg4win_pkg_adns_configure = --silent
 
-gpg4win_pkg_libpng_configure = CPPFLAGS=\"-I$(idir)/include\" LDFLAGS=\"-L$(idir)/lib\"
+gpg4win_pkg_libpng_configure = CPPFLAGS=\"-I$(idir)/include -DPNG_BUILD_DLL\" LDFLAGS=\"-L$(idir)/lib\" LIBPNG_DEFINES=\"-DPNG_BUILD_DLL\"
 
 gpg4win_pkg_dirmngr_configure = \
   --with-gpg-error-prefix=$(idir) \

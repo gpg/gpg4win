@@ -1,3 +1,7 @@
+2010-12-15  Colin Leroy  <colin@colino.net>
+
+	* src/Makefile.am: Fix libpng building
+
 2010-12-14  Werner Koch  <wk@g10code.com>
 
 	* patches/dirmngr-1.1.0/01-mmap.patch: New.
