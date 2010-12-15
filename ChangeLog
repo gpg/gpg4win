@@ -1,3 +1,7 @@
+2010-12-15  Colin Leroy  <colin@colino.net>
+
+	* src/inst-pinentry.nsi: Fix NSIS builds without QT.
+
 2010-12-15  Marcus Brinkmann  <marcus@g10code.com>
 
 	* src/Makefile.am (gpg4win_pkg_claws_mail_post_install): New macro.

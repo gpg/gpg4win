@@ -37,6 +37,7 @@ Section "-Pinentry" SEC_pinentry
   File "${prefix}/bin/pinentry-w32.exe"
   File "${prefix}/bin/pinentry-gtk-2.exe"
 !ifndef GPG4WIN_LIGHT
+!ifdef HAVE_PKG_QT
   File "${prefix}/bin/pinentry-qt4.exe"
 
   # If Qt is installed (usually by selecting kleopatra), we want
@@ -48,6 +49,7 @@ Section "-Pinentry" SEC_pinentry
   File /oname=pinentry.exe "${prefix}/bin/pinentry-qt4.exe"
   Goto inst_pinentry_done
   inst_pinentry_skip_qt:
+!endif
 !endif
   File /oname=pinentry.exe "${prefix}/bin/pinentry-gtk-2.exe"
   inst_pinentry_done:
