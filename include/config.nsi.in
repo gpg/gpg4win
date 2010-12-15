@@ -190,6 +190,10 @@
 !define gpg4win_pkg_libpng @gpg4win_pkg_libpng@
 !define gpg4win_pkg_libpng_version @gpg4win_pkg_libpng_version@
 
+@HAVE_PKG_ENCHANT@
+!define gpg4win_pkg_enchant @gpg4win_pkg_enchant@
+!define gpg4win_pkg_enchant_version @gpg4win_pkg_enchant_version@
+
 @HAVE_PKG_PKGCONFIG@
 !define gpg4win_pkg_pkgconfig @gpg4win_pkg_pkgconfig@
 !define gpg4win_pkg_pkgconfig_version @gpg4win_pkg_pkgconfig_version@

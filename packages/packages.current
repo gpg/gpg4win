@@ -105,35 +105,43 @@ file bsfilter-1.0.16-src.tar.gz
 chk  fe718884dd7ca0652613a2cb5c302ac6323605d8
 
 #
+# Enchant for Claws
+#
+
+server http://www.abisource.com/downloads/enchant/1.6.0
+file   enchant-1.6.0.tar.gz
+chk    321f9cf0abfa1937401676ce60976d8779c39536
+
+#
 # Claws
 #
 # (Kept on our own mirror due to Sourceforge peculiarities.)
 
 server http://www.claws-mail.org/win32
 
-file   claws-mail-3.7.7cvs3.tar.bz2
-chk    f8136a708db5162431f68657d8f06298287a383f
+file   claws-mail-3.7.8cvs2.tar.bz2
+chk    c695c0ffa1be7c8da281f79868482a84a0f1bef5
 
-file   attachwarner-0.2.20.tar.gz
-chk    0613beb2c54b21c055c451b46ef4671eb18209de
+file   attachwarner-0.2.20cvs1.tar.gz
+chk    aa9313595f7365b7e0b54d121e00004fd2ba7b71
 
 file   bsfilter_plugin-1.0.5.tar.gz
-chk    6fbc4e86806b3ea4e228320a26c7b5e05b899c2c
+chk    d90b5c34cfc0046e69c312e3266b4b19f18c2aa0
 
-file   gtkhtml2_viewer-0.28cvs1.tar.gz
-chk    898a210e0bad982f5ae7796bf979ef231f20ada1
+file   gtkhtml2_viewer-0.29.tar.gz
+chk    006cc5aed36f3dc7ff97f6331f432cdf4b919b9f
 
 file   notification_plugin-0.26.tar.gz
-chk    b416b778b6d3f10b2cdcc5a6998a92178bb0ffa2
+chk    dd7b752199a684700d3c5951a0eaa884db76c0c0
 
-file   rssyl-0.28cvs1.tar.gz
-chk    a119f5f238cceb0f1e53beed3c7a2fc14fd2ee28
+file   rssyl-0.29.tar.gz
+chk    964df1f1aadb6b2f20dae3bd4d309b31aaed53f5
 
 file   tnef_parse-0.3.9.tar.gz
-chk    75050436df49b69fb0cad2c776c8687fac15d403
+chk    3395731753819f20a9f4b7e6374e3458eaba7b76
 
 file   vcalendar-2.0.9.tar.gz
-chk    1aafc38752e40970aa05a949891219c0a26f0639
+chk    941df624ea50d116a1ec245831945cf55c80a3d1
 
 #
 # Pthreads for Windows.

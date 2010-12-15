@@ -77,6 +77,9 @@
 !ifdef HAVE_PKG_LIBPNG
 !include "inst-libpng.nsi"
 !endif
+!ifdef HAVE_PKG_ENCHANT
+!include "inst-enchant.nsi"
+!endif
 !ifdef HAVE_PKG_LIBETPAN
 !include "inst-libetpan.nsi"
 !endif
@@ -328,6 +331,9 @@
 !endif
 !ifdef HAVE_PKG_LIBPNG
 !include "uninst-libpng.nsi"
+!endif
+!ifdef HAVE_PKG_ENCHANT
+!include "uninst-enchant.nsi"
 !endif
 !ifdef HAVE_PKG_GETTEXT
 !include "uninst-gettext.nsi"
@@ -583,6 +589,9 @@ Function CalcDepends
 !ifdef HAVE_PKG_LIBPNG
   !insertmacro UnselectSection ${SEC_libpng}
 !endif
+!ifdef HAVE_PKG_ENCHANT
+  !insertmacro UnselectSection ${SEC_enchant}
+!endif
 !ifdef HAVE_PKG_PKGCONFIG
   !insertmacro UnselectSection ${SEC_pkgconfig}
 !endif
@@ -804,6 +813,7 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_zlib}
   !insertmacro SelectSection ${SEC_gtk_}
   !insertmacro SelectSection ${SEC_libpng}
+  !insertmacro SelectSection ${SEC_enchant}
   !insertmacro SelectSection ${SEC_glib}
   !insertmacro SelectSection ${SEC_gpgme}
   !insertmacro SelectSection ${SEC_pthreads_w32}
@@ -1053,6 +1063,14 @@ Function CalcDepends
   have_libpng:
   !insertmacro SelectSection ${SEC_pkgconfig}
   skip_libpng:
+!endif
+
+!ifdef HAVE_PKG_ENCHANT
+  !insertmacro SectionFlagIsSet ${SEC_enchant} \
+		${SF_SELECTED} have_enchant skip_enchant
+  have_enchant:
+  !insertmacro SelectSection ${SEC_pkgconfig}
+  skip_enchant:
 !endif
 
   # Package "regex" has no dependencies.

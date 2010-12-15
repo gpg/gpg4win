@@ -217,6 +217,7 @@ GPG4WIN_BPKG_GTK_DEV([freetype], [pkgconfig zlib])
 GPG4WIN_BPKG_GTK_DEV([fontconfig], [pkgconfig zlib expat])
 GPG4WIN_BPKG_GTK_DEV([gtk+], [libiconv gettext pkgconfig atk pango glib cairo])
 GPG4WIN_SPKG([libpng], [pkgconfig])
+GPG4WIN_SPKG([enchant], [pkgconfig glib])
 
 GPG4WIN_SPKG([bzip2])
 GPG4WIN_SPKG([adns])
@@ -244,7 +245,7 @@ GPG4WIN_SPKG([libetpan], [pthreads-w32 gnutls])
 GPG4WIN_SPKG([libxml2], [zlib])
 GPG4WIN_SPKG([regex])
 GPG4WIN_SPKG([crypt])
-GPG4WIN_SPKG([claws-mail], [libiconv gettext zlib gtk+ libpng glib dnl
+GPG4WIN_SPKG([claws-mail], [libiconv gettext zlib gtk+ libpng enchant glib dnl
                             gpgme pthreads-w32 crypt regex libetpan gnutls])
 GPG4WIN_SPKG([notification_plugin], [claws-mail])
 GPG4WIN_SPKG([gtkhtml2_viewer], [curl claws-mail libxml2])

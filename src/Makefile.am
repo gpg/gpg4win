@@ -62,6 +62,7 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi config.site \
         inst-libksba.nsi	   uninst-libksba.nsi	      \
         inst-adns.nsi	           uninst-adns.nsi	      \
         inst-libpng.nsi		   uninst-libpng.nsi	      \
+        inst-enchant.nsi	   uninst-enchant.nsi	      \
         inst-compendium.nsi	   uninst-compendium.nsi   \
         inst-man_advanced_de.nsi   uninst-man_advanced_de.nsi \
         inst-man_advanced_en.nsi   uninst-man_advanced_en.nsi \
@@ -96,7 +97,7 @@ CLEANFILES = g4wihelp.dll versioninfo.txt $(README_files) \
 	     gpgwrap.exe gpgwrap-2.exe kleowrap.exe $(foosum_exe)
 
 # Supported source packages.
-gpg4win_spkgs = glib libgpg-error gpgme gpgol gpgex libpng \
+gpg4win_spkgs = glib libgpg-error gpgme gpgol gpgex libpng enchant \
 		gpa libgsasl libtasn1 opencdk gnutls curl libxml2 \
                 libetpan claws-mail notification_plugin gtkhtml2_viewer \
 		vcalendar rssyl gnupg2 pinentry libassuan libksba libgcrypt \
@@ -176,6 +177,8 @@ gpg4win_pkg_adns_configure = --silent
 
 gpg4win_pkg_libpng_configure = CPPFLAGS=\"-I$(idir)/include -DPNG_BUILD_DLL\" LDFLAGS=\"-L$(idir)/lib\" LIBPNG_DEFINES=\"-DPNG_BUILD_DLL\"
 
+gpg4win_pkg_enchant_configure = CPPFLAGS=\"-I$(idir)/include -UENCHANT_GLOBAL_MODULE_DIR -UENCHANT_GLOBAL_ORDERING -UENCHANT_MYSPELL_DICT_DIR -UENCHANT_USPELL_DICT_DIR\" LDFLAGS=\"-L$(idir)/lib\"
+
 gpg4win_pkg_dirmngr_configure = \
   --with-gpg-error-prefix=$(idir) \
   --with-ksba-prefix=$(idir) \
@@ -247,16 +250,13 @@ gpg4win_pkg_libxml2_configure = \
 gpg4win_pkg_libetpan_configure = --with-gnutls \
   CPPFLAGS=\"-I$(idir)/include\" LIBS=\"-L$(idir)/lib\"
 
-# --disable-aspell can be removed from svn917 on and later.
 gpg4win_pkg_claws_mail_configure = \
   --with-lib-prefix=$(idir) --with-libiconv-prefix=$(idir) \
   --with-gpg-error-prefix=$(idir) --with-gpgme-prefix=$(idir) \
   --with-config-dir="Claws-mail" --enable-pthread --enable-gnutls \
-  --enable-libetpan --disable-aspell --disable-enchant \
-  --disable-trayicon-plugin --disable-dbus \
-  --disable-openssl --disable-dillo-viewer-plugin --disable-gnomeprint \
+  --enable-libetpan --disable-trayicon-plugin --disable-dbus \
+  --disable-dillo-viewer-plugin \
   --disable-jpilot --disable-startup-notification --disable-ipv6 \
-  --disable-mathml-viewer-plugin --disable-clamav-plugin \
   --disable-spamassassin-plugin --disable-bogofilter-plugin \
   --disable-valgrind --disable-networkmanager-support
 
@@ -409,6 +409,11 @@ define gpg4win_pkg_gtk__post_install
 endef
 
 define gpg4win_pkg_libpng_post_install
+ (cd $$$${pkgidir};							\
+ perl -pi -e 's/^prefix=.*$$$$/prefix=\/usr/' `find . -name \*.pc`)
+endef
+
+define gpg4win_pkg_enchant_post_install
  (cd $$$${pkgidir};							\
  perl -pi -e 's/^prefix=.*$$$$/prefix=\/usr/' `find . -name \*.pc`)
 endef
