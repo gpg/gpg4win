@@ -260,6 +260,14 @@ gpg4win_pkg_claws_mail_configure = \
   --disable-spamassassin-plugin --disable-bogofilter-plugin \
   --disable-valgrind --disable-networkmanager-support
 
+define gpg4win_pkg_claws_mail_post_install
+(for i in de en ; do \
+    (cd $$$${pkgidir}/share/doc/claws-mail/manual/$$$${i}; \
+    ps2pdf claws-mail-manual.ps); \
+ done)
+endef
+
+
 gpg4win_pkg_notification_plugin_configure = \
   --with-lib-prefix=$(idir) --with-libiconv-prefix=$(idir) \
   --disable-libnotify --disable-lcdproc --disable-hotkeys
