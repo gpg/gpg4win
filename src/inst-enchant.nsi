@@ -36,5 +36,15 @@ Section "-enchant" SEC_enchant
 
   SetOutPath "$INSTDIR\lib\enchant"
   File ${prefix}/lib/enchant/libenchant_myspell.dll
+
+#Dictionaries
+  SetShellVarContext all
+  SetOutPath "$INSTDIR\share\enchant\myspell"
+  File dictionaries/en_US.aff
+  File dictionaries/en_US.dic
+  File dictionaries/de.aff
+  File dictionaries/de.dic
+  File dictionaries/fr.aff
+  File dictionaries/fr.dic
 !endif
 SectionEnd

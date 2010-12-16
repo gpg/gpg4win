@@ -36,6 +36,18 @@ Section "-un.enchant"
 
   RMDir "$INSTDIR\lib\enchant"
   RMDir "$INSTDIR\lib"
+
+#Dictionaries
+  Delete "$INSTDIR\share\enchant\myspell\en_US.aff"
+  Delete "$INSTDIR\share\enchant\myspell\en_US.dic"
+  Delete "$INSTDIR\share\enchant\myspell\de.aff"
+  Delete "$INSTDIR\share\enchant\myspell\de.dic"
+  Delete "$INSTDIR\share\enchant\myspell\fr.aff"
+  Delete "$INSTDIR\share\enchant\myspell\fr.dic"
+
+  RMDir "$INSTDIR\share\enchant\myspell"
+  RMDIR "$INSTDIR\share\enchant"
+  RMDir "$INSTDIR\share"
   RMDir "$INSTDIR"
 !endif
 SectionEnd

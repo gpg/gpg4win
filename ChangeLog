@@ -1,5 +1,16 @@
 2010-12-16  Colin Leroy  <colin@colino.net>
 
+	* src/inst-enchant.nsi, src/dictionaries/fr.aff, 
+	  src/dictionaries/README_fr.txt, src/dictionaries/README_de.txt, 
+	  src/dictionaries/de.aff, src/dictionaries/README_en_US.txt, 
+	  src/dictionaries/en_US.aff, src/dictionaries/fr.dic, 
+	  src/dictionaries/de.dic, src/dictionaries/en_US.dic, 
+	  src/dictionaries/Makefile.am, src/Makefile.am, 
+	  src/uninst-enchant.nsi, configure.ac: Add french, german and
+	  english (US) dictionaries for enchant (for use by Claws Mail)
+	  
+2010-12-16  Colin Leroy  <colin@colino.net>
+
 	* packages/packages.current: Update Claws Mail again
 
 2010-12-16  Werner Koch  <wk@g10code.com>

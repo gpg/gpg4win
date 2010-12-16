@@ -84,6 +84,7 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi config.site \
 	inst-bzip2.nsi             uninst-bzip2.nsi           \
         inst-final.nsi
 
+SUBDIRS = dictionaries
 
 gpg4win_readme_ll = en de ar es fr ru pt
 
