@@ -1,3 +1,7 @@
+2010-12-16  Werner Koch  <wk@g10code.com>
+
+	* packages/packages.current: Update pinentry to 0.8.1.
+
 2010-12-15  Colin Leroy  <colin@colino.net>
 
 	* include/config.nsi.in, src/inst-enchant.nsi, src/Makefile.am,

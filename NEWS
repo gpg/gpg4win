@@ -10,8 +10,12 @@ Noteworthy changes in version 2.1.0-beta2 (unreleased)
 
 (de) Besserer Fehlercode für fehlendes Zertifikat wurde hinzugefügt.
 
+(en) Feature and bug fix patches for GnuPG.
+
+(de) Erweiterungen und Bug Fixes für GnuPG.
+
 ~~~~~~~~~~~~~~~
-GnuPG:          2.0.16 + 05-err-codes.patch
+GnuPG:          2.0.16
 Kleopatra:      2.1.0-svn1167864 (2010-08-11)
 GPA:            0.9.0
 GpgOL:          1.1.2
