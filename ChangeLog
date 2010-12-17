@@ -1,3 +1,8 @@
+2010-12-17  Colin Leroy  <colin@colino.net>
+
+	* packages/packages.current: Update Claws Mail and plugins
+	  (Claws Mail is now LDAP-enabled !)
+	  
 2010-12-16  Colin Leroy  <colin@colino.net>
 
 	* src/inst-enchant.nsi, src/dictionaries/fr.aff, 
