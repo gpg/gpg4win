@@ -10,6 +10,12 @@ src/
 	(cdb_free) [W32]: Don't leak the mapping handle from cdb_init by
 	using the saved one.  Fixes bug#1010.
 
+src/
+2010-12-17 Werner Koch  <wk@g10code.com>
+
+        * crlcache.c (crl_cache_insert): Try to close unused but open
+        cache files.  Backported from GnuPG trunk.
+
 
 --- src/cdblib.c	(revision 345)
 +++ src/cdblib.c	(working copy)
@@ -51,4 +57,41 @@ src/
    cdbi_t cdb_fsize;		/* datafile size */
    const unsigned char *cdb_mem; /* mmap'ed file memory */
    cdbi_t cdb_vpos, cdb_vlen;	/* found data */
+
+
+--- src/crlcache.c~     2009-08-07 14:00:17.000000000 +0200
++++ src/crlcache.c      2010-12-17 16:42:13.000000000 +0100
+@@ -2166,6 +2166,32 @@ crl_cache_insert (ctrl_t ctrl, const cha
+   newfname = make_db_file_name (entry->issuer_hash);
+   if (opt.verbose)
+     log_info (_("creating cache file `%s'\n"), newfname);
++
++  /* Just in case close unused matching files.  Actually we need this
++     only under Windows but saving file descriptors is never bad.  */
++  {
++    int any;
++    do 
++      {
++        any = 0;
++        for (e = cache->entries; e; e = e->next)
++          if (!e->cdb_use_count && e->cdb
++              && !strcmp (e->issuer_hash, entry->issuer_hash))
++            {
++              int fd = cdb_fileno (e->cdb);
++              cdb_free (e->cdb);
++              xfree (e->cdb);
++              e->cdb = NULL;
++              if (close (fd))
++                log_error (_("error closing cache file: %s\n"),
++                           strerror(errno));
++              any = 1;
++              break;
++            }
++      }
++    while (any);
++  }
++
+ #ifdef HAVE_W32_SYSTEM
+   unlink (newfname);
+ #endif
 
