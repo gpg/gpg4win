@@ -242,7 +242,7 @@ gpg4win_pkg_gnutls_configure = \
   --with-libgcrypt-prefix=$(idir)
 
 gpg4win_pkg_curl_configure = \
-  --with-gnutls --without-ca-bundle
+  --with-gnutls --without-ca-bundle --with-libiconv-prefix=$(idir)
 
 gpg4win_pkg_libxml2_configure = \
   --enable-shared --without-python

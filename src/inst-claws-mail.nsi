@@ -50,10 +50,48 @@ ${MementoUnselectedSection} "Claws-Mail" SEC_claws_mail
   File ${prefix}/lib/claws-mail/plugins/smime.dll
   File ${prefix}/lib/claws-mail/plugins/smime.deps
 
+  SetOutPath "$INSTDIR\share\locale\pt_BR\LC_MESSAGES"
+  File ${prefix}/share/locale/pt_BR/LC_MESSAGES/claws-mail.mo
+  SetOutPath "$INSTDIR\share\locale\uk\LC_MESSAGES"
+  File ${prefix}/share/locale/uk/LC_MESSAGES/claws-mail.mo
+  SetOutPath "$INSTDIR\share\locale\bg\LC_MESSAGES"
+  File ${prefix}/share/locale/bg/LC_MESSAGES/claws-mail.mo
+  SetOutPath "$INSTDIR\share\locale\pl\LC_MESSAGES"
+  File ${prefix}/share/locale/pl/LC_MESSAGES/claws-mail.mo
+  SetOutPath "$INSTDIR\share\locale\ja\LC_MESSAGES"
+  File ${prefix}/share/locale/ja/LC_MESSAGES/claws-mail.mo
+  SetOutPath "$INSTDIR\share\locale\pt_PT\LC_MESSAGES"
+  File ${prefix}/share/locale/pt_PT/LC_MESSAGES/claws-mail.mo
+  SetOutPath "$INSTDIR\share\locale\fi\LC_MESSAGES"
+  File ${prefix}/share/locale/fi/LC_MESSAGES/claws-mail.mo
+  SetOutPath "$INSTDIR\share\locale\it\LC_MESSAGES"
+  File ${prefix}/share/locale/it/LC_MESSAGES/claws-mail.mo
+  SetOutPath "$INSTDIR\share\locale\es\LC_MESSAGES"
+  File ${prefix}/share/locale/es/LC_MESSAGES/claws-mail.mo
+  SetOutPath "$INSTDIR\share\locale\id\LC_MESSAGES"
+  File ${prefix}/share/locale/id/LC_MESSAGES/claws-mail.mo
+  SetOutPath "$INSTDIR\share\locale\zh_CN\LC_MESSAGES"
+  File ${prefix}/share/locale/zh_CN/LC_MESSAGES/claws-mail.mo
+  SetOutPath "$INSTDIR\share\locale\nl\LC_MESSAGES"
+  File ${prefix}/share/locale/nl/LC_MESSAGES/claws-mail.mo
+  SetOutPath "$INSTDIR\share\locale\cs\LC_MESSAGES"
+  File ${prefix}/share/locale/cs/LC_MESSAGES/claws-mail.mo
+  SetOutPath "$INSTDIR\share\locale\ru\LC_MESSAGES"
+  File ${prefix}/share/locale/ru/LC_MESSAGES/claws-mail.mo
+  SetOutPath "$INSTDIR\share\locale\sv\LC_MESSAGES"
+  File ${prefix}/share/locale/sv/LC_MESSAGES/claws-mail.mo
+  SetOutPath "$INSTDIR\share\locale\sk\LC_MESSAGES"
+  File ${prefix}/share/locale/sk/LC_MESSAGES/claws-mail.mo
+  SetOutPath "$INSTDIR\share\locale\ca\LC_MESSAGES"
+  File ${prefix}/share/locale/ca/LC_MESSAGES/claws-mail.mo
+  SetOutPath "$INSTDIR\share\locale\hu\LC_MESSAGES"
+  File ${prefix}/share/locale/hu/LC_MESSAGES/claws-mail.mo
   SetOutPath "$INSTDIR\share\locale\de\LC_MESSAGES"
   File ${prefix}/share/locale/de/LC_MESSAGES/claws-mail.mo
   SetOutPath "$INSTDIR\share\locale\fr\LC_MESSAGES"
   File ${prefix}/share/locale/fr/LC_MESSAGES/claws-mail.mo
+  SetOutPath "$INSTDIR\share\locale\en_GB\LC_MESSAGES"
+  File ${prefix}/share/locale/en_GB/LC_MESSAGES/claws-mail.mo
 
   MessageBox MB_YESNO "$(T_SetDefaultClient)" IDNO skip_default_client
 

@@ -35,9 +35,41 @@ Section "-rssyl" SEC_rssyl
   SetOutPath "$INSTDIR\lib\claws-mail\plugins"
   File ${prefix}/lib/claws-mail/plugins/rssyl.dll
 
-  SetOutPath "$INSTDIR\share\locale\fr\LC_MESSAGES"
-  File ${prefix}/share/locale/fr/LC_MESSAGES/rssyl.mo
+  SetOutPath "$INSTDIR\share\locale\pt_BR\LC_MESSAGES"
+  File ${prefix}/share/locale/pt_BR/LC_MESSAGES/rssyl.mo
+  SetOutPath "$INSTDIR\share\locale\pl\LC_MESSAGES"
+  File ${prefix}/share/locale/pl/LC_MESSAGES/rssyl.mo
+  SetOutPath "$INSTDIR\share\locale\ja\LC_MESSAGES"
+  File ${prefix}/share/locale/ja/LC_MESSAGES/rssyl.mo
+  SetOutPath "$INSTDIR\share\locale\fi\LC_MESSAGES"
+  File ${prefix}/share/locale/fi/LC_MESSAGES/rssyl.mo
+  SetOutPath "$INSTDIR\share\locale\it\LC_MESSAGES"
+  File ${prefix}/share/locale/it/LC_MESSAGES/rssyl.mo
+  SetOutPath "$INSTDIR\share\locale\es\LC_MESSAGES"
+  File ${prefix}/share/locale/es/LC_MESSAGES/rssyl.mo
+  SetOutPath "$INSTDIR\share\locale\id\LC_MESSAGES"
+  File ${prefix}/share/locale/id/LC_MESSAGES/rssyl.mo
+  SetOutPath "$INSTDIR\share\locale\zh_CN\LC_MESSAGES"
+  File ${prefix}/share/locale/zh_CN/LC_MESSAGES/rssyl.mo
+  SetOutPath "$INSTDIR\share\locale\nl\LC_MESSAGES"
+  File ${prefix}/share/locale/nl/LC_MESSAGES/rssyl.mo
+  SetOutPath "$INSTDIR\share\locale\cs\LC_MESSAGES"
+  File ${prefix}/share/locale/cs/LC_MESSAGES/rssyl.mo
+  SetOutPath "$INSTDIR\share\locale\ru\LC_MESSAGES"
+  File ${prefix}/share/locale/ru/LC_MESSAGES/rssyl.mo
+  SetOutPath "$INSTDIR\share\locale\sv\LC_MESSAGES"
+  File ${prefix}/share/locale/sv/LC_MESSAGES/rssyl.mo
+  SetOutPath "$INSTDIR\share\locale\sk\LC_MESSAGES"
+  File ${prefix}/share/locale/sk/LC_MESSAGES/rssyl.mo
+  SetOutPath "$INSTDIR\share\locale\ca\LC_MESSAGES"
+  File ${prefix}/share/locale/ca/LC_MESSAGES/rssyl.mo
+  SetOutPath "$INSTDIR\share\locale\hu\LC_MESSAGES"
+  File ${prefix}/share/locale/hu/LC_MESSAGES/rssyl.mo
   SetOutPath "$INSTDIR\share\locale\de\LC_MESSAGES"
   File ${prefix}/share/locale/de/LC_MESSAGES/rssyl.mo
+  SetOutPath "$INSTDIR\share\locale\fr\LC_MESSAGES"
+  File ${prefix}/share/locale/fr/LC_MESSAGES/rssyl.mo
+  SetOutPath "$INSTDIR\share\locale\sr\LC_MESSAGES"
+  File ${prefix}/share/locale/sr/LC_MESSAGES/rssyl.mo
 !endif
 SectionEnd

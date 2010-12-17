@@ -35,9 +35,35 @@ Section "-attachwarner" SEC_attachwarner
   SetOutPath "$INSTDIR\lib\claws-mail\plugins"
   File ${prefix}/lib/claws-mail/plugins/attachwarner.dll
 
-  SetOutPath "$INSTDIR\share\locale\fr\LC_MESSAGES"
-  File ${prefix}/share/locale/fr/LC_MESSAGES/attachwarner.mo
+  SetOutPath "$INSTDIR\share\locale\pt_BR\LC_MESSAGES"
+  File ${prefix}/share/locale/pt_BR/LC_MESSAGES/attachwarner.mo
+  SetOutPath "$INSTDIR\share\locale\pl\LC_MESSAGES"
+  File ${prefix}/share/locale/pl/LC_MESSAGES/attachwarner.mo
+  SetOutPath "$INSTDIR\share\locale\ja\LC_MESSAGES"
+  File ${prefix}/share/locale/ja/LC_MESSAGES/attachwarner.mo
+  SetOutPath "$INSTDIR\share\locale\fi\LC_MESSAGES"
+  File ${prefix}/share/locale/fi/LC_MESSAGES/attachwarner.mo
+  SetOutPath "$INSTDIR\share\locale\it\LC_MESSAGES"
+  File ${prefix}/share/locale/it/LC_MESSAGES/attachwarner.mo
+  SetOutPath "$INSTDIR\share\locale\es\LC_MESSAGES"
+  File ${prefix}/share/locale/es/LC_MESSAGES/attachwarner.mo
+  SetOutPath "$INSTDIR\share\locale\id\LC_MESSAGES"
+  File ${prefix}/share/locale/id/LC_MESSAGES/attachwarner.mo
+  SetOutPath "$INSTDIR\share\locale\cs\LC_MESSAGES"
+  File ${prefix}/share/locale/cs/LC_MESSAGES/attachwarner.mo
+  SetOutPath "$INSTDIR\share\locale\ru\LC_MESSAGES"
+  File ${prefix}/share/locale/ru/LC_MESSAGES/attachwarner.mo
+  SetOutPath "$INSTDIR\share\locale\sk\LC_MESSAGES"
+  File ${prefix}/share/locale/sk/LC_MESSAGES/attachwarner.mo
+  SetOutPath "$INSTDIR\share\locale\ca\LC_MESSAGES"
+  File ${prefix}/share/locale/ca/LC_MESSAGES/attachwarner.mo
+  SetOutPath "$INSTDIR\share\locale\hu\LC_MESSAGES"
+  File ${prefix}/share/locale/hu/LC_MESSAGES/attachwarner.mo
   SetOutPath "$INSTDIR\share\locale\de\LC_MESSAGES"
   File ${prefix}/share/locale/de/LC_MESSAGES/attachwarner.mo
+  SetOutPath "$INSTDIR\share\locale\fr\LC_MESSAGES"
+  File ${prefix}/share/locale/fr/LC_MESSAGES/attachwarner.mo
+  SetOutPath "$INSTDIR\share\locale\sr\LC_MESSAGES"
+  File ${prefix}/share/locale/sr/LC_MESSAGES/attachwarner.mo
 !endif
 SectionEnd

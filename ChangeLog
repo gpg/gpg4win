@@ -1,5 +1,17 @@
 2010-12-17  Colin Leroy  <colin@colino.net>
 
+	* src/uninst-tnef_parse.nsi, src/uninst-vcalendar.nsi,
+	  src/inst-gtkhtml2_viewer.nsi, src/uninst-attachwarner.nsi,
+	  src/inst-notification_plugin.nsi, src/uninst-notification_plugin.nsi,
+	  src/uninst-rssyl.nsi, src/inst-tnef_parse.nsi,
+	  src/inst-bsfilter_plugin.nsi, src/uninst-claws-mail.nsi,
+	  src/Makefile.am, src/inst-rssyl.nsi, src/uninst-gtkhtml2_viewer.nsi,
+	  src/inst-attachwarner.nsi, src/inst-claws-mail.nsi,
+	  src/inst-vcalendar.nsi, src/uninst-bsfilter_plugin.nsi:
+	  Ship all available Claws Mail translations
+	  
+2010-12-17  Colin Leroy  <colin@colino.net>
+
 	* packages/packages.current: Update Claws Mail and plugins
 	  (Claws Mail is now LDAP-enabled !)
 	  
