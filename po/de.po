@@ -249,7 +249,7 @@ msgid ""
 "Therewith you can use S/MIME, the configuration is stringently required. "
 "Skip this configuration only if you don't want to use S/MIME."
 msgstr ""
-"Damit Sie S/MIME nutzen können, ist die Konfiguration zwingend erfolderlich. "
+"Damit Sie S/MIME nutzen können, ist die Konfiguration zwingend erforderlich. "
 "Überspringen Sie diese nur, wenn Sie kein S/MIME nutzen möchten."
 
 #: src/installer.nsi:524
