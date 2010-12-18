@@ -119,8 +119,8 @@ chk    321f9cf0abfa1937401676ce60976d8779c39536
 
 server http://www.claws-mail.org/win32
 
-file   claws-mail-3.7.8cvs8.tar.bz2
-chk    57338d46d8052468bf284fee7e47953b7da24437
+file   claws-mail-3.7.8cvs9.tar.bz2
+chk    1389b0440dd0ffc452573803bcd0a08424954756
 
 file   attachwarner-0.2.20cvs1.tar.gz
 chk    69049b7a0a967cc1740faa6fc6a2f394186fc7a8

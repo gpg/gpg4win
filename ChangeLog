@@ -1,3 +1,7 @@
+2010-12-18  Colin Leroy  <colin@colino.net>
+
+	* packages/packages.current: Update Claws Mail (LDAP crash bug)
+
 2010-12-17  Colin Leroy  <colin@colino.net>
 
 	* src/uninst-tnef_parse.nsi, src/uninst-vcalendar.nsi,
