@@ -35,19 +35,69 @@ Please read the section "3. Known Bugs (and Workarounds)" before you
 start working with Gpg4win.
 
 Gpg4win supports these platforms:
- * Operating System: Windows 2000, XP (32/64), Vista (32/64), 7 (32/64)
- * MS Outlook: 2003, 2007
- Note: Currently, there is no 64-bit support for GpgEX 
- (see section 3, "Using GpgEX with Windows x64", for details)
+  * Operating System: Windows 2000, XP (32/64), Vista (32/64), 7 (32/64)
+  * MS Outlook: 2003, 2007
+  Note: Currently, there is no 64-bit support for GpgEX 
+  (see section 3, "Using GpgEX with Windows x64", for details)
 
 
 2. Changes
 ==========
-
-Changes compared to version 2.0.4:
-
 [The following issue numbers reference to https://issues.kolab.org/.]
 
+Included Gpg4win components in Version !VERSION! are:
+    GnuPG:          2.0.16
+    Kleopatra:      2.1.0-svn1192835 (2010-11-04)
+    GPA:            0.9.1-svn1024
+    GpgOL:          1.1.2
+    GpgEX:          0.9.7
+    Claws-Mail:     3.7.8cvs9
+    Kompendium DE:  3.0.0
+    Kompendium EN:  3.0.0-beta1
+
+
+Changes compared to version 2.1.0-beta1:
+----------------------------------------
+- Kleopatra:
+  * Checksums 
+    - create checksums for more than one files 
+      [kolab/issue4540]
+    - Create/verify checksum entry to file menu of Kleopatra added
+      [kolab/issue4464]
+    - Create and verify dialogs of Kleopatra extended
+      [kolab/issue4487]
+  * More GUI improvements:
+    - Kleopatra's main window: column 'fingerprint' with 'key-id' replaced 
+      [kolab/issue4542]
+    - Show key-id always in 8-digit format
+      [kolab/issue4659]
+    - Decrypt/verify files dialog layout improved
+      [kolab/issue4662] 
+  * SmartCard:
+    - Improve initialize smart card process with Kleopatra 
+      [kolab/issue4519]
+
+- Pinentry:
+  * Pinentry-qt4 hanger while signing e-mail fixed
+    (update from 0.8.0 to 0.8.1)
+    [kolab/issue4302] 
+
+- GnuPG-Backend:
+  * fixed: gpgconf doesn't restart gpg-agent automatically
+    [kolab/issue4563]
+  * bzip2 updated (from 1.0.4 to 1.0.6)
+  * Add better error code for missing certificates
+
+- Installer:
+  * Windows7 support for Gpg4win
+  * S/MIME configuration instruction added
+
+- Claws:
+  see http://www.claws-mail.org
+
+
+Changes compared to version 2.0.4:
+----------------------------------
 - Kleopatra:
   * Conflict dialog 
     - Certificate selection dialog now works context-sensitive
@@ -148,16 +198,6 @@ Changes compared to version 2.0.4:
   * Installer was signed with a CodeSigning certificate of GlobalSign
     (Publisher: "Intevation GmbH")
   * Portuguese translation added
-
-- Included Gpg4win components are:
-    GnuPG:          2.0.16
-    Kleopatra:      2.1.0-svn1167864 (2010-08-11)
-    GPA:            0.9.0
-    GpgOL:          1.1.2
-    GpgEX:          0.9.7
-    Claws-Mail:     3.7.6
-    Kompendium DE:  3.0.0
-    Kompendium EN:  3.0.0-beta1
 
 
 3. Known Bugs (and Workarounds)
