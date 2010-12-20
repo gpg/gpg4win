@@ -1,3 +1,7 @@
+2010-12-20  Colin Leroy  <colin@colino.net>
+
+	* packages/packages.current: Update Claws Mail (focus fixes)
+
 2010-12-20  Emanuel Schuetze <emanuel@intevation.de>
 
 	* configure.ac, NEWS: Prepare release 2.1.0-rc1.
