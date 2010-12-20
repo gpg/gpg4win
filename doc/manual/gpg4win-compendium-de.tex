@@ -230,8 +230,14 @@
     % Hyperlatex: Add links to pdf versions and Homepage
     \htmlonly{
         \xml{p}\small
-        \xlink{Aktuelle PDF-Version zum Download}{http://wald.intevation.org/frs/?group_id=11}\xml{br}
-        Zur \xlink{Gpg4win-Homepage}{http://www.gpg4win.de/}\xml{p}
+        \xlink{PDF-Version zum Download}{http://wald.intevation.org/frs/?group_id=11}
+        \xml{br}
+        \xlink{\htmlattributes*{img}{style=border:none title=English}
+           \htmlimg{../images-hyperlatex/english.png}{} 
+           English Version}{../en/\HlxThisUrl}
+        \xml{br}
+        Zur \xlink{Gpg4win-Homepage}{http://www.gpg4win.de/}
+        \xml{p}
     }
     % Authors
     \T\\[-1cm]

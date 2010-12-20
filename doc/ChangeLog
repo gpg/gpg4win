@@ -9,6 +9,9 @@
 	  website/download.htm4, website/download-de.htm4,
 	  website/template_header.m4: Update website to 2.1.0-rc1 release.
 
+	* manual/gpg4win-compendium-de.tex, manual/gpg4win-compendium-en.tex:
+	Add link to English/German HTML-title-page. Fix typo.
+
 2010-12-17  Emanuel Schuetze <emanuel@intevation.de>
 
 	* HOWTO-SMIME.en.txt: Translate HOWTO into English.
