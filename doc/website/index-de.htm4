@@ -9,6 +9,12 @@ PAGE_START
 <h2>Neuigkeiten</h2>
 <p>
 <dl>
+<dt><b>+++ 2010-12-20: Gpg4win 2.1.0-rc1 veröffentlicht +++</b></dt>
+<dd>Diese erste Vorabversion von 2.1.0 enthält wichtige Verbesserungen in
+Kleopatra, Pinentry und GnuPG. Details in der <a
+href="#">Bekanntmachung</a>.
+</dd>
+
 <dt><b>+++ 2010-09-02: Gpg4win 2.1.0-beta1 veröffentlicht +++</b></dt>
 <dd>Diese Version bringt u.a. viele Verbesserungen in Kleopatra
 und GnuPG mit. Details in der
@@ -21,25 +27,14 @@ href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2010-Septem
 erschienen.  Details in der <a
 href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2010-September/000011.html">Bekanntmachung</a>.
 
-</dd>
-<dt><b>+++ 2010-07-28: Gpg4win 2.0.4 veröffentlicht +++</b></dt>
-<dd>Security-Fix für GPGSM (GnuPG). Details in der <a
-href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2010-July/000010.html">Bekanntmachung</a>.
-</dd>
-
-<dt><b>+++ 2010-06-15: Neue Gpg4win-Spenden-Seite +++</b></dt>
-<dd>Unterstützen Sie die Gpg4win-Initiative und erscheinen Sie auf
-dieser <a href="donate-de.html">Spenderliste</a>!
-</dd>
-
 </dl>
 
 Ältere Meldungen im <a href="newsarchive-de.html">Newsarchiv</a>.
 
 <h2>Gpg4win 2.x</h2>
 
-Gpg4win ist ein Installationspaket für Windows (2000/XP/2003/Vista)
-mit Computer-Programmen und Handbüchern für Email- und Dateiverschlüsselung.
+Gpg4win ist ein Installationspaket für Windows (2000/XP/2003/Vista/7)
+mit Computer-Programmen und Handbüchern für E-Mail- und Dateiverschlüsselung.
 Die beiden relevanten kryptographischen Standards OpenPGP und S/MIME werden
 unterstützt.
 Gpg4win und die in Gpg4win enthaltene Software
@@ -67,7 +62,7 @@ einheitliche Benutzerführung für alle Krypto-Dialoge bereit. </td>
   <tr>
     <td>GpgOL:</td>
     <td>Eine Programmerweiterung für Microsoft Outlook 2003 und 2007
-(Emailverschlüsselung).</td>
+(E-Mail-Vverschlüsselung).</td>
   </tr>
   <tr>
     <td>GpgEX:</td>
@@ -75,7 +70,7 @@ einheitliche Benutzerführung für alle Krypto-Dialoge bereit. </td>
   </tr>
   <tr>
     <td>Claws Mail:</td>
-    <td>Ein komplettes Email-Programm inklusive Programmerweiterung für GnuPG.</td>
+    <td>Ein komplettes E-Mail-Programm inklusive Programmerweiterung für GnuPG.</td>
   </tr>
   <tr>
     <td>Gpg4win-Kompendium:</td>

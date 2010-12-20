@@ -17,6 +17,16 @@ PAGE_START
 href="./">Startseite</a>.</dt>
 <dd>[..]</dd>
 
+</dd>
+<dt><b>+++ 2010-07-28: Gpg4win 2.0.4 veröffentlicht +++</b></dt>
+<dd>Security-Fix für GPGSM (GnuPG). Details in der <a
+href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2010-July/000010.html">Bekanntmachung</a>.
+</dd>
+
+<dt><b>+++ 2010-06-15: Neue Gpg4win-Spenden-Seite +++</b></dt>
+<dd>Unterstützen Sie die Gpg4win-Initiative und erscheinen Sie auf
+dieser <a href="donate-de.html">Spenderliste</a>!
+</dd>
 
 <dt><b>+++ 2010-05-29: Gpg4win 2.0.3 veröffentlicht +++</b></dt>
 <dd>Details in der <a

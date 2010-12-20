@@ -8,37 +8,38 @@ m4_define(`EN_FILE', `download.html')
 PAGE_START
 <h1>Download</h1>
 
-<h2>Gpg4win 2.1.0-beta1</h2>
+<h2>Gpg4win 2.1.0-rc1</h2>
 
-<p>Die <b>erste Betaversion</b> (inklusive des deutschen und englishen Gpg4win-Kompendiums) 
+<p>Der <b>erste Release Candidate (RC)</b> - inklusive des deutschen
+und englischen Gpg4win-Kompendiums -
 von Gpg4win 2.1.0 kann hier herunter geladen werden:</p>
-<a href="http://ftp.gpg4win.org/Beta/gpg4win-2.1.0-beta1.exe" class="dlbutton2">Gpg4win&nbsp;2.1.0-beta1<br>
-<span class="version"><small>Größe: 39 MByte | Veröffentlicht: 2010-09-02</small></span>
+<a href="http://ftp.gpg4win.org/Beta/gpg4win-2.1.0-rc1.exe" class="dlbutton2">Gpg4win&nbsp;2.1.0-rc1<br>
+<span class="version"><small>Größe: 42 MByte | Veröffentlicht: 2010-12-20</small></span>
 </a>
 
 <ul>
-    <li><a href="http://ftp.gpg4win.org/Beta/gpg4win-2.1.0-beta1.exe.sig"
-        >OpenPGP-Signatur</a> (für gpg4win-2.1.0-beta1.exe)
-    <li><b>SHA1-Prüfsumme</b> (für gpg4win-2.1.0-beta1.exe):
-    <code>56eb7d0549439bf247c5b8feaa622bcddba8bd40  gpg4win-2.1.0-beta1.exe </code></li>
+    <li><a href="http://ftp.gpg4win.org/Beta/gpg4win-2.1.0-rc1.exe.sig"
+        >OpenPGP-Signatur</a> (für gpg4win-2.1.0-rc1.exe)
+    <li><b>SHA1-Prüfsumme</b> (für gpg4win-2.1.0-rc1.exe):
+    <code>37a001e240264708511edfe1f9bebf151b4f85da gpg4win-2.1.0-rc1.exe </code></li>
 
 <!--<li><a href="change-history-de.html">Änderungshistorie</a></li>-->
 
-<li>Quelltexte und andere Gpg4win-2.1.0-beta1 Varianten:
+<li>Quelltexte und andere Gpg4win-2.1.0-rc1 Varianten:
     <ul>
-    <li><a href="http://ftp.gpg4win.org/Beta/gpg4win-light-2.1.0-beta1.exe">gpg4win-light-2.1.0-beta1.exe</a>
+    <li><a href="http://ftp.gpg4win.org/Beta/gpg4win-light-2.1.0-rc1.exe">gpg4win-light-2.1.0-rc1.exe</a>
     (Vollversion <em>ohne</em> Kleopatra und Handbücher); 
-    <small>Größe: 23 MByte</small></li>
+    <small>Größe: 26 MByte</small></li>
     <li><a
-        href="http://ftp.gpg4win.org/Beta/gpg4win-2.1.0-beta1.tar.bz2">gpg4win-2.1.0-beta1.tar.bz2</a>
-    (Quelltextpaket); <small>Größe: 10 MByte</small></li>
+        href="http://ftp.gpg4win.org/Beta/gpg4win-2.1.0-rc1.tar.bz2">gpg4win-2.1.0-rc1.tar.bz2</a>
+    (Quelltextpaket); <small>Größe: 12 MByte</small></li>
     <li>Alle Versionen und OpenPGP-Signaturen unter <a
         href="http://ftp.gpg4win.org/Beta">ftp.gpg4win.org/Beta</a>.</li>
     </ul>
 </li>
 </ul>
 <p>Lesen Sie die aktuelle <a
-    href="http://ftp.gpg4win.org/Beta/README-2.1.0-beta1.de.txt">README-Datei</a>.
+    href="http://ftp.gpg4win.org/Beta/README-2.1.0-rc1.de.txt">README-Datei</a>.
 
 
 <h2>Gpg4win VERSION</h2>
