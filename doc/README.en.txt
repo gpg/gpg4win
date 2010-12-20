@@ -56,8 +56,8 @@ Included Gpg4win components in Version !VERSION! are:
     Kompendium EN:  3.0.0-beta1
 
 
-Changes compared to version 2.1.0-beta1:
-----------------------------------------
+Changes in Gpg4win version !VERSION! (!BUILD_ISODATE!):
+-------------------------------------------------------
 - Kleopatra:
   * Checksums 
     - create checksums for more than one files 
@@ -96,8 +96,8 @@ Changes compared to version 2.1.0-beta1:
   see http://www.claws-mail.org
 
 
-Changes compared to version 2.0.4:
-----------------------------------
+Changes in Gpg4win version 2.1.0-beta1 (2010-09-02):
+----------------------------------------------------
 - Kleopatra:
   * Conflict dialog 
     - Certificate selection dialog now works context-sensitive

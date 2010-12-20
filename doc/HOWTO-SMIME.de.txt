@@ -12,7 +12,7 @@ sinnvoll:
 
 1.  Ablegen der Wurzelzertifikate
 
-     Kopieren Sie eine Datei per Wurzelzertifikat nach:
+     Kopieren Sie eine Wurzelzertifikats-Datei nach:
      [Windows 2000/XP]:
         C:\Dokumente und Einstellungen\All Users\Anwendungsdaten\GNU\etc\
         dirmngr\trusted-certs\

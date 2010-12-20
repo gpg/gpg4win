@@ -59,8 +59,8 @@ Die integrierten Gpg4win-Komponenten in Version !VERSION! sind:
     Kompendium EN:  3.0.0-beta1
 
 
-Änderungen gegenüber Version 2.1.0-beta1:
------------------------------------------
+Änderungen in Gpg4win Version !VERSION! (!BUILD_ISODATE!):
+----------------------------------------------------------
 - Kleopatra:
   * Prüfsummen 
     - Prüfsummen erstellen für mehrere Dateien korrigiert 
@@ -99,8 +99,8 @@ Die integrierten Gpg4win-Komponenten in Version !VERSION! sind:
   siehe http://www.claws-mail.org
 
 
-Änderungen gegenüber Version 2.0.4:
------------------------------------
+Änderungen in Gpg4win Version 2.1.0-beta1 (2010-09-02):
+-------------------------------------------------------
 - Kleopatra:
   * Konfliktdialog 
     - Zertifikatsauswahldialog nun kontextsensitiv (abhängig ob signiert,
