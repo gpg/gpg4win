@@ -6,6 +6,25 @@ m4_define(`EN')
 m4_define(`DE_FILE', `index-de.html')
 
 PAGE_START
+
+<p>
+Gpg4win can be <b>installed and tested with just a few mouse clicks</b>.
+Of course you should be administrator of your system or have administration
+rights.
+</p>
+<p>
+The best point to start is with the illustrative
+<a
+href="./doc/en/gpg4win-compendium.html">Gpg4win Compendium</a>.
+</p>
+<p>
+We recommend subscribing to the
+<a href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-announce"
+  >Gpg4win announcement mailing list</a>
+to be automatically informed about new releases and other
+important Gpg4win news.
+</p>
+
 <h2>News</h2>
 <p>
 <dl>
@@ -80,20 +99,3 @@ You can choose all or some of the following <b>modules</b> during installation:
   </tr>
 </table>
 
-<p>
-Gpg4win can be <b>installed and tested with just a few mouse clicks</b>.
-Of course you should be administrator of your system or have administration
-rights.
-</p>
-<p>
-The best point to start is with the illustrative
-<a
-href="./doc/en/gpg4win-compendium.html">Gpg4win Compendium</a>.
-</p>
-<p>
-We recommend subscribing to the
-<a href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-announce"
-  >Gpg4win announcement mailing list</a>
-to be automatically informed about new releases and other
-important Gpg4win news.
-</p>

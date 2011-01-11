@@ -6,6 +6,24 @@ m4_define(`DE')
 m4_define(`EN_FILE', `index.html')
 PAGE_START
 
+<p>
+<b>Gpg4win ist mit wenigen Mausklicks installiert</b> und kann ausprobiert werden.
+Sie sollten aber auf Ihrem System Administrator sein oder Administrationsrechte
+besitzen.
+</p>
+<p>
+Beginnen Sie am besten mit dem anschaulichen 
+<a
+href="./doc/de/gpg4win-compendium.html">Gpg4win-Kompendium</a>.
+</p>
+<p>
+Wir empfehlen, sich in die
+<a href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-announce-de"
+  >Gpg4win-Bekanntmachungs-Mailingliste</a> einzuschreiben,
+um automatisch über neue Versionen und andere wichtige
+Neuigkeiten zu Gpg4win informiert zu werden.
+</p>
+
 <h2>Neuigkeiten</h2>
 <p>
 <dl>
@@ -79,22 +97,4 @@ Einsteiger und Fortgeschrittene).</td>
   </tr>
 </table>
 
-
-<p>
-<b>Gpg4win ist mit wenigen Mausklicks installiert</b> und kann ausprobiert werden.
-Sie sollten aber auf Ihrem System Administrator sein oder Administrationsrechte
-besitzen.
-</p>
-<p>
-Beginnen Sie am besten mit dem anschaulichen 
-<a
-href="./doc/de/gpg4win-compendium.html">Gpg4win-Kompendium</a>.
-</p>
-<p>
-Wir empfehlen, sich in die
-<a href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-announce-de"
-  >Gpg4win-Bekanntmachungs-Mailingliste</a> einzuschreiben,
-um automatisch über neue Versionen und andere wichtige
-Neuigkeiten zu Gpg4win informiert zu werden.
-</p>
 
