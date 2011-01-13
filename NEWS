@@ -3,6 +3,25 @@
 # The version number given below are for the standard installers as
 # distributed by www.gpg4win.org.
 
+Noteworthy changes in version 2.1.0-rc2 (unreleased)
+----------------------------------------------------
+
+(en) New GnuPG version
+
+(de) Neue GnuPG Version.
+
+~~~~~~~~~~~~~~~
+GnuPG:          2.0.17
+Kleopatra:      2.1.0-svn1192835 (2010-11-04)
+GPA:            0.9.1-svn1024
+GpgOL:          1.1.2
+GpgEX:          0.9.7
+Claws-Mail:     3.7.8cvs9
+Kompendium DE:  3.0.0
+Kompendium EN:  3.0.0-beta1
+~~~~~~~~~~~~~~~
+
+
 Noteworthy changes in version 2.1.0-rc1 (2010-12-20)
 ----------------------------------------------------
 
