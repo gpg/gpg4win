@@ -27,8 +27,8 @@
 # For the "light" version of the package, we explicitely disable some
 # of the packages right after including config.nsi.
 !ifdef GPG4WIN_LIGHT
-!ifdef HAVE_PKG_COMPENDIUM_DE
-!undef HAVE_PKG_COMPENDIUM_DE
+!ifdef HAVE_PKG_COMPENDIUM
+!undef HAVE_PKG_COMPENDIUM
 !endif
 !ifdef HAVE_PKG_MAN_NOVICE_EN
 !undef HAVE_PKG_MAN_NOVICE_EN
