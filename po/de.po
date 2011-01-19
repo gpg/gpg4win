@@ -501,7 +501,7 @@ msgstr ""
 #: src/inst-kleopatra.nsi:251
 msgctxt "DESC_Menu_kleopatra"
 msgid "Run the Kleopatra key management tool."
-msgstr "Das Schlüsselverwaltungsprogramm Kleopatra aufrufen."
+msgstr "Den Zertifikatsmanager Kleopatra aufrufen."
 
 #: src/inst-compendium.nsi:47
 msgctxt "DESC_Name_compendium"
