@@ -1,3 +1,8 @@
+2011-01-19  Emanuel Schuetze <emanuel@intevation.de>
+
+	* src/inst-gpa.nsi: Unselect GPA by default in gpg4win full installer. 
+          (Still selected in light installer.)
+
 2011-01-18  Werner Koch  <wk@g10code.com>
 
 	* src/gpg4win.nsi: s/HAVE_PKG_COMPENDIUM_DE/HAVE_PKG_COMPENDIUM/.

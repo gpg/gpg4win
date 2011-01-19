@@ -24,7 +24,12 @@
 !define prefix ${ipdir}/gpa-${gpg4win_pkg_gpa_version}
 
 
-${MementoSection} "GPA" SEC_gpa
+!ifndef GPG4WIN_LIGHT
+  ${MementoUnselectedSection} "GPA" SEC_gpa
+!else
+  ${MementoSection} "GPA" SEC_gpa
+!endif
+
   SetOutPath "$INSTDIR"
 !ifdef SOURCES
   File "${gpg4win_pkg_gpa}"
