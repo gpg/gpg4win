@@ -28,6 +28,11 @@ Section "-un.compendium"
   #Call un.SourceDelete
 !else
 
+  # delete old compendium stuff of previous gpg4win versions
+  Delete "$INSTDIR\share\gpg4win\html-de\*"
+  RMDir "$INSTDIR\share\gpg4win\html-de"
+
+  # delete current compendium files and folders
   Delete "$INSTDIR\share\gpg4win\compendium-html\images-hyperlatex\*"
   RMDir "$INSTDIR\share\gpg4win\compendium-html\images-hyperlatex"
   Delete "$INSTDIR\share\gpg4win\compendium-html\images-compendium\*"
@@ -41,6 +46,7 @@ Section "-un.compendium"
   RMDir "$INSTDIR\share\gpg4win"
   RMDir "$INSTDIR\share"
   RMDir "$INSTDIR"
+
 
 !endif
 SectionEnd

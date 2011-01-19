@@ -1227,7 +1227,8 @@ Section "-startmenu"
 
 !insertmacro MUI_STARTMENU_WRITE_BEGIN Application
     # Delete the old stuff.
-    Delete "$SMPROGRAMS\$STARTMENU_FOLDER\*.lnk"
+    Delete "$SMPROGRAMS\$STARTMENU_FOLDER\*"
+    Delete "$SMPROGRAMS\$STARTMENU_FOLDER\$(DESC_Menu_manuals)\*"
 
     CreateDirectory "$SMPROGRAMS\$STARTMENU_FOLDER"
     CreateDirectory "$SMPROGRAMS\$STARTMENU_FOLDER\$(DESC_Menu_manuals)"
@@ -1295,21 +1296,19 @@ Section "-startmenu"
     IntOp $R0 $R0 & ${SF_SELECTED} 
     IntCmp $R0 ${SF_SELECTED} 0 no_compendium_menu 
     CreateShortCut \
-        "$SMPROGRAMS\$STARTMENU_FOLDER\$(DESC_Menu_manuals)\$(DESC_Name_compendium_de_html).lnk" \
-	"$INSTDIR\share\gpg4win\compendium-html\de\gpg4win-compendium.html" \
-        "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_compendium_de_html)
-    CreateShortCut \
         "$SMPROGRAMS\$STARTMENU_FOLDER\$(DESC_Menu_manuals)\$(DESC_Name_compendium_de_pdf).lnk" \
 	"$INSTDIR\share\gpg4win\gpg4win-compendium-de.pdf" \
         "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_compendium_de_pdf)
     CreateShortCut \
-        "$SMPROGRAMS\$STARTMENU_FOLDER\$(DESC_Menu_manuals)\$(DESC_Name_compendium_en_html).lnk" \
-	"$INSTDIR\share\gpg4win\compendium-html\en\gpg4win-compendium.html" \
-        "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_compendium_en_html)
-    CreateShortCut \
         "$SMPROGRAMS\$STARTMENU_FOLDER\$(DESC_Menu_manuals)\$(DESC_Name_compendium_en_pdf).lnk" \
 	"$INSTDIR\share\gpg4win\gpg4win-compendium-en.pdf" \
         "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_compendium_en_pdf)
+    WriteINIStr \
+        "$SMPROGRAMS\$STARTMENU_FOLDER\$(DESC_Menu_manuals)\$(DESC_Name_compendium_de_html).url" \
+	"InternetShortcut" "URL" "http://www.gpg4win.org/doc/de/gpg4win-compendium.html"
+    WriteINIStr \
+        "$SMPROGRAMS\$STARTMENU_FOLDER\$(DESC_Menu_manuals)\$(DESC_Name_compendium_en_html).url" \
+	"InternetShortcut" "URL" "http://www.gpg4win.org/doc/en/gpg4win-compendium.html"
   no_compendium_menu:
 !endif
 
@@ -1341,25 +1340,27 @@ Section "-startmenu"
 #      "$INSTDIR\share\gnupg\faq.html" \
 #      "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_gnupg_faq)
 
-    CreateShortCut \
-      "$SMPROGRAMS\$STARTMENU_FOLDER\$(DESC_Menu_manuals)\Gpg4Win README.lnk" \
-      "$INSTDIR\share\gpg4win\README.$(T_LangCode).txt" \
-      "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_gpg4win_readme)
 
  StrCmp $LANGUAGE ${LANG_GERMAN} 0 +7
     # German
     CreateShortCut \
-      "$SMPROGRAMS\$STARTMENU_FOLDER\$(DESC_Menu_manuals)\Gpg4Win HOWTO SMIME.lnk" \
+      "$SMPROGRAMS\$STARTMENU_FOLDER\$(DESC_Menu_manuals)\Gpg4win HOWTO SMIME.lnk" \
       "$INSTDIR\share\gpg4win\HOWTO-SMIME.de.txt" \
       "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_gpg4win_howtosmime)
-    Goto leave
+    Goto leaveHowtosmimeStartmenu
     # English
     CreateShortCut \
-      "$SMPROGRAMS\$STARTMENU_FOLDER\$(DESC_Menu_manuals)\Gpg4Win HOWTO SMIME.lnk" \
+      "$SMPROGRAMS\$STARTMENU_FOLDER\$(DESC_Menu_manuals)\Gpg4win HOWTO SMIME.lnk" \
       "$INSTDIR\share\gpg4win\HOWTO-SMIME.en.txt" \
       "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_gpg4win_howtosmime)
-    leave:
-  
+    leaveHowtosmimeStartmenu:
+
+    CreateShortCut \
+      "$SMPROGRAMS\$STARTMENU_FOLDER\$(DESC_Menu_manuals)\Gpg4win README.lnk" \
+      "$INSTDIR\share\gpg4win\README.$(T_LangCode).txt" \
+      "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_gpg4win_readme)
+
+
 # No more uninstall link because Windows has its own feature to call
 #  the uninstaller.
 #    CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\Uninstall.lnk" \
@@ -1397,14 +1398,18 @@ Section "-startmenu"
   Delete "$DESKTOP\$(DESC_Desktop_manuals)\Claws-Mail Manual.lnk"
   Delete "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_compendium_de_pdf).lnk"
   Delete "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_compendium_de_html).lnk"
+  Delete "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_compendium_de_html).url"
   Delete "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_compendium_en_pdf).lnk"
   Delete "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_compendium_en_html).lnk"
+  Delete "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_compendium_en_html).url"
   Delete "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_man_novice_de).lnk"
   Delete "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_man_novice_en).lnk"
   Delete "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_man_advanced_de).lnk"
   Delete "$DESKTOP\$(DESC_Desktop_manuals)\GPGee Manual.lnk"
   Delete "$DESKTOP\$(DESC_Desktop_manuals)\GnuPG FAQ.lnk"
   Delete "$DESKTOP\$(DESC_Desktop_manuals)\Gpg4Win README.lnk"
+  Delete "$DESKTOP\$(DESC_Desktop_manuals)\Gpg4win README.lnk"
+  Delete "$DESKTOP\$(DESC_Desktop_manuals)\Gpg4win HOWTO SMIME.lnk"
 
   CreateDirectory "$DESKTOP\$(DESC_Desktop_manuals)"
 
@@ -1471,21 +1476,19 @@ Section "-startmenu"
     IntOp $R0 $R0 & ${SF_SELECTED} 
     IntCmp $R0 ${SF_SELECTED} 0 no_compendium_desktop
     CreateShortCut \
-        "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_compendium_de_html).lnk" \
-	"$INSTDIR\share\gpg4win\compendium-html\de\gpg4win-compendium.html" \
-        "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_compendium_de_html)
-    CreateShortCut \
         "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_compendium_de_pdf).lnk" \
 	"$INSTDIR\share\gpg4win\gpg4win-compendium-de.pdf" \
         "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_compendium_de_pdf)
     CreateShortCut \
-        "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_compendium_en_html).lnk" \
-	"$INSTDIR\share\gpg4win\compendium-html\en\gpg4win-compendium.html" \
-        "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_compendium_en_html)
-    CreateShortCut \
         "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_compendium_en_pdf).lnk" \
 	"$INSTDIR\share\gpg4win\gpg4win-compendium-en.pdf" \
         "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_compendium_en_pdf)
+    WriteINIStr \
+        "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_compendium_de_html).url" \
+	"InternetShortcut" "URL" "http://www.gpg4win.org/doc/de/gpg4win-compendium.html"
+    WriteINIStr \
+        "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_compendium_en_html).url" \
+	"InternetShortcut" "URL" "http://www.gpg4win.org/doc/en/gpg4win-compendium.html"
   no_compendium_desktop:
 !endif
 
@@ -1515,6 +1518,25 @@ Section "-startmenu"
 #    CreateShortCut "$DESKTOP\$(DESC_Desktop_manuals)\GnuPG FAQ.lnk" \
 #                   "$INSTDIR\share\gnupg\faq.html" \
 #                   "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_gnupg_faq)
+
+    CreateShortCut \
+      "$DESKTOP\$(DESC_Desktop_manuals)\Gpg4win README.lnk" \
+      "$INSTDIR\share\gpg4win\README.$(T_LangCode).txt" \
+      "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_gpg4win_readme)
+
+ StrCmp $LANGUAGE ${LANG_GERMAN} 0 +7
+    # German
+    CreateShortCut \
+      "$DESKTOP\$(DESC_Desktop_manuals)\Gpg4win HOWTO SMIME.lnk" \
+      "$INSTDIR\share\gpg4win\HOWTO-SMIME.de.txt" \
+      "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_gpg4win_howtosmime)
+    Goto leaveHowtosmimeDesktop
+    # English
+    CreateShortCut \
+      "$DESKTOP\$(DESC_Desktop_manuals)\Gpg4win HOWTO SMIME.lnk" \
+      "$INSTDIR\share\gpg4win\HOWTO-SMIME.en.txt" \
+      "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_gpg4win_howtosmime)
+    leaveHowtosmimeDesktop:
 
 no_desktop:
 

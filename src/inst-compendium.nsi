@@ -30,15 +30,6 @@ ${MementoSection} "$(DESC_Name_compendium)" SEC_compendium
 
   SetOutPath "$INSTDIR\share\gpg4win"
   File "${BUILD_DIR}/../doc/manual/gpg4win-compendium-*.pdf"
-  SetOutPath "$INSTDIR\share\gpg4win\compendium-html"
-  SetOutPath "$INSTDIR\share\gpg4win\compendium-html\images-hyperlatex"
-  File "${BUILD_DIR}/../doc/manual/compendium-html/images-hyperlatex/*"
-  SetOutPath "$INSTDIR\share\gpg4win\compendium-html\images-compendium"
-  File "${BUILD_DIR}/../doc/manual/compendium-html/images-compendium/*"
-  SetOutPath "$INSTDIR\share\gpg4win\compendium-html\de"
-  File "${BUILD_DIR}/../doc/manual/compendium-html/de/*"
-  SetOutPath "$INSTDIR\share\gpg4win\compendium-html\en"
-  File "${BUILD_DIR}/../doc/manual/compendium-html/en/*"
 !endif
 ${MementoSectionEnd}
 
@@ -67,9 +58,3 @@ LangString DESC_Menu_compendium_de_pdf ${LANG_ENGLISH} \
    "Show the Gpg4win Compendium (pdf, German)"
 LangString DESC_Menu_compendium_en_pdf ${LANG_ENGLISH} \
    "Show the Gpg4win Compendium (pdf, English)"
-
-# The string displayed in the startmenu for the HTML version.
-LangString DESC_Menu_compendium_de_html ${LANG_ENGLISH} \
-   "Show the Gpg4win Compendium (html, German)"
-LangString DESC_Menu_compendium_en_html ${LANG_ENGLISH} \
-   "Show the Gpg4win Compendium (html, English)"

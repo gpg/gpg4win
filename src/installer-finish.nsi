@@ -72,7 +72,7 @@ Section Uninstall
   StrCmp $R0 "" +2
   StrCpy $MYTMP $R0
   Delete "$SMPROGRAMS\$MYTMP\*.lnk"
-  Delete "$SMPROGRAMS\$MYTMP\$(DESC_Menu_manuals)\*.lnk"
+  Delete "$SMPROGRAMS\$MYTMP\$(DESC_Menu_manuals)\*"
   RMDir "$SMPROGRAMS\$MYTMP\$(DESC_Menu_manuals)"
 
   RMDir "$SMPROGRAMS\$MYTMP\$(DESC_Desktop_manuals)"
@@ -111,8 +111,10 @@ Section Uninstall
 !endif
 !ifdef HAVE_PKG_COMPENDIUM
   Delete "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_compendium_de_html).lnk"
+  Delete "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_compendium_de_html).url"
   Delete "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_compendium_de_pdf).lnk"
   Delete "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_compendium_en_html).lnk"
+  Delete "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_compendium_en_html).url"
   Delete "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_compendium_en_pdf).lnk"
 !endif
 !ifdef HAVE_PKG_MAN_NOVICE_DE
@@ -129,6 +131,8 @@ Section Uninstall
 !endif
   Delete "$DESKTOP\$(DESC_Desktop_manuals)\GnuPG FAQ.lnk"
   Delete "$DESKTOP\$(DESC_Desktop_manuals)\Gpg4Win README.lnk"
+  Delete "$DESKTOP\$(DESC_Desktop_manuals)\Gpg4win README.lnk"
+  Delete "$DESKTOP\$(DESC_Desktop_manuals)\Gpg4win HOWTO SMIME.lnk"
   RMDir "$DESKTOP\$(DESC_Desktop_manuals)"
 
   # Delete Quick Launch Bar links.
