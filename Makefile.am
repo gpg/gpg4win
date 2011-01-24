@@ -41,6 +41,7 @@ EXTRA_DIST = autogen.sh README.SVN ONEWS \
         patches/gpgme-1.2.0/05-is-socket.patch \
 	patches/gpgex-0.9.5/01-default-no-suffix.patch \
 	patches/gnupg2/01-version.patch.in \
+	patches/gnupg2/02-allow-mark-trusted.patch \
 	patches/gnupg2-2.0.9/01-close-all-handle.patch \
 	patches/gnupg2-2.0.9/02-de.po-fix.patch \
 	patches/gnupg2-2.0.9/03-i18n+etc.patch \
