@@ -1,3 +1,7 @@
+2011-01-27  Emanuel Schuetze <emanuel@intevation.de>
+
+	* configure.ac: Prepare release 2.1.0-rc2.
+
 2011-01-24  Werner Koch  <wk@g10code.com>
 
 	* patches/gnupg2/02-allow-mark-trusted.patch: New.
