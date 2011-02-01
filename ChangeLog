@@ -1,3 +1,7 @@
+2011-02-01  Marcus Brinkmann  <mb@g10code.com>
+
+	* src/Makefile.am (gpg4win_pkg_gnupg2_configure): Add --enable-gpgtar.
+
 2011-01-27  Emanuel Schuetze <emanuel@intevation.de>
 
 	* configure.ac: Prepare release 2.1.0-rc2.

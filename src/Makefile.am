@@ -197,6 +197,7 @@ gpg4win_pkg_gnupg2_configure = \
   --with-pth-prefix=$(idir) \
   --with-adns=$(idir) \
   --without-included-gettext \
+  --enable-gpgtar \
   --disable-regex
 
 # We would like to use --with-libiconv-prefix and
