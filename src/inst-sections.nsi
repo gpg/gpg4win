@@ -1341,7 +1341,7 @@ Section "-startmenu"
 #      "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_gnupg_faq)
 
 
- StrCmp $LANGUAGE ${LANG_GERMAN} 0 +7
+ StrCmp $LANGUAGE ${LANG_GERMAN} 0 +3
     # German
     CreateShortCut \
       "$SMPROGRAMS\$STARTMENU_FOLDER\$(DESC_Menu_manuals)\Gpg4win HOWTO SMIME.lnk" \
@@ -1524,7 +1524,7 @@ Section "-startmenu"
       "$INSTDIR\share\gpg4win\README.$(T_LangCode).txt" \
       "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_gpg4win_readme)
 
- StrCmp $LANGUAGE ${LANG_GERMAN} 0 +7
+ StrCmp $LANGUAGE ${LANG_GERMAN} 0 +3
     # German
     CreateShortCut \
       "$DESKTOP\$(DESC_Desktop_manuals)\Gpg4win HOWTO SMIME.lnk" \

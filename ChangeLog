@@ -1,3 +1,8 @@
+2011-02-01  Emanuel Schuetze <emanuel@intevation.de>
+
+	* src/inst-sections.nsi: Fix wrong desktop/startmenu shortcut
+	  installation if non-German installer language is selected.
+
 2011-02-01  Marcus Brinkmann  <mb@g10code.com>
 
 	* src/Makefile.am (gpg4win_pkg_gnupg2_configure): Add --enable-gpgtar.
