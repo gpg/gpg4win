@@ -1,3 +1,7 @@
+2011-02-03  Marcus Brinkmann  <marcus@g10code.com>
+
+	* packages/packages.current: Update libassuan and gpgme.
+
 2011-02-02  Marcus Brinkmann  <marcus@g10code.com>
 
 	* packages/packages.current: Update libassuan and gpgme.

@@ -354,11 +354,11 @@ chk  e28141d2b03612c09512651795976c58ed3f8035
 # (Snapshots)
 server ftp://ftp.g10code.com/g10code/scratch
 
-file libassuan-2.0.2-gita7e76c4.tar.bz2
-chk  54196e0301393a8e942ba1890834d84b
+file libassuan-2.0.2-git5560095.tar.bz2
+chk  4fbbd43dce466e1c137ceec767492f588f9ac54c
 
-file gpgme-1.3.1-git129741d.tar.bz2
-chk  9aeb7286985d558b4958d2c9f3860098
+file gpgme-1.3.1-git2bdbe88.tar.bz2
+chk  dc843fe30e7e02d6ae895f17276c2d831ef65a9b
 
 file libgpg-error-1.10-svn249.tar.bz2
 chk  71c16e8475dc3a75ac58f2b80eae6ec2a2a7e4a1
