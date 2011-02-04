@@ -1,3 +1,7 @@
+2011-02-04  Emanuel Schuetze <emanuel@intevation.de>
+
+	* packages/packages.current: Update kleopatra and kdelibs.
+
 2011-02-03  Marcus Brinkmann  <marcus@g10code.com>
 
 	* packages/packages.current: Update libassuan and gpgme.
