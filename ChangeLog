@@ -2,7 +2,9 @@
 
 	* packages/packages.current: Update kleopatra and kdelibs.
 	
-	* configure.ac: Prepare release 2.1.0-rc2.
+	* configure.ac, NEWS: Prepare release 2.1.0-rc2.
+
+	* doc/README.de.txt, doc/README.en.txt, NEWS: Update kleopatra version.
 
 2011-02-03  Marcus Brinkmann  <marcus@g10code.com>
 

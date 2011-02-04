@@ -50,7 +50,7 @@ Gpg4win unterstützt folgende Plattformen:
 
 Die integrierten Gpg4win-Komponenten in Version !VERSION! sind:
     GnuPG:          2.0.17
-    Kleopatra:      2.1.0 (2011-02-03)
+    Kleopatra:      2.1.0 (2011-02-04)
     GPA:            0.9.1-svn1024
     GpgOL:          1.1.2
     GpgEX:          0.9.7
