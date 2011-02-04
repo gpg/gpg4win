@@ -49,24 +49,45 @@ Gpg4win unterstützt folgende Plattformen:
 [Die folgenden Fallnummern beziehen sich auf https://issues.kolab.org/.]
 
 Die integrierten Gpg4win-Komponenten in Version !VERSION! sind:
-    GnuPG:          2.0.16
-    Kleopatra:      2.1.0-svn1192835 (2010-11-04)
+    GnuPG:          2.0.17
+    Kleopatra:      2.1.0 (2011-02-03)
     GPA:            0.9.1-svn1024
     GpgOL:          1.1.2
     GpgEX:          0.9.7
-    Claws-Mail:     3.7.8cvs9
+    Claws-Mail:     3.7.8cvs15
     Kompendium DE:  3.0.0
     Kompendium EN:  3.0.0-beta1
 
-
 Änderungen in Gpg4win Version !VERSION! (!BUILD_ISODATE!):
 ----------------------------------------------------------
+- Kleopatra:
+  * Kleopatra-Einrichten-S/MIME-Dialog:
+    - 'allow-mark-trusted' Option entfernt, wenn gnupg 'no-allow-mark-trusted'
+      anbietet
+
+- GnuPG-Backend:
+  * auf gnupg 2.0.17 aktualisiert 
+  * allow-mark-trusted aktiviert per Voreingestellung (no-allow-mark-trusted
+    eingeführt) 
+  * gpgme und libassuan aktualisiert (Anstieg von offenen Handles
+    bei Kleopatra damit behoben, siehe [kolab/issue4705])
+
+- Installer:
+  * Installation von Dektop-Verknüpfungen bei nicht-deutschsprachiger
+    Installation korrigiert
+
+- Claws:
+  siehe http://www.claws-mail.org
+
+
+Änderungen in Gpg4win Version 2.1.0-rc1 (2010-12-20):
+-----------------------------------------------------
 - Kleopatra:
   * Prüfsummen 
     - Prüfsummen erstellen für mehrere Dateien korrigiert 
       [kolab/issue4540]
     - Prüfsummen erstellen/überprüfen über das Datei-Menü von Kleopatra ermöglicht 
-      [kolab/issue4464] 
+      [kolab/issue4464]
     - Dialoge beim Erstellen/Überprüfen vergrößert 
       [kolab/issue4487]
   * Weitere GUI-Verbesserungen:
@@ -239,14 +260,12 @@ Die integrierten Gpg4win-Komponenten in Version !VERSION! sind:
      Verwenden Sie Kleopatra, um Ihre Karte (einmalig) zu initialisieren:
      - Karte einlegen.
      - Auf das blinkende Kleopatra-Smartcard-Systemtray-Icon klicken
-       (oder direkt das Systemtray-Kontextmenü "Smartcard" aufrufen und dort
+       (oder direkt das Systemtray-Kontextmenü "Smartcard" und dort
        den "LearnCard"-Eintrag aufrufen).
 
    Anschließend wird Ihr OpenPGP- bzw. X.509-Smartcard-Zertifikat in
    Kleopatra unter dem Reiter "Meine Zertifikate" angezeigt (markiert mit
-   einem Smartcard Icon).
-
-   Eine verbesserte Smartcard-Unterstützung für Kleopatra ist in Arbeit.
+   einem Smartcard-Icon).
 
 - Verwendung der Outlook-Programmerweiterung "GpgOL":
 
@@ -256,6 +275,7 @@ Die integrierten Gpg4win-Komponenten in Version !VERSION! sind:
   * Senden von signierten oder verschlüsselten Nachrichten über ein
     Exchange basiertes Konto funktioniert nicht.
     [siehe https://bugs.g10code.com/gnupg/issue1102]
+    (Hinweis: Beim verwenden von SMTP sollte das Senden mit GpgOL funktionieren.)
 
   * Outlook2007 stürzt beim Öffnen von Anhängen einer
     verschlüsselten Nachricht ab
@@ -292,7 +312,7 @@ Die integrierten Gpg4win-Komponenten in Version !VERSION! sind:
         C:\windows\syswow64\explorer.exe /separate
      Beachten Sie, dass Sie ggf. den Pfad zu Ihrer x64-basierten 
      Version von Windows anpassen müssen.
-     Dieser separate Aufruf scheint aktuell in Win7/64bit defekt zu sein.
+     Dieser 'separate'-Aufruf ist aktuell in Windows7/64bit defekt.
      Alternativ können Sie die Datei-Krypto-Operationen von GpgEX
      auch direkt über das Datei-Menü von Kleopatra erreichen.
  

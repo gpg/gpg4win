@@ -46,18 +46,38 @@ Gpg4win supports these platforms:
 [The following issue numbers reference to https://issues.kolab.org/.]
 
 Included Gpg4win components in Version !VERSION! are:
-    GnuPG:          2.0.16
-    Kleopatra:      2.1.0-svn1192835 (2010-11-04)
+    GnuPG:          2.0.17
+    Kleopatra:      2.1.0 (2011-02-03)
     GPA:            0.9.1-svn1024
     GpgOL:          1.1.2
     GpgEX:          0.9.7
-    Claws-Mail:     3.7.8cvs9
+    Claws-Mail:     3.7.8cvs15
     Kompendium DE:  3.0.0
     Kompendium EN:  3.0.0-beta1
 
-
 Changes in Gpg4win version !VERSION! (!BUILD_ISODATE!):
 -------------------------------------------------------
+- Kleopatra:
+  * Kleopatra Settings - S/MIME dialog:
+    - Option 'allow-mark-trusted' removed if gnupg provides
+      'no-allow-mark-trusted'
+
+- GnuPG Backend:
+  * Update to gnupg 2.0.17
+  * Option 'allow-mark-trusted' enabled by default (no-allow-mark-trusted
+    added)
+  * gpgme and libassuan updated (fixed increase of open handles in
+    Kleopatra, see [kolab/issue4705])
+
+- Installer:
+  * Installation of dektop shortcuts using non-German installer language fixed
+
+- Claws:
+  see http://www.claws-mail.org
+
+
+Changes in Gpg4win version 2.1.0-rc1 (2010-12-20):
+--------------------------------------------------
 - Kleopatra:
   * Checksums 
     - create checksums for more than one files 
@@ -82,7 +102,7 @@ Changes in Gpg4win version !VERSION! (!BUILD_ISODATE!):
     (update from 0.8.0 to 0.8.1)
     [kolab/issue4302] 
 
-- GnuPG-Backend:
+- GnuPG Backend:
   * fixed: gpgconf doesn't restart gpg-agent automatically
     [kolab/issue4563]
   * bzip2 updated (from 1.0.4 to 1.0.6)
@@ -112,9 +132,9 @@ Changes in Gpg4win version 2.1.0-beta1 (2010-09-02):
       replaced by new certificate selection dialog.
       [kolab/issue4213,4235]
   * (recursive) sign/encrypt of files and folders possible (see
-    GnuPG-Backend)
+    GnuPG Backend)
   * Create/verify checksum by sha1sum, sha256sum, md5sum possible
-    (see GnuPG-Backend)
+    (see GnuPG Backend)
   * Certificate lookup on certificate server
     - Search for fingerprint or key-id shows new information dialog 
       (some server requires 0x-Präfix in search string)
@@ -169,7 +189,7 @@ Changes in Gpg4win version 2.1.0-beta1 (2010-09-02):
 
 - GpgEX
   * (recursive) sign/encrypt of files and folders possible (see
-    GnuPG-Backend)
+    GnuPG Backend)
   * Create/verify checksum by sha1sum, sha256sum, md5sum possible
     (see GnuPG-Backend)
   * Portuguese translation added
@@ -182,7 +202,7 @@ Changes in Gpg4win version 2.1.0-beta1 (2010-09-02):
   * Fixed German translation for 'Cancel' cancel
     [kolab/issue4132]
 
-- GnuPG-Backend:
+- GnuPG Backend:
   * NEW: (recursive) sign/encrypt of files and folders possible
     [kolab/issue4298,4299,4300] 
   * NEW: Create/verify checksum by sha1sum, sha256sum, md5sum
@@ -236,8 +256,6 @@ Changes in Gpg4win version 2.1.0-beta1 (2010-09-02):
    from your smart card is shown in Kleopatra under the tab
    "My certificates" (marked with a smart card icon).
 
-   A better smart card support for Kleopatra is in process.
-
 - Using the Outlook Plugin "GpgOL":
 
   * You defintely should create copies of your old encrypted/signed
@@ -246,6 +264,7 @@ Changes in Gpg4win version 2.1.0-beta1 (2010-09-02):
   * Sending signed or encrypted messages via an Exchange based account
     does not yet work.
     [see https://bugs.g10code.com/gnupg/issue1102]
+    (Please note: Using SMTP with GpgOL and Exchange seems to be work.) 
 
   * Outlook2007 crashes after opening attachments of an encrypted message
     [see https://bugs.g10code.com/gnupg/issue1110]
@@ -277,7 +296,7 @@ Changes in Gpg4win version 2.1.0-beta1 (2010-09-02):
          C:\windows\syswow64\explorer.exe /separate
      Note: Adjust the path to your x64-based version of Windows if
      necessary. 
-     This separate command seems to be currently broken in Win7/64bit.
+     This 'separate' command seems to be currently broken in Windows7/64bit.
      Alternatively you can use the file crypto operations of GpgEX
      directly via the file menu of Kleopatra.
 
@@ -330,5 +349,6 @@ What follows is a list of copyright statements.
 Happy GiPiGing,
 
   Your Gpg4win Team
+
 
 ***end of file ***
