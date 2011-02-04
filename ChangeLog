@@ -1,3 +1,8 @@
+2011-02-04  Colin Leroy  <colin@colino.net>
+
+	* packages/packages.current: Update Claws Mail (file descriptor leak),
+	  VCalendar (fd leak), RSSyl (API update)
+
 2011-02-04  Emanuel Schuetze <emanuel@intevation.de>
 
 	* packages/packages.current: Update kleopatra and kdelibs.

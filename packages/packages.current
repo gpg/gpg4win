@@ -119,8 +119,8 @@ chk    321f9cf0abfa1937401676ce60976d8779c39536
 
 server http://www.claws-mail.org/win32
 
-file   claws-mail-3.7.8cvs15.tar.bz2
-chk    edbcffb9cbe72e4c241486d8eae6805d2864dd44
+file   claws-mail-3.7.8cvs47.tar.bz2
+chk    3187dd415e29a3ce7de6f525b9a8725121e36f68
 
 file   attachwarner-0.2.20cvs1.tar.gz
 chk    23cb741e6ffe00a91d9d0a1afac52ca7ac8f0a39
@@ -134,14 +134,14 @@ chk    c2738d2192ec613ee26a641c717499731b1d7007
 file   notification_plugin-0.26.tar.gz
 chk    cebaf393fbbabf789071e53dee5767fec3d31e10
 
-file   rssyl-0.29.tar.gz
-chk    49d0931220e3b07adda06e1feb3573c5f1866627
+file   rssyl-0.29cvs1.tar.gz
+chk    9c58a9c0117256904e34863fd2ba05129fbf0277
 
 file   tnef_parse-0.3.9.tar.gz
 chk    84201132eefaafe2bbf9490e142e5cdc5e4deb9a
 
-file   vcalendar-2.0.9.tar.gz
-chk    d071e35894cacc071a7d51235d272e2a95e626c8
+file   vcalendar-2.0.9cvs1.tar.gz
+chk    7f128ae2dcd17c5e19bae6bc8b0a2ae1f0f61cfd
 
 #
 # Pthreads for Windows.
