@@ -29,23 +29,27 @@ important Gpg4win news.
 <p>
 <dl>
 
-<dt><b>+++ 2010-12-20: Gpg4win 2.1.0-rc1 released +++</b></dt>
-<dd>with important improvements in Kleopatra, Pinentry and GnuPG. See the
-<a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2010-December/000049.html">announcement</a> for details.
+<dt>
+<a href="download.html"><b>+++
+2011-02-04: Gpg4win 2.1.0-rc2 released +++</b></a></dt>
+<dd>with important updates of GnuPG and Kleopatra.
 </dd>
 
-<dt><b>+++ 2010-09-02: Gpg4win 2.1.0-beta1 released +++</b></dt>
-<dd>with a lot of improvements in Kleopatra and GnuPG. See the
-<a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2010-September/000048.html">announcement</a>
-for details.
+<dt><a
+href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2010-December/000049.html"><b>+++
+2010-12-20: Gpg4win 2.1.0-rc1 released +++</b></a></dt> 
+<dd>with important improvements in Kleopatra, Pinentry and GnuPG.  
 </dd>
 
-<dt><b>+++ 2010-09-01: English Gpg4win Compendium 3.0.0-beta1 released +++</b></dt>
+<dt><a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2010-September/000048.html"><b>+++ 2010-09-02: Gpg4win 2.1.0-beta1 released +++</b></a></dt>
+<dd>with a lot of improvements in Kleopatra and GnuPG. </dd>
+
+<dt><a
+href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2010-September/000047.html"><b>+++
+2010-09-01: English Gpg4win Compendium 3.0.0-beta1 released
++++</b></a></dt>
 <dd>This is the first beta version of the translated English Gpg4win
-documentation.  See the <a
-href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2010-September/000047.html">announcement</a>
-for details.
-</dd>
+documentation. </dd>
 
 </dl>
 

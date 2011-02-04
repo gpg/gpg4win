@@ -27,24 +27,35 @@ Neuigkeiten zu Gpg4win informiert zu werden.
 <h2>Neuigkeiten</h2>
 <p>
 <dl>
-<dt><b>+++ 2010-12-20: Gpg4win 2.1.0-rc1 veröffentlicht +++</b></dt>
-<dd>Diese erste Vorabversion von 2.1.0 enthält wichtige Verbesserungen in
-Kleopatra, Pinentry und GnuPG. Details in der <a
-href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2010-December/000013.html">Bekanntmachung</a>.
-</dd>
-
-<dt><b>+++ 2010-09-02: Gpg4win 2.1.0-beta1 veröffentlicht +++</b></dt>
-<dd>Diese Version bringt u.a. viele Verbesserungen in Kleopatra
-und GnuPG mit. Details in der
+<dt>
 <a
-href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2010-September/000012.html">Bekanntmachung</a>.
+href="download-de.html"><b>+++
+2011-02-04: Gpg4win 2.1.0-rc2 veröffentlicht +++</b></a></dt>
+<dd>Diese zweite Vorabversion von 2.1.0 enthält wichtige
+Aktualisierungen in GnuPG und Kleopatra.
 </dd>
 
-<dt><b>+++ 2010-09-01: Englisches Gpg4win-Kompendium 3.0.0-beta1 veröffentlicht +++</b></dt>
-<dd>Das Gpg4win-Kompendium ist in einer ersten englischen Übersetung
-erschienen.  Details in der <a
-href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2010-September/000011.html">Bekanntmachung</a>.
+<dt><a
+href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2010-December/000013.html"><b>+++
+2010-12-20: Gpg4win 2.1.0-rc1 veröffentlicht +++</b></a></dt>
+<dd>Diese erste Vorabversion von 2.1.0 enthält wichtige Verbesserungen in
+Kleopatra, Pinentry und GnuPG. 
+</dd>
 
+<dt><a
+href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2010-September/000012.html"><b>+++
+2010-09-02: Gpg4win 2.1.0-beta1 veröffentlicht +++</b></a></dt>
+<dd>Diese Version bringt u.a. viele Verbesserungen in Kleopatra
+und GnuPG mit.
+</dd>
+
+<dt><a
+href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2010-September/000011.html"><b>+++
+2010-09-01: Englisches Gpg4win-Kompendium 3.0.0-beta1 veröffentlicht
++++</b></a></dt>
+<dd>Das Gpg4win-Kompendium ist in einer ersten englischen Übersetung
+erschienen.
+</dd>
 </dl>
 
 Ältere Meldungen im <a href="newsarchive-de.html">Newsarchiv</a>.
