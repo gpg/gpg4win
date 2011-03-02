@@ -51,7 +51,7 @@ Included Gpg4win components in Version !VERSION! are:
     GPA:            0.9.1-svn1024
     GpgOL:          1.1.2
     GpgEX:          0.9.7
-    Claws-Mail:     3.7.8cvs15
+    Claws-Mail:     3.7.8cvs47
     Kompendium DE:  3.0.0
     Kompendium EN:  3.0.0-beta1
 
