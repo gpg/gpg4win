@@ -58,71 +58,20 @@ Die integrierten Gpg4win-Komponenten in Version !VERSION! sind:
     Kompendium DE:  3.0.0
     Kompendium EN:  3.0.0-beta1
 
-Änderungen in Gpg4win Version !VERSION! (!BUILD_ISODATE!):
-----------------------------------------------------------
+Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!):
+------------------------------------------
 - Kleopatra:
-  * Kleopatra-Einrichten-S/MIME-Dialog:
-    - 'allow-mark-trusted' Option entfernt, wenn gnupg 'no-allow-mark-trusted'
-      anbietet
-
-- GnuPG-Backend:
-  * auf gnupg 2.0.17 aktualisiert 
-  * allow-mark-trusted aktiviert per Voreingestellung (no-allow-mark-trusted
-    eingeführt) 
-  * gpgme und libassuan aktualisiert (Anstieg von offenen Handles
-    bei Kleopatra damit behoben, siehe [kolab/issue4705])
-
-- Installer:
-  * Installation von Dektop-Verknüpfungen bei nicht-deutschsprachiger
-    Installation korrigiert
-
-- Claws:
-  siehe http://www.claws-mail.org
-
-
-Änderungen in Gpg4win Version 2.1.0-rc1 (2010-12-20):
------------------------------------------------------
-- Kleopatra:
+  * rekursives Signiern/Verschlüsseln von mehreren Dateien und
+    Ordnern möglich (siehe GnuPG-Backend)
   * Prüfsummen 
+    - Prüfsummen erstellen/überprüfen (mittels sha1sum, sha256sum,
+      md5sum) möglich (siehe GnuPG-Backend)
     - Prüfsummen erstellen für mehrere Dateien korrigiert 
       [kolab/issue4540]
     - Prüfsummen erstellen/überprüfen über das Datei-Menü von Kleopatra ermöglicht 
       [kolab/issue4464]
     - Dialoge beim Erstellen/Überprüfen vergrößert 
       [kolab/issue4487]
-  * Weitere GUI-Verbesserungen:
-    - Kleopatras Hauptfenster: Spalte 'Fingerabdruck' durch 'Schlüsselkennung' ersetzt 
-      [kolab/issue4542]
-    - Schlüsselkennung konsistent 8-stellig darstellen
-      [kolab/issue4659]
-    - Datei-entschlüsseln/prüfen-Dialoglayout optimiert
-      [kolab/issue4662] 
-  * SmartCard:
-    - Initialisierung einer X.509-Karte in Kleopatra verbessert 
-      [kolab/issue4519]
-
-- Pinentry:
-  * Pinentry-qt4-Hänger beim E-Mail-Signieren behoben
-    (aktualisiert von 0.8.0 auf 0.8.1)
-    [kolab/issue4302] 
-
-- GnuPG-Backend:
-  * Automatischer Neustart des gpg-agent durch gpgconf korrigiert
-    [kolab/issue4563]
-  * bzip2 aktualisiert (von 1.0.4 auf 1.0.6)
-  * Fehlercode für fehlende Zertifikate hinzugefügt
-
-- Installer:
-  * Windows7-Unterstützung für Gpg4win
-  * S/MIME-Konfigurationsanleitung hinzugefügt
-
-- Claws:
-  siehe http://www.claws-mail.org
-
-
-Änderungen in Gpg4win Version 2.1.0-beta1 (2010-09-02):
--------------------------------------------------------
-- Kleopatra:
   * Konfliktdialog 
     - Zertifikatsauswahldialog nun kontextsensitiv (abhängig ob signiert,
       verschlüsselt oder signiert/verschlüsselt gewählt wurde)
@@ -135,10 +84,6 @@ Die integrierten Gpg4win-Komponenten in Version !VERSION! sind:
     - Kein extra Protokoll-Auswahldialog mehr erforderlich - Auswahl
       von OpenPGP und S/MIME nun über neuen Zertifikatsauswahldialog möglich
       [kolab/issue4213,4235]
-  * (rekursives) Signiern/Verschlüsseln von mehreren Dateien und
-    Ordnern möglich (siehe GnuPG-Backend)
-  * Prüfsummen erstellen/überprüfen (mittels sha1sum, sha256sum,
-    md5sum) möglich (siehe GnuPG-Backend)
   * Zertifikatssuche auf Zertifiaktsserver
     - Suche nach Fingerabdruck oder Schlüsselkennung: 
       neuer Hinweisdialog (teiweise 0x-Präfix erforderlich)
@@ -149,6 +94,12 @@ Die integrierten Gpg4win-Komponenten in Version !VERSION! sind:
     - Schlüsselklennung in Schritt 2 hinzugefügt
       [kolab/issue4460]
   * Diverse kleinere GUI-Verbesserungen
+    - Kleopatras Hauptfenster: Spalte 'Fingerabdruck' durch 'Schlüsselkennung' ersetzt 
+      [kolab/issue4542]
+    - Schlüsselkennung konsistent 8-stellig darstellen
+      [kolab/issue4659]
+    - Datei-entschlüsseln/prüfen-Dialoglayout optimiert
+      [kolab/issue4662] 
     - Export eines geheimen X.509-Zertifikats verwendet nun utf8 als
       Vorgabe für Passphrase-Zeichensatz
       [kolab/issue4454]
@@ -179,7 +130,12 @@ Die integrierten Gpg4win-Komponenten in Version !VERSION! sind:
     - Fehler beim Entschlüsseln/Prüfen einer speziellen S/MIME E-Mail
       korrigiert
       [kolab/issue4179]
+  * Kleopatra-Einrichten-S/MIME-Dialog:
+    - 'allow-mark-trusted' Option entfernt, wenn gnupg 'no-allow-mark-trusted'
+      anbietet
   * SmartCard 
+    - Initialisierung einer X.509-Karte in Kleopatra verbessert 
+      [kolab/issue4519]
     - Blinkendes SystemTray Kleopatra-Icon beim Einlegen einer X.509
       SmartCard. Klick startet learncard Befehl bzw. Nullpin Dialog.
       [kolab/issue4191]
@@ -190,26 +146,16 @@ Die integrierten Gpg4win-Komponenten in Version !VERSION! sind:
     - DE: Deutsche Übersetzung angepasst
     - diverse kleinere Stabilitäts- und GUI-Verbesserungen
 
-- GpgOL:
-  * portugiesische Übersetzung hinzugefügt
-  * aktualisiert auf neues libassuan2 Interface und libgpg-error 1.9
-
-- GpgEX
-  * (rekursives) Signiern/Verschlüsseln von mehreren Dateien und
-    Ordnern möglich (siehe GnuPG-Backend)
-  * Prüfsummen erstellen/überprüfen (mittels sha1sum, sha256sum,
-    md5sum) möglich (siehe GnuPG-Backend)
-  * portugiesische Übersetzung hinzugefügt
-  * aktualisiert auf libgpg-error 1.9
-
-- Pinentry:
-  * Voreinstellung wieder umgestellt auf QT4 
-    (für gpg4win-light-Installer weiterhin GTK aktiv)
-    [kolab/issue4378]
-  * DE: Übersetzung des Buttons 'Cancel' zu 'Abbrechen'
-    [kolab/issue4132]
-
 - GnuPG-Backend:
+  * aktualisiert auf gnupg 2.0.17
+  * allow-mark-trusted aktiviert per Voreingestellung (no-allow-mark-trusted
+    eingeführt) 
+  * gpgme und libassuan aktualisiert (Anstieg von offenen Handles
+    bei Kleopatra damit behoben, siehe [kolab/issue4705])
+  * Automatischer Neustart des gpg-agent durch gpgconf korrigiert
+    [kolab/issue4563]
+  * bzip2 aktualisiert (von 1.0.4 auf 1.0.6)
+  * Fehlercode für fehlende Zertifikate hinzugefügt
   * (rekursives) Signiern/Verschlüsseln mit gpgtar
     [kolab/issue4298,4299,4300] 
   * Prüfsummen erstellen/überprüfen (mittels sha1sum, sha256sum,
@@ -219,12 +165,41 @@ Die integrierten Gpg4win-Komponenten in Version !VERSION! sind:
   * Diverse Stabilitätverbesserung 
     [u.a.: kolab/issue4212] 
 
+- GpgEX
+  * (rekursives) Signiern/Verschlüsseln von mehreren Dateien und
+    Ordnern möglich (siehe GnuPG-Backend)
+  * Prüfsummen erstellen/überprüfen (mittels sha1sum, sha256sum,
+    md5sum) möglich (siehe GnuPG-Backend)
+  * portugiesische Übersetzung hinzugefügt
+  * aktualisiert auf libgpg-error 1.9
+
+- GpgOL:
+  * portugiesische Übersetzung hinzugefügt
+  * aktualisiert auf neues libassuan2 Interface und libgpg-error 1.9
+
+- Pinentry:
+  * Pinentry-qt4-Hänger beim E-Mail-Signieren behoben
+    (aktualisiert von 0.8.0 auf 0.8.1)
+    [kolab/issue4302]
+  * Voreinstellung wieder umgestellt auf QT4 
+    (für gpg4win-light-Installer weiterhin GTK aktiv)
+    [kolab/issue4378]
+  * DE: Übersetzung des Buttons 'Cancel' zu 'Abbrechen'
+    [kolab/issue4132]
+
 - Installer:
+  * Installation von Dektop-Verknüpfungen bei nicht-deutschsprachiger
+    Installation korrigiert
+  * Windows7-Unterstützung für Gpg4win
+  * S/MIME-Konfigurationsanleitung hinzugefügt
   * Englisches Kompendium v3.0.0-beta1 hinzugefügt, altes Handbuch
     entfernt
   * Installer mit CodeSigning-Zertifikat von GlobalSign signiert
     (Herausgeber "Intevation GmbH")
   * portugiesische Übersetzung hinzugefügt
+
+- Claws:
+  siehe http://www.claws-mail.org
 
 
 3. Bekannte Probleme (und Abhilfe)

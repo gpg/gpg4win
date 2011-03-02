@@ -55,70 +55,20 @@ Included Gpg4win components in Version !VERSION! are:
     Kompendium DE:  3.0.0
     Kompendium EN:  3.0.0-beta1
 
-Changes in Gpg4win version !VERSION! (!BUILD_ISODATE!):
--------------------------------------------------------
+New in Gpg4win version !VERSION! (!BUILD_ISODATE!):
+------------------------------------------
 - Kleopatra:
-  * Kleopatra Settings - S/MIME dialog:
-    - Option 'allow-mark-trusted' removed if gnupg provides
-      'no-allow-mark-trusted'
-
-- GnuPG Backend:
-  * Update to gnupg 2.0.17
-  * Option 'allow-mark-trusted' enabled by default (no-allow-mark-trusted
-    added)
-  * gpgme and libassuan updated (fixed increase of open handles in
-    Kleopatra, see [kolab/issue4705])
-
-- Installer:
-  * Installation of dektop shortcuts using non-German installer language fixed
-
-- Claws:
-  see http://www.claws-mail.org
-
-
-Changes in Gpg4win version 2.1.0-rc1 (2010-12-20):
---------------------------------------------------
-- Kleopatra:
+  * recursive sign/encrypt of files and folders possible (see
+    GnuPG Backend)
   * Checksums 
+    - Create/verify checksum by sha1sum, sha256sum, md5sum possible
+      (see GnuPG Backend)
     - create checksums for more than one files 
       [kolab/issue4540]
     - Create/verify checksum entry to file menu of Kleopatra added
       [kolab/issue4464]
     - Create and verify dialogs of Kleopatra extended
       [kolab/issue4487]
-  * More GUI improvements:
-    - Kleopatra's main window: column 'fingerprint' with 'key-id' replaced 
-      [kolab/issue4542]
-    - Show key-id always in 8-digit format
-      [kolab/issue4659]
-    - Decrypt/verify files dialog layout improved
-      [kolab/issue4662] 
-  * SmartCard:
-    - Improve initialize smart card process with Kleopatra 
-      [kolab/issue4519]
-
-- Pinentry:
-  * Pinentry-qt4 hanger while signing e-mail fixed
-    (update from 0.8.0 to 0.8.1)
-    [kolab/issue4302] 
-
-- GnuPG Backend:
-  * fixed: gpgconf doesn't restart gpg-agent automatically
-    [kolab/issue4563]
-  * bzip2 updated (from 1.0.4 to 1.0.6)
-  * Add better error code for missing certificates
-
-- Installer:
-  * Windows7 support for Gpg4win
-  * S/MIME configuration instruction added
-
-- Claws:
-  see http://www.claws-mail.org
-
-
-Changes in Gpg4win version 2.1.0-beta1 (2010-09-02):
-----------------------------------------------------
-- Kleopatra:
   * Conflict dialog 
     - Certificate selection dialog now works context-sensitive
       (dependent on selecting sign, encrypt or sign/encrypt)
@@ -131,10 +81,6 @@ Changes in Gpg4win version 2.1.0-beta1 (2010-09-02):
     - No protocol (OpenPGP or S/MIME) pre-selection dialog required -
       replaced by new certificate selection dialog.
       [kolab/issue4213,4235]
-  * (recursive) sign/encrypt of files and folders possible (see
-    GnuPG Backend)
-  * Create/verify checksum by sha1sum, sha256sum, md5sum possible
-    (see GnuPG Backend)
   * Certificate lookup on certificate server
     - Search for fingerprint or key-id shows new information dialog 
       (some server requires 0x-Präfix in search string)
@@ -145,6 +91,12 @@ Changes in Gpg4win version 2.1.0-beta1 (2010-09-02):
     - Key-id in step 2 added
       [kolab/issue4460]
   * Several minor and medium (GUI) improvements:
+    - Kleopatra's main window: column 'fingerprint' with 'key-id' replaced 
+      [kolab/issue4542]
+    - Show key-id always in 8-digit format
+      [kolab/issue4659]
+    - Decrypt/verify files dialog layout improved
+      [kolab/issue4662] 
     - Export of secret X.509 certificats use new default (utf8) for
       passphrase charset
       [kolab/issue4454]
@@ -171,7 +123,12 @@ Changes in Gpg4win version 2.1.0-beta1 (2010-09-02):
       [kolab/issue4327]
     - Fixed exception for decrypt/verify special S/MIME e-mail
       [kolab/issue4179]
-  * SmartCard 
+  * Kleopatra Settings - S/MIME dialog:
+    - Option 'allow-mark-trusted' removed if gnupg provides
+      'no-allow-mark-trusted'
+  * SmartCard
+    - Improve initialize smart card process with Kleopatra 
+      [kolab/issue4519]
     - Detecting smartcard: Kleopatra's systemtray icon blinks after
       inserting X.509 card. Click starts learn card command or opens
       nullpin dialog.
@@ -183,9 +140,24 @@ Changes in Gpg4win version 2.1.0-beta1 (2010-09-02):
     - German translations fixed
     - Several minor and medium issues and errors were fixed
 
-- GpgOL:
-  * Portuguese translation added
-  * updated to new libassuan2 interface and libgpg-error 1.9
+- GnuPG Backend:
+  * Update to gnupg 2.0.17
+  * Option 'allow-mark-trusted' enabled by default (no-allow-mark-trusted
+    added)
+  * gpgme and libassuan updated (fixed increase of open handles in
+    Kleopatra, see [kolab/issue4705])
+  * fixed: gpgconf doesn't restart gpg-agent automatically
+    [kolab/issue4563]
+  * bzip2 updated (from 1.0.4 to 1.0.6)
+  * Add better error code for missing certificates
+  * (recursive) sign/encrypt of files and folders possible
+    [kolab/issue4298,4299,4300] 
+  * Create/verify checksum by sha1sum, sha256sum, md5sum
+    possible via GpgEX
+    [kolab/issue41634,294,4295,4296,4297,4321]
+  * Updated to new libassuan v2 interface
+  * Several minor and medium improvements of stability
+    [u.a.: kolab/issue4212]
 
 - GpgEX
   * (recursive) sign/encrypt of files and folders possible (see
@@ -195,29 +167,32 @@ Changes in Gpg4win version 2.1.0-beta1 (2010-09-02):
   * Portuguese translation added
   * Updated to libgpg-error 1.9
 
+- GpgOL:
+  * Portuguese translation added
+  * updated to new libassuan2 interface and libgpg-error 1.9
+
 - Pinentry:
+  * Pinentry-qt4 hanger while signing e-mail fixed
+    (update from 0.8.0 to 0.8.1)
+    [kolab/issue4302] 
   * Change default: switch to QT4
     (GTK still enabled for gpg4win-light installer)
     [kolab/issue4378]
   * Fixed German translation for 'Cancel' cancel
     [kolab/issue4132]
 
-- GnuPG Backend:
-  * NEW: (recursive) sign/encrypt of files and folders possible
-    [kolab/issue4298,4299,4300] 
-  * NEW: Create/verify checksum by sha1sum, sha256sum, md5sum
-    possible via GpgEX
-    [kolab/issue41634,294,4295,4296,4297,4321]
-  * Updated to new libassuan v2 interface
-  * Several minor and medium improvements of stability
-    [u.a.: kolab/issue4212] 
-
 - Installer:
-  * NEW: English language version of the Gpg4win Compendium
+  * Installation of dektop shortcuts using non-German installer language fixed
+  * Windows7 support for Gpg4win
+  * S/MIME configuration instruction added
+  * English language version of the Gpg4win Compendium
     (v3.0.0-beta1) added. Old novices manual removed.
   * Installer was signed with a CodeSigning certificate of GlobalSign
     (Publisher: "Intevation GmbH")
   * Portuguese translation added
+
+- Claws:
+  see http://www.claws-mail.org
 
 
 3. Known Bugs (and Workarounds)
