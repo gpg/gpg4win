@@ -1,3 +1,7 @@
+2011-02-04  Emanuel Schuetze <emanuel@intevation.de>
+
+	* configure.ac, NEWS: Prepare release 2.1.0.
+
 2011-02-04  Colin Leroy  <colin@colino.net>
 
 	* packages/packages.current: Update Claws Mail (file descriptor leak),
