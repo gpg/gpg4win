@@ -1,3 +1,10 @@
+2011-03-04  Colin Leroy <colin@colino.net>
+
+	* packages/packages.current: Update Claws Mail (a few fixes), RSSyl (mem leak),
+	  Notification (ghost icon in systray), GtkHTML (wrong link on occasions),
+	  Vcalendar (Follow Claws API)
+	* configure.ac: Reenable svn mode
+
 2011-02-04  Emanuel Schuetze <emanuel@intevation.de>
 
 	* configure.ac, NEWS: Prepare release 2.1.0.
