@@ -325,10 +325,10 @@ Bestandteile aufgelistet.
 7. Rechtliche Hinweise zu den einzelnen Bestandteilen der Software
 ==================================================================
 
-Gpw4win besteht aus einer ganzen Reihe von unabhängig entwickelten
+Gpg4win besteht aus einer ganzen Reihe von unabhängig entwickelten
 Packeten, die teilweise unterschiedliche Lizenzen haben.  Der Großteil
 dieser Software ist, wie Gpg4win selbst, steht unter der GNU General
-Public License (GNU GPL).  Gemeinsam ist allen, daß die Software ohne
+Public License (GNU GPL).  Gemeinsam ist, dass die Software ohne
 Restriktionen benutzt werden kann, verändert werden darf und
 Änderungen weitergeben dürfen.  Wenn die Quelltexte (also
 gpg4win-x.y.z.tar.bz2) mit weitergegeben werden und auf die die GNU

@@ -4,10 +4,20 @@ m4_dnl $Id$
 
 m4_define(`DE')
 m4_define(`EN_FILE', `support.html')
+
+m4_define(`TITLE', `Professioneller Support')
+m4_define(`MAIN', `support')
+
 PAGE_START
 
-<h1>Professioneller Support für Gpg4win</h1>
+<div id="intro">
+    <h2>Professioneller Support für Gpg4win</h2>
+    <p>Überlassen Sie die Arbeit den Experten.</p> 
+</div>
 
+<div id="main">
+
+<h2>Problem erkennen</h2>
 <p>
 Der Support, der über die öffentlichen <a href="community-de.html">Mailinglisten, Webforen und
 den Bug Tracker</a> geliefert wird, kommt in der Regel von Freiwilligen.
@@ -16,6 +26,7 @@ Anwenderschaft hat man in der Regel gute Aussichten auf hilfreiche Reaktionen.
 Zeitnahe und erschöpfend richtige Antworten können natürlich nicht garantiert werden.
 </p>
 
+<h2>Antworten finden</h2>
 <p>
 Werden zeitnahe Antworten, schnelle Anpassungen oder Korrekturen sowie
 allgemeine Beratung für den Einsatz (Installation, Konfiguration, etc.)
@@ -28,15 +39,16 @@ Dieser ist individuell zugeschnitten, daher
 finden Sie hier keine Preistabelle oder ähnliches.
 </p>
 
+<h2>Angebotsanfrage stellen</h2>
 <p>
 Bitte kontaktieren Sie uns 
 <!--über das untenstehende Formular oder direkt an-->
 unter <a
 href="mailto:gpg4win-professional@intevation.de">gpg4win-professional@intevation.de</a>,
 wenn Sie professionellen Support durch die o.g. drei Unternehmen einkaufen
-möchten.
+möchten.</p>
 
-Beschreiben Sie dabei am besten
+<p>Beschreiben Sie dabei am besten
 schon mit der Anfrage Ihre fachlichen Anforderungen (z.B. welche Anwendungen,
 welche Krypto-Workflows), sowie Anzahl der Nutzer, Ihre IT-Infrastruktur (z.B. welche
 Windows-Versionen, Terminal-Server, V-Server), welche Aufgaben Sie bei sich
@@ -48,88 +60,20 @@ Wir werden uns dann bei Ihnen mit einer Einschätzung der entstehenden Kosten
 sowie ggf. Rückfragen melden.
 </p>
 
-<!--
-<h2>Angebotsanfrage stellen</h2>
 
-<p>
-Wir schicken Ihnen gerne ein individuelles Angebot auf Ihre Anfrage.
+<h2>Unterstützungsart</h2>
+
+<p><b>Professionelle Unterstützung beim Einsatz von Gpg4win:</b><br>
+Sie haben z.B. ein Problem bei der Konfiguration in Ihrem
+Unternehmen oder benötigen Unterstützung beim korrekten Betrieb von
+Gpg4win? Dann bieten wir Ihnen unseren technischen Support an.
 </p>
 
-<form action="support-de.html" method="get">
-
-<table cellpadding="10">
-<tr valign="top">
-
-  <td><b>Unterstützungsart</b></td>
-  <td>
-    Ich habe Interesse an ...
-    <p>
-        <input type="radio" name="product" value="support" 
-        checked>professioneller Unterstützung beim Einsatz von
-        <b>Gpg4win 2.0.0</b>.<br>
-        (Sie haben z.B. ein Problem bei der Konfiguration in Ihrem
-         Unternehmen oder benötigen Unterstützung beim korrekten Betrieb von
-         Gpg4win? Dann bieten wir Ihnen unseren technischen Support an.)
-    </p>
-    <p>
-        <input type="radio" name="product" value="development"
-        >der Weiterentwicklung von <b>Gpg4win 2.0.0</b>.<br>
-        (Sie vermissen eine wichtige Funktion in Gpg4win? Sie haben
-        spezielle Vorstellungen, um die Weiterentwicklung von Gpg4win2 zu
-        fördern? Dann kontaktieren Sie uns! Wir stellen Ihnen - nach
-        Einschätzung unserer Entwicklern - eine individuelles Angbot zusammen.)
-    </p>
-    </td>
-</tr>
-<tr valign="top">
-  <td><b>Unternehmen / Einrichtung</b></td>
-  <td><input name="company" type="text" size="50" maxlength="50"></td>
-</tr>
-<tr valign="top">
-  <td><b>Anschrift</b></td>
-  <td>
-    <textarea name="address" cols="50" rows="4"></textarea>
-  </td>
-</tr>
-<tr valign="top">
-  <td><b>Ansprechpartner</b></td>
-  <td><input name="name" type="text" size="50" maxlength="50"></td>
-</tr>
-<tr valign="top">
-  <td><b>E-Mail</b></td>
-  <td><input name="email" type="text" size="50" maxlength="50"></td>
-</tr>
-<tr valign="top">
-  <td><b>Telefon</b></td>
-  <td><input name="phone" type="text" size="50" maxlength="50"></td>
-</tr>
-<tr valign="top">
-  <td><b>Bevorzugte Kontakt-Methode</b></td>
-  <td>
-    <input type="radio" name="preferred_contact" value="email" checked><b>E-Mail</b>
-    <input type="radio" name="preferred_contact" value="postal"><b>Postalisch</b>
-    <input type="radio" name="preferred_contact" value="phone"><b>Telefon</b>
-  </td>
-</tr>
-<tr valign="top">
-  <td><b>Rabatte</b></td>
-  <td>
-    <input type="checkbox" name="discount" value="ps">Öffentliche/gemeinnützige Einrichtung (Behörde, Universität, etc)<br>
-    <input type="checkbox" name="discount" value="pr">Nennung als Kunde (Öffentliche Nennung als Kunde gestattet)<br>
-  </td>
-
-</tr>
-<tr valign="top">
-  <td><b>Kommentar</b></td>
-  <td>
-    <textarea name="comment" cols="50" rows="10"></textarea>
-  </td>
-</tr>
-</table>
-
-<p align="center">
-  <input type="submit" value="Angebotsanfrage absenden">
+<p><b>Weiterentwicklung von Gpg4win:</b><br>
+Sie vermissen eine wichtige Funktion in Gpg4win? Sie haben
+spezielle Vorstellungen, um die Weiterentwicklung von Gpg4win zu
+fördern? Dann kontaktieren Sie uns! Wir stellen Ihnen - nach
+Einschätzung unserer Entwicklern - eine individuelles Angbot zusammen.
 </p>
+</div>
 
-</form>
--->

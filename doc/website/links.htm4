@@ -1,4 +1,4 @@
-ggm4_dnl -*-html-*-
+m4_dnl -*-html-*-
 m4_include(`template.m4')
 m4_dnl $Id$
 
@@ -6,20 +6,20 @@ m4_define(`EN')
 m4_define(`DE_FILE', `links-de.html')
 PAGE_START
 
-<h1>Links</h1>
+<div id="intro">
+<h2>Links</h2>
+<p>Cryptography on the web</p> 
+</div>
 
+<div id="main">
 <h2>Similar Projects</h2>
 
-<p>
-<dl>
-<dt><a href="http://www.gpg4kde.org">Gpg4kde</a></dt>
-<dd><br></dd>
-
-<dt><a href="http://home.arcor.de/rose-indorf/">GnuPG-Basics</a></dt>
-<dd><br></dd>
-
-<dt><a href="http://sites.inka.de/tesla/gpgrelay.html">GPGrelay</a></dt>
-<dd>is an encryption tool which encrypts e-mails in the
+<ul>
+<li><a href="http://www.gnupg.org">GnuPG</a></li>
+<li><a href="http://www.gpg4kde.org">Gpg4kde</a></li>
+<li><a href="http://home.arcor.de/rose-indorf/">GnuPG-Basics</a></li>
+<li><a href="http://sites.inka.de/tesla/gpgrelay.html">GPGrelay</a>
+<p>is an encryption tool which encrypts e-mails in the
 background, hence eliminating the need for a plugin for any e-mail
 tool of your choice.
 <br>
@@ -27,14 +27,8 @@ This software modules are potential candidates for integration
 in the Gpg4win installer package.
 If you are interested, just go ahead and integrate these modules, the 
 <a href="build-installer.html">Howto extend the Gpg4win installer 
-package</a> will help you.
-</dd>
-
-
-<p>Outdated:<br>
-<a href="http://www.gnupp.de/start.html">GnuPP</a>
-</p>
-
-<p>Related:<br>
-<a href="http://enigmail.mozdev.org/">Thunderbird/Enigmail</a>
-</p>
+package</a> will help you.</p></li>
+<li><a href="http://enigmail.mozdev.org/">Thunderbird/Enigmail</a></li>
+<li><a href="http://www.gnupp.de/start.html">GnuPP</a> (veraltet)</li>
+</ul>
+</div>

@@ -4,46 +4,112 @@ m4_dnl $Id$
 
 m4_define(`EN')
 m4_define(`DE_FILE', `about-de.html')
+
+m4_define(`TITLE', `About Gpg4win')
+m4_define(`MAIN', `about')
+
 PAGE_START
 
-<h1>About Gpg4win</h2>
+<div id="intro">
+<h2>About Gpg4win</h2>
+<p>Gpg4win (GNU Privacy Guard for Windows) is 
+an encryption software for files and emails.</p>
+</div>
 
-<p>The Gpg4win initiative aims <b>to provide a current</b> Gpg4win Windows installation
+<div id="main">
+<h2>What ist Gpg4win?</h2>
+<p>Gpg4win enables users to securely transport emails and files
+with the help of encryption and digital signatures. Encryption protects
+the contents against an unwanted party reading it. Digital signatures
+make sure that it was not modified and comes from a specific sender.</p>
+
+<p>Gpg4win supports both relevant cryptography standards,
+<b>OpenPGP</b> and <b>S/MIME (X.509)</b>. 
+
+Gpg4win is the official GnuPG distribution for Windows and is
+maintained by the developers of GnuPG. 
+Gpg4win and the software included with Gpg4win
+are <a href="http://fsfe.org/about/basics/freesoftware.en.html">Free
+Software</a> (Open Source; among other things free of charge for 
+all commercial and non-commercial purposes).
+</p>
+
+<p>Creation of Gpg4win was supported by the German
+<a href="http://www.bsi.bund.de">Federal Office for Information Security (BSI)</a>.
+
+<h2>Gpg4win Components</h2>
+<p>Gpg4win is an installer for Windows and contains several
+Free Software components:
+</p>
+
+<ul>
+<li><b>GnuPG</b>
+ <p>The core; this is the actual encryption tool.</p>
+</li>
+<li><b>Kleopatra</b>
+ <p>A certificate manager for OpenPGP and X.509 (S/MIME) and common crypto dialogs.</p>
+</li>
+<li><b>GPA</b>
+ <p>An alternative certificate manager for OpenPGP and X.509 (S/MIME).</p>
+</li>
+<li><b>GpgOL</b>
+ <p>A plugin for Microsoft Outlook 2003 and 2007 (email encryption).</p>
+</li>
+<li><b>GpgEX</b>
+<p>A plugin for Microsoft Explorer 32bit (file encryption).</p>
+</li>
+<li><b>Claws Mail</b>
+<p>A complete email application with crypto support.</p>
+</li>
+<li><b>Gpg4win Compendium</b>
+<p>The documentation (for beginner and advanced users), 
+available in English and German.</p>
+</li>
+</ul>
+
+<h2>System Requirements</h2>
+<p>Gpg4win runs on Windows 2000, XP, Vista and 7. Both 32 and
+64bit systems are supported.</p>
+
+<p>The Outlook plugin GpgOL is compatible with Microsoft Outlook 2003
+and 2007. Outlook 2010 is not supported.</p>
+
+<p><b>Important:</b> Currently, the Windows Explorer plugin GgpEX
+works with 32bit Explorer only. It is possible to use the 32bit Explorer
+on some 64bit Windows. A 64bit update is in progress.
+All file crypto features of GpgEX on Windows 64bit can be accessed 
+from the file menu of Kleopatra (e.g. File > Sign/encrypt file).</p>
+
+<h2>Aim of Gpg4win Initiative</h2>
+<p>The Gpg4win initiative aims to provide a current Gpg4win Windows installation
 package including the GnuPG encryption tool and associated applications.
-The <a href="documentation.html">documentation</a>
-("Gpg4win Compendium" and "Novices") is directly maintained
-as part of the Gpg4win project.</p>
-
-<p>
-Another goal is to support both relevant cryptographic standards,
-<b>OpenPGP and S/MIME</b> in a unified way.
+The <a href="documentation.html">documentation</a> ("Gpg4win
+Compendium") is maintained as part of the effort.
 </p>
 
 <p>
-Gpg4win is an international effort. Due to the origin of the project and
-many members, there is a full German translation.
-Additional translators are welcome!
+Both OpenPGP and S/MIME should be supported in a unified way.
 </p>
 
 <p>
-The main difference compared to all similar approaches
-(mainly GnuPP, GnuPT, Windows Privacy Tools and GnuPG-Basics)
-is that the first piece developed was the <b>Gpg4win-Builder</b>.
-This builder allows to easily create new gpg4win.exe installers
-with updated components.
-It runs best on a GNU/Linux system. Almost all products
-are even automatically cross-compiled for integration into
-the installer.
+Gpg4win is an international effort. Due to the origins of the initiative 
+there is a full German translation.
+<a href="localization-gpg4win.html">Additional translators are
+welcome!</a>
 </p>
 
 <p>
-This concept raises hope to practically <b>prevent
-quick aging of the installer package</b>  because updating is easier
-and does not depend on a single person.
+A main achievement of Gpg4win is to focus on the builder,
+which allows to easily create updated installers.
+The builder runs best on a GNU/Linux system. Almost all software components
+are automatically cross-compiled for integration into
+the installer. Thus Gpg4win does not depend on a single
+person to manually create the installer.
 </p>
 
-<p><br>
-Before starting getting contracted to develop Gpg4win2, 
+<h2>Short Study: Sustainable Free Software</h2>
+<p>
+Before Gpg4win2 was developed, 
 Jan-Oliver Wagner and Bernhard Reiter wrote a short study
 about <a href="ShortStudy-Sustainable-FS-example-Gpg4win.html">"Sustainable
 Free Software: From project to permanent activity, using the example
@@ -51,54 +117,16 @@ Gpg4win"</a>.
 </p>
 
 
-<h2>Screenshots</h2>
+<h2>Features & Screenshots</h2>
+<p>
+Read more about the <a href="features.html">features</a> of Gpg4win. 
+Get a first impression of Gpg4win from the <a
+href="screenshots.html">screenshots</a>.
 
-<p>Some screenshots of the certificate manager Kleopatra and its
-crypto dialogs:</p>
+</p>
 
-<ul>
-<li><p><b>Gpg4win Installer - the welcome screen:</b></p>
-<a href="doc/images-compendium/sc-inst-welcome_en.png">
-<img src="doc/images-compendium/sc-inst-welcome_en.png"
-width="400px"
-alt="Gpg4win Installer - the welcome screen"
-title="Gpg4win Installer - the welcome screen">
-</a>
-</li>
+</div>
 
-<li><p><b>Kleopatra - the creation of an OpenPGP certificate:</b></p>
-<a href="doc/images-compendium/sc-kleopatra-openpgp-personalDetails_en.png">
-<img src="doc/images-compendium/sc-kleopatra-openpgp-personalDetails_en.png"
-width="400px"
-alt="Kleopatra - the creation of an OpenPGP certificate"
-title="Kleopatra - the creation of an OpenPGP certificate">
-</a>
-</li>
-
-<li><p><b>Kleopatra - the certificate manager with an OpenPGP certificate:</b></p>
-<a href="doc/images-compendium/sc-kleopatra-withOpenpgpTestkey_en.png">
-<img src="doc/images-compendium/sc-kleopatra-withOpenpgpTestkey_en.png"
-width="400px"
-alt="Kleopatra - the certificate manager with an OpenPGP certificate" 
-title="Kleopatra - the certificate manager with an OpenPGP certificate">
-</a>
-</li>
-
-<li><p><b>Details of an OpenPGP certificate:</b></p>
-<a href="doc/images-compendium/sc-kleopatra-openpgp-certificateDetails_en.png">
-<img src="doc/images-compendium/sc-kleopatra-openpgp-certificateDetails_en.png"
-width="400px"
-alt="Details of an OpenPGP certificate" 
-title="Details of an OpenPGP certificate">
-</a>
-</li>
-
-<li><p><b>Dialog to encrypt and/or sign files with Kleopatra:</b></p>
-<a href="doc/images-compendium/sc-kleopatra-encryptFile1_en.png">
-<img src="doc/images-compendium/sc-kleopatra-encryptFile1_en.png"
-width="400px"
-alt="Dialog to encrypt and/or sign files with Kleopatra" 
-title="Dialog to encrypt and/or sign files with Kleopatra">
-</a>
-</li>
-</ul>
+<div id="sidebarsimple">
+    <img src="img/logo.png"> 
+</div>

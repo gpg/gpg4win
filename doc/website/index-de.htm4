@@ -4,108 +4,48 @@ m4_dnl $Id: index.htm4,v 1.30 2006/01/12 16:04:03 jan Exp $
 
 m4_define(`DE')
 m4_define(`EN_FILE', `index.html')
+m4_define(`TITLE', `Sichere E-Mail- und Datei-Verschlüsselung mit GnuPG für Windows')
+
+m4_define(`FANCY_HEADER')
+
 PAGE_START
 
-<p>
-<b>Gpg4win ist mit wenigen Mausklicks installiert</b> und kann ausprobiert werden.
-Sie sollten aber auf Ihrem System Administrator sein oder Administrationsrechte
-besitzen.
+<div id="intro" style="float:left; padding-right:0; width:600px;">
+    <span></span>
+    <h2>Gpg4win - eine sichere Lösung...</h2>
+    <p>
+    ... zum Verschlüsseln und Signieren von E-Mails, Dateien und Ordner unter Windows.
+    Gpg4win (GNU Privacy Guard for Windows) ist Freie Software und mit 
+    nur wenigen Mausklicks installiert.<br>
+    Starten Sie durch - in eine freie und sichere Zukunft!
+    </p>
+</div>
+
+<div id="full">
+
+<div class="column1">
+<h4>Gpg4win kennen lernen</h4>
+    <p>Entdecken Sie, was in Gpg4win steckt! Lernen Sie kennen, <a href="about-de.html">was 
+    Gpg4win ist</a> und lassen Sie sich die <a href="features-de.html">Funktionen</a> zeigen.
+    </p>
+</div>
+
+<div class="column2">
+<h4>Erste Schritte</h4>
+<p>Wir helfen Ihnen Gpg4win zum Einsatz zu bringen.
+Lernen Sie, wie einfach der Einstig in die Kryptografie ist und
+beginnen Sie am besten mit dem <a href="./doc/de/gpg4win-compendium.html">Gpg4win-Kompendium</a>!</p>
+</div>
+
+<div class="column3">
+<h4>Gemeinschaft erleben</h4>
+<p>Ggp4win ist Freie Software. Nutzen Sie die <a href="community-de.html">Gemeinschaft</a>
+und nehmen Sie Kontakt mit uns auf!
+Wir empfehlen, sich in die <a
+    href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-announce-de">Gpg4win-Bekanntmachungs-Mailingliste</a> einzuschreiben, um
+    automatisch über neue Versionen und andere wichtige Neuigkeiten zu
+    Gpg4win informiert zu werden.
 </p>
-<p>
-Beginnen Sie am besten mit dem anschaulichen 
-<a
-href="./doc/de/gpg4win-compendium.html">Gpg4win-Kompendium</a>.
-</p>
-<p>
-Wir empfehlen, sich in die
-<a href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-announce-de"
-  >Gpg4win-Bekanntmachungs-Mailingliste</a> einzuschreiben,
-um automatisch über neue Versionen und andere wichtige
-Neuigkeiten zu Gpg4win informiert zu werden.
-</p>
+</div>
 
-<h2>Neuigkeiten</h2>
-<p>
-<dl>
-<dt>
-<a
-href="download-de.html"><b>+++
-2011-02-04: Gpg4win 2.1.0-rc2 veröffentlicht +++</b></a></dt>
-<dd>Diese zweite Vorabversion von 2.1.0 enthält wichtige
-Aktualisierungen in GnuPG und Kleopatra.
-</dd>
-
-<dt><a
-href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2010-December/000013.html"><b>+++
-2010-12-20: Gpg4win 2.1.0-rc1 veröffentlicht +++</b></a></dt>
-<dd>Diese erste Vorabversion von 2.1.0 enthält wichtige Verbesserungen in
-Kleopatra, Pinentry und GnuPG. 
-</dd>
-
-<dt><a
-href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2010-September/000012.html"><b>+++
-2010-09-02: Gpg4win 2.1.0-beta1 veröffentlicht +++</b></a></dt>
-<dd>Diese Version bringt u.a. viele Verbesserungen in Kleopatra
-und GnuPG mit.
-</dd>
-
-<dt><a
-href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2010-September/000011.html"><b>+++
-2010-09-01: Englisches Gpg4win-Kompendium 3.0.0-beta1 veröffentlicht
-+++</b></a></dt>
-<dd>Das Gpg4win-Kompendium ist in einer ersten englischen Übersetung
-erschienen.
-</dd>
-</dl>
-
-Ältere Meldungen im <a href="newsarchive-de.html">Newsarchiv</a>.
-
-<h2>Gpg4win 2.x</h2>
-
-Gpg4win ist ein Installationspaket für Windows (2000/XP/2003/Vista/7)
-mit Computer-Programmen und Handbüchern für E-Mail- und Dateiverschlüsselung.
-Die beiden relevanten kryptographischen Standards OpenPGP und S/MIME werden
-unterstützt.
-Gpg4win und die in Gpg4win enthaltene Software
-sind <a href="http://www.fsfe.de/documents/freesoftware.de.html">Freie
-Software</a> (u.a. kostenlose gewerbliche und private Nutzung).
-
-
-<p>
-Wahlweise können alle oder einige der folgenden <b>Module</b> installiert werden:
-</p>
-<table>
-  <tr>
-    <td>GnuPG:</td>
-    <td>Das Kernstück, das eigentliche Verschlüsselungsprogramm.</td>
-  </tr>
-  <tr>
-    <td>Kleopatra:</td>
-    <td>Ein Zertifikatsmanager für OpenPGP und X.509 (S/MIME); stellt
-einheitliche Benutzerführung für alle Krypto-Dialoge bereit. </td>
-  </tr>
-  <tr>
-    <td>GPA:</td>
-    <td>Ein anderer Zertifikatsmanager für OpenPGP und X.509 (S/MIME).</td>
-  </tr>
-  <tr>
-    <td>GpgOL:</td>
-    <td>Eine Programmerweiterung für Microsoft Outlook 2003 und 2007
-(E-Mail-Vverschlüsselung).</td>
-  </tr>
-  <tr>
-    <td>GpgEX:</td>
-    <td>Eine Programmerweiterung für den Microsoft Explorer (Dateiverschlüsselung).</td>
-  </tr>
-  <tr>
-    <td>Claws Mail:</td>
-    <td>Ein komplettes E-Mail-Programm inklusive Programmerweiterung für GnuPG.</td>
-  </tr>
-  <tr>
-    <td>Gpg4win-Kompendium:</td>
-    <td>Die neue deutschsprachige Dokumentation zu Gpg4win2 (für
-Einsteiger und Fortgeschrittene).</td>
-  </tr>
-</table>
-
-
+</div>

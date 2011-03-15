@@ -1,3 +1,7 @@
+2011-03-15  Emanuel Schuetze <emanuel@intevation.de>
+
+	* website/*: Redesign website and update for gpg4win 2.1.0 release.
+
 2011-03-02  Emanuel Schuetze <emanuel@intevation.de>
 
 	*  README.de.txt, README.en.txt: Update for 2.1.0

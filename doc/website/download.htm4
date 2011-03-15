@@ -5,57 +5,34 @@ m4_dnl $Id:$
 m4_define(`EN')
 m4_define(`DE_FILE', `download-de.html')
 
+m4_define(`TITLE', `Download Gpg4win')
+m4_define(`MAIN', `download')
+
 PAGE_START
-<h1>Download</h1>
 
-<h2>Gpg4win 2.1.0-rc2</h2>
+<div id="intro">
+<h2>Download</h2>
+<p>Free Software for free download.</p> 
+</div>
 
-<p>You can download the <b>second release candidate</b> (including the
-English and German compendium) of Gpg4win 2.1.0 here:</p>
-
-<a href="http://ftp.gpg4win.org/Beta/gpg4win-2.1.0-rc2.exe" class="dlbutton2">Gpg4win&nbsp;2.1.0-rc2<br>
-<span class="version"><small>Size: 38 MByte | Released: 2011-02-04</small></span>
-</a>
-
-<ul>
-    <li><a href="http://ftp.gpg4win.org/Beta/gpg4win-2.1.0-rc2.exe.sig"
-        >OpenPGP signatur</a> (for gpg4win-2.1.0-rc2.exe)
-    <li><b>SHA1 checksum</b> (for gpg4win-2.1.0-rc2.exe): 
-    <code>7eaad4949f521eea289f9efa9e85c1091dbae98a gpg4win-2.1.0-rc2.exe</code></li>
-
-<!--<li><a href="change-history.html">Change History</a></li>-->
-
-<li>Sources and other Gpg4win-2.1.0-rc2 variants:
-    <ul>
-    <li><a href="http://ftp.gpg4win.org/Beta/gpg4win-light-2.1.0-rc2.exe">gpg4win-light-2.1.0-rc2.exe</a>
-    (Full version <em>without</em> Kleopatra and Gpg4win Compendium); 
-    <small>Size: 15 MByte</small></li>
-    <li><a
-        href="http://ftp.gpg4win.org/Beta/gpg4win-2.1.0-rc2.tar.bz2">gpg4win-2.1.0-rc2.tar.bz2</a>
-    (source code package); <small>Size: 12 MByte</small></li>
-    <li>All versions and OpenPGP signatures: <a
-        href="http://ftp.gpg4win.org/Beta">ftp.gpg4win.org/Beta</a>.</li>
-    </ul>
-</li>
-</ul>
-<p>Read the current <a
-    href="http://ftp.gpg4win.org/Beta/README-2.1.0-rc2.en.txt">README file</a>.
-
+<div id="main">
 
 <h2>Gpg4win VERSION</h2>
 
-<p>You can download the full version (including the German compendium
-and the English novice manual) of Gpg4win VERSION here:</p>
+<p>You can download the full version (including the Gpg4win compendium)
+of Gpg4win VERSION here:</p>
 
+<div class="dlbutton2">
 <a href="DOWNLOAD_URL" class="dlbutton2">Gpg4win&nbsp;VERSION<br>
 <span class="version"><small>Size: DL_SIZE | Released: DL_DATE</small></span>
 </a>
+</div>
 
 <ul>
     <li><a href="http://ftp.gpg4win.org/gpg4win-VERSION.exe.sig"
         >OpenPGP signatur</a> (for gpg4win-VERSION.exe)
-    <li><b>SHA1 checksum</b> (for gpg4win-VERSION.exe): <code>SHA1_EXE
-    gpg4win-VERSION.exe </code></li>
+    <li><b>SHA1 checksum</b> (for gpg4win-VERSION.exe):<br>
+    <code>SHA1_EXE  gpg4win-VERSION.exe </code></li>
 
 <li><a href="change-history.html">Change History</a></li>
 
@@ -88,16 +65,20 @@ and the English novice manual) of Gpg4win VERSION here:</p>
 <h2>Gpg4win Compendium COMPENDIUM_VERSION_EN</h2>
 
 You find the current PDF and HTML version of the Gpg4win Compendium here:
+<div class="dlbutton2">
 <a href="DOWNLOAD_URL_COMPENDIUM_DE"
     class="dlbutton2">Gpg4win Compendium COMPENDIUM_VERSION_EN (PDF, English)<br>
 <span class="version"><small>Size: DL_SIZE_COMPENDIUM_EN | 
 Released: COMPENDIUM_DATE_EN</small></span>
 </a>
+</div>
 
+<div class="dlbutton2">
 <a href="./doc/en/gpg4win-compendium.html"
     class="dlbutton2">Gpg4win Compendium COMPENDIUM_VERSION_DE (HTML, English)<br>
 <span class="version"><small>Released: COMPENDIUM_DATE_DE</small></span>
 </a>
+</div>
 
 <p>Note: The compendium is currently availabe in a <b>beta version</b>!
 Read the <a href="documentation.html">documentation page</a> for
@@ -146,4 +127,6 @@ important Gpg4win news.
 <p>
 Is downloading very slow? Try this mirror server:
 <a href="MIRROR_IE_URL">Gpg4win mirror server in Ireland</a> (run by
-<a href="http://ftp.heanet.ie/about/">HEAnet</a>)
+<a href="http://ftp.heanet.ie/about/">HEAnet</a>)</p>
+
+</div>

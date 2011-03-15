@@ -1,0 +1,37 @@
+m4_dnl -*-html-*-
+m4_include(`template.m4')
+m4_dnl $Id$
+
+m4_define(`DE')
+m4_define(`EN_FILE', `contributors.html')
+
+m4_define(`TITLE', `Mitwirkende')
+
+PAGE_START
+
+<div id="intro">
+<h2>Mitwirkende</h2>
+<p>Gpg4win lebt von seinen Mitwirkenden. Werden auch Sie Teil der
+Gpg4win-Gemeinschaft und <a href="contribute-de.html">unterstützen Sie
+Gpg4win</a>.</p> 
+</div>
+
+<div id="main">
+<h2>Danke!</h2>
+<p>Dieses Freie Software Produkt wurde u.a. im Rahmen kommerzieller
+Aufträge von folgenden Unternehmen entwickelt:
+<ul>
+<li><a href="http://www.intevation.de">Intevation GmbH</a>
+(Projektkoordination, QS, Kompendium)</li>
+<li><a href="http://www.g10code.de">g10 Code GmbH</a> 
+(Krypto-Funktionalität, GpgOL, GpgEX, GPA)</li>
+<li><a href="http://www.kdab.com">KDAB</a> (Kleopatra)</li>
+</ul>
+</p>
+
+<p>Dabei wirkten folgende Personen mit:</p>
+<pre>
+m4_include(`AUTHORS')
+</pre>
+</div>
+   

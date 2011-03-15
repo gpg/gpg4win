@@ -5,101 +5,55 @@ m4_dnl $Id: index.htm4,v 1.30 2006/01/12 16:04:03 jan Exp $
 m4_define(`EN')
 m4_define(`DE_FILE', `index-de.html')
 
+m4_define(`TITLE', `Secure email and file encryption with GnuPG for Windows')
+m4_define(`FANCY_HEADER')
+
 PAGE_START
 
-<p>
-Gpg4win can be <b>installed and tested with just a few mouse clicks</b>.
-Of course you should be administrator of your system or have administration
-rights.
+<div id="intro" style="float:left; padding-right:0; width:600px;">
+    <span></span>
+    <h2>Gpg4win - a secure solution...</h2>
+    <p>
+    ... to encrypt and sign of emails, files and folders under Windows.
+    Gpg4win (GNU Privacy Guard for Windows) is Free Software and 
+    can be installed with just a few mouse clicks.<br>
+    Go on - in a free and secure future!
 </p>
-<p>
+</div>
+
+<div id="full">
+
+<div class="column1">
+<h4>Discover Gpg4win</h4>
+    <p>Learn <a href="about.html">what 
+    Gpg4win is</a> and read more about the <a href="features.html">features</a> of 
+    our solution!
+    </p>
+</div>
+
+<div class="column2">
+<h4>Getting started</h4>
+<p>We help you to use Gpg4win. Learn the basics about Gpg4win and 
+get in the world of cryptography.
 The best point to start is with the illustrative
-<a
-href="./doc/en/gpg4win-compendium.html">Gpg4win Compendium</a>.
+<a href="./doc/en/gpg4win-compendium.html">Gpg4win Compendium</a>.
+
 </p>
-<p>
+</div>
+
+<div class="column3">
+<h4>Gemeinschaft erleben</h4>
+<p>Ggp4win is Free Software. Join the <a href="community.html">community</a>!
 We recommend subscribing to the
 <a href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-announce"
-  >Gpg4win announcement mailing list</a>
+>Gpg4win announcement mailing list</a>
 to be automatically informed about new releases and other
 important Gpg4win news.
 </p>
+</div>
 
-<h2>News</h2>
-<p>
-<dl>
+</div>
 
-<dt>
-<a href="download.html"><b>+++
-2011-02-04: Gpg4win 2.1.0-rc2 released +++</b></a></dt>
-<dd>with important updates of GnuPG and Kleopatra.
-</dd>
 
-<dt><a
-href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2010-December/000049.html"><b>+++
-2010-12-20: Gpg4win 2.1.0-rc1 released +++</b></a></dt> 
-<dd>with important improvements in Kleopatra, Pinentry and GnuPG.  
-</dd>
-
-<dt><a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2010-September/000048.html"><b>+++ 2010-09-02: Gpg4win 2.1.0-beta1 released +++</b></a></dt>
-<dd>with a lot of improvements in Kleopatra and GnuPG. </dd>
-
-<dt><a
-href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2010-September/000047.html"><b>+++
-2010-09-01: English Gpg4win Compendium 3.0.0-beta1 released
-+++</b></a></dt>
-<dd>This is the first beta version of the translated English Gpg4win
-documentation. </dd>
-
-</dl>
-
-Older messages in <a href="newsarchive.html">news archive</a>.
-
-<h2>Gpg4win 2.x</h2>
-
-Gpg4win is an installer package for Windows (2000/XP/2003/Vista/7) with
-computer programs and handbooks for email and file encryption.  Both
-relevant cryptography standards are supported, OpenPGP and S/MIME.
-Gpg4win and the software included with Gpg4win
-are <a href="http://www.fsf.org/licensing/essays/free-sw.html">Free
-Software</a> (among other things free of charge for all commercial and
-non-commercial purposes).
-
-<p>
-You can choose all or some of the following <b>modules</b> during installation:
-</p>
-<table>
-  <tr>
-    <td>GnuPG:</td>
-    <td>The core; this is the actual encryption tool.</td>
-  </tr>
-  <tr>
-    <td>Kleopatra:</td>
-    <td>A certificate manager for OpenPGP and X.509 (S/MIME) and common crypto dialogs.</td>
-  </tr>
-  <tr>
-    <td>GPA:</td>
-    <td>Another certificate manager for OpenPGP and X.509 (S/MIME).</td>
-  </tr>
-  <tr>
-    <td>GpgOL:</td>
-    <td>A plugin for Microsoft Outlook 2003 and 2007 (email encryption).</td>
-  </tr>
-  <tr>
-    <td>GpgEX:</td>
-    <td>A plugin for Microsoft Explorer (file encryption).</td>
-  </tr>
-  <tr>
-    <td>Claws Mail:</td>
-    <td>A complete email program including the plugin for GnuPG.</td>
-  </tr>
-  <tr>
-    <td>Gpg4win Compendium:</td>
-    <td>The new (German!) documentation about Gpg4win2 (translation already scheduled).</td>
-  </tr>
-  <tr>
-    <td>Gpg4win for Novices:</td>
-    <td>The old English handbook about Gpg4win1 (for newbies).</td>
-  </tr>
-</table>
-
+    
+    

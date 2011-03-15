@@ -4,51 +4,48 @@ m4_dnl $Id$
 
 m4_define(`DE')
 m4_define(`EN_FILE', `website-maintenance.html')
+
+m4_define(`MAIN', `community')
+m4_define(`TITLE', `Website pflegen')
+
 PAGE_START
-
-<h1>Website von Gpg4win pflegen</h1>
-
-Die Pflege der Website ist eigentlich recht einfach, da
-vieles automatisiert ist.
-
-<p>
-Was man beherrschen sollte: Irgendeinen Text-Editor, HTML, ssh und
-Subversions.
+<div id="intro">
+<h2>Website von Gpg4win pflegen</h2>
+<p>Eine regelmäßige Aufgabe ist die Aktualisierung der
+Gpg4win-Website. Die Pflege ist einfach, da
+vieles automatisiert ist. Was man beherrschen sollte: 
+einen Text-Editor, HTML, SSH und SVN.
 </p>
+</div>
 
-<p>
-Typische Aufgaben:
+<div id="main">
+<h2>Typische Aufgaben</h2>
+<p>Typische Aufgaben der Website-Pflege sind:
 <ul>
-<li> Version von Gpg4win aktualisieren (gelegentlich, ca. 15 Minuten)
-<li> Tippfehler beseitigen (immer wenn man selbst oder jemand anderes etwas findet, wenige Minuten)
+<li> Version von Gpg4win aktualisieren (gelegentlich, Dauer: ca. 15 Minuten)
+<li> Tippfehler beseitigen (immer wenn man selbst oder jemand anderes etwas findet, Dauer: wenige Minuten)
 </ul>
 </p>
 
-<h2>Zunächst mal ganz anonym reinschnuppern</h2>
+<h2>Zunächst anonym reinschnuppern</h2>
 
 <ol>
-<li> Die Quellen zur Website anonyme (also ohne Schreibrechte) holen:<br>
-     <em>svn checkout https://svn.wald.intevation.org/svn/gpg4win/trunk/ gpg4win-trunk-anon</em>
-
-<li> Das gesamte Paket initial konfigurieren:<br>
-     <em>
-     cd gpg4win-trunk-anon<br>
-     ./autogen.sh<br>
-     ./configure --enable-maintainer-mode --host=i586-mingw32msvc<br>
-     </em>
+<li> Die Quellen zur Website anonym (also ohne Schreibrechte) auschecken:<br>
+     <code>svn checkout
+https://svn.wald.intevation.org/svn/gpg4win/trunk/doc/website/</code>
 
 <li> Die Website lokal bauen:<br>
-     <em>make -f buildhtml.mk</em><br>
+     <code>make -f buildhtml.mk</code><br>
      und im Browser anschauen (z.B. Datei index-de.html).
 
-<li> Die Datei README lesen, nach belieben Änderungen vornehmen und die
+<li> Die README-Datei der Website lesen, nach belieben Änderungen vornehmen und die
      Website dann wieder neu bauen und anschauen.
 </ol>
 
 <h2>Was man vorbereitend nur einmal machen muss um aktiver Mitentwickler zu werden</h2>
 
-Ein vorheriges "Hallo" auf einer der Gpg4win Mailing Listen
-und dass man gerne mitmachen möchte ist natürlich immer sinnvoll.
+Ein vorheriges "Hallo" auf einer der Gpg4win-Mailingliste
+und den Wunsch, dass man gerne mitmachen möchte ist natürlich immer sinnvoll.
 
 <ol>
 <li> Auf <a href="http://wald.intevation.de">wald.intevation.de</a> ein
@@ -66,15 +63,9 @@ und dass man gerne mitmachen möchte ist natürlich immer sinnvoll.
      <a href="http://wald.intevation.org/account/">hochladen</a>.
 
 <li> Die Quellen zur Website holen:<br>
-     <em>svn checkout svn+ssh://USER@svn.wald.intevation.org/gpg4win/trunk/ gpg4win-trunk</em><br>
-     wobei USER das Benutzerkonto auf wald.intevation.de ist.
+     <code>svn checkout svn+ssh://USER@svn.wald.intevation.org/gpg4win/trunk/doc/website</code><br>
+     wobei USER der Benutzername auf wald.intevation.de ist.
 
-<li> Das gesamte Paket initial konfigurieren:<br>
-     <em>
-     cd gpg4win-trunk<br>
-     ./autogen.sh<br>
-     ./configure --enable-maintainer-mode --host=i586-mingw32msvc<br>
-     </em>
 
 </ol>
 
@@ -82,18 +73,18 @@ und dass man gerne mitmachen möchte ist natürlich immer sinnvoll.
 
 <ol>
 <li> Gewünschte Änderungen in dem per SVN geholten Verzeichnis
-     <em>gpg4win-trunk/doc/website</em> durchführen.
-     Zum besseren Verständnis ggf. die dort liegende Datei <em>REAMDE</em> vorher
+     <code>trunk/doc/website</code> durchführen.
+     Zum besseren Verständnis ggf. die dort liegende Datei <code>REAMDE</code> vorher
      durchlesen.
 <li> Lokale Version zum Anschauen herstellen:<br>
-     <em>make -f buildhtml.mk</em><br>
+     <code>make -f buildhtml.mk</code><br>
      und im Browser anschauen.
 <li> Sind die Änderungen in Ordnung, sollte man sie noch mal prüfen:<br>
-     <em>svn diff | less</em><br>
-     und können dann mit möglichst sinnvollen Kommentare ins SVN Repository
+     <code>svn diff | less</code><br>
+     und können dann mit möglichst sinnvollen Kommentare ins SVN-Repository
      hochgeladen werden:<br>
-     <em>svn commit</em><br>
+     <code>svn commit</code><br>
 <li> Der letzte Schritt ist das online schalten:<br>
-     <em>make -f buildhtml.mk online</em><br>
+     <code>make -f buildhtml.mk online</code><br>
 </ol>
-
+</div>

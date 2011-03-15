@@ -60,29 +60,38 @@ BEGIN {
     "m4_include(`template.m4')\n" \
     "m4_define(`EN')\n" \
     "m4_define(`DE_FILE', `change-history-de.html')\n" \
+    "m4_define(`TITLE', `Change History')\n" \
     "PAGE_START\n" \
-    "<h1>Change History of Gpg4win</h1>\n" \
+    "<div id='intro'>" \
+    "<h2>Change History of Gpg4win</h2>" \
     "<p>Please note that old releases still contain meanwhile fixed\n" \
-    "security issues.</p>\n" ;
+    "security issues.</p>\n" \
+    "</div>\n" \
+    "<div id='main'>\n" ;    
 
   header_text["de"] = "" \
     "m4_dnl -*-html-*-\n" \
     "m4_include(`template.m4')\n" \
     "m4_define(`DE')\n" \
     "m4_define(`EN_FILE', `change-history.html')\n" \
+    "m4_define(`TITLE', `Änderungshistorie')\n" \
     "PAGE_START\n" \
-    "<h1>Änderungshistorie von Gpg4win</h1>\n" \
-    "<p>Die deutsche Übersetzung der Historie ist nicht notwendigerweise\n" \
-    "vollständig. Begonnen wurde sie mit Version 1.0.0.</p>\n" \
+    "<div id='intro'>" \
+    "<h2>Änderungshistorie von Gpg4win</h2>" \
     "<p>Bitte beachten Sie, dass die alten Versionen die ggf.\n" \
-    "zwischenzeitlich beseitigten Sicherheitslöcher weiterhin enthalten!</p>\n";
-
+    "zwischenzeitlich beseitigten Sicherheitslöcher weiterhin enthalten!</p>\n" \
+    "</div>\n" \
+    "<div id='main'>\n" ;
+    
+    
   release_text["en"] = "released ";
   release_text["de"] = "veröffentlicht ";
   noreldate_text["en"] = "[ in progress; not yet released ]";
   noreldate_text["de"] = "[ in Arbeit; bisher noch nicht veröffentlicht ]";
   explicit_dl_text["en"] = "Explicit download of this version:";
   explicit_dl_text["de"] = "Expliziter Download dieser Version:";
+  readme_text["en"] = "Details in the README of this version:";
+  readme_text["de"] = "Details im README dieser Version:";
 
   print header_text[lang];
 }
@@ -91,8 +100,6 @@ BEGIN {
 /^---/ { next }
 
 in_section && $0 ~ /^Noteworthy/ {
-  if (in_para)
-    print "</ul>"
   if (in_vers)
     print "</pre>"
   in_section = 0;
@@ -129,15 +136,12 @@ in_section && $0 ~ /^\([a-zA-Z]+\)/ {
   if ( $0 ~ ("^\\(" lang "\\)" ) ) {
     in_para = 1;
     any_para = 1;
-    print "<li>"
     print substr ($0, 5);
   }
   next;
 }
     
 in_section && !in_vers && /^~~~/ {
-  if (in_para && any_para)
-    print "</ul>"
   in_para = 0; 
   in_vers = 1;
   print ""
@@ -156,6 +160,10 @@ in_vers && /^~~~/ {
   printf "<p>%s ", explicit_dl_text[lang];
   printf "<a href=\"http://ftp.gpg4win.org/gpg4win-%s.exe\">gpg4win-%s.exe</a><br>", version, version;
   printf "</p>"
+  
+  printf "<p>%s ", readme_text[lang];
+  printf "<a href=\"http://ftp.gpg4win.org/README-%s." lang ".txt\">README-%s." lang ".txt</a><br>", version, version;
+  printf "</p>"  
 }
 
 in_vers {
@@ -165,6 +173,5 @@ in_vers {
 
 
 END {
-  if (in_para && any_para)
-    print "</ul>"
+  print "</div>"    
 }

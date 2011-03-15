@@ -4,12 +4,18 @@ m4_dnl $Id$
 
 m4_define(`EN')
 m4_define(`DE_FILE', `build-installer-de.html')
+
+m4_define(`TITLE', `Building Gpg4win installer')
+m4_define(`MAIN', `community')
+
 PAGE_START
 
-<h1>Build Gpg4win installer packages on your own</h1>
+<div id="intro">
+<h2>Building Gpg4win installer package</h2>
+<p>Learn how you can build the Gpg4win installer packages on your own.</p> 
+</div>
 
-<p><em>Attention: This page (and the other pages to build Gpg4win) is
-not yet updated to Gpg4win2.</em></p>
+<div id="main">
 
 <h2>Conventional ".exe installer"</h2>
 
@@ -31,7 +37,7 @@ What you need is:
      In principle, any current GNU/Linux system is
      sufficient as the base system. Some minor
      adaptions might be necessary though.
-     The <a href="build-installer-gnulinux-de.html">specific
+     The <a href="build-installer-gnulinux.html">specific
      GNU/Linux guide</a> is tested with a Debian GNU/Linux 'Etch' 4.0 system.
      <br>
      Furthermore, you need at least 503 MByte on your harddisk
@@ -185,3 +191,5 @@ to be adapted for your individual environment.
    src/make-msi.bat on your Windows system. You should store them in the
    respective src/ directory.
 </ul>
+
+</div>

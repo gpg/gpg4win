@@ -4,15 +4,48 @@ m4_dnl $Id$
 
 m4_define(`EN')
 m4_define(`DE_FILE', `donate-de.html')
+
+m4_define(`TITLE', `Donate')
+m4_define(`MAIN', `donate')
+
 PAGE_START
 
-<h1>Donate</h1>
+<div class="donate_header">
+ <span class="text">
+  We love Free Software!<br />
+  You too?<br />
+  <b>Please support Gpg4win!</b>
+ </span>
+</div>
 
-<p><b>Please Support Gpg4win!</b></p>
+<div id="intro">
+<h2>Donate</h2>
+<p>Your donation supports the maintenance and further development of
+Gpg4win and helps us to push the Free Software initiative Gpg4win. We
+are greatful for every financial aid. 
+</p>
+</div>
 
-Your donation supports the maintenance and further development of Gpg4win
-and helps us to push the Free Software initiative Gpg4win.
-We are greatful for every financial aid.
+<div id="main">
+<h2>Contribute to Gpg4win!</h2>
+
+<p>Give a <b>small amount</b> via the payment opportunity of this web page.
+Add a short comment along with a payment and explain for which
+improvements you would again pay.  Even smallest amounts help and
+motivate.</p>
+
+<p>For an <b>average amount</b>, contact one of the project members and
+receive a official invoice. You could also contract for some specific
+step, update, bug fix or new features.  Take care that your contracted
+improvements will be integrated into the main development of
+Gpg4win.</p>
+
+<p>As a company or authority, <b>contract</b> for more extensive measures
+that will ensure continuation of the project.  This way you will
+ensure sustainable availability of Gpg4win for your organisation.
+Such measures do provide the collateral benefit of generally improving
+security for data exchange.</p>
+
 
 <h2>List of sponsors</h2>
 <p>The following list shows all sponsors who have supported 
@@ -21,47 +54,31 @@ the Gpg4win initiative and accepted to publish their donation.</p>
 <p><b>Make your donation now and you will appear in this list!</b>
 Please click on the "Donate" button (on the right).</p>
 
+<pre>
+m4_include(`SPONSORS')
+</pre>
+</div>
+
+<div id="sidebar">
+<h3>Make your donation now!</h3>
 <p>
-<ul>
-<li>Andrew Huang</li>     
-<li>Andy Fletcher</li> 
-<li>Armando Villani</li> 
-<li>Ben Gerber</li>
-<li>Christopher Dawes</li>
-<li>Christian de Boor</li>
-<li>Daniel Aleksandersen</li> 
-<li>Daniele Berti</li> 
-<li>Florian Töpfer</li> 
-<li>Gerd Schweinsberg</li>
-<li>Greg Robinson</li> 
-<li>Gunner Gewiß</li> 
-<li>Hendrik Jan Strijker</li> 
-<li>Hugh Glenister</li> 
-<li>Igor Sharov</li> 
-<li>Ingolf Petersohn</li> 
-<li>James Carpenter</li>
-<li>Jay Litwyn</li>
-<li>Joachim Bolle</li>
-<li>Johannes Egbert Münch</li> 
-<li>Jürgen Sättler</li>
-<li>Kurt Meyer</li>
-<li>Kevin Smith</li>
-<li>Lilo von Hanffstengel</li>
-<li>Marcel Bade</li>
-<li>Marco A G Pinto</li>
-<li>Mark Jennings</li> 
-<li>Markus Barkholz</li> 
-<li>Michael Langhammer</li>
-<li>Nelson Ingersoll</li> 
-<li>note.com LLC</li> 
-<li>Oliver Schubbe</li>
-<li>PCMasters.de</li>
-<li>Peter Engel</li> 
-<li>Richard Dorn</li>
-<li>Rudolf Doczkal</li>
-<li>Sebastian Morkisch</li> 
-<li>Thomas Freeman</li>
-<li>Tom Niderost</li> 
-<li>Wilford Isner III</li>
-</ul>
-</p>
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+    <input name="cmd" value="_donations" type="hidden">
+    <input name="business" value="paypal@intevation.de" type="hidden">
+    <input name="lc" value="US" type="hidden">
+    <input name="undefined_quantity" value="1" type="hidden">
+
+    <input name="item_name" value="Gpg4win" type="hidden">
+    <input name="item_number" value="1000" type="hidden">
+    <input name="no_shipping" value="1" type="hidden">
+    <input name="cn" value="Comment to Gpg4win developer team (praise/criticism)" type="hidden">
+    <input name="currency_code" value="EUR" type="hidden">
+    <input name="bn" value="PP-BuyNowBF" type="hidden">
+    <input src="https://www.paypal.com/en_US/i/btn/btn_donate_LG.gif" name="submit" alt="Pay with PayPal" type="image" border="0">
+    <input name="on0" value="Allowed to publish of your donation?" type="hidden">
+    <input name="os0" value="No" type="hidden">
+
+    <br>
+    <input name="os0" value="Yes" checked="checked" type="checkbox">Publish my sponsor name</a>
+</form>
+</div>

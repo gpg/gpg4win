@@ -4,12 +4,20 @@ m4_dnl $Id$
 
 m4_define(`EN')
 m4_define(`DE_FILE', `documentation-de.html')
+
+m4_define(`TITLE', `Documentation')
+m4_define(`MAIN', `doc')
+
 PAGE_START
 
-<h1>Documentation</h1>
+<div id="intro">
+<h2>Documentation</h2>
+<p>The Gpg4win Compendium is the perfect documentation to get in the world of 
+cryptography. Using the example of Gpg4win you learn step by step the 
+secure using of Kleopatra, GpgEX and GpgOL.</p> 
+</div>
 
-<p></p>
-
+<div id="main">
 <h2>Gpg4win Compendium</h2>
 
 <p>The "Gpg4win-Compendium" is the new end-user documentation for
@@ -38,16 +46,18 @@ and HTML version, English and German) is available via start menu in
 the folder <em>Gpg4win->Documentation</em>.</p>
 
 The current PDF and HTML versions of the Gpg4win-Compendium are also available here:
-<a href="DOWNLOAD_URL_COMPENDIUM_EN"
-    class="dlbutton2">Gpg4win Compendium COMPENDIUM_VERSION_EN (PDF, English)<br>
+<div class="dlbutton2">
+<a href="DOWNLOAD_URL_COMPENDIUM_EN">Gpg4win Compendium COMPENDIUM_VERSION_EN (PDF, English)<br>
 <span class="version"><small>Size: DL_SIZE_COMPENDIUM_EN | 
 Released: COMPENDIUM_DATE_EN</small></span>
 </a>
+</div>
 
-<a href="./doc/en/gpg4win-compendium.html"
-    class="dlbutton2">Gpg4win Compendium COMPENDIUM_VERSION_EN (HTML, English)<br>
+<div class="dlbutton2">
+<a href="./doc/en/gpg4win-compendium.html">Gpg4win Compendium COMPENDIUM_VERSION_EN (HTML, English)<br>
 <span class="version"><small>Released: COMPENDIUM_DATE_EN</small></span>
 </a>
+</div>
 
 <p>
 The German langauage version of the Gpg4win-Compendium (v3.0.0) is also 
@@ -76,14 +86,14 @@ longer updated):
 PDF versions</a> | <a
 href="http://gpg4win.de/handbuecher/novices.html">Last HTML version</a>
   </dd>
-  </dd>.
+  </dd>
 
   <dt><b>Gpg4win für Einsteiger</b> (German)</dt>
   <dd>Last version: 2.0.2 (2006-05-30)<br>
     <a href="http://wald.intevation.org/frs/?group_id=11">All PDF
 versions</a> | <a
 href="http://gpg4win.de/handbuecher/einsteiger.html">Last HTML version</a>
-  </dd>.
+  </dd>
 
   <dt><b>Gpg4win für Durchblicker</b> (German)</dt>
   <dd>Last version: 2.0.2 (2006-05-30)<br>
@@ -91,5 +101,6 @@ href="http://gpg4win.de/handbuecher/einsteiger.html">Last HTML version</a>
 PDF versions</a> |
     <a href="http://gpg4win.de/handbuecher/durchblicker.html">Last
 HTML version</a>
-  </dd>.</dl>
-
+  </dd>
+</dl>
+</div>

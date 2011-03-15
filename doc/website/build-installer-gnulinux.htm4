@@ -4,19 +4,23 @@ m4_dnl $Id$
 
 m4_define(`EN')
 m4_define(`DE_FILE', `build-installer-gnulinux-de.html')
+
+m4_define(`MAIN', `community')
+m4_define(`TITLE', `Building Gpg4win under GNU/Linux')
+
 PAGE_START
 
-<h1>Build Gpg4win under GNU/Linux</h1>
-
-<p><b>
-This example specifically describes how to create
+<div id="intro">
+<h2>Building Gpg4win under GNU/Linux</h2>
+<p>This example specifically describes how to create
 a new Gpg4win installer on a Debian GNU/Linux 'Etch' 4.0.
-In principle, any other GNU/Linux system could be used as well.
-</b></p>
-
+In principle, any other GNU/Linux system could be used as well..</p> 
 <p>
   <a href="build-installer.html">Back to overview on building installer</a>
 </p>
+</div>
+
+<div id="main">
 
 <h2>Create a new installer package</h2>
 
@@ -176,4 +180,5 @@ The new installer package is here:<br>
 The corresponding source code packages (with the sources of all modules, very big!) is here:<br>
 <em>src/gpg4win-src-n.n.n.exe</em><br>
 </p>
+</div>
 

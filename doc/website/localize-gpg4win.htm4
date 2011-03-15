@@ -4,20 +4,25 @@ m4_dnl $Id$
 
 m4_define(`EN')
 m4_dnl m4_define(`DE_FILE', `localize-gpg4win-de.html')
+
+m4_define(`MAIN', `community')
+m4_define(`TITLE', `Translate Gpg4win into your language')
+
 PAGE_START
 
-<h1>How to translate all of Gpg4win into your language</h1>
-
+<div id="intro">
+<h2>How to translate all of Gpg4win into your language</h2>
 <p>
 Gpg4win consists out of various modules. Some to already support
 numerous languages, some only few.
-</p>
-
-<p>
 Here, you find a description on how to translate each of the
 modules or just how to check whether it supports your language.
 </p>
+</div>
 
+<div id="main">
+
+<h2>Introduction</h2>
 <p>
 Note, that english is always the default base for any translation.
 </p>
@@ -104,7 +109,7 @@ the apropriate language is selected automatically if available.
 Else, english is used.
 </p>
 
-<h2>Gpg4win Web-Site</h2>
+<h2>Gpg4win Website</h2>
 
 <h4>Available languages</h4>
 
@@ -315,9 +320,9 @@ Else, english is used.
 <h2>Kleopatra</h2>
 
 <p>
-This new certificate and key manager is not yet a integrated module.
-Please ask on the gpg4win developer
-mailing list for more information.
+This certificate manager is a project of <a
+href="http://kde.org">KDE</a>.
+Please ask the <a href="http://i18n.kde.org">i18n KDE team</a> for more information.
 </p>
 
 <h2>GnuPG</h2>
@@ -345,3 +350,4 @@ Depending on the language environment of your Windows system,
 the apropriate language is selected automatically if available.
 Else, english is used.
 </p>
+</div>

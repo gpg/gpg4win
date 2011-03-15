@@ -4,13 +4,19 @@ m4_dnl $Id$
 
 m4_define(`DE')
 m4_define(`EN_FILE', `build-installer.html')
+
+m4_define(`TITLE', `Bau von Gpg4win')
+m4_define(`MAIN', `community')
+
 PAGE_START
 
-<h1>Gpg4win Installationspaket selbst herstellen</h1>
+<div id="intro">
+<h2>Bau von Gpg4win</h2>
+<p>Wie Sie Gpg4win-Installationspakete selbst herstellen erfahren Sie
+auf dieser Seite.</p> 
+</div>
 
-<p><em>Achtung: Diese Seite (und die Unterseiten zum Bau von Gpg4win) ist noch nicht 
-vollständig auf Gpg4win2 aktualisiert.</em></p>
-
+<div id="main">
 <h2>Herkömmlicher ".exe-Installer"</h2>
 
 <p>
@@ -188,3 +194,4 @@ Anpassungen an die individuelle Umgebung.
    src/make-msi.bat auf dem Windows-System benötigt. Sie sollten dort
    auch wieder in das src/ Verzeichnis abgelgegt werden.
 </ul>
+</div>

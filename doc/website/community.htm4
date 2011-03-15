@@ -4,17 +4,23 @@ m4_dnl $Id$
 
 m4_define(`EN')
 m4_define(`DE_FILE', `community-de.html')
+
+m4_define(`TITLE', `Gpg4win Community')
+m4_define(`MAIN', `community')
+
 PAGE_START
 
-<h1>Gpg4win Community</h1>
-
+<div id="intro">
+<h2>Gpg4win Community</h2>
 <p>Like any Free Software community Gpg4win needs people
 who <a href="contribute.html">get involved</a> with the initiative.
-One step is e.g. to <a href="reporting-bugs-de.html">reporting problems</a>.</p>
-
-<p>You can communicate with the Gpg4win community via 
+One step is e.g. to <a href="reporting-bugs-de.html">reporting problems</a>.
+<br>
+You can communicate with the Gpg4win community via 
 mailing lists, web forums and IRC:</p>
+</div>
 
+<div id="main">
 <h2>Mailing lists</h2>
 
 <em>Note:</em>
@@ -109,7 +115,6 @@ href="http://wald.intevation.org/forum/forum.php?forum_id=84">Go to Forum >></a>
   </dd>
 
 
-
 <h2>IRC</h2>
 
 <p>To contact Gpg4win users and developers in a chat you can use IRC:</p>
@@ -119,3 +124,15 @@ Channel: <b>#gpg4win</b></p>
 
 <p><a
 href="irc://irc.freenode.net/#gpg4win">irc://irc.freenode.net/#gpg4win</a></p>
+
+</div>
+
+
+<div id="sidebar">
+    <h3>Do you need professional Support?</h3>
+    
+    <p>Use our paid support service of our Gpg4win experts.</p>
+    
+    <p>Learn more about our
+    <a href="support.html">professional support</a>.</p>
+</div>

@@ -4,14 +4,19 @@ m4_dnl $Id$
 
 m4_define(`DE')
 m4_define(`EN_FILE', `package-integrity.html')
+m4_define(`TITLE', `Integrität prüfen')
+m4_define(`MAIN', `misc')
 PAGE_START
 
-<h1>Integrität der Gpg4win-Pakete prüfen</h1>
-
-Wie man die Integrität prüft, kann man z.B.
+<div id="intro">
+<h2>Integrität der Gpg4win-Pakete prüfen</h2>
+<p>Wie man die Integrität prüft, kann man z.B.
 auf der <a href="http://www.gnupg.org/download/integrity_check.de.html">
 GnuPG Seite zur Integritätsprüfung</a> nachlesen.
+</p> 
+</div>
 
+<div id="main">
 <h2>SHA1 Prüfsummen</h2>
 
 <pre>
@@ -33,7 +38,7 @@ MD5_SRC  gpg4win-VERSION.tar.bz2
 
 <h2>OpenPGP Signaturen</h2>
 
-Für gpg4win-VERSION.exe:
+<p>Für gpg4win-VERSION.exe:
 <a href="http://ftp.gpg4win.org/gpg4win-VERSION.exe.sig"
   >http://ftp.gpg4win.org/gpg4win-VERSION.exe.sig</a><br>
 
@@ -48,7 +53,7 @@ Für gpg4win-src-VERSION.exe:
 Für gpg4win-VERSION.tar.bz2:
 <a href="http://ftp.gpg4win.org/gpg4win-VERSION.tar.bz2.sig"
   >http://ftp.gpg4win.org/gpg4win-VERSION.tar.bz2.sig</a>
-
+</p>
 
 <p>
 Die Signaturen wurden mit folgendem OpenPGP-Zertifikat erstellt:<br>
@@ -66,10 +71,10 @@ GpgEX über den Explorer erledigen.
 
 <h2>Dateilängen</h2>
 
-Falls die Prüfsumme nicht stimmen sollte oder eine fehlerhafte Signatur
+<p>Falls die Prüfsumme nicht stimmen sollte oder eine fehlerhafte Signatur
 angezeigt wird, so sollten Sie zuerst die Dateilänge überprüfen, um
 sicherzustellen, daß Sie auch die komplette Datei heruntergeladen
-haben.  Hier sind die Längen die Sie erhalten sollten:
+haben.  Hier sind die Längen die Sie erhalten sollten:</p>
 
 <pre>
 LEN_EXE bytes für gpg4win-VERSION.exe
@@ -77,3 +82,4 @@ LEN_EXL bytes für gpg4win-light-VERSION.exe
 LEN_EXS bytes für gpg4win-src-VERSION.exe
 LEN_SRC bytes für gpg4win-VERSION.tar.bz2
 </pre>
+</div>

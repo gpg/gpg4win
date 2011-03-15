@@ -4,18 +4,23 @@ m4_dnl $Id$
 
 m4_define(`EN')
 m4_define(`DE_FILE', `contribute-de.html')
+
+m4_define(`TITLE', `Contribute to Gpg4win')
+m4_define(`MAIN', `community')
+
 PAGE_START
 
-<h1>Contributing to Gpg4win</h1>
-
-You like Gpg4win? Then support this project.
+<div id="intro">
+<h2>Contributing to Gpg4win</h2>
+<p>You like Gpg4win? Then support this project.
 This is easier than you think and even little
 contributions may have a viable effect.
 As with any other Free Software you may either
 contribute yout time or money.
+</p>
+</div>
 
-<p>
-
+<div id="main">
 <h2>As volunteer</h2>
 
 No matter what your strenghts and weaknesses are,
@@ -58,16 +63,7 @@ you can get active for Gpg4win:
 
 </ul>
 
-<p></p>
 
-<p>You are looking for a concrete instructinos to getting involved?
-Just look at these pages:
-<ul>
-<li><a href="reporting-bugs.html">How to report a problem?</a></li>
-<li><a href="build-installer.html">Build Gp4win installer package</a></li>
-<li><a href="website-maintenance.html">Maintaining the Gpg4win website</a></li>
-<li><a href="localize-gpg4win.html">Gpg4win in your language</a></li>
-</ul>
 </p>
 <p>You havn't found anything? Then please ask on the <a
 href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-devel/">developer
@@ -101,3 +97,18 @@ mailing list</a> what you can do!</p>
      improving security for data exchange.
 
 </ul>
+</div>
+
+<div id="sidebar">
+    <h3>Contribute!</h3>
+
+    <p>You are looking for a concrete instructinos to getting involved?
+    Just look at these pages:</p>    
+    <ul >
+    <li><a href="community.html">Join the Community</a></li>
+    <li><a href="reporting-bugs.html">How to report a problem?</a></li>
+    <li><a href="build-installer.html">Build Gp4win installer package</a></li>
+    <li><a href="website-maintenance.html">Maintaining the Gpg4win website</a></li>
+    <li><a href="localize-gpg4win.html">Gpg4win in your language</a></li>
+    </ul>
+</div>

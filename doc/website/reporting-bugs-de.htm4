@@ -4,9 +4,18 @@ m4_dnl $Id$
 
 m4_define(`DE')
 m4_define(`EN_FILE', `reporting-bugs.html')
+
+m4_define(`TITLE', `Probleme melden')
+m4_define(`MAIN', `community')
+
 PAGE_START
 
-<h1>Wie man am besten ein Problem meldet</h1>
+<div id="intro">
+<h2>Probleme melden</h2>
+<p>Eine Anleitung</p> 
+</div>
+
+<div id="main">
 
 <h2>1. Prüfen, ob man die aktuellste Version von Gpg4win verwendet</h2>
 
@@ -102,3 +111,19 @@ Anleitungen für die einzelnen Gpg4win-Komponenten finden Sie im
 Wer sich in der Lage dazu fühlt, sollte die nur die relevanten
 Information der Logdatei dem Fehlerbericht beilegen.
 </p>
+
+</div>
+   
+
+<div id="sidebar">
+    <h3>Suchen Sie professionellen Support?</h3>
+    
+    <ul>
+    <li><a href="#">TODO
+    <p>Hier bestellen.</p></a></li>
+
+    </ul>
+
+    <p>Kontaktadresse:<br>
+    <a href="#">gpg4win-professional@intevation.de</a></p>
+</div>

@@ -4,10 +4,18 @@ m4_dnl $Id$
 
 m4_define(`EN')
 m4_define(`DE_FILE', `reporting-bugs-de.html')
+
+m4_define(`TITLE', `Reporting Bugs')
+m4_define(`MAIN', `community')
+
 PAGE_START
 
-<h1>How to report a problem</h1>
+<div id="intro">
+<h2>How to report a problem</h2>
+<p>A step-by-step instruction.</p> 
+</div>
 
+<div id="main">
 <h2>1. Check whether you are using the newest version of Gpg4win</h2>
 
 <p>
@@ -96,3 +104,5 @@ Look at the instructions for the several Gpg4win components in the
 If you feel able to, just send a excerpt with the relevant
 information.
 </p>
+
+</div>

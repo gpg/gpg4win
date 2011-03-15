@@ -4,27 +4,30 @@ m4_dnl $Id$
 
 m4_define(`DE')
 m4_define(`EN_FILE', `build-installer-on-vm.html')
+
+m4_define(`MAIN', `community')
+m4_define(`TITLE', `Bau von Gpg4win unter Windows')
+
 PAGE_START
 
-<h1>Bau von Gpg4win unter Windows via eines virtualisiertem GNU/Linux</h1>
-
-<p><b>
-Dieses Beispiel beschreibt konkret die Herstellung eines neuen Gpg4win Installers
+<div id="intro">
+<h2>Bau von Gpg4win unter Windows<br>via eines virtualisiertem GNU/Linux</h2>
+<p>Dieses Beispiel beschreibt konkret die Herstellung eines neuen Gpg4win Installers
 auf Windows XP/SP2 via Debian 'Etch' 4.0 in QEMU.
 Grundsätzlich können für alle drei Komponenten auch Alternativen verwendet
 werden.
-</b></p>
-
+</p>
 <p>
 Tipps: <a href="build-installer-gnulinux-de.html">Bauen unter
 GNU/Linux etwas detaillierter beschrieben</a> und
 <a href="build-installer-on-w32-debian-screenshots-de.html">Installation von Debian GNU/Linux 'Etch' 4.0 innerhalb einer virtuellen QEMU-Maschine als Screenshot-Serie illustriert</a>.
 </p>
-
 <p>
   <a href="build-installer-de.html">Zurück zur Übersicht zum Installer-Bau</a>
 </p>
+</div>
 
+<div id="main">
 <h2>Inhalt</h2>
 
 <p>
@@ -479,7 +482,7 @@ GNU/Linux etwas detaillierter beschrieben</a> und
 </p>
 
 <h2><a name="references"></a>Referenzen (URLs)</h2>
-
+<p>
 <tt>
 <a name="ref1">[1]</a> <a href="http://fabrice.bellard.free.fr/qemu/">http://fabrice.bellard.free.fr/qemu/</a> <br>
 <a name="ref2">[2]</a> <a href="http://www.debian.org/">http://www.debian.org/</a> <br>
@@ -493,3 +496,5 @@ GNU/Linux etwas detaillierter beschrieben</a> und
 <a name="ref10">[10]</a> <a href="http://cdimage.debian.org/debian-cd/4.0_r0/i386/iso-cd/debian-40r0-i386-netinst.iso">http://cdimage.debian.org/debian-cd/4.0_r0/i386/iso-cd/debian-40r0-i386-netinst.iso</a> <br>
 <a name="ref11">[11]</a> <a href="http://cdimage.debian.org/debian-cd/4.0_r0/i386/iso-cd/debian-40r0-i386-businesscard.iso">http://cdimage.debian.org/debian-cd/4.0_r0/i386/iso-cd/debian-40r0-i386-businesscard.iso</a> <br>
 </tt>
+</p>
+</div>

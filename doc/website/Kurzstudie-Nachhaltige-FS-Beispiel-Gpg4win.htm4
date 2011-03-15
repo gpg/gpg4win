@@ -4,39 +4,44 @@ m4_dnl $Id$
 
 m4_define(`DE')
 m4_define(`EN_FILE', `ShortStudy-Sustainable-FS-example-Gpg4win.html')
+
+m4_define(`TITLE', `Kurzstudie: Nachhaltige Freie Software am Beispiel Gpg4win')
+m4_define(`MAIN', `main')
+
 PAGE_START
 
+<div id="intro">
+<h2>Kurzstudie: <br><br>
+"Nachhaltige Freie Software:
+Vom Projekt zur Dauert&auml;tigkeit am Beispiel Gpg4win"
+</h2>
+<br>
+<p><a href="http://intevation.de">
+<img class="imgfloatleft imageframe" src="pix/intevation-logo.png"
+style="margin-top:20px"></a>
+</p>
 <p>
-Zum Download verfügbar: <a href="http://wald.intevation.org/frs/download.php/787/Kurzstudie-Nachhaltige-FS-Beispiel-Gpg4win-20071005.pdf">Dieser Text als PDF-Dokument</a>
+<b>Autoren:</b><BR>
+Dr. Jan-Oliver Wagner &lt;jan-oliver.wagner@intevation.de&gt;<BR>
+Bernhard Reiter	&lt;bernhard.reiter@intevation.de&gt;<BR>
+Intevation GmbH, Neuer Graben 17, 49074 Osnabr&uuml;ck<BR>
+Tel: 0541/33508-30, Fax: 0541/33508-59
+</p>
+<br clear="all">
+<p>
+Diese Kurzstudie ist 
+<a
+href="http://wald.intevation.org/frs/download.php/787/Kurzstudie-Nachhaltige-FS-Beispiel-Gpg4win-20071005.pdf">als
+PDF-Dokument zum Download</a> verfügbar.
 </p>
 
-<h1>Kurzstudie</h1>
-<h1 style="text-align: left; padding-bottom: 6px;">Nachhaltige Freie Software:
-Vom Projekt zur Dauert&auml;tigkeit am Beispiel Gpg4win</h1>
+<p><B>Stand Juni 2006</B>, 
+Fassung vom 20. September 2007 (Webfassung 30.09.2008)</p>
+</div>
 
-<IMG SRC="pix/intevation-logo.png" NAME="Grafik17">
-<BR>
+<div id="main">
 
-<FONT FACE="Nimbus Roman No9 L, serif">Autoren:</FONT><BR>
-<FONT FACE="Nimbus Roman No9 L, serif">Dr. Jan-Oliver
-Wagner	&lt;jan-oliver.wagner@intevation.de&gt;</FONT><BR>
-<FONT FACE="Nimbus Roman No9 L, serif">Bernhard
-Reiter		&lt;bernhard.reiter@intevation.de&gt;</FONT><BR>
-<FONT FACE="Nimbus Roman No9 L, serif">Intevation GmbH, Neuer Graben
-17, 49074 Osnabr&uuml;ck</FONT><BR>
-<FONT FACE="Nimbus Roman No9 L, serif">Tel: 0541/33508-30, Fax:
-0541/33508-59         </FONT>
-<BR>
-
-<P ALIGN=RIGHT STYLE="margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%">
-<FONT FACE="Nimbus Roman No9 L, serif"><B>Stand Juni 2006</B>, 
-Fassung vom 20. September 2007 (Webfassung 30.09.2008)</FONT>
-</P>
-<DIV ID="Inhaltsverzeichnis1" DIR="LTR">
-	<DIV ID="Inhaltsverzeichnis1_Head" DIR="LTR">
-		<P STYLE="margin-top: 6px; page-break-before: always; page-break-after: avoid">
-		<FONT FACE="Nimbus Sans L, sans-serif"><FONT SIZE=4 STYLE="font-size: 16pt"><B>Inhaltsverzeichnis</B></FONT></FONT></P>
-	</DIV>
+<h2>Inhaltsverzeichnis</h2>
 	<P STYLE="margin-bottom: 0cm">1  Zusammenfassung	3</P>
 	<P STYLE="margin-bottom: 0cm">2  Einleitung	3</P>
 	<P STYLE="margin-bottom: 0cm">3  Methodik	4</P>
@@ -98,7 +103,7 @@ Fassung vom 20. September 2007 (Webfassung 30.09.2008)</FONT>
 	Freiwilliger 	23</P>
 	<P STYLE="margin-left: 0.5cm; margin-bottom: 0cm">A.2 Als
 	Geldgeber	23</P>
-</DIV>
+
 <H2 CLASS="western">1  Zusammenfassung</H2>
 <P ALIGN=JUSTIFY STYLE="margin-top: 0.11cm; margin-bottom: 0cm; background: transparent; border: none; padding: 0cm; line-height: 100%; page-break-inside: auto; page-break-before: auto; page-break-after: auto">
 Wer in die Entwicklung einer Freien Software (Open Source)
@@ -1381,7 +1386,4 @@ Gpg4win mit Tat zur Seite stehen:</P>
 	<A
 HREF="http://www.deshalbfrei.org/moinmoin/freiheit_helfen">http://www.deshalbfrei.org/moinmoin/freiheit_helfen.</A></P>
 </DIV>
-<DIV TYPE=FOOTER>
-	<P ALIGN=CENTER STYLE="margin-top: 0.5cm; margin-bottom: 0cm">- <SDFIELD TYPE=PAGE SUBTYPE=RANDOM FORMAT=PAGE>23</SDFIELD>
-	/ <SDFIELD TYPE=DOCSTAT SUBTYPE=PAGE FORMAT=PAGE>23</SDFIELD> -</P>
-</DIV>
+</div>

@@ -18,9 +18,8 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
 EXTRA_DIST = README buildhtml.mk gpg4win.css index-de.htm4 index.htm4 \
-             newsarchive.htm4 newsarchive-de.htm4 \
              template.m4 template_header.m4 versions.m4 build-history.awk \
-             pix/disk.png pix/lock.png pix/logo.png mk-chksums NEWS.last
+             pix/disk.png pix/lock.png pix/logo.png mk-chksums NEWS.last 
 
 
 

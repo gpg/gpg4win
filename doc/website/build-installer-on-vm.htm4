@@ -4,20 +4,14 @@ m4_dnl $Id$
 
 m4_define(`EN')
 m4_define(`DE_FILE', `build-installer-on-vm-de.html')
+
+m4_define(`MAIN', `community')
+m4_define(`TITLE', `Build Gpg4win under Windows')
+
 PAGE_START
 
-<p>
-<b>Attention: Translation of page into english in progress</b>
-</p>
-
-<h1>Building of Gpg4win under Windows via virtual GNU/Linux</h1>
-
-<p><b>
-This example pracitcally describes how to build a new Gpg4win Installer on
-Windows XP/SP2 via Debian Etch 4.0 in QEMU. In principle also alternatives can
-be used for all of these three base components.
-</b></p>
-
+<div id="intro">
+<h2>Building of Gpg4win under Windows<br> via virtual GNU/Linux</h2>
 <p>
 Hints: <a href="build-installer-gnulinux.html">Building under GNU/Linux
 in more detail</a> and
@@ -25,10 +19,12 @@ in more detail</a> and
 Debian GNU/Linux Etch 4.0 within a virtual QEMU machine illustrated as
 screenshot-series.</a>.
 </p>
-
 <p>
   <a href="build-installer.html">Back to the overview on building Gpg4win</a>
 </p>
+</div>
+
+<div id="main">
 
 <h2>Contents</h2>
 
@@ -399,3 +395,5 @@ This can be accomplished on CMD-shell with the following commands:
 <a name="ref8">[8]</a> <a href="http://cdimage.debian.org/debian-cd/4.0_r0/i386/iso-cd/debian-40r0-i386-netinst.iso">http://cdimage.debian.org/debian-cd/4.0_r0/i386/iso-cd/debian-40r0-i386-netinst.iso</a> <br>
 <a name="ref9">[9]</a> <a href="http://cdimage.debian.org/debian-cd/4.0_r0/i386/iso-cd/debian-40r0-i386-businesscard.iso">http://cdimage.debian.org/debian-cd/4.0_r0/i386/iso-cd/debian-40r0-i386-businesscard.iso</a> <br>
 </tt>
+
+</div>

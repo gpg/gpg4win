@@ -4,14 +4,19 @@ m4_dnl $Id$
 
 m4_define(`EN')
 m4_define(`DE_FILE', `package-integrity-de.html')
+m4_define(`TITLE', `Check Integrity')
 PAGE_START
 
-<h1>Check integrity of Gpg4win packages</h1>
-
-How to actually perform the checks can be found e.g.
+<div id="intro">
+<h2>Check integrity of Gpg4win packages</h2>
+<p>How to actually perform the checks can be found e.g.
 on the
 <a href="http://www.gnupg.org/download/integrity_check.html">
 GnuPG web page on integrity checks</a>.
+</p>
+</div>
+
+<div id="main">
 
 <h2>SHA1 checksums</h2>
 
@@ -23,8 +28,8 @@ SHA1_SRC  gpg4win-VERSION.tar.bz2
 </pre>
 
 <h2>MD5 checksums</h2>
-<b>Attention: Using of MD5 is insecure!
-Please use SHA1 only.</b>
+<p><b>Attention: Using of MD5 is insecure!
+Please use SHA1 only.</b></p>
 <pre>
 MD5_EXE  gpg4win-VERSION.exe
 MD5_EXL  gpg4win-light-VERSION.exe
@@ -34,7 +39,7 @@ MD5_SRC  gpg4win-VERSION.tar.bz2
 
 <h2>OpenPGP signatures</h2>
 
-For gpg4win-VERSION.exe:
+<p>For gpg4win-VERSION.exe:
 <a href="http://ftp.gpg4win.org/gpg4win-VERSION.exe.sig"
   >http://ftp.gpg4win.org/gpg4win-VERSION.exe.sig</a><br>
 
@@ -49,6 +54,7 @@ For gpg4win-src-VERSION.exe:
 For gpg4win-VERSION.tar.bz2:
 <a href="http://ftp.gpg4win.org/gpg4win-VERSION.tar.bz2.sig"
   >http://ftp.gpg4win.org/gpg4win-VERSION.tar.bz2.sig</a>
+  </p>
 
 <p>
 The signatures have been created with the following OpenPGP certificate<br>
@@ -66,9 +72,9 @@ the Explorer.
 
 <h2>File lengths</h2>
 
-If you have a mismatch on the checksum or a bad signature you should
+<p>If you have a mismatch on the checksum or a bad signature you should
 first verify that you really downloaded the complete file.  Here are
-the lengths you should get:
+the lengths you should get:</p>
 
 <pre>
 LEN_EXE bytes for gpg4win-VERSION.exe
@@ -77,4 +83,4 @@ LEN_EXS bytes for gpg4win-src-VERSION.exe
 LEN_SRC bytes for gpg4win-VERSION.tar.bz2
 </pre>
 
-
+</div>

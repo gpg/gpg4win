@@ -5,50 +5,35 @@ m4_dnl $Id:$
 m4_define(`DE')
 m4_define(`EN_FILE', `download.html')
 
+m4_define(`TITLE', `Download Gpg4win')
+m4_define(`MAIN', `download')
+
 PAGE_START
-<h1>Download</h1>
+<!--
+<div class="download_header">
+ <span class="text">
+ Sichere E-Mail- und Datei-Verschlüsselung<br/> mit GnuPG für Windows
+ </span>
+</div>
+-->
 
-<h2>Gpg4win 2.1.0-rc2</h2>
+<div id="intro">
+<h2>Download</h2>
+<p>Freie Software zum freien Download</p> 
+</div>
 
-<p>Der <b>zweite Release Candidate (RC)</b> - inklusive des deutschen
-und englischen Gpg4win-Kompendiums -
-von Gpg4win 2.1.0 kann hier herunter geladen werden:</p>
-<a href="http://ftp.gpg4win.org/Beta/gpg4win-2.1.0-rc2.exe" class="dlbutton2">Gpg4win&nbsp;2.1.0-rc2<br>
-<span class="version"><small>Größe: 38 MByte | Veröffentlicht: 2011-02-04</small></span>
-</a>
-
-<ul>
-    <li><a href="http://ftp.gpg4win.org/Beta/gpg4win-2.1.0-rc2.exe.sig"
-        >OpenPGP-Signatur</a> (für gpg4win-2.1.0-rc2.exe)
-    <li><b>SHA1-Prüfsumme</b> (für gpg4win-2.1.0-rc2.exe):
-    <code>7eaad4949f521eea289f9efa9e85c1091dbae98a gpg4win-2.1.0-rc2.exe</code></li>
-
-<!--<li><a href="change-history-de.html">Änderungshistorie</a></li>-->
-
-<li>Quelltexte und andere Gpg4win-2.1.0-rc2 Varianten:
-    <ul>
-    <li><a href="http://ftp.gpg4win.org/Beta/gpg4win-light-2.1.0-rc2.exe">gpg4win-light-2.1.0-rc2.exe</a>
-    (Vollversion <em>ohne</em> Kleopatra und Gpg4win-Kompendium); 
-    <small>Größe: 15 MByte</small></li>
-    <li><a
-        href="http://ftp.gpg4win.org/Beta/gpg4win-2.1.0-rc2.tar.bz2">gpg4win-2.1.0-rc2.tar.bz2</a>
-    (Quelltextpaket); <small>Größe: 12 MByte</small></li>
-    <li>Alle Versionen und OpenPGP-Signaturen unter <a
-        href="http://ftp.gpg4win.org/Beta">ftp.gpg4win.org/Beta</a>.</li>
-    </ul>
-</li>
-</ul>
-<p>Lesen Sie die aktuelle <a
-    href="http://ftp.gpg4win.org/Beta/README-2.1.0-rc2.de.txt">README-Datei</a>.
-
+<div id="main">
 
 <h2>Gpg4win VERSION</h2>
 
 <p>Die Vollversion (inklusive des deutschen Gpg4win-Kompendiums) von Gpg4win VERSION
 kann hier herunter geladen werden:</p>
-<a href="DOWNLOAD_URL" class="dlbutton2">Gpg4win&nbsp;VERSION<br>
-<span class="version"><small>Größe: DL_SIZE | Veröffentlicht: DL_DATE</small></span>
-</a>
+<div class="dlbutton2">
+ <img src="img/dl_arrow.png" alt="" />
+ <a href="DOWNLOAD_URL" class="dlbutton2">Gpg4win&nbsp;VERSION<br />
+ <span class="version"><small>Größe: DL_SIZE | Veröffentlicht: DL_DATE</small></span>
+ </a>
+</div>
 
 <ul>
     <li><a href="http://ftp.gpg4win.org/gpg4win-VERSION.exe.sig"
@@ -61,7 +46,7 @@ kann hier herunter geladen werden:</p>
 <li>Quelltexte und andere Gpg4win-VERSION Varianten:
     <ul>
     <li><a href="LDOWNLOAD_URL">gpg4win-light-VERSION.exe</a>
-    (Vollversion <em>ohne</em> Kleopatra und Handbücher); 
+    (Vollversion <em>ohne</em> Kleopatra und Gpg4win-Kompendium); 
     <small>Größe: LDL_SIZE</small></li>
     <li><a
         href="http://ftp.gpg4win.org/gpg4win-VERSION.tar.bz2">gpg4win-VERSION.tar.bz2</a>
@@ -89,16 +74,22 @@ kann hier herunter geladen werden:</p>
 <p>Die aktuelle PDF- und HTML-Version des Gpg4win-Kompendiums finden
 Sie hier:</p>
 
-<a href="DOWNLOAD_URL_COMPENDIUM_DE"
-    class="dlbutton2">Gpg4win-Kompendium COMPENDIUM_VERSION_DE (PDF, Deutsch)<br>
+<div class="dlbutton2">
+ <img src="img/dl_arrow.png" alt="" />
+<a href="DOWNLOAD_URL_COMPENDIUM_DE">Gpg4win-Kompendium COMPENDIUM_VERSION_DE
+(PDF, Deutsch)<br />
 <span class="version"><small>Größe: DL_SIZE_COMPENDIUM_DE | 
 Veröffentlicht: COMPENDIUM_DATE_DE</small></span>
 </a>
+</div>
 
-<a href="./doc/de/gpg4win-compendium.html"
-    class="dlbutton2">Gpg4win-Kompendium COMPENDIUM_VERSION_DE (HTML, Deutsch)<br>
+<div class="dlbutton2">
+ <img src="img/dl_arrow.png" alt="" />
+<a href="./doc/de/gpg4win-compendium.html">Gpg4win-Kompendium
+COMPENDIUM_VERSION_DE (HTML, Deutsch)<br/>
 <span class="version"><small>Veröffentlicht: COMPENDIUM_DATE_DE</small></span>
 </a>
+</div>
 
 <p>Lesen Sie die <a href="documentation-de.html">Dokumentationsseite</a>
 für weitere Informationen über verfügbare Gpg4win Dokumentationen.</p>
@@ -141,9 +132,20 @@ Wir empfehlen, sich in die
   >Gpg4win-Bekanntmachungs-Mailingliste</a> einzuschreiben,
 um automatisch über neue Versionen und andere wichtige
 Neuigkeiten zu Gpg4win informiert zu werden.
+</p>
 
 <p>
-Ist das Herunterladen immer langsam? Versuchen Sie diesen Spiegelserver:
-</p>
+Ist das Herunterladen immer langsam? Versuchen Sie diesen
+Spiegelserver:<br>
 <a href="MIRROR_IE_URL">Gpg4win Spiegelserver in Irland</a> (betrieben
 von <a href="http://ftp.heanet.ie/about/">HEAnet</a>)
+</p>
+</div>
+   
+
+<div id="sidebar">
+    <h3>Gpg4win VERSION enthält:</h3>
+    <pre>
+    SOFTWAREOVERVIEW
+    </pre>
+</div>

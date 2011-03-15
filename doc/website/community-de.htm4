@@ -4,18 +4,23 @@ m4_dnl $Id$
 
 m4_define(`DE')
 m4_define(`EN_FILE', `community.html')
+
+m4_define(`TITLE', `Gpg4win Gemeinschaft')
+m4_define(`MAIN', `community')
+
 PAGE_START
 
-<h1>Gpg4win-Gemeinschaft</h1>
-
+<div id="intro">
+<h2>Gpg4win-Gemeinschaft</h2>
 <p>Wie jede Freies Software Initiative lebt auch 
 Gpg4win davon, dass sich Interessierte engagieren und <a
 href="contribute-de.html">mitmachen</a>. Ein Schritt ist z.B. das <a
-href="reporting-bugs-de.html">Berichten von Problemen</a>.</p>
-
-<p>Mit Gpg4win-Gemeinschaft können Sie über mehrere Medien
+href="reporting-bugs-de.html">Berichten von Problemen</a>.<br>
+Mit Gpg4win-Gemeinschaft können Sie über mehrere Medien
 kommunizieren: Mailinglisten, Webforen und IRC:</p>
+</div>
 
+<div id="main">
 <h2>Mailinglisten</h2>
 
 <p>Für die Gpg4win-Gemeinschaft gibt es derzeit nachfolgende
@@ -112,3 +117,15 @@ Kanal: <b>#gpg4win</b></p>
 
 <p><a
 href="irc://irc.freenode.net/#gpg4win">irc://irc.freenode.net/#gpg4win</a></p>
+</div>
+   
+
+<div id="sidebar">
+    <h3>Benötigen Sie professionellen Support?</h3>
+    
+    <p>Dann nutzen Sie den bezahlten Unterstützungsservice 
+    von unseren Gpg4win Experten.</p>
+    
+    <p>Erfahren Sie mehr über unseren
+    <a href="support-de.html">professionellen Gpg4win-Support</a>.</p>
+</div>

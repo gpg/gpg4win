@@ -4,17 +4,29 @@ m4_dnl $Id$
 
 m4_define(`EN')
 m4_define(`DE_FILE', `newsarchive-de.html')
+m4_define(`TITLE', `News Archive')
 PAGE_START
 
-<h1>News Archive</h1>
+<div id="intro">
+<h2>News Archive</h2>
+<p>
+The Gpg4win announcements of the last years.
+The latest news are placed at the <a href="./">welcome page</a>.
+</p>
+</div>
 
-<p></p>
+
+<div id="main">
+
+<h2>2011</h2>
+
+<dt><b>+++ 2011-02-04: Gpg4win 2.1.0-rc2 released +++</b></dt>
+<dd>with important updates of GnuPG and Kleopatra.
+</dd>
 
 <h2>2010</h2>
 <dl>
 
-<dt> The latest news are placed at the <a href="./">welcome page</a>.</dt>
-<dd>[..]</dd>
 
 <dt><b>+++ 2010-07-28: Gpg4win 2.0.4 released +++</b></dt>
 <dd>Security fix for GPGSM (GnuPG). See the <a
@@ -87,3 +99,5 @@ Kleopatra are available in the updated <a href="doc/README.en.txt">README file</
 <dt><b>+++ 2009-08-12: Gpg4win 2.0.0 released +++</b></dt>
 <dd>Read the <a href="news-20090812.html">Press release</a>.</dd>
 </dl>
+
+</div>

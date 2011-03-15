@@ -4,14 +4,22 @@ m4_dnl $Id$
 
 m4_define(`EN')
 m4_define(`DE_FILE', `build-installer-on-w32-debian-screenshots-de.html')
+
+m4_define(`MAIN', `community')
+m4_define(`TITLE', `Installation of Debian GNU/Linux in a VM')
+
 PAGE_START
 
+<div id="intro">
 <h2>Installation of Debian GNU/Linux 'Etch' 4.0 within a virtual QEMU machine</h2>
-
 <p>
 <a href="build-installer-on-vm.html">Back to the Gpg4win build instructions for
 Windows</a>
 </p>
+</div>
+
+<div id="main">
+<h2>Instruction</h2>
 
 <p>
  This installation was accomplished with the Business Card boot medium, version
@@ -172,3 +180,5 @@ qemu -m 256 -L %QEMU%\pc-bios -hda install.img -kernel-kqemu -redir tcp:5555::22
  After the boot procedure one should successfully login as root user
  and be able to update the system and/or do further installation.
 </p>
+
+</div>

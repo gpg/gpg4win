@@ -4,15 +4,50 @@ m4_dnl $Id$
 
 m4_define(`DE')
 m4_define(`EN_FILE', `donate.html')
+
+m4_define(`TITLE', `Spenden')
+m4_define(`MAIN', `donate')
+
 PAGE_START
 
-<h1>Spenden</h1>
+<div class="donate_header">
+ <span class="text">
+  Wir lieben Freie Software!<br />
+  Sie auch?<br />
+  <b>Unterstützen Sie Gpg4win!</b>
+ </span>
+</div>
 
-<p><b>Unterstützen Sie Gpg4win!</b></p>
-
-Ihre Spende unterstützt die Pflege und Weiterentwicklung von Gpg4win
+<div id="intro">
+<h2>Spenden</h2>
+<p>Ihre Spende unterstützt die Pflege und Weiterentwicklung von Gpg4win
 sowie hilft uns die Freie Software Initiative Gpg4win voranzutreiben.
-Wir sind dankbar für jede finanzielle Unterstützung.
+Wir sind dankbar für jede finanzielle Unterstützung. Helfen auch Sie!</p>
+</div>
+
+<div id="main">
+
+<h2>Tragen Sie zu Gpg4win bei!</h2>
+
+<p>Geben Sie einen <b>kleinen Betrag</b> über die Zahlmöglichkeit dieser Seite,
+versehen mit einem kurzen Kommentar für welche Verbesserung Sie wieder etwas
+geben würden und was Ihnen besonders an Gpg4win gefällt. Auch einstellige
+Euro-Beträge können helfen und motivieren.</p>
+
+<p> Bei einem <b>mittleren Betrag</b>, kontaktieren Sie einen der Projektbeteiligten
+und zahlen gegen Rechnung. Eventuell können Sie ein bestimmten Schritt wie
+Aktualisierung, Beseitigung eines Fehlers oder Hinzufügen einer Funktion
+beauftragen. Achten Sie darauf, dass jede beauftragte Verbesserung dem Gpg4win
+Hauptstrom zu Gute kommt.</p>
+
+<p> Als Unternehmen oder Behörde <b>beauftragen</b> Sie die umfangreicheren
+Maßnahmen zur Sicherung einer nachhaltige und eigenständigen
+Fortführung des Projekts.
+Sie erhalten damit Gpg4win dauerhaft für Ihre Organisation.
+Einher geht der
+Kollateralnutzen, dass darüber hinaus die Sicherheit beim Datenverkehr im
+Allgemeinen verbessert wird.</p>
+
 
 <h2>Liste der Spender</h2>
 <p>Nachfolgend finden Sie eine Übersicht aller Spender, die bisher die
@@ -21,47 +56,32 @@ Spende zugestimmt haben.</p>
 <p><b>Spenden Sie online und erscheinen Sie selbst in dieser Liste!</b>
 Nutzen Sie dafür die "Spenden"-Schaltfläche rechts auf dieser Seite.</p>
 
+<pre>
+m4_include(`SPONSORS')
+</pre>
+</div>
+
+<div id="sidebar">
+<h3>Spenden Sie jetzt!</h3>
 <p>
-<ul>
-<li>Andrew Huang</li>     
-<li>Andy Fletcher</li> 
-<li>Armando Villani</li> 
-<li>Ben Gerber</li>
-<li>Christopher Dawes</li>
-<li>Christian de Boor</li>
-<li>Daniel Aleksandersen</li> 
-<li>Daniele Berti</li> 
-<li>Florian Töpfer</li> 
-<li>Gerd Schweinsberg</li>
-<li>Greg Robinson</li> 
-<li>Gunner Gewiß</li> 
-<li>Hendrik Jan Strijker</li> 
-<li>Hugh Glenister</li> 
-<li>Igor Sharov</li> 
-<li>Ingolf Petersohn</li> 
-<li>James Carpenter</li>
-<li>Jay Litwyn</li>
-<li>Joachim Bolle</li>
-<li>Johannes Egbert Münch</li> 
-<li>Jürgen Sättler</li>
-<li>Kurt Meyer</li>
-<li>Kevin Smith</li>
-<li>Lilo von Hanffstengel</li>
-<li>Marcel Bade</li>
-<li>Marco A G Pinto</li>
-<li>Mark Jennings</li> 
-<li>Markus Barkholz</li> 
-<li>Michael Langhammer</li>  
-<li>Nelson Ingersoll</li> 
-<li>note.com LLC</li> 
-<li>Oliver Schubbe</li>
-<li>PCMasters.de</li>
-<li>Peter Engel</li> 
-<li>Richard Dorn</li>
-<li>Rudolf Doczkal</li>
-<li>Sebastian Morkisch</li> 
-<li>Thomas Freeman</li>
-<li>Tom Niderost</li> 
-<li>Wilford Isner III</li>
-</ul>
+<form action="https://www.paypal.com/de/cgi-bin/webscr" method="post">
+    <input name="cmd" value="_donations" type="hidden">
+    <input name="business" value="paypal@intevation.de" type="hidden">
+    <input name="undefined_quantity" value="1" type="hidden">
+    <input name="item_name" value="Gpg4win" type="hidden">
+    <input name="item_number" value="1000" type="hidden">
+    <input name="no_shipping" value="1" type="hidden">
+    <input name="cn" value="Kommentar an das Gpg4win-Entwicklerteam (Lob/Kritik)" type="hidden">
+    <input name="currency_code" value="EUR" type="hidden">
+    <input name="bn" value="PP-BuyNowBF" type="hidden">
+    <input src="https://www.paypal.com/de_DE//i/btn/btn_donate_LG.gif" name="submit" alt="Jetzt einfach, schnell und sicher online spenden - mit PayPal." type="image" border="0">
+    <input name="on0" value="Veröffentlichung der Spende zugestimmt?" type="hidden">
+    <input name="os0" value="Nein" type="hidden">
+    <br>
+
+    <input name="os0" value="Ja" checked="checked" type="checkbox">Spendernamen veröffentlichen
+  </form>
 </p>
+<form action="">
+
+</div>

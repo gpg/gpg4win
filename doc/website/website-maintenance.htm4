@@ -4,25 +4,30 @@ m4_dnl $Id$
 
 m4_define(`EN')
 m4_define(`DE_FILE', `website-maintenance-de.html')
+
+m4_define(`MAIN', `community')
+m4_define(`TITLE', `Website maintenance')
+
 PAGE_START
 
-<h1>Maintaining the Gpg4win website</h1>
-
-The maintenance of the website is actually quite simply
+<div id="intro">
+<h2>Maintaining the Gpg4win website</h2>
+<p>The maintenance of the website is actually quite simply
 because many things are automized.
-
-<p>
 What you should be (or should become) familiar with: a text editor,
-HTML, ssh and Subversions.
-</p>
+HTML, ssh and Subversions.</p> 
+</div>
 
-<p>
-Typical tasks:
+<div id="main">
+
+<h2>Typical tasks</h1>
+
+<p>Typical tasks of maintaining the website are:</p>
 <ul>
-<li> Update version of Gpg4win (occasioanlly, ca. 15 minutes)
-<li> Fix typos (whenever you or someone else finds one, few minutes)
+<li> Update version of Gpg4win (occasioanlly, duration: ca. 15 minutes)
+<li> Fix typos (whenever you or someone else finds one, duration: few minutes)
 </ul>
-</p>
+
 
 <h2>Anonymously take a first look</h2>
 
@@ -100,3 +105,4 @@ expression of interest to join the team is of course a good idea.
 <li> The last step is to put the new version online:<br>
      <em>make -f buildhtml.mk online</em><br>
 </ol>
+</div>
