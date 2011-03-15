@@ -70,6 +70,7 @@ m4_define(`LINK',
   </div>
 
   <div id="footer">
+   <br>
    <div id="sitemap">
     <ul>
      <li><a href="index-de.html"><img src="img/logo_footer.png" alt="" /></a></li>

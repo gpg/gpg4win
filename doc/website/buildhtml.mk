@@ -16,8 +16,8 @@ SUBDIRS =
 
 # Installation configuration
 INSTALL_DIR = /tmp/gpg4win-www
-ADD_INST_TYPES = *.css *.ico *.php
-ADD_INST_DIRS = pix
+ADD_INST_TYPES = *.css *.php *.png
+ADD_INST_DIRS = pix img
 
 #USER=$(shell grep "svn+ssh://" .svn/entries | sed -e "s/.*svn+ssh:\/\///g" | sed -e "s/@.*//g" | head -1)
 
@@ -31,8 +31,7 @@ CURDIR=$(shell pwd)
 all: $(TARGETS) subdirs
 
 $(TARGETS): template.m4 template_header.m4 versions.m4 \
-            header.m4 \
-            gpg4win.css
+            header.m4 gpg4win.css
 
 subdirs: $(SUBDIRS)
 	@for dir in $^ ; do \
