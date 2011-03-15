@@ -17,7 +17,7 @@ an encryption software for files and emails.</p>
 </div>
 
 <div id="main">
-<h2>What ist Gpg4win?</h2>
+<h2>What is Gpg4win?</h2>
 <p>Gpg4win enables users to securely transport emails and files
 with the help of encryption and digital signatures. Encryption protects
 the contents against an unwanted party reading it. Digital signatures
@@ -94,7 +94,7 @@ Both OpenPGP and S/MIME should be supported in a unified way.
 <p>
 Gpg4win is an international effort. Due to the origins of the initiative 
 there is a full German translation.
-<a href="localization-gpg4win.html">Additional translators are
+<a href="localize-gpg4win.html">Additional translators are
 welcome!</a>
 </p>
 

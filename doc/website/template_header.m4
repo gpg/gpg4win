@@ -97,6 +97,7 @@ m4_define(`LINK',
      MENU(`contribute', `Zu Gpg4win beitragen', `Contribute to Gpg4win', `contribute', SUB, LANG_DE)
      MENU(`reporting-bugs', `- Problemen melden', `- Reporting Bugs', `reporting-bugs', SUB, LANG_DE)
      MENU(`build-installer', `- Bau von Gpg4win', `- Build of Gpg4win', `build-installer', SUB, LANG_DE)
+     MENU(`website-maintenance', `- Website pflegen', `- Maintaining Website', `website-maintenance', SUB, LANG_DE)
      </li>
      m4_ifelse(LANG_DE, `1', `<li><a href="localize-gpg4win.html">- Gpg4win übersetzen</a></li>', `<li><a href="localize-gpg4win.html">- Translate Gpg4win</a></li>')
     </ul>
