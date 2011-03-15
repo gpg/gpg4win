@@ -13,11 +13,9 @@ PAGE_START
 <div id="intro" style="float:left; padding-right:0; width:600px;">
     <span></span>
     <h2>Gpg4win - a secure solution...</h2>
-    <p>
-    ... to encrypt and sign of emails, files and folders under Windows.
+    <p>... for file and email encryption.
     Gpg4win (GNU Privacy Guard for Windows) is Free Software and 
-    can be installed with just a few mouse clicks.<br>
-    Go on - in a free and secure future!
+    can be installed with just a few mouse clicks.
 </p>
 </div>
 
@@ -42,7 +40,7 @@ The best point to start is with the illustrative
 </div>
 
 <div class="column3">
-<h4>Gemeinschaft erleben</h4>
+<h4>Join the community</h4>
 <p>Ggp4win is Free Software. Join the <a href="community.html">community</a>!
 We recommend subscribing to the
 <a href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-announce"

@@ -23,6 +23,7 @@ PAGE_START
 of Gpg4win VERSION here:</p>
 
 <div class="dlbutton2">
+<img src="img/dl_arrow.png" alt="" />
 <a href="DOWNLOAD_URL" class="dlbutton2">Gpg4win&nbsp;VERSION<br>
 <span class="version"><small>Size: DL_SIZE | Released: DL_DATE</small></span>
 </a>
@@ -66,16 +67,15 @@ of Gpg4win VERSION here:</p>
 
 You find the current PDF and HTML version of the Gpg4win Compendium here:
 <div class="dlbutton2">
-<a href="DOWNLOAD_URL_COMPENDIUM_DE"
-    class="dlbutton2">Gpg4win Compendium COMPENDIUM_VERSION_EN (PDF, English)<br>
+<img src="img/dl_arrow.png" alt="" />
+<a href="DOWNLOAD_URL_COMPENDIUM_DE">Gpg4win Compendium COMPENDIUM_VERSION_EN (PDF, English)<br>
 <span class="version"><small>Size: DL_SIZE_COMPENDIUM_EN | 
 Released: COMPENDIUM_DATE_EN</small></span>
 </a>
 </div>
 
 <div class="dlbutton2">
-<a href="./doc/en/gpg4win-compendium.html"
-    class="dlbutton2">Gpg4win Compendium COMPENDIUM_VERSION_DE (HTML, English)<br>
+<a href="./doc/en/gpg4win-compendium.html">Gpg4win Compendium COMPENDIUM_VERSION_DE (HTML, English)<br>
 <span class="version"><small>Released: COMPENDIUM_DATE_DE</small></span>
 </a>
 </div>
