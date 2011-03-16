@@ -27,7 +27,7 @@
      m4_ifelse(LANG_DE, `1', `
      <a href="download-de.html">Gpg4win 2.1.0 veröffentlicht</a></span>
     <p><a href="https://www.bsi.bund.de/ContentBSI/Presse/Pressemitteilungen/Presse2011/Gpg4win_neue_Version_15032011.html">Pressemitteilung</a> (in Zusammenarbeit mit dem BSI)</p>', `
-     <a href="dowwnload.html">Gpg4win 2.1.0 released</a></span>')     
+     <a href="download.html">Gpg4win 2.1.0 released</a></span>')     
    <div class="limiter"></div>
    <p>
      m4_ifelse(LANG_DE, `1', `
