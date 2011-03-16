@@ -301,7 +301,7 @@ td {
  font-weight: normal;
 }
 
-#main p, #full p {
+#main p, #full p, #main li, #full li{
  color: #444444;
  line-height: 20px;
  margin: 0px 0px 10px;

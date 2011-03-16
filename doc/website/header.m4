@@ -25,9 +25,9 @@
    <small>2011-03-15</small><br>
    <span class="serif_word"><img src="img/bulletin.png" alt="" />
      m4_ifelse(LANG_DE, `1', `
-     <a href="download-de.html">Gpg4win 2.1.0 veröffentlicht</a></span>
+     <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2011-March/000015.html">Gpg4win 2.1.0 veröffentlicht</a></span>
     <p><a href="https://www.bsi.bund.de/ContentBSI/Presse/Pressemitteilungen/Presse2011/Gpg4win_neue_Version_15032011.html">Pressemitteilung</a> (in Zusammenarbeit mit dem BSI)</p>', `
-     <a href="download.html">Gpg4win 2.1.0 released</a></span>')     
+     <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2011-March/000051.html">Gpg4win 2.1.0 released</a></span>')     
    <div class="limiter"></div>
    <p>
      m4_ifelse(LANG_DE, `1', `

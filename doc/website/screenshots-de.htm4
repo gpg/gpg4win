@@ -45,7 +45,7 @@ src="img/t250.sc-kleopatra-splashscreen_de.png">
 <img class="imgfloatleft imageframe"
 src="img/t250.sc-kleopatra-mainwindow-openpgp-certificates_de.png">
 </a>
-<p>Darstellung von zwei (vertrauenswürdigen) OpenPGP-Zertifiakten.
+<p>Darstellung von zwei (vertrauenswürdigen) OpenPGP-Zertifikaten.
 </p>
 </li>
 <li>
@@ -74,7 +74,7 @@ Angaben.
 src="img/t250.sc-kleopatra-x509-personalDetails_de.png">
 </a>
 <p>Erstellung eines S/MIME-Zertifikats: Eingabe der persönlichen
-Angben.
+Angaben.
 </p>
 </li>
 <li>
@@ -82,7 +82,7 @@ Angben.
 <img class="imgfloatleft imageframe" 
 src="img/t250.sc-kleopatra-openpgp-personalDetails_de.png">
 </a>
-<p>Details eines OpenPGP-Zertifikat.
+<p>Details eines OpenPGP-Zertifikats.
 </p>
 </li>
 
@@ -155,8 +155,8 @@ src="img/t250.sc-kleopatra-verifyFile2-details_de.png"
 <img class="imgfloatleft imageframe"
 src="img/t250.sc-gpgex-explorer-options_de.png">
 </a>
-<p> Das Kontextmenü von GpgEX im Windows Explorer - mit den 
-erweitereten Optionen.</p>
+<p>Das Kontextmenü von GpgEX im Windows Explorer - mit den 
+erweiterten Optionen.</p>
 </li>
 </ul>
 
@@ -168,7 +168,7 @@ erweitereten Optionen.</p>
 <img class="imgfloatleft imageframe" 
 src="img/t250.sc-gpgol-sendSignEncryptedMail_de.png">
 </a>
-<p>Signieren und Verschlüsseln eine E-Mail in Outlook
+<p>Signieren und Verschlüsseln einer E-Mail in Outlook
 </p>
 </li>
 

@@ -64,7 +64,7 @@ href="http://www.gnupg.org/documentation/howtos.de.html#GnuPG-cardHOWTO">GnuPG</
 <p>Signieren Sie Dateien und Ordner direkt aus dem Windows
 Explorer - mit dem Explorer-Plugin GpgEX.
 Sie können auch mehrere Dateien und ganze Ordner auswählen und diese
-dann rekursiv signiern/verschlüsseln in einem gpgtar-Archiv
+dann rekursiv signieren/verschlüsseln in einem gpgtar-Archiv
 ablegen.</p>
 </div>
 
@@ -107,7 +107,7 @@ src="img/sc-kleopatra-mail-certificateselection-signencrypt_de.png">
 
 <div class="column3">
 <h4>&nbsp;</h4>
-<p>Für "Viel-Benutzer" bietet Gpg4win die Möglichkeit die
+<p>Für "Viel-Benutzer" bietet Gpg4win die Möglichkeit, die
 Zertifikatsbestätigung nur im Konfliktfall anzuzeigen. Damit entfällt
 z.B. das regelmäßige Bestätigen eines eindeutig passenden
 Zertifikats beim E-Mail signieren und verschlüsseln.
@@ -201,7 +201,7 @@ href="about-de.html">Systemanforderung</a>.</p>
 
 <div class="column3">
 <h4>Internationalisierung</h4>
-<p>Alle Dialog in Gpg4win sind vollständig in deutscher und englischer Sprache
+<p>Alle Dialoge in Gpg4win sind vollständig in deutscher und englischer Sprache
 verfügbar. Der Gpg4win-Installer bietet darüber hinaus weitere
 Sprachen an.</p>
 </div>

@@ -110,8 +110,8 @@ Der Hauptunterschied zu den bisherigen Ansätzen
 (vor allem GnuPP, GnuPT, Windows Privacy Tools und GnuPG-Basics)
 ist, dass zunächst der Gpg4win-Builder entwickelt wurde.
 Dieser erlaubt es, sehr leicht neue gpg4win.exe-Installer
-mit aktualisierten Komponenten herzustellen.
-Und zwar auf einem GNU/Linux System. Fast alle Produkte
+mit aktualisierten Komponenten herzustellen, 
+und zwar auf einem GNU/Linux System. Fast alle Produkte
 werden dabei sogar automatisch per Cross-Compilation erstellt.
 </p>
 

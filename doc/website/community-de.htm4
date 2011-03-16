@@ -12,7 +12,7 @@ PAGE_START
 
 <div id="intro">
 <h2>Gpg4win-Gemeinschaft</h2>
-<p>Wie jede Freies Software Initiative lebt auch 
+<p>Wie jede Freie Software Initiative lebt auch 
 Gpg4win davon, dass sich Interessierte engagieren und <a
 href="contribute-de.html">mitmachen</a>. Ein Schritt ist z.B. das <a
 href="reporting-bugs-de.html">Berichten von Problemen</a>.<br>
@@ -32,14 +32,14 @@ Bestätigung eines Moderators wartet.</p>
 
 <dl>
   <dt><b>Gpg4win-announce-de</b></dt>
-  <dd>Bekannmachungsliste (deutsch)<br>
+  <dd>Bekanntmachungsliste (deutsch)<br>
     <a
 href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-announce-de/">Abonnieren</a>
 | <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/">Archiv</a>
   </dd>
 
   <dt><b>Gpg4win-announce</b></dt>
-  <dd>Bekannmachungsliste (englisch)<br>
+  <dd>Bekanntmachungsliste (englisch)<br>
     <a
 href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-announce/">Abonnieren</a>
 | <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/">Archiv</a>

@@ -22,13 +22,13 @@ GpgEX und GpgOL.</p>
 
 <p>Das "Gpg4win-Kompendium" ist die neue deutschsprachige
 Übersichtsdokumentation zu Gpg4win2. Es vereinigt auf knapp 190 Seiten
-die alten Handbücher "Einsteiger" und "Durchblicker".  Desweiteren
+die alten Handbücher "Einsteiger" und "Durchblicker". Des Weiteren
 wurden sämtliche Kapitel für Gpg4win Version 2 aktualisiert, also
 unter anderem angepasst auf Kleopatra, GpgEX und PGP/MIME sowie
 ergänzt um S/MIME bzw. X.509.</p>
 
 <p>Das Gpg4win-Kompendium liegt auch in einer vollständigen <a
-href="documentation.html">englische Übersetzung</a> vor. Übersetzungen von 
+href="documentation.html">englischen Übersetzung</a> vor. Übersetzungen von 
 der deutschen Kompendium-Version in weitere Sprachen sind sehr willkommen! 
 Bitte wenden Sie sich dazu an die
 <a href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-devel">

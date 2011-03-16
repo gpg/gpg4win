@@ -12,7 +12,7 @@ PAGE_START
 
 <div id="intro">
 <h2>Bau von Gpg4win</h2>
-<p>Wie Sie Gpg4win-Installationspakete selbst herstellen erfahren Sie
+<p>Wie Sie Gpg4win-Installationspakete selbst herstellen, erfahren Sie
 auf dieser Seite.</p> 
 </div>
 
@@ -38,7 +38,7 @@ Was man benötigt:
      als Grundlage geeignet, ggf. mit kleinen Anpassungen.
      Die <a href="build-installer-gnulinux-de.html">spezielle GNU/Linux-Anleitung</a> ist getestet für
      Debian GNU/Linux 'Etch' 4.0.<br>
-     Desweiteren benötigt sind mindestens 503 MByte Platz auf der
+     Des Weiteren benötigt sind mindestens 503 MByte Platz auf der
      Festplatte und eine schnelle Internetanbindung
      da ca. 60 MByte heruntergeladen werden müssen.
      </p>
@@ -49,7 +49,7 @@ Was man benötigt:
      Systeme, ggf. mit ein bischen Anpassungsarbeit, geeignet.<br>
      Die <a href="build-installer-on-vm-de.html">spezielle
      Windows-Anleitung</a> ist getestet für Windows XP SP2.<br>
-     Desweiteren werden mindestens 1,5 GByte Platz auf der
+     Des Weiteren werden mindestens 1,5 GByte Platz auf der
      Festplatte sowie eine schnelle Internetanbindung benötigt,
      da ca. 360 MByte heruntergeladen werden müssen.
      </p>
@@ -84,10 +84,10 @@ Was man benötigt:
      <a href="http://www.microsoft.com/downloads/details.aspx?FamilyID=0856EACB-4362-4B0D-8EDD-AAB15C5E04F5"
      >.NET 2.0</a>
 
-<li> Es wird schliesslich eine Methode benötigt, wie man auf den Dateibaum
-     in dem man den herrkömmlichen Installer gebaut von Windows aus zugreifen kann.
+<li> Es wird schliesslich eine Methode benötigt, wie man auf den Dateibaum,
+     in dem man den herrkömmlichen Installer gebaut hat, von Windows aus zugreifen kann.
      Das geht beispielsweise über eine Netzwerkverbindung via SMB oder auch ein einfaches
-     Transport-Speichermedium (mehrere hundert MByte). Siehe dazu auch der Abschnitt
+     Transport-Speichermedium (mehrere hundert MByte). Siehe dazu auch den Abschnitt
      weiter unten.
 
 </ul>
@@ -97,16 +97,16 @@ Folgende Schritte müssen nun durchgeführt werden:
 </p>
 
 <ol>
-<li> Wechseln Sie in das src/ Verzeichnis des Gpg4win Quelltextes in dem Sie zuvor
+<li> Wechseln Sie in das src/ Verzeichnis des Gpg4win Quelltextes, in dem Sie zuvor
      den herkömmlichen Installer gebaut haben (vergleiche
      <a href="build-installer-gnulinux-de.html">Bau von Gpg4win unter GNU/Linux</a>):<br>
      <em>$ cd src</em>
 
-<li> Führen Sie make-msi.pl aus um die benötigten WiX Quelldateien zu erzeugen:<br>
+<li> Führen Sie make-msi.pl aus, um die benötigten WiX Quelldateien zu erzeugen:<br>
      <em>$ make msi</em>
 
-<li> Wechseln Sie nun in genau das gleich Verzeichnis ("src") auf dem Windows System
-     und starten Sie das Skript "make-msi.bat" um das MSI-Paket herzustellen:</br>
+<li> Wechseln Sie nun in genau das gleiche Verzeichnis ("src") auf dem Windows System
+     und starten Sie das Skript "make-msi.bat", um das MSI-Paket herzustellen:</br>
      <em>&gt; make-msi.bat gpg4win-Version.wix</em><br>
      or</br>
      <em>&gt; make-msi.bat gpg4win-light-Version.wix</em>
@@ -128,7 +128,7 @@ Folgende Schritte müssen nun durchgeführt werden:
 
 <h3>Wie man von Windows aus auf den Gpg4win Bau-Dateibaum Zugang erhält</h3>
 
-Die WiX Programme benötigen Zugriff auf den Dateibaum in dem der
+Die WiX Programme benötigen Zugriff auf den Dateibaum, in dem der
 herkömmliche Installer hergestellt wurde.
 Dafür gibt es viele Wege, drei davon sind hier illustriert.
 Es sind keine Schritt-für-Schritt Anleitungen, benötigen also noch
@@ -137,11 +137,11 @@ Anpassungen an die individuelle Umgebung.
 <ul>
 <li>Mounten einer virtuellen ext3 Build-Partition:
   <p>
-    Wenn gpg4win wie in
+    Wenn Gpg4win, wie in
     der <a href="build-installer-on-vm-de.html">speziellen
-    Anleitung</a> beschrieben unter Windows in einem virtualisierten
-    GNU/Linux System gebaut wurde liegt der benötigte Dateibaum auf
-    einem Festplatten Image namens <code>build.img</code>.  Dieses
+    Anleitung</a> beschrieben, unter Windows in einem virtualisierten
+    GNU/Linux System gebaut wurde, liegt der benötigte Dateibaum auf
+    einem Festplatten Image namens <code>build.img</code>. Dieses
     kann mit Hilfe der freien Tools ext2fsd und FileDisk unter Windows
     direkt verwendet werden.
   </p>
@@ -167,7 +167,7 @@ Anpassungen an die individuelle Umgebung.
 <li>Ubuntu mit VirtualBox und Samba:
 
    <p>Man kann Windows XP als Virtuelle Maschiene unter VirtualBox
-   laufen lassen und auf den Dateibaum via SMB zugreifen in dem man auf
+   laufen lassen und auf den Dateibaum via SMB zugreifen, in dem man auf
    dem Linux Host-System einen Samba-Server startet.
    Der Bau-Dateibaum wird als sog. "Share" freigebeben (z.B. über
    Rechte-Maustasten-Menü auf den entsprechenden Ordner "gpg4win" in Nautilus).
@@ -181,7 +181,7 @@ Anpassungen an die individuelle Umgebung.
 
     <p>Eine Liste aller notwendigen Dateien wird durch make-msi.pl
     in de Datei make-msi.files gespeichert. Diese Liste kann nun
-    benutzt werden um alle benötigten Dateien einzuopacken und zu transportieren:<br>
+    benutzt werden um alle benötigten Dateien einzupacken und zu transportieren:<br>
     <em>$ cd gpg4win</em><br>
     <em>$ tar -T src/gpg4win-Version.files cjf gpg4win-msi.tar.bz2</em>
     </p>

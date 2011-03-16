@@ -41,9 +41,9 @@ Pflege über deren eigene Entwickler-Teams erfolgt.
 <p>
 Daher sollten Probleme und Fehler allgemeinerer Art,
 also die nicht durch Cross-Kompilation und/oder Paketierung
-durch das Gpg4win Team entstandenen, an die jeweiligen
-Projekte gemeldet werden (üblichweise ist es notwendig sich
-zu registrieren bevor man einen Fehler melden und kommentieren
+durch das Gpg4win Team entstanden sind, an die jeweiligen
+Projekte gemeldet werden (üblicherweise ist es notwendig, sich
+zu registrieren, bevor man einen Fehler melden und kommentieren
 kann):
 </p>
 
@@ -63,7 +63,7 @@ Natürlich ist es nicht immer einfach zu entscheiden,
 ob es sich um einen Fehler von Gpg4win handelt oder
 um einen Fehler in einem der Module.
 In diesem Fall sollte, abhängig von der Art des Problems,
-entweder auf einem der <a href="community-de.html">Mailinglisten oder
+entweder auf einer der <a href="community-de.html">Mailinglisten oder
 Foren</a> von Gpg4win um Rat gefragt oder ein Problembericht in den
 <a
 href="http://wald.intevation.org/tracker/?atid=126&group_id=11&func=browse">
@@ -81,7 +81,7 @@ Dort sollte man dann seine ergänzenden Hinweise
 einfügen.
 </p>
 
-<h2>4. Versionnummern angeben</h2>
+<h2>4. Versionsnummern angeben</h2>
 
 <p>
 Ein neuer Fehlerbericht, aber auch Ergänzungen zu
@@ -108,8 +108,8 @@ Anleitungen für die einzelnen Gpg4win-Komponenten finden Sie im
 
 
 <p>
-Wer sich in der Lage dazu fühlt, sollte die nur die relevanten
-Information der Logdatei dem Fehlerbericht beilegen.
+Wer sich in der Lage dazu fühlt, sollte nur die relevanten
+Informationen der Logdatei dem Fehlerbericht beilegen.
 </p>
 
 </div>

@@ -23,7 +23,7 @@ einen Text-Editor, HTML, SSH und SVN.
 <p>Typische Aufgaben der Website-Pflege sind:
 <ul>
 <li> Version von Gpg4win aktualisieren (gelegentlich, Dauer: ca. 15 Minuten)
-<li> Tippfehler beseitigen (immer wenn man selbst oder jemand anderes etwas findet, Dauer: wenige Minuten)
+<li> Tippfehler beseitigen (immer, wenn man selbst oder jemand anderes etwas findet, Dauer: wenige Minuten)
 </ul>
 </p>
 
@@ -45,7 +45,7 @@ https://svn.wald.intevation.org/svn/gpg4win/trunk/doc/website/</code>
 <h2>Was man vorbereitend nur einmal machen muss um aktiver Mitentwickler zu werden</h2>
 
 Ein vorheriges "Hallo" auf einer der Gpg4win-Mailingliste
-und den Wunsch, dass man gerne mitmachen möchte ist natürlich immer sinnvoll.
+und der Wunsch, dass man gerne mitmachen möchte, ist natürlich immer sinnvoll.
 
 <ol>
 <li> Auf <a href="http://wald.intevation.de">wald.intevation.de</a> ein
@@ -81,7 +81,7 @@ und den Wunsch, dass man gerne mitmachen möchte ist natürlich immer sinnvoll.
      und im Browser anschauen.
 <li> Sind die Änderungen in Ordnung, sollte man sie noch mal prüfen:<br>
      <code>svn diff | less</code><br>
-     und können dann mit möglichst sinnvollen Kommentare ins SVN-Repository
+     und können dann mit möglichst sinnvollen Kommentaren ins SVN-Repository
      hochgeladen werden:<br>
      <code>svn commit</code><br>
 <li> Der letzte Schritt ist das online schalten:<br>
