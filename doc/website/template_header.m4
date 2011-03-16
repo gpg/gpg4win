@@ -114,7 +114,8 @@ m4_define(`LINK',
      MENU(`links', `Links', `Links', `links', SUB, LANG_DE)
      m4_ifelse(LANG_DE, `1', `<li><a href="Kurzstudie-Nachhaltige-FS-Beispiel-Gpg4win.html">Kurzstudie Gpg4win</a></li>', 
          `<li><a href="ShortStudy-Sustainable-FS-example-Gpg4win.html">Short Study Gpg4win</a></li>')
-     <li><a href="http://wald.intevation.org/projects/gpg4win/">Entwicklungsplattform</a></li>
+     m4_ifelse(LANG_DE, `1', `<li><a href="http://wald.intevation.org/projects/gpg4win/">Entwicklungsplattform</a></li>', 
+         `<li><a href="http://wald.intevation.org/projects/gpg4win/">Development Platform</a></li>')
      MENU(`contributors', `Mitwirkende', `Contributors', `contributors', SUB, LANG_DE)
      MENU(`impressum', `Impressum', `Impressum', `impressum', SUB, LANG_DE)
     </ul>

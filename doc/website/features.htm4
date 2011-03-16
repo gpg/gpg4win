@@ -28,7 +28,7 @@ The focus is on secure file and email encryption as well as good usability.
 <b>OpenPGP</b> and <b>S/MIME (X.509)</b></p>
 <p>The configuration of X.509 root certificates is made simple by
 Gpg4win. Now, also inexperienced users can start using S/MIME out-of-the-box.  
-Security aware system administratiors will read the step by step instructions
+Security aware system administrators will read the step by step instructions
 and define a systems-wide list of trustable X.509 root certificates.
 </p>
 <img src="img/sc-pinentry-openpgp_de.png">
@@ -38,14 +38,13 @@ and define a systems-wide list of trustable X.509 root certificates.
 <h4>High algorithmic strength of GnuPG</h4>
 <p>Gpg4win is the official <a href="http://gnupg.org">GnuPG</a>
 distribution for Windows and provides the usual high cryptographic 
-standards of the Gnu Privacy Guard. GnuPG follows the recommendations
+standards of the GNU Privacy Guard. GnuPG follows the recommendations
 regarding algorithms and key length of the German
 <a href="http://www.bsi.bund.de">Federal Office for Information Security (BSI)</a>.</p>
 
-<p>Bei der Erstellung von OpenPGP- und X.509-Zertifikaten wird standardmäißg eine 
-Schlüssellänge von 2048 bit verwendet. Als Signatur- und Verschlüsselungsverfahren
-kommt RSA zum Einsatz.</p>
-
+<p>To create OpenPGP and X.509 certificates Gpg4win uses a key length
+of 2048bit by default. The default algorithm of signature and
+encryption is RSA.</p>
 </div>
 
 <div class="column3">
@@ -71,10 +70,10 @@ recursively into a gpgtar archive.</p>
 <div class="column2">
 <h4>Checksums</h4>
 <p>Create and verify checksums of files - also directly from the Windows Explorer. 
-Gpg4win creates (recursively) a unique chechsum for each selected file
+Gpg4win creates (recursively) a unique checksum for each selected file
 and ensured with it the integrity of the files. The verification of
 checksums works as well as creation.
-Gpg4win supports the algorithm sha1sum, sha256sum und md5sum.</p>
+Gpg4win supports the algorithm sha1sum, sha256sum and md5sum.</p>
 </div>
 <div class="column3">
 <img src="img/sc-gpgex-explorer-options_cut_de.png">
@@ -106,7 +105,7 @@ src="img/sc-kleopatra-mail-certificateselection-signencrypt_de.png">
 <h4>&nbsp;</h4>
 <p>For "power user" Gpg4win provides the option to show this confirm
 dialog only in case of conflict. Thereby you don't need to confirm
-certificates which matches correctly.
+certificates which match correctly.
 Your work goes more quickly - without reducing security.
 </p>
 </div>
@@ -142,9 +141,9 @@ It is available in German and English.</p>
 
 
 <div class="column1">
-<h4>Manage certificates securely and komfortably</h4>
-<p>Kleopatra is the prefered certificate manager in Gpg4win.
-Kleopatra allows to manage all your certificates (OpenPGP und S/MIME) 
+<h4>Manage certificates securely and comfortably</h4>
+<p>Kleopatra is the preferred certificate manager in Gpg4win.
+Kleopatra allows to manage all your certificates (OpenPGP and S/MIME) 
 in one tool.</p>
 <a href="img/sc-kleopatra-mainwindow-openpgp-certificates_de.png">
 <img style="width:540px;" src="img/sc-kleopatra-mainwindow-openpgp-certificates_de.png"></a>
@@ -152,14 +151,14 @@ in one tool.</p>
 <div class="column2">
 <h4>Certificate Server</h4>
 <p>Kleopatra provides a simple im- and export of certificates
-from and to (OpenPGP and X.509) certifikate servers (also called key servers).</p>
+from and to (OpenPGP and X.509) certificate servers (also called key servers).</p>
 </div>
 <div class="column3">
 <h4>Certify OpenPGP Certificates</h4>
 <a href="img/sc-kleopatra-certifyCertificate1_de.png">
 <img src="img/sc-kleopatra-certifyCertificate1_de.png"></a>
-<p>Use Kleopatra to certify (sign) an public OpenPGP certificate of 
-an trusted person.
+<p>Use Kleopatra to certify (sign) a public OpenPGP certificate of 
+a trusted person.
 Thereby the certificate is marked as "trusted certificates".
 </p>
 </div>
@@ -170,9 +169,9 @@ Thereby the certificate is marked as "trusted certificates".
 <div class="column1">
 <h4>Free Software</h4>
 <p>Gpg4win is Free Software and 
-consists several independently developed packages which have different 
+consists of several independently developed packages which have different 
 <a href="license.html">Free Software licenses</a>. 
-The majority (as Gpg4win) is licenced under 
+The majority (as Gpg4win) is licensed under 
 GNU General Public License (GNU GPL). The using of Gpg4win is free.
 </div>
 

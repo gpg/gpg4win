@@ -1,3 +1,8 @@
+2011-03-16  Emanuel Schuetze <emanuel@intevation.de>
+
+	* website/*: Fixed typo. Added missing background image. Added new
+	sponsor.
+
 2011-03-15  Emanuel Schuetze <emanuel@intevation.de>
 
 	* website/*: Redesign website and update for gpg4win 2.1.0 release.

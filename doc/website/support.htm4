@@ -13,7 +13,7 @@ PAGE_START
 <div id="intro">
 <h2>Professional Support for Gpg4win</h2>
 <p>The maintenance of the website is actually quite simply
-because many things are automized.
+because many things are automatized.
 What you should be (or should become) familiar with: a text editor,
 HTML, ssh and Subversions.</p> 
 </div>
@@ -34,9 +34,9 @@ Naturally, timely and exhaustive answers can not be guaranteed.
 <p>
 In case timely answers, quick software modification or general
 consulting for using Gpg4win (installation, configuration etc.) is
-needed, the German free software companies
+needed, the German Free Software companies
 <a href="http://www.intevation.de">Intevation
-GmbH</a>, <a href="http://www.g10code.de">g10code GmbH</a> und 
+GmbH</a>, <a href="http://www.g10code.de">g10code GmbH</a> and 
 <a href="http://www.kdab.de">KDAB</a> jointly
 offer suitable professional support.
 The support contracts are tailored to the needs of the individual

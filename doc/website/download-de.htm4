@@ -9,13 +9,6 @@ m4_define(`TITLE', `Download Gpg4win')
 m4_define(`MAIN', `download')
 
 PAGE_START
-<!--
-<div class="download_header">
- <span class="text">
- Sichere E-Mail- und Datei-Verschlüsselung<br/> mit GnuPG für Windows
- </span>
-</div>
--->
 
 <div id="intro">
 <h2>Download</h2>
