@@ -25,7 +25,7 @@ Erfahren Sie hier, welche Funktionen in Gpg4win stecken!</p>
 
 <div class="column1">
 <h4>OpenPGP & S/MIME</h4>
-<p>Gpg4win unterstützt die beiden kryptographischen Standards OpenPGP und S/MIME (X.509).</p>
+<p>Gpg4win unterstützt die beiden kryptografischen Standards OpenPGP und S/MIME (X.509).</p>
 <p>Das Einrichten von X.509-Wurzelzertifikaten ist durch Gpg4win stark
 vereinfacht worden und ermöglicht so auch unerfahrenen Anwendern die
 einfache Verwendung von S/MIME. 
@@ -139,7 +139,7 @@ href="http://gpg4win.de/doc/de/gpg4win-compendium_11.html">Gpg4win-Kompendium</a
 <h4>Gpg4win-Kompendium</h4>
 <p>Eine anschauliche und umfassende Dokumentation über den 
 Einstieg in
-die Kryptographie und die Verwendung von Gpg4win bietet das
+die Kryptografie und die Verwendung von Gpg4win bietet das
 <a href="documentation-de.html">Gpg4win-Kompendium</a>. 
 Es ist verfügbar in deutscher und englischer Sprache.</p>
 </div>

@@ -22,7 +22,7 @@ PAGE_START
 <li><a href="http://www.gpg4kde.de">Gpg4kde</a></li>
 <li><a href="http://home.arcor.de/rose-indorf/">GnuPG-Basics</a></li>
 <li><a href="http://sites.inka.de/tesla/gpgrelay.html">GPGrelay</a>
-<p>ist ein Verschlüsselungsprogramm welches im Hintergrund E-Mails
+<p>ist ein Verschlüsselungsprogramm, welches im Hintergrund E-Mails
 verschlüsselt, so dass kein Plugin für das E-Mail Programm notwendig
 ist.<br>
 Wer Interesse hat, Gpg4win um diese Software zu erweitern, kann die Integration 

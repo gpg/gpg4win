@@ -1,6 +1,10 @@
 2011-03-16  Emanuel Schuetze <emanuel@intevation.de>
 
-	* website/*: Fixed typo. Added missing background image. Added new
+	* website/*: Fix typos.
+
+2011-03-16  Emanuel Schuetze <emanuel@intevation.de>
+
+	* website/*: Fix typos. Add missing background image. Add new
 	sponsor.
 
 2011-03-15  Emanuel Schuetze <emanuel@intevation.de>
