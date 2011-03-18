@@ -50,6 +50,7 @@ td {
 
 .language_select {
  float:right;
+ height: 100%;
 }
 
 .logo {
@@ -58,9 +59,9 @@ td {
 }
 
 .header {
- height: 20px;
- padding-top: 3px;
+ padding: 3px 0 3px 0;
  margin-bottom: 0px;
+ height: 1em;
 }
 
 .fancy_intro {
@@ -69,6 +70,8 @@ td {
  height:250px;
  margin-bottom:25px;
  border-bottom:1px solid gray;
+ overflow: hidden;
+ width:100%;
 }
 
 .mini_intro {
@@ -188,7 +191,7 @@ td {
  position: relative;
  top: -125px;
  left: 695px;
- width: 200px;
+ width: 190px;
  font-size: 11px;
  border-left: 1px solid #CCCCCC;
  padding-left: 10px;
@@ -440,6 +443,8 @@ td {
  text-decoration: none;
  font-weight: bold;
  font-size: 11px;
+ height: 45px;
+ overflow: hidden;
 }
 
 #menu li a:hover {
@@ -582,12 +587,12 @@ td {
  text-align: center;
  margin-top: 30px;
  border-top: 1px solid #CCCCCC;
+ height: 20em;
 }
 
 #sitemap {
  margin: auto;
  width: 900px;
- height: 170px;
  text-align: left;
 }
 
