@@ -19,11 +19,11 @@ m4_define(`LEN_EXS',`271428912')
 m4_define(`DLPAGE',`I18N(`EN',`download.html')`'I18N(`DE',`download-de.html')')
 m4_define(`MIRROR_IE_URL',`http://ftp.heanet.ie/mirrors/ftp.gpg4win.org/')
 m4_define(`SOFTWAREOVERVIEW',`
-I18N(`EN', `<a href="http://www.gnupg.org/">GnuPG</a>')I18N(`DE', `<a href="http://www.gnupg.de/">GnuPG</a>') 2.0.17
-I18N(`EN', `<a href="http://docs.kde.org/stable/en/kdepim/kleopatra/">Kleopatra</a>')I18N(`DE', `<a href="http://docs.kde.org/stable/de/kdepim/kleopatra/">Kleopatra</a>') 2.1.0 (2011-02-04)
-I18N(`EN', `<a href="http://www.gnupg.org/related_software/gpa/index.html">GPA</a>')I18N(`DE', `<a href="http://www.gnupg.de/related_software/gpa/index.html">GPA</a>') 0.9.1-svn1024
+I18N(`EN', `<a href="http://www.gnupg.org/">GnuPG</a>')I18N(`DE', `<a href="http://www.gnupg.de/index.de.html">GnuPG</a>') 2.0.17
+<a href="http://www.kde.org/applications/utilities/kleopatra/">Kleopatra</a> 2.1.0 (2011-02-04)
+I18N(`EN', `<a href="http://www.gnupg.org/related_software/gpa/index.html">GPA</a>')I18N(`DE', `<a href="http://www.gnupg.de/related_software/gpa/index.de.html">GPA</a>') 0.9.1-svn1024
 <a href="http://www.g10code.de/p-gpgol.html">GpgOL</a> 1.1.2
-<a href="http://cvs.gnupg.org/cgi-bin/viewcvs.cgi/?root=GpgEX">GpgEX</a> 0.9.7
+<a href="http://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpgex.git;a=summary">GpgEX</a> 0.9.7
 <a href="http://www.claws-mail.org/">Claws Mail</a> 3.7.8cvs47
 <a href="doc/de/gpg4win-compendium.html">Kompendium (de)</a> 3.0.0
 <a href="doc/en/gpg4win-compendium.html">Compendium (en)</a> 3.0.0-beta1
