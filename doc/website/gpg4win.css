@@ -59,32 +59,31 @@ td {
 }
 
 .header {
- padding: 3px 0 3px 0;
+ padding: 6px 0 6px 0;
  margin-bottom: 0px;
  height: 1em;
 }
 
 .fancy_intro {
  background: url('img/fancy_bg.png') no-repeat;
- background-position: 310px 0px;
+ background-position: 278px 0px;
  height:250px;
- margin-bottom:25px;
+ margin: 0 20px 25px 20px;
  border-bottom:1px solid gray;
  overflow: hidden;
- width:100%;
+ width:860px;
+ padding-bottom: 15px;
 }
 
 .mini_intro {
  clear: both;
  font-size: 12px;
  line-height: 38px;
- padding: 5px;
- padding-top:0px;
+ margin-top: 8px;
 }
 
 #download_button {
  position: relative;
- left: 40px;
  top: 45px;
  width: 250px;
  z-index: 0;
@@ -109,7 +108,7 @@ td {
 #download_button .text {
  position: relative;
  top: 23px;
- left: 15px;
+ left: 25px;
 }
 
 #breadcrum {
@@ -118,13 +117,16 @@ td {
 
 #download_button_mini {
  float:right;
- text-align:center;
+ text-align:right;
+ width: 189px;
+ line-height: 100%;
 }
 
 #download_button_mini .links {
  position: relative;
  top: -13px;
  font-size: 10px;
+ text-align: right;
 }
 
 #download_button_mini .dmini_button {
@@ -153,7 +155,7 @@ td {
 .download_button_links {
  font-size:11px;
  position: relative;
- left: 50px;
+ left: 25px;
  top: 43px;
  width: 250px;
 }
@@ -190,8 +192,8 @@ td {
 .h_text {
  position: relative;
  top: -125px;
- left: 695px;
- width: 190px;
+ left: 669px;
+ width: 180px;
  font-size: 11px;
  border-left: 1px solid #CCCCCC;
  padding-left: 10px;
@@ -476,6 +478,7 @@ td {
  background: url('img/sub_bg.png');
  line-height: 25px;
  width: 142px;
+ height: 22px;
  font-weight: normal;
  color: #2A2A2A;
  text-align: left;
@@ -586,8 +589,8 @@ td {
  color: #333333;
  text-align: center;
  margin-top: 30px;
- border-top: 1px solid #CCCCCC;
- height: 20em;
+ height: 22em;
+ width: 100%;
 }
 
 #sitemap {

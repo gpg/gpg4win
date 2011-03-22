@@ -67,6 +67,7 @@
       Download Gpg4win 2.1.0
      </span>
     </a>
+    <br>
     <span class="links">
      m4_ifelse(LANG_DE, `1', `
      <a href="change-history-de.html">Änderungshistorie</a>', `

@@ -42,8 +42,8 @@ damit die gewohnt hohe Sicherheit von GnuPG. GnuPG hält sich an die
 Empfehlungen des <a href="http://www.bsi.bund.de">Bundesamtes für Sicherheit in der
 Informationstechnik (BSI)</a>.</p>
 
-<p>Bei der Erstellung von OpenPGP- und X.509-Zertifikaten wird standardmäißg eine 
-Schlüssellänge von 2048 bit verwendet. Als Signatur- und Verschlüsselungsverfahren
+<p>Bei der Erstellung von OpenPGP- und X.509-Zertifikaten wird eine
+voreingestellte Schlüssellänge von 2048 bit verwendet. Als Signatur- und Verschlüsselungsverfahren
 kommt RSA zum Einsatz.</p>
 
 </div>

@@ -4,6 +4,8 @@
 
 	* website/404.htm4, website/404-de.htm4: Add custom 404 page.
 
+	* website/*: Minor layout and typo fixes.
+
 2011-03-21  Emanuel Schuetze <emanuel@intevation.de>
 
 	* website/versions.m4: Update links.
