@@ -2,6 +2,8 @@
 
 	* website/SPONSOR: Add new sponsor.
 
+	* website/404.htm4, website/404-de.htm4: Add custom 404 page.
+
 2011-03-21  Emanuel Schuetze <emanuel@intevation.de>
 
 	* website/versions.m4: Update links.
