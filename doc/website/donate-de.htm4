@@ -78,6 +78,9 @@ m4_include(`SPONSORS')
     <input src="https://www.paypal.com/de_DE//i/btn/btn_donate_LG.gif" name="submit" alt="Jetzt einfach, schnell und sicher online spenden - mit PayPal." type="image" border="0">
     <input name="on0" value="Veröffentlichung der Spende zugestimmt?" type="hidden">
     <input name="os0" value="Nein" type="hidden">
+    <input name="image_url" value="http://gpg4win.org/img/logo.png" type="hidden">
+    <input name="return" value="http://gpg4win.de/donate-de.html" type="hidden">
+    <input name="cbt" value="Zurück zu Gpg4win" type="hidden">
     <br>
 
     <input name="os0" value="Ja" checked="checked" type="checkbox">Spendernamen veröffentlichen
