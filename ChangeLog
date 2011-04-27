@@ -1,3 +1,10 @@
+2011-04-27  Colin Leroy <colin@colino.net>
+
+	* src/Makefile.am: Add iconv support to libxml build. Fixes Claws
+	  Mail bug #2397, "Gtkhtml2 viewer ignores message encoding"
+	* packages/packages.current: Update Claws Mail RSSyl plugin (wrong
+	  escaping of strings breaks UTF-8 encodings)
+
 2011-04-09  Colin Leroy <colin@colino.net>
 
 	* packages/packages.current: Update Claws Mail and plugins (new

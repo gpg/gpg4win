@@ -134,8 +134,8 @@ chk    a46d8ba9f645b60ad3f7a0b6361ef611ad2ad88e
 file   notification_plugin-0.27.tar.gz
 chk    5cd73146fdf8d8a25a087839dff3879e65a864e7
 
-file   rssyl-0.30.tar.gz
-chk    f70cd4cabbcdcac87e3265fdefb08844e5f0b958
+file   rssyl-0.30cvs3.tar.gz
+chk    8117976ebc58d73225b418c48a21225347f4448e
 
 file   tnef_parse-0.3.10.tar.gz
 chk    be976153b7f9f5dfc7c03d14176127c3ec77a44d

@@ -246,7 +246,7 @@ gpg4win_pkg_curl_configure = \
   --with-gnutls --without-ca-bundle --with-libiconv-prefix=$(idir)
 
 gpg4win_pkg_libxml2_configure = \
-  --enable-shared --without-python
+  --enable-shared --without-python --with-iconv=$(idir)
 
 # The CFLAGS are needed to find pthread-w32.
 gpg4win_pkg_libetpan_configure = --with-gnutls \
