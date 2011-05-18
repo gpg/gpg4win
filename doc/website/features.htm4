@@ -13,8 +13,8 @@ PAGE_START
 
 <div id="intro">
 <h2>Features</h2>
-<p>The security of your data is the most important thing for Gpg4win.
-The focus is on secure file and email encryption as well as good usability.
+<p>The security of your data is the most important thing.
+The focus of Gpg4win is on secure file and email encryption as well as good usability.
 </p>
 </div>
 
@@ -29,7 +29,7 @@ The focus is on secure file and email encryption as well as good usability.
 <p>The configuration of X.509 root certificates is made simple by
 Gpg4win. Now, also inexperienced users can start using S/MIME out-of-the-box.  
 Security aware system administrators will read the step by step instructions
-and define a systems-wide list of trustable X.509 root certificates.
+and define a systems-wide list of trusted X.509 root certificates.
 </p>
 <img src="img/sc-pinentry-openpgp_de.png">
 </div>
@@ -37,14 +37,14 @@ and define a systems-wide list of trustable X.509 root certificates.
 <div class="column2">
 <h4>High algorithmic strength of GnuPG</h4>
 <p>Gpg4win is the official <a href="http://gnupg.org">GnuPG</a>
-distribution for Windows and provides the usual high cryptographic 
+distribution for Windows and provides the high cryptographic 
 standards of the GNU Privacy Guard. GnuPG follows the recommendations
 regarding algorithms and key length of the German
-<a href="http://www.bsi.bund.de">Federal Office for Information Security (BSI)</a>.</p>
+<a href="http://www.bsi.bund.de/Algorithmenkatalog.html">Federal Office for Information Security (BSI)</a>.</p>
 
 <p>To create OpenPGP and X.509 certificates Gpg4win uses a key length
-of 2048bit by default. The default algorithm of signature and
-encryption is RSA.</p>
+of 2048bit by default. The default algorithm for signing and
+encrypting is RSA.</p>
 </div>
 
 <div class="column3">
@@ -62,18 +62,21 @@ page</a>.</p>
 <div class="column1">
 <h4>Sign/Encrypt</h4>
 <p>Sign single files or complete folders directly from the Windows
-Explorer - using GpgEX.
+Explorer with GpgEX or Kleopatra.
 You can select multiple files and folders to sign and encrypt them
 recursively into a gpgtar archive.</p>
 </div>
 
 <div class="column2">
 <h4>Checksums</h4>
-<p>Create and verify checksums of files - also directly from the Windows Explorer. 
-Gpg4win creates (recursively) a unique checksum for each selected file
-and ensured with it the integrity of the files. The verification of
-checksums works as well as creation.
-Gpg4win supports the algorithm sha1sum, sha256sum and md5sum.</p>
+<p>Create and verify checksums of files - also directly from the
+Windows Explorer or Kleopatra. 
+Gpg4win can create a unique checksum for each selected file, with
+which the integrity of these files can be verified any time later.
+Both, creation and verification of these crypotraphic checksums
+(hashes) are carried out in analogous manner in the 
+GUI. Gpg4win supports the hash algorithms SHA-1, SHA-256 and MD5.
+</p>
 </div>
 <div class="column3">
 <img src="img/sc-gpgex-explorer-options_cut_de.png">
@@ -83,11 +86,11 @@ Gpg4win supports the algorithm sha1sum, sha256sum and md5sum.</p>
 
 <h2>Email</h2>
 <div class="column1">
-<h4>Sign and encrypt</h4>
-<p>The included Outlook plugin GpgOL allows to sign and encrypt
-emails directly in Microsoft Outlook (2003 and 2007). Attachments are
-also encrypted. Verify signature and encrypt message works in
-Outlook, too.
+<h4>Signing and encrypting</h4>
+<p>The provided Outlook plugin GpgOL allows to sign and encrypt
+emails directly in Microsoft Outlook (2003 and 2007). Attachments can
+be encrypted as well, in one go with the email body. Verifying
+signatures and decrypting messages is done directly in Outlook, too.
 </p>
 <img src="img/sc-ol-emailfolder_cut_de.png">
 </div>
@@ -103,10 +106,9 @@ src="img/sc-kleopatra-mail-certificateselection-signencrypt_de.png">
 
 <div class="column3">
 <h4>&nbsp;</h4>
-<p>For "power user" Gpg4win provides the option to show this confirm
-dialog only in case of conflict. Thereby you don't need to confirm
-certificates which match correctly.
-Your work goes more quickly - without reducing security.
+<p>For "power users" Gpg4win provides the option to show this confirmation
+dialog only in case of conflict. Thereby you do not need to confirm
+certificates which do accord uniquely. You work more quickly - without reducing security.
 </p>
 </div>
 
@@ -117,9 +119,9 @@ Your work goes more quickly - without reducing security.
 
 <div class="column1">
 <h4>Installer</h4>
-<p>The Gpg4win Installer helps to install Gpg4win very simple and
-secure. You can find a step-by-step install instruction in the <a
-href="http://gpg4win.de/doc/en/gpg4win-compendium_11.html">Gpg4win Compendium</a>.</p>
+<p>The Gpg4win Installer enables you to install Gpg4win in a very simple and
+secure manner. A step-by-step installation guide us provided as part
+of the <a href="http://gpg4win.de/doc/en/gpg4win-compendium_11.html">Gpg4win Compendium</a>.</p>
 </div>
 
 <div class="column2">
@@ -130,7 +132,7 @@ href="http://gpg4win.de/doc/en/gpg4win-compendium_11.html">Gpg4win Compendium</a
 <div class="column3">
 <h4>Gpg4win Compendium</h4>
 <p>The <a href="documentation.html">Gpg4win Compendium</a> provides
-an illustrative documentation for getting started in the topic of
+an illustrative documentation for getting started in the field of applied 
 cryptography and using Gpg4win.
 It is available in German and English.</p>
 </div>
@@ -159,20 +161,20 @@ from and to (OpenPGP and X.509) certificate servers (also called key servers).</
 <img src="img/sc-kleopatra-certifyCertificate1_de.png"></a>
 <p>Use Kleopatra to certify (sign) a public OpenPGP certificate of 
 a trusted person.
-Thereby the certificate is marked as "trusted certificates".
+Thereby these certificates are marked as "trusted certificates".
 </p>
 </div>
 
 <br clear="all"/>
 
-<h2>Another things to know</h2>
+<h2>Other things to know</h2>
 <div class="column1">
 <h4>Free Software</h4>
 <p>Gpg4win is Free Software and 
 consists of several independently developed packages which have different 
 <a href="license.html">Free Software licenses</a>. 
 The majority (as Gpg4win) is licensed under 
-GNU General Public License (GNU GPL). The using of Gpg4win is free.
+GNU General Public License (GNU GPL). The usage of Gpg4win is for free.
 </div>
 
 <div class="column2">
@@ -180,16 +182,16 @@ GNU General Public License (GNU GPL). The using of Gpg4win is free.
 <p>Gpg4win supports Windows 7. All <a
 href="screenshots.html">screenshots</a>
 are made with Windows 7. 
-Beyond Windows 2000, XP and Vista are supported.</p>
+Furthermore Windows 2000, XP and Vista are supported.</p>
 <p>GpgOL requires Microsoft Outlook 2003 or 2007. Outlook 2010 is not
 supported.</p>
-<p>Details are listed in the section of <a
-href="about.html">system requirements</a>.</p>
+<p>Details are listed in the section <a
+href="about.html#requirements">System Requirements</a> of Gpg4win's "About"-webpage.</p>
 </div>
 
 <div class="column3">
 <h4>Internationalisation</h4>
-<p>All dialogs in Gpg4win are full available in English and German language.
+<p>All dialogs of Gpg4win are available in English and German language.
 The Gpg4win Installer provides some additional languages.</p>
 </div>
 

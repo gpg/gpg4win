@@ -39,8 +39,8 @@ unterstützt.</p>
 <h4>Hohe Algorithmenstärken in GnuPG</h4>
 <p>Gpg4win ist die offizielle <a href="http://gnupg.org">GnuPG</a> Distribution für Windows und bietet
 damit die gewohnt hohe Sicherheit von GnuPG. GnuPG hält sich an die
-Empfehlungen des <a href="http://www.bsi.bund.de">Bundesamtes für Sicherheit in der
-Informationstechnik (BSI)</a>.</p>
+Empfehlungen des <a href="http://www.bsi.bund.de/Algorithmenkatalog.html">Bundesamtes 
+für Sicherheit in der Informationstechnik (BSI)</a>.</p>
 
 <p>Bei der Erstellung von OpenPGP- und X.509-Zertifikaten wird eine
 voreingestellte Schlüssellänge von 2048 bit verwendet. Als Signatur- und Verschlüsselungsverfahren
@@ -196,7 +196,7 @@ unterstützt.</p>
 <p>GpgOL erfordert Outlook 2003 oder 2007. Outlook 2010 wird nicht
 unterstützt.</p>
 <p>Details unter den Angaben zur <a
-href="about-de.html">Systemanforderung</a>.</p>
+href="about-de.html#requirements">Systemanforderung</a>.</p>
 </div>
 
 <div class="column3">

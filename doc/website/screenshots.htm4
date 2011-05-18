@@ -51,7 +51,7 @@ src="img/sc-kleopatra-splashscreen_de.png">
 <img class="imgfloatleft imageframe"
 src="img/sc-kleopatra-mainwindow-openpgp-certificates_de.png">
 </a>
-<p>Kleopatra's main window with two (trustable) OpenPGP certificates.
+<p>Kleopatra's main window with two (trusted) OpenPGP certificates.
 </p>
 </li>
 <li>
@@ -60,7 +60,7 @@ src="img/sc-kleopatra-mainwindow-openpgp-certificates_de.png">
 src="img/sc-kleopatra-mainwindow-x509-certificates_de.png">
 </a>
 <p>Kleopatra's main window of an imported X.509 certificate chain.
-The root certificate is trustable (blue background color).
+The root certificate is trusted (blue background color).
 </p>
 </li>
 

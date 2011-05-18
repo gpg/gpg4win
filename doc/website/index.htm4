@@ -23,30 +23,36 @@ PAGE_START
 
 <div class="column1">
 <h4>Discover Gpg4win</h4>
-    <p>Learn <a href="about.html">what 
-    Gpg4win is</a> and read more about the <a href="features.html">features</a> of 
-    our solution!
-    </p>
+<p>
+Learn what Gpg4win is and read more about the features of our solution!
+</p>
+<a href="about.html">About Gpg4win »</a>
 </div>
 
 <div class="column2">
 <h4>Getting started</h4>
 <p>We help you to use Gpg4win. Learn the basics about Gpg4win and 
 get in the world of cryptography.
-The best point to start is with the illustrative
-<a href="./doc/en/gpg4win-compendium.html">Gpg4win Compendium</a>.
+The best point to start is with the illustrative Gpg4win Compendium.
+</p>
+<p>
+<a href="./doc/en/gpg4win-compendium.html">Go to the Gpg4win Compendium »</a>
+</p>
 
 </p>
 </div>
 
 <div class="column3">
 <h4>Join the community</h4>
-<p>Ggp4win is Free Software. Join the <a href="community.html">community</a>!
+<p>Gpg4win is Free Software. Join the community!
 We recommend subscribing to the
 <a href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-announce"
 >Gpg4win announcement mailing list</a>
 to be automatically informed about new releases and other
 important Gpg4win news.
+</p>
+<p>
+<a href="community.html">Go to the community »</a>
 </p>
 </div>
 

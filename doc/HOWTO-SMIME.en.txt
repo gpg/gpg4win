@@ -27,7 +27,7 @@ a system-wide default of the most important root certificates:
      If the above folder is not visible? 
      Please read the reference note to the view options [1].
 
-2.  Set ultimate trustable
+2.  Set ultimate trusted
  
      a) Open the following file with a text editor:
          [Windows 2000/XP]:
@@ -80,9 +80,9 @@ a system-wide default of the most important root certificates:
      Open Kleopatra and import your X.509 certificate chains. 
      The imported certificate chains should appear under the tab "Trusted
      Certificates". Gpg4win recognizes your imported root certificates as
-     trustable.
+     trusted.
 
-     Problems? Kleopatra doesn't shows your root certificate as trustable?
+     Problems? Kleopatra doesn't shows your root certificate as trusted?
      Solutions:
      * Click on the "Redisplay" button in Kleopatra to update the certificate view.
      * Add "relax" after the relevant root certificate in the trustlist.txt - see
