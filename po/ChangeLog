@@ -1,3 +1,9 @@
+2011-06-21  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+
+	* LINGUAS: Add cz.
+	* cz.po: New Czech po file, contributed by Elizee Transgender.
+	* nsis-msgfmt.c: Fixed typo (cs -> cz).
+
 2011-01-27  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
 	* fr.po: Updated French po file by Nicochto.

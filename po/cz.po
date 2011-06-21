@@ -1,0 +1,519 @@
+# German translations for gpg4win package.
+# Copyright (C) 2007 g10 Code GmbH
+# This file is distributed under the same license as the gpg4win package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gpg4win 2.0\n"
+"Report-Msgid-Bugs-To: gpg4win-devel@wald.intevation.org\n"
+"POT-Creation-Date: 2011-03-02 16:10+0100\n"
+"PO-Revision-Date: 2011-06-05 11:48+0100\n"
+"Last-Translator: E.T. <tsgender@gmail.com>\n"
+"Language-Team: Czech <tsgender@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-Country: CZECH REPUBLIC\n"
+"X-Poedit-Language: Czech\n"
+"X-Poedit-SourceCharset: iso-8859-1\n"
+
+#: src/g4wihelp.nsi:21
+msgctxt "T_AlreadyRunning"
+msgid "An instance of this installer is already running."
+msgstr "Jedna instance tohoto programu je už spuštìna."
+
+#: src/gpg4win.nsi:112
+msgctxt "T_WelcomeTitleGpg4win"
+msgid "Welcome to the installation of Gpg4win"
+msgstr "Vítejte v instalaci programu Gpg4win"
+
+#: src/gpg4win.nsi:116
+msgctxt "T_AboutGpg4win"
+msgid "Gpg4win is a installer package for Windows for EMail and file encryption using the core componenent GnuPG for Windows. Both relevant cryptography standards are supported, OpenPGP and S/MIME. Gpg4win and the software included with Gpg4win are Free Software."
+msgstr "Gpg4win je instalaèní balíèek pro OS Windows pro šifrování e-mail zpráv a souborù, pomocí základních komponenent GnuPG pro Windows. Obì pøíslušné kryptografické normy jsou podporovány, OpenPGP a S / MIME. Gpg4win a zahrnutý software s Gpg4win jsou svobodný software."
+
+#: src/gpg4win.nsi:123
+msgctxt "T_AboutGpg4winVersion"
+msgid "This is Gpg4win version ${VERSION}"
+msgstr "Tato verze programu Gpg4win je ${VERSION}"
+
+#: src/gpg4win.nsi:126
+msgctxt "T_AboutGpg4winFileVersion"
+msgid "file version ${PROD_VERSION}"
+msgstr "verze souboru ${PROD_VERSION}"
+
+#: src/gpg4win.nsi:129
+msgctxt "T_AboutGpg4winReleaseDate"
+msgid "release date ${_BUILD_ISODATE}"
+msgstr "datum vydání ${_BUILD_ISODATE}"
+
+#: src/gpg4win-src.nsi:76
+msgctxt "T_WelcomeTitleGpg4winSrc"
+msgid "Welcome to the installation of the Gpg4win sources"
+msgstr "Vítejte v instalaci Gpg4win zdrojù"
+
+#: src/gpg4win-src.nsi:80
+msgctxt "T_AboutGpg4winSrc"
+msgid "Gpg4win is a installer package for Windows for EMail and file encryption using the core componenent GnuPG for Windows. Both relevant cryptography standards are supported, OpenPGP and S/MIME. Gpg4win and the software included with Gpg4win are Free Software."
+msgstr "Gpg4win je instalaèní balíèek pro OS Windows pro šifrování e-mail zpráv a souborù, pomocí základních komponenent GnuPG pro Windows. Obì pøíslušné kryptografické normy jsou podporovány, OpenPGP a S / MIME. Gpg4win a zahrnutý software s Gpg4win jsou svobodný software."
+
+#: src/gpg4win-src.nsi:87
+msgctxt "T_AboutGpg4winSrcVersion"
+msgid "This is Gpg4win version ${VERSION}"
+msgstr "Tato verze programu Gpg4win je ${VERSION}"
+
+#: src/gpg4win-src.nsi:90
+msgctxt "T_AboutGpg4winSrcFileVersion"
+msgid "file version ${PROD_VERSION}"
+msgstr "verze souboru ${PROD_VERSION}"
+
+#: src/gpg4win-src.nsi:93
+msgctxt "T_AboutGpg4winSrcReleaseDate"
+msgid "release date ${_BUILD_ISODATE}"
+msgstr "datum vydání ${_BUILD_ISODATE}"
+
+#: src/installer.nsi:236
+msgctxt "T_LangCode"
+msgid "en"
+msgstr "cz"
+
+#: src/installer.nsi:239
+msgctxt "T_GPLHeader"
+msgid "This software is licensed under the terms of the GNU General Public License (GPL)."
+msgstr "ento program je licencovaný pod licencí GNU General Public License (GPL)."
+
+#: src/installer.nsi:243
+msgctxt "T_GPLShort"
+msgid "In short: You are allowed to run this software for any purpose. You may distribute it as long as you give the recipients the same rights you have received."
+msgstr "In aller Kürze: Sie haben das Recht, die Software zu jedem Zweck einzusetzen.  Sie können die Software weitergeben, sofern Sie dem Empfänger dieselben Rechte einräumen, die auch Sie erhalten haben.Ve zkratce: mùžete spouštìt tentyo program pro jakýkoli úèrl. Mùžete distribuovat tento program se  stejnými právy, které jste obdrželi."
+
+#: src/installer.nsi:248
+msgctxt "T_RunKeyManager"
+msgid "Run the key manager"
+msgstr "Spustit manažer klíèù"
+
+#: src/installer.nsi:251
+msgctxt "T_MoreInfo"
+msgid "Click here for the project's homepage"
+msgstr "Kliknìte pro homepage projektu"
+
+#: src/installer.nsi:253
+msgctxt "T_MoreInfoURL"
+msgid "http://www.gpg4win.org"
+msgstr "http://www.gpg4win.org"
+
+#: src/installer.nsi:255
+msgctxt "T_ShowReadme"
+msgid "Show the README file"
+msgstr "Ukázat README"
+
+#: src/installer.nsi:258
+msgctxt "T_NoKeyManager"
+msgid "No key manager has been installed, thus we can't run one now."
+msgstr "Ještì nebyl nainstalován žádný manažér klíèù, proto nelze žádný spustit."
+
+#: src/installer.nsi:263
+msgctxt "DESC_Menu_manuals"
+msgid "Documentation"
+msgstr "Dokumentace"
+
+#: src/installer.nsi:266
+msgctxt "DESC_Menu_uninstall"
+msgid "Uninstall"
+msgstr "Odinstalovat"
+
+#: src/installer.nsi:270
+msgctxt "DESC_Desktop_manuals"
+msgid "Gpg4win Documentation"
+msgstr "Gpg4win Dokumentace"
+
+#: src/installer.nsi:473
+msgctxt "T_InstallOptions"
+msgid "Install Options"
+msgstr "Možnosti instalace"
+
+#: src/installer.nsi:476
+msgctxt "T_InstallOptLinks"
+msgid "Start links"
+msgstr "Start odkazy"
+
+#: src/installer.nsi:478
+msgctxt "T_InstOptLabelA"
+msgid "Please select where Gpg4win shall install links:"
+msgstr "Prosím vyberte, kam má Gpg4win nainstalovat odkazy:"
+
+#: src/installer.nsi:481
+msgctxt "T_InstOptLabelB"
+msgid "(Only programs will be linked into the quick launch bar.)"
+msgstr "(Jen odkazy progarmù budou vytvoøeny v panelu rychlého spuštìní.)"
+
+#: src/installer.nsi:484
+msgctxt "T_InstOptFieldA"
+msgid "Start Menu"
+msgstr "Start Menu"
+
+#: src/installer.nsi:487
+msgctxt "T_InstOptFieldB"
+msgid "Desktop"
+msgstr "Plocha"
+
+#: src/installer.nsi:490
+msgctxt "T_InstOptFieldC"
+msgid "Quick Launch Bar"
+msgstr "Panel rychlého spuštìní"
+
+#: src/installer.nsi:496
+msgctxt "T_FoundExistingVersion"
+msgid ""
+"Version $R1 has already been installed.\n"
+"Do you want to overwrite it with version ${VERSION}?"
+msgstr ""
+"Verze $R1 byla nainstalována.\n"
+"Chcete ji pøepsat verzí ${VERSION} reiben?"
+
+#: src/installer.nsi:499
+msgctxt "T_FoundExistingOldVersion"
+msgid ""
+"An old version $R1 has already been installed.  It is strongly recommended to deinstall previous versions on major upgrades.\n"
+"Do you want to continue installing Gpg4win ${VERSION} anyway?"
+msgstr ""
+"Staší verze $R1 byla nainstalována. Dùraznì se doporuèuje odinstalovat starší verzi pøed instalací nové verze.\n"
+"Chcete pokraèovat v instalaci Gpg4win verze ${VERSION} ?"
+
+#: src/installer.nsi:504
+msgctxt "T_FoundExistingVersionB"
+msgid ""
+"A version of Gpg4Win has already been installed on the system. There will be no problem installing and thus overwriting this Version.\n"
+"\n"
+"Do you want to continue installing Gpg4win?"
+msgstr ""
+"Jedna verze Gpg4Win již byla nainstalována. Nebude vadit, když se nainstaluje a tudíž pøepíše touhle verzí.\n"
+"\n"
+"Chcete pokraèovat s instalací Gpg4win?"
+
+#: src/installer.nsi:514
+msgctxt "T_SMIMEHeaderText"
+msgid "Define trustable root certificates"
+msgstr "Vyberte dùveryhodné koøenové certifikáty"
+
+#: src/installer.nsi:516
+msgctxt "T_SMIMEHeaderSubtext"
+msgid "S/MIME configuration"
+msgstr "S/MIME konfigurace"
+
+#: src/installer.nsi:518
+msgctxt "T_SMIMETextTop"
+msgid "Gpg4win needs a list of root certificates which you trust."
+msgstr "Gpg4win potøebuje seznam koøenových certifikátù, kterým dùveøujete."
+
+#: src/installer.nsi:520
+msgctxt "T_SMIMETextBottom"
+msgid "Therewith you can use S/MIME, the configuration is stringently required. Skip this configuration only if you don't want to use S/MIME."
+msgstr "S ním mùžete použít S/MIME, konfigurace je vyžadována. Vynechte tuto konfiguraci pouze tehdy, pokud nechcete používat S / MIME."
+
+#: src/installer.nsi:524
+msgctxt "T_SMIMECheckboxText"
+msgid "Root certificate defined or skip configuration"
+msgstr "Koøenový certifikát definován nebo pøeskoète konfiguraci"
+
+#: src/installer.nsi:541
+msgctxt "T_FoundOldSeeManual"
+msgid "Please see the Gpg4win user manual to learn how to migrate existing keys from other GnuPG based installations to Gpg4win."
+msgstr "Prosím, vìnujte pozornost manuálu Gpg4win, kde se doètete, jak pøenést klíèe z jiných GnuPG instalací do Gpgp4win."
+
+#: src/installer.nsi:546
+msgctxt "T_FoundOldGnuPP"
+msgid ""
+"An old installation of GnuPP (GNU Privacy Project) has been been detected.  That software is not maintained anymore and thus should be removed.\n"
+"\n"
+"Do you want to continue installing Gpg4win and take care of the old installation later?"
+msgstr ""
+"Byla detekována starší instalace GnuPP (GNU Privacy Project).  Tento starší program žuž není udržován, mìl by být proto odstranìn.\n"
+"\n"
+"Chcete pokrèovat v instalaci Gpg4win a pozdìji odstranit staré GnuPP?"
+
+#: src/installer.nsi:555
+msgctxt "T_FoundOldGnuPT"
+msgid ""
+"An installation of GnuPT has been been detected.  This may cause problems when used along with Gpg4win.\n"
+"\n"
+"Do you want to continue installing Gpg4win?"
+msgstr ""
+"Byla detekována GnuPT. To mùže zpùsobovat potíže se souèasným používaním Gpg4win.\n"
+"\n"
+"Chcete pokraèovat v instalaci Gpg4win?"
+
+#: src/installer.nsi:562
+msgctxt "T_FoundOldWinPTSF"
+msgid ""
+"An old installation of the Sourceforge hosted WinPT has been been detected.  That software is not maintained anymore and should be removed.\n"
+"\n"
+"Do you want to continue installing Gpg4win and take care of the old installation later?"
+msgstr ""
+"Byla detekována starší instalace WInPT. Tento program není víc udržován amìl by být odstranìn.\n"
+"Chcete pokraèovat v instalaci Gpg4win?"
+
+#: src/installer.nsi:572
+msgctxt "T_FoundOldGnuPack"
+msgid ""
+"An installation of GnuPG-Pack has been been detected. You need to uninstall it before you can continue with Gpg4win installation.\n"
+"\n"
+"The installation will be aborted now!"
+msgstr ""
+"Byla detekována instalace GnuPG-Pack. Musíte jej odinstalovat, než budete pokraèovat v instalaci programu Gpg4win.\n"
+"\n"
+"Instalace nyní bude ukonèena!"
+
+#: src/installer.nsi:581
+msgctxt "T_BetaWarning"
+msgid ""
+"Note: This is a BETA version of Gpg4win.\n"
+"\n"
+"Beta versions are only intended for testing and shall not be used in a production environment."
+msgstr ""
+"Poznámka: Tohle je BETA verze programu Gpg4win.\n"
+"\n"
+"Beta verze jsou urèeny pouze pro testování a nemìly by být použity v produkèním prostøedí."
+
+#: src/installer.nsi:588
+msgctxt "T_AdminNeeded"
+msgid "Warning: Administrator permissions required for a successful installation"
+msgstr "Upozornìní: Pro úspìšnou instalaci jsou vyžadována práva Administrátora."
+
+#: src/installer.nsi:592
+msgctxt "T_CloseOtherApps"
+msgid "Please make sure that other applications are not running. In particular you should close Outlook and all Explorer windows.  Gpg4win will try to install anyway but a reboot will be required then."
+msgstr "Prosím ujistìte se, že nebìží žádné aplikace. Zejména Outlook a jiné souborové manažéry. Gpg4win se sice pokusí nainstalovat, ale pak bude potøeba poèítaè restartovat."
+
+#: src/installer.nsi:597
+msgctxt "T_ShuttingDownWinPT"
+msgid "Trying to shutdown a possible running instance of WinPT."
+msgstr "Pokus o ukonèení pravdìpodobnì bìžícího programu WinPT."
+
+#: src/installer.nsi:599
+msgctxt "T_ShuttingDownDirMngr"
+msgid "Trying to shutdown a possible running instance of DirMngr."
+msgstr "Pokus o ukonèení pravdìpodobnì bìžícího programu DirMngr."
+
+#: src/inst-claws-mail.nsi:26
+msgctxt "T_SetDefaultClient"
+msgid "Do you want to make Claws Mail your default mail client?"
+msgstr "Chcete nastavit Claws Mail jako váš pøednastavený poštovní program?"
+
+#: src/inst-claws-mail.nsi:132
+msgctxt "DESC_SEC_claws_mail"
+msgid "Claws Mail-User-Agent"
+msgstr "Claws Mail-User-Agent"
+
+#: src/inst-claws-mail.nsi:135
+msgctxt "DESC_Menu_claws_mail"
+msgid "Run the Claws mailprogram."
+msgstr "Spustit Claws Mail."
+
+#: src/inst-claws-mail.nsi:138
+msgctxt "DESC_Menu_claws_mail_pdf"
+msgid "Show the online manual of Claws Mail"
+msgstr "Ukázat on-line manuál programu Claws Mail"
+
+#: src/inst-gnupg2.nsi:220
+msgctxt "DESC_SEC_gnupg2"
+msgid "GNU Privacy Guard"
+msgstr "GNU Privacy Guard"
+
+#: src/inst-gpa.nsi:78
+msgctxt "DESC_SEC_gpa"
+msgid "GNU Privacy Assistant"
+msgstr "GNU Privacy Assistant"
+
+#: src/inst-gpa.nsi:81
+msgctxt "DESC_Menu_gpa"
+msgid "Run the GNU Privacy Assistant key management tool."
+msgstr "Spustit správce klíèù program GPA."
+
+#: src/inst-gpg4win.nsi:84
+msgctxt "DESC_Menu_gpg4win_readme"
+msgid "General information on Gpg4win"
+msgstr "Obecné informace o Gpg4win"
+
+#: src/inst-gpg4win.nsi:87
+msgctxt "DESC_Menu_gpg4win_howtosmime"
+msgid "Instruction to configure S/MIME"
+msgstr "Instrukce ke konfiguraci S/MIME"
+
+#: src/inst-gpg4win.nsi:90
+msgctxt "DESC_Menu_gnupg_faq"
+msgid "Show the Frequently Asked Questions document for GnuPG"
+msgstr "Ukázat - èasto kladené dotazy - (FAQ) - pro GnuPG"
+
+#: src/inst-gpgex.nsi:82
+msgctxt "T_GpgEX_RegFailed"
+msgid "Warning: Registration of the GpgEX plugin failed."
+msgstr "Upozornìní: Registrace doplòku GpgEX selhala."
+
+#: src/inst-gpgex.nsi:85
+msgctxt "DESC_SEC_gpgex"
+msgid "GnuPG Shell Extension"
+msgstr "GPG Shell Extension (GpgEX) je rozšíøení pro Windows Explorer, které umožòuje šifrovat soubory pomocí kontextového menu. Vyžaduje program Kleopatra nebo GPA."
+
+#: src/inst-gpgol.nsi:65
+msgctxt "T_GpgOL_RegFailed"
+msgid "Warning: Registration of the GpgOL Outlook pluginfailed."
+msgstr "Upozornìní: Registrace doplòku GpgOL Outlook selhala."
+
+#: src/inst-gpgol.nsi:68
+msgctxt "DESC_SEC_gpgol"
+msgid "GnuPG for Outlook"
+msgstr "GnuPG pro aplikaci Outlook (GpgOL) je rozšíøení pro Outlook 2003 a 2007, který se používá pro šifrování zpráv pomocí OpenPGP nebo S/MIME. Vyžaduje Kleopatra, nebo GPA."
+
+#: src/inst-kleopatra.nsi:247
+msgctxt "DESC_SEC_kleopatra"
+msgid "Keymanager for OpenPGP and X.509 and common crypto dialogs."
+msgstr "Správce certifikátù X.509 a pro OpenPGP (S/MIME), a konzistentní uživatelské rozhraní pro všechny kryptografické operace."
+
+#: src/inst-kleopatra.nsi:251
+msgctxt "DESC_Menu_kleopatra"
+msgid "Run the Kleopatra key management tool."
+msgstr "Spustit Správce certifikátù Kleopatra."
+
+#: src/inst-compendium.nsi:38
+msgctxt "DESC_Name_compendium"
+msgid "Gpg4win Compendium"
+msgstr "Gpg4win Compendium"
+
+#: src/inst-compendium.nsi:41
+msgctxt "DESC_SEC_compendium"
+msgid "The Gpg4win documentation (English and German)"
+msgstr "Gpg4win dokumentace (anglicky a nìmecky)"
+
+#: src/inst-compendium.nsi:45
+msgctxt "DESC_Name_compendium_de_pdf"
+msgid "Gpg4win Compendium (pdf, German)"
+msgstr "Gpg4win Compendium (pdf, nìmecky)"
+
+#: src/inst-compendium.nsi:47
+msgctxt "DESC_Name_compendium_en_pdf"
+msgid "Gpg4win Compendium (pdf, English)"
+msgstr "Gpg4win Compendium (pdf, anglicky)"
+
+#: src/inst-compendium.nsi:51
+msgctxt "DESC_Name_compendium_de_html"
+msgid "Gpg4win Compendium (html, German)"
+msgstr "Gpg4win Compendium (html, nìmecky)"
+
+#: src/inst-compendium.nsi:53
+msgctxt "DESC_Name_compendium_en_html"
+msgid "Gpg4win Compendium (html, English)"
+msgstr "Gpg4win Compendium (html, anglicky)"
+
+#: src/inst-compendium.nsi:57
+msgctxt "DESC_Menu_compendium_de_pdf"
+msgid "Show the Gpg4win Compendium (pdf, German)"
+msgstr "Ukázat Gpg4win Compendium (pdf, nìmecky)"
+
+#: src/inst-compendium.nsi:59
+msgctxt "DESC_Menu_compendium_en_pdf"
+msgid "Show the Gpg4win Compendium (pdf, English)"
+msgstr "Ukázat Gpg4win Compendium (pdf, anglicky)"
+
+#~ msgctxt "DESC_Menu_compendium_de_html"
+
+#~ msgid "Show the Gpg4win Compendium (html, German)"
+#~ msgstr "Gpg4win-Kompendium (html, deutsch)"
+#~ msgctxt "DESC_Menu_compendium_en_html"
+
+#~ msgid "Show the Gpg4win Compendium (html, English)"
+#~ msgstr "Gpg4win-Kompendium (html, englisch)"
+#~ msgctxt "DESC_SEC_eudoragpg"
+
+#~ msgid "EudoraGPG is a plugin for the Eudora mail program"
+#~ msgstr ""
+#~ "EudoraGPG ist ein Plugin zur Verschlüsselung für das Eudora Mailprogramm"
+#~ msgctxt "T_GPGee_RegFailed"
+
+#~ msgid "Warning: Registration of the GPGee explorer extension failed."
+#~ msgstr ""
+#~ "Warnung: Registration der GPGee Explorer Extension ist fehlgeschlagen."
+#~ msgctxt "DESC_SEC_gpgee"
+
+#~ msgid "GPG Explorer Extensions"
+#~ msgstr ""
+#~ "GPG Explorer Erweiterungen (GPGee) ist eine Erweiterung für den Explorer, "
+#~ "die es ermöglicht, Dateien über das Kontextmenü zu verschlüsseln."
+#~ msgctxt "DESC_Menu_gpgee_hlp"
+
+#~ msgid "Show the online manual of GPGee"
+#~ msgstr "Das englische Handbuch zu GPGee anzeigen"
+#~ msgctxt "DESC_Name_man_advanced_de"
+
+#~ msgid "Advanced Manual (German)"
+#~ msgstr "Durchblickerhandbuch"
+#~ msgctxt "DESC_SEC_man_advanced_de"
+
+#~ msgid "Gpg4Win Manual for the Advanced User (German)"
+#~ msgstr "Gpg4win Handbuch für den Durchblicker"
+#~ msgctxt "DESC_Menu_man_advanced_de"
+
+#~ msgid "Show the German online manual of Gpg4Win for advanced users"
+#~ msgstr "Das Online-Handbuch von Gpg4win für den Durchblicker anzeigen"
+#~ msgctxt "DESC_Name_man_advanced_en"
+
+#~ msgid "Advanced Manual"
+#~ msgstr "Durchblickerhandbuch (Englisch)"
+#~ msgctxt "DESC_SEC_man_advanced_en"
+
+#~ msgid "Gpg4Win Manual for the Advanced User"
+#~ msgstr "Gpg4win Handbuch für den Durchblicker (englisch)"
+#~ msgctxt "DESC_Menu_man_advanced_en"
+
+#~ msgid "Show the online manual of Gpg4Win for advanced users"
+#~ msgstr ""
+#~ "Das englische Online-Handbuch von Gpg4win für den Durchblicker anzeigen"
+#~ msgctxt "DESC_Name_man_novice_de"
+
+#~ msgid "Novice Manual (German)"
+#~ msgstr "Einsteigerhandbuch"
+#~ msgctxt "DESC_SEC_man_novice_de"
+
+#~ msgid "Gpg4Win Manual for the Novice User (German)"
+#~ msgstr "Gpg4win Handbuch für den Einsteiger"
+#~ msgctxt "DESC_Menu_man_novice_de"
+
+#~ msgid "Show the German online manual of Gpg4Win for novice users"
+#~ msgstr "Das Online-Handbuch von Gpg4win für den Einsteiger anzeigen"
+#~ msgctxt "DESC_Name_man_novice_en"
+
+#~ msgid "Novice Manual (pdf, English)"
+#~ msgstr "Gpg4win Einsteigerhandbuch (pdf, englisch)"
+#~ msgctxt "DESC_SEC_man_novice_en"
+
+#~ msgid "Gpg4win Manual for the Novice User (English)"
+#~ msgstr "Gpg4win Einsteigerhandbuch (englisch)"
+#~ msgctxt "DESC_Menu_man_novice_en"
+
+#~ msgid "Show the Gpg4win manual for novice users (pdf, English)"
+#~ msgstr "Gpg4win Einsteigerhandbuch (pdf, englisch)"
+#~ msgctxt "DESC_SEC_winpt"
+
+#~ msgid "Windows Privacy Tray"
+#~ msgstr ""
+#~ "Windows Privacy Tray (WinPT) ist ein vielseitiges Programm zur "
+#~ "Schlüsselverwaltung sowie aller anderen Funktionen von GnuPG.  Es "
+#~ "installiert sich in die Startleiste."
+#~ msgctxt "DESC_Menu_winpt"
+
+#~ msgid ""
+#~ "Run the Windows Privacy Tray key management tool. This is a versatile key "
+#~ "management and encryption tool."
+#~ msgstr ""
+#~ "Das Schlüsselverwaltungsprogramm Windows Privacy Tray aufrufen.  Dies ist "
+#~ "ein vielseitiges Programm zur Schlüsselverwaltung und Verschlüsselung.  "
+#~ "Es installiert sich in die Startleiste."
+#~ msgctxt "DESC_Menu_gpa"
+
+#~ msgid ""
+#~ "Run the GNU Privacy Assistant key management tool. This is an alternative "
+#~ "to the WinPT key management tool."
+#~ msgstr ""
+#~ "Das Schlüsselverwaltungsprogramm GNU Privacy Assistent aufrufen.  Dies "
+#~ "ist eine Alternative zu dem WinPT Programm."

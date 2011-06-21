@@ -86,7 +86,7 @@ iso639_to_nsis (const char *ll, char **lang, char **nlf)
       { "zh_SG", "SUBLANG_CHINESE_SINGAPORE", NULL },
       { "zh_MO", "SUBLANG_CHINESE_MACAU", NULL },
       { "hr", "LANG_CROATIAN", "Croatian" },
-      { "cs", "LANG_CZECH", "Czech" },
+      { "cz", "LANG_CZECH", "Czech" },
       { "da", "LANG_DANISH", "Danish" },
       { "dv", "LANG_DIVEHI", NULL },
       { "nl", "LANG_DUTCH", "Dutch" },
