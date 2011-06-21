@@ -1,3 +1,8 @@
+2011-06-21  Emanuel Schuetze <emanuel@intevation.de>
+
+	* src/installer.nsi: Show English HOWTO-SMIME.en.txt in installer
+	  section for all non-German language.
+
 2011-06-07 Colin Leroy <colin@colino.net>
 
 	* packages/packages.current: Update Claws Mail HTML plugin (last fix

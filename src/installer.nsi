@@ -534,6 +534,12 @@ LicenseLangString T_HowtoSmimeFile ${LANG_SPANISH} \
 	"${TOP_SRCDIR}/doc/HOWTO-SMIME.en.txt"
 LicenseLangString T_HowtoSmimeFile ${LANG_PORTUGUESE} \
 	"${TOP_SRCDIR}/doc/HOWTO-SMIME.en.txt"
+LicenseLangString T_HowtoSmimeFile ${LANG_CZECH} \
+	"${TOP_SRCDIR}/doc/HOWTO-SMIME.en.txt"
+LicenseLangString T_HowtoSmimeFile ${LANG_ARABIC} \
+	"${TOP_SRCDIR}/doc/HOWTO-SMIME.en.txt"
+LicenseLangString T_HowtoSmimeFile ${LANG_RUSSIAN} \
+	"${TOP_SRCDIR}/doc/HOWTO-SMIME.en.txt"
 
 #---------------------------------------------
 # From the old installation checking functions
