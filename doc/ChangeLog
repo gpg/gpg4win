@@ -1,5 +1,11 @@
 2011-06-14  Emanuel Schuetze <emanuel@intevation.de>
 
+	* website/template_header.m4,
+	  manual/gpg4win-compendium-en.tex:
+	  Minor English improvment.
+
+2011-06-14  Emanuel Schuetze <emanuel@intevation.de>
+
 	* website/SPONSOR: Add new sponsor.
 
 2011-05-18  Emanuel Schuetze <emanuel@intevation.de>
