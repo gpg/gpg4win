@@ -1,4 +1,8 @@
-2011-06-14  Emanuel Schuetze <emanuel@intevation.de>
+2011-07-07  Emanuel Schuetze <emanuel@intevation.de>
+
+	* website/localize-gpg4win.htm4: Fix svn checkout url.
+
+2011-06-28  Emanuel Schuetze <emanuel@intevation.de>
 
 	* website/template_header.m4,
 	  manual/gpg4win-compendium-en.tex:

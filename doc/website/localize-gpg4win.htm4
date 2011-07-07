@@ -74,7 +74,7 @@ This should work on basically any GNU/Linux or other unixoid system:
 
 <ol>
 <li> Get the sources for the website anonymously (without write access):<br>
-     <em>svn checkout https://svn.wald.intevation.org/gpg4win/trunk/ gpg4win-trunk-anon</em>
+     <em>svn checkout https://svn.wald.intevation.org/svn/gpg4win/trunk/ gpg4win-trunk-anon</em>
 
 <li> Configure the whole package:<br>
      <em>
