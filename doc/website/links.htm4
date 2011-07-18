@@ -16,6 +16,11 @@ PAGE_START
 
 <ul>
 <li><a href="http://www.gnupg.org">GnuPG</a></li>
+<li><a href="http://www.gpgtools.org">GPGTools</a>
+<p>
+GPGTools provides a Mac OS X version of GnuPG. It is nicely
+integrated into an installer and features all required tools.
+</p></li>
 <li><a href="http://www.gpg4kde.org">Gpg4kde</a></li>
 <li><a href="http://home.arcor.de/rose-indorf/">GnuPG-Basics</a></li>
 <li><a href="http://sites.inka.de/tesla/gpgrelay.html">GPGrelay</a>
