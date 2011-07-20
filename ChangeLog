@@ -1,3 +1,10 @@
+2011-07-20  Emanuel Schuetze <emanuel@intevation.de>
+
+	* src/installer.nsi: Show English HOWTO-SMIME.en.txt in installer
+	  section for Italian language.
+
+	* src/inst-gpg4win.nsi: Show English README for it and cz language.
+
 2011-06-21  Emanuel Schuetze <emanuel@intevation.de>
 
 	* src/installer.nsi: Show English HOWTO-SMIME.en.txt in installer

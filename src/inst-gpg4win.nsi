@@ -29,10 +29,12 @@ Section "-gpg4win" SEC_gpg4win
   File "${BUILD_DIR}/README.en.txt"
   File "${BUILD_DIR}/README.de.txt"
   File /oname=README.ar.txt "${BUILD_DIR}/README.en.txt"
+  File /oname=README.cz.txt "${BUILD_DIR}/README.en.txt"
   File /oname=README.es.txt "${BUILD_DIR}/README.en.txt"
   File /oname=README.fr.txt "${BUILD_DIR}/README.en.txt"
-  File /oname=README.ru.txt "${BUILD_DIR}/README.en.txt"
+  File /oname=README.it.txt "${BUILD_DIR}/README.en.txt"
   File /oname=README.pt.txt "${BUILD_DIR}/README.en.txt"
+  File /oname=README.ru.txt "${BUILD_DIR}/README.en.txt"
   File "${BUILD_DIR}/../doc/HOWTO-SMIME.en.txt"
   File "${BUILD_DIR}/../doc/HOWTO-SMIME.de.txt"
 
