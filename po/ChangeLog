@@ -1,3 +1,8 @@
+2011-07-20  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
+
+	* LINGUAS: Add 'it'.
+	* it.po: New Italien po file, contributed by Mariano MARINI.
+
 2011-06-21  Emanuel Schuetze  <emanuel.schuetze@intevation.de>
 
 	* LINGUAS: Add cz.
