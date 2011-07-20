@@ -1,3 +1,8 @@
+2011-07-20  Emanuel Schuetze <emanuel@intevation.de>
+
+	* README.cz.txt, README.it.txt: Added empty REDME files for new
+	  installer languages.
+
 2011-07-18  Emanuel Schuetze <emanuel@intevation.de>
 
 	* website/links-de.htm4, website/links.htm4: Add link to GPGTools.
