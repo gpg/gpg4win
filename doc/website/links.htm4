@@ -4,6 +4,8 @@ m4_dnl $Id$
 
 m4_define(`EN')
 m4_define(`DE_FILE', `links-de.html')
+m4_define(`TITLE', `Links')
+
 PAGE_START
 
 <div id="intro">
