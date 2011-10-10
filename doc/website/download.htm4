@@ -39,9 +39,14 @@ of Gpg4win VERSION here:</p>
 
 <li>Sources and other Gpg4win-VERSION variants:
     <ul>
-    <li><a href="LDOWNLOAD_URL">gpg4win-light-VERSION.exe</a>
-    (Full version <em>without</em> Kleopatra and manuals); 
-    <small>Size: LDL_SIZE</small></li>
+    <li>
+    <div class="dlbutton2">
+    Full version but <em>without</em> Kleopatra and manuals:
+    <a href="LDOWNLOAD_URL" class="dlbutton2">Gpg4win-Light VERSION<br/>
+    <span class="version"><small>Size: LDL_SIZE</small></span></a>
+    </div></li>
+    <li><a href="http://ftp.gpg4win.org/gpg4win-light-VERSION.exe.sig"
+        >OpenPGP signatur</a> (for gpg4win-light-VERSION.exe)</li>
     <li><a
         href="http://ftp.gpg4win.org/gpg4win-VERSION.tar.bz2">gpg4win-VERSION.tar.bz2</a>
     (source code package); <small>Size: 5 MByte</small></li>
