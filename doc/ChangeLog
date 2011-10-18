@@ -1,3 +1,12 @@
+2011-10-18  Emanuel Schuetze <emanuel@intevation.de>
+
+	* HOWTO-SMIME.en.txt, HOWTO-SMIME.de.txt,
+	README.en.txt, README.de.txt,
+    website/features.htm4, website/features-de.htm4
+    website/about.htm4, website/about-de.htm4:
+    Removed windows 2000 from compatibility list (see gpg4win
+	issue tracker #6252).
+
 2011-10-10  Werner Koch  <wk@g10code.com>
 
 	* website/download.htm4, website/download-de.htm4: Make light

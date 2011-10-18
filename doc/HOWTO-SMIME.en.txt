@@ -11,7 +11,7 @@ a system-wide default of the most important root certificates:
 1.  Store the root certificates
 
      Copy root certificate file to:
-     [Windows 2000/XP]:
+     [Windows XP]:
         C:\Documents and settings\All Users\Application data\GNU\etc\
         dirmngr\trusted-certs\
      [Windows Vista/7]:
@@ -30,7 +30,7 @@ a system-wide default of the most important root certificates:
 2.  Set ultimate trusted
  
      a) Open the following file with a text editor:
-         [Windows 2000/XP]:
+         [Windows XP]:
            C:\Documents and settings\All Users\Application data\GNU\etc\
            gnupg\trustlist.txt
          [Windows Vista/7]:
@@ -98,5 +98,5 @@ For more information, see the Gpg4win Compendium, chapter 22:
 [1] Note to view options in Windows Explorer:
      Ensure that you have enabled the folder option "Show hidden files and folders"
      You find this option under:
-      [Windows 2000/XP]: Tools > Folder Options > View
+      [Windows XP]: Tools > Folder Options > View
       [Windows Vista/7]: Organize > Folder and Search Options > Ansicht

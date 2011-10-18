@@ -13,7 +13,7 @@ sinnvoll:
 1.  Ablegen der Wurzelzertifikate
 
      Kopieren Sie eine Wurzelzertifikats-Datei nach:
-     [Windows 2000/XP]:
+     [Windows XP]:
         C:\Dokumente und Einstellungen\All Users\Anwendungsdaten\GNU\etc\
         dirmngr\trusted-certs\
      [Windows Vista/7]:
@@ -32,7 +32,7 @@ sinnvoll:
 2.  Ultimativ vertrauenswürdig setzen
  
      a) Öffnen Sie die folgende Datei mit einem Texteditor:
-         [Windows 2000/XP]:
+         [Windows XP]:
            C:\Dokumente und Einstellungen\All Users\Anwendungsdaten\GNU\etc\
            gnupg\trustlist.txt
          [Windows Vista/7]:
@@ -104,5 +104,5 @@ Weiterführende Informationen finden Sie im Gpg4win-Kompendium, Kapitel 22:
      Stellen Sie sicher, dass Sie im Windows Explorer die nachfolgende
      Ordneransichts-Option "Alle Dateien und Ordner anzeigen" aktiviert haben.
      Sie erreichen diese Option unter:
-      [Windows 2000/XP]: Extras > Ordneroptionen > Ansicht
+      [Windows XP]: Extras > Ordneroptionen > Ansicht
       [Windows Vista/7]: Organisieren > Ordner- und Suchoptionen > Ansicht

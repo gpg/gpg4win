@@ -38,7 +38,7 @@ Bitte lesen Sie den Abschnitt "3. Bekannte Probleme (und Abhilfe)",
 bevor Sie damit beginnen Gpg4win zu nutzen.
 
 Gpg4win unterstützt folgende Plattformen:
-  * Betriebssystem: Windows 2000, XP (32/64), Vista (32/64), 7 (32/64)
+  * Betriebssystem: Windows XP (32/64), Vista (32/64), 7 (32/64)
   * MS Outlook: 2003, 2007
   Wichtig: Das Explorer-Plugin 'GpgEX' bietet aktuell keine Unterstützung für
   64-bit Explorer! (Details unter Abschnitt 3, Punkt "Probleme unter Windows x64")
