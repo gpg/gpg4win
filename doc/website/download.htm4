@@ -13,6 +13,8 @@ PAGE_START
 <div id="intro">
 <h2>Download</h2>
 <p>Free Software for free download.</p> 
+<p>(Due to problems with the hosting company Strato.de,
+  we temporally changed all links to the Irish mirror)</p>
 </div>
 
 <div id="main">
@@ -30,7 +32,7 @@ of Gpg4win VERSION here:</p>
 </div>
 
 <ul>
-    <li><a href="http://ftp.gpg4win.org/gpg4win-VERSION.exe.sig"
+    <li><a href="http://ftp.heanet.ie/mirrors/ftp.gpg4win.org/gpg4win-VERSION.exe.sig"
         >OpenPGP signatur</a> (for gpg4win-VERSION.exe)
     <li><b>SHA1 checksum</b> (for gpg4win-VERSION.exe):<br>
     <code>SHA1_EXE  gpg4win-VERSION.exe </code></li>
@@ -45,13 +47,13 @@ of Gpg4win VERSION here:</p>
     <a href="LDOWNLOAD_URL" class="dlbutton2">Gpg4win-Light VERSION<br/>
     <span class="version"><small>Size: LDL_SIZE</small></span></a>
     </div></li>
-    <li><a href="http://ftp.gpg4win.org/gpg4win-light-VERSION.exe.sig"
+    <li><a href="http://ftp.heanet.ie/mirrors/ftp.gpg4win.org/gpg4win-light-VERSION.exe.sig"
         >OpenPGP signatur</a> (for gpg4win-light-VERSION.exe)</li>
     <li><a
-        href="http://ftp.gpg4win.org/gpg4win-VERSION.tar.bz2">gpg4win-VERSION.tar.bz2</a>
+        href="http://ftp.heanet.ie/mirrors/ftp.gpg4win.org/gpg4win-VERSION.tar.bz2">gpg4win-VERSION.tar.bz2</a>
     (source code package); <small>Size: 5 MByte</small></li>
     <li>All versions and OpenPGP signatures: <a
-        href="http://ftp.gpg4win.org">ftp.gpg4win.org</a>.</li>
+        href="http://ftp.heanet.ie/mirrors/ftp.gpg4win.org/">ftp.gpg4win.org</a>.</li>
     </ul>
 </li>
 </ul>
@@ -66,7 +68,7 @@ of Gpg4win VERSION here:</p>
       href="documentation.html">documentation</a>).</p>
   </p>
   <p>Read the current <a
-      href="http://ftp.gpg4win.org/README-VERSION.en.txt">README file</a>.
+      href="http://ftp.heanet.ie/mirrors/ftp.gpg4win.org/README-VERSION.en.txt">README file</a>.
 
 <h2>Gpg4win Compendium COMPENDIUM_VERSION_EN</h2>
 
@@ -94,7 +96,7 @@ Read the <a href="documentation.html">documentation page</a> for
 
 <p>Current and all previous Gpg4win installers as well as signatures and corresponding
 source code packages are available under:
-<a href="http://ftp.gpg4win.org">http://ftp.gpg4win.org</a>
+<a href="http://ftp.heanet.ie/mirrors/ftp.gpg4win.org/">http://ftp.gpg4win.org</a>
 </p>
 
 <p>
@@ -105,7 +107,7 @@ Also, you will find direct download link for the old releases.
 </p>
 
 All Beta releases (with OpenPGP-Signatures): 
-    <a href="http://ftp.gpg4win.org/Beta">ftp.gpg4win.org/Beta/</a>
+    <a href="http://ftp.heanet.ie/mirrors/ftp.gpg4win.org/Beta">ftp.gpg4win.org/Beta/</a>
 
 <p>
 Please note that old releases may still contain meanwhile fixed security issues.
