@@ -27,7 +27,7 @@ DISTFILES.extra1 = nsis-xgettext.sh nsis-xgettext.awk nsis-msgfmt.c $(NSIFILES) 
 # would not be unreasonable to use $(BUILD_CC) and corresponding tests
 # in configure.
 nsis-msgfmt: nsis-msgfmt.c
-	$(CC) -o nsis-msgfmt -lgettextpo $(srcdir)/nsis-msgfmt.c
+	$(CC) -o nsis-msgfmt $(srcdir)/nsis-msgfmt.c -lgettextpo
 
 # We extend the GMO file mechanism to also handle NSIS files.
 $(GMOFILES): %.gmo: %.nsi

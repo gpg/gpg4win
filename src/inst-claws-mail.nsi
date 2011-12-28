@@ -68,8 +68,8 @@ ${MementoUnselectedSection} "Claws-Mail" SEC_claws_mail
   File ${prefix}/share/locale/it/LC_MESSAGES/claws-mail.mo
   SetOutPath "$INSTDIR\share\locale\es\LC_MESSAGES"
   File ${prefix}/share/locale/es/LC_MESSAGES/claws-mail.mo
-  SetOutPath "$INSTDIR\share\locale\id\LC_MESSAGES"
-  File ${prefix}/share/locale/id/LC_MESSAGES/claws-mail.mo
+  SetOutPath "$INSTDIR\share\locale\id_ID\LC_MESSAGES"
+  File ${prefix}/share/locale/id_ID/LC_MESSAGES/claws-mail.mo
   SetOutPath "$INSTDIR\share\locale\zh_CN\LC_MESSAGES"
   File ${prefix}/share/locale/zh_CN/LC_MESSAGES/claws-mail.mo
   SetOutPath "$INSTDIR\share\locale\nl\LC_MESSAGES"

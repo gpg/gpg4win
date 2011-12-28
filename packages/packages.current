@@ -119,29 +119,29 @@ chk    321f9cf0abfa1937401676ce60976d8779c39536
 
 server http://www.claws-mail.org/win32
 
-file   claws-mail-3.7.9.tar.bz2
-chk    3ff70c16ba8a4b1c9655ef1c7f70f7cc4f8717d3
+file   claws-mail-3.8.0cvs6.tar.bz2
+chk    86ddccc76c0952f90fef6c17644645380246af91
 
-file   attachwarner-0.2.21.tar.gz
-chk    665b125b44f0a60f107e4eb11417a56edcc59e8f
+file   attachwarner-0.2.23.tar.gz
+chk    3ae33d707d7c4741a76604ea1e305a9b4e04f1a3
 
-file   bsfilter_plugin-1.0.5.tar.gz
-chk    c89500c7fe9f4d0e256712bddccbe8b8a9cee813
+file   bsfilter_plugin-1.0.7.tar.gz
+chk    9f3961f713a85b3c1f5ea641fa10b4c641b5cfc9
 
-file   gtkhtml2_viewer-0.30cvs4.tar.gz
-chk    e7c7b285fc460a69e9fb90eadb0a6a764bab7120
+file   gtkhtml2_viewer-0.32.tar.gz
+chk    29d85a75eddc575a50c7d78d05fe76ac1d717a88
 
-file   notification_plugin-0.27.tar.gz
-chk    5cd73146fdf8d8a25a087839dff3879e65a864e7
+file   notification_plugin-0.29.tar.gz
+chk    1643c99bfd1782cc778b81678642f1daf308582c
 
-file   rssyl-0.30cvs3.tar.gz
-chk    8117976ebc58d73225b418c48a21225347f4448e
+file   rssyl-0.32.tar.gz
+chk    29752eb2cbb02bb87848e4e917582832ee8c6bdc
 
-file   tnef_parse-0.3.10.tar.gz
-chk    be976153b7f9f5dfc7c03d14176127c3ec77a44d
+file   tnef_parse-0.3.12.tar.gz
+chk    cedf91979acecfbb760ed2e7c1151ef4e475006e
 
-file   vcalendar-2.0.10.tar.gz
-chk    baa6d51ebb20193c697f385b59eb5c1a8f3a54f4
+file   vcalendar-2.0.12.tar.gz
+chk    41e4085015cd4d559d06c784f98d21e32dae3184
 
 #
 # Pthreads for Windows.

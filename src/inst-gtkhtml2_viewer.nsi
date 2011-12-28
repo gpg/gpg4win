@@ -47,8 +47,8 @@ Section "-gtkhtml2_viewer" SEC_gtkhtml2_viewer
   File ${prefix}/share/locale/it/LC_MESSAGES/gtkhtml2_viewer.mo
   SetOutPath "$INSTDIR\share\locale\es\LC_MESSAGES"
   File ${prefix}/share/locale/es/LC_MESSAGES/gtkhtml2_viewer.mo
-  SetOutPath "$INSTDIR\share\locale\id\LC_MESSAGES"
-  File ${prefix}/share/locale/id/LC_MESSAGES/gtkhtml2_viewer.mo
+  SetOutPath "$INSTDIR\share\locale\id_ID\LC_MESSAGES"
+  File ${prefix}/share/locale/id_ID/LC_MESSAGES/gtkhtml2_viewer.mo
   SetOutPath "$INSTDIR\share\locale\zh_CN\LC_MESSAGES"
   File ${prefix}/share/locale/zh_CN/LC_MESSAGES/gtkhtml2_viewer.mo
   SetOutPath "$INSTDIR\share\locale\nl\LC_MESSAGES"

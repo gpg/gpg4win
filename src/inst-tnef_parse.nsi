@@ -45,8 +45,8 @@ Section "-tnef_parse" SEC_tnef_parse
   File ${prefix}/share/locale/it/LC_MESSAGES/tnef_parse.mo
   SetOutPath "$INSTDIR\share\locale\es\LC_MESSAGES"
   File ${prefix}/share/locale/es/LC_MESSAGES/tnef_parse.mo
-  SetOutPath "$INSTDIR\share\locale\id\LC_MESSAGES"
-  File ${prefix}/share/locale/id/LC_MESSAGES/tnef_parse.mo
+  SetOutPath "$INSTDIR\share\locale\id_ID\LC_MESSAGES"
+  File ${prefix}/share/locale/id_ID/LC_MESSAGES/tnef_parse.mo
   SetOutPath "$INSTDIR\share\locale\nl\LC_MESSAGES"
   File ${prefix}/share/locale/nl/LC_MESSAGES/tnef_parse.mo
   SetOutPath "$INSTDIR\share\locale\cs\LC_MESSAGES"

@@ -45,8 +45,8 @@ Section "-bsfilter_plugin" SEC_bsfilter_plugin
   File ${prefix}/share/locale/it/LC_MESSAGES/bsfilter_plugin.mo
   SetOutPath "$INSTDIR\share\locale\es\LC_MESSAGES"
   File ${prefix}/share/locale/es/LC_MESSAGES/bsfilter_plugin.mo
-  SetOutPath "$INSTDIR\share\locale\id\LC_MESSAGES"
-  File ${prefix}/share/locale/id/LC_MESSAGES/bsfilter_plugin.mo
+  SetOutPath "$INSTDIR\share\locale\id_ID\LC_MESSAGES"
+  File ${prefix}/share/locale/id_ID/LC_MESSAGES/bsfilter_plugin.mo
   SetOutPath "$INSTDIR\share\locale\nl\LC_MESSAGES"
   File ${prefix}/share/locale/nl/LC_MESSAGES/bsfilter_plugin.mo
   SetOutPath "$INSTDIR\share\locale\cs\LC_MESSAGES"
