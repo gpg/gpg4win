@@ -5,10 +5,16 @@ Security related bug reports: security@gnupg.org
 
 
 g10 Code GmbH <code@g10code.com>
- - Design and implementation.
+ - Design and implementation (Crypto Functionality, GpgOL, GpgEX, GPA, Installer).
+
+Intevation GmbH (intevation.net)
+ - Project coordination, QA, Compendium
+
+KDAB (kdab.com)
+ - Kleopatra
 
 Brigitte Hamilton <gordianknits@gmail.com>
- - English translations of the manuals.
+ - English translations of the manuals and compendium.
 
 Khaled Hosny <khaledhosny@eglug.org>
  - Arabic translations of the installer.
@@ -22,7 +28,14 @@ Fabian Rodriguez <magicfab@member.fsf.org>
 CJ <cj@neocaching.ru>
  - Russian translations of the installer.
 
- Copyright 2005, 2008, 2009 g10 Code GmbH
+Marco A.G.Pinto <marcoagpinto@mail.telepac.pt>
+ - Portuguese translations of the installer.
+
+Mariano Marini <mariano.marini@email.it>
+ - Italian translations of the installer.
+
+
+ Copyright 2005, 2008, 2009, 2010, 2011, 2012 g10 Code GmbH
 
  This file is free software; as a special exception the author gives
  unlimited permission to copy and/or distribute it, with or without
