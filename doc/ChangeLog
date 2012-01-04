@@ -1,3 +1,10 @@
+2012-01-04  Emanuel Schuetze <emanuel@intevation.de>
+
+	* manual/gpg4win-compendium-de.tex,
+	manual/gpg4win-compendium-en.tex,
+	manual/gpg4win-compendium-se.tex: Changed new RFC for OpenPGP
+	(4880 instead of 2440).
+
 2011-10-18  Emanuel Schuetze <emanuel@intevation.de>
 
 	* HOWTO-SMIME.en.txt, HOWTO-SMIME.de.txt,
