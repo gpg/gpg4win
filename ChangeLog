@@ -1,3 +1,7 @@
+2012-01-04  Emanuel Schuetze <emanuel@intevation.de>
+
+	* configure.ac: Change compendiuminprogress date.
+
 2011-07-20  Emanuel Schuetze <emanuel@intevation.de>
 
 	* src/installer.nsi: Show English HOWTO-SMIME.en.txt in installer
