@@ -1,6 +1,8 @@
 2012-02-27  Emanuel Schuetze <emanuel@intevation.de>
 
 	* website/SPONSOR: Add new sponsor.
+	* download-de.htm4, download.htm4, versions.m4: Changed
+	official download url from ftp.gpg4win.org to files.gpg4win.org.
 
 2012-01-04  Emanuel Schuetze <emanuel@intevation.de>
 
