@@ -1,3 +1,9 @@
+2012-03-05  Emanuel Schuetze <emanuel@intevation.de>
+
+	*  website/download-de.htm4, website/download.htm4: Remove
+	unnecessary CSS class.
+	*  website/versions.m4: Fix download link of light version.
+
 2012-02-29  Emanuel Schuetze <emanuel@intevation.de>
 
 	* website/SPONSOR: Add new sponsor.

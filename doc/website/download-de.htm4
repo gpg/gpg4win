@@ -23,7 +23,7 @@ PAGE_START
 kann hier herunter geladen werden:</p>
 <div class="dlbutton2">
  <img src="img/dl_arrow.png" alt="" />
- <a href="DOWNLOAD_URL" class="dlbutton2">Gpg4win&nbsp;VERSION<br />
+ <a href="DOWNLOAD_URL">Gpg4win&nbsp;VERSION<br />
  <span class="version"><small>Größe: DL_SIZE | Veröffentlicht: DL_DATE</small></span>
  </a>
 </div>
@@ -44,7 +44,7 @@ kann hier herunter geladen werden:</p>
     <a href="LDOWNLOAD_URL">Gpg4win-Light VERSION<br/>
       <span class="version"><small>Größe: LDL_SIZE</small><span></a>
     </div></li>
-    <li><a http://files.gpg4win.org/gpg4win-light-VERSION.exe.sig"
+    <li><a href="http://files.gpg4win.org/gpg4win-light-VERSION.exe.sig"
         >OpenPGP signatur</a> (für gpg4win-light-VERSION.exe)</li>
     <li><a
         href="http://files.gpg4win.org/gpg4win-VERSION.tar.bz2">gpg4win-VERSION.tar.bz2</a>

@@ -24,7 +24,7 @@ of Gpg4win VERSION here:</p>
 
 <div class="dlbutton2">
 <img src="img/dl_arrow.png" alt="" />
-<a href="DOWNLOAD_URL" class="dlbutton2">Gpg4win&nbsp;VERSION<br>
+<a href="DOWNLOAD_URL">Gpg4win&nbsp;VERSION<br>
 <span class="version"><small>Size: DL_SIZE | Released: DL_DATE</small></span>
 </a>
 </div>
@@ -42,7 +42,7 @@ of Gpg4win VERSION here:</p>
     <li>
     <div class="dlbutton2">
     Full version but <em>without</em> Kleopatra and manuals:
-    <a href="LDOWNLOAD_URL" class="dlbutton2">Gpg4win-Light VERSION<br/>
+    <a href="LDOWNLOAD_URL">Gpg4win-Light VERSION<br/>
     <span class="version"><small>Size: LDL_SIZE</small></span></a>
     </div></li>
     <li><a href="http://files.gpg4win.org/gpg4win-light-VERSION.exe.sig"
