@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gpg4win 2.1.1-svn\n"
 "Report-Msgid-Bugs-To: gpg4win-devel@wald.intevation.org\n"
-"POT-Creation-Date: 2011-07-08 00:09+0200\n"
+"POT-Creation-Date: 2012-03-26 10:25+0200\n"
 "PO-Revision-Date: 2011-07-08 12:21+0100\n"
 "Last-Translator: Mariano MARINI <mariano.marini@gmail.com>\n"
 "Language-Team: Italian\n"
-"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/g4wihelp.nsi:21
@@ -30,8 +30,16 @@ msgstr "Benvenuti all'istallazione di Gpg4win"
 
 #: src/gpg4win.nsi:116
 msgctxt "T_AboutGpg4win"
-msgid "Gpg4win is a installer package for Windows for EMail and file encryption using the core componenent GnuPG for Windows. Both relevant cryptography standards are supported, OpenPGP and S/MIME. Gpg4win and the software included with Gpg4win are Free Software."
-msgstr "Gpg4win è un installatore per Windows per la cifratura di file e posta con l'uso del componente base GnuPG per Windows. Sono supportati entrambi gli standard di cifratura più elevati, OpenPGP e S/MIME. Gpg4win e i programmi inclusi con esso sono Software Libero."
+msgid ""
+"Gpg4win is a installer package for Windows for EMail and file encryption "
+"using the core componenent GnuPG for Windows. Both relevant cryptography "
+"standards are supported, OpenPGP and S/MIME. Gpg4win and the software "
+"included with Gpg4win are Free Software."
+msgstr ""
+"Gpg4win è un installatore per Windows per la cifratura di file e posta con "
+"l'uso del componente base GnuPG per Windows. Sono supportati entrambi gli "
+"standard di cifratura più elevati, OpenPGP e S/MIME. Gpg4win e i programmi "
+"inclusi con esso sono Software Libero."
 
 #: src/gpg4win.nsi:123
 msgctxt "T_AboutGpg4winVersion"
@@ -55,8 +63,16 @@ msgstr "Benvenuto all'installazione dei sorgenti di Gpg4win"
 
 #: src/gpg4win-src.nsi:80
 msgctxt "T_AboutGpg4winSrc"
-msgid "Gpg4win is a installer package for Windows for EMail and file encryption using the core componenent GnuPG for Windows. Both relevant cryptography standards are supported, OpenPGP and S/MIME. Gpg4win and the software included with Gpg4win are Free Software."
-msgstr "Gpg4win è un installatore per Windows per la cifratura di file e posta con l'uso del componente base GnuPG per Windows. Sono supportati entrambi gli standard di cifratura più elevati, OpenPGP e S/MIME. Gpg4win e i programmi inclusi con esso sono Software Libero."
+msgid ""
+"Gpg4win is a installer package for Windows for EMail and file encryption "
+"using the core componenent GnuPG for Windows. Both relevant cryptography "
+"standards are supported, OpenPGP and S/MIME. Gpg4win and the software "
+"included with Gpg4win are Free Software."
+msgstr ""
+"Gpg4win è un installatore per Windows per la cifratura di file e posta con "
+"l'uso del componente base GnuPG per Windows. Sono supportati entrambi gli "
+"standard di cifratura più elevati, OpenPGP e S/MIME. Gpg4win e i programmi "
+"inclusi con esso sono Software Libero."
 
 #: src/gpg4win-src.nsi:87
 msgctxt "T_AboutGpg4winSrcVersion"
@@ -80,13 +96,23 @@ msgstr "it"
 
 #: src/installer.nsi:239
 msgctxt "T_GPLHeader"
-msgid "This software is licensed under the terms of the GNU General Public License (GPL)."
-msgstr "Questo programma è fornito in accordo coi termini della GNU General Public Licence (GPL)."
+msgid ""
+"This software is licensed under the terms of the GNU General Public License "
+"(GPL)."
+msgstr ""
+"Questo programma è fornito in accordo coi termini della GNU General Public "
+"Licence (GPL)."
 
 #: src/installer.nsi:243
 msgctxt "T_GPLShort"
-msgid "In short: You are allowed to run this software for any purpose. You may distribute it as long as you give the recipients the same rights you have received."
-msgstr "In breve: Sei abilitato ad eseguire questo programma per qualsiasi scopo. Puoi distribuirlo solo in quanto garantisci al ricevente gli stessi diritti che hai ricevuto."
+msgid ""
+"In short: You are allowed to run this software for any purpose. You may "
+"distribute it as long as you give the recipients the same rights you have "
+"received."
+msgstr ""
+"In breve: Sei abilitato ad eseguire questo programma per qualsiasi scopo. "
+"Puoi distribuirlo solo in quanto garantisci al ricevente gli stessi diritti "
+"che hai ricevuto."
 
 #: src/installer.nsi:248
 msgctxt "T_RunKeyManager"
@@ -111,7 +137,9 @@ msgstr "Mostra il file README"
 #: src/installer.nsi:258
 msgctxt "T_NoKeyManager"
 msgid "No key manager has been installed, thus we can't run one now."
-msgstr "Non è stato installato alcun amministratore di chiavi, quindi non possiamo eseguirlo ora."
+msgstr ""
+"Non è stato installato alcun amministratore di chiavi, quindi non possiamo "
+"eseguirlo ora."
 
 #: src/installer.nsi:263
 msgctxt "DESC_Menu_manuals"
@@ -175,20 +203,24 @@ msgstr ""
 #: src/installer.nsi:499
 msgctxt "T_FoundExistingOldVersion"
 msgid ""
-"An old version $R1 has already been installed.  It is strongly recommended to deinstall previous versions on major upgrades.\n"
+"An old version $R1 has already been installed.  It is strongly recommended "
+"to deinstall previous versions on major upgrades.\n"
 "Do you want to continue installing Gpg4win ${VERSION} anyway?"
 msgstr ""
-"Una vecchia versione $R1 è già stata installata.  È raccomandato vivamente di disinstallare le versioni precedenti per gli aggiornamenti importanti. \n"
+"Una vecchia versione $R1 è già stata installata.  È raccomandato vivamente "
+"di disinstallare le versioni precedenti per gli aggiornamenti importanti. \n"
 "Volete comunque continuare ad installare Gpg4win $ {VERSIONE}?"
 
 #: src/installer.nsi:504
 msgctxt "T_FoundExistingVersionB"
 msgid ""
-"A version of Gpg4Win has already been installed on the system. There will be no problem installing and thus overwriting this Version.\n"
+"A version of Gpg4Win has already been installed on the system. There will be "
+"no problem installing and thus overwriting this Version.\n"
 "\n"
 "Do you want to continue installing Gpg4win?"
 msgstr ""
-"Nel sistema è già stata installata una versione di Gpg4Win. Si può installare e sovrascrive questa versione senza problemi.\n"
+"Nel sistema è già stata installata una versione di Gpg4Win. Si può "
+"installare e sovrascrive questa versione senza problemi.\n"
 "\n"
 "Volete continuare con l'installazione di Gpg4win?"
 
@@ -205,94 +237,127 @@ msgstr "Configurazione S/MIME"
 #: src/installer.nsi:518
 msgctxt "T_SMIMETextTop"
 msgid "Gpg4win needs a list of root certificates which you trust."
-msgstr "Gpg4win ha bisogno di una lista dei certificati  di base di cui vi fidate."
+msgstr ""
+"Gpg4win ha bisogno di una lista dei certificati  di base di cui vi fidate."
 
 #: src/installer.nsi:520
 msgctxt "T_SMIMETextBottom"
-msgid "Therewith you can use S/MIME, the configuration is stringently required. Skip this configuration only if you don't want to use S/MIME."
-msgstr "Di conseguenza potete usare S/MIME, la configurazione è rigorosamente richiesta. Salti questa configurazione soltanto se non si vuole usare S/MIME."
+msgid ""
+"Therewith you can use S/MIME, the configuration is stringently required. "
+"Skip this configuration only if you don't want to use S/MIME."
+msgstr ""
+"Di conseguenza potete usare S/MIME, la configurazione è rigorosamente "
+"richiesta. Salti questa configurazione soltanto se non si vuole usare S/MIME."
 
 #: src/installer.nsi:524
 msgctxt "T_SMIMECheckboxText"
 msgid "Root certificate defined or skip configuration"
 msgstr "Certificato di base definito o salta configurazione"
 
-#: src/installer.nsi:547
+#: src/installer.nsi:549
 msgctxt "T_FoundOldSeeManual"
-msgid "Please see the Gpg4win user manual to learn how to migrate existing keys from other GnuPG based installations to Gpg4win."
-msgstr "Prego, legga il manuale dell'utente di Gpg4win per imparare come migrare le chiavi attuali da altre installazioni basate su GnuPG a Gpg4win."
+msgid ""
+"Please see the Gpg4win user manual to learn how to migrate existing keys "
+"from other GnuPG based installations to Gpg4win."
+msgstr ""
+"Prego, legga il manuale dell'utente di Gpg4win per imparare come migrare le "
+"chiavi attuali da altre installazioni basate su GnuPG a Gpg4win."
 
-#: src/installer.nsi:552
+#: src/installer.nsi:554
 msgctxt "T_FoundOldGnuPP"
 msgid ""
-"An old installation of GnuPP (GNU Privacy Project) has been been detected.  That software is not maintained anymore and thus should be removed.\n"
+"An old installation of GnuPP (GNU Privacy Project) has been been detected.  "
+"That software is not maintained anymore and thus should be removed.\n"
 "\n"
-"Do you want to continue installing Gpg4win and take care of the old installation later?"
+"Do you want to continue installing Gpg4win and take care of the old "
+"installation later?"
 msgstr ""
-"È stata individuata una vecchia installazione di GnuPP (GNU Privacy Project).  Quel programma non è più assistito e così dovrebbe essere rimosso.\n"
+"È stata individuata una vecchia installazione di GnuPP (GNU Privacy "
+"Project).  Quel programma non è più assistito e così dovrebbe essere "
+"rimosso.\n"
 "\n"
-"Volete continuare ad installare Gpg4win e curarvi successivamente della vecchia installazione?"
+"Volete continuare ad installare Gpg4win e curarvi successivamente della "
+"vecchia installazione?"
 
-#: src/installer.nsi:561
+#: src/installer.nsi:563
 msgctxt "T_FoundOldGnuPT"
 msgid ""
-"An installation of GnuPT has been been detected.  This may cause problems when used along with Gpg4win.\n"
+"An installation of GnuPT has been been detected.  This may cause problems "
+"when used along with Gpg4win.\n"
 "\n"
 "Do you want to continue installing Gpg4win?"
 msgstr ""
-"È stata individuata una installazione di GnuPT.  Ciò può causare i problemi quando usata con Gpg4win.\n"
+"È stata individuata una installazione di GnuPT.  Ciò può causare i problemi "
+"quando usata con Gpg4win.\n"
 "\n"
 "Volete continuare ad installare Gpg4win?"
 
-#: src/installer.nsi:568
+#: src/installer.nsi:570
 msgctxt "T_FoundOldWinPTSF"
 msgid ""
-"An old installation of the Sourceforge hosted WinPT has been been detected.  That software is not maintained anymore and should be removed.\n"
+"An old installation of the Sourceforge hosted WinPT has been been detected.  "
+"That software is not maintained anymore and should be removed.\n"
 "\n"
-"Do you want to continue installing Gpg4win and take care of the old installation later?"
+"Do you want to continue installing Gpg4win and take care of the old "
+"installation later?"
 msgstr ""
-"È stata individuata una vecchia installazione di WinPT.  Quel programma non è più assistito e così dovrebbe essere rimosso.\n"
+"È stata individuata una vecchia installazione di WinPT.  Quel programma non "
+"è più assistito e così dovrebbe essere rimosso.\n"
 "\n"
-"Volete continuare ad installare Gpg4win e curarvi successivamente della vecchia installazione?"
+"Volete continuare ad installare Gpg4win e curarvi successivamente della "
+"vecchia installazione?"
 
-#: src/installer.nsi:578
+#: src/installer.nsi:580
 msgctxt "T_FoundOldGnuPack"
 msgid ""
-"An installation of GnuPG-Pack has been been detected. You need to uninstall it before you can continue with Gpg4win installation.\n"
+"An installation of GnuPG-Pack has been been detected. You need to uninstall "
+"it before you can continue with Gpg4win installation.\n"
 "\n"
 "The installation will be aborted now!"
 msgstr ""
-"È stata individuata una installazione di GnuPG-Pack. Dovete disinstallarlo prima di poter continuare con l'installazione di Gpg4win.\n"
+"È stata individuata una installazione di GnuPG-Pack. Dovete disinstallarlo "
+"prima di poter continuare con l'installazione di Gpg4win.\n"
 "\n"
 "L'installazione ora sarà abortita!"
 
-#: src/installer.nsi:587
+#: src/installer.nsi:589
 msgctxt "T_BetaWarning"
 msgid ""
 "Note: This is a BETA version of Gpg4win.\n"
 "\n"
-"Beta versions are only intended for testing and shall not be used in a production environment."
+"Beta versions are only intended for testing and shall not be used in a "
+"production environment."
 msgstr ""
 "Nota: Questa è una versione beta di Gpg4win.\n"
 "\n"
-"Le versioni beta sono intese soltanto per le prove e non dovrebbero essere utilizzate in un ambiente di produzione."
+"Le versioni beta sono intese soltanto per le prove e non dovrebbero essere "
+"utilizzate in un ambiente di produzione."
 
-#: src/installer.nsi:594
+#: src/installer.nsi:596
 msgctxt "T_AdminNeeded"
-msgid "Warning: Administrator permissions required for a successful installation"
-msgstr "Avvertenza: Sono necessari i permessi di amministratore per la riuscita dell'installazione"
+msgid ""
+"Warning: Administrator permissions required for a successful installation"
+msgstr ""
+"Avvertenza: Sono necessari i permessi di amministratore per la riuscita "
+"dell'installazione"
 
-#: src/installer.nsi:598
+#: src/installer.nsi:600
 msgctxt "T_CloseOtherApps"
-msgid "Please make sure that other applications are not running. In particular you should close Outlook and all Explorer windows.  Gpg4win will try to install anyway but a reboot will be required then."
-msgstr "Prego, assicuri che non ci siano in esecuzione altre applicazioni. In particolare dovreste chiudere Outlook e tutte le finestre di Explorer.  Gpg4win proverà ad installarsi comunque ma sarà richiesto il riavvio."
+msgid ""
+"Please make sure that other applications are not running. In particular you "
+"should close Outlook and all Explorer windows.  Gpg4win will try to install "
+"anyway but a reboot will be required then."
+msgstr ""
+"Prego, assicuri che non ci siano in esecuzione altre applicazioni. In "
+"particolare dovreste chiudere Outlook e tutte le finestre di Explorer.  "
+"Gpg4win proverà ad installarsi comunque ma sarà richiesto il riavvio."
 
-#: src/installer.nsi:603
+#: src/installer.nsi:605
 msgctxt "T_ShuttingDownWinPT"
 msgid "Trying to shutdown a possible running instance of WinPT."
 msgstr "Prova di arresto di una possibile istanza di WinPT."
 
-#: src/installer.nsi:605
+#: src/installer.nsi:607
 msgctxt "T_ShuttingDownDirMngr"
 msgid "Trying to shutdown a possible running instance of DirMngr."
 msgstr "Prova di arresto di una possibile istanza di DirMngr."
@@ -330,19 +395,20 @@ msgstr "GNU Privacy Assistant"
 #: src/inst-gpa.nsi:81
 msgctxt "DESC_Menu_gpa"
 msgid "Run the GNU Privacy Assistant key management tool."
-msgstr "Esegui lo strumento di amministrazione delle chiavi GNU Privacy Assistant."
+msgstr ""
+"Esegui lo strumento di amministrazione delle chiavi GNU Privacy Assistant."
 
-#: src/inst-gpg4win.nsi:84
+#: src/inst-gpg4win.nsi:86
 msgctxt "DESC_Menu_gpg4win_readme"
 msgid "General information on Gpg4win"
 msgstr "Informazioni generali su Gpg4win"
 
-#: src/inst-gpg4win.nsi:87
+#: src/inst-gpg4win.nsi:89
 msgctxt "DESC_Menu_gpg4win_howtosmime"
 msgid "Instruction to configure S/MIME"
 msgstr "Istruzioni per la configurazione di S/MIME"
 
-#: src/inst-gpg4win.nsi:90
+#: src/inst-gpg4win.nsi:92
 msgctxt "DESC_Menu_gnupg_faq"
 msgid "Show the Frequently Asked Questions document for GnuPG"
 msgstr "Mostra il documento Domande più Frequenti (FAQ) per GnuPG"
@@ -370,7 +436,9 @@ msgstr "GnuPG per Outlook"
 #: src/inst-kleopatra.nsi:247
 msgctxt "DESC_SEC_kleopatra"
 msgid "Keymanager for OpenPGP and X.509 and common crypto dialogs."
-msgstr "Amministratore di chiavi OpenPG e X.509 e comuni finestre di configurazione cifrate."
+msgstr ""
+"Amministratore di chiavi OpenPG e X.509 e comuni finestre di configurazione "
+"cifrate."
 
 #: src/inst-kleopatra.nsi:251
 msgctxt "DESC_Menu_kleopatra"
@@ -416,4 +484,3 @@ msgstr "Mostra il riassunto di Gpg4win (pdf, Tedesco)"
 msgctxt "DESC_Menu_compendium_en_pdf"
 msgid "Show the Gpg4win Compendium (pdf, English)"
 msgstr "Mostra il riassunto di Gpg4win (pdf, Inglese)"
-

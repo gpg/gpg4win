@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gpg4win 1.1.1-svn417\n"
 "Report-Msgid-Bugs-To: gpg4win-devel@wald.intevation.org\n"
-"POT-Creation-Date: 2011-01-27 11:26+0100\n"
+"POT-Creation-Date: 2012-03-26 10:25+0200\n"
 "PO-Revision-Date: 2010-08-04 11:55-0000\n"
 "Last-Translator: Marco A.G.Pinto <marcoagpinto@mail.telepac.pt>\n"
 "Language-Team: Portuguese <marcoagpinto@mail.telepac.pt>\n"
@@ -249,7 +249,7 @@ msgctxt "T_SMIMECheckboxText"
 msgid "Root certificate defined or skip configuration"
 msgstr ""
 
-#: src/installer.nsi:541
+#: src/installer.nsi:549
 msgctxt "T_FoundOldSeeManual"
 msgid ""
 "Please see the Gpg4win user manual to learn how to migrate existing keys "
@@ -258,7 +258,7 @@ msgstr ""
 "Por favor lê o manual de utilizador do Gpg4Win para aprenderes a migrar "
 "chaves existentes de outras instalações baseadas no GnuPG para o Gpg4Win."
 
-#: src/installer.nsi:546
+#: src/installer.nsi:554
 msgctxt "T_FoundOldGnuPP"
 msgid ""
 "An old installation of GnuPP (GNU Privacy Project) has been been detected.  "
@@ -273,7 +273,7 @@ msgstr ""
 "Queres continuar a instalar o Gpg4Win e tratar da instalação antiga mais "
 "tarde?"
 
-#: src/installer.nsi:555
+#: src/installer.nsi:563
 msgctxt "T_FoundOldGnuPT"
 msgid ""
 "An installation of GnuPT has been been detected.  This may cause problems "
@@ -286,7 +286,7 @@ msgstr ""
 "\n"
 "Queres continuar a instalar o Gpg4Win?"
 
-#: src/installer.nsi:562
+#: src/installer.nsi:570
 msgctxt "T_FoundOldWinPTSF"
 msgid ""
 "An old installation of the Sourceforge hosted WinPT has been been detected.  "
@@ -301,7 +301,7 @@ msgstr ""
 "Queres continuar a instalar o Gpg4Win e tratar da instalação antiga mais "
 "tarde?"
 
-#: src/installer.nsi:572
+#: src/installer.nsi:580
 msgctxt "T_FoundOldGnuPack"
 msgid ""
 "An installation of GnuPG-Pack has been been detected. You need to uninstall "
@@ -314,7 +314,7 @@ msgstr ""
 "\n"
 "A instalação será agora abortada!"
 
-#: src/installer.nsi:581
+#: src/installer.nsi:589
 msgctxt "T_BetaWarning"
 msgid ""
 "Note: This is a BETA version of Gpg4win.\n"
@@ -327,7 +327,7 @@ msgstr ""
 "As versões beta são apenas destinadas para testes e não devem ser utilizadas "
 "num ambiente de produção."
 
-#: src/installer.nsi:588
+#: src/installer.nsi:596
 msgctxt "T_AdminNeeded"
 msgid ""
 "Warning: Administrator permissions required for a successful installation"
@@ -335,7 +335,7 @@ msgstr ""
 "Aviso: São necessárias permissões de Administrador para uma instalação bem "
 "sucedida."
 
-#: src/installer.nsi:592
+#: src/installer.nsi:600
 msgctxt "T_CloseOtherApps"
 msgid ""
 "Please make sure that other applications are not running. In particular you "
@@ -347,12 +347,12 @@ msgstr ""
 "qualquer forma o Gpg4win tentará instalar mas depois será necessário "
 "reiniciar o sistema."
 
-#: src/installer.nsi:597
+#: src/installer.nsi:605
 msgctxt "T_ShuttingDownWinPT"
 msgid "Trying to shutdown a possible running instance of WinPT."
 msgstr "A tentar encerrar uma possível instância do WinPT em execução."
 
-#: src/installer.nsi:599
+#: src/installer.nsi:607
 msgctxt "T_ShuttingDownDirMngr"
 msgid "Trying to shutdown a possible running instance of DirMngr."
 msgstr "A tentar encerrar uma possível instância do DirMngr em execução."
@@ -392,17 +392,17 @@ msgctxt "DESC_Menu_gpa"
 msgid "Run the GNU Privacy Assistant key management tool."
 msgstr "Executar a ferramenta de gestão de chaves GNU Privacy Assistant."
 
-#: src/inst-gpg4win.nsi:84
+#: src/inst-gpg4win.nsi:86
 msgctxt "DESC_Menu_gpg4win_readme"
 msgid "General information on Gpg4win"
 msgstr "Informação geral sobre Gpg4Win"
 
-#: src/inst-gpg4win.nsi:87
+#: src/inst-gpg4win.nsi:89
 msgctxt "DESC_Menu_gpg4win_howtosmime"
 msgid "Instruction to configure S/MIME"
 msgstr ""
 
-#: src/inst-gpg4win.nsi:90
+#: src/inst-gpg4win.nsi:92
 msgctxt "DESC_Menu_gnupg_faq"
 msgid "Show the Frequently Asked Questions document for GnuPG"
 msgstr "Mostrar o documento das Perguntas Frequentes (FAQ) do GnuPG"

@@ -1,18 +1,18 @@
 # gpg4win.m4.in - Installer for GnuPG 4 Windows Makefile.   -*- makefile -*-
 # Copyright (C) 2005, 2009 g10 Code GmbH
-# 
+#
 # This file is part of GPG4Win.
-# 
+#
 # GPG4Win is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 of the License, or
 # (at your option) any later version.
-# 
+#
 # GPG4Win is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
-# 
+#
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
@@ -320,7 +320,7 @@ README.$(1).txt : versioninfo.txt NEWS.tmp $(top_srcdir)/doc/README.$(1).txt \
         -e 's,!VERSION!,$(VERSION),g' \
 	-e 's,!BUILD_ISODATE!,$(BUILD_ISODATE),g' \
 	   < $(top_srcdir)/doc/README.$(1).txt \
-	   | (if echo "$(VERSION)" | egrep 'svn|rc|beta' >/dev/null; then \
+	   | (if echo "$(VERSION)" | egrep 'svn|rc|beta|git' >/dev/null; then \
               sed -e '/!BETA-WARNING!/{r $(top_srcdir)/doc/beta-warning.txt' \
                -e 'd;}'; else sed -e 's,!BETA-WARNING!,,g'; fi) \
            | awk '{printf "%s\r\n", $$$$0}' >README.$(1).txt

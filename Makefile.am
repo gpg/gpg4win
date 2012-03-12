@@ -1,28 +1,33 @@
 # Makefile.am - Installer for GnuPG 4 Windows Makefile.
 # Copyright (C) 2005, 2008 g10 Code GmbH
-# 
+#
 # This file is part of GPG4Win.
-# 
+#
 # GPG4Win is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 of the License, or
 # (at your option) any later version.
-# 
+#
 # GPG4Win is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
-# 
+#
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, see <http://www.gnu.org/licenses/>.
 
 ACLOCAL_AMFLAGS = -I m4
 AUTOMAKE_OPTIONS = dist-bzip2 no-dist-gzip
-DISTCHECK_CONFIGURE_FLAGS = --host=i586-mingw32msvc --disable-pkg-man_advanced_en 
+DISTCHECK_CONFIGURE_FLAGS = --host=i586-mingw32msvc --disable-pkg-man_advanced_en
+
+# (A suitable gitlog-to-changelog script can be found in GnuPG master.)
+GITLOG_TO_CHANGELOG=gitlog-to-changelog
+
 
 SUBDIRS = po packages include doc src
 
 EXTRA_DIST = autogen.sh README.SVN ONEWS \
+        build-aux/git-log-footer build-aux/git-log-fix \
         patches/pthreads-w32-2-8-0-release/01-make.patch \
         patches/glib-2.12.12/01-giowin32.patch \
         patches/glib-2.12.12/02-gspawn-w32.patch \
@@ -94,3 +99,18 @@ copy-release: gpg4win-$(VERSION).tar.bz2 src/gpg4win-$(VERSION).exe
 	     done;\
 	fi
 
+dist-hook: gen-ChangeLog
+
+gen_start_date = 2012-03-26T00:00:00
+.PHONY: gen-ChangeLog
+gen-ChangeLog:
+	set -e;                         				\
+	if test -d $(top_srcdir)/.git; then				\
+	  (cd $(top_srcdir) &&                      			\
+	    $(GITLOG_TO_CHANGELOG) --append-dot --tear-off		\
+	    --amend=build-aux/git-log-fix                		\
+	    --since=$(gen_start_date) ) > $(distdir)/cl-t;		\
+          cat $(top_srcdir)/build-aux/git-log-footer >> $(distdir)/cl-t;\
+	  rm -f $(distdir)/ChangeLog;					\
+	  mv $(distdir)/cl-t $(distdir)/ChangeLog;			\
+	fi

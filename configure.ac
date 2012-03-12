@@ -1,38 +1,37 @@
 # configure.ac for GPG4Win
 # Copyright (C) 2005, 2006, 2007, 2008, 2010 g10 Code GmbH
-# 
+#
 # This file is part of GPG4Win
-# 
+#
 # GPG4Win is free software; you can redistribute it and/or modify it
 # under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 of the License, or
 # (at your option) any later version.
-# 
+#
 # GPG4Win is distributed in the hope that it will be useful, but
 # WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 # General Public License for more details.
-# 
+#
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, see <http://www.gnu.org/licenses/>.
- 
+
 # (Process this file with autoconf to produce a configure script.)
 
 AC_PREREQ(2.59)
 min_automake_version="1.9.3"
 
 # Remember to change the version number immediately *after* a release.
-# Set my_issvn to "yes" for non-released code.  Remember to run an
-# "svn up" and "autogen.sh" right before creating a distribution.
+# Set my_isgit to "yes" for non-released code.
 # Right after a release the make target "copy-news" is to be called!
 m4_define([my_version], [2.1.1])
-m4_define([my_issvn], [yes])
+m4_define([my_isgit], [yes])
 
-m4_define([svn_revision], m4_esyscmd([echo -n $( (svn info 2>/dev/null \
-          ||echo 'Revision: 0')|sed -n '/^Revision:/ s/[^0-9]//gp'|head -1)]))
-AC_INIT([gpg4win], 
-        [my_version[]m4_if(my_issvn,[yes],[-svn[]svn_revision])],
-        [gpg4win-devel@wald.intevation.org])
+m4_define([git_revision], m4_esyscmd([git branch -v 2>/dev/null \
+          | awk '/^\* / {printf "%s",$3}']))
+m4_define([my_full_version],
+          [my_version[]m4_if(my_isgit,[yes],[-git[]git_revision])])
+AC_INIT([gpg4win],[my_full_version],[gpg4win-devel@wald.intevation.org])
 
 # Remember to update these version numbers also in the NEWS file.
 MANUALVERSION_EINSTEIGER="2.0.2"
@@ -50,11 +49,12 @@ COMPENDIUM_VERSION_EN="3.0.0-beta1"
 COMPENDIUM_DATE_EN="31. August 2010"
 COMPENDIUMINPROGRESS_EN="last minor changes from 4. January 2012"
 
-MANUALINPROGRESS_DE=m4_if(my_issvn,[yes],["~und evtl. seitdem weiter bearbeitet"])
-MANUALINPROGRESS_EN=m4_if(my_issvn,[yes],["~and may have been further edited"])
-SVN_REVISION=svn_revision
+MANUALINPROGRESS_DE=m4_if(my_isgit,[yes],["~und evtl. seitdem weiter bearbeitet"])
+MANUALINPROGRESS_EN=m4_if(my_isgit,[yes],["~and may have been further edited"])
 PACKAGE=$PACKAGE_NAME
 VERSION=$PACKAGE_VERSION
+GIT_REVISION=git_revision
+GIT_REVISION_DEC="$((0x$(echo git_revision | head -c 4)))"
 
 
 AC_CONFIG_SRCDIR(include/config.nsi.in)
@@ -88,7 +88,7 @@ AC_SUBST(COMPENDIUM_VERSION_EN)
 AC_SUBST(COMPENDIUM_DATE_EN)
 AC_SUBST(COMPENDIUMINPROGRESS_EN)
 
-if echo "${PACKAGE_VERSION}" | egrep 'svn|rc|beta|git' >/dev/null ; then 
+if echo "${PACKAGE_VERSION}" | egrep 'svn|rc|beta|git' >/dev/null ; then
   IS_BETA_BUILD=yes
 else
   IS_BETA_BUILD=no
@@ -102,7 +102,7 @@ BUILD_ISODATE=`date --iso-8601`
 changequote(,)dnl
 BUILD_FILEVERSION=`echo "$VERSION" | sed 's/\([0-9.]*\).*/\1./'`
 changequote([,])dnl
-BUILD_FILEVERSION="${BUILD_FILEVERSION}${SVN_REVISION}"
+BUILD_FILEVERSION="${BUILD_FILEVERSION}${GIT_REVISION_DEC}"
 AC_SUBST(BUILD_TIMESTAMP)
 AC_SUBST(BUILD_ISODATE)
 AC_SUBST(BUILD_FILEVERSION)
@@ -184,7 +184,7 @@ missing_tools=
 for i in DLLTOOL MAKE UNZIP TAR MKDIR CP RM STOW MAKENSIS ZCAT TEXI2DVI \
          DVIPDF CONVERT SHA1SUM MSGFMT ; do
    eval tmp='$'$i
-   if test -z "$tmp"; then 
+   if test -z "$tmp"; then
       missing_tools="$missing_tools `echo $i | tr 'A-Z' 'a-z'`"
    fi
 done
@@ -295,7 +295,7 @@ esac
 
 # Throw an error if required tools are missing
 if test -n "$missing_tools"; then
-    for i in $missing_tools; do 
+    for i in $missing_tools; do
       AC_MSG_NOTICE([$i is missing])
     done
     AC_MSG_ERROR([[
@@ -308,7 +308,7 @@ fi
 # Throw an error if any duplicate source packages have been found
 if test -n "$gpg4win_dup_sources"; then
     tmp=
-    for i in $gpg4win_dup_sources; do 
+    for i in $gpg4win_dup_sources; do
       tmp="$tmp
 $i"
     done
