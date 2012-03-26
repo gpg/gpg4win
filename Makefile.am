@@ -1,5 +1,5 @@
 # Makefile.am - Installer for GnuPG 4 Windows Makefile.
-# Copyright (C) 2005, 2008 g10 Code GmbH
+# Copyright (C) 2005, 2008, 2012 g10 Code GmbH
 #
 # This file is part of GPG4Win.
 #

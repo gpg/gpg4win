@@ -60,7 +60,7 @@ GIT_REVISION_DEC="$((0x$(echo git_revision | head -c 4)))"
 AC_CONFIG_SRCDIR(include/config.nsi.in)
 AC_CONFIG_MACRO_DIR(m4)
 
-AM_INIT_AUTOMAKE
+AM_INIT_AUTOMAKE([tar-ustar])
 AM_MAINTAINER_MODE
 AC_CANONICAL_HOST
 AM_CONFIG_HEADER(config.h)
