@@ -1,18 +1,18 @@
 # inst-sections.nsi - Installer for GPG4Win sections.  -*- coding: latin-1; -*-
 # Copyright (C) 2005, 2006, 2007, 2008, 2009 g10 Code GmbH
-# 
+#
 # This file is part of GPG4Win.
-# 
+#
 # GPG4Win is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 of the License, or
 # (at your option) any later version.
-# 
+#
 # GPG4Win is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
-# 
+#
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, see <http://www.gnu.org/licenses/>.
 
@@ -929,7 +929,7 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_libgpg_error}
 !ifdef HAVE_PKG_QT
   !insertmacro SelectSection ${SEC_qt}
-!endif  
+!endif
    skip_gpgme:
 !endif
 
@@ -1150,8 +1150,8 @@ FunctionEnd
 # This function is run from the finish page.
 #Function RunOnFinish
 #!ifdef HAVE_PKG_GPA
-#    SectionGetFlags ${SEC_gpa} $R0 
-#    IntOp $R0 $R0 & ${SF_SELECTED} 
+#    SectionGetFlags ${SEC_gpa} $R0
+#    IntOp $R0 $R0 & ${SF_SELECTED}
 #    IntCmp $R0 ${SF_SELECTED} 0 no_gpa_avail
 #       Exec "$INSTDIR\gpa.exe"
 #       Return
@@ -1234,9 +1234,9 @@ Section "-startmenu"
     CreateDirectory "$SMPROGRAMS\$STARTMENU_FOLDER\$(DESC_Menu_manuals)"
 
 !ifdef HAVE_PKG_GPA
-    SectionGetFlags ${SEC_gpa} $R0 
-    IntOp $R0 $R0 & ${SF_SELECTED} 
-    IntCmp $R0 ${SF_SELECTED} 0 no_gpa_menu 
+    SectionGetFlags ${SEC_gpa} $R0
+    IntOp $R0 $R0 & ${SF_SELECTED}
+    IntCmp $R0 ${SF_SELECTED} 0 no_gpa_menu
     CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\GPA.lnk" \
 	"$INSTDIR\gpa.exe" \
         "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_gpa)
@@ -1244,9 +1244,9 @@ Section "-startmenu"
 !endif
 
 !ifdef HAVE_PKG_KLEOPATRA
-    SectionGetFlags ${SEC_kleopatra} $R0 
-    IntOp $R0 $R0 & ${SF_SELECTED} 
-    IntCmp $R0 ${SF_SELECTED} 0 no_kleopatra_menu 
+    SectionGetFlags ${SEC_kleopatra} $R0
+    IntOp $R0 $R0 & ${SF_SELECTED}
+    IntCmp $R0 ${SF_SELECTED} 0 no_kleopatra_menu
     CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\Kleopatra.lnk" \
 	"$INSTDIR\kleopatra.exe" \
         "" "$INSTDIR\bin\kleopatra.exe" "" SW_SHOWNORMAL "" $(DESC_Menu_kleopatra)
@@ -1254,25 +1254,27 @@ Section "-startmenu"
 !endif
 
 !ifdef HAVE_PKG_CLAWS_MAIL
-    SectionGetFlags ${SEC_claws_mail} $R0 
-    IntOp $R0 $R0 & ${SF_SELECTED} 
-    IntCmp $R0 ${SF_SELECTED} 0 no_claws_mail_menu 
+    SectionGetFlags ${SEC_claws_mail} $R0
+    IntOp $R0 $R0 & ${SF_SELECTED}
+    IntCmp $R0 ${SF_SELECTED} 0 no_claws_mail_menu
     CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\Claws-Mail.lnk" \
 	"$INSTDIR\claws-mail.exe" \
         "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_claws_mail)
 !ifndef GPG4WIN_LIGHT
+!ifndef GPG4WIN_VANILLA
     CreateShortCut \
         "$SMPROGRAMS\$STARTMENU_FOLDER\$(DESC_Menu_manuals)\Claws-Mail Manual.lnk" \
 	"$INSTDIR\claws-mail-manual.pdf" \
 	"" "" "" SW_SHOWNORMAL "" $(DESC_Menu_claws_mail_pdf)
 !endif
+!endif
   no_claws_mail_menu:
 !endif
 
 !ifdef HAVE_PKG_MAN_NOVICE_EN
-    SectionGetFlags ${SEC_man_novice_en} $R0 
-    IntOp $R0 $R0 & ${SF_SELECTED} 
-    IntCmp $R0 ${SF_SELECTED} 0 no_man_novice_en_menu 
+    SectionGetFlags ${SEC_man_novice_en} $R0
+    IntOp $R0 $R0 & ${SF_SELECTED}
+    IntCmp $R0 ${SF_SELECTED} 0 no_man_novice_en_menu
     CreateShortCut \
         "$SMPROGRAMS\$STARTMENU_FOLDER\$(DESC_Menu_manuals)\$(DESC_Name_man_novice_en).lnk" \
 	"$INSTDIR\share\gpg4win\novices.pdf" \
@@ -1281,9 +1283,9 @@ Section "-startmenu"
 !endif
 
 !ifdef HAVE_PKG_MAN_ADVANCED_EN
-    SectionGetFlags ${SEC_man_advanced_en} $R0 
-    IntOp $R0 $R0 & ${SF_SELECTED} 
-    IntCmp $R0 ${SF_SELECTED} 0 no_man_advanced_en_menu 
+    SectionGetFlags ${SEC_man_advanced_en} $R0
+    IntOp $R0 $R0 & ${SF_SELECTED}
+    IntCmp $R0 ${SF_SELECTED} 0 no_man_advanced_en_menu
     CreateShortCut \
         "$SMPROGRAMS\$STARTMENU_FOLDER\$(DESC_Menu_manuals)\$(DESC_Name_man_advanced_en).lnk" \
 	"$INSTDIR\share\gpg4win\advanced.pdf" \
@@ -1292,9 +1294,9 @@ Section "-startmenu"
 !endif
 
 !ifdef HAVE_PKG_COMPENDIUM
-    SectionGetFlags ${SEC_compendium} $R0 
-    IntOp $R0 $R0 & ${SF_SELECTED} 
-    IntCmp $R0 ${SF_SELECTED} 0 no_compendium_menu 
+    SectionGetFlags ${SEC_compendium} $R0
+    IntOp $R0 $R0 & ${SF_SELECTED}
+    IntCmp $R0 ${SF_SELECTED} 0 no_compendium_menu
     CreateShortCut \
         "$SMPROGRAMS\$STARTMENU_FOLDER\$(DESC_Menu_manuals)\$(DESC_Name_compendium_de_pdf).lnk" \
 	"$INSTDIR\share\gpg4win\gpg4win-compendium-de.pdf" \
@@ -1313,9 +1315,9 @@ Section "-startmenu"
 !endif
 
 !ifdef HAVE_PKG_MAN_NOVICE_DE
-    SectionGetFlags ${SEC_man_novice_de} $R0 
-    IntOp $R0 $R0 & ${SF_SELECTED} 
-    IntCmp $R0 ${SF_SELECTED} 0 no_man_novice_de_menu 
+    SectionGetFlags ${SEC_man_novice_de} $R0
+    IntOp $R0 $R0 & ${SF_SELECTED}
+    IntCmp $R0 ${SF_SELECTED} 0 no_man_novice_de_menu
     CreateShortCut \
         "$SMPROGRAMS\$STARTMENU_FOLDER\$(DESC_Menu_manuals)\$(DESC_Name_man_novice_de).lnk" \
 	"$INSTDIR\share\gpg4win\einsteiger.pdf" \
@@ -1324,9 +1326,9 @@ Section "-startmenu"
 !endif
 
 !ifdef HAVE_PKG_MAN_ADVANCED_DE
-    SectionGetFlags ${SEC_man_advanced_de} $R0 
-    IntOp $R0 $R0 & ${SF_SELECTED} 
-    IntCmp $R0 ${SF_SELECTED} 0 no_man_advanced_de_menu 
+    SectionGetFlags ${SEC_man_advanced_de} $R0
+    IntOp $R0 $R0 & ${SF_SELECTED}
+    IntCmp $R0 ${SF_SELECTED} 0 no_man_advanced_de_menu
     CreateShortCut \
         "$SMPROGRAMS\$STARTMENU_FOLDER\$(DESC_Menu_manuals)\$(DESC_Name_man_advanced_de).lnk" \
 	"$INSTDIR\share\gpg4win\durchblicker.pdf" \
@@ -1414,8 +1416,8 @@ Section "-startmenu"
   CreateDirectory "$DESKTOP\$(DESC_Desktop_manuals)"
 
 !ifdef HAVE_PKG_GPA
-    SectionGetFlags ${SEC_gpa} $R0 
-    IntOp $R0 $R0 & ${SF_SELECTED} 
+    SectionGetFlags ${SEC_gpa} $R0
+    IntOp $R0 $R0 & ${SF_SELECTED}
     IntCmp $R0 ${SF_SELECTED} 0 no_gpa_desktop
     CreateShortCut "$DESKTOP\GPA.lnk" \
 	"$INSTDIR\gpa.exe" \
@@ -1424,7 +1426,7 @@ Section "-startmenu"
 !endif
 
 !ifdef HAVE_PKG_KLEOPATRA
-    SectionGetFlags ${SEC_kleopatra} $R0 
+    SectionGetFlags ${SEC_kleopatra} $R0
     IntOp $R0 $R0 & ${SF_SELECTED}
     IntCmp $R0 ${SF_SELECTED} 0 no_kleopatra_desktop
     CreateShortCut "$DESKTOP\Kleopatra.lnk" \
@@ -1434,24 +1436,26 @@ Section "-startmenu"
 !endif
 
 !ifdef HAVE_PKG_CLAWS_MAIL
-    SectionGetFlags ${SEC_claws_mail} $R0 
-    IntOp $R0 $R0 & ${SF_SELECTED} 
+    SectionGetFlags ${SEC_claws_mail} $R0
+    IntOp $R0 $R0 & ${SF_SELECTED}
     IntCmp $R0 ${SF_SELECTED} 0 no_claws_mail_desktop
     CreateShortCut "$DESKTOP\Claws-Mail.lnk" \
 	"$INSTDIR\claws-mail.exe" \
         "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_claws_mail)
 !ifndef GPG4WIN_LIGHT
+!ifndef GPG4WIN_VANILLA
     CreateShortCut \
         "$DESKTOP\$(DESC_Desktop_manuals)\Claws-Mail Manual.lnk" \
 	"$INSTDIR\claws-mail-manual.pdf" \
 	"" "" "" SW_SHOWNORMAL "" $(DESC_Menu_claws_mail_pdf)
 !endif
+!endif
   no_claws_mail_desktop:
 !endif
 
 !ifdef HAVE_PKG_MAN_NOVICE_EN
-    SectionGetFlags ${SEC_man_novice_en} $R0 
-    IntOp $R0 $R0 & ${SF_SELECTED} 
+    SectionGetFlags ${SEC_man_novice_en} $R0
+    IntOp $R0 $R0 & ${SF_SELECTED}
     IntCmp $R0 ${SF_SELECTED} 0 no_man_novice_en_desktop
     CreateShortCut \
         "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_man_novice_en).lnk" \
@@ -1461,8 +1465,8 @@ Section "-startmenu"
 !endif
 
 !ifdef HAVE_PKG_MAN_ADVANCED_EN
-    SectionGetFlags ${SEC_man_advanced_en} $R0 
-    IntOp $R0 $R0 & ${SF_SELECTED} 
+    SectionGetFlags ${SEC_man_advanced_en} $R0
+    IntOp $R0 $R0 & ${SF_SELECTED}
     IntCmp $R0 ${SF_SELECTED} 0 no_man_advanced_en_desktop
     CreateShortCut \
         "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_man_advanced_en).lnk" \
@@ -1472,8 +1476,8 @@ Section "-startmenu"
 !endif
 
 !ifdef HAVE_PKG_COMPENDIUM
-    SectionGetFlags ${SEC_compendium} $R0 
-    IntOp $R0 $R0 & ${SF_SELECTED} 
+    SectionGetFlags ${SEC_compendium} $R0
+    IntOp $R0 $R0 & ${SF_SELECTED}
     IntCmp $R0 ${SF_SELECTED} 0 no_compendium_desktop
     CreateShortCut \
         "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_compendium_de_pdf).lnk" \
@@ -1493,8 +1497,8 @@ Section "-startmenu"
 !endif
 
 !ifdef HAVE_PKG_MAN_NOVICE_DE
-    SectionGetFlags ${SEC_man_novice_de} $R0 
-    IntOp $R0 $R0 & ${SF_SELECTED} 
+    SectionGetFlags ${SEC_man_novice_de} $R0
+    IntOp $R0 $R0 & ${SF_SELECTED}
     IntCmp $R0 ${SF_SELECTED} 0 no_man_novice_de_desktop
     CreateShortCut \
         "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_man_novice_de).lnk" \
@@ -1504,8 +1508,8 @@ Section "-startmenu"
 !endif
 
 !ifdef HAVE_PKG_MAN_ADVANCED_DE
-    SectionGetFlags ${SEC_man_advanced_de} $R0 
-    IntOp $R0 $R0 & ${SF_SELECTED} 
+    SectionGetFlags ${SEC_man_advanced_de} $R0
+    IntOp $R0 $R0 & ${SF_SELECTED}
     IntCmp $R0 ${SF_SELECTED} 0 no_man_advanced_de_desktop
     CreateShortCut \
         "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_man_advanced_de).lnk" \
@@ -1540,7 +1544,7 @@ Section "-startmenu"
 
 no_desktop:
 
-	
+
   # Check if the quick launch bar entries where requested.
   !insertmacro MUI_INSTALLOPTIONS_READ $R0 "installer-options.ini" \
 	"Field 4" "State"
@@ -1564,8 +1568,8 @@ no_desktop:
   Delete "$QUICKLAUNCH\Gpg4Win README.lnk"
 
 !ifdef HAVE_PKG_GPA
-    SectionGetFlags ${SEC_gpa} $R0 
-    IntOp $R0 $R0 & ${SF_SELECTED} 
+    SectionGetFlags ${SEC_gpa} $R0
+    IntOp $R0 $R0 & ${SF_SELECTED}
     IntCmp $R0 ${SF_SELECTED} 0 no_gpa_quicklaunch
     CreateShortCut "$QUICKLAUNCH\GPA.lnk" \
 	"$INSTDIR\gpa.exe" \
@@ -1574,8 +1578,8 @@ no_desktop:
 !endif
 
 !ifdef HAVE_PKG_KLEOPATRA
-    SectionGetFlags ${SEC_kleopatra} $R0 
-    IntOp $R0 $R0 & ${SF_SELECTED} 
+    SectionGetFlags ${SEC_kleopatra} $R0
+    IntOp $R0 $R0 & ${SF_SELECTED}
     IntCmp $R0 ${SF_SELECTED} 0 no_kleopatra_quicklaunch
     CreateShortCut "$QUICKLAUNCH\Kleopatra.lnk" \
 	"$INSTDIR\kleopatra.exe" \
@@ -1584,8 +1588,8 @@ no_desktop:
 !endif
 
 !ifdef HAVE_PKG_CLAWS_MAIL
-    SectionGetFlags ${SEC_claws_mail} $R0 
-    IntOp $R0 $R0 & ${SF_SELECTED} 
+    SectionGetFlags ${SEC_claws_mail} $R0
+    IntOp $R0 $R0 & ${SF_SELECTED}
     IntCmp $R0 ${SF_SELECTED} 0 no_claws_mail_quicklaunch
     CreateShortCut "$QUICKLAUNCH\Claws-Mail.lnk" \
 	"$INSTDIR\claws-mail.exe" \

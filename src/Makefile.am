@@ -1,18 +1,18 @@
 # Makefile.am - Installer for GnuPG 4 Windows Makefile.
 # Copyright (C) 2005, 2006, 2007, 2008, 2009 g10 Code GmbH
-# 
+#
 # This file is part of Gpg4win.
-# 
+#
 # Gpg4win is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 of the License, or
 # (at your option) any later version.
-# 
+#
 # Gpg4win is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
-# 
+#
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, see <http://www.gnu.org/licenses/>.
 
@@ -306,7 +306,7 @@ gpg4win_pkg_pthreads_w32_make_args = \
   prefix=$(idir) CROSS=$(host_alias)- clean GC-inlined
 
 gpg4win_pkg_pthreads_w32_make_args_inst = \
-  prefix=$$$${pkgidir} CROSS=$(host_alias)- 
+  prefix=$$$${pkgidir} CROSS=$(host_alias)-
 
 gpg4win_pkg_bzip2_make_args = \
   CC=$(CC) AR=$(AR) RANLIB=$(RANLIB)
@@ -442,7 +442,7 @@ define gpg4win_pkg_kdesupport_post_install
 endef
 
 # libxml2 ships some binaries, which we already have from kdesupport.  Remove a stow
-# conflict about that. 
+# conflict about that.
 define gpg4win_pkg_libxml2_post_install
 (rm -f "$$$${pkgidir}/bin/xmllint.exe"; \
  rm -f "$$$${pkgidir}/bin/xmlcatalog.exe")
@@ -515,6 +515,14 @@ gpg4win-light-$(VERSION).exe: gpg4win.nsi $(common_nsi) stamps/stamp-final \
            -DSRCDIR=$(srcdir) $(EXTRA_MAKENSIS_FLAGS) \
            -DGPG4WIN_LIGHT=1 $(srcdir)/gpg4win.nsi
 
+gpg4win-vanilla-$(VERSION).exe: gpg4win.nsi $(common_nsi) stamps/stamp-final \
+                        g4wihelp.dll gpgwrap.exe gpgwrap-2.exe \
+		        $(foosum_exe) \
+			$(README_files) installer-options.ini versioninfo.txt
+	$(MAKENSIS) -V3 -DBUILD_DIR=`pwd` -DTOP_SRCDIR=$(top_srcdir) \
+           -DSRCDIR=$(srcdir) $(EXTRA_MAKENSIS_FLAGS) \
+           -DGPG4WIN_VANILLA=1 $(srcdir)/gpg4win.nsi
+
 gpg4win-$(VERSION).wix: gpg4win.nsi $(common_nsi) stamps/stamp-final \
 			gpgwrap.exe gpgwrap-2.exe kleowrap.exe \
 		        $(foosum_exe) \
@@ -533,8 +541,18 @@ gpg4win-light-$(VERSION).wix: gpg4win.nsi $(common_nsi) stamps/stamp-final \
 		-DBUILD_DIR=. -DTOP_SRCDIR=$(top_srcdir) \
 		-DSRCDIR=$(srcdir) -DGPG4WIN_LIGHT=1 $(srcdir)/gpg4win.nsi > $@
 
+gpg4win-vanilla-$(VERSION).wix: gpg4win.nsi $(common_nsi) stamps/stamp-final \
+			gpgwrap.exe gpgwrap-2.exe kleowrap.exe \
+		        $(foosum_exe) \
+			$(README_files) versioninfo.txt
+	perl make-msi.pl --guids $(srcdir)/make-msi.guids \
+		--manifest gpg4win-vanilla-$(VERSION).files \
+		-DBUILD_DIR=. -DTOP_SRCDIR=$(top_srcdir) \
+		-DSRCDIR=$(srcdir) -DGPG4WIN_VANILLA=1 $(srcdir)/gpg4win.nsi > $@
+
 .PHONY: msi
-msi: gpg4win-$(VERSION).wix gpg4win-light-$(VERSION).wix
+msi: gpg4win-$(VERSION).wix gpg4win-light-$(VERSION).wix \
+     gpg4win-vanilla-$(VERSION).wix
 
 
 stamps/stamp-dist-self: versioninfo.txt
@@ -588,8 +606,20 @@ else
 all_light =
 endif
 
-all-local: gpg4win-$(VERSION).exe $(all_light) $(all_src)
+if BUILD_VANILLA_INSTALLER
+all_vanilla = gpg4win-vanilla-$(VERSION).exe
+else
+all_vanilla =
+endif
+
+if BUILD_FULL_INSTALLER
+all_full = gpg4win-$(VERSION).exe
+else
+all_full =
+endif
+
+all-local: $(all_full) $(all_light) $(all_vanilla) $(all_src)
 
 clean-local:
 	rm -f gpg4win-$(VERSION).exe gpg4win-light-$(VERSION).exe \
-            gpg4win-src-$(VERSION).exe
+            gpg4win-vanilla-$(VERSION).exe gpg4win-src-$(VERSION).exe

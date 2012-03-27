@@ -1,18 +1,18 @@
 # installer.nsi - Installer for GnuPG 4 Windows.    -*- coding: latin-1; -*-
 # Copyright (C) 2005, 2007 g10 Code GmbH
-# 
+#
 # This file is part of GPG4Win.
-# 
+#
 # GPG4Win is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 of the License, or
 # (at your option) any later version.
-# 
+#
 # GPG4Win is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
-# 
+#
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
@@ -55,10 +55,14 @@ Name "${PRETTY_PACKAGE}"
 
 
 # Set the output filename.
+!ifdef GPG4WIN_VANILLA
+OutFile "${PACKAGE}-vanilla-${VERSION}.exe"
+!else
 !ifdef GPG4WIN_LIGHT
 OutFile "${PACKAGE}-light-${VERSION}.exe"
 !else
 OutFile "${PACKAGE}-${VERSION}.exe"
+!endif
 !endif
 
 
@@ -66,7 +70,7 @@ OutFile "${PACKAGE}-${VERSION}.exe"
 !ifndef INSTALL_DIR
 !define INSTALL_DIR "${PACKAGE}"
 !endif
-InstallDir "$PROGRAMFILES\GNU\${INSTALL_DIR}" 
+InstallDir "$PROGRAMFILES\GNU\${INSTALL_DIR}"
 
 
 InstallDirRegKey HKLM "Software\GNU\${PRETTY_PACKAGE_SHORT}" \
@@ -123,7 +127,7 @@ Var OtherGnuPGDetected
 # Remember the installer language
 
 !define MUI_LANGDLL_REGISTRY_ROOT "HKLM"
-!define MUI_LANGDLL_REGISTRY_KEY "Software\GNU\${PRETTY_PACKAGE_SHORT}" 
+!define MUI_LANGDLL_REGISTRY_KEY "Software\GNU\${PRETTY_PACKAGE_SHORT}"
 !define MUI_LANGDLL_REGISTRY_VALUENAME "Installer Language"
 
 # No Umlaute, please!
@@ -173,9 +177,9 @@ Var STARTMENU_FOLDER
 !define MUI_PAGE_HEADER_SUBTEXT "$(T_SMIMEHeaderSubtext)"
 !define MUI_LICENSEPAGE_TEXT_TOP "$(T_SMIMETextTop)"
 !define MUI_LICENSEPAGE_TEXT_BOTTOM "$(T_SMIMETextBottom)"
-!define MUI_LICENSEPAGE_CHECKBOX 
+!define MUI_LICENSEPAGE_CHECKBOX
 !define MUI_LICENSEPAGE_CHECKBOX_TEXT "$(T_SMIMECheckboxText)"
-!insertmacro MUI_PAGE_LICENSE $(T_HowtoSmimeFile) 
+!insertmacro MUI_PAGE_LICENSE $(T_HowtoSmimeFile)
 
 # Finish page
 !define MUI_FINISHPAGE_SHOWREADME "share\gpg4win\README.$(T_LangCode).txt"
@@ -273,7 +277,7 @@ LangString DESC_Desktop_manuals ${LANG_ENGLISH} \
 
 # Functions
 
-# Custom functions and macros for gpg4win. 
+# Custom functions and macros for gpg4win.
 !include "g4wihelp.nsi"
 
 #
@@ -399,7 +403,7 @@ Function CheckExistingVersion
   IfErrors leave 0
      MessageBox MB_YESNO "$(T_FoundExistingVersionB)" IDYES leave
      Abort
-     
+
  leave:
 FunctionEnd
 
@@ -699,7 +703,7 @@ Function TrimNewlines
    Push $R1
    Push $R2
    StrCpy $R1 0
- 
+
  loop:
    IntOp $R1 $R1 - 1
    StrCpy $R2 $R0 1 $R1
@@ -708,7 +712,7 @@ Function TrimNewlines
    IntOp $R1 $R1 + 1
    IntCmp $R1 0 no_trim_needed
    StrCpy $R0 $R0 $R1
- 
+
  no_trim_needed:
    Pop $R2
    Pop $R1
@@ -726,7 +730,7 @@ Function AddToPath
   add_to_path_done:
   Pop $0
 FunctionEnd
- 
+
 # RemoveFromPath - Remove a given dir from the path
 #     Input: head of the stack
 Function un.RemoveFromPath
@@ -737,5 +741,5 @@ Function un.RemoveFromPath
   remove_from_path_done:
   Pop $0
 FunctionEnd
- 
- 
+
+

@@ -1,18 +1,18 @@
 # gpg4win.nsi - Installer for GnuPG 4 Windows.        -*- coding: latin-1; -*-
 # Copyright (C) 2005, 2007, 2008 g10 Code GmbH
-# 
+#
 # This file is part of GPG4Win.
-# 
+#
 # GPG4Win is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 of the License, or
 # (at your option) any later version.
-# 
+#
 # GPG4Win is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
-# 
+#
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
@@ -41,6 +41,119 @@
 !endif
 !ifdef HAVE_PKG_QT
 !undef HAVE_PKG_QT
+!endif
+!endif
+
+# For the "vanilla" version of the package, we explicitely disable most
+# of the packages right after including config.nsi.
+!ifdef GPG4WIN_VANILLA
+!ifdef HAVE_PKG_GPGOL
+!undef HAVE_PKG_GPGOL
+!endif
+!ifdef HAVE_PKG_GPGEX
+!undef HAVE_PKG_GPGEX
+!endif
+!ifdef HAVE_PKG_GPA
+!undef HAVE_PKG_GPA
+!endif
+!ifdef HAVE_PKG_LIBGSASL
+!undef HAVE_PKG_LIBGSASL
+!endif
+!ifdef HAVE_PKG_LIBTASN1
+!undef HAVE_PKG_LIBTASN1
+!endif
+!ifdef HAVE_PKG_GNUTLS
+!undef HAVE_PKG_GNUTLS
+!endif
+!ifdef HAVE_PKG_LIBXML2
+!undef HAVE_PKG_LIBXML2
+!endif
+!ifdef HAVE_PKG_LIBETPAN
+!undef HAVE_PKG_LIBETPAN
+!endif
+!ifdef HAVE_PKG_BSFILTER
+!undef HAVE_PKG_BSFILTER
+!endif
+!ifdef HAVE_PKG_CRYPT
+!undef HAVE_PKG_CRYPT
+!endif
+!ifdef HAVE_PKG_CLAWS_MAIL
+!undef HAVE_PKG_CLAWS_MAIL
+!endif
+!ifdef HAVE_PKG_NOTIFICATION_PLUGIN
+!undef HAVE_PKG_NOTIFICATION_PLUGIN
+!endif
+!ifdef HAVE_PKG_GTKHTML2_VIEWER
+!undef HAVE_PKG_GTKHTML2_VIEWER
+!endif
+!ifdef HAVE_PKG_VCALENDAR
+!undef HAVE_PKG_VCALENDAR
+!endif
+!ifdef HAVE_PKG_RSSYL
+!undef HAVE_PKG_RSSYL
+!endif
+!ifdef HAVE_PKG_TNEF_PARSE
+!undef HAVE_PKG_TNEF_PARSE
+!endif
+!ifdef HAVE_PKG_ATTACHWARNER
+!undef HAVE_PKG_ATTACHWARNER
+!endif
+!ifdef HAVE_PKG_BSFILTER_PLUGIN
+!undef HAVE_PKG_BSFILTER_PLUGIN
+!endif
+!ifdef HAVE_PKG_PTHREADS_W32
+!undef HAVE_PKG_PTHREADS_W32
+!endif
+!ifdef HAVE_PKG_LIBPNG
+!undef HAVE_PKG_LIBPNG
+!endif
+!ifdef HAVE_PKG_ENCHANT
+!undef HAVE_PKG_ENCHANT
+!endif
+!ifdef HAVE_PKG_PKGCONFIG
+!undef HAVE_PKG_PKGCONFIG
+!endif
+!ifdef HAVE_PKG_GLIB
+!undef HAVE_PKG_GLIB
+!endif
+!ifdef HAVE_PKG_ATK
+!undef HAVE_PKG_ATK
+!endif
+!ifdef HAVE_PKG_EXPAT
+!undef HAVE_PKG_EXPAT
+!endif
+!ifdef HAVE_PKG_FREETYPE
+!undef HAVE_PKG_FREETYPE
+!endif
+!ifdef HAVE_PKG_FONTCONFIG
+!undef HAVE_PKG_FONTCONFIG
+!endif
+!ifdef HAVE_PKG_CAIRO
+!undef HAVE_PKG_CAIRO
+!endif
+!ifdef HAVE_PKG_PANGO
+!undef HAVE_PKG_PANGO
+!endif
+!ifdef HAVE_PKG_GTK_
+!undef HAVE_PKG_GTK_
+!endif
+!ifdef HAVE_PKG_KDESUPPORT
+!undef HAVE_PKG_KDESUPPORT
+!endif
+!ifdef HAVE_PKG_QT
+!undef HAVE_PKG_QT
+!endif
+!ifdef HAVE_PKG_OXYGEN_ICONS
+!undef HAVE_PKG_OXYGEN_ICONS
+!endif
+!ifdef HAVE_PKG_KDELIBS
+!undef HAVE_PKG_KDELIBS
+!endif
+!ifdef HAVE_PKG_KLEOPATRA
+!undef HAVE_PKG_KLEOPATRA
+!endif
+!ifdef HAVE_PKG_COMPENDIUM
+!undef HAVE_PKG_COMPENDIUM
 !endif
 !endif
 
@@ -90,7 +203,7 @@
 !define bpdir "playground/build"
 
 # Select the best compression algorithm available.  The dictionary
-# size is the default (8 MB). 
+# size is the default (8 MB).
 !ifndef DISABLE_LZMA
 !ifndef SOURCES
 SetCompressor lzma

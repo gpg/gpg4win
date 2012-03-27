@@ -146,6 +146,34 @@ AC_ARG_ENABLE(light-installer,
                     build_light_installer=yes)
 AM_CONDITIONAL(BUILD_LIGHT_INSTALLER, test "$build_light_installer" = yes)
 
+# You can build a vanilla version of the installer, featuring only
+# GnuPG, a pinentry and GPGME, in addition to the regular version.
+# This one does not contain the manuals.
+AC_ARG_ENABLE(vanilla-installer,
+    AC_HELP_STRING([--disable-vanilla-installer],
+                   [Do not create the vanilla version of the installer]),
+                    build_vanilla_installer=$enableval,
+                    build_vanilla_installer=yes)
+AM_CONDITIONAL(BUILD_VANILLA_INSTALLER, test "$build_vanilla_installer" = yes)
+
+# If you want to build only the light or vanilla installer, you may
+# disable building of the full installer.
+AC_ARG_ENABLE(full-installer,
+    AC_HELP_STRING([--disable-full-installer],
+                   [Do not create the full version of the installer]),
+                    build_full_installer=$enableval,
+                    build_full_installer=yes)
+AM_CONDITIONAL(BUILD_FULL_INSTALLER, test "$build_full_installer" = yes)
+
+# For development it is often faster to build without manuals.
+AC_ARG_ENABLE(manuals,
+    AC_HELP_STRING([--disable-manuals],
+                   [Do not build the manuals (for debugging)]),
+                    build_manuals=$enableval,
+                    build_manuals=yes)
+AM_CONDITIONAL(BUILD_MANUALS, test "$build_manuals" = yes)
+
+
 AC_ARG_ENABLE(fast-makensis,
     AC_HELP_STRING([--enable-fast-makensis],
                    [Use a less efficient compressor to speed up building]),
