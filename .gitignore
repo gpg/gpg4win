@@ -25,3 +25,4 @@ packages/*.tar.gz
 packages/*.tar.bz2
 packages/*.zip
 packages/*.tar.bz2
+/packages/packages.current.sig
