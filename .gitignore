@@ -7,6 +7,8 @@ config.h
 config.h.in
 config.log
 config.status
+config.status.lineno
+configure.lineno
 configure
 stamp-h1
 /*.tar.bz2
@@ -21,8 +23,11 @@ po/nsis-msgfmt
 patches/gnupg2/01-version.patch
 src/gpg4win.mk
 src/mingwm10.dll
-packages/*.tar.gz
-packages/*.tar.bz2
-packages/*.zip
-packages/*.tar.bz2
+/packages/*.tar.gz
+/packages/*.tar.bz2
+/packages/*.zip
+/packages/*.tar.bz2
 /packages/packages.current.sig
+/src/playground
+/src/stamps
+
