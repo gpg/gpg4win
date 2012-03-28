@@ -11,7 +11,7 @@ index 7671a51..eacb1c9 100644
 --- a/agent/gpg-agent.c
 +++ b/agent/gpg-agent.c
 @@ -101,6 +101,7 @@ enum cmd_and_opt_values
- 
+
    oIgnoreCacheForSigning,
    oAllowMarkTrusted,
 +  oNoAllowMarkTrusted,
@@ -19,7 +19,7 @@ index 7671a51..eacb1c9 100644
    oKeepTTY,
    oKeepDISPLAY,
 @@ -172,8 +173,9 @@ static ARGPARSE_OPTS opts[] = {
- 
+
    { oIgnoreCacheForSigning, "ignore-cache-for-signing", 0,
                                 N_("do not use the PIN cache when signing")},
 -  { oAllowMarkTrusted, "allow-mark-trusted", 0,
@@ -41,12 +41,12 @@ index 7671a51..eacb1c9 100644
      }
 @@ -532,6 +534,7 @@ parse_rereadable_options (ARGPARSE_ARGS *pargs, int reread)
      case oIgnoreCacheForSigning: opt.ignore_cache_for_signing = 1; break;
- 
+
      case oAllowMarkTrusted: opt.allow_mark_trusted = 1; break;
 +    case oNoAllowMarkTrusted: opt.allow_mark_trusted = 0; break;
- 
+
      case oAllowPresetPassphrase: opt.allow_preset_passphrase = 1; break;
- 
+
 @@ -921,7 +924,7 @@ main (int argc, char **argv )
                GC_OPT_FLAG_NONE|GC_OPT_FLAG_RUNTIME);
        printf ("ignore-cache-for-signing:%lu:\n",
@@ -69,7 +69,7 @@ index be5406b..ef9c661 100644
 +              flag == 'S'? " relax":"");
    if (es_ferror (fp))
      err = gpg_error_from_syserror ();
-   
+
 diff --git a/tools/gpgconf-comp.c b/tools/gpgconf-comp.c
 index 1b0e446..207c8b8 100644
 --- a/tools/gpgconf-comp.c
@@ -89,15 +89,15 @@ index 1b0e446..207c8b8 100644
 diff --git a/po/de.po b/po/de.po
 --- a/po/de.po
 +++ b/po/de.po
-@@ -426,8 +426,8 @@
+@@ -445,8 +445,8 @@
  msgstr "benutze PINs im Cache nicht beim Signieren"
- 
- #: agent/gpg-agent.c:176
+
+ #: agent/gpg-agent.c:177
 -msgid "allow clients to mark keys as \"trusted\""
 -msgstr "erlaube Aufrufern Schlüssel als \"vertrauenswürdig\" zu markieren"
 +msgid "disallow clients to mark keys as \"trusted\""
 +msgstr "verbiete Aufrufern Schlüssel als \"vertrauenswürdig\" zu markieren"
- 
+
  #: agent/gpg-agent.c:178
  msgid "allow presetting passphrase"
 
