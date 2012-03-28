@@ -63,3 +63,5 @@ src/mingwm10.dll
 /src/sha1sum.exe
 /src/sha256sum.exe
 /src/versioninfo.txt
+/src/kleowrap.exe
+/src/gpg4win-*.exe
