@@ -17,19 +17,24 @@
 #
 server ftp://ftp.cs.tu-berlin.de/pub/gnu
 
+# checked: 2012-03-28 wk - No newer W32 binaries available
 file gettext/gettext-runtime-0.13.1.bin.woe32.zip
 chk  8cd55585429b5d696ac3745e065f8613de26f19c
 file gettext/gettext-0.13.1.tar.gz
 chk  fa46cb397cf6768f5ff4fdf1854514a9ced5b02b
 
+# checked: 2012-03-28 wk - No newer W32 binaries available
 file libiconv/libiconv-1.9.1.bin.woe32.zip
 chk  b57f5e8234975ec3cde340e101886135eb532329
 file libiconv/libiconv-1.9.1.tar.gz
 chk  f130c93fdf20903ca21bace8b8822f46468c9d65
 
-
+#
+# zlib
+#
 server http://zlib.net
 
+# checked: 2012-03-28 wk - 1.2.6 is not required
 file zlib-1.2.5.tar.gz
 chk  8e8b93fa5eb80df1afe5422309dca42964562d7e
 
@@ -71,9 +76,10 @@ chk   fffb34be2e3c66e58a5d3daaf8aa38cae33b284f
 #
 # libxml2 for Claws plugins
 
+# checked: 2012-03-28 wk - updated
 server ftp://xmlsoft.org/libxml2
-file   libxml2-2.7.2.tar.gz
-chk    750b2bcd4ee3bf8595baf97e1881f1a57b1ef363
+file   libxml2-2.7.8.tar.gz
+chk    859dd535edbb851cc15b64740ee06551a7a17d40
 
 #
 # regex for Claws
@@ -148,6 +154,7 @@ chk    c2cdb98f98f6ded5f70b19b0129ad217582935ac
 #
 server ftp://sources.redhat.com/pub
 
+# checked: 2012-03-28 wk
 file pthreads-win32/pthreads-w32-2-8-0-release.tar.gz
 chk  da8371cb20e8e238f96a1d0651212f154d84a9ac
 
@@ -273,6 +280,7 @@ chk  9f1bf652660076df7f70a855efc7eecbd1e8fced
 #
 server http://ftp.gnome.org/pub/gnome/binaries/win32/dependencies
 
+# checked: 2012-03-28 wk - Not updated - not a security problem
 name pkgconfig-0.23.tar.gz
 file pkg-config-0.23.tar.gz
 chk  b59dddd6b5320bd74c0f74b3339618a327096b2a
@@ -284,18 +292,22 @@ chk  d063e705812e1ee7feb8f35d51b3cad04ca13b0d
 
 # PNG
 
-server http://download.sourceforge.net/libpng
+# note: 2012-03-28 wk - Changed server from sf.net
+server ftp://ftp.simplesystems.org/pub/png/src
 
-file libpng-1.4.1.tar.gz
-chk  7a3488f5844068d67074f2507dd8a7ed9c69ff04
+# checked: 2012-03-28 wk - updated to latest 1.4.
+file libpng-1.4.10.tar.bz2
+chk  22d4aab84fd1a904e25117ca031cf0617ddb3c92
+
 
 #
 # GpgOL
 #
 server ftp://ftp.g10code.com/g10code/gpgol
 
-file gpgol-1.1.2.tar.bz2
-chk  de18deed0a4c199b2566287eea94a918ea4e2fc8 
+# checked: 2012-03-28 wk - Updated
+file gpgol-1.1.3.tar.bz2
+chk  dfeab6c99dff97ee8bedc6d428e220c11b565e9f
 
 
 #
@@ -303,6 +315,7 @@ chk  de18deed0a4c199b2566287eea94a918ea4e2fc8
 #
 server ftp://ftp.g10code.com/g10code/gpgex
 
+# checked: 2012-03-28 wk
 file gpgex-0.9.7.tar.bz2
 chk  02ee561282ffd4a893e87be82a4a85b0435bc470
 
@@ -311,8 +324,9 @@ chk  02ee561282ffd4a893e87be82a4a85b0435bc470
 # Pth emulation
 #
 
-#server ftp://ftp.g10code.com/g10code/scratch
 server ftp://ftp.g10code.com/g10code/w32pth
+
+# checked: 2012-03-28 wk - still sufficient
 file w32pth-2.0.2.tar.bz2
 chk  9f43acb64867fb54b456f8a1187307ceb7bdf183
 
@@ -321,6 +335,7 @@ chk  9f43acb64867fb54b456f8a1187307ceb7bdf183
 #
 server ftp://ftp.g10code.com/g10code/bzip2
 
+# checked: 2012-03-28 wk
 file bzip2-1.0.6-g10.tar.gz
 chk  6e38be3377340a21a1f13ff84b5e6adce97cd1d4
 
@@ -329,53 +344,62 @@ chk  6e38be3377340a21a1f13ff84b5e6adce97cd1d4
 #
 server ftp://ftp.gnupg.org/gcrypt
 
-#file libgpg-error/libgpg-error-1.9.tar.bz2
-#chk 6836579e42320b057a2372bbcd0325130fe2561e
+# checked: 2012-03-28 wk
+file libgpg-error/libgpg-error-1.10.tar.bz2
+chk  95b324359627fbcb762487ab6091afbe59823b29
 
-file libksba/libksba-1.0.8.tar.bz2
-chk  268e424e94e62abb51eeca9c66d886dbee8455ab
+# checked: 2012-03-28 wk
+file libgcrypt/libgcrypt-1.5.0.tar.bz2
+chk  3e776d44375dc1a710560b98ae8437d5da6e32cf
 
-file libgcrypt/libgcrypt-1.4.6.tar.bz2
-chk  445b9e158aaf91e24eae3d1040c6213e9d9f5ba6
+# checked: 2012-03-28 wk
+file libksba/libksba-1.2.0.tar.bz2
+chk  0c4e593464b9dec6f53c728c375d54a095658230
 
-name gnupg2-2.0.17.tar.bz2
-file gnupg/gnupg-2.0.17.tar.bz2
-chk  41ef5460417ca0a1131fc730849fe3afd49ad2de
+# checked: 2012-03-28 wk
+file libassuan/libassuan-2.0.3.tar.bz2
+chk  2bf4eba3b588758e349976a7eb9e8a509960c3b5
 
+# checked: 2012-03-28 wk
+name gnupg2-2.0.19.tar.bz2
+file gnupg/gnupg-2.0.19.tar.bz2
+chk  190c09e6688f688fb0a5cf884d01e240d957ac1f
+
+# checked: 2012-03-28 wk
 file dirmngr/dirmngr-1.1.0.tar.bz2
 chk  a7a7d1432db9edad2783ea1bce761a8106464165
 
+# checked: 2012-03-28 wk
 file pinentry/pinentry-0.8.1.tar.gz
 chk  84a6940175b552a8562b4014f4661dec3ff10165
 
+# checked: 2012-03-28 wk
 file scute/scute-1.4.0.tar.bz2
 chk  e28141d2b03612c09512651795976c58ed3f8035
 
+# checked: 2012-03-28 wk
+file gpgme/gpgme-1.3.1.tar.bz2
+chk  7d19a95a2239da13764dad7f97541be884ec5a37
+
 # (Snapshots)
-server ftp://ftp.g10code.com/g10code/scratch
+# server ftp://ftp.g10code.com/g10code/scratch
 
-file libassuan-2.0.2-git5560095.tar.bz2
-chk  4fbbd43dce466e1c137ceec767492f588f9ac54c
-
-file gpgme-1.3.1-git2bdbe88.tar.bz2
-chk  dc843fe30e7e02d6ae895f17276c2d831ef65a9b
-
-file libgpg-error-1.10-svn249.tar.bz2
-chk  71c16e8475dc3a75ac58f2b80eae6ec2a2a7e4a1
 
 #
 #  GnuPG utilities
 #
 server http://www.jabberwocky.com/software/paperkey
 
-file paperkey-1.1.tar.gz
-chk  3953e853b8ee11ca476670e7f97e94a18bca83e3
+# checked: 2012-03-28 wk - updated
+file paperkey-1.2.tar.gz
+chk  069bb0bdba28682f9fedcd446ae5d1b7633b9788
 
 #
 # adns
 #
 server ftp://ftp.g10code.com/g10code/adns
 
+# checked: 2012-03-28 wk
 file adns-1.4-g10-2.tar.bz2
 chk  6255a7958dc9e735c3f76595cd973abca09c1f93
 
