@@ -137,7 +137,7 @@ if [ "$myhost" = "w32" ]; then
     fi
 
     $tsdir/configure --host=${host} --build=${build} --enable-maintainer-mode \
-                --disable-pkg-man_advanced_en  ${extraoptions} "$@"
+                     ${extraoptions} "$@"
     rc=$?
 
     exit $rc
