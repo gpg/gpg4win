@@ -1,19 +1,19 @@
-#!/bin/bash
+#!/bin/sh
 # download.sh - Download source and binary packages for GPG4Win.
 # Copyright (C) 2005, 2007 g10 Code GmbH
-# 
+#
 # This file is part of Gpg4win.
-# 
+#
 # Gpg4win is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 of the License, or
 # (at your option) any later version.
-# 
+#
 # Gpg4win is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
-# 
+#
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
@@ -29,10 +29,10 @@
 #
 #    # GnuPG stuff.
 #    server ftp://ftp.gnupg.org/gcrypt
-#    
+#
 #    file gnupg/gnupg-1.4.2.tar.gz
 #    chk  1234567890123456789012345678901234567890
-#    
+#
 
 
 usage()
@@ -42,6 +42,8 @@ Usage: $0 [OPTIONS]
 Options:
 	[--force]
         [--quiet]
+        [--ipv4]
+        [--ipv6]
 EOF
     exit $1
 }
@@ -49,6 +51,7 @@ EOF
 
 force=no
 quiet=no
+ipvx=
 #keep_list=no
 #sig_check=yes
 while [ $# -gt 0 ]; do
@@ -76,6 +79,12 @@ while [ $# -gt 0 ]; do
         --quiet)
             quiet=yes
             ;;
+        --ipv4)
+            ipvx="-4"
+            ;;
+        --ipv6)
+            ipvx="-6"
+            ;;
 	*)
 	    usage 1 1>&2
 	    ;;
@@ -84,7 +93,7 @@ while [ $# -gt 0 ]; do
 done
 
 
-WGET=wget
+WGET="wget $ipvx"
 
 # We used to download the packages.current list but it turned out that
 # this is too problematic: As there is no history of these files it is
@@ -115,12 +124,12 @@ name=
 [ -f '.#download.failed' ] && rm '.#download.failed'
 cat packages.current | \
 while read key value ; do
-    (( lnr++ ))
+    : $(( lnr = lnr + 1 ))
     [ -z "$key" ] && continue
     case "$key" in
      \#*)    ;;
-    server) 
-       server="$value" 
+    server)
+       server="$value"
        name=
        ;;
      name)
