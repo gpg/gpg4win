@@ -126,6 +126,11 @@ if test -z "$RELEASEHOST" ; then
 fi
 AC_SUBST(RELEASEHOST)
 
+# Substitutions to set generated files in a Emacs buffer to read-only.
+AC_SUBST(emacs_local_vars_begin, ['Local Variables:'])
+AC_SUBST(emacs_local_vars_read_only, ['buffer-read-only: t'])
+AC_SUBST(emacs_local_vars_end, ['End:'])
+
 # For development of this package it is useful to build without
 # creating the source installer (takes a long time).  This option may
 # be used to suppress creation of the source installer.

@@ -359,3 +359,7 @@ clean-gpg4win:
 	$(RM) -fR playground stamps
 
 .PHONY : all-gpg4win clean-stamps clean-gpg4win
+
+# @emacs_local_vars_begin@
+# @emacs_local_vars_read_only@
+# @emacs_local_vars_end@
