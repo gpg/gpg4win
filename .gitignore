@@ -27,6 +27,7 @@ src/mingwm10.dll
 /packages/*.tar.bz2
 /packages/*.zip
 /packages/*.tar.bz2
+/gpg4win-2.*.*-git???????/
 /packages/packages.current.sig
 /src/playground
 /src/stamps
