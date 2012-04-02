@@ -283,12 +283,6 @@ CLEANFILES = $(eps_compendium_files) $(eps_manual_files) \
 	     	 *.html *.html.d-stamp* *.html.d $(HTML_DIR)
 DISTCLEANFILES = version.tex
 
-clean:
-	rm -rf $(CLEANFILES)
-
-distclean:
-	rm -rf $(CLEANFILES) $(DISTCLEANFILES)
-
 pkgdata_DATA = 	gpg4win-compendium-de.pdf \
 				gpg4win-compendium-en.pdf
 
