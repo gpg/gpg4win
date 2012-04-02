@@ -206,6 +206,8 @@ AC_CHECK_PROGS(DVIPDF, dvipdf)
 AC_CHECK_PROGS(CONVERT, convert)
 AC_CHECK_PROGS(SHA1SUM, sha1sum)
 AC_CHECK_PROGS(MSGFMT, msgfmt)
+AC_CHECK_PROGS(GITLOG_TO_CHANGELOG, gitlog-to-changelog,
+               [build-aux/gitlog-to-changelog])
 AC_PROG_INSTALL
 
 missing_tools=

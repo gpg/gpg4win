@@ -20,10 +20,6 @@ ACLOCAL_AMFLAGS = -I m4
 AUTOMAKE_OPTIONS = dist-bzip2 no-dist-gzip
 DISTCHECK_CONFIGURE_FLAGS = --host=i586-mingw32msvc --disable-pkg-man_advanced_en
 
-# (A suitable gitlog-to-changelog script can be found in GnuPG master.)
-GITLOG_TO_CHANGELOG=gitlog-to-changelog
-
-
 SUBDIRS = po packages include doc src
 
 EXTRA_DIST = autogen.sh README.SVN ONEWS \
