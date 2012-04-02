@@ -19,7 +19,8 @@
 
 EXTRA_DIST = nsi-mode.el pkg-copyright.txt beta-warning.txt HACKING\
 	     README.ar.txt README.de.txt README.en.txt README.es.txt \
-	     README.fr.txt README.ru.txt README.pt.txt
+	     README.fr.txt README.ru.txt README.pt.txt \
+	     HOWTO-SMIME.en.txt HOWTO-SMIME.de.txt
 
 if BUILD_MANUALS
 manual = manual

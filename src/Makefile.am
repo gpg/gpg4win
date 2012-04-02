@@ -90,10 +90,15 @@ gpg4win_readme_ll = en de ar es fr ru pt
 
 README_files = $(addsuffix .txt,$(addprefix README.,$(gpg4win_readme_ll)))
 
+gpg4win_howto_smime_ll = en de
+
+HOWTO_files = $(addsuffix .txt, \
+                $(addprefix HOWTO-SMIME.,$(gpg4win_howto_smime_ll)))
+
 foosum_exe = sha1sum.exe md5sum.exe sha256sum.exe
 
 # Need to clean the dll because we bypassed automake.
-CLEANFILES = g4wihelp.dll versioninfo.txt $(README_files) \
+CLEANFILES = g4wihelp.dll versioninfo.txt $(README_files) $(HOWTO_files) \
              installer-options.ini NEWS.tmp versioninfo.tmp \
 	     gpgwrap.exe gpgwrap-2.exe kleowrap.exe $(foosum_exe)
 
@@ -503,14 +508,16 @@ installer-options.ini : $(top_srcdir)/src/installer-options.ini.in
 gpg4win-$(VERSION).exe: gpg4win.nsi $(common_nsi) stamps/stamp-final \
                         g4wihelp.dll gpgwrap.exe gpgwrap-2.exe kleowrap.exe \
 		        $(foosum_exe) \
-			$(README_files) installer-options.ini versioninfo.txt
+			$(README_files) $(HOWTO_files) \
+                        installer-options.ini versioninfo.txt
 	$(MAKENSIS) -V3 -DBUILD_DIR=`pwd` -DTOP_SRCDIR=$(top_srcdir) \
            -DSRCDIR=$(srcdir) $(EXTRA_MAKENSIS_FLAGS) $(srcdir)/gpg4win.nsi
 
 gpg4win-light-$(VERSION).exe: gpg4win.nsi $(common_nsi) stamps/stamp-final \
                         g4wihelp.dll gpgwrap.exe gpgwrap-2.exe kleowrap.exe \
 		        $(foosum_exe) \
-			$(README_files) installer-options.ini versioninfo.txt
+			$(README_files) $(HOWTO_files) \
+			installer-options.ini versioninfo.txt
 	$(MAKENSIS) -V3 -DBUILD_DIR=`pwd` -DTOP_SRCDIR=$(top_srcdir) \
            -DSRCDIR=$(srcdir) $(EXTRA_MAKENSIS_FLAGS) \
            -DGPG4WIN_LIGHT=1 $(srcdir)/gpg4win.nsi
@@ -518,7 +525,8 @@ gpg4win-light-$(VERSION).exe: gpg4win.nsi $(common_nsi) stamps/stamp-final \
 gpg4win-vanilla-$(VERSION).exe: gpg4win.nsi $(common_nsi) stamps/stamp-final \
                         g4wihelp.dll gpgwrap.exe gpgwrap-2.exe \
 		        $(foosum_exe) \
-			$(README_files) installer-options.ini versioninfo.txt
+			$(README_files) $(HOWTO_files) \
+		        installer-options.ini versioninfo.txt
 	$(MAKENSIS) -V3 -DBUILD_DIR=`pwd` -DTOP_SRCDIR=$(top_srcdir) \
            -DSRCDIR=$(srcdir) $(EXTRA_MAKENSIS_FLAGS) \
            -DGPG4WIN_VANILLA=1 $(srcdir)/gpg4win.nsi
@@ -526,7 +534,8 @@ gpg4win-vanilla-$(VERSION).exe: gpg4win.nsi $(common_nsi) stamps/stamp-final \
 gpg4win-$(VERSION).wix: gpg4win.nsi $(common_nsi) stamps/stamp-final \
 			gpgwrap.exe gpgwrap-2.exe kleowrap.exe \
 		        $(foosum_exe) \
-			$(README_files) versioninfo.txt
+			$(README_files) $(HOWTO_files) \
+			versioninfo.txt
 	perl make-msi.pl --guids $(srcdir)/make-msi.guids \
 		--manifest gpg4win-$(VERSION).files \
 		-DBUILD_DIR=. -DTOP_SRCDIR=$(top_srcdir) \
@@ -535,7 +544,8 @@ gpg4win-$(VERSION).wix: gpg4win.nsi $(common_nsi) stamps/stamp-final \
 gpg4win-light-$(VERSION).wix: gpg4win.nsi $(common_nsi) stamps/stamp-final \
 			gpgwrap.exe gpgwrap-2.exe kleowrap.exe \
 		        $(foosum_exe) \
-			$(README_files) versioninfo.txt
+			$(README_files) $(HOWTO_files) \
+		        versioninfo.txt
 	perl make-msi.pl --guids $(srcdir)/make-msi.guids \
 		--manifest gpg4win-light-$(VERSION).files \
 		-DBUILD_DIR=. -DTOP_SRCDIR=$(top_srcdir) \
@@ -544,7 +554,8 @@ gpg4win-light-$(VERSION).wix: gpg4win.nsi $(common_nsi) stamps/stamp-final \
 gpg4win-vanilla-$(VERSION).wix: gpg4win.nsi $(common_nsi) stamps/stamp-final \
 			gpgwrap.exe gpgwrap-2.exe kleowrap.exe \
 		        $(foosum_exe) \
-			$(README_files) versioninfo.txt
+			$(README_files) $(HOWTO_files) \
+                        versioninfo.txt
 	perl make-msi.pl --guids $(srcdir)/make-msi.guids \
 		--manifest gpg4win-vanilla-$(VERSION).files \
 		-DBUILD_DIR=. -DTOP_SRCDIR=$(top_srcdir) \
