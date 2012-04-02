@@ -1,18 +1,18 @@
 # Makefile.am - Building the manuals
 # Copyright (C) 2005, 2008 g10 Code GmbH
-# 
+#
 # This file is part of GPG4Win.
-# 
+#
 # GPG4Win is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 of the License, or
 # (at your option) any later version.
-# 
+#
 # GPG4Win is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
-# 
+#
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
@@ -172,7 +172,7 @@ png_compendium_files = \
 	images-compendium/smime-icon.png \
 	images-compendium/tangled-schlapphut.png \
 	images-compendium/think-passphrase.png \
-	images-compendium/verleihnix.png 
+	images-compendium/verleihnix.png
 
 png_manual_files = \
 	images-manual/adele01.png \
@@ -273,51 +273,51 @@ eps_manual_files = $(png_manual_files:.png=.eps)
 
 
 EXTRA_DIST = 	gpg4win-compendium-de.tex \
-				gpg4win-compendium-en.tex \
-				fdl.tex fdl-book.tex version.tex.in indexstyle.ist \
-				$(png_compendium_files) $(png_hyperlatex_files) 
+		gpg4win-compendium-en.tex \
+		fdl.tex fdl-book.tex version.tex.in indexstyle.ist \
+		hyperlatex.sty \
+		$(png_compendium_files) $(png_hyperlatex_files)
 
 CLEANFILES = $(eps_compendium_files) $(eps_manual_files) \
              *.dvi *.pdf *.pdf *.toc *.log *.aux *.out *.idx *.ilg *.ind \
 	     	 *.html *.html.d-stamp* *.html.d $(HTML_DIR)
 DISTCLEANFILES = version.tex
 
-clean: 
+clean:
 	rm -rf $(CLEANFILES)
 
 distclean:
 	rm -rf $(CLEANFILES) $(DISTCLEANFILES)
 
 pkgdata_DATA = 	gpg4win-compendium-de.pdf \
-				gpg4win-compendium-en.pdf 
+				gpg4win-compendium-en.pdf
 
-BUILT_SOURCES = $(png_compendium_files) 
+BUILT_SOURCES = $(png_compendium_files)
 
 all-local: 	gpg4win-compendium-de.pdf \
-			gpg4win-compendium-en.pdf \
-			html
+		gpg4win-compendium-en.pdf
 
 gpg4win-compendium-de.pdf : version.tex
 gpg4win-compendium-en.pdf : version.tex
 gpg4win-compendium-de.dvi : version.tex $(eps_compendium_files)
 gpg4win-compendium-en.dvi : version.tex $(eps_compendium_files)
-gpg4win-compendium-de.html.d-stamp : version.tex 
-gpg4win-compendium-en.html.d-stamp : version.tex 
-	
+gpg4win-compendium-de.html.d-stamp : version.tex
+gpg4win-compendium-en.html.d-stamp : version.tex
+
 einsteiger.dvi : version.tex macros.tex $(eps_manual_files)
 einsteiger.html.d-stamp : version.tex macros.tex $(eps_manual_files)
 durchblicker.dvi : version.tex macros.tex $(eps_manual_files)
-durchblicker.html.d-stamp : version.tex macros.tex 
+durchblicker.html.d-stamp : version.tex macros.tex
 novices.dvi : version.tex macros-en.tex $(eps_manual_files)
-novices.html.d-stamp : version.tex macros-en.tex 
+novices.html.d-stamp : version.tex macros-en.tex
 
 
 %.eps : %.png
 	$(CONVERT) $< eps2:$@
 
-%.dvi : %.tex 
+%.dvi : %.tex
 	export MAKEINDEX='makeindex -g -s indexstyle.ist'; \
-	$(TEXI2DVI) `test -f '$<' || echo '$(srcdir)/'`$< 
+	$(TEXI2DVI) `test -f '$<' || echo '$(srcdir)/'`$<
 
 %.pdf : %.tex
 	export MAKEINDEX='makeindex -g -s indexstyle.ist'; \
@@ -333,12 +333,12 @@ dvi-en: gpg4win-compendium-en.dvi
 cleanhtml:
 	rm -rf $(HTML_DIR)
 
-html: 	cleanhtml html-de html-en html-images	
+html: 	cleanhtml html-de html-en html-images
 
-html-de: 
+html-de:
 	$(HYPERLATEX) gpg4win-compendium-de
 
-html-en: 
+html-en:
 	$(HYPERLATEX) gpg4win-compendium-en
 
 html-images:
@@ -358,7 +358,7 @@ html-images:
 
 # The html.d directories are used to collect all relevant files for
 # the NSI scripts.  This is also required because hyperlatex is not
-# able to work in VPATH environment. 
+# able to work in VPATH environment.
 %.html.d-stamp : %.tex
 	@rm -f $@.tmp
 	@touch $@.tmp
@@ -397,14 +397,14 @@ html-images:
 	 done ;\
 	 @mv -f $@.tmp $@
 
-online: html 
+online: html
 	set -e; \
 	echo "Going to put current compendium-html online for www.gpg4win.org ..."; \
 	user=`svn info | sed -n '/^URL:/ s,.*svn+ssh://\\([^@]*\\).*,\\1,p'`;\
 	echo user;\
 	rsync -rvz --delete $(HTML_DIR)/ $${user}@wald.intevation.org:/gpg4win/htdocs/doc/
 
-onlinedryrun: html 
+onlinedryrun: html
 	set -e; \
 	echo "(DRY RUN) Going to put current compendium-html online for www.gpg4win.org ..."; \
 	user=`svn info | sed -n '/^URL:/ s,.*svn+ssh://\\([^@]*\\).*,\\1,p'`;\
