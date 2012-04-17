@@ -161,72 +161,82 @@ chk  da8371cb20e8e238f96a1d0651212f154d84a9ac
 #
 # GLIB
 #
-server http://ftp.gnome.org/pub/gnome/sources/glib/2.24
+server http://ftp.gnome.org/pub/gnome/sources/glib/2.32
 
-file glib-2.24.0.tar.bz2
-chk  32714e64fff52d18db5f077732910215790e0c5b
+file glib-2.32.0.tar.xz
+chk  c4f9b6feb76b1b2364d6132fc55599d928622f0a
+
+#
+# GDK-PIXBUF
+#
+server http://ftp.gnome.org/pub/gnome/sources/gdk-pixbuf/2.26/
+
+file gdk-pixbuf-2.26.0.tar.xz
+chk  68ed80de9404bb47a5a29526bf4a8127bb8ddbae
+
 
 #
 # ATK
 #
-server http://ftp.gnome.org/pub/gnome/sources/atk/1.30
+server http://ftp.gnome.org/pub/gnome/sources/atk/1.32
 
-file atk-1.30.0.tar.bz2
-chk  ca9380e956e37275cb0cb72805d20306686fb885
+file atk-1.32.0.tar.bz2
+chk  876e88e4259d07bb7905d66c085a50a47e37f9e4
 
-server http://ftp.gnome.org/pub/gnome/binaries/win32/atk/1.30
+server http://ftp.gnome.org/pub/gnome/binaries/win32/atk/1.32
 
-name atk-1.30.0.zip
-file atk_1.30.0-1_win32.zip
-chk  542d772614266b7d18fa72b53ecd5abc82f938e3
+name atk-1.32.0.zip
+file atk_1.32.0-2_win32.zip
+chk  3c31c9d6b19af840e2bd8ccbfef4072a6548dc4e
 
-name atk-dev-1.30.0.zip
-file atk-dev_1.30.0-1_win32.zip
-chk  75913d22b51afe28c8a3057f6bf4b5b1aa2bf17d
+name atk-dev-1.32.0.zip
+file atk-dev_1.32.0-2_win32.zip
+chk  d0b8c53e01e4541d3d3befc82e41fb5b84949030
 
 #
 # PANGO
 #
-server http://ftp.gnome.org/pub/gnome/sources/pango/1.28
+server http://ftp.gnome.org/pub/gnome/sources/pango/1.29
 
-file pango-1.28.0.tar.bz2
-chk  b77fd452a59e4e11ee8b97193344c945250d5d37
+file pango-1.29.4.tar.bz2
+chk  3b4dfe317b328061893cf0728afebe292bbcc05b
 
-server http://ftp.gnome.org/pub/gnome/binaries/win32/pango/1.28
+server http://ftp.gnome.org/pub/gnome/binaries/win32/pango/1.29
 
-name pango-1.28.0.zip
-file pango_1.28.0-1_win32.zip
-chk  4f568017e07f42a9038139ea2355b0ae5bd2a70d
-name pango-dev-1.28.0.zip
-file pango-dev_1.28.0-1_win32.zip
-chk  aa2b8c03cc15c822b521481e583dbc310a6dae76
+name pango-1.29.4.zip
+file pango_1.29.4-1_win32.zip
+chk  3959319bd04fbce513458857f334ada279b8cdd4
+
+name pango-dev-1.29.4.zip
+file pango-dev_1.29.4-1_win32.zip
+chk  49ae12458f2e29c27ed9d1390d95db18fd4a49ac
+
 
 #
 # CAIRO
 #
 server http://cairographics.org/releases
 
-file cairo-1.8.10.tar.gz
-chk  fd5e8ca82ff0e8542ea4c51612cad387f2a49df3
+file cairo-1.10.2.tar.gz
+chk  ccce5ae03f99c505db97c286a0c9a90a926d3c6e
 
 server http://ftp.gnome.org/pub/gnome/binaries/win32/dependencies
 
-name cairo-1.8.10.zip
-file cairo_1.8.10-3_win32.zip
-chk  9c5c96ee58a179eed8eef14a6fc9941a1757a3d0
-name cairo-dev-1.8.10.zip
-file cairo-dev_1.8.10-3_win32.zip
-chk  b61baec95e9f03c0e4bff9782a76bb7081b6aa31
+name cairo-1.10.2.zip
+file cairo_1.10.2-2_win32.zip
+chk  d44cd66a9f4d7d29a8f2c28d1c1c5f9b0525ba44
+name cairo-dev-1.10.2.zip
+file cairo-dev_1.10.2-2_win32.zip
+chk  45cae1fac45a6c6f33498c37c0cdc47722614d92
 
-
-file freetype-2.3.12.tar.bz2
-chk  ebf0438429c0bedd310059326d91646c3c91016b
-name freetype-2.3.12.zip
-file freetype_2.3.12-1_win32.zip
-chk  9ee865e43df2c4bb3840bfbb930cfd19994d9f14
-name freetype-dev-2.3.12.zip
-file freetype-dev_2.3.12-1_win32.zip
-chk  44c0be6409ff9da1fe5818b7a16c0a54c984f59c
+file freetype-2.4.2.tar.bz2
+chk  cc257ceda2950b8c80950d780ccf3ce665a815d1
+name freetype-2.4.2.zip
+file freetype_2.4.2-1_win32.zip
+chk  c20ab9ff053fe59f73612fd392f6e6dc01af614a
+name freetype-dev-2.4.2.zip
+file freetype-dev_2.4.2-1_win32.zip
+chk  00e877d7ec7c416e2b48a392324a5502019a20bf
 
 server http://www.fontconfig.org/release
 
@@ -260,20 +270,10 @@ chk  2e9189c6c6d1dac847a47c537c7a5e9dffd91992
 #
 # GTK+
 #
-server http://ftp.gnome.org/pub/gnome/sources/gtk+/2.16
+server http://ftp.gnome.org/pub/gnome/sources/gtk+/2.24
 
-file gtk+-2.16.6.tar.bz2
-chk  f69cb48311d60664bac7cf68351c175c7a214ae6
-
-server http://ftp.gnome.org/pub/gnome/binaries/win32/gtk+/2.16
-
-name gtk+-2.16.6.zip
-file gtk+_2.16.6-2_win32.zip
-chk  012853e6de814ebda0cc4459f9eed8ae680e6d17
-
-name gtk+-dev-2.16.6.zip
-file gtk+-dev_2.16.6-2_win32.zip
-chk  9f1bf652660076df7f70a855efc7eecbd1e8fced
+file gtk+-2.24.10.tar.xz
+chk  baf5c73e186352cad767392a6b55840be0326ddc
 
 #
 # GIMP stuff for W32
@@ -298,6 +298,14 @@ server ftp://ftp.simplesystems.org/pub/png/src
 # checked: 2012-03-28 wk - updated to latest 1.4.
 file libpng-1.4.10.tar.bz2
 chk  22d4aab84fd1a904e25117ca031cf0617ddb3c92
+
+#
+# LibFFI
+#
+server ftp://sourceware.org/pub/libffi
+
+file libffi-3.0.10.tar.gz
+chk  97abf70e6a6d315d9259d58ac463663051d471e1
 
 
 #
