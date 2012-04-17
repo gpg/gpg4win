@@ -73,7 +73,8 @@ EXTRA_DIST = autogen.sh README.SVN ONEWS \
         patches/gpa-0.9.0/01-title-prop.patch \
 	patches/libetpan-0.57/01-gnutls_compat.patch \
         patches/scute-1.2.0/01-bugfixes.patch \
-        patches/scute-1.3.0/01-wsastartup.patch
+        patches/scute-1.3.0/01-wsastartup.patch \
+        patches/claws-mail-3.8.0cvs30/01-glib-h-only.patch
 
 copy-news:
 	cp NEWS doc/website/NEWS.last

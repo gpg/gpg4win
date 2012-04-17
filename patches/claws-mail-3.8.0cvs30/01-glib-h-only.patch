@@ -1,0 +1,23 @@
+#! /bin/sh
+patch -p0 -f $* < $0
+exit $?
+
+2012-04-17  Werner Koch  <wk@gnupg.org>
+
+        * src/common/defs.h [G_OS_WIN32]: Do not include an internal
+        glib header file directly.
+
+
+--- src/common/defs.h~  2011-10-31 21:51:36.000000000 +0100
++++ src/common/defs.h   2012-04-17 18:04:15.426077944 +0200
+@@ -26,10 +26,6 @@
+
+ #include <glib.h>
+
+-#ifdef G_OS_WIN32
+-#  include <glib/gwin32.h>
+-#endif
+-
+ #if HAVE_PATHS_H
+ #  include <paths.h>
+ #endif
