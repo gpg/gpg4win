@@ -158,7 +158,12 @@ while read key value ; do
        else
            echo -n "downloading \`$url' ..."
            if ${WGET} -c -q "$url" -O "$name" ; then
-               echo " okay"
+               if [ $(stat -c'%s' "$name" 2>/dev/null || echo 0) -eq 0 ]; then
+                 echo " FAILED (line $lnr)"
+                 echo "line $lnr: $url has zero length" >> '.#download.failed'
+               else
+                 echo " okay"
+               fi
            else
                echo " FAILED (line $lnr)"
                echo "line $lnr: downloading $url failed" >> '.#download.failed'
