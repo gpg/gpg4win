@@ -1,18 +1,18 @@
 # inst-gtk+.nsi - Installer snippet for gtk+.     -*- coding: latin-1; -*-
 # Copyright (C) 2005, 2008 g10 Code GmbH
-# 
+#
 # This file is part of GPG4Win.
-# 
+#
 # GPG4Win is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 of the License, or
 # (at your option) any later version.
-# 
+#
 # GPG4Win is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
-# 
+#
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
@@ -30,24 +30,36 @@ Section "-gtk+" SEC_gtk_
 !endif
   SetOutPath "$INSTDIR"
 !ifdef SOURCES
-  File "${gpg4win_pkg_gtk__src}"
+  File "${gpg4win_pkg_gtk_}"
 !else
-  File ${prefix}/bin/libgdk_pixbuf-2.0-0.dll
   File ${prefix}/bin/libgdk-win32-2.0-0.dll
   File ${prefix}/bin/libgtk-win32-2.0-0.dll
 
   File ${prefix}/bin/libgailutil-18.dll
-  File ${prefix}/bin/gdk-pixbuf-query-loaders.exe
   File ${prefix}/bin/gtk-query-immodules-2.0.exe
 
+  File ${prefix}/bin/gtk-update-icon-cache.exe.manifest
+  File ${prefix}/bin/gtk-update-icon-cache.exe
+
   SetOutPath "$INSTDIR\etc\gtk-2.0"
-  File ${prefix}/etc/gtk-2.0/gdk-pixbuf.loaders
-  File ${prefix}/etc/gtk-2.0/gtk.immodules
   File ${prefix}/etc/gtk-2.0/im-multipress.conf
 
   SetOutPath "$INSTDIR\lib\gtk-2.0\2.10.0\engines"
   File ${prefix}/lib/gtk-2.0/2.10.0/engines/libpixmap.dll
   File ${prefix}/lib/gtk-2.0/2.10.0/engines/libwimp.dll
+
+  SetOutPath "$INSTDIR\lib\gtk-2.0\2.10.0\immodules"
+  File ${prefix}/lib/gtk-2.0/2.10.0/immodules/im-am-et.dll
+  File ${prefix}/lib/gtk-2.0/2.10.0/immodules/im-thai.dll
+  File ${prefix}/lib/gtk-2.0/2.10.0/immodules/im-multipress.dll
+  File ${prefix}/lib/gtk-2.0/2.10.0/immodules/im-ti-er.dll
+  File ${prefix}/lib/gtk-2.0/2.10.0/immodules/im-cedilla.dll
+  File ${prefix}/lib/gtk-2.0/2.10.0/immodules/im-ti-et.dll
+  File ${prefix}/lib/gtk-2.0/2.10.0/immodules/im-ime.dll
+  File ${prefix}/lib/gtk-2.0/2.10.0/immodules/im-inuktitut.dll
+  File ${prefix}/lib/gtk-2.0/2.10.0/immodules/im-ipa.dll
+  File ${prefix}/lib/gtk-2.0/2.10.0/immodules/im-viqr.dll
+  File ${prefix}/lib/gtk-2.0/2.10.0/immodules/im-cyrillic-translit.dll
 
   SetOutPath "$INSTDIR\lib\gtk-2.0\modules"
   File ${prefix}/lib/gtk-2.0/modules/libgail.dll

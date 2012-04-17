@@ -7,12 +7,12 @@ dnl GPG4Win is free software; you can redistribute it and/or modify
 dnl it under the terms of the GNU General Public License as published by
 dnl the Free Software Foundation; either version 2 of the License, or
 dnl (at your option) any later version.
-dnl 
+dnl
 dnl GPG4Win is distributed in the hope that it will be useful,
 dnl but WITHOUT ANY WARRANTY; without even the implied warranty of
 dnl MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 dnl GNU General Public License for more details.
-dnl 
+dnl
 dnl You should have received a copy of the GNU General Public License
 dnl along with this program; if not, write to the Free Software
 dnl Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
@@ -110,7 +110,7 @@ AC_DEFUN([GPG4WIN_FIND],
     AS_IF([test -z "$2"], [_gpg4win_pat='$1-\([[0-9]].*\)'],
 	  [_gpg4win_pat="$2"])
 
-    # Frob pattern.  Regex party! 
+    # Frob pattern.  Regex party!
     [_gpg4win_glob=`echo "$_gpg4win_pat" | sed -e 's/\\\\(\(.*\)\\\\)/\1/'`]
     [_gpg4win_glob=`echo "$_gpg4win_glob" | sed -e 's/\\.\\*/*/'`]
 
@@ -120,6 +120,9 @@ AC_DEFUN([GPG4WIN_FIND],
     _gpg4win_format=both
     AS_IF([test ! -z "$3"], _gpg4win_format="$3")
 
+    AS_IF([test -z "$_gpg4win_file" -a $_gpg4win_format != zip],
+          [_gpg4win_file=`echo ${_gpg4win_dir}/${_gpg4win_glob}.tar.xz`
+           _gpg4win_suffix=.tar.xz])
     AS_IF([test -z "$_gpg4win_file" -a $_gpg4win_format != zip],
           [_gpg4win_file=`echo ${_gpg4win_dir}/${_gpg4win_glob}.tar.bz2`
            _gpg4win_suffix=.tar.bz2])
@@ -639,7 +642,7 @@ AC_DEFUN([GPG4WIN_BPKG_BINSRC],
                  $_gpg4win_pkg, _gpg4win_bpkg=$gpg4win_val, tmp_binsrc=no)
     if test $tmp_binsrc = no ; then
        GPG4WIN_FIND($1-source, [$1-\(.*\)-source],,
-                    $_gpg4win_pkg, _gpg4win_bpkg=$gpg4win_val, 
+                    $_gpg4win_pkg, _gpg4win_bpkg=$gpg4win_val,
                     AC_MSG_ERROR(can not find sources for package $1))
     fi
     # gpg4win_pkg_PKGNAME_src=FILENAME_OF_SOURCE

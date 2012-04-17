@@ -92,6 +92,9 @@
 !ifdef HAVE_PKG_LIBGPG_ERROR
 !include "inst-libgpg-error.nsi"
 !endif
+!ifdef HAVE_PKG_LIBFFI
+!include "inst-libffi.nsi"
+!endif
 !ifdef HAVE_PKG_GLIB
 !include "inst-glib.nsi"
 !endif
@@ -121,6 +124,9 @@
 !endif
 !ifdef HAVE_PKG_DIRMNGR
 !include "inst-dirmngr.nsi"
+!endif
+!ifdef HAVE_PKG_GDK_PIXBUF
+!include "inst-gdk-pixbuf.nsi"
 !endif
 !ifdef HAVE_PKG_GTK_
 !include "inst-gtk+.nsi"
@@ -287,6 +293,9 @@
 !ifdef HAVE_PKG_GTK_
 !include "uninst-gtk+.nsi"
 !endif
+!ifdef HAVE_PKG_GDK_PIXBUF
+!include "uninst-gdk-pixbuf.nsi"
+!endif
 !ifdef HAVE_PKG_DIRMNGR
 !include "uninst-dirmngr.nsi"
 !endif
@@ -316,6 +325,9 @@
 !endif
 !ifdef HAVE_PKG_GLIB
 !include "uninst-glib.nsi"
+!endif
+!ifdef HAVE_PKG_LIBFFI
+!include "uninst-libffi.nsi"
 !endif
 !ifdef HAVE_PKG_LIBGPG_ERROR
 !include "uninst-libgpg-error.nsi"

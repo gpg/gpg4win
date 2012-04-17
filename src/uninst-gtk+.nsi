@@ -1,18 +1,18 @@
 # uninst-gtk+.nsi - Installer snippet for gtk+.   -*- coding: latin-1; -*-
 # Copyright (C) 2005, 2008 g10 Code GmbH
-# 
+#
 # This file is part of GPG4Win.
-# 
+#
 # GPG4Win is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 of the License, or
 # (at your option) any later version.
-# 
+#
 # GPG4Win is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
-# 
+#
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
@@ -31,13 +31,14 @@ Section "-un.gtk+"
   Call un.SourceDelete
 !else
 
-  Delete "$INSTDIR\libgdk_pixbuf-2.0-0.dll"
   Delete "$INSTDIR\libgdk-win32-2.0-0.dll"
   Delete "$INSTDIR\libgtk-win32-2.0-0.dll"
 
   Delete "$INSTDIR\libgailutil-18.dll"
-  Delete "$INSTDIR\gdk-pixbuf-query-loaders.exe"
   Delete "$INSTDIR\gtk-query-immodules-2.0.exe"
+
+  Delete "$INSTDIR\gtk-update-icon-cache.exe.manifest"
+  Delete "$INSTDIR\gtk-update-icon-cache.exe"
 
   Delete "$INSTDIR\etc\gtk-2.0\gdk-pixbuf.loaders"
   Delete "$INSTDIR\etc\gtk-2.0\gtk.immodules"

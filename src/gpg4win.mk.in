@@ -67,6 +67,7 @@ define SETVARS
 	pkg_version_dev="$(1)-dev-$(call GETVAR,gpg4win_pkg_$(1)_version)"; \
 	pkgidir_dev="$(ipdir)/$$$${pkg_version_dev}";			\
 	pkgcfg="$(call GETVAR,gpg4win_pkg_$(1)_configure)";		\
+	pkgextracflags="$(call GETVAR,gpg4win_pkg_$(1)_extracflags)";	\
 	pkgmkargs="$(call GETVAR,gpg4win_pkg_$(1)_make_args)";          \
 	pkgmkargs_inst="$(call GETVAR,gpg4win_pkg_$(1)_make_args_inst)";\
 	export PKG_CONFIG="$(tsdir)/src/pkg-config";			\
@@ -86,6 +87,8 @@ define DEFLATE_macro
 	    $(TAR) xzf "$(1)" ;;	\
 	  *.tar.bz2 | *.tbz2 | *.tbz)	\
 	    $(TAR) xjf "$(1)" ;;	\
+	  *.tar.xz )          		\
+	    $(TAR) xJf "$(1)" ;;	\
 	  *.zip)			\
 	    $(UNZIP) -o "$(1)" ;;		\
 	esac
@@ -134,7 +137,7 @@ stamps/stamp-$(1)-02-configure: stamps/stamp-$(1)-01-patch
 		--prefix="$$$${pkgidir}"		\
 		--host=$(host_cpu)-$(host_os)		\
 		--build=$(build_cpu)-$(build_os)	\
-		$$$${pkgcfg} CFLAGS=-mms-bitfields)
+		$$$${pkgcfg} CFLAGS=\"-mms-bitfields $$$${pkgextracflags}\")
 	touch stamps/stamp-$(1)-02-configure
 
 stamps/stamp-$(1)-03-make: stamps/stamp-$(1)-02-configure

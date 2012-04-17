@@ -224,6 +224,28 @@ for i in DLLTOOL MAKE UNZIP TAR MKDIR CP RM STOW MAKENSIS ZCAT TEXI2DVI \
    fi
 done
 
+AC_CHECK_PROGS(GLIB_GENMARSHAL, glib-genmarshal)
+AC_CHECK_PROGS(GLIB_COMPILE_SCHEMAS, glib-compile-schemas)
+AC_CHECK_PROGS(GLIB_COMPILE_RESOURCES, glib-compile-resources)
+AC_CHECK_PROGS(GDK_PIXBUF_CSOURCE, gdk-pixbuf-csource)
+AC_CHECK_PROGS(GS, gs)
+# For the claws manual we need:
+AC_CHECK_PROGS(DOCBOOK2HTML, docbook2html)
+AC_CHECK_PROGS(DOCBOOK2TXT, docbook2txt)
+AC_CHECK_PROGS(DOCBOOK2PS, docbook2ps)
+AC_CHECK_PROGS(DOCBOOK2PDF, docbook2pdf)
+
+
+missing_opt_tools=
+for i in GLIB_GENMARSHAL GLIB_COMPILE_SCHEMAS GLIB_COMPILE_RESOURCES \
+         GDK_PIXBUF_CSOURCE GS \
+         DOCBOOK2PDF DOCBOOK2TXT DOCBOOK2PS DOCBOOK2PDF; do
+   eval tmp='$'$i
+   if test -z "$tmp"; then
+      missing_opt_tools="$missing_opt_tools `echo $i | tr 'A-Z' 'a-z'`"
+   fi
+done
+
 
 
 # Optional tools.
@@ -241,16 +263,18 @@ GPG4WIN_SPKG([zlib])
 GPG4WIN_BPKG_GNUWIN32([bsfilter])
 
 GPG4WIN_BPKG_GTK([pkgconfig])
-# We build our own version of glib, because we need to apply a few patches.
-# GPG4WIN_BPKG_GTK_DEV([glib], [pkgconfig])
-GPG4WIN_SPKG([glib], [libiconv gettext pkgconfig])
+
+GPG4WIN_SPKG([libffi], [pkgconfig])
+GPG4WIN_SPKG([glib], [libiconv gettext pkgconfig libffi zlib])
 GPG4WIN_BPKG_GTK_DEV([atk], [glib pkgconfig])
 GPG4WIN_BPKG_GTK_DEV([pango], [glib pkgconfig])
 GPG4WIN_BPKG_GTK_DEV([cairo], [glib pkgconfig])
 GPG4WIN_BPKG_GTK_DEV([expat])
 GPG4WIN_BPKG_GTK_DEV([freetype], [pkgconfig zlib])
 GPG4WIN_BPKG_GTK_DEV([fontconfig], [pkgconfig zlib expat])
-GPG4WIN_BPKG_GTK_DEV([gtk+], [libiconv gettext pkgconfig atk pango glib cairo])
+GPG4WIN_SPKG([gdk-pixbuf], [glib])
+GPG4WIN_SPKG([gtk+], [libiconv gettext pkgconfig atk pango dnl
+                      glib gdk-pixbuf cairo])
 GPG4WIN_SPKG([libpng], [pkgconfig])
 GPG4WIN_SPKG([enchant], [pkgconfig glib])
 
@@ -367,3 +391,17 @@ AC_CONFIG_FILES(doc/website/Makefile)
 AC_CONFIG_FILES(src/dictionaries/Makefile)
 AC_CONFIG_FILES(patches/gnupg2/01-version.patch)
 AC_OUTPUT
+
+# Throw a warning if optional tools are missing
+if test -n "$missing_opt_tools"; then
+    AC_MSG_WARN([[
+***
+*** Some tools not found.  They may or may not be needed depending on
+*** the packages you want to include.  For example GLIB and GTK+
+*** require certain tools; you may need to install a recent version of
+*** GLIB and GTK+ on the build machine to allow for cross-compiling.
+***]])
+    for i in $missing_opt_tools; do
+      AC_MSG_NOTICE([$i is missing])
+    done
+fi

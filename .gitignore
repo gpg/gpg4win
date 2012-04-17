@@ -27,6 +27,7 @@ src/mingwm10.dll
 /packages/*.tar.bz2
 /packages/*.zip
 /packages/*.tar.bz2
+/packages/*.tar.xz
 /gpg4win-2.*.*-git???????/
 /packages/packages.current.sig
 /src/playground
@@ -66,3 +67,5 @@ src/mingwm10.dll
 /src/versioninfo.txt
 /src/kleowrap.exe
 /src/gpg4win-*.exe
+/src/HOWTO-SMIME.de.txt
+/src/HOWTO-SMIME.en.txt
