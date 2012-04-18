@@ -22,7 +22,7 @@ DISTCHECK_CONFIGURE_FLAGS = --host=i586-mingw32msvc
 
 SUBDIRS = po packages include doc src
 
-EXTRA_DIST = autogen.sh README.SVN ONEWS \
+EXTRA_DIST = autogen.sh README.GIT ONEWS \
         build-aux/git-log-footer build-aux/git-log-fix \
         patches/pthreads-w32-2-8-0-release/01-make.patch \
         patches/glib-2.12.12/01-giowin32.patch \
