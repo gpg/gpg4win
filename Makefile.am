@@ -80,7 +80,9 @@ copy-news:
 	cp NEWS doc/website/NEWS.last
 
 
-copy-release: gpg4win-$(VERSION).tar.bz2 src/gpg4win-$(VERSION).exe
+copy-release: gpg4win-$(VERSION).tar.bz2 src/gpg4win-$(VERSION).exe \
+	      src/gpg4win-light-$(VERSION).exe \
+	      src/gpg4win-vanilla-$(VERSION).exe
 	@echo Copying $(VERSION) to $(RELEASEHOST) >&2
 	@set -e;\
 	if ssh "$$(echo $(RELEASEHOST)|cut -d: -f -1)" \
@@ -89,6 +91,7 @@ copy-release: gpg4win-$(VERSION).tar.bz2 src/gpg4win-$(VERSION).exe
 	else scp gpg4win-$(VERSION).tar.bz2 \
 	         src/gpg4win-$(VERSION).exe \
 	         src/gpg4win-light-$(VERSION).exe \
+	         src/gpg4win-vanilla-$(VERSION).exe \
 	         src/gpg4win-src-$(VERSION).exe  $(RELEASEHOST)/ ;\
 	     for f in en de ; do \
 	       scp src/README.$$f.txt \
