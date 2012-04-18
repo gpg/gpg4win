@@ -389,6 +389,12 @@ chk  e28141d2b03612c09512651795976c58ed3f8035
 file gpgme/gpgme-1.3.1.tar.bz2
 chk  7d19a95a2239da13764dad7f97541be884ec5a37
 
+# checked: 2012-04-18 wk
+file gpa/gpa-0.9.1.tar.bz2
+chk  a145ec27f9b66c58724bf70836446118c26d4c2e
+
+
+
 # (Snapshots)
 # server ftp://ftp.g10code.com/g10code/scratch
 
@@ -410,18 +416,6 @@ server ftp://ftp.g10code.com/g10code/adns
 # checked: 2012-03-28 wk
 file adns-1.4-g10-2.tar.bz2
 chk  6255a7958dc9e735c3f76595cd973abca09c1f93
-
-
-#
-# GPA
-#
-#server http://wald.intevation.org/frs/download.php
-#file 603/gpa-0.9.0.tar.bz2
-
-server ftp://ftp.g10code.com/g10code/scratch
-
-file gpa-0.9.1-svn1024.tar.bz2
-chk  1bee8fbf774316a66c122284e79391abf79ecca9
 
 
 #
