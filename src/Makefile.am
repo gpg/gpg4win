@@ -101,7 +101,8 @@ foosum_exe = sha1sum.exe md5sum.exe sha256sum.exe
 
 # Need to clean the dll because we bypassed automake.
 CLEANFILES = g4wihelp.dll versioninfo.txt $(README_files) $(HOWTO_files) \
-             installer-options.ini NEWS.tmp versioninfo.tmp \
+             installer-options.ini NEWS.tmp COMPONENTS-list.tmp \
+	     versioninfo.tmp \
 	     gpgwrap.exe gpgwrap-2.exe kleowrap.exe $(foosum_exe)
 
 # Supported source packages.
@@ -521,8 +522,13 @@ versioninfo.txt:
 	-rm versioninfo.tmp
 
 NEWS.tmp : $(top_srcdir)/NEWS
-	sed -e '/^#/d' <$(top_srcdir)/NEWS >NEWS.tmp
+	 awk '/^#/ {next} /^\(de\)/ {skip=1;next} /^[^[:space:]]/ {skip=0} \
+             !skip { sub(/^\(en\)/,"   *"); print }' \
+             <$(top_srcdir)/NEWS >NEWS.tmp
 
+COMPONENTS-list.tmp : $(top_srcdir)/NEWS
+	awk '/^~~~~~~~~~~~/ { ok++; next} ok==1 {print "    "$$0}' \
+            < $(top_srcdir)/NEWS > COMPONENTS-list.tmp
 
 installer-options.ini : $(top_srcdir)/src/installer-options.ini.in
 	cat $(top_srcdir)/src/installer-options.ini.in >installer-options.ini

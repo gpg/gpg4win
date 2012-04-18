@@ -37,39 +37,36 @@ start working with Gpg4win.
 Gpg4win supports these platforms:
   * Operating System: Windows XP (32/64), Vista (32/64), 7 (32/64)
   * MS Outlook: 2003, 2007
-  Note: Currently, there is no 64-bit support for GpgEX 
+  Note: Currently, there is no 64-bit support for GpgEX
   (see section 3, "Using GpgEX with Windows x64", for details)
 
 
 2. Changes
 ==========
-[The following issue numbers reference to https://issues.kolab.org/.]
 
 Included Gpg4win components in Version !VERSION! are:
-    GnuPG:          2.0.17
-    Kleopatra:      2.1.0 (2011-02-04)
-    GPA:            0.9.1-svn1024
-    GpgOL:          1.1.2
-    GpgEX:          0.9.7
-    Claws-Mail:     3.7.8cvs47
-    Kompendium DE:  3.0.0
-    Kompendium EN:  3.0.0-beta1
 
-New in Gpg4win version !VERSION! (!BUILD_ISODATE!):
-------------------------------------------
+!COMPONENTS!
+
+
+Detailed list of changes in version 2.1.0 (2011-03-15)
+------------------------------------------------------
+  [The bug numbers reference either http://bugs.gnupg.org or
+   https://issues.kolab.org/.]
+
 - Kleopatra:
   * recursive sign/encrypt of files and folders possible (see
     GnuPG Backend)
-  * Checksums 
+  * Checksums
     - Create/verify checksum by sha1sum, sha256sum, md5sum possible
       (see GnuPG Backend)
-    - create checksums for more than one files 
+    - create checksums for more than one files
       [kolab/issue4540]
     - Create/verify checksum entry to file menu of Kleopatra added
       [kolab/issue4464]
     - Create and verify dialogs of Kleopatra extended
       [kolab/issue4487]
-  * Conflict dialog 
+  * Conflict dialog
     - Certificate selection dialog now works context-sensitive
       (dependent on selecting sign, encrypt or sign/encrypt)
       [kolab/issue4492]
@@ -82,7 +79,7 @@ New in Gpg4win version !VERSION! (!BUILD_ISODATE!):
       replaced by new certificate selection dialog.
       [kolab/issue4213,4235]
   * Certificate lookup on certificate server
-    - Search for fingerprint or key-id shows new information dialog 
+    - Search for fingerprint or key-id shows new information dialog
       (some server requires 0x-Präfix in search string)
       [kolab/issue4453]
   * Certify OpenPGP certificates
@@ -91,19 +88,19 @@ New in Gpg4win version !VERSION! (!BUILD_ISODATE!):
     - Key-id in step 2 added
       [kolab/issue4460]
   * Several minor and medium (GUI) improvements:
-    - Kleopatra's main window: column 'fingerprint' with 'key-id' replaced 
+    - Kleopatra's main window: column 'fingerprint' with 'key-id' replaced
       [kolab/issue4542]
     - Show key-id always in 8-digit format
       [kolab/issue4659]
     - Decrypt/verify files dialog layout improved
-      [kolab/issue4662] 
+      [kolab/issue4662]
     - Export of secret X.509 certificats use new default (utf8) for
       passphrase charset
       [kolab/issue4454]
     - Import certificate without file type improved (content checker)
       [kolab/issue4457]
     - Fix certificate list in delete confirm dialog
-      [kolab/issue4459] 
+      [kolab/issue4459]
     - New context menu entry for deleting certificate added
       [kolab/issue4450]
     - OwnerTrust added to tooltips and certificate details
@@ -127,11 +124,11 @@ New in Gpg4win version !VERSION! (!BUILD_ISODATE!):
     - Option 'allow-mark-trusted' removed if gnupg provides
       'no-allow-mark-trusted'
   * SmartCard
-    - Improve initialize smart card process with Kleopatra 
+    - Improve initialize smart card process with Kleopatra
       [kolab/issue4519]
     - Detecting smartcard: Kleopatra's systemtray icon blinks after
       inserting X.509 card. Click starts learn card command or opens
-      nullpin dialog.
+      Null-PIN dialog.
       [kolab/issue4191]
     - Learn card commands suppress gpgsm error dialogs.
       [kolab/issue4126]
@@ -151,7 +148,7 @@ New in Gpg4win version !VERSION! (!BUILD_ISODATE!):
   * bzip2 updated (from 1.0.4 to 1.0.6)
   * Add better error code for missing certificates
   * (recursive) sign/encrypt of files and folders possible
-    [kolab/issue4298,4299,4300] 
+    [kolab/issue4298,4299,4300]
   * Create/verify checksum by sha1sum, sha256sum, md5sum
     possible via GpgEX
     [kolab/issue41634,294,4295,4296,4297,4321]
@@ -174,7 +171,7 @@ New in Gpg4win version !VERSION! (!BUILD_ISODATE!):
 - Pinentry:
   * Pinentry-qt4 hanger while signing e-mail fixed
     (update from 0.8.0 to 0.8.1)
-    [kolab/issue4302] 
+    [kolab/issue4302]
   * Change default: switch to QT4
     (GTK still enabled for gpg4win-light installer)
     [kolab/issue4378]
@@ -191,8 +188,8 @@ New in Gpg4win version !VERSION! (!BUILD_ISODATE!):
     (Publisher: "Intevation GmbH")
   * Portuguese translation added
 
-- Claws:
-  see http://www.claws-mail.org
+- Claws-Mail:
+  See http://www.claws-mail.org
 
 
 3. Known Bugs (and Workarounds)
@@ -239,7 +236,7 @@ New in Gpg4win version !VERSION! (!BUILD_ISODATE!):
   * Sending signed or encrypted messages via an Exchange based account
     does not yet work.
     [see https://bugs.g10code.com/gnupg/issue1102]
-    (Please note: Using SMTP with GpgOL and Exchange seems to be work.) 
+    (Please note: Using SMTP with GpgOL and Exchange seems to be work.)
 
   * Outlook2007 crashes after opening attachments of an encrypted message
     [see https://bugs.g10code.com/gnupg/issue1110]
@@ -253,10 +250,10 @@ New in Gpg4win version !VERSION! (!BUILD_ISODATE!):
     probability of this to happen, but not eliminate the issue.
     A solution is being worked on.
 
-- Using GpgEX with Windows x64:
+- Using GpgEX with 64 bit versions Windows:
 
-   * In some cases sign/encrypt or decrypt/verify via GpgEX doesn't work 
-     correctly (Kleopatra freezed). Then you should kill Kleopatra via 
+   * In some cases sign/encrypt or decrypt/verify via GpgEX doesn't work
+     correctly (Kleopatra freezed). Then you should kill Kleopatra via
      task manager and run the file crypto operation directly in Kleopatra
      (see file menu).
 
@@ -270,7 +267,7 @@ New in Gpg4win version !VERSION! (!BUILD_ISODATE!):
      click OK:
          C:\windows\syswow64\explorer.exe /separate
      Note: Adjust the path to your x64-based version of Windows if
-     necessary. 
+     necessary.
      This 'separate' command seems to be currently broken in Windows7/64bit.
      Alternatively you can use the file crypto operations of GpgEX
      directly via the file menu of Kleopatra.

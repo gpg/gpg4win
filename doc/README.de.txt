@@ -26,7 +26,7 @@ Inhalt:
 
 Hilfe bei der Installation und Benutzung von Gpg4win bietet Ihnen das
 Gpg4win-Kompendium. Sie finden es nach der Installation im
-Gpg4win-Startmenü unter 'Dokumentation' oder direkt online unter: 
+Gpg4win-Startmenü unter 'Dokumentation' oder direkt online unter:
 http://www.gpg4win.de/doc/de/gpg4win-compendium.html
 
 Falls Sie von Gpg4win 1.x oder einem andern Proramm auf Gpg4win 2.x
@@ -41,38 +41,37 @@ Gpg4win unterstützt folgende Plattformen:
   * Betriebssystem: Windows XP (32/64), Vista (32/64), 7 (32/64)
   * MS Outlook: 2003, 2007
   Wichtig: Das Explorer-Plugin 'GpgEX' bietet aktuell keine Unterstützung für
-  64-bit Explorer! (Details unter Abschnitt 3, Punkt "Probleme unter Windows x64")
+  64-bit Explorer!
+  (Details unter Abschnitt 3, Punkt "Probleme unter Windows x64")
 
 
 2. Änderungen
 =============
-[Die folgenden Fallnummern beziehen sich auf https://issues.kolab.org/.]
 
 Die integrierten Gpg4win-Komponenten in Version !VERSION! sind:
-    GnuPG:          2.0.17
-    Kleopatra:      2.1.0 (2011-02-04)
-    GPA:            0.9.1-svn1024
-    GpgOL:          1.1.2
-    GpgEX:          0.9.7
-    Claws-Mail:     3.7.8cvs47
-    Kompendium DE:  3.0.0
-    Kompendium EN:  3.0.0-beta1
 
-Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!):
-------------------------------------------
+!COMPONENTS!
+
+
+Ausführliche Liste der Änderungen in Version 2.1.0 (2011-03-15)
+---------------------------------------------------------------
+  [Die angegebenen Fehlernummern beziehen sich entweder auf
+   http://bugs/gnupg.org oder auf https://issues.kolab.org/.]
+
 - Kleopatra:
   * rekursives Signiern/Verschlüsseln von mehreren Dateien und
     Ordnern möglich (siehe GnuPG-Backend)
-  * Prüfsummen 
+  * Prüfsummen
     - Prüfsummen erstellen/überprüfen (mittels sha1sum, sha256sum,
       md5sum) möglich (siehe GnuPG-Backend)
-    - Prüfsummen erstellen für mehrere Dateien korrigiert 
+    - Prüfsummen erstellen für mehrere Dateien korrigiert
       [kolab/issue4540]
-    - Prüfsummen erstellen/überprüfen über das Datei-Menü von Kleopatra ermöglicht 
+    - Prüfsummen erstellen/überprüfen über das Datei-Menü von
+      Kleopatra ermöglicht
       [kolab/issue4464]
-    - Dialoge beim Erstellen/Überprüfen vergrößert 
+    - Dialoge beim Erstellen/Überprüfen vergrößert
       [kolab/issue4487]
-  * Konfliktdialog 
+  * Konfliktdialog
     - Zertifikatsauswahldialog nun kontextsensitiv (abhängig ob signiert,
       verschlüsselt oder signiert/verschlüsselt gewählt wurde)
       [kolab/issue4492]
@@ -85,7 +84,7 @@ Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!):
       von OpenPGP und S/MIME nun über neuen Zertifikatsauswahldialog möglich
       [kolab/issue4213,4235]
   * Zertifikatssuche auf Zertifiaktsserver
-    - Suche nach Fingerabdruck oder Schlüsselkennung: 
+    - Suche nach Fingerabdruck oder Schlüsselkennung:
       neuer Hinweisdialog (teiweise 0x-Präfix erforderlich)
       [kolab/issue4453]
   * Beglaubigen von OpenPGP-Zertifikaten
@@ -94,12 +93,13 @@ Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!):
     - Schlüsselklennung in Schritt 2 hinzugefügt
       [kolab/issue4460]
   * Diverse kleinere GUI-Verbesserungen
-    - Kleopatras Hauptfenster: Spalte 'Fingerabdruck' durch 'Schlüsselkennung' ersetzt 
+    - Kleopatras Hauptfenster:
+      Spalte 'Fingerabdruck' durch 'Schlüsselkennung' ersetzt
       [kolab/issue4542]
     - Schlüsselkennung konsistent 8-stellig darstellen
       [kolab/issue4659]
     - Datei-entschlüsseln/prüfen-Dialoglayout optimiert
-      [kolab/issue4662] 
+      [kolab/issue4662]
     - Export eines geheimen X.509-Zertifikats verwendet nun utf8 als
       Vorgabe für Passphrase-Zeichensatz
       [kolab/issue4454]
@@ -108,7 +108,7 @@ Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!):
       [kolab/issue4457]
     - Anzeigen von Zertifikaten im Löschen-Bestätigungsdialog
       korrigiert
-      [kolab/issue4459] 
+      [kolab/issue4459]
     - neuer Kontext-Menüeintrag zum Löschen von Zertifikaten
       [kolab/issue4450]
     - Vertrauen in den Zertifikatsinhaber/Benutzervertrauen nun in
@@ -133,11 +133,11 @@ Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!):
   * Kleopatra-Einrichten-S/MIME-Dialog:
     - 'allow-mark-trusted' Option entfernt, wenn gnupg 'no-allow-mark-trusted'
       anbietet
-  * SmartCard 
-    - Initialisierung einer X.509-Karte in Kleopatra verbessert 
+  * SmartCard
+    - Initialisierung einer X.509-Karte in Kleopatra verbessert
       [kolab/issue4519]
     - Blinkendes SystemTray Kleopatra-Icon beim Einlegen einer X.509
-      SmartCard. Klick startet learncard Befehl bzw. Nullpin Dialog.
+      SmartCard. Klick startet learncard Befehl bzw. Null-PIN Dialog.
       [kolab/issue4191]
     - Learncard Befehl unterdrückt nun gpgsm Fehlerdialog
       [kolab/issue4126]
@@ -149,7 +149,7 @@ Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!):
 - GnuPG-Backend:
   * aktualisiert auf gnupg 2.0.17
   * allow-mark-trusted aktiviert per Voreingestellung (no-allow-mark-trusted
-    eingeführt) 
+    eingeführt)
   * gpgme und libassuan aktualisiert (Anstieg von offenen Handles
     bei Kleopatra damit behoben, siehe [kolab/issue4705])
   * Automatischer Neustart des gpg-agent durch gpgconf korrigiert
@@ -157,13 +157,13 @@ Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!):
   * bzip2 aktualisiert (von 1.0.4 auf 1.0.6)
   * Fehlercode für fehlende Zertifikate hinzugefügt
   * (rekursives) Signiern/Verschlüsseln mit gpgtar
-    [kolab/issue4298,4299,4300] 
+    [kolab/issue4298,4299,4300]
   * Prüfsummen erstellen/überprüfen (mittels sha1sum, sha256sum,
     md5sum) über GpgEX möglich
     [kolab/issue41634,294,4295,4296,4297,4321]
   * Aktualisierung auf neues libassuan v2 Interface
-  * Diverse Stabilitätverbesserung 
-    [u.a.: kolab/issue4212] 
+  * Diverse Stabilitätverbesserung
+    [u.a.: kolab/issue4212]
 
 - GpgEX
   * (rekursives) Signiern/Verschlüsseln von mehreren Dateien und
@@ -181,7 +181,7 @@ Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!):
   * Pinentry-qt4-Hänger beim E-Mail-Signieren behoben
     (aktualisiert von 0.8.0 auf 0.8.1)
     [kolab/issue4302]
-  * Voreinstellung wieder umgestellt auf QT4 
+  * Voreinstellung wieder umgestellt auf QT4
     (für gpg4win-light-Installer weiterhin GTK aktiv)
     [kolab/issue4378]
   * DE: Übersetzung des Buttons 'Cancel' zu 'Abbrechen'
@@ -198,8 +198,8 @@ Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!):
     (Herausgeber "Intevation GmbH")
   * portugiesische Übersetzung hinzugefügt
 
-- Claws:
-  siehe http://www.claws-mail.org
+- Claws-Mail:
+  Siehe http://www.claws-mail.org
 
 
 3. Bekannte Probleme (und Abhilfe)
@@ -250,7 +250,8 @@ Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!):
   * Senden von signierten oder verschlüsselten Nachrichten über ein
     Exchange basiertes Konto funktioniert nicht.
     [siehe https://bugs.g10code.com/gnupg/issue1102]
-    (Hinweis: Beim verwenden von SMTP sollte das Senden mit GpgOL funktionieren.)
+    (Hinweis: Beim verwenden von SMTP sollte das Senden
+     mit GpgOL funktionieren.)
 
   * Outlook2007 stürzt beim Öffnen von Anhängen einer
     verschlüsselten Nachricht ab
@@ -285,12 +286,12 @@ Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!):
      Klicken Sie auf "Start" -> "Ausführen" und geben Sie folgenden
      Befehl ein:
         C:\windows\syswow64\explorer.exe /separate
-     Beachten Sie, dass Sie ggf. den Pfad zu Ihrer x64-basierten 
+     Beachten Sie, dass Sie ggf. den Pfad zu Ihrer x64-basierten
      Version von Windows anpassen müssen.
      Dieser 'separate'-Aufruf ist aktuell in Windows7/64bit defekt.
      Alternativ können Sie die Datei-Krypto-Operationen von GpgEX
      auch direkt über das Datei-Menü von Kleopatra erreichen.
- 
+
 
 4. Installation
 ===============
@@ -303,8 +304,8 @@ finden Sie im Anhang des Gpg4win-Komendiums:
 http://www.gpg4win.de/doc/de/gpg4win-compendium_35.html
 
 
-5. Versionshistorie
-===================
+5. Versionsgeschichte
+=====================
 
 Eine aktuelle deutschsprachige Übersicht der Änderungen finden Sie online
 unter http://www.gpg4win.de/change-history-de.html .  Im weiteren
@@ -317,7 +318,7 @@ finden Sie die Einträge aus der englischen NEWS Datei:
 ==============================================
 
 Zur Übersicht sind hier die Prüfsummen sowie die Namen der einzelnen
-Bestandteile aufgelistet. 
+Bestandteile aufgelistet.
 
 !VERSIONINFO!
 
@@ -342,7 +343,7 @@ Zur Übersicht folgt eine Liste der Copyright Erklärungen.
 
 
 
-Frohes GiPiGien,
+Viel Erfolg,
 
   Ihr Gpg4win Team
 
