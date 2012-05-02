@@ -385,14 +385,13 @@ chk  84a6940175b552a8562b4014f4661dec3ff10165
 file scute/scute-1.4.0.tar.bz2
 chk  e28141d2b03612c09512651795976c58ed3f8035
 
-# checked: 2012-03-28 wk
-file gpgme/gpgme-1.3.1.tar.bz2
-chk  7d19a95a2239da13764dad7f97541be884ec5a37
+# checked: 2012-05-02 wk
+file gpgme/gpgme-1.3.2.tar.bz2
+chk  5b5ebcc4dad46ced0e436a30f5542577536619c7
 
-# checked: 2012-04-18 wk
-file gpa/gpa-0.9.1.tar.bz2
-chk  a145ec27f9b66c58724bf70836446118c26d4c2e
-
+# checked: 2012-05-02 wk
+file gpa/gpa-0.9.2.tar.bz2
+chk  17caec5db3c77b99291b5ae91bc1dd94566f612c
 
 
 # (Snapshots)
