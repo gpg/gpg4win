@@ -17,6 +17,18 @@ PAGE_START
 
 <div id="main">
 
+
+<h2>Gpg4win 2.1.1 Beta</h2>
+
+<p>Aktuelle Vorabversion von Gpg4win 2.1.1 mit wichtigen Sicherheitsupdates der Gpg4win-Komponenten in verschiedenen Varianten:</p>
+<ul>
+<li><a href="http://files.gpg4win.org/Beta/gpg4win-2.1.1-git4a72a6e.exe">Full-Installer</a> (38 MByte)
+<li><a href="http://files.gpg4win.org/Beta/gpg4win-light-2.1.1-git4a72a6e.exe">Light-Installer</a> (15 MByte, ohne Kleopatra/Qt und Gpg4win-Kompendium)
+<li><a href="http://files.gpg4win.org/Beta/gpg4win-vanilla-2.1.1-git4a72a6e.exe">Vanilla-Installer</a> (4 MByte, nur GnuPG)
+<li><a href="http://files.gpg4win.org/Beta/gpg4win-2.1.1-git4a72a6e.tar.bz2">Quelltextpaket</a> (6 MByte)
+<li><a href="http://files.gpg4win.org/Beta/README-2.1.1-git4a72a6e.de.txt">README</a> 
+</ul>
+
 <h2>Gpg4win VERSION</h2>
 
 <p>Die Vollversion (inklusive des deutschen Gpg4win-Kompendiums) von Gpg4win VERSION
@@ -139,6 +151,18 @@ von <a href="http://ftp.heanet.ie/about/">HEAnet</a>)
    
 
 <div id="sidebar">
+    <h3>Gpg4win 2.1.1 Beta enthält:</h3>
+    <pre>
+<a href="http://www.gnupg.de/index.de.html">GnuPG</a> 2.0.19
+<a href="http://www.kde.org/applications/utilities/kleopatra/">Kleopatra</a> 2.1.0 (2011-02-04)
+<a href="http://www.gnupg.de/related_software/gpa/index.de.html">GPA</a> 0.9.1
+<a href="http://www.g10code.de/p-gpgol.html">GpgOL</a> 1.1.3
+<a href="http://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpgex.git;a=summary">GpgEX</a> 0.9.7
+<a href="http://www.claws-mail.org/">Claws Mail</a> 3.8.0cvs30
+<a href="doc/de/gpg4win-compendium.html">Kompendium (de)</a> 3.0.0
+<a href="doc/en/gpg4win-compendium.html">Compendium (en)</a> 3.0.0-beta1
+    </pre>
+    <p></p>
     <h3>Gpg4win VERSION enthält:</h3>
     <pre>
     SOFTWAREOVERVIEW
