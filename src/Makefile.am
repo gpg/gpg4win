@@ -189,8 +189,13 @@ gpg4win_pkg_libassuan_configure =  --silent \
 gpg4win_pkg_libksba_configure = --silent \
   --with-gpg-error-prefix=$(idir)
 
+# Using gpgsm with VirtualBox on AES-NI hardware crashes gpg-agent.
+# However, the Libgcrypt's regression tests work just fine.  I don't
+# have a windows instance on AES-NI, thus I can't currently debug
+# this. As a workaround we disable AES-NI for now.
 gpg4win_pkg_libgcrypt_configure = --silent \
-  --with-gpg-error-prefix=$(idir)
+  --with-gpg-error-prefix=$(idir) \
+  --disable-aesni-support
 
 gpg4win_pkg_adns_configure = --silent
 
