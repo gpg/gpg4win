@@ -228,7 +228,7 @@ LangString T_WelcomeTitleGpg4win ${LANG_ENGLISH} \
 # The About string as displayed on the first page.
 LangString T_AboutGpg4win ${LANG_ENGLISH} \
  "Gpg4win is a installer package for Windows for EMail and \
-  file encryption using the core componenent GnuPG for Windows. \
+  file encryption using the core component GnuPG for Windows. \
   Both relevant cryptography standards are supported, OpenPGP \
   and S/MIME. Gpg4win and the software included with Gpg4win \
   are Free Software."

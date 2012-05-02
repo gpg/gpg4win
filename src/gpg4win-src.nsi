@@ -1,18 +1,18 @@
 # gpg4win-src.nsi - Installer for GPG4Win sources.   -*- coding: latin-1; -*-
 # Copyright (C) 2005, 2007 g10 Code GmbH
-# 
+#
 # This file is part of Gpg4win.
-# 
+#
 # Gpg4win is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 of the License, or
 # (at your option) any later version.
-# 
+#
 # Gpg4win is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
-# 
+#
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
@@ -79,7 +79,7 @@ LangString T_WelcomeTitleGpg4winSrc ${LANG_ENGLISH} \
 # The About string as displayed on the first page.
 LangString T_AboutGpg4winSrc ${LANG_ENGLISH} \
  "Gpg4win is a installer package for Windows for EMail and \
-  file encryption using the core componenent GnuPG for Windows. \
+  file encryption using the core component GnuPG for Windows. \
   Both relevant cryptography standards are supported, OpenPGP \
   and S/MIME. Gpg4win and the software included with Gpg4win \
   are Free Software."
