@@ -29,8 +29,11 @@ m4_define([my_isgit], [yes])
 
 m4_define([git_revision], m4_esyscmd([git branch -v 2>/dev/null \
           | awk '/^\* / {printf "%s",$3}']))
+# We also define a decimal version of the git revision.
+m4_define([git_revision_dec],
+  m4_esyscmd_s([echo 0000$((0x$(echo ]git_revision[|head -c 4)))|tail -c 6]))
 m4_define([my_full_version],
-          [my_version[]m4_if(my_isgit,[yes],[-git[]git_revision])])
+          [my_version[]m4_if(my_isgit,[yes],[-[]git_revision_dec[]-beta])])
 AC_INIT([gpg4win],[my_full_version],[gpg4win-devel@wald.intevation.org])
 
 # Remember to update these version numbers also in the NEWS file.
@@ -54,7 +57,7 @@ MANUALINPROGRESS_EN=m4_if(my_isgit,[yes],["~and may have been further edited"])
 PACKAGE=$PACKAGE_NAME
 VERSION=$PACKAGE_VERSION
 GIT_REVISION=git_revision
-GIT_REVISION_DEC="$((0x$(echo git_revision | head -c 4)))"
+GIT_REVISION_DEC=git_revision_dec
 
 
 AC_CONFIG_SRCDIR(include/config.nsi.in)
