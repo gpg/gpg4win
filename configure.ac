@@ -21,16 +21,28 @@
 AC_PREREQ(2.59)
 min_automake_version="1.9.3"
 
-# Remember to change the version number immediately *after* a release.
-# Set my_isgit to "yes" for non-released code.
-# Right after a release the make target "copy-news" is to be called!
+# To build a release you need to create a tag with the version number
+# (git tag -s gpg4win-2.x.y) and run "./autogen.sh --force".  Please
+# bump the version number immediately after the release and do another
+# commit and push so that the git magic is able to work.
+#
+# After a release the make target "copy-news" is to be called as well!
 m4_define([my_version], [2.1.1])
-m4_define([my_isgit], [yes])
 
+# Below is m4 magic to extract and compute the git revision number,
+# the decimalized short revision number, a beta version string and a
+# flag indicating a development version (my_isgit). The latter works
+# by requiring the final tag in the repository.
 m4_define([git_revision], m4_esyscmd([git branch -v 2>/dev/null \
           | awk '/^\* / {printf "%s",$3}']))
-m4_define([my_full_version],
-          [my_version[]m4_if(my_isgit,[yes],[-git[]git_revision])])
+m4_define([git_revision_dec],
+          m4_esyscmd_s([echo $((0x$(echo ]git_revision[|head -c 4)))]))
+m4_define([git_betastring],
+          m4_esyscmd_s([git describe --match 'gpg4win-[0-9].*.*[0-9]' --long|\
+                        awk -F- '$3!=0{print"-beta"$3}']))
+m4_define([my_isgit],m4_if(git_betastring,[],[no],[yes]))
+m4_define([my_full_version],[my_version[]git_betastring])
+
 AC_INIT([gpg4win],[my_full_version],[gpg4win-devel@wald.intevation.org])
 
 # Remember to update these version numbers also in the NEWS file.
@@ -54,7 +66,7 @@ MANUALINPROGRESS_EN=m4_if(my_isgit,[yes],["~and may have been further edited"])
 PACKAGE=$PACKAGE_NAME
 VERSION=$PACKAGE_VERSION
 GIT_REVISION=git_revision
-GIT_REVISION_DEC="$((0x$(echo git_revision | head -c 4)))"
+GIT_REVISION_DEC=git_revision_dec
 
 
 AC_CONFIG_SRCDIR(include/config.nsi.in)
@@ -405,3 +417,10 @@ if test -n "$missing_opt_tools"; then
       AC_MSG_NOTICE([$i is missing])
     done
 fi
+
+echo "
+        $PACKAGE_NAME-$PACKAGE_VERSION prepared for make
+
+        Revision: ${GIT_REVISION}  (${GIT_REVISION_DEC})
+        Platform: $host
+"

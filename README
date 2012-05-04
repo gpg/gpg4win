@@ -128,6 +128,10 @@ example:
   1.0.1rc1          - The first release candidate for 1.0.1
   1.0.1-svn1240     - yet another snapshot
   1.0.1             - The final 1.0.1 release
+  2.1.1             - The final 2.1.1 release
+  2.1.1-beta88      - A snapshot before the 2.1.1 release.
+                      (The 88 in this example is the number of
+                       commits since the last release).
 
 The important point is that we bump up the version number before we do
 an release and append a suffix to mark it as a development version.
@@ -141,7 +145,7 @@ Copyright
 
 The entire Gpg4win package is
 
-  Copyright (C) 2005, 2006, 2007, 2008, 2009 g10 Code GmbH
+  Copyright (C) 2005, 2006, 2007, 2008, 2009, 2012 g10 Code GmbH
 
   GPG4Win is free software; you can redistribute it and/or modify it
   under the terms of the GNU General Public License as published by

@@ -24,13 +24,13 @@
 !define prefix ${ipdir}/gpa-${gpg4win_pkg_gpa_version}
 
 
-!ifndef GPG4WIN_VANILLA
+!ifdef GPG4WIN_VANILLA
   ${MementoUnselectedSection} "GPA" SEC_gpa
 !else
-!ifndef GPG4WIN_LIGHT
-  ${MementoUnselectedSection} "GPA" SEC_gpa
-!else
+!ifdef GPG4WIN_LIGHT
   ${MementoSection} "GPA" SEC_gpa
+!else
+  ${MementoUnselectedSection} "GPA" SEC_gpa
 !endif
 !endif
 
