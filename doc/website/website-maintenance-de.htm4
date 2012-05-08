@@ -14,7 +14,7 @@ PAGE_START
 <p>Eine regelmäßige Aufgabe ist die Aktualisierung der
 Gpg4win-Website. Die Pflege ist einfach, da
 vieles automatisiert ist. Was man beherrschen sollte: 
-einen Text-Editor, HTML, SSH und SVN.
+einen Text-Editor, HTML, SSH und GIT.
 </p>
 </div>
 
@@ -30,12 +30,14 @@ einen Text-Editor, HTML, SSH und SVN.
 <h2>Zunächst anonym reinschnuppern</h2>
 
 <ol>
-<li> Die Quellen zur Website anonym (also ohne Schreibrechte) auschecken:<br>
-     <code>svn checkout
-https://svn.wald.intevation.org/svn/gpg4win/trunk/doc/website/</code>
+<li> Die Quellen zur Website anonym (also ohne Schreibrechte) auschecken:
+     <pre>git clone git://git.gnupg.org/gpg4win.git</pre>
 
-<li> Die Website lokal bauen:<br>
-     <code>make -f buildhtml.mk</code><br>
+<li> Die Website lokal bauen:
+<pre>
+cd doc/website
+make -f buildhtml.mk
+</pre>
      und im Browser anschauen (z.B. Datei index-de.html).
 
 <li> Die README-Datei der Website lesen, nach belieben Änderungen vornehmen und die
@@ -63,27 +65,25 @@ und der Wunsch, dass man gerne mitmachen möchte, ist natürlich immer sinnvoll.
      <a href="http://wald.intevation.org/account/">hochladen</a>.
 
 <li> Die Quellen zur Website holen:<br>
-     <code>svn checkout svn+ssh://USER@svn.wald.intevation.org/gpg4win/trunk/doc/website</code><br>
-     wobei USER der Benutzername auf wald.intevation.de ist.
-
+     <code>git clone git://git.gnupg.org/gpg4win.git</code>
 
 </ol>
 
 <h2>Wie man die Website aktualisiert und online schaltet</h2>
 
 <ol>
-<li> Gewünschte Änderungen in dem per SVN geholten Verzeichnis
-     <code>trunk/doc/website</code> durchführen.
+<li> Gewünschte Änderungen in dem per git geholten Verzeichnis
+     <code>/doc/website</code> durchführen.
      Zum besseren Verständnis ggf. die dort liegende Datei <code>REAMDE</code> vorher
      durchlesen.
 <li> Lokale Version zum Anschauen herstellen:<br>
      <code>make -f buildhtml.mk</code><br>
      und im Browser anschauen.
 <li> Sind die Änderungen in Ordnung, sollte man sie noch mal prüfen:<br>
-     <code>svn diff | less</code><br>
-     und können dann mit möglichst sinnvollen Kommentaren ins SVN-Repository
-     hochgeladen werden:<br>
-     <code>svn commit</code><br>
+     <code>git diff | less</code><br>
+     und können dann mit möglichst sinnvollen Kommentaren ins git-Repository
+     hochgeladen werden (separate Schreibrechte nötig!):<br>
+<code>git commit</code> und <code>git push</code><br>
 <li> Der letzte Schritt ist das online schalten:<br>
      <code>make -f buildhtml.mk online</code><br>
 </ol>

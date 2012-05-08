@@ -73,27 +73,31 @@ there will arise bigger problems with the support of you language.
 This should work on basically any GNU/Linux or other unixoid system:
 
 <ol>
-<li> Get the sources for the website anonymously (without write access):<br>
-     <em>svn checkout https://svn.wald.intevation.org/svn/gpg4win/trunk/ gpg4win-trunk-anon</em>
+<li> Get the sources for the website anonymously (without write access):
 
-<li> Configure the whole package:<br>
-     <em>
-     cd gpg4win-trunk-anon<br>
-     ./autogen.sh<br>
-     ./configure --enable-maintainer-mode --host=i586-mingw32msvc<br>
-     </em>
+     <pre>git clone git://git.gnupg.org/gpg4win.git</pre>
 
-<li> Check the status of the translations:<br>
-     <em>cd po</em><br>
-     <em>make update-po</em><br>
+<li> Configure the whole package:
+
+<pre>
+cd gpg4win
+./autogen.sh
+./configure --enable-maintainer-mode --host=i586-mingw32msvc
+</pre>
+
+<li> Check the status of the translations:
+<pre>
+cd po
+make update-po
+</pre>
      <p>
      This will report about the total number of strings that
      are marked inside the source code for translation, about
      the number of fuzzy and untranslated strings. If only
      the number of translated messages is reported, there is
      nothing to do and you can stop for now (at a later
-     time you might want to "svn up" in the parent directory
-     of "po" and repeat the check).
+     time you might want to <code>git pull && git up</code>
+     and repeat the check).
      </p>
 
 <li> Edit the .po file to resolve fuzzy and missing translations

@@ -15,7 +15,7 @@ PAGE_START
 <p>The maintenance of the website is actually quite simply
 because many things are automized.
 What you should be (or should become) familiar with: a text editor,
-HTML, ssh and Subversions.</p> 
+HTML, ssh and GIT.</p> 
 </div>
 
 <div id="main">
@@ -32,19 +32,15 @@ HTML, ssh and Subversions.</p>
 <h2>Anonymously take a first look</h2>
 
 <ol>
-<li> Get the sources for the website anonymously (without write access):<br>
-     <em>svn checkout https://svn.wald.intevation.org/svn/gpg4win/trunk/ gpg4win-trunk-anon</em>
+<li> Get the sources for the website anonymously (without write access):
+     <pre>git clone git://git.gnupg.org/gpg4win.git</pre>
 
-<li> Configure the whole package:<br>
-     <em>
-     cd gpg4win-trunk-anon<br>
-     ./autogen.sh<br>
-     ./configure --enable-maintainer-mode --host=i586-mingw32msvc<br>
-     </em>
+<li> Build the website locally:
+<pre>
+cd doc/website
+make -f buildhtml.mk
+</pre>
 
-<li> Build the website locally:<br>
-     <em>cd doc/website</em><br>
-     <em>make -f buildhtml.mk</em><br>
      and open it in your browser (file index.html).
 
 <li> Read file README, make your changes, build the website
@@ -73,23 +69,16 @@ expression of interest to join the team is of course a good idea.
      it to wald.intevation.de
 
 <li> Get the source for the website:<br>
-     <em>svn checkout svn+ssh://USER@svn.wald.intevation.org/gpg4win/trunk/ gpg4win-trunk</em><br>
-     where USER is the user account at wald.intevation.de.
+     <code>git clone git://git.gnupg.org/gpg4win.git</code>
 
-<li> Configure the whole package:<br>
-     <em>
-     cd gpg4win-trunk<br>
-     ./autogen.sh<br>
-     ./configure --enable-maintainer-mode --host=i586-mingw32msvc<br>
-     </em>
 </ol>
 
 <h2>How to update the website and put it online</h2>
 
 <ol>
-<li> Apply your desired changes in the directory <em>gpg4win-trunk/doc/website</em>
+<li> Apply your desired changes in the directory <em>/doc/website</em>
      which you retrieved
-     via SVN. The file <em>REAMDE</em> in this directory will provide you some
+     via git. The file <em>REAMDE</em> in this directory will provide you some
      helpful hints.
 
 <li> Create local version:<br>
@@ -97,10 +86,10 @@ expression of interest to join the team is of course a good idea.
      and open file index.html in your browser.
 
 <li> Are your changes complete, check them again:<br>
-     <em>svn diff | less</em><br>
+     <code>git diff | less</code><br>
      and then upload them with some adequate comments
-     to the SVN repository:<br>
-     <em>svn commit</em><br>
+     to the git repository (write access required!):<br>
+     <code>git commit</code> and <code>git push</code><br>
 
 <li> The last step is to put the new version online:<br>
      <em>make -f buildhtml.mk online</em><br>
