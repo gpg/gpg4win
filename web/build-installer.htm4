@@ -1,0 +1,195 @@
+m4_dnl                                                        -*-html-*-
+m4_include(`template.m4')
+m4_dnl $Id$
+
+m4_define(`EN')
+m4_define(`DE_FILE', `build-installer-de.html')
+
+m4_define(`TITLE', `Building Gpg4win installer')
+m4_define(`MAIN', `community')
+
+PAGE_START
+
+<div id="intro">
+<h2>Building Gpg4win installer package</h2>
+<p>Learn how you can build the Gpg4win installer packages on your own.</p>
+</div>
+
+<div id="main">
+
+<h2>Conventional ".exe installer"</h2>
+
+<p>
+Building a new Gpg4win installer package is
+mostly automized. The build procedure can be executed
+on a GNU/Linux system or within a virtual maschine also
+on Windows and other systems.
+</p>
+
+<p>
+What you need is:
+</p>
+
+<ul>
+<li> <b>Build Gpg4win on GNU/Linux</b>:
+
+     <p>
+     In principle, any current GNU/Linux system is
+     sufficient as the base system. Some minor
+     adaptions might be necessary though.
+     The <a href="build-installer-gnulinux.html">specific
+     GNU/Linux guide</a> is tested with a Debian GNU/Linux 'Etch' 4.0 system.
+     <br>
+     Furthermore, you need at least 503 MByte on your harddisk
+     and a acceptable fast internet connection for downloading
+     about 60 MBytes.
+     </p>
+<li> <p>Build Gpg4win on Windows</b>:
+
+     <p>
+     In principle, any current Windows system is
+     sufficient as the base system. Some minor
+     adaptions might be necessary though.
+     The <a href="build-installer-on-vm.html">specific
+     Windows guide</a> is tested with Windows XP SP2.
+     <br>
+     Furthermore, you need at least 1.5 GByte on your harddisk
+     and a acceptable fast internet connection for downloading
+     about 360 MBytes.
+     </p>
+</ul>
+
+<h2>MSI Installer</h2>
+
+<b>Attention:</b> The Gpg4win MSI Installer is only supported since Gpg4win 1.9.0beta.
+
+<p>
+What you need is:
+</p>
+
+<ul>
+<li> A complete conventional installer as described above with the same version and
+     the contents as you want for the MSI package.
+
+<li> Perl 5 on the  GNU/Linux System.
+
+     <p>
+     On Debian GNU/Linux 4.0 you can install Perl 5 this way:<br>
+     <em># apt-get install perl</em>
+     </p>
+
+<li> A Windows XP SP2 system, with the following tools installed.
+
+<li> Windows Installer XML (WiX) toolset Version 3.0. This can be downloaded from
+     <a href="http://wix.sourceforge.net/">http://wix.sourceforge.net/</a>.
+
+<li> WiX requires the .NET Framework. Successfully tested is
+     <a href="http://www.microsoft.com/downloads/details.aspx?FamilyID=0856EACB-4362-4B0D-8EDD-AAB15C5E04F5"
+     >.NET 2.0</a>
+
+<li> Finally, you need a method to access the file tree where your built your conventional installer
+     from your Windows system
+     These could done via a SMB network connection  or simply by transferring the whole file
+     tree to Windows (attention: it is a couple of 100 MBytes). See also the section below.
+</ul>
+
+<p>
+Now you need to execute the following steps:
+</p>
+
+<ol>
+<li> Change into the src/ directory of the Gpg4win source code where you built the
+     conventional installer before (compare
+     <a href="build-installer-gnulinux.html">Build Gpg4win under GNU/Linux</a>):<br>
+     <em>$ cd src</em>
+
+<li> Execute make-msi.pl to create the required WiX source files:<br>
+     <em>$ make msi</em>
+
+<li> No change into the same directory ("src") on the Windows system
+     and execute script "make-msi.bat" to create the MSI package:</br>
+     <em>&gt; make-msi.bat gpg4win-Version.wix</em><br>
+     or</br>
+     <em>&gt; make-msi.bat gpg4win-light-Version.wix</em>
+
+     <p>where "Version" is the complete version number of the just created concentional installer, e.g.
+     "1.9.0-svn595". You will find the resulting .wix files in the same directory.</p>
+
+    <p>This routine assumes that WiX is installed in a default location.
+    In case it is not, you need to adapt the search path (PATH system variable).</p>
+
+<li> The MSI package is not ready and stored as file "gpg4win.msi".
+     You can install it in the following way:<br>
+     <em>&gt; msiexec /i gpg4win.msi</em><br>
+     and also de-install it:<br>
+     <em>&gt; msiexec /x gpg4win.msi</em>
+</ol>
+
+<h3>How to access the Gpg4win build files from Windows</h3>
+
+The WiX software requires access to the file tree where the
+conventional intaller was created.
+This is possible in many ways of which three opportunities are
+illustrated here.
+These are not step-by-step preocedures and thus need
+to be adapted for your individual environment.
+
+<ul>
+<li>Mounting a virtual ext3 build partition:
+  <p>
+    If you build Gpg4win as described on the
+    der <a href="build-installer-on-vm.html">special guide</a> for Windows
+    in a virtual GNU/Linux system, then the required file tree is located
+    inside a hard disk image named <code>build.img</code>.
+    It can be accessed directly from Windows with the free tools ext2fsd and FileDisk.
+  </p>
+  <p>
+    If ext2fsd and FileDisk are installed
+    <a href="build-installer-on-vm-de.html#I-2b">as described</a>,
+    you can mount the build partition <em>after shutdown of the virtual
+    GNU/Linux</em> with this command:
+  </p>
+  <pre>
+
+    filedisk /mount 0 C:\path\to\build.img H:
+
+  </pre>
+  <p>
+    Of course 'C:\path\to\build.img' needs to be replaced with the
+    actial path to the image file.
+    Now the build partition is available as drive H: on your Windows
+    system.
+  </p>
+
+<li>Ubuntu with VirtualBox and Samba:
+
+   <p>You can run Windows XP as a virtual maschine under VirtualBox
+   laufen and access the file tree via SMB by running a Smaba server on
+   the Linux host system.
+   Der file tree is accessable as a so-called "Share" (e.g. via
+   the right mouse button menu for the respective folder "gpg4win" in Nautilus).
+   After this, the network share can be a made available in Windows:<br>
+   <em>&gt; net use H: \\10.0.2.2\gpg4win</em><br>
+   Where H: is the drive letter to use and gpg4win
+   the name of the network share.
+   </p>
+
+<li>Using the archive tool "tar":
+
+    <p>A list of all required files is stored in the file make-msi.files by
+    the script make-msi.pl. This list can now be used to pack all required files
+    for transport:<br>
+    <em>$ cd gpg4win</em><br>
+    <em>$ tar -T src/gpg4win-Version.files cjf gpg4win-msi.tar.bz2</em>
+    </p>
+
+     <p>where "Version" should be the complete version numbe of the current installer,
+     e.g. "1.9.0-svn595". You will find the respective .files files
+     in directory "src".</p>
+
+   <p>Additional to gpg4win-msi.tar.bz you need src/gpg4win-Version.wix and
+   src/make-msi.bat on your Windows system. You should store them in the
+   respective src/ directory.
+</ul>
+
+</div>

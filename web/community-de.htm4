@@ -1,0 +1,131 @@
+m4_dnl                                                          -*-html-*-
+m4_include(`template.m4')
+m4_dnl $Id$
+
+m4_define(`DE')
+m4_define(`EN_FILE', `community.html')
+
+m4_define(`TITLE', `Gpg4win Gemeinschaft')
+m4_define(`MAIN', `community')
+
+PAGE_START
+
+<div id="intro">
+<h2>Gpg4win-Gemeinschaft</h2>
+<p>Wie jede Freie Software Initiative lebt auch
+Gpg4win davon, dass sich Interessierte engagieren und <a
+href="contribute-de.html">mitmachen</a>. Ein Schritt ist z.B. das <a
+href="reporting-bugs-de.html">Berichten von Problemen</a>.<br>
+Mit Gpg4win-Gemeinschaft können Sie über mehrere Medien
+kommunizieren: Mailinglisten, Webforen und IRC.</p>
+</div>
+
+<div id="main">
+<h2>Mailinglisten</h2>
+
+<p>Für die Gpg4win-Gemeinschaft gibt es derzeit nachfolgende
+Mailinglisten in deutscher und englischer Sprache.<br>
+<em>Hinweis:</em>
+Wenn Sie an eine Mailingliste schreiben wollen, sollten Sie diese
+abonniert haben. Dadurch vermeiden Sie, dass Ihre E-Mail auf die
+Bestätigung eines Moderators wartet.</p>
+
+<dl>
+  <dt><b>Gpg4win-announce-de</b></dt>
+  <dd>Bekanntmachungsliste (deutsch)<br>
+    <a
+href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-announce-de/">Abonnieren</a>
+| <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/">Archiv</a>
+  </dd>
+
+  <dt><b>Gpg4win-announce</b></dt>
+  <dd>Bekanntmachungsliste (englisch)<br>
+    <a
+href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-announce/">Abonnieren</a>
+| <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/">Archiv</a>
+  </dd>
+
+  <dt><b>Gpg4win-users-de</b></dt>
+  <dd>Anwenderliste (deutsch)<br>
+    <a
+href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-users-de/">Abonnieren</a>
+| <a href="http://lists.wald.intevation.org/pipermail/gpg4win-users-de/">Archiv</a>
+  </dd>
+
+  <dt><b>Gpg4win-users-en</b></dt>
+  <dd>Anwenderliste (englisch)<br>
+    <a
+href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-users-en/">Abonnieren</a>
+| <a href="http://lists.wald.intevation.org/pipermail/gpg4win-users-en/">Archiv</a>
+  </dd>
+
+  <dt><b>Gpg4win-devel</b></dt>
+  <dd>Entwicklerliste (englisch)<br>
+    <a
+href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-devel/">Abonnieren</a>
+| <a href="http://lists.wald.intevation.org/pipermail/gpg4win-devel/">Archiv</a>
+  </dd>
+
+  <dt><b>Gpg4win-commits</b></dt>
+  <dd>SVN-Commits für Entwickler (englisch)<br>
+    <a
+href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-commits/">Abonnieren</a>
+| <a href="http://lists.wald.intevation.org/pipermail/gpg4win-commits/">Archiv</a>
+  </dd>
+ </dl>
+
+
+<h2>Webforen</h2>
+
+<p>Alternativ zu den Mailinglisten können für Fragen und Diskussionen auch nachfolgende Gpg4win-Webforen
+genutzt werden. Beachten Sie, dass Sie zum Schreiben eines
+Beitrags <a href="http://wald.intevation.org/account/register.php">registiert</a> sein müssen.</p>
+
+<dl>
+  <dt><b>open-discussion-de</b></dt>
+  <dd>Forum für allgemeine Diskussionen (deutsch)<br>
+    <a
+href="http://wald.intevation.org/forum/forum.php?forum_id=83">Zum Forum >></a>
+  </dd>
+
+  <dt><b>open-discussion</b></dt>
+  <dd>Forum für allgemeine Diskussionen (englisch)<br>
+    <a
+href="http://wald.intevation.org/forum/forum.php?forum_id=20">Zum Forum >></a>
+  </dd>
+
+  <dt><b>help-de</b></dt>
+  <dd>Forum für Hilfe (deutsch)<br>
+    <a
+href="http://wald.intevation.org/forum/forum.php?forum_id=84">Zum Forum >></a>
+  </dd>
+
+  <dt><b>help</b></dt>
+  <dd>Forum für Hilfe (englisch)<br>
+    <a
+href="http://wald.intevation.org/forum/forum.php?forum_id=21">Zum Forum >></a>
+  </dd>
+
+
+<h2>IRC</h2>
+
+<p>Für den direkten Kontakt zwischen interessierten Gpg4win-Anwendern
+und -Entwicklern nutzen Sie IRC (ein textbasierter Chat):</p>
+
+<p>Netzwerk: <b>freenode</b><br>
+Kanal: <b>#gpg4win</b></p>
+
+<p><a
+href="irc://irc.freenode.net/#gpg4win">irc://irc.freenode.net/#gpg4win</a></p>
+</div>
+
+
+<div id="sidebar">
+    <h3>Benötigen Sie professionellen Support?</h3>
+
+    <p>Dann nutzen Sie den bezahlten Unterstützungsservice
+    von unseren Gpg4win Experten.</p>
+
+    <p>Erfahren Sie mehr über unseren
+    <a href="support-de.html">professionellen Gpg4win-Support</a>.</p>
+</div>

@@ -1,0 +1,97 @@
+m4_dnl                                                       -*-html-*-
+m4_include(`template.m4')
+m4_dnl $Id$
+
+m4_define(`EN')
+m4_define(`DE_FILE', `website-maintenance-de.html')
+
+m4_define(`MAIN', `community')
+m4_define(`TITLE', `Website maintenance')
+
+PAGE_START
+
+<div id="intro">
+<h2>Maintaining the Gpg4win website</h2>
+<p>The maintenance of the website is actually quite simply
+because many things are automized.
+What you should be (or should become) familiar with: a text editor,
+HTML, ssh and GIT.</p>
+</div>
+
+<div id="main">
+
+<h2>Typical tasks</h1>
+
+<p>Typical tasks of maintaining the website are:</p>
+<ul>
+<li> Update version of Gpg4win (occasioanlly, duration: ca. 15 minutes)
+<li> Fix typos (whenever you or someone else finds one, duration: few minutes)
+</ul>
+
+
+<h2>Anonymously take a first look</h2>
+
+<ol>
+<li> Get the sources for the website anonymously (without write access):
+     <pre>git clone git://git.gnupg.org/gpg4win.git</pre>
+
+<li> Build the website locally:
+<pre>
+cd doc/website
+make -f buildhtml.mk
+</pre>
+
+     and open it in your browser (file index.html).
+
+<li> Read file README, make your changes, build the website
+     again and reopen it in your browser.
+</ol>
+
+<h2>What to do initially to become an active team member</h2>
+
+A prior "Hello" on one of the Gpg4win mailing lists and your
+expression of interest to join the team is of course a good idea.
+
+<ol>
+<li> At <a href="http://wald.intevation.de">wald.intevation.de</a> you
+     should
+     <a href="http://wald.intevation.org/account/register.php">create
+     a user account</a>.<br>
+     This is established quickly because it is an automatic process.
+
+<li> <a href="http://wald.intevation.org/project/request.php?group_id=11"
+       >Request</a> membership for project Gpg4win.<br>
+     This takes a little time because one of the project administrators
+     has to answer the request.
+
+<li> Create a SSH key and
+     <a href="http://wald.intevation.org/account/">upload</a>
+     it to wald.intevation.de
+
+<li> Get the source for the website:<br>
+     <code>git clone git://git.gnupg.org/gpg4win.git</code>
+
+</ol>
+
+<h2>How to update the website and put it online</h2>
+
+<ol>
+<li> Apply your desired changes in the directory <em>/doc/website</em>
+     which you retrieved
+     via git. The file <em>REAMDE</em> in this directory will provide you some
+     helpful hints.
+
+<li> Create local version:<br>
+     <em>make -f buildhtml.mk</em><br>
+     and open file index.html in your browser.
+
+<li> Are your changes complete, check them again:<br>
+     <code>git diff | less</code><br>
+     and then upload them with some adequate comments
+     to the git repository (write access required!):<br>
+     <code>git commit</code> and <code>git push</code><br>
+
+<li> The last step is to put the new version online:<br>
+     <em>make -f buildhtml.mk online</em><br>
+</ol>
+</div>

@@ -1,0 +1,86 @@
+----------------------------------------------------------------------
+                           gpg4win Web Site
+----------------------------------------------------------------------
+
+INTRODUCTION:
+
+Getting the source:
+
+You can work on the website independently of the rest of gpg4win.
+First check out the website from SVN repository:
+
+  svn checkout svn+ssh://USER@svn.wald.intevation.org/gpg4win/trunk/doc/website
+
+where USER is you name at wald.intevation.org.
+If you are not a member of the gpg4win project at wald.intevation.org,
+you can also checkout anonymously:
+
+  svn checkout https://svn.wald.intevation.org/gpg4win/trunk/doc/website
+
+but of course you can not update the official website www.gpg4win.org
+this way.
+
+
+File organisation:
+
+The .html files are build from the *.htm4 files using GNU m4.  The
+*.htm4 files consist of mainly simple plain HTML and some macros
+implementing the overall page layout.
+
+The structure of the .htm4 files should be rather self explaining.
+
+
+BUILDING:
+
+Building the web site is _not_ incorporated into the autotools based
+build process.
+WARNING: you might need a latin1 locale for m4 to work correctly.
+
+To build to web sites use the file `buildhtml.mk':
+
+  make -f buildhtml.mk
+
+
+INSTALLING:
+
+To install the generated web site you need a gpg4win docwriter or
+developer account on wald.intevation.org.
+
+Installing is done from within the "doc/website" directory,
+just type:
+
+  make -f buildhtml.mk online
+
+You will have to enter the ssh password of your account at wald.intevation.org.
+
+If you are interested on web site management on wald.intevation.org
+in general, please read the online manual:
+http://wald.intevation.org/docman/view.php/1/34/project-websites.txt
+
+If you need the website as offline version for some other
+purposes just run:
+
+  make -f buildhtml.mk tar
+
+After thar you have the file "www.gpg4win.org.tar.gz".
+
+TEMPLATES:
+
+versions.m4 : Definitions of some macros, holding the current versions
+              of gpg4win and the included software packages.  If any
+              version changes this file should be changed accordingly.
+              This file is included by `template_header.m4'.
+              The current version numbers of the packages installed by
+              gpg4win can be found here:
+              ftp://ftp.gpg4win.org/gpg4win/packages.current
+
+template.m4 : Contains the definition of the main macros PAGE_START
+              and PAGE_BOXES as well as some helper macros normally
+              not used in the .htm4 files.  Authors should not need to
+              change this file.
+
+template_header.m4: Contains the actual page layout.  This file is
+                    included by `template.m4'.  Authors should not
+                    need to change this file, but if additional
+                    languages are added the navigation must be added
+                    in here.

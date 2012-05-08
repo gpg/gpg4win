@@ -1,0 +1,143 @@
+m4_dnl                                                           -*-html-*-
+m4_include(`template.m4')
+m4_dnl $Id$
+
+m4_define(`DE')
+m4_define(`EN_FILE', `about.html')
+m4_define(`about-de.html', `0')
+
+m4_define(`TITLE', `Über Gpg4win')
+m4_define(`MAIN', `about')
+
+PAGE_START
+
+<div id="intro">
+<h2>Über Gpg4win</h2>
+<p>Gpg4win (GNU Privacy Guard for Windows) ist ein
+Kryptografie-Werkzeugpaket zum Verschlüsseln und Signieren unter
+Windows.</p>
+</div>
+
+<div id="main">
+<h2>Was ist Gpg4win?</h2>
+
+<p>Mit Gpg4win kann jeder E-Mails, Dateien und Datei-Ordner einfach und
+kostenlos ver- und entschlüsseln, sowie ihre Integrität
+(Unverändertheit) und Herkunft (Authentizität) mittels digitaler
+Signaturen absichern und überprüfen.</p>
+
+<p>Gpg4win unterstützt die beiden relevanten kryptografischen Standards
+<b>OpenPGP</b> und <b>S/MIME (X.509)</b>. Gpg4win ist die offizielle
+GnuPG-Distribution für Windows und wird von den Entwicklern von GnuPG
+gepflegt. Gpg4win und die darin enthaltenen Komponenten sind <a
+href="http://fsfe.org/about/basics/freesoftware.en.html">Freie
+Software</a> (OSS). Alle Dialoge sind vollständig in deutscher Sprache
+verfügbar.</p>
+
+<p>Gpg4win wurde beauftragt vom
+<a href="http://www.bsi.bund.de">Bundesamt für Sicherheit in der Informationstechnik (BSI)</a>.
+
+<h2>Die Gpg4win-Kompenenten</h2>
+<p>Gpg4win ist ein Installationspaket für Windows und besteht aus
+verschiedenen Freien Software Komponenten, die wahlweise
+installiert werden können:</p>
+
+<ul>
+<li><b>GnuPG</b>
+ <p>Das Kernstück, das eigentliche Verschlüsselungsprogramm.</p>
+</li>
+<li><b>Kleopatra</b>
+ <p>Ein Zertifikatsmanager für OpenPGP und X.509 (S/MIME);
+  stellt einheitliche Benutzerführung für alle Krypto-Dialoge bereit.</p>
+</li>
+<li><b>GPA</b>
+ <p>Ein alternativer Zertifikatsmanager für OpenPGP und X.509.</p>
+</li>
+<li><b>GpgOL</b>
+ <p>Eine Programmerweiterung für Microsoft Outlook 2003 und 2007
+  (E-Mail-Verschlüsselung).</p>
+</li>
+<li><b>GpgEX</b>
+<p>Eine Programmerweiterung für den Microsoft Explorer
+  (Dateiverschlüsselung).</p>
+</li>
+<li><b>Claws Mail</b>
+<p>Ein komplettes E-Mail-Programm inklusive
+Programmerweiterung für GnuPG.</p>
+</li>
+<li><b>Gpg4win-Kompendium</b>
+<p>Die Dokumentation zu Gpg4win (für Einsteiger und
+Fortgeschrittene). Verfügbar in deutscher und englischer Sprache.</p>
+</li>
+</ul>
+
+<a name="requirements"></a>
+<h2>Systemvorausetzungen</h2>
+<p>Gpg4win ist lauffähig unter Windows XP, Vista und 7. 32 und 64bit Systeme werden
+unterstützt.</p>
+
+<p>Das Outlook-Plugin GpgOL ist kompatibel mit Microsoft Outlook 2003 und 2007.
+Outlook 2010 wird nicht unterstützt.</p>
+
+<p><b>Wichtig:</b> Das Windows-Explorer-Plugin GgpEX funktioniert
+derzeit nur auf 32bit Windows-Systemen.  Eine 64bit-Erweiterung ist in
+Arbeit. Unter Windows 64bit lassen sich alle Datei-Kryptofunktionen von
+GpgEX jedoch alternativ über das Datei-Menü von Kleopatra ausführen
+(z.B. Datei > Datei signieren/verschlüsseln).</p>
+
+
+<h2>Das Ziel der Gpg4win-Initiative</h2>
+<p>Die Gpg4win-Initiative hat das Ziel das
+Gpg4win-Windows-Installationspaket für die Verschlüsselungssoftware
+GnuPG sowie zugehörige Anwendungen kontinuierlich zu aktualisieren.
+Insbesondere wird die <a
+href="documentation-de.html">Dokumentation</a> (das
+"Gpg4win-Kompendium") direkt von den Gpg4win-Machern gepflegt.</p>
+
+<p>
+Ein weiteres zentrales Ziel ist die vereinigte Unterstützung
+für die beiden relevanten kryptografischen Standards OpenPGP
+und S/MIME.
+</p>
+
+<p>
+Gpg4win ist ein internationales Projekt, aufgrund der Herkunft
+des Projektes und vieler Beteiligter liegt eine
+vollständige deutsche Übersetzung vor.
+</p>
+
+<p>
+Der Hauptunterschied zu den bisherigen Ansätzen
+(vor allem GnuPP, GnuPT, Windows Privacy Tools und GnuPG-Basics)
+ist, dass zunächst der Gpg4win-Builder entwickelt wurde.
+Dieser erlaubt es, sehr leicht neue gpg4win.exe-Installer
+mit aktualisierten Komponenten herzustellen,
+und zwar auf einem GNU/Linux System. Fast alle Produkte
+werden dabei sogar automatisch per Cross-Compilation erstellt.
+</p>
+
+<p>
+Damit verbindet sich die Hoffnung, der schnellen Alterung von Installer-Paketen
+entgegenzuwirken, denn eine Aktualisierung wird deutlich einfacher
+und hängt eben nicht von einer Einzelperson ab.
+</p>
+
+<h2>Kurzstudie: Nachhaltige Freie Software</h2
+<p> Im Vorfeld der Beauftragung und Entwicklung von Gpg4win2 wurde
+eine Kurzstudie zum Thema <a
+href="Kurzstudie-Nachhaltige-FS-Beispiel-Gpg4win.html">"Nachhaltige
+Freie Software: Vom Projekt zur Dauertätigkeit am Beispiel
+Gpg4win"</a> verfasst.  </p>
+
+
+<h2>Funktionen & Screenshots</h2>
+
+<p>Lesen Sie weiter und erfahren Sie mehr über die umfangreichen <a href="features-de.html">Funktionen</a>
+von Gpg4win. Einen ersten Eindruck bekommen Sie von den <a href="screenshots-de.html">Screenshots</a>.
+</p>
+
+</div>
+
+<div id="sidebarsimple">
+    <img src="img/logo.png">
+</div>

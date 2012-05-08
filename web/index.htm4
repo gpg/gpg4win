@@ -1,0 +1,59 @@
+m4_dnl                                                       -*-html-*-
+m4_include(`template.m4')
+m4_dnl $Id: index.htm4,v 1.30 2006/01/12 16:04:03 jan Exp $
+
+m4_define(`EN')
+m4_define(`DE_FILE', `index-de.html')
+
+m4_define(`TITLE', `Secure email and file encryption with GnuPG for Windows')
+m4_define(`FANCY_HEADER')
+
+PAGE_START
+
+<div id="intro" style="float:left; padding-right:0; width:600px;">
+    <span></span>
+    <h2>Gpg4win - a secure solution...</h2>
+    <p>... for file and email encryption.
+    Gpg4win (GNU Privacy Guard for Windows) is Free Software and
+    can be installed with just a few mouse clicks.
+</p>
+</div>
+
+<div id="full">
+
+<div class="column1">
+<h4>Discover Gpg4win</h4>
+<p>
+Learn what Gpg4win is and read more about the features of our solution!
+</p>
+<a href="about.html">About Gpg4win »</a>
+</div>
+
+<div class="column2">
+<h4>Getting started</h4>
+<p>We help you to use Gpg4win. Learn the basics about Gpg4win and
+get in the world of cryptography.
+The best point to start is with the illustrative Gpg4win Compendium.
+</p>
+<p>
+<a href="./doc/en/gpg4win-compendium.html">Go to the Gpg4win Compendium »</a>
+</p>
+
+</p>
+</div>
+
+<div class="column3">
+<h4>Join the community</h4>
+<p>Gpg4win is Free Software. Join the community!
+We recommend subscribing to the
+<a href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-announce"
+>Gpg4win announcement mailing list</a>
+to be automatically informed about new releases and other
+important Gpg4win news.
+</p>
+<p>
+<a href="community.html">Go to the community »</a>
+</p>
+</div>
+
+</div>

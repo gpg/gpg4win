@@ -1,0 +1,107 @@
+m4_dnl                                                  -*-html-*-
+m4_include(`template.m4')
+m4_dnl $Id$
+
+m4_define(`EN')
+m4_define(`DE_FILE', `documentation-de.html')
+
+m4_define(`TITLE', `Documentation')
+m4_define(`MAIN', `doc')
+
+PAGE_START
+
+<div id="intro">
+<h2>Documentation</h2>
+<p>The Gpg4win Compendium is the perfect documentation to get in the world of
+cryptography. Using the example of Gpg4win you learn step by step the
+secure using of Kleopatra, GpgEX and GpgOL.</p>
+</div>
+
+<div id="main">
+<h2>Gpg4win Compendium</h2>
+
+<p>The "Gpg4win-Compendium" is the new end-user documentation for
+Gpg4win2. It combines the approximately 190 pages of the previously
+separate Gpg4win manuals "Einsteiger" and "Durchblicker". All chapters
+were reworked, extended, and updated to the new Gpg4win version 2.
+Among other enhancements, it now covers Kleopatra, GpgEX and PGP/MIME
+as well as S/MIME and X.509.
+</p>
+
+<p>Note: The English language version of the Gpg4win-Compendium is
+currently available as a <b>first beta version</b>.</p>
+
+<p>Translations based upon the German language version (or the final
+English language version) of the Gpg4win-compendium to any other
+language are very welcome! Please contact the <a
+href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-devel">
+Gpg4win developer mailing list</a> if you want to start with a new
+translation; in this case, please also read  <a
+href="localize-gpg4win.html">How to translate all of Gpg4win into
+your language</a>.
+</p>
+
+<p>After installation of the Gpg4win package, the Compendium (in PDF
+and HTML version, English and German) is available via start menu in
+the folder <em>Gpg4win->Documentation</em>.</p>
+
+The current PDF and HTML versions of the Gpg4win-Compendium are also available here:
+<div class="dlbutton2">
+<img src="img/dl_arrow.png" alt="" />
+<a href="DOWNLOAD_URL_COMPENDIUM_EN">Gpg4win Compendium COMPENDIUM_VERSION_EN (PDF, English)<br>
+<span class="version"><small>Size: DL_SIZE_COMPENDIUM_EN |
+Released: COMPENDIUM_DATE_EN</small></span>
+</a>
+</div>
+
+<div class="dlbutton2">
+<a href="./doc/en/gpg4win-compendium.html">Gpg4win Compendium COMPENDIUM_VERSION_EN (HTML, English)<br>
+<span class="version"><small>Released: COMPENDIUM_DATE_EN</small></span>
+</a>
+</div>
+
+<p>
+The German language version of the Gpg4win-Compendium (v3.0.0) is also
+available as a printed book with CD:
+</p>
+
+<p>
+<b>"Sicher E-Mail"</b><br>
+Paperback: 260 pages + CD<br>
+Price: 19,80 EUR<br>
+ISBN: 978-3-939316-79-4<br>
+Publisher: bomots / Brain-Media.de (2010)<br>
+Language: German<br>
+</p>
+
+
+<h2>Old Documentation</h2>
+<p>Please note: With Gpg4win2 and the new Gpg4win Compendium
+all following Gpg4win manuals are now <b>out of date</b> (and will no
+longer updated):
+
+<dl>
+  <dt><b>Gpg4win for Novices</b> (English translation of "Gpg4win für Einsteiger")</dt>
+  <dd>Last version: 1.0.0 (2006-11-30)<br>
+   <a href="http://wald.intevation.org/frs/?group_id=11">All
+PDF versions</a> | <a
+href="http://gpg4win.de/handbuecher/novices.html">Last HTML version</a>
+  </dd>
+  </dd>
+
+  <dt><b>Gpg4win für Einsteiger</b> (German)</dt>
+  <dd>Last version: 2.0.2 (2006-05-30)<br>
+    <a href="http://wald.intevation.org/frs/?group_id=11">All PDF
+versions</a> | <a
+href="http://gpg4win.de/handbuecher/einsteiger.html">Last HTML version</a>
+  </dd>
+
+  <dt><b>Gpg4win für Durchblicker</b> (German)</dt>
+  <dd>Last version: 2.0.2 (2006-05-30)<br>
+    <a href="http://wald.intevation.org/frs/?group_id=11">All
+PDF versions</a> |
+    <a href="http://gpg4win.de/handbuecher/durchblicker.html">Last
+HTML version</a>
+  </dd>
+</dl>
+</div>
