@@ -45,7 +45,7 @@ E.g. "de" is german language, "de_DE" is german language as used in Germany and
 <h4>Available languages</h4>
 
 <p>
-See the .po filenames in the <a href="http://wald.intevation.org/plugins/scmsvn/viewcvs.php/trunk/po/?root=gpg4win">Gpg4win
+See the .po filenames in the <a href="http://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpg4win.git;a=tree;f=po;hb=HEAD">Gpg4win
 po directory</a>. This is the most current status, so in case of relatively new files the most
 recent release of Gpg4win might not yet support it.
 </p>
@@ -127,7 +127,7 @@ Since the initial setup of the website (which supports two languages),
 no further languages have been added. Thus, there does not exist
 yet a practical guideline for this. However, you basically need to
 create a "-LL.htm4" file for any file in
-<a href="http://wald.intevation.org/plugins/scmsvn/viewcvs.php/trunk/doc/website/?root=gpg4win">doc/website</a>
+<a href="http://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpg4win.git;a=tree;f=doc/website;hb=HEAD">doc/website</a>
 that ends with "-de.htm4" (where LL is code of your language). Basis of the translation
 are the files without the LL suffix which are in fact the english
 defaults. Some further changes are needed for the website build process.
@@ -190,7 +190,7 @@ want to start with a new translation.
 <p>
 Basically you need to pick the German file
 <a
-href="http://wald.intevation.org/plugins/scmsvn/viewcvs.php/trunk/doc/manual/gpg4win-compendium-de.tex?root=gpg4win&view=log">doc/manual/gpg4win-compendium-de.tex</a> and
+href="http://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpg4win.git;a=blob;f=doc/manual/gpg4win-compendium-de.tex;hb=HEAD">doc/manual/gpg4win-compendium-de.tex</a> and
 translate the text to you language. Next there are many screenshots
 to be done with the software running in your language.
 </p>
@@ -268,7 +268,7 @@ Else, english is used.
 <h4>Available languages</h4>
 
 <p>
-See the .po filenames in the <a href="http://cvs.gnupg.org/cgi-bin/viewcvs.cgi/trunk/po/?root=GpgOL">GpgOL
+See the .po filenames in the <a href="http://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpgol.git;a=tree;f=po;hb=HEAD">GpgOL
 po directory</a>. This is the most current status, so in case of relatively new files the most
 recent release of GpgOL might not yet support it.
 </p>
@@ -295,7 +295,7 @@ Else, english is used.
 <h4>Available languages</h4>
 
 <p>
-See the .po filenames in the <a href="http://cvs.gnupg.org/cgi-bin/viewcvs.cgi/trunk/po/?root=GpgEX">GpgEX
+See the .po filenames in the <a href="http://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpgex.git;a=tree;f=po;hb=HEAD">GpgEX
 po directory</a>. This is the most current status, so in case of relatively new files the most
 recent release of GpgEX might not yet support it.
 </p>
