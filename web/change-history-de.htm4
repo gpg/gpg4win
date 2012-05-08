@@ -1,4 +1,4 @@
-m4_dnl -*-html-*-
+m4_dnl                                                       -*-html-*-
 m4_include(`template.m4')
 m4_define(`DE')
 m4_define(`EN_FILE', `change-history.html')
@@ -63,7 +63,7 @@ Claws-Mail:    3.7.4cvs1
 Kompendium:    3.0.0-rc1
 </pre>
 <p>Expliziter Download dieser Version: <a href="http://ftp.gpg4win.org/gpg4win-2.0.2.exe">gpg4win-2.0.2.exe</a><br></p><p>Details im README dieser Version: <a href="http://ftp.gpg4win.org/README-2.0.2.de.txt">README-2.0.2.de.txt</a><br></p><h2>Version 2.0.1 veröffentlicht  2009-09-28</h2>
- Ein Problem beim Öffnen von Office Dokumenten und URLs mit einem
+ Ein Problem beim
      laufenden GpgOL wurde behoben.
 
 

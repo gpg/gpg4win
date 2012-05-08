@@ -24,21 +24,21 @@ HTML, ssh and GIT.</p>
 
 <p>Typical tasks of maintaining the website are:</p>
 <ul>
-<li> Update version of Gpg4win (occasioanlly, duration: ca. 15 minutes)
+<li> Update version of Gpg4win (occasionally, duration: about 15 minutes)
 <li> Fix typos (whenever you or someone else finds one, duration: few minutes)
 </ul>
 
 
-<h2>Anonymously take a first look</h2>
+<h2>Take a first look</h2>
 
 <ol>
-<li> Get the sources for the website anonymously (without write access):
-     <pre>git clone git://git.gnupg.org/gpg4win.git</pre>
+<li> Get the sources for the website
+     <pre>git clone git://git.gnupg.org/gpg4win.git -b website</pre>
 
 <li> Build the website locally:
 <pre>
-cd doc/website
-make -f buildhtml.mk
+cd web
+make
 </pre>
 
      and open it in your browser (file index.html).
@@ -69,29 +69,29 @@ expression of interest to join the team is of course a good idea.
      it to wald.intevation.de
 
 <li> Get the source for the website:<br>
-     <code>git clone git://git.gnupg.org/gpg4win.git</code>
+     <code>git clone git://git.gnupg.org/gpg4win.git -b website</code>
 
 </ol>
 
 <h2>How to update the website and put it online</h2>
 
 <ol>
-<li> Apply your desired changes in the directory <em>/doc/website</em>
-     which you retrieved
-     via git. The file <em>REAMDE</em> in this directory will provide you some
-     helpful hints.
+<li> Apply your desired changes in the directory <em>/web</em> which
+     you retrieved via git. The file <em>REAMDE</em> in the top
+     directory will provide you some helpful hints.
 
 <li> Create local version:<br>
-     <em>make -f buildhtml.mk</em><br>
+     <em>make</em><br>
      and open file index.html in your browser.
 
-<li> Are your changes complete, check them again:<br>
-     <code>git diff | less</code><br>
-     and then upload them with some adequate comments
-     to the git repository (write access required!):<br>
-     <code>git commit</code> and <code>git push</code><br>
+<li> If your changes are complete, commit them as usual.  For example
+     you can simply do:<br>
+     <code>git commit -a</code><br>
+      and then prepare a patch to be
+     send to the mailing list:<br>
+     <code>git format-patch -k --stdout >draft</code>.
 
 <li> The last step is to put the new version online:<br>
-     <em>make -f buildhtml.mk online</em><br>
+     <em>make online</em><br>
 </ol>
 </div>

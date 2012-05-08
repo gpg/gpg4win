@@ -30,18 +30,18 @@ einen Text-Editor, HTML, SSH und GIT.
 <h2>Zunächst anonym reinschnuppern</h2>
 
 <ol>
-<li> Die Quellen zur Website anonym (also ohne Schreibrechte) auschecken:
-     <pre>git clone git://git.gnupg.org/gpg4win.git</pre>
+<li> Die Quellen zur Website auschecken:
+     <pre>git clone git://git.gnupg.org/gpg4win.git -b website</pre>
 
 <li> Die Website lokal bauen:
 <pre>
-cd doc/website
-make -f buildhtml.mk
+cd web
+make
 </pre>
      und im Browser anschauen (z.B. Datei index-de.html).
 
-<li> Die README-Datei der Website lesen, nach belieben Änderungen vornehmen und die
-     Website dann wieder neu bauen und anschauen.
+<li> Die README-Datei der Website lesen, nach belieben Änderungen
+     vornehmen und die Website dann wieder neu bauen und anschauen.
 </ol>
 
 <h2>Was man vorbereitend nur einmal machen muss um aktiver Mitentwickler zu werden</h2>
@@ -65,7 +65,7 @@ und der Wunsch, dass man gerne mitmachen möchte, ist natürlich immer sinnvoll.
      <a href="http://wald.intevation.org/account/">hochladen</a>.
 
 <li> Die Quellen zur Website holen:<br>
-     <code>git clone git://git.gnupg.org/gpg4win.git</code>
+     <code>git clone git://git.gnupg.org/gpg4win.git -b website </code>
 
 </ol>
 
@@ -73,18 +73,19 @@ und der Wunsch, dass man gerne mitmachen möchte, ist natürlich immer sinnvoll.
 
 <ol>
 <li> Gewünschte Änderungen in dem per git geholten Verzeichnis
-     <code>/doc/website</code> durchführen.
-     Zum besseren Verständnis ggf. die dort liegende Datei <code>REAMDE</code> vorher
+     <code>/web</code> durchführen.
+     Zum besseren Verständnis ggf. die Datei <code>REAMDE</code> vorher
      durchlesen.
 <li> Lokale Version zum Anschauen herstellen:<br>
-     <code>make -f buildhtml.mk</code><br>
+     <code>make</code><br>
      und im Browser anschauen.
 <li> Sind die Änderungen in Ordnung, sollte man sie noch mal prüfen:<br>
      <code>git diff | less</code><br>
-     und können dann mit möglichst sinnvollen Kommentaren ins git-Repository
-     hochgeladen werden (separate Schreibrechte nötig!):<br>
-<code>git commit</code> und <code>git push</code><br>
+     und können dann mit möglichst sinnvollen Kommentaren committen
+     und einen Patch an die Mailingliste senden:<br>
+     <code>git commit -a </code> und
+     <code>git format-patch -k --stdout >draft</code><br>
 <li> Der letzte Schritt ist das online schalten:<br>
-     <code>make -f buildhtml.mk online</code><br>
+     <code>make online</code><br>
 </ol>
 </div>
