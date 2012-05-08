@@ -64,12 +64,11 @@ installed:
 Building the Webpages
 =====================
 
-This has not been automated.  See the README file in the doc/website
-directory.  To build the HTML version of the manuals you need to go to
-doc/manual-de, run the command "make webversion" and copy the require
-files to the desired location.  If you are a developer with write
-access to the Sibversion, you may use the "online" target to actually
-update the website.
+The website is in the dedicated branch "website" in the git reposity.
+Checkout that branch and read the instructions:
+
+  git checkout website
+
 
 Development Branches
 ====================

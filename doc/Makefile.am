@@ -28,4 +28,4 @@ else
 manual =
 endif
 
-SUBDIRS = logo $(manual) website
+SUBDIRS = logo $(manual)

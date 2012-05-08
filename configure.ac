@@ -399,7 +399,6 @@ AC_CONFIG_FILES(include/config.nsi src/gpg4win.mk)
 AC_CONFIG_FILES(doc/Makefile)
 AC_CONFIG_FILES(doc/logo/Makefile)
 AC_CONFIG_FILES(doc/manual/Makefile doc/manual/version.tex)
-AC_CONFIG_FILES(doc/website/Makefile)
 AC_CONFIG_FILES(src/dictionaries/Makefile)
 AC_CONFIG_FILES(patches/gnupg2/01-version.patch)
 AC_OUTPUT
