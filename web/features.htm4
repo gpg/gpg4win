@@ -28,7 +28,7 @@ The focus of Gpg4win is on secure file and email encryption as well as good usab
 <b>OpenPGP</b> and <b>S/MIME (X.509)</b></p>
 <p>The configuration of X.509 root certificates is made simple by
 Gpg4win. Now, also inexperienced users can start using S/MIME out-of-the-box.
-Security aware system administrators will read the step by step instructions
+Security aware system administrators should read the step by step instructions
 and define a systems-wide list of trusted X.509 root certificates.
 </p>
 <img src="img/sc-pinentry-openpgp_de.png">
@@ -73,8 +73,8 @@ recursively into a gpgtar archive.</p>
 Windows Explorer or Kleopatra.
 Gpg4win can create a unique checksum for each selected file, with
 which the integrity of these files can be verified any time later.
-Both, creation and verification of these crypotraphic checksums
-(hashes) are carried out in analogous manner in the
+Both creation and verification of these cryptographic checksums
+(hashes) are carried out in an analogous manner in the
 GUI. Gpg4win supports the hash algorithms SHA-1, SHA-256 and MD5.
 </p>
 </div>
@@ -90,16 +90,16 @@ GUI. Gpg4win supports the hash algorithms SHA-1, SHA-256 and MD5.
 <p>The provided Outlook plugin GpgOL allows to sign and encrypt
 emails directly in Microsoft Outlook (2003 and 2007). Attachments can
 be encrypted as well, in one go with the email body. Verifying
-signatures and decrypting messages is done directly in Outlook, too.
+signatures and decrypting messages is done directly in Outlook too.
 </p>
 <img src="img/sc-ol-emailfolder_cut_de.png">
 </div>
 
 <div class="column2">
-<h4>User-friendly Certificate Seletion</h4>
+<h4>User-friendly Certificate Selection</h4>
 <p>The selection of the right email certificate is a function of
 Kleopatra - based on the corresponding email address.
-Kleopatra shows the automated preselection of certificates in the following dialog.</p>
+Kleopatra shows the automated pre-selection of certificates in the following dialog.</p>
 <img style="width: 540px;"
 src="img/sc-kleopatra-mail-certificateselection-signencrypt_de.png">
 </div>
@@ -120,7 +120,7 @@ certificates which do accord uniquely. You work more quickly - without reducing 
 <div class="column1">
 <h4>Installer</h4>
 <p>The Gpg4win Installer enables you to install Gpg4win in a very simple and
-secure manner. A step-by-step installation guide us provided as part
+secure manner. A step-by-step installation guide is provided as part
 of the <a href="http://gpg4win.de/doc/en/gpg4win-compendium_11.html">Gpg4win Compendium</a>.</p>
 </div>
 
@@ -132,7 +132,7 @@ of the <a href="http://gpg4win.de/doc/en/gpg4win-compendium_11.html">Gpg4win Com
 <div class="column3">
 <h4>Gpg4win Compendium</h4>
 <p>The <a href="documentation.html">Gpg4win Compendium</a> provides
-an illustrative documentation for getting started in the field of applied
+illustrative documentation for getting started in the field of applied
 cryptography and using Gpg4win.
 It is available in German and English.</p>
 </div>
@@ -145,14 +145,14 @@ It is available in German and English.</p>
 <div class="column1">
 <h4>Manage certificates securely and comfortably</h4>
 <p>Kleopatra is the preferred certificate manager in Gpg4win.
-Kleopatra allows to manage all your certificates (OpenPGP and S/MIME)
-in one tool.</p>
+Kleopatra allows for the management of all certificates (OpenPGP and S/MIME) in one tool.
+</p>
 <a href="img/sc-kleopatra-mainwindow-openpgp-certificates_de.png">
 <img style="width:540px;" src="img/sc-kleopatra-mainwindow-openpgp-certificates_de.png"></a>
 </div>
 <div class="column2">
 <h4>Certificate Server</h4>
-<p>Kleopatra provides a simple im- and export of certificates
+<p>Kleopatra provides a simple import and export of certificates
 from and to (OpenPGP and X.509) certificate servers (also called key servers).</p>
 </div>
 <div class="column3">
@@ -161,7 +161,7 @@ from and to (OpenPGP and X.509) certificate servers (also called key servers).</
 <img src="img/sc-kleopatra-certifyCertificate1_de.png"></a>
 <p>Use Kleopatra to certify (sign) a public OpenPGP certificate of
 a trusted person.
-Thereby these certificates are marked as "trusted certificates".
+Thus, these certificates will be marked as "trusted certificates".
 </p>
 </div>
 
@@ -173,7 +173,7 @@ Thereby these certificates are marked as "trusted certificates".
 <p>Gpg4win is Free Software and
 consists of several independently developed packages which have different
 <a href="license.html">Free Software licenses</a>.
-The majority (as Gpg4win) is licensed under
+The majority (including Gpg4win) are licensed under
 GNU General Public License (GNU GPL). The usage of Gpg4win is for free.
 </div>
 
@@ -190,8 +190,8 @@ href="about.html#requirements">System Requirements</a> of Gpg4win's "About"-webp
 </div>
 
 <div class="column3">
-<h4>Internationalisation</h4>
-<p>All dialogs of Gpg4win are available in English and German language.
+<h4>Internationalization</h4>
+<p>All dialogs of Gpg4win are available both English and German.
 The Gpg4win Installer provides some additional languages.</p>
 </div>
 

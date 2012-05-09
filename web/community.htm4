@@ -13,8 +13,8 @@ PAGE_START
 <div id="intro">
 <h2>Gpg4win Community</h2>
 <p>Like any Free Software community Gpg4win needs people
-who <a href="contribute.html">get involved</a> with the initiative.
-One step is e.g. to <a href="reporting-bugs-de.html">reporting problems</a>.
+who <a href="contribute.html">get involved</a> with the initiative,
+such as <a href="reporting-bugs-de.html">reporting problems</a>.
 <br>
 You can communicate with the Gpg4win community via
 mailing lists, web forums and IRC.</p>
@@ -24,8 +24,8 @@ mailing lists, web forums and IRC.</p>
 <h2>Mailing lists</h2>
 
 <em>Note:</em>
-Please subscribe before you are sending an email to a list. Thereby
-you avoid that your message gets hold for moderation first.
+Please subscribe before sending an email to a list. This will avoid
+your message being held for moderation.
 </p>
 
 <dl>
@@ -131,7 +131,7 @@ href="irc://irc.freenode.net/#gpg4win">irc://irc.freenode.net/#gpg4win</a></p>
 <div id="sidebar">
     <h3>Do you need professional Support?</h3>
 
-    <p>Use our paid support service of our Gpg4win experts.</p>
+    <p>Use our paid support service of Gpg4win experts.</p>
 
     <p>Learn more about our
     <a href="support.html">professional support</a>.</p>

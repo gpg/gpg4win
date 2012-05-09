@@ -13,7 +13,7 @@ PAGE_START
 <div id="intro">
 <h2>About Gpg4win</h2>
 <p>Gpg4win (GNU Privacy Guard for Windows) is
-an encryption software for files and emails.</p>
+encryption software for files and emails.</p>
 </div>
 
 <div id="main">
@@ -24,10 +24,8 @@ the contents against an unwanted party reading it. Digital signatures
 make sure that it was not modified and comes from a specific sender.</p>
 
 <p>Gpg4win supports both relevant cryptography standards,
-<b>OpenPGP</b> and <b>S/MIME (X.509)</b>.
-
-Gpg4win is the official GnuPG distribution for Windows and is
-maintained by the developers of GnuPG.
+<b>OpenPGP</b> and <b>S/MIME (X.509)</b>, and is the official GnuPG
+distribution for Windows. It is maintained by the developers of GnuPG.
 Gpg4win and the software included with Gpg4win
 are <a href="http://fsfe.org/about/basics/freesoftware.en.html">Free
 Software</a> (Open Source; among other things free of charge for

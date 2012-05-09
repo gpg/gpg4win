@@ -13,8 +13,8 @@ PAGE_START
 <div id="intro">
 <h2>How to translate all of Gpg4win into your language</h2>
 <p>
-Gpg4win consists out of various modules. Some to already support
-numerous languages, some only few.
+Gpg4win consists of various modules. Some do already support
+numerous languages, some only a few.
 Here, you find a description on how to translate each of the
 modules or just how to check whether it supports your language.
 </p>
@@ -24,20 +24,20 @@ modules or just how to check whether it supports your language.
 
 <h2>Introduction</h2>
 <p>
-Note, that english is always the default base for any translation.
+Note, that English is always the default base for any translation.
 </p>
 
 <p>
 In most cases the <a href="http://www.gnu.org/software/gettext/">GNU gettext</a> technology is applied for translations
 which more or less means to edit .po files. This is a very common
 technology and various graphical tools to aid the translation are available (e.g. <a href="http://www.poedit.net/">poedit</a> or
-<a href="http://kbabel.kde.org/">KBabel</a>). However, a simple text editor will do the job as well. For many
-cases it makes sense if the editor supports UTF8.
+<a href="http://kbabel.kde.org/">KBabel</a>). However, a simple text
+editor will do the job as well. In many cases this makes sense if the editor supports UTF8.
 Your language identifier is the language code (<a href="http://en.wikipedia.org/wiki/ISO_639-1">ISO 639-1</a>)
 and optionally combined with
-contry code (<a href="http://en.wikipedia.org/wiki/ISO_3166">ISO 3166</a>).
-E.g. "de" is german language, "de_DE" is german language as used in Germany and
-"de_CH" is german language as used in Switzerland.
+country code (<a href="http://en.wikipedia.org/wiki/ISO_3166">ISO 3166</a>).
+E.g. "de" is german language, "de_DE" is German language as used in Germany and
+"de_CH" is the German language as used in Switzerland.
 </p>
 
 <h2>Gpg4win Installer</h2>
@@ -58,14 +58,14 @@ The procedure is the <a href="http://www.gnu.org/software/gettext/manual/gettext
 
 <p>
 It is highly recommended to coordinate with the Gpg4win developers (via the Gpg4win
-developer mailing list) before you start if you want to have your language get
-integrated into Gpg4win as a officially supported language.
+developer mailing list) before you start if you want to have your language
+integrated into Gpg4win as an officially supported language.
 </p>
 
 <p>
 Also, the po files should not be in UTF-8 but rather in some Windows code page.
-The Gpg4win developers will help you to find out the best option or whether
-there will arise bigger problems with the support of you language.
+The Gpg4win developers will help you to find the best option or whether
+the support of your language will cause bigger problems.
 </p>
 
 <h4>How to update an available language</h4>
@@ -93,7 +93,7 @@ make update-po
      <p>
      This will report about the total number of strings that
      are marked inside the source code for translation, about
-     the number of fuzzy and untranslated strings. If only
+     the number of fuzzy and un-translated strings. If only
      the number of translated messages is reported, there is
      nothing to do and you can stop for now (at a later
      time you might want to <code>git pull && git up</code>
@@ -109,8 +109,8 @@ make update-po
 
 <p>
 Depending on the language environment of your Windows system,
-the apropriate language is selected automatically if available.
-Else, english is used.
+the appropriate language is selected automatically, if available.
+Otherwise, English is used.
 </p>
 
 <h2>Gpg4win Website</h2>
@@ -118,9 +118,9 @@ Else, english is used.
 <h4>Available languages</h4>
 
 <p>
-In the upper right corner of this web page, you will
+In the upper right hand corner of this web page, you will
 see a list of available translations. For those language
-names that are striked out, only the current page
+names that are struck out, only the current page
 is not translated, but the language is supported in general.
 </p>
 
@@ -128,12 +128,12 @@ is not translated, but the language is supported in general.
 
 <p>
 Since the initial setup of the website (which supports two languages),
-no further languages have been added. Thus, there does not exist
-yet a practical guideline for this. However, you basically need to
+no further languages have been added. Thus, there does not yet exist
+a practical guideline for this. However, you basically need to
 create a "-LL.htm4" file for any file in
 <a href="http://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpg4win.git;a=tree;f=doc/website;hb=HEAD">doc/website</a>
 that ends with "-de.htm4" (where LL is code of your language). Basis of the translation
-are the files without the LL suffix which are in fact the english
+are the files without the LL suffix which are in fact the English
 defaults. Some further changes are needed for the website build process.
 </p>
 
@@ -146,24 +146,24 @@ web site officially in your language.
 <h4>How to update an available language</h4>
 
 <p>
-This is a difficult task and requires some disciplin.
+This is a difficult task and requires some discipline.
 </p>
 
 <p>
-The english version is the master version. Whenever a change
-is made to one of the english files, the other languages
-must be synchronised. A good notification system
+The English version is the master version. Whenever a change
+is made to one of the English files, the other languages
+must be synchronized. A good notification system
 for translators is the Gpg4win commit mailing list
 (<a href="http://lists.wald.intevation.org/pipermail/gpg4win-commits/">Archive</a>
 | <a href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-commits">Subscribe</a>).
 </p>
 
 <p>
-Currently, there is no automatic detection routine to mark non-english pages
+Currently, there is no automatic detection routine to mark non-English pages
 that have not been updated although the corresponding master has.
 And it is virtually impossible for the Gpg4win developer team to check the
-synchronisation work nor the correctness of translations. So, thats where
-disciplin comes to play a role.
+synchronization work nor the correctness of translations. So, that's where
+discipline comes into play.
 </p>
 
 <h4>How to activate an available language</h4>
@@ -184,8 +184,8 @@ and
 language.
 
 The translation into English is currently not finished (as of:
-September 2010). Translations from German compendium into other language are
-very welcome! Please contact the Gpg4win developer mailing list if you
+September 2010). Translations from German compendium into other
+languages are most welcome! Please contact the Gpg4win developer mailing list if you
 want to start with a new translation.
 </p>
 
@@ -195,7 +195,7 @@ want to start with a new translation.
 Basically you need to pick the German file
 <a
 href="http://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpg4win.git;a=blob;f=doc/manual/gpg4win-compendium-de.tex;hb=HEAD">doc/manual/gpg4win-compendium-de.tex</a> and
-translate the text to you language. Next there are many screenshots
+translate the text to your language. Next there are many screenshots
 to be done with the software running in your language.
 </p>
 
@@ -215,20 +215,20 @@ developer mailing list) before you start.
 <h4>How to update an available language</h4>
 
 <p>
-The german version is the master version. Whenever a change
-is made to the german files, the other languages
-must be synchronised. A good notification system
+The German version is the master version. Whenever a change
+is made to the German files, the other languages
+must be synchronized. A good notification system
 for translators is the Gpg4win commit mailing list
 (<a href="http://lists.wald.intevation.org/pipermail/gpg4win-commits/">Archive</a>
 | <a href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-commits">Subscribe</a>).
 </p>
 
 <p>
-Currently, there is no automatic detection routine to mark non-german parts
+Currently, there is no automatic detection routine to mark non-German parts
 that have not been updated although the corresponding master has.
 And it is virtually impossible for the Gpg4win developer team to check the
-synchronisation work nor the correctness of translations. So, thats where
-disciplin comes to play a role.
+synchronization work nor the correctness of translations. So, that's where
+discipline comes into play.
 </p>
 
 <h4>How to activate an available language</h4>
@@ -263,8 +263,8 @@ list for coordinating translators</a>.
 
 <p>
 Depending on the language environment of your Windows system,
-the apropriate language is selected automatically if available.
-Else, english is used.
+the appropriate language is selected automatically, if available.
+Otherwise, English is used.
 </p>
 
 <h2>GpgOL</h2>
@@ -290,8 +290,8 @@ GnuPG-i18n Mailing List</a>.
 
 <p>
 Depending on the language environment of your Windows system,
-the apropriate language is selected automatically if available.
-Else, english is used.
+the appropriate language is selected automatically, if available.
+Otherwise, English is used.
 </p>
 
 <h2>GpgEX</h2>
@@ -317,8 +317,8 @@ GnuPG-i18n Mailing List</a>.
 
 <p>
 Depending on the language environment of your Windows system,
-the apropriate language is selected automatically if available.
-Else, english is used.
+the appropriate language is selected automatically, if available.
+Otherwise, English is used.
 </p>
 
 <h2>Kleopatra</h2>
@@ -351,7 +351,7 @@ GnuPG-i18n Mailing List</a>.
 
 <p>
 Depending on the language environment of your Windows system,
-the apropriate language is selected automatically if available.
-Else, english is used.
+the appropriate language is selected automatically, if available.
+Otherwise, english is used.
 </p>
 </div>

@@ -12,15 +12,15 @@ PAGE_START
 
 <div id="intro">
 <h2>How to report a problem</h2>
-<p>A step-by-step instruction.</p>
+<p>Step-by-step instructions.</p>
 </div>
 
 <div id="main">
-<h2>1. Check whether you are using the newest version of Gpg4win</h2>
+<h2>1. Check whether you are using the latest version of Gpg4win</h2>
 
 <p>
-The download button ontop of the Gpg4win homepage shows
-the current version of Gpg4win.
+The download button on top of the Gpg4win homepage shows
+the current version.
 </p>
 
 <p>
@@ -37,7 +37,7 @@ actually maintained by other development teams.
 </p>
 
 <p>
-Therefore problems and bugs of general nature,
+Therefore problems and bugs general in nature,
 i.e. not related to the cross-compilation and/or
 packaging by the Gpg4win team, should be reported
 to the respective project teams (usually you need to
@@ -78,16 +78,16 @@ your problem. Add your additional comments there.
 <h2>4. Provide version number</h2>
 
 <p>
-If you report a new bug or add comments to a existing
+If you report a new bug or add comments to an existing
 bug report, describe the exact version of the Windows System,
-Gpg4win, and if appropriate of MS Office and Outlook.
+Gpg4win and, if appropriate, of MS Office and Outlook.
 </p>
 
-<h2>5. Notes how to reproduce the bug</h2>
+<h2>5. Notes on how to reproduce the bug</h2>
 
 <p>
 If possible provide a step by step method
-how you reproduce the bug.
+on how you can reproduce the bug.
 </p>
 
 <h2>6. Add debug information</h2>
@@ -101,7 +101,7 @@ Look at the instructions for the several Gpg4win components in the
 </p>
 
 <p>
-If you feel able to, just send a excerpt with the relevant
+If you feel able to, just send an excerpt with the relevant
 information.
 </p>
 

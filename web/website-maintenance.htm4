@@ -13,9 +13,9 @@ PAGE_START
 <div id="intro">
 <h2>Maintaining the Gpg4win website</h2>
 <p>The maintenance of the website is actually quite simply
-because many things are automized.
+because many processes are automated.
 What you should be (or should become) familiar with: a text editor,
-HTML, ssh and GIT.</p>
+HTML, SSH and GIT.</p>
 </div>
 
 <div id="main">
@@ -24,7 +24,7 @@ HTML, ssh and GIT.</p>
 
 <p>Typical tasks of maintaining the website are:</p>
 <ul>
-<li> Update version of Gpg4win (occasionally, duration: about 15 minutes)
+<li> Update the version of Gpg4win (occasionally, duration: about 15 minutes)
 <li> Fix typos (whenever you or someone else finds one, duration: few minutes)
 </ul>
 
@@ -57,7 +57,7 @@ expression of interest to join the team is of course a good idea.
      should
      <a href="http://wald.intevation.org/account/register.php">create
      a user account</a>.<br>
-     This is established quickly because it is an automatic process.
+     This is established quickly because it is an automated process.
 
 <li> <a href="http://wald.intevation.org/project/request.php?group_id=11"
        >Request</a> membership for project Gpg4win.<br>
@@ -77,7 +77,7 @@ expression of interest to join the team is of course a good idea.
 
 <ol>
 <li> Apply your desired changes in the directory <em>/web</em> which
-     you retrieved via git. The file <em>REAMDE</em> in the top
+     you retrieved via GIT. The file <em>README</em> in the top
      directory will provide you some helpful hints.
 
 <li> Create local version:<br>

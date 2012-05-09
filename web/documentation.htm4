@@ -12,9 +12,9 @@ PAGE_START
 
 <div id="intro">
 <h2>Documentation</h2>
-<p>The Gpg4win Compendium is the perfect documentation to get in the world of
-cryptography. Using the example of Gpg4win you learn step by step the
-secure using of Kleopatra, GpgEX and GpgOL.</p>
+<p>The Gpg4win Compendium is the perfect documentation to get into the world of
+cryptography. Using the example of Gpg4win, you learn step by step the
+secure use of Kleopatra, GpgEX and GpgOL.</p>
 </div>
 
 <div id="main">
@@ -24,15 +24,15 @@ secure using of Kleopatra, GpgEX and GpgOL.</p>
 Gpg4win2. It combines the approximately 190 pages of the previously
 separate Gpg4win manuals "Einsteiger" and "Durchblicker". All chapters
 were reworked, extended, and updated to the new Gpg4win version 2.
-Among other enhancements, it now covers Kleopatra, GpgEX and PGP/MIME
+Among other enhancements, it now covers Kleopatra, GpgEX and PGP/MIME,
 as well as S/MIME and X.509.
 </p>
 
 <p>Note: The English language version of the Gpg4win-Compendium is
 currently available as a <b>first beta version</b>.</p>
 
-<p>Translations based upon the German language version (or the final
-English language version) of the Gpg4win-compendium to any other
+<p>Translations based on the German language version (or the final
+English language version) of the Gpg4win-compendium into any other
 language are very welcome! Please contact the <a
 href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-devel">
 Gpg4win developer mailing list</a> if you want to start with a new
@@ -76,9 +76,9 @@ Language: German<br>
 
 
 <h2>Old Documentation</h2>
-<p>Please note: With Gpg4win2 and the new Gpg4win Compendium
+<p>Please note: With Gpg4win2 and the new Gpg4win Compendium,
 all following Gpg4win manuals are now <b>out of date</b> (and will no
-longer updated):
+longer be updated):
 
 <dl>
   <dt><b>Gpg4win for Novices</b> (English translation of "Gpg4win für Einsteiger")</dt>

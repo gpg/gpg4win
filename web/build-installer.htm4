@@ -21,8 +21,8 @@ PAGE_START
 
 <p>
 Building a new Gpg4win installer package is
-mostly automized. The build procedure can be executed
-on a GNU/Linux system or within a virtual maschine also
+mostly automated. The build procedure can be executed
+on a GNU/Linux system or within a virtual machine
 on Windows and other systems.
 </p>
 
@@ -36,25 +36,25 @@ What you need is:
      <p>
      In principle, any current GNU/Linux system is
      sufficient as the base system. Some minor
-     adaptions might be necessary though.
+     adaptations might be necessary though.
      The <a href="build-installer-gnulinux.html">specific
      GNU/Linux guide</a> is tested with a Debian GNU/Linux 'Etch' 4.0 system.
      <br>
-     Furthermore, you need at least 503 MByte on your harddisk
-     and a acceptable fast internet connection for downloading
+     Furthermore, you need at least 503 MByte on your hard disk
+     and an acceptable fast internet connection for downloading
      about 60 MBytes.
      </p>
-<li> <p>Build Gpg4win on Windows</b>:
+<li> <b>Build Gpg4win on Windows</b>:
 
      <p>
      In principle, any current Windows system is
      sufficient as the base system. Some minor
-     adaptions might be necessary though.
+     adaptations might be necessary though.
      The <a href="build-installer-on-vm.html">specific
      Windows guide</a> is tested with Windows XP SP2.
      <br>
-     Furthermore, you need at least 1.5 GByte on your harddisk
-     and a acceptable fast internet connection for downloading
+     Furthermore, you need at least 1.5 GBytes on your hard disk
+     and an acceptable fast internet connection for downloading
      about 360 MBytes.
      </p>
 </ul>
@@ -69,7 +69,7 @@ What you need is:
 
 <ul>
 <li> A complete conventional installer as described above with the same version and
-     the contents as you want for the MSI package.
+     contents as you want for the MSI package.
 
 <li> Perl 5 on the  GNU/Linux System.
 
@@ -89,8 +89,8 @@ What you need is:
 
 <li> Finally, you need a method to access the file tree where your built your conventional installer
      from your Windows system
-     These could done via a SMB network connection  or simply by transferring the whole file
-     tree to Windows (attention: it is a couple of 100 MBytes). See also the section below.
+     This could done via an SMB network connection or simply by transferring the whole file
+     tree to Windows (attention: it is several 100 MBytes). See also the section below.
 </ul>
 
 <p>
@@ -106,19 +106,19 @@ Now you need to execute the following steps:
 <li> Execute make-msi.pl to create the required WiX source files:<br>
      <em>$ make msi</em>
 
-<li> No change into the same directory ("src") on the Windows system
+<li> Now switch to the same directory ("src") on the Windows system
      and execute script "make-msi.bat" to create the MSI package:</br>
      <em>&gt; make-msi.bat gpg4win-Version.wix</em><br>
      or</br>
      <em>&gt; make-msi.bat gpg4win-light-Version.wix</em>
 
-     <p>where "Version" is the complete version number of the just created concentional installer, e.g.
+     <p>where "Version" is the complete version number of the just created installer, e.g.
      "1.9.0-svn595". You will find the resulting .wix files in the same directory.</p>
 
     <p>This routine assumes that WiX is installed in a default location.
     In case it is not, you need to adapt the search path (PATH system variable).</p>
 
-<li> The MSI package is not ready and stored as file "gpg4win.msi".
+<li> The MSI package is now ready and stored as file "gpg4win.msi".
      You can install it in the following way:<br>
      <em>&gt; msiexec /i gpg4win.msi</em><br>
      and also de-install it:<br>
@@ -128,17 +128,16 @@ Now you need to execute the following steps:
 <h3>How to access the Gpg4win build files from Windows</h3>
 
 The WiX software requires access to the file tree where the
-conventional intaller was created.
-This is possible in many ways of which three opportunities are
-illustrated here.
-These are not step-by-step preocedures and thus need
+installer was created.
+Although this can be done in many ways, only three options are
+illustrated here. As these are not step-by-step procedures and they need
 to be adapted for your individual environment.
 
 <ul>
 <li>Mounting a virtual ext3 build partition:
   <p>
     If you build Gpg4win as described on the
-    der <a href="build-installer-on-vm.html">special guide</a> for Windows
+    <a href="build-installer-on-vm.html">special guide</a> for Windows
     in a virtual GNU/Linux system, then the required file tree is located
     inside a hard disk image named <code>build.img</code>.
     It can be accessed directly from Windows with the free tools ext2fsd and FileDisk.
@@ -156,19 +155,19 @@ to be adapted for your individual environment.
   </pre>
   <p>
     Of course 'C:\path\to\build.img' needs to be replaced with the
-    actial path to the image file.
+    actual path to the image file.
     Now the build partition is available as drive H: on your Windows
     system.
   </p>
 
 <li>Ubuntu with VirtualBox and Samba:
 
-   <p>You can run Windows XP as a virtual maschine under VirtualBox
-   laufen and access the file tree via SMB by running a Smaba server on
+   <p>You can run Windows XP as a virtual machine under VirtualBox
+   and access the file tree via SMB by running a Samba server on
    the Linux host system.
-   Der file tree is accessable as a so-called "Share" (e.g. via
+   The file tree is accessible as a so-called "Share" (e.g. via
    the right mouse button menu for the respective folder "gpg4win" in Nautilus).
-   After this, the network share can be a made available in Windows:<br>
+   After this, the network share can be made available in Windows:<br>
    <em>&gt; net use H: \\10.0.2.2\gpg4win</em><br>
    Where H: is the drive letter to use and gpg4win
    the name of the network share.
@@ -183,7 +182,7 @@ to be adapted for your individual environment.
     <em>$ tar -T src/gpg4win-Version.files cjf gpg4win-msi.tar.bz2</em>
     </p>
 
-     <p>where "Version" should be the complete version numbe of the current installer,
+     <p>where "Version" should be the complete version number of the current installer,
      e.g. "1.9.0-svn595". You will find the respective .files files
      in directory "src".</p>
 

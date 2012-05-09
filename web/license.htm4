@@ -12,14 +12,14 @@ PAGE_START
 
 <div id="intro">
 <h2>License</h2>
-<p>Gpg4win is Free Software and consist of several independent developed packages, available
+<p>Gpg4win is Free Software and consist of several independently developed packages, available
 under different license conditions.  Most of these packages however
 are available under the <b>GNU General Public License (GNU GPL)</b>.  Common
 to all is that they are free to use without restrictions, may be
 modified and that modifications may be distributed.  If the
 <a href="http://ftp.gpg4win.org/gpg4win-VERSION.tar.bz2">source files</a>
 are distributed along with the binaries and the use of the GNU GPL has been pointed out,
-distribution is in in all cases possible.</p>
+distribution is in all cases possible.</p>
 </div>
 
 <div id="main">
