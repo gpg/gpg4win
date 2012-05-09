@@ -9,7 +9,7 @@ Getting the source:
 You can work on the website independently of the rest of gpg4win.
 First clone GIT repository:
 
-  git clone  git://gti.gnupg.org/gpg4win.git
+  git clone  git://git.gnupg.org/gpg4win.git
 
 the swicth to the web branch
 
