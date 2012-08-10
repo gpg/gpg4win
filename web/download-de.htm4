@@ -28,9 +28,6 @@ PAGE_START
 <li><a href="http://files.gpg4win.org/Beta/gpg4win-light-2.1.1-34299-beta.exe">Light-Installer</a> (20 MByte, ohne Kleopatra/Qt und Gpg4win-Kompendium)
 | <a href="http://files.gpg4win.org/Beta/gpg4win-light-2.1.1-34299-beta.exe.sig">OpenPGP Signatur</a>
 </li>
-<li><a href="http://files.gpg4win.org/Beta/gpg4win-vanilla-2.1.1-34299-beta.exe">Vanilla-Installer</a> (4 MByte, nur GnuPG)
-| <a href="http://files.gpg4win.org/Beta/gpg4win-vanilla-2.1.1-34299-beta.exe.sig">OpenPGP Signatur</a>
-</li>
 <li><a href="http://files.gpg4win.org/Beta/gpg4win-src-2.1.1-34299-beta.exe">Quelltext-Installer</a> (276 MByte)
 | <a href="http://files.gpg4win.org/Beta/gpg4win-src-2.1.1-34299-beta.exe.sig">OpenPGP Signatur</a>
 </li>
