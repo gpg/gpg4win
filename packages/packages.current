@@ -34,9 +34,8 @@ chk  f130c93fdf20903ca21bace8b8822f46468c9d65
 #
 server http://zlib.net
 
-# checked: 2012-03-28 wk - 1.2.6 is not required
-file zlib-1.2.5.tar.gz
-chk  8e8b93fa5eb80df1afe5422309dca42964562d7e
+file zlib-1.2.7.tar.gz
+chk  4aa358a95d1e5774603e6fa149c926a80df43559
 
 
 #
