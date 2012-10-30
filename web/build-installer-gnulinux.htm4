@@ -13,8 +13,8 @@ PAGE_START
 <div id="intro">
 <h2>Building Gpg4win under GNU/Linux</h2>
 <p>This example specifically describes how to create
-a new Gpg4win installer on a Debian GNU/Linux 'Etch' 4.0.
-In principle, any other GNU/Linux system could be used as well..</p>
+a new Gpg4win installer on a Debian GNU/Linux 'Squeeze' 6.0.
+In principle, any other Unix system could be used as well.</p>
 <p>
   <a href="build-installer.html">Back to overview on building installer</a>
 </p>
@@ -28,15 +28,17 @@ The character '#' indicates commands to be executed as administrator (root)
 and '$' for commands to be executed as regular user.
 
 <ol>
-<li> Install required packages on your Debian GNU/Linux 4.0:<br>
+<li> Install required packages on your Debian GNU/Linux 6.0:<br>
+     <strong>Note: The following list is outdated; we will soon provide a
+     new one.</strong><br/>
      <em># apt-get install mingw32 nsis stow unzip texinfo imagemagick</em><br>
      <em># apt-get install libglib2.0-dev tetex-bin tetex-extra gs-common hyperlatex</em><br>
 
-<li> Get the sources anonymously (i.e. with out write-access):<br>
-     <em>$ svn checkout https://svn.wald.intevation.org/svn/gpg4win/trunk/</em><br>
+<li> Get the sources:<br>
+     <em>$ git clone git://git.gnupg.org/gpg4win.git</em><br>
      or download the source code package gpg4win-n.n.n.tar.gz, unpack it and
      change to the directory gpg4win-n.n.n. We recommend to work
-     with the SVN version if you want to do more that just update a single
+     with the GIT version if you want to do more that just update a single
      module for yourself.
 
 <li> Download all necessary Gpg4win modules from Internet:<br>
@@ -45,11 +47,11 @@ and '$' for commands to be executed as regular user.
      (takes some time, especially the first time)<br>
      <em>$ cd ..</em><br>
 
-<li> If you work with the SVN version:<br>
+<li> If you work with the GIT version:<br>
      <em>$ ./autogen.sh</em><br>
-     <em>$ ./configure --enable-maintainer-mode --host=i586-mingw32msvc</em><br>
+     <em>$ ./autogen --build-w32</em><br>
      else:<br>
-     <em>$ ./configure --host=i586-mingw32msvc</em><br>
+     <em>$ ./autogen --build-w32</em><br>
 
 <li> Now build the Gpg4win installer package:<br>
      <em>$ make</em>
@@ -84,7 +86,7 @@ described above. Consider now we want to update the module
 <li> Build a new installer:<br>
      <em>$ cd ..</em><br>
      <em>$ make clean</em><br>
-     <em>$ ./configure --host=i586-mingw32msvc</em><br>
+     <em>$ ./autogen.sh --build-w32</em><br>
      <em>$ make</em>
 </ol>
 
@@ -92,37 +94,14 @@ described above. Consider now we want to update the module
 Attention: From now on your should not execute the script <em>download.sh</em>
 anymore because it would revert to the previous (i.e. official) version of the module.
 For a permanent activation of the new module version for the official Gpg4win
-installer package, the following steps are necessary.
-</p>
-
-<p>
-Precondition is that you have write access to the
-SVN directory (i.e. a user account at wald.intevation.de
-with developer status for Gpg4win).
+installer package, the following step is necessary.
 </p>
 
 <ol>
 <li> Adapt file<br>
      <em>packages.current</em><br>
      accordingly for the new module version (read the head of this file about
-     the syntax) and upload to Subversion repository:<br>
-     <em>$ svn commit packages.current</em>
-
-<li> Create a signature for this file:<br>
-     <em>$ gpg -sb packages.current</em>
-
-<li> If haven't so far ever authorized an updated package list,
-     you need to add your PGP key to the keyring
-     an den Schlüsselbund<br>
-     <em>packages.keys</em><br>
-     using this command:<br>
-     <em>$ gpg --export --armor YOUR-KEY-ID > gpg_pub_key.asc</em><br>
-     <em>$ gpg --no-default-keyring --keyring ./packages.keys --import gpg_pub_key.asc</em><br>
-     A lost of the current keys is shown with this command:<br>
-     <em>$ gpg packages.keys</em><br>
-
-<li> Upload the two files to the Gpg4win website:<br>
-     <em>$ make update</em><br>
+     the syntax) and commit the changes.<br>
 </ol>
 
 
@@ -130,7 +109,7 @@ with developer status for Gpg4win).
 
 Hierfür sollte man schon einmal ein Installationspaket wie oben beschrieben
 For this task you should have at least once created a installer package
-according to the description above using the SVN version.
+according to the description above using the GIT version.
 
 <ol>
 <li>For your new module 'MYMOD' first create constants in the file
