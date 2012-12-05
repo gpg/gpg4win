@@ -220,7 +220,7 @@ $ACLOCAL -I m4 $ACLOCAL_FLAGS
 echo "Running autoheader..."
 $AUTOHEADER
 echo "Running automake --gnu ..."
-$AUTOMAKE --gnu;
+$AUTOMAKE --gnu -Wno-portability;
 echo "Running autoconf${FORCE} ..."
 $AUTOCONF${FORCE}
 
