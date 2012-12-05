@@ -1,18 +1,18 @@
 # inst-libgcrypt.nsi - snippet for libgcrypt.   -*- coding: latin-1; -*-
 # Copyright (C) 2007 g10 Code GmbH
-# 
+#
 # This file is part of Gpg4win.
-# 
+#
 # Gpg4win is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 of the License, or
 # (at your option) any later version.
-# 
+#
 # Gpg4win is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
-# 
+#
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
@@ -41,6 +41,13 @@ Section "-libgcrypt" SEC_libgcrypt
   ifErrors 0 +3
       File /oname=libgcrypt-11.dll.tmp "${prefix}/bin/libgcrypt-11.dll"
       Rename /REBOOTOK libgcrypt-11.dll.tmp libgcrypt-11.dll
+
+  SetOutPath "$INSTDIR\lib"
+  File /oname=libgcrypt.imp "${prefix}/lib/libgcrypt.dll.a"
+
+  SetOutPath "$INSTDIR\include"
+  File "${prefix}/include/gcrypt.h"
+  File "${prefix}/include/gcrypt-module.h"
 
 
 !endif

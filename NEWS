@@ -10,6 +10,11 @@ Noteworthy changes in version 2.1.1 (unreleased)
 
 (de) Neue Versionen von GnuPG, GpgOL, GPA and Claws-Mail.
 
+(en) Development files for the crypto libraries will now be installed.
+
+(de) Entwicklerwerkzeuge für die Krypto-Bibliotheken werden nun mit
+     installiert.
+
 ~~~~~~~~~~~~~~~
 GnuPG:          2.0.19
 Kleopatra:      2.1.0 (2011-02-04)

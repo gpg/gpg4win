@@ -114,6 +114,7 @@ Section "-un.gpg4win"
 
   # Try to remove other top directories.
   RMDir "$INSTDIR\lib"
+  RMDir "$INSTDIR\include"
   RMDir "$INSTDIR\share"
   RMDir "$INSTDIR\pub"
   RMDir "$INSTDIR"
