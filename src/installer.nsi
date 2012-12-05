@@ -529,23 +529,23 @@ LangString T_SMIMECheckboxText ${LANG_ENGLISH} \
 	"Root certificate defined or skip configuration"
 
 LicenseLangString T_HowtoSmimeFile ${LANG_GERMAN} \
-	"${TOP_SRCDIR}/src/HOWTO-SMIME.de.txt"
+	"${BUILD_DIR}/HOWTO-SMIME.de.txt"
 LicenseLangString T_HowtoSmimeFile ${LANG_ENGLISH} \
-	"${TOP_SRCDIR}/src/HOWTO-SMIME.en.txt"
+	"${BUILD_DIR}/HOWTO-SMIME.en.txt"
 LicenseLangString T_HowtoSmimeFile ${LANG_FRENCH} \
-	"${TOP_SRCDIR}/src/HOWTO-SMIME.en.txt"
+	"${BUILD_DIR}/HOWTO-SMIME.en.txt"
 LicenseLangString T_HowtoSmimeFile ${LANG_SPANISH} \
-	"${TOP_SRCDIR}/src/HOWTO-SMIME.en.txt"
+	"${BUILD_DIR}/HOWTO-SMIME.en.txt"
 LicenseLangString T_HowtoSmimeFile ${LANG_PORTUGUESE} \
-	"${TOP_SRCDIR}/src/HOWTO-SMIME.en.txt"
+	"${BUILD_DIR}/HOWTO-SMIME.en.txt"
 LicenseLangString T_HowtoSmimeFile ${LANG_CZECH} \
-	"${TOP_SRCDIR}/src/HOWTO-SMIME.en.txt"
+	"${BUILD_DIR}/HOWTO-SMIME.en.txt"
 LicenseLangString T_HowtoSmimeFile ${LANG_ARABIC} \
-	"${TOP_SRCDIR}/src/HOWTO-SMIME.en.txt"
+	"${BUILD_DIR}/HOWTO-SMIME.en.txt"
 LicenseLangString T_HowtoSmimeFile ${LANG_RUSSIAN} \
-	"${TOP_SRCDIR}/src/HOWTO-SMIME.en.txt"
+	"${BUILD_DIR}/HOWTO-SMIME.en.txt"
 LicenseLangString T_HowtoSmimeFile ${LANG_ITALIAN} \
-	"${TOP_SRCDIR}/src/HOWTO-SMIME.en.txt"
+	"${BUILD_DIR}/HOWTO-SMIME.en.txt"
 
 #---------------------------------------------
 # From the old installation checking functions

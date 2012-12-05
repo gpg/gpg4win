@@ -47,18 +47,16 @@ installed:
  unzip
  texinfo
  imagemagick
- tetex-bin
- tetex-extra
- latex-xcolor (for the compendium)
- tr
  gs-common (gs)
  docbook-utils
- hyperlatex
  sharutils (uudecode for claws icon patch)
  gettext (msgfmt, dcgettext, gmsgfmt, xgettext for glib)
  libglib2.0-dev (glib-genmarshal, glib-compile-{resources,schemas})
  libgdk-pixbuf2.0-dev (gdk-pixbuf-csource)
  docbook-utils, ghostscript (claws-mail manual)
+ texlive (you need most modules, e.g. texlive-latex-extra)
+ latex-xcolor (for the compendium)
+
 
 
 Building the Webpages
