@@ -4,8 +4,8 @@
 
 * No more ChangeLog files
 
-  Do not modify any of the ChangeLog files in Libassuan.  Starting on
-  March 26, 2011 we put change information only in the GIT commit log,
+  Do not modify any of the ChangeLog files in Gpg4win.  Starting on
+  March 26, 2012 we put change information only in the GIT commit log,
   and generate a top-level ChangeLog file from logs at "make dist"
   time.  As such, there are strict requirements on the form of the
   commit log messages.  The old ChangeLog has been stored as
