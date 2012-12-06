@@ -418,7 +418,7 @@ chk  6255a7958dc9e735c3f76595cd973abca09c1f93
 #
 # Qt
 #
-server ftp://ftp.kdab.net/pub/gpg4win
+server ftp://ftp.kdab.net/gpg4win
 
 name qt-4.4.0-4-bin.zip
 file qt-gpg4win-4.4.0-4-bin.zip
@@ -437,7 +437,7 @@ chk  3c86381ba5c416c6728ff5b839379cca9208f0c3
 # collection of libraries.
 #
 
-server ftp://ftp.kdab.net/pub/gpg4win
+server ftp://ftp.kdab.net/gpg4win
 
 name kdesupport-20090701-bin.zip
 file kdesupport-20090701-dbus4win-bin.zip
