@@ -12,6 +12,7 @@ configure.lineno
 configure
 stamp-h1
 /*.tar.bz2
+/gpg4win-2.*
 doc/manual/version.tex
 include/config.nsi
 po/POTFILES
