@@ -128,7 +128,7 @@ gpg4win_pkg_gdk_pixbuf_configure = \
   CPPFLAGS=-I$(idir)/include LDFLAGS=-L$(idir)/lib
 
 gpg4win_pkg_gtk__configure = \
-  CPPFLAGS=-I$(idir)/include LDFLAGS=-L$(idir)/lib
+  CPPFLAGS=-I$(idir)/include LDFLAGS=-L$(idir)/lib --disable-cups
 
 # The GnuPG package provides man pages which we have to convert.
 # We also create the MO files here.
