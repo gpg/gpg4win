@@ -35,10 +35,13 @@ Please read the section "3. Known Bugs (and Workarounds)" before you
 start working with Gpg4win.
 
 Gpg4win supports these platforms:
+
   * Operating System: Windows XP (32/64), Vista (32/64), 7 (32/64)
+
   * MS Outlook: 2003, 2007
-  Note: Currently, there is no 64-bit support for GpgEX
-  (see section 3, "Using GpgEX with Windows x64", for details)
+
+Note: Currently, there is no 64-bit support for GpgEX
+      (see section 3, "Using GpgEX with Windows x64", for details)
 
 
 2. Changes

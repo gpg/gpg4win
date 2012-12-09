@@ -1,18 +1,18 @@
 # inst-kleopatra.nsi - Installer snippet for kleopatra.      -*- coding: latin-1; -*-
 # Copyright (C) 2005, 2007, 2008 g10 Code GmbH
-# 
+#
 # This file is part of GPG4Win.
-# 
+#
 # GPG4Win is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 of the License, or
 # (at your option) any later version.
-# 
+#
 # GPG4Win is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
-# 
+#
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
@@ -93,59 +93,57 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
 
   SetOutPath "$INSTDIR\share\doc\HTML\common"
 
-  File ${prefix}/share/doc/HTML/common/1.png
-  File ${prefix}/share/doc/HTML/common/10.png
-  File ${prefix}/share/doc/HTML/common/2.png
-  File ${prefix}/share/doc/HTML/common/3.png
-  File ${prefix}/share/doc/HTML/common/4.png
-  File ${prefix}/share/doc/HTML/common/5.png
-  File ${prefix}/share/doc/HTML/common/6.png
-  File ${prefix}/share/doc/HTML/common/7.png
-  File ${prefix}/share/doc/HTML/common/8.png
-  File ${prefix}/share/doc/HTML/common/9.png
-  File ${prefix}/share/doc/HTML/common/CMakeLists.txt
-  File ${prefix}/share/doc/HTML/common/Doxyfile.global
-  File ${prefix}/share/doc/HTML/common/README.Doxygen
-  File ${prefix}/share/doc/HTML/common/artistic-license.html
-  File ${prefix}/share/doc/HTML/common/block_title_bottom.png
-  File ${prefix}/share/doc/HTML/common/block_title_mid.png
-  File ${prefix}/share/doc/HTML/common/block_title_top.png
-  File ${prefix}/share/doc/HTML/common/bottom-left.png
-  File ${prefix}/share/doc/HTML/common/bottom-middle.png
-  File ${prefix}/share/doc/HTML/common/bottom-right.png
-  File ${prefix}/share/doc/HTML/common/bsd-license.html
-  File ${prefix}/share/doc/HTML/common/doxygen.css
-  File ${prefix}/share/doc/HTML/common/favicon.ico
-  File ${prefix}/share/doc/HTML/common/fdl-license
-  File ${prefix}/share/doc/HTML/common/fdl-license.html
-  File ${prefix}/share/doc/HTML/common/fdl-notice.html
-  File ${prefix}/share/doc/HTML/common/flat.css
-  File ${prefix}/share/doc/HTML/common/footer.html
-  File ${prefix}/share/doc/HTML/common/gpl-license
-  File ${prefix}/share/doc/HTML/common/gpl-license.html
-  File ${prefix}/share/doc/HTML/common/header.html
-  File ${prefix}/share/doc/HTML/common/kde-default.css
-  File ${prefix}/share/doc/HTML/common/kde-docs.css
-  File ${prefix}/share/doc/HTML/common/kde-localised.css.template
-  File ${prefix}/share/doc/HTML/common/kde.css
-  File ${prefix}/share/doc/HTML/common/kde_logo.png
-  File ${prefix}/share/doc/HTML/common/kde_logo_bg.png
-  File ${prefix}/share/doc/HTML/common/lgpl-license
-  File ${prefix}/share/doc/HTML/common/lgpl-license.html
-  File ${prefix}/share/doc/HTML/common/mainfooter.html
-  File ${prefix}/share/doc/HTML/common/mainheader.html
-  File ${prefix}/share/doc/HTML/common/print.css
-  File ${prefix}/share/doc/HTML/common/qpl-license.html
-  File ${prefix}/share/doc/HTML/common/tabs.css
-  File ${prefix}/share/doc/HTML/common/top-kde.jpg
-  File ${prefix}/share/doc/HTML/common/top-left.jpg
-  File ${prefix}/share/doc/HTML/common/top-left.png
-  File ${prefix}/share/doc/HTML/common/top-middle.png
-  File ${prefix}/share/doc/HTML/common/top-right.jpg
-  File ${prefix}/share/doc/HTML/common/top-right.png
-  File ${prefix}/share/doc/HTML/common/top.jpg
-  File ${prefix}/share/doc/HTML/common/x11-license.html
-  File ${prefix}/share/doc/HTML/common/xml.dcl
+  File ${prefix}/share/doc/HTML/common/common/1.png
+  File ${prefix}/share/doc/HTML/common/common/10.png
+  File ${prefix}/share/doc/HTML/common/common/2.png
+  File ${prefix}/share/doc/HTML/common/common/3.png
+  File ${prefix}/share/doc/HTML/common/common/4.png
+  File ${prefix}/share/doc/HTML/common/common/5.png
+  File ${prefix}/share/doc/HTML/common/common/6.png
+  File ${prefix}/share/doc/HTML/common/common/7.png
+  File ${prefix}/share/doc/HTML/common/common/8.png
+  File ${prefix}/share/doc/HTML/common/common/9.png
+  File ${prefix}/share/doc/HTML/common/common/CMakeLists.txt
+  File ${prefix}/share/doc/HTML/common/common/Doxyfile.global
+  File ${prefix}/share/doc/HTML/common/common/README.Doxygen
+  File ${prefix}/share/doc/HTML/common/common/artistic-license.html
+  File ${prefix}/share/doc/HTML/common/common/block_title_bottom.png
+  File ${prefix}/share/doc/HTML/common/common/block_title_mid.png
+  File ${prefix}/share/doc/HTML/common/common/block_title_top.png
+  File ${prefix}/share/doc/HTML/common/common/bottom-left.png
+  File ${prefix}/share/doc/HTML/common/common/bottom-middle.png
+  File ${prefix}/share/doc/HTML/common/common/bottom-right.png
+  File ${prefix}/share/doc/HTML/common/common/bsd-license.html
+  File ${prefix}/share/doc/HTML/common/common/doxygen.css
+  File ${prefix}/share/doc/HTML/common/common/favicon.ico
+  File ${prefix}/share/doc/HTML/common/common/fdl-license
+  File ${prefix}/share/doc/HTML/common/common/fdl-license.html
+  File ${prefix}/share/doc/HTML/common/common/fdl-notice.html
+  File ${prefix}/share/doc/HTML/common/common/flat.css
+  File ${prefix}/share/doc/HTML/common/common/footer.html
+  File ${prefix}/share/doc/HTML/common/common/gpl-license
+  File ${prefix}/share/doc/HTML/common/common/gpl-license.html
+  File ${prefix}/share/doc/HTML/common/common/header.html
+  File ${prefix}/share/doc/HTML/common/common/kde-default.css
+  File ${prefix}/share/doc/HTML/common/common/kde.css
+  File ${prefix}/share/doc/HTML/common/common/kde_logo.png
+  File ${prefix}/share/doc/HTML/common/common/kde_logo_bg.png
+  File ${prefix}/share/doc/HTML/common/common/lgpl-license
+  File ${prefix}/share/doc/HTML/common/common/lgpl-license.html
+  File ${prefix}/share/doc/HTML/common/common/mainfooter.html
+  File ${prefix}/share/doc/HTML/common/common/mainheader.html
+  File ${prefix}/share/doc/HTML/common/common/print.css
+  File ${prefix}/share/doc/HTML/common/common/qpl-license.html
+  File ${prefix}/share/doc/HTML/common/common/tabs.css
+  File ${prefix}/share/doc/HTML/common/common/top-kde.jpg
+  File ${prefix}/share/doc/HTML/common/common/top-left.jpg
+  File ${prefix}/share/doc/HTML/common/common/top-left.png
+  File ${prefix}/share/doc/HTML/common/common/top-middle.png
+  File ${prefix}/share/doc/HTML/common/common/top-right.jpg
+  File ${prefix}/share/doc/HTML/common/common/top-right.png
+  File ${prefix}/share/doc/HTML/common/common/top.jpg
+  File ${prefix}/share/doc/HTML/common/common/x11-license.html
+  File ${prefix}/share/doc/HTML/common/common/xml.dcl
 
   SetOutPath "$INSTDIR\share\doc\HTML\de\kleopatra"
 
@@ -239,7 +237,7 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
   File ${prefix}/share/kde4/services/kleopatra_decryptverifyfolders.desktop
   File ${prefix}/share/kde4/services/kleopatra_signencryptfiles.desktop
   File ${prefix}/share/kde4/services/kleopatra_signencryptfolders.desktop
-  
+
 !endif
 ${MementoSectionEnd}
 
