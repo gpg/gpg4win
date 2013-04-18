@@ -423,20 +423,19 @@ chk  ef483090edcdd85ae672aa3bab21526b1e335ae3
 
 #
 # Qt
+# Build recipe is available in kde git emerge
+# branch gpg4win qt-minimal
 #
-server ftp://ftp.kdab.net/gpg4win
+server http://files.kolab.org/local/gpg4win/libs/
 
-name qt-4.4.0-4-bin.zip
-file qt-gpg4win-4.4.0-4-bin.zip
-chk  363e017b4018d34a0340ef69b907c609c345f388
+file qt-x86-mingw4-4.8.4-20130418-bin.tar.bz2
+chk  2ad50b6890268efdc980bffc79426012380065f3
 
-name qt-4.4.0-4-lib.zip
-file qt-gpg4win-4.4.0-4-lib.zip
-chk  731e7bc44b4a71d75b012c43e080f7c67aa2acf7
+file qt-x86-mingw4-4.8.4-20130418-lib.tar.bz2
+chk  386a044ee4b87fea312c7bb7a75e34a60a7dc67b
 
-name qt-4.4.0-4-src.zip
-file qt-gpg4win-4.4.0-4-src.zip
-chk  3c86381ba5c416c6728ff5b839379cca9208f0c3
+file qt-x86-mingw4-4.8.4-src.tar.bz2
+chk  caaa01e15ce534de5020b019d23c052eb042bfb3
 
 #
 # Qt links DBus and Kleopatra / KDE libs needs it
