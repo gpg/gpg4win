@@ -25,6 +25,7 @@ SUBDIRS = po packages include doc src
 EXTRA_DIST = autogen.sh README.GIT ONEWS \
         build-aux/git-log-footer build-aux/git-log-fix \
         patches/pthreads-w32-2-8-0-release/01-make.patch \
+ patches/pthreads-w32-2-8-0-release/02-mingw_w64_timespec_compatibility.patch \
         patches/glib-2.12.12/01-giowin32.patch \
         patches/glib-2.12.12/02-gspawn-w32.patch \
         patches/glib-2.12.12/03-gspawn-w32-fixup.patch \
