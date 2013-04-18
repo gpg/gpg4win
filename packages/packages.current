@@ -439,27 +439,20 @@ file qt-gpg4win-4.4.0-4-src.zip
 chk  3c86381ba5c416c6728ff5b839379cca9208f0c3
 
 #
-# Qt contains DBus and thus depends on kdesupport, which is a random
-# collection of libraries.
+# Qt links DBus and Kleopatra / KDE libs needs it
 #
 
-server ftp://ftp.kdab.net/gpg4win
+server http://files.kolab.org/local/gpg4win/libs/
 
-name kdesupport-20090701-bin.zip
-file kdesupport-20090701-dbus4win-bin.zip
-chk 02bc4fab05ccf037daad184c06a13c00d3f0d542
+file dbus-x86-mingw4-1.4.24-20130417-bin.tar.bz2
+chk f556de269dda7bdd2a45639681533ee3da2732d4
 
-name kdesupport-20090701-dev.zip
-file kdesupport-20090701-dbus4win-dev.zip
-chk ddc85461dd0e358b6e5289a93c02ac5310491bb8
+file dbus-x86-mingw4-1.4.24-20130417-lib.tar.bz2
+chk fc557d7eb161881e1d6c091f215dd8e0615682cb
 
-name kdesupport-20090701-lib.zip
-file kdesupport-20090701-dbus4win-lib.zip
-chk 25124ee9a77ea5a4812026fca0b2b395e00a1f74
+file dbus-x86-mingw4-1.4.24-20130417-src.tar.bz2
+chk f03ffd02333f786a5e540c4430d3109952b5553e
 
-name kdesupport-20090701-src.zip
-file kdesupport-20090701-dbus4win-src.zip
-chk 2fa67502e00872d5e3ece1682d71383ca8cbf1e0
 
 # oxygen-icons
 #
