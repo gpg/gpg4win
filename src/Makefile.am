@@ -344,15 +344,16 @@ gpg4win_pkg_crypt_make_args = \
 gpg4win_pkg_crypt_make_args_inst = \
   prefix=$$$${pkgidir}
 
-gpg4win_pkg_zlib_make_args = -fwin32/Makefile.gcc PREFIX=i586-mingw32msvc- IMPLIB=libz.dll.a
+gpg4win_pkg_zlib_make_args = \
+  -fwin32/Makefile.gcc PREFIX=$(host)- IMPLIB=libz.dll.a
 
 gpg4win_pkg_zlib_make_args_inst = -fwin32/Makefile.gcc install \
 	BINARY_PATH=$$$${pkgidir}/bin INCLUDE_PATH=$$$${pkgidir}/include \
 	LIBRARY_PATH=$$$${pkgidir}/lib SHARED_MODE=1 IMPLIB=libz.dll.a
 
 # Supported binary packages.
-gpg4win_bpkgs = libiconv gettext pkgconfig pango expat freetype fontconfig cairo \
-	        atk qt kdesupport oxygen-icons kdelibs kleopatra bsfilter
+gpg4win_bpkgs = libiconv gettext pkgconfig pango expat freetype fontconfig \
+                cairo atk qt kdesupport oxygen-icons kdelibs kleopatra bsfilter
 
 # libiconv needs some special magic to generate a usable import
 # library.
