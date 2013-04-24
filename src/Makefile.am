@@ -338,7 +338,7 @@ gpg4win_pkg_bzip2_make_args = \
 gpg4win_pkg_bzip2_make_args_inst = \
   PREFIX=$$$${pkgidir} CC=$(CC) AR=$(AR) RANLIB=$(RANLIB)
 
-gpg4win_pkg_crypt_make = \
+gpg4win_pkg_crypt_make_args = \
   CC=$(CC) AR=$(AR)
 
 gpg4win_pkg_crypt_make_args_inst = \

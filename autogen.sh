@@ -104,7 +104,7 @@ if [ "$myhost" = "w32" ]; then
     case $myhostsub in
         *)
           [ -z "$w32root" ] && w32root="$HOME/w32root"
-          toolprefixes="$w32_toolprefixes i586-mingw32msvc"
+          toolprefixes="$w32_toolprefixes i686-w64-mingw32 i586-mingw32msvc"
           toolprefixes="$toolprefixes i386-mingw32msvc mingw32"
           extraoptions="$w32_extraoptions"
           ;;

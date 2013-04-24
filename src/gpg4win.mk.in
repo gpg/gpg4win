@@ -135,8 +135,8 @@ stamps/stamp-$(1)-02-configure: stamps/stamp-$(1)-01-patch
 	  cd "$$$${pkgbdir}";				\
 	 eval "../$$$${pkg_version}/configure"		\
 		--prefix="$$$${pkgidir}"		\
-		--host=$(host_cpu)-$(host_os)		\
-		--build=$(build_cpu)-$(build_os)	\
+		--host=$(host)		\
+		--build=$(build)	\
 		$$$${pkgcfg} CFLAGS=\"-mms-bitfields $$$${pkgextracflags}\")
 	touch stamps/stamp-$(1)-02-configure
 
