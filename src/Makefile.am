@@ -119,7 +119,7 @@ gpg4win_spkgs = glib libffi gdk-pixbuf gtk+ \
 
 gpg4win_pkg_glib_configure = \
   --with-lib-prefix=$(idir) --with-libiconv-prefix=$(idir) \
-  CPPFLAGS=-I$(idir)/include LDFLAGS=-L$(idir)/lib CCC=i586-mingw32msvc-g++
+  CPPFLAGS=-I$(idir)/include LDFLAGS=-L$(idir)/lib CCC=$(host)-g++
 gpg4win_pkg_glib_extracflags = -march=i486
 
 gpg4win_pkg_gdk_pixbuf_configure = \
