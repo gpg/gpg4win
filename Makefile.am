@@ -76,7 +76,9 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
 	patches/libetpan-0.57/01-gnutls_compat.patch \
         patches/scute-1.2.0/01-bugfixes.patch \
         patches/scute-1.3.0/01-wsastartup.patch \
-        patches/claws-mail-3.8.0cvs30/01-glib-h-only.patch
+        patches/claws-mail-3.8.0cvs30/01-glib-h-only.patch \
+	patches/gnutls-2.12.21/01-openssl-wincrypt.patch
+
 
 copy-news:
 	cp NEWS doc/website/NEWS.last

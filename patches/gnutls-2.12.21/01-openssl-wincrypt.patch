@@ -1,0 +1,36 @@
+#! /bin/sh
+patch -p0 -f $* < $0
+exit $?
+
+2013-04-25  Werner Koch  <wk@gnupg.org>
+
+	Fix name clash between wincrypt.h and openssl.h.
+	* libextra/gnutls_openssl.c: Undef X509_NAME.
+	* libextra/includes/gnutls/openssl.h: Ditto.
+
+
+--- libextra/gnutls_openssl.c~	2012-01-06 20:06:24.000000000 +0100
++++ libextra/gnutls_openssl.c	2013-04-25 11:22:22.878826900 +0200
+@@ -35,6 +35,9 @@
+    name, so restore the original name. */
+ #undef shutdown
+
++/* wincrypt.h defines a X509_NAME macro.  But it is a type for us.  */
++#undef X509_NAME
++
+ /* XXX: See lib/gnutls_int.h. */
+ #define GNUTLS_POINTER_TO_INT(_) ((int) GNUTLS_POINTER_TO_INT_CAST (_))
+ #define GNUTLS_INT_TO_POINTER(_) ((void*) GNUTLS_POINTER_TO_INT_CAST (_))
+--- libextra/includes/gnutls/openssl.h~	2012-01-06 20:06:24.000000000 +0100
++++ libextra/includes/gnutls/openssl.h	2013-04-25 11:21:52.346829024 +0200
+@@ -42,6 +42,10 @@
+
+ #include <gnutls/gnutls.h>
+
++/* wincrypt.h defines a X509_NAME macro.  But it is a type for us.  */
++#undef X509_NAME
++
++
+ /* Extra definitions that do not longer exist in gnutls.
+  */
+ #define GNUTLS_X509_CN_SIZE 256

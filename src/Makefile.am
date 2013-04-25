@@ -260,10 +260,21 @@ gpg4win_pkg_gpgex_configure = --silent \
   --with-gpg-error-prefix=$(idir) \
   --with-libassuan-prefix=$(idir)
 
+# We want to build with libgcrypt
+# We can't use pkcs11 tue to tto much additional dependencies.
 gpg4win_pkg_gnutls_configure = \
   --disable-cxx \
+  --with-libgcrypt \
+  --without-p11-kit \
   --with-libtasn1-prefix=$(idir) \
   --with-libgcrypt-prefix=$(idir)
+
+# In 2.12.21 gnutls_openssl is not linked to libtasn1, thus we use
+# this hack to here.  (Using the included minitasn does work either
+# due to a missing soruce file.)
+gpg4win_pkg_gnutls_make_args = \
+   LTLIBTASN1=-ltasn1
+
 
 gpg4win_pkg_curl_configure = \
   --with-gnutls --without-ca-bundle --with-libiconv-prefix=$(idir)
@@ -454,6 +465,21 @@ define gpg4win_pkg_libpng_post_install
 endef
 
 define gpg4win_pkg_enchant_post_install
+ (cd $$$${pkgidir};							\
+ perl -pi -e 's/^prefix=.*$$$$/prefix=\/usr/' `find . -name \*.pc`)
+endef
+
+define gpg4win_pkg_libgsasl_post_install
+ (cd $$$${pkgidir};							\
+ perl -pi -e 's/^prefix=.*$$$$/prefix=\/usr/' `find . -name \*.pc`)
+endef
+
+define gpg4win_pkg_libtasn1_post_install
+ (cd $$$${pkgidir};							\
+ perl -pi -e 's/^prefix=.*$$$$/prefix=\/usr/' `find . -name \*.pc`)
+endef
+
+define gpg4win_pkg_gnutls_post_install
  (cd $$$${pkgidir};							\
  perl -pi -e 's/^prefix=.*$$$$/prefix=\/usr/' `find . -name \*.pc`)
 endef
