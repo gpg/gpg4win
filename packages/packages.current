@@ -428,14 +428,14 @@ chk  ef483090edcdd85ae672aa3bab21526b1e335ae3
 #
 server http://files.kolab.org/local/gpg4win/libs/
 
-file qt-x86-mingw4-4.8.4-20130418-bin.tar.bz2
-chk  2ad50b6890268efdc980bffc79426012380065f3
+file qt-x86-mingw4-4.8.4-20130426-bin.tar.bz2
+chk  48f84d4f483e5ff4eeceff2402f56225878ed558
 
-file qt-x86-mingw4-4.8.4-20130418-lib.tar.bz2
-chk  386a044ee4b87fea312c7bb7a75e34a60a7dc67b
+file qt-x86-mingw4-4.8.4-20130426-lib.tar.bz2
+chk  df86e6513cc5639d79881dd812197153f830be67
 
-file qt-x86-mingw4-4.8.4-src.tar.bz2
-chk  caaa01e15ce534de5020b019d23c052eb042bfb3
+file qt-x86-mingw4-4.8.4-20130426-src.tar.bz2
+chk  66c56babca65fb38c6919cf63405dc51acf00ac6
 
 #
 # Qt links DBus and Kleopatra / KDE libs needs it
@@ -467,22 +467,13 @@ chk  fe11199a0e917d4c9ed01d453e10f270eadb136b
 
 
 #
-# kdelibs + kleopatra
+# kleopatra (and her KDE dependencies)
 #
 #
 server http://files.kolab.org/local/gpg4win
 
-file kdelibs-20110203-bin.zip
-chk  b23c554b0c144a04513cc72a53af9983ceccf500
+file kleopatra-20130426-bin.tar.bz2
+chk  e1b8f91c0c1e4b6328dab45bde688a42f8007653
 
-file kdelibs-20110203-lib.zip
-chk  f877c4c69060718b7e4e22fa7475e788e33316df
-
-file kdelibs-20110203-src.zip
-chk  5c0515c4619af0e2e21cfd9c7a019d2dfa9db118
-
-file kleopatra-20121209-bin.zip
-chk  95c4dfecf05c345b7725935ddf6f64d37881244c
-
-file kleopatra-20121209-src.zip
-chk  5883ec2d2f487510bd29d961456680702e33787f
+file kleopatra-20130426-src.tar.bz2
+chk  647450abb26bdd0449bc4be5d10184571cb94b8e
