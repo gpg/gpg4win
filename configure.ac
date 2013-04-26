@@ -328,9 +328,9 @@ GPG4WIN_SPKG([bsfilter_plugin], [claws-mail])
 GPG4WIN_IPKG([compendium])
 
 # Qt related stuff.
-GPG4WIN_BPKG_GNUWIN32([kdesupport])
+GPG4WIN_BPKG_GNUWIN32([dbus])
 GPG4WIN_BPKG_BINSRC([oxygen-icons])
-GPG4WIN_BPKG_GNUWIN32([qt], [kdesupport])
+GPG4WIN_BPKG_GNUWIN32([qt], [dbus])
 GPG4WIN_BPKG_GNUWIN32([kdelibs], [qt oxygen-icons])
 GPG4WIN_BPKG_BINSRC([kleopatra], [gpgme gnupg2 kdelibs])
 #GPG4WIN_BPKG_GNUWIN32([kleopatra], [gpgme gnupg2 kdelibs])
