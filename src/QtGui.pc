@@ -5,8 +5,8 @@ includedir=${prefix}/include/QtGui
 
 Name: Qtgui
 Description: Qtgui Library
-Version: 4.5.0
+Version: 4.8.4
 Libs: -L${libdir} -lQtGui4
-Cflags: -DQT_GUI_LIB -I${includedir}
+Cflags: -DQT_SHARED -DQT_THREAD_SUPPORT -I${includedir}
 Requires: QtCore
 

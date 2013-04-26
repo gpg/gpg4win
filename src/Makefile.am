@@ -79,7 +79,7 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi config.site \
         inst-zlib.nsi        	   uninst-zlib.nsi            \
 	inst-bsfilter.nsi          uninst-bsfilter.nsi        \
         inst-qt.nsi        	   uninst-qt.nsi              \
-        inst-kdesupport.nsi   	   uninst-kdesupport.nsi      \
+        inst-dbus.nsi   	   uninst-dbus.nsi      \
         inst-oxygen-icons.nsi  	   uninst-oxygen-icons.nsi    \
         inst-kdelibs.nsi  	   uninst-kdelibs.nsi         \
         inst-kleopatra.nsi  	   uninst-kleopatra.nsi       \
@@ -369,7 +369,7 @@ gpg4win_pkg_zlib_make_args_inst = -fwin32/Makefile.gcc install \
 
 # Supported binary packages.
 gpg4win_bpkgs = libiconv gettext pkgconfig pango expat freetype fontconfig \
-                cairo atk qt kdesupport oxygen-icons kdelibs kleopatra bsfilter
+                cairo atk qt dbus oxygen-icons kdelibs kleopatra bsfilter
 
 # libiconv needs some special magic to generate a usable import
 # library.
@@ -500,21 +500,6 @@ endef
 define gpg4win_pkg_qt_post_install
 (mkdir $$$${pkgidir_dev}/lib/pkgconfig; \
  cp $(srcdir)/QtCore.pc $(srcdir)/QtGui.pc $$$${pkgidir_dev}/lib/pkgconfig/)
-endef
-
-
-# kdesupport ships gettext, which we already have.  Remove a stow
-# conflict about that.  Also remove a stow conflict with kdelibs-lib.
-define gpg4win_pkg_kdesupport_post_install
-(rm -fR "$$$${pkgidir_dev}/share/locale"; \
- rm -fR "$$$${pkgidir_dev}/share/apps/cmake/modules")
-endef
-
-# libxml2 ships some binaries, which we already have from kdesupport.  Remove a stow
-# conflict about that.
-define gpg4win_pkg_libxml2_post_install
-(rm -f "$$$${pkgidir}/bin/xmllint.exe"; \
- rm -f "$$$${pkgidir}/bin/xmlcatalog.exe")
 endef
 
 # Supported internal packages.  Internal packages do not require any

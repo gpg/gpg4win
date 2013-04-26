@@ -5,7 +5,7 @@ includedir=${prefix}/include/QtCore
 
 Name: Qtcore
 Description: Qtcore Library
-Version: 4.5.0
+Version: 4.8.4
 Libs: -L${libdir} -lQtCore4 
-Cflags: -DUNICODE -DQT_LARGEFILE_SUPPORT -DQT_DLL -DQT_CORE_LIB -DQT_THREAD_SUPPORT -I${includedir}
+Cflags: -DQT_SHARED -DQT_THREAD_SUPPORT -I${includedir}
 
