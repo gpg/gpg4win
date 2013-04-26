@@ -266,11 +266,11 @@
 !define gpg4win_pkg_gettext_version @gpg4win_pkg_gettext_version@
 !define gpg4win_pkg_gettext_src @gpg4win_pkg_gettext_src@
 
-@HAVE_PKG_KDESUPPORT@
-!define gpg4win_pkg_kdesupport @gpg4win_pkg_kdesupport@
-!define gpg4win_pkg_kdesupport_version @gpg4win_pkg_kdesupport_version@
-!define gpg4win_pkg_kdesupport_dev @gpg4win_pkg_kdesupport_dev@
-!define gpg4win_pkg_kdesupport_src @gpg4win_pkg_kdesupport_src@
+@HAVE_PKG_DBUS@
+!define gpg4win_pkg_dbus @gpg4win_pkg_dbus@
+!define gpg4win_pkg_dbus_version @gpg4win_pkg_dbus_version@
+!define gpg4win_pkg_dbus_dev @gpg4win_pkg_dbus_dev@
+!define gpg4win_pkg_dbus_src @gpg4win_pkg_dbus_src@
 
 @HAVE_PKG_QT@
 !define gpg4win_pkg_qt @gpg4win_pkg_qt@
@@ -282,12 +282,6 @@
 !define gpg4win_pkg_oxygen_icons @gpg4win_pkg_oxygen_icons@
 !define gpg4win_pkg_oxygen_icons_version @gpg4win_pkg_oxygen_icons_version@
 !define gpg4win_pkg_oxygen_icons_src @gpg4win_pkg_oxygen_icons_src@
-
-@HAVE_PKG_KDELIBS@
-!define gpg4win_pkg_kdelibs @gpg4win_pkg_kdelibs@
-!define gpg4win_pkg_kdelibs_version @gpg4win_pkg_kdelibs_version@
-!define gpg4win_pkg_kdelibs_dev @gpg4win_pkg_kdelibs_dev@
-!define gpg4win_pkg_kdelibs_src @gpg4win_pkg_kdelibs_src@
 
 @HAVE_PKG_KLEOPATRA@
 !define gpg4win_pkg_kleopatra @gpg4win_pkg_kleopatra@
