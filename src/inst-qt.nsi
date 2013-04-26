@@ -51,53 +51,6 @@ Section "-qt" SEC_qt
   File ${prefix}/plugins/imageformats/qsvg4.dll
   File ${prefix}/plugins/imageformats/qtiff4.dll
 
-
-  # Are those actually used anywhere?
-  SetOutPath "$INSTDIR\translations"
-
-  File ${prefix}/translations/assistant_adp_de.qm
-#  File ${prefix}/translations/assistant_adp_ja.qm
-#  File ${prefix}/translations/assistant_adp_pl.qm
-#  File ${prefix}/translations/assistant_adp_zh_CN.qm
-#  File ${prefix}/translations/assistant_adp_zh_TW.qm
-  File ${prefix}/translations/assistant_de.qm
-#  File ${prefix}/translations/assistant_pl.qm
-#  File ${prefix}/translations/assistant_zh_CN.qm
-#  File ${prefix}/translations/assistant_zh_TW.qm
-  File ${prefix}/translations/designer_de.qm
-#  File ${prefix}/translations/designer_ja.qm
-#  File ${prefix}/translations/designer_pl.qm
-#  File ${prefix}/translations/designer_zh_CN.qm
-#  File ${prefix}/translations/designer_zh_TW.qm
-  File ${prefix}/translations/linguist_de.qm
-#  File ${prefix}/translations/linguist_ja.qm
-#  File ${prefix}/translations/linguist_pl.qm
-#  File ${prefix}/translations/linguist_zh_CN.qm
-#  File ${prefix}/translations/linguist_zh_TW.qm
-#  File ${prefix}/translations/qt_ar.qm
-  File ${prefix}/translations/qt_de.qm
-#  File ${prefix}/translations/qt_es.qm
-#  File ${prefix}/translations/qt_fr.qm
-  File ${prefix}/translations/qt_help_de.qm
-#  File ${prefix}/translations/qt_help_pl.qm
-#  File ${prefix}/translations/qt_help_zh_CN.qm
-#  File ${prefix}/translations/qt_help_zh_TW.qm
-#  File ${prefix}/translations/qt_iw.qm
-#  File ${prefix}/translations/qt_ja_jp.qm
-#  File ${prefix}/translations/qt_pl.qm
-#  File ${prefix}/translations/qt_pt.qm
-#  File ${prefix}/translations/qt_ru.qm
-#  File ${prefix}/translations/qt_sk.qm
-#  File ${prefix}/translations/qt_sv.qm
-#  File ${prefix}/translations/qt_uk.qm
-#  File ${prefix}/translations/qt_zh_CN.qm
-#  File ${prefix}/translations/qt_zh_TW.qm
-#  File ${prefix}/translations/qtconfig_pl.qm
-#  File ${prefix}/translations/qtconfig_zh_CN.qm
-#  File ${prefix}/translations/qvfb_pl.qm
-#  File ${prefix}/translations/qvfb_zh_CN.qm
-#  File ${prefix}/translations/qvfb_zh_TW.qm
-
   # For what is this needed? Scripting?
   SetOutPath "$INSTDIR"
   File ${prefix}/bin/qdbus.exe
