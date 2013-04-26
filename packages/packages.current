@@ -380,10 +380,9 @@ chk  4dafebee7b0c7adde2b27473faca7236851cf472
 file dirmngr/dirmngr-1.1.1.tar.bz2
 chk  e708d4aa5ce852f4de3f4b58f4e4f221f5e5c690
 
-# checked: 2012-03-28 wk - updated
-#          2012-12-07 wk - can't update to 0.8.2 due to MOC problems.
-file pinentry/pinentry-0.8.1.tar.gz
-chk  84a6940175b552a8562b4014f4661dec3ff10165
+# checked: 2013-04-26 wk
+file pinentry/pinentry-0.8.3.tar.gz
+chk  fc0efe5d375568f90ddbb23ee68e173411a49d4a
 
 # checked: 2012-03-28 wk
 file scute/scute-1.4.0.tar.bz2
