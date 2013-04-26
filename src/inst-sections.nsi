@@ -35,8 +35,8 @@
 !ifdef HAVE_PKG_CRYPT
 !include "inst-crypt.nsi"
 !endif
-!ifdef HAVE_PKG_KDESUPPORT
-!include "inst-kdesupport.nsi"
+!ifdef HAVE_PKG_DBUS
+!include "inst-dbus.nsi"
 !endif
 !ifdef HAVE_PKG_LIBGSASL
 !include "inst-libgsasl.nsi"
@@ -85,9 +85,6 @@
 !endif
 !ifdef HAVE_PKG_LIBASSUAN
 !include "inst-libassuan.nsi"
-!endif
-!ifdef HAVE_PKG_KDELIBS
-!include "inst-kdelibs.nsi"
 !endif
 !ifdef HAVE_PKG_LIBGPG_ERROR
 !include "inst-libgpg-error.nsi"
@@ -332,9 +329,6 @@
 !ifdef HAVE_PKG_LIBGPG_ERROR
 !include "uninst-libgpg-error.nsi"
 !endif
-!ifdef HAVE_PKG_KDELIBS
-!include "uninst-kdelibs.nsi"
-!endif
 !ifdef HAVE_PKG_LIBASSUAN
 !include "uninst-libassuan.nsi"
 !endif
@@ -395,8 +389,8 @@
 !ifdef HAVE_PKG_LIBGSASL
 !include "uninst-libgsasl.nsi"
 !endif
-!ifdef HAVE_PKG_KDESUPPORT
-!include "uninst-kdesupport.nsi"
+!ifdef HAVE_PKG_DBUS
+!include "uninst-dbus.nsi"
 !endif
 !ifdef HAVE_PKG_CRYPT
 !include "uninst-crypt.nsi"
@@ -700,17 +694,14 @@ Function CalcDepends
 !ifdef HAVE_PKG_BSFILTER_PLUGIN
   !insertmacro UnselectSection ${SEC_bsfilter_plugin}
 !endif
-!ifdef HAVE_PKG_KDESUPPORT
-  !insertmacro UnselectSection ${SEC_kdesupport}
+!ifdef HAVE_PKG_DBUS
+  !insertmacro UnselectSection ${SEC_dbus}
 !endif
 !ifdef HAVE_PKG_QT
   !insertmacro UnselectSection ${SEC_qt}
 !endif
 !ifdef HAVE_PKG_OXYGEN_ICONS
   !insertmacro UnselectSection ${SEC_oxygen_icons}
-!endif
-!ifdef HAVE_PKG_KDELIBS
-  !insertmacro UnselectSection ${SEC_kdelibs}
 !endif
 
   # Always install gnupg2.  This is also ensured by putting
@@ -778,7 +769,7 @@ Function CalcDepends
   have_kleopatra:
   !insertmacro SelectSection ${SEC_gpgme}
   # This drags in all the other KDE and Qt stuff.
-  !insertmacro SelectSection ${SEC_kdelibs}
+  !insertmacro SelectSection ${SEC_kleopatra}
   skip_kleopatra:
 !endif
 
@@ -848,24 +839,24 @@ Function CalcDepends
 
   # Now the implicitely installed packages.
 
-!ifdef HAVE_PKG_KDELIBS
-  !insertmacro SectionFlagIsSet ${SEC_kdelibs} \
-		${SF_SELECTED} have_kdelibs skip_kdelibs
-  have_kdelibs:
+!ifdef HAVE_PKG_KLEOPATRA
+  !insertmacro SectionFlagIsSet ${SEC_kleopatra} \
+		${SF_SELECTED} have_kleopatra skip_kdelibs
+  have_kleopatra:
   !insertmacro SelectSection ${SEC_qt}
   !insertmacro SelectSection ${SEC_oxygen_icons}
-   skip_kdelibs:
+   skip_kleopatra:
 !endif
 
 !ifdef HAVE_PKG_QT
   !insertmacro SectionFlagIsSet ${SEC_qt} \
 		${SF_SELECTED} have_qt skip_qt
   have_qt:
-  !insertmacro SelectSection ${SEC_kdesupport}
+  !insertmacro SelectSection ${SEC_dbus}
   skip_qt:
 !endif
 
-  # Package "kdesupport" has no dependencies.
+  # Package "dbus" has no dependencies.
   # Package "oxygen-icons" has no dependencies.
 
 !ifdef HAVE_PKG_RSSYL

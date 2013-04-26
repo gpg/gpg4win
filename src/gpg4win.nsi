@@ -33,9 +33,6 @@
 !ifdef HAVE_PKG_KLEOPATRA
 !undef HAVE_PKG_KLEOPATRA
 !endif
-!ifdef HAVE_PKG_KDELIBS
-!undef HAVE_PKG_KDELIBS
-!endif
 !ifdef HAVE_PKG_OXYGEN_ICONS
 !undef HAVE_PKG_OXYGEN_ICONS
 !endif
@@ -137,17 +134,14 @@
 !ifdef HAVE_PKG_GTK_
 !undef HAVE_PKG_GTK_
 !endif
-!ifdef HAVE_PKG_KDESUPPORT
-!undef HAVE_PKG_KDESUPPORT
+!ifdef HAVE_PKG_DBUS
+!undef HAVE_PKG_DBUS
 !endif
 !ifdef HAVE_PKG_QT
 !undef HAVE_PKG_QT
 !endif
 !ifdef HAVE_PKG_OXYGEN_ICONS
 !undef HAVE_PKG_OXYGEN_ICONS
-!endif
-!ifdef HAVE_PKG_KDELIBS
-!undef HAVE_PKG_KDELIBS
 !endif
 !ifdef HAVE_PKG_KLEOPATRA
 !undef HAVE_PKG_KLEOPATRA
