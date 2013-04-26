@@ -30,52 +30,16 @@ Section "-un.qt"
   Push "${gpg4win_pkg_qt_src}"
   Call un.SourceDelete
 !else
-  Delete "$INSTDIR\mingwm10.dll"
   Delete "$INSTDIR\qt.conf"
 
   Delete "$INSTDIR\qdbus.exe"
 
-  Delete "$INSTDIR\Qt3Support4.dll"
   Delete "$INSTDIR\QtCore4.dll"
   Delete "$INSTDIR\QtDBus4.dll"
   Delete "$INSTDIR\QtGui4.dll"
-  Delete "$INSTDIR\QtHelp4.dll"
   Delete "$INSTDIR\QtNetwork4.dll"
-  Delete "$INSTDIR\QtOpenGL4.dll"
-  Delete "$INSTDIR\QtScript4.dll"
-  Delete "$INSTDIR\QtSql4.dll"
   Delete "$INSTDIR\QtSvg4.dll"
   Delete "$INSTDIR\QtXml4.dll"
-  # Not in Qt anymore since 4.3.3.
-  Delete "$INSTDIR\QtTest4.dll"
-
-  Delete "$INSTDIR\plugins\accessible\qtaccessiblecompatwidgets4.dll"
-  Delete "$INSTDIR\plugins\accessible\qtaccessiblewidgets4.dll"
-
-  RMDir "$INSTDIR\plugins\accessible"
-
-  Delete "$INSTDIR\plugins\codecs\qcncodecs4.dll"
-  Delete "$INSTDIR\plugins\codecs\qjpcodecs4.dll"
-  Delete "$INSTDIR\plugins\codecs\qkrcodecs4.dll"
-  Delete "$INSTDIR\plugins\codecs\qtwcodecs4.dll"
-
-  RMDir "$INSTDIR\plugins\codecs"
-
-  Delete "$INSTDIR\plugins\designer\qwebview.dll"
-  Delete "$INSTDIR\plugins\designer\qt3supportwidgets.dll"
-  # Not in Qt anymore since 4.3.3.
-  Delete "$INSTDIR\plugins\designer\arthurplugin.dll"
-  Delete "$INSTDIR\plugins\designer\containerextension.dll"
-  Delete "$INSTDIR\plugins\designer\customwidgetplugin.dll"
-  Delete "$INSTDIR\plugins\designer\taskmenuextension.dll"
-  Delete "$INSTDIR\plugins\designer\worldtimeclockplugin.dll"
-
-  RMDir "$INSTDIR\plugins\designer"
-
-  Delete "$INSTDIR\plugins\iconengines\qsvg4.dll"
-  Delete "$INSTDIR\plugins\iconengines\qsvgicon4.dll"
-
-  RMDir "$INSTDIR\plugins\iconengines"
 
   Delete "$INSTDIR\plugins\imageformats\qgif4.dll"
   Delete "$INSTDIR\plugins\imageformats\qico4.dll"
@@ -85,12 +49,6 @@ Section "-un.qt"
   Delete "$INSTDIR\plugins\imageformats\qtiff4.dll"
 
   RMDir "$INSTDIR\plugins\imageformats"
-
-  Delete "$INSTDIR\plugins\script\qtscriptdbus4.dll"
-  RMDir "$INSTDIR\plugins\script"
-
-  Delete "$INSTDIR\plugins\sqldrivers\qsqlite4.dll"
-  RMDir  "$INSTDIR\plugins\sqldrivers"
 
   RMDir  "$INSTDIR\plugins"
 

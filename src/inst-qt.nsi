@@ -1,18 +1,18 @@
 # inst-qt.nsi - Installer snippet for qt.      -*- coding: latin-1; -*-
 # Copyright (C) 2005, 2007, 2008 g10 Code GmbH
-# 
+#
 # This file is part of GPG4Win.
-# 
+#
 # GPG4Win is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 of the License, or
 # (at your option) any later version.
-# 
+#
 # GPG4Win is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
-# 
+#
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
@@ -34,41 +34,13 @@ Section "-qt" SEC_qt
 !else
   # Qt needs some help to find itself.
   File ${SRCDIR}/qt.conf
-  # Qt uses -mthreads, so install the support library.
-  File ${BUILD_DIR}/mingwm10.dll
 
-  File ${prefix}/bin/Qt3Support4.dll
   File ${prefix}/bin/QtCore4.dll
   File ${prefix}/bin/QtDBus4.dll
   File ${prefix}/bin/QtGui4.dll
-  File ${prefix}/bin/QtHelp4.dll
   File ${prefix}/bin/QtNetwork4.dll
-  File ${prefix}/bin/QtOpenGL4.dll
-  File ${prefix}/bin/QtScript4.dll
-  File ${prefix}/bin/QtSql4.dll
   File ${prefix}/bin/QtSvg4.dll
   File ${prefix}/bin/QtXml4.dll
-
-  SetOutPath "$INSTDIR\plugins\accessible"
-
-  File ${prefix}/plugins/accessible/qtaccessiblecompatwidgets4.dll
-  File ${prefix}/plugins/accessible/qtaccessiblewidgets4.dll
-
-  SetOutPath "$INSTDIR\plugins\codecs"
-
-  File ${prefix}/plugins/codecs/qcncodecs4.dll
-  File ${prefix}/plugins/codecs/qjpcodecs4.dll
-  File ${prefix}/plugins/codecs/qkrcodecs4.dll
-  File ${prefix}/plugins/codecs/qtwcodecs4.dll
-
-  SetOutPath "$INSTDIR\plugins\designer"
-
-  File ${prefix}/plugins/designer/qt3supportwidgets.dll
-  File ${prefix}/plugins/designer/qwebview.dll
-
-  SetOutPath "$INSTDIR\plugins\iconengines"
-
-  File ${prefix}/plugins/iconengines/qsvgicon4.dll
 
   SetOutPath "$INSTDIR\plugins\imageformats"
 
@@ -79,14 +51,8 @@ Section "-qt" SEC_qt
   File ${prefix}/plugins/imageformats/qsvg4.dll
   File ${prefix}/plugins/imageformats/qtiff4.dll
 
-  SetOutPath "$INSTDIR\plugins\script"
 
-  File ${prefix}/plugins/script/qtscriptdbus4.dll
-
-  SetOutPath "$INSTDIR\plugins\sqldrivers"
-
-  File ${prefix}/plugins/sqldrivers/qsqlite4.dll
-
+  # Are those actually used anywhere?
   SetOutPath "$INSTDIR\translations"
 
   File ${prefix}/translations/assistant_adp_de.qm
@@ -132,10 +98,7 @@ Section "-qt" SEC_qt
 #  File ${prefix}/translations/qvfb_zh_CN.qm
 #  File ${prefix}/translations/qvfb_zh_TW.qm
 
-  # FIXME: From the lib package.  This is wrong.
-!undef prefix
-!define prefix ${ipdir}/qt-dev-${gpg4win_pkg_qt_version}
-
+  # For what is this needed? Scripting?
   SetOutPath "$INSTDIR"
   File ${prefix}/bin/qdbus.exe
 
