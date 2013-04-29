@@ -488,6 +488,14 @@ define gpg4win_pkg_gnutls_post_install
  perl -pi -e 's/^prefix=.*$$$$/prefix=\/usr/' `find . -name \*.pc`)
 endef
 
+# We don't use khelpcenter in kleopatra so remove the help links
+define gpg4win_pkg_kleopatra_post_install
+ (for i in de en ; do \
+    (cd $$$${pkgidir}/share/doc/HTML/$$$${i}; \
+     perl -pi -e 's/help:\///g' `find . -name \*.html`); \
+ done)
+endef
+
 
 define gpg4win_pkg_libiconv_post_install
 (cp $(srcdir)/libiconv.def $$$${pkgidir}/lib;		\
