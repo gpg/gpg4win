@@ -57,7 +57,7 @@ Section "-un.kleopatra"
   Delete "$INSTDIR\share\icons\hicolor\22x22\apps\kleopatra.png"
   Delete "$INSTDIR\share\icons\hicolor\16x16\apps\kleopatra.png"
   Delete "$INSTDIR\share\icons\hicolor\128x128\apps\kleopatra.png"
-  Delete "$INSTDIR\share\icons\hicolor\index.theme
+  Delete "$INSTDIR\share\icons\hicolor\index.theme"
   Delete "$INSTDIR\share\doc\HTML\en\kleopatra\menuwindow.html"
   Delete "$INSTDIR\share\doc\HTML\en\kleopatra\menuview.html"
   Delete "$INSTDIR\share\doc\HTML\en\kleopatra\menutools.html"

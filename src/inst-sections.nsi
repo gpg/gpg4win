@@ -841,11 +841,11 @@ Function CalcDepends
 
 !ifdef HAVE_PKG_KLEOPATRA
   !insertmacro SectionFlagIsSet ${SEC_kleopatra} \
-		${SF_SELECTED} have_kleopatra skip_kdelibs
-  have_kleopatra:
+		${SF_SELECTED} have_kleopatra_libs skip_kleopatra_libs
+  have_kleopatra_libs:
   !insertmacro SelectSection ${SEC_qt}
   !insertmacro SelectSection ${SEC_oxygen_icons}
-   skip_kleopatra:
+   skip_kleopatra_libs:
 !endif
 
 !ifdef HAVE_PKG_QT
