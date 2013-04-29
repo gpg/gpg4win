@@ -1,0 +1,30 @@
+#! /bin/sh
+patch -p0 -f $* < $0
+exit $?
+
+The _FILE_OFFSET_BITS check is also employed for Windows but does not
+work reliable and is not needed anyway.  Will be fixed in 1.4.1.  For
+the time being we need to patch the generated header (thus the
+.postcfg-build suffix of this file)
+
+
+--- src/gpgme.h~	2013-04-26 17:49:31.659676656 +0200
++++ src/gpgme.h	2013-04-29 09:35:18.085078818 +0200
+@@ -90,17 +90,6 @@
+    API incompatibilities.  */
+ #define GPGME_VERSION_NUMBER 0x010400
+
+-/* Check for a matching _FILE_OFFSET_BITS definition.  */
+-#if 64
+-#ifndef _FILE_OFFSET_BITS
+-#error GPGME was compiled with _FILE_OFFSET_BITS = 64, please see the section "Largefile support (LFS)" in the GPGME manual.
+-#else
+-#if (_FILE_OFFSET_BITS) != (64)
+-#error GPGME was compiled with a different value for _FILE_OFFSET_BITS, namely 64, please see the section "Largefile support (LFS)" in the GPGME manual.
+-#endif
+-#endif
+-#endif
+-
+
+ 
+ /* Some opaque data types used by GPGME.  */

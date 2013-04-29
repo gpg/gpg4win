@@ -72,13 +72,14 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
 	patches/dirmngr-1.0.3/01-ldaphttp.patch \
 	patches/dirmngr-1.1.0/01-mmap.patch \
 	patches/gpgol-0.9.91/01-gpgme.patch \
+        patches/gpgol-1.1.3/01-w64-ming64.patch  \
         patches/gpa-0.9.0/01-title-prop.patch \
 	patches/libetpan-0.57/01-gnutls_compat.patch \
         patches/scute-1.2.0/01-bugfixes.patch \
         patches/scute-1.3.0/01-wsastartup.patch \
         patches/claws-mail-3.8.0cvs30/01-glib-h-only.patch \
-	patches/gnutls-2.12.21/01-openssl-wincrypt.patch
-
+	patches/gnutls-2.12.21/01-openssl-wincrypt.patch \
+        patches/gpgme-1.4.0/01-off_t.postcfg-build
 
 copy-news:
 	cp NEWS doc/website/NEWS.last

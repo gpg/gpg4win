@@ -1,0 +1,36 @@
+#! /bin/sh
+patch -p1 -f $* < $0
+exit $?
+
+Fix an w64-mingw32 incompatibility.
+
+
+diff --git a/src/common.c b/src/common.c
+index 43239c7..68cae2d 100644
+--- a/src/common.c
++++ b/src/common.c
+@@ -18,6 +18,7 @@
+  */
+
+ #include <config.h>
++#define OEMRESOURCE    /* Required for OBM_CHECKBOXES.  */
+ #include <windows.h>
+ #include <shlobj.h>
+ #ifndef CSIDL_APPDATA
+diff --git a/src/ext-commands.cpp b/src/ext-commands.cpp
+index 04140c5..85feb2d 100644
+--- a/src/ext-commands.cpp
++++ b/src/ext-commands.cpp
+@@ -21,7 +21,11 @@
+ #include <config.h>
+ #endif
+
+-#define _WIN32_IE 0x400 /* Need TBIF_COMMAND et al.  */
++/* Need TBIF_COMMAND et al. (0x0400 would be sufficient but elsewhere
++   we require 0x600 anyway). */
++#ifndef _WIN32_IE
++# define _WIN32_IE 0x0600
++#endif
+ #include <windows.h>
+
+ #include "mymapi.h"
