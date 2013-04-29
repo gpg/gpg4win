@@ -34,7 +34,7 @@ Section "-gnutls" SEC_gnutls
 
   File ${prefix}/bin/libgnutls-26.dll
   File ${prefix}/bin/libgnutls-extra-26.dll
-  File ${prefix}/bin/libgnutls-openssl-26.dll
+  File ${prefix}/bin/libgnutls-openssl-27.dll
 
 !endif
 SectionEnd

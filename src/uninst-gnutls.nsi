@@ -32,7 +32,7 @@ Section "-un.gnutls"
 
   Delete "$INSTDIR\libgnutls-26.dll"
   Delete "$INSTDIR\libgnutls-extra-26.dll"
-  Delete "$INSTDIR\libgnutls-openssl-26.dll"
+  Delete "$INSTDIR\libgnutls-openssl-27.dll"
   RMDir "$INSTDIR"
 
 !endif
