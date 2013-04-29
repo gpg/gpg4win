@@ -1,18 +1,18 @@
 # inst-gnupg2.nsi - Installer snippet for gnupg2.     -*- coding: latin-1; -*-
 # Copyright (C) 2007, 2008 g10 Code GmbH
-# 
+#
 # This file is part of Gpg4win.
-# 
+#
 # Gpg4win is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 of the License, or
 # (at your option) any later version.
-# 
+#
 # Gpg4win is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
-# 
+#
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
@@ -41,7 +41,7 @@ ${MementoSection} "GnuPG" SEC_gnupg2
   # it like we did with gpg.  It might be better to install this tool
   # into a subdirectory.
 
-  # If we are reinstalling, try to kill a possible running agent 
+  # If we are reinstalling, try to kill a possible running agent
   ifFileExists "$INSTDIR\gpg-connect-agent.exe"  0 no_gpg_connect_agent
     ExecWait '"$INSTDIR\gpg-connect-agent.exe" killagent /bye'
   no_gpg_connect_agent:
@@ -54,7 +54,7 @@ ${MementoSection} "GnuPG" SEC_gnupg2
       File /oname=gpg-agent.exe.tmp "${prefix}/bin/gpg-agent.exe"
       Rename /REBOOTOK gpg-agent.exe.tmp gpg-agent.exe
 
-  File "${prefix}/bin/scdaemon.exe"
+  File "${prefix}/libexec/scdaemon.exe"
   File "${prefix}/bin/gpgconf.exe"
   File "${prefix}/bin/gpg-connect-agent.exe"
 
