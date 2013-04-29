@@ -39,14 +39,12 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
 
   File ${prefix}/bin/kgpgconf.exe
   File ${prefix}/bin/kwatchgnupg.exe
-  File ${prefix}/bin/kcmdwrapper.exe
+  File ${prefix}/bin/kdebugdialog.exe
+#  File ${prefix}/bin/kcmdwrapper.exe
   File ${prefix}/bin/kbuildsycoca4.exe
   File ${prefix}/bin/libattica.dll
-  File ${prefix}/bin/libdbus-1.dll
   File ${prefix}/bin/libdbusmenu-qt.dll
   File ${prefix}/bin/libgcc_s_sjlj-1.dll
-  File ${prefix}/bin/libgpg-error-0.dll
-  File ${prefix}/bin/libgpgme-11.dll
   File ${prefix}/bin/libgpgme++.dll
   File ${prefix}/bin/wconv.dll
   File ${prefix}/bin/libintl.dll
@@ -110,73 +108,76 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
 
   SetOutPath "$INSTDIR\share\config"
 
-  File ${prefix}/share/config/libkleopatrarc
+  #File ${prefix}/share/config/libkleopatrarc
 
   # TODO
   SetOutPath "$INSTDIR\share\doc\HTML\common"
 
-  File ${prefix}/share/doc/HTML/common/common/1.png
-  File ${prefix}/share/doc/HTML/common/common/10.png
-  File ${prefix}/share/doc/HTML/common/common/2.png
-  File ${prefix}/share/doc/HTML/common/common/3.png
-  File ${prefix}/share/doc/HTML/common/common/4.png
-  File ${prefix}/share/doc/HTML/common/common/5.png
-  File ${prefix}/share/doc/HTML/common/common/6.png
-  File ${prefix}/share/doc/HTML/common/common/7.png
-  File ${prefix}/share/doc/HTML/common/common/8.png
-  File ${prefix}/share/doc/HTML/common/common/9.png
-  File ${prefix}/share/doc/HTML/common/common/CMakeLists.txt
-  File ${prefix}/share/doc/HTML/common/common/Doxyfile.global
-  File ${prefix}/share/doc/HTML/common/common/README.Doxygen
-  File ${prefix}/share/doc/HTML/common/common/artistic-license.html
-  File ${prefix}/share/doc/HTML/common/common/block_title_bottom.png
-  File ${prefix}/share/doc/HTML/common/common/block_title_mid.png
-  File ${prefix}/share/doc/HTML/common/common/block_title_top.png
-  File ${prefix}/share/doc/HTML/common/common/bottom-left.png
-  File ${prefix}/share/doc/HTML/common/common/bottom-middle.png
-  File ${prefix}/share/doc/HTML/common/common/bottom-right.png
-  File ${prefix}/share/doc/HTML/common/common/bsd-license.html
-  File ${prefix}/share/doc/HTML/common/common/doxygen.css
-  File ${prefix}/share/doc/HTML/common/common/favicon.ico
-  File ${prefix}/share/doc/HTML/common/common/fdl-license
-  File ${prefix}/share/doc/HTML/common/common/fdl-license.html
-  File ${prefix}/share/doc/HTML/common/common/fdl-notice.html
-  File ${prefix}/share/doc/HTML/common/common/flat.css
-  File ${prefix}/share/doc/HTML/common/common/footer.html
-  File ${prefix}/share/doc/HTML/common/common/gpl-license
-  File ${prefix}/share/doc/HTML/common/common/gpl-license.html
-  File ${prefix}/share/doc/HTML/common/common/header.html
-  File ${prefix}/share/doc/HTML/common/common/kde-default.css
-  File ${prefix}/share/doc/HTML/common/common/kde.css
-  File ${prefix}/share/doc/HTML/common/common/kde_logo.png
-  File ${prefix}/share/doc/HTML/common/common/kde_logo_bg.png
-  File ${prefix}/share/doc/HTML/common/common/lgpl-license
-  File ${prefix}/share/doc/HTML/common/common/lgpl-license.html
-  File ${prefix}/share/doc/HTML/common/common/mainfooter.html
-  File ${prefix}/share/doc/HTML/common/common/mainheader.html
-  File ${prefix}/share/doc/HTML/common/common/print.css
-  File ${prefix}/share/doc/HTML/common/common/qpl-license.html
-  File ${prefix}/share/doc/HTML/common/common/tabs.css
-  File ${prefix}/share/doc/HTML/common/common/top-kde.jpg
-  File ${prefix}/share/doc/HTML/common/common/top-left.jpg
-  File ${prefix}/share/doc/HTML/common/common/top-left.png
-  File ${prefix}/share/doc/HTML/common/common/top-middle.png
-  File ${prefix}/share/doc/HTML/common/common/top-right.jpg
-  File ${prefix}/share/doc/HTML/common/common/top-right.png
-  File ${prefix}/share/doc/HTML/common/common/top.jpg
-  File ${prefix}/share/doc/HTML/common/common/x11-license.html
-  File ${prefix}/share/doc/HTML/common/common/xml.dcl
+  File ${prefix}/share/doc/HTML/en/common/1.png
+  File ${prefix}/share/doc/HTML/en/common/10.png
+  File ${prefix}/share/doc/HTML/en/common/2.png
+  File ${prefix}/share/doc/HTML/en/common/3.png
+  File ${prefix}/share/doc/HTML/en/common/4.png
+  File ${prefix}/share/doc/HTML/en/common/5.png
+  File ${prefix}/share/doc/HTML/en/common/6.png
+  File ${prefix}/share/doc/HTML/en/common/7.png
+  File ${prefix}/share/doc/HTML/en/common/8.png
+  File ${prefix}/share/doc/HTML/en/common/9.png
+  File ${prefix}/share/doc/HTML/en/common/artistic-license.html
+  File ${prefix}/share/doc/HTML/en/common/block_title_bottom.png
+  File ${prefix}/share/doc/HTML/en/common/block_title_mid.png
+  File ${prefix}/share/doc/HTML/en/common/block_title_top.png
+  File ${prefix}/share/doc/HTML/en/common/bottom-left.png
+  File ${prefix}/share/doc/HTML/en/common/bottom-middle.png
+  File ${prefix}/share/doc/HTML/en/common/bottom-right.png
+  File ${prefix}/share/doc/HTML/en/common/bsd-license.html
+  File ${prefix}/share/doc/HTML/en/common/doxygen.css
+  File ${prefix}/share/doc/HTML/en/common/favicon.ico
+  File ${prefix}/share/doc/HTML/en/common/fdl-license.html
+  File ${prefix}/share/doc/HTML/en/common/fdl-license
+  File ${prefix}/share/doc/HTML/en/common/fdl-notice.html
+  File ${prefix}/share/doc/HTML/en/common/kde-docs.css
+  File ${prefix}/share/doc/HTML/en/common/footer.html
+  File ${prefix}/share/doc/HTML/en/common/gpl-license.html
+  File ${prefix}/share/doc/HTML/en/common/gpl-license
+  File ${prefix}/share/doc/HTML/en/common/header.html
+  File ${prefix}/share/doc/HTML/en/common/kde-default.css
+  File ${prefix}/share/doc/HTML/en/common/kde-docs.css
+  File ${prefix}/share/doc/HTML/en/common/kde_logo_bg.png
+  File ${prefix}/share/doc/HTML/en/common/lgpl-license.html
+  File ${prefix}/share/doc/HTML/en/common/lgpl-license
+  File ${prefix}/share/doc/HTML/en/common/mainfooter.html
+  File ${prefix}/share/doc/HTML/en/common/mainheader.html
+  File ${prefix}/share/doc/HTML/en/common/qpl-license.html
+  File ${prefix}/share/doc/HTML/en/common/tabs.css
+  File ${prefix}/share/doc/HTML/en/common/top-kde.jpg
+  File ${prefix}/share/doc/HTML/en/common/top-left.jpg
+  File ${prefix}/share/doc/HTML/en/common/top-left.png
+  File ${prefix}/share/doc/HTML/en/common/top-middle.png
+  File ${prefix}/share/doc/HTML/en/common/top-right.jpg
+  File ${prefix}/share/doc/HTML/en/common/top-right.png
+  File ${prefix}/share/doc/HTML/en/common/top.jpg
+  File ${prefix}/share/doc/HTML/en/common/x11-license.html
+  File ${prefix}/share/doc/HTML/en/common/xml.dcl
 
   SetOutPath "$INSTDIR\share\doc\HTML\de\kleopatra"
 
+  File ${prefix}/share/doc/HTML/de/common/fdl-translated.html
+  File ${prefix}/share/doc/HTML/de/common/gpl-translated.html
+  File ${prefix}/share/doc/HTML/de/common/kde-localised.css
+  File ${prefix}/share/doc/HTML/de/common/lgpl-translated.html
+
+  File ${prefix}/share/doc/HTML/de/kleopatra/admin-archive-definitions.html
+  File ${prefix}/share/doc/HTML/de/kleopatra/admin-checksum-definitions.html
   File ${prefix}/share/doc/HTML/de/kleopatra/admin-key-filters.html
   File ${prefix}/share/doc/HTML/de/kleopatra/admin.html
   File ${prefix}/share/doc/HTML/de/kleopatra/commandline-options.html
   File ${prefix}/share/doc/HTML/de/kleopatra/configuration-appearance.html
-  File ${prefix}/share/doc/HTML/de/kleopatra/configuration-dn-order.html
+  File ${prefix}/share/doc/HTML/de/kleopatra/configuration-crypto-operations.html
+  File ${prefix}/share/doc/HTML/de/kleopatra/configuration-gnupg-system.html
+  File ${prefix}/share/doc/HTML/de/kleopatra/configuration-smime-validation.html
   File ${prefix}/share/doc/HTML/de/kleopatra/configuration.html
   File ${prefix}/share/doc/HTML/de/kleopatra/credits-and-license.html
-  File ${prefix}/share/doc/HTML/de/kleopatra/functions-keybox-management.html
   File ${prefix}/share/doc/HTML/de/kleopatra/functions-newkey.html
   File ${prefix}/share/doc/HTML/de/kleopatra/functions-search.html
   File ${prefix}/share/doc/HTML/de/kleopatra/functions.html
@@ -184,11 +185,11 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
   File ${prefix}/share/doc/HTML/de/kleopatra/introduction.html
   File ${prefix}/share/doc/HTML/de/kleopatra/menu.html
   File ${prefix}/share/doc/HTML/de/kleopatra/menucertificates.html
-  File ${prefix}/share/doc/HTML/de/kleopatra/menucrls.html
   File ${prefix}/share/doc/HTML/de/kleopatra/menuhelp.html
   File ${prefix}/share/doc/HTML/de/kleopatra/menusettings.html
   File ${prefix}/share/doc/HTML/de/kleopatra/menutools.html
   File ${prefix}/share/doc/HTML/de/kleopatra/menuview.html
+  File ${prefix}/share/doc/HTML/de/kleopatra/menuwindow.html
 
   SetOutPath "$INSTDIR\share\doc\HTML\en\kleopatra"
 
@@ -216,37 +217,40 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
   File ${prefix}/share/doc/HTML/en/kleopatra/menuview.html
   File ${prefix}/share/doc/HTML/en/kleopatra/menuwindow.html
 
-  SetOutPath "$INSTDIR\share\icons\oxygen\128x128\apps"
+  SetOutPath "$INSTDIR\share\icons\hicolor\128x128\apps"
 
-  File ${prefix}/share/icons/oxygen/128x128/apps/kleopatra.png
+  File ${prefix}/share/icons/hicolor/128x128/apps/kleopatra.png
 
-  SetOutPath "$INSTDIR\share\icons\oxygen\16x16\apps"
+  SetOutPath "$INSTDIR\share\icons\hicolor\16x16\apps"
 
-  File ${prefix}/share/icons/oxygen/16x16/apps/kleopatra.png
+  File ${prefix}/share/icons/hicolor/16x16/apps/kleopatra.png
 
-  SetOutPath "$INSTDIR\share\icons\oxygen\22x22\apps"
+  SetOutPath "$INSTDIR\share\icons\hicolor\22x22\apps"
 
-  File ${prefix}/share/icons/oxygen/22x22/apps/kleopatra.png
+  File ${prefix}/share/icons/hicolor/22x22/apps/kleopatra.png
 
-  SetOutPath "$INSTDIR\share\icons\oxygen\256x256\apps"
+  SetOutPath "$INSTDIR\share\icons\hicolor\256x256\apps"
 
-  File ${prefix}/share/icons/oxygen/256x256/apps/kleopatra.png
+  File ${prefix}/share/icons/hicolor/256x256/apps/kleopatra.png
 
-  SetOutPath "$INSTDIR\share\icons\oxygen\32x32\apps"
+  SetOutPath "$INSTDIR\share\icons\hicolor\32x32\apps"
 
-  File ${prefix}/share/icons/oxygen/32x32/apps/kleopatra.png
+  File ${prefix}/share/icons/hicolor/32x32/apps/kleopatra.png
 
-  SetOutPath "$INSTDIR\share\icons\oxygen\48x48\apps"
+  SetOutPath "$INSTDIR\share\icons\hicolor\48x48\apps"
 
-  File ${prefix}/share/icons/oxygen/48x48/apps/kleopatra.png
+  File ${prefix}/share/icons/hicolor/48x48/apps/kleopatra.png
 
-  SetOutPath "$INSTDIR\share\icons\oxygen\64x64\apps"
+  SetOutPath "$INSTDIR\share\icons\hicolor\64x64\apps"
 
-  File ${prefix}/share/icons/oxygen/64x64/apps/kleopatra.png
+  File ${prefix}/share/icons/hicolor/64x64/apps/kleopatra.png
 
-  SetOutPath "$INSTDIR\share\icons\oxygen\scalable\apps"
+  SetOutPath "$INSTDIR\share\icons\hicolor\scalable\apps"
 
-  File ${prefix}/share/icons/oxygen/scalable/apps/kleopatra.svgz
+  File ${prefix}/share/icons/hicolor/scalable/apps/kleopatra.svgz
+
+  SetOutPath "$INSTDIR\share\icons\hicolor"
+  File ${prefix}/share/icons/hicolor/index.theme
 
   SetOutPath "$INSTDIR\share\kde4\services"
 
@@ -261,6 +265,7 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
   File ${prefix}/share/kde4/services/kleopatra_signencryptfolders.desktop
 
   # Parts formerly in the kdelibs section:
+
   SetOutPath "$INSTDIR\share\apps\kcharselect"
 
   File ${prefix}/share/apps/kcharselect/kcharselect-data
@@ -275,9 +280,6 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
   File ${prefix}/share/apps/kdeui/about/bar-top-left.png
   File ${prefix}/share/apps/kdeui/about/bar-top-middle.png
   File ${prefix}/share/apps/kdeui/about/bar-top-right.png
-  File ${prefix}/share/apps/kdeui/about/bottom-left.png
-  File ${prefix}/share/apps/kdeui/about/bottom-middle.png
-  File ${prefix}/share/apps/kdeui/about/bottom-right.png
   File ${prefix}/share/apps/kdeui/about/box-bottom-left.png
   File ${prefix}/share/apps/kdeui/about/box-bottom-middle.png
   File ${prefix}/share/apps/kdeui/about/box-bottom-right.png
@@ -289,7 +291,6 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
   File ${prefix}/share/apps/kdeui/about/kde_infopage.css
   File ${prefix}/share/apps/kdeui/about/kde_infopage_rtl.css
   File ${prefix}/share/apps/kdeui/about/top-middle.png
-  File ${prefix}/share/apps/kdeui/about/top-right.png
 
   SetOutPath "$INSTDIR\share\apps\kdeui\pics"
 
@@ -317,45 +318,43 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
 
   File ${prefix}/share/config/ui/ui_standards.rc
 
-  SetOutPath "$INSTDIR\share\kde4\services\kded"
+#  SetOutPath "$INSTDIR\share\kde4\services\kded"
 
-  File ${prefix}/share/kde4/services/kded/kdedglobalaccel.desktop
+#  File ${prefix}/share/kde4/services/kded/kdedglobalaccel.desktop
 
-  SetOutPath "$INSTDIR\share\kde4\servicetypes"
+#  SetOutPath "$INSTDIR\share\kde4\servicetypes"
 
-  File ${prefix}/share/kde4/servicetypes/kconfigbackend.desktop
-  File ${prefix}/share/kde4/servicetypes/kplugininfo.desktop
-  File ${prefix}/share/kde4/servicetypes/sonnetspeller.desktop
+#  File ${prefix}/share/kde4/servicetypes/kconfigbackend.desktop
+#  File ${prefix}/share/kde4/servicetypes/kplugininfo.desktop
+#  File ${prefix}/share/kde4/servicetypes/sonnetspeller.desktop
 
   SetOutPath "$INSTDIR\share\locale"
 
   File ${prefix}/share/locale/all_languages
 
   SetOutPath "$INSTDIR\share\locale\de\LC_MESSAGES"
-
+  # TODO This is way too much
   File ${prefix}/share/locale/de/LC_MESSAGES/akonaditray.mo
   File ${prefix}/share/locale/de/LC_MESSAGES/akregator.mo
-  File ${prefix}/share/locale/de/LC_MESSAGES/desktop_kdepim.mo
-  File ${prefix}/share/locale/de/LC_MESSAGES/desktop_kdepimlibs.mo
   File ${prefix}/share/locale/de/LC_MESSAGES/kabc.mo
-  File ${prefix}/share/locale/de/LC_MESSAGES/kabc2mutt.mo
   File ${prefix}/share/locale/de/LC_MESSAGES/kabc_dir.mo
   File ${prefix}/share/locale/de/LC_MESSAGES/kabc_file.mo
   File ${prefix}/share/locale/de/LC_MESSAGES/kabc_ldapkio.mo
   File ${prefix}/share/locale/de/LC_MESSAGES/kabc_net.mo
-  File ${prefix}/share/locale/de/LC_MESSAGES/kabc_slox.mo
-  File ${prefix}/share/locale/de/LC_MESSAGES/kabcakonadi.mo
   File ${prefix}/share/locale/de/LC_MESSAGES/kabcclient.mo
   File ${prefix}/share/locale/de/LC_MESSAGES/kabcformat_binary.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/kaddressbook-mobile.mo
   File ${prefix}/share/locale/de/LC_MESSAGES/kaddressbook.mo
   File ${prefix}/share/locale/de/LC_MESSAGES/kalarm.mo
-  File ${prefix}/share/locale/de/LC_MESSAGES/kcmkabconfig.mo
-  File ${prefix}/share/locale/de/LC_MESSAGES/kcmkontactnt.mo
-  File ${prefix}/share/locale/de/LC_MESSAGES/kdepimresources.mo
-  File ${prefix}/share/locale/de/LC_MESSAGES/kdepimwizards.mo
-  File ${prefix}/share/locale/de/LC_MESSAGES/kdgantt1.mo
-  File ${prefix}/share/locale/de/LC_MESSAGES/kfile_vcf.mo
-  File ${prefix}/share/locale/de/LC_MESSAGES/kio_groupwise.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/katepart4.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/kcertpart.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/kcmcrypto.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/kdelibs4.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/kdelibs_colors4.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/kdeqt.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/kfileaudiopreview4.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/kio4.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/kio_help4.mo
   File ${prefix}/share/locale/de/LC_MESSAGES/kio_imap4.mo
   File ${prefix}/share/locale/de/LC_MESSAGES/kio_ldap.mo
   File ${prefix}/share/locale/de/LC_MESSAGES/kio_mbox.mo
@@ -363,40 +362,25 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
   File ${prefix}/share/locale/de/LC_MESSAGES/kio_pop3.mo
   File ${prefix}/share/locale/de/LC_MESSAGES/kio_sieve.mo
   File ${prefix}/share/locale/de/LC_MESSAGES/kio_smtp.mo
-  File ${prefix}/share/locale/de/LC_MESSAGES/kitchensync.mo
   File ${prefix}/share/locale/de/LC_MESSAGES/kjots.mo
   File ${prefix}/share/locale/de/LC_MESSAGES/kleopatra.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/kmail-mobile.mo
   File ${prefix}/share/locale/de/LC_MESSAGES/kmail.mo
-  File ${prefix}/share/locale/de/LC_MESSAGES/kmail_text_calendar_plugin.mo
-  File ${prefix}/share/locale/de/LC_MESSAGES/kmail_text_vcard_plugin.mo
-  File ${prefix}/share/locale/de/LC_MESSAGES/kmail_text_xdiff_plugin.mo
   File ${prefix}/share/locale/de/LC_MESSAGES/kmailcvt.mo
-  File ${prefix}/share/locale/de/LC_MESSAGES/kmobiletools.mo
-  File ${prefix}/share/locale/de/LC_MESSAGES/kmobiletools_at_engine.mo
   File ${prefix}/share/locale/de/LC_MESSAGES/knode.mo
   File ${prefix}/share/locale/de/LC_MESSAGES/knotes.mo
-  File ${prefix}/share/locale/de/LC_MESSAGES/kode.mo
   File ${prefix}/share/locale/de/LC_MESSAGES/konsolekalendar.mo
   File ${prefix}/share/locale/de/LC_MESSAGES/kontact.mo
   File ${prefix}/share/locale/de/LC_MESSAGES/kontactinterfaces.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/korganizer-mobile.mo
   File ${prefix}/share/locale/de/LC_MESSAGES/korganizer.mo
-  File ${prefix}/share/locale/de/LC_MESSAGES/korn.mo
-  File ${prefix}/share/locale/de/LC_MESSAGES/kpilot.mo
-  File ${prefix}/share/locale/de/LC_MESSAGES/kres_birthday.mo
   File ${prefix}/share/locale/de/LC_MESSAGES/kres_blog.mo
-  File ${prefix}/share/locale/de/LC_MESSAGES/kres_featureplan.mo
-  File ${prefix}/share/locale/de/LC_MESSAGES/kres_groupware.mo
-  File ${prefix}/share/locale/de/LC_MESSAGES/kres_groupwise.mo
-  File ${prefix}/share/locale/de/LC_MESSAGES/kres_kolab.mo
   File ${prefix}/share/locale/de/LC_MESSAGES/kres_remote.mo
-  File ${prefix}/share/locale/de/LC_MESSAGES/kres_scalix.mo
-  File ${prefix}/share/locale/de/LC_MESSAGES/kres_tvanytime.mo
-  File ${prefix}/share/locale/de/LC_MESSAGES/kres_xmlrpc.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/ktexteditor_plugins.mo
   File ${prefix}/share/locale/de/LC_MESSAGES/ktexteditorkabcbridge_plugin.mo
   File ${prefix}/share/locale/de/LC_MESSAGES/ktimetracker.mo
   File ${prefix}/share/locale/de/LC_MESSAGES/ktnef.mo
   File ${prefix}/share/locale/de/LC_MESSAGES/kwatchgnupg.mo
-  File ${prefix}/share/locale/de/LC_MESSAGES/kxforms.mo
   File ${prefix}/share/locale/de/LC_MESSAGES/libakonadi.mo
   File ${prefix}/share/locale/de/LC_MESSAGES/libkblog.mo
   File ${prefix}/share/locale/de/LC_MESSAGES/libkcal.mo
@@ -413,24 +397,7 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
   File ${prefix}/share/locale/de/LC_MESSAGES/libktnef.mo
   File ${prefix}/share/locale/de/LC_MESSAGES/libkxmlrpcclient.mo
   File ${prefix}/share/locale/de/LC_MESSAGES/libmailtransport.mo
-
-  File ${prefix}/share/locale/de/LC_MESSAGES/desktop_kdelibs.mo
-  File ${prefix}/share/locale/de/LC_MESSAGES/desktop_l10n.mo
-  File ${prefix}/share/locale/de/LC_MESSAGES/katepart4.mo
-  File ${prefix}/share/locale/de/LC_MESSAGES/kcertpart.mo
-  #File ${prefix}/share/locale/de/LC_MESSAGES/kcm_phonon.mo
-  File ${prefix}/share/locale/de/LC_MESSAGES/kcmcrypto.mo
-  File ${prefix}/share/locale/de/LC_MESSAGES/kdelibs4.mo
-  File ${prefix}/share/locale/de/LC_MESSAGES/kdelibs_colors4.mo
-  File ${prefix}/share/locale/de/LC_MESSAGES/kdeqt.mo
-  File ${prefix}/share/locale/de/LC_MESSAGES/kfileaudiopreview4.mo
-  File ${prefix}/share/locale/de/LC_MESSAGES/kio4.mo
-  File ${prefix}/share/locale/de/LC_MESSAGES/kio_help4.mo
-  File ${prefix}/share/locale/de/LC_MESSAGES/ktexteditor_plugins.mo
-  #File ${prefix}/share/locale/de/LC_MESSAGES/libphonon.mo
-  #File ${prefix}/share/locale/de/LC_MESSAGES/phonon_kde.mo
   File ${prefix}/share/locale/de/LC_MESSAGES/timezones4.mo
-
 
 
 !endif
