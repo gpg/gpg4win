@@ -331,8 +331,7 @@ GPG4WIN_IPKG([compendium])
 GPG4WIN_BPKG_GNUWIN32([dbus])
 GPG4WIN_BPKG_BINSRC([oxygen-icons])
 GPG4WIN_BPKG_GNUWIN32([qt], [dbus])
-#GPG4WIN_BPKG_GNUWIN32([kdelibs], [qt oxygen-icons])
-GPG4WIN_BPKG_BINSRC([kleopatra], [gpgme gnupg2])
+GPG4WIN_BPKG_BINSRC([kleopatra], [gpgme gnupg2 qt oxygen-icons])
 
 GPG4WIN_FINALIZE
 
