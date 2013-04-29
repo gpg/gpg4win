@@ -47,18 +47,6 @@ Section "-dbus" SEC_dbus
   File ${prefix}/bin/dbus-env.bat
   File ${prefix}/bin/dbus-monitor.exe
   File ${prefix}/bin/dbus-send.exe
-  File ${prefix}/bin/pcregrep.exe
-  File ${prefix}/bin/update-mime-database.exe
-  File ${prefix}/bin/xmlcatalog.exe
-  File ${prefix}/bin/xmllint.exe
-  File ${prefix}/bin/xsltproc.exe
-
-  # FIXME: From the lib package.  This is wrong.
-!undef prefix
-!define prefix ${ipdir}/dbus-dev-${gpg4win_pkg_dbus_version}
-
-  SetOutPath "$INSTDIR"
-  File ${prefix}/bin/giflib4.dll
 
   ClearErrors
   SetOverwrite try
@@ -77,14 +65,6 @@ Section "-dbus" SEC_dbus
       Rename /REBOOTOK libexpat.dll.tmp libexpat.dll
 
   File ${prefix}/bin/libexpatw.dll
-  File ${prefix}/bin/libexslt.dll
-  File ${prefix}/bin/libkdewin32.dll
-  File ${prefix}/bin/libxml2.dll
-  File ${prefix}/bin/libxslt.dll
-  File ${prefix}/bin/mingw-pcrecpp.dll
-  File ${prefix}/bin/pcre.dll
-  File ${prefix}/bin/pcrecpp.dll
-  File ${prefix}/bin/pcreposix.dll
 
   SetOutPath "$INSTDIR\etc"
   File ${prefix}/etc/session.conf

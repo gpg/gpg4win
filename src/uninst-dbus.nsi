@@ -38,31 +38,11 @@ Section "-un.dbus"
   Delete "$INSTDIR\dbus-launch.exe"
   Delete "$INSTDIR\dbus-monitor.exe"
   Delete "$INSTDIR\dbus-send.exe"
-  Delete "$INSTDIR\pcregrep.exe"
-  Delete "$INSTDIR\update-mime-database.exe"
-  Delete "$INSTDIR\xmlcatalog.exe"
-  Delete "$INSTDIR\xmllint.exe"
-  Delete "$INSTDIR\xsltproc.exe"
 
-  Delete "$INSTDIR\giflib4.dll"
-  # We can not force down dbus-daemon, because it may be in use by
-  # non-gpg4win components (like KoWi).
+  # FIXME: Force dbus installed in our prefix down.
   Delete /REBOOTOK "$INSTDIR\libdbus-1.dll"
   Delete /REBOOTOK "$INSTDIR\libexpat.dll"
   Delete "$INSTDIR\libexpatw.dll"
-  Delete "$INSTDIR\libexslt.dll"
-  Delete "$INSTDIR\libkdewin32.dll"
-  Delete "$INSTDIR\libxml2.dll"
-  Delete "$INSTDIR\libxslt.dll"
-  Delete "$INSTDIR\mingw-pcrecpp.dll"
-  Delete "$INSTDIR\pcre.dll"
-  Delete "$INSTDIR\pcrecpp.dll"
-  Delete "$INSTDIR\pcreposix.dll"
-
-  # Some test installers installed these files:
-  # fixme: Remove them when releasing 2.0.
-  Delete "$INSTDIR\ssleay32.dll"
-  Delete "$INSTDIR\libeay32.dll"
 
   Delete "$INSTDIR\etc\session.conf"
   Delete "$INSTDIR\etc\system.conf"
