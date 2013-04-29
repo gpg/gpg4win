@@ -64,11 +64,9 @@ Section "-dbus" SEC_dbus
       File /oname=libexpat.dll.tmp ${prefix}/bin/libexpat.dll
       Rename /REBOOTOK libexpat.dll.tmp libexpat.dll
 
-  File ${prefix}/bin/libexpatw.dll
-
-  SetOutPath "$INSTDIR\etc"
-  File ${prefix}/etc/session.conf
-  File ${prefix}/etc/system.conf
+  SetOutPath "$INSTDIR\etc\dbus-1"
+  File ${prefix}/etc/dbus-1/session.conf
+  File ${prefix}/etc/dbus-1/system.conf
 
 !endif
 SectionEnd

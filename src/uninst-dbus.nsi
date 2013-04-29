@@ -42,10 +42,10 @@ Section "-un.dbus"
   # FIXME: Force dbus installed in our prefix down.
   Delete /REBOOTOK "$INSTDIR\libdbus-1.dll"
   Delete /REBOOTOK "$INSTDIR\libexpat.dll"
-  Delete "$INSTDIR\libexpatw.dll"
 
-  Delete "$INSTDIR\etc\session.conf"
-  Delete "$INSTDIR\etc\system.conf"
+  Delete "$INSTDIR\etc\dbus-1\session.conf"
+  Delete "$INSTDIR\etc\dbus-1\system.conf"
+  RMDir "$INSTDIR\etc\dbus-1"
   RMDir "$INSTDIR\etc"
 
   RMDir "$INSTDIR"

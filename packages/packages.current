@@ -443,8 +443,8 @@ chk  66c56babca65fb38c6919cf63405dc51acf00ac6
 
 server http://files.kolab.org/local/gpg4win/libs/
 
-file dbus-x86-mingw4-1.4.24-20130417-bin.tar.bz2
-chk f556de269dda7bdd2a45639681533ee3da2732d4
+file dbus-x86-mingw4-1.4.24-20130417-1-bin.tar.bz2
+chk 59abdc742ce87011dadbc58e96ed870a927d0045
 
 file dbus-x86-mingw4-1.4.24-20130417-lib.tar.bz2
 chk fc557d7eb161881e1d6c091f215dd8e0615682cb
