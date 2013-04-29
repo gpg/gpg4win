@@ -64,16 +64,16 @@ chk  a02bef78c7e35217d84d36d9b3135de70b46be09
 # (Kept on our own mirror due to Sourceforge peculiarities.)
 server http://www.claws-mail.org/win32
 
-file libetpan-0.58.tar.gz
-chk  98a5689bbe99dc77d689c2ea1e8294f217a3b49c
+#file libetpan-0.58.tar.gz
+#chk  98a5689bbe99dc77d689c2ea1e8294f217a3b49c
 
 #
 # curl for Claws plugins
 #
 
 server http://curl.haxx.se/download
-file  curl-7.19.0.tar.bz2
-chk   fffb34be2e3c66e58a5d3daaf8aa38cae33b284f
+#file  curl-7.19.0.tar.bz2
+#chk   fffb34be2e3c66e58a5d3daaf8aa38cae33b284f
 
 #
 # libxml2 for Claws plugins
@@ -104,22 +104,23 @@ chk    04b4c2ac296499d378f4a35bbeb1b129165b2e61
 #
 server http://www.claws-mail.org/win32
 
-file bsfilter-1.0.16-bin.tar.gz
-chk  5ed34f22ebf433d83cd3571309b5cbc52c45d6d2
+#file bsfilter-1.0.16-bin.tar.gz
+#chk  5ed34f22ebf433d83cd3571309b5cbc52c45d6d2
 
-file bsfilter-1.0.16-lib.tar.gz
-chk  c7fa5ec9c70c75b7b1bc852bac8eb0a5ec9e01ea
+#file bsfilter-1.0.16-lib.tar.gz
+#chk  c7fa5ec9c70c75b7b1bc852bac8eb0a5ec9e01ea
 
-file bsfilter-1.0.16-src.tar.gz
-chk  fe718884dd7ca0652613a2cb5c302ac6323605d8
+#file bsfilter-1.0.16-src.tar.gz
+#chk  fe718884dd7ca0652613a2cb5c302ac6323605d8
 
 #
 # Enchant for Claws
 #
 
 server http://www.abisource.com/downloads/enchant/1.6.0
-file   enchant-1.6.0.tar.gz
-chk    321f9cf0abfa1937401676ce60976d8779c39536
+
+#file   enchant-1.6.0.tar.gz
+#chk    321f9cf0abfa1937401676ce60976d8779c39536
 
 #
 # Claws
@@ -128,29 +129,29 @@ chk    321f9cf0abfa1937401676ce60976d8779c39536
 
 server http://www.claws-mail.org/win32
 
-file   claws-mail-3.8.1.tar.bz2
-chk    4b9fa17bff8986098c72c4b8723e1540e2b058d1
-
-file   attachwarner-0.2.24cvs1.tar.gz
-chk    616356ad9697e2698b294901e562897e9d0c40e1
-
-file   bsfilter_plugin-1.0.8cvs1.tar.gz
-chk    1577366fe46ad30d188c84a30c75fd2bcaafdb7e
-
-file   gtkhtml2_viewer-0.33.tar.gz
-chk    b2a7047af55b2273e031e16806859458762d74a1
-
-file   notification_plugin-0.30.tar.gz
-chk    2c6237b0dfbdb028e2d12b26ff2dc3430a96b47f
-
-file   rssyl-0.33.tar.gz
-chk    aecf28d0901c8e670eabe1abcfeb362f1685cc75
-
-file   tnef_parse-0.3.13.tar.gz
-chk    8d0de3c82048c5a9e7985786ddc624d2920ba8a1
-
-file   vcalendar-2.0.13.tar.gz
-chk    1e8171340dde04eda4468b72c23104233dd76bae
+#file   claws-mail-3.8.1.tar.bz2
+#chk    4b9fa17bff8986098c72c4b8723e1540e2b058d1
+#
+#file   attachwarner-0.2.24cvs1.tar.gz
+#chk    616356ad9697e2698b294901e562897e9d0c40e1
+#
+#file   bsfilter_plugin-1.0.8cvs1.tar.gz
+#chk    1577366fe46ad30d188c84a30c75fd2bcaafdb7e
+#
+#file   gtkhtml2_viewer-0.33.tar.gz
+#chk    b2a7047af55b2273e031e16806859458762d74a1
+#
+#file   notification_plugin-0.30.tar.gz
+#chk    2c6237b0dfbdb028e2d12b26ff2dc3430a96b47f
+#
+#file   rssyl-0.33.tar.gz
+#chk    aecf28d0901c8e670eabe1abcfeb362f1685cc75
+#
+#file   tnef_parse-0.3.13.tar.gz
+#chk    8d0de3c82048c5a9e7985786ddc624d2920ba8a1
+#
+#file   vcalendar-2.0.13.tar.gz
+#chk    1e8171340dde04eda4468b72c23104233dd76bae
 
 #
 # Pthreads for Windows.
