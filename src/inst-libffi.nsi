@@ -31,6 +31,6 @@ Section "-libffi" SEC_libffi
 !ifdef SOURCES
   File ${gpg4win_pkg_libffi}
 !else
-  File ${prefix}/bin/libffi-5.dll
+  File ${prefix}/bin/libffi-6.dll
 !endif
 SectionEnd

@@ -31,6 +31,8 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         patches/glib-2.12.12/03-gspawn-w32-fixup.patch \
         patches/glib-2.20.0/01-socket.patch \
         patches/glib-2.24.0/01-socket.patch \
+        patches/glib-2.34.3/01-socket.patch \
+        patches/glib-2.34.3/02-no-kill.patch \
         patches/libxml2-2.7.8/01-cve-2012-5134 \
 	patches/gpgme/01-gpg2.patch \
 	patches/gpgme-1.1.7/01-registry.patch \

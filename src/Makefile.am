@@ -117,6 +117,7 @@ gpg4win_spkgs = glib libffi gdk-pixbuf gtk+ \
 # We can use $(idir) here for the installation prefix.
 
 gpg4win_pkg_glib_configure = \
+  --disable-modular-tests \
   --with-lib-prefix=$(idir) --with-libiconv-prefix=$(idir) \
   CPPFLAGS=-I$(idir)/include LDFLAGS=-L$(idir)/lib CCC=$(host)-g++
 gpg4win_pkg_glib_extracflags = -march=i486
