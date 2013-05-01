@@ -80,8 +80,7 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         patches/scute-1.2.0/01-bugfixes.patch \
         patches/scute-1.3.0/01-wsastartup.patch \
         patches/claws-mail-3.8.0cvs30/01-glib-h-only.patch \
-	patches/gnutls-2.12.21/01-openssl-wincrypt.patch \
-        patches/gpgme-1.4.0/01-off_t.postcfg-build
+	patches/gnutls-2.12.21/01-openssl-wincrypt.patch
 
 copy-news:
 	cp NEWS doc/website/NEWS.last

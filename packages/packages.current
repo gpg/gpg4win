@@ -420,15 +420,13 @@ chk  fc0efe5d375568f90ddbb23ee68e173411a49d4a
 file scute/scute-1.4.0.tar.bz2
 chk  e28141d2b03612c09512651795976c58ed3f8035
 
-# checked: 2013-04-23 wk
-file gpgme/gpgme-1.4.0.tar.bz2
-chk  897e36c1d3f6595d69fb37c820aaa162daa0e369
+# checked: 2013-05-01 wk - updated
+file gpgme/gpgme-1.4.1.tar.bz2
+chk  d6110763e7459214fd72705e87ebc682e3b5815e
 
-# checked: 2012-12-07 wk
-#          2013-04-23 wk - waiting for next release
-file gpa/gpa-0.9.3.tar.bz2
-chk  8dc810e465ec49cd8353d93b3ede8e69ad3cf48b
-
+# checked: 2013-05-01 wk - updated
+file gpa/gpa-0.9.4.tar.bz2
+chk  d4b22b6d1f0ce25244c5a001e3bcbc36aff13ecf
 
 # (Snapshots)
 # server ftp://ftp.g10code.com/g10code/scratch
