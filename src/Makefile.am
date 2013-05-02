@@ -236,7 +236,8 @@ gpg4win_pkg_pinentry_configure = \
   --disable-pinentry-gtk \
   --enable-pinentry-gtk2 \
   --with-glib-prefix=$(idir) --with-gtk-prefix=$(idir) \
-  CPPFLAGS=-I$(idir)/include LDFLAGS=-L$(idir)/lib
+  CPPFLAGS=-I$(idir)/include LDFLAGS=-L$(idir)/lib \
+  CXXFLAGS=-static-libstdc++
 #  --with-libiconv-prefix=$(idir) --with-libintl-prefix=$(idir)
 
 # The LDFLAGS is needed for -lintl for glib.  The QT4 variables work
