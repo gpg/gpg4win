@@ -34,23 +34,28 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
   # Relocate this when dbus-daemon is relocated.
   SetOutPath "$INSTDIR\bin"
   File ${prefix}/bin/kleopatra.exe
-  SetOutPath "$INSTDIR"
-  File /oname=kleopatra.exe "${BUILD_DIR}/kleowrap.exe"
-
+  File ${prefix}/bin/kdebugdialog.exe
   File ${prefix}/bin/kgpgconf.exe
   File ${prefix}/bin/kwatchgnupg.exe
-  File ${prefix}/bin/kdebugdialog.exe
-#  File ${prefix}/bin/kcmdwrapper.exe
   File ${prefix}/bin/kbuildsycoca4.exe
+
+  # Path lookups are relative to libkdecore so it currently needs to be
+  # in bin
+  File ${prefix}/bin/libkdecore.dll
+  SetOutPath "$INSTDIR"
+  File /oname=kleopatra.exe "${BUILD_DIR}/kleowrap.exe"
+  File /oname=kdebugdialog.exe "${BUILD_DIR}/kleowrap.exe"
+  File /oname=kbuildsycoca4.exe "${BUILD_DIR}/kleowrap.exe"
+  File /oname=kgpgconf.exe "${BUILD_DIR}/kleowrap.exe"
+  File /oname=kwatchgnupg.exe "${BUILD_DIR}/kleowrap.exe"
+
+#  File ${prefix}/bin/kcmdwrapper.exe
   File ${prefix}/bin/libattica.dll
   File ${prefix}/bin/libdbusmenu-qt.dll
   File ${prefix}/bin/libgcc_s_sjlj-1.dll
   File ${prefix}/bin/libgpgme++.dll
-  File ${prefix}/bin/wconv.dll
   File ${prefix}/bin/libintl.dll
-  File ${prefix}/bin/libjasper.dll
   File ${prefix}/bin/libkcmutils.dll
-  File ${prefix}/bin/libkdecore.dll
   File ${prefix}/bin/libkdeui.dll
   File ${prefix}/bin/libkdewin.dll
   File ${prefix}/bin/libkleo.dll
@@ -108,7 +113,7 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
 
   SetOutPath "$INSTDIR\share\config"
 
-  #File ${prefix}/share/config/libkleopatrarc
+  File ${prefix}/share/config/libkleopatrarc
 
   # TODO
   SetOutPath "$INSTDIR\share\doc\HTML\common"
@@ -328,9 +333,19 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
 #  File ${prefix}/share/kde4/servicetypes/kplugininfo.desktop
 #  File ${prefix}/share/kde4/servicetypes/sonnetspeller.desktop
 
+  SetOutPath "$INSTDIR\share\xdg\menus"
+
+  File ${prefix}/share/xdg/menus/applications.menu
+
   SetOutPath "$INSTDIR\share\locale"
 
   File ${prefix}/share/locale/all_languages
+
+  SetOutPath "$INSTDIR\share\locale\en_US"
+  File ${prefix}/share/locale/en_US/entry.desktop
+
+  SetOutPath "$INSTDIR\share\locale\de"
+  File ${prefix}/share/locale/de/entry.desktop
 
   SetOutPath "$INSTDIR\share\locale\de\LC_MESSAGES"
   # TODO This is way too much
