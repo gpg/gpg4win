@@ -61,11 +61,20 @@ chk  a02bef78c7e35217d84d36d9b3135de70b46be09
 # libetpan for claws
 #
 
-# (Kept on our own mirror due to Sourceforge peculiarities.)
-server http://www.claws-mail.org/win32
+# (Kept on our own mirror due to Sourceforge/github peculiarities.)
+server ftp://ftp.g10code.com/mirrors/claws
 
-#file libetpan-0.58.tar.gz
-#chk  98a5689bbe99dc77d689c2ea1e8294f217a3b49c
+# We use a slighly patched version to avoid the need for g++. See below
+#file   libetpan-0.58.tar.gz
+#chk    98a5689bbe99dc77d689c2ea1e8294f217a3b49c
+
+#file   libetpan-1.1.tar.gz
+#chk    3476dc9142e0b78056446d2f143617708f8690b2
+
+server ftp://ftp.g10code.com/g10code/misc/
+file   libetpan-0.58-g10-1.tar.bz2
+chk    d7195498005d340ccd82e183de19163d16e56ec2
+
 
 #
 # curl for Claws plugins
