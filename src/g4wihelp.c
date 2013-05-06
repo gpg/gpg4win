@@ -1,23 +1,23 @@
 /* g4wihelp.c - NSIS Helper DLL used with gpg4win. -*- coding: latin-1; -*-
  * Copyright (C) 2005 g10 Code GmbH
  * Copyright (C) 2001 Justin Frankel
- * 
+ *
  * This software is provided 'as-is', without any express or implied
  * warranty. In no event will the authors be held liable for any
  * damages arising from the use of this software.
- * 
+ *
  * Permission is granted to anyone to use this software for any
  * purpose, including commercial applications, and to alter it and
  * redistribute it freely, subject to the following restrictions:
- * 
+ *
  * 1. The origin of this software must not be misrepresented; you must
  *    not claim that you wrote the original software. If you use this
  *    software in a product, an acknowledgment in the product
  *    documentation would be appreciated but is not required.
- * 
+ *
  * 2. Altered source versions must be plainly marked as such, and must
  *    not be misrepresented as being the original software.
- * 
+ *
  * 3. This notice may not be removed or altered from any source
  *    distribution.
  ************************************************************
@@ -33,7 +33,7 @@
 
 static HINSTANCE g_hInstance; /* Our Instance. */
 static HWND g_hwndParent;     /* Handle of parent window or NULL. */
-static HBITMAP g_hbm;         /* Handle of the splash image. */ 
+static HBITMAP g_hbm;         /* Handle of the splash image. */
 static int sleepint;          /* Milliseconds to show the spals image. */
 
 
@@ -49,8 +49,8 @@ DllMain (HANDLE hinst, DWORD reason, LPVOID reserved)
 
 
 /* Dummy function for testing. */
-void __declspec(dllexport) 
-dummy (HWND hwndParent, int string_size, char *variables, 
+void __declspec(dllexport)
+dummy (HWND hwndParent, int string_size, char *variables,
        stack_t **stacktop, extra_parameters_t *extra)
 {
   g_hwndParent = hwndParent;
@@ -60,7 +60,7 @@ dummy (HWND hwndParent, int string_size, char *variables,
   // note if you want parameters from the stack, pop them off in order.
   // i.e. if you are called via exdll::myFunction file.dat poop.dat
   // calling popstring() the first time would give you file.dat,
-  // and the second time would give you poop.dat. 
+  // and the second time would give you poop.dat.
   // you should empty the stack of your parameters, and ONLY your
   // parameters.
 
@@ -92,15 +92,15 @@ dummy (HWND hwndParent, int string_size, char *variables,
              extra->exec_flags->silent,
              extra->exec_flags->instdir_error,
              extra->exec_flags->rtl,
-             extra->exec_flags->errlvl);      
+             extra->exec_flags->errlvl);
     MessageBox(g_hwndParent,buf,0,MB_OK);
   }
 }
 
 
 
-void __declspec(dllexport) 
-runonce (HWND hwndParent, int string_size, char *variables, 
+void __declspec(dllexport)
+runonce (HWND hwndParent, int string_size, char *variables,
          stack_t **stacktop, extra_parameters_t *extra)
 {
   const char *result;
@@ -114,8 +114,8 @@ runonce (HWND hwndParent, int string_size, char *variables,
 }
 
 
-void __declspec(dllexport) 
-playsound (HWND hwndParent, int string_size, char *variables, 
+void __declspec(dllexport)
+playsound (HWND hwndParent, int string_size, char *variables,
            stack_t **stacktop, extra_parameters_t *extra)
 {
   char fname[MAX_PATH];
@@ -129,8 +129,8 @@ playsound (HWND hwndParent, int string_size, char *variables,
 }
 
 
-void __declspec(dllexport) 
-stopsound (HWND hwndParent, int string_size, char *variables, 
+void __declspec(dllexport)
+stopsound (HWND hwndParent, int string_size, char *variables,
            stack_t **stacktop, extra_parameters_t *extra)
 {
   g_hwndParent = hwndParent;
@@ -142,7 +142,7 @@ stopsound (HWND hwndParent, int string_size, char *variables,
 /* Windows procedure to control the splashimage.  This one pauses the
    execution until the sleep time is over or the user closes this
    windows. */
-static LRESULT CALLBACK 
+static LRESULT CALLBACK
 splash_wndproc (HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
   LRESULT result = 0;
@@ -166,7 +166,7 @@ splash_wndproc (HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
         SetTimer(hwnd,1,sleepint,NULL);
       }
       break;
-  
+
     case WM_PAINT:
       {
         PAINTSTRUCT ps;
@@ -207,8 +207,8 @@ splash_wndproc (HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
    and FNAME the complete filename of the image.  As of now only BMP
    is supported.
 */
-void __declspec(dllexport) 
-showsplash (HWND hwndParent, int string_size, char *variables, 
+void __declspec(dllexport)
+showsplash (HWND hwndParent, int string_size, char *variables,
            stack_t **stacktop, extra_parameters_t *extra)
 {
   static WNDCLASS wc;
@@ -242,12 +242,12 @@ showsplash (HWND hwndParent, int string_size, char *variables,
   wc.hInstance = g_hInstance;
   wc.hCursor = LoadCursor(NULL,IDC_ARROW);
   wc.lpszClassName = classname;
-  if (!RegisterClass(&wc)) 
+  if (!RegisterClass(&wc))
     return; /* Error. */
 
   g_hbm = LoadImage (NULL, fname, IMAGE_BITMAP,
                      0, 0 , LR_CREATEDIBSECTION|LR_LOADFROMFILE);
-  if (g_hbm) 
+  if (g_hbm)
     {
       MSG msg;
       HWND hwnd;
@@ -255,7 +255,7 @@ showsplash (HWND hwndParent, int string_size, char *variables,
       hwnd = CreateWindowEx (WS_EX_TOOLWINDOW, classname, classname,
                              0, 0, 0, 0, 0, (HWND)hwndParent, NULL,
                              g_hInstance, NULL);
-      
+
       while (IsWindow(hwnd) && GetMessage ( &msg, hwnd, 0, 0))
         {
           DispatchMessage (&msg);
@@ -284,8 +284,8 @@ service_error (const char *str)
 }
 
 
-void __declspec(dllexport) 
-service_create (HWND hwndParent, int string_size, char *variables, 
+void __declspec(dllexport)
+service_create (HWND hwndParent, int string_size, char *variables,
 		 stack_t **stacktop, extra_parameters_t *extra)
 {
   SC_HANDLE sc;
@@ -357,7 +357,7 @@ service_lookup (char *service_name)
 {
   SC_HANDLE sc;
   SC_HANDLE service;
-  
+
   sc = OpenSCManager (NULL, NULL, SC_MANAGER_ALL_ACCESS);
   if (sc == NULL)
     {
@@ -377,8 +377,8 @@ service_lookup (char *service_name)
 
 
 /* Returns status.  */
-void __declspec(dllexport) 
-service_query (HWND hwndParent, int string_size, char *variables, 
+void __declspec(dllexport)
+service_query (HWND hwndParent, int string_size, char *variables,
 	       stack_t **stacktop, extra_parameters_t *extra)
 {
   SC_HANDLE service;
@@ -447,8 +447,8 @@ service_query (HWND hwndParent, int string_size, char *variables,
 }
 
 
-void __declspec(dllexport) 
-service_start (HWND hwndParent, int string_size, char *variables, 
+void __declspec(dllexport)
+service_start (HWND hwndParent, int string_size, char *variables,
 	       stack_t **stacktop, extra_parameters_t *extra)
 {
   SC_HANDLE service;
@@ -509,8 +509,8 @@ service_start (HWND hwndParent, int string_size, char *variables,
 }
 
 
-void __declspec(dllexport) 
-service_stop (HWND hwndParent, int string_size, char *variables, 
+void __declspec(dllexport)
+service_stop (HWND hwndParent, int string_size, char *variables,
 	      stack_t **stacktop, extra_parameters_t *extra)
 {
   SC_HANDLE service;
@@ -587,8 +587,8 @@ service_stop (HWND hwndParent, int string_size, char *variables,
 }
 
 
-void __declspec(dllexport) 
-service_delete (HWND hwndParent, int string_size, char *variables, 
+void __declspec(dllexport)
+service_delete (HWND hwndParent, int string_size, char *variables,
 		stack_t **stacktop, extra_parameters_t *extra)
 {
   SC_HANDLE service;
@@ -835,13 +835,13 @@ config_lookup (char *key)
 	return values[i];
       i++;
     }
-  
+
   return NULL;
 }
 
 
-void __declspec(dllexport) 
-config_fetch (HWND hwndParent, int string_size, char *variables, 
+void __declspec(dllexport)
+config_fetch (HWND hwndParent, int string_size, char *variables,
 	      stack_t **stacktop, extra_parameters_t *extra)
 {
   char key[256];
@@ -867,8 +867,8 @@ config_fetch (HWND hwndParent, int string_size, char *variables,
 }
 
 
-void __declspec(dllexport) 
-config_fetch_bool (HWND hwndParent, int string_size, char *variables, 
+void __declspec(dllexport)
+config_fetch_bool (HWND hwndParent, int string_size, char *variables,
 		   stack_t **stacktop, extra_parameters_t *extra)
 {
   char key[256];
@@ -894,7 +894,7 @@ config_fetch_bool (HWND hwndParent, int string_size, char *variables,
       setuservariable (INST_R0, "");
       return;
     }
-  
+
   result = 0;
   if (!strcasecmp (value, "true")
       || !strcasecmp (value, "yes")
@@ -966,16 +966,17 @@ read_w32_registry_string (HKEY root, const char *dir, const char *name)
 #define ENV_HK HKEY_CURRENT_USER
 #define ENV_REG "Environment"
 #endif
+/* Due to a bug in Windows7 (kb 2685893) we better but a lower limit
+   than 8191 on the maximum length of the PATH variable.  Note, that
+   depending on the used toolchain we used to have a 259 byte limit in
+   the past.  */
+#define PATH_LENGTH_LIMIT 2047
 
-
-void __declspec(dllexport) 
-path_add (HWND hwndParent, int string_size, char *variables, 
+void __declspec(dllexport)
+path_add (HWND hwndParent, int string_size, char *variables,
 	  stack_t **stacktop, extra_parameters_t *extra)
 {
-#ifndef PATH_MAX
-#define PATH_MAX 8192
-#endif
-  char dir[PATH_MAX];
+  char dir[PATH_LENGTH_LIMIT];
   char *path;
   char *path_new;
   int path_new_size;
@@ -1007,7 +1008,7 @@ path_add (HWND hwndParent, int string_size, char *variables,
 
   /* Old path plus semicolon plus dir plus terminating nul.  */
   path_new_size = strlen (path) + 1 + strlen (dir) + 1;
-  if (path_new_size > PATH_MAX)
+  if (path_new_size > PATH_LENGTH_LIMIT)
     {
       MessageBox (g_hwndParent, "PATH env variable too big", 0, MB_OK);
       free (path);
@@ -1065,14 +1066,11 @@ path_add (HWND hwndParent, int string_size, char *variables,
 }
 
 
-void __declspec(dllexport) 
-path_remove (HWND hwndParent, int string_size, char *variables, 
+void __declspec(dllexport)
+path_remove (HWND hwndParent, int string_size, char *variables,
 	     stack_t **stacktop, extra_parameters_t *extra)
 {
-#ifndef PATH_MAX
-#define PATH_MAX 8192
-#endif
-  char dir[PATH_MAX];
+  char dir[PATH_LENGTH_LIMIT];
   char *path;
   char *path_new;
   int path_new_size;
