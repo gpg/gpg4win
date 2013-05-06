@@ -127,12 +127,13 @@ server http://www.abisource.com/downloads/enchant/1.6.0
 #
 # Claws
 #
+
 # (Kept on our own mirror due to Sourceforge peculiarities.)
+server ftp://ftp.g10code.com/mirrors/claws
 
-server http://www.claws-mail.org/win32
+file   claws-mail-3.9.0.tar.gz
+chk    7730e0978c364bded838ce26a8f9cbd733a363a9
 
-#file   claws-mail-3.8.1.tar.bz2
-#chk    4b9fa17bff8986098c72c4b8723e1540e2b058d1
 #
 #file   attachwarner-0.2.24cvs1.tar.gz
 #chk    616356ad9697e2698b294901e562897e9d0c40e1
