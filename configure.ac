@@ -227,6 +227,49 @@ AC_CHECK_PROGS(GITLOG_TO_CHANGELOG, gitlog-to-changelog,
                [build-aux/gitlog-to-changelog])
 AC_PROG_INSTALL
 
+# GpgOL and GpgEx need the runtime libaries
+# The default path should probably be more generic
+libgcc_dll=no
+AC_ARG_WITH([libgcc_s_sjlj-dll],
+           AC_HELP_STRING([--with-libgcc_s_sjlj-1-dll=FILE],
+                          [use the libgcc_s_sjlj-1 DLL]),
+           [libgcc_dll=$withval])
+if test "$libgcc_dll" = "no"; then
+  file="/usr/lib/gcc/$host/4.6/libgcc_s_sjlj-1.dll"
+  if test -r "$file"; then
+    libgcc_dll="$file"
+  fi
+fi
+if test "$libgcc_dll" = "no"; then
+  missing_tools="libgcc_s_sjlj-1.dll $missing_tools"
+fi
+
+if test -r "$libgcc_dll"; then
+  cp $libstdcpp_dll src/libstdc++-6.dll
+else
+  missing_tools="libgcc_s_sjlj-1.dll $missing_tools"
+fi
+
+libstdcpp_dll=no
+AC_ARG_WITH([libstdcpp_s_sjlj-dll],
+           AC_HELP_STRING([--with-libstdc++-6-dll=FILE],
+                          [use the libstdc++-6 DLL]),
+           [libstdcpp_dll=$withval])
+if test "$libstdcpp_dll" = "no"; then
+  file="/usr/lib/gcc/$host/4.6/libstdc++-6.dll"
+  if test -r "$file"; then
+    libstdcpp_dll="$file"
+  fi
+fi
+if test "$libstdcpp_dll" = "no"; then
+  missing_tools="libstdc++-6.dll $missing_tools"
+fi
+if test -r "$libstdcpp_dll"; then
+  cp $libgcc_dll src/libgcc_s_sjlj-1.dll
+else
+  missing_tools="libstdc++-6.dll $missing_tools"
+fi
+
 missing_tools=
 for i in DLLTOOL MAKE UNZIP TAR MKDIR CP RM STOW MAKENSIS ZCAT TEXI2DVI \
          DVIPDF CONVERT SHA1SUM MSGFMT ; do

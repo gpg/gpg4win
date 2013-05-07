@@ -79,6 +79,11 @@ Section "-gpg4win" SEC_gpg4win
   File "${BUILD_DIR}/sha256sum.exe"
   File "${BUILD_DIR}/md5sum.exe"
 
+  SetOutPath "$INSTDIR\pub"
+  # Install the mingw runtime libaries
+  File "${BUILD_DIR}/libstdc++-6.dll"
+  File "${BUILD_DIR}/libgcc_s_sjlj-1.dll"
+
 !endif
 
 SectionEnd

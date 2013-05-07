@@ -35,6 +35,10 @@ Section "-un.gpg4win"
   Delete "$INSTDIR\sha256sum.exe"
   Delete "$INSTDIR\md5sum.exe"
 
+  # Delete the runtime libarries
+  Delete "$INSTDIR\pub\libstdc++-6.dll"
+  Delete "$INSTDIR\pub\libgcc_s_sjlj-1.dll"
+
   # Delete standard stuff.
   Delete "$INSTDIR\share\gpg4win\README.*.txt"
 
