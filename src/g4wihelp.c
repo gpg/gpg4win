@@ -1058,6 +1058,7 @@ path_add (HWND hwndParent, int string_size, char *variables,
   RegSetValueEx (key_handle, "Path", 0, REG_EXPAND_SZ,
 		 path_new, path_new_size);
   RegCloseKey (key_handle);
+  SetEnvironmentVariable("PATH", path_new);
   free (path_new);
 
 /*   MessageBox (g_hwndParent, "XXX 9", 0, MB_OK); */
