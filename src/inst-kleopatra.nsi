@@ -115,7 +115,8 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
 
   File ${prefix}/share/config/libkleopatrarc
 
-  # TODO
+  # TODO Can't mix localized and en commons when we install
+  # more then one kde langanuage
   SetOutPath "$INSTDIR\share\doc\HTML\common"
 
   File ${prefix}/share/doc/HTML/en/common/1.png
@@ -165,12 +166,12 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
   File ${prefix}/share/doc/HTML/en/common/x11-license.html
   File ${prefix}/share/doc/HTML/en/common/xml.dcl
 
-  SetOutPath "$INSTDIR\share\doc\HTML\de\kleopatra"
-
   File ${prefix}/share/doc/HTML/de/common/fdl-translated.html
   File ${prefix}/share/doc/HTML/de/common/gpl-translated.html
   File ${prefix}/share/doc/HTML/de/common/kde-localised.css
   File ${prefix}/share/doc/HTML/de/common/lgpl-translated.html
+
+  SetOutPath "$INSTDIR\share\doc\HTML\de\kleopatra"
 
   File ${prefix}/share/doc/HTML/de/kleopatra/admin-archive-definitions.html
   File ${prefix}/share/doc/HTML/de/kleopatra/admin-checksum-definitions.html
@@ -414,6 +415,22 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
   File ${prefix}/share/locale/de/LC_MESSAGES/libmailtransport.mo
   File ${prefix}/share/locale/de/LC_MESSAGES/timezones4.mo
 
+  # In KDE 4.10 the locale detection in kdelibs is broken so we
+  # install a kdeglobals with the language setting chosen in the
+  # installer
+  push $1
+  FileOpen $1 "$INSTDIR\share\config\kdeglobals" "w"
+  FileWrite $1 '[Locale] $\r$\n'
+  StrCmp $LANGUAGE "1031" german_locale 0
+  FileWrite $1 'Country=en $\r$\n'
+  FileWrite $1 'Language=$LANGUAGE $\r$\n'
+  Goto kdeglobals_done
+german_locale:
+  FileWrite $1 'Country=de $\r$\n'
+  FileWrite $1 'Language=de $\r$\n'
+kdeglobals_done:
+  FileClose $1
+  pop $1
 
 !endif
 ${MementoSectionEnd}
