@@ -43,6 +43,8 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
 	patches/gpgme-1.2.0/03-w32-socket.patch \
         patches/gpgme-1.2.0/04-check-agent.patch \
         patches/gpgme-1.2.0/05-is-socket.patch \
+        patches/gpgme-1.4.1/01-improve-trace.patch \
+        patches/gpgme-1.4.1/02-close-socket.patch \
 	patches/gpgex-0.9.5/01-default-no-suffix.patch \
 	patches/gnupg2/01-version.patch.in \
 	patches/gnupg2/02-allow-mark-trusted.patch \
