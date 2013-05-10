@@ -1,0 +1,25 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+commit c416e89d2a88b817eaffe17a801bf97f3e510018
+Author: Colin Leroy <colin@colino.net>
+Date:   Tue May 7 12:46:40 2013 +0200
+
+    Never decode multipart/* or message/* parts, as RFC states.
+
+
+diff --git a/src/procmime.c b/src/procmime.c
+index 95b326a..79dc7c3 100644
+--- a/src/procmime.c
++++ b/src/procmime.c
+@@ -349,8 +349,7 @@ gboolean procmime_decode_content(MimeInfo *mimeinfo)
+	    ))
+                return TRUE;
+
+-	if (mimeinfo->type == MIMETYPE_MULTIPART &&
+-	    !strcasecmp(mimeinfo->subtype, "signed"))
++	if (mimeinfo->type == MIMETYPE_MULTIPART || mimeinfo->type == MIMETYPE_MESSAGE)
+                return TRUE;
+
+        infp = procmime_fopen(mimeinfo->data.filename, "rb");

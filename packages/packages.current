@@ -141,27 +141,15 @@ chk    321f9cf0abfa1937401676ce60976d8779c39536
 # (Kept on our own mirror due to Sourceforge peculiarities.)
 server ftp://ftp.g10code.com/mirrors/claws
 
-file   claws-mail-3.9.0.tar.gz
-chk    7730e0978c364bded838ce26a8f9cbd733a363a9
+# checked: 2013-05-10 wk
+file   claws-mail-3.9.1.tar.bz2
+chk    ec3a787b34b07983d938f7d353e3cfd85167122b
 
-#
-#file   attachwarner-0.2.24cvs1.tar.gz
-#chk    616356ad9697e2698b294901e562897e9d0c40e1
-#
-#file   bsfilter_plugin-1.0.8cvs1.tar.gz
-#chk    1577366fe46ad30d188c84a30c75fd2bcaafdb7e
-#
 #file   gtkhtml2_viewer-0.33.tar.gz
 #chk    b2a7047af55b2273e031e16806859458762d74a1
 #
-#file   notification_plugin-0.30.tar.gz
-#chk    2c6237b0dfbdb028e2d12b26ff2dc3430a96b47f
-#
 #file   rssyl-0.33.tar.gz
 #chk    aecf28d0901c8e670eabe1abcfeb362f1685cc75
-#
-#file   tnef_parse-0.3.13.tar.gz
-#chk    8d0de3c82048c5a9e7985786ddc624d2920ba8a1
 #
 #file   vcalendar-2.0.13.tar.gz
 #chk    1e8171340dde04eda4468b72c23104233dd76bae

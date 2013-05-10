@@ -296,11 +296,15 @@ gpg4win_pkg_claws_mail_configure = \
   --with-lib-prefix=$(idir) --with-libiconv-prefix=$(idir) \
   --with-gpg-error-prefix=$(idir) --with-gpgme-prefix=$(idir) \
   --with-config-dir="Claws-mail" --enable-pthread --enable-gnutls \
-  --enable-libetpan --disable-trayicon-plugin --disable-dbus \
-  --disable-dillo-viewer-plugin \
-  --disable-jpilot --disable-startup-notification --disable-ipv6 \
+  --enable-libetpan --disable-dbus --disable-valgrind --disable-ipv6 \
+  --disable-jpilot --disable-startup-notification \
   --disable-spamassassin-plugin --disable-bogofilter-plugin \
-  --disable-valgrind --disable-networkmanager-support
+  --disable-fancy-plugin --disable-geolocation-plugin \
+  --disable-acpi_notifier-plugin --disable-clamd-plugin \
+  --disable-bogofilter-plugin --disable-spamassassin-plugin \
+  --disable-perl-plugin --disable-python-plugin --disable-demo-plugin \
+  --disable-newmail-plugin --disable-mailmbox-plugin
+
 
 # This is not anymore needed sinces 3.8.0 already builds a PDF version.
 # define gpg4win_pkg_claws_mail_post_install

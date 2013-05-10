@@ -1,18 +1,18 @@
 # uninst-claws-mail.nsi - Installer snippet.        -*- coding: latin-1; -*-
 # Copyright (C) 2005, 2007 g10 Code GmbH
-# 
+#
 # This file is part of GPG4Win.
-# 
+#
 # GPG4Win is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 of the License, or
 # (at your option) any later version.
-# 
+#
 # GPG4Win is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
-# 
+#
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
@@ -46,6 +46,14 @@ Section "-un.claws-mail"
   Delete "$INSTDIR\lib\claws-mail\plugins\pgpmime.deps"
   Delete "$INSTDIR\lib\claws-mail\plugins\smime.dll"
   Delete "$INSTDIR\lib\claws-mail\plugins\smime.deps"
+  Delete "$INSTDIR\lib\claws-mail\plugins\address_keeper.dll"
+  Delete "$INSTDIR\lib\claws-mail\plugins\att_remover.dll"
+  Delete "$INSTDIR\lib\claws-mail\plugins\attachwarner.dll"
+  Delete "$INSTDIR\lib\claws-mail\plugins\bsfilter.dll"
+  Delete "$INSTDIR\lib\claws-mail\plugins\fetchinfo.dll"
+  Delete "$INSTDIR\lib\claws-mail\plugins\notification.dll"
+  Delete "$INSTDIR\lib\claws-mail\plugins\tnef_parse.dll"
+
   RMDir "$INSTDIR\lib\claws-mail\plugins"
   RMDir "$INSTDIR\lib\claws-mail"
   RMDir "$INSTDIR\share\claws-mail"

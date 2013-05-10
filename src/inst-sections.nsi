@@ -170,9 +170,6 @@
 !ifdef HAVE_PKG_CLAWS_MAIL
 !include "inst-claws-mail.nsi"
 !endif
-!ifdef HAVE_PKG_NOTIFICATION_PLUGIN
-!include "inst-notification_plugin.nsi"
-!endif
 !ifdef HAVE_PKG_GTKHTML2_VIEWER
 !include "inst-gtkhtml2_viewer.nsi"
 !endif
@@ -181,15 +178,6 @@
 !endif
 !ifdef HAVE_PKG_RSSYL
 !include "inst-rssyl.nsi"
-!endif
-!ifdef HAVE_PKG_TNEF_PARSE
-!include "inst-tnef_parse.nsi"
-!endif
-!ifdef HAVE_PKG_ATTACHWARNER
-!include "inst-attachwarner.nsi"
-!endif
-!ifdef HAVE_PKG_BSFILTER_PLUGIN
-!include "inst-bsfilter_plugin.nsi"
 !endif
 !ifdef HAVE_PKG_COMPENDIUM
 !include "inst-compendium.nsi"
@@ -229,9 +217,6 @@
 !ifdef HAVE_PKG_CLAWS_MAIL
 !include "uninst-claws-mail.nsi"
 !endif
-!ifdef HAVE_PKG_NOTIFICATION_PLUGIN
-!include "uninst-notification_plugin.nsi"
-!endif
 !ifdef HAVE_PKG_GTKHTML2_VIEWER
 !include "uninst-gtkhtml2_viewer.nsi"
 !endif
@@ -240,15 +225,6 @@
 !endif
 !ifdef HAVE_PKG_RSSYL
 !include "uninst-rssyl.nsi"
-!endif
-!ifdef HAVE_PKG_TNEF_PARSE
-!include "uninst-tnef_parse.nsi"
-!endif
-!ifdef HAVE_PKG_ATTACHWARNER
-!include "uninst-attachwarner.nsi"
-!endif
-!ifdef HAVE_PKG_BSFILTER_PLUGIN
-!include "uninst-bsfilter_plugin.nsi"
 !endif
 !ifdef HAVE_PKG_PAPERKEY
 !include "uninst-paperkey.nsi"

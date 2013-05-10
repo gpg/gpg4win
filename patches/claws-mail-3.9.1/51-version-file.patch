@@ -1,0 +1,9 @@
+#! /bin/sh
+#
+# Hack to copy the ugly version file
+#
+set -e
+echo 'copying the version file' >&2
+mkdir ../claws-mail-3.9.1-build || true
+cp version version.in ../claws-mail-3.9.1-build/
+exit $?

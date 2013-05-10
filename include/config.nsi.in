@@ -146,10 +146,6 @@
 !define gpg4win_pkg_claws_mail @gpg4win_pkg_claws_mail@
 !define gpg4win_pkg_claws_mail_version @gpg4win_pkg_claws_mail_version@
 
-@HAVE_PKG_NOTIFICATION_PLUGIN@
-!define gpg4win_pkg_notification_plugin @gpg4win_pkg_notification_plugin@
-!define gpg4win_pkg_notification_plugin_version @gpg4win_pkg_notification_plugin_version@
-
 @HAVE_PKG_GTKHTML2_VIEWER@
 !define gpg4win_pkg_gtkhtml2_viewer @gpg4win_pkg_gtkhtml2_viewer@
 !define gpg4win_pkg_gtkhtml2_viewer_version @gpg4win_pkg_gtkhtml2_viewer_version@
@@ -161,18 +157,6 @@
 @HAVE_PKG_RSSYL@
 !define gpg4win_pkg_rssyl @gpg4win_pkg_rssyl@
 !define gpg4win_pkg_rssyl_version @gpg4win_pkg_rssyl_version@
-
-@HAVE_PKG_TNEF_PARSE@
-!define gpg4win_pkg_tnef_parse @gpg4win_pkg_tnef_parse@
-!define gpg4win_pkg_tnef_parse_version @gpg4win_pkg_tnef_parse_version@
-
-@HAVE_PKG_ATTACHWARNER@
-!define gpg4win_pkg_attachwarner @gpg4win_pkg_attachwarner@
-!define gpg4win_pkg_attachwarner_version @gpg4win_pkg_attachwarner_version@
-
-@HAVE_PKG_BSFILTER_PLUGIN@
-!define gpg4win_pkg_bsfilter_plugin @gpg4win_pkg_bsfilter_plugin@
-!define gpg4win_pkg_bsfilter_plugin_version @gpg4win_pkg_bsfilter_plugin_version@
 
 @HAVE_PKG_ZLIB@
 !define gpg4win_pkg_zlib @gpg4win_pkg_zlib@

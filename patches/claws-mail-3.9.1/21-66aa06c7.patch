@@ -1,0 +1,55 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+commit 66aa06c74413386eeb2198365e45c98df75e2782
+Author: Colin Leroy <colin@colino.net>
+Date:   Tue May 7 12:47:25 2013 +0200
+
+    Usual Windows fixes
+
+	Modified   src/plugins/address_keeper/claws.def
+diff --git a/src/plugins/address_keeper/claws.def b/src/plugins/address_keeper/claws.def
+index e777d73..14daf07 100644
+--- a/src/plugins/address_keeper/claws.def
++++ b/src/plugins/address_keeper/claws.def
+@@ -37,3 +37,5 @@ end_address_completion
+ addressbook_peek_folder_exists
+ prefs_common_translated_header_name
+ addressbook_folder_selection
++matcherlist_new_from_lines
++gtkut_get_options_frame
+	Modified   src/plugins/attachwarner/claws.def
+diff --git a/src/plugins/attachwarner/claws.def b/src/plugins/attachwarner/claws.def
+index 5d8ff75..64010d0 100644
+--- a/src/plugins/attachwarner/claws.def
++++ b/src/plugins/attachwarner/claws.def
+@@ -28,3 +28,4 @@ prefs_set_default
+ prefs_write_open
+ prefs_write_param
+ prefs_common_get_prefs
++matcherlist_new_from_lines
+	Modified   src/plugins/pgpcore/claws.def
+diff --git a/src/plugins/pgpcore/claws.def b/src/plugins/pgpcore/claws.def
+index 265d11f..fe8c176 100644
+--- a/src/plugins/pgpcore/claws.def
++++ b/src/plugins/pgpcore/claws.def
+@@ -76,3 +76,4 @@ textview_init
+ textview_set_font
+ textview_show_icon
+ textview_show_mime_part
++fast_strftime
+	Modified   src/plugins/pgpcore/sgpgme.c
+diff --git a/src/plugins/pgpcore/sgpgme.c b/src/plugins/pgpcore/sgpgme.c
+index 71ec5eb..a2d7fa3 100644
+--- a/src/plugins/pgpcore/sgpgme.c
++++ b/src/plugins/pgpcore/sgpgme.c
+@@ -294,7 +294,7 @@ gchar *sgpgme_sigstat_info_full(gpgme_ctx_t ctx, gpgme_verify_result_t status)
+                }
+
+                memset(buf, 0, sizeof(buf));
+-		fast_strftime(buf, sizeof(buf)-1, prefs_common.date_format, localtime_r(&sig->timestamp, &lt));
++               fast_strftime(buf, sizeof(buf)-1, prefs_common_get_prefs()->date_format, localtime_r(&sig->timestamp, &lt));
+		g_string_append_printf(siginfo,
+			_("Signature made on %s using %s key ID %s\n"),
+			buf, keytype, keyid);

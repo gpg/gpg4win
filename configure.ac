@@ -367,13 +367,9 @@ GPG4WIN_SPKG([regex])
 GPG4WIN_SPKG([crypt])
 GPG4WIN_SPKG([claws-mail], [libiconv gettext zlib gtk+ libpng enchant glib dnl
                             gpgme pthreads-w32 crypt regex libetpan gnutls])
-GPG4WIN_SPKG([notification_plugin], [claws-mail])
 GPG4WIN_SPKG([gtkhtml2_viewer], [curl claws-mail libxml2])
 GPG4WIN_SPKG([vcalendar], [curl claws-mail])
 GPG4WIN_SPKG([rssyl], [curl claws-mail])
-GPG4WIN_SPKG([tnef_parse], [claws-mail])
-GPG4WIN_SPKG([attachwarner], [claws-mail])
-GPG4WIN_SPKG([bsfilter_plugin], [claws-mail])
 GPG4WIN_IPKG([compendium])
 
 # Qt related stuff.

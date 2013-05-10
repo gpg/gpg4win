@@ -56,6 +56,13 @@ LangString T_SetDefaultClient ${LANG_ENGLISH} \
   File ${prefix}/lib/claws-mail/plugins/pgpmime.deps
   File ${prefix}/lib/claws-mail/plugins/smime.dll
   File ${prefix}/lib/claws-mail/plugins/smime.deps
+  File ${prefix}/lib/claws-mail/plugins/address_keeper.dll
+  File ${prefix}/lib/claws-mail/plugins/att_remover.dll
+  File ${prefix}/lib/claws-mail/plugins/attachwarner.dll
+  File ${prefix}/lib/claws-mail/plugins/bsfilter.dll
+  File ${prefix}/lib/claws-mail/plugins/fetchinfo.dll
+  File ${prefix}/lib/claws-mail/plugins/notification.dll
+  File ${prefix}/lib/claws-mail/plugins/tnef_parse.dll
 
   SetOutPath "$INSTDIR\share\locale\pt_BR\LC_MESSAGES"
   File ${prefix}/share/locale/pt_BR/LC_MESSAGES/claws-mail.mo
