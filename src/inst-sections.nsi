@@ -637,26 +637,8 @@ Function CalcDepends
 !ifdef HAVE_PKG_LIBXML2
   !insertmacro UnselectSection ${SEC_libxml2}
 !endif
-!ifdef HAVE_PKG_NOTIFICATION_PLUGIN
-  !insertmacro UnselectSection ${SEC_notification_plugin}
-!endif
 !ifdef HAVE_PKG_GTKHTML2_VIEWER
   !insertmacro UnselectSection ${SEC_gtkhtml2_viewer}
-!endif
-!ifdef HAVE_PKG_VCALENDAR
-  !insertmacro UnselectSection ${SEC_vcalendar}
-!endif
-!ifdef HAVE_PKG_RSSYL
-  !insertmacro UnselectSection ${SEC_rssyl}
-!endif
-!ifdef HAVE_PKG_TNEF_PARSE
-  !insertmacro UnselectSection ${SEC_tnef_parse}
-!endif
-!ifdef HAVE_PKG_ATTACHWARNER
-  !insertmacro UnselectSection ${SEC_attachwarner}
-!endif
-!ifdef HAVE_PKG_BSFILTER_PLUGIN
-  !insertmacro UnselectSection ${SEC_bsfilter_plugin}
 !endif
 !ifdef HAVE_PKG_DBUS
   !insertmacro UnselectSection ${SEC_dbus}
@@ -790,14 +772,7 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_gnutls}
   # These are not build dependencies, but we always want to install
   # all plugins.
-  !insertmacro SelectSection ${SEC_bsfilter}
-  !insertmacro SelectSection ${SEC_notification_plugin}
   !insertmacro SelectSection ${SEC_gtkhtml2_viewer}
-  !insertmacro SelectSection ${SEC_vcalendar}
-  !insertmacro SelectSection ${SEC_rssyl}
-  !insertmacro SelectSection ${SEC_tnef_parse}
-  !insertmacro SelectSection ${SEC_attachwarner}
-  !insertmacro SelectSection ${SEC_bsfilter_plugin}
   skip_claws_mail:
 !endif
 
@@ -823,33 +798,12 @@ Function CalcDepends
   # Package "dbus" has no dependencies.
   # Package "oxygen-icons" has no dependencies.
 
-!ifdef HAVE_PKG_RSSYL
-  !insertmacro SectionFlagIsSet ${SEC_rssyl} ${SF_SELECTED} have_rssyl skip_rssyl
-  have_rssyl:
-  !insertmacro SelectSection ${SEC_curl}
-  skip_rssyl:
-!endif
-
-!ifdef HAVE_PKG_VCALENDAR
-  !insertmacro SectionFlagIsSet ${SEC_vcalendar} ${SF_SELECTED} have_vcalendar skip_vcalendar
-  have_vcalendar:
-  !insertmacro SelectSection ${SEC_curl}
-  skip_vcalendar:
-!endif
-
 !ifdef HAVE_PKG_GTKHTML2_VIEWER
   !insertmacro SectionFlagIsSet ${SEC_gtkhtml2_viewer} ${SF_SELECTED} have_gtkhtml2_viewer skip_gtkhtml2_viewer
   have_gtkhtml2_viewer:
   !insertmacro SelectSection ${SEC_curl}
   !insertmacro SelectSection ${SEC_libxml2}
   skip_gtkhtml2_viewer:
-!endif
-
-!ifdef HAVE_PKG_NOTIFICATION_PLUGIN
-  !insertmacro SectionFlagIsSet ${SEC_notification_plugin} ${SF_SELECTED} have_notification_plugin skip_notification_plugin
-  have_notification_plugin:
-  !insertmacro SelectSection ${SEC_curl}
-  skip_notification_plugin:
 !endif
 
 !ifdef HAVE_PKG_LIBXML2
