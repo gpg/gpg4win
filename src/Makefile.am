@@ -36,13 +36,9 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi config.site \
         inst-libxml2.nsi	   uninst-libxml2.nsi	      \
         inst-libetpan.nsi	   uninst-libetpan.nsi        \
         inst-claws-mail.nsi	   uninst-claws-mail.nsi      \
-        inst-notification_plugin.nsi uninst-notification_plugin.nsi  \
         inst-gtkhtml2_viewer.nsi   uninst-gtkhtml2_viewer.nsi \
         inst-vcalendar.nsi	   uninst-vcalendar.nsi       \
         inst-rssyl.nsi		   uninst-rssyl.nsi           \
-        inst-tnef_parse.nsi	   uninst-tnef_parse.nsi      \
-        inst-attachwarner.nsi	   uninst-attachwarner.nsi    \
-        inst-bsfilter_plugin.nsi   uninst-bsfilter_plugin.nsi \
         inst-crypt.nsi		   uninst-crypt.nsi	      \
         inst-dirmngr.nsi	   uninst-dirmngr.nsi	      \
         inst-gettext.nsi	   uninst-gettext.nsi	      \
@@ -108,10 +104,9 @@ CLEANFILES = g4wihelp.dll versioninfo.txt $(README_files) $(HOWTO_files) \
 gpg4win_spkgs = glib libffi gdk-pixbuf gtk+ \
                 libgpg-error gpgme gpgol gpgex libpng enchant \
 		gpa libgsasl libtasn1 opencdk gnutls curl libxml2 \
-                libetpan claws-mail notification_plugin gtkhtml2_viewer \
+                libetpan claws-mail gtkhtml2_viewer \
 		vcalendar rssyl gnupg2 pinentry libassuan libksba libgcrypt \
-		adns dirmngr w32pth scute paperkey tnef_parse attachwarner \
-		bsfilter_plugin regex
+		adns dirmngr w32pth scute paperkey regex
 
 # Extra options to configure for individual packages.
 # We can use $(idir) here for the installation prefix.
@@ -315,10 +310,6 @@ gpg4win_pkg_claws_mail_configure = \
 # endef
 
 
-gpg4win_pkg_notification_plugin_configure = \
-  --with-lib-prefix=$(idir) --with-libiconv-prefix=$(idir) \
-  --disable-libnotify --disable-lcdproc --disable-hotkeys
-
 gpg4win_pkg_gtkhtml2_viewer_configure = \
   --with-lib-prefix=$(idir) --with-libiconv-prefix=$(idir) LIBS=\"-L$(idir)/bin\"
 
@@ -326,15 +317,6 @@ gpg4win_pkg_vcalendar_configure = \
   --with-lib-prefix=$(idir) --with-libiconv-prefix=$(idir) LIBS=\"-L$(idir)/bin\"
 
 gpg4win_pkg_rssyl_configure = \
-  --with-lib-prefix=$(idir) --with-libiconv-prefix=$(idir) LIBS=\"-L$(idir)/bin\"
-
-gpg4win_pkg_tnef_parse_configure = \
-  --with-lib-prefix=$(idir) --with-libiconv-prefix=$(idir) LIBS=\"-L$(idir)/bin\"
-
-gpg4win_pkg_attachwarner_configure = \
-  --with-lib-prefix=$(idir) --with-libiconv-prefix=$(idir) LIBS=\"-L$(idir)/bin\"
-
-gpg4win_pkg_bsfilter_plugin_configure = \
   --with-lib-prefix=$(idir) --with-libiconv-prefix=$(idir) LIBS=\"-L$(idir)/bin\"
 
 gpg4win_pkg_scute_configure = --silent \
