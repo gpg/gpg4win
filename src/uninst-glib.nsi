@@ -31,30 +31,16 @@ Section "-un.glib"
 !else
 
   Delete "$INSTDIR\share\locale\de\LC_MESSAGES\glib20.mo"
-  RMDir "$INSTDIR\share\locale\de\LC_MESSAGES"
-  RMDir "$INSTDIR\share\locale\de"
   Delete "$INSTDIR\share\locale\ar\LC_MESSAGES\glib20.mo"
-  RMDir "$INSTDIR\share\locale\ar\LC_MESSAGES"
-  RMDir "$INSTDIR\share\locale\ar"
   Delete "$INSTDIR\share\locale\es\LC_MESSAGES\glib20.mo"
-  RMDir "$INSTDIR\share\locale\es\LC_MESSAGES"
-  RMDir "$INSTDIR\share\locale\es"
   Delete "$INSTDIR\share\locale\fr\LC_MESSAGES\glib20.mo"
-  RMDir "$INSTDIR\share\locale\fr\LC_MESSAGES"
-  RMDir "$INSTDIR\share\locale\fr"
   Delete "$INSTDIR\share\locale\ru\LC_MESSAGES\glib20.mo"
-  RMDir "$INSTDIR\share\locale\ru\LC_MESSAGES"
-  RMDir "$INSTDIR\share\locale\ru"
-  RMDir "$INSTDIR\share\locale"
 
   Delete "$INSTDIR\share\glib-2.0\schemas\gschema.dtd"
   RMDir "$INSTDIR\share\glib-2.0\schemas"
   RMDir "$INSTDIR\share\glib-2.0"
 
-  RMDir "$INSTDIR\share"
-
   Delete "$INSTDIR\lib\charset.alias"
-  RMDir "$INSTDIR\lib"
 
   Delete "$INSTDIR\gspawn-win32-helper.exe"
   Delete "$INSTDIR\gspawn-win32-helper-console.exe"
@@ -74,6 +60,6 @@ Section "-un.glib"
   Delete "$INSTDIR\libgobject-2.0-0.dll"
   Delete "$INSTDIR\libgthread-2.0-0.dll"
   Delete "$INSTDIR\libgio-2.0-0.dll"
-  RMDir "$INSTDIR"
+
 !endif
 SectionEnd

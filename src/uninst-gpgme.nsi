@@ -35,6 +35,7 @@ Section "-un.gpgme"
   Delete "$INSTDIR\libgpgme-qt-11.dll"
   Delete "$INSTDIR\gpgme-w32spawn.exe"
   Delete "$INSTDIR\lib\libgpgme.imp"
+  Delete "$INSTDIR\lib\libgpgme-glib.imp"
   Delete "$INSTDIR\include\gpgme.h"
 !endif
 SectionEnd

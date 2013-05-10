@@ -33,23 +33,14 @@ Section "-un.libgpg-error"
   Delete "$INSTDIR\libgpg-error-0.dll"
 
   Delete "$INSTDIR\share\locale\de\LC_MESSAGES\libgpg-error.mo"
-  RMDir "$INSTDIR\share\locale\de\LC_MESSAGES"
-  RMDir "$INSTDIR\share\locale\de"
   Delete "$INSTDIR\share\locale\pl\LC_MESSAGES\libgpg-error.mo"
-  RMDir "$INSTDIR\share\locale\pl\LC_MESSAGES"
-  RMDir "$INSTDIR\share\locale\pl"
   Delete "$INSTDIR\share\locale\ro\LC_MESSAGES\libgpg-error.mo"
-  RMDir "$INSTDIR\share\locale\ro\LC_MESSAGES"
-  RMDir "$INSTDIR\share\locale\ro"
   Delete "$INSTDIR\share\locale\fr\LC_MESSAGES\libgpg-error.mo"
-  RMDir "$INSTDIR\share\locale\fr\LC_MESSAGES"
-  RMDir "$INSTDIR\share\locale\fr"
-  RMDir "$INSTDIR\share\locale"
-  RMDir "$INSTDIR\share"
+
   Delete "$INSTDIR\gpg-error.exe"
   Delete "$INSTDIR\lib\libgpg-error.imp"
+  Delete "$INSTDIR\lib\libgpg-assuan.imp"
   Delete "$INSTDIR\include\gpg-error.h"
 
-  RMDir "$INSTDIR"
 !endif
 SectionEnd

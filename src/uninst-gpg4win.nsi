@@ -83,6 +83,8 @@ Section "-un.gpg4win"
   RMDir "$INSTDIR\share\locale\hu"
   RMDir "$INSTDIR\share\locale\id\LC_MESSAGES"
   RMDir "$INSTDIR\share\locale\id"
+  RMDir "$INSTDIR\share\locale\id_ID\LC_MESSAGES"
+  RMDir "$INSTDIR\share\locale\id_ID"
   RMDir "$INSTDIR\share\locale\it\LC_MESSAGES"
   RMDir "$INSTDIR\share\locale\it"
   RMDir "$INSTDIR\share\locale\ja\LC_MESSAGES"
@@ -103,6 +105,8 @@ Section "-un.gpg4win"
   RMDir "$INSTDIR\share\locale\sk"
   RMDir "$INSTDIR\share\locale\sv\LC_MESSAGES"
   RMDir "$INSTDIR\share\locale\sv"
+  RMDir "$INSTDIR\share\locale\sr\LC_MESSAGES"
+  RMDir "$INSTDIR\share\locale\sr"
   RMDir "$INSTDIR\share\locale\tr\LC_MESSAGES"
   RMDir "$INSTDIR\share\locale\tr"
   RMDir "$INSTDIR\share\locale\zh_CN\LC_MESSAGES"
@@ -112,7 +116,7 @@ Section "-un.gpg4win"
 
   RMDir "$INSTDIR\share\locale"
 
-  # Try again to remove teh scdaemon.  This is useful because scdaemon
+  # Try again to remove the scdaemon.  This is useful because scdaemon
   # needs some time to stop after gpg-agent has been stopped.
   Delete "$INSTDIR\scdaemon.exe"
 
@@ -121,6 +125,7 @@ Section "-un.gpg4win"
   RMDir "$INSTDIR\include"
   RMDir "$INSTDIR\share"
   RMDir "$INSTDIR\pub"
+  RMDir "$INSTDIR\etc"
   RMDir "$INSTDIR"
 
 !endif
