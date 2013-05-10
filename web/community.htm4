@@ -32,14 +32,14 @@ your message being held for moderation.
   <dt><b>Gpg4win-announce</b></dt>
   <dd>Announcements (English)<br>
     <a
-href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-announce/">Subscribe</a>
+href="https://lists.wald.intevation.org/mailman/listinfo/gpg4win-announce/">Subscribe</a>
 | <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/">Archive</a>
   </dd>
 
   <dt><b>Gpg4win-announce-de</b></dt>
   <dd>Announcements (German)<br>
     <a
-href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-announce-de/">Subscribe</a>
+href="https://lists.wald.intevation.org/mailman/listinfo/gpg4win-announce-de/">Subscribe</a>
 | <a
 href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/">Archive</a>
   </dd>
@@ -47,7 +47,7 @@ href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/">Archive</
   <dt><b>Gpg4win-users-en</b></dt>
   <dd>User discussion (English)<br>
     <a
-href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-users-en/">Subscribe</a>
+href="https://lists.wald.intevation.org/mailman/listinfo/gpg4win-users-en/">Subscribe</a>
 | <a
 href="http://lists.wald.intevation.org/pipermail/gpg4win-users-en/">Archive</a>
   </dd>
@@ -55,7 +55,7 @@ href="http://lists.wald.intevation.org/pipermail/gpg4win-users-en/">Archive</a>
   <dt><b>Gpg4win-users-de</b></dt>
   <dd>User discussion (German)<br>
     <a
-href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-users-de/">Subscribe</a>
+href="https://lists.wald.intevation.org/mailman/listinfo/gpg4win-users-de/">Subscribe</a>
 | <a
 href="http://lists.wald.intevation.org/pipermail/gpg4win-users-de/">Archive</a>
   </dd>
@@ -64,15 +64,15 @@ href="http://lists.wald.intevation.org/pipermail/gpg4win-users-de/">Archive</a>
   <dt><b>Gpg4win-devel</b></dt>
   <dd>Developer discussion (English)<br>
     <a
-href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-devel/">Subscribe</a>
+href="https://lists.wald.intevation.org/mailman/listinfo/gpg4win-devel/">Subscribe</a>
 | <a
 href="http://lists.wald.intevation.org/pipermail/gpg4win-devel/">Archive</a>
   </dd>
 
   <dt><b>Gpg4win-commits</b></dt>
-  <dd>SVN-Commits for developers (English)<br>
+  <dd>Git log messages for developers (English)<br>
     <a
-href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-commits/">Subscribe</a>
+href="https://lists.wald.intevation.org/mailman/listinfo/gpg4win-commits/">Subscribe</a>
 | <a
 href="http://lists.wald.intevation.org/pipermail/gpg4win-commits/">Archive</a>
   </dd>
@@ -90,19 +90,7 @@ you can post a message.
 </p>
 
 <dl>
- <dt><b>open-discussion</b></dt>
-  <dd>Forum for general discussion (English)<br>
-    <a
-href="http://wald.intevation.org/forum/forum.php?forum_id=20">Go to forum >></a>
-  </dd>
-
-  <dt><b>open-discussion-de</b></dt>
-  <dd>Forum for general discussion (German)<br>
-    <a
-href="http://wald.intevation.org/forum/forum.php?forum_id=83">Go to Forum >></a>
-  </dd>
-
-  <dt><b>help</b></dt>
+  <dt><b>help-en</b></dt>
   <dd>Forum for problems and help (English)<br>
     <a
 href="http://wald.intevation.org/forum/forum.php?forum_id=21">Go to Forum >></a>

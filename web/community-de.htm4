@@ -34,42 +34,42 @@ Bestätigung eines Moderators wartet.</p>
   <dt><b>Gpg4win-announce-de</b></dt>
   <dd>Bekanntmachungsliste (deutsch)<br>
     <a
-href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-announce-de/">Abonnieren</a>
+href="https://lists.wald.intevation.org/mailman/listinfo/gpg4win-announce-de/">Abonnieren</a>
 | <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/">Archiv</a>
   </dd>
 
   <dt><b>Gpg4win-announce</b></dt>
   <dd>Bekanntmachungsliste (englisch)<br>
     <a
-href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-announce/">Abonnieren</a>
+href="https://lists.wald.intevation.org/mailman/listinfo/gpg4win-announce/">Abonnieren</a>
 | <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/">Archiv</a>
   </dd>
 
   <dt><b>Gpg4win-users-de</b></dt>
   <dd>Anwenderliste (deutsch)<br>
     <a
-href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-users-de/">Abonnieren</a>
+href="https://lists.wald.intevation.org/mailman/listinfo/gpg4win-users-de/">Abonnieren</a>
 | <a href="http://lists.wald.intevation.org/pipermail/gpg4win-users-de/">Archiv</a>
   </dd>
 
   <dt><b>Gpg4win-users-en</b></dt>
   <dd>Anwenderliste (englisch)<br>
     <a
-href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-users-en/">Abonnieren</a>
+href="https://lists.wald.intevation.org/mailman/listinfo/gpg4win-users-en/">Abonnieren</a>
 | <a href="http://lists.wald.intevation.org/pipermail/gpg4win-users-en/">Archiv</a>
   </dd>
 
   <dt><b>Gpg4win-devel</b></dt>
   <dd>Entwicklerliste (englisch)<br>
     <a
-href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-devel/">Abonnieren</a>
+href="https://lists.wald.intevation.org/mailman/listinfo/gpg4win-devel/">Abonnieren</a>
 | <a href="http://lists.wald.intevation.org/pipermail/gpg4win-devel/">Archiv</a>
   </dd>
 
   <dt><b>Gpg4win-commits</b></dt>
   <dd>GIT Log Messages für Entwickler (englisch)<br>
     <a
-href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-commits/">Abonnieren</a>
+href="https://lists.wald.intevation.org/mailman/listinfo/gpg4win-commits/">Abonnieren</a>
 | <a href="http://lists.wald.intevation.org/pipermail/gpg4win-commits/">Archiv</a>
   </dd>
  </dl>
@@ -79,28 +79,16 @@ href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-commits/">Abonni
 
 <p>Alternativ zu den Mailinglisten können für Fragen und Diskussionen auch nachfolgende Gpg4win-Webforen
 genutzt werden. Beachten Sie, dass Sie zum Schreiben eines
-Beitrags <a href="http://wald.intevation.org/account/register.php">registiert</a> sein müssen.</p>
+Beitrags <a href="https://wald.intevation.org/account/register.php">registiert</a> sein müssen.</p>
 
 <dl>
-  <dt><b>open-discussion-de</b></dt>
-  <dd>Forum für allgemeine Diskussionen (deutsch)<br>
-    <a
-href="http://wald.intevation.org/forum/forum.php?forum_id=83">Zum Forum >></a>
-  </dd>
-
-  <dt><b>open-discussion</b></dt>
-  <dd>Forum für allgemeine Diskussionen (englisch)<br>
-    <a
-href="http://wald.intevation.org/forum/forum.php?forum_id=20">Zum Forum >></a>
-  </dd>
-
   <dt><b>help-de</b></dt>
   <dd>Forum für Hilfe (deutsch)<br>
     <a
 href="http://wald.intevation.org/forum/forum.php?forum_id=84">Zum Forum >></a>
   </dd>
 
-  <dt><b>help</b></dt>
+  <dt><b>help-en</b></dt>
   <dd>Forum für Hilfe (englisch)<br>
     <a
 href="http://wald.intevation.org/forum/forum.php?forum_id=21">Zum Forum >></a>
