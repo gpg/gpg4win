@@ -73,5 +73,6 @@ src/mingwm10.dll
 /src/COMPONENTS-list.tmp
 
 /web/
-/src/libgcc_s_sjlj-1.dll
-/src/libstdc++-6.dll
+
+/src/libgcc_s_sjlj-1.dll-x
+/src/libstdc++-6.dll-x
