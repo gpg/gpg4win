@@ -81,8 +81,11 @@ chk    d7195498005d340ccd82e183de19163d16e56ec2
 #
 
 server http://curl.haxx.se/download
-#file  curl-7.19.0.tar.bz2
-#chk   fffb34be2e3c66e58a5d3daaf8aa38cae33b284f
+
+# checked: 2013-05-10 wk - updated.
+file  curl-7.30.0.tar.bz2
+chk   23fdc215558023b943cea9dfab04b86020037b0d
+
 
 #
 # libxml2 for Claws plugins
@@ -147,12 +150,7 @@ chk    ec3a787b34b07983d938f7d353e3cfd85167122b
 
 #file   gtkhtml2_viewer-0.33.tar.gz
 #chk    b2a7047af55b2273e031e16806859458762d74a1
-#
-#file   rssyl-0.33.tar.gz
-#chk    aecf28d0901c8e670eabe1abcfeb362f1685cc75
-#
-#file   vcalendar-2.0.13.tar.gz
-#chk    1e8171340dde04eda4468b72c23104233dd76bae
+
 
 #
 # Pthreads for Windows.

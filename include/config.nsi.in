@@ -150,14 +150,6 @@
 !define gpg4win_pkg_gtkhtml2_viewer @gpg4win_pkg_gtkhtml2_viewer@
 !define gpg4win_pkg_gtkhtml2_viewer_version @gpg4win_pkg_gtkhtml2_viewer_version@
 
-@HAVE_PKG_VCALENDAR@
-!define gpg4win_pkg_vcalendar @gpg4win_pkg_vcalendar@
-!define gpg4win_pkg_vcalendar_version @gpg4win_pkg_vcalendar_version@
-
-@HAVE_PKG_RSSYL@
-!define gpg4win_pkg_rssyl @gpg4win_pkg_rssyl@
-!define gpg4win_pkg_rssyl_version @gpg4win_pkg_rssyl_version@
-
 @HAVE_PKG_ZLIB@
 !define gpg4win_pkg_zlib @gpg4win_pkg_zlib@
 !define gpg4win_pkg_zlib_version @gpg4win_pkg_zlib_version@

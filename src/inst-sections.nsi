@@ -173,12 +173,6 @@
 !ifdef HAVE_PKG_GTKHTML2_VIEWER
 !include "inst-gtkhtml2_viewer.nsi"
 !endif
-!ifdef HAVE_PKG_VCALENDAR
-!include "inst-vcalendar.nsi"
-!endif
-!ifdef HAVE_PKG_RSSYL
-!include "inst-rssyl.nsi"
-!endif
 !ifdef HAVE_PKG_COMPENDIUM
 !include "inst-compendium.nsi"
 !endif
@@ -219,12 +213,6 @@
 !endif
 !ifdef HAVE_PKG_GTKHTML2_VIEWER
 !include "uninst-gtkhtml2_viewer.nsi"
-!endif
-!ifdef HAVE_PKG_VCALENDAR
-!include "uninst-vcalendar.nsi"
-!endif
-!ifdef HAVE_PKG_RSSYL
-!include "uninst-rssyl.nsi"
 !endif
 !ifdef HAVE_PKG_PAPERKEY
 !include "uninst-paperkey.nsi"

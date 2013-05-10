@@ -63,6 +63,9 @@ LangString T_SetDefaultClient ${LANG_ENGLISH} \
   File ${prefix}/lib/claws-mail/plugins/fetchinfo.dll
   File ${prefix}/lib/claws-mail/plugins/notification.dll
   File ${prefix}/lib/claws-mail/plugins/tnef_parse.dll
+  File ${prefix}/lib/claws-mail/plugins/rssyl.dll
+  File ${prefix}/lib/claws-mail/plugins/spamreport.dll
+  File ${prefix}/lib/claws-mail/plugins/vcalendar.dll
 
   SetOutPath "$INSTDIR\share\locale\pt_BR\LC_MESSAGES"
   File ${prefix}/share/locale/pt_BR/LC_MESSAGES/claws-mail.mo
