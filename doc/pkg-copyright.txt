@@ -1,21 +1,27 @@
-Here is a list with collected copyright notices. For details see the
-description of each individual package.  [Compiled by wk 2006-02-15,
-last updated 2010-10-08]
+Here is a list with collected copyright notices.  For details see the
+description of each individual package.  This is not meant as an
+exhaustive list of copyright notices.  Notices from several packages
+are even not listed.  The most restrictive requirements are probably
+those of the GNU General Public License version 3 (GPLv3+); thus
+complying to those terms and conditions should be sufficient.  If in
+doubt check the individual packages.  [Compiled by wk 2006-02-15, last
+updated 2013-05-13]
+
 
 Gpg4win is
 
-  Copyright (C) 2005, 2006, 2007, 2008, 2009, 2010 g10 Code GmbH
-  
+  Copyright (C) 2005, 2006, 2007, 2008, 2009, 2010, 2013 g10 Code GmbH
+
   Gpg4win is free software; you can redistribute it and/or modify it
   under the terms of the GNU General Public License as published by
   the Free Software Foundation; either version 2 of the License, or
   (at your option) any later version.
-  
+
   Gpg4win is distributed in the hope that it will be useful, but
   WITHOUT ANY WARRANTY; without even the implied warranty of
   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
   General Public License for more details.
-  
+
   You should have received a copy of the GNU General Public License
   along with this program; if not, write to the Free Software
   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
@@ -25,7 +31,8 @@ Gpg4win is
 GnuPG is
 
   Copyright 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005,
-            2006, 2007, 2008, 2009, 2010 Free Software Foundation, Inc.
+            2006, 2007, 2008, 2009, 2010, 2011, 2012,
+            2013 Free Software Foundation, Inc.
 
   GnuPG is free software; you can redistribute it and/or modify it
   under the terms of the GNU General Public License as published by
@@ -44,9 +51,14 @@ GnuPG is
   information and bug reporting addresses pertaining to GnuPG.
 
 
-NSIS is  
+NSIS is
 
-  Copyright (C) 1999-2008 Nullsoft and Contributors
+  Copyright 1999-2009 Nullsoft, Jeff Doozan and Contributors
+  Copyright 2002-2008 Amir Szekely
+  Copyright 2003 Ramon
+  Copyright 1995-1998 Jean-loup Gailly and Mark Adler
+  Copyright 1999-2006 Igor Pavlov
+  Copyright 1996-2000 Julian R Seward
 
   This license applies to everything in the NSIS package, except where
   otherwise noted.
@@ -80,71 +92,93 @@ NSIS is
 
 GLIB is
 
-  Copyright (C) 1995-1997  Peter Mattis, Spencer Kimball and Josh MacDonald
+  Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
+  Copyright (C) 1995-2011 Red Hat, Inc.
+  Copyright (C) 2008-2010 Novell, Inc.
+  Copyright (C) 2008-2010 Codethink Limited.
+  Copyright (C) 2008-2010 Collabora, Ltd.
 
   This library is free software; you can redistribute it and/or
   modify it under the terms of the GNU Lesser General Public
   License as published by the Free Software Foundation; either
   version 2 of the License, or (at your option) any later version.
- 
+
   This library is distributed in the hope that it will be useful,
   but WITHOUT ANY WARRANTY; without even the implied warranty of
   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.	 See the GNU
   Lesser General Public License for more details.
- 
+
   You should have received a copy of the GNU Lesser General Public
   License along with this library; if not, write to the
   Free Software Foundation, Inc., 59 Temple Place - Suite 330,
   Boston, MA 02111-1307, USA.
 
-  Modified by the GLib Team and others 1997-2000.  See the AUTHORS
-  file for a list of people on the GLib Team.  See the ChangeLog
-  files for a list of changes.  These files are distributed with
-  GLib at ftp://ftp.gtk.org/pub/gtk/. 
+  See the AUTHORS file for a list of people on the GLib Team.  See the
+  ChangeLog files for a list of changes.  These files are distributed
+  with GLib at ftp://ftp.gtk.org/pub/gtk/.
 
 
 GPA is
 
   Copyright (C) 2000-2002 G-N-U GmbH (http://www.g-n-u.de)
   Copyright (C) 2002-2003 Miguel Coca.
-  Copyright (C) 2005, 2008, 2009 g10 Code GmbH.
-  
+  Copyright (C) 2005-2013 g10 Code GmbH
+
   GPA uses fragments from the following programs and libraries:
   JNLIB, Copyright (C) 1998-2000 Free Software Foundation, Inc.
   GPGME, Copyright (C) 2000-2001 Werner Koch
   WinPT, Copyright (C) 2000-2002 Timo Schulz
   (For details, see the file `AUTHORS'.)
-  
+
   GPA is free software; you can redistribute it and/or modify it
   under the terms of the GNU General Public License as published by
   the Free Software Foundation; either version 3 of the License, or
   (at your option) any later version.
-  
+
   GPA is distributed in the hope that it will be useful, but
   WITHOUT ANY WARRANTY; without even the implied warranty of
   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
   GNU General Public License for more details.
-  
+
   You should have received a copy of the GNU General Public License
   along with this program; if not, see <http://www.gnu.org/licenses/>.
 
 
+GPGEX is
+
+  Copyright (C) 2007 g10 Code GmbH
+
+  GpgEX is free software; you can redistribute it and/or
+  modify it under the terms of the GNU Lesser General Public
+  License as published by the Free Software Foundation; either
+  version 2 of the License, or (at your option) any later version.
+
+  GpgEX is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  GNU Lesser General Public License for more details.
+
+  You should have received a copy of the GNU Lesser General Public
+  License along with this program; if not, write to the Free Software
+  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+  02110-1301, USA.
+
+
 GPGME is
 
-  Copyright (C) 2000 Werner Koch (dd9jn)
-  Copyright (C) 2001, 2002, 2003, 2004, 2005, 2007, 2008,
-                2009 g10 Code GmbH
+  Copyright (C) 2000 Werner Koch
+  Copyright (C) 2001--2013 g10 Code GmbH
 
   GPGME is free software; you can redistribute it and/or modify it
   under the terms of the GNU Lesser General Public License as
   published by the Free Software Foundation; either version 2.1 of
   the License, or (at your option) any later version.
-  
+
   GPGME is distributed in the hope that it will be useful, but
   WITHOUT ANY WARRANTY; without even the implied warranty of
   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
   Lesser General Public License for more details.
-  
+
   You should have received a copy of the GNU Lesser General Public
   License along with this program; if not, see <http://www.gnu.org/licenses/>.
 
@@ -154,19 +188,19 @@ GPGME is
 
 GpgOL is
 
-  Copyright (C) 2001 G Data Software AG, http://www.gdata.de
-  Copyright (C) 2004, 2005, 2007, 2008, 2009 g10 Code GmbH
-  
+  Copyright (C) 2004, 2005, 2007, 2008, 2009, 2010,
+                2011 g10 Code GmbH
+
   GpgOL is free software; you can redistribute it and/or
   modify it under the terms of the GNU Lesser General Public
   License as published by the Free Software Foundation; either
   version 2 of the License, or (at your option) any later version.
-  
+
   GpgOL is distributed in the hope that it will be useful,
   but WITHOUT ANY WARRANTY; without even the implied warranty of
   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
   GNU Lesser General Public License for more details.
-  
+
   You should have received a copy of the GNU Lesser General Public
   License along with this program; if not, see <http://www.gnu.org/licenses/>.
 
@@ -174,9 +208,54 @@ GpgOL is
   information and bug reporting addresses pertaining to GpgOL.
 
 
+GTK+ is
+
+  Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
+
+  This library is free software; you can redistribute it and/or
+  modify it under the terms of the GNU Lesser General Public
+  License as published by the Free Software Foundation; either
+  version 2 of the License, or (at your option) any later version.
+
+  This library is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+  Lesser General Public License for more details.
+
+  You should have received a copy of the GNU Lesser General Public
+  License along with this library; if not, write to the
+  Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+  Boston, MA 02111-1307, USA.
+
+  Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
+  file for a list of people on the GTK+ Team.  See the ChangeLog
+  files for a list of changes.  These files are distributed with
+  GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+
+
+LIBGCRYPT is
+
+  Copyright 2000, 2002, 2003, 2004, 2007, 2008, 2009,
+            2010, 2011, 2012 Free Software Foundation, Inc.
+  Copyright 2012, 2013 g10 Code GmbH
+
+  Libgcrypt is free software; you can redistribute it and/or modify
+  it under the terms of the GNU Lesser general Public License as
+  published by the Free Software Foundation; either version 2.1 of
+  the License, or (at your option) any later version.
+
+  Libgcrypt is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU Lesser General Public License for more details.
+
+  You should have received a copy of the GNU Lesser General Public
+  License along with this program; if not, see <http://www.gnu.org/licenses/>.
+
+
 LIBGPG-ERROR is
 
-  Copyright (C) 2003, 2004 g10 Code GmbH
+  Copyright 2003, 2004, 2010, 2013 g10 Code GmbH
 
   libgpg-error is free software; you can redistribute it and/or
   modify it under the terms of the GNU Lesser General Public License
@@ -195,7 +274,7 @@ LIBGPG-ERROR is
 Pthreads-win32 is
 
   Copyright(C) 1998 John E. Bossom
-  Copyright(C) 1999,2002 Pthreads-win32 contributors
+  Copyright(C) 1999,2005 Pthreads-win32 contributors
 
   Most of this is work available under the GNU Lesser General Public
   License as published by the Free Software Foundation version 2.1 of
@@ -206,7 +285,7 @@ Pthreads-win32 is
 
 Claws Mail is
 
-  Copyright(C) 1999-2007 Hiroyuki Yamamoto <hiro-y@kcn.ne.jp> and the
+  Copyright(C) 1999-2013 Hiroyuki Yamamoto <hiro-y@kcn.ne.jp> and the
   Claws Mail Team
 
   This program is free software; you can redistribute it and/or modify
@@ -227,31 +306,31 @@ Claws Mail is
   For more details see the file COPYING.
 
 
-BZIP2 is 
+BZIP2 is
 
   This program, "bzip2", the associated library "libbzip2", and all
   documentation, are copyright (C) 1996-2006 Julian R Seward.  All
   rights reserved.
-  
+
   Redistribution and use in source and binary forms, with or without
   modification, are permitted provided that the following conditions
   are met:
-  
+
   1. Redistributions of source code must retain the above copyright
      notice, this list of conditions and the following disclaimer.
-  
-  2. The origin of this software must not be misrepresented; you must 
-     not claim that you wrote the original software.  If you use this 
-     software in a product, an acknowledgment in the product 
+
+  2. The origin of this software must not be misrepresented; you must
+     not claim that you wrote the original software.  If you use this
+     software in a product, an acknowledgment in the product
      documentation would be appreciated but is not required.
-  
+
   3. Altered source versions must be plainly marked as such, and must
      not be misrepresented as being the original software.
-  
-  4. The name of the author may not be used to endorse or promote 
-     products derived from this software without specific prior written 
+
+  4. The name of the author may not be used to endorse or promote
+     products derived from this software without specific prior written
      permission.
-  
+
   THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS
   OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
   WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
@@ -263,7 +342,7 @@ BZIP2 is
   WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
   NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-  
+
   Julian Seward, Cambridge, UK.
   jseward@bzip.org
   bzip2/libbzip2 version 1.0.4 of 20 December 2006
@@ -274,17 +353,17 @@ ADNS
   adns is Copyright 2008 g10 Code GmbH, Copyright 1997-2000,2003,2006
   Ian Jackson, Copyright 1999-2000,2003,2006 Tony Finch, and Copyright
   (C) 1991 Massachusetts Institute of Technology.
-   
+
   adns is free software; you can redistribute it and/or modify it
   under the terms of the GNU General Public License as published by
   the Free Software Foundation; either version 2 of the License, or
   (at your option) any later version.
-   
+
   This program and documentation is distributed in the hope that it will
   be useful, but without any warranty; without even the implied warranty
   of merchantability or fitness for a particular purpose. See the
   GNU General Public License for more details.
-   
+
   You should have received a copy of the GNU General Public License
   along with adns, or one should be available above; if not, write to
   the Free Software Foundation, 59 Temple Place - Suite 330, Boston,
@@ -294,26 +373,26 @@ ADNS
 Paperkey
 
   Copyright (C) 2007, 2008, 2009 David Shaw <dshaw@jabberwocky.com>
-  
+
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
   the Free Software Foundation; either version 2 of the License, or
   (at your option) any later version.
-  
+
   This program is distributed in the hope that it will be useful,
   but WITHOUT ANY WARRANTY; without even the implied warranty of
   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
   GNU General Public License for more details.
-  
+
   You should have received a copy of the GNU General Public License
   along with this program; if not, write to the Free Software
   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
   MA 02110-1301, USA.
- 
+
   The included man page is
-  
+
   Copyright (C) 2007 Peter Palfrader <peter@palfrader.org>
- 
+
   Examples have been taken from David Shaw's README. The license is
   the same as for Paperkey.
 
@@ -335,4 +414,3 @@ Scute
   may extend this exception to your version of the software, but you
   are not obligated to do so.  If you do not wish to do so, delete this
   exception statement from your version and from all source files.
-
