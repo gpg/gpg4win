@@ -148,8 +148,11 @@ server ftp://ftp.g10code.com/mirrors/claws
 file   claws-mail-3.9.1.tar.bz2
 chk    ec3a787b34b07983d938f7d353e3cfd85167122b
 
-#file   gtkhtml2_viewer-0.33.tar.gz
-#chk    b2a7047af55b2273e031e16806859458762d74a1
+server http://www.claws-mail.org/downloads/plugins
+
+# checked: 2013-05-10 wk
+file   gtkhtml2_viewer-0.34.tar.gz
+chk    7f3f8a9e3f7bec443a51c890d1bbcd26049dde02
 
 
 #

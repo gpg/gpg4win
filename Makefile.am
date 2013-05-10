@@ -90,6 +90,7 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         patches/claws-mail-3.9.1/50-configure.patch \
         patches/claws-mail-3.9.1/51-version-file.patch \
         patches/claws-mail-3.9.1/80-src-makefile.postcfg-build \
+        patches/gtkhtml2_viewer-0.34/80-src-makefile.postcfg-build \
 	patches/gnutls-2.12.21/01-openssl-wincrypt.patch
 
 copy-news:
