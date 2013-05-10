@@ -403,10 +403,10 @@ chk  241afcb2dfbf3f3fc27891a53a33f12d9084d772
 file libassuan/libassuan-2.1.0.tar.bz2
 chk  af114073610ce0b30961986c2741d5e7230c9880
 
-# checked: 2013-04-24 wk beta version for testing
-name gnupg2-2.0.20-beta118.tar.bz2
-file alpha/gnupg/gnupg-2.0.20-beta118.tar.bz2
-chk  4dafebee7b0c7adde2b27473faca7236851cf472
+# checked: 2013-05-10 wk
+name gnupg2-2.0.20.tar.bz2
+file gnupg/gnupg-2.0.20.tar.bz2
+chk  7ddfefa37ee9da89a8aaa8f9059d251b4cd02562
 
 # checked: 2013-04-26 wk
 file dirmngr/dirmngr-1.1.1.tar.bz2
