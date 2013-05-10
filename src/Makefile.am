@@ -37,8 +37,6 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi config.site \
         inst-libetpan.nsi	   uninst-libetpan.nsi        \
         inst-claws-mail.nsi	   uninst-claws-mail.nsi      \
         inst-gtkhtml2_viewer.nsi   uninst-gtkhtml2_viewer.nsi \
-        inst-vcalendar.nsi	   uninst-vcalendar.nsi       \
-        inst-rssyl.nsi		   uninst-rssyl.nsi           \
         inst-crypt.nsi		   uninst-crypt.nsi	      \
         inst-dirmngr.nsi	   uninst-dirmngr.nsi	      \
         inst-gettext.nsi	   uninst-gettext.nsi	      \
