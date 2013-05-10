@@ -423,7 +423,7 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
   FileWrite $1 '[Locale] $\r$\n'
   StrCmp $LANGUAGE "1031" german_locale 0
   FileWrite $1 'Country=en $\r$\n'
-  FileWrite $1 'Language=$LANGUAGE $\r$\n'
+  FileWrite $1 'Language=en_US $\r$\n'
   Goto kdeglobals_done
 german_locale:
   FileWrite $1 'Country=de $\r$\n'
