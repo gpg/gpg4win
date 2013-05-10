@@ -225,11 +225,12 @@ AC_CHECK_PROGS(SHA1SUM, sha1sum)
 AC_CHECK_PROGS(MSGFMT, msgfmt)
 AC_CHECK_PROGS(GITLOG_TO_CHANGELOG, gitlog-to-changelog,
                [build-aux/gitlog-to-changelog])
+AC_CHECK_PROGS(BUILD_CC, gcc cc)
 AC_PROG_INSTALL
 
 missing_tools=
 for i in DLLTOOL MAKE UNZIP TAR MKDIR CP RM STOW MAKENSIS ZCAT TEXI2DVI \
-         DVIPDF CONVERT SHA1SUM MSGFMT ; do
+         DVIPDF CONVERT SHA1SUM MSGFMT BUILD_CC; do
    eval tmp='$'$i
    if test -z "$tmp"; then
       missing_tools="$missing_tools `echo $i | tr 'A-Z' 'a-z'`"
@@ -410,6 +411,7 @@ chmod +x patches/gnupg2/01-version.patch
 
 AC_CONFIG_FILES(Makefile)
 AC_CONFIG_FILES(packages/Makefile include/Makefile src/Makefile po/Makefile.in)
+AC_CONFIG_FILES(po/build-cc)
 AC_CONFIG_FILES(include/config.nsi src/gpg4win.mk)
 AC_CONFIG_FILES(doc/Makefile)
 AC_CONFIG_FILES(doc/logo/Makefile)

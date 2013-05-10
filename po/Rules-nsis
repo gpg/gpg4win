@@ -1,38 +1,36 @@
 # Rules-nsis - Special Makefile rules for NSIS msg catalogs. -*- Makefile -*-
 # Copyright (C) 2007 g10 Code GmbH
-# 
+#
 # This file is part of GPG4Win.
-# 
+#
 # GPG4Win is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 of the License, or
 # (at your option) any later version.
-# 
+#
 # GPG4Win is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
-# 
+#
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
 NSIFILES = $(GMOFILES:.gmo=.nsi)
-DISTFILES.extra1 = nsis-xgettext.sh nsis-xgettext.awk nsis-msgfmt.c $(NSIFILES) \
-	Rules-nsis README.nsis
+DISTFILES.extra1 = nsis-xgettext.sh nsis-xgettext.awk nsis-msgfmt.c \
+                   $(NSIFILES) Rules-nsis build-cc.in README.nsis
 
 .SUFFIXES: .nsi
 
-# We build this little utility on the BUILD architecture!  FIXME: It
-# would not be unreasonable to use $(BUILD_CC) and corresponding tests
-# in configure.
+# We build this little utility on the BUILD architecture!
 nsis-msgfmt: nsis-msgfmt.c
-	$(CC) -o nsis-msgfmt $(srcdir)/nsis-msgfmt.c -lgettextpo
+	$$(cat $(srcdir)/build-cc) -o nsis-msgfmt $(srcdir)/nsis-msgfmt.c -lgettextpo
 
 # We extend the GMO file mechanism to also handle NSIS files.
 $(GMOFILES): %.gmo: %.nsi
 
-%.nsi : %.po 
+%.nsi : %.po
 	$(MAKE) nsis-msgfmt
 	@lang=`echo $* | sed -e 's,.*/,,'`; \
 	test "$(srcdir)" = . && dir="" || dir="$(srcdir)/"; \
