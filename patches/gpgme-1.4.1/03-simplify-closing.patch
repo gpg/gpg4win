@@ -1,0 +1,316 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From 9e7df9aa6d81f0abbabb03a2346d80eb5d375f81 Mon Sep 17 00:00:00 2001
+From: Werner Koch <wk@gnupg.org>
+Date: Thu, 25 Apr 2013 12:00:16 +0100
+Subject: [PATCH] w32: Change the way the I/O threads are cleaned up.
+
+* src/w32-io.c (reader_context_s, create_reader)
+(writer_context_s, create_writer): Rename STOPPED to CLOSE_EV.
+(reader, writer): Remove setting of STOPPED.  Wait for CLOSE_EV and
+then release the context.
+(destroy_reader, destroy_writer): Do not wait but set the CLOSE_EV.
+(kill_reader, kill_writer): Remove.
+(_gpgme_io_close): Add code from kill_reader and kill_writer.
+--
+
+The old code was prone to deadlocks which were actually exhibited at
+Kleopatra startup.  The new code is much more straightforward and
+easier to understand.  The reason for the complex old code was
+probably due to our former idea to allow re-use of the I/O threads.
+However we have long given up on this.
+---
+ src/w32-io.c |  163 ++++++++++++++++++++++++++--------------------------------
+ 1 files changed, 73 insertions(+), 90 deletions(-)
+
+diff --git a/src/w32-io.c b/src/w32-io.c
+index 776e379..d896ec0 100644
+--- a/src/w32-io.c
++++ b/src/w32-io.c
+@@ -162,7 +162,9 @@ struct reader_context_s
+   HANDLE have_data_ev;
+   /* This is automatically reset.  */
+   HANDLE have_space_ev;
+-  HANDLE stopped;
++  /* This is manually reset but actually only triggered once.  */
++  HANDLE close_ev;
++
+   size_t readpos, writepos;
+   char buffer[READBUF_SIZE];
+ };
+@@ -194,7 +196,7 @@ struct writer_context_s
+   /* This is manually reset.  */
+   HANDLE have_data;
+   HANDLE is_empty;
+-  HANDLE stopped;
++  HANDLE close_ev;
+   size_t nbytes;
+   char buffer[WRITEBUF_SIZE];
+ };
+@@ -383,9 +385,18 @@ reader (void *arg)
+     }
+   /* Indicate that we have an error or EOF.  */
+   if (!SetEvent (ctx->have_data_ev))
+-	TRACE_LOG2 ("SetEvent (0x%x) failed: ec=%d", ctx->have_data_ev,
+-		    (int) GetLastError ());
+-  SetEvent (ctx->stopped);
++    TRACE_LOG2 ("SetEvent (0x%x) failed: ec=%d", ctx->have_data_ev,
++                (int) GetLastError ());
++
++  TRACE_LOG ("waiting for close");
++  WaitForSingleObject (ctx->close_ev, INFINITE);
++
++  CloseHandle (ctx->close_ev);
++  CloseHandle (ctx->have_data_ev);
++  CloseHandle (ctx->have_space_ev);
++  CloseHandle (ctx->thread_hd);
++  DESTROY_LOCK (ctx->mutex);
++  free (ctx);
+
+   return TRACE_SUC ();
+ }
+@@ -427,16 +438,16 @@ create_reader (int fd)
+   if (ctx->have_data_ev)
+     ctx->have_space_ev = CreateEvent (&sec_attr, FALSE, TRUE, NULL);
+   if (ctx->have_space_ev)
+-    ctx->stopped = CreateEvent (&sec_attr, TRUE, FALSE, NULL);
+-  if (!ctx->have_data_ev || !ctx->have_space_ev || !ctx->stopped)
++    ctx->close_ev = CreateEvent (&sec_attr, TRUE, FALSE, NULL);
++  if (!ctx->have_data_ev || !ctx->have_space_ev || !ctx->close_ev)
+     {
+       TRACE_LOG1 ("CreateEvent failed: ec=%d", (int) GetLastError ());
+       if (ctx->have_data_ev)
+	CloseHandle (ctx->have_data_ev);
+       if (ctx->have_space_ev)
+	CloseHandle (ctx->have_space_ev);
+-      if (ctx->stopped)
+-	CloseHandle (ctx->stopped);
++      if (ctx->close_ev)
++	CloseHandle (ctx->close_ev);
+       free (ctx);
+       /* FIXME: Translate the error code.  */
+       TRACE_SYSERR (EIO);
+@@ -461,8 +472,8 @@ create_reader (int fd)
+	CloseHandle (ctx->have_data_ev);
+       if (ctx->have_space_ev)
+	CloseHandle (ctx->have_space_ev);
+-      if (ctx->stopped)
+-	CloseHandle (ctx->stopped);
++      if (ctx->close_ev)
++	CloseHandle (ctx->close_ev);
+       free (ctx);
+       TRACE_SYSERR (EIO);
+       return NULL;
+@@ -480,6 +491,9 @@ create_reader (int fd)
+ }
+
+
++/* Prepare destruction of the reader thread for CTX.  Returns 0 if a
++   call to this function is sufficient and destroy_reader_finish shall
++   not be called.  */
+ static void
+ destroy_reader (struct reader_context_s *ctx)
+ {
+@@ -531,24 +545,12 @@ destroy_reader (struct reader_context_s *ctx)
+                 ctx->file_sock, (int) WSAGetLastError ());
+     }
+
+-  TRACE1 (DEBUG_SYSIO, "gpgme:destroy_reader", ctx->file_hd,
+-	  "waiting for termination of thread %p", ctx->thread_hd);
+-  WaitForSingleObject (ctx->stopped, INFINITE);
+-  TRACE1 (DEBUG_SYSIO, "gpgme:destroy_reader", ctx->file_hd,
+-	  "thread %p has terminated", ctx->thread_hd);
+-
+-  if (ctx->stopped)
+-    CloseHandle (ctx->stopped);
+-  if (ctx->have_data_ev)
+-    CloseHandle (ctx->have_data_ev);
+-  if (ctx->have_space_ev)
+-    CloseHandle (ctx->have_space_ev);
+-  CloseHandle (ctx->thread_hd);
+-  DESTROY_LOCK (ctx->mutex);
+-  free (ctx);
++  /* After setting this event CTX is void. */
++  SetEvent (ctx->close_ev);
+ }
+
+
++
+ /* Find a reader context or create a new one.  Note that the reader
+    context will last until a _gpgme_io_close.  */
+ static struct reader_context_s *
+@@ -585,26 +587,6 @@ find_reader (int fd, int start_it)
+ }
+
+
+-static void
+-kill_reader (int fd)
+-{
+-  int i;
+-
+-  LOCK (reader_table_lock);
+-  for (i = 0; i < reader_table_size; i++)
+-    {
+-      if (reader_table[i].used && reader_table[i].fd == fd)
+-	{
+-	  destroy_reader (reader_table[i].context);
+-	  reader_table[i].context = NULL;
+-	  reader_table[i].used = 0;
+-	  break;
+-	}
+-    }
+-  UNLOCK (reader_table_lock);
+-}
+-
+-
+ int
+ _gpgme_io_read (int fd, void *buffer, size_t count)
+ {
+@@ -774,7 +756,16 @@ writer (void *arg)
+   /* Indicate that we have an error.  */
+   if (!SetEvent (ctx->is_empty))
+     TRACE_LOG1 ("SetEvent failed: ec=%d", (int) GetLastError ());
+-  SetEvent (ctx->stopped);
++
++  TRACE_LOG ("waiting for close");
++  WaitForSingleObject (ctx->close_ev, INFINITE);
++
++  CloseHandle (ctx->close_ev);
++  CloseHandle (ctx->have_data);
++  CloseHandle (ctx->is_empty);
++  CloseHandle (ctx->thread_hd);
++  DESTROY_LOCK (ctx->mutex);
++  free (ctx);
+
+   return TRACE_SUC ();
+ }
+@@ -816,16 +807,16 @@ create_writer (int fd)
+   if (ctx->have_data)
+     ctx->is_empty  = CreateEvent (&sec_attr, TRUE, TRUE, NULL);
+   if (ctx->is_empty)
+-    ctx->stopped = CreateEvent (&sec_attr, TRUE, FALSE, NULL);
+-  if (!ctx->have_data || !ctx->is_empty || !ctx->stopped)
++    ctx->close_ev = CreateEvent (&sec_attr, TRUE, FALSE, NULL);
++  if (!ctx->have_data || !ctx->is_empty || !ctx->close_ev)
+     {
+       TRACE_LOG1 ("CreateEvent failed: ec=%d", (int) GetLastError ());
+       if (ctx->have_data)
+	CloseHandle (ctx->have_data);
+       if (ctx->is_empty)
+	CloseHandle (ctx->is_empty);
+-      if (ctx->stopped)
+-	CloseHandle (ctx->stopped);
++      if (ctx->close_ev)
++	CloseHandle (ctx->close_ev);
+       free (ctx);
+       /* FIXME: Translate the error code.  */
+       TRACE_SYSERR (EIO);
+@@ -850,8 +841,8 @@ create_writer (int fd)
+	CloseHandle (ctx->have_data);
+       if (ctx->is_empty)
+	CloseHandle (ctx->is_empty);
+-      if (ctx->stopped)
+-	CloseHandle (ctx->stopped);
++      if (ctx->close_ev)
++	CloseHandle (ctx->close_ev);
+       free (ctx);
+       TRACE_SYSERR (EIO);
+       return NULL;
+@@ -868,6 +859,7 @@ create_writer (int fd)
+   return ctx;
+ }
+
++
+ static void
+ destroy_writer (struct writer_context_s *ctx)
+ {
+@@ -897,21 +889,8 @@ destroy_writer (struct writer_context_s *ctx)
+     }
+ #endif
+
+-  TRACE1 (DEBUG_SYSIO, "gpgme:destroy_writer", ctx->file_hd,
+-	  "waiting for termination of thread %p", ctx->thread_hd);
+-  WaitForSingleObject (ctx->stopped, INFINITE);
+-  TRACE1 (DEBUG_SYSIO, "gpgme:destroy_writer", ctx->file_hd,
+-	  "thread %p has terminated", ctx->thread_hd);
+-
+-  if (ctx->stopped)
+-    CloseHandle (ctx->stopped);
+-  if (ctx->have_data)
+-    CloseHandle (ctx->have_data);
+-  if (ctx->is_empty)
+-    CloseHandle (ctx->is_empty);
+-  CloseHandle (ctx->thread_hd);
+-  DESTROY_LOCK (ctx->mutex);
+-  free (ctx);
++  /* After setting this event CTX is void.  */
++  SetEvent (ctx->close_ev);
+ }
+
+
+@@ -951,26 +930,6 @@ find_writer (int fd, int start_it)
+ }
+
+
+-static void
+-kill_writer (int fd)
+-{
+-  int i;
+-
+-  LOCK (writer_table_lock);
+-  for (i = 0; i < writer_table_size; i++)
+-    {
+-      if (writer_table[i].used && writer_table[i].fd == fd)
+-	{
+-	  destroy_writer (writer_table[i].context);
+-	  writer_table[i].context = NULL;
+-	  writer_table[i].used = 0;
+-	  break;
+-	}
+-    }
+-  UNLOCK (writer_table_lock);
+-}
+-
+-
+ int
+ _gpgme_io_write (int fd, const void *buffer, size_t count)
+ {
+@@ -1195,8 +1154,32 @@ _gpgme_io_close (int fd)
+               fd, fd_table[fd].handle, fd_table[fd].socket,
+               fd_table[fd].dup_from);
+
+-  kill_reader (fd);
+-  kill_writer (fd);
++  LOCK (reader_table_lock);
++  for (i = 0; i < reader_table_size; i++)
++    {
++      if (reader_table[i].used && reader_table[i].fd == fd)
++	{
++	  destroy_reader (reader_table[i].context);
++	  reader_table[i].context = NULL;
++	  reader_table[i].used = 0;
++	  break;
++	}
++    }
++  UNLOCK (reader_table_lock);
++
++  LOCK (writer_table_lock);
++  for (i = 0; i < writer_table_size; i++)
++    {
++      if (writer_table[i].used && writer_table[i].fd == fd)
++	{
++	  destroy_writer (writer_table[i].context);
++	  writer_table[i].context = NULL;
++	  writer_table[i].used = 0;
++	  break;
++	}
++    }
++  UNLOCK (writer_table_lock);
++
+   LOCK (notify_table_lock);
+   for (i = 0; i < DIM (notify_table); i++)
+     {
+--
+1.7.7.1
