@@ -328,7 +328,7 @@ chk  d063e705812e1ee7feb8f35d51b3cad04ca13b0d
 
 # note: 2012-03-28 wk - Changed server from sf.net
 # checked: 2013-04-29 wk
-server ftp://ftp.simplesystems.org/pub/png/src
+server ftp://ftp.simplesystems.org/pub/png/src/libpng14
 
 file libpng-1.4.12.tar.bz2
 chk  275cfa90c0558601f6216019317fc37a03ebee01
