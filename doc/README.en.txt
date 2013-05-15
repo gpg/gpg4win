@@ -52,147 +52,37 @@ Included Gpg4win components in Version !VERSION! are:
 !COMPONENTS!
 
 
-Detailed list of changes in version 2.1.0 (2011-03-15)
-------------------------------------------------------
-  [The bug numbers reference either http://bugs.gnupg.org or
-   https://issues.kolab.org/.]
+New in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
+-------------------------------------------------
 
 - Kleopatra:
-  * recursive sign/encrypt of files and folders possible (see
-    GnuPG Backend)
-  * Checksums
-    - Create/verify checksum by sha1sum, sha256sum, md5sum possible
-      (see GnuPG Backend)
-    - create checksums for more than one files
-      [kolab/issue4540]
-    - Create/verify checksum entry to file menu of Kleopatra added
-      [kolab/issue4464]
-    - Create and verify dialogs of Kleopatra extended
-      [kolab/issue4487]
-  * Conflict dialog
-    - Certificate selection dialog now works context-sensitive
-      (dependent on selecting sign, encrypt or sign/encrypt)
-      [kolab/issue4492]
-    - Conflicts redefined and implemented, fixed errors
-      [kolab/issue4197,4234]
-    - New configuration option for "quick mode" (Power-User-Mode) to
-      sign and encrypt
-      [kolab/issue4136])
-    - No protocol (OpenPGP or S/MIME) pre-selection dialog required -
-      replaced by new certificate selection dialog.
-      [kolab/issue4213,4235]
-  * Certificate lookup on certificate server
-    - Search for fingerprint or key-id shows new information dialog
-      (some server requires 0x-Präfix in search string)
-      [kolab/issue4453]
-  * Certify OpenPGP certificates
-    - Fingerprint and key-id in step 1 added
-      [kolab/issue4468,4458]
-    - Key-id in step 2 added
-      [kolab/issue4460]
-  * Several minor and medium (GUI) improvements:
-    - Kleopatra's main window: column 'fingerprint' with 'key-id' replaced
-      [kolab/issue4542]
-    - Show key-id always in 8-digit format
-      [kolab/issue4659]
-    - Decrypt/verify files dialog layout improved
-      [kolab/issue4662]
-    - Export of secret X.509 certificats use new default (utf8) for
-      passphrase charset
-      [kolab/issue4454]
-    - Import certificate without file type improved (content checker)
-      [kolab/issue4457]
-    - Fix certificate list in delete confirm dialog
-      [kolab/issue4459]
-    - New context menu entry for deleting certificate added
-      [kolab/issue4450]
-    - OwnerTrust added to tooltips and certificate details
-      [kolab/issue4198]
-    - Unit (Bits) to the key strength fields in NewCertificateWizard's
-      overview page added
-      [kolab/issue4183]
-    - E-Mail-Validator allows to delete '@' Zeichen
-      [kolab/issue4189]
-    - Trust/distrust root certificates via context menu
-      (write directly $GNUPGHOME\trustlist.txt)
-      [kolab/issue4190]
-    - For developer: KDebugDialog available (installed with Kleopatra,
-      run $INSTDIR\kdebugdialog.exe)
-      [kolab/issue4318]
-    - Hierarchical certificate list: toggling (regression)
-      [kolab/issue4327]
-    - Fixed exception for decrypt/verify special S/MIME e-mail
-      [kolab/issue4179]
-  * Kleopatra Settings - S/MIME dialog:
-    - Option 'allow-mark-trusted' removed if gnupg provides
-      'no-allow-mark-trusted'
-  * SmartCard
-    - Improve initialize smart card process with Kleopatra
-      [kolab/issue4519]
-    - Detecting smartcard: Kleopatra's systemtray icon blinks after
-      inserting X.509 card. Click starts learn card command or opens
-      Null-PIN dialog.
-      [kolab/issue4191]
-    - Learn card commands suppress gpgsm error dialogs.
-      [kolab/issue4126]
-  * Miscellaneous
-    - Gpg4win credits added (see 'About Gpg4win' dialog)
-    - German translations fixed
-    - Several minor and medium issues and errors were fixed
+  * Updated to Kleopatra 2.1.1 (from KDE 4.10.3).
+  * Fixed bugs in none latin environments.
+  * Several minor and medium improvements of stability.
+ 
+- Qt:
+  * Updated to 4.8.4 (from Qt 4.4.0) with a lot of 
+    improvements in Kleopatra UI.
+  * Improved support for Windows7 and Windows8.
 
-- GnuPG Backend:
-  * Update to gnupg 2.0.17
-  * Option 'allow-mark-trusted' enabled by default (no-allow-mark-trusted
-    added)
-  * gpgme and libassuan updated (fixed increase of open handles in
-    Kleopatra, see [kolab/issue4705])
-  * fixed: gpgconf doesn't restart gpg-agent automatically
-    [kolab/issue4563]
-  * bzip2 updated (from 1.0.4 to 1.0.6)
-  * Add better error code for missing certificates
-  * (recursive) sign/encrypt of files and folders possible
-    [kolab/issue4298,4299,4300]
-  * Create/verify checksum by sha1sum, sha256sum, md5sum
-    possible via GpgEX
-    [kolab/issue41634,294,4295,4296,4297,4321]
-  * Updated to new libassuan v2 interface
-  * Several minor and medium improvements of stability
-    [u.a.: kolab/issue4212]
+- GnuPG-Backend:
+  * Updated to gnupg 2.0.20.
+  * Updated most included packages to recent versions (e.g. gpgme,
+    dirmngr, libassuan, libgcrypt, libgpg-error, libksba, pinentry, 
+    libpng and much more - see 'packages.current' file in Gpg4win git
+    repository).
+  * Fixed a long standing bug in GPGME which led to spurious Kleopatra
+    hangs.
 
-- GpgEX
-  * (recursive) sign/encrypt of files and folders possible (see
-    GnuPG Backend)
-  * Create/verify checksum by sha1sum, sha256sum, md5sum possible
-    (see GnuPG-Backend)
-  * Portuguese translation added
-  * Updated to libgpg-error 1.9
-
-- GpgOL:
-  * Portuguese translation added
-  * updated to new libassuan2 interface and libgpg-error 1.9
-
-- Pinentry:
-  * Pinentry-qt4 hanger while signing e-mail fixed
-    (update from 0.8.0 to 0.8.1)
-    [kolab/issue4302]
-  * Change default: switch to QT4
-    (GTK still enabled for gpg4win-light installer)
-    [kolab/issue4378]
-  * Fixed German translation for 'Cancel' cancel
-    [kolab/issue4132]
+- GPA:
+  * Updated to GPA 0.9.4.
 
 - Installer:
-  * Installation of dektop shortcuts using non-German installer language fixed
-  * Windows7 support for Gpg4win
-  * S/MIME configuration instruction added
-  * English language version of the Gpg4win Compendium
-    (v3.0.0-beta1) added. Old novices manual removed.
-  * Installer was signed with a CodeSigning certificate of GlobalSign
-    (Publisher: "Intevation GmbH")
-  * Portuguese translation added
+  * Migrated the installer to the i686-w64-mingw32 toolchain.
+  * Improved of the build system.
 
 - Claws-Mail:
-  See http://www.claws-mail.org
+  * Updated Claws Mail to 3.9.1 - see http://www.claws-mail.org .
 
 
 3. Known Bugs (and Workarounds)
