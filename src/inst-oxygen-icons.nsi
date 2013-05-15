@@ -140,6 +140,7 @@ Section "-oxygen-icons" SEC_oxygen_icons
   SetOutPath "$INSTDIR\share\icons\oxygen\16x16\apps"
 
   File ${prefix}/share/icons/oxygen/16x16/apps/kde.png
+  File ${prefix}/share/icons/oxygen/16x16/apps/internet-mail.png
 
   SetOutPath "$INSTDIR\share\icons\oxygen\16x16\categories"
 
@@ -222,6 +223,8 @@ Section "-oxygen-icons" SEC_oxygen_icons
   SetOutPath "$INSTDIR\share\icons\oxygen\22x22\apps"
 
   File ${prefix}/share/icons/oxygen/22x22/apps/kde.png
+  File ${prefix}/share/icons/oxygen/22x22/apps/internet-mail.png
+  File ${prefix}/share/icons/oxygen/22x22/apps/preferences-desktop-locale.png
 
   SetOutPath "$INSTDIR\share\icons\oxygen\22x22\categories"
 

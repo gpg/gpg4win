@@ -490,11 +490,11 @@ chk f03ffd02333f786a5e540c4430d3109952b5553e
 
 server http://files.kolab.org/local/gpg4win
 
-file oxygen-icons-4.10.2-bin.tar.bz2
-chk  b9a7063b7edade07d8a517b147720e1590bf0a75
+file oxygen-icons-20130515-bin.tar.bz2
+chk  653870001dd4a477ad064420d0ce08f0d023a734
 
-file oxygen-icons-4.10.2-src.tar.bz2
-chk  a9384cd6fe240a362f5bbb3bbc0e918af63531dc
+file oxygen-icons-20130515-src.tar.bz2
+chk  c48227c5f3b475c7792abc36c415479d3233468c
 
 
 #
