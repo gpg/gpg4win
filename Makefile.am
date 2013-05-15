@@ -78,6 +78,7 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
 	patches/dirmngr-1.1.0/01-mmap.patch \
 	patches/gpgol-0.9.91/01-gpgme.patch \
         patches/gpgol-1.1.3/01-w64-ming64.patch  \
+        patches/gpgol-1.1.3/02-off_t.postcfg-build \
         patches/gpa-0.9.0/01-title-prop.patch \
 	patches/libetpan-0.57/01-gnutls_compat.patch \
         patches/scute-1.2.0/01-bugfixes.patch \
