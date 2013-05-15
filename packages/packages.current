@@ -34,8 +34,9 @@ chk  f130c93fdf20903ca21bace8b8822f46468c9d65
 #
 server http://zlib.net
 
-file zlib-1.2.7.tar.gz
-chk  4aa358a95d1e5774603e6fa149c926a80df43559
+# checked: 2013-05-14 wk
+file zlib-1.2.8.tar.gz
+chk  a4d316c404ff54ca545ea71a27af7dbc29817088
 
 
 #
