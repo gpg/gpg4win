@@ -366,7 +366,7 @@ main (int argc, const char * const *argv)
   /* Using execv does not replace the existing program image, but
      spawns a new one and daemonizes it, confusing the command line
      interpreter.  So we have to use spawnv.  */
-  rc = _spawnv (_P_WAIT, pgm, (const char **) argv_quoted);
+  rc = _spawnv (_P_NOWAIT, pgm, (const char **) argv_quoted);
   if (rc < 0)
     {
       fprintf (stderr, "kleowrap: executing `%s' failed: %s\n",
