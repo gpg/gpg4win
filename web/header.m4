@@ -4,11 +4,11 @@
      m4_ifelse(LANG_DE, `1', `
      <a href="download-de.html">
      <span class="text">
-      Gpg4win VERSION<br />herunterladen
+      Download<br />Gpg4win VERSION<br />Gpg4win 2.1.1-beta
      </span></a>', `
      <a href="download.html">
      <span class="text">
-      Download<br />Gpg4win VERSION
+      Download<br />Gpg4win VERSION<br />Gpg4win 2.1.1-beta
      </span></a>')
    </div>
    <div class="download_button_links">
@@ -22,6 +22,12 @@
    </div>
    <div class="h_text">
    <p><span class="heading">News</span></p>
+   <small>2013-05-16</small><br>
+   <span class="serif_word"><img src="img/bulletin.png" alt="" />
+     m4_ifelse(LANG_DE, `1', `
+     <a href="download-de.html">Gpg4win 2.1.1-beta197 veröffentlicht</a></span>', `
+     <a href="download.html">Gpg4win 2.1.1-beta197 released</a></span>')
+   <p></p>
    <small>2012-05-04</small><br>
    <span class="serif_word"><img src="img/bulletin.png" alt="" />
      m4_ifelse(LANG_DE, `1', `
@@ -70,7 +76,7 @@
     <a class="dmini_button" href="download.html">
     ')
      <span class="text">
-      Download Gpg4win 2.1.0
+      Download Gpg4win 
      </span>
     </a>
     <br>
