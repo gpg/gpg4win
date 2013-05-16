@@ -25,8 +25,8 @@
    <small>2013-05-16</small><br>
    <span class="serif_word"><img src="img/bulletin.png" alt="" />
      m4_ifelse(LANG_DE, `1', `
-     <a href="download-de.html">Gpg4win 2.1.1-beta197 veröffentlicht</a></span>', `
-     <a href="download.html">Gpg4win 2.1.1-beta197 released</a></span>')
+     <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2013-May/000017.html">Gpg4win 2.1.1-beta197 veröffentlicht</a></span>', `
+     <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2013-May/000053.html">Gpg4win 2.1.1-beta197 released</a></span>')
    <p></p>
    <small>2012-05-04</small><br>
    <span class="serif_word"><img src="img/bulletin.png" alt="" />
