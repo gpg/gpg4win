@@ -17,7 +17,7 @@ PAGE_START
 
 <div id="main">
 
-
+<!--
 <h2>Gpg4win 2.1.1-beta197 (2013-05-16)</h2>
 
 <p>Current beta version of Gpg4win 2.1.1 with important updates of almost all Gpg4win components; in different variants:</p>
@@ -35,46 +35,64 @@ href="http://files.gpg4win.org/Beta/gpg4win-2.1.1-beta197.exe">Full installer</a
 <li><a href="http://files.gpg4win.org/Beta/README-2.1.1-beta197.en.txt">README</a> </li>
 <li>All versions and OpenPGP signatures: <a href="http://files.gpg4win.org/">files.gpg4win.org</a>.</li>
 </ul>
+-->
 
-
-<h2>Gpg4win VERSION</h2>
+<h2>Gpg4win VERSION (Released: DL_DATE)</h2>
 
 <p>You can download the full version (including the Gpg4win compendium)
 of Gpg4win VERSION here:</p>
-
 <div class="dlbutton2">
-<img src="img/dl_arrow.png" alt="" />
-<a href="DOWNLOAD_URL">Gpg4win&nbsp;VERSION<br>
-<span class="version"><small>Size: DL_SIZE | Released: DL_DATE</small></span>
-</a>
+  <img src="img/dl_arrow.png" alt="" />
+  <a href="DOWNLOAD_URL">Gpg4win&nbsp;VERSION<br>
+    <span class="version"><small>Size: DL_SIZE</small></span>
+  </a>
 </div>
 
 <ul>
     <li><a href="http://files.gpg4win.org/gpg4win-VERSION.exe.sig"
         >OpenPGP signatur</a> (for gpg4win-VERSION.exe)
-    <li><b>SHA1 checksum</b> (for gpg4win-VERSION.exe):<br>
-    <code>SHA1_EXE  gpg4win-VERSION.exe </code></li>
+    <li>SHA1 checksum:<br>
+        <code>SHA1_EXE  gpg4win-VERSION.exe </code></li>
+    <li><a href="change-history.html">Change History</a></li>
+</ul>
 
-<li><a href="change-history.html">Change History</a></li>
+<h4>More Gpg4win-VERSION variants</h4>
+<ul>
+    <li>Ggpg4win <em>without</em> Kleopatra and Gpg4win Compendium:
+      <div class="dlbutton2">
+        <img src="img/dl_arrow.png" alt="" />
+        <a href="LDOWNLOAD_URL">Gpg4win-Light VERSION<br/>
+          <span class="version"><small>Size: LDL_SIZE</small></span>
+        </a>
+      </div>
+      <a href="http://files.gpg4win.org/gpg4win-light-VERSION.exe.sig"
+        >OpenPGP signatur</a><br>
+      SHA1 checksum: <code>SHA1_EXL</code></li>
 
-<li>Sources and other Gpg4win-VERSION variants:
-    <ul>
-    <li>
-    <div class="dlbutton2">
-    Full version but <em>without</em> Kleopatra and manuals:
-    <a href="LDOWNLOAD_URL">Gpg4win-Light VERSION<br/>
-    <span class="version"><small>Size: LDL_SIZE</small></span></a>
-    </div></li>
-    <li><a href="http://files.gpg4win.org/gpg4win-light-VERSION.exe.sig"
-        >OpenPGP signatur</a> (for gpg4win-light-VERSION.exe)</li>
-    <li><a
-        href="http://files.gpg4win.org/gpg4win-VERSION.tar.bz2">gpg4win-VERSION.tar.bz2</a>
-    (source code package); <small>Size: 5 MByte</small></li>
+    <li>Gpg4win with GnuPG component <em>only</em>:
+      <div class="dlbutton2">
+        <img src="img/dl_arrow.png" alt="" />
+        <a href="VDOWNLOAD_URL">Gpg4win-Vanilla VERSION<br/>
+          <span class="version"><small>Size: VDL_SIZE</small><span></a>
+      </div>
+      <a href="http://files.gpg4win.org/gpg4win-vanilla-VERSION.exe.sig"
+        >OpenPGP signatur</a><br>
+        SHA1 checksum: <code>SHA1_EXV</code></li>
+
+    <li>Gpg4win source code package:
+      <div class="dlbutton2">
+        <img src="img/dl_arrow.png" alt="" />
+        <a href="SDOWNLOAD_URL">gpg4win-VERSION.tar.bz2<br/>
+          <span class="version"><small>Size: SDL_SIZE</small><span>
+        </a>
+      </div>
+      <a href="http://files.gpg4win.org/gpg4win-VERSION.tar.bz2.sig"
+        >OpenPGP signatur</a><br>
+        SHA1 checksum: <code>SHA1_SRC</code></li>
+
     <li>All versions and OpenPGP signatures: <a
         href="http://files.gpg4win.org/">files.gpg4win.org</a>.</li>
     </ul>
-</li>
-</ul>
 
 
 <h4>Installation</h4>
@@ -88,37 +106,41 @@ of Gpg4win VERSION here:</p>
   <p>Read the current <a
       href="http://files.gpg4win.org/README-VERSION.en.txt">README file</a>.
 
-<h2>Gpg4win Compendium COMPENDIUM_VERSION_EN</h2>
+<h2>Gpg4win Compendium COMPENDIUM_VERSION_EN
+(Released: COMPENDIUM_DATE_EN)</h2>
 
-You find the current PDF and HTML version of the Gpg4win Compendium here:
+<p>You find the current PDF and HTML version of the Gpg4win Compendium
+here:</p>
 <div class="dlbutton2">
-<img src="img/dl_arrow.png" alt="" />
-<a href="DOWNLOAD_URL_COMPENDIUM_DE">Gpg4win Compendium COMPENDIUM_VERSION_EN (PDF, English)<br>
-<span class="version"><small>Size: DL_SIZE_COMPENDIUM_EN |
-Released: COMPENDIUM_DATE_EN</small></span>
-</a>
+  <img src="img/dl_arrow.png" alt="" />
+  <a href="DOWNLOAD_URL_COMPENDIUM_EN">Gpg4win Compendium COMPENDIUM_VERSION_EN 
+  (PDF, English)<br>
+  <span class="version"><small>Size: DL_SIZE_COMPENDIUM_EN</small></span>
+  </a>
 </div>
 
 <div class="dlbutton2">
-<a href="./doc/en/gpg4win-compendium.html">Gpg4win Compendium COMPENDIUM_VERSION_DE (HTML, English)<br>
-<span class="version"><small>Released: COMPENDIUM_DATE_DE</small></span>
-</a>
+  <a href="./doc/en/gpg4win-compendium.html">Gpg4win Compendium COMPENDIUM_VERSION_EN
+  (HTML, English)</a>
 </div>
 
-<p>Note: The compendium is currently availabe in a <b>beta version</b>!
+<p>
+Note: The compendium is currently availabe in a <b>beta version</b>!
 Read the <a href="documentation.html">documentation page</a> for
- more information about available Gpg4win documentation.</p>
+ more information about available Gpg4win documentation.
+</p>
 
 
 <h2>All Downloads</h2>
 
-<p>Current and all previous Gpg4win installers as well as signatures and corresponding
+<p>
+Current and all previous Gpg4win installers as well as signatures and corresponding
 source code packages are available under:
 <a href="http://files.gpg4win.org/">files.gpg4win.org</a>
 </p>
 
 <p>
-In the  <a href="change-history.html">change history</a>
+In the <a href="change-history.html">change history</a>
 you will find information about the most relevant changes and which
 version of the products each of the releases contained.
 Also, you will find direct download link for the old releases.
@@ -136,7 +158,7 @@ Please note that old releases may still contain meanwhile fixed security issues.
 contains the current Gpg4win source code.</p>
 
 <p>
-Gpg4win documentation (e.g. <em>Gpg4win Compendium</em>) are available under:
+Gpg4win documentation (<em>Gpg4win Compendium</em>) are available under:
 <a href="http://wald.intevation.org/frs/?group_id=11">http://wald.intevation.org/frs/?group_id=11</a>
 </p>
 
@@ -153,11 +175,14 @@ important Gpg4win news.
 <p>
 Is downloading very slow? Try this mirror server:
 <a href="MIRROR_IE_URL">Gpg4win mirror server in Ireland</a> (run by
-<a href="http://ftp.heanet.ie/about/">HEAnet</a>)</p>
+<a href="http://ftp.heanet.ie/about/">HEAnet</a>)
+</p>
 
 </div>
 
+
 <div id="sidebar">
+<!--
     <h3>Gpg4win 2.1.1-beta197 contains:</h3>
     <pre>
 <a href="http://www.gnupg.de/index.de.html">GnuPG</a> 2.0.20
@@ -170,6 +195,7 @@ Is downloading very slow? Try this mirror server:
 <a href="doc/en/gpg4win-compendium.html">Compendium (en)</a> 3.0.0-beta1
     </pre>
     <p></p>
+-->
     <h3>Gpg4win VERSION contains:</h3>
     <pre>
     SOFTWAREOVERVIEW

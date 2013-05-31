@@ -4,6 +4,7 @@ m4_dnl $Id$
 
 m4_define(`EN')
 m4_define(`DE_FILE', `Kurzstudie-Nachhaltige-FS-Beispiel-Gpg4win.html')
+m4_define(`TITLE', `Short Study')
 PAGE_START
 
 <p>

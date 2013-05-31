@@ -18,7 +18,22 @@ The latest news are placed at the <a href="./">welcome page</a>.
 
 <div id="main">
 
+<h2>2012</h2>
+   
+<dt><b>+++ 2012-05-04: Gpg4win 2.1.1 Beta released +++</b></dt>
+<dd>See the <a
+href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2012-May/000052.html">announcement</a>
+for details.
+<br></dd>
+
+
 <h2>2011</h2>
+
+<dt><b>+++ 2011-03-15: Gpg4win 2.1.0 released +++</b></dt>
+<dd>See the <a
+href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2011-March/000051.html">announcement</a>
+for details.
+<br></dd>
 
 <dt><b>+++ 2011-02-04: Gpg4win 2.1.0-rc2 released +++</b></dt>
 <dd>with important updates of GnuPG and Kleopatra.

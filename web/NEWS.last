@@ -3,6 +3,30 @@
 # The version number given below are for the standard installers as
 # distributed by www.gpg4win.org.
 
+Noteworthy changes in version 2.1.1 (2013-05-31)
+------------------------------------------------
+
+(en) New versions of GnuPG, GpgOL, GPA, Kleopatra, and Claws-Mail.
+
+(de) Neue Versionen von GnuPG, GpgOL, GPA, Kleopatra and Claws-Mail.
+
+(en) Development files for the crypto libraries will now be installed.
+
+(de) Entwicklerwerkzeuge fuer die Krypto-Bibliotheken werden nun mit
+     installiert.
+
+~~~~~~~~~~~~~~~
+GnuPG:          2.0.20
+Kleopatra:      2.1.1 (2013-05-28)
+GPA:            0.9.4
+GpgOL:          1.1.3
+GpgEX:          0.9.7
+Claws-Mail:     3.9.1
+Kompendium `DE':  3.0.0
+Kompendium `EN':  3.0.0-beta1
+~~~~~~~~~~~~~~~
+
+
 Noteworthy changes in version 2.1.0 (2011-03-15)
 ------------------------------------------------
 
@@ -17,9 +41,10 @@ GPA:            0.9.1-svn1024
 GpgOL:          1.1.2
 GpgEX:          0.9.7
 Claws-Mail:     3.7.8cvs47
-Kompendium DE:  3.0.0
-Kompendium EN:  3.0.0-beta1
+Kompendium `DE':  3.0.0
+Kompendium `EN':  3.0.0-beta1
 ~~~~~~~~~~~~~~~
+
 
 Noteworthy changes in version 2.0.4 (2010-07-28)
 ------------------------------------------------
@@ -37,7 +62,6 @@ GpgEX:        0.9.5
 Claws-Mail:   3.7.4cvs1
 Kompendium:   3.0.0
 ~~~~~~~~~~~~~~~
-
 
 
 Noteworthy changes in version 2.0.3 (2010-05-29)

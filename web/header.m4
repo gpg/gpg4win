@@ -4,11 +4,11 @@
      m4_ifelse(LANG_DE, `1', `
      <a href="download-de.html">
      <span class="text">
-      Download<br />Gpg4win VERSION<br />Gpg4win 2.1.1-beta
+      Download<br />Gpg4win VERSION
      </span></a>', `
      <a href="download.html">
      <span class="text">
-      Download<br />Gpg4win VERSION<br />Gpg4win 2.1.1-beta
+      Download<br />Gpg4win VERSION
      </span></a>')
    </div>
    <div class="download_button_links">
@@ -22,24 +22,17 @@
    </div>
    <div class="h_text">
    <p><span class="heading">News</span></p>
+   <small>2013-05-31</small><br>
+   <span class="serif_word"><img src="img/bulletin.png" alt="" />
+     m4_ifelse(LANG_DE, `1', `
+     <a href="#">Gpg4win 2.1.1 veröffentlicht</a></span>', `
+     <a href="#">Gpg4win 2.1.1 released</a></span>')
+   <p></p>
    <small>2013-05-16</small><br>
    <span class="serif_word"><img src="img/bulletin.png" alt="" />
      m4_ifelse(LANG_DE, `1', `
      <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2013-May/000017.html">Gpg4win 2.1.1-beta197 veröffentlicht</a></span>', `
      <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2013-May/000053.html">Gpg4win 2.1.1-beta197 released</a></span>')
-   <p></p>
-   <small>2012-05-04</small><br>
-   <span class="serif_word"><img src="img/bulletin.png" alt="" />
-     m4_ifelse(LANG_DE, `1', `
-     <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2012-May/000016.html">Gpg4win 2.1.1 Beta veröffentlicht</a></span>', `
-     <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2012-May/000052.html">Gpg4win 2.1.1 Beta released</a></span>')
-   <p></p>
-   <small>2011-03-15</small><br>
-   <span class="serif_word"><img src="img/bulletin.png" alt="" />
-     m4_ifelse(LANG_DE, `1', `
-     <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2011-March/000015.html">Gpg4win 2.1.0 veröffentlicht</a></span>
-    <p><a href="https://www.bsi.bund.de/ContentBSI/Presse/Pressemitteilungen/Presse2011/Gpg4win_neue_Version_15032011.html">Pressemitteilung</a> (in Zusammenarbeit mit dem BSI)</p>', `
-     <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2011-March/000051.html">Gpg4win 2.1.0 released</a></span>')
    <div class="limiter"></div>
    <p>
      m4_ifelse(LANG_DE, `1', `

@@ -20,10 +20,10 @@ secure use of Kleopatra, GpgEX and GpgOL.</p>
 <div id="main">
 <h2>Gpg4win Compendium</h2>
 
-<p>The "Gpg4win-Compendium" is the new end-user documentation for
+<p>The "Gpg4win-Compendium" is the end-user documentation for
 Gpg4win2. It combines the approximately 190 pages of the previously
 separate Gpg4win manuals "Einsteiger" and "Durchblicker". All chapters
-were reworked, extended, and updated to the new Gpg4win version 2.
+were reworked, extended, and updated for Gpg4win version 2.
 Among other enhancements, it now covers Kleopatra, GpgEX and PGP/MIME,
 as well as S/MIME and X.509.
 </p>
@@ -55,28 +55,15 @@ Released: COMPENDIUM_DATE_EN</small></span>
 </div>
 
 <div class="dlbutton2">
-<a href="./doc/en/gpg4win-compendium.html">Gpg4win Compendium COMPENDIUM_VERSION_EN (HTML, English)<br>
-<span class="version"><small>Released: COMPENDIUM_DATE_EN</small></span>
-</a>
+  <a href="./doc/en/gpg4win-compendium.html">Gpg4win Compendium COMPENDIUM_VERSION_EN (HTML, English)<br>
+  <span class="version"><small>Released: COMPENDIUM_DATE_EN</small></span>
+  </a>
 </div>
 
-<p>
-The German language version of the Gpg4win-Compendium (v3.0.0) is also
-available as a printed book with CD:
-</p>
-
-<p>
-<b>"Sicher E-Mail"</b><br>
-Paperback: 260 pages + CD<br>
-Price: 19,80 EUR<br>
-ISBN: 978-3-939316-79-4<br>
-Publisher: bomots / Brain-Media.de (2010)<br>
-Language: German<br>
-</p>
 
 
 <h2>Old Documentation</h2>
-<p>Please note: With Gpg4win2 and the new Gpg4win Compendium,
+<p>Please note: With Gpg4win2 and the Gpg4win Compendium,
 all following Gpg4win manuals are now <b>out of date</b> (and will no
 longer be updated):
 

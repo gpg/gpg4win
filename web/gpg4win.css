@@ -352,9 +352,10 @@ td {
  font-size: 13px;
  list-style: none;
  padding: 0;
+ border-bottom: 1px solid #EFEFEF;
 }
 
-.newslist li a {
+.newslist > li > a {
  /*color: #555555;*/
  display: block;
  font-size: 12px;
@@ -363,7 +364,6 @@ td {
  margin: 0px;
  padding: 10px 0px 10px 0px;
  text-decoration: none;
- border-bottom: 1px solid #EFEFEF;
 }
 
 .newslist li p {
@@ -554,11 +554,11 @@ td {
 
 .dlbutton2 a {
  background-color: #6AC221;
- -moz-border-radius: 10px 10px 10px 10px;
+ border-radius: 10px 10px 10px 10px;
  display: block;
  font-size: 150%;
  font-weight: bold;
- margin: 10px 20px 20px;
+ margin: 10px 20px 0 0;
  padding: 10px;
  text-align: center;
  color: #FFFFFF;
