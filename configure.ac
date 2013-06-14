@@ -190,6 +190,24 @@ AC_ARG_ENABLE(manuals,
                     build_manuals=yes)
 AM_CONDITIONAL(BUILD_MANUALS, test "$build_manuals" = yes)
 
+# Additionaly enable building gpgex for another host
+AC_ARG_WITH([additional-gpgex-host],
+    AC_HELP_STRING([--with-additional-gpgex-host=HOST],
+                   [Additionaly build gpgex for this host]),
+                   [if test "$withval" = yes; then
+                      AC_MSG_FAILURE(
+                          [--with-additional-gpgex-host was given,
+                           but no host specified])
+                    else
+                      gpgex_host=$withval
+                    fi
+                   ],
+                    gpgex_host=no)
+
+if test "$gpgex_host" != no; then
+    GPGEX_ADD_HOST="$gpgex_host"
+fi
+AC_SUBST(GPGEX_ADD_HOST)
 
 AC_ARG_ENABLE(fast-makensis,
     AC_HELP_STRING([--enable-fast-makensis],
@@ -228,6 +246,10 @@ AC_CHECK_PROGS(GITLOG_TO_CHANGELOG, gitlog-to-changelog,
 AC_CHECK_PROGS(BUILD_CC, gcc cc)
 AC_PROG_INSTALL
 
+if test -n "$GPGEX_ADD_HOST"; then
+    AC_CHECK_TOOLS(STRIP_EX, ${GPGEX_ADD_HOST}-strip)
+fi
+
 missing_tools=
 for i in DLLTOOL MAKE UNZIP TAR MKDIR CP RM STOW MAKENSIS ZCAT TEXI2DVI \
          DVIPDF CONVERT SHA1SUM MSGFMT BUILD_CC; do
@@ -249,6 +271,7 @@ AC_ARG_WITH([libgcc_s_sjlj-1-dll],
            AC_HELP_STRING([--with-libgcc_s_sjlj-1-dll=FILE],
                           [use the libgcc_s_sjlj-1 DLL]),
            [libgcc_dll=$withval])
+
 if test "$libgcc_dll" = "no"; then
   file="/usr/lib/gcc/$host/$gcc_major_minor/libgcc_s_sjlj-1.dll"
   if test -r "$file"; then
@@ -439,4 +462,5 @@ echo "
 
         Revision: ${GIT_REVISION}  (${GIT_REVISION_DEC})
         Platform: $host
+        Additional gpgEx platform: ${GPGEX_ADD_HOST}
 "
