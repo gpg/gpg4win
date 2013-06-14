@@ -107,7 +107,7 @@ gpg4win_spkgs = glib libffi gdk-pixbuf gtk+ \
 		adns dirmngr w32pth scute paperkey regex libiconv gettext
 
 # Supported source packages to build in an additional architecture
-gpg4win_expkgs = libiconv gettext w32pth
+gpg4win_expkgs = libgpg-error libassuan libiconv gettext w32pth gpgex
 
 # Extra options to configure for individual packages.
 # We can use $(idir) here for the installation prefix.
