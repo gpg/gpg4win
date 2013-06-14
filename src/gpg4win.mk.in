@@ -212,7 +212,7 @@ stamps/stamp-$(1)-ex-04-install: stamps/stamp-$(1)-ex-03-make
 stamps/stamp-$(1)-ex-05-stow: stamps/stamp-$(1)-ex-04-install
 	($(call SETVARS_EX,$(1));				\
 	 cd $(ipdir);					\
-	 $(STOW) "$$$${pkg_version}")
+	 $(STOW) -t $(ex_idir) "$$$${pkg_version}")
 	touch stamps/stamp-$(1)-ex-05-stow
 
 stamps/stamp-final-ex-$(1): stamps/stamp-$(1)-ex-05-stow
