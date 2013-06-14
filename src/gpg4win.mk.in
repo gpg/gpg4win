@@ -72,6 +72,8 @@ define SETVARS
 	pkgextracflags="$(call GETVAR,gpg4win_pkg_$(1)_extracflags)";	\
 	pkgmkargs="$(call GETVAR,gpg4win_pkg_$(1)_make_args)";          \
 	pkgmkargs_inst="$(call GETVAR,gpg4win_pkg_$(1)_make_args_inst)";\
+	pkgmkdir="$(call GETVAR,gpg4win_pkg_$(1)_make_dir)";             \
+	pkgmkdir_inst="$(call GETVAR,gpg4win_pkg_$(1)_make_dir)";        \
 	export PKG_CONFIG="$(tsdir)/src/pkg-config";			\
 	export PKG_CONFIG_PATH="$(idir)/lib/pkgconfig";			\
 	export PKG_CONFIG_LIBDIR="";					\
@@ -90,10 +92,12 @@ define SETVARS_EX
 	pkgpbdir="$(pdir)/$(1)-ex";                                         \
 	pkgidir="$(ipdir)/$$$${pkg_version}-ex";                            \
 	pkgidir_dev="$(ipdir)/$$$${pkg_version_dev}";                       \
-	pkgcfg="$(call GETVAR,gpg4win_pkg_$(1)_configure)";                 \
+	pkgcfg="$(call GETVAR,gpg4win_pkg_$(1)_ex_configure)";              \
 	pkgextracflags="$(call GETVAR,gpg4win_pkg_$(1)_ex_extracflags)";    \
 	pkgmkargs="$(call GETVAR,gpg4win_pkg_$(1)_ex_make_args)";           \
 	pkgmkargs_inst="$(call GETVAR,gpg4win_pkg_$(1)_ex_make_args_inst)"; \
+	pkgmkdir="$(call GETVAR,gpg4win_pkg_$(1)_ex_make_dir)";             \
+	pkgmkdir_inst="$(call GETVAR,gpg4win_pkg_$(1)_ex_make_dir)";        \
 	export PKG_CONFIG="$(tsdir)/src/pkg-config";                        \
 	export PKG_CONFIG_PATH="$(ex_idir)/lib/pkgconfig";                  \
 	export PKG_CONFIG_LIBDIR="";                                        \
@@ -188,6 +192,7 @@ stamps/stamp-$(1)-ex-02-configure: stamps/stamp-$(1)-ex-01-patch
 stamps/stamp-$(1)-ex-03-make: stamps/stamp-$(1)-ex-02-configure
 	($(call SETVARS_EX,$(1));				\
 	  cd "$$$${pkgbdir}";				\
+	  test -n "$$$${pkgmkdir}" && cd "$$$${pkgmkdir}";	\
 	  $(MAKE) $(AM_MAKEFLAGS) $(GPG4WIN_PARALLEL) $$$${pkgmkargs} || \
 	  $(MAKE) $(AM_MAKEFLAGS) $(GPG4WIN_PARALLEL) $$$${pkgmkargs} || \
 	  $(MAKE) $(AM_MAKEFLAGS) $$$${pkgmkargs})
@@ -273,6 +278,7 @@ stamps/stamp-$(1)-02-configure: stamps/stamp-$(1)-01-patch
 stamps/stamp-$(1)-03-make: stamps/stamp-$(1)-02-configure
 	($(call SETVARS,$(1));				\
 	  cd "$$$${pkgbdir}";				\
+	  test -n "$$$${pkgmkdir}" && cd "$$$${pkgmkdir}";	\
 	  $(MAKE) $(AM_MAKEFLAGS) $(GPG4WIN_PARALLEL) $$$${pkgmkargs} || \
 	  $(MAKE) $(AM_MAKEFLAGS) $(GPG4WIN_PARALLEL) $$$${pkgmkargs} || \
 	  $(MAKE) $(AM_MAKEFLAGS) $$$${pkgmkargs})
@@ -283,6 +289,7 @@ stamps/stamp-$(1)-03-make: stamps/stamp-$(1)-02-configure
 stamps/stamp-$(1)-04-install: stamps/stamp-$(1)-03-make
 	($(call SETVARS,$(1));				\
 	  cd "$$$${pkgbdir}";				\
+	  cd "$$$${pkgmkdir_inst}";			\
 	  $(MAKE) $(AM_MAKEFLAGS) $$$${pkgmkargs_inst} install; \
 	  $(call STRIP_macro,"$$$${pkgidir}");		\
 	  rm -f "$$$${pkgidir}/share/info/dir";		\
@@ -339,6 +346,7 @@ stamps/stamp-$(1)-01-patch: stamps/stamp-$(1)-00-unpack
 stamps/stamp-$(1)-03-make: stamps/stamp-$(1)-01-patch
 	($(call SETVARS,$(1));				\
 	  cd "$$$${pkgsdir}";				\
+	  test -n "$$$${pkgmkdir}" && cd "$$$${pkgmkdir}";	\
 	  $(MAKE) $(AM_MAKEFLAGS) $$$${pkgmkargs})
 	touch stamps/stamp-$(1)-03-make
 

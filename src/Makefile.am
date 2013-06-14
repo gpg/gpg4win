@@ -115,13 +115,20 @@ gpg4win_expkgs = libiconv gettext w32pth
 gpg4win_pkg_libiconv_ex_configure = \
 	--enable-shared=no --enable-static=yes
 
-# Optimization flags for gettext are neccessary because of
-# http://savannah.gnu.org/bugs/?36443
-# Still some issues with gettext-tools
 gpg4win_pkg_gettext_configure = \
   --with-lib-prefix=$(idir) --with-libiconv-prefix=$(idir) \
-  CPPFLAGS="-I$(idir)/include -O2" CFLAGS=-O2 \
-  LDFLAGS=-L$(idir)/lib CCC=$(host)-g++
+  CPPFLAGS=-I$(idir)/include CFLAGS=-O2 LDFLAGS=-L$(idir)/lib
+
+gpg4win_pkg_gettext_ex_configure = \
+  --with-lib-prefix=$(ex_idir) --with-libiconv-prefix=$(ex_idir) \
+  CPPFLAGS=-I$(ex_idir)/include CFLAGS=-O2 LDFLAGS=-L$(ex_idir)/lib
+
+# We only need gettext-runtime and there is sadly no top level
+# configure option for this
+gpg4win_pkg_gettext_make_dir = gettext-runtime
+gpg4win_pkg_gettext_make_dir_inst = gettext-runtime
+gpg4win_pkg_gettext_ex_make_dir = gettext-runtime
+gpg4win_pkg_gettext_ex_make_dir_inst = gettext-runtime
 
 gpg4win_pkg_glib_configure = \
   --disable-modular-tests \
