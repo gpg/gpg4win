@@ -341,8 +341,6 @@ AC_CHECK_PROGS(WGET, wget)
 # Packages.
 gpg4win_dup_sources=""
 
-GPG4WIN_BPKG_GNU([libiconv])
-GPG4WIN_BPKG_GNU([gettext], [libiconv])
 
 GPG4WIN_SPKG([zlib])
 GPG4WIN_BPKG_GNUWIN32([bsfilter])
@@ -365,11 +363,8 @@ GPG4WIN_SPKG([enchant], [pkgconfig glib])
 
 GPG4WIN_SPKG([bzip2])
 GPG4WIN_SPKG([adns])
-GPG4WIN_SPKG([libgpg-error], [libiconv gettext])
 GPG4WIN_SPKG([libgcrypt], [libgpg-error])
 GPG4WIN_SPKG([libksba], [libgpg-error])
-GPG4WIN_SPKG([w32pth])
-GPG4WIN_SPKG([libassuan], [libgpg-error w32pth])
 GPG4WIN_SPKG([dirmngr], [libgpg-error libgcrypt libassuan libksba w32pth])
 GPG4WIN_SPKG([pinentry], [libiconv gtk+])
 GPG4WIN_SPKG([gpgme], [libgpg-error gnupg2 glib])
@@ -378,7 +373,6 @@ GPG4WIN_SPKG([gnupg2], [libiconv libgcrypt libksba libassuan libgpg-error dnl
                         w32pth zlib bzip2 adns pinentry])
 GPG4WIN_SPKG([pthreads-w32])
 GPG4WIN_SPKG([gpgol], [gpgme libassuan])
-GPG4WIN_SPKG([gpgex], [libassuan])
 GPG4WIN_SPKG([scute], [libgpg-error libassuan])
 GPG4WIN_SPKG([paperkey])
 GPG4WIN_SPKG([gpa], [libiconv gettext zlib gtk+ libpng glib gpgme])
@@ -393,6 +387,15 @@ GPG4WIN_SPKG([claws-mail], [libiconv gettext zlib gtk+ libpng enchant glib dnl
                             gpgme pthreads-w32 crypt regex libetpan gnutls dnl
                             libxml2])
 GPG4WIN_SPKG([gtkhtml2_viewer], [curl claws-mail libxml2])
+
+# Packages needed for gpgex
+GPG4WIN_SPKGEX([w32pth])
+GPG4WIN_SPKGEX([libiconv])
+GPG4WIN_SPKGEX([gettext], [libiconv])
+GPG4WIN_SPKGEX([libgpg-error], [libiconv gettext])
+GPG4WIN_SPKGEX([libassuan], [libgpg-error w32pth])
+GPG4WIN_SPKGEX([gpgex], [libassuan])
+
 GPG4WIN_IPKG([compendium])
 
 # Qt related stuff.

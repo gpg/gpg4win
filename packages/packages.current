@@ -17,17 +17,13 @@
 #
 server ftp://ftp.cs.tu-berlin.de/pub/gnu
 
-# checked: 2012-03-28 wk - No newer W32 binaries available
-file gettext/gettext-runtime-0.13.1.bin.woe32.zip
-chk  8cd55585429b5d696ac3745e065f8613de26f19c
-file gettext/gettext-0.13.1.tar.gz
-chk  fa46cb397cf6768f5ff4fdf1854514a9ced5b02b
+# checked: 2013-06-14 ah - Switched to latest release
+file gettext/gettext-0.18.2.1.tar.gz
+chk  86066950cac2fcc49cc7bd23f5ea16bed522b410
 
-# checked: 2012-03-28 wk - No newer W32 binaries available
-file libiconv/libiconv-1.9.1.bin.woe32.zip
-chk  b57f5e8234975ec3cde340e101886135eb532329
-file libiconv/libiconv-1.9.1.tar.gz
-chk  f130c93fdf20903ca21bace8b8822f46468c9d65
+# checked: 2013-06-28 ah - Latest release
+file libiconv/libiconv-1.14.tar.gz
+chk  be7d67e50d72ff067b2c0291311bc283add36965
 
 #
 # zlib
