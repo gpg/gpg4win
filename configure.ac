@@ -33,8 +33,8 @@ m4_define([my_version], [2.1.1])
 # the decimalized short revision number, a beta version string and a
 # flag indicating a development version (my_isgit). The latter works
 # by requiring the final tag in the repository.
-m4_define([git_revision], m4_esyscmd([git branch -v 2>/dev/null \
-          | awk '/^\* / {printf "%s",$3}']))
+m4_define([git_revision],
+          m4_esyscmd([git rev-parse --short HEAD | tr -d '\n\r']))
 m4_define([git_revision_dec],
           m4_esyscmd_s([echo $((0x$(echo ]git_revision[|head -c 4)))]))
 m4_define([git_betastring],
