@@ -113,7 +113,7 @@ if [ "$myhost" = "w32" ]; then
           toolprefixes="$w32_toolprefixes i686-w64-mingw32 i586-mingw32msvc"
           toolprefixes="$toolprefixes i386-mingw32msvc mingw32"
           extraoptions="$w32_extraoptions"
-          extratoolprefixes="$w64_toolprefixes amd64-mingw32msvc"
+          extratoolprefixes="$w64_toolprefixes x86_64-w64-mingw32"
           ;;
         *)
           [ -z "$w32root" ] && w32root="$HOME/w32root"
