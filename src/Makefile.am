@@ -186,6 +186,10 @@ gpg4win_pkg_libgpg_error_configure = --silent \
   CPPFLAGS=-I$(idir)/include LDFLAGS=-L$(idir)/lib \
   --enable-static
 
+gpg4win_pkg_libgpg_error_ex_configure = --silent \
+  CPPFLAGS=-I$(idir)/include LDFLAGS=-L$(idir)/lib \
+  --enable-static
+
 # We convert the PO files to UTF-8.  FIXME: This should be done in
 # libgpg-error proper.
 define gpg4win_pkg_libgpg_error_post_install
@@ -197,8 +201,9 @@ define gpg4win_pkg_libgpg_error_post_install
  done)
 endef
 
-gpg4win_pkg_libassuan_configure =  --silent \
-  --enable-static
+gpg4win_pkg_libassuan_configure =  --silent --enable-static
+
+gpg4win_pkg_libassuan_ex_configure =  --silent --enable-static
 
 gpg4win_pkg_libksba_configure = --silent \
   --with-gpg-error-prefix=$(idir)

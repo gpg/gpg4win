@@ -29,6 +29,7 @@ ipdir := $(root)/install/pkgs
 tsdir := $(shell pwd)/${top_srcdir}
 pdir := $(shell pwd)/${top_srcdir}/patches
 ex_idir := $(root)/install-ex
+ex_ipdir := $(root)/install-ex/pkgs
 
 # We collect the names of all pkg files used.
 pkg_files =
@@ -42,6 +43,7 @@ stamps/stamp-directories:
 	$(MKDIR) $(idir)
 	$(MKDIR) $(ipdir)
 	$(if $GPGEX_ADD_HOST, $(MKDIR) $(ex_idir))
+	$(if $GPGEX_ADD_HOST, $(MKDIR) $(ex_ipdir))
 	touch $(bdir)/versioninfo.txt
 	touch stamps/stamp-directories
 
@@ -90,8 +92,8 @@ define SETVARS_EX
 	pkgbdir="$(bdir)/$$$${pkg_version}-ex-build";                       \
 	pkgpdir="$(pdir)/$$$${pkg_version}-ex";                             \
 	pkgpbdir="$(pdir)/$(1)-ex";                                         \
-	pkgidir="$(ipdir)/$$$${pkg_version}-ex";                            \
-	pkgidir_dev="$(ipdir)/$$$${pkg_version_dev}";                       \
+	pkgidir="$(ex_ipdir)/$$$${pkg_version}";                            \
+	pkgidir_dev="$(ex_ipdir)/$$$${pkg_version_dev}";                    \
 	pkgcfg="$(call GETVAR,gpg4win_pkg_$(1)_ex_configure)";              \
 	pkgextracflags="$(call GETVAR,gpg4win_pkg_$(1)_ex_extracflags)";    \
 	pkgmkargs="$(call GETVAR,gpg4win_pkg_$(1)_ex_make_args)";           \
@@ -211,7 +213,7 @@ stamps/stamp-$(1)-ex-04-install: stamps/stamp-$(1)-ex-03-make
 
 stamps/stamp-$(1)-ex-05-stow: stamps/stamp-$(1)-ex-04-install
 	($(call SETVARS_EX,$(1));				\
-	 cd $(ipdir);					\
+	 cd $(ex_ipdir);					\
 	 $(STOW) -t $(ex_idir) "$$$${pkg_version}")
 	touch stamps/stamp-$(1)-ex-05-stow
 
@@ -221,7 +223,7 @@ stamps/stamp-final-ex-$(1): stamps/stamp-$(1)-ex-05-stow
 .PHONY : clean-ex-$(1)
 clean-ex-$(1):
 	($(call SETVARS_EX,$(1));				\
-	 (cd $(ipdir) &&				\
+	 (cd $(ex_ipdir) &&				\
 	  ($(STOW) -D "$$$${pkg_version}";		\
 	   rm -fR "$$$${pkg_version}"));		\
 	 rm -fR "$$$${pkgsdir}" "$$$${pkgbdir}")
