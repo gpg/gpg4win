@@ -27,7 +27,7 @@ min_automake_version="1.9.3"
 # commit and push so that the git magic is able to work.
 #
 # After a release the make target "copy-news" is to be called as well!
-m4_define([my_version], [2.1.1])
+m4_define([my_version], [2.1.2])
 
 # Below is m4 magic to extract and compute the git revision number,
 # the decimalized short revision number, a beta version string and a
