@@ -22,7 +22,7 @@
 !addincludedir "${TOP_SRCDIR}/po"
 !addincludedir "${SRCDIR}"
 !addplugindir "${BUILD_DIR}"
-!include "../include/config.nsi"
+!include "config.nsi"
 
 # For the "light" version of the package, we explicitely disable some
 # of the packages right after including config.nsi.

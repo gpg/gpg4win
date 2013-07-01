@@ -22,7 +22,7 @@
 !addincludedir "${TOP_SRCDIR}/po"
 !addincludedir "${SRCDIR}"
 !addplugindir "${BUILD_DIR}"
-!include "../include/config.nsi"
+!include "config.nsi"
 
 # We need StrRep.
 !include "StrFunc.nsh"

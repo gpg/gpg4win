@@ -14,7 +14,7 @@ stamp-h1
 /*.tar.bz2
 /gpg4win-2.*
 doc/manual/version.tex
-include/config.nsi
+src/config.nsi
 po/POTFILES
 po/*.nsi
 po/gpg4win.pot

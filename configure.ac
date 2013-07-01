@@ -69,7 +69,7 @@ GIT_REVISION=git_revision
 GIT_REVISION_DEC=git_revision_dec
 
 
-AC_CONFIG_SRCDIR(include/config.nsi.in)
+AC_CONFIG_SRCDIR(src/config.nsi.in)
 AC_CONFIG_MACRO_DIR(m4)
 
 AM_INIT_AUTOMAKE([tar-ustar])
@@ -440,9 +440,9 @@ chmod +x patches/gnupg2/01-version.patch
 ]])
 
 AC_CONFIG_FILES(Makefile)
-AC_CONFIG_FILES(packages/Makefile include/Makefile src/Makefile po/Makefile.in)
+AC_CONFIG_FILES(packages/Makefile src/Makefile po/Makefile.in)
 AC_CONFIG_FILES(po/build-cc)
-AC_CONFIG_FILES(include/config.nsi src/gpg4win.mk)
+AC_CONFIG_FILES(src/config.nsi src/gpg4win.mk)
 AC_CONFIG_FILES(doc/Makefile)
 AC_CONFIG_FILES(doc/logo/Makefile)
 AC_CONFIG_FILES(doc/manual/Makefile doc/manual/version.tex)

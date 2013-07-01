@@ -17,7 +17,8 @@
 # along with this program; if not, see <http://www.gnu.org/licenses/>.
 
 
-EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi config.site \
+EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
+	config.site config.nsi.in \
         installer-options.ini.in libiconv.def libintl.def loreley.mid \
         gpg4win-splash.wav gpgwrap.c exdll.h g4wihelp.c g4wihelp.nsi \
         inst-sections.nsi installer.nsi installer-finish.nsi  \

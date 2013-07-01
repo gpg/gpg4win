@@ -20,7 +20,7 @@ ACLOCAL_AMFLAGS = -I m4
 AUTOMAKE_OPTIONS = dist-bzip2 no-dist-gzip
 DISTCHECK_CONFIGURE_FLAGS = --host=i686-w64-mingw32
 
-SUBDIRS = po packages include doc src
+SUBDIRS = po packages doc src
 
 EXTRA_DIST = autogen.sh README.GIT ONEWS \
         build-aux/git-log-footer build-aux/git-log-fix \
