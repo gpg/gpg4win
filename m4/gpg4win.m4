@@ -167,6 +167,40 @@ AC_DEFUN([GPG4WIN_FIND],
         [$6])
 ])
 
+AC_DEFUN([GPG4WIN_CHECK_EXDEPS],
+[
+  AC_REQUIRE([GPG4WIN_CHECK_DEPS])
+
+  AC_MSG_CHECKING([additional host build list])
+
+  gpg4win_build_ex_list=`echo $_gpg4win_ex_deps | tsort`
+  # Remove newlines.
+  gpg4win_build_ex_list=`echo $gpg4win_build_ex_list`
+  AC_MSG_RESULT($gpg4win_build_ex_list)
+  AC_SUBST(gpg4win_build_ex_list)
+
+  # Check each dependency.
+  _gpg4win_not_found=
+  _gpg4win_d=
+  _gpg4win_p=
+  for _gpg4win_p in $_gpg4win_ex_deps; do
+    AS_IF([test -z $_gpg4win_d], [_gpg4win_d=$_gpg4win_p],
+          [
+            _gpg4win_found=
+            for _gpg4win_i in $_gpg4win_pkgs; do
+              AS_IF([test $_gpg4win_d = $_gpg4win_i],
+                    _gpg4win_found=yes
+                    break)
+            done
+            AS_IF([test -z $_gpg4win_found],
+                  AC_MSG_WARN(could not find ex variant of package $_gpg4win_d required by package $_gpg4win_p)
+                  _gpg4win_not_found=yes)
+            _gpg4win_d=
+          ])
+  done
+  AS_IF([test ! -z "$_gpg4win_not_found"],
+        AC_MSG_ERROR([could not find some required packages]))
+])
 
 AC_DEFUN([GPG4WIN_CHECK_DEPS],
 [
@@ -203,7 +237,7 @@ AC_DEFUN([GPG4WIN_CHECK_DEPS],
 
 AC_DEFUN([GPG4WIN_FINALIZE],
 [
-  AC_REQUIRE([GPG4WIN_CHECK_DEPS])
+  AC_REQUIRE([GPG4WIN_CHECK_EXDEPS])
 
   _gpg4win_debug=no
   AC_ARG_ENABLE([debug],
@@ -296,6 +330,27 @@ AC_DEFUN([GPG4WIN_SPKG],
 ])
 
 
+# GPG4WIN_SPKGEX([PKG],[DEPENDS],[IF-FOUND],[IF-NOT-FOUND])
+# Set up the source package PKG to be additionally built
+# for the host provided as additional-gpgex-host
+AC_DEFUN([GPG4WIN_SPKGEX],
+[
+  GPG4WIN_SPKG([$1],[$2],[$3],[$4])
+
+  # gpg4win_pkg_PKGNAME_deps=DEPS
+  gpg4win_pkg_[]m4_translit([$1],[A-Z+-],[a-z__])[]_ex_deps="$2"
+  AC_SUBST(gpg4win_pkg_[]m4_translit([$1],[A-Z+-],[a-z__])[]_ex_deps)
+
+  gpg4win_ex_pkgs="$gpg4win_ex_pkgs $1"
+
+  GPG4WIN_DEFINE(HAVE_PKG_[]m4_translit([$1],[a-z+-],[A-Z__])_EX)
+  # Record dependencies.  Also enter every package as node.
+  _gpg4win_ex_deps="$_gpg4win_ex_deps $1 $1"
+  AS_IF([test ! -z "$2"],
+        for _gpg4win_i in $2; do
+          _gpg4win_ex_deps="$_gpg4win_ex_deps $_gpg4win_i $1"
+        done)
+])
 
 # GPG4WIN_BPKG_GNUWIN32([PKG],[DEPENDS],[IF-FOUND],[IF-NOT-FOUND])
 # Set up the gnuwin32 package PKG.

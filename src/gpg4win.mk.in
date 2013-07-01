@@ -28,6 +28,8 @@ idir := $(root)/install
 ipdir := $(root)/install/pkgs
 tsdir := $(shell pwd)/${top_srcdir}
 pdir := $(shell pwd)/${top_srcdir}/patches
+ex_idir := $(root)/install-ex
+ex_ipdir := $(root)/install-ex/pkgs
 
 # We collect the names of all pkg files used.
 pkg_files =
@@ -40,6 +42,8 @@ stamps/stamp-directories:
 	$(MKDIR) $(bdir)
 	$(MKDIR) $(idir)
 	$(MKDIR) $(ipdir)
+	$(if $GPGEX_ADD_HOST, $(MKDIR) $(ex_idir))
+	$(if $GPGEX_ADD_HOST, $(MKDIR) $(ex_ipdir))
 	touch $(bdir)/versioninfo.txt
 	touch stamps/stamp-directories
 
@@ -70,12 +74,37 @@ define SETVARS
 	pkgextracflags="$(call GETVAR,gpg4win_pkg_$(1)_extracflags)";	\
 	pkgmkargs="$(call GETVAR,gpg4win_pkg_$(1)_make_args)";          \
 	pkgmkargs_inst="$(call GETVAR,gpg4win_pkg_$(1)_make_args_inst)";\
+	pkgmkdir="$(call GETVAR,gpg4win_pkg_$(1)_make_dir)";             \
+	pkgmkdir_inst="$(call GETVAR,gpg4win_pkg_$(1)_make_dir)";        \
 	export PKG_CONFIG="$(tsdir)/src/pkg-config";			\
 	export PKG_CONFIG_PATH="$(idir)/lib/pkgconfig";			\
 	export PKG_CONFIG_LIBDIR="";					\
 	export PATH="$(idir)/bin:$${PATH}";				\
 	export SYSROOT="$(idir)";					\
 	export CONFIG_SITE="$(tsdir)/src/config.site"
+endef
+
+# Set variables for building in an additional architecture
+define SETVARS_EX
+	pkg="$(call GETVAR,gpg4win_pkg_$(1))";                              \
+	pkg_version="$(1)-$(call GETVAR,gpg4win_pkg_$(1)_version)";         \
+	pkgsdir="$(bdir)/$$$${pkg_version}-ex";                             \
+	pkgbdir="$(bdir)/$$$${pkg_version}-ex-build";                       \
+	pkgpdir="$(pdir)/$$$${pkg_version}-ex";                             \
+	pkgpbdir="$(pdir)/$(1)-ex";                                         \
+	pkgidir="$(ex_ipdir)/$$$${pkg_version}";                            \
+	pkgidir_dev="$(ex_ipdir)/$$$${pkg_version_dev}";                    \
+	pkgcfg="$(call GETVAR,gpg4win_pkg_$(1)_ex_configure)";              \
+	pkgextracflags="$(call GETVAR,gpg4win_pkg_$(1)_ex_extracflags)";    \
+	pkgmkargs="$(call GETVAR,gpg4win_pkg_$(1)_ex_make_args)";           \
+	pkgmkargs_inst="$(call GETVAR,gpg4win_pkg_$(1)_ex_make_args_inst)"; \
+	pkgmkdir="$(call GETVAR,gpg4win_pkg_$(1)_ex_make_dir)";             \
+	pkgmkdir_inst="$(call GETVAR,gpg4win_pkg_$(1)_ex_make_dir)";        \
+	export PKG_CONFIG="$(tsdir)/src/pkg-config";                        \
+	export PKG_CONFIG_PATH="$(ex_idir)/lib/pkgconfig";                  \
+	export PKG_CONFIG_LIBDIR="";                                        \
+	export PATH="$(ex_idir)/bin:$${PATH}";                              \
+	export SYSROOT="$(ex_idir)"
 endef
 
 # Support macro.  Unpack the archive $(1).
@@ -104,8 +133,107 @@ define STRIP_macro
 	fi
 endef
 
+# Support macro.  Strip all exe files below $(1) using STRIP_EX.
+define STRIP_EX_macro
+	if test -z '$(DEBUG)'; then			\
+	  (cd $(1);					\
+	   for f in `find . -name \*.exe -o -name \*.dll`; do		\
+	   echo Calling $(STRIP_EX) "$$$${pkg_version}/$$$${f}"; \
+	   $(STRIP_EX) "$$$${f}"; done);			\
+	fi
+endef
+
 define GETDEPS
   $(addprefix stamps/stamp-final-, $(call GETVAR,gpg4win_pkg_$(1)_deps))
+endef
+
+define GETDEPS_EX
+  $(addprefix stamps/stamp-final-ex-, $(call GETVAR,gpg4win_pkg_$(1)_deps))
+endef
+
+# Template for source packages to build for an additional host
+
+define EXPKG_template_
+
+pkg_files += $(call GETVAR,gpg4win_pkg_$(1))
+
+stamps/stamp-$(1)-ex-00-unpack: stamps/stamp-directories $(call GETDEPS_EX,$(1))
+	(cd $(bdir);					\
+	 $(call SETVARS_EX,$(1));				\
+	 $(call DEFLATE_macro,$$$${pkg}))
+	touch stamps/stamp-$(1)-ex-00-unpack
+
+stamps/stamp-$(1)-ex-01-patch: stamps/stamp-$(1)-ex-00-unpack
+	(shopt -s nullglob;				\
+	 $(call SETVARS_EX,$(1));				\
+	 for pfile in "$$$${pkgpbdir}"/*.patch "$$$${pkgpdir}"/*.patch ; do  \
+	   (cd "$$$${pkgsdir}"; "$$$${pfile}")		\
+	 done)
+	touch stamps/stamp-$(1)-ex-01-patch
+
+stamps/stamp-$(1)-ex-02-configure: stamps/stamp-$(1)-ex-01-patch
+	($(call SETVARS_EX,$(1));				\
+	 mkdir "$$$${pkgbdir}";				\
+	  cd "$$$${pkgbdir}";				\
+	 eval "../$$$${pkg_version}/configure"		\
+		--prefix="$$$${pkgidir}"		\
+		--host=$(GPGEX_ADD_HOST)		\
+		--build=$(build)			\
+		$$$${pkgcfg} CFLAGS=\"-mms-bitfields $$$${pkgextracflags}\";\
+	 shopt -s nullglob;					\
+	 for pfile in "$$$${pkgpbdir}"/*.postcfg       		\
+                       "$$$${pkgpdir}"/*.postcfg ; do  		\
+	   (cd "$$$${pkgsdir}"; "$$$${pfile}")		     	\
+	 done;                                               	\
+	 for pfile in "$$$${pkgpbdir}"/*.postcfg-build    	\
+                       "$$$${pkgpdir}"/*.postcfg-build ; do	\
+	   (cd "$$$${pkgbdir}"; "$$$${pfile}")			\
+	 done)
+	touch stamps/stamp-$(1)-ex-02-configure
+
+stamps/stamp-$(1)-ex-03-make: stamps/stamp-$(1)-ex-02-configure
+	($(call SETVARS_EX,$(1));				\
+	  cd "$$$${pkgbdir}";				\
+	  test -n "$$$${pkgmkdir}" && cd "$$$${pkgmkdir}";	\
+	  $(MAKE) $(AM_MAKEFLAGS) $(GPG4WIN_PARALLEL) $$$${pkgmkargs} || \
+	  $(MAKE) $(AM_MAKEFLAGS) $(GPG4WIN_PARALLEL) $$$${pkgmkargs} || \
+	  $(MAKE) $(AM_MAKEFLAGS) $$$${pkgmkargs})
+	touch stamps/stamp-$(1)-ex-03-make
+
+# Note that post_install must come last because it may be empty and
+# "; ;" is a syntax error.
+stamps/stamp-$(1)-ex-04-install: stamps/stamp-$(1)-ex-03-make
+	($(call SETVARS_EX,$(1));				\
+	  cd "$$$${pkgbdir}";				\
+	  $(MAKE) $(AM_MAKEFLAGS) $$$${pkgmkargs_inst} install; \
+	  $(call STRIP_EX_macro,"$$$${pkgidir}");		\
+	  rm -f "$$$${pkgidir}/share/info/dir";		\
+	  $(call gpg4win_pkg_$(call FROB_macro,$(1))_ex_post_install))
+	touch stamps/stamp-$(1)-ex-04-install
+
+stamps/stamp-$(1)-ex-05-stow: stamps/stamp-$(1)-ex-04-install
+	($(call SETVARS_EX,$(1));				\
+	 cd $(ex_ipdir);					\
+	 $(STOW) -t $(ex_idir) "$$$${pkg_version}")
+	touch stamps/stamp-$(1)-ex-05-stow
+
+stamps/stamp-final-ex-$(1): stamps/stamp-$(1)-ex-05-stow
+	touch stamps/stamp-final-ex-$(1)
+
+.PHONY : clean-ex-$(1)
+clean-ex-$(1):
+	($(call SETVARS_EX,$(1));				\
+	 (cd $(ex_ipdir) &&				\
+	  ($(STOW) -D "$$$${pkg_version}";		\
+	   rm -fR "$$$${pkg_version}"));		\
+	 rm -fR "$$$${pkgsdir}" "$$$${pkgbdir}")
+	rm -f stamps/stamp-final-ex-$(1) stamps/stamp-$(1)-ex-*
+
+endef
+
+define EXPKG_template
+$(if $(filter-out no, $(call GETVAR,gpg4win_pkg_$(1))),
+  $(call EXPKG_template_,$1))
 endef
 
 
@@ -152,6 +280,7 @@ stamps/stamp-$(1)-02-configure: stamps/stamp-$(1)-01-patch
 stamps/stamp-$(1)-03-make: stamps/stamp-$(1)-02-configure
 	($(call SETVARS,$(1));				\
 	  cd "$$$${pkgbdir}";				\
+	  test -n "$$$${pkgmkdir}" && cd "$$$${pkgmkdir}";	\
 	  $(MAKE) $(AM_MAKEFLAGS) $(GPG4WIN_PARALLEL) $$$${pkgmkargs} || \
 	  $(MAKE) $(AM_MAKEFLAGS) $(GPG4WIN_PARALLEL) $$$${pkgmkargs} || \
 	  $(MAKE) $(AM_MAKEFLAGS) $$$${pkgmkargs})
@@ -162,6 +291,7 @@ stamps/stamp-$(1)-03-make: stamps/stamp-$(1)-02-configure
 stamps/stamp-$(1)-04-install: stamps/stamp-$(1)-03-make
 	($(call SETVARS,$(1));				\
 	  cd "$$$${pkgbdir}";				\
+	  cd "$$$${pkgmkdir_inst}";			\
 	  $(MAKE) $(AM_MAKEFLAGS) $$$${pkgmkargs_inst} install; \
 	  $(call STRIP_macro,"$$$${pkgidir}");		\
 	  rm -f "$$$${pkgidir}/share/info/dir";		\
@@ -218,6 +348,7 @@ stamps/stamp-$(1)-01-patch: stamps/stamp-$(1)-00-unpack
 stamps/stamp-$(1)-03-make: stamps/stamp-$(1)-01-patch
 	($(call SETVARS,$(1));				\
 	  cd "$$$${pkgsdir}";				\
+	  test -n "$$$${pkgmkdir}" && cd "$$$${pkgmkdir}";	\
 	  $(MAKE) $(AM_MAKEFLAGS) $$$${pkgmkargs})
 	touch stamps/stamp-$(1)-03-make
 
@@ -352,6 +483,9 @@ endef
 # Insert the template for each source package.
 $(foreach spkg, $(gpg4win_spkgs), $(eval $(call SPKG_template,$(spkg))))
 
+# Insert the template for each gpgEx architecture package.
+$(foreach expkg, $(gpg4win_expkgs), $(eval $(call EXPKG_template,$(expkg))))
+
 # Insert the template for each make only source package.
 $(foreach mpkg, $(gpg4win_mpkgs), $(eval $(call MPKG_template,$(mpkg))))
 
@@ -368,7 +502,8 @@ $(foreach rll, $(gpg4win_howto_smime_ll), \
                $(eval $(call HOWTO_template,SMIME,$(rll))))
 
 stamps/stamp-final: stamps/stamp-directories
-stamps/stamp-final: $(addprefix stamps/stamp-final-,$(gpg4win_build_list))
+stamps/stamp-final: $(addprefix stamps/stamp-final-,$(gpg4win_build_list)) \
+	$(addprefix stamps/stamp-final-ex-,$(gpg4win_build_ex_list))
 	touch stamps/stamp-final
 
 $(bdir)/versioninfo.txt: stamps/stamp-final

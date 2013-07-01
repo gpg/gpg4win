@@ -33,8 +33,8 @@ m4_define([my_version], [2.1.1])
 # the decimalized short revision number, a beta version string and a
 # flag indicating a development version (my_isgit). The latter works
 # by requiring the final tag in the repository.
-m4_define([git_revision], m4_esyscmd([git branch -v 2>/dev/null \
-          | awk '/^\* / {printf "%s",$3}']))
+m4_define([git_revision],
+          m4_esyscmd([git rev-parse --short HEAD | tr -d '\n\r']))
 m4_define([git_revision_dec],
           m4_esyscmd_s([echo $((0x$(echo ]git_revision[|head -c 4)))]))
 m4_define([git_betastring],
@@ -190,6 +190,24 @@ AC_ARG_ENABLE(manuals,
                     build_manuals=yes)
 AM_CONDITIONAL(BUILD_MANUALS, test "$build_manuals" = yes)
 
+# Additionaly enable building gpgex for another host
+AC_ARG_WITH([additional-gpgex-host],
+    AC_HELP_STRING([--with-additional-gpgex-host=HOST],
+                   [Additionaly build gpgex for this host]),
+                   [if test "$withval" = yes; then
+                      AC_MSG_FAILURE(
+                          [--with-additional-gpgex-host was given,
+                           but no host specified])
+                    else
+                      gpgex_host=$withval
+                    fi
+                   ],
+                    gpgex_host=no)
+
+if test "$gpgex_host" != no; then
+    GPGEX_ADD_HOST="$gpgex_host"
+fi
+AC_SUBST(GPGEX_ADD_HOST)
 
 AC_ARG_ENABLE(fast-makensis,
     AC_HELP_STRING([--enable-fast-makensis],
@@ -228,6 +246,10 @@ AC_CHECK_PROGS(GITLOG_TO_CHANGELOG, gitlog-to-changelog,
 AC_CHECK_PROGS(BUILD_CC, gcc cc)
 AC_PROG_INSTALL
 
+if test -n "$GPGEX_ADD_HOST"; then
+    AC_CHECK_TOOLS(STRIP_EX, ${GPGEX_ADD_HOST}-strip)
+fi
+
 missing_tools=
 for i in DLLTOOL MAKE UNZIP TAR MKDIR CP RM STOW MAKENSIS ZCAT TEXI2DVI \
          DVIPDF CONVERT SHA1SUM MSGFMT BUILD_CC; do
@@ -249,6 +271,7 @@ AC_ARG_WITH([libgcc_s_sjlj-1-dll],
            AC_HELP_STRING([--with-libgcc_s_sjlj-1-dll=FILE],
                           [use the libgcc_s_sjlj-1 DLL]),
            [libgcc_dll=$withval])
+
 if test "$libgcc_dll" = "no"; then
   file="/usr/lib/gcc/$host/$gcc_major_minor/libgcc_s_sjlj-1.dll"
   if test -r "$file"; then
@@ -318,8 +341,6 @@ AC_CHECK_PROGS(WGET, wget)
 # Packages.
 gpg4win_dup_sources=""
 
-GPG4WIN_BPKG_GNU([libiconv])
-GPG4WIN_BPKG_GNU([gettext], [libiconv])
 
 GPG4WIN_SPKG([zlib])
 GPG4WIN_BPKG_GNUWIN32([bsfilter])
@@ -345,7 +366,6 @@ GPG4WIN_SPKG([adns])
 GPG4WIN_SPKG([libgpg-error], [libiconv gettext])
 GPG4WIN_SPKG([libgcrypt], [libgpg-error])
 GPG4WIN_SPKG([libksba], [libgpg-error])
-GPG4WIN_SPKG([w32pth])
 GPG4WIN_SPKG([libassuan], [libgpg-error w32pth])
 GPG4WIN_SPKG([dirmngr], [libgpg-error libgcrypt libassuan libksba w32pth])
 GPG4WIN_SPKG([pinentry], [libiconv gtk+])
@@ -370,6 +390,16 @@ GPG4WIN_SPKG([claws-mail], [libiconv gettext zlib gtk+ libpng enchant glib dnl
                             gpgme pthreads-w32 crypt regex libetpan gnutls dnl
                             libxml2])
 GPG4WIN_SPKG([gtkhtml2_viewer], [curl claws-mail libxml2])
+GPG4WIN_SPKG([w32pth])
+GPG4WIN_SPKG([libiconv])
+GPG4WIN_SPKG([gettext], [libiconv])
+
+
+# Packages needed for gpgex
+GPG4WIN_SPKGEX([libgpg-error])
+GPG4WIN_SPKGEX([libassuan], [libgpg-error])
+GPG4WIN_SPKGEX([gpgex], [libassuan])
+
 GPG4WIN_IPKG([compendium])
 
 # Qt related stuff.
@@ -439,4 +469,5 @@ echo "
 
         Revision: ${GIT_REVISION}  (${GIT_REVISION_DEC})
         Platform: $host
+        Additional gpgEx platform: ${GPGEX_ADD_HOST}
 "

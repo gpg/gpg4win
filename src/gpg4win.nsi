@@ -191,16 +191,24 @@
 !define DEBUG
 !endif
 
+# Most of the included software has implicit requirements for at least
+# NT4 if not even higher.  To be sure require at least Windows XP.
+# Fixme: Enable if we have makensis 2.50
+#TargetMinimalOS 5.1
+
+# Admin privileges are required for installation
+RequestExecutionLevel admin
 
 # The installation directory.
 !define ipdir "playground/install/pkgs"
+!define exipdir "playground/install-ex/pkgs"
 !define bpdir "playground/build"
 
 # Select the best compression algorithm available.  The dictionary
 # size is the default (8 MB).
 !ifndef DISABLE_LZMA
 !ifndef SOURCES
-SetCompressor lzma
+SetCompressor /SOLID lzma
 # SetCompressorDictSize 8
 !endif
 !endif

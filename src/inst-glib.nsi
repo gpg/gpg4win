@@ -50,9 +50,6 @@ Section "-glib" SEC_glib
   File ${prefix}/bin/gspawn-win32-helper-console.exe
   File ${prefix}/bin/gspawn-win32-helper.exe
 
-  SetOutPath "$INSTDIR\lib"
-  File ${prefix}/lib/charset.alias
-
   SetOutPath "$INSTDIR\share\glib-2.0\schemas"
   File ${prefix}/share/glib-2.0/schemas/gschema.dtd
 

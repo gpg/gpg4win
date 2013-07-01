@@ -49,6 +49,9 @@
 # We use the modern UI.
 !include "MUI.nsh"
 
+# We need to know wether we are installing to 64 bit.
+!include "x64.nsh"
+
 # Set the package name.  Note that this name should not be sufficed
 #  with the version because this would get displayed in the start menu.
 Name "${PRETTY_PACKAGE}"

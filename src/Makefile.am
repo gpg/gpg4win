@@ -104,10 +104,31 @@ gpg4win_spkgs = glib libffi gdk-pixbuf gtk+ \
 		gpa libgsasl libtasn1 opencdk gnutls curl libxml2 \
                 libetpan claws-mail gtkhtml2_viewer \
 		vcalendar rssyl gnupg2 pinentry libassuan libksba libgcrypt \
-		adns dirmngr w32pth scute paperkey regex
+		adns dirmngr w32pth scute paperkey regex libiconv gettext
+
+# Supported source packages to build in an additional architecture
+gpg4win_expkgs = libgpg-error libassuan libiconv gettext w32pth gpgex
 
 # Extra options to configure for individual packages.
 # We can use $(idir) here for the installation prefix.
+
+gpg4win_pkg_libiconv_ex_configure = \
+	--enable-shared=no --enable-static=yes
+
+gpg4win_pkg_gettext_configure = \
+  --with-lib-prefix=$(idir) --with-libiconv-prefix=$(idir) \
+  CPPFLAGS=-I$(idir)/include CFLAGS=-O2 LDFLAGS=-L$(idir)/lib
+
+gpg4win_pkg_gettext_ex_configure = \
+  --with-lib-prefix=$(ex_idir) --with-libiconv-prefix=$(ex_idir) \
+  CPPFLAGS=-I$(ex_idir)/include CFLAGS=-O2 LDFLAGS=-L$(ex_idir)/lib
+
+# We only need gettext-runtime and there is sadly no top level
+# configure option for this
+gpg4win_pkg_gettext_make_dir = gettext-runtime
+gpg4win_pkg_gettext_make_dir_inst = gettext-runtime
+gpg4win_pkg_gettext_ex_make_dir = gettext-runtime
+gpg4win_pkg_gettext_ex_make_dir_inst = gettext-runtime
 
 gpg4win_pkg_glib_configure = \
   --disable-modular-tests \
@@ -165,6 +186,10 @@ gpg4win_pkg_libgpg_error_configure = --silent \
   CPPFLAGS=-I$(idir)/include LDFLAGS=-L$(idir)/lib \
   --enable-static
 
+gpg4win_pkg_libgpg_error_ex_configure = --silent \
+  CPPFLAGS=-I$(idir)/include LDFLAGS=-L$(idir)/lib \
+  --enable-static
+
 # We convert the PO files to UTF-8.  FIXME: This should be done in
 # libgpg-error proper.
 define gpg4win_pkg_libgpg_error_post_install
@@ -176,8 +201,9 @@ define gpg4win_pkg_libgpg_error_post_install
  done)
 endef
 
-gpg4win_pkg_libassuan_configure =  --silent \
-  --enable-static
+gpg4win_pkg_libassuan_configure =  --silent --enable-static
+
+gpg4win_pkg_libassuan_ex_configure =  --silent --enable-static
 
 gpg4win_pkg_libksba_configure = --silent \
   --with-gpg-error-prefix=$(idir)
@@ -353,26 +379,26 @@ gpg4win_pkg_zlib_make_args_inst = -fwin32/Makefile.gcc install \
 	LIBRARY_PATH=$$$${pkgidir}/lib SHARED_MODE=1 IMPLIB=libz.dll.a
 
 # Supported binary packages.
-gpg4win_bpkgs = libiconv gettext pkgconfig pango expat freetype fontconfig \
+gpg4win_bpkgs = pkgconfig pango expat freetype fontconfig \
                 cairo atk qt dbus oxygen-icons kleopatra bsfilter
 
 # libiconv needs some special magic to generate a usable import
 # library.
-define gpg4win_pkg_libiconv_post_install
-(cp $(srcdir)/libiconv.def $$$${pkgidir}/lib;		\
-cd $$$${pkgidir}/lib;					\
-$(DLLTOOL) --output-lib libiconv.dll.a --def libiconv.def)
-endef
+# define gpg4win_pkg_libiconv_post_install
+# (cp $(srcdir)/libiconv.def $$$${pkgidir}/lib;		\
+# cd $$$${pkgidir}/lib;					\
+# $(DLLTOOL) --output-lib libiconv.dll.a --def libiconv.def)
+# endef
 
 # libiconv needs some special magic to generate a usable import
 # library.  Note that we include some internal symbols that are not
 # actually part of the DLL.  They are needed by the AM_GNU_GETTEXT
 # configure test, but not used otherwise.
-define gpg4win_pkg_gettext_post_install
-(cp $(srcdir)/libintl.def $$$${pkgidir}/lib;		\
-cd $$$${pkgidir}/lib;					\
-$(DLLTOOL) --output-lib libintl.dll.a --def libintl.def)
-endef
+# define gpg4win_pkg_gettext_post_install
+# (cp $(srcdir)/libintl.def $$$${pkgidir}/lib;		\
+# cd $$$${pkgidir}/lib;					\
+# $(DLLTOOL) --output-lib libintl.dll.a --def libintl.def)
+# endef
 
 
 # Zlib needs some special magic to generate a libtool file.
@@ -404,9 +430,12 @@ endef
 
 # We need to fix the prefix in the various packages using pkgconfig,
 # or we can't substitute it properly in our pkg-config wrapper.
+# glib also installs an empty charset.alias for mingw which creates
+# a stow conflict with the one from iconv.
 define gpg4win_pkg_glib_post_install
  (cd $$$${pkgidir};							\
- perl -pi -e 's/^prefix=.*$$$$/prefix=\/usr/' `find . -name \*.pc`)
+ perl -pi -e 's/^prefix=.*$$$$/prefix=\/usr/' `find . -name \*.pc`; \
+ rm $$$${pkgidir}/lib/charset.alias)
 endef
 
 define gpg4win_pkg_libffi_post_install
@@ -485,11 +514,11 @@ define gpg4win_pkg_kleopatra_post_install
 endef
 
 
-define gpg4win_pkg_libiconv_post_install
-(cp $(srcdir)/libiconv.def $$$${pkgidir}/lib;		\
-cd $$$${pkgidir}/lib;					\
-$(DLLTOOL) --output-lib libiconv.dll.a --def libiconv.def)
-endef
+#define gpg4win_pkg_libiconv_post_install
+#(cp $(srcdir)/libiconv.def $$$${pkgidir}/lib;		\
+#cd $$$${pkgidir}/lib;					\
+#$(DLLTOOL) --output-lib libiconv.dll.a --def libiconv.def)
+#endef
 
 # Qt is missing the pkgconfig files.
 define gpg4win_pkg_qt_post_install
