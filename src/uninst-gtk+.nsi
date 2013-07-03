@@ -53,14 +53,14 @@ Section "-un.gtk+"
 
   Delete "$INSTDIR\lib\gtk-2.0\2.4.0\immodules\*.dll"
   RMDir  "$INSTDIR\lib\gtk-2.0\2.4.0\immodules"
-  Delete "$INSTDIR\lib\gtk-2.0\2.10.0\immodules\*.dll"
-  RMDir  "$INSTDIR\lib\gtk-2.0\2.10.0\immodules"
+  Delete /REBOOTOK "$INSTDIR\lib\gtk-2.0\2.10.0\immodules\*.dll"
+  RMDir  /REBOOTOK "$INSTDIR\lib\gtk-2.0\2.10.0\immodules"
 
-  Delete "$INSTDIR\lib\gtk-2.0\2.10.0\engines\*.dll"
-  RMDir  "$INSTDIR\lib\gtk-2.0\2.10.0\engines"
+  Delete /REBOOTOK "$INSTDIR\lib\gtk-2.0\2.10.0\engines\*.dll"
+  RMDir  /REBOOTOK "$INSTDIR\lib\gtk-2.0\2.10.0\engines"
 
   RMDir  "$INSTDIR\lib\gtk-2.0\2.4.0"
-  RMDir  "$INSTDIR\lib\gtk-2.0\2.10.0"
+  RMDir  /REBOOTOK "$INSTDIR\lib\gtk-2.0\2.10.0"
 
   Delete /REBOOTOK "$INSTDIR\lib\gtk-2.0\modules\*.dll"
   RMDir  /REBOOTOK "$INSTDIR\lib\gtk-2.0\modules"
