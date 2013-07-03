@@ -30,10 +30,9 @@ Section "-un.cairo"
   Push "${gpg4win_pkg_cairo_src}"
   Call un.SourceDelete
 !else
-  Delete "$INSTDIR\libcairo-2.dll"
-  Delete "$INSTDIR\libcairo-gobject-2.dll"
-  Delete "$INSTDIR\libcairo-script-interpreter-2.dll"
+  Delete /REBOOTOK "$INSTDIR\libcairo-2.dll"
+  Delete /REBOOTOK "$INSTDIR\libcairo-gobject-2.dll"
+  Delete /REBOOTOK "$INSTDIR\libcairo-script-interpreter-2.dll"
 
-  RMDir "$INSTDIR"
 !endif
 SectionEnd

@@ -55,11 +55,11 @@ Section "-un.glib"
   Delete "$INSTDIR\gspawn-win32-helper-console.exe"
   Delete "$INSTDIR\gspawn-win32-helper.exe"
 
-  Delete "$INSTDIR\libglib-2.0-0.dll"
-  Delete "$INSTDIR\libgmodule-2.0-0.dll"
-  Delete "$INSTDIR\libgobject-2.0-0.dll"
-  Delete "$INSTDIR\libgthread-2.0-0.dll"
-  Delete "$INSTDIR\libgio-2.0-0.dll"
+  Delete /REBOOTOK "$INSTDIR\libglib-2.0-0.dll"
+  Delete /REBOOTOK "$INSTDIR\libgmodule-2.0-0.dll"
+  Delete /REBOOTOK "$INSTDIR\libgobject-2.0-0.dll"
+  Delete /REBOOTOK "$INSTDIR\libgthread-2.0-0.dll"
+  Delete /REBOOTOK "$INSTDIR\libgio-2.0-0.dll"
 
 !endif
 SectionEnd

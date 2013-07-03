@@ -1,18 +1,18 @@
 # uninst-pango.nsi - Installer snippet for pango.   -*- coding: latin-1; -*-
 # Copyright (C) 2005 g10 Code GmbH
-# 
+#
 # This file is part of GPG4Win.
-# 
+#
 # GPG4Win is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 2 of the License, or
 # (at your option) any later version.
-# 
+#
 # GPG4Win is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
-# 
+#
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
@@ -30,10 +30,10 @@ Section "-un.pango"
   Call un.SourceDelete
 !else
   Delete "$INSTDIR\pango-querymodules.exe"
-  Delete "$INSTDIR\libpango-1.0-0.dll"
-  Delete "$INSTDIR\libpangoft2-1.0-0.dll"
-  Delete "$INSTDIR\libpangowin32-1.0-0.dll"
-  Delete "$INSTDIR\libpangocairo-1.0-0.dll"
+  Delete /REBOOTOK "$INSTDIR\libpango-1.0-0.dll"
+  Delete /REBOOTOK "$INSTDIR\libpangoft2-1.0-0.dll"
+  Delete /REBOOTOK "$INSTDIR\libpangowin32-1.0-0.dll"
+  Delete /REBOOTOK "$INSTDIR\libpangocairo-1.0-0.dll"
 
 
   Delete "$INSTDIR\etc\pango\pango.modules"
@@ -58,7 +58,6 @@ Section "-un.pango"
 
   Delete "$INSTDIR\etc\pango\pango.aliases"
   RMDir "$INSTDIR\etc\pango"
-  RMDir "$INSTDIR\etc"
-  RMDir "$INSTDIR"
+
 !endif
 SectionEnd

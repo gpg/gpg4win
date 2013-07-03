@@ -31,10 +31,10 @@ Section "-un.gtk+"
   Call un.SourceDelete
 !else
 
-  Delete "$INSTDIR\libgdk-win32-2.0-0.dll"
-  Delete "$INSTDIR\libgtk-win32-2.0-0.dll"
+  Delete /REBOOTOK "$INSTDIR\libgdk-win32-2.0-0.dll"
+  Delete /REBOOTOK "$INSTDIR\libgtk-win32-2.0-0.dll"
 
-  Delete "$INSTDIR\libgailutil-18.dll"
+  Delete /REBOOTOK "$INSTDIR\libgailutil-18.dll"
   Delete "$INSTDIR\gtk-query-immodules-2.0.exe"
 
   Delete "$INSTDIR\gtk-update-icon-cache.exe.manifest"
@@ -47,25 +47,25 @@ Section "-un.gtk+"
   RMDir "$INSTDIR\etc\gtk-2.0"
 
   Delete "$INSTDIR\lib\gtk-2.0\2.4.0\loaders\*.dll"
-  RMDir "$INSTDIR\lib\gtk-2.0\2.10.0\loaders"
+  RMDir  "$INSTDIR\lib\gtk-2.0\2.10.0\loaders"
   Delete "$INSTDIR\lib\gtk-2.0\2.10.0\loaders\*.dll"
-  RMDir "$INSTDIR\lib\gtk-2.0\2.10.0\loaders"
+  RMDir  "$INSTDIR\lib\gtk-2.0\2.10.0\loaders"
 
   Delete "$INSTDIR\lib\gtk-2.0\2.4.0\immodules\*.dll"
-  RMDir "$INSTDIR\lib\gtk-2.0\2.4.0\immodules"
+  RMDir  "$INSTDIR\lib\gtk-2.0\2.4.0\immodules"
   Delete "$INSTDIR\lib\gtk-2.0\2.10.0\immodules\*.dll"
-  RMDir "$INSTDIR\lib\gtk-2.0\2.10.0\immodules"
+  RMDir  "$INSTDIR\lib\gtk-2.0\2.10.0\immodules"
 
   Delete "$INSTDIR\lib\gtk-2.0\2.10.0\engines\*.dll"
-  RMDir "$INSTDIR\lib\gtk-2.0\2.10.0\engines"
+  RMDir  "$INSTDIR\lib\gtk-2.0\2.10.0\engines"
 
-  RMDir "$INSTDIR\lib\gtk-2.0\2.4.0"
-  RMDir "$INSTDIR\lib\gtk-2.0\2.10.0"
+  RMDir  "$INSTDIR\lib\gtk-2.0\2.4.0"
+  RMDir  "$INSTDIR\lib\gtk-2.0\2.10.0"
 
-  Delete "$INSTDIR\lib\gtk-2.0\modules\*.dll"
-  RMDir "$INSTDIR\lib\gtk-2.0\modules"
+  Delete /REBOOTOK "$INSTDIR\lib\gtk-2.0\modules\*.dll"
+  RMDir  /REBOOTOK "$INSTDIR\lib\gtk-2.0\modules"
 
-  RMDir "$INSTDIR\lib\gtk-2.0"
+  RMDir  /REBOOTOK "$INSTDIR\lib\gtk-2.0"
 
   Delete "$INSTDIR\lib\locale\de\LC_MESSAGES\gtk20.mo"
   Delete "$INSTDIR\lib\locale\de\LC_MESSAGES\gtk20-properties.mo"

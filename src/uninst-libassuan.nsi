@@ -31,7 +31,7 @@ Section "-un.libassuan"
   Push "${gpg4win_pkg_libassuan}"
   Call un.SourceDelete
 !else
-  Delete "$INSTDIR\libassuan-0.dll"
+  Delete /REBOOTOK "$INSTDIR\libassuan-0.dll"
   Delete "$INSTDIR\lib\libassuan.imp"
   Delete "$INSTDIR\include\assuan.h"
 

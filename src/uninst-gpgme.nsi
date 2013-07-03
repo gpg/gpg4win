@@ -30,9 +30,9 @@ Section "-un.gpgme"
   Push "${gpg4win_pkg_gpgme}"
   Call un.SourceDelete
 !else
-  Delete "$INSTDIR\libgpgme-11.dll"
-  Delete "$INSTDIR\libgpgme-glib-11.dll"
-  Delete "$INSTDIR\libgpgme-qt-11.dll"
+  Delete /REBOOTOK "$INSTDIR\libgpgme-11.dll"
+  Delete /REBOOTOK "$INSTDIR\libgpgme-glib-11.dll"
+  Delete /REBOOTOK "$INSTDIR\libgpgme-qt-11.dll"
   Delete "$INSTDIR\gpgme-w32spawn.exe"
   Delete "$INSTDIR\lib\libgpgme.imp"
   Delete "$INSTDIR\lib\libgpgme-glib.imp"

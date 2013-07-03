@@ -30,9 +30,9 @@ Section "-un.libiconv"
   Push "${gpg4win_pkg_libiconv}"
   Call un.SourceDelete
 !else
-  Delete "$INSTDIR\libiconv-2.dll"
-  Delete "$INSTDIR\iconv.dll"
-  Delete "$INSTDIR\pub\iconv.dll"
+  Delete /REBOOTOK "$INSTDIR\libiconv-2.dll"
+  Delete /REBOOTOK "$INSTDIR\iconv.dll"
+  Delete /REBOOTOK "$INSTDIR\pub\iconv.dll"
 !ifdef DEBUG
   Delete "$INSTDIR\charset.dll"
   Delete "$INSTDIR\iconv.exe"
