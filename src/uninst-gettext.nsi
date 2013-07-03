@@ -27,7 +27,7 @@
 ; Uninstaller section.
 Section "-un.gettext"
 !ifdef SOURCES
-  Push "${gpg4win_pkg_gettext_src}"
+  Push "${gpg4win_pkg_gettext}"
   Call un.SourceDelete
 !else
   Delete "$INSTDIR\libintl-8.dll"

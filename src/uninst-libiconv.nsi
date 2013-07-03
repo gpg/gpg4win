@@ -27,7 +27,7 @@
 ; Uninstaller section.
 Section "-un.libiconv"
 !ifdef SOURCES
-  Push "${gpg4win_pkg_libiconv_src}"
+  Push "${gpg4win_pkg_libiconv}"
   Call un.SourceDelete
 !else
   Delete "$INSTDIR\libiconv-2.dll"
