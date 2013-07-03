@@ -33,7 +33,7 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         patches/libxml2-2.7.8/01-cve-2012-5134 \
 	patches/gpgme/01-gpg2.patch \
 	patches/gnupg2/01-version.patch.in \
-	patches/gnupg2/02-allow-mark-trusted.patch \
+	patches/gnupg2-2.0.20/02-allow-mark-trusted.patch \
 	patches/dirmngr-1.1.0/01-mmap.patch \
         patches/gpgol-1.1.3/01-w64-ming64.patch  \
         patches/gpgol-1.1.3/02-off_t.postcfg-build \

@@ -100,5 +100,3 @@ diff --git a/po/de.po b/po/de.po
 
  #: agent/gpg-agent.c:178
  msgid "allow presetting passphrase"
-
-
