@@ -33,6 +33,7 @@ Section "-gettext" SEC_gettext
   File ${gpg4win_pkg_gettext}
 !else
   File ${prefix}/bin/libintl-8.dll
+  File /oname=intl.dll ${prefix}/bin/libintl-8.dll
 
 !ifdef DEBUG
   # We install a couple of binaries that may be useful for testing.
