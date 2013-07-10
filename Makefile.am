@@ -47,7 +47,8 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         patches/claws-mail-3.9.1/51-version-file.patch \
         patches/claws-mail-3.9.1/80-src-makefile.postcfg-build \
         patches/gtkhtml2_viewer-0.34/80-src-makefile.postcfg-build \
-	patches/gnutls-2.12.21/01-openssl-wincrypt.patch
+	patches/gnutls-2.12.21/01-openssl-wincrypt.patch \
+        patches/libgpg-error-1.12/01-fix-get-string.patch
 
 copy-news:
 	cp NEWS doc/website/NEWS.last
