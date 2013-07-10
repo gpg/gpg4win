@@ -409,9 +409,9 @@ chk  88fc1d82400018bfb1b5ab2b842acbc1e1259be3
 file dirmngr/dirmngr-1.1.1.tar.bz2
 chk  e708d4aa5ce852f4de3f4b58f4e4f221f5e5c690
 
-# checked: 2013-04-26 wk
-file pinentry/pinentry-0.8.3.tar.bz2
-chk  fc0efe5d375568f90ddbb23ee68e173411a49d4a
+# checked:
+file pinentry/unstable/pinentry-0.8.4-beta4.tar.bz2
+chk  ada79764aef3a28bc56e270ce5616440c12c8b49
 
 # checked: 2012-03-28 wk
 file scute/scute-1.4.0.tar.bz2
