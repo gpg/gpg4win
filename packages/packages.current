@@ -344,10 +344,9 @@ chk  f5230890dc0be42fb5c58fbf793da253155de106
 #
 server ftp://ftp.g10code.com/g10code/gpgol
 
-# checked: 2012-03-28 wk - Updated
-file gpgol-1.1.3.tar.bz2
-chk  dfeab6c99dff97ee8bedc6d428e220c11b565e9f
-
+# checked:
+file unstable/gpgol-1.1.4-git3408e00.tar.bz2
+chk  932b35ac93ba7c39bd0ba803d7bceca14e209636
 
 #
 # GpgEX
@@ -410,8 +409,8 @@ file dirmngr/dirmngr-1.1.1.tar.bz2
 chk  e708d4aa5ce852f4de3f4b58f4e4f221f5e5c690
 
 # checked:
-file pinentry/unstable/pinentry-0.8.4-beta4.tar.bz2
-chk  ada79764aef3a28bc56e270ce5616440c12c8b49
+file pinentry/unstable/pinentry-0.8.4-beta8.tar.bz2
+chk  de4ba5ef9a1ced4e4f8543feac553d4cf68dea00
 
 # checked: 2012-03-28 wk
 file scute/scute-1.4.0.tar.bz2
