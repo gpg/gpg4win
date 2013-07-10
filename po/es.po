@@ -189,28 +189,6 @@ msgstr ""
 "\n"
 "¿Desea continuar con la instalación?"
 
-msgctxt "T_SMIMEHeaderText"
-msgid "Define trustable root certificates"
-msgstr ""
-
-msgctxt "T_SMIMEHeaderSubtext"
-msgid "S/MIME configuration"
-msgstr ""
-
-msgctxt "T_SMIMETextTop"
-msgid "Gpg4win needs a list of root certificates which you trust."
-msgstr ""
-
-msgctxt "T_SMIMETextBottom"
-msgid ""
-"Therewith you can use S/MIME, the configuration is stringently required. "
-"Skip this configuration only if you don't want to use S/MIME."
-msgstr ""
-
-msgctxt "T_SMIMECheckboxText"
-msgid "Root certificate defined or skip configuration"
-msgstr ""
-
 msgctxt "T_FoundOldSeeManual"
 msgid ""
 "Please see the Gpg4win user manual to learn how to migrate existing keys "

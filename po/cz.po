@@ -191,30 +191,6 @@ msgstr ""
 "\n"
 "Chcete pokraèovat s instalací Gpg4win?"
 
-msgctxt "T_SMIMEHeaderText"
-msgid "Define trustable root certificates"
-msgstr "Vyberte dùveryhodné koøenové certifikáty"
-
-msgctxt "T_SMIMEHeaderSubtext"
-msgid "S/MIME configuration"
-msgstr "S/MIME konfigurace"
-
-msgctxt "T_SMIMETextTop"
-msgid "Gpg4win needs a list of root certificates which you trust."
-msgstr "Gpg4win potøebuje seznam koøenových certifikátù, kterým dùveøujete."
-
-msgctxt "T_SMIMETextBottom"
-msgid ""
-"Therewith you can use S/MIME, the configuration is stringently required. "
-"Skip this configuration only if you don't want to use S/MIME."
-msgstr ""
-"S ním mùžete použít S/MIME, konfigurace je vyžadována. Vynechte tuto "
-"konfiguraci pouze tehdy, pokud nechcete používat S / MIME."
-
-msgctxt "T_SMIMECheckboxText"
-msgid "Root certificate defined or skip configuration"
-msgstr "Koøenový certifikát definován nebo pøeskoète konfiguraci"
-
 msgctxt "T_FoundOldSeeManual"
 msgid ""
 "Please see the Gpg4win user manual to learn how to migrate existing keys "
@@ -409,6 +385,30 @@ msgstr "Ukázat Gpg4win Compendium (pdf, nìmecky)"
 msgctxt "DESC_Menu_compendium_en_pdf"
 msgid "Show the Gpg4win Compendium (pdf, English)"
 msgstr "Ukázat Gpg4win Compendium (pdf, anglicky)"
+
+#~ msgctxt "T_SMIMEHeaderText"
+#~ msgid "Define trustable root certificates"
+#~ msgstr "Vyberte dùveryhodné koøenové certifikáty"
+
+#~ msgctxt "T_SMIMEHeaderSubtext"
+#~ msgid "S/MIME configuration"
+#~ msgstr "S/MIME konfigurace"
+
+#~ msgctxt "T_SMIMETextTop"
+#~ msgid "Gpg4win needs a list of root certificates which you trust."
+#~ msgstr "Gpg4win potøebuje seznam koøenových certifikátù, kterým dùveøujete."
+
+#~ msgctxt "T_SMIMETextBottom"
+#~ msgid ""
+#~ "Therewith you can use S/MIME, the configuration is stringently required. "
+#~ "Skip this configuration only if you don't want to use S/MIME."
+#~ msgstr ""
+#~ "S ním mùžete použít S/MIME, konfigurace je vyžadována. Vynechte tuto "
+#~ "konfiguraci pouze tehdy, pokud nechcete používat S / MIME."
+
+#~ msgctxt "T_SMIMECheckboxText"
+#~ msgid "Root certificate defined or skip configuration"
+#~ msgstr "Koøenový certifikát definován nebo pøeskoète konfiguraci"
 
 #~ msgctxt "DESC_Menu_compendium_de_html"
 #~ msgid "Show the Gpg4win Compendium (html, German)"
