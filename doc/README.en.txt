@@ -40,9 +40,6 @@ Gpg4win supports these platforms:
 
   * MS Outlook: 2003, 2007
 
-Note: Currently, there is no 64-bit support for GpgEX
-      (see section 3, "Using GpgEX with Windows x64", for details)
-
 
 2. Changes
 ==========
@@ -59,16 +56,16 @@ New in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
   * Updated to Kleopatra 2.1.1 (from KDE 4.10.3).
   * Fixed bugs in none latin environments.
   * Several minor and medium improvements of stability.
- 
+
 - Qt:
-  * Updated to 4.8.4 (from Qt 4.4.0) with a lot of 
+  * Updated to 4.8.4 (from Qt 4.4.0) with a lot of
     improvements in Kleopatra UI.
   * Improved support for Windows7 and Windows8.
 
 - GnuPG-Backend:
   * Updated to gnupg 2.0.20.
   * Updated most included packages to recent versions (e.g. gpgme,
-    dirmngr, libassuan, libgcrypt, libgpg-error, libksba, pinentry, 
+    dirmngr, libassuan, libgcrypt, libgpg-error, libksba, pinentry,
     libpng and much more - see 'packages.current' file in Gpg4win git
     repository).
   * Fixed a long standing bug in GPGME which led to spurious Kleopatra
@@ -131,9 +128,6 @@ New in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
     [see https://bugs.g10code.com/gnupg/issue1102]
     (Please note: Using SMTP with GpgOL and Exchange seems to be work.)
 
-  * Outlook2007 crashes after opening attachments of an encrypted message
-    [see https://bugs.g10code.com/gnupg/issue1110]
-
   * Encrypted E-Mails occuring un-encrypted on the email server: It
     can happen that parts of encrypted emails are copied to your email
     server (IMAP or MAPI) in un-encrypted/decrypted form when creating
@@ -142,28 +136,6 @@ New in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
     not affected.  Switching off the Outlook preview will lower the
     probability of this to happen, but not eliminate the issue.
     A solution is being worked on.
-
-- Using GpgEX with 64 bit versions Windows:
-
-   * In some cases sign/encrypt or decrypt/verify via GpgEX doesn't work
-     correctly (Kleopatra freezed). Then you should kill Kleopatra via
-     task manager and run the file crypto operation directly in Kleopatra
-     (see file menu).
-
-   * Problems with Windows x64:
-     GpgEX is a (32bit) plugin for the (32bit) Windows
-     Explorer and it does _not_ run in a 64bit Explorer
-     (= default for a Windows 64bit system).
-
-     Workaround: Run the 32bit Explorer to use GpgEX.
-     Click "Start" -> "Run", type the following in the box, and then
-     click OK:
-         C:\windows\syswow64\explorer.exe /separate
-     Note: Adjust the path to your x64-based version of Windows if
-     necessary.
-     This 'separate' command seems to be currently broken in Windows7/64bit.
-     Alternatively you can use the file crypto operations of GpgEX
-     directly via the file menu of Kleopatra.
 
 
 4. Installation

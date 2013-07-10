@@ -43,10 +43,6 @@ Gpg4win unterstützt folgende Plattformen:
 
   * MS Outlook: 2003, 2007
 
-Wichtig: Das Explorer-Plugin 'GpgEX' bietet aktuell keine
-         Unterstützung für 64-bit Explorer!
-         (Details in Abschnitt 3, Punkt "Probleme unter Windows x64")
-
 
 2. Änderungen
 =============
@@ -63,7 +59,7 @@ Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
   * aktualisiert auf Kleopatra 2.1.1 (aus KDE 4.10.3)
   * Defekte in None-Latin-Umgebungen behoben
   * zahlreiche Stabilitätsverbesserungen
- 
+
 - Qt:
   * aktualisiert von Qt 4.4.0 auf 4.8.4
   * zahlreiche UI-Verbesserungen in Kleopatra
@@ -72,7 +68,7 @@ Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 - GnuPG-Backend:
   * aktualisiert auf gnupg 2.0.20
   * diverse Bibliotheken aktualisiert (u.a. gpgme, dirmngr,
-    libassuan, libgcrypt, libgpg-error, libksba, pinentry, 
+    libassuan, libgcrypt, libgpg-error, libksba, pinentry,
     libpng u.v.m - siehe Datei 'packages.current' im Gpg4win-Repository)
   * GPGPME bug behoben, der zu Hänger von Kleopatra führte
 
@@ -138,10 +134,6 @@ Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
     (Hinweis: Beim verwenden von SMTP sollte das Senden
      mit GpgOL funktionieren.)
 
-  * Outlook2007 stürzt beim Öffnen von Anhängen einer
-    verschlüsselten Nachricht ab
-    [siehe https://bugs.g10code.com/gnupg/issue1110]
-
   * Verschlüsselte E-Mails unverschlüsselt auf E-Mail-Server:
     Es kann vorkommen, dass Teile von verschlüsselten E-Mails
     in entschlüsselter/unverschlüsselter Form auf dem E-Mail-Server
@@ -152,30 +144,6 @@ Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
     verringert sich die Wahrscheinlichkeit dafür deutlich,
     aber es kann trotzdem noch passieren.
     Eine Lösung hierfür ist in Arbeit.
-
-- Verwendung von GpgEX:
-
-   * Es kann teilweise vorkommen, dass beim Versuch Dateien mit GpgEX
-     aus dem Explorer zu signieren/verschlüsseln bzw. zu entschlüsseln/prüfen,
-     Kleopatra und das aktive Explorerfenster nicht mehr reagiert.
-     Sie sollten Kleopatra dann über den Task-Manager beendet und die
-     Datei-Krypto-Opteration nicht über GpgEX sondern direkt über
-     Kleopatra (per Datei-Menü) ausführen.
-
-   * Probleme unter Windows x64:
-     GpgEX ist eine (32bit) Erweiterung für den (32bit) Windows
-     Explorer und läuft _nicht_ in einem 64bit Explorer
-     (= voreingestellter Explorer in einem Windows 64bit System).
-
-     Abhilfe: Starten Sie den 32bit Explorer, um GpgEX nutzen zu können.
-     Klicken Sie auf "Start" -> "Ausführen" und geben Sie folgenden
-     Befehl ein:
-        C:\windows\syswow64\explorer.exe /separate
-     Beachten Sie, dass Sie ggf. den Pfad zu Ihrer x64-basierten
-     Version von Windows anpassen müssen.
-     Dieser 'separate'-Aufruf ist aktuell in Windows7/64bit defekt.
-     Alternativ können Sie die Datei-Krypto-Operationen von GpgEX
-     auch direkt über das Datei-Menü von Kleopatra erreichen.
 
 
 4. Installation
