@@ -147,7 +147,7 @@ Bitte die Sprache des Installations-Vorgangs angeben."
 !define MUI_LICENSEPAGE_BUTTON "$(^NextBtn)"
 !define MUI_PAGE_HEADER_SUBTEXT "$(T_GPLHeader)"
 !define MUI_LICENSEPAGE_TEXT_BOTTOM "$(T_GPLShort)"
-!insertmacro MUI_PAGE_LICENSE "${TOP_SRCDIR}/COPYING"
+!insertmacro MUI_PAGE_LICENSE "license.blurb"
 
 !define MUI_PAGE_CUSTOMFUNCTION_SHOW PrintNonAdminWarning
 !insertmacro MUI_PAGE_COMPONENTS

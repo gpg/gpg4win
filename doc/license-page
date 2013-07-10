@@ -1,0 +1,10 @@
+Gpg4win consist of several independent developed packages, available under
+different license conditions.  Most of these packages however are available
+under the GNU General Public License (GNU GPL).  Common to all is that they
+are free to use without restrictions, may be modified and that modifications
+may be distributed.  If the source files (i.e. gpg4win-src-x.y.z.exe) are
+distributed along with the binaries and the use of the GNU GPL has been
+pointed out, distribution is in in all cases possible.
+
+What follows are the terms of the GNU GPL; for a list of individual
+copyright and license notices please see the installed README file.

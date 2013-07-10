@@ -96,7 +96,7 @@ foosum_exe = sha1sum.exe md5sum.exe sha256sum.exe
 # Need to clean the dll because we bypassed automake.
 CLEANFILES = g4wihelp.dll versioninfo.txt $(README_files) $(HOWTO_files) \
              installer-options.ini NEWS.tmp COMPONENTS-list.tmp \
-	     versioninfo.tmp \
+	     license.blurb cdversioninfo.tmp \
 	     gpgwrap.exe gpgwrap-2.exe kleowrap.exe $(foosum_exe)
 
 # Supported source packages.
@@ -589,7 +589,7 @@ gpg4win-$(VERSION).exe: gpg4win.nsi $(common_nsi) stamps/stamp-final \
                         g4wihelp.dll gpgwrap.exe gpgwrap-2.exe kleowrap.exe \
 		        $(foosum_exe) \
 			$(README_files) $(HOWTO_files) \
-                        installer-options.ini versioninfo.txt
+	                license.blurb installer-options.ini versioninfo.txt
 	$(MAKENSIS) -V3 -DBUILD_DIR=`pwd` -DTOP_SRCDIR=$(top_srcdir) \
            -DSRCDIR=$(srcdir) $(EXTRA_MAKENSIS_FLAGS) $(srcdir)/gpg4win.nsi
 
@@ -597,7 +597,7 @@ gpg4win-light-$(VERSION).exe: gpg4win.nsi $(common_nsi) stamps/stamp-final \
                         g4wihelp.dll gpgwrap.exe gpgwrap-2.exe kleowrap.exe \
 		        $(foosum_exe) \
 			$(README_files) $(HOWTO_files) \
-			installer-options.ini versioninfo.txt
+			license.blurb installer-options.ini versioninfo.txt
 	$(MAKENSIS) -V3 -DBUILD_DIR=`pwd` -DTOP_SRCDIR=$(top_srcdir) \
            -DSRCDIR=$(srcdir) $(EXTRA_MAKENSIS_FLAGS) \
            -DGPG4WIN_LIGHT=1 $(srcdir)/gpg4win.nsi
@@ -606,7 +606,7 @@ gpg4win-vanilla-$(VERSION).exe: gpg4win.nsi $(common_nsi) stamps/stamp-final \
                         g4wihelp.dll gpgwrap.exe gpgwrap-2.exe \
 		        $(foosum_exe) \
 			$(README_files) $(HOWTO_files) \
-		        installer-options.ini versioninfo.txt
+		        license.blurb installer-options.ini versioninfo.txt
 	$(MAKENSIS) -V3 -DBUILD_DIR=`pwd` -DTOP_SRCDIR=$(top_srcdir) \
            -DSRCDIR=$(srcdir) $(EXTRA_MAKENSIS_FLAGS) \
            -DGPG4WIN_VANILLA=1 $(srcdir)/gpg4win.nsi
@@ -651,9 +651,13 @@ stamps/stamp-dist-self: versioninfo.txt
 	touch stamps/stamp-dist-self
 
 gpg4win-src-$(VERSION).exe: gpg4win-src.nsi $(common_nsi) stamps/stamp-final \
-                            stamps/stamp-dist-self installer-options.ini
+                            stamps/stamp-dist-self installer-options.ini \
+		            license.blurb
 	$(MAKENSIS) -V3 -DBUILD_DIR=`pwd` -DTOP_SRCDIR=$(top_srcdir) \
 	  -DSRCDIR=$(srcdir) $(EXTRA_MAKENSIS_FLAGS) $(srcdir)/gpg4win-src.nsi
+
+license.blurb: $(top_srcdir)/doc/license-page $(top_srcdir)/doc/GPLv3
+	cat $(top_srcdir)/doc/license-page $(top_srcdir)/doc/GPLv3 >$@
 
 g4wihelp.dll: g4wihelp.c exdll.h
 	$(CC) -I. -shared -O2 -o g4wihelp.dll $(srcdir)/g4wihelp.c \

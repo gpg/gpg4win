@@ -1,14 +1,13 @@
 Here is a list with collected copyright notices.  For details see the
 description of each individual package.  This is not meant as an
 exhaustive list of copyright notices.  Notices from several packages
-are even not listed.  The most restrictive requirements are probably
-those of the GNU General Public License version 3 (GPLv3+); thus
-complying to those terms and conditions should be sufficient.  If in
-doubt check the individual packages.  [Compiled by wk 2006-02-15, last
-updated 2013-05-13]
+are even not listed.  The most restrictive requirements are those of
+the GNU General Public License version 3 (GPLv3+); thus complying to
+those terms and conditions should be sufficient.  If in doubt check
+the individual packages.
 
 
-Gpg4win is
+Gpg4win (the installer) is
 
   Copyright (C) 2005, 2006, 2007, 2008, 2009, 2010, 2013 g10 Code GmbH
 
@@ -414,3 +413,6 @@ Scute
   may extend this exception to your version of the software, but you
   are not obligated to do so.  If you do not wish to do so, delete this
   exception statement from your version and from all source files.
+
+
+[Compiled by wk 2006-02-15, last updated 2013-05-13]
