@@ -13,6 +13,9 @@ Noteworthy changes in version 2.2.0 (unreleased)
 
 (en) Pinentry now allows you to paste in the passphrase
 
+(en) Kleopatra no longer crashes when started as User on Windows Server
+     Systems.
+
 ~~~~~~~~~~~~~~~
 GnuPG:          2.0.21-beta20
 Kleopatra:      2.1.1
