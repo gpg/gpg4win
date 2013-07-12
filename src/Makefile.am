@@ -247,7 +247,8 @@ gpg4win_pkg_gnupg2_configure = \
 # --with-libintl-prefix, but these don't work with the cheesy
 # non-"libfoo.la" versions of iconv and gettext that we are using.
 if BUILD_FULL_INSTALLER
-pinentry_enable_disable= --disable-pinentry-qt --enable-pinentry-qt4
+pinentry_enable_disable= --disable-pinentry-qt --enable-pinentry-qt4 \
+  --enable-pinentry-qt4-clipboard
 else
 pinentry_enable_disable= --disable-pinentry-qt --disable-pinentry-qt4
 endif

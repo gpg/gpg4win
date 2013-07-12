@@ -11,6 +11,8 @@ Noteworthy changes in version 2.2.0 (unreleased)
 (en) Gpg-agent may now be used as Pageant replacement with additional
      smartcard support.
 
+(en) Pinentry now allows you to paste in the passphrase
+
 ~~~~~~~~~~~~~~~
 GnuPG:          2.0.21-beta20
 Kleopatra:      2.1.1
