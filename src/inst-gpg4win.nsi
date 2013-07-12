@@ -41,13 +41,16 @@ Section "-gpg4win" SEC_gpg4win
   File "${BUILD_DIR}/versioninfo.txt"
 
   # Write a version file.
+  DetailPrint "Opening VERSION file for writing"
   FileOpen $0 "$INSTDIR\VERSION" w
   FileWrite $0 "${PACKAGE}$\r$\n"
   FileWrite $0 "${VERSION}$\r$\n"
   FileClose $0
+  DetailPrint "VERSION closed"
 
   # Register the install directory for the GnuPG suite.
   WriteRegStr HKLM "Software\GNU\GnuPG" "Install Directory" $INSTDIR
+  DetailPrint "Saved install directory in the registry"
 
   # Also write it to be recalled on new installation.  Currently
   # disabled.
@@ -58,6 +61,7 @@ Section "-gpg4win" SEC_gpg4win
   # because he might have have selected a different language than his
   # default.  We delete the global Lang of the installation.
   DeleteRegValue HKLM "Software\GNU\GnuPG" "Lang"
+  DetailPrint "Deleted obsolute Lang entry"
 
   # This old key is required for GPGee.  Please do not use in new
   # applications.
@@ -68,10 +72,12 @@ Section "-gpg4win" SEC_gpg4win
   #       the user under HKCU.
   #WriteRegStr HKLM "Software\GNU\GnuPG" "gpgProgram" "$INSTDIR\gpg.exe"
   DeleteRegValue HKLM "Software\GNU\GnuPG" "gpgProgram"
+  DetailPrint "Deleted obsolute gpgProgram value"
 
   # Add the public directory to the PATH
   Push "$INSTDIR\pub"
   Call AddToPath
+  DetailPrint "Added pub directory to PATH"
 
   # Install gpg4win included tools
   SetOutPath "$INSTDIR"
