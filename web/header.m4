@@ -22,6 +22,12 @@
    </div>
    <div class="h_text">
    <p><span class="heading">News</span></p>
+   <small>2013-07-15</small><br>
+   <span class="serif_word"><img src="img/bulletin.png" alt="" />
+     m4_ifelse(LANG_DE, `1', `
+     <a href="#">Gpg4win 2.2.0-beta veröffentlicht</a></span>', `
+     <a href="#">Gpg4win 2.2.0-beta released</a></span>')
+   <p></p>
    <small>2013-05-31</small><br>
    <span class="serif_word"><img src="img/bulletin.png" alt="" />
      m4_ifelse(LANG_DE, `1', `

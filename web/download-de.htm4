@@ -17,24 +17,36 @@ PAGE_START
 
 <div id="main">
 
-<!--
-<h2>Gpg4win 2.1.1-beta197 (2013-05-16)</h2>
 
-<p>Aktuelle Vorabversion von Gpg4win 2.1.1 mit wichtigen Updates fast aller Gpg4win-Komponenten; in verschiedenen Varianten:</p>
+<h2>Gpg4win 2.2.0-beta (Veröffentlicht: 2013-07-15)</h2>
+
+<p>Aktuelle Vorabversion von Gpg4win 2.2.0 mit Verbesserungen in
+GgpEx, GpgOL, GnuPG, Pinentry und Kleopatra; in verschiedenen
+Varianten verfügbar:</p>
 <ul>
-<li><a href="http://files.gpg4win.org/Beta/gpg4win-2.1.1-beta197.exe">Full-Installer</a> (34 MByte)
-| <a href="http://files.gpg4win.org/Beta/gpg4win-2.1.1-beta197.exe.sig">OpenPGP Signatur</a>
+<li><a
+href="http://files.gpg4win.org/Beta/gpg4win-2.2.0-beta31.exe">Full-Installer</a>
+(32 MByte)
+| <a href="http://files.gpg4win.org/Beta/gpg4win-2.2.0-beta31.exe.sig">OpenPGP Signatur</a>
 </li>
-<li><a href="http://files.gpg4win.org/Beta/gpg4win-light-2.1.1-beta197.exe">Light-Installer</a> (15 MByte, ohne Kleopatra/Qt und Gpg4win-Kompendium)
-| <a href="http://files.gpg4win.org/Beta/gpg4win-light-2.1.1-beta197.exe.sig">OpenPGP Signatur</a>
+<li><a
+href="http://files.gpg4win.org/Beta/gpg4win-light-2.2.0-beta31.exe">Light-Installer</a> 
+(13 MByte, ohne Kleopatra und Gpg4win-Kompendium)
+| <a href="http://files.gpg4win.org/Beta/gpg4win-light-2.2.0-beta31.exe.sig">OpenPGP Signatur</a>
 </li>
-<li><a href="http://files.gpg4win.org/Beta/gpg4win-src-2.1.1-beta197.exe">Quelltext-Installer</a> (309 MByte)
-| <a href="http://files.gpg4win.org/Beta/gpg4win-src-2.1.1-beta197.exe.sig">OpenPGP Signatur</a>
+<li><a href="http://files.gpg4win.org/Beta/gpg4win-vanilla-2.2.0-beta31.exe">Vanilla-Installer</a> 
+(4 MByte, nur GnuPG)
+| <a href="http://files.gpg4win.org/Beta/gpg4win-vanilla-2.2.0-beta31.exe.sig">OpenPGP Signatur</a>
 </li>
-<li><a href="http://files.gpg4win.org/Beta/README-2.1.1-beta197.de.txt">README</a> </li>
-<li>Alle Versionen und OpenPGP-Signaturen unter <a href="http://files.gpg4win.org/">files.gpg4win.org</a>.</li>
+<li><a
+href="http://files.gpg4win.org/Beta/gpg4win-src-2.2.0-beta31.exe">Quelltext-Installer</a> (319 MByte)
+| <a href="http://files.gpg4win.org/Beta/gpg4win-src-2.2.0-beta31.exe.sig">OpenPGP Signatur</a>
+</li>
+<li><a href="http://files.gpg4win.org/Beta/README.2.2.0-beta31.de.txt">README</a> </li>
+<li>Alle Beta-Versionen und OpenPGP-Signaturen unter <a
+href="http://files.gpg4win.org/Beta/">files.gpg4win.org/Beta/</a>.</li>
 </ul>
--->
+
 
 <h2>Gpg4win VERSION (Veröffentlicht: DL_DATE)</h2>
 
@@ -184,20 +196,22 @@ von <a href="http://ftp.heanet.ie/about/">HEAnet</a>)
 
 
 <div id="sidebar">
-<!--
-    <h3>Gpg4win 2.1.1-beta197 enthält:</h3>
+
+    <h3>Gpg4win 2.2.0-beta enthält:</h3>
     <pre>
-<a href="http://www.gnupg.de/index.de.html">GnuPG</a> 2.0.20
-<a href="http://www.kde.org/applications/utilities/kleopatra/">Kleopatra</a> 2.1.1 (2013-05-16)
+<a href="http://www.gnupg.de/index.de.html">GnuPG</a> 2.0.21-beta20
+<a
+href="http://www.kde.org/applications/utilities/kleopatra/">Kleopatra</a> 2.1.1 (2013-05-28)
 <a href="http://www.gnupg.de/related_software/gpa/index.de.html">GPA</a> 0.9.4
-<a href="http://www.g10code.de/p-gpgol.html">GpgOL</a> 1.1.3
-<a href="http://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpgex.git;a=summary">GpgEX</a> 0.9.7
+<a href="http://www.g10code.de/p-gpgol.html">GpgOL</a> 1.1.4-git3408e00
+<a
+href="http://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpgex.git;a=summary">GpgEX</a> 1.0.0-beta24
 <a href="http://www.claws-mail.org/">Claws Mail</a> 3.9.1
 <a href="doc/de/gpg4win-compendium.html">Kompendium (de)</a> 3.0.0
 <a href="doc/en/gpg4win-compendium.html">Compendium (en)</a> 3.0.0-beta1
     </pre>
     <p></p>
--->
+
     <h3>Gpg4win VERSION enthält:</h3>
     <pre>
     SOFTWAREOVERVIEW
