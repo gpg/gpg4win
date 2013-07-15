@@ -41,7 +41,7 @@ Gpg4win unterstützt folgende Plattformen:
 
   * Betriebssystem: Windows XP (32/64), Vista (32/64), 7 (32/64)
 
-  * MS Outlook: 2003, 2007
+  * MS Outlook: 2003, 2007, 2010
 
 
 2. Änderungen
@@ -54,33 +54,36 @@ Die integrierten Gpg4win-Komponenten in Version !VERSION! sind:
 
 Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 -------------------------------------------------
+- GpgEx
+  * Jetzt endlich mit Unterstützung für Windows 64 bit!
 
+- GpgOL:
+  * Rudimentäre Outlook 2010 Unterstützung (Entwicklungsversion). 
+    Folgende Krypto-Operationen sind bereits über das neue
+    GpgOL-Ribbon bzw. über das Kontextmenü von Outlook 2010 möglich
+    (kein MIME-Parsing):
+     - Verschlüsseln/Entschlüsseln des Mail-Bodys
+     - Speichern und Entschlüsseln von Anhängen
+    Folgende Funktionen sind noch geplant:
+    - Signieren/Prüfen
+    - Dateien anhängen und verschlüsseln (Anhänge müssen derzeit noch 
+      separat über z.B. Kleopatra verschlüsselt werden)
+  * GpgOL für Outlook 2003 und 2007 sind von diesen Änderungen unberührt.
+  
 - Kleopatra:
-  * aktualisiert auf Kleopatra 2.1.1 (aus KDE 4.10.3)
-  * Defekte in None-Latin-Umgebungen behoben
-  * zahlreiche Stabilitätsverbesserungen
-
-- Qt:
-  * aktualisiert von Qt 4.4.0 auf 4.8.4
-  * zahlreiche UI-Verbesserungen in Kleopatra
-  * verbesserte Unterstützung für Windows7 und 8
+  * Crash beim Start von Kleopatra durch normalen Nutzer auf Terminalserver 
+    Systemen (Windows Server) behoben.
+ 
+- Pinentry:
+  * Einfügen von Passphrasen aus der Zwischenablage ist nun erlaubt.
 
 - GnuPG-Backend:
-  * aktualisiert auf gnupg 2.0.20
-  * diverse Bibliotheken aktualisiert (u.a. gpgme, dirmngr,
-    libassuan, libgcrypt, libgpg-error, libksba, pinentry,
-    libpng u.v.m - siehe Datei 'packages.current' im Gpg4win-Repository)
-  * GPGPME bug behoben, der zu Hänger von Kleopatra führte
-
-- GPA:
-  * aktualisiert auf GPA 0.9.4
+  * Gpg-agent kann nun als Pageant (PuTTY authentication agent) Ersatz
+    genutzt werden - mit zusätzlicher SmartCard-Unterstützung.
 
 - Installer:
-  * migriert in die i686-w64-mingw32 Toolchain
-
-- Claws-Mail:
-  * aktualisiert auf Claws Mail 3.9.1
-    Siehe http://www.claws-mail.org
+  * Lizenzseite aktualisiert
+  * SMIME-HOWTO-Seite entfernt (noch zu finden im Menü Programme > Gpg4win)
 
 
 3. Bekannte Probleme (und Abhilfe)

@@ -38,7 +38,7 @@ Gpg4win supports these platforms:
 
   * Operating System: Windows XP (32/64), Vista (32/64), 7 (32/64)
 
-  * MS Outlook: 2003, 2007
+  * MS Outlook: 2003, 2007, 2010
 
 
 2. Changes
@@ -51,35 +51,30 @@ Included Gpg4win components in Version !VERSION! are:
 
 New in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 -------------------------------------------------
+- GpgEx:
+  * Now with Windows 64 bit support!
+
+- GpgOL:
+  * starts supporting Outlook 2010. There are some Context Menu / UI
+    actions available in Outlook 2010. Due to the extensive compatiblity break
+    with earlier extensions the support for Outlook 2010 is still minimal and
+    does not include any MIME parsing.
 
 - Kleopatra:
-  * Updated to Kleopatra 2.1.1 (from KDE 4.10.3).
-  * Fixed bugs in none latin environments.
-  * Several minor and medium improvements of stability.
+  * Kleopatra no longer crashes when started as User on Windows Server
+    Systems.
 
-- Qt:
-  * Updated to 4.8.4 (from Qt 4.4.0) with a lot of
-    improvements in Kleopatra UI.
-  * Improved support for Windows7 and Windows8.
+- Pinentry:
+  * Pinentry now allows you to paste in the passphrase.
 
 - GnuPG-Backend:
-  * Updated to gnupg 2.0.20.
-  * Updated most included packages to recent versions (e.g. gpgme,
-    dirmngr, libassuan, libgcrypt, libgpg-error, libksba, pinentry,
-    libpng and much more - see 'packages.current' file in Gpg4win git
-    repository).
-  * Fixed a long standing bug in GPGME which led to spurious Kleopatra
-    hangs.
-
-- GPA:
-  * Updated to GPA 0.9.4.
+  * Gpg-agent may now be used as Pageant (PuTTY authentication agent) 
+    replacement with additional smartcard support.
 
 - Installer:
-  * Migrated the installer to the i686-w64-mingw32 toolchain.
-  * Improved of the build system.
-
-- Claws-Mail:
-  * Updated Claws Mail to 3.9.1 - see http://www.claws-mail.org .
+  * Updated License page
+  * Removed S/MIME HOWTO page (available via program menu of 
+    Gpg4win)
 
 
 3. Known Bugs (and Workarounds)
