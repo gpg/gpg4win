@@ -50,7 +50,7 @@ of Gpg4win VERSION here:</p>
 
 <ul>
     <li><a href="http://files.gpg4win.org/gpg4win-VERSION.exe.sig"
-        >OpenPGP signatur</a> (for gpg4win-VERSION.exe)
+        >OpenPGP signature</a> (for gpg4win-VERSION.exe)
     <li>SHA1 checksum:<br>
         <code>SHA1_EXE  gpg4win-VERSION.exe </code></li>
     <li><a href="change-history.html">Change History</a></li>
