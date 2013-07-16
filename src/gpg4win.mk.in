@@ -91,7 +91,7 @@ define SETVARS_EX
 	pkgsdir="$(bdir)/$$$${pkg_version}-ex";                             \
 	pkgbdir="$(bdir)/$$$${pkg_version}-ex-build";                       \
 	pkgpdir="$(pdir)/$$$${pkg_version}-ex";                             \
-	pkgpbdir="$(pdir)/$(1)-ex";                                         \
+	pkgpbdir="$(pdir)/$(1)";                                            \
 	pkgidir="$(ex_ipdir)/$$$${pkg_version}";                            \
 	pkgidir_dev="$(ex_ipdir)/$$$${pkg_version_dev}";                    \
 	pkgcfg="$(call GETVAR,gpg4win_pkg_$(1)_ex_configure)";              \
