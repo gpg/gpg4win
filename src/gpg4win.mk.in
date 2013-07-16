@@ -88,9 +88,9 @@ endef
 define SETVARS_EX
 	pkg="$(call GETVAR,gpg4win_pkg_$(1))";                              \
 	pkg_version="$(1)-$(call GETVAR,gpg4win_pkg_$(1)_version)";         \
-	pkgsdir="$(bdir)/$$$${pkg_version}-ex";                             \
+	pkgsdir="$(bdir)/$$$${pkg_version}";                                \
 	pkgbdir="$(bdir)/$$$${pkg_version}-ex-build";                       \
-	pkgpdir="$(pdir)/$$$${pkg_version}-ex";                             \
+	pkgpdir="$(pdir)/$$$${pkg_version}";                                \
 	pkgpbdir="$(pdir)/$(1)";                                            \
 	pkgidir="$(ex_ipdir)/$$$${pkg_version}";                            \
 	pkgidir_dev="$(ex_ipdir)/$$$${pkg_version_dev}";                    \
@@ -157,18 +157,10 @@ define EXPKG_template_
 
 pkg_files += $(call GETVAR,gpg4win_pkg_$(1))
 
-stamps/stamp-$(1)-ex-00-unpack: stamps/stamp-directories $(call GETDEPS_EX,$(1))
-	(cd $(bdir);					\
-	 $(call SETVARS_EX,$(1));				\
-	 $(call DEFLATE_macro,$$$${pkg}))
+stamps/stamp-$(1)-ex-00-unpack: stamps/stamp-$(1)-00-unpack
 	touch stamps/stamp-$(1)-ex-00-unpack
 
-stamps/stamp-$(1)-ex-01-patch: stamps/stamp-$(1)-ex-00-unpack
-	(shopt -s nullglob;				\
-	 $(call SETVARS_EX,$(1));				\
-	 for pfile in "$$$${pkgpbdir}"/*.patch "$$$${pkgpdir}"/*.patch ; do  \
-	   (cd "$$$${pkgsdir}"; "$$$${pfile}")		\
-	 done)
+stamps/stamp-$(1)-ex-01-patch: stamps/stamp-$(1)-ex-00-unpack stamps/stamp-$(1)-01-patch
 	touch stamps/stamp-$(1)-ex-01-patch
 
 stamps/stamp-$(1)-ex-02-configure: stamps/stamp-$(1)-ex-01-patch
