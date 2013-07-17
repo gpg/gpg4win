@@ -61,7 +61,7 @@ Section "-gpg4win" SEC_gpg4win
   # because he might have have selected a different language than his
   # default.  We delete the global Lang of the installation.
   DeleteRegValue HKLM "Software\GNU\GnuPG" "Lang"
-  DetailPrint "Deleted obsolute Lang entry"
+  DetailPrint "Deleted obsolete Lang entry"
 
   # This old key is required for GPGee.  Please do not use in new
   # applications.
@@ -72,7 +72,7 @@ Section "-gpg4win" SEC_gpg4win
   #       the user under HKCU.
   #WriteRegStr HKLM "Software\GNU\GnuPG" "gpgProgram" "$INSTDIR\gpg.exe"
   DeleteRegValue HKLM "Software\GNU\GnuPG" "gpgProgram"
-  DetailPrint "Deleted obsolute gpgProgram value"
+  DetailPrint "Deleted obsolete gpgProgram value"
 
   # Add the public directory to the PATH
   Push "$INSTDIR\pub"
