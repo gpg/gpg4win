@@ -8,6 +8,7 @@ m4_define(`DE_FILE', `download-de.html')
 m4_define(`TITLE', `Download Gpg4win')
 m4_define(`MAIN', `download')
 
+m4_define(`NO_DOWNLOAD_HEADER')
 PAGE_START
 
 <div id="intro">
@@ -17,36 +18,36 @@ PAGE_START
 
 <div id="main">
 
-<h2>Gpg4win 2.2.0-beta (Released: 2013-07-15)</h2>
+<h2>Gpg4win 2.2.0-beta (Released: 2013-07-16)</h2>
 
 <p>Current beta version of Gpg4win 2.2.0 with improvements in
 GgpEx, GpgOL, GnuPG, Pinentry and Kleopatra; in different variants
 available:</p>
 <ul>
 <li><a
-href="http://files.gpg4win.org/Beta/gpg4win-2.2.0-beta31.exe">Full installer</a>
+href="http://files.gpg4win.org/Beta/gpg4win-2.2.0-beta34.exe">Full installer</a>
 (32 MByte)
 | <a
-href="http://files.gpg4win.org/Beta/gpg4win-2.2.0-beta31.exe.sig">OpenPGP signature</a>
+href="http://files.gpg4win.org/Beta/gpg4win-2.2.0-beta34.exe.sig">OpenPGP signature</a>
 </li>
 <li><a
-href="http://files.gpg4win.org/Beta/gpg4win-light-2.2.0-beta31.exe">Light installer</a> 
+href="http://files.gpg4win.org/Beta/gpg4win-light-2.2.0-beta34.exe">Light installer</a> 
 (13 MByte, without Kleopatra and Gpg4win Compendium)
 | <a
-href="http://files.gpg4win.org/Beta/gpg4win-light-2.2.0-beta31.exe.sig">OpenPGP signature</a>
+href="http://files.gpg4win.org/Beta/gpg4win-light-2.2.0-beta34.exe.sig">OpenPGP signature</a>
 </li>
 <li><a
-href="http://files.gpg4win.org/Beta/gpg4win-vanilla-2.2.0-beta31.exe">Vanilla installer</a> 
+href="http://files.gpg4win.org/Beta/gpg4win-vanilla-2.2.0-beta34.exe">Vanilla installer</a> 
 (4 MByte, GnuPG only)
 | <a
-href="http://files.gpg4win.org/Beta/gpg4win-vanilla-2.2.0-beta31.exe.sig">OpenPGP signature</a>
+href="http://files.gpg4win.org/Beta/gpg4win-vanilla-2.2.0-beta34.exe.sig">OpenPGP signature</a>
 </li>
 <li><a
-href="http://files.gpg4win.org/Beta/gpg4win-src-2.2.0-beta31.exe">Quelltext installer</a> (319 MByte)
+href="http://files.gpg4win.org/Beta/gpg4win-src-2.2.0-beta34.exe">Quelltext installer</a> (319 MByte)
 | <a
-href="http://files.gpg4win.org/Beta/gpg4win-src-2.2.0-beta31.exe.sig">OpenPGP signature</a>
+href="http://files.gpg4win.org/Beta/gpg4win-src-2.2.0-beta34.exe.sig">OpenPGP signature</a>
 </li>
-<li><a href="http://files.gpg4win.org/Beta/README-2.2.0-beta31.en.txt">README</a> </li>
+<li><a href="http://files.gpg4win.org/Beta/README-2.2.0-beta34.en.txt">README</a> </li>
 <li>All Beta versionen and OpenPGP signatures: <a
 href="http://files.gpg4win.org/Beta/">files.gpg4win.org/Beta/</a>.</li>
 </ul>
@@ -63,13 +64,14 @@ of Gpg4win VERSION here:</p>
   </a>
 </div>
 
-<ul>
-    <li><a href="http://files.gpg4win.org/gpg4win-VERSION.exe.sig"
-        >OpenPGP signature</a> (for gpg4win-VERSION.exe)
-    <li>SHA1 checksum:<br>
-        <code>SHA1_EXE  gpg4win-VERSION.exe </code></li>
-    <li><a href="change-history.html">Change History</a></li>
-</ul>
+<p class="lineheight">
+  <a href="http://files.gpg4win.org/gpg4win-VERSION.exe.sig">OpenPGP signature</a>
+  (for gpg4win-VERSION.exe)
+  <br>
+  SHA1 checksum (for gpg4win-VERSION.exe): <code>SHA1_EXE</code>
+  <br>
+  <a href="change-history.html">Changelog</a>
+</p>
 
 <h4>More Gpg4win-VERSION variants</h4>
 <ul>
@@ -81,7 +83,7 @@ of Gpg4win VERSION here:</p>
         </a>
       </div>
       <a href="http://files.gpg4win.org/gpg4win-light-VERSION.exe.sig"
-        >OpenPGP signatur</a><br>
+        >OpenPGP signature</a><br>
       SHA1 checksum: <code>SHA1_EXL</code></li>
 
     <li>Gpg4win with GnuPG component <em>only</em>:
@@ -91,7 +93,7 @@ of Gpg4win VERSION here:</p>
           <span class="version"><small>Size: VDL_SIZE</small><span></a>
       </div>
       <a href="http://files.gpg4win.org/gpg4win-vanilla-VERSION.exe.sig"
-        >OpenPGP signatur</a><br>
+        >OpenPGP signature</a><br>
         SHA1 checksum: <code>SHA1_EXV</code></li>
 
     <li>Gpg4win source code package:
@@ -102,7 +104,7 @@ of Gpg4win VERSION here:</p>
         </a>
       </div>
       <a href="http://files.gpg4win.org/gpg4win-VERSION.tar.bz2.sig"
-        >OpenPGP signatur</a><br>
+        >OpenPGP signature</a><br>
         SHA1 checksum: <code>SHA1_SRC</code></li>
 
     <li>All versions and OpenPGP signatures: <a

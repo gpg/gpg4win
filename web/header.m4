@@ -4,11 +4,11 @@
      m4_ifelse(LANG_DE, `1', `
      <a href="download-de.html">
      <span class="text">
-      Download<br />Gpg4win VERSION
+      Download<br />Gpg4win
      </span></a>', `
      <a href="download.html">
      <span class="text">
-      Download<br />Gpg4win VERSION
+      Download<br />Gpg4win
      </span></a>')
    </div>
    <div class="download_button_links">
@@ -47,7 +47,6 @@
     </p>
    </div>
   </div>', `
-  m4_ifdef(`NO_HEADER',, `
   <div class="mini_intro">
    <div id="breadcrum">m4_ifelse(LANG_DE, `1', `<a href="index-de.html">', `<a
    href="index.html">')Home</a> &raquo;
@@ -68,6 +67,8 @@
    m4_ifelse(MAIN, `donate', `Donate')
    ')
    </div>
+  m4_ifdef(`NO_DOWNLOAD_HEADER',`
+   <div id="download_button_mini"></div></div><br clear="all" />', `
    <div id="download_button_mini">
     m4_ifelse(LANG_DE, `1', `
     <a class="dmini_button" href="download-de.html">

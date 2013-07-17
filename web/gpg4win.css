@@ -119,6 +119,7 @@ td {
  float:right;
  text-align:right;
  width: 189px;
+ height: 75px;
  line-height: 100%;
 }
 
@@ -311,7 +312,9 @@ td {
  line-height: 20px;
  margin: 0px 0px 10px;
 }
-
+.lineheight {
+ line-height: 20px;
+}
 .cleanlist li {
  font-size: 13px;
  list-style: none;
