@@ -61,7 +61,7 @@ The signatures have been created with the following OpenPGP certificate<br>
 The certificate be retrieved from OpenPGP certificate servers.
 Loading a certificate from a certificate server can be done e.g. via
 Kleopatra or GPA.
-Checking the the signature of a file is best done with GpgEX via
+Checking the signature of a file is best done with GpgEX via
 the Explorer.
 </p>
 
