@@ -22,11 +22,11 @@
    </div>
    <div class="h_text">
    <p><span class="heading">News</span></p>
-   <small>2013-07-15</small><br>
+   <small>2013-07-16</small><br>
    <span class="serif_word"><img src="img/bulletin.png" alt="" />
      m4_ifelse(LANG_DE, `1', `
-     <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2013-July/000019.html">Gpg4win 2.2.0-beta veröffentlicht</a></span>', `
-     <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2013-July/000055.html">Gpg4win 2.2.0-beta released</a></span>')
+     <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2013-July/000020.html">Gpg4win 2.2.0-beta2 veröffentlicht</a></span>', `
+     <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2013-July/000056.html">Gpg4win 2.2.0-beta2 released</a></span>')
    <p></p>
    <small>2013-05-31</small><br>
    <span class="serif_word"><img src="img/bulletin.png" alt="" />
