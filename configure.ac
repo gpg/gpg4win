@@ -279,12 +279,12 @@ if test "$libgcc_dll" = "no"; then
   fi
 fi
 if test "$libgcc_dll" = "no"; then
-  missing_tools="libgcc_s_sjlj-1.dll $missing_tools"
+  missing_opt_tools="libgcc_s_sjlj-1.dll $missing_opt_tools"
 else
   if test -r "$libgcc_dll"; then
     cp $libgcc_dll src/libgcc_s_sjlj-1.dll-x
   else
-    missing_tools="libgcc_s_sjlj-1.dll $missing_tools"
+    missing_opt_tools="libgcc_s_sjlj-1.dll $missing_opt_tools"
   fi
 fi
 
@@ -300,12 +300,12 @@ if test "$libstdcpp_dll" = "no"; then
   fi
 fi
 if test "$libstdcpp_dll" = "no"; then
-  missing_tools="libstdc++-6.dll $missing_tools"
+  missing_opt_tools="libstdc++-6.dll $missing_opt_tools"
 else
   if test -r "$libstdcpp_dll"; then
     cp $libstdcpp_dll src/libstdc++-6.dll-x
   else
-    missing_tools="libstdc++-6.dll $missing_tools"
+    missing_opt_tools="libstdc++-6.dll $missing_opt_tools"
  fi
 fi
 
