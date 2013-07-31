@@ -57,9 +57,9 @@ MANUALDATE_ADVANCED="Nov. 30, 2006"
 COMPENDIUM_VERSION_DE="3.0.0"
 COMPENDIUM_DATE_DE="21. Mai 2010"
 COMPENDIUMINPROGRESS_DE="zuletzt geringfügig korrigiert am 4. Januar 2012"
-COMPENDIUM_VERSION_EN="3.0.0-beta1"
-COMPENDIUM_DATE_EN="31. August 2010"
-COMPENDIUMINPROGRESS_EN="last minor changes from 4. January 2012"
+COMPENDIUM_VERSION_EN="3.0.0"
+COMPENDIUM_DATE_EN="2nd August 2013"
+COMPENDIUMINPROGRESS_EN="last minor changes from 2nd August 2013"
 
 MANUALINPROGRESS_DE=m4_if(my_isgit,[yes],["~und evtl. seitdem weiter bearbeitet"])
 MANUALINPROGRESS_EN=m4_if(my_isgit,[yes],["~and may have been further edited"])
