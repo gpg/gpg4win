@@ -28,17 +28,17 @@ After installation it is available in the Gpg4win start menu or online:
 http://www.gpg4win.org/doc/en/gpg4win-compendium.html
 
 If you used Gpg4win 1.x or another program in the past, please check
-out the migration hints in the Gpg4win Compendium's appendix.
+out the migration hints in the Gpg4win Compendium's appendix:
 http://www.gpg4win.org/doc/en/gpg4win-compendium_36.html
 
-Please read the section "3. Known Bugs (and Workarounds)" before you
-start working with Gpg4win.
+Please read the section "3. Known Bugs (and Workarounds)" of this
+README before you start working with Gpg4win.
 
 Gpg4win supports these platforms:
 
-  * Operating System: Windows XP (32/64), Vista (32/64), 7 (32/64)
+  * Operating System: Windows XP, Vista, 7, 8 (for all: 32/64 bit)
 
-  * MS Outlook: 2003, 2007, 2010
+  * MS Outlook: 2003, 2007, 2010, 2013
 
 
 2. Changes
@@ -55,38 +55,42 @@ New in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
   * Now with Windows 64 bit support!
 
 - GpgOL:
-  * starts supporting Outlook 2010. There are some Context Menu / UI
-    actions available in Outlook 2010. Due to the extensive compatiblity break
-    with earlier extensions the support for Outlook 2010 is still minimal and
-    does not include any MIME parsing.
+  * Rudimentary support for Outlook 2010 and 2013.
+    The following crypto functions are already available via the new 
+    GpgOL ribbon rsp. Outlook's context menu (no MIME parsing, yet):
+    - Encrypting/decrypting mail bodys
+    - Saving and decrypting attachments
+    - Attaching and encrypting files
+    - Signing and signature verification
+  * GpgOL for Outlook 2003 and 2007 is unaffected by these changes.
+
 
 - Kleopatra:
-  * Kleopatra no longer crashes when started as User on Windows Server
-    Systems.
+  * Kleopatra no longer crashes when started as a regular user on 
+    terminal servers (Windows Server).
 
 - Pinentry:
-  * Pinentry now allows you to paste in the passphrase.
+  * Pinentry now allows to paste in the passphrase.
 
 - GnuPG-Backend:
   * Gpg-agent may now be used as Pageant (PuTTY authentication agent) 
     replacement with additional smartcard support.
 
 - Installer:
-  * Updated License page
-  * Removed S/MIME HOWTO page (available via program menu of 
-    Gpg4win)
+  * Updated license page.
+  * Removed S/MIME HOWTO page (still easily accessible via Gpg4win's
+    program menu entry).
 
 
 3. Known Bugs (and Workarounds)
 ===============================
 
-- Using smart card with Kleopatra
-
-   The initial setting of smart cards with Kleopatra is currently not
-   yet possible. Please run the following steps one-time to use your
-   smart card with Kleopatra.
+- Using smart cards with Kleopatra:
 
    * OpenPGP card
+     The initial setting of a smart card with Kleopatra is not yet
+     possible. Please run the following steps once to use your smart
+     card with Kleopatra.
      Use the gpg command line tool to create a new OpenPGP certificate
      on your card (a) or to activate your existing certificate of
      your card (b):
@@ -104,33 +108,38 @@ New in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
        - Run "gpg --card-status".
 
    * X.509 Telesec Netkey 3 card
-     Use Kleopatra to initializing your card:
+     Use Kleopatra to initialize your card:
      - Insert card.
-     - Click at the Kleopatra systemtray icon (or use the context menu of
-       the systemtray icon and run the learn card command).
+     - Click on the flashing Kleopatra system tray icon (or use the 
+       context menu "smart card" of the system tray icon and run the 
+       "learn card" command directly).
 
-   After finishing these steps your OpenPGP / X.509 certificate
-   from your smart card is shown in Kleopatra under the tab
-   "My certificates" (marked with a smart card icon).
+   After finishing these steps your OpenPGP / X.509 certificate from your
+   smart card is shown in Kleopatra under the tab "My certificates" 
+   (marked with a smart card icon).
 
 - Using the Outlook Plugin "GpgOL":
 
   * You defintely should create copies of your old encrypted/signed
-    emails, e.g. in the form of PST files.
+    emails before installing GpgOL, e.g. in the form of PST files.
 
-  * Sending signed or encrypted messages via an Exchange based account
+  * For Outlook 2003/2007 only:
+    Sending signed or encrypted messages via an Exchange based account
     does not yet work.
     [see https://bugs.g10code.com/gnupg/issue1102]
-    (Please note: Using SMTP with GpgOL and Exchange seems to be work.)
+    (Please note, using SMTP with GpgOL and Exchange seems to be work.
+    Or use GpgOL with Outlook 2010/2013.)
 
-  * Encrypted E-Mails occuring un-encrypted on the email server: It
+  * For Outlook 2003/2007 only:
+    Encrypted E-Mails occuring un-encrypted on the email server: It
     can happen that parts of encrypted emails are copied to your email
     server (IMAP or MAPI) in un-encrypted/decrypted form when creating
     or viewing them.  Affected is the content of the email view
     window, thus usually the so-called email body.  Attachments are
     not affected.  Switching off the Outlook preview will lower the
     probability of this to happen, but not eliminate the issue.
-    A solution is being worked on.
+    Or use GpgOL with Outlook 2010/2013.
+
 
 
 4. Installation
@@ -146,9 +155,9 @@ http://www.gpg4win.org/doc/en/gpg4win-compendium_35.html
 5. Version History
 ==================
 
-Find below the changes as recorded in the source distribution's NEWS
-file.  An up-to-date list of changes is also available at
-http://www.gpg4win.org/change-history.html .
+Listed below are the changes as recorded in the source distribution's
+NEWS file. An up-to-date list of changes is also available at:
+http://www.gpg4win.org/change-history.html
 
 !NEWSFILE!
 

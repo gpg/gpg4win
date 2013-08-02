@@ -14,7 +14,7 @@ Inhalt:
 
      1. Wichtige Hinweise
      2. Änderungen
-     3. Bekannte Probleme (und Abhilfe)
+     3. Bekannte Probleme (und Abhilfen)
      4. Installation
      5. Versionshistorie
      6. Versionsnummern der einzelnen Programmteile
@@ -34,14 +34,14 @@ umsteigen wollen, beachten Sie bitte die Migrationshinweise im Anhang
 des Gpg4win-Kompendiums:
 http://www.gpg4win.de/doc/de/gpg4win-compendium_36.html
 
-Bitte lesen Sie den Abschnitt "3. Bekannte Probleme (und Abhilfe)",
-bevor Sie damit beginnen Gpg4win zu nutzen.
+Bitte lesen Sie den Abschnitt "3. Bekannte Probleme (und Abhilfen)"
+dieses READMEs, bevor Sie beginnen Gpg4win zu nutzen.
 
 Gpg4win unterstützt folgende Plattformen:
 
-  * Betriebssystem: Windows XP (32/64), Vista (32/64), 7 (32/64)
+  * Betriebssystem: Windows XP, Vista, 7, 8 (für alle: 32/64 bit)
 
-  * MS Outlook: 2003, 2007, 2010
+  * MS Outlook: 2003, 2007, 2010, 2013
 
 
 2. Änderungen
@@ -54,28 +54,25 @@ Die integrierten Gpg4win-Komponenten in Version !VERSION! sind:
 
 Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 -------------------------------------------------
-- GpgEx
-  * Jetzt endlich mit Unterstützung für Windows 64 bit!
+- GpgEX:
+  * Jetzt mit Unterstützung für Windows 64 bit!
 
 - GpgOL:
-  * Rudimentäre Outlook 2010 Unterstützung (Entwicklungsversion). 
-    Folgende Krypto-Operationen sind bereits über das neue
-    GpgOL-Ribbon bzw. über das Kontextmenü von Outlook 2010 möglich
-    (kein MIME-Parsing):
-     - Verschlüsseln/Entschlüsseln des Mail-Bodys
-     - Speichern und Entschlüsseln von Anhängen
-    Folgende Funktionen sind noch geplant:
+  * Rudimentäre Unterstützung für Outlook 2010 und 2013. 
+    Folgende Krypto-Operationen sind über das neue GpgOL-Ribbon bzw.
+    über das Kontextmenü von Outlook möglich (kein MIME-Parsing):
+    - Verschlüsseln/Entschlüsseln des Mail-Bodys
+    - Speichern und Entschlüsseln von Anhängen
+    - Dateien anhängen und verschlüsseln 
     - Signieren/Prüfen
-    - Dateien anhängen und verschlüsseln (Anhänge müssen derzeit noch 
-      separat über z.B. Kleopatra verschlüsselt werden)
-  * GpgOL für Outlook 2003 und 2007 sind von diesen Änderungen unberührt.
+  * GpgOL für Outlook 2003 und 2007 ist von diesen Änderungen unberührt.
   
 - Kleopatra:
-  * Crash beim Start von Kleopatra durch normalen Nutzer auf Terminalserver 
-    Systemen (Windows Server) behoben.
+  * Crash beim Start von Kleopatra durch einen gewöhnlichen Nutzer auf
+    Terminalservern (Windows Server) behoben.
  
 - Pinentry:
-  * Einfügen von Passphrasen aus der Zwischenablage ist nun erlaubt.
+  * Das Einfügen von Passphrasen aus der Zwischenablage ist nun erlaubt.
 
 - GnuPG-Backend:
   * Gpg-agent kann nun als Pageant (PuTTY authentication agent) Ersatz
@@ -83,11 +80,12 @@ Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 
 - Installer:
   * Lizenzseite aktualisiert
-  * SMIME-HOWTO-Seite entfernt (noch zu finden im Menü Programme > Gpg4win)
+  * SMIME-HOWTO-Seite entfernt (weiterhin einfach verfügbar im
+    Gpg4win-Menü unter "Programme")
 
 
-3. Bekannte Probleme (und Abhilfe)
-==================================
+3. Bekannte Probleme (und Abhilfen)
+===================================
 
 - Smartcard-Nutzung mit Kleopatra
 
@@ -123,21 +121,25 @@ Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
        den "LearnCard"-Eintrag aufrufen).
 
    Anschließend wird Ihr OpenPGP- bzw. X.509-Smartcard-Zertifikat in
-   Kleopatra unter dem Reiter "Meine Zertifikate" angezeigt (markiert mit
-   einem Smartcard-Icon).
+   Kleopatra unter dem Reiter "Meine Zertifikate" angezeigt (markiert
+   mit einem Smartcard-Icon).
 
 - Verwendung der Outlook-Programmerweiterung "GpgOL":
 
-  * Sie sollten unbedingt Sicherheitskopien Ihrer alten
-    verschlüsselten/signierten E-Mails machen; z.B. in PST-Dateien!
+  * Sie sollten unbedingt vor der Installation von GpgOL
+    Sicherheitskopien Ihrer alten verschlüsselten/signierten E-Mails
+    erstellen, z.B. in PST-Dateien!
 
-  * Senden von signierten oder verschlüsselten Nachrichten über ein
-    Exchange basiertes Konto funktioniert nicht.
+  * Nur für Outlook 2003/2007:
+    Senden von signierten oder verschlüsselten Nachrichten über ein
+    Exchange-basiertes Konto funktioniert nicht.
     [siehe https://bugs.g10code.com/gnupg/issue1102]
-    (Hinweis: Beim verwenden von SMTP sollte das Senden
-     mit GpgOL funktionieren.)
+    (Hinweis: Beim Verwenden von SMTP sollte das Senden
+     mit GpgOL funktionieren. Oder Sie nutzen GpgOL mit Outlook
+    2010/2013.)
 
-  * Verschlüsselte E-Mails unverschlüsselt auf E-Mail-Server:
+  * Nur für Outlook 2003/2007:
+    Verschlüsselte E-Mails unverschlüsselt auf E-Mail-Server:
     Es kann vorkommen, dass Teile von verschlüsselten E-Mails
     in entschlüsselter/unverschlüsselter Form auf dem E-Mail-Server
     (IMAP oder MAPI) zu liegen kommen, wenn man sie erstellt/liest.
@@ -145,8 +147,8 @@ Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
     also der "E-Mail-Body".  Anhänge sind nicht betroffen.
     Schaltet man die Voransicht von Outlook ab, so
     verringert sich die Wahrscheinlichkeit dafür deutlich,
-    aber es kann trotzdem noch passieren.
-    Eine Lösung hierfür ist in Arbeit.
+    aber es kann trotzdem noch passieren. Oder Sie nutzen GpgOl mit
+    Outlook 2010/2013.
 
 
 4. Installation
@@ -164,8 +166,8 @@ http://www.gpg4win.de/doc/de/gpg4win-compendium_35.html
 =====================
 
 Eine aktuelle deutschsprachige Übersicht der Änderungen finden Sie online
-unter http://www.gpg4win.de/change-history-de.html .  Im weiteren
-finden Sie die Einträge aus der englischen NEWS Datei:
+unter: http://www.gpg4win.de/change-history-de.html
+Im weiteren finden Sie die Einträge aus der englischen NEWS-Datei:
 
 !NEWSFILE!
 
