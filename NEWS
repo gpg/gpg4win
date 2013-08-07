@@ -20,7 +20,7 @@ Noteworthy changes in version 2.2.0 (unreleased)
 
 (de) Das Einfügen von Passphrasen aus der Zwischenablage ist nun erlaubt.
 
-(en) Kleopatra no longer crashes when started as a regular user on 
+(en) Kleopatra no longer crashes when started as a regular user on
      terminal servers (Windows Server).
 
 (de) Crash beim Start von Kleopatra durch einen gewöhnlichen Nutzer auf
@@ -31,7 +31,7 @@ Noteworthy changes in version 2.2.0 (unreleased)
      GpgOL ribbon rsp. Outlook's context menu (no MIME parsing, yet):
      - Encrypting/decrypting mail bodys
      - Saving and decrypting attachments
-     - Attaching and encrypting files 
+     - Attaching and encrypting files
      - Signing and signature verification
 
 (de) GpgOL bietet rudimentäre Unterstützung für Outlook 2010 und 2013.
@@ -40,7 +40,7 @@ Noteworthy changes in version 2.2.0 (unreleased)
      (kein MIME-Parsing):
      - Verschlüsseln/Entschlüsseln des Mail-Bodys
      - Speichern und Entschlüsseln von Anhängen
-     - Dateien anhängen und verschlüsseln 
+     - Dateien anhängen und verschlüsseln
      - Signieren/Prüfen
 
 ~~~~~~~~~~~~~~~
@@ -48,7 +48,7 @@ GnuPG:          2.0.21-beta20
 Kleopatra:      2.1.1
 GPA:            0.9.4
 GpgOL:          1.1.4-git3408e00
-GpgEX:          1.0.0-beta24
+GpgEX:          1.0.0
 Claws-Mail:     3.9.1
 Kompendium DE:  3.0.0
 Kompendium EN:  3.0.0
