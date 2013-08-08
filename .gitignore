@@ -78,3 +78,4 @@ src/mingwm10.dll
 /src/libstdc++-6.dll-x
 /po/build-cc
 /src/license.blurb
+/src/mkportable.exe

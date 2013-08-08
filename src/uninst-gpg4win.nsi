@@ -34,6 +34,7 @@ Section "-un.gpg4win"
   Delete "$INSTDIR\sha1sum.exe"
   Delete "$INSTDIR\sha256sum.exe"
   Delete "$INSTDIR\md5sum.exe"
+  Delete "$INSTDIR\mkportable.exe"
 
   # Delete the runtime libarries
   Delete "$INSTDIR\pub\libstdc++-6.dll"

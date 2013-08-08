@@ -84,6 +84,7 @@ Section "-gpg4win" SEC_gpg4win
   File "${BUILD_DIR}/sha1sum.exe"
   File "${BUILD_DIR}/sha256sum.exe"
   File "${BUILD_DIR}/md5sum.exe"
+  File "${BUILD_DIR}/mkportable.exe"
 
   SetOutPath "$INSTDIR\pub"
   # Install the mingw32 runtime libraries.  They are stored in the

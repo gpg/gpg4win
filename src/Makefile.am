@@ -22,7 +22,8 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
         installer-options.ini.in libiconv.def libintl.def loreley.mid \
         gpg4win-splash.wav gpgwrap.c exdll.h g4wihelp.c g4wihelp.nsi \
         inst-sections.nsi installer.nsi installer-finish.nsi  \
-	QtCore.pc QtGui.pc zlib.pc sha1sum.c                  \
+	QtCore.pc QtGui.pc zlib.pc sha1sum.c mkportable.c     \
+	mkportable-vanilla.h mkportable-light.h mkportable-full.h \
         qt.conf kleowrap.c potomo Memento.nsh dirmngr.conf    \
         inst-gpg4win.nsi	   uninst-gpg4win.nsi	      \
         inst-atk.nsi               uninst-atk.nsi	      \
@@ -91,7 +92,7 @@ gpg4win_howto_smime_ll = en de
 HOWTO_files = $(addsuffix .txt, \
                 $(addprefix HOWTO-SMIME.,$(gpg4win_howto_smime_ll)))
 
-foosum_exe = sha1sum.exe md5sum.exe sha256sum.exe
+foosum_exe = sha1sum.exe md5sum.exe sha256sum.exe mkportable.exe
 
 # Need to clean the dll because we bypassed automake.
 CLEANFILES = g4wihelp.dll versioninfo.txt $(README_files) $(HOWTO_files) \
@@ -688,6 +689,10 @@ sha256sum.exe: sha1sum.c
 	$(CC) -DBUILD_SHA256SUM -O2 -o $@ $^
 	$(STRIP) $@
 
+mkportable.exe: mkportable.c \
+                mkportable-vanilla.h mkportable-light.h mkportable-full.h
+	$(CC) -O2 -o $@ $(srcdir)/mkportable.c
+	$(STRIP) $@
 
 if BUILD_SOURCE_INSTALLER
 all_src = gpg4win-src-$(VERSION).exe
