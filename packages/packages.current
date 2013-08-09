@@ -400,9 +400,9 @@ file libassuan/libassuan-2.1.1.tar.bz2
 chk  8bd3826de30651eb8f9b8673e2edff77cd70aca1
 
 # checked:
-name gnupg2-2.0.21-beta20.tar.bz2
-file alpha/gnupg/gnupg-2.0.21-beta20.tar.bz2
-chk  88fc1d82400018bfb1b5ab2b842acbc1e1259be3
+name gnupg2-2.0.21-beta27.tar.bz2
+file alpha/gnupg/gnupg-2.0.21-beta27.tar.bz2
+chk  affc13f4938e0d970f552139faff09244dccc719
 
 # checked: 2013-04-26 wk
 file dirmngr/dirmngr-1.1.1.tar.bz2
