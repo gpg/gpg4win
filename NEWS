@@ -38,14 +38,19 @@ Noteworthy changes in version 2.2.0 (unreleased)
      Folgende Krypto-Operationen sind bereits über das neue
      GpgOL-Ribbon bzw. über das Kontextmenü von Outlook möglich
      (kein MIME-Parsing):
-     - Verschlüsseln/Entschlüsseln des Mail-Bodys
-     - Speichern und Entschlüsseln von Anhängen
-     - Dateien anhängen und verschlüsseln
-     - Signieren/Prüfen
+     - Verschlüsseln/Entschlüsseln des Mail-Bodys.
+     - Speichern und Entschlüsseln von Anhängen.
+     - Dateien anhängen und verschlüsseln.
+     - Signieren/Prüfen von opaken Signaturen.
+
+(en) Extracting a tarball through the Kleopatra GUI now works reliable
+
+(de) Das entpacken eines tar Archivs funktioniert nun auch über Kleopatra
+     zuverlässig.
 
 ~~~~~~~~~~~~~~~
 GnuPG:          2.0.21-beta20
-Kleopatra:      2.1.1
+Kleopatra:      2.1.1-gite70abfd
 GPA:            0.9.4
 GpgOL:          1.1.4-git3408e00
 GpgEX:          1.0.0
