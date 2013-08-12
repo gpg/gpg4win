@@ -416,9 +416,9 @@ chk  de4ba5ef9a1ced4e4f8543feac553d4cf68dea00
 file scute/scute-1.4.0.tar.bz2
 chk  e28141d2b03612c09512651795976c58ed3f8035
 
-# checked: 2013-05-28 wk - updated
-file gpgme/gpgme-1.4.2.tar.bz2
-chk  75051ec9ecd080ae105423bd72f260350a470bc8
+# checked: 2013-08-12 wk - updated
+file gpgme/gpgme-1.4.3.tar.bz2
+chk  ffdb5e4ce85220501515af8ead86fd499525ef9a
 
 # checked: 2013-05-01 wk - updated
 file gpa/gpa-0.9.4.tar.bz2
