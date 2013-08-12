@@ -50,8 +50,8 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         patches/libgpg-error-1.12/01-fix-get-string.patch \
 	patches/gpa-0.9.4/01-bin-encrypt.patch \
         patches/gpa-0.9.4/02-cms-detection.patch \
-        patches/gpa-0.9.4/02-x509-import.patch
-
+        patches/gpa-0.9.4/02-x509-import.patch \
+        patches/gpa-0.9.4/03-homedir-via-gpgconf.patch
 
 copy-news:
 	cp NEWS doc/website/NEWS.last
