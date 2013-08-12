@@ -629,6 +629,51 @@ make_home_dir (void)
   return 0;
 }
 
+/* Write the kde.conf file which tells kleopatra where to put its data.  */
+static int
+write_kde_conf (void)
+{
+  char *name;
+  FILE *fp;
+
+  if (install_type != iFULL)
+    {
+      return 0;
+    }
+
+  name = make_targetname ("bin/kde.conf");
+  fp = fopen (name, "wb");
+  if (!fp)
+    {
+      err ("failed to create '%s': %s\n", name, strerror (errno));
+      free (name);
+      return 1;
+    }
+
+  fprintf (fp,
+           "[KDE]\n"
+           "KDEHOME=home/kleopatra\n"
+           "[XDG]\n"
+           "XDG_DATA_HOME=home/kleopatra\n"
+           "XDG_CONFIG_HOME=home/kleopatra\n");
+
+   if (fflush (fp) == EOF)
+    {
+      err ("error writing to '%s': %s\n", name, strerror (errno));
+      fclose (fp);
+      free (name);
+      return 1;
+    }
+  if (fclose (fp) == EOF)
+    {
+      err ("error closing '%s': %s\n", name, strerror (errno));
+      free (name);
+      return 1;
+    }
+
+  free (name);
+  return 0;
+}
 
 
 /* Write the gpgconf.ctl file which is used by GnuPG to put itself
@@ -792,6 +837,9 @@ main (int argc, char **argv)
     return 1;
 
   if (write_ctl_file ())
+    return 1;
+
+  if (write_kde_conf ())
     return 1;
 
   inf ("ready");
