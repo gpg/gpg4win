@@ -48,7 +48,9 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         patches/gtkhtml2_viewer-0.34/80-src-makefile.postcfg-build \
 	patches/gnutls-2.12.21/01-openssl-wincrypt.patch \
         patches/libgpg-error-1.12/01-fix-get-string.patch \
-	patches/gpa-0.9.4/01-bin-encrypt.patch
+	patches/gpa-0.9.4/01-bin-encrypt.patch \
+        patches/gpa-0.9.4/02-x509-import.patch
+
 
 copy-news:
 	cp NEWS doc/website/NEWS.last
