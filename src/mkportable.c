@@ -390,10 +390,11 @@ make_dirs (const char *name)
 
 
 /****************
- * Copy the option file skeleton to the given directory.
+ * Copy the option file skeleton to the given directory.  If NAME2 is
+ * not NULL it is used as the destination name.
  */
 static int
-copy_file (const char *name)
+copy_file (const char *name, const char *name2)
 {
   char *srcname, *dstname;
   FILE *srcfp, *dstfp;
@@ -401,10 +402,15 @@ copy_file (const char *name)
   char buffer[4096];
 
   if (verbose > 1)
-    inf ("copying '%s'", name);
+    {
+      if (name2)
+        inf ("copying '%s' as '%s'", name, name2);
+      else
+        inf ("copying '%s'", name);
+    }
 
   srcname = make_sourcename (name);
-  dstname = make_targetname (name);
+  dstname = make_targetname (name2? name2:name);
 
   srcfp = fopen (srcname, "rb");
   if (!srcfp)
@@ -543,7 +549,7 @@ wildcard_copy_file (const char *name)
                     strcat (buffer, tail);
                   }
                 if (!access (buffer, F_OK))
-                  if (copy_file (buffer + srcpos))
+                  if (copy_file (buffer + srcpos, NULL))
                     {
                       res = 1;
                       goto leave;
@@ -580,9 +586,20 @@ copy_all_files (void)
           if (wildcard_copy_file (name))
             return 1;
         }
-      else if (copy_file (name))
+      else if (copy_file (name, NULL))
         return 1;
     }
+
+  /* Pinentry is special.  Depending on the installation type we need
+     to install a copy under the name pinentry.exe.  */
+  switch (install_type)
+    {
+    case iFULL:    copy_file ("pinentry-qt4.exe",   "pinentry.exe"); break;
+    case iLIGHT:   copy_file ("pinentry-gtk-2.exe", "pinentry.exe"); break;
+    case iVANILLA: copy_file ("pinentry-w32.exe",   "pinentry.exe"); break;
+    }
+
+
   return 0;
 }
 

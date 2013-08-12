@@ -162,7 +162,6 @@ const char * const full_files[] =
   "pinentry-gtk-2.exe",
   "pinentry-qt4.exe",
   "pinentry-w32.exe",
-  "pinentry.exe",
   "plugins/imageformats/qgif4.dll",
   "plugins/imageformats/qico4.dll",
   "plugins/imageformats/qjpeg4.dll",

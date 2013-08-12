@@ -120,7 +120,6 @@ const char * const light_files[] =
   "paperkey.exe",
   "pinentry-gtk-2.exe",
   "pinentry-w32.exe",
-  "pinentry.exe",
   "pthreadGC2.dll",
   "pub/gpa.exe",
   "pub/gpg-connect-agent.exe",

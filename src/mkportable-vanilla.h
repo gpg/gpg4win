@@ -35,7 +35,6 @@ const char * const vanilla_files[] =
   "md5sum.exe",
   "paperkey.exe",
   "pinentry-w32.exe",
-  "pinentry.exe",
   "pub/gpg-connect-agent.exe",
   "pub/gpg.exe",
   "pub/gpg2.exe",
