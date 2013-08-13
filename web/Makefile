@@ -46,7 +46,7 @@ change-history-de.htm4: build-history.awk NEWS.last
 
 online: all
 	echo "Going to put current contents online for www.gpg4win.org ..."
-	rsync -urvP --exclude='.svn' $(ADD_INST_TYPES) $(TARGETS) $(ADD_INST_DIRS) \
+	rsync -rvPC --perms --chmod=ug+rw,o+r,Dg+s,Da+x,u-s,Fg-s,o-wt --exclude='*.swp' $(ADD_INST_TYPES) $(TARGETS) $(ADD_INST_DIRS) \
       $(USER)@wald.intevation.org:/gpg4win/htdocs/
 
 install: all
