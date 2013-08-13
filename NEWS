@@ -48,11 +48,16 @@ Noteworthy changes in version 2.2.0 (unreleased)
 (de) Das entpacken eines tar Archivs funktioniert nun auch über Kleopatra
      zuverlässig.
 
+(en) Added mkportable.exe as a tool to create a portable installation.
+
+(de) Neues Werkzeug mkportable.exe um eine portable Installation zu
+     erstellen.
+
 ~~~~~~~~~~~~~~~
 GnuPG:          2.0.21-beta20
 Kleopatra:      2.1.1-gite70abfd
 GPA:            0.9.4
-GpgOL:          1.1.4-git3408e00
+GpgOL:          1.1.4-git3d80d4e
 GpgEX:          1.0.0
 Claws-Mail:     3.9.1
 Kompendium DE:  3.0.0
