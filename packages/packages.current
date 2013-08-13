@@ -498,8 +498,8 @@ chk  c48227c5f3b475c7792abc36c415479d3233468c
 #
 server http://files.kolab.org/local/gpg4win
 
-file kleopatra-20130809-bin.tar.bz2
-chk  7b85d169ec5d16f7331b15a9b9cdbdef8db3c8cb
+file kleopatra-20130813-bin.tar.bz2
+chk  65dbd603e62a16b19b7f3f969363095393dbb062
 
-file kleopatra-20130809-src.tar.bz2
-chk  a11939d96106d6b05855f92d2a86cc1fc41b6e1b
+file kleopatra-20130813-src.tar.bz2
+chk  02fa3f03eaca7c32179b7388030efd8ea2f089b5
