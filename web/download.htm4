@@ -18,36 +18,36 @@ PAGE_START
 
 <div id="main">
 
-<h2>Gpg4win 2.2.0-beta (Released: 2013-07-16)</h2>
+<h2>Gpg4win 2.2.0-beta (Released: 2013-08-13)</h2>
 
 <p>Current beta version of Gpg4win 2.2.0 with improvements in
 GgpEx, GpgOL, GnuPG, Pinentry and Kleopatra; in different variants
 available:</p>
 <ul>
 <li><a
-href="http://files.gpg4win.org/Beta/gpg4win-2.2.0-beta34.exe">Full installer</a>
-(32 MByte)
+href="http://files.gpg4win.org/Beta/gpg4win-2.2.0-beta56.exe">Full installer</a>
+(29 MByte)
 | <a
-href="http://files.gpg4win.org/Beta/gpg4win-2.2.0-beta34.exe.sig">OpenPGP signature</a>
+href="http://files.gpg4win.org/Beta/gpg4win-2.2.0-beta56.exe.sig">OpenPGP signature</a>
 </li>
 <li><a
-href="http://files.gpg4win.org/Beta/gpg4win-light-2.2.0-beta34.exe">Light installer</a> 
+href="http://files.gpg4win.org/Beta/gpg4win-light-2.2.0-beta56.exe">Light installer</a>
 (13 MByte, without Kleopatra and Gpg4win Compendium)
 | <a
-href="http://files.gpg4win.org/Beta/gpg4win-light-2.2.0-beta34.exe.sig">OpenPGP signature</a>
+href="http://files.gpg4win.org/Beta/gpg4win-light-2.2.0-beta56.exe.sig">OpenPGP signature</a>
 </li>
 <li><a
-href="http://files.gpg4win.org/Beta/gpg4win-vanilla-2.2.0-beta34.exe">Vanilla installer</a> 
+href="http://files.gpg4win.org/Beta/gpg4win-vanilla-2.2.0-beta56.exe">Vanilla installer</a>
 (4 MByte, GnuPG only)
 | <a
-href="http://files.gpg4win.org/Beta/gpg4win-vanilla-2.2.0-beta34.exe.sig">OpenPGP signature</a>
+href="http://files.gpg4win.org/Beta/gpg4win-vanilla-2.2.0-beta56.exe.sig">OpenPGP signature</a>
 </li>
 <li><a
-href="http://files.gpg4win.org/Beta/gpg4win-src-2.2.0-beta34.exe">Quelltext installer</a> (319 MByte)
+href="http://files.gpg4win.org/Beta/gpg4win-src-2.2.0-beta56.exe">Quelltext installer</a> (319 MByte)
 | <a
-href="http://files.gpg4win.org/Beta/gpg4win-src-2.2.0-beta34.exe.sig">OpenPGP signature</a>
+href="http://files.gpg4win.org/Beta/gpg4win-src-2.2.0-beta56.exe.sig">OpenPGP signature</a>
 </li>
-<li><a href="http://files.gpg4win.org/Beta/README-2.2.0-beta34.en.txt">README</a> </li>
+<li><a href="http://files.gpg4win.org/Beta/README-2.2.0-beta56.en.txt">README</a> </li>
 <li>All Beta versionen and OpenPGP signatures: <a
 href="http://files.gpg4win.org/Beta/">files.gpg4win.org/Beta/</a>.</li>
 </ul>
@@ -203,13 +203,13 @@ Is downloading very slow? Try this mirror server:
 
     <h3>Gpg4win 2.2.0-beta contains:</h3>
     <pre>
-<a href="http://www.gnupg.de/index.de.html">GnuPG</a> 2.0.21-beta20
+<a href="http://www.gnupg.de/index.de.html">GnuPG</a> 2.0.21-beta27
 <a
-href="http://www.kde.org/applications/utilities/kleopatra/">Kleopatra</a> 2.1.1 (2013-05-28)
+href="http://www.kde.org/applications/utilities/kleopatra/">Kleopatra</a> 2.1.1-gite70abfd
 <a href="http://www.gnupg.de/related_software/gpa/index.de.html">GPA</a> 0.9.4
-<a href="http://www.g10code.de/p-gpgol.html">GpgOL</a> 1.1.4-git3408e00
+<a href="http://www.g10code.de/p-gpgol.html">GpgOL</a> 1.1.4-git3d80d4e
 <a
-href="http://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpgex.git;a=summary">GpgEX</a> 1.0.0-beta24
+href="http://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpgex.git;a=summary">GpgEX</a> 1.0.0
 <a href="http://www.claws-mail.org/">Claws Mail</a> 3.9.1
 <a href="doc/de/gpg4win-compendium.html">Kompendium (de)</a> 3.0.0
 <a href="doc/en/gpg4win-compendium.html">Compendium (en)</a> 3.0.0-beta1
