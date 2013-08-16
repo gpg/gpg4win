@@ -1,0 +1,190 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+
+From d3f20e7883f2fb9e52e487fd516bdc7b9bc695ed Mon Sep 17 00:00:00 2001
+From: Werner Koch <wk@gnupg.org>
+Date: Fri, 16 Aug 2013 15:18:57 +0200
+Subject: [PATCH] w32: Fix crash due to bad conversions of utf-8 in the
+ clipboard.
+
+* src/gpgmetools.c (dos_to_unix): Remove.  Remove all calls.
+(dump_data_to_clipboard): Return an error code instead of calling
+exit.
+* src/gpaexportclipop.c
+(gpa_export_clipboard_operation_complete_export): Print success
+message only on success.
+--
+
+The removal of dos_to_unix is possible due to the patch
+https://bugzilla.gnome.org/show_bug.cgi?id=649390 which will go into
+the next Gtk+ 2.24 version.dos_to_unix was anyway not correct because
+it scanned for an embedded nul but it is not guaranteed that it is
+always called with one.
+
+The other patch which will be helpful is:
+https://bugzilla.gnome.org/show_bug.cgi?id=696232
+(g_utf8_to_utf16() is not guaranteed to succeed. Check the error and
+ return if it failed.)
+
+Gpg4win uses both patches.
+
+GnuPG-bug-id: 1525
+---
+ src/clipboard.c       |   12 ------------
+ src/gpaexportclipop.c |    8 ++++----
+ src/gpgmetools.c      |   43 +++++++------------------------------------
+ src/gpgmetools.h      |    5 -----
+ 4 files changed, 11 insertions(+), 57 deletions(-)
+
+diff --git a/src/clipboard.c b/src/clipboard.c
+index 682bd34..01b6058 100644
+--- a/src/clipboard.c
++++ b/src/clipboard.c
+@@ -283,10 +283,6 @@ file_created_cb (GpaFileOperation *op, gpa_file_item_t item, gpointer data)
+                        NULL, &len, NULL);
+       if (str)
+         {
+-#ifdef G_OS_WIN32
+-          dos_to_unix (str, &item->direct_out_len);
+-#endif
+-
+           gtk_text_buffer_set_text (clipboard->text_buffer, str, len);
+           g_free (str);
+           return;
+@@ -296,10 +292,6 @@ file_created_cb (GpaFileOperation *op, gpa_file_item_t item, gpointer data)
+       /* Enough warnings: Try to show even with invalid encoding.  */
+     }
+
+-#ifdef G_OS_WIN32
+-  dos_to_unix (item->direct_out, &item->direct_out_len);
+-#endif
+-
+   gtk_text_buffer_set_text (clipboard->text_buffer,
+			    item->direct_out, item->direct_out_len);
+ }
+@@ -481,10 +473,6 @@ file_open (GtkAction *action, gpointer param)
+       return;
+     }
+
+-#ifdef G_OS_WIN32
+-  dos_to_unix (contents, &length);
+-#endif
+-
+   gtk_text_buffer_set_text (clipboard->text_buffer, contents, length);
+   g_free (contents);
+ }
+diff --git a/src/gpaexportclipop.c b/src/gpaexportclipop.c
+index 0ce88af..62edb12 100644
+--- a/src/gpaexportclipop.c
++++ b/src/gpaexportclipop.c
+@@ -134,10 +134,10 @@ static void
+ gpa_export_clipboard_operation_complete_export (GpaExportOperation *operation)
+ {
+   GpaExportClipboardOperation *op = GPA_EXPORT_CLIPBOARD_OPERATION (operation);
+-  dump_data_to_clipboard (operation->dest, gtk_clipboard_get
+-			  (GDK_SELECTION_CLIPBOARD));
+-  gpa_window_message (_("The keys have been copied to the clipboard."),
+-		      GPA_OPERATION (op)->window);
++  if (!dump_data_to_clipboard (operation->dest, gtk_clipboard_get
++                               (GDK_SELECTION_CLIPBOARD)))
++    gpa_window_message (_("The keys have been copied to the clipboard."),
++                        GPA_OPERATION (op)->window);
+ }
+
+ /* API */
+diff --git a/src/gpgmetools.c b/src/gpgmetools.c
+index 2b4be56..63f6b8d 100644
+--- a/src/gpgmetools.c
++++ b/src/gpgmetools.c
+@@ -294,37 +294,12 @@ gpa_gpgme_data_new_from_file (gpgme_data_t *data,
+ }
+
+
+-#ifdef G_OS_WIN32
+-/* Convert newlines.  */
+-void
+-dos_to_unix (gchar *str, gsize *len)
+-{
+-  /* On Windows 2000, we need to convert \r\n to \n in the output for
+-     cut & paste to work properly (otherwise, extra newlines will be
+-     inserted).  */
+-  gchar *src;
+-  gchar *dst;
+-
+-  src = str;
+-  dst = str;
+-  while (*src)
+-    {
+-      if (src[0] == '\r' && src[1] == '\n')
+-	src++;
+-      *(dst++) = *(src++);
+-    }
+-  *dst = '\0';
+-  *len = dst - str;
+-}
+-#endif
+-
+-
+ /* Write the contents of the gpgme_data_t into the clipboard.  Assumes
+-   that the data is ASCII.  */
+-void
++   that the data is ASCII.  Return 0 on success.  */
++int
+ dump_data_to_clipboard (gpgme_data_t data, GtkClipboard *clipboard)
+ {
+-  char buffer[128];
++  char buffer[512];
+   int nread;
+   gchar *text = NULL;
+   size_t len = 0;
+@@ -333,27 +308,23 @@ dump_data_to_clipboard (gpgme_data_t data, GtkClipboard *clipboard)
+   if (nread == -1)
+     {
+       gpa_window_error (strerror (errno), NULL);
+-      exit (EXIT_FAILURE);
++      return -1;
+     }
+   while ((nread = gpgme_data_read (data, buffer, sizeof (buffer))) > 0)
+     {
+-      text = g_realloc (text, len + nread);
++      text = g_realloc (text, len + nread + 1);
+       strncpy (text + len, buffer, nread);
+       len += nread;
+     }
+   if (nread == -1)
+     {
+       gpa_window_error (strerror (errno), NULL);
+-      exit (EXIT_FAILURE);
++      return -1;
+     }
+
+-#ifdef G_OS_WIN32
+-  dos_to_unix (text, &len);
+-#endif
+-
+   gtk_clipboard_set_text (clipboard, text, (int)len);
+   g_free (text);
+-  return;
++  return 0;
+ }
+
+
+--- a/src/gpgmetools.h 2013-08-16 16:12:46.648003898 +0200
++++ b/src/gpgmetools.h 2013-08-16 16:13:14.836003193 +0200
+@@ -112,13 +112,8 @@
+ int gpa_open_input (const char *filename, gpgme_data_t *data,
+                    GtkWidget *parent);
+
+-#ifdef G_OS_WIN32
+-/* Convert newlines.  */
+-void dos_to_unix (gchar *str, gsize *len);
+-#endif
+-
+ /* Write the contents of the gpgme_data_t into the clipboard.  */
+-void dump_data_to_clipboard (gpgme_data_t data, GtkClipboard *clipboard);
++int dump_data_to_clipboard (gpgme_data_t data, GtkClipboard *clipboard);
+
+ /* Begin generation of a key with the given parameters.  It prepares
+    the parameters required by Gpgme and returns whatever

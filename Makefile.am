@@ -30,6 +30,8 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         patches/glib-2.24.0/01-socket.patch \
         patches/glib-2.34.3/01-socket.patch \
         patches/glib-2.34.3/02-no-kill.patch \
+        patches/gtk+-2.24.17/01-utf-conv-crash.patch \
+        patches/gtk+-2.24.17/02-crlf.patch \
         patches/libxml2-2.7.8/01-cve-2012-5134 \
 	patches/gnupg2/01-version.patch.in \
 	patches/gnupg2-2.0.20/02-allow-mark-trusted.patch \
@@ -51,7 +53,8 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
 	patches/gpa-0.9.4/01-bin-encrypt.patch \
         patches/gpa-0.9.4/02-cms-detection.patch \
         patches/gpa-0.9.4/02-x509-import.patch \
-        patches/gpa-0.9.4/03-homedir-via-gpgconf.patch
+        patches/gpa-0.9.4/03-homedir-via-gpgconf.patch \
+        patches/gpa-0.9.4/04-utf-clip-crash.patch
 
 copy-news:
 	cp NEWS doc/website/NEWS.last
