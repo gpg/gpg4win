@@ -342,10 +342,11 @@ chk  f5230890dc0be42fb5c58fbf793da253155de106
 #
 # GpgOL
 #
-server http://files.kolab.org/local/gpg4win
+server ftp://ftp.g10code.com/g10code/gpgol
 
-file gpgol-1.1.4-git3d80d4e.tar.bz2
-chk  ca848a3d1d45fc0ec308e35f7021815a570714ef
+# checked: 2013-08-19 wk
+file gpgol-1.2.0.tar.bz2
+chk  a263bb7d363c24b521cd6120492c5b8e0ebe10b9
 
 
 #
