@@ -20,7 +20,7 @@ Noteworthy changes in version 2.2.0 (unreleased)
 
 (de) Das Einfügen von Passphrasen aus der Zwischenablage ist nun erlaubt.
 
-(en) Kleopatra no longer crashes when started as a regular user on
+(en) Kleopatra no longer crashes when started by a regular user on
      terminal servers (Windows Server).
 
 (de) Crash beim Start von Kleopatra durch einen gewöhnlichen Nutzer auf

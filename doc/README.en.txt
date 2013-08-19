@@ -66,7 +66,7 @@ New in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 
 
 - Kleopatra:
-  * Kleopatra no longer crashes when started as a regular user on 
+  * Kleopatra no longer crashes when started by a regular user on 
     terminal servers (Windows Server).
 
 - Pinentry:
