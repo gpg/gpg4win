@@ -1,0 +1,57 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From 372bd439834c69d502668007c8c683233d676bd5 Mon Sep 17 00:00:00 2001
+From: Werner Koch <wk@gnupg.org>
+Date: Mon, 19 Aug 2013 20:40:10 +0200
+Subject: Fix possible segv in the gpgme_op_card_edit.
+
+* src/edit.c (gpgme_op_edit_start, gpgme_op_card_edit_start): Do not
+deref a NULL KEY in TRACE_BEG.
+---
+ src/edit.c |    8 ++++----
+ 1 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/edit.c b/src/edit.c
+index 1f73078..72fa458 100644
+--- a/src/edit.c
++++ b/src/edit.c
+@@ -143,7 +143,7 @@ gpgme_op_edit_start (gpgme_ctx_t ctx, gpgme_key_t key,
+
+   TRACE_BEG5 (DEBUG_CTX, "gpgme_op_edit_start", ctx,
+	      "key=%p (%s), fnc=%p fnc_value=%p, out=%p", key,
+-	      (key->subkeys && key->subkeys->fpr) ?
++	      (key && key->subkeys && key->subkeys->fpr) ?
+	      key->subkeys->fpr : "invalid", fnc, fnc_value, out);
+
+   if (!ctx)
+@@ -164,7 +164,7 @@ gpgme_op_edit (gpgme_ctx_t ctx, gpgme_key_t key,
+
+   TRACE_BEG5 (DEBUG_CTX, "gpgme_op_edit", ctx,
+	      "key=%p (%s), fnc=%p fnc_value=%p, out=%p", key,
+-	      (key->subkeys && key->subkeys->fpr) ?
++	      (key && key->subkeys && key->subkeys->fpr) ?
+	      key->subkeys->fpr : "invalid", fnc, fnc_value, out);
+
+   if (!ctx)
+@@ -187,7 +187,7 @@ gpgme_op_card_edit_start (gpgme_ctx_t ctx, gpgme_key_t key,
+
+   TRACE_BEG5 (DEBUG_CTX, "gpgme_op_card_edit_start", ctx,
+	      "key=%p (%s), fnc=%p fnc_value=%p, out=%p", key,
+-	      (key->subkeys && key->subkeys->fpr) ?
++	      (key && key->subkeys && key->subkeys->fpr) ?
+	      key->subkeys->fpr : "invalid", fnc, fnc_value, out);
+
+   if (!ctx)
+@@ -208,7 +208,7 @@ gpgme_op_card_edit (gpgme_ctx_t ctx, gpgme_key_t key,
+
+   TRACE_BEG5 (DEBUG_CTX, "gpgme_op_card_edit", ctx,
+	      "key=%p (%s), fnc=%p fnc_value=%p, out=%p", key,
+-	      (key->subkeys && key->subkeys->fpr) ?
++	      (key && key->subkeys && key->subkeys->fpr) ?
+	      key->subkeys->fpr : "invalid", fnc, fnc_value, out);
+
+   if (!ctx)
+--
+1.7.7.1
