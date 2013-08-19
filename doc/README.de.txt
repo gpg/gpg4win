@@ -64,7 +64,7 @@ Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
     - Verschlüsseln/Entschlüsseln des Mail-Bodys
     - Speichern und Entschlüsseln von Anhängen
     - Dateien anhängen und verschlüsseln 
-    - Signieren/Prüfen
+    - Signieren/Prüfen (von opaken Signaturen).
   * GpgOL für Outlook 2003 und 2007 ist von diesen Änderungen unberührt.
   
 - Kleopatra:
@@ -77,11 +77,24 @@ Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 - GnuPG-Backend:
   * Gpg-agent kann nun als Pageant (PuTTY authentication agent) Ersatz
     genutzt werden - mit zusätzlicher SmartCard-Unterstützung.
+  * Aktualisiert auf GnuPG 2.0.21.
+
+- GPA:
+  * Behebt Absturz beim Kopieren eines Schlüssels in die
+    Zwischenablage (gnupg bug #1525).
 
 - Installer:
   * Lizenzseite aktualisiert
   * SMIME-HOWTO-Seite entfernt (weiterhin einfach verfügbar im
     Gpg4win-Menü unter "Programme")
+
+- Gpg4win portable Version:
+  * Neues Werkzeug mkportable.exe um eine portable Installation zu erstellen. 
+    Kurzanleitung: Gpg4win installieren (mit allen Komponenten) und
+      anschließend 'mkportable.exe [OPTIONS] TARGETDIR' im
+      Gpg4win-Installationsverzeichnis ausführen (via cmd).
+      Alle Optionen über 'mkportable.exe --help'.
+
 
 
 3. Bekannte Probleme (und Abhilfen)

@@ -32,7 +32,7 @@ Noteworthy changes in version 2.2.0 (unreleased)
      - Encrypting/decrypting mail bodys
      - Saving and decrypting attachments
      - Attaching and encrypting files
-     - Signing and signature verification
+     - Signing and signature verification (of opaque signatures)
 
 (de) GpgOL bietet rudimentäre Unterstützung für Outlook 2010 und 2013.
      Folgende Krypto-Operationen sind bereits über das neue
@@ -41,7 +41,7 @@ Noteworthy changes in version 2.2.0 (unreleased)
      - Verschlüsseln/Entschlüsseln des Mail-Bodys.
      - Speichern und Entschlüsseln von Anhängen.
      - Dateien anhängen und verschlüsseln.
-     - Signieren/Prüfen von opaken Signaturen.
+     - Signieren/Prüfen (von opaken Signaturen).
 
 (en) Extracting a tarball through the Kleopatra GUI now works reliable
 

@@ -61,9 +61,8 @@ New in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
     - Encrypting/decrypting mail bodys
     - Saving and decrypting attachments
     - Attaching and encrypting files
-    - Signing and signature verification
+    - Signing and signature verification (of opaque signatures)
   * GpgOL for Outlook 2003 and 2007 is unaffected by these changes.
-
 
 - Kleopatra:
   * Kleopatra no longer crashes when started by a regular user on 
@@ -75,11 +74,21 @@ New in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 - GnuPG-Backend:
   * Gpg-agent may now be used as Pageant (PuTTY authentication agent) 
     replacement with additional smartcard support.
+  * Updated to GnuPG 2.0.21.
+
+- GPA:
+  * Fixed crash when copying a key in the clipboard (gnupg bug #1525).
 
 - Installer:
   * Updated license page.
   * Removed S/MIME HOWTO page (still easily accessible via Gpg4win's
     program menu entry).
+
+- Gpg4win portable Version:
+  * Added mkportable.exe as a new tool to create a portable installation.
+    HOWTO: Install Gpg4win with all components and then run from the
+      install directory: 'mkportable.exe [OPTIONS] TARGETDIR'.
+      Use 'mkportable.exe --help' to get all options.
 
 
 3. Known Bugs (and Workarounds)
