@@ -111,6 +111,8 @@ m4_define(`LINK',
      </b></li>
      MENU(`donate', `Spenden', `Donate', `donate', SUB, LANG_DE)
      MENU(`license', `Lizenz', `License', `license', SUB, LANG_DE)
+     m4_ifelse(LANG_DE, `1', `<li><a href="http://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpg4win.git;a=summary">Quellcode</a></li>',
+         `<li><a href="http://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpg4win.git;a=summary">Source   Code</a></li>')
      MENU(`links', `Links', `Links', `links', SUB, LANG_DE)
      m4_ifelse(LANG_DE, `1', `<li><a href="Kurzstudie-Nachhaltige-FS-Beispiel-Gpg4win.html">Kurzstudie Gpg4win</a></li>',
          `<li><a href="ShortStudy-Sustainable-FS-example-Gpg4win.html">Short Study Gpg4win</a></li>')
