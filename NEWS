@@ -53,9 +53,14 @@ Noteworthy changes in version 2.2.0 (unreleased)
 (de) Neues Werkzeug mkportable.exe um eine portable Installation zu
      erstellen.
 
+(en) Kleopatra now allows it to generate keys with a size up to 4096 bit.
+
+(de) Kleopatra erlaubt es nun Zertifikate mit einer Länge von
+     bis zu 4096 bit zu erstellen.
+
 ~~~~~~~~~~~~~~~
 GnuPG:          2.0.21
-Kleopatra:      2.1.1-gite70abfd
+Kleopatra:      2.2.0
 GPA:            0.9.4
 GpgOL:          1.2.0
 GpgEX:          1.0.0
