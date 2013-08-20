@@ -56,7 +56,8 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         patches/gpa-0.9.4/03-homedir-via-gpgconf.patch \
         patches/gpa-0.9.4/04-utf-clip-crash.patch \
         patches/gpa-0.9.4/05-event-done.patch \
-	patches/gpgme-1.4.3/01-card-edit.patch
+	patches/gpgme-1.4.3/01-card-edit.patch \
+	doc/license-page doc/GPLv3
 
 copy-news:
 	cp NEWS doc/website/NEWS.last
