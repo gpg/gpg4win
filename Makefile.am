@@ -23,6 +23,7 @@ DISTCHECK_CONFIGURE_FLAGS = --host=i686-w64-mingw32
 SUBDIRS = po packages doc src
 
 EXTRA_DIST = autogen.sh README.GIT ONEWS \
+	doc/license-page doc/GPLv3 \
         build-aux/git-log-footer build-aux/git-log-fix \
         patches/pthreads-w32-2-8-0-release/01-make.patch \
  patches/pthreads-w32-2-8-0-release/02-mingw_w64_timespec_compatibility.patch \
@@ -35,6 +36,8 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         patches/libxml2-2.7.8/01-cve-2012-5134 \
 	patches/gnupg2/01-version.patch.in \
 	patches/gnupg2-2.0.20/02-allow-mark-trusted.patch \
+        patches/gnupg2-2.0.21/01-scd-varlen.patch \
+        patches/gnupg2-2.0.21/02-scd-spr532.patch \
 	patches/dirmngr-1.1.0/01-mmap.patch \
         patches/gpgol-1.1.3/01-w64-ming64.patch  \
         patches/gpgol-1.1.3/02-off_t.postcfg-build \
@@ -56,8 +59,7 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         patches/gpa-0.9.4/03-homedir-via-gpgconf.patch \
         patches/gpa-0.9.4/04-utf-clip-crash.patch \
         patches/gpa-0.9.4/05-event-done.patch \
-	patches/gpgme-1.4.3/01-card-edit.patch \
-	doc/license-page doc/GPLv3
+	patches/gpgme-1.4.3/01-card-edit.patch
 
 copy-news:
 	cp NEWS doc/website/NEWS.last
