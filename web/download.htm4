@@ -13,11 +13,11 @@ PAGE_START
 
 <div id="intro">
 <h2>Download</h2>
-<p>Free Software for free download.</p>
 </div>
 
 <div id="main">
 
+<!--
 <h2>Gpg4win 2.2.0-beta (Released: 2013-08-13)</h2>
 
 <p>Current beta version of Gpg4win 2.2.0 with improvements in
@@ -51,7 +51,7 @@ href="http://files.gpg4win.org/Beta/gpg4win-src-2.2.0-beta56.exe.sig">OpenPGP si
 <li>All Beta versionen and OpenPGP signatures: <a
 href="http://files.gpg4win.org/Beta/">files.gpg4win.org/Beta/</a>.</li>
 </ul>
-
+-->
 
 <h2>Gpg4win VERSION (Released: DL_DATE)</h2>
 
@@ -109,6 +109,20 @@ of Gpg4win VERSION here:</p>
 
     <li>All versions and OpenPGP signatures: <a
         href="http://files.gpg4win.org/">files.gpg4win.org</a>.</li>
+
+    <li>To create a <b>portable Gpg4win version</b> use the
+    included tool <code>mkportable.exe</code>.<br> 
+    HOWTO: Install Gpg4win with all components and then run from the
+    command line (cmd) in install directory:
+    <code>mkportable.exe [OPTIONS] TARGETDIR</code>.
+    Use <code>mkportable.exe --help</code> to get all options.
+    The portable version does not include GpgOL and GpgEX! 
+    Your certificates and settings are saved in the directory
+    'home' of portable version.
+    <br>
+    <i>Please note:</i> Does not use portable applications - especially
+    crypto applications - on potentially infected systems.
+    </li>
     </ul>
 
 
@@ -201,6 +215,7 @@ Is downloading very slow? Try this mirror server:
 
 <div id="sidebar">
 
+<!--
     <h3>Gpg4win 2.2.0-beta contains:</h3>
     <pre>
 <a href="http://www.gnupg.de/index.de.html">GnuPG</a> 2.0.21-beta27
@@ -215,6 +230,7 @@ href="http://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpgex.git;a=summary">GpgEX</a> 1
 <a href="doc/en/gpg4win-compendium.html">Compendium (en)</a> 3.0.0-beta1
     </pre>
     <p></p>
+-->
 
     <h3>Gpg4win VERSION contains:</h3>
     <pre>

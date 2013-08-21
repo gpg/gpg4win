@@ -9,7 +9,40 @@ zwischenzeitlich beseitigten Sicherheitslöcher weiterhin enthalten!</p>
 </div>
 <div id='main'>
 
-<h2>Version 2.1.1 veröffentlicht  2013-05-31</h2>
+<h2>Version 2.2.0 veröffentlicht  2013-08-20</h2>
+ GpgEX funktioniert nun unter Windows 64 bit.
+
+ Gpg-agent kann nun als Pageant (PuTTY authentication agent) Ersatz
+     genutzt werden - mit zusätzlicher SmartCard-Unterstützung.
+
+ Das Einfuegen von Passphrasen aus der Zwischenablage ist nun erlaubt.
+
+ Crash beim Start von Kleopatra durch einen gewoehnlichen Nutzer auf
+     Terminalservern (Windows Server) behoben.
+
+ GpgOL bietet rudimentaere Unterstuetzung fuer Outlook 2010 und 2013.
+
+ Das Entpacken eines tar-Archivs funktioniert nun auch ueber Kleopatra
+     zuverlässig.
+
+ Neues Werkzeug mkportable.exe um eine portable Installation zu
+     erstellen.
+
+ Kleopatra erlaubt es nun Zertifikate mit einer Laenge von
+     bis zu 4096 bit zu erstellen.
+
+
+<pre>
+GnuPG:           2.0.21
+Kleopatra:       2.2.0
+GPA:             0.9.4
+GpgOL:           1.2.0
+GpgEX:           1.0.0
+Claws-Mail:      3.9.1
+Kompendium `DE':   3.0.0
+Kompendium `EN':   3.0.0
+</pre>
+<p>Expliziter Download dieser Version: <a href="http://ftp.gpg4win.org/gpg4win-2.2.0.exe">gpg4win-2.2.0.exe</a><br></p><p>Details im README dieser Version: <a href="http://ftp.gpg4win.org/README-2.2.0.de.txt">README-2.2.0.de.txt</a><br></p><h2>Version 2.1.1 veröffentlicht  2013-05-31</h2>
  Neue Versionen von GnuPG, GpgOL, GPA, Kleopatra and Claws-Mail.
 
  Entwicklerwerkzeuge fuer die Krypto-Bibliotheken werden nun mit

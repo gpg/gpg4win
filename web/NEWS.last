@@ -3,6 +3,60 @@
 # The version number given below are for the standard installers as
 # distributed by www.gpg4win.org.
 
+Noteworthy changes in version 2.2.0 (2013-08-20)
+------------------------------------------------
+
+(en) GpgEx now works on Windows 64 bit.
+
+(de) GpgEX funktioniert nun unter Windows 64 bit.
+
+(en) Gpg-agent may now be used as Pageant (PuTTY authentication agent)
+     replacement with additional smartcard support.
+
+(de) Gpg-agent kann nun als Pageant (PuTTY authentication agent) Ersatz
+     genutzt werden - mit zusätzlicher SmartCard-Unterstützung.
+
+(en) Pinentry now allows to paste in the passphrase.
+
+(de) Das Einfuegen von Passphrasen aus der Zwischenablage ist nun erlaubt.
+
+(en) Kleopatra no longer crashes when started by a regular user on
+     terminal servers (Windows Server).
+
+(de) Crash beim Start von Kleopatra durch einen gewoehnlichen Nutzer auf
+     Terminalservern (Windows Server) behoben.
+
+(en) GpgOL provides rudimentary support for Outlook 2010 and 2013.
+
+(de) GpgOL bietet rudimentaere Unterstuetzung fuer Outlook 2010 und 2013.
+
+(en) Extracting a tarball through the Kleopatra GUI now works reliable
+
+(de) Das Entpacken eines tar-Archivs funktioniert nun auch ueber Kleopatra
+     zuverlässig.
+
+(en) Added mkportable.exe as a tool to create a portable installation.
+
+(de) Neues Werkzeug mkportable.exe um eine portable Installation zu
+     erstellen.
+
+(en) Kleopatra now allows it to generate keys with a size up to 4096 bit.
+
+(de) Kleopatra erlaubt es nun Zertifikate mit einer Laenge von
+     bis zu 4096 bit zu erstellen.
+
+~~~~~~~~~~~~~~~
+GnuPG:          2.0.21
+Kleopatra:      2.2.0
+GPA:            0.9.4
+GpgOL:          1.2.0
+GpgEX:          1.0.0
+Claws-Mail:     3.9.1
+Kompendium `DE':  3.0.0
+Kompendium `EN':  3.0.0
+~~~~~~~~~~~~~~~
+
+
 Noteworthy changes in version 2.1.1 (2013-05-31)
 ------------------------------------------------
 
