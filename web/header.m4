@@ -25,8 +25,8 @@
    <small>2013-08-21</small><br>
    <span class="serif_word"><img src="img/bulletin.png" alt="" />
      m4_ifelse(LANG_DE, `1', `
-     <a href="">Gpg4win 2.2.0 veröffentlicht</a></span>', `
-     <a href="">Gpg4win 2.2.0 released</a></span>')
+     <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2013-August/000022.html">Gpg4win 2.2.0 veröffentlicht</a></span>', `
+     <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2013-August/000058.html">Gpg4win 2.2.0 released</a></span>')
    <p></p>
    <small>2013-07-16</small><br>
    <span class="serif_word"><img src="img/bulletin.png" alt="" />
