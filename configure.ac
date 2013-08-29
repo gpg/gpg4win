@@ -38,8 +38,8 @@ m4_define([git_revision],
 m4_define([git_revision_dec],
           m4_esyscmd_s([echo $((0x$(echo ]git_revision[|head -c 4)))]))
 m4_define([git_betastring],
-          m4_esyscmd_s([git describe --match 'gpg4win-[0-9].*.*[0-9]' --long|\
-                        awk -F- '$3!=0{print"-beta"$3}']))
+          m4_esyscmd_s([git describe --tags --match 'gpg4win-[0-9].*.*[0-9]' \
+                       --long | awk -F- '$3!=0{print"-beta"$3}']))
 m4_define([my_isgit],m4_if(git_betastring,[],[no],[yes]))
 m4_define([my_full_version],[my_version[]git_betastring])
 
