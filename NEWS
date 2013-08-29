@@ -3,6 +3,26 @@
 # The version number given below are for the standard installers as
 # distributed by www.gpg4win.org.
 
+Noteworthy changes in version 2.2.1 (unreleased)
+------------------------------------------------
+
+(en) Kleopatra no longer crashes when using Microsoft Office IME,
+
+(de) Kleopatra stürzt nun nicht mehr ab wenn man Microsoft Office IME
+     verwendet,
+
+~~~~~~~~~~~~~~~
+GnuPG:          2.0.21
+Kleopatra:      2.2.0
+GPA:            0.9.4
+GpgOL:          1.2.0
+GpgEX:          1.0.0
+Claws-Mail:     3.9.1
+Kompendium DE:  3.0.0
+Kompendium EN:  3.0.0
+~~~~~~~~~~~~~~~
+
+
 Noteworthy changes in version 2.2.0 (2013-08-20)
 ------------------------------------------------
 
