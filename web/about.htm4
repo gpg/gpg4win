@@ -51,10 +51,10 @@ Free Software components:
  <p>An alternative certificate manager for OpenPGP and X.509 (S/MIME).</p>
 </li>
 <li><b>GpgOL</b>
- <p>A plugin for Microsoft Outlook 2003 and 2007 (email encryption).</p>
+ <p>A plugin for Microsoft Outlook 2003/2007/2010/2013 (email encryption).</p>
 </li>
 <li><b>GpgEX</b>
-<p>A plugin for Microsoft Explorer 32bit (file encryption).</p>
+<p>A plugin for Microsoft Explorer (file encryption).</p>
 </li>
 <li><b>Claws Mail</b>
 <p>A complete email application with crypto support.</p>
@@ -67,17 +67,13 @@ available in English and German.</p>
 
 <a name="requirements"></a>
 <h2>System Requirements</h2>
-<p>Gpg4win runs on Windows XP, Vista and 7. Both 32 and
+<p>Gpg4win runs on Windows XP, Vista, 7 and 8. Both 32 and
 64bit systems are supported.</p>
 
-<p>The Outlook plugin GpgOL is compatible with Microsoft Outlook 2003
-and 2007. Outlook 2010 is not supported.</p>
+<p>The Outlook plugin GpgOL is compatible with Microsoft Outlook 2003,
+2007, 2010 and 2013. GpgOL supports MS Exchange Server in Outlook 2010
+and 2013 only.</p>
 
-<p><b>Important:</b> Currently, the Windows Explorer plugin GgpEX
-works with 32bit Explorer only. It is possible to use the 32bit Explorer
-on some 64bit Windows. A 64bit update is in progress.
-All file crypto features of GpgEX on Windows 64bit can be accessed
-from the file menu of Kleopatra (e.g. File > Sign/encrypt file).</p>
 
 <h2>Aim of Gpg4win Initiative</h2>
 <p>The Gpg4win initiative aims to provide a current Gpg4win Windows installation

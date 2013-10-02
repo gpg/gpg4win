@@ -54,7 +54,7 @@ installiert werden können:</p>
  <p>Ein alternativer Zertifikatsmanager für OpenPGP und X.509.</p>
 </li>
 <li><b>GpgOL</b>
- <p>Eine Programmerweiterung für Microsoft Outlook 2003 und 2007
+ <p>Eine Programmerweiterung für Microsoft Outlook 2003/2007/2010/2013
   (E-Mail-Verschlüsselung).</p>
 </li>
 <li><b>GpgEX</b>
@@ -73,17 +73,12 @@ Fortgeschrittene). Verfügbar in deutscher und englischer Sprache.</p>
 
 <a name="requirements"></a>
 <h2>Systemvorausetzungen</h2>
-<p>Gpg4win ist lauffähig unter Windows XP, Vista und 7. 32 und 64bit Systeme werden
+<p>Gpg4win ist lauffähig unter Windows XP, Vista, 7 und 8. 32 und 64bit Systeme werden
 unterstützt.</p>
 
-<p>Das Outlook-Plugin GpgOL ist kompatibel mit Microsoft Outlook 2003 und 2007.
-Outlook 2010 wird nicht unterstützt.</p>
-
-<p><b>Wichtig:</b> Das Windows-Explorer-Plugin GgpEX funktioniert
-derzeit nur auf 32bit Windows-Systemen.  Eine 64bit-Erweiterung ist in
-Arbeit. Unter Windows 64bit lassen sich alle Datei-Kryptofunktionen von
-GpgEX jedoch alternativ über das Datei-Menü von Kleopatra ausführen
-(z.B. Datei > Datei signieren/verschlüsseln).</p>
+<p>Das Outlook-Plugin GpgOL ist kompatibel mit Microsoft Outlook 2003,
+2007, 2010 und 2013. Der Einsatz von MS Exchange Server wird nur in Outlook 2010 und
+2013 unterstützt.</p>
 
 
 <h2>Das Ziel der Gpg4win-Initiative</h2>
