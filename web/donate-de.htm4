@@ -64,7 +64,7 @@ m4_include(`SPONSORS')
 
 <div id="sidebar">
 <h3>Spenden Sie jetzt!</h3>
-<p>
+<p><b>... per PayPal:</b>
 <form action="https://www.paypal.com/de/cgi-bin/webscr" method="post">
     <input name="cmd" value="_donations" type="hidden">
     <input name="business" value="paypal@intevation.de" type="hidden">
@@ -82,10 +82,22 @@ m4_include(`SPONSORS')
     <input name="return" value="http://gpg4win.de/donate-de.html" type="hidden">
     <input name="cbt" value="Zurück zu Gpg4win" type="hidden">
     <br>
-
     <input name="os0" value="Ja" checked="checked" type="checkbox">Spendernamen veröffentlichen
-  </form>
+</form>
 </p>
-<form action="">
+
+<p><b>... per Flattr:</b></p>
+<p>
+<script id='fbkq7vh'>(function(i){var f,s=document.getElementById(i);f=document.createElement('iframe');f.src='http://api.flattr.com/button/view/?uid=intevation&button=compact&url=http://www.gpg4win.org';f.title='Flattr';f.height=20;f.width=110;f.style.borderWidth=0;s.parentNode.insertBefore(f,s);})('fbkq7vh');</script>
+</p>
+
+<p><b>... per Banküberweisung:</b>
+<pre>Intevation GmbH
+IBAN: DE33265400700539200600
+BIC (SWIFT): COBADEFF265
+</pre>
+<p><small><a href="mailto:gpg4win-professional@intevation.de">Kontaktieren
+Sie uns</a>, wenn Sie eine Rechnung benötigen.</small></p>
+</p>
 
 </div>
