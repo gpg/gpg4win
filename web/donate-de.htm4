@@ -88,16 +88,13 @@ m4_include(`SPONSORS')
 
 <p><b>... per Flattr:</b></p>
 <p>
-<script id='fbkq7vh'>(function(i){var f,s=document.getElementById(i);f=document.createElement('iframe');f.src='http://api.flattr.com/button/view/?uid=intevation&button=compact&url=http://www.gpg4win.org';f.title='Flattr';f.height=20;f.width=110;f.style.borderWidth=0;s.parentNode.insertBefore(f,s);})('fbkq7vh');</script>
+<a href="http://flattr.com/thing/2053326/Gpg4win-Secure-email-and-file-encryption-with-GnuPG-for-Windows" target="_blank"><img src="http://api.flattr.com/button/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0" /></a>
 </p>
 
 <p><b>... per Banküberweisung:</b>
-<pre>Intevation GmbH
-IBAN: DE33265400700539200600
-BIC (SWIFT): COBADEFF265
-</pre>
-<p><small><a href="mailto:gpg4win-professional@intevation.de">Kontaktieren
-Sie uns</a>, wenn Sie eine Rechnung benötigen.</small></p>
+<p><a href="mailto:gpg4win-professional@intevation.de">Kontaktieren
+Sie uns per E-Mail</a>, um unsere Bankdaten zu erhalten. Ab 100,- EUR bekommen
+Sie eine Rechnung, wenn gewünscht.</p>
 </p>
 
 </div>
