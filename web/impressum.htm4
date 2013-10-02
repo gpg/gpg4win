@@ -11,34 +11,54 @@ m4_define(`MAIN', `misc')
 PAGE_START
 
 <div id="intro">
-<h2>Impressum / Legal notice</h2>
+<h2>Legal notice</h2>
 <p>
-The web pages of Gpg4win as well as the project
-site are hosted by Intevation GmbH.
-The download area ftp.gpg4win.org/gpg4win/ is hosted by g10 Code GmbH.
-The content has been created and is being maintained by the changing
-active team members of the Gpg4win project.
+Intevation and g10 Code are the companies responsible for the
+development of Gpg4win.
+The web pages, the download server as well as the mailing lists and
+the wald development platform are hosted by Intevation GmbH.
+The web content has been created and is being maintained by the changing
+active team members of the Gpg4win initiative.
 </p>
 </div>
 
 <div id="main">
 
 <h2>Intevation GmbH</h2>
-<p>Neuer Graben 17<br>
+<p>
+Neuer Graben 17<br>
 49074 Osnabrück<br>
 Germany<br>
-<a href="http://www.intevation.net">www.intevation.net</a><br>
+Web: <a href="http://www.intevation.net">www.intevation.net</a><br>
+Mail: <a
+href="mailto:gpg4win-professional@intevation.de">gpg4win-professional@intevation.de</a>
+<i>(Only paid service!)*</i><br>
+Tel: +49 541 335083-0 <i>(Only paid service!)*</i>
+</p>
+<p><i>*) For free support ask the <a href="community-de.html">Gpg4win
+Community</a> please.</i></p>
+
+<p>
 Authorised: Frank Koormann, Bernhard Reiter, Dr. Jan-Oliver Wagner<br>
 Registered as: HR B 18998, Amtsgericht Osnabrück<br>
 VAT ID: de 204 854 484<br>
 </p>
 
+<p>
+For bank details and Gpg4win donation options read <a
+href="donate.html">donation page</a>.
+</p>
+
 
 <h2>g10 Code GmbH</h2>
-<p>Hüttenstr. 61<br>
+<p>
+Hüttenstr. 61<br>
 40699 Erkrath<br>
 Germany<br>
-<a href="http://www.g10code.com">www.g10code.com</a><br>
+<a href="http://www.g10code.com">www.g10code.com</a>
+</p>
+
+<p>
 Authorised: Werner Koch<br>
 Registered as: HR B 14459, Amtsgericht Wuppertal<br>
 VAT ID: de 215605608<br>

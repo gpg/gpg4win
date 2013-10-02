@@ -120,7 +120,7 @@ m4_define(`LINK',
          `<li><a href="ShortStudy-Sustainable-FS-example-Gpg4win.html">Short Study Gpg4win</a></li>')
      MENU(`links', `Links', `Links', `links', SUB, LANG_DE)
      MENU(`contributors', `Mitwirkende', `Contributors', `contributors', SUB, LANG_DE)
-     MENU(`impressum', `Impressum', `Impressum', `impressum', SUB, LANG_DE)
+     MENU(`impressum', `Impressum', `Legal Notice', `impressum', SUB, LANG_DE)
     </ul>
   </div>
   </div>

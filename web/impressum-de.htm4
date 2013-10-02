@@ -13,9 +13,11 @@ PAGE_START
 <div id="intro">
 <h2>Impressum</h2>
 <p>
-Die Gpg4win Webseiten werden von der Intevation GmbH
-bereitgestellt, der Downloadbereich (ftp.gpg4win.org/gpg4win/) von
-der g10 Code GmbH.
+Intevation und g10 Code sind die verantwortlichen Unternehmen für die
+Gpg4win-Entwicklung.
+Die Gpg4win Webseiten, der Downloadserver sowie die Mailinglisten und
+die Wald-Entwicklungsplattform werden von der Intevation GmbH
+bereitgestellt.
 Die inhaltliche Gestaltung erfolgte und erfolgt durch die wechselnden
 aktiven Mitglieder der Gpg4win-Initiative.
 </p>
@@ -27,20 +29,38 @@ aktiven Mitglieder der Gpg4win-Initiative.
 Neuer Graben 17<br>
 49074 Osnabrück<br>
 Deutschland<br>
-<a href="http://www.intevation.de">www.intevation.de</a><br>
+Web: <a href="http://www.intevation.de">www.intevation.de</a><br>
+Mail: <a
+href="mailto:gpg4win-professional@intevation.de">gpg4win-professional@intevation.de</a>
+<i>(Nur kostenpflichtiger Support!)*</i><br>
+Tel: +49 541 335083-0 <i>(Nur kostenpflichtiger Support!)*</i>
+</p>
+<p><i>*) Für kostenfreie Unterstützung nutzen
+Sie die <a href="community-de.html">Gpg4win-Gemeinschaft</a>.</i></p>
+
+<p>
 Vertretungsberechtigt: Frank Koormann, Bernhard Reiter, Dr. Jan-Oliver Wagner<br>
 Registereintrag: HR B 18998, Amtsgericht Osnabrück<br>
-Umsatzsteuer-Identifikation: de 204 854 484<br>
+Umsatzsteuer-Identifikation: de 204 854 484
 </p>
+
+<p>
+Bankverbindung und Gpg4win-Spendenmöglichkeiten unter <a
+href="donate-de.html">Spenden</a>.
+</p>
+
 
 <h2>g10 Code GmbH</h2>
 <p>
 Hüttenstr. 61<br>
 40699 Erkrath<br>
 Deutschland<br>
-<a href="http://www.g10code.com">www.g10code.com</a><br>
+<a href="http://www.g10code.com">www.g10code.com</a>
+</p>
+
+<p>
 Vertretungsberechtigt: Werner Koch<br>
 Registereintrag: HR B 14459, Amtsgericht Wuppertal<br>
-Umsatzsteuer-Identifikation: de 215605608<br>
+Umsatzsteuer-Identifikation: de 215605608
 </p>
 </div>
