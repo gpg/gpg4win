@@ -3,6 +3,36 @@
 # The version number given below are for the standard installers as
 # distributed by www.gpg4win.org.
 
+Noteworthy changes in version 2.2.1 (2013-10-08)
+------------------------------------------------
+
+(de) Ein Fehler der eine mögliche endlosschleife in GnuPG auslösen
+   konnte wurde behoben. [CVE-2013-4402]
+
+(en) Fixed possible infinite recursion in the compressed packet
+   parser. [CVE-2013-4402]
+
+(en) Kleopatra no longer crashes when using Microsoft Office IME.
+
+(de) Kleopatra stürzt nun nicht mehr ab wenn man Microsoft Office IME
+     verwendet.
+
+(en) Support for SPR332 and 532 pinpads.
+
+(de) Unterstützung für SPR332 und 532 Pinpads.
+
+~~~~~~~~~~~~~~~
+GnuPG:          2.0.22
+Kleopatra:      2.2.0
+GPA:            0.9.4
+GpgOL:          1.2.0
+GpgEX:          1.0.0
+Claws-Mail:     3.9.1
+Kompendium DE:  3.0.0
+Kompendium EN:  3.0.0
+~~~~~~~~~~~~~~~
+
+
 Noteworthy changes in version 2.2.0 (2013-08-20)
 ------------------------------------------------
 
