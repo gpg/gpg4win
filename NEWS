@@ -6,13 +6,23 @@
 Noteworthy changes in version 2.2.1 (unreleased)
 ------------------------------------------------
 
-(en) Kleopatra no longer crashes when using Microsoft Office IME,
+(de) Ein Fehler welche mögliche endlosschleife in GnuPG auslösen
+konnte wurde behoben. [CVE-2013-4402]
+
+(en) Fixed possible infinite recursion in the compressed packet
+   parser. [CVE-2013-4402]
+
+(en) Kleopatra no longer crashes when using Microsoft Office IME.
 
 (de) Kleopatra stürzt nun nicht mehr ab wenn man Microsoft Office IME
-     verwendet,
+     verwendet.
+
+(en) Support for SPR332 and 532 pinpads.
+
+(de) Unterstützung für SPR332 und 532 Pinpads.
 
 ~~~~~~~~~~~~~~~
-GnuPG:          2.0.21
+GnuPG:          2.0.22
 Kleopatra:      2.2.0
 GPA:            0.9.4
 GpgOL:          1.2.0
