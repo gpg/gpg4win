@@ -54,47 +54,16 @@ Die integrierten Gpg4win-Komponenten in Version !VERSION! sind:
 
 Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 -------------------------------------------------
-- GpgEX:
-  * Jetzt mit Unterstützung für Windows 64 bit!
 
-- GpgOL:
-  * Rudimentäre Unterstützung für Outlook 2010 und 2013. 
-    Folgende Krypto-Operationen sind über das neue GpgOL-Ribbon bzw.
-    über das Kontextmenü von Outlook möglich (kein MIME-Parsing):
-    - Verschlüsseln/Entschlüsseln des Mail-Bodys
-    - Speichern und Entschlüsseln von Anhängen
-    - Dateien anhängen und verschlüsseln 
-    - Signieren/Prüfen (von opaken Signaturen).
-  * GpgOL für Outlook 2003 und 2007 ist von diesen Änderungen unberührt.
-  
+- GnuPG:
+  * Ein Fehler welche mögliche endlosschleife in GnuPG auslösen
+    konnte wurde behoben. [CVE-2013-4402]
+
+  * Unterstützung für SPR332 und 532 Pinpads.
+
 - Kleopatra:
-  * Crash beim Start von Kleopatra durch einen gewöhnlichen Nutzer auf
-    Terminalservern (Windows Server) behoben.
- 
-- Pinentry:
-  * Das Einfügen von Passphrasen aus der Zwischenablage ist nun erlaubt.
-
-- GnuPG-Backend:
-  * Gpg-agent kann nun als Pageant (PuTTY authentication agent) Ersatz
-    genutzt werden - mit zusätzlicher SmartCard-Unterstützung.
-  * Aktualisiert auf GnuPG 2.0.21.
-
-- GPA:
-  * Behebt Absturz beim Kopieren eines Schlüssels in die
-    Zwischenablage (gnupg bug #1525).
-
-- Installer:
-  * Lizenzseite aktualisiert
-  * SMIME-HOWTO-Seite entfernt (weiterhin einfach verfügbar im
-    Gpg4win-Menü unter "Programme")
-
-- Gpg4win portable Version:
-  * Neues Werkzeug mkportable.exe um eine portable Installation zu erstellen. 
-    Kurzanleitung: Gpg4win installieren (mit allen Komponenten) und
-      anschließend 'mkportable.exe [OPTIONS] TARGETDIR' im
-      Gpg4win-Installationsverzeichnis ausführen (via cmd).
-      Alle Optionen über 'mkportable.exe --help'.
-
+  * Ein Absturz des Programms wurde behoben der auftrat wenn Microsoft Office
+    IME verwendet wurde
 
 
 3. Bekannte Probleme (und Abhilfen)

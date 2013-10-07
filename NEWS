@@ -3,11 +3,11 @@
 # The version number given below are for the standard installers as
 # distributed by www.gpg4win.org.
 
-Noteworthy changes in version 2.2.1 (unreleased)
+Noteworthy changes in version 2.2.1 (2013-10-08)
 ------------------------------------------------
 
-(de) Ein Fehler welche mögliche endlosschleife in GnuPG auslösen
-konnte wurde behoben. [CVE-2013-4402]
+(de) Ein Fehler der eine mögliche endlosschleife in GnuPG auslösen
+   konnte wurde behoben. [CVE-2013-4402]
 
 (en) Fixed possible infinite recursion in the compressed packet
    parser. [CVE-2013-4402]

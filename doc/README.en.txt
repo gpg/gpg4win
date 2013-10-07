@@ -51,45 +51,15 @@ Included Gpg4win components in Version !VERSION! are:
 
 New in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 -------------------------------------------------
-- GpgEx:
-  * Now with Windows 64 bit support!
 
-- GpgOL:
-  * Rudimentary support for Outlook 2010 and 2013.
-    The following crypto functions are already available via the new 
-    GpgOL ribbon rsp. Outlook's context menu (no MIME parsing, yet):
-    - Encrypting/decrypting mail bodys
-    - Saving and decrypting attachments
-    - Attaching and encrypting files
-    - Signing and signature verification (of opaque signatures)
-  * GpgOL for Outlook 2003 and 2007 is unaffected by these changes.
+- GnuPG:
+  * Fixed possible infinite recursion in the compressed packet
+    parser. [CVE-2013-4402]
+
+  * Support for SPR332 and 532 pinpads.
 
 - Kleopatra:
-  * Kleopatra no longer crashes when started by a regular user on 
-    terminal servers (Windows Server).
-
-- Pinentry:
-  * Pinentry now allows to paste in the passphrase.
-
-- GnuPG-Backend:
-  * Gpg-agent may now be used as Pageant (PuTTY authentication agent) 
-    replacement with additional smartcard support.
-  * Updated to GnuPG 2.0.21.
-
-- GPA:
-  * Fixed crash when copying a key in the clipboard (gnupg bug #1525).
-
-- Installer:
-  * Updated license page.
-  * Removed S/MIME HOWTO page (still easily accessible via Gpg4win's
-    program menu entry).
-
-- Gpg4win portable Version:
-  * Added mkportable.exe as a new tool to create a portable installation.
-    HOWTO: Install Gpg4win with all components and then run from the
-      install directory: 'mkportable.exe [OPTIONS] TARGETDIR'.
-      Use 'mkportable.exe --help' to get all options.
-
+  * Kleopatra no longer crashes when using Microsoft Office IME.
 
 3. Known Bugs (and Workarounds)
 ===============================
