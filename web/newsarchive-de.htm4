@@ -18,17 +18,18 @@ Aktuelle Meldungen gibt es auf der <a href="index-de.html">Startseite</a>.
 <div id="main">
 
 <h2>2013</h2>
-<ul class="newslist">
-    <li><a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2013-May/000017.html">2013-05-16: Gpg4win 2.1.1-beta197 veröffentlicht</a>
-    <p>Die zweite Vorabversion von 2.1.1.
-    </p></li>
+<ul>
+
+    <li><a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2013-May/000018.html">2013-05-31: Gpg4win 2.1.1 veröffentlicht</a>
+    <p></p></li>
+
+    <li><a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2013-May/000017.html">2013-05-16: Gpg4win 2.1.1-beta197 veröffentlicht</a></li>
 </ul>
 
 <h2>2012</h2>
 <ul class="newslist">
     <li><a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2012-May/000016.html"
      >2012-05-04: Gpg4win 2.1.1 Beta veröffentlicht</a>
-    <p></p>
     </li>
 </ul>
 

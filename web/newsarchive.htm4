@@ -19,7 +19,28 @@ The latest news are placed at the <a href="./">welcome page</a>.
 <div id="main">
 
 <h2>2013</h2>
-   
+<ul>
+
+    <li><a
+href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2013-May/000054.html">2013-05-31:
+Gpg4win 2.1.1 released</a>
+    </li>
+
+    <li><a
+href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2013-May/000017.html">2013-05-16:
+Gpg4win 2.1.1-beta197 released</a>
+    </li>
+</ul>
+
+
+<h2>2013</h2>
+<dt><b>+++ 2013-05-16: Gpg4win 2.1.1-beta197 released +++</b></dt>
+<dd>See the <a
+href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2013-May/000053.html">announcement</a>
+for details.
+<br></dd>
+
+
 <dt><b>+++ 2013-05-16: Gpg4win 2.1.1-beta197 released +++</b></dt>
 <dd>See the <a
 href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2013-May/000053.html">announcement</a>
