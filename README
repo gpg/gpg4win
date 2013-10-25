@@ -32,16 +32,22 @@ Basic requirements
 ==================
 
 A decent POSIX system is required for building this software as well
-as GNU make.  We are using Debian GNU/Linux (Lenny); due to a little
-bug in the mingw32 compiler it is highly suggested to put a line
-  deb http://apt.intevation.org lenny/mingw .
-into /etc/apt/sources and update the mingw packages.  To satisfy all
-needs of configure at least the following packages need to be
-installed:
+as GNU make.  We are using Debian GNU/Linux 7 (Wheezy), any other
+POSIX system should work as well but you may run into problems due to
+different toolchain versions.
+
+If you want trying to build under Debian 6 (Lenny) you need to put a
+line "deb http://apt.intevation.org lenny/mingw" into /etc/apt/sources
+and update the mingw packages.  However it building under Lenny is not
+anymore suggested.
+
+To satisfy all needs of configure at least the following packages need
+to be installed:
 
  build-essential (libc6-dev, gcc, g++, make)
- automake, autoconf (if building from SVN)
- mingw32
+ automake 1.11, autoconf (if building from GIT)
+ mingw-w64-i686-dev
+ mingw-w64-x86-64-dev
  nsis
  stow
  unzip
