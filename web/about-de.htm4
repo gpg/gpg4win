@@ -77,7 +77,8 @@ Fortgeschrittene). Verfügbar in deutscher und englischer Sprache.</p>
 unterstützt.</p>
 
 <p>Das Outlook-Plugin GpgOL ist kompatibel mit Microsoft Outlook 2003,
-2007, 2010 und 2013. Der Einsatz von MS Exchange Server wird nur in Outlook 2010 und
+2007, 2010 und 2013 (alle nur 32bit!).
+Der Einsatz von MS Exchange Server wird nur in Outlook 2010 und
 2013 unterstützt.</p>
 
 
