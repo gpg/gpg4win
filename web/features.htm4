@@ -88,7 +88,7 @@ GUI. Gpg4win supports the hash algorithms SHA-1, SHA-256 and MD5.
 <div class="column1">
 <h4>Signing and encrypting</h4>
 <p>The provided Outlook plugin GpgOL allows to sign and encrypt
-emails directly in Microsoft Outlook (2003 and 2007). Attachments can
+emails directly in Microsoft Outlook. Attachments can
 be encrypted as well, in one go with the email body. Verifying
 signatures and decrypting messages is done directly in Outlook too.
 </p>
@@ -182,9 +182,9 @@ GNU General Public License (GNU GPL). The usage of Gpg4win is for free.
 <p>Gpg4win supports Windows 7. All <a
 href="screenshots.html">screenshots</a>
 are made with Windows 7.
-Furthermore Windows XP and Vista are supported.</p>
-<p>GpgOL requires Microsoft Outlook 2003 or 2007. Outlook 2010 is not
-supported.</p>
+Furthermore Windows 8, XP and Vista are supported.</p>
+<p>GpgOL requires Microsoft Outlook 2003, 2007, 2010 or 2013 (for all:
+32bit only)</p>
 <p>Details are listed in the section <a
 href="about.html#requirements">System Requirements</a> of Gpg4win's "About"-webpage.</p>
 </div>

@@ -87,7 +87,7 @@ Gpg4win unterstützt die Verfahren sha1sum, sha256sum und md5sum.</p>
 <div class="column1">
 <h4>Signieren und Verschlüsseln</h4>
 <p>Das mitgelieferte Outlook-Plugin GpgOL ermöglicht E-Mails direkt
-in Microsoft Outlook (2003 und 2007) zu signieren und zu verschlüsseln. Dabei werden auch
+in Microsoft Outlook zu signieren und zu verschlüsseln. Dabei werden auch
 Anhänge verschlüsselt. Das Signaturprüfen und Entschlüsseln
 funktioniert genauso einfach direkt in Outlook.
 </p>
@@ -191,9 +191,8 @@ Für die Nutzung von Gpg4win entstehen keine Lizenzkosten.
 <p>Gpg4win unterstützt Windows 7. Die <a
 href="screenshots-de.html">Screenshots</a>
 sind alle unter Windows 7 entstanden.
-Darüber hinaus wird auch Windows XP und Vista unterstützt.</p>
-<p>GpgOL erfordert Outlook 2003 oder 2007. Outlook 2010 wird nicht
-unterstützt.</p>
+Darüber hinaus wird auch Windows 8, XP und Vista unterstützt.</p>
+<p>GpgOL erfordert Outlook 2003, 2007, 2010 oder 2013 (jeweils 32bit).</p>
 <p>Details unter den Angaben zur <a
 href="about-de.html#requirements">Systemanforderung</a>.</p>
 </div>
