@@ -36,11 +36,14 @@ erzeugt und abgespeichert werden.
 </p>
 
 <p>
-Piwik respektiert die "<a href="http://donottrack.us/">Do Not
-Track</a>" Option, welche von einigen Webbrowsern angeboten wird.  Ist
+Piwik respektiert die  <a href="http://donottrack.us/">Do Not
+Track</a>  Option, welche von einigen Webbrowsern angeboten wird.  Ist
 diese Option aktiv, so wird Piwik keine Daten aus dem Besuch dieser
-Website erheben oder abspeichern.  Mehr Information zu den
-Datenschutzfunktionen von Piwik finden Sie auf
+Website erheben oder abspeichern.
+Sie können Piwik auch anweisen, ein
+<a href="http://alberti.gnupg.org/piwik/index.php?module=CoreAdminHome&action=optOut&language=de"
+>no track</a> Cookie für diese Website zu setzen.  Mehr Information zu
+den Datenschutzfunktionen von Piwik finden Sie auf
 <a href="http://piwik.org/privacy/">deren Website</a>.
 </p>
 </div>

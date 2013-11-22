@@ -37,8 +37,14 @@ record that our site was visited by someone.
 </p>
 
 <p>
-Piwik also respects the "<a href="http://donottrack.us/">Do Not Track</a>" preference offered by some
-browsers, so if you have this option set, Piwik will ignore your visit
-entirely. Details of how Piwik protects privacy are on <a href="http://piwik.org/privacy/">their website</a>.
+Piwik also respects the <a href="http://donottrack.us/">Do Not
+Track</a> preference offered by some browsers, so if you have this
+option set, Piwik will ignore your visit entirely.  You may also ask
+Piwik to <a
+href="http://alberti.gnupg.org/piwik/index.php?module=CoreAdminHome&action=optOut&language=en"
+>set a no track</a> cookie for this site.
+Details of how Piwik protects privacy are
+on <a href="http://piwik.org/privacy/">their website</a>.
 </p>
+</iframe>
 </div>
