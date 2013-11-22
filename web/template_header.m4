@@ -42,6 +42,7 @@ m4_define(`LINK',
      MENU(`about', `Über Gpg4win', `About Gpg4win', `about', SUB, LANG_DE)
      MENU(`features', `Funktionen', `Features', `features', SUB, LANG_DE)
      MENU(`screenshots', `Screenshots', `Screenshots', `screenshots', SUB, LANG_DE)
+     MENU(`privacy-policy', `Datenschutzerklärung', `Privacy Policy', `privacy-policy', SUB, LANG_DE)
      <li class="subcap"></li>
     </ul>
    </li>
@@ -82,6 +83,7 @@ m4_define(`LINK',
      MENU(`about', `Über Gpg4win', `About Gpg4win', `about', MAIN, LANG_DE)
      MENU(`features', `Funktionen', `Features', `features', MAIN, LANG_DE)
      MENU(`screenshots', `Screenshots', `Screenshots', `screenshots', MAIN, LANG_DE)
+     MENU(`privacy-policy', `Datenschutzerklärung', `Privacy Policy', `privacy-policy', MAIN, LANG_DE)
     </ul>
     <ul>
      <li><b>
@@ -125,6 +127,26 @@ m4_define(`LINK',
   </div>
   </div>
 
- </body>
+  <script type="text/javascript">
+    var _paq = _paq || [];
+    _paq.push(["trackPageView"]);
+    _paq.push(["enableLinkTracking"]);
+
+    (function() {
+      var u=(("https:" == document.location.protocol) ? "https" : "http")
+              + "://alberti.gnupg.org/piwik/";
+      _paq.push(["setTrackerUrl", u+"piwik.php"]);
+      _paq.push(["setSiteId", "5"]);
+      var d=document,
+          g=d.createElement("script"),
+          s=d.getElementsByTagName("script")[0];
+      g.type="text/javascript";
+      g.defer=true;
+      g.async=true;
+      g.src=u+"piwik.js";
+      s.parentNode.insertBefore(g,s);
+    })();
+  </script>
+   </body>
 </html>
 m4_divert

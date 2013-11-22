@@ -1,0 +1,44 @@
+m4_dnl                                                            -*-html-*-
+m4_include(`template.m4')
+m4_dnl $Id$
+
+m4_define(`EN')
+m4_define(`DE_FILE', `privacy-policy-de.html')
+
+m4_define(`TITLE', `Privacy Policy')
+m4_define(`MAIN', `privacy-policy')
+
+PAGE_START
+
+<div id="main">
+<h2>Privacy Policy</h2>
+<p>
+This website uses Piwik, a Free Software web analytics system, to
+monitor traffic on our Web sites. Piwik records the general
+geographical vicinity of visitors as well as their browser and
+operating system, and records their navigation within the sites. This
+helps us gauge the impact of our materials and improve our work.
+</p>
+
+<p>
+The Piwik installation is the same as used for
+the <a href="http://www.gnupg.org">GnuPG</a> websites and thus
+aggregates data with visits to the GnuPG sites.  The privacy policy of
+the GnuPG sites is identical to the one used for
+this <emph>Gpg4win</emph> site.
+
+</p>
+
+<p>
+Our Piwik system preserves privacy by anonymizing visitors´ IP
+addresses. This means that we will not store any personally
+identifiable information about you, even though your visit produces a
+record that our site was visited by someone.
+</p>
+
+<p>
+Piwik also respects the "<a href="http://donottrack.us/">Do Not Track</a>" preference offered by some
+browsers, so if you have this option set, Piwik will ignore your visit
+entirely. Details of how Piwik protects privacy are on <a href="http://piwik.org/privacy/">their website</a>.
+</p>
+</div>
