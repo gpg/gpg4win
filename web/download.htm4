@@ -111,16 +111,16 @@ of Gpg4win VERSION here:</p>
         href="http://files.gpg4win.org/">files.gpg4win.org</a>.</li>
 
     <li>To create a <b>portable Gpg4win version</b> use the
-    included tool <code>mkportable.exe</code>.<br> 
+    included tool <code>mkportable.exe</code>.<br>
     HOWTO: Install Gpg4win with all components and then run from the
     command line (cmd) in install directory:
     <code>mkportable.exe [OPTIONS] TARGETDIR</code>.
     Use <code>mkportable.exe --help</code> to get all options.
-    The portable version does not include GpgOL and GpgEX! 
+    The portable version does not include GpgOL and GpgEX!
     Your certificates and settings are saved in the directory
     'home' of portable version.
     <br>
-    <i>Please note:</i> Does not use portable applications - especially
+    <i>Please note:</i> Do not use portable applications - especially
     crypto applications - on potentially infected systems.
     </li>
     </ul>
