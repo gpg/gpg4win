@@ -17,11 +17,12 @@
 #
 server ftp://ftp.cs.tu-berlin.de/pub/gnu
 
-# checked: 2013-06-14 ah - Switched to latest release
-file gettext/gettext-0.18.2.1.tar.gz
-chk  86066950cac2fcc49cc7bd23f5ea16bed522b410
+# checked: 2014-06-20 ah - updated
+# verified with key: 4622 25C3 B46F 3487 9FC8  496C D605 848E D7E6 9871
+file gettext/gettext-0.19.1.tar.xz
+chk  e0d425de1bd1a16993b262ff37eaf08abee8f953
 
-# checked: 2013-06-14 ah - Latest release
+# checked: 2014-06-20 ah
 file libiconv/libiconv-1.14.tar.gz
 chk  be7d67e50d72ff067b2c0291311bc283add36965
 
@@ -30,7 +31,7 @@ chk  be7d67e50d72ff067b2c0291311bc283add36965
 #
 server http://zlib.net
 
-# checked: 2013-05-14 wk
+# checked: 2014-06-20 ah
 file zlib-1.2.8.tar.gz
 chk  a4d316c404ff54ca545ea71a27af7dbc29817088
 
@@ -41,15 +42,15 @@ chk  a4d316c404ff54ca545ea71a27af7dbc29817088
 
 server ftp://ftp.gnu.org/pub/gnu
 
-# checked: 2013-04-25 wk
+# checked: 2014-06-20 ah
 file gsasl/libgsasl-1.8.0.tar.gz
 chk  08fd5dfdd3d88154cf06cb0759a732790c47b4f7
 
-# checked: 2013-04-25 wk
+# checked: 2014-06-20 ah
 file libtasn1/libtasn1-2.14.tar.gz
 chk  22f9e0b15f870c8e03ac9cc1ead969d4d84eb931
 
-# checked: 2013-04-25 wk
+# checked: 2014-06-20 ah
 file gnutls/gnutls-2.12.21.tar.bz2
 chk  a02bef78c7e35217d84d36d9b3135de70b46be09
 
@@ -79,21 +80,22 @@ chk    d7195498005d340ccd82e183de19163d16e56ec2
 
 server http://curl.haxx.se/download
 
-# checked: 2013-05-10 wk - updated.
-file  curl-7.30.0.tar.bz2
-chk   23fdc215558023b943cea9dfab04b86020037b0d
+# checked: 2014-06-20 ah - updated
+# verified with key 914C 533D F9B2 ADA2 204F  586D 78E1 1C6B 279D 5C91
+file  curl-7.37.0.tar.bz2
+chk   3bde6fb2e599197e9579c0735ad255c1ddbd914d
 
 
 #
 # libxml2 for Claws plugins
 
-# checked: 2012-03-28 wk - updated
-#          2012-12-07 wk - add patch for CVE-2012-5135
-#          2013-04-29 wk - checked.
+# checked: 2014-06-20 ah - updated
+# checked checksum with linuxfromscratch handbook and mxe repository
+
 server ftp://xmlsoft.org/libxml2
 
-file   libxml2-2.7.8.tar.gz
-chk    859dd535edbb851cc15b64740ee06551a7a17d40
+file   libxml2-2.9.1.tar.gz
+chk    eb3e2146c6d68aea5c2a4422ed76fe196f933c21
 
 #
 # regex for Claws
@@ -130,7 +132,7 @@ server http://www.claws-mail.org/win32
 
 server http://www.abisource.com/downloads/enchant/1.6.0
 
-# checked: 2013-05-08 wk
+# checked: 2014-06-20 ah
 file   enchant-1.6.0.tar.gz
 chk    321f9cf0abfa1937401676ce60976d8779c39536
 
@@ -160,6 +162,7 @@ server ftp://sources.redhat.com/pub
 # checked: 2013-04-29 wk - There is a 2.9.1 but the release notes
 #                          don't tell anything about security critical
 #                          bugs.  Thus we stay with 2.8.0 for now.
+#          2014-06-20 ah - ^ still applies
 file pthreads-win32/pthreads-w32-2-8-0-release.tar.gz
 chk  da8371cb20e8e238f96a1d0651212f154d84a9ac
 
@@ -175,20 +178,23 @@ chk  da8371cb20e8e238f96a1d0651212f154d84a9ac
 #   Your 21th Century sig
 #   21th Century sig, I wanna be your file
 #
-server http://ftp.gnome.org/pub/gnome/sources/glib/2.34
+server http://ftp.gnome.org/pub/gnome/sources/glib/2.41
 
-# checked: 2013-04-30 wk
-file glib-2.34.3.tar.xz
-chk  f2b94ca757191dddba686e54b32b3dfc5ad5d8fb
+# checked: 2014-06-20 ah - updated
+# compared checksum with debian experimental version. Signed with key:
+# 3D0E FB95 E7B5 237F 16E8  2258 E352 D5C5 1C50 41D4
+file glib-2.41.0.tar.xz
+chk  d3b119707786f84496c366f143e6e70e95370d32
 
 #
 # GDK-PIXBUF
 #
-server http://ftp.gnome.org/pub/gnome/sources/gdk-pixbuf/2.26/
+server http://ftp.gnome.org/pub/gnome/sources/gdk-pixbuf/2.30/
 
-# checked: 2013-04-29 wk
-file gdk-pixbuf-2.26.5.tar.xz
-chk  94f30c417441404dcbe23206dda91730074f9b7d
+# checked: 2014-06-20 ah - updated
+# verified with linuxfromscratch and frugalware checksums
+file gdk-pixbuf-2.30.8.tar.xz
+chk  6277b4e5b5e334b3669f15ae0376e184be9e8cd8
 
 
 #
@@ -233,7 +239,6 @@ name pango-dev-1.29.4.zip
 file pango-dev_1.29.4-1_win32.zip
 chk  49ae12458f2e29c27ed9d1390d95db18fd4a49ac
 
-
 #
 # CAIRO
 #
@@ -244,6 +249,9 @@ file cairo-1.10.2.tar.gz
 chk  ccce5ae03f99c505db97c286a0c9a90a926d3c6e
 
 server http://ftp.gnome.org/pub/gnome/binaries/win32/dependencies
+# checked: 2013-07-16 ah most recent package on that server is from
+# 2012-09-27 TODO -> Move to another source / source build of those
+# dependencies
 
 # checked: 2013-04-29 wk
 name cairo-1.10.2.zip
@@ -301,9 +309,11 @@ chk  2e9189c6c6d1dac847a47c537c7a5e9dffd91992
 #
 server http://ftp.gnome.org/pub/gnome/sources/gtk+/2.24
 
-# checked: 2013-04-29 wk - updated from 2.24.10
-file gtk+-2.24.17.tar.xz
-chk  1c539a1564fbcb0a9b60b03188dc808f7b678531
+# checked: 2014-07-16 ah - updated from 2.24.17
+# verified checksum with https://download.gnome.org/core/3.13/3.13.3/sources/
+# sha1 and linuxfromscratch md5sum
+file gtk+-2.24.24.tar.xz
+chk  c43eb248b3d30c6b49937692b4c4bfa10b96201e
 
 #
 # GIMP stuff for W32
@@ -323,11 +333,12 @@ chk  d063e705812e1ee7feb8f35d51b3cad04ca13b0d
 # PNG
 
 # note: 2012-03-28 wk - Changed server from sf.net
-# checked: 2013-04-29 wk
-server ftp://ftp.simplesystems.org/pub/png/src/libpng14
-
-file libpng-1.4.12.tar.bz2
-chk  275cfa90c0558601f6216019317fc37a03ebee01
+# checked: 2014-07-16 ah updated from 1.4.12
+# switched back to sf.net (ftp not available)
+# verified with key: 8048 643B A2C8 40F4 F92A  195F F549 84BF A16C 640F
+server http://downloads.sourceforge.net/project/libpng/libpng14/1.4.13/
+file libpng-1.4.13.tar.xz
+chk  093d59771064dd51860a51c5a8601576c74a152f
 
 #
 # LibFFI
@@ -335,6 +346,7 @@ chk  275cfa90c0558601f6216019317fc37a03ebee01
 server ftp://sourceware.org/pub/libffi
 
 # checked: 2013-04-29 wk - updated from 3.0.10.
+# checked: 2014-07-16 ah - only rc availble from 3.0.14
 file libffi-3.0.13.tar.gz
 chk  f5230890dc0be42fb5c58fbf793da253155de106
 
@@ -344,7 +356,7 @@ chk  f5230890dc0be42fb5c58fbf793da253155de106
 #
 server ftp://ftp.g10code.com/g10code/gpgol
 
-# checked: 2013-08-19 wk
+# checked: 2014-07-16 ah
 file gpgol-1.2.0.tar.bz2
 chk  a263bb7d363c24b521cd6120492c5b8e0ebe10b9
 
@@ -354,7 +366,7 @@ chk  a263bb7d363c24b521cd6120492c5b8e0ebe10b9
 #
 server ftp://ftp.g10code.com/g10code/gpgex
 
-# checked: 2013-08-07 wk
+# checked: 2014-07-16 ah
 file gpgex-1.0.0.tar.bz2
 chk  32217457b0c9a3eeb544833be85dc9a9702a45d3
 
@@ -365,7 +377,7 @@ chk  32217457b0c9a3eeb544833be85dc9a9702a45d3
 
 server ftp://ftp.g10code.com/g10code/w32pth
 
-# checked: 2013-04-24 wk - updated to support w64-mingw32
+# checked: 2014-07-16 ah
 file w32pth-2.0.5.tar.bz2
 chk  d648b98ce215f81e901f3f982470d37c704433a6
 
@@ -375,7 +387,7 @@ chk  d648b98ce215f81e901f3f982470d37c704433a6
 #
 server ftp://ftp.g10code.com/g10code/bzip2
 
-# checked: 2013-04-29 wk
+# checked: 2014-07-16 ah
 file bzip2-1.0.6-g10.tar.gz
 chk  6e38be3377340a21a1f13ff84b5e6adce97cd1d4
 
@@ -384,44 +396,47 @@ chk  6e38be3377340a21a1f13ff84b5e6adce97cd1d4
 #
 server ftp://ftp.gnupg.org/gcrypt
 
-# checked: 2013-06-28 wk
-file libgpg-error/libgpg-error-1.12.tar.bz2
-chk  259f359cd1440b21840c3a78e852afd549c709b8
+# checked: 2014-07-16 ah - updated
+file libgpg-error/libgpg-error-1.13.tar.bz2
+chk  50fbff11446a7b0decbf65a6e6b0eda17b5139fb
 
-# checked: 2013-08-07 wk
+# checked: 2014-07-16 ah - not updated
+# with 1.6.1 gnutls 2.12.21 fails to compile (wk?)
+#file libgcrypt/libgcrypt-1.6.1.tar.bz2
+#chk  f03d9b63ac3b17a6972fc11150d136925b702f02
 file libgcrypt/libgcrypt-1.5.3.tar.bz2
 chk  2c6553cc17f2a1616d512d6870fe95edf6b0e26e
 
-# checked: 2013-04-23 wk
+# checked: 2014-07-16 ah
 file libksba/libksba-1.3.0.tar.bz2
 chk  241afcb2dfbf3f3fc27891a53a33f12d9084d772
 
-# checked: 2013-06-28 wk
+# checked: 2014-07-16 ah
 file libassuan/libassuan-2.1.1.tar.bz2
 chk  8bd3826de30651eb8f9b8673e2edff77cd70aca1
 
-# checked: 2013-10-04 wk
-name gnupg2-2.0.22.tar.bz2
-file gnupg/gnupg-2.0.22.tar.bz2
-chk  9ba9ee288e9bf813e0f1e25cbe06b58d3072d8b8
+# checked: 2014-07-16 ah - updated
+name gnupg2-2.0.25.tar.bz2
+file gnupg/gnupg-2.0.25.tar.bz2
+chk  890d77d89f2d187382f95e83e386f2f7ba789436
 
-# checked: 2013-04-26 wk
+# checked: 2014-07-16 ah
 file dirmngr/dirmngr-1.1.1.tar.bz2
 chk  e708d4aa5ce852f4de3f4b58f4e4f221f5e5c690
 
-# checked:
+# checked: 2014-07-16 ah (I don't think its unstable :P)
 file pinentry/unstable/pinentry-0.8.4-beta8.tar.bz2
 chk  de4ba5ef9a1ced4e4f8543feac553d4cf68dea00
 
-# checked: 2012-03-28 wk
+# checked: 2014-07-16 ah
 file scute/scute-1.4.0.tar.bz2
 chk  e28141d2b03612c09512651795976c58ed3f8035
 
-# checked: 2013-08-12 wk - updated
-file gpgme/gpgme-1.4.3.tar.bz2
-chk  ffdb5e4ce85220501515af8ead86fd499525ef9a
+# checked: 2014-07-16 ah - updated
+file gpgme/gpgme-1.5.0.tar.bz2
+chk  690df6d692be36923b9b28530afb2b4854f2435d
 
-# checked: 2013-05-01 wk - updated
+# checked: 2014-07-16 ah
 file gpa/gpa-0.9.4.tar.bz2
 chk  d4b22b6d1f0ce25244c5a001e3bcbc36aff13ecf
 
@@ -434,7 +449,7 @@ chk  d4b22b6d1f0ce25244c5a001e3bcbc36aff13ecf
 #
 server http://www.jabberwocky.com/software/paperkey
 
-# checked: 2013-05-13 wk - updated
+# checked: 2014-07-16 ah
 file paperkey-1.3.tar.gz
 chk  16af56d0e7bdf081d60c59ea4d72e7df6d9cec21
 
@@ -443,9 +458,9 @@ chk  16af56d0e7bdf081d60c59ea4d72e7df6d9cec21
 #
 server ftp://ftp.g10code.com/g10code/adns
 
-# checked: 2013-04-24 wk
-file adns-1.4-g10-3.tar.bz2
-chk  ef483090edcdd85ae672aa3bab21526b1e335ae3
+# checked: 2014-07-16 ah - updated
+file adns-1.4-g10-4.tar.bz2
+chk  040aed033694aeb3a97b8e5d74b990d4cad6bc99
 
 
 #
@@ -455,14 +470,14 @@ chk  ef483090edcdd85ae672aa3bab21526b1e335ae3
 #
 server http://files.kolab.org/local/gpg4win/libs/
 
-file qt-x86-mingw4-4.8.4-20130514-bin.tar.bz2
-chk  7bb89e83cacfd69b01aa7e607bf8f9be61e9ba8c
+file qt-x86-mingw4-4.8.6-bin.tar.bz2
+chk  a6692a1e2a06af48110324d186bf45569e926adc
 
-file qt-x86-mingw4-4.8.4-20130514-lib.tar.bz2
-chk  0d698cdf3a35575d982f2c351e00e49a45fcd638
+file qt-x86-mingw4-4.8.6-lib.tar.bz2
+chk  a46ea26076695606b308536ebd6fd03f8d7a6707
 
-file qt-x86-mingw4-4.8.4-20130514-src.tar.bz2
-chk  1e0477b026838c7cf38923be781ed578c36e61df
+file qt-x86-mingw4-4.8.6-src.tar.bz2
+chk  9d6e271446f4fac714d915aabbe26497e592d25c
 
 #
 # Qt links DBus and Kleopatra / KDE libs needs it
@@ -499,8 +514,8 @@ chk  c48227c5f3b475c7792abc36c415479d3233468c
 #
 server http://files.kolab.org/local/gpg4win
 
-file kleopatra-20130829-bin.tar.bz2
-chk  b0b14b0de25a8855ff083cc0e7c9f3efde5c3f1b
+file kleopatra-20140721-bin.tar.xz
+chk  7513343e0370dc9a88bdaedb44c3be90583cc986
 
-file kleopatra-20130819-src.tar.bz2
-chk  e8475cc7858cdc1400b0d504c895d50c9eb48f5d
+file kleopatra-20140721-src.tar.xz
+chk  cf8e6d9af34fe95ac28f7dfd23bcb0445fb4f48c
