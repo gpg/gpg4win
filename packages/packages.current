@@ -471,10 +471,10 @@ chk  040aed033694aeb3a97b8e5d74b990d4cad6bc99
 server http://files.kolab.org/local/gpg4win/libs/
 
 file qt-x86-mingw4-4.8.6-bin.tar.bz2
-chk  a6692a1e2a06af48110324d186bf45569e926adc
+chk  657c833fa39a93c6d7bfccc03c9fb88df4746136
 
 file qt-x86-mingw4-4.8.6-lib.tar.bz2
-chk  a46ea26076695606b308536ebd6fd03f8d7a6707
+chk  bc7fc185fd54259be25833b4c482a5680279cdae
 
 file qt-x86-mingw4-4.8.6-src.tar.bz2
 chk  9d6e271446f4fac714d915aabbe26497e592d25c
