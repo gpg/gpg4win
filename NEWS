@@ -3,6 +3,37 @@
 # The version number given below are for the standard installers as
 # distributed by www.gpg4win.org.
 
+Noteworthy changes in version 2.2.2 (unreleased)
+------------------------------------------------
+
+(en) GnuPG has been updated to version 2.0.25. See release notes on
+     www.gnupg.org for details.
+
+(de) GnuPG wurde auf Version 2.0.25 aktualisiert. Details zu dieser
+    Version finden sich unter www.gnupg.org
+
+(en) A library load problem has been fixed that could keep kleopatra
+    from starting on some systems.
+
+(de) Ein Problem wurde behoben welches dazu führen konnte das Kleopatra
+    auf manchen System nicht startete.
+
+(en) Used libraries have been updated to their latest stable relase.
+
+(de) Verwendete Bibliotheken wurden aktualisiert.
+
+~~~~~~~~~~~~~~~
+GnuPG:          2.0.25
+Kleopatra:      2.2.0-gitd95c52d
+GPA:            0.9.4
+GpgOL:          1.2.0
+GpgEX:          1.0.0
+Claws-Mail:     3.9.1
+Kompendium DE:  3.0.0
+Kompendium EN:  3.0.0
+~~~~~~~~~~~~~~~
+
+
 Noteworthy changes in version 2.2.1 (2013-10-08)
 ------------------------------------------------
 
