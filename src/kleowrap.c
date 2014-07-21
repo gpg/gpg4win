@@ -314,6 +314,40 @@ build_commandline (const char * const *argv)
   return argv_quoted;
 }
 
+static void
+kleowrap_set_dll_directory (const char *path)
+{
+  /* Set DLL directory is only necessary on Windows XP after SP2
+     but it is also only available on those systems */
+  typedef BOOL (CALLBACK* LPFNSETDLLDIRECTORY)(LPCTSTR);
+  LPFNSETDLLDIRECTORY my_set_dll_directory;
+
+  HMODULE hmod;
+
+  if (!(hmod = GetModuleHandle ("kernel32.dll")))
+    {
+      fprintf (stderr, "kleowrap: failed to get kernel32.dll handle: rc=%d\n",
+               GetLastError());
+      return;
+    }
+
+  my_set_dll_directory =
+    (LPFNSETDLLDIRECTORY) GetProcAddress (hmod, "SetDllDirectoryA");
+
+  if (!my_set_dll_directory)
+    {
+      /* Not supported and so not necessary */
+      return;
+    }
+
+  if (!my_set_dll_directory (path))
+    {
+      fprintf (stderr, "kleowrap: failed to set module handle",
+               GetLastError());
+      return;
+    }
+  OutputDebugString ("Andre entferne mich: SetDllDirectory success.");
+}
 
 int
 main (int argc, const char * const *argv)
@@ -322,6 +356,7 @@ main (int argc, const char * const *argv)
   char pgm[MAX_PATH+100];
   char *p, *p0;
   char **argv_quoted;
+
 
   if (!GetModuleFileNameA (NULL, pgm, sizeof (pgm) - 1))
     {
@@ -336,6 +371,7 @@ main (int argc, const char * const *argv)
     goto leave;
   *p = '\0';
   chdir (pgm);
+  kleowrap_set_dll_directory (pgm);
   *(p++) = '\\';
   memmove (p + 4, p, strlen (p) + 1);
   strncpy (p, "bin\\", 4);
