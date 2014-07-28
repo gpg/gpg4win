@@ -514,8 +514,9 @@ chk  c48227c5f3b475c7792abc36c415479d3233468c
 #
 server http://files.kolab.org/local/gpg4win
 
-file kleopatra-20140721-bin.tar.xz
-chk  7513343e0370dc9a88bdaedb44c3be90583cc986
+# Repackacked. Source is the same als 20140721
+file kleopatra-20140728-bin.tar.xz
+chk  0f034698806fe7a2451c4e5f3b5489e052d33d19
 
 file kleopatra-20140721-src.tar.xz
 chk  cf8e6d9af34fe95ac28f7dfd23bcb0445fb4f48c
