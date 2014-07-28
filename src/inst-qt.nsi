@@ -51,6 +51,12 @@ Section "-qt" SEC_qt
   File ${prefix}/plugins/imageformats/qsvg4.dll
   File ${prefix}/plugins/imageformats/qtiff4.dll
 
+  # For some reason (BUG?) Accessibilty plugins are looked
+  # for in bin and not under plugins when they are loaded
+  # on demand later.
+  SetOutPath "$INSTDIR\bin\accessible"
+  File ${prefix}/plugins/accessible/qtaccessiblewidgets4.dll
+
   # For what is this needed? Scripting?
   SetOutPath "$INSTDIR"
   File ${prefix}/bin/qdbus.exe

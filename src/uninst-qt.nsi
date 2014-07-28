@@ -62,10 +62,9 @@ Section "-un.qt"
   Delete "$INSTDIR\translations\qt_de.qm"
   Delete "$INSTDIR\translations\qt_help_de.qm"
 
-  Delete "$INSTDIR\plugins\accessible\qtaccessiblecompatwidgets4.dll"
-  Delete "$INSTDIR\plugins\accessible\qtaccessiblewidgets4.dll"
+  Delete "$INSTDIR\bin\accessible\qtaccessiblewidgets4.dll"
 
-  RMDir "$INSTDIR\plugins\accessible"
+  RMDir "$INSTDIR\bin\accessible"
 
   Delete "$INSTDIR\plugins\codecs\qcncodecs4.dll"
   Delete "$INSTDIR\plugins\codecs\qjpcodecs4.dll"
