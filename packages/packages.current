@@ -434,7 +434,7 @@ chk  e28141d2b03612c09512651795976c58ed3f8035
 
 # checked: 2014-07-30 ah - updated
 file gpgme/gpgme-1.4.4.tar.bz2
-chk  858026ba73b761b5f1393632e81dbf7bc49ddd1d
+chk  1f9f668886c25467987a11c0d37c45e1ffe66b8e
 
 # checked: 2014-07-16 ah
 file gpa/gpa-0.9.4.tar.bz2
