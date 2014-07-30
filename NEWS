@@ -12,7 +12,7 @@ Noteworthy changes in version 2.2.2 (unreleased)
 (de) GnuPG wurde auf Version 2.0.25 aktualisiert. Details zu dieser
     Version finden sich unter www.gnupg.org
 
-(en) A library load problem has been fixed that could keep kleopatra
+(en) A library load problem has been fixed that could keep Kleopatra
     from starting on some systems.
 
 (de) Ein Problem wurde behoben welches dazu führen konnte das Kleopatra
@@ -22,12 +22,17 @@ Noteworthy changes in version 2.2.2 (unreleased)
 
 (de) Verwendete Bibliotheken wurden aktualisiert.
 
+(en) GpgEX no longer crashes if the environment variable GNUPGHOME is set.
+
+(de) GpgEX stürzt nicht mehr ab wenn die Umgebungsvariable GNUPGHOME gesetzt
+     ist.
+
 ~~~~~~~~~~~~~~~
 GnuPG:          2.0.25
 Kleopatra:      2.2.0-gitd95c52d
 GPA:            0.9.4
 GpgOL:          1.2.0
-GpgEX:          1.0.0
+GpgEX:          1.0.1
 Claws-Mail:     3.9.1
 Kompendium DE:  3.0.0
 Kompendium EN:  3.0.0

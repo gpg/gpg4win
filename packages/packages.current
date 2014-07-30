@@ -366,9 +366,9 @@ chk  a263bb7d363c24b521cd6120492c5b8e0ebe10b9
 #
 server ftp://ftp.g10code.com/g10code/gpgex
 
-# checked: 2014-07-16 ah
-file gpgex-1.0.0.tar.bz2
-chk  32217457b0c9a3eeb544833be85dc9a9702a45d3
+# checked: 2014-07-30 ah
+file gpgex-1.0.1.tar.bz2
+chk  eb54767fd8e3728e8d14c7c158e0841b67c714a6
 
 
 #
