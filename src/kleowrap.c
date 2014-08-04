@@ -346,7 +346,6 @@ kleowrap_set_dll_directory (const char *path)
                GetLastError());
       return;
     }
-  OutputDebugString ("Andre entferne mich: SetDllDirectory success.");
 }
 
 int
