@@ -50,9 +50,12 @@ chk  08fd5dfdd3d88154cf06cb0759a732790c47b4f7
 file libtasn1/libtasn1-2.14.tar.gz
 chk  22f9e0b15f870c8e03ac9cc1ead969d4d84eb931
 
+
+server ftp://ftp.gnutls.org/gcrypt
 # checked: 2014-06-20 ah
-file gnutls/gnutls-2.12.21.tar.bz2
-chk  a02bef78c7e35217d84d36d9b3135de70b46be09
+# verified with key 1F42 4189 05D8 206A A754  CCDC 29EE 58B9 9686 5171
+file gnutls/v2.12/gnutls-2.12.23.tar.bz2
+chk 3c0ba2153560abfb08d88dcb016cd6b72e465db5
 
 
 #
