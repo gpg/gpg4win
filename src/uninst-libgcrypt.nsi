@@ -31,10 +31,9 @@ Section "-un.libgcrypt"
   Push "${gpg4win_pkg_libgcrypt}"
   Call un.SourceDelete
 !else
-  Delete "$INSTDIR\libgcrypt-11.dll"
+  Delete "$INSTDIR\libgcrypt-20.dll"
   Delete "$INSTDIR\lib\libgcrypt.imp"
   Delete "$INSTDIR\include\gcrypt.h"
-  Delete "$INSTDIR\include\gcrypt-module.h"
 
   RMDir "$INSTDIR"
 !endif

@@ -36,18 +36,17 @@ Section "-libgcrypt" SEC_libgcrypt
 !else
   ClearErrors
   SetOverwrite try
-  File "${prefix}/bin/libgcrypt-11.dll"
+  File "${prefix}/bin/libgcrypt-20.dll"
   SetOverwrite lastused
   ifErrors 0 +3
-      File /oname=libgcrypt-11.dll.tmp "${prefix}/bin/libgcrypt-11.dll"
-      Rename /REBOOTOK libgcrypt-11.dll.tmp libgcrypt-11.dll
+      File /oname=libgcrypt-20.dll.tmp "${prefix}/bin/libgcrypt-20.dll"
+      Rename /REBOOTOK libgcrypt-20.dll.tmp libgcrypt-20.dll
 
   SetOutPath "$INSTDIR\lib"
   File /oname=libgcrypt.imp "${prefix}/lib/libgcrypt.dll.a"
 
   SetOutPath "$INSTDIR\include"
   File "${prefix}/include/gcrypt.h"
-  File "${prefix}/include/gcrypt-module.h"
 
 
 !endif
