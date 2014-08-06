@@ -27,6 +27,12 @@ Noteworthy changes in version 2.2.2 (unreleased)
 (de) GpgEX stürzt nicht mehr ab wenn die Umgebungsvariable GNUPGHOME gesetzt
      ist.
 
+(en) Pinentry-qt warning and confirmation dialogs should now open in the
+     foreground.
+
+(de) Bestätigungs und Warnmeldungen von pinentry-qt sollten sich nun auch
+     im Vordergrund öffnen.
+
 ~~~~~~~~~~~~~~~
 GnuPG:          2.0.25
 Kleopatra:      2.2.0-gitd95c52d

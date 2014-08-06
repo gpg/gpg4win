@@ -1,0 +1,76 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From 47476d2f288a22c29567ae2c179ce0472db4257e Mon Sep 17 00:00:00 2001
+From: Andre Heinecke <aheinecke@intevation.de>
+Date: Wed, 6 Aug 2014 15:01:54 +0200
+Subject: [PATCH 2/3] Use raiseWindow also for confirm dialogs
+
+    This should fix the case that the dialog opened
+    in the foreground but a warning / confirm dialog
+    opened in the background.
+
+    * qt4/pinentryconfirm.cpp, qt4/pinentryconfirm.h (showEvent):
+    New overwrite base class method to call raiseWindow.
+    * NEWS: Mention this.
+---
+ NEWS                    | 1 +
+ qt4/pinentryconfirm.cpp | 8 ++++++++
+ qt4/pinentryconfirm.h   | 3 +++
+ 3 files changed, 12 insertions(+)
+
+diff --git a/NEWS b/NEWS
+index fbc3708..2741f5c 100644
+--- a/NEWS
++++ b/NEWS
+@@ -5,6 +5,7 @@ Noteworthy changes in version 0.8.4 (unreleased)
+
+  * Qt4: Improved accessiblity
+
++ * Qt4: Raise confirm message windows into foreground
+
+ Noteworthy changes in version 0.8.3 (2013-04-26)
+ ------------------------------------------------
+diff --git a/qt4/pinentryconfirm.cpp b/qt4/pinentryconfirm.cpp
+index f7a1d63..dfbd19f 100644
+--- a/qt4/pinentryconfirm.cpp
++++ b/qt4/pinentryconfirm.cpp
+@@ -18,6 +18,7 @@
+    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ */
+ #include "pinentryconfirm.h"
++#include "pinentrydialog.h"
+ #include <QAbstractButton>
+
+ PinentryConfirm::PinentryConfirm(Icon icon, int timeout, const QString &title,
+@@ -31,6 +32,13 @@ PinentryConfirm::PinentryConfirm(Icon icon, int timeout, const QString &title,
+     }
+     setAccessibleDescription (desc);
+     setAccessibleName (title);
++    raiseWindow (this);
++}
++
++void PinentryConfirm::showEvent( QShowEvent* event )
++{
++    QDialog::showEvent( event );
++    raiseWindow( this );
+ }
+
+ void PinentryConfirm::slotTimeout()
+diff --git a/qt4/pinentryconfirm.h b/qt4/pinentryconfirm.h
+index 3113750..44fb3ae 100644
+--- a/qt4/pinentryconfirm.h
++++ b/qt4/pinentryconfirm.h
+@@ -36,6 +36,9 @@ class PinentryConfirm : public QMessageBox
+
+     private:
+	QTimer *_timer;
++
++    protected:
++    /* reimp */ void showEvent( QShowEvent* event );
+ };
+
+ #endif
+--
+1.9.1
