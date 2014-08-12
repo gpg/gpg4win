@@ -415,10 +415,10 @@ chk  241afcb2dfbf3f3fc27891a53a33f12d9084d772
 file libassuan/libassuan-2.1.1.tar.bz2
 chk  8bd3826de30651eb8f9b8673e2edff77cd70aca1
 
-# checked: 2014-07-16 ah - updated
-name gnupg2-2.0.25.tar.bz2
-file gnupg/gnupg-2.0.25.tar.bz2
-chk  890d77d89f2d187382f95e83e386f2f7ba789436
+# checked: 2014-08-12 ah - updated
+name gnupg2-2.0.26.tar.bz2
+file gnupg/gnupg-2.0.26.tar.bz2
+chk  3ff5b38152c919724fd09cf2f17df704272ba192
 
 # checked: 2014-07-16 ah
 file dirmngr/dirmngr-1.1.1.tar.bz2
