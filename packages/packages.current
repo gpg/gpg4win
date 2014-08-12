@@ -514,9 +514,10 @@ chk  c48227c5f3b475c7792abc36c415479d3233468c
 #
 server http://files.kolab.org/local/gpg4win
 
-# Repackacked. Source is the same als 20140721
-file kleopatra-20140728-1-bin.tar.xz
-chk  8d39ab63aee72aaccf00d3f6018ff7d215669bab
+# This is kdepim/gpg4win branch
+# ac229d2213619345c7148f11a9732bb1ce2890a7
+file kleopatra-20140812-bin.tar.xz
+chk  4ef9476e0e41cb0ce1c23f117f6043760a4e4339
 
-file kleopatra-20140721-src.tar.xz
-chk  cf8e6d9af34fe95ac28f7dfd23bcb0445fb4f48c
+file kleopatra-20140812-src.tar.xz
+chk  d540f02dd2b0134dd298783a4be42254020e9970
