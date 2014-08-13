@@ -274,7 +274,6 @@ eps_manual_files = $(png_manual_files:.png=.eps)
 
 EXTRA_DIST = 	gpg4win-compendium-de.tex \
 		gpg4win-compendium-en.tex \
-		gpg4win-compendium-en.org \
 		fdl.tex fdl-book.tex version.tex.in indexstyle.ist \
 		hyperlatex.sty \
 		$(png_compendium_files) $(png_hyperlatex_files)

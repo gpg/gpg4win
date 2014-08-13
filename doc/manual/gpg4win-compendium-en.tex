@@ -1,14 +1,6 @@
 % gpg4win-compendium-en.tex
 % Note, that this a HyperLaTeX source and not plain LaTeX!
 
-%%
-%%                 W A R N I N G
-%%
-%% Better don't edit this file!  The file has already been converted
-%% to org-mode as gpg4win-compendium-en.org.  Furture improvements
-%% should go into the org file.  -wk 2013-11-26
-
-
 % DIN A4
 \documentclass[a4paper,11pt,oneside,openright,titlepage]{scrbook}
 
@@ -16,29 +8,30 @@
 %\documentclass[a5paper,10pt,twoside,openright,titlepage,DIV11,normalheadings]{scrbook}
 
 \usepackage{ifthen}
+\usepackage{hyperlatex}
 
 % Switch between papersize DIN A4 and A5
 % Note: please comment in/out one of the related documentclass lines above
-\newboolean{DIN-A5}
-%\setboolean{DIN-A5}{true}
+\T\newboolean{DIN-A5}
+%\T\setboolean{DIN-A5}{true}
 
 % define packages
 \usepackage{times}
-\usepackage[utf8]{inputenc}
+\usepackage[latin1]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage[english]{babel}
-
+\T\usepackage[english]{babel}
+\W\usepackage[english]{babel}
 \usepackage[babel]{csquotes}
-\defineshorthand{``}{\openautoquote}
-\defineshorthand{''}{\closeautoquote}
+\T\defineshorthand{``}{\openautoquote}
+\T\defineshorthand{''}{\closeautoquote}
 \usepackage{ifpdf}
 \usepackage{graphicx}
 \usepackage{alltt}
 \usepackage{moreverb}
-\ifthenelse{\boolean{DIN-A5}}{}{\usepackage{a4wide}}
+\T\ifthenelse{\boolean{DIN-A5}}{}{\usepackage{a4wide}}
 \usepackage{microtype}
-
-
+\W\usepackage{rhxpanel}
+\W\usepackage{sequential}
 \usepackage[table]{xcolor}
 \usepackage{color}
 
@@ -51,7 +44,7 @@
 % we need this to not let smae filenames overwrite each other
 % when we have more than one compendium. The Makefile.am needs
 % to be updated for this as well - not a trivial change.
-
+\W\htmldirectory{compendium-html/en}
 
 
 % Hyperref should be among the last packages loaded
@@ -59,7 +52,7 @@
     bookmarks,
     bookmarksnumbered,
     pdftitle={The Gpg4win Compendium},
-    pdfauthor={Emanuel SchÃ¼tze; Werner Koch; Florian v. Samson; Dr.
+    pdfauthor={Emanuel Schütze; Werner Koch; Florian v. Samson; Dr.
       Jan-Oliver Wagner; Ute Bahn; Karl Bihlmeier; Manfred J. Heinze;
       Isabel Kramer; Dr. Francis Wray},
     pdfsubject={Secure e-mail and file encryption using GnuPG for Windows},
@@ -67,7 +60,7 @@
     OpenPGP; S/MIME; X.509; certificate; Kleopatra; GpgOL; GpgEX;
     GnuPG; secure; email security; cryptography; public key;
     Free Software; signature; verify; FLOSS; Open Source Software;
-    PKI; folder}
+    PKI; folder} 
 ]{hyperref}
 
 %\IfFileExists{hyperxmp.sty}{
@@ -79,32 +72,34 @@
 %}
 
 % set graphic extension
+\begin{latexonly}
     \ifpdf
         \DeclareGraphicsExtensions{.png}
     \else
         \DeclareGraphicsExtensions{.eps}
     \fi
+\end{latexonly}
 
 % set page header/footer
-\ifthenelse{\boolean{DIN-A5}}
+\T\ifthenelse{\boolean{DIN-A5}}
 {% DIN A5
-    \fancyhead{} % clear all fields
-    \fancyhead[LO,RE]{\itshape\nouppercase{\leftmark}}
-    \fancyhead[RO,LE]{\large\thepage}
-    \fancyfoot[CE]{www.bomots.de}
-    \fancyfoot[CO]{Sichere  }
-    \pagestyle{fancy}
+    \T\fancyhead{} % clear all fields
+    \T\fancyhead[LO,RE]{\itshape\nouppercase{\leftmark}}
+    \T\fancyhead[RO,LE]{\large\thepage}
+    \T\fancyfoot[CE]{www.bomots.de}
+    \T\fancyfoot[CO]{Sichere  }
+    \T\pagestyle{fancy}
     \renewcommand\chaptermark[1]{\markboth{\thechapter. \ #1}{}}
-    \renewcommand{\footrulewidth}{0.2pt}
+    \renewcommand{\footrulewidth}{0.2pt} 
 }
-{% DIN A4
-    \fancyhead{} % clear all fields
-    \fancyhead[LO,RE]{The Gpg4win Compendium \compendiumVersionEN
-        \\
-        \itshape\nouppercase{\leftmark}}
-    \fancyhead[RO,LE]{\includegraphics[height=0.7cm]{images-compendium/gpg4win-logo}}
-    \fancyfoot[C]{\thepage}
-    \pagestyle{fancy}
+{% DIN A4 
+    \T\fancyhead{} % clear all fields
+    \T\fancyhead[LO,RE]{The Gpg4win Compendium \compendiumVersionEN
+        \T\\
+        \T\itshape\nouppercase{\leftmark}}
+    \T\fancyhead[RO,LE]{\includegraphics[height=0.7cm]{images-compendium/gpg4win-logo}}
+    \T\fancyfoot[C]{\thepage}
+    \T\pagestyle{fancy}
 }
 
 \makeindex
@@ -120,7 +115,11 @@
 \newcommand{\marginSmime}{\marginline{\vspace{10pt}\includegraphics[width=1.5cm]{images-compendium/smime-icon}}}
 \newcommand{\IncludeImage}[2][]{
 \begin{center}
+\texorhtml{%
   \includegraphics[#1]{images-compendium/#2}%
+}{%
+  \htmlimg{../images-compendium/#2.png}%
+}
 \end{center}
 }
 
@@ -128,8 +127,8 @@
 \definecolor{gray}{rgb}{0.4,0.4,0.4}
 \definecolor{lightgray}{rgb}{0.7,0.7,0.7}
 
-\parindent 0cm
-\parskip\medskipamount
+\T\parindent 0cm
+\T\parskip\medskipamount
 
 % Get the version information from another file.
 % That file is created by the configure script.
@@ -143,8 +142,8 @@
 % e.g.: \uniurl[example link]{http:\\example.com}
 \newcommand{\uniurl}[2][]{%
 \ifthenelse{\equal{#1}{}}
-{\href{#2}{\Filename{#2}}}
-{\href{#2}{\Filename{#1}}}
+{\texorhtml{\href{#2}{\Filename{#2}}}{\xlink{#2}{#2}}}
+{\texorhtml{\href{#2}{\Filename{#1}}}{\xlink{#1}{#2}}}}
 
 %%% HYPERLATEX %%%
 \begin{ifhtml}
@@ -215,61 +214,62 @@
 %%% TITLEPAGE %%%
 
 \title{
-%%    \htmlattributes*{img}{width=300}
+    \htmlattributes*{img}{width=300}
     \IncludeImage[width=0.5\textwidth]{gpg4win-logo}%
     \T~\newline
-    \ifthenelse{\boolean{DIN-A5}}%
+    \T\ifthenelse{\boolean{DIN-A5}}%
     % DIN A5:
-    {
+    {\begin{latexonly}
         \LARGE The Gpg4win Compendium\\[0.3cm]
         \large \textmd{Secure e-mail and file encryption
         \\[-0.3cm] using GnuPG for Windows}
+     \end{latexonly}  
     }%
     % DIN A4:
     {The Gpg4win Compendium \\
-      {\Large \textmd}
-      {Secure e-mail and file encryption using GnuPG for
+      \texorhtml{\Large \textmd}{\large}
+      {Secure e-mail and file encryption using GnuPG for 
       Windows}
     }
 }
 \author{
     % Hyperlatex: Add links to pdf versions and Homepage
-%    \htmlonly{
-%        \xml{p}\small
-%        \xlink{PDF version as a download}{http://wald.intevation.org/frs/?group_id=11}
-%        \xml{br}
-%        \xlink{\htmlattributes*{img}{style=border:none title=German}
-%           \htmlimg{../images-hyperlatex/german.png}{}
-%           German Version}{../de/\HlxThisUrl}
-%        \xml{br}
-%        To the \xlink{Gpg4win homepage}{http://www.gpg4win.org/}
-%        \xml{p}
-%    }
-%    % Authors
-    \\[-1cm]
+    \htmlonly{
+        \xml{p}\small
+        \xlink{PDF version as a download}{http://wald.intevation.org/frs/?group_id=11}
+        \xml{br}
+        \xlink{\htmlattributes*{img}{style=border:none title=German}
+           \htmlimg{../images-hyperlatex/german.png}{} 
+           German Version}{../de/\HlxThisUrl}
+        \xml{br}
+        To the \xlink{Gpg4win homepage}{http://www.gpg4win.org/}
+        \xml{p}
+    }
+    % Authors
+    \T\\[-1cm]
       \small Based on a version by
-    \\[-0.2cm]
+    \T\\[-0.2cm]
       \small Ute Bahn, Karl Bihlmeier, Manfred J. Heinze,
       \small Isabel Kramer und Dr. Francis Wray.
-      {\\[0.2cm]}
+      \texorhtml{\\[0.2cm]}{\\}
       \small Extensively revised by
-    \\[-0.2cm]
-      \small Werner Koch, Florian v. Samson, Emanuel SchÃ¼tze and Dr. Jan-Oliver Wagner.
-      \\[0.2cm]}
+    \T\\[-0.2cm]
+      \small Werner Koch, Florian v. Samson, Emanuel Schütze and Dr. Jan-Oliver Wagner.
+      \texorhtml{\\[0.2cm]}{\\}
       \small Translated from the German original by
-    \\[-0.2cm]
+    \T\\[-0.2cm]
       \small Brigitte Hamilton
-    \\[0.4cm]
+    \T\\[0.4cm]
 }
 
 \date{
-    \ifthenelse{\boolean{DIN-A5}}%
+    \T\ifthenelse{\boolean{DIN-A5}}%
     % DIN A5:
-    {
+    {\begin{latexonly}
         \large A publication of the Gpg4win Initiative
         \\[0.2cm]
-        Version \compendiumVersionEN~from \compendiumDateEN
-
+        Version \compendiumVersionEN~from \compendiumDateEN 
+     \end{latexonly}
     }%
     % DIN A4:
     {A publication of the Gpg4win Initiative
@@ -283,27 +283,28 @@
 % BEGIN DOCUMENT %%%
 
 \begin{document}
-\pdfbookmark[0]{Title page}{titel}
+\T\pdfbookmark[0]{Title page}{titel}
 % set title page
+\texorhtml{
     \ifthenelse{\boolean{DIN-A5}}
     {\noindent\hspace*{7mm}\parbox{\textwidth}{\centering\maketitle}\cleardoublepage}
     {\maketitle}
-
-
+}
+{\maketitle}
 
 
 % improved handling of long (outstanding) lines
-\setlength\emergencystretch{3em} \tolerance=1000
+\T\setlength\emergencystretch{3em} \tolerance=1000
 
 
-\section*{Publisher's details}
-
+\T\section*{Publisher's details}
+\W\chapter*{Publisher's details}\\
 
 \thispagestyle{empty}
-Copyright \copyright{} 2002 Bundesministerium fÃ¼r Wirtschaft und
+Copyright \copyright{} 2002 Bundesministerium für Wirtschaft und
 Technologie\footnote{Any copying, distribution and/or modification to
 this document may not create any impression of an association with the
-Bundesministerium fÃ¼r Wirtschaft und Technologie
+Bundesministerium für Wirtschaft und Technologie 
 (Federal Ministry for
 Economics and Technology)}\\
 Copyright \copyright{} 2005 g10 Code GmbH\\
@@ -320,7 +321,7 @@ Documentation License''.
 
 \clearpage
 \chapter*{About this compendium}
-\ifthenelse{\boolean{DIN-A5}}{\enlargethispage{2\baselineskip}}{}
+\T\ifthenelse{\boolean{DIN-A5}}{\enlargethispage{2\baselineskip}}{}
 
 The Gpg4win Compendium consists of three parts:
 
@@ -328,7 +329,7 @@ The Gpg4win Compendium consists of three parts:
 \item \textbf{Part~\link*{1}[\ref{part:Novices}]{part:Novices}
     ``For Novices''}: A quick course in Gpg4win.
 
-\item \textbf{Part~\link*{2}[\ref{part:AdvancedUsers}]{part:AdvancedUsers}
+\item \textbf{Part~\link*{2}[\ref{part:AdvancedUsers}]{part:AdvancedUsers} 
     ``For Advanced Users''}: Background information for Gpg4win.
 
 \item \textbf{Annex}: Additional technical information about Gpg4win.\\
@@ -338,7 +339,7 @@ The Gpg4win Compendium consists of three parts:
 Novices''} provides a brief guide for the installation and daily use
 of Gpg4win program components.  The practice robot \textbf{Adele}
 will help you with this process and allow you to practice
-the de- and encryption process (using OpenPGP) until you
+the de- and encryption process (using OpenPGP) until you 
 have become familiar with Gpg4win.
 
 The amount of time required to work through this brief guide will
@@ -366,13 +367,13 @@ The Gpg4win program package and compendium can be obtained at: \\
 \uniurl{http://www.gpg4win.org}
 
 \clearpage
-\chapter*{Legend}
+\chapter*{Legend\htmlonly{\html{br}\html{br}}}
 
 This compendium uses the following text markers:
-\begin{itemize}
+\begin{itemize} 
     \item \textit{Italics} are used for text that appears on a screen
         (e.g. in menus or dialogs). In addition, square
-        brackets are used to mark \Button{buttons}.
+        brackets are used to mark \Button{buttons}. 
 
         Sometimes italics will also be used for individual words in
         the text, if their meaning in a sentence is to be highlighted
@@ -387,18 +388,18 @@ This compendium uses the following text markers:
 
     \item \texttt{Typewriter font} is used for all file names, paths,
         URLs, source codes, as well as inputs and outputs (e.g. for
-        command lines).
+        command lines).  
 \end{itemize}
 
 \cleardoublepage
-\pdfbookmark[0]{\contentsname}{toc}
+\T\pdfbookmark[0]{\contentsname}{toc}
 \tableofcontents
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Part I
 \clearpage
-\part{For Novices}
-
+\T\part{For Novices}
+\W\part*{\textbf{I For Novices}}
 \label{part:Novices}
 \addtocontents{toc}{\protect\vspace{0.3cm}}
 \addtocontents{toc}{\protect\vspace{0.3cm}}
@@ -432,7 +433,7 @@ Gpg4win includes the following programs:
     \item \textbf{GNU Privacy Assistant (GPA)}\index{GNU Privacy
         Assistent|see{GPA}}\index{GPA}\\ is an alternative program for
         managing certificates, in addition to Kleopatra.
-    \item \textbf{GnuPG for Outlook (GpgOL)}\index{GnuPG fÃ¼r
+    \item \textbf{GnuPG for Outlook (GpgOL)}\index{GnuPG für
         Outlook|see{GpgOL}}\index{GpgOL}\\ is an extension for
         Microsoft Outlook 2003 and 2007, which is used to sign and
         encrypt messages.
@@ -474,17 +475,17 @@ years ago, it was briefly available at the same conditions as GnuPG.
 However, this version has not corresponded with the latest state of
 technology for some time.
 
-Gpg4win's predecessors were supported by the Bundesministerium fÃ¼r
-Wirtschaft und Technologie \index{Bundesministerium fÃ¼r Wirtschaft und
+Gpg4win's predecessors were supported by the Bundesministerium für
+Wirtschaft und Technologie \index{Bundesministerium für Wirtschaft und
 Technologie} as part of the Security on the Internet initiative.
-Gpg4win and Gpg4win2 were supported by the Bundesamt fÃ¼r Sicherheit in
-der Informationstechnik (BSI). \index{Bundesamt fÃ¼r Sicherheit in der
+Gpg4win and Gpg4win2 were supported by the Bundesamt für Sicherheit in
+der Informationstechnik (BSI). \index{Bundesamt für Sicherheit in der
 Informationstechnik}
 
 
 Additional information on GnuPG and other projects undertaken by the Federal Government for security on the Internet can be found on the webpages
-\uniurl[www.bsi.de]{http://www.bsi.de} and
-\uniurl[www.bsi-fuer-buerger.de]{http://www.bsi-fuer-buerger.de} of the Bundesamt fÃ¼r Sicherheit in der Informationstechnik.
+\uniurl[www.bsi.de]{http://www.bsi.de} and 
+\uniurl[www.bsi-fuer-buerger.de]{http://www.bsi-fuer-buerger.de} of the Bundesamt für Sicherheit in der Informationstechnik.
 
 
 \clearpage
@@ -498,7 +499,7 @@ as Egypt's pharaoh Khnumhotep II, and during Herodot's and Cesar's time. Thanks
 to Gpg4win, encryption is no longer the reserve of kings, but is
 accessible to everyone, for free.
 
-%\htmlattributes*{img}{width=300}
+\htmlattributes*{img}{width=300}
 \IncludeImage[width=0.9\textwidth]{egyptian-stone}
 
 Computer technology has provided us with some excellent tools to
@@ -506,7 +507,7 @@ communicate around the globe and obtain information. However, rights
 and freedoms which are taken for granted with other forms of
 communication must still be secured when it comes to new technologies.
 The Internet has developed with such speed and at such a scale that it
-has been difficult to keep up with maintaining our rights.
+has been difficult to keep up with maintaining our rights. 
 
 With the old-fashioned way of writing a letter, written contents are
 protected by an envelope. The envelope protects messages from prying
@@ -516,7 +517,7 @@ post card, which can also be read by the mail carrier and others.
 
 \clearpage
 You and no one else decides whether the message is important,
-confidential or secret.
+confidential or secret. 
 
 \Email{}s do not provide this kind of freedom. An \Email{} is like a
 post card - always open, and always accessible to the electronic
@@ -535,15 +536,15 @@ system} provides interesting background information on this topic.
 
 Why is this an issue -- because the envelope is missing.
 
-%\htmlattributes*{img}{width=300}
+\htmlattributes*{img}{width=300}
 \IncludeImage[width=0.5\textwidth]{sealed-envelope}
 
 \clearpage
 What we are suggesting here is essentially an ``envelope'' for your
 electronic mail. Whether you use it, when or for whom and how often -
-that is entirely up to you. Software such as Gpg4win merely returns
+that is entirely up to you. Software such as Gpg4win merely returns 
 the right to choose to you.  The right to choose whether you think a message
-is important and requires protection.
+is important and requires protection. 
 
 This is the key aspect of the right to privacy of correspondence, post
 and telecommunications in \index{Telecommunication secrecy}
@@ -584,7 +585,7 @@ though the way it works is actually quite complicated. This section
 will explain how Gpg4win works -- not in all details, but enough to
 explain the principles behind this software. Once you are familiar
 with the principles, you will have considerable trust in the security
-offered by Gpg4win.
+offered by Gpg4win. 
 
 At the end of this book, in Chapter~\ref{ch:themath}, you can also open
 the remaining secrets surrounding ``Public Key'' cryptography and
@@ -595,9 +596,9 @@ Gpg4win using current state of technology.
 \subsubsection{Lord of the keyrings}
 Anyone wishing to secure something valuable locks it away -- with a
 key. Even better is a key that is unique and is kept in a safe
-location.
+location. 
 
-%\htmlattributes*{img}{width=300}
+\htmlattributes*{img}{width=300}
 \IncludeImage[width=0.5\textwidth]{schlapphut-with-key}
 
 If the key should ever fall into the wrong hands, the valuables are no
@@ -611,7 +612,7 @@ Secret keys are nothing new in cryptography: it has always been that
 keys were hidden to protect the secrecy of the messages. Making this
 process very secure is very cumbersome and also prone to errors.
 
-%\htmlattributes*{img}{width=300}
+\htmlattributes*{img}{width=300}
 \IncludeImage[width=0.5\textwidth]{tangled-schlapphut}
 
 The basic problem with the ``ordinary'' secret transmission of messages
@@ -631,23 +632,23 @@ intercepted by third parties.
 \clearpage
 In contrast -- and not including the secret key -- Gpg4win works with
 another key that is fully accessible and public. It is also described
-as a ``public key'' encryption system.
+as a ``public key'' encryption system. 
 
 This may sound contradictory, but it is not. The clue: It is no longer
 necessary to exchange a secret key. To the contrary: The secret key
 can never be exchanged! The only key that can be passed on is the
-public key (in the public certificate)~-- which anyone can know.
+public key (in the public certificate)~-- which anyone can know. 
 
 That means that when you use Gpg4win, you are actually using a pair of
 keys\index{Key!pair} -- a secret and a second public key. Both key
 components are inextricably connected with a complex mathematical
 formula. Based on current scientific and technical knowledge, it is
 not possible to calculate one key component using the other, and it is
-therefore impossible to break the method.
+therefore impossible to break the method. 
 
 Section \ref{ch:themath} explains why that is.
 
-
+\htmlattributes*{img}{width=300}
 \IncludeImage[width=0.5\textwidth]{verleihnix}
 
 
@@ -667,7 +668,7 @@ Both key components have very different functions:
     The secret key component \textbf{decrypts} messages.
 \end{quote}
 
-
+\htmlattributes*{img}{width=300}
 \IncludeImage[width=0.75\textwidth]{key-with-shadow-bit}
 
 \begin{quote}
@@ -690,13 +691,13 @@ method)
 \textbf{The ``secret key method'' works like this:}
 
 Imagine that you have installed a mail strongbox in front of your
-house, which you want to use to send secret messages.
+house, which you want to use to send secret messages. 
 
 The strongbox has a lock for which there is only one single key. No
 one can put anything into or take it out of the box without this key.
 This way, your secret messages are pretty secure.
 
-
+\htmlattributes*{img}{width=300}
 \IncludeImage[width=0.75\textwidth]{letter-into-safe}
 
 Since there is only one key, the person you are corresponding with
@@ -709,7 +710,7 @@ You have to give this key to that person via a secret route.
 \bigskip
 \bigskip
 
-
+\htmlattributes*{img}{width=300}
 \IncludeImage[width=0.75\textwidth]{secret-key-exchange}
 
 \clearpage
@@ -719,7 +720,7 @@ have the secret key.
 Therefore everything hinges on this one key: If a third party knows
 the key, it is the end of the secret messages.  Therefore you and the
 person you are corresponding with \textbf{must exchange the key in a
-manner that is as secret} as the message itself.
+manner that is as secret} as the message itself. 
 
 But actually -- you might just as well give them the secret message
 when you are giving them the key...
@@ -731,7 +732,7 @@ per \Email{}.
 
 So we might as well forget about this option ...
 
-
+\htmlattributes*{img}{width=300}
 \IncludeImage[width=0.75\textwidth]{letter-out-of-safe}
 
 \clearpage
@@ -739,26 +740,26 @@ So we might as well forget about this option ...
 
 You once again install a mail strongbox\index{Mail strongbox} in front of
 your house. But unlike the strongbox in the first example, this one
-is always open. On the box hangs a key --Â­ which is visible to
+is always open. On the box hangs a key --­ which is visible to
 everyone -- and which can be used by anyone to lock the strongbox
 (asymetric encryption method).
 \index{Asymmetric encryption}
 
 \textbf{Locking, but not opening:} that is the difference!
 
-
+\htmlattributes*{img}{width=300}
 \IncludeImage[width=0.7\textwidth]{pk-safe-open}
 
 This key is yours and -- as you might have guessed -- it is your public key.
 
 If someone wants to leave you a secret message, they put it in the
 strongbox and lock it with your public key. Anyone can do this, since
-the key is available to everyone.
+the key is available to everyone.  
 
 No one else can open the strongbox
 and read the message.  Even the person that has locked the message in
 the strongbox cannot unlock it again, e.g. in order to change the
-message.
+message.  
 
 This is because the public half of the key can only be used for locking purposes.
 
@@ -767,7 +768,7 @@ and private part of the key.
 
 \clearpage
 \textbf{Getting back to how this applies to \Email{} encryption:}
-Anyone can encrypt an \Email{} for you.
+Anyone can encrypt an \Email{} for you.  
 
 To do this, they do not need a secret key; quite the opposite, they
 only need a totally non-secret \index{Key!public}, ``public'' key.
@@ -786,9 +787,9 @@ strongbox and locked it with the recipient's key, the message is not
 accessible to anyone, including you. Only the recipient can open the
 strongbox with his private key and read the message.
 
-\enlargethispage{2\baselineskip}
+\T\enlargethispage{2\baselineskip}
 
-
+\htmlattributes*{img}{width=300}
 \IncludeImage[width=0.75\textwidth]{pk-safe-opened-with-sk}
 
 \clearpage
@@ -799,7 +800,7 @@ key!
 
 However, this is quite different from the ``non-public key'' method:
 You are the only one who knows and uses your secret key. The key is
-never forwarded to a third party  Â­-- it is not necessary to transfer
+never forwarded to a third party  ­-- it is not necessary to transfer
 keys in secret, nor is it advised.
 
 Nothing must be passed between sender and recipient in secret --
@@ -833,19 +834,19 @@ On a technical level, a private key is nothing more than a file which
 is stored on your computer. To prevent unauthorised access of this
 file, it is secured in two ways:
 
-
+\htmlattributes*{img}{width=300}
 \IncludeImage[width=0.5\textwidth]{think-passphrase}
 
 First, no other user may read or write in the file -- which is
 difficult to warrant, since computer administrators always have access
-to all files, and the computer may be lost or attacked
+to all files, and the computer may be lost or attacked 
 by viruses\index{Viruses}, worms\index{Worms} or
 Trojans\index{Trojans} .
 
 For this reason we need another layer of protection: the passphrase.
 This is not a password -- a passphrase should not consist of only one
 word, but a sentence, for example. You really should keep this
-passphrase ``in your head'' and never have to write it down.
+passphrase ``in your head'' and never have to write it down.  
 
 At the same time, it cannot be possible to guess it.  This may sound
 contradictory, but it is not. There are several proven methods of
@@ -859,11 +860,11 @@ $\qquad$\verb-People in glass houses should not be throwing stones.-
 
 Now, take every third letter of this sentence:
 
-$\qquad$\verb-oegsoehloerisn-
+$\qquad$\verb-oegsoehloerisn- 
 \texttt{\scriptsize{(Pe\textbf{o}pl\textbf{e} in
 \textbf{g}la\textbf{s}s h\textbf{o}us\textbf{e}s
 s\textbf{h}ou\textbf{l}d n\textbf{o}t b\textbf{e}
-th\textbf{r}ow\textbf{i}ng \textbf{s}to\textbf{n}es.)}}
+th\textbf{r}ow\textbf{i}ng \textbf{s}to\textbf{n}es.)}} 
 
 
 While it may not be easy to remember
@@ -882,14 +883,14 @@ in any order. In principle, anything goes, including umlaute, special
 characters, digits etc. But remember -- if you want to use your secret
 key abroad at a different computer, please remember that not all
 keyboards may have such special characters. For example, you will
-likely only find umlaute (Ã¤, Ã¶, Ã¼ usw.) on German keyboards.
+likely only find umlaute (ä, ö, ü usw.) on German keyboards.  
 
 You can also make intentional grammar mistakes, e.g.  ``mustake''
 instead of ``mistake''. Of course you also have to be able to remember
 these ``mustakes''. Or, change languages in the middle of the phrase.
 You can change the sentence:
 
-$\qquad$\verb-In MÃ¼nchen steht ein HofbrÃ¤uhaus.-
+$\qquad$\verb-In München steht ein Hofbräuhaus.-
 
 into this passphrase:
 
@@ -915,7 +916,7 @@ remember. If you make your passphrase even shorter by using special
 characters, you will save some time entering the passphrase, but it is
 also morr likely that you will forget your passphrase.
 
-Here is an extreme example of a very short but also very secure
+Here is an extreme example of a very short but also very secure 
 passphrase:
 
 $\qquad$\verb-R!Qw"s,UIb *7\$-
@@ -973,7 +974,7 @@ real.
 \index{OpenPGP} \index{S/MIME}
 
 You have seen the importance of the ``envelope'' for your
-\Email{} and how to provide one
+\Email{} and how to provide one 
 using tools of modern information technology: a mail
 strongbox,\index{Mail strongbox} in which anyone can deposit encrypted
 mails which only you, the owner of the strongbox, can decrypt. It is
@@ -1003,7 +1004,7 @@ runs \index{Chain of trust} from ``the top'' to ``the bottom'', and is
 described as a \textbf{``hierarchical trust concept''}.
 \index{Hierarchical trust concept}
 
-In the case of Gpg4win or other \Email{} encryption programs,
+In the case of Gpg4win or other \Email{} encryption programs, 
  this concept is found in almost mirror-like fashion in
 \textbf{S/MIME}. Added to this is\textbf{OpenPGP}, another concept
 that only works this way on the Internet.  S/MIME and OpenPGP have the
@@ -1035,7 +1036,7 @@ non-hierarchical Internet and its users. For example, if User B trusts
 User A, then User B could also trust the public key of User C, whom he
 does not know, if this key has been authenticated by User A.
 
-Therefore OpenPGP offers the option of exchanging encrypted data and
+Therefore OpenPGP offers the option of exchanging encrypted data and 
 \Email{}s without authentication by a higher-ranking agency. It is
 sufficient if you trust the \Email{} address and
 associated certificate of the person you are communicating with.
@@ -1051,7 +1052,7 @@ Gpg4win and understand the following chapters:
         offer the required security.
     \item The methods are \textbf{not compatible} with each other.
         They offer two alternate methods for authenticating your
-        secret communication. Therefore they are not deemed to be
+        secret communication. Therefore they are not deemed to be 
         interoperable.
     \item Gpg4win allows for the convenient \textbf{and parallel} use
         of both methods -- you do not have to choose one or the other
@@ -1063,7 +1064,7 @@ creation of the key pair, therefore branches off to discuss both methods. At
 the end of Chapter~\ref{ch:CreateKeyPair} the information is combined
 again.
 
-
+\begin{latexonly} %no hyperlatex
 In this compendium, these two symbols will be used to refer to the two
 alternative methods:
 
@@ -1072,6 +1073,7 @@ alternative methods:
 \hspace{1cm}
 \includegraphics[width=2.5cm]{images-compendium/smime-icon}
 \end{center}
+\end{latexonly}
 
 
 \clearpage
@@ -1082,7 +1084,7 @@ Chapters 1 to 5 provided you with information on the background
 related to encryption. While Gpg4win also works if you do not
 understand the logic behind it, it is also different from other
 programs in that you are entrusting your secret correspondence to this
-program. Therefore it is good to know how it works.
+program. Therefore it is good to know how it works.  
 
 With this knowledge you are now ready to install Gpg4win and set up
 your key pair.
@@ -1094,7 +1096,7 @@ existing certificates.
 
 You can load and install Gpg4win from the Internet or a CD. To do
 this, you will need administrator rights to your Windows operating
-system.
+system. 
 
 If you are downloading Gpg4win from the Internet, please ensure that
 you obtain the file from a trustworthy site, e.g.:
@@ -1143,7 +1145,7 @@ On the page that contains \textbf{the selection of components} you can
 decide which programs you want to install.
 
 A default selection has already been made for you. Yo can also install
-individual components at a later time.
+individual components at a later time. 
 
 Moving your mouse cursor over a component will display a brief
 description.  Another useful feature is the display of required hard
@@ -1179,9 +1181,9 @@ Then click on \Button{Next}.
 \clearpage
 If you have selected the default setting -- \textbf{link with start
 menu} -- you can define the name of this start menu on the next page
-or simply accept the name.
+or simply accept the name. 
 
-% screenshot:  Startmenu auswÃ¤hlen
+% screenshot:  Startmenu auswählen
 \IncludeImage[width=0.85\textwidth]{sc-inst-startmenu_en}
 
 Then click on \Button{Install}.
@@ -1217,7 +1219,7 @@ see the following page:
 \IncludeImage[width=0.85\textwidth]{sc-inst-finished2_en}
 
 Now you can decide whether Windows should be restarted immediately or
-manually at a later time.
+manually at a later time. 
 
 Click on \Button{Finish}.
 
@@ -1264,7 +1266,7 @@ certificates correspond with a standard described as
 ~\\ \textbf{It would be nice if I could practice this important
 step of creating a key pair ....}
 
-\marginOpenpgp
+\T\marginOpenpgp
 Not to worry, you can do just that -- but only with OpenPGP:
 
 If you decide for the OpenPGP method of authentication,
@@ -1292,7 +1294,7 @@ But more on that later.
 Open Kleopatra using the Windows start menu:
 
 % screenshot Startmenu with Kleopatra highlighted
-
+\htmlattributes*{img}{width=400}
 \IncludeImage[width=0.7\textwidth]{sc-kleopatra-startmenu_en}
 
 You will see the main Kleopatra screen\index{Kleopatra} --
@@ -1300,14 +1302,14 @@ the certificate administration:
 \index{Certificate administration}
 
 % screenshot: Kleopatra main window
-
+\htmlattributes*{img}{width=508}
 \IncludeImage[width=0.85\textwidth]{sc-kleopatra-mainwindow-empty_en}
 
 At the beginning, this overview will be empty, since you have not
-created or imported any certificates yet.
+created or imported any certificates yet. 
 
 \clearpage
-Click on \Menu{File$\rightarrow$New~Certificate}.
+Click on \Menu{File$\rightarrow$New~Certificate}. 
 
 In the following dialog you select the format for the certificate. You
 can choose from the following: \textbf{OpenPGP} (PGP/MIME)
@@ -1342,7 +1344,7 @@ read either:
 \label{createKeyPairOpenpgp}
 \index{OpenPGP!create certificate}
 
-\marginOpenpgp
+\T\marginOpenpgp
 In the certificate option dialog, click on \Button{Create
 personal OpenPGP key pair}.
 
@@ -1361,7 +1363,7 @@ public just like your name and \Email{} address.
 \IncludeImage[width=0.85\textwidth]{sc-kleopatra-openpgp-personalDetails_en}
 
 If you first wish to \textbf{test} your OpenPGP key pair, you can
-simply enter any name and fictional
+simply enter any name and fictional 
 \Email{} address, e.g.:\\ \Filename{Heinrich Heine}
 and \Filename{heinrich@gpg4win.de}
 
@@ -1391,31 +1393,31 @@ To create a key pair, you must enter your personal passphrase:
 
 If you have read Chapter~\ref{ch:passphrase} you should now have an
 easy-to-remember but hard to break secret passphrase. Enter it in the
-dialog displayed at the top.
+dialog displayed at the top. 
 
 Please note that this window may have been opened in the background
-and is not visible at first.
+and is not visible at first. 
 
 If the passphrase is not secure enough because it is too short or does
 not contain any numbers or special characters, the system will tell
-you.
+you. 
 
 At this point you can also enter a \textbf{test passphrase} or start
-in earnest; it's up to you.
+in earnest; it's up to you. 
 
 To make sure that you did not make any typing errors, the system will
 prompt you to enter your passphrase twice.  Always confirm your entry
 with \Button{OK}.
 
 \clearpage
-Now your OpenPGP key pair is being created:
+Now your OpenPGP key pair is being created: 
 
 % screenshot: Creating OpenPGP Certificate - Create Key
 \IncludeImage[width=0.85\textwidth]{sc-kleopatra-openpgp-createKey_en}
 
 This may take a couple of minutes. You can assist the creation of the
 required random numbers by entering information in the lower input
-field.  It does not matter what you type, as the characters will
+field.  It does not matter what you type, as the characters will 
 not be used, only the time period between each key stroke. You can also
 continue working with another application on your computer, which will
 also slightly increase the quality of the new key pair.
@@ -1431,13 +1433,13 @@ The 40-digit ``fingerprint'' of your newly\index{Fingerprint}
 generated OpenPGP certificate is displayed in the results text field.
 This fingerprint is unique anywhere in the world, i.e. no other person
 will have a certificate with the same fingerprint. Actually, even at
-8 digits it would already be quite unlikely that the same sequence would
-occur twice anywhere in world.  For this reason, it is often only the
+8 digits it would already be quite unlikely that the same sequence would 
+occur twice anywhere in world.  For this reason, it is often only the 
 last 8 digits of a
 fingerprint which are used or shown, and which are described as the
 key ID.\index{Key!ID} This fingerprint
 identifies the identity of the certificate as well as the fingerprint
-of a person.
+of a person. 
 
 However, you do not need to remember or write down the fingerprint.
 You can also display it later in Kleopatra's certificate details.
@@ -1457,16 +1459,16 @@ Next, you can activate one or more of the following three buttons:
     Kleopatra will automatically select the file type and store your
     certificate as an \Filename{.asc} or\Filename{.gpg} file --
     depending on whether you activate or deactivate the \textbf{ASCII
-    armor} option.
-
+    armor} option. 
+    
     For export, click on \Button{OK}.
 
     \textbf{Important:} If you save the file on the hard drive, you
     should copy the file to another data carrier (USB stick, diskette
     or CD-ROM) as soon as possible, and delete the original file
     without a trace, i.e. do not leave it in the Recycle bin! Keep
-    this data carrier and back-up copy in a safe place.
-
+    this data carrier and back-up copy in a safe place.  
+    
     You can also create a back-up copy later; to do this, select the
     following from the Kleopatra main menu:
     \Menu{File$\rightarrow$Export private certificate...} (see Chapter
@@ -1509,7 +1511,7 @@ the explanations for OpenPGP and X.509 will again be identical.
 \label{createKeyPairX509}
 \index{X.509!create certificate}
 
-\marginSmime
+\T\marginSmime
 In the certificate format selection dialog on page~,
 \pageref{chooseCertificateFormat} click on the button\\
 \Button{Create personal X.509 key pair and authentication
@@ -1522,7 +1524,7 @@ Locality) and department (OU = Organizational Unit).
 
 If you first wish to \textbf{test} the X.509 key pair creation
 process, you can enter any information for name, organization and
-country code, and can also enter a fictional
+country code, and can also enter a fictional 
 \Email{} address, e.g.:\Filename{CN=Heinrich
 Heine,O=Test,C=DE,EMAIL=heinrich@gpg4win.de}
 
@@ -1556,14 +1558,14 @@ passphrase:
 
 If you have read Chapter~\ref{ch:passphrase} you should now have an
 easy-to-remember but hard to break secret passphrase. Enter it in the
-dialog displayed at the top!
+dialog displayed at the top! 
 
 Please note that this window may have been opened in the background,
-so it may not be visible at first.
+so it may not be visible at first. 
 
 If the passphrase is not secure enough because it is too short or does
 not contain any numbers or special characters, the system will let you
-know.
+know. 
 
 At this point you can also enter a \textbf{test passphrase} or start
 in earnest; it's up to you.
@@ -1582,7 +1584,7 @@ Now your X.509 key pair is being created:
 
 This may take a couple of minutes. You can assist the creation of the
 required random numbers by entering information in the lower input
-field.  It does not matter what you type, as the characters will
+field.  It does not matter what you type, as the characters will 
 not be used, only the time period between each key stroke. You can also
 continue working with other applications on your computer, which will
 slightly increase the quality of the key pair that is being created.
@@ -1608,7 +1610,7 @@ The next steps are triggered with the following buttons:
     authentication instance (CA) that issues X.509 certificates free
     of charge.
 
-\item[Sending an request by \Email{}
+\item[Sending an request by \Email{}  
     ...]~\\This
     creates a new \Email{} with the certificate request
     which has just been created in the attachment. Enter a recippient
@@ -1619,8 +1621,8 @@ The next steps are triggered with the following buttons:
     \textbf{Please note:} Not all \Email{} programs support this
     function. Of course you can also do this manually: If you do not
     see a new \Email{}window, save your request in a file (see above)
-    and send it by \Email{} to your certificate authority (CA).
-
+    and send it by \Email{} to your certificate authority (CA). 
+    
     As soon as the CA has processed your request, the CA system
     administrator will send you the completed X.509 certificate, which
     has been signed by the CA. You only need to import the file into
@@ -1634,14 +1636,14 @@ End the Kleopatra assistant with \Button{Finish}.
 \clearpage
 \subsubsection{Creating an X509 certificate using www.cacert.org}
 
-\marginSmime
+\T\marginSmime
 CAcert\index{CAcert} is a non-commercial certificate authority which
 issues X.509 certificates free of charge. It offers an alternative to
 commercial root CAs, some of which charge very high fees for their
-certificates.
+certificates. 
 
 To create a (client) certificate at CAcert, you first have to register
-at \uniurl[www.cacert.org]{http://www.cacert.org}.
+at \uniurl[www.cacert.org]{http://www.cacert.org}. 
 
 Immediately following registration, you can create one or more client
 certificates on cacert.org: please make sure you have sufficient key
@@ -1655,7 +1657,7 @@ links to your new X.509 certificate and associated CAcert root
 certificate. Download both certificates.
 
 Follow the instructions to install the certificate on your browser. In
-Firefox, you can use e.g.
+Firefox, you can use e.g. 
 \Menu{Edit$\rightarrow$Settings$\rightarrow$Advanced$\rightarrow$Certificates}
 to find your installed certificate under the first tab ``Your
 certificates" with the name (CN) \textbf{CAcert WoT User}.
@@ -1700,7 +1702,7 @@ which was just created can be found in the certificate administration
 under the tab \Menu{My certificates}:
 
 % screenshot: Kleopatra with new openpgp certificate
-
+\htmlattributes*{img}{width=508}
 \IncludeImage[width=0.85\textwidth]{sc-kleopatra-withOpenpgpTestkey_en}
 
 \clearpage
@@ -1708,10 +1710,10 @@ Double-click on your new certificate to view all details related to
 the certificate:
 
 % screenshot: details of openpgp certificate
-
+\htmlattributes*{img}{width=508}
 \IncludeImage[width=0.85\textwidth]{sc-kleopatra-openpgp-certificateDetails_en}
 
-What do the certificate details mean?
+What do the certificate details mean? 
 
 Your certificate is valid indefinitely, i.e. it has no ``built-in
 expiry date''. To change its validity at a later point, click
@@ -1734,7 +1736,7 @@ secure, you have already gone a long way towards ensuring secrecy.
 
 Everyone can and should have your public certificate, and you can and
 should have the public certificates of your correspondence partners --
-the more, the better.
+the more, the better. 
 
 Because:
 
@@ -1775,9 +1777,9 @@ Let's look at the first two variants on the following pages.
 Do you wish to make your public certificate accessible to the person
 you are corresponding with? Simply send them your exported public
 certificate per \Email{}. This section will show you how this
-works.\\
+works.\\ 
 
-\marginOpenpgp
+\T\marginOpenpgp
 Practice this process with your public OpenPGP certificate! Adele can
 assist you. The following exercises only apply to OpenPGP; for
 information on publishing public X.509 certificates, please see
@@ -1793,20 +1795,20 @@ correspond with a smart human being rather than a piece of software
 
 First, send Adele your public OpenPGP certificate. Using the public
 key in this certificate, Adele will send an encrypted \Email{}
-back to you.
+back to you. 
 
 You then use your own secret key to decrypt Adele's response. To be
 able to respond to Adele with an encrypted \Email{}, Adele has
-attached her own public certificate.
+attached her own public certificate. 
 
 Adele acts just like a real person you are corresponding with. Of
 course, Adele's \Email{}s are not nearly as interesting as those from
 the people you are actually corresponding with. On the other hand, you
 can use Adele to practice as much as you like -- which a real person
-might find bothersome after a while.
+might find bothersome after a while. 
 
 So, now you export your public OpenPGP certificate and send it via
-\Email{} to Adele. The following pages how how this works.
+\Email{} to Adele. The following pages how how this works. 
 
 
 \clearpage
@@ -1820,12 +1822,12 @@ Select a suitable file folder on your PC and save the public
 certificate with the file type\Filename{.asc} e.g.:
 \Filename{mein-OpenPGP-Zertifikat.asc}. The other file types, which
 can be selected, \Filename{.gpg} or\Filename{.pgp}, will save your
-certificate in binary format. That means that in contrast to an
-\Filename{.asc}file, they cannot be read in the text editor.
+certificate in binary format. That means that in contrast to an 
+\Filename{.asc}file, they cannot be read in the text editor. 
 
 When you select the menu item, please make sure that you are only
 exporting your public certificate -- and \textit{not } the certificate
-of your entire key pair with the associated private key by mistake.
+of your entire key pair with the associated private key by mistake. 
 
 Review the file once more by selecting Windows Explorer and selecting
 the same folder that you indicated for the export.
@@ -1834,22 +1836,22 @@ Now \textbf{open} the exported certificate file with a text
 editor, e.g. WordPad. The text editor will display your public OpenPGP
 certificate as it really looks -- a fairly confusing block of text and
 numbers:
-\enlargethispage{\baselineskip}
+\T\enlargethispage{\baselineskip}
 
 % screenshot: Editor mit ascii armored key
 \IncludeImage[width=0.85\textwidth]{sc-wordpad-editOpenpgpKey_en}
 
 \clearpage
 When publishing your OpenPGP certificate by \Email{}, there are
-two variants which can take into account whether an
+two variants which can take into account whether an 
 \Email{} program can send attachments.
 
-\subsubsection{Variant 1: Send public OpenPGP certificate as an
+\subsubsection{Variant 1: Send public OpenPGP certificate as an 
 \Email{} text}
 
 This option always works, even if you are not able to attach files --
 as may be the case with some \Email{} services on the Web.\\ Also,
-it is a way of seeing your public certificate for the first time,
+it is a way of seeing your public certificate for the first time, 
 knowing exactly what is behind it, and what the certificate actually
 consists of.
 
@@ -1866,8 +1868,8 @@ of your computer (Clipboard in a Windows context).
 Now you can start your \Email{} program -- it does not matter which
 one you use -- and add your public certificate into an empty \Email{}.
 In Windows, the key command for adding (``Paste'') is
-\Filename{Ctrl+V}. You may know this process Â­-- copying and pasting
-Â­-- as ``Copy \& Paste''.
+\Filename{Ctrl+V}. You may know this process ­-- copying and pasting
+­-- as ``Copy \& Paste''. 
 
 The \Email{} program should be set up in such a way that it is
 possible to send only text messages and not HTML formated messages
@@ -1884,7 +1886,7 @@ This is approximately what your \Email{} will look like:
 % screenshot: Outlook composer fenster mit openpgp zertifikat.
 \IncludeImage[width=0.85\textwidth]{sc-ol-adele-sendOpenpgpKey-inline_en}
 
-Now send the \Email{} to Adele. Make sure to include your
+Now send the \Email{} to Adele. Make sure to include your  
 \textit{own} \Email{} address as the sender. Otherwise you will never receive Adele's response ...
 
 \clearpage
@@ -1897,7 +1899,7 @@ Above, you learnt about the ``Copy \& Paste'' method,
 because it is more transparent and easier to understand.
 
 Now write another \Email{} to Adele -- this time with the certificate
-file in the attachment:
+file in the attachment: 
 
 Add the previously exported certificate file as an attachment to your
 new \Email{} -- just as you would for any other file (e.g. pulling the
@@ -1907,10 +1909,10 @@ OpenPGP certificate - as a file attachment}.
 
 Of course you can also add a few explanatory sentences.  However,
 Adele does not need this explanations, because her only purpose is to
-help you practice this process.
+help you practice this process. 
 
 Your finished \Email{} should look something like this:
-\enlargethispage{2\baselineskip}
+\T\enlargethispage{2\baselineskip}
 
 % screenshot: Outlook composer window with attached openpgp certificate
 \IncludeImage[width=0.85\textwidth]{sc-ol-adele-sendOpenpgpKey-attachment_en}
@@ -1924,7 +1926,7 @@ You have exported your public OpenPGP certificate in Kleopatra into a
 file. Subsequently, you have also copied the content of the file
 directly into an \Email{} and attached the complete file as an
 \Email{}attachment. Both \Email{}s have been sent to someone else
--- in this case, to Adele.
+-- in this case, to Adele. 
 
 The same process applies if you are sending your public certificate to
 a real \Email{} address. Usually, you should send public certificates
@@ -1937,12 +1939,12 @@ directly into his own certificate administration (e.g. Kleopatra).
 \section{Publish via OpenPGP certificate server}
 \label{sec_publishPerKeyserver}
 
-\marginOpenpgp
+\T\marginOpenpgp
 \textbf{Please note: You can only distribute your OpenPGP certificate
 via an OpenPGP certificate server.}
 
 Publishing your public OpenPGP certificate on a public certificate server is
-always a good idea, even if you are only exchanging encrypted \Email{}s
+always a good idea, even if you are only exchanging encrypted \Email{}s 
 with just a few people. This way, your public certificate is
 accessible to everyone on an Internet server. This saves you time in
 having to send your certificate \Email{} to all of the people
@@ -1952,8 +1954,8 @@ At the same time, publishing your \Email{} address on a certificate server can
 also make your \Email{} address more susceptible to spam. This can
 only be addressed with good spam protection.
 
-~\\ \textbf{This is how it works:} Select your public OpenPGP certificate in Kleopatra
-and click on \Menu{File$\rightarrow$Export certificate to server...}.
+~\\ \textbf{This is how it works:} Select your public OpenPGP certificate in Kleopatra 
+and click on \Menu{File$\rightarrow$Export certificate to server...}. 
 If you have not defined a certificate server, you will see a warning:
 
 % screenshot: Kleopatra keyserver export warning
@@ -1965,7 +1967,7 @@ The public OpenPGP certificate server already contains
 server. There, your public certificate is distributed to all globally
 connected certificate servers. Anyone can download your public certificate
 from one of these OpenPGP certificate servers and use it send you a secure
-\Email{}.
+\Email{}. 
 
 If you are only testing this process, please do \textit{not} send the
 practice certificate: In the top dialog, click on \Button{Cancel}. The
@@ -1979,7 +1981,7 @@ floating around on these servers ...
 Now you know how to publish your public OpenPGP certificate on an
 OpenPGP certificate server on the Internet.
 
-\textbf{For information on how to search for the public OpenPGP
+\textbf{For information on how to search for the public OpenPGP 
 certificate of people you are corresponding with on a certificate server, see
 Chapter~\ref{ch:keyserver}. You can read this chapter now or later when
 you need this function.}
@@ -1989,39 +1991,39 @@ you need this function.}
 \section{Publishing X.509 certificates}
 \label{publishPerEmailx509}
 
-\marginSmime
+\T\marginSmime
 In the case of public X.509 certificates, this process is even easier:
 all you need to do is to send a signed S/MIME \Email{} to the person
 you are corresponding with. Your public X.509 certificate is contained
 in this signature, and can be imported into the recipient's
-certificate administration.
+certificate administration. 
 
 Unfortunately, you cannot use Adele to practice X.509 certificates
 since the robot only supports OpenPGP.  Therefore you should pick
-another person to write you, or alternately write to yourself.
+another person to write you, or alternately write to yourself. 
 
 Some public X.509 certificates are distributed by the certificate
 authority. This is usually done using X.509 certificate servers, which however
 do not synchronize on a global basis, as is the case with OpenPGP key
-servers.
+servers. 
 
 When you export your public X.509 certificate, you can highlight the
 entire public certificate chain\index{Certificate!chain} and save it
 in a file -- generally the root certificate, CA
 certificate\index{Certificate!CA} and personal certificate -- or only
-your public certificate.
+your public certificate. 
 
 The first is recommended since the person you are corresponding with
 may be missing some parts of the chain, which he otherwise would have
 to find. To do this, click on all elements of the certificate chain in
 Kleopatra while holding the Shift key, and export the highlighted
-certificate into a file.
+certificate into a file. 
 
 If the person you are corresponding with does not have the root
 certificate, he must indicate that he trusts it, or have an
 administrator do so, in order to finally also trust you. If this has
 already been done (e.g. because they are both part of the same
-``root''), then this  shiop is already in place.
+``root''), then this  shiop is already in place. 
 
 
 \clearpage
@@ -2030,13 +2032,13 @@ already been done (e.g. because they are both part of the same
 \index{E-mail!decrypt}
 
 Gpg4win, the certificate of your key pair and of course your
-passphrase are all you need to decrypt \Email{}s.
+passphrase are all you need to decrypt \Email{}s. 
 
 This Chapter shows you step for step how to decrypt \Email{}s in
 Microsoft Outlook using the Gpg4win program component GpgOL.
 \index{Outlook}
 
-\marginOpenpgp
+\T\marginOpenpgp
 Initially, you can practice this process with Adele and your public
 OpenPGP certificate. The following exercises again only apply to
 OpenPGP -- explanations regarding the decryption of S/MIME
@@ -2048,7 +2050,7 @@ OpenPGP certificate to Adele. Using this certificate, Adele will now
 encrypt an \Email{} and send a message back to you. You should
 receive Adele's response after a short time period.
 
-\enlargethispage{\baselineskip}
+\T\enlargethispage{\baselineskip}
 
 % cartoon: Adele typing and sending a mail
 \IncludeImage[width=0.5\textwidth]{adele02}
@@ -2071,22 +2073,22 @@ control the actual GnuPG encryption software and hence not just manage
 your certificates but also take care of all cryptographic tasks (with
 GnuPG's assistance). Kleopatra provides the visual user interface,
 hence the dialogs which you as the user see while you encrypt or
-decrypt \Email{}s.
+decrypt \Email{}s. 
 
 Hence Kleopatra processes Adele's encrypted
 \Email{}s. These \Email{}s have been encrypted by Adele using
-\textit{your} public OpenPGP key.
+\textit{your} public OpenPGP key. 
 
 To decrypt the message, Kleopatra
 will now ask for your passphrase that protects your private key. Enter
-your passphrase.
+your passphrase. 
 
 The decryption is successful if you do not see an
-error dialog! You can now read the decrypted \Email{}.
+error dialog! You can now read the decrypted \Email{}. 
 
 You can retrieve the exact results dialog of the decryption by
 clicking on \Menu{Extras$\rightarrow$GpgOL decryption/check} in the
-menu of the opened \Email{}.
+menu of the opened \Email{}. 
 
 However, surely you also want to see the result, namely the decrypted
 message ...
@@ -2099,14 +2101,14 @@ this\footnote{Depending on the software version of Adele, it may look
 differently. It's translated from German.}:
 
 %TODO: besser ein Screenshot von einer Adele-Mail in OL.
-%TODO: SchlÃ¼ssel -> Zertifikat
+%TODO: Schlüssel -> Zertifikat
 
 \begin{verbatim}
-Hello Heinrich Heine,
+Hello Heinrich Heine, 
 
-here is an encrypted response to your e-mail.
+here is an encrypted response to your e-mail. 
 
-I received your public key with the key ID
+I received your public key with the key ID 
 FE7EEC85C93D94BA and the name
 `Heinrich Heine <heinrich@gpg4win.de>'.
 
@@ -2117,7 +2119,7 @@ Regards,
 adele@gnupp.de
 \end{verbatim}
 
-The text block that follows is Adele's public certificate.
+The text block that follows is Adele's public certificate. 
 
 In the next chapter, you will import this certificate and add it to
 your certificate administration. You can use imported public
@@ -2138,17 +2140,17 @@ corresponding with, or to check their signed \Email{}s.
 \subsubsection{\Email{} decryption using S/MIME}
 \label{encrypt-smime}
 
-\marginSmime
+\T\marginSmime
 So this is how \Email{}s are decrypted using the private OpenPGP
-key -- but how does it work with S/MIME?
+key -- but how does it work with S/MIME? 
 
 The answer: The same!
 
 To decrypt an encrypted S/MIME \Email{}, simply open the
 message in Outlook and enter your passphrase in the pin entry
 dialog. You will see a status dialog that is similar to that shown for
-OpenPGP. After closing this dialog, you will see the decrypted S/MIME
-\Email{}.
+OpenPGP. After closing this dialog, you will see the decrypted S/MIME 
+\Email{}. 
 
 Differently from OpenPGP decryption, however, when
 using S/MIME you cannot use Adele to practice, since Adele only
@@ -2168,7 +2170,7 @@ administrator -- e.g. Kleopatra.
 
 Before you import a public certificate into Kleopatra, you must save
 it in a file. Depending on whether you received the certificate as an
-\Email{}file attachment or as a block of text contained in your \Email{},
+\Email{}file attachment or as a block of text contained in your \Email{}, 
 please proceed as follows:
 
 \begin{itemize}
@@ -2179,16 +2181,16 @@ please proceed as follows:
 
 \item If the public certificate was mailed as a block of text
     that \textbf{was included in the} \Email{}, you have to
-    highlighte the entire certificate:
-
+    highlighte the entire certificate:  
+    
     In the case of (public)
-    OpenPGP certificates, please highlight the area from
+    OpenPGP certificates, please highlight the area from 
 
     \Filename{-----BEGIN PGP PUBLIC KEY BLOCK-----}\\ up to\\
-    \Filename{-----END PGP PUBLIC KEY BLOCK-----}
-
-    just as we have seen in Section~\ref{sec_publishPerEmail}.
-
+    \Filename{-----END PGP PUBLIC KEY BLOCK-----} 
+    
+    just as we have seen in Section~\ref{sec_publishPerEmail}. 
+    
     Now use Copy \&  Paste to
     insert the highlighted section into a text editor and save the
     public certificate. For file endings, you should use
@@ -2201,7 +2203,7 @@ please proceed as follows:
 \clearpage
 \subsubsection{Importing public certificates into Kleopatra}
 
-Whether you have saved the public certificate as an \Email{}
+Whether you have saved the public certificate as an \Email{} 
 attachment or text block -- in both cases, you will be importing it
 into your Kleopatra certificate administration. To do this, start
 Kleopatra if the program is not running already. In the menu, click
@@ -2226,13 +2228,13 @@ than one certificate. You can close the tab using the
 ``Close tab'' button on the right side of the window).
 
 Now change over to the tab ``Other certificates''. You should also be
-able to see the public certificate you have imported.
+able to see the public certificate you have imported. 
 
 Now you have imported someone else's certificate~-- in this case
 Adele's public OpenPGP certificate -- into your certificate
 administration. You can use this certificate at any time to send
 encrypted messages to the owner of the certificate, and to check his
-signatures.
+signatures. 
 
 As soon as you are exchanging encrypted \Email{} more
 frequently and with a larger number of persons, you will likely want
@@ -2244,10 +2246,10 @@ servers. To see how this works, please see Chapter~\ref{ch:keyserver}
 How do you know that the public OpenPGP certificate really came from
 Adele? It is possible to send \Email{}s under someone else's
 name -- in this respect, merely having the sender's name does not mean
-anything.
+anything. 
 
 So how can you ensure that a public certificate actually
-belongs to the sender?
+belongs to the sender? 
 
 \textbf{This key question related to certificate inspections is
 explained in the next Chapter~\ref{ch:trust}}.
@@ -2277,7 +2279,7 @@ other certificate.
 
 Each certificate features a unique identification, which is even
 better than someone's fingerprint. For this reason this identification
-is also referred to as a ``fingerprint''.
+is also referred to as a ``fingerprint''. 
 
 If you display the details of a certificate in Kleopatra, e.g. by
 double-clicking on the certificate, you will see its 40-character
@@ -2290,12 +2292,12 @@ The fingerprint of the above OpenPGP certificate is therefore as
 follows:\\ \Filename{7EDC0D141A82250847448E91FE7EEC85C93D94BA}
 
 ~\\In short - the fingerprint clearly identifies the certificate and
-its owner.
+its owner. 
 
 Simply call the person you are corresponding with and let them read
 the fingerprint of their certificate to you. If the information
 matches the certificate you have on hand, you clearly have the right
-certificate.
+certificate. 
 
 Of course you can also meet the owner of the certificate in person, or
 use another method to ensure that certificate and owner can be
@@ -2308,11 +2310,11 @@ guaranteed, you can save yourself a phone call.
 \subsubsection{Authenticating an OpenPGP certificate}
 \index{Certificate!authenticate}
 
-\marginOpenpgp
+\T\marginOpenpgp
 Once you have obtained confirmation of the authenticity of the
 certificate ``via a fingerprint'', you can authenticate it -- but only
 in OpenPGP. With X.509, users cannot authenticate certificates -- this
-can only be done by the certificate authorities (CA).
+can only be done by the certificate authorities (CA). 
 
 By authenticating a certificate, you are letting other (Gpg4win) users
 know that you are of the opinion that this certificate is real --
@@ -2321,7 +2323,7 @@ certificate, and help to increase the general level of trust in its
 authenticity.
 
 ~\\
-\textbf{So how does the authentication process work?}\\
+\textbf{So how does the authentication process work?}\\ 
 In Kleopatra, select an OpenPGP certificate that you think is real and
 would like to authenticate. In the menu, select:
 \Menu{Certificates$\rightarrow$Authenticate certificates...}
@@ -2345,7 +2347,7 @@ variant, you have the option of subsequently uploading the
 authenticated certificate to an OpenPGP certificate server, and hence make an
 updated and authenticated certificate available to the entire world.
 
-Now confirm your selection with \Button{Authenticate}.
+Now confirm your selection with \Button{Authenticate}. 
 
 Similar to the process of signing an \Email{}, you also have to enter
 your passphrase when authenticating a certificate (with your private
@@ -2361,7 +2363,7 @@ Following a successful authentication, the following window appears:
 ~\\Do you want to check the authentication one more? To do this, open
 the certificate details of the certificate you have just
 authenticated.Select the tab \Menu{User ID and authentications} and
-click on the button \Button{Obtain authentications}.
+click on the button \Button{Obtain authentications}. 
 
 You will now see all authentications contained in this certificate,
 sorted by user ID. You should also be able to see your certificate in
@@ -2371,23 +2373,23 @@ this list, if you have just authenticated it.
 \subsubsection{Web of trust}
 \index{Web of Trust}
 
-\marginOpenpgp
+\T\marginOpenpgp
 The process of authenticating certificates creates a ``Web of Trust''
 (WoT), which extends beyond the group of Gpg4win users and their
 correspondence, and it means that you are not always required to
 verify an OpenPGP certificate for its authenticity.
 
-
+\htmlattributes*{img}{width=300}
 \IncludeImage[width=0.85\textwidth]{key-with-sigs}
 
 Naturally, trust in a certificate will increase if it has been
 authenticated by a lot of people. Your own OpenPGP certificate will
 receive authentications from other GnuPG users over time. This enables
 more and more people to trust that this certificate is really yours
-and not someone else's.
+and not someone else's. 
 
 The continued weaving of this ``Web of Trust'' creates a flexible
-authentication structure.
+authentication structure. 
 
 There is one theoretical possibility of making this certificate test
 null and void: Someone plants a wrong certificate on you. In other
@@ -2414,17 +2416,17 @@ known to you by phoning the municipal office, but rather trust that
 the office that issued the ID will have already checked and
 authenticated these details.
 
-\marginOpenpgp
+\T\marginOpenpgp
 These types of authentication instances also exist in the case of
 OpenPGP certificates. In Germany, for example, the magazine c't has
 long been offering such a service free of charge, as have many
-universities.
+universities. 
 
 Therefore, if you have received an OpenPGP certificate
 whose authenticity has been confirmed by such an authentication
 instance, you should be able to rely on it.
-
-\marginSmime
+ 
+\T\marginSmime
 Such authentication instances or ``Trust Centers'' are also provided
 for in other encryption methods -- such as S/MIME. However, in
 contrast to the "Web of Trust", these feature a hierarchical
@@ -2437,7 +2439,7 @@ a seal: The sticker on your license plate can only be provided by an
 institution that is authorised to issue such stickers, and they have
 received that right from another superordinate body. On a technical
 level, an authentication is \index{Authentication} nothing more than
-an authenticating party signing a certificate.
+an authenticating party signing a certificate. 
 
 Of course, hierarchical authentication infrastructures are much better
 suited to the requirements of government and official instances than
@@ -2448,7 +2450,7 @@ addition to the ``Web of Trust'' (OpenPGP). Accordingly, Gpg4win
 offers a basis that corresponds with the Signature Act of the Federal
 Republic\index{Signature law} of Germany.
 
-\ifthenelse{\boolean{DIN-A5}}{\newpage}{}
+\T\ifthenelse{\boolean{DIN-A5}}{\newpage}{}
 If you would like to learn more about this topic, the following websites provide more information on this and other IT security topics:
 \begin{itemize}
     \item \uniurl[www.bsi.de]{http://www.bsi.de}
@@ -2467,7 +2469,7 @@ found at:\\
 \index{E-mail!encrypt}
 
 Now it is getting exciting again: You are sending an encrypted
-\Email{}.
+\Email{}. 
 
 In this case, you will need Outlook (or another \Email{} program that
 supports cryptography), Kleopatra and of course the public certificate
@@ -2475,27 +2477,27 @@ of the person you are correspondign with.
 
 \textbf{Note for OpenPGP:}
 
-\marginOpenpgp
+\T\marginOpenpgp
 You can use Adele to practice the encryption process with OpenPGP; on
 the other hand, Adele does not support S/MIME. You can send the
 \Email{} to be encrypted to \Filename{adele@gnupp.de}. It does not
 matter what your write in your message, since Adele cannot read it.
 
-\ifthenelse{\boolean{DIN-A5}}{\newpage}{}
+\T\ifthenelse{\boolean{DIN-A5}}{\newpage}{}
 
 \textbf{Note for S/MIMIE:}
 
-\marginSmime
+\T\marginSmime
 Following the installation of Gpg4win, the S/MIME functionality is
 already activated in GpgOL. If you want to turn off S/MIME (with
 GnuPG), for example to use Outlook's own S/MIME function, you have to
 deactivate the option \Menu{Activate S/MIME support} in the following
 GpgOL option dialog under
-\Menu{Extras$\rightarrow$Options$\rightarrow$GpgOL}:
+\Menu{Extras$\rightarrow$Options$\rightarrow$GpgOL}: 
 
 % screenshot: GpgOL options
-\ifthenelse{\boolean{DIN-A5}}{
-    \IncludeImage[width=0.75\textwidth]{sc-gpgol-options_en}
+\T\ifthenelse{\boolean{DIN-A5}}{
+    \T\IncludeImage[width=0.75\textwidth]{sc-gpgol-options_en}
 \T}
 \T{
     \IncludeImage[width=0.55\textwidth]{sc-gpgol-options_en}
@@ -2506,12 +2508,12 @@ GpgOL option dialog under
 \subsubsection{Send an encrypted message}
 
 First, compose a new in Outlook and address it to the person you are
-writing to.
+writing to. 
 
 To send your message as in an encrypted form, select the item
 \Menu{Extras$\rightarrow$Encrypt message} in the menu of the message
 window. The button with the lock icon in the tool bar is activated --
-you can also click right on the lock.
+you can also click right on the lock. 
 
 Your Outlook message windows should look something like this:
 
@@ -2522,10 +2524,10 @@ Now click \Button{Send}.
 
 \label{encryptProtocol} ~\\Gpg4win will automatically detect the
 protocol -- OpenPGP or S/MIME -- of the public certificate provided by
-the person you are corresponding with.
+the person you are corresponding with. 
 
 As long as there is only one certificate that matches the recipient's
-\Email{} address, your message will be encrypted and sent.
+\Email{} address, your message will be encrypted and sent. 
 
 
 \clearpage
@@ -2579,7 +2581,7 @@ own private OpenPGP key.
 This chapter also explains how to \textbf{sign} a complete
 \textbf{\Email{}} rather than only the certificate. That means
 applying a digital signature to the \Email{} -- which is a form of an
-electronic seal.
+electronic seal.  
 
 ``Sealed'' in this way, the text can still be read by everyone, but it
 allows the recipient to find out whether the \Email{} was manipulated
@@ -2597,17 +2599,17 @@ website. While these \Email{} signatures simply function as a type of
 business card, a digital signature will protect your \Email{} from
 manipulation and clearly confirms the sender.
 
-\ifthenelse{\boolean{DIN-A5}}{\newpage}{}
+\T\ifthenelse{\boolean{DIN-A5}}{\newpage}{}
 Besides, a digital signature cannot be compared with a qualified
 electronic signature, \index{Signature!qualified electronic} as it
-went into effect as part of the Signature Act\index{Signature Act}
+went into effect as part of the Signature Act\index{Signature Act} 
 (22~May 2001). However, it serves exactly the same purpose for private
 or professional \Email{} communication.
 
-% cartoon: MÃ¼ller mit SchlÃ¼ssel
-
-\ifthenelse{\boolean{DIN-A5}}{
-    \IncludeImage[width=0.5\textwidth]{man-with-signed-key}
+% cartoon: Müller mit Schlüssel
+\htmlattributes*{img}{width=300}
+\T\ifthenelse{\boolean{DIN-A5}}{
+    \T\IncludeImage[width=0.5\textwidth]{man-with-signed-key}
 \T}
 \T{
     \IncludeImage[width=0.35\textwidth]{man-with-signed-key}
@@ -2615,7 +2617,7 @@ or professional \Email{} communication.
 
 \clearpage
 \section{Signing with GpgOL}
-\enlargethispage{\baselineskip}
+\T\enlargethispage{\baselineskip}
 In fact, signing an \Email{} is even easier than encrypting it (see
 Chapter~\ref{ch:encrypt}). Once you have composed a new \Email{}, go
 through the following steps -- similar to the encryption process:
@@ -2651,7 +2653,7 @@ Now click on \Button{Send}.
 
 Just as is the case for encrypting \Email{}s, Gpg4win automatically
 detects the protocol -- OpenPGP or S/MIME -- for which your own
-certificate (with the private key for signing) is available.
+certificate (with the private key for signing) is available. 
 
 If you have your own OpenPGP \textit{and} S/MIME certificate with the
 same \Email{} address, Kleopatra will ask you to select a protocol
@@ -2686,7 +2688,7 @@ It makes sense, because only your own private key confirms your identity. The pe
 
 Confirm your passphrase entry with \Button{OK}. Your message is now signed and sent.
 
-\ifthenelse{\boolean{DIN-A5}}{\newpage}{}
+\T\ifthenelse{\boolean{DIN-A5}}{\newpage}{}
 Once your message has been signed successfully, the following dialog appears:
 
 % screenshot: kleopatra sign successful
@@ -2698,10 +2700,10 @@ Once your message has been signed successfully, the following dialog appears:
 \clearpage
 \subsubsection{In short:}
 You have learnt how to \textbf{sign} an \Email{} using your own
-certificate -- which contains your private key.
+certificate -- which contains your private key. 
 
 You know how to \textbf{encrypt} an \Email{} using the public
-certificate of the person you are writing to.
+certificate of the person you are writing to. 
 
 Now you are familiar with the two most important techniques for
 sending secure \Email{}s: encryption and signatures.
@@ -2734,12 +2736,12 @@ It is very easy to check this digital signature. All you need is the
 public OpenPGP or X.509 certificate of your correspondence partner.
 You should have already imported his public certificate into your
 certificate administration prior to performing this check (see
-Chapter~\ref{ch:importCertificate}).
+Chapter~\ref{ch:importCertificate}). 
 
 To check a signed OpenPGP or S/MIME \Email{}, proceed as you would for
 decrypting an \Email{} (see Chapter~\ref{ch:decrypt}):
 
-Start Outlook and open a signed \Email{}.
+Start Outlook and open a signed \Email{}. 
 
 GpgOL will automatically transfer the \Email{} to Kleopatra for a
 signature check. Kleopatra will report the result in a status dialog,
@@ -2753,7 +2755,7 @@ to read the signed \Email{}.
 
 If you want to perform the check again manually, select
 \Menu{Extras$\rightarrow$Decrypt/Check GpgOL} in the menu of the
-open \Email{}.
+open \Email{}. 
 
 If the signature check is not successful, it means that the message
 was changed during the delivery process. Because of the technical
@@ -2770,16 +2772,16 @@ such a case.
 \label{sec_brokenSignature}
 \index{Signature!broken}
 
-There are several reasons for a broken signature:
+There are several reasons for a broken signature: 
 
 If you receive the message ``Bad signature'' or ``Check failed'', it
 is a warning that your \Email{} may have been manipulated! That means
 that it is possible that someone changed the \Email{}'s contents or
-the subject line.
+the subject line. 
 
 At the same time, a broken signature does not necessarily mean that
 the \Email{} was manipulated. It is also possible that the \Email{}
-was modified due to a defective transmission.
+was modified due to a defective transmission. 
 
 In any case, you should always take a broken signature seriously and
 ask the sender to resend the \Email{}!\\
@@ -2788,10 +2790,10 @@ It is recommended that you set your program to only send \Email{}s in
 ``text'' format and \textbf{not} in ``HTML'' format. However, if you
 decide to use HTML for signed or encrypted \Email{}s, it is possible
 that formatting information will be lost by the time it reaches the
-recipient, which can result in a broken signature.
+recipient, which can result in a broken signature. 
 
 In Outlook 2003 and 2007, you can set the message format to \Menu{Text
-only} in
+only} in 
 %TODO correct english menu?
 \Menu{Extras$\rightarrow$Options$\rightarrow$E-Mail Format}.
 
@@ -2803,20 +2805,20 @@ only} in
 
 You know: A message is usually encrypted using the public certificate
 of your correspondence partner, who then decrypts the \Email{} using
-his private key.
+his private key. 
 
 The reverse possibility -- encryption with a private key -- does not
 make sense, since the whole world knows the associated public
-certificate and could then decrypt the message.
+certificate and could then decrypt the message. 
 
 However, as you have already seen in this chapter, there is still
 another method to create a file using your private key -- namely the
-signature.
+signature. 
 
 A digital signature confirms the author  -- because if someone
 successfully applies your public certificate to this file (the
 signature), this file could only have been encoded by your private
-key. And only you can have access to this key.
+key. And only you can have access to this key. 
 
 You can combine both options, namely encrypting and signing the
 \Email{}:
@@ -2837,14 +2839,14 @@ This means that the message has two security characteristics:
         certificate of the person you are corresponding with.
 \end{enumerate}
 
-\ifthenelse{\boolean{DIN-A5}}{\newpage}{}
+\T\ifthenelse{\boolean{DIN-A5}}{\newpage}{}
 
 Your correspondence partner opens the outer strong envelope with his
 own private key. This ensures secrecy, because only this key can be
 used to decode the text. He reads the seal with your public
 certificate, which proves that you were the author, because if your
 public certificate matches, the seal (digital signature) can only have
-been encoded with your private key.
+been encoded with your private key. 
 
 It is pretty tricky when you think about it, but also very simple.
 
@@ -2855,7 +2857,7 @@ It is pretty tricky when you think about it, but also very simple.
 \index{E-mail!archive in encrypted form}
 
 You should also archive your important -- and hence possibly encrypted
--- \Email{}s in only one way: encrypted.
+-- \Email{}s in only one way: encrypted. 
 
 Of course you can simply save a clear text version of your texts, but
 that is actually not required. If your message was supposed to be
@@ -2867,7 +2869,7 @@ You can probably already guess the problem: To decrypt your archived
 (sent) \Email{}s, you will need the private key of the recipient --
 and you don't or will ever have it ...
 
-So what to do?
+So what to do?  
 
 Very easy: \textbf{You also encrypt to yourself!}
 
@@ -2913,8 +2915,8 @@ compendium. It contains even more interesting stuff!
 \addtocontents{toc}{\protect\newpage}
 
 \clearpage
-\part{For Advanced Users}
-
+\T\part{For Advanced Users}
+\W\part*{\textbf{II For Advanced Users}}
 \label{part:AdvancedUsers}
 \addtocontents{toc}{\protect\vspace{0.3cm}}
 
@@ -2950,10 +2952,10 @@ certificates, including:
     user IDs to your certificate using the
     menu \Menu{Certificates$\rightarrow$Add user ID...} menu item.
     This makes sense if, for example, you wish to use the same
-    certificate for another \Email{} address.
-
+    certificate for another \Email{} address. 
+    
     Please note: Kleopatra only allows you to add user IDs for OpenPGP
-    certificates, but not X.509.
+    certificates, but not X.509. 
 
 \item[Fingerprints] are used to differentiate multiple certificates
     from each other. You can use fingerprints to look for (public)
@@ -2968,7 +2970,7 @@ certificates, including:
 
 \item[The validity] of certificates describes the duration of their
     validity and their expiry date, if applicable.\index{Expiry date}
-
+    
     In the case of OpenPGP certificates, the validity is usually set
     to \Menu{Indefinite} . You can change this in Kleopatra by
     clicking on \Button{Change expiry date} in the certificate details
@@ -2976,13 +2978,13 @@ certificates, including:
     date} and enter a new date. This means that you can declare the
     certificate valid for a limited time period, e.g. in order to
     issue it to outside employees.
-
+    
     The validity of X.509 certificates is defined by the certificate
     authority when the certificate is issued, and cannot be changed by
     the user.
 
 \clearpage
-\item[Trust in the certificate holder] \marginOpenpgp quantifies
+\item[Trust in the certificate holder] \T\marginOpenpgp quantifies
     your own subjective confidence that the owner of the OpenPGP
     certificate is real (authentic) and that he will also correctly
     authenticate other OpenPGP certifictes. You set the trust with
@@ -2993,7 +2995,7 @@ certificates, including:
     The trust status is only relevant for OpenPGP certificates. No
     such method exists for X.509 certificates.
 
-\item[Authentications] \marginOpenpgp of your OpenPGP certificate
+\item[Authentications] \T\marginOpenpgp of your OpenPGP certificate
     include the user IDs of those certificate holders who are
     convinced of the authenticity of your certificate and have thus
     authenticated it. Trust in the authenticity of your certificate
@@ -3005,7 +3007,7 @@ certificates, including:
 
 \end{description}
 
-\ifthenelse{\boolean{DIN-A5}}{\enlargethispage{2\baselineskip}}{}
+\T\ifthenelse{\boolean{DIN-A5}}{\enlargethispage{2\baselineskip}}{}
 You do not necessarily have to know the certificate details to use
 Gpg4win on a daily basis, but they do become relevant when you want to
 receive or change new certificates.
@@ -3025,12 +3027,12 @@ Section~\ref{sec_publishPerKeyserver} already provided a lot of information on h
 Key servers can be used by all programs that support the standards OpenPGP or X.509. Kleopatra supports both types, hence both OpenPGP as well as X.509 certificate servers.
 
 
-\ifthenelse{\boolean{DIN-A5}}{\newpage}{}
+\T\ifthenelse{\boolean{DIN-A5}}{\newpage}{}
 
 \begin{description}
 
-\item[OpenPGP certificate servers]\marginOpenpgp
-    \index{Certificate server!OpenPGP} (also called ``key server'')
+\item[OpenPGP certificate servers]\T\marginOpenpgp
+    \index{Certificate server!OpenPGP} (also called ``key server'') 
     are organized on a decentralised basis and synchronize each other
     on a global basis.  There are no current statistics about their
     number of how many OpenPGP certificates they contain. This shared
@@ -3043,7 +3045,7 @@ Key servers can be used by all programs that support the standards OpenPGP or X.
     \htmlattributes*{img}{width=300}
     \IncludeImage[width=0.5\textwidth]{keyserver-world}
 
-\item[X.509 certificate servers] \marginSmime
+\item[X.509 certificate servers] \T\marginSmime
     \index{Certificate server!X.509} are generally made available by
     the certificate authorities via LDAP\index{LDAP} and are sometimes
     also described as directory services for X.509 certificates.
@@ -3073,14 +3075,14 @@ addresses on the next page.
 For \Menu{X.509} you will see the following default settings for an
 X.509 certificate server: (Protokoll: ldap, Servername: server, Server-Port:
 389).  Complete the information on the server name and basic DN of
-your X.509 certificate server and check the server port.
+your X.509 certificate server and check the server port. 
 
 If your certificate server requires a user name and password, activate
 the option \Menu{Requires user authentication} and enter the required
 information.
 
 
-\ifthenelse{\boolean{DIN-A5}}{\newpage}{}
+\T\ifthenelse{\boolean{DIN-A5}}{\newpage}{}
 The screenshot below shows a configured OpenPGP certificate server:
 
 % screenshot: Kleopatra OpenPGP certificate server config dialog
@@ -3095,7 +3097,7 @@ instructions, see
 Section~\ref{searchAndImportCertificateFromServer}).
 
 \newpage
-\textbf{Proxy setting:}\index{Proxy}
+\textbf{Proxy setting:}\index{Proxy} 
 If you use a proxy in your network, you should add the parameter
 \Filename{http-proxy=<proxydomain>} to the certificate server address in the
 \Menu{Server name} column.  The full server name could therefore look
@@ -3110,9 +3112,9 @@ servers can be found in  Section~\ref{x509CertificateServers}.
 
 \subsubsection{OpenPGP certificate server addresses}
 
-\marginOpenpgp
+\T\marginOpenpgp
 We recommend that you only use up-to-date OpenPGP certificate servers,
-since only they can handle the newer OpenPGP characteristics.
+since only they can handle the newer OpenPGP characteristics. 
 
 Here is a selection of well-functioning certificate servers:
 \begin{itemize}
@@ -3136,7 +3138,7 @@ The certificate servers under the addresses
     \item hkp://subkeys.pgp.net
 \end{itemize}
 are a collection point for an entire network of these servers; a
-concrete server will be selected randomly.
+concrete server will be selected randomly. 
 
 \textbf{Attention:} Do not use \Filename{ldap://keyserver.pgp.com} as
 a certificate server, since it does synchronize with other servers (Status:
@@ -3179,11 +3181,11 @@ Kleopatra's certificate administration.
 \section{Export certificates to OpenPGP certificate servers}
 \index{Certificate!export}
 
-\marginOpenpgp
+\T\marginOpenpgp
 If you have configured an OpenPGP certificate server as described in
 Section \ref{configureCertificateServer}, a click of your mouse will
-send your public OpenPGP certificate around the world.
-
+send your public OpenPGP certificate around the world.  
+        
 Select your OpenPGP certificate in Kleopatra and then click on the
 menu item \Menu{File$\rightarrow$Export certificate to server...}.
 
@@ -3229,14 +3231,14 @@ Chapter~\ref{ch:EncFiles}.
 \index{GpgEX}
 
 You can use Gpg4win for signing and encrypting not just \Email{}s, but
-also individual files. The principle is the same:
+also individual files. The principle is the same: 
 
 \begin{itemize}
   \item You \textbf{sign} a file using your private certificate, to
-      ensure that the file cannot be modified.
+      ensure that the file cannot be modified. 
 
   \item Then \textbf{encrypt} the file using a public certificate, to
-      prevent unauthorized persons from seeing it.
+      prevent unauthorized persons from seeing it. 
 \end{itemize}
 
 Using the application \textbf{GpgEX}, you can sign or encrypt files
@@ -3245,7 +3247,7 @@ shows you exactly how this works.
 
 If you are sending a file as an \Email{} attachment, e.g. GpgOL will
 automatically look after signing and encrypting your file together
-with your \Email{}.  You do not have to do anything else.
+with your \Email{}.  You do not have to do anything else. 
 
 \clearpage
 \section{Signing and checking files}
@@ -3258,7 +3260,7 @@ not changed, rather than keeping it secret (Integrity).
 
 Signing is very easy using \textbf{GpgEX} from the Windows Explorer
 context menu.  Select one or more files or folders and use the right
-mouse key to select the context menu:
+mouse key to select the context menu: 
 
 % screenshot GpgEX contextmenu sign/encrypt
 \IncludeImage[width=0.3\textwidth]{sc-gpgex-contextmenu-signEncrypt_en}
@@ -3275,7 +3277,7 @@ If required, you can also use the option  \Menu{Output as text (ASCII
 armor\index{ASCII armor})}.  The signature file will receive the file
 ending \Filename{.asc} (OpenPGP) or  \Filename{.pem} (S/MIME).  These
 file types can be opened with any text editor -- you will however only
-see the numbers and letters you have already seen before.
+see the numbers and letters you have already seen before. 
 
 If this option is not selected, the signature will be created with the
 ending \Filename{.sig} (OpenPGP) or \Filename{.p7s} (S/MIME).  These
@@ -3313,7 +3315,7 @@ The example below shows which new file you will receive if you sign
 your selected file (here \Filename{<dateiname>.txt}) using OpenPGP or
 S/MIME. There are four possible resulting file types:
 
-\ifthenelse{\boolean{DIN-A5}}{\enlargethispage{2\baselineskip}}{}
+\T\ifthenelse{\boolean{DIN-A5}}{\enlargethispage{2\baselineskip}}{}
 
 \begin{description}
     \item[OpenPGP:]~\\
@@ -3334,7 +3336,7 @@ S/MIME. There are four possible resulting file types:
 \index{File!check signature}
 
 Now check the integrity of the file that has just been signed, i.e.
-check that it is correct!
+check that it is correct! 
 
 To check for integrity and authenticity, the signature file -- hence
 the file with the ending \Filename{.sig}, \Filename{.asc},
@@ -3402,7 +3404,7 @@ right mouse key:
 Select \Menu{Sign and encrypt} again.
 
 \clearpage
-You will see the already familiar dialog from signing a file (see also
+You will see the already familiar dialog from signing a file (see also 
 section~\ref{sec_signFile}).
 
 In the top field, select the option \Menu{Encrypt}:
@@ -3410,7 +3412,7 @@ In the top field, select the option \Menu{Encrypt}:
 % screenshot kleopatra encrypt file, step 1
 \IncludeImage[width=0.85\textwidth]{sc-kleopatra-encryptFile1_en}
 
-\ifthenelse{\boolean{DIN-A5}}{\enlargethispage{2\baselineskip}}{}
+\T\ifthenelse{\boolean{DIN-A5}}{\enlargethispage{2\baselineskip}}{}
 
 You should only change the encryption settings if this is required:
 \begin{description}
@@ -3419,7 +3421,7 @@ You should only change the encryption settings if this is required:
         the file ending \Filename{.asc} (OpenPGP) or \Filename{.pem}
         (S/MIME).  These file types can be opened with any text editor
         -- but you will only see the mixture of letters and characters
-        you have already seen before.
+        you have already seen before. 
 
         If this option is not selected, the system will create an
         encrypted file with the ending  \Filename{.gpg} (OpenPGP) or
@@ -3427,29 +3429,29 @@ You should only change the encryption settings if this is required:
         they cannot be viewed with a text editor.
 
     \item[Delete unencrypted original:] If this option is activated,
-        the selected original file will be deleted after encryption.
+        the selected original file will be deleted after encryption. 
 \end{description}
 
 Click on \Button{Next}.
 
 \clearpage
 Who should the file be encrypted for? Select one or more recipient
-certificates in the next dialog:
+certificates in the next dialog: 
 
 % screenshot kleopatra encrypt file, step 2
 \IncludeImage[width=0.85\textwidth]{sc-kleopatra-encryptFile2_en}
 
 To make your selection, choose the required certificates in the top
 portion and press \Button{Add}. You will see all selected certificates
-in the lower dialog portion for review purposes.
+in the lower dialog portion for review purposes.  
 
 Depending on the selected recipient certificate and its type (OpenPGP
 or S/MIME), your file is then encrypted using OpenPGP and/or S/MIME.
 So if you selected an OpenPGP certificate \textit{and } an S/MIME
 certificate, you will receive two encrypted files. The possible file
-types for the encrypted files are found on the next page.
+types for the encrypted files are found on the next page. 
 
-\ifthenelse{\boolean{DIN-A5}}{\enlargethispage{\baselineskip}}{}
+\T\ifthenelse{\boolean{DIN-A5}}{\enlargethispage{\baselineskip}}{}
 
 Now click on \Button{Encrypt}: The file is encrypted.
 
@@ -3462,7 +3464,7 @@ something like this:
 
 That's it! You have successfully encrypted your file!
 
-\ifthenelse{\boolean{DIN-A5}}{\newpage}{}
+\T\ifthenelse{\boolean{DIN-A5}}{\newpage}{}
 
 Similar to signing a file, the result will depend on the selected
 encryption method (OpenPGP or S/MIME). An encryption of your original
@@ -3489,7 +3491,7 @@ You now forward one of these four possible encrypted files to your selected reci
 \clearpage
 \subsubsection{Decrypting a file}
 \index{File!decrypt}
-Now you can decrypt the previously encrypted file for test purposes.
+Now you can decrypt the previously encrypted file for test purposes. 
 
 To this end, you should also have encrypted to your own certificate
 during the previous encryption process -- otherwise you cannot decrypt
@@ -3505,7 +3507,7 @@ menu:
 
 \clearpage
 If you like, you can still change the output folder in the following
-decryption dialog.
+decryption dialog. 
 
 % screenshot kleopatra decrypt file, step 1
 \IncludeImage[width=0.85\textwidth]{sc-kleopatra-decryptFile1_en}
@@ -3521,7 +3523,7 @@ The result shows that the decryption was successful:
 \IncludeImage[width=0.85\textwidth]{sc-kleopatra-decryptFile2_en}
 
 You should now be able to easily read the decrypted file or use it
-with a corresponding program.
+with a corresponding program. 
 
 \clearpage
 \subsubsection{In short}
@@ -3599,12 +3601,12 @@ When you activate the option \Menu{ASCII-protected (ASCII
 armor\index{ASCII armor})}, the file ending \Filename{.asc} (OpenPGP)
 or \Filename{.pem} (S/MIME) will be selected. These file types can be
 opened with any text editor -- but you will only see the "mess" of
-numbers and characters that we have already seen before.
+numbers and characters that we have already seen before. 
 
 If this option is not selected, an encrypted file with the ending
 \Filename{.gpg} (OpenPGP) or \Filename{.p12} (S/MIME) will be created.
 These files are binary files, so they cannot be viewed with a text
-editor.
+editor.  
 
 Kleopatra stores both key parts -- private and public -- in
 \textbf{one} private certificate.
@@ -3660,8 +3662,8 @@ Then delete it from your hard drive and also remember to remove the
 deleted file from your ``recycling bin''. Otherwise this file poses a
 great security risk for your secret \Email{} encryption.\\
 
-\ifthenelse{\boolean{DIN-A5}}{\newpage}{}
-\marginOpenpgp
+\T\ifthenelse{\boolean{DIN-A5}}{\newpage}{}
+\T\marginOpenpgp
 There may be cases when you are not able to import a certificate
 exported with PGP (``Pretty Good Privacy''). This is because some PGP
 versions use an algorithm (IDEA) which cannot be supported by GnuPG
@@ -3682,11 +3684,11 @@ passphrase} in PGP and Gpg4win.
 \protect{S/MIME}}
 \label{ch:smime-configuration}
 
-\enlargethispage{\baselineskip}
-\marginSmime
+\T\enlargethispage{\baselineskip}
+\T\marginSmime
 As part of a central software distribution or environments in which
 many users are working on one computer, it makes sense to set up some
-system-wide specifications and pre-populations for Gpg4win.
+system-wide specifications and pre-populations for Gpg4win.  
 
 This relates particularly to S/MIME, because in the case of specified
 chains of trust it makes sense that users share the information.
@@ -3696,20 +3698,20 @@ Some typical system-wide settings include:
 \begin{description}
 \item[Trustworthy root certificates:]
     \index{Trustworthy root certificates}
-    \index{Root certificates}
+    \index{Root certificates} 
     To avoid a situation where each user must search and install the
     required root certificates, and check and authenticate the
     trustworthiness of the same (see Section
     \ref{sec_allow-mark-trusted}), it is useful to install a
     system-wide pre-population of the most important root
     certificates.
-
+    
     To this end, the root certificates should be saved
     -- as described in Section \ref{trustedrootcertsdirmngr} -- and
     the trustworthy root certificates should be defined -- as
     described in Section \ref{sec_systemtrustedrootcerts}.
-
-\item[Directly available CA certificates:] \index{Certificate!CA}
+    
+\item[Directly available CA certificates:] \index{Certificate!CA}    
     To save users from searching and importing the certificates of
     certificate authorities, it also makes sense to pre-populate the
     system with the most important CA certificates. For a description,
@@ -3717,7 +3719,7 @@ Some typical system-wide settings include:
 
 \item[Proxy for certificate server and certificate revocation list searches:]
     \index{Proxy}
-
+    
     With respect to validity information, X.509 protocols offer
     different options. Most certification agencies publish certificate
     revocation lists\index{Certificate Revocation Lists} (also
@@ -3729,12 +3731,12 @@ Some typical system-wide settings include:
     GnuPG can work with both options; component ``DirMngr''
     \index{Directory Manager|see{DirMngr}} \index{DirMngr} that
     runs as the system-wide service.
-
+    
     Internal networks cannot permit individual computers to directly
     connect to the outside (central firewall), but can provide an
     acting service, a so-called ``proxy''. DirMngr can also handle
     HTTP and LDAP proxies \index{LDAP} \index{HTTP}.
-
+    
     S/MIME certificates usually contain information on where your
     certificate revocation list can be picked up externally.
     Oftentimes it includes HTTP, but also directory services via
@@ -3745,12 +3747,12 @@ Some typical system-wide settings include:
     allow both HTTP as well as LDAP queries to the outside. If
     possible, an acting service can ensure, at the content level, that
     only X.509 certificate revocation lists with correct information
-    are transmitted.
-
+    are transmitted. 
+    
     If your network requires a proxy for the HTTP and HKP or LDAP
     queries required for OpenPGP or S/MIME, please follow these
     steps:
-
+   
     \begin{enumerate}
         \item Set the X.509 certificate server search to a proxy, as
             described in Section~\ref{x509CertificateServers}.
@@ -3765,16 +3767,16 @@ Some typical system-wide settings include:
 \chapter{Known problems and help}
 \index{Troubleshooting}
 
-\section{GpgOL menus and dialogs no longer found in Outlook}
+\section{GpgOL menus and dialogs no longer found in Outlook} 
 \index{Outlook}
 It may happen that the menus and dialogs added to Outlook by GpgOL can
 no longer be found.
 
 This may be due to a technical problem that caused Outlook to
 deactivate the GpgOL component.
-
-Reactivate GpgOL via the Outlook menu:\\
-Outlook2007: \Menu{?$\rightarrow$Deactivated components}\\
+    
+Reactivate GpgOL via the Outlook menu:\\ 
+Outlook2007: \Menu{?$\rightarrow$Deactivated components}\\ 
 Outlook2003: \Menu{?$\rightarrow$Info$\rightarrow$Deactivated components}
 
 To (de)activate GpgOL manually, use Outlook's add-in manager:
@@ -3798,7 +3800,7 @@ signature/encryption icons.
 You can display these buttons by clicking on the small icon with the
 arrow pointing downwards on the tool bar (\Menu{Options for toolbar}):
 You will see an overview of all non-displayed buttons. Clicking on an
-entry will move it into the visible area of the toolbar.
+entry will move it into the visible area of the toolbar. 
 
 
 \section{GpgOL button are listed unter ``Add-Ins'' (Outlook 2007)}
@@ -3832,7 +3834,7 @@ You can solve this problem by resetting the internal Outlook (cached)
 program extension path. To do this, please delete the following
 file:\\
 \Filename{\%APPDATA\%\back{}Lokale
-Einstellungen\back{}Application data\back{}Microsoft\back{}\\
+Einstellungen\back{}Application data\back{}Microsoft\back{}\T\\
 Outlook\back{}extend.dat}
 
 \textbf{Outlook should not be running during this process.} Then
@@ -3868,7 +3870,7 @@ S/MIME support}.
 \label{dirmngr-restart}
 \index{DirMngr}
 
-\marginSmime
+\T\marginSmime
 The ``Directory Manager'' (DirMngr) is a service installed by Gpg4win,
 which manages access to certificate servers. One task of the DirMngr
 is to load certificate revocation lists (CRLs) for S/MIME
@@ -3892,7 +3894,7 @@ context menu.
 \section{S/MIME operations not allowed (CRLs not available)}
 \label{smime-problem-crl}
 
-\marginSmime
+\T\marginSmime
 
 It is possible that S/MIME operations (signature creation and check,
 encryption and decryption) cannot be performed because the CRLs are
@@ -3915,13 +3917,13 @@ off the revocation list check is never a substitute for setting up a
 proxy.
 
 
-\ifthenelse{\boolean{DIN-A5}}{}{\clearpage}
+\T\ifthenelse{\boolean{DIN-A5}}{}{\clearpage}
 
 \section{S/MIME operations not allowed (root certificate is not trustworthy)}
 \label{smime-problem-rootcertificate}
 \index{Root certificates}
 
-\marginSmime
+\T\marginSmime
 The respective root certificate must be trusted for a full review of
 X.509 certificate chains\index{Certificate!chain}.  Otherwise it is
 not possible to perform S/MIME operations (signature creation and
@@ -3952,11 +3954,11 @@ To express your trust in a root certificate, you have two options.
 
 \section{Personal user settings}
 
-The personal settings for each user are found in the file folder:\\ \Filename{\%APPDATA\%\back{}gnupg}\\
+The personal settings for each user are found in the file folder:\\ \Filename{\%APPDATA\%\back{}gnupg}\\ 
 Often, this is the following folder: \\
 \Filename{C:\back{}Documents and
 settings\back{}<name>\back{}Application data\back{}%
-\ifthenelse{\boolean{DIN-A5}}{\\}{}%
+\T\ifthenelse{\boolean{DIN-A5}}{\\}{}%
 gnupg\back{}}
 
 Please note that this is a hidden file folder. To make it visible, you
@@ -3972,18 +3974,18 @@ you make regular backup copies of this folder.
 \section{Cached certificate revocation lists}
 \index{Certificate Revocation Lists}
 
-\marginSmime
+\T\marginSmime
 The system-wide service Mngr (Directory Manager) \index{DirMngr} also
 checks whether an X.509 certificate is blocked and can therefore not
 be used. To this end, certificate revocation lists (CRLs) are picked
 up from the issuing offices for the certificates (CAs) and cached for
 the duration of the validity period.
 
-The lists are saved under:
+The lists are saved under: 
 \newline
 \Filename{C:\back{}Documents and
 Settings\back{}LocalService\back{}Lokale Settings\back{}Application
-data\back{}\newline
+data\back{}\T\newline
 GNU\back{}cache\back{}dirmngr\back{}crls.d\back{}}
 
 These are \textit{protected} files, which Explorer does not display by
@@ -3993,14 +3995,14 @@ option \Menu{Hide protected system files} in the Window Explorer
 
 No changes should be made to this file folder.
 
-\ifthenelse{\boolean{DIN-A5}}{}{\clearpage}
+\T\ifthenelse{\boolean{DIN-A5}}{}{\clearpage}
 \section{Trustworthy root certificates from DirMngr}
 \label{trustedrootcertsdirmngr}
 \index{DirMngr}
 \index{Trustworthy root certificates}
 \index{Root certificates}
 
-\marginSmime
+\T\marginSmime
 For a full review of X.509 certificates, you must trust the root
 certificates which were used to sign the revocation lists.
 
@@ -4009,7 +4011,7 @@ system when performing its checks are stored in the following file
 folder:
 
 \Filename{C:\back{}Documents and settings\back{}All
-Users\back{}Application data\back{}\newline
+Users\back{}Application data\back{}\T\newline
 GNU\back{}etc\back{}dirmngr\back{}trusted-certs\back{}}
 
 \W~\\\\
@@ -4026,21 +4028,21 @@ Please also see Section \ref{sec_systemtrustedrootcerts} in order to
 completely trust root certificates (system-wide).
 
 
-\ifthenelse{\boolean{DIN-A5}}{\newpage}{}
+\T\ifthenelse{\boolean{DIN-A5}}{\newpage}{}
 \section{Other certificates from DirMngr}
 \label{extracertsdirmngr}
 
-\marginSmime
+\T\marginSmime
 Since the X.509 certificate chain must be checked prior to a
 cryptography operation, the corresponding certificate of the
 authentication instance (``Certificate Authority'', CA) must also be
 checked.
 
 For immediate availability, CA certificates can be saved in this
-(system-wide) file folder:
+(system-wide) file folder: 
 \newline
 \Filename{C:\back{}Documents and settings\back{}All
-Users\back{}Application data\back{}\newline
+Users\back{}Application data\back{}\T\newline
 GNU\back{}lib\back{}dirmngr\back{}extra-certs\back{}}
 
 Certificates that are not available here and/or not available from
@@ -4052,10 +4054,10 @@ folder as part of system-wide specifications.
 
 
 \clearpage
-\section{System-wide configuration for use of external
+\section{System-wide configuration for use of external  
 X.509 certificate servers \label{x509CertificateServers}}
 
-\marginSmime
+\T\marginSmime
 GnuPG can be configured in such a way that allows the system to search
 for missing X.509 certificates or certificate revocation lists on
 external X.509 certificate servers (see also Chapter
@@ -4065,8 +4067,8 @@ To conduct a \textbf{X.509 certificate search}, the system service
 DirMngr uses a list of certificate servers which can be entered in the
 file \newline
 \Filename{C:\back{}Documents and settings\back{}All
-Users\back{}Application data\back{}\\
-GNU\back{}etc\back{}dirmngr\back{}ldapservers.conf}\\
+Users\back{}Application data\back{}\T\\
+GNU\back{}etc\back{}dirmngr\back{}ldapservers.conf}\\ 
 These certificate servers are used for all users (system-wide). In
 addition, users can also set up additional user-specific certificate
 servers for certificate searches -- e.g. directly via Kleopatra (see
@@ -4091,7 +4093,7 @@ Lists}\index{Certificate Revocation Lists} (CRLs), the same directory
 contains a configuration file from:
 
 \Filename{C:\back{}Documents and settings\back{}All
-Users\back{}Application data\back{}\\
+Users\back{}Application data\back{}\T\\
 GNU\back{}etc\back{}dirmngr\back{}dirmngr.conf}
 
 Please note that only administrators can write in this file.
@@ -4118,13 +4120,13 @@ You can add the following proxy options to this configuration file
         will overwrite the LDAP URL contained in the certificate, or
         will use  \Filename{HOST} and\Filename{PORT}if no LDAP URL has
         been entered.
-
+        
     \item \Filename{only-ldap-proxy}
         This option ensures that DirMngr only uses the proxy
         configured under \Filename{ldap-proxy}. Because otherwise
         DirMngr will try to use other configured certificate servers,
         if the connection via \Filename{ldap-proxy} is not successful.
-
+        
 \end{itemize}
 
 
@@ -4133,10 +4135,10 @@ You can add the following proxy options to this configuration file
 \label{sec_systemtrustedrootcerts}
 \index{Root certificates}
 
-\marginSmime
+\T\marginSmime
 The pre-populated root certificates which are deemed as trustworthy
-for the entire system are defined in the \\
-\Filename{C:\back{}Documents and settings\back{}All Users\back{}Application data\\
+for the entire system are defined in the \\ 
+\Filename{C:\back{}Documents and settings\back{}All Users\back{}Application data\T\\
 \back{}GNU\back{}etc\back{}gnupg\back{}trustlist.txt} \index{trustlist.txt}file.
 
 To mark a root certificate as trustworthy, the corresponding
@@ -4151,7 +4153,7 @@ and ignored.
 Important: The end of the file must be followed by an empty row.
 
 An example:
-\ifthenelse{\boolean{DIN-A5}}{\scriptsize}{}
+\T\ifthenelse{\boolean{DIN-A5}}{\scriptsize}{}
 \begin{verbatim}
 # CN=Wurzel ZS 3,O=Intevation GmbH,C=DE
 A6935DD34EF3087973C706FC311AA2CCF733765B S
@@ -4163,7 +4165,7 @@ DC:BD:69:25:48:BD:BB:7E:31:6E:BB:80:D3:00:80:35:D4:F8:A6:CD S
 !14:56:98:D3:FE:9C:CA:5A:31:6E:BC:81:D3:11:4E:00:90:A3:44:C2 S
 
 \end{verbatim}
-\ifthenelse{\boolean{DIN-A5}}{\normalsize}{}
+\T\ifthenelse{\boolean{DIN-A5}}{\normalsize}{}
 
 In some cases it is useful to reduce the criteria for checking the
 root certificate. To do this, you can set an additional flag
@@ -4171,13 +4173,13 @@ root certificate. To do this, you can set an additional flag
 
 \textbf{Important:} Using \Filename{relax} reduces the level of
 security, so it needs to be decided on a case-by-case basis and should
-only be used in the case of problems.
+only be used in the case of problems. 
 
 For more details, see current GnuPG documentation (item ``trustlist.txt''):\\
-\ifthenelse{\boolean{DIN-A5}}{
-    \scriptsize
-    \texttt{http://www.gnupg.org/documentation/manuals/gnupg/Agent-Configuration.html}
-    \normalsize
+\T\ifthenelse{\boolean{DIN-A5}}{
+    \T\scriptsize
+    \T\texttt{http://www.gnupg.org/documentation/manuals/gnupg/Agent-Configuration.html}
+    \T\normalsize
 \T}
 \T{
     \uniurl{http://www.gnupg.org/documentation/manuals/gnupg/Agent-Configuration.html}
@@ -4202,7 +4204,7 @@ must also be stored for the DirMngr, as described in Section
 \index{Trustworthy root certificates}
 \index{Root certificates}
 
-\marginSmime
+\T\marginSmime
 
 Root certificates can also be marked as trustworthy by individual
 users -- this means that a system-wide configuration (see Section
@@ -4216,13 +4218,13 @@ if you are using a root certificate that has not been previously
 marked as trustworthy, the system will ask you whether you wish to
 classify it as trustworthy. Please ensure that the gpg-agent may have
 to be restarted before a change takes effect (e.g. by logging in and
-out).
+out). 
 
 The root certificates which you have marked as trustworthy (or
 explicitly marked as non-trustworthy) are automatically stored in the
 following file: \\
 \Filename{C:\back{}Dokumente und
-Einstellungen\back{}<Nutzername>\back{}\\
+Einstellungen\back{}<Nutzername>\back{}\T\\
 Application data\back{}gnupg\back{}trustlist.txt}
 \index{trustlist.txt}
 
@@ -4258,11 +4260,11 @@ this information helpful:
 
 Log files -- described as ,,debug information'' in the
 above-mentioned URL -- frequently offer valuable information and
-should therefore be attached to an error report.
+should therefore be attached to an error report.   
 
 This chapter describes how to activate program process information
 (which is what log files essentially are) for individual Gpg4win
-programs.
+programs. 
 
 \clearpage
 \section{Activating Kleopatra log files}
@@ -4278,7 +4280,7 @@ to create Kleopatra log data, and you must ensure that different
 \Filename{kleologdir} file folders are used.
 
 The path to this folder must be noted in the new environment variables
-\Filename{KLEOPATRA\_LOGIDR}:
+\Filename{KLEOPATRA\_LOGIDR}: 
 
 To do this, open the control panel, choose \Menu{System}, then the tab
 \Menu{Advanced} and finally the button \Button{Environment
@@ -4297,7 +4299,7 @@ create it afterwards.
 
 To ensure the log function goes into effect, Kleopatra must be shut
 down and restarted, the file folder of log data must exist and must be
-available for Kleopatra to write on.
+available for Kleopatra to write on. 
 
 While Kleopatra is used, it will record process information in the
 file \Filename{kleo-log} (main log file) as well as possibly many
@@ -4323,13 +4325,13 @@ environment file or slightly varying its name (so it can be easily
 reactivated later on). Do not forget to delete or move the log files,
 especially if they have become very large or there are a lot of files.
 It also makes sense to remove the log files before you start a new
-recording.
+recording. 
 
 
 \clearpage
 \section{Activating GpgOL log files}
 \index{Log file!GpgOL}
-
+                      
 To activate a GpgOL log file, you have to start a ``Registry Editor".
 To do this, enter the command \Filename{regedit} under
 \Menu{Start$\rightarrow$Execute} or into an input request field.
@@ -4353,11 +4355,11 @@ Restart Outlook to start the recording process.
 
 Remember that this file can become very large. Set
 \Filename{enableDebug} to \Filename{0} as soon as you no longer
-require the GpgOL log data recordings.
+require the GpgOL log data recordings. 
 
 Also do not forget to delete or move the log file, especially if it
 has become a very large file. Before starting a new recording, it also
-makes sense to remove the log file.
+makes sense to remove the log file. 
 
 More advanced technical information on GpgOL -- such as more possible
 values for {enableDebug} -- can be found in the technical (English)
@@ -4375,7 +4377,7 @@ activated with administrator rights.
 
 To activate the log file, open the following configuration file:\\
 \Filename{C:\back{}Documents and settings\back{}All
-Users\back{}Application data\back{}\\
+Users\back{}Application data\back{}\T\\
 GNU\back{}etc\back{}dirmngr\back{}dirmngr.conf}
 
 Add the following two rows in the configuration file (the path to the
@@ -4389,7 +4391,7 @@ log file can of course be adjusted):
 Then restart DirMngr under \Menu{System
 controls$\rightarrow$Administration$\rightarrow$Services} so that the
 modified configuration file is reimported and the new settings become
-active.
+active. 
 
 Comment out your adjustment in the aforementioned configuration file
 (hence \texttt{\#~debug-all}) as soon as you no longer need the
@@ -4397,7 +4399,7 @@ DirMngr log file recording.
 
 Also do not forget to delete or move the log file, especially if it
 has become a very large file. Before starting a new recording, it also
-makes sense to remove the log file.
+makes sense to remove the log file. 
 
 \clearpage
 \section{Activating GnuPG log files}
@@ -4422,12 +4424,12 @@ Kleopatra...$\rightarrow$GnuPG system}.  This configuration window
 features two debug options for eac hof the four programs:
 
 \begin{itemize}
-    \item Option \Menu{Set debug level to }\\
+    \item Option \Menu{Set debug level to }\\ 
         Here you define the details of the information to be recorded.
         Debug level \Menu{4 - Guru} is the highest level and creates
         very big files. If you no longer need these files, set the
-        debug level to \Menu{0 - None}).
-    \item Option \Menu{Write log to FILE in server mode}\\
+        debug level to \Menu{0 - None}). 
+    \item Option \Menu{Write log to FILE in server mode}\\ 
         Here, you enter the log file into which all debug information
         should be stored, e.g.
         \Filename{C:\back{}TEMP\back{}gpg-agent.log}
@@ -4435,11 +4437,11 @@ features two debug options for eac hof the four programs:
 
 Restart Kleopatra (you may have to shut down the pgp-agent via Task
 Manager, if it is still running), or you log out and log back into
-your Windows system.
+your Windows system. 
 
 Also do not forget to delete or move the log file, especially if it
 has become a very large file. Before starting a new recording, it also
-makes sense to remove the log file.
+makes sense to remove the log file. 
 
 \clearpage
 \section{Activating GpgME log files}
@@ -4457,7 +4459,7 @@ Add the new \textbf{user variable}:
     Name der Variable: \Filename{GPGME\_DEBUG}
 
     Wert der Variable: ~\Filename{<DEBUGLEVEL;PFAD>}, also z.B.:
-    \ifthenelse{\boolean{DIN-A5}}{\newline}{}
+    \T\ifthenelse{\boolean{DIN-A5}}{\newline}{}
      \Filename{5;c:\back{}TEMP\back{}gpgme.log}
 \end{quote}
 
@@ -4467,22 +4469,22 @@ can also set it up afterwards.
 The recommended diagnostic level\index{Diagnostic level} is the value
 \Filename{5}. In most cases, this level supplies sufficient
 information. If not, then advanced users can gradually increase this
-level.
+level. 
 
 To turn log data recording off, set the diagnostic level to the value
 \Filename{0} or remove the user variable.
 
 Also do not forget to delete or move the log file, especially if it
 has become a very large file. Before starting a new recording, it also
-makes sense to remove the log file.
+makes sense to remove the log file. 
 
 
-\clearpage
+\clearpage 
 \chapter{Why Gpg4win cannot be broken ...}
 \label{ch:themath}
 
 ... at least not with currently known methods, and provided the
-software is free of errors.
+software is free of errors. 
 
 In reality however, it is precisely those errors in the programs that
 provide opportunities for obtaining secret information when the
@@ -4504,7 +4506,7 @@ and algorithms is what is behind the security
 philosophy\index{Security philosophy} of cryptography and the
 principle of Free Software. Finally, this is also the best way of
 really understanding why GnuPG (the actual machinery behind Gpg4win)
-is so secure.
+is so secure. 
 
 In other words, this is where the free program that follows the
 compulsory portion begins.
@@ -4529,11 +4531,11 @@ this type of calculation has never been successful for the key lengths
 possible on a theoretical level, it is practically impossible since
 even with plenty of time (many years) and thousands of networked
 computers, there would never by sufficient storage to complete the
-last steps of this calculation.
+last steps of this calculation. 
 
 At the same time, it is entirely possible that one day an ingenious
 mathemtatical idea will provide a solution to the mathematical issues
-behind RSA. However, this is unlikely to happen anytime soon.
+behind RSA. However, this is unlikely to happen anytime soon.  
 
 From time to time the German Federal Agency for Security in
 Information Technology (BSI) publishes forecasts and assessments with
@@ -4543,7 +4545,7 @@ these minimum requirements. As touched upon in the previous chapter,
 the mathemetical elements form by far the most secure portion of
 practically applied cryptography.
 
-\clearpage
+\clearpage 
 The following discussion will show you how this
 mathematical method works. While not all details will be covered - as
 this would be far beyond the scope of this manual - with some effort
@@ -4562,8 +4564,8 @@ But first let us get some terminology out of the way:
 
 \begin{quote}
     An \textbf{algorithm} is a mathemetical method for modifying or
-    transforming data or information.
-
+    transforming data or information. 
+    
     \textbf{Arithmetics} is the method by which numbers are added and
     multiplied.
 \end{quote}
@@ -4593,7 +4595,7 @@ called modular or congruence arithmetic - works, imagine the face of a
 clock:
 
 
-
+\htmlattributes*{img}{width=300}
 \IncludeImage[width=0.5\textwidth]{clock-face}
 
 This clock is an example of arithmetic modulo 12 (hence the factor is
@@ -4619,7 +4621,7 @@ while always only using the residual that remains after the division.
 The modulus (the factor) is added to indicate that the rules of
 modular arithmetic rather than conventional arithmetic are applied,
 hence we would say, for example,  ``4 modulo 5'', or in short ``$4
-\bmod 5$''.
+\bmod 5$''. 
 
 A modulo 5 for example would be represented by a clock with only 5
 numbers (0, 1, 2, 3, 4), hence:
@@ -4640,7 +4642,7 @@ because you could also write:
 
 3 is the same as 8, and 1 the same as 6, since you are only interested
 in the respective residual that remains after the division by the
-factor of 5.
+factor of 5.   
 
 The last examples highlight the fact that by using this type of
 arithmetic, you can add a whole-number multiple of the module number
@@ -4680,7 +4682,7 @@ Three more examples:
 \begin{enumerate}
     \item[I.] $ 5 \bmod 11 * 3 \bmod 11 = 15 \bmod 11 = 4 \bmod 11 $
     \item[II.] $ 2 \bmod 7 * 4 \bmod 7 = 1 \bmod 7 $
-    \item[III.] $ 13 \bmod 17 * 11 \bmod 17 = 7 \bmod 17 $\\
+    \item[III.] $ 13 \bmod 17 * 11 \bmod 17 = 7 \bmod 17 $\\ 
     The last example becomes clear when one considers that using conventional arithmetic $ 13 * 11 = 143 $ and $ 143 = 8 * 17 + 7 $.
 \end{enumerate}
 
@@ -4699,14 +4701,14 @@ for the encryption with GnuPG: the RSA algorithm. This algorithm
 converts a series of numbers (which can represent a message) into a
 different series of numbers (transformation) in such a way that the
 message is thereby encrypted. Using the correct method, the message is
-securely encoded and may only be decoded by the right recipient.
+securely encoded and may only be decoded by the right recipient. 
 
 These are the principles behind the RSA algorithm:
 
 You created two large prime numbers\index{Prime numbers|(} when you
 entered your passphrase for creating a certificate (they are described
 as $p$ and $q$). Only you, or actually your computer, knows these two
-prime numbers and you must ensure they stay secret.
+prime numbers and you must ensure they stay secret. 
 
 They are now used to create three additional numbers:
 
@@ -4743,7 +4745,7 @@ calculate the private key portion ($d$) from the public key portion
 person with $d$ is able to decrypt the message.
 
 
-\clearpage
+\clearpage 
 \section{RSA encryption with small numbers}
 
 We will initially be using small numbers in order to show how the
@@ -4807,14 +4809,14 @@ itself 13 times and divided by 77, leaving the residual 47.
 If you use this calculation for all numbers between 0 and 76 and
 insert the results into a table, it will look as follows:
 
-
-
+\W\xmlattributes*{table}{BORDER}
+\htmlattributes*{td}{BGCOLOR="gray"}
 \begin{table}[htbp]
 \begin{center}
 \begin{Label}{table1}
 \begin{tabular}{|r||r|r|r|r|r|r|r|r|r|r|}
 \hline
-\bf \cellcolor{gray}
+\bf \T\cellcolor{gray}
 &\bf 0&\bf 1&\bf 2&\bf 3&\bf 4&\bf 5&\bf 6&\bf 7& \bf 8&\bf 9\\
 \hline
 \hline
@@ -4832,16 +4834,16 @@ insert the results into a table, it will look as follows:
 \hline
 \bf 60& 4& 40& 13& 28& 36& 65& 66& 67& 19& 27\\
 \hline
-\bf 70& 42& 15& 51& 24& 39& 47& 76\htmlattributes*{td}{BGCOLOR="gray"} & \cellcolor{gray}
-
-
-\\
+\bf 70& 42& 15& 51& 24& 39& 47& 76\htmlattributes*{td}{BGCOLOR="gray"} & \T\cellcolor{gray}
+\htmlattributes*{td}{BGCOLOR="gray"} & \T\cellcolor{gray}
+\htmlattributes*{td}{BGCOLOR="gray"} & \T\cellcolor{gray}
+\T\\
 \hline
 \end{tabular}
 \texorhtml{\caption}{\htmlcaption}{~}
 \end{Label}\end{center}
 \end{table}
-
+\W\textit{Table 1}\\\\\\
 
 The left column shows multiples of tens, the upper row shows the
 units.
@@ -4862,14 +4864,14 @@ example: the number $47 \bmod 77$ is decoded into the number $75\bmod
 Table \link*{2}[\ref{table2}]{table2} shows the exact allocation of
 the 77 numbers between 0 and 76.
 
-
-
+\W\xmlattributes*{table}{BORDER}
+\htmlattributes*{td}{BGCOLOR="gray"}
 \begin{table}[htbp]
 \begin{center}
 \begin{Label}{table2}
 \begin{tabular}{|r||r|r|r|r|r|r|r|r|r|r|}
 \hline
-\bf \cellcolor{gray}
+\bf \T\cellcolor{gray}
 &\bf 0&\bf 1&\bf 2&\bf 3&\bf 4&\bf 5&\bf 6&\bf 7& \bf 8&\bf 9\\
 \hline
 \hline
@@ -4887,22 +4889,22 @@ the 77 numbers between 0 and 76.
 \hline
 \bf 60& 25& 19& 6& 35& 15& 65& 66& 67& 40& 20\\
 \hline
-\bf 70& 49& 36& 30& 17& 46& 26& 76\htmlattributes*{td}{BGCOLOR="gray"} & \cellcolor{gray}
-
-
-\\
+\bf 70& 49& 36& 30& 17& 46& 26& 76\htmlattributes*{td}{BGCOLOR="gray"} & \T\cellcolor{gray}
+\htmlattributes*{td}{BGCOLOR="gray"} & \T\cellcolor{gray}
+\htmlattributes*{td}{BGCOLOR="gray"} & \T\cellcolor{gray}
+\T\\
 \hline
 \end{tabular}
 
 %TODO: Hyperlatex's htmlcaption generates wrong html code -> so set caption
 %part for tex only; and set htmlcaption as normal text below the table
-%\texorhtml{\caption}{\htmlcaption}{Number conversion modulo 77, using
+%\texorhtml{\caption}{\htmlcaption}{Number conversion modulo 77, using 
 %the private key 37}
 
-\caption{Number transformation modulo 77, using the private key 37}
+\T\caption{Number transformation modulo 77, using the private key 37}
 \end{Label}\end{center}
 \end{table}
-
+\W\textit{Table 2: Number transformation modulo 77, using the private key 37}\\\\\\
 
 In order to transform a number using Table
 \link*{2}[\ref{table2}]{table2}, we use the same method as for
@@ -4923,14 +4925,14 @@ for the encryption and decryption process.
 \clearpage
 \subsubsection{Executive Summary}
 
-You have ...
+You have ... 
 
 \begin{itemize}
 \item created two random prime numbers using the computer;
 \item created the product and both the public and private subkey from
     these numbers;
 \item encrypted a message using the public key;
-\item decrypted a message using a private key.
+\item decrypted a message using a private key. 
 \end{itemize}
 
 The two prime numbers selected can be so large that it is impossible
@@ -4946,7 +4948,7 @@ Table~\link*{1}[\ref{table1}]{table1}. The intended recipient of the
 encrypted series of numbers can decode these using the number 77 and
 the private key 37.
 
-\ifthenelse{\boolean{DIN-A5}}{\newpage}{}
+\T\ifthenelse{\boolean{DIN-A5}}{\newpage}{}
 
 Of course, a simple example such as this one does not guarantee a
 particularly secure encryption, as it is quite clear that 77 is the
@@ -4957,61 +4959,61 @@ example. The discerning reader will also have noticed that there are a
 whole series of numbers, such as the number 11 and its multiples (22,
 33 etc) and neighbouring numbers convert into themselves.
 
-
-
+\W\xmlattributes*{table}{BORDER}
+\htmlattributes*{td}{BGCOLOR="gray"}
 \begin{table}[htbp]
 \begin{center}
 \begin{Label}{table3}
 \begin{tabular}{|r||r|r|r|r|r|r|r|r|r|r|}
 \hline
-\bf \cellcolor{gray}
+\bf \T\cellcolor{gray}
 &\bf 0&\bf 1&\bf 2&\bf 3&\bf 4&\bf 5&\bf 6&\bf 7& \bf 8&\bf 9\\
 \hline
 \hline
 \bf 0& 0& 1& 51& 31& 60& 47& 41& 28& 57& 37\\
 \hline
-\bf 10\htmlattributes*{td}{BGCOLOR="lightgray"} & \cellcolor{lightgray}
-10\htmlattributes*{td}{BGCOLOR="lightgray"} & \cellcolor{lightgray}
-11\htmlattributes*{td}{BGCOLOR="lightgray"} & \cellcolor{lightgray}
+\bf 10\htmlattributes*{td}{BGCOLOR="lightgray"} & \T\cellcolor{lightgray}
+10\htmlattributes*{td}{BGCOLOR="lightgray"} & \T\cellcolor{lightgray}
+11\htmlattributes*{td}{BGCOLOR="lightgray"} & \T\cellcolor{lightgray}
 12& 62& 42& 71& 58& 52& 39& 68\\
 \hline
-\bf 20& 48\htmlattributes*{td}{BGCOLOR="lightgray"} & \cellcolor{lightgray}
-21\htmlattributes*{td}{BGCOLOR="lightgray"} & \cellcolor{lightgray}
-22\htmlattributes*{td}{BGCOLOR="lightgray"} & \cellcolor{lightgray}
+\bf 20& 48\htmlattributes*{td}{BGCOLOR="lightgray"} & \T\cellcolor{lightgray}
+21\htmlattributes*{td}{BGCOLOR="lightgray"} & \T\cellcolor{lightgray}
+22\htmlattributes*{td}{BGCOLOR="lightgray"} & \T\cellcolor{lightgray}
 23& 73& 53& 5& 69& 63& 50\\
 \hline
-\bf 30& 2& 59\htmlattributes*{td}{BGCOLOR="lightgray"} & \cellcolor{lightgray}
-32\htmlattributes*{td}{BGCOLOR="lightgray"} & \cellcolor{lightgray}
-33\htmlattributes*{td}{BGCOLOR="lightgray"} & \cellcolor{lightgray}
+\bf 30& 2& 59\htmlattributes*{td}{BGCOLOR="lightgray"} & \T\cellcolor{lightgray}
+32\htmlattributes*{td}{BGCOLOR="lightgray"} & \T\cellcolor{lightgray}
+33\htmlattributes*{td}{BGCOLOR="lightgray"} & \T\cellcolor{lightgray}
 34& 7& 64& 16& 3& 74\\
 \hline
-\bf 40& 61& 13& 70\htmlattributes*{td}{BGCOLOR="lightgray"} & \cellcolor{lightgray}
-43\htmlattributes*{td}{BGCOLOR="lightgray"} & \cellcolor{lightgray}
-44\htmlattributes*{td}{BGCOLOR="lightgray"} & \cellcolor{lightgray}
+\bf 40& 61& 13& 70\htmlattributes*{td}{BGCOLOR="lightgray"} & \T\cellcolor{lightgray}
+43\htmlattributes*{td}{BGCOLOR="lightgray"} & \T\cellcolor{lightgray}
+44\htmlattributes*{td}{BGCOLOR="lightgray"} & \T\cellcolor{lightgray} 
 45& 18& 75& 27& 14\\
 \hline
-\bf 50& 8& 72& 24& 4\htmlattributes*{td}{BGCOLOR="lightgray"} & \cellcolor{lightgray}
-54\htmlattributes*{td}{BGCOLOR="lightgray"} & \cellcolor{lightgray}
-55\htmlattributes*{td}{BGCOLOR="lightgray"} & \cellcolor{lightgray}
+\bf 50& 8& 72& 24& 4\htmlattributes*{td}{BGCOLOR="lightgray"} & \T\cellcolor{lightgray}
+54\htmlattributes*{td}{BGCOLOR="lightgray"} & \T\cellcolor{lightgray}
+55\htmlattributes*{td}{BGCOLOR="lightgray"} & \T\cellcolor{lightgray} 
 56& 29& 9& 38\\
 \hline
-\bf 60& 25& 19& 6& 35& 15\htmlattributes*{td}{BGCOLOR="lightgray"} & \cellcolor{lightgray}
-65\htmlattributes*{td}{BGCOLOR="lightgray"} & \cellcolor{lightgray}
-66\htmlattributes*{td}{BGCOLOR="lightgray"} & \cellcolor{lightgray}
+\bf 60& 25& 19& 6& 35& 15\htmlattributes*{td}{BGCOLOR="lightgray"} & \T\cellcolor{lightgray}
+65\htmlattributes*{td}{BGCOLOR="lightgray"} & \T\cellcolor{lightgray}
+66\htmlattributes*{td}{BGCOLOR="lightgray"} & \T\cellcolor{lightgray} 
 67& 40& 20\\
 \hline
-\bf 70& 49& 36& 30& 17& 46& 26& 76\htmlattributes*{td}{BGCOLOR="gray"} & \cellcolor{gray}
-
-
-\\
+\bf 70& 49& 36& 30& 17& 46& 26& 76\htmlattributes*{td}{BGCOLOR="gray"} & \T\cellcolor{gray}
+\htmlattributes*{td}{BGCOLOR="gray"} & \T\cellcolor{gray}
+\htmlattributes*{td}{BGCOLOR="gray"} & \T\cellcolor{gray}
+\T\\
 \hline
 \end{tabular}
 %TODO:
 %\texorhtml{\caption}{\htmlcaption}{~}
-\caption{~}
+\T\caption{~}
 \end{Label}\end{center}
 \end{table}
-
+\W\textit{Table 3}\\\\\\
 
 
 \clearpage
@@ -5040,7 +5042,7 @@ prime numbers get bigger.
 
 Of the prime numbers in the range which we use for encryption in
 practice, this portion is to small that the RSA algorithm is in no way
-restricted by it.
+restricted by it. 
 
 The larger the prime numbers, the more secure the encryption. A normal
 PC has no difficulty in obtaining the product from the two large prime
@@ -5064,7 +5066,7 @@ Two to the power of 10, displayed as $2^{10} = 2*2*2*2*2*2*2*2*2*2 = 1024$.
 
 Each number to the power of zero equals 1, e.g. $2^0 = 1$ and $5^0 = 1$.
 Put more generally, it means that a number is multiplied by itself as
-many times as indicated by the number of the power.
+many times as indicated by the number of the power. 
 
 The concept of a number basis can also be seen in the example of an
 odometer in a vehicle: the right wheel counts to the next number after
@@ -5075,7 +5077,7 @@ Each time the right wheel reaches 0, the wheel on the left counts up
 by a level. And each time when this second wheel reaches 0, the wheel
 to its left also goes up by one \ldots and so on.
 
-
+\htmlattributes*{img}{width=300}
 \IncludeImage[width=0.4\textwidth]{mileage-indicator}
 
 The right wheel counts single kilometres. When it marks an 8, it means
@@ -5191,9 +5193,9 @@ You can also represent the syllable ``un'' with the following number:
 $117 * 2^{8*1} + 110 * 2^{8*0} = 117 * 256 + 110 = 30062$
 
 Accordingly, the letter sequence ``und'' would be represented with the
-number
+number 
 
-$117 * 2^{8*2} + 110 * 2^{8*1} + 100 * 2^{8*0} = 117 * 65536 + 110 * 256 + 100 = 7695972$
+$117 * 2^{8*2} + 110 * 2^{8*1} + 100 * 2^{8*0} = 117 * 65536 + 110 * 256 + 100 = 7695972$ 
 
 since ``d'' is represented by 100.
 
@@ -5209,13 +5211,13 @@ However, we must ensure that the number into which the message is
 encrypted does not become larger than the product of the prime numbers
 (modulus), otherwise it creates problems, as we will see below.\\
 
- \ifthenelse{\boolean{DIN-A5}}{\newpage}{}
+ \T\ifthenelse{\boolean{DIN-A5}}{\newpage}{}
 Since the next process is comprised a number of steps, let's first
 summarize and then examine the individual steps in turn:
 
-\begin{enumerate}
+\begin{enumerate} 
     \item The message \emph{aba, cad, aca} is converted into numbers,
-        as described above.
+        as described above. 
 
     \item This representation, for example using a basis of $2^2=4$
         (instead of $2^8=256$), is converted into a representation
@@ -5227,9 +5229,9 @@ summarize and then examine the individual steps in turn:
     \item To recognise the coding, as compared to ``clear text'',
         convert the message that was coded using a basis of 10 back
         into a basis of 4, and convert it back into a letter sequence.
-
+       
     \item This turns the message \emph{aba, cad, aca} into the
-        encrypted message \emph{dbb, ddd, dac}.
+        encrypted message \emph{dbb, ddd, dac}. 
 \end{enumerate}
 
 \clearpage
@@ -5254,25 +5256,25 @@ And now in detail:
 \item This representation using a basis of 4 is converted into one
     using a basis of 10. To do this, you can use
     Table~\link*{1}[\ref{table1}]{table1} for encryption purposes,
-    which also uses numbers with a basis of 10.
-
+    which also uses numbers with a basis of 10. 
+    
     Because you are using four letters for the message, calculate
     using a basis of 4. For a modulo 77 calculation, you have to break
     down the message into pieces of three digits each, because the
     largest three-digit number using a basis of 4 is $333_4$. Using a
-    basis of 10, this number has a value of 63.
-
+    basis of 10, this number has a value of 63. 
+    
     If instead you were to divide the message into pieces of four
     characters each, $3333_4$ would exceed the value of $76_{10}$ and
     would result in unwanted ambiguity.
 
-    As a result, the message of three-digit pieces would result in
-    \[ aba, cad, aca \]
+    As a result, the message of three-digit pieces would result in 
+    \[ aba, cad, aca \] 
 
     Now assign your number values to the characters and do not forget
     that the pieces represent three-digit numbers using a basis of 4.
-
-    \ifthenelse{\boolean{DIN-A5}}{\newpage}{}
+    
+    \T\ifthenelse{\boolean{DIN-A5}}{\newpage}{}
 
     Since you are representing the letters with the numbers a = 0, b =
     1, c = 2, d = 3, the resulting message will look as follows:
@@ -5282,16 +5284,16 @@ And now in detail:
     number sequence 4, 35, 8.  Why? For example, take the middle part
     $203_4$:
 
-    \begin{eqnarray*}
+    \T\begin{eqnarray*}
     \W\begin{tabular}{rrr}
      3 * 4^0, & ~\mbox{also}~ 3 * 1, & ~\mbox{also}~ 3. \\
      0 * 4^1, & ~\mbox{also}~ 0 * 4, & ~\mbox{also}~ 0. \\
      2 * 4^2, & ~\mbox{also}~ 2 * 16, & ~\mbox{also}~ 32.\\
     \W\end{tabular}
-    \end{eqnarray*}
+    \T\end{eqnarray*}
 
 
-    \ifthenelse{\boolean{DIN-A5}}{}{\clearpage}
+    \T\ifthenelse{\boolean{DIN-A5}}{}{\clearpage}
 
 \item For encryption purposes, you can now use
     Table~\link*{1}[\ref{table1}]{table1} from page \pageref{table1},
@@ -5346,14 +5348,14 @@ your messages\ldots...
 % Appendix
 
 % page break in toc (for A5 paper only)
-\ifthenelse{\boolean{DIN-A5}}{addtocontents{toc}{\protect\newpage}}{}
+\T\ifthenelse{\boolean{DIN-A5}}{addtocontents{toc}{\protect\newpage}}{}
 
 \appendix
-\part{Annex}
-
+\T\part{Annex}
+\W\part*{\textbf{III Annex}}
 \addtocontents{toc}{\protect\vspace{0.3cm}}
 
-%\chapter{Glossar}
+%\T\chapter{Glossar}
 %\W\chapter*{A Glossar}
 %\label{glossar}
 %[Dieses Glossar ist noch in Arbeit.]
@@ -5364,8 +5366,8 @@ your messages\ldots...
 
 
 
-\chapter{Information on the GpgOL Outlook extension}
-
+\T\chapter{Information on the GpgOL Outlook extension}
+\W\chapter*{A Information on the GpgOL Outlook extension}
 \label{appendix:gpgol}
 \index{Outlook!plugin}
 
@@ -5378,14 +5380,14 @@ issues. In other words: Operation is not as comfortable as offered by,
 for example, \Email{} programs with integrated encryption and
 signature components (e.g. KMail/Kontact).
 
-\ifthenelse{\boolean{DIN-A5}}{\newpage}{}
+\T\ifthenelse{\boolean{DIN-A5}}{\newpage}{} 
 GpgOL is installed by the Gpg4win installation asisstant. On the next
 startup of Outlook, the menu \Menu{Extras$\rightarrow$Options} will
 contain the tab \Menu{GpgOL}:
 
 % screenshot: GpgOL options
-\ifthenelse{\boolean{DIN-A5}}{
-    \IncludeImage[width=0.75\textwidth]{sc-gpgol-options_en}
+\T\ifthenelse{\boolean{DIN-A5}}{
+    \T\IncludeImage[width=0.75\textwidth]{sc-gpgol-options_en}
 \T}
 \T{
     \IncludeImage[width=0.65\textwidth]{sc-gpgol-options_en}
@@ -5396,16 +5398,16 @@ contain the tab \Menu{GpgOL}:
 The tab \Menu{GpgOL} is divided into three areas: \begin{enumerate}
     \item \textbf{General information:}
 
-        \marginSmime
+        \T\marginSmime
         \Menu{Turn on S/MIME support}
-
+        
         Once Gpg4win has been intalled, S/MIME functionality is
         activated in GpgOL. This refers to the S/MIME support of
         GnuPG. Outlook itself also supports X.509 and S/MIME, but of
         course does not work with the Gpg4win component GnuPG. This
         means that all settings, certificate management and user
         dialogs will be different. Please also note that Outlook
-        itself does not offer any OpenPGP support.
+        itself does not offer any OpenPGP support. 
 
         If you wish to use S/MIME with Gpg4win in Outlook, leave the
         GpgOL-Option\index{GpgOL options} \Menu{Activate S/MIME
@@ -5415,26 +5417,26 @@ The tab \Menu{GpgOL} is divided into three areas: \begin{enumerate}
     \item \textbf{Sending messages:}
 
         \Menu{Encrypt new messages with default settings}\\
-        \Menu{Sign new messages with default settings}
+        \Menu{Sign new messages with default settings} 
 
         These two options control whether new messages are encrypted
         and/or signed with the default settings. You can also change
         these settings when you create a message. Only the buttons are
-        activated accordingly.
-
+        activated accordingly. 
+    
     \item \textbf{Reading messages:}
 
         \Menu{Show HTML display where possible}
 
         This option can be used to display the HTML version of a
         message. Normally, or if HTML format is not available, the
-        message will be shown in text format.
+        message will be shown in text format. 
 
         \Menu{Display encrypted message as attachment}
-
+        
         The encrypted portion of the message is also shown as an
         attachment. This means that users can save the encrypted part
-        separately, or process it in another manner.
+        separately, or process it in another manner. 
 \end{enumerate}
 
 All options are already pre-populated following a new installation.
@@ -5444,13 +5446,13 @@ All options are already pre-populated following a new installation.
 To send encrypted messages using Outlook, you have to ensure that you
 do \textbf{not} use Microsoft Word to compose messages.
 
-It is also recommended that you do not use HTML messages.\\
+It is also recommended that you do not use HTML messages.\\ 
 These items can be controlled in the menu item
 \Menu{Extras$\rightarrow$Options} on the \Menu{E-Mail format} tab.
 The message format should be set to \Menu{Text only} (see highlighted
 area). However, if you still want to use HTML for signed or encrypted
 \Email{}s, it is possible that the formatting information will be lost
-by the time the message reaches the recipient.
+by the time the message reaches the recipient. 
 
 % screenshot: Outlook text format options
 \IncludeImage[width=0.6\textwidth]{sc-gpgol-options-textformat_en}
@@ -5466,8 +5468,8 @@ Vista can handle AES encrypted S/MIME \Email{}s without Gpg4win.
 
 
 \clearpage
-\chapter{Using GnuPG with other \Email{} programs}
-
+\T\chapter{Using GnuPG with other \Email{} programs}
+\W\chapter*{B Using GnuPG with other \Email{} programs}
 \label{ch:plugins}
 
 The Gpg4win compendium mainly looks at the Outlook \Email{} program.
@@ -5488,7 +5490,7 @@ Currently, an integration of GnuPG is offered for the following
 
 
 
-\begin{description} \item[Thunderbird] with
+\begin{description} \item[Thunderbird] with 
     \textbf{Enigmail}\footnote{\uniurl{http://www.thunderbird-mail.de/wiki/Enigmail\_OpenPGP}}.
     \index{Thunderbird} \index{Enigmail}
 
@@ -5511,8 +5513,8 @@ Currently, an integration of GnuPG is offered for the following
 
 
 \clearpage
-\chapter{Automatic installation of Gpg4win}
-
+\T\chapter{Automatic installation of Gpg4win}
+\W\chapter*{C Automatic installation of Gpg4win}
 \label{ch:auto}
 \index{Automatic installation}
 
@@ -5539,14 +5541,14 @@ settings will be adopted.
 
 Gpg4win also supports a so-called control file. You can use the option
 \Filename{/C=<INIFILE>} to enter a control file (name usually ends in
-\Filename{.ini}).
+\Filename{.ini}). 
 
 Another example:\\
 \Filename{gpg4win.exe /S /C=C:\back{}TEMP\back{}gpg4win.ini}
 
 ~\\
 
-\ifthenelse{\boolean{DIN-A5}}{\newpage}{}
+\T\ifthenelse{\boolean{DIN-A5}}{\newpage}{}
 
 This \Filename{.ini} file should contain exactly one section
 \Filename{[gpg4win]}. It is where various settings can be made,
@@ -5559,13 +5561,13 @@ to this rule are documented in the example on the next page.
 
 
 \clearpage
-This is an example of the contents in a control file which displays
+This is an example of the contents in a control file which displays 
 \textbf{all} authorized key words:
 
-\ifthenelse{\boolean{DIN-A5}}{\scriptsize}{}
+\T\ifthenelse{\boolean{DIN-A5}}{\scriptsize}{}
 \begin{verbatim}
 [gpg4win]
-  ; Installation settings. Leave out or leave empty for
+  ; Installation settings. Leave out or leave empty for  
   ; Default settings
   inst_gpgol = true
   inst_gpgex = true
@@ -5592,20 +5594,20 @@ This is an example of the contents in a control file which displays
   scdaemon.conf = D:\config\scdaemon-site.txt
   gpa.conf = D:\config\gpa-site.conf
 \end{verbatim}
-\ifthenelse{\boolean{DIN-A5}}{\normalsize}{}
+\T\ifthenelse{\boolean{DIN-A5}}{\normalsize}{}
 
 A corresponding request for automatic installation with a control file
 \Filename{gpg4win.ini} and an installation path
 \Filename{D:\back{}Programme\back{}Gpg4win} could look as follows:\\
 \Filename{
-  \ifthenelse{\boolean{DIN-A5}}{\scriptsize}{}
+  \T\ifthenelse{\boolean{DIN-A5}}{\scriptsize}{}
   gpg4win.exe /S /C=C:\back{}TEMP\back{}gpg4win.ini  /D=D:\back{}Programme\back{}Gpg4win
-  \ifthenelse{\boolean{DIN-A5}}{\normalsize}{}
+  \T\ifthenelse{\boolean{DIN-A5}}{\normalsize}{}
 }
 
 \clearpage
-\chapter{Transfer from other programs}
-
+\T\chapter{Transfer from other programs}
+\W\chapter*{D Transfer from other programs}
 \label{ch:migration}
 
 This section explains how you can transfer from other Gnu-based
@@ -5626,7 +5628,7 @@ As soon as you have installed Gpg4win, check whether your old
 certificates are already there. You can do this using the Kleopatra or
 GPA certificate managers. If your certificates are already there, the
 old encryption system already corresponded with the new conventions
-for certificate storage locations, and you need not do anything else.
+for certificate storage locations, and you need not do anything else. 
 
 If however your old certificates do not appear, simply import them
 from the backup copies. Please read Chapter~\ref{ch:ImExport}.
@@ -5642,8 +5644,8 @@ two files using Kleopatra\footnote{This is not an official method, but
 it still works with all current GnuPG versions.}.
 
 \clearpage
-\section*{Migration from Gpg4win-1.1.x to Gpg4win-2.x}
-
+\T\section*{Migration from Gpg4win-1.1.x to Gpg4win-2.x}
+\W\section*{D.1 Migration from Gpg4win-1.1.x to Gpg4win-2.x}
 \index{Migration from Gpg4win}
 
 It is highly recommended that you first uninstall Gpg4win-1.1.x before installing Gpg4win-2.x.
@@ -5670,12 +5672,12 @@ de-selected.
 removing components that are no longer in use. This means that the MSI
 installation assistant acts correctly in the above scneario (old
 component K in version X is no longer on the operating system after
-step 2).
+step 2). 
 
 
 \clearpage
-\chapter{Uninstalling Gpg4win}
-
+\T\chapter{Uninstalling Gpg4win}
+\W\chapter*{E Uninstalling Gpg4win}
 
 \index{Uninstallation}
 
@@ -5709,9 +5711,9 @@ deinstallation process). Confirm whether you wish to clean the
 Now execute this command for all Outlook folders.
 
 Once you have reset all folders, you can begin to uninstall Gpg4win.\\
+ 
 
-
-\ifthenelse{\boolean{DIN-A5}}{\newpage}{}
+\T\ifthenelse{\boolean{DIN-A5}}{\newpage}{}
 There are three ways of uninstalling the program:
 
 \begin{itemize}
@@ -5729,7 +5731,7 @@ There are three ways of uninstalling the program:
     \Filename{C:$\backslash$Programme$\backslash$GNU$\backslash$GnuPG$\backslash$}).
     If you have selected a path that is different from the default
     path during the installation process, you will find the
-    deinstallationprogram in the corresponding location.
+    deinstallationprogram in the corresponding location. 
 
 \item This exe file is also found in the start menu under Gpg4win.
 
@@ -5746,25 +5748,25 @@ configuration settings below will \textbf{not} be deleted:
 \begin{itemize}
     \item User-specific GnuPG application data\\
         in \Filename{\%APPDATA\%\back{}gnupg}, generally corresponds
-        with file folder: \\
-        \Filename{C:\back{}Documents and settings\back{}<Benutzername>\back{}\\
+        with file folder: \\ 
+        \Filename{C:\back{}Documents and settings\back{}<Benutzername>\back{}\T\\
         Application data\back{}gnupg\back{}}
 
         This \Filename{gnupg} file folder contains all personal GnuPG
         information, hence private certificates, trust settings and
-        program configurations.
+        program configurations. 
 
     \item System-wide GnuPG application data\\ in
         \Filename{\%COMMON\_APPDATA\%\back{}GNU}, usually corresponds with
-        file folder: \\ \Filename{C:\back{}Documents and
+        file folder: \\ \Filename{C:\back{}Documents and 
         settings\back{}All
-        Users\back{}\\
+        Users\back{}\T\\
         Application data\back{}GNU\back{}}
 \end{itemize}
 
 
-\section*{Uninstalling Gpg4win-1.1.3}
-
+\T\section*{Uninstalling Gpg4win-1.1.3}
+\W\section*{F.1 Uninstalling Gpg4win-1.1.3}
 Once Gpg4win-1.1.3 has been uninstalled, the following file folders or
 registry keys will remain:
 
@@ -5773,7 +5775,7 @@ registry keys will remain:
         \Filename{\%APPDATA\%$\backslash$gnupg} (\textit{Continues} to
         be used by a Gpg4win2 installation.)\\
         Important: This is where your personal private and public
-        certificates and GnuPG settings are found.
+        certificates and GnuPG settings are found. 
 
     \item Registry key:\\
         \Filename{HKLM$\backslash$Software$\backslash$GNU$\backslash$GnuPG}
@@ -5788,34 +5790,34 @@ registry keys will remain:
 
 
 \clearpage
-\chapter{History}
+\T\chapter{History}
+\W\chapter*{F History}
 
-
-\ifthenelse{\boolean{DIN-A5}}{\enlargethispage{2\baselineskip}}{}
+\T\ifthenelse{\boolean{DIN-A5}}{\enlargethispage{2\baselineskip}}{}
 \begin{itemize}
-\item ``GnuPP\index{GnuPP} fÃ¼r Einsteiger'', 1st edition March 2002 and\\
-      ``GnuPP fÃ¼r Durchblicker'', 1st  edition March 2002,\\
+\item ``GnuPP\index{GnuPP} für Einsteiger'', 1st edition March 2002 and\\
+      ``GnuPP für Durchblicker'', 1st  edition March 2002,\\
   Authors: Manfred J. Heinze, TextLab text+media\\
   Consultants: Lutz Zolondz, G-N-U GmbH\\
   Illustrations: Karl Bihlmeier, Bihlmeier \& Kramer GbR\\
   Layout: Isabel Kramer, Bihlmeier \& Kramer GbR\\
   Technical text: Dr. Francis Wray, e-mediate Ltd.\\
   Editors: Ute Bahn, TextLab text+media\\
-  Publisher: Bundesministerium fÃ¼r Wirtschaft und Technologie (BMWi)\\
+  Publisher: Bundesministerium für Wirtschaft und Technologie (BMWi)\\
   Available at
   \uniurl{http://www.gnupp.de/pdf/einsteiger.pdf}
-  \ifthenelse{\boolean{DIN-A5}}{\\}{}
+  \T\ifthenelse{\boolean{DIN-A5}}{\\}{}
   und
-  \ifthenelse{\boolean{DIN-A5}}{}{\\}
+  \T\ifthenelse{\boolean{DIN-A5}}{}{\\}
   \uniurl{http://www.gnupp.de/pdf/durchblicker.pdf}.
-%    The section ``History'' is not contained in the original document and was added by Werner Koch.
-\item Revised non-published version of TextLab text+media.
-\item ``Gpg4win fÃ¼r Einsteiger'' and ``Gpg4win fÃ¼r Durchblicker'', December 2005 \\
+%    The section ``History'' is not contained in the original document and was added by Werner Koch. 
+\item Revised non-published version of TextLab text+media.      
+\item ``Gpg4win für Einsteiger'' and ``Gpg4win für Durchblicker'', December 2005 \\
       Revision: Werner Koch, g10 Code GmbH\\
       Publisher: the Gpg4win Initiative
 \item Thanks to the authorisation of the BMWi dated 14 November 2007, the non-modifiable ``Impressum'' section was removed  and adapted to the current version.
-\item The ``Gpg4win Compendium'' combines ``Gpg4win fÃ¼r Einsteiger'' and
-      ``Gpg4win fÃ¼r Durchblicker'' and has been comprehensively updated and supplemented for Gpg4win2 between 2009 and 2010.\\
+\item The ``Gpg4win Compendium'' combines ``Gpg4win für Einsteiger'' and
+      ``Gpg4win für Durchblicker'' and has been comprehensively updated and supplemented for Gpg4win2 between 2009 and 2010.\\
       Major revision:\\
       Werner Koch, g10 Code GmbH\\
       Florian v. Samson, Bundesamt f\"ur Sicherheit in der
@@ -5825,8 +5827,8 @@ registry keys will remain:
       Translated into English from the German original by:\\
       Brigitte Hamilton (\uniurl{http://www.linguaetc.com})
 
-      Gpg4win program package and Gpg4win Compendium are available at:
-      \ifthenelse{\boolean{DIN-A5}}{}{\\}
+      Gpg4win program package and Gpg4win Compendium are available at: 
+      \T\ifthenelse{\boolean{DIN-A5}}{}{\\}
       \uniurl{http://www.gpg4win.org}
 \end{itemize}
 
@@ -5837,14 +5839,14 @@ registry keys will remain:
 
 \clearpage
 % in Part aufnehmen
-\pdfbookmark[-1]{Index}{Index}
-\begingroup
-  \let\WriteBookmarks\relax
-  \phantomsection
-  \addcontentsline{toc}{chapter}{Index}
-\endgroup
+\T\pdfbookmark[-1]{Index}{Index}
+\T\begingroup
+  \T\let\WriteBookmarks\relax
+  \T\phantomsection
+  \T\addcontentsline{toc}{chapter}{Index}
+\T\endgroup
 
 % Index ausgeben
-\printindex
+\T\printindex
 
 \end{document}
