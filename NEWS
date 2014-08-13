@@ -6,10 +6,10 @@
 Noteworthy changes in version 2.2.2 (unreleased)
 ------------------------------------------------
 
-(en) GnuPG has been updated to version 2.0.25. See release notes on
+(en) GnuPG has been updated to version 2.0.26. See release notes on
      www.gnupg.org for details.
 
-(de) GnuPG wurde auf Version 2.0.25 aktualisiert. Details zu dieser
+(de) GnuPG wurde auf Version 2.0.26 aktualisiert. Details zu dieser
     Version finden sich unter www.gnupg.org
 
 (en) A library load problem has been fixed that could keep Kleopatra
@@ -38,11 +38,18 @@ Noteworthy changes in version 2.2.2 (unreleased)
 (de) Platzhalter (wie *.txt) in Kommandozeilenaufrufen funktionieren nun
      wieder.
 
+(en) Problems with Outlook sender / recipient address lookup have been
+     fixed in GpgOL. Especially for Microsoft Exchange addresses.
+
+(de) Probleme mit der Auflösung von Sender / Empfängeraddressen wurden
+     in GpgOL behoben. Insbesondere bei der Verwendung von Microsoft
+     Exchange Addressbüchern.
+
 ~~~~~~~~~~~~~~~
 GnuPG:          2.0.26
 Kleopatra:      2.2.0-gitac229d2
 GPA:            0.9.4
-GpgOL:          1.2.0
+GpgOL:          1.2.1
 GpgEX:          1.0.1
 Claws-Mail:     3.9.1
 Kompendium DE:  3.0.0
