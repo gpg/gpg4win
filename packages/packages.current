@@ -337,10 +337,9 @@ chk  d063e705812e1ee7feb8f35d51b3cad04ca13b0d
 
 # note: 2012-03-28 wk - Changed server from sf.net
 # checked: 2014-07-16 ah updated from 1.4.12
-# switched back to sf.net (ftp not available)
 # verified with key: 8048 643B A2C8 40F4 F92A  195F F549 84BF A16C 640F
-server http://downloads.sourceforge.net/project/libpng/libpng14/1.4.13/
-file libpng-1.4.13.tar.xz
+server ftp://ftp.simplesystems.org/pub/png/src/
+file libpng14/libpng-1.4.13.tar.xz
 chk  093d59771064dd51860a51c5a8601576c74a152f
 
 #
