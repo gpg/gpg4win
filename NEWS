@@ -33,11 +33,6 @@ Noteworthy changes in version 2.2.2 (unreleased)
 (de) Bestätigungs und Warnmeldungen von pinentry-qt sollten sich nun auch
      im Vordergrund öffnen.
 
-(en) Command line wildcards (like *.txt) now work again.
-
-(de) Platzhalter (wie *.txt) in Kommandozeilenaufrufen funktionieren nun
-     wieder.
-
 (en) Problems with Outlook sender / recipient address lookup have been
      fixed in GpgOL. Especially for Microsoft Exchange addresses.
 
