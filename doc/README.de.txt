@@ -56,15 +56,30 @@ Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 -------------------------------------------------
 
 - GnuPG:
-  * Ein Fehler welche mögliche endlosschleife in GnuPG auslösen
-    konnte wurde behoben. [CVE-2013-4402]
-
-  * Unterstützung für SPR332 und 532 Pinpads.
+  * GnuPG wurde auf Version 2.0.26 aktualisiert. Details zu dieser
+    Version finden sich unter www.gnupg.org
 
 - Kleopatra:
-  * Ein Absturz des Programms wurde behoben der auftrat wenn Microsoft Office
-    IME verwendet wurde
+  * Ein Problem wurde behoben welches dazu führen konnte das Kleopatra
+    auf manchen System nicht startete.
+  * Kleopatra wurde auf den stand der KDE Software Kollektion 4.14
+    aktualisiert.
 
+- GpgEX:
+  * GpgEX stürzt nicht mehr ab wenn die Umgebungsvariable GNUPGHOME gesetzt
+    ist.
+
+- GpgOL:
+  * Probleme mit der Auflösung von Sender / Empfängeraddressen wurden
+     in GpgOL behoben. Insbesondere bei der Verwendung von Microsoft
+     Exchange Addressbüchern.
+
+- Pinentry-qt:
+  *  Bestätigungs und Warnmeldungen von pinentry-qt sollten sich nun auch
+     im Vordergrund öffnen.
+
+- Allgemein:
+  * Verwendete Bibliotheken wurden aktualisiert.
 
 3. Bekannte Probleme (und Abhilfen)
 ===================================

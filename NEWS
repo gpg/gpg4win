@@ -18,6 +18,11 @@ Noteworthy changes in version 2.2.2 (unreleased)
 (de) Ein Problem wurde behoben welches dazu führen konnte das Kleopatra
     auf manchen System nicht startete.
 
+(en) Kleopatra has been updated to KDE Sofware Colleciton Version 4.14.
+
+(de) Kleopatra wurde auf den stand der KDE Software Kollektion 4.14
+     aktualisiert.
+
 (en) Used libraries have been updated to their latest stable relase.
 
 (de) Verwendete Bibliotheken wurden aktualisiert.

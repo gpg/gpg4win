@@ -53,13 +53,27 @@ New in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 -------------------------------------------------
 
 - GnuPG:
-  * Fixed possible infinite recursion in the compressed packet
-    parser. [CVE-2013-4402]
-
-  * Support for SPR332 and 532 pinpads.
+  * GnuPG wurde auf Version 2.0.26 aktualisiert. Details zu dieser
+    Version finden sich unter www.gnupg.org
 
 - Kleopatra:
-  * Kleopatra no longer crashes when using Microsoft Office IME.
+  * A library load problem has been fixed that could keep Kleopatra
+    from starting on some systems.
+  * Kleopatra has been updated to KDE Sofware Colleciton Version 4.14.
+
+- GpgEx:
+  * GpgEX no longer crashes if the environment variable GNUPGHOME is set.
+
+- GpgOL:
+  * Problems with Outlook sender / recipient address lookup have been
+    fixed in GpgOL. Especially for Microsoft Exchange addresses.
+
+- Pinentry-qt:
+  * Warnings and confirmation dialogs should now open in the
+  foreground.
+
+- General:
+  * Used libraries have been updated.
 
 3. Known Bugs (and Workarounds)
 ===============================
