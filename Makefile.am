@@ -22,26 +22,11 @@ DISTCHECK_CONFIGURE_FLAGS = --host=i686-w64-mingw32
 
 SUBDIRS = po packages doc src
 
+# find patches -type f | sort | sed 's/$/ \\/' | sed 's/^/             /'
+
 EXTRA_DIST = autogen.sh README.GIT ONEWS \
-	doc/license-page doc/GPLv3 \
+        doc/license-page doc/GPLv3 \
         build-aux/git-log-footer build-aux/git-log-fix \
-        patches/pthreads-w32-2-8-0-release/01-make.patch \
- patches/pthreads-w32-2-8-0-release/02-mingw_w64_timespec_compatibility.patch \
-        patches/glib-2.20.0/01-socket.patch \
-        patches/glib-2.24.0/01-socket.patch \
-        patches/glib-2.34.3/01-socket.patch \
-        patches/glib-2.34.3/02-no-kill.patch \
-        patches/gtk+-2.24.17/01-utf-conv-crash.patch \
-        patches/gtk+-2.24.17/02-crlf.patch \
-        patches/libxml2-2.7.8/01-cve-2012-5134 \
-	patches/gnupg2/01-version.patch.in \
-	patches/gnupg2-2.0.20/02-allow-mark-trusted.patch \
-        patches/gnupg2-2.0.21/01-scd-varlen.patch \
-        patches/gnupg2-2.0.21/02-scd-spr532.patch \
-	patches/dirmngr-1.1.0/01-mmap.patch \
-        patches/gpgol-1.1.3/01-w64-ming64.patch  \
-        patches/gpgol-1.1.3/02-off_t.postcfg-build \
-	patches/libetpan-0.57/01-gnutls_compat.patch \
         patches/claws-mail-3.9.1/01-w64-mingw32.patch \
         patches/claws-mail-3.9.1/02-ldap-opt.patch \
         patches/claws-mail-3.9.1/03-all-crypto.patch \
@@ -50,16 +35,43 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         patches/claws-mail-3.9.1/50-configure.patch \
         patches/claws-mail-3.9.1/51-version-file.patch \
         patches/claws-mail-3.9.1/80-src-makefile.postcfg-build \
-        patches/gtkhtml2_viewer-0.34/80-src-makefile.postcfg-build \
-	patches/gnutls-2.12.21/01-openssl-wincrypt.patch \
-        patches/libgpg-error-1.12/01-fix-get-string.patch \
-	patches/gpa-0.9.4/01-bin-encrypt.patch \
+        patches/dirmngr-1.1.1/dirmngr-pth.patch \
+        patches/glib-2.20.0/01-socket.patch \
+        patches/glib-2.24.0/01-socket.patch \
+        patches/glib-2.34.3/01-socket.patch \
+        patches/glib-2.34.3/02-no-kill.patch \
+        patches/gnupg2-2.0.26/0001-Enable-wildcard-expansion-with-mingw-w64.patch \
+        patches/gnupg2/01-version.patch \
+        patches/gnupg2/01-version.patch.in \
+        patches/gnutls-2.12.23/01-openssl-wincrypt.patch \
+        patches/gnutls-2.12.23/02-cve-2013-2116.patch \
+        patches/gnutls-2.12.23/03-cve-2014-1959.patch \
+        patches/gnutls-2.12.23/04-cve-2014-0092.patch \
+        patches/gnutls-2.12.23/05-cve-2014-3466.patch \
+        patches/gnutls-2.12.23/fix-gcrypt-private-api-usage.patch \
+        patches/gnutls-2.12.23/gnulib-mingw-w64-fix.patch \
+        patches/gpa-0.9.4/01-bin-encrypt.patch \
         patches/gpa-0.9.4/02-cms-detection.patch \
         patches/gpa-0.9.4/02-x509-import.patch \
         patches/gpa-0.9.4/03-homedir-via-gpgconf.patch \
         patches/gpa-0.9.4/04-utf-clip-crash.patch \
         patches/gpa-0.9.4/05-event-done.patch \
-	patches/gpgme-1.4.3/01-card-edit.patch
+        patches/gpgme-1.4.4/0001-Handle-modern-keyserver-output-which-may-emit-the-fi.patch \
+        patches/gpgol-1.1.3/01-w64-ming64.patch \
+        patches/gpgol-1.1.3/02-off_t.postcfg-build \
+        patches/gtk+-2.24.17/01-utf-conv-crash.patch \
+        patches/gtk+-2.24.17/02-crlf.patch \
+        patches/gtkhtml2_viewer-0.34/80-src-makefile.postcfg-build \
+        patches/libetpan-0.57/01-gnutls_compat.patch \
+        patches/libgpg-error-1.12/01-fix-get-string.patch \
+        patches/libtasn1-2.14/gnulib-mingw-w64-fix.patch \
+        patches/libxml2-2.7.8/01-cve-2012-5134 \
+        patches/pinentry-0.8.4-beta8/0001-Set-some-accessibility-information.patch \
+        patches/pinentry-0.8.4-beta8/0002-Use-raiseWindow-also-for-confirm-dialogs.patch \
+        patches/pinentry-0.8.4-beta8/0003-Add-fallbacks-for-SetForegroundWindow.patch \
+        patches/pinentry-0.8.4-beta8/0004-Check-for-MOC-also-if-pinentry-qt-is-disabled.patch \
+        patches/pthreads-w32-2-8-0-release/01-make.patch \
+        patches/pthreads-w32-2-8-0-release/02-mingw_w64_timespec_compatibility.patch
 
 copy-news:
 	cp NEWS doc/website/NEWS.last
