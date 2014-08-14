@@ -53,8 +53,8 @@ New in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 -------------------------------------------------
 
 - GnuPG:
-  * GnuPG wurde auf Version 2.0.26 aktualisiert. Details zu dieser
-    Version finden sich unter www.gnupg.org
+  * GnuPG was updated to version 2.0.26.
+    (See www.gnupg.org for more details.)
 
 - Kleopatra:
   * A library load problem has been fixed that could keep Kleopatra
@@ -70,7 +70,7 @@ New in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 
 - Pinentry-qt:
   * Warnings and confirmation dialogs should now open in the
-  foreground.
+    foreground.
 
 - General:
   * Used libraries have been updated.
