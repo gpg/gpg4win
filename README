@@ -36,16 +36,13 @@ as GNU make.  We are using Debian GNU/Linux 7 (Wheezy), any other
 POSIX system should work as well but you may run into problems due to
 different toolchain versions.
 
-If you want trying to build under Debian 6 (Lenny) you need to put a
-line "deb http://apt.intevation.org lenny/mingw" into /etc/apt/sources
-and update the mingw packages.  However it building under Lenny is not
-anymore suggested.
-
 To satisfy all needs of configure at least the following packages need
 to be installed:
 
  build-essential (libc6-dev, gcc, g++, make)
  automake 1.11, autoconf (if building from GIT)
+ mingw32
+ mingw-w64
  mingw-w64-i686-dev
  mingw-w64-x86-64-dev
  nsis
@@ -60,9 +57,10 @@ to be installed:
  libglib2.0-dev (glib-genmarshal, glib-compile-{resources,schemas})
  libgdk-pixbuf2.0-dev (gdk-pixbuf-csource)
  docbook-utils, ghostscript (claws-mail manual)
- texlive (you need most modules, e.g. texlive-latex-extra)
+ texlive (you need most modules)
+ texlive-latex-extra
  latex-xcolor (for the compendium)
-
+ libqt4-dev-bin (in case pinentry-qt needs moc)
 
 
 Building the Webpages
