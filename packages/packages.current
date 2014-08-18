@@ -410,9 +410,9 @@ chk  f03d9b63ac3b17a6972fc11150d136925b702f02
 file libksba/libksba-1.3.0.tar.bz2
 chk  241afcb2dfbf3f3fc27891a53a33f12d9084d772
 
-# checked: 2014-07-16 ah
-file libassuan/libassuan-2.1.1.tar.bz2
-chk  8bd3826de30651eb8f9b8673e2edff77cd70aca1
+# checked: 2014-08-18 ah - updated
+file libassuan/libassuan-2.1.2.tar.bz2
+chk  7aed69734ba64b63004107cada671b5861d332a4
 
 # checked: 2014-08-12 ah - updated
 name gnupg2-2.0.26.tar.bz2
