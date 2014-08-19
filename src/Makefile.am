@@ -305,7 +305,8 @@ gpg4win_pkg_gnutls_make_args = \
 
 
 gpg4win_pkg_curl_configure = \
-  --with-gnutls --without-ca-bundle --with-libiconv-prefix=$(idir)
+  --with-gnutls --without-ca-bundle --with-libiconv-prefix=$(idir) \
+  CPPFLAGS=\"-I$(idir)/include\" LIBS=\"-L$(idir)/lib\"
 
 gpg4win_pkg_libxml2_configure = \
   --enable-shared --without-python --with-iconv=$(idir)
