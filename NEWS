@@ -50,6 +50,10 @@ Noteworthy changes in version 2.2.2 (unreleased)
 (de) Kommandozeilen Ausgaben werden nun im zur Windows Konsole passenden
      Encoding ausgegeben.
 
+(en) The pinentry dialog is now translated correctly in the French locale.
+
+(de) Der Pinentry Dialog wird nun korrekt ins Französische übersetzt.
+
 ~~~~~~~~~~~~~~~
 GnuPG:          2.0.26
 Kleopatra:      2.2.0-gitac229d2
