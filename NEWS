@@ -45,6 +45,11 @@ Noteworthy changes in version 2.2.2 (unreleased)
      in GpgOL behoben. Insbesondere bei der Verwendung von Microsoft
      Exchange Addressbüchern.
 
+(en) Command line output is now encoded to the Windows console encoding.
+
+(de) Kommandozeilen Ausgaben werden nun im zur Windows Konsole passenden
+     Encoding ausgegeben.
+
 ~~~~~~~~~~~~~~~
 GnuPG:          2.0.26
 Kleopatra:      2.2.0-gitac229d2

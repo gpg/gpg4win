@@ -1,0 +1,67 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From ba62c8e78bc4d14cfe8c69928ec10fa14e8c6cd8 Mon Sep 17 00:00:00 2001
+From: Andre Heinecke <aheinecke@intevation.de>
+Date: Thu, 21 Aug 2014 12:05:12 +0200
+Subject: [PATCH] Let wchar_to_native convert to console codepage
+
+    * jnlib/w32-gettext.c (wchar_to_native): Use GetConsoleOutputCP.
+
+--
+    Just using CP_ACP does not neccessarily convert to the correct
+    codepage as codepages might differ between ConsoleOutput and
+    GUI output (which it usually does).
+
+    GnuPG-bug-id: 1691, 1373, 1674
+---
+ jnlib/w32-gettext.c | 19 +++++++++++++++----
+ 1 file changed, 15 insertions(+), 4 deletions(-)
+
+diff --git a/jnlib/w32-gettext.c b/jnlib/w32-gettext.c
+index 14cb1e1..a1b7e90 100644
+--- a/jnlib/w32-gettext.c
++++ b/jnlib/w32-gettext.c
+@@ -1299,7 +1299,7 @@ utf8_to_wchar (const char *string, size_t length, size_t *retlen)
+ }
+
+
+-/* Return a malloced string encoded in UTF-8 from the wide char input
++/* Return a malloced string encoded for the native codepage from the wide char input
+    string STRING.  Caller must free this value. On failure returns
+    NULL.  The result of calling this function with STRING set to NULL
+    is not defined. */
+@@ -1308,8 +1308,19 @@ wchar_to_native (const wchar_t *string, size_t length, size_t *retlen)
+ {
+   int n;
+   char *result;
+-
+-  n = WideCharToMultiByte (CP_ACP, 0, string, length, NULL, 0, NULL, NULL);
++  /* We are a console program thus we need to use the
++   GetConsoleOutputCP function and not the the GetACP which
++   would give the codepage for a GUI program.  Note this is not
++   a bulletproof detection because GetConsoleCP might return a
++   different one for console input.  Not sure how to cope with
++   that.  If the console Code page is not known we fall back to
++   the system code page. This is how utf8conv does resolve this. */
++  unsigned int cpno = GetConsoleOutputCP ();
++
++  if (!cpno)
++    cpno = GetACP ();
++
++  n = WideCharToMultiByte (cpno, 0, string, length, NULL, 0, NULL, NULL);
+   if (n < 0 || (n+1) <= 0)
+     return NULL;
+
+@@ -1317,7 +1328,7 @@ wchar_to_native (const wchar_t *string, size_t length, size_t *retlen)
+   if (!result)
+     return NULL;
+
+-  n = WideCharToMultiByte (CP_ACP, 0, string, length, result, n, NULL, NULL);
++  n = WideCharToMultiByte (cpno, 0, string, length, result, n, NULL, NULL);
+   if (n < 0)
+     {
+       jnlib_free (result);
+--
+1.9.1
