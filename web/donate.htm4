@@ -74,11 +74,10 @@ m4_include(`SPONSORS')
     <input name="no_shipping" value="1" type="hidden">
     <input name="cn" value="Comment to Gpg4win developer team (praise/criticism)" type="hidden">
     <input name="currency_code" value="EUR" type="hidden">
-    <input name="bn" value="PP-BuyNowBF" type="hidden">
-    <input src="https://www.paypal.com/en_US/i/btn/btn_donate_LG.gif" name="submit" alt="Pay with PayPal" type="image" border="0">
+    <input src="img/paypal_btn_donate_LG-en.gif" name="submit" alt="Pay with PayPal" type="image" border="0">
     <input name="on0" value="Allowed to publish of your donation?" type="hidden">
     <input name="os0" value="No" type="hidden">
-    <input name="image_url" value="http://gpg4win.org/img/logo.png" type="hidden">
+    <input name="image_url" value="https://gpg4win.org/img/logo.png" type="hidden">
     <input name="return" value="http://gpg4win.org/donate.html" type="hidden">
     <input name="cbt" value="Back to Gpg4win" type="hidden">
     <br>
