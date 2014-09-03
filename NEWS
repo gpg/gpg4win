@@ -3,7 +3,22 @@
 # The version number given below are for the standard installers as
 # distributed by www.gpg4win.org.
 
-Noteworthy changes in version 2.2.2 (unreleased)
+Noteworthy changes in version 2.2.3 (unreleased)
+------------------------------------------------
+
+~~~~~~~~~~~~~~~
+GnuPG:          2.0.26
+Kleopatra:      2.2.0-gitac229d2
+GPA:            0.9.4
+GpgOL:          1.2.1
+GpgEX:          1.0.1
+Claws-Mail:     3.9.1
+Kompendium DE:  3.0.0
+Kompendium EN:  3.0.0
+~~~~~~~~~~~~~~~
+
+
+Noteworthy changes in version 2.2.2 (2014-09-03)
 ------------------------------------------------
 
 (en) GnuPG has been updated to version 2.0.26. See release notes on
