@@ -29,11 +29,6 @@ Gpg4win-Kompendium. Sie finden es nach der Installation im
 Gpg4win-Startmenü unter 'Dokumentation' oder direkt online unter:
 http://www.gpg4win.de/doc/de/gpg4win-compendium.html
 
-Falls Sie von Gpg4win 1.x oder einem andern Proramm auf Gpg4win 2.x
-umsteigen wollen, beachten Sie bitte die Migrationshinweise im Anhang
-des Gpg4win-Kompendiums:
-http://www.gpg4win.de/doc/de/gpg4win-compendium_36.html
-
 Bitte lesen Sie den Abschnitt "3. Bekannte Probleme (und Abhilfen)"
 dieses READMEs, bevor Sie beginnen Gpg4win zu nutzen.
 
@@ -53,37 +48,35 @@ Die integrierten Gpg4win-Komponenten in Version !VERSION! sind:
 
 
 Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
--------------------------------------------------
+-----------------------------------------
 
 - GnuPG:
-  * GnuPG wurde auf Version 2.0.26 aktualisiert. Details zu dieser
-    Version finden sich unter www.gnupg.org
-  * Platzhalter (wie *.txt) in Kommandozeilenaufrufen funktionieren nun
-    wieder.
-  * Kommandozeilen Ausgaben werden nun im zur Windows Konsole passenden
-    Encoding ausgegeben.
+  * GnuPG wurde auf Version 2.0.26 aktualisiert. (Details unter www.gnupg.org)
+  * Platzhalter (wie *.txt) in Kommandozeilenaufrufen funktionieren wieder.
+  * Kommandozeilen Ausgaben werden im zur Windows-Konsole passenden Encoding
+    ausgegeben.
 
 - Kleopatra:
-  * Ein Problem wurde behoben welches dazu führen konnte das Kleopatra
-    auf manchen System nicht startete.
-  * Kleopatra wurde auf den stand der KDE Software Kollektion 4.14
-    aktualisiert.
+  * Screenreader-Unterstützung verbessert.
+  * Ein Problem wurde behoben, welches dazu führen konnte, dass Kleopatra auf
+    manchen System nicht startete.
+  * Kleopatra wurde auf den Stand der KDE Software Collection 4.14 aktualisiert.
 
 - GpgEX:
-  * GpgEX stürzt nicht mehr ab wenn die Umgebungsvariable GNUPGHOME gesetzt
+  * GpgEX stürzt nicht mehr ab, wenn die Umgebungsvariable GNUPGHOME gesetzt
     ist.
 
 - GpgOL:
-  * Probleme mit der Auflösung von Sender / Empfängeraddressen wurden
-     in GpgOL behoben. Insbesondere bei der Verwendung von Microsoft
-     Exchange Addressbüchern.
+  * Probleme mit der Auflösung von Sender- und Empfängeradressen wurden in GpgOL
+    behoben. Insbesondere bei der Verwendung von Microsoft Exchange-Adressbüchern.
 
 - Pinentry-qt:
-  *  Bestätigungs und Warnmeldungen von pinentry-qt sollten sich nun auch
-     im Vordergrund öffnen.
+  *  Bestätigungs- und Warnmeldungen von pinentry-qt öffnen sich nun immer im
+     Vordergrund.
 
 - Allgemein:
   * Verwendete Bibliotheken wurden aktualisiert.
+
 
 3. Bekannte Probleme (und Abhilfen)
 ===================================

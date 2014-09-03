@@ -27,10 +27,6 @@ The Gpg4win Compendium describes the installation and use of Gpg4win.
 After installation it is available in the Gpg4win start menu or online:
 http://www.gpg4win.org/doc/en/gpg4win-compendium.html
 
-If you used Gpg4win 1.x or another program in the past, please check
-out the migration hints in the Gpg4win Compendium's appendix:
-http://www.gpg4win.org/doc/en/gpg4win-compendium_36.html
-
 Please read the section "3. Known Bugs (and Workarounds)" of this
 README before you start working with Gpg4win.
 
@@ -50,33 +46,34 @@ Included Gpg4win components in Version !VERSION! are:
 
 
 New in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
--------------------------------------------------
+-----------------------------------------
 
 - GnuPG:
   * GnuPG was updated to version 2.0.26.
     (See www.gnupg.org for more details.)
-  * Command line wildcards (like *.txt) now work again.
-  * Command line output is now encoded to the Windows console encoding.
+  * Command line wildcards (like *.txt) work again.
+  * Command line output is encoded to the Windows console encoding.
 
 - Kleopatra:
+  * Screen reader support and accessibility improved.
   * A library load problem has been fixed that could keep Kleopatra
     from starting on some systems.
-  * Kleopatra has been updated to KDE Sofware Colleciton Version 4.14.
+  * Kleopatra has been updated to KDE Sofware Collection 4.14.
 
 - GpgEx:
   * GpgEX no longer crashes if the environment variable GNUPGHOME is set.
 
 - GpgOL:
-  * Problems with Outlook sender / recipient address lookup have been
+  * Problems with Outlook sender and recipient address lookup have been
     fixed in GpgOL. Especially for Microsoft Exchange addresses.
 
 - Pinentry-qt:
-  * Warnings and confirmation dialogs should now open in the
-    foreground.
+  * Warning and confirmation dialogs should now open always in foreground.
   * The pinentry dialog is now translated correctly in the French locale.
 
 - General:
   * Used libraries have been updated.
+
 
 3. Known Bugs (and Workarounds)
 ===============================
@@ -135,7 +132,6 @@ New in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
     not affected.  Switching off the Outlook preview will lower the
     probability of this to happen, but not eliminate the issue.
     Or use GpgOL with Outlook 2010/2013.
-
 
 
 4. Installation
