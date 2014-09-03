@@ -54,6 +54,11 @@ Noteworthy changes in version 2.2.2 (unreleased)
 
 (de) Der Pinentry Dialog wird nun korrekt ins Französische übersetzt.
 
+(en) Command line wildcards (like *.txt) now work again.
+
+(de) Platzhalter (wie *.txt) in Kommandozeilenaufrufen funktionieren nun
+     wieder.
+
 ~~~~~~~~~~~~~~~
 GnuPG:          2.0.26
 Kleopatra:      2.2.0-gitac229d2

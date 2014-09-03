@@ -55,6 +55,8 @@ New in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 - GnuPG:
   * GnuPG was updated to version 2.0.26.
     (See www.gnupg.org for more details.)
+  * Command line wildcards (like *.txt) now work again.
+  * Command line output is now encoded to the Windows console encoding.
 
 - Kleopatra:
   * A library load problem has been fixed that could keep Kleopatra
@@ -71,6 +73,7 @@ New in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 - Pinentry-qt:
   * Warnings and confirmation dialogs should now open in the
     foreground.
+  * The pinentry dialog is now translated correctly in the French locale.
 
 - General:
   * Used libraries have been updated.

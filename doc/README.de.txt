@@ -58,6 +58,10 @@ Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 - GnuPG:
   * GnuPG wurde auf Version 2.0.26 aktualisiert. Details zu dieser
     Version finden sich unter www.gnupg.org
+  * Platzhalter (wie *.txt) in Kommandozeilenaufrufen funktionieren nun
+    wieder.
+  * Kommandozeilen Ausgaben werden nun im zur Windows Konsole passenden
+    Encoding ausgegeben.
 
 - Kleopatra:
   * Ein Problem wurde behoben welches dazu führen konnte das Kleopatra
