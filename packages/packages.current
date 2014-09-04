@@ -404,7 +404,7 @@ chk  50fbff11446a7b0decbf65a6e6b0eda17b5139fb
 
 # checked: 2014-08-21 ah - updated
 file libgcrypt/libgcrypt-1.6.2.tar.bz2
-chk  c8192086595dbadcb3fef2b2ff36d2a6fab682f3
+chk  cc31aca87e4a3769cb86884a3f5982b2cc8eb7ec
 
 # checked: 2014-07-16 ah
 file libksba/libksba-1.3.0.tar.bz2
