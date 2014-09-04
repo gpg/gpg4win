@@ -17,7 +17,7 @@ PAGE_START
 
 <div id="main">
 
-
+<!--
 <h2>Gpg4win 2.2.2-beta (Veröffentlicht: 2014-08-14)</h2>
 
 <p>Aktuelle Vorabversion von Gpg4win 2.2.2 mit Sicherheitsupdates und Verbesserungen in
@@ -46,7 +46,7 @@ href="http://files.gpg4win.org/Beta/gpg4win-2.2.2-beta37.tar.bz2">Quelltextpaket
 <li>Alle Beta-Versionen und OpenPGP-Signaturen auch per https (mit eigener CA) verfügbar:
 <a href="https://files.gpg4win.org/Beta/">https://files.gpg4win.org/Beta/</a>.</li>
 </ul>
-
+-->
 
 <h2>Gpg4win VERSION (Veröffentlicht: DL_DATE)</h2>
 
@@ -213,7 +213,7 @@ von <a href="http://ftp.heanet.ie/about/">HEAnet</a>)
 
 
 <div id="sidebar">
-
+<!--
     <h3>Gpg4win 2.2.2-beta enthält:</h3>
     <pre>
 <a href="http://www.gnupg.de/index.de.html">GnuPG</a> 2.0.26
@@ -226,7 +226,7 @@ von <a href="http://ftp.heanet.ie/about/">HEAnet</a>)
 <a href="doc/en/gpg4win-compendium.html">Compendium (en)</a> 3.0.0
     </pre>
     <p></p>
-
+-->
     <h3>Gpg4win VERSION enthält:</h3>
     <pre>
     SOFTWAREOVERVIEW

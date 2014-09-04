@@ -9,13 +9,52 @@ security issues.</p>
 </div>
 <div id='main'>
 
-<h2>Version 2.2.1 released  2013-10-07</h2>
+<h2>Version 2.2.2 released  2014-09-03</h2>
+ GnuPG has been updated to version 2.0.26. See release notes on
+     www.gnupg.org for details.
 
-Updated GnuPG to version 2.0.22
+ Sreen reader support and accessibility of Kleopatra was improved.
 
-Kleopatra no longer crashes when using Microsoft Office IME.
+ A library load problem has been fixed that could keep Kleopatra
+     from starting on some systems.
 
-Support for SPR332 and 532 pinpads.
+ Kleopatra has been updated to KDE Sofware Collection 4.14.
+
+ Used libraries have been updated to their latest stable relase.
+
+ GpgEX no longer crashes if the environment variable GNUPGHOME is set.
+
+ Pinentry-qt warning and confirmation dialogs should now open always in
+     foreground.
+
+ Problems with Outlook sender and recipient address lookup have been
+     fixed in GpgOL. Especially for Microsoft Exchange addresses.
+
+ Command line output is encoded to the Windows console encoding.
+
+ The pinentry dialog is now translated correctly in the French locale.
+
+ Command line wildcards (like *.txt) work again.
+
+
+<pre>
+GnuPG:           2.0.26
+Kleopatra:       2.2.0-gitac229d2
+GPA:             0.9.4
+GpgOL:           1.2.1
+GpgEX:           1.0.1
+Claws-Mail:      3.9.1
+Kompendium DE:   3.0.0
+Kompendium EN:   3.0.0
+</pre>
+<p>Explicit download of this version: <a href="http://ftp.gpg4win.org/gpg4win-2.2.2.exe">gpg4win-2.2.2.exe</a><br></p><p>Details in the README of this version: <a href="http://ftp.gpg4win.org/README-2.2.2.en.txt">README-2.2.2.en.txt</a><br></p><h2>Version 2.2.1 released  2013-10-07</h2>
+ Fixed possible infinite recursion in the compressed packet
+   parser. [CVE-2013-4402]
+
+ Kleopatra no longer crashes when using Microsoft Office IME.
+
+ Support for SPR332 and 532 pinpads.
+
 
 <pre>
 GnuPG:           2.0.22
@@ -24,15 +63,10 @@ GPA:             0.9.4
 GpgOL:           1.2.0
 GpgEX:           1.0.0
 Claws-Mail:      3.9.1
-Kompendium `DE':   3.0.0
-Kompendium `EN':   3.0.0
+Kompendium DE:   3.0.0
+Kompendium EN:   3.0.0
 </pre>
-<p>Explicit download of this version: <a
-    href="http://ftp.gpg4win.org/gpg4win-2.2.1.exe">gpg4win-2.2.1.exe</a><br></p><p>Details in the
-README of this version: <a href="http://ftp.gpg4win.org/README-2.2.1.en.txt">README-2.2.1.en.txt</a><br></p>
-
-
-<h2>Version 2.2.0 released  2013-08-20</h2>
+<p>Explicit download of this version: <a href="http://ftp.gpg4win.org/gpg4win-2.2.1.exe">gpg4win-2.2.1.exe</a><br></p><p>Details in the README of this version: <a href="http://ftp.gpg4win.org/README-2.2.1.en.txt">README-2.2.1.en.txt</a><br></p><h2>Version 2.2.0 released  2013-08-20</h2>
  GpgEx now works on Windows 64 bit.
 
  Gpg-agent may now be used as Pageant (PuTTY authentication agent)

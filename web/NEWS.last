@@ -3,7 +3,79 @@
 # The version number given below are for the standard installers as
 # distributed by www.gpg4win.org.
 
-Noteworthy changes in version 2.2.1 (2013-10-08)
+Noteworthy changes in version 2.2.2 (2014-09-03)
+------------------------------------------------
+
+(en) GnuPG has been updated to version 2.0.26. See release notes on
+     www.gnupg.org for details.
+
+(de) GnuPG wurde auf Version 2.0.26 aktualisiert. Details zu dieser
+     Version finden sich unter www.gnupg.org.
+
+(en) Sreen reader support and accessibility of Kleopatra was improved.
+
+(de) Screenreader-Unterstützung und Barrierfreiheit von Kleopatra
+     verbessert.
+
+(en) A library load problem has been fixed that could keep Kleopatra
+     from starting on some systems.
+
+(de) Ein Problem wurde behoben, welches dazu führen konnte, dass Kleopatra
+     auf manchen System nicht startete.
+
+(en) Kleopatra has been updated to KDE Sofware Collection 4.14.
+
+(de) Kleopatra wurde auf den Stand der KDE Software Collection 4.14
+     aktualisiert.
+
+(en) Used libraries have been updated to their latest stable relase.
+
+(de) Verwendete Bibliotheken wurden aktualisiert.
+
+(en) GpgEX no longer crashes if the environment variable GNUPGHOME is set.
+
+(de) GpgEX stürzt nicht mehr ab, wenn die Umgebungsvariable GNUPGHOME gesetzt
+     ist.
+
+(en) Pinentry-qt warning and confirmation dialogs should now open always in
+     foreground.
+
+(de) Bestätigungs- und Warnmeldungen von pinentry-qt öffnen sich nun immer
+     im Vordergrund.
+
+(en) Problems with Outlook sender and recipient address lookup have been
+     fixed in GpgOL. Especially for Microsoft Exchange addresses.
+
+(de) Probleme mit der Auflösung von Sender- und Empfängeradressen wurden
+     in GpgOL behoben. Insbesondere bei der Verwendung von Microsoft
+     Exchange Adressbüchern.
+
+(en) Command line output is encoded to the Windows console encoding.
+
+(de) Kommandozeilen-Ausgaben werden im zur Windows-Konsole passenden
+     Encoding ausgegeben.
+
+(en) The pinentry dialog is now translated correctly in the French locale.
+
+(de) Der Pinentry-Dialog ist nun auch in Französisch verfügbar.
+
+(en) Command line wildcards (like *.txt) work again.
+
+(de) Platzhalter (wie *.txt) in Kommandozeilenaufrufen funktionieren wieder.
+
+~~~~~~~~~~~~~~~
+GnuPG:          2.0.26
+Kleopatra:      2.2.0-gitac229d2
+GPA:            0.9.4
+GpgOL:          1.2.1
+GpgEX:          1.0.1
+Claws-Mail:     3.9.1
+Kompendium DE:  3.0.0
+Kompendium EN:  3.0.0
+~~~~~~~~~~~~~~~
+
+
+Noteworthy changes in version 2.2.1 (2013-10-07)
 ------------------------------------------------
 
 (de) Ein Fehler der eine mögliche endlosschleife in GnuPG auslösen
@@ -96,7 +168,7 @@ Noteworthy changes in version 2.1.1 (2013-05-31)
 
 (en) Development files for the crypto libraries will now be installed.
 
-(de) Entwicklerwerkzeuge fuer die Krypto-Bibliotheken werden nun mit
+(de) Entwicklerwerkzeuge für die Krypto-Bibliotheken werden nun mit
      installiert.
 
 ~~~~~~~~~~~~~~~

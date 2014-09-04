@@ -9,13 +9,58 @@ zwischenzeitlich beseitigten Sicherheitslöcher weiterhin enthalten!</p>
 </div>
 <div id='main'>
 
-<h2>Version 2.2.1 veröffentlicht  2013-10-07</h2>
-GnuPG wurde auf 2.0.22 aktualisiert.
+<h2>Version 2.2.2 veröffentlicht  2014-09-03</h2>
+ GnuPG wurde auf Version 2.0.26 aktualisiert. Details zu dieser
+     Version finden sich unter www.gnupg.org.
 
-Kleopatra stürzt nun nicht mehr ab wenn man Microsoft Office IME
+ Screenreader-Unterstützung und Barrierfreiheit von Kleopatra
+     verbessert.
+
+ Ein Problem wurde behoben, welches dazu führen konnte, dass Kleopatra
+     auf manchen System nicht startete.
+
+ Kleopatra wurde auf den Stand der KDE Software Collection 4.14
+     aktualisiert.
+
+ Verwendete Bibliotheken wurden aktualisiert.
+
+ GpgEX stürzt nicht mehr ab, wenn die Umgebungsvariable GNUPGHOME gesetzt
+     ist.
+
+ Besttigungs- und Warnmeldungen von pinentry-qt öffnen sich nun immer
+     im Vordergrund.
+
+ Probleme mit der Auflsung von Sender- und Empfngeradressen wurden
+     in GpgOL behoben. Insbesondere bei der Verwendung von Microsoft
+     Exchange Adressbüchern.
+
+ Kommandozeilen-Ausgaben werden im zur Windows-Konsole passenden
+     Encoding ausgegeben.
+
+ Der Pinentry-Dialog ist nun auch in Französisch verfügbar.
+
+ Platzhalter (wie *.txt) in Kommandozeilenaufrufen funktionieren wieder.
+
+
+<pre>
+GnuPG:           2.0.26
+Kleopatra:       2.2.0-gitac229d2
+GPA:             0.9.4
+GpgOL:           1.2.1
+GpgEX:           1.0.1
+Claws-Mail:      3.9.1
+Kompendium DE:     3.0.0
+Kompendium EN:   3.0.0
+</pre>
+<p>Expliziter Download dieser Version: <a href="http://ftp.gpg4win.org/gpg4win-2.2.2.exe">gpg4win-2.2.2.exe</a><br></p><p>Details im README dieser Version: <a href="http://ftp.gpg4win.org/README-2.2.2.de.txt">README-2.2.2.de.txt</a><br></p><h2>Version 2.2.1 veröffentlicht  2013-10-07</h2>
+ Ein Fehler der eine mögliche Endlosschleife in GnuPG auslösen
+   konnte wurde behoben. [CVE-2013-4402]
+
+ Kleopatra stürzt nun nicht mehr ab wenn man Microsoft Office IME
      verwendet.
 
-Unterstützung für SPR332 und 532 Pinpads.
+ Unterstützung für SPR332 und 532 Pinpads.
+
 
 <pre>
 GnuPG:           2.0.22
@@ -24,14 +69,10 @@ GPA:             0.9.4
 GpgOL:           1.2.0
 GpgEX:           1.0.0
 Claws-Mail:      3.9.1
-Kompendium `DE':   3.0.0
-Kompendium `EN':   3.0.0
+Kompendium DE:     3.0.0
+Kompendium EN:   3.0.0
 </pre>
-<p>Expliziter Download dieser Version: <a
-    href="http://ftp.gpg4win.org/gpg4win-2.2.1.exe">gpg4win-2.2.1.exe</a><br></p><p>Details im
-README dieser Version: <a href="http://ftp.gpg4win.org/README-2.2.1.de.txt">README-2.2.1.de.txt</a><br></p>
-
-<h2>Version 2.2.0 veröffentlicht  2013-08-20</h2>
+<p>Expliziter Download dieser Version: <a href="http://ftp.gpg4win.org/gpg4win-2.2.1.exe">gpg4win-2.2.1.exe</a><br></p><p>Details im README dieser Version: <a href="http://ftp.gpg4win.org/README-2.2.1.de.txt">README-2.2.1.de.txt</a><br></p><h2>Version 2.2.0 veröffentlicht  2013-08-20</h2>
  GpgEX funktioniert nun unter Windows 64 bit.
 
  Gpg-agent kann nun als Pageant (PuTTY authentication agent) Ersatz
@@ -67,7 +108,7 @@ Kompendium `EN':   3.0.0
 <p>Expliziter Download dieser Version: <a href="http://ftp.gpg4win.org/gpg4win-2.2.0.exe">gpg4win-2.2.0.exe</a><br></p><p>Details im README dieser Version: <a href="http://ftp.gpg4win.org/README-2.2.0.de.txt">README-2.2.0.de.txt</a><br></p><h2>Version 2.1.1 veröffentlicht  2013-05-31</h2>
  Neue Versionen von GnuPG, GpgOL, GPA, Kleopatra and Claws-Mail.
 
- Entwicklerwerkzeuge fuer die Krypto-Bibliotheken werden nun mit
+ Entwicklerwerkzeuge fr die Krypto-Bibliotheken werden nun mit
      installiert.
 
 
@@ -135,7 +176,7 @@ Claws-Mail:    3.7.4cvs1
 Kompendium:    3.0.0-rc1
 </pre>
 <p>Expliziter Download dieser Version: <a href="http://ftp.gpg4win.org/gpg4win-2.0.2.exe">gpg4win-2.0.2.exe</a><br></p><p>Details im README dieser Version: <a href="http://ftp.gpg4win.org/README-2.0.2.de.txt">README-2.0.2.de.txt</a><br></p><h2>Version 2.0.1 veröffentlicht  2009-09-28</h2>
- Ein Problem beim 
+ Ein Problem beim ffnen von Office Dokumenten und URLs mit einem
      laufenden GpgOL wurde behoben.
 
 

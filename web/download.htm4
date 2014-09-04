@@ -17,7 +17,7 @@ PAGE_START
 
 <div id="main">
 
-
+<!--
 <h2>Gpg4win 2.2.2-beta (Released: 2014-08-14)</h2>
 
 <p>Current beta version of Gpg4win 2.2.2 with security updates and improvements in
@@ -45,7 +45,7 @@ href="http://files.gpg4win.org/Beta/gpg4win-2.2.2-beta37.tar.bz2">Source code pa
 <li>All Beta versionen and OpenPGP-Signatures also available via https (with own CA):
 <a href="https://files.gpg4win.org/Beta/">https://files.gpg4win.org/Beta/</a>.</li>
 </ul>
-
+-->
 
 
 <h2>Gpg4win VERSION (Released: DL_DATE)</h2>
@@ -209,7 +209,7 @@ Is downloading very slow? Try this mirror server:
 
 
 <div id="sidebar">
-
+<!--
     <h3>Gpg4win 2.2.2-beta contains:</h3>
     <pre>
 <a href="http://www.gnupg.de/index.de.html">GnuPG</a> 2.0.26
@@ -222,7 +222,7 @@ Is downloading very slow? Try this mirror server:
 <a href="doc/en/gpg4win-compendium.html">Compendium (en)</a> 3.0.0
     </pre>
     <p></p>
-
+-->
     <h3>Gpg4win VERSION contains:</h3>
     <pre>
     SOFTWAREOVERVIEW
