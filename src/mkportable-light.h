@@ -87,7 +87,7 @@ const char * const light_files[] =
   "libffi-6.dll",
   "libfontconfig-1.dll",
   "libgailutil-18.dll",
-  "libgcrypt-11.dll",
+  "libgcrypt-20.dll",
   "libgdk-win32-2.0-0.dll",
   "libgdk_pixbuf-2.0-0.dll",
   "libgio-2.0-0.dll",

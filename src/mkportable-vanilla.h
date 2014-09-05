@@ -25,7 +25,7 @@ const char * const vanilla_files[] =
   "libassuan-0.dll",
   "libcurl-4.dll",
   "libffi-6.dll",
-  "libgcrypt-11.dll",
+  "libgcrypt-20.dll",
   "libgdk_pixbuf-2.0-0.dll",
   "libgpg-error-0.dll",
   "libiconv-2.dll",
