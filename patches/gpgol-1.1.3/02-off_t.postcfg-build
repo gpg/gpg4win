@@ -1,6 +1,0 @@
-#! /bin/sh
-#
-# Hack to force 64 bit off_t for gpgol
-#
-set -e
-echo '#define _FILE_OFFSET_BITS 64' >>config.h

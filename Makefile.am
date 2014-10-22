@@ -36,8 +36,6 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         patches/claws-mail-3.9.1/51-version-file.patch \
         patches/claws-mail-3.9.1/80-src-makefile.postcfg-build \
         patches/dirmngr-1.1.1/dirmngr-pth.patch \
-        patches/glib-2.20.0/01-socket.patch \
-        patches/glib-2.24.0/01-socket.patch \
         patches/glib-2.34.3/01-socket.patch \
         patches/glib-2.34.3/02-no-kill.patch \
         patches/gnupg2-2.0.26/0001-Enable-wildcard-expansion-with-mingw-w64.patch \
@@ -57,15 +55,8 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         patches/gpa-0.9.4/04-utf-clip-crash.patch \
         patches/gpa-0.9.4/05-event-done.patch \
         patches/gpgme-1.4.4/0001-Handle-modern-keyserver-output-which-may-emit-the-fi.patch \
-        patches/gpgol-1.1.3/01-w64-ming64.patch \
-        patches/gpgol-1.1.3/02-off_t.postcfg-build \
-        patches/gtk+-2.24.17/01-utf-conv-crash.patch \
-        patches/gtk+-2.24.17/02-crlf.patch \
         patches/gtkhtml2_viewer-0.34/80-src-makefile.postcfg-build \
-        patches/libetpan-0.57/01-gnutls_compat.patch \
-        patches/libgpg-error-1.12/01-fix-get-string.patch \
         patches/libtasn1-2.14/gnulib-mingw-w64-fix.patch \
-        patches/libxml2-2.7.8/01-cve-2012-5134 \
         patches/pinentry-0.8.4-beta8/0001-Set-some-accessibility-information.patch \
         patches/pinentry-0.8.4-beta8/0002-Use-raiseWindow-also-for-confirm-dialogs.patch \
         patches/pinentry-0.8.4-beta8/0003-Add-fallbacks-for-SetForegroundWindow.patch \
