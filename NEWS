@@ -20,11 +20,11 @@ Noteworthy changes in version 2.2.3 (unreleased)
 (de) GPA funktioniert nun auch wieder unter Windows XP.
 
 (en) Verification of a detached signature without specifying what
-     should be verified now shows a warning and has been disabled
+     should be verified may now show a warning and has been disabled
      in batch mode.
 
-(de) Die verifikation von abgetrennten Signaturdateien ohne den
-     Dateinamen anzugeben erzeugt nun eine Warnung und wird im
+(de) Die Verifikation von abgetrennten Signaturdateien ohne den
+     Dateinamen anzugeben erzeugt nun ggf. eine Warnung und wird im
      Batch modus verhindert.
 
 (en) Tar archives can now include files and folders that use
@@ -39,8 +39,8 @@ Noteworthy changes in version 2.2.3 (unreleased)
 (en) Kleopatra now handles pre processing (e.g. Archiving) errors
      and treats them as failure.
 
-(de) Kleopatra erkennt nun fehler bei der Vorverarbeitung von Dateien
-     (z.B. beim Archivieren) und behandelt diese als Fehlschlag
+(de) Kleopatra erkennt nun Fehler bei der Vorverarbeitung von Dateien
+     (z.B. Archivieren) und behandelt diese als Fehlschlag
      der Operation.
 
 ~~~~~~~~~~~~~~~
