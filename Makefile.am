@@ -36,8 +36,9 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         patches/claws-mail-3.9.1/51-version-file.patch \
         patches/claws-mail-3.9.1/80-src-makefile.postcfg-build \
         patches/dirmngr-1.1.1/dirmngr-pth.patch \
-        patches/glib-2.34.3/01-socket.patch \
-        patches/glib-2.34.3/02-no-kill.patch \
+        patches/glib-2.41.0/01-socket.patch \
+        patches/glib-2.41.0/02-no-kill.patch \
+        patches/glib-2.41.0/03-remove-rand_s.patch \
         patches/gnupg2-2.0.26/0001-Enable-wildcard-expansion-with-mingw-w64.patch \
         patches/gnupg2/01-version.patch \
         patches/gnupg2/01-version.patch.in \

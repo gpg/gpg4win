@@ -1,0 +1,76 @@
+#! /bin/sh
+patch -p1 -R -f $* < $0
+exit $?
+
+From 0e1924a66c642d4aa4a30b97cff509903f972435 Mon Sep 17 00:00:00 2001
+From: Ryan Lortie <desrt@desrt.ca>
+Date: Fri, 25 Oct 2013 12:22:42 -0400
+Subject: win32: use real random data for seed on win32
+
+We can get cryptographically secure data from rand_s().
+
+https://bugzilla.gnome.org/show_bug.cgi?id=710738
+
+diff --git a/glib/grand.c b/glib/grand.c
+index 9b2c0f8..56e443d 100644
+--- a/glib/grand.c
++++ b/glib/grand.c
+@@ -37,6 +37,7 @@
+  */
+
+ #include "config.h"
++#define _CRT_RAND_S
+
+ #include <math.h>
+ #include <errno.h>
+@@ -56,7 +57,7 @@
+ #include "gthread.h"
+
+ #ifdef G_OS_WIN32
+-#include <process.h>		/* For getpid() */
++#include <stdlib.h>
+ #endif
+
+ /**
+@@ -219,9 +221,9 @@ GRand*
+ g_rand_new (void)
+ {
+   guint32 seed[4];
+-  GTimeVal now;
+ #ifdef G_OS_UNIX
+   static gboolean dev_urandom_exists = TRUE;
++  GTimeVal now;
+
+   if (dev_urandom_exists)
+     {
+@@ -253,9 +255,6 @@ g_rand_new (void)
+       else
+	dev_urandom_exists = FALSE;
+     }
+-#else
+-  static gboolean dev_urandom_exists = FALSE;
+-#endif
+
+   if (!dev_urandom_exists)
+     {
+@@ -263,12 +262,14 @@ g_rand_new (void)
+       seed[0] = now.tv_sec;
+       seed[1] = now.tv_usec;
+       seed[2] = getpid ();
+-#ifdef G_OS_UNIX
+       seed[3] = getppid ();
+-#else
+-      seed[3] = 0;
+-#endif
+     }
++#else /* G_OS_WIN32 */
++  gint i;
++
++  for (i = 0; i < G_N_ELEMENTS (seed); i++)
++    rand_s (&seed[i]);
++#endif
+
+   return g_rand_new_with_seed_array (seed, 4);
+ }
+--
+cgit v0.10.1
