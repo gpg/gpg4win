@@ -5,43 +5,41 @@
 
 Noteworthy changes in version 2.2.3 (unreleased)
 ------------------------------------------------
-(en) The vanilla installer has been fixed and now also includes GnuTLS.
+(en) The vanilla installer has been fixed by including GnuTLS.
 
-(de) Das Vanilla Installationspaket enthält nun GnuTLS und kann somit
-     wieder verwendet werden.
+(de) Das "Vanilla" Installationspaket wurde repariert indem GnuTLS
+     eingebunden wurde.
 
 (en) Creation of portable versions with mkportable has been fixed.
 
 (de) Die Erstellung einer portablen Version mit mkportable funktioniert
-     nun wieder.
+     wieder.
 
 (en) GPA now works again under Windows XP.
 
-(de) GPA funktioniert nun auch wieder unter Windows XP.
+(de) GPA funktioniert wieder unter Windows XP.
 
 (en) Verification of a detached signature without specifying what
      should be verified may now show a warning and has been disabled
      in batch mode.
 
 (de) Die Verifikation von abgetrennten Signaturdateien ohne den
-     Dateinamen anzugeben erzeugt nun ggf. eine Warnung und wird im
-     Batch modus verhindert.
+     Dateinamen anzugeben, erzeugt nun ggf. eine Warnung und wird im
+     Batch Modus verhindert.
 
 (en) Tar archives can now include files and folders that use
      special characters (e.g. umlauts) which can be encoded
      in the native Windows 8-Bit codepage.
 
-(de) Tar Archive können nun Dateien und Ordner beinhalten deren
+(de) Tar Archive können mit Dateien und Ordner umgehen deren
      Namen Sonderzeichen (z.B. Umlaute) enthalten welche in der
-     nativen Windows 8-Bit Zeichenkodierung kodiert werden
-     können.
+     nativen Windows 8-Bit Zeichenkodierung kodiert sein dürfen.
 
-(en) Kleopatra now handles pre processing (e.g. Archiving) errors
-     and treats them as failure.
+(en) Kleopatra now handles preprocessing (e.g. archiving) errors
+     and safely abords the operation.
 
 (de) Kleopatra erkennt nun Fehler bei der Vorverarbeitung von Dateien
-     (z.B. Archivieren) und behandelt diese als Fehlschlag
-     der Operation.
+     (z.B. Archivieren) und bricht die Operation sicher ab.
 
 ~~~~~~~~~~~~~~~
 GnuPG:          2.0.26
@@ -198,7 +196,7 @@ Noteworthy changes in version 2.2.0 (2013-08-20)
 
 (en) Extracting a tarball through the Kleopatra GUI now works reliable
 
-(de) Das entpacken eines tar Archivs funktioniert nun auch über Kleopatra
+(de) Das Entpacken eines tar Archivs funktioniert nun auch über Kleopatra
      zuverlässig.
 
 (en) Added mkportable.exe as a tool to create a portable installation.
