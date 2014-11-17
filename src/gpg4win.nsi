@@ -59,9 +59,9 @@
 !ifdef HAVE_PKG_LIBTASN1
 !undef HAVE_PKG_LIBTASN1
 !endif
-!ifdef HAVE_PKG_GNUTLS
-!undef HAVE_PKG_GNUTLS
-!endif
+;!ifdef HAVE_PKG_GNUTLS
+;!undef HAVE_PKG_GNUTLS
+;!endif
 !ifdef HAVE_PKG_LIBXML2
 !undef HAVE_PKG_LIBXML2
 !endif

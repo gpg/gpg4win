@@ -5,6 +5,10 @@
 
 Noteworthy changes in version 2.2.3 (unreleased)
 ------------------------------------------------
+(en) The vanilla installer has been fixed and now also includes GnuTLS
+
+(de) Das Vanilla Installationspaket enthält nun GnuTLS und kann somit
+     wieder verwendet werden.
 
 (en) Creation of portable versions with mkportable has been fixed.
 
