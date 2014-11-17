@@ -27,6 +27,15 @@ Noteworthy changes in version 2.2.3 (unreleased)
      Dateinamen anzugeben erzeugt nun eine Warnung und wird im
      Batch modus verhindert.
 
+(en) Tar archives can now include files and folders that use
+     special characters (e.g. umlauts) which can be encoded
+     in the native Windows 8-Bit codepage.
+
+(de) Tar Archive können nun Dateien und Ordner beinhalten deren
+     Namen Sonderzeichen (z.B. Umlaute) enthalten welche in der
+     nativen Windows 8-Bit Zeichenkodierung kodiert werden
+     können.
+
 ~~~~~~~~~~~~~~~
 GnuPG:          2.0.26
 Kleopatra:      2.2.0-gitac229d2
