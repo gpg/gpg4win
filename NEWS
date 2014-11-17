@@ -19,6 +19,14 @@ Noteworthy changes in version 2.2.3 (unreleased)
 
 (de) GPA funktioniert nun auch wieder unter Windows XP.
 
+(en) Verification of a detached signature without specifying what
+     should be verified now shows a warning and has been disabled
+     in batch mode.
+
+(de) Die verifikation von abgetrennten Signaturdateien ohne den
+     Dateinamen anzugeben erzeugt nun eine Warnung und wird im
+     Batch modus verhindert.
+
 ~~~~~~~~~~~~~~~
 GnuPG:          2.0.26
 Kleopatra:      2.2.0-gitac229d2
