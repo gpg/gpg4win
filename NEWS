@@ -36,9 +36,16 @@ Noteworthy changes in version 2.2.3 (unreleased)
      nativen Windows 8-Bit Zeichenkodierung kodiert werden
      können.
 
+(en) Kleopatra now handles pre processing (e.g. Archiving) errors
+     and treats them as failure.
+
+(de) Kleopatra erkennt nun fehler bei der Vorverarbeitung von Dateien
+     (z.B. beim Archivieren) und behandelt diese als Fehlschlag
+     der Operation.
+
 ~~~~~~~~~~~~~~~
 GnuPG:          2.0.26
-Kleopatra:      2.2.0-gitac229d2
+Kleopatra:      2.2.0-git2a58b4cb
 GPA:            0.9.4
 GpgOL:          1.2.1
 GpgEX:          1.0.1
