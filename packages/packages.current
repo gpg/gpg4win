@@ -515,8 +515,8 @@ server http://files.kolab.org/local/gpg4win
 
 # This is kdepim/gpg4win branch
 # ac229d2213619345c7148f11a9732bb1ce2890a7
-file kleopatra-20141117-bin.tar.xz
-chk  a75770a7d184afca705640f9ceb22522cf771434
+file kleopatra-20141117-1-bin.tar.xz
+chk  2c8576d9e3987685e161df19be1d10d31b98e974
 
 file kleopatra-20141117-src.tar.xz
 chk  4b02f0d046d42175f347f0732eec904575915285
