@@ -56,9 +56,9 @@
 !ifdef HAVE_PKG_LIBGSASL
 !undef HAVE_PKG_LIBGSASL
 !endif
-!ifdef HAVE_PKG_LIBTASN1
-!undef HAVE_PKG_LIBTASN1
-!endif
+;!ifdef HAVE_PKG_LIBTASN1
+;!undef HAVE_PKG_LIBTASN1
+;!endif
 ;!ifdef HAVE_PKG_GNUTLS
 ;!undef HAVE_PKG_GNUTLS
 ;!endif
