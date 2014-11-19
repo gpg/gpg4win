@@ -33,6 +33,8 @@ Section "-un.libiconv"
   Delete /REBOOTOK "$INSTDIR\libiconv-2.dll"
   Delete /REBOOTOK "$INSTDIR\iconv.dll"
   Delete /REBOOTOK "$INSTDIR\pub\iconv.dll"
+
+  Delete "$INSTDIR\lib\charset.alias"
 !ifdef DEBUG
   Delete "$INSTDIR\charset.dll"
   Delete "$INSTDIR\iconv.exe"

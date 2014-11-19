@@ -40,8 +40,6 @@ Section "-un.glib"
   RMDir "$INSTDIR\share\glib-2.0\schemas"
   RMDir "$INSTDIR\share\glib-2.0"
 
-  Delete "$INSTDIR\lib\charset.alias"
-
   Delete "$INSTDIR\gspawn-win32-helper.exe"
   Delete "$INSTDIR\gspawn-win32-helper-console.exe"
   Delete "$INSTDIR\gdbus.exe"
