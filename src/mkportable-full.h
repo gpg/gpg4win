@@ -55,7 +55,6 @@ const char * const full_files[] =
   "gtk-update-icon-cache.exe",
   "gtk-update-icon-cache.exe.manifest",
   "include/assuan.h",
-  "include/gcrypt-module.h",
   "include/gcrypt.h",
   "include/gpg-error.h",
   "include/gpgme.h",
