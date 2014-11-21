@@ -41,10 +41,14 @@ Noteworthy changes in version 2.2.3 (unreleased)
 (de) Kleopatra erkennt nun Fehler bei der Vorverarbeitung von Dateien
      (z.B. Archivieren) und bricht die Operation sicher ab.
 
+(en) GPA has been updated to version 0.9.6.
+
+(de) GPA wurde auf Version 0.9.6 aktualisiert.
+
 ~~~~~~~~~~~~~~~
 GnuPG:          2.0.26
 Kleopatra:      2.2.0-git2a58b4cb
-GPA:            0.9.4
+GPA:            0.9.6
 GpgOL:          1.2.1
 GpgEX:          1.0.1
 Claws-Mail:     3.9.1
