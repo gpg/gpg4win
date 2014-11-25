@@ -44,6 +44,7 @@ Section "-oxygen-icons" SEC_oxygen_icons
   File ${prefix}/share/icons/oxygen/128x128/actions/dialog-ok-apply.png
   File ${prefix}/share/icons/oxygen/128x128/actions/dialog-ok.png
   File ${prefix}/share/icons/oxygen/128x128/actions/edit-find.png
+  File ${prefix}/share/icons/oxygen/128x128/actions/edit-paste.png
   File ${prefix}/share/icons/oxygen/128x128/actions/go-bottom.png
   File ${prefix}/share/icons/oxygen/128x128/actions/go-down.png
   File ${prefix}/share/icons/oxygen/128x128/actions/go-first.png
@@ -103,6 +104,7 @@ Section "-oxygen-icons" SEC_oxygen_icons
   File ${prefix}/share/icons/oxygen/16x16/actions/edit-clear-locationbar-rtl.png
   File ${prefix}/share/icons/oxygen/16x16/actions/edit-delete.png
   File ${prefix}/share/icons/oxygen/16x16/actions/edit-find.png
+  File ${prefix}/share/icons/oxygen/16x16/actions/edit-paste.png
   File ${prefix}/share/icons/oxygen/16x16/actions/edit-redo.png
   File ${prefix}/share/icons/oxygen/16x16/actions/edit-rename.png
   File ${prefix}/share/icons/oxygen/16x16/actions/edit-undo.png
@@ -186,6 +188,7 @@ Section "-oxygen-icons" SEC_oxygen_icons
   File ${prefix}/share/icons/oxygen/22x22/actions/edit-clear-locationbar-rtl.png
   File ${prefix}/share/icons/oxygen/22x22/actions/edit-delete.png
   File ${prefix}/share/icons/oxygen/22x22/actions/edit-find.png
+  File ${prefix}/share/icons/oxygen/22x22/actions/edit-paste.png
   File ${prefix}/share/icons/oxygen/22x22/actions/edit-redo.png
   File ${prefix}/share/icons/oxygen/22x22/actions/edit-rename.png
   File ${prefix}/share/icons/oxygen/22x22/actions/edit-undo.png
@@ -279,6 +282,7 @@ Section "-oxygen-icons" SEC_oxygen_icons
   File ${prefix}/share/icons/oxygen/32x32/actions/edit-clear-locationbar-rtl.png
   File ${prefix}/share/icons/oxygen/32x32/actions/edit-delete.png
   File ${prefix}/share/icons/oxygen/32x32/actions/edit-find.png
+  File ${prefix}/share/icons/oxygen/32x32/actions/edit-paste.png
   File ${prefix}/share/icons/oxygen/32x32/actions/edit-redo.png
   File ${prefix}/share/icons/oxygen/32x32/actions/edit-rename.png
   File ${prefix}/share/icons/oxygen/32x32/actions/edit-undo.png
@@ -361,6 +365,7 @@ Section "-oxygen-icons" SEC_oxygen_icons
   File ${prefix}/share/icons/oxygen/48x48/actions/edit-clear-locationbar-rtl.png
   File ${prefix}/share/icons/oxygen/48x48/actions/edit-delete.png
   File ${prefix}/share/icons/oxygen/48x48/actions/edit-find.png
+  File ${prefix}/share/icons/oxygen/48x48/actions/edit-paste.png
   File ${prefix}/share/icons/oxygen/48x48/actions/edit-redo.png
   File ${prefix}/share/icons/oxygen/48x48/actions/edit-rename.png
   File ${prefix}/share/icons/oxygen/48x48/actions/edit-undo.png
@@ -425,6 +430,7 @@ Section "-oxygen-icons" SEC_oxygen_icons
   File ${prefix}/share/icons/oxygen/64x64/actions/dialog-ok-apply.png
   File ${prefix}/share/icons/oxygen/64x64/actions/dialog-ok.png
   File ${prefix}/share/icons/oxygen/64x64/actions/edit-find.png
+  File ${prefix}/share/icons/oxygen/64x64/actions/edit-paste.png
   File ${prefix}/share/icons/oxygen/64x64/actions/go-bottom.png
   File ${prefix}/share/icons/oxygen/64x64/actions/go-down.png
   File ${prefix}/share/icons/oxygen/64x64/actions/go-first.png
