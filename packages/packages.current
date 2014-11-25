@@ -495,16 +495,13 @@ chk f03ffd02333f786a5e540c4430d3109952b5553e
 
 
 # oxygen-icons
-#
-# Source package is identical to binary package.
-
 server http://files.kolab.org/local/gpg4win
 
-file oxygen-icons-20130515-bin.tar.bz2
-chk  653870001dd4a477ad064420d0ce08f0d023a734
+file oxygen-icons-20141125-bin.tar.bz2
+chk  744dbbc7585205948fa62d63c9dbb8c6dd8fc9fb
 
-file oxygen-icons-20130515-src.tar.bz2
-chk  c48227c5f3b475c7792abc36c415479d3233468c
+file oxygen-icons-20141125-src.tar.bz2
+chk  e2af27d711d528c21fd2bf73639da1cd2c811f7a
 
 
 #
@@ -514,8 +511,8 @@ chk  c48227c5f3b475c7792abc36c415479d3233468c
 server http://files.kolab.org/local/gpg4win
 
 # This is kdepim/gpg4win branch 945878c
-file kleopatra-20141125-bin.tar.xz
-chk  0ecc05b36c47265079af27a6ab3287ebf59d4116
+file kleopatra-20141125-1-bin.tar.xz
+chk  18c9bfd2ba2ceeb0ce605cb45a2c41a35d5d5eb2
 
 # This also includes the sources for kdelibs
 # kdewin win-iconv and kdepimlibs which
