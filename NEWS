@@ -36,7 +36,7 @@ Noteworthy changes in version 2.2.3 (unreleased)
      nativen Windows 8-Bit Zeichenkodierung kodiert sein dürfen.
 
 (en) Kleopatra now handles preprocessing (e.g. archiving) errors
-     and safely abords the operation.
+     and safely aborts the operation.
 
 (de) Kleopatra erkennt nun Fehler bei der Vorverarbeitung von Dateien
      (z.B. Archivieren) und bricht die Operation sicher ab.
@@ -44,6 +44,10 @@ Noteworthy changes in version 2.2.3 (unreleased)
 (en) GPA has been updated to version 0.9.6.
 
 (de) GPA wurde auf Version 0.9.6 aktualisiert.
+
+(en) A security problem in the libksba library has been fixed.
+
+(de) Eine Sicherheitsproblem in der libksba Bibliothek wurde behoben.
 
 ~~~~~~~~~~~~~~~
 GnuPG:          2.0.26

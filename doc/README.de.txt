@@ -50,32 +50,28 @@ Die integrierten Gpg4win-Komponenten in Version !VERSION! sind:
 Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 -----------------------------------------
 
-- GnuPG:
-  * GnuPG wurde auf Version 2.0.26 aktualisiert. (Details unter www.gnupg.org)
-  * Platzhalter (wie *.txt) in Kommandozeilenaufrufen funktionieren wieder.
-  * Kommandozeilen Ausgaben werden im zur Windows-Konsole passenden Encoding
-    ausgegeben.
+- Das "Vanilla" Installationspaket wurde repariert indem GnuTLS
+  eingebunden wurde.
 
-- Kleopatra:
-  * Screenreader-Unterstützung verbessert.
-  * Ein Problem wurde behoben, welches dazu führen konnte, dass Kleopatra auf
-    manchen System nicht startete.
-  * Kleopatra wurde auf den Stand der KDE Software Collection 4.14 aktualisiert.
+- Die Erstellung einer portablen Version mit mkportable funktioniert
+  wieder.
 
-- GpgEX:
-  * GpgEX stürzt nicht mehr ab, wenn die Umgebungsvariable GNUPGHOME gesetzt
-    ist.
+- GPA funktioniert wieder unter Windows XP.
 
-- GpgOL:
-  * Probleme mit der Auflösung von Sender- und Empfängeradressen wurden in GpgOL
-    behoben. Insbesondere bei der Verwendung von Microsoft Exchange-Adressbüchern.
+- Die Verifikation von abgetrennten Signaturdateien ohne den
+  Dateinamen anzugeben, erzeugt nun ggf. eine Warnung und wird im
+  Batch Modus verhindert.
 
-- Pinentry-qt:
-  *  Bestätigungs- und Warnmeldungen von pinentry-qt öffnen sich nun immer im
-     Vordergrund.
+- Tar Archive können mit Dateien und Ordner umgehen deren
+  Namen Sonderzeichen (z.B. Umlaute) enthalten welche in der
+  nativen Windows 8-Bit Zeichenkodierung kodiert sein dürfen.
 
-- Allgemein:
-  * Verwendete Bibliotheken wurden aktualisiert.
+- Kleopatra erkennt nun Fehler bei der Vorverarbeitung von Dateien
+  (z.B. Archivieren) und bricht die Operation sicher ab.
+
+- GPA wurde auf Version 0.9.6 aktualisiert.
+
+- Eine Sicherheitsproblem in der libksba Bibliothek wurde behoben.
 
 
 3. Bekannte Probleme (und Abhilfen)
