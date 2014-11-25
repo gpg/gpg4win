@@ -406,9 +406,9 @@ chk  50fbff11446a7b0decbf65a6e6b0eda17b5139fb
 file libgcrypt/libgcrypt-1.6.2.tar.bz2
 chk  cc31aca87e4a3769cb86884a3f5982b2cc8eb7ec
 
-# checked: 2014-07-16 ah
-file libksba/libksba-1.3.0.tar.bz2
-chk  241afcb2dfbf3f3fc27891a53a33f12d9084d772
+# checked: 2014-11-25 ah
+file libksba/libksba-1.3.2.tar.bz2
+chk  37d0893a587354af2b6e49f6ae701ca84f52da67
 
 # checked: 2014-08-18 ah - updated
 file libassuan/libassuan-2.1.2.tar.bz2
