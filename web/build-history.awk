@@ -106,7 +106,6 @@ BEGIN {
 /^---/ { next }
 
 in_section && $0 ~ /^Noteworthy/ {
-  print "hallo"
   if (in_vers)
     print "</pre>"
   in_section = 0;
