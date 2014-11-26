@@ -3,6 +3,63 @@
 # The version number given below are for the standard installers as
 # distributed by www.gpg4win.org.
 
+Noteworthy changes in version 2.2.3 (2014-11-26)
+------------------------------------------------
+(en) The vanilla installer has been fixed by including GnuTLS.
+
+(de) Das "Vanilla" Installationspaket wurde repariert indem GnuTLS
+     eingebunden wurde.
+
+(en) Creation of portable versions with mkportable has been fixed.
+
+(de) Die Erstellung einer portablen Version mit mkportable funktioniert
+     wieder.
+
+(en) GPA now works again under Windows XP.
+
+(de) GPA funktioniert wieder unter Windows XP.
+
+(en) Verification of a detached signature without specifying what
+     should be verified may now show a warning and has been disabled
+     in batch mode.
+
+(de) Die Verifikation von abgetrennten Signaturdateien ohne den
+     Dateinamen anzugeben, erzeugt nun ggf. eine Warnung und wird im
+     Batch Modus verhindert.
+
+(en) Tar archives can now include files and folders that use
+     special characters (e.g. umlauts) which can be encoded
+     in the native Windows 8-Bit codepage.
+
+(de) Tar Archive können mit Dateien und Ordner umgehen deren
+     Namen Sonderzeichen (z.B. Umlaute) enthalten welche in der
+     nativen Windows 8-Bit Zeichenkodierung kodiert sein dürfen.
+
+(en) Kleopatra now handles preprocessing (e.g. archiving) errors
+     and safely aborts the operation.
+
+(de) Kleopatra erkennt nun Fehler bei der Vorverarbeitung von Dateien
+     (z.B. Archivieren) und bricht die Operation sicher ab.
+
+(en) GPA has been updated to version 0.9.6.
+
+(de) GPA wurde auf Version 0.9.6 aktualisiert.
+
+(en) A security problem in the libksba library has been fixed.
+
+(de) Ein Sicherheitsproblem in der libksba Bibliothek wurde behoben.
+
+~~~~~~~~~~~~~~~
+GnuPG:          2.0.26
+Kleopatra:      2.2.0-git945878c
+GPA:            0.9.6
+GpgOL:          1.2.1
+GpgEX:          1.0.1
+Claws-Mail:     3.9.1
+Kompendium DE:  3.0.0
+Kompendium EN:  3.0.0
+~~~~~~~~~~~~~~~
+
 Noteworthy changes in version 2.2.2 (2014-09-03)
 ------------------------------------------------
 
