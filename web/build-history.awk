@@ -106,6 +106,7 @@ BEGIN {
 /^---/ { next }
 
 in_section && $0 ~ /^Noteworthy/ {
+  print "hallo"
   if (in_vers)
     print "</pre>"
   in_section = 0;
@@ -129,6 +130,7 @@ in_section && $0 ~ /^Noteworthy/ {
     reldate = noreldate_text[lang];
     print "<h2>Version " version " " reldate "</h2>"
   }
+  print "<ul>"
   in_section = 1;
   in_para = 0;
   in_vers = 0;
@@ -138,19 +140,27 @@ in_section && $0 ~ /^Noteworthy/ {
 }
 
 in_section && $0 ~ /^\([a-zA-Z]+\)/ {
-  in_para = 0;
+  if ( in_para ) {
+    in_para = 0;
+    print "</li>"
+  }
   if ( $0 ~ ("^\\(" lang "\\)" ) ) {
     in_para = 1;
     any_para = 1;
+    print "<li>"
     print substr ($0, 5);
   }
   next;
 }
 
 in_section && !in_vers && /^~~~/ {
+  if ( in_para ) {
+    in_para = 0;
+    print "</li>"
+  }
   in_para = 0;
   in_vers = 1;
-  print ""
+  print "</ul>"
   print "<pre>"
   next;
 }
