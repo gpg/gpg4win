@@ -38,11 +38,9 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         patches/dirmngr-1.1.1/dirmngr-pth.patch \
         patches/glib-2.41.0/01-socket.patch \
         patches/glib-2.41.0/03-remove-rand_s.patch \
-        patches/gnupg2-2.0.26/0001-Enable-wildcard-expansion-with-mingw-w64.patch \
-        patches/gnupg2-2.0.26/0002-Let-wchar_to_native-convert-to-console-codepage.patch \
-        patches/gnupg2-2.0.26/0003-gpg-Allow-for-positional-parameters-in-the-passphras.patch \
-        patches/gnupg2-2.0.26/0004-Make-the-use-of-verifiy-file-harder.patch \
-        patches/gnupg2-2.0.26/0005-Fix-gpgtar-8-bit-encoding-handling-on-Win32.patch \
+        patches/gnupg2-2.0.27/0001-Enable-wildcard-expansion-with-mingw-w64.patch \
+        patches/gnupg2-2.0.27/0002-Let-wchar_to_native-convert-to-console-codepage.patch \
+        patches/gnupg2-2.0.27/0005-Fix-gpgtar-8-bit-encoding-handling-on-Win32.patch \
         patches/gnupg2/01-version.patch \
         patches/gnupg2/01-version.patch.in \
         patches/gnutls-2.12.23/01-openssl-wincrypt.patch \
