@@ -56,7 +56,6 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         patches/gpa-0.9.4/03-homedir-via-gpgconf.patch \
         patches/gpa-0.9.4/04-utf-clip-crash.patch \
         patches/gpa-0.9.4/05-event-done.patch \
-        patches/gpgme-1.5.1/0001-Handle-modern-keyserver-output-which-may-emit-the-fi.patch \
         patches/gtkhtml2_viewer-0.34/80-src-makefile.postcfg-build \
         patches/libtasn1-2.14/gnulib-mingw-w64-fix.patch \
         patches/pthreads-w32-2-8-0-release/01-make.patch \
