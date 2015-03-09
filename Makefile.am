@@ -59,10 +59,6 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         patches/gpgme-1.5.1/0001-Handle-modern-keyserver-output-which-may-emit-the-fi.patch \
         patches/gtkhtml2_viewer-0.34/80-src-makefile.postcfg-build \
         patches/libtasn1-2.14/gnulib-mingw-w64-fix.patch \
-        patches/pinentry-0.8.4-beta8/0001-Set-some-accessibility-information.patch \
-        patches/pinentry-0.8.4-beta8/0002-Use-raiseWindow-also-for-confirm-dialogs.patch \
-        patches/pinentry-0.8.4-beta8/0003-Add-fallbacks-for-SetForegroundWindow.patch \
-        patches/pinentry-0.8.4-beta8/0004-Check-for-MOC-also-if-pinentry-qt-is-disabled.patch \
         patches/pthreads-w32-2-8-0-release/01-make.patch \
         patches/pthreads-w32-2-8-0-release/02-mingw_w64_timespec_compatibility.patch
 

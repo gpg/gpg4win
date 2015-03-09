@@ -427,9 +427,11 @@ chk  d065be185f5bac8ea07b210ab7756e79b83b63d4
 file dirmngr/dirmngr-1.1.1.tar.bz2
 chk  e708d4aa5ce852f4de3f4b58f4e4f221f5e5c690
 
-# checked: 2014-07-16 ah (I don't think its unstable :P)
-file pinentry/unstable/pinentry-0.8.4-beta8.tar.bz2
-chk  de4ba5ef9a1ced4e4f8543feac553d4cf68dea00
+# last changed: 2015-03-09
+# by: ah
+# verified: Sig D869 2123 C406 5DEA 5E0F  3AB5 249B 39D2 4F25 E3B6
+file pinentry/pinentry-0.9.0.tar.bz2
+chk  f8e5c774c35fbb91d84e82559baf76f6b4513236
 
 # checked: 2014-07-16 ah
 file scute/scute-1.4.0.tar.bz2
