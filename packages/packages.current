@@ -402,9 +402,11 @@ server ftp://ftp.gnupg.org/gcrypt
 file libgpg-error/libgpg-error-1.13.tar.bz2
 chk  50fbff11446a7b0decbf65a6e6b0eda17b5139fb
 
-# checked: 2014-08-21 ah - updated
-file libgcrypt/libgcrypt-1.6.2.tar.bz2
-chk  cc31aca87e4a3769cb86884a3f5982b2cc8eb7ec
+# last changed: 2015-03-09
+# by: ah
+# verified: Sig D869 2123 C406 5DEA 5E0F  3AB5 249B 39D2 4F25 E3B6
+file libgcrypt/libgcrypt-1.6.3.tar.bz2
+chk  9456e7b64db9df8360a1407a38c8c958da80bbf1
 
 # checked: 2014-11-25 ah
 file libksba/libksba-1.3.2.tar.bz2
@@ -414,7 +416,7 @@ chk  37d0893a587354af2b6e49f6ae701ca84f52da67
 file libassuan/libassuan-2.1.3.tar.bz2
 chk  56ac91973c2818a91d4f16ed48265a2b5daf45d3
 
-# last changed: 2015-2-18
+# last changed: 2015-02-18
 # by: ah
 # verified: Sig D869 2123 C406 5DEA 5E0F  3AB5 249B 39D2 4F25 E3B6
 name gnupg2-2.0.27.tar.bz2

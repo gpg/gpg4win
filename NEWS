@@ -10,6 +10,12 @@ Noteworthy changes in version 2.2.4 (unreleased)
 (de) GnuPG wurde auf Version 2.0.27 aktualisiert. Details zu dieser
      Version finden sich unter www.gnupg.org
 
+(en) Libgcrypt has been updated to version 1.6.3 (includes fix for
+     CVE-2014-3591)
+
+(de) Libgcrypt wurde auf Version 1.6.3 aktualisiert (enthält den
+     fix für CVE-2014-3591)
+
 ~~~~~~~~~~~~~~~
 GnuPG:          2.0.27
 Kleopatra:      2.2.0-git945878c
