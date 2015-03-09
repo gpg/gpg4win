@@ -396,6 +396,9 @@ chk  6e38be3377340a21a1f13ff84b5e6adce97cd1d4
 #
 # GnuPG et al.
 #
+# All tarballs from this server are verified with an openpgp
+# signature made by "Werner Koch (dist sig)".
+# D869 2123 C406 5DEA 5E0F  3AB5 249B 39D2 4F25 E3B6
 server ftp://ftp.gnupg.org/gcrypt
 
 # checked: 2014-07-16 ah - updated
@@ -404,7 +407,6 @@ chk  50fbff11446a7b0decbf65a6e6b0eda17b5139fb
 
 # last changed: 2015-03-09
 # by: ah
-# verified: Sig D869 2123 C406 5DEA 5E0F  3AB5 249B 39D2 4F25 E3B6
 file libgcrypt/libgcrypt-1.6.3.tar.bz2
 chk  9456e7b64db9df8360a1407a38c8c958da80bbf1
 
@@ -414,13 +416,11 @@ chk  37d0893a587354af2b6e49f6ae701ca84f52da67
 
 # last changed: 2015-03-09
 # by: ah
-# verified: Sig D869 2123 C406 5DEA 5E0F  3AB5 249B 39D2 4F25 E3B6
 file libassuan/libassuan-2.2.0.tar.bz2
 chk  7cf0545955ce414044bb99b871d324753dd7b2e5
 
 # last changed: 2015-02-18
 # by: ah
-# verified: Sig D869 2123 C406 5DEA 5E0F  3AB5 249B 39D2 4F25 E3B6
 name gnupg2-2.0.27.tar.bz2
 file gnupg/gnupg-2.0.27.tar.bz2
 chk  d065be185f5bac8ea07b210ab7756e79b83b63d4
@@ -431,7 +431,6 @@ chk  e708d4aa5ce852f4de3f4b58f4e4f221f5e5c690
 
 # last changed: 2015-03-09
 # by: ah
-# verified: Sig D869 2123 C406 5DEA 5E0F  3AB5 249B 39D2 4F25 E3B6
 file pinentry/pinentry-0.9.0.tar.bz2
 chk  f8e5c774c35fbb91d84e82559baf76f6b4513236
 
@@ -441,13 +440,13 @@ chk  e28141d2b03612c09512651795976c58ed3f8035
 
 # last changed: 2015-03-09
 # by: ah
-# verified: Sig D869 2123 C406 5DEA 5E0F  3AB5 249B 39D2 4F25 E3B6
 file gpgme/gpgme-1.5.3.tar.bz2
 chk  8dd7711a4de117994fe2d45879ef8a9900d50f6a
 
-# checked: 2014-11-21 ah - updated
-file gpa/gpa-0.9.6.tar.bz2
-chk  c664409c7d423eccc1120fbd0d232108269c9797
+# last changed: 2015-03-09
+# by: ah
+file gpa/gpa-0.9.7.tar.bz2
+chk  9eb07bcceeb986c7b6dbce8a18b82a2c344b50ce
 
 # (Snapshots)
 # server ftp://ftp.g10code.com/g10code/scratch
