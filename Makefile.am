@@ -50,12 +50,6 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         patches/gnutls-2.12.23/05-cve-2014-3466.patch \
         patches/gnutls-2.12.23/fix-gcrypt-private-api-usage.patch \
         patches/gnutls-2.12.23/gnulib-mingw-w64-fix.patch \
-        patches/gpa-0.9.4/01-bin-encrypt.patch \
-        patches/gpa-0.9.4/02-cms-detection.patch \
-        patches/gpa-0.9.4/02-x509-import.patch \
-        patches/gpa-0.9.4/03-homedir-via-gpgconf.patch \
-        patches/gpa-0.9.4/04-utf-clip-crash.patch \
-        patches/gpa-0.9.4/05-event-done.patch \
         patches/gtkhtml2_viewer-0.34/80-src-makefile.postcfg-build \
         patches/libtasn1-2.14/gnulib-mingw-w64-fix.patch \
         patches/pthreads-w32-2-8-0-release/01-make.patch \
