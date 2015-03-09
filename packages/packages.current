@@ -466,9 +466,11 @@ chk  16af56d0e7bdf081d60c59ea4d72e7df6d9cec21
 #
 server ftp://ftp.g10code.com/g10code/adns
 
-# checked: 2014-07-16 ah - updated
-file adns-1.4-g10-4.tar.bz2
-chk  040aed033694aeb3a97b8e5d74b990d4cad6bc99
+# last changed: 2015-03-09
+# by: ah
+# verified: Sig D869 2123 C406 5DEA 5E0F  3AB5 249B 39D2 4F25 E3B6
+file adns-1.4-g10-5.tar.bz2
+chk  aecd6213118f01aa38f535dc3bafc31b1e7c1c21
 
 
 #
