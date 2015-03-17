@@ -50,28 +50,14 @@ Die integrierten Gpg4win-Komponenten in Version !VERSION! sind:
 Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 -----------------------------------------
 
-- Das "Vanilla" Installationspaket wurde repariert indem GnuTLS
-  eingebunden wurde.
+- GnuPG wurde auf Version 2.0.27 aktualisiert. Details zu dieser
+  Version finden sich unter www.gnupg.org
 
-- Die Erstellung einer portablen Version mit mkportable funktioniert
-  wieder.
+- Libgcrypt wurde auf Version 1.6.3 aktualisiert (enthält den
+  fix für CVE-2014-3591)
 
-- GPA funktioniert wieder unter Windows XP.
-
-- Die Verifikation von abgetrennten Signaturdateien ohne den
-  Dateinamen anzugeben, erzeugt nun ggf. eine Warnung und wird im
-  Batch Modus verhindert.
-
-- Tar Archive können mit Dateien und Ordner umgehen deren
-  Namen Sonderzeichen (z.B. Umlaute) enthalten welche in der
-  nativen Windows 8-Bit Zeichenkodierung kodiert sein dürfen.
-
-- Kleopatra erkennt nun Fehler bei der Vorverarbeitung von Dateien
-  (z.B. Archivieren) und bricht die Operation sicher ab.
-
-- GPA wurde auf Version 0.9.6 aktualisiert.
-
-- Eine Sicherheitsproblem in der libksba Bibliothek wurde behoben.
+- Ein Problem wurde behoben durch welches Ausgabedateien beim
+  extrahieren von TAR Archiven beschädigt wurden.
 
 
 3. Bekannte Probleme (und Abhilfen)

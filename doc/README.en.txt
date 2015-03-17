@@ -48,26 +48,15 @@ Included Gpg4win components in Version !VERSION! are:
 New in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 -----------------------------------------
 
-- The vanilla installer has been fixed by including GnuTLS.
+- GnuPG has been updated to version 2.0.27. See release notes on
+  www.gnupg.org for details.
 
-- Creation of portable versions with mkportable has been fixed.
+- Libgcrypt has been updated to version 1.6.3 (includes fix for
+  CVE-2014-3591)
 
-- GPA now works again under Windows XP.
+- An issue has been fixed which could cause extracted files from
+  TAR Archives to be truncated.
 
-- Verification of a detached signature without specifying what
-  should be verified may now show a warning and has been disabled
-  in batch mode.
-
-- Tar archives can now include files and folders that use
-  special characters (e.g. umlauts) which can be encoded
-  in the native Windows 8-Bit codepage.
-
-- Kleopatra now handles preprocessing (e.g. archiving) errors
-  and safely aborts the operation.
-
-- GPA has been updated to version 0.9.6.
-
-- A security problem in the libksba library has been fixed.
 
 3. Known Bugs (and Workarounds)
 ===============================
