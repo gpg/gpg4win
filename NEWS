@@ -16,6 +16,12 @@ Noteworthy changes in version 2.2.4 (unreleased)
 (de) Libgcrypt wurde auf Version 1.6.3 aktualisiert (enthält den
      fix für CVE-2014-3591)
 
+(en) An issue has been fixed which could cause extracted files from
+     TAR Archives to be truncated.
+
+(de) Ein Problem wurde behoben durch welches Ausgabedateien beim
+     extrahieren von TAR Archiven beschädigt wurden.
+
 ~~~~~~~~~~~~~~~
 GnuPG:          2.0.27
 Kleopatra:      2.2.0-git945878c
