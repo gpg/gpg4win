@@ -3,6 +3,37 @@
 # The version number given below are for the standard installers as
 # distributed by www.gpg4win.org.
 
+Noteworthy changes in version 2.2.4 (2015-03-18)
+------------------------------------------------
+(en) GnuPG has been updated to version 2.0.27. See release notes on
+     www.gnupg.org for details.
+
+(de) GnuPG wurde auf Version 2.0.27 aktualisiert. Details zu dieser
+     Version finden sich unter www.gnupg.org
+
+(en) Libgcrypt has been updated to version 1.6.3 (includes fix for
+     CVE-2014-3591)
+
+(de) Libgcrypt wurde auf Version 1.6.3 aktualisiert (enthält den
+     fix für CVE-2014-3591)
+
+(en) An issue has been fixed which could cause extracted files from
+     TAR Archives to be truncated.
+
+(de) Ein Problem wurde behoben durch welches Ausgabedateien beim
+     extrahieren von TAR Archiven beschädigt wurden.
+
+~~~~~~~~~~~~~~~
+GnuPG:          2.0.27
+Kleopatra:      2.2.0-git945878c
+GPA:            0.9.7
+GpgOL:          1.2.1
+GpgEX:          1.0.1
+Claws-Mail:     3.9.1
+Kompendium DE:  3.0.0
+Kompendium EN:  3.0.0
+~~~~~~~~~~~~~~~
+
 Noteworthy changes in version 2.2.3 (2014-11-26)
 ------------------------------------------------
 (en) The vanilla installer has been fixed by including GnuTLS.

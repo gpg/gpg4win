@@ -25,20 +25,20 @@
    <small>2014-11-26</small><br>
    <span class="serif_word"><img src="img/bulletin.png" alt="" />
      m4_ifelse(LANG_DE, `1', `
-     <a href="download-de.html">Gpg4win 2.2.3 veröffentlicht</a></span>', `
-     <a href="download.html">Gpg4win 2.2.3 released</a></span>')
+     <a href="download-de.html">Gpg4win 2.2.4 veröffentlicht</a></span>', `
+     <a href="download.html">Gpg4win 2.2.4 released</a></span>')
+   <p></p>
+   <small>2014-11-26</small><br>
+   <span class="serif_word"><img src="img/bulletin.png" alt="" />
+     m4_ifelse(LANG_DE, `1', `
+     <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2014-November/000026.html">Gpg4win 2.2.3 veröffentlicht</a></span>', `
+     <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2014-November/000062.html">Gpg4win 2.2.3 released</a></span>')
    <p></p>
    <small>2014-09-04</small><br>
    <span class="serif_word"><img src="img/bulletin.png" alt="" />
      m4_ifelse(LANG_DE, `1', `
      <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2014-September/000025.html">Gpg4win 2.2.2 veröffentlicht</a></span>', `
      <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2014-September/000061.html">Gpg4win 2.2.2 released</a></span>')
-   <p></p>
-   <small>2014-08-14</small><br>
-   <span class="serif_word"><img src="img/bulletin.png" alt="" />
-     m4_ifelse(LANG_DE, `1', `
-     <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2014-August/000024.html">Gpg4win 2.2.2-beta veröffentlicht</a></span>', `
-     <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2014-August/000060.html">Gpg4win 2.2.2-beta released</a></span>')
    <p></p>
    <div class="limiter"></div>
    <p>
