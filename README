@@ -11,7 +11,7 @@ First clone GIT repository:
 
   git clone  git://git.gnupg.org/gpg4win.git
 
-the swicth to the web branch
+the switch to the web branch
 
   git checkout website
 
