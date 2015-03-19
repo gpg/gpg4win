@@ -74,7 +74,7 @@ und der Wunsch, dass man gerne mitmachen möchte, ist natürlich immer sinnvoll.
 <ol>
 <li> Gewünschte Änderungen in dem per git geholten Verzeichnis
      <code>/web</code> durchführen.
-     Zum besseren Verständnis ggf. die Datei <code>REAMDE</code> vorher
+     Zum besseren Verständnis ggf. die Datei <code>README</code> vorher
      durchlesen.
 <li> Lokale Version zum Anschauen herstellen:<br>
      <code>make</code><br>
