@@ -335,12 +335,12 @@ chk  d063e705812e1ee7feb8f35d51b3cad04ca13b0d
 
 # PNG
 
-# last changed: 2015-2-18
+# last changed: 2015-04-16
 # by: ah
 # verified: Sig 8048 643B A2C8 40F4 F92A  195F F549 84BF A16C 640F
 server ftp://ftp.simplesystems.org/pub/png/src/
-file libpng14/libpng-1.4.15.tar.xz
-chk  accc4d6aaac1e35d74af84ee7246c0b0eed0bee4
+file libpng14/libpng-1.4.16.tar.xz
+chk  4492cfbe3617758678b178e5f521893611fa2d13
 
 #
 # LibFFI
@@ -438,10 +438,10 @@ chk  f8e5c774c35fbb91d84e82559baf76f6b4513236
 file scute/scute-1.4.0.tar.bz2
 chk  e28141d2b03612c09512651795976c58ed3f8035
 
-# last changed: 2015-03-09
+# last changed: 2015-04-16
 # by: ah
-file gpgme/gpgme-1.5.3.tar.bz2
-chk  8dd7711a4de117994fe2d45879ef8a9900d50f6a
+file gpgme/gpgme-1.5.4.tar.bz2
+chk  8cf1bcce8603bd7d006065f08059cf85462828c4
 
 # last changed: 2015-03-09
 # by: ah
@@ -466,11 +466,11 @@ chk  16af56d0e7bdf081d60c59ea4d72e7df6d9cec21
 #
 server ftp://ftp.g10code.com/g10code/adns
 
-# last changed: 2015-03-09
+# last changed: 2015-04-16
 # by: ah
 # verified: Sig D869 2123 C406 5DEA 5E0F  3AB5 249B 39D2 4F25 E3B6
-file adns-1.4-g10-5.tar.bz2
-chk  aecd6213118f01aa38f535dc3bafc31b1e7c1c21
+file adns-1.4-g10-6.tar.bz2
+chk  cc124d58828ab1d6fa7df49aaeb37985c5225de5
 
 
 #
