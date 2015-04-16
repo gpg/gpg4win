@@ -59,6 +59,7 @@ to be installed:
  docbook-utils, ghostscript (claws-mail manual)
  texlive (you need most modules)
  texlive-latex-extra
+ texlive-lang-german
  latex-xcolor (for the compendium)
  libqt4-dev-bin (in case pinentry-qt needs moc)
 
