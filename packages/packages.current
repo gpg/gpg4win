@@ -83,22 +83,22 @@ chk    d7195498005d340ccd82e183de19163d16e56ec2
 
 server http://curl.haxx.se/download
 
-# checked: 2014-06-20 ah - updated
+# checked: 2015-06-05 ah - updated
 # verified with key 914C 533D F9B2 ADA2 204F  586D 78E1 1C6B 279D 5C91
-file  curl-7.37.0.tar.bz2
-chk   3bde6fb2e599197e9579c0735ad255c1ddbd914d
+file  curl-7.42.1.tar.bz2
+chk   f65708915875b8cb35edb51d8dd31440dc02fbd3
 
 
 #
 # libxml2 for Claws plugins
 
-# checked: 2014-06-20 ah - updated
-# checked checksum with linuxfromscratch handbook and mxe repository
-
+# last-changed: 2015-06-05
+# by: ah
+# verified: Sig C744 15BA 7C9C 7F78 F02E  1DC3 4606 B8A5 DE95 BC1F
 server ftp://xmlsoft.org/libxml2
 
-file   libxml2-2.9.1.tar.gz
-chk    eb3e2146c6d68aea5c2a4422ed76fe196f933c21
+file   libxml2-2.9.2.tar.gz
+chk    f46a37ea6d869f702e03f393c376760f3cbee673
 
 #
 # regex for Claws
@@ -165,7 +165,7 @@ server ftp://sources.redhat.com/pub
 # checked: 2013-04-29 wk - There is a 2.9.1 but the release notes
 #                          don't tell anything about security critical
 #                          bugs.  Thus we stay with 2.8.0 for now.
-#          2014-06-20 ah - ^ still applies
+#          2015-06-05 ah - ^ still applies
 file pthreads-win32/pthreads-w32-2-8-0-release.tar.gz
 chk  da8371cb20e8e238f96a1d0651212f154d84a9ac
 
@@ -183,19 +183,24 @@ chk  da8371cb20e8e238f96a1d0651212f154d84a9ac
 #
 server http://ftp.gnome.org/pub/gnome/sources/glib/2.41
 
-# checked: 2014-06-20 ah - updated
-# compared checksum with debian experimental version. Signed with key:
-# 3D0E FB95 E7B5 237F 16E8  2258 E352 D5C5 1C50 41D4
-file glib-2.41.0.tar.xz
-chk  d3b119707786f84496c366f143e6e70e95370d32
+# last-changed: 2015-06-05
+# Latest minor release is 2.45 but 2.41 works for us.
+# by: ah
+# compared checksum with debian experimental version.
+# https://lists.debian.org/debian-experimental-changes/2014/09/msg00182.html
+# verified: Sig 3D0E FB95 E7B5 237F 16E8  2258 E352 D5C5 1C50 41D4
+file glib-2.41.5.tar.xz
+chk  31de819181dd8abc25d89484ff6a4e60f032e8fc
 
 #
 # GDK-PIXBUF
 #
 server http://ftp.gnome.org/pub/gnome/sources/gdk-pixbuf/2.30/
 
-# checked: 2014-06-20 ah - updated
-# verified with linuxfromscratch and frugalware checksums
+# checked: 2015-06-05
+# by: ah
+# There is a 2.31 series but afaik no security problems with 2.30
+# verified: with linuxfromscratch and frugalware checksums
 file gdk-pixbuf-2.30.8.tar.xz
 chk  6277b4e5b5e334b3669f15ae0376e184be9e8cd8
 
@@ -312,11 +317,11 @@ chk  2e9189c6c6d1dac847a47c537c7a5e9dffd91992
 #
 server http://ftp.gnome.org/pub/gnome/sources/gtk+/2.24
 
-# checked: 2014-07-16 ah - updated from 2.24.17
-# verified checksum with https://download.gnome.org/core/3.13/3.13.3/sources/
-# sha1 and linuxfromscratch md5sum
-file gtk+-2.24.24.tar.xz
-chk  c43eb248b3d30c6b49937692b4c4bfa10b96201e
+# last-changed: 2015-06-05
+# by: ah
+# verified: chk from https://download.gnome.org/core/3.17/3.17.2/sources/SHA256SUMS-for-xz
+file gtk+-2.24.28.tar.xz
+chk  f3c2f1a3728ed51d08054f6b4c7384fbf99477c0
 
 #
 # GIMP stuff for W32
