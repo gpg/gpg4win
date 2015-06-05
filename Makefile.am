@@ -49,6 +49,8 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         patches/gnutls-2.12.23/03-cve-2014-1959.patch \
         patches/gnutls-2.12.23/04-cve-2014-0092.patch \
         patches/gnutls-2.12.23/05-cve-2014-3466.patch \
+        patches/gnutls-2.12.23/06-cve-2015-0282.patch \
+        patches/gnutls-2.12.23/07-cve-2015-0294.patch \
         patches/gnutls-2.12.23/fix-gcrypt-private-api-usage.patch \
         patches/gnutls-2.12.23/gnulib-mingw-w64-fix.patch \
         patches/gtkhtml2_viewer-0.34/80-src-makefile.postcfg-build \
