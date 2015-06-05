@@ -408,38 +408,40 @@ chk  6e38be3377340a21a1f13ff84b5e6adce97cd1d4
 # D869 2123 C406 5DEA 5E0F  3AB5 249B 39D2 4F25 E3B6
 server ftp://ftp.gnupg.org/gcrypt
 
-# checked: 2014-07-16 ah - updated
-file libgpg-error/libgpg-error-1.13.tar.bz2
-chk  50fbff11446a7b0decbf65a6e6b0eda17b5139fb
+# last-changed: 2015-06-05
+# by: ah
+file libgpg-error/libgpg-error-1.19.tar.bz2
+chk  4997951ab058788de48b989013668eb3df1e6939
 
 # last changed: 2015-03-09
 # by: ah
 file libgcrypt/libgcrypt-1.6.3.tar.bz2
 chk  9456e7b64db9df8360a1407a38c8c958da80bbf1
 
-# checked: 2014-11-25 ah
-file libksba/libksba-1.3.2.tar.bz2
-chk  37d0893a587354af2b6e49f6ae701ca84f52da67
-
-# last changed: 2015-03-09
+# last-changed: 2015-06-05
 # by: ah
-file libassuan/libassuan-2.2.0.tar.bz2
-chk  7cf0545955ce414044bb99b871d324753dd7b2e5
+file libksba/libksba-1.3.3.tar.bz2
+chk  86fe0436f3c8c394d32e142ee410a9f9560173fb
 
-# last changed: 2015-02-18
+# last-changed: 2015-06-05
 # by: ah
-name gnupg2-2.0.27.tar.bz2
-file gnupg/gnupg-2.0.27.tar.bz2
-chk  d065be185f5bac8ea07b210ab7756e79b83b63d4
+file libassuan/libassuan-2.2.1.tar.bz2
+chk  c21b86482f6a3624c2b46b91e20f8415f244233a
+
+# last changed: 2015-06-05
+# by: ah
+name gnupg2-2.0.28.tar.bz2
+file gnupg/gnupg-2.0.28.tar.bz2
+chk  9a1050f72b6c9afe2b4a0a3f2e9dca2abba8e4ef
 
 # checked: 2014-07-16 ah
 file dirmngr/dirmngr-1.1.1.tar.bz2
 chk  e708d4aa5ce852f4de3f4b58f4e4f221f5e5c690
 
-# last changed: 2015-03-09
+# last changed: 2015-06-05
 # by: ah
-file pinentry/pinentry-0.9.0.tar.bz2
-chk  f8e5c774c35fbb91d84e82559baf76f6b4513236
+file pinentry/pinentry-0.9.3.tar.bz2
+chk  5551fdb62dc268dee8861b50ff93f6741b8eec8a
 
 # checked: 2014-07-16 ah
 file scute/scute-1.4.0.tar.bz2

@@ -37,10 +37,9 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         patches/claws-mail-3.9.1/80-src-makefile.postcfg-build \
         patches/dirmngr-1.1.1/dirmngr-pth.patch \
         patches/glib-2.41.5/01-socket.patch \
-        patches/gnupg2-2.0.27/0001-Enable-wildcard-expansion-with-mingw-w64.patch \
-        patches/gnupg2-2.0.27/0002-Let-wchar_to_native-convert-to-console-codepage.patch \
-        patches/gnupg2-2.0.27/0003-gpgtar-Fix-extracting-files-with-size-512.patch \
-        patches/gnupg2-2.0.27/0005-Fix-gpgtar-8-bit-encoding-handling-on-Win32.patch \
+        patches/gnupg2-2.0.28/0001-Enable-wildcard-expansion-with-mingw-w64.patch \
+        patches/gnupg2-2.0.28/0002-Let-wchar_to_native-convert-to-console-codepage.patch \
+        patches/gnupg2-2.0.28/0005-Fix-gpgtar-8-bit-encoding-handling-on-Win32.patch \
         patches/gnupg2/01-version.patch \
         patches/gnupg2/01-version.patch.in \
         patches/gnutls-2.12.23/01-openssl-wincrypt.patch \
@@ -54,7 +53,6 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         patches/gnutls-2.12.23/gnulib-mingw-w64-fix.patch \
         patches/gtkhtml2_viewer-0.34/80-src-makefile.postcfg-build \
         patches/libtasn1-2.14/gnulib-mingw-w64-fix.patch \
-        patches/pinentry-0.9.0/fix-wrong-moc-files.patch \
         patches/pthreads-w32-2-8-0-release/01-make.patch \
         patches/pthreads-w32-2-8-0-release/02-mingw_w64_timespec_compatibility.patch
 
