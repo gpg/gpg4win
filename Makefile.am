@@ -51,10 +51,13 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         patches/gnutls-2.12.23/07-cve-2015-0294.patch \
         patches/gnutls-2.12.23/fix-gcrypt-private-api-usage.patch \
         patches/gnutls-2.12.23/gnulib-mingw-w64-fix.patch \
+		patches/gnutls-2.12.23/25_updatedgdocfrommaster.patch \
         patches/gtkhtml2_viewer-0.34/80-src-makefile.postcfg-build \
         patches/libtasn1-2.14/gnulib-mingw-w64-fix.patch \
         patches/pthreads-w32-2-8-0-release/01-make.patch \
-        patches/pthreads-w32-2-8-0-release/02-mingw_w64_timespec_compatibility.patch
+        patches/pthreads-w32-2-8-0-release/02-mingw_w64_timespec_compatibility.patch \
+		patches/w32pth-2.0.5/workaround-broken-libtool.patch \
+		patches/scute-1.4.0/workaround-broken-libtool.patch
 
 copy-news:
 	cp NEWS doc/website/NEWS.last
