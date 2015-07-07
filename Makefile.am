@@ -37,9 +37,11 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         patches/claws-mail-3.9.1/80-src-makefile.postcfg-build \
         patches/dirmngr-1.1.1/dirmngr-pth.patch \
         patches/glib-2.41.5/01-socket.patch \
+        patches/gpgme-1.5.5/0001-Add-offline-mode-support-for-CMS-keylisting.patch \
         patches/gnupg2-2.0.28/0001-Enable-wildcard-expansion-with-mingw-w64.patch \
         patches/gnupg2-2.0.28/0002-Let-wchar_to_native-convert-to-console-codepage.patch \
         patches/gnupg2-2.0.28/0005-Fix-gpgtar-8-bit-encoding-handling-on-Win32.patch \
+        patches/gnupg2-2.0.28/0006-gpgsm-Add-command-option-offline.patch \
         patches/gnupg2/01-version.patch \
         patches/gnupg2/01-version.patch.in \
         patches/gnutls-2.12.23/01-openssl-wincrypt.patch \

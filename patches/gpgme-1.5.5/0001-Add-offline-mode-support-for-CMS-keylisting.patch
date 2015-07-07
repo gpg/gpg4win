@@ -1,0 +1,450 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From c6744a9ecbbc9628ad0f9fe5893bb54154b31373 Mon Sep 17 00:00:00 2001
+From: Andre Heinecke <aheinecke@intevation.de>
+Date: Thu, 2 Jul 2015 10:19:04 +0200
+Subject: [PATCH] Add offline mode support for CMS keylisting
+
+* doc/gpgme.texi: Document offline mode.
+* src/context.h (gpgme_context): Add offline.
+* src/engine-backend.h (keylist, keylist_ext): Add engine_flags.
+* src/engine.c, src/engine.h (_gpgme_engine_op_keylist): Ditto.
+  (_gpgme_engine_op_keylist_ext): Ditto.
+* src/engine.h (GPGME_ENGINE_FLAG_OFFLINE): New.
+* src/engine-gpg.c (gpg_keylist, gpg_keylist_ext): Ditto.
+* src/engine-gpgsm.c (gpgsm_keylist): Handle engine_flags.
+  (gpgsm_keylist_ext): Ditto.
+* src/gpgme.c (gpgme_set_offline, gpgme_get_offline): New.
+* src/gpgme.def (gpgme_set_offline, gpgme_get_offline): New.
+* src/gpgme.h.in (gpgme_set_offline, gpgme_get_offline): New.
+* src/libgpgme.vers (gpgme_set_offline, gpgme_get_offline): New.
+* src/keylist.c (gpgme_op_keylist_start): Set offline flag.
+  (gpgme_op_keylist_ext_start): Ditto.
+* tests/run-keylist.c (show_usage, main): Add offline argument.
+
+--
+The offline engine option was introduced with gpgsm 2.1.6
+it is mainly useful for a full keylisting that includes
+the certificate validation but does not depend on external
+information that could take an indefinite amount of time to
+collect.
+
+Signed-off-by: Andre Heinecke <aheinecke@intevation.de>
+---
+ doc/gpgme.texi       | 33 +++++++++++++++++++++++++++++++++
+ src/context.h        |  3 +++
+ src/engine-backend.h |  6 ++++--
+ src/engine-gpg.c     |  4 ++--
+ src/engine-gpgsm.c   | 15 ++++++++++++---
+ src/engine.c         | 10 ++++++----
+ src/engine.h         |  9 +++++++--
+ src/gpgme.c          | 24 ++++++++++++++++++++++++
+ src/gpgme.def        |  3 +++
+ src/gpgme.h.in       |  6 ++++++
+ src/keylist.c        | 13 +++++++++++--
+ src/libgpgme.vers    |  3 +++
+ tests/run-keylist.c  |  9 +++++++++
+ 13 files changed, 123 insertions(+), 15 deletions(-)
+
+diff --git a/doc/gpgme.texi b/doc/gpgme.texi
+index 45c359d..ef4936d 100644
+--- a/doc/gpgme.texi
++++ b/doc/gpgme.texi
+@@ -189,6 +189,7 @@ Context Attributes
+ * Crypto Engine::                 Configuring the crypto engine.
+ * ASCII Armor::                   Requesting @acronym{ASCII} armored output.
+ * Text Mode::                     Choosing canonical text mode.
++* Offline Mode::                  Choosing offline mode.
+ * Included Certificates::         Including a number of certificates.
+ * Key Listing Mode::              Selecting key listing mode.
+ * Passphrase Callback::           Getting the passphrase from the user.
+@@ -2285,6 +2286,7 @@ started.  In fact, these references are accessed through the
+ * Crypto Engine::                 Configuring the crypto engine.
+ * ASCII Armor::                   Requesting @acronym{ASCII} armored output.
+ * Text Mode::                     Choosing canonical text mode.
++* Offline Mode::                  Choosing offline mode.
+ * Included Certificates::         Including a number of certificates.
+ * Key Listing Mode::              Selecting key listing mode.
+ * Passphrase Callback::           Getting the passphrase from the user.
+@@ -2413,6 +2415,37 @@ valid pointer.
+ @end deftypefun
+
+
++@node Offline Mode
++@subsection Offline Mode
++@cindex context, offline mode
++@cindex offline mode
++
++@deftypefun void gpgme_set_offline (@w{gpgme_ctx_t @var{ctx}}, @w{int @var{yes}})
++The function @code{gpgme_set_offline} specifies if offline mode
++should be used.  By default, offline mode is not used.
++
++The offline mode specifies if dirmngr should be used to do additional
++validation that might require connections to external services.
++(e.g. CRL / OCSP checks).
++
++Offline mode only affects the keylist mode @code{GPGME_KEYLIST_MODE_VALIDATE}
++and is only relevant to the CMS crypto engine. Offline mode
++is ignored otherwise.
++
++This option may be extended in the future to completely disable
++the use of dirmngr for any engine.
++
++Offline mode is disabled if @var{yes} is zero, and enabled
++otherwise.
++@end deftypefun
++
++@deftypefun int gpgme_get_offline (@w{gpgme_ctx_t @var{ctx}})
++The function @code{gpgme_get_offline} returns 1 if offline
++mode is enabled, and @code{0} if it is not, or if @var{ctx} is not a
++valid pointer.
++@end deftypefun
++
++
+ @node Included Certificates
+ @subsection Included Certificates
+ @cindex certificates, included
+diff --git a/src/context.h b/src/context.h
+index 745ffa8..8cd86e9 100644
+--- a/src/context.h
++++ b/src/context.h
+@@ -98,6 +98,9 @@ struct gpgme_context
+   /* True if text mode should be used.  */
+   unsigned int use_textmode : 1;
+
++  /* True if offline mode should be used.  */
++  unsigned int offline : 1;
++
+   /* Flags for keylist mode.  */
+   gpgme_keylist_mode_t keylist_mode;
+
+diff --git a/src/engine-backend.h b/src/engine-backend.h
+index b3cc412..4f4519c 100644
+--- a/src/engine-backend.h
++++ b/src/engine-backend.h
+@@ -85,10 +85,12 @@ struct engine_ops
+   gpgme_error_t (*import) (void *engine, gpgme_data_t keydata,
+                            gpgme_key_t *keyarray);
+   gpgme_error_t (*keylist) (void *engine, const char *pattern,
+-			    int secret_only, gpgme_keylist_mode_t mode);
++			    int secret_only, gpgme_keylist_mode_t mode,
++			    int engine_flags);
+   gpgme_error_t (*keylist_ext) (void *engine, const char *pattern[],
+				int secret_only, int reserved,
+-				gpgme_keylist_mode_t mode);
++				gpgme_keylist_mode_t mode,
++				int engine_flags);
+   gpgme_error_t (*sign) (void *engine, gpgme_data_t in, gpgme_data_t out,
+			 gpgme_sig_mode_t mode, int use_armor,
+			 int use_textmode, int include_certs,
+diff --git a/src/engine-gpg.c b/src/engine-gpg.c
+index e14fd8d..510dfd9 100644
+--- a/src/engine-gpg.c
++++ b/src/engine-gpg.c
+@@ -2279,7 +2279,7 @@ gpg_keylist_build_options (engine_gpg_t gpg, int secret_only,
+
+ static gpgme_error_t
+ gpg_keylist (void *engine, const char *pattern, int secret_only,
+-	     gpgme_keylist_mode_t mode)
++	     gpgme_keylist_mode_t mode, int engine_flags)
+ {
+   engine_gpg_t gpg = engine;
+   gpgme_error_t err;
+@@ -2298,7 +2298,7 @@ gpg_keylist (void *engine, const char *pattern, int secret_only,
+
+ static gpgme_error_t
+ gpg_keylist_ext (void *engine, const char *pattern[], int secret_only,
+-		 int reserved, gpgme_keylist_mode_t mode)
++		 int reserved, gpgme_keylist_mode_t mode, int engine_flags)
+ {
+   engine_gpg_t gpg = engine;
+   gpgme_error_t err;
+diff --git a/src/engine-gpgsm.c b/src/engine-gpgsm.c
+index ac6c5fc..3771157 100644
+--- a/src/engine-gpgsm.c
++++ b/src/engine-gpgsm.c
+@@ -1542,7 +1542,7 @@ gpgsm_import (void *engine, gpgme_data_t keydata, gpgme_key_t *keyarray)
+
+ static gpgme_error_t
+ gpgsm_keylist (void *engine, const char *pattern, int secret_only,
+-	       gpgme_keylist_mode_t mode)
++	       gpgme_keylist_mode_t mode, int engine_flags)
+ {
+   engine_gpgsm_t gpgsm = engine;
+   char *line;
+@@ -1599,6 +1599,11 @@ gpgsm_keylist (void *engine, const char *pattern, int secret_only,
+                                "OPTION with-secret=1":
+                                "OPTION with-secret=0" ,
+                                NULL, NULL);
++  gpgsm_assuan_simple_command (gpgsm->assuan_ctx,
++                               (engine_flags & GPGME_ENGINE_FLAG_OFFLINE)?
++                               "OPTION offline=1":
++                               "OPTION offline=0" ,
++                               NULL, NULL);
+
+
+   /* Length is "LISTSECRETKEYS " + p + '\0'.  */
+@@ -1629,7 +1634,7 @@ gpgsm_keylist (void *engine, const char *pattern, int secret_only,
+
+ static gpgme_error_t
+ gpgsm_keylist_ext (void *engine, const char *pattern[], int secret_only,
+-		   int reserved, gpgme_keylist_mode_t mode)
++		   int reserved, gpgme_keylist_mode_t mode, int engine_flags)
+ {
+   engine_gpgsm_t gpgsm = engine;
+   char *line;
+@@ -1669,7 +1674,11 @@ gpgsm_keylist_ext (void *engine, const char *pattern[], int secret_only,
+                                "OPTION with-secret=1":
+                                "OPTION with-secret=0" ,
+                                NULL, NULL);
+-
++  gpgsm_assuan_simple_command (gpgsm->assuan_ctx,
++                               (engine_flags & GPGME_ENGINE_FLAG_OFFLINE)?
++                               "OPTION offline=1":
++                               "OPTION offline=0" ,
++                               NULL, NULL);
+
+   if (pattern && *pattern)
+     {
+diff --git a/src/engine.c b/src/engine.c
+index ff015c0..8e84da9 100644
+--- a/src/engine.c
++++ b/src/engine.c
+@@ -726,7 +726,8 @@ _gpgme_engine_op_import (engine_t engine, gpgme_data_t keydata,
+
+ gpgme_error_t
+ _gpgme_engine_op_keylist (engine_t engine, const char *pattern,
+-			  int secret_only, gpgme_keylist_mode_t mode)
++			  int secret_only, gpgme_keylist_mode_t mode,
++			  int engine_flags)
+ {
+   if (!engine)
+     return gpg_error (GPG_ERR_INV_VALUE);
+@@ -734,14 +735,15 @@ _gpgme_engine_op_keylist (engine_t engine, const char *pattern,
+   if (!engine->ops->keylist)
+     return gpg_error (GPG_ERR_NOT_IMPLEMENTED);
+
+-  return (*engine->ops->keylist) (engine->engine, pattern, secret_only, mode);
++  return (*engine->ops->keylist) (engine->engine, pattern, secret_only, mode,
++                                  engine_flags);
+ }
+
+
+ gpgme_error_t
+ _gpgme_engine_op_keylist_ext (engine_t engine, const char *pattern[],
+			      int secret_only, int reserved,
+-			      gpgme_keylist_mode_t mode)
++			      gpgme_keylist_mode_t mode, int engine_flags)
+ {
+   if (!engine)
+     return gpg_error (GPG_ERR_INV_VALUE);
+@@ -750,7 +752,7 @@ _gpgme_engine_op_keylist_ext (engine_t engine, const char *pattern[],
+     return gpg_error (GPG_ERR_NOT_IMPLEMENTED);
+
+   return (*engine->ops->keylist_ext) (engine->engine, pattern, secret_only,
+-				      reserved, mode);
++				      reserved, mode, engine_flags);
+ }
+
+
+diff --git a/src/engine.h b/src/engine.h
+index bbf009d..56fcc42 100644
+--- a/src/engine.h
++++ b/src/engine.h
+@@ -113,12 +113,14 @@ gpgme_error_t _gpgme_engine_op_import (engine_t engine,
+ gpgme_error_t _gpgme_engine_op_keylist (engine_t engine,
+					const char *pattern,
+					int secret_only,
+-					gpgme_keylist_mode_t mode);
++					gpgme_keylist_mode_t mode,
++					int engine_flags);
+ gpgme_error_t _gpgme_engine_op_keylist_ext (engine_t engine,
+					    const char *pattern[],
+					    int secret_only,
+					    int reserved,
+-					    gpgme_keylist_mode_t mode);
++					    gpgme_keylist_mode_t mode,
++					    int engine_flags);
+ gpgme_error_t _gpgme_engine_op_sign (engine_t engine, gpgme_data_t in,
+				     gpgme_data_t out, gpgme_sig_mode_t mode,
+				     int use_armor, int use_textmode,
+@@ -170,5 +172,8 @@ gpgme_error_t _gpgme_engine_op_spawn (engine_t engine,
+                                       gpgme_data_t dataerr,
+                                       unsigned int flags);
+
++/* The available engine option flags.  */
++#define GPGME_ENGINE_FLAG_OFFLINE        1
++
+
+ #endif /* ENGINE_H */
+diff --git a/src/gpgme.c b/src/gpgme.c
+index 628cdae..c24b620 100644
+--- a/src/gpgme.c
++++ b/src/gpgme.c
+@@ -472,6 +472,30 @@ gpgme_get_textmode (gpgme_ctx_t ctx)
+ }
+
+
++/* Enable offline mode for this context. In offline mode dirmngr
++  will be disabled. */
++void
++gpgme_set_offline (gpgme_ctx_t ctx, int offline)
++{
++  TRACE2 (DEBUG_CTX, "gpgme_set_offline", ctx, "offline=%i (%s)",
++          offline, offline ? "yes" : "no");
++
++  if (!ctx)
++    return;
++
++  ctx->offline = offline;
++}
++
++/* Return the state of the offline flag.  */
++int
++gpgme_get_offline (gpgme_ctx_t ctx)
++{
++  TRACE2 (DEBUG_CTX, "gpgme_get_offline", ctx, "ctx->offline=%i (%s)",
++          ctx->offline, ctx->offline ? "yes" : "no");
++  return ctx->offline;
++}
++
++
+ /* Set the number of certifications to include in an S/MIME message.
+    The default is GPGME_INCLUDE_CERTS_DEFAULT.  -1 means all certs,
+    and -2 means all certs except the root cert.  */
+diff --git a/src/gpgme.def b/src/gpgme.def
+index dc18948..cf167b4 100644
+--- a/src/gpgme.def
++++ b/src/gpgme.def
+@@ -217,5 +217,8 @@ EXPORTS
+
+     gpgme_op_spawn_start                  @163
+     gpgme_op_spawn                        @164
++
++    gpgme_set_offline                     @165
++    gpgme_get_offline                     @166
+ ; END
+
+diff --git a/src/gpgme.h.in b/src/gpgme.h.in
+index 15ed803..099cc8a 100644
+--- a/src/gpgme.h.in
++++ b/src/gpgme.h.in
+@@ -887,6 +887,12 @@ void gpgme_set_textmode (gpgme_ctx_t ctx, int yes);
+ /* Return non-zero if text mode is set in CTX.  */
+ int gpgme_get_textmode (gpgme_ctx_t ctx);
+
++/* If YES is non-zero, enable offline mode in CTX, disable it otherwise.  */
++void gpgme_set_offline (gpgme_ctx_t ctx, int yes);
++
++/* Return non-zero if offline mode is set in CTX.  */
++int gpgme_get_offline (gpgme_ctx_t ctx);
++
+ /* Use whatever the default of the backend crypto engine is.  */
+ #define GPGME_INCLUDE_CERTS_DEFAULT	-256
+
+diff --git a/src/keylist.c b/src/keylist.c
+index 36ee3ea..fcf574f 100644
+--- a/src/keylist.c
++++ b/src/keylist.c
+@@ -889,6 +889,7 @@ gpgme_op_keylist_start (gpgme_ctx_t ctx, const char *pattern, int secret_only)
+   gpgme_error_t err;
+   void *hook;
+   op_data_t opd;
++  int flags = 0;
+
+   TRACE_BEG2 (DEBUG_CTX, "gpgme_op_keylist_start", ctx,
+	      "pattern=%s, secret_only=%i", pattern, secret_only);
+@@ -913,8 +914,11 @@ gpgme_op_keylist_start (gpgme_ctx_t ctx, const char *pattern, int secret_only)
+   if (err)
+     return TRACE_ERR (err);
+
++  if (ctx->offline)
++    flags |= GPGME_ENGINE_FLAG_OFFLINE;
++
+   err = _gpgme_engine_op_keylist (ctx->engine, pattern, secret_only,
+-				  ctx->keylist_mode);
++				  ctx->keylist_mode, flags);
+   return TRACE_ERR (err);
+ }
+
+@@ -929,6 +933,7 @@ gpgme_op_keylist_ext_start (gpgme_ctx_t ctx, const char *pattern[],
+   gpgme_error_t err;
+   void *hook;
+   op_data_t opd;
++  int flags = 0;
+
+   TRACE_BEG2 (DEBUG_CTX, "gpgme_op_keylist_ext_start", ctx,
+	      "secret_only=%i, reserved=0x%x", secret_only, reserved);
+@@ -952,8 +957,12 @@ gpgme_op_keylist_ext_start (gpgme_ctx_t ctx, const char *pattern[],
+   if (err)
+     return TRACE_ERR (err);
+
++  if (ctx->offline)
++    flags |= GPGME_ENGINE_FLAG_OFFLINE;
++
+   err = _gpgme_engine_op_keylist_ext (ctx->engine, pattern, secret_only,
+-				      reserved, ctx->keylist_mode);
++				      reserved, ctx->keylist_mode,
++				      flags);
+   return TRACE_ERR (err);
+ }
+
+diff --git a/src/libgpgme.vers b/src/libgpgme.vers
+index 39663c1..fc2920f 100644
+--- a/src/libgpgme.vers
++++ b/src/libgpgme.vers
+@@ -92,6 +92,9 @@ GPGME_1.1 {
+
+     gpgme_op_spawn_start;
+     gpgme_op_spawn;
++
++    gpgme_set_offline;
++    gpgme_get_offline;
+ };
+
+
+diff --git a/tests/run-keylist.c b/tests/run-keylist.c
+index 07c6fa1..8abdf43 100644
+--- a/tests/run-keylist.c
++++ b/tests/run-keylist.c
+@@ -53,6 +53,7 @@ show_usage (int ex)
+          "  --ephemeral      use GPGME_KEYLIST_MODE_EPHEMERAL\n"
+          "  --validate       use GPGME_KEYLIST_MODE_VALIDATE\n"
+          "  --import         import all keys\n"
++         "  --offline        use offline mode\n"
+          , stderr);
+   exit (ex);
+ }
+@@ -72,6 +73,7 @@ main (int argc, char **argv)
+   int keyidx = 0;
+   gpgme_protocol_t protocol = GPGME_PROTOCOL_OpenPGP;
+   int only_secret = 0;
++  int offline = 0;
+
+   if (argc)
+     { argc--; argv++; }
+@@ -141,6 +143,11 @@ main (int argc, char **argv)
+           import = 1;
+           argc--; argv++;
+         }
++      else if (!strcmp (*argv, "--offline"))
++        {
++          offline = 1;
++          argc--; argv++;
++        }
+       else if (!strncmp (*argv, "--", 2))
+         show_usage (1);
+
+@@ -157,6 +164,8 @@ main (int argc, char **argv)
+
+   gpgme_set_keylist_mode (ctx, mode);
+
++  gpgme_set_offline (ctx, offline);
++
+   err = gpgme_op_keylist_start (ctx, argc? argv[0]:NULL, only_secret);
+   fail_if_err (err);
+
+--
+1.9.1
