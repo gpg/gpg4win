@@ -11,6 +11,11 @@ Noteworthy changes in version 2.2.5 (unreleased)
 (de) GnuPG wurde auf Version 2.0.28 aktualisiert. Details zu dieser
      Version finden sich unter www.gnupg.org
 
+(en) A potential crash during certificate search has been fixed.
+
+(de) Ein möglicher Programmabsturz bei der Suche auf Schlüsselservern
+     wurde behoben.
+
 ~~~~~~~~~~~~~~~
 GnuPG:          2.0.28
 Kleopatra:      2.2.0-git945878c
