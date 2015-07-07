@@ -37,7 +37,6 @@ Section "-un.gtk+"
   Delete /REBOOTOK "$INSTDIR\libgailutil-18.dll"
   Delete "$INSTDIR\gtk-query-immodules-2.0.exe"
 
-  Delete "$INSTDIR\gtk-update-icon-cache.exe.manifest"
   Delete "$INSTDIR\gtk-update-icon-cache.exe"
 
   Delete "$INSTDIR\etc\gtk-2.0\gdk-pixbuf.loaders"

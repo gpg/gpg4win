@@ -38,7 +38,6 @@ Section "-gtk+" SEC_gtk_
   File ${prefix}/bin/libgailutil-18.dll
   File ${prefix}/bin/gtk-query-immodules-2.0.exe
 
-  File ${prefix}/bin/gtk-update-icon-cache.exe.manifest
   File ${prefix}/bin/gtk-update-icon-cache.exe
 
   SetOutPath "$INSTDIR\etc\gtk-2.0"
