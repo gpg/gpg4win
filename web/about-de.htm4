@@ -54,8 +54,10 @@ installiert werden können:</p>
  <p>Ein alternativer Zertifikatsmanager für OpenPGP und X.509.</p>
 </li>
 <li><b>GpgOL</b>
- <p>Eine Programmerweiterung für Microsoft Outlook 2003/2007/2010/2013
-  (E-Mail-Verschlüsselung).</p>
+ <p>Eine Programmerweiterung für die <strong>32bit Versionen</strong>
+  von Microsoft Outlook 2003/2007/2010/2013 (E-Mail-Verschlüsselung).
+  GpgOL unterstützt für Outlook 2010/2013 den Exchange Server, jedoch
+  kein MIME.</p>
 </li>
 <li><b>GpgEX</b>
 <p>Eine Programmerweiterung für den Microsoft Explorer

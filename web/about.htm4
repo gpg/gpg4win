@@ -42,7 +42,7 @@ Free Software components:
 
 <ul>
 <li><b>GnuPG</b>
- <p>The core; this is the actual encryption tool.</p>
+ <p>The backend; this is the actual encryption tool.</p>
 </li>
 <li><b>Kleopatra</b>
  <p>A certificate manager for OpenPGP and X.509 (S/MIME) and common crypto dialogs.</p>
@@ -51,7 +51,11 @@ Free Software components:
  <p>An alternative certificate manager for OpenPGP and X.509 (S/MIME).</p>
 </li>
 <li><b>GpgOL</b>
- <p>A plugin for Microsoft Outlook 2003/2007/2010/2013 (email encryption).</p>
+ <p>A plugin for the <strong>32bit versions</strong>
+    of Microsoft Outlook 2003/2007/2010/2013 (email encryption).
+    For Outlook 2010/2013 GpgpOL supports the Exchange Server,
+    but does not support MIME.
+ </p>
 </li>
 <li><b>GpgEX</b>
 <p>A plugin for Microsoft Explorer (file encryption).</p>
