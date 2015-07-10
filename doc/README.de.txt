@@ -50,14 +50,21 @@ Die integrierten Gpg4win-Komponenten in Version !VERSION! sind:
 Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 -----------------------------------------
 
-- GnuPG wurde auf Version 2.0.27 aktualisiert. Details zu dieser
+- GnuPG wurde auf Version 2.0.28 aktualisiert. Details zu dieser
   Version finden sich unter www.gnupg.org
 
-- Libgcrypt wurde auf Version 1.6.3 aktualisiert (enthält den
-  fix für CVE-2014-3591)
+- Ein möglicher Programmabsturz bei der Suche auf Schlüsselservern
+  wurde behoben.
 
-- Ein Problem wurde behoben durch welches Ausgabedateien beim
-  extrahieren von TAR Archiven beschädigt wurden.
+- Kleopatra ruft während des Starts keine X509 Sperrinformationen
+  mehr ab. Für manche Nutzer wird dies die Startzeit von Kleopatra
+  drastisch verbessern. Sperrinformationen werden abgerufen
+  wenn ein Zertifikat verwendet wird.
+
+- Bei der OpenPGP Zertifikatserstellung verwendet Kleopatra nun
+  die gleichen Einstellungen wie GnuPG.
+
+- Die in Gpg4win enthaltenen Bibliotheken wurden aktualisiert.
 
 
 3. Bekannte Probleme (und Abhilfen)

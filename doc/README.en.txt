@@ -48,14 +48,20 @@ Included Gpg4win components in Version !VERSION! are:
 New in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 -----------------------------------------
 
-- GnuPG has been updated to version 2.0.27. See release notes on
+- GnuPG has been updated to version 2.0.28. See release notes on
   www.gnupg.org for details.
 
-- Libgcrypt has been updated to version 1.6.3 (includes fix for
-  CVE-2014-3591)
+- A potential crash during certificate search has been fixed.
 
-- An issue has been fixed which could cause extracted files from
-  TAR Archives to be truncated.
+- Kleopatra no longer queries revocation information for X509
+  certificates during startup. This will drastically improve
+  the startup time of Kleopatra for some users.
+  Revocation information is still checked once a certificate is used.
+
+- Kleopatra now uses the same defaults as GnuPG for new OpenPGP
+  certificates.
+
+- Third party libraries included in Gpg4win have been updated.
 
 
 3. Known Bugs (and Workarounds)

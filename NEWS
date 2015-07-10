@@ -2,7 +2,7 @@
 #
 # The version number given below are for the standard installers as
 # distributed by www.gpg4win.org.
-Noteworthy changes in version 2.2.5 (unreleased)
+Noteworthy changes in version 2.2.5 (2015-07-10)
 ------------------------------------------------
 
 (en) GnuPG has been updated to version 2.0.28. See release notes on
@@ -16,15 +16,15 @@ Noteworthy changes in version 2.2.5 (unreleased)
 (de) Ein möglicher Programmabsturz bei der Suche auf Schlüsselservern
      wurde behoben.
 
-(en) Kleopatra no longer runs CRL checks on all X509 certificates
-     during startup. This can drastically improve the startup time.
-     CRL Checks are still performed once a certificate is used.
+(en) Kleopatra no longer queries revocation information for X509
+     certificates during startup. This will drastically improve
+     the startup time for some users.
+     Revocation information is still checked once a certificate is used.
 
-(de) Kleopatra führt nun beim Start nicht mehr CRL Prüfungen für
-     alle X509 Zertifikate durch. Für manche Nutzer wird dies
-     die Startzeit von Kleopatra drastisch verbessern.
-     CRL Prüfungen werden durchgeführt wenn ein Zertifikat verwendet
-     wird.
+(de) Kleopatra ruft während des Starts keine X509 Sperrinformationen
+     mehr ab. Für manche Nutzer wird dies die Startzeit von Kleopatra
+     drastisch verbessern. Sperrinformationen werden abgerufen
+     wenn ein Zertifikat verwendet wird.
 
 (en) Kleopatra now uses the same defaults as GnuPG for new OpenPGP
      certificates.
