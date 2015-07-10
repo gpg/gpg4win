@@ -16,9 +16,29 @@ Noteworthy changes in version 2.2.5 (unreleased)
 (de) Ein möglicher Programmabsturz bei der Suche auf Schlüsselservern
      wurde behoben.
 
+(en) Kleopatra no longer runs CRL checks on all X509 certificates
+     during startup. This can drastically improve the startup time.
+     CRL Checks are still performed once a certificate is used.
+
+(de) Kleopatra führt nun beim Start nicht mehr CRL Prüfungen für
+     alle X509 Zertifikate durch. Für manche Nutzer wird dies
+     die Startzeit von Kleopatra drastisch verbessern.
+     CRL Prüfungen werden durchgeführt wenn ein Zertifikat verwendet
+     wird.
+
+(en) Kleopatra now uses the same defaults as GnuPG for new OpenPGP
+     certificates.
+
+(de) Bei der OpenPGP Zertifikatserstellung verwendet Kleopatra nun
+     die gleichen Einstellungen wie GnuPG.
+
+(en) Third party libraries included in Gpg4win have been updated.
+
+(de) Die in Gpg4win enthaltenen Bibliotheken wurden aktualisiert.
+
 ~~~~~~~~~~~~~~~
 GnuPG:          2.0.28
-Kleopatra:      2.2.0-git945878c
+Kleopatra:      2.2.0-gita3c9200
 GPA:            0.9.7
 GpgOL:          1.2.1
 GpgEX:          1.0.2
