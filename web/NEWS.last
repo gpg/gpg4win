@@ -2,8 +2,52 @@
 #
 # The version number given below are for the standard installers as
 # distributed by www.gpg4win.org.
+Noteworthy changes in version 2.2.5 (2015-07-10)
+------------------------------------------------
 
-Noteworthy changes in version 2.2.4 (2015-03-18)
+(en) GnuPG has been updated to version 2.0.28. See release notes on
+     www.gnupg.org for details.
+
+(de) GnuPG wurde auf Version 2.0.28 aktualisiert. Details zu dieser
+     Version finden sich unter www.gnupg.org
+
+(en) A potential crash during certificate search has been fixed.
+
+(de) Ein möglicher Programmabsturz bei der Suche auf Schlüsselservern
+     wurde behoben.
+
+(en) Kleopatra no longer queries revocation information for X509
+     certificates during startup. This will drastically improve
+     the startup time for some users.
+     Revocation information is still checked once a certificate is used.
+
+(de) Kleopatra ruft während des Starts keine X509 Sperrinformationen
+     mehr ab. Für manche Nutzer wird dies die Startzeit von Kleopatra
+     drastisch verbessern. Sperrinformationen werden abgerufen
+     wenn ein Zertifikat verwendet wird.
+
+(en) Kleopatra now uses the same defaults as GnuPG for new OpenPGP
+     certificates.
+
+(de) Bei der OpenPGP Zertifikatserstellung verwendet Kleopatra nun
+     die gleichen Einstellungen wie GnuPG.
+
+(en) Third party libraries included in Gpg4win have been updated.
+
+(de) Die in Gpg4win enthaltenen Bibliotheken wurden aktualisiert.
+
+~~~~~~~~~~~~~~~
+GnuPG:          2.0.28
+Kleopatra:      2.2.0-gita3c9200
+GPA:            0.9.7
+GpgOL:          1.2.1
+GpgEX:          1.0.2
+Claws-Mail:     3.9.1
+Kompendium DE:  3.0.0
+Kompendium EN:  3.0.0
+~~~~~~~~~~~~~~~
+
+Noteworthy changes in version 2.2.4 (2015-03-17)
 ------------------------------------------------
 (en) GnuPG has been updated to version 2.0.27. See release notes on
      www.gnupg.org for details.
@@ -34,7 +78,7 @@ Kompendium DE:  3.0.0
 Kompendium EN:  3.0.0
 ~~~~~~~~~~~~~~~
 
-Noteworthy changes in version 2.2.3 (2014-11-26)
+Noteworthy changes in version 2.2.3 (2014-11-25)
 ------------------------------------------------
 (en) The vanilla installer has been fixed by including GnuTLS.
 
@@ -78,7 +122,7 @@ Noteworthy changes in version 2.2.3 (2014-11-26)
 
 (en) A security problem in the libksba library has been fixed.
 
-(de) Ein Sicherheitsproblem in der libksba Bibliothek wurde behoben.
+(de) Eine Sicherheitsproblem in der libksba Bibliothek wurde behoben.
 
 ~~~~~~~~~~~~~~~
 GnuPG:          2.0.26
@@ -98,7 +142,7 @@ Noteworthy changes in version 2.2.2 (2014-09-03)
      www.gnupg.org for details.
 
 (de) GnuPG wurde auf Version 2.0.26 aktualisiert. Details zu dieser
-     Version finden sich unter www.gnupg.org.
+     Version finden sich unter www.gnupg.org
 
 (en) Sreen reader support and accessibility of Kleopatra was improved.
 
@@ -163,7 +207,7 @@ Kompendium EN:  3.0.0
 ~~~~~~~~~~~~~~~
 
 
-Noteworthy changes in version 2.2.1 (2013-10-07)
+Noteworthy changes in version 2.2.1 (2013-10-08)
 ------------------------------------------------
 
 (de) Ein Fehler der eine mögliche endlosschleife in GnuPG auslösen
@@ -208,21 +252,34 @@ Noteworthy changes in version 2.2.0 (2013-08-20)
 
 (en) Pinentry now allows to paste in the passphrase.
 
-(de) Das Einfuegen von Passphrasen aus der Zwischenablage ist nun erlaubt.
+(de) Das Einfügen von Passphrasen aus der Zwischenablage ist nun erlaubt.
 
 (en) Kleopatra no longer crashes when started by a regular user on
      terminal servers (Windows Server).
 
-(de) Crash beim Start von Kleopatra durch einen gewoehnlichen Nutzer auf
+(de) Crash beim Start von Kleopatra durch einen gewöhnlichen Nutzer auf
      Terminalservern (Windows Server) behoben.
 
 (en) GpgOL provides rudimentary support for Outlook 2010 and 2013.
+     The following crypto functions are already available via the new
+     GpgOL ribbon rsp. Outlook's context menu (no MIME parsing, yet):
+     - Encrypting/decrypting mail bodys
+     - Saving and decrypting attachments
+     - Attaching and encrypting files
+     - Signing and signature verification (of opaque signatures)
 
-(de) GpgOL bietet rudimentaere Unterstuetzung fuer Outlook 2010 und 2013.
+(de) GpgOL bietet rudimentäre Unterstützung für Outlook 2010 und 2013.
+     Folgende Krypto-Operationen sind bereits über das neue
+     GpgOL-Ribbon bzw. über das Kontextmenü von Outlook möglich
+     (kein MIME-Parsing):
+     - Verschlüsseln/Entschlüsseln des Mail-Bodys.
+     - Speichern und Entschlüsseln von Anhängen.
+     - Dateien anhängen und verschlüsseln.
+     - Signieren/Prüfen (von opaken Signaturen).
 
 (en) Extracting a tarball through the Kleopatra GUI now works reliable
 
-(de) Das Entpacken eines tar-Archivs funktioniert nun auch ueber Kleopatra
+(de) Das Entpacken eines tar Archivs funktioniert nun auch über Kleopatra
      zuverlässig.
 
 (en) Added mkportable.exe as a tool to create a portable installation.
@@ -232,7 +289,7 @@ Noteworthy changes in version 2.2.0 (2013-08-20)
 
 (en) Kleopatra now allows it to generate keys with a size up to 4096 bit.
 
-(de) Kleopatra erlaubt es nun Zertifikate mit einer Laenge von
+(de) Kleopatra erlaubt es nun Zertifikate mit einer Länge von
      bis zu 4096 bit zu erstellen.
 
 ~~~~~~~~~~~~~~~
@@ -242,12 +299,12 @@ GPA:            0.9.4
 GpgOL:          1.2.0
 GpgEX:          1.0.0
 Claws-Mail:     3.9.1
-Kompendium `DE':  3.0.0
-Kompendium `EN':  3.0.0
+Kompendium DE:  3.0.0
+Kompendium EN:  3.0.0
 ~~~~~~~~~~~~~~~
 
 
-Noteworthy changes in version 2.1.1 (2013-05-31)
+Noteworthy changes in version 2.1.1 (2013-05-28)
 ------------------------------------------------
 
 (en) New versions of GnuPG, GpgOL, GPA, Kleopatra, and Claws-Mail.
@@ -261,13 +318,13 @@ Noteworthy changes in version 2.1.1 (2013-05-31)
 
 ~~~~~~~~~~~~~~~
 GnuPG:          2.0.20
-Kleopatra:      2.1.1 (2013-05-28)
+Kleopatra:      2.1.1
 GPA:            0.9.4
 GpgOL:          1.1.3
 GpgEX:          0.9.7
 Claws-Mail:     3.9.1
-Kompendium `DE':  3.0.0
-Kompendium `EN':  3.0.0-beta1
+Kompendium DE:  3.0.0
+Kompendium EN:  3.0.0-beta1
 ~~~~~~~~~~~~~~~
 
 
@@ -285,8 +342,8 @@ GPA:            0.9.1-svn1024
 GpgOL:          1.1.2
 GpgEX:          0.9.7
 Claws-Mail:     3.7.8cvs47
-Kompendium `DE':  3.0.0
-Kompendium `EN':  3.0.0-beta1
+Kompendium DE:  3.0.0
+Kompendium EN:  3.0.0-beta1
 ~~~~~~~~~~~~~~~
 
 
@@ -371,6 +428,7 @@ Noteworthy changes in version 2.0.0 (2009-08-07)
 (en) First production release of this major redesign.  Over the last
      15 months we did 15 beta releases and hopefully squashed most of
      the serious bugs.
+
 (de) Dies ist das erste produktionsreife Version der neuen Gpg4win
      Architektur.  In den vergangenen 15 Monaten wurden 16 Beta
      Versionen veröffentlicht um die meisten der gravierenden
