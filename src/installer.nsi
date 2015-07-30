@@ -451,7 +451,6 @@ Function PrintCloseOtherApps
       MessageBox MB_OK "$(T_ShuttingDownWinPT)"
       ExecWait '"$INSTDIR\winpt.exe" --stop'
     IfFileExists $INSTDIR\dirmngr.exe 0 +3
-      MessageBox MB_OK "$(T_ShuttingDownDirMngr)"
       g4wihelp::service_stop "DirMngr"
    leave:
 FunctionEnd
@@ -568,8 +567,6 @@ LangString T_CloseOtherApps ${LANG_ENGLISH} \
     will be required then."
 LangString T_ShuttingDownWinPT ${LANG_ENGLISH} \
    "Trying to shutdown a possible running instance of WinPT."
-LangString T_ShuttingDownDirMngr ${LANG_ENGLISH} \
-   "Trying to shutdown a possible running instance of DirMngr."
 
 
 # FIXME: The GetAfterChar function comes from the NSIS wiki.
