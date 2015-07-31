@@ -32,9 +32,6 @@
 !ifdef HAVE_PKG_BZIP2
 !include "inst-bzip2.nsi"
 !endif
-!ifdef HAVE_PKG_CRYPT
-!include "inst-crypt.nsi"
-!endif
 !ifdef HAVE_PKG_DBUS
 !include "inst-dbus.nsi"
 !endif
@@ -53,20 +50,11 @@
 !ifdef HAVE_PKG_PKGCONFIG
 !include "inst-pkgconfig.nsi"
 !endif
-!ifdef HAVE_PKG_PTHREADS_W32
-!include "inst-pthreads-w32.nsi"
-!endif
-!ifdef HAVE_PKG_REGEX
-!include "inst-regex.nsi"
-!endif
 !ifdef HAVE_PKG_W32PTH
 !include "inst-w32pth.nsi"
 !endif
 !ifdef HAVE_PKG_ZLIB
 !include "inst-zlib.nsi"
-!endif
-!ifdef HAVE_PKG_BSFILTER
-!include "inst-bsfilter.nsi"
 !endif
 !ifdef HAVE_PKG_QT
 !include "inst-qt.nsi"
@@ -76,12 +64,6 @@
 !endif
 !ifdef HAVE_PKG_LIBPNG
 !include "inst-libpng.nsi"
-!endif
-!ifdef HAVE_PKG_ENCHANT
-!include "inst-enchant.nsi"
-!endif
-!ifdef HAVE_PKG_LIBETPAN
-!include "inst-libetpan.nsi"
 !endif
 !ifdef HAVE_PKG_LIBASSUAN
 !include "inst-libassuan.nsi"
@@ -134,9 +116,6 @@
 !ifdef HAVE_PKG_CURL
 !include "inst-curl.nsi"
 !endif
-!ifdef HAVE_PKG_LIBXML2
-!include "inst-libxml2.nsi"
-!endif
 !ifdef HAVE_PKG_PINENTRY
 !include "inst-pinentry.nsi"
 !endif
@@ -166,12 +145,6 @@
 !endif
 !ifdef HAVE_PKG_PAPERKEY
 !include "inst-paperkey.nsi"
-!endif
-!ifdef HAVE_PKG_CLAWS_MAIL
-!include "inst-claws-mail.nsi"
-!endif
-!ifdef HAVE_PKG_GTKHTML2_VIEWER
-!include "inst-gtkhtml2_viewer.nsi"
 !endif
 !ifdef HAVE_PKG_COMPENDIUM
 !include "inst-compendium.nsi"
@@ -208,12 +181,6 @@
 !ifdef HAVE_PKG_COMPENDIUM
 !include "uninst-compendium.nsi"
 !endif
-!ifdef HAVE_PKG_CLAWS_MAIL
-!include "uninst-claws-mail.nsi"
-!endif
-!ifdef HAVE_PKG_GTKHTML2_VIEWER
-!include "uninst-gtkhtml2_viewer.nsi"
-!endif
 !ifdef HAVE_PKG_PAPERKEY
 !include "uninst-paperkey.nsi"
 !endif
@@ -247,9 +214,6 @@
 !endif
 !ifdef HAVE_PKG_CURL
 !include "uninst-curl.nsi"
-!endif
-!ifdef HAVE_PKG_LIBXML2
-!include "uninst-libxml2.nsi"
 !endif
 !ifdef HAVE_PKG_GTK_
 !include "uninst-gtk+.nsi"
@@ -296,14 +260,8 @@
 !ifdef HAVE_PKG_LIBASSUAN
 !include "uninst-libassuan.nsi"
 !endif
-!ifdef HAVE_PKG_LIBETPAN
-!include "uninst-libetpan.nsi"
-!endif
 !ifdef HAVE_PKG_LIBPNG
 !include "uninst-libpng.nsi"
-!endif
-!ifdef HAVE_PKG_ENCHANT
-!include "uninst-enchant.nsi"
 !endif
 !ifdef HAVE_PKG_GETTEXT
 !include "uninst-gettext.nsi"
@@ -311,20 +269,11 @@
 !ifdef HAVE_PKG_QT
 !include "uninst-qt.nsi"
 !endif
-!ifdef HAVE_PKG_BSFILTER
-!include "uninst-bsfilter.nsi"
-!endif
 !ifdef HAVE_PKG_ZLIB
 !include "uninst-zlib.nsi"
 !endif
 !ifdef HAVE_PKG_W32PTH
 !include "uninst-w32pth.nsi"
-!endif
-!ifdef HAVE_PKG_REGEX
-!include "uninst-regex.nsi"
-!endif
-!ifdef HAVE_PKG_PTHREADS_W32
-!include "uninst-pthreads-w32.nsi"
 !endif
 !ifdef HAVE_PKG_PKGCONFIG
 !include "uninst-pkgconfig.nsi"
@@ -355,9 +304,6 @@
 !endif
 !ifdef HAVE_PKG_DBUS
 !include "uninst-dbus.nsi"
-!endif
-!ifdef HAVE_PKG_CRYPT
-!include "uninst-crypt.nsi"
 !endif
 !ifdef HAVE_PKG_BZIP2
 !include "uninst-bzip2.nsi"
@@ -393,8 +339,6 @@ g4wihelp::config_fetch_bool "inst_quick_launch_bar"
 StrCmp $R0 "" +2
 !insertmacro MUI_INSTALLOPTIONS_WRITE "installer-options.ini" \
 	"Field 4" "State" $R0
-
-
 
 !ifdef HAVE_PKG_KLEOPATRA
   g4wihelp::config_fetch_bool "inst_kleopatra"
@@ -460,17 +404,6 @@ calc_defaults_paperkey_done:
   StrCmp $R0 "0" 0 calc_defaults_gpa_done
    !insertmacro UnselectSection ${SEC_gpa}
 calc_defaults_gpa_done:
-!endif
-
-!ifdef HAVE_PKG_CLAWS_MAIL
-  g4wihelp::config_fetch_bool "inst_claws_mail"
-  StrCmp $R0 "1" 0 calc_defaults_claws_mail_not_one
-   !insertmacro SelectSection ${SEC_claws_mail}
-   Goto calc_defaults_claws_mail_done
-  calc_defaults_claws_mail_not_one:
-  StrCmp $R0 "0" 0 calc_defaults_claws_mail_done
-   !insertmacro UnselectSection ${SEC_claws_mail}
-calc_defaults_claws_mail_done:
 !endif
 
 !ifdef HAVE_PKG_COMPENDIUM
@@ -547,20 +480,8 @@ Function CalcDepends
 !ifdef HAVE_PKG_ZLIB
   !insertmacro UnselectSection ${SEC_zlib}
 !endif
-!ifdef HAVE_PKG_BSFILTER
-  !insertmacro UnselectSection ${SEC_bsfilter}
-!endif
-!ifdef HAVE_PKG_CRYPT
-  !insertmacro UnselectSection ${SEC_crypt}
-!endif
-!ifdef HAVE_PKG_REGEX
-  !insertmacro UnselectSection ${SEC_regex}
-!endif
 !ifdef HAVE_PKG_LIBPNG
   !insertmacro UnselectSection ${SEC_libpng}
-!endif
-!ifdef HAVE_PKG_ENCHANT
-  !insertmacro UnselectSection ${SEC_enchant}
 !endif
 !ifdef HAVE_PKG_PKGCONFIG
   !insertmacro UnselectSection ${SEC_pkgconfig}
@@ -619,9 +540,6 @@ Function CalcDepends
 !ifdef HAVE_PKG_GPGME
   !insertmacro UnselectSection ${SEC_gpgme}
 !endif
-!ifdef HAVE_PKG_PTHREADS_W32
-  !insertmacro UnselectSection ${SEC_pthreads_w32}
-!endif
 !ifdef HAVE_PKG_LIBGSASL
   !insertmacro UnselectSection ${SEC_libgsasl}
 !endif
@@ -633,12 +551,6 @@ Function CalcDepends
 !endif
 !ifdef HAVE_PKG_CURL
   !insertmacro UnselectSection ${SEC_curl}
-!endif
-!ifdef HAVE_PKG_LIBXML2
-  !insertmacro UnselectSection ${SEC_libxml2}
-!endif
-!ifdef HAVE_PKG_GTKHTML2_VIEWER
-  !insertmacro UnselectSection ${SEC_gtkhtml2_viewer}
 !endif
 !ifdef HAVE_PKG_DBUS
   !insertmacro UnselectSection ${SEC_dbus}
@@ -657,8 +569,6 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_gnupg2}
 
   # Then enable all dependencies, mostly in reverse build list order!
-  # An exception are the claws plugins, which are build after claws,
-  # but are installed as a dependency of claws.
 
   # First the explicitely installed packages.
 
@@ -754,28 +664,6 @@ Function CalcDepends
   skip_gpa:
 !endif
 
-!ifdef HAVE_PKG_CLAWS_MAIL
-  !insertmacro SectionFlagIsSet ${SEC_claws_mail} ${SF_SELECTED} have_claws_mail skip_claws_mail
-  have_claws_mail:
-  !insertmacro SelectSection ${SEC_libiconv}
-  !insertmacro SelectSection ${SEC_gettext}
-  !insertmacro SelectSection ${SEC_zlib}
-  !insertmacro SelectSection ${SEC_gtk_}
-  !insertmacro SelectSection ${SEC_libpng}
-  !insertmacro SelectSection ${SEC_enchant}
-  !insertmacro SelectSection ${SEC_glib}
-  !insertmacro SelectSection ${SEC_gpgme}
-  !insertmacro SelectSection ${SEC_pthreads_w32}
-  !insertmacro SelectSection ${SEC_crypt}
-  !insertmacro SelectSection ${SEC_regex}
-  !insertmacro SelectSection ${SEC_libetpan}
-  !insertmacro SelectSection ${SEC_gnutls}
-  # These are not build dependencies, but we always want to install
-  # all plugins.
-  !insertmacro SelectSection ${SEC_gtkhtml2_viewer}
-  skip_claws_mail:
-!endif
-
   # Now the implicitely installed packages.
 
 !ifdef HAVE_PKG_KLEOPATRA
@@ -798,35 +686,12 @@ Function CalcDepends
   # Package "dbus" has no dependencies.
   # Package "oxygen-icons" has no dependencies.
 
-!ifdef HAVE_PKG_GTKHTML2_VIEWER
-  !insertmacro SectionFlagIsSet ${SEC_gtkhtml2_viewer} ${SF_SELECTED} have_gtkhtml2_viewer skip_gtkhtml2_viewer
-  have_gtkhtml2_viewer:
-  !insertmacro SelectSection ${SEC_curl}
-  !insertmacro SelectSection ${SEC_libxml2}
-  skip_gtkhtml2_viewer:
-!endif
-
-!ifdef HAVE_PKG_LIBXML2
-  !insertmacro SectionFlagIsSet ${SEC_libxml2} ${SF_SELECTED} have_libxml2 skip_libxml2
-  have_libxml2:
-  !insertmacro SelectSection ${SEC_zlib}
-  skip_libxml2:
-!endif
-
 !ifdef HAVE_PKG_CURL
   !insertmacro SectionFlagIsSet ${SEC_curl} ${SF_SELECTED} have_curl skip_curl
   have_curl:
   !insertmacro SelectSection ${SEC_zlib}
   !insertmacro SelectSection ${SEC_gnutls}
   skip_curl:
-!endif
-
-!ifdef HAVE_PKG_LIBETPAN
-  !insertmacro SectionFlagIsSet ${SEC_libetpan} ${SF_SELECTED} have_libetpan skip_libetpan
-  have_libetpan:
-  !insertmacro SelectSection ${SEC_pthreads_w32}
-  !insertmacro SelectSection ${SEC_gnutls}
-  skip_libetpan:
 !endif
 
 !ifdef HAVE_PKG_GNUTLS
@@ -839,7 +704,6 @@ Function CalcDepends
 
   # Package "libtasn1" has no dependencies.
   # Package "libgsasl" has no dependencies.
-  # Package "pthreads-w32" has no dependencies.
 
 !ifdef HAVE_PKG_GPGME
   !insertmacro SectionFlagIsSet ${SEC_gpgme} \
@@ -986,16 +850,6 @@ Function CalcDepends
   skip_libpng:
 !endif
 
-!ifdef HAVE_PKG_ENCHANT
-  !insertmacro SectionFlagIsSet ${SEC_enchant} \
-		${SF_SELECTED} have_enchant skip_enchant
-  have_enchant:
-  !insertmacro SelectSection ${SEC_pkgconfig}
-  skip_enchant:
-!endif
-
-  # Package "regex" has no dependencies.
-  # Package "crypt" has no dependencies.
   # Package "zlib" has no dependencies.
 
 !ifdef HAVE_PKG_GETTEXT
@@ -1103,9 +957,6 @@ FunctionEnd
 !ifdef HAVE_PKG_GPA
   !insertmacro MUI_DESCRIPTION_TEXT ${SEC_gpa} $(DESC_SEC_gpa)
 !endif
-!ifdef HAVE_PKG_CLAWS_MAIL
-  !insertmacro MUI_DESCRIPTION_TEXT ${SEC_claws_mail} $(DESC_SEC_claws_mail)
-!endif
 !ifdef HAVE_PKG_KLEOPATRA
   !insertmacro MUI_DESCRIPTION_TEXT ${SEC_kleopatra} $(DESC_SEC_kleopatra)
 !endif
@@ -1172,24 +1023,6 @@ Section "-startmenu"
 	"$INSTDIR\kleopatra.exe" \
         "" "$INSTDIR\bin\kleopatra.exe" "" SW_SHOWNORMAL "" $(DESC_Menu_kleopatra)
   no_kleopatra_menu:
-!endif
-
-!ifdef HAVE_PKG_CLAWS_MAIL
-    SectionGetFlags ${SEC_claws_mail} $R0
-    IntOp $R0 $R0 & ${SF_SELECTED}
-    IntCmp $R0 ${SF_SELECTED} 0 no_claws_mail_menu
-    CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\Claws-Mail.lnk" \
-	"$INSTDIR\claws-mail.exe" \
-        "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_claws_mail)
-!ifndef GPG4WIN_LIGHT
-!ifndef GPG4WIN_VANILLA
-    CreateShortCut \
-        "$SMPROGRAMS\$STARTMENU_FOLDER\$(DESC_Menu_manuals)\Claws-Mail Manual.lnk" \
-	"$INSTDIR\claws-mail-manual.pdf" \
-	"" "" "" SW_SHOWNORMAL "" $(DESC_Menu_claws_mail_pdf)
-!endif
-!endif
-  no_claws_mail_menu:
 !endif
 
 !ifdef HAVE_PKG_MAN_NOVICE_EN
@@ -1356,24 +1189,6 @@ Section "-startmenu"
   no_kleopatra_desktop:
 !endif
 
-!ifdef HAVE_PKG_CLAWS_MAIL
-    SectionGetFlags ${SEC_claws_mail} $R0
-    IntOp $R0 $R0 & ${SF_SELECTED}
-    IntCmp $R0 ${SF_SELECTED} 0 no_claws_mail_desktop
-    CreateShortCut "$DESKTOP\Claws-Mail.lnk" \
-	"$INSTDIR\claws-mail.exe" \
-        "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_claws_mail)
-!ifndef GPG4WIN_LIGHT
-!ifndef GPG4WIN_VANILLA
-    CreateShortCut \
-        "$DESKTOP\$(DESC_Desktop_manuals)\Claws-Mail Manual.lnk" \
-	"$INSTDIR\claws-mail-manual.pdf" \
-	"" "" "" SW_SHOWNORMAL "" $(DESC_Menu_claws_mail_pdf)
-!endif
-!endif
-  no_claws_mail_desktop:
-!endif
-
 !ifdef HAVE_PKG_MAN_NOVICE_EN
     SectionGetFlags ${SEC_man_novice_en} $R0
     IntOp $R0 $R0 & ${SF_SELECTED}
@@ -1507,17 +1322,6 @@ no_desktop:
         "" "$INSTDIR\bin\kleopatra.exe" "" SW_SHOWNORMAL "" $(DESC_Menu_kleopatra)
   no_kleopatra_quicklaunch:
 !endif
-
-!ifdef HAVE_PKG_CLAWS_MAIL
-    SectionGetFlags ${SEC_claws_mail} $R0
-    IntOp $R0 $R0 & ${SF_SELECTED}
-    IntCmp $R0 ${SF_SELECTED} 0 no_claws_mail_quicklaunch
-    CreateShortCut "$QUICKLAUNCH\Claws-Mail.lnk" \
-	"$INSTDIR\claws-mail.exe" \
-        "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_claws_mail)
-  no_claws_mail_quicklaunch:
-!endif
-
 
 no_quick_launch:
 

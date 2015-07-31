@@ -62,50 +62,8 @@
 ;!ifdef HAVE_PKG_GNUTLS
 ;!undef HAVE_PKG_GNUTLS
 ;!endif
-!ifdef HAVE_PKG_LIBXML2
-!undef HAVE_PKG_LIBXML2
-!endif
-!ifdef HAVE_PKG_LIBETPAN
-!undef HAVE_PKG_LIBETPAN
-!endif
-!ifdef HAVE_PKG_BSFILTER
-!undef HAVE_PKG_BSFILTER
-!endif
-!ifdef HAVE_PKG_CRYPT
-!undef HAVE_PKG_CRYPT
-!endif
-!ifdef HAVE_PKG_CLAWS_MAIL
-!undef HAVE_PKG_CLAWS_MAIL
-!endif
-!ifdef HAVE_PKG_NOTIFICATION_PLUGIN
-!undef HAVE_PKG_NOTIFICATION_PLUGIN
-!endif
-!ifdef HAVE_PKG_GTKHTML2_VIEWER
-!undef HAVE_PKG_GTKHTML2_VIEWER
-!endif
-!ifdef HAVE_PKG_VCALENDAR
-!undef HAVE_PKG_VCALENDAR
-!endif
-!ifdef HAVE_PKG_RSSYL
-!undef HAVE_PKG_RSSYL
-!endif
-!ifdef HAVE_PKG_TNEF_PARSE
-!undef HAVE_PKG_TNEF_PARSE
-!endif
-!ifdef HAVE_PKG_ATTACHWARNER
-!undef HAVE_PKG_ATTACHWARNER
-!endif
-!ifdef HAVE_PKG_BSFILTER_PLUGIN
-!undef HAVE_PKG_BSFILTER_PLUGIN
-!endif
-!ifdef HAVE_PKG_PTHREADS_W32
-!undef HAVE_PKG_PTHREADS_W32
-!endif
 !ifdef HAVE_PKG_LIBPNG
 !undef HAVE_PKG_LIBPNG
-!endif
-!ifdef HAVE_PKG_ENCHANT
-!undef HAVE_PKG_ENCHANT
 !endif
 !ifdef HAVE_PKG_PKGCONFIG
 !undef HAVE_PKG_PKGCONFIG
@@ -211,6 +169,14 @@ RequestExecutionLevel admin
 SetCompressor /SOLID lzma
 # SetCompressorDictSize 8
 !endif
+!endif
+
+!ifndef GPG4WIN_VANILLA
+# Claws is a bit special because we installed
+# it for some time and now remove the old
+# version we did install during installation
+# to be part of an update.
+!include "uninst-claws-mail.nsi"
 !endif
 
 # Now include the generic parts.

@@ -35,11 +35,6 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
         inst-libtasn1.nsi	   uninst-libtasn1.nsi        \
         inst-gnutls.nsi		   uninst-gnutls.nsi	      \
         inst-curl.nsi		   uninst-curl.nsi	      \
-        inst-libxml2.nsi	   uninst-libxml2.nsi	      \
-        inst-libetpan.nsi	   uninst-libetpan.nsi        \
-        inst-claws-mail.nsi	   uninst-claws-mail.nsi      \
-        inst-gtkhtml2_viewer.nsi   uninst-gtkhtml2_viewer.nsi \
-        inst-crypt.nsi		   uninst-crypt.nsi	      \
         inst-dirmngr.nsi	   uninst-dirmngr.nsi	      \
         inst-gettext.nsi	   uninst-gettext.nsi	      \
         inst-libffi.nsi		   uninst-libffi.nsi	      \
@@ -60,7 +55,6 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
         inst-libksba.nsi	   uninst-libksba.nsi	      \
         inst-adns.nsi	           uninst-adns.nsi	      \
         inst-libpng.nsi		   uninst-libpng.nsi	      \
-        inst-enchant.nsi	   uninst-enchant.nsi	      \
         inst-compendium.nsi	   uninst-compendium.nsi   \
         inst-man_advanced_de.nsi   uninst-man_advanced_de.nsi \
         inst-man_advanced_en.nsi   uninst-man_advanced_en.nsi \
@@ -69,16 +63,14 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
         inst-pango.nsi		   uninst-pango.nsi	      \
         inst-pinentry.nsi	   uninst-pinentry.nsi	      \
         inst-pkgconfig.nsi	   uninst-pkgconfig.nsi	      \
-        inst-pthreads-w32.nsi	   uninst-pthreads-w32.nsi    \
-        inst-regex.nsi		   uninst-regex.nsi	      \
         inst-w32pth.nsi		   uninst-w32pth.nsi	      \
         inst-zlib.nsi        	   uninst-zlib.nsi            \
-	inst-bsfilter.nsi          uninst-bsfilter.nsi        \
         inst-qt.nsi        	   uninst-qt.nsi              \
         inst-dbus.nsi   	   uninst-dbus.nsi      \
         inst-oxygen-icons.nsi  	   uninst-oxygen-icons.nsi    \
         inst-kleopatra.nsi  	   uninst-kleopatra.nsi       \
 	inst-bzip2.nsi             uninst-bzip2.nsi           \
+        uninst-claws-mail.nsi uninst-claws-mail-cmds.nsi \
         inst-final.nsi
 
 SUBDIRS = dictionaries
@@ -102,10 +94,9 @@ CLEANFILES = g4wihelp.dll versioninfo.txt $(README_files) $(HOWTO_files) \
 
 # Supported source packages.
 gpg4win_spkgs = glib libffi gdk-pixbuf gtk+ \
-                libgpg-error gpgme gpgol gpgex libpng enchant \
-		gpa libgsasl libtasn1 opencdk gnutls curl libxml2 \
-                libetpan claws-mail gtkhtml2_viewer \
-		vcalendar rssyl gnupg2 pinentry libassuan libksba libgcrypt \
+                libgpg-error gpgme gpgol gpgex libpng \
+		gpa libgsasl libtasn1 opencdk gnutls curl \
+		gnupg2 pinentry libassuan libksba libgcrypt \
 		adns dirmngr w32pth scute paperkey regex libiconv gettext
 
 # Supported source packages to build in an additional architecture
@@ -222,8 +213,6 @@ gpg4win_pkg_adns_configure = --silent
 
 gpg4win_pkg_libpng_configure = HAVE_SOLARIS_LD_FALSE=yes CPPFLAGS=\"-I$(idir)/include -DPNG_BUILD_DLL\" LDFLAGS=\"-L$(idir)/lib\" LIBPNG_DEFINES=\"-DPNG_BUILD_DLL\"
 
-gpg4win_pkg_enchant_configure = CPPFLAGS=\"-I$(idir)/include -UENCHANT_GLOBAL_MODULE_DIR -UENCHANT_GLOBAL_ORDERING -UENCHANT_MYSPELL_DICT_DIR -UENCHANT_USPELL_DICT_DIR\" LDFLAGS=\"-L$(idir)/lib\"
-
 gpg4win_pkg_dirmngr_configure = \
   --with-gpg-error-prefix=$(idir) \
   --with-ksba-prefix=$(idir) \
@@ -308,72 +297,21 @@ gpg4win_pkg_curl_configure = \
   --with-gnutls --without-ca-bundle --with-libiconv-prefix=$(idir) \
   CPPFLAGS=\"-I$(idir)/include\" LIBS=\"-L$(idir)/lib\"
 
-gpg4win_pkg_libxml2_configure = \
-  --enable-shared --without-python --with-iconv=$(idir)
-
-# The CFLAGS are needed to find pthread-w32.
-gpg4win_pkg_libetpan_configure = --with-gnutls \
-  CPPFLAGS=\"-I$(idir)/include\" LIBS=\"-L$(idir)/lib\"
-
-gpg4win_pkg_claws_mail_configure = \
-  --with-lib-prefix=$(idir) --with-libiconv-prefix=$(idir) \
-  --with-gpg-error-prefix=$(idir) --with-gpgme-prefix=$(idir) \
-  --with-config-dir="Claws-mail" --enable-pthread --enable-gnutls \
-  --enable-libetpan --disable-dbus --disable-valgrind --disable-ipv6 \
-  --disable-jpilot --disable-startup-notification \
-  --disable-spamassassin-plugin --disable-bogofilter-plugin \
-  --disable-fancy-plugin --disable-geolocation-plugin \
-  --disable-acpi_notifier-plugin --disable-clamd-plugin \
-  --disable-bogofilter-plugin --disable-spamassassin-plugin \
-  --disable-perl-plugin --disable-python-plugin --disable-demo-plugin \
-  --disable-newmail-plugin --disable-mailmbox-plugin
-
-
-# This is not anymore needed sinces 3.8.0 already builds a PDF version.
-# define gpg4win_pkg_claws_mail_post_install
-# (for i in de en ; do \
-#     (cd $$$${pkgidir}/share/doc/claws-mail/manual/$$$${i}; \
-#     ps2pdf claws-mail-manual.ps); \
-#  done)
-# endef
-
-
-gpg4win_pkg_gtkhtml2_viewer_configure = \
-  --with-lib-prefix=$(idir) --with-libiconv-prefix=$(idir) LIBS=\"-L$(idir)/bin\"
-
-gpg4win_pkg_vcalendar_configure = \
-  --with-lib-prefix=$(idir) --with-libiconv-prefix=$(idir) LIBS=\"-L$(idir)/bin\"
-
-gpg4win_pkg_rssyl_configure = \
-  --with-lib-prefix=$(idir) --with-libiconv-prefix=$(idir) LIBS=\"-L$(idir)/bin\"
-
 gpg4win_pkg_scute_configure = --silent \
   --with-gpg-error-prefix=$(idir) --with-libassuan-prefix=$(idir)
 
 gpg4win_pkg_paperkey_configure = --silent
 
 # Supported make-only source packages.
-gpg4win_mpkgs = pthreads-w32 bzip2 zlib crypt
+gpg4win_mpkgs = bzip2 zlib
 
 # Extra options for the make invocations for individual packages.
 # make_flags is used for building, make_args_inst is used for installing.
-gpg4win_pkg_pthreads_w32_make_args = \
-  prefix=$(idir) CROSS=$(host_alias)- clean GC-inlined
-
-gpg4win_pkg_pthreads_w32_make_args_inst = \
-  prefix=$$$${pkgidir} CROSS=$(host_alias)-
-
 gpg4win_pkg_bzip2_make_args = \
   CC=$(CC) AR=$(AR) RANLIB=$(RANLIB)
 
 gpg4win_pkg_bzip2_make_args_inst = \
   PREFIX=$$$${pkgidir} CC=$(CC) AR=$(AR) RANLIB=$(RANLIB)
-
-gpg4win_pkg_crypt_make_args = \
-  CC=$(CC) AR=$(AR)
-
-gpg4win_pkg_crypt_make_args_inst = \
-  prefix=$$$${pkgidir}
 
 gpg4win_pkg_zlib_make_args = \
   -fwin32/Makefile.gcc PREFIX=$(host)- IMPLIB=libz.dll.a
@@ -426,12 +364,6 @@ echo "dlpreopen=''" >> lib/libz.la;			\
 echo "libdir=\"$$$${pkgidir}/lib\"" >> lib/libz.la)
 endef
 
-# To make sure that we link against the static versions we need
-# remove the import libs from crypt
-#define gpg4win_pkg_crypt_post_install
-#(cd $$$${pkgidir}/lib && rm libcrypt.dll.a libcrypt.lib)
-#endef
-
 # We need to fix the prefix in the various packages using pkgconfig,
 # or we can't substitute it properly in our pkg-config wrapper.
 # glib also installs an empty charset.alias for mingw which creates
@@ -483,11 +415,6 @@ define gpg4win_pkg_gtk__post_install
 endef
 
 define gpg4win_pkg_libpng_post_install
- (cd $$$${pkgidir};							\
- perl -pi -e 's/^prefix=.*$$$$/prefix=\/usr/' `find . -name \*.pc`)
-endef
-
-define gpg4win_pkg_enchant_post_install
  (cd $$$${pkgidir};							\
  perl -pi -e 's/^prefix=.*$$$$/prefix=\/usr/' `find . -name \*.pc`)
 endef

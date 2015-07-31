@@ -313,18 +313,11 @@ AC_CHECK_PROGS(GLIB_GENMARSHAL, glib-genmarshal)
 AC_CHECK_PROGS(GLIB_COMPILE_SCHEMAS, glib-compile-schemas)
 AC_CHECK_PROGS(GLIB_COMPILE_RESOURCES, glib-compile-resources)
 AC_CHECK_PROGS(GDK_PIXBUF_CSOURCE, gdk-pixbuf-csource)
-AC_CHECK_PROGS(GS, gs)
-# For the claws manual we need:
-AC_CHECK_PROGS(DOCBOOK2HTML, docbook2html)
-AC_CHECK_PROGS(DOCBOOK2TXT, docbook2txt)
-AC_CHECK_PROGS(DOCBOOK2PS, docbook2ps)
-AC_CHECK_PROGS(DOCBOOK2PDF, docbook2pdf)
 
 
 missing_opt_tools=
 for i in GLIB_GENMARSHAL GLIB_COMPILE_SCHEMAS GLIB_COMPILE_RESOURCES \
-         GDK_PIXBUF_CSOURCE GS \
-         DOCBOOK2PDF DOCBOOK2TXT DOCBOOK2PS DOCBOOK2PDF; do
+         GDK_PIXBUF_CSOURCE; do
    eval tmp='$'$i
    if test -z "$tmp"; then
       missing_opt_tools="$missing_opt_tools `echo $i | tr 'A-Z' 'a-z'`"
@@ -343,7 +336,6 @@ gpg4win_dup_sources=""
 
 
 GPG4WIN_SPKG([zlib])
-GPG4WIN_BPKG_GNUWIN32([bsfilter])
 
 GPG4WIN_BPKG_GTK([pkgconfig])
 
@@ -359,7 +351,6 @@ GPG4WIN_SPKG([gdk-pixbuf], [glib])
 GPG4WIN_SPKG([gtk+], [libiconv gettext pkgconfig atk pango dnl
                       glib gdk-pixbuf cairo])
 GPG4WIN_SPKG([libpng], [pkgconfig])
-GPG4WIN_SPKG([enchant], [pkgconfig glib])
 
 GPG4WIN_SPKG([bzip2])
 GPG4WIN_SPKG([adns])
@@ -373,7 +364,6 @@ GPG4WIN_SPKG([gpgme], [libgpg-error gnupg2 glib])
 GPG4WIN_SPKG([curl], [zlib gnutls])
 GPG4WIN_SPKG([gnupg2], [libiconv libgcrypt libksba libassuan libgpg-error dnl
                         w32pth zlib bzip2 adns pinentry])
-GPG4WIN_SPKG([pthreads-w32])
 GPG4WIN_SPKG([gpgol], [gpgme libassuan])
 GPG4WIN_SPKG([gpgex], [libassuan])
 GPG4WIN_SPKG([scute], [libgpg-error libassuan])
@@ -382,14 +372,6 @@ GPG4WIN_SPKG([gpa], [libiconv gettext zlib gtk+ libpng glib gpgme])
 GPG4WIN_SPKG([libgsasl])
 GPG4WIN_SPKG([libtasn1])
 GPG4WIN_SPKG([gnutls], [libgsasl libtasn1 libgcrypt])
-GPG4WIN_SPKG([libetpan], [pthreads-w32 gnutls])
-GPG4WIN_SPKG([libxml2], [zlib])
-GPG4WIN_SPKG([regex])
-GPG4WIN_SPKG([crypt])
-GPG4WIN_SPKG([claws-mail], [libiconv gettext zlib gtk+ libpng enchant glib dnl
-                            gpgme pthreads-w32 crypt regex libetpan gnutls dnl
-                            libxml2])
-GPG4WIN_SPKG([gtkhtml2_viewer], [curl claws-mail libxml2])
 GPG4WIN_SPKG([w32pth])
 GPG4WIN_SPKG([libiconv])
 GPG4WIN_SPKG([gettext], [libiconv])

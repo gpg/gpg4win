@@ -285,25 +285,17 @@ msgctxt "T_ShuttingDownWinPT"
 msgid "Trying to shutdown a possible running instance of WinPT."
 msgstr "Prova di arresto di una possibile istanza di WinPT."
 
-msgctxt "T_ShuttingDownDirMngr"
-msgid "Trying to shutdown a possible running instance of DirMngr."
-msgstr "Prova di arresto di una possibile istanza di DirMngr."
-
-msgctxt "T_SetDefaultClient"
-msgid "Do you want to make Claws Mail your default mail client?"
-msgstr "Volete rendere Claws Mail il vostro cliente di posta predefinito?"
-
-msgctxt "DESC_SEC_claws_mail"
-msgid "Claws Mail-User-Agent"
-msgstr "Claws Mail-User-Agent"
-
-msgctxt "DESC_Menu_claws_mail"
-msgid "Run the Claws mailprogram."
-msgstr "Esegui il programma Claws Mail"
-
-msgctxt "DESC_Menu_claws_mail_pdf"
-msgid "Show the online manual of Claws Mail"
-msgstr "Mostra il manuale in linea di Claws Mail"
+msgctxt "T_FoundOldClaws"
+msgid ""
+"An old version of Claws Mail was found in your Installation directory.\n"
+"Please note that Claws Mail is no longer bundled with Gpg4win and is now "
+"available as a standalone package.\n"
+"You should uninstall Claws Mail now, and if you wish to continue to use it, "
+"install an up-to-date version from:\n"
+"http://www.claws-mail.org/win32\n"
+"\n"
+"Uninstall Claws Mail from Gpg4win now?"
+msgstr ""
 
 msgctxt "DESC_SEC_gnupg2"
 msgid "GNU Privacy Guard"
@@ -387,6 +379,26 @@ msgstr "Mostra il riassunto di Gpg4win (pdf, Tedesco)"
 msgctxt "DESC_Menu_compendium_en_pdf"
 msgid "Show the Gpg4win Compendium (pdf, English)"
 msgstr "Mostra il riassunto di Gpg4win (pdf, Inglese)"
+
+#~ msgctxt "T_ShuttingDownDirMngr"
+#~ msgid "Trying to shutdown a possible running instance of DirMngr."
+#~ msgstr "Prova di arresto di una possibile istanza di DirMngr."
+
+#~ msgctxt "T_SetDefaultClient"
+#~ msgid "Do you want to make Claws Mail your default mail client?"
+#~ msgstr "Volete rendere Claws Mail il vostro cliente di posta predefinito?"
+
+#~ msgctxt "DESC_SEC_claws_mail"
+#~ msgid "Claws Mail-User-Agent"
+#~ msgstr "Claws Mail-User-Agent"
+
+#~ msgctxt "DESC_Menu_claws_mail"
+#~ msgid "Run the Claws mailprogram."
+#~ msgstr "Esegui il programma Claws Mail"
+
+#~ msgctxt "DESC_Menu_claws_mail_pdf"
+#~ msgid "Show the online manual of Claws Mail"
+#~ msgstr "Mostra il manuale in linea di Claws Mail"
 
 #~ msgctxt "T_SMIMEHeaderText"
 #~ msgid "Define trustable root certificates"

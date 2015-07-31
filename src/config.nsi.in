@@ -120,43 +120,9 @@
 !define gpg4win_pkg_curl @gpg4win_pkg_curl@
 !define gpg4win_pkg_curl_version @gpg4win_pkg_curl_version@
 
-@HAVE_PKG_LIBXML2@
-!define gpg4win_pkg_libxml2 @gpg4win_pkg_libxml2@
-!define gpg4win_pkg_libxml2_version @gpg4win_pkg_libxml2_version@
-
-@HAVE_PKG_LIBETPAN@
-!define gpg4win_pkg_libetpan @gpg4win_pkg_libetpan@
-!define gpg4win_pkg_libetpan_version @gpg4win_pkg_libetpan_version@
-
-@HAVE_PKG_BSFILTER@
-!define gpg4win_pkg_bsfilter @gpg4win_pkg_bsfilter@
-!define gpg4win_pkg_bsfilter_version @gpg4win_pkg_bsfilter_version@
-!define gpg4win_pkg_bsfilter_dev @gpg4win_pkg_bsfilter_dev@
-!define gpg4win_pkg_bsfilter_src @gpg4win_pkg_bsfilter_src@
-
-@HAVE_PKG_REGEX@
-!define gpg4win_pkg_regex @gpg4win_pkg_regex@
-!define gpg4win_pkg_regex_version @gpg4win_pkg_regex_version@
-
-@HAVE_PKG_CRYPT@
-!define gpg4win_pkg_crypt @gpg4win_pkg_crypt@
-!define gpg4win_pkg_crypt_version @gpg4win_pkg_crypt_version@
-
-@HAVE_PKG_CLAWS_MAIL@
-!define gpg4win_pkg_claws_mail @gpg4win_pkg_claws_mail@
-!define gpg4win_pkg_claws_mail_version @gpg4win_pkg_claws_mail_version@
-
-@HAVE_PKG_GTKHTML2_VIEWER@
-!define gpg4win_pkg_gtkhtml2_viewer @gpg4win_pkg_gtkhtml2_viewer@
-!define gpg4win_pkg_gtkhtml2_viewer_version @gpg4win_pkg_gtkhtml2_viewer_version@
-
 @HAVE_PKG_ZLIB@
 !define gpg4win_pkg_zlib @gpg4win_pkg_zlib@
 !define gpg4win_pkg_zlib_version @gpg4win_pkg_zlib_version@
-
-@HAVE_PKG_PTHREADS_W32@
-!define gpg4win_pkg_pthreads_w32 @gpg4win_pkg_pthreads_w32@
-!define gpg4win_pkg_pthreads_w32_version @gpg4win_pkg_pthreads_w32_version@
 
 @HAVE_PKG_BZIP2@
 !define gpg4win_pkg_bzip2 @gpg4win_pkg_bzip2@
@@ -165,10 +131,6 @@
 @HAVE_PKG_LIBPNG@
 !define gpg4win_pkg_libpng @gpg4win_pkg_libpng@
 !define gpg4win_pkg_libpng_version @gpg4win_pkg_libpng_version@
-
-@HAVE_PKG_ENCHANT@
-!define gpg4win_pkg_enchant @gpg4win_pkg_enchant@
-!define gpg4win_pkg_enchant_version @gpg4win_pkg_enchant_version@
 
 @HAVE_PKG_PKGCONFIG@
 !define gpg4win_pkg_pkgconfig @gpg4win_pkg_pkgconfig@

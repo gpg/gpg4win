@@ -27,14 +27,6 @@ SUBDIRS = po packages doc src
 EXTRA_DIST = autogen.sh README.GIT ONEWS \
         doc/license-page doc/GPLv3 \
         build-aux/git-log-footer build-aux/git-log-fix \
-        patches/claws-mail-3.9.1/01-w64-mingw32.patch \
-        patches/claws-mail-3.9.1/02-ldap-opt.patch \
-        patches/claws-mail-3.9.1/03-all-crypto.patch \
-        patches/claws-mail-3.9.1/20-c416e89d.patch \
-        patches/claws-mail-3.9.1/21-66aa06c7.patch \
-        patches/claws-mail-3.9.1/50-configure.patch \
-        patches/claws-mail-3.9.1/51-version-file.patch \
-        patches/claws-mail-3.9.1/80-src-makefile.postcfg-build \
         patches/dirmngr-1.1.1/dirmngr-pth.patch \
         patches/glib-2.41.5/01-socket.patch \
         patches/gpgme-1.5.5/0001-Add-offline-mode-support-for-CMS-keylisting.patch \
@@ -54,10 +46,7 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         patches/gnutls-2.12.23/fix-gcrypt-private-api-usage.patch \
         patches/gnutls-2.12.23/gnulib-mingw-w64-fix.patch \
 		patches/gnutls-2.12.23/25_updatedgdocfrommaster.patch \
-        patches/gtkhtml2_viewer-0.34/80-src-makefile.postcfg-build \
         patches/libtasn1-2.14/gnulib-mingw-w64-fix.patch \
-        patches/pthreads-w32-2-8-0-release/01-make.patch \
-        patches/pthreads-w32-2-8-0-release/02-mingw_w64_timespec_compatibility.patch \
 		patches/w32pth-2.0.5/workaround-broken-libtool.patch \
 		patches/scute-1.4.0/workaround-broken-libtool.patch
 

@@ -171,7 +171,7 @@ Var STARTMENU_FOLDER
 
 !endif
 
-!define MUI_PAGE_CUSTOMFUNCTION_PRE PrintCloseOtherApps
+!define MUI_PAGE_CUSTOMFUNCTION_PRE BeforeInstallHooks
 !insertmacro MUI_PAGE_INSTFILES
 !define MUI_PAGE_CUSTOMFUNCTION_PRE ShowFinalWarnings
 
@@ -435,6 +435,15 @@ Function CheckIfStartMenuWanted
     Abort
 FunctionEnd
 
+# Check for claws mail installation which was shipped in Gpg4win
+# versions < 2.2.6
+Function CheckClawsUninstall
+    IfFileExists $INSTDIR\claws-mail.exe 0 leave
+    MessageBox MB_YESNO "$(T_FoundOldClaws)" IDYES uninstall IDNO leave
+   uninstall:
+    !insertmacro SelectSection ${SecUninstClawsMail}
+   leave:
+FunctionEnd
 
 # Check whether this is a reinstall and popup a message box to explain
 # that it is better to close other apps before continuing
@@ -453,6 +462,14 @@ Function PrintCloseOtherApps
     IfFileExists $INSTDIR\dirmngr.exe 0 +3
       g4wihelp::service_stop "DirMngr"
    leave:
+FunctionEnd
+
+# Called right before installation
+Function BeforeInstallHooks
+    Call PrintCloseOtherApps
+!ifndef GPG4WIN_VANILLA
+    Call CheckClawsUninstall
+!endif
 FunctionEnd
 
 # Called right before the final page to show more warnings.
@@ -568,6 +585,15 @@ LangString T_CloseOtherApps ${LANG_ENGLISH} \
 LangString T_ShuttingDownWinPT ${LANG_ENGLISH} \
    "Trying to shutdown a possible running instance of WinPT."
 
+# From Function CheckClawsUninstall
+LangString T_FoundOldClaws ${LANG_ENGLISH} \
+   "An old version of Claws Mail was found in your Installation directory. \
+    $\r$\nPlease note that Claws Mail is no longer bundled with Gpg4win \
+    and is now available as a standalone package.$\r$\n\
+    You should uninstall Claws Mail now, and if you wish to \
+    continue to use it, install an up-to-date version from:$\r$\n\
+    http://www.claws-mail.org/win32 $\r$\n$\r$\n\
+    Uninstall Claws Mail from Gpg4win now?"
 
 # FIXME: The GetAfterChar function comes from the NSIS wiki.
 Function un.GetAfterChar

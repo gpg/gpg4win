@@ -280,25 +280,17 @@ msgctxt "T_ShuttingDownWinPT"
 msgid "Trying to shutdown a possible running instance of WinPT."
 msgstr "Возможно, запущена программа WinPT. Попробуем закрыть ее."
 
-msgctxt "T_ShuttingDownDirMngr"
-msgid "Trying to shutdown a possible running instance of DirMngr."
-msgstr "Возможно, запущена программа DirMngr. Попробуем закрыть ее."
-
-msgctxt "T_SetDefaultClient"
-msgid "Do you want to make Claws Mail your default mail client?"
+msgctxt "T_FoundOldClaws"
+msgid ""
+"An old version of Claws Mail was found in your Installation directory.\n"
+"Please note that Claws Mail is no longer bundled with Gpg4win and is now "
+"available as a standalone package.\n"
+"You should uninstall Claws Mail now, and if you wish to continue to use it, "
+"install an up-to-date version from:\n"
+"http://www.claws-mail.org/win32\n"
+"\n"
+"Uninstall Claws Mail from Gpg4win now?"
 msgstr ""
-
-msgctxt "DESC_SEC_claws_mail"
-msgid "Claws Mail-User-Agent"
-msgstr "Почтовый клиент Claws"
-
-msgctxt "DESC_Menu_claws_mail"
-msgid "Run the Claws mailprogram."
-msgstr "Запуск почтовой программы Claws."
-
-msgctxt "DESC_Menu_claws_mail_pdf"
-msgid "Show the online manual of Claws Mail"
-msgstr "Показать онлайновое руководство к почтовому клиенту Claws Mail"
 
 #, fuzzy
 msgctxt "DESC_SEC_gnupg2"
@@ -391,6 +383,22 @@ msgstr "Документация Gpg4win"
 msgctxt "DESC_Menu_compendium_en_pdf"
 msgid "Show the Gpg4win Compendium (pdf, English)"
 msgstr "Показать онлайновые инструкции Gpg4Win для пользователей-новичков"
+
+#~ msgctxt "T_ShuttingDownDirMngr"
+#~ msgid "Trying to shutdown a possible running instance of DirMngr."
+#~ msgstr "Возможно, запущена программа DirMngr. Попробуем закрыть ее."
+
+#~ msgctxt "DESC_SEC_claws_mail"
+#~ msgid "Claws Mail-User-Agent"
+#~ msgstr "Почтовый клиент Claws"
+
+#~ msgctxt "DESC_Menu_claws_mail"
+#~ msgid "Run the Claws mailprogram."
+#~ msgstr "Запуск почтовой программы Claws."
+
+#~ msgctxt "DESC_Menu_claws_mail_pdf"
+#~ msgid "Show the online manual of Claws Mail"
+#~ msgstr "Показать онлайновое руководство к почтовому клиенту Claws Mail"
 
 #, fuzzy
 #~ msgctxt "DESC_Menu_compendium_de_html"

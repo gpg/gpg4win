@@ -52,11 +52,9 @@ to be installed:
  imagemagick
  gs-common (gs)
  docbook-utils
- sharutils (uudecode for claws icon patch)
  gettext (msgfmt, dcgettext, gmsgfmt, xgettext for glib)
  libglib2.0-dev (glib-genmarshal, glib-compile-{resources,schemas})
  libgdk-pixbuf2.0-dev (gdk-pixbuf-csource)
- docbook-utils, ghostscript (claws-mail manual)
  texlive (you need most modules)
  texlive-latex-extra
  texlive-lang-german

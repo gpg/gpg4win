@@ -59,26 +59,7 @@ chk 3c0ba2153560abfb08d88dcb016cd6b72e465db5
 
 
 #
-# libetpan for claws
-#
-
-# (Kept on our own mirror due to Sourceforge/github peculiarities.)
-server ftp://ftp.g10code.com/mirrors/claws
-
-# We use a slighly patched version to avoid the need for g++. See below
-#file   libetpan-0.58.tar.gz
-#chk    98a5689bbe99dc77d689c2ea1e8294f217a3b49c
-
-#file   libetpan-1.1.tar.gz
-#chk    3476dc9142e0b78056446d2f143617708f8690b2
-
-server ftp://ftp.g10code.com/g10code/misc/
-file   libetpan-0.58-g10-1.tar.bz2
-chk    d7195498005d340ccd82e183de19163d16e56ec2
-
-
-#
-# curl for Claws plugins
+# curl for GnuPG
 #
 
 server http://curl.haxx.se/download
@@ -87,87 +68,6 @@ server http://curl.haxx.se/download
 # verified with key 914C 533D F9B2 ADA2 204F  586D 78E1 1C6B 279D 5C91
 file  curl-7.42.1.tar.bz2
 chk   f65708915875b8cb35edb51d8dd31440dc02fbd3
-
-
-#
-# libxml2 for Claws plugins
-
-# last-changed: 2015-06-05
-# by: ah
-# verified: Sig C744 15BA 7C9C 7F78 F02E  1DC3 4606 B8A5 DE95 BC1F
-server ftp://xmlsoft.org/libxml2
-
-file   libxml2-2.9.2.tar.gz
-chk    f46a37ea6d869f702e03f393c376760f3cbee673
-
-#
-# regex for Claws
-# (Kept on our own mirror due to Sourceforge and packaging pecularities.)
-# (Note that this is incompatible to various other variants of
-# regex.dll floating around, but this is what claws expects.)
-server ftp://ftp.g10code.com/g10code/misc
-file   regex-20090805.tar.gz
-chk    56c87366f49916997729fc335747a6a55a2bacc3
-
-# Crypt for claws.
-# (Kept on our own mirror due to Sourceforge and packaging pecularities.)
-server ftp://ftp.g10code.com/g10code/misc
-file   crypt-1.1.tar.gz
-chk    04b4c2ac296499d378f4a35bbeb1b129165b2e61
-
-#
-# bsfilter.exe for antispam in Claws
-#
-server http://www.claws-mail.org/win32
-
-#file bsfilter-1.0.16-bin.tar.gz
-#chk  5ed34f22ebf433d83cd3571309b5cbc52c45d6d2
-
-#file bsfilter-1.0.16-lib.tar.gz
-#chk  c7fa5ec9c70c75b7b1bc852bac8eb0a5ec9e01ea
-
-#file bsfilter-1.0.16-src.tar.gz
-#chk  fe718884dd7ca0652613a2cb5c302ac6323605d8
-
-#
-# Enchant for Claws
-#
-
-server http://www.abisource.com/downloads/enchant/1.6.0
-
-# checked: 2014-06-20 ah
-file   enchant-1.6.0.tar.gz
-chk    321f9cf0abfa1937401676ce60976d8779c39536
-
-#
-# Claws
-#
-
-# (Kept on our own mirror due to Sourceforge peculiarities.)
-server ftp://ftp.g10code.com/mirrors/claws
-
-# checked: 2013-05-10 wk
-file   claws-mail-3.9.1.tar.bz2
-chk    ec3a787b34b07983d938f7d353e3cfd85167122b
-
-server http://www.claws-mail.org/downloads/plugins_obsolete
-
-# checked: 2013-05-10 wk
-file   gtkhtml2_viewer-0.34.tar.gz
-chk    7f3f8a9e3f7bec443a51c890d1bbcd26049dde02
-
-
-#
-# Pthreads for Windows.
-#
-server ftp://sources.redhat.com/pub
-
-# checked: 2013-04-29 wk - There is a 2.9.1 but the release notes
-#                          don't tell anything about security critical
-#                          bugs.  Thus we stay with 2.8.0 for now.
-#          2015-06-05 ah - ^ still applies
-file pthreads-win32/pthreads-w32-2-8-0-release.tar.gz
-chk  da8371cb20e8e238f96a1d0651212f154d84a9ac
 
 #
 # GLIB
