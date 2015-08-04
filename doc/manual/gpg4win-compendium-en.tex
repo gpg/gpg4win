@@ -3098,13 +3098,11 @@ Section~\ref{searchAndImportCertificateFromServer}).
 
 \newpage
 \textbf{Proxy setting:}\index{Proxy} 
-If you use a proxy in your network, you should add the parameter
-\Filename{http-proxy=<proxydomain>} to the certificate server address in the
-\Menu{Server name} column.  The full server name could therefore look
-as follows:\\
-\Filename{keys.gnupg.net http-proxy=proxy.hq}\\ You can also review
-and if necessary correct the certificate server configurations in the file:
+If you use a proxy in your network, you need to configure it
+in the file:\\
 \Filename{\%APPDATA\%\back{}gnupg\back{}gpg.conf}\\
+To enable the proxy add a new line with the content:\\
+\Filename{keyserver-options http-proxy=<proxy-adresse>}
 
 Explanations regarding the system-wide configuration of X.509 key
 servers can be found in  Section~\ref{x509CertificateServers}.

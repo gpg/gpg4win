@@ -3269,12 +3269,11 @@ starten (Anleitung siehe
 Abschnitt~\ref{searchAndImportCertificateFromServer}).
 
 \textbf{Proxy-Einstellung:}\index{Proxy} Falls Sie einen Proxy in Ihrem Netzwerk
-nutzen, sollten Sie die Zertifikatsserver-Adresse in der Spalte
-\Menu{Servername} um den Parameter \Filename{http-proxy=<proxydomain>}
-ergänzen. Der vollständige Servername könnte also z.B. lauten:\\
-\Filename{keys.gnupg.net http-proxy=proxy.hq}\\ Kontrollieren und ggf.
-korrigieren können Sie die Zertifikatsserver"=Konfigurationen auch in
-der Datei: \Filename{\%APPDATA\%\back{}gnupg\back{}gpg.conf}\\
+nutzen, müssen Sie die Zertifikatsserver-Adresse in der Datei:\\
+\Filename{\%APPDATA\%\back{}gnupg\back{}gpg.conf}\\
+ergänzen.
+Fügen Sie dazu in der Datei eine weitere Zeile ein, mit dem Inhalt: \\
+\Filename{keyserver-options http-proxy=<proxy-address>}
 
 Erläuterungen zur systemweiten Konfiguration von X.509-Zertifikatsservern
 finden Sie im Abschnitt~\ref{x509CertificateServers}.
