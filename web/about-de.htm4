@@ -75,7 +75,7 @@ Fortgeschrittene). Verfügbar in deutscher und englischer Sprache.</p>
 
 <a name="requirements"></a>
 <h2>Systemvorausetzungen</h2>
-<p>Gpg4win ist lauffähig unter Windows XP, Vista, 7 und 8. 32 und 64bit Systeme werden
+<p>Gpg4win benötigt mindestens Windows XP. 32 und 64bit Systeme werden
 unterstützt.</p>
 
 <p>Das Outlook-Plugin GpgOL ist kompatibel mit Microsoft Outlook 2003,
