@@ -1,0 +1,85 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From 35d3ced4fda90a5410a579850ca92ea6a356b402 Mon Sep 17 00:00:00 2001
+From: Werner Koch <wk@gnupg.org>
+Date: Mon, 27 Jul 2015 11:28:31 +0200
+Subject: [PATCH] sm: Revert to use SHA-1 for CSR generation.
+
+* sm/certreqgen.c (create_request): Revert to use SHA-1 but change to
+set it only at one place.
+--
+
+Regression-due-to: bdf439035d123e4751e133ad42982673b0c86b75
+Signed-off-by: Werner Koch <wk@gnupg.org>
+---
+ sm/certreqgen.c | 25 ++++++++++++++++---------
+ 1 file changed, 16 insertions(+), 9 deletions(-)
+
+diff --git a/sm/certreqgen.c b/sm/certreqgen.c
+index ab8fbc8..a1e9bf8 100644
+--- a/sm/certreqgen.c
++++ b/sm/certreqgen.c
+@@ -587,7 +587,13 @@ proc_parameters (ctrl_t ctrl,
+
+
+ /* Parameters are checked, the key pair has been created.  Now
+-   generate the request and write it out */
++   generate the request and write it out.
++
++   Note: We use SHA-1 here because Libksba hash a shortcut to use
++   assume that if SIG_VAL uses as algo the string "rsa".  To fix that
++   we would need to replace that string by an appropriate OID.  We
++   leave this change for 2.1.
++ */
+ static int
+ create_request (ctrl_t ctrl,
+                 struct para_data_s *para,
+@@ -597,6 +603,7 @@ create_request (ctrl_t ctrl,
+ {
+   ksba_certreq_t cr;
+   gpg_error_t err;
++  int hashalgo = GCRY_MD_SHA1;
+   gcry_md_hd_t md;
+   ksba_stop_reason_t stopreason;
+   int rc = 0;
+@@ -611,7 +618,7 @@ create_request (ctrl_t ctrl,
+   if (err)
+     return err;
+
+-  rc = gcry_md_open (&md, GCRY_MD_SHA256, 0);
++  rc = gcry_md_open (&md, hashalgo, 0);
+   if (rc)
+     {
+       log_error ("md_open failed: %s\n", gpg_strerror (rc));
+@@ -792,10 +799,10 @@ create_request (ctrl_t ctrl,
+
+           if (carddirect)
+             rc = gpgsm_scd_pksign (ctrl, carddirect, NULL,
+-                                     gcry_md_read(md, GCRY_MD_SHA1),
+-                                     gcry_md_get_algo_dlen (GCRY_MD_SHA1),
+-                                     GCRY_MD_SHA1,
+-                                     &sigval, &siglen);
++                                   gcry_md_read (md, hashalgo),
++                                   gcry_md_get_algo_dlen (hashalgo),
++                                   hashalgo,
++                                   &sigval, &siglen);
+           else
+             {
+               char *orig_codeset;
+@@ -808,9 +815,9 @@ create_request (ctrl_t ctrl,
+                    " more.\n"));
+               i18n_switchback (orig_codeset);
+               rc = gpgsm_agent_pksign (ctrl, hexgrip, desc,
+-                                       gcry_md_read(md, GCRY_MD_SHA1),
+-                                       gcry_md_get_algo_dlen (GCRY_MD_SHA1),
+-                                       GCRY_MD_SHA1,
++                                       gcry_md_read(md, hashalgo),
++                                       gcry_md_get_algo_dlen (hashalgo),
++                                       hashalgo,
+                                        &sigval, &siglen);
+               xfree (desc);
+             }
+--
+1.9.1

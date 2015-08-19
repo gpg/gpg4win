@@ -34,6 +34,7 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         patches/gnupg2-2.0.28/0002-Let-wchar_to_native-convert-to-console-codepage.patch \
         patches/gnupg2-2.0.28/0005-Fix-gpgtar-8-bit-encoding-handling-on-Win32.patch \
         patches/gnupg2-2.0.28/0006-gpgsm-Add-command-option-offline.patch \
+        patches/gnupg2-2.0.28/0007-sm-Revert-to-use-SHA-1-for-CSR-generation.patch \
         patches/gnupg2/01-version.patch \
         patches/gnupg2/01-version.patch.in \
         patches/gnutls-2.12.23/01-openssl-wincrypt.patch \
