@@ -5,13 +5,29 @@
 Noteworthy changes in version 2.2.6 (unreleased)
 ------------------------------------------------
 
+(en) Claws Mail has been removed from the package. Users of
+     Claws Mail should switch to the version maintained by
+     the Claws Mail initiative available on:
+         http://www.claws-mail.org/win32/
+
+(de) Claws Mail wurde aus dem Installationspaket entfernt.
+     Nutzer von Claws Mail sollten auf die von der Claws Mail
+     Initiative gepflegte Version wechseln. Diese ist unter:
+         http://www.claws-mail.org/win32/
+     verfügbar.
+
+(en) X509 Certificate requests can now again generated with
+     default options.
+
+(de) X509 Zertifikatsrequests können nun wieder mit den
+     Standartoptionen generiert werden.
+
 ~~~~~~~~~~~~~~~
 GnuPG:          2.0.28
 Kleopatra:      2.2.0-gita3c9200
 GPA:            0.9.7
 GpgOL:          1.2.1
 GpgEX:          1.0.2
-Claws-Mail:     3.9.1
 Kompendium DE:  3.0.0
 Kompendium EN:  3.0.0
 ~~~~~~~~~~~~~~~
