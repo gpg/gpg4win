@@ -79,10 +79,6 @@ myhostsub=""
 case "$1" in
     --build-w32)
         myhost="w32"
-        shift
-        ;;
-    --build-w32-w64)
-        myhost="w32"
         myhostsub="w64"
         shift
         ;;
@@ -209,7 +205,7 @@ if test "$DIE" = "yes"; then
     cat <<EOF
 
 Note that you may use alternative versions of the tools by setting
-the corresponding environment variables; see README.SVN for details.
+the corresponding environment variables; see README.GIT for details.
 
 EOF
     exit 1
