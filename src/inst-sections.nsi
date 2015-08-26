@@ -119,8 +119,8 @@
 !ifdef HAVE_PKG_PINENTRY
 !include "inst-pinentry.nsi"
 !endif
-!ifdef HAVE_PKG_GNUPG2
-!include "inst-gnupg2.nsi"
+!ifdef HAVE_PKG_GNUPG_W32
+!include "inst-gnupg-w32.nsi"
 !endif
 !ifdef HAVE_PKG_GPGME
 !include "inst-gpgme.nsi"
@@ -203,8 +203,8 @@
 !ifdef HAVE_PKG_GPGME
 !include "uninst-gpgme.nsi"
 !endif
-!ifdef HAVE_PKG_GNUPG2
-!include "uninst-gnupg2.nsi"
+!ifdef HAVE_PKG_GNUPG_W32
+!include "uninst-gnupg-w32.nsi"
 !endif
 !ifdef HAVE_PKG_PINENTRY
 !include "uninst-pinentry.nsi"
@@ -566,7 +566,8 @@ Function CalcDepends
   # these packages in the RO section and enabling them by default, but
   # it doesn't harm to add it explicitely here as well.
 
-  !insertmacro SelectSection ${SEC_gnupg2}
+  # TODO: Handle newer / other gnupg versions
+  !insertmacro SelectSection ${SEC_gnupg_w32}
 
   # Then enable all dependencies, mostly in reverse build list order!
 
@@ -629,26 +630,11 @@ Function CalcDepends
   skip_kleopatra:
 !endif
 
-!ifdef HAVE_PKG_GNUPG2
-  !insertmacro SectionFlagIsSet ${SEC_gnupg2} ${SF_SELECTED} have_gnupg2 skip_gnupg2
-  have_gnupg2:
-  !insertmacro SelectSection ${SEC_libiconv}
-  !insertmacro SelectSection ${SEC_libgcrypt}
-  !insertmacro SelectSection ${SEC_libksba}
-  !insertmacro SelectSection ${SEC_libassuan}
-  !insertmacro SelectSection ${SEC_libgpg_error}
-  !insertmacro SelectSection ${SEC_w32pth}
-  !insertmacro SelectSection ${SEC_zlib}
-  !insertmacro SelectSection ${SEC_adns}
+!ifdef HAVE_PKG_GNUPG_W32
+  !insertmacro SectionFlagIsSet ${SEC_gnupg_w32} ${SF_SELECTED} have_gnupg_w32 skip_gnupg_w32
+  have_gnupg_w32:
   !insertmacro SelectSection ${SEC_pinentry}
-  !insertmacro SelectSection ${SEC_curl}
-  !insertmacro SelectSection ${SEC_dirmngr}
-  # Because we need pinentry, we also need to install GTK+
-  !insertmacro SelectSection ${SEC_zlib}
-  !insertmacro SelectSection ${SEC_gtk_}
-  !insertmacro SelectSection ${SEC_libpng}
-  !insertmacro SelectSection ${SEC_glib}
-  skip_gnupg2:
+  skip_gnupg_w32:
 !endif
 
 !ifdef HAVE_PKG_GPA
@@ -723,7 +709,12 @@ Function CalcDepends
 		${SF_SELECTED} have_pinentry skip_pinentry
   have_pinentry:
   !insertmacro SelectSection ${SEC_libiconv}
+!ifdef HAVE_PKG_QT
+  !insertmacro SelectSection ${SEC_qt}
+!endif
+!ifdef HAVE_PKG_GTK_
   !insertmacro SelectSection ${SEC_gtk_}
+!endif
    skip_pinentry:
 !endif
 
@@ -939,8 +930,8 @@ FunctionEnd
 # This must be in a central place.  Urgs.
 
 !insertmacro MUI_FUNCTION_DESCRIPTION_BEGIN
-!ifdef HAVE_PKG_GNUPG2
-  !insertmacro MUI_DESCRIPTION_TEXT ${SEC_gnupg2} $(DESC_SEC_gnupg2)
+!ifdef HAVE_PKG_GNUPG_W32
+  !insertmacro MUI_DESCRIPTION_TEXT ${SEC_gnupg_w32} $(DESC_SEC_gnupg_w32)
 !endif
 !ifdef HAVE_PKG_GPGOL
   !insertmacro MUI_DESCRIPTION_TEXT ${SEC_gpgol} $(DESC_SEC_gpgol)

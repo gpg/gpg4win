@@ -118,6 +118,8 @@ define DEFLATE_macro
 	    $(TAR) xjf "$(1)" ;;	\
 	  *.tar.xz )          		\
 	    $(TAR) xJf "$(1)" ;;	\
+	  *.exe ) 	         		\
+	    cp "$(1)" .       ;;	\
 	  *.zip)			\
 	    $(UNZIP) -o "$(1)" ;;		\
 	esac

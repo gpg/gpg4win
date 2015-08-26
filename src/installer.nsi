@@ -450,19 +450,12 @@ FunctionEnd
 # Check whether this is a reinstall and popup a message box to explain
 # that it is better to close other apps before continuing
 Function PrintCloseOtherApps
-    IfFileExists $INSTDIR\gnupg.exe print_warning
-    IfFileExists $INSTDIR\winpt.exe print_warning
+    # TODO Look for running processes instead.
     IfFileExists $INSTDIR\gpa.exe   print_warning
     IfFileExists $INSTDIR\gpgol.dll print_warning
-    IfFileExists $INSTDIR\dirmngr.exe print_warning
     Return
    print_warning:
     MessageBox MB_OK|MB_ICONEXCLAMATION "$(T_CloseOtherApps)"
-    IfFileExists $INSTDIR\winpt.exe 0 +3
-      MessageBox MB_OK "$(T_ShuttingDownWinPT)"
-      ExecWait '"$INSTDIR\winpt.exe" --stop'
-    IfFileExists $INSTDIR\dirmngr.exe 0 +3
-      g4wihelp::service_stop "DirMngr"
    leave:
 FunctionEnd
 

@@ -84,9 +84,9 @@
 !define gpg4win_pkg_adns @gpg4win_pkg_adns@
 !define gpg4win_pkg_adns_version @gpg4win_pkg_adns_version@
 
-@HAVE_PKG_GNUPG2@
-!define gpg4win_pkg_gnupg2 @gpg4win_pkg_gnupg2@
-!define gpg4win_pkg_gnupg2_version @gpg4win_pkg_gnupg2_version@
+@HAVE_PKG_GNUPG_W32@
+!define gpg4win_pkg_gnupg_w32 @gpg4win_pkg_gnupg_w32@
+!define gpg4win_pkg_gnupg_w32_version @gpg4win_pkg_gnupg_w32_version@
 
 @HAVE_PKG_PINENTRY@
 !define gpg4win_pkg_pinentry @gpg4win_pkg_pinentry@

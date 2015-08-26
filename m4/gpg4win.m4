@@ -141,6 +141,9 @@ AC_DEFUN([GPG4WIN_FIND],
     AS_IF([test -z "$_gpg4win_file" -a $_gpg4win_format != tar],
           [_gpg4win_file=`echo ${_gpg4win_dir}/${_gpg4win_glob}.zip`
            _gpg4win_suffix=.zip])
+    AS_IF([test -z "$_gpg4win_file" -a $_gpg4win_format != tar -a $_gpg4win_format != zip],
+          [_gpg4win_file=`echo ${_gpg4win_dir}/${_gpg4win_glob}.exe`
+           _gpg4win_suffix=.exe])
     shopt -u nullglob])
 
   AS_IF([test -z "$_gpg4win_file"],

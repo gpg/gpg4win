@@ -354,7 +354,12 @@ msgstr ""
 "\n"
 "Claws Mail aus Gpg4win jetzt deinstallieren?"
 
-msgctxt "DESC_SEC_gnupg2"
+msgctxt "T_Installing_GnuPG"
+msgid "Installing GnuPG"
+msgstr ""
+
+#, fuzzy
+msgctxt "DESC_SEC_gnupg_w32"
 msgid "GNU Privacy Guard"
 msgstr ""
 "Der GNU Privacy Guard (GnuPG) ist der Kernbestandteil dieser Software.  "

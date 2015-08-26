@@ -360,10 +360,8 @@ GPG4WIN_SPKG([libksba], [libgpg-error])
 GPG4WIN_SPKG([libassuan], [libgpg-error w32pth])
 GPG4WIN_SPKG([dirmngr], [libgpg-error libgcrypt libassuan libksba w32pth])
 GPG4WIN_SPKG([pinentry], [libiconv gtk+])
-GPG4WIN_SPKG([gpgme], [libgpg-error gnupg2 glib])
+GPG4WIN_SPKG([gpgme], [libgpg-error glib])
 GPG4WIN_SPKG([curl], [zlib gnutls])
-GPG4WIN_SPKG([gnupg2], [libiconv libgcrypt libksba libassuan libgpg-error dnl
-                        w32pth zlib bzip2 adns pinentry])
 GPG4WIN_SPKG([gpgol], [gpgme libassuan])
 GPG4WIN_SPKG([gpgex], [libassuan])
 GPG4WIN_SPKG([scute], [libgpg-error libassuan])
@@ -384,11 +382,14 @@ GPG4WIN_SPKGEX([gpgex], [libassuan])
 
 GPG4WIN_IPKG([compendium])
 
+# The GnuPG Package.
+GPG4WIN_BPKG_BINSRC([gnupg-w32])
+
 # Qt related stuff.
 GPG4WIN_BPKG_GNUWIN32([dbus])
 GPG4WIN_BPKG_BINSRC([oxygen-icons])
 GPG4WIN_BPKG_GNUWIN32([qt], [dbus])
-GPG4WIN_BPKG_BINSRC([kleopatra], [gpgme gnupg2 qt oxygen-icons])
+GPG4WIN_BPKG_BINSRC([kleopatra], [gpgme qt oxygen-icons])
 
 GPG4WIN_FINALIZE
 
@@ -417,10 +418,6 @@ fi
 
 # Finalize.
 
-AC_CONFIG_COMMANDS([gpg4win-conf],[[
-chmod +x patches/gnupg2/01-version.patch
-]])
-
 AC_CONFIG_FILES(Makefile)
 AC_CONFIG_FILES(packages/Makefile src/Makefile po/Makefile.in)
 AC_CONFIG_FILES(po/build-cc)
@@ -429,7 +426,6 @@ AC_CONFIG_FILES(doc/Makefile)
 AC_CONFIG_FILES(doc/logo/Makefile)
 AC_CONFIG_FILES(doc/manual/Makefile doc/manual/version.tex)
 AC_CONFIG_FILES(src/dictionaries/Makefile)
-AC_CONFIG_FILES(patches/gnupg2/01-version.patch)
 AC_OUTPUT
 
 # Throw a warning if optional tools are missing

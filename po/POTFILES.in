@@ -3,7 +3,7 @@ src/g4wihelp.nsi
 src/gpg4win.nsi
 src/gpg4win-src.nsi
 src/installer.nsi
-src/inst-gnupg2.nsi
+src/inst-gnupg-w32.nsi
 src/inst-gpa.nsi
 src/inst-gpg4win.nsi
 src/inst-gpgex.nsi
