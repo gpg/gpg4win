@@ -32,7 +32,7 @@ Basic requirements
 ==================
 
 A decent POSIX system is required for building this software as well
-as GNU make.  We are using Debian GNU/Linux 7 (Wheezy), any other
+as GNU make.  We are using Debian GNU/Linux 8 (Jessie), any other
 POSIX system should work as well but you may run into problems due to
 different toolchain versions.
 
@@ -40,7 +40,7 @@ To satisfy all needs of configure at least the following packages need
 to be installed:
 
  build-essential (libc6-dev, gcc, g++, make)
- automake 1.11, autoconf (if building from GIT)
+ automake, autoconf (if building from GIT)
  mingw32
  mingw-w64
  mingw-w64-i686-dev
@@ -50,7 +50,7 @@ to be installed:
  unzip
  texinfo
  imagemagick
- gs-common (gs)
+ gs-common | ghostscript (gs)
  docbook-utils
  gettext (msgfmt, dcgettext, gmsgfmt, xgettext for glib)
  libglib2.0-dev (glib-genmarshal, glib-compile-{resources,schemas})
@@ -60,6 +60,7 @@ to be installed:
  texlive-lang-german
  latex-xcolor (for the compendium)
  libqt4-dev-bin (in case pinentry-qt needs moc)
+ libgettextpo-dev
 
 
 Building the Webpages
