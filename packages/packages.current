@@ -17,12 +17,13 @@
 #
 server ftp://ftp.cs.tu-berlin.de/pub/gnu
 
-# checked: 2014-06-20 ah - updated
+# last-changed: 2015-08-25
+# by: ah
 # verified with key: 4622 25C3 B46F 3487 9FC8  496C D605 848E D7E6 9871
-file gettext/gettext-0.19.1.tar.xz
-chk  e0d425de1bd1a16993b262ff37eaf08abee8f953
+file gettext/gettext-0.19.5.tar.xz
+chk  bfe50a885076a24d63b9d9b242a409cc16727d24
 
-# checked: 2014-06-20 ah
+# checked: 2015-08-25 ah
 file libiconv/libiconv-1.14.tar.gz
 chk  be7d67e50d72ff067b2c0291311bc283add36965
 
