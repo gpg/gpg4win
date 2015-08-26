@@ -73,10 +73,10 @@ OutFile "${PACKAGE}-${VERSION}.exe"
 !ifndef INSTALL_DIR
 !define INSTALL_DIR "${PACKAGE}"
 !endif
-InstallDir "$PROGRAMFILES\GNU\${INSTALL_DIR}"
+InstallDir "$PROGRAMFILES\${INSTALL_DIR}"
 
 
-InstallDirRegKey HKLM "Software\GNU\${PRETTY_PACKAGE_SHORT}" \
+InstallDirRegKey HKLM "Software\${PRETTY_PACKAGE_SHORT}" \
 	"Install Directory"
 
 
@@ -130,7 +130,7 @@ Var OtherGnuPGDetected
 # Remember the installer language
 
 !define MUI_LANGDLL_REGISTRY_ROOT "HKLM"
-!define MUI_LANGDLL_REGISTRY_KEY "Software\GNU\${PRETTY_PACKAGE_SHORT}"
+!define MUI_LANGDLL_REGISTRY_KEY "Software\${PRETTY_PACKAGE_SHORT}"
 !define MUI_LANGDLL_REGISTRY_VALUENAME "Installer Language"
 
 # No Umlaute, please!
@@ -164,7 +164,7 @@ Var STARTMENU_FOLDER
 !define MUI_PAGE_CUSTOMFUNCTION_PRE CheckIfStartMenuWanted
 !define MUI_STARTMENUPAGE_NODISABLE
 !define MUI_STARTMENUPAGE_REGISTRY_ROOT "HKLM"
-!define MUI_STARTMENUPAGE_REGISTRY_KEY "Software\GNU\${PRETTY_PACKAGE_SHORT}"
+!define MUI_STARTMENUPAGE_REGISTRY_KEY "Software\${PRETTY_PACKAGE_SHORT}"
 !define MUI_STARTMENUPAGE_REGISTRY_VALUENAME "Start Menu Folder"
 
 !insertmacro MUI_PAGE_STARTMENU Application $STARTMENU_FOLDER
@@ -398,6 +398,8 @@ Function CheckExistingVersion
      MessageBox MB_YESNO "$(T_FoundExistingVersionB)" IDYES leave
      Abort
 
+ # TODO This is the normal update case. Handle more gracefully.
+ # Especially the install path change from 2.x to 3.x
  leave:
 FunctionEnd
 

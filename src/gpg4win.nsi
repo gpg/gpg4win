@@ -124,7 +124,7 @@
 !define COPYRIGHT "Copyright (C) 2008 g10 Code GmbH"
 !define DESCRIPTION "Gpg4win: The GNU Privacy Guard and Tools for Windows"
 
-!define INSTALL_DIR "GnuPG"
+!define INSTALL_DIR "Gpg4win"
 
 !define WELCOME_TITLE_STR "$(T_WelcomeTitleGpg4win)"
 

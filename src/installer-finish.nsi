@@ -181,15 +181,11 @@ no_quick_launch_uninstall:
   # hard to get rid of directories which could have REBOOTOK files.
   RMDir /REBOOTOK "$INSTDIR\bin"
   RMDir /REBOOTOK "$INSTDIR"
-  StrCmp "$INSTDIR" "$PROGRAMFILES\GNU\${INSTALL_DIR}" 0 +2
-  RMDir /REBOOTOK "$PROGRAMFILES\GNU"
 
   # Clean the registry.
-  DeleteRegValue HKLM "Software\GNU\${PRETTY_PACKAGE_SHORT}" \
+  DeleteRegValue HKLM "Software\${PRETTY_PACKAGE_SHORT}" \
         "Install Directory"
-  DeleteRegKey /ifempty HKLM "Software\GNU\${PRETTY_PACKAGE_SHORT}"
-  DeleteRegKey /ifempty HKLM "Software\GNU\GnuPG"
-  DeleteRegKey /ifempty HKLM "Software\GNU"
+  DeleteRegKey /ifempty HKLM "Software\${PRETTY_PACKAGE_SHORT}"
 
   # Remove Windows Add/Remove Programs support.
   DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRETTY_PACKAGE_SHORT}"
