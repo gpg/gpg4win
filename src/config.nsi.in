@@ -104,22 +104,6 @@
 !define gpg4win_pkg_gpa @gpg4win_pkg_gpa@
 !define gpg4win_pkg_gpa_version @gpg4win_pkg_gpa_version@
 
-@HAVE_PKG_LIBGSASL@
-!define gpg4win_pkg_libgsasl @gpg4win_pkg_libgsasl@
-!define gpg4win_pkg_libgsasl_version @gpg4win_pkg_libgsasl_version@
-
-@HAVE_PKG_LIBTASN1@
-!define gpg4win_pkg_libtasn1 @gpg4win_pkg_libtasn1@
-!define gpg4win_pkg_libtasn1_version @gpg4win_pkg_libtasn1_version@
-
-@HAVE_PKG_GNUTLS@
-!define gpg4win_pkg_gnutls @gpg4win_pkg_gnutls@
-!define gpg4win_pkg_gnutls_version @gpg4win_pkg_gnutls_version@
-
-@HAVE_PKG_CURL@
-!define gpg4win_pkg_curl @gpg4win_pkg_curl@
-!define gpg4win_pkg_curl_version @gpg4win_pkg_curl_version@
-
 @HAVE_PKG_ZLIB@
 !define gpg4win_pkg_zlib @gpg4win_pkg_zlib@
 !define gpg4win_pkg_zlib_version @gpg4win_pkg_zlib_version@

@@ -35,9 +35,6 @@
 !ifdef HAVE_PKG_DBUS
 !include "inst-dbus.nsi"
 !endif
-!ifdef HAVE_PKG_LIBGSASL
-!include "inst-libgsasl.nsi"
-!endif
 !ifdef HAVE_PKG_LIBICONV
 !include "inst-libiconv.nsi"
 !endif
@@ -109,12 +106,6 @@
 !endif
 !ifdef HAVE_PKG_GTK_
 !include "inst-gtk+.nsi"
-!endif
-!ifdef HAVE_PKG_GNUTLS
-!include "inst-gnutls.nsi"
-!endif
-!ifdef HAVE_PKG_CURL
-!include "inst-curl.nsi"
 !endif
 !ifdef HAVE_PKG_PINENTRY
 !include "inst-pinentry.nsi"
@@ -293,14 +284,8 @@
 !ifdef HAVE_PKG_MAN_NOVICE_EN
 !include "uninst-man_novice_en.nsi"
 !endif
-!ifdef HAVE_PKG_LIBTASN1
-!include "uninst-libtasn1.nsi"
-!endif
 !ifdef HAVE_PKG_LIBICONV
 !include "uninst-libiconv.nsi"
-!endif
-!ifdef HAVE_PKG_LIBGSASL
-!include "uninst-libgsasl.nsi"
 !endif
 !ifdef HAVE_PKG_DBUS
 !include "uninst-dbus.nsi"
@@ -671,25 +656,6 @@ Function CalcDepends
 
   # Package "dbus" has no dependencies.
   # Package "oxygen-icons" has no dependencies.
-
-!ifdef HAVE_PKG_CURL
-  !insertmacro SectionFlagIsSet ${SEC_curl} ${SF_SELECTED} have_curl skip_curl
-  have_curl:
-  !insertmacro SelectSection ${SEC_zlib}
-  !insertmacro SelectSection ${SEC_gnutls}
-  skip_curl:
-!endif
-
-!ifdef HAVE_PKG_GNUTLS
-  !insertmacro SectionFlagIsSet ${SEC_gnutls} ${SF_SELECTED} have_gnutls skip_gnutls
-  have_gnutls:
-  !insertmacro SelectSection ${SEC_libgsasl}
-  !insertmacro SelectSection ${SEC_libtasn1}
-  skip_gnutls:
-!endif
-
-  # Package "libtasn1" has no dependencies.
-  # Package "libgsasl" has no dependencies.
 
 !ifdef HAVE_PKG_GPGME
   !insertmacro SectionFlagIsSet ${SEC_gpgme} \

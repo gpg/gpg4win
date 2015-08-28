@@ -31,10 +31,6 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
         inst-freetype.nsi	   uninst-freetype.nsi	      \
         inst-fontconfig.nsi	   uninst-fontconfig.nsi      \
         inst-cairo.nsi		   uninst-cairo.nsi	      \
-        inst-libgsasl.nsi	   uninst-libgsasl.nsi        \
-        inst-libtasn1.nsi	   uninst-libtasn1.nsi        \
-        inst-gnutls.nsi		   uninst-gnutls.nsi	      \
-        inst-curl.nsi		   uninst-curl.nsi	      \
         inst-dirmngr.nsi	   uninst-dirmngr.nsi	      \
         inst-gettext.nsi	   uninst-gettext.nsi	      \
         inst-libffi.nsi		   uninst-libffi.nsi	      \
@@ -95,8 +91,8 @@ CLEANFILES = g4wihelp.dll versioninfo.txt $(README_files) $(HOWTO_files) \
 # Supported source packages.
 gpg4win_spkgs = glib libffi gdk-pixbuf gtk+ \
                 libgpg-error gpgme gpgol gpgex libpng \
-		gpa libgsasl libtasn1 opencdk gnutls curl \
-		gnupg2 pinentry libassuan libksba libgcrypt \
+		gpa opencdk \
+		pinentry libassuan libksba libgcrypt \
 		adns dirmngr w32pth scute paperkey regex libiconv gettext
 
 # Supported source packages to build in an additional architecture
@@ -277,26 +273,6 @@ gpg4win_pkg_gpgex_configure = --silent \
   --with-gpg-error-prefix=$(idir) \
   --with-libassuan-prefix=$(idir)
 
-# We want to build with libgcrypt
-# We can't use pkcs11 tue to tto much additional dependencies.
-gpg4win_pkg_gnutls_configure = \
-  --disable-cxx \
-  --with-libgcrypt \
-  --without-p11-kit \
-  --with-libtasn1-prefix=$(idir) \
-  --with-libgcrypt-prefix=$(idir)
-
-# In 2.12.21 gnutls_openssl is not linked to libtasn1, thus we use
-# this hack to here.  (Using the included minitasn does work either
-# due to a missing soruce file.)
-gpg4win_pkg_gnutls_make_args = \
-   LTLIBTASN1=-ltasn1
-
-
-gpg4win_pkg_curl_configure = \
-  --with-gnutls --without-ca-bundle --with-libiconv-prefix=$(idir) \
-  CPPFLAGS=\"-I$(idir)/include\" LIBS=\"-L$(idir)/lib\"
-
 gpg4win_pkg_scute_configure = --silent \
   --with-gpg-error-prefix=$(idir) --with-libassuan-prefix=$(idir)
 
@@ -419,20 +395,6 @@ define gpg4win_pkg_libpng_post_install
  perl -pi -e 's/^prefix=.*$$$$/prefix=\/usr/' `find . -name \*.pc`)
 endef
 
-define gpg4win_pkg_libgsasl_post_install
- (cd $$$${pkgidir};							\
- perl -pi -e 's/^prefix=.*$$$$/prefix=\/usr/' `find . -name \*.pc`)
-endef
-
-define gpg4win_pkg_libtasn1_post_install
- (cd $$$${pkgidir};							\
- perl -pi -e 's/^prefix=.*$$$$/prefix=\/usr/' `find . -name \*.pc`)
-endef
-
-define gpg4win_pkg_gnutls_post_install
- (cd $$$${pkgidir};							\
- perl -pi -e 's/^prefix=.*$$$$/prefix=\/usr/' `find . -name \*.pc`)
-endef
 
 # We don't use khelpcenter in kleopatra so remove the help links and
 # point to the correct common folder

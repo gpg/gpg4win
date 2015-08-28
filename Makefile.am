@@ -30,24 +30,6 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         patches/dirmngr-1.1.1/dirmngr-pth.patch \
         patches/glib-2.41.5/01-socket.patch \
         patches/gpgme-1.5.5/0001-Add-offline-mode-support-for-CMS-keylisting.patch \
-        patches/gnupg2-2.0.28/0001-Enable-wildcard-expansion-with-mingw-w64.patch \
-        patches/gnupg2-2.0.28/0002-Let-wchar_to_native-convert-to-console-codepage.patch \
-        patches/gnupg2-2.0.28/0005-Fix-gpgtar-8-bit-encoding-handling-on-Win32.patch \
-        patches/gnupg2-2.0.28/0006-gpgsm-Add-command-option-offline.patch \
-        patches/gnupg2-2.0.28/0007-sm-Revert-to-use-SHA-1-for-CSR-generation.patch \
-        patches/gnupg2/01-version.patch \
-        patches/gnupg2/01-version.patch.in \
-        patches/gnutls-2.12.23/01-openssl-wincrypt.patch \
-        patches/gnutls-2.12.23/02-cve-2013-2116.patch \
-        patches/gnutls-2.12.23/03-cve-2014-1959.patch \
-        patches/gnutls-2.12.23/04-cve-2014-0092.patch \
-        patches/gnutls-2.12.23/05-cve-2014-3466.patch \
-        patches/gnutls-2.12.23/06-cve-2015-0282.patch \
-        patches/gnutls-2.12.23/07-cve-2015-0294.patch \
-        patches/gnutls-2.12.23/fix-gcrypt-private-api-usage.patch \
-        patches/gnutls-2.12.23/gnulib-mingw-w64-fix.patch \
-		patches/gnutls-2.12.23/25_updatedgdocfrommaster.patch \
-        patches/libtasn1-2.14/gnulib-mingw-w64-fix.patch \
 		patches/w32pth-2.0.5/workaround-broken-libtool.patch \
 		patches/scute-1.4.0/workaround-broken-libtool.patch
 
