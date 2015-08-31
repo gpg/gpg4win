@@ -333,17 +333,6 @@ server http://www.jabberwocky.com/software/paperkey
 file paperkey-1.3.tar.gz
 chk  16af56d0e7bdf081d60c59ea4d72e7df6d9cec21
 
-#
-# adns
-#
-server ftp://ftp.g10code.com/g10code/adns
-
-# last changed: 2015-04-16
-# by: ah
-# verified: Sig D869 2123 C406 5DEA 5E0F  3AB5 249B 39D2 4F25 E3B6
-file adns-1.4-g10-6.tar.bz2
-chk  cc124d58828ab1d6fa7df49aaeb37985c5225de5
-
 
 #
 # Qt

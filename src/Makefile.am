@@ -47,7 +47,6 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
         inst-libgcrypt.nsi	   uninst-libgcrypt.nsi	      \
         inst-libgpg-error.nsi	   uninst-libgpg-error.nsi    \
         inst-libiconv.nsi	   uninst-libiconv.nsi	      \
-        inst-adns.nsi	           uninst-adns.nsi	      \
         inst-libpng.nsi		   uninst-libpng.nsi	      \
         inst-compendium.nsi	   uninst-compendium.nsi   \
         inst-man_advanced_de.nsi   uninst-man_advanced_de.nsi \
@@ -91,7 +90,7 @@ gpg4win_spkgs = glib libffi gdk-pixbuf gtk+ \
                 libgpg-error gpgme gpgol gpgex libpng \
 		gpa opencdk \
 		pinentry libassuan libgcrypt \
-		adns w32pth scute paperkey regex libiconv gettext
+		w32pth scute paperkey regex libiconv gettext
 
 # Supported source packages to build in an additional architecture
 gpg4win_expkgs = libgpg-error libassuan libiconv gettext w32pth gpgex
@@ -199,8 +198,6 @@ gpg4win_pkg_libassuan_ex_configure =  --silent --enable-static
 gpg4win_pkg_libgcrypt_configure = --silent \
   --with-gpg-error-prefix=$(idir) \
   --disable-aesni-support
-
-gpg4win_pkg_adns_configure = --silent
 
 gpg4win_pkg_libpng_configure = HAVE_SOLARIS_LD_FALSE=yes CPPFLAGS=\"-I$(idir)/include -DPNG_BUILD_DLL\" LDFLAGS=\"-L$(idir)/lib\" LIBPNG_DEFINES=\"-DPNG_BUILD_DLL\"
 

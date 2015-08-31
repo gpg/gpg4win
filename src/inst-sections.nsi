@@ -26,9 +26,6 @@
 # gpg4win_build_list in config.nsi.  The order determines also the
 # order in the packages selection dialog.
 
-!ifdef HAVE_PKG_ADNS
-!include "inst-adns.nsi"
-!endif
 !ifdef HAVE_PKG_BZIP2
 !include "inst-bzip2.nsi"
 !endif
@@ -281,9 +278,6 @@
 !ifdef HAVE_PKG_BZIP2
 !include "uninst-bzip2.nsi"
 !endif
-!ifdef HAVE_PKG_ADNS
-!include "uninst-adns.nsi"
-!endif
 
 !include "uninst-gpg4win.nsi"
 
@@ -486,9 +480,6 @@ Function CalcDepends
 !ifdef HAVE_PKG_BZIP2
   !insertmacro UnselectSection ${SEC_bzip2}
 !endif
-!ifdef HAVE_PKG_ADNS
-  !insertmacro UnselectSection ${SEC_adns}
-!endif
 !ifdef HAVE_PKG_LIBGPG_ERROR
   !insertmacro UnselectSection ${SEC_libgpg_error}
 !endif
@@ -684,7 +675,6 @@ Function CalcDepends
   skip_libgpg_error:
 !endif
 
-  # Package "adns" has no dependencies.
   # Package "bzip2" has no dependencies.
 
 !ifdef HAVE_PKG_GTK_
