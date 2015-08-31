@@ -24,14 +24,13 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
         inst-sections.nsi installer.nsi installer-finish.nsi  \
 	QtCore.pc QtGui.pc zlib.pc sha1sum.c mkportable.c     \
 	mkportable-vanilla.h mkportable-light.h mkportable-full.h \
-        qt.conf kleowrap.c potomo Memento.nsh dirmngr.conf    \
+        qt.conf kleowrap.c potomo Memento.nsh \
         inst-gpg4win.nsi	   uninst-gpg4win.nsi	      \
         inst-atk.nsi               uninst-atk.nsi	      \
         inst-expat.nsi		   uninst-expat.nsi	      \
         inst-freetype.nsi	   uninst-freetype.nsi	      \
         inst-fontconfig.nsi	   uninst-fontconfig.nsi      \
         inst-cairo.nsi		   uninst-cairo.nsi	      \
-        inst-dirmngr.nsi	   uninst-dirmngr.nsi	      \
         inst-gettext.nsi	   uninst-gettext.nsi	      \
         inst-libffi.nsi		   uninst-libffi.nsi	      \
         inst-glib.nsi		   uninst-glib.nsi	      \
@@ -48,7 +47,6 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
         inst-libgcrypt.nsi	   uninst-libgcrypt.nsi	      \
         inst-libgpg-error.nsi	   uninst-libgpg-error.nsi    \
         inst-libiconv.nsi	   uninst-libiconv.nsi	      \
-        inst-libksba.nsi	   uninst-libksba.nsi	      \
         inst-adns.nsi	           uninst-adns.nsi	      \
         inst-libpng.nsi		   uninst-libpng.nsi	      \
         inst-compendium.nsi	   uninst-compendium.nsi   \
@@ -92,8 +90,8 @@ CLEANFILES = g4wihelp.dll versioninfo.txt $(README_files) $(HOWTO_files) \
 gpg4win_spkgs = glib libffi gdk-pixbuf gtk+ \
                 libgpg-error gpgme gpgol gpgex libpng \
 		gpa opencdk \
-		pinentry libassuan libksba libgcrypt \
-		adns dirmngr w32pth scute paperkey regex libiconv gettext
+		pinentry libassuan libgcrypt \
+		adns w32pth scute paperkey regex libiconv gettext
 
 # Supported source packages to build in an additional architecture
 gpg4win_expkgs = libgpg-error libassuan libiconv gettext w32pth gpgex
@@ -194,9 +192,6 @@ gpg4win_pkg_libassuan_configure =  --silent --enable-static
 
 gpg4win_pkg_libassuan_ex_configure =  --silent --enable-static
 
-gpg4win_pkg_libksba_configure = --silent \
-  --with-gpg-error-prefix=$(idir)
-
 # Using gpgsm with VirtualBox on AES-NI hardware crashes gpg-agent.
 # However, the Libgcrypt's regression tests work just fine.  I don't
 # have a windows instance on AES-NI, thus I can't currently debug
@@ -208,26 +203,6 @@ gpg4win_pkg_libgcrypt_configure = --silent \
 gpg4win_pkg_adns_configure = --silent
 
 gpg4win_pkg_libpng_configure = HAVE_SOLARIS_LD_FALSE=yes CPPFLAGS=\"-I$(idir)/include -DPNG_BUILD_DLL\" LDFLAGS=\"-L$(idir)/lib\" LIBPNG_DEFINES=\"-DPNG_BUILD_DLL\"
-
-gpg4win_pkg_dirmngr_configure = \
-  --with-gpg-error-prefix=$(idir) \
-  --with-ksba-prefix=$(idir) \
-  --with-libgcrypt-prefix=$(idir) \
-  --with-libassuan-prefix=$(idir) \
-  --with-pth-prefix=$(idir)
-
-gpg4win_pkg_gnupg2_configure = \
-  --with-gpg-error-prefix=$(idir) \
-  --with-ksba-prefix=$(idir) \
-  --with-libgcrypt-prefix=$(idir) \
-  --with-libassuan-prefix=$(idir) \
-  --with-zlib=$(idir) \
-  --with-bzip2=$(idir) \
-  --with-pth-prefix=$(idir) \
-  --with-adns=$(idir) \
-  --without-included-gettext \
-  --enable-gpgtar \
-  --disable-regex
 
 # We would like to use --with-libiconv-prefix and
 # --with-libintl-prefix, but these don't work with the cheesy

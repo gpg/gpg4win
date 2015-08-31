@@ -74,9 +74,6 @@
 !ifdef HAVE_PKG_GLIB
 !include "inst-glib.nsi"
 !endif
-!ifdef HAVE_PKG_LIBKSBA
-!include "inst-libksba.nsi"
-!endif
 !ifdef HAVE_PKG_LIBGCRYPT
 !include "inst-libgcrypt.nsi"
 !endif
@@ -97,9 +94,6 @@
 !endif
 !ifdef HAVE_PKG_ATK
 !include "inst-atk.nsi"
-!endif
-!ifdef HAVE_PKG_DIRMNGR
-!include "inst-dirmngr.nsi"
 !endif
 !ifdef HAVE_PKG_GDK_PIXBUF
 !include "inst-gdk-pixbuf.nsi"
@@ -212,9 +206,6 @@
 !ifdef HAVE_PKG_GDK_PIXBUF
 !include "uninst-gdk-pixbuf.nsi"
 !endif
-!ifdef HAVE_PKG_DIRMNGR
-!include "uninst-dirmngr.nsi"
-!endif
 !ifdef HAVE_PKG_ATK
 !include "uninst-atk.nsi"
 !endif
@@ -235,9 +226,6 @@
 !endif
 !ifdef HAVE_PKG_LIBGCRYPT
 !include "uninst-libgcrypt.nsi"
-!endif
-!ifdef HAVE_PKG_LIBKSBA
-!include "uninst-libksba.nsi"
 !endif
 !ifdef HAVE_PKG_GLIB
 !include "uninst-glib.nsi"
@@ -507,17 +495,11 @@ Function CalcDepends
 !ifdef HAVE_PKG_LIBGCRYPT
   !insertmacro UnselectSection ${SEC_libgcrypt}
 !endif
-!ifdef HAVE_PKG_LIBKSBA
-  !insertmacro UnselectSection ${SEC_libksba}
-!endif
 !ifdef HAVE_PKG_W32PTH
   !insertmacro UnselectSection ${SEC_w32pth}
 !endif
 !ifdef HAVE_PKG_LIBASSUAN
   !insertmacro UnselectSection ${SEC_libassuan}
-!endif
-!ifdef HAVE_PKG_DIRMNGR
-  !insertmacro UnselectSection ${SEC_dirmngr}
 !endif
 !ifdef HAVE_PKG_PINENTRY
   !insertmacro UnselectSection ${SEC_pinentry}
@@ -684,17 +666,6 @@ Function CalcDepends
    skip_pinentry:
 !endif
 
-!ifdef HAVE_PKG_DIRMNGR
-  !insertmacro SectionFlagIsSet ${SEC_dirmngr} ${SF_SELECTED} have_dirmngr skip_dirmngr
-  have_dirmngr:
-  !insertmacro SelectSection ${SEC_libgpg_error}
-  !insertmacro SelectSection ${SEC_libgcrypt}
-  !insertmacro SelectSection ${SEC_libassuan}
-  !insertmacro SelectSection ${SEC_libksba}
-  !insertmacro SelectSection ${SEC_w32pth}
-  skip_dirmngr:
-!endif
-
 !ifdef HAVE_PKG_LIBASSUAN
   !insertmacro SectionFlagIsSet ${SEC_libassuan} ${SF_SELECTED} have_libassuan skip_libassuan
   have_libassuan:
@@ -704,13 +675,6 @@ Function CalcDepends
 !endif
 
   # Package "w32pth" has no dependencies.
-
-!ifdef HAVE_PKG_LIBKSBA
-  !insertmacro SectionFlagIsSet ${SEC_libksba} ${SF_SELECTED} have_libksba skip_libksba
-  have_libksba:
-  !insertmacro SelectSection ${SEC_libgpg_error}
-  skip_libksba:
-!endif
 
 !ifdef HAVE_PKG_LIBGPG_ERROR
   !insertmacro SectionFlagIsSet ${SEC_libgpg_error} ${SF_SELECTED} have_libgpg_error skip_libgpg_error

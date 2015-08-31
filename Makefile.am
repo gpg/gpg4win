@@ -27,7 +27,6 @@ SUBDIRS = po packages doc src
 EXTRA_DIST = autogen.sh README.GIT ONEWS \
         doc/license-page doc/GPLv3 \
         build-aux/git-log-footer build-aux/git-log-fix \
-        patches/dirmngr-1.1.1/dirmngr-pth.patch \
         patches/glib-2.41.5/01-socket.patch \
         patches/gpgme-1.5.5/0001-Add-offline-mode-support-for-CMS-keylisting.patch \
 		patches/w32pth-2.0.5/workaround-broken-libtool.patch \
