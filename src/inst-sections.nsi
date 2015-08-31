@@ -26,9 +26,6 @@
 # gpg4win_build_list in config.nsi.  The order determines also the
 # order in the packages selection dialog.
 
-!ifdef HAVE_PKG_BZIP2
-!include "inst-bzip2.nsi"
-!endif
 !ifdef HAVE_PKG_DBUS
 !include "inst-dbus.nsi"
 !endif
@@ -275,9 +272,6 @@
 !ifdef HAVE_PKG_DBUS
 !include "uninst-dbus.nsi"
 !endif
-!ifdef HAVE_PKG_BZIP2
-!include "uninst-bzip2.nsi"
-!endif
 
 !include "uninst-gpg4win.nsi"
 
@@ -477,9 +471,6 @@ Function CalcDepends
 !ifdef HAVE_PKG_GTK_
   !insertmacro UnselectSection ${SEC_gtk_}
 !endif
-!ifdef HAVE_PKG_BZIP2
-  !insertmacro UnselectSection ${SEC_bzip2}
-!endif
 !ifdef HAVE_PKG_LIBGPG_ERROR
   !insertmacro UnselectSection ${SEC_libgpg_error}
 !endif
@@ -674,8 +665,6 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_gettext}
   skip_libgpg_error:
 !endif
-
-  # Package "bzip2" has no dependencies.
 
 !ifdef HAVE_PKG_GTK_
   !insertmacro SectionFlagIsSet ${SEC_gtk_} \

@@ -352,7 +352,6 @@ GPG4WIN_SPKG([gtk+], [libiconv gettext pkgconfig atk pango dnl
                       glib gdk-pixbuf cairo])
 GPG4WIN_SPKG([libpng], [pkgconfig])
 
-GPG4WIN_SPKG([bzip2])
 GPG4WIN_SPKG([libgpg-error], [libiconv gettext])
 GPG4WIN_SPKG([libgcrypt], [libgpg-error])
 GPG4WIN_SPKG([libassuan], [libgpg-error w32pth])

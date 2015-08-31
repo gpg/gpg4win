@@ -62,7 +62,6 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
         inst-dbus.nsi   	   uninst-dbus.nsi      \
         inst-oxygen-icons.nsi  	   uninst-oxygen-icons.nsi    \
         inst-kleopatra.nsi  	   uninst-kleopatra.nsi       \
-	inst-bzip2.nsi             uninst-bzip2.nsi           \
         uninst-claws-mail.nsi uninst-claws-mail-cmds.nsi \
         inst-final.nsi
 
@@ -251,16 +250,10 @@ gpg4win_pkg_scute_configure = --silent \
 gpg4win_pkg_paperkey_configure = --silent
 
 # Supported make-only source packages.
-gpg4win_mpkgs = bzip2 zlib
+gpg4win_mpkgs = zlib
 
 # Extra options for the make invocations for individual packages.
 # make_flags is used for building, make_args_inst is used for installing.
-gpg4win_pkg_bzip2_make_args = \
-  CC=$(CC) AR=$(AR) RANLIB=$(RANLIB)
-
-gpg4win_pkg_bzip2_make_args_inst = \
-  PREFIX=$$$${pkgidir} CC=$(CC) AR=$(AR) RANLIB=$(RANLIB)
-
 gpg4win_pkg_zlib_make_args = \
   -fwin32/Makefile.gcc PREFIX=$(host)- IMPLIB=libz.dll.a
 

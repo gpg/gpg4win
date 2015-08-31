@@ -259,16 +259,6 @@ file w32pth-2.0.5.tar.bz2
 chk  d648b98ce215f81e901f3f982470d37c704433a6
 
 #
-# Stripped down version of BZIP2
-# (full source at http://bzip.org)
-#
-server ftp://ftp.g10code.com/g10code/bzip2
-
-# checked: 2014-07-16 ah
-file bzip2-1.0.6-g10.tar.gz
-chk  6e38be3377340a21a1f13ff84b5e6adce97cd1d4
-
-#
 # GnuPG et al.
 #
 # All tarballs from this server are verified with an openpgp
