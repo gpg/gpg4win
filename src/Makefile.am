@@ -37,14 +37,12 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
         inst-gnupg-w32.nsi	   uninst-gnupg-w32.nsi	      \
         inst-gpa.nsi		   uninst-gpa.nsi	      \
         inst-gpgme.nsi		   uninst-gpgme.nsi	      \
-        inst-scute.nsi		   uninst-scute.nsi	      \
         inst-paperkey.nsi	   uninst-paperkey.nsi	      \
         inst-gpgol.nsi		   uninst-gpgol.nsi	      \
         inst-gpgex.nsi		   uninst-gpgex.nsi	      \
         inst-gdk-pixbuf.nsi        uninst-gdk-pixbuf.nsi      \
         inst-gtk+.nsi		   uninst-gtk+.nsi	      \
         inst-libassuan.nsi	   uninst-libassuan.nsi	      \
-        inst-libgcrypt.nsi	   uninst-libgcrypt.nsi	      \
         inst-libgpg-error.nsi	   uninst-libgpg-error.nsi    \
         inst-libiconv.nsi	   uninst-libiconv.nsi	      \
         inst-libpng.nsi		   uninst-libpng.nsi	      \
@@ -88,8 +86,8 @@ CLEANFILES = g4wihelp.dll versioninfo.txt $(README_files) $(HOWTO_files) \
 gpg4win_spkgs = glib libffi gdk-pixbuf gtk+ \
                 libgpg-error gpgme gpgol gpgex libpng \
 		gpa opencdk \
-		pinentry libassuan libgcrypt \
-		w32pth scute paperkey regex libiconv gettext
+		pinentry libassuan \
+		w32pth paperkey regex libiconv gettext
 
 # Supported source packages to build in an additional architecture
 gpg4win_expkgs = libgpg-error libassuan libiconv gettext w32pth gpgex
@@ -190,14 +188,6 @@ gpg4win_pkg_libassuan_configure =  --silent --enable-static
 
 gpg4win_pkg_libassuan_ex_configure =  --silent --enable-static
 
-# Using gpgsm with VirtualBox on AES-NI hardware crashes gpg-agent.
-# However, the Libgcrypt's regression tests work just fine.  I don't
-# have a windows instance on AES-NI, thus I can't currently debug
-# this. As a workaround we disable AES-NI for now.
-gpg4win_pkg_libgcrypt_configure = --silent \
-  --with-gpg-error-prefix=$(idir) \
-  --disable-aesni-support
-
 gpg4win_pkg_libpng_configure = HAVE_SOLARIS_LD_FALSE=yes CPPFLAGS=\"-I$(idir)/include -DPNG_BUILD_DLL\" LDFLAGS=\"-L$(idir)/lib\" LIBPNG_DEFINES=\"-DPNG_BUILD_DLL\"
 
 # We would like to use --with-libiconv-prefix and
@@ -243,9 +233,6 @@ gpg4win_pkg_gpgol_configure = --silent \
 gpg4win_pkg_gpgex_configure = --silent \
   --with-gpg-error-prefix=$(idir) \
   --with-libassuan-prefix=$(idir)
-
-gpg4win_pkg_scute_configure = --silent \
-  --with-gpg-error-prefix=$(idir) --with-libassuan-prefix=$(idir)
 
 gpg4win_pkg_paperkey_configure = --silent
 

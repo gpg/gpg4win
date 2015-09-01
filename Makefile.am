@@ -29,8 +29,7 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         build-aux/git-log-footer build-aux/git-log-fix \
         patches/glib-2.41.5/01-socket.patch \
         patches/gpgme-1.5.5/0001-Add-offline-mode-support-for-CMS-keylisting.patch \
-		patches/w32pth-2.0.5/workaround-broken-libtool.patch \
-		patches/scute-1.4.0/workaround-broken-libtool.patch
+		patches/w32pth-2.0.5/workaround-broken-libtool.patch
 
 copy-news:
 	cp NEWS doc/website/NEWS.last

@@ -353,13 +353,11 @@ GPG4WIN_SPKG([gtk+], [libiconv gettext pkgconfig atk pango dnl
 GPG4WIN_SPKG([libpng], [pkgconfig])
 
 GPG4WIN_SPKG([libgpg-error], [libiconv gettext])
-GPG4WIN_SPKG([libgcrypt], [libgpg-error])
 GPG4WIN_SPKG([libassuan], [libgpg-error w32pth])
 GPG4WIN_SPKG([pinentry], [libiconv gtk+])
 GPG4WIN_SPKG([gpgme], [libgpg-error glib])
 GPG4WIN_SPKG([gpgol], [gpgme libassuan])
 GPG4WIN_SPKG([gpgex], [libassuan])
-GPG4WIN_SPKG([scute], [libgpg-error libassuan])
 GPG4WIN_SPKG([paperkey])
 GPG4WIN_SPKG([gpa], [libiconv gettext zlib gtk+ libpng glib gpgme])
 GPG4WIN_SPKG([w32pth])

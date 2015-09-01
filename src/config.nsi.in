@@ -64,10 +64,6 @@
 !define gpg4win_pkg_libassuan @gpg4win_pkg_libassuan@
 !define gpg4win_pkg_libassuan_version @gpg4win_pkg_libassuan_version@
 
-@HAVE_PKG_LIBGCRYPT@
-!define gpg4win_pkg_libgcrypt @gpg4win_pkg_libgcrypt@
-!define gpg4win_pkg_libgcrypt_version @gpg4win_pkg_libgcrypt_version@
-
 @HAVE_PKG_GPGME@
 !define gpg4win_pkg_gpgme @gpg4win_pkg_gpgme@
 !define gpg4win_pkg_gpgme_version @gpg4win_pkg_gpgme_version@
@@ -193,10 +189,6 @@
 !define gpg4win_pkg_kleopatra @gpg4win_pkg_kleopatra@
 !define gpg4win_pkg_kleopatra_version @gpg4win_pkg_kleopatra_version@
 !define gpg4win_pkg_kleopatra_src @gpg4win_pkg_kleopatra_src@
-
-@HAVE_PKG_SCUTE@
-!define gpg4win_pkg_scute @gpg4win_pkg_scute@
-!define gpg4win_pkg_scute_version @gpg4win_pkg_scute_version@
 
 @HAVE_PKG_PAPERKEY@
 !define gpg4win_pkg_paperkey @gpg4win_pkg_paperkey@

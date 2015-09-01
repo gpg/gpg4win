@@ -68,9 +68,6 @@
 !ifdef HAVE_PKG_GLIB
 !include "inst-glib.nsi"
 !endif
-!ifdef HAVE_PKG_LIBGCRYPT
-!include "inst-libgcrypt.nsi"
-!endif
 !ifdef HAVE_PKG_EXPAT
 !include "inst-expat.nsi"
 !endif
@@ -119,9 +116,6 @@
 !ifdef HAVE_PKG_GPGEX
 !include "inst-gpgex.nsi"
 !endif
-!ifdef HAVE_PKG_SCUTE
-!include "inst-scute.nsi"
-!endif
 !ifdef HAVE_PKG_PAPERKEY
 !include "inst-paperkey.nsi"
 !endif
@@ -162,9 +156,6 @@
 !endif
 !ifdef HAVE_PKG_PAPERKEY
 !include "uninst-paperkey.nsi"
-!endif
-!ifdef HAVE_PKG_SCUTE
-!include "uninst-scute.nsi"
 !endif
 !ifdef HAVE_PKG_GPGEX
 !include "uninst-gpgex.nsi"
@@ -217,9 +208,6 @@
 !endif
 !ifdef HAVE_PKG_EXPAT
 !include "uninst-expat.nsi"
-!endif
-!ifdef HAVE_PKG_LIBGCRYPT
-!include "uninst-libgcrypt.nsi"
 !endif
 !ifdef HAVE_PKG_GLIB
 !include "uninst-glib.nsi"
@@ -332,17 +320,6 @@ calc_defaults_gpgol_done:
   StrCmp $R0 "0" 0 calc_defaults_gpgex_done
    !insertmacro UnselectSection ${SEC_gpgex}
 calc_defaults_gpgex_done:
-!endif
-
-!ifdef HAVE_PKG_SCUTE
-  g4wihelp::config_fetch_bool "inst_scute"
-  StrCmp $R0 "1" 0 calc_defaults_scute_not_one
-   !insertmacro SelectSection ${SEC_scute}
-   Goto calc_defaults_scute_done
-  calc_defaults_scute_not_one:
-  StrCmp $R0 "0" 0 calc_defaults_scute_done
-   !insertmacro UnselectSection ${SEC_scute}
-calc_defaults_scute_done:
 !endif
 
 !ifdef HAVE_PKG_PAPERKEY
@@ -474,9 +451,6 @@ Function CalcDepends
 !ifdef HAVE_PKG_LIBGPG_ERROR
   !insertmacro UnselectSection ${SEC_libgpg_error}
 !endif
-!ifdef HAVE_PKG_LIBGCRYPT
-  !insertmacro UnselectSection ${SEC_libgcrypt}
-!endif
 !ifdef HAVE_PKG_W32PTH
   !insertmacro UnselectSection ${SEC_w32pth}
 !endif
@@ -522,13 +496,6 @@ Function CalcDepends
 
   # First the explicitely installed packages.
 
-!ifdef HAVE_PKG_SCUTE
-  !insertmacro SectionFlagIsSet ${SEC_scute} \
-		${SF_SELECTED} have_scute skip_scute
-  have_scute:
-  # All dependencies are linked in statically.
-  skip_scute:
-!endif
 
 !ifdef HAVE_PKG_PAPERKEY
   !insertmacro SectionFlagIsSet ${SEC_paperkey} \
@@ -847,9 +814,6 @@ FunctionEnd
 !endif
 !ifdef HAVE_PKG_GPGEX
   !insertmacro MUI_DESCRIPTION_TEXT ${SEC_gpgex} $(DESC_SEC_gpgex)
-!endif
-!ifdef HAVE_PKG_SCUTE
-  !insertmacro MUI_DESCRIPTION_TEXT ${SEC_scute} $(DESC_SEC_scute)
 !endif
 !ifdef HAVE_PKG_PAPERKEY
   !insertmacro MUI_DESCRIPTION_TEXT ${SEC_paperkey} $(DESC_SEC_paperkey)
