@@ -12,6 +12,12 @@ PAGE_START
 
 <div id="intro">
 <h2>Bau von Gpg4win unter Windows<br>via eines virtualisiertem GNU/Linux</h2>
+<h3>
+Warnung: Die Anweisungen auf dieser Seite sind nicht mehr aktuell und
+könnten nicht mehr funktionieren. Im
+<a href="https://wiki.gnupg.org/Gpg4win/build">GnuPG Wiki</a>
+finden sich aktuellere Bauanleitungen.
+</h3>
 <p>Dieses Beispiel beschreibt konkret die Herstellung eines neuen Gpg4win Installers
 auf Windows XP/SP2 via Debian 'Etch' 4.0 in QEMU.
 Grundsätzlich können für alle drei Komponenten auch Alternativen verwendet

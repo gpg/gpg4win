@@ -13,8 +13,12 @@ PAGE_START
 <div id="intro">
 <h2>Bau von Gpg4win unter GNU/Linux</h2>
 <p>Dieses Beispiel beschreibt konkret die Herstellung eines neuen
-Gpg4win Installers auf Debian GNU/Linux 'Etch' 4.0.
+Gpg4win Installers auf Debian GNU/Linux 'Wheezy' 7.0.
 Grundsätzlich können auch andere GNU/Linux Systeme verwendet werden.</p>
+<p>
+Das <a href="https://wiki.gnupg.org/Gpg4win/build">GnuPG Wiki</a> enthält möglicherweise
+aktuellere informationen zum bau von Gpg4win.
+</p>
 <p>
   <a href="build-installer-de.html">Zurück zur Übersicht zum Installer-Bau</a>
 </p>
@@ -24,18 +28,17 @@ Grundsätzlich können auch andere GNU/Linux Systeme verwendet werden.</p>
 <h2>Den Gpg4win Installer direkt bauen</h2>
 
 <ol>
-<li> Typische Pakete die noch auf dem Debian GNU/Linux 4.0 nachinstalliert werden müssen
-     (ggf. fehlen bei Ihnen aber noch weitere, die dann im Verlauf der Konfiguration gemeldet
-    werden):<br>
-     <em># apt-get install mingw32 nsis stow unzip texinfo imagemagick</em><br>
-     <em># apt-get install libglib2.0-dev tetex-bin tetex-extra gs-common hyperlatex</em><br>
 
-<li> Die Quellen anonym (also ohne Schreibrechte) holen:<br>
-     <em>$ svn checkout https://svn.wald.intevation.org/svn/gpg4win/trunk/</em><br>
+<li> Die Quellen holen:<br>
+     <em>$ git clone git://git.gnupg.org/gpg4win.git</em><br>
      oder das Quelltextpaket gpg4win-n.n.n.tar.gz herunterladen, auspacken
      und in das Verzeichnis gpg4win-n.n.n wechseln. Wir empfehlen, mit der
-     SVN version zu arbeiten wenn Sie mehr als nur ein Modul aktualisieren
+     GIT version zu arbeiten wenn Sie mehr als nur ein Modul aktualisieren
      wollen.
+
+<li> Weitere Pakete die noch auf dem Debian GNU/Linux 7.0 nachinstalliert werden müssen
+    finden Sie in der README Datei in den Gpg4win Quellen aufgelistet.
+     <br>
 
 <li> Alle notwendigen Gpg4win-Module aus dem Internet herunterladen:<br>
      <em>$ cd packages</em><br>
@@ -43,11 +46,11 @@ Grundsätzlich können auch andere GNU/Linux Systeme verwendet werden.</p>
      (dauert nun eine Weile, besonders beim ersten mal)<br>
      <em>$ cd ..</em><br>
 
-<li> Falls Sie mit der SVN-Version arbeiten:<br>
+<li> Falls Sie mit der GIT-Version arbeiten:<br>
      <em>$ ./autogen.sh</em><br>
-     <em>$ ./configure --enable-maintainer-mode --host=i586-mingw32msvc</em><br>
+     <em>$ ./autogen.sh --build-w32</em><br>
      ansonsten:<br>
-     <em>$ ./configure --host=i586-mingw32msvc</em><br>
+     <em>$ ./autogen.sh --build-w32</em><br>
 
 <li> Nun das Gpg4win Installationpaket bauen:<br>
      <em>$ make</em>
@@ -93,35 +96,18 @@ installieren würde. Für eine dauerhafte Aktivierung der neuen Modul-Version
 des offiziellen Gpg4win Installationspaketes sind folgende Schritte zu erledigen.
 </p>
 
-<p>
-Voraussetzung dabei ist, dass man Schreibrechten auf
-das SVN Verzeichnis  besitzt (also ein Benutzerkonto auf
-wald.intevation.de mit Entwickler-Status für Gpg4win).
-</p>
-
 <ol>
 <li> Anpassen der Datei<br>
      <em>packages.current</em><br>
      für die neue Modulversion (lesen Sie für die Syntax den Kopf
-     dieser Datei) und laden Sie sie in das Subversion repository hoch:<br>
-     <em>$ svn commit packages.current</em>
+     dieser Datei) und commiten sie dann ihre änderungen:<br>
+     <em>$ git commit packages.current</em>
 
-<li> Erstellen Sie eine Signatur für diese Datei:<br>
-     <em>$ gpg -sb packages.current</em>
+<li> Erstellen Sie nun einen Patch mit dieser änderungen:<br>
+     <em>$ git format-patch HEAD~1</em>
 
-<li> Falls Sie bisher noch nie eine Aktualisierung der Paketliste
-     autorisiert haben, müssen Sie zunächst Ihren PGP-Schlüssel
-     an den Schlüsselbund<br>
-     <em>packages.keys</em><br>
-     anhängen:<br>
-     <em>$ gpg --export --armor YOUR-KEY-ID > gpg_pub_key.asc</em><br>
-     <em>$ gpg --no-default-keyring --keyring ./packages.keys --import gpg_pub_key.asc</em><br>
-     Eine Liste der bisher eingetragenen Schlüssel erhalten Sie so:<br>
-     <em>$ gpg packages.keys</em><br>
-
-<li> Laden Sie die beiden Dateien
-     auf die Website von Gpg4win hoch:<br>
-     <em>$ make update</em><br>
+<li> Senden Sie diesen Patch an die Entwickler Mailing Liste
+     gpg4win-devel@wald.intevation.org
 </ol>
 
 
@@ -170,8 +156,8 @@ hergestellt haben und dabei die Version aus SVN benutzt haben.
     wie weiter oben beschrieben aktualisieren.
 
 <li>Gpg4win muss für das neue Modul erneut konfiguriert werden:<br>
-     <em>$ AUTOMAKE_SUFFIX=-1.9 ./autogen.sh</em><br>
-     <em>$ ./configure --enable-maintainer-mode --host=i586-mingw32msvc</em><br>
+     <em>$ ./autogen.sh</em><br>
+     <em>$ ./autogen.sh --build-w32</em><br>
 
 <li>Der letzte Schritt ist der Bau des Installationpaketes:<br>
      <em>$ make</em>

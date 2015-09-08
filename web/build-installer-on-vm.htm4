@@ -12,6 +12,14 @@ PAGE_START
 
 <div id="intro">
 <h2>Building of Gpg4win under Windows<br> via virtual GNU/Linux</h2>
+
+<h3>
+Warning: The instructions are unmaintained and may not work anymore.
+Please refer to the
+<a href="https://wiki.gnupg.org/Gpg4win/build">GnuPG Wiki</a>
+for maintained build instrucions.
+</h3>
+
 <p>
 Hints: <a href="build-installer-gnulinux.html">Building under GNU/Linux
 in more detail</a> and

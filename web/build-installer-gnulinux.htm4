@@ -13,8 +13,12 @@ PAGE_START
 <div id="intro">
 <h2>Building Gpg4win under GNU/Linux</h2>
 <p>This example specifically describes how to create
-a new Gpg4win installer on a Debian GNU/Linux 'Squeeze' 6.0.
+a new Gpg4win installer on a Debian GNU/Linux 'Wheezy' 7.0.
 In principle, any other Unix system could be used as well.</p>
+<p>
+You might find more recent instructions in the
+<a href="https://wiki.gnupg.org/Gpg4win/build">GnuPG Wiki</a>
+</p>
 <p>
   <a href="build-installer.html">Back to overview on building installer</a>
 </p>
@@ -28,11 +32,6 @@ The character '#' indicates commands to be executed as administrator (root)
 and '$' for commands to be executed as regular user.
 
 <ol>
-<li> Install required packages on your Debian GNU/Linux 6.0:<br>
-     <strong>Note: The following list is outdated; we will soon provide a
-     new one.</strong><br/>
-     <em># apt-get install mingw32 nsis stow unzip texinfo imagemagick</em><br>
-     <em># apt-get install libglib2.0-dev tetex-bin tetex-extra gs-common hyperlatex</em><br>
 
 <li> Get the sources:<br>
      <em>$ git clone git://git.gnupg.org/gpg4win.git</em><br>
@@ -40,6 +39,8 @@ and '$' for commands to be executed as regular user.
      change to the directory gpg4win-n.n.n. We recommend to work
      with the GIT version if you want to do more that just update a single
      module for yourself.
+
+<li> Install required packages listed in the README file in the source directory.<br>
 
 <li> Download all necessary Gpg4win modules from Internet:<br>
      <em>$ cd packages</em><br>
@@ -102,7 +103,14 @@ installer package, the following step is necessary.
      <em>packages.current</em><br>
      accordingly for the new module version (read the head of this file about
      the syntax) and commit the changes.<br>
+    <em>$ git commit packages.current</em>
+
+<li> Create a patch for this commit:<br>
+    <em>$ git format-patch HEAD~1</em>
+
+<li>Send this patch to the develoment mailing list gpg4win-devel@wald.intevation.org
 </ol>
+
 
 
 <h2>Integrate a new module into Gpg4win</h2>
@@ -146,8 +154,8 @@ according to the description above using the GIT version.
     as described above.
 
 <li>Gpg4win has to be configured anew for the new module:<br>
-     <em>$ AUTOMAKE_SUFFIX=-1.9 ./autogen.sh</em><br>
-     <em>$ ./configure --enable-maintainer-mode --host=i586-mingw32msvc</em><br>
+     <em>$ ./autogen.sh</em><br>
+     <em>$ ./autogen.sh --build-w32</em><br>
 
 <li>The last step is to build the new package:<br>
      <em>$ make</em>
