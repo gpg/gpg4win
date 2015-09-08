@@ -313,10 +313,10 @@ server ftp://ftp.gnupg.org/gcrypt
 file libgpg-error/libgpg-error-1.19.tar.bz2
 chk  4997951ab058788de48b989013668eb3df1e6939
 
-# last changed: 2015-03-09
+# last changed: 2015-09-08
 # by: ah
-file libgcrypt/libgcrypt-1.6.3.tar.bz2
-chk  9456e7b64db9df8360a1407a38c8c958da80bbf1
+file libgcrypt/libgcrypt-1.6.4.tar.bz2
+chk  ed52add1ce635deeb2f5c6650e52667debd4ec70
 
 # last-changed: 2015-06-05
 # by: ah
@@ -328,10 +328,10 @@ chk  86fe0436f3c8c394d32e142ee410a9f9560173fb
 file libassuan/libassuan-2.2.1.tar.bz2
 chk  c21b86482f6a3624c2b46b91e20f8415f244233a
 
-# last changed: 2015-06-05
+# last changed: 2015-09-08
 # by: ah
-name gnupg2-2.0.28.tar.bz2
-file gnupg/gnupg-2.0.28.tar.bz2
+name gnupg2-2.0.29.tar.bz2
+file gnupg/gnupg-2.0.29.tar.bz2
 chk  9a1050f72b6c9afe2b4a0a3f2e9dca2abba8e4ef
 
 # checked: 2014-07-16 ah
@@ -347,10 +347,10 @@ chk  0c47f0ddea4631bcba01ebbeca8bffe0bf43e440
 file scute/scute-1.4.0.tar.bz2
 chk  e28141d2b03612c09512651795976c58ed3f8035
 
-# last changed: 2015-06-23
+# last changed: 2015-09-08
 # by: ah
-file gpgme/gpgme-1.5.5.tar.bz2
-chk  88476d72cb099e179de4040760502886f7a54926
+file gpgme/gpgme-1.6.0.tar.bz2
+chk  21510323495f6220f8f67610c3c27a23d761d43d
 
 # last changed: 2015-03-09
 # by: ah

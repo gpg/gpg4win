@@ -16,6 +16,10 @@ Noteworthy changes in version 2.2.6 (unreleased)
          http://www.claws-mail.org/win32/
      verfügbar.
 
+(en) GnuPG has been updated to Version 2.0.29.
+
+(de) GnuPG wurde auf Version 2.0.29 aktualisiert.
+
 (en) X509 Certificate requests can now again generated with
      default options.
 
@@ -23,7 +27,7 @@ Noteworthy changes in version 2.2.6 (unreleased)
      Standartoptionen generiert werden.
 
 ~~~~~~~~~~~~~~~
-GnuPG:          2.0.28
+GnuPG:          2.0.29
 Kleopatra:      2.2.0-gitcf609810
 GPA:            0.9.7
 GpgOL:          1.2.1
