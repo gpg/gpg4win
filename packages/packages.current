@@ -332,7 +332,7 @@ chk  c21b86482f6a3624c2b46b91e20f8415f244233a
 # by: ah
 name gnupg2-2.0.29.tar.bz2
 file gnupg/gnupg-2.0.29.tar.bz2
-chk  9a1050f72b6c9afe2b4a0a3f2e9dca2abba8e4ef
+chk  87eb0df18f9953675f979405a1af10ab6c5322b3
 
 # checked: 2014-07-16 ah
 file dirmngr/dirmngr-1.1.1.tar.bz2
