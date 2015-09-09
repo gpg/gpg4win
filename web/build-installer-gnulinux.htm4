@@ -17,7 +17,8 @@ a new Gpg4win installer on a Debian GNU/Linux 'Wheezy' 7.0.
 In principle, any other Unix system could be used as well.</p>
 <p>
 You might find more recent instructions in the
-<a href="https://wiki.gnupg.org/Gpg4win/build">GnuPG Wiki</a>
+<a href="https://wiki.gnupg.org/Gpg4win/build">GnuPG Wiki</a> and
+in the README file in the Gpg4win source directory.
 </p>
 <p>
   <a href="build-installer.html">Back to overview on building installer</a>

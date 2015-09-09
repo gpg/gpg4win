@@ -11,13 +11,11 @@ m4_define(`MAIN', `community')
 PAGE_START
 
 <div id="intro">
-<h2>Building Gpg4win installer package</h2>
+<h2>Building Gpg4win</h2>
 <p>Learn how you can build the Gpg4win installer packages on your own.</p>
 </div>
 
 <div id="main">
-
-<h2>Conventional ".exe installer"</h2>
 
 <p>
 Building a new Gpg4win installer package is
@@ -53,3 +51,4 @@ What you need is:
      </p>
 </li>
 </ul>
+</div>
