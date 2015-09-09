@@ -26,10 +26,14 @@ Noteworthy changes in version 2.2.6 (unreleased)
 (de) X509 Zertifikatsrequests können nun wieder mit den
      Standartoptionen generiert werden.
 
+(en) GPA has been updated to Version 0.9.9.
+
+(de) GPA wurde auf Version 0.9.9 aktualisiert.
+
 ~~~~~~~~~~~~~~~
 GnuPG:          2.0.29
 Kleopatra:      2.2.0-gitcf609810
-GPA:            0.9.7
+GPA:            0.9.9
 GpgOL:          1.2.1
 GpgEX:          1.0.2
 Kompendium DE:  3.0.0

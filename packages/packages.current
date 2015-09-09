@@ -352,10 +352,10 @@ chk  e28141d2b03612c09512651795976c58ed3f8035
 file gpgme/gpgme-1.6.0.tar.bz2
 chk  21510323495f6220f8f67610c3c27a23d761d43d
 
-# last changed: 2015-03-09
+# last changed: 2015-09-09
 # by: ah
-file gpa/gpa-0.9.7.tar.bz2
-chk  9eb07bcceeb986c7b6dbce8a18b82a2c344b50ce
+file gpa/gpa-0.9.9.tar.bz2
+chk  1cf86c9e38aa553fdb880c55cbc6755901ad21a4
 
 # (Snapshots)
 # server ftp://ftp.g10code.com/g10code/scratch
