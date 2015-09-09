@@ -51,7 +51,6 @@ const char * const full_files[] =
   "gspawn-win32-helper.exe",
   "gtk-query-immodules-2.0.exe",
   "gtk-update-icon-cache.exe",
-  "gtk-update-icon-cache.exe.manifest",
   "include/assuan.h",
   "include/gcrypt.h",
   "include/gpg-error.h",

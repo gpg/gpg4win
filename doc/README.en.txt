@@ -32,7 +32,7 @@ README before you start working with Gpg4win.
 
 Gpg4win supports these platforms:
 
-  * Operating System: Windows XP, Vista, 7, 8 (for all: 32/64 bit)
+  * Operating System: Windows XP and later Versions (for all: 32/64 bit)
 
   * MS Outlook: 2003, 2007, 2010, 2013 (for all: only 32bit!)
 
@@ -48,21 +48,18 @@ Included Gpg4win components in Version !VERSION! are:
 New in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 -----------------------------------------
 
-- GnuPG has been updated to version 2.0.28. See release notes on
-  www.gnupg.org for details.
+- Claws Mail has been removed from the package. Users of
+  Claws Mail should switch to the version maintained by
+  the Claws Mail initiative available on:
+     http://www.claws-mail.org/win32/
 
-- A potential crash during certificate search has been fixed.
+- GnuPG has been updated to Version 2.0.29.
 
-- Kleopatra no longer queries revocation information for X509
-  certificates during startup. This will drastically improve
-  the startup time of Kleopatra for some users.
-  Revocation information is still checked once a certificate is used.
+- X509 Certificate requests can now again generated with
+  default options.
 
-- Kleopatra now uses the same defaults as GnuPG for new OpenPGP
-  certificates.
-
-- Third party libraries included in Gpg4win have been updated.
-
+- GPA has been updated to Version 0.9.9
+.
 
 3. Known Bugs (and Workarounds)
 ===============================

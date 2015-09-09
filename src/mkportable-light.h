@@ -38,7 +38,6 @@ const char * const light_files[] =
   "gspawn-win32-helper.exe",
   "gtk-query-immodules-2.0.exe",
   "gtk-update-icon-cache.exe",
-  "gtk-update-icon-cache.exe.manifest",
   "intl.dll",
   "lib/gtk-2.0/2.10.0/engines/libpixmap.dll",
   "lib/gtk-2.0/2.10.0/engines/libwimp.dll",

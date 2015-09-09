@@ -271,10 +271,10 @@ server ftp://ftp.gnupg.org/gcrypt
 file libgpg-error/libgpg-error-1.19.tar.bz2
 chk  4997951ab058788de48b989013668eb3df1e6939
 
-# last-changed: 2015-06-05
+# last-changed: 2015-09-08
 # by: ah
-file libassuan/libassuan-2.2.1.tar.bz2
-chk  c21b86482f6a3624c2b46b91e20f8415f244233a
+file libassuan/libassuan-2.3.0.tar.bz2
+chk  23f7ea010983b869f765c36d169dec51c8296cff
 
 # last changed: 2015-08-20
 # by: ah
@@ -296,10 +296,10 @@ chk  0c47f0ddea4631bcba01ebbeca8bffe0bf43e440
 file gpgme/gpgme-1.6.0.tar.bz2
 chk  21510323495f6220f8f67610c3c27a23d761d43d
 
-# last changed: 2015-03-09
+# last changed: 2015-09-09
 # by: ah
-file gpa/gpa-0.9.7.tar.bz2
-chk  9eb07bcceeb986c7b6dbce8a18b82a2c344b50ce
+file gpa/gpa-0.9.9.tar.bz2
+chk  1cf86c9e38aa553fdb880c55cbc6755901ad21a4
 
 # (Snapshots)
 # server ftp://ftp.g10code.com/g10code/scratch

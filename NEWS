@@ -15,8 +15,7 @@ Kompendium DE:  3.0.0
 Kompendium EN:  3.0.0
 ~~~~~~~~~~~~~~~
 
-
-Noteworthy changes in version 2.2.6 (unreleased)
+Noteworthy changes in version 2.2.6 (2015-09-09)
 ------------------------------------------------
 
 (en) Claws Mail has been removed from the package. Users of
@@ -30,16 +29,24 @@ Noteworthy changes in version 2.2.6 (unreleased)
          http://www.claws-mail.org/win32/
      verfügbar.
 
+(en) GnuPG has been updated to Version 2.0.29.
+
+(de) GnuPG wurde auf Version 2.0.29 aktualisiert.
+
 (en) X509 Certificate requests can now again generated with
      default options.
 
 (de) X509 Zertifikatsrequests können nun wieder mit den
      Standartoptionen generiert werden.
 
+(en) GPA has been updated to Version 0.9.9.
+
+(de) GPA wurde auf Version 0.9.9 aktualisiert.
+
 ~~~~~~~~~~~~~~~
-GnuPG:          2.0.28
+GnuPG:          2.0.29
 Kleopatra:      2.2.0-gitcf609810
-GPA:            0.9.7
+GPA:            0.9.9
 GpgOL:          1.2.1
 GpgEX:          1.0.2
 Kompendium DE:  3.0.0
