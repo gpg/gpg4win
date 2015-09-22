@@ -21,9 +21,9 @@ m4_define(`LEN_EXS',`295816560')
 m4_define(`DLPAGE',`I18N(`EN',`download.html')`'I18N(`DE',`download-de.html')')
 m4_define(`MIRROR_IE_URL',`http://ftp.heanet.ie/mirrors/ftp.gpg4win.org/')
 m4_define(`SOFTWAREOVERVIEW',`
-I18N(`EN', `<a href="http://www.gnupg.org/">GnuPG</a>')I18N(`DE', `<a href="http://www.gnupg.de/index.de.html">GnuPG</a>') 2.0.28
-<a href="http://www.kde.org/applications/utilities/kleopatra/">Kleopatra</a> 2.2.0-gita3c9200
-I18N(`EN', `<a href="http://www.gnupg.org/related_software/gpa/index.html">GPA</a>')I18N(`DE', `<a href="http://www.gnupg.de/related_software/gpa/index.de.html">GPA</a>') 0.9.7
+I18N(`EN', `<a href="http://www.gnupg.org/">GnuPG</a>')I18N(`DE', `<a href="http://www.gnupg.de/index.de.html">GnuPG</a>') 2.0.29
+<a href="http://www.kde.org/applications/utilities/kleopatra/">Kleopatra</a> 2.2.0-gitcf609810
+I18N(`EN', `<a href="http://www.gnupg.org/related_software/gpa/index.html">GPA</a>')I18N(`DE', `<a href="http://www.gnupg.de/related_software/gpa/index.de.html">GPA</a>') 0.9.9
 <a href="http://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpgol.git;a=summary">GpgOL</a> 1.2.1
 <a href="http://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpgex.git;a=summary">GpgEX</a> 1.0.2
 <a href="doc/de/gpg4win-compendium.html">Kompendium (de)</a> 3.0.0
