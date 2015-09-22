@@ -726,3 +726,39 @@ AC_DEFUN([GPG4WIN_BPKG_BINSRC],
           [$4])
 ])
 
+# Add a runtime library argument 1 should be the dll
+# name without the .dll suffix
+AC_DEFUN([GPG4WIN_RUNTIME_LIBRARY],
+[
+    dll_path="no"
+    AC_ARG_WITH([$1],
+    AS_HELP_STRING([--with-$1-dll[=FILE]],
+                   [include FILE as runtime dependency for the installer.]),
+                   [dll_path=$withval])
+
+    if test "$dll_path" = "no"; then
+        changequote(,)
+        gcc_major_minor=$($CC --version \
+                          | awk 'NR==1 {split($NF,a,"."); print a[1] "." a[2]}')
+        changequote([,])
+        guesses="/usr/lib/gcc/$host/$gcc_major_minor/$1.dll
+                 /usr/$host/lib/$1.dll
+                 /usr/lib/gcc/$host/${gcc_major_minor}-win32/$1.dll"
+
+        for file in $guesses; do
+            if test -r "$file"; then
+                dll_path="$file"
+                break
+            fi
+        done
+    fi
+
+    if test "$dll_path" = "no"; then
+        AC_MSG_ERROR(can not find the runtime library $1.dll in the default locations.
+                     Use the --with-$1 option to set the path directly.
+        )
+    fi
+    AC_MSG_NOTICE(Using $dll_path to provide $1)
+    $CP "$dll_path" src/$1.dll-x
+    $STRIP src/$1.dll-x
+])

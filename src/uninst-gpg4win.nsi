@@ -36,9 +36,10 @@ Section "-un.gpg4win"
   Delete "$INSTDIR\md5sum.exe"
   Delete "$INSTDIR\mkportable.exe"
 
-  # Delete the runtime libarries
-  Delete "$INSTDIR\pub\libstdc++-6.dll"
-  Delete "$INSTDIR\pub\libgcc_s_sjlj-1.dll"
+  # Delete the runtime libaries
+  Delete "$INSTDIR\libstdc++-6.dll"
+  Delete "$INSTDIR\libgcc_s_sjlj-1.dll"
+  Delete "$INSTDIR\libwinpthread-1.dll"
 
   # Delete standard stuff.
   Delete "$INSTDIR\share\gpg4win\README.*.txt"

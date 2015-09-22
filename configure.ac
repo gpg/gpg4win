@@ -257,55 +257,10 @@ for i in DLLTOOL MAKE UNZIP TAR MKDIR CP RM STOW MAKENSIS ZCAT TEXI2DVI \
    fi
 done
 
-# GpgOL and GpgEx need the runtime libaries
-# The default path should probably be more generic
-changequote(,)dnl
-gcc_major_minor=$($CC --version \
-                  | awk 'NR==1 {split($NF,a,"."); print a[1] "." a[2]}')
-changequote([,])dnl
-
-libgcc_dll=no
-AC_ARG_WITH([libgcc_s_sjlj-1-dll],
-           AC_HELP_STRING([--with-libgcc_s_sjlj-1-dll=FILE],
-                          [use the libgcc_s_sjlj-1 DLL]),
-           [libgcc_dll=$withval])
-
-if test "$libgcc_dll" = "no"; then
-  file="/usr/lib/gcc/$host/$gcc_major_minor/libgcc_s_sjlj-1.dll"
-  if test -r "$file"; then
-    libgcc_dll="$file"
-  fi
-fi
-if test "$libgcc_dll" = "no"; then
-  missing_opt_tools="libgcc_s_sjlj-1.dll $missing_opt_tools"
-else
-  if test -r "$libgcc_dll"; then
-    cp $libgcc_dll src/libgcc_s_sjlj-1.dll-x
-  else
-    missing_opt_tools="libgcc_s_sjlj-1.dll $missing_opt_tools"
-  fi
-fi
-
-libstdcpp_dll=no
-AC_ARG_WITH([libstdc++-6-dll],
-           AC_HELP_STRING([--with-libstdc++-6-dll=FILE],
-                          [use the libstd++-6 DLL]),
-           [libstdcpp_dll=$withval])
-if test "$libstdcpp_dll" = "no"; then
-  file="/usr/lib/gcc/$host/$gcc_major_minor/libstdc++-6.dll"
-  if test -r "$file"; then
-    libstdcpp_dll="$file"
-  fi
-fi
-if test "$libstdcpp_dll" = "no"; then
-  missing_opt_tools="libstdc++-6.dll $missing_opt_tools"
-else
-  if test -r "$libstdcpp_dll"; then
-    cp $libstdcpp_dll src/libstdc++-6.dll-x
-  else
-    missing_opt_tools="libstdc++-6.dll $missing_opt_tools"
- fi
-fi
+# Additional runtime libraries from mingw.
+GPG4WIN_RUNTIME_LIBRARY(libgcc_s_sjlj-1)
+GPG4WIN_RUNTIME_LIBRARY(libstdc++-6)
+GPG4WIN_RUNTIME_LIBRARY(libwinpthread-1)
 
 AC_CHECK_PROGS(GLIB_GENMARSHAL, glib-genmarshal)
 AC_CHECK_PROGS(GLIB_COMPILE_SCHEMAS, glib-compile-schemas)
