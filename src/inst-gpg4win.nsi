@@ -86,12 +86,12 @@ Section "-gpg4win" SEC_gpg4win
   File "${BUILD_DIR}/md5sum.exe"
   File "${BUILD_DIR}/mkportable.exe"
 
-  SetOutPath "$INSTDIR\pub"
   # Install the mingw32 runtime libraries.  They are stored in the
   # build directory with a different suffix, so that makensis does not
-  # list sumbol names.
+  # list symbol names.
   File /oname=libstdc++-6.dll     "${BUILD_DIR}/libstdc++-6.dll-x"
   File /oname=libgcc_s_sjlj-1.dll "${BUILD_DIR}/libgcc_s_sjlj-1.dll-x"
+  File /oname=libwinpthread-1.dll "${BUILD_DIR}/libwinpthread-1.dll-x"
 
 !endif
 
