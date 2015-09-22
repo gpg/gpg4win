@@ -194,18 +194,12 @@ gpg4win_pkg_libpng_configure = HAVE_SOLARIS_LD_FALSE=yes CPPFLAGS=\"-I$(idir)/in
 # --with-libintl-prefix, but these don't work with the cheesy
 # non-"libfoo.la" versions of iconv and gettext that we are using.
 if BUILD_FULL_INSTALLER
-pinentry_enable_disable= --disable-pinentry-qt --enable-pinentry-qt4 \
-  --enable-pinentry-qt4-clipboard
-else
-pinentry_enable_disable= --disable-pinentry-qt --disable-pinentry-qt4
+pinentry_enable_disable= --enable-pinentry-qt
 endif
 gpg4win_pkg_pinentry_configure = \
   $(pinentry_enable_disable) \
-  --disable-pinentry-gtk \
   --enable-pinentry-gtk2 \
-  --with-glib-prefix=$(idir) --with-gtk-prefix=$(idir) \
-  CPPFLAGS=-I$(idir)/include LDFLAGS=-L$(idir)/lib \
-  CXXFLAGS=-static-libstdc++
+  CPPFLAGS=-I$(idir)/include LDFLAGS=-L$(idir)/lib
 #  --with-libiconv-prefix=$(idir) --with-libintl-prefix=$(idir)
 
 # The LDFLAGS is needed for -lintl for glib.  The QT4 variables work

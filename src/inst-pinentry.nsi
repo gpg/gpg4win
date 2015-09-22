@@ -43,7 +43,7 @@ Section "-Pinentry" SEC_pinentry
 
 !ifndef GPG4WIN_LIGHT
 !ifdef HAVE_PKG_QT
-  File "${prefix}/bin/pinentry-qt4.exe"
+  File "${prefix}/bin/pinentry-qt.exe"
 
   # If Qt is installed (usually by selecting kleopatra), we want
   # the Qt pinentry as well.  Otherwise punt to gtk pinentry,
@@ -51,7 +51,7 @@ Section "-Pinentry" SEC_pinentry
   !insertmacro SectionFlagIsSet ${SEC_qt} \
                 ${SF_SELECTED} inst_pinentry_have_qt inst_pinentry_skip_qt
   inst_pinentry_have_qt:
-  File /oname=pinentry.exe "${prefix}/bin/pinentry-qt4.exe"
+  File /oname=pinentry.exe "${prefix}/bin/pinentry-qt.exe"
   Goto inst_pinentry_done
   inst_pinentry_skip_qt:
 !endif

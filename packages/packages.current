@@ -288,8 +288,8 @@ chk  20439f65b8d94ec79523c45ad72418670ca9d5eb
 
 # last changed: 2015-06-23
 # by: ah
-file pinentry/pinentry-0.9.4.tar.bz2
-chk  0c47f0ddea4631bcba01ebbeca8bffe0bf43e440
+file pinentry/pinentry-0.9.6.tar.bz2
+chk  296992d7b26ba2a517b093ccae26bc00b88b3bb5
 
 # last changed: 2015-08-26
 # by: ah
