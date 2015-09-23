@@ -278,13 +278,13 @@ chk  23f7ea010983b869f765c36d169dec51c8296cff
 
 # last changed: 2015-08-20
 # by: ah
-name gnupg-w32-2.1.7-20150811-bin.exe
-file binary/gnupg-w32-2.1.7_20150811.exe
-chk  dfea3fa2499f64cac223c9329c9f017bc3da11a5
+name gnupg-w32-2.1.8-20150910-bin.exe
+file binary/gnupg-w32-2.1.8_20150910.exe
+chk  fb70068a7e77f28946c24ac29a508fb5f419ffeb
 
-name gnupg-w32-2.1.7-20150811-src.tar.xz
-file binary/gnupg-w32-2.1.7_20150811.tar.xz
-chk  20439f65b8d94ec79523c45ad72418670ca9d5eb
+name gnupg-w32-2.1.8-20150910-src.tar.xz
+file binary/gnupg-w32-2.1.8_20150910.tar.xz
+chk  504ec0f678a7a5eea144aed5a2d1691ce83e62ab
 
 # last changed: 2015-06-23
 # by: ah
