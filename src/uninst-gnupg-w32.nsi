@@ -24,11 +24,20 @@
 
 
 # Uninstaller section.
-Section "un.gnupg_w32"
+Section  "un.gnupg_w32"
 !ifdef SOURCES
   Push "${gpg4win_pkg_gnupg_w32}"
   Call un.SourceDelete
 !else
-  # TODO: Read gnupg uninstaller from registry.
+  ReadRegStr $0 HKLM "Software\GnuPG" "Install Directory"
+  # It is possible that someone uninstalled gnupg without uninstalling
+  # gpg4win
+  StrCmp $0 "" gnupg_w32_not_installed
+  DetailPrint  "$(T_Uninstalling_GnuPG) ${gpg4win_pkg_gnupg_w32_version}"
+  ExecWait '"$0\gnupg-uninstall.exe" /S'
+gnupg_w32_not_installed:
 !endif
 SectionEnd
+
+LangString T_UnInstalling_GnuPG ${LANG_ENGLISH} \
+   "Uninstalling GnuPG"
