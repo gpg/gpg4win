@@ -8,7 +8,7 @@ m4_define(`VDOWNLOAD_URL',`http://files.gpg4win.org/gpg4win-vanilla-VERSION.exe'
 m4_define(`VDL_SIZE',`4 MByte')
 m4_define(`SDOWNLOAD_URL',`http://files.gpg4win.org/gpg4win-VERSION.tar.bz2')
 m4_define(`SDL_SIZE',`6 MByte')
-m4_define(`SHA1_SRC',`5fa713433c2a96b96878429d1e9303ef0bceed85')
+m4_define(`SHA1_SRC',`2ecda0e59e06ec1773c5ba46a0503cdc47ee0086')
 m4_define(`SHA1_EXE',`efb8c9d4f209c9d12bd0e8a2068e389302cd58ee')
 m4_define(`SHA1_EXL',`33308d11ac37c9321277fca1ec22b96ef51a11a0')
 m4_define(`SHA1_EXV',`3e675391395bad7f073f1d5830b1ccf8d6f84cad')
