@@ -1,0 +1,366 @@
+# zh_TW Translation for Gpg4Win Installer.
+# Copyright (C) 2015 Free Software Foundation, Inc.
+# This file is distributed under the same license as the Gpg4Win package.
+# Mingye Wang <arthur200126@gmail.com>, 2015.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Gpg4Win Installer\n"
+"Report-Msgid-Bugs-To: gpg4win-devel@wald.intevation.org\n"
+"PO-Revision-Date: 2015-08-09 21:10+0800\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=Big5\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.4\n"
+"Last-Translator: Mingye Wang (Arthur2e5) <arthur200126@gmail.com>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language: zh_TW\n"
+
+msgctxt "T_AlreadyRunning"
+msgid "An instance of this installer is already running."
+msgstr "該安裝程式的一個例項已經在執行。"
+
+msgctxt "T_WelcomeTitleGpg4win"
+msgid "Welcome to the installation of Gpg4win"
+msgstr "歡迎來到 Gpg4win 安裝程式。"
+
+msgctxt "T_AboutGpg4win"
+msgid ""
+"Gpg4win is a installer package for Windows for EMail and file encryption "
+"using the core component GnuPG for Windows. Both relevant cryptography "
+"standards are supported, OpenPGP and S/MIME. Gpg4win and the software "
+"included with Gpg4win are Free Software."
+msgstr ""
+"Gpg4win 是一個適用於 Windows 的檔案和電子郵件加密工具軟體包，通過核心元件 "
+"GnuPG 的 Windows 版本達成目標。這個過程中涉及的兩種密碼學標準，OpenPGP 和 S/"
+"MIME 都在這裡提供支援。本軟體安裝包及其內容均為自由軟體。"
+
+msgctxt "T_AboutGpg4winVersion"
+msgid "This is Gpg4win version ${VERSION}"
+msgstr "Gpg4win，版本 ${VERSION}"
+
+msgctxt "T_AboutGpg4winFileVersion"
+msgid "file version ${PROD_VERSION}"
+msgstr "檔案版本 ${PROD_VERSION}"
+
+msgctxt "T_AboutGpg4winReleaseDate"
+msgid "release date ${_BUILD_ISODATE}"
+msgstr "釋出日期 ${_BUILD_ISODATE}"
+
+msgctxt "T_WelcomeTitleGpg4winSrc"
+msgid "Welcome to the installation of the Gpg4win sources"
+msgstr "歡迎來到 Gpg4win 源碼安裝"
+
+msgctxt "T_AboutGpg4winSrc"
+msgid ""
+"Gpg4win is a installer package for Windows for EMail and file encryption "
+"using the core component GnuPG for Windows. Both relevant cryptography "
+"standards are supported, OpenPGP and S/MIME. Gpg4win and the software "
+"included with Gpg4win are Free Software."
+msgstr ""
+"Gpg4win 是一個適用於 Windows 的檔案和電子郵件加密工具軟體包，通過核心元件 "
+"GnuPG 的 Windows 版本達成目標。這個過程中涉及的兩種密碼學標準，OpenPGP 和 S/"
+"MIME 都在這裡提供支援。本軟體安裝包及其內容均為自由軟體。"
+
+msgctxt "T_AboutGpg4winSrcVersion"
+msgid "This is Gpg4win version ${VERSION}"
+msgstr "Gpg4win，版本 ${VERSION}"
+
+msgctxt "T_AboutGpg4winSrcFileVersion"
+msgid "file version ${PROD_VERSION}"
+msgstr "檔案版本 ${PROD_VERSION}"
+
+msgctxt "T_AboutGpg4winSrcReleaseDate"
+msgid "release date ${_BUILD_ISODATE}"
+msgstr "釋出日期 ${_BUILD_ISODATE}"
+
+msgctxt "T_LangCode"
+msgid "en"
+msgstr "zh_CN"
+
+msgctxt "T_GPLHeader"
+msgid ""
+"This software is licensed under the terms of the GNU General Public License "
+"(GPL)."
+msgstr "此軟體依照 GNU 通用公共許可證（GPL）的條款授權。"
+
+msgctxt "T_GPLShort"
+msgid ""
+"In short: You are allowed to run this software for any purpose. You may "
+"distribute it as long as you give the recipients the same rights you have "
+"received."
+msgstr ""
+"總而言之：你可以為了任何目的執行本軟體。你可以隨意將此軟體分發給他人，只要你"
+"給予他們與你所獲得的相同的權利。"
+
+msgctxt "T_RunKeyManager"
+msgid "Run the key manager"
+msgstr "執行金鑰管理器"
+
+msgctxt "T_MoreInfo"
+msgid "Click here for the project's homepage"
+msgstr "點選此處訪問項目首頁"
+
+msgctxt "T_MoreInfoURL"
+msgid "http://www.gpg4win.org"
+msgstr "http://www.gpg4win.org"
+
+msgctxt "T_ShowReadme"
+msgid "Show the README file"
+msgstr "顯示 README 檔案"
+
+msgctxt "T_NoKeyManager"
+msgid "No key manager has been installed, thus we can't run one now."
+msgstr "沒有安裝任何金鑰管理器，因此無法啟動金鑰管理器。"
+
+msgctxt "DESC_Menu_manuals"
+msgid "Documentation"
+msgstr "文件"
+
+msgctxt "DESC_Menu_uninstall"
+msgid "Uninstall"
+msgstr "解除安裝"
+
+msgctxt "DESC_Desktop_manuals"
+msgid "Gpg4win Documentation"
+msgstr "Gpg4win 文件"
+
+msgctxt "T_InstallOptions"
+msgid "Install Options"
+msgstr "安裝選項"
+
+msgctxt "T_InstallOptLinks"
+msgid "Start links"
+msgstr "開始選單快捷方式"
+
+msgctxt "T_InstOptLabelA"
+msgid "Please select where Gpg4win shall install links:"
+msgstr "請選擇 Gpg4win 安裝快捷方式的位置："
+
+msgctxt "T_InstOptLabelB"
+msgid "(Only programs will be linked into the quick launch bar.)"
+msgstr "（只有程式會被加入快速啟動欄）。"
+
+msgctxt "T_InstOptFieldA"
+msgid "Start Menu"
+msgstr "開始選單"
+
+msgctxt "T_InstOptFieldB"
+msgid "Desktop"
+msgstr "桌面"
+
+msgctxt "T_InstOptFieldC"
+msgid "Quick Launch Bar"
+msgstr "快速啟動欄"
+
+msgctxt "T_FoundExistingVersion"
+msgid ""
+"Version $R1 has already been installed.\n"
+"Do you want to overwrite it with version ${VERSION}?"
+msgstr ""
+"版本 $R1 已被安裝。\n"
+"你希望用版本 ${VERSION} 覆蓋它嗎？"
+
+msgctxt "T_FoundExistingOldVersion"
+msgid ""
+"An old version $R1 has already been installed.  It is strongly recommended "
+"to deinstall previous versions on major upgrades.\n"
+"Do you want to continue installing Gpg4win ${VERSION} anyway?"
+msgstr ""
+"舊版本 $R1 已被安裝。我們強烈建議在重大升級時先解除安裝舊版。\n"
+"你無論如何都要繼續安裝 Gpg4win ${VERSION} 嗎？"
+
+msgctxt "T_FoundExistingVersionB"
+msgid ""
+"A version of Gpg4Win has already been installed on the system. There will be "
+"no problem installing and thus overwriting this Version.\n"
+"\n"
+"Do you want to continue installing Gpg4win?"
+msgstr ""
+"一個版本的 Gpg4Win 已經在此係統上安裝。繼續覆蓋安裝那個版本不會有任何問題。\n"
+"\n"
+"你想要繼續安裝 Gpg4win 嗎？"
+
+msgctxt "T_FoundOldSeeManual"
+msgid ""
+"Please see the Gpg4win user manual to learn how to migrate existing keys "
+"from other GnuPG based installations to Gpg4win."
+msgstr "請參考 Gpg4win 使用者手冊來獲取從其他基於 GnuPG 的安裝匯入金鑰的方法。"
+
+msgctxt "T_FoundOldGnuPP"
+msgid ""
+"An old installation of GnuPP (GNU Privacy Project) has been been detected.  "
+"That software is not maintained anymore and thus should be removed.\n"
+"\n"
+"Do you want to continue installing Gpg4win and take care of the old "
+"installation later?"
+msgstr ""
+"老程式 GnuPP (GNU Privacy Project) 已被安裝。此軟體已不被維護，應該移除。\n"
+"\n"
+"你希望繼續安裝 Gpg4win，過會再來處理這個老程式嗎？"
+
+msgctxt "T_FoundOldGnuPT"
+msgid ""
+"An installation of GnuPT has been been detected.  This may cause problems "
+"when used along with Gpg4win.\n"
+"\n"
+"Do you want to continue installing Gpg4win?"
+msgstr ""
+"GnuPT 已被安裝，可能和 Gpg4win 互相干擾。\n"
+"\n"
+"你確定要繼續安裝 Gpg4win 嗎？"
+
+msgctxt "T_FoundOldWinPTSF"
+msgid ""
+"An old installation of the Sourceforge hosted WinPT has been been detected.  "
+"That software is not maintained anymore and should be removed.\n"
+"\n"
+"Do you want to continue installing Gpg4win and take care of the old "
+"installation later?"
+msgstr ""
+"SourceForge 上的舊版 WinPT 已被安裝。此軟體已不被維護，應該移除。\n"
+"\n"
+"你希望繼續安裝 Gpg4win，過會再來處理這個老程式嗎？"
+
+msgctxt "T_FoundOldGnuPack"
+msgid ""
+"An installation of GnuPG-Pack has been been detected. You need to uninstall "
+"it before you can continue with Gpg4win installation.\n"
+"\n"
+"The installation will be aborted now!"
+msgstr ""
+"GnuPG-Pack 已被安裝。你要先解除安裝它才能繼續安裝 Gpg4win。\n"
+"\n"
+"安裝將立刻停止！"
+
+msgctxt "T_BetaWarning"
+msgid ""
+"Note: This is a BETA version of Gpg4win.\n"
+"\n"
+"Beta versions are only intended for testing and shall not be used in a "
+"production environment."
+msgstr ""
+"提示：此版本 Gpg4win 是 BETA 版。\n"
+"\n"
+"Beta 版本用於測試，不應在生產環境使用。"
+
+msgctxt "T_AdminNeeded"
+msgid ""
+"Warning: Administrator permissions required for a successful installation"
+msgstr "警告：需要管理員許可權才能成功安裝。"
+
+msgctxt "T_CloseOtherApps"
+msgid ""
+"Please make sure that other applications are not running. In particular you "
+"should close Outlook and all Explorer windows.  Gpg4win will try to install "
+"anyway but a reboot will be required then."
+msgstr ""
+"請確保其他程式，尤其是 Outlook 和 Windows 資源管理器視窗，已經關閉。Gpg4win "
+"無論如何都會繼續嘗試安裝，但不關閉的話系統稍後將需要重啟。"
+
+msgctxt "T_ShuttingDownWinPT"
+msgid "Trying to shutdown a possible running instance of WinPT."
+msgstr "嘗試停止一個可能執行著的 WinPT 例項。"
+
+msgctxt "T_ShuttingDownDirMngr"
+msgid "Trying to shutdown a possible running instance of DirMngr."
+msgstr "嘗試停止一個可能執行著的 DirMngr 例項。"
+
+msgctxt "T_SetDefaultClient"
+msgid "Do you want to make Claws Mail your default mail client?"
+msgstr "你想把 Claws Mail 設定為你的預設郵件客戶端嗎？"
+
+# Better if as-is.
+msgctxt "DESC_SEC_claws_mail"
+msgid "Claws Mail-User-Agent"
+msgstr ""
+
+msgctxt "DESC_Menu_claws_mail"
+msgid "Run the Claws mailprogram."
+msgstr "執行 Claws Mail 程式。"
+
+msgctxt "DESC_Menu_claws_mail_pdf"
+msgid "Show the online manual of Claws Mail"
+msgstr "顯示 Claws Mail 線上手冊。"
+
+msgctxt "DESC_SEC_gnupg2"
+msgid "GNU Privacy Guard"
+msgstr "GNU 隱私衛士"
+
+msgctxt "DESC_SEC_gpa"
+msgid "GNU Privacy Assistant"
+msgstr "GNU 隱私助理"
+
+msgctxt "DESC_Menu_gpa"
+msgid "Run the GNU Privacy Assistant key management tool."
+msgstr "執行 GNU 隱私助理金鑰管理工具。"
+
+msgctxt "DESC_Menu_gpg4win_readme"
+msgid "General information on Gpg4win"
+msgstr "Gpg4win 基本資訊"
+
+msgctxt "DESC_Menu_gpg4win_howtosmime"
+msgid "Instruction to configure S/MIME"
+msgstr "S/MIME 配置指南"
+
+msgctxt "DESC_Menu_gnupg_faq"
+msgid "Show the Frequently Asked Questions document for GnuPG"
+msgstr "顯示 GnuPG 的 FAQ 文件"
+
+msgctxt "T_GpgEX_RegFailed"
+msgid "Warning: Registration of the GpgEX plugin failed."
+msgstr "警告：GpgEX 外掛註冊失敗。"
+
+msgctxt "DESC_SEC_gpgex"
+msgid "GnuPG Shell Extension"
+msgstr "GnuPG 殼拓展"
+
+msgctxt "T_GpgOL_RegFailed"
+msgid "Warning: Registration of the GpgOL Outlook pluginfailed."
+msgstr "警告：GpgOL Outlook 外掛註冊失敗。"
+
+# Better if as-is.
+msgctxt "DESC_SEC_gpgol"
+msgid "GnuPG for Outlook"
+msgstr ""
+
+msgctxt "DESC_SEC_kleopatra"
+msgid "Keymanager for OpenPGP and X.509 and common crypto dialogs."
+msgstr "OpenPGP 和 X.509 金鑰管理器和常用加解密視窗。"
+
+msgctxt "DESC_Menu_kleopatra"
+msgid "Run the Kleopatra key management tool."
+msgstr "執行 Kleopatra 金鑰管理工具。"
+
+msgctxt "DESC_Name_compendium"
+msgid "Gpg4win Compendium"
+msgstr "Gpg4win 使用綱要"
+
+msgctxt "DESC_SEC_compendium"
+msgid "The Gpg4win documentation (English and German)"
+msgstr "Gpg4win 文件（英語和德語）"
+
+msgctxt "DESC_Name_compendium_de_pdf"
+msgid "Gpg4win Compendium (pdf, German)"
+msgstr "Gpg4win 使用綱要（PDF，德語）"
+
+msgctxt "DESC_Name_compendium_en_pdf"
+msgid "Gpg4win Compendium (pdf, English)"
+msgstr "Gpg4win 使用綱要（PDF，英語）"
+
+msgctxt "DESC_Name_compendium_de_html"
+msgid "Gpg4win Compendium (html, German)"
+msgstr "Gpg4win 使用綱要（HTML，德語）"
+
+msgctxt "DESC_Name_compendium_en_html"
+msgid "Gpg4win Compendium (html, English)"
+msgstr "Gpg4win 使用綱要（HTML，英語）"
+
+msgctxt "DESC_Menu_compendium_de_pdf"
+msgid "Show the Gpg4win Compendium (pdf, German)"
+msgstr "顯示 Gpg4win 使用綱要（PDF，德語）"
+
+msgctxt "DESC_Menu_compendium_en_pdf"
+msgid "Show the Gpg4win Compendium (pdf, English)"
+msgstr "顯示 Gpg4win 使用綱要（PDF，英語）"
