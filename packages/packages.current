@@ -261,11 +261,13 @@ chk  f5230890dc0be42fb5c58fbf793da253155de106
 #
 # GpgOL
 #
-server ftp://ftp.g10code.com/g10code/gpgol
+server http://files.gpg4win.org/Beta/gpgol/
 
-# checked: 2014-08-13 ah
-file gpgol-1.2.1.tar.bz2
-chk  4cf226bc452ffefbce82abada99d23f72a9f1e0e
+# last-changed: 2015-11-13
+# by: ah
+# verified: Sig 61AC 3F5E E4BE 593C 13D6  8B1E 7CBD 620B EC70 B1B8
+file 1.3.0-beta103/gpgol-1.3.0-beta103.tar.bz2
+chk  e62a737adabe4d6c5a5b8a0541e74bf34d9948b5
 
 
 #
