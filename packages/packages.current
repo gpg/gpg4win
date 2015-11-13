@@ -430,12 +430,12 @@ chk  e2af27d711d528c21fd2bf73639da1cd2c811f7a
 #
 server http://files.kolab.org/local/gpg4win
 
-# This is kdepim/gpg4win branch cf609810
-file kleopatra-20150820-1-bin.tar.xz
-chk  1f66048d697001963538ba2ae89675c42b06bf03
+# This is kdepim/gpg4win branch fb4ae3dc8
+file kleopatra-20151113-bin.tar.xz
+chk  84c2e17f932be1e980cb587b0f49b645946fd9d3
 
 # This also includes the sources for kdelibs
 # kdewin win-iconv and kdepimlibs which
 # are part of binaries in the kleopatra bin package
-file kleopatra-20150820-src.tar.xz
-chk  848e4350c7fd56c813ea679a4ded703f7789b95f
+file kleopatra-20151113-src.tar.xz
+chk  0f79e3a654c020c7ab84fe6ed2efbbca37af550e
