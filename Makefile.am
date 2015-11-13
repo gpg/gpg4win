@@ -47,7 +47,8 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
 		patches/gnutls-2.12.23/25_updatedgdocfrommaster.patch \
         patches/libtasn1-2.14/gnulib-mingw-w64-fix.patch \
 		patches/w32pth-2.0.5/workaround-broken-libtool.patch \
-		patches/scute-1.4.0/workaround-broken-libtool.patch
+		patches/scute-1.4.0/workaround-broken-libtool.patch \
+		patches/libassuan-2.4.0/0001-Fix-windows-build-with-mingw-w64-2.0.x.patch
 
 copy-news:
 	cp NEWS doc/website/NEWS.last

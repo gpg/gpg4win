@@ -1,0 +1,51 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From d9ce26f49e506d41317bae9357384bb811870d2e Mon Sep 17 00:00:00 2001
+From: Andre Heinecke <aheinecke@intevation.de>
+Date: Fri, 13 Nov 2015 15:53:00 +0100
+Subject: [PATCH] Fix windows build with mingw-w64 2.0.x
+
+* src/assuan-socket.c: Add errno values not defined by mingw-w64 2.0
+---
+ src/assuan-socket.c | 24 ++++++++++++++++++++++++
+ 1 file changed, 24 insertions(+)
+
+diff --git a/src/assuan-socket.c b/src/assuan-socket.c
+index 89723b3..5ad7299 100644
+--- a/src/assuan-socket.c
++++ b/src/assuan-socket.c
+@@ -70,6 +70,30 @@
+ # define S_IRGRP 0
+ # define S_IWGRP 0
+ #endif
++#ifndef ENOTSUP
++#define ENOTSUP 129
++#endif
++#ifndef EPROTO
++#define EPROTO 134
++#endif
++#ifndef EPROTONOSUPPORT
++#define EPROTONOSUPPORT 135
++#endif
++#ifndef ENETDOWN
++#define ENETDOWN 116
++#endif
++#ifndef ENETUNREACH
++#define ENETUNREACH 118
++#endif
++#ifndef EHOSTUNREACH
++#define EHOSTUNREACH 110
++#endif
++#ifndef ECONNREFUSED
++#define ECONNREFUSED 107
++#endif
++#ifndef ETIMEDOUT
++#define ETIMEDOUT 138
++#endif
+ #endif
+
+ #ifndef ENAMETOOLONG
+--
+2.1.4
