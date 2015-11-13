@@ -266,8 +266,8 @@ server http://files.gpg4win.org/Beta/gpgol/
 # last-changed: 2015-11-13
 # by: ah
 # verified: Sig 61AC 3F5E E4BE 593C 13D6  8B1E 7CBD 620B EC70 B1B8
-file 1.3.0-beta103/gpgol-1.3.0-beta103.tar.bz2
-chk  e62a737adabe4d6c5a5b8a0541e74bf34d9948b5
+file 1.3.0-beta104/gpgol-1.3.0-beta104.tar.bz2
+chk  61d2e787e3a209b9e35a68c09006ddaa7711a5d7
 
 
 #
