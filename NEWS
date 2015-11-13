@@ -4,11 +4,50 @@
 # distributed by www.gpg4win.org.
 Noteworthy changes in version 2.3.0 (unreleased)
 
+(en) GpgOL now supports reading PGP/MIME and S/MIME mails, the standard
+     format for Crypto Mails as sent by Thunderbird/Enigmail, Gpgmail
+     or KMail. For more details see ( https://wiki.gnupg.org/GpgOL/MIMESupport ).
+
+(de) GpgOL für Outlook 2010 und später kann nun PGP/MIME und S/MIME Mails
+     verarbeiten. Dies ist das Format wie es standardmässig von
+     Thunderbird/Enigmail, Gpgmail oder KMail versendet wird.
+     Details (English) sind im wiki zu finden.
+     ( https://wiki.gnupg.org/GpgOL/MIMESupport )
+
+(en) GpgOL now supports Outlook 2016.
+
+(de) Outlook 2016 wird nun von GpgOL unterstützt.
+
+(en) AES-NI Instructions for encryption and decryption with AES
+     are now supported. (GnuPG Bug #1919)
+
+(de) AES-NI Befehle zur Ver- und Entschlüsselung mit AES werden
+     nun unterstützt. (GnuPG Bug #1919)
+
+(en) The decrypt/verify Window of GpgOL no longer moves and resizes
+     eratically. (KDE Bug #355140)
+
+(de) Das Entschlüsseln / Überprüfen Fenster von GpgOL verändert nun
+     nicht mehr seine Position und Größe. (KDE Bug #355140)
+
+(en) Bulk import of more then a hundred Keys no longer fails when Kleopatra
+     is running (GnuPG Bug #2135)
+
+(de) Der gleichzeitge import von mehr als hundert Schlüsseln schlägt nun nicht
+     mehr Fehl wenn Kleopatra läuft. (GnuPG Bug #2135)
+
+(en) French and Chinese localisation has been added to the installer,
+     GpgEX and GpgOL. Thanks to Oliver Serve and Mingye Wang.
+
+(de) Der Installer, GpgEX und GpgOL sind nun auch ins Französische und
+     Chinesische übersetzt. Danke für die Übersetzungen an Oliver Serve
+     und Mingye Wang.
+
 ~~~~~~~~~~~~~~~
 GnuPG:          2.0.29
 Kleopatra:      2.2.0-gitcf609810
 GPA:            0.9.9
-GpgOL:          1.2.1
+GpgOL:          1.3.0-beta103
 GpgEX:          1.0.2
 Kompendium DE:  3.0.0
 Kompendium EN:  3.0.0
