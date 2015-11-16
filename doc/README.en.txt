@@ -34,7 +34,7 @@ Gpg4win supports these platforms:
 
   * Operating System: Windows XP and later Versions (for all: 32/64 bit)
 
-  * MS Outlook: 2003, 2007, 2010, 2013 (for all: only 32bit!)
+  * MS Outlook: 2003, 2007, 2010, 2013, 2016 (for all: only 32bit!)
 
 
 2. Changes
