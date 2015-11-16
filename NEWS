@@ -5,36 +5,35 @@
 Noteworthy changes in version 2.3.0 (unreleased)
 
 (en) GpgOL now supports reading PGP/MIME and S/MIME mails, the standard
-     format for Crypto Mails as sent by Thunderbird/Enigmail, Gpgmail
-     or KMail. For more details see ( https://wiki.gnupg.org/GpgOL/MIMESupport ).
+     format for Crypto Mails as sent by Thunderbird/Enigmail, GPGMail
+     or KMail. For details see: https://wiki.gnupg.org/GpgOL/MIMESupport
 
-(de) GpgOL für Outlook 2010 und später kann nun PGP/MIME und S/MIME Mails
-     verarbeiten. Dies ist das Format wie es standardmässig von
-     Thunderbird/Enigmail, Gpgmail oder KMail versendet wird.
-     Details (English) sind im wiki zu finden.
-     ( https://wiki.gnupg.org/GpgOL/MIMESupport )
+(de) GpgOL für Outlook 2010 und später kann nun PGP/MIME und S/MIME E-Mails
+     verarbeiten. Dies ist das Format wie es standardmäßig von
+     Thunderbird/Enigmail, GPGMail oder KMail versendet wird.
+     Details siehe: https://wiki.gnupg.org/GpgOL/MIMESupport
 
 (en) GpgOL now supports Outlook 2016.
 
-(de) Outlook 2016 wird nun von GpgOL unterstützt.
+(de) GpgOL unterstützt nun Outlook 2016.
 
-(en) AES-NI Instructions for encryption and decryption with AES
+(en) AES-NI Instructions for faster encryption and decryption with AES
      are now supported. (GnuPG Bug #1919)
 
-(de) AES-NI Befehle zur Ver- und Entschlüsselung mit AES werden
+(de) AES-NI Befehle zur schnelleren Ver- und Entschlüsselung mit AES werden
      nun unterstützt. (GnuPG Bug #1919)
 
-(en) The decrypt/verify Window of GpgOL no longer moves and resizes
-     eratically. (KDE Bug #355140)
+(en) The decrypt/verify window of GpgOL no longer moves and resizes
+     erratically. (KDE Bug #355140)
 
-(de) Das Entschlüsseln / Überprüfen Fenster von GpgOL verändert nun
+(de) Das Entschlüsseln/Überprüfen-Fenster von GpgOL verändert nun
      nicht mehr seine Position und Größe. (KDE Bug #355140)
 
-(en) Bulk import of more then a hundred Keys no longer fails when Kleopatra
-     is running (GnuPG Bug #2135)
+(en) Bulk import of more then a hundred keys no longer fails when Kleopatra
+     is running. (GnuPG Bug #2135)
 
-(de) Der gleichzeitge import von mehr als hundert Schlüsseln schlägt nun nicht
-     mehr Fehl wenn Kleopatra läuft. (GnuPG Bug #2135)
+(de) Der gleichzeitige Import von über 100 Schlüsseln schlägt nun nicht
+     mehr fehl wenn Kleopatra läuft. (GnuPG Bug #2135)
 
 (en) French and Chinese localisation has been added to the installer,
      GpgEX and GpgOL. Thanks to Oliver Serve and Mingye Wang.
