@@ -1,7 +1,7 @@
 # Build html from m4 macrofiles
 # $Id$
 #
-# (c)2005,2006 by Intevation GmbH
+# (c)2005,2006,2015 by Intevation GmbH
 # Author(s): Sascha Wilde
 #
 # This is Free Software licensed under the GPL
@@ -16,10 +16,10 @@ SUBDIRS =
 
 # Installation configuration
 INSTALL_DIR = /tmp/gpg4win-www
-ADD_INST_TYPES = *.css *.php *.png
+ADD_INST_TYPES = *.css *.png
 ADD_INST_DIRS = pix img
 
-#USER=$(shell grep "svn+ssh://" .svn/entries | sed -e "s/.*svn+ssh:\/\///g" | sed -e "s/@.*//g" | head -1)
+USER=intevation
 
 CURDIR=$(shell pwd)
 
@@ -47,7 +47,7 @@ change-history-de.htm4: build-history.awk NEWS.last
 online: all
 	echo "Going to put current contents online for www.gpg4win.org ..."
 	rsync -rvPC --perms --chmod=ug+rw,o+r,Dg+s,Da+x,u-s,Fg-s,o-wt --exclude='*.swp' $(ADD_INST_TYPES) $(TARGETS) $(ADD_INST_DIRS) \
-      $(USER)@wald.intevation.org:/gpg4win/htdocs/
+	$(USER)@www.gpg4win.org:/srv/gpg4win-www/
 
 install: all
 	mkdir -p $(INSTALL_DIR) ;\
