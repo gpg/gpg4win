@@ -274,11 +274,11 @@ chk  c569e7b223f7b5efcce38cc4a4445127744c0454
 #
 server ftp://ftp.g10code.com/g10code/gpgex
 
-# last-changed: 2015-06-05 ah
+# last-changed: 2015-11-23
 # by: ah
 # verified: Sig D869 2123 C406 5DEA 5E0F  3AB5 249B 39D2 4F25 E3B6
-file gpgex-1.0.2.tar.bz2
-chk  8892dafc405255731b82a0c299960a5da59d3191
+file gpgex-1.0.3.tar.bz2
+chk  52c803434b3d861ae68e93bf68852bed81c70166
 
 
 #
