@@ -50,19 +50,34 @@ Die integrierten Gpg4win-Komponenten in Version !VERSION! sind:
 Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 -----------------------------------------
 
-- Claws Mail wurde aus dem Installationspaket entfernt.
-  Nutzer von Claws Mail sollten auf die von der Claws Mail
-  Initiative gepflegte Version wechseln. Diese ist unter:
-      http://www.claws-mail.org/win32/
-  verfügbar.
+- GpgOL für Outlook 2010 und später kann nun PGP/MIME und S/MIME E-Mails
+  verarbeiten. Dies ist das Format wie es standardmäßig von
+  Thunderbird/Enigmail, GPGMail oder KMail versendet wird.
+  Details siehe: https://wiki.gnupg.org/GpgOL/MIMESupport
 
-- GnuPG wurde auf Version 2.0.29 aktualisiert.
+- GpgOL unterstützt nun Outlook 2016.
 
-- X509 Zertifikatsrequests können nun wieder mit den
-  Standartoptionen generiert werden.
+- AES-NI Befehle zur schnelleren Ver- und Entschlüsselung mit AES werden
+  nun unterstützt. (GnuPG Bug #1919)
 
-- GPA wurde auf Version 0.9.9 aktualisiert.
+- Das Entschlüsseln/Überprüfen-Fenster von GpgOL verändert nun
+  nicht mehr seine Position und Größe. (KDE Bug #355140)
 
+- Der gleichzeitige Import von über 100 Schlüsseln schlägt nun nicht
+  mehr fehl wenn Kleopatra läuft. (GnuPG Bug #2135)
+
+- Der Installer, GpgEX und GpgOL sind nun auch ins Französische und
+  Chinesische übersetzt. Danke für die Übersetzungen an Oliver Serve
+  und Mingye Wang.
+
+- Eine Reihe von zufällig auftretenden Abstürzen von GpgOL wurde behoben.
+  (GnuPG Bug #1837)
+
+- GpgOL behandelt nun Anhänge von PGP/MIME und S/MIME Mails mit
+  Sonderzeichen im Dateinamen.
+
+- Eine Schwachstelle im Gpg4win-installer wurde behoben.
+  Details finden sich im [security advisory 2015-11-25].
 
 3. Bekannte Probleme (und Abhilfen)
 ===================================

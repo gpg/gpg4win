@@ -2,7 +2,8 @@
 #
 # The version number given below are for the standard installers as
 # distributed by www.gpg4win.org.
-Noteworthy changes in version 2.3.0 (unreleased)
+Noteworthy changes in version 2.3.0 (2015-11-25)
+------------------------------------------------
 
 (en) GpgOL now supports reading PGP/MIME and S/MIME mails, the standard
      format for Crypto Mails as sent by Thunderbird/Enigmail, GPGMail
@@ -54,9 +55,15 @@ Noteworthy changes in version 2.3.0 (unreleased)
 (de) GpgOL behandelt nun Anhänge von PGP/MIME und S/MIME Mails mit
      Sonderzeichen im Dateinamen.
 
+(en) A vulnerability in the Gpg4win-installer has been fixed. See:
+     [security advisory 2015-11-25] for details.
+
+(de) Eine Schwachstelle im Gpg4win-installer wurde behoben.
+     Details finden sich im [security advisory 2015-11-25].
+
 ~~~~~~~~~~~~~~~
 GnuPG:          2.0.29
-Kleopatra:      2.2.0-gitcf609810
+Kleopatra:      2.2.0-gitfb4ae3d
 GPA:            0.9.9
 GpgOL:          1.3.0
 GpgEX:          1.0.3
