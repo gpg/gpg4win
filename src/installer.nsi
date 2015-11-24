@@ -60,11 +60,14 @@ Name "${PRETTY_PACKAGE}"
 # Set the output filename.
 !ifdef GPG4WIN_VANILLA
 OutFile "${PACKAGE}-vanilla-${VERSION}.exe"
+BrandingText "${PRETTY_PACKAGE}-vanilla-${VERSION}"
 !else
 !ifdef GPG4WIN_LIGHT
 OutFile "${PACKAGE}-light-${VERSION}.exe"
+BrandingText "${PRETTY_PACKAGE}-light-${VERSION}"
 !else
 OutFile "${PACKAGE}-${VERSION}.exe"
+BrandingText "${PRETTY_PACKAGE}-${VERSION}"
 !endif
 !endif
 
