@@ -173,11 +173,11 @@ in_vers && /^~~~/ {
   print "</pre>"
 
   printf "<p>%s ", explicit_dl_text[lang];
-  printf "<a href=\"http://ftp.gpg4win.org/gpg4win-%s.exe\">gpg4win-%s.exe</a><br>", version, version;
+  printf "<a href=\"https://files.gpg4win.org/gpg4win-%s.exe\">gpg4win-%s.exe</a><br>", version, version;
   printf "</p>"
 
   printf "<p>%s ", readme_text[lang];
-  printf "<a href=\"http://ftp.gpg4win.org/README-%s." lang ".txt\">README-%s." lang ".txt</a><br>", version, version;
+  printf "<a href=\"https://files.gpg4win.org/README-%s." lang ".txt\">README-%s." lang ".txt</a><br>", version, version;
   printf "</p>"
 }
 
