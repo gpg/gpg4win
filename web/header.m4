@@ -30,7 +30,7 @@
    <p></p>
    <small>2015-11-25</small><br>
    <span class="serif_word"><img src="img/bulletin.png" alt="" />
-   <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2015-November/000066.html">
+   <a href="news-20151125.html">
    Security Advisory
    </a>
    </span>

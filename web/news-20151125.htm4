@@ -1,0 +1,90 @@
+m4_dnl                                                          -*-html-*-
+m4_include(`template.m4')
+m4_dnl $Id$
+
+m4_define(`EN')
+m4_define(`DE_FILE', `news-20151125.html')
+m4_define(`TITLE', `Security Advisory Gpg4win 2015-11-25')
+PAGE_START
+
+<div id="intro">
+<h2>Security Advisory Gpg4win 2015-11-25</h2>
+<p>
+</div>
+
+
+<div id="main">
+
+<p>
+<b>Affected:</b> Gpg4win installers version 2.2.6 and before.
+
+<p>
+<b>Criticality:</b> medium
+
+<ol>
+<li> The installer will load and execute other code if it is placed
+in the same directory as a DLL with the right name.
+This "current directory attack" or "dll preloading attack"
+can be part of a remote exploitation for example if the Gpg4win installer 
+is downloaded to a common Downloads directory and the attacker can previously 
+place files there by tricking a user or other software to download files 
+with a specific name to the same place. If the Gpg4win installer is 
+then executed, the other code may run, while the user believes 
+to run only the Gpg4win installer.
+
+<li> There is a "local privilege escalation" during an installer run. 
+Installer runs can happen during a fresh, an update install 
+or a deinstallation. With Windows Vista or later an administrator 
+can log in as user and give higher privileges to a single process 
+using the User Account Control mechanism (UAC). If the installer is started 
+in this way, there is a time window where an attacker running 
+with user privileges can insert code in a temporary directory
+of the installer that will be executed with the higher privileges
+bypassing the UAC.
+</ol>
+
+<p>
+<b>Mitigation:</b> Update to Gpg4win 2.3.0 (published today)
+
+<p>
+<b>General precaution measure:</b>
+  Always copy installers into a single new directory where
+  it is the only file before executing it. The reason is that 
+  many other installers based on NSIS or other common installer technologies 
+  on Windows are vulnerable to this kind of 'current directory attack'.
+
+
+<h3>Timeline</h3>
+<ul>
+<li> 2015-11-17 problem reported to Gpg4win initiative by 
+             Stefan Kanthak <stefan.kanthak at nexgo.de>
+<li> 2015-11-18 Start of analysis and development of mitigations 
+             by Werner Koch and Andre Heinecke.             
+<li> 2015-11-24 Upstream report to NSIS with solution as patch to v2.46
+     <a href="http://sourceforge.net/p/nsis/bugs/1125/">http://sourceforge.net/p/nsis/bugs/1125/</a>
+<li> 2015-11-24 Report to Debian as Gpg4win upstream provider of NSIS:
+     <a href="https://bugs.debian.org/806036">https://bugs.debian.org/806036</a>
+<li> 2015-11-25 Fix released with Gpg4win 2.3.0.
+</ul>
+
+<h3>Additional information</h3>
+
+<p>
+On 2015-10-28: A public report of similar problems with a Mozilla 
+installer component went to <a
+href="http://seclists.org/fulldisclosure/2015/Oct/109">http://seclists.org/fulldisclosure/2015/Oct/109</a> .
+
+<p>
+Microsoft has published a number of reports about "DLL preloading"
+or path traversal problems. 
+
+<p>
+More technical details are available via the provided links.
+As Gpg4win is Free Software which is developed in the open,
+the source code of the used installer is publicly available 
+and may be inspected for details of the fix.
+
+<p>
+Advisory compiled by: Bernhard Reiter
+
+</div>
