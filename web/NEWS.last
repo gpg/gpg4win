@@ -36,10 +36,10 @@ Noteworthy changes in version 2.3.0 (2015-11-25)
 (de) Der gleichzeitige Import von über 100 Schlüsseln schlägt nun nicht
      mehr fehl wenn Kleopatra läuft. (GnuPG Bug #2135)
 
-(en) French and Chinese localisation has been added to the installer,
-     GpgEX and GpgOL. Thanks to Oliver Serve and Mingye Wang.
+(en) French and Chinese localisation has been added to the installer
+     and GpgOL. Thanks to Oliver Serve and Mingye Wang.
 
-(de) Der Installer, GpgEX und GpgOL sind nun auch ins Französische und
+(de) Der Installer und GpgOL sind nun auch ins Französische und
      Chinesische übersetzt. Danke für die Übersetzungen an Oliver Serve
      und Mingye Wang.
 
@@ -66,7 +66,7 @@ GnuPG:          2.0.29
 Kleopatra:      2.2.0-gitfb4ae3d
 GPA:            0.9.9
 GpgOL:          1.3.0
-GpgEX:          1.0.3
+GpgEX:          1.0.2
 Kompendium de:  3.0.0
 Kompendium en:  3.0.0
 ~~~~~~~~~~~~~~~
