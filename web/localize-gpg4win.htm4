@@ -239,34 +239,6 @@ languages.
 </p>
 
 
-<h2>Claws Mail</h2>
-
-<h4>Available languages</h4>
-
-<p>
-The Claws Mail developer team offers
-a <a href="http://www.claws-mail.org/i18n.php?section=projects">
-Translation Status</a> for the current stable release of Claws Mail.
-</p>
-
-<h4>How to initialize a new or update an available language</h4>
-
-<p>
-Claws Mail uses GNU gettext and therefore the standard methods
-for GNU gettext apply. The Claws Mail developer team
-offers detailed <a href="http://www.claws-mail.org/faq/index.php/Translator's_Information">
-Translator's Information</a> and a special <a href="http://www.claws-mail.org/MLs.php">mailing
-list for coordinating translators</a>.
-</p>
-
-<h4>How to activate an available language</h4>
-
-<p>
-Depending on the language environment of your Windows system,
-the appropriate language is selected automatically, if available.
-Otherwise, English is used.
-</p>
-
 <h2>GpgOL</h2>
 
 <h4>Available languages</h4>

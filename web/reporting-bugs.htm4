@@ -46,13 +46,10 @@ register before submitting or commenting a bug):
 
 <ul>
 <li><a href="http://bugs.kde.org/component-report.cgi?product=kleopatra">
-    Kleopatra Bug Tracker</a>
-     <p>
-<li><a href="http://www.thewildbeast.co.uk/claws-mail/bugzilla/index.cgi">
-    Claws Mail Bug Tracker</a>
+    Bug tracker for Kleopatra</a>
      <p>
 <li><a href="http://www.gnupg.org/documentation/bts.html">
-    GnuPG, GPA, GpgOL und GpgEX Bug Tracker</a>
+    Bug tracker for GnuPG, GPA, GpgOL, GpgEX and Gpg4win installer</a>
 </ul>
 
 <p>

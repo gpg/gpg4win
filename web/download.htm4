@@ -24,24 +24,24 @@ PAGE_START
 GnuPG, Kleopatra, GpgEX, GpgOL and Pinentry-qt; in different variants available:</p>
 <ul>
 <li><a
-href="http://files.gpg4win.org/Beta/gpg4win-2.2.2-beta37.exe">Full-Installer</a>
+href="https://files.gpg4win.org/Beta/gpg4win-2.2.2-beta37.exe">Full-Installer</a>
 (30 MByte)
-| <a href="http://files.gpg4win.org/Beta/gpg4win-2.2.2-beta37.exe.sig">OpenPGP Signatur</a>
+| <a href="https://files.gpg4win.org/Beta/gpg4win-2.2.2-beta37.exe.sig">OpenPGP Signatur</a>
 </li>
 <li><a
-href="http://files.gpg4win.org/Beta/gpg4win-light-2.2.2-beta37.exe">Light-Installer</a>
+href="https://files.gpg4win.org/Beta/gpg4win-light-2.2.2-beta37.exe">Light-Installer</a>
 (13 MByte, without Kleopatra and Gpg4win Compendium)
-| <a href="http://files.gpg4win.org/Beta/gpg4win-light-2.2.2-beta37.exe.sig">OpenPGP Signatur</a>
+| <a href="https://files.gpg4win.org/Beta/gpg4win-light-2.2.2-beta37.exe.sig">OpenPGP Signatur</a>
 </li>
-<li><a href="http://files.gpg4win.org/Beta/gpg4win-vanilla-2.2.2-beta37.exe">Vanilla-Installer</a>
+<li><a href="https://files.gpg4win.org/Beta/gpg4win-vanilla-2.2.2-beta37.exe">Vanilla-Installer</a>
 (4 MByte, GnuPG only)
-| <a href="http://files.gpg4win.org/Beta/gpg4win-vanilla-2.2.2-beta37.exe.sig">OpenPGP Signatur</a>
+| <a href="https://files.gpg4win.org/Beta/gpg4win-vanilla-2.2.2-beta37.exe.sig">OpenPGP Signatur</a>
 </li>
 <li><a
-href="http://files.gpg4win.org/Beta/gpg4win-2.2.2-beta37.tar.bz2">Source code package</a> (6 MByte)
-| <a href="http://files.gpg4win.org/Beta/gpg4win-2.2.2-beta37.tar.bz2">OpenPGP Signatur</a>
+href="https://files.gpg4win.org/Beta/gpg4win-2.2.2-beta37.tar.bz2">Source code package</a> (6 MByte)
+| <a href="https://files.gpg4win.org/Beta/gpg4win-2.2.2-beta37.tar.bz2">OpenPGP Signatur</a>
 </li>
-<li><a href="http://files.gpg4win.org/Beta/README-2.2.2-beta37.de.txt">README</a> </li>
+<li><a href="https://files.gpg4win.org/Beta/README-2.2.2-beta37.de.txt">README</a> </li>
 <li>All Beta versionen and OpenPGP-Signatures also available via https (with own CA):
 <a href="https://files.gpg4win.org/Beta/">https://files.gpg4win.org/Beta/</a>.</li>
 </ul>
@@ -60,7 +60,7 @@ of Gpg4win VERSION here:</p>
 </div>
 
 <p class="lineheight">
-  <a href="http://files.gpg4win.org/gpg4win-VERSION.exe.sig">OpenPGP signature</a>
+  <a href="https://files.gpg4win.org/gpg4win-VERSION.exe.sig">OpenPGP signature</a>
   (for gpg4win-VERSION.exe)
   <br>
   SHA1 checksum (for gpg4win-VERSION.exe): <code>SHA1_EXE</code>
@@ -77,7 +77,7 @@ of Gpg4win VERSION here:</p>
           <span class="version"><small>Size: LDL_SIZE</small></span>
         </a>
       </div>
-      <a href="http://files.gpg4win.org/gpg4win-light-VERSION.exe.sig"
+      <a href="https://files.gpg4win.org/gpg4win-light-VERSION.exe.sig"
         >OpenPGP signature</a><br>
       SHA1 checksum: <code>SHA1_EXL</code></li>
 
@@ -87,7 +87,7 @@ of Gpg4win VERSION here:</p>
         <a href="VDOWNLOAD_URL">Gpg4win-Vanilla VERSION<br/>
           <span class="version"><small>Size: VDL_SIZE</small><span></a>
       </div>
-      <a href="http://files.gpg4win.org/gpg4win-vanilla-VERSION.exe.sig"
+      <a href="https://files.gpg4win.org/gpg4win-vanilla-VERSION.exe.sig"
         >OpenPGP signature</a><br>
         SHA1 checksum: <code>SHA1_EXV</code></li>
 
@@ -98,12 +98,12 @@ of Gpg4win VERSION here:</p>
           <span class="version"><small>Size: SDL_SIZE</small><span>
         </a>
       </div>
-      <a href="http://files.gpg4win.org/gpg4win-VERSION.tar.bz2.sig"
+      <a href="https://files.gpg4win.org/gpg4win-VERSION.tar.bz2.sig"
         >OpenPGP signature</a><br>
         SHA1 checksum: <code>SHA1_SRC</code></li>
 
     <li>All versions and OpenPGP signatures: <a
-        href="http://files.gpg4win.org/">files.gpg4win.org</a>.</li>
+        href="https://files.gpg4win.org/">files.gpg4win.org</a>.</li>
 
     <li>To create a <b>portable Gpg4win version</b> use the
     included tool <code>mkportable.exe</code>.<br>
@@ -130,7 +130,7 @@ of Gpg4win VERSION here:</p>
       href="documentation.html">documentation</a>).</p>
   </p>
   <p>Read the current <a
-      href="http://files.gpg4win.org/README-VERSION.en.txt">README file</a>.
+      href="https://files.gpg4win.org/README-VERSION.en.txt">README file</a>.
 
 <h2>Gpg4win Compendium COMPENDIUM_VERSION_EN
 (Released: COMPENDIUM_DATE_EN)</h2>
@@ -163,7 +163,7 @@ Read the <a href="documentation.html">documentation page</a> for
 <p>
 Current and all previous Gpg4win installers as well as signatures and corresponding
 source code packages are available under:
-<a href="http://files.gpg4win.org/">files.gpg4win.org</a>
+<a href="https://files.gpg4win.org/">files.gpg4win.org</a>
 </p>
 
 <p>
@@ -174,7 +174,7 @@ Also, you will find direct download link for the old releases.
 </p>
 
 All Beta releases (with OpenPGP-Signatures):
-<a href="http://files.gpg4win.org/Beta">files.gpg4win.org/Beta/</a>
+<a href="https://files.gpg4win.org/Beta">files.gpg4win.org/Beta/</a>
 
 <p>
 Please note that old releases may still contain meanwhile fixed security issues.
@@ -217,7 +217,6 @@ Is downloading very slow? Try this mirror server:
 <a href="http://www.gnupg.de/related_software/gpa/index.de.html">GPA</a> 0.9.4
 <a href="http://www.g10code.de/p-gpgol.html">GpgOL</a> 1.2.1
 <a href="http://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpgex.git;a=summary">GpgEX</a> 1.0.1
-<a href="http://www.claws-mail.org/">Claws Mail</a> 3.9.1
 <a href="doc/de/gpg4win-compendium.html">Kompendium (de)</a> 3.0.0
 <a href="doc/en/gpg4win-compendium.html">Compendium (en)</a> 3.0.0
     </pre>

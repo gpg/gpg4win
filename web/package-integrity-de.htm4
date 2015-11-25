@@ -11,7 +11,7 @@ PAGE_START
 <div id="intro">
 <h2>Integrität der Gpg4win-Pakete prüfen</h2>
 <p>Wie man die Integrität prüft, kann man z.B.
-auf der <a href="http://www.gnupg.org/download/integrity_check.de.html">
+auf der <a href="https://www.gnupg.org/download/integrity_check.de.html">
 GnuPG Seite zur Integritätsprüfung</a> nachlesen.
 </p>
 </div>
@@ -31,24 +31,24 @@ SHA1_SRC  gpg4win-VERSION.tar.bz2
 <h2>OpenPGP Signaturen</h2>
 
 <p>Für gpg4win-VERSION.exe:
-<a href="http://files.gpg4win.org/gpg4win-VERSION.exe.sig"
-  >http://files.gpg4win.org/gpg4win-VERSION.exe.sig</a><br>
+<a href="https://files.gpg4win.org/gpg4win-VERSION.exe.sig"
+  >https://files.gpg4win.org/gpg4win-VERSION.exe.sig</a><br>
 
 Für gpg4win-light-VERSION.exe:
-<a href="http://files.gpg4win.org/gpg4win-light-VERSION.exe.sig"
-  >http://files.gpg4win.org/gpg4win-light-VERSION.exe.sig</a><br>
+<a href="https://files.gpg4win.org/gpg4win-light-VERSION.exe.sig"
+  >https://files.gpg4win.org/gpg4win-light-VERSION.exe.sig</a><br>
 
 Für gpg4win-vanilla-VERSION.exe:
-<a href="http://files.gpg4win.org/gpg4win-vanilla-VERSION.exe.sig"
-  >http://files.gpg4win.org/gpg4win-vanilla-VERSION.exe.sig</a><br>
+<a href="https://files.gpg4win.org/gpg4win-vanilla-VERSION.exe.sig"
+  >https://files.gpg4win.org/gpg4win-vanilla-VERSION.exe.sig</a><br>
 
 Für gpg4win-src-VERSION.exe:
-<a href="http://files.gpg4win.org/gpg4win-src-VERSION.exe.sig"
-  >http://files.gpg4win.org/gpg4win-src-VERSION.exe.sig</a><br>
+<a href="https://files.gpg4win.org/gpg4win-src-VERSION.exe.sig"
+  >https://files.gpg4win.org/gpg4win-src-VERSION.exe.sig</a><br>
 
 Für gpg4win-VERSION.tar.bz2:
-<a href="http://files.gpg4win.org/gpg4win-VERSION.tar.bz2.sig"
-  >http://files.gpg4win.org/gpg4win-VERSION.tar.bz2.sig</a>
+<a href="https://files.gpg4win.org/gpg4win-VERSION.tar.bz2.sig"
+  >https://files.gpg4win.org/gpg4win-VERSION.tar.bz2.sig</a>
 </p>
 
 <p>
@@ -74,7 +74,7 @@ haben.  Hier sind die Längen die Sie erhalten sollten:</p>
 
 <pre>
 LEN_EXE  bytes für gpg4win-VERSION.exe
-LEN_EXL  bytes für gpg4win-light-VERSION.exe
+LEN_EXL   bytes für gpg4win-light-VERSION.exe
 LEN_EXV   bytes für gpg4win-vanilla-VERSION.exe
 LEN_EXS bytes für gpg4win-src-VERSION.exe
 LEN_SRC   bytes für gpg4win-VERSION.tar.bz2

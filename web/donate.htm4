@@ -78,7 +78,7 @@ m4_include(`SPONSORS')
     <input name="on0" value="Allowed to publish of your donation?" type="hidden">
     <input name="os0" value="No" type="hidden">
     <input name="image_url" value="https://gpg4win.org/img/logo.png" type="hidden">
-    <input name="return" value="http://gpg4win.org/donate.html" type="hidden">
+    <input name="return" value="https://gpg4win.org/donate.html" type="hidden">
     <input name="cbt" value="Back to Gpg4win" type="hidden">
     <br>
     <input name="os0" value="Yes" checked="checked" type="checkbox">Publish my sponsor name</a>
@@ -87,7 +87,7 @@ m4_include(`SPONSORS')
 
 <p><b>... by Flattr:</b></p>
 <p>
-<a href="http://flattr.com/thing/2053326/Gpg4win-Secure-email-and-file-encryption-with-GnuPG-for-Windows" target="_blank"><img src="http://api.flattr.com/button/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0" /></a>
+<a href="https://flattr.com/thing/2053326/Gpg4win-Secure-email-and-file-encryption-with-GnuPG-for-Windows" target="_blank"><img src="https://api.flattr.com/button/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0" /></a>
 </p>
 
 <p><b>... by bank transfer:</b>

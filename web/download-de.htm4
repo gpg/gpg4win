@@ -25,24 +25,24 @@ GnuPG, Kleopatra, GpgEX, GpgOL und Pinentry-qt; in verschiedenen
 Varianten verfügbar:</p>
 <ul>
 <li><a
-href="http://files.gpg4win.org/Beta/gpg4win-2.2.2-beta37.exe">Full-Installer</a>
+href="https://files.gpg4win.org/Beta/gpg4win-2.2.2-beta37.exe">Full-Installer</a>
 (30 MByte)
-| <a href="http://files.gpg4win.org/Beta/gpg4win-2.2.2-beta37.exe.sig">OpenPGP Signatur</a>
+| <a href="https://files.gpg4win.org/Beta/gpg4win-2.2.2-beta37.exe.sig">OpenPGP Signatur</a>
 </li>
 <li><a
-href="http://files.gpg4win.org/Beta/gpg4win-light-2.2.2-beta37.exe">Light-Installer</a>
+href="https://files.gpg4win.org/Beta/gpg4win-light-2.2.2-beta37.exe">Light-Installer</a>
 (13 MByte, ohne Kleopatra und Gpg4win-Kompendium)
-| <a href="http://files.gpg4win.org/Beta/gpg4win-light-2.2.2-beta37.exe.sig">OpenPGP Signatur</a>
+| <a href="https://files.gpg4win.org/Beta/gpg4win-light-2.2.2-beta37.exe.sig">OpenPGP Signatur</a>
 </li>
-<li><a href="http://files.gpg4win.org/Beta/gpg4win-vanilla-2.2.2-beta37.exe">Vanilla-Installer</a>
+<li><a href="https://files.gpg4win.org/Beta/gpg4win-vanilla-2.2.2-beta37.exe">Vanilla-Installer</a>
 (4 MByte, nur GnuPG)
-| <a href="http://files.gpg4win.org/Beta/gpg4win-vanilla-2.2.2-beta37.exe.sig">OpenPGP Signatur</a>
+| <a href="https://files.gpg4win.org/Beta/gpg4win-vanilla-2.2.2-beta37.exe.sig">OpenPGP Signatur</a>
 </li>
 <li><a
-href="http://files.gpg4win.org/Beta/gpg4win-2.2.2-beta37.tar.bz2">Quelltextpaket</a> (6 MByte)
-| <a href="http://files.gpg4win.org/Beta/gpg4win-2.2.2-beta37.tar.bz2">OpenPGP Signatur</a>
+href="https://files.gpg4win.org/Beta/gpg4win-2.2.2-beta37.tar.bz2">Quelltextpaket</a> (6 MByte)
+| <a href="https://files.gpg4win.org/Beta/gpg4win-2.2.2-beta37.tar.bz2">OpenPGP Signatur</a>
 </li>
-<li><a href="http://files.gpg4win.org/Beta/README-2.2.2-beta37.de.txt">README</a> </li>
+<li><a href="https://files.gpg4win.org/Beta/README-2.2.2-beta37.de.txt">README</a> </li>
 <li>Alle Beta-Versionen und OpenPGP-Signaturen auch per https (mit eigener CA) verfügbar:
 <a href="https://files.gpg4win.org/Beta/">https://files.gpg4win.org/Beta/</a>.</li>
 </ul>
@@ -60,7 +60,7 @@ kann hier herunter geladen werden:</p>
 </div>
 
 <p class="lineheight">
-  <a href="http://files.gpg4win.org/gpg4win-VERSION.exe.sig">OpenPGP-Signatur</a>
+  <a href="https://files.gpg4win.org/gpg4win-VERSION.exe.sig">OpenPGP-Signatur</a>
   (für gpg4win-VERSION.exe)
   <br>
   SHA1-Prüfsumme (für gpg4win-VERSION.exe): <code>SHA1_EXE</code>
@@ -77,7 +77,7 @@ kann hier herunter geladen werden:</p>
           <span class="version"><small>Größe: LDL_SIZE</small></span>
         </a>
       </div>
-      <a href="http://files.gpg4win.org/gpg4win-light-VERSION.exe.sig"
+      <a href="https://files.gpg4win.org/gpg4win-light-VERSION.exe.sig"
         >OpenPGP signatur</a><br>
       SHA1 Prüfsumme: <code>SHA1_EXL</code></li>
 
@@ -87,7 +87,7 @@ kann hier herunter geladen werden:</p>
         <a href="VDOWNLOAD_URL">Gpg4win-Vanilla VERSION<br/>
           <span class="version"><small>Größe: VDL_SIZE</small><span></a>
       </div>
-      <a href="http://files.gpg4win.org/gpg4win-vanilla-VERSION.exe.sig"
+      <a href="https://files.gpg4win.org/gpg4win-vanilla-VERSION.exe.sig"
         >OpenPGP signatur</a><br>
         SHA1 Prüfsumme: <code>SHA1_EXV</code></li>
 
@@ -98,7 +98,7 @@ kann hier herunter geladen werden:</p>
           <span class="version"><small>Größe: SDL_SIZE</small><span>
         </a>
       </div>
-      <a href="http://files.gpg4win.org/gpg4win-VERSION.tar.bz2.sig"
+      <a href="https://files.gpg4win.org/gpg4win-VERSION.tar.bz2.sig"
         >OpenPGP signatur</a><br>
         SHA1 Prüfsumme: <code>SHA1_SRC</code></li>
 
@@ -132,7 +132,7 @@ kann hier herunter geladen werden:</p>
   im <a href="./doc/de/gpg4win-compendium.html">Gpg4win-Kompendium</a>.
   </p>
   <p>Lesen Sie die aktuelle <a
-      href="http://files.gpg4win.org/README-VERSION.de.txt">README-Datei</a>.
+      href="https://files.gpg4win.org/README-VERSION.de.txt">README-Datei</a>.
 
 <h2>Gpg4win-Kompendium COMPENDIUM_VERSION_DE
 (Veröffentlicht: COMPENDIUM_DATE_DE)</h2>
@@ -164,7 +164,7 @@ für weitere Informationen über verfügbare Gpg4win Dokumentationen.
 <p>
 Alle aktuellen und bisherigen Gpg4win-Installer sowie Signaturen und zugehörige
 Quelltextpakete finden Sie unter: 
-<a href="http://files.gpg4win.org/">files.gpg4win.org</a>
+<a href="https://files.gpg4win.org/">files.gpg4win.org</a>
 </p>
 
 <p>
@@ -175,7 +175,7 @@ enhalten waren) als auch einen direkten Download dieser alten Versionen.
 
 <p>
 Alle Beta-Versionen (inkl. OpenPGP-Signaturen) unter: 
-<a href="http://files.gpg4win.org/Beta">files.gpg4win.org/Beta/</a>
+<a href="https://files.gpg4win.org/Beta">files.gpg4win.org/Beta/</a>
 
 <p>
 Bitte beachten Sie, dass die alten Versionen die ggf. zwischenzeitlich beseitigten
@@ -187,7 +187,7 @@ Sicherheitslöcher weiterhin enthalten!
 enthält den aktuellen Gpg4win-Quelltext.</p>
 
 <p>
-Die Gpg4win Dokumentationen (<em>Gpg4win-Kompendium</em>) finden Sie unter:
+Die Gpg4win D<F2>okumentationen (<em>Gpg4win-Kompendium</em>) finden Sie unter:
 <a href="http://wald.intevation.org/frs/?group_id=11">http://wald.intevation.org/frs/?group_id=11</a>
 </p>
 
@@ -221,7 +221,6 @@ von <a href="http://ftp.heanet.ie/about/">HEAnet</a>)
 <a href="http://www.gnupg.de/related_software/gpa/index.de.html">GPA</a> 0.9.4
 <a href="http://www.g10code.de/p-gpgol.html">GpgOL</a> 1.2.1
 <a href="http://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpgex.git;a=summary">GpgEX</a> 1.0.1
-<a href="http://www.claws-mail.org/">Claws Mail</a> 3.9.1
 <a href="doc/de/gpg4win-compendium.html">Kompendium (de)</a> 3.0.0
 <a href="doc/en/gpg4win-compendium.html">Compendium (en)</a> 3.0.0
     </pre>

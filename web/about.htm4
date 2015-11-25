@@ -52,16 +52,12 @@ Free Software components:
 </li>
 <li><b>GpgOL</b>
  <p>A plugin for the <strong>32bit versions</strong>
-    of Microsoft Outlook 2003/2007/2010/2013 (email encryption).
-    For Outlook 2010/2013 GpgpOL supports the Exchange Server,
-    but does not support MIME.
+    of Microsoft Outlook 2003/2007/2010/2013/2016 (email encryption).
+    With Outlook 2010 and higher GpgpOL supports MS Exchange Server.
  </p>
 </li>
 <li><b>GpgEX</b>
 <p>A plugin for Microsoft Explorer (file encryption).</p>
-</li>
-<li><b>Claws Mail</b>
-<p>A complete email application with crypto support.</p>
 </li>
 <li><b>Gpg4win Compendium</b>
 <p>The documentation (for beginner and advanced users),
@@ -71,12 +67,12 @@ available in English and German.</p>
 
 <a name="requirements"></a>
 <h2>System Requirements</h2>
-<p>Gpg4win requires at least Windows XP. Both 32 and
+<p>Gpg4win requires at least Windows XP (including Windows 10). Both 32 and
 64bit systems are supported.</p>
 
 <p>The Outlook plugin GpgOL is compatible with Microsoft Outlook 2003,
-2007, 2010 and 2013 (only 32bit!). GpgOL supports MS Exchange Server in Outlook 2010
-and 2013 only.</p>
+2007, 2010, 2013 and 2016 (only 32bit!). GpgOL supports MS Exchange
+Server for Outlook 2010 and higher.</p>
 
 
 <h2>Aim of Gpg4win Initiative</h2>
