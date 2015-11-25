@@ -28,6 +28,13 @@
      <a href="download-de.html">Gpg4win 2.3.0 veröffentlicht</a></span>', `
      <a href="download.html">Gpg4win 2.3.0 released</a></span>')
    <p></p>
+   <small>2015-11-25</small><br>
+   <span class="serif_word"><img src="img/bulletin.png" alt="" />
+   <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2015-November/000066.html">
+   Security Advisory
+   </a>
+   </span>
+   <p></p>
    <small>2015-09-09</small><br>
    <span class="serif_word"><img src="img/bulletin.png" alt="" />
      m4_ifelse(LANG_DE, `1', `
