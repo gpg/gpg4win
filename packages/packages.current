@@ -208,12 +208,12 @@ chk  d063e705812e1ee7feb8f35d51b3cad04ca13b0d
 
 # PNG
 
-# last changed: 2015-04-16
+# last changed: 2015-11-13
 # by: ah
 # verified: Sig 8048 643B A2C8 40F4 F92A  195F F549 84BF A16C 640F
 server ftp://ftp.simplesystems.org/pub/png/src/
-file libpng14/libpng-1.4.16.tar.xz
-chk  4492cfbe3617758678b178e5f521893611fa2d13
+file libpng14/libpng-1.4.17.tar.xz
+chk  bfa872db68a6fb1309f272fe8025afc12ecca30e
 
 #
 # LibFFI
@@ -231,10 +231,11 @@ chk  f5230890dc0be42fb5c58fbf793da253155de106
 #
 server ftp://ftp.g10code.com/g10code/gpgol
 
-# checked: 2014-08-13 ah
-file gpgol-1.2.1.tar.bz2
-chk  4cf226bc452ffefbce82abada99d23f72a9f1e0e
-
+# last-changed: 2015-11-24
+# by: ah
+# verified: Sig D869 2123 C406 5DEA 5E0F  3AB5 249B 39D2 4F25 E3B6
+file gpgol-1.3.0.tar.bz2
+chk  c569e7b223f7b5efcce38cc4a4445127744c0454
 
 #
 # GpgEX
@@ -266,15 +267,15 @@ chk  d648b98ce215f81e901f3f982470d37c704433a6
 # D869 2123 C406 5DEA 5E0F  3AB5 249B 39D2 4F25 E3B6
 server ftp://ftp.gnupg.org/gcrypt
 
-# last-changed: 2015-06-05
+# last-changed: 2015-11-12
 # by: ah
-file libgpg-error/libgpg-error-1.19.tar.bz2
-chk  4997951ab058788de48b989013668eb3df1e6939
+file libgpg-error/libgpg-error-1.20.tar.bz2
+chk  89c961f63469739fe816a56dcdd86c2e1897cace
 
-# last-changed: 2015-09-08
+# last-changed: 2015-11-12
 # by: ah
-file libassuan/libassuan-2.3.0.tar.bz2
-chk  23f7ea010983b869f765c36d169dec51c8296cff
+file libassuan/libassuan-2.4.0.tar.bz2
+chk  8b00866b3b0386e996cc6bdcb902c727f0d190a5
 
 # last changed: 2015-08-20
 # by: ah
@@ -363,12 +364,12 @@ chk  e2af27d711d528c21fd2bf73639da1cd2c811f7a
 #
 server http://files.kolab.org/local/gpg4win
 
-# This is kdepim/gpg4win branch cf609810
-file kleopatra-20150820-1-bin.tar.xz
-chk  1f66048d697001963538ba2ae89675c42b06bf03
+# This is kdepim/gpg4win branch fb4ae3dc8
+file kleopatra-20151117-bin.tar.xz
+chk  5ebb215985ecf379b16d49c251fb0d92aff902c5
 
 # This also includes the sources for kdelibs
 # kdewin win-iconv and kdepimlibs which
 # are part of binaries in the kleopatra bin package
-file kleopatra-20150820-src.tar.xz
-chk  848e4350c7fd56c813ea679a4ded703f7789b95f
+file kleopatra-20151117-src.tar.xz
+chk  c7d6b7fa4b9d7a354ddce726913a65fcc59b9323

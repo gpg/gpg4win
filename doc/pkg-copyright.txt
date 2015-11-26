@@ -282,29 +282,6 @@ Pthreads-win32 is
   it is not possible to include it here.
 
 
-Claws Mail is
-
-  Copyright(C) 1999-2013 Hiroyuki Yamamoto <hiro-y@kcn.ne.jp> and the
-  Claws Mail Team
-
-  This program is free software; you can redistribute it and/or modify
-  it under the terms of the GNU General Public License as published by
-  the Free Software Foundation; either version 3, or (at your option)
-  any later version.
-
-  This program is distributed in the hope that it will be useful,
-  but WITHOUT ANY WARRANTY; without even the implied warranty of
-  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-  GNU General Public License for more details.
-
-  You should have received a copy of the GNU General Public License
-  along with this program; if not, write to the Free Software
-  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
-  02110-1301, USA.
-
-  For more details see the file COPYING.
-
-
 BZIP2 is
 
   This program, "bzip2", the associated library "libbzip2", and all
@@ -415,4 +392,4 @@ Scute
   exception statement from your version and from all source files.
 
 
-[Compiled by wk 2006-02-15, last updated 2013-05-13]
+[Compiled by wk 2006-02-15, last updated 2015-11-25]

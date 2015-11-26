@@ -7,10 +7,79 @@ Noteworthy changes in version 3.0.0 (unreleased)
 
 ~~~~~~~~~~~~~~~
 GnuPG:          2.1.8
-Kleopatra:      2.2.0-gitcf609810
-GPA:            0.9.7
-GpgOL:          1.2.1
-GpgEX:          1.0.2
+Kleopatra:      2.2.0-gitfb4ae3d
+GPA:            0.9.9
+GpgOL:          1.3.0
+GpgEX:          1.0.3
+Kompendium DE:  3.0.0
+Kompendium EN:  3.0.0
+~~~~~~~~~~~~~~~
+
+Noteworthy changes in version 2.3.0 (2015-11-25)
+------------------------------------------------
+
+(en) GpgOL now supports reading PGP/MIME and S/MIME mails, the standard
+     format for Crypto Mails as sent by Thunderbird/Enigmail, GPGMail
+     or KMail. For details see: https://wiki.gnupg.org/GpgOL/MIMESupport
+
+(de) GpgOL für Outlook 2010 und später kann nun PGP/MIME und S/MIME E-Mails
+     verarbeiten. Dies ist das Format wie es standardmäßig von
+     Thunderbird/Enigmail, GPGMail oder KMail versendet wird.
+     Details siehe: https://wiki.gnupg.org/GpgOL/MIMESupport
+
+(en) GpgOL now supports Outlook 2016.
+
+(de) GpgOL unterstützt nun Outlook 2016.
+
+(en) AES-NI Instructions for faster encryption and decryption with AES
+     are now supported. (GnuPG Bug #1919)
+
+(de) AES-NI Befehle zur schnelleren Ver- und Entschlüsselung mit AES werden
+     nun unterstützt. (GnuPG Bug #1919)
+
+(en) The decrypt/verify window of GpgOL no longer moves and resizes
+     erratically. (KDE Bug #355140)
+
+(de) Das Entschlüsseln/Überprüfen-Fenster von GpgOL verändert nun
+     nicht mehr seine Position und Größe. (KDE Bug #355140)
+
+(en) Bulk import of more then a hundred keys no longer fails when Kleopatra
+     is running. (GnuPG Bug #2135)
+
+(de) Der gleichzeitige Import von über 100 Schlüsseln schlägt nun nicht
+     mehr fehl wenn Kleopatra läuft. (GnuPG Bug #2135)
+
+(en) French and Chinese localisation has been added to the installer,
+     GpgEX and GpgOL. Thanks to Oliver Serve and Mingye Wang.
+
+(de) Der Installer, GpgEX und GpgOL sind nun auch ins Französische und
+     Chinesische übersetzt. Danke für die Übersetzungen an Oliver Serve
+     und Mingye Wang.
+
+(en) Several apparently random crashes in GpgOL have been fixed
+     (GnuPG Bug #1837)
+
+(de) Eine Reihe von zufällig auftretenden Abstürzen von GpgOL wurde behoben.
+     (GnuPG Bug #1837)
+
+(en) GpgOL now handles attachments in  PGP/MIME and S/MIME mails with non ASCII
+     characters in the filename correctly.
+
+(de) GpgOL behandelt nun Anhänge von PGP/MIME und S/MIME Mails mit
+     Sonderzeichen im Dateinamen.
+
+(en) A vulnerability in the Gpg4win-installer has been fixed. See:
+     [security advisory 2015-11-25] for details.
+
+(de) Eine Schwachstelle im Gpg4win-installer wurde behoben.
+     Details finden sich im [security advisory 2015-11-25].
+
+~~~~~~~~~~~~~~~
+GnuPG:          2.0.29
+Kleopatra:      2.2.0-gitfb4ae3d
+GPA:            0.9.9
+GpgOL:          1.3.0
+GpgEX:          1.0.3
 Kompendium DE:  3.0.0
 Kompendium EN:  3.0.0
 ~~~~~~~~~~~~~~~
