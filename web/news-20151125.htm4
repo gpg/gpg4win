@@ -43,11 +43,11 @@ bypassing the UAC.
 </ol>
 
 <p>
-<b>Mitigation:</b> Update to Gpg4win 2.3.0 (published today)
+<b>Mitigation:</b> Update to Gpg4win 2.3.0 (published at the same date as this advisory)
 
 <p>
 <b>General precaution measure:</b>
-  Always copy installers into a single new directory where
+  Always copy an installer into a single new directory where
   it is the only file before executing it. The reason is that 
   many other installers based on NSIS or other common installer technologies 
   on Windows are vulnerable to this kind of 'current directory attack'.
