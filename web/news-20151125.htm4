@@ -3,7 +3,6 @@ m4_include(`template.m4')
 m4_dnl $Id$
 
 m4_define(`EN')
-m4_define(`DE_FILE', `news-20151125.html')
 m4_define(`TITLE', `Security Advisory Gpg4win 2015-11-25')
 PAGE_START
 

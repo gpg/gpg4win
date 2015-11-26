@@ -25,21 +25,21 @@
    <small>2015-11-25</small><br>
    <span class="serif_word"><img src="img/bulletin.png" alt="" />
      m4_ifelse(LANG_DE, `1', `
-     <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2015-November/000032.html">Gpg4win 2.3.0 veröffentlicht</a></span>', `
-     <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2015-November/000067.html">Gpg4win 2.3.0 released</a></span>')
+     <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2015-November/000032.html">
+        Gpg4win 2.3.0 veröffentlicht
+     </a></span>
+     <br><small><a href="pm-20151125-de.html">Pressemitteilung</a></small>', `
+     <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2015-November/000067.html">
+        Gpg4win 2.3.0 released
+     </a></span>
+     <br><small><a href="pm-20151125-de.html">Presse release (German)</a></small>')
    <p></p>
    <small>2015-11-25</small><br>
    <span class="serif_word"><img src="img/bulletin.png" alt="" />
    <a href="news-20151125.html">
-   Security Advisory
+   Security Advisory 2015-11-25
    </a>
    </span>
-   <p></p>
-   <small>2015-09-09</small><br>
-   <span class="serif_word"><img src="img/bulletin.png" alt="" />
-     m4_ifelse(LANG_DE, `1', `
-     <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2015-September/000030.html">Gpg4win 2.2.6 veröffentlicht</a></span>', `
-     <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2015-September/000065.html">Gpg4win 2.2.6 released</a></span>')
    <p></p>
    <div class="limiter"></div>
    <p>

@@ -1,0 +1,99 @@
+m4_dnl                                                          -*-html-*-
+m4_include(`template.m4')
+m4_dnl $Id$
+
+m4_define(`DE')
+m4_define(`TITLE', `Gpg4win 2.3 mit Unterstützung für Outlook 2016 und PGP/MIME')
+PAGE_START
+
+<div id="intro">
+<h2>Gpg4win 2.3 mit Unterstützung für Outlook 2016 und PGP/MIME</h2>
+<p>
+Pressemitteilung<br>
+Osnabrück, 25.11.2015
+</div>
+
+
+<div id="main">
+
+<p>
+Gpg4win, die Freie E-Mail- und Datei-Verschlüsselungslösung für Microsoft 
+Windows, ist am 25.11.2015 in der Version 2.3 erschienen. Die Software kann von 
+<a href="https://www.gpg4win.de/">www.gpg4win.de</a> kostenlos heruntergeladen werden.
+
+<h3>Was ist neu in Gpg4win 2.3?</h3>
+
+<ul>
+<li>Unterstützung für Outlook 2016.
+<li>Ab Outlook 2010 können PGP/MIME-E-Mails gelesen werden. Dies ist das 
+Standard-Format für Krypto-E-Mails, welche Thunderbird/Enigmail und Andere 
+versenden.
+<li>Schnellere Krypto-Operationen bei großen Dateien und Zertifikatsimporten.
+</ul>
+
+Weitere Details zu Gpg4win 2.3 in der Änderungshistorie:<br>
+<a href="https://www.gpg4win.de/change-history-de.html">www.gpg4win.de/change-history-de.html</a>
+
+
+<h3>Vorbereitung auf 3.0</h3>
+
+<p>
+Für Ende 2016 ist die Veröffentlichung von Gpg4win 3.0 geplant. Die ersten 
+Beta-Versionen erscheinen schon Anfang 2016. GpgOL wird dann nur noch PGP/MIME- 
+oder S/MIME-E-Mails versenden. Gpg4win 2.3 bringt deshalb schon jetzt die 
+Möglichkeit diese E-Mails lesen zu können. Bei den neueren Krypto-Verfahren mit 
+elliptischen Kurven, die ebenfalls für 3.0 auf dem Plan stehen, brauchen dann 
+beide Kommunikationspartner eine neue Gpg4win-Version.
+
+<p>
+Die Arbeiten an Gpg4win 2.3 und nachfolgenden Versionen erfolgen durch die 
+deutschen Unternehmen Intevation und g10Code, im Rahmen des BSI-Auftrags 
+"Gpg4all".
+
+<p>
+Weitere Informationen:
+<ul>
+<li> <a href="http://wiki.gnupg.org/Gpg4win/Roadmap">http://wiki.gnupg.org/Gpg4win/Roadmap</a>
+<li> <a href="http://wiki.gnupg.org/Gpg4all2015">http://wiki.gnupg.org/Gpg4all2015</a>
+</ul>
+
+<h3>Was ist Gpg4win?</h3>
+
+<p>
+Gpg4win (GNU Privacy Guard for Windows) dient dem Verschlüsseln und Signieren 
+von Dateien und E-Mails unter Microsoft Windows. Das Software-Produkt ist 
+kostenlos und wurde 2005 vom Bundesamt für Sicherheit in der 
+Informationstechnik (BSI) erstmals in Auftrag gegeben.
+
+<p>
+Mit Gpg4win kann jeder E-Mails und Dateien ver- und entschlüsseln, sowie ihre 
+Integrität (Unverändertheit) und Herkunft (Authentizität) mittels digitaler 
+Signaturen absichern.
+
+<p>
+Gpg4win ist die offizielle GnuPG-Distribution für Windows und wird von den 
+GnuPG-Entwicklern gepflegt und weiterentwickelt. Die Software unterstützt die 
+beiden relevanten kryptografischen Standards OpenPGP und S/MIME. Gpg4win und 
+die darin enthaltenen Komponenten sind Freie Software.
+
+<p>
+Alle Dialoge sind vollständig in deutscher Sprache verfügbar. Einen guten 
+Einstieg bietet das umfassende <a href="https://www.gpg4win.de/doc/de/gpg4win-compendium.html">Gpg4win-Kompendium</a>.
+In leicht verständlicher Form werden die Prinzipien und Praxis der Kryptografie beschrieben.
+
+<p>
+Professioneller Support und Entwicklungsdienstleistungen zu Gpg4win werden durch 
+die deutschen Unternehmen Intevation GmbH und g10Code GmbH angeboten.
+
+
+<h3>Ansprechpartner:</h3>
+
+<p>
+<b>Intevation GmbH</b><br>
+Emanuel Schütze<br>
+Neuer Graben 17<br>
+49074 Osnabrück<br>
+E-Mail: <a href="mailto:emanuel.schuetze@intevation.de" title="emanuel.schuetze@intevation.de"><span>emanuel.schuetze@intevation.de</span></a><br>
+Telefon: 0541 335083-746</p><p></p>
+
+</div>
