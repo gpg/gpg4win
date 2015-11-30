@@ -20,6 +20,9 @@
 !ifdef prefix
 !undef prefix
 !endif
+!ifdef exprefix
+!undef exprefix
+!endif
 !define prefix ${ipdir}/gpgex-${gpg4win_pkg_gpgex_version}
 !define exprefix ${exipdir}/gpgex-${gpg4win_pkg_gpgex_version}
 

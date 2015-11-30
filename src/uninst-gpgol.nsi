@@ -62,6 +62,11 @@ Section "-un.gpgol"
   UnRegDLL "$INSTDIR\gpgol.dll"
 
   Delete /REBOOTOK "$INSTDIR\gpgol.dll"
+
+${If} ${RunningX64}
+  ExecWait '"$SYSDIR\regsvr32" /u /s "$INSTDIR\bin\gpgol.dll"'
+  Delete /REBOOTOK "$INSTDIR\bin\gpgol.dll"
+${EndIf}
   RMDir "$INSTDIR"
 !endif
 SectionEnd

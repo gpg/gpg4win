@@ -90,7 +90,8 @@ gpg4win_spkgs = glib libffi gdk-pixbuf gtk+ \
 		w32pth paperkey regex libiconv gettext
 
 # Supported source packages to build in an additional architecture
-gpg4win_expkgs = libgpg-error libassuan libiconv gettext w32pth gpgex
+gpg4win_expkgs = libgpg-error libassuan libiconv gettext w32pth gpgex gpgol \
+                 gpgme
 
 # Extra options to configure for individual packages.
 # We can use $(idir) here for the installation prefix.
@@ -170,7 +171,6 @@ gpg4win_pkg_libgpg_error_configure = --silent \
   --enable-static
 
 gpg4win_pkg_libgpg_error_ex_configure = --silent \
-  CPPFLAGS=-I$(idir)/include LDFLAGS=-L$(idir)/lib \
   --enable-static
 
 # We convert the PO files to UTF-8.  FIXME: This should be done in
@@ -208,12 +208,11 @@ gpg4win_pkg_gpgme_configure = --silent \
   --with-gpg-error-prefix=$(idir) --enable-static \
   `test -n "@HAVE_PKG_GLIB@" && echo "--enable-w32-glib"` \
   --disable-w32-qt LDFLAGS=-L$(idir)/lib
-#  `test -n "@HAVE_PKG_QT@" && echo "--disable-w32-qt"` \
-#  QT4_CORE_CFLAGS=\"-DQT_LARGEFILE_SUPPORT -DQT_DLL \
-#                   -DQT_NO_DEBUG -DQT_CORE_LIB -DQT_THREAD_SUPPORT \
-#                   -I$(idir)/include/QtCore -I$(idir)/include \
-#		   -I$(idir)/mkspecs/win32-g++\" \
-#  QT4_CORE_LIBS=\"-L$(idir)/lib -lQtCore4\"
+
+gpg4win_pkg_gpgme_ex_configure = --silent \
+  --with-gpg-error-prefix=$(ex_idir) --enable-static \
+  --with-libassuan-prefix=$(ex_idir) \
+  LDFLAGS=-L$(ex_idir)/lib
 
 gpg4win_pkg_gpa_configure = --silent \
   --with-libiconv-prefix=$(idir) --with-libintl-prefix=$(idir) \
@@ -223,6 +222,10 @@ gpg4win_pkg_gpa_configure = --silent \
 gpg4win_pkg_gpgol_configure = --silent \
   --with-gpgme-prefix=$(idir) --with-gpg-error-prefix=$(idir) \
   --with-libassuan-prefix=$(idir)
+
+gpg4win_pkg_gpgol_ex_configure = --silent \
+  --with-gpgme-prefix=$(ex_idir) --with-gpg-error-prefix=$(ex_idir) \
+  --with-libassuan-prefix=$(ex_idir)
 
 gpg4win_pkg_gpgex_configure = --silent \
   --with-gpg-error-prefix=$(idir) \
