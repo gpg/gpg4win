@@ -20,8 +20,12 @@
 !ifdef prefix
 !undef prefix
 !endif
+!ifdef exprefix
+!undef exprefix
+!endif
 !define prefix ${ipdir}/gpgol-${gpg4win_pkg_gpgol_version}
 !define bdir ${bpdir}/gpgol-${gpg4win_pkg_gpgol_version}-build
+!define exprefix ${exipdir}/gpgol-${gpg4win_pkg_gpgol_version}
 
 
 ${MementoSection} "GpgOL" SEC_gpgol
@@ -64,7 +68,30 @@ ${MementoSection} "GpgOL" SEC_gpgol
   SetOutPath "$INSTDIR\share\doc\gpgol"
   File "${bdir}/doc/gpgol.pdf"
 
+${If} ${RunningX64}
+
+  # Install the 64 bit version of the dll.
+  SetOutPath "$INSTDIR\bin"
+  ClearErrors
+  SetOverwrite try
+  File ${exprefix}/bin/gpgol.dll
+  SetOverwrite lastused
+  ifErrors 0 do_reg64
+      File /oname=gpgol.dll.tmp ${exprefix}/bin/gpgol.dll
+      Rename /REBOOTOK gpgol.dll.tmp gpgol.dll
+
+ do_reg64:
+  # Register the DLL. We need to register both versions.  However
+  # RegDLL can't be used for 64 bit and InstallLib seems to be a
+  # registry hack.
+  ClearErrors
+  ExecWait '"$SYSDIR\regsvr32" /s "$INSTDIR\bin\gpgol.dll"'
+  ifErrors 0 +2
+     MessageBox MB_OK "$(T_GpgOL_RegFailed) (64 bit)"
+${EndIf}
+
 !endif
+
 ${MementoSectionEnd}
 
 

@@ -379,6 +379,8 @@ GPG4WIN_SPKG([gettext], [libiconv])
 GPG4WIN_SPKGEX([libgpg-error])
 GPG4WIN_SPKGEX([libassuan], [libgpg-error])
 GPG4WIN_SPKGEX([gpgex], [libassuan])
+GPG4WIN_SPKGEX([gpgme], [libgpg-error libassuan])
+GPG4WIN_SPKGEX([gpgol], [gpgme])
 
 GPG4WIN_IPKG([compendium])
 
@@ -448,6 +450,6 @@ echo "
         $PACKAGE_NAME-$PACKAGE_VERSION prepared for make
 
         Revision: ${GIT_REVISION}  (${GIT_REVISION_DEC})
-        Platform: $host
-        Additional gpgEx platform: ${GPGEX_ADD_HOST}
+        32bit platform: $host
+        64bit platform: ${GPGEX_ADD_HOST}
 "
