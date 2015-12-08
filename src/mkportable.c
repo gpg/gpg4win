@@ -347,7 +347,7 @@ check_all_files (void)
   int i;
 
   /* First a quick check for gpgconf.  */
-  name = "gpgconf.exe";
+  name = "../GnuPG/bin/gpgconf.exe";
   if (access_sourcename (name))
     {
       err ("file '%s' not found in the source directory", name);
@@ -594,7 +594,7 @@ copy_all_files (void)
      to install a copy under the name pinentry.exe.  */
   switch (install_type)
     {
-    case iFULL:    copy_file ("pinentry-qt4.exe",   "pinentry.exe"); break;
+    case iFULL:    copy_file ("pinentry-qt.exe",   "pinentry.exe"); break;
     case iLIGHT:   copy_file ("pinentry-gtk-2.exe", "pinentry.exe"); break;
     case iVANILLA: copy_file ("pinentry-w32.exe",   "pinentry.exe"); break;
     }
