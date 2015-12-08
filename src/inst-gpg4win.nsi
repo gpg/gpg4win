@@ -24,6 +24,19 @@ Section "-gpg4win" SEC_gpg4win
   SetOutPath "$INSTDIR"
   File "${BUILD_DIR}/../gpg4win-${VERSION}.tar.bz2"
 !else
+
+# Uninstall an old version if found.
+  ClearErrors
+  ReadRegStr $0 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\GPG4Win" "DisplayVersion"
+  IfErrors skip_uninst 0
+  StrCmp $0 "" skip_uninst
+  DetailPrint  "$(T_UninstallingOldVersion)$0"
+  ReadRegStr $0 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\GPG4Win" "UninstallString"
+  ReadRegStr $1 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\GPG4Win" "InstallLocation"
+  ExecWait '$0 /S _?=$1'
+  Delete "$0"
+  RmDir "$1"
+skip_uninst:
   SetOutPath "$INSTDIR\share\gpg4win"
 
   File "${BUILD_DIR}/README.en.txt"

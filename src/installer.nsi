@@ -375,7 +375,7 @@ FunctionEnd
 Function CheckExistingVersion
   ClearErrors
   FileOpen $0 "$INSTDIR\VERSION" r
-  IfErrors nexttest
+  IfErrors leave
   FileRead $0 $R0
   FileRead $0 $R1
   FileClose $0
@@ -386,32 +386,10 @@ Function CheckExistingVersion
 
   # Extract major version.
   StrCpy $0 $R1 2
-  StrCmp $0 "1." 0 secondtest
+  StrCmp $0 "1." 0 leave
     MessageBox MB_YESNO "$(T_FoundExistingOldVersion)" IDYES leave
     Abort
 
- secondtest:
-  MessageBox MB_YESNO "$(T_FoundExistingVersion)" IDYES leave
-  Abort
-
- nexttest:
-  ClearErrors
-  ReadRegStr $0 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\GPG4Win" "DisplayVersion"
-  IfErrors leave 0
-     StrCmp $0 ${VERSION} sameversion otherversion
-     otherversion:
-       MessageBox MB_YESNO "$(T_FoundExistingOldVersion)" IDYES uninstall
-       Abort
-     sameversion:
-       MessageBox MB_YESNO "$(T_FoundExistingVersionB)" IDYES leave
-       Abort
-
- uninstall:
-  ReadRegStr $0 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\GPG4Win" "UninstallString"
-  ExecWait '$0 /S'
-
- # TODO This is the normal update case. Handle more gracefully.
- # Especially the install path change from 2.x to 3.x
  leave:
 FunctionEnd
 
@@ -522,12 +500,8 @@ LangString T_FoundExistingOldVersion ${LANG_ENGLISH} \
       strongly recommended to deinstall previous versions on \
       major upgrades. $\r$\n\
       Do you want to continue installing Gpg4win ${VERSION} anyway?"
-LangString T_FoundExistingVersionB ${LANG_ENGLISH} \
-     "A version of Gpg4Win has already been installed on the system. \
-      There will be no problem installing and thus overwriting this \
-      Version. $\r$\n\
-       $\r$\n\
-      Do you want to continue installing Gpg4win?"
+LangString T_UninstallingOldVersion ${LANG_ENGLISH} \
+     "Uninstalling Gpg4win-"
 
 
 #---------------------------------------------

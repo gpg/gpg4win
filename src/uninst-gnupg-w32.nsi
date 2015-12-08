@@ -29,12 +29,16 @@ Section  "un.gnupg_w32"
   Push "${gpg4win_pkg_gnupg_w32}"
   Call un.SourceDelete
 !else
+  ClearErrors
   ReadRegStr $0 HKLM "Software\GnuPG" "Install Directory"
+  IfErrors gnupg_w32_not_installed 0
   # It is possible that someone uninstalled gnupg without uninstalling
   # gpg4win
   StrCmp $0 "" gnupg_w32_not_installed
   DetailPrint  "$(T_Uninstalling_GnuPG) ${gpg4win_pkg_gnupg_w32_version}"
-  ExecWait '"$0\gnupg-uninstall.exe" /S'
+  ExecWait '"$0\gnupg-uninstall.exe" /S _?=$0'
+  Delete "$0\gnupg-uninstall.exe"
+  RmDir "$0"
 gnupg_w32_not_installed:
 !endif
 SectionEnd
