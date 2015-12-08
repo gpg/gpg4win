@@ -398,8 +398,17 @@ Function CheckExistingVersion
   ClearErrors
   ReadRegStr $0 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\GPG4Win" "DisplayVersion"
   IfErrors leave 0
-     MessageBox MB_YESNO "$(T_FoundExistingVersionB)" IDYES leave
-     Abort
+     StrCmp $0 ${VERSION} sameversion otherversion
+     otherversion:
+       MessageBox MB_YESNO "$(T_FoundExistingOldVersion)" IDYES uninstall
+       Abort
+     sameversion:
+       MessageBox MB_YESNO "$(T_FoundExistingVersionB)" IDYES leave
+       Abort
+
+ uninstall:
+  ReadRegStr $0 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\GPG4Win" "UninstallString"
+  ExecWait '$0 /S'
 
  # TODO This is the normal update case. Handle more gracefully.
  # Especially the install path change from 2.x to 3.x
