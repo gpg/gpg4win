@@ -221,11 +221,13 @@ gpg4win_pkg_gpa_configure = --silent \
 
 gpg4win_pkg_gpgol_configure = --silent \
   --with-gpgme-prefix=$(idir) --with-gpg-error-prefix=$(idir) \
-  --with-libassuan-prefix=$(idir)
+  --with-libassuan-prefix=$(idir) --enable-mime-send \
+  --enable-gpg4win-3-reg-keys
 
 gpg4win_pkg_gpgol_ex_configure = --silent \
   --with-gpgme-prefix=$(ex_idir) --with-gpg-error-prefix=$(ex_idir) \
-  --with-libassuan-prefix=$(ex_idir)
+  --with-libassuan-prefix=$(ex_idir) --enable-mime-send \
+  --enable-gpg4win-3-reg-keys
 
 gpg4win_pkg_gpgex_configure = --silent \
   --with-gpg-error-prefix=$(idir) \
