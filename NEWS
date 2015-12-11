@@ -5,11 +5,40 @@
 Noteworthy changes in version 3.0.0 (unreleased)
 ------------------------------------------------
 
+(en) GnuPG is now of the modern 2.1 variant. See:
+     https://www.gnupg.org/faq/whats-new-in-2.1.html
+     for more information about this.
+
+(de) Es wird nun die moderne 2.1 Variante von GnuPG verwendet. Unter:
+     https://www.gnupg.org/faq/whats-new-in-2.1.html (englisch)
+     finden sich mehr details dazu.
+
+(en) GpgOL is now also supported for 64bit Outlook.
+
+(de) Die 64bit variante von Outlook wird nun von GpgOL unterstützt.
+
+(en) GpgOL for Outlook 2010 and later now uses toggle buttons
+     to let you select Encypt and Sign. The operations are done
+     when the mail is sent, including all attachments,
+     using a standard format (MIME).
+
+(de) GpgOL für Outlook 2010 und spätere Versionen verwendet nun
+     schaltknöpfe zur Auswahl ob eine Mail verschlüsselt und oder
+     signiert sein soll. Die operation erfolgt während des versendens,
+     dabei werden auch alle Anhänge mitverschlüsselt und ein
+     standartisiertes Format (MIME) verwendet.
+
+(en) GpgOL for Outlook 2010 and later now automatically decrypts mails
+     again.
+
+(de) GpgOL für Outlook 2010 und spätere Versionen entschlüsselt nun
+     wieder automatisch Mails.
+
 ~~~~~~~~~~~~~~~
-GnuPG:          2.1.8
+GnuPG:          2.1.10
 Kleopatra:      2.2.0-gitfb4ae3d
 GPA:            0.9.9
-GpgOL:          1.3.0
+GpgOL:          2.0.0-beta36
 GpgEX:          1.0.3
 Kompendium DE:  3.0.0
 Kompendium EN:  3.0.0

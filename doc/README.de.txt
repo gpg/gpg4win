@@ -50,34 +50,20 @@ Die integrierten Gpg4win-Komponenten in Version !VERSION! sind:
 Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 -----------------------------------------
 
-- GpgOL für Outlook 2010 und später kann nun PGP/MIME und S/MIME E-Mails
-  verarbeiten. Dies ist das Format wie es standardmäßig von
-  Thunderbird/Enigmail, GPGMail oder KMail versendet wird.
-  Details siehe: https://wiki.gnupg.org/GpgOL/MIMESupport
+- Es wird nun die moderne 2.1 Variante von GnuPG verwendet. Unter:
+  https://www.gnupg.org/faq/whats-new-in-2.1.html (englisch)
+  finden sich mehr details dazu.
 
-- GpgOL unterstützt nun Outlook 2016.
+- Die 64bit variante von Outlook wird nun von GpgOL unterstützt.
 
-- AES-NI Befehle zur schnelleren Ver- und Entschlüsselung mit AES werden
-  nun unterstützt. (GnuPG Bug #1919)
+- GpgOL für Outlook 2010 und spätere Versionen verwendet nun
+  schaltknöpfe zur Auswahl ob eine Mail verschlüsselt und oder
+  signiert sein soll. Die operation erfolgt während des versendens,
+  dabei werden auch alle Anhänge mitverschlüsselt und ein
+  standartisiertes Format (MIME) verwendet.
 
-- Das Entschlüsseln/Überprüfen-Fenster von GpgOL verändert nun
-  nicht mehr seine Position und Größe. (KDE Bug #355140)
-
-- Der gleichzeitige Import von über 100 Schlüsseln schlägt nun nicht
-  mehr fehl wenn Kleopatra läuft. (GnuPG Bug #2135)
-
-- Der Installer, GpgEX und GpgOL sind nun auch ins Französische und
-  Chinesische übersetzt. Danke für die Übersetzungen an Oliver Serve
-  und Mingye Wang.
-
-- Eine Reihe von zufällig auftretenden Abstürzen von GpgOL wurde behoben.
-  (GnuPG Bug #1837)
-
-- GpgOL behandelt nun Anhänge von PGP/MIME und S/MIME Mails mit
-  Sonderzeichen im Dateinamen.
-
-- Eine Schwachstelle im Gpg4win-installer wurde behoben.
-  Details finden sich im [security advisory 2015-11-25].
+- GpgOL für Outlook 2010 und spätere Versionen entschlüsselt nun
+  wieder automatisch Mails.
 
 3. Bekannte Probleme (und Abhilfen)
 ===================================
