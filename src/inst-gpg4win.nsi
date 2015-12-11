@@ -32,10 +32,15 @@ Section "-gpg4win" SEC_gpg4win
   StrCmp $0 "" skip_uninst
   DetailPrint  "$(T_UninstallingOldVersion)$0"
   ReadRegStr $0 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\GPG4Win" "UninstallString"
+  IfErrors skip_uninst 0
   ReadRegStr $1 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\GPG4Win" "InstallLocation"
+  IfErrors skip_uninst 0
+
   ExecWait '$0 /S _?=$1'
-  Delete "$0"
+# Deleting here does not work?
+  Delete /REBOOTOK "$1\gpg4win-uninstall.exe"
   RmDir "$1"
+
 skip_uninst:
   SetOutPath "$INSTDIR\share\gpg4win"
 
