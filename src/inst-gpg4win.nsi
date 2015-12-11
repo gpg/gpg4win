@@ -61,13 +61,9 @@ skip_uninst:
   FileClose $0
   DetailPrint "VERSION closed"
 
-  # Register the install directory for the GnuPG suite.
-  WriteRegStr HKLM "Software\GNU\GnuPG" "Install Directory" $INSTDIR
+  # Register the install directory for Gpg4win suite.
+  WriteRegStr HKLM "Software\${PRETTY_PACKAGE_SHORT}" "Install Directory" $INSTDIR
   DetailPrint "Saved install directory in the registry"
-
-  # Also write it to be recalled on new installation.  Currently
-  # disabled.
-  # WriteRegStr HKLM "Software\GNU\${PRETTY_PACKAGE_SHORT}" "Install Directory" $INSTDIR
 
   # We used to determine the language using a Registry entry.
   # Although we don't want to delete the user's Lang Registry Setting
@@ -86,11 +82,6 @@ skip_uninst:
   #WriteRegStr HKLM "Software\GNU\GnuPG" "gpgProgram" "$INSTDIR\gpg.exe"
   DeleteRegValue HKLM "Software\GNU\GnuPG" "gpgProgram"
   DetailPrint "Deleted obsolete gpgProgram value"
-
-  # Add the public directory to the PATH
-  Push "$INSTDIR\pub"
-  Call AddToPath
-  DetailPrint "Added pub directory to PATH"
 
   # Install gpg4win included tools
   SetOutPath "$INSTDIR"
