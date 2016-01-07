@@ -36,8 +36,8 @@
 !ifdef HAVE_PKG_OXYGEN_ICONS
 !undef HAVE_PKG_OXYGEN_ICONS
 !endif
-!ifdef HAVE_PKG_QT
-!undef HAVE_PKG_QT
+!ifdef HAVE_PKG_QTBASE
+!undef HAVE_PKG_QTBASE
 !endif
 !endif
 
@@ -95,8 +95,8 @@
 !ifdef HAVE_PKG_DBUS
 !undef HAVE_PKG_DBUS
 !endif
-!ifdef HAVE_PKG_QT
-!undef HAVE_PKG_QT
+!ifdef HAVE_PKG_QTBASE
+!undef HAVE_PKG_QTBASE
 !endif
 !ifdef HAVE_PKG_OXYGEN_ICONS
 !undef HAVE_PKG_OXYGEN_ICONS

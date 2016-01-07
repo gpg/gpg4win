@@ -314,7 +314,7 @@ GPG4WIN_SPKG([libpng], [pkgconfig])
 
 GPG4WIN_SPKG([libgpg-error], [libiconv gettext])
 GPG4WIN_SPKG([libassuan], [libgpg-error w32pth])
-GPG4WIN_SPKG([pinentry], [libiconv gtk+])
+GPG4WIN_SPKG([pinentry], [qtbase libiconv gtk+])
 GPG4WIN_SPKG([gpgme], [libgpg-error glib])
 GPG4WIN_SPKG([gpgol], [gpgme libassuan])
 GPG4WIN_SPKG([gpgex], [libassuan])
@@ -340,8 +340,8 @@ GPG4WIN_BPKG_BINSRC([gnupg-w32])
 # Qt related stuff.
 GPG4WIN_BPKG_GNUWIN32([dbus])
 GPG4WIN_BPKG_BINSRC([oxygen-icons])
-GPG4WIN_BPKG_GNUWIN32([qt], [dbus])
-GPG4WIN_BPKG_BINSRC([kleopatra], [gpgme qt oxygen-icons])
+GPG4WIN_SPKG([qtbase], [dbus libpng])
+GPG4WIN_BPKG_BINSRC([kleopatra], [gpgme qtbase oxygen-icons])
 
 GPG4WIN_FINALIZE
 

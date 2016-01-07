@@ -28,6 +28,10 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         doc/license-page doc/GPLv3 \
         build-aux/git-log-footer build-aux/git-log-fix \
         patches/glib-2.41.5/01-socket.patch \
+        patches/qtbase-5.5.1/fix-freetype-link.patch \
+        patches/qtbase-5.5.1/fix-oci-detect.patch \
+        patches/qtbase-5.5.1/fix-syssemaphore.patch \
+        patches/qtbase-5.5.1/fix-zlib-link.patch \
         patches/w32pth-2.0.5/workaround-broken-libtool.patch
 
 copy-news:

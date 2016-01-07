@@ -110,8 +110,8 @@ endef
 # Support macro.  Unpack the archive $(1).
 define DEFLATE_macro
 	case "$(1)" in			\
-          */gnupg2-2.*.tar.bz2)          \
-            $(TAR) -xj --transform='s,^gnupg-,gnupg2-,' -f "$(1)" ;; \
+          */qtbase*.*.tar.xz)          \
+            $(TAR) -xJ --transform='s,^qtbase-opensource-src,qtbase,' -f "$(1)" ;; \
 	  *.tar.gz | *.tgz)		\
 	    $(TAR) xzf "$(1)" ;;	\
 	  *.tar.bz2 | *.tbz2 | *.tbz)	\
@@ -514,6 +514,20 @@ clean-gpg4win:
 	$(RM) -fR playground stamps
 
 .PHONY : all-gpg4win clean-stamps clean-gpg4win
+
+define OVERRIDE_CONF_TEMPLATE
+# Override of the configure rule. For targets that not use
+# autotools configure to have more freedom with the options.
+stamps/stamp-$(1)-02-configure: stamps/stamp-$(1)-01-patch
+	($(call SETVARS,$(1)); \
+	mkdir "$$$${pkgbdir}"; \
+	cd "$$$${pkgbdir}"; \
+	"../$$$${pkg_version}/configure" \
+		$$$${pkgcfg}) && \
+	touch stamps/stamp-$(1)-02-configure
+endef
+
+$(eval $(call OVERRIDE_CONF_TEMPLATE,qtbase))
 
 # @emacs_local_vars_begin@
 # @emacs_local_vars_read_only@

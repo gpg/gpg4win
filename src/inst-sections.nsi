@@ -47,8 +47,8 @@
 !ifdef HAVE_PKG_ZLIB
 !include "inst-zlib.nsi"
 !endif
-!ifdef HAVE_PKG_QT
-!include "inst-qt.nsi"
+!ifdef HAVE_PKG_QTBASE
+!include "inst-qtbase.nsi"
 !endif
 !ifdef HAVE_PKG_GETTEXT
 !include "inst-gettext.nsi"
@@ -227,8 +227,8 @@
 !ifdef HAVE_PKG_GETTEXT
 !include "uninst-gettext.nsi"
 !endif
-!ifdef HAVE_PKG_QT
-!include "uninst-qt.nsi"
+!ifdef HAVE_PKG_QTBASE
+!include "uninst-qtbase.nsi"
 !endif
 !ifdef HAVE_PKG_ZLIB
 !include "uninst-zlib.nsi"
@@ -478,8 +478,8 @@ Function CalcDepends
 !ifdef HAVE_PKG_DBUS
   !insertmacro UnselectSection ${SEC_dbus}
 !endif
-!ifdef HAVE_PKG_QT
-  !insertmacro UnselectSection ${SEC_qt}
+!ifdef HAVE_PKG_QTBASE
+  !insertmacro UnselectSection ${SEC_qtbase}
 !endif
 !ifdef HAVE_PKG_OXYGEN_ICONS
   !insertmacro UnselectSection ${SEC_oxygen_icons}
@@ -572,13 +572,13 @@ Function CalcDepends
   !insertmacro SectionFlagIsSet ${SEC_kleopatra} \
 		${SF_SELECTED} have_kleopatra_libs skip_kleopatra_libs
   have_kleopatra_libs:
-  !insertmacro SelectSection ${SEC_qt}
+  !insertmacro SelectSection ${SEC_qtbase}
   !insertmacro SelectSection ${SEC_oxygen_icons}
    skip_kleopatra_libs:
 !endif
 
-!ifdef HAVE_PKG_QT
-  !insertmacro SectionFlagIsSet ${SEC_qt} \
+!ifdef HAVE_PKG_QTBASE
+  !insertmacro SectionFlagIsSet ${SEC_qtbase} \
 		${SF_SELECTED} have_qt skip_qt
   have_qt:
   !insertmacro SelectSection ${SEC_dbus}
@@ -595,8 +595,8 @@ Function CalcDepends
   # GPGME does not depend on gnupg2.  Do this in the
   # actual application instead.
   !insertmacro SelectSection ${SEC_libgpg_error}
-!ifdef HAVE_PKG_QT
-  !insertmacro SelectSection ${SEC_qt}
+!ifdef HAVE_PKG_QTBASE
+  !insertmacro SelectSection ${SEC_qtbase}
 !endif
    skip_gpgme:
 !endif
@@ -606,8 +606,8 @@ Function CalcDepends
 		${SF_SELECTED} have_pinentry skip_pinentry
   have_pinentry:
   !insertmacro SelectSection ${SEC_libiconv}
-!ifdef HAVE_PKG_QT
-  !insertmacro SelectSection ${SEC_qt}
+!ifdef HAVE_PKG_QTBASE
+  !insertmacro SelectSection ${SEC_qtbase}
 !endif
 !ifdef HAVE_PKG_GTK_
   !insertmacro SelectSection ${SEC_gtk_}

@@ -314,22 +314,20 @@ server http://www.jabberwocky.com/software/paperkey
 file paperkey-1.3.tar.gz
 chk  16af56d0e7bdf081d60c59ea4d72e7df6d9cec21
 
-
 #
-# Qt
-# Build recipe is available in kde git emerge
-# branch gpg4win qt-minimal
+#  Kleopatra and dependencies
 #
-server http://files.kolab.org/local/gpg4win/libs/
 
-file qt-x86-mingw4-4.8.6-bin.tar.bz2
-chk  657c833fa39a93c6d7bfccc03c9fb88df4746136
+# Qt base
+# last changed: 2016-01-05
+# by: ah
+# verified: HTTPS https://download.qt.io/official_releases/qt/5.5/5.5.1/submodules/qtbase-opensource-src-5.5.1.tar.xz.sha1
 
-file qt-x86-mingw4-4.8.6-lib.tar.bz2
-chk  bc7fc185fd54259be25833b4c482a5680279cdae
+server http://download.qt.io/official_releases/qt/
 
-file qt-x86-mingw4-4.8.6-src.tar.bz2
-chk  9d6e271446f4fac714d915aabbe26497e592d25c
+name qtbase-5.5.1.tar.xz
+file 5.5/5.5.1/submodules/qtbase-opensource-src-5.5.1.tar.xz
+chk 0b651543fa013ae151b7a11f0d0dee092050aa3f
 
 #
 # Qt links DBus and Kleopatra / KDE libs needs it

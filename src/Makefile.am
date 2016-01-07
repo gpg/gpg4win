@@ -22,7 +22,7 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
         installer-options.ini.in libiconv.def libintl.def loreley.mid \
         gpg4win-splash.wav gpgwrap.c exdll.h g4wihelp.c g4wihelp.nsi \
         inst-sections.nsi installer.nsi installer-finish.nsi  \
-	QtCore.pc QtGui.pc zlib.pc sha1sum.c mkportable.c     \
+	zlib.pc sha1sum.c mkportable.c     \
 	mkportable-vanilla.h mkportable-light.h mkportable-full.h \
         qt.conf kleowrap.c potomo Memento.nsh \
         inst-gpg4win.nsi	   uninst-gpg4win.nsi	      \
@@ -56,7 +56,7 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
         inst-pkgconfig.nsi	   uninst-pkgconfig.nsi	      \
         inst-w32pth.nsi		   uninst-w32pth.nsi	      \
         inst-zlib.nsi        	   uninst-zlib.nsi            \
-        inst-qt.nsi        	   uninst-qt.nsi              \
+        inst-qtbase.nsi        	   uninst-qtbase.nsi              \
         inst-dbus.nsi   	   uninst-dbus.nsi      \
         inst-oxygen-icons.nsi  	   uninst-oxygen-icons.nsi    \
         inst-kleopatra.nsi  	   uninst-kleopatra.nsi       \
@@ -87,7 +87,8 @@ gpg4win_spkgs = glib libffi gdk-pixbuf gtk+ \
                 libgpg-error gpgme gpgol gpgex libpng \
 		gpa opencdk \
 		pinentry libassuan \
-		w32pth paperkey regex libiconv gettext
+		w32pth paperkey regex libiconv gettext \
+		qtbase
 
 # Supported source packages to build in an additional architecture
 gpg4win_expkgs = libgpg-error libassuan libiconv gettext w32pth gpgex gpgol \
@@ -235,6 +236,49 @@ gpg4win_pkg_gpgex_configure = --silent \
 
 gpg4win_pkg_paperkey_configure = --silent
 
+gpg4win_pkg_qtbase_configure = -opensource \
+            -confirm-license \
+            -xplatform win32-g++ \
+            -device-option CROSS_COMPILE=$(host)- \
+            -device-option PKG_CONFIG='$(host)-pkg-config' \
+            -force-pkg-config \
+            -no-use-gold-linker \
+            -release \
+            -shared \
+            -prefix $$$${pkgidir} \
+            -I '$(idir)/include' \
+            -L '$(idir)/lib' \
+            -no-icu \
+            -opengl desktop \
+            -no-glib \
+            -accessibility \
+            -nomake examples \
+            -nomake tests \
+            -no-sql-mysql \
+            -no-sql-sqlite \
+            -no-sql-odbc \
+            -no-sql-psql \
+            -no-sql-tds \
+            -qt-zlib \
+            -system-libpng \
+            -qt-libjpeg \
+            -fontconfig \
+            -system-freetype \
+            -qt-pcre \
+            -no-openssl \
+            -no-dbus
+
+# invoke qmake with removed debug options as a workaround for
+# https://bugreports.qt-project.org/browse/QTBUG-30898
+gpg4win_pkg_qtbase_make_args = \
+    QMAKE='$$$${pkgsdir}/bin/qmake CONFIG-="debug debug_and_release"'
+
+# Qmake still writes debug names in pkgconfig files.
+define gpg4win_pkg_qtbase_post_install
+ (cd $$$${pkgidir}; \
+ perl -pi -e 's/-lQt5\(\w*\)d/-lQt5\1/g' `find . -name \*.pc`)
+endef
+
 # Supported make-only source packages.
 gpg4win_mpkgs = zlib
 
@@ -249,7 +293,7 @@ gpg4win_pkg_zlib_make_args_inst = -fwin32/Makefile.gcc install \
 
 # Supported binary packages.
 gpg4win_bpkgs = pkgconfig pango expat freetype fontconfig \
-                cairo atk qt dbus oxygen-icons kleopatra bsfilter gnupg-w32
+                cairo atk dbus oxygen-icons kleopatra bsfilter gnupg-w32
 
 # libiconv needs some special magic to generate a usable import
 # library.
@@ -363,12 +407,6 @@ endef
 #cd $$$${pkgidir}/lib;					\
 #$(DLLTOOL) --output-lib libiconv.dll.a --def libiconv.def)
 #endef
-
-# Qt is missing the pkgconfig files.
-define gpg4win_pkg_qt_post_install
-(mkdir $$$${pkgidir_dev}/lib/pkgconfig; \
- cp $(srcdir)/QtCore.pc $(srcdir)/QtGui.pc $$$${pkgidir_dev}/lib/pkgconfig/)
-endef
 
 # Supported internal packages.  Internal packages do not require any
 # special support.  Thus, this variable is actually unused, and no
