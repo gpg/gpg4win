@@ -248,6 +248,13 @@ if test -n "$GPGEX_ADD_HOST"; then
     AC_CHECK_TOOLS(STRIP_EX, ${GPGEX_ADD_HOST}-strip)
 fi
 
+if test -z "$GPG4WIN_PARALLEL"; then
+    JOBS=$(nproc 2>/dev/null || echo 1)
+    GPG4WIN_PARALLEL=-j$JOBS
+    AC_MSG_NOTICE([Using autodetected $JOBS make jobs. You can override this by setting GPG4WIN_PARALLEL.])
+fi
+AC_SUBST(GPG4WIN_PARALLEL)
+
 missing_tools=
 for i in DLLTOOL MAKE UNZIP TAR MKDIR CP RM STOW MAKENSIS ZCAT TEXI2DVI \
          DVIPDF CONVERT SHA1SUM MSGFMT BUILD_CC; do
@@ -387,10 +394,15 @@ if test -n "$missing_opt_tools"; then
     done
 fi
 
-echo "
+echo -n "
         $PACKAGE_NAME-$PACKAGE_VERSION prepared for make
 
         Revision: ${GIT_REVISION}  (${GIT_REVISION_DEC})
         32bit platform: $host
         64bit platform: ${GPGEX_ADD_HOST}
 "
+if test -n "$JOBS"; then
+    echo "        make jobs: ${JOBS}"
+else
+    echo ""
+fi
