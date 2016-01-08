@@ -25,14 +25,15 @@
 !define prefix ${ipdir}/qtbase-${gpg4win_pkg_qtbase_version}
 
 !ifdef DEBUG
-Section "qtbase" SEC_qt
+Section "qtbase" SEC_qtbase
 !else
-Section "-qtbase" SEC_qt
+Section "-qtbase" SEC_qtbase
 !endif
   SetOutPath "$INSTDIR"
 !ifdef SOURCES
   File "${gpg4win_pkg_qtbase}"
 !else
+  SetOutPath "$INSTDIR\bin"
   File ${prefix}/bin/Qt5Core.dll
   File ${prefix}/bin/Qt5Gui.dll
   File ${prefix}/bin/Qt5Widgets.dll

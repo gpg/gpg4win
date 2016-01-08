@@ -35,19 +35,12 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
   SetOutPath "$INSTDIR\bin"
   File ${prefix}/bin/kleopatra.exe
   File ${prefix}/bin/kdebugdialog.exe
-  File ${prefix}/bin/kgpgconf.exe
   File ${prefix}/bin/kwatchgnupg.exe
   File ${prefix}/bin/kbuildsycoca4.exe
 
   # Path lookups are relative to libkdecore so it currently needs to be
   # in bin
   File ${prefix}/bin/libkdecore.dll
-  SetOutPath "$INSTDIR"
-  File /oname=kleopatra.exe "${BUILD_DIR}/kleowrap.exe"
-  File /oname=kdebugdialog.exe "${BUILD_DIR}/kleowrap.exe"
-  File /oname=kbuildsycoca4.exe "${BUILD_DIR}/kleowrap.exe"
-  File /oname=kgpgconf.exe "${BUILD_DIR}/kleowrap.exe"
-  File /oname=kwatchgnupg.exe "${BUILD_DIR}/kleowrap.exe"
 
 #  File ${prefix}/bin/kcmdwrapper.exe
   File ${prefix}/bin/libattica.dll

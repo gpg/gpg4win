@@ -31,9 +31,9 @@ Section "-un.qtbase"
   Push "${gpg4win_pkg_qtbase_src}"
   Call un.SourceDelete
 !else
-  Delete "$INSTDIR\Qt5Core.dll"
-  Delete "$INSTDIR\Qt5Gui.dll"
-  Delete "$INSTDIR\Qt5Widgets.dll"
+  Delete "$INSTDIR\bin\Qt5Core.dll"
+  Delete "$INSTDIR\bin\Qt5Gui.dll"
+  Delete "$INSTDIR\bin\Qt5Widgets.dll"
 
   Delete "$INSTDIR\platforms\qwindows.dll"
 

@@ -89,7 +89,7 @@ skip_uninst:
   DetailPrint "Deleted obsolete gpgProgram value"
 
   # Install gpg4win included tools
-  SetOutPath "$INSTDIR"
+  SetOutPath "$INSTDIR\bin"
   File "${BUILD_DIR}/sha1sum.exe"
   File "${BUILD_DIR}/sha256sum.exe"
   File "${BUILD_DIR}/md5sum.exe"

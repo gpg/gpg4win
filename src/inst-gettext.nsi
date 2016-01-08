@@ -32,6 +32,7 @@ Section "-gettext" SEC_gettext
 !ifdef SOURCES
   File ${gpg4win_pkg_gettext}
 !else
+  SetOutPath "$INSTDIR\bin"
   File ${prefix}/bin/libintl-8.dll
   File /oname=intl.dll ${prefix}/bin/libintl-8.dll
 

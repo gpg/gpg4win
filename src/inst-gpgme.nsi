@@ -32,6 +32,7 @@ Section "-gpgme" SEC_gpgme
 !ifdef SOURCES
   File "${gpg4win_pkg_gpgme}"
 !else
+  SetOutPath "$INSTDIR\bin"
   ClearErrors
   SetOverwrite try
   File "${prefix}/bin/libgpgme-11.dll"

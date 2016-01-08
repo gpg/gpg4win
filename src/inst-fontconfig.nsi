@@ -32,6 +32,7 @@ Section "-fontconfig" SEC_fontconfig
 !ifdef SOURCES
   File "${gpg4win_pkg_fontconfig_src}"
 !else
+  SetOutPath "$INSTDIR\bin"
 
   File ${prefix}/bin/libfontconfig-1.dll
   SetOutPath "$INSTDIR\etc\fonts"

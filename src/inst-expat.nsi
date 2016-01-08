@@ -32,6 +32,7 @@ Section "-expat" SEC_expat
 !ifdef SOURCES
   File "${gpg4win_pkg_expat_src}"
 !else
+  SetOutPath "$INSTDIR\bin"
 
   File ${prefix}/bin/libexpat-1.dll
 

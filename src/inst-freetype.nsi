@@ -32,6 +32,7 @@ Section "-freetype" SEC_freetype
 !ifdef SOURCES
   File "${gpg4win_pkg_freetype_src}"
 !else
+  SetOutPath "$INSTDIR\bin"
 
   File ${prefix}/bin/freetype6.dll
 

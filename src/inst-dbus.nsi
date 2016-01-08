@@ -32,7 +32,6 @@ Section "-dbus" SEC_dbus
 !ifdef SOURCES
   File "${gpg4win_pkg_dbus_src}"
 !else
-  # FIXME: Figure out how to relocate dbus-daemon (and kleopatra).
   SetOutPath "$INSTDIR\bin"
   ClearErrors
   SetOverwrite try
@@ -41,7 +40,6 @@ Section "-dbus" SEC_dbus
   IfErrors 0 +3
       File /oname=dbus-daemon.exe.tmp ${prefix}/bin/dbus-daemon.exe
       Rename /REBOOTOK dbus-daemon.exe.tmp dbus-daemon.exe
-  SetOutPath "$INSTDIR"
 
   File ${prefix}/bin/dbus-launch.exe
   File ${prefix}/bin/dbus-env.bat

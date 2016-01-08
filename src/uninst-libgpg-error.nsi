@@ -30,14 +30,14 @@ Section "-un.libgpg-error"
   Push "${gpg4win_pkg_libgpg_error}"
   Call un.SourceDelete
 !else
-  Delete /REBOOTOK "$INSTDIR\libgpg-error-0.dll"
+  Delete /REBOOTOK "$INSTDIR\bin\libgpg-error-0.dll"
 
   Delete "$INSTDIR\share\locale\de\LC_MESSAGES\libgpg-error.mo"
   Delete "$INSTDIR\share\locale\pl\LC_MESSAGES\libgpg-error.mo"
   Delete "$INSTDIR\share\locale\ro\LC_MESSAGES\libgpg-error.mo"
   Delete "$INSTDIR\share\locale\fr\LC_MESSAGES\libgpg-error.mo"
 
-  Delete "$INSTDIR\gpg-error.exe"
+  Delete "$INSTDIR\bin\gpg-error.exe"
   Delete "$INSTDIR\lib\libgpg-error.imp"
   Delete "$INSTDIR\lib\libgpg-assuan.imp"
   Delete "$INSTDIR\include\gpg-error.h"

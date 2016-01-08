@@ -31,6 +31,8 @@ Section "-gdk_pixbuf" SEC_gdk_pixbuf
 !ifdef SOURCES
   File ${gpg4win_pkg_gdk_pixbuf}
 !else
+  SetOutPath "$INSTDIR\bin"
+
   File ${prefix}/bin/libgdk_pixbuf-2.0-0.dll
   File ${prefix}/bin/gdk-pixbuf-query-loaders.exe
   File ${prefix}/bin/gdk-pixbuf-pixdata.exe

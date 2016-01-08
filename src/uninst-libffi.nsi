@@ -30,10 +30,10 @@ Section "-un.libffi"
   Call un.SourceDelete
 !else
 
-  Delete /REBOOTOK "$INSTDIR\libffi-6.dll"
+  Delete /REBOOTOK "$INSTDIR\bin\libffi-6.dll"
 
 # Also delete any left-over old libffi version.
-  Delete "$INSTDIR\libffi-5.dll"
+  Delete "$INSTDIR\bin\libffi-5.dll"
 
 !endif
 SectionEnd

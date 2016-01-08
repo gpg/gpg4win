@@ -30,6 +30,6 @@ Section "-un.expat"
   Push "${gpg4win_pkg_expat_src}"
   Call un.SourceDelete
 !else
-  Delete /REBOOTOK "$INSTDIR\libexpat-1.dll"
+  Delete /REBOOTOK "$INSTDIR\bin\libexpat-1.dll"
 !endif
 SectionEnd

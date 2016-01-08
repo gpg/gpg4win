@@ -32,6 +32,7 @@ Section "-libpng" SEC_libpng
 !ifdef SOURCES
   File "${gpg4win_pkg_libpng}"
 !else
+  SetOutPath "$INSTDIR\bin"
   File ${prefix}/bin/libpng14-14.dll
 !endif
 SectionEnd

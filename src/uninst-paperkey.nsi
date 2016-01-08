@@ -28,7 +28,7 @@ Section "-un.paperkey"
   Push "${gpg4win_pkg_paperkey}"
   Call un.SourceDelete
 !else
-  Delete "$INSTDIR\paperkey.exe"
+  Delete "$INSTDIR\bin\paperkey.exe"
   Delete "$INSTDIR\share\gnupg\paperkey.man"
   RMDir "$INSTDIR\share\gnupg"
 !endif

@@ -34,6 +34,7 @@ Section "-Pinentry" SEC_pinentry
 !ifdef SOURCES
   File "${gpg4win_pkg_pinentry}"
 !else
+  SetOutPath "$INSTDIR\bin"
 
   File "${prefix}/bin/pinentry-w32.exe"
 !ifdef GPG4WIN_VANILLA

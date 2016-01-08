@@ -31,10 +31,10 @@ Section "-un.pinentry"
   Push "${gpg4win_pkg_pinentry}"
   Call un.SourceDelete
 !else
-  Delete "$INSTDIR\pinentry-w32.exe"
-  Delete "$INSTDIR\pinentry-gtk-2.exe"
-  Delete "$INSTDIR\pinentry-qt.exe"
-  Delete "$INSTDIR\pinentry.exe"
+  Delete "$INSTDIR\bin\pinentry-w32.exe"
+  Delete "$INSTDIR\bin\pinentry-gtk-2.exe"
+  Delete "$INSTDIR\bin\pinentry-qt.exe"
+  Delete "$INSTDIR\bin\pinentry.exe"
 
   RMDir "$INSTDIR"
 !endif

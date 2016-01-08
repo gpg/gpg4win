@@ -30,7 +30,7 @@ Section "-un.zlib"
   Push "${gpg4win_pkg_zlib}"
   Call un.SourceDelete
 !else
-  Delete /REBOOTOK "$INSTDIR\zlib1.dll"
+  Delete /REBOOTOK "$INSTDIR\bin\zlib1.dll"
 
 !endif
 SectionEnd

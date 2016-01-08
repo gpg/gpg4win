@@ -33,6 +33,7 @@ Section "-libgpg-error" SEC_libgpg_error
 !ifdef SOURCES
   File "${gpg4win_pkg_libgpg_error}"
 !else
+  SetOutPath "$INSTDIR\bin"
 
   ClearErrors
   SetOverwrite try
@@ -52,7 +53,7 @@ Section "-libgpg-error" SEC_libgpg_error
   SetOutPath "$INSTDIR\share\locale\fr\LC_MESSAGES"
   File ${prefix}/share/locale/fr/LC_MESSAGES/libgpg-error.mo
 
-  SetOutPath "$INSTDIR"
+  SetOutPath "$INSTDIR\bin"
   File ${prefix}/bin/gpg-error.exe
 
   SetOutPath "$INSTDIR\lib"

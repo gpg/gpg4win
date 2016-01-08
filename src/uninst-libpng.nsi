@@ -31,11 +31,11 @@ Section "-un.libpng"
   Call un.SourceDelete
 !else
 
-  Delete /REBOOTOK "$INSTDIR\libpng14-14.dll"
+  Delete /REBOOTOK "$INSTDIR\bin\libpng14-14.dll"
 
   # Old versions:
-  Delete "$INSTDIR\libpng13.dll"
-  Delete "$INSTDIR\libpng12-0.dll"
+  Delete "$INSTDIR\bin\libpng13.dll"
+  Delete "$INSTDIR\bin\libpng12-0.dll"
 
   RMDir "$INSTDIR"
 !endif

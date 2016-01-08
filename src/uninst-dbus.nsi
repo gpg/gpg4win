@@ -30,22 +30,22 @@ Section "-un.dbus"
   Push "${gpg4win_pkg_dbus_src}"
   Call un.SourceDelete
 !else
-  # FIXME: See inst-dbus.nsi.
   Delete /REBOOTOK "$INSTDIR\bin\dbus-daemon.exe"
-  RMDir "$INSTDIR\bin"
 
-  Delete "$INSTDIR\dbus-env.bat"
-  Delete "$INSTDIR\dbus-launch.exe"
-  Delete "$INSTDIR\dbus-monitor.exe"
-  Delete "$INSTDIR\dbus-send.exe"
+  Delete "$INSTDIR\bin\dbus-env.bat"
+  Delete "$INSTDIR\bin\dbus-launch.exe"
+  Delete "$INSTDIR\bin\dbus-monitor.exe"
+  Delete "$INSTDIR\bin\dbus-send.exe"
 
   # FIXME: Force dbus installed in our prefix down.
-  Delete /REBOOTOK "$INSTDIR\libdbus-1.dll"
-  Delete /REBOOTOK "$INSTDIR\libexpat.dll"
+  Delete /REBOOTOK "$INSTDIR\bin\libdbus-1.dll"
+  Delete /REBOOTOK "$INSTDIR\bin\libexpat.dll"
 
   Delete "$INSTDIR\etc\session.conf"
   Delete "$INSTDIR\etc\system.conf"
   RMDir "$INSTDIR\etc"
+
+  RMDir "$INSTDIR\bin"
 
   RMDir "$INSTDIR"
 !endif

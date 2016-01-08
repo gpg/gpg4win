@@ -34,6 +34,7 @@ Section "-w32pth" SEC_w32pth
 !ifdef SOURCES
   File "${gpg4win_pkg_w32pth}"
 !else
+  SetOutPath "$INSTDIR\bin"
 
   ClearErrors
   SetOverwrite try

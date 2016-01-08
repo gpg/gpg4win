@@ -30,9 +30,9 @@ Section "-un.gdk_pixbuf"
   Call un.SourceDelete
 !else
 
-  Delete /REBOOTOK "$INSTDIR\libgdk_pixbuf-2.0-0.dll"
-  Delete "$INSTDIR\gdk-pixbuf-query-loaders.exe"
-  Delete "$INSTDIR\gdk-pixbuf-pixdata.exe"
+  Delete /REBOOTOK "$INSTDIR\bin\libgdk_pixbuf-2.0-0.dll"
+  Delete "$INSTDIR\bin\gdk-pixbuf-query-loaders.exe"
+  Delete "$INSTDIR\bin\gdk-pixbuf-pixdata.exe"
 
 !endif
 SectionEnd

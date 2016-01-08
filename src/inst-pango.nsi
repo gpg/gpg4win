@@ -31,6 +31,7 @@ Section "-pango" SEC_pango
 !ifdef SOURCES
   File "${gpg4win_pkg_pango_src}"
 !else
+  SetOutPath "$INSTDIR\bin"
   File ${prefix}/bin/pango-querymodules.exe
   File ${prefix}/bin/libpango-1.0-0.dll
   File ${prefix}/bin/libpangoft2-1.0-0.dll

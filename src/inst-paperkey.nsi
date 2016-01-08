@@ -32,6 +32,7 @@ Section "-Paperkey" SEC_paperkey
 !ifdef SOURCES
   File "${gpg4win_pkg_paperkey}"
 !else
+  SetOutPath "$INSTDIR\bin"
 
   File "${prefix}/bin/paperkey.exe"
 

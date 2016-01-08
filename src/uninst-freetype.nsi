@@ -30,6 +30,6 @@ Section "-un.freetype"
   Push "${gpg4win_pkg_freetype_src}"
   Call un.SourceDelete
 !else
-  Delete /REBOOTOK "$INSTDIR\freetype6.dll"
+  Delete /REBOOTOK "$INSTDIR\bin\freetype6.dll"
 !endif
 SectionEnd

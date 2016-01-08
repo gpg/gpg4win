@@ -30,13 +30,13 @@ Section "-un.gettext"
   Push "${gpg4win_pkg_gettext}"
   Call un.SourceDelete
 !else
-  Delete /REBOOTOK "$INSTDIR\libintl-8.dll"
-  Delete /REBOOTOK "$INSTDIR\intl.dll"
+  Delete /REBOOTOK "$INSTDIR\bin\libintl-8.dll"
+  Delete /REBOOTOK "$INSTDIR\bin\intl.dll"
 !ifdef DEBUG
-  Delete "$INSTDIR\gettext.exe"
-  Delete "$INSTDIR\ngettext.exe"
-  Delete "$INSTDIR\envsubst.exe"
-  Delete "$INSTDIR\asprintf.dll"
+  Delete "$INSTDIR\bin\gettext.exe"
+  Delete "$INSTDIR\bin\ngettext.exe"
+  Delete "$INSTDIR\bin\envsubst.exe"
+  Delete "$INSTDIR\bin\asprintf.dll"
 !endif
   RMDir "$INSTDIR"
 !endif

@@ -32,6 +32,7 @@ Section "-gtk+" SEC_gtk_
 !ifdef SOURCES
   File "${gpg4win_pkg_gtk_}"
 !else
+  SetOutPath "$INSTDIR\bin"
   File ${prefix}/bin/libgdk-win32-2.0-0.dll
   File ${prefix}/bin/libgtk-win32-2.0-0.dll
 

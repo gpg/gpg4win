@@ -31,6 +31,7 @@ Section "-glib" SEC_glib
 !ifdef SOURCES
   File ${gpg4win_pkg_glib}
 !else
+  SetOutPath "$INSTDIR\bin"
   File ${prefix}/bin/gspawn-win32-helper.exe
   File ${prefix}/bin/gspawn-win32-helper-console.exe
   File ${prefix}/bin/libglib-2.0-0.dll

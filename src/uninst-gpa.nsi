@@ -30,8 +30,7 @@ Section "-un.gpa"
   Push "${gpg4win_pkg_gpa}"
   Call un.SourceDelete
 !else
-  Delete /REBOOTOK "$INSTDIR\gpa.exe"
-  Delete /REBOOTOK "$INSTDIR\pub\gpa.exe"
+  Delete /REBOOTOK "$INSTDIR\bin\gpa.exe"
 
   Delete "$INSTDIR\share\locale\de\LC_MESSAGES\gpa.mo"
   Delete "$INSTDIR\share\locale\ar\LC_MESSAGES\gpa.mo"

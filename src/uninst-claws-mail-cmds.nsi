@@ -20,30 +20,30 @@
 
 # We delete this file from the old (and removed) jpeg package, that
 # was only installed if claws was selected.
-Delete "$INSTDIR\jpeg62.dll"
+Delete "$INSTDIR\bin\jpeg62.dll"
 
-Delete "$INSTDIR\claws-mail.exe"
+Delete "$INSTDIR\bin\claws-mail.exe"
 
 Delete "$INSTDIR\claws-mail-manual.pdf"
 
 Delete "$INSTDIR\share\claws-mail\ca-certificates.crt"
-Delete "$INSTDIR\lib\claws-mail\plugins\pgpcore.dll"
-Delete "$INSTDIR\lib\claws-mail\plugins\pgpinline.dll"
+Delete "$INSTDIR\bin\lib\claws-mail\plugins\pgpcore.dll"
+Delete "$INSTDIR\bin\lib\claws-mail\plugins\pgpinline.dll"
 Delete "$INSTDIR\lib\claws-mail\plugins\pgpinline.deps"
-Delete "$INSTDIR\lib\claws-mail\plugins\pgpmime.dll"
+Delete "$INSTDIR\bin\lib\claws-mail\plugins\pgpmime.dll"
 Delete "$INSTDIR\lib\claws-mail\plugins\pgpmime.deps"
-Delete "$INSTDIR\lib\claws-mail\plugins\smime.dll"
+Delete "$INSTDIR\bin\lib\claws-mail\plugins\smime.dll"
 Delete "$INSTDIR\lib\claws-mail\plugins\smime.deps"
-Delete "$INSTDIR\lib\claws-mail\plugins\address_keeper.dll"
-Delete "$INSTDIR\lib\claws-mail\plugins\att_remover.dll"
-Delete "$INSTDIR\lib\claws-mail\plugins\attachwarner.dll"
-Delete "$INSTDIR\lib\claws-mail\plugins\bsfilter.dll"
-Delete "$INSTDIR\lib\claws-mail\plugins\fetchinfo.dll"
-Delete "$INSTDIR\lib\claws-mail\plugins\notification.dll"
-Delete "$INSTDIR\lib\claws-mail\plugins\tnef_parse.dll"
-Delete "$INSTDIR\lib\claws-mail\plugins\rssyl.dll"
-Delete "$INSTDIR\lib\claws-mail\plugins\spamreport.dll"
-Delete "$INSTDIR\lib\claws-mail\plugins\vcalendar.dll"
+Delete "$INSTDIR\bin\lib\claws-mail\plugins\address_keeper.dll"
+Delete "$INSTDIR\bin\lib\claws-mail\plugins\att_remover.dll"
+Delete "$INSTDIR\bin\lib\claws-mail\plugins\attachwarner.dll"
+Delete "$INSTDIR\bin\lib\claws-mail\plugins\bsfilter.dll"
+Delete "$INSTDIR\bin\lib\claws-mail\plugins\fetchinfo.dll"
+Delete "$INSTDIR\bin\lib\claws-mail\plugins\notification.dll"
+Delete "$INSTDIR\bin\lib\claws-mail\plugins\tnef_parse.dll"
+Delete "$INSTDIR\bin\lib\claws-mail\plugins\rssyl.dll"
+Delete "$INSTDIR\bin\lib\claws-mail\plugins\spamreport.dll"
+Delete "$INSTDIR\bin\lib\claws-mail\plugins\vcalendar.dll"
 
 RMDir "$INSTDIR\lib\claws-mail\plugins"
 RMDir "$INSTDIR\lib\claws-mail"
@@ -79,22 +79,22 @@ DeleteRegKey HKLM "SOFTWARE\Clients\Mail\Claws Mail"
 DeleteRegKey HKLM "SOFTWARE\Classes\Claws-Mail.Url.mailto"
 
 ; libetpan
-Delete "$INSTDIR\libetpan-13.dll"
+Delete "$INSTDIR\bin\libetpan-13.dll"
 
 ; libxml2
-Delete "$INSTDIR\libxml2-2.dll"
+Delete "$INSTDIR\bin\libxml2-2.dll"
 
 ; regex
 # Old version.
-Delete "$INSTDIR\regex.dll"
+Delete "$INSTDIR\bin\regex.dll"
 
-Delete "$INSTDIR\libregex-1.dll"
+Delete "$INSTDIR\bin\libregex-1.dll"
 
 ; crypt had nothing to uninstall
 
 ; enchant
-Delete "$INSTDIR\libenchant-1.dll"
-Delete "$INSTDIR\lib\enchant\libenchant_myspell.dll"
+Delete "$INSTDIR\bin\libenchant-1.dll"
+Delete "$INSTDIR\bin\lib\enchant\libenchant_myspell.dll"
 
 RMDir "$INSTDIR\lib\enchant"
 RMDir "$INSTDIR\lib"
@@ -111,7 +111,7 @@ RMDir "$INSTDIR\share\enchant\myspell"
 RMDIR "$INSTDIR\share\enchant"
 
 ; gtkhtmlviewer2
-Delete "$INSTDIR\lib\claws-mail\plugins\gtkhtml2_viewer.dll"
+Delete "$INSTDIR\bin\lib\claws-mail\plugins\gtkhtml2_viewer.dll"
 RMDir "$INSTDIR\lib\claws-mail\plugins"
 RMDir "$INSTDIR\lib\claws-mail"
 Delete "$INSTDIR\share\locale\ca\LC_MESSAGES\gtkhtml2_viewer.mo"
@@ -133,7 +133,7 @@ Delete "$INSTDIR\share\locale\sr\LC_MESSAGES\gtkhtml2_viewer.mo"
 Delete "$INSTDIR\share\locale\zh_CN\LC_MESSAGES\gtkhtml2_viewer.mo"
 
 ; pthreads
-Delete "$INSTDIR\pthreadGC2.dll"
+Delete "$INSTDIR\bin\pthreadGC2.dll"
 
 RMDir "$INSTDIR\share"
 RMDir "$INSTDIR"

@@ -32,7 +32,7 @@ Section "-removegpgee"
 # Uninstall a previous gpgee version, if it exists.
   ifFileExists "$INSTDIR\GPGee.dll" 0 gpgex_no_gpgee
     UnRegDLL "$INSTDIR\GPGee.dll"
-    Delete /REBOOTOK "$INSTDIR\GPGee.dll"
+    Delete /REBOOTOK "$INSTDIR\bin\GPGee.dll"
     Delete /REBOOTOK "$INSTDIR\GPGee.DEU"
     Delete "$INSTDIR\GPGee.hlp"
     Delete "$INSTDIR\share\gpgee\gpl.txt"
@@ -49,6 +49,7 @@ ${MementoSection} "GpgEX" SEC_gpgex
 !ifdef SOURCES
   File "${gpg4win_pkg_gpgex}"
 !else
+  SetOutPath "$INSTDIR\bin"
 
   ClearErrors
   SetOverwrite try
@@ -61,7 +62,7 @@ ${MementoSection} "GpgEX" SEC_gpgex
  do_reg:
   # Register the DLL.
   ClearErrors
-  RegDLL "$INSTDIR\gpgex.dll"
+  RegDLL "$INSTDIR\bin\gpgex.dll"
   ifErrors 0 +2
      MessageBox MB_OK "$(T_GpgEX_RegFailed)"
 
@@ -92,7 +93,7 @@ ${MementoSection} "GpgEX" SEC_gpgex
 ${If} ${RunningX64}
 
   # Install the 64 bit version of the dll.
-  SetOutPath "$INSTDIR\bin"
+  SetOutPath "$INSTDIR\bin_64"
   ClearErrors
   SetOverwrite try
   File ${exprefix}/bin/gpgex.dll
@@ -106,7 +107,7 @@ ${If} ${RunningX64}
   # RegDLL can't be used for 64 bit and InstallLib seems to be a
   # registry hack.
   ClearErrors
-  ExecWait '"$SYSDIR\regsvr32" /s "$INSTDIR\bin\gpgex.dll"'
+  ExecWait '"$SYSDIR\regsvr32" /s "$INSTDIR\bin_64\gpgex.dll"'
   ifErrors 0 +2
      MessageBox MB_OK "$(T_GpgEX_RegFailed) (64 bit)"
 

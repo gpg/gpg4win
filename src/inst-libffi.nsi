@@ -31,6 +31,7 @@ Section "-libffi" SEC_libffi
 !ifdef SOURCES
   File ${gpg4win_pkg_libffi}
 !else
+  SetOutPath "$INSTDIR\bin"
   File ${prefix}/bin/libffi-6.dll
 !endif
 SectionEnd

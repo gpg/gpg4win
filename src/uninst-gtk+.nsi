@@ -31,13 +31,13 @@ Section "-un.gtk+"
   Call un.SourceDelete
 !else
 
-  Delete /REBOOTOK "$INSTDIR\libgdk-win32-2.0-0.dll"
-  Delete /REBOOTOK "$INSTDIR\libgtk-win32-2.0-0.dll"
+  Delete /REBOOTOK "$INSTDIR\bin\libgdk-win32-2.0-0.dll"
+  Delete /REBOOTOK "$INSTDIR\bin\libgtk-win32-2.0-0.dll"
 
-  Delete /REBOOTOK "$INSTDIR\libgailutil-18.dll"
-  Delete "$INSTDIR\gtk-query-immodules-2.0.exe"
+  Delete /REBOOTOK "$INSTDIR\bin\libgailutil-18.dll"
+  Delete "$INSTDIR\bin\gtk-query-immodules-2.0.exe"
 
-  Delete "$INSTDIR\gtk-update-icon-cache.exe"
+  Delete "$INSTDIR\bin\gtk-update-icon-cache.exe"
 
   Delete "$INSTDIR\etc\gtk-2.0\gdk-pixbuf.loaders"
   Delete "$INSTDIR\etc\gtk-2.0\gtk.immodules"

@@ -33,6 +33,7 @@ Section "-libiconv" SEC_libiconv
 !ifdef SOURCES
   File "${gpg4win_pkg_libiconv}"
 !else
+  SetOutPath "$INSTDIR\bin"
 
   ClearErrors
   SetOverwrite try
@@ -44,16 +45,6 @@ Section "-libiconv" SEC_libiconv
 
   # Also install it under the name GnuPG and maybe other software
   # inspects since ages.
-  ClearErrors
-  SetOverwrite try
-  File /oname=iconv.dll "${prefix}/bin/libiconv-2.dll"
-  SetOverwrite lastused
-  ifErrors 0 +3
-      File /oname=iconv.dll.tmp "${prefix}/bin/libiconv-2.dll"
-      Rename /REBOOTOK iconv.dll.tmp iconv.dll
-
-  # Install a copy in pub; this is a bad hack and should be removed ASAP.
-  SetOutPath "$INSTDIR\pub"
   ClearErrors
   SetOverwrite try
   File /oname=iconv.dll "${prefix}/bin/libiconv-2.dll"

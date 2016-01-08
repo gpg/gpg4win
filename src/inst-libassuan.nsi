@@ -34,6 +34,7 @@ Section "-libassuan" SEC_libassuan
 !ifdef SOURCES
   File "${gpg4win_pkg_libassuan}"
 !else
+  SetOutPath "$INSTDIR\bin"
   ClearErrors
   SetOverwrite try
   File "${prefix}/bin/libassuan-0.dll"

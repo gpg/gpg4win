@@ -31,15 +31,15 @@ Section "-un.gpg4win"
   Call un.RemoveFromPath
 
   # Delete gpg4win included tools
-  Delete "$INSTDIR\sha1sum.exe"
-  Delete "$INSTDIR\sha256sum.exe"
-  Delete "$INSTDIR\md5sum.exe"
-  Delete "$INSTDIR\mkportable.exe"
+  Delete "$INSTDIR\bin\sha1sum.exe"
+  Delete "$INSTDIR\bin\sha256sum.exe"
+  Delete "$INSTDIR\bin\md5sum.exe"
+  Delete "$INSTDIR\bin\mkportable.exe"
 
   # Delete the runtime libaries
-  Delete "$INSTDIR\libstdc++-6.dll"
-  Delete "$INSTDIR\libgcc_s_sjlj-1.dll"
-  Delete "$INSTDIR\libwinpthread-1.dll"
+  Delete "$INSTDIR\bin\libstdc++-6.dll"
+  Delete "$INSTDIR\bin\libgcc_s_sjlj-1.dll"
+  Delete "$INSTDIR\bin\libwinpthread-1.dll"
 
   # Delete standard stuff.
   Delete "$INSTDIR\share\gpg4win\README.*.txt"
@@ -132,7 +132,7 @@ Section "-un.gpg4win"
 
   # Try again to remove the scdaemon.  This is useful because scdaemon
   # needs some time to stop after gpg-agent has been stopped.
-  Delete "$INSTDIR\scdaemon.exe"
+  Delete "$INSTDIR\bin\scdaemon.exe"
 
   # Try to remove other top directories.
   RMDir "$INSTDIR\lib"

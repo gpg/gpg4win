@@ -32,6 +32,7 @@ Section "-cairo" SEC_cairo
 !ifdef SOURCES
   File "${gpg4win_pkg_cairo_src}"
 !else
+  SetOutPath "$INSTDIR\bin"
 
   File ${prefix}/bin/libcairo-2.dll
   File ${prefix}/bin/libcairo-gobject-2.dll

@@ -31,7 +31,7 @@ Section "-un.w32pth"
   Push "${gpg4win_pkg_w32pth}"
   Call un.SourceDelete
 !else
-  Delete "$INSTDIR\libw32pth-0.dll"
+  Delete "$INSTDIR\bin\libw32pth-0.dll"
   RMDir "$INSTDIR"
 !endif
 SectionEnd

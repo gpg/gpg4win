@@ -874,7 +874,7 @@ Section "-startmenu"
     IntOp $R0 $R0 & ${SF_SELECTED}
     IntCmp $R0 ${SF_SELECTED} 0 no_gpa_menu
     CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\GPA.lnk" \
-	"$INSTDIR\gpa.exe" \
+	"$INSTDIR\bin\gpa.exe" \
         "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_gpa)
   no_gpa_menu:
 !endif
@@ -884,7 +884,7 @@ Section "-startmenu"
     IntOp $R0 $R0 & ${SF_SELECTED}
     IntCmp $R0 ${SF_SELECTED} 0 no_kleopatra_menu
     CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\Kleopatra.lnk" \
-	"$INSTDIR\kleopatra.exe" \
+	"$INSTDIR\bin\kleopatra.exe" \
         "" "$INSTDIR\bin\kleopatra.exe" "" SW_SHOWNORMAL "" $(DESC_Menu_kleopatra)
   no_kleopatra_menu:
 !endif

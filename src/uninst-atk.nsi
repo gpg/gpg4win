@@ -66,7 +66,7 @@ Section "-un.atk"
   RMDir "$INSTDIR\share\locale"
   RMDir "$INSTDIR\share"
 
-  Delete /REBOOTOK "$INSTDIR\libatk-1.0-0.dll"
+  Delete /REBOOTOK "$INSTDIR\bin\libatk-1.0-0.dll"
 
 !endif
 

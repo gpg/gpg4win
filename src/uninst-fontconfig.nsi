@@ -30,7 +30,7 @@ Section "-un.fontconfig"
   Push "${gpg4win_pkg_fontconfig_src}"
   Call un.SourceDelete
 !else
-  Delete /REBOOTOK "$INSTDIR\libfontconfig-1.dll"
+  Delete /REBOOTOK "$INSTDIR\bin\libfontconfig-1.dll"
   Delete "$INSTDIR\etc\fonts\fonts.conf"
   RMDir "$INSTDIR\etc\fonts"
 
