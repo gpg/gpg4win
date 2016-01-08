@@ -20,11 +20,11 @@
 EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
 	config.site config.nsi.in \
         installer-options.ini.in libiconv.def libintl.def loreley.mid \
-        gpg4win-splash.wav gpgwrap.c exdll.h g4wihelp.c g4wihelp.nsi \
+        gpg4win-splash.wav exdll.h g4wihelp.c g4wihelp.nsi \
         inst-sections.nsi installer.nsi installer-finish.nsi  \
 	zlib.pc sha1sum.c mkportable.c     \
 	mkportable-vanilla.h mkportable-light.h mkportable-full.h \
-        kleowrap.c potomo Memento.nsh \
+        potomo Memento.nsh \
         inst-gpg4win.nsi	   uninst-gpg4win.nsi	      \
         inst-atk.nsi               uninst-atk.nsi	      \
         inst-expat.nsi		   uninst-expat.nsi	      \
@@ -80,7 +80,7 @@ foosum_exe = sha1sum.exe md5sum.exe sha256sum.exe mkportable.exe
 CLEANFILES = g4wihelp.dll versioninfo.txt $(README_files) $(HOWTO_files) \
              installer-options.ini NEWS.tmp COMPONENTS-list.tmp \
 	     license.blurb cdversioninfo.tmp \
-	     gpgwrap.exe gpgwrap-2.exe kleowrap.exe $(foosum_exe)
+	     $(foosum_exe)
 
 # Supported source packages.
 gpg4win_spkgs = glib libffi gdk-pixbuf gtk+ \
@@ -466,7 +466,7 @@ installer-options.ini : $(top_srcdir)/src/installer-options.ini.in
 # if makensis changed to the directory of the source file at startup.
 # So we have to pull a couple of strings to correct this.
 gpg4win-$(VERSION).exe: gpg4win.nsi $(common_nsi) stamps/stamp-final \
-                        g4wihelp.dll gpgwrap.exe gpgwrap-2.exe kleowrap.exe \
+                        g4wihelp.dll \
 		        $(foosum_exe) \
 			$(README_files) $(HOWTO_files) \
 	                license.blurb installer-options.ini versioninfo.txt
@@ -474,7 +474,7 @@ gpg4win-$(VERSION).exe: gpg4win.nsi $(common_nsi) stamps/stamp-final \
            -DSRCDIR=$(srcdir) $(EXTRA_MAKENSIS_FLAGS) $(srcdir)/gpg4win.nsi
 
 gpg4win-light-$(VERSION).exe: gpg4win.nsi $(common_nsi) stamps/stamp-final \
-                        g4wihelp.dll gpgwrap.exe gpgwrap-2.exe kleowrap.exe \
+                        g4wihelp.dll \
 		        $(foosum_exe) \
 			$(README_files) $(HOWTO_files) \
 			license.blurb installer-options.ini versioninfo.txt
@@ -483,7 +483,7 @@ gpg4win-light-$(VERSION).exe: gpg4win.nsi $(common_nsi) stamps/stamp-final \
            -DGPG4WIN_LIGHT=1 $(srcdir)/gpg4win.nsi
 
 gpg4win-vanilla-$(VERSION).exe: gpg4win.nsi $(common_nsi) stamps/stamp-final \
-                        g4wihelp.dll gpgwrap.exe gpgwrap-2.exe \
+                        g4wihelp.dll  \
 		        $(foosum_exe) \
 			$(README_files) $(HOWTO_files) \
 		        license.blurb installer-options.ini versioninfo.txt
@@ -492,7 +492,6 @@ gpg4win-vanilla-$(VERSION).exe: gpg4win.nsi $(common_nsi) stamps/stamp-final \
            -DGPG4WIN_VANILLA=1 $(srcdir)/gpg4win.nsi
 
 gpg4win-$(VERSION).wix: gpg4win.nsi $(common_nsi) stamps/stamp-final \
-			gpgwrap.exe gpgwrap-2.exe kleowrap.exe \
 		        $(foosum_exe) \
 			$(README_files) $(HOWTO_files) \
 			versioninfo.txt
@@ -502,7 +501,6 @@ gpg4win-$(VERSION).wix: gpg4win.nsi $(common_nsi) stamps/stamp-final \
 		-DSRCDIR=$(srcdir) $(srcdir)/gpg4win.nsi > $@
 
 gpg4win-light-$(VERSION).wix: gpg4win.nsi $(common_nsi) stamps/stamp-final \
-			gpgwrap.exe gpgwrap-2.exe kleowrap.exe \
 		        $(foosum_exe) \
 			$(README_files) $(HOWTO_files) \
 		        versioninfo.txt
@@ -512,7 +510,6 @@ gpg4win-light-$(VERSION).wix: gpg4win.nsi $(common_nsi) stamps/stamp-final \
 		-DSRCDIR=$(srcdir) -DGPG4WIN_LIGHT=1 $(srcdir)/gpg4win.nsi > $@
 
 gpg4win-vanilla-$(VERSION).wix: gpg4win.nsi $(common_nsi) stamps/stamp-final \
-			gpgwrap.exe gpgwrap-2.exe kleowrap.exe \
 		        $(foosum_exe) \
 			$(README_files) $(HOWTO_files) \
                         versioninfo.txt
@@ -543,18 +540,6 @@ g4wihelp.dll: g4wihelp.c exdll.h
 	$(CC) -I. -shared -O2 -o g4wihelp.dll $(srcdir)/g4wihelp.c \
 	   -lwinmm -lgdi32
 	$(STRIP) g4wihelp.dll
-
-gpgwrap.exe: gpgwrap.c
-	$(CC) -I. -I.. -DHAVE_CONFIG_H -O2 -o $@ $^
-	$(STRIP) $@
-
-gpgwrap-2.exe: gpgwrap.c
-	$(CC) -I. -I.. -DHAVE_CONFIG_H -DGPGWRAP_VARIANT=2 -O2 -o $@ $^
-	$(STRIP) $@
-
-kleowrap.exe: kleowrap.c
-	$(CC) -I. -I.. -DHAVE_CONFIG_H -O2 -mwindows -o $@ $^
-	$(STRIP) $@
 
 sha1sum.exe: sha1sum.c
 	$(CC) -O2 -o $@ $^
