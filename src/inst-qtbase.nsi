@@ -33,16 +33,12 @@ Section "-qtbase" SEC_qt
 !ifdef SOURCES
   File "${gpg4win_pkg_qtbase}"
 !else
-  # Qt needs some help to find itself.
-  File ${SRCDIR}/qt.conf
-
   File ${prefix}/bin/Qt5Core.dll
   File ${prefix}/bin/Qt5Gui.dll
+  File ${prefix}/bin/Qt5Widgets.dll
 
-  SetOutPath "$INSTDIR\plugins\imageformats"
+  SetOutPath "$INSTDIR\platforms"
 
-  File ${prefix}/plugins/imageformats/qgif.dll
-  File ${prefix}/plugins/imageformats/qjpeg.dll
   File ${prefix}/plugins/platforms/qwindows.dll
 
 !endif
