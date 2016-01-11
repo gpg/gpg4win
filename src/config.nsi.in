@@ -193,6 +193,19 @@
 !define gpg4win_pkg_paperkey @gpg4win_pkg_paperkey@
 !define gpg4win_pkg_paperkey_version @gpg4win_pkg_paperkey_version@
 
+@HAVE_PKG_KCONFIG@
+!define gpg4win_pkg_kconfig @gpg4win_pkg_kconfig@
+!define gpg4win_pkg_kconfig_version @gpg4win_pkg_kconfig_version@
+
+@HAVE_PKG_QTTOOLS@
+!define gpg4win_pkg_qttools @gpg4win_pkg_qttools@
+!define gpg4win_pkg_qttools_version @gpg4win_pkg_qttools_version@
+
+@HAVE_PKG_EXTRA_CMAKE_MODULES@
+!define gpg4win_pkg_extra_cmake_modules @gpg4win_pkg_extra_cmake_modules@
+!define gpg4win_pkg_extra_cmake_modules_version @gpg4win_pkg_extra_cmake_modules_version@
+
+
 # Internal packages.
 @HAVE_PKG_COMPENDIUM@
 

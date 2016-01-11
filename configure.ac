@@ -341,7 +341,10 @@ GPG4WIN_BPKG_BINSRC([gnupg-w32])
 GPG4WIN_BPKG_GNUWIN32([dbus])
 GPG4WIN_BPKG_BINSRC([oxygen-icons])
 GPG4WIN_SPKG([qtbase], [dbus libpng])
-GPG4WIN_BPKG_BINSRC([kleopatra], [gpgme qtbase oxygen-icons])
+GPG4WIN_SPKG([qttools], [qtbase])
+GPG4WIN_BPKG_BINSRC([kleopatra], [kconfig gpgme qtbase oxygen-icons])
+GPG4WIN_KDEPKG([extra-cmake-modules])
+GPG4WIN_KDEPKG([kconfig], [qtbase qttools extra-cmake-modules])
 
 GPG4WIN_FINALIZE
 
@@ -378,6 +381,7 @@ AC_CONFIG_FILES(doc/Makefile)
 AC_CONFIG_FILES(doc/logo/Makefile)
 AC_CONFIG_FILES(doc/manual/Makefile doc/manual/version.tex)
 AC_CONFIG_FILES(src/dictionaries/Makefile)
+AC_CONFIG_FILES(src/toolchain.cmake)
 AC_OUTPUT
 
 # Throw a warning if optional tools are missing

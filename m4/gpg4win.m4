@@ -358,6 +358,49 @@ AC_DEFUN([GPG4WIN_SPKGEX],
   )
 ])
 
+# GPG4WIN_KDEPKG([PKG],[DEPENDS],[IF-FOUND],[IF-NOT-FOUND])
+# Set up the source package PKG to be additionally built
+# for the host provided as additional-gpgex-host
+AC_DEFUN([GPG4WIN_KDEPKG],
+[
+  AC_REQUIRE([GPG4WIN_INIT])
+  _gpg4win_pkg=maybe
+  AC_ARG_ENABLE([pkg-$1],
+    AS_HELP_STRING([--enable-pkg-$1[=DIR]],
+                   [include package $1]),
+    _gpg4win_pkg=$enableval)
+  _gpg4win_kdepkg=no
+  _gpg4win_version=
+  AS_IF([test "$_gpg4win_pkg" != no],
+        [GPG4WIN_FIND($1,,, $_gpg4win_pkg,
+        _gpg4win_kdepkg=$gpg4win_val
+        _gpg4win_version=$gpg4win_version)])
+
+  # gpg4win_pkg_PKGNAME=FILENAME_OF_SOURCE
+  gpg4win_pkg_[]m4_translit([$1],[-+],[__])[]=$_gpg4win_kdepkg
+  AC_SUBST(gpg4win_pkg_[]m4_translit([$1],[-+],[__]))
+
+  # gpg4win_pkg_PKGNAME_version=VERSION
+  gpg4win_pkg_[]m4_translit([$1],[-+],[__])[]_version=$_gpg4win_version
+  AC_SUBST(gpg4win_pkg_[]m4_translit([$1],[-+],[__])[]_version)
+
+  # gpg4win_pkg_PKGNAME_deps=DEPS
+  gpg4win_pkg_[]m4_translit([$1],[A-Z+-],[a-z__])[]_deps="$2"
+  AC_SUBST(gpg4win_pkg_[]m4_translit([$1],[A-Z+-],[a-z__])[]_deps)
+
+  AS_IF([test "$_gpg4win_kdepkg" != no],
+    _gpg4win_pkgs="$_gpg4win_pkgs $1"
+    GPG4WIN_DEFINE(HAVE_PKG_[]m4_translit([$1],[a-z+-],[A-Z__]))
+    # Record dependencies.  Also enter every package as node.
+    _gpg4win_deps="$_gpg4win_deps $1 $1"
+    AS_IF([test ! -z "$2"],
+          for _gpg4win_i in $2; do
+            _gpg4win_deps="$_gpg4win_deps $_gpg4win_i $1"
+          done)
+      [$3],
+      [$4])
+])
+
 # GPG4WIN_BPKG_GNUWIN32([PKG],[DEPENDS],[IF-FOUND],[IF-NOT-FOUND])
 # Set up the gnuwin32 package PKG.
 # It is provided in gpg4win_val.

@@ -56,11 +56,15 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
         inst-pkgconfig.nsi	   uninst-pkgconfig.nsi	      \
         inst-w32pth.nsi		   uninst-w32pth.nsi	      \
         inst-zlib.nsi        	   uninst-zlib.nsi            \
-        inst-qtbase.nsi        	   uninst-qtbase.nsi              \
+        inst-kconfig.nsi        uninst-kconfig.nsi              \
         inst-dbus.nsi   	   uninst-dbus.nsi      \
         inst-oxygen-icons.nsi  	   uninst-oxygen-icons.nsi    \
         inst-kleopatra.nsi  	   uninst-kleopatra.nsi       \
         uninst-claws-mail.nsi uninst-claws-mail-cmds.nsi \
+        inst-qtbase.nsi uninst-qtbase.nsi \
+        inst-kconfig.nsi uninst-kconfig.nsi \
+        inst-qttools.nsi uninst-qttools.nsi \
+        inst-extra-cmake-modules.nsi uninst-extra-cmake-modules.nsi \
         inst-final.nsi
 
 SUBDIRS = dictionaries
@@ -88,7 +92,10 @@ gpg4win_spkgs = glib libffi gdk-pixbuf gtk+ \
 		gpa opencdk \
 		pinentry libassuan \
 		w32pth paperkey regex libiconv gettext \
-		qtbase
+		qtbase qttools
+
+# Source packages following the KDE pattern
+gpg4win_kdepkgs = kconfig extra-cmake-modules
 
 # Supported source packages to build in an additional architecture
 gpg4win_expkgs = libgpg-error libassuan libiconv gettext w32pth gpgex gpgol \
@@ -276,7 +283,16 @@ gpg4win_pkg_qtbase_make_args = \
 # Qmake still writes debug names in pkgconfig files.
 define gpg4win_pkg_qtbase_post_install
  (cd $$$${pkgidir}; \
- perl -pi -e 's/-lQt5\(\w*\)d/-lQt5\1/g' `find . -name \*.pc`)
+ sed -i 's/-lQt5\(\w*\)d/-lQt5\1/g' `find . -name \*.pc`)
+endef
+
+# Qmake does not support setting the installation path.
+# really https://bugreports.qt.io/browse/QTBUG-12341
+define gpg4win_pkg_qttools_post_install
+ (cd $$$${pkgbdir}; \
+  make uninstall; \
+  mkdir $$$${pkgidir}; \
+  cp -r bin lib $$$${pkgidir};)
 endef
 
 # Supported make-only source packages.

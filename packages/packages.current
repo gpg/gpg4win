@@ -329,6 +329,32 @@ name qtbase-5.5.1.tar.xz
 file 5.5/5.5.1/submodules/qtbase-opensource-src-5.5.1.tar.xz
 chk 0b651543fa013ae151b7a11f0d0dee092050aa3f
 
+# Qt Tools
+# last changed: 2016-01-11
+# by: ah
+# verified: HTTPS https://download.qt.io/official_releases/qt/5.5/5.5.1/submodules/qttools-opensource-src-5.5.1.tar.xz.sha1
+name qttools-5.5.1.tar.xz
+file 5.5/5.5.1/submodules/qttools-opensource-src-5.5.1.tar.xz
+chk f7815165d0b427346028901a42be5f0f47d05962
+
+# KDE libraries
+
+server http://download.kde.org/stable/frameworks/
+
+# ECM
+# last changed: 2016-01-08
+# by: ah
+# verified: https://www.kde.org/info/kde-frameworks-5.17.0.php
+file 5.17/extra-cmake-modules-5.17.0.tar.xz
+chk 8093d72964170246a97e337c259cd4e6f71b627a
+
+# KConfig
+# last changed: 2016-01-08
+# by: ah
+# verified: https://www.kde.org/info/kde-frameworks-5.17.0.php
+file 5.17/kconfig-5.17.0.tar.xz
+chk 1fd4f512e9802ac2c6bf0eb46d99c1264eed5249
+
 #
 # Qt links DBus and Kleopatra / KDE libs needs it
 #

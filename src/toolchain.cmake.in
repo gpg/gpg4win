@@ -1,0 +1,37 @@
+# toolchain.cmake.in for GPG4Win
+# Copyright (C) 2015 Intevation GmbH
+#
+# This file is part of GPG4Win
+#
+# GPG4Win is free software; you can redistribute it and/or modify it
+# under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# GPG4Win is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, see <http://www.gnu.org/licenses/>.
+
+set(CMAKE_SYSTEM_NAME Windows)
+set(MSYS 1)
+set(BUILD_SHARED_LIBS ON)
+set(LIBTYPE SHARED)
+set(CMAKE_BUILD_TYPE Release)
+set(CMAKE_FIND_ROOT_PATH @abs_top_builddir@/playground/install)
+set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
+set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
+set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
+set(CMAKE_C_COMPILER @host@-gcc)
+set(CMAKE_CXX_COMPILER @host@-g++)
+set(CMAKE_Fortran_COMPILER @host@-gfortran)
+set(CMAKE_RC_COMPILER @host@-windres)
+set(HDF5_C_COMPILER_EXECUTABLE @host@-h5cc)
+set(HDF5_CXX_COMPILER_EXECUTABLE @host@-h5c++)
+set(PKG_CONFIG_EXECUTABLE pkg-config)
+set(QT_QMAKE_EXECUTABLE @abs_top_builddir@/plaground/install/bin/qmake)
+set(CMAKE_INSTALL_PREFIX  CACHE PATH "Installation Prefix")
+set(CMAKE_BUILD_TYPE Release CACHE STRING "Debug|Release|RelWithDebInfo|MinSizeRel")

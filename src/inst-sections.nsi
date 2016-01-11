@@ -101,6 +101,15 @@
 !ifdef HAVE_PKG_GPGME
 !include "inst-gpgme.nsi"
 !endif
+!ifdef HAVE_PKG_QTTOOLS
+!include "inst-qttools.nsi"
+!endif
+!ifdef HAVE_PKG_KCONFIG
+!include "inst-kconfig.nsi"
+!endif
+!ifdef HAVE_PKG_EXTRA_CMAKE_MODULES
+!include "inst-extra-cmake-modules.nsi"
+!endif
 
 # These are displayed in the selection dialog.
 
@@ -259,6 +268,15 @@
 !endif
 !ifdef HAVE_PKG_DBUS
 !include "uninst-dbus.nsi"
+!endif
+!ifdef HAVE_PKG_QTTOOLS
+!include "uninst-qttools.nsi"
+!endif
+!ifdef HAVE_PKG_KCONFIG
+!include "uninst-kconfig.nsi"
+!endif
+!ifdef HAVE_PKG_EXTRA_CMAKE_MODULES
+!include "uninst-extra-cmake-modules.nsi"
 !endif
 
 !include "uninst-gpg4win.nsi"
@@ -484,6 +502,9 @@ Function CalcDepends
 !ifdef HAVE_PKG_OXYGEN_ICONS
   !insertmacro UnselectSection ${SEC_oxygen_icons}
 !endif
+!ifdef HAVE_PKG_KCONFIG
+  !insertmacro UnselectSection ${SEC_kconfig}
+!endif
 
   # Always install gnupg2.  This is also ensured by putting
   # these packages in the RO section and enabling them by default, but
@@ -574,6 +595,9 @@ Function CalcDepends
   have_kleopatra_libs:
   !insertmacro SelectSection ${SEC_qtbase}
   !insertmacro SelectSection ${SEC_oxygen_icons}
+  !insertmacro SelectSection ${SEC_kconfig}
+  !insertmacro SelectSection ${SEC_qttools}
+  !insertmacro SelectSection ${SEC_extra-cmake-modules}
    skip_kleopatra_libs:
 !endif
 

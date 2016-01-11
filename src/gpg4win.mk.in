@@ -112,6 +112,8 @@ define DEFLATE_macro
 	case "$(1)" in			\
           */qtbase*.*.tar.xz)          \
             $(TAR) -xJ --transform='s,^qtbase-opensource-src,qtbase,' -f "$(1)" ;; \
+          */qttools*.*.tar.xz)          \
+            $(TAR) -xJ --transform='s,^qttools-opensource-src,qttools,' -f "$(1)" ;; \
 	  *.tar.gz | *.tgz)		\
 	    $(TAR) xzf "$(1)" ;;	\
 	  *.tar.bz2 | *.tbz2 | *.tbz)	\
@@ -474,6 +476,81 @@ HOWTO-$(1).$(2).txt : $(top_srcdir)/doc/HOWTO-$(1).$(2).txt
         | awk '{printf "%s\r\n", $$$$0}' > HOWTO-$(1).$(2).txt
 endef
 
+# Template for source packages of KDE software
+define KDEPKG_template_
+
+pkg_files += $(call GETVAR,gpg4win_pkg_$(1))
+
+stamps/stamp-$(1)-00-unpack: stamps/stamp-directories $(call GETDEPS,$(1))
+	(cd $(bdir);					\
+	 $(call SETVARS,$(1));				\
+	 $(call DEFLATE_macro,$$$${pkg}))
+	touch stamps/stamp-$(1)-00-unpack
+
+stamps/stamp-$(1)-01-patch: stamps/stamp-$(1)-00-unpack
+	(shopt -s nullglob;				\
+	 $(call SETVARS,$(1));				\
+	 for pfile in "$$$${pkgpbdir}"/*.patch "$$$${pkgpdir}"/*.patch ; do  \
+	   (cd "$$$${pkgsdir}"; "$$$${pfile}")		\
+	 done)
+	touch stamps/stamp-$(1)-01-patch
+
+stamps/stamp-$(1)-02-configure: stamps/stamp-$(1)-01-patch
+	($(call SETVARS,$(1));				\
+	 mkdir "$$$${pkgbdir}";				\
+	  cd "$$$${pkgbdir}";				\
+	 cmake 		\
+		-DCMAKE_TOOLCHAIN_FILE=$(abs_top_srcdir)/src/toolchain.cmake \
+		-DCMAKE_INSTALL_PREFIX="$$$${pkgidir}" \
+		-DBUILD_TESTING=False \
+		$$$${pkgcfg} $$$${pkgextracflags} "../$$$${pkg_version}") && \
+	touch stamps/stamp-$(1)-02-configure
+
+stamps/stamp-$(1)-03-make: stamps/stamp-$(1)-02-configure
+	($(call SETVARS,$(1));				\
+	  cd "$$$${pkgbdir}";				\
+	  test -n "$$$${pkgmkdir}" && cd "$$$${pkgmkdir}";	\
+	  $(MAKE) $(AM_MAKEFLAGS) $(GPG4WIN_PARALLEL) $$$${pkgmkargs})
+	touch stamps/stamp-$(1)-03-make
+
+# Note that post_install must come last because it may be empty and
+# "; ;" is a syntax error.
+stamps/stamp-$(1)-04-install: stamps/stamp-$(1)-03-make
+	($(call SETVARS,$(1));				\
+	  cd "$$$${pkgbdir}";				\
+	  cd "$$$${pkgmkdir_inst}";			\
+	  $(MAKE) $(AM_MAKEFLAGS) $$$${pkgmkargs_inst} install; \
+	  $(call STRIP_macro,"$$$${pkgidir}");		\
+	  $(call gpg4win_pkg_$(call FROB_macro,$(1))_post_install))
+	touch stamps/stamp-$(1)-04-install
+
+stamps/stamp-$(1)-05-stow: stamps/stamp-$(1)-04-install
+	($(call SETVARS,$(1));				\
+	 cd $(ipdir);					\
+	 $(STOW) "$$$${pkg_version}")
+	touch stamps/stamp-$(1)-05-stow
+
+stamps/stamp-final-$(1): stamps/stamp-$(1)-05-stow
+	touch stamps/stamp-final-$(1)
+
+.PHONY : clean-$(1)
+clean-$(1):
+	($(call SETVARS,$(1));				\
+	 (cd $(ipdir) &&				\
+	  ($(STOW) -D "$$$${pkg_version}";		\
+	   rm -fR "$$$${pkg_version}"));		\
+	 rm -fR "$$$${pkgsdir}" "$$$${pkgbdir}")
+	rm -f stamps/stamp-final-$(1) stamps/stamp-$(1)-*
+
+endef
+
+define KDEPKG_template
+$(if $(filter-out no, $(call GETVAR,gpg4win_pkg_$(1))),
+  $(call KDEPKG_template_,$1))
+endef
+
+
+
 # Insert the template for each source package.
 $(foreach spkg, $(gpg4win_spkgs), $(eval $(call SPKG_template,$(spkg))))
 
@@ -491,6 +568,9 @@ $(foreach ipkg, $(gpg4win_ipkgs), $(eval $(call IPKG_template,$(ipkg))))
 
 # Insert the template for the README and HOWTO files.
 $(foreach rll, $(gpg4win_readme_ll), $(eval $(call README_template,$(rll))))
+
+# Insert the template for KDE packages.
+$(foreach kdepkg, $(gpg4win_kdepkgs), $(eval $(call KDEPKG_template,$(kdepkg))))
 
 $(foreach rll, $(gpg4win_howto_smime_ll), \
                $(eval $(call HOWTO_template,SMIME,$(rll))))
@@ -515,6 +595,8 @@ clean-gpg4win:
 
 .PHONY : all-gpg4win clean-stamps clean-gpg4win
 
+# TODO find a better way to do this. Like a define thats checked for
+# in the spkg template
 define OVERRIDE_CONF_TEMPLATE
 # Override of the configure rule. For targets that not use
 # autotools configure to have more freedom with the options.
@@ -528,6 +610,20 @@ stamps/stamp-$(1)-02-configure: stamps/stamp-$(1)-01-patch
 endef
 
 $(eval $(call OVERRIDE_CONF_TEMPLATE,qtbase))
+
+define OVERRIDE_QTTOOLS_CONF_TEMPLATE
+# Override of the configure rule. For targets that not use
+# autotools configure to have more freedom with the options.
+stamps/stamp-$(1)-02-configure: stamps/stamp-$(1)-01-patch
+	($(call SETVARS,$(1)); \
+	mkdir "$$$${pkgbdir}"; \
+	cd "$$$${pkgbdir}"; \
+	"$(idir)/bin/qmake" ../$$$${pkg_version} CONFIG-="debug debug_and_release" \
+		$$$${pkgcfg}) && \
+	touch stamps/stamp-$(1)-02-configure
+endef
+
+$(eval $(call OVERRIDE_QTTOOLS_CONF_TEMPLATE,qttools))
 
 # @emacs_local_vars_begin@
 # @emacs_local_vars_read_only@

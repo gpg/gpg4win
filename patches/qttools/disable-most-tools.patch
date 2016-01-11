@@ -1,0 +1,33 @@
+#! /bin/sh
+patch -p0 -f $* < $0
+exit $?
+
+--- src/src.pro.orig	2016-01-11 12:57:22.989927092 +0100
++++ src/src.pro	2016-01-11 12:57:25.701973152 +0100
+@@ -1,18 +1,5 @@
+ TEMPLATE = subdirs
+
+-qtHaveModule(widgets) {
+-    no-png {
+-        message("Some graphics-related tools are unavailable without PNG support")
+-    } else {
+-        SUBDIRS = assistant \
+-                  pixeltool \
+-                  qtestlib \
+-                  designer
+-
+-        linguist.depends = designer
+-    }
+-}
+-
+ SUBDIRS += linguist \
+     qtplugininfo
+ if(!android|android_app):!ios: SUBDIRS += qtpaths
+@@ -27,7 +14,7 @@
+
+ qtHaveModule(dbus): SUBDIRS += qdbus
+
+-win32|winrt:SUBDIRS += windeployqt
++#win32|winrt:SUBDIRS += windeployqt
+ winrt:SUBDIRS += winrtrunner
+ qtHaveModule(gui):!android:!ios:!qnx:!wince*:!winrt*:SUBDIRS += qtdiag

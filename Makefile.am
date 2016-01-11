@@ -32,7 +32,8 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         patches/qtbase-5.5.1/fix-oci-detect.patch \
         patches/qtbase-5.5.1/fix-syssemaphore.patch \
         patches/qtbase-5.5.1/fix-zlib-link.patch \
-        patches/w32pth-2.0.5/workaround-broken-libtool.patch
+        patches/w32pth-2.0.5/workaround-broken-libtool.patch \
+        patches/qttools/disable-most-tools.patch
 
 copy-news:
 	cp NEWS doc/website/NEWS.last
