@@ -1,0 +1,52 @@
+#! /bin/sh
+patch -p1 -f $* < $0
+exit $?
+
+From 88ffbec2863509cb687c0d40e8dded2ba9cf1b5c Mon Sep 17 00:00:00 2001
+From: Andre Heinecke <aheinecke@intevation.de>
+Date: Thu, 21 Jan 2016 17:34:57 +0100
+Subject: [PATCH] Remove uneccessary dependency to KDEWIN
+
+There was already a question in FindGpgme.cmake if KDEWIN
+is actually used. Turns out it's not. At least with mingw-3
+on debian jessie you can compile gpgmepp withoug KDEWIN.
+---
+ CMakeLists.txt        | 5 -----
+ cmake/FindGpgme.cmake | 6 ------
+ 2 files changed, 11 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 8986f78..35f6221 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -37,11 +37,6 @@ set_package_properties(Gpgme PROPERTIES
+ )
+
+ find_package(Boost REQUIRED)
+-if(WIN32)
+-    find_package(KDEWin REQUIRED)
+-    INCLUDE_DIRECTORIES(${KDEWIN_INCLUDES})
+-    LINK_LIBRARIES(${KDEWIN_LIBRARIES})
+-endif()
+
+ ########### CMake Config Files ###########
+ set(CMAKECONFIG_INSTALL_DIR "${KDE_INSTALL_CMAKEPACKAGEDIR}/KF5Gpgmepp")
+diff --git a/cmake/FindGpgme.cmake b/cmake/FindGpgme.cmake
+index 9db4e50..c5f8470 100644
+--- a/cmake/FindGpgme.cmake
++++ b/cmake/FindGpgme.cmake
+@@ -87,12 +87,6 @@ if ( WIN32 )
+
+   else()
+
+-    # is this needed, of just unreflected cut'n'paste?
+-    # this isn't a KDE library, after all!
+-    if( NOT KDEWIN_FOUND )
+-      find_package( KDEWIN REQUIRED )
+-    endif()
+-
+     set( GPGME_FOUND         false )
+     set( GPGME_VANILLA_FOUND false )
+     set( GPGME_GLIB_FOUND    false )
+--
+2.1.4

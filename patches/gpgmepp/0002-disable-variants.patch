@@ -1,0 +1,66 @@
+#! /bin/sh
+patch -p1 -f $* < $0
+exit $?
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 1c3335a..eb1dd3a 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -75,58 +75,6 @@ if ( GPGME_VANILLA_FOUND )
+
+ endif()
+
+-if ( GPGME_GLIB_FOUND )
+-   add_library(KF5Gpgmepp-glib ${gpgme_LIB_SRCS} context_glib.cpp)
+-
+-   generate_export_header(KF5Gpgmepp-glib BASE_NAME gpgmepp-glib)
+-
+-   add_library(KF5::Gpgmepp-glib ALIAS KF5Gpgmepp-glib)
+-
+-   target_link_libraries(KF5Gpgmepp-glib
+-      ${GPGME_GLIB_LIBRARIES}
+-      Qt5::Core
+-   )
+-
+-   target_include_directories(KF5Gpgmepp-glib INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR_KF5}/gpgme++>")
+-   target_include_directories(KF5Gpgmepp-glib PUBLIC "$<BUILD_INTERFACE:${Gpgmepp_SOURCE_DIR}/src;${Gpgmepp_BINARY_DIR}/src>")
+-
+-   set_target_properties(KF5Gpgmepp-glib PROPERTIES
+-      VERSION ${GPGMEPP_VERSION_STRING}
+-      SOVERSION ${GPGMEPP_SOVERSION}
+-      EXPORT_NAME Gpgmepp-glib
+-   )
+-   install(TARGETS KF5Gpgmepp-glib EXPORT KF5GpgmeppTargets ${KF5_INSTALL_TARGETS_DEFAULT_ARGS})
+-endif()
+-
+-
+-if ( GPGME_QT_FOUND )
+-   add_library(KF5Gpgmepp-qt ${gpgme_LIB_SRCS} context_qt.cpp)
+-
+-   generate_export_header(KF5Gpgmepp-qt BASE_NAME gpgmepp-qt)
+-
+-   add_library(KF5::Gpgmepp-qt ALIAS KF5Gpgmepp-qt)
+-
+-   target_link_libraries(KF5Gpgmepp-qt
+-      ${GPGME_QT_LIBRARIES}
+-      Qt5::Core
+-   )
+-
+-   target_include_directories(KF5Gpgmepp-qt INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR_KF5}/gpgme++>")
+-   target_include_directories(KF5Gpgmepp-qt PUBLIC "$<BUILD_INTERFACE:${Gpgmepp_SOURCE_DIR}/src;${Gpgmepp_BINARY_DIR}/src>")
+-
+-   if(WIN32)
+-      target_link_libraries( gpgmepp-qt ${GPGME_VANILLA_LIBRARIES} )
+-   endif()
+-
+-   set_target_properties(KF5Gpgmepp-qt PROPERTIES
+-      VERSION ${GPGMEPP_VERSION_STRING}
+-      SOVERSION ${GPGMEPP_SOVERSION}
+-      EXPORT_NAME Gpgmepp-qt
+-   )
+-   install(TARGETS KF5Gpgmepp-qt EXPORT KF5GpgmeppTargets ${KF5_INSTALL_TARGETS_DEFAULT_ARGS})
+-endif()
+-
+-
+ if ( GPGME_PTHREAD_FOUND )
+    add_library(KF5Gpgmepp-pthread ${gpgme_LIB_SRCS} context_vanilla.cpp)

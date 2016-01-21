@@ -114,6 +114,8 @@ define DEFLATE_macro
             $(TAR) -xJ --transform='s,^qtbase-opensource-src,qtbase,' -f "$(1)" ;; \
           */qttools*.*.tar.xz)          \
             $(TAR) -xJ --transform='s,^qttools-opensource-src,qttools,' -f "$(1)" ;; \
+          */boost*.*.tar.bz2)          \
+            $(TAR) -xj --transform='s,^boost_1_60_0,boost-1.60.0,' -f "$(1)" ;; \
 	  *.tar.gz | *.tgz)		\
 	    $(TAR) xzf "$(1)" ;;	\
 	  *.tar.bz2 | *.tbz2 | *.tbz)	\
@@ -500,8 +502,9 @@ stamps/stamp-$(1)-02-configure: stamps/stamp-$(1)-01-patch
 	 mkdir "$$$${pkgbdir}";				\
 	  cd "$$$${pkgbdir}";				\
 	 cmake 		\
-		-DCMAKE_TOOLCHAIN_FILE=$(abs_top_srcdir)/src/toolchain.cmake \
 		-DCMAKE_INSTALL_PREFIX="$$$${pkgidir}" \
+		-DCMAKE_PREFIX_PATH="$$$${pkgidir}" \
+		-DCMAKE_TOOLCHAIN_FILE=$(abs_top_srcdir)/src/toolchain.cmake \
 		-DBUILD_TESTING=False \
 		$$$${pkgcfg} $$$${pkgextracflags} "../$$$${pkg_version}") && \
 	touch stamps/stamp-$(1)-02-configure
@@ -624,6 +627,51 @@ stamps/stamp-$(1)-02-configure: stamps/stamp-$(1)-01-patch
 endef
 
 $(eval $(call OVERRIDE_QTTOOLS_CONF_TEMPLATE,qttools))
+
+define OVERRIDE_BOOST_CONF_TEMPLATE
+# Override of the configure rule. For targets that not use
+# autotools configure to have more freedom with the options.
+stamps/stamp-$(1)-02-configure: stamps/stamp-$(1)-01-patch
+	($(call SETVARS,$(1)); \
+	cd $$$${pkgsdir}/tools/build/; \
+	./bootstrap.sh; \
+	cd $$$${pkgsdir}; \
+	echo "using gcc : mxe : $(host)-g++ : <rc>$(host)-windres <archiver>$(host)-ar <ranlib>$(host)-ranlib ;" > "user-config.jam"; \
+	./tools/build/b2 \
+        -a \
+        -q \
+        '$(GPG4WIN_PARALLEL)' \
+        --ignore-site-config \
+        --user-config=user-config.jam \
+        abi=ms \
+        address-model=32 \
+        architecture=x86 \
+        binary-format=pe \
+        link=shared \
+        target-os=windows \
+        threadapi=win32 \
+        threading=multi \
+        variant=release \
+        toolset=gcc-mxe \
+        --layout=tagged \
+        --disable-icu \
+        --without-mpi \
+        --without-python \
+        --prefix=$$$${pkgidir} \
+        --exec-prefix=$$$${pkgidir}/bin \
+        --libdir=$$$${pkgidir}/lib \
+        --includedir=$$$${pkgidir}/include \
+        -sEXPAT_INCLUDE='$(idir)/include' \
+        -sEXPAT_LIBPATH='$(idir)/lib' \
+        -sBZIP2_INCLUDE='$(idir)/include' \
+        -sBZIP2_LIBPATH='$(idir)/lib' \
+        install) && \
+        touch stamps/stamp-$(1)-02-configure && \
+        touch stamps/stamp-$(1)-03-make && \
+        touch stamps/stamp-$(1)-04-install
+endef
+
+$(eval $(call OVERRIDE_BOOST_CONF_TEMPLATE,boost))
 
 # @emacs_local_vars_begin@
 # @emacs_local_vars_read_only@

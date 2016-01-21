@@ -64,8 +64,10 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
         uninst-claws-mail.nsi uninst-claws-mail-cmds.nsi \
         inst-qtbase.nsi uninst-qtbase.nsi \
         inst-ki18n.nsi uninst-ki18n.nsi \
+        inst-gpgmepp.nsi uninst-gpgmepp.nsi \
         inst-kwidgetsaddons.nsi uninst-kwidgetsaddons.nsi \
         inst-qttools.nsi uninst-qttools.nsi \
+        inst-boost.nsi uninst-boost.nsi \
         inst-extra-cmake-modules.nsi uninst-extra-cmake-modules.nsi \
         inst-final.nsi
 
@@ -94,10 +96,10 @@ gpg4win_spkgs = glib libffi gdk-pixbuf gtk+ \
 		gpa opencdk \
 		pinentry libassuan \
 		w32pth paperkey regex libiconv gettext \
-		qtbase qttools
+		qtbase qttools boost
 
 # Source packages following the KDE pattern
-gpg4win_kdepkgs = kconfig kwidgetsaddons ki18n extra-cmake-modules
+gpg4win_kdepkgs = kconfig kwidgetsaddons gpgmepp ki18n extra-cmake-modules
 
 # Supported source packages to build in an additional architecture
 gpg4win_expkgs = libgpg-error libassuan libiconv gettext w32pth gpgex gpgol \
@@ -245,10 +247,6 @@ gpg4win_pkg_gpgex_configure = --silent \
 
 gpg4win_pkg_paperkey_configure = --silent
 
-gpg4win_pkg_ki18n_configure = -DBUILD_WITH_QTSCRIPT=OFF \
-  -DLibIntl_INCLUDE_DIRS='$(idir)/include' \
-  -DLibIntl_LIBRARIES='$(idir)/lib/libintl.dll.a'
-
 gpg4win_pkg_qtbase_configure = -opensource \
             -confirm-license \
             -xplatform win32-g++ \
@@ -298,7 +296,7 @@ define gpg4win_pkg_qttools_post_install
  (cd $$$${pkgbdir}; \
   make uninstall; \
   mkdir $$$${pkgidir}; \
-  cp -r bin lib $$$${pkgidir};)
+  cp -r bin lib include $$$${pkgidir};)
 endef
 
 # Supported make-only source packages.
