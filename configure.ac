@@ -345,6 +345,7 @@ GPG4WIN_SPKG([qttools], [qtbase])
 GPG4WIN_BPKG_BINSRC([kleopatra], [kconfig gpgme qtbase oxygen-icons])
 GPG4WIN_KDEPKG([extra-cmake-modules])
 GPG4WIN_KDEPKG([kconfig], [qtbase qttools extra-cmake-modules])
+GPG4WIN_KDEPKG([ki18n], [qtbase gettext qttools extra-cmake-modules])
 
 GPG4WIN_FINALIZE
 

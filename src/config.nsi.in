@@ -205,6 +205,9 @@
 !define gpg4win_pkg_extra_cmake_modules @gpg4win_pkg_extra_cmake_modules@
 !define gpg4win_pkg_extra_cmake_modules_version @gpg4win_pkg_extra_cmake_modules_version@
 
+@HAVE_PKG_KI18N@
+!define gpg4win_pkg_ki18n @gpg4win_pkg_ki18n@
+!define gpg4win_pkg_ki18n_version @gpg4win_pkg_ki18n_version@
 
 # Internal packages.
 @HAVE_PKG_COMPENDIUM@

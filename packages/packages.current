@@ -355,6 +355,13 @@ chk 8093d72964170246a97e337c259cd4e6f71b627a
 file 5.17/kconfig-5.17.0.tar.xz
 chk 1fd4f512e9802ac2c6bf0eb46d99c1264eed5249
 
+# KI18n
+# last changed: 2016-01-21
+# by: ah
+# verified: https://www.kde.org/info/kde-frameworks-5.17.0.php
+file 5.17/ki18n-5.17.0.tar.xz
+chk 270dd1195af0b84f9d6b264ca2df2fe17ac29140
+
 #
 # Qt links DBus and Kleopatra / KDE libs needs it
 #
