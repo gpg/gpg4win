@@ -63,6 +63,7 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
         uninst-claws-mail.nsi uninst-claws-mail-cmds.nsi \
         inst-qtbase.nsi uninst-qtbase.nsi \
         inst-ki18n.nsi uninst-ki18n.nsi \
+        inst-kwidgetsaddons.nsi uninst-kwidgetsaddons.nsi \
         inst-qttools.nsi uninst-qttools.nsi \
         inst-extra-cmake-modules.nsi uninst-extra-cmake-modules.nsi \
         inst-final.nsi
@@ -95,7 +96,7 @@ gpg4win_spkgs = glib libffi gdk-pixbuf gtk+ \
 		qtbase qttools
 
 # Source packages following the KDE pattern
-gpg4win_kdepkgs = kconfig ki18n extra-cmake-modules
+gpg4win_kdepkgs = kconfig kwidgetsaddons ki18n extra-cmake-modules
 
 # Supported source packages to build in an additional architecture
 gpg4win_expkgs = libgpg-error libassuan libiconv gettext w32pth gpgex gpgol \

@@ -337,7 +337,7 @@ name qttools-5.5.1.tar.xz
 file 5.5/5.5.1/submodules/qttools-opensource-src-5.5.1.tar.xz
 chk f7815165d0b427346028901a42be5f0f47d05962
 
-# KDE libraries
+# KDE Frameworks
 
 server http://download.kde.org/stable/frameworks/
 
@@ -361,6 +361,13 @@ chk 1fd4f512e9802ac2c6bf0eb46d99c1264eed5249
 # verified: https://www.kde.org/info/kde-frameworks-5.17.0.php
 file 5.17/ki18n-5.17.0.tar.xz
 chk 270dd1195af0b84f9d6b264ca2df2fe17ac29140
+
+# KWidgetsAddons
+# last changed: 2016-01-21
+# by: ah
+# verified: https://www.kde.org/info/kde-frameworks-5.17.0.php
+file 5.17/kwidgetsaddons-5.17.0.tar.xz
+chk a9923ececfcc7d270c654f43797fa88c774337d3
 
 #
 # Qt links DBus and Kleopatra / KDE libs needs it

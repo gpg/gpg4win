@@ -110,6 +110,9 @@
 !ifdef HAVE_PKG_KI18N
 !include "inst-ki18n.nsi"
 !endif
+!ifdef HAVE_PKG_KWIDGETSADDONS
+!include "inst-kwidgetsaddons.nsi"
+!endif
 !ifdef HAVE_PKG_EXTRA_CMAKE_MODULES
 !include "inst-extra-cmake-modules.nsi"
 !endif
@@ -280,6 +283,9 @@
 !endif
 !ifdef HAVE_PKG_KI18N
 !include "uninst-ki18n.nsi"
+!endif
+!ifdef HAVE_PKG_KWIDGETSADDONS
+!include "uninst-kwidgetsaddons.nsi"
 !endif
 !ifdef HAVE_PKG_EXTRA_CMAKE_MODULES
 !include "uninst-extra-cmake-modules.nsi"
@@ -514,6 +520,9 @@ Function CalcDepends
 !ifdef HAVE_PKG_KI18N
   !insertmacro UnselectSection ${SEC_ki18n}
 !endif
+!ifdef HAVE_PKG_KWIDGETSADDONS
+  !insertmacro UnselectSection ${SEC_kwidgetsaddons}
+!endif
 
   # Always install gnupg2.  This is also ensured by putting
   # these packages in the RO section and enabling them by default, but
@@ -606,6 +615,7 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_oxygen_icons}
   !insertmacro SelectSection ${SEC_kconfig}
   !insertmacro SelectSection ${SEC_ki18n}
+  !insertmacro SelectSection ${SEC_kwidgetsaddons}
   !insertmacro SelectSection ${SEC_qttools}
   !insertmacro SelectSection ${SEC_extra-cmake-modules}
    skip_kleopatra_libs:

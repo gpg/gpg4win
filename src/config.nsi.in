@@ -209,6 +209,10 @@
 !define gpg4win_pkg_ki18n @gpg4win_pkg_ki18n@
 !define gpg4win_pkg_ki18n_version @gpg4win_pkg_ki18n_version@
 
+@HAVE_PKG_KWIDGETSADDONS@
+!define gpg4win_pkg_kwidgetsaddons @gpg4win_pkg_kwidgetsaddons@
+!define gpg4win_pkg_kwidgetsaddons_version @gpg4win_pkg_kwidgetsaddons_version@
+
 # Internal packages.
 @HAVE_PKG_COMPENDIUM@
 
