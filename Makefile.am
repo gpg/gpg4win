@@ -36,7 +36,7 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         patches/qttools/disable-most-tools.patch \
         patches/ki18n/no-tests.patch \
         patches/gpgmepp/0001-Remove-uneccessary-dependency-to-KDEWIN.patch \
-        patches/gpgmepp/0001-disable-variants.patch
+        patches/gpgmepp/0002-disable-variants.patch
 
 copy-news:
 	cp NEWS doc/website/NEWS.last
