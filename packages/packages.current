@@ -421,14 +421,31 @@ chk 7c41dbcc217d0e93cb276c84b23a55ad803e80a3
 
 # KDE Applications
 
-server http://download.kde.org/stable/applications/
+# server http://download.kde.org/stable/applications/
+server http://files.intevation.de/projects/gpg4all
 
 # Gpgmepp
 # last changed: 2016-01-21
 # by: ah
 # verified: https://www.kde.org/info/applications-15.12.1.php
-file 15.12.1/src/gpgmepp-15.12.1.tar.xz
-chk 56d5f05bd513efc6caf770e43b6109e42842198f
+# file 15.12.1/src/gpgmepp-15.12.1.tar.xz
+# chk 56d5f05bd513efc6caf770e43b6109e42842198f
+#
+# Gpgmepp-devel
+# last changed: 2016-01-22
+# by: ah
+# verified: Tarball created by ah.
+
+file gpgmepp/gpgmepp-201601221458.tar.xz
+chk 04cfa9a41f06915d95d0d83a199f05bfcc9a527d
+
+# Libkleo
+# last changed: 2016-01-22
+# by: ah
+# verified: Tarball created by ah.
+
+file libkleo/libkleo-201601221448.tar.xz
+chk 668b115e7e025b5408f53ced73056f5c4f660993
 
 #
 # Qt links DBus and Kleopatra / KDE libs needs it

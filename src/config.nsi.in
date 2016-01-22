@@ -238,8 +238,12 @@
 !define gpg4win_pkg_qtwinextras_version @gpg4win_pkg_qtwinextras_version@
 
 @HAVE_PKG_KCOREADDONS@
-!define gpg4win_pkg_kcoreaddons @gpg4win_pkg_kwindowsystem@
-!define gpg4win_pkg_kcoreaddons_version @gpg4win_pkg_kwindowsystem_version@
+!define gpg4win_pkg_kcoreaddons @gpg4win_pkg_kcoreaddons@
+!define gpg4win_pkg_kcoreaddons_version @gpg4win_pkg_kcoreaddons_version@
+
+@HAVE_PKG_LIBKLEO@
+!define gpg4win_pkg_libkleo @gpg4win_pkg_libkleo@
+!define gpg4win_pkg_libkleo_version @gpg4win_pkg_libkleo_version@
 
 # Internal packages.
 @HAVE_PKG_COMPENDIUM@

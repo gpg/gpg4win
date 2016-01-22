@@ -134,6 +134,9 @@
 !ifdef HAVE_PKG_KCOREADDONS
 !include "inst-kcoreaddons.nsi"
 !endif
+!ifdef HAVE_PKG_LIBKLEO
+!include "inst-libkleo.nsi"
+!endif
 !ifdef HAVE_PKG_EXTRA_CMAKE_MODULES
 !include "inst-extra-cmake-modules.nsi"
 !endif
@@ -325,6 +328,9 @@
 !endif
 !ifdef HAVE_PKG_KCOREADDONS
 !include "uninst-kcoreaddons.nsi"
+!endif
+!ifdef HAVE_PKG_LIBKLEO
+!include "uninst-libkleo.nsi"
 !endif
 !ifdef HAVE_PKG_EXTRA_CMAKE_MODULES
 !include "uninst-extra-cmake-modules.nsi"
@@ -586,6 +592,9 @@ Function CalcDepends
 !ifdef HAVE_PKG_KCOREADDONS
   !insertmacro UnselectSection ${SEC_kcoreaddons}
 !endif
+!ifdef HAVE_PKG_LIBKLEO
+  !insertmacro UnselectSection ${SEC_libkleo}
+!endif
 
   # Always install gnupg2.  This is also ensured by putting
   # these packages in the RO section and enabling them by default, but
@@ -683,6 +692,7 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_kcompletion}
   !insertmacro SelectSection ${SEC_kwindowsystem}
   !insertmacro SelectSection ${SEC_kcoreaddons}
+  !insertmacro SelectSection ${SEC_libkleo}
   !insertmacro SelectSection ${SEC_qttools}
   !insertmacro SelectSection ${SEC_qtwinextras}
   !insertmacro SelectSection ${SEC_boost}

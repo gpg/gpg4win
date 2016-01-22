@@ -68,6 +68,7 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
         inst-kwidgetsaddons.nsi uninst-kwidgetsaddons.nsi \
         inst-kcompletion.nsi uninst-kcompletion.nsi \
         inst-kwindowsystem.nsi uninst-kwindowsystem.nsi \
+        inst-libkleo.nsi uninst-libkleo.nsi \
         inst-kcoreaddons.nsi uninst-kcoreaddons.nsi \
         inst-qttools.nsi uninst-qttools.nsi \
         inst-boost.nsi uninst-boost.nsi \
@@ -103,7 +104,7 @@ gpg4win_spkgs = glib libffi gdk-pixbuf gtk+ \
 
 # Source packages following the KDE pattern
 gpg4win_kdepkgs = kconfig kwidgetsaddons gpgmepp ki18n extra-cmake-modules \
-                  kcompletion kwindowsystem kcoreaddons
+                  kcompletion kwindowsystem kcoreaddons libkleo
 
 # Supported source packages to build in an additional architecture
 gpg4win_expkgs = libgpg-error libassuan libiconv gettext w32pth gpgex gpgol \
