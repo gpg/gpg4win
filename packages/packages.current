@@ -412,6 +412,13 @@ chk 6e4e095711c073056d1bd101d24e7ba1c4c214cc
 file 5.18/kwindowsystem-5.18.0.tar.xz
 chk 6aa1d1e590dc500a7511a95a8d0d6bac93eb19d2
 
+# KCoreAddons
+# last changed: 2016-01-22
+# by: ah
+# verified: https://www.kde.org/info/kde-frameworks-5.18.0.php
+file 5.18/kcoreaddons-5.18.0.tar.xz
+chk 7c41dbcc217d0e93cb276c84b23a55ad803e80a3
+
 # KDE Applications
 
 server http://download.kde.org/stable/applications/

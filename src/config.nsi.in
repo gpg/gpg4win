@@ -237,6 +237,10 @@
 !define gpg4win_pkg_qtwinextras @gpg4win_pkg_qtwinextras@
 !define gpg4win_pkg_qtwinextras_version @gpg4win_pkg_qtwinextras_version@
 
+@HAVE_PKG_KCOREADDONS@
+!define gpg4win_pkg_kcoreaddons @gpg4win_pkg_kwindowsystem@
+!define gpg4win_pkg_kcoreaddons_version @gpg4win_pkg_kwindowsystem_version@
+
 # Internal packages.
 @HAVE_PKG_COMPENDIUM@
 
