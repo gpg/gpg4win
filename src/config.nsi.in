@@ -225,6 +225,10 @@
 !define gpg4win_pkg_boost @gpg4win_pkg_boost@
 !define gpg4win_pkg_boost_version @gpg4win_pkg_boost_version@
 
+@HAVE_PKG_KCOMPLETION@
+!define gpg4win_pkg_kcompletion @gpg4win_pkg_kcompletion@
+!define gpg4win_pkg_kcompletion_version @gpg4win_pkg_kcompletion_version@
+
 # Internal packages.
 @HAVE_PKG_COMPENDIUM@
 

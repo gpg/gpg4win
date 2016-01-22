@@ -344,12 +344,13 @@ GPG4WIN_BPKG_BINSRC([oxygen-icons])
 GPG4WIN_SPKG([qtbase], [dbus libpng])
 GPG4WIN_SPKG([qttools], [qtbase])
 GPG4WIN_SPKG([boost], [expat zlib bzip2])
-GPG4WIN_BPKG_BINSRC([kleopatra], [kconfig gpgme qtbase oxygen-icons])
+GPG4WIN_BPKG_BINSRC([kleopatra], [kwidgetsaddons kcompletion kconfig gpgme qtbase oxygen-icons])
 GPG4WIN_KDEPKG([extra-cmake-modules])
 GPG4WIN_KDEPKG([kconfig], [qtbase qttools extra-cmake-modules])
 GPG4WIN_KDEPKG([ki18n], [qtbase gettext qttools extra-cmake-modules])
 GPG4WIN_KDEPKG([gpgmepp], [boost qtbase gpgme extra-cmake-modules])
 GPG4WIN_KDEPKG([kwidgetsaddons], [kconfig qttools qtbase])
+GPG4WIN_KDEPKG([kcompletion], [kwidgetsaddons])
 
 GPG4WIN_FINALIZE
 

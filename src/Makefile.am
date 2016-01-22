@@ -66,6 +66,7 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
         inst-ki18n.nsi uninst-ki18n.nsi \
         inst-gpgmepp.nsi uninst-gpgmepp.nsi \
         inst-kwidgetsaddons.nsi uninst-kwidgetsaddons.nsi \
+        inst-kcompletion.nsi uninst-kcompletion.nsi \
         inst-qttools.nsi uninst-qttools.nsi \
         inst-boost.nsi uninst-boost.nsi \
         inst-extra-cmake-modules.nsi uninst-extra-cmake-modules.nsi \
@@ -99,7 +100,8 @@ gpg4win_spkgs = glib libffi gdk-pixbuf gtk+ \
 		qtbase qttools boost
 
 # Source packages following the KDE pattern
-gpg4win_kdepkgs = kconfig kwidgetsaddons gpgmepp ki18n extra-cmake-modules
+gpg4win_kdepkgs = kconfig kwidgetsaddons gpgmepp ki18n extra-cmake-modules \
+                  kcompletion
 
 # Supported source packages to build in an additional architecture
 gpg4win_expkgs = libgpg-error libassuan libiconv gettext w32pth gpgex gpgol \
@@ -246,6 +248,8 @@ gpg4win_pkg_gpgex_configure = --silent \
   --with-libassuan-prefix=$(idir)
 
 gpg4win_pkg_paperkey_configure = --silent
+
+gpg4win_pkg_ki18n_configure = -DBUILD_WITH_QTSCRIPT=OFF
 
 gpg4win_pkg_qtbase_configure = -opensource \
             -confirm-license \

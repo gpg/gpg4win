@@ -363,32 +363,40 @@ chk f7815165d0b427346028901a42be5f0f47d05962
 server http://download.kde.org/stable/frameworks/
 
 # ECM
-# last changed: 2016-01-08
+# last changed: 2016-01-22
 # by: ah
-# verified: https://www.kde.org/info/kde-frameworks-5.17.0.php
-file 5.17/extra-cmake-modules-5.17.0.tar.xz
-chk 8093d72964170246a97e337c259cd4e6f71b627a
+# verified: https://www.kde.org/info/kde-frameworks-5.18.0.php
+file 5.18/extra-cmake-modules-5.18.0.tar.xz
+chk ce741f28486f616564aec7d56cedf88eccab9a25
 
 # KConfig
-# last changed: 2016-01-08
+# last changed: 2016-01-22
 # by: ah
-# verified: https://www.kde.org/info/kde-frameworks-5.17.0.php
-file 5.17/kconfig-5.17.0.tar.xz
-chk 1fd4f512e9802ac2c6bf0eb46d99c1264eed5249
+# verified: https://www.kde.org/info/kde-frameworks-5.18.0.php
+file 5.18/kconfig-5.18.0.tar.xz
+chk d23e28f8b8651970cb12c6485639165340006811
 
 # KI18n
 # last changed: 2016-01-21
 # by: ah
-# verified: https://www.kde.org/info/kde-frameworks-5.17.0.php
-file 5.17/ki18n-5.17.0.tar.xz
-chk 270dd1195af0b84f9d6b264ca2df2fe17ac29140
+# verified: https://www.kde.org/info/kde-frameworks-5.18.0.php
+file 5.18/ki18n-5.18.0.tar.xz
+chk c2b3b02f3776f579151a2423acd67b844440ee8f
 
 # KWidgetsAddons
 # last changed: 2016-01-21
 # by: ah
-# verified: https://www.kde.org/info/kde-frameworks-5.17.0.php
-file 5.17/kwidgetsaddons-5.17.0.tar.xz
-chk a9923ececfcc7d270c654f43797fa88c774337d3
+# verified: https://www.kde.org/info/kde-frameworks-5.18.0.php
+file 5.18/kwidgetsaddons-5.18.0.tar.xz
+chk b6120dd7ca1ffe52d4fecaf396ac64ad3dfe5e94
+
+# KCompletion
+# last changed: 2016-01-22
+# by: ah
+# verified: https://www.kde.org/info/kde-frameworks-5.18.0.php
+file 5.18/kcompletion-5.18.0.tar.xz
+chk 6e4e095711c073056d1bd101d24e7ba1c4c214cc
+
 
 # KDE Applications
 

@@ -122,6 +122,9 @@
 !ifdef HAVE_PKG_KWIDGETSADDONS
 !include "inst-kwidgetsaddons.nsi"
 !endif
+!ifdef HAVE_PKG_KCOMPLETION
+!include "inst-kcompletion.nsi"
+!endif
 !ifdef HAVE_PKG_EXTRA_CMAKE_MODULES
 !include "inst-extra-cmake-modules.nsi"
 !endif
@@ -301,6 +304,9 @@
 !endif
 !ifdef HAVE_PKG_KWIDGETSADDONS
 !include "uninst-kwidgetsaddons.nsi"
+!endif
+!ifdef HAVE_PKG_KCOMPLETION
+!include "uninst-kcompletion.nsi"
 !endif
 !ifdef HAVE_PKG_EXTRA_CMAKE_MODULES
 !include "uninst-extra-cmake-modules.nsi"
@@ -547,6 +553,9 @@ Function CalcDepends
 !ifdef HAVE_PKG_KWIDGETSADDONS
   !insertmacro UnselectSection ${SEC_kwidgetsaddons}
 !endif
+!ifdef HAVE_PKG_KCOMPLETION
+  !insertmacro UnselectSection ${SEC_kcompletion}
+!endif
 
   # Always install gnupg2.  This is also ensured by putting
   # these packages in the RO section and enabling them by default, but
@@ -641,6 +650,7 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_ki18n}
   !insertmacro SelectSection ${SEC_gpgmepp}
   !insertmacro SelectSection ${SEC_kwidgetsaddons}
+  !insertmacro SelectSection ${SEC_kcompletion}
   !insertmacro SelectSection ${SEC_qttools}
   !insertmacro SelectSection ${SEC_boost}
   !insertmacro SelectSection ${SEC_extra-cmake-modules}
