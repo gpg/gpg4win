@@ -107,6 +107,9 @@
 !ifdef HAVE_PKG_QTTOOLS
 !include "inst-qttools.nsi"
 !endif
+!ifdef HAVE_PKG_QTWINEXTRAS
+!include "inst-qtwinextras.nsi"
+!endif
 !ifdef HAVE_PKG_BOOST
 !include "inst-boost.nsi"
 !endif
@@ -124,6 +127,9 @@
 !endif
 !ifdef HAVE_PKG_KCOMPLETION
 !include "inst-kcompletion.nsi"
+!endif
+!ifdef HAVE_PKG_KWINDOWSYSTEM
+!include "inst-kwindowsystem.nsi"
 !endif
 !ifdef HAVE_PKG_EXTRA_CMAKE_MODULES
 !include "inst-extra-cmake-modules.nsi"
@@ -290,6 +296,9 @@
 !ifdef HAVE_PKG_QTTOOLS
 !include "uninst-qttools.nsi"
 !endif
+!ifdef HAVE_PKG_QTWINEXTRAS
+!include "uninst-qtwinextras.nsi"
+!endif
 !ifdef HAVE_PKG_BOOST
 !include "uninst-boost.nsi"
 !endif
@@ -307,6 +316,9 @@
 !endif
 !ifdef HAVE_PKG_KCOMPLETION
 !include "uninst-kcompletion.nsi"
+!endif
+!ifdef HAVE_PKG_KWINDOWSYSTEM
+!include "uninst-kwindowsystem.nsi"
 !endif
 !ifdef HAVE_PKG_EXTRA_CMAKE_MODULES
 !include "uninst-extra-cmake-modules.nsi"
@@ -538,6 +550,12 @@ Function CalcDepends
 !ifdef HAVE_PKG_QTBASE
   !insertmacro UnselectSection ${SEC_qtbase}
 !endif
+!ifdef HAVE_PKG_QTTOOLS
+  !insertmacro UnselectSection ${SEC_qttools}
+!endif
+!ifdef HAVE_PKG_QTWINEXTRAS
+  !insertmacro UnselectSection ${SEC_qtwinextras}
+!endif
 !ifdef HAVE_PKG_OXYGEN_ICONS
   !insertmacro UnselectSection ${SEC_oxygen_icons}
 !endif
@@ -555,6 +573,9 @@ Function CalcDepends
 !endif
 !ifdef HAVE_PKG_KCOMPLETION
   !insertmacro UnselectSection ${SEC_kcompletion}
+!endif
+!ifdef HAVE_PKG_KWINDOWSYSTEM
+  !insertmacro UnselectSection ${SEC_kwindowsystem}
 !endif
 
   # Always install gnupg2.  This is also ensured by putting
@@ -651,7 +672,9 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_gpgmepp}
   !insertmacro SelectSection ${SEC_kwidgetsaddons}
   !insertmacro SelectSection ${SEC_kcompletion}
+  !insertmacro SelectSection ${SEC_kwindowsystem}
   !insertmacro SelectSection ${SEC_qttools}
+  !insertmacro SelectSection ${SEC_qtwinextras}
   !insertmacro SelectSection ${SEC_boost}
   !insertmacro SelectSection ${SEC_extra-cmake-modules}
    skip_kleopatra_libs:

@@ -229,6 +229,14 @@
 !define gpg4win_pkg_kcompletion @gpg4win_pkg_kcompletion@
 !define gpg4win_pkg_kcompletion_version @gpg4win_pkg_kcompletion_version@
 
+@HAVE_PKG_KWINDOWSYSTEM@
+!define gpg4win_pkg_kwindowsystem @gpg4win_pkg_kwindowsystem@
+!define gpg4win_pkg_kwindowsystem_version @gpg4win_pkg_kwindowsystem_version@
+
+@HAVE_PKG_QTWINEXTRAS@
+!define gpg4win_pkg_qtwinextras @gpg4win_pkg_qtwinextras@
+!define gpg4win_pkg_qtwinextras_version @gpg4win_pkg_qtwinextras_version@
+
 # Internal packages.
 @HAVE_PKG_COMPENDIUM@
 

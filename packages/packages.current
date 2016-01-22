@@ -358,6 +358,14 @@ name qttools-5.5.1.tar.xz
 file 5.5/5.5.1/submodules/qttools-opensource-src-5.5.1.tar.xz
 chk f7815165d0b427346028901a42be5f0f47d05962
 
+# Qt Winextras
+# last changed: 2016-01-22
+# by: ah
+# verified: HTTPS https://download.qt.io/official_releases/qt/5.5/5.5.1/submodules/qtwinextras-opensource-src-5.5.1.tar.xz.sha1
+name qtwinextras-5.5.1.tar.xz
+file 5.5/5.5.1/submodules/qtwinextras-opensource-src-5.5.1.tar.xz
+chk 116678ea988123adb76a7406941b0f70519a9f6c
+
 # KDE Frameworks
 
 server http://download.kde.org/stable/frameworks/
@@ -397,6 +405,12 @@ chk b6120dd7ca1ffe52d4fecaf396ac64ad3dfe5e94
 file 5.18/kcompletion-5.18.0.tar.xz
 chk 6e4e095711c073056d1bd101d24e7ba1c4c214cc
 
+# KWindowSystem
+# last changed: 2016-01-22
+# by: ah
+# verified: https://www.kde.org/info/kde-frameworks-5.18.0.php
+file 5.18/kwindowsystem-5.18.0.tar.xz
+chk 6aa1d1e590dc500a7511a95a8d0d6bac93eb19d2
 
 # KDE Applications
 

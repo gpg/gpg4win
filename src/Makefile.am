@@ -67,6 +67,7 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
         inst-gpgmepp.nsi uninst-gpgmepp.nsi \
         inst-kwidgetsaddons.nsi uninst-kwidgetsaddons.nsi \
         inst-kcompletion.nsi uninst-kcompletion.nsi \
+        inst-kwindowsystem.nsi uninst-kwindowsystem.nsi \
         inst-qttools.nsi uninst-qttools.nsi \
         inst-boost.nsi uninst-boost.nsi \
         inst-extra-cmake-modules.nsi uninst-extra-cmake-modules.nsi \
@@ -97,11 +98,11 @@ gpg4win_spkgs = glib libffi gdk-pixbuf gtk+ \
 		gpa opencdk \
 		pinentry libassuan \
 		w32pth paperkey regex libiconv gettext \
-		qtbase qttools boost
+		qtbase qttools boost qtwinextras
 
 # Source packages following the KDE pattern
 gpg4win_kdepkgs = kconfig kwidgetsaddons gpgmepp ki18n extra-cmake-modules \
-                  kcompletion
+                  kcompletion kwindowsystem
 
 # Supported source packages to build in an additional architecture
 gpg4win_expkgs = libgpg-error libassuan libiconv gettext w32pth gpgex gpgol \
@@ -301,6 +302,15 @@ define gpg4win_pkg_qttools_post_install
   make uninstall; \
   mkdir $$$${pkgidir}; \
   cp -r bin lib include $$$${pkgidir};)
+endef
+
+define gpg4win_pkg_qtwinextras_post_install
+ (cd $$$${pkgbdir}; \
+  make uninstall; \
+  mkdir $$$${pkgidir}; \
+  cp -r lib include $$$${pkgidir}; \
+  mkdir $$$${pkgidir}/bin; \
+  mv $$$${pkgidir}/lib/*.dll $$$${pkgidir}/bin;)
 endef
 
 # Supported make-only source packages.
