@@ -245,6 +245,10 @@
 !define gpg4win_pkg_libkleo @gpg4win_pkg_libkleo@
 !define gpg4win_pkg_libkleo_version @gpg4win_pkg_libkleo_version@
 
+@HAVE_PKG_KCODECS@
+!define gpg4win_pkg_kcodecs @gpg4win_pkg_kcodecs@
+!define gpg4win_pkg_kcodecs_version @gpg4win_pkg_kcodecs_version@
+
 # Internal packages.
 @HAVE_PKG_COMPENDIUM@
 

@@ -419,6 +419,13 @@ chk 6aa1d1e590dc500a7511a95a8d0d6bac93eb19d2
 file 5.18/kcoreaddons-5.18.0.tar.xz
 chk 7c41dbcc217d0e93cb276c84b23a55ad803e80a3
 
+# KCodecs
+# last changed: 2016-01-22
+# by: ah
+# verified: https://www.kde.org/info/kde-frameworks-5.18.0.php
+file 5.18/kcodecs-5.18.0.tar.xz
+chk 8d5f09a9fa5977658a31a13ae9cef4d81f741da3
+
 # KDE Applications
 
 # server http://download.kde.org/stable/applications/
