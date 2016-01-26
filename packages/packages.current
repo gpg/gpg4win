@@ -420,13 +420,16 @@ file 5.18/kcoreaddons-5.18.0.tar.xz
 chk 7c41dbcc217d0e93cb276c84b23a55ad803e80a3
 
 # KCodecs
-# last changed: 2016-01-22
+# last changed: 2016-01-25
 # by: ah
 # verified: https://www.kde.org/info/kde-frameworks-5.18.0.php
 file 5.18/kcodecs-5.18.0.tar.xz
 chk 8d5f09a9fa5977658a31a13ae9cef4d81f741da3
 
 # KDE Applications
+#
+# Devel versions are needed until Kleopatra can be based on
+# a stable branch.
 
 # server http://download.kde.org/stable/applications/
 server http://files.intevation.de/projects/gpg4all
@@ -445,6 +448,21 @@ server http://files.intevation.de/projects/gpg4all
 
 file gpgmepp/gpgmepp-201601221458.tar.xz
 chk 04cfa9a41f06915d95d0d83a199f05bfcc9a527d
+
+# kmime
+# last changed: 2016-01-25
+# by: ah
+# verified: https://www.kde.org/info/applications-15.12.1.php
+# file 15.12.1/src/kmime-15.12.1.tar.xz
+# chk 0a9bbe73a2a2f24ee2addfb47f642646d2eae996
+#
+# kmime-devel
+# last changed: 2016-01-25
+# by: ah
+# verified: Tarball created by ah.
+
+file kmime/kmime-201601251644.tar.xz
+chk 0a9bbe73a2a2f24ee2addfb47f642646d2eae996
 
 # Libkleo
 # last changed: 2016-01-22

@@ -1,0 +1,56 @@
+#! /bin/sh
+patch -p1 -f -l $* < $0
+exit $?
+
+From d977ebb7d83cdbe01875273f133d5696af628c29 Mon Sep 17 00:00:00 2001
+From: Andre Heinecke <aheinecke@intevation.de>
+Date: Mon, 25 Jan 2016 18:05:01 +0100
+Subject: [PATCH 2/2] Fix Windows build
+
+gethostname is part of Winsock2 on Windows.
+---
+ src/CMakeLists.txt | 5 +++++
+ src/kmime_mdn.cpp  | 6 +++++-
+ 2 files changed, 10 insertions(+), 1 deletion(-)
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 3a4517b..2b62c6d 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -33,12 +33,17 @@ add_library(KF5::Mime ALIAS KF5Mime)
+ target_include_directories(KF5Mime INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR_KF5}/KMime>")
+ target_include_directories(KF5Mime PUBLIC "$<BUILD_INTERFACE:${KMime_SOURCE_DIR}/src;${KMime_BINARY_DIR}/src;${KMime_BINARY_DIR}>")
+
++if (WIN32)
++    set(_kmime_extra_libs ws2_32)
++endif()
++
+ target_link_libraries(KF5Mime
+ PUBLIC
+     Qt5::Core
+ PRIVATE
+     KF5::I18n
+     KF5::Codecs
++    ${_kmime_extra_libs}
+ )
+
+ set_target_properties(KF5Mime PROPERTIES
+diff --git a/src/kmime_mdn.cpp b/src/kmime_mdn.cpp
+index 3061112..c441291 100644
+--- a/src/kmime_mdn.cpp
++++ b/src/kmime_mdn.cpp
+@@ -41,7 +41,11 @@
+
+ #include <QtCore/QByteArray>
+
+-#include <unistd.h> // gethostname
++#ifdef Q_OS_WIN // gethostname
++# include <winsock2.h>
++#else
++# include <unistd.h>
++#endif
+
+ namespace KMime
+ {
+--
+2.1.4

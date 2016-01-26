@@ -249,6 +249,10 @@
 !define gpg4win_pkg_kcodecs @gpg4win_pkg_kcodecs@
 !define gpg4win_pkg_kcodecs_version @gpg4win_pkg_kcodecs_version@
 
+@HAVE_PKG_KMIME@
+!define gpg4win_pkg_kmime @gpg4win_pkg_kmime@
+!define gpg4win_pkg_kmime_version @gpg4win_pkg_kmime_version@
+
 # Internal packages.
 @HAVE_PKG_COMPENDIUM@
 

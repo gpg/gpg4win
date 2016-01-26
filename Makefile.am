@@ -35,7 +35,9 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         patches/w32pth-2.0.5/workaround-broken-libtool.patch \
         patches/qttools/disable-most-tools.patch \
         patches/ki18n/no-tests.patch \
-        patches/gpgmepp/0002-disable-variants.patch
+        patches/gpgmepp/0002-disable-variants.patch \
+        patches/kmime/0001-Check-for-and-replace-strcasestr.patch \
+        patches/kmime/0002-Fix-Windows-build.patch
 
 copy-news:
 	cp NEWS doc/website/NEWS.last

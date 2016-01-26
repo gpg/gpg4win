@@ -355,7 +355,8 @@ GPG4WIN_KDEPKG([kcompletion], [kwidgetsaddons])
 GPG4WIN_KDEPKG([kwindowsystem], [qtbase qtwinextras])
 GPG4WIN_KDEPKG([kcoreaddons], [qtbase])
 GPG4WIN_KDEPKG([kcodecs], [qtbase])
-GPG4WIN_KDEPKG([libkleo], [gpgmepp kcodecs kcoreaddons kwidgetsaddons kwindowsystem kcompletion kconfig gpgme])
+GPG4WIN_KDEPKG([kmime], [kcodecs])
+GPG4WIN_KDEPKG([libkleo], [gpgmepp kcodecs kmime kwidgetsaddons kwindowsystem kcompletion kconfig gpgme])
 
 GPG4WIN_FINALIZE
 

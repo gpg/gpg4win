@@ -1,0 +1,157 @@
+#! /bin/sh
+patch -p1 -f -l $* < $0
+exit $?
+
+From 4e685983ef6f5ba09448378bf115ea581a2d1c58 Mon Sep 17 00:00:00 2001
+From: Andre Heinecke <aheinecke@intevation.de>
+Date: Mon, 25 Jan 2016 17:52:57 +0100
+Subject: [PATCH 1/2] Check for and replace strcasestr
+
+strcasestr is not standard and not available on Windows.
+Check for this and add a simple replacement in case it is
+not found.
+---
+ cmake/CMakeChecks.cmake   | 40 ++++++++++++++++++++++++++++++++++++++++
+ cmake/CheckTimezone.cmake | 34 ----------------------------------
+ src/CMakeLists.txt        |  2 +-
+ src/config-kmime.h.cmake  |  3 +++
+ src/kmime_util.cpp        | 15 +++++++++++++++
+ 5 files changed, 59 insertions(+), 35 deletions(-)
+ create mode 100644 cmake/CMakeChecks.cmake
+ delete mode 100644 cmake/CheckTimezone.cmake
+
+diff --git a/cmake/CMakeChecks.cmake b/cmake/CMakeChecks.cmake
+new file mode 100644
+index 0000000..d4c7375
+--- /dev/null
++++ b/cmake/CMakeChecks.cmake
+@@ -0,0 +1,40 @@
++# Discover the type of the timezone variable,
++# set HAVE_TIMEZONE if found for config.h
++
++include (CheckCXXSourceCompiles)
++
++check_cxx_source_compiles("
++#include <stdlib.h>
++#include <ctype.h>
++#include <time.h>
++#include <unistd.h>
++int main() { timezone = 1; return 0;}
++"
++  HAVE_TIMEZONE)
++
++if (NOT HAVE_TIMEZONE)
++  # Then it's probably this variant, just to be sure
++  check_cxx_source_compiles("
++#include <stdlib.h>
++#include <ctype.h>
++#include <time.h>
++#include <unistd.h>
++int main() { const char *p = timezone(0,0); return 0;}
++"
++    HAVE_BSD_TIMEZONE)
++endif()
++
++check_cxx_source_compiles("
++#include <stdlib.h>
++#include <ctype.h>
++#include <time.h>
++#include <unistd.h>
++int main() { struct tm tm; tm.tm_gmtoff=1; return 0; }
++"
++  HAVE_TM_GMTOFF)
++
++check_cxx_source_compiles("
++#include <string.h>
++int main() { strcasestr(\"\", \"\"); }
++"
++    HAVE_STRCASESTR)
+diff --git a/cmake/CheckTimezone.cmake b/cmake/CheckTimezone.cmake
+deleted file mode 100644
+index adc1937..0000000
+--- a/cmake/CheckTimezone.cmake
++++ /dev/null
+@@ -1,34 +0,0 @@
+-# Discover the type of the timezone variable,
+-# set HAVE_TIMEZONE if found for config.h
+-
+-include (CheckCXXSourceCompiles)
+-
+-check_cxx_source_compiles("
+-#include <stdlib.h>
+-#include <ctype.h>
+-#include <time.h>
+-#include <unistd.h>
+-int main() { timezone = 1; return 0;}
+-"
+-  HAVE_TIMEZONE)
+-
+-if (NOT HAVE_TIMEZONE)
+-  # Then it's probably this variant, just to be sure
+-  check_cxx_source_compiles("
+-#include <stdlib.h>
+-#include <ctype.h>
+-#include <time.h>
+-#include <unistd.h>
+-int main() { const char *p = timezone(0,0); return 0;}
+-"
+-    HAVE_BSD_TIMEZONE)
+-endif()
+-
+-check_cxx_source_compiles("
+-#include <stdlib.h>
+-#include <ctype.h>
+-#include <time.h>
+-#include <unistd.h>
+-int main() { struct tm tm; tm.tm_gmtoff=1; return 0; }
+-"
+-  HAVE_TM_GMTOFF)
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index ef86420..3a4517b 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-include(CheckTimezone)
++include(CMakeChecks)
+
+ configure_file(config-kmime.h.cmake ${KMime_BINARY_DIR}/src/config-kmime.h)
+
+diff --git a/src/config-kmime.h.cmake b/src/config-kmime.h.cmake
+index 7b7ef6d..655565c 100644
+--- a/src/config-kmime.h.cmake
++++ b/src/config-kmime.h.cmake
+@@ -3,3 +3,6 @@
+
+ /* Define if you have a tm_gmtoff member in struct tm */
+ #cmakedefine HAVE_TM_GMTOFF 1
++
++/* Define if you have strcasestr in string.h */
++#cmakedefine HAVE_STRCASESTR 1
+diff --git a/src/kmime_util.cpp b/src/kmime_util.cpp
+index ed002b9..c1e5886 100644
+--- a/src/kmime_util.cpp
++++ b/src/kmime_util.cpp
+@@ -285,6 +285,21 @@ int findHeaderLineEnd(const QByteArray &src, int &dataBegin, bool *folded)
+     return end;
+ }
+
++#ifndef HAVE_STRCASESTR
++static const char *strcasestr(const char *haystack, const char *needle)
++{
++    /* Copied from libreplace as part of qtwebengine 5.5.1 */
++    const char *s;
++    size_t nlen = strlen(needle);
++    for (s = haystack; *s; s++) {
++        if (toupper(*needle) == toupper(*s) && strncasecmp(s, needle, nlen) == 0) {
++            return (char *)((uintptr_t)s);
++        }
++    }
++    return NULL;
++}
++#endif
++
+ int indexOfHeader(const QByteArray &src, const QByteArray &name, int &end, int &dataBegin, bool *folded)
+ {
+     QByteArray n = name;
+--
+2.1.4
