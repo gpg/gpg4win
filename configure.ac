@@ -339,9 +339,8 @@ GPG4WIN_IPKG([compendium])
 GPG4WIN_BPKG_BINSRC([gnupg-w32])
 
 # Qt related stuff.
-GPG4WIN_BPKG_GNUWIN32([dbus])
 GPG4WIN_BPKG_BINSRC([oxygen-icons])
-GPG4WIN_SPKG([qtbase], [dbus libpng])
+GPG4WIN_SPKG([qtbase], [libpng])
 GPG4WIN_SPKG([qttools], [qtbase])
 GPG4WIN_SPKG([qtwinextras], [qtbase])
 GPG4WIN_SPKG([qtsvg], [qtbase])

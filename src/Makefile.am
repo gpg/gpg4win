@@ -57,7 +57,6 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
         inst-w32pth.nsi		   uninst-w32pth.nsi	      \
         inst-zlib.nsi        	   uninst-zlib.nsi            \
         inst-kconfig.nsi        uninst-kconfig.nsi              \
-        inst-dbus.nsi   	   uninst-dbus.nsi      \
         inst-oxygen-icons.nsi  	   uninst-oxygen-icons.nsi    \
         inst-kleopatra.nsi  	   uninst-kleopatra.nsi       \
 	inst-bzip2.nsi             uninst-bzip2.nsi           \
@@ -354,7 +353,7 @@ gpg4win_pkg_zlib_make_args_inst = -fwin32/Makefile.gcc install \
 
 # Supported binary packages.
 gpg4win_bpkgs = pkgconfig pango expat freetype fontconfig \
-                cairo atk dbus oxygen-icons kleopatra bsfilter gnupg-w32
+                cairo atk oxygen-icons kleopatra bsfilter gnupg-w32
 
 # libiconv needs some special magic to generate a usable import
 # library.

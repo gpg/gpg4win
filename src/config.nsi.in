@@ -172,12 +172,6 @@
 !define gpg4win_pkg_gettext_version @gpg4win_pkg_gettext_version@
 !define gpg4win_pkg_gettext_src @gpg4win_pkg_gettext_src@
 
-@HAVE_PKG_DBUS@
-!define gpg4win_pkg_dbus @gpg4win_pkg_dbus@
-!define gpg4win_pkg_dbus_version @gpg4win_pkg_dbus_version@
-!define gpg4win_pkg_dbus_dev @gpg4win_pkg_dbus_dev@
-!define gpg4win_pkg_dbus_src @gpg4win_pkg_dbus_src@
-
 @HAVE_PKG_QTBASE@
 !define gpg4win_pkg_qtbase @gpg4win_pkg_qtbase@
 !define gpg4win_pkg_qtbase_version @gpg4win_pkg_qtbase_version@

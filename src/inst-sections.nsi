@@ -29,9 +29,6 @@
 !ifdef HAVE_PKG_BZIP2
 !include "inst-bzip2.nsi"
 !endif
-!ifdef HAVE_PKG_DBUS
-!include "inst-dbus.nsi"
-!endif
 !ifdef HAVE_PKG_LIBICONV
 !include "inst-libiconv.nsi"
 !endif
@@ -317,9 +314,6 @@
 !ifdef HAVE_PKG_LIBICONV
 !include "uninst-libiconv.nsi"
 !endif
-!ifdef HAVE_PKG_DBUS
-!include "uninst-dbus.nsi"
-!endif
 !ifdef HAVE_PKG_QTTOOLS
 !include "uninst-qttools.nsi"
 !endif
@@ -601,9 +595,6 @@ Function CalcDepends
 !ifdef HAVE_PKG_CURL
   !insertmacro UnselectSection ${SEC_curl}
 !endif
-!ifdef HAVE_PKG_DBUS
-  !insertmacro UnselectSection ${SEC_dbus}
-!endif
 !ifdef HAVE_PKG_QTBASE
   !insertmacro UnselectSection ${SEC_qtbase}
 !endif
@@ -781,11 +772,10 @@ Function CalcDepends
   !insertmacro SectionFlagIsSet ${SEC_qtbase} \
 		${SF_SELECTED} have_qt skip_qt
   have_qt:
-  !insertmacro SelectSection ${SEC_dbus}
+  !insertmacro SelectSection ${SEC_libpng}
   skip_qt:
 !endif
 
-  # Package "dbus" has no dependencies.
   # Package "oxygen-icons" has no dependencies.
 
 !ifdef HAVE_PKG_GPGME

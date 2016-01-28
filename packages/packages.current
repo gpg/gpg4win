@@ -516,22 +516,6 @@ chk 0a9bbe73a2a2f24ee2addfb47f642646d2eae996
 file libkleo/libkleo-201601221448.tar.xz
 chk 668b115e7e025b5408f53ced73056f5c4f660993
 
-#
-# Qt links DBus and Kleopatra / KDE libs needs it
-#
-
-server http://files.kolab.org/local/gpg4win/libs/
-
-file dbus-x86-mingw4-1.4.24-20130417-1-bin.tar.bz2
-chk 59abdc742ce87011dadbc58e96ed870a927d0045
-
-file dbus-x86-mingw4-1.4.24-20130417-lib.tar.bz2
-chk fc557d7eb161881e1d6c091f215dd8e0615682cb
-
-file dbus-x86-mingw4-1.4.24-20130417-src.tar.bz2
-chk f03ffd02333f786a5e540c4430d3109952b5553e
-
-
 # oxygen-icons
 server http://files.kolab.org/local/gpg4win
 
