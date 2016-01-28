@@ -366,6 +366,15 @@ name qtwinextras-5.5.1.tar.xz
 file 5.5/5.5.1/submodules/qtwinextras-opensource-src-5.5.1.tar.xz
 chk 116678ea988123adb76a7406941b0f70519a9f6c
 
+# Qt svg
+# last changed: 2016-01-28
+# by: ah
+# verified: HTTPS https://download.qt.io/official_releases/qt/5.5/5.5.1/submodules/qtsvg-opensource-src-5.5.1.tar.xz.sha1
+name qtsvg-5.5.1.tar.xz
+file 5.5/5.5.1/submodules/qtsvg-opensource-src-5.5.1.tar.xz
+chk 701fcc10201abcf540d26a8fcc6a8b7184dc16b1
+
+
 # KDE Frameworks
 
 server http://download.kde.org/stable/frameworks/
@@ -425,6 +434,41 @@ chk 7c41dbcc217d0e93cb276c84b23a55ad803e80a3
 # verified: https://www.kde.org/info/kde-frameworks-5.18.0.php
 file 5.18/kcodecs-5.18.0.tar.xz
 chk 8d5f09a9fa5977658a31a13ae9cef4d81f741da3
+
+# KConfigWidgets
+# last changed: 2016-01-28
+# by: ah
+# verified: https://www.kde.org/info/kde-frameworks-5.18.0.php
+file 5.18/kconfigwidgets-5.18.0.tar.xz
+chk 3aa99f49d570d6cba6bbf86b4c3a2ca9f88a3d29
+
+# KXmlGui
+# last changed: 2016-01-28
+# by: ah
+# verified: https://www.kde.org/info/kde-frameworks-5.18.0.php
+file 5.18/kxmlgui-5.18.0.tar.xz
+chk 5609b50abad6f9ad618a8de3eb6f1307530265b9
+
+# KGuiAddons
+# last changed: 2016-01-28
+# by: ah
+# verified: https://www.kde.org/info/kde-frameworks-5.18.0.php
+file 5.18/kguiaddons-5.18.0.tar.xz
+chk 771d2c2e9ce074f89ee75e5685edaec10c00e709
+
+# KItemViews
+# last changed: 2016-01-28
+# by: ah
+# verified: https://www.kde.org/info/kde-frameworks-5.18.0.php
+file 5.18/kitemviews-5.18.0.tar.xz
+chk c10a50c6607e548f9d5727040971cbe8e1074851
+
+# KIconThemes
+# last changed: 2016-01-28
+# by: ah
+# verified: https://www.kde.org/info/kde-frameworks-5.18.0.php
+file 5.18/kiconthemes-5.18.0.tar.xz
+chk 015547e8939aad42bcff53daee344011cc3772f4
 
 # KDE Applications
 #

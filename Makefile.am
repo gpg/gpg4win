@@ -37,7 +37,15 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         patches/ki18n/no-tests.patch \
         patches/gpgmepp/0002-disable-variants.patch \
         patches/kmime/0001-Check-for-and-replace-strcasestr.patch \
-        patches/kmime/0002-Fix-Windows-build.patch
+        patches/kmime/0002-Fix-Windows-build.patch \
+        patches/kxmlgui/0001-Make-KGlobalAccel-dependency-optional.patch \
+        patches/kxmlgui/0002-Make-QDBus-dependency-optional.patch \
+        patches/kxmlgui/0003-Make-KTextWidgets-optional.patch \
+        patches/kxmlgui/0004-Crudely-disable-KSendbugmail.patch \
+        patches/kconfigwidgets/0001-Make-QDbus-optional.patch \
+        patches/kconfigwidgets/0002-Crudely-remove-KF5Auth-depedency.patch \
+        patches/kiconthemes/0001-Make-DBus-optional.patch \
+        patches/qtsvg/qtsvg-link-zlib.patch
 
 copy-news:
 	cp NEWS doc/website/NEWS.last

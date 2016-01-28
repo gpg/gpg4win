@@ -137,14 +137,29 @@
 !ifdef HAVE_PKG_KCODECS
 !include "inst-kcodecs.nsi"
 !endif
+!ifdef HAVE_PKG_KCONFIGWIDGETS
+!include "inst-kconfigwidgets.nsi"
+!endif
+!ifdef HAVE_PKG_KXMLGUI
+!include "inst-kxmlgui.nsi"
+!endif
+!ifdef HAVE_PKG_KGUIADDONS
+!include "inst-kguiaddons.nsi"
+!endif
 !ifdef HAVE_PKG_KMIME
 !include "inst-kmime.nsi"
+!endif
+!ifdef HAVE_PKG_KICONTHEMES
+!include "inst-kiconthemes.nsi"
 !endif
 !ifdef HAVE_PKG_LIBKLEO
 !include "inst-libkleo.nsi"
 !endif
 !ifdef HAVE_PKG_EXTRA_CMAKE_MODULES
 !include "inst-extra-cmake-modules.nsi"
+!endif
+!ifdef HAVE_PKG_QTSVG
+!include "inst-qtsvg.nsi"
 !endif
 
 # These are displayed in the selection dialog.
@@ -338,6 +353,21 @@
 !ifdef HAVE_PKG_KCODECS
 !include "uninst-kcodecs.nsi"
 !endif
+!ifdef HAVE_PKG_KCONFIGWIDGETS
+!include "uninst-kconfigwidgets.nsi"
+!endif
+!ifdef HAVE_PKG_KGUIADDONS
+!include "uninst-kguiaddons.nsi"
+!endif
+!ifdef HAVE_PKG_KXMLGUI
+!include "uninst-kxmlgui.nsi"
+!endif
+!ifdef HAVE_PKG_KICONTHEMES
+!include "uninst-kiconthemes.nsi"
+!endif
+!ifdef HAVE_PKG_KITEMVIEWS
+!include "uninst-kitemviews.nsi"
+!endif
 !ifdef HAVE_PKG_KMIME
 !include "uninst-kmime.nsi"
 !endif
@@ -349,6 +379,9 @@
 !endif
 !ifdef HAVE_PKG_BZIP2
 !include "uninst-bzip2.nsi"
+!endif
+!ifdef HAVE_PKG_QTSVG
+!include "uninst-qtsvg.nsi"
 !endif
 
 !include "uninst-gpg4win.nsi"
@@ -607,11 +640,29 @@ Function CalcDepends
 !ifdef HAVE_PKG_KCODECS
   !insertmacro UnselectSection ${SEC_kcodecs}
 !endif
+!ifdef HAVE_PKG_KCONFIGWIDGETS
+  !insertmacro UnselectSection ${SEC_kconfigwidgets}
+!endif
+!ifdef HAVE_PKG_KXMLGUI
+  !insertmacro UnselectSection ${SEC_kxmlgui}
+!endif
+!ifdef HAVE_PKG_KICONTHEMES
+  !insertmacro UnselectSection ${SEC_kiconthemes}
+!endif
+!ifdef HAVE_PKG_KITEMVIEWS
+  !insertmacro UnselectSection ${SEC_kitemviews}
+!endif
+!ifdef HAVE_PKG_KGUIADDONS
+  !insertmacro UnselectSection ${SEC_kguiaddons}
+!endif
 !ifdef HAVE_PKG_LIBKLEO
   !insertmacro UnselectSection ${SEC_libkleo}
 !endif
 !ifdef HAVE_PKG_KMIME
   !insertmacro UnselectSection ${SEC_kmime}
+!endif
+!ifdef HAVE_PKG_QTSVG
+  !insertmacro UnselectSection ${SEC_qtsvg}
 !endif
 
   # Always install gnupg2.  This is also ensured by putting
@@ -711,6 +762,12 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_kwindowsystem}
   !insertmacro SelectSection ${SEC_kcoreaddons}
   !insertmacro SelectSection ${SEC_kcodecs}
+  !insertmacro SelectSection ${SEC_kconfigwidgets}
+  !insertmacro SelectSection ${SEC_kxmlgui}
+  !insertmacro SelectSection ${SEC_kitemviews}
+  !insertmacro SelectSection ${SEC_kiconthemes}
+  !insertmacro SelectSection ${SEC_kguiaddons}
+  !insertmacro SelectSection ${SEC_qtsvg}
   !insertmacro SelectSection ${SEC_kmime}
   !insertmacro SelectSection ${SEC_libkleo}
   !insertmacro SelectSection ${SEC_qttools}

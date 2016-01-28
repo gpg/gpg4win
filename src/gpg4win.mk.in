@@ -116,6 +116,8 @@ define DEFLATE_macro
             $(TAR) -xJ --transform='s,^qttools-opensource-src,qttools,' -f "$(1)" ;; \
           */qtwinextras*.*.tar.xz)          \
             $(TAR) -xJ --transform='s,^qtwinextras-opensource-src,qtwinextras,' -f "$(1)" ;; \
+          */qtsvg*.*.tar.xz)          \
+            $(TAR) -xJ --transform='s,^qtsvg-opensource-src,qtsvg,' -f "$(1)" ;; \
           */boost*.*.tar.bz2)          \
             $(TAR) -xj --transform='s,^boost_1_60_0,boost-1.60.0,' -f "$(1)" ;; \
 	  *.tar.gz | *.tgz)		\
@@ -630,6 +632,7 @@ endef
 
 $(eval $(call OVERRIDE_QTTOOLS_CONF_TEMPLATE,qttools))
 $(eval $(call OVERRIDE_QTTOOLS_CONF_TEMPLATE,qtwinextras))
+$(eval $(call OVERRIDE_QTTOOLS_CONF_TEMPLATE,qtsvg))
 
 define OVERRIDE_BOOST_CONF_TEMPLATE
 # Override of the configure rule. For targets that not use

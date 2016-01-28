@@ -1,0 +1,21 @@
+#! /bin/sh
+patch -p0 -f -l $* < $0
+exit $?
+
+--- src/svg/svg.pro.orig	2016-01-28 18:06:09.395046821 +0100
++++ src/svg/svg.pro	2016-01-28 18:06:53.687941080 +0100
+@@ -44,12 +44,5 @@
+         qsvgfunctions_wince_p.h
+ }
+
+-contains(QT_CONFIG, system-zlib) {
+-    if(unix|mingw):          LIBS_PRIVATE += -lz
+-    else:                    LIBS += zdll.lib
+-} else {
+-    git_build: \
+-        INCLUDEPATH += $$[QT_INSTALL_HEADERS/get]/QtZlib
+-    else: \
+-        INCLUDEPATH += $$[QT_INSTALL_HEADERS/src]/QtZlib
+-}
++if(unix|mingw):          LIBS_PRIVATE += -lz
++else:                    LIBS += zdll.lib

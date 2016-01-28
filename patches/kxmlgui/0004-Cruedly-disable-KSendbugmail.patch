@@ -1,0 +1,28 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From d50224d4febca74a8647ea5e230a81a628ab01f0 Mon Sep 17 00:00:00 2001
+From: Andre Heinecke <aheinecke@intevation.de>
+Date: Thu, 28 Jan 2016 18:28:28 +0100
+Subject: [PATCH 4/4] Cruedly disable KSendbugmail
+
+Should probably not go upstream but maybe as an option.
+KSendbugmail uses its own sslsocket in the smtp implementation. Without
+a qt build with openssl support this is unavailable.
+---
+ src/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 8126b5e..a296861 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-add_subdirectory(ksendbugmail)
++#add_subdirectory(ksendbugmail)
+
+ if (HAVE_ATTICA)
+    set (XMLGUI_EXTRA_LIBS ${XMLGUI_EXTRA_LIBS} KF5::Attica)
+--
+2.1.4

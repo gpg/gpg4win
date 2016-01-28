@@ -1,0 +1,534 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From 915904a70894eb33c3451106b05816966489ad2c Mon Sep 17 00:00:00 2001
+From: Andre Heinecke <aheinecke@intevation.de>
+Date: Tue, 26 Jan 2016 17:20:18 +0100
+Subject: [PATCH] Make KGlobalAccel dependency optional
+
+Global shortcuts are a nice optional feature to have. They
+are not strictly neccessary for the core functionality of KXmlGui.
+As they pull in an extra dependency to DBus and need runtime support
+on the target platform they should be optional.
+---
+ CMakeLists.txt               | 10 ++++++++--
+ src/CMakeLists.txt           |  4 +++-
+ src/config-xmlgui.h.cmake    |  3 +++
+ src/kactioncollection.cpp    | 26 ++++++++++++++++++++++++--
+ src/kkeysequencewidget.cpp   | 13 ++++++++++++-
+ src/kshortcuteditwidget.cpp  |  7 ++++++-
+ src/kshortcutseditor.cpp     | 15 +++++++++++++--
+ src/kshortcutseditoritem.cpp | 32 +++++++++++++++++++++++++++++---
+ src/kxmlguifactory.cpp       |  7 ++++++-
+ 9 files changed, 104 insertions(+), 13 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 9d79619..448ae76 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -37,7 +37,6 @@ find_package(Qt5 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Widgets DBus Xml Network
+ find_package(KF5CoreAddons ${KF5_DEP_VERSION} REQUIRED)
+ find_package(KF5ItemViews ${KF5_DEP_VERSION} REQUIRED)
+ find_package(KF5Config ${KF5_DEP_VERSION} REQUIRED)
+-find_package(KF5GlobalAccel ${KF5_DEP_VERSION} REQUIRED)
+ find_package(KF5ConfigWidgets ${KF5_DEP_VERSION} REQUIRED)
+ find_package(KF5I18n ${KF5_DEP_VERSION} REQUIRED)
+ find_package(KF5IconThemes ${KF5_DEP_VERSION} REQUIRED)
+@@ -45,7 +44,6 @@ find_package(KF5TextWidgets ${KF5_DEP_VERSION} REQUIRED)
+ find_package(KF5WidgetsAddons ${KF5_DEP_VERSION} REQUIRED)
+ find_package(KF5WindowSystem ${KF5_DEP_VERSION} REQUIRED)
+ find_package(KF5Attica ${KF5_DEP_VERSION})
+-
+ set_package_properties(KF5Attica PROPERTIES DESCRIPTION "A Qt library that implements the Open Collaboration Services API"
+                        PURPOSE "Support for Get Hot New Stuff in KXMLGUI"
+                        URL "https://projects.kde.org/attica"
+@@ -53,6 +51,14 @@ set_package_properties(KF5Attica PROPERTIES DESCRIPTION "A Qt library that imple
+                       )
+ set (HAVE_ATTICA ${KF5Attica_FOUND})
+
++find_package(KF5GlobalAccel ${KF5_DEP_VERSION})
++set_package_properties(KF5GlobalAccel PROPERTIES DESCRIPTION "A KDE Frameworks Library for global workspace shortcuts"
++                       PURPOSE "Support for global shortcuts"
++                       URL "https://projects.kde.org/projects/frameworks/kglobalaccel"
++                       TYPE RECOMMENDED
++                      )
++set (HAVE_GLOBALACCEL ${KF5GlobalAccel_FOUND})
++
+ # Subdirectories
+ add_definitions(-DTRANSLATION_DOMAIN=\"kxmlgui5\")
+ if (IS_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/po")
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 58f0c7a..8126b5e 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -3,6 +3,9 @@ add_subdirectory(ksendbugmail)
+ if (HAVE_ATTICA)
+    set (XMLGUI_EXTRA_LIBS ${XMLGUI_EXTRA_LIBS} KF5::Attica)
+ endif ()
++if (HAVE_GLOBALACCEL)
++   set (XMLGUI_EXTRA_LIBS ${XMLGUI_EXTRA_LIBS} KF5::GlobalAccel)
++endif ()
+ if(WIN32)
+     set (XMLGUI_EXTRA_LIBS ${XMLGUI_EXTRA_LIBS} secur32) # GetUserNameEx()
+ endif()
+@@ -89,7 +92,6 @@ PRIVATE
+     KF5::IconThemes         #KIconLoader and KIconThemes in KToolBar
+     KF5::TextWidgets        #KTextEdit in kbugreport
+     KF5::WindowSystem       #KKeyServer in kkeysequencewidget
+-    KF5::GlobalAccel         #KActionCollection and shortcut widgets
+     ${XMLGUI_EXTRA_LIBS}
+ )
+
+diff --git a/src/config-xmlgui.h.cmake b/src/config-xmlgui.h.cmake
+index 07c882f..9d7f3dc 100644
+--- a/src/config-xmlgui.h.cmake
++++ b/src/config-xmlgui.h.cmake
+@@ -4,3 +4,6 @@
+
+ #define CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}"
+ #define KF5_LIBEXEC_INSTALL_DIR "${KF5_LIBEXEC_INSTALL_DIR}"
++
++/* KF5GlobalAccel available */
++#cmakedefine01 HAVE_GLOBALACCEL
+diff --git a/src/kactioncollection.cpp b/src/kactioncollection.cpp
+index 9c45725..db856db 100644
+--- a/src/kactioncollection.cpp
++++ b/src/kactioncollection.cpp
+@@ -24,6 +24,8 @@
+     Boston, MA 02110-1301, USA.
+ */
+
++#include "config-xmlgui.h"
++
+ #include "kactioncollection.h"
+
+ #include "kactioncategory.h"
+@@ -33,7 +35,9 @@
+
+ #include <kauthorized.h>
+ #include <kconfiggroup.h>
+-#include <kglobalaccel.h>
++#if HAVE_GLOBALACCEL
++# include <kglobalaccel.h>
++#endif
+ #include <ksharedconfig.h>
+
+ #include <QtXml/QDomDocument>
+@@ -62,7 +66,12 @@ public:
+
+     void setComponentForAction(QAction *action)
+     {
+-        if (!KGlobalAccel::self()->hasShortcut(action)) {
++#if HAVE_GLOBALACCEL
++        bool hasGlobalShortcut = KGlobalAccel::self()->hasShortcut(action);
++#else
++        bool hasGlobalShortcut = false;
++#endif
++        if (!hasGlobalShortcut) {
+             action->setProperty("componentName", m_componentName);
+             action->setProperty("componentDisplayName", m_componentDisplayName);
+         }
+@@ -254,6 +263,7 @@ QAction *KActionCollection::addAction(const QString &name, QAction *action)
+             // settings to disk. Both for local and global shortcuts.
+             qCDebug(DEBUG_KXMLGUI) << "Registering action " << objectName << " under new name " << indexName;
+             // If there is a global shortcuts it's a very bad idea.
++#if HAVE_GLOBALACCEL
+             if (KGlobalAccel::self()->hasShortcut(action)) {
+                 // In debug mode assert
+                 Q_ASSERT(!KGlobalAccel::self()->hasShortcut(action));
+@@ -261,6 +271,7 @@ QAction *KActionCollection::addAction(const QString &name, QAction *action)
+                 qCritical() << "Changing action name from " << objectName << " to " << indexName << "\nignored because of active global shortcut.";
+                 indexName = objectName;
+             }
++#endif
+         }
+
+         // Set the new name
+@@ -445,6 +456,7 @@ void KActionCollection::setConfigGlobal(bool global)
+
+ void KActionCollection::importGlobalShortcuts(KConfigGroup *config)
+ {
++#if HAVE_GLOBALACCEL
+     Q_ASSERT(config);
+     if (!config || !config->exists()) {
+         return;
+@@ -469,6 +481,9 @@ void KActionCollection::importGlobalShortcuts(KConfigGroup *config)
+             }
+         }
+     }
++#else
++    Q_UNUSED(config);
++#endif
+ }
+
+ void KActionCollection::readSettings(KConfigGroup *config)
+@@ -505,6 +520,7 @@ void KActionCollection::readSettings(KConfigGroup *config)
+
+ void KActionCollection::exportGlobalShortcuts(KConfigGroup *config, bool writeAll) const
+ {
++#if HAVE_GLOBALACCEL
+     Q_ASSERT(config);
+     if (!config) {
+         return;
+@@ -555,6 +571,10 @@ void KActionCollection::exportGlobalShortcuts(KConfigGroup *config, bool writeAl
+     }
+
+     config->sync();
++#else
++    Q_UNUSED(config);
++    Q_UNUSED(writeAll);
++#endif
+ }
+
+ bool KActionCollectionPrivate::writeKXMLGUIConfigFile()
+@@ -599,7 +619,9 @@ bool KActionCollectionPrivate::writeKXMLGUIConfigFile()
+         bool bSameAsDefault = (action->shortcuts() == q->defaultShortcuts(action));
+         qCDebug(DEBUG_KXMLGUI) << "name = " << actionName
+                  << " shortcut = " << QKeySequence::listToString(action->shortcuts())
++#if HAVE_GLOBALACCEL
+                  << " globalshortcut = " << QKeySequence::listToString(KGlobalAccel::self()->shortcut(action))
++#endif
+                  << " def = " << QKeySequence::listToString(q->defaultShortcuts(action));
+
+         // now see if this element already exists
+diff --git a/src/kkeysequencewidget.cpp b/src/kkeysequencewidget.cpp
+index b2e2b6a..b85d527 100644
+--- a/src/kkeysequencewidget.cpp
++++ b/src/kkeysequencewidget.cpp
+@@ -19,6 +19,8 @@
+     Boston, MA 02110-1301, USA.
+ */
+
++#include "config-xmlgui.h"
++
+ #include "kkeysequencewidget.h"
+ #include "kkeysequencewidget_p.h"
+
+@@ -34,7 +36,9 @@
+ #include <klocalizedstring.h>
+ #include <kmessagebox.h>
+ #include <kkeyserver.h>
+-#include <kglobalaccel.h>
++#if HAVE_GLOBALACCEL
++# include <kglobalaccel.h>
++#endif
+
+ #include "kactioncollection.h"
+
+@@ -112,6 +116,7 @@ public:
+         doneRecording();
+     }
+
++#if HAVE_GLOBALACCEL
+     bool promptStealShortcutSystemwide(
+         QWidget *parent,
+         const QHash<QKeySequence, QList<KGlobalShortcutInfo> > &shortcuts,
+@@ -146,6 +151,7 @@ public:
+         return KMessageBox::warningContinueCancel(parent, message, title, KGuiItem(i18n("Reassign")))
+                == KMessageBox::Continue;
+     }
++#endif
+
+ //private slot
+     void doneRecording(bool validate = true);
+@@ -471,6 +477,7 @@ bool KKeySequenceWidgetPrivate::conflictWithGlobalShortcuts(const QKeySequence &
+     }
+ #endif
+
++#if HAVE_GLOBALACCEL
+     if (!(checkAgainstShortcutTypes & KKeySequenceWidget::GlobalShortcuts)) {
+         return false;
+     }
+@@ -501,6 +508,10 @@ bool KKeySequenceWidgetPrivate::conflictWithGlobalShortcuts(const QKeySequence &
+         KGlobalAccel::stealShortcutSystemwide(keySequence[i]);
+     }
+     return false;
++#else
++    Q_UNUSED(keySequence);
++    return false;
++#endif
+ }
+
+ bool shortcutsConflictWith(const QList<QKeySequence> &shortcuts, const QKeySequence &needle)
+diff --git a/src/kshortcuteditwidget.cpp b/src/kshortcuteditwidget.cpp
+index 670d031..ebd59be 100644
+--- a/src/kshortcuteditwidget.cpp
++++ b/src/kshortcuteditwidget.cpp
+@@ -22,6 +22,7 @@
+     Boston, MA 02110-1301, USA.
+ */
+
++#include "config-xmlgui.h"
+ #include "kshortcutsdialog_p.h"
+
+ #include <QPainter>
+@@ -31,7 +32,9 @@
+ #include <QLabel>
+
+ #include <klocalizedstring.h>
+-#include <kglobalaccel.h>
++#if HAVE_GLOBALACCEL
++# include <kglobalaccel.h>
++#endif
+
+ #include "kkeysequencewidget.h"
+
+@@ -85,6 +88,7 @@ ShortcutEditWidget::ShortcutEditWidget(QWidget *viewport, const QKeySequence &de
+             this, SLOT(setCustom(QKeySequence)));
+     connect(m_customEditor, SIGNAL(stealShortcut(QKeySequence,QAction*)),
+             this, SIGNAL(stealShortcut(QKeySequence,QAction*)));
++#if HAVE_GLOBALACCEL
+     connect(KGlobalAccel::self(), &KGlobalAccel::globalShortcutChanged,
+         [this](QAction *action, const QKeySequence &seq) {
+             if (action != m_action) {
+@@ -93,6 +97,7 @@ ShortcutEditWidget::ShortcutEditWidget(QWidget *viewport, const QKeySequence &de
+             setKeySequence(seq);
+         }
+     );
++#endif
+ }
+
+ KKeySequenceWidget::ShortcutTypes ShortcutEditWidget::checkForConflictsAgainst() const
+diff --git a/src/kshortcutseditor.cpp b/src/kshortcutseditor.cpp
+index 99dfb3d..c32aed0 100644
+--- a/src/kshortcutseditor.cpp
++++ b/src/kshortcutseditor.cpp
+@@ -22,6 +22,7 @@
+     the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+     Boston, MA 02110-1301, USA.
+ */
++#include "config-xmlgui.h"
+
+ #include "kshortcutseditor.h"
+
+@@ -43,7 +44,9 @@
+
+ #include <kconfig.h>
+ #include <kconfiggroup.h>
+-#include <kglobalaccel.h>
++#if HAVE_GLOBALACCEL
++# include <kglobalaccel.h>
++#endif
+ #include <kmessagebox.h>
+ #include "kactioncollection.h"
+ #include "kactioncategory.h"
+@@ -292,7 +295,13 @@ void KShortcutsEditorPrivate::initGUI(KShortcutsEditor::ActionTypes types, KShor
+     ui.list->header()->setSectionResizeMode(QHeaderView::ResizeToContents);
+     ui.list->header()->hideSection(ShapeGesture);  //mouse gestures didn't make it in time...
+     ui.list->header()->hideSection(RockerGesture);
+-    if (!(actionTypes & KShortcutsEditor::GlobalAction)) {
++#if HAVE_GLOBALACCEL
++    bool hideGlobals = !(actionTypes & KShortcutsEditor::GlobalAction);
++#else
++    bool hideGlobals = true;
++#endif
++
++    if (hideGlobals) {
+         ui.list->header()->hideSection(GlobalPrimary);
+         ui.list->header()->hideSection(GlobalAlternate);
+     } else if (!(actionTypes & ~KShortcutsEditor::GlobalAction)) {
+@@ -388,11 +397,13 @@ void KShortcutsEditorPrivate::allDefault()
+             changeKeyShortcut(item, LocalAlternate, alternate);
+         }
+
++#if HAVE_GLOBALACCEL
+         if (KGlobalAccel::self()->shortcut(act) != KGlobalAccel::self()->defaultShortcut(act)) {
+             QList<QKeySequence> defaultShortcut = KGlobalAccel::self()->defaultShortcut(act);
+             changeKeyShortcut(item, GlobalPrimary, primarySequence(defaultShortcut));
+             changeKeyShortcut(item, GlobalAlternate, alternateSequence(defaultShortcut));
+         }
++#endif
+
+ #if 0
+         KShapeGesture actShapeGesture = KGestureMap::self()->shapeGesture(act);
+diff --git a/src/kshortcutseditoritem.cpp b/src/kshortcutseditoritem.cpp
+index 461a90c..8442f10 100644
+--- a/src/kshortcutseditoritem.cpp
++++ b/src/kshortcutseditoritem.cpp
+@@ -22,6 +22,7 @@
+     the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+     Boston, MA 02110-1301, USA.
+ */
++#include "config-xmlgui.h"
+
+ #include "kshortcutsdialog_p.h"
+
+@@ -33,7 +34,9 @@
+ #include <kgesturemap.h>
+ #endif
+
+-#include <kglobalaccel.h>
++#if HAVE_GLOBALACCEL
++# include <kglobalaccel.h>
++#endif
+
+ KShortcutsEditorItem::KShortcutsEditorItem(QTreeWidgetItem *parent, QAction *action)
+     : QTreeWidgetItem(parent, ActionItem)
+@@ -129,12 +132,14 @@ QVariant KShortcutsEditorItem::data(int column, int role) const
+         case LocalAlternate:
+             return !m_action->property("isShortcutConfigurable").isValid()
+                    || m_action->property("isShortcutConfigurable").toBool();
++#if HAVE_GLOBALACCEL
+         case GlobalPrimary:
+         case GlobalAlternate:
+             if (!KGlobalAccel::self()->hasShortcut(m_action)) {
+                 return false;
+             }
+             return true;
++#endif
+         default:
+             return false;
+         }
+@@ -166,17 +171,21 @@ QVariant KShortcutsEditorItem::data(int column, int role) const
+
+     case DefaultShortcutRole: {
+         QList<QKeySequence> defaultShortcuts = m_action->property("defaultShortcuts").value<QList<QKeySequence> >();
++#if HAVE_GLOBALACCEL
+         QList<QKeySequence> defaultGlobalShortcuts = KGlobalAccel::self()->defaultShortcut(m_action);
++#endif
+
+         switch (column) {
+         case LocalPrimary:
+             return primarySequence(defaultShortcuts);
+         case LocalAlternate:
+             return alternateSequence(defaultShortcuts);
++#if HAVE_GLOBALACCEL
+         case GlobalPrimary:
+             return primarySequence(defaultGlobalShortcuts);
+         case GlobalAlternate:
+             return alternateSequence(defaultGlobalShortcuts);
++#endif
+ #if 0
+         case ShapeGesture: {
+             QVariant ret;
+@@ -214,17 +223,21 @@ bool KShortcutsEditorItem::operator<(const QTreeWidgetItem &other) const
+ QKeySequence KShortcutsEditorItem::keySequence(uint column) const
+ {
+     QList<QKeySequence> shortcuts = m_action->shortcuts();
++#if HAVE_GLOBALACCEL
+     QList<QKeySequence> globalShortcuts = KGlobalAccel::self()->shortcut(m_action);
++#endif
+
+     switch (column) {
+     case LocalPrimary:
+         return primarySequence(shortcuts);
+     case LocalAlternate:
+         return alternateSequence(shortcuts);
++#if HAVE_GLOBALACCEL
+     case GlobalPrimary:
+         return primarySequence(globalShortcuts);
+     case GlobalAlternate:
+         return alternateSequence(globalShortcuts);
++#endif
+     default:
+         return QKeySequence();
+     }
+@@ -233,12 +246,15 @@ QKeySequence KShortcutsEditorItem::keySequence(uint column) const
+ void KShortcutsEditorItem::setKeySequence(uint column, const QKeySequence &seq)
+ {
+     QList<QKeySequence> ks;
++#if HAVE_GLOBALACCEL
+     if (column == GlobalPrimary || column == GlobalAlternate) {
+         ks = KGlobalAccel::self()->shortcut(m_action);
+         if (!m_oldGlobalShortcut) {
+             m_oldGlobalShortcut = new QList<QKeySequence>(ks);
+         }
+-    } else {
++    } else
++#endif
++    {
+         ks = m_action->shortcuts();
+         if (!m_oldLocalShortcut) {
+             m_oldLocalShortcut = new QList<QKeySequence>(ks);
+@@ -264,9 +280,13 @@ void KShortcutsEditorItem::setKeySequence(uint column, const QKeySequence &seq)
+     }
+
+     //avoid also setting the default shortcut - what we are setting here is custom by definition
++#if HAVE_GLOBALACCEL
+     if (column == GlobalPrimary || column == GlobalAlternate) {
+         KGlobalAccel::self()->setShortcut(m_action, ks, KGlobalAccel::NoAutoloading);
+-    } else {
++
++    } else
++#endif
++    {
+         m_action->setShortcuts(ks);
+     }
+
+@@ -304,10 +324,12 @@ void KShortcutsEditorItem::updateModified()
+         delete m_oldLocalShortcut;
+         m_oldLocalShortcut = 0;
+     }
++#if HAVE_GLOBALACCEL
+     if (m_oldGlobalShortcut && *m_oldGlobalShortcut == KGlobalAccel::self()->shortcut(m_action)) {
+         delete m_oldGlobalShortcut;
+         m_oldGlobalShortcut = 0;
+     }
++#endif
+ #if 0
+     if (m_oldShapeGesture && *m_oldShapeGesture == KGestureMap::self()->shapeGesture(m_action)) {
+         delete m_oldShapeGesture;
+@@ -335,6 +357,7 @@ bool KShortcutsEditorItem::isModified(uint column) const
+         } else {
+             return alternateSequence(*m_oldLocalShortcut) != alternateSequence(m_action->shortcuts());
+         }
++#if HAVE_GLOBALACCEL
+     case GlobalPrimary:
+     case GlobalAlternate:
+         if (!m_oldGlobalShortcut) {
+@@ -345,6 +368,7 @@ bool KShortcutsEditorItem::isModified(uint column) const
+         } else {
+             return alternateSequence(*m_oldGlobalShortcut) != alternateSequence(KGlobalAccel::self()->shortcut(m_action));
+         }
++#endif
+ #if 0
+     case ShapeGesture:
+         return static_cast<bool>(m_oldShapeGesture);
+@@ -370,9 +394,11 @@ void KShortcutsEditorItem::undo()
+         m_action->setShortcuts(*m_oldLocalShortcut);
+     }
+
++#if HAVE_GLOBALACCEL
+     if (m_oldGlobalShortcut) {
+         KGlobalAccel::self()->setShortcut(m_action, *m_oldGlobalShortcut, KGlobalAccel::NoAutoloading);
+     }
++#endif
+
+ #if 0
+     if (m_oldShapeGesture) {
+diff --git a/src/kxmlguifactory.cpp b/src/kxmlguifactory.cpp
+index 2767e69..4fcfeca 100644
+--- a/src/kxmlguifactory.cpp
++++ b/src/kxmlguifactory.cpp
+@@ -17,6 +17,7 @@
+    the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+    Boston, MA 02110-1301, USA.
+ */
++#include "config-xmlgui.h"
+
+ #include "kxmlguifactory.h"
+
+@@ -42,7 +43,9 @@
+
+ #include <ksharedconfig.h>
+ #include <kconfiggroup.h>
+-#include <kglobalaccel.h>
++#if HAVE_GLOBALACCEL
++# include <kglobalaccel.h>
++#endif
+
+ Q_DECLARE_METATYPE(QList<QKeySequence>)
+
+@@ -675,7 +678,9 @@ void KXMLGUIFactoryPrivate::configureAction(QAction *action, const QDomAttr &att
+     } else if (isShortcut) {
+         // Setting the shortcut by property also sets the default shortcut (which is incorrect), so we have to do it directly
+         if (attrName == QStringLiteral("globalShortcut")) {
++#if HAVE_GLOBALACCEL
+             KGlobalAccel::self()->setShortcut(action, QKeySequence::listFromString(attribute.value()));
++#endif
+         } else {
+             action->setShortcuts(QKeySequence::listFromString(attribute.value()));
+         }
+--
+2.1.4

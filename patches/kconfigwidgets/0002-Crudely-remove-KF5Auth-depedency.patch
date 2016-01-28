@@ -1,0 +1,68 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From bb6e1b9bf227a0276d35f9edb6e5b9240bd3cd69 Mon Sep 17 00:00:00 2001
+From: Andre Heinecke <aheinecke@intevation.de>
+Date: Thu, 28 Jan 2016 17:30:10 +0100
+Subject: [PATCH 2/2] Crudely remove KF5Auth depedency
+
+This is not intended for upstream
+---
+ CMakeLists.txt     | 1 -
+ src/CMakeLists.txt | 3 ---
+ 2 files changed, 4 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 87f976c..c150897 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -36,7 +36,6 @@ ecm_setup_version(${KF5_VERSION} VARIABLE_PREFIX KCONFIGWIDGETS
+                         PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KF5ConfigWidgetsConfigVersion.cmake"
+                         SOVERSION 5)
+
+-find_package(KF5Auth ${KF5_DEP_VERSION} REQUIRED)
+ find_package(KF5CoreAddons ${KF5_DEP_VERSION} REQUIRED)
+ find_package(KF5Codecs ${KF5_DEP_VERSION} REQUIRED)
+ find_package(KF5Config ${KF5_DEP_VERSION} REQUIRED)
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 104b118..d2a5c50 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -10,7 +10,6 @@ set(kconfigwidgets_SRCS
+   kconfigdialog.cpp
+   kconfigviewstatesaver.cpp
+   kconfigdialogmanager.cpp
+-  kcmodule.cpp
+   khelpclient.cpp
+   klanguagebutton.cpp
+   kpastetextaction.cpp
+@@ -32,7 +31,6 @@ target_link_libraries(KF5ConfigWidgets
+     KF5::Codecs # KCodecActions uses KCharsets, KEncodingProber
+     KF5::WidgetsAddons # For K*Action, KPage*, KViewStateSerializer, KAcceleratorManager, K*GuiItem
+     KF5::ConfigGui # KStandardAction uses KStandardShortcut
+-    KF5::Auth # KCModule uses KAuth::Action
+   PRIVATE
+     ${KCONFIGWIDGETS_QDBUS_LIBS} # KPasteTextAction talks to Klipper via DBus
+     KF5::CoreAddons # KCModule uses KAboutData, KTipDialog uses KRandom
+@@ -53,7 +51,6 @@ ecm_generate_headers(KConfigWidgets_HEADERS
+   KConfigDialog
+   KConfigViewStateSaver
+   KConfigDialogManager
+-  KCModule
+   KHelpClient
+   KLanguageButton
+   KPasteTextAction
+diff --git a/KF5ConfigWidgetsConfig.cmake.in b/KF5ConfigWidgetsConfig.cmake.in
+index 9096da6..660db4c 100644
+--- a/KF5ConfigWidgetsConfig.cmake.in
++++ b/KF5ConfigWidgetsConfig.cmake.in
+@@ -1,6 +1,5 @@
+ @PACKAGE_INIT@
+
+-find_dependency(KF5Auth "@KF5_DEP_VERSION@")
+ find_dependency(KF5Codecs "@KF5_DEP_VERSION@")
+ find_dependency(KF5Config "@KF5_DEP_VERSION@")
+ find_dependency(KF5WidgetsAddons "@KF5_DEP_VERSION@")
+--
+2.1.4

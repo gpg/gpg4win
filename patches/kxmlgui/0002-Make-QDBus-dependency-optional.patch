@@ -1,0 +1,419 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From f13bd3aff95038689b1f1b728f9929215785caf7 Mon Sep 17 00:00:00 2001
+From: Andre Heinecke <aheinecke@intevation.de>
+Date: Tue, 26 Jan 2016 18:18:56 +0100
+Subject: [PATCH 2/3] Make QDBus dependency optional
+
+If an application is "standalone" DBus IPC may not be neccessary.
+This main use case for this are platforms like Windows where DBus
+is foreign.
+
+Features lost without DBus are the handling of global style changes
+in KToolBar and the general KDE DBus integration of KMainWindow.
+---
+ CMakeLists.txt                     | 13 +++++++++++--
+ autotests/kmainwindow_unittest.cpp | 10 ++++++++++
+ autotests/ktoolbar_unittest.cpp    | 20 +++++++++++++++++++-
+ src/CMakeLists.txt                 | 15 ++++++++++++---
+ src/config-xmlgui.h.cmake          |  3 +++
+ src/kmainwindow.cpp                | 10 ++++++++--
+ src/kmainwindowiface.cpp           |  2 +-
+ src/ktoolbar.cpp                   | 13 +++++++++++--
+ src/kxmlguiwindow.cpp              | 13 +++++++++++--
+ 9 files changed, 86 insertions(+), 13 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 59132d8..acb6037 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -32,8 +32,7 @@ ecm_setup_version(${KF5_VERSION}
+
+ # Dependencies
+ set(REQUIRED_QT_VERSION 5.3.0)
+-find_package(Qt5 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Widgets DBus Xml Network PrintSupport)
+-
++find_package(Qt5 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Widgets Xml Network PrintSupport)
+ find_package(KF5CoreAddons ${KF5_DEP_VERSION} REQUIRED)
+ find_package(KF5ItemViews ${KF5_DEP_VERSION} REQUIRED)
+ find_package(KF5Config ${KF5_DEP_VERSION} REQUIRED)
+@@ -43,6 +42,16 @@ find_package(KF5IconThemes ${KF5_DEP_VERSION} REQUIRED)
+ find_package(KF5TextWidgets ${KF5_DEP_VERSION} REQUIRED)
+ find_package(KF5WidgetsAddons ${KF5_DEP_VERSION} REQUIRED)
+ find_package(KF5WindowSystem ${KF5_DEP_VERSION} REQUIRED)
++
++# Optional dependencies
++find_package(Qt5DBus ${REQUIRED_QT_VERSION} CONFIG)
++set_package_properties(Qt5DBus PROPERTIES DESCRIPTION "Qt DBus Library"
++                       PURPOSE "KDE MainWindow DBus integration and global style change handling"
++                       URL "https://doc.qt.io/qt-5/qdbus.html"
++                       TYPE OPTIONAL
++                      )
++set (HAVE_QDBUS ${Qt5DBus_FOUND})
++
+ find_package(KF5Attica ${KF5_DEP_VERSION})
+ set_package_properties(KF5Attica PROPERTIES DESCRIPTION "A Qt library that implements the Open Collaboration Services API"
+                        PURPOSE "Support for Get Hot New Stuff in KXMLGUI"
+diff --git a/autotests/kmainwindow_unittest.cpp b/autotests/kmainwindow_unittest.cpp
+index 00282ef..7bbd581 100644
+--- a/autotests/kmainwindow_unittest.cpp
++++ b/autotests/kmainwindow_unittest.cpp
+@@ -17,6 +17,8 @@
+     Boston, MA 02110-1301, USA.
+ */
+
++#include "config-xmlgui.h"
++
+ #include <QTest>
+ #include "kmainwindow_unittest.h"
+ #include <QEventLoopLocker>
+@@ -91,12 +93,20 @@ void KMainWindow_UnitTest::testNameWithSpecialChars()
+     mw.setObjectName(QStringLiteral("a#@_test/"));
+     mw.show();
+     mw.ensurePolished();
++#if HAVE_QDBUS
+     QCOMPARE(mw.dbusName(), QString::fromLatin1("/kmainwindow_unittest/a___test_"));
++#else
++    QCOMPARE(mw.objectName(), QString::fromLatin1("a#@_test/"));
++#endif
+     KMainWindow mw2;
+     mw2.setObjectName(QStringLiteral("a#@_test/"));
+     mw2.show();
+     mw2.ensurePolished();
++#if HAVE_QDBUS
+     QCOMPARE(mw2.dbusName(), QString::fromLatin1("/kmainwindow_unittest/a___test_2"));
++#else
++    QCOMPARE(mw2.objectName(), QString::fromLatin1("a#@_test/2"));
++#endif
+ }
+
+ static bool s_mainWindowDeleted;
+diff --git a/autotests/ktoolbar_unittest.cpp b/autotests/ktoolbar_unittest.cpp
+index d6c1e05..da0eb4e 100644
+--- a/autotests/ktoolbar_unittest.cpp
++++ b/autotests/ktoolbar_unittest.cpp
+@@ -18,10 +18,14 @@
+     Boston, MA 02110-1301, USA.
+ */
+
++#include "config-xmlgui.h"
++
+ #include "testxmlguiwindow.h"
+ #include "testguiclient.h"
+
+-#include <QDBusConnection>
++#if HAVE_QDBUS
++# include <QDBusConnection>
++#endif
+ #include <QDir>
+ #include <QFile>
+ #include <QFileInfo>
+@@ -79,7 +83,9 @@ protected:
+ private:
+     void changeGlobalIconSizeSetting(int, int);
+     void deleteGlobalIconSizeSetting();
++#if HAVE_QDBUS
+     void changeGlobalToolButtonStyleSetting(const QString &, const QString &);
++#endif
+     void deleteGlobalToolButtonStyleSetting();
+     QByteArray m_xml;
+     bool m_showWasCalled;
+@@ -422,6 +428,7 @@ void tst_KToolBar::testToolButtonStyleNoXmlGui()
+         QCOMPARE((int)mainToolBar->toolButtonStyle(), (int)toolButtonStyle);
+         QCOMPARE((int)otherToolBar->toolButtonStyle(), (int)toolButtonStyle);
+
++#if HAVE_QDBUS
+         // Now change KDE-global setting
+         changeGlobalToolButtonStyleSetting(QStringLiteral("IconOnly"), QStringLiteral("TextOnly"));
+
+@@ -436,6 +443,9 @@ void tst_KToolBar::testToolButtonStyleNoXmlGui()
+         } else {
+             QCOMPARE((int)otherToolBar->toolButtonStyle(), (int)toolButtonStyle);
+         }
++#else
++        Q_UNUSED(selectedDefaultForOtherToolbar);
++#endif
+     }
+ }
+
+@@ -485,16 +495,23 @@ void tst_KToolBar::testToolButtonStyleXmlGui()
+         // Save settings
+         kmw.saveMainWindowSettings(group);
+
++#if HAVE_QDBUS
+         // Now change KDE-global setting
+         changeGlobalToolButtonStyleSetting(QStringLiteral("IconOnly"), QStringLiteral("TextOnly"));
+
+         QCOMPARE((int)mainToolBar->toolButtonStyle(), (int)expectedStyleMainToolbar);
+         QCOMPARE((int)otherToolBar->toolButtonStyle(), (int)expectedStyleOtherToolbar);
+         QCOMPARE((int)cleanToolBar->toolButtonStyle(), (int)expectedStyleCleanToolbar);
++#else
++        Q_UNUSED(expectedStyleMainToolbar);
++        Q_UNUSED(expectedStyleOtherToolbar);
++        Q_UNUSED(expectedStyleCleanToolbar);
++#endif
+
+     }
+ }
+
++#if HAVE_QDBUS
+ void tst_KToolBar::changeGlobalToolButtonStyleSetting(const QString &mainToolBar, const QString &otherToolBars)
+ {
+     KConfigGroup group(KSharedConfig::openConfig(), "Toolbar style");
+@@ -512,6 +529,7 @@ void tst_KToolBar::changeGlobalToolButtonStyleSetting(const QString &mainToolBar
+     KToolBar::emitToolbarStyleChanged();
+     spy.wait(2000);
+ }
++#endif
+
+ void tst_KToolBar::deleteGlobalToolButtonStyleSetting()
+ {
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 8126b5e..e849ab7 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -6,6 +6,10 @@ endif ()
+ if (HAVE_GLOBALACCEL)
+    set (XMLGUI_EXTRA_LIBS ${XMLGUI_EXTRA_LIBS} KF5::GlobalAccel)
+ endif ()
++if (HAVE_QDBUS)
++   set (XMLGUI_QDBUS_LIBS Qt5::DBus)
++   set (XMLGUI_DBUS_PRI_NAME "dbus")
++endif ()
+ if(WIN32)
+     set (XMLGUI_EXTRA_LIBS ${XMLGUI_EXTRA_LIBS} secur32) # GetUserNameEx()
+ endif()
+@@ -33,7 +37,6 @@ set(kxmlgui_SRCS
+   khelpmenu.cpp
+   kkeysequencewidget.cpp
+   kmainwindow.cpp
+-  kmainwindowiface.cpp
+   kmenumenuhandler_p.cpp
+   kshortcuteditwidget.cpp
+   kshortcutschemeseditor.cpp
+@@ -56,6 +59,12 @@ set(kxmlgui_SRCS
+   kundoactions.cpp
+   kcheckaccelerators.cpp
+ )
++if (HAVE_QDBUS)
++  set(kxmlgui_SRCS
++    ${kxmlgui_SRCS}
++    kmainwindowiface.cpp
++  )
++endif()
+
+ # add the resource file
+ qt5_add_resources(kxmlgui_SRCS kxmlgui.qrc)
+@@ -77,7 +86,7 @@ target_include_directories(KF5XmlGui INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTAL
+
+ target_link_libraries(KF5XmlGui
+ PUBLIC
+-    Qt5::DBus           #QDBus connect to signal in KToolBar
++    ${XMLGUI_QDBUS_LIBS} #QDBus connect to signal in KToolBar
+     Qt5::Xml            #To parse the configuration (QDomDocument etc)
+     Qt5::Widgets        #QWidget is used everywhere
+     KF5::ConfigCore         #Reading config for ToolbarIcons, Shortcut Schemes...
+@@ -138,5 +147,5 @@ install(FILES
+ install( FILES ui_standards.rc  DESTINATION  ${KDE_INSTALL_CONFDIR}/ui )
+
+ include(ECMGeneratePriFile)
+-ecm_generate_pri_file(BASE_NAME KXmlGui LIB_NAME KF5XmlGui DEPS "dbus xml widgets KConfigCore KConfigWidgets" FILENAME_VAR PRI_FILENAME INCLUDE_INSTALL_DIR ${KDE_INSTALL_INCLUDEDIR_KF5}/KXmlGui)
++ecm_generate_pri_file(BASE_NAME KXmlGui LIB_NAME KF5XmlGui DEPS "${XMLGUI_DBUS_PRI_NAME} xml widgets KConfigCore KConfigWidgets" FILENAME_VAR PRI_FILENAME INCLUDE_INSTALL_DIR ${KDE_INSTALL_INCLUDEDIR_KF5}/KXmlGui)
+ install(FILES ${PRI_FILENAME} DESTINATION ${ECM_MKSPECS_INSTALL_DIR})
+diff --git a/src/config-xmlgui.h.cmake b/src/config-xmlgui.h.cmake
+index 9d7f3dc..35c9477 100644
+--- a/src/config-xmlgui.h.cmake
++++ b/src/config-xmlgui.h.cmake
+@@ -7,3 +7,6 @@
+
+ /* KF5GlobalAccel available */
+ #cmakedefine01 HAVE_GLOBALACCEL
++
++/* Qt5DBus available */
++#cmakedefine01 HAVE_QDBUS
+diff --git a/src/kmainwindow.cpp b/src/kmainwindow.cpp
+index cae655d..4c98c3f 100644
+--- a/src/kmainwindow.cpp
++++ b/src/kmainwindow.cpp
+@@ -23,11 +23,11 @@
+     the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+     Boston, MA 02110-1301, USA.
+ */
++#include "config-xmlgui.h"
+
+ #include "kmainwindow.h"
+
+ #include "kmainwindow_p.h"
+-#include "kmainwindowiface_p.h"
+ #include "ktoolbarhandler_p.h"
+ #include "khelpmenu.h"
+ #include "ktoolbar.h"
+@@ -46,7 +46,6 @@
+ #include <QStyle>
+ #include <QWidget>
+ #include <QWindow>
+-#include <QDBusConnection>
+
+ #include <ktoggleaction.h>
+ #include <kaboutdata.h>
+@@ -58,6 +57,11 @@
+ #include <kwindowconfig.h>
+ #include <kconfiggui.h>
+
++#if HAVE_QDBUS
++# include "kmainwindowiface_p.h"
++# include <QDBusConnection>
++#endif
++
+ //#include <ctype.h>
+
+ static const char WINDOW_PROPERTIES[]="WindowProperties";
+@@ -302,6 +306,7 @@ void KMainWindowPrivate::polish(KMainWindow *q)
+     q->winId(); // workaround for setWindowRole() crashing, and set also window role, just in case TT
+     q->setWindowRole(s);   // will keep insisting that object name suddenly should not be used for window role
+
++#if HAVE_QDBUS
+     dbusName = QLatin1Char('/') + QCoreApplication::applicationName() + QLatin1Char('/');
+     dbusName += q->objectName().replace(QLatin1Char('/'), QLatin1Char('_'));
+     // Clean up for dbus usage: any non-alphanumeric char should be turned into '_'
+@@ -317,6 +322,7 @@ void KMainWindowPrivate::polish(KMainWindow *q)
+             QDBusConnection::ExportNonScriptableSlots |
+             QDBusConnection::ExportNonScriptableProperties |
+             QDBusConnection::ExportAdaptors);
++#endif
+ }
+
+ void KMainWindowPrivate::setSettingsDirty(CallCompression callCompression)
+diff --git a/src/kmainwindowiface.cpp b/src/kmainwindowiface.cpp
+index c194bec..25439b3 100644
+--- a/src/kmainwindowiface.cpp
++++ b/src/kmainwindowiface.cpp
+@@ -18,8 +18,8 @@
+    Boston, MA 02110-1301, USA.
+ */
+
+-#include "kmainwindowiface_p.h"
+
++#include "kmainwindowiface_p.h"
+ #include "kactioncollection.h"
+ #include "kxmlguiwindow.h"
+
+diff --git a/src/ktoolbar.cpp b/src/ktoolbar.cpp
+index 8fcb9cb..6bda175 100644
+--- a/src/ktoolbar.cpp
++++ b/src/ktoolbar.cpp
+@@ -24,6 +24,8 @@
+     Boston, MA 02110-1301, USA.
+ */
+
++#include "config-xmlgui.h"
++
+ #include "ktoolbar.h"
+
+ #include <QPointer>
+@@ -38,10 +40,13 @@
+ #include <QMouseEvent>
+ #include <QToolButton>
+ #include <QtXml/QDomElement>
+-#include <QDBusConnection>
+-#include <QDBusMessage>
+ #include <QDebug>
+
++#if HAVE_QDBUS
++# include <QDBusConnection>
++# include <QDBusMessage>
++#endif
++
+ #include <kauthorized.h>
+ #include <kconfig.h>
+ #include <ksharedconfig.h>
+@@ -273,8 +278,10 @@ void KToolBar::Private::init(bool readConfig, bool _isMainToolBar)
+
+     q->setAcceptDrops(true);
+
++#if HAVE_QDBUS
+     QDBusConnection::sessionBus().connect(QString(), QStringLiteral("/KToolBar"), QStringLiteral("org.kde.KToolBar"),
+                                           QStringLiteral("styleChanged"), q, SLOT(slotAppearanceChanged()));
++#endif
+     connect(KIconLoader::global(), SIGNAL(iconLoaderSettingsChanged()),
+             q, SLOT(slotAppearanceChanged()));
+ }
+@@ -1465,8 +1472,10 @@ bool KToolBar::toolBarsLocked()
+
+ void KToolBar::emitToolbarStyleChanged()
+ {
++#if HAVE_QDBUS
+     QDBusMessage message = QDBusMessage::createSignal(QStringLiteral("/KToolBar"), QStringLiteral("org.kde.KToolBar"), QStringLiteral("styleChanged"));
+     QDBusConnection::sessionBus().send(message);
++#endif
+ }
+
+ #include "moc_ktoolbar.cpp"
+diff --git a/src/kxmlguiwindow.cpp b/src/kxmlguiwindow.cpp
+index b4162c8..9e76928 100644
+--- a/src/kxmlguiwindow.cpp
++++ b/src/kxmlguiwindow.cpp
+@@ -23,11 +23,12 @@
+     Boston, MA 02110-1301, USA.
+ */
+
++#include "config-xmlgui.h"
++
+ #include "kxmlguiwindow.h"
+
+ #include "kmainwindow_p.h"
+ #include "kactioncollection.h"
+-#include "kmainwindowiface_p.h"
+ #include "ktoolbarhandler_p.h"
+ #include "kxmlguifactory.h"
+ #include "kedittoolbar.h"
+@@ -35,7 +36,6 @@
+ #include "ktoolbar.h"
+
+ #include <QCloseEvent>
+-#include <QDBusConnection>
+ #include <QtXml/QDomDocument>
+ #include <QLayout>
+ #include <QDebug>
+@@ -46,6 +46,11 @@
+ #include <QWidget>
+ #include <QList>
+
++#if HAVE_QDBUS
++# include "kmainwindowiface_p.h"
++# include <QDBusConnection>
++#endif
++
+ #include <ktoggleaction.h>
+ #include <kstandardaction.h>
+ #include <kconfig.h>
+@@ -86,7 +91,9 @@ KXmlGuiWindow::KXmlGuiWindow(QWidget *parent, Qt::WindowFlags f)
+     d->toolBarHandler = 0;
+     d->showStatusBarAction = 0;
+     d->factory = 0;
++#if HAVE_QDBUS
+     new KMainWindowInterface(this);
++#endif
+ }
+
+ QAction *KXmlGuiWindow::toolBarMenuAction()
+@@ -116,6 +123,7 @@ KXmlGuiWindow::~KXmlGuiWindow()
+ bool KXmlGuiWindow::event(QEvent *ev)
+ {
+     bool ret = KMainWindow::event(ev);
++#if HAVE_QDBUS
+     if (ev->type() == QEvent::Polish) {
+         QDBusConnection::sessionBus().registerObject(dbusName() + QStringLiteral("/actions"), actionCollection(),
+                 QDBusConnection::ExportScriptableSlots |
+@@ -124,6 +132,7 @@ bool KXmlGuiWindow::event(QEvent *ev)
+                 QDBusConnection::ExportNonScriptableProperties |
+                 QDBusConnection::ExportChildObjects);
+     }
++#endif
+     return ret;
+ }
+
+--
+2.1.4

@@ -253,6 +253,30 @@
 !define gpg4win_pkg_kmime @gpg4win_pkg_kmime@
 !define gpg4win_pkg_kmime_version @gpg4win_pkg_kmime_version@
 
+@HAVE_PKG_KCONFIGWIDGETS@
+!define gpg4win_pkg_kconfigwidgets @gpg4win_pkg_kconfigwidgets@
+!define gpg4win_pkg_kconfigwidgets_version @gpg4win_pkg_kconfigwidgets_version@
+
+@HAVE_PKG_KXMLGUI@
+!define gpg4win_pkg_kxmlgui @gpg4win_pkg_kxmlgui@
+!define gpg4win_pkg_kxmlgui_version @gpg4win_pkg_kxmlgui_version@
+
+@HAVE_PKG_KGUIADDONS@
+!define gpg4win_pkg_kguiaddons @gpg4win_pkg_kguiaddons@
+!define gpg4win_pkg_kguiaddons_version @gpg4win_pkg_kguiaddons_version@
+
+@HAVE_PKG_KITEMVIEWS@
+!define gpg4win_pkg_kitemviews @gpg4win_pkg_kitemviews@
+!define gpg4win_pkg_kitemviews_version @gpg4win_pkg_kitemviews_version@
+
+@HAVE_PKG_KICONTHEMES@
+!define gpg4win_pkg_kiconthemes @gpg4win_pkg_kiconthemes@
+!define gpg4win_pkg_kiconthemes_version @gpg4win_pkg_kiconthemes_version@
+
+@HAVE_PKG_QTSVG@
+!define gpg4win_pkg_qtsvg @gpg4win_pkg_qtsvg@
+!define gpg4win_pkg_qtsvg_version @gpg4win_pkg_qtsvg_version@
+
 # Internal packages.
 @HAVE_PKG_COMPENDIUM@
 
