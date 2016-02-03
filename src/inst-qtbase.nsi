@@ -37,6 +37,9 @@ Section "-qtbase" SEC_qtbase
   File ${prefix}/bin/Qt5Core.dll
   File ${prefix}/bin/Qt5Gui.dll
   File ${prefix}/bin/Qt5Widgets.dll
+  File ${prefix}/bin/Qt5Network.dll
+  File ${prefix}/bin/Qt5PrintSupport.dll
+  File ${prefix}/bin/Qt5Xml.dll
 
   SetOutPath "$INSTDIR\platforms"
 

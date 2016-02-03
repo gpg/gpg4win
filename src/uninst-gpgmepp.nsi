@@ -27,6 +27,7 @@ Section "-un.gpgmepp"
   Call un.SourceDelete
 !else
   Delete "$INSTDIR\bin\libKF5Gpgmepp.dll"
+  Delete "$INSTDIR\bin\libKF5QGpgmepp.dll"
   RmDir "$INSTDIR\bin"
 
 !endif

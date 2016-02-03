@@ -27,6 +27,7 @@ Section "-un.kconfig"
   Call un.SourceDelete
 !else
   Delete "$INSTDIR\bin\libKF5ConfigCore.dll"
+  Delete "$INSTDIR\bin\libKF5ConfigGui.dll"
   RmDir "$INSTDIR\bin"
 
 !endif

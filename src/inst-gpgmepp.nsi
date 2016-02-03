@@ -31,5 +31,6 @@ Section "-gpgmepp" SEC_gpgmepp
 !else
   SetOutPath "$INSTDIR\bin"
   File ${prefix}/bin/libKF5Gpgmepp.dll
+  File ${prefix}/bin/libKF5QGpgme.dll
 !endif
 SectionEnd

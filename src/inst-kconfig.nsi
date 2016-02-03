@@ -31,5 +31,6 @@ Section "-kconfig" SEC_kconfig
 !else
   SetOutPath "$INSTDIR\bin"
   File ${prefix}/bin/libKF5ConfigCore.dll
+  File ${prefix}/bin/libKF5ConfigGui.dll
 !endif
 SectionEnd
