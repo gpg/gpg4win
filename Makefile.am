@@ -45,7 +45,8 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         patches/kconfigwidgets/0001-Make-QDbus-optional.patch \
         patches/kconfigwidgets/0002-Crudely-remove-KF5Auth-depedency.patch \
         patches/kiconthemes/0001-Make-DBus-optional.patch \
-        patches/qtsvg/qtsvg-link-zlib.patch
+        patches/qtsvg/qtsvg-link-zlib.patch \
+        patches/extra-cmake-modules/0001-Add-convert-utility-support-for-Windows-icons.patch
 
 copy-news:
 	cp NEWS doc/website/NEWS.last
