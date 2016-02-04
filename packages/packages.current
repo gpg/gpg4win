@@ -470,6 +470,13 @@ chk c10a50c6607e548f9d5727040971cbe8e1074851
 file 5.18/kiconthemes-5.18.0.tar.xz
 chk 015547e8939aad42bcff53daee344011cc3772f4
 
+# breeze-icons
+# last changed: 2016-02-04
+# by: ah
+# verified: https://www.kde.org/info/kde-frameworks-5.18.0.php
+file 5.18/breeze-icons-5.18.0.tar.xz
+chk 89efd0ae68895326747b8e2b2577bd2b4cc46e13
+
 # KDE Applications
 #
 # Devel versions are needed until Kleopatra can be based on
@@ -516,28 +523,9 @@ chk 0a9bbe73a2a2f24ee2addfb47f642646d2eae996
 file libkleo/libkleo-201601221448.tar.xz
 chk 668b115e7e025b5408f53ced73056f5c4f660993
 
-# oxygen-icons
-server http://files.kolab.org/local/gpg4win
-
-file oxygen-icons-20141125-bin.tar.bz2
-chk  744dbbc7585205948fa62d63c9dbb8c6dd8fc9fb
-
-file oxygen-icons-20141125-src.tar.bz2
-chk  e2af27d711d528c21fd2bf73639da1cd2c811f7a
-
-
-#
-# kleopatra (and her KDE dependencies)
-#
-#
-server http://files.kolab.org/local/gpg4win
-
-# This is kdepim/gpg4win branch fb4ae3dc8
-file kleopatra-20151117-bin.tar.xz
-chk  5ebb215985ecf379b16d49c251fb0d92aff902c5
-
-# This also includes the sources for kdelibs
-# kdewin win-iconv and kdepimlibs which
-# are part of binaries in the kleopatra bin package
-file kleopatra-20151117-src.tar.xz
-chk  c7d6b7fa4b9d7a354ddce726913a65fcc59b9323
+# Kleopatra
+# last changed: 2016-02-04
+# by: ah
+# verified: Tarball created by ah.
+file kleopatra/kleopatra-201602041528.tar.gz
+chk c377cbf3acbd8c415d1d1f7f5ff956fc37d0d33c

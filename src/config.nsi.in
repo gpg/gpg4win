@@ -177,10 +177,10 @@
 !define gpg4win_pkg_qtbase_version @gpg4win_pkg_qtbase_version@
 !define gpg4win_pkg_qtbase_src @gpg4win_pkg_qtbase_src@
 
-@HAVE_PKG_OXYGEN_ICONS@
-!define gpg4win_pkg_oxygen_icons @gpg4win_pkg_oxygen_icons@
-!define gpg4win_pkg_oxygen_icons_version @gpg4win_pkg_oxygen_icons_version@
-!define gpg4win_pkg_oxygen_icons_src @gpg4win_pkg_oxygen_icons_src@
+@HAVE_PKG_BREEZE_ICONS@
+!define gpg4win_pkg_breeze_icons @gpg4win_pkg_breeze_icons@
+!define gpg4win_pkg_breeze_icons_version @gpg4win_pkg_breeze_icons_version@
+!define gpg4win_pkg_breeze_icons_src @gpg4win_pkg_breeze_icons_src@
 
 @HAVE_PKG_KLEOPATRA@
 !define gpg4win_pkg_kleopatra @gpg4win_pkg_kleopatra@

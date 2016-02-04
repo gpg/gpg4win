@@ -57,7 +57,6 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
         inst-w32pth.nsi		   uninst-w32pth.nsi	      \
         inst-zlib.nsi        	   uninst-zlib.nsi            \
         inst-kconfig.nsi        uninst-kconfig.nsi              \
-        inst-oxygen-icons.nsi  	   uninst-oxygen-icons.nsi    \
         inst-kleopatra.nsi  	   uninst-kleopatra.nsi       \
 	inst-bzip2.nsi             uninst-bzip2.nsi           \
         uninst-claws-mail.nsi uninst-claws-mail-cmds.nsi \
@@ -73,6 +72,7 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
         inst-kconfigwidgets.nsi uninst-kconfigwidgets.nsi \
         inst-kxmlgui.nsi uninst-kxmlgui.nsi \
         inst-kiconthemes.nsi uninst-kiconthemes.nsi \
+        inst-breeze-icons.nsi uninst-breeze-icons.nsi \
         inst-kitemviews.nsi uninst-kitemviews.nsi \
         inst-kguiaddons.nsi uninst-kguiaddons.nsi \
         inst-kmime.nsi uninst-kmime.nsi \
@@ -80,7 +80,7 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
         inst-qttools.nsi uninst-qttools.nsi \
         inst-boost.nsi uninst-boost.nsi \
         inst-extra-cmake-modules.nsi uninst-extra-cmake-modules.nsi \
-        inst-final.nsi
+        inst-final.nsi index.theme
 
 SUBDIRS = dictionaries
 
@@ -113,7 +113,7 @@ gpg4win_spkgs = glib libffi gdk-pixbuf gtk+ \
 gpg4win_kdepkgs = kconfig kwidgetsaddons gpgmepp ki18n extra-cmake-modules \
                   kcompletion kwindowsystem kcoreaddons libkleo kcodecs \
                   kmime kconfigwidgets kxmlgui kguiaddons kitemviews \
-                  kiconthemes
+                  kiconthemes kleopatra breeze-icons
 
 # Supported source packages to build in an additional architecture
 gpg4win_expkgs = libgpg-error libassuan libiconv gettext w32pth gpgex gpgol \
@@ -333,6 +333,9 @@ define gpg4win_pkg_qtsvg_post_install
   mv $$$${pkgidir}/lib/*.dll $$$${pkgidir}/bin;)
 endef
 
+gpg4win_pkg_kleopatra_configure = \
+    -DFORCE_DISABLE_KCMUTILS=ON
+
 # Supported make-only source packages.
 gpg4win_mpkgs = bzip2 zlib
 
@@ -353,7 +356,7 @@ gpg4win_pkg_zlib_make_args_inst = -fwin32/Makefile.gcc install \
 
 # Supported binary packages.
 gpg4win_bpkgs = pkgconfig pango expat freetype fontconfig \
-                cairo atk oxygen-icons kleopatra bsfilter gnupg-w32
+                cairo atk gnupg-w32
 
 # libiconv needs some special magic to generate a usable import
 # library.
@@ -453,13 +456,14 @@ endef
 
 # We don't use khelpcenter in kleopatra so remove the help links and
 # point to the correct common folder
-define gpg4win_pkg_kleopatra_post_install
- (for i in de en ; do \
-    (cd $$$${pkgidir}/share/doc/HTML/$$$${i}; \
-     perl -pi -e 's/help:\///g' `find . -name \*.html`; \
-     perl -pi -e 's@common/@../../common/@g' `find . -name \*.html`); \
- done)
-endef
+# TODO Needs to be fixed with current doc
+#define gpg4win_pkg_kleopatra_post_install
+# (for i in de en ; do \
+#    (cd $$$${pkgidir}/share/doc/HTML/$$$${i}; \
+#     perl -pi -e 's/help:\///g' `find . -name \*.html`; \
+#     perl -pi -e 's@common/@../../common/@g' `find . -name \*.html`); \
+# done)
+#endef
 
 
 #define gpg4win_pkg_libiconv_post_install

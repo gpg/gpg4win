@@ -35,8 +35,8 @@
 !ifdef HAVE_PKG_LIBTASN1
 !include "inst-libtasn1.nsi"
 !endif
-!ifdef HAVE_PKG_OXYGEN_ICONS
-!include "inst-oxygen-icons.nsi"
+!ifdef HAVE_PKG_BREEZE_ICONS
+!include "inst-breeze-icons.nsi"
 !endif
 !ifdef HAVE_PKG_PKGCONFIG
 !include "inst-pkgconfig.nsi"
@@ -148,6 +148,9 @@
 !endif
 !ifdef HAVE_PKG_KICONTHEMES
 !include "inst-kiconthemes.nsi"
+!endif
+!ifdef HAVE_PKG_KITEMVIEWS
+!include "inst-kitemviews.nsi"
 !endif
 !ifdef HAVE_PKG_LIBKLEO
 !include "inst-libkleo.nsi"
@@ -296,8 +299,8 @@
 !ifdef HAVE_PKG_PKGCONFIG
 !include "uninst-pkgconfig.nsi"
 !endif
-!ifdef HAVE_PKG_OXYGEN_ICONS
-!include "uninst-oxygen-icons.nsi"
+!ifdef HAVE_PKG_BREEZE_ICONS
+!include "uninst-breeze-icons.nsi"
 !endif
 !ifdef HAVE_PKG_MAN_ADVANCED_DE
 !include "uninst-man_advanced_de.nsi"
@@ -604,8 +607,8 @@ Function CalcDepends
 !ifdef HAVE_PKG_QTWINEXTRAS
   !insertmacro UnselectSection ${SEC_qtwinextras}
 !endif
-!ifdef HAVE_PKG_OXYGEN_ICONS
-  !insertmacro UnselectSection ${SEC_oxygen_icons}
+!ifdef HAVE_PKG_BREEZE_ICONS
+  !insertmacro UnselectSection ${SEC_breeze_icons}
 !endif
 !ifdef HAVE_PKG_KCONFIG
   !insertmacro UnselectSection ${SEC_kconfig}
@@ -744,7 +747,7 @@ Function CalcDepends
 		${SF_SELECTED} have_kleopatra_libs skip_kleopatra_libs
   have_kleopatra_libs:
   !insertmacro SelectSection ${SEC_qtbase}
-  !insertmacro SelectSection ${SEC_oxygen_icons}
+  !insertmacro SelectSection ${SEC_breeze_icons}
   !insertmacro SelectSection ${SEC_kconfig}
   !insertmacro SelectSection ${SEC_ki18n}
   !insertmacro SelectSection ${SEC_gpgmepp}
@@ -775,8 +778,6 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_libpng}
   skip_qt:
 !endif
-
-  # Package "oxygen-icons" has no dependencies.
 
 !ifdef HAVE_PKG_GPGME
   !insertmacro SectionFlagIsSet ${SEC_gpgme} \
