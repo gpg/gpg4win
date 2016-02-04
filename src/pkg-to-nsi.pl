@@ -84,6 +84,10 @@ elsif ($_ =~ m/\.tar\.bz2$/)
 {
     @::files = `tar tjf $_`;
 }
+elsif ($_ =~ m/\.tar\.xz$/)
+{
+    @::files = `tar tJf $_`;
+}
 else
 {
     die "unknown file type $_";
