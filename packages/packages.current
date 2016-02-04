@@ -244,8 +244,8 @@ chk  d063e705812e1ee7feb8f35d51b3cad04ca13b0d
 # by: ah
 # verified: Sig 8048 643B A2C8 40F4 F92A  195F F549 84BF A16C 640F
 server ftp://ftp.simplesystems.org/pub/png/src/
-file libpng14/libpng-1.4.17.tar.xz
-chk  bfa872db68a6fb1309f272fe8025afc12ecca30e
+file libpng14/libpng-1.4.19.tar.xz
+chk  5af8bdd6e5f2954787a7a8ce6760c7d0ae830162
 
 #
 # LibFFI
