@@ -2,17 +2,19 @@
 patch -p1 -l -f $* < $0
 exit $?
 
-From 915904a70894eb33c3451106b05816966489ad2c Mon Sep 17 00:00:00 2001
+From cca106313c9ec77f5dc409bd1b104f4e93da3cf1 Mon Sep 17 00:00:00 2001
 From: Andre Heinecke <aheinecke@intevation.de>
 Date: Tue, 26 Jan 2016 17:20:18 +0100
-Subject: [PATCH] Make KGlobalAccel dependency optional
+Subject: [PATCH 1/2] Add option to disable KGlobalAccel
 
-Global shortcuts are a nice optional feature to have. They
-are not strictly neccessary for the core functionality of KXmlGui.
-As they pull in an extra dependency to DBus and need runtime support
-on the target platform they should be optional.
+KGlobalAccel integration is a core feature of KXmlGui in
+an integrated KDE enviornment. For other platforms, with different
+global shortcut concepts support for it might not be required
+in XMLGui. So there is now an option to disable it.
+
+REVIEW: 126895
 ---
- CMakeLists.txt               | 10 ++++++++--
+ CMakeLists.txt               |  9 +++++++--
  src/CMakeLists.txt           |  4 +++-
  src/config-xmlgui.h.cmake    |  3 +++
  src/kactioncollection.cpp    | 26 ++++++++++++++++++++++++--
@@ -21,13 +23,22 @@ on the target platform they should be optional.
  src/kshortcutseditor.cpp     | 15 +++++++++++++--
  src/kshortcutseditoritem.cpp | 32 +++++++++++++++++++++++++++++---
  src/kxmlguifactory.cpp       |  7 ++++++-
- 9 files changed, 104 insertions(+), 13 deletions(-)
+ 9 files changed, 103 insertions(+), 13 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 9d79619..448ae76 100644
+index e2de5b0..74afa01 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -37,7 +37,6 @@ find_package(Qt5 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Widgets DBus Xml Network
+@@ -30,6 +30,8 @@ ecm_setup_version(${KF5_VERSION}
+                   PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KF5XmlGuiConfigVersion.cmake"
+                   SOVERSION 5)
+
++option(FORCE_DISABLE_KGLOBALACCEL "Force building KXmlGui without KGlobalAccel. Doing this will break global shortcut support. [default=OFF]" OFF)
++
+ # Dependencies
+ set(REQUIRED_QT_VERSION 5.3.0)
+ find_package(Qt5 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Widgets DBus Xml Network PrintSupport)
+@@ -37,7 +39,6 @@ find_package(Qt5 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Widgets DBus Xml Network
  find_package(KF5CoreAddons ${KF5_DEP_VERSION} REQUIRED)
  find_package(KF5ItemViews ${KF5_DEP_VERSION} REQUIRED)
  find_package(KF5Config ${KF5_DEP_VERSION} REQUIRED)
@@ -35,7 +46,7 @@ index 9d79619..448ae76 100644
  find_package(KF5ConfigWidgets ${KF5_DEP_VERSION} REQUIRED)
  find_package(KF5I18n ${KF5_DEP_VERSION} REQUIRED)
  find_package(KF5IconThemes ${KF5_DEP_VERSION} REQUIRED)
-@@ -45,7 +44,6 @@ find_package(KF5TextWidgets ${KF5_DEP_VERSION} REQUIRED)
+@@ -45,7 +46,6 @@ find_package(KF5TextWidgets ${KF5_DEP_VERSION} REQUIRED)
  find_package(KF5WidgetsAddons ${KF5_DEP_VERSION} REQUIRED)
  find_package(KF5WindowSystem ${KF5_DEP_VERSION} REQUIRED)
  find_package(KF5Attica ${KF5_DEP_VERSION})
@@ -43,16 +54,13 @@ index 9d79619..448ae76 100644
  set_package_properties(KF5Attica PROPERTIES DESCRIPTION "A Qt library that implements the Open Collaboration Services API"
                         PURPOSE "Support for Get Hot New Stuff in KXMLGUI"
                         URL "https://projects.kde.org/attica"
-@@ -53,6 +51,14 @@ set_package_properties(KF5Attica PROPERTIES DESCRIPTION "A Qt library that imple
+@@ -53,6 +53,11 @@ set_package_properties(KF5Attica PROPERTIES DESCRIPTION "A Qt library that imple
                        )
  set (HAVE_ATTICA ${KF5Attica_FOUND})
 
-+find_package(KF5GlobalAccel ${KF5_DEP_VERSION})
-+set_package_properties(KF5GlobalAccel PROPERTIES DESCRIPTION "A KDE Frameworks Library for global workspace shortcuts"
-+                       PURPOSE "Support for global shortcuts"
-+                       URL "https://projects.kde.org/projects/frameworks/kglobalaccel"
-+                       TYPE RECOMMENDED
-+                      )
++if (NOT FORCE_DISABLE_KGLOBALACCEL)
++    find_package(KF5GlobalAccel ${KF5_DEP_VERSION} REQUIRED)
++endif()
 +set (HAVE_GLOBALACCEL ${KF5GlobalAccel_FOUND})
 +
  # Subdirectories
@@ -498,7 +506,7 @@ index 461a90c..8442f10 100644
  #if 0
      if (m_oldShapeGesture) {
 diff --git a/src/kxmlguifactory.cpp b/src/kxmlguifactory.cpp
-index 2767e69..4fcfeca 100644
+index 6848610..f42bc41 100644
 --- a/src/kxmlguifactory.cpp
 +++ b/src/kxmlguifactory.cpp
 @@ -17,6 +17,7 @@
