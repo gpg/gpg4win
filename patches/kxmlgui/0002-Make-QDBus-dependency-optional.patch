@@ -2,10 +2,10 @@
 patch -p1 -l -f $* < $0
 exit $?
 
-From f13bd3aff95038689b1f1b728f9929215785caf7 Mon Sep 17 00:00:00 2001
+From 7e0831d090db72319a8b0629d16693fef690808f Mon Sep 17 00:00:00 2001
 From: Andre Heinecke <aheinecke@intevation.de>
 Date: Tue, 26 Jan 2016 18:18:56 +0100
-Subject: [PATCH 2/3] Make QDBus dependency optional
+Subject: [PATCH] Make QDBus dependency optional
 
 If an application is "standalone" DBus IPC may not be neccessary.
 This main use case for this are platforms like Windows where DBus
@@ -13,8 +13,11 @@ is foreign.
 
 Features lost without DBus are the handling of global style changes
 in KToolBar and the general KDE DBus integration of KMainWindow.
+So this should not be done and is guarded as a FORCE option
+accordingly.
 ---
- CMakeLists.txt                     | 13 +++++++++++--
+ CMakeLists.txt                     | 15 ++++++++++++---
+ KF5XmlGuiConfig.cmake.in           |  2 +-
  autotests/kmainwindow_unittest.cpp | 10 ++++++++++
  autotests/ktoolbar_unittest.cpp    | 20 +++++++++++++++++++-
  src/CMakeLists.txt                 | 15 ++++++++++++---
@@ -23,13 +26,21 @@ in KToolBar and the general KDE DBus integration of KMainWindow.
  src/kmainwindowiface.cpp           |  2 +-
  src/ktoolbar.cpp                   | 13 +++++++++++--
  src/kxmlguiwindow.cpp              | 13 +++++++++++--
- 9 files changed, 86 insertions(+), 13 deletions(-)
+ 10 files changed, 88 insertions(+), 15 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 59132d8..acb6037 100644
+index 74afa01..a6691fe 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -32,8 +32,7 @@ ecm_setup_version(${KF5_VERSION}
+@@ -30,12 +30,14 @@ ecm_setup_version(${KF5_VERSION}
+                   PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KF5XmlGuiConfigVersion.cmake"
+                   SOVERSION 5)
+
+-option(FORCE_DISABLE_KGLOBALACCEL "Force building KXmlGui without KGlobalAccel. Doing this will break global shortcut support. [default=OFF]" OFF)
++# Optional packages that usually should not be disabled as this might
++# break behavior users (or other developers) of this library rely on.
++option(FORCE_DISABLE_KGLOBALACCEL "Force building KXmlGui without KGlobalAccel. This will break global shortcut support. [default=OFF]" OFF)
++option(FORCE_DISABLE_DBUS "Force building KXmlGui without a dependency to QDbus. This will break KMainWindow integration and style change notifications. [default=OFF]" OFF)
 
  # Dependencies
  set(REQUIRED_QT_VERSION 5.3.0)
@@ -39,23 +50,40 @@ index 59132d8..acb6037 100644
  find_package(KF5CoreAddons ${KF5_DEP_VERSION} REQUIRED)
  find_package(KF5ItemViews ${KF5_DEP_VERSION} REQUIRED)
  find_package(KF5Config ${KF5_DEP_VERSION} REQUIRED)
-@@ -43,6 +42,16 @@ find_package(KF5IconThemes ${KF5_DEP_VERSION} REQUIRED)
+@@ -45,6 +47,7 @@ find_package(KF5IconThemes ${KF5_DEP_VERSION} REQUIRED)
  find_package(KF5TextWidgets ${KF5_DEP_VERSION} REQUIRED)
  find_package(KF5WidgetsAddons ${KF5_DEP_VERSION} REQUIRED)
  find_package(KF5WindowSystem ${KF5_DEP_VERSION} REQUIRED)
 +
-+# Optional dependencies
-+find_package(Qt5DBus ${REQUIRED_QT_VERSION} CONFIG)
-+set_package_properties(Qt5DBus PROPERTIES DESCRIPTION "Qt DBus Library"
-+                       PURPOSE "KDE MainWindow DBus integration and global style change handling"
-+                       URL "https://doc.qt.io/qt-5/qdbus.html"
-+                       TYPE OPTIONAL
-+                      )
-+set (HAVE_QDBUS ${Qt5DBus_FOUND})
-+
  find_package(KF5Attica ${KF5_DEP_VERSION})
  set_package_properties(KF5Attica PROPERTIES DESCRIPTION "A Qt library that implements the Open Collaboration Services API"
                         PURPOSE "Support for Get Hot New Stuff in KXMLGUI"
+@@ -58,6 +61,12 @@ if (NOT FORCE_DISABLE_KGLOBALACCEL)
+ endif()
+ set (HAVE_GLOBALACCEL ${KF5GlobalAccel_FOUND})
+
++if (NOT FORCE_DISABLE_DBUS)
++    find_package(Qt5DBus ${REQUIRED_QT_VERSION} CONFIG REQUIRED)
++    set(QT5DBUS_FIND_DEPENDENCY "find_dependency(Qt5DBus ${REQUIRED_QT_VERSION})")
++endif()
++set (HAVE_QDBUS ${Qt5DBus_FOUND})
++
+ # Subdirectories
+ add_definitions(-DTRANSLATION_DOMAIN=\"kxmlgui5\")
+ if (IS_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/po")
+diff --git a/KF5XmlGuiConfig.cmake.in b/KF5XmlGuiConfig.cmake.in
+index ff02031..fe556c7 100644
+--- a/KF5XmlGuiConfig.cmake.in
++++ b/KF5XmlGuiConfig.cmake.in
+@@ -2,7 +2,7 @@
+
+ set(XMLGUI_DBUS_INTERFACES_DIR "@PACKAGE_KDE_INSTALL_DBUSINTERFACEDIR@")
+
+-find_dependency(Qt5DBus @REQUIRED_QT_VERSION@)
++@QT5DBUS_FIND_DEPENDENCY@
+ find_dependency(Qt5Widgets @REQUIRED_QT_VERSION@)
+ find_dependency(Qt5Xml @REQUIRED_QT_VERSION@)
+
 diff --git a/autotests/kmainwindow_unittest.cpp b/autotests/kmainwindow_unittest.cpp
 index 00282ef..7bbd581 100644
 --- a/autotests/kmainwindow_unittest.cpp
