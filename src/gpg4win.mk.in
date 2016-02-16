@@ -109,6 +109,7 @@ endef
 
 # Support macro.  Unpack the archive $(1).
 define DEFLATE_macro
+	rm -rf $$$${pkgsdir}; \
 	case "$(1)" in			\
           */qtbase*.*.tar.xz)          \
             $(TAR) -xJ --transform='s,^qtbase-opensource-src,qtbase,' -f "$(1)" ;; \
