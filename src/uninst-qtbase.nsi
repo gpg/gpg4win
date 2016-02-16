@@ -38,9 +38,10 @@ Section "-un.qtbase"
   Delete "$INSTDIR\bin\Qt5Xml.dll"
   Delete "$INSTDIR\bin\Qt5PrintSupport.dll"
 
-  Delete "$INSTDIR\platforms\qwindows.dll"
+  Delete "$INSTDIR\bin\platforms\qwindows.dll"
 
-  RMDir "$INSTDIR\platforms"
+  RMDir "$INSTDIR\bin\platforms"
+  RMDir "$INSTDIR\bin"
 
   RMDir "$INSTDIR"
 !endif

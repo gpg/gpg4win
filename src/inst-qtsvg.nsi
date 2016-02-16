@@ -31,9 +31,9 @@ Section "-qtsvg" SEC_qtsvg
 !else
   SetOutPath "$INSTDIR\bin"
   File ${prefix}/bin/Qt5Svg.dll
-  SetOutPath "$INSTDIR\iconengines"
-  File ${prefix}/plugins/iconengines/qtsvgicon.dll
-  SetOutPath "$INSTDIR\imageformats"
-  File ${prefix}/plugins/imageformats/qtsvg.dll
+  SetOutPath "$INSTDIR\bin\iconengines"
+  File ${prefix}/plugins/iconengines/qsvgicon.dll
+  SetOutPath "$INSTDIR\bin\imageformats"
+  File ${prefix}/plugins/imageformats/qsvg.dll
 !endif
 SectionEnd

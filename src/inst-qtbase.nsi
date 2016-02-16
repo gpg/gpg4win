@@ -41,7 +41,7 @@ Section "-qtbase" SEC_qtbase
   File ${prefix}/bin/Qt5PrintSupport.dll
   File ${prefix}/bin/Qt5Xml.dll
 
-  SetOutPath "$INSTDIR\platforms"
+  SetOutPath "$INSTDIR\bin\platforms"
 
   File ${prefix}/plugins/platforms/qwindows.dll
 

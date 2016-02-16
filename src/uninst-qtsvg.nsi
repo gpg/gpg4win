@@ -27,8 +27,8 @@ Section "-un.qtsvg"
   Call un.SourceDelete
 !else
   Delete "$INSTDIR\bin\Qt5Svg.dll"
-  Delete "$INSTDIR\bin\iconengines\qtsvgicon.dll"
-  Delete "$INSTDIR\bin\imageformats\qtsvg.dll"
+  Delete "$INSTDIR\bin\iconengines\qsvgicon.dll"
+  Delete "$INSTDIR\bin\imageformats\qsvg.dll"
   RmDir "$INSTDIR\bin\imageformats"
   RmDir "$INSTDIR\bin\iconengines"
   RmDir "$INSTDIR\bin"
