@@ -1,0 +1,64 @@
+#! /bin/sh
+patch -p1 -f -l $* < $0
+exit $?
+
+Patch kindly provided by KDE Windows emerge. To
+look for files relative to the install location.
+
+diff --git a/src/corelib/io/qstandardpaths_win.cpp b/src/corelib/io/qstandardpaths_win.cpp
+index 5e56db3..4d46430 100644
+--- a/src/corelib/io/qstandardpaths_win.cpp
++++ b/src/corelib/io/qstandardpaths_win.cpp
+@@ -214,6 +214,16 @@ QStringList QStandardPaths::standardLocations(StandardLocation type)
+                     dirs.append(QCoreApplication::applicationDirPath());
+                     dirs.append(QCoreApplication::applicationDirPath() + QLatin1String("/data"));
+                 }
++                dirs.append(QCoreApplication::applicationDirPath() + QLatin1String("/../share"));
++                if (type != GenericDataLocation && type != GenericConfigLocation) {
++                    QString appData = QCoreApplication::applicationDirPath() + QLatin1String("/../share");
++                    if (!QCoreApplication::organizationName().isEmpty())
++                        appData += QLatin1Char('/') + QCoreApplication::organizationName();
++                    if (!QCoreApplication::applicationName().isEmpty())
++                        appData += QLatin1Char('/') + QCoreApplication::applicationName();
++					dirs.append(appData);
++				}
++                dirs.append(QCoreApplication::applicationDirPath() + QLatin1String("/../etc/xdg"));
+ #endif
+             }
+             break;
+diff --git a/src/gui/image/qiconloader.cpp b/src/gui/image/qiconloader.cpp
+index 06491f1..ef9436f 100644
+--- a/src/gui/image/qiconloader.cpp
++++ b/src/gui/image/qiconloader.cpp
+@@ -157,6 +157,7 @@ QStringList QIconLoader::themeSearchPaths() const
+ {
+     if (m_iconDirs.isEmpty()) {
+         m_iconDirs = systemIconSearchPaths();
++        m_iconDirs.append(QCoreApplication::applicationDirPath() + QLatin1String("/../share/icons"));
+         // Always add resource directory as search path
+         m_iconDirs.append(QLatin1String(":/icons"));
+     }
+diff --git a/src/plugins/platforms/windows/qwindowstheme.cpp b/src/plugins/platforms/windows/qwindowstheme.cpp
+index 66735d8..5731560 100644
+--- a/src/plugins/platforms/windows/qwindowstheme.cpp
++++ b/src/plugins/platforms/windows/qwindowstheme.cpp
+@@ -321,6 +321,8 @@ static inline QStringList iconThemeSearchPaths()
+ static inline QStringList styleNames()
+ {
+     QStringList result;
++    result.append(QStringLiteral("breeze"));
++    result.append(QStringLiteral("oxygen"));
+     if (QSysInfo::WindowsVersion >= QSysInfo::WV_VISTA)
+         result.append(QStringLiteral("WindowsVista"));
+     if (QSysInfo::WindowsVersion >= QSysInfo::WV_XP)
+@@ -382,6 +384,10 @@ QVariant QWindowsTheme::themeHint(ThemeHint hint) const
+         return QVariant(booleanSystemParametersInfo(SPI_GETSNAPTODEFBUTTON, false));
+     case ContextMenuOnMouseRelease:
+         return QVariant(true);
++    case QPlatformTheme::SystemIconThemeName:
++         return QVariant(QLatin1String("breeze"));
++    case QPlatformTheme::SystemIconFallbackThemeName:
++        return QVariant(QLatin1String("oxygen"));
+     default:
+         break;
+     }
