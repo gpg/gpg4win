@@ -27,7 +27,7 @@
 ; Uninstaller section.
 Section "-un.kleopatra"
 !ifdef SOURCES
-  Push "${gpg4win_pkg_kleopatra_src}"
+  Push "${gpg4win_pkg_kleopatra}"
   Call un.SourceDelete
 !else
   Delete "$INSTDIR\bin\kleopatra.exe"

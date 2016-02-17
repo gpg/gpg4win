@@ -27,7 +27,7 @@
 ; Uninstaller section.
 Section "-un.breeze-icons"
 !ifdef SOURCES
-  Push "${gpg4win_pkg_breeze_icons_src}"
+  Push "${gpg4win_pkg_breeze_icons}"
   Call un.SourceDelete
 !else
   Delete "$INSTDIR\share\icons\breeze\status\64\security-medium.svg"

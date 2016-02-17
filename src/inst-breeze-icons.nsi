@@ -30,7 +30,7 @@ Section "-breeze-icons" SEC_breeze_icons
 !endif
   SetOutPath "$INSTDIR"
 !ifdef SOURCES
-  File "${gpg4win_pkg_breeze_icons_src}"
+  File "${gpg4win_pkg_breeze_icons}"
 !else
 
   #
