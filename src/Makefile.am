@@ -260,6 +260,10 @@ gpg4win_pkg_gpgex_configure = --silent \
   --with-gpg-error-prefix=$(idir) \
   --with-libassuan-prefix=$(idir)
 
+gpg4win_pkg_gpgex_ex_configure = --silent \
+  --with-gpg-error-prefix=$(ex_idir) \
+  --with-libassuan-prefix=$(ex_idir)
+
 gpg4win_pkg_paperkey_configure = --silent
 
 gpg4win_pkg_ki18n_configure = -DBUILD_WITH_QTSCRIPT=OFF
