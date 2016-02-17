@@ -334,7 +334,8 @@ define gpg4win_pkg_qtsvg_post_install
 endef
 
 gpg4win_pkg_kleopatra_configure = \
-    -DFORCE_DISABLE_KCMUTILS=ON
+    -DFORCE_DISABLE_KCMUTILS=ON \
+    -DDISABLE_KWATCHGNUPG=ON
 
 gpg4win_pkg_kxmlgui_configure = \
     -DFORCE_DISABLE_KGLOBALACCEL=ON \

@@ -1,0 +1,64 @@
+#! /bin/sh
+patch -p2 -l -f $* < $0
+exit $?
+
+From a10a900e0719f50dab4cdc862d6f7f1258cf5e62 Mon Sep 17 00:00:00 2001
+From: Andre Heinecke <aheinecke@intevation.de>
+Date: Tue, 16 Feb 2016 18:15:47 +0100
+Subject: [PATCH 3/5] Add option to disable KWatchGnuPG
+
+KWatchGnuPG currently pulls in KTextWidgets and KNotifications
+which are heavy dependencies for Kleopatra. So this can be disabled.
+A better solution would probably be to make the features optional.
+---
+ kleopatra/CMakeLists.txt | 12 +++++++++---
+ 1 file changed, 9 insertions(+), 3 deletions(-)
+
+diff --git a/kleopatra/CMakeLists.txt b/kleopatra/CMakeLists.txt
+index 2cb7b63..0c8b20b 100644
+--- a/kleopatra/CMakeLists.txt
++++ b/kleopatra/CMakeLists.txt
+@@ -11,6 +11,7 @@ if(${CMAKE_SOURCE_DIR} STREQUAL ${kleopatra_SOURCE_DIR})
+   set(QT_REQUIRED_VERSION "5.4.0")
+
+   option(FORCE_DISABLE_KCMUTILS "Force building Kleopatra without KCMUtils. Doing this will disable configuration KCM Plugins. [default=OFF]" OFF)
++  option(DISABLE_KWATCHGNUPG "Don't build the kwatchgnupg tool [default=OFF]" OFF)
+
+
+   find_package(ECM ${KF5_VERSION} REQUIRED NO_MODULE)
+@@ -39,10 +40,8 @@ if(${CMAKE_SOURCE_DIR} STREQUAL ${kleopatra_SOURCE_DIR})
+   find_package(KF5Config ${KF5_VERSION} CONFIG REQUIRED)
+   find_package(KF5I18n ${KF5_VERSION} CONFIG REQUIRED)
+   find_package(KF5IconThemes ${KF5_VERSION} CONFIG REQUIRED)
+-  find_package(KF5Notifications ${KF5_VERSION} CONFIG REQUIRED)
+   find_package(KF5XmlGui ${KF5_VERSION} CONFIG REQUIRED)
+   find_package(KF5WindowSystem ${KF5_VERSION} CONFIG REQUIRED)
+-  find_package(KF5TextWidgets ${KF5_VERSION} CONFIG REQUIRED)
+   find_package(KF5WidgetsAddons ${KF5_VERSION} CONFIG REQUIRED)
+   find_package(KF5ConfigWidgets ${KF5_VERSION} CONFIG REQUIRED)
+   find_package(KF5CoreAddons ${KF5_VERSION} CONFIG REQUIRED)
+@@ -51,6 +50,11 @@ if (NOT FORCE_DISABLE_KCMUTILS)
+   find_package(KF5KCMUtils ${KF5_VERSION} CONFIG REQUIRED)
+ endif()
+
++if (NOT DISABLE_KWATCHGNUPG)
++  find_package(KF5Notifications ${KF5_VERSION} CONFIG REQUIRED)
++  find_package(KF5TextWidgets ${KF5_VERSION} CONFIG REQUIRED)
++endif()
++
+ # Optional packages
+ if (WIN32)
+   # Only a replacement available for Windows so this
+@@ -141,7 +145,9 @@ if(USABLE_ASSUAN_FOUND)
+   add_subdirectory(libkleopatraclient)
+ endif()
+
+-add_subdirectory(kwatchgnupg)
++if (NOT DISABLE_KWATCHGNUPG)
++  add_subdirectory(kwatchgnupg)
++endif()
+
+ if(BUILD_TESTING)
+     add_subdirectory(tests)
+--
+2.1.4

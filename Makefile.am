@@ -41,12 +41,17 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         patches/kxmlgui/0001-Make-KGlobalAccel-dependency-optional.patch \
         patches/kxmlgui/0002-Make-QDBus-dependency-optional.patch \
         patches/kxmlgui/0003-Make-KTextWidgets-optional.patch \
-        patches/kxmlgui/0004-Crudely-disable-KSendbugmail.patch \
+        patches/kxmlgui/0004-Cruedly-disable-KSendbugmail.patch \
         patches/kconfigwidgets/0001-Make-QDbus-optional.patch \
         patches/kconfigwidgets/0002-Crudely-remove-KF5Auth-depedency.patch \
         patches/kiconthemes/0001-Make-DBus-optional.patch \
         patches/qtsvg/qtsvg-link-zlib.patch \
-        patches/extra-cmake-modules/0001-Add-convert-utility-support-for-Windows-icons.patch
+        patches/extra-cmake-modules/0001-Add-convert-utility-support-for-Windows-icons.patch \
+        patches/kleopatra/0001-Implement-KDBusService-alternative-for-Windows.patch \
+        patches/kleopatra/0002-Add-alternative-configuredialog-wihout-KCMUtils.patch \
+        patches/kleopatra/0003-Add-option-to-disable-KWatchGnuPG.patch \
+        patches/kleopatra/0004-Make-DBus-integration-of-the-smime-conf-optional.patch \
+        patches/kleopatra/0005-Hack-generated-conf-files-for-Crosscompiling.patch
 
 copy-news:
 	cp NEWS doc/website/NEWS.last

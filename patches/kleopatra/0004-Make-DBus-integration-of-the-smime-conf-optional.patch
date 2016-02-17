@@ -1,0 +1,55 @@
+#! /bin/sh
+patch -p2 -l -f $* < $0
+exit $?
+
+From 5e9fd7ef2c4550b3893bbd52b2d15e4ad5f2fe9c Mon Sep 17 00:00:00 2001
+From: Andre Heinecke <aheinecke@intevation.de>
+Date: Tue, 16 Feb 2016 18:17:17 +0100
+Subject: [PATCH 4/5] Make DBus integration of the smime conf optional
+
+This is indirect because if you have KCMUtils you already
+have DBus and so you want to integrate with DBus in the
+S/MIME Config widget.
+---
+ kleopatra/conf/smimevalidationconfigurationwidget.cpp | 6 +++++-
+ kleopatra/config-kleopatra.h.cmake                    | 3 +++
+ 2 files changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/kleopatra/conf/smimevalidationconfigurationwidget.cpp b/kleopatra/conf/smimevalidationconfigurationwidget.cpp
+index aab1e98..e3ba39f 100644
+--- a/kleopatra/conf/smimevalidationconfigurationwidget.cpp
++++ b/kleopatra/conf/smimevalidationconfigurationwidget.cpp
+@@ -44,7 +44,9 @@
+ #include <KLocalizedString>
+ #include "kleopatra_debug.h"
+
+-#include <QDBusConnection>
++#if HAVE_QDBUS
++# include <QDBusConnection>
++#endif
+
+ using namespace Kleo;
+ using namespace Kleo::Config;
+@@ -59,7 +61,9 @@ public:
+           customHTTPProxyWritable(false),
+           ui(q)
+     {
++#if HAVE_QDBUS
+         QDBusConnection::sessionBus().connect(QString(), QString(), QStringLiteral("org.kde.kleo.CryptoConfig"), QStringLiteral("changed"), q, SLOT(load()));
++#endif
+     }
+
+     bool customHTTPProxyWritable;
+diff --git a/kleopatra/config-kleopatra.h.cmake b/kleopatra/config-kleopatra.h.cmake
+index d0c7092..4842cca 100644
+--- a/kleopatra/config-kleopatra.h.cmake
++++ b/kleopatra/config-kleopatra.h.cmake
+@@ -23,3 +23,6 @@
+
+ /* KF5KCMUtils available */
+ #cmakedefine01 HAVE_KCMUTILS
++
++/* DBus available */
++#cmakedefine01 HAVE_QDBUS
+--
+2.1.4
