@@ -165,7 +165,7 @@ Section "-un.kleopatra"
 #  Delete "$INSTDIR\share\doc\HTML\common\lgpl-translated.html"
 #  Delete "$INSTDIR\share\doc\HTML\common\kde-localised.css"
 
-  Delete "$INSTDIR\share\config\kdeglobals"
+  Delete "$INSTDIR\share\kdeglobals"
 #  Delete "$INSTDIR\share\apps\kwatchgnupg\pics\kwatchgnupg2.png"
 #  Delete "$INSTDIR\share\apps\kwatchgnupg\pics\kwatchgnupg.png"
 #  Delete "$INSTDIR\share\apps\kwatchgnupg\kwatchgnupgui.rc"
@@ -187,6 +187,9 @@ Section "-un.kleopatra"
 #  RMDir "$INSTDIR\share\doc\HTML\de"
 #  RMDir "$INSTDIR\share\doc\HTML"
 #  RMDir "$INSTDIR\share\doc"
+  RMDir "$INSTDIR\share\kleopatra\pics"
+  RMDir "$INSTDIR\share\kleopatra"
+  RMDir "$INSTDIR\share"
   RMDir "$INSTDIR"
 
 !endif
