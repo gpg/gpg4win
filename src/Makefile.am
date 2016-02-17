@@ -233,7 +233,8 @@ gpg4win_pkg_pinentry_configure = \
 gpg4win_pkg_gpgme_configure = --silent \
   --with-gpg-error-prefix=$(idir) --enable-static \
   `test -n "@HAVE_PKG_GLIB@" && echo "--enable-w32-glib"` \
-  --disable-w32-qt LDFLAGS=-L$(idir)/lib
+  --disable-w32-qt CFLAGS=-I$(idir)/include/glib-2.0/ \
+  LDFLAGS=-L$(idir)/lib
 
 gpg4win_pkg_gpgme_ex_configure = --silent \
   --with-gpg-error-prefix=$(ex_idir) --enable-static \
