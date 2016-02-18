@@ -50,6 +50,13 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
   File ${prefix}/share/kleopatra/pics/kleopatra_wizard.png
   File ${prefix}/share/kleopatra/pics/kleopatra_wizard.svgz
 
+  SetOutPath "$INSTDIR\share\kservices5"
+  File ${prefix}/share/kservices5/kleopatra_config_appear.desktop
+  File ${prefix}/share/kservices5/kleopatra_config_gnupgsystem.desktop
+  File ${prefix}/share/kservices5/kleopatra_config_cryptooperations.desktop
+  File ${prefix}/share/kservices5/kleopatra_config_smimevalidation.desktop
+  File ${prefix}/share/kservices5/kleopatra_config_dirserv.desktop
+
 #  SetOutPath "$INSTDIR\share\apps\kwatchgnupg\pics"
 
 #  File ${prefix}/share/apps/kwatchgnupg/pics/kwatchgnupg.png
@@ -211,6 +218,17 @@ german_locale:
 kdeglobals_done:
   FileClose $1
   pop $1
+
+  SetOutPath "$INSTDIR\share\QtProject"
+  # We want kleopatra logging for debugging
+  push $1
+  FileOpen $1 "$INSTDIR\share\QtProject\qtlogging.ini" "w"
+  FileWrite $1 '[Rules]$\r$\n'
+  FileWrite $1 'log_kleopatra.debug=true$\r$\n'
+  FileClose $1
+  pop $1
+
+
 
 !endif
 ${MementoSectionEnd}
