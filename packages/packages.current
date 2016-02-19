@@ -286,15 +286,15 @@ chk  89c961f63469739fe816a56dcdd86c2e1897cace
 file libassuan/libassuan-2.4.2.tar.bz2
 chk  ac1047f9764fd4a4db7dafe47640643164394db9
 
-# last changed: 2015-12-11
+# last changed: 2016-02-18
 # by: ah
-name gnupg-w32-2.1.10-20151204-bin.exe
-file binary/gnupg-w32-2.1.10_20151204.exe
-chk  b86b642390e1bf1b144b84dfabdcd574a56c0ba8
+name gnupg-w32-2.1.11-20160209-bin.exe
+file binary/gnupg-w32-2.1.11_20160209.exe
+chk  89bd31652d370ba69ac27b42b4d474d7edd9e0ea
 
-name gnupg-w32-2.1.10-20151204-src.tar.xz
-file binary/gnupg-w32-2.1.10_20151204.tar.xz
-chk  2923d56ac5288570b5503c3038081dc28e6294cd
+name gnupg-w32-2.1.11-20160209-src.tar.xz
+file binary/gnupg-w32-2.1.11_20160209.tar.xz
+chk  0a81d3a7b404299f651bf6f6540176b00d0a3967
 
 # last changed: 2015-12-11
 # by: ah
