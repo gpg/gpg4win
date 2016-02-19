@@ -76,6 +76,7 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
         inst-kitemviews.nsi uninst-kitemviews.nsi \
         inst-kguiaddons.nsi uninst-kguiaddons.nsi \
         inst-kmime.nsi uninst-kmime.nsi \
+        inst-kde-l10n.nsi uninst-kde-l10n.nsi \
         inst-qtsvg.nsi uninst-qtsvg.nsi \
         inst-qttools.nsi uninst-qttools.nsi \
         inst-boost.nsi uninst-boost.nsi \
@@ -366,7 +367,7 @@ gpg4win_pkg_zlib_make_args_inst = -fwin32/Makefile.gcc install \
 
 # Supported binary packages.
 gpg4win_bpkgs = pkgconfig pango expat freetype fontconfig \
-                cairo atk gnupg-w32
+                cairo atk gnupg-w32 kde-l10n
 
 # libiconv needs some special magic to generate a usable import
 # library.

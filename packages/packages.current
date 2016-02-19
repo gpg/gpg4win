@@ -523,6 +523,16 @@ chk 0a9bbe73a2a2f24ee2addfb47f642646d2eae996
 file libkleo/libkleo-201601221448.tar.xz
 chk 668b115e7e025b5408f53ced73056f5c4f660993
 
+# KDE-L10n
+# last changed: 2016-02-19
+# by: ah
+# verified: Tarball created by ah with script kde-l10n.sh
+file kde-l10n/kde-l10n-201602191116-bin.tar.xz
+chk 24af3cd7f8e8be7de1392474a6947d10db6a3049
+
+file kde-l10n/kde-l10n-201602191116-src.tar.xz
+chk 76257cc32d5eeeb9e9e2b19a0bc60eb89d5807f7
+
 # Kleopatra
 # last changed: 2016-02-04
 # by: ah

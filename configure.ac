@@ -337,6 +337,8 @@ GPG4WIN_IPKG([compendium])
 
 # The GnuPG Package.
 GPG4WIN_BPKG_BINSRC([gnupg-w32])
+# See the script kde-l10n.sh how this package is created.
+GPG4WIN_BPKG_BINSRC([kde-l10n])
 
 # Qt related stuff.
 GPG4WIN_SPKG([qtbase], [libpng])
@@ -345,7 +347,7 @@ GPG4WIN_SPKG([qtwinextras], [qtbase])
 GPG4WIN_SPKG([qtsvg], [qtbase])
 GPG4WIN_SPKG([boost], [expat zlib bzip2])
 GPG4WIN_KDEPKG([breeze-icons], [extra-cmake-modules qtbase])
-GPG4WIN_KDEPKG([kleopatra], [breeze-icons kxmlgui libkleo])
+GPG4WIN_KDEPKG([kleopatra], [breeze-icons kxmlgui libkleo kde-l10n])
 GPG4WIN_KDEPKG([extra-cmake-modules])
 GPG4WIN_KDEPKG([kconfig], [qtbase qttools extra-cmake-modules])
 GPG4WIN_KDEPKG([ki18n], [qtbase gettext qttools extra-cmake-modules])

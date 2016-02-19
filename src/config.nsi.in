@@ -269,6 +269,11 @@
 !define gpg4win_pkg_qtsvg @gpg4win_pkg_qtsvg@
 !define gpg4win_pkg_qtsvg_version @gpg4win_pkg_qtsvg_version@
 
+@HAVE_PKG_KDE_L10N@
+!define gpg4win_pkg_kde_l10n @gpg4win_pkg_kde_l10n@
+!define gpg4win_pkg_kde_l10n_version @gpg4win_pkg_kde_l10n_version@
+!define gpg4win_pkg_kde_l10n_src @gpg4win_pkg_kde_l10n_src@
+
 # Internal packages.
 @HAVE_PKG_COMPENDIUM@
 

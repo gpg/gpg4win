@@ -146,6 +146,9 @@
 !ifdef HAVE_PKG_KMIME
 !include "inst-kmime.nsi"
 !endif
+!ifdef HAVE_PKG_KDE_L10N
+!include "inst-kde-l10n.nsi"
+!endif
 !ifdef HAVE_PKG_KICONTHEMES
 !include "inst-kiconthemes.nsi"
 !endif
@@ -367,6 +370,9 @@
 !endif
 !ifdef HAVE_PKG_KMIME
 !include "uninst-kmime.nsi"
+!endif
+!ifdef HAVE_PKG_KDE_L10N
+!include "uninst-kde-l10n.nsi"
 !endif
 !ifdef HAVE_PKG_LIBKLEO
 !include "uninst-libkleo.nsi"
@@ -655,6 +661,9 @@ Function CalcDepends
 !ifdef HAVE_PKG_KMIME
   !insertmacro UnselectSection ${SEC_kmime}
 !endif
+!ifdef HAVE_PKG_KDE_L10N
+  !insertmacro UnselectSection ${SEC_kde-l10n}
+!endif
 !ifdef HAVE_PKG_QTSVG
   !insertmacro UnselectSection ${SEC_qtsvg}
 !endif
@@ -763,6 +772,7 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_kguiaddons}
   !insertmacro SelectSection ${SEC_qtsvg}
   !insertmacro SelectSection ${SEC_kmime}
+  !insertmacro SelectSection ${SEC_kde-l10n}
   !insertmacro SelectSection ${SEC_libkleo}
   !insertmacro SelectSection ${SEC_qttools}
   !insertmacro SelectSection ${SEC_qtwinextras}
