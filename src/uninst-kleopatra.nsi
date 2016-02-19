@@ -31,6 +31,7 @@ Section "-un.kleopatra"
   Call un.SourceDelete
 !else
   Delete "$INSTDIR\bin\kleopatra.exe"
+  Delete "$INSTDIR\kcm_kleopatra.dll"
  # Delete "$INSTDIR\bin\kwatchgnupg.exe"
   RMDir "$INSTDIR\bin"
 
@@ -170,6 +171,7 @@ Section "-un.kleopatra"
   Delete "$INSTDIR\share\kservices5\kleopatra_config_cryptooperations.desktop"
   Delete "$INSTDIR\share\kservices5\kleopatra_config_smimevalidation.desktop"
   Delete "$INSTDIR\share\kservices5\kleopatra_config_dirserv.desktop"
+  RmDir "$INSTDIR\share\kservices5\"
 
   Delete "$INSTDIR\share\kdeglobals"
   Delete "$INSTDIR\share\QtProject\qtlogging.ini"
