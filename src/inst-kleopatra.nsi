@@ -207,6 +207,10 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
   # installer
   push $1
   FileOpen $1 "$INSTDIR\share\kdeglobals" "w"
+  # Writing out icon theme is important here otherwise you have
+  # weird effects like no toolbar icons.
+  FileWrite $1 '[Icons]$\r$\n'
+  FileWrite $1 'Theme=breeze$\r$\n$\r$\n'
   FileWrite $1 '[Locale] $\r$\n'
   StrCmp $LANGUAGE "1031" german_locale 0
   FileWrite $1 'Country=en $\r$\n'
