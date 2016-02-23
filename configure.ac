@@ -361,7 +361,7 @@ GPG4WIN_KDEPKG([kguiaddons], [qtbase qttools])
 GPG4WIN_KDEPKG([kmime], [kcodecs])
 GPG4WIN_KDEPKG([kconfigwidgets], [kwidgetsaddons kguiaddons ki18n kcodecs kconfig])
 GPG4WIN_KDEPKG([kitemviews], [qtbase qttools])
-GPG4WIN_KDEPKG([kiconthemes], [qtsvg kconfigwidgets kiconthemes])
+GPG4WIN_KDEPKG([kiconthemes], [qtsvg kconfigwidgets])
 GPG4WIN_KDEPKG([kxmlgui], [kiconthemes kconfigwidgets kitemviews])
 GPG4WIN_KDEPKG([libkleo], [gpgmepp kmime kwidgetsaddons kwindowsystem kcompletion kconfig gpgme])
 
