@@ -444,6 +444,71 @@ $(if $(filter-out no, $(call GETVAR,gpg4win_pkg_$(1))),
   $(call BPKG_template_,$1))
 endef
 
+# Template for qt packages.
+
+define QTPKG_template_
+
+pkg_files += $(call GETVAR,gpg4win_pkg_$(1))
+
+stamps/stamp-$(1)-00-unpack: stamps/stamp-directories $(call GETDEPS,$(1))
+	(cd $(bdir);					\
+	 $(call SETVARS,$(1));				\
+	 $(call DEFLATE_macro,$$$${pkg}))
+	touch stamps/stamp-$(1)-00-unpack
+
+stamps/stamp-$(1)-01-patch: stamps/stamp-$(1)-00-unpack
+	(shopt -s nullglob;				\
+	 $(call SETVARS,$(1));				\
+	 for pfile in "$$$${pkgpbdir}"/*.patch "$$$${pkgpdir}"/*.patch ; do  \
+	   (cd "$$$${pkgsdir}"; "$$$${pfile}")		\
+	 done)
+	touch stamps/stamp-$(1)-01-patch
+
+stamps/stamp-$(1)-02-configure: stamps/stamp-$(1)-01-patch
+	($(call SETVARS,$(1)); \
+	mkdir "$$$${pkgbdir}"; \
+	cd "$$$${pkgbdir}"; \
+	$$$${pkgcfg}) && \
+	touch stamps/stamp-$(1)-02-configure
+
+stamps/stamp-$(1)-03-make: stamps/stamp-$(1)-02-configure
+	($(call SETVARS,$(1));				\
+	  cd "$$$${pkgbdir}";				\
+	  test -n "$$$${pkgmkdir}" && cd "$$$${pkgmkdir}";	\
+	  $(MAKE) $(AM_MAKEFLAGS) $(GPG4WIN_PARALLEL) $$$${pkgmkargs})
+	touch stamps/stamp-$(1)-03-make
+
+# Note that post_install must come last because it may be empty and
+# "; ;" is a syntax error.
+stamps/stamp-$(1)-04-install: stamps/stamp-$(1)-03-make
+	($(call SETVARS,$(1)); \
+	$(call gpg4win_pkg_$(call FROB_macro,$(1))_post_install))
+	touch stamps/stamp-$(1)-04-install
+
+stamps/stamp-$(1)-05-stow: stamps/stamp-$(1)-04-install
+	($(call SETVARS,$(1));				\
+	 cd $(ipdir);					\
+	 $(STOW) "$$$${pkg_version}")
+	touch stamps/stamp-$(1)-05-stow
+
+stamps/stamp-final-$(1): stamps/stamp-$(1)-05-stow
+	touch stamps/stamp-final-$(1)
+
+.PHONY : clean-$(1)
+clean-$(1):
+	($(call SETVARS,$(1));				\
+	 (cd $(ipdir) &&				\
+	  ($(STOW) -D "$$$${pkg_version}";		\
+	   rm -fR "$$$${pkg_version}"));		\
+	 rm -fR "$$$${pkgsdir}" "$$$${pkgbdir}")
+	rm -f stamps/stamp-final-$(1) stamps/stamp-$(1)-*
+
+endef
+
+define QTPKG_template
+$(if $(filter-out no, $(call GETVAR,gpg4win_pkg_$(1))),
+  $(call QTPKG_template_,$1))
+endef
 
 # Template for internal packages.
 
@@ -480,6 +545,80 @@ HOWTO-$(1).$(2).txt : $(top_srcdir)/doc/HOWTO-$(1).$(2).txt
 	-e 's,!BUILD_ISODATE!,$(BUILD_ISODATE),g' \
 	   < $(top_srcdir)/doc/HOWTO-$(1).$(2).txt \
         | awk '{printf "%s\r\n", $$$$0}' > HOWTO-$(1).$(2).txt
+endef
+
+# Special Template for boost.
+define BOOST_template_
+pkg_files += $(call GETVAR,gpg4win_pkg_$(1))
+
+stamps/stamp-$(1)-00-unpack: stamps/stamp-directories $(call GETDEPS,$(1))
+	(cd $(bdir);					\
+	 $(call SETVARS,$(1));				\
+	 $(call DEFLATE_macro,$$$${pkg}))
+	touch stamps/stamp-$(1)-00-unpack
+
+stamps/stamp-$(1)-01-patch: stamps/stamp-$(1)-00-unpack
+	(shopt -s nullglob;				\
+	 $(call SETVARS,$(1));				\
+	 for pfile in "$$$${pkgpbdir}"/*.patch "$$$${pkgpdir}"/*.patch ; do  \
+	   (cd "$$$${pkgsdir}"; "$$$${pfile}")		\
+	 done)
+	touch stamps/stamp-$(1)-01-patch
+
+stamps/stamp-$(1)-02-build: stamps/stamp-$(1)-01-patch
+	($(call SETVARS,$(1)); \
+	cd $$$${pkgsdir}/tools/build/; \
+	./bootstrap.sh; \
+	cd $$$${pkgsdir}; \
+	echo "using gcc : mxe : $(host)-g++ : <rc>$(host)-windres <archiver>$(host)-ar <ranlib>$(host)-ranlib ;" > "user-config.jam"; \
+	./tools/build/b2 \
+        -a \
+        -q \
+        '$(GPG4WIN_PARALLEL)' \
+        --ignore-site-config \
+        --user-config=user-config.jam \
+        abi=ms \
+        address-model=32 \
+        architecture=x86 \
+        binary-format=pe \
+        link=shared \
+        target-os=windows \
+        threadapi=win32 \
+        threading=multi \
+        variant=release \
+        toolset=gcc-mxe \
+        --layout=tagged \
+        --disable-icu \
+        --without-mpi \
+        --without-python \
+        --prefix=$$$${pkgidir} \
+        --exec-prefix=$$$${pkgidir}/bin \
+        --libdir=$$$${pkgidir}/lib \
+        --includedir=$$$${pkgidir}/include \
+        -sEXPAT_INCLUDE='$(idir)/include' \
+        -sEXPAT_LIBPATH='$(idir)/lib' \
+        -sBZIP2_INCLUDE='$(idir)/include' \
+        -sBZIP2_LIBPATH='$(idir)/lib' \
+        install) && \
+        touch stamps/stamp-$(1)-02-build
+
+stamps/stamp-$(1)-03-stow: stamps/stamp-$(1)-02-build
+	($(call SETVARS,$(1));				\
+	 cd $(ipdir);					\
+	 $(STOW) "$$$${pkg_version}")
+	touch stamps/stamp-$(1)-03-stow
+
+stamps/stamp-final-$(1): stamps/stamp-$(1)-03-stow
+	touch stamps/stamp-final-$(1)
+
+.PHONY : clean-$(1)
+clean-$(1):
+	($(call SETVARS,$(1));				\
+	 (cd $(ipdir) &&				\
+	  ($(STOW) -D "$$$${pkg_version}";		\
+	   rm -fR "$$$${pkg_version}"));		\
+	 rm -fR "$$$${pkgsdir}" "$$$${pkgbdir}")
+	rm -f stamps/stamp-final-$(1) stamps/stamp-$(1)-*
 endef
 
 # Template for source packages of KDE software
@@ -579,8 +718,14 @@ $(foreach rll, $(gpg4win_readme_ll), $(eval $(call README_template,$(rll))))
 # Insert the template for KDE packages.
 $(foreach kdepkg, $(gpg4win_kdepkgs), $(eval $(call KDEPKG_template,$(kdepkg))))
 
+# Insert the template for qt packages.
+$(foreach qtpkg, $(gpg4win_qtpkgs), $(eval $(call QTPKG_template,$(qtpkg))))
+
+
 $(foreach rll, $(gpg4win_howto_smime_ll), \
                $(eval $(call HOWTO_template,SMIME,$(rll))))
+
+$(eval $(call BOOST_template_,boost))
 
 stamps/stamp-final: stamps/stamp-directories
 stamps/stamp-final: $(addprefix stamps/stamp-final-,$(gpg4win_build_list)) \
@@ -601,83 +746,6 @@ clean-gpg4win:
 	$(RM) -fR playground stamps
 
 .PHONY : all-gpg4win clean-stamps clean-gpg4win
-
-# TODO find a better way to do this. Like a define thats checked for
-# in the spkg template
-define OVERRIDE_CONF_TEMPLATE
-# Override of the configure rule. For targets that not use
-# autotools configure to have more freedom with the options.
-stamps/stamp-$(1)-02-configure: stamps/stamp-$(1)-01-patch
-	($(call SETVARS,$(1)); \
-	mkdir "$$$${pkgbdir}"; \
-	cd "$$$${pkgbdir}"; \
-	"../$$$${pkg_version}/configure" \
-		$$$${pkgcfg}) && \
-	touch stamps/stamp-$(1)-02-configure
-endef
-
-$(eval $(call OVERRIDE_CONF_TEMPLATE,qtbase))
-
-define OVERRIDE_QTTOOLS_CONF_TEMPLATE
-# Override of the configure rule. For targets that not use
-# autotools configure to have more freedom with the options.
-stamps/stamp-$(1)-02-configure: stamps/stamp-$(1)-01-patch
-	($(call SETVARS,$(1)); \
-	mkdir "$$$${pkgbdir}"; \
-	cd "$$$${pkgbdir}"; \
-	"$(idir)/bin/qmake" ../$$$${pkg_version} CONFIG-="debug debug_and_release" \
-		$$$${pkgcfg}) && \
-	touch stamps/stamp-$(1)-02-configure
-endef
-
-$(eval $(call OVERRIDE_QTTOOLS_CONF_TEMPLATE,qttools))
-$(eval $(call OVERRIDE_QTTOOLS_CONF_TEMPLATE,qtwinextras))
-$(eval $(call OVERRIDE_QTTOOLS_CONF_TEMPLATE,qtsvg))
-
-define OVERRIDE_BOOST_CONF_TEMPLATE
-# Override of the configure rule. For targets that not use
-# autotools configure to have more freedom with the options.
-stamps/stamp-$(1)-02-configure: stamps/stamp-$(1)-01-patch
-	($(call SETVARS,$(1)); \
-	cd $$$${pkgsdir}/tools/build/; \
-	./bootstrap.sh; \
-	cd $$$${pkgsdir}; \
-	echo "using gcc : mxe : $(host)-g++ : <rc>$(host)-windres <archiver>$(host)-ar <ranlib>$(host)-ranlib ;" > "user-config.jam"; \
-	./tools/build/b2 \
-        -a \
-        -q \
-        '$(GPG4WIN_PARALLEL)' \
-        --ignore-site-config \
-        --user-config=user-config.jam \
-        abi=ms \
-        address-model=32 \
-        architecture=x86 \
-        binary-format=pe \
-        link=shared \
-        target-os=windows \
-        threadapi=win32 \
-        threading=multi \
-        variant=release \
-        toolset=gcc-mxe \
-        --layout=tagged \
-        --disable-icu \
-        --without-mpi \
-        --without-python \
-        --prefix=$$$${pkgidir} \
-        --exec-prefix=$$$${pkgidir}/bin \
-        --libdir=$$$${pkgidir}/lib \
-        --includedir=$$$${pkgidir}/include \
-        -sEXPAT_INCLUDE='$(idir)/include' \
-        -sEXPAT_LIBPATH='$(idir)/lib' \
-        -sBZIP2_INCLUDE='$(idir)/include' \
-        -sBZIP2_LIBPATH='$(idir)/lib' \
-        install) && \
-        touch stamps/stamp-$(1)-02-configure && \
-        touch stamps/stamp-$(1)-03-make && \
-        touch stamps/stamp-$(1)-04-install
-endef
-
-$(eval $(call OVERRIDE_BOOST_CONF_TEMPLATE,boost))
 
 # @emacs_local_vars_begin@
 # @emacs_local_vars_read_only@

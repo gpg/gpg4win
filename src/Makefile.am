@@ -107,8 +107,9 @@ gpg4win_spkgs = glib libffi gdk-pixbuf gtk+ \
                 libgpg-error gpgme gpgol gpgex libpng \
 		gpa opencdk \
 		pinentry libassuan \
-		w32pth paperkey regex libiconv gettext \
-		qtbase qttools boost qtwinextras qtsvg
+		w32pth paperkey regex libiconv gettext
+
+gpg4win_qtpkgs = qtbase qttools qtwinextras qtsvg
 
 # Source packages following the KDE pattern
 gpg4win_kdepkgs = kconfig kwidgetsaddons gpgmepp ki18n extra-cmake-modules \
@@ -269,7 +270,7 @@ gpg4win_pkg_paperkey_configure = --silent
 
 gpg4win_pkg_ki18n_configure = -DBUILD_WITH_QTSCRIPT=OFF
 
-gpg4win_pkg_qtbase_configure = -opensource \
+gpg4win_pkg_qtbase_configure = ../$$$${pkg_version}/configure -opensource \
             -confirm-license \
             -xplatform win32-g++ \
             -device-option CROSS_COMPILE=$(host)- \
@@ -301,41 +302,50 @@ gpg4win_pkg_qtbase_configure = -opensource \
             -no-openssl \
             -no-dbus
 
+# qtbase
 # invoke qmake with removed debug options as a workaround for
 # https://bugreports.qt-project.org/browse/QTBUG-30898
 gpg4win_pkg_qtbase_make_args = \
-    QMAKE='$$$${pkgsdir}/bin/qmake CONFIG-="debug debug_and_release"'
+    QMAKE='$$$${pkgbdir}/bin/qmake'
 
 # Qmake still writes debug names in pkgconfig files.
 define gpg4win_pkg_qtbase_post_install
- (cd $$$${pkgidir}; \
- sed -i 's/-lQt5\(\w*\)d/-lQt5\1/g' `find . -name \*.pc`)
+	(cd $$$${pkgbdir}; \
+	 make install); \
+	(cd $$$${pkgidir}; \
+	sed -i 's/-lQt5\(\w*\)d/-lQt5\1/g' `find . -name \*.pc`)
+endef
+
+
+gpg4win_pkg_qttools_configure = \
+	"$(idir)/bin/qmake" ../$$$${pkg_version}
+
+define gpg4win_pkg_qttools_post_install
+	 (cd $$$${pkgbdir}; \
+	  mkdir -p $$$${pkgidir}; \
+	  cp -r bin lib include $$$${pkgidir})
 endef
 
 # Qmake does not support setting the installation path.
 # really https://bugreports.qt.io/browse/QTBUG-12341
-define gpg4win_pkg_qttools_post_install
- (cd $$$${pkgbdir}; \
-  make uninstall; \
-  mkdir $$$${pkgidir}; \
-  cp -r bin lib include $$$${pkgidir};)
-endef
+gpg4win_pkg_qtwinextras_configure = \
+	"$(idir)/bin/qmake" ../$$$${pkg_version}
 
 define gpg4win_pkg_qtwinextras_post_install
  (cd $$$${pkgbdir}; \
-  make uninstall; \
-  mkdir $$$${pkgidir}; \
+  mkdir -p $$$${pkgidir}/bin; \
   cp -r lib include $$$${pkgidir}; \
-  mkdir $$$${pkgidir}/bin; \
   mv $$$${pkgidir}/lib/*.dll $$$${pkgidir}/bin;)
 endef
 
+gpg4win_pkg_qtsvg_configure = \
+	"$(idir)/bin/qmake" ../$$$${pkg_version}
+
 define gpg4win_pkg_qtsvg_post_install
  (cd $$$${pkgbdir}; \
-  make uninstall; \
-  mkdir $$$${pkgidir}; \
+  mkdir -p $$$${pkgidir}; \
   cp -r lib include plugins $$$${pkgidir}; \
-  mkdir $$$${pkgidir}/bin; \
+  mkdir -p $$$${pkgidir}/bin; \
   mv $$$${pkgidir}/lib/*.dll $$$${pkgidir}/bin;)
 endef
 
