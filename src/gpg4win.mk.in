@@ -200,9 +200,8 @@ stamps/stamp-$(1)-ex-03-make: stamps/stamp-$(1)-ex-02-configure
 	($(call SETVARS_EX,$(1));				\
 	  cd "$$$${pkgbdir}";				\
 	  test -n "$$$${pkgmkdir}" && cd "$$$${pkgmkdir}";	\
-	  $(MAKE) $(AM_MAKEFLAGS) $(GPG4WIN_PARALLEL) $$$${pkgmkargs} || \
-	  $(MAKE) $(AM_MAKEFLAGS) $(GPG4WIN_PARALLEL) $$$${pkgmkargs} || \
-	  $(MAKE) $(AM_MAKEFLAGS) $$$${pkgmkargs})
+	  $(MAKE) $(AM_MAKEFLAGS) $(GPG4WIN_PARALLEL) $$$${pkgmkargs} \
+	  )
 	touch stamps/stamp-$(1)-ex-03-make
 
 # Note that post_install must come last because it may be empty and
@@ -263,32 +262,30 @@ stamps/stamp-$(1)-01-patch: stamps/stamp-$(1)-00-unpack
 	touch stamps/stamp-$(1)-01-patch
 
 stamps/stamp-$(1)-02-configure: stamps/stamp-$(1)-01-patch
-	($(call SETVARS,$(1));				\
-	 mkdir "$$$${pkgbdir}";				\
-	  cd "$$$${pkgbdir}";				\
-	 eval "../$$$${pkg_version}/configure"		\
-		--prefix="$$$${pkgidir}"		\
-		--host=$(host)				\
-		--build=$(build)			\
-		$$$${pkgcfg} CFLAGS=\"-mms-bitfields $$$${pkgextracflags}\";\
-	 shopt -s nullglob;					\
-	 for pfile in "$$$${pkgpbdir}"/*.postcfg       		\
-                       "$$$${pkgpdir}"/*.postcfg ; do  		\
-	   (cd "$$$${pkgsdir}"; "$$$${pfile}")		     	\
-	 done;                                               	\
-	 for pfile in "$$$${pkgpbdir}"/*.postcfg-build    	\
-                       "$$$${pkgpdir}"/*.postcfg-build ; do	\
-	   (cd "$$$${pkgbdir}"; "$$$${pfile}")			\
-	 done)
+	($(call SETVARS,$(1)); \
+	mkdir "$$$${pkgbdir}"; \
+	cd "$$$${pkgbdir}"; \
+	eval "../$$$${pkg_version}/configure" \
+		--prefix="$$$${pkgidir}" \
+		--host=$(host) \
+		--build=$(build) \
+	$$$${pkgcfg} CFLAGS=\"-mms-bitfields $$$${pkgextracflags}\";\
+	shopt -s nullglob; \
+	for pfile in "$$$${pkgpbdir}"/*.postcfg \
+				"$$$${pkgpdir}"/*.postcfg ; do \
+			(cd "$$$${pkgsdir}"; "$$$${pfile}") \
+		done; \
+	for pfile in "$$$${pkgpbdir}"/*.postcfg-build \
+				 "$$$${pkgpdir}"/*.postcfg-build ; do \
+				(cd "$$$${pkgbdir}"; "$$$${pfile}") \
+	done;) && \
 	touch stamps/stamp-$(1)-02-configure
 
 stamps/stamp-$(1)-03-make: stamps/stamp-$(1)-02-configure
 	($(call SETVARS,$(1));				\
 	  cd "$$$${pkgbdir}";				\
 	  test -n "$$$${pkgmkdir}" && cd "$$$${pkgmkdir}";	\
-	  $(MAKE) $(AM_MAKEFLAGS) $(GPG4WIN_PARALLEL) $$$${pkgmkargs} || \
-	  $(MAKE) $(AM_MAKEFLAGS) $(GPG4WIN_PARALLEL) $$$${pkgmkargs} || \
-	  $(MAKE) $(AM_MAKEFLAGS) $$$${pkgmkargs})
+	  $(MAKE) $(AM_MAKEFLAGS) $(GPG4WIN_PARALLEL) $$$${pkgmkargs})
 	touch stamps/stamp-$(1)-03-make
 
 # Note that post_install must come last because it may be empty and
