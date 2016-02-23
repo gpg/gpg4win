@@ -28,12 +28,12 @@ index bed53d1..87f976c 100644
 -find_package(Qt5 "${REQUIRED_QT_VERSION}" CONFIG REQUIRED Widgets DBus)
 +if (UNIX)
 +    find_package(Qt5 "${REQUIRED_QT_VERSION}" CONFIG REQUIRED Widgets DBus)
-+else()
-+    find_package(Qt5DBus "${REQUIRED_QT_VERSION}" CONFIG)
-+    set_package_properties(Qt5DBus PROPERTIES DESCRIPTION "Qt DBus Library"
-+                           PURPOSE "KPasteAction klipper integration."
-+                           URL "https://doc.qt.io/qt-5/qdbus.html"
-+                           TYPE OPTIONAL)
++#else()
++#    find_package(Qt5DBus "${REQUIRED_QT_VERSION}" CONFIG)
++#    set_package_properties(Qt5DBus PROPERTIES DESCRIPTION "Qt DBus Library"
++#                           PURPOSE "KPasteAction klipper integration."
++#                           URL "https://doc.qt.io/qt-5/qdbus.html"
++#                           TYPE OPTIONAL)
 +endif()
 +set (HAVE_QDBUS ${Qt5DBus_FOUND})
  include(KDEInstallDirs)
