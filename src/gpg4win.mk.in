@@ -60,6 +60,7 @@ endef
 
 # Set a couple of common variables.
 define SETVARS
+	set -e; \
 	pkg="$(call GETVAR,gpg4win_pkg_$(1))";				\
 	pkg_version="$(1)-$(call GETVAR,gpg4win_pkg_$(1)_version)";	\
 	pkgsdir="$(bdir)/$$$${pkg_version}";				\
@@ -86,6 +87,7 @@ endef
 
 # Set variables for building in an additional architecture
 define SETVARS_EX
+	set -e; \
 	pkg="$(call GETVAR,gpg4win_pkg_$(1))";                              \
 	pkg_version="$(1)-$(call GETVAR,gpg4win_pkg_$(1)_version)";         \
 	pkgsdir="$(bdir)/$$$${pkg_version}";                                \

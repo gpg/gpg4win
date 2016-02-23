@@ -185,7 +185,7 @@ endef
 
 # Build the reference manual.
 define gpg4win_pkg_gpgol_post_install
-( cd $$$${pkgndir}/doc; make pdf )
+( cd $$$${pkgbdir}/doc; make pdf )
 endef
 
 # We would like to use --with-libiconv-prefix and
@@ -450,11 +450,6 @@ define gpg4win_pkg_cairo_post_install
 endef
 
 define gpg4win_pkg_pango_post_install
- (cd $$$${pkgidir_dev};							\
- perl -pi -e 's/^prefix=.*$$$$/prefix=\/usr/' `find . -name \*.pc`)
-endef
-
-define gpg4win_pkg_gtk__post_install
  (cd $$$${pkgidir_dev};							\
  perl -pi -e 's/^prefix=.*$$$$/prefix=\/usr/' `find . -name \*.pc`)
 endef
