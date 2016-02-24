@@ -386,7 +386,15 @@ if test -n "$gpg4win_dup_sources"; then
       tmp="$tmp
 $i"
     done
-    AC_MSG_ERROR([Packages with more that one source version:$tmp])
+    tmp2="
+You might remove them with:"
+    for i in $gpg4win_rm_candidates; do
+        if ! grep -q $(basename $i) packages/packages.current; then
+            tmp2="$tmp2
+rm $i"
+        fi
+    done
+    AC_MSG_ERROR([Packages with more that one source version:$tmp$tmp2])
 fi
 
 
