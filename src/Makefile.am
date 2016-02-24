@@ -545,31 +545,35 @@ installer-options.ini : $(top_srcdir)/src/installer-options.ini.in
 # For some nut-crazy reason someone thought it would be a great idea
 # if makensis changed to the directory of the source file at startup.
 # So we have to pull a couple of strings to correct this.
-gpg4win-$(VERSION).exe: gpg4win.nsi $(common_nsi) stamps/stamp-final \
+installers/gpg4win-$(VERSION).exe: gpg4win.nsi $(common_nsi) stamps/stamp-final \
                         g4wihelp.dll \
 		        $(foosum_exe) \
 			$(README_files) $(HOWTO_files) \
 	                license.blurb installer-options.ini versioninfo.txt
 	$(MAKENSIS) -V3 -DBUILD_DIR=`pwd` -DTOP_SRCDIR=$(top_srcdir) \
-           -DSRCDIR=$(srcdir) $(EXTRA_MAKENSIS_FLAGS) $(srcdir)/gpg4win.nsi
+           -DSRCDIR=$(srcdir) $(EXTRA_MAKENSIS_FLAGS) $(srcdir)/gpg4win.nsi && \
+		   mv gpg4win-$(VERSION).exe installers/gpg4win-$(VERSION).exe
 
-gpg4win-light-$(VERSION).exe: gpg4win.nsi $(common_nsi) stamps/stamp-final \
+installers/gpg4win-light-$(VERSION).exe: gpg4win.nsi $(common_nsi) stamps/stamp-final \
                         g4wihelp.dll \
 		        $(foosum_exe) \
 			$(README_files) $(HOWTO_files) \
 			license.blurb installer-options.ini versioninfo.txt
 	$(MAKENSIS) -V3 -DBUILD_DIR=`pwd` -DTOP_SRCDIR=$(top_srcdir) \
            -DSRCDIR=$(srcdir) $(EXTRA_MAKENSIS_FLAGS) \
-           -DGPG4WIN_LIGHT=1 $(srcdir)/gpg4win.nsi
+           -DGPG4WIN_LIGHT=1 $(srcdir)/gpg4win.nsi && \
+		   mv gpg4win-light-$(VERSION).exe installers/gpg4win-light-$(VERSION).exe
 
-gpg4win-vanilla-$(VERSION).exe: gpg4win.nsi $(common_nsi) stamps/stamp-final \
+
+installers/gpg4win-vanilla-$(VERSION).exe: gpg4win.nsi $(common_nsi) stamps/stamp-final \
                         g4wihelp.dll  \
 		        $(foosum_exe) \
 			$(README_files) $(HOWTO_files) \
 		        license.blurb installer-options.ini versioninfo.txt
 	$(MAKENSIS) -V3 -DBUILD_DIR=`pwd` -DTOP_SRCDIR=$(top_srcdir) \
            -DSRCDIR=$(srcdir) $(EXTRA_MAKENSIS_FLAGS) \
-           -DGPG4WIN_VANILLA=1 $(srcdir)/gpg4win.nsi
+           -DGPG4WIN_VANILLA=1 $(srcdir)/gpg4win.nsi && \
+		   mv gpg4win-vanilla-$(VERSION).exe installers/gpg4win-vanilla-$(VERSION).exe
 
 gpg4win-$(VERSION).wix: gpg4win.nsi $(common_nsi) stamps/stamp-final \
 		        $(foosum_exe) \
@@ -607,11 +611,13 @@ stamps/stamp-dist-self: versioninfo.txt
 	(set -e; cd ..; make dist-bzip2)
 	touch stamps/stamp-dist-self
 
-gpg4win-src-$(VERSION).exe: gpg4win-src.nsi $(common_nsi) stamps/stamp-final \
+installers/gpg4win-src-$(VERSION).exe: gpg4win-src.nsi $(common_nsii) \
+                            stamps/stamp-final \
                             stamps/stamp-dist-self installer-options.ini \
 		            license.blurb
 	$(MAKENSIS) -V3 -DBUILD_DIR=`pwd` -DTOP_SRCDIR=$(top_srcdir) \
-	  -DSRCDIR=$(srcdir) $(EXTRA_MAKENSIS_FLAGS) $(srcdir)/gpg4win-src.nsi
+	  -DSRCDIR=$(srcdir) $(EXTRA_MAKENSIS_FLAGS) $(srcdir)/gpg4win-src.nsi && \
+	mv gpg4win-src-$(VERSION).exe installers/gpg4win-src-$(VERSION).exe
 
 license.blurb: $(top_srcdir)/doc/license-page $(top_srcdir)/doc/GPLv3
 	cat $(top_srcdir)/doc/license-page $(top_srcdir)/doc/GPLv3 >$@
@@ -639,31 +645,37 @@ mkportable.exe: mkportable.c \
 	$(STRIP) $@
 
 if BUILD_SOURCE_INSTALLER
-all_src = gpg4win-src-$(VERSION).exe
+all_src = installers/gpg4win-src-$(VERSION).exe
 else
 all_src =
 endif
 
 if BUILD_LIGHT_INSTALLER
-all_light = gpg4win-light-$(VERSION).exe
+all_light = installers/gpg4win-light-$(VERSION).exe
 else
 all_light =
 endif
 
 if BUILD_VANILLA_INSTALLER
-all_vanilla = gpg4win-vanilla-$(VERSION).exe
+all_vanilla = installers/gpg4win-vanilla-$(VERSION).exe
 else
 all_vanilla =
 endif
 
 if BUILD_FULL_INSTALLER
-all_full = gpg4win-$(VERSION).exe
+all_full = installers/gpg4win-$(VERSION).exe
 else
 all_full =
 endif
 
 all-local: $(all_full) $(all_light) $(all_vanilla) $(all_src)
+	@echo "###################################################"
+	@echo " Gpg4win $(VERSION) successfully build!"
+	@echo " Installers can be found under src/installers"
+	@echo "###################################################"
 
 clean-local:
-	rm -f gpg4win-$(VERSION).exe gpg4win-light-$(VERSION).exe \
-            gpg4win-vanilla-$(VERSION).exe gpg4win-src-$(VERSION).exe
+	rm -f installers/gpg4win-$(VERSION).exe \
+		  installers/gpg4win-light-$(VERSION).exe \
+		  installers/gpg4win-vanilla-$(VERSION).exe \
+		  installers/gpg4win-src-$(VERSION).exe

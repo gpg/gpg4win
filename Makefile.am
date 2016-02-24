@@ -59,19 +59,19 @@ copy-news:
 	cp NEWS doc/website/NEWS.last
 
 
-copy-release: gpg4win-$(VERSION).tar.bz2 src/gpg4win-$(VERSION).exe \
-	      src/gpg4win-light-$(VERSION).exe \
-	      src/gpg4win-vanilla-$(VERSION).exe
+copy-release: gpg4win-$(VERSION).tar.bz2 installers/gpg4win-$(VERSION).exe \
+	      installers/gpg4win-light-$(VERSION).exe \
+	      installers/gpg4win-vanilla-$(VERSION).exe
 	@echo Copying $(VERSION) to $(RELEASEHOST) >&2
 	@set -e;\
 	if ssh "$$(echo $(RELEASEHOST)|cut -d: -f -1)" \
         test -f "$$(echo $(RELEASEHOST)/gpg4win-$(VERSION).exe|cut -d: -f2-)";\
 	then echo "This release has already been copied to the server" >&2 ;\
 	else scp gpg4win-$(VERSION).tar.bz2 \
-	         src/gpg4win-$(VERSION).exe \
-	         src/gpg4win-light-$(VERSION).exe \
-	         src/gpg4win-vanilla-$(VERSION).exe \
-	         src/gpg4win-src-$(VERSION).exe  $(RELEASEHOST)/ ;\
+	         installers/gpg4win-$(VERSION).exe \
+	         installers/gpg4win-light-$(VERSION).exe \
+	         installers/gpg4win-vanilla-$(VERSION).exe \
+	         installers/gpg4win-src-$(VERSION).exe  $(RELEASEHOST)/ ;\
 	     for f in en de ; do \
 	       scp src/README.$$f.txt \
 	             $(RELEASEHOST)/README-$(VERSION).$$f.txt; \
