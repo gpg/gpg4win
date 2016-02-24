@@ -59,7 +59,6 @@ to be installed:
  texlive-latex-extra
  texlive-lang-german
  latex-xcolor (for the compendium)
- libqt4-dev-bin (in case pinentry-qt needs moc)
  libgettextpo-dev
 
 
