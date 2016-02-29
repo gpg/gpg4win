@@ -174,6 +174,7 @@ Section "-un.kleopatra"
   RmDir "$INSTDIR\share\kservices5\"
 
   Delete "$INSTDIR\share\kdeglobals"
+  Delete "$INSTDIR\share\klanguageoverridesrc"
   Delete "$INSTDIR\share\QtProject\qtlogging.ini"
 #  Delete "$INSTDIR\share\apps\kwatchgnupg\pics\kwatchgnupg2.png"
 #  Delete "$INSTDIR\share\apps\kwatchgnupg\pics\kwatchgnupg.png"
