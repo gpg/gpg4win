@@ -158,7 +158,7 @@ AC_ARG_ENABLE(light-installer,
     AC_HELP_STRING([--disable-light-installer],
                    [Do not create the light version of the installer]),
                     build_light_installer=$enableval,
-                    build_light_installer=yes)
+                    build_light_installer=no)
 AM_CONDITIONAL(BUILD_LIGHT_INSTALLER, test "$build_light_installer" = yes)
 
 # You can build a vanilla version of the installer, featuring only
@@ -168,7 +168,7 @@ AC_ARG_ENABLE(vanilla-installer,
     AC_HELP_STRING([--disable-vanilla-installer],
                    [Do not create the vanilla version of the installer]),
                     build_vanilla_installer=$enableval,
-                    build_vanilla_installer=yes)
+                    build_vanilla_installer=no)
 AM_CONDITIONAL(BUILD_VANILLA_INSTALLER, test "$build_vanilla_installer" = yes)
 
 # If you want to build only the light or vanilla installer, you may
