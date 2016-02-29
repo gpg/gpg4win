@@ -21,9 +21,9 @@
 !define prefix ${ipdir}/extra-cmake-modules-${gpg4win_pkg_extra_cmake_modules}
 
 !ifdef DEBUG
-Section "extra_cmake_modules" SEC_extra_cmake_modules
+Section "extra_cmake_modules" SEC_extra-cmake-modules
 !else
-Section "-extra_cmake_modules" SEC_extra_cmake_modules
+Section "-extra_cmake_modules" SEC_extra-cmake-modules
 !endif
   SetOutPath "$INSTDIR"
 !ifdef SOURCES
