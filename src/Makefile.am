@@ -19,8 +19,9 @@
 
 EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
 	config.site config.nsi.in \
-        installer-options.ini.in libiconv.def libintl.def loreley.mid \
-        gpg4win-splash.wav exdll.h g4wihelp.c g4wihelp.nsi \
+        libiconv.def libintl.def loreley.mid \
+        gpg4win-splash.wav exdll.h g4wihelp.c desktopshellrun.cpp \
+        g4wihelp.nsi \
         inst-sections.nsi installer.nsi installer-finish.nsi  \
 	zlib.pc sha1sum.c mkportable.c     \
 	mkportable-vanilla.h mkportable-light.h mkportable-full.h \
@@ -97,10 +98,10 @@ HOWTO_files = $(addsuffix .txt, \
 foosum_exe = sha1sum.exe md5sum.exe sha256sum.exe mkportable.exe
 
 # Need to clean the dll because we bypassed automake.
-CLEANFILES = g4wihelp.dll versioninfo.txt $(README_files) $(HOWTO_files) \
-             installer-options.ini NEWS.tmp COMPONENTS-list.tmp \
-	     license.blurb cdversioninfo.tmp \
-	     $(foosum_exe)
+CLEANFILES = g4wihelp.dll desktopshellrun.o versioninfo.txt $(README_files) \
+			 $(HOWTO_files) NEWS.tmp COMPONENTS-list.tmp \
+			 license.blurb cdversioninfo.tmp \
+			 $(foosum_exe)
 
 # Supported source packages.
 gpg4win_spkgs = glib libffi gdk-pixbuf gtk+ \
@@ -538,10 +539,6 @@ COMPONENTS-list.tmp : $(top_srcdir)/NEWS
 	awk '/^~~~~~~~~~~~/ { ok++; next} ok==1 {print "    "$$0}' \
             < $(top_srcdir)/NEWS > COMPONENTS-list.tmp
 
-installer-options.ini : $(top_srcdir)/src/installer-options.ini.in
-	cat $(top_srcdir)/src/installer-options.ini.in >installer-options.ini
-
-
 # For some nut-crazy reason someone thought it would be a great idea
 # if makensis changed to the directory of the source file at startup.
 # So we have to pull a couple of strings to correct this.
@@ -549,7 +546,7 @@ installers/gpg4win-$(VERSION).exe: gpg4win.nsi $(common_nsi) stamps/stamp-final 
                         g4wihelp.dll \
 		        $(foosum_exe) \
 			$(README_files) $(HOWTO_files) \
-	                license.blurb installer-options.ini versioninfo.txt
+	                license.blurb versioninfo.txt
 	$(MAKENSIS) -V3 -DBUILD_DIR=`pwd` -DTOP_SRCDIR=$(top_srcdir) \
            -DSRCDIR=$(srcdir) $(EXTRA_MAKENSIS_FLAGS) $(srcdir)/gpg4win.nsi && \
 		   mv gpg4win-$(VERSION).exe installers/gpg4win-$(VERSION).exe
@@ -558,7 +555,7 @@ installers/gpg4win-light-$(VERSION).exe: gpg4win.nsi $(common_nsi) stamps/stamp-
                         g4wihelp.dll \
 		        $(foosum_exe) \
 			$(README_files) $(HOWTO_files) \
-			license.blurb installer-options.ini versioninfo.txt
+			license.blurb versioninfo.txt
 	$(MAKENSIS) -V3 -DBUILD_DIR=`pwd` -DTOP_SRCDIR=$(top_srcdir) \
            -DSRCDIR=$(srcdir) $(EXTRA_MAKENSIS_FLAGS) \
            -DGPG4WIN_LIGHT=1 $(srcdir)/gpg4win.nsi && \
@@ -569,7 +566,7 @@ installers/gpg4win-vanilla-$(VERSION).exe: gpg4win.nsi $(common_nsi) stamps/stam
                         g4wihelp.dll  \
 		        $(foosum_exe) \
 			$(README_files) $(HOWTO_files) \
-		        license.blurb installer-options.ini versioninfo.txt
+		        license.blurb versioninfo.txt
 	$(MAKENSIS) -V3 -DBUILD_DIR=`pwd` -DTOP_SRCDIR=$(top_srcdir) \
            -DSRCDIR=$(srcdir) $(EXTRA_MAKENSIS_FLAGS) \
            -DGPG4WIN_VANILLA=1 $(srcdir)/gpg4win.nsi && \
@@ -622,9 +619,11 @@ installers/gpg4win-src-$(VERSION).exe: gpg4win-src.nsi $(common_nsii) \
 license.blurb: $(top_srcdir)/doc/license-page $(top_srcdir)/doc/GPLv3
 	cat $(top_srcdir)/doc/license-page $(top_srcdir)/doc/GPLv3 >$@
 
-g4wihelp.dll: g4wihelp.c exdll.h
+g4wihelp.dll: desktopshellrun.cpp g4wihelp.c exdll.h
+	$(CC) -I. -O2 -c -o desktopshellrun.o $(srcdir)/desktopshellrun.cpp
 	$(CC) -I. -shared -O2 -o g4wihelp.dll $(srcdir)/g4wihelp.c \
-	   -lwinmm -lgdi32
+	  desktopshellrun.o -lwinmm -lgdi32 -luserenv -lshell32 \
+	  -lole32 -loleaut32
 	$(STRIP) g4wihelp.dll
 
 sha1sum.exe: sha1sum.c

@@ -16,9 +16,6 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, see <http://www.gnu.org/licenses/>.
 
-
-# Sections
-
 !include "inst-gpg4win.nsi"
 
 # The order of installation must be the same as the build order.  You
@@ -394,26 +391,7 @@
 
 ${MementoSectionDone}
 
-!include "Sections.nsh"
-
-
 Function CalcDefaults
-
-# The defaults for the installer-options.ini file.
-g4wihelp::config_fetch_bool "inst_start_menu"
-StrCmp $R0 "" +2
-!insertmacro MUI_INSTALLOPTIONS_WRITE "installer-options.ini" \
-	"Field 2" "State" $R0
-
-g4wihelp::config_fetch_bool "inst_desktop"
-StrCmp $R0 "" +2
-!insertmacro MUI_INSTALLOPTIONS_WRITE "installer-options.ini" \
-	"Field 3" "State" $R0
-
-g4wihelp::config_fetch_bool "inst_quick_launch_bar"
-StrCmp $R0 "" +2
-!insertmacro MUI_INSTALLOPTIONS_WRITE "installer-options.ini" \
-	"Field 4" "State" $R0
 
 !ifdef HAVE_PKG_KLEOPATRA
   g4wihelp::config_fetch_bool "inst_kleopatra"
@@ -934,49 +912,6 @@ Function CalcDepends
 
 FunctionEnd
 
-
-Function .onInit
-  Call G4wRunOnce
-
-  SetOutPath $TEMP
-!ifdef SOURCES
-  File /oname=gpgspltmp.bmp "${TOP_SRCDIR}/doc/logo/gpg4win-logo-400px.bmp"
-  # We play the tune only for the source installer
-  File /oname=gpgspltmp.wav "${TOP_SRCDIR}/src/gpg4win-splash.wav"
-  g4wihelp::playsound $TEMP\gpgspltmp.wav
-  g4wihelp::showsplash 2500 $TEMP\gpgspltmp.bmp
-
-  Delete $TEMP\gpgspltmp.bmp
-  # Note that we delete gpgspltmp.wav in .onInst{Failed,Success}
-!endif
-
-  # Enable this to force a language selection dialog on every run (the
-  # preferred language is the default).  Otherwise, the preferred
-  # language is stored in the registry, and the installer does not ask
-  # on upgrades.
-!ifdef DEBUG
-!define MUI_LANGDLL_ALWAYSSHOW
-!endif
-  !insertmacro MUI_LANGDLL_DISPLAY
-
-  # We can't use TOP_SRCDIR dir as the name of the file needs to be
-  # the same while building and running the installer.  Thus we
-  # generate the file from a template.
-  !insertmacro MUI_INSTALLOPTIONS_EXTRACT "installer-options.ini"
-
-  ${MementoSectionRestore}
-  Call CalcDefaults
-  Call CalcDepends
-  Call CheckOtherGnuPGApps
-FunctionEnd
-
-
-Function un.onInit
-  # Remove the language preference.
-  !insertmacro MUI_UNGETLANGUAGE
-FunctionEnd
-
-
 Function .onInstFailed
   Delete $TEMP\gpgspltmp.wav
 FunctionEnd
@@ -1006,44 +941,6 @@ FunctionEnd
 #FunctionEnd
 
 
-# This must be in a central place.  Urgs.
-
-!insertmacro MUI_FUNCTION_DESCRIPTION_BEGIN
-!ifdef HAVE_PKG_GNUPG_W32
-  !insertmacro MUI_DESCRIPTION_TEXT ${SEC_gnupg_w32} $(DESC_SEC_gnupg_w32)
-!endif
-!ifdef HAVE_PKG_GPGOL
-  !insertmacro MUI_DESCRIPTION_TEXT ${SEC_gpgol} $(DESC_SEC_gpgol)
-!endif
-!ifdef HAVE_PKG_GPGEX
-  !insertmacro MUI_DESCRIPTION_TEXT ${SEC_gpgex} $(DESC_SEC_gpgex)
-!endif
-!ifdef HAVE_PKG_PAPERKEY
-  !insertmacro MUI_DESCRIPTION_TEXT ${SEC_paperkey} $(DESC_SEC_paperkey)
-!endif
-!ifdef HAVE_PKG_GPA
-  !insertmacro MUI_DESCRIPTION_TEXT ${SEC_gpa} $(DESC_SEC_gpa)
-!endif
-!ifdef HAVE_PKG_KLEOPATRA
-  !insertmacro MUI_DESCRIPTION_TEXT ${SEC_kleopatra} $(DESC_SEC_kleopatra)
-!endif
-!ifdef HAVE_PKG_MAN_NOVICE_EN
-  !insertmacro MUI_DESCRIPTION_TEXT ${SEC_man_novice_en} $(DESC_SEC_man_novice_en)
-!endif
-!ifdef HAVE_PKG_MAN_ADVANCED_EN
-  !insertmacro MUI_DESCRIPTION_TEXT ${SEC_man_advanced_en} $(DESC_SEC_man_advanced_en)
-!endif
-!ifdef HAVE_PKG_COMPENDIUM
-  !insertmacro MUI_DESCRIPTION_TEXT ${SEC_compendium} $(DESC_SEC_compendium)
-!endif
-!ifdef HAVE_PKG_MAN_NOVICE_DE
-  !insertmacro MUI_DESCRIPTION_TEXT ${SEC_man_novice_de} $(DESC_SEC_man_novice_de)
-!endif
-!ifdef HAVE_PKG_MAN_ADVANCED_DE
-  !insertmacro MUI_DESCRIPTION_TEXT ${SEC_man_advanced_de} $(DESC_SEC_man_advanced_de)
-!endif
-!insertmacro MUI_FUNCTION_DESCRIPTION_END
-
 
 # This also must be in a central place.  Also Urgs.
 
@@ -1059,9 +956,8 @@ Section "-startmenu"
   SetShellVarContext all
 
   # Check if the start menu entries where requested.
-  !insertmacro MUI_INSTALLOPTIONS_READ $R0 "installer-options.ini" \
-	"Field 2" "State"
-  IntCmp $R0 0 no_start_menu
+  g4wihelp::config_fetch_bool "inst_start_menu"
+  StrCmp $R0 "0" no_start_menu
 
 !ifdef HAVE_PKG_GPA
     SectionGetFlags ${SEC_gpa} $R0
@@ -1086,8 +982,8 @@ Section "-startmenu"
  no_start_menu:
 
   # Check if the desktop entries where requested.
-  !insertmacro MUI_INSTALLOPTIONS_READ $R0 "installer-options.ini" \
-	"Field 3" "State"
+  g4wihelp::config_fetch_bool "inst_desktop"
+  StrCmp $R0 "0" no_desktop
   IntCmp $R0 0 no_desktop
 
 !ifdef HAVE_PKG_GPA

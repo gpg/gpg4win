@@ -46,14 +46,26 @@
 !define WELCOME_TITLE_STR "$(T_WelcomeTitleGpg4winSrc)"
 
 !define ABOUT_STR "$(T_AboutGpg4winSrc) \
-	\r\n\r\n$_CLICK \r\n\r\n\r\n\r\n\r\n \
-        $(T_AboutGpg4winSrcVersion) \r\n \
-        $(T_AboutGpg4winSrcFileVersion) \r\n\r\n \
+	$\r$\n$\r$\n$_CLICK $\r$\n$\r$\n$\r$\n$\r$\n$\r$\n \
+        $(T_AboutGpg4winSrcVersion) $\r$\n \
+        $(T_AboutGpg4winSrcFileVersion) $\r$\n$\r$\n \
         $(T_AboutGpg4winSrcReleaseDate)"
 
 # The copyright license of the package.  Define only one of these.
 !define LICENSE_GPL
 # !define LICENSE_LGPL
+
+# Sections
+!include "Sections.nsh"
+
+# We use Memento to remember past installation choices.
+!include Memento.nsh
+!define MEMENTO_REGISTRY_ROOT HKLM
+!define MEMENTO_REGISTRY_KEY \
+  Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRETTY_PACKAGE_SHORT}
+# We need to know wether we are installing to 64 bit.
+!include "x64.nsh"
+
 
 
 # The installation directory.
@@ -64,14 +76,12 @@
 # For source packages we use the standard zip method because it takes
 # ages to compress a large archive of already packed sources.
 SetCompressor zlib
-
-# Now include the generic parts.
-!include "installer.nsi"
-
-
 # Now include all the sections.
 !define SOURCES
 !include "inst-sections.nsi"
+
+# Now include the generic parts.
+!include "installer.nsi"
 
 # The WelcomeTitle is displayed on the first page.
 LangString T_WelcomeTitleGpg4winSrc ${LANG_ENGLISH} \

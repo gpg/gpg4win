@@ -39,18 +39,14 @@
 # !define Regkey_for_Env 'HKCU "Environment"'
 
 
-# We use Memento to remember past installation choices.
-!include Memento.nsh
-!define MEMENTO_REGISTRY_ROOT HKLM
-!define MEMENTO_REGISTRY_KEY \
-  Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRETTY_PACKAGE_SHORT}
-
-
-# We use the modern UI.
-!include "MUI.nsh"
-
-# We need to know wether we are installing to 64 bit.
-!include "x64.nsh"
+# We use the modern UI 2.
+!ifdef DEBUG
+!include "MUI2.nsh"
+!else
+!include "MUI2.nsh"
+# MUI2 defines debug
+!undef DEBUG
+!endif
 
 # Set the package name.  Note that this name should not be sufficed
 #  with the version because this would get displayed in the start menu.
@@ -147,10 +143,9 @@ Bitte die Sprache des Installations-Vorgangs angeben."
 
 !insertmacro MUI_PAGE_WELCOME
 
-!define MUI_LICENSEPAGE_BUTTON "$(^NextBtn)"
-!define MUI_PAGE_HEADER_SUBTEXT "$(T_GPLHeader)"
-!define MUI_LICENSEPAGE_TEXT_BOTTOM "$(T_GPLShort)"
-!insertmacro MUI_PAGE_LICENSE "license.blurb"
+#!define MUI_LICENSEPAGE_BUTTON "$(^NextBtn)"
+#!define MUI_PAGE_HEADER_SUBTEXT "$(T_GPLHeader)"
+#!insertmacro MUI_PAGE_LICENSE "license.blurb"
 
 !define MUI_PAGE_CUSTOMFUNCTION_SHOW PrintNonAdminWarning
 !insertmacro MUI_PAGE_COMPONENTS
@@ -163,23 +158,60 @@ Bitte die Sprache des Installations-Vorgangs angeben."
 !define MUI_PAGE_CUSTOMFUNCTION_PRE ShowFinalWarnings
 
 # Finish page
+!ifndef SOURCES
+!define MUI_PAGE_CUSTOMFUNCTION_SHOW FinishFunction
+!define MUI_FINISHPAGE_RUN
+!define MUI_FINISHPAGE_RUN_FUNCTION RunAsUser
 !define MUI_FINISHPAGE_SHOWREADME "share\gpg4win\README.$(T_LangCode).txt"
 !define MUI_FINISHPAGE_SHOWREADME_TEXT "$(T_ShowReadme)"
-#!define MUI_FINISHPAGE_RUN
-#!define MUI_FINISHPAGE_RUN_FUNCTION RunOnFinish
-#!define MUI_FINISHPAGE_RUN_TEXT "$(T_RunKeyManager)"
-#!define MUI_FINISHPAGE_RUN_NOTCHECKED
+!define MUI_FINISHPAGE_SHOWREADME_NOTCHECKED
 !define MUI_FINISHPAGE_LINK "$(T_MoreInfo)"
 !define MUI_FINISHPAGE_LINK_LOCATION "$(T_MoreInfoURL)"
 !insertmacro MUI_PAGE_FINISH
 
+Function FinishFunction
+  IfSilent leave
+  Var /GLOBAL gpa_or_kleopatra
+  !insertmacro SectionFlagIsSet ${SEC_kleopatra} \
+        ${SF_SELECTED} have_kleo 0
+  !insertmacro SectionFlagIsSet ${SEC_gpa} \
+        ${SF_SELECTED} have_gpa 0
+  ShowWindow $mui.FinishPage.Run ${SW_HIDE}
+  goto leave
+have_kleo:
+  SendMessage $mui.FinishPage.Run.Text ${WM_SETTEXT} 0 "STR:$(T_RunKleopatra)"
+  goto leave
+have_gpa:
+  SendMessage $mui.FinishPage.Run.Text ${WM_SETTEXT} 0 "STR:$(T_RunGPA)"
+  StrCpy $gpa_or_kleopatra "GPA"
+leave:
+FunctionEnd
+
+Function RunAsUser
+  !insertmacro SectionFlagIsSet ${SEC_kleopatra} \
+        ${SF_SELECTED} 0 skip_kleo
+  g4wihelp::DesktopShellRun "$INSTDIR\bin\kleopatra.exe"
+  goto leave
+skip_kleo:
+  !insertmacro SectionFlagIsSet ${SEC_gpa} \
+        ${SF_SELECTED} 0 leave
+  g4wihelp::DesktopShellRun "$INSTDIR\bin\gpa.exe"
+leave:
+FunctionEnd
+
+LangString T_RunKleopatra ${LANG_ENGLISH} \
+   "Run Kleopatra"
+
+LangString T_RunGPA ${LANG_ENGLISH} \
+   "Run GPA"
+!endif # SOURCES
 
 # Uninstaller pages.
 
 !insertmacro MUI_UNPAGE_WELCOME
 !insertmacro MUI_UNPAGE_CONFIRM
 !insertmacro MUI_UNPAGE_INSTFILES
-!insertmacro MUI_UNPAGE_FINISH
+#!insertmacro MUI_UNPAGE_FINISH
 
 #Page license
 #Page components
@@ -206,7 +238,6 @@ Bitte die Sprache des Installations-Vorgangs angeben."
 !undef PO_HEADER
 
 !insertmacro MUI_RESERVEFILE_LANGDLL
-!insertmacro MUI_RESERVEFILE_INSTALLOPTIONS
 ReserveFile "${BUILD_DIR}\g4wihelp.dll"
 !ifdef SOURCES
 ReserveFile "${TOP_SRCDIR}\doc\logo\gpg4win-logo-400px.bmp"
@@ -229,9 +260,6 @@ LangString T_GPLShort ${LANG_ENGLISH} \
   "In short: You are allowed to run this software for any purpose. \
    You may distribute it as long as you give the recipients the same \
    rights you have received."
-
-LangString T_RunKeyManager ${LANG_ENGLISH} \
-   "Run the key manager"
 
 LangString T_MoreInfo ${LANG_ENGLISH} \
    "Click here for the project's homepage"
@@ -260,28 +288,6 @@ LangString DESC_Desktop_manuals ${LANG_ENGLISH} \
 
 # Custom functions and macros for gpg4win.
 !include "g4wihelp.nsi"
-
-#
-# Control function for the Custom page to select special
-# install options.
-#
-Function CustomPageOptions
-  !insertmacro MUI_HEADER_TEXT "$(T_InstallOptions)" "$(T_InstallOptLinks)"
-
-  # Note that the default selection is done in the ini file.
-  !insertmacro MUI_INSTALLOPTIONS_WRITE "installer-options.ini" \
-	"Field 1" "Text"  "$(T_InstOptLabelA)"
-  !insertmacro MUI_INSTALLOPTIONS_WRITE "installer-options.ini" \
-	"Field 2" "Text"  "$(T_InstOptFieldA)"
-  !insertmacro MUI_INSTALLOPTIONS_WRITE "installer-options.ini" \
-	"Field 3" "Text"  "$(T_InstOptFieldB)"
-  !insertmacro MUI_INSTALLOPTIONS_WRITE "installer-options.ini" \
-	"Field 4" "Text"  "$(T_InstOptFieldC)"
-  !insertmacro MUI_INSTALLOPTIONS_WRITE "installer-options.ini" \
-	"Field 5" "Text"  "$(T_InstOptLabelB)"
-
-  !insertmacro MUI_INSTALLOPTIONS_DISPLAY "installer-options.ini"
-FunctionEnd
 
 # Display a warning if this is a Beta version.
 #Function PrintBetaWarning
@@ -401,15 +407,6 @@ Function PrintNonAdminWarning
  leave:
 FunctionEnd
 
-
-# Check whether the start menu is actually wanted.
-
-Function CheckIfStartMenuWanted
-  !insertmacro MUI_INSTALLOPTIONS_READ $R0 "installer-options.ini" \
-	"Field 2" "State"
-  IntCmp $R0 1 +2
-    Abort
-FunctionEnd
 
 # Check for claws mail installation which was shipped in Gpg4win
 # versions < 2.2.6
@@ -690,4 +687,77 @@ Function un.RemoveFromPath
   Pop $0
 FunctionEnd
 
+Function .onInit
+  Call G4wRunOnce
+
+  SetOutPath $TEMP
+!ifdef SOURCES
+  File /oname=gpgspltmp.bmp "${TOP_SRCDIR}/doc/logo/gpg4win-logo-400px.bmp"
+  # We play the tune only for the source installer
+  File /oname=gpgspltmp.wav "${TOP_SRCDIR}/src/gpg4win-splash.wav"
+  g4wihelp::playsound $TEMP\gpgspltmp.wav
+  g4wihelp::showsplash 2500 $TEMP\gpgspltmp.bmp
+
+  Delete $TEMP\gpgspltmp.bmp
+  # Note that we delete gpgspltmp.wav in .onInst{Failed,Success}
+!endif
+
+  # Enable this to force a language selection dialog on every run (the
+  # preferred language is the default).  Otherwise, the preferred
+  # language is stored in the registry, and the installer does not ask
+  # on upgrades.
+!ifdef DEBUG
+!define MUI_LANGDLL_ALWAYSSHOW
+!endif
+  !insertmacro MUI_LANGDLL_DISPLAY
+
+  ${MementoSectionRestore}
+  Call CalcDefaults
+  Call CalcDepends
+  Call CheckOtherGnuPGApps
+FunctionEnd
+
+
+Function un.onInit
+  # Remove the language preference.
+  !insertmacro MUI_UNGETLANGUAGE
+FunctionEnd
+
+# This must be in a central place.  Urgs.
+
+!insertmacro MUI_FUNCTION_DESCRIPTION_BEGIN
+!ifdef HAVE_PKG_GNUPG_W32
+  !insertmacro MUI_DESCRIPTION_TEXT ${SEC_gnupg_w32} $(DESC_SEC_gnupg_w32)
+!endif
+!ifdef HAVE_PKG_GPGOL
+  !insertmacro MUI_DESCRIPTION_TEXT ${SEC_gpgol} $(DESC_SEC_gpgol)
+!endif
+!ifdef HAVE_PKG_GPGEX
+  !insertmacro MUI_DESCRIPTION_TEXT ${SEC_gpgex} $(DESC_SEC_gpgex)
+!endif
+!ifdef HAVE_PKG_PAPERKEY
+  !insertmacro MUI_DESCRIPTION_TEXT ${SEC_paperkey} $(DESC_SEC_paperkey)
+!endif
+!ifdef HAVE_PKG_GPA
+  !insertmacro MUI_DESCRIPTION_TEXT ${SEC_gpa} $(DESC_SEC_gpa)
+!endif
+!ifdef HAVE_PKG_KLEOPATRA
+  !insertmacro MUI_DESCRIPTION_TEXT ${SEC_kleopatra} $(DESC_SEC_kleopatra)
+!endif
+!ifdef HAVE_PKG_MAN_NOVICE_EN
+  !insertmacro MUI_DESCRIPTION_TEXT ${SEC_man_novice_en} $(DESC_SEC_man_novice_en)
+!endif
+!ifdef HAVE_PKG_MAN_ADVANCED_EN
+  !insertmacro MUI_DESCRIPTION_TEXT ${SEC_man_advanced_en} $(DESC_SEC_man_advanced_en)
+!endif
+!ifdef HAVE_PKG_COMPENDIUM
+  !insertmacro MUI_DESCRIPTION_TEXT ${SEC_compendium} $(DESC_SEC_compendium)
+!endif
+!ifdef HAVE_PKG_MAN_NOVICE_DE
+  !insertmacro MUI_DESCRIPTION_TEXT ${SEC_man_novice_de} $(DESC_SEC_man_novice_de)
+!endif
+!ifdef HAVE_PKG_MAN_ADVANCED_DE
+  !insertmacro MUI_DESCRIPTION_TEXT ${SEC_man_advanced_de} $(DESC_SEC_man_advanced_de)
+!endif
+!insertmacro MUI_FUNCTION_DESCRIPTION_END
 

@@ -129,10 +129,8 @@
 !define WELCOME_TITLE_STR "$(T_WelcomeTitleGpg4win)"
 
 !define ABOUT_STR "$(T_AboutGpg4win) \
-	\r\n\r\n$_CLICK \r\n\r\n\r\n\r\n\r\n \
-	$(T_AboutGpg4winVersion) \r\n \
-        $(T_AboutGpg4winFileVersion) \r\n\r\n \
-	$(T_AboutGpg4winReleaseDate)"
+	$\r$\n$\r$\n$\r$\n$_CLICK $\r$\n$\r$\n$\r$\n \
+	$(T_AboutGpg4winVersion $\r$\n$(T_AboutGpg4winReleaseDate)"
 
 # The copyright license of the package.  Define only one of these.
 !define LICENSE_GPL
@@ -179,15 +177,24 @@ SetCompressor /SOLID lzma
 !include "uninst-claws-mail.nsi"
 !endif
 
-# Now include the generic parts.
-!define HAVE_STARTMENU
-!include "installer.nsi"
+# Sections
+!include "Sections.nsh"
 
+# We use Memento to remember past installation choices.
+!include Memento.nsh
+!define MEMENTO_REGISTRY_ROOT HKLM
+!define MEMENTO_REGISTRY_KEY \
+  Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRETTY_PACKAGE_SHORT}
+# We need to know wether we are installing to 64 bit.
+!include "x64.nsh"
 
 # Now include the sections.
 !define BINARIES
 !include "inst-sections.nsi"
 
+# Now include the generic parts.
+!define HAVE_STARTMENU
+!include "installer.nsi"
 
 # The WelcomeTitle is displayed on the first page.
 LangString T_WelcomeTitleGpg4win ${LANG_ENGLISH} \

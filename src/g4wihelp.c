@@ -29,6 +29,7 @@
  */
 
 #include <windows.h>
+#include <stdio.h>
 #include "exdll.h"
 
 static HINSTANCE g_hInstance; /* Our Instance. */
