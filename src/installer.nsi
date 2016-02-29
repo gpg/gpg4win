@@ -210,6 +210,7 @@ LangString T_RunGPA ${LANG_ENGLISH} \
 
 !insertmacro MUI_UNPAGE_WELCOME
 !insertmacro MUI_UNPAGE_CONFIRM
+!define MUI_PAGE_CUSTOMFUNCTION_PRE un.CloseApps
 !insertmacro MUI_UNPAGE_INSTFILES
 #!insertmacro MUI_UNPAGE_FINISH
 
@@ -421,13 +422,18 @@ FunctionEnd
 # Check whether this is a reinstall and popup a message box to explain
 # that it is better to close other apps before continuing
 Function PrintCloseOtherApps
-    # TODO Look for running processes instead.
-    IfFileExists $INSTDIR\gpa.exe   print_warning
-    IfFileExists $INSTDIR\gpgol.dll print_warning
-    Return
+   g4wihelp::KillProc "kleopatra.exe"
+   g4wihelp::KillProc "gpa.exe"
+goto leave
+# TODO check for running outlook and offer to kill it.
    print_warning:
     MessageBox MB_OK|MB_ICONEXCLAMATION "$(T_CloseOtherApps)"
-   leave:
+leave:
+FunctionEnd
+
+Function un.CloseApps
+   g4wihelp::KillProc "kleopatra.exe"
+   g4wihelp::KillProc "gpa.exe"
 FunctionEnd
 
 # Called right before installation
