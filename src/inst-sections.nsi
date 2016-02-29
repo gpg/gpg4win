@@ -984,7 +984,6 @@ Section "-startmenu"
   # Check if the desktop entries where requested.
   g4wihelp::config_fetch_bool "inst_desktop"
   StrCmp $R0 "0" no_desktop
-  IntCmp $R0 0 no_desktop
 
 !ifdef HAVE_PKG_GPA
     SectionGetFlags ${SEC_gpa} $R0
