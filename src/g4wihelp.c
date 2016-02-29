@@ -1,6 +1,7 @@
 /* g4wihelp.c - NSIS Helper DLL used with gpg4win. -*- coding: latin-1; -*-
  * Copyright (C) 2005 g10 Code GmbH
  * Copyright (C) 2001 Justin Frankel
+ * Copyright (C) 2016 Intevation GmbH
  *
  * This software is provided 'as-is', without any express or implied
  * warranty. In no event will the authors be held liable for any
@@ -30,6 +31,8 @@
 
 #include <windows.h>
 #include <stdio.h>
+#include <tlhelp32.h>
+#include <psapi.h>
 #include "exdll.h"
 
 static HINSTANCE g_hInstance; /* Our Instance. */
@@ -1132,4 +1135,66 @@ path_remove (HWND hwndParent, int string_size, char *variables,
   free (path_new);
 
   setuservariable (INST_R0, "1");
+}
+
+/** @brief Kill processes with the name name.
+ *
+ * This function tries to kill a process using ExitProcess.
+ *
+ * If it does not work it does not work. No return values.
+ * The intention is to make an effort to kill something during
+ * installation / uninstallation.
+ *
+ * The function signature is explained by NSIS.
+ */
+void __declspec(dllexport) __cdecl KillProc(HWND hwndParent,
+                                            int string_size,
+                                            char *variables,
+                                            stack_t **stacktop)
+{
+  HANDLE h;
+  PROCESSENTRY32 pe32;
+
+  if (!stacktop || !*stacktop || !(*stacktop)->text)
+    {
+      ERRORPRINTF ("Invalid call to KillProc.");
+      return;
+    }
+
+
+  h = CreateToolhelp32Snapshot (TH32CS_SNAPPROCESS, 0);
+  if (h == INVALID_HANDLE_VALUE)
+    {
+      ERRORPRINTF ("Failed to create Toolhelp snapshot");
+      return;
+    }
+  pe32.dwSize = sizeof (PROCESSENTRY32);
+
+  if (!Process32First (h, &pe32))
+    {
+      ERRORPRINTF ("Failed to get first process");
+      CloseHandle (h);
+      return;
+    }
+
+  do
+    {
+      if (!strcmp ((*stacktop)->text, pe32.szExeFile))
+        {
+          HANDLE hProc = OpenProcess (PROCESS_ALL_ACCESS, FALSE,
+                                      pe32.th32ProcessID);
+          if (!hProc)
+            {
+              ERRORPRINTF ("Failed to open process handle.");
+              continue;
+            }
+          if (!TerminateProcess (hProc, 1))
+            {
+              ERRORPRINTF ("Failed to terminate process.");
+            }
+          CloseHandle (hProc);
+        }
+    }
+  while (Process32Next (h, &pe32));
+  CloseHandle (h);
 }

@@ -47,13 +47,6 @@ __CRT_UUID_DECL(IShellFolderViewDual,  0xe7a1af80, 0x4d96,
 #endif
 
 #define UNUSED(x) (void)(x)
-#define ERRORPRINTF(fmt, ...) \
-  { \
-    char buf[512]; \
-    snprintf(buf, 511, "ERROR: " fmt, ##__VA_ARGS__); \
-    buf[511] = '\0'; \
-    OutputDebugStringA(buf); \
-  }
 
 /** @brief the actual execuation call on the shell dispatcher
  *
@@ -113,37 +106,6 @@ shellexecute(IShellDispatch2 *disp, wchar_t *fName, wchar_t *param)
       return false;
     }
   return true;
-}
-
-wchar_t
-*acp_to_wchar (const char *string, size_t len)
-{
-  int n, ilen;
-  wchar_t *result;
-
-  ilen = (int) len;
-  if (ilen < 0)
-    return NULL;
-
-  n = MultiByteToWideChar (CP_ACP, 0, string, ilen, NULL, 0);
-  if (n < 0 || n + 1 < 0)
-    return NULL;
-
-  result = (wchar_t *) malloc ((size_t)(n+1) * sizeof *result);
-  if (!result)
-    {
-      ERRORPRINTF("Out of core");
-      exit(1);
-    }
-  n = MultiByteToWideChar (CP_ACP, 0, string, ilen, result, n);
-  if (n < 0)
-    {
-      if (result)
-        free (result);
-      return NULL;
-    }
-  result[n] = 0;
-  return result;
 }
 
 #ifdef __cplusplus

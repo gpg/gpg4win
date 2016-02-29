@@ -146,6 +146,44 @@ setuservariable(const int varnum, const char *var)
     lstrcpy(g_variables + varnum*g_stringsize, var);
 }
 
+#define ERRORPRINTF(fmt, ...) \
+  { \
+    char buf[512]; \
+    snprintf(buf, 511, "ERROR: " fmt, ##__VA_ARGS__); \
+    buf[511] = '\0'; \
+    OutputDebugStringA(buf); \
+  }
+
+static wchar_t
+*acp_to_wchar (const char *string, size_t len)
+{
+  int n, ilen;
+  wchar_t *result;
+
+  ilen = (int) len;
+  if (ilen < 0)
+    return NULL;
+
+  n = MultiByteToWideChar (CP_ACP, 0, string, ilen, NULL, 0);
+  if (n < 0 || n + 1 < 0)
+    return NULL;
+
+  result = (wchar_t *) malloc ((size_t)(n+1) * sizeof *result);
+  if (!result)
+    {
+      ERRORPRINTF("Out of core");
+      exit(1);
+    }
+  n = MultiByteToWideChar (CP_ACP, 0, string, ilen, result, n);
+  if (n < 0)
+    {
+      if (result)
+        free (result);
+      return NULL;
+    }
+  result[n] = 0;
+  return result;
+}
 
 
 #endif//_EXDLL_H_
