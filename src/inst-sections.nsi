@@ -1052,7 +1052,6 @@ Section "-startmenu"
   # NOT SetOutPath.
   StrCpy $OUTDIR "%HOMEDRIVE%%HOMEPATH%"
 
-!ifdef HAVE_STARTMENU
   # Make sure that the context of the automatic variables has been set to
   # the "all users" shell folder.  This guarantees that the menu gets written
   # for all users.  We have already checked that we are running as Admin; or
@@ -1064,19 +1063,11 @@ Section "-startmenu"
 	"Field 2" "State"
   IntCmp $R0 0 no_start_menu
 
-!insertmacro MUI_STARTMENU_WRITE_BEGIN Application
-    # Delete the old stuff.
-    Delete "$SMPROGRAMS\$STARTMENU_FOLDER\*"
-    Delete "$SMPROGRAMS\$STARTMENU_FOLDER\$(DESC_Menu_manuals)\*"
-
-    CreateDirectory "$SMPROGRAMS\$STARTMENU_FOLDER"
-    CreateDirectory "$SMPROGRAMS\$STARTMENU_FOLDER\$(DESC_Menu_manuals)"
-
 !ifdef HAVE_PKG_GPA
     SectionGetFlags ${SEC_gpa} $R0
     IntOp $R0 $R0 & ${SF_SELECTED}
     IntCmp $R0 ${SF_SELECTED} 0 no_gpa_menu
-    CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\GPA.lnk" \
+    CreateShortCut "$SMPROGRAMS\GPA.lnk" \
 	"$INSTDIR\bin\gpa.exe" \
         "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_gpa)
   no_gpa_menu:
@@ -1086,162 +1077,25 @@ Section "-startmenu"
     SectionGetFlags ${SEC_kleopatra} $R0
     IntOp $R0 $R0 & ${SF_SELECTED}
     IntCmp $R0 ${SF_SELECTED} 0 no_kleopatra_menu
-    CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\Kleopatra.lnk" \
+    CreateShortCut "$SMPROGRAMS\Kleopatra.lnk" \
 	"$INSTDIR\bin\kleopatra.exe" \
         "" "$INSTDIR\bin\kleopatra.exe" "" SW_SHOWNORMAL "" $(DESC_Menu_kleopatra)
   no_kleopatra_menu:
 !endif
 
-!ifdef HAVE_PKG_MAN_NOVICE_EN
-    SectionGetFlags ${SEC_man_novice_en} $R0
-    IntOp $R0 $R0 & ${SF_SELECTED}
-    IntCmp $R0 ${SF_SELECTED} 0 no_man_novice_en_menu
-    CreateShortCut \
-        "$SMPROGRAMS\$STARTMENU_FOLDER\$(DESC_Menu_manuals)\$(DESC_Name_man_novice_en).lnk" \
-	"$INSTDIR\share\gpg4win\novices.pdf" \
-        "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_man_novice_en)
-  no_man_novice_en_menu:
-!endif
-
-!ifdef HAVE_PKG_MAN_ADVANCED_EN
-    SectionGetFlags ${SEC_man_advanced_en} $R0
-    IntOp $R0 $R0 & ${SF_SELECTED}
-    IntCmp $R0 ${SF_SELECTED} 0 no_man_advanced_en_menu
-    CreateShortCut \
-        "$SMPROGRAMS\$STARTMENU_FOLDER\$(DESC_Menu_manuals)\$(DESC_Name_man_advanced_en).lnk" \
-	"$INSTDIR\share\gpg4win\advanced.pdf" \
-        "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_man_advanced_en)
-  no_man_advanced_en_menu:
-!endif
-
-!ifdef HAVE_PKG_COMPENDIUM
-    SectionGetFlags ${SEC_compendium} $R0
-    IntOp $R0 $R0 & ${SF_SELECTED}
-    IntCmp $R0 ${SF_SELECTED} 0 no_compendium_menu
-    CreateShortCut \
-        "$SMPROGRAMS\$STARTMENU_FOLDER\$(DESC_Menu_manuals)\$(DESC_Name_compendium_de_pdf).lnk" \
-	"$INSTDIR\share\gpg4win\gpg4win-compendium-de.pdf" \
-        "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_compendium_de_pdf)
-    CreateShortCut \
-        "$SMPROGRAMS\$STARTMENU_FOLDER\$(DESC_Menu_manuals)\$(DESC_Name_compendium_en_pdf).lnk" \
-	"$INSTDIR\share\gpg4win\gpg4win-compendium-en.pdf" \
-        "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_compendium_en_pdf)
-    WriteINIStr \
-        "$SMPROGRAMS\$STARTMENU_FOLDER\$(DESC_Menu_manuals)\$(DESC_Name_compendium_de_html).url" \
-	"InternetShortcut" "URL" "http://www.gpg4win.org/doc/de/gpg4win-compendium.html"
-    WriteINIStr \
-        "$SMPROGRAMS\$STARTMENU_FOLDER\$(DESC_Menu_manuals)\$(DESC_Name_compendium_en_html).url" \
-	"InternetShortcut" "URL" "http://www.gpg4win.org/doc/en/gpg4win-compendium.html"
-  no_compendium_menu:
-!endif
-
-!ifdef HAVE_PKG_MAN_NOVICE_DE
-    SectionGetFlags ${SEC_man_novice_de} $R0
-    IntOp $R0 $R0 & ${SF_SELECTED}
-    IntCmp $R0 ${SF_SELECTED} 0 no_man_novice_de_menu
-    CreateShortCut \
-        "$SMPROGRAMS\$STARTMENU_FOLDER\$(DESC_Menu_manuals)\$(DESC_Name_man_novice_de).lnk" \
-	"$INSTDIR\share\gpg4win\einsteiger.pdf" \
-        "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_man_novice_de)
-  no_man_novice_de_menu:
-!endif
-
-!ifdef HAVE_PKG_MAN_ADVANCED_DE
-    SectionGetFlags ${SEC_man_advanced_de} $R0
-    IntOp $R0 $R0 & ${SF_SELECTED}
-    IntCmp $R0 ${SF_SELECTED} 0 no_man_advanced_de_menu
-    CreateShortCut \
-        "$SMPROGRAMS\$STARTMENU_FOLDER\$(DESC_Menu_manuals)\$(DESC_Name_man_advanced_de).lnk" \
-	"$INSTDIR\share\gpg4win\durchblicker.pdf" \
-        "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_man_advanced_de)
-  no_man_advanced_de_menu:
-!endif
-
-# The FAQ is totally outdated, better don't show it.
-#    CreateShortCut \
-#      "$SMPROGRAMS\$STARTMENU_FOLDER\$(DESC_Menu_manuals)\GnuPG FAQ.lnk" \
-#      "$INSTDIR\share\gnupg\faq.html" \
-#      "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_gnupg_faq)
-
-
- StrCmp $LANGUAGE ${LANG_GERMAN} 0 +3
-    # German
-    CreateShortCut \
-      "$SMPROGRAMS\$STARTMENU_FOLDER\$(DESC_Menu_manuals)\Gpg4win HOWTO SMIME.lnk" \
-      "$INSTDIR\share\gpg4win\HOWTO-SMIME.de.txt" \
-      "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_gpg4win_howtosmime)
-    Goto leaveHowtosmimeStartmenu
-    # English
-    CreateShortCut \
-      "$SMPROGRAMS\$STARTMENU_FOLDER\$(DESC_Menu_manuals)\Gpg4win HOWTO SMIME.lnk" \
-      "$INSTDIR\share\gpg4win\HOWTO-SMIME.en.txt" \
-      "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_gpg4win_howtosmime)
-    leaveHowtosmimeStartmenu:
-
-    CreateShortCut \
-      "$SMPROGRAMS\$STARTMENU_FOLDER\$(DESC_Menu_manuals)\Gpg4win README.lnk" \
-      "$INSTDIR\share\gpg4win\README.$(T_LangCode).txt" \
-      "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_gpg4win_readme)
-
-
-# No more uninstall link because Windows has its own feature to call
-#  the uninstaller.
-#    CreateShortCut "$SMPROGRAMS\$STARTMENU_FOLDER\Uninstall.lnk" \
-#	"$INSTDIR\${PACKAGE}-uninstall.exe"
-!insertmacro MUI_STARTMENU_WRITE_END
-
  no_start_menu:
-
-
 
   # Check if the desktop entries where requested.
   !insertmacro MUI_INSTALLOPTIONS_READ $R0 "installer-options.ini" \
 	"Field 3" "State"
   IntCmp $R0 0 no_desktop
 
-  # Delete the old stuff, also old names of previous versions.
-  Delete "$DESKTOP\WinPT.lnk"
-  Delete "$DESKTOP\GPA.lnk"
-  Delete "$DESKTOP\Kleopatra.lnk"
-  Delete "$DESKTOP\Sylpheed-Claws.lnk"
-  Delete "$DESKTOP\Sylpheed-Claws Manual.lnk"
-  Delete "$DESKTOP\Sylpheed.lnk"
-  Delete "$DESKTOP\Claws-Mail.lnk"
-  Delete "$DESKTOP\Claws-Mail Manual.lnk"
-  Delete "$DESKTOP\$(DESC_Name_compendium_de_pdf).lnk"
-  Delete "$DESKTOP\$(DESC_Name_compendium_de_html).lnk"
-  Delete "$DESKTOP\$(DESC_Name_compendium_en_pdf).lnk"
-  Delete "$DESKTOP\$(DESC_Name_compendium_en_html).lnk"
-  Delete "$DESKTOP\$(DESC_Name_man_novice_de).lnk"
-  Delete "$DESKTOP\$(DESC_Name_man_novice_en).lnk"
-  Delete "$DESKTOP\$(DESC_Name_man_advanced_de).lnk"
-  Delete "$DESKTOP\GPGee Manual.lnk"
-  Delete "$DESKTOP\GnuPG FAQ.lnk"
-  Delete "$DESKTOP\Gpg4Win README.lnk"
-  Delete "$DESKTOP\$(DESC_Desktop_manuals)\Claws-Mail Manual.lnk"
-  Delete "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_compendium_de_pdf).lnk"
-  Delete "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_compendium_de_html).lnk"
-  Delete "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_compendium_de_html).url"
-  Delete "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_compendium_en_pdf).lnk"
-  Delete "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_compendium_en_html).lnk"
-  Delete "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_compendium_en_html).url"
-  Delete "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_man_novice_de).lnk"
-  Delete "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_man_novice_en).lnk"
-  Delete "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_man_advanced_de).lnk"
-  Delete "$DESKTOP\$(DESC_Desktop_manuals)\GPGee Manual.lnk"
-  Delete "$DESKTOP\$(DESC_Desktop_manuals)\GnuPG FAQ.lnk"
-  Delete "$DESKTOP\$(DESC_Desktop_manuals)\Gpg4Win README.lnk"
-  Delete "$DESKTOP\$(DESC_Desktop_manuals)\Gpg4win README.lnk"
-  Delete "$DESKTOP\$(DESC_Desktop_manuals)\Gpg4win HOWTO SMIME.lnk"
-
-  CreateDirectory "$DESKTOP\$(DESC_Desktop_manuals)"
-
 !ifdef HAVE_PKG_GPA
     SectionGetFlags ${SEC_gpa} $R0
     IntOp $R0 $R0 & ${SF_SELECTED}
     IntCmp $R0 ${SF_SELECTED} 0 no_gpa_desktop
     CreateShortCut "$DESKTOP\GPA.lnk" \
-	"$INSTDIR\gpa.exe" \
+	"$INSTDIR\bin\gpa.exe" \
         "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_gpa)
   no_gpa_desktop:
 !endif
@@ -1251,151 +1105,11 @@ Section "-startmenu"
     IntOp $R0 $R0 & ${SF_SELECTED}
     IntCmp $R0 ${SF_SELECTED} 0 no_kleopatra_desktop
     CreateShortCut "$DESKTOP\Kleopatra.lnk" \
-	"$INSTDIR\kleopatra.exe" \
+	"$INSTDIR\bin\kleopatra.exe" \
         "" "$INSTDIR\bin\kleopatra.exe" "" SW_SHOWNORMAL "" $(DESC_Menu_kleopatra)
   no_kleopatra_desktop:
 !endif
 
-!ifdef HAVE_PKG_MAN_NOVICE_EN
-    SectionGetFlags ${SEC_man_novice_en} $R0
-    IntOp $R0 $R0 & ${SF_SELECTED}
-    IntCmp $R0 ${SF_SELECTED} 0 no_man_novice_en_desktop
-    CreateShortCut \
-        "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_man_novice_en).lnk" \
-	"$INSTDIR\share\gpg4win\novices.pdf" \
-        "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_man_novice_en)
-  no_man_novice_en_desktop:
-!endif
-
-!ifdef HAVE_PKG_MAN_ADVANCED_EN
-    SectionGetFlags ${SEC_man_advanced_en} $R0
-    IntOp $R0 $R0 & ${SF_SELECTED}
-    IntCmp $R0 ${SF_SELECTED} 0 no_man_advanced_en_desktop
-    CreateShortCut \
-        "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_man_advanced_en).lnk" \
-	"$INSTDIR\share\gpg4win\advanced.pdf" \
-        "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_man_advanced_en)
-  no_man_advanced_en_desktop:
-!endif
-
-!ifdef HAVE_PKG_COMPENDIUM
-    SectionGetFlags ${SEC_compendium} $R0
-    IntOp $R0 $R0 & ${SF_SELECTED}
-    IntCmp $R0 ${SF_SELECTED} 0 no_compendium_desktop
-    CreateShortCut \
-        "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_compendium_de_pdf).lnk" \
-	"$INSTDIR\share\gpg4win\gpg4win-compendium-de.pdf" \
-        "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_compendium_de_pdf)
-    CreateShortCut \
-        "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_compendium_en_pdf).lnk" \
-	"$INSTDIR\share\gpg4win\gpg4win-compendium-en.pdf" \
-        "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_compendium_en_pdf)
-    WriteINIStr \
-        "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_compendium_de_html).url" \
-	"InternetShortcut" "URL" "http://www.gpg4win.org/doc/de/gpg4win-compendium.html"
-    WriteINIStr \
-        "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_compendium_en_html).url" \
-	"InternetShortcut" "URL" "http://www.gpg4win.org/doc/en/gpg4win-compendium.html"
-  no_compendium_desktop:
-!endif
-
-!ifdef HAVE_PKG_MAN_NOVICE_DE
-    SectionGetFlags ${SEC_man_novice_de} $R0
-    IntOp $R0 $R0 & ${SF_SELECTED}
-    IntCmp $R0 ${SF_SELECTED} 0 no_man_novice_de_desktop
-    CreateShortCut \
-        "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_man_novice_de).lnk" \
-	"$INSTDIR\share\gpg4win\einsteiger.pdf" \
-        "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_man_novice_de)
-  no_man_novice_de_desktop:
-!endif
-
-!ifdef HAVE_PKG_MAN_ADVANCED_DE
-    SectionGetFlags ${SEC_man_advanced_de} $R0
-    IntOp $R0 $R0 & ${SF_SELECTED}
-    IntCmp $R0 ${SF_SELECTED} 0 no_man_advanced_de_desktop
-    CreateShortCut \
-        "$DESKTOP\$(DESC_Desktop_manuals)\$(DESC_Name_man_advanced_de).lnk" \
-	"$INSTDIR\share\gpg4win\durchblicker.pdf" \
-        "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_man_advanced_de)
-  no_man_advanced_de_desktop:
-!endif
-
-# The GnuPG FAQ is totally out of date
-#    CreateShortCut "$DESKTOP\$(DESC_Desktop_manuals)\GnuPG FAQ.lnk" \
-#                   "$INSTDIR\share\gnupg\faq.html" \
-#                   "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_gnupg_faq)
-
-    CreateShortCut \
-      "$DESKTOP\$(DESC_Desktop_manuals)\Gpg4win README.lnk" \
-      "$INSTDIR\share\gpg4win\README.$(T_LangCode).txt" \
-      "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_gpg4win_readme)
-
- StrCmp $LANGUAGE ${LANG_GERMAN} 0 +3
-    # German
-    CreateShortCut \
-      "$DESKTOP\$(DESC_Desktop_manuals)\Gpg4win HOWTO SMIME.lnk" \
-      "$INSTDIR\share\gpg4win\HOWTO-SMIME.de.txt" \
-      "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_gpg4win_howtosmime)
-    Goto leaveHowtosmimeDesktop
-    # English
-    CreateShortCut \
-      "$DESKTOP\$(DESC_Desktop_manuals)\Gpg4win HOWTO SMIME.lnk" \
-      "$INSTDIR\share\gpg4win\HOWTO-SMIME.en.txt" \
-      "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_gpg4win_howtosmime)
-    leaveHowtosmimeDesktop:
-
 no_desktop:
 
-
-  # Check if the quick launch bar entries where requested.
-  !insertmacro MUI_INSTALLOPTIONS_READ $R0 "installer-options.ini" \
-	"Field 4" "State"
-  IntCmp $R0 0 no_quick_launch
-  StrCmp $QUICKLAUNCH $TEMP no_quick_launch
-
-  # Delete old Quick Launch Bar links.
-  Delete "$QUICKLAUNCH\WinPT.lnk"
-  Delete "$QUICKLAUNCH\GPA.lnk"
-  Delete "$QUICKLAUNCH\Kleopatra.lnk"
-  Delete "$QUICKLAUNCH\Sylpheed-Claws.lnk"
-  # We better delete also the name we used prior to 1.0.3
-  Delete "$QUICKLAUNCH\Sylpheed.lnk"
-  Delete "$QUICKLAUNCH\Claws-Mail.lnk"
-  Delete "$QUICKLAUNCH\$(DESC_Name_compendium).lnk"
-  Delete "$QUICKLAUNCH\$(DESC_Name_compendium).lnk"
-  Delete "$QUICKLAUNCH\$(DESC_Name_man_novice_de).lnk"
-  Delete "$QUICKLAUNCH\$(DESC_Name_man_advanced_de).lnk"
-  Delete "$QUICKLAUNCH\GPGee Manual.lnk"
-  Delete "$QUICKLAUNCH\GnuPG FAQ.lnk"
-  Delete "$QUICKLAUNCH\Gpg4Win README.lnk"
-
-!ifdef HAVE_PKG_GPA
-    SectionGetFlags ${SEC_gpa} $R0
-    IntOp $R0 $R0 & ${SF_SELECTED}
-    IntCmp $R0 ${SF_SELECTED} 0 no_gpa_quicklaunch
-    CreateShortCut "$QUICKLAUNCH\GPA.lnk" \
-	"$INSTDIR\gpa.exe" \
-        "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_gpa)
-  no_gpa_quicklaunch:
-!endif
-
-!ifdef HAVE_PKG_KLEOPATRA
-    SectionGetFlags ${SEC_kleopatra} $R0
-    IntOp $R0 $R0 & ${SF_SELECTED}
-    IntCmp $R0 ${SF_SELECTED} 0 no_kleopatra_quicklaunch
-    CreateShortCut "$QUICKLAUNCH\Kleopatra.lnk" \
-	"$INSTDIR\kleopatra.exe" \
-        "" "$INSTDIR\bin\kleopatra.exe" "" SW_SHOWNORMAL "" $(DESC_Menu_kleopatra)
-  no_kleopatra_quicklaunch:
-!endif
-
-no_quick_launch:
-
-
-!endif
 SectionEnd
-
-
-# FIXME: Now write desktop and quick launch bar.
-# Don't forget to delete the corr. entries in installer-finish. Uninstall.

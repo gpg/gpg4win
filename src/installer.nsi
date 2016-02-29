@@ -158,22 +158,6 @@ Bitte die Sprache des Installations-Vorgangs angeben."
 !define MUI_PAGE_CUSTOMFUNCTION_LEAVE CheckExistingVersion
 !insertmacro MUI_PAGE_DIRECTORY
 
-!ifdef HAVE_STARTMENU
-
-Page custom CustomPageOptions
-
-Var STARTMENU_FOLDER
-
-!define MUI_PAGE_CUSTOMFUNCTION_PRE CheckIfStartMenuWanted
-!define MUI_STARTMENUPAGE_NODISABLE
-!define MUI_STARTMENUPAGE_REGISTRY_ROOT "HKLM"
-!define MUI_STARTMENUPAGE_REGISTRY_KEY "Software\${PRETTY_PACKAGE_SHORT}"
-!define MUI_STARTMENUPAGE_REGISTRY_VALUENAME "Start Menu Folder"
-
-!insertmacro MUI_PAGE_STARTMENU Application $STARTMENU_FOLDER
-
-!endif
-
 !define MUI_PAGE_CUSTOMFUNCTION_PRE BeforeInstallHooks
 !insertmacro MUI_PAGE_INSTFILES
 !define MUI_PAGE_CUSTOMFUNCTION_PRE ShowFinalWarnings
