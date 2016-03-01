@@ -155,10 +155,10 @@ Bitte die Sprache des Installations-Vorgangs angeben."
 
 !define MUI_PAGE_CUSTOMFUNCTION_PRE BeforeInstallHooks
 !insertmacro MUI_PAGE_INSTFILES
-!define MUI_PAGE_CUSTOMFUNCTION_PRE ShowFinalWarnings
-
 # Finish page
 !ifndef SOURCES
+!define MUI_PAGE_CUSTOMFUNCTION_PRE ShowFinalWarnings
+
 !define MUI_PAGE_CUSTOMFUNCTION_SHOW FinishFunction
 !define MUI_FINISHPAGE_RUN
 !define MUI_FINISHPAGE_RUN_FUNCTION RunAsUser
@@ -210,7 +210,9 @@ LangString T_RunGPA ${LANG_ENGLISH} \
 
 !insertmacro MUI_UNPAGE_WELCOME
 !insertmacro MUI_UNPAGE_CONFIRM
+!ifndef SOURCES
 !define MUI_PAGE_CUSTOMFUNCTION_PRE un.CloseApps
+!endif
 !insertmacro MUI_UNPAGE_INSTFILES
 #!insertmacro MUI_UNPAGE_FINISH
 
