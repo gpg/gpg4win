@@ -764,6 +764,7 @@ Function CalcDepends
 		${SF_SELECTED} have_qt skip_qt
   have_qt:
   !insertmacro SelectSection ${SEC_libpng}
+  !insertmacro SelectSection ${SEC_zlib}
   skip_qt:
 !endif
 
@@ -774,6 +775,7 @@ Function CalcDepends
   # GPGME does not depend on gnupg2.  Do this in the
   # actual application instead.
   !insertmacro SelectSection ${SEC_libgpg_error}
+  !insertmacro SelectSection ${SEC_libassuan}
 !ifdef HAVE_PKG_QTBASE
   !insertmacro SelectSection ${SEC_qtbase}
 !endif
