@@ -35,7 +35,7 @@ ${MementoSection} "GnuPG" SEC_gnupg_w32
 SetOutPath "$TEMP"
   DetailPrint  "$(T_Installing_GnuPG) ${gpg4win_pkg_gnupg_w32_version}"
   File "${prefix}/gnupg-w32-${gpg4win_pkg_gnupg_w32_version}-bin.exe"
-  ExecWait '"$TEMP\gnupg-w32-${gpg4win_pkg_gnupg_w32_version}-bin.exe" /S /D="$INSTDIR\..\GnuPG"'
+  ExecWait '"$TEMP\gnupg-w32-${gpg4win_pkg_gnupg_w32_version}-bin.exe" /S /D=$INSTDIR\..\GnuPG'
 
   Delete "$TEMP\gnupg-w32-${gpg4win_pkg_gnupg_w32_version}-bin.exe"
 !endif
