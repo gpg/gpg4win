@@ -31,7 +31,7 @@ Section "-un.kleopatra"
   Call un.SourceDelete
 !else
   Delete "$INSTDIR\bin\kleopatra.exe"
-  Delete "$INSTDIR\kcm_kleopatra.dll"
+  Delete "$INSTDIR\bin\kcm_kleopatra.dll"
  # Delete "$INSTDIR\bin\kwatchgnupg.exe"
   RMDir "$INSTDIR\bin"
 
