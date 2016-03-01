@@ -37,6 +37,7 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         patches/w32pth-2.0.5/workaround-broken-libtool.patch \
         patches/qttools/disable-most-tools.patch \
         patches/ki18n/no-tests.patch \
+        patches/gpgme-1.6.0/0001-w32-Fallback-to-2.1-reg-key-for-gpgconf-search.patch \
         patches/gpgmepp/0002-disable-variants.patch \
         patches/kmime/0001-Check-for-and-replace-strcasestr.patch \
         patches/kmime/0002-Fix-Windows-build.patch \
@@ -54,7 +55,8 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         patches/kleopatra/0002-Add-alternative-configuredialog-wihout-KCMUtils.patch \
         patches/kleopatra/0003-Add-option-to-disable-KWatchGnuPG.patch \
         patches/kleopatra/0004-Make-DBus-integration-of-the-smime-conf-optional.patch \
-        patches/kleopatra/0005-Hack-generated-conf-files-for-Crosscompiling.patch
+        patches/kleopatra/0005-Hack-generated-conf-files-for-Crosscompiling.patch \
+        patches/kcoreaddons/0001-Fix-Kdelibs4-config-migration-for-Windows.patch
 
 copy-news:
 	cp NEWS doc/website/NEWS.last
