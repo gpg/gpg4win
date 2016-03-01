@@ -41,6 +41,14 @@ Section "-qtbase" SEC_qtbase
   File ${prefix}/bin/Qt5PrintSupport.dll
   File ${prefix}/bin/Qt5Xml.dll
 
+  push $1
+  FileOpen $1 "$INSTDIR\bin\qt.conf" "w"
+  FileWrite $1 '[StandardPaths]$\r$\n'
+  FileWrite $1 'GenericConfigLocation=%APPDATA%/kleopatra$\r$\n'
+  FileWrite $1 'GenericDataLocation=%APPDATA%/kleopatra$\r$\n'
+  FileClose $1
+  pop $1
+
   SetOutPath "$INSTDIR\bin\platforms"
 
   File ${prefix}/plugins/platforms/qwindows.dll

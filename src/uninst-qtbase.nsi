@@ -37,6 +37,7 @@ Section "-un.qtbase"
   Delete "$INSTDIR\bin\Qt5Network.dll"
   Delete "$INSTDIR\bin\Qt5Xml.dll"
   Delete "$INSTDIR\bin\Qt5PrintSupport.dll"
+  Delete "$INSTDIR\bin\qt.conf"
 
   Delete "$INSTDIR\bin\platforms\qwindows.dll"
 
