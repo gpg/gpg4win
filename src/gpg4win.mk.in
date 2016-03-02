@@ -39,7 +39,7 @@ pkg_files =
 stamps/stamp-directories:
 	$(MKDIR) stamps
 	$(MKDIR) playground
-	$(MKDIR) installers
+	$(MKDIR) -p installers
 	$(MKDIR) $(bdir)
 	$(MKDIR) $(idir)
 	$(MKDIR) $(ipdir)
