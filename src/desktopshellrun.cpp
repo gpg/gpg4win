@@ -131,8 +131,7 @@ void __declspec(dllexport) __cdecl DesktopShellRun(HWND hwndParent,
   UNUSED(hwndParent);
   UNUSED(string_size);
   HRESULT hr;
-  wchar_t *wbuf = NULL,
-          *params = NULL;
+  wchar_t *wbuf = NULL;
   IShellWindows *shellWindows = NULL;
   IShellBrowser *shellBrowser = NULL;
   IShellView *shellView = NULL;
@@ -248,19 +247,12 @@ void __declspec(dllexport) __cdecl DesktopShellRun(HWND hwndParent,
       goto done;
     }
 
-  if ((*stacktop)->next && (*stacktop)->next->text)
-    {
-      params = acp_to_wchar((*stacktop)->next->text, strlen((*stacktop)->next->text));
-    }
-
-  if (!shellexecute(shellDispatch, wbuf, params))
+  if (!shellexecute(shellDispatch, wbuf, NULL))
     {
       ERRORPRINTF ("Failed to execute.");
     }
   if (wbuf)
     free(wbuf);
-  if (params)
-    free (params);
 done:
   if (folderView)
     {
