@@ -37,6 +37,7 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         patches/w32pth-2.0.5/workaround-broken-libtool.patch \
         patches/qttools/disable-most-tools.patch \
         patches/ki18n/no-tests.patch \
+        patches/ki18n/0001-Use-QLocale-system-uiLanguages-as-fallback.patch \
         patches/gpgme-1.6.0/0001-w32-Fallback-to-2.1-reg-key-for-gpgconf-search.patch \
         patches/gpgmepp/0002-disable-variants.patch \
         patches/kmime/0001-Check-for-and-replace-strcasestr.patch \

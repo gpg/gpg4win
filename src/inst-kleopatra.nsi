@@ -214,59 +214,6 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
   FileClose $1
   pop $1
 
-  push $1
-  FileOpen $1 "$INSTDIR\share\klanguageoverridesrc" "w"
-  FileWrite $1 '[Language] $\r$\n'
-  StrCmp $LANGUAGE "1031" german_locale 0
-  StrCmp $LANGUAGE "1025" arabic 0
-  StrCmp $LANGUAGE "1029" czech 0
-  StrCmp $LANGUAGE "1049" russian 0
-  StrCmp $LANGUAGE "1036" french 0
-  StrCmp $LANGUAGE "1034" spanish 0
-  StrCmp $LANGUAGE "1040" italian 0
-  StrCmp $LANGUAGE "1046" portugese 0
-  StrCmp $LANGUAGE "2070" portugese_br 0
-  StrCmp $LANGUAGE "2052" simpchinese 0
-  StrCmp $LANGUAGE "1028" tradchinese 0
-  FileWrite $1 'kleopatra=@ByteArray(en) $\r$\n'
-  Goto lang_done
-german_locale:
-  FileWrite $1 'kleopatra=@ByteArray(de) $\r$\n'
-  Goto lang_done
-arabic:
-  FileWrite $1 'kleopatra=@ByteArray(ar) $\r$\n'
-  Goto lang_done
-czech:
-  FileWrite $1 'kleopatra=@ByteArray(cs) $\r$\n'
-  Goto lang_done
-russian:
-  FileWrite $1 'kleopatra=@ByteArray(ru) $\r$\n'
-  Goto lang_done
-french:
-  FileWrite $1 'kleopatra=@ByteArray(fr) $\r$\n'
-  Goto lang_done
-spanish:
-  FileWrite $1 'kleopatra=@ByteArray(es) $\r$\n'
-  Goto lang_done
-italian:
-  FileWrite $1 'kleopatra=@ByteArray(it) $\r$\n'
-  Goto lang_done
-portugese:
-  FileWrite $1 'kleopatra=@ByteArray(pt) $\r$\n'
-  Goto lang_done
-portugese_br:
-  FileWrite $1 'kleopatra=@ByteArray(pt_BR) $\r$\n'
-  Goto lang_done
-simpchinese:
-  FileWrite $1 'kleopatra=@ByteArray(zh_CN) $\r$\n'
-  Goto lang_done
-tradchinese:
-  FileWrite $1 'kleopatra=@ByteArray(zh_TW) $\r$\n'
-  Goto lang_done
-lang_done:
-  FileClose $1
-  pop $1
-
   SetOutPath "$INSTDIR\share\QtProject"
   # We want kleopatra logging for debugging
   push $1

@@ -1,0 +1,100 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From 7a2c71e618d97f5d4a3bdf1ba10fc36c638f17ba Mon Sep 17 00:00:00 2001
+From: Andre Heinecke <aheinecke@intevation.de>
+Date: Fri, 4 Mar 2016 11:26:06 +0100
+Subject: [PATCH] Use QLocale::system uiLanguages as fallback
+
+This fixes locale initialisation on platforms that don't use
+environment variables for language settings. (Windows)
+---
+ src/klocalizedstring.cpp | 54 ++++++++++++++++++++++++++++++------------------
+ 1 file changed, 34 insertions(+), 20 deletions(-)
+
+diff --git a/src/klocalizedstring.cpp b/src/klocalizedstring.cpp
+index b24fe9b..e1f71dd 100644
+--- a/src/klocalizedstring.cpp
++++ b/src/klocalizedstring.cpp
+@@ -95,6 +95,30 @@ static void splitLocale(const QString &aLocale,
+     language = locale;
+ }
+
++static void appendLocaleString(QStringList &languages, const QString &value)
++{
++    // Process the value to create possible combinations.
++    QString language, country, modifier, charset;
++    splitLocale(value, language, country, modifier, charset);
++
++    if (!country.isEmpty() && !modifier.isEmpty()) {
++        languages +=   language + QLatin1Char('_')
++                       + country + QLatin1Char('@')
++                       + modifier;
++    }
++    // NOTE: Priority is unclear in case both the country and
++    // the modifier are present. Should really language@modifier be of
++    // higher priority than language_country?
++    // In at least one case (Serbian language), it is better this way.
++    if (!modifier.isEmpty()) {
++        languages += language + QLatin1Char('@') + modifier;
++    }
++    if (!country.isEmpty()) {
++        languages += language + QLatin1Char('_') + country;
++    }
++    languages += language;
++}
++
+ static void appendLanguagesFromVariable(QStringList &languages,
+                                         const char *envar, bool isList = false)
+ {
+@@ -104,30 +128,19 @@ static void appendLanguagesFromVariable(QStringList &languages,
+         if (isList) {
+             languages += value.split(QLatin1Char(':'));
+         } else {
+-            // Process the value to create possible combinations.
+-            QString language, country, modifier, charset;
+-            splitLocale(value, language, country, modifier, charset);
+-
+-            if (!country.isEmpty() && !modifier.isEmpty()) {
+-                languages +=   language + QLatin1Char('_')
+-                               + country + QLatin1Char('@')
+-                               + modifier;
+-            }
+-            // NOTE: Priority is unclear in case both the country and
+-            // the modifier are present. Should really language@modifier be of
+-            // higher priority than language_country?
+-            // In at least one case (Serbian language), it is better this way.
+-            if (!modifier.isEmpty()) {
+-                languages += language + QLatin1Char('@') + modifier;
+-            }
+-            if (!country.isEmpty()) {
+-                languages += language + QLatin1Char('_') + country;
+-            }
+-            languages += language;
++            appendLocaleString(languages, value);
+         }
+     }
+ }
+
++static void appendLanguagesFromQLocale(QStringList &languages, const QLocale &locale)
++{
++    const QStringList uiLangs = locale.uiLanguages();
++    Q_FOREACH (QString value, uiLangs) {
++        appendLocaleString(languages, value.replace(QLatin1Char('-'), QLatin1Char('_')));
++    }
++}
++
+ // Extract the first country code from a list of language_COUNTRY strings.
+ // Country code is converted to all lower case letters.
+ static QString extractCountry(const QStringList &languages)
+@@ -333,6 +346,7 @@ void KLocalizedStringPrivateStatics::initializeLocaleLanguages()
+     appendLanguagesFromVariable(localeLanguages, "LC_ALL");
+     appendLanguagesFromVariable(localeLanguages, "LC_MESSAGES");
+     appendLanguagesFromVariable(localeLanguages, "LANG");
++    appendLanguagesFromQLocale(localeLanguages, QLocale::system());
+ }
+
+ KLocalizedString::KLocalizedString()
+--
+2.1.4
