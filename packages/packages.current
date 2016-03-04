@@ -231,10 +231,10 @@ chk  f5230890dc0be42fb5c58fbf793da253155de106
 #
 server http://files.gpg4win.org/Beta/gpgol
 
-# last-changed: 2016-01-07
+# last-changed: 2016-03-04
 # by: ah
-file 2.0.0-beta45/gpgol-2.0.0-beta45.tar.bz2
-chk  041bb3345776015c1d1edfd4861eb3e5080d7552
+file 1.4.0-beta55/gpgol-1.4.0-beta55.tar.bz2
+chk  9615c10afc636d79908a55b21fa977fc0f33e584
 
 #
 # GpgEX
