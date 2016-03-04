@@ -79,11 +79,11 @@ msgstr "Releasedatum ${_BUILD_ISODATE}"
 
 msgctxt "T_RunKleopatra"
 msgid "Run Kleopatra"
-msgstr ""
+msgstr "Kleopatra starten"
 
 msgctxt "T_RunGPA"
 msgid "Run GPA"
-msgstr ""
+msgstr "GPA starten"
 
 msgctxt "T_LangCode"
 msgid "en"
