@@ -13,6 +13,10 @@ Instructions:
    [...]
    $ cd ..
 
+1.5 (Only necessary when building from Git)
+
+   $ ./autogen.sh
+
 2. Configure the source tree for cross compilation:
 
    $ ./autogen.sh --build-w32
