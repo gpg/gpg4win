@@ -610,7 +610,7 @@ stamps/stamp-dist-self: versioninfo.txt
 
 installers/gpg4win-src-$(VERSION).exe: gpg4win-src.nsi $(common_nsii) \
                             stamps/stamp-final \
-                            stamps/stamp-dist-self installer-options.ini \
+                            stamps/stamp-dist-self \
 		            license.blurb
 	$(MAKENSIS) -V3 -DBUILD_DIR=`pwd` -DTOP_SRCDIR=$(top_srcdir) \
 	  -DSRCDIR=$(srcdir) $(EXTRA_MAKENSIS_FLAGS) $(srcdir)/gpg4win-src.nsi && \
