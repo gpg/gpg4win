@@ -497,8 +497,8 @@ server http://files.intevation.de/projects/gpg4all
 # by: ah
 # verified: Tarball created by ah.
 
-file gpgmepp/gpgmepp-201601221458.tar.xz
-chk 04cfa9a41f06915d95d0d83a199f05bfcc9a527d
+file gpgmepp/gpgmepp-201603091357.tar.xz
+chk e24baa3618ac5fab63cba68d1aa9c13ba3cf581c
 
 # kmime
 # last changed: 2016-01-25
