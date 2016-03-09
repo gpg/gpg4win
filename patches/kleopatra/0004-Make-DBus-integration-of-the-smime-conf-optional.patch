@@ -1,8 +1,8 @@
 #! /bin/sh
-patch -p2 -l -f $* < $0
+patch -p1 -l -f $* < $0
 exit $?
 
-From 5e9fd7ef2c4550b3893bbd52b2d15e4ad5f2fe9c Mon Sep 17 00:00:00 2001
+From a88a947afb03cf1d12d9758fd8009ef3d4008c3b Mon Sep 17 00:00:00 2001
 From: Andre Heinecke <aheinecke@intevation.de>
 Date: Tue, 16 Feb 2016 18:17:17 +0100
 Subject: [PATCH 4/5] Make DBus integration of the smime conf optional
@@ -11,14 +11,29 @@ This is indirect because if you have KCMUtils you already
 have DBus and so you want to integrate with DBus in the
 S/MIME Config widget.
 ---
- kleopatra/conf/smimevalidationconfigurationwidget.cpp | 6 +++++-
- kleopatra/config-kleopatra.h.cmake                    | 3 +++
- 2 files changed, 8 insertions(+), 1 deletion(-)
+ config-kleopatra.h.cmake                        | 7 +++++--
+ src/conf/smimevalidationconfigurationwidget.cpp | 6 +++++-
+ 2 files changed, 10 insertions(+), 3 deletions(-)
 
-diff --git a/kleopatra/conf/smimevalidationconfigurationwidget.cpp b/kleopatra/conf/smimevalidationconfigurationwidget.cpp
+diff --git a/config-kleopatra.h.cmake b/config-kleopatra.h.cmake
+index 4fb4a8f..4842cca 100644
+--- a/config-kleopatra.h.cmake
++++ b/config-kleopatra.h.cmake
+@@ -21,5 +21,8 @@
+ /* Define to 1 if you build libkleopatraclient */
+ #cmakedefine HAVE_KLEOPATRACLIENT_LIBRARY 1
+
+-/* Mirrored from cmake option */
+-#cmakedefine KLEO_STATIC_KCMODULES 1
++/* KF5KCMUtils available */
++#cmakedefine01 HAVE_KCMUTILS
++
++/* DBus available */
++#cmakedefine01 HAVE_QDBUS
+diff --git a/src/conf/smimevalidationconfigurationwidget.cpp b/src/conf/smimevalidationconfigurationwidget.cpp
 index aab1e98..e3ba39f 100644
---- a/kleopatra/conf/smimevalidationconfigurationwidget.cpp
-+++ b/kleopatra/conf/smimevalidationconfigurationwidget.cpp
+--- a/src/conf/smimevalidationconfigurationwidget.cpp
++++ b/src/conf/smimevalidationconfigurationwidget.cpp
 @@ -44,7 +44,9 @@
  #include <KLocalizedString>
  #include "kleopatra_debug.h"
@@ -40,16 +55,5 @@ index aab1e98..e3ba39f 100644
      }
 
      bool customHTTPProxyWritable;
-diff --git a/kleopatra/config-kleopatra.h.cmake b/kleopatra/config-kleopatra.h.cmake
-index d0c7092..4842cca 100644
---- a/kleopatra/config-kleopatra.h.cmake
-+++ b/kleopatra/config-kleopatra.h.cmake
-@@ -23,3 +23,6 @@
-
- /* KF5KCMUtils available */
- #cmakedefine01 HAVE_KCMUTILS
-+
-+/* DBus available */
-+#cmakedefine01 HAVE_QDBUS
 --
 2.1.4

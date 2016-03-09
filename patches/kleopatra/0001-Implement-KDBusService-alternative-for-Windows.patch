@@ -1,8 +1,8 @@
 #! /bin/sh
-patch -p2 -l -f $* < $0
+patch -p1 -l -f $* < $0
 exit $?
 
-From 0af0ec9c52422aa23cfd4881880ceed44f57c17b Mon Sep 17 00:00:00 2001
+From 243a5fccc82d7b398ec3cc8509e0900eac5d35af Mon Sep 17 00:00:00 2001
 From: Andre Heinecke <aheinecke@intevation.de>
 Date: Fri, 29 Jan 2016 17:00:54 +0100
 Subject: [PATCH 1/5] Implement KDBusService alternative for Windows
@@ -10,38 +10,38 @@ Subject: [PATCH 1/5] Implement KDBusService alternative for Windows
 Instead of using KDBusService we can just use Window
 Messages to communicate with other processes on Windows.
 ---
- kleopatra/CMakeLists.txt                   |  31 +++-
- kleopatra/autotests/CMakeLists.txt         |  13 ++
- kleopatra/autotests/kuniqueservicetest.cpp | 177 +++++++++++++++++++++++
- kleopatra/kleopatraapplication.cpp         |   2 +
- kleopatra/kwatchgnupg/CMakeLists.txt       |   6 +
- kleopatra/kwatchgnupg/main.cpp             |   4 +-
- kleopatra/main.cpp                         |   7 +-
- kleopatra/utils/kuniqueservice.h           |  91 ++++++++++++
- kleopatra/utils/kuniqueservice_dbus.cpp    |  64 +++++++++
- kleopatra/utils/kuniqueservice_win.cpp     | 219 +++++++++++++++++++++++++++++
- 10 files changed, 606 insertions(+), 8 deletions(-)
- create mode 100644 kleopatra/autotests/CMakeLists.txt
- create mode 100644 kleopatra/autotests/kuniqueservicetest.cpp
- create mode 100644 kleopatra/utils/kuniqueservice.h
- create mode 100644 kleopatra/utils/kuniqueservice_dbus.cpp
- create mode 100644 kleopatra/utils/kuniqueservice_win.cpp
+ CMakeLists.txt                    |  15 ++-
+ autotests/CMakeLists.txt          |  13 +++
+ autotests/kuniqueservicetest.cpp  | 177 ++++++++++++++++++++++++++++++
+ src/kleopatraapplication.cpp      |   2 +
+ src/kwatchgnupg/CMakeLists.txt    |   6 ++
+ src/kwatchgnupg/main.cpp          |   4 +-
+ src/main.cpp                      |   7 +-
+ src/utils/kuniqueservice.h        |  91 ++++++++++++++++
+ src/utils/kuniqueservice_dbus.cpp |  64 +++++++++++
+ src/utils/kuniqueservice_win.cpp  | 219 ++++++++++++++++++++++++++++++++++++++
+ 10 files changed, 591 insertions(+), 7 deletions(-)
+ create mode 100644 autotests/CMakeLists.txt
+ create mode 100644 autotests/kuniqueservicetest.cpp
+ create mode 100644 src/utils/kuniqueservice.h
+ create mode 100644 src/utils/kuniqueservice_dbus.cpp
+ create mode 100644 src/utils/kuniqueservice_win.cpp
 
-diff --git a/kleopatra/CMakeLists.txt b/kleopatra/CMakeLists.txt
-index e2135c5..9d049f1 100644
---- a/kleopatra/CMakeLists.txt
-+++ b/kleopatra/CMakeLists.txt
-@@ -33,7 +33,6 @@ if(${CMAKE_SOURCE_DIR} STREQUAL ${kleopatra_SOURCE_DIR})
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 2fddf22..7970ffe 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -32,7 +32,6 @@ include(ECMQtDeclareLoggingCategory)
 
  # Find KF5 packages
-   find_package(KF5Codecs ${KF5_VERSION} CONFIG REQUIRED)
--  find_package(KF5DBusAddons ${KF5_VERSION} CONFIG REQUIRED)
-   find_package(KF5KCMUtils ${KF5_VERSION} CONFIG REQUIRED)
-   find_package(KF5Config ${KF5_VERSION} CONFIG REQUIRED)
-   find_package(KF5I18n ${KF5_VERSION} CONFIG REQUIRED)
-@@ -43,6 +42,19 @@ if(${CMAKE_SOURCE_DIR} STREQUAL ${kleopatra_SOURCE_DIR})
-   find_package(KF5WindowSystem ${KF5_VERSION} CONFIG REQUIRED)
-   find_package(KF5TextWidgets ${KF5_VERSION} CONFIG REQUIRED)
+ find_package(KF5Codecs ${KF5_VERSION} CONFIG REQUIRED)
+-find_package(KF5DBusAddons ${KF5_VERSION} CONFIG REQUIRED)
+ find_package(KF5KCMUtils ${KF5_VERSION} CONFIG REQUIRED)
+ find_package(KF5Config ${KF5_VERSION} CONFIG REQUIRED)
+ find_package(KF5I18n ${KF5_VERSION} CONFIG REQUIRED)
+@@ -45,6 +44,19 @@ find_package(KF5DocTools REQUIRED)
+
+ set_package_properties(KF5DocTools PROPERTIES DESCRIPTION "Documentation tools" TYPE OPTIONAL PURPOSE "Required to generate Kleopatra documentation.")
 
 +# Optional packages
 +if (WIN32)
@@ -57,55 +57,21 @@ index e2135c5..9d049f1 100644
 +endif()
 +
  # Kdepimlibs packages
-   find_package(KF5Libkleo ${LIBKLEO_VERSION} CONFIG REQUIRED)
-   find_package(KF5Mime ${KMIME_VERSION} CONFIG REQUIRED)
-@@ -338,6 +350,13 @@ set(_kleopatra_SRCS
-   main.cpp
- )
+ find_package(KF5Libkleo ${LIBKLEO_VERSION} CONFIG REQUIRED)
+ find_package(KF5Mime ${KMIME_VERSION} CONFIG REQUIRED)
+@@ -116,6 +128,7 @@ add_subdirectory(src)
 
-+if (KF5DBusAddons_FOUND)
-+  set(_kleopatra_SRCS ${_kleopatra_SRCS} utils/kuniqueservice_dbus.cpp)
-+else()
-+  # Alternative currently only implemented for windows
-+  set(_kleopatra_SRCS ${_kleopatra_SRCS} utils/kuniqueservice_win.cpp)
-+endif()
-+
- ecm_qt_declare_logging_category(_kleopatra_SRCS HEADER kleopatra_debug.h IDENTIFIER KLEOPATRA_LOG CATEGORY_NAME log_kleopatra)
-
- if(KLEO_MODEL_TEST)
-@@ -381,6 +400,10 @@ qt5_add_resources(_kleopatra_SRCS kleopatra.qrc)
- add_executable(kleopatra_bin ${_kleopatra_SRCS} ${_kleopatra_uiserver_SRCS})
- set_target_properties(kleopatra_bin PROPERTIES OUTPUT_NAME kleopatra)
-
-+if (KF5DBusAddons_FOUND)
-+  set(_kleopatra_dbusaddons_libs KF5::DBusAddons)
-+endif()
-+
- target_link_libraries(kleopatra_bin
-   ${_kleopatra_extra_libs}
-   KF5::Libkleo
-@@ -390,7 +413,7 @@ target_link_libraries(kleopatra_bin
-   KF5::XmlGui
-   KF5::IconThemes
-   KF5::WindowSystem
--  KF5::DBusAddons
-+  ${_kleopatra_dbusaddons_libs}
-   Qt5::Network
-   ${_kleopatra_uiserver_extra_libs}
-   kleopatraclientcore
-@@ -416,3 +439,7 @@ install(
- )
-
- add_subdirectory(icons)
-+
-+if(BUILD_TESTING)
+ if(BUILD_TESTING)
+     add_subdirectory(tests)
 +    add_subdirectory(autotests)
-+endif()
-diff --git a/kleopatra/autotests/CMakeLists.txt b/kleopatra/autotests/CMakeLists.txt
+ endif()
+ install( FILES kleopatra.categories DESTINATION ${KDE_INSTALL_CONFDIR} )
+
+diff --git a/autotests/CMakeLists.txt b/autotests/CMakeLists.txt
 new file mode 100644
 index 0000000..b987250
 --- /dev/null
-+++ b/kleopatra/autotests/CMakeLists.txt
++++ b/autotests/CMakeLists.txt
 @@ -0,0 +1,13 @@
 +set(EXECUTABLE_OUTPUT_PATH ${CMAKE_CURRENT_BINARY_DIR})
 +
@@ -120,11 +86,11 @@ index 0000000..b987250
 +add_test(kuniqueservicetest kuniqueservicetest)
 +ecm_mark_as_test(kuniqueservicetest)
 +target_link_libraries(kuniqueservicetest Qt5::Test ${_kleopatra_dbusaddons_libs})
-diff --git a/kleopatra/autotests/kuniqueservicetest.cpp b/kleopatra/autotests/kuniqueservicetest.cpp
+diff --git a/autotests/kuniqueservicetest.cpp b/autotests/kuniqueservicetest.cpp
 new file mode 100644
 index 0000000..1a83a5e
 --- /dev/null
-+++ b/kleopatra/autotests/kuniqueservicetest.cpp
++++ b/autotests/kuniqueservicetest.cpp
 @@ -0,0 +1,177 @@
 +/* This file is part of Kleopatra
 +
@@ -303,10 +269,10 @@ index 0000000..1a83a5e
 +
 +#include "kuniqueservicetest.moc"
 +
-diff --git a/kleopatra/kleopatraapplication.cpp b/kleopatra/kleopatraapplication.cpp
-index 457aacc..b22a573 100644
---- a/kleopatra/kleopatraapplication.cpp
-+++ b/kleopatra/kleopatraapplication.cpp
+diff --git a/src/kleopatraapplication.cpp b/src/kleopatraapplication.cpp
+index f4b3b55..1f58c54 100644
+--- a/src/kleopatraapplication.cpp
++++ b/src/kleopatraapplication.cpp
 @@ -236,7 +236,9 @@ void KleopatraApplication::slotActivateRequested(const QStringList &arguments,
      if (!err.isEmpty()) {
          KMessageBox::sorry(NULL, err.toHtmlEscaped(), i18n("Failed to execute command"));
@@ -317,10 +283,10 @@ index 457aacc..b22a573 100644
  }
 
  QString KleopatraApplication::newInstance(const QCommandLineParser &parser,
-diff --git a/kleopatra/kwatchgnupg/CMakeLists.txt b/kleopatra/kwatchgnupg/CMakeLists.txt
-index 26034c1..a1488af 100644
---- a/kleopatra/kwatchgnupg/CMakeLists.txt
-+++ b/kleopatra/kwatchgnupg/CMakeLists.txt
+diff --git a/src/kwatchgnupg/CMakeLists.txt b/src/kwatchgnupg/CMakeLists.txt
+index beda545..338cad5 100644
+--- a/src/kwatchgnupg/CMakeLists.txt
++++ b/src/kwatchgnupg/CMakeLists.txt
 @@ -9,6 +9,12 @@ set(kwatchgnupg_SRCS
    tray.cpp
    main.cpp
@@ -334,10 +300,10 @@ index 26034c1..a1488af 100644
  ecm_qt_declare_logging_category(kwatchgnupg_SRCS HEADER kwatchgnupg_debug.h IDENTIFIER KWATCHGNUPG_LOG CATEGORY_NAME log_kwatchgnupg)
  qt5_add_resources(kwatchgnupg_SRCS kwatchgnupg.qrc)
 
-diff --git a/kleopatra/kwatchgnupg/main.cpp b/kleopatra/kwatchgnupg/main.cpp
+diff --git a/src/kwatchgnupg/main.cpp b/src/kwatchgnupg/main.cpp
 index af7a4fd..78d2d7f 100644
---- a/kleopatra/kwatchgnupg/main.cpp
-+++ b/kleopatra/kwatchgnupg/main.cpp
+--- a/src/kwatchgnupg/main.cpp
++++ b/src/kwatchgnupg/main.cpp
 @@ -35,7 +35,7 @@
  #include "aboutdata.h"
  #include "kwatchgnupgmainwin.h"
@@ -356,10 +322,10 @@ index af7a4fd..78d2d7f 100644
 
      KWatchGnuPGMainWindow *mMainWin = new KWatchGnuPGMainWindow();
      mMainWin->show();
-diff --git a/kleopatra/main.cpp b/kleopatra/main.cpp
-index 61d441c..fada938 100644
---- a/kleopatra/main.cpp
-+++ b/kleopatra/main.cpp
+diff --git a/src/main.cpp b/src/main.cpp
+index 4b909d5..4a91273 100644
+--- a/src/main.cpp
++++ b/src/main.cpp
 @@ -43,6 +43,7 @@
 
  #include <utils/gnupg-helper.h>
@@ -388,11 +354,11 @@ index 61d441c..fada938 100644
                       &app, &KleopatraApplication::slotActivateRequested);
      QObject::connect(&app, &KleopatraApplication::setExitValue,
      &service, [&service](int i) {
-diff --git a/kleopatra/utils/kuniqueservice.h b/kleopatra/utils/kuniqueservice.h
+diff --git a/src/utils/kuniqueservice.h b/src/utils/kuniqueservice.h
 new file mode 100644
 index 0000000..074cf01
 --- /dev/null
-+++ b/kleopatra/utils/kuniqueservice.h
++++ b/src/utils/kuniqueservice.h
 @@ -0,0 +1,91 @@
 +#ifndef KUNIQUESERVICE_H
 +#define KUNIQUESERVICE_H
@@ -485,11 +451,11 @@ index 0000000..074cf01
 +    KUniqueServicePrivate *d_ptr;
 +};
 +#endif // KUNIQUESERVICE_H
-diff --git a/kleopatra/utils/kuniqueservice_dbus.cpp b/kleopatra/utils/kuniqueservice_dbus.cpp
+diff --git a/src/utils/kuniqueservice_dbus.cpp b/src/utils/kuniqueservice_dbus.cpp
 new file mode 100644
 index 0000000..cf4ef96
 --- /dev/null
-+++ b/kleopatra/utils/kuniqueservice_dbus.cpp
++++ b/src/utils/kuniqueservice_dbus.cpp
 @@ -0,0 +1,64 @@
 +/*
 +    kuniqueservice_dbus.cpp
@@ -555,11 +521,11 @@ index 0000000..cf4ef96
 +}
 +
 +#include "moc_kuniqueservice.cpp"
-diff --git a/kleopatra/utils/kuniqueservice_win.cpp b/kleopatra/utils/kuniqueservice_win.cpp
+diff --git a/src/utils/kuniqueservice_win.cpp b/src/utils/kuniqueservice_win.cpp
 new file mode 100644
 index 0000000..2ea830e
 --- /dev/null
-+++ b/kleopatra/utils/kuniqueservice_win.cpp
++++ b/src/utils/kuniqueservice_win.cpp
 @@ -0,0 +1,219 @@
 +/*
 +    kuniqueservice_win.cpp

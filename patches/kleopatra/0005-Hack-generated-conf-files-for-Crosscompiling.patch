@@ -1,8 +1,8 @@
 #! /bin/sh
-patch -p2 -l -f $* < $0
+patch -p1 -l -f $* < $0
 exit $?
 
-From eb0adaf1064e6344540abfb576ae4e52c1172bfa Mon Sep 17 00:00:00 2001
+From 4bf713fdca3a549d12b76afcb64533516f6436ec Mon Sep 17 00:00:00 2001
 From: Andre Heinecke <aheinecke@intevation.de>
 Date: Tue, 16 Feb 2016 18:19:07 +0100
 Subject: [PATCH 5/5] Hack generated conf files for Crosscompiling
@@ -10,31 +10,31 @@ Subject: [PATCH 5/5] Hack generated conf files for Crosscompiling
 This patch can be removed once Gpg4win is built on a platform
 that has a packaged kconfig_compiler5.
 ---
- kleopatra/CMakeLists.txt                 | 22 ++++++---
- kleopatra/conf/CMakeLists.txt            | 20 ++++----
- kleopatra/emailoperationspreferences.cpp | 27 ++++++++++
- kleopatra/emailoperationspreferences.h   | 84 ++++++++++++++++++++++++++++++++
- kleopatra/fileoperationspreferences.cpp  | 21 ++++++++
- kleopatra/fileoperationspreferences.h    | 48 ++++++++++++++++++
- kleopatra/smimevalidationpreferences.cpp | 22 +++++++++
- kleopatra/smimevalidationpreferences.h   | 55 +++++++++++++++++++++
- kleopatra/tooltippreferences.cpp         | 27 ++++++++++
- kleopatra/tooltippreferences.h           | 84 ++++++++++++++++++++++++++++++++
- 10 files changed, 394 insertions(+), 16 deletions(-)
- create mode 100644 kleopatra/emailoperationspreferences.cpp
- create mode 100644 kleopatra/emailoperationspreferences.h
- create mode 100644 kleopatra/fileoperationspreferences.cpp
- create mode 100644 kleopatra/fileoperationspreferences.h
- create mode 100644 kleopatra/smimevalidationpreferences.cpp
- create mode 100644 kleopatra/smimevalidationpreferences.h
- create mode 100644 kleopatra/tooltippreferences.cpp
- create mode 100644 kleopatra/tooltippreferences.h
+ src/CMakeLists.txt                 | 21 +++++++---
+ src/conf/CMakeLists.txt            | 20 +++++----
+ src/emailoperationspreferences.cpp | 27 ++++++++++++
+ src/emailoperationspreferences.h   | 84 ++++++++++++++++++++++++++++++++++++++
+ src/fileoperationspreferences.cpp  | 21 ++++++++++
+ src/fileoperationspreferences.h    | 48 ++++++++++++++++++++++
+ src/smimevalidationpreferences.cpp | 22 ++++++++++
+ src/smimevalidationpreferences.h   | 55 +++++++++++++++++++++++++
+ src/tooltippreferences.cpp         | 27 ++++++++++++
+ src/tooltippreferences.h           | 84 ++++++++++++++++++++++++++++++++++++++
+ 10 files changed, 394 insertions(+), 15 deletions(-)
+ create mode 100644 src/emailoperationspreferences.cpp
+ create mode 100644 src/emailoperationspreferences.h
+ create mode 100644 src/fileoperationspreferences.cpp
+ create mode 100644 src/fileoperationspreferences.h
+ create mode 100644 src/smimevalidationpreferences.cpp
+ create mode 100644 src/smimevalidationpreferences.h
+ create mode 100644 src/tooltippreferences.cpp
+ create mode 100644 src/tooltippreferences.h
 
-diff --git a/kleopatra/CMakeLists.txt b/kleopatra/CMakeLists.txt
-index 0c8b20b..056e20a 100644
---- a/kleopatra/CMakeLists.txt
-+++ b/kleopatra/CMakeLists.txt
-@@ -408,13 +408,21 @@ ki18n_wrap_ui(_kleopatra_SRCS
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 6799187..8c8193c 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -259,12 +259,21 @@ ki18n_wrap_ui(_kleopatra_SRCS
    newcertificatewizard/advancedsettingsdialog.ui
  )
 
@@ -44,7 +44,6 @@ index 0c8b20b..056e20a 100644
 -  kcfg/fileoperationspreferences.kcfgc
 -  kcfg/smimevalidationpreferences.kcfgc
 -)
--
 +if (NOT CMAKE_CROSSCOMPILING)
 +  kconfig_add_kcfg_files(_kleopatra_SRCS
 +    kcfg/tooltippreferences.kcfgc
@@ -63,56 +62,50 @@ index 0c8b20b..056e20a 100644
 
  file(GLOB ICONS_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/icons/*-apps-kleopatra.png")
  ecm_add_app_icon(_kleopatra_SRCS ICONS ${ICONS_SRCS})
-diff --git a/kleopatra/conf/CMakeLists.txt b/kleopatra/conf/CMakeLists.txt
-index 7a57933..c0d4e3d 100644
---- a/kleopatra/conf/CMakeLists.txt
-+++ b/kleopatra/conf/CMakeLists.txt
+diff --git a/src/conf/CMakeLists.txt b/src/conf/CMakeLists.txt
+index bd46c88..d7351e2 100644
+--- a/src/conf/CMakeLists.txt
++++ b/src/conf/CMakeLists.txt
 @@ -14,10 +14,6 @@ if(BUILD_libkleopatraclient)
      cryptooperationsconfigwidget.ui
    )
 
 -  kconfig_add_kcfg_files(_kcm_kleopatra_libkleopatraclient_extra_SRCS
--    ${kleopatra_SOURCE_DIR}/kcfg/smimevalidationpreferences.kcfgc
+-    ${kleopatra_SOURCE_DIR}/src/kcfg/smimevalidationpreferences.kcfgc
 -  )
 -
    set(_kcm_kleopatra_libkleopatraclient_extra_LIBS kleopatraclientgui)
 
    set(_kcm_kleopatra_libkleopatraclient_extra_install_FILES
-@@ -34,7 +30,6 @@ else()
- endif()
-
- set(kcm_kleopatra_PART_SRCS
--  ${_kcm_kleopatra_kleo_only_SRCS}
-   dirservconfigpage.cpp
-   appearanceconfigpage.cpp
-   appearanceconfigwidget.cpp
-@@ -49,10 +44,17 @@ ki18n_wrap_ui(kcm_kleopatra_PART_SRCS
+@@ -48,12 +44,18 @@ ki18n_wrap_ui(kcm_kleopatra_PART_SRCS
    smimevalidationconfigurationwidget.ui
  )
 
 -kconfig_add_kcfg_files(kcm_kleopatra_PART_SRCS
--  ${kleopatra_SOURCE_DIR}/kcfg/tooltippreferences.kcfgc
--  ${kleopatra_SOURCE_DIR}/kcfg/emailoperationspreferences.kcfgc
--  ${kleopatra_SOURCE_DIR}/kcfg/fileoperationspreferences.kcfgc
+-  ${kleopatra_SOURCE_DIR}/src/kcfg/tooltippreferences.kcfgc
+-  ${kleopatra_SOURCE_DIR}/src/kcfg/emailoperationspreferences.kcfgc
+-  ${kleopatra_SOURCE_DIR}/src/kcfg/fileoperationspreferences.kcfgc
+-)
 +if(CMAKE_CROSSCOMPILING)
-+  set(_kcfg_generated_files_dir ${kleopatra_SOURCE_DIR})
++  set(_kcfg_generated_files_dir ${kleopatra_SOURCE_DIR}/src)
 +else()
-+  set(_kcfg_generated_files_dir ${kleopatra_BINARY_DIR})
++  set(_kcfg_generated_files_dir ${kleopatra_BINARY_DIR}/src)
 +endif()
-+
+
 +set(kcm_kleopatra_PART_SRCS ${kcm_kleopatra_PART_SRCS}
 +  ${_kcfg_generated_files_dir}/tooltippreferences.cpp
 +  ${_kcfg_generated_files_dir}/emailoperationspreferences.cpp
 +  ${_kcfg_generated_files_dir}/fileoperationspreferences.cpp
 +  ${_kcfg_generated_files_dir}/smimevalidationpreferences.cpp
- )
-
++ )
  add_library(kcm_kleopatra MODULE ${kcm_kleopatra_PART_SRCS})
-diff --git a/kleopatra/emailoperationspreferences.cpp b/kleopatra/emailoperationspreferences.cpp
+
+ if(HAVE_KCMUTILS)
+diff --git a/src/emailoperationspreferences.cpp b/src/emailoperationspreferences.cpp
 new file mode 100644
 index 0000000..730db97
 --- /dev/null
-+++ b/kleopatra/emailoperationspreferences.cpp
++++ b/src/emailoperationspreferences.cpp
 @@ -0,0 +1,27 @@
 +// This file is generated by kconfig_compiler_kf5 from emailoperationspreferences.kcfg.
 +// All changes you do to this file will be lost.
@@ -141,11 +134,11 @@ index 0000000..730db97
 +{
 +}
 +
-diff --git a/kleopatra/emailoperationspreferences.h b/kleopatra/emailoperationspreferences.h
+diff --git a/src/emailoperationspreferences.h b/src/emailoperationspreferences.h
 new file mode 100644
 index 0000000..58881f8
 --- /dev/null
-+++ b/kleopatra/emailoperationspreferences.h
++++ b/src/emailoperationspreferences.h
 @@ -0,0 +1,84 @@
 +// This file is generated by kconfig_compiler_kf5 from emailoperationspreferences.kcfg.
 +// All changes you do to this file will be lost.
@@ -231,11 +224,11 @@ index 0000000..58881f8
 +
 +#endif
 +
-diff --git a/kleopatra/fileoperationspreferences.cpp b/kleopatra/fileoperationspreferences.cpp
+diff --git a/src/fileoperationspreferences.cpp b/src/fileoperationspreferences.cpp
 new file mode 100644
 index 0000000..d2d20fc
 --- /dev/null
-+++ b/kleopatra/fileoperationspreferences.cpp
++++ b/src/fileoperationspreferences.cpp
 @@ -0,0 +1,21 @@
 +// This file is generated by kconfig_compiler_kf5 from fileoperationspreferences.kcfg.
 +// All changes you do to this file will be lost.
@@ -258,11 +251,11 @@ index 0000000..d2d20fc
 +{
 +}
 +
-diff --git a/kleopatra/fileoperationspreferences.h b/kleopatra/fileoperationspreferences.h
+diff --git a/src/fileoperationspreferences.h b/src/fileoperationspreferences.h
 new file mode 100644
 index 0000000..9866a70
 --- /dev/null
-+++ b/kleopatra/fileoperationspreferences.h
++++ b/src/fileoperationspreferences.h
 @@ -0,0 +1,48 @@
 +// This file is generated by kconfig_compiler_kf5 from fileoperationspreferences.kcfg.
 +// All changes you do to this file will be lost.
@@ -312,11 +305,11 @@ index 0000000..9866a70
 +
 +#endif
 +
-diff --git a/kleopatra/smimevalidationpreferences.cpp b/kleopatra/smimevalidationpreferences.cpp
+diff --git a/src/smimevalidationpreferences.cpp b/src/smimevalidationpreferences.cpp
 new file mode 100644
 index 0000000..3d9a16f
 --- /dev/null
-+++ b/kleopatra/smimevalidationpreferences.cpp
++++ b/src/smimevalidationpreferences.cpp
 @@ -0,0 +1,22 @@
 +// This file is generated by kconfig_compiler_kf5 from smimevalidationpreferences.kcfg.
 +// All changes you do to this file will be lost.
@@ -340,11 +333,11 @@ index 0000000..3d9a16f
 +{
 +}
 +
-diff --git a/kleopatra/smimevalidationpreferences.h b/kleopatra/smimevalidationpreferences.h
+diff --git a/src/smimevalidationpreferences.h b/src/smimevalidationpreferences.h
 new file mode 100644
 index 0000000..9617bd5
 --- /dev/null
-+++ b/kleopatra/smimevalidationpreferences.h
++++ b/src/smimevalidationpreferences.h
 @@ -0,0 +1,55 @@
 +// This file is generated by kconfig_compiler_kf5 from smimevalidationpreferences.kcfg.
 +// All changes you do to this file will be lost.
@@ -401,11 +394,11 @@ index 0000000..9617bd5
 +
 +#endif
 +
-diff --git a/kleopatra/tooltippreferences.cpp b/kleopatra/tooltippreferences.cpp
+diff --git a/src/tooltippreferences.cpp b/src/tooltippreferences.cpp
 new file mode 100644
 index 0000000..7e85c6a
 --- /dev/null
-+++ b/kleopatra/tooltippreferences.cpp
++++ b/src/tooltippreferences.cpp
 @@ -0,0 +1,27 @@
 +// This file is generated by kconfig_compiler_kf5 from tooltippreferences.kcfg.
 +// All changes you do to this file will be lost.
@@ -434,11 +427,11 @@ index 0000000..7e85c6a
 +{
 +}
 +
-diff --git a/kleopatra/tooltippreferences.h b/kleopatra/tooltippreferences.h
+diff --git a/src/tooltippreferences.h b/src/tooltippreferences.h
 new file mode 100644
 index 0000000..44f77a2
 --- /dev/null
-+++ b/kleopatra/tooltippreferences.h
++++ b/src/tooltippreferences.h
 @@ -0,0 +1,84 @@
 +// This file is generated by kconfig_compiler_kf5 from tooltippreferences.kcfg.
 +// All changes you do to this file will be lost.

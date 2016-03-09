@@ -1,8 +1,8 @@
 #! /bin/sh
-patch -p2 -l -f $* < $0
+patch -p1 -l -f $* < $0
 exit $?
 
-From cbf48c48727025c585b3647c89ae668ba0d14d0d Mon Sep 17 00:00:00 2001
+From 91fdfe448e3dbe3cae5d2ae8a7b81dabfbc4e3d3 Mon Sep 17 00:00:00 2001
 From: Andre Heinecke <aheinecke@intevation.de>
 Date: Tue, 16 Feb 2016 17:48:44 +0100
 Subject: [PATCH 2/5] Add alternative configuredialog wihout KCMUtils
@@ -11,96 +11,60 @@ KCMUtils heavily depends on QDbus and KService for
 a standalone deployment, like on Windows, we don't
 want those dependencies.
 ---
- kleopatra/CMakeLists.txt                |  22 ++-
- kleopatra/conf/CMakeLists.txt           |  12 +-
- kleopatra/conf/configuredialog.cpp      |  59 +++----
- kleopatra/conf/configuredialog.h        |  23 ++-
- kleopatra/conf/dirservconfigpage.h      |   2 +-
- kleopatra/conf/kleopageconfigdialog.cpp | 304 ++++++++++++++++++++++++++++++++
- kleopatra/conf/kleopageconfigdialog.h   |  73 ++++++++
- kleopatra/config-kleopatra.h.cmake      |   4 +-
- 8 files changed, 449 insertions(+), 50 deletions(-)
- create mode 100644 kleopatra/conf/kleopageconfigdialog.cpp
- create mode 100644 kleopatra/conf/kleopageconfigdialog.h
+ CMakeLists.txt                    |  11 +-
+ src/conf/CMakeLists.txt           |  12 +-
+ src/conf/configuredialog.cpp      |  59 ++++----
+ src/conf/configuredialog.h        |  23 ++-
+ src/conf/dirservconfigpage.h      |   2 +-
+ src/conf/kleopageconfigdialog.cpp | 304 ++++++++++++++++++++++++++++++++++++++
+ src/conf/kleopageconfigdialog.h   |  73 +++++++++
+ 7 files changed, 437 insertions(+), 47 deletions(-)
+ create mode 100644 src/conf/kleopageconfigdialog.cpp
+ create mode 100644 src/conf/kleopageconfigdialog.h
 
-diff --git a/kleopatra/CMakeLists.txt b/kleopatra/CMakeLists.txt
-index 9d049f1..2cb7b63 100644
---- a/kleopatra/CMakeLists.txt
-+++ b/kleopatra/CMakeLists.txt
-@@ -10,6 +10,9 @@ if(${CMAKE_SOURCE_DIR} STREQUAL ${kleopatra_SOURCE_DIR})
-   set(LIBKLEO_VERSION "5.1.41")
-   set(QT_REQUIRED_VERSION "5.4.0")
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 7970ffe..951fd53 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -2,6 +2,8 @@ project(kleopatra)
 
-+  option(FORCE_DISABLE_KCMUTILS "Force building Kleopatra without KCMUtils. Doing this will disable configuration KCM Plugins. [default=OFF]" OFF)
+ cmake_minimum_required(VERSION 2.8.12)
+
++option(FORCE_DISABLE_KCMUTILS "Force building Kleopatra without KCMUtils. Doing this will disable configuration KCM Plugins. [default=OFF]" OFF)
 +
-+
-   find_package(ECM ${KF5_VERSION} REQUIRED NO_MODULE)
-   set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
-
-@@ -33,7 +36,6 @@ if(${CMAKE_SOURCE_DIR} STREQUAL ${kleopatra_SOURCE_DIR})
+ # Standalone build. Find / include everything neccessary.
+ set(KF5_VERSION "5.17.0")
+ set(GPGMEPP_VERSION "5.1.41")
+@@ -31,8 +33,13 @@ include(ECMAddAppIcon)
+ include(ECMQtDeclareLoggingCategory)
 
  # Find KF5 packages
-   find_package(KF5Codecs ${KF5_VERSION} CONFIG REQUIRED)
--  find_package(KF5KCMUtils ${KF5_VERSION} CONFIG REQUIRED)
-   find_package(KF5Config ${KF5_VERSION} CONFIG REQUIRED)
-   find_package(KF5I18n ${KF5_VERSION} CONFIG REQUIRED)
-   find_package(KF5IconThemes ${KF5_VERSION} CONFIG REQUIRED)
-@@ -41,6 +43,13 @@ if(${CMAKE_SOURCE_DIR} STREQUAL ${kleopatra_SOURCE_DIR})
-   find_package(KF5XmlGui ${KF5_VERSION} CONFIG REQUIRED)
-   find_package(KF5WindowSystem ${KF5_VERSION} CONFIG REQUIRED)
-   find_package(KF5TextWidgets ${KF5_VERSION} CONFIG REQUIRED)
-+  find_package(KF5WidgetsAddons ${KF5_VERSION} CONFIG REQUIRED)
-+  find_package(KF5ConfigWidgets ${KF5_VERSION} CONFIG REQUIRED)
-+  find_package(KF5CoreAddons ${KF5_VERSION} CONFIG REQUIRED)
-+
 +if (NOT FORCE_DISABLE_KCMUTILS)
 +  find_package(KF5KCMUtils ${KF5_VERSION} CONFIG REQUIRED)
 +endif()
++find_package(KF5WidgetsAddons ${KF5_VERSION} CONFIG REQUIRED)
++find_package(KF5ConfigWidgets ${KF5_VERSION} CONFIG REQUIRED)
++find_package(KF5CoreAddons ${KF5_VERSION} CONFIG REQUIRED)
+ find_package(KF5Codecs ${KF5_VERSION} CONFIG REQUIRED)
+-find_package(KF5KCMUtils ${KF5_VERSION} CONFIG REQUIRED)
+ find_package(KF5Config ${KF5_VERSION} CONFIG REQUIRED)
+ find_package(KF5I18n ${KF5_VERSION} CONFIG REQUIRED)
+ find_package(KF5IconThemes ${KF5_VERSION} CONFIG REQUIRED)
+@@ -65,6 +72,8 @@ find_package(KF5Gpgmepp ${GPGMEPP_VERSION} CONFIG REQUIRED)
+ find_package(Qt5 ${QT_REQUIRED_VERSION} CONFIG REQUIRED Widgets Test Network)
 
- # Optional packages
- if (WIN32)
-@@ -63,6 +72,8 @@ endif()
-   find_package(Qt5 ${QT_REQUIRED_VERSION} CONFIG REQUIRED Widgets Test Network)
- endif() # Standalone build
 
 +set(HAVE_KCMUTILS ${KF5KCMUtils_FOUND})
 +
  find_package(Boost 1.34.0 REQUIRED)
 
  find_path(Boost_TOPOLOGICAL_SORT_DIR NAMES boost/graph/topological_sort.hpp PATHS ${Boost_INCLUDE_DIRS})
-@@ -357,6 +368,13 @@ else()
-   set(_kleopatra_SRCS ${_kleopatra_SRCS} utils/kuniqueservice_win.cpp)
- endif()
-
-+if (KF5KCMUtils_FOUND)
-+  set(_kleopatra_SRCS ${_kleopatra_SRCS} conf/kcmconfiguredialog.cpp)
-+  set(_kleopatra_extra_libs ${_kleopatra_extra_libs} KF5::KCMUtils)
-+else()
-+  set(_kleopatra_SRCS ${_kleopatra_SRCS} conf/kleopageconfigdialog.cpp)
-+endif()
-+
- ecm_qt_declare_logging_category(_kleopatra_SRCS HEADER kleopatra_debug.h IDENTIFIER KLEOPATRA_LOG CATEGORY_NAME log_kleopatra)
-
- if(KLEO_MODEL_TEST)
-@@ -408,11 +426,11 @@ target_link_libraries(kleopatra_bin
-   ${_kleopatra_extra_libs}
-   KF5::Libkleo
-   KF5::Mime
--  KF5::KCMUtils
-   KF5::I18n
-   KF5::XmlGui
-   KF5::IconThemes
-   KF5::WindowSystem
-+  KF5::CoreAddons
-   ${_kleopatra_dbusaddons_libs}
-   Qt5::Network
-   ${_kleopatra_uiserver_extra_libs}
-diff --git a/kleopatra/conf/CMakeLists.txt b/kleopatra/conf/CMakeLists.txt
-index b74fbc4..7a57933 100644
---- a/kleopatra/conf/CMakeLists.txt
-+++ b/kleopatra/conf/CMakeLists.txt
-@@ -55,18 +55,18 @@ kconfig_add_kcfg_files(kcm_kleopatra_PART_SRCS
-   ${kleopatra_SOURCE_DIR}/kcfg/fileoperationspreferences.kcfgc
+diff --git a/src/conf/CMakeLists.txt b/src/conf/CMakeLists.txt
+index 390f112..bd46c88 100644
+--- a/src/conf/CMakeLists.txt
++++ b/src/conf/CMakeLists.txt
+@@ -54,18 +54,18 @@ kconfig_add_kcfg_files(kcm_kleopatra_PART_SRCS
+   ${kleopatra_SOURCE_DIR}/src/kcfg/fileoperationspreferences.kcfgc
  )
 
 -if(KLEO_STATIC_KCMODULES)
@@ -124,10 +88,10 @@ index b74fbc4..7a57933 100644
    ${_kcm_kleopatra_extra_libs}
    ${_kcm_kleopatra_libkleopatraclient_extra_LIBS}
  )
-diff --git a/kleopatra/conf/configuredialog.cpp b/kleopatra/conf/configuredialog.cpp
+diff --git a/src/conf/configuredialog.cpp b/src/conf/configuredialog.cpp
 index 3cb3104..b9ef7e4 100644
---- a/kleopatra/conf/configuredialog.cpp
-+++ b/kleopatra/conf/configuredialog.cpp
+--- a/src/conf/configuredialog.cpp
++++ b/src/conf/configuredialog.cpp
 @@ -31,53 +31,43 @@
      your version.
  */
@@ -221,10 +185,10 @@ index 3cb3104..b9ef7e4 100644
 -#undef addMyModule
 -#undef KCM_IMPORT_PLUGIN
 -
-diff --git a/kleopatra/conf/configuredialog.h b/kleopatra/conf/configuredialog.h
+diff --git a/src/conf/configuredialog.h b/src/conf/configuredialog.h
 index 8096bbe..16fa2c0 100644
---- a/kleopatra/conf/configuredialog.h
-+++ b/kleopatra/conf/configuredialog.h
+--- a/src/conf/configuredialog.h
++++ b/src/conf/configuredialog.h
 @@ -1,16 +1,17 @@
  /*
 -    configuredialog.cpp
@@ -270,10 +234,10 @@ index 8096bbe..16fa2c0 100644
  {
      Q_OBJECT
  public:
-diff --git a/kleopatra/conf/dirservconfigpage.h b/kleopatra/conf/dirservconfigpage.h
+diff --git a/src/conf/dirservconfigpage.h b/src/conf/dirservconfigpage.h
 index 28bf6c4..5660208 100644
---- a/kleopatra/conf/dirservconfigpage.h
-+++ b/kleopatra/conf/dirservconfigpage.h
+--- a/src/conf/dirservconfigpage.h
++++ b/src/conf/dirservconfigpage.h
 @@ -33,7 +33,7 @@
  #ifndef DIRSERVCONFIGPAGE_H
  #define DIRSERVCONFIGPAGE_H
@@ -283,11 +247,11 @@ index 28bf6c4..5660208 100644
 
  #include "Libkleo/CryptoConfig"
 
-diff --git a/kleopatra/conf/kleopageconfigdialog.cpp b/kleopatra/conf/kleopageconfigdialog.cpp
+diff --git a/src/conf/kleopageconfigdialog.cpp b/src/conf/kleopageconfigdialog.cpp
 new file mode 100644
 index 0000000..ccc70ce
 --- /dev/null
-+++ b/kleopatra/conf/kleopageconfigdialog.cpp
++++ b/src/conf/kleopageconfigdialog.cpp
 @@ -0,0 +1,304 @@
 +/*
 +    kleopageconfigdialog.cpp
@@ -593,11 +557,11 @@ index 0000000..ccc70ce
 +        applyButton->setEnabled(change);
 +    }
 +}
-diff --git a/kleopatra/conf/kleopageconfigdialog.h b/kleopatra/conf/kleopageconfigdialog.h
+diff --git a/src/conf/kleopageconfigdialog.h b/src/conf/kleopageconfigdialog.h
 new file mode 100644
 index 0000000..809c930
 --- /dev/null
-+++ b/kleopatra/conf/kleopageconfigdialog.h
++++ b/src/conf/kleopageconfigdialog.h
 @@ -0,0 +1,73 @@
 +/*
 +    kleopageconfigdialog.h.h
@@ -672,17 +636,5 @@ index 0000000..809c930
 +};
 +
 +#endif /* __KLEOPATRA_CONF_KLEOPAGECONFIGDIALOG_H__ */
-diff --git a/kleopatra/config-kleopatra.h.cmake b/kleopatra/config-kleopatra.h.cmake
-index 4fb4a8f..d0c7092 100644
---- a/kleopatra/config-kleopatra.h.cmake
-+++ b/kleopatra/config-kleopatra.h.cmake
-@@ -21,5 +21,5 @@
- /* Define to 1 if you build libkleopatraclient */
- #cmakedefine HAVE_KLEOPATRACLIENT_LIBRARY 1
-
--/* Mirrored from cmake option */
--#cmakedefine KLEO_STATIC_KCMODULES 1
-+/* KF5KCMUtils available */
-+#cmakedefine01 HAVE_KCMUTILS
 --
 2.1.4
