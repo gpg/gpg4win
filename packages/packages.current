@@ -380,11 +380,11 @@ chk 701fcc10201abcf540d26a8fcc6a8b7184dc16b1
 server http://download.kde.org/stable/frameworks/
 
 # ECM
-# last changed: 2016-01-22
+# last changed: 2016-03-10
 # by: ah
-# verified: https://www.kde.org/info/kde-frameworks-5.18.0.php
-file 5.18/extra-cmake-modules-5.18.0.tar.xz
-chk ce741f28486f616564aec7d56cedf88eccab9a25
+# verified: https://www.kde.org/info/kde-frameworks-5.19.0.php
+file 5.19/extra-cmake-modules-5.19.0.tar.xz
+chk 5e5cafe2725f51d4befc37d79f9d05303a3c94b4
 
 # KConfig
 # last changed: 2016-01-22
