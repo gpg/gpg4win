@@ -59,7 +59,9 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         patches/kleopatra/0004-Make-DBus-integration-of-the-smime-conf-optional.patch \
         patches/kleopatra/0005-Hack-generated-conf-files-for-Crosscompiling.patch \
         patches/kcoreaddons/0001-Fix-Kdelibs4-config-migration-for-Windows.patch \
-        patches/pinentry-0.9.7/Qt-Fix-Windows-foreground-window-hacks-for-Qt5.patch
+        patches/pinentry-0.9.7/Qt-Fix-Windows-foreground-window-hacks-for-Qt5.patch \
+        patches/gpgex-1.0.3/0001-Support-gpg4win-registry-keys-and-install-location.patch \
+        patches/gpgex-1.0.3/0002-Place-assuan-calls-in-a-different-thread.patch
 
 copy-news:
 	cp NEWS doc/website/NEWS.last

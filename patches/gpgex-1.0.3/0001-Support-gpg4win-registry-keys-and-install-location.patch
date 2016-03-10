@@ -1,0 +1,206 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From 7dde1455bd1871a8f402d8c71c09d11b2b53f0ac Mon Sep 17 00:00:00 2001
+From: Andre Heinecke <aheinecke@intevation.de>
+Date: Thu, 10 Mar 2016 11:34:51 +0100
+Subject: [PATCH 1/2] Support gpg4win registry keys and install location
+
+* src/client.cc (default_uiserver_cmdline): Rewrite based on GpgOL.
+* src/main.cc (get_debug_file): Use new keys.
+* src/registry.h (REGKEY): Replace by GPG4WIN_REGKEY_2/3 add x64 key.
+
+--
+This tries harder to find kleopatra or GPA and looks in both the old
+GNU GnuPG registry key as in the new Gpg4win registry key. Also
+it looks both under /bin and not in /bin subfolder.
+---
+ src/client.cc  | 100 +++++++++++++++++++++++++++++++++++----------------------
+ src/main.cc    |  12 +++++--
+ src/registry.h |  13 ++++++--
+ 3 files changed, 83 insertions(+), 42 deletions(-)
+
+diff --git a/src/client.cc b/src/client.cc
+index 6aaa0f6..58be03b 100644
+--- a/src/client.cc
++++ b/src/client.cc
+@@ -108,67 +108,91 @@ default_uiserver_cmdline (void)
+     }
+ #else /*!ENABLE_GPA_ONLY*/
+     {
+-      const char *dir;
++      const char *dir, *tmp;
+       char *uiserver, *p;
+-      int extra_arglen = 0;
++      int extra_arglen = 9;
++      const char * server_names[] = {"bin\\kleopatra.exe",
++                                     "kleopatra.exe",
++                                     "bin\\launch-gpa.exe",
++                                     "launch-gpa.exe",
++                                     "bin\\gpa.exe",
++                                     "gpa.exe",
++                                     NULL};
+
+       dir = gpgex_server::root_dir;
+       if (!dir)
+         return NULL;
+
+-      uiserver = read_w32_registry_string (NULL, REGKEY, "UI Server");
++      uiserver = read_w32_registry_string (NULL, GPG4WIN_REGKEY_2,
++                                           "UI Server");
++      if (!uiserver)
++        {
++          uiserver = read_w32_registry_string (NULL, GPG4WIN_REGKEY_3,
++                                               "UI Server");
++        }
+       if (!uiserver)
+         {
+           uiserver = strdup ("kleopatra.exe");
+           if (!uiserver)
+             return NULL;
+-          extra_arglen = 9; /* Space required for " --daemon".  */
+         }
+-
+-      name = (char*)malloc (strlen (dir) + strlen (uiserver) + extra_arglen +2);
+-      if (!name)
++      if (uiserver)
+         {
++          name = (char*) malloc (strlen (dir) + strlen (uiserver) +
++                                 extra_arglen + 2);
++          if (!name)
++            return NULL;
++          strcpy (stpcpy (stpcpy (name, dir), "\\"), uiserver);
++          for (p = name; *p; p++)
++            if (*p == '/')
++              *p = '\\';
+           free (uiserver);
+-          return NULL;
+         }
+-      strcpy (stpcpy (stpcpy (name, dir), "\\"), uiserver);
+-      for (p = name; *p; p++)
+-        if (*p == '/')
+-          *p = '\\';
+-      free (uiserver);
+-      gpgex_server::ui_server = "Kleopatra";
+-      if (extra_arglen && access (name, F_OK))
++      if (name && !access (name, F_OK))
++        {
++          /* Set through registry or default kleo */
++          if (strstr (name, "kleopatra.exe"))
++            {
++              gpgex_server::ui_server = "Kleopatra";
++              strcat (name, " --daemon");
++            }
++          else
++            {
++              gpgex_server::ui_server = "GPA";
++            }
++          return name;
++        }
++      /* Fallbacks */
++      for (tmp = *server_names; *tmp; tmp++)
+         {
+-          /* Kleopatra is not installed: Try GPA instead but if it is
+-             also not available return the Kleopatra filename.  */
+-          const char gpaserver[] = "launch-gpa.exe";
+-          char *name2;
+-
+-          name2 = (char*)malloc (strlen (dir) + strlen (gpaserver)
+-                                 + extra_arglen+2);
+-          if (name2)
++          if (name)
++            {
++              free (name);
++            }
++          name = (char*) malloc (strlen (dir) + strlen (tmp) + extra_arglen + 2);
++          if (!name)
++            return NULL;
++          strcpy (stpcpy (stpcpy (name, dir), "\\"), tmp);
++          for (p = name; *p; p++)
++            if (*p == '/')
++              *p = '\\';
++          if (!access (name, F_OK))
+             {
+-              strcpy (stpcpy (stpcpy (name2, dir), "\\"), gpaserver);
+-              for (p = name2; *p; p++)
+-                if (*p == '/')
+-                  *p = '\\';
+-              if (access (name2, F_OK ))
+-                free (name2);
++              /* Found a viable candidate */
++              /* Set through registry and is accessible */
++              if (strstr (name, "kleopatra.exe"))
++                {
++                  gpgex_server::ui_server = "Kleopatra";
++                  strcat (name, " --daemon");
++                }
+               else
+                 {
+-                  free (name);
+-                  name = name2;
+                   gpgex_server::ui_server = "GPA";
+                 }
++              return name;
+             }
+         }
+-
+-      /* Append the --daemon arg unless the server name has been taken
+-         from the Registry.  */
+-      if (name && extra_arglen)
+-        strcat (name, " --daemon");
+-      else
+-        gpgex_server::ui_server = NULL;
++      gpgex_server::ui_server = NULL;
+     }
+ #endif /*!ENABLE_GPA_ONLY*/
+
+diff --git a/src/main.cc b/src/main.cc
+index dcade3b..8cc0ed9 100644
+--- a/src/main.cc
++++ b/src/main.cc
+@@ -167,8 +167,16 @@ FILE *debug_file;
+ static char *
+ get_debug_file (void)
+ {
+-  return read_w32_registry_string ("HKEY_LOCAL_MACHINE", REGKEY,
+-				   "GpgEX Debug File");
++  char *name = read_w32_registry_string (NULL,
++                                         GPG4WIN_REGKEY_3,
++                                         "GpgEX Debug File");
++  if (!name)
++    {
++      name = read_w32_registry_string (NULL,
++                                       GPG4WIN_REGKEY_2,
++                                       "GpgEX Debug File");
++    }
++  return name;
+ }
+
+
+diff --git a/src/registry.h b/src/registry.h
+index 51113ab..d0e38ef 100644
+--- a/src/registry.h
++++ b/src/registry.h
+@@ -43,8 +43,17 @@ char *read_w32_registry_string (const char *root, const char *dir,
+ /* Retrieve the default home directory.  */
+ const char *default_homedir (void);
+
+-/* Registry key for this software.  */
+-#define REGKEY "Software\\GNU\\GnuPG"
++/* The Registry key used by Gpg4win.  */
++#ifdef WIN64
++# define GPG4WIN_REGKEY_2  "Software\\Wow6432Node\\GNU\\GnuPG"
++#else
++# define GPG4WIN_REGKEY_2  "Software\\GNU\\GnuPG"
++#endif
++#ifdef WIN64
++# define GPG4WIN_REGKEY_3  "Software\\Wow6432Node\\Gpg4win"
++#else
++# define GPG4WIN_REGKEY_3  "Software\\Gpg4win"
++#endif
+
+ #ifdef __cplusplus
+ #if 0
+--
+2.1.4
