@@ -65,6 +65,27 @@ Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 - GpgOL für Outlook 2010 und spätere Versionen entschlüsselt nun
   wieder automatisch Mails.
 
+- Alle 68 KDE übersetzungen von Kleopatra werden nun mit Gpg4win
+  installiert.
+
+- Kleopatra verwendet ein aktualisertes Icon Set.
+
+- Kleopatra zeigt nun die verwendete Kurve für ECC Schlüssel in den
+  Technischen Details an.
+
+- Die von Kleopatra verwendeten Programmbibliotheken wurden aktualisiert.
+
+- Ausführbare Anwendungen werden nun im bin unterordner abgelegt. Die
+  hilfsanwendungen DBus und kbuildsycoca werden nicht mehr benötigt.
+  Dies löst eine Reihe von Kleopatra startproblemen die bei Manchen
+  Anwendern aufgetreten sind.
+
+- Nach dem import eines geheimen Schlüssels bietet Kleopatra nun gleich
+  an diesen einen eignen Schlüssel zu markieren. (Inhabervertrauen)
+
+- Kleopatra bietet nun in den Erweiterten Optionen bei der
+  Schlüsselerstellung an ECC Schlüssel zu erstellen.
+
 3. Bekannte Probleme (und Abhilfen)
 ===================================
 

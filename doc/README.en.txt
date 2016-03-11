@@ -62,6 +62,25 @@ New in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 - GpgOL for Outlook 2010 and later now automatically decrypts mails
   again.
 
+- All 68 KDE translations for Kleopatra are now included in Gpg4win.
+
+- Kleopatra uses an updated icon theme.
+
+- Kleopatra now shows the used curve in for ECC keys under technical
+  details.
+
+- Kleopatra has been updated to a new set of base libraries.
+
+- Binaries are now all installed in a bin subdirectory. DBus
+  and kbuildsycoa are no longer required. This fixes the startup issues
+  of Kleopatra some users were facing.
+
+- After importing a secret key in Kleopatra you will be asked to directly
+  mark it as your own key. (Ownertrust)
+
+- Kleopatra now allows you to create ECC keys in the Advanced Settings
+  during Key generation.
+
 3. Known Bugs (and Workarounds)
 ===============================
 

@@ -34,11 +34,51 @@ Noteworthy changes in version 3.0.0 (unreleased)
 (de) GpgOL für Outlook 2010 und spätere Versionen entschlüsselt nun
      wieder automatisch Mails.
 
+(en) All 68 KDE translations for Kleopatra are now included in Gpg4win.
+
+(de) Alle 68 KDE übersetzungen von Kleopatra werden nun mit Gpg4win
+     installiert.
+
+(en) Kleopatra uses an updated icon theme.
+
+(de) Kleopatra verwendet ein aktualisertes Icon Set.
+
+(en) Kleopatra now shows the used curve in for ECC keys under technical
+     details.
+
+(de) Kleopatra zeigt nun die verwendete Kurve für ECC Schlüssel in den
+     Technischen Details an.
+
+(en) Kleopatra has been updated to a new set of base libraries.
+
+(de) Die von Kleopatra verwendeten Programmbibliotheken wurden aktualisiert.
+
+(en) Binaries are now all installed in a bin subdirectory. DBus
+     and kbuildsycoa are no longer required. This fixes the startup issues
+     of Kleopatra some users were facing.
+
+(de) Ausführbare Anwendungen werden nun im bin unterordner abgelegt. Die
+     hilfsanwendungen DBus und kbuildsycoca werden nicht mehr benötigt.
+     Dies löst eine Reihe von Kleopatra startproblemen die bei Manchen
+     Anwendern aufgetreten sind.
+
+(en) After importing a secret key in Kleopatra you will be asked to directly
+     mark it as your own key. (Ownertrust)
+
+(de) Nach dem import eines geheimen Schlüssels bietet Kleopatra nun gleich
+     an diesen einen eignen Schlüssel zu markieren. (Inhabervertrauen)
+
+(en) Kleopatra now allows you to create ECC keys in the Advanced Settings
+     during Key generation.
+
+(de) Kleopatra bietet nun in den Erweiterten Optionen bei der
+     Schlüsselerstellung an ECC Schlüssel zu erstellen.
+
 ~~~~~~~~~~~~~~~
-GnuPG:          2.1.10
-Kleopatra:      2.2.0-gitfb4ae3d
+GnuPG:          2.1.11
+Kleopatra:      2.3.0
 GPA:            0.9.9
-GpgOL:          2.0.0-beta36
+GpgOL:          1.4.0-beta55
 GpgEX:          1.0.3
 Kompendium DE:  3.0.0
 Kompendium EN:  3.0.0
