@@ -48,33 +48,17 @@ Included Gpg4win components in Version !VERSION! are:
 New in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 -----------------------------------------
 
-- GpgOL now supports reading PGP/MIME and S/MIME mails, the standard
-  format for Crypto Mails as sent by Thunderbird/Enigmail, GPGMail
-  or KMail. For details see: https://wiki.gnupg.org/GpgOL/MIMESupport
+- GpgOL now has an option dialog where S/MIME can be disabled.
 
-- GpgOL now supports Outlook 2016.
+- GpgOL now supports the 64 Bit version of Microsoft Outlook.
 
-- AES-NI Instructions for faster encryption and decryption with AES
-  are now supported. (GnuPG Bug #1919)
+- GpgOL can be switched to the new, experimental, MIME aware behavior in the
+  Options Dialog.
 
-- The decrypt/verify window of GpgOL no longer moves and resizes
-  erratically. (KDE Bug #355140)
+- GpgOL now reverts temporary changes made to MIME mails. So that they an be
+  opened with other clients again.
 
-- Bulk import of more then a hundred keys no longer fails when Kleopatra
-  is running. (GnuPG Bug #2135)
-
-- French and Chinese localisation has been added to the installer,
-  GpgEX and GpgOL. Thanks to Oliver Serve and Mingye Wang.
-
-- Several apparently random crashes in GpgOL have been fixed
-  (GnuPG Bug #1837)
-
-- GpgOL now handles attachments in  PGP/MIME and S/MIME mails with non ASCII
-  characters in the filename correctly.
-
-- A vulnerability in the Gpg4win-installer has been fixed. See:
-  [security advisory 2015-11-25] for details.
-
+- GpgEX no longer blocks the Windows Explorer while it starts GPA or Kleopatra.
 
 3. Known Bugs (and Workarounds)
 ===============================
