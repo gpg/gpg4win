@@ -21,11 +21,11 @@ server ftp://ftp.cs.tu-berlin.de/pub/gnu
 # by: ah
 # verified with key: 4622 25C3 B46F 3487 9FC8  496C D605 848E D7E6 9871
 file gettext/gettext-0.19.5.tar.xz
-chk  bfe50a885076a24d63b9d9b242a409cc16727d24
+chk  3410a61c5c05d0392533c92133e135de828973fee27477a6d6dd3d3e36f2a2dd
 
 # checked: 2015-08-25 ah
 file libiconv/libiconv-1.14.tar.gz
-chk  be7d67e50d72ff067b2c0291311bc283add36965
+chk  72b24ded17d687193c3366d0ebe7cde1e6b18f0df8c55438ac95be39e8a30613
 
 #
 # zlib
@@ -34,7 +34,7 @@ server http://zlib.net
 
 # checked: 2014-06-20 ah
 file zlib-1.2.8.tar.gz
-chk  a4d316c404ff54ca545ea71a27af7dbc29817088
+chk  36658cb768a54c1d4dec43c3116c27ed893e88b02ecfcb44f2166f9c0b7f2a0d
 
 
 #
@@ -58,7 +58,7 @@ server http://ftp.gnome.org/pub/gnome/sources/glib/2.41
 # https://lists.debian.org/debian-experimental-changes/2014/09/msg00182.html
 # verified: Sig 3D0E FB95 E7B5 237F 16E8  2258 E352 D5C5 1C50 41D4
 file glib-2.41.5.tar.xz
-chk  31de819181dd8abc25d89484ff6a4e60f032e8fc
+chk  e76a6bd1456749bdd05db19a8f0f174e787e612ed443d30cc9cf02237dd58e16
 
 #
 # GDK-PIXBUF
@@ -70,7 +70,7 @@ server http://ftp.gnome.org/pub/gnome/sources/gdk-pixbuf/2.30/
 # There is a 2.31 series but afaik no security problems with 2.30
 # verified: with linuxfromscratch and frugalware checksums
 file gdk-pixbuf-2.30.8.tar.xz
-chk  6277b4e5b5e334b3669f15ae0376e184be9e8cd8
+chk  4853830616113db4435837992c0aebd94cbb993c44dc55063cee7f72a7bef8be
 
 
 #
@@ -80,19 +80,19 @@ server http://ftp.gnome.org/pub/gnome/sources/atk/1.32
 
 # checked: 2013-04-29 wk (1.32.0 still the latest in 1.32)
 file atk-1.32.0.tar.bz2
-chk  876e88e4259d07bb7905d66c085a50a47e37f9e4
+chk  e9a3e598f75c4db1af914f8b052dd9f7e89e920a96cc187c18eb06b8339cb16e
 
 server http://ftp.gnome.org/pub/gnome/binaries/win32/atk/1.32
 
 # checked: 2013-04-29 wk
 name atk-1.32.0.zip
 file atk_1.32.0-2_win32.zip
-chk  3c31c9d6b19af840e2bd8ccbfef4072a6548dc4e
+chk  cadc6d52f2af21996a6dcba7b1fac27ce66721e14d1c4ab21fde7bc9965f5037
 
 # checked: 2013-04-29 wk
 name atk-dev-1.32.0.zip
 file atk-dev_1.32.0-2_win32.zip
-chk  d0b8c53e01e4541d3d3befc82e41fb5b84949030
+chk  5021d64043d270350d6a8d50b91db691a7421a68ca0bfa4eeb0c8804a176ac44
 
 #
 # PANGO
@@ -103,17 +103,17 @@ server http://ftp.gnome.org/pub/gnome/sources/pango/1.29
 #                        What shall we do:  Update to 1.32?  There are no
 #                        1.32 binaries either.
 file pango-1.29.4.tar.bz2
-chk  3b4dfe317b328061893cf0728afebe292bbcc05b
+chk  f15deecaecf1e9dcb7db0e4947d12b5bcff112586434f8d30a5afd750747ff2b
 
 server http://ftp.gnome.org/pub/gnome/binaries/win32/pango/1.29
 
 name pango-1.29.4.zip
 file pango_1.29.4-1_win32.zip
-chk  3959319bd04fbce513458857f334ada279b8cdd4
+chk  e1b865ae2e4054388c598f92b34593b3d24d7fd15e6308c8926ee634717c21ce
 
 name pango-dev-1.29.4.zip
 file pango-dev_1.29.4-1_win32.zip
-chk  49ae12458f2e29c27ed9d1390d95db18fd4a49ac
+chk  0d7fb255e65ed4bd43acedab4405986e4877b87ba8227d5fa22b38330485e3cb
 
 #
 # CAIRO
@@ -122,7 +122,7 @@ server http://cairographics.org/releases
 
 # checked: 2013-04-29 wk - 1.10.2 is the latest in the 1.10 series.
 file cairo-1.10.2.tar.gz
-chk  ccce5ae03f99c505db97c286a0c9a90a926d3c6e
+chk  32018c7998358eebc2ad578ff8d8559d34fc80252095f110a572ed23d989fc41
 
 server http://ftp.gnome.org/pub/gnome/binaries/win32/dependencies
 # checked: 2013-07-16 ah most recent package on that server is from
@@ -132,52 +132,52 @@ server http://ftp.gnome.org/pub/gnome/binaries/win32/dependencies
 # checked: 2013-04-29 wk
 name cairo-1.10.2.zip
 file cairo_1.10.2-2_win32.zip
-chk  d44cd66a9f4d7d29a8f2c28d1c1c5f9b0525ba44
+chk  e6c361ec1df4ccb23edbe5b68db16329d563a19eeee7fa70d583dda3d2358f4e
 name cairo-dev-1.10.2.zip
 file cairo-dev_1.10.2-2_win32.zip
-chk  45cae1fac45a6c6f33498c37c0cdc47722614d92
+chk  b86f875bf776bbf578e3fa8c46866b84c93200b962b30d03cf795f82157e3167
 
 # checked: 2013-04-29 wk
 file freetype-2.4.2.tar.bz2
-chk  cc257ceda2950b8c80950d780ccf3ce665a815d1
+chk  9a987aef8c50d9bcfdfdc9f012f8bd0de6095cc1a5524e62c1a037deb8dacbfe
 name freetype-2.4.2.zip
 file freetype_2.4.2-1_win32.zip
-chk  c20ab9ff053fe59f73612fd392f6e6dc01af614a
+chk  bdf67e6573363fd2256a58295931cc1186382fd0ad1fe420059d6ffdb5fba7c0
 name freetype-dev-2.4.2.zip
 file freetype-dev_2.4.2-1_win32.zip
-chk  00e877d7ec7c416e2b48a392324a5502019a20bf
+chk  eed58c2807b65d5e0ec78031e89f1628577ad76bf47f02eaecde432c0b99eae9
 
 server http://www.fontconfig.org/release
 
 # checked: 2013-04-29 wk - 2.8.0 still the latest in 2.8
 file fontconfig-2.8.0.tar.gz
-chk  570fb55eb14f2c92a7b470b941e9d35dbfafa716
+chk  fa2a1c6eea654d9fce7a4b1220f10c99cdec848dccaf1625c01f076b31382335
 
 server http://ftp.gnome.org/pub/gnome/binaries/win32/dependencies
 
 # checked: 2013-04-29 wk
 name fontconfig-2.8.0.zip
 file fontconfig_2.8.0-2_win32.zip
-chk  37a3117ea6cc50c8a88fba9b6018f35a04fa71ce
+chk  9d6bcaeed0eced43a649953132d9f2b3e15b98c7bb9e4a207872dfeade818204
 name fontconfig-dev-2.8.0.zip
 file fontconfig-dev_2.8.0-2_win32.zip
-chk  0b772aaeb0a7a0d5de21afd901d6cf00753efa51
+chk  2f15af3d27ca507dad2a208e58409f484aa7e7c7eac10b49edca079b31ae7073
 
 server ftp://ftp.g10code.com/g10code/misc
 
 # checked: 2013-04-29 wk - 2.0.1 still the latest in 2.0
 file expat-2.0.1.tar.gz
-chk  663548c37b996082db1f2f2c32af060d7aa15c2d
+chk  847660b4df86e707c9150e33cd8c25bc5cd828f708c7418e765e3e983a2e5e93
 
 server http://ftp.gnome.org/pub/gnome/binaries/win32/dependencies
 
 # checked: 2013-04-29 wk
 name expat-2.0.1.zip
 file expat_2.0.1-1_win32.zip
-chk  f47790b9e324cd8613acc9a17fd56bf2c14745fc
+chk  77b88ab780e698d6590426b26a877878584b9f8b6357909699674fb5045737bd
 name expat-dev-2.0.1.zip
 file expat-dev_2.0.1-1_win32.zip
-chk  2e9189c6c6d1dac847a47c537c7a5e9dffd91992
+chk  67b92b7f3441fee077bdc0094bf4dd673870acdf51899e32e199246801538162
 
 
 #
@@ -189,7 +189,7 @@ server http://ftp.gnome.org/pub/gnome/sources/gtk+/2.24
 # by: ah
 # verified: chk from https://download.gnome.org/core/3.17/3.17.2/sources/SHA256SUMS-for-xz
 file gtk+-2.24.28.tar.xz
-chk  f3c2f1a3728ed51d08054f6b4c7384fbf99477c0
+chk  b2c6441e98bc5232e5f9bba6965075dcf580a8726398f7374d39f90b88ed4656
 
 #
 # GIMP stuff for W32
@@ -199,11 +199,11 @@ server http://ftp.gnome.org/pub/gnome/binaries/win32/dependencies
 # checked: 2012-03-28 wk - Not updated - not a security problem
 name pkgconfig-0.23.tar.gz
 file pkg-config-0.23.tar.gz
-chk  b59dddd6b5320bd74c0f74b3339618a327096b2a
+chk  08a0e072d6a05419a58124db864f0685e6ac96e71b2875bf15ac12714e983b53
 
 name pkgconfig-0.23.zip
 file pkg-config_0.23-3_win32.zip
-chk  d063e705812e1ee7feb8f35d51b3cad04ca13b0d
+chk  677d6055494e24cad6c49eab33eee618ddc6ed65da827c8b5b7da761b4063278
 
 
 # PNG
@@ -213,7 +213,7 @@ chk  d063e705812e1ee7feb8f35d51b3cad04ca13b0d
 # verified: Sig 8048 643B A2C8 40F4 F92A  195F F549 84BF A16C 640F
 server ftp://ftp.simplesystems.org/pub/png/src/
 file libpng14/libpng-1.4.19.tar.xz
-chk  5af8bdd6e5f2954787a7a8ce6760c7d0ae830162
+chk  52b830ea8900fad3ed46fc91021355211f418c8a41c39699600dbf1db2bbf7ff
 
 #
 # LibFFI
@@ -223,7 +223,7 @@ server ftp://sourceware.org/pub/libffi
 # checked: 2013-04-29 wk - updated from 3.0.10.
 # checked: 2014-07-16 ah - only rc availble from 3.0.14
 file libffi-3.0.13.tar.gz
-chk  f5230890dc0be42fb5c58fbf793da253155de106
+chk  1dddde1400c3bcb7749d398071af88c3e4754058d2d4c0b3696c2f82dc5cf11c
 
 
 #
@@ -235,7 +235,7 @@ server ftp://ftp.g10code.com/g10code/gpgol
 # by: ah
 # verified: Sig D869 2123 C406 5DEA 5E0F  3AB5 249B 39D2 4F25 E3B6
 file gpgol-1.4.0.tar.bz2
-chk  3cbe4a1dc0b9897353d8352a4b5afa3ecf3094f4
+chk  abebb06bcf64c11854b110830b148eada7e7d9046e565c407d7957594f09800f
 
 #
 # GpgEX
@@ -246,7 +246,7 @@ server ftp://ftp.g10code.com/g10code/gpgex
 # by: ah
 # verified: Sig D869 2123 C406 5DEA 5E0F  3AB5 249B 39D2 4F25 E3B6
 file gpgex-1.0.4.tar.bz2
-chk  a1521fd86b6a1c5d5865d864e5700e98f4e99dcb
+chk  aea2232d026219072491f1bf5b2f189a15552f66377ff4dd3b11c0f069379206
 
 
 #
@@ -257,7 +257,7 @@ server ftp://ftp.g10code.com/g10code/w32pth
 
 # checked: 2014-07-16 ah
 file w32pth-2.0.5.tar.bz2
-chk  d648b98ce215f81e901f3f982470d37c704433a6
+chk  5e462d06ed50e9e961546ab5264258e606b101860a74c1e410d086432ec27a06
 
 #
 # Stripped down version of BZIP2
@@ -267,7 +267,7 @@ server ftp://ftp.g10code.com/g10code/bzip2
 
 # checked: 2014-07-16 ah
 file bzip2-1.0.6-g10.tar.gz
-chk  6e38be3377340a21a1f13ff84b5e6adce97cd1d4
+chk  c2a9b3aec1a38d34b66106116a39f64b01d84f475fef75c40ea0bda0ea67ed07
 
 #
 # GnuPG et al.
@@ -280,37 +280,37 @@ server ftp://ftp.gnupg.org/gcrypt
 # last-changed: 2016-03-30
 # by: ah
 file libgpg-error/libgpg-error-1.21.tar.bz2
-chk  ef1dfb2f8761f019091180596e9e638d8cc37513
+chk  b7dbdb3cad63a740e9f0c632a1da32d4afdb694ec86c8625c98ea0691713b84d
 
 # last-changed: 2015-12-11
 # by: ah
 file libassuan/libassuan-2.4.2.tar.bz2
-chk  ac1047f9764fd4a4db7dafe47640643164394db9
+chk  bb06dc81380b74bf1b64d5849be5c0409a336f3b4c45f20ac688e86d1b5bcb20
 
 # last changed: 2016-02-18
 # by: ah
 name gnupg-w32-2.1.11-20160209-bin.exe
 file binary/gnupg-w32-2.1.11_20160209.exe
-chk  89bd31652d370ba69ac27b42b4d474d7edd9e0ea
+chk  1e92b39ef4f4cdf3b1849b6f824dd8f160276aa5c9718be35f8a7bd190bf6154
 
 name gnupg-w32-2.1.11-20160209-src.tar.xz
 file binary/gnupg-w32-2.1.11_20160209.tar.xz
-chk  0a81d3a7b404299f651bf6f6540176b00d0a3967
+chk  c132c16a5ae57ddd8193f222e539a608930fe3556a5c7932cabb5675f0dc3305
 
 # last changed: 2015-12-11
 # by: ah
 file pinentry/pinentry-0.9.7.tar.bz2
-chk  9bdcf5f4096aa8b26956afb0ecdd3d7849ffa0cd
+chk  6398208394972bbf897c3325780195584682a0d0c164ca5a0da35b93b1e4e7b2
 
 # last changed: 2015-08-26
 # by: ah
 file gpgme/gpgme-1.6.0.tar.bz2
-chk  21510323495f6220f8f67610c3c27a23d761d43d
+chk  b09de4197ac280b102080e09eaec6211d081efff1963bf7821cf8f4f9916099d
 
 # last changed: 2015-09-09
 # by: ah
 file gpa/gpa-0.9.9.tar.bz2
-chk  1cf86c9e38aa553fdb880c55cbc6755901ad21a4
+chk  6828d738b9e1d3cce96d2ec9831c09873c4cb2c87ba67a161ef54485192c4334
 
 # (Snapshots)
 # server ftp://ftp.g10code.com/g10code/scratch
@@ -323,7 +323,7 @@ server http://www.jabberwocky.com/software/paperkey
 
 # checked: 2014-07-16 ah
 file paperkey-1.3.tar.gz
-chk  16af56d0e7bdf081d60c59ea4d72e7df6d9cec21
+chk  5b57d7522336fb65c4c398eec27bf44ec0aaa35926157b79a76423231792cbfb
 
 #
 #  Kleopatra and dependencies
@@ -338,7 +338,7 @@ server http://downloads.sourceforge.net/project/boost/boost/
 
 name boost-1.60.0.tar.bz2
 file 1.60.0/boost_1_60_0.tar.bz2
-chk 7f56ab507d3258610391b47fef6b11635861175a
+chk 686affff989ac2488f79a97b9479efb9f2abae035b5ed4d8226de6857933fd3b
 
 # Qt base
 # last changed: 2016-01-05
@@ -349,7 +349,7 @@ server http://download.qt.io/official_releases/qt/
 
 name qtbase-5.5.1.tar.xz
 file 5.5/5.5.1/submodules/qtbase-opensource-src-5.5.1.tar.xz
-chk 0b651543fa013ae151b7a11f0d0dee092050aa3f
+chk dfa4e8a4d7e4c6b69285e7e8833eeecd819987e1bdbe5baa6b6facd4420de916
 
 # Qt Tools
 # last changed: 2016-01-11
@@ -357,7 +357,7 @@ chk 0b651543fa013ae151b7a11f0d0dee092050aa3f
 # verified: HTTPS https://download.qt.io/official_releases/qt/5.5/5.5.1/submodules/qttools-opensource-src-5.5.1.tar.xz.sha1
 name qttools-5.5.1.tar.xz
 file 5.5/5.5.1/submodules/qttools-opensource-src-5.5.1.tar.xz
-chk f7815165d0b427346028901a42be5f0f47d05962
+chk 4361f6ce49717058160908297841a18b94645cec593d1b48fb126c9d06c87bfd
 
 # Qt Winextras
 # last changed: 2016-01-22
@@ -365,7 +365,7 @@ chk f7815165d0b427346028901a42be5f0f47d05962
 # verified: HTTPS https://download.qt.io/official_releases/qt/5.5/5.5.1/submodules/qtwinextras-opensource-src-5.5.1.tar.xz.sha1
 name qtwinextras-5.5.1.tar.xz
 file 5.5/5.5.1/submodules/qtwinextras-opensource-src-5.5.1.tar.xz
-chk 116678ea988123adb76a7406941b0f70519a9f6c
+chk cb00d2ac7a6039fe1119d458f16f319882cb9a250f4caea55657edcde38d851f
 
 # Qt svg
 # last changed: 2016-01-28
@@ -373,7 +373,7 @@ chk 116678ea988123adb76a7406941b0f70519a9f6c
 # verified: HTTPS https://download.qt.io/official_releases/qt/5.5/5.5.1/submodules/qtsvg-opensource-src-5.5.1.tar.xz.sha1
 name qtsvg-5.5.1.tar.xz
 file 5.5/5.5.1/submodules/qtsvg-opensource-src-5.5.1.tar.xz
-chk 701fcc10201abcf540d26a8fcc6a8b7184dc16b1
+chk f7f588be48befd9ccab5a6086832551b8899e8bed9e603ddea979581e05a91c7
 
 
 # KDE Frameworks
@@ -385,98 +385,98 @@ server http://download.kde.org/stable/frameworks/
 # by: ah
 # verified: https://www.kde.org/info/kde-frameworks-5.19.0.php
 file 5.19/extra-cmake-modules-5.19.0.tar.xz
-chk 5e5cafe2725f51d4befc37d79f9d05303a3c94b4
+chk c3d02fbeaa3af9bc1165365be00a97746475c26d85695e16d7f1a8ac168483b6
 
 # KConfig
 # last changed: 2016-01-22
 # by: ah
 # verified: https://www.kde.org/info/kde-frameworks-5.18.0.php
 file 5.18/kconfig-5.18.0.tar.xz
-chk d23e28f8b8651970cb12c6485639165340006811
+chk 36a4c887080bff674bccd302985ff9a401d8e1a8a0649616ff686f4d1ddceee8
 
 # KI18n
 # last changed: 2016-01-21
 # by: ah
 # verified: https://www.kde.org/info/kde-frameworks-5.18.0.php
 file 5.18/ki18n-5.18.0.tar.xz
-chk c2b3b02f3776f579151a2423acd67b844440ee8f
+chk 0926ef9fd9a1f7fe74c251c4fc155855fad2347eb37fb1e4dde12ea012c17493
 
 # KWidgetsAddons
 # last changed: 2016-01-21
 # by: ah
 # verified: https://www.kde.org/info/kde-frameworks-5.18.0.php
 file 5.18/kwidgetsaddons-5.18.0.tar.xz
-chk b6120dd7ca1ffe52d4fecaf396ac64ad3dfe5e94
+chk 61eebbe729dba31fccfdd1178e50d4c2c9e4b221f193f2a0d2e57ec6d9f9d819
 
 # KCompletion
 # last changed: 2016-01-22
 # by: ah
 # verified: https://www.kde.org/info/kde-frameworks-5.18.0.php
 file 5.18/kcompletion-5.18.0.tar.xz
-chk 6e4e095711c073056d1bd101d24e7ba1c4c214cc
+chk cb9cd9e2c156df65f6de8057ad855808922b072cf042882de91c9f4aef23723e
 
 # KWindowSystem
 # last changed: 2016-01-22
 # by: ah
 # verified: https://www.kde.org/info/kde-frameworks-5.18.0.php
 file 5.18/kwindowsystem-5.18.0.tar.xz
-chk 6aa1d1e590dc500a7511a95a8d0d6bac93eb19d2
+chk 67567ba32268d0a5365106b7e98e69eb77880271580c68adbf0d128f32691f06
 
 # KCoreAddons
 # last changed: 2016-01-22
 # by: ah
 # verified: https://www.kde.org/info/kde-frameworks-5.18.0.php
 file 5.18/kcoreaddons-5.18.0.tar.xz
-chk 7c41dbcc217d0e93cb276c84b23a55ad803e80a3
+chk ee7785642f3bcbb513c6a236f8f13a14809ee58b69a7a885c4c63688acbac817
 
 # KCodecs
 # last changed: 2016-01-25
 # by: ah
 # verified: https://www.kde.org/info/kde-frameworks-5.18.0.php
 file 5.18/kcodecs-5.18.0.tar.xz
-chk 8d5f09a9fa5977658a31a13ae9cef4d81f741da3
+chk 9098cec9ed88287cf000580c2381a60faad45e1f7b70a1a391c2b579fe6dd2c6
 
 # KConfigWidgets
 # last changed: 2016-01-28
 # by: ah
 # verified: https://www.kde.org/info/kde-frameworks-5.18.0.php
 file 5.18/kconfigwidgets-5.18.0.tar.xz
-chk 3aa99f49d570d6cba6bbf86b4c3a2ca9f88a3d29
+chk 35a25df3d79ec4ae50f80e496218b8898564011f6eadbe7cb742e70b08102122
 
 # KXmlGui
 # last changed: 2016-01-28
 # by: ah
 # verified: https://www.kde.org/info/kde-frameworks-5.18.0.php
 file 5.18/kxmlgui-5.18.0.tar.xz
-chk 5609b50abad6f9ad618a8de3eb6f1307530265b9
+chk 316324910ba63df52de57445b68aaf3f4b1689e86d568039f968eb7132f0357a
 
 # KGuiAddons
 # last changed: 2016-01-28
 # by: ah
 # verified: https://www.kde.org/info/kde-frameworks-5.18.0.php
 file 5.18/kguiaddons-5.18.0.tar.xz
-chk 771d2c2e9ce074f89ee75e5685edaec10c00e709
+chk bf4b419964849f87e599313da8d2d0fe15cbfc1d12495d052be692c7e3927594
 
 # KItemViews
 # last changed: 2016-01-28
 # by: ah
 # verified: https://www.kde.org/info/kde-frameworks-5.18.0.php
 file 5.18/kitemviews-5.18.0.tar.xz
-chk c10a50c6607e548f9d5727040971cbe8e1074851
+chk 6b785b151c5e02e652d25371a133193ca60b9209a8cba6968c00e67f1d80eb82
 
 # KIconThemes
 # last changed: 2016-01-28
 # by: ah
 # verified: https://www.kde.org/info/kde-frameworks-5.18.0.php
 file 5.18/kiconthemes-5.18.0.tar.xz
-chk 015547e8939aad42bcff53daee344011cc3772f4
+chk 2df21aa7a72c218903060976cf2ac63024bfd30e4188d78d78f6148f0416f282
 
 # breeze-icons
 # last changed: 2016-02-04
 # by: ah
 # verified: https://www.kde.org/info/kde-frameworks-5.18.0.php
 file 5.18/breeze-icons-5.18.0.tar.xz
-chk 89efd0ae68895326747b8e2b2577bd2b4cc46e13
+chk 9f7007cdc805083812583d575b3ce2880f41f32f5337582c55a6acfc4bc69128
 
 # KDE Applications
 #
@@ -499,14 +499,14 @@ server http://files.intevation.de/projects/gpg4all
 # verified: Tarball created by ah.
 
 file gpgmepp/gpgmepp-201603091357.tar.xz
-chk e24baa3618ac5fab63cba68d1aa9c13ba3cf581c
+chk 79c33c35f45f5833fe6d909aec5539c1baee571a34e0d51df8d6d5baa8b7c6d8
 
 # kmime
 # last changed: 2016-01-25
 # by: ah
 # verified: https://www.kde.org/info/applications-15.12.1.php
 # file 15.12.1/src/kmime-15.12.1.tar.xz
-# chk 0a9bbe73a2a2f24ee2addfb47f642646d2eae996
+# chk fab98917a4cbde33040c97817c1e199d70e335c1a66b1329ff39be0b25287a48
 #
 # kmime-devel
 # last changed: 2016-01-25
@@ -514,7 +514,7 @@ chk e24baa3618ac5fab63cba68d1aa9c13ba3cf581c
 # verified: Tarball created by ah.
 
 file kmime/kmime-201601251644.tar.xz
-chk 0a9bbe73a2a2f24ee2addfb47f642646d2eae996
+chk fab98917a4cbde33040c97817c1e199d70e335c1a66b1329ff39be0b25287a48
 
 # Libkleo
 # last changed: 2016-01-22
@@ -522,21 +522,21 @@ chk 0a9bbe73a2a2f24ee2addfb47f642646d2eae996
 # verified: Tarball created by ah.
 
 file libkleo/libkleo-201601221448.tar.xz
-chk 668b115e7e025b5408f53ced73056f5c4f660993
+chk 73371739483b1ca33f6de3ecdd83de0c5c33f486705c8927458168d7181375b9
 
 # KDE-L10n
 # last changed: 2016-02-19
 # by: ah
 # verified: Tarball created by ah with script kde-l10n.sh
 file kde-l10n/kde-l10n-201602191116-bin.tar.xz
-chk 24af3cd7f8e8be7de1392474a6947d10db6a3049
+chk 3e73412a8444cd22262a5ebbe0a6f546cc68b24fa66bd5c6705df54f45a4d68b
 
 file kde-l10n/kde-l10n-201602191116-src.tar.xz
-chk 76257cc32d5eeeb9e9e2b19a0bc60eb89d5807f7
+chk d07988acf4398583580f0f55aae73c3082687fba19d2aa8048979d53a82cf592
 
 # Kleopatra
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah.
 file kleopatra/kleopatra-201603101932.tar.gz
-chk 56f31186c817548122586705387d43066b4ae21a
+chk a8cbb676ee7e354f76d6715c7eaf660eccac12c03948479d196990de800b2426

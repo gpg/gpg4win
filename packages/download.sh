@@ -25,13 +25,15 @@
 # rest of the line will be taken as the base URL for following file
 # commands.  If the first word of a line is "file" the rest of the
 # line will be appended to the current base URL (with a / as
-# delimiter).  Example:
+# delimiter). Checksums are sha256 sums.
+#
+# Example:
 #
 #    # GnuPG stuff.
 #    server ftp://ftp.gnupg.org/gcrypt
 #
 #    file gnupg/gnupg-1.4.2.tar.gz
-#    chk  1234567890123456789012345678901234567890
+#    chk  1e92b39ef4f4cdf3b1849b6f824dd8f160276aa5c9718be35f8a7bd190bf6154
 #
 
 
@@ -201,7 +203,7 @@ while read key value ; do
            exit 1
        fi
        [ $quiet = no ] && echo -n "checking    \`$name' ..."
-       if echo "$value *$name" | sha1sum -c >/dev/null 2>&1 ; then
+       if echo "$value *$name" | sha256sum -c >/dev/null 2>&1 ; then
            [ $quiet = no ] && echo " okay"
        else
            [ $quiet = no ] && echo " FAILED (line $lnr)"
