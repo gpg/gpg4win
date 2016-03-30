@@ -262,12 +262,13 @@ chk  f5230890dc0be42fb5c58fbf793da253155de106
 #
 # GpgOL
 #
-server http://files.gpg4win.org/Beta/gpgol
+server ftp://ftp.g10code.com/g10code/gpgol
 
-# last-changed: 2016-03-04
+# last-changed: 2016-03-30
 # by: ah
-file 1.4.0-beta55/gpgol-1.4.0-beta55.tar.bz2
-chk  9615c10afc636d79908a55b21fa977fc0f33e584
+# verified: Sig D869 2123 C406 5DEA 5E0F  3AB5 249B 39D2 4F25 E3B6
+file gpgol-1.4.0.tar.bz2
+chk  3cbe4a1dc0b9897353d8352a4b5afa3ecf3094f4
 
 #
 # GpgEX
