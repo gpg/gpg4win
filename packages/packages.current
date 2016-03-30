@@ -324,10 +324,11 @@ chk  ed52add1ce635deeb2f5c6650e52667debd4ec70
 file libksba/libksba-1.3.3.tar.bz2
 chk  86fe0436f3c8c394d32e142ee410a9f9560173fb
 
-# last-changed: 2015-11-12
+
+# last-changed: 2015-12-11
 # by: ah
-file libassuan/libassuan-2.4.0.tar.bz2
-chk  8b00866b3b0386e996cc6bdcb902c727f0d190a5
+file libassuan/libassuan-2.4.2.tar.bz2
+chk  ac1047f9764fd4a4db7dafe47640643164394db9
 
 # last changed: 2015-09-08
 # by: ah
