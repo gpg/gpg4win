@@ -21,11 +21,11 @@ server ftp://ftp.cs.tu-berlin.de/pub/gnu
 # by: ah
 # verified with key: 4622 25C3 B46F 3487 9FC8  496C D605 848E D7E6 9871
 file gettext/gettext-0.19.5.tar.xz
-chk  bfe50a885076a24d63b9d9b242a409cc16727d24
+chk  3410a61c5c05d0392533c92133e135de828973fee27477a6d6dd3d3e36f2a2dd
 
 # checked: 2015-08-25 ah
 file libiconv/libiconv-1.14.tar.gz
-chk  be7d67e50d72ff067b2c0291311bc283add36965
+chk  72b24ded17d687193c3366d0ebe7cde1e6b18f0df8c55438ac95be39e8a30613
 
 #
 # zlib
@@ -34,7 +34,7 @@ server http://zlib.net
 
 # checked: 2014-06-20 ah
 file zlib-1.2.8.tar.gz
-chk  a4d316c404ff54ca545ea71a27af7dbc29817088
+chk  36658cb768a54c1d4dec43c3116c27ed893e88b02ecfcb44f2166f9c0b7f2a0d
 
 
 #
@@ -45,18 +45,18 @@ server ftp://ftp.gnu.org/pub/gnu
 
 # checked: 2014-06-20 ah
 file gsasl/libgsasl-1.8.0.tar.gz
-chk  08fd5dfdd3d88154cf06cb0759a732790c47b4f7
+chk  3adfb49f9c92a719dea855fd1840d698cde55d4648d332a69032ba8bea207720
 
 # checked: 2014-06-20 ah
 file libtasn1/libtasn1-2.14.tar.gz
-chk  22f9e0b15f870c8e03ac9cc1ead969d4d84eb931
+chk  bc2936cd20267859278145e563427c274d27aaae30ecdf50a04cdd4ec0153d54
 
 
 server ftp://ftp.gnutls.org/gcrypt
 # checked: 2014-06-20 ah
 # verified with key 1F42 4189 05D8 206A A754  CCDC 29EE 58B9 9686 5171
 file gnutls/v2.12/gnutls-2.12.23.tar.bz2
-chk 3c0ba2153560abfb08d88dcb016cd6b72e465db5
+chk dfa67a7e40727eb0913e75f3c44911d5d8cd58d1ead5acfe73dd933fc0d17ed2
 
 
 #
@@ -68,7 +68,7 @@ server http://curl.haxx.se/download
 # checked: 2015-06-05 ah - updated
 # verified with key 914C 533D F9B2 ADA2 204F  586D 78E1 1C6B 279D 5C91
 file  curl-7.42.1.tar.bz2
-chk   f65708915875b8cb35edb51d8dd31440dc02fbd3
+chk   e2905973391ec2dfd7743a8034ad10eeb58dab8b3a297e7892a41a7999cac887
 
 #
 # GLIB
@@ -91,7 +91,7 @@ server http://ftp.gnome.org/pub/gnome/sources/glib/2.41
 # https://lists.debian.org/debian-experimental-changes/2014/09/msg00182.html
 # verified: Sig 3D0E FB95 E7B5 237F 16E8  2258 E352 D5C5 1C50 41D4
 file glib-2.41.5.tar.xz
-chk  31de819181dd8abc25d89484ff6a4e60f032e8fc
+chk  e76a6bd1456749bdd05db19a8f0f174e787e612ed443d30cc9cf02237dd58e16
 
 #
 # GDK-PIXBUF
@@ -103,7 +103,7 @@ server http://ftp.gnome.org/pub/gnome/sources/gdk-pixbuf/2.30/
 # There is a 2.31 series but afaik no security problems with 2.30
 # verified: with linuxfromscratch and frugalware checksums
 file gdk-pixbuf-2.30.8.tar.xz
-chk  6277b4e5b5e334b3669f15ae0376e184be9e8cd8
+chk  4853830616113db4435837992c0aebd94cbb993c44dc55063cee7f72a7bef8be
 
 
 #
@@ -113,19 +113,19 @@ server http://ftp.gnome.org/pub/gnome/sources/atk/1.32
 
 # checked: 2013-04-29 wk (1.32.0 still the latest in 1.32)
 file atk-1.32.0.tar.bz2
-chk  876e88e4259d07bb7905d66c085a50a47e37f9e4
+chk  e9a3e598f75c4db1af914f8b052dd9f7e89e920a96cc187c18eb06b8339cb16e
 
 server http://ftp.gnome.org/pub/gnome/binaries/win32/atk/1.32
 
 # checked: 2013-04-29 wk
 name atk-1.32.0.zip
 file atk_1.32.0-2_win32.zip
-chk  3c31c9d6b19af840e2bd8ccbfef4072a6548dc4e
+chk  cadc6d52f2af21996a6dcba7b1fac27ce66721e14d1c4ab21fde7bc9965f5037
 
 # checked: 2013-04-29 wk
 name atk-dev-1.32.0.zip
 file atk-dev_1.32.0-2_win32.zip
-chk  d0b8c53e01e4541d3d3befc82e41fb5b84949030
+chk  5021d64043d270350d6a8d50b91db691a7421a68ca0bfa4eeb0c8804a176ac44
 
 #
 # PANGO
@@ -136,17 +136,17 @@ server http://ftp.gnome.org/pub/gnome/sources/pango/1.29
 #                        What shall we do:  Update to 1.32?  There are no
 #                        1.32 binaries either.
 file pango-1.29.4.tar.bz2
-chk  3b4dfe317b328061893cf0728afebe292bbcc05b
+chk  f15deecaecf1e9dcb7db0e4947d12b5bcff112586434f8d30a5afd750747ff2b
 
 server http://ftp.gnome.org/pub/gnome/binaries/win32/pango/1.29
 
 name pango-1.29.4.zip
 file pango_1.29.4-1_win32.zip
-chk  3959319bd04fbce513458857f334ada279b8cdd4
+chk  e1b865ae2e4054388c598f92b34593b3d24d7fd15e6308c8926ee634717c21ce
 
 name pango-dev-1.29.4.zip
 file pango-dev_1.29.4-1_win32.zip
-chk  49ae12458f2e29c27ed9d1390d95db18fd4a49ac
+chk  0d7fb255e65ed4bd43acedab4405986e4877b87ba8227d5fa22b38330485e3cb
 
 #
 # CAIRO
@@ -155,7 +155,7 @@ server http://cairographics.org/releases
 
 # checked: 2013-04-29 wk - 1.10.2 is the latest in the 1.10 series.
 file cairo-1.10.2.tar.gz
-chk  ccce5ae03f99c505db97c286a0c9a90a926d3c6e
+chk  32018c7998358eebc2ad578ff8d8559d34fc80252095f110a572ed23d989fc41
 
 server http://ftp.gnome.org/pub/gnome/binaries/win32/dependencies
 # checked: 2013-07-16 ah most recent package on that server is from
@@ -165,52 +165,52 @@ server http://ftp.gnome.org/pub/gnome/binaries/win32/dependencies
 # checked: 2013-04-29 wk
 name cairo-1.10.2.zip
 file cairo_1.10.2-2_win32.zip
-chk  d44cd66a9f4d7d29a8f2c28d1c1c5f9b0525ba44
+chk  e6c361ec1df4ccb23edbe5b68db16329d563a19eeee7fa70d583dda3d2358f4e
 name cairo-dev-1.10.2.zip
 file cairo-dev_1.10.2-2_win32.zip
-chk  45cae1fac45a6c6f33498c37c0cdc47722614d92
+chk  b86f875bf776bbf578e3fa8c46866b84c93200b962b30d03cf795f82157e3167
 
 # checked: 2013-04-29 wk
 file freetype-2.4.2.tar.bz2
-chk  cc257ceda2950b8c80950d780ccf3ce665a815d1
+chk  9a987aef8c50d9bcfdfdc9f012f8bd0de6095cc1a5524e62c1a037deb8dacbfe
 name freetype-2.4.2.zip
 file freetype_2.4.2-1_win32.zip
-chk  c20ab9ff053fe59f73612fd392f6e6dc01af614a
+chk  bdf67e6573363fd2256a58295931cc1186382fd0ad1fe420059d6ffdb5fba7c0
 name freetype-dev-2.4.2.zip
 file freetype-dev_2.4.2-1_win32.zip
-chk  00e877d7ec7c416e2b48a392324a5502019a20bf
+chk  eed58c2807b65d5e0ec78031e89f1628577ad76bf47f02eaecde432c0b99eae9
 
 server http://www.fontconfig.org/release
 
 # checked: 2013-04-29 wk - 2.8.0 still the latest in 2.8
 file fontconfig-2.8.0.tar.gz
-chk  570fb55eb14f2c92a7b470b941e9d35dbfafa716
+chk  fa2a1c6eea654d9fce7a4b1220f10c99cdec848dccaf1625c01f076b31382335
 
 server http://ftp.gnome.org/pub/gnome/binaries/win32/dependencies
 
 # checked: 2013-04-29 wk
 name fontconfig-2.8.0.zip
 file fontconfig_2.8.0-2_win32.zip
-chk  37a3117ea6cc50c8a88fba9b6018f35a04fa71ce
+chk  9d6bcaeed0eced43a649953132d9f2b3e15b98c7bb9e4a207872dfeade818204
 name fontconfig-dev-2.8.0.zip
 file fontconfig-dev_2.8.0-2_win32.zip
-chk  0b772aaeb0a7a0d5de21afd901d6cf00753efa51
+chk  2f15af3d27ca507dad2a208e58409f484aa7e7c7eac10b49edca079b31ae7073
 
 server ftp://ftp.g10code.com/g10code/misc
 
 # checked: 2013-04-29 wk - 2.0.1 still the latest in 2.0
 file expat-2.0.1.tar.gz
-chk  663548c37b996082db1f2f2c32af060d7aa15c2d
+chk  847660b4df86e707c9150e33cd8c25bc5cd828f708c7418e765e3e983a2e5e93
 
 server http://ftp.gnome.org/pub/gnome/binaries/win32/dependencies
 
 # checked: 2013-04-29 wk
 name expat-2.0.1.zip
 file expat_2.0.1-1_win32.zip
-chk  f47790b9e324cd8613acc9a17fd56bf2c14745fc
+chk  77b88ab780e698d6590426b26a877878584b9f8b6357909699674fb5045737bd
 name expat-dev-2.0.1.zip
 file expat-dev_2.0.1-1_win32.zip
-chk  2e9189c6c6d1dac847a47c537c7a5e9dffd91992
+chk  67b92b7f3441fee077bdc0094bf4dd673870acdf51899e32e199246801538162
 
 
 #
@@ -222,7 +222,7 @@ server http://ftp.gnome.org/pub/gnome/sources/gtk+/2.24
 # by: ah
 # verified: chk from https://download.gnome.org/core/3.17/3.17.2/sources/SHA256SUMS-for-xz
 file gtk+-2.24.28.tar.xz
-chk  f3c2f1a3728ed51d08054f6b4c7384fbf99477c0
+chk  b2c6441e98bc5232e5f9bba6965075dcf580a8726398f7374d39f90b88ed4656
 
 #
 # GIMP stuff for W32
@@ -232,11 +232,11 @@ server http://ftp.gnome.org/pub/gnome/binaries/win32/dependencies
 # checked: 2012-03-28 wk - Not updated - not a security problem
 name pkgconfig-0.23.tar.gz
 file pkg-config-0.23.tar.gz
-chk  b59dddd6b5320bd74c0f74b3339618a327096b2a
+chk  08a0e072d6a05419a58124db864f0685e6ac96e71b2875bf15ac12714e983b53
 
 name pkgconfig-0.23.zip
 file pkg-config_0.23-3_win32.zip
-chk  d063e705812e1ee7feb8f35d51b3cad04ca13b0d
+chk  677d6055494e24cad6c49eab33eee618ddc6ed65da827c8b5b7da761b4063278
 
 
 # PNG
@@ -246,7 +246,7 @@ chk  d063e705812e1ee7feb8f35d51b3cad04ca13b0d
 # verified: Sig 8048 643B A2C8 40F4 F92A  195F F549 84BF A16C 640F
 server ftp://ftp.simplesystems.org/pub/png/src/
 file libpng14/libpng-1.4.19.tar.xz
-chk  5af8bdd6e5f2954787a7a8ce6760c7d0ae830162
+chk  52b830ea8900fad3ed46fc91021355211f418c8a41c39699600dbf1db2bbf7ff
 
 #
 # LibFFI
@@ -256,7 +256,7 @@ server ftp://sourceware.org/pub/libffi
 # checked: 2013-04-29 wk - updated from 3.0.10.
 # checked: 2014-07-16 ah - only rc availble from 3.0.14
 file libffi-3.0.13.tar.gz
-chk  f5230890dc0be42fb5c58fbf793da253155de106
+chk  1dddde1400c3bcb7749d398071af88c3e4754058d2d4c0b3696c2f82dc5cf11c
 
 
 #
@@ -268,7 +268,7 @@ server ftp://ftp.g10code.com/g10code/gpgol
 # by: ah
 # verified: Sig D869 2123 C406 5DEA 5E0F  3AB5 249B 39D2 4F25 E3B6
 file gpgol-1.4.0.tar.bz2
-chk  3cbe4a1dc0b9897353d8352a4b5afa3ecf3094f4
+chk  abebb06bcf64c11854b110830b148eada7e7d9046e565c407d7957594f09800f
 
 #
 # GpgEX
@@ -279,7 +279,7 @@ server ftp://ftp.g10code.com/g10code/gpgex
 # by: ah
 # verified: Sig D869 2123 C406 5DEA 5E0F  3AB5 249B 39D2 4F25 E3B6
 file gpgex-1.0.4.tar.bz2
-chk  a1521fd86b6a1c5d5865d864e5700e98f4e99dcb
+chk  aea2232d026219072491f1bf5b2f189a15552f66377ff4dd3b11c0f069379206
 
 
 #
@@ -290,7 +290,7 @@ server ftp://ftp.g10code.com/g10code/w32pth
 
 # checked: 2014-07-16 ah
 file w32pth-2.0.5.tar.bz2
-chk  d648b98ce215f81e901f3f982470d37c704433a6
+chk  5e462d06ed50e9e961546ab5264258e606b101860a74c1e410d086432ec27a06
 
 #
 # Stripped down version of BZIP2
@@ -300,7 +300,7 @@ server ftp://ftp.g10code.com/g10code/bzip2
 
 # checked: 2014-07-16 ah
 file bzip2-1.0.6-g10.tar.gz
-chk  6e38be3377340a21a1f13ff84b5e6adce97cd1d4
+chk  c2a9b3aec1a38d34b66106116a39f64b01d84f475fef75c40ea0bda0ea67ed07
 
 #
 # GnuPG et al.
@@ -313,52 +313,52 @@ server ftp://ftp.gnupg.org/gcrypt
 # last-changed: 2016-03-30
 # by: ah
 file libgpg-error/libgpg-error-1.21.tar.bz2
-chk  ef1dfb2f8761f019091180596e9e638d8cc37513
+chk  b7dbdb3cad63a740e9f0c632a1da32d4afdb694ec86c8625c98ea0691713b84d
 
 # last changed: 2016-03-30
 # by: ah
 file libgcrypt/libgcrypt-1.6.5.tar.bz2
-chk  c3a5a13e717f7b3e3895650afc1b6e0d3fe9c726
+chk  f49ebc5842d455ae7019def33eb5a014a0f07a2a8353dc3aa50a76fd1dafa924
 
 # last-changed: 2015-06-05
 # by: ah
 file libksba/libksba-1.3.3.tar.bz2
-chk  86fe0436f3c8c394d32e142ee410a9f9560173fb
+chk  0c7f5ffe34d0414f6951d9880a46fcc2985c487f7c36369b9f11ad41131c7786
 
 
 # last-changed: 2015-12-11
 # by: ah
 file libassuan/libassuan-2.4.2.tar.bz2
-chk  ac1047f9764fd4a4db7dafe47640643164394db9
+chk  bb06dc81380b74bf1b64d5849be5c0409a336f3b4c45f20ac688e86d1b5bcb20
 
 # last changed: 2015-09-08
 # by: ah
 name gnupg2-2.0.29.tar.bz2
 file gnupg/gnupg-2.0.29.tar.bz2
-chk  87eb0df18f9953675f979405a1af10ab6c5322b3
+chk  68ed6b386ba78425b05a60e8ee22785ff0fef190bdc6f1c612f19a58819d4ac9
 
 # checked: 2014-07-16 ah
 file dirmngr/dirmngr-1.1.1.tar.bz2
-chk  e708d4aa5ce852f4de3f4b58f4e4f221f5e5c690
+chk  d2280b8c314db80cdaf101211a47826734443436f5c3545cc1b614c50eaae6ff
 
 # last changed: 2015-06-23
 # by: ah
 file pinentry/pinentry-0.9.4.tar.bz2
-chk  0c47f0ddea4631bcba01ebbeca8bffe0bf43e440
+chk  4b8835bb738d464542b62020ff6b8f649a621540edb61c4cbfe0c894538ee2e0
 
 # checked: 2014-07-16 ah
 file scute/scute-1.4.0.tar.bz2
-chk  e28141d2b03612c09512651795976c58ed3f8035
+chk  bd698a853375324c4ff590899c1994be83d8d0a1400fcaf489529646965fb745
 
 # last changed: 2015-09-08
 # by: ah
 file gpgme/gpgme-1.6.0.tar.bz2
-chk  21510323495f6220f8f67610c3c27a23d761d43d
+chk  b09de4197ac280b102080e09eaec6211d081efff1963bf7821cf8f4f9916099d
 
 # last changed: 2015-09-09
 # by: ah
 file gpa/gpa-0.9.9.tar.bz2
-chk  1cf86c9e38aa553fdb880c55cbc6755901ad21a4
+chk  6828d738b9e1d3cce96d2ec9831c09873c4cb2c87ba67a161ef54485192c4334
 
 # (Snapshots)
 # server ftp://ftp.g10code.com/g10code/scratch
@@ -371,7 +371,7 @@ server http://www.jabberwocky.com/software/paperkey
 
 # checked: 2014-07-16 ah
 file paperkey-1.3.tar.gz
-chk  16af56d0e7bdf081d60c59ea4d72e7df6d9cec21
+chk  5b57d7522336fb65c4c398eec27bf44ec0aaa35926157b79a76423231792cbfb
 
 #
 # adns
@@ -382,7 +382,7 @@ server ftp://ftp.g10code.com/g10code/adns
 # by: ah
 # verified: Sig D869 2123 C406 5DEA 5E0F  3AB5 249B 39D2 4F25 E3B6
 file adns-1.4-g10-6.tar.bz2
-chk  cc124d58828ab1d6fa7df49aaeb37985c5225de5
+chk  7ee0c0d15b9c94599a5cf55897b6ebefd102e2bf42b798c52bb7f77a4436d198
 
 
 #
@@ -393,13 +393,13 @@ chk  cc124d58828ab1d6fa7df49aaeb37985c5225de5
 server http://files.kolab.org/local/gpg4win/libs/
 
 file qt-x86-mingw4-4.8.6-bin.tar.bz2
-chk  657c833fa39a93c6d7bfccc03c9fb88df4746136
+chk  cc71e71c1a05d2690c0598bc49cde7044d21512fd52fb615e47eaa43778074c6
 
 file qt-x86-mingw4-4.8.6-lib.tar.bz2
-chk  bc7fc185fd54259be25833b4c482a5680279cdae
+chk  94e1365a04cbc39df917862a827dc527a1208521cca5ca81c560401eb3b27f8a
 
 file qt-x86-mingw4-4.8.6-src.tar.bz2
-chk  9d6e271446f4fac714d915aabbe26497e592d25c
+chk  630ac6aca6f8781ae60aceabc97acbc9d06bc29ad34350e69df5f50802753798
 
 #
 # Qt links DBus and Kleopatra / KDE libs needs it
@@ -408,23 +408,23 @@ chk  9d6e271446f4fac714d915aabbe26497e592d25c
 server http://files.kolab.org/local/gpg4win/libs/
 
 file dbus-x86-mingw4-1.4.24-20130417-1-bin.tar.bz2
-chk 59abdc742ce87011dadbc58e96ed870a927d0045
+chk 6369bc85bd9e7ab39026d80267ef07974755cad469c940f50532ce9b9e57cfd5
 
 file dbus-x86-mingw4-1.4.24-20130417-lib.tar.bz2
-chk fc557d7eb161881e1d6c091f215dd8e0615682cb
+chk 10ba95bed95ecb82bef6dddbbeb81f7f7fee95487e81d03ba12d78de3ac58a54
 
 file dbus-x86-mingw4-1.4.24-20130417-src.tar.bz2
-chk f03ffd02333f786a5e540c4430d3109952b5553e
+chk 93df86bc356b9abde970f5dfd9428ea23a781623dee18ceac2f9a0e4a08f61e9
 
 
 # oxygen-icons
 server http://files.kolab.org/local/gpg4win
 
 file oxygen-icons-20141125-bin.tar.bz2
-chk  744dbbc7585205948fa62d63c9dbb8c6dd8fc9fb
+chk  ad3bba4acf922fac820ea28888d514e27b2fe0d56ddc9abc6395b505b27e7f76
 
 file oxygen-icons-20141125-src.tar.bz2
-chk  e2af27d711d528c21fd2bf73639da1cd2c811f7a
+chk  fcc8c5ee35fb590b7c31e0bff6ebf88bcc9cf5bc337a6f7161adb38f1a5171f8
 
 
 #
@@ -435,10 +435,10 @@ server http://files.kolab.org/local/gpg4win
 
 # This is kdepim/gpg4win branch fb4ae3dc8
 file kleopatra-20151117-bin.tar.xz
-chk  5ebb215985ecf379b16d49c251fb0d92aff902c5
+chk  2d1ced98e16dfc8209aa33b377721bed9e7df903e38877496123a7a50f9c32ce
 
 # This also includes the sources for kdelibs
 # kdewin win-iconv and kdepimlibs which
 # are part of binaries in the kleopatra bin package
 file kleopatra-20151117-src.tar.xz
-chk  c7d6b7fa4b9d7a354ddce726913a65fcc59b9323
+chk  cf9578c35e0b15ac015231b6c991bfdb26ec9bc1683929dc91f6b738f2200c5d
