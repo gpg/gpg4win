@@ -309,10 +309,10 @@ chk  6e38be3377340a21a1f13ff84b5e6adce97cd1d4
 # D869 2123 C406 5DEA 5E0F  3AB5 249B 39D2 4F25 E3B6
 server ftp://ftp.gnupg.org/gcrypt
 
-# last-changed: 2015-11-12
+# last-changed: 2016-03-30
 # by: ah
-file libgpg-error/libgpg-error-1.20.tar.bz2
-chk  89c961f63469739fe816a56dcdd86c2e1897cace
+file libgpg-error/libgpg-error-1.21.tar.bz2
+chk  ef1dfb2f8761f019091180596e9e638d8cc37513
 
 # last changed: 2016-03-30
 # by: ah
