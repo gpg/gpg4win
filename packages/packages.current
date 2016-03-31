@@ -333,9 +333,9 @@ chk  bb06dc81380b74bf1b64d5849be5c0409a336f3b4c45f20ac688e86d1b5bcb20
 
 # last changed: 2015-09-08
 # by: ah
-name gnupg2-2.0.29.tar.bz2
-file gnupg/gnupg-2.0.29.tar.bz2
-chk  68ed6b386ba78425b05a60e8ee22785ff0fef190bdc6f1c612f19a58819d4ac9
+name gnupg2-2.0.30.tar.bz2
+file gnupg/gnupg-2.0.30.tar.bz2
+chk  e329785a4f366ba5d72c2c678a7e388b0892ac8440c2f4e6810042123c235d71
 
 # checked: 2014-07-16 ah
 file dirmngr/dirmngr-1.1.1.tar.bz2
