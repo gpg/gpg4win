@@ -310,10 +310,10 @@ chk  c2a9b3aec1a38d34b66106116a39f64b01d84f475fef75c40ea0bda0ea67ed07
 # D869 2123 C406 5DEA 5E0F  3AB5 249B 39D2 4F25 E3B6
 server ftp://ftp.gnupg.org/gcrypt
 
-# last-changed: 2016-03-30
-# by: ah
-file libgpg-error/libgpg-error-1.21.tar.bz2
-chk  b7dbdb3cad63a740e9f0c632a1da32d4afdb694ec86c8625c98ea0691713b84d
+# last-changed: 2016-03-31
+# by: jochen
+file libgpg-error/libgpg-error-1.20.tar.bz2
+chk  3266895ce3419a7fb093e63e95e2ee3056c481a9bc0d6df694cfd26f74e72522
 
 # last changed: 2016-03-30
 # by: ah
@@ -331,8 +331,8 @@ chk  0c7f5ffe34d0414f6951d9880a46fcc2985c487f7c36369b9f11ad41131c7786
 file libassuan/libassuan-2.4.2.tar.bz2
 chk  bb06dc81380b74bf1b64d5849be5c0409a336f3b4c45f20ac688e86d1b5bcb20
 
-# last changed: 2015-09-08
-# by: ah
+# last changed: 2016-03-31
+# by: jochen
 name gnupg2-2.0.30.tar.bz2
 file gnupg/gnupg-2.0.30.tar.bz2
 chk  e329785a4f366ba5d72c2c678a7e388b0892ac8440c2f4e6810042123c235d71
