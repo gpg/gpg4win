@@ -248,7 +248,6 @@ server ftp://ftp.g10code.com/g10code/gpgex
 file gpgex-1.0.4.tar.bz2
 chk  aea2232d026219072491f1bf5b2f189a15552f66377ff4dd3b11c0f069379206
 
-
 #
 # Pth emulation
 #
@@ -287,7 +286,7 @@ chk  b7dbdb3cad63a740e9f0c632a1da32d4afdb694ec86c8625c98ea0691713b84d
 file libassuan/libassuan-2.4.2.tar.bz2
 chk  bb06dc81380b74bf1b64d5849be5c0409a336f3b4c45f20ac688e86d1b5bcb20
 
-# last changed: 2016-02-18
+# last changed: 2015-09-08
 # by: ah
 name gnupg-w32-2.1.11-20160209-bin.exe
 file binary/gnupg-w32-2.1.11_20160209.exe
