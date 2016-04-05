@@ -13,21 +13,6 @@
 
 
 #
-# GNU
-#
-server ftp://ftp.cs.tu-berlin.de/pub/gnu
-
-# last-changed: 2015-08-25
-# by: ah
-# verified with key: 4622 25C3 B46F 3487 9FC8  496C D605 848E D7E6 9871
-file gettext/gettext-0.19.5.tar.xz
-chk  3410a61c5c05d0392533c92133e135de828973fee27477a6d6dd3d3e36f2a2dd
-
-# checked: 2015-08-25 ah
-file libiconv/libiconv-1.14.tar.gz
-chk  72b24ded17d687193c3366d0ebe7cde1e6b18f0df8c55438ac95be39e8a30613
-
-#
 # zlib
 #
 server http://zlib.net
@@ -42,6 +27,14 @@ chk  36658cb768a54c1d4dec43c3116c27ed893e88b02ecfcb44f2166f9c0b7f2a0d
 #
 
 server ftp://ftp.gnu.org/pub/gnu
+
+#checked: 2016-04-05 jochen
+file libiconv/libiconv-1.14.tar.gz
+chk  72b24ded17d687193c3366d0ebe7cde1e6b18f0df8c55438ac95be39e8a30613
+
+#checked: 2016-04-05 jochen
+file gettext/gettext-0.19.5.tar.xz
+chk  3410a61c5c05d0392533c92133e135de828973fee27477a6d6dd3d3e36f2a2dd
 
 # checked: 2014-06-20 ah
 file gsasl/libgsasl-1.8.0.tar.gz
