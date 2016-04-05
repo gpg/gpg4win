@@ -29,7 +29,7 @@
         Gpg4win 2.3.1 veröffentlicht
       </a></span>',`
       <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2016-April/000068.html">
-        Gpg4win 2.3.0 released
+        Gpg4win 2.3.1 released
       </a></span>')
    <p></p>
    <small>2015-11-25</small><br>
