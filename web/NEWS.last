@@ -2,6 +2,46 @@
 #
 # The version number given below are for the standard installers as
 # distributed by www.gpg4win.org.
+Noteworthy changes in version 2.3.1 (2016-04-05)
+------------------------------------------------
+
+(en) GpgOL now has an option dialog where S/MIME can be disabled.
+
+(de) GpgOL enthält nun einen Optionsdialog in dem S/MIME deaktiviert werden
+     kann.
+
+(en) GpgOL now supports the 64 Bit version of Microsoft Outlook.
+
+(de) Die 64 Bit Version von Microsoft Outlook wird nun von GpgOL unterstützt.
+
+(en) GpgOL can be switched to the new, experimental, MIME aware behavior in
+     the Options Dialog.
+
+(de) GpgOL kann im Optionsdialog nun auf die neue, experimentelle, volle
+     MIME unterstützung umgestellt werden.
+
+(en) GpgOL now reverts temporary changes made to MIME mails. So that they
+     can be opened with other clients again.
+
+(de) GpgOL macht änderungen an MIME Mails nun Rückgängig so das diese auch
+     weiterhin von anderen Anwendungen verarbeitet werden können.
+
+(en) GpgEX no longer blocks the Windows Explorer while it starts GPA or
+     Kleopatra.
+
+(de) GpgEX blockiert den Windows Explorer nun nicht mehr während GPA oder
+     Kleopatra gestartet werden.
+
+~~~~~~~~~~~~~~~
+GnuPG:          2.0.30
+Kleopatra:      2.2.0-gitfb4ae3d
+GPA:            0.9.9
+GpgOL:          1.4.0
+GpgEX:          1.0.4
+Kompendium DE:  3.0.0
+Kompendium EN:  3.0.0
+~~~~~~~~~~~~~~~
+
 Noteworthy changes in version 2.3.0 (2015-11-25)
 ------------------------------------------------
 

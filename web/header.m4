@@ -22,6 +22,16 @@
    </div>
    <div class="h_text">
    <p><span class="heading">News</span></p>
+   <small>2016-04-05</small><br>
+   <span class="serif_word"><img src="img/bulletin.png" alt"" />
+     m4_ifelse(LANG_DE, `1', `
+      <a href="download-de.html">
+        Gpg4win 2.3.1 veröffentlicht
+      </a></span>',`
+      <a href="download.html">
+        Gpg4win 2.3.0 released
+      </a></span>')
+   <p></p>
    <small>2015-11-25</small><br>
    <span class="serif_word"><img src="img/bulletin.png" alt="" />
      m4_ifelse(LANG_DE, `1', `
@@ -33,13 +43,6 @@
         Gpg4win 2.3.0 released
      </a></span>
      <br><small><a href="pm-20151125-de.html">Presse release (German)</a></small>')
-   <p></p>
-   <small>2015-11-25</small><br>
-   <span class="serif_word"><img src="img/bulletin.png" alt="" />
-   <a href="news-20151125.html">
-   Security Advisory 2015-11-25
-   </a>
-   </span>
    <p></p>
    <div class="limiter"></div>
    <p>
