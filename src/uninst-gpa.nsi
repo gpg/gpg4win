@@ -54,14 +54,21 @@ Section "-un.gpa"
   DeleteRegValue HKLM "Software\Classes\.gpg" "gpg4win.AssocFile.gpa.GPG"
   DeleteRegValue HKLM "Software\Classes\.asc" "gpg4win.AssocFile.gpa.ASC"
   DeleteRegValue HKLM "Software\Classes\.pgp" "gpg4win.AssocFile.gpa.PGP"
-  DeleteRegValue HKLM "Software\Classes\.cer" "gpg4win.AssocFile.gpa.X509"
   DeleteRegValue HKLM "Software\Classes\.pem" "gpg4win.AssocFile.gpa.CMS"
+  DeleteRegValue HKLM "Software\Classes\.p7s" "gpg4win.AssocFile.gpa.CMS"
+  DeleteRegValue HKLM "Software\Classes\.p7m" "gpg4win.AssocFile.gpa.CMS"
+  DeleteRegValue HKLM "Software\Classes\.arl" "gpg4win.AssocFile.gpa.CMS"
+  DeleteRegValue HKLM "Software\Classes\.crl" "gpg4win.AssocFile.gpa.CMS"
 
   DeleteRegKey /ifempty HKLM "Software\Classes\.gpg"
   DeleteRegKey /ifempty HKLM "Software\Classes\.asc"
   DeleteRegKey /ifempty HKLM "Software\Classes\.pgp"
-  DeleteRegKey /ifempty HKLM "Software\Classes\.pem"
   DeleteRegKey /ifempty HKLM "Software\Classes\.sig"
+  DeleteRegKey /ifempty HKLM "Software\Classes\.pem"
+  DeleteRegKey /ifempty HKLM "Software\Classes\.p7m"
+  DeleteRegKey /ifempty HKLM "Software\Classes\.p7s"
+  DeleteRegKey /ifempty HKLM "Software\Classes\.crl"
+  DeleteRegKey /ifempty HKLM "Software\Classes\.arl"
 
 !endif
 SectionEnd
