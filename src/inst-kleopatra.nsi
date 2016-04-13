@@ -223,7 +223,9 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
   FileClose $1
   pop $1
 
-
+  WriteRegStr HKLM "Software\Gpg4win\kleopatra\Capabilities" "ApplicationDescription" "$(DESC_SEC_kleopatra)"
+  WriteRegStr HKLM "Software\Gpg4win\kleopatra\Capabilities" "ApplicationIcon" "$INSTDIR\bin\kleopatra.exe,0"
+  WriteRegStr HKLM "Software\Gpg4win\kleopatra\Capabilities" "ApplicationName" "Kleopatra"
 
 !endif
 ${MementoSectionEnd}

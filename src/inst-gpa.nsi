@@ -72,6 +72,10 @@
 
   no_config_gpa_files:
 
+  WriteRegStr HKLM "Software\Gpg4win\gpa\Capabilities" "ApplicationDescription" "$(DESC_SEC_gpa)"
+  WriteRegStr HKLM "Software\Gpg4win\gpa\Capabilities" "ApplicationIcon" "$INSTDIR\bin\gpa.exe,0"
+  WriteRegStr HKLM "Software\Gpg4win\gpa\Capabilities" "ApplicationName" "$(DESC_SEC_gpa)"
+
 !endif
 ${MementoSectionEnd}
 

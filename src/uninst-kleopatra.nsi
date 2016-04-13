@@ -202,5 +202,25 @@ Section "-un.kleopatra"
   RMDir "$INSTDIR\share"
   RMDir "$INSTDIR"
 
+  DetailPrint "Unregistering file extensions"
+
+  DeleteRegKey HKLM "Software\Classes\gpg4win.AssocFile.kleopatra.GPG"
+  DeleteRegKey HKLM "Software\Classes\gpg4win.AssocFile.kleopatra.ASC"
+  DeleteRegKey HKLM "Software\Classes\gpg4win.AssocFile.kleopatra.CMS"
+  DeleteRegKey HKLM "Software\Classes\gpg4win.AssocFile.kleopatra.X509"
+  DeleteRegKey HKLM "Software\Classes\gpg4win.AssocFile.kleopatra.PGPSIG"
+  DeleteRegKey HKLM "Software\Gpg4win\kleopatra"
+  DeleteRegValue HKLM "Software\RegisteredApplications" "Gpg4win.kleopatra.${VERSION}"
+  DeleteRegValue HKLM "Software\Classes\.gpg" "gpg4win.AssocFile.kleopatra.GPG"
+  DeleteRegValue HKLM "Software\Classes\.asc" "gpg4win.AssocFile.kleopatra.ASC"
+  DeleteRegValue HKLM "Software\Classes\.pgp" "gpg4win.AssocFile.kleopatra.PGP"
+  DeleteRegValue HKLM "Software\Classes\.cer" "gpg4win.AssocFile.kleopatra.X509"
+  DeleteRegValue HKLM "Software\Classes\.pem" "gpg4win.AssocFile.kleopatra.CMS"
+
+  DeleteRegKey /ifempty HKLM "Software\Classes\.gpg"
+  DeleteRegKey /ifempty HKLM "Software\Classes\.asc"
+  DeleteRegKey /ifempty HKLM "Software\Classes\.pgp"
+  DeleteRegKey /ifempty HKLM "Software\Classes\.pem"
+  DeleteRegKey /ifempty HKLM "Software\Classes\.sig"
 !endif
 SectionEnd

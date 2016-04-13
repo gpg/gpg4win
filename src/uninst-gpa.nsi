@@ -44,5 +44,24 @@ Section "-un.gpa"
   Delete "$INSTDIR\share\gpa\gpa.png"
   RMDir "$INSTDIR\share\gpa"
 
+  DeleteRegKey HKLM "Software\Classes\gpg4win.AssocFile.gpa.GPG"
+  DeleteRegKey HKLM "Software\Classes\gpg4win.AssocFile.gpa.ASC"
+  DeleteRegKey HKLM "Software\Classes\gpg4win.AssocFile.gpa.CMS"
+  DeleteRegKey HKLM "Software\Classes\gpg4win.AssocFile.gpa.X509"
+  DeleteRegKey HKLM "Software\Classes\gpg4win.AssocFile.gpa.PGPSIG"
+  DeleteRegKey HKLM "Software\Gpg4win\gpa"
+  DeleteRegValue HKLM "Software\RegisteredApplications" "Gpg4win.gpa.${VERSION}"
+  DeleteRegValue HKLM "Software\Classes\.gpg" "gpg4win.AssocFile.gpa.GPG"
+  DeleteRegValue HKLM "Software\Classes\.asc" "gpg4win.AssocFile.gpa.ASC"
+  DeleteRegValue HKLM "Software\Classes\.pgp" "gpg4win.AssocFile.gpa.PGP"
+  DeleteRegValue HKLM "Software\Classes\.cer" "gpg4win.AssocFile.gpa.X509"
+  DeleteRegValue HKLM "Software\Classes\.pem" "gpg4win.AssocFile.gpa.CMS"
+
+  DeleteRegKey /ifempty HKLM "Software\Classes\.gpg"
+  DeleteRegKey /ifempty HKLM "Software\Classes\.asc"
+  DeleteRegKey /ifempty HKLM "Software\Classes\.pgp"
+  DeleteRegKey /ifempty HKLM "Software\Classes\.pem"
+  DeleteRegKey /ifempty HKLM "Software\Classes\.sig"
+
 !endif
 SectionEnd
