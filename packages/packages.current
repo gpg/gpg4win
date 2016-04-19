@@ -297,8 +297,8 @@ chk  c132c16a5ae57ddd8193f222e539a608930fe3556a5c7932cabb5675f0dc3305
 
 # last changed: 2015-12-11
 # by: ah
-file pinentry/pinentry-0.9.7.tar.bz2
-chk  6398208394972bbf897c3325780195584682a0d0c164ca5a0da35b93b1e4e7b2
+#file pinentry/pinentry-0.9.7.tar.bz2
+#chk  6398208394972bbf897c3325780195584682a0d0c164ca5a0da35b93b1e4e7b2
 
 # last changed: 2015-08-26
 # by: ah
@@ -381,100 +381,100 @@ server http://download.kde.org/stable/frameworks/
 # ECM
 # last changed: 2016-03-10
 # by: ah
-# verified: https://www.kde.org/info/kde-frameworks-5.19.0.php
-file 5.19/extra-cmake-modules-5.19.0.tar.xz
-chk c3d02fbeaa3af9bc1165365be00a97746475c26d85695e16d7f1a8ac168483b6
+# verified: https://www.kde.org/info/kde-frameworks-5.20.0.php
+file 5.20/extra-cmake-modules-5.20.0.tar.xz
+chk 2c8ff0c7289edfaa95007e622c87a5fa95e9e2a2ed291eb25a61f06ea92ac34c
 
 # KConfig
-# last changed: 2016-01-22
+# last changed: 2016-04-19
 # by: ah
-# verified: https://www.kde.org/info/kde-frameworks-5.18.0.php
-file 5.18/kconfig-5.18.0.tar.xz
-chk 36a4c887080bff674bccd302985ff9a401d8e1a8a0649616ff686f4d1ddceee8
+# verified: https://www.kde.org/info/kde-frameworks-5.20.0.php
+file 5.20/kconfig-5.20.0.tar.xz
+chk ebd7dd5c6960eac1aee299bd804ab864cad235ef30d312256b01b57ed9ff635b
 
 # KI18n
-# last changed: 2016-01-21
+# last changed: 2016-04-19
 # by: ah
-# verified: https://www.kde.org/info/kde-frameworks-5.18.0.php
-file 5.18/ki18n-5.18.0.tar.xz
-chk 0926ef9fd9a1f7fe74c251c4fc155855fad2347eb37fb1e4dde12ea012c17493
+# verified: https://www.kde.org/info/kde-frameworks-5.20.0.php
+file 5.20/ki18n-5.20.0.tar.xz
+chk 226715a464a9b1d03c257d470ea0d6060fdfe35efc635108491cadb48512389c
 
 # KWidgetsAddons
-# last changed: 2016-01-21
+# last changed: 2016-04-19
 # by: ah
-# verified: https://www.kde.org/info/kde-frameworks-5.18.0.php
-file 5.18/kwidgetsaddons-5.18.0.tar.xz
-chk 61eebbe729dba31fccfdd1178e50d4c2c9e4b221f193f2a0d2e57ec6d9f9d819
+# verified: https://www.kde.org/info/kde-frameworks-5.20.0.php
+file 5.20/kwidgetsaddons-5.20.0.tar.xz
+chk a930990de3b090d10c20cb30d764825a551253a7d4b104b4eac9ae73dc81e628
 
 # KCompletion
-# last changed: 2016-01-22
+# last changed: 2016-04-19
 # by: ah
-# verified: https://www.kde.org/info/kde-frameworks-5.18.0.php
-file 5.18/kcompletion-5.18.0.tar.xz
-chk cb9cd9e2c156df65f6de8057ad855808922b072cf042882de91c9f4aef23723e
+# verified: https://www.kde.org/info/kde-frameworks-5.20.0.php
+file 5.20/kcompletion-5.20.0.tar.xz
+chk a503a1516012ecc5b6eaa328c31dfd0d6c527a8a78489d9d372dba90d0ec1b4f
 
 # KWindowSystem
-# last changed: 2016-01-22
+# last changed: 2016-04-19
 # by: ah
-# verified: https://www.kde.org/info/kde-frameworks-5.18.0.php
-file 5.18/kwindowsystem-5.18.0.tar.xz
-chk 67567ba32268d0a5365106b7e98e69eb77880271580c68adbf0d128f32691f06
+# verified: https://www.kde.org/info/kde-frameworks-5.20.0.php
+file 5.20/kwindowsystem-5.20.0.tar.xz
+chk b1d7e273b5fc75fbde45fe33179ea884a0b9761af0663279405cfd18d9e4390f
 
 # KCoreAddons
-# last changed: 2016-01-22
+# last changed: 2016-04-19
 # by: ah
-# verified: https://www.kde.org/info/kde-frameworks-5.18.0.php
-file 5.18/kcoreaddons-5.18.0.tar.xz
-chk ee7785642f3bcbb513c6a236f8f13a14809ee58b69a7a885c4c63688acbac817
+# verified: https://www.kde.org/info/kde-frameworks-5.20.0.php
+file 5.20/kcoreaddons-5.20.0.tar.xz
+chk ac3819517744f1868c664045eaf9231cdf1c090dec3d329257ee7b56dc94fe69
 
 # KCodecs
-# last changed: 2016-01-25
+# last changed: 2016-04-19
 # by: ah
-# verified: https://www.kde.org/info/kde-frameworks-5.18.0.php
-file 5.18/kcodecs-5.18.0.tar.xz
-chk 9098cec9ed88287cf000580c2381a60faad45e1f7b70a1a391c2b579fe6dd2c6
+# verified: https://www.kde.org/info/kde-frameworks-5.20.0.php
+file 5.20/kcodecs-5.20.0.tar.xz
+chk b08b419aaa1137083be32885afac8cfa7b3f1c3c874b5046e57c1f70cf0d3122
 
 # KConfigWidgets
-# last changed: 2016-01-28
+# last changed: 2016-04-19
 # by: ah
-# verified: https://www.kde.org/info/kde-frameworks-5.18.0.php
-file 5.18/kconfigwidgets-5.18.0.tar.xz
-chk 35a25df3d79ec4ae50f80e496218b8898564011f6eadbe7cb742e70b08102122
+# verified: https://www.kde.org/info/kde-frameworks-5.20.0.php
+file 5.20/kconfigwidgets-5.20.0.tar.xz
+chk c707529939e66d14bff03c320c0bf3237c760034344b2d8b28a4a4e53be079ba
 
 # KXmlGui
-# last changed: 2016-01-28
+# last changed: 2016-04-19
 # by: ah
-# verified: https://www.kde.org/info/kde-frameworks-5.18.0.php
-file 5.18/kxmlgui-5.18.0.tar.xz
-chk 316324910ba63df52de57445b68aaf3f4b1689e86d568039f968eb7132f0357a
+# verified: https://www.kde.org/info/kde-frameworks-5.20.0.php
+file 5.20/kxmlgui-5.20.0.tar.xz
+chk 84d186d92969570a47f314c20f7f444d3d82182e47b6f065ab3537bdbc221c14
 
 # KGuiAddons
-# last changed: 2016-01-28
+# last changed: 2016-04-19
 # by: ah
-# verified: https://www.kde.org/info/kde-frameworks-5.18.0.php
-file 5.18/kguiaddons-5.18.0.tar.xz
-chk bf4b419964849f87e599313da8d2d0fe15cbfc1d12495d052be692c7e3927594
+# verified: https://www.kde.org/info/kde-frameworks-5.20.0.php
+file 5.20/kguiaddons-5.20.0.tar.xz
+chk be0e6a2f1a1c0d670a8333325b0a65334a2aff62dda9c8e32347a480f9e62407
 
 # KItemViews
-# last changed: 2016-01-28
+# last changed: 2016-04-19
 # by: ah
-# verified: https://www.kde.org/info/kde-frameworks-5.18.0.php
-file 5.18/kitemviews-5.18.0.tar.xz
-chk 6b785b151c5e02e652d25371a133193ca60b9209a8cba6968c00e67f1d80eb82
+# verified: https://www.kde.org/info/kde-frameworks-5.20.0.php
+file 5.20/kitemviews-5.20.0.tar.xz
+chk 3d71897950535b3180966917997320bd7227c503cb9e47356fe01df687d7e596
 
 # KIconThemes
-# last changed: 2016-01-28
+# last changed: 2016-04-19
 # by: ah
-# verified: https://www.kde.org/info/kde-frameworks-5.18.0.php
-file 5.18/kiconthemes-5.18.0.tar.xz
-chk 2df21aa7a72c218903060976cf2ac63024bfd30e4188d78d78f6148f0416f282
+# verified: https://www.kde.org/info/kde-frameworks-5.20.0.php
+file 5.20/kiconthemes-5.20.0.tar.xz
+chk 772d1a9f5a3168b8d5f255af66e04c8019df516225ac5ad268365dca1bbf4ee7
 
 # breeze-icons
-# last changed: 2016-02-04
+# last changed: 2016-04-19
 # by: ah
-# verified: https://www.kde.org/info/kde-frameworks-5.18.0.php
-file 5.18/breeze-icons-5.18.0.tar.xz
-chk 9f7007cdc805083812583d575b3ce2880f41f32f5337582c55a6acfc4bc69128
+# verified: https://www.kde.org/info/kde-frameworks-5.20.0.php
+file 5.20/breeze-icons-5.20.0.tar.xz
+chk 445b5cb8774cb224f804abea7864a8bf6307b6a4d1958b4caf1d251f02f98204
 
 # KDE Applications
 #
@@ -484,6 +484,12 @@ chk 9f7007cdc805083812583d575b3ce2880f41f32f5337582c55a6acfc4bc69128
 # server http://download.kde.org/stable/applications/
 server http://files.intevation.de/projects/gpg4all
 
+# Pinentry master to show new pinentry features under devel.
+# by: ah
+# verified: tarball created by ah
+file pinentry/pinentry-0.9.8-beta5.tar.bz2
+chk b4e7713165008c0b21c065c4452a155cc353b7bb9abf519833873eb522b6a676
+
 # Gpgmepp
 # last changed: 2016-01-21
 # by: ah
@@ -492,12 +498,12 @@ server http://files.intevation.de/projects/gpg4all
 # chk 56d5f05bd513efc6caf770e43b6109e42842198f
 #
 # Gpgmepp-devel
-# last changed: 2016-01-22
+# last changed: 2016-04-19
 # by: ah
 # verified: Tarball created by ah.
 
-file gpgmepp/gpgmepp-201603091357.tar.xz
-chk 79c33c35f45f5833fe6d909aec5539c1baee571a34e0d51df8d6d5baa8b7c6d8
+file gpgmepp/gpgmepp-201604191437.tar.xz
+chk e8c6d9947c2b9410f151379a1bcd6e562e05f0b71fdf5d889783b5914bfa51da
 
 # kmime
 # last changed: 2016-01-25
@@ -515,11 +521,11 @@ file kmime/kmime-201601251644.tar.xz
 chk fab98917a4cbde33040c97817c1e199d70e335c1a66b1329ff39be0b25287a48
 
 # Libkleo
-# last changed: 2016-01-22
+# last changed: 2016-04-19
 # by: ah
 # verified: Tarball created by ah.
-file libkleo/libkleo-201601221448.tar.xz
-chk 73371739483b1ca33f6de3ecdd83de0c5c33f486705c8927458168d7181375b9
+file libkleo/libkleo-201604191436.tar.xz
+chk 2d04b133900454eb5f61bc016a43e6ee426c48fe5ca8ed54cd46542fef59b6bd
 
 # KDE-L10n
 # last changed: 2016-02-19
@@ -535,5 +541,5 @@ chk d07988acf4398583580f0f55aae73c3082687fba19d2aa8048979d53a82cf592
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah.
-file kleopatra/kleopatra-201603101932.tar.gz
-chk a8cbb676ee7e354f76d6715c7eaf660eccac12c03948479d196990de800b2426
+file kleopatra/kleopatra-201604191441.tar.gz
+chk 861cea4d59117a1fb8f98338c050dc50e9e940f12093aa2f86149eabc07e7d80

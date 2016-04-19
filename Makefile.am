@@ -43,11 +43,9 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         patches/gpgmepp/0002-disable-variants.patch \
         patches/kmime/0001-Check-for-and-replace-strcasestr.patch \
         patches/kmime/0002-Fix-Windows-build.patch \
-        patches/kxmlgui/0001-Make-KGlobalAccel-dependency-optional.patch \
         patches/kxmlgui/0002-Make-QDBus-dependency-optional.patch \
         patches/kxmlgui/0003-Make-KTextWidgets-optional.patch \
         patches/kxmlgui/0004-Cruedly-disable-KSendbugmail.patch \
-        patches/kxmlgui/0005-Use-non-native-Language-name-as-fallback.patch \
         patches/kconfigwidgets/0001-Make-QDbus-optional.patch \
         patches/kconfigwidgets/0002-Crudely-remove-KF5Auth-depedency.patch \
         patches/kiconthemes/0001-Make-DBus-optional.patch \
@@ -58,8 +56,6 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         patches/kleopatra/0003-Add-option-to-disable-KWatchGnuPG.patch \
         patches/kleopatra/0004-Make-DBus-integration-of-the-smime-conf-optional.patch \
         patches/kleopatra/0005-Hack-generated-conf-files-for-Crosscompiling.patch \
-        patches/kcoreaddons/0001-Fix-Kdelibs4-config-migration-for-Windows.patch \
-        patches/pinentry-0.9.7/Qt-Fix-Windows-foreground-window-hacks-for-Qt5.patch \
 	patches/libgpg-error-1.21/0001-Add-FD_ISSET-replacement-for-Windows.patch
 
 copy-news:
