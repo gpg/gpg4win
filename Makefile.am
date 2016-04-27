@@ -51,10 +51,6 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         patches/kiconthemes/0001-Make-DBus-optional.patch \
         patches/qtsvg/qtsvg-link-zlib.patch \
         patches/extra-cmake-modules/0001-Add-convert-utility-support-for-Windows-icons.patch \
-        patches/kleopatra/0001-Implement-KDBusService-alternative-for-Windows.patch \
-        patches/kleopatra/0002-Add-alternative-configuredialog-wihout-KCMUtils.patch \
-        patches/kleopatra/0003-Add-option-to-disable-KWatchGnuPG.patch \
-        patches/kleopatra/0004-Make-DBus-integration-of-the-smime-conf-optional.patch \
         patches/kleopatra/0005-Hack-generated-conf-files-for-Crosscompiling.patch \
 	patches/libgpg-error-1.21/0001-Add-FD_ISSET-replacement-for-Windows.patch
 
