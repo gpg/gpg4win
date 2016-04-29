@@ -89,6 +89,8 @@ Section "-breeze-icons" SEC_breeze_icons
   File ${prefix}/share/icons/breeze-dark/actions/16/tools-report-bug.svg
   File ${prefix}/share/icons/breeze-dark/actions/16/view-refresh.svg
   File ${prefix}/share/icons/breeze-dark/actions/16/window-close.svg
+  File ${prefix}/share/icons/breeze-dark/actions/16/visibility.svg
+  File ${prefix}/share/icons/breeze-dark/actions/16/hint.svg
 
   SetOutPath "$INSTDIR\share\icons\breeze-dark\actions\22"
 
@@ -200,6 +202,8 @@ Section "-breeze-icons" SEC_breeze_icons
   File ${prefix}/share/icons/breeze-dark/actions/24/tools-report-bug.svg
   File ${prefix}/share/icons/breeze-dark/actions/24/view-refresh.svg
   File ${prefix}/share/icons/breeze-dark/actions/24/window-close.svg
+  File ${prefix}/share/icons/breeze-dark/actions/24/visibility.svg
+  File ${prefix}/share/icons/breeze-dark/actions/24/hint.svg
 
   SetOutPath "$INSTDIR\share\icons\breeze-dark\actions\32"
 
@@ -302,6 +306,7 @@ Section "-breeze-icons" SEC_breeze_icons
   File ${prefix}/share/icons/breeze/actions/16/document-edit-sign.svg
   File ${prefix}/share/icons/breeze/actions/16/document-edit-verify.svg
   File ${prefix}/share/icons/breeze/actions/16/document-encrypt.svg
+  File ${prefix}/share/icons/breeze/actions/16/document-sign.svg
   File ${prefix}/share/icons/breeze/actions/16/document-open.svg
   File ${prefix}/share/icons/breeze/actions/16/document-print.svg
   File ${prefix}/share/icons/breeze/actions/16/document-revert.svg
@@ -335,6 +340,8 @@ Section "-breeze-icons" SEC_breeze_icons
   File ${prefix}/share/icons/breeze/actions/16/tools-report-bug.svg
   File ${prefix}/share/icons/breeze/actions/16/view-refresh.svg
   File ${prefix}/share/icons/breeze/actions/16/window-close.svg
+  File ${prefix}/share/icons/breeze/actions/16/visibility.svg
+  File ${prefix}/share/icons/breeze/actions/16/hint.svg
 
   SetOutPath "$INSTDIR\share\icons\breeze\actions\22"
 
@@ -355,6 +362,7 @@ Section "-breeze-icons" SEC_breeze_icons
   File ${prefix}/share/icons/breeze/actions/22/document-edit-sign.svg
   File ${prefix}/share/icons/breeze/actions/22/document-edit-verify.svg
   File ${prefix}/share/icons/breeze/actions/22/document-encrypt.svg
+  File ${prefix}/share/icons/breeze/actions/22/document-sign.svg
   File ${prefix}/share/icons/breeze/actions/22/document-open.svg
   File ${prefix}/share/icons/breeze/actions/22/document-print.svg
   File ${prefix}/share/icons/breeze/actions/22/document-revert.svg
@@ -414,6 +422,7 @@ Section "-breeze-icons" SEC_breeze_icons
   File ${prefix}/share/icons/breeze/actions/24/document-edit-sign.svg
   File ${prefix}/share/icons/breeze/actions/24/document-edit-verify.svg
   File ${prefix}/share/icons/breeze/actions/24/document-encrypt.svg
+  File ${prefix}/share/icons/breeze/actions/24/document-sign.svg
   File ${prefix}/share/icons/breeze/actions/24/document-open.svg
   File ${prefix}/share/icons/breeze/actions/24/document-print.svg
   File ${prefix}/share/icons/breeze/actions/24/document-revert.svg
@@ -446,6 +455,8 @@ Section "-breeze-icons" SEC_breeze_icons
   File ${prefix}/share/icons/breeze/actions/24/tools-report-bug.svg
   File ${prefix}/share/icons/breeze/actions/24/view-refresh.svg
   File ${prefix}/share/icons/breeze/actions/24/window-close.svg
+  File ${prefix}/share/icons/breeze/actions/24/visibility.svg
+  File ${prefix}/share/icons/breeze/actions/24/hint.svg
 
   SetOutPath "$INSTDIR\share\icons\breeze\actions\32"
 
