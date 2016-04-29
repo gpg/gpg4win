@@ -261,6 +261,10 @@
 !define gpg4win_pkg_kitemviews @gpg4win_pkg_kitemviews@
 !define gpg4win_pkg_kitemviews_version @gpg4win_pkg_kitemviews_version@
 
+@HAVE_PKG_KITEMMODELS@
+!define gpg4win_pkg_kitemmodels @gpg4win_pkg_kitemmodels@
+!define gpg4win_pkg_kitemmodels_version @gpg4win_pkg_kitemmodels_version@
+
 @HAVE_PKG_KICONTHEMES@
 !define gpg4win_pkg_kiconthemes @gpg4win_pkg_kiconthemes@
 !define gpg4win_pkg_kiconthemes_version @gpg4win_pkg_kiconthemes_version@
