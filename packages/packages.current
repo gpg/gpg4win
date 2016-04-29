@@ -462,6 +462,13 @@ chk be0e6a2f1a1c0d670a8333325b0a65334a2aff62dda9c8e32347a480f9e62407
 file 5.20/kitemviews-5.20.0.tar.xz
 chk 3d71897950535b3180966917997320bd7227c503cb9e47356fe01df687d7e596
 
+# KItemModels
+# last changed: 2016-04-29
+# by: ah
+# verified: https://www.kde.org/info/kde-frameworks-5.20.0.php
+file 5.20/kitemmodels-5.20.0.tar.xz
+chk 2fce8fe2294ec26a1943c44a547cfd1a2b3e7044e5b571bebd0aef5c7812da79
+
 # KIconThemes
 # last changed: 2016-04-19
 # by: ah

@@ -152,6 +152,9 @@
 !ifdef HAVE_PKG_KITEMVIEWS
 !include "inst-kitemviews.nsi"
 !endif
+!ifdef HAVE_PKG_KITEMMODELS
+!include "inst-kitemmodels.nsi"
+!endif
 !ifdef HAVE_PKG_LIBKLEO
 !include "inst-libkleo.nsi"
 !endif
@@ -364,6 +367,9 @@
 !endif
 !ifdef HAVE_PKG_KITEMVIEWS
 !include "uninst-kitemviews.nsi"
+!endif
+!ifdef HAVE_PKG_KITEMMODELS
+!include "uninst-kitemmodels.nsi"
 !endif
 !ifdef HAVE_PKG_KMIME
 !include "uninst-kmime.nsi"
@@ -630,6 +636,9 @@ Function CalcDepends
 !ifdef HAVE_PKG_KITEMVIEWS
   !insertmacro UnselectSection ${SEC_kitemviews}
 !endif
+!ifdef HAVE_PKG_KITEMMODELS
+  !insertmacro UnselectSection ${SEC_kitemmodels}
+!endif
 !ifdef HAVE_PKG_KGUIADDONS
   !insertmacro UnselectSection ${SEC_kguiaddons}
 !endif
@@ -746,6 +755,7 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_kconfigwidgets}
   !insertmacro SelectSection ${SEC_kxmlgui}
   !insertmacro SelectSection ${SEC_kitemviews}
+  !insertmacro SelectSection ${SEC_kitemmodels}
   !insertmacro SelectSection ${SEC_kiconthemes}
   !insertmacro SelectSection ${SEC_kguiaddons}
   !insertmacro SelectSection ${SEC_qtsvg}
