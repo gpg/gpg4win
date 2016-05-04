@@ -107,6 +107,7 @@ Function SetupExtRegKeys
 
   # Mime extensions For PGP this is probably pretty useless
   WriteRegStr HKLM "Software\Gpg4win\$0\Capabilities\MimeAssociations" "application/pgp" "gpg4win.AssocFile.$0.GPG"
+  WriteRegStr HKLM "Software\Gpg4win\$0\Capabilities\MimeAssociations" "application/pgp-keys" "gpg4win.AssocFile.$0.GPG"
   WriteRegStr HKLM "Software\Gpg4win\$0\Capabilities\MimeAssociations" "application/pgp-encrypted" "gpg4win.AssocFile.$0.GPG"
   WriteRegStr HKLM "Software\Gpg4win\$0\Capabilities\MimeAssociations" "application/pgp-signature" "gpg4win.AssocFile.$0.GPG"
   WriteRegStr HKLM "Software\Gpg4win\$0\Capabilities\MimeAssociations" "application/pkcs7-mime" "gpg4win.AssocFile.$0.CMS"
@@ -194,6 +195,11 @@ Section
   WriteRegDWORD     HKLM $MYTMP "NoModify"        "1"
   WriteRegDWORD     HKLM $MYTMP "NoRepair"        "1"
 
+  WriteRegStr HKLM "Software\Classes\MIME\Database\Content Type\application/pgp" "Extension" ".gpg"
+  WriteRegStr HKLM "Software\Classes\MIME\Database\Content Type\application/pgp-signature" "Extension" ".sig"
+  WriteRegStr HKLM "Software\Classes\MIME\Database\Content Type\application/pgp-encrypted" "Extension" ".gpg"
+  WriteRegStr HKLM "Software\Classes\MIME\Database\Content Type\application/pgp-keys" "Extension" ".gpg"
+
   call SetupExtensions
 SectionEnd
 
@@ -239,4 +245,11 @@ Section Uninstall
 
   # Remove Windows Add/Remove Programs support.
   DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRETTY_PACKAGE_SHORT}"
+
+  DeleteRegKey HKLM "Software\Classes\MIME\Database\Content Type\application/pgp"
+  DeleteRegKey HKLM "Software\Classes\MIME\Database\Content Type\application/pgp-signature"
+  DeleteRegKey HKLM "Software\Classes\MIME\Database\Content Type\application/pgp-encrypted"
+  DeleteRegKey HKLM "Software\Classes\MIME\Database\Content Type\application/pgp-keys"
+
+
 SectionEnd
