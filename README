@@ -43,28 +43,11 @@ different toolchain versions.
 To satisfy all needs of configure at least the following packages need
 to be installed:
 
- build-essential (libc6-dev, gcc, g++, make)
- automake, autoconf (if building from GIT)
- mingw32
- mingw-w64
- mingw-w64-i686-dev
- mingw-w64-x86-64-dev
- nsis
- stow
- unzip
- texinfo
- imagemagick
- gs-common | ghostscript (gs)
- docbook-utils
- gettext (msgfmt, dcgettext, gmsgfmt, xgettext for glib)
- libglib2.0-dev (glib-genmarshal, glib-compile-{resources,schemas})
- libgdk-pixbuf2.0-dev (gdk-pixbuf-csource)
- texlive (you need most modules)
- texlive-latex-extra
- texlive-lang-german
- latex-xcolor (for the compendium)
- libgettextpo-dev
-
+    build-essential autoconf automake mingw32 mingw-w64-i686-dev \
+    mingw-w64-x86-64-dev nsis stow unzip imagemagick texlive \
+    latex-xcolor libglib2.0-dev gettext docbook-utils ghostscript \
+    texinfo libgdk-pixbuf2.0-dev texlive-latex-extra libqt4-dev-bin \
+    wget mingw-w64 texlive-lang-german cmake libgtk2.0-bin
 
 Building the Webpages
 =====================
