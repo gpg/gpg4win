@@ -22,6 +22,8 @@ EXTRA_DIST = gpg4win-logo.eps         \
              gpg4win-logo-favicon.bmp \
              gpg4win-logo-icon.ico \
              gpg4win-logo-164x314.bmp \
+             gpg4win_lock_file.svg \
+             gpg4win_lock_logo.svg \
              gpg4win-nsis-header-install-150x57.bmp    \
              gpg4win-nsis-header-uninstall-150x57.bmp  \
              gpg4win-nsis-install.ico		       \
