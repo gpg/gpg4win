@@ -277,23 +277,23 @@ server ftp://ftp.gnupg.org/gcrypt
 
 # last-changed: 2016-03-30
 # by: ah
-file libgpg-error/libgpg-error-1.21.tar.bz2
-chk  b7dbdb3cad63a740e9f0c632a1da32d4afdb694ec86c8625c98ea0691713b84d
+file libgpg-error/libgpg-error-1.23.tar.bz2
+chk  7f0c7f65b98c4048f649bfeebfa4d4c1559707492962504592b985634c939eaa
 
 # last-changed: 2015-12-11
 # by: ah
 file libassuan/libassuan-2.4.2.tar.bz2
 chk  bb06dc81380b74bf1b64d5849be5c0409a336f3b4c45f20ac688e86d1b5bcb20
 
-# last changed: 2015-09-08
+# last changed: 2016-06-17
 # by: ah
-name gnupg-w32-2.1.11-20160209-bin.exe
-file binary/gnupg-w32-2.1.11_20160209.exe
-chk  1e92b39ef4f4cdf3b1849b6f824dd8f160276aa5c9718be35f8a7bd190bf6154
+name gnupg-w32-2.1.13-20160616-bin.exe
+file binary/gnupg-w32-2.1.13_20160616.exe
+chk  c868b7fadd5907bb598b11490e0214ce2f11340609bb5829e0d9b0875684d876
 
-name gnupg-w32-2.1.11-20160209-src.tar.xz
-file binary/gnupg-w32-2.1.11_20160209.tar.xz
-chk  c132c16a5ae57ddd8193f222e539a608930fe3556a5c7932cabb5675f0dc3305
+name gnupg-w32-2.1.13-20160616-src.tar.xz
+file binary/gnupg-w32-2.1.13_20160616.tar.xz
+chk  f928e680770f3754b22ee6bfb0532307a4fa1f871a726656e028e6e95095bf2d
 
 # last changed: 2015-12-11
 # by: ah
