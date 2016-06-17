@@ -86,6 +86,13 @@ Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 - Kleopatra bietet nun in den Erweiterten Optionen bei der
   Schlüsselerstellung an ECC Schlüssel zu erstellen.
 
+- Kleopatra bietet nun die Option einen Privaten Schlüssel mit Paperkey zu drucken.
+
+- Es ist nun auch möglich über Kleopatras Dateimenü Ordner zu verschlüsseln.
+
+- GPA und Kleopatra werden nun als Anwendungen für OpenPGP und S/MIME Dateiendungen in
+  Windows registriert.
+
 3. Bekannte Probleme (und Abhilfen)
 ===================================
 

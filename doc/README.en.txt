@@ -81,6 +81,12 @@ New in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 - Kleopatra now allows you to create ECC keys in the Advanced Settings
   during Key generation.
 
+- Kleopatras file menu now also offers to encrypt Folders.
+
+- Kleopatra has a new option to print a secret key through the paperkey tool.
+
+- GPA and Kleopatra are now registred for OpenPGP and S/MIME related file extensions.
+
 3. Known Bugs (and Workarounds)
 ===============================
 

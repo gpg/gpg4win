@@ -73,8 +73,21 @@ Noteworthy changes in version 3.0.0 (unreleased)
 (de) Kleopatra bietet nun in den Erweiterten Optionen bei der
      Schlüsselerstellung an ECC Schlüssel zu erstellen.
 
+(en) Kleopatras file menu now also offers to encrypt Folders.
+
+(de) Es ist nun auch möglich über Kleopatras Dateimenü Ordner zu verschlüsseln.
+
+(en) Kleopatra has a new option to print a secret key through the paperkey tool.
+
+(de) Kleopatra bietet nun die Option einen Privaten Schlüssel mit Paperkey zu drucken.
+
+(en) GPA and Kleopatra are now registred for OpenPGP and S/MIME related file extensions.
+
+(de) GPA und Kleopatra werden nun als Anwendungen für OpenPGP und S/MIME Dateiendungen in
+     Windows registriert.
+
 ~~~~~~~~~~~~~~~
-GnuPG:          2.1.11
+GnuPG:          2.1.13
 Kleopatra:      2.3.0
 GPA:            0.9.9
 GpgOL:          1.4.0
