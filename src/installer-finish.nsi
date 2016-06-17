@@ -56,6 +56,15 @@ Function SetupExtRegKeys
 
   WriteRegBin HKLM "Software\Classes\.sig\OpenWithProgIDs" "gpg4win.AssocFile.$0.PGPSIG" 0
 
+  # OpenPGP Key to be used in mime registry
+  WriteRegExpandStr HKLM "Software\Classes\gpg4win.AssocFile.$0.PGPKEY\shell\open\command" "" "$\"$INSTDIR\bin\$0.exe$\" $\"%1$\""
+  WriteRegStr HKLM "Software\Classes\gpg4win.AssocFile.$0.PGPKEY" "FriendlyTypeName" "$(T_File_Type_pgp_key_Name)"
+  WriteRegStr HKLM "Software\Classes\gpg4win.AssocFile.$0.PGPKEY" "PercievedType" "Document"
+  WriteRegStr HKLM "Software\Classes\gpg4win.AssocFile.$0.PGPKEY" "InfoTip" "$(T_File_Type_pgp_key_info_tip)"
+  WriteRegStr HKLM "Software\Classes\gpg4win.AssocFile.$0.PGPKEY\CurVer" "" "${VERSION}"
+  WriteRegStr HKLM "Software\Classes\gpg4win.AssocFile.$0.PGPKEY\shell\open\command" "" "$\"$INSTDIR\bin\$0.exe$\" $\"%1$\""
+  WriteRegStr HKLM "Software\Classes\gpg4win.AssocFile.$0.PGPKEY\DefaultIcon" "" "$INSTDIR\share\gpg4win\file-ext.ico"
+
   # CMS
   WriteRegExpandStr HKLM "Software\Classes\gpg4win.AssocFile.$0.CMS\shell\open\command" "" "$\"$INSTDIR\bin\$0.exe$\" $\"%1$\""
   WriteRegStr HKLM "Software\Classes\gpg4win.AssocFile.$0.CMS" "FriendlyTypeName" "$(T_File_Type_pem_Name)"
@@ -83,7 +92,8 @@ Function SetupExtRegKeys
   WriteRegBin HKLM "Software\Classes\gpg4win.AssocFile.$0.X509" "AllowSilentDefaultTakeOver" 0
 
   # Register capabilities
-  WriteRegStr HKLM "Software\RegisteredApplications" "Gpg4win.$0.${VERSION}" "SOFTWARE\Gpg4win\$0\Capabilities"
+  WriteRegStr HKLM "Software\RegisteredApplications" "Gpg4win.$0" "SOFTWARE\Gpg4win\$0\Capabilities"
+  WriteRegStr HKLM "Software\Gpg4win\$0" "" "$0"
 
   # File extensions
   WriteRegStr HKLM "Software\Gpg4win\$0\Capabilities\FileAssociations" ".pgp" "gpg4win.AssocFile.$0.GPG"
@@ -107,7 +117,7 @@ Function SetupExtRegKeys
 
   # Mime extensions For PGP this is probably pretty useless
   WriteRegStr HKLM "Software\Gpg4win\$0\Capabilities\MimeAssociations" "application/pgp" "gpg4win.AssocFile.$0.GPG"
-  WriteRegStr HKLM "Software\Gpg4win\$0\Capabilities\MimeAssociations" "application/pgp-keys" "gpg4win.AssocFile.$0.GPG"
+  WriteRegStr HKLM "Software\Gpg4win\$0\Capabilities\MimeAssociations" "application/pgp-keys" "gpg4win.AssocFile.$0.PGPKEY"
   WriteRegStr HKLM "Software\Gpg4win\$0\Capabilities\MimeAssociations" "application/pgp-encrypted" "gpg4win.AssocFile.$0.GPG"
   WriteRegStr HKLM "Software\Gpg4win\$0\Capabilities\MimeAssociations" "application/pgp-signature" "gpg4win.AssocFile.$0.GPG"
   WriteRegStr HKLM "Software\Gpg4win\$0\Capabilities\MimeAssociations" "application/pkcs7-mime" "gpg4win.AssocFile.$0.CMS"
@@ -137,13 +147,13 @@ have_kleo:
   # https://msdn.microsoft.com/en-us/library/windows/desktop/cc144104%28v=vs.85%29.aspx
   # For documentation.
 
-  push kleopatra
+  push Kleopatra
   call SetupExtRegKeys
 
   !insertmacro SectionFlagIsSet ${SEC_gpa} \
         ${SF_SELECTED} 0 leave2
 have_gpa:
-  push gpa
+  push GPA
   call SetupExtRegKeys
 
 leave2:
@@ -160,6 +170,9 @@ LangString T_File_Type_asc_Name ${LANG_ENGLISH} \
 LangString T_File_Type_sig_Name ${LANG_ENGLISH} \
    "OpenPGP Signature"
 
+LangString T_File_Type_pgp_key_Name ${LANG_ENGLISH} \
+   "OpenPGP Certificate File"
+
 LangString T_File_Type_asc_Name ${LANG_ENGLISH} \
    "CMS (S/MIME) File"
 
@@ -167,13 +180,16 @@ LangString T_File_Type_x509_Name ${LANG_ENGLISH} \
    "X509 Certificate File"
 
 LangString T_File_Type_x509_info_tip ${LANG_ENGLISH} \
-   "A certificate for CMS (S/MIME)."
+   "Certificate for CMS (S/MIME)."
 
 LangString T_File_Type_info_tip ${LANG_ENGLISH} \
    "This can be encrypted data, a signature or a certificate."
 
 LangString T_File_Type_sig_info_tip ${LANG_ENGLISH} \
    "A cryptographic signature to verify the authenticity of another file."
+
+LangString T_File_Type_pgp_key_info_tip ${LANG_ENGLISH} \
+   "Certificate for OpenPGP."
 
 # Last section is a hidden one.
 Section
