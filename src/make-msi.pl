@@ -777,6 +777,10 @@ sub gpg4win_nsis_stubs
 	    {
 	        $parser->{outpath} = "%CommonAppDataFolder%\\" . $1;
 	    }
+           elsif ($outpath =~ m/^"\$TEMP\\?(.*)"$/)
+           {
+               $parser->{outpath} = "%TEMP%\\" . $1;
+           }
 	    else
 	    {
 		fail "$file:$.: unsupported out path: $args[0]";
