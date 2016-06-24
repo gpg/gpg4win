@@ -155,7 +155,7 @@ while read key value ; do
        if [ -z "$name" ]; then
            name=`basename "$value"`
        fi
-       if [ -f "$name" -a "$force" = "no" ]; then
+       if [ -s "$name" -a "$force" = "no" ]; then
            [ $quiet = no ] && echo "package     \`$url' ... already exists"
        else
            echo -n "downloading \`$url' ..."
