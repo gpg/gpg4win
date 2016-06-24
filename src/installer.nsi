@@ -204,7 +204,9 @@ LangString T_RunKleopatra ${LANG_ENGLISH} \
 
 LangString T_RunGPA ${LANG_ENGLISH} \
    "Run GPA"
-!endif # SOURCES
+
+# /SOURCES
+!endif
 
 # Uninstaller pages.
 
