@@ -53,7 +53,7 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         patches/extra-cmake-modules/0001-Add-convert-utility-support-for-Windows-icons.patch \
         patches/kleopatra/0005-Hack-generated-conf-files-for-Crosscompiling.patch \
         patches/libgpg-error-1.21/0001-Add-FD_ISSET-replacement-for-Windows.patch \
-        patches/drop-version-dep.patch
+        patches/gpgmepp/drop-version-dep.patch
 
 
 copy-news:
