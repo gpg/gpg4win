@@ -2,6 +2,8 @@ This is gpg4win - the GUI Installer Builder for W32.
 
 See also the file doc/README.en.txt.
 
+For MSI Package instructions see src/README-msi.txt.
+
 Instructions:
 =============
 
@@ -38,7 +40,8 @@ Basic requirements
 A decent POSIX system is required for building this software as well
 as GNU make.  We are using Debian GNU/Linux 8 (Jessie), any other
 POSIX system should work as well but you may run into problems due to
-different toolchain versions.
+different toolchain versions. For MSI Packages you will additionally
+need the dependencies mentioned in src/README-msi.txt
 
 To satisfy all needs of configure at least the following packages need
 to be installed:

@@ -20,6 +20,8 @@ Prerequisites
   for example using a network connection and SMB, or a data medium to
   transfer several hundred MB of data
 
+* Debian Packages: uuid-runtime
+
 
 Instructions
 ============
