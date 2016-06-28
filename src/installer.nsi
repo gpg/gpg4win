@@ -67,6 +67,8 @@ BrandingText "${PRETTY_PACKAGE}-${VERSION}"
 !endif
 !endif
 
+# Details button conflicts with splashscreen
+ShowInstDetails nevershow
 
 # Set the installation directory.
 !ifndef INSTALL_DIR

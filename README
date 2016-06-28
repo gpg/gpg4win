@@ -114,20 +114,22 @@ The tarballs and the nsis scripts are located in the temp directory
 kde-l10n prints as output.
 
 
+Installer Slideshow
+===================
+
+During installation we are showing a slide show. If you want to
+change the contents shown add / modify files in the src/slideshow
+subfolder. Install them in inst-gpg4win.nsi (Add them to the list
+of files before g4wihelp::slide_show) and modify
+src/slideshow/slides.dat accordingly.
+
 Version numbers
 ===============
 
 We use a specific order of version numbers.  This is best shown by an
 example:
 
-  1.0.0             - The final 1.0.0 release.
-  1.0.1-svn1234     - A snapshot based on SVN revision 1234
-  1.0.1-svn1235     - A newer snapshot
-  1.0.1rc1-svn1236  - A snapshot while preparing for a release candidate
-  1.0.1rc1          - The first release candidate for 1.0.1
-  1.0.1-svn1240     - yet another snapshot
-  1.0.1             - The final 1.0.1 release
-  2.1.1             - The final 2.1.1 release
+  2.1.1             - The final 2.1.1 release.
   2.1.1-beta88      - A snapshot before the 2.1.1 release.
                       (The 88 in this example is the number of
                        commits since the last release).

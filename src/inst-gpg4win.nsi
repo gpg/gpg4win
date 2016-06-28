@@ -24,6 +24,17 @@ Section "-gpg4win" SEC_gpg4win
   SetOutPath "$INSTDIR"
   File "${BUILD_DIR}/../gpg4win-${VERSION}.tar.bz2"
 !else
+# Start the slideshow.
+  SetDetailsPrint none
+
+  SetOutPath "$PLUGINSDIR\Slides"
+  File "${BUILD_DIR}/slideshow/01.png"
+#  File "${BUILD_DIR}/slideshow/02.png"
+#  File "${BUILD_DIR}/slideshow/03.png"
+  File "${BUILD_DIR}/slideshow/slides.dat"
+  g4wihelp::slide_show /NOUNLOAD /CCOLOR=0x0000FF "/auto=$PLUGINSDIR\Slides\slides.dat"
+  SetDetailsPrint both
+  SetOutPath "$INSTDIR"
 
 # Uninstall an old version if found.
   ClearErrors

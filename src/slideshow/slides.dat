@@ -1,0 +1,13 @@
+; Add slideshow definition for each language here
+; Remember to use the 8bit encoding of the language until
+; Gpg4win switches to unicode nsis.
+; Ending with a period will cause the slideshow not to loop.
+
+; For more info see: http://wiz0u.free.fr/prog/nsisSlideshow/
+
+[1033]
+=01.png,1000,2000,"We will show"
+=01.png,500,3000,"some hints that the app is called Kleopatra"
+=01.png,500,500,"or GPA,.."
+=01.png,2000,2000,"and how to access GpgOL and GpgEx Here!"
+=01.png,2000,2000,"Awesome!"

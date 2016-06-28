@@ -21,7 +21,7 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
 	config.site config.nsi.in \
         libiconv.def libintl.def loreley.mid \
         gpg4win-splash.wav exdll.h g4wihelp.c desktopshellrun.cpp \
-        g4wihelp.nsi \
+        g4wihelp.nsi slideshow.cpp \
         inst-sections.nsi installer.nsi installer-finish.nsi  \
 	zlib.pc sha1sum.c mkportable.c     \
 	mkportable-vanilla.h mkportable-light.h mkportable-full.h \
@@ -101,7 +101,7 @@ foosum_exe = sha1sum.exe md5sum.exe sha256sum.exe mkportable.exe
 # Need to clean the dll because we bypassed automake.
 CLEANFILES = g4wihelp.dll desktopshellrun.o versioninfo.txt $(README_files) \
 			 $(HOWTO_files) NEWS.tmp COMPONENTS-list.tmp \
-			 license.blurb cdversioninfo.tmp \
+			 license.blurb cdversioninfo.tmp slideshow.o \
 			 $(foosum_exe)
 
 # Supported source packages.
@@ -618,11 +618,12 @@ installers/gpg4win-src-$(VERSION).exe: gpg4win-src.nsi $(common_nsii) \
 license.blurb: $(top_srcdir)/doc/license-page $(top_srcdir)/doc/GPLv3
 	cat $(top_srcdir)/doc/license-page $(top_srcdir)/doc/GPLv3 >$@
 
-g4wihelp.dll: desktopshellrun.cpp g4wihelp.c exdll.h
+g4wihelp.dll: slideshow.cpp desktopshellrun.cpp g4wihelp.c exdll.h
 	$(CC) -I. -O2 -c -o desktopshellrun.o $(srcdir)/desktopshellrun.cpp
+	$(CC) -I. -O2 -c -o slideshow.o $(srcdir)/slideshow.cpp
 	$(CC) -I. -shared -O2 -o g4wihelp.dll $(srcdir)/g4wihelp.c \
-	  desktopshellrun.o -lwinmm -lgdi32 -luserenv -lshell32 \
-	  -lole32 -loleaut32
+	  desktopshellrun.o slideshow.o -lwinmm -lgdi32 -luserenv -lshell32 \
+	  -lole32 -loleaut32 -lshlwapi -lmsimg32
 	$(STRIP) g4wihelp.dll
 
 sha1sum.exe: sha1sum.c
