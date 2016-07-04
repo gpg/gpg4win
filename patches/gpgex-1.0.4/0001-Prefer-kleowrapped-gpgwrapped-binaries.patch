@@ -1,0 +1,43 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From 5c19ffe9d71d6e6763d6e47a67f1ca0a1651e39f Mon Sep 17 00:00:00 2001
+From: Andre Heinecke <aheinecke@intevation.de>
+Date: Tue, 28 Jun 2016 11:00:53 +0200
+Subject: [PATCH] Prefer kleowrapped / gpgwrapped binaries
+
+* src/client.cc (default_uiserver_cmdline): Prefer non "bin" prefixed
+paths.
+
+--
+With Gpg4win-2.x we need to start the "wrapped" binaries if they
+don't exist we are probably in gpg4win-3.x and can fall back to
+the binaries in the bin subdirectory.
+---
+ src/client.cc | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/client.cc b/src/client.cc
+index ebf82a8..6f27175 100644
+--- a/src/client.cc
++++ b/src/client.cc
+@@ -111,12 +111,12 @@ default_uiserver_cmdline (void)
+       const char *dir, *tmp;
+       char *uiserver, *p;
+       int extra_arglen = 9;
+-      const char * server_names[] = {"bin\\kleopatra.exe",
+-                                     "kleopatra.exe",
+-                                     "bin\\launch-gpa.exe",
++      const char * server_names[] = {"kleopatra.exe",
++                                     "bin\\kleopatra.exe",
+                                      "launch-gpa.exe",
+-                                     "bin\\gpa.exe",
++                                     "bin\\launch-gpa.exe",
+                                      "gpa.exe",
++                                     "bin\\gpa.exe",
+                                      NULL};
+
+       dir = gpgex_server::root_dir;
+--
+2.1.4
