@@ -50,18 +50,14 @@ Die integrierten Gpg4win-Komponenten in Version !VERSION! sind:
 Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 -----------------------------------------
 
-- GpgOL enthält nun einen Optionsdialog in dem S/MIME deaktiviert werden kann.
+- Wenn S/MIME unterstützung in GpgOL deaktiviert ist werden nun auch
+  versendete Nachrrichten nicht mehr von GpgOL behandelt.
 
-- Die 64 Bit Version von Microsoft Outlook wird nun von GpgOL unterstützt.
+- Probleme beim starten von Kleopatra und GPA durch GpgOL und GpgEX
+  wurden behoben.
 
-- GpgOL kann im Optionsdialog nun auf die neue, experimentelle, volle MIME
-  unterstützung umgestellt werden.
-
-- GpgOL macht änderungen an MIME Mails nun Rückgängig so das diese auch
-  weiterhin von anderen Anwendungen verarbeitet werden können.
-
-- GpgEX blockiert den Windows Explorer nun nicht mehr während GPA oder
-  Kleopatra gestartet werden.
+- Verschiede bereits behobene Probleme die in 2.3.1 wieder aufgetreten sind
+  sind wieder korrigiert.
 
 3. Bekannte Probleme (und Abhilfen)
 ===================================
