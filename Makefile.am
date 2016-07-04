@@ -29,10 +29,10 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         build-aux/git-log-footer build-aux/git-log-fix \
         patches/dirmngr-1.1.1/dirmngr-pth.patch \
         patches/glib-2.41.5/01-socket.patch \
-        patches/gnupg2-2.0.29/0001-Enable-wildcard-expansion-with-mingw-w64.patch \
-        patches/gnupg2-2.0.29/0002-Let-wchar_to_native-convert-to-console-codepage.patch \
-        patches/gnupg2-2.0.29/0005-Fix-gpgtar-8-bit-encoding-handling-on-Win32.patch \
-        patches/gnupg2-2.0.29/0006-gpgsm-Add-command-option-offline.patch \
+        patches/gnupg2/0001-Enable-wildcard-expansion-with-mingw-w64.patch \
+        patches/gnupg2/0002-Let-wchar_to_native-convert-to-console-codepage.patch \
+        patches/gnupg2/0005-Fix-gpgtar-8-bit-encoding-handling-on-Win32.patch \
+        patches/gnupg2/0006-gpgsm-Add-command-option-offline.patch \
         patches/gnupg2/01-version.patch \
         patches/gnupg2/01-version.patch.in \
         patches/gnutls-2.12.23/01-openssl-wincrypt.patch \
