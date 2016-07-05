@@ -25,10 +25,10 @@
    <small>2016-07-05</small><br>
    <span class="serif_word"><img src="img/bulletin.png" alt"" />
      m4_ifelse(LANG_DE, `1', `
-      <a href="download-de.html">
+      <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2016-July/000034.html">
         Gpg4win 2.3.2 veröffentlicht
       </a></span>',`
-      <a href="download.html">
+      <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2016-July/000069.html">
         Gpg4win 2.3.2 released
       </a></span>')
    <p></p>
