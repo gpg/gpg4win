@@ -20,6 +20,11 @@ sha1_exe="`sha1sum gpg4win-$version.exe | awk '{print $1}'`"
 sha1_exl="`sha1sum gpg4win-light-$version.exe | awk '{print $1}'`"
 sha1_exv="`sha1sum gpg4win-vanilla-$version.exe | awk '{print $1}'`"
 sha1_exs="`sha1sum gpg4win-src-$version.exe | awk '{print $1}'`"
+sha2_src="`sha256sum gpg4win-$version.tar.bz2 | awk '{print $1}'`"
+sha2_exe="`sha256sum gpg4win-$version.exe | awk '{print $1}'`"
+sha2_exl="`sha256sum gpg4win-light-$version.exe | awk '{print $1}'`"
+sha2_exv="`sha256sum gpg4win-vanilla-$version.exe | awk '{print $1}'`"
+sha2_exs="`sha256sum gpg4win-src-$version.exe | awk '{print $1}'`"
 len_src="`ls -l  gpg4win-$version.tar.bz2 | awk '{print $5}'`"
 len_exe="`ls -l  gpg4win-$version.exe | awk '{print $5}'`"
 len_exl="`ls -l  gpg4win-light-$version.exe | awk '{print $5}'`"
@@ -33,6 +38,11 @@ m4_define(\`SHA1_EXE',\`$sha1_exe')
 m4_define(\`SHA1_EXL',\`$sha1_exl')
 m4_define(\`SHA1_EXV',\`$sha1_exv')
 m4_define(\`SHA1_EXS',\`$sha1_exs')
+m4_define(\`SHA2_SRC',\`$sha2_src')
+m4_define(\`SHA2_EXE',\`$sha2_exe')
+m4_define(\`SHA2_EXL',\`$sha2_exl')
+m4_define(\`SHA2_EXV',\`$sha2_exv')
+m4_define(\`SHA2_EXS',\`$sha2_exs')
 m4_define(\`LEN_SRC',\`$len_src')
 m4_define(\`LEN_EXE',\`$len_exe')
 m4_define(\`LEN_EXL',\`$len_exl')
