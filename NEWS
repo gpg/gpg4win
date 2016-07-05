@@ -2,7 +2,8 @@
 #
 # The version number given below are for the standard installers as
 # distributed by www.gpg4win.org.
-Noteworthy changes in version 2.3.2 (unreleased)
+
+Noteworthy changes in version 2.3.2 (2016-07-05)
 ------------------------------------------------
 (en) When S/MIME is disabled in GpgOL it now also ignores sent mails.
 
