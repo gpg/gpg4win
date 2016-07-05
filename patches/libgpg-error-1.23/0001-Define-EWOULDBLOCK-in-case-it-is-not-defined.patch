@@ -1,0 +1,35 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From 65e967627b3d60f550c7d302227dcf9f797e437f Mon Sep 17 00:00:00 2001
+From: Andre Heinecke <aheinecke@intevation.de>
+Date: Mon, 4 Jul 2016 16:19:50 +0200
+Subject: [PATCH] Define EWOULDBLOCK in case it is not defined
+
+* src/estream.c (EWOULDBLOCK): Define fallback.
+
+--
+Older mingw versions (2.0) do not define EWOULDBLOCK in errno.h
+---
+ src/estream.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/src/estream.c b/src/estream.c
+index 4352df5..4cc72ba 100644
+--- a/src/estream.c
++++ b/src/estream.c
+@@ -130,6 +130,11 @@
+ # define O_NONBLOCK  0  /* FIXME: Not yet supported.  */
+ #endif
+
++#if !defined (EWOULDBLOCK) && defined (HAVE_W32_SYSTEM)
++/* Compatibility with errno.h from mingw-2.0 */
++# define EWOULDBLOCK 140
++#endif
++
+ #ifndef EAGAIN
+ # define EAGAIN  EWOULDBLOCK
+ #endif
+--
+2.1.4
