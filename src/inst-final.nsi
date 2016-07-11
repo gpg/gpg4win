@@ -23,8 +23,4 @@ Section "-final" SEC_final
 
   # Set outpath back so that the Finish page gets what it expects.
   SetOutPath "$INSTDIR"
-
-  # Stop the slideshow
-  g4wihelp::slide_stop
-
 SectionEnd

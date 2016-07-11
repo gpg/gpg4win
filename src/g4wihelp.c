@@ -40,6 +40,8 @@ static HWND g_hwndParent;     /* Handle of parent window or NULL. */
 static HBITMAP g_hbm;         /* Handle of the splash image. */
 static int sleepint;          /* Milliseconds to show the spals image. */
 
+void
+slide_stop(HWND hwndParent, int string_size, TCHAR *variables, stack_t **stacktop);
 
 /* Standard entry point for DLLs. */
 int WINAPI
@@ -47,6 +49,8 @@ DllMain (HANDLE hinst, DWORD reason, LPVOID reserved)
 {
    if (reason == DLL_PROCESS_ATTACH)
      g_hInstance = hinst;
+   else if (reason == DLL_PROCESS_DETACH)
+     slide_stop(NULL, 0, NULL, NULL);
    return TRUE;
 }
 
