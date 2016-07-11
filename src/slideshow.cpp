@@ -56,6 +56,8 @@
 #include "exdll.h"
 #include <initguid.h>
 
+static unsigned int timerid = 0xBEEF;
+
 #ifndef _countof
 #define _countof(A) (sizeof(A)/sizeof((A)[0]))
 #endif
@@ -117,7 +119,7 @@ static LRESULT CALLBACK slide_WndProc(HWND, UINT, WPARAM, LPARAM);
 static void
 slide_abort(bool stayAuto = false)
 {
-  KillTimer(g_hWnd, 'XFBN');
+  KillTimer(g_hWnd, timerid);
   if (!stayAuto)
     {
       if (lpPrevWndFunc != NULL && IsWindow(g_hWnd))
@@ -218,13 +220,13 @@ slide_NewImage(LPCTSTR imgPath, LPCTSTR caption, int duration)
       g_step = _countof(SCA_Steps);
       InvalidateRect(g_hWnd, NULL, FALSE); // no duration => force a WM_PAINT for immediate draw of picture
       if (g_autoNext && g_autoDelay)
-        SetTimer(g_hWnd, 'XFBN', g_autoDelay, NULL);
+        SetTimer(g_hWnd, timerid, g_autoDelay, NULL);
     }
   else
     {
       g_step = 0;
-      slide_WndProc(g_hWnd, WM_TIMER, 'XFBN', 0); // first iteration right now
-      SetTimer(g_hWnd, 'XFBN', duration/_countof(SCA_Steps), NULL);
+      slide_WndProc(g_hWnd, WM_TIMER, timerid, 0); // first iteration right now
+      SetTimer(g_hWnd, timerid, duration/_countof(SCA_Steps), NULL);
     }
 }
 
@@ -292,7 +294,7 @@ static LRESULT CALLBACK slide_WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARA
   switch (uMsg)
     {
     case WM_TIMER:
-      if (wParam == 'XFBN')
+      if (wParam == timerid)
         {
           if (g_step == _countof(SCA_Steps))
             {
@@ -310,9 +312,9 @@ static LRESULT CALLBACK slide_WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARA
           if (g_step == _countof(SCA_Steps))
             {
               if (g_autoNext && g_autoDelay)
-                SetTimer(hWnd, 'XFBN', g_autoDelay, NULL);
+                SetTimer(hWnd, timerid, g_autoDelay, NULL);
               else
-                KillTimer(hWnd, 'XFBN');
+                KillTimer(hWnd, timerid);
             }
           return 0;
         }
