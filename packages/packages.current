@@ -295,15 +295,17 @@ name gnupg-w32-2.1.13-20160616-src.tar.xz
 file binary/gnupg-w32-2.1.13_20160616.tar.xz
 chk  f928e680770f3754b22ee6bfb0532307a4fa1f871a726656e028e6e95095bf2d
 
+# TODO: Switch back to released version
 # last changed: 2015-12-11
 # by: ah
 #file pinentry/pinentry-0.9.7.tar.bz2
 #chk  6398208394972bbf897c3325780195584682a0d0c164ca5a0da35b93b1e4e7b2
 
+# TODO: Switch back to released version
 # last changed: 2015-08-26
 # by: ah
-file gpgme/gpgme-1.6.0.tar.bz2
-chk  b09de4197ac280b102080e09eaec6211d081efff1963bf7821cf8f4f9916099d
+# file gpgme/gpgme-1.6.0.tar.bz2
+# chk  b09de4197ac280b102080e09eaec6211d081efff1963bf7821cf8f4f9916099d
 
 # last changed: 2015-09-09
 # by: ah
@@ -496,6 +498,12 @@ server http://files.intevation.de/projects/gpg4all
 # verified: tarball created by ah
 file pinentry/pinentry-0.9.8-beta18.tar.bz2
 chk 67b017001928ad072f57435b72d473a961f64bfb17c792e42984dc31f72ae7d1
+
+# ditto for gpgme.
+# by: ah
+# verified: tarball created by ah
+file gpgme/gpgme-1.7.0-beta225.tar.bz2
+chk c70f1699fc9af870d9225f57878385b49f9d571b2a8cfd17c73613b7ea983c56
 
 # Gpgmepp
 # last changed: 2016-01-21

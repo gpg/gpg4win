@@ -237,13 +237,15 @@ gpg4win_pkg_pinentry_configure = \
 gpg4win_pkg_gpgme_configure = --silent \
   --with-gpg-error-prefix=$(idir) --enable-static \
   `test -n "@HAVE_PKG_GLIB@" && echo "--enable-w32-glib"` \
-  --disable-w32-qt CFLAGS=-I$(idir)/include/glib-2.0/ \
-  LDFLAGS=-L$(idir)/lib
+  CFLAGS=-I$(idir)/include/glib-2.0/ \
+  LDFLAGS=-L$(idir)/lib \
+  --enable-languages=no
 
 gpg4win_pkg_gpgme_ex_configure = --silent \
   --with-gpg-error-prefix=$(ex_idir) --enable-static \
   --with-libassuan-prefix=$(ex_idir) \
-  LDFLAGS=-L$(ex_idir)/lib
+  LDFLAGS=-L$(ex_idir)/lib \
+  --enable-languages=no
 
 gpg4win_pkg_gpa_configure = --silent \
   --with-libiconv-prefix=$(idir) --with-libintl-prefix=$(idir) \
