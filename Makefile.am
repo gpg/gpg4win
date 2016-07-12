@@ -52,7 +52,6 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         patches/extra-cmake-modules/0001-Add-convert-utility-support-for-Windows-icons.patch \
         patches/kleopatra/0005-Hack-generated-conf-files-for-Crosscompiling.patch \
         patches/libgpg-error-1.21/0001-Add-FD_ISSET-replacement-for-Windows.patch \
-        patches/gpgmepp/drop-version-dep.patch \
         patches/gpgex-1.0.4/0001-Prefer-kleowrapped-gpgwrapped-binaries.patch \
         patches/gpgol-1.4.0/0001-Fix-UI-Server-startup.patch \
         patches/gpgol-1.4.0/0002-Ignore-sent-S-MIME-Mails-if-S-MIME-is-disabled.patch
