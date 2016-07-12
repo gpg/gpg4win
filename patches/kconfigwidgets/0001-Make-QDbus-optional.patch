@@ -21,10 +21,10 @@ diff --git a/CMakeLists.txt b/CMakeLists.txt
 index bed53d1..87f976c 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -10,7 +10,16 @@ feature_summary(WHAT REQUIRED_PACKAGES_NOT_FOUND FATAL_ON_MISSING_REQUIRED_PACKA
+@@ -10,7 +10,16 @@
  set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR})
 
- set(REQUIRED_QT_VERSION "5.3.0")
+ set(REQUIRED_QT_VERSION 5.4.0)
 -find_package(Qt5 "${REQUIRED_QT_VERSION}" CONFIG REQUIRED Widgets DBus)
 +if (UNIX)
 +    find_package(Qt5 "${REQUIRED_QT_VERSION}" CONFIG REQUIRED Widgets DBus)
@@ -37,7 +37,7 @@ index bed53d1..87f976c 100644
 +endif()
 +set (HAVE_QDBUS ${Qt5DBus_FOUND})
  include(KDEInstallDirs)
- include(KDEFrameworkCompilerSettings)
+ include(KDEFrameworkCompilerSettings NO_POLICY_SCOPE)
  include(KDECMakeSettings)
 diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
 index 97837b3..104b118 100644

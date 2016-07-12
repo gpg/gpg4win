@@ -84,20 +84,19 @@ index 75ab482..3a0ff0a 100644
  #include "kiconloader.h"
 
  #include <qplatformdefs.h> //for readlink
-@@ -46,8 +48,11 @@
+@@ -46,8 +48,10 @@
  #include <kconfiggroup.h>
  #include <kshareddatacache.h>
  #include <ksharedconfig.h>
 -#include <QtDBus/QDBusConnection>
 -#include <QDBusMessage>
-+
 +#if HAVE_QDBUS
 +# include <QtDBus/QDBusConnection>
 +# include <QDBusMessage>
 +#endif
-
- // kdeui
- #include "kicontheme.h"
+ #include <QSvgRenderer>
+ #include <QXmlStreamReader>
+ #include <QXmlStreamWriter>
 @@ -323,15 +328,21 @@ public:
              parseGenericIconsFiles(file);
          }
