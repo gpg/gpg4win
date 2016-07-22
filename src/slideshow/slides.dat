@@ -6,8 +6,9 @@
 ; For more info see: http://wiz0u.free.fr/prog/nsisSlideshow/
 
 [1033]
-=01.png,1000,2000,"We will show"
-=01.png,500,3000,"some hints that the app is called Kleopatra"
-=01.png,500,500,"or GPA,.."
-=01.png,2000,2000,"and how to access GpgOL and GpgEx Here!"
-=01.png,2000,2000,"Awesome!"
+=beta.png,250,3000,"Thank you for testing Gpg4win"
+=beta.png,250,3000,"We will add better slides before the release,.."
+=context_menu.png,250,3000,"Protect your files through the context menu."
+=file-ext.png,250,3000,"Decrypt or Verify them with a double click."
+=gpgol.png,250,3000,"Protect your Mails in Outlook."
+=launch_kleo.png,250,3000,"Or start the Crypto Manager Kleopatra."

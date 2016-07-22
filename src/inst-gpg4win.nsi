@@ -28,11 +28,13 @@ Section "-gpg4win" SEC_gpg4win
   SetDetailsPrint none
 
   SetOutPath "$PLUGINSDIR\Slides"
-  File "${BUILD_DIR}/slideshow/01.png"
-#  File "${BUILD_DIR}/slideshow/02.png"
-#  File "${BUILD_DIR}/slideshow/03.png"
+  File "${BUILD_DIR}/slideshow/beta.png"
+  File "${BUILD_DIR}/slideshow/context_menu.png"
+  File "${BUILD_DIR}/slideshow/file-ext.png"
+  File "${BUILD_DIR}/slideshow/gpgol.png"
+  File "${BUILD_DIR}/slideshow/launch_kleo.png"
   File "${BUILD_DIR}/slideshow/slides.dat"
-  g4wihelp::slide_show /NOUNLOAD /CCOLOR=0x0000FF "/auto=$PLUGINSDIR\Slides\slides.dat"
+  g4wihelp::slide_show /NOUNLOAD /CCOLOR=0x000000 "/auto=$PLUGINSDIR\Slides\slides.dat"
   SetDetailsPrint both
   SetOutPath "$INSTDIR"
 
