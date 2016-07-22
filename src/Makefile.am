@@ -84,7 +84,13 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
         inst-qttools.nsi uninst-qttools.nsi \
         inst-boost.nsi uninst-boost.nsi \
         inst-extra-cmake-modules.nsi uninst-extra-cmake-modules.nsi \
-        inst-final.nsi index.theme
+        inst-final.nsi index.theme \
+        slideshow/slides.dat \
+        slideshow/beta.png \
+        slideshow/context_menu.png \
+        slideshow/file-ext.png \
+        slideshow/gpgol.png \
+        slideshow/launch_kleo.png
 
 SUBDIRS = dictionaries
 
