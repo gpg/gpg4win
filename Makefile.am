@@ -28,20 +28,19 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         doc/license-page doc/GPLv3 \
         build-aux/git-log-footer build-aux/git-log-fix \
         patches/glib-2.41.5/01-socket.patch \
-        patches/qtbase-5.5.1/fix-freetype-link.patch \
-        patches/qtbase-5.5.1/fix-oci-detect.patch \
-        patches/qtbase-5.5.1/fix-syssemaphore.patch \
-        patches/qtbase-5.5.1/fix-zlib-link.patch \
-        patches/qtbase-5.5.1/relative-paths.patch \
-        patches/qtbase-5.5.1/config-standardpaths.patch \
+        patches/qtbase/fix-freetype-link.patch \
+        patches/qtbase/fix-oci-detect.patch \
+        patches/qtbase/fix-syssemaphore.patch \
+        patches/qtbase/fix-zlib-link.patch \
+        patches/qtbase/relative-paths.patch \
+        patches/qtbase/fix-fontconfig.patch \
+        patches/qtbase/config-standardpaths.patch \
         patches/w32pth-2.0.5/workaround-broken-libtool.patch \
         patches/qttools/disable-most-tools.patch \
         patches/ki18n/no-tests.patch \
         patches/gpgme-1.6.0/0001-w32-Fallback-to-2.1-reg-key-for-gpgconf-search.patch \
         patches/gpgme-1.6.0/0001-Add-gpgme_pubkey_algo_string.patch \
         patches/gpgmepp/0002-disable-variants.patch \
-        patches/kmime/0001-Check-for-and-replace-strcasestr.patch \
-        patches/kmime/0002-Fix-Windows-build.patch \
         patches/kxmlgui/0002-Make-QDBus-dependency-optional.patch \
         patches/kxmlgui/0003-Make-KTextWidgets-optional.patch \
         patches/kxmlgui/0004-Cruedly-disable-KSendbugmail.patch \
@@ -51,6 +50,7 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         patches/qtsvg/qtsvg-link-zlib.patch \
         patches/extra-cmake-modules/0001-Add-convert-utility-support-for-Windows-icons.patch \
         patches/kleopatra/0005-Hack-generated-conf-files-for-Crosscompiling.patch \
+        patches/kleopatra/fix-paperkey.patch \
         patches/libgpg-error-1.21/0001-Add-FD_ISSET-replacement-for-Windows.patch \
         patches/gpgex-1.0.4/0001-Prefer-kleowrapped-gpgwrapped-binaries.patch \
         patches/gpgol-1.4.0/0001-Fix-UI-Server-startup.patch \

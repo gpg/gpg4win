@@ -9,23 +9,23 @@ diff --git a/src/corelib/io/qstandardpaths_win.cpp b/src/corelib/io/qstandardpat
 index 5e56db3..4d46430 100644
 --- a/src/corelib/io/qstandardpaths_win.cpp
 +++ b/src/corelib/io/qstandardpaths_win.cpp
-@@ -214,6 +214,16 @@ QStringList QStandardPaths::standardLocations(StandardLocation type)
-                     dirs.append(QCoreApplication::applicationDirPath());
-                     dirs.append(QCoreApplication::applicationDirPath() + QLatin1String("/data"));
-                 }
-+                dirs.append(QCoreApplication::applicationDirPath() + QLatin1String("/../share"));
-+                if (type != GenericDataLocation && type != GenericConfigLocation) {
-+                    QString appData = QCoreApplication::applicationDirPath() + QLatin1String("/../share");
-+                    if (!QCoreApplication::organizationName().isEmpty())
-+                        appData += QLatin1Char('/') + QCoreApplication::organizationName();
-+                    if (!QCoreApplication::applicationName().isEmpty())
-+                        appData += QLatin1Char('/') + QCoreApplication::applicationName();
-+					dirs.append(appData);
-+				}
-+                dirs.append(QCoreApplication::applicationDirPath() + QLatin1String("/../etc/xdg"));
- #endif
-             }
-             break;
+@@ -275,6 +275,16 @@
+         dirs.append(QCoreApplication::applicationDirPath() + QLatin1String("/data"));
+ #  endif // !QT_BOOTSTRAPPED
+     } // isConfigLocation()
++    dirs.append(QCoreApplication::applicationDirPath() + QLatin1String("/../share"));
++    if (type != GenericDataLocation && type != GenericConfigLocation) {
++        QString appData = QCoreApplication::applicationDirPath() + QLatin1String("/../share");
++        if (!QCoreApplication::organizationName().isEmpty())
++            appData += QLatin1Char('/') + QCoreApplication::organizationName();
++        if (!QCoreApplication::applicationName().isEmpty())
++            appData += QLatin1Char('/') + QCoreApplication::applicationName();
++        dirs.append(appData);
++    }
++    dirs.append(QCoreApplication::applicationDirPath() + QLatin1String("/../etc/xdg"));
+ #endif // !Q_OS_WINCE
+
+     return dirs;
 diff --git a/src/gui/image/qiconloader.cpp b/src/gui/image/qiconloader.cpp
 index 06491f1..ef9436f 100644
 --- a/src/gui/image/qiconloader.cpp
@@ -42,7 +42,7 @@ diff --git a/src/plugins/platforms/windows/qwindowstheme.cpp b/src/plugins/platf
 index 66735d8..5731560 100644
 --- a/src/plugins/platforms/windows/qwindowstheme.cpp
 +++ b/src/plugins/platforms/windows/qwindowstheme.cpp
-@@ -321,6 +321,8 @@ static inline QStringList iconThemeSearchPaths()
+@@ -338,6 +338,8 @@
  static inline QStringList styleNames()
  {
      QStringList result;
@@ -51,10 +51,10 @@ index 66735d8..5731560 100644
      if (QSysInfo::WindowsVersion >= QSysInfo::WV_VISTA)
          result.append(QStringLiteral("WindowsVista"));
      if (QSysInfo::WindowsVersion >= QSysInfo::WV_XP)
-@@ -382,6 +384,10 @@ QVariant QWindowsTheme::themeHint(ThemeHint hint) const
-         return QVariant(booleanSystemParametersInfo(SPI_GETSNAPTODEFBUTTON, false));
-     case ContextMenuOnMouseRelease:
+@@ -401,6 +403,10 @@
          return QVariant(true);
+     case WheelScrollLines:
+         return QVariant(int(dWordSystemParametersInfo(SPI_GETWHEELSCROLLLINES, 3)));
 +    case QPlatformTheme::SystemIconThemeName:
 +         return QVariant(QLatin1String("breeze"));
 +    case QPlatformTheme::SystemIconFallbackThemeName:

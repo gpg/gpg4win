@@ -1,28 +1,11 @@
 #! /bin/sh
-patch -p1 -f $* < $0
+patch -p1 -f -l $* < $0
 exit $?
 
-From c6524a252fc362abe5b8412dcabec499ff092143 Mon Sep 17 00:00:00 2001
-From: Patrick Spendrin <ps_ml@gmx.de>
-Date: Tue, 29 Sep 2015 15:47:09 +0200
-Subject: [PATCH] WIP: configurable standardpaths
-
----
- src/corelib/global/global.pri         |  1 +
- src/corelib/global/qlibraryinfo.cpp   | 49 +++++++++++++---------------
- src/corelib/global/qlibraryinfo_p.h   | 61 +++++++++++++++++++++++++++++++++++
- src/corelib/io/qstandardpaths.cpp     | 42 ++++++++++++++++++++++++
- src/corelib/io/qstandardpaths.h       |  2 ++
- src/corelib/io/qstandardpaths_mac.mm  |  4 +++
- src/corelib/io/qstandardpaths_win.cpp |  4 ++-
- 7 files changed, 136 insertions(+), 27 deletions(-)
- create mode 100644 src/corelib/global/qlibraryinfo_p.h
-
-diff --git a/src/corelib/global/global.pri b/src/corelib/global/global.pri
-index 6a8104b..a905cb2 100644
---- a/src/corelib/global/global.pri
-+++ b/src/corelib/global/global.pri
-@@ -10,6 +10,7 @@ HEADERS +=  \
+diff -Nru qtbase-5.6.1.orig/src/corelib/global/global.pri qtbase-5.6.1/src/corelib/global/global.pri
+--- qtbase-5.6.1.orig/src/corelib/global/global.pri     2016-07-22 15:11:23.303466531 +0200
++++ qtbase-5.6.1/src/corelib/global/global.pri  2016-07-22 15:11:49.940044214 +0200
+@@ -10,6 +10,7 @@
          global/qnumeric_p.h \
          global/qnumeric.h \
          global/qglobalstatic.h \
@@ -30,10 +13,9 @@ index 6a8104b..a905cb2 100644
          global/qlibraryinfo.h \
          global/qlogging.h \
          global/qtypeinfo.h \
-diff --git a/src/corelib/global/qlibraryinfo.cpp b/src/corelib/global/qlibraryinfo.cpp
-index 0cfcc4e..640e9cf 100644
---- a/src/corelib/global/qlibraryinfo.cpp
-+++ b/src/corelib/global/qlibraryinfo.cpp
+diff -Nru qtbase-5.6.1.orig/src/corelib/global/qlibraryinfo.cpp qtbase-5.6.1/src/corelib/global/qlibraryinfo.cpp
+--- qtbase-5.6.1.orig/src/corelib/global/qlibraryinfo.cpp       2016-07-22 15:11:23.303466531 +0200
++++ qtbase-5.6.1/src/corelib/global/qlibraryinfo.cpp    2016-07-22 15:11:49.940044214 +0200
 @@ -38,6 +38,7 @@
  #include "qsettings.h"
  #include "qlibraryinfo.h"
@@ -42,7 +24,7 @@ index 0cfcc4e..640e9cf 100644
 
  #ifdef QT_BUILD_QMAKE
  QT_BEGIN_NAMESPACE
-@@ -77,37 +78,33 @@ struct QLibrarySettings
+@@ -77,37 +78,33 @@
  };
  Q_GLOBAL_STATIC(QLibrarySettings, qt_library_settings)
 
@@ -102,11 +84,9 @@ index 0cfcc4e..640e9cf 100644
 
  static const char platformsSection[] = "Platforms";
 
-diff --git a/src/corelib/global/qlibraryinfo_p.h b/src/corelib/global/qlibraryinfo_p.h
-new file mode 100644
-index 0000000..e6e1b15
---- /dev/null
-+++ b/src/corelib/global/qlibraryinfo_p.h
+diff -Nru qtbase-5.6.1.orig/src/corelib/global/qlibraryinfo_p.h qtbase-5.6.1/src/corelib/global/qlibraryinfo_p.h
+--- qtbase-5.6.1.orig/src/corelib/global/qlibraryinfo_p.h       1970-01-01 01:00:00.000000000 +0100
++++ qtbase-5.6.1/src/corelib/global/qlibraryinfo_p.h    2016-07-22 15:11:49.940044214 +0200
 @@ -0,0 +1,61 @@
 +/****************************************************************************
 +**
@@ -170,25 +150,25 @@ index 0000000..e6e1b15
 +
 +#endif
 \ No newline at end of file
-diff --git a/src/corelib/io/qstandardpaths.cpp b/src/corelib/io/qstandardpaths.cpp
-index 74252d1..5bcfe2a 100644
---- a/src/corelib/io/qstandardpaths.cpp
-+++ b/src/corelib/io/qstandardpaths.cpp
-@@ -36,6 +36,13 @@
- #include <qdir.h>
- #include <qfileinfo.h>
- #include <qhash.h>
-+// #include <QtCore/private/qlibraryinfo_p.h>
+diff -Nru qtbase-5.6.1.orig/src/corelib/io/qstandardpaths.cpp qtbase-5.6.1/src/corelib/io/qstandardpaths.cpp
+--- qtbase-5.6.1.orig/src/corelib/io/qstandardpaths.cpp 2016-07-22 15:11:23.307466618 +0200
++++ qtbase-5.6.1/src/corelib/io/qstandardpaths.cpp      2016-07-22 15:12:52.629403686 +0200
+@@ -41,6 +41,14 @@
+ #include <qcoreapplication.h>
+ #endif
+
 +#if !defined(QT_BUILD_QMAKE) && !defined(QT_NO_SETTINGS) && !defined(QT_BOOTSTRAPPED)
 +#include "../global/qlibraryinfo_p.h"
++#include <qsettings.h>
 +#endif
 +#ifdef Q_OS_WIN
 +#include <windows.h>
 +#endif
++
+ #ifndef QT_NO_STANDARDPATHS
 
- #ifndef QT_BOOTSTRAPPED
- #include <qobject.h>
-@@ -655,6 +659,55 @@ bool QStandardPaths::isTestModeEnabled()
+ QT_BEGIN_NAMESPACE
+@@ -655,6 +663,55 @@
      return qsp_testMode;
  }
 
@@ -244,11 +224,10 @@ index 74252d1..5bcfe2a 100644
 
  QT_END_NAMESPACE
 
-diff --git a/src/corelib/io/qstandardpaths.h b/src/corelib/io/qstandardpaths.h
-index 5c0e08b..2fb29bb 100644
---- a/src/corelib/io/qstandardpaths.h
-+++ b/src/corelib/io/qstandardpaths.h
-@@ -92,6 +92,8 @@ public:
+diff -Nru qtbase-5.6.1.orig/src/corelib/io/qstandardpaths.h qtbase-5.6.1/src/corelib/io/qstandardpaths.h
+--- qtbase-5.6.1.orig/src/corelib/io/qstandardpaths.h   2016-07-22 15:11:23.307466618 +0200
++++ qtbase-5.6.1/src/corelib/io/qstandardpaths.h        2016-07-22 15:11:49.940044214 +0200
+@@ -92,6 +92,8 @@
      static bool isTestModeEnabled();
 
  private:
@@ -257,11 +236,10 @@ index 5c0e08b..2fb29bb 100644
      // prevent construction
      QStandardPaths();
      ~QStandardPaths();
-diff --git a/src/corelib/io/qstandardpaths_mac.mm b/src/corelib/io/qstandardpaths_mac.mm
-index d6126ce..29333bd 100644
---- a/src/corelib/io/qstandardpaths_mac.mm
-+++ b/src/corelib/io/qstandardpaths_mac.mm
-@@ -138,6 +138,10 @@ static QString macLocation(QStandardPaths::StandardLocation type, short domain)
+diff -Nru qtbase-5.6.1.orig/src/corelib/io/qstandardpaths_mac.mm qtbase-5.6.1/src/corelib/io/qstandardpaths_mac.mm
+--- qtbase-5.6.1.orig/src/corelib/io/qstandardpaths_mac.mm      2016-07-22 15:11:23.307466618 +0200
++++ qtbase-5.6.1/src/corelib/io/qstandardpaths_mac.mm   2016-07-22 15:11:49.940044214 +0200
+@@ -138,6 +138,10 @@
 
  QString QStandardPaths::writableLocation(StandardLocation type)
  {
@@ -272,11 +250,10 @@ index d6126ce..29333bd 100644
      if (isTestModeEnabled()) {
          const QString qttestDir = QDir::homePath() + QLatin1String("/.qttest");
          QString path;
-diff --git a/src/corelib/io/qstandardpaths_win.cpp b/src/corelib/io/qstandardpaths_win.cpp
-index b1d5821..76d569d 100644
---- a/src/corelib/io/qstandardpaths_win.cpp
-+++ b/src/corelib/io/qstandardpaths_win.cpp
-@@ -87,7 +87,9 @@ static inline int clsidForAppDataLocation(QStandardPaths::StandardLocation type)
+diff -Nru qtbase-5.6.1.orig/src/corelib/io/qstandardpaths_win.cpp qtbase-5.6.1/src/corelib/io/qstandardpaths_win.cpp
+--- qtbase-5.6.1.orig/src/corelib/io/qstandardpaths_win.cpp     2016-07-22 15:11:23.307466618 +0200
++++ qtbase-5.6.1/src/corelib/io/qstandardpaths_win.cpp  2016-07-22 15:13:41.682467339 +0200
+@@ -203,7 +203,9 @@
 
  QString QStandardPaths::writableLocation(StandardLocation type)
  {
@@ -284,8 +261,6 @@ index b1d5821..76d569d 100644
 +    QString result = QStandardPaths::presetLocation(type);
 +    if (!result.isEmpty())
 +        return result;
-
- #if !defined(Q_OS_WINCE)
-     static GetKnownFolderPath SHGetKnownFolderPath = (GetKnownFolderPath)QSystemLibrary::resolve(QLatin1String("shell32"), "SHGetKnownFolderPath");
---
-2.5.0.windows.1
+     switch (type) {
+     case DownloadLocation:
+         result = sHGetKnownFolderPath(qCLSID_FOLDERID_Downloads, type);

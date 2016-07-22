@@ -1,0 +1,18 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+diff --git a/src/utils/gnupg-helper.cpp b/src/utils/gnupg-helper.cpp
+index 7933606..ca85814 100644
+--- a/src/utils/gnupg-helper.cpp
++++ b/src/utils/gnupg-helper.cpp
+@@ -229,6 +229,8 @@ bool Kleo::engineIsVersion(int major, int minor, int patch, Engine engine)
+
+ const QString& Kleo::paperKeyInstallPath()
+ {
+-    static const QString pkPath = QStandardPaths::findExecutable("paperkey");
++    static const QString pkPath = QStandardPaths::findExecutable("paperkey", QStringList() << QCoreApplication::applicationDirPath()).isEmpty() ?
++                                  QStandardPaths::findExecutable("paperkey") :
++                                  QStandardPaths::findExecutable("paperkey", QStringList() << QCoreApplication::applicationDirPath());
+     return pkPath;
+ }
