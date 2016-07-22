@@ -50,8 +50,10 @@ Section "-qtbase" SEC_qtbase
   pop $1
 
   SetOutPath "$INSTDIR\bin\platforms"
-
   File ${prefix}/plugins/platforms/qwindows.dll
+
+  SetOutPath "$INSTDIR\bin\printsupport"
+  File ${prefix}/plugins/printsupport/windowsprintersupport.dll
 
 !endif
 SectionEnd

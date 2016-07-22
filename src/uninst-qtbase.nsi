@@ -40,7 +40,9 @@ Section "-un.qtbase"
   Delete "$INSTDIR\bin\qt.conf"
 
   Delete "$INSTDIR\bin\platforms\qwindows.dll"
+  Delete "$INSTDIR\bin\printsupport\windowsprintersupport.dll"
 
+  RMDir "$INSTDIR\bin\printsupport"
   RMDir "$INSTDIR\bin\platforms"
   RMDir "$INSTDIR\bin"
 
