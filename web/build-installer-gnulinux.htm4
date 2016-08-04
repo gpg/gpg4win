@@ -116,7 +116,7 @@ installer package, the following step is necessary.
 
 <h2>Integrate a new module into Gpg4win</h2>
 
-Hierfür sollte man schon einmal ein Installationspaket wie oben beschrieben
+HierfÃ¼r sollte man schon einmal ein Installationspaket wie oben beschrieben
 For this task you should have at least once created a installer package
 according to the description above using the GIT version.
 

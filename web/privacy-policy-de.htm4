@@ -5,13 +5,13 @@ m4_dnl $Id$
 m4_define(`DE')
 m4_define(`EN_FILE', `privacy-policy.html')
 
-m4_define(`TITLE', `Datenschutzerkl‰rung')
+m4_define(`TITLE', `Datenschutzerkl√§rung')
 m4_define(`MAIN', `privacy-policy')
 
 PAGE_START
 
 <div id="main">
-<h2>Datenschutzerkl‰rung</h2>
+<h2>Datenschutzerkl√§rung</h2>
 <p>
 <strong>Das unten beschriebene Piwik System wurde am 12.3.2014
 abgeschaltet.</strong>
@@ -21,21 +21,21 @@ Diese Website benutzt Piwik, ein auf Freier Software basierendes
 Webanalyse System, um die Besucher dieser Website statistisch zu
 erfassen.  Piwik zeichnet den Herkunftsstaat, die Art des Webbrowsers,
 das benutzte Betriebssystem sowie die Navigation zwischen den Seiten
-auf.  Dies hilft uns die Qualit‰t unserer Webseiten zu messen und diese
+auf.  Dies hilft uns die Qualit√§t unserer Webseiten zu messen und diese
 gegebenenfalls zu verbessern.
 </p>
 
 <p>
 Die benutzte Piwik Installation ist identisch zu der
 der <a href="http://www.gnupg.org">GnuPG</a> Websites and fasst Daten
-mit denen der GnuPG Websites zusammen.  The Datenschutzerkl‰rung der
+mit denen der GnuPG Websites zusammen.  The Datenschutzerkl√§rung der
 GnuPG Websites is identisch zu der hiesigen.
 </p>
 
 <p>
 Unser Piwik System beachtet den Datenschutz und teil-anonymisiert die
-IP Adresse der Besucher.  Dies bedeutet, daﬂ keine personenbezogenen
-Informationen abspeichert werden, obgleich Datens‰tze zu jedem Besuch
+IP Adresse der Besucher.  Dies bedeutet, da√ü keine personenbezogenen
+Informationen abspeichert werden, obgleich Datens√§tze zu jedem Besuch
 erzeugt und abgespeichert werden.
 </p>
 
@@ -44,9 +44,9 @@ Piwik respektiert die  <a href="http://donottrack.us/">Do Not
 Track</a>  Option, welche von einigen Webbrowsern angeboten wird.  Ist
 diese Option aktiv, so wird Piwik keine Daten aus dem Besuch dieser
 Website erheben oder abspeichern.
-Sie kˆnnen Piwik auch anweisen, ein
+Sie k√∂nnen Piwik auch anweisen, ein
 <a href="http://alberti.gnupg.org/piwik/index.php?module=CoreAdminHome&action=optOut&language=de"
->no track</a> Cookie f¸r diese Website zu setzen.  Mehr Information zu
+>no track</a> Cookie f√ºr diese Website zu setzen.  Mehr Information zu
 den Datenschutzfunktionen von Piwik finden Sie auf
 <a href="http://piwik.org/privacy/">deren Website</a>.
 </p>

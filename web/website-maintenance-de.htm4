@@ -11,7 +11,7 @@ m4_define(`TITLE', `Website pflegen')
 PAGE_START
 <div id="intro">
 <h2>Website von Gpg4win pflegen</h2>
-<p>Eine regelmäßige Aufgabe ist die Aktualisierung der
+<p>Eine regelmÃ¤ÃŸige Aufgabe ist die Aktualisierung der
 Gpg4win-Website. Die Pflege ist einfach, da
 vieles automatisiert ist. Was man beherrschen sollte:
 einen Text-Editor, HTML, SSH und GIT.
@@ -27,7 +27,7 @@ einen Text-Editor, HTML, SSH und GIT.
 </ul>
 </p>
 
-<h2>Zunächst anonym reinschnuppern</h2>
+<h2>ZunÃ¤chst anonym reinschnuppern</h2>
 
 <ol>
 <li> Die Quellen zur Website auschecken:
@@ -40,14 +40,14 @@ make
 </pre>
      und im Browser anschauen (z.B. Datei index-de.html).
 
-<li> Die README-Datei der Website lesen, nach belieben Änderungen
+<li> Die README-Datei der Website lesen, nach belieben Ã„nderungen
      vornehmen und die Website dann wieder neu bauen und anschauen.
 </ol>
 
 <h2>Was man vorbereitend nur einmal machen muss um aktiver Mitentwickler zu werden</h2>
 
 Ein vorheriges "Hallo" auf einer der Gpg4win-Mailingliste
-und der Wunsch, dass man gerne mitmachen möchte, ist natürlich immer sinnvoll.
+und der Wunsch, dass man gerne mitmachen mÃ¶chte, ist natÃ¼rlich immer sinnvoll.
 
 <ol>
 <li> Auf <a href="http://wald.intevation.de">wald.intevation.de</a> ein
@@ -59,9 +59,9 @@ und der Wunsch, dass man gerne mitmachen möchte, ist natürlich immer sinnvoll.
      <a href="http://wald.intevation.org/project/request.php?group_id=11"
        >beantragen</a>.<br>
      Das dauert ein wenig, da einer der Projektadministoren den Antrag
-     persönlich bearbeitet.
+     persÃ¶nlich bearbeitet.
 
-<li> Einen SSH-Schlüssel erzeugen und auf wald.intevation.de
+<li> Einen SSH-SchlÃ¼ssel erzeugen und auf wald.intevation.de
      <a href="http://wald.intevation.org/account/">hochladen</a>.
 
 <li> Die Quellen zur Website holen:<br>
@@ -72,16 +72,16 @@ und der Wunsch, dass man gerne mitmachen möchte, ist natürlich immer sinnvoll.
 <h2>Wie man die Website aktualisiert und online schaltet</h2>
 
 <ol>
-<li> Gewünschte Änderungen in dem per git geholten Verzeichnis
-     <code>/web</code> durchführen.
-     Zum besseren Verständnis ggf. die Datei <code>README</code> vorher
+<li> GewÃ¼nschte Ã„nderungen in dem per git geholten Verzeichnis
+     <code>/web</code> durchfÃ¼hren.
+     Zum besseren VerstÃ¤ndnis ggf. die Datei <code>README</code> vorher
      durchlesen.
 <li> Lokale Version zum Anschauen herstellen:<br>
      <code>make</code><br>
      und im Browser anschauen.
-<li> Sind die Änderungen in Ordnung, sollte man sie noch mal prüfen:<br>
+<li> Sind die Ã„nderungen in Ordnung, sollte man sie noch mal prÃ¼fen:<br>
      <code>git diff | less</code><br>
-     und können dann mit möglichst sinnvollen Kommentaren committen
+     und kÃ¶nnen dann mit mÃ¶glichst sinnvollen Kommentaren committen
      und einen Patch an die Mailingliste senden:<br>
      <code>git commit -a </code> und
      <code>git format-patch -k --stdout >draft</code><br>

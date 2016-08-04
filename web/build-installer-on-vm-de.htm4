@@ -14,13 +14,13 @@ PAGE_START
 <h2>Bau von Gpg4win unter Windows<br>via eines virtualisiertem GNU/Linux</h2>
 <h3>
 Warnung: Die Anweisungen auf dieser Seite sind nicht mehr aktuell und
-könnten nicht mehr funktionieren. Im
+kÃ¶nnten nicht mehr funktionieren. Im
 <a href="https://wiki.gnupg.org/Gpg4win/build">GnuPG Wiki</a>
 finden sich aktuellere Bauanleitungen.
 </h3>
 <p>Dieses Beispiel beschreibt konkret die Herstellung eines neuen Gpg4win Installers
 auf Windows XP/SP2 via Debian 'Etch' 4.0 in QEMU.
-Grundsätzlich können für alle drei Komponenten auch Alternativen verwendet
+GrundsÃ¤tzlich kÃ¶nnen fÃ¼r alle drei Komponenten auch Alternativen verwendet
 werden.
 </p>
 <p>
@@ -29,7 +29,7 @@ GNU/Linux etwas detaillierter beschrieben</a> und
 <a href="build-installer-on-w32-debian-screenshots-de.html">Installation von Debian GNU/Linux 'Etch' 4.0 innerhalb einer virtuellen QEMU-Maschine als Screenshot-Serie illustriert</a>.
 </p>
 <p>
-  <a href="build-installer-de.html">Zurück zur Übersicht zum Installer-Bau</a>
+  <a href="build-installer-de.html">ZurÃ¼ck zur Ãœbersicht zum Installer-Bau</a>
 </p>
 </div>
 
@@ -43,14 +43,14 @@ GNU/Linux etwas detaillierter beschrieben</a> und
 <tt>I-2a - </tt><a href="#I-2a">Installation von PuTTY</a><br>
 <tt>I-2b - </tt><a href="#I-2b">Installation von ext2fsd und FileDisk</a><br>
 <tt>I-3 - </tt><a href="#I-3">Bezug eines Debian 'Etch' Boot-Mediums</a><br>
-<tt>I-4 - </tt><a href="#I-4">Öffnen einer CMD-Shell</a><br>
+<tt>I-4 - </tt><a href="#I-4">Ã–ffnen einer CMD-Shell</a><br>
 <tt>I-5 - </tt><a href="#I-5">Erzeugen eines Festplatten-Images</a><br>
 <tt>I-6 - </tt><a href="#I-6">Starten der Etch-Installation</a><br>
 <tt>I-7 - </tt><a href="#I-7">Abschluss der Etch-Installation</a>
 <br><br>
 <tt>II   - </tt><a href="#II">Bauen von Gpg4win</a><br>
 <tt>II-1 - </tt><a href="#II-1">Starten der virtuellen Maschine</a><br>
-<tt>II-2 - </tt><a href="#II-2">Installation der für den Bau von Gpg4win wichtigen Pakete</a><br>
+<tt>II-2 - </tt><a href="#II-2">Installation der fÃ¼r den Bau von Gpg4win wichtigen Pakete</a><br>
 <tt>II-3 - </tt><a href="#II-3">Einrichten der Build-Partition</a><br>
 <tt>II-4 - </tt><a href="#II-4">Bau der Gpg4win-Installations-Pakete</a><br>
 <tt>II-5 - </tt><a href="#II-5">Extraktion der fertigen Installationspakete</a>
@@ -64,11 +64,11 @@ GNU/Linux etwas detaillierter beschrieben</a> und
 <p>
  Der Bauprozess von Gpg4win ist auf eine Cross-Kompilierung unter
  GNU/Linux ausgerichtet. Die Schaffung einer geeigneten Bauumgebung
- unter Windows oder u. U. auch anderen Systemen ist zwar prinzipiell möglich,
+ unter Windows oder u. U. auch anderen Systemen ist zwar prinzipiell mÃ¶glich,
  erfordert aber umfassende Anpassungsarbeiten an den in Gpg4win integrierten Modulen.
  Wesentlich einfacher ist die Installation eines virtualisierten
  GNU/Linux Systems innerhalb von Windows, in dem der Bauprozess
- dann durchgeführt werden kann.
+ dann durchgefÃ¼hrt werden kann.
 </p>
 
 <p>
@@ -87,11 +87,11 @@ GNU/Linux etwas detaillierter beschrieben</a> und
         die Virtualisierungssoftware QEMU installiert,
         eine virtuelle Festplatte erzeugt und auf dieser
         ein minimales Debian 'Etch' installiert.
-   <li> Im zweiten Teil wird erläutert, wie der eigentliche
+   <li> Im zweiten Teil wird erlÃ¤utert, wie der eigentliche
         Bauprozess innerhalb der virtuellen Maschine ablaufen sollte.
         Dieser entspricht dem bereits dokumentierten Bauprozess
-        unter GNU/Linux, wird aber der Vollständigkeit halber
-        hier noch einmal aufgeführt.
+        unter GNU/Linux, wird aber der VollstÃ¤ndigkeit halber
+        hier noch einmal aufgefÃ¼hrt.
  </ol>
 </p>
 
@@ -99,10 +99,10 @@ GNU/Linux etwas detaillierter beschrieben</a> und
 
 <p>
  Resultat dieses Abschnittes wird eine Datei sein, die ein Festplatten-Image
- eines rudimentären Debian 'Etch' für Ihre Virtualisierungssoftware (Virtual Machine Monitor)
- enthalten wird. Die finale Image-Datei wird ungefähr 250MB groß sein.
- Insgesamt sollte für diese Phase der Installation mindestens 1,5GB
- freien Festplattenplatz auf dem Host-System zur Verfügung stehen.
+ eines rudimentÃ¤ren Debian 'Etch' fÃ¼r Ihre Virtualisierungssoftware (Virtual Machine Monitor)
+ enthalten wird. Die finale Image-Datei wird ungefÃ¤hr 250MB groÃŸ sein.
+ Insgesamt sollte fÃ¼r diese Phase der Installation mindestens 1,5GB
+ freien Festplattenplatz auf dem Host-System zur VerfÃ¼gung stehen.
 </p>
 
 <h4><a name="I-1"></a> I-1 - Installation von QEMU</h4>
@@ -110,23 +110,23 @@ GNU/Linux etwas detaillierter beschrieben</a> und
 <p>
  QEMU ist eigentlich ein Hardware-Emulator. Mit anderen Worten,
  er interpretiert den Maschinen-Code des simulierten Gast-Systems
- und führt ihn auf dem Host-System aus. Dies würde es u.a. auch
- ermöglichen, den Bau von Gpg4win-Paketen auf einen PPC-System
- unter Mac OS X-Host durchzuführen. Für den Fall einer Installation
+ und fÃ¼hrt ihn auf dem Host-System aus. Dies wÃ¼rde es u.a. auch
+ ermÃ¶glichen, den Bau von Gpg4win-Paketen auf einen PPC-System
+ unter Mac OS X-Host durchzufÃ¼hren. FÃ¼r den Fall einer Installation
  unter MS Windows auf einer x86-Architektur empfiehlt es sich,
  neben dem eigentlichen Emulator noch die Virtualisierungskomponente
- QEMU Accelerator (KQEMU) zu installieren. Sie sorgt für eine direkte
- Ausführung des Maschinen-Codes des Gasts- auf dem Host-System, was
- die Auführung enorm beschleunigt, sofern das Gast-System ebenfalls
+ QEMU Accelerator (KQEMU) zu installieren. Sie sorgt fÃ¼r eine direkte
+ AusfÃ¼hrung des Maschinen-Codes des Gasts- auf dem Host-System, was
+ die AufÃ¼hrung enorm beschleunigt, sofern das Gast-System ebenfalls
  eine x86-Architektur aufweisst.
 </p>
 
 <p>
  Auf der "QEMU for Windows" <a href="#ref3">[3]</a> Seite finden sich fertige
- Installations-Binaries für QEMU <a href="#ref4">[4]</a> und
+ Installations-Binaries fÃ¼r QEMU <a href="#ref4">[4]</a> und
  KQEMU <a href="#ref5">[5]</a>.
- Nach dem Herunterladen müssen die beiden Binaries einfach
- ausgeführt werden, um sie zu installieren.
+ Nach dem Herunterladen mÃ¼ssen die beiden Binaries einfach
+ ausgefÃ¼hrt werden, um sie zu installieren.
  Bitte merken Sie sich den Pfad zur QEMU-Installation
  (z.B. also: C:\Programme\QEMU).
 </p>
@@ -135,16 +135,16 @@ GNU/Linux etwas detaillierter beschrieben</a> und
 <h4><a name="I-2a"></a>I-2a - Installation von PuTTY</h4>
 
 <p>
- Um Daten zwischen Host- und Gast-System austauschen zu können,
- existieren mehrere Möglichkeiten. In dieser Anleitung wird vorgeschlagen,
+ Um Daten zwischen Host- und Gast-System austauschen zu kÃ¶nnen,
+ existieren mehrere MÃ¶glichkeiten. In dieser Anleitung wird vorgeschlagen,
  auf dem Gast-System einen OpenSSH-Server zu installieren. Um mit diesem
- kommunizieren zu können, wird eine entsprechende Client-Software benötigt.
- PuTTY <a href="#ref6">[6]</a> ist hierfür gut geeignet. Ein Windows-Installer
+ kommunizieren zu kÃ¶nnen, wird eine entsprechende Client-Software benÃ¶tigt.
+ PuTTY <a href="#ref6">[6]</a> ist hierfÃ¼r gut geeignet. Ein Windows-Installer
  findet sich unter <a href="#ref7">[7]</a>.
- Auch hier wird die Installation durch das Ausführen der
+ Auch hier wird die Installation durch das AusfÃ¼hren der
  Datei gestartet. Es ist empfehlenswert, nach der Installation die
  PATH-Variable um den Pfad hin zur Putty-Installation zu erweitern.
- Später wird von den Programmen putty.exe und pscp.exe Gebrauch gemacht.
+ SpÃ¤ter wird von den Programmen putty.exe und pscp.exe Gebrauch gemacht.
 </p>
 
 <h4><a name="I-2b"></a>I-2b - Installation von ext2fsd und FileDisk</h4>
@@ -154,19 +154,19 @@ GNU/Linux etwas detaillierter beschrieben</a> und
  werden soll.</em>
 </p>
 <p>
- Für das Erstellen des MSI Installers wird Zugriff durch ein
- Windows-System auf den vollständigen gpg4win Quelltext-Dateibaum
- benötigt.  Da dieser sehr umfangreich ist empfiehlt diese Anleitung
- nicht ihn vollständig per SSH zu kopieren.  Stattdessen wird die
+ FÃ¼r das Erstellen des MSI Installers wird Zugriff durch ein
+ Windows-System auf den vollstÃ¤ndigen gpg4win Quelltext-Dateibaum
+ benÃ¶tigt.  Da dieser sehr umfangreich ist empfiehlt diese Anleitung
+ nicht ihn vollstÃ¤ndig per SSH zu kopieren.  Stattdessen wird die
  virtuelle Festplatte auf der gpg4win gebaut wurde direkt unter
- Windows gemountet.  Um das ext3 Dateisystem lesen zu können wird
- ext2fsd<a href="#ref8">[8]</a> benötigt, und um die virtuelle Platte
+ Windows gemountet.  Um das ext3 Dateisystem lesen zu kÃ¶nnen wird
+ ext2fsd<a href="#ref8">[8]</a> benÃ¶tigt, und um die virtuelle Platte
  zu mounten eignet sich FileDisk<a href="#ref9">[9]</a>.
 </p>
 <p>
  Um ext2fsd zu installieren muss lediglich das heruntergeladene Binary
- ausgeführt werden.  Für das Erstellen des MSI Installers wird keine
- Schreibunterstützung auf der ext3 Partition benötigt, dieser kann bei
+ ausgefÃ¼hrt werden.  FÃ¼r das Erstellen des MSI Installers wird keine
+ SchreibunterstÃ¼tzung auf der ext3 Partition benÃ¶tigt, dieser kann bei
  der Installation von ext2fsd also deaktiviert bleiben.
 </p>
 <p>
@@ -174,7 +174,7 @@ GNU/Linux etwas detaillierter beschrieben</a> und
  Nach dem entpacken des ZIP-Archives wird der
  Treiber <code>filedisk.sys</code> nach <code>%systemroot%\system32\drivers\</code>
  und das Programm <code>filedisk.exe</code> z.B. nach
- <code>%systemroot%\system32\</code> kopiert.  Abschließend muss noch
+ <code>%systemroot%\system32\</code> kopiert.  AbschlieÃŸend muss noch
  die Datei <code>filedisk.reg</code> in die Regsitry importiert werden
  (z.B. durch Doppelklick).
 </p>
@@ -182,7 +182,7 @@ GNU/Linux etwas detaillierter beschrieben</a> und
 <h4><a name="I-3"></a>I-3 - Bezug eines Debian 'Etch' Boot-Mediums</h4>
 
 <p>
- Für das Herunterladen der für den Bau von Gpg4win
+ FÃ¼r das Herunterladen der fÃ¼r den Bau von Gpg4win
  notwendigen Pakete wird ohnehin eine schnelle Internet-Verbindung
  vorausgesetzt. Von daher reicht es aus, sich das minimale
  x86-Netz-Installations-Image debian-40r0-i386-netinst.iso (159MB)
@@ -191,18 +191,18 @@ GNU/Linux etwas detaillierter beschrieben</a> und
  des Debian-Systems bei der Installation aus dem Netz nachzuladen.
  Das Net-Image ist unter <a href="#ref10">[10]</a> und das Business-Image unter
  <a href="#ref11">[11]</a>
- oder alternativ über die entsprechenden Debian-Mirrors zu finden.
+ oder alternativ Ã¼ber die entsprechenden Debian-Mirrors zu finden.
 </p>
 
 <p>
- Es ist nicht nötig, diese Images auf eine CD zu brennen,
+ Es ist nicht nÃ¶tig, diese Images auf eine CD zu brennen,
  da QEMU auch direkt von ihnen booten kann.
 </p>
 
-<h4><a name="I-4"></a> I-4 - Öffnen einer CMD-Shell</h4>
+<h4><a name="I-4"></a> I-4 - Ã–ffnen einer CMD-Shell</h4>
 
 <p>
- Im Start-&gt;Ausführen...-Dialog "cmd" eingeben und bestätigen.
+ Im Start-&gt;AusfÃ¼hren...-Dialog "cmd" eingeben und bestÃ¤tigen.
  In der CMD-Shell folgendes eingeben:
 </p>
 
@@ -232,9 +232,9 @@ GNU/Linux etwas detaillierter beschrieben</a> und
 
 <p>
  Dies legt zwei virtuelle Festplatten-Dateien an.  Eine der
- Maximalgröße 1500MB für das GNU/Linux System, die Datei wird erst
- bei Bedarf Schritt für Schritt vergrößert.  Und eine weitere von der
- Größe 2000MB auf der gpg4win gebaut wird.  Das zweite Image wird in
+ MaximalgrÃ¶ÃŸe 1500MB fÃ¼r das GNU/Linux System, die Datei wird erst
+ bei Bedarf Schritt fÃ¼r Schritt vergrÃ¶ÃŸert.  Und eine weitere von der
+ GrÃ¶ÃŸe 2000MB auf der gpg4win gebaut wird.  Das zweite Image wird in
  einem simplen "rohen" Format erzeugt, welches bei Bedarf mit FileDisk
  unter Windows eingebunden werden kann.
 </p>
@@ -256,32 +256,32 @@ GNU/Linux etwas detaillierter beschrieben</a> und
  Dies startet einen virtuellen PC mit 256MB, der vom
  Netz-Installations-Image bootet und die eben erzeugte virtuelle
  Festplatte zugewiesen bekommt. Der Pfad zum Boot-Image
- sollte natürlich angepasst werden. Die "-k de"-Option wählt das
+ sollte natÃ¼rlich angepasst werden. Die "-k de"-Option wÃ¤hlt das
  deutsche Tastatur-Layout. Die "-kernel-kqemu"-Option aktiviert
- die vollständige Virtualisierung des emulierten System, was die
- Performanz drastisch erhöht. Wenn man während des Bootens
+ die vollstÃ¤ndige Virtualisierung des emulierten System, was die
+ Performanz drastisch erhÃ¶ht. Wenn man wÃ¤hrend des Bootens
  Meldungen der Form "hda: lost interrupt" bekommt, sollte man
- zusätzlich die Option "-no-acpi" in obigem Aufruf ergänzen.
- Sollte es darüber hinaus unerwarteter Weise zu
+ zusÃ¤tzlich die Option "-no-acpi" in obigem Aufruf ergÃ¤nzen.
+ Sollte es darÃ¼ber hinaus unerwarteter Weise zu
  Problemen mit der virtuellen Maschine kommen, sollte die
  Flagge "-kernel-kqemu" entfernt werden. Details hierzu finden sich
  in der Dokumentation zu QEMU.
 </p>
 
 <p>
- Es sollte nun in einem sich neu öffnenden Fenster der
+ Es sollte nun in einem sich neu Ã¶ffnenden Fenster der
  Boot-Prompt der Debian-Installation zu sehen sein. Diese
- kann durch Betätigen der Return-Taste gestartet werden.
+ kann durch BetÃ¤tigen der Return-Taste gestartet werden.
  Die Installation sollte minimal gehalten werden. Nach
  Wahl der Sprache sollte die komplette virtuelle Festplatte
- für die Installation benutzt werden. Eine ext3-Partion+Swap
- reichen für unsere Zwecke völlig aus.
+ fÃ¼r die Installation benutzt werden. Eine ext3-Partion+Swap
+ reichen fÃ¼r unsere Zwecke vÃ¶llig aus.
  Die Standard-Netzwerk-Konfiguration reicht ebenfalls aus.
 </p>
 
 <p>
  Neben dem root-Nutzer sollte ein Benutzerkonto "gpg4win" angelegt werden.
- Über dieses Benutzerkonto wird der eigentlich Bauprozess abgewickelt.
+ Ãœber dieses Benutzerkonto wird der eigentlich Bauprozess abgewickelt.
 </p>
 
 <h4><a name="I-7"></a>I-7 - Abschluss der Etch-Installation</h4>
@@ -292,8 +292,8 @@ GNU/Linux etwas detaillierter beschrieben</a> und
 </p>
 
 <p>
- Optional für das Erstellen eines wiederverwendbaren Images:
- 'apt-get clean; apt-get auto-clean' zum Löschen gecachter
+ Optional fÃ¼r das Erstellen eines wiederverwendbaren Images:
+ 'apt-get clean; apt-get auto-clean' zum LÃ¶schen gecachter
  Downloads aufrufen.
 </p>
 
@@ -306,10 +306,10 @@ GNU/Linux etwas detaillierter beschrieben</a> und
  Will man ein wiederverwendbares Basis-Image erzeugen, bietet es sich
  an, das Image zu bereinigen und transparent zu komprimieren.
  Der Zeitpunkt (damit ist der Umfang des Images gemeint) zu dem Sie ein Basis-Image
- erzeugen wollen, müssen Sie,
- abhängig davon ob Sie Gpg4win dauerhaft oder nur zum ausprobieren auf
+ erzeugen wollen, mÃ¼ssen Sie,
+ abhÃ¤ngig davon ob Sie Gpg4win dauerhaft oder nur zum ausprobieren auf
  Windows bauen, selbst bestimmen.
- Dies kann auf der CMD-Shell mit folgenden Befehlen durchgeführt werden.
+ Dies kann auf der CMD-Shell mit folgenden Befehlen durchgefÃ¼hrt werden.
 </p>
 
 <pre>
@@ -320,7 +320,7 @@ GNU/Linux etwas detaillierter beschrieben</a> und
 </pre>
 
 <p>
- Eine Kopie dieses Images sollte man verwahren und regelmäßig
+ Eine Kopie dieses Images sollte man verwahren und regelmÃ¤ÃŸig
  mit Sicherheits-Updates versorgen.
 </p>
 
@@ -341,15 +341,15 @@ GNU/Linux etwas detaillierter beschrieben</a> und
 </pre>
 
 <p>
- Die "-redir"-Option sorgt dafür, dass TCP-Anfragen an den
+ Die "-redir"-Option sorgt dafÃ¼r, dass TCP-Anfragen an den
  Host-Port 5555 an den Gast-Port 22 (SSH) weitergeleitet werden.
  Die Firewall von Windows-XP wird ggf. fragen, ob der Port 5555
- geblockt werden soll. Dies kann man bestätigen, wenn man nur
+ geblockt werden soll. Dies kann man bestÃ¤tigen, wenn man nur
  vom eigenen Rechner aus auf die virtuelle Maschine zugreifen
- möchte. Andernfalls sollte man die Anfragen durchlassen.
+ mÃ¶chte. Andernfalls sollte man die Anfragen durchlassen.
 </p>
 
-<h4><a name="II-2"></a>II-2 - Installation der für den Bau von Gpg4win wichtigen Pakete</h4>
+<h4><a name="II-2"></a>II-2 - Installation der fÃ¼r den Bau von Gpg4win wichtigen Pakete</h4>
 
 <p>
  Nach dem Booten sollte man als root-Benutzer folgendes
@@ -369,19 +369,19 @@ GNU/Linux etwas detaillierter beschrieben</a> und
 
 <p>
  <a href="http://de.wikipedia.org/wiki/Subversion_(Software)">Subversion</a>
- (bzw. das Kommando "svn") gehört zum Quelltext-Management-System mit dem Gpg4win verwaltet
- wird. Es wird nur benötigt, wenn man Gpg4win direkt aus dem SVN Qelltext-Management-System
+ (bzw. das Kommando "svn") gehÃ¶rt zum Quelltext-Management-System mit dem Gpg4win verwaltet
+ wird. Es wird nur benÃ¶tigt, wenn man Gpg4win direkt aus dem SVN Qelltext-Management-System
  heraus bauen will. Verwendet man stattdessen die Archivdateien (Endung .tar.gz oder .tar.bz2)
- einer veröffentlichten Version, so kann man auf Subversion verzichten.
+ einer verÃ¶ffentlichten Version, so kann man auf Subversion verzichten.
 </p>
 
 <p>
  Der <a href="http://de.wikipedia.org/wiki/OpenSSH">OpenSSH</a>-Server erleichtert die Kommunikation
  mit der virtuellen Maschine. Zum einen kann man sich nach
- der Installation mit PuTTY in den Rechner einwählen und zum
+ der Installation mit PuTTY in den Rechner einwÃ¤hlen und zum
  anderen mit pscp Dateien aus dem System heraus und hinein kopieren.
  Ersteres stellt eine erhebliche Bedienungs-Verbesserung
- (z.B. Copy &amp; Paste) da,  letzteres ermöglicht die Extraktion
+ (z.B. Copy &amp; Paste) da,  letzteres ermÃ¶glicht die Extraktion
  der fertigen Installationspakete.
 </p>
 
@@ -393,10 +393,10 @@ GNU/Linux etwas detaillierter beschrieben</a> und
 </p>
 
 <p>
- Um Probleme mit dem Locale (das sind die Einstellungen für die
- Unterstützung Ihrer Sprache und sonstiger sprach-spezifischer
+ Um Probleme mit dem Locale (das sind die Einstellungen fÃ¼r die
+ UnterstÃ¼tzung Ihrer Sprache und sonstiger sprach-spezifischer
  Einstellungen) zu vermeiden, ist es empfehlenswert,
- das de_DE-Locale (das ist die Unterstützung für deutsch wie in Deutschland verwendet)
+ das de_DE-Locale (das ist die UnterstÃ¼tzung fÃ¼r deutsch wie in Deutschland verwendet)
  zu erzeugen. Hierzu als root-Nutzer bitte folgendes eingeben
 </p>
 
@@ -407,7 +407,7 @@ GNU/Linux etwas detaillierter beschrieben</a> und
 </pre>
 
 <p>
- und das Häckchen zusätzlich bei de_DE setzen.
+ und das HÃ¤ckchen zusÃ¤tzlich bei de_DE setzen.
 </p>
 
 
@@ -416,7 +416,7 @@ GNU/Linux etwas detaillierter beschrieben</a> und
 <p>
  Vor dem eigentlichen Bauen von gpg4win muss noch die Build-Partition
  auf der zweiten virtuellen Festplatte eingerichtet werden.  Dies ist
- die Partition, die für das erstellen des MSI Installers auch direkt
+ die Partition, die fÃ¼r das erstellen des MSI Installers auch direkt
  unter Windows gemountet werden kann.
 </p>
 <p>
@@ -436,7 +436,7 @@ GNU/Linux etwas detaillierter beschrieben</a> und
 <p>
  Dabei ist es wichtig, dass das Dateisystem direkt auf der virtuellen
  Platte angelegt wird (ohne, dass vorher Partitionen definiert
- werden), da sonst dass spätere Einhängen unter Windows nicht
+ werden), da sonst dass spÃ¤tere EinhÃ¤ngen unter Windows nicht
  funktioniert.
 </p>
 
@@ -464,7 +464,7 @@ GNU/Linux etwas detaillierter beschrieben</a> und
 
 <p>
  Nach dem dies erfolgreich durchgelaufen ist, stehen unter
- trunk/src die fertigen Installationspakete zur Verfügung.
+ trunk/src die fertigen Installationspakete zur VerfÃ¼gung.
 </p>
 
 

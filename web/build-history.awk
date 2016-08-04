@@ -80,20 +80,20 @@ BEGIN {
     "m4_include(`template.m4')\n" \
     "m4_define(`DE')\n" \
     "m4_define(`EN_FILE', `change-history.html')\n" \
-    "m4_define(`TITLE', `Änderungshistorie')\n" \
+    "m4_define(`TITLE', `Ã„nderungshistorie')\n" \
     "PAGE_START\n" \
     "<div id='intro'>" \
-    "<h2>Änderungshistorie von Gpg4win</h2>" \
+    "<h2>Ã„nderungshistorie von Gpg4win</h2>" \
     "<p>Bitte beachten Sie, dass die alten Versionen die ggf.\n" \
-    "zwischenzeitlich beseitigten Sicherheitslöcher weiterhin enthalten!</p>\n" \
+    "zwischenzeitlich beseitigten SicherheitslÃ¶cher weiterhin enthalten!</p>\n" \
     "</div>\n" \
     "<div id='main'>\n" ;
 
 
   release_text["en"] = "released ";
-  release_text["de"] = "veröffentlicht ";
+  release_text["de"] = "verÃ¶ffentlicht ";
   noreldate_text["en"] = "[ in progress; not yet released ]";
-  noreldate_text["de"] = "[ in Arbeit; bisher noch nicht veröffentlicht ]";
+  noreldate_text["de"] = "[ in Arbeit; bisher noch nicht verÃ¶ffentlicht ]";
   explicit_dl_text["en"] = "Explicit download of this version:";
   explicit_dl_text["de"] = "Expliziter Download dieser Version:";
   readme_text["en"] = "Details in the README of this version:";

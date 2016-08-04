@@ -18,11 +18,11 @@ PAGE_START
 <div id="main">
 
 <!--
-<h2>Gpg4win 2.2.2-beta (Veröffentlicht: 2014-08-14)</h2>
+<h2>Gpg4win 2.2.2-beta (VerÃ¶ffentlicht: 2014-08-14)</h2>
 
 <p>Aktuelle Vorabversion von Gpg4win 2.2.2 mit Sicherheitsupdates und Verbesserungen in
 GnuPG, Kleopatra, GpgEX, GpgOL und Pinentry-qt; in verschiedenen
-Varianten verfügbar:</p>
+Varianten verfÃ¼gbar:</p>
 <ul>
 <li><a
 href="https://files.gpg4win.org/Beta/gpg4win-2.2.2-beta37.exe">Full-Installer</a>
@@ -43,64 +43,47 @@ href="https://files.gpg4win.org/Beta/gpg4win-2.2.2-beta37.tar.bz2">Quelltextpake
 | <a href="https://files.gpg4win.org/Beta/gpg4win-2.2.2-beta37.tar.bz2">OpenPGP Signatur</a>
 </li>
 <li><a href="https://files.gpg4win.org/Beta/README-2.2.2-beta37.de.txt">README</a> </li>
-<li>Alle Beta-Versionen und OpenPGP-Signaturen auch per https (mit eigener CA) verfügbar:
+<li>Alle Beta-Versionen und OpenPGP-Signaturen auch per https (mit eigener CA) verfÃ¼gbar:
 <a href="https://files.gpg4win.org/Beta/">https://files.gpg4win.org/Beta/</a>.</li>
 </ul>
 -->
 
-<h2>Gpg4win VERSION (Veröffentlicht: DL_DATE)</h2>
+<h2>Gpg4win VERSION (VerÃ¶ffentlicht: DL_DATE)</h2>
 
 <p>Die Vollversion (inklusive des deutschen Gpg4win-Kompendiums) von Gpg4win VERSION
 kann hier herunter geladen werden:</p>
 <div class="dlbutton2">
   <img src="img/dl_arrow.png" alt="" />
-  <a href="DOWNLOAD_URL">Gpg4win&nbsp;VERSION<br />
-    <span class="version"><small>Größe: DL_SIZE</small></span>
+  <a href="get-gpg4win-de.html">Gpg4win&nbsp;VERSION<br />
+    <span class="version"><small>GrÃ¶ÃŸe: DL_SIZE</small></span>
   </a>
 </div>
 
 <p class="lineheight">
   <a href="https://files.gpg4win.org/gpg4win-VERSION.exe.sig">OpenPGP-Signatur</a>
-  (für gpg4win-VERSION.exe)
+  (fÃ¼r gpg4win-VERSION.exe)
   <br>
-  SHA1-Prüfsumme (für gpg4win-VERSION.exe): <code>SHA1_EXE</code>
+  SHA1-PrÃ¼fsumme (fÃ¼r gpg4win-VERSION.exe): <code>SHA1_EXE</code>
   <br>
-  <a href="change-history-de.html">Änderungshistorie</a>
+  <a href="change-history-de.html">Ã„nderungshistorie</a>
 </p>
 
 <h4>Weitere Gpg4win-VERSION Varianten</h4>
 <ul>
-    <li>Gpg4win <em>ohne</em> Kleopatra und Gpg4win-Kompendium:
-      <div class="dlbutton2">
-        <img src="img/dl_arrow.png" alt="" />
-        <a href="LDOWNLOAD_URL">Gpg4win-Light VERSION<br/>
-          <span class="version"><small>Größe: LDL_SIZE</small></span>
-        </a>
-      </div>
-      <a href="https://files.gpg4win.org/gpg4win-light-VERSION.exe.sig"
-        >OpenPGP signatur</a><br>
-      SHA1 Prüfsumme: <code>SHA1_EXL</code></li>
+    <li>Gpg4win <em>ohne</em> Kleopatra und Gpg4win-Kompendium:<br>
+        <a href="LDOWNLOAD_URL">Gpg4win-Light VERSION</a> (GrÃ¶ÃŸe: LDL_SIZE)<br>
+        <a href="https://files.gpg4win.org/gpg4win-light-VERSION.exe.sig">OpenPGP-Signatur</a><br>
+        SHA1-PrÃ¼fsumme: <code>SHA1_EXL</code></li>
 
-    <li>Gpg4win <em>nur</em> mit GnuPG-Komponente:
-      <div class="dlbutton2">
-        <img src="img/dl_arrow.png" alt="" />
-        <a href="VDOWNLOAD_URL">Gpg4win-Vanilla VERSION<br/>
-          <span class="version"><small>Größe: VDL_SIZE</small><span></a>
-      </div>
-      <a href="https://files.gpg4win.org/gpg4win-vanilla-VERSION.exe.sig"
-        >OpenPGP signatur</a><br>
-        SHA1 Prüfsumme: <code>SHA1_EXV</code></li>
+    <li>Gpg4win <em>nur</em> mit GnuPG-Komponente:<br>
+        <a href="VDOWNLOAD_URL">Gpg4win-Vanilla VERSION</a> (GrÃ¶ÃŸe: VDL_SIZE)<br>
+        <a href="https://files.gpg4win.org/gpg4win-vanilla-VERSION.exe.sig">OpenPGP-Signatur</a><br>
+        SHA1-PrÃ¼fsumme: <code>SHA1_EXV</code></li>
 
-    <li>Gpg4win Quelltextpaket:
-      <div class="dlbutton2">
-        <img src="img/dl_arrow.png" alt="" />
-        <a href="SDOWNLOAD_URL">gpg4win-VERSION.tar.bz2<br/>
-          <span class="version"><small>Größe: SDL_SIZE</small><span>
-        </a>
-      </div>
-      <a href="https://files.gpg4win.org/gpg4win-VERSION.tar.bz2.sig"
-        >OpenPGP signatur</a><br>
-        SHA1 Prüfsumme: <code>SHA1_SRC</code></li>
+    <li>Gpg4win Quellcodepaket:<br>
+        <a href="SDOWNLOAD_URL">gpg4win-VERSION.tar.bz2</a> (GrÃ¶ÃŸe: SDL_SIZE)<br>
+        <a href="https://files.gpg4win.org/gpg4win-VERSION.tar.bz2.sig">OpenPGP-Signatur</a><br>
+        SHA1-PrÃ¼fsumme: <code>SHA1_SRC</code></li>
 
     <li>Alle Versionen und OpenPGP-Signaturen (auch per https) unter <a
         href="https://files.gpg4win.org/">https://files.gpg4win.org</a>.</li>
@@ -108,16 +91,16 @@ kann hier herunter geladen werden:</p>
     <li>Zur Erstellung einer <b>portablen Gpg4win-Version</b> nutzen
     Sie das mitgelieferte Werkzeug <code>mkportable.exe</code>.<br> 
     Kurzanleitung: Gpg4win installieren (mit allen Komponenten) und
-    anschließend per Kommandozeile (cmd) den Befehl 
+    anschlieÃŸend per Kommandozeile (cmd) den Befehl 
     <code>mkportable.exe [OPTIONS] TARGETDIR</code> im
-    Gpg4win-Installationsverzeichnis ausführen.
-    Alle Optionen über <code>mkportable.exe --help</code>.
-    Die portable Version enthält nicht GpgOL und GpgEX! 
+    Gpg4win-Installationsverzeichnis ausfÃ¼hren.
+    Alle Optionen Ã¼ber <code>mkportable.exe --help</code>.
+    Die portable Version enthÃ¤lt nicht GpgOL und GpgEX! 
     Ihre Zertifikate und Einstellungen werden im
     Ordner 'home' der portablen Version abgelegt.
     <br>
     <i>Beachten Sie</i>, dass Sie mit portablen Anwendungen -
-    insbesondere mit Krypto-Anwendungen - <i>nicht</i> auf einem möglicherweise infizierten
+    insbesondere mit Krypto-Anwendungen - <i>nicht</i> auf einem mÃ¶glicherweise infizierten
     System arbeiten.
     </li>
     </ul>
@@ -127,15 +110,15 @@ kann hier herunter geladen werden:</p>
 
 <p>Nach Beendigung des
   Downloads <a href="package-integrity-de.html">verifizieren</a> Sie
-  bitte die Integrität des Gpg4win Paketes, dass sie heruntergeladen
-  haben. Anschließend folgen Sie den Hinweisen zur Installation
+  bitte die IntegritÃ¤t des Gpg4win Paketes, dass sie heruntergeladen
+  haben. AnschlieÃŸend folgen Sie den Hinweisen zur Installation
   im <a href="./doc/de/gpg4win-compendium.html">Gpg4win-Kompendium</a>.
   </p>
   <p>Lesen Sie die aktuelle <a
       href="https://files.gpg4win.org/README-VERSION.de.txt">README-Datei</a>.
 
 <h2>Gpg4win-Kompendium COMPENDIUM_VERSION_DE
-(Veröffentlicht: COMPENDIUM_DATE_DE)</h2>
+(VerÃ¶ffentlicht: COMPENDIUM_DATE_DE)</h2>
 
 <p>Die aktuelle PDF- und HTML-Version des Gpg4win-Kompendiums finden
 Sie hier:</p>
@@ -144,7 +127,7 @@ Sie hier:</p>
   <img src="img/dl_arrow.png" alt="" />
   <a href="DOWNLOAD_URL_COMPENDIUM_DE">Gpg4win-Kompendium COMPENDIUM_VERSION_DE
   (PDF, Deutsch)<br>
-  <span class="version"><small>Größe: DL_SIZE_COMPENDIUM_DE</small></span>
+  <span class="version"><small>GrÃ¶ÃŸe: DL_SIZE_COMPENDIUM_DE</small></span>
   </a>
 </div>
 
@@ -155,21 +138,21 @@ Sie hier:</p>
 
 <p>
 Lesen Sie die <a href="documentation-de.html">Dokumentationsseite</a>
-für weitere Informationen über verfügbare Gpg4win Dokumentationen.
+fÃ¼r weitere Informationen Ã¼ber verfÃ¼gbare Gpg4win Dokumentationen.
 </p>
 
 
 <h2>Alle Downloads</h2>
 
 <p>
-Alle aktuellen und bisherigen Gpg4win-Installer sowie Signaturen und zugehörige
+Alle aktuellen und bisherigen Gpg4win-Installer sowie Signaturen und zugehÃ¶rige
 Quelltextpakete finden Sie unter: 
 <a href="https://files.gpg4win.org/">files.gpg4win.org</a>
 </p>
 
 <p>
-Die <a href="change-history-de.html">Änderungshistorie</a> gibt
-sowohl Hinweise auf die wichtigsten Änderungen (welche Versionen der Produkte jeweils
+Die <a href="change-history-de.html">Ã„nderungshistorie</a> gibt
+sowohl Hinweise auf die wichtigsten Ã„nderungen (welche Versionen der Produkte jeweils
 enhalten waren) als auch einen direkten Download dieser alten Versionen.
 </p>
 
@@ -179,12 +162,12 @@ Alle Beta-Versionen (inkl. OpenPGP-Signaturen) unter:
 
 <p>
 Bitte beachten Sie, dass die alten Versionen die ggf. zwischenzeitlich beseitigten
-Sicherheitslöcher weiterhin enthalten!
+SicherheitslÃ¶cher weiterhin enthalten!
 </p>
 
-<p>Das öffentliche
+<p>Das Ã¶ffentliche
 <a href="http://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpg4win.git;a=tree">Gpg4win-Git-Repository</a>
-enthält den aktuellen Gpg4win-Quelltext.</p>
+enthÃ¤lt den aktuellen Gpg4win-Quelltext.</p>
 
 <p>
 Die Gpg4win D<F2>okumentationen (<em>Gpg4win-Kompendium</em>) finden Sie unter:
@@ -198,7 +181,7 @@ Die Gpg4win D<F2>okumentationen (<em>Gpg4win-Kompendium</em>) finden Sie unter:
 Wir empfehlen, sich in die
 <a href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-announce-de"
   >Gpg4win-Bekanntmachungs-Mailingliste</a> einzuschreiben,
-um automatisch über neue Versionen und andere wichtige
+um automatisch Ã¼ber neue Versionen und andere wichtige
 Neuigkeiten zu Gpg4win informiert zu werden.
 </p>
 
@@ -214,7 +197,7 @@ von <a href="http://ftp.heanet.ie/about/">HEAnet</a>)
 
 <div id="sidebar">
 <!--
-    <h3>Gpg4win 2.2.2-beta enthält:</h3>
+    <h3>Gpg4win 2.2.2-beta enthÃ¤lt:</h3>
     <pre>
 <a href="http://www.gnupg.de/index.de.html">GnuPG</a> 2.0.26
 <a href="http://www.kde.org/applications/utilities/kleopatra/">Kleopatra</a> 2.2.0-gitac229d2
@@ -226,7 +209,7 @@ von <a href="http://ftp.heanet.ie/about/">HEAnet</a>)
     </pre>
     <p></p>
 -->
-    <h3>Gpg4win VERSION enthält:</h3>
+    <h3>Gpg4win VERSION enthÃ¤lt:</h3>
     <pre>
     SOFTWAREOVERVIEW
     </pre>

@@ -13,8 +13,8 @@ PAGE_START
 <h2>Installation von Debian GNU/Linux 'Etch' 4.0 innerhalb einer
     virtuellen QEMU-Maschine</h2>
 <p>
-<a href="build-installer-on-vm-de.html">Zurück zur
-Gpg4win-Bauanleitung für Windows</a>
+<a href="build-installer-on-vm-de.html">ZurÃ¼ck zur
+Gpg4win-Bauanleitung fÃ¼r Windows</a>
 </p>
 
 </div>
@@ -26,7 +26,7 @@ Gpg4win-Bauanleitung für Windows</a>
 
 <p>
  Diese Installation wurde mit dem Business-Card-Boot-Medium von
- Debian 'Etch' durchgeführt. Der Aufruf zum Starten der
+ Debian 'Etch' durchgefÃ¼hrt. Der Aufruf zum Starten der
  vituellen Maschine lautete:
 </p>
 
@@ -55,19 +55,19 @@ qemu -m 256 -L %QEMU% -cdrom debian-40r0-i386-businesscard.iso -hda install.img 
 <p>
  <a href="pix/debian-install-de/02.png"><img src="pix/debian-install-de/thumbs/02.png"></a>
  <br>
- Als Sprache <em>German</em> auswählen.
+ Als Sprache <em>German</em> auswÃ¤hlen.
 </p>
 
 <p>
  <a href="pix/debian-install-de/03.png"><img src="pix/debian-install-de/thumbs/03.png"></a>
  <br>
- Als Land <em>Deutschland</em> auswählen.
+ Als Land <em>Deutschland</em> auswÃ¤hlen.
 </p>
 
 <p>
  <a href="pix/debian-install-de/04.png"><img src="pix/debian-install-de/thumbs/04.png"></a>
  <br>
- Als Tastatur-Layout <em>Deutsch</em> auswählen.
+ Als Tastatur-Layout <em>Deutsch</em> auswÃ¤hlen.
 </p>
 
 <p>
@@ -87,7 +87,7 @@ qemu -m 256 -L %QEMU% -cdrom debian-40r0-i386-businesscard.iso -hda install.img 
  <a href="pix/debian-install-de/08.png"><img src="pix/debian-install-de/thumbs/08.png"></a>
  <br>
  Als Land des Debian-Archiv-Spiegelservers <em>Deutschland</em>
- und einen Server in Ihrer Nähe auswählen.<br>
+ und einen Server in Ihrer NÃ¤he auswÃ¤hlen.<br>
 </p>
 
 <p>
@@ -105,13 +105,13 @@ qemu -m 256 -L %QEMU% -cdrom debian-40r0-i386-businesscard.iso -hda install.img 
  <br>
  <ul>
    <li>Als Festplatten-Partitionierungs-Methode
-       <em>Geführt - verwende vollständige Festplatte</em>
-       auswählen.
+       <em>GefÃ¼hrt - verwende vollstÃ¤ndige Festplatte</em>
+       auswÃ¤hlen.
    </li>
-   <li>Die <em>IDE1 Master (hda)</em> Festplatte auswählen.</li>
-   <li><em>Alle Dateinen auf eine Partition</em> auswählen.</li>
-   <li><em>Partitionierung beenden und Änderungen übernehmen</em> auswählen.</li>
-   <li><em>Änderungen auf die Festplatte schreiben?</em> mit <em>Ja</em> bestätigen.</li>
+   <li>Die <em>IDE1 Master (hda)</em> Festplatte auswÃ¤hlen.</li>
+   <li><em>Alle Dateinen auf eine Partition</em> auswÃ¤hlen.</li>
+   <li><em>Partitionierung beenden und Ã„nderungen Ã¼bernehmen</em> auswÃ¤hlen.</li>
+   <li><em>Ã„nderungen auf die Festplatte schreiben?</em> mit <em>Ja</em> bestÃ¤tigen.</li>
  </ul>
 </p>
 
@@ -119,7 +119,7 @@ qemu -m 256 -L %QEMU% -cdrom debian-40r0-i386-businesscard.iso -hda install.img 
  <a href="pix/debian-install-de/15.png"><img src="pix/debian-install-de/thumbs/15.png"></a>
  <a href="pix/debian-install-de/16.png"><img src="pix/debian-install-de/thumbs/16.png"></a>
  <br>
- Das root-Passwort eingeben und zuer Bestätigung wiederholen.
+ Das root-Passwort eingeben und zuer BestÃ¤tigung wiederholen.
 </p>
 
 <p>
@@ -131,7 +131,7 @@ qemu -m 256 -L %QEMU% -cdrom debian-40r0-i386-businesscard.iso -hda install.img 
  <ul>
    <li>Einen neuen Benutzer <em>gpg4win</em> anlegen.</li>
    <li>Konto-Bezeichnung des neuen Nutzes soll <em>gpg4win</em> lauten.</li>
-   <li>Passwort festlegen und durch Wiedereingabe bestätigen</li>
+   <li>Passwort festlegen und durch Wiedereingabe bestÃ¤tigen</li>
  </ul>
 </p>
 
@@ -158,7 +158,7 @@ qemu -m 256 -L %QEMU% -cdrom debian-40r0-i386-businesscard.iso -hda install.img 
  <a href="pix/debian-install-de/25.png"><img src="pix/debian-install-de/thumbs/25.png"></a>
  <br>
  <ul>
-   <li>Die Beendigung der Installation mit <em>weiter</em> bestätigen.</li>
+   <li>Die Beendigung der Installation mit <em>weiter</em> bestÃ¤tigen.</li>
    <li>Nach dem Neustart sollte sich QUEMU beschweren, dass es
        nicht vom angebenen Medium booten kann. QUEMU kann nun beendet werden.</li>
  </ul>
@@ -178,6 +178,6 @@ qemu -m 256 -L %QEMU%\pc-bios -hda install.img -kernel-kqemu -redir tcp:5555::22
  <a href="pix/debian-install-de/26.png"><img src="pix/debian-install-de/thumbs/26.png"></a>
  <br>
  Nach dem Boot-Vorgang sollte man sich erfolgreich als root-Nutzer anmelden
- und System-Aktualisierungen bzw. weitere Installation durchführen können.
+ und System-Aktualisierungen bzw. weitere Installation durchfÃ¼hren kÃ¶nnen.
 </p>
 </div>

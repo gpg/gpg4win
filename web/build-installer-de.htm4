@@ -19,13 +19,13 @@ auf dieser Seite.</p>
 <div id="main">
 <p>
 Der Bau eines neuen Gpg4win Installationspaketes ist
-weitgehend automatisiert. Dieser Bauprozess lässt sich auf
+weitgehend automatisiert. Dieser Bauprozess lÃ¤sst sich auf
 einem GNU/Linux System oder mit Hilfe einer virtuellen Maschine
-auch auf Windows- und anderen Systemen durchführen.
+auch auf Windows- und anderen Systemen durchfÃ¼hren.
 </p>
 
 <p>
-Was man benötigt:
+Was man benÃ¶tigt:
 </p>
 
 <ul>
@@ -34,16 +34,16 @@ Was man benötigt:
      <p>
      Prinzipiell sind alle aktuelleren GNU/Linux Systeme
      als Grundlage geeignet, ggf. mit kleinen Anpassungen.
-     Die <a href="build-installer-gnulinux-de.html">GNU/Linux-Anleitung</a> ist getestet für
+     Die <a href="build-installer-gnulinux-de.html">GNU/Linux-Anleitung</a> ist getestet fÃ¼r
      Debian GNU/Linux 'Wheezy' 7.0.<br>
-     Des Weiteren benötigt sind mindestens 1.5 GByte Platz auf der
+     Des Weiteren benÃ¶tigt sind mindestens 1.5 GByte Platz auf der
      Festplatte und eine schnelle Internetanbindung
-     da ca. 60 MByte heruntergeladen werden müssen.
+     da ca. 60 MByte heruntergeladen werden mÃ¼ssen.
      </p>
 </li>
 <li> <b>Gpg4win auf Windows, MacOS und anderen Systemen herstellen</b>:
      <p>
-     Um Gpg4win auf Windows oder MacOS zu bauen benötigen Sie eine virtuelle Maschine
+     Um Gpg4win auf Windows oder MacOS zu bauen benÃ¶tigen Sie eine virtuelle Maschine
      (z.B. <a href="https://www.virtualbox.org/">VirtualBox</a>)
      mit Debian GNU/Linux. Folgen Sie dann der <a
          href="build-installer-gnulinux-de.html">GNU/Linux-Anleitung</a>.

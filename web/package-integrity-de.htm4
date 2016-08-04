@@ -4,20 +4,20 @@ m4_dnl $Id$
 
 m4_define(`DE')
 m4_define(`EN_FILE', `package-integrity.html')
-m4_define(`TITLE', `Integrität prüfen')
+m4_define(`TITLE', `IntegritÃ¤t prÃ¼fen')
 m4_define(`MAIN', `misc')
 PAGE_START
 
 <div id="intro">
-<h2>Integrität der Gpg4win-Pakete prüfen</h2>
-<p>Wie man die Integrität prüft, kann man z.B.
+<h2>IntegritÃ¤t der Gpg4win-Pakete prÃ¼fen</h2>
+<p>Wie man die IntegritÃ¤t prÃ¼ft, kann man z.B.
 auf der <a href="https://www.gnupg.org/download/integrity_check.de.html">
-GnuPG Seite zur Integritätsprüfung</a> nachlesen.
+GnuPG Seite zur IntegritÃ¤tsprÃ¼fung</a> nachlesen.
 </p>
 </div>
 
 <div id="main">
-<h2>SHA1 Prüfsummen</h2>
+<h2>SHA1 PrÃ¼fsummen</h2>
 
 <pre>
 SHA1_EXE  gpg4win-VERSION.exe
@@ -30,23 +30,23 @@ SHA1_SRC  gpg4win-VERSION.tar.bz2
 
 <h2>OpenPGP Signaturen</h2>
 
-<p>Für gpg4win-VERSION.exe:
+<p>FÃ¼r gpg4win-VERSION.exe:
 <a href="https://files.gpg4win.org/gpg4win-VERSION.exe.sig"
   >https://files.gpg4win.org/gpg4win-VERSION.exe.sig</a><br>
 
-Für gpg4win-light-VERSION.exe:
+FÃ¼r gpg4win-light-VERSION.exe:
 <a href="https://files.gpg4win.org/gpg4win-light-VERSION.exe.sig"
   >https://files.gpg4win.org/gpg4win-light-VERSION.exe.sig</a><br>
 
-Für gpg4win-vanilla-VERSION.exe:
+FÃ¼r gpg4win-vanilla-VERSION.exe:
 <a href="https://files.gpg4win.org/gpg4win-vanilla-VERSION.exe.sig"
   >https://files.gpg4win.org/gpg4win-vanilla-VERSION.exe.sig</a><br>
 
-Für gpg4win-src-VERSION.exe:
+FÃ¼r gpg4win-src-VERSION.exe:
 <a href="https://files.gpg4win.org/gpg4win-src-VERSION.exe.sig"
   >https://files.gpg4win.org/gpg4win-src-VERSION.exe.sig</a><br>
 
-Für gpg4win-VERSION.tar.bz2:
+FÃ¼r gpg4win-VERSION.tar.bz2:
 <a href="https://files.gpg4win.org/gpg4win-VERSION.tar.bz2.sig"
   >https://files.gpg4win.org/gpg4win-VERSION.tar.bz2.sig</a>
 </p>
@@ -54,30 +54,30 @@ Für gpg4win-VERSION.tar.bz2:
 <p>
 Die Signaturen wurden mit folgendem OpenPGP-Zertifikat erstellt:<br>
 <a href="https://ssl.intevation.de">Intevation File Distribution Key
-<distribution-key@intevation.de> (Schlüsselkennung: EC70B1B8)</a>
+<distribution-key@intevation.de> (SchlÃ¼sselkennung: EC70B1B8)</a>
 </p>
 
 <p>
-Das Zertifikat kann über OpenPGP-Zertifikatsserver abgeholt werden.
+Das Zertifikat kann Ã¼ber OpenPGP-Zertifikatsserver abgeholt werden.
 Ein Zertifikat von einem Zertifikatsserver abholen geht z.B. mit
-Kleopatra oder GPA. Die Prüfung einer Signatur kann man leicht mit
-GpgEX über den Explorer erledigen.
+Kleopatra oder GPA. Die PrÃ¼fung einer Signatur kann man leicht mit
+GpgEX Ã¼ber den Explorer erledigen.
 </p>
 
 
-<h2>Dateilängen</h2>
+<h2>DateilÃ¤ngen</h2>
 
-<p>Falls die Prüfsumme nicht stimmen sollte oder eine fehlerhafte Signatur
-angezeigt wird, so sollten Sie zuerst die Dateilänge überprüfen, um
-sicherzustellen, daß Sie auch die komplette Datei heruntergeladen
-haben.  Hier sind die Längen die Sie erhalten sollten:</p>
+<p>Falls die PrÃ¼fsumme nicht stimmen sollte oder eine fehlerhafte Signatur
+angezeigt wird, so sollten Sie zuerst die DateilÃ¤nge Ã¼berprÃ¼fen, um
+sicherzustellen, daÃŸ Sie auch die komplette Datei heruntergeladen
+haben.  Hier sind die LÃ¤ngen die Sie erhalten sollten:</p>
 
 <pre>
-LEN_EXE  bytes für gpg4win-VERSION.exe
-LEN_EXL   bytes für gpg4win-light-VERSION.exe
-LEN_EXV   bytes für gpg4win-vanilla-VERSION.exe
-LEN_EXS bytes für gpg4win-src-VERSION.exe
-LEN_SRC   bytes für gpg4win-VERSION.tar.bz2
+LEN_EXE  bytes fÃ¼r gpg4win-VERSION.exe
+LEN_EXL   bytes fÃ¼r gpg4win-light-VERSION.exe
+LEN_EXV   bytes fÃ¼r gpg4win-vanilla-VERSION.exe
+LEN_EXS bytes fÃ¼r gpg4win-src-VERSION.exe
+LEN_SRC   bytes fÃ¼r gpg4win-VERSION.tar.bz2
 </pre>
 
 <h2>Codesigning Zertifikat</h2>
@@ -95,7 +95,7 @@ notBefore: 2016-03-30 16:54:41
  notAfter: 2019-03-31 16:54:41
 </pre>
 <hr/>
-<p>Frühere Versionen wurden mit einem der folgenden Zertifikate signiert:</p>
+<p>FrÃ¼here Versionen wurden mit einem der folgenden Zertifikate signiert:</p>
 <pre>
       S/N: 112117F638BDC993B761C6073D63C2F86EC4
    Issuer: CN=GlobalSign CodeSigning CA - G2,O=GlobalSign nv-sa,C=BE

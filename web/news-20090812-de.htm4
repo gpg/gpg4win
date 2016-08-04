@@ -9,89 +9,89 @@ PAGE_START
 <h1>Pressemitteilung</h1>
 
 
-<h4>Gpg4win 2.0.0 fertig, endlich mit S/MIME und sicheren Anhängen</h4>
+<h4>Gpg4win 2.0.0 fertig, endlich mit S/MIME und sicheren AnhÃ¤ngen</h4>
 
-<p><em>Osnabrück, Düsseldorf, 12.08.2009</em></p>
+<p><em>OsnabrÃ¼ck, DÃ¼sseldorf, 12.08.2009</em></p>
 
 <p>Seit heute ist Version 2.0.0 der gleichnamigen, kostenfreien
-Verschlüsselungssoftware für Windows von gpg4win.de verfügbar.
-Entwickelt wurde Gpg4win2 innerhalb der letzten zwei Jahre und löst
+VerschlÃ¼sselungssoftware fÃ¼r Windows von gpg4win.de verfÃ¼gbar.
+Entwickelt wurde Gpg4win2 innerhalb der letzten zwei Jahre und lÃ¶st
 Version 1.1.4 als stabile Version ab.</p>
 
-<p>GpgOL - eine Erweiterung für MS-Outlook, kann erstmals auch mit
-MIME-konformen Emails umgehen; Anhänge sind damit wesentlich einfacher
-zu verschlüsseln oder zu signieren, als mit dem Vorgänger. Neben
-OpenPGP wird erstmals auch S/MIME unterstützt.<br>
-GpgOL ist für diese Funktionen komplett neu geschrieben worden. Damit
-unterstützt Gpg4win jetzt beide Krypto-Standards für Email, auch mit
+<p>GpgOL - eine Erweiterung fÃ¼r MS-Outlook, kann erstmals auch mit
+MIME-konformen Emails umgehen; AnhÃ¤nge sind damit wesentlich einfacher
+zu verschlÃ¼sseln oder zu signieren, als mit dem VorgÃ¤nger. Neben
+OpenPGP wird erstmals auch S/MIME unterstÃ¼tzt.<br>
+GpgOL ist fÃ¼r diese Funktionen komplett neu geschrieben worden. Damit
+unterstÃ¼tzt Gpg4win jetzt beide Krypto-Standards fÃ¼r Email, auch mit
 den modernen 2048 Bit RSA Smartcards.</p>
 
 <p>S/MIME setzt auf ein hierachisches Vertrauenskonzept, d.h. Nutzer
-brauchen ein Zertifikat, welches von einer vertrauenswürdigen Stelle
-unterschrieben ist. Das macht Gpg4win2 für den Einsatz in mittleren
-und großen Organisationen interessant, welche auf eine
-Public-Key-Infrastruktur (PKI) zurückgreifen.</p>
+brauchen ein Zertifikat, welches von einer vertrauenswÃ¼rdigen Stelle
+unterschrieben ist. Das macht Gpg4win2 fÃ¼r den Einsatz in mittleren
+und groÃŸen Organisationen interessant, welche auf eine
+Public-Key-Infrastruktur (PKI) zurÃ¼ckgreifen.</p>
 
 <p>Privatanwender finden in Gpg4win2 ebenfalls eine einfach zu
-handhabende Sicherheitssoftware zum Verschlüsseln und Signieren ihrer
+handhabende Sicherheitssoftware zum VerschlÃ¼sseln und Signieren ihrer
 Emails und Dateien unter Windows - egal ob mit OpenPGP oder
 S/MIME.</p>
 
-<p>Neben GpgOL (für Outlook 2003 und 2007) enthält das Paket auch die
-eigenständige Email-Anwendung Claws Mail, GpgEX, GnuPG, eine
+<p>Neben GpgOL (fÃ¼r Outlook 2003 und 2007) enthÃ¤lt das Paket auch die
+eigenstÃ¤ndige Email-Anwendung Claws Mail, GpgEX, GnuPG, eine
 175-seitige Dokumentation und zwei alternative Zertifikatsmanager.
 Gpg4win2 arbeitet mit der Groupware- und Email-Anwendung "Kontact auf
-Windows" zusammen und unterstützt die Betriebssysteme Windows 2000,
+Windows" zusammen und unterstÃ¼tzt die Betriebssysteme Windows 2000,
 XP, 2003 und Vista.<br>
-Die Dialogführung am Bildschirm sowie das Gpg4win-Kompendium - die
-neue, komplett überarbeitete Dokumentation über Email-Kryptographie -
+Die DialogfÃ¼hrung am Bildschirm sowie das Gpg4win-Kompendium - die
+neue, komplett Ã¼berarbeitete Dokumentation Ã¼ber Email-Kryptographie -
 sind in Deutsch verfasst.</p>
 
-<p>Gpg4win steht für "GNU Privacy Guard for Windows" und ist eine
+<p>Gpg4win steht fÃ¼r "GNU Privacy Guard for Windows" und ist eine
 Sammlung bestehender Freier Software (Open Source) und steht selbst
 ebenfalls unter GNU GPL-Lizenz. Die Version 2.0.0 kann mit Quelltexten
-von http://www.gpg4win.de geladen werden. Die Nutzung für jeden
-Bereich, das Überprüfen, Verändern und Weitergeben der Software ist
-erlaubt und erwünscht. Wer das Installationspaket weitergibt, muss
-jedoch auch für die Weitergabe der Quellen sorgen, die übliche
+von http://www.gpg4win.de geladen werden. Die Nutzung fÃ¼r jeden
+Bereich, das ÃœberprÃ¼fen, VerÃ¤ndern und Weitergeben der Software ist
+erlaubt und erwÃ¼nscht. Wer das Installationspaket weitergibt, muss
+jedoch auch fÃ¼r die Weitergabe der Quellen sorgen, die Ã¼bliche
 Regelung bei der GNU GPL.</p>
 
 <p>Die zentrale Krypto-Komponente von Gpg4win2 ist GnuPG2.  Beide
-Zertifikatsmanager (GPA und Kleopatra) unterstützen OpenPGP und
+Zertifikatsmanager (GPA und Kleopatra) unterstÃ¼tzen OpenPGP und
 S/MIME. Mittelfristig sollen diese Multi-Platform-Komponenten die
-Benutzbarkeit von Krypto-Lösungen verbessern, da sie Dienste für die
-Zertifikatsauswahl für alle Anwendungen zur Verfügung stellen.
-GpgEX erweitert das Kontextmenü des (32bit) Microsoft Explorers um die
-Möglichkeit, direkt Krypto-Operationen auf Dateien durchzuführen.</p>
+Benutzbarkeit von Krypto-LÃ¶sungen verbessern, da sie Dienste fÃ¼r die
+Zertifikatsauswahl fÃ¼r alle Anwendungen zur VerfÃ¼gung stellen.
+GpgEX erweitert das KontextmenÃ¼ des (32bit) Microsoft Explorers um die
+MÃ¶glichkeit, direkt Krypto-Operationen auf Dateien durchzufÃ¼hren.</p>
 
-<p>Experten hatten auf eine frühere Veröffentlichung von Gpg4win2
-gehofft, da über das letzte Jahr hinweg immer wieder Vorabversionen
-veröffentlicht worden sind. Schwierigkeiten für die Entwickler ergaben
+<p>Experten hatten auf eine frÃ¼here VerÃ¶ffentlichung von Gpg4win2
+gehofft, da Ã¼ber das letzte Jahr hinweg immer wieder Vorabversionen
+verÃ¶ffentlicht worden sind. Schwierigkeiten fÃ¼r die Entwickler ergaben
 sich aus dem neuen Konzept des vereinigten Zertifikatsmanagers
-Kleopatra und der Windowsplattform. Das proprietäre Outlook war eine
-große Hürde für GpgOL, da das Zusammenspiel mit eingebauten
+Kleopatra und der Windowsplattform. Das proprietÃ¤re Outlook war eine
+groÃŸe HÃ¼rde fÃ¼r GpgOL, da das Zusammenspiel mit eingebauten
 MIME-Funktionen nicht immer reibungslos funktioniert.</p>
 
-<p>Für technische Fragen und Anregungen stehen den Nutzern neben dem
+<p>FÃ¼r technische Fragen und Anregungen stehen den Nutzern neben dem
 Gpg4win-Kompendium eine deutschsprachige Anwender-Mailingliste und
-Webforen zur Verfügung.</p>
+Webforen zur VerfÃ¼gung.</p>
 
 <p>Die Macher von Gpg4win sind die deutschen Freien Software Unternehmen
 <a href="http://www.intevation.de">Intevation GmbH</a> (Projektmanagement),
 <a href="http://www.g10code.com">g10 Code GmbH</a>
 (Kryptographiefunktionen, GpgOL, GpgEX, GPA) und <a
 href="http://www.kdab.com">KDAB</a> (Kleopatra).<br>
-Sie bieten professionelle Unterstützung für die Weiterentwicklung,
+Sie bieten professionelle UnterstÃ¼tzung fÃ¼r die Weiterentwicklung,
 Installation und den Betrieb des Email-Sicherheitspakets an - z.B.
-individuelle Lösungen für den Einsatz in großen Unternehmen. Details
+individuelle LÃ¶sungen fÃ¼r den Einsatz in groÃŸen Unternehmen. Details
 dazu auf der Website.</p>
 
 <p><a href="http://www.gpg4win.de">www.gpg4win.de</a></p>
 <br>
 <p><b>Ansprechpartner:</b><br>
-  Emanuel Schütze, <a href="http://www.intevation.de">Intevation GmbH</a><br>
+  Emanuel SchÃ¼tze, <a href="http://www.intevation.de">Intevation GmbH</a><br>
   Neuer Graben 17<br>
-  49074 Osnabrück<br>
+  49074 OsnabrÃ¼ck<br>
   Email: <a href="mailto:emanuel.schuetze@intevation.de">emanuel.schuetze@intevation.de
 </a><br>
   Tel: 0541 / 335083-746

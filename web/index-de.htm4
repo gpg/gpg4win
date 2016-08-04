@@ -4,7 +4,7 @@ m4_dnl $Id: index.htm4,v 1.30 2006/01/12 16:04:03 jan Exp $
 
 m4_define(`DE')
 m4_define(`EN_FILE', `index.html')
-m4_define(`TITLE', `Sichere E-Mail- und Datei-Verschlüsselung mit GnuPG für Windows')
+m4_define(`TITLE', `Sichere E-Mail- und Datei-VerschlÃ¼sselung mit GnuPG fÃ¼r Windows')
 
 m4_define(`FANCY_HEADER')
 
@@ -12,9 +12,9 @@ PAGE_START
 
 <div id="intro" style="float:left; padding-right:0; width:600px;">
     <span></span>
-    <h2>Gpg4win - eine sichere Lösung...</h2>
+    <h2>Gpg4win - eine sichere LÃ¶sung...</h2>
     <p>
-    ... zum Verschlüsseln und Signieren von E-Mails, Dateien und Ordner unter Windows.
+    ... zum VerschlÃ¼sseln und Signieren von E-Mails, Dateien und Ordner unter Windows.
     Gpg4win (GNU Privacy Guard for Windows) ist Freie Software und mit
     nur wenigen Mausklicks installiert.<br>
     Starten Sie durch - in eine freie und sichere Zukunft!
@@ -28,7 +28,7 @@ PAGE_START
 <p>
 Entdecken Sie, was in Gpg4win steckt! Lernen Sie Gpg4win kennen und lassen Sie sich die Funktionen zeigen.
 </p>
-<a href="about-de.html">Über Gpg4win »</a>
+<a href="about-de.html">Ãœber Gpg4win Â»</a>
 
 </div>
 
@@ -39,7 +39,7 @@ Wir helfen Ihnen Gpg4win zum Einsatz zu bringen.
 Lernen Sie, wie einfach der Einstieg in die Kryptografie ist und
 beginnen Sie am besten mit dem Gpg4win-Kompendium!
 </p>
-<a href="./doc/de/gpg4win-compendium.html">Zum Gpg4win-Kompendium »</a>
+<a href="./doc/de/gpg4win-compendium.html">Zum Gpg4win-Kompendium Â»</a>
 </div>
 
 <div class="column3">
@@ -47,9 +47,9 @@ beginnen Sie am besten mit dem Gpg4win-Kompendium!
 <p>
 Gpg4win ist Freie Software. Nutzen Sie die Gemeinschaft und gestalten
 Sie mit!<br>  Unsere Empfehlung: Abonnieren Sie die
-<a href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-announce-de">Gpg4win-Bekanntmachungs-Mailingliste</a>, um automatisch über neue Versionen informiert zu werden.
+<a href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-announce-de">Gpg4win-Bekanntmachungs-Mailingliste</a>, um automatisch Ã¼ber neue Versionen informiert zu werden.
 </p>
-<a href="community-de.html">Zur Gpg4win-Gemeinschaft »</a>
+<a href="community-de.html">Zur Gpg4win-Gemeinschaft Â»</a>
 </div>
 
 </div>

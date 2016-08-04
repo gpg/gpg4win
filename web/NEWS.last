@@ -36,29 +36,29 @@ Noteworthy changes in version 2.3.1 (2016-04-05)
 
 (en) GpgOL now has an option dialog where S/MIME can be disabled.
 
-(de) GpgOL enthält nun einen Optionsdialog in dem S/MIME deaktiviert werden
+(de) GpgOL enthÃ¤lt nun einen Optionsdialog in dem S/MIME deaktiviert werden
      kann.
 
 (en) GpgOL now supports the 64 Bit version of Microsoft Outlook.
 
-(de) Die 64 Bit Version von Microsoft Outlook wird nun von GpgOL unterstützt.
+(de) Die 64 Bit Version von Microsoft Outlook wird nun von GpgOL unterstÃ¼tzt.
 
 (en) GpgOL can be switched to the new, experimental, MIME aware behavior in
      the Options Dialog.
 
 (de) GpgOL kann im Optionsdialog nun auf die neue, experimentelle, volle
-     MIME unterstützung umgestellt werden.
+     MIME unterstÃ¼tzung umgestellt werden.
 
 (en) GpgOL now reverts temporary changes made to MIME mails. So that they
      can be opened with other clients again.
 
-(de) GpgOL macht änderungen an MIME Mails nun Rückgängig so das diese auch
-     weiterhin von anderen Anwendungen verarbeitet werden können.
+(de) GpgOL macht Ã¤nderungen an MIME Mails nun RÃ¼ckgÃ¤ngig so das diese auch
+     weiterhin von anderen Anwendungen verarbeitet werden kÃ¶nnen.
 
 (en) GpgEX no longer blocks the Windows Explorer while it starts GPA or
      Kleopatra.
 
-(de) GpgEX blockiert den Windows Explorer nun nicht mehr während GPA oder
+(de) GpgEX blockiert den Windows Explorer nun nicht mehr wÃ¤hrend GPA oder
      Kleopatra gestartet werden.
 
 ~~~~~~~~~~~~~~~
@@ -78,50 +78,50 @@ Noteworthy changes in version 2.3.0 (2015-11-25)
      format for Crypto Mails as sent by Thunderbird/Enigmail, GPGMail
      or KMail. For details see: https://wiki.gnupg.org/GpgOL/MIMESupport
 
-(de) GpgOL für Outlook 2010 und später kann nun PGP/MIME und S/MIME E-Mails
-     verarbeiten. Dies ist das Format wie es standardmäßig von
+(de) GpgOL fÃ¼r Outlook 2010 und spÃ¤ter kann nun PGP/MIME und S/MIME E-Mails
+     verarbeiten. Dies ist das Format wie es standardmÃ¤ÃŸig von
      Thunderbird/Enigmail, GPGMail oder KMail versendet wird.
      Details siehe: https://wiki.gnupg.org/GpgOL/MIMESupport
 
 (en) GpgOL now supports Outlook 2016.
 
-(de) GpgOL unterstützt nun Outlook 2016.
+(de) GpgOL unterstÃ¼tzt nun Outlook 2016.
 
 (en) AES-NI Instructions for faster encryption and decryption with AES
      are now supported. (GnuPG Bug #1919)
 
-(de) AES-NI Befehle zur schnelleren Ver- und Entschlüsselung mit AES werden
-     nun unterstützt. (GnuPG Bug #1919)
+(de) AES-NI Befehle zur schnelleren Ver- und EntschlÃ¼sselung mit AES werden
+     nun unterstÃ¼tzt. (GnuPG Bug #1919)
 
 (en) The decrypt/verify window of GpgOL no longer moves and resizes
      erratically. (KDE Bug #355140)
 
-(de) Das Entschlüsseln/Überprüfen-Fenster von GpgOL verändert nun
-     nicht mehr seine Position und Größe. (KDE Bug #355140)
+(de) Das EntschlÃ¼sseln/ÃœberprÃ¼fen-Fenster von GpgOL verÃ¤ndert nun
+     nicht mehr seine Position und GrÃ¶ÃŸe. (KDE Bug #355140)
 
 (en) Bulk import of more then a hundred keys no longer fails when Kleopatra
      is running. (GnuPG Bug #2135)
 
-(de) Der gleichzeitige Import von über 100 Schlüsseln schlägt nun nicht
-     mehr fehl wenn Kleopatra läuft. (GnuPG Bug #2135)
+(de) Der gleichzeitige Import von Ã¼ber 100 SchlÃ¼sseln schlÃ¤gt nun nicht
+     mehr fehl wenn Kleopatra lÃ¤uft. (GnuPG Bug #2135)
 
 (en) French and Chinese localisation has been added to the installer
      and GpgOL. Thanks to Oliver Serve and Mingye Wang.
 
-(de) Der Installer und GpgOL sind nun auch ins Französische und
-     Chinesische übersetzt. Danke für die Übersetzungen an Oliver Serve
+(de) Der Installer und GpgOL sind nun auch ins FranzÃ¶sische und
+     Chinesische Ã¼bersetzt. Danke fÃ¼r die Ãœbersetzungen an Oliver Serve
      und Mingye Wang.
 
 (en) Several apparently random crashes in GpgOL have been fixed
      (GnuPG Bug #1837)
 
-(de) Eine Reihe von zufällig auftretenden Abstürzen von GpgOL wurde behoben.
+(de) Eine Reihe von zufÃ¤llig auftretenden AbstÃ¼rzen von GpgOL wurde behoben.
      (GnuPG Bug #1837)
 
 (en) GpgOL now handles attachments in  PGP/MIME and S/MIME mails with non ASCII
      characters in the filename correctly.
 
-(de) GpgOL behandelt nun Anhänge von PGP/MIME und S/MIME Mails mit
+(de) GpgOL behandelt nun AnhÃ¤nge von PGP/MIME und S/MIME Mails mit
      Sonderzeichen im Dateinamen.
 
 (en) A vulnerability in the Gpg4win-installer has been fixed. See:
@@ -152,7 +152,7 @@ Noteworthy changes in version 2.2.6 (2015-09-09)
      Nutzer von Claws Mail sollten auf die von der Claws Mail
      Initiative gepflegte Version wechseln. Diese ist unter:
          http://www.claws-mail.org/win32/
-     verfügbar.
+     verfÃ¼gbar.
 
 (en) GnuPG has been updated to Version 2.0.29.
 
@@ -161,7 +161,7 @@ Noteworthy changes in version 2.2.6 (2015-09-09)
 (en) X509 Certificate requests can now again generated with
      default options.
 
-(de) X509 Zertifikatsrequests können nun wieder mit den
+(de) X509 Zertifikatsrequests kÃ¶nnen nun wieder mit den
      Standartoptionen generiert werden.
 
 (en) GPA has been updated to Version 0.9.9.
@@ -189,7 +189,7 @@ Noteworthy changes in version 2.2.5 (2015-07-10)
 
 (en) A potential crash during certificate search has been fixed.
 
-(de) Ein möglicher Programmabsturz bei der Suche auf Schlüsselservern
+(de) Ein mÃ¶glicher Programmabsturz bei der Suche auf SchlÃ¼sselservern
      wurde behoben.
 
 (en) Kleopatra no longer queries revocation information for X509
@@ -197,8 +197,8 @@ Noteworthy changes in version 2.2.5 (2015-07-10)
      the startup time for some users.
      Revocation information is still checked once a certificate is used.
 
-(de) Kleopatra ruft während des Starts keine X509 Sperrinformationen
-     mehr ab. Für manche Nutzer wird dies die Startzeit von Kleopatra
+(de) Kleopatra ruft wÃ¤hrend des Starts keine X509 Sperrinformationen
+     mehr ab. FÃ¼r manche Nutzer wird dies die Startzeit von Kleopatra
      drastisch verbessern. Sperrinformationen werden abgerufen
      wenn ein Zertifikat verwendet wird.
 
@@ -234,14 +234,14 @@ Noteworthy changes in version 2.2.4 (2015-03-17)
 (en) Libgcrypt has been updated to version 1.6.3 (includes fix for
      CVE-2014-3591)
 
-(de) Libgcrypt wurde auf Version 1.6.3 aktualisiert (enthält den
-     fix für CVE-2014-3591)
+(de) Libgcrypt wurde auf Version 1.6.3 aktualisiert (enthÃ¤lt den
+     fix fÃ¼r CVE-2014-3591)
 
 (en) An issue has been fixed which could cause extracted files from
      TAR Archives to be truncated.
 
 (de) Ein Problem wurde behoben durch welches Ausgabedateien beim
-     extrahieren von TAR Archiven beschädigt wurden.
+     extrahieren von TAR Archiven beschÃ¤digt wurden.
 
 ~~~~~~~~~~~~~~~
 GnuPG:          2.0.27
@@ -282,9 +282,9 @@ Noteworthy changes in version 2.2.3 (2014-11-25)
      special characters (e.g. umlauts) which can be encoded
      in the native Windows 8-Bit codepage.
 
-(de) Tar Archive können mit Dateien und Ordner umgehen deren
+(de) Tar Archive kÃ¶nnen mit Dateien und Ordner umgehen deren
      Namen Sonderzeichen (z.B. Umlaute) enthalten welche in der
-     nativen Windows 8-Bit Zeichenkodierung kodiert sein dürfen.
+     nativen Windows 8-Bit Zeichenkodierung kodiert sein dÃ¼rfen.
 
 (en) Kleopatra now handles preprocessing (e.g. archiving) errors
      and safely aborts the operation.
@@ -322,13 +322,13 @@ Noteworthy changes in version 2.2.2 (2014-09-03)
 
 (en) Sreen reader support and accessibility of Kleopatra was improved.
 
-(de) Screenreader-Unterstützung und Barrierfreiheit von Kleopatra
+(de) Screenreader-UnterstÃ¼tzung und Barrierfreiheit von Kleopatra
      verbessert.
 
 (en) A library load problem has been fixed that could keep Kleopatra
      from starting on some systems.
 
-(de) Ein Problem wurde behoben, welches dazu führen konnte, dass Kleopatra
+(de) Ein Problem wurde behoben, welches dazu fÃ¼hren konnte, dass Kleopatra
      auf manchen System nicht startete.
 
 (en) Kleopatra has been updated to KDE Sofware Collection 4.14.
@@ -342,21 +342,21 @@ Noteworthy changes in version 2.2.2 (2014-09-03)
 
 (en) GpgEX no longer crashes if the environment variable GNUPGHOME is set.
 
-(de) GpgEX stürzt nicht mehr ab, wenn die Umgebungsvariable GNUPGHOME gesetzt
+(de) GpgEX stÃ¼rzt nicht mehr ab, wenn die Umgebungsvariable GNUPGHOME gesetzt
      ist.
 
 (en) Pinentry-qt warning and confirmation dialogs should now open always in
      foreground.
 
-(de) Bestätigungs- und Warnmeldungen von pinentry-qt öffnen sich nun immer
+(de) BestÃ¤tigungs- und Warnmeldungen von pinentry-qt Ã¶ffnen sich nun immer
      im Vordergrund.
 
 (en) Problems with Outlook sender and recipient address lookup have been
      fixed in GpgOL. Especially for Microsoft Exchange addresses.
 
-(de) Probleme mit der Auflösung von Sender- und Empfängeradressen wurden
+(de) Probleme mit der AuflÃ¶sung von Sender- und EmpfÃ¤ngeradressen wurden
      in GpgOL behoben. Insbesondere bei der Verwendung von Microsoft
-     Exchange Adressbüchern.
+     Exchange AdressbÃ¼chern.
 
 (en) Command line output is encoded to the Windows console encoding.
 
@@ -365,7 +365,7 @@ Noteworthy changes in version 2.2.2 (2014-09-03)
 
 (en) The pinentry dialog is now translated correctly in the French locale.
 
-(de) Der Pinentry-Dialog ist nun auch in Französisch verfügbar.
+(de) Der Pinentry-Dialog ist nun auch in FranzÃ¶sisch verfÃ¼gbar.
 
 (en) Command line wildcards (like *.txt) work again.
 
@@ -386,7 +386,7 @@ Kompendium EN:  3.0.0
 Noteworthy changes in version 2.2.1 (2013-10-08)
 ------------------------------------------------
 
-(de) Ein Fehler der eine mögliche endlosschleife in GnuPG auslösen
+(de) Ein Fehler der eine mÃ¶gliche endlosschleife in GnuPG auslÃ¶sen
    konnte wurde behoben. [CVE-2013-4402]
 
 (en) Fixed possible infinite recursion in the compressed packet
@@ -394,12 +394,12 @@ Noteworthy changes in version 2.2.1 (2013-10-08)
 
 (en) Kleopatra no longer crashes when using Microsoft Office IME.
 
-(de) Kleopatra stürzt nun nicht mehr ab wenn man Microsoft Office IME
+(de) Kleopatra stÃ¼rzt nun nicht mehr ab wenn man Microsoft Office IME
      verwendet.
 
 (en) Support for SPR332 and 532 pinpads.
 
-(de) Unterstützung für SPR332 und 532 Pinpads.
+(de) UnterstÃ¼tzung fÃ¼r SPR332 und 532 Pinpads.
 
 ~~~~~~~~~~~~~~~
 GnuPG:          2.0.22
@@ -424,16 +424,16 @@ Noteworthy changes in version 2.2.0 (2013-08-20)
      replacement with additional smartcard support.
 
 (de) Gpg-agent kann nun als Pageant (PuTTY authentication agent) Ersatz
-     genutzt werden - mit zusätzlicher SmartCard-Unterstützung.
+     genutzt werden - mit zusÃ¤tzlicher SmartCard-UnterstÃ¼tzung.
 
 (en) Pinentry now allows to paste in the passphrase.
 
-(de) Das Einfügen von Passphrasen aus der Zwischenablage ist nun erlaubt.
+(de) Das EinfÃ¼gen von Passphrasen aus der Zwischenablage ist nun erlaubt.
 
 (en) Kleopatra no longer crashes when started by a regular user on
      terminal servers (Windows Server).
 
-(de) Crash beim Start von Kleopatra durch einen gewöhnlichen Nutzer auf
+(de) Crash beim Start von Kleopatra durch einen gewÃ¶hnlichen Nutzer auf
      Terminalservern (Windows Server) behoben.
 
 (en) GpgOL provides rudimentary support for Outlook 2010 and 2013.
@@ -444,19 +444,19 @@ Noteworthy changes in version 2.2.0 (2013-08-20)
      - Attaching and encrypting files
      - Signing and signature verification (of opaque signatures)
 
-(de) GpgOL bietet rudimentäre Unterstützung für Outlook 2010 und 2013.
-     Folgende Krypto-Operationen sind bereits über das neue
-     GpgOL-Ribbon bzw. über das Kontextmenü von Outlook möglich
+(de) GpgOL bietet rudimentÃ¤re UnterstÃ¼tzung fÃ¼r Outlook 2010 und 2013.
+     Folgende Krypto-Operationen sind bereits Ã¼ber das neue
+     GpgOL-Ribbon bzw. Ã¼ber das KontextmenÃ¼ von Outlook mÃ¶glich
      (kein MIME-Parsing):
-     - Verschlüsseln/Entschlüsseln des Mail-Bodys.
-     - Speichern und Entschlüsseln von Anhängen.
-     - Dateien anhängen und verschlüsseln.
-     - Signieren/Prüfen (von opaken Signaturen).
+     - VerschlÃ¼sseln/EntschlÃ¼sseln des Mail-Bodys.
+     - Speichern und EntschlÃ¼sseln von AnhÃ¤ngen.
+     - Dateien anhÃ¤ngen und verschlÃ¼sseln.
+     - Signieren/PrÃ¼fen (von opaken Signaturen).
 
 (en) Extracting a tarball through the Kleopatra GUI now works reliable
 
-(de) Das Entpacken eines tar Archivs funktioniert nun auch über Kleopatra
-     zuverlässig.
+(de) Das Entpacken eines tar Archivs funktioniert nun auch Ã¼ber Kleopatra
+     zuverlÃ¤ssig.
 
 (en) Added mkportable.exe as a tool to create a portable installation.
 
@@ -465,7 +465,7 @@ Noteworthy changes in version 2.2.0 (2013-08-20)
 
 (en) Kleopatra now allows it to generate keys with a size up to 4096 bit.
 
-(de) Kleopatra erlaubt es nun Zertifikate mit einer Länge von
+(de) Kleopatra erlaubt es nun Zertifikate mit einer LÃ¤nge von
      bis zu 4096 bit zu erstellen.
 
 ~~~~~~~~~~~~~~~
@@ -489,7 +489,7 @@ Noteworthy changes in version 2.1.1 (2013-05-28)
 
 (en) Development files for the crypto libraries will now be installed.
 
-(de) Entwicklerwerkzeuge für die Krypto-Bibliotheken werden nun mit
+(de) Entwicklerwerkzeuge fÃ¼r die Krypto-Bibliotheken werden nun mit
      installiert.
 
 ~~~~~~~~~~~~~~~
@@ -583,7 +583,7 @@ Noteworthy changes in version 2.0.1 (2009-09-28)
 (en) Fixed a problem opening Office documents and URLs with a running
      GpgOL.
 
-(de) Ein Problem beim Öffnen von Office Dokumenten und URLs mit einem
+(de) Ein Problem beim Ã–ffnen von Office Dokumenten und URLs mit einem
      laufenden GpgOL wurde behoben.
 
 ~~~~~~~~~~~~~~~
@@ -607,7 +607,7 @@ Noteworthy changes in version 2.0.0 (2009-08-07)
 
 (de) Dies ist das erste produktionsreife Version der neuen Gpg4win
      Architektur.  In den vergangenen 15 Monaten wurden 16 Beta
-     Versionen veröffentlicht um die meisten der gravierenden
+     Versionen verÃ¶ffentlicht um die meisten der gravierenden
      Programmfehler zu beseitigen.
 
 ~~~~~~~~~~~~~~~

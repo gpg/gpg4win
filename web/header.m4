@@ -13,11 +13,11 @@
    </div>
    <div class="download_button_links">
      m4_ifelse(LANG_DE, `1', `
-     <a href="change-history-de.html">Änderungshistorie</a>', `
+     <a href="change-history-de.html">Ã„nderungshistorie</a>', `
      <a href="change-history.html">Change History</a>')
      -
      m4_ifelse(LANG_DE, `1', `
-     <a href="package-integrity-de.html">Integrität prüfen</a>', `
+     <a href="package-integrity-de.html">IntegritÃ¤t prÃ¼fen</a>', `
      <a href="package-integrity.html">Check integrity</a>')
    </div>
    <div class="h_text">
@@ -36,7 +36,7 @@
    <span class="serif_word"><img src="img/bulletin.png" alt"" />
      m4_ifelse(LANG_DE, `1', `
       <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2016-April/000033.html">
-        Gpg4win 2.3.1 veröffentlicht
+        Gpg4win 2.3.1 verÃ¶ffentlicht
       </a></span>',`
       <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2016-April/000068.html">
         Gpg4win 2.3.1 released
@@ -46,7 +46,7 @@
    <span class="serif_word"><img src="img/bulletin.png" alt="" />
      m4_ifelse(LANG_DE, `1', `
      <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2015-November/000032.html">
-        Gpg4win 2.3.0 veröffentlicht
+        Gpg4win 2.3.0 verÃ¶ffentlicht
      </a></span>
      <br><small><a href="pm-20151125-de.html">Pressemitteilung</a></small>', `
      <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2015-November/000067.html">
@@ -57,7 +57,7 @@
    <div class="limiter"></div>
    <p>
      m4_ifelse(LANG_DE, `1', `
-     Ältere Meldungen im <a href="newsarchive-de.html">Newsarchiv</a>.', `
+     Ã„ltere Meldungen im <a href="newsarchive-de.html">Newsarchiv</a>.', `
      Older messages in <a href="newsarchive.html">news archive</a>.')
     </p>
    </div>
@@ -66,7 +66,7 @@
    <div id="breadcrum">m4_ifelse(LANG_DE, `1', `<a href="index-de.html">', `<a
    href="index.html">')Home</a> &raquo;
    m4_ifelse(LANG_DE, `1', `
-   m4_ifelse(MAIN, `about', `Über Gpg4win')
+   m4_ifelse(MAIN, `about', `Ãœber Gpg4win')
    m4_ifelse(MAIN, `doc', `Dokumentation')
    m4_ifelse(MAIN, `community', `Gemeinschaft')
    m4_ifelse(MAIN, `support', `Support')
@@ -97,11 +97,11 @@
     <br>
     <span class="links">
      m4_ifelse(LANG_DE, `1', `
-     <a href="change-history-de.html">Änderungshistorie</a>', `
+     <a href="change-history-de.html">Ã„nderungshistorie</a>', `
      <a href="change-history.html">Change History</a>')
      -
      m4_ifelse(LANG_DE, `1', `
-     <a href="package-integrity-de.html">Integrität prüfen</a>', `
+     <a href="package-integrity-de.html">IntegritÃ¤t prÃ¼fen</a>', `
      <a href="package-integrity.html">Check integrity</a>')
     </span>
    </div>

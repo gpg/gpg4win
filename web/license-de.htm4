@@ -12,22 +12,22 @@ PAGE_START
 
 <div id="intro">
 <h2>Lizenz</h2>
-<p>Gpg4win ist Freie Software und besteht aus einer ganzen Reihe von unabhängig entwickelten
-Paketen, die teilweise unterschiedliche Lizenzen haben. Der Großteil
+<p>Gpg4win ist Freie Software und besteht aus einer ganzen Reihe von unabhÃ¤ngig entwickelten
+Paketen, die teilweise unterschiedliche Lizenzen haben. Der GroÃŸteil
 dieser Software steht, wie Gpg4win selbst, unter der <b>GNU General
 Public License (GNU GPL)</b>.  Gemeinsam ist, dass die Software ohne
-Restriktionen benutzt werden kann, verändert werden darf und
-Änderungen weitergeben dürfen.  Wenn die
+Restriktionen benutzt werden kann, verÃ¤ndert werden darf und
+Ã„nderungen weitergeben dÃ¼rfen.  Wenn die
 <a href="http://ftp.gpg4win.org/gpg4win-VERSION.tar.bz2">Quelltexte</a>
 mit weitergegeben werden und auf die die GNU GPL hingewiesen wird,
-ist die Weitergabe in jedem Fall möglich.
+ist die Weitergabe in jedem Fall mÃ¶glich.
 </p>
 </div>
 
 <div id="main">
-<h2>Copyright Erklärungen</h2>
-<p>Zur Übersicht folgt eine Liste der Copyright Erklärungen.
-Einen aktuelle Übersicht gibt es auch in der aktuellen
+<h2>Copyright ErklÃ¤rungen</h2>
+<p>Zur Ãœbersicht folgt eine Liste der Copyright ErklÃ¤rungen.
+Einen aktuelle Ãœbersicht gibt es auch in der aktuellen
 <a href="http://ftp.gpg4win.org/README-VERSION.de.txt">README-Datei</a>.
 </p>
 <br>

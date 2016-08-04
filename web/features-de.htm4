@@ -13,8 +13,8 @@ PAGE_START
 
 <div id="intro">
 <h2>Funktionen</h2>
-<p>Gpg4win stellt höchste Anforderungen an die Sicherheit. Sichere
-Datei- und E-Mail-Verschlüsselung sowie eine einfache
+<p>Gpg4win stellt hÃ¶chste Anforderungen an die Sicherheit. Sichere
+Datei- und E-Mail-VerschlÃ¼sselung sowie eine einfache
 Handhabung sind die Schwerpunkte von Gpg4win.
 Erfahren Sie hier, welche Funktionen in Gpg4win stecken!</p>
 </div>
@@ -25,33 +25,33 @@ Erfahren Sie hier, welche Funktionen in Gpg4win stecken!</p>
 
 <div class="column1">
 <h4>OpenPGP & S/MIME</h4>
-<p>Gpg4win unterstützt die beiden kryptografischen Standards OpenPGP und S/MIME (X.509).</p>
+<p>Gpg4win unterstÃ¼tzt die beiden kryptografischen Standards OpenPGP und S/MIME (X.509).</p>
 <p>Das Einrichten von X.509-Wurzelzertifikaten ist durch Gpg4win stark
-vereinfacht worden und ermöglicht so auch unerfahrenen Anwendern die
+vereinfacht worden und ermÃ¶glicht so auch unerfahrenen Anwendern die
 einfache Verwendung von S/MIME.
-Für komplexere Anforderungen werden Systemadministratoren durch eine Anleitung
+FÃ¼r komplexere Anforderungen werden Systemadministratoren durch eine Anleitung
 bei der Einrichtung einer systemweiten Wurzel-Vertrauensstellung
-unterstützt.</p>
+unterstÃ¼tzt.</p>
 <img src="img/sc-pinentry-openpgp_de.png">
 </div>
 
 <div class="column2">
-<h4>Hohe Algorithmenstärken in GnuPG</h4>
-<p>Gpg4win ist die offizielle <a href="http://gnupg.org">GnuPG</a> Distribution für Windows und bietet
-damit die gewohnt hohe Sicherheit von GnuPG. GnuPG hält sich an die
+<h4>Hohe AlgorithmenstÃ¤rken in GnuPG</h4>
+<p>Gpg4win ist die offizielle <a href="http://gnupg.org">GnuPG</a> Distribution fÃ¼r Windows und bietet
+damit die gewohnt hohe Sicherheit von GnuPG. GnuPG hÃ¤lt sich an die
 Empfehlungen des <a href="http://www.bsi.bund.de/Algorithmenkatalog.html">Bundesamtes
-für Sicherheit in der Informationstechnik (BSI)</a>.</p>
+fÃ¼r Sicherheit in der Informationstechnik (BSI)</a>.</p>
 
 <p>Bei der Erstellung von OpenPGP- und X.509-Zertifikaten wird eine
-voreingestellte Schlüssellänge von 2048 bit verwendet. Als Signatur- und Verschlüsselungsverfahren
+voreingestellte SchlÃ¼ssellÃ¤nge von 2048 bit verwendet. Als Signatur- und VerschlÃ¼sselungsverfahren
 kommt RSA zum Einsatz.</p>
 
 </div>
 
 <div class="column3">
 <h4>SmartCard</h4>
-<p>Gpg4win unterstützt (durch GnuPG) die sichere Nutzung von
-SmartCards für OpenPGP und S/MIME. Technische Details (in englisch) finden Sie bei <a
+<p>Gpg4win unterstÃ¼tzt (durch GnuPG) die sichere Nutzung von
+SmartCards fÃ¼r OpenPGP und S/MIME. Technische Details (in englisch) finden Sie bei <a
 href="http://www.gnupg.org/documentation/howtos.de.html#GnuPG-cardHOWTO">GnuPG</a>.</p>
 <img src="img/gnupg.png">
 </div>
@@ -60,22 +60,22 @@ href="http://www.gnupg.org/documentation/howtos.de.html#GnuPG-cardHOWTO">GnuPG</
 
 <h2>Dateien und Ordner</h2>
 <div class="column1">
-<h4>Signieren/Verschlüsseln</h4>
+<h4>Signieren/VerschlÃ¼sseln</h4>
 <p>Signieren Sie Dateien und Ordner direkt aus dem Windows
 Explorer - mit dem Explorer-Plugin GpgEX.
-Sie können auch mehrere Dateien und ganze Ordner auswählen und diese
-dann rekursiv signieren/verschlüsseln in einem gpgtar-Archiv
+Sie kÃ¶nnen auch mehrere Dateien und ganze Ordner auswÃ¤hlen und diese
+dann rekursiv signieren/verschlÃ¼sseln in einem gpgtar-Archiv
 ablegen.</p>
 </div>
 
 <div class="column2">
-<h4>Prüfsummen</h4>
-<p>Erstellen und Überprüfen Sie Prüfsummen von Dateien - ebenfalls
-direkt aus dem Windows Explorer. Gpg4win legt (rekursiv) für jede
-ausgewählte Datei eine eindeutige Prüfsumme ab und sichert damit die
-Unverändertheit (Integrität) der Dateien. Das Überprüfen dieser
-Prüfsummen funktioniert ebenso einfach wie das Erstellen.
-Gpg4win unterstützt die Verfahren sha1sum, sha256sum und md5sum.</p>
+<h4>PrÃ¼fsummen</h4>
+<p>Erstellen und ÃœberprÃ¼fen Sie PrÃ¼fsummen von Dateien - ebenfalls
+direkt aus dem Windows Explorer. Gpg4win legt (rekursiv) fÃ¼r jede
+ausgewÃ¤hlte Datei eine eindeutige PrÃ¼fsumme ab und sichert damit die
+UnverÃ¤ndertheit (IntegritÃ¤t) der Dateien. Das ÃœberprÃ¼fen dieser
+PrÃ¼fsummen funktioniert ebenso einfach wie das Erstellen.
+Gpg4win unterstÃ¼tzt die Verfahren sha1sum, sha256sum und md5sum.</p>
 </div>
 <div class="column3">
 <img src="img/sc-gpgex-explorer-options_cut_de.png">
@@ -85,10 +85,10 @@ Gpg4win unterstützt die Verfahren sha1sum, sha256sum und md5sum.</p>
 
 <h2>E-Mail</h2>
 <div class="column1">
-<h4>Signieren und Verschlüsseln</h4>
-<p>Das mitgelieferte Outlook-Plugin GpgOL ermöglicht E-Mails direkt
-in Microsoft Outlook zu signieren und zu verschlüsseln. Dabei werden auch
-Anhänge verschlüsselt. Das Signaturprüfen und Entschlüsseln
+<h4>Signieren und VerschlÃ¼sseln</h4>
+<p>Das mitgelieferte Outlook-Plugin GpgOL ermÃ¶glicht E-Mails direkt
+in Microsoft Outlook zu signieren und zu verschlÃ¼sseln. Dabei werden auch
+AnhÃ¤nge verschlÃ¼sselt. Das SignaturprÃ¼fen und EntschlÃ¼sseln
 funktioniert genauso einfach direkt in Outlook.
 </p>
 <img src="img/sc-ol-emailfolder_cut_de.png">
@@ -96,22 +96,22 @@ funktioniert genauso einfach direkt in Outlook.
 
 <div class="column2">
 <h4>Benutzerfreundliche Zertifikatsauswahl</h4>
-<p>Die Auswahl des richtigen E-Mail-Zertifikats übernimmt Kleopatra - und
+<p>Die Auswahl des richtigen E-Mail-Zertifikats Ã¼bernimmt Kleopatra - und
 zwar anhand der richtigen E-Mail-Adresse.
 Sollten Sie mehrere passende
 Zertifikate installiert haben, bietet Kleopatra Ihnen die Zertifikatsvorauswahl
-in einem übersichtlichen Dialog an.</p>
+in einem Ã¼bersichtlichen Dialog an.</p>
 <img style="width: 540px;"
 src="img/sc-kleopatra-mail-certificateselection-signencrypt_de.png">
 </div>
 
 <div class="column3">
 <h4>&nbsp;</h4>
-<p>Für "Viel-Benutzer" bietet Gpg4win die Möglichkeit, die
-Zertifikatsbestätigung nur im Konfliktfall anzuzeigen. Damit entfällt
-z.B. das regelmäßige Bestätigen eines eindeutig passenden
-Zertifikats beim E-Mail signieren und verschlüsseln.
-Das Arbeiten läuft so wesentlich zügiger - ohne Verlust der
+<p>FÃ¼r "Viel-Benutzer" bietet Gpg4win die MÃ¶glichkeit, die
+ZertifikatsbestÃ¤tigung nur im Konfliktfall anzuzeigen. Damit entfÃ¤llt
+z.B. das regelmÃ¤ÃŸige BestÃ¤tigen eines eindeutig passenden
+Zertifikats beim E-Mail signieren und verschlÃ¼sseln.
+Das Arbeiten lÃ¤uft so wesentlich zÃ¼giger - ohne Verlust der
 Sicherheit.
 </p>
 </div>
@@ -125,7 +125,7 @@ Sicherheit.
 <h4>Installationsassistent</h4>
 <p>Der Gpg4win-Installationsassistent erleichtert
 das einfache und sichere Installieren von
-Gpg4win. Eine konkrete Schritt-für-Schritt-Anleitung für die Installation
+Gpg4win. Eine konkrete Schritt-fÃ¼r-Schritt-Anleitung fÃ¼r die Installation
 bekommen Sie im <a
 href="http://gpg4win.de/doc/de/gpg4win-compendium_11.html">Gpg4win-Kompendium</a>.</p>
 </div>
@@ -137,11 +137,11 @@ href="http://gpg4win.de/doc/de/gpg4win-compendium_11.html">Gpg4win-Kompendium</a
 
 <div class="column3">
 <h4>Gpg4win-Kompendium</h4>
-<p>Eine anschauliche und umfassende Dokumentation über den
+<p>Eine anschauliche und umfassende Dokumentation Ã¼ber den
 Einstieg in
 die Kryptografie und die Verwendung von Gpg4win bietet das
 <a href="documentation-de.html">Gpg4win-Kompendium</a>.
-Es ist verfügbar in deutscher und englischer Sprache.</p>
+Es ist verfÃ¼gbar in deutscher und englischer Sprache.</p>
 </div>
 
 <br clear="all"/>
@@ -152,7 +152,7 @@ Es ist verfügbar in deutscher und englischer Sprache.</p>
 <div class="column1">
 <h4>Zertifikate sicher und komfortabel verwalten</h4>
 <p>Kleopatra ist der bevorzugte Zertifikatsmanager in Gpg4win.
-Kleopatra ermöglicht Ihnen die einfache Verwaltung alle Zertifikate
+Kleopatra ermÃ¶glicht Ihnen die einfache Verwaltung alle Zertifikate
 (OpenPGP und S/MIME).</p>
 <a href="img/sc-kleopatra-mainwindow-openpgp-certificates_de.png">
 <img style="width:540px;" src="img/sc-kleopatra-mainwindow-openpgp-certificates_de.png"></a>
@@ -160,7 +160,7 @@ Kleopatra ermöglicht Ihnen die einfache Verwaltung alle Zertifikate
 <div class="column2">
 <h4>Zertifikatsserver</h4>
 <p>Kleopatra bietet einen einfachen Im- und Export von Zertifikaten
-von bzw. zu OpenPGP-Zertifikatsservern (auch Schlüsselserver) und
+von bzw. zu OpenPGP-Zertifikatsservern (auch SchlÃ¼sselserver) und
 X.509-(LDAP-)Zertifikatsservern.</p>
 </div>
 <div class="column3">
@@ -169,7 +169,7 @@ X.509-(LDAP-)Zertifikatsservern.</p>
 <img src="img/sc-kleopatra-certifyCertificate1_de.png"></a>
 <p>Durch das Beglaubigen (auch signieren) von einem anderen, Ihnen
 vertrauten, OpenPGP-Zertifikat bringt Kleopatra dieses Zertifikat in
-eine neue Vertrauensstufe - gekennzeichnet als "vertrauenswürdiges
+eine neue Vertrauensstufe - gekennzeichnet als "vertrauenswÃ¼rdiges
 Zertifikat".
 </<p>
 </div>
@@ -180,18 +180,18 @@ Zertifikat".
 <div class="column1">
 <h4>Freie Software</h4>
 <p>Gpg4win ist Freie Software und besteht aus einer ganzen Reihe von
-unabhängig entwickelten Paketen, die teilweise unterschiedliche
-Lizenzen haben. Der Großteil dieser Software steht, wie Gpg4win
+unabhÃ¤ngig entwickelten Paketen, die teilweise unterschiedliche
+Lizenzen haben. Der GroÃŸteil dieser Software steht, wie Gpg4win
 selbst, unter der GNU General Public License (GNU GPL).
-Für die Nutzung von Gpg4win entstehen keine Lizenzkosten.
+FÃ¼r die Nutzung von Gpg4win entstehen keine Lizenzkosten.
 </div>
 
 <div class="column2">
-<h4>Systemunterstützung</h4>
-<p>Gpg4win unterstützt Windows ab Version XP. Die
+<h4>SystemunterstÃ¼tzung</h4>
+<p>Gpg4win unterstÃ¼tzt Windows ab Version XP. Die
 <a href="screenshots-de.html">Screenshots</a>
 sind alle unter Windows 7 entstanden.
-Darüber hinaus werden alle Desktop Windows Versionen seit XP unterstützt.</p>
+DarÃ¼ber hinaus werden alle Desktop Windows Versionen seit XP unterstÃ¼tzt.</p>
 <p>GpgOL erfordert Outlook 2003, 2007, 2010, 2013 oder 2016 (jeweils 32bit).</p>
 <p>Details unter den Angaben zur <a
 href="about-de.html#requirements">Systemanforderung</a>.</p>
@@ -199,8 +199,8 @@ href="about-de.html#requirements">Systemanforderung</a>.</p>
 
 <div class="column3">
 <h4>Internationalisierung</h4>
-<p>Alle Dialoge in Gpg4win sind vollständig in deutscher und englischer Sprache
-verfügbar. Der Gpg4win-Installer bietet darüber hinaus weitere
+<p>Alle Dialoge in Gpg4win sind vollstÃ¤ndig in deutscher und englischer Sprache
+verfÃ¼gbar. Der Gpg4win-Installer bietet darÃ¼ber hinaus weitere
 Sprachen an.</p>
 </div>
 
@@ -214,7 +214,7 @@ Sprachen an.</p>
 <li><a href="#">Sicherheit</a></li>
 <li><a href="#">Dateien und Ordner</a></li>
 <li><a href="#">E-Mail</a></li>
-<li><a href="#">Systemunterstützung</a></li>
+<li><a href="#">SystemunterstÃ¼tzung</a></li>
 <li><a href="#">Gpg4win-Kompendium</a></li>
 <li><a href="#">Internationalisierung</a></li>
 <li><a href="#">Freie Software</a></li>

@@ -1,0 +1,31 @@
+m4_dnl                                                          -*-html-*-
+m4_include(`template.m4')
+m4_dnl $Id$
+
+m4_define(`EN')
+m4_define(`DE_FILE', `thanks-de.html')
+
+m4_define(`TITLE', `Thank you!')
+m4_define(`MAIN', `download')
+
+PAGE_START
+
+<meta http-equiv="refresh" content="0; url=DOWNLOAD_URL">
+
+<div id="intro">
+  <h2>Thank you for downloading Gpg4win.</h2>
+  <p><small>If the download of Gpg4win VERSION doesn't start automatically,
+  click <a href="DOWNLOAD_URL">here</a>.</small></p>
+</div>
+
+<div id="main">
+<h2>Get started &ndash; your next steps:</h2>
+If you are interested in getting involved, then take a look at these pages:
+<ul>
+<li><a href="documentation.html">Read the Gpg4win Compendium</a></li>
+<li><a href="community.html">Join the Community</a></li>
+</ul>
+
+
+</div>
+

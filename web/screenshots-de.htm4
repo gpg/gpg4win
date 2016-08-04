@@ -14,7 +14,7 @@ PAGE_START
 <div id="intro">
 <h2>Screenshots</h2>
 <p>Machen Sie sich einen ersten Eindruck von Gpg4win.
-Die Screenshots zeigen Ihnen ausgewählte Komponenten in Aktion.</p>
+Die Screenshots zeigen Ihnen ausgewÃ¤hlte Komponenten in Aktion.</p>
 </div>
 
 <div id="main" class="screenshots">
@@ -26,7 +26,7 @@ Die Screenshots zeigen Ihnen ausgewählte Komponenten in Aktion.</p>
 <img class="imgfloatleft imageframe"
 src="img/t250.sc-inst-welcome_de.png">
 </a>
-<p>Begrüßungsbildschirm</p>
+<p>BegrÃ¼ÃŸungsbildschirm</p>
 </li>
 </ul>
 
@@ -37,7 +37,7 @@ src="img/t250.sc-inst-welcome_de.png">
 <img class="imgfloatleft imageframe"
 src="img/t250.sc-kleopatra-splashscreen_de.png">
 </a>
-<p>Kleopatras Begrüßungsbildschirm</p>
+<p>Kleopatras BegrÃ¼ÃŸungsbildschirm</p>
 </li>
 
 <li>
@@ -45,7 +45,7 @@ src="img/t250.sc-kleopatra-splashscreen_de.png">
 <img class="imgfloatleft imageframe"
 src="img/t250.sc-kleopatra-mainwindow-openpgp-certificates_de.png">
 </a>
-<p>Darstellung von zwei (vertrauenswürdigen) OpenPGP-Zertifikaten.
+<p>Darstellung von zwei (vertrauenswÃ¼rdigen) OpenPGP-Zertifikaten.
 </p>
 </li>
 <li>
@@ -54,7 +54,7 @@ src="img/t250.sc-kleopatra-mainwindow-openpgp-certificates_de.png">
 src="img/t250.sc-kleopatra-mainwindow-x509-certificates_de.png">
 </a>
 <p>Darstellung einer importierten X.509-Zertifikatskette. Das Wurzelzertifikat ist
-vertrauenswürdig (blau hinterlegt).
+vertrauenswÃ¼rdig (blau hinterlegt).
 </p>
 </li>
 
@@ -64,7 +64,7 @@ vertrauenswürdig (blau hinterlegt).
 <img class="imgfloatleft imageframe"
 src="img/t250.sc-kleopatra-openpgp-personalDetails_de.png">
 </a>
-<p>Erstellung eines OpenPGP-Zertifikats: Eingabe der persönlichen
+<p>Erstellung eines OpenPGP-Zertifikats: Eingabe der persÃ¶nlichen
 Angaben.
 </p>
 </li>
@@ -73,7 +73,7 @@ Angaben.
 <img class="imgfloatleft imageframe"
 src="img/t250.sc-kleopatra-x509-personalDetails_de.png">
 </a>
-<p>Erstellung eines S/MIME-Zertifikats: Eingabe der persönlichen
+<p>Erstellung eines S/MIME-Zertifikats: Eingabe der persÃ¶nlichen
 Angaben.
 </p>
 </li>
@@ -108,7 +108,7 @@ src="img/t250.sc-kleopatra-certifyCertificate1_de.png">
 <img class="imgfloatleft imageframe"
 src="img/t250.sc-kleopatra-openpgp-ownertrust_de.png">
 </a>
-<p>Vertrauenseinstellungen eines öffentlichen OpenPGP-Zertifikats.
+<p>Vertrauenseinstellungen eines Ã¶ffentlichen OpenPGP-Zertifikats.
 </p>
 </li>
 
@@ -117,8 +117,8 @@ src="img/t250.sc-kleopatra-openpgp-ownertrust_de.png">
 <img class="imgfloatleft imageframe"
 src="img/t250.sc-kleopatra-encryptFile1_de.png">
 </a>
-<p>Dateien und Ordner verschlüsseln in 3 Schritten:<br>
-1. Dateien auswählen ...
+<p>Dateien und Ordner verschlÃ¼sseln in 3 Schritten:<br>
+1. Dateien auswÃ¤hlen ...
 </p>
 </li>
 
@@ -127,7 +127,7 @@ src="img/t250.sc-kleopatra-encryptFile1_de.png">
 <img class="imgfloatleft imageframe"
 src="img/t250.sc-kleopatra-encryptFile2_de.png">
 </a>
-<p>2. Empfängerzertifikate auswählen (zum Verschlüsseln) ...
+<p>2. EmpfÃ¤ngerzertifikate auswÃ¤hlen (zum VerschlÃ¼sseln) ...
 </p>
 </li>
 <li>
@@ -135,14 +135,14 @@ src="img/t250.sc-kleopatra-encryptFile2_de.png">
 <img class="imgfloatleft imageframe"
 src="img/t250.sc-kleopatra-encryptFile3_de.png">
 </a>
-<p>3. Die fertig verschlüsselte Archivdatei.</p>
+<p>3. Die fertig verschlÃ¼sselte Archivdatei.</p>
 </li>
 <li>
 <a href="img/sc-kleopatra-verifyFile2-details_de.png">
 <img class="imgfloatleft imageframe"
 src="img/t250.sc-kleopatra-verifyFile2-details_de.png"
 </a>
-<p>Erfolgreiche Signaturprüfung einer mit OpenPGP signierten Datei.
+<p>Erfolgreiche SignaturprÃ¼fung einer mit OpenPGP signierten Datei.
 </p>
 </li>
 
@@ -155,7 +155,7 @@ src="img/t250.sc-kleopatra-verifyFile2-details_de.png"
 <img class="imgfloatleft imageframe"
 src="img/t250.sc-gpgex-explorer-options_de.png">
 </a>
-<p>Das Kontextmenü von GpgEX im Windows Explorer - mit den
+<p>Das KontextmenÃ¼ von GpgEX im Windows Explorer - mit den
 erweiterten Optionen.</p>
 </li>
 </ul>
@@ -168,7 +168,7 @@ erweiterten Optionen.</p>
 <img class="imgfloatleft imageframe"
 src="img/t250.sc-gpgol-sendSignEncryptedMail_de.png">
 </a>
-<p>Signieren und Verschlüsseln einer E-Mail in Outlook 2007
+<p>Signieren und VerschlÃ¼sseln einer E-Mail in Outlook 2007
 </p>
 </li>
 
@@ -177,7 +177,7 @@ src="img/t250.sc-gpgol-sendSignEncryptedMail_de.png">
 <img class="imgfloatleft imageframe"
 src="img/t250.sc-ol-emailfolder_de.png">
 </a>
-<p>Darstellung von signierten und verschlüsselten Nachrichten in der
+<p>Darstellung von signierten und verschlÃ¼sselten Nachrichten in der
 E-Mail-Ordner-Ansicht von Outlook 2007.
 </p>
 </li>
@@ -199,7 +199,7 @@ src="img/t250.sc-gpgol-options_de.png">
 <img class="imgfloatleft imageframe"
 src="img/t250.sc-pinentry-openpgp-set-passphrase_de.png">
 </a>
-<p>Setzen einer Passphrase (mit Qualitätsprüfung).
+<p>Setzen einer Passphrase (mit QualitÃ¤tsprÃ¼fung).
 </p>
 </li>
 <li>

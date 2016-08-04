@@ -5,7 +5,7 @@ m4_ifdef(`__TMPL_ROOT',,`m4_define(`__TMPL_ROOT',`')')
 
 m4_define(`__TITLE',m4_dnl
 I18N(`EN',`Secure E-Mail and File Encryption using GnuPG for Windows')`'m4_dnl
-I18N(`DE',`Sichere E-Mail- und Datei-Verschlüsselung mit GnuPG für Windows'))
+I18N(`DE',`Sichere E-Mail- und Datei-VerschlÃ¼sselung mit GnuPG fÃ¼r Windows'))
 
 m4_ifdef(`__TMPL_PAGE_TITLE',,`m4_define(`__TMPL_PAGE_TITLE',`Gpg4win - 'TITLE)')
 
@@ -16,8 +16,8 @@ m4_define(`LINK',
 
 <html xmlns="http://www.w3.org/1999/xhtml">
  <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-  <meta name="keywords" content="Gpg4win, GnuPG, WinPT, GPA, GPGol, GPGee, Claws Mail, E-Mail, Email, Windows, WinXP, XP, 2000, PGP, GPG, GnuPP, OpenPGP, Outlook, I18N(`EN', `Encryption, Secure') I18N(`DE', `Verschlüsselung, sicher, sichere, Sicherheit')">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="keywords" content="Gpg4win, GnuPG, GPA, GpgOL, E-Mail, Email, Windows, PGP, GPG, OpenPGP, S/MIME, Outlook, I18N(`EN', `Encryption, secure, security') I18N(`DE', `VerschlÃ¼sselung, sicher, Sicherheit')">
   <link rel="stylesheet" type="text/css" href="__TMPL_ROOT`'gpg4win.css">
   <link rel="shortcut icon" href="__TMPL_ROOT`'favicon.png" type="image/png" />
   <title>__TMPL_PAGE_TITLE</title>
@@ -37,12 +37,12 @@ m4_define(`LINK',
    <li class="mlogo">
     m4_ifelse(LANG_DE, `1', `<a href="index-de.html" title="Startseite"></a>', `<a href="index.html" title="Home"></a>')
    </li>
-   MENU(`about', `Über Gpg4win', `About Gpg4win', `about', MAIN, LANG_DE)
+   MENU(`about', `Ãœber Gpg4win', `About Gpg4win', `about', MAIN, LANG_DE)
     <ul>
-     MENU(`about', `Über Gpg4win', `About Gpg4win', `about', SUB, LANG_DE)
+     MENU(`about', `Ãœber Gpg4win', `About Gpg4win', `about', SUB, LANG_DE)
      MENU(`features', `Funktionen', `Features', `features', SUB, LANG_DE)
      MENU(`screenshots', `Screenshots', `Screenshots', `screenshots', SUB, LANG_DE)
-     MENU(`privacy-policy', `Datenschutzerklärung', `Privacy Policy', `privacy-policy', SUB, LANG_DE)
+     MENU(`privacy-policy', `DatenschutzerklÃ¤rung', `Privacy Policy', `privacy-policy', SUB, LANG_DE)
      <li class="subcap"></li>
     </ul>
    </li>
@@ -75,15 +75,28 @@ m4_define(`LINK',
     <ul>
      <li><a href="index-de.html"><img src="img/logo_footer.png" alt="" /></a></li>
      <li><a href="download-de.html">Download</a></li>
+     <li>
+       <a href="https://twitter.com/gpg4win" target="_blank" title="Follow @gpg4win">
+         <img src="img/twitter-icon.png" class="social-icon">
+       </a>
+       <a href="https://flattr.com/thing/2053326/Gpg4win-Secure-email-and-file-encryption-with-GnuPG-for-Windows"
+           target="_blank" title="Flattr this">
+         <img src="img/flattr-icon.png" class="social-icon">
+       </a>
+       <a href="http://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpg4win.git;a=summary" target="_blank" title="Gpg4win git repository">
+         <img src="img/git-icon.png" class="social-icon">
+       </a>
+     </li>
     </ul>
+
     <ul>
      <li><b>
-     m4_ifelse(LANG_DE, `1', `Über Gpg4win', `About Gpg4win')
+     m4_ifelse(LANG_DE, `1', `Ãœber Gpg4win', `About Gpg4win')
      </b></li>
-     MENU(`about', `Über Gpg4win', `About Gpg4win', `about', MAIN, LANG_DE)
+     MENU(`about', `Ãœber Gpg4win', `About Gpg4win', `about', MAIN, LANG_DE)
      MENU(`features', `Funktionen', `Features', `features', MAIN, LANG_DE)
      MENU(`screenshots', `Screenshots', `Screenshots', `screenshots', MAIN, LANG_DE)
-     MENU(`privacy-policy', `Datenschutzerklärung', `Privacy Policy', `privacy-policy', MAIN, LANG_DE)
+     MENU(`privacy-policy', `DatenschutzerklÃ¤rung', `Privacy Policy', `privacy-policy', MAIN, LANG_DE)
     </ul>
     <ul>
      <li><b>
@@ -101,7 +114,7 @@ m4_define(`LINK',
      MENU(`build-installer', `- Bau von Gpg4win', `- Building of Gpg4win', `build-installer', SUB, LANG_DE)
      MENU(`website-maintenance', `- Website pflegen', `- Maintaining Website', `website-maintenance', SUB, LANG_DE)
      </li>
-     m4_ifelse(LANG_DE, `1', `<li><a href="localize-gpg4win.html">- Gpg4win übersetzen</a></li>', `<li><a href="localize-gpg4win.html">- Translating Gpg4win</a></li>')
+     m4_ifelse(LANG_DE, `1', `<li><a href="localize-gpg4win.html">- Gpg4win Ã¼bersetzen</a></li>', `<li><a href="localize-gpg4win.html">- Translating Gpg4win</a></li>')
     </ul>
     <ul>
      <li><b>Support</b></li>

@@ -54,7 +54,7 @@ href="https://files.gpg4win.org/Beta/gpg4win-2.2.2-beta37.tar.bz2">Source code p
 of Gpg4win VERSION here:</p>
 <div class="dlbutton2">
   <img src="img/dl_arrow.png" alt="" />
-  <a href="DOWNLOAD_URL">Gpg4win&nbsp;VERSION<br>
+  <a href="get-gpg4win.html">Gpg4win&nbsp;VERSION<br>
     <span class="version"><small>Size: DL_SIZE</small></span>
   </a>
 </div>
@@ -70,40 +70,23 @@ of Gpg4win VERSION here:</p>
 
 <h4>More Gpg4win-VERSION variants</h4>
 <ul>
-    <li>Ggpg4win <em>without</em> Kleopatra and Gpg4win Compendium:
-      <div class="dlbutton2">
-        <img src="img/dl_arrow.png" alt="" />
-        <a href="LDOWNLOAD_URL">Gpg4win-Light VERSION<br/>
-          <span class="version"><small>Size: LDL_SIZE</small></span>
-        </a>
-      </div>
-      <a href="https://files.gpg4win.org/gpg4win-light-VERSION.exe.sig"
-        >OpenPGP signature</a><br>
-      SHA1 checksum: <code>SHA1_EXL</code></li>
+    <li>Gpg4win <em>without</em> Kleopatra and Gpg4win Compendium:<br>
+        <a href="LDOWNLOAD_URL">Gpg4win-Light VERSION</a> (Size: LDL_SIZE)<br>
+        <a href="https://files.gpg4win.org/gpg4win-light-VERSION.exe.sig">OpenPGP signature</a><br>
+        SHA1 checksum: <code>SHA1_EXL</code></li>
 
-    <li>Gpg4win with GnuPG component <em>only</em>:
-      <div class="dlbutton2">
-        <img src="img/dl_arrow.png" alt="" />
-        <a href="VDOWNLOAD_URL">Gpg4win-Vanilla VERSION<br/>
-          <span class="version"><small>Size: VDL_SIZE</small><span></a>
-      </div>
-      <a href="https://files.gpg4win.org/gpg4win-vanilla-VERSION.exe.sig"
-        >OpenPGP signature</a><br>
+    <li>Gpg4win with GnuPG component <em>only</em>:<br>
+        <a href="VDOWNLOAD_URL">Gpg4win-Vanilla VERSION</a> (Size: VDL_SIZE)<br>
+        <a href="https://files.gpg4win.org/gpg4win-vanilla-VERSION.exe.sig">OpenPGP signature</a><br>
         SHA1 checksum: <code>SHA1_EXV</code></li>
 
-    <li>Gpg4win source code package:
-      <div class="dlbutton2">
-        <img src="img/dl_arrow.png" alt="" />
-        <a href="SDOWNLOAD_URL">gpg4win-VERSION.tar.bz2<br/>
-          <span class="version"><small>Size: SDL_SIZE</small><span>
-        </a>
-      </div>
-      <a href="https://files.gpg4win.org/gpg4win-VERSION.tar.bz2.sig"
-        >OpenPGP signature</a><br>
+    <li>Gpg4win source code package:<br>
+        <a href="SDOWNLOAD_URL">gpg4win-VERSION.tar.bz2</a> (Size: SDL_SIZE)<br>
+        <a href="https://files.gpg4win.org/gpg4win-VERSION.tar.bz2.sig">OpenPGP signature</a><br>
         SHA1 checksum: <code>SHA1_SRC</code></li>
 
-    <li>All versions and OpenPGP signatures: <a
-        href="https://files.gpg4win.org/">files.gpg4win.org</a>.</li>
+    <li>All versions and OpenPGP signatures:<br>
+        <a href="https://files.gpg4win.org/">files.gpg4win.org</a>.</li>
 
     <li>To create a <b>portable Gpg4win version</b> use the
     included tool <code>mkportable.exe</code>.<br>

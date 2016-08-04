@@ -22,78 +22,52 @@ PAGE_START
 <h2>Donate</h2>
 <p>Your donation supports the maintenance and further development of
 Gpg4win and helps us to push the Free Software initiative Gpg4win. We
-are grateful for your financial contribution.
+are grateful for your financial contribution.<br>
+A summary of all previous donations you can find
+<a href="https://wiki.gnupg.org/Gpg4win/donations">here</a>.
 </p>
 </div>
 
 <div id="main">
-<h2>Contribute to Gpg4win!</h2>
+  m4_include(`donation-form.htm4')
 
-<p>Give a <b>small amount</b> using the payment option on this web page.
-Add a short comment along with your donation and explain for which
-improvements you would donate again.  Even the smallest amounts help and
-motivate.</p>
+  <div id="contract">
+  <h2>Contracts</h2>
+    <p>Other than making donations, you could make contract and further support the development of Gpg4win!</p>
+  
+    <p><b>As an engaged user</b> you could also contract for some specific
+    step, update, bug fix or new features.  Take care that your contracted
+    improvements will be integrated into the main development of Gpg4win.</p>
 
-<p>For an <b>average amount</b>, contact one of the project members and
-receive an official invoice. You could also contract for some specific
-step, update, bug fix or new features.  Take care that your contracted
-improvements will be integrated into the main development of
-Gpg4win.</p>
+    <p><b>As a company or authority</b> contract for more extensive measures
+    that will ensure continuation of the project.  This way you will
+    ensure sustainable availability of Gpg4win for your organization.
+    Such measures do provide the collateral benefit of generally improving
+    security for data exchange.</p>
 
-<p>As a company or authority, <b>contract</b> for more extensive measures
-that will ensure continuation of the project.  This way you will
-ensure sustainable availability of Gpg4win for your organization.
-Such measures do provide the collateral benefit of generally improving
-security for data exchange.</p>
+    <p>For more information <a href="mailto:gpg4win-professional@intevation.de">please contact us</a>.
+  </div>
 
+  <div id="sponsors">
+    <h2>List of sponsors</h2>
+    <p>The following list shows the sponsors who donated over 20,- EUR in the years 2015 and 2016 to support
+    the Gpg4win initiative and agreed to make their donation(s) public. 
+    Donation details and the sponsor lists for previous years are to be found in
+    <a href="https://wiki.gnupg.org/Gpg4win/donations">the summary of donation</a>.
+    (Last updated: 2016/08/01)</p>
+    
+    <h3>Sponsors 2016</h3>
+    <div class="sponsornames">
+    m4_include(`SPONSORS-2016')
+    </div>
+      
+    <h3>Sponsors 2015</h3>
+    <div class="sponsornames">
+    m4_include(`SPONSORS-2015')
+    </div>
+    
+    <h3>Sponsors in previous years</h3>
+    <p>Have a look at <a href="https://wiki.gnupg.org/Gpg4win/donations">the summary of donations.</a></p>
 
-<h2>List of sponsors</h2>
-<p>The following list shows all sponsors who have supported
-the Gpg4win initiative and agreed to have their donation(s) made
-public.</p>
-
-<p><b>Make your donation now and you will appear in this list!</b>
-Please click on the "Donate" button (on the right).</p>
-
-<pre>
-m4_include(`SPONSORS')
-</pre>
-</div>
-
-<div id="sidebar">
-<h3>Make your donation now!</h3>
-<p><b>... by PayPal:</b>
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-    <input name="cmd" value="_donations" type="hidden">
-    <input name="business" value="paypal@intevation.de" type="hidden">
-    <input name="lc" value="US" type="hidden">
-    <input name="undefined_quantity" value="1" type="hidden">
-
-    <input name="item_name" value="Gpg4win" type="hidden">
-    <input name="item_number" value="1000" type="hidden">
-    <input name="no_shipping" value="1" type="hidden">
-    <input name="cn" value="Comment to Gpg4win developer team (praise/criticism)" type="hidden">
-    <input name="currency_code" value="EUR" type="hidden">
-    <input src="img/paypal_btn_donate_LG-en.gif" name="submit" alt="Pay with PayPal" type="image" border="0">
-    <input name="on0" value="Allowed to publish of your donation?" type="hidden">
-    <input name="os0" value="No" type="hidden">
-    <input name="image_url" value="https://gpg4win.org/img/logo.png" type="hidden">
-    <input name="return" value="https://gpg4win.org/donate.html" type="hidden">
-    <input name="cbt" value="Back to Gpg4win" type="hidden">
-    <br>
-    <input name="os0" value="Yes" checked="checked" type="checkbox">Publish my sponsor name</a>
-</form>
-</p>
-
-<p><b>... by Flattr:</b></p>
-<p>
-<a href="https://flattr.com/thing/2053326/Gpg4win-Secure-email-and-file-encryption-with-GnuPG-for-Windows" target="_blank"><img src="https://api.flattr.com/button/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0" /></a>
-</p>
-
-<p><b>... by bank transfer:</b>
-<p>Please <a href="mailto:gpg4win-professional@intevation.de">contact us
-</a> to get our bank details. For more than 100,- EUR you can get
-an invoice if desired.</p>
-</p>
-
+  </div>
 </div>

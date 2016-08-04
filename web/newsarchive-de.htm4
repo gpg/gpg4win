@@ -10,7 +10,7 @@ PAGE_START
 <div id="intro">
 <h2>Newsarchiv</h2>
 <p>
-Rückblick auf Gpg4win-Bekanntmachungen aus den letzten Jahren.
+RÃ¼ckblick auf Gpg4win-Bekanntmachungen aus den letzten Jahren.
 Aktuelle Meldungen gibt es auf der <a href="index-de.html">Startseite</a>.
 </p>
 </div>
@@ -21,7 +21,7 @@ Aktuelle Meldungen gibt es auf der <a href="index-de.html">Startseite</a>.
 <ul>
     <li>
     <a
-        href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2016-April/000033.html">2016-04-05 Gpg4win 2.3.1 veröffentlicht</a>
+        href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2016-April/000033.html">2016-04-05 Gpg4win 2.3.1 verÃ¶ffentlicht</a>
     </li>
 </ul>
 
@@ -30,55 +30,55 @@ Aktuelle Meldungen gibt es auf der <a href="index-de.html">Startseite</a>.
 <ul>
     <li>
      <a
-         href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2015-September/000030.html"">2015-09-09 Gpg4win 2.2.6 veröffentlicht</a>
+         href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2015-September/000030.html"">2015-09-09 Gpg4win 2.2.6 verÃ¶ffentlicht</a>
     </li>
     <li>
      <a
-         href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2015-July/000029.html">2015-07-10 Gpg4win 2.2.5 veröffentlicht</a>
+         href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2015-July/000029.html">2015-07-10 Gpg4win 2.2.5 verÃ¶ffentlicht</a>
     </li>
     <li><a
         href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2015-March/000027.html">2015-03-18
-        Gpg4win 2.2.4 veröffentlicht</a>
+        Gpg4win 2.2.4 verÃ¶ffentlicht</a>
     </li>
 </ul>
 <h2>2014</h2>
 <ul>
     <li><a
         href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2014-November/000026.html">2014-11-26:
-        Gpg4win 2.2.3 veröffentlicht</a>
+        Gpg4win 2.2.3 verÃ¶ffentlicht</a>
     </li>
     <li><a
         href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2014-September/000025.html">2014-09-04:
-        Gpg4win 2.2.2 veröffentlicht</a>
+        Gpg4win 2.2.2 verÃ¶ffentlicht</a>
     </li>
 </ul>
 <h2>2013</h2>
 <ul>
     <li><a
         href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2013-October/000023.html">2013-10-07:
-        Gpg4win 2.2.1 veröffentlicht</a>
+        Gpg4win 2.2.1 verÃ¶ffentlicht</a>
     </li>
     <li><a
         href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2013-August/000022.html">2013-08-21:
-        Gpg4win 2.2.0 veröffentlicht</a>
+        Gpg4win 2.2.0 verÃ¶ffentlicht</a>
     </li>
     <li><a
         href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2013-July/000020.html">2013-07-16:
-        Gpg4win 2.2.0-beta2 veröffentlicht</a></li>
+        Gpg4win 2.2.0-beta2 verÃ¶ffentlicht</a></li>
     <li><a 
         href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2013-May/000054.html">2013-05-31:
         Gpg4win 2.1.1 released</a>
     </li>
     <li><a
         href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2013-May/000017.html">2013-05-16:
-        Gpg4win 2.1.1-beta197 veröffentlicht</a>
+        Gpg4win 2.1.1-beta197 verÃ¶ffentlicht</a>
     </li>
 </ul>
 
 <h2>2012</h2>
 <ul class="newslist">
     <li><a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2012-May/000016.html"
-     >2012-05-04: Gpg4win 2.1.1 Beta veröffentlicht</a>
+     >2012-05-04: Gpg4win 2.1.1 Beta verÃ¶ffentlicht</a>
     </li>
 </ul>
 
@@ -86,14 +86,14 @@ Aktuelle Meldungen gibt es auf der <a href="index-de.html">Startseite</a>.
 <ul class="newslist">
     <li><a
 href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2011-March/000015.html">2011-03-15:
-Gpg4win 2.1.0 veröffentlicht</a>
+Gpg4win 2.1.0 verÃ¶ffentlicht</a>
     <p><a
 href="https://www.bsi.bund.de/`DE'/Presse/Pressemitteilungen/Presse2011/Gpg4win_neue_Version_15032011.html">Pressemitteilung</a> (in Zusammenarbeit mit dem BSI)</p>
     </li>
 
     <li><a href="download-de.html">2011-02-04: Gpg4win 2.1.0-rc2
-veröffentlicht</a>
-    <p>Diese zweite Vorabversion von 2.1.0 enthält wichtige Aktualisierungen in
+verÃ¶ffentlicht</a>
+    <p>Diese zweite Vorabversion von 2.1.0 enthÃ¤lt wichtige Aktualisierungen in
     GnuPG und Kleopatra.
     </p></li>
 </ul>
@@ -102,55 +102,55 @@ veröffentlicht</a>
 <h2>2010</h2>
 
 <ul class="newslist">
-    <li><a href="download-de.html">2010-12-20: Gpg4win 2.1.0-rc1 veröffentlicht
-    <p>Diese erste Vorabversion von 2.1.0 enthält wichtige Verbesserungen in
+    <li><a href="download-de.html">2010-12-20: Gpg4win 2.1.0-rc1 verÃ¶ffentlicht
+    <p>Diese erste Vorabversion von 2.1.0 enthÃ¤lt wichtige Verbesserungen in
     Kleopatra, Pinentry und GnuPG. Details in der
     Bekanntmachung.</p></a></li>
 
     <li><a href="download-de.html">
-    2010-09-02: Gpg4win 2.1.0-beta1 veröffentlicht
+    2010-09-02: Gpg4win 2.1.0-beta1 verÃ¶ffentlicht
     <p>Diese Version bringt u.a. viele Verbesserungen in Kleopatra und GnuPG mit.
     Details in der Bekanntmachung.</p></a></li>
 
     <li><a href="download-de.html">
-    2010-09-01: Englisches Gpg4win-Kompendium 3.0.0-beta1 veröffentlicht
+    2010-09-01: Englisches Gpg4win-Kompendium 3.0.0-beta1 verÃ¶ffentlicht
     <p>Das Gpg4win-Kompendium ist in einer ersten englischen
-    Übersetung erschienen. Details in der Bekanntmachung.</p></a></li>
+    Ãœbersetung erschienen. Details in der Bekanntmachung.</p></a></li>
 
     <li><a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2010-July/000010.html"
-    >2010-07-28: Gpg4win 2.0.4 veröffentlicht
-    <p>Security-Fix für GPGSM (GnuPG). Details in der Bekanntmachung.</p></a></li>
+    >2010-07-28: Gpg4win 2.0.4 verÃ¶ffentlicht
+    <p>Security-Fix fÃ¼r GPGSM (GnuPG). Details in der Bekanntmachung.</p></a></li>
 
     <li><a href="donate-de.html">2010-06-15: Neue Gpg4win-Spenden-Seite
-    <p>Unterstützen Sie die Gpg4win-Initiative und erscheinen Sie auf
+    <p>UnterstÃ¼tzen Sie die Gpg4win-Initiative und erscheinen Sie auf
     dieser Spenderliste!</p></a></li>
 
     <li><a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2010-June/000009.html">
-    2010-05-29: Gpg4win 2.0.3 veröffentlicht
+    2010-05-29: Gpg4win 2.0.3 verÃ¶ffentlicht
     <p>Details in der Bekanntmachung.</p></a></li>
 
     <li><a href="documentation-de.html">
-    2010-05-28: Gpg4win-Kompendium 3.0.0 ist veröffentlicht
-    <p>Diese vollständige überarbeitete, deutschprachige
-    Übersichtsdokumentation zu Gpg4win2 ermöglicht Einsteigern und
+    2010-05-28: Gpg4win-Kompendium 3.0.0 ist verÃ¶ffentlicht
+    <p>Diese vollstÃ¤ndige Ã¼berarbeitete, deutschprachige
+    Ãœbersichtsdokumentation zu Gpg4win2 ermÃ¶glicht Einsteigern und
     Fortgeschrittenen einen einfachen Einstieg in die Welt der
-    Kryptografie mit Gpg4win. Das Kompendium ist verfügbar als PDF- und HTML-Fassung.</p></a></li>
+    Kryptografie mit Gpg4win. Das Kompendium ist verfÃ¼gbar als PDF- und HTML-Fassung.</p></a></li>
 
     <li><a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2010-April/000007.html">
-    2010-04-13: Gpg4win 2.0.2 ist veröffentlicht
+    2010-04-13: Gpg4win 2.0.2 ist verÃ¶ffentlicht
     <p>Diese Version ist praktisch identisch zu dem Release Candidate
-    2.0.2 RC2, bringt zusätzlich aber das Kompendium 3.0.0 RC1 mit.
+    2.0.2 RC2, bringt zusÃ¤tzlich aber das Kompendium 3.0.0 RC1 mit.
     Details in der Bekanntmachung.</p></a></li>
 
-    <li><a href="download-de.html">2010-04-01: Gpg4win-Kompendium 3.0.0 RC1 ist veröffentlicht
-    <p>Dies ist die letzte Vorabfassung für die im April/Mail 2010 erscheinende
+    <li><a href="download-de.html">2010-04-01: Gpg4win-Kompendium 3.0.0 RC1 ist verÃ¶ffentlicht
+    <p>Dies ist die letzte Vorabfassung fÃ¼r die im April/Mail 2010 erscheinende
     finale Version 3.0.0 des deutschsprachigen Kompendiums.</p></a></li>
 
-    <li><a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2010-March/000005.html">2010-03-05: Gpg4win 2.0.2 RC2 ist veröffentlicht
+    <li><a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2010-March/000005.html">2010-03-05: Gpg4win 2.0.2 RC2 ist verÃ¶ffentlicht
     <p>Diese Version bringt u.a. viele Verbesserungen in Kleopatra und Pinentry
     mit. Detail in der Bekanntmachung.</p></a></li>
 
-    <li><a href="download-de.html">2010-02-04: Gpg4win 2.0.2 RC1 ist veröffentlicht
+    <li><a href="download-de.html">2010-02-04: Gpg4win 2.0.2 RC1 ist verÃ¶ffentlicht
     <p>Diese Version bringt u.a. viele Verbesserungen in Kleopatra, GpgOL
     und GnuPG mit.</p></a></li>
 </ul>
@@ -159,21 +159,21 @@ veröffentlicht</a>
 
 <ul class="newslist">
     <li><a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2009-September/000004.html">
-    2009-09-28: Gpg4win 2.0.1 ist veröffentlicht
+    2009-09-28: Gpg4win 2.0.1 ist verÃ¶ffentlicht
     <p>Diese Version ist praktisch identisch zu dem Release Candidate
     2.0.1 RC1.</p></a></li>
 
     <li><a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2009-September/000001.html">
     2009-09-01: Outlook-Nutzer sollten Gpg4win 2.0.1 RC1 herunterladen
-    <p>Verzögerungen machten Outlook 2003 oder 2007 für viele Anwender unbenutzbar;
+    <p>VerzÃ¶gerungen machten Outlook 2003 oder 2007 fÃ¼r viele Anwender unbenutzbar;
     Gpg4win 2.0.1 RC1 adressiert diese Probleme.
     Hinweis: E-Mails per Exchange von Outlook/GpgOL zu senden geht weiterhin nicht.</p></a></li>
 
     <li><a href="#">2009-08-19: Smartcards verwenden mit Gpg4win 2.0.0
-    <p>Hinweise für die Nutzung der unterstützen OpenPGP- und
+    <p>Hinweise fÃ¼r die Nutzung der unterstÃ¼tzen OpenPGP- und
     X.509-Smartcards mit Kleopatra finden Sie in der aktualisierten README-Datei.</p></a></li>
 
-    <li><a href="news-20090812-de.html">2009-08-12: Gpg4win 2.0.0 ist veröffentlicht
+    <li><a href="news-20090812-de.html">2009-08-12: Gpg4win 2.0.0 ist verÃ¶ffentlicht
     <p>Zur Pressemitteilung</p></a></li>
 </ul>
 </div>

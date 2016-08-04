@@ -1,0 +1,16 @@
+<h4>100,- EUR
+    I18N(`EN', `and more')
+    I18N(`DE', `und mehr')
+</h4>
+<ul class="two-column">
+<li>Klaus Elsbernd</li>
+</ul>
+
+<h4>< 100,- EUR</h4>
+<ul class="three-column">
+<li>Markus Turja</li>
+<li>Andreas Lorenz </li>
+<li>Karl Knauer</li>
+<li>Christopher Focer</li>
+<li>Pascal Schmidheiny</li>
+</ul>

@@ -14,89 +14,62 @@ PAGE_START
  <span class="text">
   Wir lieben Freie Software!<br />
   Sie auch?<br />
-  <b>Unterstützen Sie Gpg4win!</b>
+  <b>UnterstÃ¼tzen Sie Gpg4win!</b>
  </span>
 </div>
 
 <div id="intro">
 <h2>Spenden</h2>
-<p>Ihre Spende unterstützt die Pflege und Weiterentwicklung von Gpg4win
+<p>Ihre Spende unterstÃ¼tzt die Pflege und Weiterentwicklung von Gpg4win
 und hilft uns die Freie Software Initiative Gpg4win voranzutreiben.
-Wir sind dankbar für jede finanzielle Unterstützung. Helfen auch Sie!</p>
+Wir sind dankbar fÃ¼r jede finanzielle UnterstÃ¼tzung.
+Eine Zusammenfassung der bisherigen Spenden finden Sie
+<a href="https://wiki.gnupg.org/Gpg4win/donations">hier</a>.
+</p>
 </div>
 
 <div id="main">
+  m4_include(`donation-form.htm4')
 
-<h2>Tragen Sie zu Gpg4win bei!</h2>
+  <div id="contract">
+  <h2>Beauftragungen</h2>
+    <p>UnterstÃ¼tzen Sie die Gpg4win-Weiterentwicklung mit einer konkreten Beauftragung!</p>
+  
+    <p><b>Als engagierter Anwender</b> kÃ¶nnen Sie einen bestimmten
+    Schritt, wie z.B. Aktualisierung, Beseitigung eines Fehlers oder HinzufÃ¼gen einer Funktion
+    beauftragen. Jede beauftragte Verbesserung kommt dem Gpg4win-Hauptstrom zu Gute.</p>
 
-<p>Geben Sie einen <b>kleinen Betrag</b> über die Spendenbutton
-auf dieser Seite! Versehen Sie Ihre Spende mit einem kurzen Kommentar,
-für welche Verbesserung Sie wieder etwas geben würden und was Ihnen
-besonders an Gpg4win gefällt. Auch einstellige
-Euro-Beträge können helfen und motivieren.</p>
+    <p><b>Als Unternehmen oder BehÃ¶rde</b> kÃ¶nnen Sie umfangreiche
+    MaÃŸnahmen zur Sicherung einer nachhaltigen und eigenstÃ¤ndigen
+    FortfÃ¼hrung des Projekts beauftragen. Sie erhalten damit Gpg4win dauerhaft fÃ¼r Ihre Organisation.
+    Einher geht der Kollateralnutzen, dass darÃ¼ber hinaus die Sicherheit beim Datenverkehr im
+    Allgemeinen verbessert wird.</p>
 
-<p> Bei einem <b>mittleren Betrag</b>, kontaktieren Sie einen der Projektbeteiligten
-und zahlen Sie gegen Rechnung. Eventuell können Sie einen bestimmten Schritt wie
-Aktualisierung, Beseitigung eines Fehlers oder Hinzufügen einer Funktion
-beauftragen. Achten Sie darauf, dass jede beauftragte Verbesserung dem Gpg4win
-Hauptstrom zu Gute kommt.</p>
+    <p>FÃ¼r mehr Informationen <a href="mailto:gpg4win-professional@intevation.de">kontaktieren Sie uns gerne</a>.
+  </div>
 
-<p> Als Unternehmen oder Behörde <b>beauftragen</b> Sie die umfangreicheren
-Maßnahmen zur Sicherung einer nachhaltigen und eigenständigen
-Fortführung des Projekts.
-Sie erhalten damit Gpg4win dauerhaft für Ihre Organisation.
-Einher geht der
-Kollateralnutzen, dass darüber hinaus die Sicherheit beim Datenverkehr im
-Allgemeinen verbessert wird.</p>
+  <div id="sponsors">
+    <h2>Liste der Spender</h2>
+    <p>Die folgende Liste zeigt alle Spender, die Ã¼ber 20,- EUR in den
+    Jahren 2015 und 2016 fÃ¼r Gpg4win gespendet und einer
+    VerÃ¶ffentlichung ihrer Spende zugestimmt haben.
+    
+    Eine Zusammenfassung aller Spenden und die Spender der frÃ¼heren
+    Jahren finden Sie <a href="https://wiki.gnupg.org/Gpg4win/donations">hier</a>.
+    (Zuletzt aktualisiert: 2016/08/01)</p>
+    
+    <h3>Spender 2016</h3>
+    <div class="sponsornames">
+    m4_include(`SPONSORS-2016')
+    </div>
+      
+    <h3>Spender 2015</h3>
+    <div class="sponsornames">
+    m4_include(`SPONSORS-2015')
+    </div>
+    
+    <h3>Spender in frÃ¼heren Jahren</h3>
+    <p>siehe <a href="https://wiki.gnupg.org/Gpg4win/donations">https://wiki.gnupg.org/Gpg4win/donations</a></p>
 
-
-<h2>Liste der Spender</h2>
-<p>Nachfolgend finden Sie eine Übersicht aller Spender, die bisher die
-Gpg4win-Initiative unterstützt haben und einer Veröffentlichung Ihrer
-Spende zugestimmt haben.</p>
-<p><b>Spenden Sie online und erscheinen Sie selbst in dieser Liste!</b>
-Nutzen Sie dafür die "Spenden"-Schaltfläche rechts auf dieser Seite.</p>
-
-<pre>
-m4_include(`SPONSORS')
-</pre>
-</div>
-
-<div id="sidebar">
-<h3>Spenden Sie jetzt!</h3>
-<p><b>... per PayPal:</b>
-
-
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-    <input name="cmd" value="_donations" type="hidden">
-    <input name="business" value="paypal@intevation.de" type="hidden">
-    <input type="hidden" name="lc" value="DE">
-    <input name="undefined_quantity" value="1" type="hidden">
-    <input name="item_name" value="Gpg4win" type="hidden">
-    <input name="item_number" value="1000" type="hidden">
-    <input name="no_shipping" value="1" type="hidden">
-    <input name="cn" value="Kommentar an das Gpg4win-Entwicklerteam (Lob/Kritik)" type="hidden">
-    <input name="currency_code" value="EUR" type="hidden">
-    <input src="img/paypal_btn_donate_LG-de.gif" name="submit" alt="Mit Paypal spenden" type="image" border="0">
-    <input name="on0" value="Veröffentlichung der Spende zugestimmt?" type="hidden">
-    <input name="os0" value="Nein" type="hidden">
-    <input name="image_url" value="https://gpg4win.org/img/logo.png" type="hidden">
-    <input name="return" value="https://gpg4win.de/donate-de.html" type="hidden">
-    <input name="cbt" value="Zurück zu Gpg4win" type="hidden">
-    <br>
-    <input name="os0" value="Ja" checked="checked" type="checkbox">Spendernamen veröffentlichen
-</form>
-</p>
-
-<p><b>... per Flattr:</b></p>
-<p>
-<a href="https://flattr.com/thing/2053326/Gpg4win-Secure-email-and-file-encryption-with-GnuPG-for-Windows" target="_blank"><img src="https://api.flattr.com/button/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0" /></a>
-</p>
-
-<p><b>... per Banküberweisung:</b>
-<p><a href="mailto:gpg4win-professional@intevation.de">Kontaktieren
-Sie uns per E-Mail</a>, um unsere Bankdaten zu erhalten. Ab 100,- EUR bekommen
-Sie eine Rechnung, wenn gewünscht.</p>
-</p>
-
+  </div>
 </div>

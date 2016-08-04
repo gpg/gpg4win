@@ -17,7 +17,7 @@ PAGE_START
 
 <div id="main">
 
-<h2>1. Prüfen, ob man die aktuellste Version von Gpg4win verwendet</h2>
+<h2>1. PrÃ¼fen, ob man die aktuellste Version von Gpg4win verwendet</h2>
 
 <p>
 Der Download-Knopf im oberen Brereich der Gpg4win Heimatseite
@@ -26,40 +26,40 @@ zeigt die jeweils aktuellste Version von Gpg4win an.
 
 <p>
 Die Versionsnummer Ihrer installierten Gpg4win-Version finden Sie
-z.B. in der README-Datei (erreichbar über das Gpg4win-Startmenü) oder unter
+z.B. in der README-Datei (erreichbar Ã¼ber das Gpg4win-StartmenÃ¼) oder unter
 <em>Start->Einstellungen->Systemsteuerung->Software</em>.
 </p>
 
 
-<h2>2. Prüfen, ob es sich überhaupt um einen Fehler von Gpg4win handelt</h2>
+<h2>2. PrÃ¼fen, ob es sich Ã¼berhaupt um einen Fehler von Gpg4win handelt</h2>
 
 <p>
 Gpg4win integriert eine Reihe von Werkzeugen deren
-Pflege über deren eigene Entwickler-Teams erfolgt.
+Pflege Ã¼ber deren eigene Entwickler-Teams erfolgt.
 </p>
 
 <p>
 Daher sollten Probleme und Fehler allgemeinerer Art,
 also die nicht durch Cross-Kompilation und/oder Paketierung
 durch das Gpg4win Team entstanden sind, an die jeweiligen
-Projekte gemeldet werden (üblicherweise ist es notwendig, sich
+Projekte gemeldet werden (Ã¼blicherweise ist es notwendig, sich
 zu registrieren, bevor man einen Fehler melden und kommentieren
 kann):
 </p>
 
 <ul>
 <li><a href="http://bugs.kde.org/component-report.cgi?product=kleopatra">
-    Bug-Tracker für Kleopatra</a>
+    Bug-Tracker fÃ¼r Kleopatra</a>
      <p>
 <li><a href="http://www.gnupg.org/documentation/bts.html">
-    Bug-Tracker für GnuPG, GPA, GpgOL und Gpg4win-Installer</a>
+    Bug-Tracker fÃ¼r GnuPG, GPA, GpgOL und Gpg4win-Installer</a>
 </ul>
 
 <p>
-Natürlich ist es nicht immer einfach zu entscheiden,
+NatÃ¼rlich ist es nicht immer einfach zu entscheiden,
 ob es sich um einen Fehler von Gpg4win handelt oder
 um einen Fehler in einem der Module.
-In diesem Fall sollte, abhängig von der Art des Problems,
+In diesem Fall sollte, abhÃ¤ngig von der Art des Problems,
 entweder auf einer der <a href="community-de.html">Mailinglisten oder
 Foren</a> von Gpg4win um Rat gefragt oder ein Problembericht in den
 <a
@@ -68,20 +68,20 @@ Gpg4win Bug Tracker</a> eingetragen werden.
 </p>
 
 
-<h2>3. Prüfen, ob das Problem bereits bekannt ist</h2>
+<h2>3. PrÃ¼fen, ob das Problem bereits bekannt ist</h2>
 
 <p>
 Es ist sinnvoll, die Liste der offenen Fehler
-zu durchsuchen, ob einer dieser Einträge bereits
+zu durchsuchen, ob einer dieser EintrÃ¤ge bereits
 das Problem beschreibt was man selbst hat.
-Dort sollte man dann seine ergänzenden Hinweise
-einfügen.
+Dort sollte man dann seine ergÃ¤nzenden Hinweise
+einfÃ¼gen.
 </p>
 
 <h2>4. Versionsnummern angeben</h2>
 
 <p>
-Ein neuer Fehlerbericht, aber auch Ergänzungen zu
+Ein neuer Fehlerbericht, aber auch ErgÃ¤nzungen zu
 bestehenden Berichten sollten die exakte Versionsnummer
 von Windows, Gpg4win und ggf. von MS Outlook
 nennen.
@@ -90,21 +90,21 @@ nennen.
 <h2>5. Anleitung zur Reproduktion des Fehlers</h2>
 
 <p>
-Falls es möglich ist, sollte in einer Schritt-für-Schritt
+Falls es mÃ¶glich ist, sollte in einer Schritt-fÃ¼r-Schritt
 Anleitung beschrieben werden, wie man den Fehler reproduziert.
 </p>
 
-<h2>6. Debug Informationen hinzufügen</h2>
+<h2>6. Debug Informationen hinzufÃ¼gen</h2>
 
 <p>
 Falls es geht und sinnvoll erscheint,
-sollte der Bericht um ein Debug-Log ergänzt werden.
-Anleitungen für die einzelnen Gpg4win-Komponenten finden Sie im
+sollte der Bericht um ein Debug-Log ergÃ¤nzt werden.
+Anleitungen fÃ¼r die einzelnen Gpg4win-Komponenten finden Sie im
 <a href="./doc/de/gpg4win-compendium_29.html">Gpg4win-Kompendium</a>.
 </p>
 
 <p>
-Wer sich in der Lage dazu fühlt, sollte nur die relevanten
+Wer sich in der Lage dazu fÃ¼hlt, sollte nur die relevanten
 Informationen der Logdatei dem Fehlerbericht beilegen.
 </p>
 

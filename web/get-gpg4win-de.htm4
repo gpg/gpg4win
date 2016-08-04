@@ -1,0 +1,20 @@
+m4_dnl                                                          -*-html-*-
+m4_include(`template.m4')
+m4_dnl $Id$
+
+m4_define(`DE')
+m4_define(`EN_FILE', `get-gpg4win.html')
+
+m4_define(`TITLE', `Download Gpg4win')
+m4_define(`MAIN', `download')
+
+PAGE_START
+
+<div id="intro">
+  <h2>Download Gpg4win VERSION</h2>
+</div>
+
+<div id="main">
+  m4_include(`donation-form-de.htm4')
+</div>
+

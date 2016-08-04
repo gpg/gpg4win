@@ -11,42 +11,42 @@ m4_define(`MAIN', `support')
 PAGE_START
 
 <div id="intro">
-    <h2>Professioneller Support für Gpg4win</h2>
-    <p>Überlassen Sie die Arbeit den Experten.</p>
+    <h2>Professioneller Support fÃ¼r Gpg4win</h2>
+    <p>Ãœberlassen Sie die Arbeit den Experten.</p>
 </div>
 
 <div id="main">
 
 <h2>Problem erkennen</h2>
 <p>
-Der Support, der über die öffentlichen <a href="community-de.html">Mailinglisten, Webforen und
+Der Support, der Ã¼ber die Ã¶ffentlichen <a href="community-de.html">Mailinglisten, Webforen und
 den Bug Tracker</a> geliefert wird, kommt in der Regel von Freiwilligen.
-Aufgrund der großen
+Aufgrund der groÃŸen
 Anwenderschaft hat man in der Regel gute Aussichten auf hilfreiche Reaktionen.
-Zeitnahe und erschöpfend richtige Antworten können natürlich nicht garantiert werden.
+Zeitnahe und erschÃ¶pfend richtige Antworten kÃ¶nnen natÃ¼rlich nicht garantiert werden.
 </p>
 
 <h2>Antworten finden</h2>
 <p>
 Werden zeitnahe Antworten, schnelle Anpassungen oder Korrekturen sowie
-allgemeine Beratung für den Einsatz (Installation, Konfiguration, etc.)
-von Gpg4win benötigt, so bieten
+allgemeine Beratung fÃ¼r den Einsatz (Installation, Konfiguration, etc.)
+von Gpg4win benÃ¶tigt, so bieten
 die Unternehmen <a href="https://www.intevation.de">Intevation
 GmbH</a>, <a href="https://www.g10code.de">g10code GmbH</a> und
 <a href="http://www.kdab.com">KDAB</a> gemeinsam
 entsprechenden professionellen Support an.
 Dieser ist individuell zugeschnitten, daher
-finden Sie hier keine Preistabelle oder ähnliches.
+finden Sie hier keine Preistabelle oder Ã¤hnliches.
 </p>
 
 <h2>Angebotsanfrage stellen</h2>
 <p>
 Bitte kontaktieren Sie uns
-<!--über das untenstehende Formular oder direkt an-->
+<!--Ã¼ber das untenstehende Formular oder direkt an-->
 unter <a
 href="mailto:gpg4win-professional@gpg4win.de">gpg4win-professional@gpg4win.de</a>,
 wenn Sie professionellen Support durch die o.g. drei Unternehmen einkaufen
-möchten.</p>
+mÃ¶chten.</p>
 
 <p>Beschreiben Sie dabei am besten
 schon mit der Anfrage Ihre fachlichen Anforderungen (z.B. welche Anwendungen,
@@ -56,23 +56,23 @@ selbst belassen wollen und was Sie von uns erwarten.
 </p>
 
 <p>
-Wir werden uns dann bei Ihnen mit einer Einschätzung der entstehenden Kosten
-sowie ggf. Rückfragen melden.
+Wir werden uns dann bei Ihnen mit einer EinschÃ¤tzung der entstehenden Kosten
+sowie ggf. RÃ¼ckfragen melden.
 </p>
 
 
-<h2>Unterstützungsart</h2>
+<h2>UnterstÃ¼tzungsart</h2>
 
-<p><b>Professionelle Unterstützung beim Einsatz von Gpg4win:</b><br>
+<p><b>Professionelle UnterstÃ¼tzung beim Einsatz von Gpg4win:</b><br>
 Sie haben z.B. ein Problem bei der Konfiguration in Ihrem
-Unternehmen oder benötigen Unterstützung beim korrekten Betrieb von
+Unternehmen oder benÃ¶tigen UnterstÃ¼tzung beim korrekten Betrieb von
 Gpg4win? Dann bieten wir Ihnen unseren technischen Support an.
 </p>
 
 <p><b>Weiterentwicklung von Gpg4win:</b><br>
 Sie vermissen eine wichtige Funktion in Gpg4win? Sie haben
 spezielle Vorstellungen, um die Weiterentwicklung von Gpg4win zu
-fördern? Dann kontaktieren Sie uns! Wir stellen Ihnen - nach
-Einschätzung unserer Entwicklern - ein individuelles Angebot zusammen.
+fÃ¶rdern? Dann kontaktieren Sie uns! Wir stellen Ihnen - nach
+EinschÃ¤tzung unserer Entwicklern - ein individuelles Angebot zusammen.
 </p>
 </div>

@@ -12,19 +12,19 @@ PAGE_START
 <div id="intro">
 <h2>Mitwirkende</h2>
 <p>Gpg4win lebt von seinen Mitwirkenden. Werden auch Sie Teil der
-Gpg4win-Gemeinschaft und <a href="contribute-de.html">unterst¸tzen Sie
+Gpg4win-Gemeinschaft und <a href="contribute-de.html">unterst√ºtzen Sie
 Gpg4win</a>.</p>
 </div>
 
 <div id="main">
 <h2>Danke!</h2>
 <p>Dieses Freie Software Produkt wurde u.a. im Rahmen kommerzieller
-Auftr‰ge von folgenden Unternehmen entwickelt:
+Auftr√§ge von folgenden Unternehmen entwickelt:
 <ul>
 <li><a href="http://www.intevation.de">Intevation GmbH</a>
 (Projektkoordination, QS, Kompendium)</li>
 <li><a href="http://www.g10code.de">g10 Code GmbH</a>
-(Krypto-Funktionalit‰t, GpgOL, GpgEX, GPA)</li>
+(Krypto-Funktionalit√§t, GpgOL, GpgEX, GPA)</li>
 <li><a href="http://www.kdab.com">KDAB</a> (Kleopatra)</li>
 </ul>
 </p>
