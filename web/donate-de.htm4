@@ -29,7 +29,7 @@ Eine Zusammenfassung der bisherigen Spenden finden Sie
 </div>
 
 <div id="main">
-  m4_include(`donation-form.htm4')
+  m4_include(`donation-form-de.htm4')
 
   <div id="contract">
   <h2>Beauftragungen</h2>
