@@ -5,7 +5,7 @@
     <!-- amount -->
     <p>
     <form name="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
-    <input type="text" name="amount" value="20" size="4" id="amountfield"
+    <input type="number" name="amount" value="20" size="4" id="amountfield"
         onchange="amountslider.value=value; bitpayamountfield.value=value; checkAmount(value)">
     <select size="1" name="currency_code" id="currencyfield">
       <option selected="selected" value="EUR">EUR</option>
@@ -34,6 +34,7 @@
             <span>In die <a href="donate.html">Liste der Spender</a> eintragen
               (für Spenden ab 20,-)</span>
           </label>
+          <input type="hidden" name="charset" value="utf-8">
         
           <!-- feedback -->
           <p>
