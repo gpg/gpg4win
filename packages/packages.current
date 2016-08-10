@@ -518,8 +518,8 @@ chk 67b017001928ad072f57435b72d473a961f64bfb17c792e42984dc31f72ae7d1
 # ditto for gpgme.
 # by: ah
 # verified: tarball created by ah
-file gpgme/gpgme-1.7.0-beta225.tar.bz2
-chk c70f1699fc9af870d9225f57878385b49f9d571b2a8cfd17c73613b7ea983c56
+file gpgme/gpgme-1.7.0-beta274.tar.bz2
+chk cd0a9bd05541270288fd9e3c990cf221a3ec890176c7cc7a59a1e4d8e5d402d4
 
 # Gpgmepp
 # last changed: 2016-01-21
@@ -529,20 +529,20 @@ chk c70f1699fc9af870d9225f57878385b49f9d571b2a8cfd17c73613b7ea983c56
 # chk 56d5f05bd513efc6caf770e43b6109e42842198f
 #
 # Gpgmepp-devel
-# last changed: 2016-07-22
+# last changed: see package date
 # by: ah
 # verified: Tarball created by ah.
 
-file gpgmepp/gpgmepp-201607221449.tar.xz
-chk d214a6c15558f335693f15246c69202bd3c3da9aab6341e9bc72263719034bb3
+file gpgmepp/gpgmepp-201608101758.tar.xz
+chk 42c6c6a3d64a179280e1fe7359624a4a68b44703e6de5c92aeea50abe2063116
 
 
 # Libkleo
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah.
-file libkleo/libkleo-201607221445.tar.xz
-chk 2d6087dc5e404434178895a0585f5833b492ab4d3e4d78cba7a19dfc2dbcc5fc
+file libkleo/libkleo-201608101800.tar.xz
+chk b99424789e2fe69dc60df980315efa46d56b747879283acfa2d03ffe21fcc4a8
 
 # KDE-L10n
 # last changed: 2016-02-19
@@ -558,5 +558,5 @@ chk d07988acf4398583580f0f55aae73c3082687fba19d2aa8048979d53a82cf592
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah.
-file kleopatra/kleopatra-201607221447.tar.gz
-chk 9f70895dc99717c6b107da143fd95e89d80f28ea1edb7d8447054daf48c4c4bf
+file kleopatra/kleopatra-201608101800.tar.gz
+chk f341c557b08f6bbd426d45eb857105d20f8da4e4d6d227c7ef9400e97dc1e2c7
