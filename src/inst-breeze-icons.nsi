@@ -540,5 +540,12 @@ Section "-breeze-icons" SEC_breeze_icons
   File ${prefix}/share/icons/breeze/status/64/security-low.svg
   File ${prefix}/share/icons/breeze/status/64/security-medium.svg
 
+  SetOutPath "$INSTDIR\share\icons\breeze\emblems\8"
+  File ${prefix}/share/icons/breeze/emblems/8/emblem-information.svg
+  File ${prefix}/share/icons/breeze/emblems/8/emblem-warning.svg
+  File ${prefix}/share/icons/breeze/emblems/8/emblem-success.svg
+  File ${prefix}/share/icons/breeze/emblems/8/emblem-error.svg
+  File ${prefix}/share/icons/breeze/emblems/8/emblem-question.svg
+
 !endif
 SectionEnd
