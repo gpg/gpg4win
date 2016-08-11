@@ -1,0 +1,50 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From 3dddfb2546b839e104286767f504e456ae91df45 Mon Sep 17 00:00:00 2001
+From: Andre Heinecke <aheinecke@intevation.de>
+Date: Thu, 11 Aug 2016 15:45:49 +0200
+Subject: [PATCH] Fix loop logic error in new server name detection
+
+* src/client.cc (default_uiserver_cmdline): Iterate over server_names
+array and not over the first server name itself.
+---
+ src/client.cc | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/client.cc b/src/client.cc
+index 6f27175..ccfa0ac 100644
+--- a/src/client.cc
++++ b/src/client.cc
+@@ -108,7 +108,7 @@ default_uiserver_cmdline (void)
+     }
+ #else /*!ENABLE_GPA_ONLY*/
+     {
+-      const char *dir, *tmp;
++      const char *dir, **tmp;
+       char *uiserver, *p;
+       int extra_arglen = 9;
+       const char * server_names[] = {"kleopatra.exe",
+@@ -163,16 +163,16 @@ default_uiserver_cmdline (void)
+           return name;
+         }
+       /* Fallbacks */
+-      for (tmp = *server_names; *tmp; tmp++)
++      for (tmp = server_names; *tmp; tmp++)
+         {
+           if (name)
+             {
+               free (name);
+             }
+-          name = (char*) malloc (strlen (dir) + strlen (tmp) + extra_arglen + 2);
++          name = (char*) malloc (strlen (dir) + strlen (*tmp) + extra_arglen + 2);
+           if (!name)
+             return NULL;
+-          strcpy (stpcpy (stpcpy (name, dir), "\\"), tmp);
++          strcpy (stpcpy (stpcpy (name, dir), "\\"), *tmp);
+           for (p = name; *p; p++)
+             if (*p == '/')
+               *p = '\\';
+--
+2.1.4

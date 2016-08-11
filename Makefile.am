@@ -50,8 +50,10 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
 		patches/scute-1.4.0/workaround-broken-libtool.patch \
 		patches/libassuan-2.4.0/0001-Fix-windows-build-with-mingw-w64-2.0.x.patch \
         patches/gpgex-1.0.4/0001-Prefer-kleowrapped-gpgwrapped-binaries.patch \
+        patches/gpgex-1.0.4/0002-Fix-loop-logic-error-in-new-server-name-detection.patch \
         patches/gpgol-1.4.0/0001-Fix-UI-Server-startup.patch \
         patches/gpgol-1.4.0/0002-Ignore-sent-S-MIME-Mails-if-S-MIME-is-disabled.patch \
+        patches/gpgol-1.4.0/0003-Fix-loop-logic-error-in-new-server-name-detection.patch \
         patches/libgpg-error-1.23/0001-Define-EWOULDBLOCK-in-case-it-is-not-defined.patch
 
 copy-news:
