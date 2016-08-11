@@ -26,7 +26,7 @@
    <span class="serif_word"><img src="img/bulletin.png" alt"" />
      m4_ifelse(LANG_DE, `1', `
       <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2016-July/000034.html">
-        Gpg4win 2.3.2 ver�ffentlicht
+        Gpg4win 2.3.2 veröffentlicht
       </a></span>',`
       <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2016-July/000069.html">
         Gpg4win 2.3.2 released
@@ -41,18 +41,6 @@
       <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2016-April/000068.html">
         Gpg4win 2.3.1 released
       </a></span>')
-   <p></p>
-   <small>2015-11-25</small><br>
-   <span class="serif_word"><img src="img/bulletin.png" alt="" />
-     m4_ifelse(LANG_DE, `1', `
-     <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2015-November/000032.html">
-        Gpg4win 2.3.0 veröffentlicht
-     </a></span>
-     <br><small><a href="pm-20151125-de.html">Pressemitteilung</a></small>', `
-     <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2015-November/000067.html">
-        Gpg4win 2.3.0 released
-     </a></span>
-     <br><small><a href="pm-20151125-de.html">Presse release (German)</a></small>')
    <p></p>
    <div class="limiter"></div>
    <p>
