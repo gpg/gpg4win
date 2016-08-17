@@ -58,10 +58,10 @@ chk dfa67a7e40727eb0913e75f3c44911d5d8cd58d1ead5acfe73dd933fc0d17ed2
 
 server http://curl.haxx.se/download
 
-# checked: 2015-06-05 ah - updated
-# verified with key 914C 533D F9B2 ADA2 204F  586D 78E1 1C6B 279D 5C91
-file  curl-7.42.1.tar.bz2
-chk   e2905973391ec2dfd7743a8034ad10eeb58dab8b3a297e7892a41a7999cac887
+# checked: 2015-08-17 ah - updated
+# verified with key 27ED EAF2 2F3A BCEB 50DB  9A12 5CC9 08FD B71E 12C2
+file  curl-7.50.1.tar.gz
+chk   3e392cf600822b817be82d9080b377fcbab70538d5a8bf525a1cd66e157b99ea
 
 #
 # GLIB
