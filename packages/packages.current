@@ -308,10 +308,10 @@ server ftp://ftp.gnupg.org/gcrypt
 file libgpg-error/libgpg-error-1.23.tar.bz2
 chk  7f0c7f65b98c4048f649bfeebfa4d4c1559707492962504592b985634c939eaa
 
-# last changed: 2016-03-30
+# last changed: 2016-08-17
 # by: ah
-file libgcrypt/libgcrypt-1.6.5.tar.bz2
-chk  f49ebc5842d455ae7019def33eb5a014a0f07a2a8353dc3aa50a76fd1dafa924
+file libgcrypt/libgcrypt-1.6.6.tar.bz2
+chk  f9461b4619bb78b273a88d468915750d418e89a3ea3b641bab0563a9af4b04d0
 
 # last-changed: 2016-07-04
 # by: ah
