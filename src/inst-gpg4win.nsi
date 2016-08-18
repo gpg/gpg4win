@@ -91,7 +91,6 @@ Section "-gpg4win" SEC_gpg4win
   # list symbol names.
   File /oname=libstdc++-6.dll     "${BUILD_DIR}/libstdc++-6.dll-x"
   File /oname=libgcc_s_sjlj-1.dll "${BUILD_DIR}/libgcc_s_sjlj-1.dll-x"
-  File /oname=libwinpthread-1.dll "${BUILD_DIR}/libwinpthread-1.dll-x"
 
 !endif
 

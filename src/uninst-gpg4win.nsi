@@ -39,7 +39,6 @@ Section "-un.gpg4win"
   # Delete the runtime libaries
   Delete "$INSTDIR\libstdc++-6.dll"
   Delete "$INSTDIR\libgcc_s_sjlj-1.dll"
-  Delete "$INSTDIR\libwinpthread-1.dll"
 
   # Delete standard stuff.
   Delete "$INSTDIR\share\gpg4win\README.*.txt"

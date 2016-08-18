@@ -260,7 +260,6 @@ done
 # Additional runtime libraries from mingw.
 GPG4WIN_RUNTIME_LIBRARY(libgcc_s_sjlj-1)
 GPG4WIN_RUNTIME_LIBRARY(libstdc++-6)
-GPG4WIN_RUNTIME_LIBRARY(libwinpthread-1)
 
 AC_CHECK_PROGS(GLIB_GENMARSHAL, glib-genmarshal)
 AC_CHECK_PROGS(GLIB_COMPILE_SCHEMAS, glib-compile-schemas)
