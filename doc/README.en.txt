@@ -48,12 +48,10 @@ Included Gpg4win components in Version !VERSION! are:
 New in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 -----------------------------------------
 
-- When S/MIME is disabled in GpgOL it now also ignores sent mails.
-
-- Problems causing the start of Kleopatra and GPA from GpgEX and
-  GpgOL have been fixed.
-
-- Various regressions in 2.3.1 are now again fixed.
+- The cryptography library libgcrypt has been updated to version
+  1.6.6 to include a fix a problem with the random number generator.
+  [CVE-2016-6313]. Details:
+  https://lists.gnupg.org/pipermail/gnupg-announce/2016q3/000395.html
 
 3. Known Bugs (and Workarounds)
 ===============================

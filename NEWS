@@ -3,8 +3,17 @@
 # The version number given below are for the standard installers as
 # distributed by www.gpg4win.org.
 
-Noteworthy changes in version 2.3.3 (unreleased)
+Noteworthy changes in version 2.3.3 (2016-08-18)
 ------------------------------------------------
+(en) The cryptography library libgcrypt has been updated to version
+     1.6.6 to include a fix a problem with the random number generator.
+     [CVE-2016-6313] Details:
+     https://lists.gnupg.org/pipermail/gnupg-announce/2016q3/000395.html
+
+(de) Die Kryptographie Bibliothek libgcrypt wurde auf Version 1.6.6
+     aktualisiert um ein Problem im Zufallszahlengenerator zu beheben.
+     [CVE-2016-6313] Details (englisch):
+     https://lists.gnupg.org/pipermail/gnupg-announce/2016q3/000395.html
 
 ~~~~~~~~~~~~~~~
 GnuPG:          2.0.30

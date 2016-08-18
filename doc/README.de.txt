@@ -50,14 +50,10 @@ Die integrierten Gpg4win-Komponenten in Version !VERSION! sind:
 Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 -----------------------------------------
 
-- Wenn S/MIME unterstützung in GpgOL deaktiviert ist werden nun auch
-  versendete Nachrrichten nicht mehr von GpgOL behandelt.
-
-- Probleme beim starten von Kleopatra und GPA durch GpgOL und GpgEX
-  wurden behoben.
-
-- Verschiede bereits behobene Probleme die in 2.3.1 wieder aufgetreten sind
-  sind wieder korrigiert.
+- Die Kryptographie Bibliothek libgcrypt wurde auf Version 1.6.6
+  aktualisiert um ein Problem im Zufallszahlengenerator zu beheben.
+  [CVE-2016-6313]. Details (englisch):
+  https://lists.gnupg.org/pipermail/gnupg-announce/2016q3/000395.html
 
 3. Bekannte Probleme (und Abhilfen)
 ===================================
