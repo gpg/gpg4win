@@ -7,6 +7,7 @@ m4_define(`EN_FILE', `package-integrity.html')
 m4_define(`TITLE', `Integrität prüfen')
 m4_define(`MAIN', `misc')
 PAGE_START
+m4_undefine(`DE')
 
 <div id="intro">
 <h2>Integrität der Gpg4win-Pakete prüfen</h2>
