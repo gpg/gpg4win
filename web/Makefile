@@ -45,7 +45,10 @@ change-history-de.htm4: build-history.awk NEWS.last
 	LC_ALL=de_DE.latin1 awk -f build-history.awk -v lang=de < NEWS.last > $@
 
 online: all
-	echo "Going to put current contents online for www.gpg4win.org ..."
+	@echo ""
+	@echo "Going to put current contents online for www.gpg4win.org ..."
+	@echo "(ssh fingerprint may be found via https://ssl.intevation.de/)"
+	@echo ""
 	rsync -rvPC --perms --chmod=ug+rw,o+r,Dg+s,Da+x,u-s,Fg-s,o-wt --exclude='*.swp' $(ADD_INST_TYPES) $(TARGETS) $(ADD_INST_DIRS) \
 	$(USER)@www.gpg4win.org:/srv/gpg4win-www/
 
