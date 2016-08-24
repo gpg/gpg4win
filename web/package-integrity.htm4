@@ -94,7 +94,7 @@ notBefore: 2016-03-30 16:54:41
  notAfter: 2019-03-31 16:54:41
 </pre>
 <hr/>
-<p>Previously used code signging certificates were:</p>
+<p>Previously used code signing certificates were:</p>
 <pre>
       S/N: 112117F638BDC993B761C6073D63C2F86EC4
    Issuer: CN=GlobalSign CodeSigning CA - G2,O=GlobalSign nv-sa,C=BE
