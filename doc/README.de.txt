@@ -93,6 +93,17 @@ Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 - GPA und Kleopatra werden nun als Anwendungen für OpenPGP und S/MIME Dateiendungen in
   Windows registriert.
 
+- Der Dateiverschlüsselungsdialog von Kleopatra wurde neu Entworfen um weniger
+  Schritte zu enthalten und die Nutzererfahrung zu verbessern.
+
+- Kleopatra erkennt nun automatisch um welche Dateiart es sich handelt und startet
+  die entsprechende Aktion (z.B. entschlüsseln) automatisch.
+
+- Symmetrische (nur mit Passwort) verschlüsselung kann nun auch über Kleopatra
+  durchgeführt werden und mit Public-Key-Verschlüsselung kombiniert werden.
+
+- Pinentry erlaubt es nun die eingegebene Passprhase anzuzeigen.
+
 3. Bekannte Probleme (und Abhilfen)
 ===================================
 

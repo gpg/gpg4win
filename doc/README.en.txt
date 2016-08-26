@@ -87,6 +87,17 @@ New in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 
 - GPA and Kleopatra are now registred for OpenPGP and S/MIME related file extensions.
 
+- The file encryption dialog in Kleopatra has been redesigned to reduce steps and
+  improve user experience.
+
+- Kleopatra automatically detects the type of an input file and automatically starts
+  the corresponding action (e.g. decrypt).
+
+- Symmetric (password only) encryption is now accessible through Kleopatra and can
+  be combined with public-key encryption.
+
+- Pinentry now enables you to inspect the typed passphrase.
+
 3. Known Bugs (and Workarounds)
 ===============================
 
