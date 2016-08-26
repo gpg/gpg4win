@@ -287,7 +287,7 @@ chk  22843a3bdb256f59be49842abf24da76700354293a066d82ade8134bb5aa2b71
 
 # last changed: 2016-08-26
 # by: ah
-name gnupg-w32-2.1.15-20160818.exe
+name gnupg-w32-2.1.15-20160818-bin.exe
 file binary/gnupg-w32-2.1.15_20160818.exe
 chk  4802c8c08fc67964235eddacfd45553363bac0a081e1f38a76008e2bad9617a2
 
