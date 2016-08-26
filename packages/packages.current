@@ -382,116 +382,116 @@ server http://download.kde.org/stable/frameworks/
 
 ##### Paste Here #####
 # extra-cmake-modules
-# last changed: 2016-07-12
+# last changed: 2016-08-26
 # by: ah
-# verified: https://www.kde.org/info/kde-frameworks-5.24.0.php (created by gen-frameworks.sh)
-file 5.24/extra-cmake-modules-5.24.0.tar.xz
-chk 8a4fd5eac37d4c6a4998c48716efe2392c6f7ec9a124aab4c8fc26516815a106
+# verified: https://www.kde.org/info/kde-frameworks-5.25.0.php (created by gen-frameworks.sh)
+file 5.25/extra-cmake-modules-5.25.0.tar.xz
+chk 73c90e67c328076c2bee35884836087e7e9f753e48fc0063c8348b6f66b0345f
 
 # kconfig
-# last changed: 2016-07-12
+# last changed: 2016-08-26
 # by: ah
-# verified: https://www.kde.org/info/kde-frameworks-5.24.0.php (created by gen-frameworks.sh)
-file 5.24/kconfig-5.24.0.tar.xz
-chk bb57371d419457529450ba570cd2804ea127a451bfbd8e8d0cfc45cfa28982b5
+# verified: https://www.kde.org/info/kde-frameworks-5.25.0.php (created by gen-frameworks.sh)
+file 5.25/kconfig-5.25.0.tar.xz
+chk 498332f1c3fbb5e0d681cf6807502c1fe0aef74e79b29cd1e60e4096924949c2
 
 # ki18n
-# last changed: 2016-07-12
+# last changed: 2016-08-26
 # by: ah
-# verified: https://www.kde.org/info/kde-frameworks-5.24.0.php (created by gen-frameworks.sh)
-file 5.24/ki18n-5.24.0.tar.xz
-chk bb01b060e29634678ef262aed500a54e8f26bda96c003eef1d0a6b5eaf268233
+# verified: https://www.kde.org/info/kde-frameworks-5.25.0.php (created by gen-frameworks.sh)
+file 5.25/ki18n-5.25.0.tar.xz
+chk 5d9ae669b2c6a7637489ffb04d603762512fe8c78501ea5318acc387741e7167
 
 # kwidgetsaddons
-# last changed: 2016-07-12
+# last changed: 2016-08-26
 # by: ah
-# verified: https://www.kde.org/info/kde-frameworks-5.24.0.php (created by gen-frameworks.sh)
-file 5.24/kwidgetsaddons-5.24.0.tar.xz
-chk 9d551fb9a0813f2df5563856d4e7e40665e59d6b42cba80d36cb42772fe8f7ce
+# verified: https://www.kde.org/info/kde-frameworks-5.25.0.php (created by gen-frameworks.sh)
+file 5.25/kwidgetsaddons-5.25.0.tar.xz
+chk 1e099d9e021dc44fdee54220b30d3f48a72900fa88e8273ee7fea2895946a8bd
 
 # kcompletion
-# last changed: 2016-07-12
+# last changed: 2016-08-26
 # by: ah
-# verified: https://www.kde.org/info/kde-frameworks-5.24.0.php (created by gen-frameworks.sh)
-file 5.24/kcompletion-5.24.0.tar.xz
-chk bbbb6eba8786939b275bcbc72ac5b04904d77cc8324e0bf99f06d917c60696e2
+# verified: https://www.kde.org/info/kde-frameworks-5.25.0.php (created by gen-frameworks.sh)
+file 5.25/kcompletion-5.25.0.tar.xz
+chk 6a8af0a084ce697f57382f16157b0c21e4287c809819611fb7e6171e7e149d4a
 
 # kwindowsystem
-# last changed: 2016-07-12
+# last changed: 2016-08-26
 # by: ah
-# verified: https://www.kde.org/info/kde-frameworks-5.24.0.php (created by gen-frameworks.sh)
-file 5.24/kwindowsystem-5.24.0.tar.xz
-chk bf191b760eb5de97e7a2cdda8c8a59d50597e46d7714510c1e1b20aa2baabe70
+# verified: https://www.kde.org/info/kde-frameworks-5.25.0.php (created by gen-frameworks.sh)
+file 5.25/kwindowsystem-5.25.0.tar.xz
+chk b8228dddcc6487e234f81239bea7ca7ae261af8fef7b9e5d7a8b49aa3ac5d0dd
 
 # kcoreaddons
-# last changed: 2016-07-12
+# last changed: 2016-08-26
 # by: ah
-# verified: https://www.kde.org/info/kde-frameworks-5.24.0.php (created by gen-frameworks.sh)
-file 5.24/kcoreaddons-5.24.0.tar.xz
-chk 7080985a9d51358fb8638a4a048e3d045ab2fb02b7c8ad6c8b596d3bfc3a5d1b
+# verified: https://www.kde.org/info/kde-frameworks-5.25.0.php (created by gen-frameworks.sh)
+file 5.25/kcoreaddons-5.25.0.tar.xz
+chk 5479180bcb6034cfcfbe779d88d91e11233f2120ba6314d180a1f87ad3f02c09
 
 # kcodecs
-# last changed: 2016-07-12
+# last changed: 2016-08-26
 # by: ah
-# verified: https://www.kde.org/info/kde-frameworks-5.24.0.php (created by gen-frameworks.sh)
-file 5.24/kcodecs-5.24.0.tar.xz
-chk 8c849f6c3411fe6036e2b8ae3449d0f5eab86eb491d6252440ff0b860794ffe2
+# verified: https://www.kde.org/info/kde-frameworks-5.25.0.php (created by gen-frameworks.sh)
+file 5.25/kcodecs-5.25.0.tar.xz
+chk d5bef19f3575784e93b55db76bbaea7f8dba2bed4ffd9b9fbbb52db6d85f4ea5
 
 # kconfigwidgets
-# last changed: 2016-07-12
+# last changed: 2016-08-26
 # by: ah
-# verified: https://www.kde.org/info/kde-frameworks-5.24.0.php (created by gen-frameworks.sh)
-file 5.24/kconfigwidgets-5.24.0.tar.xz
-chk 82a6ea0c5a07c121ecb4d5e9071c768c3ef89aca196cfa29412916f840c9456c
+# verified: https://www.kde.org/info/kde-frameworks-5.25.0.php (created by gen-frameworks.sh)
+file 5.25/kconfigwidgets-5.25.0.tar.xz
+chk f394366fb3d3e65b2c4ea49428113c5081f8a05d2e6cc945cb2b910b55d691fe
 
 # kxmlgui
-# last changed: 2016-07-12
+# last changed: 2016-08-26
 # by: ah
-# verified: https://www.kde.org/info/kde-frameworks-5.24.0.php (created by gen-frameworks.sh)
-file 5.24/kxmlgui-5.24.0.tar.xz
-chk 174643efc8ba49aaa2e1f014088ec73fe7000121c7407973a57331081bed11e2
+# verified: https://www.kde.org/info/kde-frameworks-5.25.0.php (created by gen-frameworks.sh)
+file 5.25/kxmlgui-5.25.0.tar.xz
+chk 1ff1f07fc1bede0cb0b498de2d2b0db088639b91d0f7c39a90abfc032dbb44b2
 
 # kguiaddons
-# last changed: 2016-07-12
+# last changed: 2016-08-26
 # by: ah
-# verified: https://www.kde.org/info/kde-frameworks-5.24.0.php (created by gen-frameworks.sh)
-file 5.24/kguiaddons-5.24.0.tar.xz
-chk 2c8e27aa763c5af2877fb5f3aa0816706e3a85da49727d792e6f7920a032e945
+# verified: https://www.kde.org/info/kde-frameworks-5.25.0.php (created by gen-frameworks.sh)
+file 5.25/kguiaddons-5.25.0.tar.xz
+chk 136cb22285eeb7e15a02cdcc8e8bc65edc777dd923125bd64695eb10c9ff5d9f
 
 # kitemviews
-# last changed: 2016-07-12
+# last changed: 2016-08-26
 # by: ah
-# verified: https://www.kde.org/info/kde-frameworks-5.24.0.php (created by gen-frameworks.sh)
-file 5.24/kitemviews-5.24.0.tar.xz
-chk dc298914af2436003fcf1dd6dbd03d9a11a2063af83b5e735647f43061ea6e78
+# verified: https://www.kde.org/info/kde-frameworks-5.25.0.php (created by gen-frameworks.sh)
+file 5.25/kitemviews-5.25.0.tar.xz
+chk 98078899862514cc16ceff0275fe5eab43bc14e8f361af11a8e3c45a2fc5a284
 
 # kitemmodels
-# last changed: 2016-07-12
+# last changed: 2016-08-26
 # by: ah
-# verified: https://www.kde.org/info/kde-frameworks-5.24.0.php (created by gen-frameworks.sh)
-file 5.24/kitemmodels-5.24.0.tar.xz
-chk c9403de0a6a155931cb96790dc1407c06d95ee096a5ab9795bbfe11bb82537e8
+# verified: https://www.kde.org/info/kde-frameworks-5.25.0.php (created by gen-frameworks.sh)
+file 5.25/kitemmodels-5.25.0.tar.xz
+chk e44a5c4ba997993057e8ebda6df400c3f1b97bf81d11bb02af27950ff1cd749d
 
 # kiconthemes
-# last changed: 2016-07-12
+# last changed: 2016-08-26
 # by: ah
-# verified: https://www.kde.org/info/kde-frameworks-5.24.0.php (created by gen-frameworks.sh)
-file 5.24/kiconthemes-5.24.0.tar.xz
-chk d5c0a0422cdc655fc3a800a8dfbb97bd0a838456b72176cdf6ee7363c58bbfcc
+# verified: https://www.kde.org/info/kde-frameworks-5.25.0.php (created by gen-frameworks.sh)
+file 5.25/kiconthemes-5.25.0.tar.xz
+chk dfea9b4da835c028b62faec6550d279a3a75874ff88d996d2b603be4f9b228b5
 
 # breeze-icons
-# last changed: 2016-07-12
+# last changed: 2016-08-26
 # by: ah
-# verified: https://www.kde.org/info/kde-frameworks-5.24.0.php (created by gen-frameworks.sh)
-file 5.24/breeze-icons-5.24.0.tar.xz
-chk a2b344907aab4e0549d72740f4ebde0e60566ae5240d63f7584da7d4655c07b6
+# verified: https://www.kde.org/info/kde-frameworks-5.25.0.php (created by gen-frameworks.sh)
+file 5.25/breeze-icons-5.25.0.tar.xz
+chk e274c7f5c71c177e2e9d8ced9c49cd052ec2f726cb693c7df73e96af12277e8f
 
 # karchive
-# last changed: 2016-07-12
+# last changed: 2016-08-26
 # by: ah
-# verified: https://www.kde.org/info/kde-frameworks-5.24.0.php (created by gen-frameworks.sh)
-file 5.24/karchive-5.24.0.tar.xz
-chk f86f35bf4a216348ab09aaef36ee2aca3b3223ceea78299f6cd9e2ed3274b6d8
+# verified: https://www.kde.org/info/kde-frameworks-5.25.0.php (created by gen-frameworks.sh)
+file 5.25/karchive-5.25.0.tar.xz
+chk 0c338f1e1adc5522de6555fa3fa8c6ebcde29ce48e1f5959beca12d46aea88d8
 ##### End Paste #####
 
 # KDE Applications
@@ -533,16 +533,16 @@ chk 39e6d9c3d479a73b62a7310b295cd3a6b5bac03bac82396645b43fa12329f74a
 # by: ah
 # verified: Tarball created by ah.
 
-file gpgmepp/gpgmepp-201608101758.tar.xz
-chk 42c6c6a3d64a179280e1fe7359624a4a68b44703e6de5c92aeea50abe2063116
+file gpgmepp/gpgmepp-201608261655.tar.xz
+chk 0cbe8d70f043f5afbc75461a04b7b3ac839a2ae54e131e06b0837ee64c04ca06
 
 
 # Libkleo
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah.
-file libkleo/libkleo-201608101800.tar.xz
-chk b99424789e2fe69dc60df980315efa46d56b747879283acfa2d03ffe21fcc4a8
+file libkleo/libkleo-201608261656.tar.xz
+chk 40e982aa06fddfea50c3794b2fcb73232458cbb5111d5201a59d94a1bfe2ece2
 
 # KDE-L10n
 # last changed: 2016-02-19

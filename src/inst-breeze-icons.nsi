@@ -227,7 +227,6 @@ Section "-breeze-icons" SEC_breeze_icons
 
   SetOutPath "$INSTDIR\share\icons\breeze-dark\apps\22"
 
-  File ${prefix}/share/icons/breeze-dark/apps/22/internet-mail.svg
   File ${prefix}/share/icons/breeze-dark/apps/22/kde.svg
 
   SetOutPath "$INSTDIR\share\icons\breeze-dark\apps\32"
@@ -403,6 +402,7 @@ Section "-breeze-icons" SEC_breeze_icons
   File ${prefix}/share/icons/breeze/actions/22/view-certificate-sign.svg
   File ${prefix}/share/icons/breeze/actions/22/view-refresh.svg
   File ${prefix}/share/icons/breeze/actions/22/window-close.svg
+  File ${prefix}/share/icons/breeze/actions/22/question.svg
 
   SetOutPath "$INSTDIR\share\icons\breeze\actions\24"
 
@@ -480,7 +480,6 @@ Section "-breeze-icons" SEC_breeze_icons
 
   SetOutPath "$INSTDIR\share\icons\breeze\apps\22"
 
-  File ${prefix}/share/icons/breeze/apps/22/internet-mail.svg
   File ${prefix}/share/icons/breeze/apps/22/kde.svg
 
   SetOutPath "$INSTDIR\share\icons\breeze\apps\32"

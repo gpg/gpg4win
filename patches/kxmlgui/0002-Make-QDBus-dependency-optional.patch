@@ -43,7 +43,7 @@ index 74afa01..a6691fe 100644
 +option(FORCE_DISABLE_DBUS "Force building KXmlGui without a dependency to QDbus. This will break KMainWindow integration and style change notifications. [default=OFF]" OFF)
 
  # Dependencies
- set(REQUIRED_QT_VERSION 5.4.0)
+ set(REQUIRED_QT_VERSION 5.5.0)
 -find_package(Qt5 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Widgets DBus Xml Network PrintSupport)
 -
 +find_package(Qt5 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Widgets Xml Network PrintSupport)
