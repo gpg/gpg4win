@@ -285,15 +285,15 @@ chk  9268e1cc487de5e6e4460fca612a06e4f383072ac43ae90603e5e46783d3e540
 file libassuan/libassuan-2.4.3.tar.bz2
 chk  22843a3bdb256f59be49842abf24da76700354293a066d82ade8134bb5aa2b71
 
-# last changed: 2016-07-22
+# last changed: 2016-08-26
 # by: ah
-name gnupg-w32-2.1.14-20160714.exe
-file binary/gnupg-w32-2.1.14_20160714.exe
-chk  43ac527c85cc2651d4c96fa7c104caadf303ae88dff3cf8ec27f98ef76fa2d89
+name gnupg-w32-2.1.15-20160818.exe
+file binary/gnupg-w32-2.1.15_20160818.exe
+chk  4802c8c08fc67964235eddacfd45553363bac0a081e1f38a76008e2bad9617a2
 
-name gnupg-w32-2.1.14-20160714-src.tar.xz
-file binary/gnupg-w32-2.1.14_20160714.tar.xz
-chk  80364f956ce90d3924ef750ee8c47a883a2085cc44545b750207d2801ac2e8ae
+name gnupg-w32-2.1.15-20160818-src.tar.xz
+file binary/gnupg-w32-2.1.15_20160818.tar.xz
+chk  0f6f07ea28023bbef458c9dd2b04c20260d6c59a5319d0bdab750d933ef18999
 
 # TODO: Switch back to released version
 # last changed: 2015-12-11
@@ -512,14 +512,14 @@ server http://files.intevation.de/projects/gpg4all
 # Pinentry master to show new pinentry features under devel.
 # by: ah
 # verified: tarball created by ah
-file pinentry/pinentry-0.9.8-beta18.tar.bz2
-chk 67b017001928ad072f57435b72d473a961f64bfb17c792e42984dc31f72ae7d1
+file pinentry/pinentry-0.9.8-beta26.tar.bz2
+chk b85a1aa93375758e3a3c3b0f5938799fd6310a882cb1d6d027462dc2c9297a97
 
 # ditto for gpgme.
 # by: ah
 # verified: tarball created by ah
-file gpgme/gpgme-1.7.0-beta274.tar.bz2
-chk cd0a9bd05541270288fd9e3c990cf221a3ec890176c7cc7a59a1e4d8e5d402d4
+file gpgme/gpgme-1.7.0-beta319.tar.bz2
+chk 39e6d9c3d479a73b62a7310b295cd3a6b5bac03bac82396645b43fa12329f74a
 
 # Gpgmepp
 # last changed: 2016-01-21
