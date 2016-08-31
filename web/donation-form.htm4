@@ -43,7 +43,7 @@
           <textarea value=""   name="os1" placeholder="Give us feedback!" rows="3" cols="60"></textarea>
         
           <!-- pay button -->
-          <input type="hidden" name="lc" value="EN">
+          <input type="hidden" name="lc" value="US">
           <input name="cmd" value="_donations" type="hidden">
           <input name="business" value="paypal@intevation.de" type="hidden">
           <input name="undefined_quantity" value="1" type="hidden">
