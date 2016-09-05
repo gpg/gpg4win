@@ -50,7 +50,6 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         patches/qtsvg/qtsvg-link-zlib.patch \
         patches/extra-cmake-modules/0001-Add-convert-utility-support-for-Windows-icons.patch \
         patches/kleopatra/0005-Hack-generated-conf-files-for-Crosscompiling.patch \
-        patches/kleopatra/fix-paperkey.patch \
         patches/libgpg-error-1.21/0001-Add-FD_ISSET-replacement-for-Windows.patch \
         patches/gpgex-1.0.4/0001-Prefer-kleowrapped-gpgwrapped-binaries.patch \
         patches/gpgex-1.0.4/0002-Fix-loop-logic-error-in-new-server-name-detection.patch \
