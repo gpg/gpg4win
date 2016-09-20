@@ -28,6 +28,7 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         doc/license-page doc/GPLv3 \
         build-aux/git-log-footer build-aux/git-log-fix \
         patches/dirmngr-1.1.1/dirmngr-pth.patch \
+        patches/dirmngr-1.1.1/dirmngr-load-crl-from-fs.patch \
         patches/glib-2.41.5/01-socket.patch \
         patches/gnupg2/0001-Enable-wildcard-expansion-with-mingw-w64.patch \
         patches/gnupg2/0002-Let-wchar_to_native-convert-to-console-codepage.patch \
@@ -44,11 +45,11 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         patches/gnutls-2.12.23/07-cve-2015-0294.patch \
         patches/gnutls-2.12.23/fix-gcrypt-private-api-usage.patch \
         patches/gnutls-2.12.23/gnulib-mingw-w64-fix.patch \
-		patches/gnutls-2.12.23/25_updatedgdocfrommaster.patch \
+        patches/gnutls-2.12.23/25_updatedgdocfrommaster.patch \
         patches/libtasn1-2.14/gnulib-mingw-w64-fix.patch \
-		patches/w32pth-2.0.5/workaround-broken-libtool.patch \
-		patches/scute-1.4.0/workaround-broken-libtool.patch \
-		patches/libassuan-2.4.0/0001-Fix-windows-build-with-mingw-w64-2.0.x.patch \
+        patches/w32pth-2.0.5/workaround-broken-libtool.patch \
+        patches/scute-1.4.0/workaround-broken-libtool.patch \
+        patches/libassuan-2.4.0/0001-Fix-windows-build-with-mingw-w64-2.0.x.patch \
         patches/gpgex-1.0.4/0001-Prefer-kleowrapped-gpgwrapped-binaries.patch \
         patches/gpgex-1.0.4/0002-Fix-loop-logic-error-in-new-server-name-detection.patch \
         patches/gpgol-1.4.0/0001-Fix-UI-Server-startup.patch \

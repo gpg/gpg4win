@@ -1,0 +1,15 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+--- a/src/crlcache.c
++++ b/src/crlcache.c
+@@ -2360,7 +2360,7 @@ crl_cache_load (ctrl_t ctrl, const char *filename)
+   FILE *fp;
+   ksba_reader_t reader;
+ 
+-  fp = fopen (filename, "r");
++  fp = fopen (filename, "rb");
+   if (!fp)
+     {
+       err = gpg_error_from_errno (errno);
