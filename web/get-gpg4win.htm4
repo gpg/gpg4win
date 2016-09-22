@@ -8,6 +8,7 @@ m4_define(`DE_FILE', `get-gpg4win-de.html')
 m4_define(`TITLE', `Get Gpg4win')
 m4_define(`MAIN', `download')
 
+m4_define(`NO_DOWNLOAD_HEADER')
 PAGE_START
 
 

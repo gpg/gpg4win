@@ -2,118 +2,188 @@
 <div class="donate_box">
     <h3>Bitte spenden Sie für Gpg4win, um die Pflege und Weiterentwicklung zu sichern!</h3>
     <p>Der Download von Gpg4win VERSION beginnt nach Abschluss Ihrer Spende.</p>
-    <!-- amount -->
-    <p>
-    <form name="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
-    <input type="number" name="amount" value="20" size="4" id="amountfield"
-        onchange="amountslider.value=value; bitpayamountfield.value=value; checkAmount(value)">
-    <select size="1" name="currency_code" id="currencyfield">
-      <option selected="selected" value="EUR">EUR</option>
-      <option value="USD">USD</option>
-    </select>
-    <br>
-    <input type="range" value="20" min="0" max="150" step="5" id="amountslider"
-        oninput="amountfield.value=value; bitpayamountfield.value=value; checkAmount(value)">
-   
-    <div id="pay_div">
-      <ul class="tabs">
 
+      <ul class="tabs">
       <!-- paypal -->
       <li>
-      <input id="tab1" type="radio" value="paypal" name="paymethod" checked="checked">
-      <label for="tab1">PayPal</label>
-      <div id="paypal_tab" class="tab-content">
-          <hr>
-          <!-- list me -->
-          <img class="pay-logo" src="img/paypal-logo.png">
-          <p>
-          <label>
-            <input type="hidden"   name="on0" value="Spende und Namen veröffentlichen">
-            <input type="hidden"   name="os0" value="Nein">
-            <input type="checkbox" name="os0" value="Ja">
-            <span>In die <a href="donate.html">Liste der Spender</a> eintragen
-              (für Spenden ab 20,-)</span>
-          </label>
-          <input type="hidden" name="charset" value="utf-8">
-        
-          <!-- feedback -->
-          <p>
-          <input type="hidden" name="on1" value="Rückmeldung">
-          <input type="hidden" name="os1" value="">
-          <textarea value=""   name="os1" placeholder="Geben Sie uns Rückmeldung!" rows="3" cols="60"></textarea>
-        
-          <!-- pay button -->
-          <input type="hidden" name="lc" value="DE">
-          <input name="cmd" value="_donations" type="hidden">
-          <input name="business" value="paypal@intevation.de" type="hidden">
-          <input name="undefined_quantity" value="1" type="hidden">
-          <input name="item_name" value="Gpg4win" type="hidden">
-          <input name="no_shipping" value="1" type="hidden">
-          <input name="no_note" value="1" type="hidden">
-          <input name="image_url" value="https://gpg4win.org/img/logo.png" type="hidden">
-          <input name="return" value="https://gpg4win.org/thanks-de.html" type="hidden">
-          <input name="cbt" value="Gpg4win jetzt herunterladen!" type="hidden">
-          <p> 
-          <button class="donateButton" name="submit" alt="Spenden via PayPal"
-              type="submit">Spenden & Herunterladen</button>
-          oder <a href="thanks-de.html">kostenlos herunterladen</a>
-          </form>
-      </div>  
+	<p><i>Einmalige Spenden via</i></p>
+	<input id="tab1" type="radio" value="paypal" name="paymethod" checked="checked">
+	<label for="tab1">PayPal</label>
+	<div id="paypal_tab" class="tab-content">
+	  <img class="pay-logo" src="img/paypal-logo.png">
+	  <!-- amount -->		
+	  <form name="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+	    <input type="text" name="amount" value="20" size="4" id="amountfield"
+		onchange="amountslider.value=value; bitpayamountfield.value=value; checkAmount(value)">
+	    <select size="1" name="currency_code" id="currencyfield">
+	      <option selected="selected" value="EUR">EUR</option>
+	      <option value="USD">USD</option>
+	    </select>
+	    <br>
+	    <input type="range" value="20" min="0" max="150" step="5" id="amountslider"
+		oninput="amountfield.value=value; bitpayamountfield.value=value; checkAmount(value)">
+	    <br>
+	    
+	    <div id="pay_div">
+	      <!-- list me -->
+	      <p>
+	      <label>
+		<input type="hidden"   name="on0" value="Spende und Namen veröffentlichten">
+		<input type="hidden"   name="os0" value="Nein">
+		<input type="checkbox" name="os0" value="Ja">
+		<span>In die <a href="#sponsors">Liste der Spender</a>
+		  (für Spenden ab 20,-)</span>
+	      </label>
+	    
+	      <!-- feedback -->
+	      <p>
+	      <input type="hidden" name="on1" value="Rückmeldung">
+	      <input type="hidden" name="os1" value="">
+	      <textarea value=""   name="os1" placeholder="Geben Sie uns Rückmeldung!" rows="3" cols="48"></textarea>
+	    
+	      <!-- pay button -->
+	      <input type="hidden" name="lc" value="DE">
+	      <input name="cmd" value="_donations" type="hidden">
+	      <input name="business" value="paypal@intevation.de" type="hidden">
+	      <input name="undefined_quantity" value="1" type="hidden">
+	      <input name="item_name" value="Gpg4win" type="hidden">
+	      <input name="no_shipping" value="1" type="hidden">
+	      <input name="no_note" value="1" type="hidden">
+	      <input name="image_url" value="https://gpg4win.org/img/logo.png" type="hidden">
+	      <input name="return" value="https://gpg4win.org/thanks.html" type="hidden">
+	      <input name="cbt" value="Gpg4win jetzt herunterladen!" type="hidden">
+	      <p> 
+	      <button class="donateButton" name="submit" alt="Spenden via PayPal"
+		  type="submit">Spenden&Download</button>
+	      oder <a href="thanks.html">kostenlos herunterladen</a>
+	    </div>
+	    
+	    <!-- download -->
+	    <div id="download_div">
+	      <p>
+	      <a href="thanks.html">Gpg4win VERSION herunterladen</a> ohne zu spenden.
+	      </p>
+	    </div>
+	  </form>
+	</div>  
       </li>
     
       <!-- bitcoin -->
       <li>
-      <input id="tab2" type="radio" value="bitcoin" name="paymethod">
-      <label for="tab2">Bitcoin</label>
-      <div id="bitcoin_tab" class="tab-content">
-        <hr>
-        <img class="pay-logo" src="img/bitcoin-logo.png">
-        <p>
-        <p>
-        <form name="bitpay" action="https://bitpay.com/checkout" method="post">
-          <input type="hidden" name="action" value="checkout">
-          <input type="hidden" name="price" id="bitpayamountfield" value="20">
-          <input type="hidden" name="posData" value="">
-          <input type="hidden" name="data" value="znBoq4gBRdiwJFbMisx6mSN6NDgT3s3CVWB7OJjZtPAv/Rhs2E4RHrBOlpdo0jPZWpQEljG8jFfC/T0BtxXnBut5RRt/dqpE3YNa32FY5iPOjWp+bJsm1xnCV6l96/FKXbgcBXxWKFK1UfIAtadQ1CI9svdjUrFy+Ob7T1rKHdMCN5/Y7oYa9ob1BmDUmG7ItH+63ftqaDj+kO3BQ2RiFUhwZDCSJVk47uvMaThEUD6YBR0djWgwz0nYyrz7Rnmy" />
-          <p> 
-          <button class="donateButton" name="submit" alt="Spenden via bitpay"
-              type="submit">Spenden & Herunterladen</button>
-          oder <a href="thanks-de.html">kostenlos herunterladen</a>
-        </form>
-      </div>
-      </li>
-    
-      <!-- bank transfer -->
-      <li>
-      <input id="tab3" type="radio" value="transfer" name="paymethod" >
-      <label for="tab1">Überweisung</label>
-      <div id="transfer_tab" class="tab-content">
-        <hr>
-        <b>Spendenkonto:</b>
-        <blockquote>
-        Empfänger: Intevation GmbH<br>
-        IBAN: DE33 2654 0070 0539 2006 00<br>
-        BIC: COBADEFFXXX (Commerzbank Osnabr&uuml;ck)<br>
-        Verwendungszweck: "Gpg4win Spende"
-        </blockquote>
-        <p>
-        <a href="mailto:gpg4win-professional@intevation.de">Kontaktieren Sie uns</a>,
-        wenn Sie eine Rechnung benötigen (nur bei Beträgen ab 100,- EUR).
-        <p>
-        <a href="thanks-de.html">Gpg4win VERSION herunterladen</a> nach Abschluss der Überweisung.
-        </p>
-      </div>
-      </li>
-      </ul>
-    </div>
-    
-    <!-- download -->
-    <div id="download_div">
-      <p>
-      <a href="thanks-de.html">Gpg4win VERSION herunterladen</a> ohne zu spenden.
-      </p>
-    </div>
+	<input id="tab2" type="radio" value="bitcoin" name="paymethod">
+	<label for="tab2">Bitcoin</label>
+	<div id="bitcoin_tab" class="tab-content">
+	  <p><img class="pay-logo" src="img/bitcoin-logo.png"></p>
+	  <input type="text" name="amount" value="20" size="4" id="amountfield2"
+	    onchange="amountslider2.value=value; bitpayamountfield.value=value; checkAmount(value)">
+	  <select size="1" name="currency_code" id="currencyfield">
+	    <option selected="selected" value="EUR">EUR</option>
+	    <option value="USD">USD</option>
+	  </select>
+	  <br>
+	  <input type="range" value="20" min="0" max="150" step="5" id="amountslider2"
+	  oninput="amountfield2.value=value; bitpayamountfield.value=value; checkAmount(value)">
 
+	  <div id="pay_div">	
+	    <p>
+	    <form name="bitpay" action="https://bitpay.com/checkout" method="post">
+	    <input type="hidden" name="action" value="checkout">
+	    <input type="hidden" name="price" id="bitpayamountfield" value="20">
+	    <input type="hidden" name="posData" value="">
+	    <input type="hidden" name="data" value="znBoq4gBRdiwJFbMisx6mSN6NDgT3s3CVWB7OJjZtPAv/Rhs2E4RHrBOlpdo0jPZWpQEljG8jFfC/T0BtxXnBut5RRt/dqpE3YNa32FY5iPOjWp+bJsm1xnCV6l96/FKXbgcBXxWKFK1UfIAtadQ1CI9svdjUrFy+Ob7T1rKHdMCN5/Y7oYa9ob1BmDUmG7ItH+63ftqaDj+kO3BQ2RiFUhwZDCSJVk47uvMaThEUD6YBR0djWgwz0nYyrz7Rnmy">
+	    <p> 
+	    <button class="donateButton" name="submit" alt="Spenden via bitpay"
+              type="submit">Spenden & Herunterladen</button>
+	    oder <a href="thanks-de.html">kostenlos herunterladen</a>
+	    </form>
+	  </div>	    
+	</div>
+	</li>
+      
+	<!-- bank transfer -->
+	<li>
+	  <input id="tab3" type="radio" value="transfer" name="paymethod" >
+	  <label for="tab3">Überweisung</label>
+	  <div id="transfer_tab" class="tab-content">
+	    <b>Spendenkonto:</b>
+	    <blockquote>
+	    Empfänger: Intevation GmbH<br>
+	    IBAN: DE33 2654 0070 0539 2006 00<br>
+	    BIC: COBADEFFXXX (Commerzbank Osnabr&uuml;ck)<br>
+	    Verwendungszweck: "Gpg4win Spende"
+	    </blockquote>
+	    <p>
+	    <a href="mailto:gpg4win-professional@intevation.de">Kontaktieren Sie uns</a>,
+	    wenn Sie eine Rechnung benötigen (nur bei Beträgen ab 100,- EUR).
+	    <p>
+	    <a href="thanks-de.html">Gpg4win VERSION herunterladen</a> nach Abschluss der Überweisung.
+	    </p>
+	  </div>
+	</li>
+      
+	<!-- reccurent donation -->
+	<br>
+	<p><i>Regelmäßige Spenden via</i></p>
+	<li>
+	  <input id="tab4" type="radio" value="paypal" name="paymethod">
+	  <label for="tab4">PayPal</label>
+	  <div id="paypal_tab" class="tab-content">
+	    <img class="pay-logo" src="img/paypal-logo.png">
+	    <!-- amount -->
+	    <form name="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+	      <input type="text" name="a3" value="20" size="4" id="amountfield"
+		  onchange="amountslider.value=value; bitpayamountfield.value=value; checkAmount(value)">
+	      <select size="1" name="currency_code" id="currencyfield">
+		<option selected="selected" value="EUR">EUR</option>
+		<option value="USD">USD</option>
+	      </select>
+	      <input name="t3" type="radio" value=M id="monthly" checked="checked">
+	      <label for="monthly">Monatlich</label>
+	      <input name="t3" type="radio" value=Y id="annually">
+	      <label for="annually">Jährlich</label>
+
+	      <br>
+	      <input type="range" value="20" min="0" max="150" step="5" id="amountslider"
+		  oninput="amountfield.value=value; bitpayamountfield.value=value; checkAmount(value)">
+	      <br>
+    
+	      <!-- list me -->
+	      <p>
+	      <label>
+		<input type="hidden"   name="on0" value="Spende und Namen veröffentlichen">
+		<input type="hidden"   name="os0" value="Nein">
+		<input type="checkbox" name="os0" value="Ja">
+		<span>In die <a href="#sponsors">Liste der Spender</a> eintragen
+		   (für Spenden ab 20,-)</span>
+	      </label>
+	    
+	      <!-- feedback -->
+	      <p>
+	      <input type="hidden" name="on1" value="Rückmeldung">
+	      <input type="hidden" name="os1" value="">
+	      <textarea value=""   name="os1" placeholder="Geben Sie uns Rückmeldung!" rows="3" cols="48"></textarea>
+	    
+	      <!-- pay button -->
+	      <input type="hidden" name="lc" value="DE">
+	      <input name="cmd" value="_xclick-subscriptions" type="hidden">
+	      <input name="business" value="paypal@intevation.de" type="hidden">
+	      <input name="undefined_quantity" value="1" type="hidden">
+	      <input name="item_name" value="Gpg4win" type="hidden">
+	      <input name="no_shipping" value="1" type="hidden">
+	      <input name="no_note" value="1" type="hidden">
+	      <input name="image_url" value="https://gpg4win.org/img/logo.png" type="hidden">
+	      <input name="return" value="https://gpg4win.org/thanks.html" type="hidden">
+	      <input name="cbt" value="Gpg4win jetzt herunterladen!" type="hidden">
+	      <input type="hidden" name="p3" value="1">
+	      <input type="hidden" name="src" value="1">
+	      <p> 
+	      <button class="donateButton" name="submit" alt="Spenden via PayPal"
+		  type="submit">Spenden&Download</button>
+	      oder <a href="thanks-de.html">kostenlos herunterladen </a>
+	    </form>
+	  </div>  
+	</li>  
+      </ul>
 </div>
 
 <script type="text/javascript">
