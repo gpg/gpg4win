@@ -231,6 +231,9 @@ td {
 .donate_box .pay-logo {
     width: 100px;
 }
+.donate_box .qrcode {
+    width: 130px;
+}
 #tab4 > label{
 	font-weiht: bold;
 }

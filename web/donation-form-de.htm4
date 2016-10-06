@@ -3,7 +3,7 @@
     <h3>Bitte spenden Sie für Gpg4win, um die Pflege und Weiterentwicklung zu sichern!</h3>
     <p>Der Download von Gpg4win VERSION beginnt nach Abschluss Ihrer Spende.</p>
 
-      <ul class="tabs">
+    <ul class="tabs">
       <!-- paypal -->
       <li>
 	<p><i>Einmalig spenden via</i></p>
@@ -14,14 +14,14 @@
 	  <!-- amount -->
 	  <form name="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
 	    <input type="text" name="amount" value="20" size="4" id="amountfield"
-		onchange="amountslider.value=value; bitpayamountfield.value=value; checkAmount(value)">
+		onchange="amountslider.value=value; checkAmount(value)">
 	    <select size="1" name="currency_code" id="currencyfield">
 	      <option selected="selected" value="EUR">EUR</option>
 	      <option value="USD">USD</option>
 	    </select>
 	    <br>
 	    <input type="range" value="20" min="0" max="150" step="5" id="amountslider"
-		oninput="amountfield.value=value; bitpayamountfield.value=value; checkAmount(value)">
+		oninput="amountfield.value=value; checkAmount(value)">
 	    <br>
 
 	    <div id="pay_div">
@@ -74,45 +74,22 @@
 	<input id="tab2" type="radio" value="bitcoin" name="paymethod">
 	<label for="tab2">Bitcoin</label>
 	<div id="bitcoin_tab" class="tab-content">
-	  <p><img class="pay-logo" src="img/bitcoin-logo.png"></p>
-
-          <!-- TODO:
-	  <input type="text" name="amount" value="20" size="4" id="amountfield2"
-	    onchange="amountslider2.value=value; bitpayamountfield.value=value; checkAmount(value)">
-	  <select size="1" name="currency_code" id="currencyfield">
-	    <option selected="selected" value="EUR">EUR</option>
-	    <option value="USD">USD</option>
-	  </select>
-	  <br>
-	  <input type="range" value="20" min="0" max="150" step="5" id="amountslider2"
-	  oninput="amountfield2.value=value; bitpayamountfield.value=value; checkAmount(value)">
-
-	  <div id="pay_div">
-	    <p>
-	    <form name="bitpay" action="https://bitpay.com/checkout" method="post">
-	    <input type="hidden" name="action" value="checkout">
-	    <input type="hidden" name="price" id="bitpayamountfield" value="20">
-	    <input type="hidden" name="posData" value="">
-	    <input type="hidden" name="data" value="znBoq4gBRdiwJFbMisx6mSN6NDgT3s3CVWB7OJjZtPAv/Rhs2E4RHrBOlpdo0jPZWpQEljG8jFfC/T0BtxXnBut5RRt/dqpE3YNa32FY5iPOjWp+bJsm1xnCV6l96/FKXbgcBXxWKFK1UfIAtadQ1CI9svdjUrFy+Ob7T1rKHdMCN5/Y7oYa9ob1BmDUmG7ItH+63ftqaDj+kO3BQ2RiFUhwZDCSJVk47uvMaThEUD6YBR0djWgwz0nYyrz7Rnmy">
-	    <p>
-	    <button class="donateButton" name="submit" alt="Spenden via bitpay"
-              type="submit">Spenden & Download</button>
-	    oder <a href="thanks-de.html">kostenlos herunterladen</a>
-	    </form>
-	  </div>
-          -->
-
+	  <p>
+          <img class="pay-logo" src="img/bitcoin-logo.png">
+          <p>Bitcoins können Sie uns anonym an folgende Adresse spenden:</p>
+          <a href="bitcoin:1M3GipkG2YyHPDMPewqTpup83jitXvBg9N?label=gpg4win.org">
+            1M3GipkG2YyHPDMPewqTpup83jitXvBg9N
+          </a>
           <p>
-          Entschuldigung! Spenden mit Bitcoins ist aktuell nicht möglich. Wir arbeiten dran.
-          Bitte nutzen Sie stattdessen eine andere Zahlmethode (PayPal oder Überweisung).
-          Danke.
-	  </p>
+	  <img class="qrcode" src="img/bitcoin-qrcode.png">
+          <p>
+	  Nach Abschluss der Transaktion: <a href="thanks-de.html">Gpg4win VERSION herunterladen</a>
 	</div>
-	</li>
+      </li>
 
-	<!-- bank transfer -->
-	<li>
-	  <input id="tab3" type="radio" value="transfer" name="paymethod" >
+      <!-- bank transfer -->
+      <li>
+          <input id="tab3" type="radio" value="transfer" name="paymethod" >
 	  <label for="tab3">Überweisung</label>
 	  <div id="transfer_tab" class="tab-content">
 	    <b>Spendenkonto:</b>
@@ -126,15 +103,15 @@
 	    <a href="mailto:gpg4win-professional@intevation.de">Kontaktieren Sie uns</a>,
 	    wenn Sie eine Rechnung benötigen (nur bei Beträgen ab 100,- EUR).
 	    <p>
-	    <a href="thanks-de.html">Gpg4win VERSION herunterladen</a> nach Abschluss der Überweisung.
+	    Nach Abschluss der Überweisung: <a href="thanks-de.html">Gpg4win VERSION herunterladen</a>
 	    </p>
 	  </div>
-	</li>
+       </li>
 
-	<!-- reccurent donation -->
-	<br>
-	<p><i>Regelmäßig spenden via</i></p>
-	<li>
+       <!-- reccurent donation -->
+       <br>
+       <p><i>Regelmäßig spenden via</i></p>
+       <li>
 	  <input id="tab4" type="radio" value="paypal" name="paymethod">
 	  <label for="tab4">PayPal</label>
 	  <div id="paypal_tab" class="tab-content">
@@ -142,7 +119,7 @@
 	    <!-- amount -->
 	    <form name="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
 	      <input type="text" name="a3" value="20" size="4" id="amountfield"
-		  onchange="amountslider.value=value; bitpayamountfield.value=value; checkAmount(value)">
+		  onchange="amountslider.value=value; checkAmount(value)">
 	      <select size="1" name="currency_code" id="currencyfield">
 		<option selected="selected" value="EUR">EUR</option>
 		<option value="USD">USD</option>
@@ -154,7 +131,7 @@
 
 	      <br>
 	      <input type="range" value="20" min="0" max="150" step="5" id="amountslider"
-		  oninput="amountfield.value=value; bitpayamountfield.value=value; checkAmount(value)">
+		  oninput="amountfield.value=value; checkAmount(value)">
 	      <br>
     
 	      <!-- list me -->
