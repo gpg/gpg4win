@@ -6,12 +6,12 @@
       <ul class="tabs">
       <!-- paypal -->
       <li>
-	<p><i>Onetime Donation with</i></p>
+	<p><i>Onetime donation with</i></p>
 	<input id="tab1" type="radio" value="paypal" name="paymethod" checked="checked">
 	<label for="tab1">PayPal</label>
 	<div id="paypal_tab" class="tab-content">
 	  <img class="pay-logo" src="img/paypal-logo.png">
-	  <!-- amount -->		
+	  <!-- amount -->
 	  <form name="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
 	    <input type="text" name="amount" value="20" size="4" id="amountfield"
 		onchange="amountslider.value=value; bitpayamountfield.value=value; checkAmount(value)">
@@ -23,24 +23,25 @@
 	    <input type="range" value="20" min="0" max="150" step="5" id="amountslider"
 		oninput="amountfield.value=value; bitpayamountfield.value=value; checkAmount(value)">
 	    <br>
-	    
+
 	    <div id="pay_div">
 	      <!-- list me -->
 	      <p>
 	      <label>
-		<input type="hidden"   name="on0" value="Publish your donation and name">
-		<input type="hidden"   name="os0" value="No">
-		<input type="checkbox" name="os0" value="Yes">
-		<span>List me on the <a href="#sponsors">list of sponsors</a>
-		  (for donations from 20,- up)</span>
+		    <input type="hidden"   name="on0" value="Publish your donation and name">
+		    <input type="hidden"   name="os0" value="No">
+		    <input type="checkbox" name="os0" value="Yes">
+		    <span>Add me to the <a href="donate.html#sponsors">list of sponsors</a>
+		    (from 20,- EUR/USD up)</span>
 	      </label>
-	    
+          <input type="hidden" name="charset" value="utf-8">
+
 	      <!-- feedback -->
 	      <p>
 	      <input type="hidden" name="on1" value="Feedback">
 	      <input type="hidden" name="os1" value="">
-	      <textarea value=""   name="os1" placeholder="Give us feedback!" rows="3" cols="48"></textarea>
-	    
+	      <textarea value=""   name="os1" placeholder="I am using Gpg4win because ..." rows="3" cols="48"></textarea>
+
 	      <!-- pay button -->
 	      <input type="hidden" name="lc" value="US">
 	      <input name="cmd" value="_donations" type="hidden">
@@ -52,12 +53,12 @@
 	      <input name="image_url" value="https://gpg4win.org/img/logo.png" type="hidden">
 	      <input name="return" value="https://gpg4win.org/thanks.html" type="hidden">
 	      <input name="cbt" value="Download Gpg4win now!" type="hidden">
-	      <p> 
+	      <p>
 	      <button class="donateButton" name="submit" alt="Donate via PayPal"
 		  type="submit">Donate & Download</button>
 	      or <a href="thanks.html">download for free </a>
 	    </div>
-	    
+
 	    <!-- download -->
 	    <div id="download_div">
 	      <p>
@@ -65,7 +66,7 @@
 	      </p>
 	    </div>
 	  </form>
-	</div>  
+	</div>
       </li>
     
       <!-- bitcoin -->
@@ -74,6 +75,8 @@
 	<label for="tab2">Bitcoin</label>
 	<div id="bitcoin_tab" class="tab-content">
 	  <p><img class="pay-logo" src="img/bitcoin-logo.png"></p>
+
+      <!-- TODO:
 	  <input type="text" name="amount" value="20" size="4" id="amountfield2"
 	    onchange="amountslider2.value=value; bitpayamountfield.value=value; checkAmount(value)">
 	  <select size="1" name="currency_code" id="currencyfield">
@@ -84,22 +87,27 @@
 	  <input type="range" value="20" min="0" max="150" step="5" id="amountslider2"
 	  oninput="amountfield2.value=value; bitpayamountfield.value=value; checkAmount(value)">
 
-	  <div id="pay_div">	
+	  <div id="pay_div">
 	    <p>
 	    <form name="bitpay" action="https://bitpay.com/checkout" method="post">
 	    <input type="hidden" name="action" value="checkout">
 	    <input type="hidden" name="price" id="bitpayamountfield" value="20">
 	    <input type="hidden" name="posData" value="">
 	    <input type="hidden" name="data" value="znBoq4gBRdiwJFbMisx6mSN6NDgT3s3CVWB7OJjZtPAv/Rhs2E4RHrBOlpdo0jPZWpQEljG8jFfC/T0BtxXnBut5RRt/dqpE3YNa32FY5iPOjWp+bJsm1xnCV6l96/FKXbgcBXxWKFK1UfIAtadQ1CI9svdjUrFy+Ob7T1rKHdMCN5/Y7oYa9ob1BmDUmG7ItH+63ftqaDj+kO3BQ2RiFUhwZDCSJVk47uvMaThEUD6YBR0djWgwz0nYyrz7Rnmy">
-	    <p> 
+	    <p>
 	    <button class="donateButton" name="submit" alt="Donate via PayPal"
 		type="submit">Donate & Download</button>
 		or <a href="thanks.html">download for free </a>
 	    </form>
-	  </div>	    
+	  </div>
+      -->
+	    <p>
+        Sorry, donate with bitcoins is currently not possible. We working on it.
+        Please use our other pay methods (PayPal or bank transfer) instead. Thanks.
+	    </p>
 	</div>
 	</li>
-      
+
 	<!-- bank transfer -->
 	<li>
 	  <input id="tab3" type="radio" value="transfer" name="paymethod" >
@@ -114,16 +122,16 @@
 	    </blockquote>
 	    <p>
 	    Please <a href="mailto:gpg4win-professional@intevation.de">contact us</a>
-	    if you need an invoice (for more than 100,- EUR only).
+	    if you need an invoice (for more than 100,- EUR/USD only).
 	    <p>
 	    <a href="thanks.html">Download Gpg4win VERSION</a> after making transfer.
 	    </p>
 	  </div>
 	</li>
-      
+
 	<!-- reccurent donation -->
 	<br>
-	<p><i>Reccurent Donation with</i></p>
+	<p><i>Reccurent donation with</i></p>
 	<li>
 	  <input id="tab4" type="radio" value="paypal" name="paymethod">
 	  <label for="tab4">Paypal</label>
@@ -138,9 +146,9 @@
 		<option value="USD">USD</option>
 	      </select>
 	      <input name="t3" type="radio" value=M id="monthly" checked="checked">
-	      <label for="monthly">Monthly</label>
+	      <label for="monthly">monthly</label>
 	      <input name="t3" type="radio" value=Y id="annually">
-	      <label for="annually">Annually</label>
+	      <label for="annually">annually</label>
 
 	      <br>
 	      <input type="range" value="20" min="0" max="150" step="5" id="amountslider"
@@ -150,19 +158,20 @@
 	      <!-- list me -->
 	      <p>
 	      <label>
-		<input type="hidden"   name="on0" value="Publish your donation and name">
-		<input type="hidden"   name="os0" value="No">
-		<input type="checkbox" name="os0" value="Yes">
-		<span>List me on the <a href="#sponsors">list of sponsors</a>
-		  (for donations from 20,- up)</span>
+            <input type="hidden"   name="on0" value="Publish your donation and name">
+            <input type="hidden"   name="os0" value="No">
+	   	    <input type="checkbox" name="os0" value="Yes">
+    		<span>Add me to the <a href="donate.html#sponsors">list of sponsors</a>
+		    (from 20,- EUR/USD up)</span>
 	      </label>
-	    
+          <input type="hidden" name="charset" value="utf-8">
+
 	      <!-- feedback -->
 	      <p>
 	      <input type="hidden" name="on1" value="Feedback">
 	      <input type="hidden" name="os1" value="">
-	      <textarea value=""   name="os1" placeholder="Give us feedback!" rows="3" cols="48"></textarea>
-	    
+	      <textarea value=""   name="os1" placeholder="I am using Gpg4win because ..." rows="3" cols="48"></textarea>
+
 	      <!-- pay button -->
 	      <input type="hidden" name="lc" value="">
 	      <input name="cmd" value="_xclick-subscriptions" type="hidden">
@@ -176,13 +185,13 @@
 	      <input name="cbt" value="Download Gpg4win now!" type="hidden">
 	      <input type="hidden" name="p3" value="1">
 	      <input type="hidden" name="src" value="1">
-	      <p> 
+	      <p>
 	      <button class="donateButton" name="submit" alt="Donate via PayPal"
 		  type="submit">Donate & Download</button>
 	      or <a href="thanks.html">download for free </a>
 	    </form>
-	  </div>  
-	</li>  
+	  </div>
+	</li>
       </ul>
 </div>
 
