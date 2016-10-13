@@ -58,7 +58,6 @@
 	      <p>
 	      <button class="donateButton" name="submit" alt="Donate via PayPal"
 		  type="submit">Donate & Download</button>
-	      or <a href="thanks-for-download.html">download for free </a>
 	    </div>
 
 	    <!-- download -->
@@ -170,7 +169,6 @@
 	      <p>
 	      <button class="donateButton" name="submit" alt="Donate via PayPal"
 		  type="submit">Donate & Download</button>
-	      or <a href="thanks-for-download.html">download for free </a>
 	    </form>
 	  </div>
 	</li>
