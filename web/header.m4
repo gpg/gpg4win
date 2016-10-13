@@ -2,20 +2,24 @@
   <div class="fancy_intro">
    <div id="download_button">
      m4_ifelse(LANG_DE, `1', `
-     <a href="download-de.html">
+     <a href="get-gpg4win-de.html">
      <span class="text">
-      Download<br />Gpg4win
+      Download<br />Gpg4win VERSION
      </span></a>', `
-     <a href="download.html">
+     <a href="get-gpg4win.html">
      <span class="text">
-      Download<br />Gpg4win
+      Download<br />Gpg4win VERSION
      </span></a>')
    </div>
    <div class="download_button_links">
      m4_ifelse(LANG_DE, `1', `
+     <a href="download-de.html">Details</a>', `
+     <a href="download.html">Details</a>')
+     &middot;
+     m4_ifelse(LANG_DE, `1', `
      <a href="change-history-de.html">Änderungshistorie</a>', `
      <a href="change-history.html">Change History</a>')
-     -
+     &middot;
      m4_ifelse(LANG_DE, `1', `
      <a href="package-integrity-de.html">Integrität prüfen</a>', `
      <a href="package-integrity.html">Check integrity</a>')
