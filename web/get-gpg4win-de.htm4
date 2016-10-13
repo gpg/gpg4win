@@ -12,7 +12,7 @@ m4_define(`NO_DOWNLOAD_HEADER')
 PAGE_START
 
 <div id="intro">
-  <h2>Download Gpg4win VERSION</h2>
+  <h2>Download Gpg4win VERSION (DL_DATE)</h2>
 </div>
 
 <div id="main">
