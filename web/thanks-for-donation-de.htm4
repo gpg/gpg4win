@@ -1,0 +1,30 @@
+m4_dnl                                                          -*-html-*-
+m4_include(`template.m4')
+m4_dnl $Id$
+
+m4_define(`DE')
+m4_define(`EN_FILE', `thanks-for-donation.html')
+
+m4_define(`TITLE', `Vielen Dank für Ihre Spende')
+m4_define(`MAIN', `download')
+m4_define(`NO_DOWNLOAD_HEADER')
+PAGE_START
+
+<meta http-equiv="refresh" content="0; url=DOWNLOAD_URL">
+
+<div id="intro">
+  <h2>Vielen Dank für Ihre Spende!</h2>
+  <p><small>Wenn der Download von Gpg4win VERSION nicht automatisch startet,
+  klicken Sie <a href="DOWNLOAD_URL">hier</a>.</small></p>
+</div>
+
+<div id="main">
+<h2>Einstieg &ndash; die ersten Schritte:</h2>
+<ul>
+<li><a href="documentation.html">Lesen Sie das Gpg4win-Kompendium</a></li>
+<li><a href="community.html">Treten Sie der Gpg4win-Gemeinschaft bei</a></li>
+</ul>
+
+
+</div>
+

@@ -51,18 +51,19 @@
 	      <input name="no_shipping" value="1" type="hidden">
 	      <input name="no_note" value="1" type="hidden">
 	      <input name="image_url" value="https://gpg4win.org/img/logo.png" type="hidden">
-	      <input name="return" value="https://gpg4win.org/thanks.html" type="hidden">
+	      <input name="return" value="https://gpg4win.org/thanks-for-donation-de.html" type="hidden">
+	      <input name="cancel_return" value="https://gpg4win.org/thanks-for-download-de.html" type="hidden">
 	      <input name="cbt" value="Gpg4win jetzt herunterladen!" type="hidden">
 	      <p>
 	      <button class="donateButton" name="submit" alt="Spenden via PayPal"
 		  type="submit">Spenden & Download</button>
-	      oder <a href="thanks.html">kostenlos herunterladen</a>
+	      oder <a href="thanks-for-download-de.html">kostenlos herunterladen</a>
 	    </div>
 
 	    <!-- download -->
 	    <div id="download_div">
 	      <p>
-	      <a href="thanks.html">Gpg4win VERSION herunterladen</a> ohne zu spenden.
+	      <a href="thanks-for-download-de.html">Gpg4win VERSION herunterladen</a> ohne zu spenden.
 	      </p>
 	    </div>
 	  </form>
@@ -83,7 +84,7 @@
           <p>
 	  <img class="qrcode" src="img/bitcoin-qrcode.png">
           <p>
-	  Nach Abschluss der Transaktion: <a href="thanks-de.html">Gpg4win VERSION herunterladen</a>
+	  Nach Abschluss der Transaktion: <a href="thanks-for-download-de.html">Gpg4win VERSION herunterladen</a>
 	</div>
       </li>
 
@@ -103,7 +104,7 @@
 	    <a href="mailto:gpg4win-professional@intevation.de">Kontaktieren Sie uns</a>,
 	    wenn Sie eine Rechnung benötigen (nur bei Beträgen ab 100,- EUR).
 	    <p>
-	    Nach Abschluss der Überweisung: <a href="thanks-de.html">Gpg4win VERSION herunterladen</a>
+	    Nach Abschluss der Überweisung: <a href="thanks-for-download-de.html">Gpg4win VERSION herunterladen</a>
 	    </p>
 	  </div>
        </li>
@@ -160,14 +161,15 @@
 	      <input name="no_shipping" value="1" type="hidden">
 	      <input name="no_note" value="1" type="hidden">
 	      <input name="image_url" value="https://gpg4win.org/img/logo.png" type="hidden">
-	      <input name="return" value="https://gpg4win.org/thanks.html" type="hidden">
+	      <input name="return" value="https://gpg4win.org/thanks-for-donation-de.html" type="hidden">
+	      <input name="cancel_return" value="https://gpg4win.org/thanks-for-download-de.html" type="hidden">
 	      <input name="cbt" value="Gpg4win jetzt herunterladen!" type="hidden">
 	      <input type="hidden" name="p3" value="1">
 	      <input type="hidden" name="src" value="1">
 	      <p>
 	      <button class="donateButton" name="submit" alt="Spenden via PayPal"
 		  type="submit">Spenden & Download</button>
-	      oder <a href="thanks-de.html">kostenlos herunterladen </a>
+	      oder <a href="thanks-for-download-de.html">kostenlos herunterladen </a>
 	    </form>
 	  </div>
 	</li>

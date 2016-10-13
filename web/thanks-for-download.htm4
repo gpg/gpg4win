@@ -3,11 +3,11 @@ m4_include(`template.m4')
 m4_dnl $Id$
 
 m4_define(`EN')
-m4_define(`DE_FILE', `thanks-de.html')
+m4_define(`DE_FILE', `thanks-for-download-de.html')
 
-m4_define(`TITLE', `Thank you!')
+m4_define(`TITLE', `Thanks for downloading')
 m4_define(`MAIN', `download')
-
+m4_define(`NO_DOWNLOAD_HEADER')
 PAGE_START
 
 <meta http-equiv="refresh" content="0; url=DOWNLOAD_URL">
