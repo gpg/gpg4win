@@ -89,8 +89,7 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
         slideshow/slide1-gpgol.png \
         slideshow/slide2-gpgex.png \
         slideshow/slide3-kleopatra.png \
-        slideshow/slide4-summary.png \
-        slideshow/launch_kleo.png
+        slideshow/slide4-summary.png
 
 SUBDIRS = dictionaries
 
