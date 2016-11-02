@@ -86,10 +86,10 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
         inst-extra-cmake-modules.nsi uninst-extra-cmake-modules.nsi \
         inst-final.nsi index.theme \
         slideshow/slides.dat \
-        slideshow/beta.png \
-        slideshow/context_menu.png \
-        slideshow/file-ext.png \
-        slideshow/gpgol.png \
+        slideshow/slide1-gpgol.png \
+        slideshow/slide2-gpgex.png \
+        slideshow/slide3-kleopatra.png \
+        slideshow/slide4-summary.png \
         slideshow/launch_kleo.png
 
 SUBDIRS = dictionaries
