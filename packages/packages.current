@@ -233,8 +233,10 @@ server ftp://ftp.g10code.com/g10code/gpgol
 # last-changed: 2016-03-30
 # by: ah
 # verified: Sig D869 2123 C406 5DEA 5E0F  3AB5 249B 39D2 4F25 E3B6
-file gpgol-1.4.0.tar.bz2
-chk  abebb06bcf64c11854b110830b148eada7e7d9046e565c407d7957594f09800f
+#
+# TODO switch back to released version
+#file gpgol-1.4.0.tar.bz2
+#chk  abebb06bcf64c11854b110830b148eada7e7d9046e565c407d7957594f09800f
 
 #
 # GpgEX
@@ -518,8 +520,14 @@ chk b85a1aa93375758e3a3c3b0f5938799fd6310a882cb1d6d027462dc2c9297a97
 # ditto for gpgme.
 # by: ah
 # verified: tarball created by ah
-file gpgme/gpgme-1.7.0-beta319.tar.bz2
-chk 39e6d9c3d479a73b62a7310b295cd3a6b5bac03bac82396645b43fa12329f74a
+file gpgme/gpgme-1.7.2-beta36.tar.bz2
+chk 751816fe804ded00e3992bd8b5d8f7000f26a748c76dfb2f2099cf1206444e11
+
+# ditto for gpgol.
+# by: ah
+# verified: tarball created by ah
+file gpgol/gpgol-2.0.0-beta160.tar.bz2
+chk 3fc9a322efbba8543ffbafac797741b2091109c26024605a71ac6447d2ea1273
 
 # Gpgmepp
 # last changed: 2016-01-21
