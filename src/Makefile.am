@@ -120,7 +120,7 @@ gpg4win_spkgs = glib libffi gdk-pixbuf gtk+ \
 gpg4win_qtpkgs = qtbase qttools qtwinextras qtsvg
 
 # Source packages following the KDE pattern
-gpg4win_kdepkgs = kconfig kwidgetsaddons gpgmepp ki18n extra-cmake-modules \
+gpg4win_kdepkgs = kconfig gpgmepp kwidgetsaddons ki18n extra-cmake-modules \
                   kcompletion kwindowsystem kcoreaddons libkleo kcodecs \
                   kmime kconfigwidgets kxmlgui kguiaddons kitemviews \
                   kiconthemes kleopatra breeze-icons kitemmodels karchive
@@ -245,13 +245,13 @@ gpg4win_pkg_gpgme_configure = --silent \
   `test -n "@HAVE_PKG_GLIB@" && echo "--enable-w32-glib"` \
   CFLAGS=-I$(idir)/include/glib-2.0/ \
   LDFLAGS=-L$(idir)/lib \
-  --enable-languages=no
+  --enable-languages=qt,cpp
 
 gpg4win_pkg_gpgme_ex_configure = --silent \
   --with-gpg-error-prefix=$(ex_idir) --enable-static \
   --with-libassuan-prefix=$(ex_idir) \
   LDFLAGS=-L$(ex_idir)/lib \
-  --enable-languages=no
+  --enable-languages=cpp
 
 gpg4win_pkg_gpa_configure = --silent \
   --with-libiconv-prefix=$(idir) --with-libintl-prefix=$(idir) \
