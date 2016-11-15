@@ -398,7 +398,7 @@ file 5.25/kconfig-5.25.0.tar.xz
 chk 498332f1c3fbb5e0d681cf6807502c1fe0aef74e79b29cd1e60e4096924949c2
 
 # ki18n
-# last changed: 2016-08-26
+# last changed: 2016-11-14
 # by: ah
 # verified: https://www.kde.org/info/kde-frameworks-5.25.0.php (created by gen-frameworks.sh)
 file 5.25/ki18n-5.25.0.tar.xz
@@ -520,14 +520,14 @@ chk b85a1aa93375758e3a3c3b0f5938799fd6310a882cb1d6d027462dc2c9297a97
 # ditto for gpgme.
 # by: ah
 # verified: tarball created by ah
-file gpgme/gpgme-1.7.2-beta36.tar.bz2
-chk 751816fe804ded00e3992bd8b5d8f7000f26a748c76dfb2f2099cf1206444e11
+file gpgme/gpgme-1.7.2-beta44.tar.bz2
+chk 27b8b1c9066f07d76cdec0b831c414642bafc86663c54fb332c79a81a3c2947a
 
 # ditto for gpgol.
 # by: ah
 # verified: tarball created by ah
-file gpgol/gpgol-2.0.0-beta160.tar.bz2
-chk 3fc9a322efbba8543ffbafac797741b2091109c26024605a71ac6447d2ea1273
+file gpgol/gpgol-2.0.0-beta172.tar.bz2
+chk 9bed2920d1c4249c0a0ebdab68a82c1a43490d2fc1789b0a4c30759406a3523e
 
 # Gpgmepp
 # last changed: 2016-01-21
