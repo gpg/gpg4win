@@ -53,11 +53,11 @@ MANUALDATE_NOVICES="Nov. 30, 2006"
 MANUALVERSION_ADVANCED="0.0.0"
 MANUALDATE_ADVANCED="Nov. 30, 2006"
 COMPENDIUM_VERSION_DE="3.0.0"
-COMPENDIUM_DATE_DE="3. August 2015"
-COMPENDIUMINPROGRESS_DE="zuletzt geringfügig korrigiert am 3. August 2015"
+COMPENDIUM_DATE_DE="30. November 2016"
+COMPENDIUMINPROGRESS_DE="zuletzt geringfügig korrigiert am 30. November 2016"
 COMPENDIUM_VERSION_EN="3.0.0"
-COMPENDIUM_DATE_EN="3rd August 2015"
-COMPENDIUMINPROGRESS_EN="last minor changes from 3rd August 2015"
+COMPENDIUM_DATE_EN="30th November 2016"
+COMPENDIUMINPROGRESS_EN="last minor changes from 30th November 2016"
 
 MANUALINPROGRESS_DE=m4_if(my_isgit,[yes],["~und evtl. seitdem weiter bearbeitet"])
 MANUALINPROGRESS_EN=m4_if(my_isgit,[yes],["~and may have been further edited"])
