@@ -1,50 +1,95 @@
 <!-- donation form -->
 <div class="donate_box">
     <h3>Bitte spenden Sie für Gpg4win, um die Pflege und Weiterentwicklung zu sichern!</h3>
-    <p>Der Download von Gpg4win VERSION beginnt nach Abschluss Ihrer Spende.</p>
+    <p>Zahlen Sie das, was Gpg4win Ihnen wert ist! – Danke!</p>
 
     <ul class="tabs">
       <!-- paypal -->
       <li>
-	<p><i>Einmalig spenden via</i></p>
+	<p><i>Spenden via</i></p>
 	<input id="tab1" type="radio" value="paypal" name="paymethod" checked="checked">
 	<label for="tab1">PayPal</label>
 	<div id="paypal_tab" class="tab-content">
 	  <img class="pay-logo" src="img/paypal-logo.png">
 	  <!-- amount -->
+	  <br>
 	  <form name="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
-	    <input type="text" name="amount" value="20" size="4" id="amountfield"
-		onchange="amountslider.value=value; checkAmount(value)">
-	    <select size="1" name="currency_code" id="currencyfield">
-	      <option selected="selected" value="EUR">EUR</option>
-	      <option value="USD">USD</option>
-	    </select>
-	    <br>
-	    <input type="range" value="20" min="0" max="150" step="5" id="amountslider"
-		oninput="amountfield.value=value; checkAmount(value)">
-	    <br>
+
+	    <div class="amountlabel" id="USD">
+	      <input type="radio" name="amount" value="0" id="amount1" onchange="checkAmount(value)">
+	      <label for="amount1"> $0 </label>
+	      <input type="radio" name="amount" value="10" id="amount2" onchange="checkAmount(value)">
+	      <label for="amount2"> $10 </label>
+	      <input type="radio" name="amount" value="15" id="amount3" onchange="checkAmount(value)" checked="checked">
+	      <label for="amount3"> $15 </label>
+	      <input type="radio" name="amount" value="25" id="amount4" onchange="checkAmount(value)">
+	      <label for="amount4"> $25 </label>
+	      <input type="radio" name="amount" value="" id="freeamount" onchange="checkAmount(value)">
+	      <label for="freeamount" id="freeamountLabelBG">$
+	        <input type="number" name="given_amount" min="0" value="" size="1" id="freeamountLabel"
+	        onchange="freeamount.value=value; checkAmount(value)" onfocus="checkIt(freeamount.checked)">
+	      </label>
+	    </div>
+
+	    <div class="amountlabel" id="EUR">
+	      <input type="radio" name="amount" value="0" id="amount1_E" onchange="checkAmount(value)">
+	      <label for="amount1_E"> 0€ </label>
+	      <input type="radio" name="amount" value="10" id="amount2_E" onchange="checkAmount(value)">
+	      <label for="amount2_E"> 10€ </label>
+	      <input type="radio" name="amount" value="15" id="amount3_E" onchange="checkAmount(value)" checked="checked">
+	      <label for="amount3_E"> 15€ </label>
+	      <input type="radio" name="amount" value="25" id="amount4_E" onchange="checkAmount(value)">
+	      <label for="amount4_E"> 25€ </label>
+	      <input type="radio" name="amount" value="" id="freeamount_E" onchange="checkAmount(value)">
+	      <label for="freeamount_E" id="freeamountLabelBG">€
+	      <input type="number" name="given_amount" min="0" value="" size="1" id="freeamountLabel"
+	        onchange="freeamount_E.value=value; checkAmount(value)" onfocus="checkItE(freeamount_E.checked)">
+	      </label>
+	    </div>
+
+	    <div class="switches">
+              <div class="switch-field">
+                <input type="radio" id="switch_left" name="currency_code" value="USD" onchange="currency_choice('USD')">
+	        <label for="switch_left">USD</label>
+	        <input type="radio" id="switch_right" name="currency_code" value="EUR" onchange="currency_choice('EUR')"
+                    checked="checked">
+	        <label for="switch_right">EUR</label>
+	      </div>
+
+              <div class="switch-field">
+	        <input type="radio" id="onetime" name="frq" checked="checked" onchange="donation_frq('onetime')">
+                <label for="onetime">einmalig</label>
+	        <input type="radio" id="monthly" name="frq" onchange="donation_frq('monthly')">
+	        <label for="monthly">monatlich</label>
+	      </div>
+	    </div>
 
 	    <div id="pay_div">
 	      <!-- list me -->
 	      <p>
 	      <label>
-		<input type="hidden"   name="on0" value="Spende und Namen veröffentlichten">
-		<input type="hidden"   name="os0" value="Nein">
-		<input type="checkbox" name="os0" value="Ja">
-		<span>Meinen Namen in die <a href="donate-de.html#sponsors">Spenderliste</a> eintragen
-		  (ab 20,- EUR).</span>
+                <input type="hidden"   name="on0" value="Spende und Namen veröffentlichten">
+                <input type="hidden"   name="os0" value="Nein">
+                <input type="checkbox" name="os0" value="Ja">
+                <span>Meinen Namen in die <a href="donate-de.html#sponsors">Spenderliste</a> eintragen
+		    (ab 20,- EUR).</span>
 	      </label>
-              <input type="hidden" name="charset" value="utf-8">
+	      <input type="hidden" name="charset" value="utf-8">
 
 	      <!-- feedback -->
 	      <p>
-	      <input type="hidden" name="on1" value="Rückmeldung">
+	      <input type="hidden" name="on1" value="Rückeldung">
 	      <input type="hidden" name="os1" value="">
 	      <textarea value=""   name="os1" placeholder="Ich benutze Gpg4win, weil ..." rows="3" cols="48"></textarea>
 
 	      <!-- pay button -->
 	      <input type="hidden" name="lc" value="DE">
-	      <input name="cmd" value="_donations" type="hidden">
+	      <input id="onetime1" name="cmd" value="_donations" type="hidden">
+	      <input id="recurrent1" name="cmd" value="_xclick-subscriptions" type="hidden" disabled>
+	      <input id="recurrent2" type="hidden" name="p3" value="1" disabled>
+	      <input id="recurrent3" type="hidden" name="t3" value="M" disabled>
+	      <input id="recurrent4" type="hidden" name="a3" value="" disabled>
+	      <input id="recurrent5" type="hidden" name="src" value="1" disabled>
 	      <input name="business" value="paypal@intevation.de" type="hidden">
 	      <input name="undefined_quantity" value="1" type="hidden">
 	      <input name="item_name" value="Gpg4win" type="hidden">
@@ -54,19 +99,19 @@
 	      <input name="return" value="https://gpg4win.org/thanks-for-donation-de.html" type="hidden">
 	      <input name="cancel_return" value="https://gpg4win.org/thanks-for-download-de.html" type="hidden">
 	      <input name="cbt" value="Gpg4win jetzt herunterladen!" type="hidden">
-	      <p>
+	      <p id="dButton">
 	      <button class="donateButton" name="submit" alt="Spenden via PayPal"
-		  type="submit">Spenden & Download</button>
-              oder <a href="thanks-for-download-de.html">kostenlos herunterladen</a
-	    </div>
-
-	    <!-- download -->
-	    <div id="download_div">
-	      <p>
-	      <a href="thanks-for-download-de.html">Gpg4win VERSION herunterladen</a> ohne zu spenden.
-	      </p>
+		  type="submit">Spenden & Herunterladen</button>
 	    </div>
 	  </form>
+
+	  <!-- download -->
+	  <div id="download_div">
+	    <p>
+	      <a href="thanks-for-download.html"><button
+class="donateButton" alt="download">Herunterladen</button></a>
+	    </p>
+	  </div>
 	</div>
       </li>
     
@@ -78,7 +123,7 @@
 	  <p>
           <img class="pay-logo" src="img/bitcoin-logo.png">
           <p>Bitcoins können Sie uns anonym an folgende Adresse spenden:</p>
-          <a href="bitcoin:1M3GipkG2YyHPDMPewqTpup83jitXvBg9N?label=gpg4win.org">
+          <a href="https://blockchain.info/address/1M3GipkG2YyHPDMPewqTpup83jitXvBg9N">
             1M3GipkG2YyHPDMPewqTpup83jitXvBg9N
           </a>
           <p>
@@ -108,78 +153,15 @@
 	    </p>
 	  </div>
        </li>
-
-       <!-- reccurent donation -->
-       <br>
-       <p><i>Regelmäßig spenden via</i></p>
-       <li>
-	  <input id="tab4" type="radio" value="paypal" name="paymethod">
-	  <label for="tab4">PayPal</label>
-	  <div id="paypal_tab" class="tab-content">
-	    <img class="pay-logo" src="img/paypal-logo.png">
-	    <!-- amount -->
-	    <form name="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
-	      <input type="text" name="a3" value="20" size="4" id="amountfield"
-		  onchange="amountslider.value=value; checkAmount(value)">
-	      <select size="1" name="currency_code" id="currencyfield">
-		<option selected="selected" value="EUR">EUR</option>
-		<option value="USD">USD</option>
-	      </select>
-	      <input name="t3" type="radio" value=M id="monthly" checked="checked">
-	      <label for="monthly">monatlich</label>
-	      <input name="t3" type="radio" value=Y id="annually">
-	      <label for="annually">jährlich</label>
-
-	      <br>
-	      <input type="range" value="20" min="0" max="150" step="5" id="amountslider"
-		  oninput="amountfield.value=value; checkAmount(value)">
-	      <br>
-    
-	      <!-- list me -->
-	      <p>
-	      <label>
-		<input type="hidden"   name="on0" value="Spende und Namen veröffentlichen">
-		<input type="hidden"   name="os0" value="Nein">
-		<input type="checkbox" name="os0" value="Ja">
-		<span>Meinen Namen in die <a href="donate-de.html#sponsors">Spenderliste</a> eintragen
-		   (ab 20,- EUR).</span>
-	      </label>
-              <input type="hidden" name="charset" value="utf-8">
-
-	      <!-- feedback -->
-	      <p>
-	      <input type="hidden" name="on1" value="Rückmeldung">
-	      <input type="hidden" name="os1" value="">
-	      <textarea value=""   name="os1" placeholder="Ich benutze Gpg4win, weil ..." rows="3" cols="48"></textarea>
-
-	      <!-- pay button -->
-	      <input type="hidden" name="lc" value="DE">
-	      <input name="cmd" value="_xclick-subscriptions" type="hidden">
-	      <input name="business" value="paypal@intevation.de" type="hidden">
-	      <input name="undefined_quantity" value="1" type="hidden">
-	      <input name="item_name" value="Gpg4win" type="hidden">
-	      <input name="no_shipping" value="1" type="hidden">
-	      <input name="no_note" value="1" type="hidden">
-	      <input name="image_url" value="https://gpg4win.org/img/logo.png" type="hidden">
-	      <input name="return" value="https://gpg4win.org/thanks-for-donation-de.html" type="hidden">
-	      <input name="cancel_return" value="https://gpg4win.org/thanks-for-download-de.html" type="hidden">
-	      <input name="cbt" value="Gpg4win jetzt herunterladen!" type="hidden">
-	      <input type="hidden" name="p3" value="1">
-	      <input type="hidden" name="src" value="1">
-	      <p>
-	      <button class="donateButton" name="submit" alt="Spenden via PayPal"
-		  type="submit">Spenden & Download</button>
-              oder <a href="thanks-for-download-de.html">kostenlos herunterladen</a
-	    </form>
-	  </div>
-	</li>
       </ul>
 </div>
 
 <script type="text/javascript">
   document.getElementById('download_div').style.display = "none";
+  document.getElementById('EUR').style.display = "none";
+  amountGiven = 0;
 
-  function checkAmount(amount) { 
+  function checkAmount(amount) {
     if (amount < 0 ) {
       document.getElementById('amountfield').value = 0;
       amount = 0;
@@ -191,6 +173,58 @@
     if (amount > 0) {
       document.getElementById('download_div').style.display = "none";
       document.getElementById('pay_div').style.display = "block";
+    }
+    document.getElementById('recurrent4').value = amount;
+    amountGiven = amount;
+  }
+
+  function checkIt(checked) {
+    if (!checked) {
+      document.getElementById('freeamount').checked = "checked";
+    }
+  }
+
+  function checkItE(checked) {
+    if (!checked) {
+      document.getElementById('freeamount_E').checked = "checked";
+    }
+  }
+
+  function currency_choice(txt) {
+    if (txt == "USD") {
+      document.getElementById('USD').style.display = "block";
+      document.getElementById('EUR').style.display = "none";
+      for (var i = 0; i < 5; i++) {
+	var v = document.getElementsByName('amount')[i];
+	if (v.value == amountGiven) {
+	  v.checked = "checked";
+	}
+     }
+    }
+    if (txt == "EUR") {
+     document.getElementById('USD').style.display = "none";
+     document.getElementById('EUR').style.display = "block";
+     for (var i = 5; i < 10; i++) {
+	var v = document.getElementsByName('amount')[i];
+	if (v.value == amountGiven) {
+	  v.checked = "checked";
+	}
+      }
+    }
+  }
+
+  function donation_frq(txt) {
+    if (txt == "onetime") {
+      document.getElementById('onetime1').disabled= false;
+      for (var i=1; i<6; i++) {
+	document.getElementById('recurrent'+i).disabled= true;
+      }
+    }
+    if (txt == "monthly") {
+      document.getElementById('onetime1').disabled= true;
+      for (var i=1; i<6; i++) {
+	document.getElementById('recurrent'+i).disabled= false;
+      }
     }
   }
 </script>

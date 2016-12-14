@@ -169,7 +169,7 @@ td {
 }
 
 #donate_button a {
- background: url('img/donate_button.png');
+ background-color: url('img/donate_button.png');
  background-repeat: no-repeat;
  display: block;
  height: 79px;
@@ -190,11 +190,11 @@ td {
  left:10px;
 }
 .donate_box {
-  border-radius: 10px 10px 10px 10px;
+  border-radius: 4px;
   background: #FDF1CD;
   border: 1px solid #CCCCCC;
   padding: 20px 20px 15px;
-  min-height: 335px;
+  min-height: 365px;
 }
 .donate_box h3 {
   margin: 0;
@@ -208,22 +208,22 @@ td {
     height: 30px;
 }
 .donateButton {
-    font-size: 11px;
+    background: url('img/download-arrow.png') no-repeat 9px 9px;
+    background-size: 20px 20px;
+    padding-left: 36px;
+    padding-right: 10px;
+    font-size: 14px;
     height: 40px;
-    border: none;
-    background: url('img/download_button_mini.png');
-	background-repeat: no-repeat;
-	height: 50px;
-	width: 189px;
-	text-align: left;
-	line-height: 50px;
-	color: #FFFFFF;
-	font-weight: bold;
-	text-decoration: none;
+    border: 2px white;
+    border-radius: 4px;
+    text-align: center;
+    font-weight: bold;
+    text-decoration: none;
 }
-.donateButton:hover {
-   background-position: 0px -50px;
+a>.donateButton{
+  margin-top: 40px;
 }
+
 
 .donate_box blockquote {
     line-height: 150%;
@@ -231,12 +231,11 @@ td {
 .donate_box .pay-logo {
     width: 100px;
 }
+
 .donate_box .qrcode {
     width: 130px;
 }
-#tab4 > label{
-	font-weiht: bold;
-}
+
 /* donation slider */
 input[type='range'] {
     -webkit-appearance: none;
@@ -761,7 +760,7 @@ hr {
 	list-style: none;
 	width: 100%;
 	float: left;
-	height: 270px;
+	height: 290px;
 	padding-left: 0;
 	position: relative;
 }
@@ -798,6 +797,7 @@ textarea, select, input[type=text]{
 	border: 1px solid #bbb;
 	border-radius: 4px;
 	padding: 5px;
+	width: 100%;
 }
 input[type=text]{
 	height: 31px;
@@ -841,4 +841,141 @@ select{
 	margin: 10px 15px;
 	border-bottom: 1px dotted #555;
 	padding-bottom: 5px;
+}
+
+.pay_div{
+	width: 100%;
+}
+
+.amountlabel {
+	margin: 15px 0 20px 0;
+	float: left;
+	clear: right;
+	width: 100%;
+}
+.amountlabel > input[type="radio"]{
+	display:none;
+}
+.amountlabel > label{
+	border-radius: 4px;
+	font-size: 16px;
+	padding: 10px 15px;
+	text-align: center;
+	margin: 0 7px 1px 3px;
+	font-weight: bold;
+	width: 65px;
+}
+
+/*** donate button colors ***/
+/* inactive */
+.amountlabel > input + label,
+.switch-field input + label,
+.donateButton {
+    color: white;
+}
+.amountlabel > label,
+.switch-field label {
+	background-color: rgba(180,180,180,0.75);
+}
+
+/* hover */
+.amountlabel > label:hover,
+.amountlabel > input[type="radio"]:hover + label:hover,
+.switch-field label:hover,
+.donateButton:hover {
+	background-color: #8fc8d2;
+    cursor: pointer;
+}
+
+/* active */
+.amountlabel > input[type="radio"]:checked + label,
+.amountlabel > label > input[type="number"]:focus + label,
+.switch-field input:checked + label,
+.donateButton {
+	background-color: #179bd7;
+}
+
+
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+}
+
+input[type=number] {
+      -moz-appearance:textfield;
+}
+
+.amountlabel > label > input[type="number"]{
+      background-color: transparent;
+      color: white;
+      border: none;
+      border-bottom: 1px solid;
+      border-radius: 0px;
+      box-shadow: none;
+      height: 20px;
+      font-size: 18px;
+      font-family: arial, helvetica, sans-serif;      
+      text-align: center;
+      width: 45px;
+      font-weight: normal;
+}
+
+#freeamountLabel{
+     padding: 0;
+}
+
+.switch-field {
+  padding: 15px 0 15px 0;
+  margin: 5px 0 5px 0;
+  overflow: hidden;
+  width: 50%;
+  display: inline;
+}
+
+#donation_frq{
+  clear: right;
+}
+
+.switch-title {
+  margin-bottom: 6px;
+}
+
+.switch-field input {
+  display: none;
+}
+
+.switch-field label {
+  float: left;
+}
+
+.switch-field label {
+  display: inline-block;
+  width: 60px;
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+  text-shadow: none;
+  padding: 3px 14px;
+  border: none;
+}
+
+.switch-field input:checked + label {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.switch-field label:first-of-type {
+  border-radius: 4px 0 0 4px;
+  margin: 0 0 0 3px;
+}
+
+.switch-field label:last-of-type {
+  border-radius: 0 4px 4px 0;
+  margin: 0 11px 10px -1px;
+}
+
+.switches{
+  width: 100%;
 }
