@@ -20,7 +20,7 @@
 	      <label for="amount1"> $0 </label>
 	      <input type="radio" name="amount" value="10" id="amount2" onchange="checkAmount(value)">
 	      <label for="amount2"> $10 </label>
-	      <input type="radio" name="amount" value="15" id="amount3" onchange="checkAmount(value)" checked="checked">
+	      <input type="radio" name="amount" value="15" id="amount3" onchange="checkAmount(value)">
 	      <label for="amount3"> $15 </label>
 	      <input type="radio" name="amount" value="25" id="amount4" onchange="checkAmount(value)">
 	      <label for="amount4"> $25 </label>
@@ -158,7 +158,7 @@ class="donateButton" alt="download">Herunterladen</button></a>
 
 <script type="text/javascript">
   document.getElementById('download_div').style.display = "none";
-  document.getElementById('EUR').style.display = "none";
+  document.getElementById('USD').style.display = "none";
   amountGiven = 0;
 
   function checkAmount(amount) {
@@ -195,20 +195,20 @@ class="donateButton" alt="download">Herunterladen</button></a>
       document.getElementById('USD').style.display = "block";
       document.getElementById('EUR').style.display = "none";
       for (var i = 0; i < 5; i++) {
-	var v = document.getElementsByName('amount')[i];
-	if (v.value == amountGiven) {
-	  v.checked = "checked";
-	}
-     }
+	    var v = document.getElementsByName('amount')[i];
+	    if (v.value == amountGiven) {
+	      v.checked = "checked";
+	    }
+      }
     }
     if (txt == "EUR") {
      document.getElementById('USD').style.display = "none";
      document.getElementById('EUR').style.display = "block";
      for (var i = 5; i < 10; i++) {
-	var v = document.getElementsByName('amount')[i];
-	if (v.value == amountGiven) {
-	  v.checked = "checked";
-	}
+	   var v = document.getElementsByName('amount')[i];
+	     if (v.value == amountGiven) {
+	       v.checked = "checked";
+   	     }
       }
     }
   }
@@ -217,13 +217,13 @@ class="donateButton" alt="download">Herunterladen</button></a>
     if (txt == "onetime") {
       document.getElementById('onetime1').disabled= false;
       for (var i=1; i<6; i++) {
-	document.getElementById('recurrent'+i).disabled= true;
+	    document.getElementById('recurrent'+i).disabled= true;
       }
     }
     if (txt == "monthly") {
       document.getElementById('onetime1').disabled= true;
       for (var i=1; i<6; i++) {
-	document.getElementById('recurrent'+i).disabled= false;
+	    document.getElementById('recurrent'+i).disabled= false;
       }
     }
   }
