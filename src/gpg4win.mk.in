@@ -649,6 +649,7 @@ stamps/stamp-$(1)-02-configure: stamps/stamp-$(1)-01-patch
 		-DCMAKE_INSTALL_PREFIX="$$$${pkgidir}" \
 		-DCMAKE_PREFIX_PATH="$$$${pkgidir}" \
 		-DCMAKE_TOOLCHAIN_FILE=$(abs_top_srcdir)/src/toolchain.cmake \
+		-DKDE_INSTALL_DATADIR="$$$${pkgidir}/share" \
 		-DBUILD_TESTING=False \
 		$$$${pkgcfg} $$$${pkgextracflags} "../$$$${pkg_version}") && \
 	touch stamps/stamp-$(1)-02-configure
