@@ -219,7 +219,7 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
   push $1
   FileOpen $1 "$INSTDIR\share\QtProject\qtlogging.ini" "w"
   FileWrite $1 '[Rules]$\r$\n'
-  FileWrite $1 'log_kleopatra.debug=true$\r$\n'
+  FileWrite $1 'org.kde.pim.*=true$\r$\n'
   FileClose $1
   pop $1
 
