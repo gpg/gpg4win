@@ -76,6 +76,14 @@ msgctxt "T_AboutGpg4winSrcReleaseDate"
 msgid "release date ${_BUILD_ISODATE}"
 msgstr "utgivelsesdato ${_BUILD_ISODATE}"
 
+msgctxt "T_RunKleopatra"
+msgid "Run Kleopatra"
+msgstr "Kjør Kleopatra"
+
+msgctxt "T_RunGPA"
+msgid "Run GPA"
+msgstr "Kjør GPA"
+
 msgctxt "T_LangCode"
 msgid "en"
 msgstr "no"
@@ -96,11 +104,6 @@ msgid ""
 msgstr ""
 "Kort fortalt: Du kan kjøre denne programvaren for all type bruk. Du kan dele "
 "den videre så lenge mottakerne får same rettighetene til den som du har fått."
-
-#, fuzzy
-msgctxt "T_RunKeyManager"
-msgid "Run the key manager"
-msgstr "Kjør Kleopatra nøkkelhåndteringsverktøy."
 
 msgctxt "T_MoreInfo"
 msgid "Click here for the project's homepage"
@@ -177,18 +180,9 @@ msgstr ""
 "r oppgradering til en vesentlig nyere versjon.\n"
 "Vil du installere Gpg4win ${VERSION} likevel?"
 
-#, fuzzy
-msgctxt "T_FoundExistingVersionB"
-msgid ""
-"A version of Gpg4Win has already been installed on the system. There will be "
-"no problem installing and thus overwriting this Version.\n"
-"\n"
-"Do you want to continue installing Gpg4win?"
-msgstr ""
-"En installasjon av GnuPT har blitt oppdaget.  Dette kan forårsake problemer "
-"når det brukes sammen med Gpg4win.\n"
-"\n"
-"Vil du fortsette installasjonen av Gpg4win?"
+msgctxt "T_UninstallingOldVersion"
+msgid "Uninstalling Gpg4win-"
+msgstr "Avinstallerer Gpg4win-"
 
 msgctxt "T_FoundOldSeeManual"
 msgid ""
@@ -300,8 +294,12 @@ msgstr ""
 "installere en oppdatert versjon fra: http://www.claws-mail.org/win32 Vil du "
 "avinstallere 'Claws Mail' fra Gpg4win nå?"
 
+msgctxt "T_Installing_GnuPG"
+msgid "Installing GnuPG"
+msgstr "Installerer GnuPG"
+
 #, fuzzy
-msgctxt "DESC_SEC_gnupg2"
+msgctxt "DESC_SEC_gnupg_w32"
 msgid "GNU Privacy Guard"
 msgstr "GNU Privacy Guard"
 
@@ -381,18 +379,20 @@ msgctxt "DESC_Menu_compendium_en_pdf"
 msgid "Show the Gpg4win Compendium (pdf, English)"
 msgstr "Vis Gpg4win Compendium (pdf, Engelsk)"
 
-#~ msgctxt "T_RunKleopatra"
-#~ msgid "Run Kleopatra"
-#~ msgstr "Kjør Kleopatra"
+#, fuzzy
+#~ msgctxt "T_RunKeyManager"
+#~ msgid "Run the key manager"
+#~ msgstr "Kjør Kleopatra nøkkelhåndteringsverktøy."
 
-#~ msgctxt "T_RunGPA"
-#~ msgid "Run GPA"
-#~ msgstr "Kjør GPA"
-
-#~ msgctxt "T_UninstallingOldVersion"
-#~ msgid "Uninstalling Gpg4win-"
-#~ msgstr "Avinstallerer Gpg4win-"
-
-#~ msgctxt "T_Installing_GnuPG"
-#~ msgid "Installing GnuPG"
-#~ msgstr "Installerer GnuPG"
+#, fuzzy
+#~ msgctxt "T_FoundExistingVersionB"
+#~ msgid ""
+#~ "A version of Gpg4Win has already been installed on the system. There will "
+#~ "be no problem installing and thus overwriting this Version.\n"
+#~ "\n"
+#~ "Do you want to continue installing Gpg4win?"
+#~ msgstr ""
+#~ "En installasjon av GnuPT har blitt oppdaget.  Dette kan forårsake "
+#~ "problemer når det brukes sammen med Gpg4win.\n"
+#~ "\n"
+#~ "Vil du fortsette installasjonen av Gpg4win?"
