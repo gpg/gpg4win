@@ -63,7 +63,6 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
         uninst-claws-mail.nsi uninst-claws-mail-cmds.nsi \
         inst-qtbase.nsi uninst-qtbase.nsi \
         inst-ki18n.nsi uninst-ki18n.nsi \
-        inst-gpgmepp.nsi uninst-gpgmepp.nsi \
         inst-kwidgetsaddons.nsi uninst-kwidgetsaddons.nsi \
         inst-kcompletion.nsi uninst-kcompletion.nsi \
         inst-kwindowsystem.nsi uninst-kwindowsystem.nsi \
@@ -120,7 +119,7 @@ gpg4win_spkgs = glib libffi gdk-pixbuf gtk+ \
 gpg4win_qtpkgs = qtbase qttools qtwinextras qtsvg
 
 # Source packages following the KDE pattern
-gpg4win_kdepkgs = kconfig gpgmepp kwidgetsaddons ki18n extra-cmake-modules \
+gpg4win_kdepkgs = kconfig kwidgetsaddons ki18n extra-cmake-modules \
                   kcompletion kwindowsystem kcoreaddons libkleo kcodecs \
                   kmime kconfigwidgets kxmlgui kguiaddons kitemviews \
                   kiconthemes kleopatra breeze-icons kitemmodels karchive

@@ -351,7 +351,6 @@ GPG4WIN_KDEPKG([kleopatra], [gnupg-w32 breeze-icons kxmlgui libkleo kde-l10n kit
 GPG4WIN_KDEPKG([extra-cmake-modules])
 GPG4WIN_KDEPKG([kconfig], [qtbase qttools extra-cmake-modules])
 GPG4WIN_KDEPKG([ki18n], [qtbase gettext qttools extra-cmake-modules])
-GPG4WIN_KDEPKG([gpgmepp], [boost qtbase gpgme extra-cmake-modules])
 GPG4WIN_KDEPKG([kwidgetsaddons], [kconfig qttools qtbase])
 GPG4WIN_KDEPKG([kcompletion], [kwidgetsaddons])
 GPG4WIN_KDEPKG([kwindowsystem], [qtbase qtwinextras])
@@ -365,7 +364,7 @@ GPG4WIN_KDEPKG([kitemmodels], [qtbase qttools])
 GPG4WIN_KDEPKG([karchive], [qtbase qttools extra-cmake-modules])
 GPG4WIN_KDEPKG([kiconthemes], [qtsvg kconfigwidgets karchive])
 GPG4WIN_KDEPKG([kxmlgui], [kiconthemes kconfigwidgets kitemviews])
-GPG4WIN_KDEPKG([libkleo], [gpgmepp kmime kwidgetsaddons kwindowsystem kcompletion kconfig gpgme])
+GPG4WIN_KDEPKG([libkleo], [kmime kwidgetsaddons kwindowsystem kcompletion kconfig gpgme])
 
 GPG4WIN_FINALIZE
 

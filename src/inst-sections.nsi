@@ -113,9 +113,6 @@
 !ifdef HAVE_PKG_KI18N
 !include "inst-ki18n.nsi"
 !endif
-!ifdef HAVE_PKG_GPGMEPP
-!include "inst-gpgmepp.nsi"
-!endif
 !ifdef HAVE_PKG_KWIDGETSADDONS
 !include "inst-kwidgetsaddons.nsi"
 !endif
@@ -337,9 +334,6 @@
 !endif
 !ifdef HAVE_PKG_KI18N
 !include "uninst-ki18n.nsi"
-!endif
-!ifdef HAVE_PKG_GPGMEPP
-!include "uninst-gpgmepp.nsi"
 !endif
 !ifdef HAVE_PKG_KWIDGETSADDONS
 !include "uninst-kwidgetsaddons.nsi"
@@ -612,9 +606,6 @@ Function CalcDepends
 !ifdef HAVE_PKG_KI18N
   !insertmacro UnselectSection ${SEC_ki18n}
 !endif
-!ifdef HAVE_PKG_GPGMEPP
-  !insertmacro UnselectSection ${SEC_gpgmepp}
-!endif
 !ifdef HAVE_PKG_KWIDGETSADDONS
   !insertmacro UnselectSection ${SEC_kwidgetsaddons}
 !endif
@@ -755,7 +746,6 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_breeze_icons}
   !insertmacro SelectSection ${SEC_kconfig}
   !insertmacro SelectSection ${SEC_ki18n}
-  !insertmacro SelectSection ${SEC_gpgmepp}
   !insertmacro SelectSection ${SEC_kwidgetsaddons}
   !insertmacro SelectSection ${SEC_kcompletion}
   !insertmacro SelectSection ${SEC_kwindowsystem}

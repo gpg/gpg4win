@@ -209,10 +209,6 @@
 !define gpg4win_pkg_kwidgetsaddons @gpg4win_pkg_kwidgetsaddons@
 !define gpg4win_pkg_kwidgetsaddons_version @gpg4win_pkg_kwidgetsaddons_version@
 
-@HAVE_PKG_GPGMEPP@
-!define gpg4win_pkg_gpgmepp @gpg4win_pkg_gpgmepp@
-!define gpg4win_pkg_gpgmepp_version @gpg4win_pkg_gpgmepp_version@
-
 @HAVE_PKG_BOOST@
 !define gpg4win_pkg_boost @gpg4win_pkg_boost@
 !define gpg4win_pkg_boost_version @gpg4win_pkg_boost_version@
