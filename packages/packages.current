@@ -297,11 +297,10 @@ name gnupg-w32-2.1.15-20160818-src.tar.xz
 file binary/gnupg-w32-2.1.15_20160818.tar.xz
 chk  0f6f07ea28023bbef458c9dd2b04c20260d6c59a5319d0bdab750d933ef18999
 
-# TODO: Switch back to released version
-# last changed: 2015-12-11
+# last changed: 2016-01-17
 # by: ah
-#file pinentry/pinentry-0.9.7.tar.bz2
-#chk  6398208394972bbf897c3325780195584682a0d0c164ca5a0da35b93b1e4e7b2
+file pinentry/pinentry-1.0.0.tar.bz2
+chk  1672c2edc1feb036075b187c0773787b2afd0544f55025c645a71b4c2f79275a
 
 # TODO: Switch back to released version
 # last changed: 2015-08-26
@@ -511,46 +510,24 @@ chk 161c4b963f57bc52894fb63a5288e20e92651313136066698c02ead4a6d194b3
 # a stable branch.
 server http://files.intevation.de/projects/gpg4all
 
-# Pinentry master to show new pinentry features under devel.
-# by: ah
-# verified: tarball created by ah
-file pinentry/pinentry-0.9.8-beta26.tar.bz2
-chk b85a1aa93375758e3a3c3b0f5938799fd6310a882cb1d6d027462dc2c9297a97
-
 # ditto for gpgme.
 # by: ah
 # verified: tarball created by ah
-file gpgme/gpgme-1.7.2-beta44.tar.bz2
-chk 27b8b1c9066f07d76cdec0b831c414642bafc86663c54fb332c79a81a3c2947a
+file gpgme/gpgme-1.8.1-beta34.tar.bz2
+chk 5415a774207ee59ad738a54ad44b8df5630692f6e587f87ac4463243ab3faab7
 
 # ditto for gpgol.
 # by: ah
 # verified: tarball created by ah
-file gpgol/gpgol-2.0.0-beta172.tar.bz2
-chk 9bed2920d1c4249c0a0ebdab68a82c1a43490d2fc1789b0a4c30759406a3523e
-
-# Gpgmepp
-# last changed: 2016-01-21
-# by: ah
-# verified: https://www.kde.org/info/applications-15.12.1.php
-# file 15.12.1/src/gpgmepp-15.12.1.tar.xz
-# chk 56d5f05bd513efc6caf770e43b6109e42842198f
-#
-# Gpgmepp-devel
-# last changed: see package date
-# by: ah
-# verified: Tarball created by ah.
-
-file gpgmepp/gpgmepp-201608261655.tar.xz
-chk 0cbe8d70f043f5afbc75461a04b7b3ac839a2ae54e131e06b0837ee64c04ca06
-
+file gpgol/gpgol-2.0.0-beta256.tar.bz2
+chk 029a2e07b7f7165e0f4f2eb785f2cd0a2fd8c91771230eadcf1d20acc8a7f324
 
 # Libkleo
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah.
-file libkleo/libkleo-201608261656.tar.xz
-chk 40e982aa06fddfea50c3794b2fcb73232458cbb5111d5201a59d94a1bfe2ece2
+file libkleo/libkleo-201701171117.tar.xz
+chk 117a9402892c4bd5b0fb384bf79c932ef9132413b0bbc55c0a92fd95759ad0f8
 
 # KDE-L10n
 # last changed: 2016-02-19
@@ -566,5 +543,5 @@ chk d07988acf4398583580f0f55aae73c3082687fba19d2aa8048979d53a82cf592
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah.
-file kleopatra/kleopatra-201609051810.tar.gz
-chk 73498bcbc40ffb3e3a4f0998a178c94480e4de78380b0992e3811aa335e4067f
+file kleopatra/kleopatra-201701171118.tar.gz
+chk 6de660fcfb3cebb9825a3e763f0ea7eb219f3e997675a45771e3a3d9fb15e5a0
