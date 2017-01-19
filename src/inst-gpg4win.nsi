@@ -30,7 +30,7 @@ Section "-gpg4win" SEC_gpg4win
   SetOutPath "$PLUGINSDIR\Slides"
   File "${BUILD_DIR}/slideshow/slide1-gpgol.png"
   File "${BUILD_DIR}/slideshow/slide2-gpgex.png"
-  File "${BUILD_DIR}/slideshow/slide3-kleopatra.png"
+  #File "${BUILD_DIR}/slideshow/slide3-kleopatra.png"
   File "${BUILD_DIR}/slideshow/slide4-summary.png"
   File "${BUILD_DIR}/slideshow/slides.dat"
   g4wihelp::slide_show /NOUNLOAD /CCOLOR=0x000000 "/auto=$PLUGINSDIR\Slides\slides.dat" /FIT=WIDTH
