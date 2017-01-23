@@ -54,8 +54,7 @@ installiert werden können:</p>
  <p>Ein alternativer Zertifikatsmanager für OpenPGP und X.509.</p>
 </li>
 <li><b>GpgOL</b>
- <p>Eine Programmerweiterung für die <strong>32bit Versionen</strong>
-  von Microsoft Outlook 2003/2007/2010/2013/2016 (E-Mail-Verschlüsselung).
+ <p>Eine Programmerweiterung für Microsoft Outlook 2003/2007/2010/2013/2016 (E-Mail-Verschlüsselung).
   Ab Outlook 2010 wird von GpgOL auch Exchange Server unterstützt.</p>
 </li>
 <li><b>GpgEX</b>
@@ -70,7 +69,7 @@ Fortgeschrittene). Verfügbar in deutscher und englischer Sprache.</p>
 
 <a name="requirements"></a>
 <h2>Systemvorausetzungen</h2>
-<p>Gpg4win benötigt mindestens Windows XP (inkl. Windows 10). 32 und 64bit Systeme werden
+<p>Gpg4win benötigt mindestens Windows XP (inkl. Windows 10). 32- und 64bit-Systeme werden
 unterstützt.</p>
 
 <p>Das Outlook-Plugin GpgOL ist kompatibel mit Microsoft Outlook 2003,

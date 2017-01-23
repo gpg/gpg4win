@@ -51,8 +51,7 @@ Free Software components:
  <p>An alternative certificate manager for OpenPGP and X.509 (S/MIME).</p>
 </li>
 <li><b>GpgOL</b>
- <p>A plugin for the <strong>32bit versions</strong>
-    of Microsoft Outlook 2003/2007/2010/2013/2016 (email encryption).
+ <p>A plugin for Microsoft Outlook 2003/2007/2010/2013/2016 (email encryption).
     With Outlook 2010 and higher GpgpOL supports MS Exchange Server.
  </p>
 </li>
