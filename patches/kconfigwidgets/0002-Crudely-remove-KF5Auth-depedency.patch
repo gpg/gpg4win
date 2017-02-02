@@ -28,8 +28,8 @@ index 9096da6..660db4c 100644
 --- a/KF5ConfigWidgetsConfig.cmake.in
 +++ b/KF5ConfigWidgetsConfig.cmake.in
 @@ -1,6 +1,5 @@
- @PACKAGE_INIT@
 
+ include(CMakeFindDependencyMacro)
 -find_dependency(KF5Auth "@KF5_DEP_VERSION@")
  find_dependency(KF5Codecs "@KF5_DEP_VERSION@")
  find_dependency(KF5Config "@KF5_DEP_VERSION@")

@@ -358,11 +358,15 @@ endef
 
 gpg4win_pkg_kleopatra_configure = \
     -DFORCE_DISABLE_KCMUTILS=ON \
-    -DDISABLE_KWATCHGNUPG=ON
+    -DDISABLE_KWATCHGNUPG=ON \
+    -DKLEOPATRA_VERSION_SUFFIX=-gpg4win-$(VERSION)
 
 gpg4win_pkg_kxmlgui_configure = \
     -DFORCE_DISABLE_KGLOBALACCEL=ON \
     -DFORCE_DISABLE_DBUS=ON
+
+gpg4win_pkg_breeze_icons_configure = \
+    -DBINARY_ICONS_RESOURCE=OFF
 
 # Supported make-only source packages.
 gpg4win_mpkgs = bzip2 zlib
