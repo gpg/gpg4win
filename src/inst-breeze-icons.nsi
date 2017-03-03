@@ -294,6 +294,7 @@ Section "-breeze-icons" SEC_breeze_icons
   File ${prefix}/share/icons/breeze/actions/16/configure-shortcuts.svg
   File ${prefix}/share/icons/breeze/actions/16/configure-toolbars.svg
   File ${prefix}/share/icons/breeze/actions/16/configure.svg
+  File ${prefix}/share/icons/breeze/actions/16/cell_edit.svg
   File ${prefix}/share/icons/breeze/actions/16/dialog-cancel.svg
   File ${prefix}/share/icons/breeze/actions/16/dialog-close.svg
   File ${prefix}/share/icons/breeze/actions/16/dialog-ok-apply.svg
@@ -347,6 +348,7 @@ Section "-breeze-icons" SEC_breeze_icons
   File ${prefix}/share/icons/breeze/actions/22/application-exit.svg
   File ${prefix}/share/icons/breeze/actions/22/arrow-down.svg
   File ${prefix}/share/icons/breeze/actions/22/arrow-up.svg
+  File ${prefix}/share/icons/breeze/actions/22/cell_edit.svg
   File ${prefix}/share/icons/breeze/actions/22/configure-shortcuts.svg
   File ${prefix}/share/icons/breeze/actions/22/configure-toolbars.svg
   File ${prefix}/share/icons/breeze/actions/22/configure.svg
@@ -545,6 +547,9 @@ Section "-breeze-icons" SEC_breeze_icons
   File ${prefix}/share/icons/breeze/emblems/8/emblem-success.svg
   File ${prefix}/share/icons/breeze/emblems/8/emblem-error.svg
   File ${prefix}/share/icons/breeze/emblems/8/emblem-question.svg
+
+  SetOutPath "$INSTDIR\share\icons\breeze\actions\symbolic"
+  File ${prefix}/share/icons/breeze/actions/symbolic/send-to-symbolic.svg
 
 !endif
 SectionEnd
