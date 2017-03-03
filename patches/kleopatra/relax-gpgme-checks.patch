@@ -1,0 +1,30 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+diff --git a/src/commands/keytocardcommand.cpp b/src/commands/keytocardcommand.cpp
+index 7fedf50..464c2a0 100644
+--- a/src/commands/keytocardcommand.cpp
++++ b/src/commands/keytocardcommand.cpp
+@@ -48,7 +48,7 @@
+ #include <cassert>
+
+ #include <gpgme++/gpgmepp_version.h>
+-#if GPGMEPP_VERSION > 0x10801
++#if GPGMEPP_VERSION > 0x10800
+ # define GPGME_SUBKEY_HAS_KEYGRIP
+ #endif
+
+diff --git a/src/view/pgpcardwidget.cpp b/src/view/pgpcardwidget.cpp
+index 4d04f20..3a69744 100644
+--- a/src/view/pgpcardwidget.cpp
++++ b/src/view/pgpcardwidget.cpp
+@@ -63,7 +63,7 @@
+ #include <QGpgME/DataProvider>
+
+
+-#if GPGMEPP_VERSION > 0x10801 // 1.8.1
++#if GPGMEPP_VERSION > 0x10800 // 1.8.1
+ // TODO remove ifdef once > 1.8.1 is required
+ #include <gpgme++/gpggencardkeyinteractor.h>
+ # define GPGME_CAN_GENCARDKEY

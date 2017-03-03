@@ -520,8 +520,9 @@ chk 94734a63406ad62643acd5908837482e7f60d6ea8ee523b3587cbdc97e062319
 # ditto for gpgol.
 # by: ah
 # verified: tarball created by ah
-file gpgol/gpgol-2.0.0-beta256.tar.bz2
-chk 029a2e07b7f7165e0f4f2eb785f2cd0a2fd8c91771230eadcf1d20acc8a7f324
+file gpgol/gpgol-2.0.0-beta259.tar.bz2
+chk f89a57cc57124e2bd4e506c4b26c8ca2ee4f7c3a8b987b0816762ea57251a8bf
+
 
 # Libkleo
 # last changed: see package date.
@@ -544,5 +545,5 @@ chk d07988acf4398583580f0f55aae73c3082687fba19d2aa8048979d53a82cf592
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah.
-file kleopatra/kleopatra-201701171118.tar.gz
-chk 6de660fcfb3cebb9825a3e763f0ea7eb219f3e997675a45771e3a3d9fb15e5a0
+file kleopatra/kleopatra-201703031520.tar.gz
+chk cb4bf790d5cf1cba61a2c7220a8452125eae380d28643f2c2d3ad882dbcf393d

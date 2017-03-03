@@ -31,10 +31,10 @@ that has a packaged kconfig_compiler5.
  create mode 100644 src/tooltippreferences.h
 
 diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
-index 6799187..8c8193c 100644
+index 0c1b207..29ac1e0 100644
 --- a/src/CMakeLists.txt
 +++ b/src/CMakeLists.txt
-@@ -259,12 +259,21 @@ ki18n_wrap_ui(_kleopatra_SRCS
+@@ -263,12 +263,21 @@ ki18n_wrap_ui(_kleopatra_SRCS
    newcertificatewizard/advancedsettingsdialog.ui
  )
 
@@ -63,11 +63,11 @@ index 6799187..8c8193c 100644
  file(GLOB ICONS_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/icons/*-apps-kleopatra.png")
  ecm_add_app_icon(_kleopatra_SRCS ICONS ${ICONS_SRCS})
 diff --git a/src/conf/CMakeLists.txt b/src/conf/CMakeLists.txt
-index bd46c88..d7351e2 100644
+index 5e2092c..888d87d 100644
 --- a/src/conf/CMakeLists.txt
 +++ b/src/conf/CMakeLists.txt
-@@ -14,10 +14,6 @@ if(BUILD_libkleopatraclient)
-     cryptooperationsconfigwidget.ui
+@@ -13,10 +13,6 @@ if(BUILD_libkleopatraclient)
+     smimevalidationconfigurationwidget.ui
    )
 
 -  kconfig_add_kcfg_files(_kcm_kleopatra_libkleopatraclient_extra_SRCS
@@ -77,7 +77,7 @@ index bd46c88..d7351e2 100644
    set(_kcm_kleopatra_libkleopatraclient_extra_LIBS kleopatraclientgui)
 
    set(_kcm_kleopatra_libkleopatraclient_extra_install_FILES
-@@ -48,12 +44,18 @@ ki18n_wrap_ui(kcm_kleopatra_PART_SRCS
+@@ -47,12 +43,18 @@ ki18n_wrap_ui(kcm_kleopatra_PART_SRCS
    smimevalidationconfigurationwidget.ui
  )
 
