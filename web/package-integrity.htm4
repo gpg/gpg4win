@@ -53,12 +53,19 @@ For gpg4win-VERSION.tar.bz2:
 
 <p>
 The signatures have been created with the following OpenPGP certificate<br>
-<a href="https://ssl.intevation.de">Intevation File Distribution Key <distribution-key@intevation.de>
-(Key ID: EC70B1B8)</a>
+<a href="https://ssl.intevation.de/Intevation-Distribution-Key.asc">Intevation File Distribution Key
+<distribution-key@intevation.de><br>(Fingerprint: 61AC 3F5E E4BE 593C 13D6  8B1E 7CBD 620B EC70 B1B8)</a>
+<br>
+<br>
+Since 2017 new releases are additionally signed with a new certificate that
+matches more modern key standards:
+<br>
+<a href="https://ssl.intevation.de/Intevation-Distribution-Key.asc">Intevation File Distribution Key
+<distribution-key@intevation.de><br>(Fingerprint: 13E3 CE81 AFEA 6F68 3E46  6E0D 42D8 7608 2688 DA1A)</a>
 </p>
 
 <p>
-The certificate be retrieved from OpenPGP certificate servers.
+The certificate can also be retrieved from OpenPGP certificate servers.
 Loading a certificate from a certificate server can be done e.g. via
 Kleopatra or GPA.
 Checking the signature of a file is best done with GpgEX via
