@@ -108,8 +108,33 @@ Noteworthy changes in version 3.0.0 (unreleased)
 
 (de) Pinentry erlaubt es nun die eingegebene Passprhase anzuzeigen.
 
+(en) Kleopatra now supports OpenPGP Smartcards management.
+
+(de) Kleopatra unterstützt nun OpenPGP Smartcards.
+
+(en) GpgOL for Outlook 2010 and later has a new interface to show
+     the signature / encryption state inside of Outlook.
+
+(de) GpgOL für Outlook 2010 und spätere Versionen hat ein neues
+     Benutzerinterface um den Crypostatus direkt im Mailfenster
+     anzuzeigen.
+
+(en) GnuPG now supports https and uses the https sks-keyserver pool
+     by default.
+
+(de) GnuPG unterstützt nun https und verwendet standardmässig den
+     https sks-keyserver pool.
+
+(en) GpgOL now supports sending and receiving HTML Mails
+
+(de) GpgOL unterstützt nun das senden und empfangen von HTML Mails
+
+(en) Many bugfixes and minor improvements.
+
+(de) Viele fehlerbehebungen und kleinere verbesserungen.
+
 ~~~~~~~~~~~~~~~
-GnuPG:          2.1.15
+GnuPG:          2.1.19
 Kleopatra:      3.0.0
 GPA:            0.9.9
 GpgOL:          1.4.0

@@ -98,43 +98,59 @@ New in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 
 - Pinentry now enables you to inspect the typed passphrase.
 
-3. Known Bugs (and Workarounds)
-===============================
+- Kleopatra now supports OpenPGP Smartcards management.
 
-- Using smart cards with Kleopatra:
+- GpgOL for Outlook 2010 and later has a new interface to show
+  the signature / encryption state inside of Outlook.
 
-   * OpenPGP card
-     The initial setting of a smart card with Kleopatra is not yet
-     possible. Please run the following steps once to use your smart
-     card with Kleopatra.
-     Use the gpg command line tool to create a new OpenPGP certificate
-     on your card (a) or to activate your existing certificate of
-     your card (b):
+- GnuPG now supports https and uses the https sks-keyserver pool
+  by default.
 
-     (a) Create new certificate
-       - Insert card.
-       - Run "gpg --card-edit".
-       - Switch to admin modus by enter: "admin".
-       - Enter "generate" to create a new certificate.
+- GpgOL now supports sending and receiving HTML Mails
 
-     (b) Activate existing certificate of your card
-       - Import associated (public) certificate of your card (e.g.
-         from certificate server or from a exported certificate file).
-       - Insert card.
-       - Run "gpg --card-status".
+- Many bugfixes and minor improvements.
 
-   * X.509 Telesec Netkey 3 card
-     Use Kleopatra to initialize your card:
-     - Insert card.
-     - Click on the flashing Kleopatra system tray icon (or use the 
-       context menu "smart card" of the system tray icon and run the 
-       "learn card" command directly).
 
-   After finishing these steps your OpenPGP / X.509 certificate from your
-   smart card is shown in Kleopatra under the tab "My certificates" 
-   (marked with a smart card icon).
+3. Additional Notes
+===================
+- General
 
-- Using the Outlook Plugin "GpgOL":
+  * For 3.0 we plan to offer a quick switch to a more automatic mode that
+    will set the gnupg options:
+
+        auto-key-locate wkd
+        auto-key-retrieve
+        trust-model tofu+pgp
+
+    As this is not properly handled everywhere (especially Kleopatra's
+    file verification dialog) this is not yet default or easily accessible.
+
+    You can add it manually to your gpg.conf. The trust-model is fully
+    supported by GpgOL.
+
+- Kleopatra
+
+  * Netkey cards are not yet supported by the new Manage Smartcard view.
+
+- GpgOL
+
+  * It is not possible to modify mails (e.g. moving / flagging the mail)
+    while they are shown decrypted.
+    To workaround this unselect the crypto mail and then make changes
+    through the right click context menu or move it with drag and drop.
+
+  * Crypto mails forwarded as attachment are not properly handled.
+
+  * The certificate selection dialog sometimes opens in the background and
+    needs an overhaul.
+
+  * Localization is incomplete
+
+
+- GpgOL for Outlook 2003 and 2007 (deprecated):
+
+  Outlook 2003 and 2007 support is deprecated and may be removed in a
+  future version.
 
   * You defintely should create copies of your old encrypted/signed
     emails before installing GpgOL, e.g. in the form of PST files.
@@ -144,7 +160,7 @@ New in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
     does not yet work.
     [see https://bugs.g10code.com/gnupg/issue1102]
     (Please note, using SMTP with GpgOL and Exchange seems to be work.
-    Or use GpgOL with Outlook 2010/2013.)
+    Or use GpgOL with Outlook 2010 or later.)
 
   * For Outlook 2003/2007 only:
     Encrypted E-Mails occuring un-encrypted on the email server: It

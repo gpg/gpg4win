@@ -104,47 +104,64 @@ Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 
 - Pinentry erlaubt es nun die eingegebene Passprhase anzuzeigen.
 
-3. Bekannte Probleme (und Abhilfen)
-===================================
+- Kleopatra unterstützt nun OpenPGP Smartcards.
 
-- Smartcard-Nutzung mit Kleopatra
+- GpgOL für Outlook 2010 und spätere Versionen hat ein neues
+  Benutzerinterface um den Crypostatus direkt im Mailfenster
+  anzuzeigen.
 
-   Die Einrichtung von Smartcards unter Kleopatra ist derzeit noch
-   nicht vollständig möglich. Bitte führen Sie folgende Schritte
-   einmalig durch, um Ihre Smartcard anschließend unter Kleopatra
-   nutzen zu können.
+- GnuPG unterstützt nun https und verwendet standardmässig den
+  https sks-keyserver pool.
 
-   * OpenPGP Karte
-     Verwenden Sie das gpg-Kommandozeilen-Werkzeug, um ein neues
-     OpenPGP-Zertifikat auf Ihrer Karte zu erzeugen (a) oder Ihr
-     vohandenes Zertifikat von Ihrer Karte zu aktivieren (b):
+- GpgOL unterstützt nun das senden und empfangen von HTML Mails
 
-     (a) Neues Zertifikat erzeugen
-       - Karte einlegen.
-       - Führen Sie "gpg --card-edit" auf der Kommandozeile aus.
-       - Wechseln Sie in den Admin-Modus mit "admin".
-       - Geben Sie "generate" ein und folgen Sie den Anweisungen, um
-         ein neues Zertifiakt zu erzeugen.
+- Viele Fehlerbehebungen und kleinere verbesserungen.
 
-     (b) Vorhandenes Zertifikat von der Karte aktivieren
-       - Das (zu der Karte) zugehörige öffentliche Zertifikat
-         importieren (z.B. von einem Zertifikatsserver oder von einer
-         vorher exportierten Zertifikatsdatei).
-       - Karte einlegen.
-       - Führen Sie "gpg --card-status" auf der Kommandozeile aus.
+3. Anmerkungen
+==============
 
-   * X.509 Telesec Netkey 3 Karte
-     Verwenden Sie Kleopatra, um Ihre Karte (einmalig) zu initialisieren:
-     - Karte einlegen.
-     - Auf das blinkende Kleopatra-Smartcard-Systemtray-Icon klicken
-       (oder direkt das Systemtray-Kontextmenü "Smartcard" und dort
-       den "LearnCard"-Eintrag aufrufen).
+- Allgemein
 
-   Anschließend wird Ihr OpenPGP- bzw. X.509-Smartcard-Zertifikat in
-   Kleopatra unter dem Reiter "Meine Zertifikate" angezeigt (markiert
-   mit einem Smartcard-Icon).
+  * Für Version 3.0 planen wir eine einfache möglichkeit zu bieten in einen
+    automatisierten Modus zu wechseln. Dies wird die folgenden GnuPG Optionen
+    setzen:
 
-- Verwendung der Outlook-Programmerweiterung "GpgOL":
+        auto-key-locate wkd
+        auto-key-retrieve
+        trust-model tofu+pgp
+
+    Da das neue Vertrauensmodell noch nicht so wie wir uns das wünschen in
+    Kleopatra behandelt wird (insbesondere bezüglich Dateisignaturen) wird
+    dies noch nicht angeboten.
+
+    Sie können die Optionen manuell in der gpg.conf setzen. Das neue
+    vertrauensmodell wird von GpgOL bereits unterstützt.
+
+- Kleopatra
+
+  * Netkey Smartcards werden noch nicht von der neuen Smartcard ansicht
+  unterstützt.
+
+- GpgOL
+
+  * Es ist nicht möglich mails zu verändern (z.B. sie zu verschieben oder
+    Flaggen zu setzen) während diese entschlüsselt betrachtet werden.
+    Um dies zu umgehen schließen Sie die entsprechende Mail oder wählen
+    Sie ab und modifzieren / verschieben diese dann über Rechtsklick oder
+    Drag & Drop.
+
+  * Crypto mails die als Anhang weitergeleitet wurden werden nicht verarbeitet.
+
+  * Der Zertifikatsauswahldialog öffnet sich teilweise im Hintergrund und bedarf
+    insgesamt einer Überarbeitung.
+
+  * Outlook 2003 und 2007 support is abgekündigt und wird in einer Zukunftigen
+    Version vollständig entfernt werden.
+
+- GpgOL für Outlook 2003 und 2007
+
+  Outlook 2003 und 2007 support is abgekündigt und wird in einer Zukunftige
+  Version vollständig entfernt werden.
 
   * Sie sollten unbedingt vor der Installation von GpgOL
     Sicherheitskopien Ihrer alten verschlüsselten/signierten E-Mails
