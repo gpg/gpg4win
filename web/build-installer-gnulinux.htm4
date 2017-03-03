@@ -51,9 +51,9 @@ and '$' for commands to be executed as regular user.
 
 <li> If you work with the GIT version:<br>
      <em>$ ./autogen.sh</em><br>
-     <em>$ ./autogen --build-w32</em><br>
+     <em>$ ./autogen.sh --build-w32</em><br>
      else:<br>
-     <em>$ ./autogen --build-w32</em><br>
+     <em>$ ./autogen.sh --build-w32</em><br>
 
 <li> Now build the Gpg4win installer package:<br>
      <em>$ make</em>
