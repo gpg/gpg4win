@@ -293,26 +293,26 @@ chk  f628f75843433b38b05af248121beb7db5bd54bb2106f384edac39934261320c
 file libassuan/libassuan-2.4.3.tar.bz2
 chk  22843a3bdb256f59be49842abf24da76700354293a066d82ade8134bb5aa2b71
 
+# TODO: Switch back to released version
 # last changed: 2016-08-26
 # by: ah
-name gnupg-w32-2.1.19-20170301-bin.exe
-file binary/gnupg-w32-2.1.19_20170301.exe
-chk  c59014bc9087831688129f1367360c92552274fd4bfdc2000e23436db75344fc
+#name gnupg-w32-2.1.19-20170301-bin.exe
+#file binary/gnupg-w32-2.1.19_20170301.exe
+#chk  c59014bc9087831688129f1367360c92552274fd4bfdc2000e23436db75344fc
 
-name gnupg-w32-2.1.19-20170301-src.tar.xz
-file binary/gnupg-w32-2.1.19_20170301.tar.xz
-chk  669bf2776bb874c544554af078632107ee40be014d115921009fb2061effb06a
+#name gnupg-w32-2.1.19-20170301-src.tar.xz
+#file binary/gnupg-w32-2.1.19_20170301.tar.xz
+#chk  669bf2776bb874c544554af078632107ee40be014d115921009fb2061effb06a
 
 # last changed: 2016-01-17
 # by: ah
 file pinentry/pinentry-1.0.0.tar.bz2
 chk  1672c2edc1feb036075b187c0773787b2afd0544f55025c645a71b4c2f79275a
 
-# TODO: Switch back to released version
-# last changed: 2015-08-26
+# last changed: 2017-03-28
 # by: ah
-# file gpgme/gpgme-1.6.0.tar.bz2
-# chk  b09de4197ac280b102080e09eaec6211d081efff1963bf7821cf8f4f9916099d
+file gpgme/gpgme-1.9.0.tar.bz2
+chk  1b29fedb8bfad775e70eafac5b0590621683b2d9869db994568e6401f4034ceb
 
 # last changed: 2017-01-04
 # by: ah
@@ -320,9 +320,15 @@ file gpa/gpa-0.9.10.tar.bz2
 chk  c3b9cc36fd9916e83524930f99df13b1d5f601f4c0168cb9f5d81422e282b727
 
 # (Snapshots)
-# server ftp://ftp.g10code.com/g10code/scratch
+# verified D869 2123 C406 5DEA 5E0F  3AB5 249B 39D2 4F25 E3B6
+server https://gnupg.org/ftp/people/werner/.prep
+name gnupg-w32-2.1.19-20170328-bin.exe
+file gnupg-w32-2.1.19_20170328.exe
+chk  9e0086573c5362fdf41a379e24a2ba0ba4bbe56493811d831ae426a394565c56
 
-
+name gnupg-w32-2.1.19-20170328-src.tar.xz
+file gnupg-w32-2.1.19_20170328.tar.xz
+chk  6ceaed21b65ad3f19f77b61b039d4717eea2c37ea2c054717f3164f82af649df
 #
 #  GnuPG utilities
 #
@@ -515,12 +521,6 @@ chk c435708f18422117f10cef52a7edcaae71c5da444f72c6f405665154f116e9bc
 # a stable branch.
 server http://files.intevation.de/projects/gpg4all
 
-# ditto for gpgme.
-# by: ah
-# verified: tarball created by ah
-file gpgme/gpgme-1.8.1-beta89.tar.bz2
-chk 94734a63406ad62643acd5908837482e7f60d6ea8ee523b3587cbdc97e062319
-
 # ditto for gpgol.
 # by: ah
 # verified: tarball created by ah
@@ -549,5 +549,5 @@ chk c1c6cae8103d7437c46846f1a5775a5169b8a8e7d7da8536dcc0b801a9830942
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah.
-file kleopatra/kleopatra-201703281146.tar.gz
-chk a57c03be3c89b65338a46fdb56eda1ea7fc005a469d665ebbe6b6a1bff29d1cf
+file kleopatra/kleopatra-201703281732.tar.gz
+chk c75f3d3f873699702b1cb207e8998d2107fbfbcf39163a2ce57c604b4bdd7536
