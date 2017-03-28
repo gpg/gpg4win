@@ -43,6 +43,7 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
 
   SetOutPath "$INSTDIR\share\kleopatra\pics"
 
+  File ${prefix}/share/kleopatra/pics/gpg4win.png
   File ${prefix}/share/kleopatra/pics/kleopatra_splashscreen.png
   File ${prefix}/share/kleopatra/pics/kleopatra_splashscreen.svgz
   File ${prefix}/share/kleopatra/pics/kleopatra_wizard.png
