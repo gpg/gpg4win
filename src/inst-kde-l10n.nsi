@@ -1017,6 +1017,7 @@ Section "-kde-l10n" SEC_kde-l10n
   File ${kwidgetsaddons_prefix}/share/locale/sr/LC_MESSAGES/kwidgetsaddons5_qt.qm
   File ${kwindowsystem_prefix}/share/locale/sr/LC_MESSAGES/kwindowsystem5_qt.qm
   File ${prefix}/share/locale/sr/LC_MESSAGES/libkleopatra.mo
+  File ${prefix}/share/locale/sr/LC_MESSAGES/kwatchgnupg.mo
   SetOutPath "$INSTDIR\share\locale\sr@ijekavian"
   File ${kcfg_prefix}/share/locale/sr@ijekavian/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\sr@ijekavian\LC_MESSAGES"
@@ -1032,6 +1033,7 @@ Section "-kde-l10n" SEC_kde-l10n
   File ${kwidgetsaddons_prefix}/share/locale/sr@ijekavian/LC_MESSAGES/kwidgetsaddons5_qt.qm
   File ${kwindowsystem_prefix}/share/locale/sr@ijekavian/LC_MESSAGES/kwindowsystem5_qt.qm
   File ${prefix}/share/locale/sr@ijekavian/LC_MESSAGES/libkleopatra.mo
+  File ${prefix}/share/locale/sr@ijekavian/LC_MESSAGES/kwatchgnupg.mo
   SetOutPath "$INSTDIR\share\locale\sr@ijekavianlatin"
   File ${kcfg_prefix}/share/locale/sr@ijekavianlatin/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\sr@ijekavianlatin\LC_MESSAGES"
@@ -1047,6 +1049,7 @@ Section "-kde-l10n" SEC_kde-l10n
   File ${kwidgetsaddons_prefix}/share/locale/sr@ijekavianlatin/LC_MESSAGES/kwidgetsaddons5_qt.qm
   File ${kwindowsystem_prefix}/share/locale/sr@ijekavianlatin/LC_MESSAGES/kwindowsystem5_qt.qm
   File ${prefix}/share/locale/sr@ijekavianlatin/LC_MESSAGES/libkleopatra.mo
+  File ${prefix}/share/locale/sr@ijekavianlatin/LC_MESSAGES/kwatchgnupg.mo
   SetOutPath "$INSTDIR\share\locale\sr@latin"
   File ${kcfg_prefix}/share/locale/sr@latin/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\sr@latin\LC_MESSAGES"
@@ -1062,6 +1065,7 @@ Section "-kde-l10n" SEC_kde-l10n
   File ${kwidgetsaddons_prefix}/share/locale/sr@latin/LC_MESSAGES/kwidgetsaddons5_qt.qm
   File ${kwindowsystem_prefix}/share/locale/sr@latin/LC_MESSAGES/kwindowsystem5_qt.qm
   File ${prefix}/share/locale/sr@latin/LC_MESSAGES/libkleopatra.mo
+  File ${prefix}/share/locale/sr@latin/LC_MESSAGES/kwatchgnupg.mo
   SetOutPath "$INSTDIR\share\locale\sv"
   File ${kcfg_prefix}/share/locale/sv/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\sv\LC_MESSAGES"

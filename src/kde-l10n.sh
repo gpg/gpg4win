@@ -41,8 +41,8 @@ QFRAMEWORKS="kconfig kcompletion kcodecs kcoreaddons kitemviews kwidgetsaddons k
 KFRAMEWORKS="kconfigwidgets ki18n kiconthemes kxmlgui"
 
 POFILES="pim/libkleopatra.po \
-    kdepim/kwatchgnupg.po
-    kdepim/kleopatra.po"
+    pim/kwatchgnupg.po
+    pim/kleopatra.po"
 # See: https://websvn.kde.org/*checkout*/trunk/l10n-kf5/subdirs
 LANGS="af \
 ar \
@@ -231,8 +231,8 @@ for lang in $LANGS; do
     mkdir -p $lang
     cd $lang
     for pofile in $POFILES; do
-#        svn export svn://anonsvn.kde.org/home/kde/trunk/l10n-kf5/$lang/messages/$pofile \
-#        `basename $pofile` 2>/dev/null || \
+        svn export svn://anonsvn.kde.org/home/kde/trunk/l10n-kf5/$lang/messages/$pofile \
+        `basename $pofile` 2>/dev/null || \
         echo "$pofile not found in $lang"
     done
     cd ..
