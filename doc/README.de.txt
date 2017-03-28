@@ -115,6 +115,12 @@ Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 
 - GpgOL unterstützt nun das senden und empfangen von HTML Mails
 
+- Kleopatra hat nun verbesserte Nachrichten beim überprüfen von
+  Dateien.
+
+- Kleopatra erlaubt es einem nun direkt fehlendene Zertifikate
+  beim Dateiüberprüfen zu importieren.
+
 - Viele Fehlerbehebungen und kleinere verbesserungen.
 
 3. Anmerkungen

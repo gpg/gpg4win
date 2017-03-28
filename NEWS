@@ -129,6 +129,17 @@ Noteworthy changes in version 3.0.0 (unreleased)
 
 (de) GpgOL unterstützt nun das senden und empfangen von HTML Mails
 
+(en) Kleopatra has improved file verification messages.
+
+(de) Kleopatra hat nun verbesserte Nachrichten beim überprüfen von
+     Dateien.
+
+(en) Kleopatra now supports to directly import missing certificates
+     when verifying a file.
+
+(de) Kleopatra erlaubt es einem nun direkt fehlendene Zertifikate
+     beim Dateiüberprüfen zu importieren.
+
 (en) Many bugfixes and minor improvements.
 
 (de) Viele fehlerbehebungen und kleinere verbesserungen.
