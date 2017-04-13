@@ -55,7 +55,8 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         patches/gpgex-1.0.4/0001-Prefer-kleowrapped-gpgwrapped-binaries.patch \
         patches/libkleo/lower-kf5-required.patch \
         patches/gpgex-1.0.4/0002-Fix-loop-logic-error-in-new-server-name-detection.patch \
-        patches/extra-cmake-modules/0001-Use-BIN_INSTALL_DIR-data-for-DATAROOTDIR-on-Windows.patch
+        patches/extra-cmake-modules/0001-Use-BIN_INSTALL_DIR-data-for-DATAROOTDIR-on-Windows.patch \
+        patches/gpa-0.9.10/0001-w32-Make-location-of-locale-dir-more-flexible.patch
 
 copy-news:
 	cp NEWS doc/website/NEWS.last

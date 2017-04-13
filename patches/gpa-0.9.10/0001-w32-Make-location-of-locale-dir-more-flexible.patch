@@ -1,0 +1,42 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From 2dae64a65080c52a731d98a905a447de1428cc7c Mon Sep 17 00:00:00 2001
+From: Andre Heinecke <aheinecke@intevation.de>
+Date: Thu, 13 Apr 2017 09:44:47 +0200
+Subject: [PATCH] w32: Make location of locale dir more flexible
+
+* src/gpa.c (get_locale_dir): If installed under a bin subdirectory
+strip this out of the locale path.
+
+--
+This fixes loading locales when GPA is installed under a bin
+subdirectory like it is with GnuPG 2.1 and Gpg4win.
+---
+ src/gpa.c | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+
+diff --git a/src/gpa.c b/src/gpa.c
+index be8490d..bad001f 100644
+--- a/src/gpa.c
++++ b/src/gpa.c
+@@ -160,7 +160,15 @@ get_locale_dir (void)
+
+   if (! GetModuleFileNameA (0, name, sizeof (name) - 30))
+     return NULL;
+-  p = strrchr (name, '\\');
++
++  /* If installed under bin assume that share is on the same
++     hierarchy as the bin subdirectory. Otherwise assume that
++     share is a subdirectory of the gpa.exe location. */
++  p = strstr (name, "\\bin\\");
++  if (!p)
++    {
++      p = strrchr (name, '\\');
++    }
+   if (!p)
+     {
+       *name = '\\';
+--
+2.1.4
