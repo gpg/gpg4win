@@ -38,8 +38,6 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         patches/w32pth-2.0.5/workaround-broken-libtool.patch \
         patches/qttools/disable-most-tools.patch \
         patches/ki18n/no-tests.patch \
-        patches/gpgme-1.6.0/0001-w32-Fallback-to-2.1-reg-key-for-gpgconf-search.patch \
-        patches/gpgme-1.6.0/0001-Add-gpgme_pubkey_algo_string.patch \
         patches/kxmlgui/0002-Make-QDBus-dependency-optional.patch \
         patches/kxmlgui/0003-Make-KTextWidgets-optional.patch \
         patches/kxmlgui/0004-Cruedly-disable-KSendbugmail.patch \
