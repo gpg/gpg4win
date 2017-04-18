@@ -1,0 +1,46 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+
+From d86b8b46b4f484f5bc26652f01c9332ce401d1eb Mon Sep 17 00:00:00 2001
+From: Andre Heinecke <aheinecke@intevation.de>
+Date: Wed, 5 Apr 2017 18:23:48 +0200
+Subject: [PATCH] core: Don't split gpgconf strings on comma
+
+* src/engine-gpgconf.c (gpgconf_parse_option): Don't split
+strings on comma.
+
+--
+This only affects values where the main type is string. Values
+with the alt_type string but another main type are still split
+to keep lists (e.g. groups) working.
+---
+ src/engine-gpgconf.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/src/engine-gpgconf.c b/src/engine-gpgconf.c
+index 6f7c8ac..af5f110 100644
+--- a/src/engine-gpgconf.c
++++ b/src/engine-gpgconf.c
+@@ -399,7 +399,7 @@ gpgconf_parse_option (gpgme_conf_opt_t opt,
+		      gpgme_conf_arg_t *arg_p, char *line)
+ {
+   gpgme_error_t err;
+-  char *mark;
++  char *mark = NULL;
+
+   if (!line[0])
+     return 0;
+@@ -408,7 +408,8 @@ gpgconf_parse_option (gpgme_conf_opt_t opt,
+     {
+       gpgme_conf_arg_t arg;
+
+-      mark = strchr (line, ',');
++      if (opt->type != GPGME_CONF_STRING)
++        mark = strchr (line, ',');
+       if (mark)
+	*mark = '\0';
+
+--
+2.1.4
