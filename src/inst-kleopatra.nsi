@@ -223,6 +223,46 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
   FileClose $1
   pop $1
 
+  SetOutPath "$INSTDIR\..\GnuPG\share\doc\gnupg\examples"
+  # Install profiles
+  push $1
+  FileOpen $1 "$INSTDIR\..\GnuPG\share\doc\gnupg\examples\VS-NFD.prf" "w"
+  FileWrite $1 '# VS-NFD.prf - Configure options for the VS-NfD mode           -*- conf -*-$\r$\n'
+  FileWrite $1 '$\r$\n'
+  FileWrite $1 '[gpg]$\r$\n'
+  FileWrite $1 'compliance de-vs$\r$\n'
+  FileWrite $1 'default-new-key-algo brainpoolP256r1+brainpoolP256r1$\r$\n'
+  FileWrite $1 '$\r$\n'
+  FileWrite $1 '[gpgsm]$\r$\n'
+  FileWrite $1 'enable-crl-checks$\r$\n'
+  FileWrite $1 '$\r$\n'
+  FileWrite $1 '[gpg-agent]$\r$\n'
+  FileWrite $1 'enable-extended-key-format$\r$\n'
+  FileWrite $1 'default-cache-ttl 900$\r$\n'
+  FileWrite $1 'max-cache-ttl [] 3600$\r$\n'
+  FileWrite $1 'no-allow-mark-trusted$\r$\n'
+  FileWrite $1 'no-allow-external-cache$\r$\n'
+  FileWrite $1 'enforce-passphrase-constraints$\r$\n'
+  FileWrite $1 'min-passphrase-len 9$\r$\n'
+  FileWrite $1 'min-passphrase-nonalpha 0$\r$\n'
+  FileWrite $1 '$\r$\n'
+  FileWrite $1 '[dirmngr]$\r$\n'
+  FileWrite $1 'allow-ocsp$\r$\n'
+  FileClose $1
+  pop $1
+
+  push $1
+  FileOpen $1 "$INSTDIR\..\GnuPG\share\doc\gnupg\examples\Automatic.prf" "w"
+  FileWrite $1 '# Automatic.prf - Configure options for a more automatic mode           -*- conf -*-$\r$\n'
+  FileWrite $1 '$\r$\n'
+  FileWrite $1 '[gpg]$\r$\n'
+  FileWrite $1 'auto-key-locate local,wkd,dane$\r$\n'
+  FileWrite $1 'auto-key-retrieve$\r$\n'
+  FileWrite $1 'trust-model tofu+pgp$\r$\n'
+  FileWrite $1 '$\r$\n'
+  FileClose $1
+  pop $1
+
   WriteRegStr HKLM "Software\Gpg4win\kleopatra\Capabilities" "ApplicationDescription" "$(DESC_SEC_kleopatra)"
   WriteRegStr HKLM "Software\Gpg4win\kleopatra\Capabilities" "ApplicationIcon" "$INSTDIR\bin\kleopatra.exe,0"
   WriteRegStr HKLM "Software\Gpg4win\kleopatra\Capabilities" "ApplicationName" "Kleopatra"
