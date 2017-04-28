@@ -50,6 +50,7 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         patches/kleopatra/0005-Hack-generated-conf-files-for-Crosscompiling.patch \
         patches/kleopatra/lower-kf5-required.patch \
         patches/kleopatra/relax-gpgme-checks.patch \
+        patches/kleopatra/fix-qt5.6-build.patch \
         patches/libgpg-error-1.21/0001-Add-FD_ISSET-replacement-for-Windows.patch \
         patches/gpgex-1.0.4/0001-Prefer-kleowrapped-gpgwrapped-binaries.patch \
         patches/libkleo/lower-kf5-required.patch \

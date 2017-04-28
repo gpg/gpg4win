@@ -3,18 +3,21 @@ patch -p1 -l -f $* < $0
 exit $?
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 2b9c74e..2e06952 100644
+index 82317fd..bed1a72 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -6,9 +6,9 @@ option(FORCE_DISABLE_KCMUTILS "Force building Kleopatra without KCMUtils. Doing
+@@ -6,10 +6,10 @@ option(FORCE_DISABLE_KCMUTILS "Force building Kleopatra without KCMUtils. Doing
  option(DISABLE_KWATCHGNUPG "Don't build the kwatchgnupg tool [default=OFF]" OFF)
 
  # Standalone build. Find / include everything neccessary.
 -set(KF5_VERSION "5.32.0")
--set(KMIME_VERSION "5.4.80")
--set(LIBKLEO_VERSION "5.4.80")
+-set(KMIME_VERSION "5.5.40")
+-set(LIBKLEO_VERSION "5.5.40")
+-set(QT_REQUIRED_VERSION "5.7.0")
 +set(KF5_VERSION "5.20.0")
 +set(KMIME_VERSION "5.2.40")
 +set(LIBKLEO_VERSION "5.4.40")
- set(QT_REQUIRED_VERSION "5.6.0")
++set(QT_REQUIRED_VERSION "5.6.0")
  set(GPGME_REQUIRED_VERSION "1.8.0")
+
+ find_package(ECM ${KF5_VERSION} REQUIRED NO_MODULE)
