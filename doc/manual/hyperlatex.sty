@@ -48,7 +48,7 @@
 %% \back
 %%
 
-\newcommand{\back}{{\tt\char`\\}}
+\newcommand{\back}{{\normalfont \ttfamily \char`\\}}
 
 %%
 %% \math
@@ -178,7 +178,7 @@
   \gdef\turnon@lines{\obeylines\def^^M{\par\def^^M{\leavevmode\par}}}}
 
 \def\example{\list{}{\leftmargin\z@
-    \itemindent\z@ \rightmargin\z@ \parsep \z@ plus\p@}\item[]\tt
+    \itemindent\z@ \rightmargin\z@ \parsep \z@ plus\p@}\item[]\normalfont \ttfamily
   \turnon@spaces\turnon@lines\let\do\@makeother\Hlx@example}
 \let\endexample=\endlist
 
