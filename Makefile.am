@@ -28,6 +28,7 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         doc/license-page doc/GPLv3 \
         build-aux/git-log-footer build-aux/git-log-fix \
         patches/glib-2.41.5/01-socket.patch \
+        patches/glib-2.41.5/02-formatsec.patch \
         patches/qtbase/fix-freetype-link.patch \
         patches/qtbase/fix-oci-detect.patch \
         patches/qtbase/fix-syssemaphore.patch \
