@@ -588,6 +588,7 @@ stamps/stamp-$(1)-02-build: stamps/stamp-$(1)-01-patch
         threading=multi \
         variant=release \
         toolset=gcc-mxe \
+        cxxflags=-std=gnu++98 \
         --layout=tagged \
         --disable-icu \
         --without-mpi \
