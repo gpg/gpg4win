@@ -31,14 +31,6 @@
 
 !include "WinMessages.nsh"
 
-# Define for the registry key to change the environment.  The
-# commented one may be used if the setting should affect only the
-# current user.
-!define Regkey_for_Env \
-    'HKLM "SYSTEM\CurrentControlSet\Control\Session Manager\Environment"'
-# !define Regkey_for_Env 'HKCU "Environment"'
-
-
 # We use the modern UI 2.
 !ifdef DEBUG
 !include "MUI2.nsh"
@@ -51,21 +43,8 @@
 # Set the package name.  Note that this name should not be sufficed
 #  with the version because this would get displayed in the start menu.
 Name "${PRETTY_PACKAGE}"
-
-
-# Set the output filename.
-!ifdef GPG4WIN_VANILLA
-OutFile "${PACKAGE}-vanilla-${VERSION}.exe"
-BrandingText "${PRETTY_PACKAGE}-vanilla-${VERSION}"
-!else
-!ifdef GPG4WIN_LIGHT
-OutFile "${PACKAGE}-light-${VERSION}.exe"
-BrandingText "${PRETTY_PACKAGE}-light-${VERSION}"
-!else
 OutFile "${PACKAGE}-${VERSION}.exe"
 BrandingText "${PRETTY_PACKAGE}-${VERSION}"
-!endif
-!endif
 
 # Details button conflicts with splashscreen
 ShowInstDetails nevershow
@@ -444,9 +423,7 @@ FunctionEnd
 # Called right before installation
 Function BeforeInstallHooks
     Call PrintCloseOtherApps
-!ifndef GPG4WIN_VANILLA
     Call CheckClawsUninstall
-!endif
 FunctionEnd
 
 # Called right before the final page to show more warnings.
@@ -675,28 +652,6 @@ Function TrimNewlines
    Exch $R0
 FunctionEnd
 
-
-# AddToPath - Adds the given dir to the search path.
-#        Input - head of the stack
-Function AddToPath
-  Exch $0
-  g4wihelp::path_add "$0"
-  StrCmp $R5 "0" add_to_path_done
-  SendMessage ${HWND_BROADCAST} ${WM_WININICHANGE} 0 "STR:Environment" /TIMEOUT=5000
-  add_to_path_done:
-  Pop $0
-FunctionEnd
-
-# RemoveFromPath - Remove a given dir from the path
-#     Input: head of the stack
-Function un.RemoveFromPath
-  Exch $0
-  g4wihelp::path_remove "$0"
-  StrCmp $R5 "0" remove_from_path_done
-  SendMessage ${HWND_BROADCAST} ${WM_WININICHANGE} 0 "STR:Environment" /TIMEOUT=5000
-  remove_from_path_done:
-  Pop $0
-FunctionEnd
 
 Function .onInit
   Call G4wRunOnce

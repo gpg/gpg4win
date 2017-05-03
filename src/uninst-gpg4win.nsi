@@ -26,10 +26,6 @@ Section "-un.gpg4win"
 
   DeleteRegValue HKLM "Software\GNU\GnuPG" "Install Directory"
 
-  # Remove the public directory from the PATH
-  Push "$INSTDIR\pub"
-  Call un.RemoveFromPath
-
   # Delete gpg4win included tools
   Delete "$INSTDIR\bin\sha1sum.exe"
   Delete "$INSTDIR\bin\sha256sum.exe"
