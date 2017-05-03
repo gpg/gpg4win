@@ -22,108 +22,108 @@ Var MYTMP
 Function SetupExtRegKeys
   Pop $0
   # .gpg
-  WriteRegStr HKLM "Software\Classes\gpg4win.AssocFile.$0.GPG" "" "$(T_File_Type_gpg_Name)"
-  WriteRegStr HKLM "Software\Classes\gpg4win.AssocFile.$0.GPG" "FriendlyTypeName" "$(T_File_Type_gpg_Name)"
-  WriteRegStr HKLM "Software\Classes\gpg4win.AssocFile.$0.GPG" "PercievedType" "Document"
-  WriteRegStr HKLM "Software\Classes\gpg4win.AssocFile.$0.GPG" "InfoTip" "$(T_File_Type_info_tip)"
-  WriteRegStr HKLM "Software\Classes\gpg4win.AssocFile.$0.GPG\CurVer" "" "${VERSION}"
-  WriteRegStr HKLM "Software\Classes\gpg4win.AssocFile.$0.GPG\shell\open\command" "" "$\"$INSTDIR\bin\$0.exe$\" $\"%1$\""
-  WriteRegStr HKLM "Software\Classes\gpg4win.AssocFile.$0.GPG\DefaultIcon" "" "$INSTDIR\share\gpg4win\file-ext.ico"
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.GPG" "" "$(T_File_Type_gpg_Name)"
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.GPG" "FriendlyTypeName" "$(T_File_Type_gpg_Name)"
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.GPG" "PercievedType" "Document"
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.GPG" "InfoTip" "$(T_File_Type_info_tip)"
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.GPG\CurVer" "" "${VERSION}"
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.GPG\shell\open\command" "" "$\"$INSTDIR\bin\$0.exe$\" $\"%1$\""
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.GPG\DefaultIcon" "" "$INSTDIR\share\gpg4win\file-ext.ico"
 
-  WriteRegBin HKLM "Software\Classes\.gpg\OpenWithProgIDs" "gpg4win.AssocFile.$0.GPG" 0
+  WriteRegBin SHCTX "Software\Classes\.gpg\OpenWithProgIDs" "gpg4win.AssocFile.$0.GPG" 0
 
   # .asc
-  WriteRegStr HKLM "Software\Classes\gpg4win.AssocFile.$0.ASC" "" "$(T_File_Type_asc_Name)"
-  WriteRegStr HKLM "Software\Classes\gpg4win.AssocFile.$0.ASC" "FriendlyTypeName" "$(T_File_Type_asc_Name)"
-  WriteRegStr HKLM "Software\Classes\gpg4win.AssocFile.$0.ASC" "PercievedType" "Document"
-  WriteRegStr HKLM "Software\Classes\gpg4win.AssocFile.$0.ASC" "InfoTip" "$(T_File_Type_info_tip)"
-  WriteRegStr HKLM "Software\Classes\gpg4win.AssocFile.$0.ASC\CurVer" "" "${VERSION}"
-  WriteRegStr HKLM "Software\Classes\gpg4win.AssocFile.$0.ASC\shell\open\command" "" "$\"$INSTDIR\bin\$0.exe$\" $\"%1$\""
-  WriteRegStr HKLM "Software\Classes\gpg4win.AssocFile.$0.ASC\DefaultIcon" "" "$INSTDIR\share\gpg4win\file-ext.ico"
-  WriteRegBin HKLM "Software\Classes\.asc\OpenWithProgIDs" "gpg4win.AssocFile.$0.ASC" 0
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.ASC" "" "$(T_File_Type_asc_Name)"
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.ASC" "FriendlyTypeName" "$(T_File_Type_asc_Name)"
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.ASC" "PercievedType" "Document"
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.ASC" "InfoTip" "$(T_File_Type_info_tip)"
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.ASC\CurVer" "" "${VERSION}"
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.ASC\shell\open\command" "" "$\"$INSTDIR\bin\$0.exe$\" $\"%1$\""
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.ASC\DefaultIcon" "" "$INSTDIR\share\gpg4win\file-ext.ico"
+  WriteRegBin SHCTX "Software\Classes\.asc\OpenWithProgIDs" "gpg4win.AssocFile.$0.ASC" 0
 
   # .pgp
-  WriteRegBin HKLM "Software\Classes\.pgp\OpenWithProgIDs" "gpg4win.AssocFile.$0.GPG" 0
+  WriteRegBin SHCTX "Software\Classes\.pgp\OpenWithProgIDs" "gpg4win.AssocFile.$0.GPG" 0
 
   # .sig
-  WriteRegExpandStr HKLM "Software\Classes\gpg4win.AssocFile.$0.PGPSIG\shell\open\command" "" "$\"$INSTDIR\bin\$0.exe$\" $\"%1$\""
-  WriteRegStr HKLM "Software\Classes\gpg4win.AssocFile.$0.PGPSIG" "FriendlyTypeName" "$(T_File_Type_sig_Name)"
-  WriteRegStr HKLM "Software\Classes\gpg4win.AssocFile.$0.PGPSIG" "PercievedType" "Document"
-  WriteRegStr HKLM "Software\Classes\gpg4win.AssocFile.$0.PGPSIG" "InfoTip" "$(T_File_Type_sig_info_tip)"
-  WriteRegStr HKLM "Software\Classes\gpg4win.AssocFile.$0.PGPSIG\CurVer" "" "${VERSION}"
-  WriteRegStr HKLM "Software\Classes\gpg4win.AssocFile.$0.PGPSIG\shell\open\command" "" "$\"$INSTDIR\bin\$0.exe$\" $\"%1$\""
-  WriteRegStr HKLM "Software\Classes\gpg4win.AssocFile.$0.PGPSIG\DefaultIcon" "" "$INSTDIR\share\gpg4win\file-ext.ico"
+  WriteRegExpandStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.PGPSIG\shell\open\command" "" "$\"$INSTDIR\bin\$0.exe$\" $\"%1$\""
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.PGPSIG" "FriendlyTypeName" "$(T_File_Type_sig_Name)"
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.PGPSIG" "PercievedType" "Document"
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.PGPSIG" "InfoTip" "$(T_File_Type_sig_info_tip)"
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.PGPSIG\CurVer" "" "${VERSION}"
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.PGPSIG\shell\open\command" "" "$\"$INSTDIR\bin\$0.exe$\" $\"%1$\""
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.PGPSIG\DefaultIcon" "" "$INSTDIR\share\gpg4win\file-ext.ico"
 
-  WriteRegBin HKLM "Software\Classes\.sig\OpenWithProgIDs" "gpg4win.AssocFile.$0.PGPSIG" 0
+  WriteRegBin SHCTX "Software\Classes\.sig\OpenWithProgIDs" "gpg4win.AssocFile.$0.PGPSIG" 0
 
   # OpenPGP Key to be used in mime registry
-  WriteRegExpandStr HKLM "Software\Classes\gpg4win.AssocFile.$0.PGPKEY\shell\open\command" "" "$\"$INSTDIR\bin\$0.exe$\" $\"%1$\""
-  WriteRegStr HKLM "Software\Classes\gpg4win.AssocFile.$0.PGPKEY" "FriendlyTypeName" "$(T_File_Type_pgp_key_Name)"
-  WriteRegStr HKLM "Software\Classes\gpg4win.AssocFile.$0.PGPKEY" "PercievedType" "Document"
-  WriteRegStr HKLM "Software\Classes\gpg4win.AssocFile.$0.PGPKEY" "InfoTip" "$(T_File_Type_pgp_key_info_tip)"
-  WriteRegStr HKLM "Software\Classes\gpg4win.AssocFile.$0.PGPKEY\CurVer" "" "${VERSION}"
-  WriteRegStr HKLM "Software\Classes\gpg4win.AssocFile.$0.PGPKEY\shell\open\command" "" "$\"$INSTDIR\bin\$0.exe$\" $\"%1$\""
-  WriteRegStr HKLM "Software\Classes\gpg4win.AssocFile.$0.PGPKEY\DefaultIcon" "" "$INSTDIR\share\gpg4win\file-ext.ico"
+  WriteRegExpandStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.PGPKEY\shell\open\command" "" "$\"$INSTDIR\bin\$0.exe$\" $\"%1$\""
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.PGPKEY" "FriendlyTypeName" "$(T_File_Type_pgp_key_Name)"
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.PGPKEY" "PercievedType" "Document"
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.PGPKEY" "InfoTip" "$(T_File_Type_pgp_key_info_tip)"
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.PGPKEY\CurVer" "" "${VERSION}"
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.PGPKEY\shell\open\command" "" "$\"$INSTDIR\bin\$0.exe$\" $\"%1$\""
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.PGPKEY\DefaultIcon" "" "$INSTDIR\share\gpg4win\file-ext.ico"
 
   # CMS
-  WriteRegExpandStr HKLM "Software\Classes\gpg4win.AssocFile.$0.CMS\shell\open\command" "" "$\"$INSTDIR\bin\$0.exe$\" $\"%1$\""
-  WriteRegStr HKLM "Software\Classes\gpg4win.AssocFile.$0.CMS" "FriendlyTypeName" "$(T_File_Type_pem_Name)"
-  WriteRegStr HKLM "Software\Classes\gpg4win.AssocFile.$0.CMS" "PercievedType" "Document"
-  WriteRegStr HKLM "Software\Classes\gpg4win.AssocFile.$0.CMS" "InfoTip" "$(T_File_Type_info_tip)"
-  WriteRegStr HKLM "Software\Classes\gpg4win.AssocFile.$0.CMS\CurVer" "" "${VERSION}"
-  WriteRegStr HKLM "Software\Classes\gpg4win.AssocFile.$0.CMS\shell\open\command" "" "$\"$INSTDIR\bin\$0.exe$\" $\"%1$\""
-  WriteRegStr HKLM "Software\Classes\gpg4win.AssocFile.$0.CMS\DefaultIcon" "" "$INSTDIR\share\gpg4win\file-ext.ico"
-#  WriteRegBin HKLM "Software\Classes\gpg4win.AssocFile.$0.CMS" "AllowSilentDefaultTakeOver" 0
+  WriteRegExpandStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.CMS\shell\open\command" "" "$\"$INSTDIR\bin\$0.exe$\" $\"%1$\""
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.CMS" "FriendlyTypeName" "$(T_File_Type_pem_Name)"
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.CMS" "PercievedType" "Document"
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.CMS" "InfoTip" "$(T_File_Type_info_tip)"
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.CMS\CurVer" "" "${VERSION}"
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.CMS\shell\open\command" "" "$\"$INSTDIR\bin\$0.exe$\" $\"%1$\""
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.CMS\DefaultIcon" "" "$INSTDIR\share\gpg4win\file-ext.ico"
+#  WriteRegBin SHCTX "Software\Classes\gpg4win.AssocFile.$0.CMS" "AllowSilentDefaultTakeOver" 0
 
-  WriteRegBin HKLM "Software\Classes\.p7s\OpenWithProgIDs" "gpg4win.AssocFile.$0.CMS" 0
-  WriteRegBin HKLM "Software\Classes\.p7m\OpenWithProgIDs" "gpg4win.AssocFile.$0.CMS" 0
-  WriteRegBin HKLM "Software\Classes\.crl\OpenWithProgIDs" "gpg4win.AssocFile.$0.CMS" 0
-  WriteRegBin HKLM "Software\Classes\.pem\OpenWithProgIDs" "gpg4win.AssocFile.$0.CMS" 0
-  WriteRegBin HKLM "Software\Classes\.arl\OpenWithProgIDs" "gpg4win.AssocFile.$0.CMS" 0
+  WriteRegBin SHCTX "Software\Classes\.p7s\OpenWithProgIDs" "gpg4win.AssocFile.$0.CMS" 0
+  WriteRegBin SHCTX "Software\Classes\.p7m\OpenWithProgIDs" "gpg4win.AssocFile.$0.CMS" 0
+  WriteRegBin SHCTX "Software\Classes\.crl\OpenWithProgIDs" "gpg4win.AssocFile.$0.CMS" 0
+  WriteRegBin SHCTX "Software\Classes\.pem\OpenWithProgIDs" "gpg4win.AssocFile.$0.CMS" 0
+  WriteRegBin SHCTX "Software\Classes\.arl\OpenWithProgIDs" "gpg4win.AssocFile.$0.CMS" 0
 
   # X509 Certificates
-  WriteRegExpandStr HKLM "Software\Classes\gpg4win.AssocFile.$0.X509\shell\open\command" "" "$\"$INSTDIR\bin\$0.exe$\" $\"%1$\""
-  WriteRegStr HKLM "Software\Classes\gpg4win.AssocFile.$0.X509" "FriendlyTypeName" "$(T_File_Type_x509_Name)"
-  WriteRegStr HKLM "Software\Classes\gpg4win.AssocFile.$0.X509" "PercievedType" "Document"
-  WriteRegStr HKLM "Software\Classes\gpg4win.AssocFile.$0.X509" "InfoTip" "$(T_File_Type_x509_info_tip)"
-  WriteRegStr HKLM "Software\Classes\gpg4win.AssocFile.$0.X509\CurVer" "" "${VERSION}"
-  WriteRegStr HKLM "Software\Classes\gpg4win.AssocFile.$0.X509\shell\open\command" "" "$\"$INSTDIR\bin\$0.exe$\" $\"%1$\""
-  WriteRegStr HKLM "Software\Classes\gpg4win.AssocFile.$0.X509\DefaultIcon" "" "$INSTDIR\share\gpg4win\file-ext.ico"
-  WriteRegBin HKLM "Software\Classes\gpg4win.AssocFile.$0.X509" "AllowSilentDefaultTakeOver" 0
+  WriteRegExpandStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.X509\shell\open\command" "" "$\"$INSTDIR\bin\$0.exe$\" $\"%1$\""
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.X509" "FriendlyTypeName" "$(T_File_Type_x509_Name)"
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.X509" "PercievedType" "Document"
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.X509" "InfoTip" "$(T_File_Type_x509_info_tip)"
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.X509\CurVer" "" "${VERSION}"
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.X509\shell\open\command" "" "$\"$INSTDIR\bin\$0.exe$\" $\"%1$\""
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.X509\DefaultIcon" "" "$INSTDIR\share\gpg4win\file-ext.ico"
+  WriteRegBin SHCTX "Software\Classes\gpg4win.AssocFile.$0.X509" "AllowSilentDefaultTakeOver" 0
 
   # Register capabilities
-  WriteRegStr HKLM "Software\RegisteredApplications" "Gpg4win.$0" "SOFTWARE\Gpg4win\$0\Capabilities"
-  WriteRegStr HKLM "Software\Gpg4win\$0" "" "$0"
+  WriteRegStr SHCTX "Software\RegisteredApplications" "Gpg4win.$0" "SOFTWARE\Gpg4win\$0\Capabilities"
+  WriteRegStr SHCTX "Software\Gpg4win\$0" "" "$0"
 
   # File extensions
-  WriteRegStr HKLM "Software\Gpg4win\$0\Capabilities\FileAssociations" ".pgp" "gpg4win.AssocFile.$0.GPG"
-  WriteRegStr HKLM "Software\Gpg4win\$0\Capabilities\FileAssociations" ".asc" "gpg4win.AssocFile.$0.ASC"
-  WriteRegStr HKLM "Software\Gpg4win\$0\Capabilities\FileAssociations" ".gpg" "gpg4win.AssocFile.$0.GPG"
-  WriteRegStr HKLM "Software\Gpg4win\$0\Capabilities\FileAssociations" ".cer" "gpg4win.AssocFile.$0.X509"
-  WriteRegStr HKLM "Software\Gpg4win\$0\Capabilities\FileAssociations" ".p10" "gpg4win.AssocFile.$0.X509"
-  WriteRegStr HKLM "Software\Gpg4win\$0\Capabilities\FileAssociations" ".p12" "gpg4win.AssocFile.$0.X509"
-  WriteRegStr HKLM "Software\Gpg4win\$0\Capabilities\FileAssociations" ".p7c" "gpg4win.AssocFile.$0.X509"
-  WriteRegStr HKLM "Software\Gpg4win\$0\Capabilities\FileAssociations" ".pfx" "gpg4win.AssocFile.$0.X509"
-  WriteRegStr HKLM "Software\Gpg4win\$0\Capabilities\FileAssociations" ".crt" "gpg4win.AssocFile.$0.X509"
-  WriteRegStr HKLM "Software\Gpg4win\$0\Capabilities\FileAssociations" ".der" "gpg4win.AssocFile.$0.X509"
-  WriteRegStr HKLM "Software\Gpg4win\$0\Capabilities\FileAssociations" ".sig" "gpg4win.AssocFile.$0.PGPSIG"
-  WriteRegStr HKLM "Software\Gpg4win\$0\Capabilities\FileAssociations" ".arl" "gpg4win.AssocFile.$0.CMS"
-  WriteRegStr HKLM "Software\Gpg4win\$0\Capabilities\FileAssociations" ".crl" "gpg4win.AssocFile.$0.CMS"
-  WriteRegStr HKLM "Software\Gpg4win\$0\Capabilities\FileAssociations" ".p7m" "gpg4win.AssocFile.$0.CMS"
-  WriteRegStr HKLM "Software\Gpg4win\$0\Capabilities\FileAssociations" ".p7s" "gpg4win.AssocFile.$0.CMS"
-  WriteRegStr HKLM "Software\Gpg4win\$0\Capabilities\FileAssociations" ".pem" "gpg4win.AssocFile.$0.CMS"
+  WriteRegStr SHCTX "Software\Gpg4win\$0\Capabilities\FileAssociations" ".pgp" "gpg4win.AssocFile.$0.GPG"
+  WriteRegStr SHCTX "Software\Gpg4win\$0\Capabilities\FileAssociations" ".asc" "gpg4win.AssocFile.$0.ASC"
+  WriteRegStr SHCTX "Software\Gpg4win\$0\Capabilities\FileAssociations" ".gpg" "gpg4win.AssocFile.$0.GPG"
+  WriteRegStr SHCTX "Software\Gpg4win\$0\Capabilities\FileAssociations" ".cer" "gpg4win.AssocFile.$0.X509"
+  WriteRegStr SHCTX "Software\Gpg4win\$0\Capabilities\FileAssociations" ".p10" "gpg4win.AssocFile.$0.X509"
+  WriteRegStr SHCTX "Software\Gpg4win\$0\Capabilities\FileAssociations" ".p12" "gpg4win.AssocFile.$0.X509"
+  WriteRegStr SHCTX "Software\Gpg4win\$0\Capabilities\FileAssociations" ".p7c" "gpg4win.AssocFile.$0.X509"
+  WriteRegStr SHCTX "Software\Gpg4win\$0\Capabilities\FileAssociations" ".pfx" "gpg4win.AssocFile.$0.X509"
+  WriteRegStr SHCTX "Software\Gpg4win\$0\Capabilities\FileAssociations" ".crt" "gpg4win.AssocFile.$0.X509"
+  WriteRegStr SHCTX "Software\Gpg4win\$0\Capabilities\FileAssociations" ".der" "gpg4win.AssocFile.$0.X509"
+  WriteRegStr SHCTX "Software\Gpg4win\$0\Capabilities\FileAssociations" ".sig" "gpg4win.AssocFile.$0.PGPSIG"
+  WriteRegStr SHCTX "Software\Gpg4win\$0\Capabilities\FileAssociations" ".arl" "gpg4win.AssocFile.$0.CMS"
+  WriteRegStr SHCTX "Software\Gpg4win\$0\Capabilities\FileAssociations" ".crl" "gpg4win.AssocFile.$0.CMS"
+  WriteRegStr SHCTX "Software\Gpg4win\$0\Capabilities\FileAssociations" ".p7m" "gpg4win.AssocFile.$0.CMS"
+  WriteRegStr SHCTX "Software\Gpg4win\$0\Capabilities\FileAssociations" ".p7s" "gpg4win.AssocFile.$0.CMS"
+  WriteRegStr SHCTX "Software\Gpg4win\$0\Capabilities\FileAssociations" ".pem" "gpg4win.AssocFile.$0.CMS"
 
-  WriteRegExpandStr HKLM "Software\Gpg4win\$0\Capabilities\shell\open\command" "" "$\"$INSTDIR\bin\$0.exe$\" $\"%1$\""
+  WriteRegExpandStr SHCTX "Software\Gpg4win\$0\Capabilities\shell\open\command" "" "$\"$INSTDIR\bin\$0.exe$\" $\"%1$\""
 
   # Mime extensions For PGP this is probably pretty useless
-  WriteRegStr HKLM "Software\Gpg4win\$0\Capabilities\MimeAssociations" "application/pgp" "gpg4win.AssocFile.$0.GPG"
-  WriteRegStr HKLM "Software\Gpg4win\$0\Capabilities\MimeAssociations" "application/pgp-keys" "gpg4win.AssocFile.$0.PGPKEY"
-  WriteRegStr HKLM "Software\Gpg4win\$0\Capabilities\MimeAssociations" "application/pgp-encrypted" "gpg4win.AssocFile.$0.GPG"
-  WriteRegStr HKLM "Software\Gpg4win\$0\Capabilities\MimeAssociations" "application/pgp-signature" "gpg4win.AssocFile.$0.GPG"
-  WriteRegStr HKLM "Software\Gpg4win\$0\Capabilities\MimeAssociations" "application/pkcs7-mime" "gpg4win.AssocFile.$0.CMS"
-  WriteRegStr HKLM "Software\Gpg4win\$0\Capabilities\MimeAssociations" "application/pkix-cert" "gpg4win.AssocFile.$0.CMS"
-  WriteRegStr HKLM "Software\Gpg4win\$0\Capabilities\MimeAssociations" "application/x-x509-ca-cert" "gpg4win.AssocFile.$0.X509"
-  WriteRegStr HKLM "Software\Gpg4win\$0\Capabilities\MimeAssociations" "application/x-pkcs12" "gpg4win.AssocFile.$0.X509"
+  WriteRegStr SHCTX "Software\Gpg4win\$0\Capabilities\MimeAssociations" "application/pgp" "gpg4win.AssocFile.$0.GPG"
+  WriteRegStr SHCTX "Software\Gpg4win\$0\Capabilities\MimeAssociations" "application/pgp-keys" "gpg4win.AssocFile.$0.PGPKEY"
+  WriteRegStr SHCTX "Software\Gpg4win\$0\Capabilities\MimeAssociations" "application/pgp-encrypted" "gpg4win.AssocFile.$0.GPG"
+  WriteRegStr SHCTX "Software\Gpg4win\$0\Capabilities\MimeAssociations" "application/pgp-signature" "gpg4win.AssocFile.$0.GPG"
+  WriteRegStr SHCTX "Software\Gpg4win\$0\Capabilities\MimeAssociations" "application/pkcs7-mime" "gpg4win.AssocFile.$0.CMS"
+  WriteRegStr SHCTX "Software\Gpg4win\$0\Capabilities\MimeAssociations" "application/pkix-cert" "gpg4win.AssocFile.$0.CMS"
+  WriteRegStr SHCTX "Software\Gpg4win\$0\Capabilities\MimeAssociations" "application/x-x509-ca-cert" "gpg4win.AssocFile.$0.X509"
+  WriteRegStr SHCTX "Software\Gpg4win\$0\Capabilities\MimeAssociations" "application/x-pkcs12" "gpg4win.AssocFile.$0.X509"
 
 FunctionEnd
 
@@ -201,20 +201,20 @@ Section
   # the version number.  Some tools do that, other don't.  I don't
   # like it but others want me to do that.  -wk
   StrCpy $MYTMP "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRETTY_PACKAGE_SHORT}"
-  WriteRegExpandStr HKLM $MYTMP "UninstallString" '"$INSTDIR\${PACKAGE}-uninstall.exe"'
-  WriteRegExpandStr HKLM $MYTMP "InstallLocation" "$INSTDIR"
-  WriteRegStr       HKLM $MYTMP "DisplayName"     "${PRETTY_PACKAGE} (${VERSION})"
-  WriteRegStr       HKLM $MYTMP "DisplayIcon"     "$INSTDIR\bin\kleopatra.exe,0"
-  WriteRegStr       HKLM $MYTMP "DisplayVersion"  "${VERSION}"
-  WriteRegStr       HKLM $MYTMP "Publisher"       "The Gpg4win Project"
-  WriteRegStr       HKLM $MYTMP "URLInfoAbout"    "http://www.gpg4win.org/"
-  WriteRegDWORD     HKLM $MYTMP "NoModify"        "1"
-  WriteRegDWORD     HKLM $MYTMP "NoRepair"        "1"
+  WriteRegExpandStr SHCTX $MYTMP "UninstallString" '"$INSTDIR\${PACKAGE}-uninstall.exe"'
+  WriteRegExpandStr SHCTX $MYTMP "InstallLocation" "$INSTDIR"
+  WriteRegStr       SHCTX $MYTMP "DisplayName"     "${PRETTY_PACKAGE} (${VERSION})"
+  WriteRegStr       SHCTX $MYTMP "DisplayIcon"     "$INSTDIR\bin\kleopatra.exe,0"
+  WriteRegStr       SHCTX $MYTMP "DisplayVersion"  "${VERSION}"
+  WriteRegStr       SHCTX $MYTMP "Publisher"       "The Gpg4win Project"
+  WriteRegStr       SHCTX $MYTMP "URLInfoAbout"    "http://www.gpg4win.org/"
+  WriteRegDWORD     SHCTX $MYTMP "NoModify"        "1"
+  WriteRegDWORD     SHCTX $MYTMP "NoRepair"        "1"
 
-  WriteRegStr HKLM "Software\Classes\MIME\Database\Content Type\application/pgp" "Extension" ".gpg"
-  WriteRegStr HKLM "Software\Classes\MIME\Database\Content Type\application/pgp-signature" "Extension" ".sig"
-  WriteRegStr HKLM "Software\Classes\MIME\Database\Content Type\application/pgp-encrypted" "Extension" ".gpg"
-  WriteRegStr HKLM "Software\Classes\MIME\Database\Content Type\application/pgp-keys" "Extension" ".gpg"
+  WriteRegStr SHCTX "Software\Classes\MIME\Database\Content Type\application/pgp" "Extension" ".gpg"
+  WriteRegStr SHCTX "Software\Classes\MIME\Database\Content Type\application/pgp-signature" "Extension" ".sig"
+  WriteRegStr SHCTX "Software\Classes\MIME\Database\Content Type\application/pgp-encrypted" "Extension" ".gpg"
+  WriteRegStr SHCTX "Software\Classes\MIME\Database\Content Type\application/pgp-keys" "Extension" ".gpg"
 
   call SetupExtensions
 SectionEnd
@@ -255,17 +255,17 @@ Section Uninstall
   RMDir /REBOOTOK "$INSTDIR"
 
   # Clean the registry.
-  DeleteRegValue HKLM "Software\${PRETTY_PACKAGE_SHORT}" \
+  DeleteRegValue SHCTX "Software\${PRETTY_PACKAGE_SHORT}" \
         "Install Directory"
-  DeleteRegKey /ifempty HKLM "Software\${PRETTY_PACKAGE_SHORT}"
+  DeleteRegKey /ifempty SHCTX "Software\${PRETTY_PACKAGE_SHORT}"
 
   # Remove Windows Add/Remove Programs support.
-  DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRETTY_PACKAGE_SHORT}"
+  DeleteRegKey SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRETTY_PACKAGE_SHORT}"
 
-  DeleteRegKey HKLM "Software\Classes\MIME\Database\Content Type\application/pgp"
-  DeleteRegKey HKLM "Software\Classes\MIME\Database\Content Type\application/pgp-signature"
-  DeleteRegKey HKLM "Software\Classes\MIME\Database\Content Type\application/pgp-encrypted"
-  DeleteRegKey HKLM "Software\Classes\MIME\Database\Content Type\application/pgp-keys"
+  DeleteRegKey SHCTX "Software\Classes\MIME\Database\Content Type\application/pgp"
+  DeleteRegKey SHCTX "Software\Classes\MIME\Database\Content Type\application/pgp-signature"
+  DeleteRegKey SHCTX "Software\Classes\MIME\Database\Content Type\application/pgp-encrypted"
+  DeleteRegKey SHCTX "Software\Classes\MIME\Database\Content Type\application/pgp-keys"
 
 
 SectionEnd

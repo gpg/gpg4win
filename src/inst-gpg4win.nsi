@@ -39,13 +39,13 @@ Section "-gpg4win" SEC_gpg4win
 
 # Uninstall an old version if found.
   ClearErrors
-  ReadRegStr $0 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\GPG4Win" "DisplayVersion"
+  ReadRegStr $0 SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\GPG4Win" "DisplayVersion"
   IfErrors skip_uninst 0
   StrCmp $0 "" skip_uninst
   DetailPrint  "$(T_UninstallingOldVersion)$0"
-  ReadRegStr $0 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\GPG4Win" "UninstallString"
+  ReadRegStr $0 SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\GPG4Win" "UninstallString"
   IfErrors skip_uninst 0
-  ReadRegStr $1 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\GPG4Win" "InstallLocation"
+  ReadRegStr $1 SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\GPG4Win" "InstallLocation"
   IfErrors skip_uninst 0
 
   ExecWait '$0 /S _?=$1'
@@ -79,14 +79,14 @@ skip_uninst:
   DetailPrint "VERSION closed"
 
   # Register the install directory for Gpg4win suite.
-  WriteRegStr HKLM "Software\${PRETTY_PACKAGE_SHORT}" "Install Directory" $INSTDIR
+  WriteRegStr SHCTX "Software\${PRETTY_PACKAGE_SHORT}" "Install Directory" $INSTDIR
   DetailPrint "Saved install directory in the registry"
 
   # We used to determine the language using a Registry entry.
   # Although we don't want to delete the user's Lang Registry Setting
   # because he might have have selected a different language than his
   # default.  We delete the global Lang of the installation.
-  DeleteRegValue HKLM "Software\GNU\GnuPG" "Lang"
+  DeleteRegValue SHCTX "Software\GNU\GnuPG" "Lang"
   DetailPrint "Deleted obsolete Lang entry"
 
   # This old key is required for GPGee.  Please do not use in new
@@ -94,10 +94,10 @@ skip_uninst:
   # Note: We don't use it anymore so that gpgme decides what gpg to use
   #       For the new gpg4win we actually use gpg2.exe.
   #       To cope with old installations we actually remove this value.
-  #       However we can only remove the HKLM version not those set by
+  #       However we can only remove the SHCTX version not those set by
   #       the user under HKCU.
-  #WriteRegStr HKLM "Software\GNU\GnuPG" "gpgProgram" "$INSTDIR\gpg.exe"
-  DeleteRegValue HKLM "Software\GNU\GnuPG" "gpgProgram"
+  #WriteRegStr SHCTX "Software\GNU\GnuPG" "gpgProgram" "$INSTDIR\gpg.exe"
+  DeleteRegValue SHCTX "Software\GNU\GnuPG" "gpgProgram"
   DetailPrint "Deleted obsolete gpgProgram value"
 
   # Install gpg4win included tools

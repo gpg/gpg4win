@@ -24,7 +24,7 @@ Section "-un.gpg4win"
   Delete "gpg4win-${VERSION}.tar.bz2"
 !else
 
-  DeleteRegValue HKLM "Software\GNU\GnuPG" "Install Directory"
+  DeleteRegValue SHCTX "Software\GNU\GnuPG" "Install Directory"
 
   # Delete gpg4win included tools
   Delete "$INSTDIR\bin\sha1sum.exe"

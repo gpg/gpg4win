@@ -30,7 +30,7 @@ Section  "un.gnupg_w32"
   Call un.SourceDelete
 !else
   ClearErrors
-  ReadRegStr $0 HKLM "Software\GnuPG" "Install Directory"
+  ReadRegStr $0 SHCTX "Software\GnuPG" "Install Directory"
   IfErrors gnupg_w32_not_installed 0
   # It is possible that someone uninstalled gnupg without uninstalling
   # gpg4win

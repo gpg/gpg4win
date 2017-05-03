@@ -33,11 +33,8 @@
 !include "WinMessages.nsh"
 
 # We use the modern UI 2.
+!include "MUI2.nsh"
 !ifdef DEBUG
-!include "MUI2.nsh"
-!else
-!include "MUI2.nsh"
-# MUI2 defines debug
 !undef DEBUG
 !endif
 
@@ -55,11 +52,6 @@ ShowInstDetails nevershow
 !define INSTALL_DIR "${PACKAGE}"
 !endif
 InstallDir "$PROGRAMFILES\${INSTALL_DIR}"
-
-
-InstallDirRegKey HKLM "Software\${PRETTY_PACKAGE_SHORT}" \
-	"Install Directory"
-
 
 # Add version information to the file properties.
 VIProductVersion "${PROD_VERSION}"
@@ -110,7 +102,7 @@ Var OtherGnuPGDetected
 
 # Remember the installer language
 
-!define MUI_LANGDLL_REGISTRY_ROOT "HKLM"
+!define MUI_LANGDLL_REGISTRY_ROOT "SHCTX"
 !define MUI_LANGDLL_REGISTRY_KEY "Software\${PRETTY_PACKAGE_SHORT}"
 !define MUI_LANGDLL_REGISTRY_VALUENAME "Installer Language"
 
@@ -323,7 +315,7 @@ FunctionEnd
 Function CheckOtherGnuPGApps
   StrCpy $OtherGnuPGDetected ""
   ClearErrors
-  ReadRegStr $0 HKLM "Software\GNU\GnuPP\Settings" "Path"
+  ReadRegStr $0 SHCTX "Software\GNU\GnuPP\Settings" "Path"
   IfErrors +2 0
     Call PrintGnuPPWarning
 
@@ -332,11 +324,11 @@ Function CheckOtherGnuPGApps
     Call PrintGnuPTWarning
 
   ClearErrors
-  ReadRegStr $0 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\Windows Privacy Tools" "DisplayVersion"
+  ReadRegStr $0 SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\Windows Privacy Tools" "DisplayVersion"
   IfErrors +2 0
     Call PrintWinPTSFWarning
 
-  ReadRegStr $0 HKLM "Software\GNU\GnuPG" "Install Directory"
+  ReadRegStr $0 SHCTX "Software\GNU\GnuPG" "Install Directory"
   Push $0
   Push "GnuPG-Pack"
   Call StrStr
@@ -389,9 +381,10 @@ Function PrintNonAdminWarning
   UserInfo::GetAccountType
   Pop $1
   StrCmp $1 "Admin" leave +1
-  MessageBox MB_OK "$(T_AdminNeeded)"
+  MessageBox MB_YESNO "$(T_AdminWanted)" IDNO exit
+  goto leave
+exit:
   Quit
-
  leave:
 FunctionEnd
 
@@ -526,8 +519,12 @@ LangString T_BetaWarning ${LANG_ENGLISH} \
     shall not be used in a production environment."
 
 # From Function PrintNonAdminWarning
-LangString T_AdminNeeded ${LANG_ENGLISH} \
-   "Warning: Administrator permissions required for a successful installation"
+LangString T_AdminWanted ${LANG_ENGLISH} \
+    "Warning: It is recommended to install Gpg4win system-wide with \
+        administrator rights. \
+          $\r$\n\
+          $\r$\n\
+    Do you want to continue installing Gpg4win without administrator rights?"
 
 # From Function PrintCloseOtherApps
 LangString T_CloseOtherApps ${LANG_ENGLISH} \
@@ -626,8 +623,6 @@ Function ${un}StrStr
    Exch $R1
 FunctionEnd
 !macroend
-!insertmacro StrStr ""
-!insertmacro StrStr "un."
 
 
 # TrimNewlines  - taken from the NSIS reference
@@ -670,7 +665,19 @@ Function .onInit
   Delete $TEMP\gpgspltmp.bmp
   # Note that we delete gpgspltmp.wav in .onInst{Failed,Success}
 !endif
+  Var /GLOBAL changed_dir
+  # Check if the install directory was modified on the command line
+  StrCmp "$INSTDIR" "$PROGRAMFILES\${INSTALL_DIR}" unmodified 0
+  # It is modified. Save that value.
+  StrCpy $changed_dir "$INSTDIR"
 
+  # MULITUSER_INIT overwrites directory setting from command line
+  !insertmacro MULTIUSER_INIT
+  StrCpy $INSTDIR "$changed_dir"
+  goto initDone
+unmodified:
+  !insertmacro MULTIUSER_INIT
+initDone:
   # Enable this to force a language selection dialog on every run (the
   # preferred language is the default).  Otherwise, the preferred
   # language is stored in the registry, and the installer does not ask
@@ -688,6 +695,7 @@ FunctionEnd
 
 
 Function un.onInit
+  !insertmacro MULTIUSER_UNINIT
   # Remove the language preference.
   !insertmacro MUI_UNGETLANGUAGE
 FunctionEnd

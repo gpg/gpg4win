@@ -1,7 +1,7 @@
 /* g4wihelp.c - NSIS Helper DLL used with gpg4win. -*- coding: latin-1; -*-
  * Copyright (C) 2005 g10 Code GmbH
  * Copyright (C) 2001 Justin Frankel
- * Copyright (C) 2016 Intevation GmbH
+ * Copyright (C) 2016, 2017 Intevation GmbH
  *
  * This software is provided 'as-is', without any express or implied
  * warranty. In no event will the authors be held liable for any

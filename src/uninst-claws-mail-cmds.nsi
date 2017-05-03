@@ -75,8 +75,8 @@ Delete "$INSTDIR\share\locale\en_GB\LC_MESSAGES\claws-mail.mo"
 
 RMDir "$INSTDIR\share\claws-mail"
 
-DeleteRegKey HKLM "SOFTWARE\Clients\Mail\Claws Mail"
-DeleteRegKey HKLM "SOFTWARE\Classes\Claws-Mail.Url.mailto"
+DeleteRegKey SHCTX "SOFTWARE\Clients\Mail\Claws Mail"
+DeleteRegKey SHCTX "SOFTWARE\Classes\Claws-Mail.Url.mailto"
 
 ; libetpan
 Delete "$INSTDIR\bin\libetpan-13.dll"

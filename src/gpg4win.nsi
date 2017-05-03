@@ -141,33 +141,28 @@
 # necessary if you want to handle DLLs properly.
 # !define REQUIRE_W32_NSIS
 
-
-# Define if in debug mode.
-!ifdef GPG4WIN_DEBUG
-!define DEBUG
-!endif
-
 # Most of the included software has implicit requirements for at least
 # NT4 if not even higher.  To be sure require at least Windows XP.
-# Fixme: Enable if we have makensis 2.50
-#TargetMinimalOS 5.1
+# TargetMinimalOS 5.1
 
-# Admin privileges are required for installation
-RequestExecutionLevel admin
+# We support user mode installation but prefer system wide
+!define MULTIUSER_EXECUTIONLEVEL Highest
+!define MULTIUSER_MUI
+!define MULTIUSER_INSTALLMODE_COMMANDLINE
+!define MULTIUSER_INSTALLMODE_DEFAULT_REGISTRY_KEY "Software\${PRETTY_PACKAGE_SHORT}"
+!define MULTIUSER_INSTALLMODE_DEFAULT_REGISTRY_VALUENAME ""
+!define MULTIUSER_INSTALLMODE_INSTDIR_REGISTRY_KEY "Software\${PRETTY_PACKAGE_SHORT}"
+!define MULTIUSER_INSTALLMODE_INSTDIR_REGISTRY_VALUENAME "Install Directory"
+!define MULTIUSER_INSTALLMODE_INSTDIR "${PRETTY_PACKAGE_SHORT}"
+!include "MultiUser.nsh"
+!ifdef DEBUG
+!undef DEBUG
+!endif
 
 # The installation directory.
 !define ipdir "playground/install/pkgs"
 !define exipdir "playground/install-ex/pkgs"
 !define bpdir "playground/build"
-
-# Select the best compression algorithm available.  The dictionary
-# size is the default (8 MB).
-!ifndef DISABLE_LZMA
-!ifndef SOURCES
-SetCompressor /SOLID lzma
-# SetCompressorDictSize 8
-!endif
-!endif
 
 !ifndef GPG4WIN_VANILLA
 # Claws is a bit special because we installed
@@ -182,7 +177,7 @@ SetCompressor /SOLID lzma
 
 # We use Memento to remember past installation choices.
 !include Memento.nsh
-!define MEMENTO_REGISTRY_ROOT HKLM
+!define MEMENTO_REGISTRY_ROOT SHCTX
 !define MEMENTO_REGISTRY_KEY \
   Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRETTY_PACKAGE_SHORT}
 # We need to know wether we are installing to 64 bit.
