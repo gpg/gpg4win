@@ -282,7 +282,6 @@ gpg4win_pkg_qtbase_configure = ../$$$${pkg_version}/configure -opensource \
             -xplatform win32-g++ \
             -device-option CROSS_COMPILE=$(host)- \
             -device-option PKG_CONFIG='$(host)-pkg-config' \
-            -force-pkg-config \
             -no-use-gold-linker \
             -release \
             -shared \
@@ -303,11 +302,11 @@ gpg4win_pkg_qtbase_configure = ../$$$${pkg_version}/configure -opensource \
             -qt-zlib \
             -system-libpng \
             -qt-libjpeg \
-            -fontconfig \
-            -system-freetype \
+            -qt-freetype \
             -qt-pcre \
             -no-openssl \
-            -no-dbus
+            -no-dbus \
+            -v
 
 # qtbase
 # invoke qmake with removed debug options as a workaround for
@@ -318,9 +317,7 @@ gpg4win_pkg_qtbase_make_args = \
 # Qmake still writes debug names in pkgconfig files.
 define gpg4win_pkg_qtbase_post_install
 	(cd $$$${pkgbdir}; \
-	 make install); \
-	(cd $$$${pkgidir}; \
-	sed -i 's/-lQt5\(\w*\)d/-lQt5\1/g' `find . -name \*.pc`)
+	 make install)
 endef
 
 

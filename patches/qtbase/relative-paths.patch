@@ -5,13 +5,11 @@ exit $?
 Patch kindly provided by KDE Windows emerge. To
 look for files relative to the install location.
 
-diff --git a/src/corelib/io/qstandardpaths_win.cpp b/src/corelib/io/qstandardpaths_win.cpp
-index 5e56db3..4d46430 100644
---- a/src/corelib/io/qstandardpaths_win.cpp
-+++ b/src/corelib/io/qstandardpaths_win.cpp
-@@ -275,6 +275,16 @@
+--- a/src/corelib/io/qstandardpaths_win.cpp.orig  2017-05-02 12:09:46.110581259 +0200
++++ b/src/corelib/io/qstandardpaths_win.cpp       2017-05-02 12:11:15.540277570 +0200
+@@ -223,6 +223,16 @@
          dirs.append(QCoreApplication::applicationDirPath() + QLatin1String("/data"));
- #  endif // !QT_BOOTSTRAPPED
+ #endif // !QT_BOOTSTRAPPED
      } // isConfigLocation()
 +    dirs.append(QCoreApplication::applicationDirPath() + QLatin1String("/../share"));
 +    if (type != GenericDataLocation && type != GenericConfigLocation) {
@@ -23,9 +21,9 @@ index 5e56db3..4d46430 100644
 +        dirs.append(appData);
 +    }
 +    dirs.append(QCoreApplication::applicationDirPath() + QLatin1String("/../etc/xdg"));
- #endif // !Q_OS_WINCE
 
      return dirs;
+ }
 diff --git a/src/gui/image/qiconloader.cpp b/src/gui/image/qiconloader.cpp
 index 06491f1..ef9436f 100644
 --- a/src/gui/image/qiconloader.cpp
@@ -51,10 +49,10 @@ index 66735d8..5731560 100644
      if (QSysInfo::WindowsVersion >= QSysInfo::WV_VISTA)
          result.append(QStringLiteral("WindowsVista"));
      if (QSysInfo::WindowsVersion >= QSysInfo::WV_XP)
-@@ -401,6 +403,10 @@
-         return QVariant(true);
-     case WheelScrollLines:
-         return QVariant(int(dWordSystemParametersInfo(SPI_GETWHEELSCROLLLINES, 3)));
+@@ -398,6 +400,10 @@
+             result = int(scrollLines);
+         return QVariant(result);
+     }
 +    case QPlatformTheme::SystemIconThemeName:
 +         return QVariant(QLatin1String("breeze"));
 +    case QPlatformTheme::SystemIconFallbackThemeName:

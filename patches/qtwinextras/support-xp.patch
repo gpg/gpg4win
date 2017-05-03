@@ -1,0 +1,24 @@
+#! /bin/sh
+patch -p0 -f -l $* < $0
+exit $?
+
+Avoid using a function in unused code that is not supported on
+Windows XP
+
+--- src/winextras/qwinjumplist.cpp.orig	2017-05-02 13:47:15.014596531 +0200
++++ src/winextras/qwinjumplist.cpp	2017-05-02 13:48:11.955700458 +0200
+@@ -397,12 +397,9 @@
+     return link;
+ }
+
+-IShellItem2 *QWinJumpListPrivate::toIShellItem(const QWinJumpListItem *item)
++IShellItem2 *QWinJumpListPrivate::toIShellItem(const QWinJumpListItem *)
+ {
+-    IShellItem2 *shellitem = 0;
+-    QScopedArrayPointer<wchar_t> buffer(qt_qstringToNullTerminated(item->filePath()));
+-    SHCreateItemFromParsingName(buffer.data(), 0, qIID_IShellItem2, reinterpret_cast<void **>(&shellitem));
+-    return shellitem;
++    return 0;
+ }
+
+ IShellLinkW *QWinJumpListPrivate::makeSeparatorShellItem()

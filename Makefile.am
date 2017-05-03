@@ -29,13 +29,10 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         build-aux/git-log-footer build-aux/git-log-fix \
         patches/glib-2.41.5/01-socket.patch \
         patches/glib-2.41.5/02-formatsec.patch \
-        patches/qtbase/fix-freetype-link.patch \
-        patches/qtbase/fix-oci-detect.patch \
-        patches/qtbase/fix-syssemaphore.patch \
-        patches/qtbase/fix-zlib-link.patch \
         patches/qtbase/relative-paths.patch \
-        patches/qtbase/fix-fontconfig.patch \
+        patches/qtbase/qtbase-mingw-fixes.patch \
         patches/qtbase/config-standardpaths.patch \
+        patches/qtwinextras/support-xp.patch \
         patches/w32pth-2.0.5/workaround-broken-libtool.patch \
         patches/qttools/disable-most-tools.patch \
         patches/ki18n/no-tests.patch \
@@ -46,7 +43,6 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         patches/kconfigwidgets/0001-Make-QDbus-optional.patch \
         patches/kconfigwidgets/0002-Crudely-remove-KF5Auth-depedency.patch \
         patches/kiconthemes/0001-Make-DBus-optional.patch \
-        patches/qtsvg/qtsvg-link-zlib.patch \
         patches/extra-cmake-modules/0001-Add-convert-utility-support-for-Windows-icons.patch \
         patches/kleopatra/0005-Hack-generated-conf-files-for-Crosscompiling.patch \
         patches/kleopatra/lower-kf5-required.patch \

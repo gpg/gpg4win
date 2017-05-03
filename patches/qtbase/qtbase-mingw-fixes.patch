@@ -1,0 +1,197 @@
+#! /bin/sh
+patch -p1 -f -l $* < $0
+exit $?
+
+Taken from MXE
+
+From 12eed60ff166200c12d203d0daaa6c58c41df0ea Mon Sep 17 00:00:00 2001
+From: Ray Donnelly <mingw.android@gmail.com>
+Date: Wed, 26 Aug 2015 12:45:43 +0100
+Subject: [PATCH 1/5] cmake: Rearrange STATIC vs INTERFACE targets
+
+Otherwise we attempt to add_library(Qt5::UiPlugin STATIC IMPORTED)
+for header-only modules when building Qt5 statically.
+
+Source: https://git.io/vzWJz
+See also: https://github.com/mxe/mxe/issues/1185
+
+diff --git a/mkspecs/features/data/cmake/Qt5BasicConfig.cmake.in b/mkspecs/features/data/cmake/Qt5BasicConfig.cmake.in
+index d2358ca..6b1dc95 100644
+--- a/mkspecs/features/data/cmake/Qt5BasicConfig.cmake.in
++++ b/mkspecs/features/data/cmake/Qt5BasicConfig.cmake.in
+@@ -222,13 +222,13 @@ if (NOT TARGET Qt5::$${CMAKE_MODULE_NAME})
+     endif()
+ !!ENDIF
+
++!!IF equals(TEMPLATE, aux)
++    add_library(Qt5::$${CMAKE_MODULE_NAME} INTERFACE IMPORTED)
++!!ELSE
+ !!IF !isEmpty(CMAKE_STATIC_TYPE)
+     add_library(Qt5::$${CMAKE_MODULE_NAME} STATIC IMPORTED)
+     set_property(TARGET Qt5::$${CMAKE_MODULE_NAME} PROPERTY IMPORTED_LINK_INTERFACE_LANGUAGES "CXX")
+ !!ELSE
+-!!IF equals(TEMPLATE, aux)
+-    add_library(Qt5::$${CMAKE_MODULE_NAME} INTERFACE IMPORTED)
+-!!ELSE
+     add_library(Qt5::$${CMAKE_MODULE_NAME} SHARED IMPORTED)
+ !!ENDIF
+ !!ENDIF
+--
+2.9.3
+
+
+From 9d8bca4d8c1d312cca4b161c93a091147dd7aa37 Mon Sep 17 00:00:00 2001
+From: Tony Theodore <tonyt@logyst.com>
+Date: Sat, 16 Jul 2016 20:31:07 +1000
+Subject: [PATCH 2/5] Fix pkgconfig file and library naming
+
+See: https://codereview.qt-project.org/#/c/165394/
+     https://bugreports.qt.io/browse/QTBUG-30898
+
+Currently, *.pc files are generated with debug suffix `d` in `-release`
+mode and without the suffix in `-debug` or `-debug-and-release`. This
+can be worked around by `CONIFG-=debug_and_release`, however, a more
+predictable and consistent naming approach would be preferable.
+
+This change mimics the *.prl file and lib conventions:
+
+  -release: creates normal *.pc files and lib names
+  -release -force-debug-info: normal as above
+  -debug: creates *d.pc and *d lib names
+  -debug-and-release: creates both
+  -default: creates both (default link: debug)
+
+and should be unsurprising to users of `pkg-config`. At very least,
+it's deterministic and easily incorporated into build systems.
+
+Task-number: 30898
+Change-Id: If75336ec7d21a7ec0cb6d245fe87c64afcb5a644
+
+diff --git a/mkspecs/features/qt_module.prf b/mkspecs/features/qt_module.prf
+index 31d6285..8e24520 100644
+--- a/mkspecs/features/qt_module.prf
++++ b/mkspecs/features/qt_module.prf
+@@ -248,6 +248,10 @@ load(qt_installs)
+
+ load(qt_targets)
+
++# Set TARGET towards the end but before pkgconfig setup to keep naming
++# conventions consistent with *prl files
++TARGET = $$qt5LibraryTarget($$TARGET$$QT_LIBINFIX)
++
+ # this builds on top of qt_common
+ !internal_module:!lib_bundle:if(unix|mingw) {
+     CONFIG += create_pc
+@@ -258,12 +262,12 @@ load(qt_targets)
+         QMAKE_PKGCONFIG_LIBDIR = $$[QT_INSTALL_LIBS/raw]
+     QMAKE_PKGCONFIG_INCDIR = $$[QT_INSTALL_HEADERS/raw]
+     QMAKE_PKGCONFIG_CFLAGS = -I${includedir}/$$MODULE_INCNAME
+-    QMAKE_PKGCONFIG_NAME = $$replace(TARGET, ^Qt, "Qt$$QT_MAJOR_VERSION ")
+-    QMAKE_PKGCONFIG_FILE = $$replace(TARGET, ^Qt, Qt$$QT_MAJOR_VERSION)
++    QMAKE_PKGCONFIG_NAME = $$replace(TARGET, ^Qt$$QT_MAJOR_VERSION, "Qt$$QT_MAJOR_VERSION ")
++    QMAKE_PKGCONFIG_FILE = $$TARGET
+     for(i, MODULE_DEPENDS): \
+-        QMAKE_PKGCONFIG_REQUIRES += $$replace(QT.$${i}.name, ^Qt, Qt$$eval(QT.$${i}.MAJOR_VERSION))
++        QMAKE_PKGCONFIG_REQUIRES += $$replace(QT.$${i}.name, ^Qt, Qt$$eval(QT.$${i}.MAJOR_VERSION))$$qtPlatformTargetSuffix()
+     isEmpty(QMAKE_PKGCONFIG_DESCRIPTION): \
+-        QMAKE_PKGCONFIG_DESCRIPTION = $$replace(TARGET, ^Qt, "Qt ") module
++        QMAKE_PKGCONFIG_DESCRIPTION = $$replace(TARGET, ^Qt$$QT_MAJOR_VERSION, "Qt ") module
+     pclib_replace.match = $$lib_replace.match
+     !isEmpty(lib_replace.replace): \
+         pclib_replace.replace = $$QMAKE_PKGCONFIG_LIBDIR
+@@ -297,5 +301,3 @@ win32 {
+     # On other platforms, Qt's own compilation goes needs to compile the Qt 5.0 API
+     DEFINES *= QT_DISABLE_DEPRECATED_BEFORE=0x050000
+ }
+-
+-TARGET = $$qt5LibraryTarget($$TARGET$$QT_LIBINFIX)  # Do this towards the end
+--
+2.9.3
+
+
+From e4da2904bcab29d15ad137508390bec0595c0e72 Mon Sep 17 00:00:00 2001
+From: Mark Brand <mabrand@mabrand.nl>
+Date: Sun, 29 Jan 2017 13:02:16 +0100
+Subject: [PATCH 3/5] reenable fontconfig for win32 (MXE-specific)
+
+Change-Id: I05b036366bd402e43309742412bcf8ca91fe125f
+
+diff --git a/src/gui/configure.json b/src/gui/configure.json
+index 1f50116..dd94429 100644
+--- a/src/gui/configure.json
++++ b/src/gui/configure.json
+@@ -471,7 +471,7 @@
+         },
+         "fontconfig": {
+             "label": "Fontconfig",
+-            "condition": "!config.win32 && !config.darwin && features.system-freetype && libs.fontconfig",
++            "condition": "!config.darwin && features.system-freetype && libs.fontconfig",
+             "output": [ "privateFeature", "feature" ]
+         },
+         "gbm": {
+diff --git a/src/plugins/platforms/minimal/qminimalintegration.cpp b/src/plugins/platforms/minimal/qminimalintegration.cpp
+index 03c7250..7d0ffbd 100644
+--- a/src/plugins/platforms/minimal/qminimalintegration.cpp
++++ b/src/plugins/platforms/minimal/qminimalintegration.cpp
+@@ -120,7 +120,11 @@ QPlatformFontDatabase *QMinimalIntegration::fontDatabase() const
+     if (m_options & EnableFonts) {
+ #if QT_CONFIG(fontconfig)
+         if (!m_fontDatabase)
++#ifdef Q_OS_WIN
++            m_fontDatabase = new QBasicFontDatabase;
++#else
+             m_fontDatabase = new QGenericUnixFontDatabase;
++#endif
+ #else
+         return QPlatformIntegration::fontDatabase();
+ #endif
+--
+2.9.3
+
+
+From db3c6f5fecb9b93f3553273576954d363d0630bc Mon Sep 17 00:00:00 2001
+From: Mark Brand <mabrand@mabrand.nl>
+Date: Sun, 29 Jan 2017 14:00:06 +0100
+Subject: [PATCH 4/5] fix included file name case
+
+Change-Id: I026787441aa43128aec001cfe1a7bc8d37799826
+
+diff --git a/src/plugins/platforms/windows/qwin10helpers.cpp b/src/plugins/platforms/windows/qwin10helpers.cpp
+index 977bbfd..12cccd1 100644
+--- a/src/plugins/platforms/windows/qwin10helpers.cpp
++++ b/src/plugins/platforms/windows/qwin10helpers.cpp
+@@ -57,7 +57,7 @@
+ #endif
+
+ #ifdef HAS_UI_VIEW_SETTINGS_INTEROP
+-#  include <UIViewSettingsInterop.h>
++#  include <uiviewsettingsinterop.h>
+ #endif
+
+ #ifndef HAS_UI_VIEW_SETTINGS_INTEROP
+--
+2.9.3
+
+
+From ddf845adb0080016c2f69fcfa7e23edf70e5151a Mon Sep 17 00:00:00 2001
+From: Mark Brand <mabrand@mabrand.nl>
+Date: Sun, 29 Jan 2017 16:22:03 +0100
+Subject: [PATCH 5/5] fix treatment of SYBASE_LIBS
+
+Change-Id: I4c9914cf7ef9d91feb0718a57f2551c1eeed47e0
+
+diff --git a/src/sql/configure.pri b/src/sql/configure.pri
+index 1d8847b..229b6a1 100644
+--- a/src/sql/configure.pri
++++ b/src/sql/configure.pri
+@@ -76,7 +76,7 @@ defineTest(qtConfLibrary_sybaseEnv) {
+         libs += "-L$${sybase}/lib"
+     libs += $$getenv(SYBASE_LIBS)
+     !isEmpty(libs) {
+-        $${1}.libs = "$$val_escape(libs)"
++        $${1}.libs = $$libs
+         export($${1}.libs)
+     }
+     return(true)
+--
+2.9.3

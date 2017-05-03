@@ -236,20 +236,6 @@ diff -Nru qtbase-5.6.1.orig/src/corelib/io/qstandardpaths.h qtbase-5.6.1/src/cor
      // prevent construction
      QStandardPaths();
      ~QStandardPaths();
-diff -Nru qtbase-5.6.1.orig/src/corelib/io/qstandardpaths_mac.mm qtbase-5.6.1/src/corelib/io/qstandardpaths_mac.mm
---- qtbase-5.6.1.orig/src/corelib/io/qstandardpaths_mac.mm      2016-07-22 15:11:23.307466618 +0200
-+++ qtbase-5.6.1/src/corelib/io/qstandardpaths_mac.mm   2016-07-22 15:11:49.940044214 +0200
-@@ -138,6 +138,10 @@
-
- QString QStandardPaths::writableLocation(StandardLocation type)
- {
-+    const QString result = QStandardPaths::presetLocation(type);
-+    if(!result.isEmpty())
-+        return result;
-+
-     if (isTestModeEnabled()) {
-         const QString qttestDir = QDir::homePath() + QLatin1String("/.qttest");
-         QString path;
 diff -Nru qtbase-5.6.1.orig/src/corelib/io/qstandardpaths_win.cpp qtbase-5.6.1/src/corelib/io/qstandardpaths_win.cpp
 --- qtbase-5.6.1.orig/src/corelib/io/qstandardpaths_win.cpp     2016-07-22 15:11:23.307466618 +0200
 +++ qtbase-5.6.1/src/corelib/io/qstandardpaths_win.cpp  2016-07-22 15:13:41.682467339 +0200
