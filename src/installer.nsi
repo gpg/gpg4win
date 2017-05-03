@@ -1,5 +1,6 @@
 # installer.nsi - Installer for GnuPG 4 Windows.    -*- coding: latin-1; -*-
 # Copyright (C) 2005, 2007 g10 Code GmbH
+# Copyright (C) 2017 Intevation GmbH
 #
 # This file is part of GPG4Win.
 #
@@ -152,11 +153,12 @@ Bitte die Sprache des Installations-Vorgangs angeben."
 
 Function FinishFunction
   IfSilent leave
-  Var /GLOBAL gpa_or_kleopatra
   !insertmacro SectionFlagIsSet ${SEC_kleopatra} \
-        ${SF_SELECTED} have_kleo 0
+        ${SF_SELECTED} have_kleo check_gpa
+check_gpa:
   !insertmacro SectionFlagIsSet ${SEC_gpa} \
-        ${SF_SELECTED} have_gpa 0
+        ${SF_SELECTED} have_gpa have_nothing
+have_nothing:
   ShowWindow $mui.FinishPage.Run ${SW_HIDE}
   goto leave
 have_kleo:
@@ -164,18 +166,19 @@ have_kleo:
   goto leave
 have_gpa:
   SendMessage $mui.FinishPage.Run.Text ${WM_SETTEXT} 0 "STR:$(T_RunGPA)"
-  StrCpy $gpa_or_kleopatra "GPA"
 leave:
 FunctionEnd
 
 Function RunAsUser
   !insertmacro SectionFlagIsSet ${SEC_kleopatra} \
-        ${SF_SELECTED} 0 skip_kleo
+        ${SF_SELECTED} do_kleo skip_kleo
+do_kleo:
   g4wihelp::DesktopShellRun "$INSTDIR\bin\kleopatra.exe"
   goto leave
 skip_kleo:
   !insertmacro SectionFlagIsSet ${SEC_gpa} \
-        ${SF_SELECTED} 0 leave
+        ${SF_SELECTED} do_gpa leave
+do_gpa:
   g4wihelp::DesktopShellRun "$INSTDIR\bin\gpa.exe"
 leave:
 FunctionEnd
