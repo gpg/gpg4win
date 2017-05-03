@@ -24,7 +24,7 @@
 #endif
 
 /* Some declarations missing in mingw-w64 3.1.0 taken from msdn */
-
+#if ! defined (__MINGW64_VERSION_MAJOR) || __MINGW64_VERSION_MAJOR < 5
 __CRT_UUID_DECL(IShellWindows, 0x85CB6900, 0x4D95, 0x11CF,
                 0x96, 0x0C, 0x00, 0x80, 0xC7, 0xF4, 0xEE, 0x85);
 
@@ -40,6 +40,7 @@ __CRT_UUID_DECL(IShellDispatch2, 0xA4C6892C, 0x3BA9, 0x11d2,
                 0x9D, 0xEA, 0x00, 0xC0, 0x4F, 0xB1, 0x61, 0x62);
 __CRT_UUID_DECL(IShellFolderViewDual,  0xe7a1af80, 0x4d96,
                 0x11cf, 0x96, 0x0c, 0x00, 0x80, 0xc7, 0xf4, 0xee, 0x85);
+#endif
 
 #ifndef SWC_DESKTOP /* Will probably be addedd in future mingw */
 #define SWC_DESKTOP 0x00000008
