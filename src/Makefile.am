@@ -627,9 +627,9 @@ license.blurb: $(top_srcdir)/doc/license-page $(top_srcdir)/doc/GPLv3
 	cat $(top_srcdir)/doc/license-page $(top_srcdir)/doc/GPLv3 >$@
 
 g4wihelp.dll: slideshow.cpp desktopshellrun.cpp g4wihelp.c exdll.h
-	$(CC) -I. -O2 -c -o desktopshellrun.o $(srcdir)/desktopshellrun.cpp
-	$(CC) -I. -O2 -c -o slideshow.o $(srcdir)/slideshow.cpp
-	$(CC) -I. -shared -O2 -o g4wihelp.dll $(srcdir)/g4wihelp.c \
+	$(CC) -static-libgcc -I. -O2 -c -o desktopshellrun.o $(srcdir)/desktopshellrun.cpp
+	$(CC) -static-libgcc -I. -O2 -c -o slideshow.o $(srcdir)/slideshow.cpp
+	$(CC) -static-libgcc -I. -shared -O2 -o g4wihelp.dll $(srcdir)/g4wihelp.c \
 	  desktopshellrun.o slideshow.o -lwinmm -lgdi32 -luserenv -lshell32 \
 	  -lole32 -loleaut32 -lshlwapi -lmsimg32
 	$(STRIP) g4wihelp.dll
