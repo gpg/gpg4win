@@ -769,15 +769,6 @@ Function CalcDepends
    skip_kleopatra_libs:
 !endif
 
-!ifdef HAVE_PKG_QTBASE
-  !insertmacro SectionFlagIsSet ${SEC_qtbase} \
-		${SF_SELECTED} have_qt skip_qt
-  have_qt:
-  !insertmacro SelectSection ${SEC_libpng}
-  !insertmacro SelectSection ${SEC_zlib}
-  skip_qt:
-!endif
-
 !ifdef HAVE_PKG_GPGME
   !insertmacro SectionFlagIsSet ${SEC_gpgme} \
 		${SF_SELECTED} have_gpgme skip_gpgme
@@ -804,6 +795,15 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_gtk_}
 !endif
    skip_pinentry:
+!endif
+
+!ifdef HAVE_PKG_QTBASE
+  !insertmacro SectionFlagIsSet ${SEC_qtbase} \
+		${SF_SELECTED} have_qt skip_qt
+  have_qt:
+  !insertmacro SelectSection ${SEC_libpng}
+  !insertmacro SelectSection ${SEC_zlib}
+  skip_qt:
 !endif
 
 !ifdef HAVE_PKG_LIBASSUAN
