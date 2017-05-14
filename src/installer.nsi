@@ -31,6 +31,7 @@
 !endif
 
 !include "WinMessages.nsh"
+!include "WinVer.nsh"
 
 # We use the modern UI 2.
 !include "MUI2.nsh"
@@ -545,6 +546,11 @@ LangString T_FoundOldClaws ${LANG_ENGLISH} \
     http://www.claws-mail.org/win32 $\r$\n$\r$\n\
     Uninstall Claws Mail from Gpg4win now?"
 
+# From Function CheckClawsUninstall
+LangString T_XPisDeprecated ${LANG_ENGLISH} \
+   "Windows Versions before Windows Vista are no longer maintained by Gpg4win. \
+    $\r$\nSupport for them may be removed in a future version."
+
 # FIXME: The GetAfterChar function comes from the NSIS wiki.
 Function un.GetAfterChar
   Exch $0 ; chop char
@@ -686,6 +692,10 @@ initDone:
 !define MUI_LANGDLL_ALWAYSSHOW
 !endif
   !insertmacro MUI_LANGDLL_DISPLAY
+
+${IfNot} ${AtLeastWinVista}
+    MessageBox MB_OK "$(T_XPisDeprecated)"
+${Endif}
 
   ${MementoSectionRestore}
   Call CalcDefaults
