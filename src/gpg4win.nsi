@@ -134,16 +134,15 @@
 
 # The copyright license of the package.  Define only one of these.
 !define LICENSE_GPL
-# !define LICENSE_LGPL
 
-
-# Define this if we require an NSIS running on Windows.  This is
-# necessary if you want to handle DLLs properly.
-# !define REQUIRE_W32_NSIS
-
-# Most of the included software has implicit requirements for at least
-# NT4 if not even higher.  To be sure require at least Windows XP.
-# TargetMinimalOS 5.1
+# Select the best compression algorithm available.  The dictionary
+# size is the default (8 MB).
+!ifndef DISABLE_LZMA
+!ifndef SOURCES
+SetCompressor /SOLID lzma
+# SetCompressorDictSize 8
+!endif
+!endif
 
 # We support user mode installation but prefer system wide
 !define MULTIUSER_EXECUTIONLEVEL Highest
