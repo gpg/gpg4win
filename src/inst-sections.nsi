@@ -973,14 +973,16 @@ FunctionEnd
 
 Section "-startmenu"
 
+  UserInfo::GetAccountType
+  Pop $1
+  StrCmp $1 "Admin" is_admin is_no_admin
+is_admin:
+  SetShellVarContext all
+
+is_no_admin:
+
   # NOT SetOutPath.
   StrCpy $OUTDIR "%HOMEDRIVE%%HOMEPATH%"
-
-  # Make sure that the context of the automatic variables has been set to
-  # the "all users" shell folder.  This guarantees that the menu gets written
-  # for all users.  We have already checked that we are running as Admin; or
-  # we printed a warning that installation will not succeed.
-  SetShellVarContext all
 
   # Check if the start menu entries where requested.
   g4wihelp::config_fetch_bool "inst_start_menu"
