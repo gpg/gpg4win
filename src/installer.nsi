@@ -671,6 +671,10 @@ Function .onInit
   Delete $TEMP\gpgspltmp.bmp
   # Note that we delete gpgspltmp.wav in .onInst{Failed,Success}
 !endif
+  ${GetParameters} $R0
+  ClearErrors
+  ${GetOptions} $R0 /MINIMAL= $is_minimal
+
   Var /GLOBAL changed_dir
   # Check if the install directory was modified on the command line
   StrCmp "$INSTDIR" "$PROGRAMFILES\${INSTALL_DIR}" unmodified 0

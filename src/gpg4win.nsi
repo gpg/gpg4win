@@ -171,6 +171,9 @@ SetCompressor /SOLID lzma
 !include "uninst-claws-mail.nsi"
 !endif
 
+# Variables
+VAR is_minimal
+
 # Sections
 !include "Sections.nsh"
 

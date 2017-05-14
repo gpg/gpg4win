@@ -510,6 +510,21 @@ calc_defaults_man_advanced_de_done:
 calc_defaults_man_advanced_en_done:
 !endif
 
+# Check if minimal install was requested on the command line
+
+StrCmp $is_minimal '1' select_minimal continue
+select_minimal:
+   !insertmacro UnselectSection ${SEC_kleopatra}
+   !insertmacro UnselectSection ${SEC_gpgol}
+   !insertmacro UnselectSection ${SEC_gpgex}
+   !insertmacro UnselectSection ${SEC_gpa}
+   !insertmacro UnselectSection ${SEC_compendium}
+
+# We only do pinentry and gnupg-w32
+   !insertmacro SelectSection ${SEC_paperkey}
+   !insertmacro SelectSection ${SEC_gnupg_w32}
+   !insertmacro SelectSection ${SEC_pinentry}
+continue:
 FunctionEnd
 
 
