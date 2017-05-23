@@ -15,28 +15,27 @@ PAGE_START
 </div>
 
 <div id="main">
-<h2>Änliche Projekte</h2>
+<h2>Ähnliche Produkte/Initiativen</h2>
 
 <ul>
-<li><a href="http://www.gnupg.org">GnuPG</a></li>
-<li><a href="http://www.gpgtools.org">GPGTools</a>
+<li><a href="https://www.gnupg.org">GnuPG</a></li>
+<li><a href="https://www.gpgtools.org">GPGTools</a>
 <p>
 Das Projekt GPGTools bietet eine Mac OS X Version von GnuPG. Diese ist
 nett in einen Installer eingebunden und kommt mit aller benötigter
 Software.
 </p></li>
-<li><a href="http://www.gpg4kde.de">Gpg4kde</a></li>
-<li><a href="http://home.arcor.de/rose-indorf/">GnuPG-Basics</a></li>
-<li><a href="http://sites.inka.de/tesla/gpgrelay.html">GPGrelay</a>
-<p>ist ein Verschlüsselungsprogramm, welches im Hintergrund E-Mails
-verschlüsselt, so dass kein Plugin für das E-Mail Programm notwendig
-ist.<br>
-Wer Interesse hat, Gpg4win um diese Software zu erweitern, kann die Integration
-selbst durchführen. Dafür gibt es einige <a href="build-installer-de.html">Hilfestellungen
-zur Erweiterung von Gpg4win</a>.</p></li>
+<li><a href="http://www.rose-indorf.de/gnupgpack/">GnuPG-Pack</a></li>
 <li><a
 href="http://www.thunderbird-mail.de/wiki/Enigmail_OpenPGP">Thunderbird/Enigmail</a></li>
 </li>
+<!-- <li><a href="http://sites.inka.de/tesla/gpgrelay.html">GPGrelay</a> -->
+<li><a href="https://sourceforge.net/projects/gpgrelay/">GPGrelay</a>
+<p>ist ein Verschlüsselungsprogramm, welches im Hintergrund E-Mails
+verschlüsselt, so dass kein Plugin für das E-Mail Programm notwendig
+ist.
+</p></li>
+<li><a href="http://www.gpg4kde.de">Gpg4kde</a> (veraltet)</li>
 <li><a href="http://www.gnupp.de/start.html">GnuPP</a> (veraltet)</li>
 </ul>
 </div>
