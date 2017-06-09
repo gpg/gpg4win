@@ -300,7 +300,7 @@ gpg4win_pkg_qtbase_configure = ../$$$${pkg_version}/configure -opensource \
             -no-sql-psql \
             -no-sql-tds \
             -qt-zlib \
-            -system-libpng \
+            -qt-libpng \
             -qt-libjpeg \
             -qt-freetype \
             -qt-pcre \
