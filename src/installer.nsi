@@ -30,6 +30,7 @@
 !macroend
 !endif
 
+!include "FileFunc.nsh"
 !include "WinMessages.nsh"
 !include "WinVer.nsh"
 
@@ -313,6 +314,7 @@ FunctionEnd
 
 # Check whether one of the other GnuPG systems has already been
 # installed.  We do this by looking at the registry.
+!ifndef SOURCES
 Function CheckOtherGnuPGApps
   StrCpy $OtherGnuPGDetected ""
   ClearErrors
@@ -339,6 +341,7 @@ Function CheckOtherGnuPGApps
 
 
 FunctionEnd
+!endif
 
 # Check whether gpg4win has already been installed.  This is called as
 # a leave function from the directory page.  A call to abort will get
@@ -670,7 +673,7 @@ Function .onInit
 
   Delete $TEMP\gpgspltmp.bmp
   # Note that we delete gpgspltmp.wav in .onInst{Failed,Success}
-!endif
+!else
   ${GetParameters} $R0
   ClearErrors
   ${GetOptions} $R0 /MINIMAL= $is_minimal
@@ -687,6 +690,7 @@ Function .onInit
   goto initDone
 unmodified:
   !insertmacro MULTIUSER_INIT
+!endif
 initDone:
   # Enable this to force a language selection dialog on every run (the
   # preferred language is the default).  Otherwise, the preferred
@@ -704,12 +708,16 @@ ${Endif}
   ${MementoSectionRestore}
   Call CalcDefaults
   Call CalcDepends
+!ifndef SOURCES
   Call CheckOtherGnuPGApps
+!endif
 FunctionEnd
 
 
 Function un.onInit
+!ifndef SOURCES
   !insertmacro MULTIUSER_UNINIT
+!endif
   # Remove the language preference.
   !insertmacro MUI_UNGETLANGUAGE
 FunctionEnd
