@@ -295,23 +295,24 @@ chk  22843a3bdb256f59be49842abf24da76700354293a066d82ade8134bb5aa2b71
 
 # last changed: 2017-04-18
 # by: ah
-name gnupg-w32-2.1.20-20170403-bin.exe
-file binary/gnupg-w32-2.1.20_20170403.exe
-chk  e99ded9c749da2d29cb3fc531ceccb04009f61f263cc76a3bf7ab5c95d93b75f
+# TODO switch back to released version
+#name gnupg-w32-2.1.20-20170403-bin.exe
+#file binary/gnupg-w32-2.1.20_20170403.exe
+#chk  e99ded9c749da2d29cb3fc531ceccb04009f61f263cc76a3bf7ab5c95d93b75f
 
-name gnupg-w32-2.1.20-20170403-src.tar.xz
-file binary/gnupg-w32-2.1.20_20170403.tar.xz
-chk  c8cc121e0e42e55aa9099f687e2f5a1726f10b243253810bc0157afefe77c309
+#name gnupg-w32-2.1.20-20170403-src.tar.xz
+#file binary/gnupg-w32-2.1.20_20170403.tar.xz
+#chk  c8cc121e0e42e55aa9099f687e2f5a1726f10b243253810bc0157afefe77c309
 
 # last changed: 2016-01-17
 # by: ah
 file pinentry/pinentry-1.0.0.tar.bz2
 chk  1672c2edc1feb036075b187c0773787b2afd0544f55025c645a71b4c2f79275a
 
-# last changed: 2017-03-28
+# TODO switch back to released version
 # by: ah
-file gpgme/gpgme-1.9.0.tar.bz2
-chk  1b29fedb8bfad775e70eafac5b0590621683b2d9869db994568e6401f4034ceb
+#file gpgme/gpgme-1.9.0.tar.bz2
+#chk  1b29fedb8bfad775e70eafac5b0590621683b2d9869db994568e6401f4034ceb
 
 # last changed: 2017-01-04
 # by: ah
@@ -516,6 +517,16 @@ server http://files.intevation.de/projects/gpg4all
 file gpgol/gpgol-2.0.0-beta259.tar.bz2
 chk f89a57cc57124e2bd4e506c4b26c8ca2ee4f7c3a8b987b0816762ea57251a8bf
 
+file gpgme/gpgme-1.9.1-beta42.tar.bz2
+chk  8ffec90a9f4db222e7dd76b29c2fcd5b169cc074cbad8dcb1c66a31794cf324f
+
+name gnupg-w32-2.1.22-beta30-20170606-bin.exe
+file gnupg/gnupg-w32-2.1.22-beta30_20170606.exe
+chk  a3829fc30ddeeeff48e05ed16f81910c282b8ebfc4c6f7985508a1c4a295ac97
+
+name gnupg-w32-2.1.22-beta30-20170606-src.tar.xz
+file gnupg/gnupg-w32-2.1.22-beta30_20170606.tar.xz
+chk  1b504eb36f38066d660fb804fe1f171d14982e928cf998a284458e05df48b69b
 
 # Libkleo
 # last changed: see package date.
