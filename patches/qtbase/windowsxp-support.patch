@@ -54,3 +54,20 @@ index e12da68671..c9d2a4b80f 100644
 
      if (result.isEmpty()) {
          if (type == FOLDERID_ProgramData) {
+diff --git a/src/plugins/platforms/windows/qwin10helpers.cpp b/src/plugins/platforms/windows/qwin10helpers.cpp
+index 12cccd124b..fe444c9420 100644
+--- a/src/plugins/platforms/windows/qwin10helpers.cpp
++++ b/src/plugins/platforms/windows/qwin10helpers.cpp
+@@ -42,10 +42,10 @@
+ #include <QtCore/QDebug>
+ #include <QtCore/private/qsystemlibrary_p.h>
+
+-#if defined(Q_CC_MINGW)
++#if 0
+ #  define HAS_UI_VIEW_SETTINGS_INTEROP
+ // Present from MSVC2015 + SDK 10 onwards
+-#elif (!defined(Q_CC_MSVC) || _MSC_VER >= 1900) && NTDDI_VERSION >= 0xa000000
++#elif 0
+ #  define HAS_UI_VIEW_SETTINGS_INTEROP
+ #  define HAS_UI_VIEW_SETTINGS
+ #endif
