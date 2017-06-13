@@ -499,13 +499,13 @@ chk 18b35d437e7cbf6f00983d0f66372cbd6a0daedaa58e6c092838c20845571f38
 
 # KDE Applications
 
-server http://download.kde.org/stable/applications/
+server https://download.kde.org/Attic/applications
 # kmime
 # last changed: 2017-02-02
 # by: ah
-# verified: https://www.kde.org/info/applications-16.12.1.php
-file 16.12.1/src/kmime-16.12.1.tar.xz
-chk c435708f18422117f10cef52a7edcaae71c5da444f72c6f405665154f116e9bc
+# verified: https://download.kde.org/Attic/applications/16.12.3/src/kmime-16.12.3.tar.xz.mirrorlist
+file 16.12.3/src/kmime-16.12.3.tar.xz
+chk 40c874c98c0eb0c76e9a5015aab5d5ed791c1e0bed138f412fb496031e80eb3f
 
 # Devel versions are needed until Kleopatra can be based on
 # a stable branch.
