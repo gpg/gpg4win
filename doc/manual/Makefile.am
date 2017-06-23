@@ -172,7 +172,17 @@ png_compendium_files = \
 	images-compendium/smime-icon.png \
 	images-compendium/tangled-schlapphut.png \
 	images-compendium/think-passphrase.png \
-	images-compendium/verleihnix.png
+	images-compendium/verleihnix.png \
+	images-compendium/sc-inst-uat_de.png \
+	images-compendium/sc-kleopatra-importKeyQuestion_de.png \
+	images-compendium/sc-kleopatra-paperkey1_de.png \
+	images-compendium/sc-kleopatra-publishKey1_de.png \
+	images-compendium/sc-kleopatra-publishKey_de.png \
+	images-compendium/sc-kleopatra-searchKeyEdward_de.png \
+	images-compendium/sc-kleopatra-smartCard1_de.png \
+	images-compendium/sc-kleopatra-smartCard2_de.png \
+	images-compendium/sc-kleopatra-smartCard3_de.png \
+	images-compendium/sc-kleopatra-smartCard4_de.png
 
 png_manual_files = \
 	images-manual/adele01.png \
