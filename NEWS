@@ -4,6 +4,13 @@
 # distributed by www.gpg4win.org.
 Noteworthy changes in version 3.0.0 (unreleased)
 ------------------------------------------------
+(en) German Compendium is now Updated to Version 4.0. It is
+     adjusted to the changes made in Gpg4win 3.0
+
+(de) Das deutsche Kompendium wurde auf Version 4.0 aktualisiert. Es
+     wurden die Änderungen die in Gpg4win 3.0 gemacht wurden
+     aufgenommen.
+
 (en) GnuPG is now of the modern 2.1 variant. See:
      https://www.gnupg.org/faq/whats-new-in-2.1.html
      for more information about this.

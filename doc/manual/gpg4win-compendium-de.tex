@@ -2272,8 +2272,8 @@ Auf den nächsten Seiten werden diese Schritte im Detail beschrieben.
 ~\\
 Verfassen Sie zunächst in Outlook eine neue \Email{} und adressieren
 Sie diese an Ihren Korrespondenzpartner.
-In der Menüleiste finden Sie ein Schloss. Klicken Sie es an und
-wählen die Optionen \Menu{signieren} und \Menu{verschlüsseln}
+Die Standardauswahl zum Signieren und Verschlüsseln ist bereits für Sie
+markiert.
 
 %Bevor Sie Ihre Nachricht abschicken, geben Sie noch an, dass Ihre
 %Nachricht signiert versendet werden soll: Dazu aktivieren Sie die
@@ -2341,6 +2341,15 @@ Nachricht wird nun signiert, verschlüsselt und versendet.
 Ihnen wird vielleicht schon aufgefallen sein, dass Sie nicht jedes mal
 Ihre Passphrase erneut eingeben müssen. Sie wird im Hintergrund für einige
 Zeit gespeichert.
+
+\textbf{Herzlichen Glückwunsch! Sie haben Ihre erste \Email{}
+	signiert und verschlüsselt!}
+
+\textit{Übrigens}: Sie können eine Nachricht auch nur signieren oder nur 
+verschlüsseln. Klicken Sie dazu auf das GpgOL Symbol in der Nachricht. Der 
+Ablauf ist analog zu dem hier beschriebenen. Es wird aber davon abgeraten, eine 
+Nachricht nur zu verschlüsseln, da hierbei die nicht Urheberschaft der
+Nachricht geschützt wird.
 
 \clearpage
 \subsection{Signatur prüfen mit GpgOL}
@@ -3229,11 +3238,14 @@ Gpg4win danach wieder eine echte \textbf{Passphrase setzen.}
 Schlüsselpaar exportiert und wieder importiert.}
 
 \clearpage
-\section{Export mit Paperkey \label{paperkey}}
-Sie können Ihren privaten Schlüssel auch Offline sichern, damit es z.B. in
-eine Bankschließfach hinterlegt werden kann. \textbf{Wichtig:} Dies ist nur
-für OpenPGP-Schlüssel möglich.
+\section{Paperkey} \label{paperkey}
+Mit Paperkey haben Sie die Möglichkeit Ihren privaten Schlüssel nicht nur
+auf digitale Medien zu sichern, sondern auf auf analoge so können Sie ihn z.B.
+in einem Bankschließfach hinterlegen und von diesem auch wieder herstellen.
 
+\textbf{Wichtig:} Dies ist nur für OpenPGP-Schlüssel möglich.
+
+\subsection{Export mit Paperkey}
 Wählen Sie dazu das zu exportierende Schlüsselpaar in der Übersicht aus. Über
 \Menu{Datei $\to$ Geheimen Schlüssel drucken...} öffnen Sie den Dialog zum
 drucken Ihres Schlüssels. Geben Sie zunächst die Passphrase Ihres
@@ -3247,7 +3259,17 @@ aus und drucken Ihren privaten Schlüssel.
 
 Heften Sie dieses Dokument an einen sicheren Ort zur Verwahrung. Es sollte nicht
 in fremde Hände gelangen!
+\subsection{Import mit Paperkey}
+Um den zuvor exportierten Schlüssel wieder zu importieren, müssen Sie zunächst
+sicherstellen, dass Ihr öffentlicher Schlüssel bereits in Kleopatra
+vorhanden ist.
 
+Machen Sie einen Rechtsklick auf Ihren öffentlichen Schlüssel und klicken
+Sie auf \Menu{Details}. Wählen Sie im nun auftauchenden Schlüsseldialog
+den Knopf \Button{Weitere Details...}.
+
+Abschließend tätigen Sie einen Rechtsklick auf Ihren privaten Schlüssel und
+wählen im Dateidialog ihren abgetippten Paperkey aus.
 \clearpage
 \chapter{Konfiguration von Smartcards \label{Smartcards}}
 Smartcards oder auch Chipkarten sind kleine Plastikkarten mit Chips auf ihnen,
@@ -3299,7 +3321,7 @@ Ihres Schlüssels machen können.
 Anschließend werden die Schlüssel auf der Karte erzeugt.
 
 % screenshot kleopatra loading card screen
-\IncludeImage[width=0.6\textwidth]{sc-kleopatra-smartCard2_de}
+\IncludeImage[width=0.3\textwidth]{sc-kleopatra-smartCard2_de}
 
 Je nach verwendetem SmartCard-Leser kann es während der Erzeugung zu
 einer Abfrage des Administrations-PINs der Karte kommen. Dieser liegt der
@@ -3335,8 +3357,8 @@ einzugeben.
 \label{X509Smartcard}
 Ebenso wie OpenPGP SmartCards können auch X.509 NetKey-Cards verwendet werden.
 Hierbei müssen Sie allerdings keine eigenen Einstellungen übernehmen, Sie wird
-von der Vergabestelle vorkonfiguriert und kann danach in Kleopatra genutzt
-werden.
+von der Zertifizierungsstelle vorkonfiguriert und kann danach in Kleopatra
+genutzt werden.
 
 
 \clearpage
@@ -5600,7 +5622,13 @@ Dateiordner bzw. Registryschlüssel zurück:
       Informationstechnik (BSI)\\
       Emanuel Sch\"utze, Intevation GmbH\\
       Dr. Jan-Oliver Wagner, Intevation GmbH
-
+\item Im Rahmen von des BSI Auftrages "`Gpg4all"' im Jahre 2017 umfassend
+      überarbeitet, ergänzt und aktualisiert worden.\\
+      Grundlegende \"Uberarbeitung:\\
+      Jochen Saalfeld, Intevation GmbH\\
+      Emanuel Schütze, Intevation GmbH
+      
+      
       Das Programmpaket Gpg4win und das Gpg4win-Kompendium sind
       verfügbar unter: 
       \T\ifthenelse{\boolean{DIN-A5}}{}{\\}

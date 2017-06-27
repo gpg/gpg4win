@@ -1,5 +1,10 @@
-2016-06-23  Jochen Saalfeld <jochen@intevation.de>
-        * Updating the Compendium to Version 4.0
+2017-06-27  Jochen Saalfeld <jochen@intevation.de>
+	* Updating german Compendium. Adding Paperkey Import and
+	  merging local diff from Emanuel, als well as some
+	  minor improvements.
+
+2017-06-23  Jochen Saalfeld <jochen@intevation.de>
+	* Updating the Compendium to Version 4.0
 
 2012-03-12  Emanuel Schuetze <emanuel@intevation.de>
 
