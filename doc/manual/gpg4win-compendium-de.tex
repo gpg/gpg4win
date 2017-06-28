@@ -5132,57 +5132,44 @@ dann noch lesen zu können...
 GpgOL ist eine Programmerweiterung für Microsoft Outlook, es
 integriert dort die Bedienung von GnuPG.
 
-Da Outlook ein proprietäres Produkt, also nicht als Freie Software mit
-Quelltext verfügbar ist, hat die Integration eine Reihe von ,,Ecken
-und Kanten''. Oder mit anderen Worten: Die Bedienung ist nicht so
-komfortabel, wie es beispielsweise \Email{}-Programme mit integrierter
-Verschlüsselungs- und Signaturkomponente bieten (z.B. KMail/Kontact).
-
-%TODO: Weg ist mittlerweile anders
-\T\ifthenelse{\boolean{DIN-A5}}{\newpage}{}
 GpgOL wird durch den Gpg4win-Installationsassistenten installiert.
-Beim nächsten Start von Outlook findet sich im Menü
-\Menu{Extras$\rightarrow$Optionen} eine Karteikarte \Menu{GpgOL}:
+Beim nächsten Start von Outlook finden Sie in Ihrer Adressleiste einen
+Eintrag für GpgOL. Wenn Sie auf den Pfeil neben dem Schriftzug klicken
+kommen Sie in das Einstellungsmenü:
 
 % screenshot: GpgOL options
-% TODO: Neues Add-In beschreiben
-\T\ifthenelse{\boolean{DIN-A5}}{
-    \T\IncludeImage[width=0.75\textwidth]{sc-gpgol-options_de}
-\T}
-\T{
-    \IncludeImage[width=0.65\textwidth]{sc-gpgol-options_de}
-\T}
+% TODO: Neuer Screenshot - English und Beta
+\IncludeImage[width=0.65\textwidth]{sc-gpgol-options_de}
 
 \clearpage
-Die Karteikarte \Menu{GpgOL} unterteilt sich in drei Bereiche:
+Die Karteikarte \Menu{GpgOL} unterteilt sich in zwei Bereiche:
 \begin{enumerate}
-    \item \textbf{Allgemein:}
-
-        \T\marginSmime
-        \Menu{S/MIME Unterstützung einschalten}
+    \item \textbf{Allgemein}
+    \begin{itemize}
+    \item \Menu{S/MIME Unterstützung einschalten}
 
         Nach der Installation von Gpg4win ist die
-        S/MIME-Funktionalität in GpgOL aktiviert.  Damit ist die
+        S/MIME-Funktionalität in GpgOL deaktiviert.  Damit ist die
         S/MIME-Unterstützung von GnuPG gemeint.  Outlook selbst
         unterstützt ebenfalls X.509 und S/MIME, arbeitet aber
         natürlich nicht mit der Gpg4win-Komponente GnuPG.  Konkret
         %TODO: Schlüsselmanagement
-        heißt das, dass alle Einstellungen, das Zertifikatsmanagement
+        heißt das, dass alle Einstellungen, das Schlüsselmanagement
         und die Benutzerdialoge unterschiedlich sind. Es ist zu
-        beachten, dass Outlook von sich aus keine
-        OpenPGP-Unterstützung anbietet.
+        beachten, dass Outlook von sich aus OpenPGP-Unterstützung anbietet.
 
         Wenn Sie S/MIME in Outlook mit Gpg4win nutzen möchten,
-        lassen Sie die GpgOL-Option\index{GpgOL-Optionen}
+        aktivieren Sie die GpgOL-Option\index{GpgOL-Optionen}
         \Menu{S/MIME Unterstützung
-        einschalten} aktiviert. Sollten Sie das von Outlook
-        unterstützte S/MIME nutzen wollen, deaktivieren Sie diese
-        GpgOL-S/MIME-Option.
+        einschalten}. Sollten Sie das von Outlook
+        unterstützte S/MIME nutzen wollen, lassen Sie diese
+        GpgOL-S/MIME-Option deaktiviert.
 
-    \item \textbf{Senden von Nachrichten:}
-
-        \Menu{Neue Nachrichten per Voreinstellungen verschlüsseln}\\
-        \Menu{Neue Nachrichten per Voreinstellungen signieren} 
+	\end{itemize}
+    \item \textbf{Nachrichten Versenden}
+    \begin{itemize}
+    	\item \Menu{Neue Nachrichten per Voreinstellungen verschlüsseln}
+        \item \Menu{Neue Nachrichten per Voreinstellungen signieren} 
 
         Diese beiden Optionen in diesem Bereich steuern, ob per
         Voreinstellung neue Nachrichten verschlüsselt und/oder
@@ -5190,22 +5177,35 @@ Die Karteikarte \Menu{GpgOL} unterteilt sich in drei Bereiche:
         der Erstellung einer Nachricht individuell verändern.
         Lediglich die Schaltflächen sind schon entsprechend
         aktiviert.
-
-    \item \textbf{Lesen von Nachrichten:}
-
-        \Menu{HTML-Darstellung anzeigen wenn möglich}
-
-        Diese Option kann benutzt werden, um die HTML-Version einer
-        Nachricht anzuzeigen. Im Normalfall, oder falls kein
-        HTML-Format vorhanden ist, wird die Nachricht im
-        Text-Format dargestellt.
-
-        \Menu{Verschlüsselte Nachricht als Anlage anzeigen}
-
-        Der verschlüsselte Teil der Nachricht wird zusätzlich als
-        Anhang angezeigt. Der Anwender kann so den verschlüsselten
-        Teil separat speichern oder auf andere Weise
-        weiterverarbeiten.
+        
+        
+        \item \Menu{Sende OpenPGP Nachrichten ohne Anhänge als PGP/Inline}
+        
+        Es gibt zwei verschieden Wege eine \Email{} verschlüsselt oder
+        signiert zu senden. Zum einen PGP/MIME und zum anderen PGP/Inline.
+        Diese unterscheiden Sich darin, wie Ihre Nachricht signiert wird.
+        Mit PGP/Inline wird der reine Textblock signiert und verschlüsselt
+        und mit PGP/MIME wird der Komplette E-Mail Inhalt signiert und
+        verschlüsselt. Deswegen steht die PGP/Inline Methode auch nur bei
+        Nachrichten ohne Anhängen zur Verfügung. Wir raten davon ab diese
+        Methode dauerhaft zu aktivieren.
+        
+        
+        \item \Menu{Wähle Verschlüsselungseinstellungen automatisch bei Antwort oder
+        	 Weiterleitung}
+         
+        Wenn Sie eine verschlüsselte oder signierte Nachricht erhalten, wird
+        eine sinnvollen kryptografischen Voreinstellung für die Weiterleitung
+        oder Antwort vorgenommen. Dies Option ist standardmäßig aktiviert.
+        
+        
+        \item \Menu{Suche automatisch nach OpenPGP Schlüsseln bei Verschlüsselung}
+        
+        Wenn Sie eine Nachricht an einen bislang unbekannten Empfänger senden
+        und die Option zum verschlüsseln aktiviert haben, so wird automatisch
+        auf dem Schlüsselserver (siehe Kapitel \ref{ch:keyserver}) nach einem
+        passenden Schlüssel für den Empfänger gesucht.
+    \end{itemize}
 \end{enumerate}
 
 Alle Optionen sind nach einer Neuinstallation bereits sinnvoll
