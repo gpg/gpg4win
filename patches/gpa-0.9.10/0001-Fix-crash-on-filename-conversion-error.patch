@@ -1,0 +1,61 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From ee3ec98dba5a8c98e9ca9737da633d0767d54214 Mon Sep 17 00:00:00 2001
+From: Andre Heinecke <aheinecke@intevation.de>
+Date: Sun, 14 May 2017 14:39:57 +0200
+Subject: [PATCH] Fix crash on filename conversion error
+
+* src/fileman.c (add_file): Handle conversion errors.
+
+--
+If g_filename_to_utf8 fails we now fall back to g_locale_to_utf8.
+If this still does not work we fall back to g_filename_display_name
+which replaces unconvertibale strings by question marks or unicode
+markup.
+Previously NULL pointer would be inserted as filenames, leading
+to crashes later on.
+
+This is especially important for windows where D&D files came
+in System encoding as well as "Double clicked" or "Open With" files.
+On windows filename_to_utf8 always assumes that the input is already
+UTF-8, because it's stupid. (or because the GTK File Dialog returns
+UTF-8 filenames) so the fallback to locale is especially important
+here.
+
+GnuPG-Bug-ID: T2185
+---
+ src/fileman.c | 17 ++++++++++++++++-
+ 1 file changed, 16 insertions(+), 1 deletion(-)
+
+diff --git a/src/fileman.c b/src/fileman.c
+index 10824d4..cb0b67f 100644
+--- a/src/fileman.c
++++ b/src/fileman.c
+@@ -217,7 +217,22 @@ add_file (GpaFileManager *fileman, const gchar *filename)
+   gchar *filename_utf8;
+
+   /* The tree contains filenames in the UTF-8 encoding.  */
+-  filename_utf8 = g_filename_to_utf8 (filename, -1, NULL, NULL, NULL),
++  filename_utf8 = g_filename_to_utf8 (filename, -1, NULL, NULL, NULL);
++
++  /* Try to convert from the current locale as fallback. This is important
++     for windows where g_filename_to_utf8 does not take locale into account
++     because the filedialogs already convert to utf8. */
++  if (!filename_utf8)
++    {
++      filename_utf8 = g_locale_to_utf8 (filename, -1, NULL, NULL, NULL);
++    }
++
++  /* Last fallback is guranteed to never be NULL so in doubt we can still fail
++     later showing a filename that can't be found to the user etc.*/
++  if (!filename_utf8)
++    {
++      filename_utf8 = g_filename_display_name (filename);
++    }
+
+   store = GTK_LIST_STORE (gtk_tree_view_get_model
+                           (GTK_TREE_VIEW (fileman->list_files)));
+--
+2.11.0

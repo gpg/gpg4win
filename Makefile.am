@@ -36,16 +36,16 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         patches/gnupg2/0006-gpgsm-Add-command-option-offline.patch \
         patches/gnupg2/01-version.patch \
         patches/gnupg2/01-version.patch.in \
-        patches/gnutls-2.12.23/01-openssl-wincrypt.patch \
-        patches/gnutls-2.12.23/02-cve-2013-2116.patch \
-        patches/gnutls-2.12.23/03-cve-2014-1959.patch \
-        patches/gnutls-2.12.23/04-cve-2014-0092.patch \
-        patches/gnutls-2.12.23/05-cve-2014-3466.patch \
-        patches/gnutls-2.12.23/06-cve-2015-0282.patch \
-        patches/gnutls-2.12.23/07-cve-2015-0294.patch \
-        patches/gnutls-2.12.23/fix-gcrypt-private-api-usage.patch \
-        patches/gnutls-2.12.23/gnulib-mingw-w64-fix.patch \
-        patches/gnutls-2.12.23/25_updatedgdocfrommaster.patch \
+        patches/gnutls-2.12.24/01-openssl-wincrypt.patch \
+        patches/gnutls-2.12.24/02-cve-2013-2116.patch \
+        patches/gnutls-2.12.24/03-cve-2014-1959.patch \
+        patches/gnutls-2.12.24/04-cve-2014-0092.patch \
+        patches/gnutls-2.12.24/05-cve-2014-3466.patch \
+        patches/gnutls-2.12.24/06-cve-2015-0282.patch \
+        patches/gnutls-2.12.24/07-cve-2015-0294.patch \
+        patches/gnutls-2.12.24/fix-gcrypt-private-api-usage.patch \
+        patches/gnutls-2.12.24/gnulib-mingw-w64-fix.patch \
+        patches/gnutls-2.12.24/25_updatedgdocfrommaster.patch \
         patches/libtasn1-2.14/gnulib-mingw-w64-fix.patch \
         patches/w32pth-2.0.5/workaround-broken-libtool.patch \
         patches/scute-1.4.0/workaround-broken-libtool.patch \
@@ -55,7 +55,8 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         patches/gpgol-1.4.0/0001-Fix-UI-Server-startup.patch \
         patches/gpgol-1.4.0/0002-Ignore-sent-S-MIME-Mails-if-S-MIME-is-disabled.patch \
         patches/gpgol-1.4.0/0003-Fix-loop-logic-error-in-new-server-name-detection.patch \
-        patches/libgpg-error-1.23/0001-Define-EWOULDBLOCK-in-case-it-is-not-defined.patch
+        patches/libgpg-error-1.23/0001-Define-EWOULDBLOCK-in-case-it-is-not-defined.patch \
+        patches/gpa-0.9.10/0001-Fix-crash-on-filename-conversion-error.patch
 
 copy-news:
 	cp NEWS doc/website/NEWS.last
