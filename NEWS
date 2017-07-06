@@ -3,7 +3,7 @@
 # The version number given below are for the standard installers as
 # distributed by www.gpg4win.org.
 
-Noteworthy changes in version 2.3.4 (unreleased)
+Noteworthy changes in version 2.3.4 (2017-07-06)
 ------------------------------------------------
 (en) The cryptography library libgcrypt has been updated to version
      1.7.8 to include a fix for a side channel attack.

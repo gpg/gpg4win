@@ -49,9 +49,14 @@ New in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 -----------------------------------------
 
 - The cryptography library libgcrypt has been updated to version
-  1.6.6 to include a fix a problem with the random number generator.
-  [CVE-2016-6313]. Details:
-  https://lists.gnupg.org/pipermail/gnupg-announce/2016q3/000395.html
+  1.7.8 to include a fix for a side channel attack.
+  [CVE-2017-7526] Details:
+  https://lists.gnupg.org/pipermail/gnupg-announce/2017q2/000408.html
+
+- Support libraries have been updated.
+
+- GPA was updated to 0.9.10. This includes a fix for file handling
+  with filenames containing special characters.
 
 3. Known Bugs (and Workarounds)
 ===============================

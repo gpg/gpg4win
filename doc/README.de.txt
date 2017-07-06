@@ -50,10 +50,16 @@ Die integrierten Gpg4win-Komponenten in Version !VERSION! sind:
 Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 -----------------------------------------
 
-- Die Kryptographie Bibliothek libgcrypt wurde auf Version 1.6.6
-  aktualisiert um ein Problem im Zufallszahlengenerator zu beheben.
-  [CVE-2016-6313]. Details (englisch):
-  https://lists.gnupg.org/pipermail/gnupg-announce/2016q3/000395.html
+- Die Kryptographie Bibliothek libgcrypt wurde auf Version 1.7.8
+  aktualisiert um einen möglichen Seitenkanalangriff zu beheben.
+  [CVE-2017-7526] Details (englisch):
+  https://lists.gnupg.org/pipermail/gnupg-announce/2017q2/000408.html
+
+- Verwendete Software Bibliotheken wurden aktualisiert.
+
+- GPA wurde auf die Version 0.9.10 aktualisiert. Dies beinhaltet
+  eine Fehlerkorrektur für den Umgang mit Dateinamen die besondere
+  Zeichen enthalten.
 
 3. Bekannte Probleme (und Abhilfen)
 ===================================
