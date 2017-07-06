@@ -37,15 +37,7 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         patches/gnupg2/01-version.patch \
         patches/gnupg2/01-version.patch.in \
         patches/gnutls-2.12.24/01-openssl-wincrypt.patch \
-        patches/gnutls-2.12.24/02-cve-2013-2116.patch \
-        patches/gnutls-2.12.24/03-cve-2014-1959.patch \
-        patches/gnutls-2.12.24/04-cve-2014-0092.patch \
-        patches/gnutls-2.12.24/05-cve-2014-3466.patch \
-        patches/gnutls-2.12.24/06-cve-2015-0282.patch \
-        patches/gnutls-2.12.24/07-cve-2015-0294.patch \
-        patches/gnutls-2.12.24/fix-gcrypt-private-api-usage.patch \
         patches/gnutls-2.12.24/gnulib-mingw-w64-fix.patch \
-        patches/gnutls-2.12.24/25_updatedgdocfrommaster.patch \
         patches/libtasn1-2.14/gnulib-mingw-w64-fix.patch \
         patches/w32pth-2.0.5/workaround-broken-libtool.patch \
         patches/scute-1.4.0/workaround-broken-libtool.patch \
