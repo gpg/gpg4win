@@ -532,23 +532,23 @@ chk  1b504eb36f38066d660fb804fe1f171d14982e928cf998a284458e05df48b69b
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah.
-file libkleo/libkleo-201704281243.tar.gz
-chk 8dde3b69ad4afb8f1cee8e2a7682fee7a075a2d785c8c534530f393ee74f9834
+file libkleo/libkleo-201707171020.tar.gz
+chk 8d8b4ddae26e8a70374c1126f673a3dcbd99e774beae22b50cbdbfae8e48199d
 
 # KDE-L10n
-# last changed: 2016-02-19
+# last changed: 2017-07-17
 # by: ah
 # verified: Tarball created by ah with script kde-l10n.sh
-file kde-l10n/kde-l10n-201706121523-bin.tar.xz
-chk 230afbe9b420cc241909eb1a86a365d367cf8e8ba27e23b566b84b0eeabc977b
+file kde-l10n/kde-l10n-201707170947-bin.tar.xz
+chk 47b5083d806df2d4a52a9ef2a5c8718754e908aba5bd6ddbe217e82d7fedc6ef
 
 
-file kde-l10n/kde-l10n-201706121523-src.tar.xz
-chk f7cd81a1b343a4e69b605b3d74200eaff680de6072567d4ee3053077c3ffc44f
+file kde-l10n/kde-l10n-201707170947-src.tar.xz
+chk de4906c914c4ddbdc034c758922e65a8fe69882a855bd1c4493ecdb9fcc4bbcc
 
 # Kleopatra
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah.
-file kleopatra/kleopatra-201704281402.tar.gz
-chk a5e2eb37517ac8c8f325fc6e726a1f87dbf8268ee819bb60660f32e91d483737
+file kleopatra/kleopatra-201707171019.tar.gz
+chk b041397ac2ab0a12527b7a35a261b0fae74a54e21cb276ede70321c1560eae59
