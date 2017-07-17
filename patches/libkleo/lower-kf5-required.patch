@@ -10,7 +10,7 @@ index 7223ab9..754088c 100644
 
  project(libkleo)
 
--set(KF5_VERSION "5.30.0")
+-set(KF5_VERSION "5.35.0")
 +set(KF5_VERSION "5.25.0")
  find_package(ECM ${KF5_VERSION} CONFIG REQUIRED)
  set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
