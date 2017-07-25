@@ -514,26 +514,26 @@ server http://files.intevation.de/projects/gpg4all
 # ditto for gpgol.
 # by: ah
 # verified: tarball created by ah
-file gpgol/gpgol-2.0.0-beta259.tar.bz2
-chk f89a57cc57124e2bd4e506c4b26c8ca2ee4f7c3a8b987b0816762ea57251a8bf
+file gpgol/gpgol-2.0.0-beta270.tar.bz2
+chk  ec02ec1a444556b6364711da14537c0427a5d4398d22616664390b544822821a
 
 file gpgme/gpgme-1.9.1-beta42.tar.bz2
 chk  8ffec90a9f4db222e7dd76b29c2fcd5b169cc074cbad8dcb1c66a31794cf324f
 
-name gnupg-w32-2.1.22-beta30-20170606-bin.exe
-file gnupg/gnupg-w32-2.1.22-beta30_20170606.exe
-chk  a3829fc30ddeeeff48e05ed16f81910c282b8ebfc4c6f7985508a1c4a295ac97
+name gnupg-w32-2.1.22-beta149-20170725-bin.exe
+file gnupg/gnupg-w32-2.1.22-beta149_20170725.exe
+chk  f45452d35e93853feff5e3da034ff10247ad991dd48434088204a520ac235206
 
-name gnupg-w32-2.1.22-beta30-20170606-src.tar.xz
-file gnupg/gnupg-w32-2.1.22-beta30_20170606.tar.xz
-chk  1b504eb36f38066d660fb804fe1f171d14982e928cf998a284458e05df48b69b
+name gnupg-w32-2.1.22-beta149-20170725-src.tar.xz
+file gnupg/gnupg-w32-2.1.22-beta149_20170725.tar.xz
+chk  42f62fa17d67eb3b92fcbff74e113f96f1f97183f750700e05af021553426df8
 
 # Libkleo
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah.
-file libkleo/libkleo-201707171020.tar.gz
-chk 8d8b4ddae26e8a70374c1126f673a3dcbd99e774beae22b50cbdbfae8e48199d
+file libkleo/libkleo-201707251424.tar.gz
+chk cf3e48b580f989e9559e98acbf8c3d61f9edb47a7372424a7c5fd91254b99b06
 
 # KDE-L10n
 # last changed: 2017-07-17
@@ -550,5 +550,5 @@ chk de4906c914c4ddbdc034c758922e65a8fe69882a855bd1c4493ecdb9fcc4bbcc
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah.
-file kleopatra/kleopatra-201707171019.tar.gz
-chk b041397ac2ab0a12527b7a35a261b0fae74a54e21cb276ede70321c1560eae59
+file kleopatra/kleopatra-201707251424.tar.gz
+chk a6f55aee9d2eb7eb58d0226e9bb35fdaf714e1439197db438abe54720a8f2b16
