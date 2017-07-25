@@ -22,7 +22,7 @@
 !endif
 
 
-${MementoSection} "$(DESC_Name_compendium)" SEC_compendium
+${MementoSection} "-compendium" SEC_compendium
   SetOutPath "$INSTDIR"
 !ifdef SOURCES
   # No need to include anything as the manuals are part of gpg4win
@@ -32,29 +32,3 @@ ${MementoSection} "$(DESC_Name_compendium)" SEC_compendium
   File "${BUILD_DIR}/../doc/manual/gpg4win-compendium-*.pdf"
 !endif
 ${MementoSectionEnd}
-
-
-# The name of the installer component.
-LangString DESC_Name_compendium ${LANG_ENGLISH} \
-   "Gpg4win Compendium"
-# The description text used in the installer components dialog.
-LangString DESC_SEC_compendium ${LANG_ENGLISH} \
-   "The Gpg4win documentation (English and German)"
-
-# The name of the PDF version of the link
-LangString DESC_Name_compendium_de_pdf ${LANG_ENGLISH} \
-   "Gpg4win Compendium (pdf, German)"
-LangString DESC_Name_compendium_en_pdf ${LANG_ENGLISH} \
-   "Gpg4win Compendium (pdf, English)"
-
-# The name of the HTML version of the link
-LangString DESC_Name_compendium_de_html ${LANG_ENGLISH} \
-   "Gpg4win Compendium (html, German)"
-LangString DESC_Name_compendium_en_html ${LANG_ENGLISH} \
-   "Gpg4win Compendium (html, English)"
-
-# The string displayed in the startmenu for the PDF version.
-LangString DESC_Menu_compendium_de_pdf ${LANG_ENGLISH} \
-   "Show the Gpg4win Compendium (pdf, German)"
-LangString DESC_Menu_compendium_en_pdf ${LANG_ENGLISH} \
-   "Show the Gpg4win Compendium (pdf, English)"
