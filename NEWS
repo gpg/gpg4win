@@ -152,7 +152,7 @@ Noteworthy changes in version 3.0.0 (unreleased)
 (de) Viele fehlerbehebungen und kleinere verbesserungen.
 
 ~~~~~~~~~~~~~~~
-GnuPG:          2.1.19
+GnuPG:          2.1.22-beta149
 Kleopatra:      3.0.0
 GPA:            0.9.9
 GpgOL:          1.4.0
