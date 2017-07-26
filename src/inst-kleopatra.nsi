@@ -226,12 +226,12 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
   SetOutPath "$INSTDIR\..\GnuPG\share\doc\gnupg\examples"
   # Install profiles
   push $1
-  FileOpen $1 "$INSTDIR\..\GnuPG\share\doc\gnupg\examples\VS-NFD.prf" "w"
-  FileWrite $1 '# VS-NFD.prf - Configure options for the VS-NfD mode           -*- conf -*-$\r$\n'
+  FileOpen $1 "$INSTDIR\..\GnuPG\share\doc\gnupg\examples\VS-NfD.prf" "w"
+  FileWrite $1 '# VS-NfD.prf - Configure options for the VS-NfD mode           -*- conf -*-$\r$\n'
   FileWrite $1 '$\r$\n'
   FileWrite $1 '[gpg]$\r$\n'
   FileWrite $1 'compliance de-vs$\r$\n'
-  FileWrite $1 'default-new-key-algo brainpoolP256r1+brainpoolP256r1$\r$\n'
+  FileWrite $1 'default-new-key-algo rsa3072/cert,sign+rsa3072/encr$\r$\n'
   FileWrite $1 '$\r$\n'
   FileWrite $1 '[gpgsm]$\r$\n'
   FileWrite $1 'enable-crl-checks$\r$\n'

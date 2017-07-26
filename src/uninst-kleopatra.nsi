@@ -189,7 +189,7 @@ Section "-un.kleopatra"
   Delete "$INSTDIR\bin\libkleopatraclientcore.dll"
   Delete "$INSTDIR\bin\libkleopatraclientgui.dll"
 
-  Delete "$INSTDIR\..\GnuPG\share\doc\gnupg\examples\VS-NFD.prf"
+  Delete "$INSTDIR\..\GnuPG\share\doc\gnupg\examples\VS-NfD.prf"
   Delete "$INSTDIR\..\GnuPG\share\doc\gnupg\examples\Automatic.prf"
 
 #  RMDir "$INSTDIR\share\doc\HTML\en\kleopatra"
