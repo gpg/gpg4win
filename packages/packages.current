@@ -536,15 +536,15 @@ file libkleo/libkleo-201707251424.tar.gz
 chk cf3e48b580f989e9559e98acbf8c3d61f9edb47a7372424a7c5fd91254b99b06
 
 # KDE-L10n
-# last changed: 2017-07-17
+# last changed: 2017-07-26
 # by: ah
 # verified: Tarball created by ah with script kde-l10n.sh
-file kde-l10n/kde-l10n-201707170947-bin.tar.xz
-chk 47b5083d806df2d4a52a9ef2a5c8718754e908aba5bd6ddbe217e82d7fedc6ef
+file kde-l10n/kde-l10n-201707260942-bin.tar.xz
+chk 9681965ebe8ad5831ce2eb9c8d9ff19eaf4a2cb70a123c0343940f21266ce959
 
 
-file kde-l10n/kde-l10n-201707170947-src.tar.xz
-chk de4906c914c4ddbdc034c758922e65a8fe69882a855bd1c4493ecdb9fcc4bbcc
+file kde-l10n/kde-l10n-201707260942-src.tar.xz
+chk 3841a70c2732c827e3aee21ed16eeadc7849eb16f1feac6b97aa03c1dc40d02f
 
 # Kleopatra
 # last changed: see package date.
