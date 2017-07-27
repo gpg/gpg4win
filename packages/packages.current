@@ -520,13 +520,13 @@ chk  c7f1e559a1454c9cc887afe0e04e282d49705eda9ef4c4de834e38745fb370d6
 file gpgme/gpgme-1.9.1-beta57.tar.bz2
 chk  524899103529d0feb163bbbf7567c6c46f4d1c2a9c6c87f9a36def9062e00148
 
-name gnupg-w32-2.1.22-beta149-20170725-bin.exe
-file gnupg/gnupg-w32-2.1.22-beta149_20170725.exe
-chk  f45452d35e93853feff5e3da034ff10247ad991dd48434088204a520ac235206
+name gnupg-w32-2.1.22-beta169-20170727-bin.exe
+file gnupg/gnupg-w32-2.1.22-beta169_20170727.exe
+chk  fa004b66d7bea4517cbaebd423fb9948c708f5e2ec799e6c2d0de02406accd1f
 
-name gnupg-w32-2.1.22-beta149-20170725-src.tar.xz
-file gnupg/gnupg-w32-2.1.22-beta149_20170725.tar.xz
-chk  42f62fa17d67eb3b92fcbff74e113f96f1f97183f750700e05af021553426df8
+name gnupg-w32-2.1.22-beta169-20170727-src.tar.xz
+file gnupg/gnupg-w32-2.1.22-beta169_20170727.tar.xz
+chk  5c6b4339f3b632cfb76f7e7aad0d770dfc18d50869f77ed3638f6db4aa927b0d
 
 # Libkleo
 # last changed: see package date.
