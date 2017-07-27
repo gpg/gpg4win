@@ -517,8 +517,8 @@ server http://files.intevation.de/projects/gpg4all
 file gpgol/gpgol-2.0.0-beta275.tar.bz2
 chk  c7f1e559a1454c9cc887afe0e04e282d49705eda9ef4c4de834e38745fb370d6
 
-file gpgme/gpgme-1.9.1-beta56.tar.bz2
-chk  7fdab605609d4fe566599b054b7bfbcbce20c61234ad212ca3dd12933209710e
+file gpgme/gpgme-1.9.1-beta57.tar.bz2
+chk  524899103529d0feb163bbbf7567c6c46f4d1c2a9c6c87f9a36def9062e00148
 
 name gnupg-w32-2.1.22-beta149-20170725-bin.exe
 file gnupg/gnupg-w32-2.1.22-beta149_20170725.exe
@@ -550,5 +550,5 @@ chk 84cdb192da37ca83b4bd062edc64de9ac6afadf2d6e1e93a248aa41f2d57b429
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah.
-file kleopatra/kleopatra-201707270913.tar.gz
-chk c74032bdd8c84ac615659828009f0b88ac7417fcfe43db25ad86a3df7c320459
+file kleopatra/kleopatra-201707271549.tar.gz
+chk 394a888dded119d050b653f80e766871a930b6e88d4d6e01014d0511b74bcbcd
