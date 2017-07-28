@@ -63,7 +63,7 @@ of Gpg4win VERSION here:</p>
   <a href="https://files.gpg4win.org/gpg4win-VERSION.exe.sig">OpenPGP signature</a>
   (for gpg4win-VERSION.exe)
   <br>
-  SHA1 checksum (for gpg4win-VERSION.exe): <code>SHA1_EXE</code>
+  SHA256: <code>SHA2_EXE</code>
   <br>
   <a href="change-history.html">Changelog</a>
 </p>
@@ -73,17 +73,17 @@ of Gpg4win VERSION here:</p>
     <li>Gpg4win <em>without</em> Kleopatra and Gpg4win Compendium:<br>
         <a href="LDOWNLOAD_URL">Gpg4win-Light VERSION</a> (Size: LDL_SIZE)<br>
         <a href="https://files.gpg4win.org/gpg4win-light-VERSION.exe.sig">OpenPGP signature</a><br>
-        SHA1 checksum: <code>SHA1_EXL</code></li>
+        SHA256 checksum: <code>SHA2_EXL</code></li>
 
     <li>Gpg4win with GnuPG component <em>only</em>:<br>
         <a href="VDOWNLOAD_URL">Gpg4win-Vanilla VERSION</a> (Size: VDL_SIZE)<br>
         <a href="https://files.gpg4win.org/gpg4win-vanilla-VERSION.exe.sig">OpenPGP signature</a><br>
-        SHA1 checksum: <code>SHA1_EXV</code></li>
+        SHA256 checksum: <code>SHA2_EXV</code></li>
 
     <li>Gpg4win source code package:<br>
         <a href="SDOWNLOAD_URL">gpg4win-VERSION.tar.bz2</a> (Size: SDL_SIZE)<br>
         <a href="https://files.gpg4win.org/gpg4win-VERSION.tar.bz2.sig">OpenPGP signature</a><br>
-        SHA1 checksum: <code>SHA1_SRC</code></li>
+        SHA256 checksum: <code>SHA2_SRC</code></li>
 
     <li>All versions and OpenPGP signatures:<br>
         <a href="https://files.gpg4win.org/">files.gpg4win.org</a>.</li>
