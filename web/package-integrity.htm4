@@ -62,7 +62,7 @@ For gpg4win-VERSION.tar.bz2:
   </p>
 
 <p>
-The signatures have been created with the following OpenPGP certificate<br>
+The signatures have been created with the following OpenPGP certificate:<br>
 <a href="https://ssl.intevation.de/Intevation-Distribution-Key.asc">Intevation File Distribution Key
 <distribution-key@intevation.de><br>(Fingerprint: 61AC 3F5E E4BE 593C 13D6  8B1E 7CBD 620B EC70 B1B8)</a>
 <br>
@@ -70,7 +70,7 @@ The signatures have been created with the following OpenPGP certificate<br>
 Since 2017 new releases are additionally signed with a new certificate that
 matches more modern key standards:
 <br>
-<a href="https://ssl.intevation.de/Intevation-Distribution-Key.asc">Intevation File Distribution Key
+<a href="https://ssl.intevation.de/Intevation-Distribution-Key-2016.asc">Intevation File Distribution Key
 <distribution-key@intevation.de><br>(Fingerprint: 13E3 CE81 AFEA 6F68 3E46  6E0D 42D8 7608 2688 DA1A)</a>
 </p>
 
