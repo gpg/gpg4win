@@ -293,16 +293,15 @@ chk  f628f75843433b38b05af248121beb7db5bd54bb2106f384edac39934261320c
 file libassuan/libassuan-2.4.3.tar.bz2
 chk  22843a3bdb256f59be49842abf24da76700354293a066d82ade8134bb5aa2b71
 
-# last changed: 2017-04-18
+# last changed: 2017-08-01
 # by: ah
-# TODO switch back to released version
-#name gnupg-w32-2.1.20-20170403-bin.exe
-#file binary/gnupg-w32-2.1.20_20170403.exe
-#chk  e99ded9c749da2d29cb3fc531ceccb04009f61f263cc76a3bf7ab5c95d93b75f
+name gnupg-w32-2.1.22-20170731-bin.exe
+file binary/gnupg-w32-2.1.22_20170731.exe
+chk  0b5f30ab359478f2f3b7210cda926506e69f8dd0a3a6e4e9711b92f19f72a895
 
-#name gnupg-w32-2.1.20-20170403-src.tar.xz
-#file binary/gnupg-w32-2.1.20_20170403.tar.xz
-#chk  c8cc121e0e42e55aa9099f687e2f5a1726f10b243253810bc0157afefe77c309
+name gnupg-w32-2.1.22-20170731-src.tar.xz
+file binary/gnupg-w32-2.1.22_20170731.tar.xz
+chk  b868ff3a8738a4ad7e7e6bd9ca7b5738a86cf30f62c974ca52783d05023b1bae
 
 # last changed: 2016-01-17
 # by: ah
@@ -520,14 +519,6 @@ chk  c7f1e559a1454c9cc887afe0e04e282d49705eda9ef4c4de834e38745fb370d6
 file gpgme/gpgme-1.9.1-beta57.tar.bz2
 chk  524899103529d0feb163bbbf7567c6c46f4d1c2a9c6c87f9a36def9062e00148
 
-name gnupg-w32-2.1.22-beta169-20170727-bin.exe
-file gnupg/gnupg-w32-2.1.22-beta169_20170727.exe
-chk  fa004b66d7bea4517cbaebd423fb9948c708f5e2ec799e6c2d0de02406accd1f
-
-name gnupg-w32-2.1.22-beta169-20170727-src.tar.xz
-file gnupg/gnupg-w32-2.1.22-beta169_20170727.tar.xz
-chk  5c6b4339f3b632cfb76f7e7aad0d770dfc18d50869f77ed3638f6db4aa927b0d
-
 # Libkleo
 # last changed: see package date.
 # by: ah
@@ -550,5 +541,5 @@ chk 84cdb192da37ca83b4bd062edc64de9ac6afadf2d6e1e93a248aa41f2d57b429
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah.
-file kleopatra/kleopatra-201707271549.tar.gz
-chk 394a888dded119d050b653f80e766871a930b6e88d4d6e01014d0511b74bcbcd
+file kleopatra/kleopatra-201708011051.tar.gz
+chk 28cb36b69c60e977ba1dbd8faf36d45cdc5c625ea7a1c8eea4754c0a4c7ac57e
