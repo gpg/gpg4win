@@ -32,7 +32,7 @@ const char * const vanilla_files[] =
   "libgnutls-openssl-27.dll",
   "libgpg-error-0.dll",
   "libiconv-2.dll",
-  "libintl-8.dll",
+  "libintl-9.dll",
   "libksba-8.dll",
   "libtasn1-3.dll",
   "libw32pth-0.dll",

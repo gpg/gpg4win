@@ -81,7 +81,7 @@ const char * const light_files[] =
   "libgthread-2.0-0.dll",
   "libgtk-win32-2.0-0.dll",
   "libiconv-2.dll",
-  "libintl-8.dll",
+  "libintl-9.dll",
   "libksba-8.dll",
   "libpango-1.0-0.dll",
   "libpangocairo-1.0-0.dll",
