@@ -51,21 +51,21 @@ Eine Zusammenfassung der bisherigen Spenden finden Sie
   <div id="sponsors">
     <h2>Liste der Spender</h2>
     <p>Die folgende Liste zeigt alle Spender, die über 20,- EUR in den
-    Jahren 2015 und 2016 für Gpg4win gespendet und einer
+    Jahren 2016 und 2017 für Gpg4win gespendet und einer
     Veröffentlichung ihrer Spende zugestimmt haben.
     
     Eine Zusammenfassung aller Spenden und die Spender der früheren
     Jahren finden Sie <a href="https://wiki.gnupg.org/Gpg4win/donations">hier</a>.
-    (Zuletzt aktualisiert: 2017/07/26)</p>
+    (Zuletzt aktualisiert: 2017/08/18)</p>
     
+    <h3>Spender 2017</h3>
+    <div class="sponsornames">
+    m4_include(`SPONSORS-2017')
+    </div>
+      
     <h3>Spender 2016</h3>
     <div class="sponsornames">
     m4_include(`SPONSORS-2016')
-    </div>
-      
-    <h3>Spender 2015</h3>
-    <div class="sponsornames">
-    m4_include(`SPONSORS-2015')
     </div>
     
     <h3>Spender in früheren Jahren</h3>
