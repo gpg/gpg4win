@@ -117,11 +117,11 @@
 # used as registry key.
 !define PACKAGE "${_PACKAGE}"
 !define PRETTY_PACKAGE "Gpg4win"
-!define PRETTY_PACKAGE_SHORT "GPG4Win"
+!define PRETTY_PACKAGE_SHORT "Gpg4win"
 !define VERSION "${_VERSION}"
 !define PROD_VERSION "${_BUILD_FILEVERSION}"
-!define COMPANY "g10 Code GmbH"
-!define COPYRIGHT "Copyright (C) 2008 g10 Code GmbH"
+!define COMPANY "Intevation GmbH"
+!define COPYRIGHT "Copyright (C) 2017 Intevation GmbH"
 !define DESCRIPTION "Gpg4win: The GNU Privacy Guard and Tools for Windows"
 
 !define INSTALL_DIR "Gpg4win"
