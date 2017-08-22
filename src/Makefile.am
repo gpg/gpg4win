@@ -361,6 +361,7 @@ gpg4win_pkg_qttranslations_configure = \
 
 define gpg4win_pkg_qttranslations_post_install
  ( rm -f $$$${pkgidir}/qttranslations; \
+   mkdir -p $$$${pkgidir}; \
    cp -r $$$${pkgbdir}/translations $$$${pkgidir}/qttranslations;)
 endef
 
