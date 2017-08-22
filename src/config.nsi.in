@@ -269,6 +269,10 @@
 !define gpg4win_pkg_qtsvg @gpg4win_pkg_qtsvg@
 !define gpg4win_pkg_qtsvg_version @gpg4win_pkg_qtsvg_version@
 
+@HAVE_PKG_QTTRANSLATIONS@
+!define gpg4win_pkg_qttranslations @gpg4win_pkg_qttranslations@
+!define gpg4win_pkg_qttranslations_version @gpg4win_pkg_qttranslations_version@
+
 @HAVE_PKG_KDE_L10N@
 !define gpg4win_pkg_kde_l10n @gpg4win_pkg_kde_l10n@
 !define gpg4win_pkg_kde_l10n_version @gpg4win_pkg_kde_l10n_version@

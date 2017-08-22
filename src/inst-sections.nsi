@@ -164,6 +164,9 @@
 !ifdef HAVE_PKG_QTSVG
 !include "inst-qtsvg.nsi"
 !endif
+!ifdef HAVE_PKG_QTTRANSLATIONS
+!include "inst-qttranslations.nsi"
+!endif
 
 # These are displayed in the selection dialog.
 
@@ -388,6 +391,9 @@
 !endif
 !ifdef HAVE_PKG_QTSVG
 !include "uninst-qtsvg.nsi"
+!endif
+!ifdef HAVE_PKG_QTTRANSLATIONS
+!include "uninst-qttranslations.nsi"
 !endif
 
 !include "uninst-gpg4win.nsi"
@@ -669,6 +675,9 @@ Function CalcDepends
 !ifdef HAVE_PKG_QTSVG
   !insertmacro UnselectSection ${SEC_qtsvg}
 !endif
+!ifdef HAVE_PKG_QTTRANSLATIONS
+  !insertmacro UnselectSection ${SEC_qttranslations}
+!endif
 
   # Always install gnupg2.  This is also ensured by putting
   # these packages in the RO section and enabling them by default, but
@@ -774,6 +783,7 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_karchive}
   !insertmacro SelectSection ${SEC_kguiaddons}
   !insertmacro SelectSection ${SEC_qtsvg}
+  !insertmacro SelectSection ${SEC_qttranslations}
   !insertmacro SelectSection ${SEC_kmime}
   !insertmacro SelectSection ${SEC_kde-l10n}
   !insertmacro SelectSection ${SEC_libkleo}
@@ -818,6 +828,7 @@ Function CalcDepends
   have_qt:
   !insertmacro SelectSection ${SEC_libpng}
   !insertmacro SelectSection ${SEC_zlib}
+  !insertmacro SelectSection ${SEC_qttranslations}
   skip_qt:
 !endif
 

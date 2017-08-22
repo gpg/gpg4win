@@ -81,6 +81,7 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
         inst-kde-l10n.nsi uninst-kde-l10n.nsi \
         inst-qtsvg.nsi uninst-qtsvg.nsi \
         inst-qttools.nsi uninst-qttools.nsi \
+        inst-qttranslations.nsi uninst-qttranslations.nsi \
         inst-boost.nsi uninst-boost.nsi \
         inst-extra-cmake-modules.nsi uninst-extra-cmake-modules.nsi \
         inst-final.nsi index.theme \
@@ -116,7 +117,7 @@ gpg4win_spkgs = glib libffi gdk-pixbuf gtk+ \
 		pinentry libassuan \
 		w32pth paperkey regex libiconv gettext
 
-gpg4win_qtpkgs = qtbase qttools qtwinextras qtsvg
+gpg4win_qtpkgs = qtbase qttools qtwinextras qtsvg qttranslations
 
 # Source packages following the KDE pattern
 gpg4win_kdepkgs = kconfig kwidgetsaddons ki18n extra-cmake-modules \
@@ -317,7 +318,9 @@ gpg4win_pkg_qtbase_make_args = \
 # Qmake still writes debug names in pkgconfig files.
 define gpg4win_pkg_qtbase_post_install
 	(cd $$$${pkgbdir}; \
-	 make install)
+	 make install; \
+	 echo "[Paths]" > $$$${pkgidir}/bin/qt.conf; \
+	 echo "Prefix = .." >> $$$${pkgidir}/bin/qt.conf)
 endef
 
 
@@ -351,6 +354,14 @@ define gpg4win_pkg_qtsvg_post_install
   cp -r lib include plugins $$$${pkgidir}; \
   mkdir -p $$$${pkgidir}/bin; \
   mv $$$${pkgidir}/lib/*.dll $$$${pkgidir}/bin;)
+endef
+
+gpg4win_pkg_qttranslations_configure = \
+	"$(idir)/bin/qmake" ../$$$${pkg_version}
+
+define gpg4win_pkg_qttranslations_post_install
+ ( rm -f $$$${pkgidir}/qttranslations; \
+   cp -r $$$${pkgbdir}/translations $$$${pkgidir}/qttranslations;)
 endef
 
 gpg4win_pkg_kleopatra_configure = \

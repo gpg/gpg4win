@@ -122,6 +122,8 @@ define DEFLATE_macro
             $(TAR) -xJ --transform='s,^qtwinextras-opensource-src,qtwinextras,' -f "$(1)" ;; \
           */qtsvg*.*.tar.xz)          \
             $(TAR) -xJ --transform='s,^qtsvg-opensource-src,qtsvg,' -f "$(1)" ;; \
+          */qttranslations*.*.tar.xz)          \
+            $(TAR) -xJ --transform='s,^qttranslations-opensource-src,qttranslations,' -f "$(1)" ;; \
           */boost*.*.tar.bz2)          \
             $(TAR) -xj --transform='s,^boost_1_60_0,boost-1.60.0,' -f "$(1)" ;; \
 	  *.tar.gz | *.tgz)		\
