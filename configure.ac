@@ -343,7 +343,7 @@ GPG4WIN_BPKG_BINSRC([kde-l10n])
 # Qt related stuff.
 GPG4WIN_SPKG([qtbase], [libpng])
 GPG4WIN_SPKG([qttools], [qtbase])
-GPG4WIN_SPKG([qttranslations], [qttools])
+GPG4WIN_SPKG([qttranslations], [qtsvg qttools qtwinextras])
 GPG4WIN_SPKG([qtwinextras], [qtbase])
 GPG4WIN_SPKG([qtsvg], [qtbase])
 GPG4WIN_SPKG([boost], [expat zlib bzip2])

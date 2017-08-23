@@ -318,9 +318,7 @@ gpg4win_pkg_qtbase_make_args = \
 # Qmake still writes debug names in pkgconfig files.
 define gpg4win_pkg_qtbase_post_install
 	(cd $$$${pkgbdir}; \
-	 make install; \
-	 echo "[Paths]" > $$$${pkgidir}/bin/qt.conf; \
-	 echo "Prefix = .." >> $$$${pkgidir}/bin/qt.conf)
+	 make install;)
 endef
 
 
@@ -348,12 +346,19 @@ endef
 gpg4win_pkg_qtsvg_configure = \
 	"$(idir)/bin/qmake" ../$$$${pkg_version}
 
+# XXX Adding the qtconf after qtsvg is a weird hack
+# because somhow (yay qmake) zlib is not linked if
+# the qt conf exists before that. The qt conf is
+# needed for qttranslations to find the correct path
+# of the translation tools.
 define gpg4win_pkg_qtsvg_post_install
  (cd $$$${pkgbdir}; \
   mkdir -p $$$${pkgidir}; \
   cp -r lib include plugins $$$${pkgidir}; \
   mkdir -p $$$${pkgidir}/bin; \
-  mv $$$${pkgidir}/lib/*.dll $$$${pkgidir}/bin;)
+  mv $$$${pkgidir}/lib/*.dll $$$${pkgidir}/bin; \
+  echo "[Paths]" > $$$${pkgidir}/bin/qt.conf; \
+  echo "Prefix = .." >> $$$${pkgidir}/bin/qt.conf)
 endef
 
 gpg4win_pkg_qttranslations_configure = \
