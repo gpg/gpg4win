@@ -23,9 +23,23 @@
      m4_ifelse(LANG_DE, `1', `
      <a href="package-integrity-de.html">Integrität prüfen</a>', `
      <a href="package-integrity.html">Check integrity</a>')
+     &middot;
+     m4_ifelse(LANG_DE, `1', `
+     <a href="https://wiki.gnupg.org/Gpg4win/Testversions">Beta herunterladen</a>', `
+     <a href="https://wiki.gnupg.org/Gpg4win/Testversions">Download Beta</a>')
    </div>
    <div class="h_text">
    <p><span class="heading">News</span></p>
+   <small>2017-08-24</small><br>
+   <span class="serif_word"><img src="img/bulletin.png" alt"" />
+     m4_ifelse(LANG_DE, `1', `
+       <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2017-August/000072.html">
+         Gpg4win 3.0 erreicht Release Candidate Status
+       </a></span>',`
+       <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2017-August/000072.html">
+         Gpg4win 3.0 has release candidate status
+       </a></span>')
+   <p></p>
    <small>2017-07-06</small><br>
    <span class="serif_word"><img src="img/bulletin.png" alt"" />
      m4_ifelse(LANG_DE, `1', `
@@ -34,16 +48,6 @@
       </a></span>',`
       <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2017-July/000071.html">
         Gpg4win 2.3.4 released
-      </a></span>')
-   <p></p>
-   <small>2016-08-18</small><br>
-   <span class="serif_word"><img src="img/bulletin.png" alt"" />
-     m4_ifelse(LANG_DE, `1', `
-      <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2016-August/000035.html">
-        Gpg4win 2.3.3 veröffentlicht
-      </a></span>',`
-      <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2016-August/000070.html">
-        Gpg4win 2.3.3 released
       </a></span>')
    <p></p>
    <div class="limiter"></div>
