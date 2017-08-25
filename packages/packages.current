@@ -520,8 +520,8 @@ server http://files.intevation.de/projects/gpg4all
 # ditto for gpgol.
 # by: ah
 # verified: tarball created by ah
-file gpgol/gpgol-2.0.0-beta282.tar.bz2
-chk  468eb37c41f1d13787b7742c34d61507caf1744e3735688ebee24cc693b19755
+file gpgol/gpgol-2.0.0-beta286.tar.bz2
+chk  a1b1eb71f3148340d215dfc98492d8f27d6d5f56dc5d76056b79e4b7ef7f5575
 
 
 file gpgme/gpgme-1.9.1-beta57.tar.bz2
