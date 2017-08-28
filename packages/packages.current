@@ -1,4 +1,4 @@
-# packages.current - list of current packages for use with gpg4win -*- sh -*-
+#  packages.current - list of current packages for use with gpg4win -*- sh -*-
 #
 # The download script processes the statements here to
 # actually download the packages.  The syntax is trivial:
@@ -213,12 +213,12 @@ chk  677d6055494e24cad6c49eab33eee618ddc6ed65da827c8b5b7da761b4063278
 
 # PNG
 
-# last changed: 2015-11-13
-# by: ah
+# last changed: 2017-08-28
+# by: js
 # verified: Sig 8048 643B A2C8 40F4 F92A  195F F549 84BF A16C 640F
-server ftp://ftp.simplesystems.org/pub/png/src/
-file libpng14/libpng-1.4.20.tar.xz
-chk  f425d0b218fe025616a751c5c0051481fbbeac32d06c79a265e9bd5aef470275
+server ftp://ftp.simplesystems.org/pub/png/src
+file libpng14/libpng-1.4.21.tar.xz
+chk  77ea3164ddcd203827a6d5e67dcfb9ef3a0965109c8f81817c1679403510f137
 
 #
 # LibFFI
@@ -252,6 +252,7 @@ server ftp://ftp.g10code.com/g10code/gpgex
 # last-changed: 2016-03-30
 # by: ah
 # verified: Sig D869 2123 C406 5DEA 5E0F  3AB5 249B 39D2 4F25 E3B6
+# TODO switch back to released version
 file gpgex-1.0.4.tar.bz2
 chk  aea2232d026219072491f1bf5b2f189a15552f66377ff4dd3b11c0f069379206
 
@@ -518,12 +519,12 @@ chk 40c874c98c0eb0c76e9a5015aab5d5ed791c1e0bed138f412fb496031e80eb3f
 server http://files.intevation.de/projects/gpg4all
 
 # ditto for gpgol.
+# by: js
+# verified: tarball created by js
+file gpgol/gpgol-2.0.0-beta288.tar.bz2
+chk  901ad4524d51ad6e58ec67f27596055f27f4be7be3b972315ac770c11ee36b7f
+
 # by: ah
-# verified: tarball created by ah
-file gpgol/gpgol-2.0.0-beta287.tar.bz2
-chk  afc057ce2c2bd215ddb7e27639db220cac57d43452fa09ae7030d13edcee01a5
-
-
 file gpgme/gpgme-1.9.1-beta57.tar.bz2
 chk  524899103529d0feb163bbbf7567c6c46f4d1c2a9c6c87f9a36def9062e00148
 
