@@ -253,8 +253,8 @@ server ftp://ftp.g10code.com/g10code/gpgex
 # by: ah
 # verified: Sig D869 2123 C406 5DEA 5E0F  3AB5 249B 39D2 4F25 E3B6
 # TODO switch back to released version
-file gpgex-1.0.4.tar.bz2
-chk  aea2232d026219072491f1bf5b2f189a15552f66377ff4dd3b11c0f069379206
+#file gpgex-1.0.4.tar.bz2
+#chk  aea2232d026219072491f1bf5b2f189a15552f66377ff4dd3b11c0f069379206
 
 #
 # Pth emulation
@@ -523,6 +523,12 @@ server http://files.intevation.de/projects/gpg4all
 # verified: tarball created by js
 file gpgol/gpgol-2.0.0-beta288.tar.bz2
 chk  901ad4524d51ad6e58ec67f27596055f27f4be7be3b972315ac770c11ee36b7f
+
+# and for gpgex
+# by: js
+# verified: tarball created by js
+file gpgex/gpgex-1.0.5-beta8.tar.bz2
+chk  518957d7d0203e6e29877b103ac76d0af5fe0b8c0b949e7f072cc3f554c927b8
 
 # by: ah
 file gpgme/gpgme-1.9.1-beta57.tar.bz2
