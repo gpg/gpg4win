@@ -538,13 +538,13 @@ input[type='range']::-moz-range-thumb {
  width: 110px;
  height: 45px;
  float:right;
- background: url('img/inmenudonate.png');
+ background: url('img/inmenudownload.png');
  color: #FFFFFF;
  text-indent: -23px;
 }
 
 #menu .mdonate a:hover {
- background: url('img/inmenudonate.png');
+ background: url('img/inmenudownload.png');
  background-position: 0px -45px;
 }
 

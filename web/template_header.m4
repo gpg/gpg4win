@@ -58,7 +58,7 @@ m4_define(`LINK',
    MENU(`support', `Support', `Support', `support', MAIN, LANG_DE)
    </li>
    <li class="mdonate">
-    m4_ifelse(LANG_DE, `1', `<a href="donate-de.html">Spenden!</a>', `<a href="donate.html">Donate</a>')
+    m4_ifelse(LANG_DE, `1', `<a href="get-gpg4win-de.html">Download</a>', `<a href="get-gpg4win.html">Download</a>')
     </li>
   </ul>
  </div>
