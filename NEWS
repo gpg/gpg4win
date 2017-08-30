@@ -11,12 +11,12 @@ Noteworthy changes in version 3.0.0 (unreleased)
      wurden die Änderungen die in Gpg4win 3.0 gemacht wurden
      aufgenommen.
 
-(en) GnuPG is now of the modern 2.1 variant. See:
-     https://www.gnupg.org/faq/whats-new-in-2.1.html
+(en) GnuPG is now of the modern 2.2 variant. See:
+     https://lists.gnupg.org/pipermail/gnupg-announce/2017q3/000413.html
      for more information about this.
 
-(de) Es wird nun die moderne 2.1 Variante von GnuPG verwendet. Unter:
-     https://www.gnupg.org/faq/whats-new-in-2.1.html (englisch)
+(de) Es wird nun die moderne 2.2 Variante von GnuPG verwendet. Unter:
+     https://lists.gnupg.org/pipermail/gnupg-announce/2017q3/000413.html
      finden sich mehr details dazu.
 
 (en) GpgOL is now also supported for 64bit Outlook.
@@ -152,12 +152,12 @@ Noteworthy changes in version 3.0.0 (unreleased)
 (de) Viele fehlerbehebungen und kleinere verbesserungen.
 
 ~~~~~~~~~~~~~~~
-GnuPG:          2.1.23
+GnuPG:          2.2.0
 Kleopatra:      3.0.0
 GPA:            0.9.9
-GpgOL:          1.4.0
-GpgEX:          1.0.4
-Kompendium DE:  3.0.0
+GpgOL:          2.0.0-beta288
+GpgEX:          1.0.5-beta8
+Kompendium DE:  4.0.0
 Kompendium EN:  3.0.0
 ~~~~~~~~~~~~~~~
 
