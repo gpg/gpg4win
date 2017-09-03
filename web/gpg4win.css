@@ -161,34 +161,6 @@ td {
  width: 250px;
 }
 
-#donate_button {
- position: relative;
- left: 695px;
- top: 85px;
- width: 200px;
-}
-
-#donate_button a {
- background-color: url('img/donate_button.png');
- background-repeat: no-repeat;
- display: block;
- height: 79px;
- width: 200px;
- color: #FFFFFF;
- font-weight: bold;
- text-decoration: none;
- font-size: 14px;
-}
-
-#donate_button a:hover {
- background-position: 0px -79px;
-}
-
-#donate_button .text {
- position:relative;
- top:20px;
- left:10px;
-}
 .donate_box {
   border-radius: 4px;
   background: #FDF1CD;
