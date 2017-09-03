@@ -535,12 +535,12 @@ input[type='range']::-moz-range-thumb {
 
 #menu .mdonate a {
  display: block;
- width: 110px;
+ width: 148px;
  height: 45px;
  float:right;
  background: url('img/inmenudownload.png');
  color: #FFFFFF;
- text-indent: -23px;
+ text-indent: -10px;
 }
 
 #menu .mdonate a:hover {

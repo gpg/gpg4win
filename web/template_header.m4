@@ -46,8 +46,6 @@ m4_define(`LINK',
      <li class="subcap"></li>
     </ul>
    </li>
-   MENU(`documentation', `Dokumentation', `Documentation', `using', MAIN, LANG_DE)
-   </li>
    MENU(`community', `Gemeinschaft', `Community', `community', MAIN, LANG_DE)
     <ul>
      MENU(`community', `Gemeinschaft', `Community', `community', SUB, LANG_DE)
