@@ -487,16 +487,16 @@ input[type='range']::-moz-range-thumb {
 
 #menu .mlogo a {
  display:block;
- width: 198px;
- height: 52px;
+ width: 307px;
+ height: 58px;
  position: relative;
- top: -4px;
+ top: -13px;
  background: url('img/inmenulogo.png');
 }
 
 #menu .mlogo a:hover {
  background: url('img/inmenulogo.png');
- background-position: 0px -52px;
+ background-position: 0px -58px;
 }
 
 #menu .last {
