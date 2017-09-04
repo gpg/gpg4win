@@ -15,7 +15,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Generator: Poedit 2.0.3\n"
-"POT-Creation-Date: \n"
 
 msgctxt "T_AlreadyRunning"
 msgid "An instance of this installer is already running."
