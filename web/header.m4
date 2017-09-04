@@ -78,29 +78,5 @@
    m4_ifelse(MAIN, `donate', `Donate')
    ')
    </div>
-  m4_ifdef(`NO_DOWNLOAD_HEADER',`
-   <div id="download_button_mini"></div></div><br clear="all" />', `
-   <div id="download_button_mini">
-    m4_ifelse(LANG_DE, `1', `
-    <a class="dmini_button" href="download-de.html">
-    ', `
-    <a class="dmini_button" href="download.html">
-    ')
-     <span class="text">
-      Download Gpg4win 
-     </span>
-    </a>
-    <br>
-    <span class="links">
-     m4_ifelse(LANG_DE, `1', `
-     <a href="change-history-de.html">Änderungshistorie</a>', `
-     <a href="change-history.html">Change History</a>')
-     -
-     m4_ifelse(LANG_DE, `1', `
-     <a href="package-integrity-de.html">Integrität prüfen</a>', `
-     <a href="package-integrity.html">Check integrity</a>')
-    </span>
-   </div>
-  </div>
-  <br clear="all" />
-  ')')
+   <div id="download_button_mini"></div></div><br clear="all" />
+  ')
