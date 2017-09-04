@@ -31,15 +31,15 @@ I18N(`EN', `<a href="http://www.gnupg.org/">GnuPG</a>')I18N(`DE', `<a href="http
 I18N(`EN', `<a href="http://www.gnupg.org/related_software/gpa/index.html">GPA</a>')I18N(`DE', `<a href="http://www.gnupg.de/related_software/gpa/index.de.html">GPA</a>') 0.9.10
 <a href="http://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpgol.git;a=summary">GpgOL</a> 1.4.0
 <a href="http://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpgex.git;a=summary">GpgEX</a> 1.0.4
-<a href="doc/de/gpg4win-compendium.html">Kompendium (de)</a> 3.0.0
+<a href="doc/de/gpg4win-compendium.html">Kompendium (de)</a> 4.0.0
 <a href="doc/en/gpg4win-compendium.html">Compendium (en)</a> 3.0.0
 ')
 
-m4_define(`COMPENDIUM_VERSION_DE',`3.0.0')
-m4_define(`COMPENDIUM_DATE_DE',`2010-05-21')
-m4_define(`DOWNLOAD_URL_COMPENDIUM_DE',`http://wald.intevation.org/frs/download.php/744/gpg4win-compendium-de-3.0.0.pdf')
-m4_define(`DL_SIZE_COMPENDIUM_DE',`3.2 MByte')
+m4_define(`COMPENDIUM_VERSION_DE',`4.0.0')
+m4_define(`COMPENDIUM_DATE_DE',`2017-06-23')
+m4_define(`DOWNLOAD_URL_COMPENDIUM_DE',`https://files.gpg4win.org/doc/gpg4win-compendium-de.pdf')
+m4_define(`DL_SIZE_COMPENDIUM_DE',`2.8 MByte')
 m4_define(`COMPENDIUM_VERSION_EN',`3.0.0')
 m4_define(`COMPENDIUM_DATE_EN',`2013-08-02')
-m4_define(`DOWNLOAD_URL_COMPENDIUM_EN',`http://wald.intevation.org/frs/download.php/1385/gpg4win-compendium-en-3.0.0.pdf')
+m4_define(`DOWNLOAD_URL_COMPENDIUM_EN',`https://files.gpg4win.org/doc/gpg4win-compendium-en.pdf')
 m4_define(`DL_SIZE_COMPENDIUM_EN',`3.6 MByte')
