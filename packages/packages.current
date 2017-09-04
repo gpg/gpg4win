@@ -522,7 +522,7 @@ server http://files.intevation.de/projects/gpg4all
 # by: js
 # verified: tarball created by js
 file gpgol/gpgol-2.0.0-beta288.tar.bz2
-chk  901ad4524d51ad6e58ec67f27596055f27f4be7be3b972315ac770c11ee36b7f
+chk  9bf7802dcbe5d7a7e9c63f18638d7e253d3b01ffec4bb95b985936ec167e2cce
 
 # and for gpgex
 # by: js
