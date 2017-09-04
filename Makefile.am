@@ -39,7 +39,6 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         patches/w32pth-2.0.5/workaround-broken-libtool.patch \
         patches/qttools/disable-most-tools.patch \
         patches/ki18n/no-tests.patch \
-        patches/gpgme-1.9.0/0001-core-Don-t-split-gpgconf-strings-on-comma.patch \
         patches/kxmlgui/0002-Make-QDBus-dependency-optional.patch \
         patches/kxmlgui/0003-Make-KTextWidgets-optional.patch \
         patches/kxmlgui/0004-Cruedly-disable-KSendbugmail.patch \
@@ -49,7 +48,6 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         patches/extra-cmake-modules/0001-Add-convert-utility-support-for-Windows-icons.patch \
         patches/kleopatra/0005-Hack-generated-conf-files-for-Crosscompiling.patch \
         patches/kleopatra/lower-kf5-required.patch \
-        patches/kleopatra/relax-gpgme-checks.patch \
         patches/kleopatra/fix-qt5.6-build.patch \
         patches/libgpg-error-1.21/0001-Add-FD_ISSET-replacement-for-Windows.patch \
         patches/gpgex-1.0.4/0001-Prefer-kleowrapped-gpgwrapped-binaries.patch \
