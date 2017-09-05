@@ -36,10 +36,10 @@ Gpg4win-Entwickler-Mailingliste</a> (Lesen sie auch <a
 href="localize-gpg4win.html">Gpg4win into your language</a>).</p>
 
 <p>Nach der Installation des Softwarepaktes Gpg4win ist das Kompendium (in
-der PDF- und HTML-Fassung, deutsch und english) über das Startmenü im Ordner
+der PDF-Fassung, deutsch und english) über das Startmenü im Ordner
 <em>Gpg4win->Dokumentation</em> verfügbar.</p>
 
-Die aktuelle PDF- und HTML-Version des Gpg4win-Kompendiums finden
+Die aktuelle PDF-Version des Gpg4win-Kompendiums finden
 Sie hier:
 <div class="dlbutton2">
  <img src="img/dl_arrow.png" alt="" />
@@ -49,20 +49,17 @@ Veröffentlicht: COMPENDIUM_DATE_DE</small></span>
 </a>
 </div>
 
-<div class="dlbutton2">
-  <a href="./doc/de/gpg4win-compendium.html">Gpg4win-Kompendium COMPENDIUM_VERSION_DE (HTML, Deutsch)<br>
-  <span class="version"><small>Veröffentlicht: COMPENDIUM_DATE_DE</small></span>
-  </a>
-</div>
-
-
-
 <h2 style="clear:left;">Alte Dokumentationen</h2>
 <p>Beachten Sie: Mit Gpg4win2 und dem Gpg4win-Kompendium sind
 alle folgenden, bisherigen Gpg4win-Handbücher <b>veraltet</b> (und
 werden nicht mehr aktualisiert):
 
 <dl>
+  <dt><b>Gpg4win Kompendium 3.0 (HTML Version)</b></dt>
+  <dd>Last Version: 3.0.0 (2010-05-21)<br>
+    <a href="./doc/de/gpg4win-compendium.html">HTML Version</a>
+  </dd>
+
   <dt><b>Gpg4win für Einsteiger</b></dt>
   <dd>Letzte Version: 2.0.2 (2006-05-30)<br>
     <a href="http://wald.intevation.org/frs/?group_id=11">Alle

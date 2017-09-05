@@ -41,11 +41,11 @@ href="localize-gpg4win.html">How to translate all of Gpg4win into
 your language</a>.
 </p>
 
-<p>After installation of the Gpg4win package, the Compendium (in PDF
-and HTML version, English and German) is available via start menu in
+<p>After installation of the Gpg4win package, the Compendium (in PDF version,
+English and German) is available via start menu in
 the folder <em>Gpg4win->Documentation</em>.</p>
 
-The current PDF and HTML versions of the Gpg4win-Compendium are also available here:
+The current PDF version of the Gpg4win-Compendium are also available here:
 <div class="dlbutton2">
 <img src="img/dl_arrow.png" alt="" />
 <a href="DOWNLOAD_URL_COMPENDIUM_EN">Gpg4win Compendium COMPENDIUM_VERSION_EN (PDF, English)<br>
@@ -54,13 +54,6 @@ Released: COMPENDIUM_DATE_EN</small></span>
 </a>
 </div>
 
-<div class="dlbutton2">
-  <a href="./doc/en/gpg4win-compendium.html">Gpg4win Compendium COMPENDIUM_VERSION_EN (HTML, English)<br>
-  <span class="version"><small>Released: COMPENDIUM_DATE_EN</small></span>
-  </a>
-</div>
-
-
 
 <h2>Old Documentation</h2>
 <p>Please note: With Gpg4win2 and the Gpg4win Compendium,
@@ -68,14 +61,16 @@ all following Gpg4win manuals are now <b>out of date</b> (and will no
 longer be updated):
 
 <dl>
+  <dt><b>Gpg4win Compendium 3.0 (HTML Version)</b></dt>
+  <dd>Last Version: 3.0.0 (2010-09-21)<br>
+    <a href="./doc/en/gpg4win-compendium.html">HTML Version</a>
+  </dd>
   <dt><b>Gpg4win for Novices</b> (English translation of "Gpg4win für Einsteiger")</dt>
   <dd>Last version: 1.0.0 (2006-11-30)<br>
    <a href="http://wald.intevation.org/frs/?group_id=11">All
 PDF versions</a> | <a
 href="http://gpg4win.de/handbuecher/novices.html">Last HTML version</a>
   </dd>
-  </dd>
-
   <dt><b>Gpg4win für Einsteiger</b> (German)</dt>
   <dd>Last version: 2.0.2 (2006-05-30)<br>
     <a href="http://wald.intevation.org/frs/?group_id=11">All PDF
