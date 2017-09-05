@@ -38,7 +38,7 @@ m4_define(`LINK',
     m4_ifelse(LANG_DE, `1', `<a href="index-de.html" title="Startseite"></a>', `<a href="index.html" title="Home"></a>')
    </li>
    <li class="mwhatsnew">
-    m4_ifelse(LANG_DE, `1', `<a href="version3-de.html" title="Was ist in Version 3 neu">Neu in Version 3</a>', `<a href="version3.html" title="What is new in version 3">What is new Version 3</a>')
+    m4_ifelse(LANG_DE, `1', `<a href="version3-de.html" title="Was ist in Version 3 neu">Was ist neu in Version 3</a>', `<a href="version3.html" title="What is new in version 3">What is new Version 3</a>')
    </li>
    <li class="mbetween">
     m4_ifelse(LANG_DE, `1', `<a href="index-de.html" title="Startseite"></a>', `<a href="index.html" title="Home"></a>')
