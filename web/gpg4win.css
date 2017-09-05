@@ -487,7 +487,7 @@ input[type='range']::-moz-range-thumb {
 
 #menu .mlogo a {
  display:block;
- width: 307px;
+ width: 161px;
  height: 58px;
  position: relative;
  top: -13px;
@@ -497,6 +497,45 @@ input[type='range']::-moz-range-thumb {
 #menu .mlogo a:hover {
  background: url('img/inmenulogo.png');
  background-position: 0px -58px;
+}
+
+#menu .mwhatsnew  {
+ border:0px;
+ line-height: 2em;
+}
+
+#menu .mwhatsnew a {
+ display:block;
+ width: 110px;
+ height: 77px;
+ position: relative;
+ top: -9px;
+ background: url('img/whatsnew.png');
+ line-height: 34px;
+}
+
+#menu .mwhatsnew a:hover {
+ background: url('img/whatsnew.png');
+ background-position: 0px -77px;
+}
+
+#menu .mbetween {
+ border:0px;
+}
+
+#menu .mbetween a {
+ display:block;
+ width: 36px;
+ height: 58px;
+ position: relative;
+ top: -13px;
+ background: url('img/inmenulogo.png');
+ background-position: -100px 0px;
+}
+
+#menu .mbetween a:hover {
+ background: url('img/inmenulogo.png');
+ background-position: -100px -58px;
 }
 
 #menu .last {
