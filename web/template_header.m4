@@ -13,6 +13,8 @@ m4_define(`LINK',
     `m4_ifelse($1, NO_LINK_FOR,
         `$2',
         `<a href="$1">$2</a>')')
+m4_define(`RQ',`m4_changequote(<,>)m4_dnl`
+'m4_changequote`'')m4_dnl trick for inserting right quotes from http://mbreen.com/m4.html#quotemacro
 
 <html xmlns="http://www.w3.org/1999/xhtml">
  <head>
@@ -38,7 +40,7 @@ m4_define(`LINK',
     m4_ifelse(LANG_DE, `1', `<a href="index-de.html" title="Startseite"></a>', `<a href="index.html" title="Home"></a>')
    </li>
    <li class="mwhatsnew">
-    m4_ifelse(LANG_DE, `1', `<a href="version3-de.html" title="Was ist in Version 3 neu"><div>Was ist neu</br>Version 3</div></a>', `<a href="version3.html" title="<div>What is new in version 3"><div>What is new</br>Version 3</div></a>')
+    m4_ifelse(LANG_DE, `1', `<a href="version3-de.html" title="Was ist in Version 3 neu"><div>Was ist neu</br>Version 3</div></a>', `<a href="version3.html" title="<div>What is new in version 3"><div>What`'RQ()s new</br>Version 3</div></a>')
    </li>
    <li class="mbetween">
     m4_ifelse(LANG_DE, `1', `<a href="index-de.html" title="Startseite"></a>', `<a href="index.html" title="Home"></a>')
