@@ -519,6 +519,12 @@ input[type='range']::-moz-range-thumb {
  background-position: 0px -77px;
 }
 
+#menu .mwhatsnew div {
+ font-size: 120%;
+ padding-top: 10px;
+ line-height: 24px;
+}
+
 #menu .mbetween {
  border:0px;
 }
