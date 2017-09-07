@@ -74,7 +74,7 @@ m4_define(`LINK',
    <div id="sitemap">
     <ul>
      <li><a href="index-de.html"><img src="img/logo_footer.png" alt="" /></a></li>
-     MENU(`download', `Alle Downloads', `All Downloads', `download', MAIN, LANG_DE)
+     MENU(`get-gpg4win', `Alle Downloads', `All Downloads', `get-gpg4win', MAIN, LANG_DE)
      <li>
        <a href="https://twitter.com/gpg4win" target="_blank" title="Follow @gpg4win">
          <img src="img/twitter-icon.png" class="social-icon">
