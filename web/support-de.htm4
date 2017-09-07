@@ -11,8 +11,8 @@ m4_define(`MAIN', `support')
 PAGE_START
 
 <div id"support-intro">
-    <h1>Support für Gpg4win</h1>
-    <p>Helfen und helfen lassen</p>
+<h1>Support für Gpg4win</h1>
+<p>Helfen und helfen lassen</p>
 </div>
 
 <div id="suppport-main">
