@@ -10,14 +10,13 @@ m4_define(`MAIN', `support')
 
 PAGE_START
 
-<div id="intro">
-<h2>Professional Support for Gpg4win</h2>
-<p>You searching for help by experts?</p>
+<div id="support-intro">
+<h1>Support for Gpg4win</h1>
+<p>Recieve help and help others</p>
 </div>
 
-<div id="main">
+<div id="support-main">
 <h2>Identify the problem</h2>
-
 <p>
 The support available through <a href="community.html">mailing lists,
 web forums and bug tracker</a>
@@ -26,7 +25,14 @@ Due to the huge number of users, there is a good chance of
 receiving helpful answers.
 Naturally, timely and exhaustive answers can not be guaranteed.
 </p>
+</div>
 
+<div id="professional-intro">
+<h1>Professional Support for Gpg4win</h1>
+<p>You searching for help by experts?</p>
+</div>
+
+<div id="professional-main">
 <h2>Find a solution</h2>
 <p>
 In case timely answers, quick software modification or general

@@ -5,18 +5,17 @@ m4_dnl $Id$
 m4_define(`DE')
 m4_define(`EN_FILE', `support.html')
 
-m4_define(`TITLE', `Professioneller Support')
+m4_define(`TITLE', `Support')
 m4_define(`MAIN', `support')
 
 PAGE_START
 
-<div id="intro">
-    <h2>Professioneller Support für Gpg4win</h2>
-    <p>Überlassen Sie die Arbeit den Experten.</p>
+<div id"support-intro">
+    <h1>Support für Gpg4win</h1>
+    <p>Helfen und helfen lassen</p>
 </div>
 
-<div id="main">
-
+<div id="suppport-main">
 <h2>Problem erkennen</h2>
 <p>
 Der Support, der über die öffentlichen <a href="community-de.html">Mailinglisten, Webforen und
@@ -25,6 +24,14 @@ Aufgrund der großen
 Anwenderschaft hat man in der Regel gute Aussichten auf hilfreiche Reaktionen.
 Zeitnahe und erschöpfend richtige Antworten können natürlich nicht garantiert werden.
 </p>
+</div>
+
+<div id="professional-intro">
+    <h1>Professioneller Support für Gpg4win</h1>
+    <p>Überlassen Sie die Arbeit den Experten.</p>
+</div>
+
+<div id="professional-main">
 
 <h2>Antworten finden</h2>
 <p>
