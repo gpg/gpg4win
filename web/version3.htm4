@@ -18,6 +18,7 @@ A Presskit is available <a href="pressekit">here</a>.</br></br>
 
 <div id="main">
 <h2>What's new?</h2>
+<h3>GnuPG</h3>
 <p>Support of Elliptic Curve Cryptography (ECC) by integration
 of the upcoming GnuPG 2.2 release candidate.
 
@@ -44,8 +45,9 @@ For details see
 </ul>
 </p>
 
-<p>Major Outlook-Support improvement for attachments and encodings</br>
-</br>
+
+<h3>Major Outlook-Support improvement for attachments and encodings</h3>
+<p>
 The included Outlook Plugin (GpgOL) has been completely overhauled.
 <ul>
     <li>Complete support for OpenPGP/MIME in MS Outlook
@@ -57,8 +59,8 @@ The included Outlook Plugin (GpgOL) has been completely overhauled.
     <li>Support for sending and receiving HTML Emails.</li>
 </ul>
 </p>
-
-<p>Kleopatra (Crypto-Manager)
+<h3>Kleopatra (Crpyto-Manager)</h3>
+<p>
 <ul>
     <li>The file-encryption dialogues have been redesigned to
     reduce the clicks and enhance the user experience.</li>
@@ -74,7 +76,8 @@ The included Outlook Plugin (GpgOL) has been completely overhauled.
 </ul>
 </p>
 
-<p>And more:
+<h3>And more</h3>
+<p>
 <ul>
     <li>Added and enabled by default: a check over the internet
     for available updates, which will notify the user.</li>
