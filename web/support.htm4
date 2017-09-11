@@ -10,29 +10,39 @@ m4_define(`MAIN', `support')
 
 PAGE_START
 
-<div id="support-intro">
+<div="community">
+<div id="intro">
 <h1>Support for Gpg4win</h1>
 <p>Recieve help and help others</p>
 </div>
 
-<div id="support-main">
+<div id="main">
 <h2>Identify the problem</h2>
 <p>
-The support available through <a href="community.html">mailing lists,
-web forums and bug tracker</a>
-is usually provided by volunteers.
+The community support is available through
+<ul>
+    <li><a href=community.html>Mailing Lists</a></li>
+    <li><a href=https://dev.gnupg.org>Bug Tracker</a></li>
+    <li><a
+    href=https://wald.intevation.org/forum/forum.php?forum_id=21&group_id=11>
+    Forums</a></li>
+    <li><a href=https://files.gpg4win.org/doc/gpg4win-compendium-en.pdf>
+    Documentation</a></li>
+</ul>
 Due to the huge number of users, there is a good chance of
 receiving helpful answers.
 Naturally, timely and exhaustive answers can not be guaranteed.
 </p>
 </div>
+</div>
 
-<div id="professional-intro">
+<div id="professional">
+<div id="intro">
 <h1>Professional Support for Gpg4win</h1>
 <p>You searching for help by experts?</p>
 </div>
 
-<div id="professional-main">
+<div id="main">
 <h2>Find a solution</h2>
 <p>
 In case timely answers, quick software modification or general
@@ -78,4 +88,5 @@ Then please contact us! We will provide you with an individual quote.
 </p>
 
 
+</div>
 </div>

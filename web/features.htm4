@@ -179,13 +179,8 @@ GNU General Public License (GNU GPL). The usage of Gpg4win is for free.
 
 <div class="column2">
 <h4>System Requirements</h4>
-<p>Gpg4win supports Windows XP and higher (including Win 10). All <a
-href="screenshots.html">screenshots</a>
-are made with Windows 7.
-Furthermore all desktop Windows systems since XP are supported.</p>
-<p>GpgOL requires Microsoft Outlook 2003, 2007, 2010, 2013 or 2016 (32 or 64 bit)</p>
 <p>Details are listed in the section <a
-href="about.html#requirements">System Requirements</a> of Gpg4win's "About"-webpage.</p>
+href="system-requirements.html">System Requirements</a>.</p>
 </div>
 
 <div class="column3">

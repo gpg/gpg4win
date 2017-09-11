@@ -1,4 +1,4 @@
-aclocal.m4
+))aclocal.m4
 autom4te.cache/
 build-aux/git-hooks/pre-commit
 config.h
@@ -136,3 +136,7 @@ src/mingwm10.dll
 /web/website-maintenance-de.html
 /web/website-maintenance.html
 /web/www.gpg4win.org.tar.gz
+/web/version3.html
+/web/version3-de.html
+/web/system-requirements-de.html
+/web/system-requirements.html

@@ -1,0 +1,21 @@
+m4_dnl                                                            -*-html-*-
+m4_include(`template.m4')
+m4_dnl $Id$
+
+m4_define(`DE')
+m4_define(`EN_FILE', `version3.html')
+m4_define(`version3-de.html', `0')
+
+m4_define(`TITLE', `Was ist neu in Version 3')
+m4_define(`MAIN', `version3')
+
+PAGE_START
+
+<div id="intro">
+Ein Pressekit ist <a href="pressekit">hier</a> verfügbar.</br></br>
+<h2>Version 3</h2>
+</div>
+
+<div id="main">
+<h2>Was ist neu?</h2>
+</div>

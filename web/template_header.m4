@@ -49,6 +49,7 @@ m4_define(`RQ',`m4_changequote(<,>)m4_dnl`
     <ul>
      MENU(`about', `Über Gpg4win', `About Gpg4win', `about', SUB, LANG_DE)
      MENU(`features', `Funktionen', `Features', `features', SUB, LANG_DE)
+     MENU(`system-requirements', `Systemvorraussetzungen', `System Requirements', `system-requirements', SUB, LANG_DE)
      MENU(`screenshots', `Screenshots', `Screenshots', `screenshots', SUB, LANG_DE)
      MENU(`privacy-policy', `Datenschutzerklärung', `Privacy Policy', `privacy-policy', SUB, LANG_DE)
      <li class="subcap"></li>
@@ -79,8 +80,8 @@ m4_define(`RQ',`m4_changequote(<,>)m4_dnl`
    <br>
    <div id="sitemap">
     <ul>
-     <li><a href="index-de.html"><img src="img/logo_footer.png" alt="" /></a></li>
-     MENU(`get-gpg4win', `Alle Downloads', `All Downloads', `get-gpg4win', MAIN, LANG_DE)
+     <li><a href="index-de.html"></a></li>
+     MENU(`download', `Alle Downloads', `All Downloads', `download', MAIN, LANG_DE)
      <li>
        <a href="https://twitter.com/gpg4win" target="_blank" title="Follow @gpg4win">
          <img src="img/twitter-icon.png" class="social-icon">
@@ -109,6 +110,7 @@ m4_define(`RQ',`m4_changequote(<,>)m4_dnl`
      m4_ifelse(LANG_DE, `1', `Dokumentation', `Documentation')
      </b></li>
      MENU(`documentation', `Dokumentation', `Documentation', `documentation', SUB, LANG_DE)
+     MENU(`system-requirements', `System Vorraussetzungen', `System Requirements', `system-requirements', SUB, LANG_DE)
     </ul>
     <ul>
      <li><b>
@@ -124,7 +126,7 @@ m4_define(`RQ',`m4_changequote(<,>)m4_dnl`
     </ul>
     <ul>
      <li><b>Support</b></li>
-     MENU(`support', `Professioneller Support', `Professional Support', `support', MAIN, LANG_DE)
+     MENU(`support', `Support', `Support', `support', MAIN, LANG_DE)
     </ul>
     <ul>
      <li><b>

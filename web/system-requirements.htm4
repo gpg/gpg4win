@@ -1,0 +1,29 @@
+m4_dnl                                                            -*-html-*-
+m4_include(`template.m4')
+m4_dnl $Id$
+
+m4_define(`EN')
+m4_define(`DE_FILE', `system-requirements-de.html')
+
+m4_define(`TITLE', `System Requirements')
+m4_define(`MAIN', `system-requirements')
+
+PAGE_START
+
+<div id="intro">
+<h2>System Requirements</h2>
+<p>Gpg4win requires at least Windows XP (including Windows 10). Both 32 and
+64bit systems are supported.</p>
+
+<p>The Outlook plugin GpgOL is compatible with Microsoft Outlook 2003, 2007,
+2010, 2013 and 2016 (both 32 and 64bit). GpgOL supports MS Exchange Server for
+Outlook 2010 and higher.</p>
+
+<h3>Other Systems</h3>
+<p>When using a <b>MacOS</b> based Operating System, you can use the
+<a href="https://gpgtools.org/">GPG Suite</a>.</p>
+
+<p>With a <b>GNU/Linux</b> based system, you can use your built-in paketmanager
+Alternatively you can compile GnuPG directly from
+<a href="https://gnupg.org/index.html">the sources</a></p> by yourself.
+</div>

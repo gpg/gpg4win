@@ -10,28 +10,36 @@ m4_define(`MAIN', `support')
 
 PAGE_START
 
-<div id"support-intro">
+<div id="commnity>
+<div id="intro">
 <h1>Support für Gpg4win</h1>
 <p>Helfen und helfen lassen</p>
 </div>
 
-<div id="suppport-main">
+<div id="main">
 <h2>Problem erkennen</h2>
 <p>
-Der Support, der über die öffentlichen <a href="community-de.html">Mailinglisten, Webforen und
-den Bug Tracker</a> geliefert wird, kommt in der Regel von Freiwilligen.
-Aufgrund der großen
-Anwenderschaft hat man in der Regel gute Aussichten auf hilfreiche Reaktionen.
+Der Support aus der Gemeinschaft ist erreichbar über
+<ul>
+    <li><a href=community-de.html>Mailing Listen</a></li>
+    <li><a href=https://dev.gnupg.org>Bug Tracker</a></li>
+    <li><a
+    href=https://wald.intevation.org/forum/forum.php?forum_id=21&group_id=11>
+    Foren</a></li>
+    <li><a href=https://files.gpg4win.org/doc/gpg4win-compendium-de.pdf>
+    Dokumentation</a></li>
+</ul>
 Zeitnahe und erschöpfend richtige Antworten können natürlich nicht garantiert werden.
 </p>
 </div>
-
-<div id="professional-intro">
+</div>
+<div id="professional">
+<div id="intro">
     <h1>Professioneller Support für Gpg4win</h1>
     <p>Überlassen Sie die Arbeit den Experten.</p>
 </div>
 
-<div id="professional-main">
+<div id="main">
 
 <h2>Antworten finden</h2>
 <p>
@@ -82,4 +90,5 @@ spezielle Vorstellungen, um die Weiterentwicklung von Gpg4win zu
 fördern? Dann kontaktieren Sie uns! Wir stellen Ihnen - nach
 Einschätzung unserer Entwicklern - ein individuelles Angebot zusammen.
 </p>
+</div>
 </div>
