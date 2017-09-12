@@ -234,27 +234,23 @@ chk  1dddde1400c3bcb7749d398071af88c3e4754058d2d4c0b3696c2f82dc5cf11c
 #
 # GpgOL
 #
-server ftp://ftp.g10code.com/g10code/gpgol
+server http://files.gpg4win.org/src
 
-# last-changed: 2016-03-30
+# last-changed: 2017-09-12
 # by: ah
-# verified: Sig D869 2123 C406 5DEA 5E0F  3AB5 249B 39D2 4F25 E3B6
-#
-# TODO switch back to released version
-#file gpgol-1.4.0.tar.bz2
-#chk  abebb06bcf64c11854b110830b148eada7e7d9046e565c407d7957594f09800f
+# verified: Sig 5B80 C575 4298 F0CB  55D8 ED6A BCEF 7E29 4B09 2E28
+file gpgol/gpgol-2.0.0.tar.bz2
+chk  ee87b8f07e90206156dae8e90677886f999993027f39850833ccd5889bd85d00
 
 #
 # GpgEX
 #
-server ftp://ftp.g10code.com/g10code/gpgex
 
-# last-changed: 2016-03-30
+# last-changed: 2017-09-12
 # by: ah
-# verified: Sig D869 2123 C406 5DEA 5E0F  3AB5 249B 39D2 4F25 E3B6
-# TODO switch back to released version
-#file gpgex-1.0.4.tar.bz2
-#chk  aea2232d026219072491f1bf5b2f189a15552f66377ff4dd3b11c0f069379206
+# verified: Sig 5B80 C575 4298 F0CB  55D8 ED6A BCEF 7E29 4B09 2E28
+file gpgex/gpgex-1.0.5.tar.bz2
+chk  f2696a34f77f4afb4e9bef82ea73ebbed59e07c534c68b5c5afd976dddd86feb
 
 #
 # Pth emulation
@@ -518,18 +514,6 @@ chk 40c874c98c0eb0c76e9a5015aab5d5ed791c1e0bed138f412fb496031e80eb3f
 # Devel versions are needed until Kleopatra can be based on
 # a stable branch.
 server http://files.intevation.de/projects/gpg4all
-
-# ditto for gpgol.
-# by: js
-# verified: tarball created by js
-file gpgol/gpgol-2.0.0-beta289.tar.bz2
-chk  07dd630f4348720719bdbac0b890555888a75f4c9764fa3b4df1aa19b8c26955
-
-# and for gpgex
-# by: js
-# verified: tarball created by js
-file gpgex/gpgex-1.0.5-beta8.tar.bz2
-chk  518957d7d0203e6e29877b103ac76d0af5fe0b8c0b949e7f072cc3f554c927b8
 
 # by: ah
 file gpgme/gpgme-1.10.0-beta75.tar.bz2
