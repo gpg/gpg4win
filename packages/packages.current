@@ -521,13 +521,13 @@ chk  1aecd6b22507f6b0c27afe6dc6f6d3fa4c813bbaef46199a9e4ac7f7359aef89
 
 # GnuPG 2.2.x branch
 
-name gnupg-w32-2.2.1-beta7-20170912-bin.exe
-file gnupg/gnupg-w32-2.2.1-beta7_20170912.exe
-chk  8f0251304511a0133c76f9ee52e416b8ea974df1cb18d98416a31aef7b887956
+name gnupg-w32-2.2.1-beta9-20170912-bin.exe
+file gnupg/gnupg-w32-2.2.1-beta9_20170912.exe
+chk  25486bfdf0913f309eff167d55078f8169ee9e6a8ac3334999d9489c3849d4d4
 
-name gnupg-w32-2.2.1-beta7-20170912-src.tar.xz
-file gnupg/gnupg-w32-2.2.1-beta7_20170912.tar.xz
-chk  9ba38e0beb67e4e68644b1ef5ba5aa83a4ede9394c3b403fc92fe096967e8173
+name gnupg-w32-2.2.1-beta9-20170912-src.tar.xz
+file gnupg/gnupg-w32-2.2.1-beta9_20170912.tar.xz
+chk  8d55c4d5ecc570e4d56c3cad2b8a88f49cd9f6b797efb0cc6978b37f2f27bf2f
 
 # Libkleo
 # last changed: see package date.
