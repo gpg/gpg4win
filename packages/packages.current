@@ -294,15 +294,16 @@ chk  f628f75843433b38b05af248121beb7db5bd54bb2106f384edac39934261320c
 file libassuan/libassuan-2.4.3.tar.bz2
 chk  22843a3bdb256f59be49842abf24da76700354293a066d82ade8134bb5aa2b71
 
+# FIXME Switch back to released version on next release
 # last changed: 2017-08-28
 # by: js
-name gnupg-w32-2.2.0_20170828-bin.exe
-file binary/gnupg-w32-2.2.0_20170828.exe
-chk  e614d00bf84f68094af6cdcfbff5423b74340885c4034d407c81d5d92272127c 
+#name gnupg-w32-2.2.0_20170828-bin.exe
+#file binary/gnupg-w32-2.2.0_20170828.exe
+#chk  e614d00bf84f68094af6cdcfbff5423b74340885c4034d407c81d5d92272127c
 
-name gnupg-w32-2.2.0-20170828-src.tar.xz
-file binary/gnupg-w32-2.2.0_20170828.tar.xz
-chk  3231c6c5d882cf99801c8429a78d11fc6f14b3ca95e585894777f4b2e03afd29
+#name gnupg-w32-2.2.0-20170828-src.tar.xz
+#file binary/gnupg-w32-2.2.0_20170828.tar.xz
+#chk  3231c6c5d882cf99801c8429a78d11fc6f14b3ca95e585894777f4b2e03afd29
 
 # last changed: 2016-01-17
 # by: ah
@@ -533,6 +534,16 @@ chk  518957d7d0203e6e29877b103ac76d0af5fe0b8c0b949e7f072cc3f554c927b8
 # by: ah
 file gpgme/gpgme-1.10.0-beta75.tar.bz2
 chk  1aecd6b22507f6b0c27afe6dc6f6d3fa4c813bbaef46199a9e4ac7f7359aef89
+
+# GnuPG 2.2.x branch
+
+name gnupg-w32-2.2.1-beta2-20170912-bin.exe
+file gnupg/gnupg-w32-2.2.1-beta2_20170912.exe
+chk  ed2d56829db590fc6fb3c35f755d1eae1101b120e041ef3ab52bdc5edbdce2db
+
+name gnupg-w32-2.2.1-beta2-20170912-src.tar.xz
+file gnupg/gnupg-w32-2.2.1-beta2_20170912.tar.xz
+chk  d1a9d9f0a45c5faba867350796d579dfd4077bbe7226b5f8400c5834dbe94c28
 
 # Libkleo
 # last changed: see package date.
