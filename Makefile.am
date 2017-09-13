@@ -47,11 +47,9 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         patches/kiconthemes/0001-Make-DBus-optional.patch \
         patches/extra-cmake-modules/0001-Add-convert-utility-support-for-Windows-icons.patch \
         patches/kleopatra/0005-Hack-generated-conf-files-for-Crosscompiling.patch \
-        patches/kleopatra/lower-kf5-required.patch \
         patches/kleopatra/fix-qt5.6-build.patch \
         patches/libgpg-error-1.21/0001-Add-FD_ISSET-replacement-for-Windows.patch \
         patches/gpgex-1.0.4/0001-Prefer-kleowrapped-gpgwrapped-binaries.patch \
-        patches/libkleo/lower-kf5-required.patch \
         patches/gpgex-1.0.4/0002-Fix-loop-logic-error-in-new-server-name-detection.patch \
         patches/extra-cmake-modules/0001-Use-BIN_INSTALL_DIR-data-for-DATAROOTDIR-on-Windows.patch \
         patches/gpa-0.9.10/0001-w32-Make-location-of-locale-dir-more-flexible.patch
