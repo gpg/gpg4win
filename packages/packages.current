@@ -239,8 +239,8 @@ server http://files.gpg4win.org/src
 # last-changed: 2017-09-12
 # by: ah
 # verified: Sig 5B80 C575 4298 F0CB  55D8 ED6A BCEF 7E29 4B09 2E28
-file gpgol/gpgol-2.0.0.tar.bz2
-chk  ee87b8f07e90206156dae8e90677886f999993027f39850833ccd5889bd85d00
+file gpgol/gpgol-2.0.1.tar.bz2
+chk  0872f2f6d11b6b9d227f460a86fa8ae00d18eba812f36a4ed94a1663fe49f74b
 
 #
 # GpgEX
