@@ -50,6 +50,7 @@ m4_define(`RQ',`m4_changequote(<,>)m4_dnl`
      MENU(`about', `Über Gpg4win', `About Gpg4win', `about', SUB, LANG_DE)
      MENU(`features', `Funktionen', `Features', `features', SUB, LANG_DE)
      MENU(`system-requirements', `Systemvorraussetzungen', `System Requirements', `system-requirements', SUB, LANG_DE)
+     MENU(`documentation', `Dokumentation', `Documentation', `documentation', SUB, LANG_DE)
      MENU(`screenshots', `Screenshots', `Screenshots', `screenshots', SUB, LANG_DE)
      MENU(`privacy-policy', `Datenschutzerklärung', `Privacy Policy', `privacy-policy', SUB, LANG_DE)
      <li class="subcap"></li>
@@ -102,15 +103,10 @@ m4_define(`RQ',`m4_changequote(<,>)m4_dnl`
      </b></li>
      MENU(`about', `Über Gpg4win', `About Gpg4win', `about', MAIN, LANG_DE)
      MENU(`features', `Funktionen', `Features', `features', MAIN, LANG_DE)
+     MENU(`system-requirements', `System Vorraussetzungen', `System Requirements', `system-requirements', SUB, LANG_DE)
+     MENU(`documentation', `Dokumentation', `Documentation', `documentation', SUB, LANG_DE)
      MENU(`screenshots', `Screenshots', `Screenshots', `screenshots', MAIN, LANG_DE)
      MENU(`privacy-policy', `Datenschutzerklärung', `Privacy Policy', `privacy-policy', MAIN, LANG_DE)
-    </ul>
-    <ul>
-     <li><b>
-     m4_ifelse(LANG_DE, `1', `Dokumentation', `Documentation')
-     </b></li>
-     MENU(`documentation', `Dokumentation', `Documentation', `documentation', SUB, LANG_DE)
-     MENU(`system-requirements', `System Vorraussetzungen', `System Requirements', `system-requirements', SUB, LANG_DE)
     </ul>
     <ul>
      <li><b>
