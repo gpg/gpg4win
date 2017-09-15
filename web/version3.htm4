@@ -59,7 +59,7 @@ The included Outlook Plugin (GpgOL) has been completely overhauled.
     <li>Support for sending and receiving HTML Emails.</li>
 </ul>
 </p>
-<h3>Kleopatra (Crpyto-Manager)</h3>
+<h3>Kleopatra (Crypto-Manager)</h3>
 <p>
 <ul>
     <li>The file-encryption dialogues have been redesigned to
@@ -86,7 +86,7 @@ The included Outlook Plugin (GpgOL) has been completely overhauled.
     now possible.</li>
     <li>Gpg4win compendium (German version) has been completely overhauled.
     We are looking for people to help us translating the changes back
-    into English and other languages. However this probably cannot not 
+    into English and other languages. However this probably cannot not
     achieved for Gpg4win 3.0 as we want to improve some necessary
     infrastructure for translations first, to make your life much easier.</li>
 </ul>
