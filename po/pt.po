@@ -111,8 +111,8 @@ msgid "Click here for the project's homepage"
 msgstr "Clica aqui para a homepage do projeto"
 
 msgctxt "T_MoreInfoURL"
-msgid "http://www.gpg4win.org"
-msgstr "http://www.gpg4win.org"
+msgid "https://www.gpg4win.org"
+msgstr "https://www.gpg4win.org"
 
 msgctxt "T_ShowReadme"
 msgid "Show the README file"

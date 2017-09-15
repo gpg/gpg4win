@@ -236,7 +236,7 @@ LangString T_LangCode ${LANG_ENGLISH} "en"
 # Startup page
 LangString T_GPLHeader ${LANG_ENGLISH} \
   "This software is licensed under the terms of the GNU General Public \
-   License (GPL)."
+   License (GNU GPL)."
 
 LangString T_GPLShort ${LANG_ENGLISH} \
   "In short: You are allowed to run this software for any purpose. \
@@ -244,8 +244,8 @@ LangString T_GPLShort ${LANG_ENGLISH} \
    rights you have received."
 
 LangString T_MoreInfo ${LANG_ENGLISH} \
-   "Click here for the project's homepage"
-LangString T_MoreInfoURL ${LANG_ENGLISH} "http://www.gpg4win.org"
+   "Go to Gpg4win's webpage"
+LangString T_MoreInfoURL ${LANG_ENGLISH} "https://www.gpg4win.org"
 
 LangString T_ShowReadme ${LANG_ENGLISH} \
    "Show the README file"
