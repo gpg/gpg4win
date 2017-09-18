@@ -40,27 +40,49 @@ all commercial and non-commercial purposes).
 Free Software components:
 </p>
 
-<ul>
-<li><b>GnuPG</b>
+<ul class="cleanlist">
+<li>
+<a href="img/gnupg_logo.svg">
+<img class="imgfloatleft imageframe"
+src="img/t250.gnupg_logo.png">
+</a>
+<b>GnuPG</b>
  <p>The backend; this is the actual encryption tool.</p>
 </li>
-<li><b>Kleopatra</b>
+<li>
+<a href="img/kleopatra_logo.svg">
+<img class="imgfloatleft imageframe"
+src="img/t250.kleopatra_logo.png">
+</a>
+<b>Kleopatra</b>
  <p>A certificate manager for OpenPGP and X.509 (S/MIME) and common crypto dialogs.</p>
 </li>
-<li><b>GPA</b>
- <p>An alternative certificate manager for OpenPGP and X.509 (S/MIME).</p>
-</li>
-<li><b>GpgOL</b>
+<li>
+<a href="img/gpgol_logo.svg">
+<img class="imgfloatleft imageframe"
+src="img/t250.gpgol_logo.png">
+</a>
+<b>GpgOL</b>
  <p>A plugin for Microsoft Outlook 2003/2007/2010/2013/2016 (email encryption).
     With Outlook 2010 and higher GpgpOL supports MS Exchange Server.
  </p>
 </li>
-<li><b>GpgEX</b>
+<li>
+<a href="img/gpgex_logo.svg">
+<img class="imgfloatleft imageframe"
+src="img/t250.gpgex_logo.png">
+</a>
+<b>GpgEX</b>
 <p>A plugin for Microsoft Explorer (file encryption).</p>
 </li>
-<li><b>Gpg4win Compendium</b>
-<p>The documentation (for beginner and advanced users),
-available in English and German.</p>
+</li>
+<li>
+<a href="img/gpa_logo.png">
+<img class="imgfloatleft imageframe"
+src="img/t250.gpa_logo.png">
+</a>
+<b>GPA</b>
+ <p>An alternative certificate manager for OpenPGP and X.509 (S/MIME).</p>
 </li>
 </ul>
 

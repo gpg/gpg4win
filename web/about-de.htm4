@@ -42,28 +42,49 @@ verfügbar.</p>
 verschiedenen Freien Software Komponenten, die wahlweise
 installiert werden können:</p>
 
-<ul>
-<li><b>GnuPG</b>
- <p>Das Kernstück, das eigentliche Verschlüsselungsprogramm.</p>
+<ul class="cleanlist">
+<li>
+<a href="img/gnupg_logo.svg">
+<img class="imgfloatleft imageframe"
+src="img/t250.gnupg_logo.png">
+</a>
+<b>GnuPG</b>
+<p>Das Kernstück, das eigentliche Verschlüsselungsprogramm.</p>
 </li>
-<li><b>Kleopatra</b>
+<li>
+<a href="img/kleopatra_logo.svg">
+<img class="imgfloatleft imageframe"
+src="img/t250.kleopatra_logo.png">
+</a>
+<b>Kleopatra</b>
  <p>Ein Zertifikatsmanager für OpenPGP und X.509 (S/MIME);
   stellt einheitliche Benutzerführung für alle Krypto-Dialoge bereit.</p>
 </li>
-<li><b>GPA</b>
- <p>Ein alternativer Zertifikatsmanager für OpenPGP und X.509.</p>
-</li>
-<li><b>GpgOL</b>
+<li>
+<a href="img/gpgol_logo.svg">
+<img class="imgfloatleft imageframe"
+src="img/t250.gpgol_logo.png">
+</a>
+<b>GpgOL</b>
  <p>Eine Programmerweiterung für Microsoft Outlook 2003/2007/2010/2013/2016 (E-Mail-Verschlüsselung).
   Ab Outlook 2010 wird von GpgOL auch Exchange Server unterstützt.</p>
 </li>
-<li><b>GpgEX</b>
+<li>
+<a href="img/gpgex_logo.svg">
+<img class="imgfloatleft imageframe"
+src="img/t250.gpgex_logo.png">
+</a>
+<b>GpgEX</b>
 <p>Eine Programmerweiterung für den Microsoft Explorer
   (Dateiverschlüsselung).</p>
 </li>
-<li><b>Gpg4win-Kompendium</b>
-<p>Die Dokumentation zu Gpg4win (für Einsteiger und
-Fortgeschrittene). Verfügbar in deutscher und englischer Sprache.</p>
+<li>
+<a href="img/gpa_logo.png">
+<img class="imgfloatleft imageframe"
+src="img/t250.gpa_logo.png">
+</a>
+<b>GPA</b>
+ <p>Ein alternativer Zertifikatsmanager für OpenPGP und X.509.</p>
 </li>
 </ul>
 
