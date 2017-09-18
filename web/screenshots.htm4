@@ -29,7 +29,7 @@ The screenshots show you some components in action.</p>
 <li>
 <a href="img/sc-inst-welcome_de.png">
 <img class="imgfloatleft imageframe"
-src="img/sc-inst-welcome_de.png">
+src="img/t250.sc-inst-welcome_de.png">
 </a>
 <p>The welcome screen</p>
 </li>
@@ -38,40 +38,25 @@ src="img/sc-inst-welcome_de.png">
 
 <h2>Kleopatra</h2>
 <ul class="cleanlist">
-<li>
-<a href="img/sc-kleopatra-splashscreen_de.png">
-<img class="imgfloatleft imageframe"
-src="img/sc-kleopatra-splashscreen_de.png">
-</a>
-<p>Kleopatra's splash screen</p>
-</li>
 
 <li>
-<a href="img/sc-kleopatra-mainwindow-openpgp-certificates_de.png">
+<a href="img/sc-kleopatra-mainwindow-empty_de.png">
 <img class="imgfloatleft imageframe"
-src="img/sc-kleopatra-mainwindow-openpgp-certificates_de.png">
+src="img/t250.sc-kleopatra-mainwindow-empty_de.png">
 </a>
-<p>Kleopatra's main window with two (trusted) OpenPGP certificates.
-</p>
-</li>
-<li>
-<a href="img/sc-kleopatra-mainwindow-x509-certificates_de.png">
-<img class="imgfloatleft imageframe"
-src="img/sc-kleopatra-mainwindow-x509-certificates_de.png">
-</a>
-<p>Kleopatra's main window of an imported X.509 certificate chain.
-The root certificate is trusted (blue background color).
+<p>Kleopatra's main window.
 </p>
 </li>
 
 <li>
 <a href="img/sc-kleopatra-openpgp-personalDetails_de.png">
 <img class="imgfloatleft imageframe"
-src="img/sc-kleopatra-openpgp-personalDetails_de.png">
+src="img/t250.sc-kleopatra-openpgp-personalDetails_de.png">
 </a>
 <p>Creation of an OpenPGP certificate: Input of personal details.
 </p>
 </li>
+
 <li>
 <a href="img/sc-kleopatra-x509-personalDetails_de.png">
 <img class="imgfloatleft imageframe"
@@ -80,6 +65,7 @@ src="img/sc-kleopatra-x509-personalDetails_de.png">
 <p>Creation of an X.509 certificate: Input of personal details.
 </p>
 </li>
+
 <li>
 <a href="img/sc-kleopatra-openpgp-personalDetails_de.png">
 <img class="imgfloatleft imageframe"
@@ -92,7 +78,7 @@ src="img/sc-kleopatra-openpgp-personalDetails_de.png">
 <li>
 <a href="img/sc-kleopatra-configureCertificateserver_de.png">
 <img class="imgfloatleft imageframe"
-src="img/sc-kleopatra-configureCertificateserver_de.png">
+src="img/t250.sc-kleopatra-configureCertificateserver_de.png">
 </a>
 <p>Configuration of certificate servers (OpenPGP and X.509).</p>
 </li>
@@ -107,43 +93,27 @@ src="img/sc-kleopatra-certifyCertificate1_de.png">
 </li>
 
 <li>
-<a href="img/sc-kleopatra-openpgp-ownertrust_de.png">
-<img class="imgfloatleft imageframe"
-src="img/sc-kleopatra-openpgp-ownertrust_de.png">
-</a>
-<p>Owner trust settings of a public OpenPGP certificate.
-</p>
-</li>
-
-<li>
 <a href="img/sc-kleopatra-encryptFile1_de.png">
 <img class="imgfloatleft imageframe"
-src="img/sc-kleopatra-encryptFile1_de.png">
+src="img/t250.sc-kleopatra-encryptFile1_de.png">
 </a>
-<p>Encrypting files and folders in 3 steps:<br>
-1. Select files and folders...
+<p>Encrypting files and folders <br>
+Select files, folders, recipients...
 </p>
 </li>
 
-<li>
-<a href="img/sc-kleopatra-encryptFile2_de.png">
-<img class="imgfloatleft imageframe"
-src="img/sc-kleopatra-encryptFile2_de.png">
-</a>
-<p>2. Select certificates for whom you want the files to be encrypted...
-</p>
-</li>
 <li>
 <a href="img/sc-kleopatra-encryptFile3_de.png">
 <img class="imgfloatleft imageframe"
-src="img/sc-kleopatra-encryptFile3_de.png">
+src="img/t250.sc-kleopatra-encryptFile3_de.png">
 </a>
-<p>3. Finished. The encrypted archive file.</p>
+<p>The encrypted archive file.</p>
 </li>
+
 <li>
-<a href="img/sc-kleopatra-verifyFile2-details_de.png">
+<a href="img/sc-kleopatra-verifyFile1_de.png">
 <img class="imgfloatleft imageframe"
-src="img/sc-kleopatra-verifyFile2-details_de.png"
+src="img/t250.sc-kleopatra-verifyFile1_de.png"
 </a>
 <p>Successful check of a signed file.
 </p>
@@ -154,12 +124,11 @@ src="img/sc-kleopatra-verifyFile2-details_de.png"
 <h2>GpgEX</h2>
 <ul class="cleanlist">
 <li>
-<a href="img/sc-gpgex-explorer-options_de.png">
+<a href="img/sc-gpgex-contextmenu-signEncrypt_de.png">
 <img class="imgfloatleft imageframe"
-src="img/sc-gpgex-explorer-options_de.png">
+src="img/t250.sc-gpgex-contextmenu-signEncrypt_de.png">
 </a>
-<p>The context menu of GpgEX in Windows Explorer - with advanced
-Options.</p>
+<p>The context menu of GpgEX in Windows Explorer.</p>
 </li>
 </ul>
 
@@ -167,30 +136,20 @@ Options.</p>
 <h2>GpgOL</h2>
 <ul class="cleanlist">
 <li>
-<a href="img/sc-gpgol-sendSignEncryptedMail_de.png">
+<a href="img/sc-ol-sendSignedMail_de.png">
 <img class="imgfloatleft imageframe"
-src="img/sc-gpgol-sendSignEncryptedMail_de.png">
+src="img/t250.sc-ol-sendSignedMail_de.png">
 </a>
-<p>Sign and encrypt an email in Outlook 2007.
-</p>
-</li>
-
-<li>
-<a href="img/sc-ol-emailfolder_de.png">
-<img class="imgfloatleft imageframe"
-src="img/sc-ol-emailfolder_de.png">
-</a>
-<p>Signed and encrypted messages in the
-email folder view of Outlook 2007.
+<p>Sign and encrypt an email in Outlook 2010.
 </p>
 </li>
 
 <li>
 <a href="img/sc-gpgol-options_de.png">
 <img class="imgfloatleft imageframe"
-src="img/sc-gpgol-options_de.png">
+src="img/t250.sc-gpgol-options_de.png">
 </a>
-<p>The option dialog of GpgOL (in Outlook 2003/2007 only).
+<p>The option dialog of GpgOL.
 </li>
 </ul>
 
@@ -198,27 +157,11 @@ src="img/sc-gpgol-options_de.png">
 
 <ul class="cleanlist">
 <li>
-<a href="img/sc-pinentry-openpgp-set-passphrase_de.png">
+<a href="img/sc-kleopatra-openpgp-pinentry_de.png">
 <img class="imgfloatleft imageframe"
-src="img/sc-pinentry-openpgp-set-passphrase_de.png">
+src="img/t250.sc-kleopatra-openpgp-pinentry_de.png">
 </a>
 <p>Set a passphrase (with quality check).
-</p>
-</li>
-<li>
-<a href="img/sc-pinentry-openpgp_de.png">
-<img class="imgfloatleft imageframe"
-src="img/sc-pinentry-openpgp_de.png">
-</a>
-<p>Pinentry for enter the passphrase of an OpenPGP certificate.
-</p>
-</li>
-<li>
-<a href="img/sc-pinentry-smime_de.png">
-<img class="imgfloatleft imageframe"
-src="img/sc-pinentry-smime_de.png">
-</a>
-<p>Pinentry for entering the passphrase of an X.509 certificate.
 </p>
 </li>
 </ul>
