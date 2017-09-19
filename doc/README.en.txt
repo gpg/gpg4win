@@ -6,7 +6,7 @@
 
                    English README file for Gpg4win
                    ===============================
-!BETA-WARNING!
+
 This is Gpg4win, version !VERSION! (!BUILD_ISODATE!).
 
 Content:
@@ -48,7 +48,7 @@ Included Gpg4win components in Version !VERSION! are:
 New in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 -----------------------------------------
 
-- GnuPG is now of the modern 2.1 variant. See:
+- GnuPG is now of the modern 2.2 variant. See:
   https://www.gnupg.org/faq/whats-new-in-2.1.html
   for more information about this.
 

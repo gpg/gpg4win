@@ -7,7 +7,7 @@
 
                   Deutsche README Datei für Gpg4win
                   =================================
-!BETA-WARNING!
+
 Dies ist Gpg4win, Version !VERSION! (!BUILD_ISODATE!).
 
 Inhalt:
@@ -50,7 +50,7 @@ Die integrierten Gpg4win-Komponenten in Version !VERSION! sind:
 Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 -----------------------------------------
 
-- Es wird nun die moderne 2.1 Variante von GnuPG verwendet. Unter:
+- Es wird nun die moderne 2.2 Variante von GnuPG verwendet. Unter:
   https://www.gnupg.org/faq/whats-new-in-2.1.html (englisch)
   finden sich mehr details dazu.
 
