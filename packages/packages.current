@@ -290,16 +290,15 @@ chk  f628f75843433b38b05af248121beb7db5bd54bb2106f384edac39934261320c
 file libassuan/libassuan-2.4.3.tar.bz2
 chk  22843a3bdb256f59be49842abf24da76700354293a066d82ade8134bb5aa2b71
 
-# FIXME Switch back to released version on next release
-# last changed: 2017-08-28
+# last changed: 2017-09-19
 # by: js
-#name gnupg-w32-2.2.0_20170828-bin.exe
-#file binary/gnupg-w32-2.2.0_20170828.exe
-#chk  e614d00bf84f68094af6cdcfbff5423b74340885c4034d407c81d5d92272127c
+name gnupg-w32-2.2.1-20170919-bin.exe
+file binary/gnupg-w32-2.2.1_20170919.exe
+chk  a8fa4ef2168461310b2350b446f219c05003e3fc29f2901bdd188f7fae9a4cbd
 
-#name gnupg-w32-2.2.0-20170828-src.tar.xz
-#file binary/gnupg-w32-2.2.0_20170828.tar.xz
-#chk  3231c6c5d882cf99801c8429a78d11fc6f14b3ca95e585894777f4b2e03afd29
+name gnupg-w32-2.2.1-20170919-src.tar.xz
+file binary/gnupg-w32-2.2.1_20170919.tar.xz
+chk  56e38cf738f4c6299e743feeae440b02cee99ee2b6e3eab745989fa6a67a2338
 
 # last changed: 2016-01-17
 # by: ah
@@ -519,15 +518,15 @@ server http://files.intevation.de/projects/gpg4all
 file gpgme/gpgme-1.10.0-beta75.tar.bz2
 chk  1aecd6b22507f6b0c27afe6dc6f6d3fa4c813bbaef46199a9e4ac7f7359aef89
 
+# Switched back to stable
 # GnuPG 2.2.x branch
+#name gnupg-w32-2.2.1-beta9-20170912-bin.exe
+#file gnupg/gnupg-w32-2.2.1-beta9_20170912.exe
+#chk  25486bfdf0913f309eff167d55078f8169ee9e6a8ac3334999d9489c3849d4d4
 
-name gnupg-w32-2.2.1-beta9-20170912-bin.exe
-file gnupg/gnupg-w32-2.2.1-beta9_20170912.exe
-chk  25486bfdf0913f309eff167d55078f8169ee9e6a8ac3334999d9489c3849d4d4
-
-name gnupg-w32-2.2.1-beta9-20170912-src.tar.xz
-file gnupg/gnupg-w32-2.2.1-beta9_20170912.tar.xz
-chk  8d55c4d5ecc570e4d56c3cad2b8a88f49cd9f6b797efb0cc6978b37f2f27bf2f
+#name gnupg-w32-2.2.1-beta9-20170912-src.tar.xz
+#file gnupg/gnupg-w32-2.2.1-beta9_20170912.tar.xz
+#chk  8d55c4d5ecc570e4d56c3cad2b8a88f49cd9f6b797efb0cc6978b37f2f27bf2f
 
 # Libkleo
 # last changed: see package date.
