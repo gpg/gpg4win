@@ -2,6 +2,21 @@
 #
 # The version number given below are for the standard installers as
 # distributed by www.gpg4win.org.
+
+Noteworthy changes in Version 3.x.x (UNRELEASED)
+------------------------------------------------
+
+~~~~~~~~~~~~~~~
+GnuPG:          2.2.1
+Kleopatra:      3.0.0
+GPA:            0.9.9
+GpgOL:          2.0.1
+GpgEX:          1.0.5
+Kompendium DE:  4.0.0
+Kompendium EN:  3.0.0
+~~~~~~~~~~~~~~~
+
+
 Noteworthy changes in version 3.0.0 (2017-09-19)
 ------------------------------------------------
 (en) German Compendium is now Updated to Version 4.0. It is
