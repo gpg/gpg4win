@@ -12,10 +12,8 @@ m4_define(`MAIN', `version3')
 PAGE_START
 
 <div id="intro">
-<h2>Gpg4win 3.0</h2>
-<p>Was ändert sich mit Version 3?  <a href="#">(Pressemitteilung zu
-Gpg4win 3.0)</a>
-</p>
+<h2>Was ändert sich mit Gpg4win 3.0?</h2>
+<a href="#">(Pressemitteilung zu Gpg4win 3.0)</a>
 </div>
 
 <div id="main">
