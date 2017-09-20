@@ -40,22 +40,23 @@ PAGE_START
   Die Unterstützung von Schlüsseln mit elliptischer Kurven
   Kryptografie (Elliptic Curve Cryptography, ECC) wurde mit der
   Integration von GnuPG 2.2 eingeführt.<br>
-  » Mehr Details zu den <a href="https://www.gnupg.org/faq/whats-new-in-2.1.html">
+  » Technische Details zu den <a href="https://www.gnupg.org/faq/whats-new-in-2.1.html">
   Änderungen in GnuPG 2.2</a>.
 
   <li>
   Um die Benutzung der Kryptografie weiterhin freundlicher zu gestalten, werden
-  öffentliche Schlüssel nun automatisch heruntergeladen. – 
+  öffentliche Schlüssel nun automatisch heruntergeladen. –
   Die meisten Nutzer möchten eine grundliegende Stufe an Vertraulichkeit bei Ihrem
   Datei- bzw. E-Mail-Austausch ohne sich mit kryptografischen Details, wie
   dem Austausch von OpenPGP-Schlüsseln, auseinandersetzen zu müssen. Gpg4win 3.0 bietet
   dazu die Implementation eines Konzeptes namens "Web Key Directory"
-  (WKD, oder teilweise auch "Web Key Service" genannt). 
-  In der Standardkonfiguration wird Gpg4win versuchen öffentliche Schlüssel herunterzuladen, 
+  (WKD, oder teilweise auch "Web Key Service" genannt).
+  In der Standardkonfiguration wird Gpg4win versuchen öffentliche Schlüssel herunterzuladen,
   basierend auf der gesuchten E-Mail-Adresse. Diese Verhalten kann natürlich
   abgeschaltet werden.<br>
-  » Mehr Details zu <a href=https://wiki.gnupg.org/WKD>WKD</a> und den  
-  <a href="https://www.gnupg.org/documentation/manuals/gnupg/GPG-Configuration-Options.html">
+  » Mehr Details (auf Englisch) zu
+    <a href=https://wiki.gnupg.org/WKD>WKD</a> und den
+    <a href="https://www.gnupg.org/documentation/manuals/gnupg/GPG-Configuration-Options.html">
   GnuPG-Konfigurationsoptionen</a> ('--auto-key-retrieve' und '--auto-key-locate').
 
 </ul>
@@ -69,8 +70,6 @@ PAGE_START
     <li>Neue Smartcard Verwaltungsübersicht.
     <li>Neuer Begrüßungsdialog (wenn noch kein Schlüssel vorhanden ist).
     <li>Dialog für Schlüsseldetails überarbeitet.
-    <li>Neue Unterstützung für den automatischen Import von fehlenden öffentlichen
-    Schlüsseln (per WKD).
     <li>Viele UI- und Stabilitätsverbesserung sowie zusätzliche Übersetzungen.
 </ul>
 

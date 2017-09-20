@@ -28,6 +28,8 @@ PAGE_START
     New user interface for encrypt/decrypt. Shows the state of encryption directly
     in the mail window.
     <li>
+    Automatic decryption of mails (without popup).
+    <li>
     Support for sending and receiving HTML emails.
 </ul>
 
@@ -35,19 +37,19 @@ PAGE_START
 <ul>
   <li>
   Support of Elliptic Curve Cryptography (ECC) by integration
-  of the upcoming GnuPG 2.2 release candidate.<br>
-  » More details about <a href="https://www.gnupg.org/faq/whats-new-in-2.1.html">
+  of GnuPG 2.2.<br>
+  » Technical details about <a href="https://www.gnupg.org/faq/whats-new-in-2.1.html">
   all changes in GnuPG 2.2</a>.
 
   <li>
-  Preparing for better overall crypto user experience: Fetching
-  pubkeys by default. – Most users want some basic level of confidentiality for their email
+  Preparing for a better overall crypto user experience: Fetching
+  pubkeys by default. Most users want some basic level of confidentiality for their email
   and file exchanges without having to deal with crypto details
   like distributing and checking pubkeys and their signatures.
   Gpg4win 3.0 provides an implementation of a concept called "Web Key
   Directory" (WKD, or also "Web Key Service").
-  In default configuration Gpg4win tries to fetch missing pubkeys and find them for a
-  given email address. This behavior can be switched off, of
+  By default Gpg4win tries to find and download missing pubkeys by
+  the given email address. This behavior can be switched off, of
   course.<br>
   » More Details about <a href=https://wiki.gnupg.org/WKD>WKD</a> and 
   <a href="https://www.gnupg.org/documentation/manuals/gnupg/GPG-Configuration-Options.html">
@@ -58,15 +60,13 @@ PAGE_START
 <h2>Crypto-Manager (Kleopatra)</h2>
 <ul>
     <li>The file-encryption dialogues have been redesigned to
-    reduce the clicks and enhance the user experience.
-    <li>Kleopatra recognizes automatically the kind of a crypto-file
+    reduce clicks and enhance the user experience.
+    <li>Kleopatra automatically recognizes crypto-file types
     and executes the according action on a double-click (e.g.
     decrypting an encrypted file).
     <li>New smart-card management view.
-    <li>New first start dialogue (when key management is empty).
-    <li>Detail-view on key-details has been improved.
-    <li>Support for automatic import of missing pubkeys has been
-    implemented (WKD).
+    <li>New startup dialogue (if no secret key is available).
+    <li>View on key-details has been improved.
     <li>Many UI- and stability improvements and additional translations.</li>
 </ul>
 
@@ -75,8 +75,8 @@ PAGE_START
     <li>Added and enabled by default: a check over the internet
     for available updates, which will notify the user.
     <li>A more straight forward installation process.
-    <li>Installation as normal user (without administration priviledges)
-    now possible.
+    <li>Installation options as normal user
+        (without administration priviledges).
     <li>Gpg4win compendium (German version) has been completely overhauled.
     We are looking for people to help us translating the changes back
     into English and other languages.
