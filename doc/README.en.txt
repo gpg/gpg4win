@@ -147,6 +147,7 @@ New in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
   * Crypto mails forwarded as attachment are not properly handled.
 
   * The certificate selection dialog sometimes opens in the background and
+http://www.gpg4win.de/doc/de/gpg4win-compendium_35.html
     needs an overhaul.
 
   * Localization is incomplete
@@ -182,10 +183,10 @@ New in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 ===============
 
 For installation instructions please read the new Gpg4win Compendium:
-http://www.gpg4win.org/doc/en/gpg4win-compendium_11.html
+https://files.gpg4win.org/doc/gpg4win-compendium-en.pdf
 
 Hints for automated installations (without user dialogs):
-http://www.gpg4win.org/doc/en/gpg4win-compendium_35.html
+https://files.gpg4win.org/doc/gpg4win-compendium-en.pdf
 
 
 5. Version History

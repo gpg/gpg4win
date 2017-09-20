@@ -198,12 +198,11 @@ Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 ===============
 
 Eine Anleitung zur Installation von Gpg4win finden Sie im Gpg4win-Kompendium:
-http://www.gpg4win.de/doc/de/gpg4win-compendium_11.html
+https://files.gpg4win.org/doc/gpg4win-compendium-de.pdf
 
 Hinweise zur automatisierten Installation (ohne Benutzerdialoge)
 finden Sie im Anhang des Gpg4win-Komendiums:
-http://www.gpg4win.de/doc/de/gpg4win-compendium_35.html
-
+https://files.gpg4win.org/doc/gpg4win-compendium-de.pdf
 
 5. Versionsgeschichte
 =====================
