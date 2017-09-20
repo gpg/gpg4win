@@ -17,14 +17,23 @@ Aktuelle Meldungen gibt es auf der <a href="index-de.html">Startseite</a>.
 
 <div id="main">
 
+<h2>2017</h2>
+<ul>
+    <li><a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2017-July/000036.html">
+    2017-07-06: Gpg4win 2.3.4 veröffentlicht</a>
+</ul>
+
 <h2>2016</h2>
 <ul>
-    <li><a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2016-August/000035.html">2016-08-18 Gpg4win 2.3.3 veröffentlicht</a>
-    </li>
-    <li><a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2016-July/000034.html">2016-07-05 Gpg4win 2.3.2 veröffentlicht</a>
-    </li>
     <li>
-      <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2016-April/000033.html">2016-04-05 Gpg4win 2.3.1 veröffentlicht</a>
+    <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2016-August/000035.html">
+    2016-08-18: Gpg4win 2.3.3 veröffentlicht</a>
+    <li>
+    <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2016-July/000034.html">
+    2016-07-05: Gpg4win 2.3.2 veröffentlicht</a>
+    <li>
+    <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2016-April/000033.html">
+    2016-04-05: Gpg4win 2.3.1 veröffentlicht</a>
     </li>
 </ul>
 
@@ -32,21 +41,17 @@ Aktuelle Meldungen gibt es auf der <a href="index-de.html">Startseite</a>.
 <h2>2015</h2>
 <ul>
     <li>
-        <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2015-November/000032.html">2015-11-25 Gpg4win 2.3.0 veröffentlicht</a>
-        <br><small><a href="pm-20151125-de.html">Pressemitteilung</a></small>
-    </li>
+    <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2015-November/000032.html">
+    2015-11-25: Gpg4win 2.3.0 veröffentlicht</a>
+    <br><small><a href="pm-20151125-de.html">Pressemitteilung</a></small>
     <li>
-     <a
-         href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2015-September/000030.html"">2015-09-09 Gpg4win 2.2.6 veröffentlicht</a>
-    </li>
+    <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2015-September/000030.html">
+    2015-09-09: Gpg4win 2.2.6 veröffentlicht</a>
     <li>
-     <a
-         href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2015-July/000029.html">2015-07-10 Gpg4win 2.2.5 veröffentlicht</a>
-    </li>
-    <li><a
-        href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2015-March/000027.html">2015-03-18
-        Gpg4win 2.2.4 veröffentlicht</a>
-    </li>
+    <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2015-July/000029.html">
+    2015-07-10: Gpg4win 2.2.5 veröffentlicht</a>
+    <li><a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2015-March/000027.html">
+    2015-03-18: Gpg4win 2.2.4 veröffentlicht</a>
 </ul>
 <h2>2014</h2>
 <ul>

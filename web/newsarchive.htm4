@@ -18,46 +18,51 @@ The latest news are placed at the <a href="./">welcome page</a>.
 
 <div id="main">
 
+<h2>2017</h2>
+<ul>
+    <li>
+    <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2017-July/000071.html">
+    2017-07-06: Gpg4win 2.3.4 veröffentlicht</a>
+</ul>
+
 <h2>2016</h2>
 <ul>
-    <li><a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2016-August/000070.html">2016-08-18 Gpg4win 2.3.3 released</a>
-    </li>
     <li>
-      <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2016-July/000069.html">2016-07-05 GPG4win 2.3.2 released</a>
-    </li>
+    <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2016-August/000070.html">
+    2016-08-18: Gpg4win 2.3.3 released</a>
     <li>
-      <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2016-April/000068.html">2016-04-05 GPG4win 2.3.1 released</a>
-    </li>
+    <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2016-July/000069.html">
+    2016-07-05: GPG4win 2.3.2 released</a>
+    <li>
+    <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2016-April/000068.html">
+    2016-04-05: GPG4win 2.3.1 released</a>
 </ul>
 
 <h2>2015</h2>
 <ul>
     <li>
-        <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2015-November/000032.html">2015-11-25 Gpg4win 2.3.0 released</a>
-        <br><small><a href="pm-20151125-de.html">Presse release (German)</a></small>
-    </li>
+    <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2015-November/000032.html">
+    2015-11-25: Gpg4win 2.3.0 released</a>
+    <br><small><a href="pm-20151125-de.html">Presse release (German)</a></small>
     <li>
-     <a
-         href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2015-September/000065.html">2015-09-09 Gpg4win 2.2.6 released</a>
-    </li>
+    <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2015-September/000065.html">
+    2015-09-09: Gpg4win 2.2.6 released</a>
     <li>
-     <a
-         href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2015-July/000064.html">2015-07-10 Gpg4win 2.2.5 released</a>
-    </li>
+    <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2015-July/000064.html">
+    2015-07-10: Gpg4win 2.2.5 released</a>
     <li>
-      <a
-          href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2015-March/000063.html">2015-03-18 Gpg4win 2.2.4 released</a>
-    </li>
+    <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2015-March/000063.html">
+    2015-03-18: Gpg4win 2.2.4 released</a>
 </ul>
 
 <h2>2014</h2>
 <ul>
-    <li><a
-        href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2014-November/000062.html">2014-11-26 Gpg4win 2.2.3 released</a>
-    </li>
-    <li><a
-        href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2014-September/000061.html">2014-09-04: Gpg4win 2.2.2 released</a>
-    </li>
+    <li>
+    <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2014-November/000062.html">
+    2014-11-26: Gpg4win 2.2.3 released</a>
+    <li>
+    <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2014-September/000061.html">
+    2014-09-04: Gpg4win 2.2.2 released</a>
 </ul>
 
 <h2>2013</h2>
