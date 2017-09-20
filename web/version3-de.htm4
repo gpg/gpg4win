@@ -24,7 +24,8 @@ PAGE_START
     <li>
     Vollständige Unterstützung für den OpenPGP/MIME Standard in MS
     Outlook 2010/2013/2016 (32 und 64bit). Dies erlaubt das Senden und
-    Empfangen von Texten (in anderen Sprachen und Schriften) und Anhängen.
+    Empfangen von Texten mit Umlauten (oder anderen nicht-Englischen Zeichen)
+    und Anhängen.
     <li>
     Neue Benutzeroberfläche zur Ver- und Entschlüsselung sowie neue Anzeige des
     Crypto-Status im Mailfenster.
