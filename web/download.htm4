@@ -70,16 +70,6 @@ of Gpg4win VERSION here:</p>
 
 <h4>More Gpg4win-VERSION variants</h4>
 <ul>
-    <li>Gpg4win <em>without</em> Kleopatra and Gpg4win Compendium:<br>
-        <a href="LDOWNLOAD_URL">Gpg4win-Light VERSION</a> (Size: LDL_SIZE)<br>
-        <a href="https://files.gpg4win.org/gpg4win-light-VERSION.exe.sig">OpenPGP signature</a><br>
-        SHA256 checksum: <code>SHA2_EXL</code></li>
-
-    <li>Gpg4win with GnuPG component <em>only</em>:<br>
-        <a href="VDOWNLOAD_URL">Gpg4win-Vanilla VERSION</a> (Size: VDL_SIZE)<br>
-        <a href="https://files.gpg4win.org/gpg4win-vanilla-VERSION.exe.sig">OpenPGP signature</a><br>
-        SHA256 checksum: <code>SHA2_EXV</code></li>
-
     <li>Gpg4win source code package:<br>
         <a href="SDOWNLOAD_URL">gpg4win-VERSION.tar.bz2</a> (Size: SDL_SIZE)<br>
         <a href="https://files.gpg4win.org/gpg4win-VERSION.tar.bz2.sig">OpenPGP signature</a><br>
@@ -167,11 +157,6 @@ Please note that old releases may still contain meanwhile fixed security issues.
 <a href="http://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpg4win.git;a=tree">Gpg4win git repository</a>
 contains the current Gpg4win source code.</p>
 
-<p>
-Gpg4win documentation (<em>Gpg4win Compendium</em>) are available under:
-<a href="http://wald.intevation.org/frs/?group_id=11">http://wald.intevation.org/frs/?group_id=11</a>
-</p>
-
 
 <h2>Hints</h2>
 
@@ -182,12 +167,13 @@ We recommend to subscribe to the
 to be automatically informed about new releases and other
 important Gpg4win news.
 
+<!--
 <p>
 Is downloading very slow? Try this mirror server:
 <a href="MIRROR_IE_URL">Gpg4win mirror server in Ireland</a> (run by
 <a href="http://ftp.heanet.ie/about/">HEAnet</a>)
 </p>
-
+!-->
 </div>
 
 
