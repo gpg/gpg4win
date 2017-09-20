@@ -1,5 +1,5 @@
 m4_define(`VERSION',`3.0.0')
-m4_define(`DL_DATE',`2017-07-06')
+m4_define(`DL_DATE',`2017-09-19')
 m4_define(`DOWNLOAD_URL',`https://files.gpg4win.org/gpg4win-VERSION.exe')
 m4_define(`DL_SIZE',`25.9 MByte')
 m4_define(`SDOWNLOAD_URL',`https://files.gpg4win.org/gpg4win-VERSION.tar.bz2')
