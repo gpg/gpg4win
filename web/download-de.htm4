@@ -70,16 +70,6 @@ kann hier herunter geladen werden:</p>
 
 <h4>Weitere Gpg4win-VERSION Varianten</h4>
 <ul>
-    <li>Gpg4win <em>ohne</em> Kleopatra und Gpg4win-Kompendium:<br>
-        <a href="LDOWNLOAD_URL">Gpg4win-Light VERSION</a> (Größe: LDL_SIZE)<br>
-        <a href="https://files.gpg4win.org/gpg4win-light-VERSION.exe.sig">OpenPGP-Signatur</a><br>
-        SHA256-Prüfsumme: <code>SHA2_EXL</code></li>
-
-    <li>Gpg4win <em>nur</em> mit GnuPG-Komponente:<br>
-        <a href="VDOWNLOAD_URL">Gpg4win-Vanilla VERSION</a> (Größe: VDL_SIZE)<br>
-        <a href="https://files.gpg4win.org/gpg4win-vanilla-VERSION.exe.sig">OpenPGP-Signatur</a><br>
-        SHA256-Prüfsumme: <code>SHA2_EXV</code></li>
-
     <li>Gpg4win Quellcodepaket:<br>
         <a href="SDOWNLOAD_URL">gpg4win-VERSION.tar.bz2</a> (Größe: SDL_SIZE)<br>
         <a href="https://files.gpg4win.org/gpg4win-VERSION.tar.bz2.sig">OpenPGP-Signatur</a><br>
@@ -131,11 +121,6 @@ Sie hier:</p>
   </a>
 </div>
 
-<div class="dlbutton2">
-  <a href="./doc/de/gpg4win-compendium.html">Gpg4win-Kompendium COMPENDIUM_VERSION_DE
-  (HTML, Deutsch)</a>
-</div>
-
 <p>
 Lesen Sie die <a href="documentation-de.html">Dokumentationsseite</a>
 für weitere Informationen über verfügbare Gpg4win Dokumentationen.
@@ -169,11 +154,6 @@ Sicherheitslöcher weiterhin enthalten!
 <a href="http://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpg4win.git;a=tree">Gpg4win-Git-Repository</a>
 enthält den aktuellen Gpg4win-Quelltext.</p>
 
-<p>
-Die Gpg4win D<F2>okumentationen (<em>Gpg4win-Kompendium</em>) finden Sie unter:
-<a href="http://wald.intevation.org/frs/?group_id=11">http://wald.intevation.org/frs/?group_id=11</a>
-</p>
-
 
 <h2>Hinweise</h2>
 
@@ -185,13 +165,14 @@ um automatisch über neue Versionen und andere wichtige
 Neuigkeiten zu Gpg4win informiert zu werden.
 </p>
 
+<!--
 <p>
 Ist das Herunterladen immer langsam? Versuchen Sie diesen
 Spiegelserver:<br>
 <a href="MIRROR_IE_URL">Gpg4win Spiegelserver in Irland</a> (betrieben
 von <a href="http://ftp.heanet.ie/about/">HEAnet</a>)
 </p>
-
+--!>
 </div>
 
 

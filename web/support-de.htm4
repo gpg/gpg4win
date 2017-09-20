@@ -10,9 +10,9 @@ m4_define(`MAIN', `support')
 
 PAGE_START
 
-<div id="commnity>
+<div id="commnity">
 <div id="intro">
-<h2>Support für Gpg4win</h2>
+<h2>Community Support für Gpg4win</h2>
 <p>Helfen und helfen lassen</p>
 </div>
 
@@ -26,7 +26,7 @@ Der Support aus der Gemeinschaft ist erreichbar über
     <li><a
     href=https://wald.intevation.org/forum/forum.php?forum_id=21&group_id=11>
     Foren</a></li>
-    <li><a href=https://files.gpg4win.org/doc/gpg4win-compendium-de.pdf>
+    <li><a href=documentation-de.html>
     Dokumentation</a></li>
 </ul>
 Zeitnahe und erschöpfend richtige Antworten können natürlich nicht garantiert werden.
@@ -35,7 +35,7 @@ Zeitnahe und erschöpfend richtige Antworten können natürlich nicht garantiert
 </div>
 <div id="professional">
 <div id="intro">
-    <h1>Professioneller Support für Gpg4win</h1>
+    <h2>Professioneller Support für Gpg4win</h2>
     <p>Überlassen Sie die Arbeit den Experten.</p>
 </div>
 

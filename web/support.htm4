@@ -12,7 +12,7 @@ PAGE_START
 
 <div="community">
 <div id="intro">
-<h2>Support for Gpg4win</h2>
+<h2>Community Support for Gpg4win</h2>
 <p>Recieve help and help others</p>
 </div>
 
@@ -26,7 +26,7 @@ The community support is available through
     <li><a
     href=https://wald.intevation.org/forum/forum.php?forum_id=21&group_id=11>
     Forums</a></li>
-    <li><a href=https://files.gpg4win.org/doc/gpg4win-compendium-en.pdf>
+    <li><a href=documentation.html>
     Documentation</a></li>
 </ul>
 Due to the huge number of users, there is a good chance of
@@ -38,7 +38,7 @@ Naturally, timely and exhaustive answers can not be guaranteed.
 
 <div id="professional">
 <div id="intro">
-<h1>Professional Support for Gpg4win</h1>
+<h2>Professional Support for Gpg4win</h2>
 <p>You searching for help by experts?</p>
 </div>
 
