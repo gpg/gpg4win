@@ -31,7 +31,8 @@
      m4_ifelse(LANG_DE, `1', `
       <a href="version3-de.html">
         Gpg4win 3.0.0 veröffentlicht
-      </a></span>',`
+      </a></span>
+      <br><small><a href="https://files.gpg4win.org/press/3.0/PM-Gpg4win-3.0.pdf">Pressemitteilung</a></small>',`
       <a href="version3.html">
         Gpg4win 3.0.0 released
       </a></span>')
