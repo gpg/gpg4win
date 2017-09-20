@@ -24,23 +24,23 @@ of the upcoming GnuPG 2.2 release candidate.
 
 There are a lot more general improvements coming with GnuPG 2.2,
 for a long technical list, see
-https://www.gnupg.org/faq/whats-new-in-2.1.html</p>
+<a href=https://www.gnupg.org/faq/whats-new-in-2.1.html">
+https://www.gnupg.org/faq/whats-new-in-2.1.html</a></p>
 
 
 <p>Preparing for better overall crypto user experience: Fetching pubkeys
-by default.</br>
-</br>
-Most users want some basic level of confidentiality for their email
+by default.</p>
+
+<p>Most users want some basic level of confidentiality for their email
 and file exchanges without having to deal with crypto details
 like distributing and checking pubkeys and their signatures.
 An update to Gpg4win 3.0 will provide an implementation of a
-concept called 'web key directory/service'. Version 3.0 
-already contains some changes preparing for the concept:
+concept called 'web key directory/service'.
 It will by default try to fetch missing pubkeys and find them for a
 given email address. This behavior can be switched off, of course.
-For details see
+For details see</p>
 <ul>
-  <li>https://wiki.gnupg.org/WKD</li>
+  <li><a href=https://wiki.gnupg.org/WKD>https://wiki.gnupg.org/WKD</a></li>
   <li>'--auto-key-retrieve' and '--auto-key-locate' in the GnuPG documentation.</li>
 </ul>
 </p>
@@ -49,6 +49,7 @@ For details see
 <h3>Major Outlook-Support improvement for attachments and encodings</h3>
 <p>
 The included Outlook Plugin (GpgOL) has been completely overhauled.
+</p>
 <ul>
     <li>Complete support for OpenPGP/MIME in MS Outlook
     2007/2010/2013/2016 (32 and 64bit). This allows to send
@@ -58,9 +59,7 @@ The included Outlook Plugin (GpgOL) has been completely overhauled.
     in the mail window.</li>
     <li>Support for sending and receiving HTML Emails.</li>
 </ul>
-</p>
 <h3>Kleopatra (Crypto-Manager)</h3>
-<p>
 <ul>
     <li>The file-encryption dialogues have been redesigned to
     reduce the clicks and enhance the user experience.</li>
@@ -74,10 +73,8 @@ The included Outlook Plugin (GpgOL) has been completely overhauled.
     implemented (WKD).</li>
     <li>Many UI- and stability improvements and additional translations.</li>
 </ul>
-</p>
 
 <h3>And more</h3>
-<p>
 <ul>
     <li>Added and enabled by default: a check over the internet
     for available updates, which will notify the user.</li>
@@ -86,9 +83,6 @@ The included Outlook Plugin (GpgOL) has been completely overhauled.
     now possible.</li>
     <li>Gpg4win compendium (German version) has been completely overhauled.
     We are looking for people to help us translating the changes back
-    into English and other languages. However this probably cannot not
-    achieved for Gpg4win 3.0 as we want to improve some necessary
-    infrastructure for translations first, to make your life much easier.</li>
+    into English and other languages.</li>
 </ul>
-</p>
 </div>

@@ -14,8 +14,70 @@ PAGE_START
 <div id="intro">
 Ein Pressekit ist <a href="pressekit">hier</a> verfügbar.</br></br>
 <h2>Version 3</h2>
+<p>Gpg4win (GNU Privacy Guard for Windows) ist nun in Version 3 verfügbar.</p>
 </div>
 
 <div id="main">
 <h2>Was ist neu?</h2>
+<h3>GnuPG</h3>
+<p>Die Unterstützung zum erstellen und verwenden von Schlüsseln mit elliptischer Kurven
+Kryptografie (Elliptic Curve Cryptography - ECC) wurde mit der Implementation der
+neuen GnuPG 2.2 Veröffentlichung eingefügt. Eine ausführliche Liste an Änderungen
+in der neuen GnuPG 2.2 Version finden sie unter
+<a href="https://www.gnupg.org/faq/whats-new-in-2.1.html">
+https://www.gnupg.org/faq/whats-new-in-2.1.html</a>.</p>
+
+<p>Um die Benutzung der Kryptografie weiterhin freundlicher zu gestalten, werden
+öffentliche Schlüssel nun automatisch herunter geladen.</p>
+
+<p>Die meisten Nutzer möchten eine grundliegende Stufe an vertraulichkeit bei Ihrem
+Datei- bzw. EMail-Austausch, ohne sich kryptografischen Details, wie dem Tausch
+oder dem verteilen von Schlüsseln, auseinander zu setzen. Gpg4win 3.0 bietet
+dazu die Implementation eines Konzeptes namens 'web key directory/service'. In der
+Standardkonfiguration wird Gpg4win versuchen öffentliche Schlüssel herunter zu
+laden, basierend auf der gesuchten EMail Adresse. Diese Verhalten kann natürlich
+abgeschaltet werden. Für nähere Details:
+</p>
+<ul>
+  <li><a href=https://wiki.gnupg.org/WKD>https://wiki.gnupg.org/WKD</a></li>
+  <li>'--auto-key-retrieve' und '--auto-key-locate' in der GnuPG Dokumentation.</li>
+</ul>
+
+<h3>Große Outlook-Support verbesserungen for Anhänge und Formate</h3>
+<p>Das enthaltene Outlook Plugin (GpgOL) wurde vollständig überarbeitet.</p>
+<ul>
+    <li>Vollständige Unterstützung für den OpenPGP/MIME Standard in MS
+    Outlook 2007/2010/2013/2016 (32 und 64bit). Dies erlaubt das senden und
+    empfangen von Texten, in anderen Sprachen und Schriften, und Anhängen.</li>
+    <li>Änderungen in der Oberfläche um den Status der Verschlüsselung direkt
+    anzuzeigen.</li>
+    <li>Unterstützung für das Senden und Empfangen von HTML EMails.</li>
+</ul>
+
+<h3>Kleopatra (Krypto-Manager)</h3>
+<ul>
+    <li>Der Dateiverschlüsselungsdialog wurde vollständig überarbeitet um
+    die Anzahl der Klicks zu verringern und die Nutzererfahrung zu verbessern.</li>
+    <li>Kleopatra erkennt automatisch Dateitypen und führt passende Aktionen aus
+    (z.B. entschlüsseln einer Datei).</li>
+    <li>Neue Smartcard Verwaltungsübersicht.</li>
+    <li>Neuer Erst-Start-Dialog (wenn der Schlüsselspeicher leer ist).</li>
+    <li>Detail-Übersicht bey Schlüsseldetails wurde verbessert.</li>
+    <li>Untestützung für den automatischen Import von fehlenden öffentlichen
+    Schlüsseln wurde hinzugefügt (WKD).</li>
+    <li>Viele UI- und Stabilitätsverbesserung und zusätzliche Übersetzungen.</li>
+</ul>
+
+<h3>Mehr</h3>
+<ul>
+    <li>Updatebenachrichtungen: eine Überprüfung über das Internet
+    nach verfügbaren Updates wurde implementiert und standardmäßig
+    aktiviert.</li>
+    <li>Der Installationsprozess wurde überarbeitet.</li>
+    <li>Installation als normaler Nutzer (ohne Administator-Rechte) ist nun
+    möglich.</li>
+    <li>Das Gpg4win Kompendium (in deutscher Version) wurde vollständig
+    überarbeitet. Wir suchen nach Menschen, die uns helfen die Änderungen
+    in andere Sprachen zu übesetzten.</li>
+</ul>
 </div>
