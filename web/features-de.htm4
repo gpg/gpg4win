@@ -78,7 +78,7 @@ Prüfsummen funktioniert ebenso einfach wie das Erstellen.
 Gpg4win unterstützt die Verfahren sha1sum, sha256sum und md5sum.</p>
 </div>
 <div class="column3">
-<img src="img/sc-gpgex-explorer-options_cut_de.png">
+<img src="img/t250.sc-gpgex-contextmenu-signEncrypt_de.png">
 </div>
 
 <br clear="all"/>
@@ -91,7 +91,8 @@ in Microsoft Outlook zu signieren und zu verschlüsseln. Dabei werden auch
 Anhänge verschlüsselt. Das Signaturprüfen und Entschlüsseln
 funktioniert genauso einfach direkt in Outlook.
 </p>
-<img src="img/sc-ol-emailfolder_cut_de.png">
+<a href="img/sc-ol-emailfolder_cut_de.png">
+<img src="img/t250.sc-ol-emailfolder_cut_de.png"></a>
 </div>
 
 <div class="column2">

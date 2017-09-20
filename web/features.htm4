@@ -79,8 +79,8 @@ GUI. Gpg4win supports the hash algorithms SHA-1, SHA-256 and MD5.
 </p>
 </div>
 <div class="column3">
-<img src="img/sc-gpgex-explorer-options_cut_de.png">
-</div>
+<img src="img/t250.sc-gpgex-contextmenu-signEncrypt_de.png">
+</div> 
 
 <br clear="all"/>
 
@@ -92,7 +92,8 @@ emails directly in Microsoft Outlook. Attachments can
 be encrypted as well, in one go with the email body. Verifying
 signatures and decrypting messages is done directly in Outlook too.
 </p>
-<img src="img/sc-ol-emailfolder_cut_de.png">
+<a href="img/sc-ol-emailfolder_cut_de.png">
+<img src="img/t250.sc-ol-emailfolder_cut_de.png"></a>
 </div>
 
 <div class="column2">
