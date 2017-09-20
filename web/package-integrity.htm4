@@ -18,6 +18,41 @@ GnuPG web page on integrity checks</a>.
 
 <div id="main">
 
+<h2>Code Signing Certificate</h2>
+
+<p>All Gpg4win exe installer files since April 2016 are signed with the following code
+signing certificate:</p>
+
+<pre>
+      S/N: 1121A3D67EAB28AA86FD85728B57FA62630D
+   Issuer: CN=GlobalSign CodeSigning CA - SHA256 - G2,O=GlobalSign nv-sa,C=BE
+  Subject: 1.2.840.113549.1.9.1=#636F64657369676E696E6740696E7465766174696F6E2E6465,CN=Intevation GmbH,O=Intevation GmbH,L=Osnabrueck,ST=Niedersachsen,C=DE
+ sha1_fpr: DE:16:D5:97:2F:0B:73:95:F7:D9:1E:DC:1F:21:9B:0F:FE:89:FA:B3
+  md5_fpr: C0:98:08:94:D4:E7:97:3E:9D:F4:18:E4:5E:0A:2E:D7
+notBefore: 2016-03-30 16:54:41
+ notAfter: 2019-03-31 16:54:41
+</pre>
+<hr/>
+<p>Previously used code signing certificates were:</p>
+<pre>
+      S/N: 112117F638BDC993B761C6073D63C2F86EC4
+   Issuer: CN=GlobalSign CodeSigning CA - G2,O=GlobalSign nv-sa,C=BE
+  Subject: 1.2.840.113549.1.9.1=#636F64657369676E696E6740696E7465766174696F6E2E6465,CN=Intevation GmbH,O=Intevation GmbH,L=Osnabrueck,ST=Niedersachsen,C=DE
+ sha1_fpr: 15:94:27:DA:C1:6E:68:A4:DD:47:EF:04:D2:17:C5:56:00:CF:A0:EC
+  md5_fpr: 35:64:A0:D5:FC:6A:58:83:B8:C4:F7:1F:1C:F9:A6:9E
+notBefore: 2013-06-20 14:48:08
+ notAfter: 2016-09-10 09:27:26
+<pre>
+<pre>
+      S/N: 0100000000012A60AF8A8F
+   Issuer: CN=GlobalSign ObjectSign CA,OU=ObjectSign CA,O=GlobalSign nv-sa,C=BE
+  Subject: 1.2.840.113549.1.9.1=#636F64657369676E696E6740696E7465766174696F6E2E6465,CN=Intevation GmbH,O=Intevation GmbH,C=DE
+ sha1_fpr: B4:71:26:90:F0:3A:69:1E:F0:75:3F:8D:11:C9:EA:C3:6D:FB:7C:92
+  md5_fpr: 80:0E:E2:F9:6F:AC:F4:16:0F:B2:AB:65:CA:82:22:55
+notBefore: 2010-08-11 09:27:29
+ notAfter: 2013-08-11 09:27:26
+</pre>
+
 <h2>SHA256 checksums</h2>
 
 <pre>
@@ -80,40 +115,5 @@ the lengths you should get:</p>
 LEN_EXE  bytes for gpg4win-VERSION.exe
 LEN_EXS bytes for gpg4win-src-VERSION.exe
 LEN_SRC   bytes for gpg4win-VERSION.tar.bz2
-</pre>
-
-<h2>Code Signing Certificate</h2>
-
-<p>All Gpg4win exe installer files since April 2016 are signed with the following code
-signing certificate:</p>
-
-<pre>
-      S/N: 1121A3D67EAB28AA86FD85728B57FA62630D
-   Issuer: CN=GlobalSign CodeSigning CA - SHA256 - G2,O=GlobalSign nv-sa,C=BE
-  Subject: 1.2.840.113549.1.9.1=#636F64657369676E696E6740696E7465766174696F6E2E6465,CN=Intevation GmbH,O=Intevation GmbH,L=Osnabrueck,ST=Niedersachsen,C=DE
- sha1_fpr: DE:16:D5:97:2F:0B:73:95:F7:D9:1E:DC:1F:21:9B:0F:FE:89:FA:B3
-  md5_fpr: C0:98:08:94:D4:E7:97:3E:9D:F4:18:E4:5E:0A:2E:D7
-notBefore: 2016-03-30 16:54:41
- notAfter: 2019-03-31 16:54:41
-</pre>
-<hr/>
-<p>Previously used code signing certificates were:</p>
-<pre>
-      S/N: 112117F638BDC993B761C6073D63C2F86EC4
-   Issuer: CN=GlobalSign CodeSigning CA - G2,O=GlobalSign nv-sa,C=BE
-  Subject: 1.2.840.113549.1.9.1=#636F64657369676E696E6740696E7465766174696F6E2E6465,CN=Intevation GmbH,O=Intevation GmbH,L=Osnabrueck,ST=Niedersachsen,C=DE
- sha1_fpr: 15:94:27:DA:C1:6E:68:A4:DD:47:EF:04:D2:17:C5:56:00:CF:A0:EC
-  md5_fpr: 35:64:A0:D5:FC:6A:58:83:B8:C4:F7:1F:1C:F9:A6:9E
-notBefore: 2013-06-20 14:48:08
- notAfter: 2016-09-10 09:27:26
-<pre>
-<pre>
-      S/N: 0100000000012A60AF8A8F
-   Issuer: CN=GlobalSign ObjectSign CA,OU=ObjectSign CA,O=GlobalSign nv-sa,C=BE
-  Subject: 1.2.840.113549.1.9.1=#636F64657369676E696E6740696E7465766174696F6E2E6465,CN=Intevation GmbH,O=Intevation GmbH,C=DE
- sha1_fpr: B4:71:26:90:F0:3A:69:1E:F0:75:3F:8D:11:C9:EA:C3:6D:FB:7C:92
-  md5_fpr: 80:0E:E2:F9:6F:AC:F4:16:0F:B2:AB:65:CA:82:22:55
-notBefore: 2010-08-11 09:27:29
- notAfter: 2013-08-11 09:27:26
 </pre>
 </div>

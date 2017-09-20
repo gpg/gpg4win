@@ -3,6 +3,166 @@
 # The version number given below are for the standard installers as
 # distributed by www.gpg4win.org.
 
+Noteworthy changes in version 3.0.0 (2017-09-19)
+------------------------------------------------
+(en) German Compendium is now Updated to Version 4.0. It is
+     adjusted to the changes made in Gpg4win 3.0
+
+(de) Das deutsche Kompendium wurde auf Version 4.0 aktualisiert. Es
+     wurden die Änderungen die in Gpg4win 3.0 gemacht wurden
+     aufgenommen.
+
+(en) GnuPG is now of the modern 2.2 variant. See:
+     https://lists.gnupg.org/pipermail/gnupg-announce/2017q3/000413.html
+     for more information about this.
+
+(de) Es wird nun die moderne 2.2 Variante von GnuPG verwendet. Unter:
+     https://lists.gnupg.org/pipermail/gnupg-announce/2017q3/000413.html
+     finden sich mehr details dazu.
+
+(en) GpgOL is now also supported for 64bit Outlook.
+
+(de) Die 64bit variante von Outlook wird nun von GpgOL unterstützt.
+
+(en) GpgOL for Outlook 2010 and later now uses toggle buttons
+     to let you select Encypt and Sign. The operations are done
+     when the mail is sent, including all attachments,
+     using a standard format (MIME).
+
+(de) GpgOL für Outlook 2010 und spätere Versionen verwendet nun
+     Schaltknöpfe zur Auswahl ob eine Mail verschlüsselt und oder
+     signiert sein soll. Die operation erfolgt während des versendens,
+     dabei werden auch alle Anhänge mitverschlüsselt und ein
+     standartisiertes Format (MIME) verwendet.
+
+(en) GpgOL for Outlook 2010 and later now automatically decrypts mails
+     again.
+
+(de) GpgOL für Outlook 2010 und spätere Versionen entschlüsselt nun
+     wieder automatisch Mails.
+
+(en) All 68 KDE translations for Kleopatra are now included in Gpg4win.
+
+(de) Alle 68 KDE Übersetzungen von Kleopatra werden nun mit Gpg4win
+     installiert.
+
+(en) Kleopatra uses an updated icon theme.
+
+(de) Kleopatra verwendet ein aktualisertes Icon Set.
+
+(en) Kleopatra now shows the used curve in for ECC keys under technical
+     details.
+
+(de) Kleopatra zeigt nun die verwendete Kurve für ECC Schlüssel in den
+     Technischen Details an.
+
+(en) Kleopatra has been updated to a new set of base libraries.
+
+(de) Die von Kleopatra verwendeten Programmbibliotheken wurden aktualisiert.
+
+(en) Binaries are now all installed in a bin subdirectory. DBus
+     and kbuildsycoa are no longer required. This fixes the startup issues
+     of Kleopatra some users were facing.
+
+(de) Ausführbare Anwendungen werden nun im bin unterordner abgelegt. Die
+     hilfsanwendungen DBus und kbuildsycoca werden nicht mehr benötigt.
+     Dies läst eine Reihe von Kleopatra startproblemen die bei Manchen
+     Anwendern aufgetreten sind.
+
+(en) After importing a secret key in Kleopatra you will be asked to directly
+     mark it as your own key. (Ownertrust)
+
+(de) Nach dem import eines geheimen Schlüssels bietet Kleopatra nun gleich
+     an diesen einen eignen Schlüssel zu markieren. (Inhabervertrauen)
+
+(en) Kleopatra now allows you to create ECC keys in the Advanced Settings
+     during Key generation.
+
+(de) Kleopatra bietet nun in den Erweiterten Optionen bei der
+     Schlüsselerstellung an ECC Schlüssel zu erstellen.
+
+(en) Kleopatras file menu now also offers to encrypt Folders.
+
+(de) Es ist nun auch möglich über Kleopatras Dateimenü Ordner zu verschlüsseln.
+
+(en) Kleopatra has a new option to print a secret key through the paperkey tool.
+
+(de) Kleopatra bietet nun die Option einen Privaten Schlüssel mit Paperkey zu drucken.
+
+(en) GPA and Kleopatra are now registred for OpenPGP and S/MIME related file extensions.
+
+(de) GPA und Kleopatra werden nun als Anwendungen für OpenPGP und S/MIME Dateiendungen in
+     Windows registriert.
+
+(en) The file encryption dialog in Kleopatra has been redesigned to reduce steps and
+     improve user experience.
+
+(de) Der Dateiverschlüsselungsdialog von Kleopatra wurde neu Entworfen um weniger
+     Schritte zu enthalten und die Nutzererfahrung zu verbessern.
+
+(en) Kleopatra automatically detects the type of an input file and automatically starts
+     the corresponding action (e.g. decrypt).
+
+(de) Kleopatra erkennt nun automatisch um welche Dateiart es sich handelt und startet
+     die entsprechende Aktion (z.B. entschl+sseln) automatisch.
+
+(en) Symmetric (password only) encryption is now accessible through Kleopatra and can
+     be combined with public-key encryption.
+
+(de) Symmetrische (nur mit Passwort) verschlüsselung kann nun auch über Kleopatra
+     durchgeführt werden und mit Public-Key-Verschlüsselung kombiniert werden.
+
+(en) Pinentry now enables you to inspect the typed passphrase.
+
+(de) Pinentry erlaubt es nun die eingegebene Passprhase anzuzeigen.
+
+(en) Kleopatra now supports OpenPGP Smartcards management.
+
+(de) Kleopatra unterstützt nun OpenPGP Smartcards.
+
+(en) GpgOL for Outlook 2010 and later has a new interface to show
+     the signature / encryption state inside of Outlook.
+
+(de) GpgOL für Outlook 2010 und spätere Versionen hat ein neues
+     Benutzerinterface um den Crypostatus direkt im Mailfenster
+     anzuzeigen.
+
+(en) GnuPG now supports https and uses the https sks-keyserver pool
+     by default.
+
+(de) GnuPG unterstützt nun https und verwendet standardmässig den
+     https sks-keyserver pool.
+
+(en) GpgOL now supports sending and receiving HTML Mails
+
+(de) GpgOL unterstützt nun das senden und empfangen von HTML Mails
+
+(en) Kleopatra has improved file verification messages.
+
+(de) Kleopatra hat nun verbesserte Nachrichten beim Überprüfen von
+     Dateien.
+
+(en) Kleopatra now supports to directly import missing certificates
+     when verifying a file.
+
+(de) Kleopatra erlaubt es einem nun direkt fehlendene Zertifikate
+     beim Dateiüberprüfen zu importieren.
+
+(en) Many bugfixes and minor improvements.
+
+(de) Viele fehlerbehebungen und kleinere verbesserungen.
+
+~~~~~~~~~~~~~~~
+GnuPG:          2.2.1
+Kleopatra:      3.0.0
+GPA:            0.9.9
+GpgOL:          2.0.1
+GpgEX:          1.0.5
+Kompendium DE:  4.0.0
+Kompendium EN:  3.0.0
+~~~~~~~~~~~~~~~
+
+
 Noteworthy changes in version 2.3.4 (2017-07-06)
 ------------------------------------------------
 (en) The cryptography library libgcrypt has been updated to version
