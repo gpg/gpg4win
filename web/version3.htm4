@@ -11,78 +11,77 @@ m4_define(`MAIN', `version3')
 PAGE_START
 
 <div id="intro">
-A Presskit is available <a href="pressekit">here</a>.</br></br>
-<h2>Version 3</h2>
-<p>Gpg4win (GNU Privacy Guard for Windows) is now stable in Version 3.</p>
+<h2>Gpg4win 3</h2>
+<p>What's new in version 3?</p>
 </div>
 
 <div id="main">
-<h2>What's new?</h2>
-<h3>GnuPG</h3>
-<p>Support of Elliptic Curve Cryptography (ECC) by integration
-of the upcoming GnuPG 2.2 release candidate.
-
-There are a lot more general improvements coming with GnuPG 2.2,
-for a long technical list, see
-<a href=https://www.gnupg.org/faq/whats-new-in-2.1.html">
-https://www.gnupg.org/faq/whats-new-in-2.1.html</a></p>
-
-
-<p>Preparing for better overall crypto user experience: Fetching pubkeys
-by default.</p>
-
-<p>Most users want some basic level of confidentiality for their email
-and file exchanges without having to deal with crypto details
-like distributing and checking pubkeys and their signatures.
-An update to Gpg4win 3.0 will provide an implementation of a
-concept called 'web key directory/service'.
-It will by default try to fetch missing pubkeys and find them for a
-given email address. This behavior can be switched off, of course.
-For details see</p>
+<h2>GnuPG</h2>
 <ul>
-  <li><a href=https://wiki.gnupg.org/WKD>https://wiki.gnupg.org/WKD</a></li>
-  <li>'--auto-key-retrieve' and '--auto-key-locate' in the GnuPG documentation.</li>
+  <li>
+  Support of Elliptic Curve Cryptography (ECC) by integration
+  of the upcoming GnuPG 2.2 release candidate.<br>
+  » More details about <a href="https://www.gnupg.org/faq/whats-new-in-2.1.html">
+  all changes in GnuPG 2.2</a>.
+
+  <li>
+  Preparing for better overall crypto user experience: Fetching
+  pubkeys by default. – Most users want some basic level of confidentiality for their email
+  and file exchanges without having to deal with crypto details
+  like distributing and checking pubkeys and their signatures.
+  Gpg4win 3.0 provides an implementation of a concept called "Web Key
+  Directory" (WKD, or also "Web Key Service").
+  In default configuration Gpg4win tries to fetch missing pubkeys and find them for a
+  given email address. This behavior can be switched off, of
+  course.<br>
+  » More Details about <a href=https://wiki.gnupg.org/WKD>WKD</a> and 
+  <a href="https://www.gnupg.org/documentation/manuals/gnupg/GPG-Configuration-Options.html">
+  GnuPG configuration options</a> ('--auto-key-retrieve' und '--auto-key-locate').
+
 </ul>
-</p>
 
 
-<h3>Major Outlook-Support improvement for attachments and encodings</h3>
-<p>
-The included Outlook Plugin (GpgOL) has been completely overhauled.
-</p>
+<h2>GpgOL (Outlook Plugin)</h2>
+<p>The Outlook Plugin (GpgOL) has been completely overhauled:</p>
+
 <ul>
-    <li>Complete support for OpenPGP/MIME in MS Outlook
+    <li>
+    Complete support for OpenPGP/MIME in MS Outlook
     2007/2010/2013/2016 (32 and 64bit). This allows to send
     and receive text in other languages and attachments in a proper
-    way.</li>
-    <li>New user interface to display the state of encryption directly
-    in the mail window.</li>
-    <li>Support for sending and receiving HTML Emails.</li>
+    way.
+    <li>
+    New user interface for encrypt/decrypt. Shows the state of encryption directly
+    in the mail window.
+    <li>
+    Support for sending and receiving HTML emails.
 </ul>
-<h3>Kleopatra (Crypto-Manager)</h3>
+
+
+<h2>Kleopatra (Crypto-Manager)</h2>
 <ul>
     <li>The file-encryption dialogues have been redesigned to
-    reduce the clicks and enhance the user experience.</li>
+    reduce the clicks and enhance the user experience.
     <li>Kleopatra recognizes automatically the kind of a crypto-file
     and executes the according action on a double-click (e.g.
-    decrypting an encrypted file).</li>
-    <li>New smart-card management view.</li>
-    <li>New first start dialogue (when key management is empty).</li>
-    <li>Detail-view on key-details has been improved.</li>
+    decrypting an encrypted file).
+    <li>New smart-card management view.
+    <li>New first start dialogue (when key management is empty).
+    <li>Detail-view on key-details has been improved.
     <li>Support for automatic import of missing pubkeys has been
-    implemented (WKD).</li>
+    implemented (WKD).
     <li>Many UI- and stability improvements and additional translations.</li>
 </ul>
 
-<h3>And more</h3>
+<h2>And more</h2>
 <ul>
     <li>Added and enabled by default: a check over the internet
-    for available updates, which will notify the user.</li>
-    <li>A more straight forward installation process.</li>
+    for available updates, which will notify the user.
+    <li>A more straight forward installation process.
     <li>Installation as normal user (without administration priviledges)
-    now possible.</li>
+    now possible.
     <li>Gpg4win compendium (German version) has been completely overhauled.
     We are looking for people to help us translating the changes back
-    into English and other languages.</li>
+    into English and other languages.
 </ul>
 </div>
