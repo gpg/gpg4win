@@ -15,7 +15,23 @@ PAGE_START
 </div>
 
 <div id="main">
-<h2>GnuPG</h2>
+<h2>Outlook Plugin (GpgOL)</h2>
+
+<p>completely overhauled:</p>
+<ul>
+    <li>
+    Complete support for OpenPGP/MIME in MS Outlook
+    2010/2013/2016 (32 and 64bit). This allows to send
+    and receive text in other languages and attachments in a proper
+    way.
+    <li>
+    New user interface for encrypt/decrypt. Shows the state of encryption directly
+    in the mail window.
+    <li>
+    Support for sending and receiving HTML emails.
+</ul>
+
+<h2>Crypto-Backend (GnuPG 2.2)</h2>
 <ul>
   <li>
   Support of Elliptic Curve Cryptography (ECC) by integration
@@ -39,25 +55,7 @@ PAGE_START
 
 </ul>
 
-
-<h2>GpgOL (Outlook Plugin)</h2>
-<p>The Outlook Plugin (GpgOL) has been completely overhauled:</p>
-
-<ul>
-    <li>
-    Complete support for OpenPGP/MIME in MS Outlook
-    2007/2010/2013/2016 (32 and 64bit). This allows to send
-    and receive text in other languages and attachments in a proper
-    way.
-    <li>
-    New user interface for encrypt/decrypt. Shows the state of encryption directly
-    in the mail window.
-    <li>
-    Support for sending and receiving HTML emails.
-</ul>
-
-
-<h2>Kleopatra (Crypto-Manager)</h2>
+<h2>Crypto-Manager (Kleopatra)</h2>
 <ul>
     <li>The file-encryption dialogues have been redesigned to
     reduce the clicks and enhance the user experience.
