@@ -12,6 +12,9 @@ PAGE_START
 
 <div id="intro">
 <h2>System Requirements</h2>
+</div>
+
+<div id="main">
 <p>Gpg4win requires at least Windows XP (including Windows 10). Both 32 and
 64bit systems are supported.</p>
 
@@ -19,11 +22,10 @@ PAGE_START
 2010, 2013 and 2016 (both 32 and 64bit). GpgOL supports MS Exchange Server for
 Outlook 2010 and higher.</p>
 
-<h3>Other Systems</h3>
-<p>When using a <b>MacOS</b> based Operating System, you can use the
-<a href="https://gpgtools.org/">GPG Suite</a>.</p>
+<h2>Other Systems</h2>
+<p>With <b>MacOS X</b> you can use the <a href="https://gpgtools.org/">GPG Suite</a>.</p>
 
-<p>With a <b>GNU/Linux</b> based system, you can use your built-in paketmanager
+<p>With a <b>GNU/Linux</b> based systems you can use your built-in paketmanager to install GnuPG.
 Alternatively you can compile GnuPG directly from
 <a href="https://gnupg.org/index.html">the sources</a></p> by yourself.
 </div>

@@ -10,38 +10,27 @@ m4_define(`MAIN', `support')
 
 PAGE_START
 
-<div id="commnity">
 <div id="intro">
-<h2>Community Support für Gpg4win</h2>
-<p>Helfen und helfen lassen</p>
+<h2>Support für Gpg4win</h2>
 </div>
 
 <div id="main">
-<h2>Problem erkennen</h2>
-<p>
-Der Support aus der Gemeinschaft ist erreichbar über
+<h2>Community Support</h2>
+<p>Helfen und helfen lassen. – Freiwillige Nutzer und Entwickler von Gpg4win bietet kostenfreie Unterstützung an.
+Zeitnahe und erschöpfend richtige Antworten können natürlich nicht garantiert werden.</p>
 <ul>
     <li><a href=community-de.html>Mailing Listen</a></li>
     <li><a href=https://dev.gnupg.org>Bug Tracker</a></li>
-    <li><a
-    href=https://wald.intevation.org/forum/forum.php?forum_id=21&group_id=11>
+    <li><a href=https://wald.intevation.org/forum/forum.php?forum_id=21&group_id=11>
     Foren</a></li>
-    <li><a href=documentation-de.html>
-    Dokumentation</a></li>
+    <li><a href=documentation-de.html> Dokumentation</a></li>
 </ul>
-Zeitnahe und erschöpfend richtige Antworten können natürlich nicht garantiert werden.
-</p>
-</div>
-</div>
-<div id="professional">
-<div id="intro">
-    <h2>Professioneller Support für Gpg4win</h2>
-    <p>Überlassen Sie die Arbeit den Experten.</p>
-</div>
 
-<div id="main">
+<h2>Professioneller Support</h2>
 
-<h2>Antworten finden</h2>
+<p>Überlassen Sie die Arbeit den Experten. – Dieser Service ist kostenpflichtig!</p>
+
+<h3>Antworten finden</h3>
 <p>
 Werden zeitnahe Antworten, schnelle Anpassungen oder Korrekturen sowie
 allgemeine Beratung für den Einsatz (Installation, Konfiguration, etc.)
@@ -54,7 +43,7 @@ Dieser ist individuell zugeschnitten, daher
 finden Sie hier keine Preistabelle oder ähnliches.
 </p>
 
-<h2>Angebotsanfrage stellen</h2>
+<h3>Angebotsanfrage stellen</h3>
 <p>
 Bitte kontaktieren Sie uns
 <!--über das untenstehende Formular oder direkt an-->
@@ -76,7 +65,7 @@ sowie ggf. Rückfragen melden.
 </p>
 
 
-<h2>Unterstützungsart</h2>
+<h3>Unterstützungsart</h3>
 
 <p><b>Professionelle Unterstützung beim Einsatz von Gpg4win:</b><br>
 Sie haben z.B. ein Problem bei der Konfiguration in Ihrem
@@ -89,6 +78,4 @@ Sie vermissen eine wichtige Funktion in Gpg4win? Sie haben
 spezielle Vorstellungen, um die Weiterentwicklung von Gpg4win zu
 fördern? Dann kontaktieren Sie uns! Wir stellen Ihnen - nach
 Einschätzung unserer Entwicklern - ein individuelles Angebot zusammen.
-</p>
-</div>
 </div>
