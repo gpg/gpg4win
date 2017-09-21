@@ -45,11 +45,12 @@ PAGE_START
   Änderungen in GnuPG 2.2</a>.
 
   <li>
-  Um die Benutzung der Kryptografie weiterhin freundlicher zu gestalten, werden
-  öffentliche Schlüssel nun automatisch heruntergeladen. –
-  Die meisten Nutzer möchten eine grundliegende Stufe an Vertraulichkeit bei Ihrem
-  Datei- bzw. E-Mail-Austausch ohne sich mit kryptografischen Details, wie
-  dem Austausch von OpenPGP-Schlüsseln, auseinandersetzen zu müssen. Gpg4win 3.0 bietet
+  Um die Benutzung der Kryptografie noch Benutzer-freundlicher zu gestalten,
+  werden öffentliche Schlüssel nun automatisch heruntergeladen:
+  Die meisten Nutzer möchten ein grundlegendes Maß an Vertraulichkeit bei
+  Ihrem Datei- bzw. E-Mail-Austausch gewährleistet wissen, ohne sich mit
+  kryptografischen Details auseinandersetzen zu müssen, wie z.B. dem
+  manuellen Import und Validierung von OpenPGP-Schlüsseln. Gpg4win 3.0 bietet
   dazu die Implementation eines Konzeptes namens "Web Key Directory"
   (WKD, oder teilweise auch "Web Key Service" genannt).
   In der Standardkonfiguration wird Gpg4win versuchen öffentliche Schlüssel herunterzuladen,
