@@ -18,22 +18,22 @@ Noteworthy changes in version 3.0.0 (2017-09-19)
 
 (de) Es wird nun die moderne 2.2 Variante von GnuPG verwendet. Unter:
      https://lists.gnupg.org/pipermail/gnupg-announce/2017q3/000413.html
-     finden sich mehr details dazu.
+     finden sich mehr Details dazu.
 
 (en) GpgOL is now also supported for 64bit Outlook.
 
-(de) Die 64bit variante von Outlook wird nun von GpgOL unterstützt.
+(de) Die 64bit Variante von Outlook wird nun von GpgOL unterstützt.
 
 (en) GpgOL for Outlook 2010 and later now uses toggle buttons
-     to let you select Encypt and Sign. The operations are done
+     to let you select Encrypt and Sign. The operations are done
      when the mail is sent, including all attachments,
      using a standard format (MIME).
 
 (de) GpgOL für Outlook 2010 und spätere Versionen verwendet nun
      Schaltknöpfe zur Auswahl ob eine Mail verschlüsselt und oder
-     signiert sein soll. Die operation erfolgt während des versendens,
-     dabei werden auch alle Anhänge mitverschlüsselt und ein
-     standartisiertes Format (MIME) verwendet.
+     signiert sein soll. Die eigentliche Krypto-operation erfolgt
+     während des Versendens, dabei werden auch alle Anhänge verschlüsselt
+     und ein standartisiertes Format (MIME) verwendet.
 
 (en) GpgOL for Outlook 2010 and later now automatically decrypts mails
      again.
@@ -43,42 +43,42 @@ Noteworthy changes in version 3.0.0 (2017-09-19)
 
 (en) All 68 KDE translations for Kleopatra are now included in Gpg4win.
 
-(de) Alle 68 KDE Übersetzungen von Kleopatra werden nun mit Gpg4win
+(de) Alle 68 KDE-Übersetzungen von Kleopatra werden nun mit Gpg4win
      installiert.
 
 (en) Kleopatra uses an updated icon theme.
 
-(de) Kleopatra verwendet ein aktualisertes Icon Set.
+(de) Kleopatra verwendet ein aktualisiertes Icon Set.
 
 (en) Kleopatra now shows the used curve in for ECC keys under technical
      details.
 
-(de) Kleopatra zeigt nun die verwendete Kurve für ECC Schlüssel in den
-     Technischen Details an.
+(de) Kleopatra zeigt nun die verwendete Kurve für ECC-Schlüssel in den
+     technischen Details an.
 
 (en) Kleopatra has been updated to a new set of base libraries.
 
 (de) Die von Kleopatra verwendeten Programmbibliotheken wurden aktualisiert.
 
-(en) Binaries are now all installed in a bin subdirectory. DBus
+(en) Binaries are now all installed in a bin sub-directory. DBus
      and kbuildsycoa are no longer required. This fixes the startup issues
      of Kleopatra some users were facing.
 
-(de) Ausführbare Anwendungen werden nun im bin unterordner abgelegt. Die
-     hilfsanwendungen DBus und kbuildsycoca werden nicht mehr benötigt.
-     Dies läst eine Reihe von Kleopatra startproblemen die bei Manchen
-     Anwendern aufgetreten sind.
+(de) Ausführbare Anwendungen werden nun in einem Unterordner abgelegt. Die
+     Hilfsanwendungen DBus und kbuildsycoca werden nicht mehr benötigt.
+     Dies löst eine Reihe von Startproblemen von Kleopatra die bei Manchen
+     Nutzern auftraten.
 
 (en) After importing a secret key in Kleopatra you will be asked to directly
      mark it as your own key. (Ownertrust)
 
-(de) Nach dem import eines geheimen Schlüssels bietet Kleopatra nun gleich
-     an diesen einen eignen Schlüssel zu markieren. (Inhabervertrauen)
+(de) Nach dem Import eines geheimen Schlüssels bietet Kleopatra nun direkt
+     an diesen Schlüssel zu markieren. (sogenanntes "Inhabervertrauen")
 
 (en) Kleopatra now allows you to create ECC keys in the Advanced Settings
      during Key generation.
 
-(de) Kleopatra bietet nun in den Erweiterten Optionen bei der
+(de) Kleopatra bietet nun in den erweiterten Optionen bei der
      Schlüsselerstellung an ECC Schlüssel zu erstellen.
 
 (en) Kleopatras file menu now also offers to encrypt Folders.
@@ -104,17 +104,17 @@ Noteworthy changes in version 3.0.0 (2017-09-19)
      the corresponding action (e.g. decrypt).
 
 (de) Kleopatra erkennt nun automatisch um welche Dateiart es sich handelt und startet
-     die entsprechende Aktion (z.B. entschl+sseln) automatisch.
+     die entsprechende Aktion (z.B. entschlüsseln) automatisch.
 
 (en) Symmetric (password only) encryption is now accessible through Kleopatra and can
      be combined with public-key encryption.
 
-(de) Symmetrische (nur mit Passwort) verschlüsselung kann nun auch über Kleopatra
+(de) Symmetrische (nur mit Passwort) Verschlüsselung kann nun auch über Kleopatra
      durchgeführt werden und mit Public-Key-Verschlüsselung kombiniert werden.
 
 (en) Pinentry now enables you to inspect the typed passphrase.
 
-(de) Pinentry erlaubt es nun die eingegebene Passprhase anzuzeigen.
+(de) Pinentry erlaubt es nun die eingegebene Passphrase anzuzeigen.
 
 (en) Kleopatra now supports OpenPGP Smartcards management.
 
@@ -130,7 +130,7 @@ Noteworthy changes in version 3.0.0 (2017-09-19)
 (en) GnuPG now supports https and uses the https sks-keyserver pool
      by default.
 
-(de) GnuPG unterstützt nun https und verwendet standardmässig den
+(de) GnuPG unterstützt nun https und verwendet standardmäßig den
      https sks-keyserver pool.
 
 (en) GpgOL now supports sending and receiving HTML Mails
@@ -139,7 +139,7 @@ Noteworthy changes in version 3.0.0 (2017-09-19)
 
 (en) Kleopatra has improved file verification messages.
 
-(de) Kleopatra hat nun verbesserte Nachrichten beim Überprüfen von
+(de) Kleopatra hat nun verbesserte Nachrichten beim überprüfen von
      Dateien.
 
 (en) Kleopatra now supports to directly import missing certificates
@@ -150,7 +150,7 @@ Noteworthy changes in version 3.0.0 (2017-09-19)
 
 (en) Many bugfixes and minor improvements.
 
-(de) Viele fehlerbehebungen und kleinere verbesserungen.
+(de) Viele Fehlerbehebungen und kleinere Verbesserungen.
 
 ~~~~~~~~~~~~~~~
 GnuPG:          2.2.1
