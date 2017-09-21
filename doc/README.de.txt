@@ -54,81 +54,80 @@ Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
   https://www.gnupg.org/faq/whats-new-in-2.1.html (englisch)
   finden sich mehr details dazu.
 
-- Die 64bit variante von Outlook wird nun von GpgOL unterstützt.
-
 - GpgOL für Outlook 2010 und spätere Versionen verwendet nun
-  schaltknöpfe zur Auswahl ob eine Mail verschlüsselt und oder
-  signiert sein soll. Die operation erfolgt während des versendens,
+  Schaltknöpfe zur Auswahl, ob eine Mail verschlüsselt und/oder
+  signiert sein soll. Die Operation erfolgt während des Versendens,
   dabei werden auch alle Anhänge mitverschlüsselt und ein
-  standartisiertes Format (MIME) verwendet.
+  standardisiertes Format (MIME) verwendet.
 
 - GpgOL für Outlook 2010 und spätere Versionen entschlüsselt nun
   wieder automatisch Mails.
 
-- Alle 68 KDE übersetzungen von Kleopatra werden nun mit Gpg4win
+- Alle 68 KDE-Übersetzungen von Kleopatra werden nun mit Gpg4win
   installiert.
 
-- Kleopatra verwendet ein aktualisertes Icon Set.
+- Kleopatra verwendet ein aktualisertes Icon-Set.
 
-- Kleopatra zeigt nun die verwendete Kurve für ECC Schlüssel in den
-  Technischen Details an.
+- Kleopatra zeigt nun die verwendete Kurve für ECC-Schlüssel in den
+  technischen Details an.
 
 - Die von Kleopatra verwendeten Programmbibliotheken wurden aktualisiert.
 
-- Ausführbare Anwendungen werden nun im bin unterordner abgelegt. Die
-  hilfsanwendungen DBus und kbuildsycoca werden nicht mehr benötigt.
-  Dies löst eine Reihe von Kleopatra startproblemen die bei Manchen
+- Ausführbare Anwendungen werden nun in einem Unterordner abgelegt. Die
+  Hilfsanwendungen DBus und kbuildsycoca werden nicht mehr benötigt.
+  Dies löst eine Reihe von Startproblemen von Kleopatra, die bei manchen
   Anwendern aufgetreten sind.
 
-- Nach dem import eines geheimen Schlüssels bietet Kleopatra nun gleich
-  an diesen einen eignen Schlüssel zu markieren. (Inhabervertrauen)
+- Nach dem Import eines geheimen Schlüssels bietet Kleopatra nun direkt
+  an, diesen Schlüssel zu markieren (sogenanntes "Inhabervertrauen").
 
-- Kleopatra bietet nun in den Erweiterten Optionen bei der
-  Schlüsselerstellung an ECC Schlüssel zu erstellen.
+- Kleopatra bietet nun in den erweiterten Optionen bei der
+  Schlüsselerstellung an ECC-Schlüssel zu erstellen.
 
-- Kleopatra bietet nun die Option einen Privaten Schlüssel mit Paperkey zu drucken.
+- Kleopatra bietet nun die Option einen privaten Schlüssel mit Paperkey zu drucken.
 
 - Es ist nun auch möglich über Kleopatras Dateimenü Ordner zu verschlüsseln.
 
-- GPA und Kleopatra werden nun als Anwendungen für OpenPGP und S/MIME Dateiendungen in
+- GPA und Kleopatra werden nun als Anwendungen für OpenPGP- und S/MIME-Dateiendungen in
   Windows registriert.
 
-- Der Dateiverschlüsselungsdialog von Kleopatra wurde neu Entworfen um weniger
+- Der Dateiverschlüsselungsdialog von Kleopatra wurde neu entworfen, um weniger
   Schritte zu enthalten und die Nutzererfahrung zu verbessern.
 
-- Kleopatra erkennt nun automatisch um welche Dateiart es sich handelt und startet
+- Kleopatra erkennt nun automatisch, um welchen Dateityp es sich handelt und startet
   die entsprechende Aktion (z.B. entschlüsseln) automatisch.
 
-- Symmetrische (nur mit Passwort) verschlüsselung kann nun auch über Kleopatra
-  durchgeführt werden und mit Public-Key-Verschlüsselung kombiniert werden.
+- Symmetrische (nur mit Passwort) Verschlüsselung kann nun auch über Kleopatra
+  durchgeführt und mit Public-Key-Verschlüsselung kombiniert werden.
 
-- Pinentry erlaubt es nun die eingegebene Passprhase anzuzeigen.
+- Pinentry erlaubt es nun die eingegebene Passphrase anzuzeigen.
 
-- Kleopatra unterstützt nun OpenPGP Smartcards.
+- Kleopatra unterstützt nun die Verwaltung von OpenPGP-Smartcards.
 
 - GpgOL für Outlook 2010 und spätere Versionen hat ein neues
-  Benutzerinterface um den Crypostatus direkt im Mailfenster
+  Benutzerinterface, um den kryptografischen Status direkt im E-Mail-Fenster
   anzuzeigen.
 
-- GnuPG unterstützt nun https und verwendet standardmässig den
+- GnuPG unterstützt nun https und verwendet standardmäßig den
   https sks-keyserver pool.
 
-- GpgOL unterstützt nun das senden und empfangen von HTML Mails
+- GpgOL unterstützt nun das Senden und Empfangen von HTML-E-Mails.
 
-- Kleopatra hat nun verbesserte Nachrichten beim überprüfen von
+- Kleopatra hat nun verbesserte Nachrichten beim Überprüfen von
   Dateien.
 
 - Kleopatra erlaubt es einem nun direkt fehlendene Zertifikate
   beim Dateiüberprüfen zu importieren.
 
-- Viele Fehlerbehebungen und kleinere verbesserungen.
+- Viele Fehlerbehebungen und kleinere Verbesserungen.
+
 
 3. Anmerkungen
 ==============
 
 - Allgemein
 
-  * Für Version 3.0 planen wir eine einfache möglichkeit zu bieten in einen
+  * Für Version 3.0 planen wir eine einfache Möglichkeit zu bieten in einen
     automatisierten Modus zu wechseln. Dies wird die folgenden GnuPG Optionen
     setzen:
 
@@ -141,32 +140,24 @@ Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
     dies noch nicht angeboten.
 
     Sie können die Optionen manuell in der gpg.conf setzen. Das neue
-    vertrauensmodell wird von GpgOL bereits unterstützt.
-
-- Kleopatra
-
-  * Netkey Smartcards werden noch nicht von der neuen Smartcard ansicht
-  unterstützt.
+    Vertrauensmodell wird von GpgOL bereits unterstützt.
 
 - GpgOL
 
-  * Es ist nicht möglich mails zu verändern (z.B. sie zu verschieben oder
+  * Es ist nicht möglich E-Mails zu verändern (z.B. sie zu verschieben oder
     Flaggen zu setzen) während diese entschlüsselt betrachtet werden.
     Um dies zu umgehen schließen Sie die entsprechende Mail oder wählen
     Sie ab und modifzieren / verschieben diese dann über Rechtsklick oder
     Drag & Drop.
 
-  * Crypto mails die als Anhang weitergeleitet wurden werden nicht verarbeitet.
+  * Crypto E-Mails, die als Anhang weitergeleitet wurden, werden nicht verarbeitet.
 
   * Der Zertifikatsauswahldialog öffnet sich teilweise im Hintergrund und bedarf
     insgesamt einer Überarbeitung.
 
-  * Outlook 2003 und 2007 support is abgekündigt und wird in einer Zukunftigen
-    Version vollständig entfernt werden.
-
 - GpgOL für Outlook 2003 und 2007
 
-  Outlook 2003 und 2007 support is abgekündigt und wird in einer Zukunftige
+  Outlook 2003 und 2007 Support is abgekündigt und wird in einer zukunftige
   Version vollständig entfernt werden.
 
   * Sie sollten unbedingt vor der Installation von GpgOL
