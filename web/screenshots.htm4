@@ -67,9 +67,9 @@ src="img/sc-kleopatra-x509-personalDetails_de.png">
 </li>
 
 <li>
-<a href="img/sc-kleopatra-openpgp-personalDetails_de.png">
+<a href="img/sc-kleopatra-openpgp-certificateDetails_de.png">
 <img class="imgfloatleft imageframe"
-src="img/sc-kleopatra-openpgp-personalDetails_de.png">
+src="img/t250.sc-kleopatra-openpgp-certificateDetails_de.png">
 </a>
 <p>Details of an OpenPGP certificate.
 </p>
