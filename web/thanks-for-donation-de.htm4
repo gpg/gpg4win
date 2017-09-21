@@ -19,12 +19,6 @@ PAGE_START
 </div>
 
 <div id="main">
-<h2>Einstieg &ndash; die ersten Schritte:</h2>
-<ul>
-<li><a href="documentation.html">Lesen Sie das Gpg4win-Kompendium</a></li>
-<li><a href="community.html">Treten Sie der Gpg4win-Gemeinschaft bei</a></li>
-</ul>
-
-
+m4_include(`next-steps-de.htm4')
 </div>
 

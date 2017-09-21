@@ -1,0 +1,13 @@
+<h2>Get started &ndash; your next steps:</h2>
+
+<ol>
+  <li><a target="_blank" href="package-integrity.html">Check integrity</a> of the downloaded Gpg4win installer!
+
+  <li>Install Gpg4win.
+
+  <li>Create an OpenPGP key pair with Kleopatra. Sign/encrypt a file and email to yourself for testing.
+
+  <li><a href="documentation.html">Read more about the public key method (see chapter 1-5 in <a target="_blank" href="https://files.gpg4win.org/doc/gpg4win-compendium-en.pdf">Gpg4win Compendium</a>).
+
+  <li>Ask your questions and report your problems to <a target="_blank" href="community.html">Gpg4win Community</a>.
+</ol>
