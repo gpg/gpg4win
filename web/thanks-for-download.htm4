@@ -19,13 +19,6 @@ PAGE_START
 </div>
 
 <div id="main">
-<h2>Get started &ndash; your next steps:</h2>
-If you are interested in getting involved, then take a look at these pages:
-<ul>
-<li><a href="documentation.html">Read the Gpg4win Compendium</a></li>
-<li><a href="community.html">Join the Community</a></li>
-</ul>
-
-
+m4_include(`next-steps.htm4')
 </div>
 

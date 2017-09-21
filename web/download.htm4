@@ -68,7 +68,7 @@ of Gpg4win VERSION here:</p>
   <a href="change-history.html">Changelog</a>
 </p>
 
-<h4>More Gpg4win-VERSION variants</h4>
+<h4>More Gpg4win-VERSION downloads</h4>
 <ul>
     <li>Gpg4win source code package:<br>
         <a href="SDOWNLOAD_URL">gpg4win-VERSION.tar.bz2</a> (Size: SDL_SIZE)<br>
@@ -99,11 +99,9 @@ of Gpg4win VERSION here:</p>
 <p>After downloading
   please <a href="package-integrity.html">verify</a> the integrity of
   your Gpg4win package.  Then double-click on the file you have downloaded and
-  follow the instructions on the screen (or look at the <a
-      href="documentation.html">documentation</a>).</p>
-  </p>
-  <p>Read the current <a
-      href="https://files.gpg4win.org/README-VERSION.en.txt">README file</a>.
+  follow the instructions on the screen (or look at the
+  <a href="documentation.html">documentation</a>) and read the current
+  <a href="https://files.gpg4win.org/README-VERSION.en.txt">README file</a>.
 
 <h2>Gpg4win Compendium COMPENDIUM_VERSION_EN
 (Released: COMPENDIUM_DATE_EN)</h2>

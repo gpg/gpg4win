@@ -17,5 +17,5 @@ PAGE_START
 
 <div id="main">
   m4_include(`donation-form-de.htm4')
+  <p><small><a href="download-de.html">OpenPGP-Signaturen und Quellcodepaket »</a></small></p>
 </div>
-

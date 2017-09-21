@@ -68,14 +68,14 @@ kann hier herunter geladen werden:</p>
   <a href="change-history-de.html">Änderungshistorie</a>
 </p>
 
-<h4>Weitere Gpg4win-VERSION Varianten</h4>
+<h4>Weitere Gpg4win-VERSION Downloads</h4>
 <ul>
-    <li>Gpg4win Quellcodepaket:<br>
+    <li>Gpg4win-Quellcodepaket:<br>
         <a href="SDOWNLOAD_URL">gpg4win-VERSION.tar.bz2</a> (Größe: SDL_SIZE)<br>
         <a href="https://files.gpg4win.org/gpg4win-VERSION.tar.bz2.sig">OpenPGP-Signatur</a><br>
         SHA256-Prüfsumme: <code>SHA2_SRC</code></li>
 
-    <li>Alle Versionen und OpenPGP-Signaturen (auch per https) unter <a
+    <li>Alle Versionen und OpenPGP-Signaturen unter <a
         href="https://files.gpg4win.org/">https://files.gpg4win.org</a>.</li>
 
     <li>Zur Erstellung einer <b>portablen Gpg4win-Version</b> nutzen
@@ -100,12 +100,10 @@ kann hier herunter geladen werden:</p>
 
 <p>Nach Beendigung des
   Downloads <a href="package-integrity-de.html">verifizieren</a> Sie
-  bitte die Integrität des Gpg4win Paketes, dass sie heruntergeladen
+  bitte die Integrität des Gpg4win-Paketes, dass Sie heruntergeladen
   haben. Anschließend folgen Sie den Hinweisen zur Installation
-  im <a href="./doc/de/gpg4win-compendium.html">Gpg4win-Kompendium</a>.
-  </p>
-  <p>Lesen Sie die aktuelle <a
-      href="https://files.gpg4win.org/README-VERSION.de.txt">README-Datei</a>.
+  im <a href="documentation-de.html">Gpg4win-Kompendium</a> und
+  lesen Sie die aktuelle <a href="https://files.gpg4win.org/README-VERSION.de.txt">README-Datei</a>.
 
 <h2>Gpg4win-Kompendium COMPENDIUM_VERSION_DE
 (Veröffentlicht: COMPENDIUM_DATE_DE)</h2>
