@@ -15,12 +15,16 @@ PAGE_START
 </div>
 
 <div id="main">
-<p>Gpg4win requires at least Windows XP (including Windows 10). Both 32 and
-64bit systems are supported.</p>
+<p>Gpg4win runs on Windows versions 7 or newer (up to Windows 10).
+Both 32 and 64bit systems are supported. If you have at least Windows XP,
+some parts of Gpg4win can be used, but are not officially supported.
+</p>
 
-<p>The Outlook plugin GpgOL is compatible with Microsoft Outlook 2003, 2007,
-2010, 2013 and 2016 (both 32 and 64bit). GpgOL supports MS Exchange Server for
-Outlook 2010 and higher.</p>
+<p>The Outlook plugin GpgOL is compatible with Microsoft Outlook
+2010, 2013 and 2016 (both 32 and 64bit) and supports transporting
+emails via SMTP/IMAP and MS Exchange Server.
+For elder Outlook versions 2003 and 2007 less functionality is offered.
+</p>
 
 <h2>Other Systems</h2>
 <p>With <b>MacOS X</b> you can use the <a href="https://gpgtools.org/">GPG Suite</a>.</p>
