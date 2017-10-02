@@ -11,9 +11,9 @@ m4_undefine(`DE')
 
 <div id="intro">
 <h2>Integrität der Gpg4win-Pakete prüfen</h2>
-<p>Wie man die Integrität prüft, kann man z.B.
-auf der <a href="https://www.gnupg.org/download/integrity_check.de.html">
-GnuPG Seite zur Integritätsprüfung</a> nachlesen.
+<p>Wie man die Integrität prüft, kann man auf der 
+<a href="https://wiki.gnupg.org/Gpg4win/CheckIntegrity">
+Wiki-Seite zur Integritätsprüfung</a> nachlesen.
 </p>
 </div>
 
