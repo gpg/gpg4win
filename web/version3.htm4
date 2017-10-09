@@ -80,5 +80,8 @@ PAGE_START
     <li>Gpg4win compendium (German version) has been completely overhauled.
     We are looking for people to help us translating the changes back
     into English and other languages.
+    <li>Aiming for an approval to handle governmental documents that
+        are classified 'restricted' ('VS-NUR FÜR DEN DIENSTGEBRAUCH')
+        by the German Federal Office for Information Security (BSI).
 </ul>
 </div>
