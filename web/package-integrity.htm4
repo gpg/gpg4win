@@ -9,10 +9,9 @@ PAGE_START
 
 <div id="intro">
 <h2>Check integrity of Gpg4win packages</h2>
-<p>How to actually perform the checks can be found e.g.
-on the
-<a href="https://www.gnupg.org/download/integrity_check.html">
-GnuPG web page on integrity checks</a>.
+<p>How to actually perform the checks can be found on the
+<a href="https://wiki.gnupg.org/Gpg4win/CheckIntegrity">
+Wiki page on integrity checks</a>.
 </p>
 </div>
 
