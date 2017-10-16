@@ -348,7 +348,7 @@ msgstr ""
 
 msgctxt "T_XPisDeprecated"
 msgid ""
-"Windows Versions before Windows Vista are no longer maintained by Gpg4win.\n"
+"Windows Versions before Windows 7 are no longer maintained by Gpg4win.\n"
 "Support for them may be removed in a future version."
 msgstr ""
 
