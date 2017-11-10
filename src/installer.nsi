@@ -550,9 +550,10 @@ LangString T_FoundOldClaws ${LANG_ENGLISH} \
     Uninstall Claws Mail from Gpg4win now?"
 
 # From Function CheckClawsUninstall
-LangString T_XPisDeprecated ${LANG_ENGLISH} \
-   "Windows Versions before Windows Vista are no longer maintained by Gpg4win. \
-    $\r$\nSupport for them may be removed in a future version."
+LangString T_WinisDeprecated ${LANG_ENGLISH} \
+   "Windows Versions before Windows 7 are no longer maintained by Gpg4win. \
+    $\r$\nSupport for them may be removed in a future version.\
+    $\r$\n$\r$\nKleopatra is disabled."
 
 # FIXME: The GetAfterChar function comes from the NSIS wiki.
 Function un.GetAfterChar
@@ -701,8 +702,8 @@ initDone:
 !endif
   !insertmacro MUI_LANGDLL_DISPLAY
 
-${IfNot} ${AtLeastWinVista}
-    MessageBox MB_OK "$(T_XPisDeprecated)"
+${IfNot} ${AtLeastWin7}
+    MessageBox MB_OK "$(T_WinisDeprecated)"
 ${Endif}
 
   ${MementoSectionRestore}
