@@ -309,7 +309,7 @@ msgid ""
 "Windows Versions before Windows Vista are no longer maintained by Gpg4win.\n"
 "Support for them may be removed in a future version."
 msgstr ""
-"Versões do Windows anteriores ao Vista já não são mantidas pelo Gpg4win.\n"
+"Versões do Windows antes do Windows Vista já não são mantidas pelo Gpg4win.\n"
 "O suporte para eles pode ser removido numa versão futura."
 
 msgctxt "T_Installing_GnuPG"

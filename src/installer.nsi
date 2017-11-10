@@ -551,7 +551,7 @@ LangString T_FoundOldClaws ${LANG_ENGLISH} \
 
 # From Function CheckClawsUninstall
 LangString T_XPisDeprecated ${LANG_ENGLISH} \
-   "Windows Versions before Windows 7 are no longer maintained by Gpg4win. \
+   "Windows Versions before Windows Vista are no longer maintained by Gpg4win. \
     $\r$\nSupport for them may be removed in a future version."
 
 # FIXME: The GetAfterChar function comes from the NSIS wiki.
@@ -701,7 +701,7 @@ initDone:
 !endif
   !insertmacro MUI_LANGDLL_DISPLAY
 
-${IfNot} ${AtLeastWin7}
+${IfNot} ${AtLeastWinVista}
     MessageBox MB_OK "$(T_XPisDeprecated)"
 ${Endif}
 
