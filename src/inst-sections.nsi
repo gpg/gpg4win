@@ -738,11 +738,13 @@ Function CalcDepends
   # This drags in all the other KDE and Qt stuff.
   !insertmacro SelectSection ${SEC_kleopatra}
   skip_kleopatra:
+!ifndef SOURCES
   ${IfNot} ${AtLeastWin7}
     # Disable Kleo for Windows below 7
     SectionSetFlags ${SEC_kleopatra} 16
     !insertmacro SelectSection ${SEC_gpa}
   ${Endif}
+!endif
 !endif
 
 !ifdef HAVE_PKG_GNUPG_W32
@@ -828,10 +830,12 @@ Function CalcDepends
 !endif
 
 !ifdef HAVE_PKG_QTBASE
+  !ifndef SOURCES
   ${IfNot} ${AtLeastWin7}
     # Disable qt for Windows below 7
     !insertmacro UnSelectSection ${SEC_qtbase}
   ${Endif}
+  !endif
   !insertmacro SectionFlagIsSet ${SEC_qtbase} \
 		${SF_SELECTED} have_qt skip_qt
   have_qt:
