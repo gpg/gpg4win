@@ -664,7 +664,7 @@ sha256sum.exe: sha1sum.c
 	$(STRIP) $@
 
 mkportable.exe: mkportable.c \
-                mkportable-vanilla.h mkportable-light.h mkportable-full.h
+                mkportable-vanilla.h mkportable-full.h
 	$(CC) -O2 -o $@ $(srcdir)/mkportable.c
 	$(STRIP) $@
 
