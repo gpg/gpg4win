@@ -46,6 +46,11 @@
    gcc only writes one copy of a constant string, this doesn't
    require too much extra space.
 
+   To generate the lists install Gpg4win foll and take only the
+   GnuPG part to create the vanilla file. Then use GnuPG
+   and the Gpg4win directory together to create the full
+   file.
+
    The lists have initially been created by running
 
      find . -type f | sed 's,^./,  ",' | awk '{print $0 "\","}'
@@ -55,11 +60,10 @@
    wildcards.  Note that using a wildcard makes the presence of a
    source file optional.  */
 #include "mkportable-vanilla.h"
-#include "mkportable-light.h"
 #include "mkportable-full.h"
 
 static int verbose;
-static enum { iVANILLA = 0, iLIGHT, iFULL } install_type;
+static enum { iVANILLA = 0, iFULL } install_type;
 static const char *install_name;
 static const char *target_dir;
 static const char * const *filelist;
@@ -314,12 +318,15 @@ make_targetname (const char *name)
 {
   const char *tdir = target_dir;
   char *fname;
+  int offset = 0;
 
   fname = xmalloc (strlen (tdir) + 1 + strlen (name) + 1);
   strcpy (fname, tdir);
   if (*fname && fname[strlen (fname)-1] != '/')
     strcat (fname, "/");
-  strcat (fname, name);
+  if (!strncmp (name, "../GnuPG/", 9))
+    offset = 9;
+  strcat (fname, name + offset);
   return fname;
 }
 
@@ -411,6 +418,11 @@ copy_file (const char *name, const char *name2)
 
   srcname = make_sourcename (name);
   dstname = make_targetname (name2? name2:name);
+
+  if (verbose > 2)
+    {
+      inf ("srcname '%s' target '%s'", srcname, dstname);
+    }
 
   srcfp = fopen (srcname, "rb");
   if (!srcfp)
@@ -590,16 +602,6 @@ copy_all_files (void)
         return 1;
     }
 
-  /* Pinentry is special.  Depending on the installation type we need
-     to install a copy under the name pinentry.exe.  */
-  switch (install_type)
-    {
-    case iFULL:    copy_file ("pinentry-qt.exe",   "pinentry.exe"); break;
-    case iLIGHT:   copy_file ("pinentry-gtk-2.exe", "pinentry.exe"); break;
-    case iVANILLA: copy_file ("pinentry-w32.exe",   "pinentry.exe"); break;
-    }
-
-
   return 0;
 }
 
@@ -684,7 +686,7 @@ write_ctl_file (void)
   char *name;
   FILE *fp;
 
-  name = make_targetname ("gpgconf.ctl");
+  name = make_targetname ("bin/gpgconf.ctl");
   fp = fopen (name, "wb");
   if (!fp)
     {
@@ -746,7 +748,6 @@ usage (int mode)
          "\n"
          "Options:\n"
          "  --vanilla   create a bare GnuPG version [default]\n"
-         "  --light     create a light version\n"
          "  --full      create a full version\n"
          "  --verbose   enable extra informational output\n"
          "  --force     force installation to a non-empty directory\n"
@@ -795,11 +796,6 @@ main (int argc, char **argv)
           install_type = iVANILLA;
           argc--; argv++;
         }
-      else if (!strcmp (*argv, "--light"))
-        {
-          install_type = iLIGHT;
-          argc--; argv++;
-        }
       else if (!strcmp (*argv, "--full"))
         {
           install_type = iFULL;
@@ -819,7 +815,6 @@ main (int argc, char **argv)
   switch (install_type)
     {
     case iVANILLA: filelist = vanilla_files; install_name = "vanilla"; break;
-    case iLIGHT:   filelist = light_files;   install_name = "light"; break;
     case iFULL:    filelist = full_files;    install_name = "full"; break;
     default:  assert (!"bug");
     }

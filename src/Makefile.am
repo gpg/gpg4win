@@ -24,7 +24,7 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
         g4wihelp.nsi slideshow.cpp \
         inst-sections.nsi installer.nsi installer-finish.nsi  \
 	zlib.pc sha1sum.c mkportable.c     \
-	mkportable-vanilla.h mkportable-light.h mkportable-full.h \
+	mkportable-vanilla.h mkportable-full.h \
         potomo Memento.nsh \
         inst-gpg4win.nsi	   uninst-gpg4win.nsi	      \
         inst-atk.nsi               uninst-atk.nsi	      \
