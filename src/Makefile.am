@@ -91,8 +91,6 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
         slideshow/slide3-kleopatra.png \
         slideshow/slide4-summary.png
 
-SUBDIRS = dictionaries
-
 gpg4win_readme_ll = en de ar es fr ru pt
 
 README_files = $(addsuffix .txt,$(addprefix README.,$(gpg4win_readme_ll)))
