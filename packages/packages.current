@@ -238,8 +238,8 @@ server http://files.gpg4win.org/src
 # last-changed: 2017-09-12
 # by: ah
 # verified: Sig 5B80 C575 4298 F0CB  55D8 ED6A BCEF 7E29 4B09 2E28
-file gpgol/gpgol-2.0.1.tar.bz2
-chk  0872f2f6d11b6b9d227f460a86fa8ae00d18eba812f36a4ed94a1663fe49f74b
+file gpgol/gpgol-2.0.2.tar.bz2
+chk  4f378e4e18523bb378ac0d627a59415085fd4394793b6fed11c684f20ef1fba6
 
 #
 # GpgEX
@@ -281,23 +281,23 @@ server ftp://ftp.gnupg.org/gcrypt
 
 # last-changed: 2016-11-14
 # by: ah
-file libgpg-error/libgpg-error-1.25.tar.bz2
-chk  f628f75843433b38b05af248121beb7db5bd54bb2106f384edac39934261320c
+file libgpg-error/libgpg-error-1.27.tar.bz2
+chk  4f93aac6fecb7da2b92871bb9ee33032be6a87b174f54abf8ddf0911a22d29d2
 
 # last-changed: 2016-07-22
 # by: ah
-file libassuan/libassuan-2.4.3.tar.bz2
-chk  22843a3bdb256f59be49842abf24da76700354293a066d82ade8134bb5aa2b71
+file libassuan/libassuan-2.4.4.tar.bz2
+chk  9e69a102272324de0bb56025779f84fd44901afcc6eac51505f6a63ea5737ca1
 
 # last changed: 2017-11-07
 # by: js
-name gnupg-w32-2.2.2-20171107-bin.exe
-file binary/gnupg-w32-2.2.2_20171107.exe
-chk  846477967a8cb934438ecbb6c8032c19e652c1d31d772fe02e9e40555e2f68ea
+#name gnupg-w32-2.2.2-20171107-bin.exe
+#file binary/gnupg-w32-2.2.2_20171107.exe
+#chk  846477967a8cb934438ecbb6c8032c19e652c1d31d772fe02e9e40555e2f68ea
 
-name gnupg-w32-2.2.2-20171107-src.tar.xz
-file binary/gnupg-w32-2.2.2_20171107.tar.xz
-chk  fe515ef3245154a03787c6b87d6439e30d2772a4e83baa725f192da7d0bcd2bd
+#name gnupg-w32-2.2.2-20171107-src.tar.xz
+#file binary/gnupg-w32-2.2.2_20171107.tar.xz
+#chk  fe515ef3245154a03787c6b87d6439e30d2772a4e83baa725f192da7d0bcd2bd
 
 # last changed: 2016-01-17
 # by: ah
@@ -514,18 +514,21 @@ chk 40c874c98c0eb0c76e9a5015aab5d5ed791c1e0bed138f412fb496031e80eb3f
 server http://files.intevation.de/projects/gpg4all
 
 # by: ah
-file gpgme/gpgme-1.10.0-beta75.tar.bz2
-chk  1aecd6b22507f6b0c27afe6dc6f6d3fa4c813bbaef46199a9e4ac7f7359aef89
+file gpgme/gpgme-1.10.0-beta80.tar.bz2
+chk  8ce467c5f72543a025197b8aeac9b6476db14b70401302491af9ccb1e0bf48d2
 
-# Switched back to stable
-# GnuPG 2.2.x branch
-#name gnupg-w32-2.2.1-beta9-20170912-bin.exe
-#file gnupg/gnupg-w32-2.2.1-beta9_20170912.exe
-#chk  25486bfdf0913f309eff167d55078f8169ee9e6a8ac3334999d9489c3849d4d4
+# Switch back to stable on next release
+# GnuPG 2.2.2 Patched with git revs:
+# 5ecef193bc2144e6d51a6bd5727bfd08a0d28b66 (kbx corruption)
+# 878b8bfdcc3a8becfc46b9287a2d14cd3c875f28 (gpgtar file names)
+# 4f5afaf1fdb5cb13859aca390ccb5a1ba1dba00c (registry access)
+name gnupg-w32-2.2.2-20171116-bin.exe
+file gnupg/gnupg-w32-2.2.2_20171116.exe
+chk  1e900099346919944e9c0c29a275f2fdaa9c544ea81ef12731e19bffef7a6d8e
 
-#name gnupg-w32-2.2.1-beta9-20170912-src.tar.xz
-#file gnupg/gnupg-w32-2.2.1-beta9_20170912.tar.xz
-#chk  8d55c4d5ecc570e4d56c3cad2b8a88f49cd9f6b797efb0cc6978b37f2f27bf2f
+name gnupg-w32-2.2.2-20171116-src.tar.xz
+file gnupg/gnupg-w32-2.2.2_20171116.tar.xz
+chk  b87c67f07b5dd2dc375adf9d6026add22c0703efcc0b4640d379fc02180b68fc
 
 # Libkleo
 # last changed: see package date.
@@ -538,16 +541,16 @@ chk 4923b327005eaec0f75ce3411c80d2ff23a92a162d2285b8bb7366a280d320e1
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah with script kde-l10n.sh
-file kde-l10n/kde-l10n-201708221602-bin.tar.xz
-chk e43d329e80a5a0b19d3de46ddba629e6f221aa6be3a6480477e8fd118e7f1b94
+file kde-l10n/kde-l10n-201711161035-bin.tar.xz
+chk e8e175b6fced87f28dc1fc66cad88df6e0794df631350102e9d4b39512efe613
 
 
-file kde-l10n/kde-l10n-201708221602-src.tar.xz
-chk 2606958008a06b5bcb2de9e0c237f3ffa2e132ca025c4393e1cba8bcfe7a64be
+file kde-l10n/kde-l10n-201711161035-src.tar.xz
+chk 1d27bcbf9b01c1568ea11d8b9d870b3afed8b1f3f3251d402394790c8779c6b6
 
 # Kleopatra
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah.
-file kleopatra/kleopatra-201709081511.tar.gz
-chk 33414563567050e19f8f1921623fd7186072802ad087ff0f168ab0adda9ed558
+file kleopatra/kleopatra-201711161242.tar.gz
+chk 25913fdf99aec23262258c13180b72d4e236e97676a5b5f630492a91fc387acc
