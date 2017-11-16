@@ -3,14 +3,55 @@
 # The version number given below are for the standard installers as
 # distributed by www.gpg4win.org.
 
-Noteworthy changes in Version 3.x.x (UNRELEASED)
+Noteworthy changes in Version 3.0.1 (UNRELEASED)
 ------------------------------------------------
+
+(en) GpgOL: A cause for seemingly random crashes in GpgOL has been
+     fixed.
+
+(de) GpgOL: Eine ursache für augenscheinlich zufällige Abstürze
+     von Outlook wurde beseitigt.
+
+(en) GpgOL: A crash when pasting recipients has been fixed.
+
+(de) GpgOL: Ein Absturz wenn Empfänger über einfügen hinzugefügt
+     wurden ist behoben.
+
+(en) GpgOL: Various problems regarding S/MIME mails have been fixed.
+
+(de) GpgOL: Verschiedene Probleme mit S/MIME mails wurden behoben.
+
+(en) GpgOL: A user interface error for Outlook 2010 has been fixed.
+
+(de) GpgOL: Ein Benutzerschnittstellen-Fehler in Outlook 2010 wurde
+     behoben.
+
+(de) Kleopatra: Various problems regarding S/MIME File operations
+     have been fixed.
+
+(en) Kleopatra: Fehler bei S/MIME Dateioperationen wurden behoben.
+
+(de) Kleopatra: Various problems regading folder operations and
+     archives have been fixed.
+
+(en) Kleopatra: Verschiedene Probleme im Umgang mit Dateiordnern
+     und Archiven wurden behoben.
+
+(en) The mkportable process can be used again to create a portable
+     Gpg4win variant.
+
+(de) Der mkportable Prozess kann wieder verwendet werden um einen
+     portable Gpg4win variante zu erstellen.
+
+(en) GnuPG: Has been updated to version 2.2.2.
+
+(de) GnuPG: Wurde auf Version 2.2.2 aktualisiert.
 
 ~~~~~~~~~~~~~~~
 GnuPG:          2.2.2
 Kleopatra:      3.0.0
 GPA:            0.9.9
-GpgOL:          2.0.1
+GpgOL:          2.0.2
 GpgEX:          1.0.5
 Kompendium DE:  4.0.0
 Kompendium EN:  3.0.0
