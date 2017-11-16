@@ -1,0 +1,130 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From 4f9c720433aabc37484bc4f365efc5949f8fa3f0 Mon Sep 17 00:00:00 2001
+From: Andre Heinecke <aheinecke@intevation.de>
+Date: Thu, 16 Nov 2017 12:43:38 +0100
+Subject: [PATCH] Use table view reading pane for OL <= 2013
+
+* src/explorer-events.cpp (EVENT_SINK_INVOKE),
+src/ribbon-callbacks.cpp (get_mail_from_control): Check
+version to determine codepath.
+
+--
+The crash only appeared on Outlook 2016. Older Versions
+don't have the previewPane object. So we need to have
+a fallback.
+---
+ src/explorer-events.cpp  | 42 +++++++++++++++++++++++-------------------
+ src/ribbon-callbacks.cpp | 26 +++++++++++++++++++++++++-
+ 2 files changed, 48 insertions(+), 20 deletions(-)
+
+diff --git a/src/explorer-events.cpp b/src/explorer-events.cpp
+index 1529a88..8ed0784 100644
+--- a/src/explorer-events.cpp
++++ b/src/explorer-events.cpp
+@@ -82,34 +82,38 @@ EVENT_SINK_INVOKE(ExplorerEvents)
+         {
+           log_oom_extra ("%s:%s: Selection change in explorer: %p",
+                          SRCNAME, __func__, this);
+-#if 0
+-          Somehow latest Outlook 2016 crashes when accessing the current view
++          /* Somehow latest Outlook 2016 crashes when accessing the current view
+           of the Explorer. This is even reproducible with
+           GpgOL disabled and only with Outlook Spy active. If you select
+           the explorer of an Outlook.com resource and then access
+           the CurrentView and close the CurrentView again in Outlook Spy
+-          outlook crashes.
++          outlook crashes. */
+
+-          LPDISPATCH tableView = get_oom_object (m_object, "CurrentView");
+-          if (!tableView)
+-            {
+-              TRACEPOINT;
+-              break;
+-            }
+-          int hasReadingPane = get_oom_bool (tableView, "ShowReadingPane");
+-          gpgol_release (tableView);
+-          if (!hasReadingPane)
++          if (g_ol_version_major <= 15)
+             {
+-              break;
++              LPDISPATCH tableView = get_oom_object (m_object, "CurrentView");
++              if (!tableView)
++                {
++                  TRACEPOINT;
++                  break;
++                }
++              int hasReadingPane = get_oom_bool (tableView, "ShowReadingPane");
++              gpgol_release (tableView);
++              if (!hasReadingPane)
++                {
++                  break;
++                }
+             }
+-#else
+-          LPDISPATCH prevEdit = get_oom_object (m_object, "PreviewPane.WordEditor");
+-          gpgol_release (prevEdit);
+-          if (!prevEdit)
++          else
+             {
+-              break;
++              LPDISPATCH prevEdit = get_oom_object (m_object, "PreviewPane.WordEditor");
++              gpgol_release (prevEdit);
++              if (!prevEdit)
++                {
++                  break;
++                }
+             }
+-#endif
++
+           HANDLE thread = CreateThread (NULL, 0, invalidate_ui, (LPVOID) this, 0,
+                                         NULL);
+
+diff --git a/src/ribbon-callbacks.cpp b/src/ribbon-callbacks.cpp
+index c2a78d1..f787622 100644
+--- a/src/ribbon-callbacks.cpp
++++ b/src/ribbon-callbacks.cpp
+@@ -1463,7 +1463,7 @@ get_mail_from_control (LPDISPATCH ctrl, bool *none_selected)
+         {
+           *none_selected = true;
+         }
+-      else
++      else if (g_ol_version_major >= 16)
+         {
+           // Avoid showing wrong crypto state if we don't have a reading
+           // pane. In that case the parser will finish for a mail which is gone
+@@ -1477,6 +1477,30 @@ get_mail_from_control (LPDISPATCH ctrl, bool *none_selected)
+               mailitem = nullptr;
+             }
+         }
++      else
++        {
++          // Preview Pane is not available in older outlooks
++          LPDISPATCH tableView = get_oom_object (context, "CurrentView");
++          if (!tableView)
++            {
++              // Woops, should not happen.
++              TRACEPOINT;
++              *none_selected = true;
++              gpgol_release (mailitem);
++              mailitem = nullptr;
++            }
++          else
++            {
++              int hasReadingPane = get_oom_bool (tableView, "ShowReadingPane");
++              gpgol_release (tableView);
++              if (!hasReadingPane)
++                {
++                  *none_selected = true;
++                  gpgol_release (mailitem);
++                  mailitem = nullptr;
++                }
++            }
++        }
+     }
+
+   gpgol_release (context);
+--
+2.11.0
