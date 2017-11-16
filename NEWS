@@ -3,13 +3,13 @@
 # The version number given below are for the standard installers as
 # distributed by www.gpg4win.org.
 
-Noteworthy changes in Version 3.0.1 (UNRELEASED)
+Noteworthy changes in Version 3.0.1 (2017-11-17)
 ------------------------------------------------
 
 (en) GpgOL: A cause for seemingly random crashes in GpgOL has been
      fixed.
 
-(de) GpgOL: Eine ursache für augenscheinlich zufällige Abstürze
+(de) GpgOL: Eine Ursache für augenscheinlich zufällige Abstürze
      von Outlook wurde beseitigt.
 
 (en) GpgOL: A crash when pasting recipients has been fixed.
@@ -37,15 +37,19 @@ Noteworthy changes in Version 3.0.1 (UNRELEASED)
 (en) Kleopatra: Verschiedene Probleme im Umgang mit Dateiordnern
      und Archiven wurden behoben.
 
+(en) GnuPG: Has been updated to version 2.2.2.
+
+(de) GnuPG: Wurde auf Version 2.2.2 aktualisiert.
+
+(en) Some small bugfixes and improvements.
+
+(de) Weitere kleine Fehlerkorrketuren und Verbesserungen.
+
 (en) The mkportable process can be used again to create a portable
      Gpg4win variant.
 
 (de) Der mkportable Prozess kann wieder verwendet werden um einen
      portable Gpg4win variante zu erstellen.
-
-(en) GnuPG: Has been updated to version 2.2.2.
-
-(de) GnuPG: Wurde auf Version 2.2.2 aktualisiert.
 
 ~~~~~~~~~~~~~~~
 GnuPG:          2.2.2

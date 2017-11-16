@@ -48,73 +48,26 @@ Included Gpg4win components in Version !VERSION! are:
 New in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 -----------------------------------------
 
-- GnuPG is now of the modern 2.2 variant. See:
-  https://www.gnupg.org/faq/whats-new-in-2.1.html
-  for more information about this.
+- GpgOL: A cause for seemingly random crashes in GpgOL has been
+  fixed.
 
-- GpgOL is now also supported for 64bit Outlook.
+- GpgOL: A crash when pasting recipients has been fixed.
 
-- GpgOL for Outlook 2010 and later now uses toggle buttons
-  to let you select Encypt and Sign. The operations are done
-  when the mail is sent, including all attachments,
-  using a standard format (MIME).
+- GpgOL: Various problems regarding S/MIME mails have been fixed.
 
-- GpgOL for Outlook 2010 and later now automatically decrypts mails
-  again.
+- GpgOL: A user interface error for Outlook 2010 has been fixed.
 
-- All 68 KDE translations for Kleopatra are now included in Gpg4win.
+- Kleopatra: Fehler bei S/MIME Dateioperationen wurden behoben.
 
-- Kleopatra uses an updated icon theme.
+- Kleopatra: Verschiedene Probleme im Umgang mit Dateiordnern
+  und Archiven wurden behoben.
 
-- Kleopatra now shows the used curve in for ECC keys under technical
-  details.
+- GnuPG: Has been updated to version 2.2.2.
 
-- Kleopatra has been updated to a new set of base libraries.
+- Some small bugfixes and improvements.
 
-- Binaries are now all installed in a bin subdirectory. DBus
-  and kbuildsycoa are no longer required. This fixes the startup issues
-  of Kleopatra some users were facing.
-
-- After importing a secret key in Kleopatra you will be asked to directly
-  mark it as your own key. (Ownertrust)
-
-- Kleopatra now allows you to create ECC keys in the Advanced Settings
-  during Key generation.
-
-- Kleopatras file menu now also offers to encrypt Folders.
-
-- Kleopatra has a new option to print a secret key through the paperkey tool.
-
-- GPA and Kleopatra are now registred for OpenPGP and S/MIME related file extensions.
-
-- The file encryption dialog in Kleopatra has been redesigned to reduce steps and
-  improve user experience.
-
-- Kleopatra automatically detects the type of an input file and automatically starts
-  the corresponding action (e.g. decrypt).
-
-- Symmetric (password only) encryption is now accessible through Kleopatra and can
-  be combined with public-key encryption.
-
-- Pinentry now enables you to inspect the typed passphrase.
-
-- Kleopatra now supports OpenPGP Smartcards management.
-
-- GpgOL for Outlook 2010 and later has a new interface to show
-  the signature / encryption state inside of Outlook.
-
-- GnuPG now supports https and uses the https sks-keyserver pool
-  by default.
-
-- GpgOL now supports sending and receiving HTML Mails
-
-- Kleopatra now supports to directly import missing certificates
-  when verifying a file.
-
-- Kleopatra has improved file verification messages.
-
-- Many bugfixes and minor improvements.
-
+- The mkportable process can be used again to create a portable
+  Gpg4win variant.
 
 3. Additional Notes
 ===================
