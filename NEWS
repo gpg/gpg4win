@@ -80,9 +80,8 @@ Noteworthy changes in version 3.0.0 (2017-09-19)
 (en) German compendium is now updated to Version 4.0. It is
      adjusted to the changes made in Gpg4win 3.0.
 
-(de) Das deutsche Kompendium wurde auf Version 4.0 aktualisiert. Es
-     wurden die Änderungen, welche in Gpg4win 3.0 gemacht wurden,
-     aufgenommen.
+(de) Das deutsche Kompendium wurde auf Version 4.0 aktualisiert und
+     berücksichtigt damit die Änderungen von Gpg4win 2.4 auf 3.0.
 
 (en) GnuPG is now of the modern 2.2 variant. See:
      https://lists.gnupg.org/pipermail/gnupg-announce/2017q3/000413.html
