@@ -11,13 +11,12 @@ This is Gpg4win, version !VERSION! (!BUILD_ISODATE!).
 
 Content:
 
-     1. Important Notes
+     1. Important notes
      2. Changes
-     3. Known Bugs (and Workarounds)
-     4. Installation
-     5. Version History
-     6. Version Numbers of Included Software
-     7. Legal Notices
+     3. Additional notes
+     4. Version history
+     5. Version numbers of included software
+     6. Legal notices
 
 
 1. Important notes
@@ -32,7 +31,7 @@ on your system (depending on the version of Windows) or online at
 
 Note that the German version 4.0.0 is up-to-date and only available as pdf.
 
-Please read the section `3. Additional Notes` of this
+Please read the section `3. Additional notes` of this
 README before you start working with Gpg4win.
 
 The Compendium has more hints for manual or automated installation.
