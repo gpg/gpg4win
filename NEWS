@@ -39,15 +39,15 @@ Noteworthy changes in Version 3.0.1 (2017-11-17)
 (de) GpgOL: Ein Benutzerschnittstellen-Fehler in Outlook 2010 wurde
      behoben.
 
-(de) Kleopatra: Various problems regarding S/MIME file operations
+(en) Kleopatra: Various problems regarding S/MIME file operations
      have been fixed.
 
-(en) Kleopatra: Fehler bei S/MIME-Dateioperationen wurden behoben.
+(de) Kleopatra: Fehler bei S/MIME-Dateioperationen wurden behoben.
 
-(de) Kleopatra: Various problems regarding folder operations and
+(en) Kleopatra: Various problems regarding folder operations and
      archives have been fixed.
 
-(en) Kleopatra: Verschiedene Probleme im Umgang mit Dateiordnern
+(de) Kleopatra: Verschiedene Probleme im Umgang mit Dateiordnern
      und Archiven wurden behoben.
 
 (en) GnuPG: Has been updated to version 2.2.2.
@@ -71,7 +71,7 @@ GPA:            0.9.9
 GpgOL:          2.0.2
 GpgEX:          1.0.5
 Kompendium DE:  4.0.0
-Kompendium EN:  3.0.0
+Compendium EN:  3.0.0
 ~~~~~~~~~~~~~~~
 
 
