@@ -88,6 +88,7 @@ New in Gpg4win version !VERSION! (!BUILD_ISODATE!)
 
 3. Additional notes
 ===================
+
 - GpgOL
 
   * It is not possible to modify mails (e.g. moving / flagging the mail)
