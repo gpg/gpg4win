@@ -6,13 +6,13 @@ m4_define(`DE')
 m4_define(`EN_FILE', `system-requirements.html')
 m4_define(`system-requirements-de.html', `0')
 
-m4_define(`TITLE', `Systemvorraussetzungen')
+m4_define(`TITLE', `Systemvoraussetzungen')
 m4_define(`MAIN', `system-requirements')
 
 PAGE_START
 
 <div id="intro">
-<h2>Systemvorraussetzungen</h2>
+<h2>Systemvoraussetzungen</h2>
 </div>
 
 <div id="main">
