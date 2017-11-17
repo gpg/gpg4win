@@ -22,7 +22,7 @@ some parts of Gpg4win can be used, but are not officially supported.
 
 <p>The Outlook plugin GpgOL is compatible with Microsoft Outlook
 2010, 2013 and 2016 (both 32 and 64bit) and supports transporting
-emails via SMTP/IMAP and MS Exchange Server.
+emails via SMTP/IMAP and MS Exchange Server (version 2010 or newer).
 For elder Outlook versions 2003 and 2007 less functionality is offered.
 </p>
 
