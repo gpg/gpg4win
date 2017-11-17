@@ -15,7 +15,7 @@ Inhalt:
      1. Wichtige Hinweise
      2. Änderungen
      3. Anmerkungen
-     4. Versionshistorie
+     4. Versionsgeschichte
      5. Versionsnummern der einzelnen Programmteile
      6. Rechtliche Hinweise
 
