@@ -235,11 +235,11 @@ chk  1dddde1400c3bcb7749d398071af88c3e4754058d2d4c0b3696c2f82dc5cf11c
 #
 server http://files.gpg4win.org/src
 
-# last-changed: 2017-09-12
+# last-changed: 2017-11-20
 # by: ah
 # verified: Sig 5B80 C575 4298 F0CB  55D8 ED6A BCEF 7E29 4B09 2E28
-file gpgol/gpgol-2.0.2.tar.bz2
-chk  4f378e4e18523bb378ac0d627a59415085fd4394793b6fed11c684f20ef1fba6
+file gpgol/gpgol-2.0.3.tar.bz2
+chk  6c92084127878623eb831966ff4a15eef53f01cb9b0309e2a45c89d7fe8e6f10
 
 #
 # GpgEX
@@ -522,13 +522,14 @@ chk  8ce467c5f72543a025197b8aeac9b6476db14b70401302491af9ccb1e0bf48d2
 # 5ecef193bc2144e6d51a6bd5727bfd08a0d28b66 (kbx corruption)
 # 878b8bfdcc3a8becfc46b9287a2d14cd3c875f28 (gpgtar file names)
 # 4f5afaf1fdb5cb13859aca390ccb5a1ba1dba00c (registry access)
-name gnupg-w32-2.2.2-20171116-bin.exe
-file gnupg/gnupg-w32-2.2.2_20171116.exe
-chk  1e900099346919944e9c0c29a275f2fdaa9c544ea81ef12731e19bffef7a6d8e
+# 2aa106d6a4e2b09c257e8d769895d93ebb7f7edf (dirmngr crash)
+name gnupg-w32-2.2.2-20171120-bin.exe
+file gnupg/gnupg-w32-2.2.2_20171120.exe
+chk  ea8b46d8948b4156048534be354170e76d4df26bd5d47e416d5be0b5c130f0af
 
-name gnupg-w32-2.2.2-20171116-src.tar.xz
-file gnupg/gnupg-w32-2.2.2_20171116.tar.xz
-chk  b87c67f07b5dd2dc375adf9d6026add22c0703efcc0b4640d379fc02180b68fc
+name gnupg-w32-2.2.2-20171120-src.tar.xz
+file gnupg/gnupg-w32-2.2.2_20171120.tar.xz
+chk  5c9a0d5b4a12d387c184cdc96404dc6ea77ac225497fb777505df07d728e002e
 
 # Libkleo
 # last changed: see package date.
