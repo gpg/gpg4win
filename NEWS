@@ -26,6 +26,12 @@ Noteworthy changes in Version 3.0.1 (unreleased)
 (de) GpgOL: Ein Benutzerschnittstellen-Fehler in Outlook 2010 wurde
      behoben.
 
+(en) GpgOL: Kleopatra is again started in the background to speed
+     up crypto operations.
+
+(de) GpgOL: Kleopatra wird erneut, zur beschleuning der Krypto
+     Operationen, im Hintergrund gestartet.
+
 (en) Kleopatra: Various problems regarding S/MIME file operations
      have been fixed.
 
