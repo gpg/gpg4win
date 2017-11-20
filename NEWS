@@ -43,9 +43,9 @@ Noteworthy changes in Version 3.0.1 (unreleased)
 (de) Kleopatra: Verschiedene Probleme im Umgang mit Dateiordnern
      und Archiven wurden behoben.
 
-(en) GnuPG: Has been updated to version 2.2.2.
+(en) GnuPG: Has been updated to version 2.2.3.
 
-(de) GnuPG: Wurde auf Version 2.2.2 aktualisiert.
+(de) GnuPG: Wurde auf Version 2.2.3 aktualisiert.
 
 (en) Some small bugfixes and improvements.
 
@@ -58,7 +58,7 @@ Noteworthy changes in Version 3.0.1 (unreleased)
      portable Variante von Gpg4win zu erstellen.
 
 ~~~~~~~~~~~~~~~
-GnuPG:          2.2.2
+GnuPG:          2.2.3
 Kleopatra:      3.0.1
 GPA:            0.9.9
 GpgOL:          2.0.3

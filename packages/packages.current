@@ -289,15 +289,15 @@ chk  4f93aac6fecb7da2b92871bb9ee33032be6a87b174f54abf8ddf0911a22d29d2
 file libassuan/libassuan-2.4.4.tar.bz2
 chk  9e69a102272324de0bb56025779f84fd44901afcc6eac51505f6a63ea5737ca1
 
-# last changed: 2017-11-07
-# by: js
-#name gnupg-w32-2.2.2-20171107-bin.exe
-#file binary/gnupg-w32-2.2.2_20171107.exe
-#chk  846477967a8cb934438ecbb6c8032c19e652c1d31d772fe02e9e40555e2f68ea
+# last changed: 2017-11-20
+# by: ah
+name gnupg-w32-2.2.3-20171120-bin.exe
+file binary/gnupg-w32-2.2.3_20171120.exe
+chk  df8295774c47ff07c046c31e2f70d973ba2db8658c0f88039edda5eec5c3f247
 
-#name gnupg-w32-2.2.2-20171107-src.tar.xz
-#file binary/gnupg-w32-2.2.2_20171107.tar.xz
-#chk  fe515ef3245154a03787c6b87d6439e30d2772a4e83baa725f192da7d0bcd2bd
+name gnupg-w32-2.2.3-20171120-src.tar.xz
+file binary/gnupg-w32-2.2.3_20171120.tar.xz
+chk  1f33b715bad55c56d139d5b60ee035434ae60a8aad52822203c7bb01cd03c8fc
 
 # last changed: 2016-01-17
 # by: ah
@@ -516,20 +516,6 @@ server http://files.intevation.de/projects/gpg4all
 # by: ah
 file gpgme/gpgme-1.10.0-beta80.tar.bz2
 chk  8ce467c5f72543a025197b8aeac9b6476db14b70401302491af9ccb1e0bf48d2
-
-# Switch back to stable on next release
-# GnuPG 2.2.2 Patched with git revs:
-# 5ecef193bc2144e6d51a6bd5727bfd08a0d28b66 (kbx corruption)
-# 878b8bfdcc3a8becfc46b9287a2d14cd3c875f28 (gpgtar file names)
-# 4f5afaf1fdb5cb13859aca390ccb5a1ba1dba00c (registry access)
-# 2aa106d6a4e2b09c257e8d769895d93ebb7f7edf (dirmngr crash)
-name gnupg-w32-2.2.2-20171120-bin.exe
-file gnupg/gnupg-w32-2.2.2_20171120.exe
-chk  ea8b46d8948b4156048534be354170e76d4df26bd5d47e416d5be0b5c130f0af
-
-name gnupg-w32-2.2.2-20171120-src.tar.xz
-file gnupg/gnupg-w32-2.2.2_20171120.tar.xz
-chk  5c9a0d5b4a12d387c184cdc96404dc6ea77ac225497fb777505df07d728e002e
 
 # Libkleo
 # last changed: see package date.

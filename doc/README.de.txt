@@ -75,12 +75,15 @@ Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 - GpgOL: Ein Benutzerschnittstellen-Fehler in Outlook 2010 wurde
   behoben.
 
+- GpgOL: Kleopatra wird erneut, zur beschleuning der Krypto
+  Operationen, im Hintergrund gestartet.
+
 - Kleopatra: Fehler bei S/MIME-Dateioperationen wurden behoben.
 
 - Kleopatra: Verschiedene Probleme im Umgang mit Dateiordnern
   und Archiven wurden behoben.
 
-- GnuPG: Wurde auf Version 2.2.2 aktualisiert.
+- GnuPG: Wurde auf Version 2.2.3 aktualisiert.
 
 - Weitere kleine Fehlerkorrekturen und Verbesserungen.
 
