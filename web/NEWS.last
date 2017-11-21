@@ -3,6 +3,71 @@
 # The version number given below are for the standard installers as
 # distributed by www.gpg4win.org.
 
+Noteworthy changes in Version 3.0.1 (2017-11-21)
+------------------------------------------------
+
+(en) GpgOL: A cause for seemingly random crashes in Outlook has been
+     fixed.
+
+(de) GpgOL: Eine Ursache für augenscheinlich zufällige Abstürze
+     von Outlook wurde beseitigt.
+
+(en) GpgOL: A crash when pasting recipients has been fixed.
+
+(de) GpgOL: Ein Absturz beim Einfügen von Empfängern aus der Zwischenablage
+     wurde behoben.
+
+(en) GpgOL: Various problems regarding S/MIME mails have been fixed.
+
+(de) GpgOL: Verschiedene Probleme mit S/MIME-Mails wurden behoben.
+
+(en) GpgOL: A user interface error for Outlook 2010 has been fixed.
+
+(de) GpgOL: Ein Benutzerschnittstellen-Fehler in Outlook 2010 wurde
+     behoben.
+
+(en) GpgOL: Kleopatra is again started in the background to speed
+     up crypto operations.
+
+(de) GpgOL: Kleopatra wird erneut, zur beschleuning der Krypto
+     Operationen, im Hintergrund gestartet.
+
+(en) Kleopatra: Various problems regarding S/MIME file operations
+     have been fixed.
+
+(de) Kleopatra: Fehler bei S/MIME-Dateioperationen wurden behoben.
+
+(en) Kleopatra: Various problems regarding folder operations and
+     archives have been fixed.
+
+(de) Kleopatra: Verschiedene Probleme im Umgang mit Dateiordnern
+     und Archiven wurden behoben.
+
+(en) GnuPG: Has been updated to version 2.2.3.
+
+(de) GnuPG: Wurde auf Version 2.2.3 aktualisiert.
+
+(en) Some small bugfixes and improvements.
+
+(de) Weitere kleine Fehlerkorrekturen und Verbesserungen.
+
+(en) The mkportable process can be used again to create a portable
+     Gpg4win variant.
+
+(de) Das mkportable-Verfahren kann wieder verwendet werden, um eine
+     portable Variante von Gpg4win zu erstellen.
+
+~~~~~~~~~~~~~~~
+GnuPG:          2.2.3
+Kleopatra:      3.0.1
+GPA:            0.9.9
+GpgOL:          2.0.3
+GpgEX:          1.0.5
+Kompendium DE:  4.0.0
+Compendium EN:  3.0.0
+~~~~~~~~~~~~~~~
+
+
 Noteworthy changes in version 3.0.0 (2017-09-19)
 ------------------------------------------------
 (en) German Compendium is now Updated to Version 4.0. It is
