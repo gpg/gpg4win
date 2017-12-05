@@ -6,12 +6,101 @@
 Noteworthy changes in Version 3.0.2 (unreleased)
 ------------------------------------------------
 
+(en) GnuPG: A library used by GnuPG has been updated to fix a
+     problem that could block the GnuPG system. (T3378)
+
+(de) GnuPG: Eine von GnuPG verwendete Softwarebibliothek wurde
+     aktualisiert um ein Problem zu beheben das zu einer
+     Blockade des GnuPG Systems führen konnte. (T3378)
+
+(en) GpgOL: More possible "random" crashes caused by
+     GpgOL have been fixed. (T3484)
+
+(de) GpgOL: Weitere augenscheinlich zufällige Abstürze von Outlook
+     wurden beseitigt. (T3484)
+
+(en) GpgOL: Outlook is no longer blocked when selecting many mails.
+     (T3433)
+
+(de) GpgOL: Outlook wird nicht mehr blockiert wenn viele Mails
+     gleichzeitig ausgewählt werden. (T3433)
+
+(en) GpgOL: G Suite Sync plugin accounts are now detected. Only sending
+     No-MIME PGP/Messages (without attachments) and unsigned
+     messages are supported. Reading crypto mail is fully supported.
+     (T3545)
+
+(de) GpgOL: Konten die mit dem G Suite Sync Plugin eingerichtet wurden
+     werden nun erkannt. Mit diesen Konten werden bisher nur
+     reine ("No-MIME") verschlüsselte PGP Textnachrichten, ohne
+     Anhänge, unterstützt.
+     Das senden von signierten Nachrichten wird nicht unterstützt.
+     Lesen von Krypto Mails ist vollständig unterstützt. (T3545)
+
+(en) GpgOL: The option to send "No-MIME" (inline) PGP encrypted,
+     unsigned text messages without attachments works again. (T3514)
+
+(en) GpgOL: Die Option "No-MIME" verschlüsselte,
+     unsignierte Textnachrichten, ohne Anhänge zu versenden funktioniert
+     wieder (T3514)
+
+(en) GpgOL: Improved error handling for signed, unencrypted mails.
+     (T3538)
+
+(de) GpgOL: Die Verarbeitung und Fehlerbehandlung von signierten,
+     unverschlüsselten Mails wurde verbessert.
+
+(en) GpgOL: Several performance improvements.
+
+(de) GpgOL: Verschiedene Geschwindigkeits- und
+     Leistungs-Verbesserungen.
+
+(en) GpgOL: Improved detection of large PGP/MIME messages and
+     MS-TNEF crypto messages. (T3419 , T3542)
+
+(de) GpgOL: Verbesserte Erkennung von großen PGP/MIME Nachrichten und
+     MS-TNEF Nachrichten. (T3419 , T3542)
+
+(en) Kleopatra: Passphrase entry is no longer opened behind Kleopatra
+     windows. (T3460)
+
+(de) Kleopatra: Das Passwort Eingabefeld öffnet sich nicht mehr
+     teilweise im Hintergrund. (T3460)
+
+(en) Kleopatra: Decrypting archives across partitions has been fixed.
+     (T3547)
+
+(de) Kleopatra: Das entschlüsseln von Archiven über Partitionsgrenzen
+     hinweg funktioniert nun. (T3547)
+
+(en) Kleopatra: Fixed possible crash in GpgOL certificate selection.
+     (T3544)
+
+(de) Kleopatra: Ein möglicher Absturz in der GpgOL Zertifikatsauswahl
+     wurde behoben. (T3544)
+
+(en) Kleopatra: Preselection of encrypt / sign file actions from GpgEX
+     works again. (T3543)
+
+(de) Kleopatra: Die Vorauswahl von verschlüsseln / signieren mit GpgEX
+     funktioniert erneut. (T3543)
+
+(en) Kleopatra: Added Web Key Directory lookup support in file
+     encryption dialog. (T3548)
+
+(de) Kleopatra: Web Key Directories werden nun bei der
+     Dateiverschlüsselung unterstützt. (T3548)
+
+(en) Kleopatra: Fixed crash when searching in LDAP. (T3550)
+
+(de) Kleopatra: Ein Absturz bei der Schlüsselsuche auf einem LDAP
+     Schlüsselserver wurde behoben. (T355)
 
 ~~~~~~~~~~~~~~~
 GnuPG:          2.2.3
 Kleopatra:      3.0.1
 GPA:            0.9.9
-GpgOL:          2.0.3
+GpgOL:          2.0.4
 GpgEX:          1.0.5
 Kompendium DE:  4.0.0
 Compendium EN:  3.0.0
