@@ -531,12 +531,12 @@ chk 4923b327005eaec0f75ce3411c80d2ff23a92a162d2285b8bb7366a280d320e1
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah with script kde-l10n.sh
-file kde-l10n/kde-l10n-201711161035-bin.tar.xz
-chk e8e175b6fced87f28dc1fc66cad88df6e0794df631350102e9d4b39512efe613
+file kde-l10n/kde-l10n-201712051336-bin.tar.xz
+chk fc19c323068741480c442ab536fc8f8e69f568ef8e4ccbb471670fd52aaf4833
 
 
-file kde-l10n/kde-l10n-201711161035-src.tar.xz
-chk 1d27bcbf9b01c1568ea11d8b9d870b3afed8b1f3f3251d402394790c8779c6b6
+file kde-l10n/kde-l10n-201712051336-src.tar.xz
+chk 77dbf940d547d33b1dc56a8423cbf81ed56a269fa8fa2749b3b8922923d6c735
 
 # Kleopatra
 # last changed: see package date.
