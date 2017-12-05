@@ -232,6 +232,7 @@ pinentry_enable_disable= --enable-pinentry-qt
 endif
 gpg4win_pkg_pinentry_configure = \
   $(pinentry_enable_disable) \
+  --disable-pinentry-fltk \
   --enable-pinentry-gtk2 \
   CPPFLAGS=-I$(idir)/include LDFLAGS=-L$(idir)/lib
 #  --with-libiconv-prefix=$(idir) --with-libintl-prefix=$(idir)
