@@ -63,30 +63,51 @@ Included Gpg4win components in version !VERSION! are:
 New in Gpg4win version !VERSION! (!BUILD_ISODATE!)
 -----------------------------------------
 
-- GpgOL: A cause for seemingly random crashes in GpgOL has been
-  fixed.
+- GnuPG: A library used by GnuPG has been updated to fix a
+  problem that could block the GnuPG system. (T3378)
 
-- GpgOL: A crash when pasting recipients has been fixed.
+- GpgOL: More possible "random" crashes caused by
+  GpgOL have been fixed. (T3484)
 
-- GpgOL: Various problems regarding S/MIME mails have been fixed.
+- GpgOL: Outlook is no longer blocked when selecting many mails.
+  (T3433)
 
-- GpgOL: A user interface error for Outlook 2010 has been fixed.
+- GpgOL: G Suite Sync plugin accounts are now detected. Only sending
+  No-MIME PGP/Messages (without attachments) and unsigned
+  messages are supported. Reading crypto mail is fully supported.
+  (T3545)
 
-- GpgOL: Kleopatra is again started in the background to speed
-  up crypto operations.
+- GpgOL: The option to send "No-MIME" (inline) PGP encrypted,
+  unsigned text messages without attachments works again. (T3514)
 
-- Kleopatra: Various problems regarding S/MIME file operations
-  have been fixed.
+- GpgOL: Die Option "No-MIME" verschlüsselte,
+  unsignierte Textnachrichten, ohne Anhänge zu versenden funktioniert
+  wieder (T3514)
 
-- Kleopatra: Various problems regarding folder operations and
-  archives have been fixed.
+- GpgOL: Improved error handling for signed, unencrypted mails.
+  (T3538)
 
-- GnuPG: Has been updated to version 2.2.3.
+- GpgOL: Several performance improvements.
 
-- Some small bugfixes and improvements.
+- GpgOL: Improved detection of large PGP/MIME messages and
+  MS-TNEF crypto messages. (T3419 , T3542)
 
-- The mkportable process can be used again to create a portable
-  Gpg4win variant.
+- Kleopatra: Passphrase entry is no longer opened behind Kleopatra
+  windows. (T3460)
+
+- Kleopatra: Decrypting archives across partitions has been fixed.
+  (T3547)
+
+- Kleopatra: Fixed possible crash in GpgOL certificate selection.
+  (T3544)
+
+- Kleopatra: Preselection of encrypt / sign file actions from GpgEX
+  works again. (T3543)
+
+- Kleopatra: Added Web Key Directory lookup support in file
+  encryption dialog. (T3548)
+
+- Kleopatra: Fixed crash when searching in LDAP. (T3550)
 
 
 3. Additional notes

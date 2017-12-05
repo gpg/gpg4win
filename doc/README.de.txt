@@ -64,31 +64,49 @@ Die integrierten Gpg4win-Komponenten in Version !VERSION! sind:
 Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 -----------------------------------------
 
-- GpgOL: Eine Ursache für augenscheinlich zufällige Abstürze
-  von Outlook wurde beseitigt.
+- GnuPG: Eine von GnuPG verwendete Softwarebibliothek wurde
+  aktualisiert um ein Problem zu beheben das zu einer
+  Blockade des GnuPG Systems führen konnte. (T3378)
 
-- GpgOL: Ein Absturz beim Einfügen von Empfängern aus der Zwischenablage
-  wurde behoben.
+- GpgOL: Weitere augenscheinlich zufällige Abstürze von Outlook
+  wurden beseitigt. (T3484)
 
-- GpgOL: Verschiedene Probleme mit S/MIME-Mails wurden behoben.
+- GpgOL: Outlook wird nicht mehr blockiert wenn viele Mails
+  gleichzeitig ausgewählt werden. (T3433)
 
-- GpgOL: Ein Benutzerschnittstellen-Fehler in Outlook 2010 wurde
-  behoben.
+- GpgOL: Konten die mit dem G Suite Sync Plugin eingerichtet wurden
+  werden nun erkannt. Mit diesen Konten werden bisher nur
+  reine ("No-MIME") verschlüsselte PGP Textnachrichten, ohne
+  Anhänge, unterstützt.
+  Das senden von signierten Nachrichten wird nicht unterstützt.
+  Lesen von Krypto Mails ist vollständig unterstützt. (T3545)
 
-- GpgOL: Kleopatra wird erneut, zur beschleuning der Krypto
-  Operationen, im Hintergrund gestartet.
+- GpgOL: Die Verarbeitung und Fehlerbehandlung von signierten,
+  unverschlüsselten Mails wurde verbessert.
 
-- Kleopatra: Fehler bei S/MIME-Dateioperationen wurden behoben.
+- GpgOL: Verschiedene Geschwindigkeits- und
+  Leistungs-Verbesserungen.
 
-- Kleopatra: Verschiedene Probleme im Umgang mit Dateiordnern
-  und Archiven wurden behoben.
+- GpgOL: Verbesserte Erkennung von großen PGP/MIME Nachrichten und
+  MS-TNEF Nachrichten. (T3419 , T3542)
 
-- GnuPG: Wurde auf Version 2.2.3 aktualisiert.
+- Kleopatra: Das Passwort Eingabefeld öffnet sich nicht mehr
+  teilweise im Hintergrund. (T3460)
 
-- Weitere kleine Fehlerkorrekturen und Verbesserungen.
+- Kleopatra: Das entschlüsseln von Archiven über Partitionsgrenzen
+  hinweg funktioniert nun. (T3547)
 
-- Das mkportable-Verfahren kann wieder verwendet werden, um eine
-  portable Variante von Gpg4win zu erstellen.
+- Kleopatra: Ein möglicher Absturz in der GpgOL Zertifikatsauswahl
+  wurde behoben. (T3544)
+
+- Kleopatra: Die Vorauswahl von verschlüsseln / signieren mit GpgEX
+  funktioniert erneut. (T3543)
+
+- Kleopatra: Web Key Directories werden nun bei der
+  Dateiverschlüsselung unterstützt. (T3548)
+
+- Kleopatra: Ein Absturz bei der Schlüsselsuche auf einem LDAP
+  Schlüsselserver wurde behoben. (T3550)
 
 
 3. Anmerkungen

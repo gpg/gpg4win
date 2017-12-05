@@ -94,7 +94,7 @@ Noteworthy changes in Version 3.0.2 (unreleased)
 (en) Kleopatra: Fixed crash when searching in LDAP. (T3550)
 
 (de) Kleopatra: Ein Absturz bei der Schlüsselsuche auf einem LDAP
-     Schlüsselserver wurde behoben. (T355)
+     Schlüsselserver wurde behoben. (T3550)
 
 ~~~~~~~~~~~~~~~
 GnuPG:          2.2.3
