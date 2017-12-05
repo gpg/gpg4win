@@ -558,6 +558,18 @@ NEWS.tmp : $(top_srcdir)/NEWS
              !skip { sub(/^\(en\)/,"   *"); print }' \
              <$(top_srcdir)/NEWS >NEWS.tmp
 
+NEWS.de : $(top_srcdir)/NEWS
+	 awk '/^#/ {next} /^\(en\)/ {skip=1;next} /^[^[:space:]]/ {skip=0} \
+             !skip { sub(/^\(de\)/,"-"); print }' \
+             <$(top_srcdir)/NEWS >NEWS.de; \
+     sed -i 's/^     /  /' NEWS.de
+
+NEWS.en : $(top_srcdir)/NEWS
+	 awk '/^#/ {next} /^\(de\)/ {skip=1;next} /^[^[:space:]]/ {skip=0} \
+             !skip { sub(/^\(en\)/,"-"); print }'  \
+             <$(top_srcdir)/NEWS >NEWS.en; \
+     sed -i 's/^     /  /' NEWS.en
+
 COMPONENTS-list.tmp : $(top_srcdir)/NEWS
 	awk '/^~~~~~~~~~~~/ { ok++; next} ok==1 {print "    "$$0}' \
             < $(top_srcdir)/NEWS > COMPONENTS-list.tmp
