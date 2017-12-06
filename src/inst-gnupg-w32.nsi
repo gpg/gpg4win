@@ -35,8 +35,11 @@ ${MementoSection} "GnuPG" SEC_gnupg_w32
 SetOutPath "$TEMP"
   DetailPrint  "$(T_Installing_GnuPG) ${gpg4win_pkg_gnupg_w32_version}"
   File "${prefix}/gnupg-w32-${gpg4win_pkg_gnupg_w32_version}-bin.exe"
-  ExecWait '"$TEMP\gnupg-w32-${gpg4win_pkg_gnupg_w32_version}-bin.exe" /S /D=$INSTDIR\..\GnuPG'
+  ExecWait '"$TEMP\gnupg-w32-${gpg4win_pkg_gnupg_w32_version}-bin.exe" /S /D=$INSTDIR\..\GnuPG' $0
 
+  IntCmp $0 0 done 0
+  MessageBox MB_OK|MB_ICONEXCLAMATION "$(T_Gpg_Install_failed)"
+done:
   Delete "$TEMP\gnupg-w32-${gpg4win_pkg_gnupg_w32_version}-bin.exe"
 !endif
 ${MementoSectionEnd}
@@ -46,3 +49,10 @@ LangString T_Installing_GnuPG ${LANG_ENGLISH} \
 
 LangString DESC_SEC_gnupg_w32 ${LANG_ENGLISH} \
    "GNU Privacy Guard"
+
+LangString T_Gpg_Install_failed ${LANG_ENGLISH} \
+   "Failed to install GnuPG.$\r$\n \
+   Gpg4win will not work properly without GnuPG.$\r$\n \
+   Please download and install the simple installer \
+   for GnuPG from:$\r$\n$\r$\n \
+   https://gnupg.org/download"
