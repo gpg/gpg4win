@@ -40,7 +40,7 @@ Noteworthy changes in Version 3.0.2 (unreleased)
 (en) GpgOL: The option to send "No-MIME" (inline) PGP encrypted,
      unsigned text messages without attachments works again. (T3514)
 
-(en) GpgOL: Die Option "No-MIME" verschlüsselte,
+(de) GpgOL: Die Option "No-MIME" verschlüsselte,
      unsignierte Textnachrichten, ohne Anhänge zu versenden funktioniert
      wieder (T3514)
 
