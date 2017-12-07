@@ -63,8 +63,8 @@ Included Gpg4win components in version !VERSION! are:
 New in Gpg4win version !VERSION! (!BUILD_ISODATE!)
 -----------------------------------------
 
-- GnuPG: A library used by GnuPG has been updated to fix a
-  problem that could block the GnuPG system. (T3378)
+- GnuPG: Two issues have been fixed that could block
+  the GnuPG system. (T3378)
 
 - GpgOL: More possible "random" crashes caused by
   GpgOL have been fixed. (T3484)
@@ -79,10 +79,6 @@ New in Gpg4win version !VERSION! (!BUILD_ISODATE!)
 
 - GpgOL: The option to send "No-MIME" (inline) PGP encrypted,
   unsigned text messages without attachments works again. (T3514)
-
-- GpgOL: Die Option "No-MIME" verschlüsselte,
-  unsignierte Textnachrichten, ohne Anhänge zu versenden funktioniert
-  wieder (T3514)
 
 - GpgOL: Improved error handling for signed, unencrypted mails.
   (T3538)
@@ -108,6 +104,14 @@ New in Gpg4win version !VERSION! (!BUILD_ISODATE!)
   encryption dialog. (T3548)
 
 - Kleopatra: Fixed crash when searching in LDAP. (T3550)
+
+- Kleopatra: Fixed crash when aborting key generation. (T3577)
+
+- Kleopatra: Certifications are accessible again from the certificate
+  details view. (T3579)
+
+- Kleopatra: It is now possible to publicly certify an already locally
+  signed certificate. (T1649)
 
 
 3. Additional notes

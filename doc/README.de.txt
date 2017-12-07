@@ -64,9 +64,8 @@ Die integrierten Gpg4win-Komponenten in Version !VERSION! sind:
 Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 -----------------------------------------
 
-- GnuPG: Eine von GnuPG verwendete Softwarebibliothek wurde
-  aktualisiert um ein Problem zu beheben das zu einer
-  Blockade des GnuPG Systems führen konnte. (T3378)
+- GnuPG: Zwei Probleme wurden behoben welche zu einer
+  Blockade des GnuPG Systems führen konnten. (T3378)
 
 - GpgOL: Weitere augenscheinlich zufällige Abstürze von Outlook
   wurden beseitigt. (T3484)
@@ -80,6 +79,10 @@ Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
   Anhänge, unterstützt.
   Das senden von signierten Nachrichten wird nicht unterstützt.
   Lesen von Krypto Mails ist vollständig unterstützt. (T3545)
+
+- GpgOL: Die Option "No-MIME" verschlüsselte,
+  unsignierte Textnachrichten, ohne Anhänge zu versenden funktioniert
+  wieder (T3514)
 
 - GpgOL: Die Verarbeitung und Fehlerbehandlung von signierten,
   unverschlüsselten Mails wurde verbessert.
@@ -107,6 +110,15 @@ Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 
 - Kleopatra: Ein Absturz bei der Schlüsselsuche auf einem LDAP
   Schlüsselserver wurde behoben. (T3550)
+
+- Kleopatra: Ein Absturz wenn die Schlüsselerstellung abgebrochen
+  wurde ist behoben. (T3577)
+
+- Kleopatra: Beglaubigungen können nun wieder aus den Zertifikatsdetails
+  heraus angezeigt werden. (T3579)
+
+- Kleopatra: Es ist nun möglich Zertifikate öffentlich zu beglaubigen
+  auch wenn dieses bereits lokal signiert wurde. (T1649)
 
 
 3. Anmerkungen

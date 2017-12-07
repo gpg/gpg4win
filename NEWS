@@ -6,12 +6,11 @@
 Noteworthy changes in Version 3.0.2 (unreleased)
 ------------------------------------------------
 
-(en) GnuPG: A library used by GnuPG has been updated to fix a
-     problem that could block the GnuPG system. (T3378)
+(en) GnuPG: Two issues have been fixed that could block
+     the GnuPG system. (T3378)
 
-(de) GnuPG: Eine von GnuPG verwendete Softwarebibliothek wurde
-     aktualisiert um ein Problem zu beheben das zu einer
-     Blockade des GnuPG Systems führen konnte. (T3378)
+(de) GnuPG: Zwei Probleme wurden behoben welche zu einer
+     Blockade des GnuPG Systems führen konnten. (T3378)
 
 (en) GpgOL: More possible "random" crashes caused by
      GpgOL have been fixed. (T3484)
@@ -95,6 +94,23 @@ Noteworthy changes in Version 3.0.2 (unreleased)
 
 (de) Kleopatra: Ein Absturz bei der Schlüsselsuche auf einem LDAP
      Schlüsselserver wurde behoben. (T3550)
+
+(en) Kleopatra: Fixed crash when aborting key generation. (T3577)
+
+(de) Kleopatra: Ein Absturz wenn die Schlüsselerstellung abgebrochen
+     wurde ist behoben. (T3577)
+
+(en) Kleopatra: Certifications are accessible again from the certificate
+     details view. (T3579)
+
+(de) Kleopatra: Beglaubigungen können nun wieder aus den Zertifikatsdetails
+     heraus angezeigt werden. (T3579)
+
+(en) Kleopatra: It is now possible to publicly certify an already locally
+     signed certificate. (T1649)
+
+(de) Kleopatra: Es ist nun möglich Zertifikate öffentlich zu beglaubigen
+     auch wenn dieses bereits lokal signiert wurde. (T1649)
 
 ~~~~~~~~~~~~~~~
 GnuPG:          2.2.3
