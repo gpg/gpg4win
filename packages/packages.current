@@ -235,11 +235,11 @@ chk  1dddde1400c3bcb7749d398071af88c3e4754058d2d4c0b3696c2f82dc5cf11c
 #
 server http://files.gpg4win.org/src
 
-# last-changed: 2017-12-05
+# last-changed: 2017-12-08
 # by: ah
 # verified: Sig 5B80 C575 4298 F0CB  55D8 ED6A BCEF 7E29 4B09 2E28
-file gpgol/gpgol-2.0.4.tar.bz2
-chk  20cc4a42a5e67f4e3adffd8755e323579945691e0747bc65fb3e594f05b6f346
+file gpgol/gpgol-2.0.5.tar.bz2
+chk  8fa5d4d13edfb344ec75a0e9dce3e633e6ce81e92cd388b73e2d34a14c78d46e
 
 #
 # GpgEX
@@ -291,13 +291,13 @@ chk  47f96c37b4f2aac289f0bc1bacfa8bd8b4b209a488d3d15e2229cb6cc9b26449
 
 # last changed: 2017-12-05
 # by: ah
-name gnupg-w32-2.2.3-20171201-bin.exe
-file binary/gnupg-w32-2.2.3_20171201.exe
-chk  b26eeaa7424a31145b8088784e1164d3d15b11f7d4e0833aaee582dc2e1507fa
+name gnupg-w32-2.2.3-20171207-bin.exe
+file binary/gnupg-w32-2.2.3_20171207.exe
+chk  a282a175501fc5b06f70e249fe503250293d8cb2a14e28a4a8ea476ede8ea9fa
 
-name gnupg-w32-2.2.3-20171201-src.tar.xz
-file binary/gnupg-w32-2.2.3_20171201.tar.xz
-chk  a40bcc6a300158661c2f9c35d54f2cf50daccd5d8f114224f7430e4ac674c4db
+name gnupg-w32-2.2.3-20171207-src.tar.xz
+file binary/gnupg-w32-2.2.3_20171207.tar.xz
+chk  aa99e2cc3c018a4b95d79a279b041273df560f03dd46413ad3567659d438f0e3
 
 
 # last changed: 2017-12-05
