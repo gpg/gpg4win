@@ -70,6 +70,7 @@ Section "-breeze-icons" SEC_breeze_icons
   File ${prefix}/share/icons/breeze/actions/16/edit-redo.svg
   File ${prefix}/share/icons/breeze/actions/16/edit-rename.svg
   File ${prefix}/share/icons/breeze/actions/16/edit-undo.svg
+  File ${prefix}/share/icons/breeze/actions/16/editor.svg
   File ${prefix}/share/icons/breeze/actions/16/go-bottom.svg
   File ${prefix}/share/icons/breeze/actions/16/go-down.svg
   File ${prefix}/share/icons/breeze/actions/16/go-first.svg
@@ -127,6 +128,7 @@ Section "-breeze-icons" SEC_breeze_icons
   File ${prefix}/share/icons/breeze/actions/22/edit-redo.svg
   File ${prefix}/share/icons/breeze/actions/22/edit-rename.svg
   File ${prefix}/share/icons/breeze/actions/22/edit-undo.svg
+  File ${prefix}/share/icons/breeze/actions/22/editor.svg
   File ${prefix}/share/icons/breeze/actions/22/go-bottom.svg
   File ${prefix}/share/icons/breeze/actions/22/go-down.svg
   File ${prefix}/share/icons/breeze/actions/22/go-first.svg
@@ -228,6 +230,7 @@ Section "-breeze-icons" SEC_breeze_icons
   File ${prefix}/share/icons/breeze/actions/32/edit-delete.svg
   File ${prefix}/share/icons/breeze/actions/32/edit-redo.svg
   File ${prefix}/share/icons/breeze/actions/32/edit-undo.svg
+  File ${prefix}/share/icons/breeze/actions/32/editor.svg
   File ${prefix}/share/icons/breeze/actions/32/view-refresh.svg
   File ${prefix}/share/icons/breeze/actions/32/window-close.svg
 
