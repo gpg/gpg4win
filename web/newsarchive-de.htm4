@@ -19,10 +19,11 @@ Aktuelle Meldungen gibt es auf der <a href="index-de.html">Startseite</a>.
 
 <h2>2017</h2>
 <ul>
+    <li><a href="version3-de.html">2017-09-20 Gpg4win 3.0.0 veröffentlicht</a></li>
     <li><a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2017-August/000072.html">
-    2017-08-24: Gpg4win 3.0 erreicht Release Candidate Status</a>
+    2017-08-24: Gpg4win 3.0 erreicht Release Candidate Status</a></li>
     <li><a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2017-July/000036.html">
-    2017-07-06: Gpg4win 2.3.4 veröffentlicht</a>
+            2017-07-06: Gpg4win 2.3.4 veröffentlicht</a></li>
    <p></p>
 </ul>
 
@@ -31,9 +32,11 @@ Aktuelle Meldungen gibt es auf der <a href="index-de.html">Startseite</a>.
     <li>
     <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2016-August/000035.html">
     2016-08-18: Gpg4win 2.3.3 veröffentlicht</a>
+    </li>
     <li>
     <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2016-July/000034.html">
     2016-07-05: Gpg4win 2.3.2 veröffentlicht</a>
+    </li>
     <li>
     <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2016-April/000033.html">
     2016-04-05: Gpg4win 2.3.1 veröffentlicht</a>
