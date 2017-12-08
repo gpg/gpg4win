@@ -703,28 +703,7 @@ else
 all_full =
 endif
 
-gpg4win.swdb: $(all_full) $(all_light) $(all_vanilla) $(all_src) NEWS.de NEWS.en
-	set -e; ( \
-	pref="#+macro: gpg4win_" ;\
-	reldate="$$(date -u +%Y-%m-%d)" ;\
-	echo "$${pref}ver  $(VERSION)"  ;\
-	echo "$${pref}date $${reldate}" ;\
-	i=$(top_srcdir)/gpg4win-$(VERSION).tar.bz2; \
-	echo "$${pref}src_size $$(wc -c <$$i|awk '{print int($$1/1024)}')k" ;\
-	echo "$${pref}src_sha1 $$(sha1sum <$$i|cut -d' ' -f1)" ;\
-	echo "$${pref}src_sha2 $$(sha256sum <$$i|cut -d' ' -f1)" ;\
-	j=installers/gpg4win-$(VERSION).exe ; \
-	echo "$${pref}exe_size $$(wc -c <$$j|awk '{print int($$1/1024)}')k" ;\
-	echo "$${pref}exe_sha1 $$(sha1sum <$$j|cut -d' ' -f1)" ;\
-	echo "$${pref}exe_sha2 $$(sha256sum <$$j|cut -d' ' -f1)" ;\
-	k=installers/gpg4win-src-$(VERSION).exe ; \
-	echo "$${pref}isrc_size $$(wc -c <$$k|awk '{print int($$1/1024)}')k" ;\
-	echo "$${pref}isrc_sha1 $$(sha1sum <$$k|cut -d' ' -f1)" ;\
-	echo "$${pref}isrc_sha2 $$(sha256sum <$$k|cut -d' ' -f1)" ;\
-	) | tee $(distdir).swdb
-
-
-all-local: gpg4win.swdb
+all-local: $(all_full) $(all_light) $(all_vanilla) $(all_src)
 	@echo "###################################################"
 	@echo " Gpg4win $(VERSION) successfully build!"
 	@echo " Installers can be found under src/installers"
