@@ -173,6 +173,7 @@ SetCompressor /SOLID lzma
 
 # Variables
 VAR is_minimal
+VAR is_update
 
 # Sections
 !include "Sections.nsh"

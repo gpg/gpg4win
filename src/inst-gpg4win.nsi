@@ -24,6 +24,7 @@ Section "-gpg4win" SEC_gpg4win
   SetOutPath "$INSTDIR"
   File "${BUILD_DIR}/../gpg4win-${VERSION}.tar.bz2"
 !else
+  StrCpy $is_update "0"
 # Start the slideshow.
   SetDetailsPrint none
 
@@ -48,8 +49,9 @@ Section "-gpg4win" SEC_gpg4win
   ReadRegStr $1 SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\GPG4Win" "InstallLocation"
   IfErrors skip_uninst 0
 
-  ExecWait '$0 /S _?=$1'
+  ExecWait '$0 /S /UPDATE=1 _?=$1'
 # Deleting here does not work?
+  StrCpy $is_update "1"
   Delete /REBOOTOK "$1\gpg4win-uninstall.exe"
   RmDir "$1"
 

@@ -721,6 +721,12 @@ Function un.onInit
 !endif
   # Remove the language preference.
   !insertmacro MUI_UNGETLANGUAGE
+  StrCpy $is_update "0"
+  ${un.GetParameters} $R0
+  ClearErrors
+  ${un.GetOptions} $R0 /UPDATE= $R1
+  IfErrors +2
+  StrCpy $is_update "1"
 FunctionEnd
 
 # This must be in a central place.  Urgs.

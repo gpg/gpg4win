@@ -235,12 +235,14 @@ is_no_admin:
   Delete "$SMPROGRAMS\Kleopatra.lnk"
 
   # Delete Desktop links.
+  StrCmp $is_update '1' no_desktop_delete
 !ifdef HAVE_PKG_GPA
   Delete "$DESKTOP\GPA.lnk"
 !endif
 !ifdef HAVE_PKG_KLEOPATRA
   Delete "$DESKTOP\Kleopatra.lnk"
 !endif
+no_desktop_delete:
 
   Delete "$INSTDIR\${PACKAGE}-uninstall.exe"
 

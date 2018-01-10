@@ -1042,6 +1042,7 @@ is_no_admin:
     SectionGetFlags ${SEC_gpa} $R0
     IntOp $R0 $R0 & ${SF_SELECTED}
     IntCmp $R0 ${SF_SELECTED} 0 no_gpa_desktop
+    StrCmp $is_update '1' no_gpa_desktop
     CreateShortCut "$DESKTOP\GPA.lnk" \
 	"$INSTDIR\bin\gpa.exe" \
         "" "" "" SW_SHOWNORMAL "" $(DESC_Menu_gpa)
@@ -1052,6 +1053,7 @@ is_no_admin:
     SectionGetFlags ${SEC_kleopatra} $R0
     IntOp $R0 $R0 & ${SF_SELECTED}
     IntCmp $R0 ${SF_SELECTED} 0 no_kleopatra_desktop
+    StrCmp $is_update '1' no_kleopatra_desktop
     CreateShortCut "$DESKTOP\Kleopatra.lnk" \
 	"$INSTDIR\bin\kleopatra.exe" \
         "" "$INSTDIR\bin\kleopatra.exe" "" SW_SHOWNORMAL "" $(DESC_Menu_kleopatra)
