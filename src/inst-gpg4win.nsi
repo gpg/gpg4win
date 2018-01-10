@@ -63,8 +63,12 @@ skip_uninst:
   File /oname=README.es.txt "${BUILD_DIR}/README.en.txt"
   File /oname=README.fr.txt "${BUILD_DIR}/README.en.txt"
   File /oname=README.it.txt "${BUILD_DIR}/README.en.txt"
+  File /oname=README.no.txt "${BUILD_DIR}/README.en.txt"
   File /oname=README.pt.txt "${BUILD_DIR}/README.en.txt"
   File /oname=README.ru.txt "${BUILD_DIR}/README.en.txt"
+  File /oname=README.zh_CN.po "${BUILD_DIR}/README.en.txt"
+  File /oname=README.zh_TW.po "${BUILD_DIR}/README.en.txt"
+
   File "${BUILD_DIR}/HOWTO-SMIME.en.txt"
   File "${BUILD_DIR}/HOWTO-SMIME.de.txt"
 
