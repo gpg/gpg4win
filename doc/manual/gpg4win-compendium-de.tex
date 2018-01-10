@@ -443,14 +443,16 @@ Im folgenden werden die Ausdrücke und Kennzeichnungen verwendet:
 \chapter{Gpg4win -- Kryptografie für alle}
 \index{Kryptografie}
 
-Was ist Gpg4win?\index{Gpg4win} Die deutsche Wikipedia beantwortet diese Frage so: 
+Was ist Gpg4win?\index{Gpg4win} Die deutsche Wikipedia beantwortet diese Frage
+so: 
 \begin{quote}
-    \textit{Gpg4win ist ein Installationspaket für Windows (2000/XP/2003/Vista)
-mit Computer-Programmen und Handbüchern zur \Email{}- und
-Dateiverschlüsselung.  Dazu gehören die Verschlüsselungs-Soft\-ware
-GnuPG sowie mehrere Anwendungen und die Dokumentation.  Gpg4win selbst
-und die in Gpg4win enthaltenen Programme sind Freie
-Software.}
+	\textit{Gpg4win (GNU Privacy Guard for Windows) ist ein Installationspaket
+		für Windows zur E-Mail- und Datei-Verschlüsselung. Gpg4win ermöglicht 
+		das einfache und kostenfreie Ver- und Entschlüsseln von E-Mails, 
+		Dateien und Datei-Ordnern. Ebenso kann mittels digitaler Signaturen die 
+		Integrität und die Authentizität der verschlüsselten E-Mails und 
+		Dateien überprüft werden. Das Paket besteht aus verschiedenen 
+		Programmkomponenten und einem Handbuch. }
 
 \end{quote}
 
@@ -521,7 +523,7 @@ unterstützt.
 
 Weitere Informationen zu GnuPG und weiteren Projekten der
 Bundesregierung zum Schutz im Internet finden Sie auf den Webseiten
-\uniurl[www.bsi.de]{http://www.bsi.de} und
+\uniurl[www.bsi.bund.de]{http://www.bsi.bund.de} und
 \uniurl[www.bsi-fuer-buerger.de]{http://www.bsi-fuer-buerger.de} des
 Bundesamtes für Sicherheit in der Informationstechnik.
 
@@ -571,8 +573,7 @@ zu sammeln, ihren Inhalt auszuwerten oder Absender und Empfänger zu
 protokollieren. Das wäre einfach nicht machbar gewesen oder es hätte
 zu lange gedauert. Mit der modernen Computertechnik ist es jedoch technisch
 möglich. Es gibt mehr als einen Hinweis darauf, dass dies genau heute
-schon im großen Stil mit \Email{} geschieht. Ein Artikel der
-Wikipedia über das 
+schon im großen Stil mit \Email{} geschieht. Ein Artikel über das 
 Echelon-System\footnote{\uniurl[\EchelonUrl]{\EchelonUrl}}
 \index{Echelon-System}
 liefert dazu interessantes Hintergrundwissen.
@@ -614,7 +615,7 @@ Sie allein bestimmen das Verhältnis zwischen Bequemlichkeit bei der
 Verschlüsselung und größtmöglicher Sicherheit.  Dazu gehören die
 wenigen, aber umso wichtigeren Vorkehrungen, die Sie treffen müssen,
 um Gpg4win richtig zu nutzen. In diesem Kompendium wird Ihnen
-dieses Vorgehen Schritt für Schritt erläutern.
+dieses Vorgehen Schritt für Schritt erläutert.
 
 
 \clearpage
@@ -880,7 +881,7 @@ eigenen Schlüsselbund\index{Schlüsselbund} -- letztendlich Ihrem
 eigenen Gedächtnis.
 
 Diese moderne Methode der Verschlüsselung mit einem nicht geheimen und
-öffentlichen, sowie einem geheimen und privaten Schlüsselteil nennt man auch
+öffentlichen sowie einem geheimen und privaten Schlüsselteil nennt man auch
 "`asymmetrische Verschlüsselung"'. \index{Asymmetrische Verschlüsselung}
 
 
@@ -1491,8 +1492,7 @@ folgenden drei Schaltflächen betätigen:
 	%TODO: In Kleo evtl auf Schlüssel exportieren ändern?
 	Schlüssel durch \Menu{Datei$\rightarrow$Zertifikat exportieren}
 	und versenden diese Datei per \Email{} an Ihre
-	Korrespondenzpartner. Weitere Details finden Sie im
-	Abschnitt~\ref{sec_publishPerEmail}.
+	Korrespondenzpartner.
 	
 	\item[Zertifikate zu Zertifikatsserver senden...]~\\ Wie Sie einen
 	weltweit verfügbaren OpenPGP-Zertifikatsserver in Kleopatra
@@ -1771,7 +1771,7 @@ Das war's! Sie haben Ihre Datei erfolgreich verschlüsselt!
 Nun kann die zuvor verschlüsselte Datei zum Testen einmal
 entschlüsselt werden.
 
-Dazu sollten Sie vorher beim Verschlüsseln auch an Ihren eigenen
+Dazu sollten Sie vorher beim Verschlüsseln auch mit Ihrem eigenen
 Schlüssel verschlüsselt haben -- andernfalls können Sie die Datei
 nicht mit Ihrem geheimen Schlüssel entschlüsseln.
 
@@ -1949,7 +1949,7 @@ Ergebnisdialog über den erfolgten Schlüsselimport.
 Es gibt viele öffentliche Schlüsselserver,
 die alle untereinander synchronisiert sind. Diese sind zu einem Kollektiv unter
 der Adresse \texttt{keys.gnupg.net} erreichbar. Nach der Installation ist
-dieses bereits ein Schlüsselserver Hinterlegt.
+dieses bereits ein Schlüsselserver hinterlegt.
 Um einen anderen Server als
 Schlüsselserver hinzuzufügen, öffnen Sie das Schlüsselserver-Menü
 \Menu{Einstellungen $\to$ Kleopatra einrichten ...} und wählen Sie dort
@@ -2142,7 +2142,7 @@ Solche Beglaubigungsinstanzen gibt es auch für OpenPGP-Schlüssel.
 In Deutschland bietet unter anderem z.B. die Zeitschrift c't schon
 lange einen solchen Dienst kostenlos an, ebenso wie viele
 Universitäten.
-Wenn man also ein OpenPGP-Schlüssel erhält, das durch eine solche
+Wenn man also einen OpenPGP-Schlüssel erhält, der durch eine solche
 Beglaubigungsinstanz per Beglaubigung seine Echtheit bestätigt, sollte
 man sich darauf verlassen können.
 
@@ -2178,14 +2178,14 @@ Wenn Sie sich weiter für dieses Thema interessieren, dann können Sie
 sich z.B. bei folgenden Webadressen über dieses und viele andere
 IT-Sicherheits-Themen informieren:
 \begin{itemize}
-	\item \uniurl[www.bsi.de]{http://www.bsi.de}
+	\item \uniurl[www.bsi.bund.de]{http://www.bsi.bund.de}
 	\item \uniurl[www.bsi-fuer-buerger.de]{http://www.bsi-fuer-buerger.de}
 	\item \uniurl[www.gpg4win.de]{http://www.gpg4win.de}
 \end{itemize}
 
 Eine weitere, eher technische Informationsquelle zum Thema
 der Beglaubigungsinfrastrukturen bietet das 
-GnuPG Handbuch das Sie ebenfalls im Internet finden unter:\\
+GnuPG-Handbuch, das Sie ebenfalls im Internet finden unter:\\
 \uniurl[www.gnupg.org/gph/de/manual]{http://www.gnupg.org/gph/de/manual}
 \clearpage
 
@@ -2201,7 +2201,7 @@ Schlüssel -- macht keinen Sinn, weil alle Welt den dazugehörigen
 öffentlichen Schlüssel kennt und die Nachricht damit entschlüsseln
 könnte.
 
-Es gibt es aber ein anderes Verfahren, um mit Ihrem geheimen Schlüssel
+Es gibt aber ein anderes Verfahren, um mit Ihrem geheimen Schlüssel
 eine Datei zu erzeugen: die Signatur.
 
 Solch eine digitale Signatur bestätigt eindeutig die
@@ -2299,10 +2299,10 @@ GpgOL erkennt automatisch, für welches Protokoll -- OpenPGP oder
 S/MIME -- Ihr eigner privater Schlüssel zum Signieren und Verschlüsseln
 vorliegt.
 
-Sollten Sie ein eigenen OpenPGP-Schlüssel \textit{und} ein S/MIME-Zertifikat mit
-der gleichen \Email{}-Adresse besitzen, fragt Sie Kleopatra vor dem
-Signieren nach dem gewünschten Protokollverfahren oder haben Sie vom
-gewählten Verfahren mehrere eigene Schlüssel (z.B.
+Sollten Sie gleichzeitig einen eigenen OpenPGP-Schlüssel \textit{und} ein 
+S/MIME-Zertifikat mit der gleichen \Email{}-Adresse besitzen, fragt Sie 
+Kleopatra vor dem Signieren nach dem gewünschten Protokollverfahren, oder haben 
+Sie vom gewählten Verfahren mehrere eigene Schlüssel (z.B.
 zwei OpenPGP-Schlüssel zu der gleichen \Email{}-Adresse), dann
 öffnet Kleopatra ein Fenster, in dem Ihre eigenen Schlüssel
 angezeigt werden, zu denen Ihnen jeweils ein geheimer
@@ -2329,9 +2329,9 @@ Dies ist notwendig, denn Sie wissen:
 	\textbf{Signieren können Sie nur mit Ihrem eigenen geheimen Schlüssel.}
 \end{quote}
 Logisch, denn nur Ihr geheimer Schlüssel bestätigt Ihre Identität. Der
-Kor\-res\-pon\-denz\-partner kann dann mit Ihrem öffentlichen Schlüssel, das
+Kor\-res\-pon\-denz\-partner kann dann mit Ihrem öffentlichen Schlüssel, den
 er bereits hat oder sich besorgen kann, Ihre Identität prüfen und die \Email{} 
-entschlüsseln.  Denn nur Ihr geheimer Schlüssel passt zu Ihrem öffentlichem
+entschlüsseln. Denn nur Ihr geheimer Schlüssel passt zu Ihrem öffentlichem
 Schlüssel.
 
 Bestätigen Sie Ihre Passphrase-Eingabe mit \Button{OK}.  Ihre
@@ -2348,7 +2348,7 @@ Zeit gespeichert.
 \textit{Übrigens}: Sie können eine Nachricht auch nur signieren oder nur 
 verschlüsseln. Klicken Sie dazu auf das GpgOL Symbol in der Nachricht. Der 
 Ablauf ist analog zu dem hier beschriebenen. Es wird aber davon abgeraten, eine 
-Nachricht nur zu verschlüsseln, da hierbei die nicht Urheberschaft der
+Nachricht nur zu verschlüsseln, da hierbei nicht die Urheberschaft der
 Nachricht geschützt wird.
 
 \clearpage
@@ -2364,7 +2364,7 @@ Ihres Korrespondenzpartners, den Sie vor der Überprüfung in Ihre
 Schlüsselverwaltung importiert haben sollten (vgl.
 Kapitel~\ref{sec_importfromfile}).
 
-Um eine signierte signierte \Email{} zu prüfen, gehen Sie wie folgt
+Um eine signierte \Email{} zu prüfen, gehen Sie wie folgt
 vor:
 
 Starten Sie Outlook und öffnen Sie eine signierte \Email{}.
@@ -2459,7 +2459,7 @@ aufbewahren!
 
 Sie ahnen das Problem: Zum Entschlüsseln Ihrer archivierten
 (versendeten) \Email{}s brauchen Sie aber den geheimen Schlüssel des
-Empfängers -- und den haben Sie nicht und werden Sie nie haben ...
+Empfängers -- und den haben Sie nicht und werden ihn nie haben ...
 
 Also was tun?
 
@@ -2469,14 +2469,14 @@ Ganz einfach: \textbf{Sie verschlüsseln zusätzlich auch an sich
 Die Nachricht wird einmal für Ihren eigentlichen Korrespondenzpartner
 verschlüsselt und ein zweites Mal auch für Sie selbst (mit Hilfe Ihres
 öffentlichen Schlüssels).
-So können Sie die \Email{} später einfach mit Ihrem eigenen geheimen Schlüssel wieder
-lesbar machen.
+So können Sie die \Email{} später einfach mit Ihrem eigenen geheimen Schlüssel 
+wieder lesbar machen.
 
 Jede verschlüsselte Nachricht wird von GpgOL automatisch auch an Ihren
 eigenen öffentlichen Schlüssel verschlüsselt. Dazu nutzt GpgOL Ihre
 Absender-\Email{}-Adresse. Sollten Sie mehrere Schlüssel zu einer
 Adresse besitzen, so müssen Sie sich beim Verschlüsselungsvorgang
-entscheiden, an welchen Schlüssel verschlüsselt werden soll.
+entscheiden, mit welchem Schlüssel verschlüsselt werden soll.
 
 \clearpage
 \subsubsection{Kurz zusammengefasst}
@@ -2727,8 +2727,8 @@ folgende Nachricht:
 
 \IncludeImage[width=0.3\textwidth]{sc-kleopatra-publishKey1_de}
 
-Ihr Schlüssel ist nun Erfolgreich auf dem Schlüsselserver veröffentlicht und
-Korrespondenzpartner können Ihn einfach über die Schlüsselsuche finden.
+Ihr Schlüssel ist nun erfolgreich auf dem Schlüsselserver veröffentlicht und
+Korrespondenzpartner können ihn einfach über die Schlüsselsuche finden.
 \section{Veröffentlichen von X.509-Zertifikaten}
 \label{publishPerEmailx509}
 Für das Veröffentlichen von X.509-Zertifikaten ist der Anbieter zuständig. Wenn
@@ -2792,9 +2792,8 @@ X.509-Zertifikaten:
     Schlüsselserver sind, erfahren Sie im folgenden Kapitel.
 
 \item[Die Schlüssel-ID\index{Schlüsselkennung}\index{Schlüssel!-ID}] (auch Schlüsselkennung genannt) besteht aus
-    den letzten acht Stellen des Fingerabdrucks und erfüllt denselben
-    Zweck wie dieser. Die wesentlich geringere Länge macht die
-    Schlüsselkennung einfacher handhabbar, 
+    den letzten acht Stellen des Fingerabdrucks. Die wesentlich geringere Länge 
+    macht die Schlüsselkennung einfacher handhabbar, 
     erhöht aber das Risiko von Mehrdeutigkeiten (unterschiedliche
     Schlüssel mit derselben Kennung).
 
@@ -3101,7 +3100,7 @@ beschrieben ist.
 
 In den Kapiteln \ref{ch:publishCertificate} und
 \ref{sec_importfromfile} wurde der Im- und Export von Schlüsseln
-erläutert. Sie haben Ihren eigenen Schlüssel exportiert, um es zu
+erläutert. Sie haben Ihren eigenen Schlüssel exportiert, um ihn zu
 veröffentlichen, und den Schlüssel Ihres Korrespondenzpartners
 importiert und so "`an Ihrem Schlüsselbund\index{Schlüsselbund}
 %TODO: Schlüsselverwaltung vs. Zertifikatsverwaltung
@@ -3126,12 +3125,12 @@ Sicherungskopie erstellen.
 
 Eine solche Sicherungskopie haben Sie evtl. schon einmal am Ende Ihrer
 OpenPGP-Schlüsselpaar\-erzeu\-gung angelegt. Da Ihr OpenPGP-Schlüssel
-aber inzwischen weitere Beglaubigungen haben kann, sollten Sie es ggf.
+aber inzwischen weitere Beglaubigungen haben kann, sollten Sie ihn ggf.
 erneut sichern.
 
-Öffnen Sie Kleopatra, selektieren Sie Ihren eigenen Schlüssen und
+Öffnen Sie Kleopatra, selektieren Sie Ihren eigenen Schlüsseln und
 %TODO: Auf Schlüssel ändern? - dann in Kleo anpassen
-klicken Sie auf \Menu{Datei$\rightarrow$Geheimes Zertifikat exportieren}.
+klicken Sie auf \Menu{Datei$\rightarrow$Geheimen Schlüssel exportieren}.
 
 % screenshot kleopatra export secret key
 \IncludeImage[width=0.6\textwidth]{sc-kleopatra-openpgp-exportSecretKey_de}
@@ -3172,7 +3171,7 @@ Kleopatra gehen Sie so vor, wie Sie es vom Import fremder
 Kapitel~\ref{ch:importCertificate}):
 
 %TODO: Menü anpassen in Kleo?
-Klicken Sie auf \Menu{Datei$\rightarrow$Zertifikat importieren...} und
+Klicken Sie auf \Menu{Datei$\rightarrow$Schlüssel importieren...} und
 wählen Sie die zu importierende Datei aus.  Handelt es sich um eine
 PKCS12-Datei (z.B. vom Typ \Filename{.p12}), so werden Sie zunächst
 nach der Passphrase zum Entsperren des geheimen Schlüssels gefragt:
@@ -3240,8 +3239,9 @@ Schlüsselpaar exportiert und wieder importiert.}
 \clearpage
 \section{Paperkey} \label{paperkey}
 Mit Paperkey haben Sie die Möglichkeit Ihren privaten Schlüssel nicht nur
-auf digitale Medien zu sichern, sondern auf auf analoge so können Sie ihn z.B.
-in einem Bankschließfach hinterlegen und von diesem auch wieder herstellen.
+auf digitale Medien zu sichern, sondern auf analoge, so können Sie ihn z.B.
+in einem Bankschließfach hinterlegen und von diesem analogen Medium auch wieder 
+herstellen.
 
 \textbf{Wichtig:} Dies ist nur für OpenPGP-Schlüssel möglich.
 
@@ -3279,24 +3279,24 @@ Smartcards oder auch Chipkarten sind kleine Plastikkarten mit Chips auf ihnen,
 die einen kleinen Mikroprozessor enthalten. Sie kennen wahrscheinlich bereits
 einige Smartcards, wie zum Beispiel Simkarten in Handys oder
 Krankenkassenkarten. Zur Verwendung mit OpenPGP oder X.509 gibt es spezielle
-Karten, die mit GnuPG genuzt werden können.
+Karten, die mit GnuPG genutzt werden können.
 
 Ähnlich wie Krankenkassenkarten oder Simkarten haben die Smartcards, die mit
 GnuPG verwendet werden können, bestimmte Eigenschaften. Die Smartcards
 fungieren dabei als Speicher für den privaten Schlüssel und führen alle
 kryptografischen Operationen auf der Karte selbst durch. Dies kann für
-einige Szenarien sehr spannend sein, denn so muss den privaten Schlüssel
-selbst nicht mehr auf dem Computer mit dem Sie arbeiten nicht mehr
+einige Szenarien sehr spannend sein, denn so muss der private Schlüssel
+selbst nicht mehr auf dem Computer, mit dem Sie arbeiten, nicht mehr
 vorhanden sein.
 
 \section{Nutzung von Smartcards mit OpenPGP 
 \label{OpenPGPSmartcard}}
 
-Zunächst muss die Frage beantwortet werden ob Sie eine Sicherheitskopie des
-Schlüssel behalten werden soll, oder ob der Schlüssel ausschließlich auf
+Zunächst muss die Frage beantwortet werden, ob eine Sicherheitskopie des
+Schlüssel behalten werden soll oder ob der Schlüssel ausschließlich auf
 der Smartcard existieren soll. Beide Möglichkeiten haben Ihre Vor- und
 Nachteile. Wenn der Schlüssel ausschließlich auf der Karte existieren soll,
-kann es nachträglich nicht mehr von der Karte kopiert werden. Dies bringt
+kann er nachträglich nicht mehr von der Karte kopiert werden. Dies bringt
 zusätzliche Sicherheit, sobald die Karte jedoch defekt ist oder abhanden
 kommt, haben Sie keinen Zugriff mehr auf den Schlüssel. Für die meisten
 Fälle bietet es sich an, den Schlüssel auf einem Rechner zu erstellen, mit
@@ -3305,7 +3305,7 @@ Schlüssel auf die Smartcard zu übertragen. Im Folgenden werden wir auf
 beide Fälle eingehen.
 
 \subsection{Erstellen des OpenPGP-Schlüssels auf der SmartCard}
-Schließen Sie das Smartcard Lesegerät an Ihren Computer an. In Kleopatra
+Schließen Sie das Smartcard-Lesegerät an Ihren Computer an. In Kleopatra
 finden Sie unter dem Punkt \Menu{Extras $\to$ SmartCards verwalten} die
 Einstellungen für Ihre Smartcard. Stecken Sie die zu benutzende SmartCard
 in das Lesegerät und drücken Sie \Button{F5} und warten Sie, dass die
@@ -3349,7 +3349,7 @@ gelangen!
 \textbf{Herzlichen Glückwunsch!} Sie haben erfolgreich einen Schlüssel auf Ihrer
 SmartCard erstellen.
 
-Bei Zukünftigen kryptografischen Operationen werden Sie nun immer gebeten Ihre
+Bei zukünftigen kryptografischen Operationen werden Sie nun immer gebeten Ihre
 Smartcard in das Lesegerät einzuführen und ggf. eine PIN oder Passphrase darüber
 einzugeben.
 
@@ -3358,7 +3358,7 @@ einzugeben.
 
 \section{Nutzung von NetKey-Cards mit X.509}
 \label{X509Smartcard}
-Ebenso wie OpenPGP SmartCards können auch X.509 NetKey-Cards verwendet werden.
+Ebenso wie OpenPGP-SmartCards können auch X.509 NetKey-Cards verwendet werden.
 Hierbei müssen Sie allerdings keine eigenen Einstellungen übernehmen, Sie wird
 von der Zertifizierungsstelle vorkonfiguriert und kann danach in Kleopatra
 genutzt werden.
@@ -3371,8 +3371,8 @@ genutzt werden.
 
 \T\enlargethispage{\baselineskip}
 \T\marginSmime
-Im Rahmen einer zentralen Softwareverteilung oder Umgebungen, in denen
-viele Anwender auf einem Rechner arbeiten, ist es sinnvoll, einige
+Im Rahmen einer zentralen Softwareverteilung oder in Umgebungen, in denen
+viele Anwender auf einem gemeinsamen Rechner arbeiten, ist es sinnvoll, einige
 systemweite Vorgaben und Vorbelegungen für Gpg4win einzurichten.
 
 Das betrifft vor allem S/MIME, denn bei vorgegebenen Vertrauensketten
@@ -3412,9 +3412,9 @@ Einige typische systemweite Einstellungen sind:
     verschiedene Möglichkeiten an. Von den meisten
     Zertifizierungsstellen werden Sperrlisten\index{Sperrlisten} (auch
     CRLs \index{CRLs|see{Sperrlisten}} genannt, nach RFC5280) und
-    OSCP\index{OSCP} (nach RFC2560) unterstützt. OSCP bringt
-    zeitnähere Informationen, hat aber den Nachteil, dass Netzverkehr
-    bis zum OSCP-Dienst erfolgt und daran auch
+    OSCP\index{OSCP} (Online Certificate Status Protocol, nach RFC2560) 
+    unterstützt. OSCP bringt zeitnähere Informationen, hat aber den Nachteil, 
+    dass Netzverkehr bis zum OSCP-Dienst erfolgt und daran auch
     gut erkannt werden kann, mit welchen Partnern gerade Nachrichten
     ausgetauscht werden. GnuPG kann mit beiden Möglichkeiten umgehen, es
     ist die Komponente "`DirMngr"' \index{Directory Manager|see{DirMngr}}
@@ -4303,7 +4303,7 @@ RSA-Algorithmus\footnote{RSA ist eigentlich optional, da aus
 Patentgründen der Elgamal-Algorithmus, beruhend auf dem schwieriger zu
 erklärenden Problem des diskreten Logarithmus, als Standard in GnuPG
 verwendet wird.}.  RSA steht für die Nachnamen von Ron Rivest, Ami
-Shamir und Ben Adleman, die diesen Algorithmus im Jahr 1978 entdeckt
+Shamir und Leonard Adleman, die diesen Algorithmus im Jahr 1978 entdeckt
 haben. Dieser Algorithmus verwendet einen Typ der Arithmetik, die
 Rechnen mit Restklassen oder "`Modulo-Arithmetik"'
 \index{Modulo-Arithmetik} heißt.
@@ -4793,7 +4793,7 @@ in den Tabellen~\link*{1}[\ref{table1}]{table1} und \link*{2}[\ref{table2}]{tabl
 findet -- stetig ab, je
 größer die Primzahlen werden.  Von Primzahlen in der Größenordnung,
 die Sie in der Praxis bei der Verschlüsselung verwenden, ist dieser
-Teil ist so klein, dass der RSA-Algorithmus davon in keiner Weise
+Teil so klein, dass der RSA-Algorithmus davon in keiner Weise
 beeinträchtigt wird.
 
 Je größer die Primzahlen, desto sicherer die Verschlüsselung.
