@@ -305,10 +305,10 @@ chk  aa99e2cc3c018a4b95d79a279b041273df560f03dd46413ad3567659d438f0e3
 file pinentry/pinentry-1.1.0.tar.bz2
 chk  68076686fa724a290ea49cdf0d1c0c1500907d1b759a3bcbfbec0293e8f56570
 
-# TODO switch back to released version
+# last changed: 2018-01-11
 # by: ah
-#file gpgme/gpgme-1.9.0.tar.bz2
-#chk  1b29fedb8bfad775e70eafac5b0590621683b2d9869db994568e6401f4034ceb
+file gpgme/gpgme-1.10.0.tar.bz2
+chk  1a8fed1197c3b99c35f403066bb344a26224d292afc048cfdfc4ccd5690a0693
 
 # last changed: 2017-01-04
 # by: ah
@@ -517,8 +517,8 @@ chk 40c874c98c0eb0c76e9a5015aab5d5ed791c1e0bed138f412fb496031e80eb3f
 server http://files.intevation.de/projects/gpg4all
 
 # by: ah
-file gpgme/gpgme-1.10.0-beta90.tar.bz2
-chk  d7b8f5456192349df14287f5e5222f1e44102b36a7558c98fa09a9251957e808
+#file gpgme/gpgme-1.10.0-beta90.tar.bz2
+#chk  d7b8f5456192349df14287f5e5222f1e44102b36a7558c98fa09a9251957e808
 
 # Libkleo
 # last changed: see package date.
