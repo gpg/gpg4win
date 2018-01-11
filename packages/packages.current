@@ -238,9 +238,13 @@ server http://files.gpg4win.org/src
 # last-changed: 2017-12-08
 # by: ah
 # verified: Sig 5B80 C575 4298 F0CB  55D8 ED6A BCEF 7E29 4B09 2E28
-file gpgol/gpgol-2.0.5.tar.bz2
-chk  8fa5d4d13edfb344ec75a0e9dce3e633e6ce81e92cd388b73e2d34a14c78d46e
+#file gpgol/gpgol-2.0.5.tar.bz2
+#chk  8fa5d4d13edfb344ec75a0e9dce3e633e6ce81e92cd388b73e2d34a14c78d46e
 
+# for beta
+server http://files.gpg4win.org/Beta/gpgol
+file 2.0.6-beta9/gpgol-2.0.6-beta9.tar.bz2
+chk 1e956632633a708da46bdd932d34f76350c001d3b857efd75ccc55a0b7a28fb7
 #
 # GpgEX
 #
