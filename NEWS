@@ -3,19 +3,93 @@
 # The version number given below are for the standard installers as
 # distributed by www.gpg4win.org.
 
-Noteworthy changes in Version 3.0.3 (unreleased)
+Noteworthy changes in Version 3.0.3 (2018-01-12)
 ------------------------------------------------
+
+(en) GnuPG: Updated to 2.2.4.
+
+(de) GnuPG: Auf Version 2.2.4 aktualisiert.
+
+(en) GpgOL: A bug that caused drafted mails not to encrypt the correct
+     content has been fixed. (T3419)
+
+(de) GpgOL: Ein Fehler der dazu führte das als Entwurf gespeicherte Mails
+     nicht mit dem korrekten Inhalt verschlüsselt wurden ist behoben. (T3419)
+
+(en) GpgOL: A bug that caused encrypted mails not to be displayed has been
+     fixed. (T3537)
+
+(de) GpgOL: Ein Fehler der dazu führen konnte das verschlüsselte Mails nicht
+     angezeigt wurden ist nun behoben. (T3537)
+
+(en) GpgOL: A bug that caused sending unencrypted mails when Outlooks internal
+     S/MIME code was activated has been fixed. (T3656)
+
+(de) GpgOL: Ein Fehler der dazu führen konnte das unverschlüsselte Mails
+     versendet wurden wenn Outlooks interner S/MIME code aktiviert wurde ist
+     behoben. (T3656)
+
+(en) GpgOL: PGP/Inline (no-mime) sending is now compatible with
+     Microsoft Exchange Online. (T3662)
+
+(de) GpgOL: PGP/Inline (no-mime) mailversand ist nun mit Microsoft
+     Exchange Online kompatibel. (T3662)
+
+(en) GpgOL: The recipient lookup for Exchange addresses has been
+     improved.
+
+(de) GpgOL: Die Suche nach Empfänger Mail Adressen in Exchange
+     Addressbüchern wurde verbessert.
+
+(en) GpgOL: Signatures of signed only mails with attachments have been
+     fixed. (T3735)
+
+(de) GpgOL: Signaturen von unverschlüsselten Mails mit Anhängen wurden
+     korrigiert. (T3735)
+
+(en) GpgEX: An internal error when trying to verify a non-signature file
+     has been fixed. (T3658)
+
+(de) GpgEX: Ein interner Fehler wenn man eine nicht Signaturdatei verifizierte,
+     wurde behoben. (T3658)
+
+(en) Kleopatra: Sorting in Keylist has been fixed. (T3603)
+
+(de) Kleopatra: Sortierung in der Schlüsselliste wurde korrigiert. (T3603)
+
+(en) Kleopatra: Certificate details for S/MIME certificates have been improved.
+     (T3611, T3727, T3726)
+
+(de) Kleopatra: Zertifikatsdetails für S/MIME Zertifikate wurden verbessert.
+     (T3611, T3727, T3726)
+
+(en) Kleopatra: Certificates can now be exported as text from the certificate
+     details. (T3605)
+
+(de) Kleopatra: Zertifikate können nun als Text aus den Zertifikatsdetails
+     exportiert werden. (T3605)
+
+(en) Kleopatra: The usage of the temp directory to buffer decrypted data is now
+     configurable. (T3602)
+
+(de) Kleopatra: Die Verwendung des temporären Verzeichnises beim entschlüsseln
+     von Daten ist nun konfigurierbar. (T3602)
+
+(en) Installer: The installer no longer reinstalls desktop shortcuts on
+     upgrade. (T3729)
+
+(de) Installer: Der installer legt nun keine neuen Desktopverknüpfungen
+     bei updates an. (T3729)
 
 ~~~~~~~~~~~~~~~
 GnuPG:          2.2.4
 Kleopatra:      3.0.2
-GPA:            0.9.9
-GpgOL:          2.0.5
+GPA:            0.9.10
+GpgOL:          2.0.6
 GpgEX:          1.0.5
 Kompendium DE:  4.0.0
 Compendium EN:  3.0.0
 ~~~~~~~~~~~~~~~
-
 
 Noteworthy changes in Version 3.0.2 (2017-12-08)
 ------------------------------------------------

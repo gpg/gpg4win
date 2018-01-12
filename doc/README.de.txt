@@ -64,61 +64,43 @@ Die integrierten Gpg4win-Komponenten in Version !VERSION! sind:
 Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 -----------------------------------------
 
-- GnuPG: Zwei Probleme wurden behoben welche zu einer
-  Blockade des GnuPG Systems führen konnten. (T3378)
+- GnuPG: Auf Version 2.2.4 aktualisiert.
 
-- GpgOL: Weitere augenscheinlich zufällige Abstürze von Outlook
-  wurden beseitigt. (T3484)
+- GpgOL: Ein Fehler der dazu führte das als Entwurf gespeicherte Mails
+  nicht mit dem korrekten Inhalt verschlüsselt wurden ist behoben. (T3419)
 
-- GpgOL: Outlook wird nicht mehr blockiert wenn viele Mails
-  gleichzeitig ausgewählt werden. (T3433)
+- GpgOL: Ein Fehler der dazu führen konnte das verschlüsselte Mails nicht
+  angezeigt wurden ist nun behoben. (T3537)
 
-- GpgOL: Konten die mit dem G Suite Sync Plugin eingerichtet wurden
-  werden nun erkannt. Mit diesen Konten werden bisher nur
-  reine ("No-MIME") verschlüsselte PGP Textnachrichten, ohne
-  Anhänge, unterstützt.
-  Das senden von signierten Nachrichten wird nicht unterstützt.
-  Lesen von Krypto Mails ist vollständig unterstützt. (T3545)
+- GpgOL: Ein Fehler der dazu führen konnte das unverschlüsselte Mails
+  versendet wurden wenn Outlooks interner S/MIME code aktiviert wurde ist
+  behoben. (T3656)
 
-- GpgOL: Die Option "No-MIME" verschlüsselte,
-  unsignierte Textnachrichten, ohne Anhänge zu versenden funktioniert
-  wieder (T3514)
+- GpgOL: PGP/Inline (no-mime) mailversand ist nun mit Microsoft
+  Exchange Online kompatibel. (T3662)
 
-- GpgOL: Die Verarbeitung und Fehlerbehandlung von signierten,
-  unverschlüsselten Mails wurde verbessert.
+- GpgOL: Die Suche nach Empfänger Mail Adressen in Exchange
+  Addressbüchern wurde verbessert.
 
-- GpgOL: Verschiedene Geschwindigkeits- und
-  Leistungs-Verbesserungen.
+- GpgOL: Signaturen von unverschlüsselten Mails mit Anhängen wurden
+  korrigiert. (T3735)
 
-- GpgOL: Verbesserte Erkennung von großen PGP/MIME Nachrichten und
-  MS-TNEF Nachrichten. (T3419 , T3542)
+- GpgEX: Ein interner Fehler wenn man eine nicht Signaturdatei verifizierte,
+  wurde behoben. (T3658)
 
-- Kleopatra: Das Passwort Eingabefeld öffnet sich nicht mehr
-  teilweise im Hintergrund. (T3460)
+- Kleopatra: Sortierung in der Schlüsselliste wurde korrigiert. (T3603)
 
-- Kleopatra: Das entschlüsseln von Archiven über Partitionsgrenzen
-  hinweg funktioniert nun. (T3547)
+- Kleopatra: Zertifikatsdetails für S/MIME Zertifikate wurden verbessert.
+  (T3611, T3727, T3726)
 
-- Kleopatra: Ein möglicher Absturz in der GpgOL Zertifikatsauswahl
-  wurde behoben. (T3544)
+- Kleopatra: Zertifikate können nun als Text aus den Zertifikatsdetails
+  exportiert werden. (T3605)
 
-- Kleopatra: Die Vorauswahl von verschlüsseln / signieren mit GpgEX
-  funktioniert erneut. (T3543)
+- Kleopatra: Die Verwendung des temporären Verzeichnises beim entschlüsseln
+  von Daten ist nun konfigurierbar. (T3602)
 
-- Kleopatra: Web Key Directories werden nun bei der
-  Dateiverschlüsselung unterstützt. (T3548)
-
-- Kleopatra: Ein Absturz bei der Schlüsselsuche auf einem LDAP
-  Schlüsselserver wurde behoben. (T3550)
-
-- Kleopatra: Ein Absturz wenn die Schlüsselerstellung abgebrochen
-  wurde ist behoben. (T3577)
-
-- Kleopatra: Beglaubigungen können nun wieder aus den Zertifikatsdetails
-  heraus angezeigt werden. (T3579)
-
-- Kleopatra: Es ist nun möglich Zertifikate öffentlich zu beglaubigen
-  auch wenn dieses bereits lokal signiert wurde. (T1649)
+- Installer: Der installer legt nun keine neuen Desktopverknüpfungen
+  bei updates an. (T3729)
 
 
 3. Anmerkungen
