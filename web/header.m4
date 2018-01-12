@@ -26,7 +26,7 @@
    </div>
    <div class="h_text">
    <p><span class="heading">News</span></p>
-   <small>2019-01-13</small><br>
+   <small>2018-01-12</small><br>
    <span class="serif_word"><img src="img/bulletin.png" alt"" />
      m4_ifelse(LANG_DE, `1', `
       <a href="https://files.gpg4win.org/README-3.0.3.de.txt">
