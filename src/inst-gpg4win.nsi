@@ -54,6 +54,7 @@ Section "-gpg4win" SEC_gpg4win
   StrCpy $is_update "1"
   Delete /REBOOTOK "$1\gpg4win-uninstall.exe"
   RmDir "$1"
+  SetOutPath "$INSTDIR\share\gpg4win"
 
 skip_uninst:
   SetOutPath "$INSTDIR\share\gpg4win"
@@ -68,8 +69,8 @@ skip_uninst:
   File /oname=README.no.txt "${BUILD_DIR}/README.en.txt"
   File /oname=README.pt.txt "${BUILD_DIR}/README.en.txt"
   File /oname=README.ru.txt "${BUILD_DIR}/README.en.txt"
-  File /oname=README.zh_CN.po "${BUILD_DIR}/README.en.txt"
-  File /oname=README.zh_TW.po "${BUILD_DIR}/README.en.txt"
+  File /oname=README.zh_CN.txt "${BUILD_DIR}/README.en.txt"
+  File /oname=README.zh_TW.txt "${BUILD_DIR}/README.en.txt"
 
   File "${BUILD_DIR}/HOWTO-SMIME.en.txt"
   File "${BUILD_DIR}/HOWTO-SMIME.de.txt"
@@ -109,6 +110,7 @@ skip_uninst:
   # Install gpg4win included tools
   SetOutPath "$INSTDIR\bin"
   File "${BUILD_DIR}/sha1sum.exe"
+  SetOutPath "$INSTDIR\bin"
   File "${BUILD_DIR}/sha256sum.exe"
   File "${BUILD_DIR}/md5sum.exe"
   File "${BUILD_DIR}/mkportable.exe"

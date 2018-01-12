@@ -136,6 +136,8 @@ Section "-un.gpg4win"
   RMDir "$INSTDIR\share"
   RMDir "$INSTDIR\pub"
   RMDir "$INSTDIR\etc"
+  RMDir "$INSTDIR\bin"
+  RMDir "$INSTDIR\bin_64"
   RMDir "$INSTDIR"
 
 !endif
