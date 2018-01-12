@@ -235,16 +235,16 @@ chk  1dddde1400c3bcb7749d398071af88c3e4754058d2d4c0b3696c2f82dc5cf11c
 #
 server http://files.gpg4win.org/src
 
-# last-changed: 2017-12-08
+# last-changed: 2018-01-12
 # by: ah
 # verified: Sig 5B80 C575 4298 F0CB  55D8 ED6A BCEF 7E29 4B09 2E28
-#file gpgol/gpgol-2.0.5.tar.bz2
-#chk  8fa5d4d13edfb344ec75a0e9dce3e633e6ce81e92cd388b73e2d34a14c78d46e
+file gpgol/gpgol-2.0.6.tar.bz2
+chk  6cb06f7c79f40d94c4b9da7123971e62767180a2f8d1ec99e7eacc3f241238a5
 
 # for beta
-server http://files.gpg4win.org/Beta/gpgol
-file 2.0.6-beta9/gpgol-2.0.6-beta9.tar.bz2
-chk 1e956632633a708da46bdd932d34f76350c001d3b857efd75ccc55a0b7a28fb7
+#server http://files.gpg4win.org/Beta/gpgol
+#file 2.0.6-beta9/gpgol-2.0.6-beta9.tar.bz2
+#chk 1e956632633a708da46bdd932d34f76350c001d3b857efd75ccc55a0b7a28fb7
 #
 # GpgEX
 #
@@ -547,5 +547,5 @@ chk 4e6993d5a28de4f4338d96de0edb5d7cb9243976d647162d0539b021a853bafb
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah.
-file kleopatra/kleopatra-201801110728.tar.gz
-chk b0ce499479d058fe92d497d33e9908c55fe3721797e5218caacdfddd42a146b4
+file kleopatra/kleopatra-201801121054.tar.gz
+chk 5b82c0bbb87b558e6d66a729eca8a5170af2c9787a528fe187a64cacd1d180b1
