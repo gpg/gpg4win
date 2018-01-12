@@ -183,7 +183,8 @@ in_vers && /^~~~/ {
 
 in_vers {
   split ( $0, a, ":" );
-  printf "%s: %s\n", a[1], a[2];
+  # m4 quote the product string, as it may contain a valid macro like in "DE:"
+  printf "`%s': %s\n", a[1], a[2];
 }
 
 
