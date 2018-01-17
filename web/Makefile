@@ -39,10 +39,13 @@ subdirs: $(SUBDIRS)
 	done
 
 change-history.htm4: build-history.awk NEWS.last
-	LC_ALL=de_DE.latin1 awk -f build-history.awk < NEWS.last > $@
+	LC_ALL=de_DE.latin1 awk -f build-history.awk < NEWS.last | \
+		   sed 's@\(T[0-9]\+\)@<a href="https://dev.gnupg.org/\1">\1</a>@g' > $@
 
 change-history-de.htm4: build-history.awk NEWS.last
-	LC_ALL=de_DE.latin1 awk -f build-history.awk -v lang=de < NEWS.last > $@
+	LC_ALL=de_DE.latin1 awk -f build-history.awk -v lang=de < NEWS.last | \
+		   sed 's@\(T[0-9]\+\)@<a href="https://dev.gnupg.org/\1">\1</a>@g' > $@
+
 
 online: all
 	@echo ""
