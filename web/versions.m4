@@ -14,7 +14,6 @@ m4_define(`LEN_SRC',`5351730')
 m4_define(`LEN_EXE',`26990152')
 m4_define(`LEN_EXS',`225630392')
 m4_define(`DLPAGE',`I18N(`EN',`download.html')`'I18N(`DE',`download-de.html')')
-m4_define(`MIRROR_IE_URL',`http://ftp.heanet.ie/mirrors/ftp.gpg4win.org/')
 m4_define(`SOFTWAREOVERVIEW',`
 I18N(`EN', `<a href="https://www.gnupg.org/">GnuPG</a>')I18N(`DE', `<a href="https://www.gnupg.org/index.de.html">GnuPG</a>') 2.2.4
 <a href="https://www.kde.org/applications/utilities/kleopatra/">Kleopatra</a> 3.0.2

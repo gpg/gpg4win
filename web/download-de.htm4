@@ -17,37 +17,6 @@ PAGE_START
 
 <div id="main">
 
-<!--
-<h2>Gpg4win 2.2.2-beta (Veröffentlicht: 2014-08-14)</h2>
-
-<p>Aktuelle Vorabversion von Gpg4win 2.2.2 mit Sicherheitsupdates und Verbesserungen in
-GnuPG, Kleopatra, GpgEX, GpgOL und Pinentry-qt; in verschiedenen
-Varianten verfügbar:</p>
-<ul>
-<li><a
-href="https://files.gpg4win.org/Beta/gpg4win-2.2.2-beta37.exe">Full-Installer</a>
-(30 MByte)
-| <a href="https://files.gpg4win.org/Beta/gpg4win-2.2.2-beta37.exe.sig">OpenPGP Signatur</a>
-</li>
-<li><a
-href="https://files.gpg4win.org/Beta/gpg4win-light-2.2.2-beta37.exe">Light-Installer</a>
-(13 MByte, ohne Kleopatra und Gpg4win-Kompendium)
-| <a href="https://files.gpg4win.org/Beta/gpg4win-light-2.2.2-beta37.exe.sig">OpenPGP Signatur</a>
-</li>
-<li><a href="https://files.gpg4win.org/Beta/gpg4win-vanilla-2.2.2-beta37.exe">Vanilla-Installer</a>
-(4 MByte, nur GnuPG)
-| <a href="https://files.gpg4win.org/Beta/gpg4win-vanilla-2.2.2-beta37.exe.sig">OpenPGP Signatur</a>
-</li>
-<li><a
-href="https://files.gpg4win.org/Beta/gpg4win-2.2.2-beta37.tar.bz2">Quelltextpaket</a> (6 MByte)
-| <a href="https://files.gpg4win.org/Beta/gpg4win-2.2.2-beta37.tar.bz2">OpenPGP Signatur</a>
-</li>
-<li><a href="https://files.gpg4win.org/Beta/README-2.2.2-beta37.de.txt">README</a> </li>
-<li>Alle Beta-Versionen und OpenPGP-Signaturen auch per https (mit eigener CA) verfügbar:
-<a href="https://files.gpg4win.org/Beta/">https://files.gpg4win.org/Beta/</a>.</li>
-</ul>
--->
-
 <h2>Gpg4win VERSION (Veröffentlicht: DL_DATE)</h2>
 
 <p>Die Vollversion (inklusive des deutschen Gpg4win-Kompendiums) von Gpg4win VERSION
@@ -165,31 +134,10 @@ Neuigkeiten zu Gpg4win informiert zu werden.
 
 <p>Für Behörden: Angestrebt wird eine VS-NfD Zulassung durch das BSI.</p>
 
-<!--
-<p>
-Ist das Herunterladen immer langsam? Versuchen Sie diesen
-Spiegelserver:<br>
-<a href="MIRROR_IE_URL">Gpg4win Spiegelserver in Irland</a> (betrieben
-von <a href="http://ftp.heanet.ie/about/">HEAnet</a>)
-</p>
---!>
-</div>
+</div> <!-- main -->
 
 
 <div id="sidebar">
-<!--
-    <h3>Gpg4win 2.2.2-beta enthält:</h3>
-    <pre>
-<a href="http://www.gnupg.de/index.de.html">GnuPG</a> 2.0.26
-<a href="http://www.kde.org/applications/utilities/kleopatra/">Kleopatra</a> 2.2.0-gitac229d2
-<a href="http://www.gnupg.de/related_software/gpa/index.de.html">GPA</a> 0.9.4
-<a href="http://www.g10code.de/p-gpgol.html">GpgOL</a> 1.2.1
-<a href="http://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpgex.git;a=summary">GpgEX</a> 1.0.1
-<a href="doc/de/gpg4win-compendium.html">Kompendium (de)</a> 3.0.0
-<a href="doc/en/gpg4win-compendium.html">Compendium (en)</a> 3.0.0
-    </pre>
-    <p></p>
--->
     <h3>Gpg4win VERSION enthält:</h3>
     <pre>
     SOFTWAREOVERVIEW
