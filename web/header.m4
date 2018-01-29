@@ -29,10 +29,10 @@
    <small>2018-01-12</small><br>
    <span class="serif_word"><img src="img/bulletin.png" alt"" />
      m4_ifelse(LANG_DE, `1', `
-      <a href="https://files.gpg4win.org/README-3.0.3.de.txt">
+      <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2018-January/000040.html">
         Gpg4win 3.0.3 veröffentlicht
       </a></span>',`
-      <a href="https://files.gpg4win.org/README-3.0.3.en.txt">
+      <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2018-January/000076.html">
         Gpg4win 3.0.3 released
       </a></span>')
    <p></p>
