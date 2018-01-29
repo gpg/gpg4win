@@ -90,7 +90,7 @@ m4_define(`RQ',`m4_changequote(<,>)m4_dnl`
            target="_blank" title="Flattr this">
          <img src="img/flattr-icon.png" class="social-icon">
        </a>
-       <a href="http://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpg4win.git;a=summary" target="_blank" title="Gpg4win git repository">
+       <a href="https://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpg4win.git;a=summary" target="_blank" title="Gpg4win git repository">
          <img src="img/git-icon.png" class="social-icon">
        </a>
      </li>
@@ -128,11 +128,11 @@ m4_define(`RQ',`m4_changequote(<,>)m4_dnl`
      </b></li>
      MENU(`donate', `Spenden', `Donate', `donate', SUB, LANG_DE)
      MENU(`license', `Lizenz', `License', `license', SUB, LANG_DE)
-     m4_ifelse(LANG_DE, `1', `<li><a href="http://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpg4win.git;a=summary">Quellcode</a></li>',
-         `<li><a href="http://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpg4win.git;a=summary">Source Code</a></li>')
-     <li><a href="http://wiki.gnupg.org">Wiki</a></li>
-     m4_ifelse(LANG_DE, `1', `<li><a href="http://wald.intevation.org/projects/gpg4win/">Entwicklungsplattform</a></li>',
-         `<li><a href="http://wald.intevation.org/projects/gpg4win/">Development Platform</a></li>')
+     m4_ifelse(LANG_DE, `1', `<li><a href="https://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpg4win.git;a=summary">Quellcode</a></li>',
+         `<li><a href="https://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpg4win.git;a=summary">Source Code</a></li>')
+     <li><a href="https://wiki.gnupg.org">Wiki</a></li>
+     m4_ifelse(LANG_DE, `1', `<li><a href="https://dev.gnupg.org/">Entwicklungsplattform</a></li>',
+         `<li><a href="https://dev.gnupg.org/">Development Platform</a></li>')
      m4_ifelse(LANG_DE, `1', `<li><a href="Kurzstudie-Nachhaltige-FS-Beispiel-Gpg4win.html">Kurzstudie Gpg4win</a></li>',
          `<li><a href="ShortStudy-Sustainable-FS-example-Gpg4win.html">Short Study Gpg4win</a></li>')
      MENU(`links', `Links', `Links', `links', SUB, LANG_DE)
