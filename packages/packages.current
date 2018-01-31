@@ -528,8 +528,9 @@ server http://files.intevation.de/projects/gpg4all
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah.
-file libkleo/libkleo-201801110724.tar.gz
-chk 4bbe4c687876bf48ad041fc5d2f6d08595c5058e8ecbb08934564442f55700f1
+file libkleo/libkleo-201801311833.tar.gz
+chk 8123ac2f303f26ddcef1157cee131866ba13ee7d926979a0f117c14026e3f7fd
+
 
 # KDE-L10n
 # last changed: see package date.
