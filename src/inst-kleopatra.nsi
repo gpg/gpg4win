@@ -235,6 +235,7 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
   FileWrite $1 '$\r$\n'
   FileWrite $1 '[gpgsm]$\r$\n'
   FileWrite $1 'enable-crl-checks$\r$\n'
+  FileWrite $1 'compliance de-vs$\r$\n'
   FileWrite $1 '$\r$\n'
   FileWrite $1 '[gpg-agent]$\r$\n'
   FileWrite $1 'enable-extended-key-format$\r$\n'
