@@ -7,15 +7,24 @@ m4_define(`DE_FILE', `package-integrity-de.html')
 m4_define(`TITLE', `Check Integrity')
 PAGE_START
 
-<div id="intro">
+<div id="main">
 <h2>Check integrity of Gpg4win packages</h2>
-<p>How to actually perform the checks can be found on the
+<p>
+Usually you can use Microsoft's own methods to check
+that the installer is signed by one of the current code signing certificates
+listed below.
+
+<p>
+Microsoft will normally display the code signature in an
+user account control dialog when you try to execute the downloaded file;
+alternatively you can take a look in the file properties with the explorer.
+
+<p>
+Additional methods how to check the integrity can
+be found on the
 <a href="https://wiki.gnupg.org/Gpg4win/CheckIntegrity">
 Wiki page on integrity checks</a>.
-</p>
-</div>
 
-<div id="main">
 
 <h2>Code Signing Certificate</h2>
 

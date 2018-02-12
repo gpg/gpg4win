@@ -9,15 +9,25 @@ m4_define(`MAIN', `misc')
 PAGE_START
 m4_undefine(`DE')
 
-<div id="intro">
-<h2>Integrität der Gpg4win-Pakete prüfen</h2>
-<p>Wie man die Integrität prüft, kann man auf der 
-<a href="https://wiki.gnupg.org/Gpg4win/CheckIntegrity">
-Wiki-Seite zur Integritätsprüfung</a> nachlesen.
-</p>
-</div>
-
 <div id="main">
+<h2>Integrität der Gpg4win-Pakete prüfen</h2>
+<p>
+Nutzen Sie im Normalfall die Bordmittel von Microsoft,
+um zu überprüfen, dass die Installationsanwendung von einem der
+untenstehenden Codesigning-Zerts unterschrieben ist.
+
+<p>
+Eine Anzeige der Code-Signatur erfolgt normalerweise
+durch die Benutzerkontensteuerung
+wenn Sie versuchen die heruntergeladenen Datei zu öffnen;
+alternativ können Sie die Datei-Eigenschaften im Explorer ansehen.
+
+<p>
+Zusätzliche Möglichkeiten zur Prüfung lesen Sie
+auf der <a href="https://wiki.gnupg.org/Gpg4win/CheckIntegrity">
+Wiki-Seite zur Integritätsprüfung (auf Englisch)</a>.
+
+
 <h2>Codesigning Zertifikat</h2>
 
 <p>Die Gpg4win-exe-Dateien sind seit April 2016 mit folgendem Codesigning-Zertifikat
