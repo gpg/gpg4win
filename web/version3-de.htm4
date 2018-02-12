@@ -61,6 +61,11 @@ PAGE_START
     <a href="https://www.gnupg.org/documentation/manuals/gnupg/GPG-Configuration-Options.html">
   GnuPG-Konfigurationsoptionen</a> ('--auto-key-retrieve' und '--auto-key-locate').
 
+  <li> PGP-2 Schlüssel können aus Sicherheitsgründen nicht mehr importiert
+  oder genutzt werden.<br>
+  » Siehe
+  <a href="https://www.gnupg.org/faq/whats-new-in-2.1.html#nopgp2"
+  >GnuPG 2.2: Removal of PGP-2 support</a>.
 </ul>
 
 <h2>Krypto-Manager (Kleopatra)</h2>
