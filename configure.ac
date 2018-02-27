@@ -366,6 +366,7 @@ GPG4WIN_KDEPKG([karchive], [qtbase qttools extra-cmake-modules])
 GPG4WIN_KDEPKG([kiconthemes], [qtsvg kconfigwidgets karchive])
 GPG4WIN_KDEPKG([kxmlgui], [kiconthemes kconfigwidgets kitemviews])
 GPG4WIN_KDEPKG([libkleo], [kmime kwidgetsaddons kwindowsystem kcompletion kconfig gpgme])
+GPG4WIN_KDEPKG([gpg4win-tools], [libkleo gpgme])
 
 GPG4WIN_FINALIZE
 

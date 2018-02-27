@@ -544,6 +544,13 @@ chk 9c3da7c8b99c9f3eff5b0bd57fc5d100ebfcc3717516a5e2e7261481503943b8
 file kde-l10n/kde-l10n-201712080943-src.tar.xz
 chk 4e6993d5a28de4f4338d96de0edb5d7cb9243976d647162d0539b021a853bafb
 
+# Gpg4win-tools package (experimental)
+# last changed: see package date.
+# by: ah
+# verified: Tarball created by ah.
+file gpg4win-tools/gpg4win-tools-201802071407.tar.gz
+chk 4bfaad6ce235b0ee390d48df69764874317b7a6eb2433a8fec4120ce2ff9f6f5
+
 # Kleopatra
 # last changed: see package date.
 # by: ah

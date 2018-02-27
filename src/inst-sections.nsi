@@ -167,6 +167,9 @@
 !ifdef HAVE_PKG_QTTRANSLATIONS
 !include "inst-qttranslations.nsi"
 !endif
+!ifdef HAVE_PKG_GPG4WIN_TOOLS
+!include "inst-gpg4win-tools.nsi"
+!endif
 
 # These are displayed in the selection dialog.
 
@@ -394,6 +397,9 @@
 !endif
 !ifdef HAVE_PKG_QTTRANSLATIONS
 !include "uninst-qttranslations.nsi"
+!endif
+!ifdef HAVE_PKG_GPG4WIN_TOOLS
+!include "uninst-gpg4win-tools.nsi"
 !endif
 
 !include "uninst-gpg4win.nsi"
@@ -678,6 +684,9 @@ Function CalcDepends
 !ifdef HAVE_PKG_QTTRANSLATIONS
   !insertmacro UnselectSection ${SEC_qttranslations}
 !endif
+!ifdef HAVE_PKG_GPG4WIN_TOOLS
+  !insertmacro UnselectSection ${SEC_gpg4win-tools}
+!endif
 
   # Always install gnupg2.  This is also ensured by putting
   # these packages in the RO section and enabling them by default, but
@@ -720,6 +729,7 @@ Function CalcDepends
 		${SF_SELECTED} have_gpgol skip_gpgol
   have_gpgol:
   !insertmacro SelectSection ${SEC_gpgme}
+  !insertmacro SelectSection ${SEC_gpg4win-tools}
 
   # This is not a build dependency, but it is a run-time dependency.
   !insertmacro SectionFlagIsSet ${SEC_gpa} \

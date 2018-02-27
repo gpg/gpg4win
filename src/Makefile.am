@@ -84,6 +84,7 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
         inst-qttranslations.nsi uninst-qttranslations.nsi \
         inst-boost.nsi uninst-boost.nsi \
         inst-extra-cmake-modules.nsi uninst-extra-cmake-modules.nsi \
+        inst-gpg4win-tools.nsi uninst-gpg4win-tools.nsi \
         inst-final.nsi index.theme \
         slideshow/slides.dat \
         slideshow/slide1-gpgol.png \
@@ -121,7 +122,8 @@ gpg4win_qtpkgs = qtbase qttools qtwinextras qtsvg qttranslations
 gpg4win_kdepkgs = kconfig kwidgetsaddons ki18n extra-cmake-modules \
                   kcompletion kwindowsystem kcoreaddons libkleo kcodecs \
                   kmime kconfigwidgets kxmlgui kguiaddons kitemviews \
-                  kiconthemes kleopatra breeze-icons kitemmodels karchive
+                  kiconthemes kleopatra breeze-icons kitemmodels karchive \
+                  gpg4win-tools
 
 # Supported source packages to build in an additional architecture
 gpg4win_expkgs = libgpg-error libassuan libiconv gettext w32pth gpgex gpgol \
