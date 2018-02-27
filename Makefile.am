@@ -32,9 +32,6 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         patches/qtbase/relative-paths.patch \
         patches/qtbase/qtbase-mingw-fixes.patch \
         patches/qtbase/config-standardpaths.patch \
-        patches/qtbase/windowsxp-support.patch \
-        patches/qtbase/windowsxp-support-revert.patch \
-        patches/qtbase/windowsxp-support-revert-2.patch \
         patches/qtwinextras/support-xp.patch \
         patches/w32pth-2.0.5/workaround-broken-libtool.patch \
         patches/qttools/disable-most-tools.patch \

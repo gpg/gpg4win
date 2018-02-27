@@ -40,16 +40,26 @@ diff --git a/src/plugins/platforms/windows/qwindowstheme.cpp b/src/plugins/platf
 index 66735d8..5731560 100644
 --- a/src/plugins/platforms/windows/qwindowstheme.cpp
 +++ b/src/plugins/platforms/windows/qwindowstheme.cpp
-@@ -338,6 +338,8 @@
+@@ -414,12 +414,16 @@
+ static inline QStringList iconThemeSearchPaths()
+ {
+     const QFileInfo appDir(QCoreApplication::applicationDirPath() + QLatin1String("/icons"));
+-    return appDir.isDir() ? QStringList(appDir.absoluteFilePath()) : QStringList();
++    QStringList ret;
++    ret << appDir.absoluteFilePath() << QCoreApplication::applicationDirPath() + QLatin1String("/../share/icons");
++
++    return ret;
+ }
+
  static inline QStringList styleNames()
  {
-     QStringList result;
-+    result.append(QStringLiteral("breeze"));
-+    result.append(QStringLiteral("oxygen"));
-     if (QSysInfo::WindowsVersion >= QSysInfo::WV_VISTA)
-         result.append(QStringLiteral("WindowsVista"));
-     if (QSysInfo::WindowsVersion >= QSysInfo::WV_XP)
-@@ -398,6 +400,10 @@
+-    return { QStringLiteral("WindowsVista"), QStringLiteral("Windows") };
++    return {QStringLiteral("breeze"), QStringLiteral("oxygen"),
++            QStringLiteral("WindowsVista"), QStringLiteral("Windows") };
+ }
+
+ static inline int uiEffects()
+@@ -472,6 +476,10 @@
              result = int(scrollLines);
          return QVariant(result);
      }
