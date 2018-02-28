@@ -41,9 +41,11 @@ Section "-un.qtbase"
 
   Delete "$INSTDIR\bin\platforms\qwindows.dll"
   Delete "$INSTDIR\bin\printsupport\windowsprintersupport.dll"
+  Delete "$INSTDIR\bin\styles\qwindowsvistastyle.dll"
 
   RMDir "$INSTDIR\bin\printsupport"
   RMDir "$INSTDIR\bin\platforms"
+  RMDir "$INSTDIR\bin\styles"
   RMDir "$INSTDIR\bin"
 
   RMDir "$INSTDIR"

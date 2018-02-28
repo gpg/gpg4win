@@ -55,5 +55,8 @@ Section "-qtbase" SEC_qtbase
   SetOutPath "$INSTDIR\bin\printsupport"
   File ${prefix}/plugins/printsupport/windowsprintersupport.dll
 
+  SetOutPath "$INSTDIR\bin\styles"
+  File ${prefix}/plugins/styles/qwindowsvistastyle.dll
+
 !endif
 SectionEnd
