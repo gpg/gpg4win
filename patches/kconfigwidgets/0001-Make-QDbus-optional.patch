@@ -19,15 +19,16 @@ is not available.
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
 index bed53d1..87f976c 100644
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
-@@ -10,7 +10,16 @@
+--- CMakeLists.txt.orig 2018-02-28 08:33:32.052419561 +0100
++++ CMakeLists.txt      2018-02-28 08:35:44.523986191 +0100
+@@ -12,7 +12,17 @@
  set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR})
 
- set(REQUIRED_QT_VERSION 5.5.0)
+ set(REQUIRED_QT_VERSION 5.7.0)
 -find_package(Qt5 "${REQUIRED_QT_VERSION}" CONFIG REQUIRED Widgets DBus)
++find_package(Qt5 "${REQUIRED_QT_VERSION}" CONFIG REQUIRED Widgets)
 +if (UNIX)
-+    find_package(Qt5 "${REQUIRED_QT_VERSION}" CONFIG REQUIRED Widgets DBus)
++    find_package(Qt5 "${REQUIRED_QT_VERSION}" CONFIG REQUIRED DBus)
 +#else()
 +#    find_package(Qt5DBus "${REQUIRED_QT_VERSION}" CONFIG)
 +#    set_package_properties(Qt5DBus PROPERTIES DESCRIPTION "Qt DBus Library"

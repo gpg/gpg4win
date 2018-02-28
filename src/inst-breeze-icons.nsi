@@ -238,10 +238,10 @@ Section "-breeze-icons" SEC_breeze_icons
 
   File ${prefix}/share/icons/breeze/apps/22/kde.svg
 
-  SetOutPath "$INSTDIR\share\icons\breeze\apps\32"
+  SetOutPath "$INSTDIR\share\icons\breeze\preferences\32"
 
-  File ${prefix}/share/icons/breeze/apps/32/preferences-desktop-locale.svg
-  File ${prefix}/share/icons/breeze/apps/32/preferences-system-network.svg
+  File ${prefix}/share/icons/breeze/preferences/32/preferences-desktop-locale.svg
+  File ${prefix}/share/icons/breeze/preferences/32/preferences-system-network.svg
 
   SetOutPath "$INSTDIR\share\icons\breeze\apps\48"
 

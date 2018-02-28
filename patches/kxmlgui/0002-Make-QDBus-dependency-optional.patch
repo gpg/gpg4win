@@ -31,7 +31,7 @@ diff --git a/CMakeLists.txt b/CMakeLists.txt
 index d9728db..7d8cd00 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -29,12 +29,14 @@ ecm_setup_version(PROJECT
+@@ -30,13 +30,16 @@
                    PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KF5XmlGuiConfigVersion.cmake"
                    SOVERSION 5)
 
@@ -40,24 +40,17 @@ index d9728db..7d8cd00 100644
 +# break behavior users (or other developers) of this library rely on.
 +option(FORCE_DISABLE_KGLOBALACCEL "Force building KXmlGui without KGlobalAccel. This will break global shortcut support. [default=OFF]" OFF)
 +option(FORCE_DISABLE_DBUS "Force building KXmlGui without a dependency to QDbus. This will break KMainWindow integration and style change notifications. [default=OFF]" OFF)
+ option(BUILD_QCH "Build API documentation in QCH format (for e.g. Qt Assistant, Qt Creator & KDevelop)" OFF)
+ add_feature_info(QCH ${BUILD_QCH} "API documentation in QCH format (for e.g. Qt Assistant, Qt Creator & KDevelop)")
 
  # Dependencies
- set(REQUIRED_QT_VERSION 5.5.0)
+ set(REQUIRED_QT_VERSION 5.7.0)
 -find_package(Qt5 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Widgets DBus Xml Network PrintSupport)
--
 +find_package(Qt5 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Widgets Xml Network PrintSupport)
+
  find_package(KF5CoreAddons ${KF5_DEP_VERSION} REQUIRED)
  find_package(KF5ItemViews ${KF5_DEP_VERSION} REQUIRED)
- find_package(KF5Config ${KF5_DEP_VERSION} REQUIRED)
-@@ -44,6 +46,7 @@ find_package(KF5IconThemes ${KF5_DEP_VERSION} REQUIRED)
- find_package(KF5TextWidgets ${KF5_DEP_VERSION} REQUIRED)
- find_package(KF5WidgetsAddons ${KF5_DEP_VERSION} REQUIRED)
- find_package(KF5WindowSystem ${KF5_DEP_VERSION} REQUIRED)
-+
- find_package(KF5Attica ${KF5_DEP_VERSION})
- set_package_properties(KF5Attica PROPERTIES DESCRIPTION "A Qt library that implements the Open Collaboration Services API"
-                        PURPOSE "Support for Get Hot New Stuff in KXMLGUI"
-@@ -57,6 +60,12 @@ if (NOT FORCE_DISABLE_KGLOBALACCEL)
+@@ -60,6 +64,12 @@
  endif()
  set (HAVE_GLOBALACCEL ${KF5GlobalAccel_FOUND})
 
@@ -361,13 +354,14 @@ diff --git a/src/kxmlguiwindow.cpp b/src/kxmlguiwindow.cpp
 index 24d48f1..5b9fac7 100644
 --- a/src/kxmlguiwindow.cpp
 +++ b/src/kxmlguiwindow.cpp
-@@ -23,12 +23,13 @@
+@@ -23,13 +23,14 @@
      Boston, MA 02110-1301, USA.
  */
 
 +#include "config-xmlgui.h"
 +
  #include "kxmlguiwindow.h"
+ #include "debug.h"
 
  #include "kmainwindow_p.h"
  #include "kmessagebox.h"
@@ -376,14 +370,14 @@ index 24d48f1..5b9fac7 100644
  #include "ktoolbarhandler_p.h"
  #include "kxmlguifactory.h"
  #include "kedittoolbar.h"
-@@ -36,7 +37,6 @@
+@@ -37,7 +38,6 @@
  #include "ktoolbar.h"
 
  #include <QCloseEvent>
 -#include <QDBusConnection>
  #include <QtXml/QDomDocument>
  #include <QLayout>
- #include <QDebug>
+ #include <QMenuBar>
 @@ -47,6 +47,11 @@
  #include <QWidget>
  #include <QList>
@@ -396,17 +390,18 @@ index 24d48f1..5b9fac7 100644
  #include <ktoggleaction.h>
  #include <kstandardaction.h>
  #include <kconfig.h>
-@@ -87,7 +92,9 @@ KXmlGuiWindow::KXmlGuiWindow(QWidget *parent, Qt::WindowFlags f)
-     d->toolBarHandler = 0;
-     d->showStatusBarAction = 0;
-     d->factory = 0;
+@@ -87,7 +92,9 @@
+     d->toolBarHandler = nullptr;
+     d->showStatusBarAction = nullptr;
+     d->factory = nullptr;
+-    new KMainWindowInterface(this);
 +#if HAVE_QDBUS
-     new KMainWindowInterface(this);
++     new KMainWindowInterface(this);
 +#endif
  }
 
  QAction *KXmlGuiWindow::toolBarMenuAction()
-@@ -117,6 +124,7 @@ KXmlGuiWindow::~KXmlGuiWindow()
+@@ -117,6 +124,7 @@
  bool KXmlGuiWindow::event(QEvent *ev)
  {
      bool ret = KMainWindow::event(ev);
@@ -414,7 +409,7 @@ index 24d48f1..5b9fac7 100644
      if (ev->type() == QEvent::Polish) {
          QDBusConnection::sessionBus().registerObject(dbusName() + QStringLiteral("/actions"), actionCollection(),
                  QDBusConnection::ExportScriptableSlots |
-@@ -125,6 +133,7 @@ bool KXmlGuiWindow::event(QEvent *ev)
+@@ -125,6 +133,7 @@
                  QDBusConnection::ExportNonScriptableProperties |
                  QDBusConnection::ExportChildObjects);
      }

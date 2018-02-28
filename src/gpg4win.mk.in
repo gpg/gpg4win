@@ -115,15 +115,15 @@ define DEFLATE_macro
 	rm -rf $$$${pkgsdir}; \
 	case "$(1)" in			\
           */qtbase*.*.tar.xz)          \
-            $(TAR) -xJ --transform='s,^qtbase-opensource-src,qtbase,' -f "$(1)" ;; \
+            $(TAR) -xJ --transform='s,^qtbase-everywhere-src,qtbase,' -f "$(1)" ;; \
           */qttools*.*.tar.xz)          \
-            $(TAR) -xJ --transform='s,^qttools-opensource-src,qttools,' -f "$(1)" ;; \
+            $(TAR) -xJ --transform='s,^qttools-everywhere-src,qttools,' -f "$(1)" ;; \
           */qtwinextras*.*.tar.xz)          \
-            $(TAR) -xJ --transform='s,^qtwinextras-opensource-src,qtwinextras,' -f "$(1)" ;; \
+            $(TAR) -xJ --transform='s,^qtwinextras-everywhere-src,qtwinextras,' -f "$(1)" ;; \
           */qtsvg*.*.tar.xz)          \
-            $(TAR) -xJ --transform='s,^qtsvg-opensource-src,qtsvg,' -f "$(1)" ;; \
+            $(TAR) -xJ --transform='s,^qtsvg-everywhere-src,qtsvg,' -f "$(1)" ;; \
           */qttranslations*.*.tar.xz)          \
-            $(TAR) -xJ --transform='s,^qttranslations-opensource-src,qttranslations,' -f "$(1)" ;; \
+            $(TAR) -xJ --transform='s,^qttranslations-everywhere-src,qttranslations,' -f "$(1)" ;; \
           */boost*.*.tar.bz2)          \
             $(TAR) -xj --transform='s,^boost_1_60_0,boost-1.60.0,' -f "$(1)" ;; \
 	  *.tar.gz | *.tgz)		\
@@ -640,11 +640,11 @@ stamps/stamp-$(1)-01-patch: stamps/stamp-$(1)-00-unpack
 	(shopt -s nullglob;				\
 	 $(call SETVARS,$(1));				\
 	 cd "$$$${pkgsdir}";				\
-	 sed -i 's/set(KF5_VERSION.*)/set(KF5_VERSION "5.30.0")/' CMakeLists.txt; \
+	 sed -i 's/set(KF5_VERSION.*)/set(KF5_VERSION "5.43.0")/' CMakeLists.txt; \
 	 sed -i 's/set(KMIME_VERSION.*)/set(KMIME_VERSION "5.2.40")/' CMakeLists.txt; \
 	 sed -i 's/set(LIBKLEO_VERSION.*)/set(LIBKLEO_VERSION "5.4.40")/' CMakeLists.txt; \
-	 sed -i 's/set(QT_REQUIRED_VERSION.*)/set(QT_REQUIRED_VERSION "5.7.0")/' CMakeLists.txt; \
-	 sed -i 's/set(GPGME_REQUIRED_VERSION.*)/set(GPGME_REQUIRED_VERSION "1.8.0")/' CMakeLists.txt; \
+	 sed -i 's/set(QT_REQUIRED_VERSION.*)/set(QT_REQUIRED_VERSION "5.10.0")/' CMakeLists.txt; \
+	 sed -i 's/set(GPGME_REQUIRED_VERSION.*)/set(GPGME_REQUIRED_VERSION "1.10.0")/' CMakeLists.txt; \
 	 for pfile in "$$$${pkgpbdir}"/*.patch "$$$${pkgpdir}"/*.patch ; do  \
 	   (cd "$$$${pkgsdir}"; "$$$${pfile}")		\
 	 done)
