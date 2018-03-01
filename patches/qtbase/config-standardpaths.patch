@@ -98,7 +98,7 @@ diff -Nru qtbase-5.6.1.orig/src/corelib/io/qstandardpaths.cpp qtbase-5.6.1/src/c
 +#ifdef Q_OS_WIN
 +        wchar_t expandedPath[MAX_PATH] = {0};
 +        if (ExpandEnvironmentStrings((wchar_t*)value.utf16(), expandedPath, MAX_PATH)) {
-+            return QString::fromWCharArray(expandedPath).replace("\\", "//");
++            return QString::fromWCharArray(expandedPath).replace("\\", "/");
 +        }
 +        return value;
 +#endif
