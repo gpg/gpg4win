@@ -38,7 +38,7 @@ Basic requirements
 ==================
 
 A decent POSIX system is required for building this software as well
-as GNU make.  We are using Debian GNU/Linux 8 (Jessie), any other
+as GNU make.  We are using Debian GNU/Linux 9 (stretch), any other
 POSIX system should work as well but you may run into problems due to
 different toolchain versions. For MSI Packages you will additionally
 need the dependencies mentioned in src/README-msi.txt
