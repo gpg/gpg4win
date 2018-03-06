@@ -158,6 +158,8 @@ Section "-breeze-icons" SEC_breeze_icons
   File ${prefix}/share/icons/breeze/actions/22/view-refresh.svg
   File ${prefix}/share/icons/breeze/actions/22/window-close.svg
   File ${prefix}/share/icons/breeze/actions/22/question.svg
+  File ${prefix}/share/icons/breeze/actions/22/kt-add-filters.svg
+  File ${prefix}/share/icons/breeze/actions/22/kt-remove-filters.svg
 
   SetOutPath "$INSTDIR\share\icons\breeze\actions\24"
 
