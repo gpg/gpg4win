@@ -27,5 +27,6 @@ Section "-un.gpg4win_tools"
   Call un.SourceDelete
 !endif
   Delete /REBOOTOK "$INSTDIR\bin\resolver.exe"
+  Delete /REBOOTOK "$INSTDIR\bin\overlayer.exe"
   RMDir "$INSTDIR\bin"
 SectionEnd
