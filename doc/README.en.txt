@@ -63,42 +63,50 @@ Included Gpg4win components in version !VERSION! are:
 New in Gpg4win version !VERSION! (!BUILD_ISODATE!)
 -----------------------------------------
 
-- GnuPG: Updated to 2.2.4.
+- Kleopatra: now offers a text editor for text based crypto. (T3743)
 
-- GpgOL: A bug that caused drafted mails not to encrypt the correct
-  content has been fixed. (T3419)
+- Kleopatra: The extended certificate selection now offers import. (T3744)
 
-- GpgOL: A bug that caused encrypted mails not to be displayed has been
-  fixed. (T3537)
+- Kleopatra: A crash when verifiying a detached signature has been fixed.
+  (T3761)
 
-- GpgOL: A bug that caused sending unencrypted mails when Outlooks internal
-  S/MIME code was activated has been fixed. (T3656)
+- Kleopatra: The advanced key generation now offers curve 25519. (T3826)
 
-- GpgOL: PGP/Inline (no-mime) sending is now compatible with
-  Microsoft Exchange Online. (T3662)
+- Kleopatra: Certificate details have been improved.
 
-- GpgOL: The recipient lookup for Exchange addresses has been
-  improved.
+- Kleopatra: Decrypting / Verifiying multiple files at once has been fixed.
+  (KDE-Bug: 391222)
 
-- GpgOL: Signatures of signed only mails with attachments have been
-  fixed. (T3735)
+- Kleopatra: Serveral issues have been fixed when the Appdata directory
+  was redirected to an UNC path. (T3818)
 
-- GpgEX: An internal error when trying to verify a non-signature file
-  has been fixed. (T3658)
+- GpgOL: Crypto now happens inside of GpgOL without Kleopatra. This fixes
+  several problems caused by communication problems between Kleopatra and
+  GpgOL. (T3509)
 
-- Kleopatra: Sorting in Keylist has been fixed. (T3603)
+- GpgOL: PGP/Inline (no-MIME) is now supported for sign and encrypt.
+  This helps with compatibility problems like T3545.
 
-- Kleopatra: Certificate details for S/MIME certificates have been improved.
-  (T3611, T3727, T3726)
+- GpgOL: Another problem which could cause decrypted mails not to
+  be displayed is fixed. (T3789)
 
-- Kleopatra: Certificates can now be exported as text from the certificate
-  details. (T3605)
+- GpgOL: Outlook should no longer loose focus after encrypting a mail.
+  (T3732)
 
-- Kleopatra: The usage of the temp directory to buffer decrypted data is now
-  configurable. (T3602)
+- GpgOL: Basic support for Web Key publishing has been added. (T3785)
 
-- Installer: The installer no longer reinstalls desktop shortcuts on
-  upgrade. (T3729)
+- GpgOL: Additional mail types are now supported when reading. (T3802)
+
+- GpgOL: The handling of Exchange Mail addresses was improved. (T3082)
+
+- GpgOL: A problem that could cause mails to be stuck in the outbox has
+  been fixed. (T3812)
+
+- GpgOL: Now trys harder to fixup broken PGP/Inline (no-MIME) Messages.
+  (T3821)
+
+- GnuPG: Updated to 2.2.5.
+
 
 
 3. Additional notes
