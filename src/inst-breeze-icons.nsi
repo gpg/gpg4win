@@ -303,6 +303,7 @@ Section "-breeze-icons" SEC_breeze_icons
   File ${prefix}/share/icons/breeze/emblems/8/emblem-success.svg
   File ${prefix}/share/icons/breeze/emblems/8/emblem-error.svg
   File ${prefix}/share/icons/breeze/emblems/8/emblem-question.svg
+  File ${prefix}/share/icons/breeze/emblems/8/emblem-unavailable.svg
 
   SetOutPath "$INSTDIR\share\icons\breeze\actions\symbolic"
   File ${prefix}/share/icons/breeze/actions/symbolic/send-to-symbolic.svg

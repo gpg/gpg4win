@@ -248,6 +248,7 @@ Section "-un.breeze-icons"
   Delete "$INSTDIR\share\icons\breeze\emblems\8\emblem-success.svg"
   Delete "$INSTDIR\share\icons\breeze\emblems\8\emblem-error.svg"
   Delete "$INSTDIR\share\icons\breeze\emblems\8\emblem-question.svg"
+  Delete "$INSTDIR\share\icons\breeze\emblems\8\emblem-unavailable.svg"
 
   RMDir "$INSTDIR\share\icons\breeze\preferences\32"
   RMDir "$INSTDIR\share\icons\breeze\preferences"
