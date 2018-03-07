@@ -476,6 +476,7 @@ const char * const full_files[] =
   "share/icons/breeze/actions/16/view-refresh.svg",
   "share/icons/breeze/actions/22/help-contents.svg",
   "share/icons/breeze/actions/22/edit-redo.svg",
+  "share/icons/breeze/actions/22/edittext.svg",
   "share/icons/breeze/actions/22/document-edit-decrypt.svg",
   "share/icons/breeze/actions/22/go-bottom.svg",
   "share/icons/breeze/actions/22/view-certificate-server-configure.svg",

@@ -128,6 +128,7 @@ Section "-breeze-icons" SEC_breeze_icons
   File ${prefix}/share/icons/breeze/actions/22/edit-redo.svg
   File ${prefix}/share/icons/breeze/actions/22/edit-rename.svg
   File ${prefix}/share/icons/breeze/actions/22/edit-undo.svg
+  File ${prefix}/share/icons/breeze/actions/22/edittext.svg
   File ${prefix}/share/icons/breeze/actions/22/editor.svg
   File ${prefix}/share/icons/breeze/actions/22/go-bottom.svg
   File ${prefix}/share/icons/breeze/actions/22/go-down.svg
