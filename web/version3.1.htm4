@@ -11,21 +11,15 @@ m4_define(`MAIN', `version3.1')
 PAGE_START
 
 <div id="intro">
-<h2>What's new in Gpg4win 3.1?</h2>
+<h2>What's coming with Gpg4win 3.1?</h2>
 </div>
 
 <div id="main">
 
-When updating from Gpg4win 2 please also see:
-<a href="version3.html">What's new in Gpg4win 3</a>.
-
-<br/>
 m4_ifelse(LANG_DE, `1',
-`<h2>Beta Download</h2>
 Gpg4win 3.1.0 ist aktuell im Beta Stadium.<br/>Sie können die Entwicklung unterstützen indem Sie es
 ausprobieren und Probleme in unserem
 <a href="https://dev.gnupg.org/u/gpg4win">Entwicklungs tracker</a> melden.',
-`<h2>Beta Download</h2>
 Gpg4win 3.1.0 is currently in beta.<br/>You can help by trying it out and reporting issues in our
 <a href="https://dev.gnupg.org/u/gpg4win">development tracker</a>')
 
@@ -33,11 +27,11 @@ Gpg4win 3.1.0 is currently in beta.<br/>You can help by trying it out and report
     m4_ifelse(LANG_DE, `1', `
     <a href="https://files.gpg4win.org/Beta/gpg4win-BETA_VERSION/gpg4win-BETA_VERSION.exe">
     <span class="text">
-        Download<br />BETA_VERSION
+        Download<br/>Gpg4win<br/>BETA_VERSION
     </span></a>', `
     <a href="https://files.gpg4win.org/Beta/gpg4win-BETA_VERSION/gpg4win-BETA_VERSION.exe">
         <span class="text">
-            Download<br />BETA_VERSION
+            Download<br/>Gpg4win<br/>BETA_VERSION
         </span></a>')
 </div>
 <div class="download_button_links">
@@ -80,6 +74,6 @@ resolver</img>
     <li>Multiple stability improvements.</li>
 </ul>
 
-<img src="https://files.intevation.de/users/aheinecke/notepad.gif">The new Notepad</img>
+<img width="150%" src="https://files.intevation.de/users/aheinecke/notepad.gif">The new Notepad</img>
 
 </div>

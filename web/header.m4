@@ -24,6 +24,18 @@
      <a href="package-integrity-de.html">Integrität prüfen</a>', `
      <a href="package-integrity.html">Check integrity</a>')
    </div>
+   <br/>
+   <div id="download_button_mini">
+     m4_ifelse(LANG_DE, `1', `
+     <a class="dmini_button" href="version3.1-de.html">
+     <span class="text">
+      Try BETA_VERSION
+     </span></a>', `
+     <a class="dmini_button" href="version3.1.html">
+     <span class="text">
+      Try BETA_VERSION
+     </span></a>')
+   </div>
    <div class="h_text">
    <p><span class="heading">News</span></p>
    <small>2018-03-08</small><br>
@@ -73,5 +85,5 @@
    m4_ifelse(MAIN, `donate', `Donate')
    ')
    </div>
-   <div id="download_button_mini"></div></div><br clear="all" />
+   </div><br clear="all" />
   ')

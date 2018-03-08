@@ -116,16 +116,15 @@ td {
 }
 
 #download_button_mini {
- float:right;
- text-align:right;
- width: 189px;
- height: 75px;
- line-height: 100%;
+ position: relative;
+ top: 45px;
+ left: 35px;
+ width: 250px;
+ z-index: 0;
 }
 
 #download_button_mini .links {
  position: relative;
- top: -13px;
  font-size: 10px;
  text-align: right;
 }
@@ -137,7 +136,8 @@ td {
  height: 50px;
  width: 189px;
  text-align:left;
- font-size: 11px;
+ left: 20px;
+ font-size: 14px;
  line-height:50px;
  color: #FFFFFF;
  font-weight:bold;
