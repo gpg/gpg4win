@@ -26,6 +26,15 @@
    </div>
    <div class="h_text">
    <p><span class="heading">News</span></p>
+   <small>2018-03-08</small><br>
+   <span class="serif_word"><img src="img/bulletin.png" alt"" />
+     m4_ifelse(LANG_DE, `1', `
+      <a href="version3.1-de.html">Gpg4win 3.1.0-beta veröffentlicht
+      </a></span>',`
+      <a href="version3.1.html">
+        Gpg4win 3.1.0-beta released
+      </a></span>')
+   <p></p>
    <small>2018-01-12</small><br>
    <span class="serif_word"><img src="img/bulletin.png" alt"" />
      m4_ifelse(LANG_DE, `1', `
@@ -34,16 +43,6 @@
       </a></span>',`
       <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2018-January/000076.html">
         Gpg4win 3.0.3 released
-      </a></span>')
-   <p></p>
-   <small>2017-12-08</small><br>
-   <span class="serif_word"><img src="img/bulletin.png" alt"" />
-     m4_ifelse(LANG_DE, `1', `
-      <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2017-December/000039.html">
-        Gpg4win 3.0.2 veröffentlicht
-      </a></span>',`
-      <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2017-December/000075.html">
-        Gpg4win 3.0.2 released
       </a></span>')
    <p></p>
    <div class="limiter"></div>

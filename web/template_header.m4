@@ -40,7 +40,7 @@ m4_define(`RQ',`m4_changequote(<,>)m4_dnl`
     m4_ifelse(LANG_DE, `1', `<a href="index-de.html" title="Startseite"></a>', `<a href="index.html" title="Home"></a>')
    </li>
    <li class="mwhatsnew">
-    m4_ifelse(LANG_DE, `1', `<a href="version3-de.html" title="Was ist in Version 3 neu"><div>Was ist neu</br>Version 3</div></a>', `<a href="version3.html" title="What is new in version 3"><div>What`'RQ()s new</br>Version 3</div></a>')
+    m4_ifelse(LANG_DE, `1', `<a href="version3.1-de.html" title="Was ist in Version 3.1 neu"><div>Was ist neu</br>Version 3.1</div></a>', `<a href="version3.1.html" title="What is new in version 3.1"><div>What`'RQ()s new</br>Version 3.1</div></a>')
    </li>
    <li class="mbetween">
     m4_ifelse(LANG_DE, `1', `<a href="index-de.html" title="Startseite"></a>', `<a href="index.html" title="Home"></a>')
