@@ -408,6 +408,7 @@ FunctionEnd
 Function PrintCloseOtherApps
    g4wihelp::KillProc "kleopatra.exe"
    g4wihelp::KillProc "gpa.exe"
+   g4wihelp::KillProc "gpgme-w32spawn.exe"
 goto leave
 # TODO check for running outlook and offer to kill it.
    print_warning:
