@@ -25,46 +25,10 @@ the current version.
 
 <p>
 You can find your installed Gpg4win version number
-in the README file (via start menu folder of Gpg4win) or open
-<em>start->Settings->Control Panel->Programs</em>.
+in Kleopatra under <em>Help->About Kleopatra</em>.
 </p>
 
-<h2>2. Check whether it is really a Gpg4win bug</h2>
-
-<p>
-Gpg4win integrates a number of tools that are
-actually maintained by other development teams.
-</p>
-
-<p>
-Therefore problems and bugs general in nature,
-i.e. not related to the cross-compilation and/or
-packaging by the Gpg4win team, should be reported
-to the respective project teams (usually you need to
-register before submitting or commenting a bug):
-</p>
-
-<ul>
-<li><a href="http://bugs.kde.org/component-report.cgi?product=kleopatra">
-    Bug tracker for Kleopatra</a>
-     <p>
-<li><a href="http://www.gnupg.org/documentation/bts.html">
-    Bug tracker for GnuPG, GPA, GpgOL, GpgEX and Gpg4win installer</a>
-</ul>
-
-<p>
-Of course, it is not always easy to decide whether
-it is a bug of Gpg4win or a module.
-In these cases and depending on the type of the
-problem, either ask on one of the Gpg4win <a
-href="community.html">mailing lists or forums</a>
-for advice or create a bug report in the <a
-href="http://wald.intevation.org/tracker/?atid=126&group_id=11&func=browse">
-Gpg4win bug tracker</a>.
-</p>
-
-
-<h2>3. Check whether the problem is already reported</h2>
+<h2>2. Check whether the problem is already reported</h2>
 
 <p>
 Search through the list of open bugs and try to
@@ -72,7 +36,16 @@ identify whether one of the entries already describes
 your problem. Add your additional comments there.
 </p>
 
-<h2>4. Provide version number</h2>
+<a href="https://dev.gnupg.org/u/gpg4win">List of open issues</a>
+
+<h2>3. Fehlerbericht erstellen</h2>
+
+Please report the problem using
+<a href="https://dev.gnupg.org/maniphest/task/edit/form/5/">this form</a>.
+<br/>
+Please note the following:
+
+<h3>3.1 Provide version numbers</h3>
 
 <p>
 If you report a new bug or add comments to an existing
@@ -80,14 +53,14 @@ bug report, describe the exact version of the Windows System,
 Gpg4win and, if appropriate, of MS Office and Outlook.
 </p>
 
-<h2>5. Notes on how to reproduce the bug</h2>
+<h3>3.2 Notes on how to reproduce the bug</h3>
 
 <p>
 If possible provide a step by step method
 on how you can reproduce the bug.
 </p>
 
-<h2>6. Add debug information</h2>
+<h3>3.3 Add debug information</h3>
 
 <p>
 If appropriate, attach a debug log of the

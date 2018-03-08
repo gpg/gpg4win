@@ -26,49 +26,11 @@ zeigt die jeweils aktuellste Version von Gpg4win an.
 
 <p>
 Die Versionsnummer Ihrer installierten Gpg4win-Version finden Sie
-z.B. in der README-Datei (erreichbar über das Gpg4win-Startmenü) oder unter
-<em>Start->Einstellungen->Systemsteuerung->Software</em>.
+in Kleopatra unter <em>Hilfe->Über Kleopatra</em>.
 </p>
 
 
-<h2>2. Prüfen, ob es sich überhaupt um einen Fehler von Gpg4win handelt</h2>
-
-<p>
-Gpg4win integriert eine Reihe von Werkzeugen deren
-Pflege über deren eigene Entwickler-Teams erfolgt.
-</p>
-
-<p>
-Daher sollten Probleme und Fehler allgemeinerer Art,
-also die nicht durch Cross-Kompilation und/oder Paketierung
-durch das Gpg4win Team entstanden sind, an die jeweiligen
-Projekte gemeldet werden (üblicherweise ist es notwendig, sich
-zu registrieren, bevor man einen Fehler melden und kommentieren
-kann):
-</p>
-
-<ul>
-<li><a href="http://bugs.kde.org/component-report.cgi?product=kleopatra">
-    Bug-Tracker für Kleopatra</a>
-     <p>
-<li><a href="http://www.gnupg.org/documentation/bts.html">
-    Bug-Tracker für GnuPG, GPA, GpgOL und Gpg4win-Installer</a>
-</ul>
-
-<p>
-Natürlich ist es nicht immer einfach zu entscheiden,
-ob es sich um einen Fehler von Gpg4win handelt oder
-um einen Fehler in einem der Module.
-In diesem Fall sollte, abhängig von der Art des Problems,
-entweder auf einer der <a href="community-de.html">Mailinglisten oder
-Foren</a> von Gpg4win um Rat gefragt oder ein Problembericht in den
-<a
-href="http://wald.intevation.org/tracker/?atid=126&group_id=11&func=browse">
-Gpg4win Bug Tracker</a> eingetragen werden.
-</p>
-
-
-<h2>3. Prüfen, ob das Problem bereits bekannt ist</h2>
+<h2>2. Prüfen, ob das Problem bereits bekannt ist</h2>
 
 <p>
 Es ist sinnvoll, die Liste der offenen Fehler
@@ -78,7 +40,16 @@ Dort sollte man dann seine ergänzenden Hinweise
 einfügen.
 </p>
 
-<h2>4. Versionsnummern angeben</h2>
+<a href="https://dev.gnupg.org/u/gpg4win">Liste der offenen Fehler</a>
+
+<h2>3. Fehlerbericht erstellen</h2>
+
+Bitte berichten Sie den Fehler in Englisch indem Sie
+<a href="https://dev.gnupg.org/maniphest/task/edit/form/5/">dieses Formular</a> verwenden.
+<br/>
+Beachten Sie dabei folgendes:
+
+<h3>3.1 Versionsnummern angeben</h3>
 
 <p>
 Ein neuer Fehlerbericht, aber auch Ergänzungen zu
@@ -87,14 +58,14 @@ von Windows, Gpg4win und ggf. von MS Outlook
 nennen.
 </p>
 
-<h2>5. Anleitung zur Reproduktion des Fehlers</h2>
+<h3>3.2 Anleitung zur Reproduktion des Fehlers</h3>
 
 <p>
 Falls es möglich ist, sollte in einer Schritt-für-Schritt
 Anleitung beschrieben werden, wie man den Fehler reproduziert.
 </p>
 
-<h2>6. Debug Informationen hinzufügen</h2>
+<h3>3.3 Debug Informationen hinzufügen</h3>
 
 <p>
 Falls es geht und sinnvoll erscheint,
