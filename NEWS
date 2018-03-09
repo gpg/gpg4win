@@ -8,7 +8,7 @@ Noteworthy changes in Version 3.1.0 (unreleased)
 
 (en) Kleopatra: Now offers a text editor for text based cryptography. (T3743)
 
-(de) Kleopatra: Bietet nun einen Text Editor für Text-basierte Kryptographie. (T3743)
+(de) Kleopatra: Bietet nun einen Text-Editor für Text-basierte Kryptographie. (T3743)
 
 (en) Kleopatra: The extended certificate selection now offers import. (T3744)
 
@@ -47,8 +47,8 @@ Noteworthy changes in Version 3.1.0 (unreleased)
      GpgOL. (T3509)
 
 (de) GpgOL: Kryptographische Funktionen werden nun direkt durch GpgOL aufgerufen, ohne Kleopatra zu verwenden. Dies behebt
-     eine Reihe von Problemen die in der Kommunikation zwischen Kleopatra und
-     GpgOL entstanden sind. (T3509)
+     eine Reihe von Problemen deren Ursache in der Kommunikation zwischen Kleopatra und
+     GpgOL lag. (T3509)
 
 (en) GpgOL: PGP/Inline (i.e. non-MIME) is now supported for sign and encrypt.
      This helps with compatibility problems like T3545.
@@ -65,7 +65,7 @@ Noteworthy changes in Version 3.1.0 (unreleased)
 (en) GpgOL: Outlook should no longer loose focus after encrypting a mail.
      (T3732)
 
-(de) GpgOL: Outlook sollte nicht länger den Fokus verliere, nachdem eine
+(de) GpgOL: Outlook sollte nicht länger den Fokus verlieren, nachdem eine
      E-Mail verschlüsselt wurde. (T3732)
 
 (en) GpgOL: Basic support for Web Key publishing has been added. (T3785)
@@ -79,7 +79,7 @@ Noteworthy changes in Version 3.1.0 (unreleased)
 
 (en) GpgOL: The handling of Exchange Mail addresses was improved. (T3082)
 
-(de) GpgOL: Die Handhabung von Exchange Mail Addressen wurde verbessert. (T3802)
+(de) GpgOL: Die Handhabung von Exchange Mail-Adressen wurde verbessert. (T3802)
 
 (en) GpgOL: A problem that could cause mails to be stuck in the outbox has
      been fixed. (T3812)
@@ -93,7 +93,7 @@ Noteworthy changes in Version 3.1.0 (unreleased)
 (de) GpgOL: Es wird nun stärker versucht auch kaputte PGP/Inline (non-MIME)
      Nachrichten zu verarbeiten. (T3821)
 
-(en) GnuPG: Updated to 2.2.5.
+(en) GnuPG: Updated to version 2.2.5.
 
 (de) GnuPG: Auf Version 2.2.5 aktualisiert.
 
