@@ -18,7 +18,7 @@ Noteworthy changes in Version 3.1.0 (unreleased)
 (en) Kleopatra: A crash when verifiying a detached signature has been fixed.
      (T3761)
 
-(de) Kleopatra: Ein crash beim verifizieren einer abgelösten Signatur wurde
+(de) Kleopatra: Ein Crash beim Verifizieren einer separaten Signatur wurde
      behoben. (T3761)
 
 (en) Kleopatra: The advanced key generation now offers curve 25519. (T3826)
@@ -28,72 +28,72 @@ Noteworthy changes in Version 3.1.0 (unreleased)
 
 (en) Kleopatra: Certificate details have been improved.
 
-(de) Kleopatra: Die Anzeige der details wurde verbessert.
+(de) Kleopatra: Die Anzeige der Zertifikatsdetails wurde verbessert.
 
-(en) Kleopatra: Decrypting / Verifiying multiple files at once has been fixed.
+(en) Kleopatra: Decrypting / verifiying multiple files at once has been fixed.
      (KDE-Bug: 391222)
 
-(de) Kleopatra: Ein Problem beim entschlüsseln / verifizieren mehrer Dateien
+(de) Kleopatra: Ein Problem beim Entschlüsseln / Verifizieren mehrerer Dateien
      zugleich wurde behoben. (KDE-Bug: 391222)
 
-(en) Kleopatra: Serveral issues have been fixed when the Appdata directory
+(en) Kleopatra: Serveral issues have been fixed, which occurred, if the Appdata directory
      was redirected to an UNC path. (T3818)
 
-(de) Kleopatra: Mehrere Probleme wurden behoben die auftraten wenn das Appdata
+(de) Kleopatra: Mehrere Probleme wurden behoben, die auftraten, wenn das Appdata
      Verzeichnis auf einen UNC Pfad gelegt wurde. (T3818)
 
-(en) GpgOL: Crypto now happens inside of GpgOL without Kleopatra. This fixes
-     several problems caused by communication problems between Kleopatra and
+(en) GpgOL: Cryptographic functions are now called directly from GpgOL, without using Kleopatra. This fixes
+     several problems caused by communication issues between Kleopatra and
      GpgOL. (T3509)
 
-(de) GpgOL: Krypto passiert nun intern in GpgOL, ohne Kleopatra. Dies behebt
-     eine Reihe von Problemen die in der Kommunikation zwischen Kleopatra und
-     GpgOL entstanden sind. (T3509)
+(de) GpgOL: Kryptographische Funktionen werden nun direkt durch GpgOL aufgerufen, ohne Kleopatra zu verwenden. Dies behebt
+     eine Reihe von Problemen deren Ursache in der Kommunikation zwischen Kleopatra und
+     GpgOL lag. (T3509)
 
-(en) GpgOL: PGP/Inline (no-MIME) is now supported for sign and encrypt.
+(en) GpgOL: PGP/Inline (i.e. non-MIME) is now supported for sign and encrypt.
      This helps with compatibility problems like T3545.
 
-(de) GpgOL: PGP/Inline (no-MIME) wird nun für signieren und verschlüsseln
-     unterstützt. Dies hilft bei kompatibilitätsproblemen wie T3545.
+(de) GpgOL: PGP/Inline (i.e. non-MIME) wird nun für das Signieren und Verschlüsseln
+     unterstützt. Dies hilft bei Kompatibilitätsproblemen wie T3545.
 
 (en) GpgOL: Another problem which could cause decrypted mails not to
      be displayed is fixed. (T3789)
 
-(de) GpgOL: Ein weiteres Problem das dazu führen konnte das entschlüsselte
-     Mails nicht angezeigt wurden ist behoben. (T3789)
+(de) GpgOL: Ein weiteres Problem das dazu führen konnte, dass entschlüsselte
+     E-Mails nicht angezeigt wurden, ist behoben. (T3789)
 
 (en) GpgOL: Outlook should no longer loose focus after encrypting a mail.
      (T3732)
 
-(de) GpgOL: Outlook sollte nicht länger den Fokus verlieren nachdem eine
-     Mail verschlüsselt wurde. (T3732)
+(de) GpgOL: Outlook sollte nicht länger den Fokus verlieren, nachdem eine
+     E-Mail verschlüsselt wurde. (T3732)
 
 (en) GpgOL: Basic support for Web Key publishing has been added. (T3785)
 
-(de) GpgOL: Basisunterstützung für Web Key veröffentlichung wurde hinzugefügt.
+(de) GpgOL: Grundlegende Unterstützung für das "Web Key Publishing" wurde hinzugefügt.
      (T3785)
 
 (en) GpgOL: Additional mail types are now supported when reading. (T3802)
 
-(de) GpgOL: Weitere Mail typen werden beim lesen unterstützt. (T3802)
+(de) GpgOL: Weitere Mail-Typen werden beim nun beim Lesen unterstützt. (T3802)
 
 (en) GpgOL: The handling of Exchange Mail addresses was improved. (T3082)
 
-(de) GpgOL: Das handling von Exchange Mail Addressen wurde verbessert. (T3802)
+(de) GpgOL: Die Handhabung von Exchange Mail-Adressen wurde verbessert. (T3802)
 
 (en) GpgOL: A problem that could cause mails to be stuck in the outbox has
      been fixed. (T3812)
 
-(de) GpgOL: Ein Problem das dazu führen konnte das Mails im Postausgang
+(de) GpgOL: Ein Problem, das dazu führen konnte, dass E-Mails im Postausgang
      verblieben wurde behoben. (T3812)
 
 (en) GpgOL: Now trys harder to fixup broken PGP/Inline (no-MIME) Messages.
      (T3821)
 
-(de) GpgOL: Es wird nun stärker versucht auch kaputte PGP/Inline (no-MIME)
+(de) GpgOL: Es wird nun stärker versucht auch kaputte PGP/Inline (non-MIME)
      Nachrichten zu verarbeiten. (T3821)
 
-(en) GnuPG: Updated to 2.2.5.
+(en) GnuPG: Updated to version 2.2.5.
 
 (de) GnuPG: Auf Version 2.2.5 aktualisiert.
 
