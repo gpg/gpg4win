@@ -270,6 +270,37 @@ input[type='range']::-moz-range-thumb {
     cursor: pointer;
 }
 
+/* With beta this needs other offsets. Maybe someone with
+ * more CSS skills could make this more relative / robust. ;-) */
+.h_text_beta {
+ position: relative;
+ top: -190px;
+ left: 669px;
+ width: 180px;
+ font-size: 11px;
+ border-left: 1px solid #CCCCCC;
+ padding-left: 10px;
+ margin-top: 12px;
+ height: 220px;
+}
+
+.h_text_beta .heading {
+ font-size: 23px;
+ font-family: georgia, times, serif;
+ padding-bottom: 9px;
+}
+
+.h_text_beta .serif_word {
+ font-size: 13px;
+ font-weight: bold;
+}
+
+.h_text_beta .limiter {
+ border-bottom: 3px dotted #CCCCCC;
+ width: 190px;
+ height: 10px;
+ margin-bottom: 3px;
+}
 
 .h_text {
  position: relative;
@@ -293,8 +324,6 @@ input[type='range']::-moz-range-thumb {
  font-size: 13px;
  font-weight: bold;
 }
-
-
 
 .h_text .limiter {
  border-bottom: 3px dotted #CCCCCC;

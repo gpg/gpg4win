@@ -36,7 +36,8 @@
       Try BETA_VERSION
      </span></a>')
    </div>
-   <div class="h_text">
+   <!-- Remove _beta when beta is removed -->
+   <div class="h_text_beta">
    <p><span class="heading">News</span></p>
    <small>2018-03-08</small><br>
    <span class="serif_word"><img src="img/bulletin.png" alt"" />
