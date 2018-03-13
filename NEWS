@@ -6,9 +6,9 @@
 Noteworthy changes in Version 3.1.0 (unreleased)
 ------------------------------------------------
 
-(en) Kleopatra: now offers a text editor for text based crypto. (T3743)
+(en) Kleopatra: Now offers a text editor for text based cryptography. (T3743)
 
-(de) Kleopatra: bietet nun einen Text Editor für Text basierte Krypto. (T3743)
+(de) Kleopatra: Bietet nun einen Text-Editor für Text-basierte Kryptographie. (T3743)
 
 (en) Kleopatra: The extended certificate selection now offers import. (T3744)
 
