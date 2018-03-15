@@ -204,7 +204,7 @@ LangString T_AboutGpg4win ${LANG_ENGLISH} \
   file encryption using the core component GnuPG for Windows. \
   Both relevant cryptography standards are supported, OpenPGP \
   and S/MIME. Gpg4win and the software included with Gpg4win \
-  are Free Software."
+  is Free Software."
 
 LangString T_AboutGpg4winVersion ${LANG_ENGLISH} \
  "This is Gpg4win version ${VERSION}"
@@ -213,7 +213,7 @@ LangString T_AboutGpg4winFileVersion ${LANG_ENGLISH} \
  "file version ${PROD_VERSION}"
 
 LangString T_AboutGpg4winReleaseDate ${LANG_ENGLISH} \
- "release date ${_BUILD_ISODATE}"
+ "Release date ${_BUILD_ISODATE}"
 
 # At long last, include all the translations.
 !include "../po/catalogs.nsi"
