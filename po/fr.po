@@ -28,7 +28,7 @@ msgid ""
 "Gpg4win is an installer package for Windows for EMail and file encryption "
 "using the core component GnuPG for Windows. Both relevant cryptography "
 "standards are supported, OpenPGP and S/MIME. Gpg4win and the software "
-"included with Gpg4win are Free Software."
+"included with Gpg4win is Free Software."
 msgstr ""
 "Gpg4win est un ensemble d'installeurs pour Windows permettant le chiffrage "
 "des emails et des fichiers, basé sur le composant GnuPG pour Windows. Les "
@@ -44,13 +44,14 @@ msgid "file version ${PROD_VERSION}"
 msgstr "version du fichier : ${PROD_VERSION}"
 
 msgctxt "T_AboutGpg4winReleaseDate"
-msgid "release date ${_BUILD_ISODATE}"
+msgid "Release date ${_BUILD_ISODATE}"
 msgstr "date de sortie : ${_BUILD_ISODATE}"
 
 msgctxt "T_WelcomeTitleGpg4winSrc"
 msgid "Welcome to the installation of the Gpg4win sources"
 msgstr "Bienvenue dans l'installation des sources de Gpg4win"
 
+#, fuzzy
 msgctxt "T_AboutGpg4winSrc"
 msgid ""
 "Gpg4win is an installer package for Windows for EMail and file encryption "
@@ -71,6 +72,7 @@ msgctxt "T_AboutGpg4winSrcFileVersion"
 msgid "file version ${PROD_VERSION}"
 msgstr "version du fichier : ${PROD_VERSION}"
 
+#, fuzzy
 msgctxt "T_AboutGpg4winSrcReleaseDate"
 msgid "release date ${_BUILD_ISODATE}"
 msgstr "date de sortie : ${_BUILD_ISODATE}"
@@ -302,6 +304,10 @@ msgid ""
 "Support for them may be removed in a future version.\n"
 "\n"
 "Kleopatra is disabled."
+msgstr ""
+
+msgctxt "T_UPDATE_STR"
+msgid "Updating Version"
 msgstr ""
 
 msgctxt "T_Installing_GnuPG"
