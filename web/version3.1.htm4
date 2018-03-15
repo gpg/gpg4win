@@ -47,7 +47,7 @@ Gpg4win 3.1.0 is currently in beta.<br/>You can help by trying it out and report
 
 <ul>
     <li>
-    More robust encryption, avoiding to freeze outlook.
+    More robust encryption, no more communication problems with Kleopatra.
     </li>
     <li>
     New user interface pubkey selection.
