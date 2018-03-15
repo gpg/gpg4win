@@ -420,6 +420,12 @@ Function PrintCloseOtherApps
    g4wihelp::KillProc "kleopatra.exe"
    g4wihelp::KillProc "gpa.exe"
    g4wihelp::KillProc "gpgme-w32spawn.exe"
+   g4wihelp::KillProc "resolver.exe"
+   g4wihelp::KillProc "overlayer.exe"
+   g4wihelp::KillProc "gpg-agent.exe"
+   g4wihelp::KillProc "gpg.exe"
+   g4wihelp::KillProc "dirmngr.exe"
+   g4wihelp::KillProc "gpgsm.exe"
 goto leave
 # TODO check for running outlook and offer to kill it.
    print_warning:
@@ -430,6 +436,13 @@ FunctionEnd
 Function un.CloseApps
    g4wihelp::KillProc "kleopatra.exe"
    g4wihelp::KillProc "gpa.exe"
+   g4wihelp::KillProc "gpgme-w32spawn.exe"
+   g4wihelp::KillProc "resolver.exe"
+   g4wihelp::KillProc "overlayer.exe"
+   g4wihelp::KillProc "gpg-agent.exe"
+   g4wihelp::KillProc "gpg.exe"
+   g4wihelp::KillProc "dirmngr.exe"
+   g4wihelp::KillProc "gpgsm.exe"
 FunctionEnd
 
 # Called right before installation
