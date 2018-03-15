@@ -129,8 +129,8 @@
 !define WELCOME_TITLE_STR "$(T_WelcomeTitleGpg4win)"
 
 !define ABOUT_STR "$(T_AboutGpg4win) \
-	$\r$\n$\r$\n$\r$\n$_CLICK $\r$\n$\r$\n$\r$\n \
-	$(T_AboutGpg4winVersion $\r$\n$(T_AboutGpg4winReleaseDate)"
+	$\r$\n$\r$\n$\r$\n$_CLICK $\r$\n$\r$\n$\r$\n$\r$\n$\r$\n\
+	$(T_AboutGpg4winVersion) $\r$\n$(T_AboutGpg4winReleaseDate)"
 
 # The copyright license of the package.  Define only one of these.
 !define LICENSE_GPL
