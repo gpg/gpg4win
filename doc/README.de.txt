@@ -69,45 +69,50 @@ Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 - Kleopatra: Die erweitere Zertifikatsauswahl bietet nun Importieren an.
   (T3744)
 
-- Kleopatra: Ein crash beim verifizieren einer abgelösten Signatur wurde
+- Kleopatra: Ein Crash beim Verifizieren einer separaten Signatur wurde
   behoben. (T3761)
 
 - Kleopatra: Die erweiterte Schlüsselgenerierung bietet nun Curve 25519 an.
   (T3826)
 
-- Kleopatra: Die Anzeige der details wurde verbessert.
+- Kleopatra: Die Anzeige der Zertifikatsdetails wurde verbessert.
 
-- Kleopatra: Ein Problem beim entschlüsseln / verifizieren mehrer Dateien
+- Kleopatra: Ein Problem beim Entschlüsseln / Verifizieren mehrerer Dateien
   zugleich wurde behoben. (KDE-Bug: 391222)
 
-- Kleopatra: Mehrere Probleme wurden behoben die auftraten wenn das Appdata
-  Verzeichnis auf einen UNC Pfad gelegt wurde. (T3818)
+- Kleopatra: Mehrere Probleme wurden behoben, die auftraten, wenn das
+  Appdata Verzeichnis auf einen UNC Pfad gelegt wurde. (T3818)
 
-- GpgOL: Krypto passiert nun intern in GpgOL, ohne Kleopatra. Dies behebt
-  eine Reihe von Problemen die in der Kommunikation zwischen Kleopatra und
-  GpgOL entstanden sind. (T3509)
+- GpgOL: Kryptographische Funktionen werden nun direkt durch GpgOL
+  aufgerufen, ohne Kleopatra zu verwenden. Dies behebt eine Reihe
+  von Problemen deren Ursache in der Kommunikation zwischen Kleopatra und
+  GpgOL lag. (T3509)
 
-- GpgOL: PGP/Inline (no-MIME) wird nun für signieren und verschlüsseln
-  unterstützt. Dies hilft bei kompatibilitätsproblemen wie T3545.
+- GpgOL: PGP/Inline (i.e. non-MIME) wird nun für das Signieren und
+  Verschlüsseln unterstützt. Dies hilft bei Kompatibilitätsproblemen
+  wie T3545.
 
-- GpgOL: Ein weiteres Problem das dazu führen konnte das entschlüsselte
-  Mails nicht angezeigt wurden ist behoben. (T3789)
+- GpgOL: Ein weiteres Problem das dazu führen konnte, dass entschlüsselte
+  E-Mails nicht angezeigt wurden, ist behoben. (T3789)
 
-- GpgOL: Outlook sollte nicht länger den Fokus verlieren nachdem eine
-  Mail verschlüsselt wurde. (T3732)
+- GpgOL: Outlook sollte nicht länger den Fokus verlieren, nachdem eine
+  E-Mail verschlüsselt wurde. (T3732)
 
-- GpgOL: Basisunterstützung für Web Key veröffentlichung wurde hinzugefügt.
-  (T3785)
+- GpgOL: Grundlegende Unterstützung für das "Web Key Publishing" wurde
+  hinzugefügt. (T3785)
 
-- GpgOL: Weitere Mail typen werden beim lesen unterstützt. (T3802)
+- GpgOL: Weitere Mail-Typen werden beim nun beim Lesen unterstützt. (T3802)
 
-- GpgOL: Das handling von Exchange Mail Addressen wurde verbessert. (T3802)
+- GpgOL: Die Handhabung von Exchange Mail-Adressen wurde verbessert. (T3802)
 
-- GpgOL: Ein Problem das dazu führen konnte das Mails im Postausgang
+- GpgOL: Ein Problem, das dazu führen konnte, dass E-Mails im Postausgang
   verblieben wurde behoben. (T3812)
 
-- GpgOL: Es wird nun stärker versucht auch kaputte PGP/Inline (no-MIME)
+- GpgOL: Es wird nun stärker versucht auch kaputte PGP/Inline (non-MIME)
   Nachrichten zu verarbeiten. (T3821)
+
+- GpgOL: Das weiterleiten von verschlüsselten / signieren Mails mit
+  Anhängen wird nun unterstützt. (T3836)
 
 - GnuPG: Auf Version 2.2.5 aktualisiert.
 
@@ -133,16 +138,14 @@ Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 
 - Allgemein
 
-  * Für Version 3.1 planen wir eine einfache Möglichkeit, in einen
-    automatisierten Modus zu wechseln. Dies würde die folgenden GnuPG-Optionen
+  * Für Version 3.2 planen wir mit GpgOL, optional, in einen stärker
+    automatisierten Modus zu wechseln. Dies würde die GnuPG-Option
     setzen:
 
-        auto-key-locate wkd
-        auto-key-retrieve
         trust-model tofu+pgp
 
     Da das neue Vertrauensmodell noch nicht vollständig in Kleopatra behandelt
-    wird (insbesondere bezüglich Dateisignaturen), sind diese Optionen noch
+    wird (insbesondere bezüglich Dateisignaturen), ist diese Option
     nicht voreingestellt.
 
     Sie können sie jedoch manuell in der gpg.conf setzen. Das neue

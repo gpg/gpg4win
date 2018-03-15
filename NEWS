@@ -36,25 +36,27 @@ Noteworthy changes in Version 3.1.0 (unreleased)
 (de) Kleopatra: Ein Problem beim Entschlüsseln / Verifizieren mehrerer Dateien
      zugleich wurde behoben. (KDE-Bug: 391222)
 
-(en) Kleopatra: Serveral issues have been fixed, which occurred, if the Appdata directory
-     was redirected to an UNC path. (T3818)
+(en) Kleopatra: Serveral issues have been fixed, which occurred, if the
+     Appdata directory was redirected to an UNC path. (T3818)
 
-(de) Kleopatra: Mehrere Probleme wurden behoben, die auftraten, wenn das Appdata
-     Verzeichnis auf einen UNC Pfad gelegt wurde. (T3818)
+(de) Kleopatra: Mehrere Probleme wurden behoben, die auftraten, wenn das
+     Appdata Verzeichnis auf einen UNC Pfad gelegt wurde. (T3818)
 
-(en) GpgOL: Cryptographic functions are now called directly from GpgOL, without using Kleopatra. This fixes
-     several problems caused by communication issues between Kleopatra and
-     GpgOL. (T3509)
+(en) GpgOL: Cryptographic functions are now called directly from GpgOL,
+     without using Kleopatra. This fixes several problems caused by
+     communication issues between Kleopatra and GpgOL. (T3509)
 
-(de) GpgOL: Kryptographische Funktionen werden nun direkt durch GpgOL aufgerufen, ohne Kleopatra zu verwenden. Dies behebt
-     eine Reihe von Problemen deren Ursache in der Kommunikation zwischen Kleopatra und
+(de) GpgOL: Kryptographische Funktionen werden nun direkt durch GpgOL
+     aufgerufen, ohne Kleopatra zu verwenden. Dies behebt eine Reihe
+     von Problemen deren Ursache in der Kommunikation zwischen Kleopatra und
      GpgOL lag. (T3509)
 
 (en) GpgOL: PGP/Inline (i.e. non-MIME) is now supported for sign and encrypt.
      This helps with compatibility problems like T3545.
 
-(de) GpgOL: PGP/Inline (i.e. non-MIME) wird nun für das Signieren und Verschlüsseln
-     unterstützt. Dies hilft bei Kompatibilitätsproblemen wie T3545.
+(de) GpgOL: PGP/Inline (i.e. non-MIME) wird nun für das Signieren und
+     Verschlüsseln unterstützt. Dies hilft bei Kompatibilitätsproblemen
+     wie T3545.
 
 (en) GpgOL: Another problem which could cause decrypted mails not to
      be displayed is fixed. (T3789)
@@ -70,8 +72,8 @@ Noteworthy changes in Version 3.1.0 (unreleased)
 
 (en) GpgOL: Basic support for Web Key publishing has been added. (T3785)
 
-(de) GpgOL: Grundlegende Unterstützung für das "Web Key Publishing" wurde hinzugefügt.
-     (T3785)
+(de) GpgOL: Grundlegende Unterstützung für das "Web Key Publishing" wurde
+     hinzugefügt. (T3785)
 
 (en) GpgOL: Additional mail types are now supported when reading. (T3802)
 
@@ -92,6 +94,12 @@ Noteworthy changes in Version 3.1.0 (unreleased)
 
 (de) GpgOL: Es wird nun stärker versucht auch kaputte PGP/Inline (non-MIME)
      Nachrichten zu verarbeiten. (T3821)
+
+(en) GpgOL: Forwarding of encrypted / signed mails with attachments
+     is now supported. (T3836)
+
+(de) GpgOL: Das weiterleiten von verschlüsselten / signieren Mails mit
+     Anhängen wird nun unterstützt. (T3836)
 
 (en) GnuPG: Updated to version 2.2.5.
 

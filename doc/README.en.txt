@@ -74,17 +74,17 @@ New in Gpg4win version !VERSION! (!BUILD_ISODATE!)
 
 - Kleopatra: Certificate details have been improved.
 
-- Kleopatra: Decrypting / Verifiying multiple files at once has been fixed.
+- Kleopatra: Decrypting / verifiying multiple files at once has been fixed.
   (KDE-Bug: 391222)
 
-- Kleopatra: Serveral issues have been fixed when the Appdata directory
-  was redirected to an UNC path. (T3818)
+- Kleopatra: Serveral issues have been fixed, which occurred, if the
+  Appdata directory was redirected to an UNC path. (T3818)
 
-- GpgOL: Crypto now happens inside of GpgOL without Kleopatra. This fixes
-  several problems caused by communication problems between Kleopatra and
-  GpgOL. (T3509)
+- GpgOL: Cryptographic functions are now called directly from GpgOL,
+  without using Kleopatra. This fixes several problems caused by
+  communication issues between Kleopatra and GpgOL. (T3509)
 
-- GpgOL: PGP/Inline (no-MIME) is now supported for sign and encrypt.
+- GpgOL: PGP/Inline (i.e. non-MIME) is now supported for sign and encrypt.
   This helps with compatibility problems like T3545.
 
 - GpgOL: Another problem which could cause decrypted mails not to
@@ -105,8 +105,10 @@ New in Gpg4win version !VERSION! (!BUILD_ISODATE!)
 - GpgOL: Now trys harder to fixup broken PGP/Inline (no-MIME) Messages.
   (T3821)
 
-- GnuPG: Updated to 2.2.5.
+- GpgOL: Forwarding of encrypted / signed mails with attachments
+  is now supported. (T3836)
 
+- GnuPG: Updated to version 2.2.5.
 
 
 3. Additional notes
@@ -128,17 +130,15 @@ New in Gpg4win version !VERSION! (!BUILD_ISODATE!)
 
 - General
 
-  * For 3.1 we plan to offer a quick switch to a more automatic mode that
-    will set the GnuPG options:
+  * For 3.2 we plan to, optionally, further automate GpgOL. This would
+    set the GnuPG-Option:
 
-        auto-key-locate wkd
-        auto-key-retrieve
         trust-model tofu+pgp
 
     As this is not properly handled everywhere (especially Kleopatra's
-    file verification dialog) this is not yet default or easily accessible.
+    file verification dialog) this is not default.
 
-    You can add it manually to your gpg.conf. The trust-model is fully
+    You can add it manually to your gpg.conf. The trust-model is already
     supported by GpgOL.
 
 - Kleopatra
