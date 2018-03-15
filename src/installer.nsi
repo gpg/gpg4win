@@ -115,9 +115,20 @@ Bitte die Sprache des Installations-Vorgangs angeben."
 # The list of wizard pages.
 
 !define MUI_WELCOMEPAGE_TITLE "${WELCOME_TITLE_STR}"
+!define MUI_PAGE_CUSTOMFUNCTION_SHOW WelcomeFunction
 !define MUI_WELCOMEPAGE_TEXT "${ABOUT_STR}"
 
 !insertmacro MUI_PAGE_WELCOME
+
+Function WelcomeFunction
+  IfSilent leave
+  ClearErrors
+  ReadRegStr $0 SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\GPG4Win" "DisplayVersion"
+  IfErrors leave 0
+  StrCmp $0 "" leave
+  SendMessage $mui.WelcomePage.Text ${WM_SETTEXT} 0 "STR:${ABOUT_STR}$\r$\n$(T_UPDATE_STR) $0"
+leave:
+FunctionEnd
 
 #!define MUI_LICENSEPAGE_BUTTON "$(^NextBtn)"
 #!define MUI_PAGE_HEADER_SUBTEXT "$(T_GPLHeader)"
@@ -555,6 +566,10 @@ LangString T_WinisDeprecated ${LANG_ENGLISH} \
    "Windows Versions before Windows 7 are no longer maintained by Gpg4win. \
     $\r$\nSupport for them may be removed in a future version.\
     $\r$\n$\r$\nKleopatra is disabled."
+
+# From Function WelcomeFunction
+LangString T_UPDATE_STR ${LANG_ENGLISH} \
+   "Updating Version"
 
 # FIXME: The GetAfterChar function comes from the NSIS wiki.
 Function un.GetAfterChar
