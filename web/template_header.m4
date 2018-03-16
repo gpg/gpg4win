@@ -86,10 +86,12 @@ m4_define(`RQ',`m4_changequote(<,>)m4_dnl`
        <a href="https://twitter.com/gpg4win" target="_blank" title="Follow @gpg4win">
          <img src="img/twitter-icon.png" class="social-icon">
        </a>
+<!-- Our flattr account results in a 404. Needs to be fixed.
        <a href="https://flattr.com/thing/2053326/Gpg4win-Secure-email-and-file-encryption-with-GnuPG-for-Windows"
            target="_blank" title="Flattr this">
          <img src="img/flattr-icon.png" class="social-icon">
        </a>
+-->
        <a href="https://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpg4win.git;a=summary" target="_blank" title="Gpg4win git repository">
          <img src="img/git-icon.png" class="social-icon">
        </a>
