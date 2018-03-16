@@ -308,6 +308,7 @@ Section "-breeze-icons" SEC_breeze_icons
 
   SetOutPath "$INSTDIR\share\icons\breeze\actions\symbolic"
   File ${prefix}/share/icons/breeze/actions/symbolic/send-to-symbolic.svg
+  File ${prefix}/share/icons/breeze/actions/symbolic/contact-new-symbolic.svg
 
 !endif
 SectionEnd
