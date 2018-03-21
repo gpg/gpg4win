@@ -27,10 +27,9 @@ Instructions:
 
    $ make
 
-The installer will be made available in three files:
+The installer will be made available in two files:
 
 src/gpg4win-X.Y.Z.exe
-src/gpg4win-light-X.Y.Z.exe
 src/gpg4win-src-X.Y.Z.exe
 
 
@@ -50,7 +49,8 @@ to be installed:
     mingw-w64-x86-64-dev nsis stow unzip imagemagick texlive \
     latex-xcolor libglib2.0-dev gettext docbook-utils ghostscript \
     texinfo libgdk-pixbuf2.0-dev texlive-latex-extra libqt4-dev-bin \
-    wget mingw-w64 texlive-lang-german cmake libgtk2.0-bin libxml2-utils
+    wget mingw-w64 texlive-lang-german cmake libgtk2.0-bin libxml2-utils \
+    gperf libgettextpo-dev
 
 Building the Webpages
 =====================
