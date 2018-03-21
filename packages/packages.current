@@ -542,9 +542,8 @@ chk  7aaa4f94b82daf3dad1f9480b48b98a8621fd203603d50c5cfd10e1a986a1dbc
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah.
-file libkleo/libkleo-201803211300.tar.gz
-chk 046764dc48ee7fa172d231cef857446ff771fb86fe8a9b74ef9533ac8a8528c5
-
+file libkleo/libkleo-201803211452.tar.gz
+chk e0e532f537de7901f9fd1a08e8100b07e9a33dc73bb1a9df982ee3efad1a4c7d
 
 # KDE-L10n
 # last changed: see package date.
