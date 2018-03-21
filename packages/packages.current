@@ -244,8 +244,8 @@ server http://files.gpg4win.org/src
 # for beta
 server http://files.intevation.de/projects/gpg4all
 
-file gpgol/gpgol-2.1.0-beta98.tar.bz2
-chk  f6cc1321527ae3472e20090507c54218c127f91b4ac13ef3c430986e6eca4ef6
+file gpgol/gpgol-2.1.0-beta99.tar.bz2
+chk  ccb4e4aa0dfa0b2802b8f34fa460a1d7d071001104c6898b6799bbbf5358b9f1
 
 #
 # GpgEX
