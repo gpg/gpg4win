@@ -80,6 +80,9 @@ New in Gpg4win version !VERSION! (!BUILD_ISODATE!)
 - Kleopatra: Serveral issues have been fixed, which occurred, if the
   Appdata directory was redirected to an UNC path. (T3818)
 
+- Kleopatra: Multiple minor improvements.
+  (T3845 T3846 T3776 T3723 T3849 T3850)
+
 - GpgOL: Cryptographic functions are now called directly from GpgOL,
   without using Kleopatra. This fixes several problems caused by
   communication issues between Kleopatra and GpgOL. (T3509)

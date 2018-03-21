@@ -83,6 +83,9 @@ Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 - Kleopatra: Mehrere Probleme wurden behoben, die auftraten, wenn das
   Appdata Verzeichnis auf einen UNC Pfad gelegt wurde. (T3818)
 
+- Kleopatra: Verschiedene kleinere Verbesserungen.
+  (T3845 T3846 T3776 T3723 T3849 T3850)
+
 - GpgOL: Kryptographische Funktionen werden nun direkt durch GpgOL
   aufgerufen, ohne Kleopatra zu verwenden. Dies behebt eine Reihe
   von Problemen deren Ursache in der Kommunikation zwischen Kleopatra und
