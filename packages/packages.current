@@ -244,8 +244,8 @@ server http://files.gpg4win.org/src
 # for beta
 server http://files.intevation.de/projects/gpg4all
 
-file gpgol/gpgol-2.1.0-beta99.tar.bz2
-chk  ccb4e4aa0dfa0b2802b8f34fa460a1d7d071001104c6898b6799bbbf5358b9f1
+file gpgol/gpgol-2.1.0-beta112.tar.bz2
+chk  a3c3c683337b97592fb1ac71a5b0374e06107d29f558cfa73fec2f9f5ce86929
 
 #
 # GpgEX
@@ -535,25 +535,25 @@ file pinentry/pinentry-1.1.1-beta5.tar.bz2
 chk 7bda3fef7d7f0f77dd4dfe11e3364c64f1e9646945afa995da8a5084ce59e101
 
 # by: ah
-file gpgme/gpgme-1.10.1-beta54.tar.bz2
-chk  7aaa4f94b82daf3dad1f9480b48b98a8621fd203603d50c5cfd10e1a986a1dbc
+file gpgme/gpgme-1.10.1-beta178.tar.bz2
+chk  9965635b2254943371a1f3c4554d96a9350e62be90f7db791050d28ad0fd6feb
 
 # Libkleo
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah.
-file libkleo/libkleo-201803211452.tar.gz
-chk e0e532f537de7901f9fd1a08e8100b07e9a33dc73bb1a9df982ee3efad1a4c7d
+file libkleo/libkleo-201803291019.tar.gz
+chk ed350ff82378cf7352b22a6ce77739762cf992b3d6ff4e095480fafd9ba48980
 
 # KDE-L10n
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah with script kde-l10n.sh
-file kde-l10n/kde-l10n-201803051231-bin.tar.xz
-chk 116d62ea69e51963d2532f58f222d1e6a375f8f1619591d66053c39462eb6c8e
+file kde-l10n/kde-l10n-201803291031-bin.tar.xz
+chk 52dd0f20ec77926f1277bb5f6e51dcd9029860292a2d65b10591c87ff9e4f616
 
-file kde-l10n/kde-l10n-201803051231-src.tar.xz
-chk 4034a0747a0aef8cb31012532da557d6d7090fe9f9f8d02eb3942e66c7ed9e19
+file kde-l10n/kde-l10n-201803291031-src.tar.xz
+chk 823109f95d5f8f69835fcff35a1a6e415f626a8841cd88284203ff9b8bdeb702
 
 # Gpg4win-tools package (experimental)
 # last changed: see package date.
@@ -566,5 +566,5 @@ chk 6c6f017063aa30679e4620d354b3281fe4adff45515d518ecc297a0d98416099
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah.
-file kleopatra/kleopatra-201803211300.tar.gz
-chk 2670955411dccf4b499e2de86b9c615ed6c485bad2355df11186a792af81761e
+file kleopatra/kleopatra-201803291018.tar.gz
+chk c7750745ac94882438cb1e098adb88fc711e30cedbeb66077d09994315a7a9c5
