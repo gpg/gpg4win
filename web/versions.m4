@@ -33,5 +33,5 @@ m4_define(`COMPENDIUM_DATE_EN',`2016-11-30')
 m4_define(`DOWNLOAD_URL_COMPENDIUM_EN',`https://files.gpg4win.org/doc/gpg4win-compendium-en.pdf')
 m4_define(`DL_SIZE_COMPENDIUM_EN',`3 MByte')
 
-m4_define(`BETA_VERSION', `3.1.0-beta38')
+m4_define(`BETA_VERSION', `3.1.0-beta43')
 m4_define(`BETA_SIZE', `27 MByte')
