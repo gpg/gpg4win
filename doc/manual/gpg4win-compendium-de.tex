@@ -3355,14 +3355,48 @@ einzugeben.
 
 %TODO: Option gibt es noch nicht
 %\subsection{Kopieren eines vorhandenen Schlüssels auf die SmartCard}
+\clearpage
 
 \section{Nutzung von NetKey-Cards mit X.509}
 \label{X509Smartcard}
-Ebenso wie OpenPGP-SmartCards können auch X.509 NetKey-Cards verwendet werden.
-Hierbei müssen Sie allerdings keine eigenen Einstellungen übernehmen, Sie wird
-von der Zertifizierungsstelle vorkonfiguriert und kann danach in Kleopatra
-genutzt werden.
+X.509 Smartcards kommen im Unterschied zu OpenPGP Karten üblicherweise
+mit vorkonfigurierten Zertifikaten, welche von der Zertifizierungstelle
+eingerichtet wurden. Kleopatra unterstützt die NetKey Karten
+der Telekom.
 
+Bei der ersten Verwendung einer X.509 Smartcard muss eine PIN für
+die jeweiligen Zertifikate gesetzt werden. Zudem müssen die Zertifikate
+der Karte im Gpg4win-System registriert werden damit diese für Kryptographie-
+Aktionen zur Auswahl stehen.
+
+Legt man eine, unbekannte, unterstützte X.509 Smartcard in einen Kartenleser ein
+blinkt das Systemtray Icon von Kleopatra. Nach einem Linksklick öffnet sich der
+Einrichtungsdialog um eine anfängliche PIN zu setzen:
+
+\IncludeImage[width=0.8\textwidth]{sc-kleopatra-smartCard_netkey_1_de}
+
+Dabei ist ein Spezialfall bei NetKey Karten das diese zwei Zertifikate
+unterstützen. Ein gewöhnliches und ein weiteres für qualifizierte Signaturen.\footnote{
+ \url{https://de.wikipedia.org/wiki/Signaturgesetz_(Deutschland)}}
+
+Nachdem die anfänglichen PINs eingerichtet sind können die Zertifikate registriert
+werden. Dazu kann man erneut auf das blinkende Symbol klicken. Es folgen
+einige Diagnoseausgaben. Diese können ignoriert werden. Anschließend sind die
+Zertifikate im System registriert.
+
+Alternativ zum Tray Icon können beide Aktionen auch über die SmartCard-Verwaltung
+angestoßen werden. Das Menü erreichen Sie über \Menu{Extras $\to$ SmartCards verwalten}.
+
+Ansicht einer nicht initialisierten NetKey Karte:
+\IncludeImage[width=0.7\textwidth]{sc-kleopatra-smartCard_netkey_2_de}
+
+Mit ``Zertifikate neu Laden" werden die Zertifikate der SmartCard registriert:
+\IncludeImage[width=0.7\textwidth]{sc-kleopatra-smartCard_netkey_4_de}
+
+Ist alles eingerichtet werden die auf der Karte vorhandenen Zertifikate in
+der SmartCard-Verwaltung angezeigt.
+
+\IncludeImage[width=0.7\textwidth]{sc-kleopatra-smartCard_netkey_3_de}
 
 \clearpage
 \chapter{Systemweite Konfiguration und Vorbelegung für

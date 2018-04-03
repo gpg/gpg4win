@@ -182,7 +182,12 @@ png_compendium_files = \
 	images-compendium/sc-kleopatra-smartCard1_de.png \
 	images-compendium/sc-kleopatra-smartCard2_de.png \
 	images-compendium/sc-kleopatra-smartCard3_de.png \
-	images-compendium/sc-kleopatra-smartCard4_de.png
+	images-compendium/sc-kleopatra-smartCard4_de.png \
+	images-compendium/sc-kleopatra-smartCard_netkey_1_de.png \
+	images-compendium/sc-kleopatra-smartCard_netkey_2_de.png \
+	images-compendium/sc-kleopatra-smartCard_netkey_3_de.png \
+	images-compendium/sc-kleopatra-smartCard_netkey_4_de.png
+
 
 png_manual_files = \
 	images-manual/adele01.png \
