@@ -24,8 +24,8 @@ I18N(`EN', `<a href="https://www.gnupg.org/related_software/gpa/index.html">GPA<
 <a href="doc/en/gpg4win-compendium.html">Compendium (en)</a> 3.0.0
 ')
 
-m4_define(`COMPENDIUM_VERSION_DE',`4.0.0')
-m4_define(`COMPENDIUM_DATE_DE',`2018-01-10')
+m4_define(`COMPENDIUM_VERSION_DE',`4.0.1')
+m4_define(`COMPENDIUM_DATE_DE',`2018-04-03')
 m4_define(`DOWNLOAD_URL_COMPENDIUM_DE',`https://files.gpg4win.org/doc/gpg4win-compendium-de.pdf')
 m4_define(`DL_SIZE_COMPENDIUM_DE',`3 MByte')
 m4_define(`COMPENDIUM_VERSION_EN',`3.0.0')
