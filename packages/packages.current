@@ -244,8 +244,8 @@ server http://files.gpg4win.org/src
 # for beta
 server http://files.intevation.de/projects/gpg4all
 
-file gpgol/gpgol-2.1.0-beta119.tar.bz2
-chk  27c944a4adf4b87fe1eea941b4f596c46484f58112c8400608cc93e56112a235
+file gpgol/gpgol-2.1.0-beta121.tar.bz2
+chk  4b2a8f3fd59fc3e58a7a9516f043892fd26ffecefe7af7fbeeed0f83b08a0279
 
 file gpgex/gpgex-1.0.6-beta3.tar.bz2
 chk  687e0abb2402525129303ce1465740c0563397f09b9f004e8b46361588477b29
@@ -545,8 +545,8 @@ chk  89d6696ce5cc513de2fc42972411df94eb4e6d8c77b579634dc3737e274bac51
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah.
-file libkleo/libkleo-201803291019.tar.gz
-chk ed350ff82378cf7352b22a6ce77739762cf992b3d6ff4e095480fafd9ba48980
+file libkleo/libkleo-201804051435.tar.gz
+chk 7367201211e9f2026cf42370ab9445c3ce40ae53b888c46735878e493cd2eac0
 
 # KDE-L10n
 # last changed: see package date.
