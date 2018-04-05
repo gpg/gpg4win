@@ -244,8 +244,8 @@ server http://files.gpg4win.org/src
 # for beta
 server http://files.intevation.de/projects/gpg4all
 
-file gpgol/gpgol-2.1.0-beta112.tar.bz2
-chk  a3c3c683337b97592fb1ac71a5b0374e06107d29f558cfa73fec2f9f5ce86929
+file gpgol/gpgol-2.1.0-beta119.tar.bz2
+chk  27c944a4adf4b87fe1eea941b4f596c46484f58112c8400608cc93e56112a235
 
 file gpgex/gpgex-1.0.6-beta3.tar.bz2
 chk  687e0abb2402525129303ce1465740c0563397f09b9f004e8b46361588477b29
@@ -538,8 +538,8 @@ file pinentry/pinentry-1.1.1-beta5.tar.bz2
 chk 7bda3fef7d7f0f77dd4dfe11e3364c64f1e9646945afa995da8a5084ce59e101
 
 # by: ah
-file gpgme/gpgme-1.10.1-beta178.tar.bz2
-chk  9965635b2254943371a1f3c4554d96a9350e62be90f7db791050d28ad0fd6feb
+file gpgme/gpgme-1.10.1-beta183.tar.bz2
+chk  89d6696ce5cc513de2fc42972411df94eb4e6d8c77b579634dc3737e274bac51
 
 # Libkleo
 # last changed: see package date.
@@ -569,5 +569,5 @@ chk 6c6f017063aa30679e4620d354b3281fe4adff45515d518ecc297a0d98416099
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah.
-file kleopatra/kleopatra-201803291018.tar.gz
-chk c7750745ac94882438cb1e098adb88fc711e30cedbeb66077d09994315a7a9c5
+file kleopatra/kleopatra-201804051220.tar.gz
+chk 6e815e0dfd88bd373e838124591a8422e9ebd2131a5db111e4d17e6e2d4cb4fb
