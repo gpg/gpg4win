@@ -247,19 +247,16 @@ server http://files.intevation.de/projects/gpg4all
 file gpgol/gpgol-2.1.0-beta121.tar.bz2
 chk  4b2a8f3fd59fc3e58a7a9516f043892fd26ffecefe7af7fbeeed0f83b08a0279
 
-file gpgex/gpgex-1.0.6-beta3.tar.bz2
-chk  687e0abb2402525129303ce1465740c0563397f09b9f004e8b46361588477b29
-
 #
 # GpgEX
 #
 server http://files.gpg4win.org/src
 
-# last-changed: 2017-09-12
+# last-changed: 2018-04-10
 # by: ah
 # verified: Sig 5B80 C575 4298 F0CB  55D8 ED6A BCEF 7E29 4B09 2E28
-#file gpgex/gpgex-1.0.5.tar.bz2
-#chk  f2696a34f77f4afb4e9bef82ea73ebbed59e07c534c68b5c5afd976dddd86feb
+file gpgex/gpgex-1.0.6.tar.bz2
+chk  8cb429bfcf1e938fa4ef8953e0eb2eff88848d883afcf66fdf5fa67ef01ed424
 
 #
 # Pth emulation
