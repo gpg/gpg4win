@@ -44,7 +44,8 @@ FRAMEWORKS="extra-cmake-modules
     kitemmodels
     kiconthemes
     breeze-icons
-    karchive"
+    karchive
+    kcrash"
 
 tmpdir=$(mktemp -d)
 

@@ -74,6 +74,7 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
         inst-kiconthemes.nsi uninst-kiconthemes.nsi \
         inst-breeze-icons.nsi uninst-breeze-icons.nsi \
         inst-karchive.nsi uninst-karchive.nsi \
+        inst-kcrash.nsi uninst-kcrash.nsi \
         inst-kitemviews.nsi uninst-kitemviews.nsi \
         inst-kitemmodels.nsi uninst-kitemmodels.nsi \
         inst-kguiaddons.nsi uninst-kguiaddons.nsi \
@@ -123,7 +124,7 @@ gpg4win_kdepkgs = kconfig kwidgetsaddons ki18n extra-cmake-modules \
                   kcompletion kwindowsystem kcoreaddons libkleo kcodecs \
                   kmime kconfigwidgets kxmlgui kguiaddons kitemviews \
                   kiconthemes kleopatra breeze-icons kitemmodels karchive \
-                  gpg4win-tools
+                  gpg4win-tools kcrash
 
 # Supported source packages to build in an additional architecture
 gpg4win_expkgs = libgpg-error libassuan libiconv gettext w32pth gpgex gpgol \

@@ -77,7 +77,7 @@ Adding new packages to the installer:
 This requires editing a couple of files; we might eventually automate
 some of these tasks.  Here is a short run up:
 
-1. Add constants for the package FOO into include/config.nsi.in .
+1. Add constants for the package FOO into src/config.nsi.in .
 
 2. Create 2 new installer scripts, named src/inst-foo.nsi and
    uninst-foo.nsi and add them to EXTRA_DIST in src/Makefile.am.
@@ -87,7 +87,7 @@ some of these tasks.  Here is a short run up:
    gpg4win) in src/Makefile.am .  Also add any required configure
    flags etc.
 
-4. Add FOO to inst-sections.nsi.
+4. Add FOO to src/inst-sections.nsi.
 
 5. Add detection of packages to configure.ac.  Check out the available
    macros in m4/gpg4win.m4.  Depending on the way an upstream package

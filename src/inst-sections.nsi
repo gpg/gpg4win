@@ -149,6 +149,9 @@
 !ifdef HAVE_PKG_KARCHIVE
 !include "inst-karchive.nsi"
 !endif
+!ifdef HAVE_PKG_KCRASH
+!include "inst-kcrash.nsi"
+!endif
 !ifdef HAVE_PKG_KITEMVIEWS
 !include "inst-kitemviews.nsi"
 !endif
@@ -370,6 +373,9 @@
 !endif
 !ifdef HAVE_PKG_KARCHIVE
 !include "uninst-karchive.nsi"
+!endif
+!ifdef HAVE_PKG_KCRASH
+!include "uninst-kcrash.nsi"
 !endif
 !ifdef HAVE_PKG_KITEMVIEWS
 !include "uninst-kitemviews.nsi"
@@ -660,6 +666,9 @@ Function CalcDepends
 !ifdef HAVE_PKG_KARCHIVE
   !insertmacro UnselectSection ${SEC_karchive}
 !endif
+!ifdef HAVE_PKG_KCRASH
+  !insertmacro UnselectSection ${SEC_kcrash}
+!endif
 !ifdef HAVE_PKG_KITEMVIEWS
   !insertmacro UnselectSection ${SEC_kitemviews}
 !endif
@@ -798,6 +807,7 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_kitemmodels}
   !insertmacro SelectSection ${SEC_kiconthemes}
   !insertmacro SelectSection ${SEC_karchive}
+  !insertmacro SelectSection ${SEC_kcrash}
   !insertmacro SelectSection ${SEC_kguiaddons}
   !insertmacro SelectSection ${SEC_qtsvg}
   !insertmacro SelectSection ${SEC_qttranslations}

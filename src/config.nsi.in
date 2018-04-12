@@ -282,6 +282,10 @@
 !define gpg4win_pkg_karchive @gpg4win_pkg_karchive@
 !define gpg4win_pkg_karchive_version @gpg4win_pkg_karchive_version@
 
+@HAVE_PKG_KCRASH@
+!define gpg4win_pkg_kcrash @gpg4win_pkg_karchive@
+!define gpg4win_pkg_kcrash_version @gpg4win_pkg_karchive_version@
+
 @HAVE_PKG_GPG4WIN_TOOLS@
 !define gpg4win_pkg_gpg4win_tools @gpg4win_pkg_gpg4win_tools@
 !define gpg4win_pkg_gpg4win_tools_version @gpg4win_pkg_gpg4win_tools_version@

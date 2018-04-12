@@ -511,6 +511,14 @@ chk 3eda58a4c7c9369fe9b246500d88a964d3411f83e1113727ed723989d935dea7
 # verified: https://www.kde.org/info/kde-frameworks-5.43.0.php (created by gen-frameworks.sh)
 file 5.43/karchive-5.43.0.tar.xz
 chk 0e639a2818700220bf20aea83a00697b385d67f39eba5840b400d8d72ec477b8
+
+# kcrash
+# last changed: 2018-02-27
+# by: ah
+# verified: https://www.kde.org/info/kde-frameworks-5.43.0.php (created by gen-frameworks.sh)
+file 5.43/kcrash-5.43.0.tar.xz
+chk 2b74ab0d0d393c32a7e53e16757763fbe91d25e8dd157e860dec45a047866ec3
+
 ##### End Paste #####
 
 # KDE Applications
