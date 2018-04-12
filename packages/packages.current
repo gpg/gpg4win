@@ -256,7 +256,7 @@ server http://files.gpg4win.org/src
 # by: ah
 # verified: Sig 5B80 C575 4298 F0CB  55D8 ED6A BCEF 7E29 4B09 2E28
 file gpgex/gpgex-1.0.6.tar.bz2
-chk  8cb429bfcf1e938fa4ef8953e0eb2eff88848d883afcf66fdf5fa67ef01ed424
+chk  d69898d1022400bd09bb684080edc95be554af736ae9c014df73543f34f7481b
 
 #
 # Pth emulation
@@ -286,25 +286,25 @@ chk  c2a9b3aec1a38d34b66106116a39f64b01d84f475fef75c40ea0bda0ea67ed07
 # D869 2123 C406 5DEA 5E0F  3AB5 249B 39D2 4F25 E3B6
 server ftp://ftp.gnupg.org/gcrypt
 
-# last-changed: 2018-03-15
+# last-changed: 2018-04-12
 # by: ah
-file libgpg-error/libgpg-error-1.28.tar.bz2
-chk  3edb957744905412f30de3e25da18682cbe509541e18cd3b8f9df695a075da49
+file libgpg-error/libgpg-error-1.29.tar.bz2
+chk  ece926fa5719d17a7ad8da618712cfa2f8a796ab2f2af9d544c5bb093383b1ea
 
 # last-changed: 2017-12-07
 # by: ah
 file libassuan/libassuan-2.5.1.tar.bz2
 chk  47f96c37b4f2aac289f0bc1bacfa8bd8b4b209a488d3d15e2229cb6cc9b26449
 
-# last changed: 2018-03-06
+# last changed: 2018-04-12
 # by: ah
-name gnupg-w32-2.2.5-20180222-bin.exe
-file binary/gnupg-w32-2.2.5_20180222.exe
-chk  9fea4add738a373b3c1a304f74eec2d24a8f5fe7ccdf1d8ee090d99de8f51257
+name gnupg-w32-2.2.6-20180409-bin.exe
+file binary/gnupg-w32-2.2.6_20180409.exe
+chk  5d426b19d9cc3d7d3c0db0dfb58af1b6a36f4ea1cfd55901bb6864e865fcccc6
 
-name gnupg-w32-2.2.5-20180222-src.tar.xz
-file binary/gnupg-w32-2.2.5_20180222.tar.xz
-chk  9afdeb9790aaa5b55bca44b837efbe971eeea19dc40a78ff53c62de0f3e9e10a
+name gnupg-w32-2.2.6-20180409-src.tar.xz
+file binary/gnupg-w32-2.2.6_20180409.tar.xz
+chk  559262de070e3b58dd031ce6becc164147009c3676fb8155bcb693ed26db8556
 
 # TODO back to stable
 # last changed: 2017-12-05
@@ -542,8 +542,8 @@ chk  89d6696ce5cc513de2fc42972411df94eb4e6d8c77b579634dc3737e274bac51
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah.
-file libkleo/libkleo-201804051435.tar.gz
-chk 7367201211e9f2026cf42370ab9445c3ce40ae53b888c46735878e493cd2eac0
+file libkleo/libkleo-201804120859.tar.gz
+chk caa04fd3fee76d772f4186df8ab358e59ed95d16556679326101d32335f7b63e
 
 # KDE-L10n
 # last changed: see package date.
