@@ -81,7 +81,7 @@ New in Gpg4win version !VERSION! (!BUILD_ISODATE!)
   Appdata directory was redirected to an UNC path. (T3818)
 
 - Kleopatra: Multiple minor improvements.
-  (T3845 T3846 T3776 T3723 T3849 T3850)
+  (T3845 T3846 T3776 T3723 T3849 T3850 T3865 T3868)
 
 - GpgOL: Cryptographic functions are now called directly from GpgOL,
   without using Kleopatra. This fixes several problems caused by
@@ -98,7 +98,8 @@ New in Gpg4win version !VERSION! (!BUILD_ISODATE!)
 
 - GpgOL: Basic support for Web Key publishing has been added. (T3785)
 
-- GpgOL: Additional mail types are now supported when reading. (T3802)
+- GpgOL: Additional mail types are now supported when reading.
+  (T3802 T3882)
 
 - GpgOL: The handling of Exchange Mail addresses was improved. (T3082)
 
@@ -111,8 +112,19 @@ New in Gpg4win version !VERSION! (!BUILD_ISODATE!)
 - GpgOL: Forwarding of encrypted / signed mails with attachments
   is now supported. (T3836)
 
-- GnuPG: Updated to version 2.2.5.
+- GpgOL: S/MIME is supported again with the last version of Exchange
+  2016. (T3853)
 
+- GpgOL: Re-Sending crypto mails is now supported. (T3884)
+
+- GpgOL: A problem that could lead to strange numbering of attachments
+  was resolved. (T3886)
+
+- GnuPG: A rare problem that could lead to "General Error" messages
+  after a fresh install of Gpg4win has been fixed. (T3839)
+
+- GnuPG: Updated to version 2.2.6.
+  (See: https://lists.gnupg.org/pipermail/gnupg-announce/2018q2/000421.html )
 
 3. Additional notes
 ===================

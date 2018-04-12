@@ -43,10 +43,10 @@ Noteworthy changes in Version 3.1.0 (unreleased)
      Appdata Verzeichnis auf einen UNC Pfad gelegt wurde. (T3818)
 
 (en) Kleopatra: Multiple minor improvements.
-     (T3845 T3846 T3776 T3723 T3849 T3850)
+     (T3845 T3846 T3776 T3723 T3849 T3850 T3865 T3868)
 
 (de) Kleopatra: Verschiedene kleinere Verbesserungen.
-     (T3845 T3846 T3776 T3723 T3849 T3850)
+     (T3845 T3846 T3776 T3723 T3849 T3850 T3865 T3868)
 
 (en) GpgOL: Cryptographic functions are now called directly from GpgOL,
      without using Kleopatra. This fixes several problems caused by
@@ -81,9 +81,11 @@ Noteworthy changes in Version 3.1.0 (unreleased)
 (de) GpgOL: Grundlegende Unterstützung für das "Web Key Publishing" wurde
      hinzugefügt. (T3785)
 
-(en) GpgOL: Additional mail types are now supported when reading. (T3802)
+(en) GpgOL: Additional mail types are now supported when reading.
+     (T3802 T3882)
 
-(de) GpgOL: Weitere Mail-Typen werden beim nun beim Lesen unterstützt. (T3802)
+(de) GpgOL: Weitere Mail-Typen werden beim nun beim Lesen unterstützt.
+     (T3802 T3882)
 
 (en) GpgOL: The handling of Exchange Mail addresses was improved. (T3082)
 
@@ -107,20 +109,44 @@ Noteworthy changes in Version 3.1.0 (unreleased)
 (de) GpgOL: Das weiterleiten von verschlüsselten / signieren Mails mit
      Anhängen wird nun unterstützt. (T3836)
 
-(en) GnuPG: Updated to version 2.2.5.
+(en) GpgOL: S/MIME is supported again with the last version of Exchange
+     2016. (T3853)
 
-(de) GnuPG: Auf Version 2.2.5 aktualisiert.
+(de) GpgOL: S/MIME wird nun auch wieder für die aktuellste Exchange 2016
+     Version unterstützt. (T3853)
 
+(en) GpgOL: Re-Sending crypto mails is now supported. (T3884)
+
+(de) GpgOL: Das erneute senden von Krypto Mails wird nun unterstützt. (T3884)
+
+(en) GpgOL: A problem that could lead to strange numbering of attachments
+     was resolved. (T3886)
+
+(de) GpgOL: Ein Problem das dazu führen konnte das Anhänge merkwürdig
+     nummeriert wurden ist behoben. (T3886)
+
+(en) GnuPG: A rare problem that could lead to "General Error" messages
+     after a fresh install of Gpg4win has been fixed. (T3839)
+
+(de) GnuPG: Ein seltenes Problem das nach einer frischen installation
+     zu "Allgemeiner Fehler" meldungen führen konnte ist behoben. (T3839)
+
+(en) GnuPG: Updated to version 2.2.6.
+     (See: https://lists.gnupg.org/pipermail/gnupg-announce/2018q2/000421.html )
+
+(de) GnuPG: Auf Version 2.2.6 aktualisiert.
+     (Siehe: https://lists.gnupg.org/pipermail/gnupg-announce/2018q2/000421.html )
 
 ~~~~~~~~~~~~~~~
-GnuPG:          2.2.5
+GnuPG:          2.2.6
 Kleopatra:      3.1.0
 GPA:            0.9.10
 GpgOL:          2.1.0
-GpgEX:          1.0.5
-Kompendium DE:  4.0.0
+GpgEX:          1.0.6
+Kompendium DE:  4.0.1
 Compendium EN:  3.0.0
 ~~~~~~~~~~~~~~~
+
 
 Noteworthy changes in Version 3.0.3 (2018-01-12)
 ------------------------------------------------
