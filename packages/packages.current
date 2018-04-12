@@ -235,17 +235,17 @@ chk  1dddde1400c3bcb7749d398071af88c3e4754058d2d4c0b3696c2f82dc5cf11c
 #
 server http://files.gpg4win.org/src
 
-# last-changed: 2018-01-12
+# last-changed: 2018-04-12
 # by: ah
 # verified: Sig 5B80 C575 4298 F0CB  55D8 ED6A BCEF 7E29 4B09 2E28
-# file gpgol/gpgol-2.0.7-beta67.tar.bz2
-# chk  ca394cbcb404cccf92e1cf02a7c96a62b96873cd85d5d8144c0844f82611059b
+file gpgol/gpgol-2.1.0.tar.bz2
+chk  3193fc5c85f7ef8cddca97c537831daf7a51f56c244f3d33ce2c3fcc01437764
 
 # for beta
-server http://files.intevation.de/projects/gpg4all
+#server http://files.intevation.de/projects/gpg4all
 
-file gpgol/gpgol-2.1.0-beta132.tar.bz2
-chk  bd75e70c23be56e8faee528f366c6efa2e267379fc528c55a16ed0f1748c947c
+#file gpgol/gpgol-2.1.0-beta132.tar.bz2
+#chk  bd75e70c23be56e8faee528f366c6efa2e267379fc528c55a16ed0f1748c947c
 
 #
 # GpgEX
