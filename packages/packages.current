@@ -543,8 +543,8 @@ file pinentry/pinentry-1.1.1-beta5.tar.bz2
 chk 7bda3fef7d7f0f77dd4dfe11e3364c64f1e9646945afa995da8a5084ce59e101
 
 # by: ah
-file gpgme/gpgme-1.10.1-beta184.tar.bz2
-chk  40b8d37673d5da5cb3bbd296c454562e0ec6f13de41171dd5907bcfef16c2d08
+file gpgme/gpgme-1.10.1-beta188.tar.bz2
+chk  e9f358ca207cf2b3fb27bcb4233c29ca20f60543e72a0b9e7422eabdfe71ccc1
 
 # Libkleo
 # last changed: see package date.
