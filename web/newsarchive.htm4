@@ -17,6 +17,12 @@ The latest news are placed at the <a href="./">welcome page</a>.
 
 
 <div id="main">
+<h2>2018</h2>
+<ul>
+    <li><a
+     href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2018-January/000076.html">
+     2018-01-13: Gpg4win 3.0.3 released</a></li>
+</ul>
 
 <h2>2017</h2>
 <ul>
@@ -27,7 +33,7 @@ The latest news are placed at the <a href="./">welcome page</a>.
     <li><a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2017-August/000072.html">
     2017-08-24: Gpg4win 3.0 has release candidate status</a>
     <li><a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2017-July/000071.html">
-    2017-07-06: Gpg4win 2.3.4 veröffentlicht</a>
+    2017-07-06: Gpg4win 2.3.4 released</a>
 </ul>
 
 <h2>2016</h2>

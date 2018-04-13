@@ -25,6 +25,7 @@
      <a href="package-integrity.html">Check integrity</a>')
    </div>
    <br/>
+<!--
    <div id="download_button_mini">
      m4_ifelse(LANG_DE, `1', `
      <a class="dmini_button" href="version3.1-de.html">
@@ -36,9 +37,18 @@
       Try BETA_VERSION
      </span></a>')
    </div>
-   <!-- Remove _beta when beta is removed -->
+-->
    <div class="h_text_beta">
    <p><span class="heading">News</span></p>
+   <small>2018-04-13</small><br>
+   <span class="serif_word"><img src="img/bulletin.png" alt"" />
+     m4_ifelse(LANG_DE, `1', `
+      <a href="https://files.gpg4win.org/README-3.1.0.de.txt">Gpg4win 3.1.0 veröffentlicht
+      </a></span>',`
+      <a href="https://files.gpg4win.org/README-3.1.0.en.txt">
+        Gpg4win 3.1.0 released
+      </a></span>')
+   <p></p>
    <small>2018-03-08</small><br>
    <span class="serif_word"><img src="img/bulletin.png" alt"" />
      m4_ifelse(LANG_DE, `1', `
@@ -46,16 +56,6 @@
       </a></span>',`
       <a href="version3.1.html">
         Gpg4win 3.1.0-beta released
-      </a></span>')
-   <p></p>
-   <small>2018-01-12</small><br>
-   <span class="serif_word"><img src="img/bulletin.png" alt"" />
-     m4_ifelse(LANG_DE, `1', `
-      <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2018-January/000040.html">
-        Gpg4win 3.0.3 veröffentlicht
-      </a></span>',`
-      <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2018-January/000076.html">
-        Gpg4win 3.0.3 released
       </a></span>')
    <p></p>
    <div class="limiter"></div>
