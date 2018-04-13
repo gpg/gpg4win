@@ -45,7 +45,8 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         patches/kleopatra/0005-Hack-generated-conf-files-for-Crosscompiling.patch \
         patches/kleopatra/fix-qt5.6-build.patch \
         patches/extra-cmake-modules/0001-Use-BIN_INSTALL_DIR-data-for-DATAROOTDIR-on-Windows.patch \
-        patches/gpa-0.9.10/0001-w32-Make-location-of-locale-dir-more-flexible.patch
+        patches/gpa-0.9.10/0001-w32-Make-location-of-locale-dir-more-flexible.patch \
+        patches/libgpg-error-1.29/0001-doc-Fix-yat2m-build-for-cross-compilation.patch
 
 
 copy-news:
