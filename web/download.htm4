@@ -59,6 +59,12 @@ of Gpg4win VERSION here:</p>
     <br>
     <i>Please note:</i> Do not use portable applications - especially
     crypto applications - on potentially infected systems.
+
+    <!-- Remove with next release -->
+    <br/>
+    <br/>
+    <b>Gpg4win 3.1.0:</b> For the full mkportable version of Gpg4win-3.1.0
+    you have to manually copy <i>bin\libKF5Crash.dll</i> to the target folder.
     </li>
     </ul>
 
