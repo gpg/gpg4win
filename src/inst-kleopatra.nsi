@@ -240,7 +240,7 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
   FileWrite $1 '[gpg-agent]$\r$\n'
   FileWrite $1 'enable-extended-key-format$\r$\n'
   FileWrite $1 'default-cache-ttl 900$\r$\n'
-  FileWrite $1 'max-cache-ttl [] 3600$\r$\n'
+  FileWrite $1 'max-cache-ttl 3600$\r$\n'
   FileWrite $1 'no-allow-mark-trusted$\r$\n'
   FileWrite $1 'no-allow-external-cache$\r$\n'
   FileWrite $1 'enforce-passphrase-constraints$\r$\n'
