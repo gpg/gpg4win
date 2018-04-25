@@ -14,12 +14,14 @@ PAGE_START
 <h2>Gpg4win-Gemeinschaft</h2>
 <p>Wie jede Freie Software Initiative lebt auch
 Gpg4win davon, dass sich Interessierte engagieren und <a
-href="contribute-de.html">mitmachen</a>. Ein Schritt ist z.B. das <a
-href="https://dev.gnupg.org">Berichten von Problemen</a>.<br>
+href="contribute-de.html">mitmachen</a>.</p>
+<p>Eine große Hilfe ist beispielsweise das <a
+     href="reporting-bugs-de.html">berichten von Problemen</a>.</p>
+
+<p>
 Mit Gpg4win-Gemeinschaft können Sie über mehrere Medien
 kommunizieren: Mailinglisten, Webforen und IRC.</p>
 </div>
-
 <div id="main">
 <h2>Mailinglisten</h2>
 

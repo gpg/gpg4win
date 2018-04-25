@@ -13,10 +13,11 @@ PAGE_START
 <div id="intro">
 <h2>Gpg4win Community</h2>
 <p>Like any Free Software community Gpg4win needs people
-who <a href="contribute.html">get involved</a> with the initiative,
-such as <a href="https://dev.gnupg.org">reporting problems</a>.
-<br>
-You can communicate with the Gpg4win community via
+who <a href="contribute.html">get involved</a> with the initiative.</p>
+
+<p>You can help, for example, by <a href="reporting-bugs.html">reporting problems</a>.</p>
+
+<p>You can communicate with the Gpg4win community via
 mailing lists, web forums and IRC.</p>
 </div>
 
