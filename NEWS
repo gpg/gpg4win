@@ -6,20 +6,20 @@
 Noteworthy changes in Version 3.1.1 (unreleased)
 ------------------------------------------------
 
-(en) General: An issue was fixed, which could lead to "Invalid crypto engine"
-     errors has been fixed. (T3919)
+(en) General: An issue was fixed, which could lead to
+     "Invalid crypto engine" errors. (T3919)
 
-(de) Allgemein: Ein Problem wurde behoben, das zu "Invalid crypto engine"-Fehlern
-     führen konnte. (T3919)
+(de) Allgemein: Ein Problem wurde behoben, das zu
+     "Invalid crypto engine"-Fehlern führen konnte. (T3919)
 
-(en) S/MIME: A problem that could prevent successful CRL checks
-     has been fixed. (T3923)
+(en) S/MIME: A problem was fixed, which could prevent successful CRL
+     checks. (T3923)
 
-(de) S/MIME: Ein Problem wurde behoben, das dazu führen konnte das CRL-Prüfungen
-     fehlschlugen. (T3923)
+(de) S/MIME: Ein Problem wurde behoben, das dazu führen konnte das
+     CRL-Prüfungen fehlschlugen. (T3923)
 
-(en) S/MIME: OCSP certificate checks can now be combined with
-     CRL checks.
+(en) S/MIME: OCSP certificate checks can now be combined with CRL
+     checks.
 
 (de) S/MIME: OCSP-Prüfungen können nun mit CRL-Prüfungen kombiniert
      werden.
@@ -38,16 +38,16 @@ Noteworthy changes in Version 3.1.1 (unreleased)
 (en) GpgOL: A possible crash when editing recipients has been fixed.
      (T3931).
 
-(de) GpgOL: Ein möglicher Absturz beim Editieren der
-     Empfänger wurde behoben. (T3931)
+(de) GpgOL: Ein möglicher Absturz beim Editieren der Empfänger wurde
+     behoben. (T3931)
 
 (en) GpgOL: The automatic recipient resolution has been improved.
      Among other things it now properly handles S/MIME as a fallback.
      (T3929)
 
 (de) GpgOL: Die automatische Empfänger-Auflösung wurde verbessert.
-     Unter anderen wird jetzt auch S/MIME als Rückfall-Lösung unterstützt.
-     (T3929)
+     Unter anderen wird jetzt auch S/MIME als Rückfall-Lösung
+     unterstützt. (T3929)
 
 (en) GpgOL: The context menu of crypto mails now has the option to
      directly print the decrypted content. (T3762)
@@ -74,9 +74,10 @@ Compendium EN:  3.0.0
 Noteworthy changes in Version 3.1.0 (2018-04-13)
 ------------------------------------------------
 
-(en) Kleopatra: now offers a text editor for text based crypto. (T3743)
+(en) Kleopatra: Now offers a text editor for text based cryptography. (T3743)
 
-(de) Kleopatra: bietet nun einen Text Editor für Text basierte Krypto. (T3743)
+(de) Kleopatra: Bietet nun einen Text-Editor für Text-basierte Kryptografie.
+     (T3743)
 
 (en) Kleopatra: The extended certificate selection now offers import. (T3744)
 
@@ -132,11 +133,11 @@ Noteworthy changes in Version 3.1.0 (2018-04-13)
      Verschlüsseln unterstützt. Dies hilft bei Kompatibilitätsproblemen
      wie T3545.
 
-(en) GpgOL: Another problem which could cause decrypted mails not to
-     be displayed is fixed. (T3789)
+(en) GpgOL: Another issue waghs fixed, which could cause decrypted mails
+     not to be displayed. (T3789)
 
-(de) GpgOL: Ein weiteres Problem das dazu führen konnte, dass entschlüsselte
-     E-Mails nicht angezeigt wurden, ist behoben. (T3789)
+(de) GpgOL: Ein weiteres Problem wurde behoben, das dazu führen konnte,
+     dass entschlüsselte E-Mails nicht angezeigt wurden. (T3789)
 
 (en) GpgOL: Outlook should no longer loose focus after encrypting a mail.
      (T3732)
@@ -162,8 +163,8 @@ Noteworthy changes in Version 3.1.0 (2018-04-13)
 (en) GpgOL: A problem that could cause mails to be stuck in the outbox has
      been fixed. (T3812)
 
-(de) GpgOL: Ein Problem, das dazu führen konnte, dass E-Mails im Postausgang
-     verblieben wurde behoben. (T3812)
+(de) GpgOL: Ein Problem wurde behoben, das dazu führen konnte, dass E-Mails
+     im Postausgang verblieben. (T3812)
 
 (en) GpgOL: Now trys harder to fixup broken PGP/Inline (no-MIME) Messages.
      (T3821)
@@ -174,8 +175,8 @@ Noteworthy changes in Version 3.1.0 (2018-04-13)
 (en) GpgOL: Forwarding of encrypted / signed mails with attachments
      is now supported. (T3836)
 
-(de) GpgOL: Das weiterleiten von verschlüsselten / signieren Mails mit
-     Anhängen wird nun unterstützt. (T3836)
+(de) GpgOL: Das Weiterleiten von verschlüsselten und / oder signierten Mails
+     mit Anhängen wird nun unterstützt. (T3836)
 
 (en) GpgOL: S/MIME is supported again with the last version of Exchange
      2016. (T3853)
@@ -183,21 +184,21 @@ Noteworthy changes in Version 3.1.0 (2018-04-13)
 (de) GpgOL: S/MIME wird nun auch wieder für die aktuellste Exchange 2016
      Version unterstützt. (T3853)
 
-(en) GpgOL: Re-Sending crypto mails is now supported. (T3884)
+(en) GpgOL: Re-sending crypto mails is now supported. (T3884)
 
-(de) GpgOL: Das erneute senden von Krypto Mails wird nun unterstützt. (T3884)
+(de) GpgOL: Das erneute Senden von Krypto-Mails wird nun unterstützt. (T3884)
 
-(en) GpgOL: A problem that could lead to strange numbering of attachments
-     was resolved. (T3886)
+(en) GpgOL: An issue was resolved, which could lead to strange numbering
+     of attachments. (T3886)
 
-(de) GpgOL: Ein Problem das dazu führen konnte das Anhänge merkwürdig
-     nummeriert wurden ist behoben. (T3886)
+(de) GpgOL: Ein Problem wurde behoben, das dazu führen konnte, dass Anhänge
+     merkwürdig nummeriert wurden. (T3886)
 
 (en) GnuPG: A rare problem that could lead to "General Error" messages
      after a fresh install of Gpg4win has been fixed. (T3839)
 
-(de) GnuPG: Ein seltenes Problem das nach einer frischen installation
-     zu "Allgemeiner Fehler" meldungen führen konnte ist behoben. (T3839)
+(de) GnuPG: Ein seltenes Problem wurde behoben, das nach einer Neu-Installation
+     zu "Allgemeiner Fehler"-Meldungen führen konnte. (T3839)
 
 (en) GnuPG: Updated to version 2.2.6.
      (See: https://lists.gnupg.org/pipermail/gnupg-announce/2018q2/000421.html )
