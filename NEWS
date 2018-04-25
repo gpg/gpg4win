@@ -6,39 +6,39 @@
 Noteworthy changes in Version 3.1.1 (unreleased)
 ------------------------------------------------
 
-(en) General: A problem that could lead to "Invalid crypto engine"
+(en) General: An issue was fixed, which could lead to "Invalid crypto engine"
      errors has been fixed. (T3919)
 
-(de) Allgemein: Ein Problem das zu "Invalid crypto engine" Fehlern
-     führen konnte wurde behoben. (T3919)
+(de) Allgemein: Ein Problem wurde behoben, das zu "Invalid crypto engine"-Fehlern
+     führen konnte. (T3919)
 
 (en) S/MIME: A problem that could prevent successful CRL checks
      has been fixed. (T3923)
 
-(de) S/MIME: Ein Problem das dazu führen konnte das CRL Prüfungen
-     fehlschlugen wurde behoben. (T3923)
+(de) S/MIME: Ein Problem wurde behoben, das dazu führen konnte das CRL-Prüfungen
+     fehlschlugen. (T3923)
 
-(en) S/MIME: OCSP Certificate checks can now be combined with
+(en) S/MIME: OCSP certificate checks can now be combined with
      CRL checks.
 
-(de) S/MIME: OCSP Prüfungen können nun mit CRL Prüfungen kombiniert
+(de) S/MIME: OCSP-Prüfungen können nun mit CRL-Prüfungen kombiniert
      werden.
 
 (en) Kleopatra: Activating a profile no longer requires a restart
      of the affected components.
 
-(de) Kleopatra: Das aktivieren eines Konfigurationsprofils benötigt
-     nicht länger einen Neustart der betroffenen Komponenten.
+(de) Kleopatra: Das Aktivieren eines Konfigurationsprofils benötigt
+     nicht mehr einen Neustart der betroffenen Komponenten.
 
 (en) GpgOL: Improved error handling for encryption and decryption.
 
-(de) GpgOL: Verbesserte Fehlerbehandlung beim verschlüsseln und
-     entschlüsseln.
+(de) GpgOL: Verbesserte Fehlerbehandlung beim Verschlüsseln und
+     Entschlüsseln.
 
 (en) GpgOL: A possible crash when editing recipients has been fixed.
      (T3931).
 
-(de) GpgOL: Ein möglicher Absturz beim editieren der
+(de) GpgOL: Ein möglicher Absturz beim Editieren der
      Empfänger wurde behoben. (T3931)
 
 (en) GpgOL: The automatic recipient resolution has been improved.
@@ -46,13 +46,13 @@ Noteworthy changes in Version 3.1.1 (unreleased)
      (T3929)
 
 (de) GpgOL: Die automatische Empfänger-Auflösung wurde verbessert.
-     Unter anderen wird jetzt auch S/MIME als Rückfalllösung unterstützt.
+     Unter anderen wird jetzt auch S/MIME als Rückfall-Lösung unterstützt.
      (T3929)
 
 (en) GpgOL: The context menu of crypto mails now has the option to
      directly print the decrypted content. (T3762)
 
-(de) GpgOL: Das Kontextmenü von Krypto Mails bietet nun eine Option
+(de) GpgOL: Das Kontextmenü von Krypto-Mails bietet nun eine Option
      den entschlüsselten Inhalt direkt zu drucken. (T3762)
 
 (en) GnuPG: Update to version 2.2.7
