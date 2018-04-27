@@ -12,7 +12,7 @@ Noteworthy changes in Version 3.1.1 (unreleased)
 (de) Allgemein: Ein Problem wurde behoben, das zu
      "Invalid crypto engine"-Fehlern führen konnte. (T3919)
 
-(en) S/MIME: A problem was fixed, which could prevent successful CRL
+(en) S/MIME: An issue was fixed, which could prevent successful CRL
      checks. (T3923)
 
 (de) S/MIME: Ein Problem wurde behoben, das dazu führen konnte das
@@ -36,7 +36,7 @@ Noteworthy changes in Version 3.1.1 (unreleased)
      Entschlüsseln.
 
 (en) GpgOL: A possible crash when editing recipients has been fixed.
-     (T3931).
+     (T3931)
 
 (de) GpgOL: Ein möglicher Absturz beim Editieren der Empfänger wurde
      behoben. (T3931)
@@ -74,12 +74,14 @@ Compendium EN:  3.0.0
 Noteworthy changes in Version 3.1.0 (2018-04-13)
 ------------------------------------------------
 
-(en) Kleopatra: Now offers a text editor for text based cryptography. (T3743)
+(en) Kleopatra: Now offers a text editor for text based cryptography.
+     (T3743)
 
 (de) Kleopatra: Bietet nun einen Text-Editor für Text-basierte Kryptografie.
      (T3743)
 
-(en) Kleopatra: The extended certificate selection now offers import. (T3744)
+(en) Kleopatra: The extended certificate selection now offers import.
+     (T3744)
 
 (de) Kleopatra: Die erweitere Zertifikatsauswahl bietet nun Importieren an.
      (T3744)
@@ -133,7 +135,7 @@ Noteworthy changes in Version 3.1.0 (2018-04-13)
      Verschlüsseln unterstützt. Dies hilft bei Kompatibilitätsproblemen
      wie T3545.
 
-(en) GpgOL: Another issue waghs fixed, which could cause decrypted mails
+(en) GpgOL: Another issue was fixed, which could cause decrypted mails
      not to be displayed. (T3789)
 
 (de) GpgOL: Ein weiteres Problem wurde behoben, das dazu führen konnte,
