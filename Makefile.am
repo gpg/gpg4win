@@ -47,7 +47,8 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         patches/extra-cmake-modules/0001-Use-BIN_INSTALL_DIR-data-for-DATAROOTDIR-on-Windows.patch \
         patches/gpa-0.9.10/0001-w32-Make-location-of-locale-dir-more-flexible.patch \
         patches/libgpg-error-1.29/0001-doc-Fix-yat2m-build-for-cross-compilation.patch \
-        patches/gpgol-2.1.1/0001-Disable-OL-2013-2016-resiliency-for-us.patch
+        patches/gpgol-2.1.1/0001-Disable-OL-2013-2016-resiliency-for-us.patch \
+        patches/gpgol-2.1.1/0001-Launch-Kleopatra-config-dialog-with-parent.patch
 
 
 copy-news:
