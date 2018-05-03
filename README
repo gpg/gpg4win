@@ -45,7 +45,7 @@ need the dependencies mentioned in src/README-msi.txt
 To satisfy all needs of configure at least the following packages need
 to be installed:
 
-    build-essential autoconf automake mingw32 mingw-w64-i686-dev \
+    build-essential autoconf automake mingw-w64 mingw-w64-i686-dev \
     mingw-w64-x86-64-dev nsis stow unzip imagemagick texlive \
     latex-xcolor libglib2.0-dev gettext docbook-utils ghostscript \
     texinfo libgdk-pixbuf2.0-dev texlive-latex-extra libqt4-dev-bin \
