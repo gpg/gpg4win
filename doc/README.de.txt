@@ -64,73 +64,37 @@ Die integrierten Gpg4win-Komponenten in Version !VERSION! sind:
 Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 -----------------------------------------
 
-- Kleopatra: bietet nun einen Text Editor für Text basierte Krypto. (T3743)
+- Allgemein: Ein Problem wurde behoben, das zu
+  "Invalid crypto engine"-Fehlern führen konnte. (T3919)
 
-- Kleopatra: Die erweitere Zertifikatsauswahl bietet nun Importieren an.
-  (T3744)
+- S/MIME: Ein Problem wurde behoben, das dazu führen konnte das
+  CRL-Prüfungen fehlschlugen. (T3923)
 
-- Kleopatra: Ein Crash beim Verifizieren einer separaten Signatur wurde
-  behoben. (T3761)
+- S/MIME: OCSP-Prüfungen können nun mit CRL-Prüfungen kombiniert
+  werden.
 
-- Kleopatra: Die erweiterte Schlüsselgenerierung bietet nun Curve 25519 an.
-  (T3826)
+- S/MIME: Die Zertifikatssuche auf LDAP Servern funktiniert wieder.
+  (T3937)
 
-- Kleopatra: Die Anzeige der Zertifikatsdetails wurde verbessert.
+- Kleopatra: Das Aktivieren eines Konfigurationsprofils benötigt
+  nicht mehr einen Neustart der betroffenen Komponenten.
 
-- Kleopatra: Ein Problem beim Entschlüsseln / Verifizieren mehrerer Dateien
-  zugleich wurde behoben. (KDE-Bug: 391222)
+- GpgOL: Verbesserte Fehlerbehandlung beim Verschlüsseln und
+  Entschlüsseln.
 
-- Kleopatra: Mehrere Probleme wurden behoben, die auftraten, wenn das
-  Appdata Verzeichnis auf einen UNC Pfad gelegt wurde. (T3818)
+- GpgOL: Ein möglicher Absturz beim Editieren der Empfänger wurde
+  behoben. (T3931)
 
-- Kleopatra: Verschiedene kleinere Verbesserungen.
-  (T3845 T3846 T3776 T3723 T3849 T3850 T3865 T3868)
+- GpgOL: Die automatische Empfänger-Auflösung wurde verbessert.
+  Unter anderen wird jetzt auch S/MIME als Rückfall-Lösung
+  unterstützt. (T3929)
 
-- GpgOL: Kryptographische Funktionen werden nun direkt durch GpgOL
-  aufgerufen, ohne Kleopatra zu verwenden. Dies behebt eine Reihe
-  von Problemen deren Ursache in der Kommunikation zwischen Kleopatra und
-  GpgOL lag. (T3509)
+- GpgOL: Das Kontextmenü von Krypto-Mails bietet nun eine Option
+  den entschlüsselten Inhalt direkt zu drucken. (T3762)
 
-- GpgOL: PGP/Inline (i.e. non-MIME) wird nun für das Signieren und
-  Verschlüsseln unterstützt. Dies hilft bei Kompatibilitätsproblemen
-  wie T3545.
+- GnuPG: Auf Version 2.2.7 aktualisiert.
+  (Siehe: https://lists.gnupg.org/pipermail/gnupg-announce/2018q2/000424.html )
 
-- GpgOL: Ein weiteres Problem das dazu führen konnte, dass entschlüsselte
-  E-Mails nicht angezeigt wurden, ist behoben. (T3789)
-
-- GpgOL: Outlook sollte nicht länger den Fokus verlieren, nachdem eine
-  E-Mail verschlüsselt wurde. (T3732)
-
-- GpgOL: Grundlegende Unterstützung für das "Web Key Publishing" wurde
-  hinzugefügt. (T3785)
-
-- GpgOL: Weitere Mail-Typen werden beim nun beim Lesen unterstützt.
-  (T3802 T3882)
-
-- GpgOL: Die Handhabung von Exchange Mail-Adressen wurde verbessert. (T3802)
-
-- GpgOL: Ein Problem, das dazu führen konnte, dass E-Mails im Postausgang
-  verblieben wurde behoben. (T3812)
-
-- GpgOL: Es wird nun stärker versucht auch kaputte PGP/Inline (non-MIME)
-  Nachrichten zu verarbeiten. (T3821)
-
-- GpgOL: Das weiterleiten von verschlüsselten / signieren Mails mit
-  Anhängen wird nun unterstützt. (T3836)
-
-- GpgOL: S/MIME wird nun auch wieder für die aktuellste Exchange 2016
-  Version unterstützt. (T3853)
-
-- GpgOL: Das erneute senden von Krypto Mails wird nun unterstützt. (T3884)
-
-- GpgOL: Ein Problem das dazu führen konnte das Anhänge merkwürdig
-  nummeriert wurden ist behoben. (T3886)
-
-- GnuPG: Ein seltenes Problem das nach einer frischen installation
-  zu "Allgemeiner Fehler" meldungen führen konnte ist behoben. (T3839)
-
-- GnuPG: Auf Version 2.2.6 aktualisiert.
-  (Siehe: https://lists.gnupg.org/pipermail/gnupg-announce/2018q2/000421.html )
 
 3. Anmerkungen
 ==============

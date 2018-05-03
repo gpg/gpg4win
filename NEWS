@@ -24,6 +24,11 @@ Noteworthy changes in Version 3.1.1 (unreleased)
 (de) S/MIME: OCSP-Prüfungen können nun mit CRL-Prüfungen kombiniert
      werden.
 
+(en) S/MIME: Certificate search on LDAP Servers works again. (T3937)
+
+(de) S/MIME: Die Zertifikatssuche auf LDAP Servern funktiniert wieder.
+     (T3937)
+
 (en) Kleopatra: Activating a profile no longer requires a restart
      of the affected components.
 
@@ -56,14 +61,14 @@ Noteworthy changes in Version 3.1.1 (unreleased)
      den entschlüsselten Inhalt direkt zu drucken. (T3762)
 
 (en) GnuPG: Update to version 2.2.7
-     (TODO: Release link when released.)
+     (See: https://lists.gnupg.org/pipermail/gnupg-announce/2018q2/000424.html )
 
 (de) GnuPG: Auf Version 2.2.7 aktualisiert.
-     (TODO: Release link)
+     (Siehe: https://lists.gnupg.org/pipermail/gnupg-announce/2018q2/000424.html )
 
 ~~~~~~~~~~~~~~~
 GnuPG:          2.2.7
-Kleopatra:      3.1.0
+Kleopatra:      3.1.1
 GPA:            0.9.10
 GpgOL:          2.1.1
 GpgEX:          1.0.6
