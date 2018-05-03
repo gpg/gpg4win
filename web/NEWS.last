@@ -3,6 +3,80 @@
 # The version number given below are for the standard installers as
 # distributed by www.gpg4win.org.+
 
+Noteworthy changes in Version 3.1.1 (2018-05-03)
+------------------------------------------------
+
+(en) General: An issue was fixed, which could lead to
+     "Invalid crypto engine" errors. (T3919)
+
+(de) Allgemein: Ein Problem wurde behoben, das zu
+     "Invalid crypto engine"-Fehlern führen konnte. (T3919)
+
+(en) S/MIME: An issue was fixed, which could prevent successful CRL
+     checks. (T3923)
+
+(de) S/MIME: Ein Problem wurde behoben, das dazu führen konnte das
+     CRL-Prüfungen fehlschlugen. (T3923)
+
+(en) S/MIME: OCSP certificate checks can now be combined with CRL
+     checks.
+
+(de) S/MIME: OCSP-Prüfungen können nun mit CRL-Prüfungen kombiniert
+     werden.
+
+(en) S/MIME: Certificate search on LDAP Servers works again. (T3937)
+
+(de) S/MIME: Die Zertifikatssuche auf LDAP Servern funktiniert wieder.
+     (T3937)
+
+(en) Kleopatra: Activating a profile no longer requires a restart
+     of the affected components.
+
+(de) Kleopatra: Das Aktivieren eines Konfigurationsprofils benötigt
+     nicht mehr einen Neustart der betroffenen Komponenten.
+
+(en) GpgOL: Improved error handling for encryption and decryption.
+
+(de) GpgOL: Verbesserte Fehlerbehandlung beim Verschlüsseln und
+     Entschlüsseln.
+
+(en) GpgOL: A possible crash when editing recipients has been fixed.
+     (T3931)
+
+(de) GpgOL: Ein möglicher Absturz beim Editieren der Empfänger wurde
+     behoben. (T3931)
+
+(en) GpgOL: The automatic recipient resolution has been improved.
+     Among other things it now properly handles S/MIME as a fallback.
+     (T3929)
+
+(de) GpgOL: Die automatische Empfänger-Auflösung wurde verbessert.
+     Unter anderen wird jetzt auch S/MIME als Rückfall-Lösung
+     unterstützt. (T3929)
+
+(en) GpgOL: The context menu of crypto mails now has the option to
+     directly print the decrypted content. (T3762)
+
+(de) GpgOL: Das Kontextmenü von Krypto-Mails bietet nun eine Option
+     den entschlüsselten Inhalt direkt zu drucken. (T3762)
+
+(en) GnuPG: Update to version 2.2.7
+     (See: https://lists.gnupg.org/pipermail/gnupg-announce/2018q2/000424.html )
+
+(de) GnuPG: Auf Version 2.2.7 aktualisiert.
+     (Siehe: https://lists.gnupg.org/pipermail/gnupg-announce/2018q2/000424.html )
+
+~~~~~~~~~~~~~~~
+GnuPG:          2.2.7
+Kleopatra:      3.1.1
+GPA:            0.9.10
+GpgOL:          2.1.1
+GpgEX:          1.0.6
+Kompendium DE:  4.0.1
+Compendium EN:  3.0.0
+~~~~~~~~~~~~~~~
+
+
 Noteworthy changes in Version 3.1.0 (2018-04-13)
 ------------------------------------------------
 
