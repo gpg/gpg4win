@@ -441,8 +441,6 @@ Gpg4win includes the following programs:
        eXtension|see{GpgEX}}\index{GpgEX}\\ is an extension for
        Windows Explorer\index{Windows-Explorer} which can be used to
        sign and encrypt files using the context menu.
-    \item \textbf{Claws Mail}\index{Claws Mail}\\ is a
-        full \Email{} program that offers very good support for GnuPG.
 \end{itemize}
 
 Using the GnuPG (GNU Privacy Guard) encryption program,
@@ -5500,7 +5498,7 @@ Currently, an integration of GnuPG is offered for the following
 \item[Outlook as of Version 2003] with GpgOL. GpgOL is a part of the
     Gpg4win package. \index{Outlook}
 
-\item[Claws Mail:]\index{Claws Mail} This \Email{} program is part of
+\item[Claws Mail:]\index{Claws Mail} This \Email{} program is realated to
     the Gpg4win package, and can be optionally installed. Such an
     installation already configures the program extension for the use
     of PGP/MIME and S/MIME. This extension however does not use
@@ -5576,26 +5574,14 @@ This is an example of the contents in a control file which displays
   inst_gpgex = true
   inst_kleopatra = true
   inst_gpa = true
-  inst_claws_mail = false
   inst_compendium = true
 
-  ; The locations at which linkages are to be prepared.
+  ; Create Desktop shortcuts
+  inst_desktop = true
+
+  ; Create Start Menu entries
   inst_start_menu = true
-  inst_desktop = false
-  inst_quick_launch_bar = false
 
-  ; In contrast to the other options, this option overwrites
-  ; the user's settings in the installation assistant.
-  inst_start_menu_folder = Gpg4win
-
-  ; Standard configuration files.
-  gpg.conf = D:\config\gpg-site.conf
-  gpg-agent.conf = D:\config\gpg-agent-site.conf
-  trustlist.txt = D:\config\trustlist-site.txt
-  dirmngr.conf = D:\config\dirmngr-site.conf
-  dirmngr_ldapserver.conf = D:\config\dirmngr_ldapserver-site.conf
-  scdaemon.conf = D:\config\scdaemon-site.txt
-  gpa.conf = D:\config\gpa-site.conf
 \end{verbatim}
 \T\ifthenelse{\boolean{DIN-A5}}{\normalsize}{}
 

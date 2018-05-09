@@ -478,8 +478,6 @@ Gpg4win umfasst in Version 2 die folgenden Programme:
        eXtension|see{GpgEX}}\index{GpgEX}\\ ist eine Erweiterung für den
        Windows-Explorer\index{Windows-Explorer}, mit der man Dateien
        über das Kontextmenü signieren bzw.  verschlüsseln kann.
-    \item \textbf{Claws Mail}\index{Claws Mail}\\ ist ein vollständiges
-        \Email{}-Programm mit sehr guter Unterstützung für GnuPG.
 \end{itemize}
 
 Mit dem Verschlüsselungsprogramm GnuPG (GNU Privacy Guard) kann
@@ -5304,9 +5302,9 @@ Eine Integration von GnuPG wird derzeit für folgende
 \item[Outlook ab Version 2003] mit GpgOL. GpgOL ist Bestandteil des
     Gpg4win-Pakets. \index{Outlook}
 
-\item[Claws Mail:]\index{Claws Mail} Dieses \Email{}-Programm wird im Gpg4win-Paket
-    mitgeliefert und kann optional installiert werden.  Eine solche
-    Installation konfiguriert bereits die Programmerweiterung für die
+\item[Claws Mail:]\index{Claws Mail} Dieses \Email{}-Programm ist
+    verwandt mit dem Gpg4win-Paket und kann optional installiert werden.
+    Eine solche Installation konfiguriert bereits die Programmerweiterung für die
     Verwendung von PGP/MIME und S/MIME. Diese Erweiterung verwendet
     jedoch nicht Kleopatra und bietet daher derzeit nicht denselben
     Komfort, wie die Outlook-Erweiterung GpgOL.
@@ -5382,26 +5380,12 @@ Hier ist ein Beispiel für den Inhalt einer Steuerungsdatei, das
   inst_gpgex = true
   inst_kleopatra = true
   inst_gpa = true
-  inst_claws_mail = false
   inst_compendium = true
 
   ; Die Stellen, an denen Verknüpfungen erzeugt werden sollen.
   inst_start_menu = true
-  inst_desktop = false
-  inst_quick_launch_bar = false
+  inst_desktop = true
 
-  ; Im Gegensatz zu den anderen Optionen überschreibt diese Option
-  ; die Einstellung des Benutzers im Installationsassistenten.
-  inst_start_menu_folder = Gpg4win
-
-  ; Standard-Konfigurationsdateien.
-  gpg.conf = D:\config\gpg-site.conf
-  gpg-agent.conf = D:\config\gpg-agent-site.conf
-  trustlist.txt = D:\config\trustlist-site.txt
-  dirmngr.conf = D:\config\dirmngr-site.conf
-  dirmngr_ldapserver.conf = D:\config\dirmngr_ldapserver-site.conf
-  scdaemon.conf = D:\config\scdaemon-site.txt
-  gpa.conf = D:\config\gpa-site.conf
 \end{verbatim}
 \T\ifthenelse{\boolean{DIN-A5}}{\normalsize}{}
 
