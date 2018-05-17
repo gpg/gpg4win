@@ -40,7 +40,7 @@
 -->
    <div class="h_text_beta">
    <p><span class="heading">News</span></p>
-   <small>2018-05-16</small><br>
+   <small>2018-05-17</small><br>
    <span class="serif_word"><img src="img/bulletin.png" alt"" />
      m4_ifelse(LANG_DE, `1', `
       <a href="statement-efail.html">Stellungnahme zu Efail (en)
