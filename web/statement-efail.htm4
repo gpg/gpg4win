@@ -10,6 +10,8 @@ m4_define(`MAIN', `statement-efail')
 
 PAGE_START
 
+m4_undefine(`EN')
+
 <div id="intro">
 <h1>Statement on Efail research</h1>
 (2018-05-17)
