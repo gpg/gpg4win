@@ -24,7 +24,7 @@ m4_undefine(`EN')
 a number of problems in mail applications on <a href="https://efail.de/">efail.de</a>.
 Most mail clients supporting
 S/MIME are affected as well as a few clients supporting OpenPGP.</p>
-<p>They have tested OpenPGP support with GpgOL (our Outlook-Addin)
+<p>They have tested OpenPGP support with GpgOL (our Outlook Add-in)
 and it behaved well for supported versions of Outlook.</p>
 <p>The bottom line is, that you can keep using Gpg4win while:</p>
 <ul><li>You pay extra attention to the ability of your S/MIME recipients to handle
@@ -46,7 +46,7 @@ supporting S/MIME are affected.</p>
 
 
 <h3>"Direct exfiltration" in other clients</h3>
-<p>Two major email clients, Apple Mail and Thunderbird/Eigmail, have been found
+<p>Two major email clients, Apple Mail and Thunderbird/Enigmail, have been found
 to be vulnerable to an attack called "direct exfiltration".
 <strong>Gpg4win's Outlook-Plugin</strong> and for example the
 Free Software ("Open Source") mailers Claws, Evolution, KMail, K9-Mail,
@@ -137,7 +137,7 @@ tests demonstrated important weaknesses in implementations
 and the need to update related standards, there is some concern in the
 Gpg4win team about how the findings got reported in some media.</p>
 <p>The broken email clients allowing "direct extraction" are worrisome
-and may need broad media coverage to use reach their users, it would
+and may need broad media coverage to use reach their users, but it would
 have been better to wait with reporting until better fixes and instructions
 were available. It is a classic situation that is happening several times
 during the year that some implementations are found to be defect and updates
