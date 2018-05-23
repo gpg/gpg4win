@@ -507,7 +507,7 @@ LangString T_FoundOldSeeManual ${LANG_ENGLISH} \
 
 #---------
 LangString T_FoundOldGnuPP ${LANG_ENGLISH} \
-     "An old installation of GnuPP (GNU Privacy Project) has been been \
+     "An old installation of GnuPP (GNU Privacy Project) has been \
       detected.  That software is not maintained anymore and thus should \
       be removed. $\r$\n\
           $\r$\n\
@@ -516,14 +516,14 @@ LangString T_FoundOldGnuPP ${LANG_ENGLISH} \
 
 #---------
 LangString T_FoundOldGnuPT ${LANG_ENGLISH} \
-     "An installation of GnuPT has been been detected.  This may cause \
+     "An installation of GnuPT has been detected.  This may cause \
       problems when used along with Gpg4win. $\r$\n\
           $\r$\n\
       Do you want to continue installing Gpg4win?"
 
 #---------
 LangString T_FoundOldWinPTSF ${LANG_ENGLISH} \
-     "An old installation of the Sourceforge hosted WinPT has been been \
+     "An old installation of the Sourceforge hosted WinPT has been \
       detected.  That software is not maintained anymore and should \
       be removed. $\r$\n\
           $\r$\n\
@@ -533,7 +533,7 @@ LangString T_FoundOldWinPTSF ${LANG_ENGLISH} \
 
 #--------
 LangString T_FoundOldGnuPack ${LANG_ENGLISH} \
-     "An installation of GnuPG-Pack has been been detected. You need to \
+     "An installation of GnuPG-Pack has been detected. You need to \
       uninstall it before you can continue with Gpg4win installation. $\r$\n\
         $\r$\n\
       The installation will be aborted now!"

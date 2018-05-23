@@ -97,7 +97,7 @@ ${MementoSectionEnd}
 
 
 LangString T_GpgOL_RegFailed ${LANG_ENGLISH} \
-   "Warning: Registration of the GpgOL Outlook pluginfailed."
+   "Warning: Registration of the GpgOL Outlook plugin failed."
 
 LangString DESC_SEC_gpgol ${LANG_ENGLISH} \
    "GnuPG for Outlook"
