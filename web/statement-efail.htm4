@@ -58,7 +58,7 @@ tricks the email client into sending decrypted plaintext
 to a webserver of choice, when fetching the references.</p>
 <p>As this attack works on the sender and all recipients of an encrypted email,
 all the used email clients have to be safe for your communication to be safe.</p>
-<p><strong>Advise: Make sure to only send encrypted emails to people that
+<p><strong><p>Advice:</p> Make sure to only send encrypted emails to people that
 are using clients in a safe way. Put special attention to the vulnerable
 clients listed in the bottom of efail.de until fixed versions are widely
 available.</strong>
@@ -67,12 +67,12 @@ responsible for you, e.g.
 <a href="https://cert-bund.de/advisoryshort/CB-K18-0673">CB-K18-0673 (Germany)</a>
 and their <a href="https://www.bsi.bund.de/EN/Service/Information/article/efail_vulnerabilities_14052018.html">"Efail" vulnerabilities - What you should know now</a>
 or <a href="https://www.kb.cert.org/vuls/id/122919">VU#122919 (USA)</a>.</p>
-<p>Note:</p>
-<ul><li>Each communication partner already had the responsibility
-  to keep contents coming from you confidential on an organisational and
-  technical level. Right now some may just not be informed about the version
-  of their product being vulnerable to this specific attack.
-</li></ul>
+<p><b>Note:</b></p>
+   Each communication partner already had the responsibility
+   to keep contents coming from you confidential on an organisational and
+   technical level. Right now some may just not be informed about the version
+   of their product being vulnerable to this specific attack.
+
 
 <h3>"crypto gadget" attack</h3>
 <p>If an email is only encrypted and not signed, an attacker can
