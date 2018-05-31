@@ -17,7 +17,7 @@ SUBDIRS =
 # Installation configuration
 INSTALL_DIR = /tmp/gpg4win-www
 ADD_INST_TYPES = *.css *.png
-ADD_INST_DIRS = pix img
+ADD_INST_DIRS = pix img .well-known
 
 USER=intevation
 
