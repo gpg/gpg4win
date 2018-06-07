@@ -1,0 +1,117 @@
+m4_dnl                                                            -*-html-*-
+m4_include(`template.m4')
+m4_dnl $Id$
+
+m4_define(`DE')
+m4_define(`EN_FILE', `privacy-policy.html')
+
+m4_define(`TITLE', `Datenschutzerklärung')
+m4_define(`MAIN', `privacy-policy')
+
+PAGE_START
+
+<div id="main">
+<h2>Datenschutzerklärung</h2>
+<p>
+Wir wissen, dass Ihnen der sorgfältige Umgang mit Ihren persönlichen Informationen wichtig ist. Deshalb schätzen
+wir Ihr Vertrauen, dass die Unternehmen Intevation GmbH, Osnabrück und die g10 Code GmbH, Erkrath, gewissenhaft
+mit diesen Informationen umgeht.
+Ihre personenbezogenen Daten werden vertraulich und entsprechend den gesetzlichen Bestimmungen und dieser
+Datenschutzerklärung verwendet.
+
+Die meisten Seiten unserer Webseite können ohne Angabe personenbezogener Daten besucht werden. Wenn auf unseren
+Seiten personenbezogene Daten erhoben werden (z. B. Kontaktformular), geschieht dies, wenn möglich, auf freiwilliger
+Basis. Ihre Daten werden ohne Ihre Einwilligung nicht an Dritte weitergegeben. 
+</p>
+
+
+<h3>Wie sicher sind Informationen über mich?</h3>
+
+<ul>
+  <li>
+    Um die Sicherheit Ihrer Informationen zu schützen, hat nur ein ausgewählter Kreis von Mitarbeitern die
+    Berechtigung, die zur Verfügung gestellten Daten zu verwenden.
+  </li>
+  <li>
+    Wir unterhalten physische, elektronische und verfahrenstechnische Sicherheitsmaßnahmen im Zusammenhang mit der
+    Erhebung, dem Speichern und der Offenlegung von persönlichen Informationen unserer Kunden.
+  </li>
+</ul>
+
+<h3>Gespeicherte Serverdaten</h3>
+<p>
+Wenn Sie diese Webseite besuchen, werden vom Webserver automatisch bestimmte Daten erhoben und in Logdateien
+gespeichert. Dabei handelt es sich um übliche Verbindungsinformationen, in etwa:
+</p>
+
+<ul>
+  <li>angefragte Webseite</li>
+  <li>Einstiegswebseite (die Seite, über der Sie unsere Webseite zuerst aufgerufen haben)</li>
+  <li>Datum und Uhrzeit der Anfrage</li>
+  <li>übertragende Datenmenge</li>
+  <li>User-Agent (Browsertyp und -version)</li>
+</ul>
+
+<p>
+Es erfolgt keine Kombination dieser Daten mit anderen Datenquellen. Wenn eine rechtswidrige Nutzung bekannt wird, werden
+diese Daten ggf. nachträglich überprüft. Diese Daten sind notwendig für den Betrieb unserer Webseiten; die
+Rechtsgrundlage für ihre Erhebung ist Art. 6 I lit. f DSGVO.
+</p>
+
+<h3>Cookies</h3>
+<p>
+Wir setzen keine Tracking- oder Analyse-Cookies ein, daher bitten wir Sie auf unseren Webseiten auch nicht um eine
+entsprechende Zustimmung. 
+</p>
+
+<h3>SSL- bzw. TLS-Verschlüsselung</h3>
+<p>Diese Seite nutzt aus Sicherheitsgründen und zum Schutz der Übertragung vertraulicher Inhalte, wie zum Beispiel
+Bestellungen oder Anfragen, die Sie an uns als Seitenbetreiber senden, eine SSL- bzw. TLS-Verschlüsselung. Eine
+verschlüsselte Verbindung erkennen Sie daran, dass die Adresszeile des Browsers von „http://“ auf „https://“ wechselt
+und an dem Schloss-Symbol in Ihrer Browserzeile. Wenn die SSL- bzw. TLS-Verschlüsselung aktiviert ist, können die Daten,
+die Sie an uns übermitteln, nicht von Dritten mitgelesen werden. </p>
+
+
+<h3>Auskunft, Löschung, Sperrung</h3>
+<p>
+Als Betroffener haben jederzeit das Recht auf kostenlose Auskunft über Ihre gespeicherten personenbezogenen Daten,
+deren Herkunft und Empfänger, und den Zweck der Verarbeitung Ihrer Daten. Es besteht ein Recht auf Berichtigung,
+Sperrung oder Löschung dieser Daten unter Beachtung eventuell bestehender gesetzlicher Aufbewahrungspflichten.
+Diesbezügliche Anfragen bitte an die im Impressum genannte Adresse richten.
+</p>
+
+
+<h3>Beschwerde</h3>
+<p>
+Sie haben das Recht auf Beschwerde bei einer Datenschutzaufsichtsbehörde, wenn Sie der Ansicht sind, dass unsere
+Verarbeitung Ihrer personenbezogenen Daten Ihre Rechte verletzt.
+</p>
+
+
+<h3>Datenschutzbeauftragter</h3>
+<p>Die Intevation GmbH hat mit Herrn Dr. Johannes Schröder einen Datenschutzbeauftragten (DSB) bestellt. Fragen zum
+Datenschutz richten Sie bitte an:
+<br>
+Postanschrift: DSB der Intevation GmbH, Neuer Graben 17, 49074 Osnabrück
+<br>
+Telefon: 05461-886299
+<br>
+Mail (bevorzugt): datenschutz@intevation.de</p>
+
+
+<h3>Spendenmöglichkeit</h3>
+<p>
+Wir bieten auf dieser Seite an, freiwillig für die Software zu spenden. Dazu integrieren wir auf unserer Website
+auch nützliche Dienste anderer Anbieter, die wir für sinnvoll halten. Sofern bei deren Nutzung Daten über Sie
+erhoben verarbeitet oder genutzt werden, geschieht dies nur, sofern Sie Daten selbst eingeben. Ansprechpartner
+hierfür („verantwortliche Stelle“) ist der jeweilige Anbieter. Für die Verwendung und Bearbeitung Ihrer Daten
+gilt die Datenschutzerklärung des jeweiligen Anbieters. Derzeit als externer Dienst eingebunden ist PayPal:
+<br>
+PayPal (Europe) S.à r.l. et Cie, S.C.A., 22-24 Boulevard Royal, L-2449 Luxemburg, ist verantwortliche Stelle.
+Informationen zum Datenschutz und auch zur möglichen Bonitätsprüfung seitens weiterer Dienstleister, finden Sie hier:
+<a href="https://www.paypal.com/de/webapps/mpp/ua/privacy-full?locale.x=de_DE"></a>
+</p>
+
+
+
+</div>

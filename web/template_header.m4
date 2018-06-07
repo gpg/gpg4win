@@ -52,6 +52,7 @@ m4_define(`RQ',`m4_changequote(<,>)m4_dnl`
      MENU(`system-requirements', `Systemvoraussetzungen', `System Requirements', `system-requirements', SUB, LANG_DE)
      MENU(`documentation', `Dokumentation', `Documentation', `documentation', SUB, LANG_DE)
      MENU(`screenshots', `Screenshots', `Screenshots', `screenshots', SUB, LANG_DE)
+     MENU(`privacy-policy', `Datenschutzerklärung', `Privacy Policy', `privacy-policy', SUB, LANG_DE)
      <li class="subcap"></li>
     </ul>
    </li>
@@ -107,6 +108,7 @@ m4_define(`RQ',`m4_changequote(<,>)m4_dnl`
      MENU(`system-requirements', `System Voraussetzungen', `System Requirements', `system-requirements', SUB, LANG_DE)
      MENU(`documentation', `Dokumentation', `Documentation', `documentation', SUB, LANG_DE)
      MENU(`screenshots', `Screenshots', `Screenshots', `screenshots', MAIN, LANG_DE)
+     MENU(`privacy-policy', `Datenschutzerklärung', `Privacy Policy', `privacy-policy', SUB, LANG_DE)
     </ul>
     <ul>
      <li><b>
