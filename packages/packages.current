@@ -298,15 +298,15 @@ chk 40d0a823c9329478063903192a1f82496083b277265904878f4bc09e0db7a4ef
 file libassuan/libassuan-2.5.1.tar.bz2
 chk  47f96c37b4f2aac289f0bc1bacfa8bd8b4b209a488d3d15e2229cb6cc9b26449
 
-# last changed: 2018-04-12
+# last changed: 2018-06-12
 # by: ah
-name gnupg-w32-2.2.7-20180502-bin.exe
-file binary/gnupg-w32-2.2.7_20180502.exe
-chk  2d7ffedb1737e4dbed7f89377c3273b5cc27ee0fd9c70a417bd602203fc419ee
+name gnupg-w32-2.2.8-20180608-bin.exe
+file binary/gnupg-w32-2.2.8_20180608.exe
+chk  21d4123d1455c925f8a570f94bc7e87a205edbff1ad78fabe8b7b5a3614b1aa2
 
-name gnupg-w32-2.2.7-20180502-src.tar.xz
-file binary/gnupg-w32-2.2.7_20180502.tar.xz
-chk  52683921c8e9576445f8f8fba6db71a52502229e47f2959f9cc346c3356adf07
+name gnupg-w32-2.2.8-20180608-src.tar.xz
+file binary/gnupg-w32-2.2.8_20180608.tar.xz
+chk  d161f600549aee47121b1f025c1431e445ba463455edfea6d15353dbd96d7cba
 
 # TODO back to stable
 # last changed: 2017-12-05
@@ -545,8 +545,8 @@ file pinentry/pinentry-1.1.1-beta5.tar.bz2
 chk 7bda3fef7d7f0f77dd4dfe11e3364c64f1e9646945afa995da8a5084ce59e101
 
 # by: ah
-file gpgme/gpgme-1.11.2-beta3.tar.bz2
-chk  e3b0fb23bc06f830933af631301c2b7d47b3286d4656e904b3240cfcfc83e459
+file gpgme/gpgme-1.11.2-beta58.tar.bz2
+chk  9013704e43fef501094c48bc083961ca58eb68b1bcfebeb73ec03fda787d849f
 
 # Libkleo
 # last changed: see package date.
