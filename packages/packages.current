@@ -552,18 +552,18 @@ chk  9013704e43fef501094c48bc083961ca58eb68b1bcfebeb73ec03fda787d849f
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah.
-file libkleo/libkleo-201805030829.tar.gz
-chk 0429768248ceaa9e3eb8b2da5c16f18ae8acfef6ff5aae7f07b2e24248d08809
+file libkleo/libkleo-201806121108.tar.gz
+chk 495187ac930cbff0bd11dc02455b41237c0923a2ca69e0ca921264830a0e90a1
 
 # KDE-L10n
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah with script kde-l10n.sh
-file kde-l10n/kde-l10n-201805030937-bin.tar.xz
-chk d9f9665bfd68003424d9ed8074b5ea4274fa4e3a9ee6c995ef81c62b96f463c0
+file kde-l10n/kde-l10n-201806121111-bin.tar.xz
+chk 9a08c9bd41d7fbcff50a9efc469b382d0e6721863e7e9d40b9b15a82efbf04e9
 
-file kde-l10n/kde-l10n-201805030937-src.tar.xz
-chk 62af6c8a9a37304723ed5c664472af107e8c5fed4a7a006cbe250d0c223202d8
+file kde-l10n/kde-l10n-201806121111-src.tar.xz
+chk a7a02001707e0206023d24a5c743545d89c7125aa79b54d221d032b97c5f0f73
 
 # Gpg4win-tools package (experimental)
 # last changed: see package date.
@@ -576,5 +576,5 @@ chk b57964460c7ca5f0d211e81ad222f316ce4ef0f7ccdb2929736071f7120bf88e
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah.
-file kleopatra/kleopatra-201805030828.tar.gz
-chk 8198b64936fa327391aa0f1aee39b6fb49cc205cf6f6272b7d0f3cb0b50c477d
+file kleopatra/kleopatra-201806121110.tar.gz
+chk f738b1d09f8c5d0037496049677e8a99f7c475731a34aa0e6ae0a899e4f48db2
