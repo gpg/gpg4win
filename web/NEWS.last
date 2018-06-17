@@ -3,6 +3,66 @@
 # The version number given below are for the standard installers as
 # distributed by www.gpg4win.org.+
 
+Noteworthy changes in Version 3.1.2 (2018-06-17)
+------------------------------------------------
+
+(en) GpgOL: Removed support for Outlook 2003 and 2007. (T3984)
+
+(de) GpgOL: Unterstützung für Outlook 2003 und 2007
+     wurde entfernt. (T3984)
+
+(en) GpgOL: Unsigned S/MIME mails are now treated more restrictive.
+     (T3986)
+
+(de) GpgOL: Unsignierte S/MIME Mails werden nun restriktiver behandelt.
+     (T3986)
+
+(en) GpgOL: Replies to unencrypted no-mime mails no longer only display
+     quoted contents. (T3964)
+
+(de) GpgOL: Antworten auf unverschlüsselte no-mime Mails zeigen nicht
+     länger nur das überprüfte Zitat an. (T3964)
+
+(en) GpgOL: Handling of special characters in no-mime mails has been
+     improved. (T3975)
+
+(de) GpgOL: Sonderzeichen in no-mime Mails werden nun besser behandelt.
+     (T3975)
+
+(en) GpgOL: Added dutch and ukrainian translations.
+
+(de) GpgOL: Niederländische und Ukrainische Übersetzungen
+     wurden hinzugefügt.
+
+(en) GpgOL: Additional crashes habe been fixed. (T3946)
+
+(de) GpgOL: Zusätzliche Absturzursachen wurden behoben. (T3946)
+
+(en) GpgOL: The resolution of ambigous recipients has been improved. (T3978)
+
+(de) GpgOL: Die Empfänger-Auflösung von mehrdeutigen Adressen
+     funktioniert nun besser. (T3978)
+
+(en) Kleopatra: Small usability improvements.
+
+(de) Kleopatra: Kleinere Verbesserungen der Benutzbarkeit.
+
+(en) GnuPG: Update to version 2.2.8 (CVE-2018-0495 CVE-2018-12020)
+     (See: https://lists.gnupg.org/pipermail/gnupg-announce/2018q2/000425.html )
+
+(de) GnuPG: Auf Version 2.2.8 aktualisiert. (CVE-2018-0495 CVE-2018-12020)
+     (Siehe: https://lists.gnupg.org/pipermail/gnupg-announce/2018q2/000425.html )
+
+~~~~~~~~~~~~~~~
+GnuPG:          2.2.8
+Kleopatra:      3.1.2
+GPA:            0.9.10
+GpgOL:          2.2.0
+GpgEX:          1.0.6
+Kompendium DE:  4.0.1
+Compendium EN:  3.0.0
+~~~~~~~~~~~~~~~
+
 Noteworthy changes in Version 3.1.1 (2018-05-03)
 ------------------------------------------------
 
