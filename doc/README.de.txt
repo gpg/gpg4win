@@ -46,8 +46,10 @@ nicht offiziell unterstützt.
 
 Das Outlook-Plugin GpgOL ist kompatibel mit Microsoft Outlook 2010, 2013 und
 2016 (sowohl 32 als auch 64bit) und unterstützt E-Mail Transport per SMTP/IMAP
-und MS Exchange Server (ab Version 2010). Für die alten Outlook-Versionen
-2003 und 2007 wird eine reduzierte Menge an Funktionen angeboten.
+und MS Exchange Server (ab Version 2010).
+
+Mit Gpg4win Version 3.1.2 wurde die Unterstützung für Outlook 2003 und 2007
+aus sicherheitsgründen entfernt.
 
 (Aktuellste Angaben auf https://www.gpg4win.de/system-requirements-de.html .)
 
@@ -129,35 +131,6 @@ Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 
     Sie können sie jedoch manuell in der gpg.conf setzen. Das neue
     Vertrauensmodell wird von GpgOL bereits unterstützt.
-
-- GpgOL für Outlook 2003 und 2007
-
-  Die Unterstützung von Outlook 2003 und 2007 ist veraltet
-  und wird in einer zukünftigen Version vollständig entfernt werden.
-
-  * Nur für Outlook 2003/2007:
-    Sie sollten unbedingt vor der Installation von GpgOL
-    Sicherheitskopien Ihrer alten verschlüsselten/signierten E-Mails
-    erstellen, z.B. in PST-Dateien!
-
-  * Nur für Outlook 2003/2007:
-    Senden von signierten oder verschlüsselten Nachrichten über ein
-    Exchange-basiertes Konto funktioniert nicht.
-    (Hinweis: Beim Verwenden von SMTP sollte das Senden
-     mit GpgOL funktionieren. Oder Sie nutzen GpgOL mit Outlook
-    2010 oder neuer.)
-
-  * Nur für Outlook 2003/2007:
-    Verschlüsselte E-Mails unverschlüsselt auf E-Mail-Server:
-    Es kann vorkommen, dass Teile von verschlüsselten E-Mails
-    in entschlüsselter/unverschlüsselter Form auf dem E-Mail-Server
-    (IMAP oder MAPI) zu liegen kommen, wenn man sie erstellt/liest.
-    Betroffen sind nur der Inhalt des Anzeigefensters von Outlook,
-    also der "E-Mail-Body". Anhänge sind nicht betroffen.
-    Schaltet man die Voransicht von Outlook ab, so
-    verringert sich die Wahrscheinlichkeit dafür deutlich,
-    aber es kann trotzdem noch passieren. (Wenn Ihnen das Sorge bereitet:
-    nutzen Sie GpgOl mit Outlook 2010 oder neuer.)
 
 
 4. Versionsgeschichte

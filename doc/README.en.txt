@@ -47,7 +47,9 @@ some parts of Gpg4win can be used, but are not officially supported.
 The Outlook plugin GpgOL is compatible with Microsoft Outlook 2010,
 2013 and 2016 (both 32 and 64bit) and supports transporting emails
 via SMTP/IMAP and MS Exchange Server (version 2010 or newer).
-For elder Outlook versions 2003 and 2007 less functionality is offered.
+
+With Gpg4win version 3.1.2 Outlook 2003 and 2007 support was removed for
+security reasons.
 
 (See https://www.gpg4win.org/system-requirements.html for updates.)
 
@@ -126,30 +128,6 @@ New in Gpg4win version !VERSION! (!BUILD_ISODATE!)
 - Kleopatra
 
   * Netkey cards are not yet supported by the new Manage Smartcard view.
-
-- GpgOL for Outlook 2003 and 2007 (deprecated):
-
-  Outlook 2003 and 2007 support is deprecated and may be removed in a
-  future version.
-
-  * For Outlook 2003/2007 only:
-    You definitely should create copies of your old encrypted/signed
-    emails before installing GpgOL, e.g. in the form of PST files.
-
-  * For Outlook 2003/2007 only:
-    Sending signed or encrypted messages via an Exchange based account
-    does not work. (Please note, using SMTP with GpgOL and Exchange
-    seems to be work. Or use GpgOL with Outlook 2010 or newer.)
-
-  * For Outlook 2003/2007 only:
-    Encrypted E-Mails occurring un-encrypted on the email server: It
-    can happen that parts of encrypted emails are copied to your email
-    server (IMAP or MAPI) in un-encrypted/decrypted form when creating
-    or viewing them.  Affected is the content of the email view
-    window, thus usually the so-called email body.  Attachments are
-    not affected.  Switching off the Outlook preview will lower the
-    probability of this to happen, but not eliminate the issue.
-    (If this is an issue for you: use GpgOL with Outlook 2010 or newer.)
 
 
 4. Version history
