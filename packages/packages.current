@@ -235,11 +235,11 @@ chk  1dddde1400c3bcb7749d398071af88c3e4754058d2d4c0b3696c2f82dc5cf11c
 #
 server http://files.gpg4win.org/src
 
-# last-changed: 2018-04-24
+# last-changed: 2018-06-17
 # by: ah
 # verified: Sig 5B80 C575 4298 F0CB  55D8 ED6A BCEF 7E29 4B09 2E28
-file gpgol/gpgol-2.1.1.tar.bz2
-chk  406e97f14f332b501b05e2589495b65358e2b70c777324b63587d4507155ed98
+file gpgol/gpgol-2.2.0.tar.bz2
+chk  0e5ac1a4e270cb3afc2ecf0de801f208a10bb851f64ee46447f125186c70a2f4
 
 # for beta
 #server http://files.intevation.de/projects/gpg4all
