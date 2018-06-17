@@ -66,36 +66,30 @@ Die integrierten Gpg4win-Komponenten in Version !VERSION! sind:
 Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 -----------------------------------------
 
-- Allgemein: Ein Problem wurde behoben, das zu
-  "Invalid crypto engine"-Fehlern führen konnte. (T3919)
+- GpgOL: Unterstützung für Outlook 2003 und 2007
+  wurde entfernt. (T3984)
 
-- S/MIME: Ein Problem wurde behoben, das dazu führen konnte das
-  CRL-Prüfungen fehlschlugen. (T3923)
+- GpgOL: Unsignierte S/MIME Mails werden nun restriktiver behandelt.
+  (T3986)
 
-- S/MIME: OCSP-Prüfungen können nun mit CRL-Prüfungen kombiniert
-  werden.
+- GpgOL: Antworten auf unverschlüsselte no-mime Mails zeigen nicht
+  länger nur das überprüfte Zitat an. (T3964)
 
-- S/MIME: Die Zertifikatssuche auf LDAP Servern funktiniert wieder.
-  (T3937)
+- GpgOL: Sonderzeichen in no-mime Mails werden nun besser behandelt.
+  (T3975)
 
-- Kleopatra: Das Aktivieren eines Konfigurationsprofils benötigt
-  nicht mehr einen Neustart der betroffenen Komponenten.
+- GpgOL: Niederländische und Ukrainische Übersetzungen
+  wurden hinzugefügt.
 
-- GpgOL: Verbesserte Fehlerbehandlung beim Verschlüsseln und
-  Entschlüsseln.
+- GpgOL: Zusätzliche Absturzursachen wurden behoben. (T3946)
 
-- GpgOL: Ein möglicher Absturz beim Editieren der Empfänger wurde
-  behoben. (T3931)
+- GpgOL: Die Empfänger-Auflösung von mehrdeutigen Adressen
+  funktioniert nun besser. (T3978)
 
-- GpgOL: Die automatische Empfänger-Auflösung wurde verbessert.
-  Unter anderen wird jetzt auch S/MIME als Rückfall-Lösung
-  unterstützt. (T3929)
+- Kleopatra: Kleinere Verbesserungen der Benutzbarkeit.
 
-- GpgOL: Das Kontextmenü von Krypto-Mails bietet nun eine Option
-  den entschlüsselten Inhalt direkt zu drucken. (T3762)
-
-- GnuPG: Auf Version 2.2.7 aktualisiert.
-  (Siehe: https://lists.gnupg.org/pipermail/gnupg-announce/2018q2/000424.html )
+- GnuPG: Auf Version 2.2.8 aktualisiert. (CVE-2018-0495 CVE-2018-12020)
+  (Siehe: https://lists.gnupg.org/pipermail/gnupg-announce/2018q2/000425.html )
 
 
 3. Anmerkungen

@@ -65,34 +65,27 @@ Included Gpg4win components in version !VERSION! are:
 New in Gpg4win version !VERSION! (!BUILD_ISODATE!)
 -----------------------------------------
 
-- General: An issue was fixed, which could lead to
-  "Invalid crypto engine" errors. (T3919)
+- GpgOL: Removed support for Outlook 2003 and 2007. (T3984)
 
-- S/MIME: An issue was fixed, which could prevent successful CRL
-  checks. (T3923)
+- GpgOL: Unsigned S/MIME mails are now treated more restrictive.
+  (T3986)
 
-- S/MIME: OCSP certificate checks can now be combined with CRL
-  checks.
+- GpgOL: Replies to unencrypted no-mime mails no longer only display
+  quoted contents. (T3964)
 
-- S/MIME: Certificate search on LDAP Servers works again. (T3937)
+- GpgOL: Handling of special characters in no-mime mails has been
+  improved. (T3975)
 
-- Kleopatra: Activating a profile no longer requires a restart
-  of the affected components.
+- GpgOL: Added dutch and ukrainian translations.
 
-- GpgOL: Improved error handling for encryption and decryption.
+- GpgOL: Additional crashes habe been fixed. (T3946)
 
-- GpgOL: A possible crash when editing recipients has been fixed.
-  (T3931)
+- GpgOL: The resolution of ambigous recipients has been improved. (T3978)
 
-- GpgOL: The automatic recipient resolution has been improved.
-  Among other things it now properly handles S/MIME as a fallback.
-  (T3929)
+- Kleopatra: Small usability improvements.
 
-- GpgOL: The context menu of crypto mails now has the option to
-  directly print the decrypted content. (T3762)
-
-- GnuPG: Update to version 2.2.7
-  (See: https://lists.gnupg.org/pipermail/gnupg-announce/2018q2/000424.html )
+- GnuPG: Update to version 2.2.8 (CVE-2018-0495 CVE-2018-12020)
+  (See: https://lists.gnupg.org/pipermail/gnupg-announce/2018q2/000425.html )
 
 
 3. Additional notes
