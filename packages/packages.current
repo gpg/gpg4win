@@ -298,15 +298,15 @@ chk 40d0a823c9329478063903192a1f82496083b277265904878f4bc09e0db7a4ef
 file libassuan/libassuan-2.5.1.tar.bz2
 chk  47f96c37b4f2aac289f0bc1bacfa8bd8b4b209a488d3d15e2229cb6cc9b26449
 
-# last changed: 2018-06-12
+# last changed: 2018-06-17
 # by: ah
-name gnupg-w32-2.2.8-20180608-bin.exe
-file binary/gnupg-w32-2.2.8_20180608.exe
-chk  21d4123d1455c925f8a570f94bc7e87a205edbff1ad78fabe8b7b5a3614b1aa2
+name gnupg-w32-2.2.8-20180613-bin.exe
+file binary/gnupg-w32-2.2.8_20180613.exe
+chk  6d2b9269cc808d3dceffe3d7f368738402e7faed49cd823799bcfbdaedc57d3f
 
-name gnupg-w32-2.2.8-20180608-src.tar.xz
-file binary/gnupg-w32-2.2.8_20180608.tar.xz
-chk  d161f600549aee47121b1f025c1431e445ba463455edfea6d15353dbd96d7cba
+name gnupg-w32-2.2.8-20180613-src.tar.xz
+file binary/gnupg-w32-2.2.8_20180613.tar.xz
+chk  ed0e72d1ac177357e46ced312c2ecc209809a9986c23697b449ca51588776c1a
 
 # TODO back to stable
 # last changed: 2017-12-05
