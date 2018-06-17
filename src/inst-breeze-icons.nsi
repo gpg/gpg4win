@@ -94,6 +94,7 @@ Section "-breeze-icons" SEC_breeze_icons
   File ${prefix}/share/icons/breeze/actions/16/window-close.svg
   File ${prefix}/share/icons/breeze/actions/16/visibility.svg
   File ${prefix}/share/icons/breeze/actions/16/hint.svg
+  File ${prefix}/share/icons/breeze/actions/16/resource-group-new.svg
 
   SetOutPath "$INSTDIR\share\icons\breeze\actions\22"
 
@@ -161,6 +162,7 @@ Section "-breeze-icons" SEC_breeze_icons
   File ${prefix}/share/icons/breeze/actions/22/question.svg
   File ${prefix}/share/icons/breeze/actions/22/kt-add-filters.svg
   File ${prefix}/share/icons/breeze/actions/22/kt-remove-filters.svg
+  File ${prefix}/share/icons/breeze/actions/22/resource-group-new.svg
 
   SetOutPath "$INSTDIR\share\icons\breeze\actions\24"
 
@@ -215,6 +217,7 @@ Section "-breeze-icons" SEC_breeze_icons
   File ${prefix}/share/icons/breeze/actions/24/window-close.svg
   File ${prefix}/share/icons/breeze/actions/24/visibility.svg
   File ${prefix}/share/icons/breeze/actions/24/hint.svg
+  File ${prefix}/share/icons/breeze/actions/24/resource-group-new.svg
 
   SetOutPath "$INSTDIR\share\icons\breeze\actions\32"
 
