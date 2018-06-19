@@ -83,6 +83,7 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
         inst-qtsvg.nsi uninst-qtsvg.nsi \
         inst-qttools.nsi uninst-qttools.nsi \
         inst-qttranslations.nsi uninst-qttranslations.nsi \
+        inst-qtwinextras.nsi uninst-qtwinextras.nsi \
         inst-boost.nsi uninst-boost.nsi \
         inst-extra-cmake-modules.nsi uninst-extra-cmake-modules.nsi \
         inst-gpg4win-tools.nsi uninst-gpg4win-tools.nsi \
@@ -91,7 +92,8 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
         slideshow/slide1-gpgol.png \
         slideshow/slide2-gpgex.png \
         slideshow/slide3-kleopatra.png \
-        slideshow/slide4-summary.png
+        slideshow/slide4-summary.png \
+        file-ext.ico
 
 gpg4win_readme_ll = en de ar es fr ru pt
 

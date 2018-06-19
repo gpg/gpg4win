@@ -27,29 +27,29 @@ SUBDIRS = po packages doc src
 EXTRA_DIST = autogen.sh README.GIT ONEWS \
         doc/license-page doc/GPLv3 \
         build-aux/git-log-footer build-aux/git-log-fix \
+		patches/boost/boost-1-fixes.patch \
+        patches/extra-cmake-modules/0001-Add-convert-utility-support-for-Windows-icons.patch \
+        patches/extra-cmake-modules/0001-Use-BIN_INSTALL_DIR-data-for-DATAROOTDIR-on-Windows.patch \
         patches/glib-2.41.5/01-socket.patch \
         patches/glib-2.41.5/02-formatsec.patch \
-        patches/qtbase/relative-paths.patch \
-        patches/qtbase/qtbase-mingw-fixes.patch \
-        patches/qtbase/config-standardpaths.patch \
-        patches/qtwinextras/support-xp.patch \
-        patches/w32pth-2.0.5/workaround-broken-libtool.patch \
-        patches/qttools/disable-most-tools.patch \
-        patches/kxmlgui/0002-Make-QDBus-dependency-optional.patch \
-        patches/kxmlgui/0003-Make-KTextWidgets-optional.patch \
-        patches/kxmlgui/0004-Cruedly-disable-KSendbugmail.patch \
+        patches/gpa-0.9.10/0001-w32-Make-location-of-locale-dir-more-flexible.patch \
+        patches/gpgol-2.1.1/0001-Disable-OL-2013-2016-resiliency-for-us.patch \
+        patches/gpgol-2.1.1/0001-Launch-Kleopatra-config-dialog-with-parent.patch \
         patches/kconfigwidgets/0001-Make-QDbus-optional.patch \
         patches/kconfigwidgets/0002-Crudely-remove-KF5Auth-depedency.patch \
         patches/kiconthemes/0001-Make-DBus-optional.patch \
-        patches/extra-cmake-modules/0001-Add-convert-utility-support-for-Windows-icons.patch \
         patches/kleopatra/0005-Hack-generated-conf-files-for-Crosscompiling.patch \
         patches/kleopatra/fix-qt5.6-build.patch \
-        patches/extra-cmake-modules/0001-Use-BIN_INSTALL_DIR-data-for-DATAROOTDIR-on-Windows.patch \
-        patches/gpa-0.9.10/0001-w32-Make-location-of-locale-dir-more-flexible.patch \
+        patches/kxmlgui/0002-Make-QDBus-dependency-optional.patch \
+        patches/kxmlgui/0003-Make-KTextWidgets-optional.patch \
+        patches/kxmlgui/0004-Cruedly-disable-KSendbugmail.patch \
         patches/libgpg-error-1.29/0001-doc-Fix-yat2m-build-for-cross-compilation.patch \
-        patches/gpgol-2.1.1/0001-Disable-OL-2013-2016-resiliency-for-us.patch \
-        patches/gpgol-2.1.1/0001-Launch-Kleopatra-config-dialog-with-parent.patch
-
+        patches/qtbase/config-standardpaths.patch \
+        patches/qtbase/qtbase-mingw-fixes.patch \
+        patches/qtbase/relative-paths.patch \
+        patches/qttools/disable-most-tools.patch \
+        patches/qtwinextras/support-xp.patch \
+        patches/w32pth-2.0.5/workaround-broken-libtool.patch
 
 copy-news:
 	cp NEWS doc/website/NEWS.last
