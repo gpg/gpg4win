@@ -249,13 +249,17 @@ gpg4win_pkg_gpgme_configure = --silent \
   `test -n "@HAVE_PKG_GLIB@" && echo "--enable-w32-glib"` \
   CFLAGS=-I$(idir)/include/glib-2.0/ \
   LDFLAGS=-L$(idir)/lib \
-  --enable-languages=qt,cpp
+  --enable-languages=qt,cpp \
+  --disable-gpg-test \
+  --disable-gpgsm-test
 
 gpg4win_pkg_gpgme_ex_configure = --silent \
   --with-gpg-error-prefix=$(ex_idir) --enable-static \
   --with-libassuan-prefix=$(ex_idir) \
   LDFLAGS=-L$(ex_idir)/lib \
-  --enable-languages=cpp
+  --enable-languages=cpp \
+  --disable-gpg-test \
+  --disable-gpgsm-test
 
 gpg4win_pkg_gpa_configure = --silent \
   --with-libiconv-prefix=$(idir) --with-libintl-prefix=$(idir) \
