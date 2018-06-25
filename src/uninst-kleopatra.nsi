@@ -229,6 +229,8 @@ Section "-un.kleopatra"
   DeleteRegValue SHCTX "Software\Classes\.crl" "gpg4win.AssocFile.kleopatra.CMS"
   DeleteRegValue SHCTX "Software\Classes\.crl" "gpg4win.AssocFile.kleopatra.CMS"
 
+  DeleteRegKey SHCTX "Software\Classes\openpgp4fpr"
+
   DeleteRegKey /ifempty SHCTX "Software\Classes\.gpg"
   DeleteRegKey /ifempty SHCTX "Software\Classes\.asc"
   DeleteRegKey /ifempty SHCTX "Software\Classes\.pgp"

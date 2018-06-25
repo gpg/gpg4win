@@ -268,6 +268,13 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
   WriteRegStr SHCTX "Software\Gpg4win\kleopatra\Capabilities" "ApplicationIcon" "$INSTDIR\bin\kleopatra.exe,0"
   WriteRegStr SHCTX "Software\Gpg4win\kleopatra\Capabilities" "ApplicationName" "Kleopatra"
 
+
+  # Openpgp4fpr URI scheme
+  WriteRegStr SHCTX "Software\Classes\openpgp4fpr" "" "URL:OpenPGP master key fingerprint"
+  WriteRegStr SHCTX "Software\Classes\openpgp4fpr" "URL Protocol" ""
+  WriteRegStr SHCTX "Software\Classes\openpgp4fpr\DefaultIcon" "" "$INSTDIR\bin\kleopatra.exe,0"
+  WriteRegStr SHCTX "Software\Classes\openpgp4fpr\shell\open\command" "" "$\"$INSTDIR\bin\kleopatra.exe$\" --query $\"%1$\""
+
 !endif
 ${MementoSectionEnd}
 
