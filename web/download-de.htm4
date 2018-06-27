@@ -62,12 +62,10 @@ kann hier herunter geladen werden:</p>
     insbesondere mit Krypto-Anwendungen - <i>nicht</i> auf einem möglicherweise infizierten
     System arbeiten.
 
-    <!-- Remove with next release -->
     <br/>
     <br/>
-    <b>Gpg4win 3.1.0:</b> Für die volle mkportable version von Gpg4win-3.1.0
-    müssen Sie manuell die Datei <i>bin\libKF5Crash.dll</i> in den Zielordner
-    kopieren.
+    Für die volle mkportable version von Gpg4win
+    müssen Sie alle Komponenten <i>inklusive GPA</i> installiert haben.
     </li>
     </ul>
 
