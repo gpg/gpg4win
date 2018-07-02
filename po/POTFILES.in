@@ -8,5 +8,6 @@ src/inst-gpa.nsi
 src/inst-gpg4win.nsi
 src/inst-gpgex.nsi
 src/inst-gpgol.nsi
+src/inst-gpgme-browser.nsi
 src/inst-kleopatra.nsi
 src/inst-compendium.nsi

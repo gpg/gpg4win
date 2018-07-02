@@ -364,6 +364,11 @@ msgstr ""
 "který se používá pro šifrování zpráv pomocí OpenPGP nebo S/MIME. Vyžaduje "
 "Kleopatra, nebo GPA."
 
+msgctxt "DESC_SEC_gpgme_browser"
+msgid ""
+"Register GnuPG as native messaging service e.g. for the Mailvelope extension."
+msgstr ""
+
 msgctxt "DESC_SEC_kleopatra"
 msgid "Keymanager for OpenPGP and X.509 and common crypto dialogs."
 msgstr ""

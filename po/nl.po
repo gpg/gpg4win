@@ -384,6 +384,11 @@ msgctxt "DESC_SEC_gpgol"
 msgid "GnuPG for Outlook"
 msgstr "GnuPG voor Outlook"
 
+msgctxt "DESC_SEC_gpgme_browser"
+msgid ""
+"Register GnuPG as native messaging service e.g. for the Mailvelope extension."
+msgstr ""
+
 msgctxt "DESC_SEC_kleopatra"
 msgid "Keymanager for OpenPGP and X.509 and common crypto dialogs."
 msgstr "Sleutelbeheerder voor OpenPGP en X.509 en algemene crypto dialogen."

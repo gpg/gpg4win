@@ -87,6 +87,7 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
         inst-boost.nsi uninst-boost.nsi \
         inst-extra-cmake-modules.nsi uninst-extra-cmake-modules.nsi \
         inst-gpg4win-tools.nsi uninst-gpg4win-tools.nsi \
+        inst-gpgme-browser.nsi \
         inst-final.nsi index.theme \
         slideshow/slides.dat \
         slideshow/slide1-gpgol.png \

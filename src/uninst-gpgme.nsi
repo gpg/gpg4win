@@ -39,5 +39,10 @@ Section "-un.gpgme"
   Delete "$INSTDIR\lib\libgpgme.imp"
   Delete "$INSTDIR\lib\libgpgme-glib.imp"
   Delete "$INSTDIR\include\gpgme.h"
+  Delete "$INSTDIR\bin\gpgme-chrome.json"
+  Delete "$INSTDIR\bin\gpgme-mozilla.json"
+
+  DeleteRegKey SHCTX "Software\Google\Chrome\NativeMessagingHosts\gpgmejson"
+  DeleteRegKey SHCTX "Software\Mozilla\NativeMessagingHosts\gpgmejson"
 !endif
 SectionEnd

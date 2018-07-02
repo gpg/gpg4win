@@ -207,6 +207,8 @@
 !include "inst-man_advanced_de.nsi"
 !endif
 
+!include "inst-gpgme-browser.nsi"
+
 !include "inst-final.nsi"
 
 # We have to invoke the uninstallers in reverse order!
@@ -536,6 +538,7 @@ select_minimal:
    !insertmacro UnselectSection ${SEC_gpgol}
    !insertmacro UnselectSection ${SEC_gpgex}
    !insertmacro UnselectSection ${SEC_gpa}
+   !insertmacro UnselectSection ${SEC_gpgme_browser}
    !insertmacro UnselectSection ${SEC_compendium}
 
 # We only do pinentry and gnupg-w32
@@ -785,6 +788,11 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_gpgme}
   skip_gpa:
 !endif
+
+!insertmacro SectionFlagIsSet ${SEC_gpgme_browser} ${SF_SELECTED} have_gpgme_browser skip_gpgme_browser
+have_gpgme_browser:
+!insertmacro SelectSection ${SEC_gpgme}
+skip_gpgme_browser:
 
   # Now the implicitely installed packages.
 

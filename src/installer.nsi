@@ -36,6 +36,7 @@
 
 # We use the modern UI 2.
 !include "MUI2.nsh"
+
 !ifdef DEBUG
 !undef DEBUG
 !endif
@@ -796,5 +797,7 @@ FunctionEnd
 !ifdef HAVE_PKG_MAN_ADVANCED_DE
   !insertmacro MUI_DESCRIPTION_TEXT ${SEC_man_advanced_de} $(DESC_SEC_man_advanced_de)
 !endif
+
+!insertmacro MUI_DESCRIPTION_TEXT ${SEC_gpgme_browser} $(DESC_SEC_gpgme_browser)
 !insertmacro MUI_FUNCTION_DESCRIPTION_END
 
