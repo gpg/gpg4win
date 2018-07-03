@@ -28,6 +28,7 @@ Section "-gpg4win_tools" SEC_gpg4win-tools
   SetOutPath "$INSTDIR\bin"
   File ${prefix}/bin/resolver.exe
   File ${prefix}/bin/overlayer.exe
+  File ${prefix}/bin/gpgolgui.exe
 !ifdef SOURCES
   File "${gpg4win_pkg_gpg4win_tools}"
 !endif

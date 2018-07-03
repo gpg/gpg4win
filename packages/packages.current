@@ -569,8 +569,8 @@ chk a7a02001707e0206023d24a5c743545d89c7125aa79b54d221d032b97c5f0f73
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah.
-file gpg4win-tools/gpg4win-tools-201804241232.tar.gz
-chk b57964460c7ca5f0d211e81ad222f316ce4ef0f7ccdb2929736071f7120bf88e
+file gpg4win-tools/gpg4win-tools-201807031610.tar.gz
+chk 661ed6dda4b6343aa6d50b976fea1b59b746c865d313cee4c95c2fae27d41576
 
 # Kleopatra
 # last changed: see package date.
