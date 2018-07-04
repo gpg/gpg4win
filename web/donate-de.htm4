@@ -23,8 +23,9 @@ PAGE_START
 <p>Ihre Spende unterstützt die Pflege und Weiterentwicklung von Gpg4win
 und hilft uns die Freie Software Initiative Gpg4win voranzutreiben.
 Wir sind dankbar für jede finanzielle Unterstützung.
+<!-- TODO Update or remove
 Eine Zusammenfassung der bisherigen Spenden finden Sie
-<a href="https://wiki.gnupg.org/Gpg4win/donations">hier</a>.
+<a href="https://wiki.gnupg.org/Gpg4win/donations">hier</a>. -->
 </p>
 </div>
 
@@ -50,24 +51,27 @@ Eine Zusammenfassung der bisherigen Spenden finden Sie
 
   <div id="sponsors">
     <h2>Liste der Spender</h2>
-    <p>Die folgende Liste zeigt alle Spender, die über 20,- EUR in den
-    Jahren 2016 und 2017 für Gpg4win gespendet und einer
+    <p>Die folgende Liste zeigt alle Spender, die über 20,- EUR / USD in den
+    Jahren 2017 und 2018 für Gpg4win gespendet und einer
     Veröffentlichung ihrer Spende zugestimmt haben.
-    
+
+    <!-- This needs to be updated:
+
     Eine Zusammenfassung aller Spenden und die Spender der früheren
-    Jahren finden Sie <a href="https://wiki.gnupg.org/Gpg4win/donations">hier</a>.
-    (Zuletzt aktualisiert: 2017/11/28)</p>
-    
+    Jahren finden Sie <a href="https://wiki.gnupg.org/Gpg4win/donations">hier</a>. -->
+
+    (Zuletzt aktualisiert: 2018/06/29)</p>
+
+    <h3>Spender 2018</h3>
+    <div class="sponsornames">
+    m4_include(`SPONSORS-2018')
+    </div>
+
     <h3>Spender 2017</h3>
     <div class="sponsornames">
     m4_include(`SPONSORS-2017')
     </div>
-      
-    <h3>Spender 2016</h3>
-    <div class="sponsornames">
-    m4_include(`SPONSORS-2016')
-    </div>
-    
+
     <h3>Spender in früheren Jahren</h3>
     <p>siehe <a href="https://wiki.gnupg.org/Gpg4win/donations">https://wiki.gnupg.org/Gpg4win/donations</a></p>
 
