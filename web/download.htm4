@@ -64,6 +64,8 @@ of Gpg4win VERSION here:</p>
     <br/>
     For the full mkportable version of Gpg4win
     you have to install all components <i>including GPA</i>.
+    Additionally the name of the target folder has to be at least
+    four characters long.
     </li>
     </ul>
 
