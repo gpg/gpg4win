@@ -290,8 +290,8 @@ server ftp://ftp.gnupg.org/gcrypt
 # by ah
 # verified: distsigkey.gpg
 server ftp://ftp.gnupg.org/gcrypt
-file libgpg-error/libgpg-error-1.31.tar.bz2
-chk 40d0a823c9329478063903192a1f82496083b277265904878f4bc09e0db7a4ef
+file libgpg-error/libgpg-error-1.32.tar.bz2
+chk c345c5e73cc2332f8d50db84a2280abfb1d8f6d4f1858b9daa30404db44540ca
 
 # last-changed: 2017-12-07
 # by: ah
@@ -300,13 +300,13 @@ chk  47f96c37b4f2aac289f0bc1bacfa8bd8b4b209a488d3d15e2229cb6cc9b26449
 
 # last changed: 2018-06-17
 # by: ah
-name gnupg-w32-2.2.8-20180613-bin.exe
-file binary/gnupg-w32-2.2.8_20180613.exe
-chk  6d2b9269cc808d3dceffe3d7f368738402e7faed49cd823799bcfbdaedc57d3f
+name gnupg-w32-2.2.9-20180712-bin.exe
+file binary/gnupg-w32-2.2.9_20180712.exe
+chk  1b8b9fad41c1beb92549ff8ee33530ae589514b1f0addbbdba95554fe6d5ccb3
 
-name gnupg-w32-2.2.8-20180613-src.tar.xz
-file binary/gnupg-w32-2.2.8_20180613.tar.xz
-chk  ed0e72d1ac177357e46ced312c2ecc209809a9986c23697b449ca51588776c1a
+name gnupg-w32-2.2.9-20180712-src.tar.xz
+file binary/gnupg-w32-2.2.9_20180712.tar.xz
+chk  14661be81aa2b5a3ff63973f6c7d516c4f5b383e82e965668ce65455dfe2d4aa
 
 # TODO back to stable
 # last changed: 2017-12-05
@@ -545,15 +545,15 @@ file pinentry/pinentry-1.1.1-beta5.tar.bz2
 chk 7bda3fef7d7f0f77dd4dfe11e3364c64f1e9646945afa995da8a5084ce59e101
 
 # by: ah
-file gpgme/gpgme-1.11.2-beta58.tar.bz2
-chk  9013704e43fef501094c48bc083961ca58eb68b1bcfebeb73ec03fda787d849f
+file gpgme/gpgme-1.11.2-beta94.tar.bz2
+chk 478cc7fe122b1a12e26137e0affdcb744cf15fa4e7bb20e5798ee63f9f2d094e
 
 # Libkleo
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah.
-file libkleo/libkleo-201806121108.tar.gz
-chk 495187ac930cbff0bd11dc02455b41237c0923a2ca69e0ca921264830a0e90a1
+file libkleo/libkleo-201807171055.tar.gz
+chk ad32d1e99915b9c9738903bdf4a246210faa4635b156002ca28e092e75f03dd8
 
 # KDE-L10n
 # last changed: see package date.
@@ -565,16 +565,16 @@ chk 9a08c9bd41d7fbcff50a9efc469b382d0e6721863e7e9d40b9b15a82efbf04e9
 file kde-l10n/kde-l10n-201806121111-src.tar.xz
 chk a7a02001707e0206023d24a5c743545d89c7125aa79b54d221d032b97c5f0f73
 
-# Gpg4win-tools package (experimental)
+# Gpg4win-tools package
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah.
-file gpg4win-tools/gpg4win-tools-201807031610.tar.gz
-chk 661ed6dda4b6343aa6d50b976fea1b59b746c865d313cee4c95c2fae27d41576
+file gpg4win-tools/gpg4win-tools-201807171043.tar.gz
+chk d86fbdae25efc31d816be044ad49fbc9f1d9805cfda8e6c25466168d678a2a9c
 
 # Kleopatra
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah.
-file kleopatra/kleopatra-201806121110.tar.gz
-chk f738b1d09f8c5d0037496049677e8a99f7c475731a34aa0e6ae0a899e4f48db2
+file kleopatra/kleopatra-201807171048.tar.gz
+chk 3f1f796df42a7e2fd271e885e366fe6ac698a7cd9a70c292ea31125408ae9e4d
