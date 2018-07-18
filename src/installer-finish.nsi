@@ -171,7 +171,7 @@ LangString T_File_Type_sig_Name ${LANG_ENGLISH} \
 LangString T_File_Type_pgp_key_Name ${LANG_ENGLISH} \
    "OpenPGP Certificate File"
 
-LangString T_File_Type_asc_Name ${LANG_ENGLISH} \
+LangString T_File_Type_pem_Name ${LANG_ENGLISH} \
    "CMS (S/MIME) File"
 
 LangString T_File_Type_x509_Name ${LANG_ENGLISH} \
