@@ -22,23 +22,23 @@ Var MYTMP
 Function SetupExtRegKeys
   Pop $0
   # .gpg
+  WriteRegExpandStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.GPG\shell\open\command" "" "$\"$INSTDIR\bin\$0.exe$\" $\"%1$\""
   WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.GPG" "" "$(T_File_Type_gpg_Name)"
   WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.GPG" "FriendlyTypeName" "$(T_File_Type_gpg_Name)"
   WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.GPG" "PercievedType" "Document"
   WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.GPG" "InfoTip" "$(T_File_Type_info_tip)"
   WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.GPG\CurVer" "" "${VERSION}"
-  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.GPG\shell\open\command" "" "$\"$INSTDIR\bin\$0.exe$\" $\"%1$\""
   WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.GPG\DefaultIcon" "" "$INSTDIR\share\gpg4win\file-ext.ico"
 
   WriteRegBin SHCTX "Software\Classes\.gpg\OpenWithProgIDs" "gpg4win.AssocFile.$0.GPG" 0
 
   # .asc
+  WriteRegExpandStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.ASC\shell\open\command" "" "$\"$INSTDIR\bin\$0.exe$\" $\"%1$\""
   WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.ASC" "" "$(T_File_Type_asc_Name)"
   WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.ASC" "FriendlyTypeName" "$(T_File_Type_asc_Name)"
   WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.ASC" "PercievedType" "Document"
   WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.ASC" "InfoTip" "$(T_File_Type_info_tip)"
   WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.ASC\CurVer" "" "${VERSION}"
-  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.ASC\shell\open\command" "" "$\"$INSTDIR\bin\$0.exe$\" $\"%1$\""
   WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.ASC\DefaultIcon" "" "$INSTDIR\share\gpg4win\file-ext.ico"
   WriteRegBin SHCTX "Software\Classes\.asc\OpenWithProgIDs" "gpg4win.AssocFile.$0.ASC" 0
 
@@ -47,33 +47,32 @@ Function SetupExtRegKeys
 
   # .sig
   WriteRegExpandStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.PGPSIG\shell\open\command" "" "$\"$INSTDIR\bin\$0.exe$\" $\"%1$\""
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.PGPSIG" "" "$(T_File_Type_sig_Name)"
   WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.PGPSIG" "FriendlyTypeName" "$(T_File_Type_sig_Name)"
   WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.PGPSIG" "PercievedType" "Document"
   WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.PGPSIG" "InfoTip" "$(T_File_Type_sig_info_tip)"
   WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.PGPSIG\CurVer" "" "${VERSION}"
-  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.PGPSIG\shell\open\command" "" "$\"$INSTDIR\bin\$0.exe$\" $\"%1$\""
   WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.PGPSIG\DefaultIcon" "" "$INSTDIR\share\gpg4win\file-ext.ico"
 
   WriteRegBin SHCTX "Software\Classes\.sig\OpenWithProgIDs" "gpg4win.AssocFile.$0.PGPSIG" 0
 
   # OpenPGP Key to be used in mime registry
   WriteRegExpandStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.PGPKEY\shell\open\command" "" "$\"$INSTDIR\bin\$0.exe$\" $\"%1$\""
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.PGPKEY" "" "$(T_File_Type_pgp_key_Name)"
   WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.PGPKEY" "FriendlyTypeName" "$(T_File_Type_pgp_key_Name)"
   WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.PGPKEY" "PercievedType" "Document"
   WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.PGPKEY" "InfoTip" "$(T_File_Type_pgp_key_info_tip)"
   WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.PGPKEY\CurVer" "" "${VERSION}"
-  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.PGPKEY\shell\open\command" "" "$\"$INSTDIR\bin\$0.exe$\" $\"%1$\""
   WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.PGPKEY\DefaultIcon" "" "$INSTDIR\share\gpg4win\file-ext.ico"
 
   # CMS
   WriteRegExpandStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.CMS\shell\open\command" "" "$\"$INSTDIR\bin\$0.exe$\" $\"%1$\""
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.CMS" "" "$(T_File_Type_pem_Name)"
   WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.CMS" "FriendlyTypeName" "$(T_File_Type_pem_Name)"
   WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.CMS" "PercievedType" "Document"
   WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.CMS" "InfoTip" "$(T_File_Type_info_tip)"
   WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.CMS\CurVer" "" "${VERSION}"
-  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.CMS\shell\open\command" "" "$\"$INSTDIR\bin\$0.exe$\" $\"%1$\""
   WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.CMS\DefaultIcon" "" "$INSTDIR\share\gpg4win\file-ext.ico"
-#  WriteRegBin SHCTX "Software\Classes\gpg4win.AssocFile.$0.CMS" "AllowSilentDefaultTakeOver" 0
 
   WriteRegBin SHCTX "Software\Classes\.p7s\OpenWithProgIDs" "gpg4win.AssocFile.$0.CMS" 0
   WriteRegBin SHCTX "Software\Classes\.p7m\OpenWithProgIDs" "gpg4win.AssocFile.$0.CMS" 0
@@ -87,7 +86,6 @@ Function SetupExtRegKeys
   WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.X509" "PercievedType" "Document"
   WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.X509" "InfoTip" "$(T_File_Type_x509_info_tip)"
   WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.X509\CurVer" "" "${VERSION}"
-  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.X509\shell\open\command" "" "$\"$INSTDIR\bin\$0.exe$\" $\"%1$\""
   WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.$0.X509\DefaultIcon" "" "$INSTDIR\share\gpg4win\file-ext.ico"
   WriteRegBin SHCTX "Software\Classes\gpg4win.AssocFile.$0.X509" "AllowSilentDefaultTakeOver" 0
 
