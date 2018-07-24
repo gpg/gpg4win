@@ -80,7 +80,7 @@ m4_ifelse(LANG_DE, `1', `
     </li>
 </ul>
 
-<img src="https://files.intevation.de/users/aheinecke/wkd-en.gif">Automatische Verschlüsselung unter
+<img src="https://files.intevation.de/users/aheinecke/wkd-de.gif">Automatische Verschlüsselung unter
 Verwendung eines <a href="https://wiki.gnupg.org/WKD">Web Key Directory.</a></img>
 
 <h2>Krypto-Manager (Kleopatra)</h2>
