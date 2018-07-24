@@ -66,30 +66,68 @@ Die integrierten Gpg4win-Komponenten in Version !VERSION! sind:
 Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 -----------------------------------------
 
-- GpgOL: Unterstützung für Outlook 2003 und 2007
-  wurde entfernt. (T3984)
+- GpgOL: Krypto-Mails können nun auch verschoben werden wenn
+  diese geöffnet sind.
 
-- GpgOL: Unsignierte S/MIME Mails werden nun restriktiver behandelt.
-  (T3986)
+- GpgOL: Nachrichten werden automatisch abgesichert wenn gültige
+  Schlüssel / Zertifikate für alle Empfänger gefunden werden konnten.
+  Dies kann mit der Option "Nachrichten automatisch absichern"
+  abgewählt werden. (T3999)
 
-- GpgOL: Antworten auf unverschlüsselte no-mime Mails zeigen nicht
-  länger nur das überprüfte Zitat an. (T3964)
+- GpgOL: Unterstützung für Verteilerlisten wurde hinzugefügt. (T4065)
 
-- GpgOL: Sonderzeichen in no-mime Mails werden nun besser behandelt.
-  (T3975)
+- GpgOL: S/MIME kann nun bei der automatischen Schlüssel-Auflösung
+  bevorzugt werden. (T3961)
 
-- GpgOL: Niederländische und Ukrainische Übersetzungen
-  wurden hinzugefügt.
+- GpgOL: Verschlüsselung sollte Outlook nicht länger einfrieren.
+  (T3838)
 
-- GpgOL: Zusätzliche Absturzursachen wurden behoben. (T3946)
+- GpgOL: Mails welche durch Outlook Ordner Regeln verschoben wurden
+  werden nun von GpgOL verarbeitet. (T4070)
 
-- GpgOL: Die Empfänger-Auflösung von mehrdeutigen Adressen
-  funktioniert nun besser. (T3978)
+- GpgOL: Der Konfigurations-Dialog wurde erneuert um zukünftig besser
+  erweitert werden zu können. (T3944)
 
-- Kleopatra: Kleinere Verbesserungen der Benutzbarkeit.
+- GpgOL: Eine Reihe von Speicherfehlern und Stabilitäts-Problemen wurde
+  behoben.
 
-- GnuPG: Auf Version 2.2.8 aktualisiert. (CVE-2018-0495 CVE-2018-12020)
-  (Siehe: https://lists.gnupg.org/pipermail/gnupg-announce/2018q2/000425.html )
+- GpgOL: Abstürze im Zusammenhang mit den Dateienamen von Anhängen
+  wurden behoben. (T4062 T4032)
+
+- GpgOL: Ein Fehler wurde behoben der dazu führen konnte das Anhänge
+  nicht korrekt angezeigt wurden.
+
+- Kleopatra: Diagnoseausgaben werden nun bei Entschlüsselungs-Fehlern
+  angeboten.
+
+- Kleopatra: Unterstützung für NetKey v3 Smartcards wurde verbessert.
+
+- Kleopatra: Es wird nun mit Entschlüsselungs-Fehlern durch fehlenden
+  Integritätsschuz sauber umgegangen. (T4038)
+
+- Kleopatra: Die Update-Prüfung kann nun einfacher deaktiviert werden.
+  (T4043)
+
+- Kleopatra: Sonderzeichen in der Ausgabe von GnuPG sollten nun
+  korrekt dargestellt werden. (T2983)
+
+- Kleopatra: p7m und p7s Dateien werden nun auch mit Kleopatra
+  verknüpft. (T3890)
+
+- Kleopatra: Verschiedene kleinere Verbesserungen.
+  (T3238 T4078 T3229 T4041)
+
+- Installer: Der Installer schließt nun Anwendungen auch bei der
+  stillen Installation. (T4051)
+
+- GnuPG: Der dirmngr Dienst fragt nun nicht mehr nach einer
+  Windows Firewall Regel. (T3610)
+
+- GnuPG: Die Verarbeitung von S/MIME Daten wurde beschleunigt.
+  (T4069)
+
+- GnuPG: Aktualisiert auf Version 2.2.9.
+  (Siehe: https://lists.gnupg.org/pipermail/gnupg-announce/2018q3/000427.html )
 
 
 3. Anmerkungen
