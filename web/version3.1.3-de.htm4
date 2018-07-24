@@ -1,0 +1,92 @@
+m4_dnl                                                            -*-html-*-
+m4_include(`template.m4')
+m4_dnl $Id$
+
+m4_define(`DE')
+m4_define(`EN_FILE', `version3.1.3.html')
+
+m4_define(`TITLE', `Was ist neu in Version 3.1.3')
+m4_define(`MAIN', `version3.1.3')
+
+PAGE_START
+
+<div id="intro">
+<h2>Was kommt mit Gpg4win 3.1.3?</h2>
+</div>
+<div id="main">
+
+<br/>
+m4_ifelse(LANG_DE, `1',
+Gpg4win 3.1.3 ist aktuell im Beta Stadium.<br/>Sie können die Entwicklung unterstützen indem Sie es
+ausprobieren und Probleme in unserem
+<a href="https://dev.gnupg.org/u/gpg4win">Entwicklungs tracker</a> melden.',
+Gpg4win 3.1.3 is currently in beta.<br/>You can help by trying it out and reporting issues in our
+<a href="https://dev.gnupg.org/u/gpg4win">development tracker</a>')
+
+<div id="download_button">
+    m4_ifelse(LANG_DE, `1', `
+    <a href="https://files.gpg4win.org/Beta/gpg4win-BETA_VERSION/gpg4win-BETA_VERSION.exe">
+    <span class="text">
+        Download<br/>Gpg4win<br/>BETA_VERSION
+    </span></a>', `
+    <a href="https://files.gpg4win.org/Beta/gpg4win-BETA_VERSION/gpg4win-BETA_VERSION.exe">
+        <span class="text">
+            Download<br/>Gpg4win<br/>BETA_VERSION
+        </span></a>')
+</div>
+<div class="download_button_links">
+    m4_ifelse(LANG_DE, `1', `
+    <a href="https://files.gpg4win.org/Beta/gpg4win-BETA_VERSION/gpg4win-BETA_VERSION.exe.sig">Signatur</a>', `
+    <a href="https://files.gpg4win.org/Beta/gpg4win-BETA_VERSION/gpg4win-BETA_VERSION.exe.sig">Signature</a>')
+</div>
+<br/>
+<br/>
+<br/>
+<br/>
+
+m4_ifelse(LANG_DE, `1', `
+<a href="https://files.gpg4win.org/Beta/gpg4win-BETA_VERSION/README-BETA_VERSION.de.txt">
+    Weitere Details und Änderungen in der Readme</a>', `
+<a href="https://files.gpg4win.org/Beta/gpg4win-BETA_VERSION/README-BETA_VERSION.en.txt">
+    More details and changes in the Readme
+</a>')
+<br/>
+
+<h2>Outlook Plugin (GpgOL)</h2>
+
+<ul>
+    <li>
+    Krypto-Mails können nun wie normale Mails verschoben werden.
+    </li>
+    <li>
+    Nachrichten können automatisch verschlüsselt werden wenn Schlüssel verfügbar sind.
+    </li>
+    <li>
+    Outlook friert nicht länger ein während verschlüsselt wird.
+    <ul>
+        <li>Achtung: Bei manchen Nutzern führt dies dazu das Outlook
+            beim mailversand abstürzt. In diesem Fall können Sie "Disable non-blocking encrypt / sign"
+            in den Optionen aktivieren.
+            <br/>
+            <br/>
+            Es würde uns helfen wenn Sie dann
+            im entsprechenden Task <a href="https://dev.gnupg.org/T3838">T3838</a> eine Notiz
+            hinterlassen.
+        </li>
+    </ul>
+    </li>
+    <li>
+    Größere interne Änderungen um die Stabilität weiter zu verbessern.
+    </li>
+</ul>
+
+<img src="https://files.intevation.de/users/aheinecke/wkd-en.gif">Automatische Verschlüsselung unter
+Verwendung eines <a href="https://wiki.gnupg.org/WKD">Web Key Directory.</a></img>
+
+<h2>Krypto-Manager (Kleopatra)</h2>
+<ul>
+    <li>Neue Text basierte Krypto Ansicht.</li>
+    <li>Unterstützung für Heimatverzeichnisse im Netzwerk.</li>
+    <li>Mehrere Stabilitätsverbesserungen.</li>
+</ul>
+</div>

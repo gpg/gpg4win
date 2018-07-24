@@ -25,19 +25,17 @@
      <a href="package-integrity.html">Check integrity</a>')
    </div>
    <br/>
-<!--
    <div id="download_button_mini">
      m4_ifelse(LANG_DE, `1', `
-     <a class="dmini_button" href="version3.1-de.html">
+     <a class="dmini_button" href="version3.1.3-de.html">
      <span class="text">
       Try BETA_VERSION
      </span></a>', `
-     <a class="dmini_button" href="version3.1.html">
+     <a class="dmini_button" href="version3.1.3.html">
      <span class="text">
       Try BETA_VERSION
      </span></a>')
    </div>
--->
    <div class="h_text_beta">
    <p><span class="heading">News</span></p>
    <small>2018-06-17</small><br>
