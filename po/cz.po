@@ -379,6 +379,46 @@ msgctxt "DESC_Menu_kleopatra"
 msgid "Run the Kleopatra key management tool."
 msgstr "Spustit Správce certifikátù Kleopatra."
 
+msgctxt "T_File_Type_gpg_Name"
+msgid "OpenPGP Binary File"
+msgstr ""
+
+msgctxt "T_File_Type_asc_Name"
+msgid "OpenPGP Text File"
+msgstr ""
+
+msgctxt "T_File_Type_sig_Name"
+msgid "OpenPGP Signature"
+msgstr ""
+
+msgctxt "T_File_Type_pgp_key_Name"
+msgid "OpenPGP Certificate File"
+msgstr ""
+
+msgctxt "T_File_Type_pem_Name"
+msgid "CMS (S/MIME) File"
+msgstr ""
+
+msgctxt "T_File_Type_x509_Name"
+msgid "X509 Certificate File"
+msgstr ""
+
+msgctxt "T_File_Type_x509_info_tip"
+msgid "Certificate for CMS (S/MIME)."
+msgstr ""
+
+msgctxt "T_File_Type_info_tip"
+msgid "This can be encrypted data, a signature or a certificate."
+msgstr ""
+
+msgctxt "T_File_Type_sig_info_tip"
+msgid "A cryptographic signature to verify the authenticity of another file."
+msgstr ""
+
+msgctxt "T_File_Type_pgp_key_info_tip"
+msgid "Certificate for OpenPGP."
+msgstr ""
+
 #~ msgctxt "T_MoreInfo"
 #~ msgid "Click here for the project's homepage"
 #~ msgstr "Kliknìte pro homepage projektu"
