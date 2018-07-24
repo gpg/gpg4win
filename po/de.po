@@ -3,12 +3,13 @@
 # This file is distributed under the same license as the gpg4win package.
 #
 # Andre Heinecke <andre.heinecke@intevation.de>, 2018.
+# aheinecke <aheinecke@gnupg.org>, 2018.
 msgid ""
 msgstr ""
 "Project-Id-Version: gpg4win 2.0\n"
 "Report-Msgid-Bugs-To: gpg4win-devel@wald.intevation.org\n"
-"PO-Revision-Date: 2018-04-24 10:59+0100\n"
-"Last-Translator: Andre Heinecke <andre.heinecke@intevation.de>\n"
+"PO-Revision-Date: 2018-07-24 08:54+0100\n"
+"Last-Translator: aheinecke <aheinecke@gnupg.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -441,6 +442,8 @@ msgctxt "DESC_SEC_gpgme_browser"
 msgid ""
 "Register GnuPG as native messaging service e.g. for the Mailvelope extension."
 msgstr ""
+"GnuPG als native messaging Dienst registrieren. Zum Beispiel für die"
+" Mailvelope Erweiterung."
 
 msgctxt "DESC_SEC_kleopatra"
 msgid "Keymanager for OpenPGP and X.509 and common crypto dialogs."
@@ -454,43 +457,45 @@ msgstr "Den Zertifikatsmanager Kleopatra aufrufen."
 
 msgctxt "T_File_Type_gpg_Name"
 msgid "OpenPGP Binary File"
-msgstr ""
+msgstr "OpenPGP Binärdatei"
 
 msgctxt "T_File_Type_asc_Name"
 msgid "OpenPGP Text File"
-msgstr ""
+msgstr "OpenPGP Text Datei"
 
 msgctxt "T_File_Type_sig_Name"
 msgid "OpenPGP Signature"
-msgstr ""
+msgstr "OpenPGP Signatur"
 
 msgctxt "T_File_Type_pgp_key_Name"
 msgid "OpenPGP Certificate File"
-msgstr ""
+msgstr "OpenPGP Zertifikats-Datei"
 
 msgctxt "T_File_Type_pem_Name"
 msgid "CMS (S/MIME) File"
-msgstr ""
+msgstr "CMS (S/MIME) Datei"
 
 msgctxt "T_File_Type_x509_Name"
 msgid "X509 Certificate File"
-msgstr ""
+msgstr "X509 Zertifikats-Datei"
 
 msgctxt "T_File_Type_x509_info_tip"
 msgid "Certificate for CMS (S/MIME)."
-msgstr ""
+msgstr "Zertifikat für CMS (S/MIME)."
 
 msgctxt "T_File_Type_info_tip"
 msgid "This can be encrypted data, a signature or a certificate."
-msgstr ""
+msgstr "Dies können verschlüsslte Daten sein, eine Signatur oder Zertifikate."
 
 msgctxt "T_File_Type_sig_info_tip"
 msgid "A cryptographic signature to verify the authenticity of another file."
 msgstr ""
+"Eine Kryptogaphische Signatur um die authenzität einer anderen Datei zu"
+" prüfen."
 
 msgctxt "T_File_Type_pgp_key_info_tip"
 msgid "Certificate for OpenPGP."
-msgstr ""
+msgstr "OpenPGP Zertifikat."
 
 #~ msgctxt "DESC_Name_compendium"
 #~ msgid "Gpg4win Compendium"
