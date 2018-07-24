@@ -238,14 +238,14 @@ server http://files.gpg4win.org/src
 # last-changed: 2018-06-17
 # by: ah
 # verified: Sig 5B80 C575 4298 F0CB  55D8 ED6A BCEF 7E29 4B09 2E28
-file gpgol/gpgol-2.2.0.tar.bz2
-chk  0e5ac1a4e270cb3afc2ecf0de801f208a10bb851f64ee46447f125186c70a2f4
+#file gpgol/gpgol-2.2.0.tar.bz2
+#chk  0e5ac1a4e270cb3afc2ecf0de801f208a10bb851f64ee46447f125186c70a2f4
 
 # for beta
-#server http://files.intevation.de/projects/gpg4all
+server http://files.intevation.de/projects/gpg4all
 
-#file gpgol/gpgol-2.1.0-beta132.tar.bz2
-#chk  bd75e70c23be56e8faee528f366c6efa2e267379fc528c55a16ed0f1748c947c
+file gpgol/gpgol-2.3.0-beta128.tar.bz2
+chk eca60e42d04d55b47d4149de9d0535f4dc5a9a1a73687dd6f44c2e59489164cb
 
 #
 # GpgEX
@@ -545,15 +545,15 @@ file pinentry/pinentry-1.1.1-beta5.tar.bz2
 chk 7bda3fef7d7f0f77dd4dfe11e3364c64f1e9646945afa995da8a5084ce59e101
 
 # by: ah
-file gpgme/gpgme-1.11.2-beta94.tar.bz2
-chk 478cc7fe122b1a12e26137e0affdcb744cf15fa4e7bb20e5798ee63f9f2d094e
+file gpgme/gpgme-1.11.2-beta108.tar.bz2
+chk be109bb51cb71842d1b43d5a106679a16f20153e8bdc5feb224824a69f8bd2b1
 
 # Libkleo
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah.
-file libkleo/libkleo-201807171055.tar.gz
-chk ad32d1e99915b9c9738903bdf4a246210faa4635b156002ca28e092e75f03dd8
+file libkleo/libkleo-201807240835.tar.gz
+chk 3d2e17ad0562c4f1c3b3446e2c648a8f3f5482ab40659fa8014377092d06488b
 
 # KDE-L10n
 # last changed: see package date.
@@ -569,12 +569,12 @@ chk 589a3451e2f2e52d0288cc9eeba804717da2788c542150bd159e4ef74293c5a0
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah.
-file gpg4win-tools/gpg4win-tools-201807171043.tar.gz
-chk d86fbdae25efc31d816be044ad49fbc9f1d9805cfda8e6c25466168d678a2a9c
+file gpg4win-tools/gpg4win-tools-201807240834.tar.gz
+chk cb0cd4bce9326ddd7712ef3ec27ba146a88f02d6e95e5c9b51ab9d561a90c2db
 
 # Kleopatra
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah.
-file kleopatra/kleopatra-201807171048.tar.gz
-chk 3f1f796df42a7e2fd271e885e366fe6ac698a7cd9a70c292ea31125408ae9e4d
+file kleopatra/kleopatra-201807240833.tar.gz
+chk a25a53cba90f34677af1137c1f425dbd037e7380e106b832aba495b3c8861498
