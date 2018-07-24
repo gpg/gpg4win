@@ -417,7 +417,7 @@ FunctionEnd
 
 # Check whether this is a reinstall and popup a message box to explain
 # that it is better to close other apps before continuing
-Function PrintCloseOtherApps
+Function KillOtherAppsOrWarn
    g4wihelp::KillProc "kleopatra.exe"
    g4wihelp::KillProc "gpa.exe"
    g4wihelp::KillProc "gpgme-w32spawn.exe"
@@ -448,7 +448,6 @@ FunctionEnd
 
 # Called right before installation
 Function BeforeInstallHooks
-    Call PrintCloseOtherApps
     Call CheckClawsUninstall
 FunctionEnd
 
@@ -556,7 +555,7 @@ LangString T_AdminWanted ${LANG_ENGLISH} \
           $\r$\n\
     Do you want to continue installing Gpg4win without administrator rights?"
 
-# From Function PrintCloseOtherApps
+# From Function KillOtherAppsOrWarn
 LangString T_CloseOtherApps ${LANG_ENGLISH} \
    "Please make sure that other applications are not running. \
     In particular you should close Outlook and all Explorer \

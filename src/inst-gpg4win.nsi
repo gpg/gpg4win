@@ -24,6 +24,7 @@ Section "-gpg4win" SEC_gpg4win
   SetOutPath "$INSTDIR"
   File "${BUILD_DIR}/../gpg4win-${VERSION}.tar.bz2"
 !else
+  Call KillOtherAppsOrWarn
   StrCpy $is_update "0"
 # Start the slideshow.
   SetDetailsPrint none
