@@ -64,17 +64,9 @@ m4_ifelse(LANG_DE, `1', `
     </li>
     <li>
     Outlook no longer freezes in the background when encrypting.
-    <ul>
-        <li><b>Note:</b>There are reports that for some users this causes sending crypto mails to
-            crash. In that case you can "Disable non-blocking encrypt / sign" in the options.
-            <br/>
-            It would help if you would also add a note that you are affected in the task for this:
-            <a href="https://dev.gnupg.org/T3838">T3838</a>.
-        </li>
-    </ul>
     </li>
     <li>
-    Major internal changes to further improve stability.
+    Major internal changes to further improve performance and stability.
     </li>
 </ul>
 

@@ -63,20 +63,9 @@ m4_ifelse(LANG_DE, `1', `
     </li>
     <li>
     Outlook friert nicht länger ein während verschlüsselt wird.
-    <ul>
-        <li>Achtung: Bei manchen Nutzern führt dies dazu das Outlook
-            beim mailversand abstürzt. In diesem Fall können Sie "Disable non-blocking encrypt / sign"
-            in den Optionen aktivieren.
-            <br/>
-            <br/>
-            Es würde uns helfen wenn Sie dann
-            im entsprechenden Task <a href="https://dev.gnupg.org/T3838">T3838</a> eine Notiz
-            hinterlassen.
-        </li>
-    </ul>
     </li>
     <li>
-    Größere interne Änderungen um die Stabilität weiter zu verbessern.
+    Größere interne Änderungen um die Stabilität und Geschwindigkeit weiter zu verbessern.
     </li>
 </ul>
 
