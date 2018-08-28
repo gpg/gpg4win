@@ -526,9 +526,9 @@ chk 2b74ab0d0d393c32a7e53e16757763fbe91d25e8dd157e860dec45a047866ec3
 # KDE Applications
 
 # For older releases check here:
-# server https://download.kde.org/Attic/applications
+server https://download.kde.org/Attic/applications
 
-server http://download.kde.org/stable/applications/
+# server http://download.kde.org/stable/applications/
 # kmime
 # last changed: 2018-02-02
 # by: ah
