@@ -244,8 +244,8 @@ server http://files.gpg4win.org/src
 # for beta
 server http://files.intevation.de/projects/gpg4all
 
-file gpgol/gpgol-2.3.0-beta154.tar.bz2
-chk b9e909f9cb3c29673d91c3f637a3b0d5bd91c3ee74e5cc35477f70dc76764c86
+file gpgol/gpgol-2.3.0-beta165.tar.bz2
+chk 4a9aa0d13dc9a5e2d739744baa6263811714718ce4451d12a8f62abb421df2c4
 
 #
 # GpgEX
@@ -576,5 +576,5 @@ chk 429b50736127f343838d70d043087e440646b59a0f7b56108ab55f7a8dd2c03a
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah.
-file kleopatra/kleopatra-201808281418.tar.gz
-chk ff6201af7e674b850446bb8e1f4ff17ea2902349610e535a2f4d8b42d6c51b7b
+file kleopatra/kleopatra-201808301412.tar.gz
+chk 7fca511897b15e9a93fc4ba4b199916a3de0eca6a2d5e4d3d7516d25cf153ef3
