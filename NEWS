@@ -13,12 +13,12 @@ Noteworthy changes in Version 3.1.3 (unreleased)
 (de) GpgOL: Krypto-Mails können nun auch verschoben werden wenn
      diese geöffnet sind.
 
-(de) GpgOL: Nachrichten werden automatisch abgesichert wenn gültige
+(de) GpgOL: Nachrichten werden automatisch abgesichert wenn beglaubigte
      Schlüssel / Zertifikate für alle Empfänger gefunden werden konnten.
      Dies kann mit der Option "Nachrichten automatisch absichern"
      abgewählt werden. (T3999)
 
-(en) GpgOL: Messages are automatically secured if valid Keys / Certificates
+(en) GpgOL: Messages are automatically secured if certified Keys / Certificates
      can be found for each recipient.
      This can be turned off with the option "Automatically secure messages".
      (T3999)
@@ -56,6 +56,10 @@ Noteworthy changes in Version 3.1.3 (unreleased)
 (de) GpgOL: Eine Reihe von Speicherfehlern und Stabilitäts-Problemen wurde
      behoben.
 
+(en) GpgOL: Verifying mails a second time is now much faster.
+
+(de) GpgOL: Das erneute verifzieren einer Mail ist nun deutlich schneller.
+
 (en) GpgOL: Crashes related to filenames of attachments have been fixed.
      (T4062 T4032)
 
@@ -68,6 +72,12 @@ Noteworthy changes in Version 3.1.3 (unreleased)
 (de) GpgOL: Ein Fehler wurde behoben der dazu führen konnte das Anhänge
      nicht korrekt angezeigt wurden.
 
+(en) GpgOL: Sent on behalf of is now respected when verifying a signature.
+     (T4110)
+
+(de) GpgOL: Bei der Signaturprüfung wird nun auch "im Auftrag von"
+     berücksichtig. (T4110)
+
 (en) Kleopatra: Now offers diagnostic information in case of file
      decryption errors.
 
@@ -75,8 +85,10 @@ Noteworthy changes in Version 3.1.3 (unreleased)
      angeboten.
 
 (en) Kleopatra: Support for NetKey v3 Smartcards has been improved.
+     (T4080)
 
 (de) Kleopatra: Unterstützung für NetKey v3 Smartcards wurde verbessert.
+     (T4080)
 
 (en) Kleopatra: Decryption errors caused by missing integrity protection
      (MDC) are now handled properly. (T4038)
@@ -123,11 +135,11 @@ Noteworthy changes in Version 3.1.3 (unreleased)
 (de) GnuPG: Die Verarbeitung von S/MIME Daten wurde beschleunigt.
      (T4069)
 
-(en) GnuPG: Updated to 2.2.9.
-     (See: https://lists.gnupg.org/pipermail/gnupg-announce/2018q3/000427.html )
+(en) GnuPG: Updated to 2.2.10
+     (See:  )
 
-(de) GnuPG: Aktualisiert auf Version 2.2.9.
-     (Siehe: https://lists.gnupg.org/pipermail/gnupg-announce/2018q3/000427.html )
+(de) GnuPG: Aktualisiert auf Version 2.2.10.
+     (Siehe:  )
 
 ~~~~~~~~~~~~~~~
 GnuPG:          2.2.9
