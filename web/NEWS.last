@@ -3,6 +3,161 @@
 # The version number given below are for the standard installers as
 # distributed by www.gpg4win.org.+
 
+
+Noteworthy changes in Version 3.1.3 (2018-08-31)
+------------------------------------------------
+
+(en) GpgOL: It is now possible to move crypto mails while they
+     are open. (T3459)
+
+(de) GpgOL: Krypto-Mails können nun auch verschoben werden wenn
+     diese geöffnet sind.
+
+(de) GpgOL: Nachrichten werden automatisch abgesichert wenn beglaubigte
+     Schlüssel / Zertifikate für alle Empfänger gefunden werden konnten.
+     Dies kann mit der Option "Nachrichten automatisch absichern"
+     abgewählt werden. (T3999)
+
+(en) GpgOL: Messages are automatically secured if certified keys / certificates
+     can be found for each recipient.
+     This can be turned off with the option "Automatically secure messages".
+     (T3999)
+
+(en) GpgOL: Support for distribution lists has been added. (T4065)
+
+(de) GpgOL: Unterstützung für Verteilerlisten wurde hinzugefügt. (T4065)
+
+(en) GpgOL: S/MIME can now be preferred when automatically resolving
+     recipients. (T3961)
+
+(de) GpgOL: S/MIME kann nun bei der automatischen Schlüssel-Auflösung
+     bevorzugt werden. (T3961)
+
+(en) GpgOL: Encryption should no longer cause Outlook to freeze.
+     (T3838)
+
+(de) GpgOL: Verschlüsselung sollte Outlook nicht länger einfrieren.
+     (T3838)
+
+(en) GpgOL: Mails moved by Outlook folder rules are now handled by
+     GpgOL. (T4070)
+
+(de) GpgOL: Mails welche durch Outlook Ordner Regeln verschoben wurden
+     werden nun von GpgOL verarbeitet. (T4070)
+
+(en) GpgOL: The config dialog was changed to improve future extensibility.
+     (T3961)
+
+(de) GpgOL: Der Konfigurations-Dialog wurde erneuert um zukünftig besser
+     erweitert werden zu können. (T3944)
+
+(en) GpgOL: Fixed various memory errors and stability problems.
+
+(de) GpgOL: Eine Reihe von Speicherfehlern und Stabilitäts-Problemen wurde
+     behoben.
+
+(en) GpgOL: Verifying mails a second time is now much faster.
+
+(de) GpgOL: Das erneute verifzieren einer Mail ist nun deutlich schneller.
+
+(en) GpgOL: Crashes related to filenames of attachments have been fixed.
+     (T4062 T4032)
+
+(de) GpgOL: Abstürze im Zusammenhang mit den Dateienamen von Anhängen
+     wurden behoben. (T4062 T4032)
+
+(en) GpgOL: An error has been fixed which could lead to attachments not
+     beeing displayed.
+
+(de) GpgOL: Ein Fehler wurde behoben der dazu führen konnte das Anhänge
+     nicht korrekt angezeigt wurden.
+
+(en) GpgOL: Sent on behalf of is now respected when verifying a signature.
+     (T4110)
+
+(de) GpgOL: Bei der Signaturprüfung wird nun auch "im Auftrag von"
+     berücksichtig. (T4110)
+
+(en) Kleopatra: Now offers diagnostic information in case of file
+     decryption errors.
+
+(de) Kleopatra: Diagnoseausgaben werden nun bei Entschlüsselungs-Fehlern
+     angeboten.
+
+(en) Kleopatra: Support for NetKey v3 Smartcards has been improved.
+     (T4080)
+
+(de) Kleopatra: Unterstützung für NetKey v3 Smartcards wurde verbessert.
+     (T4080)
+
+(en) Kleopatra: Decryption errors caused by missing integrity protection
+     (MDC) are now handled properly. (T4038)
+
+(de) Kleopatra: Es wird nun mit Entschlüsselungs-Fehlern durch fehlenden
+     Integritätsschuz sauber umgegangen. (T4038)
+
+(en) Kleopatra: Update check can now be disabled more easily. (T4043)
+
+(de) Kleopatra: Die Update-Prüfung kann nun einfacher deaktiviert werden.
+     (T4043)
+
+(en) Kleopatra: Special characters in GnuPG output should be displayed
+     correctly. (T2983)
+
+(de) Kleopatra: Sonderzeichen in der Ausgabe von GnuPG sollten nun
+     korrekt dargestellt werden. (T2983)
+
+(en) Kleopatra: p7m and p7s files are now also registered to be
+     opened with Kleopatra. (T3890)
+
+(de) Kleopatra: p7m und p7s Dateien werden nun auch mit Kleopatra
+     verknüpft. (T3890)
+
+(en) Kleopatra: Various minor improvements. (T3238 T4078 T3229 T4041)
+
+(de) Kleopatra: Verschiedene kleinere Verbesserungen.
+     (T3238 T4078 T3229 T4041)
+
+(en) Installer: Silent install now correctly closes running Gpg4win
+     applications. (T4051)
+
+(de) Installer: Der Installer schließt nun Anwendungen auch bei der
+     stillen Installation. (T4051)
+
+(en) Installer: New optional module "Browser Integration" to register
+     GnuPG as backend for Mailvelope 3.0.
+
+(de) Installer: Neues, optionales, Modul "Browser Integration" um GnuPG
+     als backend für Mailvelope 3.0 zu registrieren.
+
+(en) GnuPG: The dirmngr process no longer requests Windows firewall
+     access. (T3610)
+
+(de) GnuPG: Der dirmngr Dienst fragt nun nicht mehr nach einer
+     Windows Firewall Regel. (T3610)
+
+(en) GnuPG: S/MIME data is now handled faster. (T4069)
+
+(de) GnuPG: Die Verarbeitung von S/MIME Daten wurde beschleunigt.
+     (T4069)
+
+(en) GnuPG: Updated to 2.2.10
+     (See: https://lists.gnupg.org/pipermail/gnupg-announce/2018q3/000428.html )
+
+(de) GnuPG: Aktualisiert auf Version 2.2.10.
+     (Siehe: https://lists.gnupg.org/pipermail/gnupg-announce/2018q3/000428.html )
+
+~~~~~~~~~~~~~~~
+GnuPG:          2.2.10
+Kleopatra:      3.1.3
+GPA:            0.9.10
+GpgOL:          2.3.0
+GpgEX:          1.0.6
+Kompendium DE:  4.0.1
+Compendium EN:  3.0.0
+~~~~~~~~~~~~~~~
+
+
 Noteworthy changes in Version 3.1.2 (2018-06-17)
 ------------------------------------------------
 

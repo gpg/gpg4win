@@ -25,6 +25,7 @@
      <a href="package-integrity.html">Check integrity</a>')
    </div>
    <br/>
+<!-- BETA
    <div id="download_button_mini">
      m4_ifelse(LANG_DE, `1', `
      <a class="dmini_button" href="version3.1.3-de.html">
@@ -36,8 +37,18 @@
       Try BETA_VERSION
      </span></a>')
    </div>
+-->
    <div class="h_text_beta">
    <p><span class="heading">News</span></p>
+   <small>2018-08-31</small><br>
+   <span class="serif_word"><img src="img/bulletin.png" alt"" />
+     m4_ifelse(LANG_DE, `1', `
+      <a href="get-gpg4win.html">Gpg4win 3.1.3 veröffentlicht
+      </a></span>',`
+      <a href="get-gpg4win.html">
+        Gpg4win 3.1.3 released
+      </a></span>')
+   <p></p>
    <small>2018-06-17</small><br>
    <span class="serif_word"><img src="img/bulletin.png" alt"" />
      m4_ifelse(LANG_DE, `1', `
@@ -45,14 +56,6 @@
       </a></span>',`
       <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2018-June/000079.html">
         Gpg4win 3.1.2 released
-      </a></span>')
-   <p></p>
-   <small>2018-05-17</small><br>
-   <span class="serif_word"><img src="img/bulletin.png" alt"" />
-     m4_ifelse(LANG_DE, `1', `
-      <a href="statement-efail.html">Stellungnahme zu Efail (en)
-      </a></span>',`
-      <a href="statement-efail.html">Statement on Efail
       </a></span>')
    <p></p>
    <div class="limiter"></div>
