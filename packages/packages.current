@@ -235,17 +235,17 @@ chk  1dddde1400c3bcb7749d398071af88c3e4754058d2d4c0b3696c2f82dc5cf11c
 #
 server http://files.gpg4win.org/src
 
-# last-changed: 2018-06-17
+# last-changed: 2018-08-30
 # by: ah
 # verified: Sig 5B80 C575 4298 F0CB  55D8 ED6A BCEF 7E29 4B09 2E28
-#file gpgol/gpgol-2.2.0.tar.bz2
-#chk  0e5ac1a4e270cb3afc2ecf0de801f208a10bb851f64ee46447f125186c70a2f4
+file gpgol/gpgol-2.3.0.tar.bz2
+chk  8faa3bcec013b6e769a01aecb7845e94618f83aa876fdbe84fe44af89142f86b
 
 # for beta
-server http://files.intevation.de/projects/gpg4all
+#server http://files.intevation.de/projects/gpg4all
 
-file gpgol/gpgol-2.3.0-beta167.tar.bz2
-chk  3446c5b8c44dd1941a24185eb803e37aa5e683e57d16071742d318888dac9418
+#file gpgol/gpgol-2.3.0-beta167.tar.bz2
+#chk  3446c5b8c44dd1941a24185eb803e37aa5e683e57d16071742d318888dac9418
 
 #
 # GpgEX
@@ -559,11 +559,11 @@ chk 8745e1722162c09322115b08e305063fed9cf5620ec38e31dd720e6633f7ee0f
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah with script kde-l10n.sh
-file kde-l10n/kde-l10n-201807171142-bin.tar.xz
-chk 6b094b8b42df75c7bd51f98b47dd2369566dbf888769db362f087ac79560a53c
+file kde-l10n/kde-l10n-201808311346-bin.tar.xz
+chk  ae5cbc4b93f8b886bfc2ac5584a663e2879a34459feec350f7981fec2787098d
 
-file kde-l10n/kde-l10n-201807171142-src.tar.xz
-chk 589a3451e2f2e52d0288cc9eeba804717da2788c542150bd159e4ef74293c5a0
+file kde-l10n/kde-l10n-201808311346-src.tar.xz
+chk  508ff4560e63fb729837a7fa7ac9b49a775b3f4372e883a8b9983e7768345ab2
 
 # Gpg4win-tools package
 # last changed: see package date.
@@ -576,5 +576,5 @@ chk 429b50736127f343838d70d043087e440646b59a0f7b56108ab55f7a8dd2c03a
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah.
-file kleopatra/kleopatra-201808301412.tar.gz
-chk 7fca511897b15e9a93fc4ba4b199916a3de0eca6a2d5e4d3d7516d25cf153ef3
+file kleopatra/kleopatra-201808311328.tar.gz
+chk  55c35ead036c5a93e9e504ee864e851ee016fe88aa7665e75db223604e4eda37
