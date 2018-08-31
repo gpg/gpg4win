@@ -69,7 +69,7 @@ Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 - GpgOL: Krypto-Mails können nun auch verschoben werden wenn
   diese geöffnet sind.
 
-- GpgOL: Nachrichten werden automatisch abgesichert wenn gültige
+- GpgOL: Nachrichten werden automatisch abgesichert wenn beglaubigte
   Schlüssel / Zertifikate für alle Empfänger gefunden werden konnten.
   Dies kann mit der Option "Nachrichten automatisch absichern"
   abgewählt werden. (T3999)
@@ -91,16 +91,22 @@ Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 - GpgOL: Eine Reihe von Speicherfehlern und Stabilitäts-Problemen wurde
   behoben.
 
+- GpgOL: Das erneute verifzieren einer Mail ist nun deutlich schneller.
+
 - GpgOL: Abstürze im Zusammenhang mit den Dateienamen von Anhängen
   wurden behoben. (T4062 T4032)
 
 - GpgOL: Ein Fehler wurde behoben der dazu führen konnte das Anhänge
   nicht korrekt angezeigt wurden.
 
+- GpgOL: Bei der Signaturprüfung wird nun auch "im Auftrag von"
+  berücksichtig. (T4110)
+
 - Kleopatra: Diagnoseausgaben werden nun bei Entschlüsselungs-Fehlern
   angeboten.
 
 - Kleopatra: Unterstützung für NetKey v3 Smartcards wurde verbessert.
+  (T4080)
 
 - Kleopatra: Es wird nun mit Entschlüsselungs-Fehlern durch fehlenden
   Integritätsschuz sauber umgegangen. (T4038)
@@ -120,14 +126,17 @@ Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 - Installer: Der Installer schließt nun Anwendungen auch bei der
   stillen Installation. (T4051)
 
+- Installer: Neues, optionales, Modul "Browser Integration" um GnuPG
+  als backend für Mailvelope 3.0 zu registrieren.
+
 - GnuPG: Der dirmngr Dienst fragt nun nicht mehr nach einer
   Windows Firewall Regel. (T3610)
 
 - GnuPG: Die Verarbeitung von S/MIME Daten wurde beschleunigt.
   (T4069)
 
-- GnuPG: Aktualisiert auf Version 2.2.9.
-  (Siehe: https://lists.gnupg.org/pipermail/gnupg-announce/2018q3/000427.html )
+- GnuPG: Aktualisiert auf Version 2.2.10.
+  (Siehe: https://lists.gnupg.org/pipermail/gnupg-announce/2018q3/000428.html )
 
 
 3. Anmerkungen
@@ -135,19 +144,11 @@ Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 
 - GpgOL
 
-  * Es ist nicht möglich E-Mails zu verändern (z.B. sie zu verschieben oder
-    Flaggen zu setzen) während diese entschlüsselt betrachtet werden.
-    Um dies zu umgehen schließen Sie die entsprechende Mail oder wählen
-    Sie ab und modifzieren / verschieben diese dann über Rechtsklick oder
-    Drag & Drop.
-
   * Crypto E-Mails, die als Anhang weitergeleitet wurden,
     werden nicht verarbeitet.
 
-  * Der Zertifikatsauswahldialog öffnet sich teilweise im Hintergrund
-    und bedarf insgesamt einer Überarbeitung.
-
-  * Als weitere Sprachen sind nur Englisch und Portugisisch verfügbar.
+  * Als weitere Sprachen sind nur Englisch, Niederländisch
+    und Portugiesisch verfügbar.
 
 - Allgemein
 

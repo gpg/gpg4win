@@ -68,7 +68,7 @@ New in Gpg4win version !VERSION! (!BUILD_ISODATE!)
 - GpgOL: It is now possible to move crypto mails while they
   are open. (T3459)
 
-- GpgOL: Messages are automatically secured if valid Keys / Certificates
+- GpgOL: Messages are automatically secured if certified Keys / certificates
   can be found for each recipient.
   This can be turned off with the option "Automatically secure messages".
   (T3999)
@@ -89,16 +89,22 @@ New in Gpg4win version !VERSION! (!BUILD_ISODATE!)
 
 - GpgOL: Fixed various memory errors and stability problems.
 
+- GpgOL: Verifying mails a second time is now much faster.
+
 - GpgOL: Crashes related to filenames of attachments have been fixed.
   (T4062 T4032)
 
 - GpgOL: An error has been fixed which could lead to attachments not
   beeing displayed.
 
+- GpgOL: Sent on behalf of is now respected when verifying a signature.
+  (T4110)
+
 - Kleopatra: Now offers diagnostic information in case of file
   decryption errors.
 
 - Kleopatra: Support for NetKey v3 Smartcards has been improved.
+  (T4080)
 
 - Kleopatra: Decryption errors caused by missing integrity protection
   (MDC) are now handled properly. (T4038)
@@ -116,13 +122,16 @@ New in Gpg4win version !VERSION! (!BUILD_ISODATE!)
 - Installer: Silent install now correctly closes running Gpg4win
   applications. (T4051)
 
+- Installer: New optional module "Browser Integration" to register
+  GnuPG as backend for Mailvelope 3.0.
+
 - GnuPG: The dirmngr process no longer requests Windows firewall
   access. (T3610)
 
 - GnuPG: S/MIME data is now handled faster. (T4069)
 
-- GnuPG: Updated to 2.2.9.
-  (See: https://lists.gnupg.org/pipermail/gnupg-announce/2018q3/000427.html )
+- GnuPG: Updated to 2.2.10
+  (See: https://lists.gnupg.org/pipermail/gnupg-announce/2018q3/000428.html )
 
 
 3. Additional notes
@@ -130,17 +139,9 @@ New in Gpg4win version !VERSION! (!BUILD_ISODATE!)
 
 - GpgOL
 
-  * It is not possible to modify mails (e.g. moving / flagging the mail)
-    while they are shown decrypted.
-    To workaround this: unselect the crypto mail and then make changes
-    through the right click context menu or move it with drag and drop.
-
   * Crypto mails forwarded as attachment are not properly handled.
 
-  * The certificate selection dialog sometimes opens in the background and
-    need an overhaul.
-
-  * Localization is only there for German and Portuguese.
+  * Localization is only complete for Dutch, German and Portugese.
 
 - General
 
@@ -154,10 +155,6 @@ New in Gpg4win version !VERSION! (!BUILD_ISODATE!)
 
     You can add it manually to your gpg.conf. The trust-model is already
     supported by GpgOL.
-
-- Kleopatra
-
-  * Netkey cards are not yet supported by the new Manage Smartcard view.
 
 
 4. Version history
