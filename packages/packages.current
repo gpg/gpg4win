@@ -238,14 +238,14 @@ server http://files.gpg4win.org/src
 # last-changed: 2018-08-30
 # by: ah
 # verified: Sig 5B80 C575 4298 F0CB  55D8 ED6A BCEF 7E29 4B09 2E28
-file gpgol/gpgol-2.3.0.tar.bz2
-chk  8faa3bcec013b6e769a01aecb7845e94618f83aa876fdbe84fe44af89142f86b
+#file gpgol/gpgol-2.3.0.tar.bz2
+#chk  8faa3bcec013b6e769a01aecb7845e94618f83aa876fdbe84fe44af89142f86b
 
 # for beta
-#server http://files.intevation.de/projects/gpg4all
+server http://files.intevation.de/projects/gpg4all
 
-#file gpgol/gpgol-2.3.0-beta167.tar.bz2
-#chk  3446c5b8c44dd1941a24185eb803e37aa5e683e57d16071742d318888dac9418
+file gpgol/gpgol-2.3.1-beta13.tar.bz2
+chk  3f5e6c22fdfe90b211e30fd7968ed51263c22690ba3e1009f1c9410791ca5796
 
 #
 # GpgEX
@@ -545,8 +545,8 @@ file pinentry/pinentry-1.1.1-beta5.tar.bz2
 chk 7bda3fef7d7f0f77dd4dfe11e3364c64f1e9646945afa995da8a5084ce59e101
 
 # by: ah
-file gpgme/gpgme-1.11.2-beta247.tar.bz2
-chk aa2be1cb064589471db81036e75c389261a461c643b7e55b5737b933894cff8b
+file gpgme/gpgme-1.11.2-beta273.tar.bz2
+chk  ba4d0c725d08eb9cccf1e9a74c55615922c740ee5bec17410a43b39e124806f3
 
 # Libkleo
 # last changed: see package date.
