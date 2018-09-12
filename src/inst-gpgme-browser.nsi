@@ -63,6 +63,11 @@ ${MementoUnselectedSection} "Browser integration" SEC_gpgme_browser
 
   WriteRegStr SHCTX "Software\Google\Chrome\NativeMessagingHosts\gpgmejson" "" "$INSTDIR\bin\gpgme-chrome.json"
   WriteRegStr SHCTX "Software\Mozilla\NativeMessagingHosts\gpgmejson" "" "$INSTDIR\bin\gpgme-mozilla.json"
+  SetRegView 64
+  WriteRegStr SHCTX "Software\Google\Chrome\NativeMessagingHosts\gpgmejson" "" "$INSTDIR\bin\gpgme-chrome.json"
+  WriteRegStr SHCTX "Software\Mozilla\NativeMessagingHosts\gpgmejson" "" "$INSTDIR\bin\gpgme-mozilla.json"
+  SetRegView 32
+
 !endif
 
 ${MementoSectionEnd}

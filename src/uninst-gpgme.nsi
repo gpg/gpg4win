@@ -44,5 +44,11 @@ Section "-un.gpgme"
 
   DeleteRegKey SHCTX "Software\Google\Chrome\NativeMessagingHosts\gpgmejson"
   DeleteRegKey SHCTX "Software\Mozilla\NativeMessagingHosts\gpgmejson"
+
+  SetRegView 64
+  DeleteRegKey SHCTX "Software\Google\Chrome\NativeMessagingHosts\gpgmejson"
+  DeleteRegKey SHCTX "Software\Mozilla\NativeMessagingHosts\gpgmejson"
+  SetRegView 32
+
 !endif
 SectionEnd
