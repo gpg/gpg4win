@@ -66,77 +66,12 @@ Die integrierten Gpg4win-Komponenten in Version !VERSION! sind:
 Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 -----------------------------------------
 
-- GpgOL: Krypto-Mails können nun auch verschoben werden wenn
-  diese geöffnet sind.
+- GpgOL: Die Fehlermeldung "Failed to resolve recipients." erscheint
+  nun nicht mehr zu häufig.
 
-- GpgOL: Nachrichten werden automatisch abgesichert wenn beglaubigte
-  Schlüssel / Zertifikate für alle Empfänger gefunden werden konnten.
-  Dies kann mit der Option "Nachrichten automatisch absichern"
-  abgewählt werden. (T3999)
-
-- GpgOL: Unterstützung für Verteilerlisten wurde hinzugefügt. (T4065)
-
-- GpgOL: S/MIME kann nun bei der automatischen Schlüssel-Auflösung
-  bevorzugt werden. (T3961)
-
-- GpgOL: Verschlüsselung sollte Outlook nicht länger einfrieren.
-  (T3838)
-
-- GpgOL: Mails welche durch Outlook Ordner Regeln verschoben wurden
-  werden nun von GpgOL verarbeitet. (T4070)
-
-- GpgOL: Der Konfigurations-Dialog wurde erneuert um zukünftig besser
-  erweitert werden zu können. (T3944)
-
-- GpgOL: Eine Reihe von Speicherfehlern und Stabilitäts-Problemen wurde
-  behoben.
-
-- GpgOL: Das erneute verifzieren einer Mail ist nun deutlich schneller.
-
-- GpgOL: Abstürze im Zusammenhang mit den Dateienamen von Anhängen
-  wurden behoben. (T4062 T4032)
-
-- GpgOL: Ein Fehler wurde behoben der dazu führen konnte das Anhänge
-  nicht korrekt angezeigt wurden.
-
-- GpgOL: Bei der Signaturprüfung wird nun auch "im Auftrag von"
-  berücksichtig. (T4110)
-
-- Kleopatra: Diagnoseausgaben werden nun bei Entschlüsselungs-Fehlern
-  angeboten.
-
-- Kleopatra: Unterstützung für NetKey v3 Smartcards wurde verbessert.
-  (T4080)
-
-- Kleopatra: Es wird nun mit Entschlüsselungs-Fehlern durch fehlenden
-  Integritätsschuz sauber umgegangen. (T4038)
-
-- Kleopatra: Die Update-Prüfung kann nun einfacher deaktiviert werden.
-  (T4043)
-
-- Kleopatra: Sonderzeichen in der Ausgabe von GnuPG sollten nun
-  korrekt dargestellt werden. (T2983)
-
-- Kleopatra: p7m und p7s Dateien werden nun auch mit Kleopatra
-  verknüpft. (T3890)
-
-- Kleopatra: Verschiedene kleinere Verbesserungen.
-  (T3238 T4078 T3229 T4041)
-
-- Installer: Der Installer schließt nun Anwendungen auch bei der
-  stillen Installation. (T4051)
-
-- Installer: Neues, optionales, Modul "Browser Integration" um GnuPG
-  als backend für Mailvelope 3.0 zu registrieren.
-
-- GnuPG: Der dirmngr Dienst fragt nun nicht mehr nach einer
-  Windows Firewall Regel. (T3610)
-
-- GnuPG: Die Verarbeitung von S/MIME Daten wurde beschleunigt.
-  (T4069)
-
-- GnuPG: Aktualisiert auf Version 2.2.10.
-  (Siehe: https://lists.gnupg.org/pipermail/gnupg-announce/2018q3/000428.html )
+- GpgOL: Ein Problem das dazu führen konnte das Mails mit
+  Microsoft Office Anhängen nicht abgesichert werden konnten wurde
+  behoben. (T4131)
 
 
 3. Anmerkungen

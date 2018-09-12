@@ -6,12 +6,24 @@
 Noteworthy changes in Version 3.1.4 (unreleased)
 ------------------------------------------------
 
+(en) GpgOL: Fixed the error: "Failed to resolve recipients." occuring
+     too often. (T4132)
+
+(de) GpgOL: Die Fehlermeldung "Failed to resolve recipients." erscheint
+     nun nicht mehr zu häufig.
+
+(en) GpgOL: A problem that could prevent mails with Microsoft Office
+     files as attachments from beeing secured has been fixed. (T4131)
+
+(de) GpgOL: Ein Problem das dazu führen konnte das Mails mit
+     Microsoft Office Anhängen nicht abgesichert werden konnten wurde
+     behoben. (T4131)
 
 ~~~~~~~~~~~~~~~
 GnuPG:          2.2.10
 Kleopatra:      3.1.3
 GPA:            0.9.10
-GpgOL:          2.3.0
+GpgOL:          2.3.1
 GpgEX:          1.0.6
 Kompendium DE:  4.0.1
 Compendium EN:  3.0.0
@@ -32,7 +44,7 @@ Noteworthy changes in Version 3.1.3 (2018-08-31)
      Dies kann mit der Option "Nachrichten automatisch absichern"
      abgewählt werden. (T3999)
 
-(en) GpgOL: Messages are automatically secured if certified Keys / certificates
+(en) GpgOL: Messages are automatically secured if certified keys / certificates
      can be found for each recipient.
      This can be turned off with the option "Automatically secure messages".
      (T3999)

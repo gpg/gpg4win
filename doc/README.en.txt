@@ -65,73 +65,11 @@ Included Gpg4win components in version !VERSION! are:
 New in Gpg4win version !VERSION! (!BUILD_ISODATE!)
 -----------------------------------------
 
-- GpgOL: It is now possible to move crypto mails while they
-  are open. (T3459)
+- GpgOL: Fixed the error: "Failed to resolve recipients." occuring
+  too often. (T4132)
 
-- GpgOL: Messages are automatically secured if certified Keys / certificates
-  can be found for each recipient.
-  This can be turned off with the option "Automatically secure messages".
-  (T3999)
-
-- GpgOL: Support for distribution lists has been added. (T4065)
-
-- GpgOL: S/MIME can now be preferred when automatically resolving
-  recipients. (T3961)
-
-- GpgOL: Encryption should no longer cause Outlook to freeze.
-  (T3838)
-
-- GpgOL: Mails moved by Outlook folder rules are now handled by
-  GpgOL. (T4070)
-
-- GpgOL: The config dialog was changed to improve future extensibility.
-  (T3961)
-
-- GpgOL: Fixed various memory errors and stability problems.
-
-- GpgOL: Verifying mails a second time is now much faster.
-
-- GpgOL: Crashes related to filenames of attachments have been fixed.
-  (T4062 T4032)
-
-- GpgOL: An error has been fixed which could lead to attachments not
-  beeing displayed.
-
-- GpgOL: Sent on behalf of is now respected when verifying a signature.
-  (T4110)
-
-- Kleopatra: Now offers diagnostic information in case of file
-  decryption errors.
-
-- Kleopatra: Support for NetKey v3 Smartcards has been improved.
-  (T4080)
-
-- Kleopatra: Decryption errors caused by missing integrity protection
-  (MDC) are now handled properly. (T4038)
-
-- Kleopatra: Update check can now be disabled more easily. (T4043)
-
-- Kleopatra: Special characters in GnuPG output should be displayed
-  correctly. (T2983)
-
-- Kleopatra: p7m and p7s files are now also registered to be
-  opened with Kleopatra. (T3890)
-
-- Kleopatra: Various minor improvements. (T3238 T4078 T3229 T4041)
-
-- Installer: Silent install now correctly closes running Gpg4win
-  applications. (T4051)
-
-- Installer: New optional module "Browser Integration" to register
-  GnuPG as backend for Mailvelope 3.0.
-
-- GnuPG: The dirmngr process no longer requests Windows firewall
-  access. (T3610)
-
-- GnuPG: S/MIME data is now handled faster. (T4069)
-
-- GnuPG: Updated to 2.2.10
-  (See: https://lists.gnupg.org/pipermail/gnupg-announce/2018q3/000428.html )
+- GpgOL: A problem that could prevent mails with Microsoft Office
+  files as attachments from beeing secured has been fixed. (T4131)
 
 
 3. Additional notes
