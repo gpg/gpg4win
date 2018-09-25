@@ -28,6 +28,7 @@ Section "-un.gpg4win_tools"
 !endif
   Delete /REBOOTOK "$INSTDIR\bin\resolver.exe"
   Delete /REBOOTOK "$INSTDIR\bin\overlayer.exe"
-  Delete /REBOOTOK "$INSTDIR\bin\gpgolgui.exe"
+  Delete /REBOOTOK "$INSTDIR\bin\gpgolconfig.exe"
+  Delete /REBOOTOK "$INSTDIR\bin\gpgolkeyadder.exe"
   RMDir "$INSTDIR\bin"
 SectionEnd
