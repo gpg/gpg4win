@@ -315,10 +315,10 @@ chk  9a8c5d1b6326547a8a014665105520be7e2bd6624e48fb9a68ac2a84c99ee567
 #chk  68076686fa724a290ea49cdf0d1c0c1500907d1b759a3bcbfbec0293e8f56570
 
 # TODO back to stable
-# last changed: 2018-01-11
+# last changed: 2018-10-08
 # by: ah
-#file gpgme/gpgme-1.10.0.tar.bz2
-#chk  1a8fed1197c3b99c35f403066bb344a26224d292afc048cfdfc4ccd5690a0693
+file gpgme/gpgme-1.12.0.tar.bz2
+chk  b4dc951c3743a60e2e120a77892e9e864fb936b2e58e7c77e8581f4d050e8cd8
 
 # last changed: 2017-01-04
 # by: ah
@@ -545,8 +545,8 @@ file pinentry/pinentry-1.1.1-beta5.tar.bz2
 chk 7bda3fef7d7f0f77dd4dfe11e3364c64f1e9646945afa995da8a5084ce59e101
 
 # by: ah
-file gpgme/gpgme-1.11.2-beta273.tar.bz2
-chk  ba4d0c725d08eb9cccf1e9a74c55615922c740ee5bec17410a43b39e124806f3
+#file gpgme/gpgme-1.11.2-beta273.tar.bz2
+#chk  ba4d0c725d08eb9cccf1e9a74c55615922c740ee5bec17410a43b39e124806f3
 
 # Libkleo
 # last changed: see package date.
