@@ -244,8 +244,8 @@ server http://files.gpg4win.org/src
 # for beta
 server http://files.intevation.de/projects/gpg4all
 
-file gpgol/gpgol-2.3.1-beta78.tar.bz2
-chk  555665795ed6a464ed902ab31c35170ced3f523912294bc1bd0917ad5f0f2820
+file gpgol/gpgol-2.3.1-beta84.tar.bz2
+chk  9de866f9f3255dd8df3b0d34d743f63816f86d3b61b41276069c8c38ace8101a
 
 #
 # GpgEX
@@ -552,8 +552,8 @@ chk 7bda3fef7d7f0f77dd4dfe11e3364c64f1e9646945afa995da8a5084ce59e101
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah.
-file libkleo/libkleo-201808281419.tar.gz
-chk 8745e1722162c09322115b08e305063fed9cf5620ec38e31dd720e6633f7ee0f
+file libkleo/libkleo-201810151611.tar.gz
+chk 73ef39515605d6dbd83cf974ca65f749108682f87599500ba07ca133a3910819
 
 # KDE-L10n
 # last changed: see package date.
@@ -569,8 +569,8 @@ chk  508ff4560e63fb729837a7fa7ac9b49a775b3f4372e883a8b9983e7768345ab2
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah.
-file gpg4win-tools/gpg4win-tools-201810081757.tar.gz
-chk 9cfe4e14aeb6313d456697cb52a695a39978eb536b0a4409991d0709a7422a59
+file gpg4win-tools/gpg4win-tools-201810151610.tar.gz
+chk  09cba38db9f06d473f53aa59b4c5cf91e691fe263152d83fc599ba1c5dac3e5d
 
 # Kleopatra
 # last changed: see package date.
