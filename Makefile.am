@@ -33,8 +33,7 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         patches/glib-2.41.5/01-socket.patch \
         patches/glib-2.41.5/02-formatsec.patch \
         patches/gpa-0.9.10/0001-w32-Make-location-of-locale-dir-more-flexible.patch \
-        patches/gpgol-2.1.1/0001-Disable-OL-2013-2016-resiliency-for-us.patch \
-        patches/gpgol-2.1.1/0001-Launch-Kleopatra-config-dialog-with-parent.patch \
+        patches/gpgol-2.3.1/0001-Pass-lang-correctly-to-config-dialog.patch \
         patches/kconfigwidgets/0001-Make-QDbus-optional.patch \
         patches/kconfigwidgets/0002-Crudely-remove-KF5Auth-depedency.patch \
         patches/kiconthemes/0001-Make-DBus-optional.patch \
