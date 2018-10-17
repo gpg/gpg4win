@@ -560,7 +560,7 @@ chk 73ef39515605d6dbd83cf974ca65f749108682f87599500ba07ca133a3910819
 # by: ah
 # verified: Tarball created by ah with script kde-l10n.sh
 file kde-l10n/kde-l10n-201810161304-bin.tar.xz
-chk  f6b4c31774a67ae9aff5c10fa4db136a7594fc9cecbddf786c710ba1d73d4f241
+chk  f6b4c31774a67ae9aff5c10fa4db136a7594fc9cecbddf786c710ba1d73d4f24
 
 file kde-l10n/kde-l10n-201810161304-src.tar.xz
 chk  d3c8e91f9c758e0d5505f7cae6d3908e606cb92103ac2900c021c6c418adfe2a
