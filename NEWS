@@ -65,10 +65,18 @@ Noteworthy changes in Version 3.1.4 (unreleased)
 
 (de) GpgOL: Verschiedene kleinere Fehlerkorrekturen.
 
+(en) GPA: Search now also queries Web Key Directories.
+
+(de) GPA: Bei der Suche werden auch "Web Key Directories" angefragt.
+
+(en) GPA: Improved error handling with diagnostic output.
+
+(de) GPA: Verbesserte Fehlerbehandlung mit Diagnoseausgaben.
+
 ~~~~~~~~~~~~~~~
 GnuPG:          2.2.10
 Kleopatra:      3.1.3
-GPA:            0.9.10
+GPA:            0.10.0
 GpgOL:          2.3.1
 GpgEX:          1.0.6
 Kompendium DE:  4.0.1

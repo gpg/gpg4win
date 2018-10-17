@@ -97,6 +97,9 @@ Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 
 - GpgOL: Verschiedene kleinere Fehlerkorrekturen.
 
+- GPA: Verbesserte Fehlerbehandlung mit Diagnoseausgaben.
+
+- GPA: Bei der Suche werden auch "Web Key Directories" angefragt.
 
 3. Anmerkungen
 ==============

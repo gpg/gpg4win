@@ -320,10 +320,10 @@ chk  9a8c5d1b6326547a8a014665105520be7e2bd6624e48fb9a68ac2a84c99ee567
 file gpgme/gpgme-1.12.0.tar.bz2
 chk  b4dc951c3743a60e2e120a77892e9e864fb936b2e58e7c77e8581f4d050e8cd8
 
-# last changed: 2017-01-04
+# last changed: 2018-10-17
 # by: ah
-file gpa/gpa-0.9.10.tar.bz2
-chk  c3b9cc36fd9916e83524930f99df13b1d5f601f4c0168cb9f5d81422e282b727
+file gpa/gpa-0.10.0.tar.bz2
+chk  95dbabe75fa5c8dc47e3acf2df7a51cee096051e5a842b4c9b6d61e40a6177b1
 
 #
 #  GnuPG utilities
