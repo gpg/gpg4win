@@ -3,6 +3,86 @@
 # The version number given below are for the standard installers as
 # distributed by www.gpg4win.org.+
 
+Noteworthy changes in Version 3.1.4 (2018-10-17)
+------------------------------------------------
+
+(en) GpgOL: It is now possible to configure OpenPGP keys through
+     Outlook contacts. (T4122)
+
+(de) GpgOL: Es ist nun möglich OpenPGP Schlüssel in Outlook kontakten
+     zu konfigurieren. (T4122)
+
+(en) GpgOL: For improved security the signers email is now
+     shown in the trusted sender category. (T4183)
+
+(de) GpgOL: Als Sicherheits-Verbesserung wird nun die Mail Adresse
+     einer Signatur in der vertrauenswürdiger Absender Kategorie
+     angezeigt. (T4183)
+
+(en) GpgOL: Fixed the error: "Failed to resolve recipients." occurring
+     too often. (T4132 T4129)
+
+(de) GpgOL: Die Fehlermeldung "Failed to resolve recipients." erscheint
+     nun nicht mehr zu häufig. (T4132 T4129)
+
+(en) GpgOL: A problem that could prevent mails with Microsoft Office
+     files as attachments from beeing secured has been fixed. (T4131)
+
+(de) GpgOL: Ein Problem das dazu führen konnte das Mails mit
+     Microsoft Office Anhängen nicht abgesichert werden konnten wurde
+     behoben. (T4131)
+
+(en) GpgOL: Debugging has been improved and is now configurable in the
+     config dialog. (T4120 T4121)
+
+(de) GpgOL: Die Fehlersuche wurde verbessert und ist nun über den
+     Konfigurationsdialog einstellbar. (T4120 T4121)
+
+(en) GpgOL: It is now possible to generally prefer S/MIME. (T4178)
+
+(de) GpgOL: Es ist nun möglich S/MIME allgemein zu bevorzugen. (T4178)
+
+(en) GpgOL: A problem that caused attachments to be hidden in
+     unusually structured emails has been fixed. (T4161)
+
+(de) GpgOL: Ein Problem das in ungewöhnlich strukturierten Mails dazu
+     führen konnte das Anhänge nicht angezeigt wurden ist behoben.
+     (T4161)
+
+(en) GpgOL: A crash when viewing mails in unknown codepages has
+     been fixed. (T4141)
+
+(de) GpgOL: Ein Absturz bei der Anzeige von Mails in unbekannten
+     Zeichensätzen wurde behoben. (T4141)
+
+(en) GpgOL: It is now possible to automatically import X509 certificates
+     for S/MIME from configured directory services. (T4174)
+
+(de) GpgOL: Es ist nun möglich automatisch X509 Zertifikate, für S/MIME,
+     aus konfigurierten Verzeichnis-Diensten zu importieren. (T4174)
+
+(en) GpgOL: Various smaller bugfixes.
+
+(de) GpgOL: Verschiedene kleinere Fehlerkorrekturen.
+
+(en) GPA: Search now also queries Web Key Directories.
+
+(de) GPA: Bei der Suche werden auch "Web Key Directories" angefragt.
+
+(en) GPA: Improved error handling with diagnostic output.
+
+(de) GPA: Verbesserte Fehlerbehandlung mit Diagnoseausgaben.
+
+
+~~~~~~~~~~~~~~~
+GnuPG:          2.2.10
+Kleopatra:      3.1.3
+GPA:            0.10.0
+GpgOL:          2.3.1
+GpgEX:          1.0.6
+Kompendium DE:  4.0.1
+Compendium EN:  3.0.0
+~~~~~~~~~~~~~~~
 
 Noteworthy changes in Version 3.1.3 (2018-08-31)
 ------------------------------------------------
