@@ -3,9 +3,8 @@
 ;; column are considered a comment and not included in the actually
 ;; installed version.  Certain keywords are replaced by the Makefile;
 ;; those words are enclosed by exclamation marks.
-
-(To use S/MIME certificates for sign and encrypt, you have to define
-the trustability of X.509 root certificates.)
+To use S/MIME certificates for sign and encrypt, you have to define
+the trustability of X.509 root certificates.
 
 A root certificate (root CA) is used to check the validity of all
 child certificates.  If you trust the root certificate therby you
@@ -20,11 +19,11 @@ important root certificates:
 
      Copy root certificate file to:
 
-     [Windows XP]:
-        C:\Documents and settings\All Users\Application data\GNU\etc\
-        dirmngr\trusted-certs\
-     [Windows Vista/7]:
-        C:\ProgramData\GNU\etc\dirmngr\trusted-certs
+        %ProgramData%\GNU\etc\gnupg\trusted-certs
+
+     e.g.:
+
+        C:\ProgramData\GNU\etc\gnupg\trusted-certs
 
      The corresponding root certificates must be available as files in DER
      format in the above file folder, with the file extension .crt or .der.
@@ -36,15 +35,32 @@ important root certificates:
      If the above folder is not visible?
      Please read the reference note to the view options [1].
 
-2.  Set ultimate trusted
+
+2.  Store intermediate certificates
+
+     Some Certificate Authorities require additional intermediate
+     certificates.
+
+     Copy intermediate certificates to:
+
+         %ProgramData%\GNU\etc\gnupg\extra-certs
+
+     e.g.:
+
+         C:\ProgramData\GNU\etc\gnupg\extra-certs
+
+     The format is the same as the root certificates.
+
+
+3.  Set root trust
 
      a) Open the following file with a text editor:
 
-         [Windows XP]:
-           C:\Documents and settings\All Users\Application data\GNU\etc\
-           gnupg\trustlist.txt
-         [Windows Vista/7]:
-           C:\ProgramData\GNU\etc\gnupg\trustlist.txt
+        %ProgramData%\GNU\etc\gnupg\trustlist.txt
+
+     e.g.:
+
+        C:\ProgramData\GNU\etc\gnupg\trustlist.txt
 
      b) Create a new line per root certificate with the corresponding
         fingerprint, such as:
@@ -105,9 +121,6 @@ important root certificates:
        trustlist.txt - see step (2).
 
 --
-You will find this S/MIME configuration instruction in the Gpg4win
-start menu "Documentation".
-
 For more information, see the Gpg4win Compendium, chapter 22:
      http://gpg4win.org/doc/en/gpg4win-compendium_28.html
 
@@ -116,5 +129,4 @@ For more information, see the Gpg4win Compendium, chapter 22:
     Ensure that you have enabled the folder option "Show hidden files
     and folders".  You find this option under:
 
-      [Windows XP]: Tools > Folder Options > View
-      [Windows Vista/7]: Organize > Folder and Search Options > Ansicht
+      File > Folder and Search Options > Ansicht
