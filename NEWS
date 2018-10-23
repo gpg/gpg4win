@@ -26,7 +26,7 @@ Noteworthy changes in Version 3.1.4 (2018-10-17)
      zu konfigurieren. (T4122)
 
 (en) GpgOL: For improved security the signers email is now
-     shwon in the trusted sender category. (T4183)
+     shown in the trusted sender category. (T4183)
 
 (de) GpgOL: Als Sicherheits-Verbesserung wird nun die Mail Adresse
      einer Signatur in der vertrauenswürdiger Absender Kategorie
