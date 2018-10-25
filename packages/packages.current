@@ -300,13 +300,25 @@ chk  47f96c37b4f2aac289f0bc1bacfa8bd8b4b209a488d3d15e2229cb6cc9b26449
 
 # last changed: 2018-08-30
 # by: ah
-name gnupg-w32-2.2.10-20180830-bin.exe
-file binary/gnupg-w32-2.2.10_20180830.exe
-chk  e84bad2436e3a0309d59e0ed313b346a1fc4ac556b5fd68bcea2d0e58d0516a2
+#name gnupg-w32-2.2.10-20180830-bin.exe
+#file binary/gnupg-w32-2.2.10_20180830.exe
+#chk  e84bad2436e3a0309d59e0ed313b346a1fc4ac556b5fd68bcea2d0e58d0516a2
 
-name gnupg-w32-2.2.10-20180830-src.tar.xz
-file binary/gnupg-w32-2.2.10_20180830.tar.xz
-chk  9a8c5d1b6326547a8a014665105520be7e2bd6624e48fb9a68ac2a84c99ee567
+#name gnupg-w32-2.2.10-20180830-src.tar.xz
+#file binary/gnupg-w32-2.2.10_20180830.tar.xz
+#chk  9a8c5d1b6326547a8a014665105520be7e2bd6624e48fb9a68ac2a84c99ee567
+
+# TODO back to stable before next release
+server http://files.intevation.de/projects/gpg4all
+name gnupg-w32-2.2.11-beta17-20181025-bin.exe
+file gnupg/gnupg-w32-2.2.11-beta17_20181025.exe
+chk  e7b82d98694833a307d33750e106c4ed3b3b249e31f89482d502f6aa9ae55456
+
+name gnupg-w32-2.2.11-beta17-20181025-src.tar.xz
+file gnupg/gnupg-w32-2.2.11-beta17_20181025.tar.xz
+chk  29ca66e6985851dd9f89b1dd004536a2eb92feeba35e52d45a0860a6c5dfe8ac
+
+server ftp://ftp.gnupg.org/gcrypt
 
 # TODO back to stable
 # last changed: 2017-12-05
