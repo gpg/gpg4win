@@ -66,40 +66,14 @@ Die integrierten Gpg4win-Komponenten in Version !VERSION! sind:
 Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 -----------------------------------------
 
-- GpgOL: Es ist nun möglich OpenPGP Schlüssel in Outlook kontakten
-  zu konfigurieren. (T4122)
+- GpgOL: Es ist nun möglich die Standardkonfiguration
+  Systemweit zu konfigurieren.
 
-- GpgOL: Als Sicherheits-Verbesserung wird nun die Mail Adresse
-  einer Signatur in der vertrauenswürdiger Absender Kategorie
-  angezeigt. (T4183)
+- GpgOL: Probleme mit ungewöhnlichen Zeichensätzen
+  wurden behoben. (T4156)
 
-- GpgOL: Die Fehlermeldung "Failed to resolve recipients." erscheint
-  nun nicht mehr zu häufig. (T4132 T4129)
-
-- GpgOL: Ein Problem das dazu führen konnte das Mails mit
-  Microsoft Office Anhängen nicht abgesichert werden konnten wurde
-  behoben. (T4131)
-
-- GpgOL: Die Fehlersuche wurde verbessert und ist nun über den
-  Konfigurationsdialog einstellbar. (T4120 T4121)
-
-- GpgOL: Es ist nun möglich S/MIME allgemein zu bevorzugen. (T4178)
-
-- GpgOL: Ein Problem das in ungewöhnlich strukturierten Mails dazu
-  führen konnte das Anhänge nicht angezeigt wurden ist behoben.
-  (T4161)
-
-- GpgOL: Ein Absturz bei der Anzeige von Mails in unbekannten
-  Zeichensätzen wurde behoben. (T4141)
-
-- GpgOL: Es ist nun möglich automatisch X509 Zertifikate, für S/MIME,
-  aus konfigurierten Verzeichnis-Diensten zu importieren. (T4174)
-
-- GpgOL: Verschiedene kleinere Fehlerkorrekturen.
-
-- GPA: Verbesserte Fehlerbehandlung mit Diagnoseausgaben.
-
-- GPA: Bei der Suche werden auch "Web Key Directories" angefragt.
+- GpgOL: Das deaktivieren von Daten bei der Fehlersuche
+  führt nun zu stärker reduzierten logs. (T4193)
 
 3. Anmerkungen
 ==============
