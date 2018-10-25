@@ -32,7 +32,6 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         patches/extra-cmake-modules/0001-Use-BIN_INSTALL_DIR-data-for-DATAROOTDIR-on-Windows.patch \
         patches/glib-2.41.5/01-socket.patch \
         patches/glib-2.41.5/02-formatsec.patch \
-        patches/gpgol-2.3.1/0001-Pass-lang-correctly-to-config-dialog.patch \
         patches/kconfigwidgets/0001-Make-QDbus-optional.patch \
         patches/kconfigwidgets/0002-Crudely-remove-KF5Auth-depedency.patch \
         patches/kiconthemes/0001-Make-DBus-optional.patch \

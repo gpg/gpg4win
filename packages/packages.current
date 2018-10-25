@@ -238,14 +238,14 @@ server http://files.gpg4win.org/src
 # last-changed: 2018-08-30
 # by: ah
 # verified: Sig 5B80 C575 4298 F0CB  55D8 ED6A BCEF 7E29 4B09 2E28
-file gpgol/gpgol-2.3.1.tar.bz2
-chk  2b2b4ef08fda8103cfbdcb3d988081d5d6c9ae6e8021bd2d237da1257efd5dc5
+#file gpgol/gpgol-2.3.1.tar.bz2
+#chk  2b2b4ef08fda8103cfbdcb3d988081d5d6c9ae6e8021bd2d237da1257efd5dc5
 
 # for beta
 server http://files.intevation.de/projects/gpg4all
 
-#file gpgol/gpgol-2.3.1-beta84.tar.bz2
-#chk  9de866f9f3255dd8df3b0d34d743f63816f86d3b61b41276069c8c38ace8101a
+file gpgol/gpgol-2.3.2-beta15.tar.bz2
+chk  0bc7edb65d952d2c21bf409d35d12945ce5b431b0f389501cc6e61e579fc91ff
 
 #
 # GpgEX
@@ -569,8 +569,8 @@ chk  d3c8e91f9c758e0d5505f7cae6d3908e606cb92103ac2900c021c6c418adfe2a
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah.
-file gpg4win-tools/gpg4win-tools-201810151610.tar.gz
-chk  09cba38db9f06d473f53aa59b4c5cf91e691fe263152d83fc599ba1c5dac3e5d
+file gpg4win-tools/gpg4win-tools-201810251247.tar.gz
+chk  c0e06af394ef203734034bbc1c2eeecdc8fdb70a978da34107f48cbf81b3d40b
 
 # Kleopatra
 # last changed: see package date.
