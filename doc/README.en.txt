@@ -74,6 +74,12 @@ New in Gpg4win version !VERSION! (!BUILD_ISODATE!)
 - GpgOL: Disabling data debugging removes more data
   from debug logs. (T4193)
 
+- GpgOL: Random misbehavior (crashes, freezes, etc.) after
+  working with S/MIME has been fixed. (T4111)
+
+- Kleopatra: Random misbehavior (crashes, freezes, etc.) after
+  working with S/MIME has been fixed. (T4111)
+
 
 3. Additional notes
 ===================

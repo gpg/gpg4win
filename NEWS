@@ -24,6 +24,18 @@ Noteworthy changes in Version 3.1.5 (unreleased)
 (de) GpgOL: Das deaktivieren von Daten bei der Fehlersuche
      führt nun zu stärker reduzierten logs. (T4193)
 
+(en) GpgOL: Random misbehavior (crashes, freezes, etc.) after
+     working with S/MIME has been fixed. (T4111)
+
+(de) GpgOL: Zufälliges Fehlverhalten (Abstürze, Hänger, etc.)
+     nach der Verwendung von S/MIME wurde behoben. (T4111)
+
+(en) Kleopatra: Random misbehavior (crashes, freezes, etc.) after
+     working with S/MIME has been fixed. (T4111)
+
+(de) Kleopatra: Zufälliges Fehlverhalten (Abstürze, Hänger, etc.)
+     nach dem arbeiten mit S/MIME. (T4237)
+
 ~~~~~~~~~~~~~~~
 GnuPG:          2.2.10
 Kleopatra:      3.1.3

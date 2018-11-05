@@ -75,6 +75,13 @@ Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 - GpgOL: Das deaktivieren von Daten bei der Fehlersuche
   führt nun zu stärker reduzierten logs. (T4193)
 
+- GpgOL: Zufälliges Fehlverhalten (Abstürze, Hänger, etc.)
+  nach der Verwendung von S/MIME wurde behoben. (T4111)
+
+- Kleopatra: Zufälliges Fehlverhalten (Abstürze, Hänger, etc.)
+  nach dem arbeiten mit S/MIME. (T4238)
+
+
 3. Anmerkungen
 ==============
 

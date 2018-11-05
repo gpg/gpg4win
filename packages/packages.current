@@ -244,8 +244,8 @@ server http://files.gpg4win.org/src
 # for beta
 server http://files.intevation.de/projects/gpg4all
 
-file gpgol/gpgol-2.3.2-beta15.tar.bz2
-chk  0bc7edb65d952d2c21bf409d35d12945ce5b431b0f389501cc6e61e579fc91ff
+file gpgol/gpgol-2.3.2-beta22.tar.bz2
+chk  72c0a9e08dc74494eb4f07076a82808f7d71218ec0d0ba48c309702d90e87e61
 
 #
 # GpgEX
@@ -329,8 +329,8 @@ server ftp://ftp.gnupg.org/gcrypt
 # TODO back to stable
 # last changed: 2018-10-08
 # by: ah
-file gpgme/gpgme-1.12.0.tar.bz2
-chk  b4dc951c3743a60e2e120a77892e9e864fb936b2e58e7c77e8581f4d050e8cd8
+#file gpgme/gpgme-1.12.0.tar.bz2
+#chk  b4dc951c3743a60e2e120a77892e9e864fb936b2e58e7c77e8581f4d050e8cd8
 
 # last changed: 2018-10-17
 # by: ah
@@ -557,8 +557,8 @@ file pinentry/pinentry-1.1.1-beta5.tar.bz2
 chk 7bda3fef7d7f0f77dd4dfe11e3364c64f1e9646945afa995da8a5084ce59e101
 
 # by: ah
-#file gpgme/gpgme-1.11.2-beta273.tar.bz2
-#chk  ba4d0c725d08eb9cccf1e9a74c55615922c740ee5bec17410a43b39e124806f3
+file gpgme/gpgme-1.12.1-beta43.tar.bz2
+chk  08fbbe522e33e847da5f0c3f360f2f7089fa200ad9eddb58458b7218aee6ec04
 
 # Libkleo
 # last changed: see package date.
