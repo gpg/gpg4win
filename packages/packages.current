@@ -235,17 +235,17 @@ chk  1dddde1400c3bcb7749d398071af88c3e4754058d2d4c0b3696c2f82dc5cf11c
 #
 server http://files.gpg4win.org/src
 
-# last-changed: 2018-08-30
+# last-changed: 2018-11-12
 # by: ah
 # verified: Sig 5B80 C575 4298 F0CB  55D8 ED6A BCEF 7E29 4B09 2E28
-#file gpgol/gpgol-2.3.1.tar.bz2
-#chk  2b2b4ef08fda8103cfbdcb3d988081d5d6c9ae6e8021bd2d237da1257efd5dc5
+file gpgol/gpgol-2.3.2.tar.bz2
+chk  6c298c7a8787e0796a1984d3c1e948b55b9fff685dff3fe7e9d3012001b5b85f
 
 # for beta
-server http://files.intevation.de/projects/gpg4all
+#server http://files.intevation.de/projects/gpg4all
 
-file gpgol/gpgol-2.3.2-beta22.tar.bz2
-chk  72c0a9e08dc74494eb4f07076a82808f7d71218ec0d0ba48c309702d90e87e61
+#file gpgol/gpgol-2.3.2-beta22.tar.bz2
+#chk  72c0a9e08dc74494eb4f07076a82808f7d71218ec0d0ba48c309702d90e87e61
 
 #
 # GpgEX
@@ -308,15 +308,18 @@ chk  47f96c37b4f2aac289f0bc1bacfa8bd8b4b209a488d3d15e2229cb6cc9b26449
 #file binary/gnupg-w32-2.2.10_20180830.tar.xz
 #chk  9a8c5d1b6326547a8a014665105520be7e2bd6624e48fb9a68ac2a84c99ee567
 
-# TODO back to stable before next release
+# last-changed: 2018-11-12
+# by: ah
+# verified: Created internally
+# Patched 2.1.11 with gnupg rev. 00321a025f90990a71b60b4689ede1f38fbde347
 server http://files.intevation.de/projects/gpg4all
-name gnupg-w32-2.2.11-beta17-20181025-bin.exe
-file gnupg/gnupg-w32-2.2.11-beta17_20181025.exe
-chk  e7b82d98694833a307d33750e106c4ed3b3b249e31f89482d502f6aa9ae55456
+name gnupg-w32-2.2.11-20181112-bin.exe
+file gnupg/gnupg-w32-2.2.11_20181112.exe
+chk  9a459e28f2890f3fe959be55b88d22d84091d4c67ce09d782f2cd694e410decb
 
-name gnupg-w32-2.2.11-beta17-20181025-src.tar.xz
-file gnupg/gnupg-w32-2.2.11-beta17_20181025.tar.xz
-chk  29ca66e6985851dd9f89b1dd004536a2eb92feeba35e52d45a0860a6c5dfe8ac
+name gnupg-w32-2.2.11-201811112-src.tar.xz
+file gnupg/gnupg-w32-2.2.11_20181112.tar.xz
+chk  5b35b3d1bbf843da9c6d8cc3a81ac977044f2df568d285942ad9828f430688cb
 
 server ftp://ftp.gnupg.org/gcrypt
 
@@ -564,29 +567,29 @@ chk  08fbbe522e33e847da5f0c3f360f2f7089fa200ad9eddb58458b7218aee6ec04
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah.
-file libkleo/libkleo-201810151611.tar.gz
-chk 73ef39515605d6dbd83cf974ca65f749108682f87599500ba07ca133a3910819
+file libkleo/libkleo-201811121611.tar.gz
+chk d0c1e5dc370986b0cfd1697f46317ae1bee6598d1a4ca26d0ee88a14ec07e622
 
 # KDE-L10n
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah with script kde-l10n.sh
-file kde-l10n/kde-l10n-201810161304-bin.tar.xz
-chk  f6b4c31774a67ae9aff5c10fa4db136a7594fc9cecbddf786c710ba1d73d4f24
+file kde-l10n/kde-l10n-201811121428-bin.tar.xz
+chk  c18b7305c3cbd9b2911e02cb852eb1933e39fb21b101da837787b18a733d1743
 
-file kde-l10n/kde-l10n-201810161304-src.tar.xz
-chk  d3c8e91f9c758e0d5505f7cae6d3908e606cb92103ac2900c021c6c418adfe2a
+file kde-l10n/kde-l10n-201811121428-src.tar.xz
+chk  b1ad6751a0f544d6399a42592fe7b7cc1fe395880bc5cec5db1396e7e48d9a49
 
 # Gpg4win-tools package
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah.
-file gpg4win-tools/gpg4win-tools-201810251247.tar.gz
-chk  c0e06af394ef203734034bbc1c2eeecdc8fdb70a978da34107f48cbf81b3d40b
+file gpg4win-tools/gpg4win-tools-201811121334.tar.gz
+chk  c4a1c40d9bf1bc36ee31a1c9735a4cfe025a706d48eb226467777d0e5fd0613d
 
 # Kleopatra
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah.
-file kleopatra/kleopatra-201808311328.tar.gz
-chk  55c35ead036c5a93e9e504ee864e851ee016fe88aa7665e75db223604e4eda37
+file kleopatra/kleopatra-201811121352.tar.gz
+chk  0d5b71d17fef51dd6f36cda205a953d3a32a0167d950a9264eda98a2f3f26324
