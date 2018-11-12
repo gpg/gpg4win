@@ -66,21 +66,35 @@ Die integrierten Gpg4win-Komponenten in Version !VERSION! sind:
 Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 -----------------------------------------
 
-- GpgOL: Es ist nun möglich die Standardkonfiguration
-  Systemweit zu konfigurieren.
+- GpgOL: Zufälliges Fehlverhalten (Abstürze, Hänger, etc.)
+  nach der Verwendung von S/MIME wurde behoben. (T4111)
+
+- GpgOL: Es ist nun möglich die Standard-Konfiguration
+  Systemweit zu konfigurieren. (T4204)
 
 - GpgOL: Probleme mit ungewöhnlichen Zeichensätzen
   wurden behoben. (T4156)
 
 - GpgOL: Das deaktivieren von Daten bei der Fehlersuche
-  führt nun zu stärker reduzierten logs. (T4193)
+  führt nun zu stärker reduzierten log Dateien. (T4193)
 
-- GpgOL: Zufälliges Fehlverhalten (Abstürze, Hänger, etc.)
-  nach der Verwendung von S/MIME wurde behoben. (T4111)
+- GpgOL: Der interne Zugriff auf Schlüssel-Daten wurde
+  beschleunigt. Dies behebt Probleme bei der automatischen
+  Schlüsselauswahl. (T4218)
+
+- GpgOL: Mails im Junk Ordner können nun verschoben werden
+  und werden markiert. (T4188)
+
+- GpgOL: Die Frage nach dem Speichern von Änderungen erscheint
+  nun nicht mehr beim Schließen über das Datei Menü. (T4236)
 
 - Kleopatra: Zufälliges Fehlverhalten (Abstürze, Hänger, etc.)
-  nach dem arbeiten mit S/MIME. (T4238)
+  nach dem arbeiten mit S/MIME wurde behoben. (T4111)
 
+- Kleopatra: Verbesserter Umgang mit dem CRL
+  Zwischenspeicher. (T3967)
+
+- GnuPG: Auf Version 2.1.11 aktualisiert.
 
 3. Anmerkungen
 ==============
@@ -89,6 +103,9 @@ Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 
   * Crypto E-Mails, die als Anhang weitergeleitet wurden,
     werden nicht verarbeitet.
+
+  * Integrierte Microsoft spezifische OLE Objekte sind nicht
+    unterstützt.
 
   * Als weitere Sprachen sind nur Englisch, Niederländisch
     und Portugiesisch verfügbar.

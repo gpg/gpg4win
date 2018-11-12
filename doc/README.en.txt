@@ -64,9 +64,11 @@ Included Gpg4win components in version !VERSION! are:
 
 New in Gpg4win version !VERSION! (!BUILD_ISODATE!)
 -----------------------------------------
+- GpgOL: Random misbehavior (crashes, freezes, etc.) after
+  working with S/MIME has been fixed. (T4111)
 
 - GpgOL: It is now possible to create a system wide
-  default configuration.
+  default configuration. (T4204)
 
 - GpgOL: Fixed encoding problems with unusual charsets.
   (T4156)
@@ -74,12 +76,22 @@ New in Gpg4win version !VERSION! (!BUILD_ISODATE!)
 - GpgOL: Disabling data debugging removes more data
   from debug logs. (T4193)
 
-- GpgOL: Random misbehavior (crashes, freezes, etc.) after
-  working with S/MIME has been fixed. (T4111)
+- GpgOL: The internal access to key data is now faster.
+  This fixes issues with automatic key resolution. (T4218)
+
+- GpgOL: Emails in Junk folders can now be moved and
+  are marked. (T4188)
+
+- GpgOL: The question to save changes no longer appears when
+  using the File menu. (T4236)
 
 - Kleopatra: Random misbehavior (crashes, freezes, etc.) after
   working with S/MIME has been fixed. (T4111)
 
+- Kleopatra: Improved CRL cache operations. (T3967)
+
+- GnuPG: Updated to version 2.1.11
+  (See: https://lists.gnupg.org/pipermail/gnupg-announce/2018q4/000432.html )
 
 3. Additional notes
 ===================
@@ -87,6 +99,8 @@ New in Gpg4win version !VERSION! (!BUILD_ISODATE!)
 - GpgOL
 
   * Crypto mails forwarded as attachment are not properly handled.
+
+  * Integrated Microsoft only OLE Objects are not supported.
 
   * Localization is only complete for Dutch, German and Portugese.
 
