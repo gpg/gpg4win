@@ -800,6 +800,7 @@ skip_gpgme_browser:
   !insertmacro SectionFlagIsSet ${SEC_kleopatra} \
 		${SF_SELECTED} have_kleopatra_libs skip_kleopatra_libs
   have_kleopatra_libs:
+  !insertmacro SelectSection ${SEC_compendium}
   !insertmacro SelectSection ${SEC_qtbase}
   !insertmacro SelectSection ${SEC_breeze_icons}
   !insertmacro SelectSection ${SEC_kconfig}
