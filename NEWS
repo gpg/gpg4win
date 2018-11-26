@@ -6,6 +6,12 @@
 Noteworthy changes in Version 3.1.6 (unreleased)
 ------------------------------------------------
 
+(de) Kleopatra: Beim import aus X509 Verzeichnisdiensten
+     werden nun auch trusted-certs berücksichtigt.
+
+(en) Kleopatra: When importing from X509 directory services
+     trusted-certs from dirmngr are used. (T4269)
+
 
 ~~~~~~~~~~~~~~~
 GnuPG:          2.2.11
