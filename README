@@ -29,8 +29,8 @@ Instructions:
 
 The installer will be made available in two files:
 
-src/gpg4win-X.Y.Z.exe
-src/gpg4win-src-X.Y.Z.exe
+src/installers/gpg4win-X.Y.Z.exe
+src/installers/gpg4win-src-X.Y.Z.exe
 
 
 Basic requirements
