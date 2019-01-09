@@ -546,7 +546,21 @@ select_minimal:
    !insertmacro SelectSection ${SEC_gnupg_w32}
    !insertmacro SelectSection ${SEC_pinentry}
 continue:
+
+# Check if browser integration was selected on the command line
+# or in the ini
+# You can either select the browser integration by adding
+# inst_browser = true to a gpg4win.ini or adding a
+# /WITH_BROWSER=1 command line switch to the installer.
+g4wihelp::config_fetch_bool "inst_browser"
+StrCmp $R0 "1" select_browser 0
+StrCmp $with_browser '1' select_browser skip_browser
+select_browser:
+    !insertmacro SelectSection ${SEC_gpgme_browser}
+skip_browser:
+
 FunctionEnd
+
 
 
 Function CalcDepends

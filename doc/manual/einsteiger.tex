@@ -1627,13 +1627,11 @@ zugleich alle erlaubten Schlüsselworte zeigt:
 \begin{verbatim}
 [gpg4win]
   ; Installer Einstellungen. Weg- oder leerlassen für Voreinstellung
-  inst_gnupg2 = true
   inst_gpgol = true
   inst_gpgex = true
   inst_gpa = true
-  inst_winpt = true
-  inst_gpgee = true
-  inst_claws_mail = false
+  inst_kleopatra = true
+  inst_browser = false
   inst_man_novice_de = true
   inst_man_novice_en = true
   inst_man_advanced_de = true
@@ -1644,18 +1642,6 @@ zugleich alle erlaubten Schlüsselworte zeigt:
   inst_desktop = false
   inst_quick_launch_bar = false
 
-  ; Im Gegensatz zu den anderen Optionen überschreibt diese Option
-  ; die Einstellung des Benutzers im Installer.
-  inst_start_menu_folder = GnuPG for Windows
-
-  ; Standard-Konfigurationsdateien.
-  gpg.conf = D:\config\gpg-site.conf
-  gpg-agent.conf = D:\config\gpg-agent-site.conf
-  trustlist.txt = D:\config\trustlist-site.txt
-  dirmngr.conf = D:\config\dirmngr-site.conf
-  dirmngr_ldapserver.conf = D:\config\dirmngr_ldapserver-site.conf
-  scdaemon.conf = D:\config\scdaemon-site.txt
-  gpa.conf = D:\config\gpa-site.conf
 \end{verbatim}
 
 Ein entsprechender Aufruf zur automatischen Installation mit einer

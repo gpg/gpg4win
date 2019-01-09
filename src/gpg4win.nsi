@@ -173,6 +173,7 @@ SetCompressor /SOLID lzma
 
 # Variables
 VAR is_minimal
+VAR with_browser
 VAR is_update
 
 # Sections

@@ -707,6 +707,7 @@ Function .onInit
   ${GetParameters} $R0
   ClearErrors
   ${GetOptions} $R0 /MINIMAL= $is_minimal
+  ${GetOptions} $R0 /WITH_BROWSER= $with_browser
 
   Var /GLOBAL changed_dir
   # Check if the install directory was modified on the command line
