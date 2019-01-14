@@ -75,4 +75,17 @@ If you feel able to, just send an excerpt with the relevant
 information.
 </p>
 
+
+<h2>Private reports / security issues</h2>
+<p>
+If you do not want to publicly divulge the contents of a report,
+e.g. because that would leak private information or if you consider
+an issue a severe security problem, you can send an encrypted mail
+to our professional team at <a href="mailto://gpg4win-professional@intevation.de">gpg4win-professional@gpg4win.org</a>.
+</p>
+<p>
+The public key for this address is <a
+      href="gpg4win-professional-key.asc">5BFB FFC6 C040 8D5B B0C9  BDF4 6113 F899 1A8C 17A9</a>.
+</p>
+
 </div>
