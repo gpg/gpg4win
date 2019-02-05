@@ -790,7 +790,8 @@ AC_DEFUN([GPG4WIN_RUNTIME_LIBRARY],
         guesses="/usr/lib/gcc/$host/$gcc_major_minor/$1.dll
                  /usr/$host/lib/$1.dll
                  /usr/lib/gcc/$host/${gcc_major_minor}-win32/$1.dll
-                 /usr/lib/gcc/$host/${gcc_major_minor_alt}-win32/$1.dll"
+                 /usr/lib/gcc/$host/${gcc_major_minor_alt}-win32/$1.dll
+                 /usr/lib/gcc/$host/${gcc_major_minor_alt}/$1.dll"
 
         for file in $guesses; do
             if test -r "$file"; then
