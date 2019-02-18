@@ -89,39 +89,24 @@ diff --git a/modules/ECMAddAppIcon.cmake b/modules/ECMAddAppIcon.cmake
 index 5233a5f..2b5dca1 100644
 --- a/modules/ECMAddAppIcon.cmake
 +++ b/modules/ECMAddAppIcon.cmake
-@@ -128,10 +128,22 @@ function(ecm_add_app_icon appsources)
-     if (WIN32 AND windows_icons)
+@@ -192,8 +192,11 @@
+     if (WIN32 AND (windows_icons_modern OR windows_icons_classic))
          set(saved_CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH}")
          set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_FIND_MODULE_DIR})
 -        find_package(Png2Ico)
+-        find_package(IcoTool)
 +        find_package(Convert)
 +        if (NOT Convert_FOUND)
++            find_package(IcoTool)
 +            find_package(Png2Ico)
 +        endif()
          set(CMAKE_MODULE_PATH "${saved_CMAKE_MODULE_PATH}")
 
--        if (Png2Ico_FOUND)
-+        if (Convert_FOUND)
-+            set(windows_icons ${windows_icons} ${icons_at_256px})
-+            add_custom_command(
-+                OUTPUT "${_outfilename}.ico"
-+                COMMAND Convert::Convert
-+                ARGS ${windows_icons} "${_outfilename}.ico"
-+                DEPENDS ${windows_icons}
-+                WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
-+            )
-+        elseif (Png2Ico_FOUND)
-             if (Png2Ico_HAS_RCFILE_ARGUMENT)
-                 add_custom_command(
-                     OUTPUT "${_outfilename}.rc" "${_outfilename}.ico"
-@@ -151,6 +163,14 @@ function(ecm_add_app_icon appsources)
-                     DEPENDS ${windows_icons}
+         function(create_windows_icon_and_rc command args deps)
+@@ -204,6 +207,10 @@
+                     DEPENDS ${deps}
                      WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
                  )
-+            endif()
-+        else()
-+            message(WARNING "Unable to find the png2ico or convert utility - application will not have an application icon!")
-+        endif()
 +
 +        if (Convert_FOUND OR Png2Ico_FOUND)
 +            set(${appsources} "${${appsources}};${_outfilename}.rc" PARENT_SCOPE)
@@ -129,15 +114,23 @@ index 5233a5f..2b5dca1 100644
                  # this bit's a little hacky to make the dependency stuff work
                  file(WRITE "${_outfilename}.rc.in" "IDI_ICON1        ICON        DISCARDABLE    \"${_outfilename}.ico\"\n")
                  add_custom_command(
-@@ -161,9 +181,6 @@ function(ecm_add_app_icon appsources)
+@@ -220,6 +220,8 @@
+                     DEPENDS "${_outfilename}.ico"
                      WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}"
                  )
-             endif()
--            set(${appsources} "${${appsources}};${_outfilename}.rc" PARENT_SCOPE)
++            endif()
++        endif()
+         endfunction()
+
+         if (IcoTool_FOUND)
+@@ -270,8 +281,6 @@
+
+             set(${appsources} "${${appsources}};${_outfilename}.rc" PARENT_SCOPE)
+         # else none of the supported tools was found
 -        else()
--            message(WARNING "Unable to find the png2ico utility - application will not have an application icon!")
+-            message(WARNING "Unable to find the png2ico or icotool utilities or icons in matching sizes - application will not have an application icon!")
          endif()
-     elseif (APPLE AND mac_icons)
+     elseif (APPLE AND (mac_icons OR mac_sidebar_icons))
          # first generate .iconset directory structure, then convert to .icns format using the Mac OS X "iconutil" utility,
 --
 2.1.4

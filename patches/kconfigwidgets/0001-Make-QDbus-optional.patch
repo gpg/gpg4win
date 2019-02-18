@@ -11,120 +11,28 @@ This removes the Klipper integration of KPasteAction if QDBus
 is not available.
 ---
  CMakeLists.txt                    | 11 ++++++++++-
- src/CMakeLists.txt                |  7 ++++++-
- src/config-kconfigwidgets.h.cmake |  2 ++
- src/kpastetextaction.cpp          | 14 ++++++++++++--
- 4 files changed, 30 insertions(+), 4 deletions(-)
- create mode 100644 src/config-kconfigwidgets.h.cmake
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
 index bed53d1..87f976c 100644
 --- CMakeLists.txt.orig 2018-02-28 08:33:32.052419561 +0100
 +++ CMakeLists.txt      2018-02-28 08:35:44.523986191 +0100
-@@ -12,7 +12,17 @@
- set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR})
+@@ -13,7 +13,7 @@
 
- set(REQUIRED_QT_VERSION 5.7.0)
--find_package(Qt5 "${REQUIRED_QT_VERSION}" CONFIG REQUIRED Widgets DBus)
-+find_package(Qt5 "${REQUIRED_QT_VERSION}" CONFIG REQUIRED Widgets)
-+if (UNIX)
-+    find_package(Qt5 "${REQUIRED_QT_VERSION}" CONFIG REQUIRED DBus)
-+#else()
-+#    find_package(Qt5DBus "${REQUIRED_QT_VERSION}" CONFIG)
-+#    set_package_properties(Qt5DBus PROPERTIES DESCRIPTION "Qt DBus Library"
-+#                           PURPOSE "KPasteAction klipper integration."
-+#                           URL "https://doc.qt.io/qt-5/qdbus.html"
-+#                           TYPE OPTIONAL)
-+endif()
-+set (HAVE_QDBUS ${Qt5DBus_FOUND})
+ set(REQUIRED_QT_VERSION 5.10.0)
+ find_package(Qt5 "${REQUIRED_QT_VERSION}" CONFIG REQUIRED Widgets)
+-if (NOT ANDROID)
++if (NOT ANDROID AND NOT WIN32)
+   find_package(Qt5 "${REQUIRED_QT_VERSION}" CONFIG REQUIRED DBus)
+ endif()
  include(KDEInstallDirs)
- include(KDEFrameworkCompilerSettings NO_POLICY_SCOPE)
- include(KDECMakeSettings)
-diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
-index 97837b3..104b118 100644
---- a/src/CMakeLists.txt
-+++ b/src/CMakeLists.txt
-@@ -1,3 +1,8 @@
-+if (HAVE_QDBUS)
-+    set (KCONFIGWIDGETS_QDBUS_LIBS Qt5::DBus)
-+endif ()
-+configure_file(config-kconfigwidgets.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-kconfigwidgets.h )
-+
- set(kconfigwidgets_SRCS
-   kcodecaction.cpp
-   kcolorscheme.cpp
-@@ -29,7 +34,7 @@ target_link_libraries(KF5ConfigWidgets
-     KF5::ConfigGui # KStandardAction uses KStandardShortcut
-     KF5::Auth # KCModule uses KAuth::Action
-   PRIVATE
--    Qt5::DBus # KPasteTextAction talks to Klipper via DBus
-+    ${KCONFIGWIDGETS_QDBUS_LIBS} # KPasteTextAction talks to Klipper via DBus
-     KF5::CoreAddons # KCModule uses KAboutData, KTipDialog uses KRandom
-     KF5::GuiAddons # KColorScheme uses KColorUtils
-     KF5::I18n # For action and widget texts
-diff --git a/src/config-kconfigwidgets.h.cmake b/src/config-kconfigwidgets.h.cmake
-new file mode 100644
-index 0000000..4a933fa
---- /dev/null
-+++ b/src/config-kconfigwidgets.h.cmake
-@@ -0,0 +1,2 @@
-+/* Qt5DBus available */
-+#cmakedefine01 HAVE_QDBUS
-diff --git a/src/kpastetextaction.cpp b/src/kpastetextaction.cpp
-index a38aa0c..3c5a614 100644
---- a/src/kpastetextaction.cpp
-+++ b/src/kpastetextaction.cpp
-@@ -27,11 +27,15 @@
+@@ -34,7 +34,7 @@
+                         PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KF5ConfigWidgetsConfigVersion.cmake"
+                         SOVERSION 5)
 
- #include "kpastetextaction.h"
-
-+#include "config-kconfigwidgets.h"
-+
- #include <QApplication>
- #include <QClipboard>
- #include <QMenu>
--#include <QDBusInterface>
--#include <QDBusReply>
-+#if HAVE_QDBUS
-+# include <QDBusInterface>
-+# include <QDBusReply>
-+#endif
-
- class KPasteTextActionPrivate
- {
-@@ -97,6 +101,7 @@ void KPasteTextActionPrivate::_k_menuAboutToShow()
- {
-     m_popup->clear();
-     QStringList list;
-+#if HAVE_QDBUS
-     QDBusInterface klipper(QStringLiteral("org.kde.klipper"), QStringLiteral("/klipper"), QStringLiteral("org.kde.klipper.klipper"));
-     if (klipper.isValid()) {
-         QDBusReply<QStringList> reply = klipper.call(QStringLiteral("getClipboardHistoryMenu"));
-@@ -104,6 +109,7 @@ void KPasteTextActionPrivate::_k_menuAboutToShow()
-             list = reply;
-         }
-     }
-+#endif
-     QString clipboardText = qApp->clipboard()->text(QClipboard::Clipboard);
-     if (list.isEmpty()) {
-         list << clipboardText;
-@@ -123,6 +129,7 @@ void KPasteTextActionPrivate::_k_menuAboutToShow()
-
- void KPasteTextActionPrivate::_k_slotTriggered(QAction *action)
- {
-+#if HAVE_QDBUS
-     QDBusInterface klipper(QStringLiteral("org.kde.klipper"), QStringLiteral("/klipper"), QStringLiteral("org.kde.klipper.klipper"));
-     if (klipper.isValid()) {
-         QDBusReply<QString> reply = klipper.call(QStringLiteral("getClipboardHistoryItem"),
-@@ -135,6 +142,9 @@ void KPasteTextActionPrivate::_k_slotTriggered(QAction *action)
-         //if (reply.isValid())
-         //  qDebug() << "Clipboard: " << qApp->clipboard()->text(QClipboard::Clipboard);
-     }
-+#else
-+    Q_UNUSED(action);
-+#endif
- }
-
- #include "moc_kpastetextaction.cpp"
+-if (NOT ANDROID)
++if (NOT ANDROID AND NOT WIN32)
+   find_package(KF5Auth ${KF5_DEP_VERSION} REQUIRED)
+ endif()
+ find_package(KF5CoreAddons ${KF5_DEP_VERSION} REQUIRED)
 --
 2.1.4

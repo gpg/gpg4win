@@ -21,103 +21,14 @@ diff --git a/CMakeLists.txt b/CMakeLists.txt
 index 5664ea1..22642b9 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -32,7 +32,15 @@ ecm_setup_version(${KF5_VERSION}
- set(REQUIRED_QT_VERSION 5.3.0)
+@@ -36,7 +36,7 @@
+ set(REQUIRED_QT_VERSION 5.10.0)
  find_package(Qt5Widgets ${REQUIRED_QT_VERSION} REQUIRED NO_MODULE)
  find_package(Qt5Svg ${REQUIRED_QT_VERSION} REQUIRED NO_MODULE)
--find_package(Qt5DBus ${REQUIRED_QT_VERSION} REQUIRED NO_MODULE)
-+#if (UNIX)
-+#else()
-+#    find_package(Qt5DBus "${REQUIRED_QT_VERSION}" CONFIG)
-+#    set_package_properties(Qt5DBus PROPERTIES DESCRIPTION "Qt DBus Library"
-+#                           PURPOSE "KIconLoader icon change notifications."
-+#                           URL "https://doc.qt.io/qt-5/qdbus.html"
-+#                           TYPE OPTIONAL)
-+#endif()
-+set (HAVE_QDBUS ${Qt5DBus_FOUND})
-
- find_package(KF5I18n ${KF5_DEP_VERSION} REQUIRED)
- find_package(KF5CoreAddons ${KF5_DEP_VERSION} REQUIRED)
-diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
-index 82d2979..f006f17 100644
---- a/src/CMakeLists.txt
-+++ b/src/CMakeLists.txt
-@@ -3,6 +3,11 @@ if (APPLE)
-     add_subdirectory(tools/ksvg2icns)
+-if (NOT ANDROID)
++if (NOT ANDROID AND NOT WIN32)
+   find_package(Qt5DBus ${REQUIRED_QT_VERSION} REQUIRED NO_MODULE)
  endif()
 
-+if (HAVE_QDBUS)
-+    set (QDBUS_LIBS Qt5::DBus)
-+endif ()
-+configure_file(config-kiconthemes.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-kiconthemes.h )
-+
- set(kiconthemes_SRCS
-   kiconbutton.cpp
-   kicondialog.cpp
-@@ -23,7 +28,7 @@ target_link_libraries(KF5IconThemes
-   PUBLIC
-     Qt5::Widgets
-   PRIVATE
--    Qt5::DBus
-+    ${QDBUS_LIBS}      # for icon changed notification in KIconLoader
-     Qt5::Svg
-     KF5::I18n          # for i18n in KIconDialog
-     KF5::WidgetsAddons # for KPixmapSequence family
-diff --git a/src/config-kiconthemes.h.cmake b/src/config-kiconthemes.h.cmake
-new file mode 100644
-index 0000000..4a933fa
---- /dev/null
-+++ b/src/config-kiconthemes.h.cmake
-@@ -0,0 +1,2 @@
-+/* Qt5DBus available */
-+#cmakedefine01 HAVE_QDBUS
-diff --git a/src/kiconloader.cpp b/src/kiconloader.cpp
-index 75ab482..3a0ff0a 100644
---- a/src/kiconloader.cpp
-+++ b/src/kiconloader.cpp
-@@ -22,6 +22,8 @@
-  * Boston, MA 02110-1301, USA.
-  */
-
-+#include "config-kiconthemes.h"
-+
- #include "kiconloader.h"
-
- #include <qplatformdefs.h> //for readlink
-@@ -46,8 +48,10 @@
- #include <kconfiggroup.h>
- #include <kshareddatacache.h>
- #include <ksharedconfig.h>
--#include <QtDBus/QDBusConnection>
--#include <QDBusMessage>
-+#if HAVE_QDBUS
-+# include <QtDBus/QDBusConnection>
-+# include <QDBusMessage>
-+#endif
- #include <QSvgRenderer>
- #include <QXmlStreamReader>
- #include <QXmlStreamWriter>
-@@ -323,15 +328,21 @@ public:
-             parseGenericIconsFiles(file);
-         }
-
-+#if HAVE_QDBUS
-         QDBusConnection::sessionBus().connect(QString(), QStringLiteral("/KIconLoader"), QStringLiteral("org.kde.KIconLoader"),
-                                               QStringLiteral("iconChanged"), this, SIGNAL(iconChanged(int)));
-+#endif
-     }
-
-     void emitChange(KIconLoader::Group group)
-     {
-+#if HAVE_QDBUS
-         QDBusMessage message = QDBusMessage::createSignal(QStringLiteral("/KIconLoader"), QStringLiteral("org.kde.KIconLoader"), QStringLiteral("iconChanged"));
-         message.setArguments(QList<QVariant>() << int(group));
-         QDBusConnection::sessionBus().send(message);
-+#else
-+        Q_UNUSED(group);
-+#endif
-     }
-
-     QString genericIconFor(const QString &icon) const
 --
 2.1.4

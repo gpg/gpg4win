@@ -72,10 +72,10 @@ diff --git a/src/config-xmlgui.h.cmake b/src/config-xmlgui.h.cmake
 index 35c9477..0873a95 100644
 --- a/src/config-xmlgui.h.cmake
 +++ b/src/config-xmlgui.h.cmake
-@@ -10,3 +10,6 @@
+@@ -7,3 +7,6 @@
 
- /* Qt5DBus available */
- #cmakedefine01 HAVE_QDBUS
+ /* KF5GlobalAccel available */
+ #cmakedefine01 HAVE_GLOBALACCEL
 +
 +/* KF5TextWidgets available */
 +#cmakedefine01 HAVE_TEXTWIDGETS
