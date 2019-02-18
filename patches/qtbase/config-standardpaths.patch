@@ -9,7 +9,7 @@ diff -Nru qtbase-5.6.1.orig/src/corelib/io/qstandardpaths.cpp qtbase-5.6.1/src/c
  #include <unistd.h>
  #endif
 
-+#if !defined(QT_BUILD_QMAKE) && !defined(QT_NO_SETTINGS)
++#if !defined(QT_BUILD_QMAKE) && !defined(QT_NO_SETTINGS)  && !defined(QT_BOOTSTRAPPED)
 +#include <qsettings.h>
 +#include <qcoreapplication.h>
 +#endif
@@ -20,46 +20,26 @@ diff -Nru qtbase-5.6.1.orig/src/corelib/io/qstandardpaths.cpp qtbase-5.6.1/src/c
  #ifndef QT_NO_STANDARDPATHS
 
  QT_BEGIN_NAMESPACE
-@@ -671,6 +679,90 @@
+@@ -672,6 +680,70 @@
      return qsp_testMode;
  }
 
++#if !defined(QT_BUILD_QMAKE) && !defined(QT_NO_SETTINGS) && !defined(QT_BOOTSTRAPPED)
 +static const char standardPathsSection[] = "StandardPaths";
-+
 +static QSettings *findConfiguration()
 +{
-+#ifdef QT_BUILD_QMAKE
-+    QString qtconfig = qmake_libraryInfoFile();
-+    if (QFile::exists(qtconfig))
-+        return new QSettings(qtconfig, QSettings::IniFormat);
-+#else
 +    QString qtconfig = QStringLiteral(":/qt/etc/qt.conf");
 +    if (QFile::exists(qtconfig))
 +        return new QSettings(qtconfig, QSettings::IniFormat);
-+#ifdef Q_OS_DARWIN
-+    CFBundleRef bundleRef = CFBundleGetMainBundle();
-+    if (bundleRef) {
-+        QCFType<CFURLRef> urlRef = CFBundleCopyResourceURL(bundleRef,
-+                                                           QCFString(QLatin1String("qt.conf")),
-+                                                           0,
-+                                                           0);
-+        if (urlRef) {
-+            QCFString path = CFURLCopyFileSystemPath(urlRef, kCFURLPOSIXPathStyle);
-+            qtconfig = QDir::cleanPath(path);
-+            if (QFile::exists(qtconfig))
-+                return new QSettings(qtconfig, QSettings::IniFormat);
-+        }
-+    }
-+#endif
 +    if (QCoreApplication::instance()) {
 +        QDir pwd(QCoreApplication::applicationDirPath());
 +        qtconfig = pwd.filePath(QLatin1String("qt.conf"));
 +        if (QFile::exists(qtconfig))
 +            return new QSettings(qtconfig, QSettings::IniFormat);
 +    }
-+#endif
 +    return 0;     //no luck
 +}
++#endif
 +
 +QString QStandardPaths::presetLocation(StandardLocation type)
 +{
