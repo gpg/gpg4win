@@ -33,11 +33,9 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         patches/glib-2.41.5/01-socket.patch \
         patches/glib-2.41.5/02-formatsec.patch \
         patches/kconfigwidgets/0001-Make-QDbus-optional.patch \
-        patches/kconfigwidgets/0002-Crudely-remove-KF5Auth-depedency.patch \
         patches/kiconthemes/0001-Make-DBus-optional.patch \
         patches/kleopatra/0005-Hack-generated-conf-files-for-Crosscompiling.patch \
         patches/kleopatra/fix-qt5.6-build.patch \
-        patches/kxmlgui/0002-Make-QDBus-dependency-optional.patch \
         patches/kxmlgui/0003-Make-KTextWidgets-optional.patch \
         patches/kxmlgui/0004-Cruedly-disable-KSendbugmail.patch \
         patches/libgpg-error-1.29/0001-doc-Fix-yat2m-build-for-cross-compilation.patch \
@@ -47,7 +45,7 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         patches/qttools/disable-most-tools.patch \
         patches/qtwinextras/support-xp.patch \
         patches/w32pth-2.0.5/workaround-broken-libtool.patch \
-        patches/breze-icons/0001-Make-binary-icons-cross-compilable.patch
+        patches/breeze-icons/0001-Make-binary-icons-cross-compilable.patch
 
 copy-news:
 	cp NEWS doc/website/NEWS.last
