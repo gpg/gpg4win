@@ -83,21 +83,6 @@ Section "-qttranslations" SEC_qttranslations
   File ${prefix}/qttranslations/qtmultimedia_uk.qm
   File ${prefix}/qttranslations/qt_pl.qm
   File ${prefix}/qttranslations/qt_pt.qm
-  File ${prefix}/qttranslations/qtquick1_ca.qm
-  File ${prefix}/qttranslations/qtquick1_cs.qm
-  File ${prefix}/qttranslations/qtquick1_de.qm
-  File ${prefix}/qttranslations/qtquick1_en.qm
-  File ${prefix}/qttranslations/qtquick1_fi.qm
-  File ${prefix}/qttranslations/qtquick1_fr.qm
-  File ${prefix}/qttranslations/qtquick1_he.qm
-  File ${prefix}/qttranslations/qtquick1_hu.qm
-  File ${prefix}/qttranslations/qtquick1_it.qm
-  File ${prefix}/qttranslations/qtquick1_ja.qm
-  File ${prefix}/qttranslations/qtquick1_ko.qm
-  File ${prefix}/qttranslations/qtquick1_pl.qm
-  File ${prefix}/qttranslations/qtquick1_ru.qm
-  File ${prefix}/qttranslations/qtquick1_sk.qm
-  File ${prefix}/qttranslations/qtquick1_uk.qm
   File ${prefix}/qttranslations/qt_ru.qm
   File ${prefix}/qttranslations/qtscript_ca.qm
   File ${prefix}/qttranslations/qtscript_cs.qm
