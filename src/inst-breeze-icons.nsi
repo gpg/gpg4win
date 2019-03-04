@@ -278,23 +278,19 @@ Section "-breeze-icons" SEC_breeze_icons
 
   SetOutPath "$INSTDIR\share\icons\breeze\status\16"
 
-  File ${prefix}/share/icons/breeze/status/16/dialog-information.svg
 
   SetOutPath "$INSTDIR\share\icons\breeze\status\22"
 
-  File ${prefix}/share/icons/breeze/status/22/dialog-information.svg
   File ${prefix}/share/icons/breeze/status/22/security-high.svg
   File ${prefix}/share/icons/breeze/status/22/security-low.svg
   File ${prefix}/share/icons/breeze/status/22/security-medium.svg
 
   SetOutPath "$INSTDIR\share\icons\breeze\status\24"
 
-  File ${prefix}/share/icons/breeze/status/24/dialog-information.svg
 
   SetOutPath "$INSTDIR\share\icons\breeze\status\64"
 
   File ${prefix}/share/icons/breeze/status/64/dialog-error.svg
-  File ${prefix}/share/icons/breeze/status/64/dialog-information.svg
   File ${prefix}/share/icons/breeze/status/64/dialog-password.svg
   File ${prefix}/share/icons/breeze/status/64/dialog-warning.svg
   File ${prefix}/share/icons/breeze/status/64/security-high.svg
