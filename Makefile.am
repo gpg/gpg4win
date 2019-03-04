@@ -44,8 +44,7 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         patches/qttools/disable-most-tools.patch \
         patches/qtwinextras/support-xp.patch \
         patches/w32pth-2.0.5/workaround-broken-libtool.patch \
-        patches/breeze-icons/0001-Make-binary-icons-cross-compilable.patch \
-        patches/breeze-icons/0001-Remove-kleo-icon-from-breeze.patch
+        patches/breeze-icons/0001-Make-binary-icons-cross-compilable.patch
 
 copy-news:
 	cp NEWS doc/website/NEWS.last
