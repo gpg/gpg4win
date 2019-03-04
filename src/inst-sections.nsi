@@ -863,6 +863,8 @@ skip_gpgme_browser:
 		${SF_SELECTED} have_pinentry skip_pinentry
   have_pinentry:
   !insertmacro SelectSection ${SEC_libiconv}
+  !insertmacro SelectSection ${SEC_libgpg_error}
+  !insertmacro SelectSection ${SEC_libassuan}
 !ifdef HAVE_PKG_QTBASE
   !insertmacro SelectSection ${SEC_qtbase}
 !endif
