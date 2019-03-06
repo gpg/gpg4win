@@ -289,6 +289,7 @@ const char * const full_files[] =
   "bin/translations/qtquick1_ko.qm",
   "bin/translations/qtxmlpatterns_it.qm",
   "bin/intl.dll",
+  "bin/scute.dll",
   "bin/gresource.exe",
   "include/gpgme.h",
   "include/assuan.h",

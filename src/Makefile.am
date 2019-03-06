@@ -85,6 +85,7 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
         inst-qttranslations.nsi uninst-qttranslations.nsi \
         inst-qtwinextras.nsi uninst-qtwinextras.nsi \
         inst-boost.nsi uninst-boost.nsi \
+        inst-scute.nsi uninst-scute.nsi \
         inst-extra-cmake-modules.nsi uninst-extra-cmake-modules.nsi \
         inst-gpg4win-tools.nsi uninst-gpg4win-tools.nsi \
         inst-gpgme-browser.nsi \
@@ -118,7 +119,7 @@ gpg4win_spkgs = glib libffi gdk-pixbuf gtk+ \
                 libgpg-error gpgme gpgol gpgex libpng \
 		gpa opencdk \
 		pinentry libassuan \
-		w32pth paperkey regex libiconv gettext
+		w32pth paperkey regex libiconv gettext scute
 
 gpg4win_qtpkgs = qtbase qttools qtwinextras qtsvg qttranslations
 
