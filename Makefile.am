@@ -35,6 +35,7 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         patches/kiconthemes/0001-Make-DBus-optional.patch \
         patches/kleopatra/0005-Hack-generated-conf-files-for-Crosscompiling.patch \
         patches/kleopatra/fix-qt5.6-build.patch \
+        patches/kxmlgui/0001-make-qdbus-optional.patch \
         patches/kxmlgui/0003-Make-KTextWidgets-optional.patch \
         patches/kxmlgui/0004-Cruedly-disable-KSendbugmail.patch \
         patches/libgpg-error-1.29/0001-doc-Fix-yat2m-build-for-cross-compilation.patch \
