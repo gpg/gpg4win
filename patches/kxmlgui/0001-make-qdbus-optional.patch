@@ -1,0 +1,14 @@
+#! /bin/sh
+patch -p0 -l -f $* < $0
+exit $?
+
+--- CMakeLists.txt.orig 2019-02-18 17:01:11.892790831 +0100
++++ CMakeLists.txt      2019-02-18 17:05:04.381951901 +0100
+@@ -37,7 +37,7 @@
+ # Dependencies
+ set(REQUIRED_QT_VERSION 5.10.0)
+ find_package(Qt5 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Widgets Xml Network PrintSupport)
+-if (NOT ANDROID)
++if (NOT ANDROID AND NOT WIN32)
+   find_package(Qt5 ${REQUIRED_QT_VERSION} CONFIG REQUIRED DBus)
+ endif()

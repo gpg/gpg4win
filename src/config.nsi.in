@@ -290,6 +290,10 @@
 !define gpg4win_pkg_gpg4win_tools @gpg4win_pkg_gpg4win_tools@
 !define gpg4win_pkg_gpg4win_tools_version @gpg4win_pkg_gpg4win_tools_version@
 
+@HAVE_PKG_SCUTE@
+!define gpg4win_pkg_scute @gpg4win_pkg_scute@
+!define gpg4win_pkg_scute_version @gpg4win_pkg_scute_version@
+
 # Internal packages.
 @HAVE_PKG_COMPENDIUM@
 

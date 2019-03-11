@@ -173,6 +173,9 @@
 !ifdef HAVE_PKG_GPG4WIN_TOOLS
 !include "inst-gpg4win-tools.nsi"
 !endif
+!ifdef HAVE_PKG_SCUTE
+!include "inst-scute.nsi"
+!endif
 
 # These are displayed in the selection dialog.
 
@@ -408,6 +411,9 @@
 !endif
 !ifdef HAVE_PKG_GPG4WIN_TOOLS
 !include "uninst-gpg4win-tools.nsi"
+!endif
+!ifdef HAVE_PKG_SCUTE
+!include "uninst-scute.nsi"
 !endif
 
 !include "uninst-gpg4win.nsi"
@@ -713,6 +719,9 @@ Function CalcDepends
 !ifdef HAVE_PKG_GPG4WIN_TOOLS
   !insertmacro UnselectSection ${SEC_gpg4win-tools}
 !endif
+!ifdef HAVE_PKG_SCUTE
+  !insertmacro UnselectSection ${SEC_scute}
+!endif
 
   # Always install gnupg2.  This is also ensured by putting
   # these packages in the RO section and enabling them by default, but
@@ -787,6 +796,7 @@ Function CalcDepends
   !insertmacro SectionFlagIsSet ${SEC_gnupg_w32} ${SF_SELECTED} have_gnupg_w32 skip_gnupg_w32
   have_gnupg_w32:
   !insertmacro SelectSection ${SEC_pinentry}
+  !insertmacro SelectSection ${SEC_scute}
   skip_gnupg_w32:
 !endif
 

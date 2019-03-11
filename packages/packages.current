@@ -553,9 +553,12 @@ server https://download.kde.org/Attic/applications
 file 17.12.2/src/kmime-17.12.2.tar.xz
 chk 29f11eafeb13c0045069a250bdcd57fda4bdd3423e7e1b7e0ca0517a9afefd24
 
-# Devel versions are needed until Kleopatra can be based on
-# a stable branch.
+# Snapshots which contain unreleased fixes important for Gpg4win
 server http://files.intevation.de/projects/gpg4all
+
+#by ah
+file scute/scute-1.6.0-beta187.tar.bz2
+chk 8d2a56dff6e6c12d628dd32075497326e8345c0096dec1280f7ab2c737410837
 
 # by: ah
 file pinentry/pinentry-1.1.1-beta5.tar.bz2
@@ -593,5 +596,5 @@ chk  c4a1c40d9bf1bc36ee31a1c9735a4cfe025a706d48eb226467777d0e5fd0613d
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah.
-file kleopatra/kleopatra-201811261513.tar.gz
-chk  20410768596a7ccb78788bb43695df36c13f4a5b2a0cb95ee888197906410199
+file kleopatra/kleopatra-201903051610.tar.gz
+chk 431ebebffeb85478d1c924664622dda57bfb3fbc3510d26eb337d8fc77cf6b45
