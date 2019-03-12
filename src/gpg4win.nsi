@@ -109,6 +109,9 @@
 !endif
 !endif
 
+# Define this early automatically it is only defined after
+# MUI_LANGUAGE has been called.
+!define LANG_ENGLISH 1033
 
 # The package name and version.  PRETTY_PACKAGE is a user visible name
 # only while PACKAGE is useful for filenames etc.  PROD_VERSION is the
