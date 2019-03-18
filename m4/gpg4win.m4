@@ -339,7 +339,27 @@ AC_DEFUN([GPG4WIN_SPKG],
 # for the host provided as additional-gpgex-host
 AC_DEFUN([GPG4WIN_SPKGEX],
 [
-  GPG4WIN_SPKG([$1],[$2],[$3],[$4])
+  AC_REQUIRE([GPG4WIN_INIT])
+  _gpg4win_pkg=maybe
+  AC_ARG_ENABLE([pkg-$1],
+    AS_HELP_STRING([--enable-pkg-$1[=DIR]],
+                   [include package $1]),
+    _gpg4win_pkg=$enableval)
+  _gpg4win_spkg=no
+  _gpg4win_version=
+  AS_IF([test "$_gpg4win_pkg" != no],
+        [GPG4WIN_FIND($1,,, $_gpg4win_pkg,
+	 _gpg4win_spkg=$gpg4win_val
+	 _gpg4win_version=$gpg4win_version)])
+  # At this point, _gpg4win_spkg is no, or the actual package source file.
+
+  # gpg4win_pkg_PKGNAME=FILENAME_OF_SOURCE
+  gpg4win_pkg_[]m4_translit([$1],[-+],[__])[]=$_gpg4win_spkg
+  AC_SUBST(gpg4win_pkg_[]m4_translit([$1],[-+],[__]))
+
+  # gpg4win_pkg_PKGNAME_version=VERSION
+  gpg4win_pkg_[]m4_translit([$1],[-+],[__])[]_version=$_gpg4win_version
+  AC_SUBST(gpg4win_pkg_[]m4_translit([$1],[-+],[__])[]_version)
 
   AS_IF([test ! -z "$GPGEX_ADD_HOST"],
 
