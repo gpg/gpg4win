@@ -301,26 +301,14 @@ chk  91bcb0403866b4e7c4bc1cc52ed4c364a9b5414b3994f718c70303f7f765e702
 
 # last changed: 2018-08-30
 # by: ah
-#name gnupg-w32-2.2.10-20180830-bin.exe
-#file binary/gnupg-w32-2.2.10_20180830.exe
-#chk  e84bad2436e3a0309d59e0ed313b346a1fc4ac556b5fd68bcea2d0e58d0516a2
+# verified: distsigkey.gpg
+name gnupg-w32-2.2.15-20190326-bin.exe
+file binary/gnupg-w32-2.2.15_20190326.exe
+chk  24d003adaacdbb16047a3e08fdb40b855f7ecdedc28435c767c88493260d6b25
 
-#name gnupg-w32-2.2.10-20180830-src.tar.xz
-#file binary/gnupg-w32-2.2.10_20180830.tar.xz
-#chk  9a8c5d1b6326547a8a014665105520be7e2bd6624e48fb9a68ac2a84c99ee567
-
-# last-changed: 2018-11-12
-# by: ah
-# verified: Created internally
-# Patched 2.1.11 with gnupg rev. 00321a025f90990a71b60b4689ede1f38fbde347
-server http://files.intevation.de/projects/gpg4all
-name gnupg-w32-2.2.11-20181112-bin.exe
-file gnupg/gnupg-w32-2.2.11_20181112.exe
-chk  9a459e28f2890f3fe959be55b88d22d84091d4c67ce09d782f2cd694e410decb
-
-name gnupg-w32-2.2.11-201811112-src.tar.xz
-file gnupg/gnupg-w32-2.2.11_20181112.tar.xz
-chk  5b35b3d1bbf843da9c6d8cc3a81ac977044f2df568d285942ad9828f430688cb
+name gnupg-w32-2.2.15-20190326-src.tar.xz
+file binary/gnupg-w32-2.2.15_20190326.tar.xz
+chk  8f273ba940b7aaabec7622b56e182faff8f5b06dae2758877af637312c695a43
 
 server ftp://ftp.gnupg.org/gcrypt
 
@@ -330,11 +318,11 @@ server ftp://ftp.gnupg.org/gcrypt
 #file pinentry/pinentry-1.1.0.tar.bz2
 #chk  68076686fa724a290ea49cdf0d1c0c1500907d1b759a3bcbfbec0293e8f56570
 
-# TODO back to stable
-# last changed: 2018-10-08
+# last changed: 2019-03-26
 # by: ah
-#file gpgme/gpgme-1.12.0.tar.bz2
-#chk  b4dc951c3743a60e2e120a77892e9e864fb936b2e58e7c77e8581f4d050e8cd8
+# verified: distsigkey.gpg
+file gpgme/gpgme-1.13.0.tar.bz2
+chk  d4b23e47a9e784a63e029338cce0464a82ce0ae4af852886afda410f9e39c630
 
 # last changed: 2018-10-17
 # by: ah
@@ -566,8 +554,8 @@ file pinentry/pinentry-1.1.1-beta5.tar.bz2
 chk 7bda3fef7d7f0f77dd4dfe11e3364c64f1e9646945afa995da8a5084ce59e101
 
 # by: ah
-file gpgme/gpgme-1.12.1-beta43.tar.bz2
-chk  08fbbe522e33e847da5f0c3f360f2f7089fa200ad9eddb58458b7218aee6ec04
+#file gpgme/gpgme-1.12.1-beta43.tar.bz2
+#chk  08fbbe522e33e847da5f0c3f360f2f7089fa200ad9eddb58458b7218aee6ec04
 
 # Libkleo
 # last changed: see package date.
