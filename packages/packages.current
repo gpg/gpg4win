@@ -235,11 +235,11 @@ chk  1dddde1400c3bcb7749d398071af88c3e4754058d2d4c0b3696c2f82dc5cf11c
 #
 server http://files.gpg4win.org/src
 
-# last-changed: 2018-11-12
+# last-changed: 2018-03-26
 # by: ah
 # verified: Sig 5B80 C575 4298 F0CB  55D8 ED6A BCEF 7E29 4B09 2E28
-file gpgol/gpgol-2.3.2.tar.bz2
-chk  6c298c7a8787e0796a1984d3c1e948b55b9fff685dff3fe7e9d3012001b5b85f
+file gpgol/gpgol-2.3.3.tar.bz2
+chk  2a25388d58ae7d5630c0f2211dcfb40d18f4f058765721df424b0240c4dec9f0
 
 # for beta
 #server http://files.intevation.de/projects/gpg4all
@@ -286,17 +286,18 @@ chk  c2a9b3aec1a38d34b66106116a39f64b01d84f475fef75c40ea0bda0ea67ed07
 # D869 2123 C406 5DEA 5E0F  3AB5 249B 39D2 4F25 E3B6
 server ftp://ftp.gnupg.org/gcrypt
 
-# last changed 2018-05-03
+# last changed 2019-03-26
 # by ah
 # verified: distsigkey.gpg
 server ftp://ftp.gnupg.org/gcrypt
-file libgpg-error/libgpg-error-1.32.tar.bz2
-chk c345c5e73cc2332f8d50db84a2280abfb1d8f6d4f1858b9daa30404db44540ca
+file libgpg-error/libgpg-error-1.36.tar.bz2
+chk babd98437208c163175c29453f8681094bcaf92968a15cafb1a276076b33c97c
 
-# last-changed: 2017-12-07
+# last-changed: 2019-03-26
 # by: ah
-file libassuan/libassuan-2.5.1.tar.bz2
-chk  47f96c37b4f2aac289f0bc1bacfa8bd8b4b209a488d3d15e2229cb6cc9b26449
+# verified: distsigkey.gpg
+file libassuan/libassuan-2.5.3.tar.bz2
+chk  91bcb0403866b4e7c4bc1cc52ed4c364a9b5414b3994f718c70303f7f765e702
 
 # last changed: 2018-08-30
 # by: ah
@@ -572,18 +573,18 @@ chk  08fbbe522e33e847da5f0c3f360f2f7089fa200ad9eddb58458b7218aee6ec04
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah.
-file libkleo/libkleo-201811121611.tar.gz
-chk d0c1e5dc370986b0cfd1697f46317ae1bee6598d1a4ca26d0ee88a14ec07e622
+file libkleo/libkleo-201903261406.tar.gz
+chk f92e806367bfe1c2991aaa4566bbf69111620d1d6c2c316115315b29862bd88a
 
 # KDE-L10n
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah with script kde-l10n.sh
-file kde-l10n/kde-l10n-201811121428-bin.tar.xz
-chk  c18b7305c3cbd9b2911e02cb852eb1933e39fb21b101da837787b18a733d1743
+file kde-l10n/kde-l10n-201903261406-bin.tar.xz
+chk  dae8e50efac60519522948cc2b030e484e1259d5f298c2014c3671fd3925f739
 
-file kde-l10n/kde-l10n-201811121428-src.tar.xz
-chk  b1ad6751a0f544d6399a42592fe7b7cc1fe395880bc5cec5db1396e7e48d9a49
+file kde-l10n/kde-l10n-201903261406-src.tar.xz
+chk  6026ee66421b6c363c3df84eb57bd7f858ea9e5191285f39824053cd405f0112
 
 # Gpg4win-tools package
 # last changed: see package date.
@@ -596,5 +597,5 @@ chk 3f3b3f887a26efa275feafad37c611d8086a1d066f288a8a604432a44392a50a
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah.
-file kleopatra/kleopatra-201903051610.tar.gz
-chk 431ebebffeb85478d1c924664622dda57bfb3fbc3510d26eb337d8fc77cf6b45
+file kleopatra/kleopatra-201903261405.tar.gz
+chk fc17c951b30ec9f9b903b083f4cb6f6735594a7634d6f09daa4259170b26600b
