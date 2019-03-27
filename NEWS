@@ -3,7 +3,7 @@
 # The version number given below are for the standard installers as
 # distributed by www.gpg4win.org.
 
-Noteworthy changes in Version 3.1.6 (unreleased)
+Noteworthy changes in Version 3.1.6 (2019-03-27)
 ------------------------------------------------
 
 (en) Kleopatra: An issue has been fixed that could cause
@@ -82,10 +82,11 @@ Noteworthy changes in Version 3.1.6 (unreleased)
      funktioniert nun. (T4321)
 
 (en) GpgOL: S/MIME Mail detection has been improved. Especially
-     when sending from exchange to exchange. (T4262)
+     when sending from exchange to exchange. (T4262 T3935)
 
 (de) GpgOL: Das erkennen von S/MIME Mails wurde verbessert.
-     Insbesondere beim Versand von Exchange zu Exchange. (T4262)
+     Insbesondere beim Versand von Exchange zu Exchange.
+     (T4262 T3935)
 
 (en) GpgOL: Now shows diagnostics in case sign/encrypt failed
      (T4435)
@@ -156,7 +157,7 @@ Noteworthy changes in Version 3.1.6 (unreleased)
      (Siehe: https://gnupg.org für die Neuigkeiten.)
 
 (en) GnuPG: Updated to Version 2.2.15.
-     (Siehe: https://gnupg.org for News.)
+     (See: https://gnupg.org for News.)
 
 ~~~~~~~~~~~~~~~
 GnuPG:          2.2.15
