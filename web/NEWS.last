@@ -3,6 +3,174 @@
 # The version number given below are for the standard installers as
 # distributed by www.gpg4win.org.+
 
+Noteworthy changes in Version 3.1.6 (2019-03-27)
+------------------------------------------------
+
+(en) Kleopatra: An issue has been fixed that could cause
+     Kleopatra to generate broken TAR archives. (T4332)
+     If you are affected see:
+     https://wiki.gnupg.org/TroubleShooting#Restoring_corrupted_Archives_created_by_Kleopatra
+
+(de) Kleopatra: Ein Fehler wurde behoben der dazu führen
+     konnte das Kleopatra fehlerhafte TAR Archive erstellte. (T4332)
+     Mehr Informationen für betroffene:
+     https://wiki.gnupg.org/TroubleShooting#Restoring_corrupted_Archives_created_by_Kleopatra
+
+(en) Kleopatra: When importing from X509 directory services
+     trusted-certs from dirmngr are also used. (T4269)
+
+(de) Kleopatra: Beim Import aus X509 Verzeichnis-Diensten
+     werden nun auch trusted-certs berücksichtigt. (T4269)
+
+(en) Kleopatra: Secret key backup has been simplified.
+     (T4089)
+
+(de) Kleopatra: Das sichern geheimer Schlüssel wurde
+     vereinfacht. (T4089)
+
+(en) Kleopatra: It is now possible to generate keys
+     without signing capability. (T4373)
+
+(de) Kleopatra: Es ist nun möglich Schlüssel ohne
+     Signaturfunktion zu erstellen. (T4373)
+
+(en) Kleopatra: Startup time has been slightly
+     improved.
+
+(de) Kleopatra: Startet nun etwas schneller.
+
+(en) Kleopatra: Generating keys on OpenPGP Smartcards
+     works again. (T4428)
+
+(de) Kleopatra: Schlüssel können nun wieder auf OpenPGP
+     Smartcards erstellt werden. (T4428)
+
+(en) Kleopatra: Shows the embedded, encrypted, file name if it
+     differs from the actual file name. (T4390)
+
+(de) Kleopatra: Zeigt nun den verschlüsselten, eingebetteten,
+     Dateinamen an falls dieser vom richtigen Namen abweicht.
+
+(en) Kleopatra, GnuPG: Can now directly import secret keys exported
+     from Symantec PGP Desktop. (T4392)
+
+(de) Kleopatra, GnuPG: Geheime Schlüssel die von Symantec PGP Desktop
+     exportiert wurden können nun direkt importiert werden. (T4392)
+
+(en) Pinentry: A problem preventing pinentry from starting
+     in some minimal installations has been fixed. (T4347)
+
+(de) Pinentry: Ein Problem das dazu führen konnte das Pinentry
+     in manchen, minimalen, Installationen nicht startete
+     wurde behoben. (T4347)
+
+(en) GPA: An error when generating new keys has been fixed.
+     (T4265)
+
+(de) GPA: Ein Fehler beim erstellen neuer Schlüssel wurde behoben.
+     (T4265)
+
+(en) GpgOL: The context menu of a crypto mail now offers to
+     permanently decrypt a message. (T3895)
+
+(de) GpgOL: Das Kontextmenü von Krypto-Mails erlaubt es nun
+     Nachrichten dauerhaft zu entschlüsseln. (T3895)
+
+(en) GpgOL: Forwarding sent crypto mails works now. (T4321)
+
+(de) GpgOL: Das weiterleiten von selbst versendeten Krypto-Mails
+     funktioniert nun. (T4321)
+
+(en) GpgOL: S/MIME Mail detection has been improved. Especially
+     when sending from exchange to exchange. (T4262 T3935)
+
+(de) GpgOL: Das erkennen von S/MIME Mails wurde verbessert.
+     Insbesondere beim Versand von Exchange zu Exchange.
+     (T4262 T3935)
+
+(en) GpgOL: Now shows diagnostics in case sign/encrypt failed
+     (T4435)
+
+(de) GpgOL: Es werden nun Diagnose-Ausgaben angezeigt falls
+     das signieren / verschlüsseln fehlschlägt. (T4435)
+
+(en) GpgOL: A crash when memory debugging was enabled
+     has been fixed. (T4262)
+
+(de) GpgOL: Ein Absturz der mit aktivierter Speicheranalyse
+     auftreten konnte wurde beseitigt. (T4262)
+
+(en) GpgOL: With the new option "Import any keys included in mails"
+     GpgOL can now automatically import keys from mail headers
+     and attachments. (T4432)
+
+(de) GpgOL: Mit der neuen Option "Alle in Mails enthaltene Schlüssel
+     importieren" importiert GpgOL Schlüssel aus Mail Headern und
+     anhängen. (T4432)
+
+(en) GpgOL: The option to automatically toggle secure can now
+     be modified to do this even if the keys are untrusted.
+     (T4432)
+
+(de) GpgOL: Die Option um Mails automatisch abzusichern kann
+     nun modifiziert werden das auch nicht vertrauenswürdige
+     Schlüssel berücksichtigt werden. (T4432)
+
+(en) GpgOL: An encrypted subject (e.g. from Enigmail) is now
+     shown after decryption. (T4433)
+
+(de) GpgOL: Ein verschlüsselter Betreff (z.B. von Enigmail) wird
+     nun nach dem entschlüsseln angezeigt. (T4433)
+
+(en) GpgOL: Now uses descriptive names for OpenPGP MIME parts.
+     (T4258)
+
+(de) GpgOL: Es werden nun beschreibende Namen für die OpenPGP
+     MIME-Teile verwendet. (T4258)
+
+(en) GpgOL: Now provides a minimal API for other
+     Addins or Programs to work with
+     crypto mails which GpgOL would otherwise lock.
+     (T4241)
+
+(de) GpgOL: Es existiert nun eine Programmierschnittstelle
+     um GpgOL von anderen Addins oder Programmen heraus
+     anzusprechen damit diese mit Krypto-Mails arbeiten
+     können die GpgOL sonst blockieren würde.
+     (T4241)
+
+(en) GpgOL: There is now a warning in case GpgOL can't
+     represent an Outlook internal attachment format, like
+     for an Event. (T4184)
+
+(de) GpgOL: Es wird nun eine Warnung angezeigt wenn GpgOL
+     einen Anhang in einem Outlook internen Format, etwa
+     einen Termin, nicht abbilden kann. (T4184)
+
+(de) GnuPG: Ein Problem das "dirmngr" auf manchen Systemen
+     nicht gestartet werden konnte ist behoben. (T3381)
+
+(en) GnuPG: An issue that could cause dirmngr not to launch
+     on some systems has been fixed. (T3381)
+
+(de) GnuPG: Auf Version 2.2.15 aktualisiert.
+     (Siehe: https://gnupg.org für die Neuigkeiten.)
+
+(en) GnuPG: Updated to Version 2.2.15.
+     (See: https://gnupg.org for News.)
+
+~~~~~~~~~~~~~~~
+GnuPG:          2.2.15
+Kleopatra:      3.1.6
+GPA:            0.10.0
+GpgOL:          2.3.3
+GpgEX:          1.0.6
+Kompendium DE:  4.0.1
+Compendium EN:  3.0.0
+~~~~~~~~~~~~~~~
+
+
+
 Noteworthy changes in Version 3.1.5 (2018-11-13)
 ------------------------------------------------
 

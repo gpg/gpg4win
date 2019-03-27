@@ -40,6 +40,15 @@
 -->
    <div class="h_text_beta">
    <p><span class="heading">News</span></p>
+   <small>2019-03-27</small><br>
+   <span class="serif_word"><img src="img/bulletin.png" alt"" />
+     m4_ifelse(LANG_DE, `1', `
+      <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2019-March/000047.html">Gpg4win 3.1.6 veröffentlicht
+      </a></span>',`
+      <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2019-March/000083.html">
+        Gpg4win 3.1.6 released
+      </a></span>')
+   <p></p>
    <small>2018-11-13</small><br>
    <span class="serif_word"><img src="img/bulletin.png" alt"" />
      m4_ifelse(LANG_DE, `1', `
@@ -47,15 +56,6 @@
       </a></span>',`
       <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2018-November/000082.html">
         Gpg4win 3.1.5 released
-      </a></span>')
-   <p></p>
-   <small>2018-10-17</small><br>
-   <span class="serif_word"><img src="img/bulletin.png" alt"" />
-     m4_ifelse(LANG_DE, `1', `
-      <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2018-October/000045.html">Gpg4win 3.1.4 veröffentlicht
-      </a></span>',`
-      <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2018-October/000081.html">
-        Gpg4win 3.1.4 released
       </a></span>')
    <p></p>
    <div class="limiter"></div>
