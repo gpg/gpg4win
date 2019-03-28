@@ -385,7 +385,7 @@ make_dirs (const char *name)
   char *fname, *p;
 
   fname = make_targetname (name);
-  p = fname + strlen (fname) - strlen (name);
+  p = fname + strlen (target_dir) + 1;
   while ((p = strchr (p, '/')))
     {
       *p = 0;
