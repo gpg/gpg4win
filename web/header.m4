@@ -43,9 +43,9 @@
    <small>2019-03-28</small><br>
    <span class="serif_word"><img src="img/bulletin.png" alt"" />
      m4_ifelse(LANG_DE, `1', `
-      <a href="download.html">Gpg4win 3.1.7 veröffentlicht
+      <a href="http://lists.wald.intevation.org/pipermail/gpg4win-users-de/2019-March/001028.html">Gpg4win 3.1.7 veröffentlicht
       </a></span>',`
-      <a href="download.html">
+      <a href="http://lists.wald.intevation.org/pipermail/gpg4win-users-en/2019-March/001556.html">
         Gpg4win 3.1.7 released
       </a></span>')
    <p></p>
