@@ -1,0 +1,48 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From 4a4680f8901ecdcb7e8d5ed55f48226ccfccd7c8 Mon Sep 17 00:00:00 2001
+From: Andre Heinecke <aheinecke@gnupg.org>
+Date: Wed, 27 Mar 2019 17:47:41 +0100
+Subject: [PATCH 2/2] core, w32: Fix format string errors on windows
+
+* src/debug.c (_gpgme_debug): Use gpgrt_vasprintf instead of
+vfprintf to have a more portable format.
+
+--
+This fixes crashes on Windows because "%zu" is used which
+is not natively supported on Windows but which gpgrt supports.
+---
+ src/debug.c | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/src/debug.c b/src/debug.c
+index 81c2a90c..79e38ce1 100644
+--- a/src/debug.c
++++ b/src/debug.c
+@@ -255,6 +255,8 @@ _gpgme_debug (int level, int mode, const char *func, const char *tagname,
+   va_list arg_ptr;
+   int saved_errno;
+   int need_lf;
++  char *output;
++  int out_len;
+
+   if (debug_level < level)
+     return 0;
+@@ -307,7 +309,12 @@ _gpgme_debug (int level, int mode, const char *func, const char *tagname,
+     }
+   need_lf = (mode != -1 && (!format || !*format));
+
+-  vfprintf (errfp, format, arg_ptr);
++  out_len = gpgrt_vasprintf (&output, format, arg_ptr);
++  if (out_len >= 0)
++    {
++      fwrite (output, out_len, 1, errfp);
++      free (output);
++    }
+   va_end (arg_ptr);
+   if (need_lf || (format && *format && format[strlen (format) - 1] != '\n'))
+     putc ('\n', errfp);
+--
+2.20.1

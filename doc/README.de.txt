@@ -66,6 +66,10 @@ Die integrierten Gpg4win-Komponenten in Version !VERSION! sind:
 Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 -----------------------------------------
 
+- Gpg4win-3.1.7 ist eine kleine Aktualisierung von 3.1.6 um
+  neu eingeführten Fehler in Kleopatra und GPA zu beheben. Im
+  folgenden die Änderungen aus 3.1.6:
+
 - Kleopatra: Ein Fehler wurde behoben der dazu führen
   konnte das Kleopatra fehlerhafte TAR Archive erstellte. (T4332)
   Mehr Informationen für betroffene:

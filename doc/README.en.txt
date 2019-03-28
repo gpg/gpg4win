@@ -65,6 +65,10 @@ Included Gpg4win components in version !VERSION! are:
 New in Gpg4win version !VERSION! (!BUILD_ISODATE!)
 -----------------------------------------
 
+- Gpg4win-3.1.7 is a minor update over 3.1.6 to fix
+  regressions introduced in 3.1.6. The changes
+  for 3.1.6 are:
+
 - Kleopatra: An issue has been fixed that could cause
   Kleopatra to generate broken TAR archives. (T4332)
   If you are affected see:
