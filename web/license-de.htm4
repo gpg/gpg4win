@@ -32,9 +32,14 @@ Einen aktuelle Übersicht gibt es auch in der aktuellen
 </p>
 <br>
 <pre>
-Gpg4win is
 
-  Copyright (C) 2005-2011 g10 Code GmbH, Intevation GmbH
+Gpg4win (the installer) is
+
+  Copyright (C) 2005-2013 g10 Code GmbH
+                2013-2018 Intevation GmbH
+                2015-2018 Bundesamt für Sicherheit in der Informationstechnik
+                          Software Engineering by Intevation GmbH
+                2019      g10 Code GmbH
 
   Gpg4win is free software; you can redistribute it and/or modify it
   under the terms of the GNU General Public License as published by
@@ -51,10 +56,10 @@ Gpg4win is
   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
   02110-1301, USA
 
+
 GnuPG is
 
-  Copyright 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005,
-            2006, 2007, 2008, 2009, 2010 Free Software Foundation, Inc.
+  Copyright 1998-2019 Free Software Foundation, Inc.
 
   GnuPG is free software; you can redistribute it and/or modify it
   under the terms of the GNU General Public License as published by
@@ -75,7 +80,12 @@ GnuPG is
 
 NSIS is
 
-  Copyright (C) 1999-2008 Nullsoft and Contributors
+  Copyright 1999-2009 Nullsoft, Jeff Doozan and Contributors
+  Copyright 2002-2008 Amir Szekely
+  Copyright 2003 Ramon
+  Copyright 1995-1998 Jean-loup Gailly and Mark Adler
+  Copyright 1999-2006 Igor Pavlov
+  Copyright 1996-2000 Julian R Seward
 
   This license applies to everything in the NSIS package, except where
   otherwise noted.
@@ -109,7 +119,11 @@ NSIS is
 
 GLIB is
 
-  Copyright (C) 1995-1997  Peter Mattis, Spencer Kimball and Josh MacDonald
+  Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
+  Copyright (C) 1995-2011 Red Hat, Inc.
+  Copyright (C) 2008-2010 Novell, Inc.
+  Copyright (C) 2008-2010 Codethink Limited.
+  Copyright (C) 2008-2010 Collabora, Ltd.
 
   This library is free software; you can redistribute it and/or
   modify it under the terms of the GNU Lesser General Public
@@ -126,17 +140,16 @@ GLIB is
   Free Software Foundation, Inc., 59 Temple Place - Suite 330,
   Boston, MA 02111-1307, USA.
 
-  Modified by the GLib Team and others 1997-2000.  See the AUTHORS
-  file for a list of people on the GLib Team.  See the ChangeLog
-  files for a list of changes.  These files are distributed with
-  GLib at ftp://ftp.gtk.org/pub/gtk/.
+  See the AUTHORS file for a list of people on the GLib Team.  See the
+  ChangeLog files for a list of changes.  These files are distributed
+  with GLib at ftp://ftp.gtk.org/pub/gtk/.
 
 
 GPA is
 
   Copyright (C) 2000-2002 G-N-U GmbH (http://www.g-n-u.de)
   Copyright (C) 2002-2003 Miguel Coca.
-  Copyright (C) 2005, 2008, 2009 g10 Code GmbH.
+  Copyright (C) 2005-2019 g10 Code GmbH
 
   GPA uses fragments from the following programs and libraries:
   JNLIB, Copyright (C) 1998-2000 Free Software Foundation, Inc.
@@ -158,11 +171,32 @@ GPA is
   along with this program; if not, see <http://www.gnu.org/licenses/>.
 
 
+GPGEX is
+
+  Copyright (C) 2007-2019 g10 Code GmbH
+
+  GpgEX is free software; you can redistribute it and/or
+  modify it under the terms of the GNU Lesser General Public
+  License as published by the Free Software Foundation; either
+  version 2 of the License, or (at your option) any later version.
+
+  GpgEX is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  GNU Lesser General Public License for more details.
+
+  You should have received a copy of the GNU Lesser General Public
+  License along with this program; if not, write to the Free Software
+  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+  02110-1301, USA.
+
+
 GPGME is
 
-  Copyright (C) 2000 Werner Koch (dd9jn)
-  Copyright (C) 2001, 2002, 2003, 2004, 2005, 2007, 2008,
-                2009 g10 Code GmbH
+  Copyright (C) 2000 Werner Koch
+  Copyright (C) 2001-2019 g10 Code GmbH
+                2015-2019 Bundesamt für Sicherheit in der Informationstechnik
+                          Software Engineering by Intevation GmbH
 
   GPGME is free software; you can redistribute it and/or modify it
   under the terms of the GNU Lesser General Public License as
@@ -183,8 +217,11 @@ GPGME is
 
 GpgOL is
 
-  Copyright (C) 2001 G Data Software AG, http://www.gdata.de
-  Copyright (C) 2004, 2005, 2007, 2008, 2009 g10 Code GmbH
+  Copyright (C) 2004-2011 g10 Code GmbH
+                2015-2018 Bundesamt für Sicherheit in der Informationstechnik
+                          Software Engineering by Intevation GmbH
+                2013-2018 Intevation GmbH
+                     2019 g10 Code GmbH
 
   GpgOL is free software; you can redistribute it and/or
   modify it under the terms of the GNU Lesser General Public
@@ -203,9 +240,67 @@ GpgOL is
   information and bug reporting addresses pertaining to GpgOL.
 
 
+GTK+ is
+
+  Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
+
+  This library is free software; you can redistribute it and/or
+  modify it under the terms of the GNU Lesser General Public
+  License as published by the Free Software Foundation; either
+  version 2 of the License, or (at your option) any later version.
+
+  This library is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+  Lesser General Public License for more details.
+
+  You should have received a copy of the GNU Lesser General Public
+  License along with this library; if not, write to the
+  Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+  Boston, MA 02111-1307, USA.
+
+  Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
+  file for a list of people on the GTK+ Team.  See the ChangeLog
+  files for a list of changes.  These files are distributed with
+  GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+
+
+LIBGCRYPT is
+
+  Copyright (C) 1989,1991-2016· Free Software Foundation, Inc.
+                1994 X Consortium
+                1996 L. Peter Deutsch
+                1997 Werner Koch
+                1998 The Internet Society
+                1996-1999 Peter Gutmann, Paul Kendall, and Chris Wedgwood
+                1996-2006 Peter Gutmann, Matt Thomlinson and Blake Coverett
+                2003 Nikos Mavroyanopoulos
+                2006-2007 NTT (Nippon Telegraph and Telephone Corporation)
+                2012-2019 g10 Code GmbH
+                2012 Simon Josefsson, Niels Möller
+                2012 Intel Corporation
+                2013 Christian Grothoff
+                2013-2019 Jussi Kivilinna
+                2013-2014 Dmitry Eremin-Solenikov
+                2014 Stephan Mueller
+
+  Libgcrypt is free software; you can redistribute it and/or modify
+  it under the terms of the GNU Lesser general Public License as
+  published by the Free Software Foundation; either version 2.1 of
+  the License, or (at your option) any later version.
+
+  Libgcrypt is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU Lesser General Public License for more details.
+
+  You should have received a copy of the GNU Lesser General Public
+  License along with this program; if not, see <http://www.gnu.org/licenses/>.
+
+
 LIBGPG-ERROR is
 
-  Copyright (C) 2003, 2004 g10 Code GmbH
+  Copyright (C) 2001-2004, 2010, 2012-2019, g10 Code GmbH
 
   libgpg-error is free software; you can redistribute it and/or
   modify it under the terms of the GNU Lesser General Public License
@@ -224,7 +319,7 @@ LIBGPG-ERROR is
 Pthreads-win32 is
 
   Copyright(C) 1998 John E. Bossom
-  Copyright(C) 1999,2002 Pthreads-win32 contributors
+  Copyright(C) 1999,2005 Pthreads-win32 contributors
 
   Most of this is work available under the GNU Lesser General Public
   License as published by the Free Software Foundation version 2.1 of
@@ -342,5 +437,44 @@ Scute
   are not obligated to do so.  If you do not wish to do so, delete this
   exception statement from your version and from all source files.
 
+
+KDE-Frameworks
+
+  This library is free software; you can redistribute it and/or
+  modify it under the terms of the GNU Lesser General Public
+  License as published by the Free Software Foundation; either
+  version 2.1 of the License, or (at your option) version 3, or any
+  later version accepted by the membership of KDE e.V. (or its
+  successor approved by the membership of KDE e.V.), which shall
+  act as a proxy defined in Section 6 of version 3 of the license.
+
+  This library is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+  Lesser General Public License for more details.
+
+  You should have received a copy of the GNU Lesser General Public
+  License along with this library.  If not, see <http://www.gnu.org/licenses/>.
+
+Kleopatra
+
+  Copyright (C):
+           2002-2003, Marc Mutz <mutz@kde.org>
+           2008, Nokia Corporation and/or its subsidiary(-ies)
+           2001-2010, Klarälvdalens Datakonsult AB
+           2015-2018, Intevation GmbH
+           2015-2018, Bundesamt für Sicherheit in der Informationstechnik
+                      Software Engineering by Intevation GmbH
+                2019, g10 Code GmbH
+
+  Kleopatra is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
+
+  Kleopatra is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+  General Public License for more details.
 </pre>
 </div>
