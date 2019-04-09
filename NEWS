@@ -59,10 +59,10 @@ Noteworthy changes in Version 3.1.6 (2019-03-27)
      https://wiki.gnupg.org/TroubleShooting#Restoring_corrupted_Archives_created_by_Kleopatra
 
 (en) Kleopatra: When importing from X509 directory services
-     trusted-certs from dirmngr are also used. (T4269)
+     trusted-certs from dirmngr are also used. (T4266)
 
 (de) Kleopatra: Beim Import aus X509 Verzeichnis-Diensten
-     werden nun auch trusted-certs berücksichtigt. (T4269)
+     werden nun auch trusted-certs berücksichtigt. (T4266)
 
 (en) Kleopatra: Secret key backup has been simplified.
      (T4089)
