@@ -36,7 +36,7 @@ only hear about it now, though most software has already been updated.</p>
 <p>Gpg4win and its crypto engine GnuPG had been affected.
 Version 3.1.4 of Gpg4win released in October 2018 had the necessary fixes.</p>
 <p>This happens on a regular basis with software products.
-But what can we learn about it?</p>
+But what can we learn from it?</p>
 <p>Obviously it is good to have independent applied research about email
 cryptography that comes from a usability perspective. Progress is made
 possible by competing implementations and thus open standards.
@@ -125,7 +125,7 @@ Web Key Directory (WKD) allows for a standard way to get a public key
 associated with an email address. Please consider this for your
 applications.</p>
 <h2>Technical Details for Gpg4win</h2>
-<p>GpgOL the Outlook add-in coming with Gpg4win.
+<p>GpgOL is the Outlook add-in coming with Gpg4win.
 When displaying a signed email, it was possible to trick
 GpgOL to show a wrong sending email-address of a valid signature.</p>
 <p>Also it was possible to use HTML in an email - if activated - to fake
