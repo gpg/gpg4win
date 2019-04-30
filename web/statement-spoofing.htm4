@@ -6,7 +6,7 @@ m4_define(`EN')
 m4_define(`DE_FILE', `statement-spoofing.html')
 
 m4_define(`TITLE', `Detecting spoofed email signatures')
-m4_define(`MAIN', `statement-sppofing.html')
+m4_define(`MAIN', `statement-spoofing')
 
 PAGE_START
 
@@ -194,9 +194,10 @@ is correctly handled by GpgSM.</p>
 <p>[1] <a href="https://github.com/RUB-NDS/Johnny-You-Are-Fired/blob/master/paper/johnny-fired.pdf">'Johnny you are fired' – Spoofing OpenPGP and S/MIME Signatures in Emails, Müller et. al. 2019</a>
 <p>[2] <a href="https://dev.gnupg.org/T4183">T4183</a>.</p>
 <h2>Authors</h2>
-<p>2019-04-30
+<p>
 Bernhard Reiter and Andre Heinecke for the teams of Gpg4win and GnuPG</p>
 
 <!-- End Paste -->
 
 <p>CC-BY-SA 4.0</p>
+</div>
