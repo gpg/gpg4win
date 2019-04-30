@@ -167,7 +167,7 @@ and thus faking the display of a signature status.</p>
 </li></ul>
 <p>While a quick glance on the category may not be enough to recognize
 a fake signature, a closer look on the category and the status icon will be.</p>
-<p><img width=100% src="https://heinecke.or.at/div/gpgol-status-icon.png" alt="gpgol-status-icon.png" title="gpgol-status-icon.png"></p>
+<p><img width=100% src="img/sc-gpgol-sig-status-20190429.png" title="Signature status in Gpg4win-3.1.7"></p>
 <h3>GPG Output spoofing and Gpg4win</h3>
 <p>All parts of Gpg4win use the official GnuPG Programming API (GPGME) and
 as such are not affected by GnuPG output parsing problems. GPGME
