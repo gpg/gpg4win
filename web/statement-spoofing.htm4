@@ -58,7 +58,7 @@ at the other end will do.
 (Here the discussion could branch off into pros and cons of an open standard
 with many implementation versus a single proprietary vendor solution.
 Though being interesting to ponder, a small chance of a problem
-`on the other end` will remain.)</p>
+'on the other end' will remain.)</p>
 <p>So when receiving a message from someone: The more important it is
 and the more sensitive, the more cautious you should be.
 This is what humans do in other settings as well.</p>
@@ -89,21 +89,22 @@ is fixed quickly (like for example one important GnuPG fix),
 this will not be reflected in the summary.
 This is fine from the perspective of research because it helps to support
 the conclusion that in addition to good cryptographic foundations,
-also sound suggestions for implementing the user facing side has to be made.</p>
+also sound suggestions for implementing the user facing side have to be made.</p>
 <p>Needed are good recommendation how applications should behave
 regarding email signatures. This is a lot of work and will take time.
 For once it has to work with the user interfaces of different applications.
 And secondly it is harder than specifying algorithms or protocols,
 because it depends on how users perceive the interfaces.</p>
 <p>The reported findings and suggestions have already made email
-signatures safer in many aspects, and not easily reflected in
-a research summary.
+signatures safer in many aspects, and this is not easily reflected in
+a summary of the research.
 In the long run: Coming up with good interface recommendations
 will lead to an even more robust ecosystem of applications.</p>
-<h2>Developers perspective</h2>
+
+<h2>Developer perspective</h2>
 <p>Take a look at the proposed development improvements mentioned in
 the article, it is a reminder about a number of pitfalls to avoid.
-In Addition:</p>
+In addition:</p>
 <p>When connecting your application safely to the crypto engine
 GnuPG use GPGME, the official application programming interface (API).
 GPGME has the code for parsing and state holding that is necessary to deal
@@ -119,7 +120,7 @@ default should be off. Maybe it would help to come up with a simpler markup
 language which offers a very limited set of styling methods for email contents
 that can be kept under control from a security point of view.</p>
 <p>Since 2016 there are notable approaches towards a better trust model
-for OpenPGP based cryptography. GnuPG itself hold information where a
+for OpenPGP based cryptography. GnuPG itself holds information where a
 public key came from and how often it was used in communication. And the
 Web Key Directory (WKD) allows for a standard way to get a public key
 associated with an email address. Please consider this for your
@@ -167,7 +168,10 @@ and thus faking the display of a signature status.</p>
 </li></ul>
 <p>While a quick glance on the category may not be enough to recognize
 a fake signature, a closer look on the category and the status icon will be.</p>
-<p><img width=100% src="img/sc-gpgol-sig-status-20190429.png" title="Signature status in Gpg4win-3.1.7"></p>
+<p>
+<a href="img/sc-gpgol-sig-status-20190429.png"
+><img width=100% src="img/sc-gpgol-sig-status-20190429.png" title="Signature status in Gpg4win-3.1.7"></a>
+</p>
 <h3>GPG Output spoofing and Gpg4win</h3>
 <p>All parts of Gpg4win use the official GnuPG Programming API (GPGME) and
 as such are not affected by GnuPG output parsing problems. GPGME
@@ -175,7 +179,7 @@ handles all parsing of GnuPG output itself and provides a C API
 to access it.</p>
 <h3>MIME attacks and GpgOL</h3>
 <p>GpgOL uses a MIME parser that avoids displaying
-complicated MIME structure and was not affected by this class of attacks.</p>
+complicated MIME structures and was not affected by this class of attacks.</p>
 <h3>CMS attacks and GpgOL</h3>
 <p>GpgOL is not affected by the CMS attack classes as it
 replaces the content of a mail with the data that was
