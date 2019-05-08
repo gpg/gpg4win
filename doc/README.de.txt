@@ -66,35 +66,87 @@ Die integrierten Gpg4win-Komponenten in Version !VERSION! sind:
 Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 -----------------------------------------
 
-- GpgOL: Zufälliges Fehlverhalten (Abstürze, Hänger, etc.)
-  nach der Verwendung von S/MIME wurde behoben. (T4111)
+- Gpg4win-3.1.7 ist eine kleine Aktualisierung von 3.1.6 um
+  neu eingeführten Fehler in Kleopatra und GPA zu beheben. Im
+  folgenden die Änderungen aus 3.1.6:
 
-- GpgOL: Es ist nun möglich die Standard-Konfiguration
-  Systemweit zu konfigurieren. (T4204)
+- Kleopatra: Ein Fehler wurde behoben der dazu führen
+  konnte das Kleopatra fehlerhafte TAR Archive erstellte. (T4332)
+  Mehr Informationen für betroffene:
+  https://wiki.gnupg.org/TroubleShooting#Restoring_corrupted_Archives_created_by_Kleopatra
 
-- GpgOL: Probleme mit ungewöhnlichen Zeichensätzen
-  wurden behoben. (T4156)
+- Kleopatra: Beim Import aus X509 Verzeichnis-Diensten
+  werden nun auch trusted-certs berücksichtigt. (T4269)
 
-- GpgOL: Das deaktivieren von Daten bei der Fehlersuche
-  führt nun zu stärker reduzierten log Dateien. (T4193)
+- Kleopatra: Das sichern geheimer Schlüssel wurde
+  vereinfacht. (T4089)
 
-- GpgOL: Der interne Zugriff auf Schlüssel-Daten wurde
-  beschleunigt. Dies behebt Probleme bei der automatischen
-  Schlüsselauswahl. (T4218)
+- Kleopatra: Es ist nun möglich Schlüssel ohne
+  Signaturfunktion zu erstellen. (T4373)
 
-- GpgOL: Mails im Junk Ordner können nun verschoben werden
-  und werden markiert. (T4188)
+- Kleopatra: Startet nun etwas schneller.
 
-- GpgOL: Die Frage nach dem Speichern von Änderungen erscheint
-  nun nicht mehr beim Schließen über das Datei Menü. (T4236)
+- Kleopatra: Schlüssel können nun wieder auf OpenPGP
+  Smartcards erstellt werden. (T4428)
 
-- Kleopatra: Zufälliges Fehlverhalten (Abstürze, Hänger, etc.)
-  nach dem arbeiten mit S/MIME wurde behoben. (T4111)
+- Kleopatra: Zeigt nun den verschlüsselten, eingebetteten,
+  Dateinamen an falls dieser vom richtigen Namen abweicht.
 
-- Kleopatra: Verbesserter Umgang mit dem CRL
-  Zwischenspeicher. (T3967)
+- Kleopatra, GnuPG: Geheime Schlüssel die von Symantec PGP Desktop
+  exportiert wurden können nun direkt importiert werden. (T4392)
 
-- GnuPG: Auf Version 2.1.11 aktualisiert.
+- Pinentry: Ein Problem das dazu führen konnte das Pinentry
+  in manchen, minimalen, Installationen nicht startete
+  wurde behoben. (T4347)
+
+- GPA: Ein Fehler beim erstellen neuer Schlüssel wurde behoben.
+  (T4265)
+
+- GpgOL: Das Kontextmenü von Krypto-Mails erlaubt es nun
+  Nachrichten dauerhaft zu entschlüsseln. (T3895)
+
+- GpgOL: Das weiterleiten von selbst versendeten Krypto-Mails
+  funktioniert nun. (T4321)
+
+- GpgOL: Das erkennen von S/MIME Mails wurde verbessert.
+  Insbesondere beim Versand von Exchange zu Exchange.
+  (T4262 T3935)
+
+- GpgOL: Es werden nun Diagnose-Ausgaben angezeigt falls
+  das signieren / verschlüsseln fehlschlägt. (T4435)
+
+- GpgOL: Ein Absturz der mit aktivierter Speicheranalyse
+  auftreten konnte wurde beseitigt. (T4262)
+
+- GpgOL: Mit der neuen Option "Alle in Mails enthaltene Schlüssel
+  importieren" importiert GpgOL Schlüssel aus Mail Headern und
+  anhängen. (T4432)
+
+- GpgOL: Die Option um Mails automatisch abzusichern kann
+  nun modifiziert werden das auch nicht vertrauenswürdige
+  Schlüssel berücksichtigt werden. (T4432)
+
+- GpgOL: Ein verschlüsselter Betreff (z.B. von Enigmail) wird
+  nun nach dem entschlüsseln angezeigt. (T4433)
+
+- GpgOL: Es werden nun beschreibende Namen für die OpenPGP
+  MIME-Teile verwendet. (T4258)
+
+- GpgOL: Es existiert nun eine Programmierschnittstelle
+  um GpgOL von anderen Addins oder Programmen heraus
+  anzusprechen damit diese mit Krypto-Mails arbeiten
+  können die GpgOL sonst blockieren würde.
+  (T4241)
+
+- GpgOL: Es wird nun eine Warnung angezeigt wenn GpgOL
+  einen Anhang in einem Outlook internen Format, etwa
+  einen Termin, nicht abbilden kann. (T4184)
+
+- GnuPG: Ein Problem das "dirmngr" auf manchen Systemen
+  nicht gestartet werden konnte ist behoben. (T3381)
+
+- GnuPG: Auf Version 2.2.15 aktualisiert.
+  (Siehe: https://gnupg.org für die Neuigkeiten.)
 
 3. Anmerkungen
 ==============

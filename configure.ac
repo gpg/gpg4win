@@ -25,7 +25,7 @@ min_automake_version="1.9.3"
 # (git tag -s gpg4win-2.x.y) and run "./autogen.sh --force".  Please
 # bump the version number immediately after the release and do another
 # commit and push so that the git magic is able to work.
-m4_define([my_version], [3.1.6])
+m4_define([my_version], [3.1.8])
 
 # Below is m4 magic to extract and compute the git revision number,
 # the decimalized short revision number, a beta version string and a
@@ -317,7 +317,7 @@ GPG4WIN_SPKG([libgpg-error], [libiconv gettext])
 GPG4WIN_SPKG([libassuan], [libgpg-error w32pth])
 GPG4WIN_SPKG([scute], [libgpg-error libassuan])
 GPG4WIN_SPKG([pinentry], [qtbase libiconv gtk+])
-GPG4WIN_SPKG([gpgme], [libgpg-error glib qtbase])
+GPG4WIN_SPKG([gpgme], [libgpg-error libassuan glib qtbase])
 GPG4WIN_SPKG([gpgol], [gpgme libassuan])
 GPG4WIN_SPKG([gpgex], [libassuan])
 GPG4WIN_SPKG([paperkey])

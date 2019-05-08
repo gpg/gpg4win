@@ -38,7 +38,7 @@ $(GMOFILES): %.gmo: %.nsi
 	rm -f $${dir}$${lang}.nsi && ./nsis-msgfmt $${dir}$${lang}.po > $${dir}t-$${lang}.nsi && mv $${dir}t-$${lang}.nsi $${dir}$${lang}.nsi
 
 # Collect all NSI files we need to include.
-catalogs.nsi:
+catalogs.nsi: $(GMOFILES)
 	echo -n $(CATALOGS) \
 	| sed -e 's/\([^ ]*\).gmo */!include "\1.nsi"\n/g' > catalogs.nsi
 

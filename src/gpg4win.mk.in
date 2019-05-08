@@ -164,7 +164,7 @@ define GETDEPS
 endef
 
 define GETDEPS_EX
-  $(addprefix stamps/stamp-final-ex-, $(call GETVAR,gpg4win_pkg_$(1)_deps))
+  $(addprefix stamps/stamp-final-ex-, $(call GETVAR,gpg4win_pkg_$(1)_ex_deps))
 endef
 
 # Template for source packages to build for an additional host
@@ -173,7 +173,7 @@ define EXPKG_template_
 
 pkg_files += $(call GETVAR,gpg4win_pkg_$(1))
 
-stamps/stamp-$(1)-ex-00-unpack: stamps/stamp-$(1)-00-unpack
+stamps/stamp-$(1)-ex-00-unpack: stamps/stamp-$(1)-00-unpack $(call GETDEPS_EX,$(1))
 	touch stamps/stamp-$(1)-ex-00-unpack
 
 stamps/stamp-$(1)-ex-01-patch: stamps/stamp-$(1)-ex-00-unpack stamps/stamp-$(1)-01-patch
@@ -640,6 +640,7 @@ stamps/stamp-$(1)-01-patch: stamps/stamp-$(1)-00-unpack
 	(shopt -s nullglob;				\
 	 $(call SETVARS,$(1));				\
 	 cd "$$$${pkgsdir}";				\
+	 sed -i 's/set(KF5_MIN_VERSION.*)/set(KF5_MIN_VERSION "5.55.0")/' CMakeLists.txt; \
 	 sed -i 's/set(KF5_VERSION.*)/set(KF5_VERSION "5.55.0")/' CMakeLists.txt; \
 	 sed -i 's/set(KMIME_VERSION.*)/set(KMIME_VERSION "5.2.40")/' CMakeLists.txt; \
 	 sed -i 's/set(LIBKLEO_VERSION.*)/set(LIBKLEO_VERSION "5.4.40")/' CMakeLists.txt; \

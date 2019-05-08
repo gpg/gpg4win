@@ -11,6 +11,7 @@ Gpg4win (the installer) is
 
   Copyright (C) 2005-2013 g10 Code GmbH
                 2013-2018 Intevation GmbH
+                2019      g10 Code GmbH
                 2015-2018 Bundesamt für Sicherheit in der Informationstechnik
                           Software Engineering by Intevation GmbH
 
@@ -32,7 +33,7 @@ Gpg4win (the installer) is
 
 GnuPG is
 
-  Copyright 1998-2018 Free Software Foundation, Inc.
+  Copyright 1998-2019 Free Software Foundation, Inc.
 
   GnuPG is free software; you can redistribute it and/or modify it
   under the terms of the GNU General Public License as published by
@@ -122,7 +123,7 @@ GPA is
 
   Copyright (C) 2000-2002 G-N-U GmbH (http://www.g-n-u.de)
   Copyright (C) 2002-2003 Miguel Coca.
-  Copyright (C) 2005-2018 g10 Code GmbH
+  Copyright (C) 2005-2019 g10 Code GmbH
 
   GPA uses fragments from the following programs and libraries:
   JNLIB, Copyright (C) 1998-2000 Free Software Foundation, Inc.
@@ -146,7 +147,7 @@ GPA is
 
 GPGEX is
 
-  Copyright (C) 2007-2018 g10 Code GmbH
+  Copyright (C) 2007-2019 g10 Code GmbH
 
   GpgEX is free software; you can redistribute it and/or
   modify it under the terms of the GNU Lesser General Public
@@ -167,8 +168,8 @@ GPGEX is
 GPGME is
 
   Copyright (C) 2000 Werner Koch
-  Copyright (C) 2001-2018 g10 Code GmbH
-                2015-2018 Bundesamt für Sicherheit in der Informationstechnik
+  Copyright (C) 2001-2019 g10 Code GmbH
+                2015-2019 Bundesamt für Sicherheit in der Informationstechnik
                           Software Engineering by Intevation GmbH
 
   GPGME is free software; you can redistribute it and/or modify it
@@ -194,6 +195,7 @@ GpgOL is
                 2015-2018 Bundesamt für Sicherheit in der Informationstechnik
                           Software Engineering by Intevation GmbH
                 2013-2018 Intevation GmbH
+                     2019 g10 Code GmbH
 
   GpgOL is free software; you can redistribute it and/or
   modify it under the terms of the GNU Lesser General Public
@@ -248,11 +250,11 @@ LIBGCRYPT is
                 1996-2006 Peter Gutmann, Matt Thomlinson and Blake Coverett
                 2003 Nikos Mavroyanopoulos
                 2006-2007 NTT (Nippon Telegraph and Telephone Corporation)
-                2012-2018 g10 Code GmbH
+                2012-2019 g10 Code GmbH
                 2012 Simon Josefsson, Niels Möller
                 2012 Intel Corporation
                 2013 Christian Grothoff
-                2013-2018 Jussi Kivilinna
+                2013-2019 Jussi Kivilinna
                 2013-2014 Dmitry Eremin-Solenikov
                 2014 Stephan Mueller
 
@@ -272,7 +274,7 @@ LIBGCRYPT is
 
 LIBGPG-ERROR is
 
-  Copyright (C) 2001-2004, 2010, 2012-2018, g10 Code GmbH
+  Copyright (C) 2001-2004, 2010, 2012-2019, g10 Code GmbH
 
   libgpg-error is free software; you can redistribute it and/or
   modify it under the terms of the GNU Lesser General Public License
@@ -437,6 +439,7 @@ Kleopatra
            2015-2018, Intevation GmbH
            2015-2018, Bundesamt für Sicherheit in der Informationstechnik
                       Software Engineering by Intevation GmbH
+                2019, g10 Code GmbH
 
   Kleopatra is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -448,4 +451,4 @@ Kleopatra
   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
   General Public License for more details.
 
-[Compiled by wk 2006-02-15, last updated 2018-12-07]
+[Compiled by wk 2006-02-15, last updated 2019-04-02]

@@ -1,0 +1,51 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From 2426ff7d1a5d1387be67a694a8ef76aa4004f8c4 Mon Sep 17 00:00:00 2001
+From: Andre Heinecke <aheinecke@gnupg.org>
+Date: Wed, 27 Mar 2019 10:53:42 +0100
+Subject: [PATCH] Fix content-type detection for headerless mails
+
+* src/mapihelp.cpp (mapi_get_message_content_type):
+Check first attachment if mail has no headers.
+
+--
+Yep that happens. I could reproduce it by looking at
+sent mails in a local data file. This is very likely
+the cause for:
+
+GnuPG-Bug-Id: T3935
+---
+ src/mapihelp.cpp | 12 +++++++++---
+ 1 file changed, 9 insertions(+), 3 deletions(-)
+
+diff --git a/src/mapihelp.cpp b/src/mapihelp.cpp
+index eaa8b0c..1b13076 100644
+--- a/src/mapihelp.cpp
++++ b/src/mapihelp.cpp
+@@ -3213,13 +3213,19 @@ mapi_get_message_content_type (LPMESSAGE message,
+   if (r_smtype)
+     *r_smtype = NULL;
+
+-  const std::string hdrStr = mapi_get_header (message);
++  std::string hdrStr = mapi_get_header (message);
+   if (hdrStr.empty())
+     {
+
+-      log_error ("%s:%s: failed to get headers",
++      log_debug  ("%s:%s: failed to get headers. Looking at first attach",
+                  SRCNAME, __func__);
+-      TRETURN NULL;
++      hdrStr = mapi_get_first_attach_data (message);
++      if (hdrStr.empty())
++        {
++          log_error ("%s:%s: failed to get headers. And attachment.",
++                     SRCNAME, __func__);
++          TRETURN NULL;
++        }
+     }
+
+   rfc822parse_t msg = parse_header_data (hdrStr, isWks);
+--
+2.20.1

@@ -64,34 +64,85 @@ Included Gpg4win components in version !VERSION! are:
 
 New in Gpg4win version !VERSION! (!BUILD_ISODATE!)
 -----------------------------------------
-- GpgOL: Random misbehavior (crashes, freezes, etc.) after
-  working with S/MIME has been fixed. (T4111)
 
-- GpgOL: It is now possible to create a system wide
-  default configuration. (T4204)
+- Gpg4win-3.1.7 is a minor update over 3.1.6 to fix
+  regressions introduced in 3.1.6. The changes
+  for 3.1.6 are:
 
-- GpgOL: Fixed encoding problems with unusual charsets.
-  (T4156)
+- Kleopatra: An issue has been fixed that could cause
+  Kleopatra to generate broken TAR archives. (T4332)
+  If you are affected see:
+  https://wiki.gnupg.org/TroubleShooting#Restoring_corrupted_Archives_created_by_Kleopatra
 
-- GpgOL: Disabling data debugging removes more data
-  from debug logs. (T4193)
+- Kleopatra: When importing from X509 directory services
+  trusted-certs from dirmngr are also used. (T4269)
 
-- GpgOL: The internal access to key data is now faster.
-  This fixes issues with automatic key resolution. (T4218)
+- Kleopatra: Secret key backup has been simplified.
+  (T4089)
 
-- GpgOL: Emails in Junk folders can now be moved and
-  are marked. (T4188)
+- Kleopatra: It is now possible to generate keys
+  without signing capability. (T4373)
 
-- GpgOL: The question to save changes no longer appears when
-  using the File menu. (T4236)
+- Kleopatra: Startup time has been slightly
+  improved.
 
-- Kleopatra: Random misbehavior (crashes, freezes, etc.) after
-  working with S/MIME has been fixed. (T4111)
+- Kleopatra: Generating keys on OpenPGP Smartcards
+  works again. (T4428)
 
-- Kleopatra: Improved CRL cache operations. (T3967)
+- Kleopatra: Shows the embedded, encrypted, file name if it
+  differs from the actual file name. (T4390)
 
-- GnuPG: Updated to version 2.1.11
-  (See: https://lists.gnupg.org/pipermail/gnupg-announce/2018q4/000432.html )
+- Kleopatra, GnuPG: Can now directly import secret keys exported
+  from Symantec PGP Desktop. (T4392)
+
+- Pinentry: A problem preventing pinentry from starting
+  in some minimal installations has been fixed. (T4347)
+
+- GPA: An error when generating new keys has been fixed.
+  (T4265)
+
+- GpgOL: The context menu of a crypto mail now offers to
+  permanently decrypt a message. (T3895)
+
+- GpgOL: Forwarding sent crypto mails works now. (T4321)
+
+- GpgOL: S/MIME Mail detection has been improved. Especially
+  when sending from exchange to exchange. (T4262 T3935)
+
+- GpgOL: Now shows diagnostics in case sign/encrypt failed
+  (T4435)
+
+- GpgOL: A crash when memory debugging was enabled
+  has been fixed. (T4262)
+
+- GpgOL: With the new option "Import any keys included in mails"
+  GpgOL can now automatically import keys from mail headers
+  and attachments. (T4432)
+
+- GpgOL: The option to automatically toggle secure can now
+  be modified to do this even if the keys are untrusted.
+  (T4432)
+
+- GpgOL: An encrypted subject (e.g. from Enigmail) is now
+  shown after decryption. (T4433)
+
+- GpgOL: Now uses descriptive names for OpenPGP MIME parts.
+  (T4258)
+
+- GpgOL: Now provides a minimal API for other
+  Addins or Programs to work with
+  crypto mails which GpgOL would otherwise lock.
+  (T4241)
+
+- GpgOL: There is now a warning in case GpgOL can't
+  represent an Outlook internal attachment format, like
+  for an Event. (T4184)
+
+- GnuPG: An issue that could cause dirmngr not to launch
+  on some systems has been fixed. (T3381)
+
+- GnuPG: Updated to Version 2.2.15.
+  (See: https://gnupg.org for News.)
 
 3. Additional notes
 ===================
