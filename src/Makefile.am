@@ -596,7 +596,7 @@ installers/gpg4win-$(VERSION).exe: gpg4win.nsi $(common_nsi) stamps/stamp-final 
 		        $(foosum_exe) \
 			$(README_files) $(HOWTO_files) \
 	                license.blurb versioninfo.txt
-	$(MAKENSIS) -INPUTCHARSET UTF8 -V3 -DBUILD_DIR=`pwd` -DTOP_SRCDIR=$(top_srcdir) \
+	$(MAKENSIS) -V3 -DBUILD_DIR=`pwd` -DTOP_SRCDIR=$(top_srcdir) \
            -DSRCDIR=$(srcdir) $(EXTRA_MAKENSIS_FLAGS) $(srcdir)/gpg4win.nsi && \
 		   mv gpg4win-$(VERSION).exe installers/gpg4win-$(VERSION).exe
 
@@ -605,7 +605,7 @@ installers/gpg4win-light-$(VERSION).exe: gpg4win.nsi $(common_nsi) stamps/stamp-
 		        $(foosum_exe) \
 			$(README_files) $(HOWTO_files) \
 			license.blurb versioninfo.txt
-	$(MAKENSIS) -INPUTCHARSET UTF8 -V3 -DBUILD_DIR=`pwd` -DTOP_SRCDIR=$(top_srcdir) \
+	$(MAKENSIS) -V3 -DBUILD_DIR=`pwd` -DTOP_SRCDIR=$(top_srcdir) \
            -DSRCDIR=$(srcdir) $(EXTRA_MAKENSIS_FLAGS) \
            -DGPG4WIN_LIGHT=1 $(srcdir)/gpg4win.nsi && \
 		   mv gpg4win-light-$(VERSION).exe installers/gpg4win-light-$(VERSION).exe
@@ -616,7 +616,7 @@ installers/gpg4win-vanilla-$(VERSION).exe: gpg4win.nsi $(common_nsi) stamps/stam
 		        $(foosum_exe) \
 			$(README_files) $(HOWTO_files) \
 		        license.blurb versioninfo.txt
-	$(MAKENSIS) -INPUTCHARSET UTF8 -V3 -DBUILD_DIR=`pwd` -DTOP_SRCDIR=$(top_srcdir) \
+	$(MAKENSIS) -V3 -DBUILD_DIR=`pwd` -DTOP_SRCDIR=$(top_srcdir) \
            -DSRCDIR=$(srcdir) $(EXTRA_MAKENSIS_FLAGS) \
            -DGPG4WIN_VANILLA=1 $(srcdir)/gpg4win.nsi && \
 		   mv gpg4win-vanilla-$(VERSION).exe installers/gpg4win-vanilla-$(VERSION).exe
@@ -661,7 +661,7 @@ installers/gpg4win-src-$(VERSION).exe: gpg4win-src.nsi $(common_nsii) \
                             stamps/stamp-final \
                             stamps/stamp-dist-self \
 		            license.blurb
-	$(MAKENSIS) -INPUTCHARSET UTF8 -V3 -DBUILD_DIR=`pwd` -DTOP_SRCDIR=$(top_srcdir) \
+	$(MAKENSIS) -V3 -DBUILD_DIR=`pwd` -DTOP_SRCDIR=$(top_srcdir) \
 	  -DSRCDIR=$(srcdir) $(EXTRA_MAKENSIS_FLAGS) $(srcdir)/gpg4win-src.nsi && \
 	mv gpg4win-src-$(VERSION).exe installers/gpg4win-src-$(VERSION).exe
 
