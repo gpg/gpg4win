@@ -65,83 +65,61 @@ Included Gpg4win components in version !VERSION! are:
 New in Gpg4win version !VERSION! (!BUILD_ISODATE!)
 -----------------------------------------
 
-- Gpg4win-3.1.7 is a minor update over 3.1.6 to fix
-  regressions introduced in 3.1.6. The changes
-  for 3.1.6 are:
+- Kleopatra: The certificate view now has configurable columns
+  and no longer looses state after a refresh.
+  (T4557 T3888 T3604)
 
-- Kleopatra: An issue has been fixed that could cause
-  Kleopatra to generate broken TAR archives. (T4332)
-  If you are affected see:
-  https://wiki.gnupg.org/TroubleShooting#Restoring_corrupted_Archives_created_by_Kleopatra
+- Kleopatra: The Dialog to add user-ids was improved and simplified.
+  (T4139)
 
-- Kleopatra: When importing from X509 directory services
-  trusted-certs from dirmngr are also used. (T4269)
+- Kleopatra: A warning has been removed when searching for
+  fingerprints and the suggested behavior automated. (T4164)
 
-- Kleopatra: Secret key backup has been simplified.
-  (T4089)
+- Kleopatra: The user-id certifications view has been improved
+  to better show the state of the certifications. (T4458)
 
-- Kleopatra: It is now possible to generate keys
-  without signing capability. (T4373)
+- GpgOL: S/MIME certificates can now be placed similar to OpenPGP
+  keys into the address book. (T4479)
 
-- Kleopatra: Startup time has been slightly
-  improved.
+- GpgOL: A possible loss of attachments when forwarding crypto
+  and non crypto mails has been fixed. (T4526)
 
-- Kleopatra: Generating keys on OpenPGP Smartcards
-  works again. (T4428)
+- GpgOL: It no longer can happen that attachments with a
+  Content-ID are hidden even though they are not visible
+  in the message body. (T4203)
 
-- Kleopatra: Shows the embedded, encrypted, file name if it
-  differs from the actual file name. (T4390)
+- GpgOL: Added Draft encryption as an optional and currently
+  experimental feature. (T4388)
 
-- Kleopatra, GnuPG: Can now directly import secret keys exported
-  from Symantec PGP Desktop. (T4392)
+- GpgOL: S/MIME Mails now use the same icons as Outlook to avoid
+  user confusion. (T4558)
 
-- Pinentry: A problem preventing pinentry from starting
-  in some minimal installations has been fixed. (T4347)
+- GpgOL: The internal format for S/MIME Messages has
+  been changed to improve compatibility with other clients.
+  (T4278 T4553)
 
-- GPA: An error when generating new keys has been fixed.
-  (T4265)
+- GpgOL: Automatic encryption is no longer triggered for
+  users without an S/MIME certificate if S/MIME is preferred.
+  (T4483)
 
-- GpgOL: The context menu of a crypto mail now offers to
-  permanently decrypt a message. (T3895)
+- GpgOL: A possibility that S/MIME Mails were still handled by
+  GpgOL even though S/MIME was disabled no longer exists.
+  (T3935)
 
-- GpgOL: Forwarding sent crypto mails works now. (T4321)
+- GpgOL: The security approval dialog has been improved and
+  handles situations with multiple keys better. (T4559)
 
-- GpgOL: S/MIME Mail detection has been improved. Especially
-  when sending from exchange to exchange. (T4262 T3935)
+- GpgOL: Several rare crashes have been fixed when memory debugging
+  was enabled.
 
-- GpgOL: Now shows diagnostics in case sign/encrypt failed
-  (T4435)
+- GpgOL: Now accepts some more broken mails from other clients.
+  (T4552)
 
-- GpgOL: A crash when memory debugging was enabled
-  has been fixed. (T4262)
+- GpgOL, Kleopatra: A race condition that could lead to
+  random hang-ups of the complete GnuPG system after
+  using S/MIME has been fixed.
 
-- GpgOL: With the new option "Import any keys included in mails"
-  GpgOL can now automatically import keys from mail headers
-  and attachments. (T4432)
-
-- GpgOL: The option to automatically toggle secure can now
-  be modified to do this even if the keys are untrusted.
-  (T4432)
-
-- GpgOL: An encrypted subject (e.g. from Enigmail) is now
-  shown after decryption. (T4433)
-
-- GpgOL: Now uses descriptive names for OpenPGP MIME parts.
-  (T4258)
-
-- GpgOL: Now provides a minimal API for other
-  Addins or Programs to work with
-  crypto mails which GpgOL would otherwise lock.
-  (T4241)
-
-- GpgOL: There is now a warning in case GpgOL can't
-  represent an Outlook internal attachment format, like
-  for an Event. (T4184)
-
-- GnuPG: An issue that could cause dirmngr not to launch
-  on some systems has been fixed. (T3381)
-
-- GnuPG: Updated to Version 2.2.15.
+- GnuPG: Updated to Version 2.2.16.
   (See: https://gnupg.org for News.)
 
 3. Additional notes

@@ -66,86 +66,66 @@ Die integrierten Gpg4win-Komponenten in Version !VERSION! sind:
 Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 -----------------------------------------
 
-- Gpg4win-3.1.7 ist eine kleine Aktualisierung von 3.1.6 um
-  neu eingeführten Fehler in Kleopatra und GPA zu beheben. Im
-  folgenden die Änderungen aus 3.1.6:
+- Kleopatra: Die Zertifikats-Ansicht hat nun konfigurierbare Spalten
+  und verliert bei einer Aktualisierung nicht länger den Zustand.
+  (T4557 T3888 T3604)
 
-- Kleopatra: Ein Fehler wurde behoben der dazu führen
-  konnte das Kleopatra fehlerhafte TAR Archive erstellte. (T4332)
-  Mehr Informationen für betroffene:
-  https://wiki.gnupg.org/TroubleShooting#Restoring_corrupted_Archives_created_by_Kleopatra
+- Kleopatra: Der Dialog um Benutzerkennungen hinzuzufügen wurde
+  überarbeitet und vereinfacht. (T4139)
 
-- Kleopatra: Beim Import aus X509 Verzeichnis-Diensten
-  werden nun auch trusted-certs berücksichtigt. (T4269)
+- Kleopatra: Die Warnung bei der Suche nach einem Fingerprint
+  wurde entfernt und das vorgeschlagene verhalten automatisiert.
+  (T4164)
 
-- Kleopatra: Das sichern geheimer Schlüssel wurde
-  vereinfacht. (T4089)
+- Kleopatra: Der Dialog um Beglaubigungen anzuzeigen wurde
+  verbessert um den Zustand der Beglaubigungen besser anzuzeigen.
+  (T4458)
 
-- Kleopatra: Es ist nun möglich Schlüssel ohne
-  Signaturfunktion zu erstellen. (T4373)
+- GpgOL: S/MIME Zertifikate können nun ähnlich wie OpenPGP Keys
+  im Adressbuch hinterlegt werden. (T4479)
 
-- Kleopatra: Startet nun etwas schneller.
+- GpgOL: Ein möglicher Verlust von Anhängen beim weiterleiten
+  von verschlüsselten und unverschlüsselten Mails wurde behoben.
+  (T4526)
 
-- Kleopatra: Schlüssel können nun wieder auf OpenPGP
-  Smartcards erstellt werden. (T4428)
+- GpgOL: Es kann nicht länger passieren das Anhänge mit
+  einer Content-ID unsichtbar sind auch wenn diese nicht
+  in der Nachricht referenziert werden. (T4203)
 
-- Kleopatra: Zeigt nun den verschlüsselten, eingebetteten,
-  Dateinamen an falls dieser vom richtigen Namen abweicht.
+- GpgOL: Die Verschlüsselung von Entwürfen als optionales und
+  aktuell experimentelles Feature, wurde hinzugefügt. (T4388)
 
-- Kleopatra, GnuPG: Geheime Schlüssel die von Symantec PGP Desktop
-  exportiert wurden können nun direkt importiert werden. (T4392)
+- GpgOL: S/MIME Mails verwenden nun die gleichen Icons wie
+  Outlook S/MIME Mails um Verwirrung zu vermeiden. (T4558)
 
-- Pinentry: Ein Problem das dazu führen konnte das Pinentry
-  in manchen, minimalen, Installationen nicht startete
-  wurde behoben. (T4347)
+- GpgOL: Das interne Format für S/MIME Nachrichten wurde
+  geändert um die Kompatibilität mit anderen Mail-Klienten
+  zu verbessern. (T4278 T4553)
 
-- GPA: Ein Fehler beim erstellen neuer Schlüssel wurde behoben.
-  (T4265)
+- GpgOL: Automatische Verschlüsselung wird nicht mehr ausgelöst
+  für Nutzer ohne S/MIME Zertifikate, wenn S/MIME bevorzugt wird.
+  (T4483)
 
-- GpgOL: Das Kontextmenü von Krypto-Mails erlaubt es nun
-  Nachrichten dauerhaft zu entschlüsseln. (T3895)
+- GpgOL: Eine Möglichkeit das S/MIME Mails weiterhin von GpgOL
+  behandelt wurden auch wenn S/MIME ausgeschaltet war existiert
+  nicht länger. (T3935)
 
-- GpgOL: Das weiterleiten von selbst versendeten Krypto-Mails
-  funktioniert nun. (T4321)
+- GpgOL: Der Dialog zur Sicherheits-Bestätigung wurde verbessert
+  und behandelt nun Situationen mit mehreren Schlüsseln besser.
+  (T4559)
 
-- GpgOL: Das erkennen von S/MIME Mails wurde verbessert.
-  Insbesondere beim Versand von Exchange zu Exchange.
-  (T4262 T3935)
+- GpgOL: Mehrere seltene Abstürze die nur auftraten wenn die
+  Speicherfehler-Analyse in der Fehlersuche aktiviert war wurden
+  behoben.
 
-- GpgOL: Es werden nun Diagnose-Ausgaben angezeigt falls
-  das signieren / verschlüsseln fehlschlägt. (T4435)
+- GpgOL: Es werden nun einige weitere, fehlerhaft konstruierte,
+  Mails von anderen Klienten akzeptiert. (T4552)
 
-- GpgOL: Ein Absturz der mit aktivierter Speicheranalyse
-  auftreten konnte wurde beseitigt. (T4262)
+- GpgOL, Kleopatra: Eine Timing-Situation die dazu führen
+  konnte das das komplette GnuPG-System einfriert wurde
+  behoben.
 
-- GpgOL: Mit der neuen Option "Alle in Mails enthaltene Schlüssel
-  importieren" importiert GpgOL Schlüssel aus Mail Headern und
-  anhängen. (T4432)
-
-- GpgOL: Die Option um Mails automatisch abzusichern kann
-  nun modifiziert werden das auch nicht vertrauenswürdige
-  Schlüssel berücksichtigt werden. (T4432)
-
-- GpgOL: Ein verschlüsselter Betreff (z.B. von Enigmail) wird
-  nun nach dem entschlüsseln angezeigt. (T4433)
-
-- GpgOL: Es werden nun beschreibende Namen für die OpenPGP
-  MIME-Teile verwendet. (T4258)
-
-- GpgOL: Es existiert nun eine Programmierschnittstelle
-  um GpgOL von anderen Addins oder Programmen heraus
-  anzusprechen damit diese mit Krypto-Mails arbeiten
-  können die GpgOL sonst blockieren würde.
-  (T4241)
-
-- GpgOL: Es wird nun eine Warnung angezeigt wenn GpgOL
-  einen Anhang in einem Outlook internen Format, etwa
-  einen Termin, nicht abbilden kann. (T4184)
-
-- GnuPG: Ein Problem das "dirmngr" auf manchen Systemen
-  nicht gestartet werden konnte ist behoben. (T3381)
-
-- GnuPG: Auf Version 2.2.15 aktualisiert.
+- GnuPG: Auf Version 2.2.16 aktualisiert.
   (Siehe: https://gnupg.org für die Neuigkeiten.)
 
 3. Anmerkungen
