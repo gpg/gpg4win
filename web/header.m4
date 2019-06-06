@@ -40,6 +40,15 @@
 -->
    <div class="h_text_beta">
    <p><span class="heading">News</span></p>
+   <small>2019-06-06</small><br>
+   <span class="serif_word"><img src="img/bulletin.png" alt"" />
+     m4_ifelse(LANG_DE, `1', `
+      <a href="http://lists.wald.intevation.org/pipermail/gpg4win-users-de/2019-June/001029.html">Gpg4win 3.1.8 veröffentlicht
+      </a></span>',`
+      <a href="http://lists.wald.intevation.org/pipermail/gpg4win-users-en/2019-June/001557.html">
+        Gpg4win 3.1.8 released
+      </a></span>')
+   <p></p>
    <small>2019-04-30</small><br>
    <span class="serif_word"><img src="img/bulletin.png" alt"" />
      m4_ifelse(LANG_DE, `1', `
@@ -48,15 +57,6 @@
       </a></span>',`
       <a href="statement-spoofing.html">
       Detecting spoofed email signatures
-      </a></span>')
-   <p></p>
-   <small>2019-03-28</small><br>
-   <span class="serif_word"><img src="img/bulletin.png" alt"" />
-     m4_ifelse(LANG_DE, `1', `
-      <a href="http://lists.wald.intevation.org/pipermail/gpg4win-users-de/2019-March/001028.html">Gpg4win 3.1.7 veröffentlicht
-      </a></span>',`
-      <a href="http://lists.wald.intevation.org/pipermail/gpg4win-users-en/2019-March/001556.html">
-        Gpg4win 3.1.7 released
       </a></span>')
    <p></p>
    <div class="limiter"></div>

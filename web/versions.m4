@@ -1,26 +1,26 @@
-m4_define(`VERSION',`3.1.7')
-m4_define(`DL_DATE',`2019-03-28')
+m4_define(`VERSION',`3.1.8')
+m4_define(`DL_DATE',`2019-06-06')
 m4_define(`DOWNLOAD_URL',`https://files.gpg4win.org/gpg4win-VERSION.exe')
 m4_define(`DL_SIZE',`27.5 MByte')
 m4_define(`SDOWNLOAD_URL',`https://files.gpg4win.org/gpg4win-VERSION.tar.bz2')
 m4_define(`SDL_SIZE',`5.3 MByte')
 
 m4_dnl Paste output of mk-chksums here
-m4_define(`SHA1_SRC',`8e5311fe3e8201ebf7a102d7952d147701a5dac3')
-m4_define(`SHA1_EXE',`bd1d8a11b71dc8ef4ea856ffac0440d9005a9c40')
-m4_define(`SHA1_EXS',`63644661a59ada50d33edbf986c4357e39fb8857')
-m4_define(`SHA2_SRC',`1bc9ea9f2703cfe6878885507bb8d35a5a98cbda69ebe6bdbe909dd11d764e7f')
-m4_define(`SHA2_EXE',`ba2c4ac4cf9a44e19611f86ece4bafa71a5ef02553a1652a73b9037c74608b69')
-m4_define(`SHA2_EXS',`d559a128bb983bb4241c4c1ac1657bcc8d3eea180af4166bd4a12eaad4f4f399')
-m4_define(`LEN_SRC',`5425957')
-m4_define(`LEN_EXE',`28864592')
-m4_define(`LEN_EXS',`233124760')
+m4_define(`SHA1_SRC',`8a4532789188c4e5530fc6c2b4cb5610240e4ad9')
+m4_define(`SHA1_EXE',`4aee8d17efb8519ad9109697f2615d5dff4f6641')
+m4_define(`SHA1_EXS',`656f03177484999489199f557cdbd31b59a5c64b')
+m4_define(`SHA2_SRC',`87f293ffe1ef0486cd53d74d81b3fdb4cd2e35d1966835e763bb70a1075c95d4')
+m4_define(`SHA2_EXE',`3d0a959a0c8a9c862460efaf0efafc8ecb6e4ca714d5ff7987f68cacdeac424b')
+m4_define(`SHA2_EXS',`b3c093cfbda14901eb3ea77933db3c1ab4b299a83ef43fa8aab944f3848c2276')
+m4_define(`LEN_SRC',`5424330')
+m4_define(`LEN_EXE',`29005344')
+m4_define(`LEN_EXS',`233076800')
 m4_dnl end paste
 
 m4_define(`DLPAGE',`I18N(`EN',`download.html')`'I18N(`DE',`download-de.html')')
 m4_define(`SOFTWAREOVERVIEW',`
-I18N(`EN', `<a href="https://www.gnupg.org/">GnuPG</a>')I18N(`DE', `<a href="https://www.gnupg.org/index.de.html">GnuPG</a>') 2.2.15
-<a href="https://www.kde.org/applications/utilities/kleopatra/">Kleopatra</a> 3.1.7
+I18N(`EN', `<a href="https://www.gnupg.org/">GnuPG</a>')I18N(`DE', `<a href="https://www.gnupg.org/index.de.html">GnuPG</a>') 2.2.16
+<a href="https://www.kde.org/applications/utilities/kleopatra/">Kleopatra</a> 3.1.8
 I18N(`EN', `<a href="https://www.gnupg.org/related_software/gpa/index.html">GPA</a>')I18N(`DE', `<a href="https://www.gnupg.org/related_software/gpa/index.de.html">GPA</a>') 0.10.0
 <a href="https://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpgol.git;a=summary">GpgOL</a> 2.3.3
 <a href="https://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpgex.git;a=summary">GpgEX</a> 1.0.6
