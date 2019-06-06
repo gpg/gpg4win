@@ -1,0 +1,35 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From e714c4c749eb4800c1b49386d543b7e224b8686b Mon Sep 17 00:00:00 2001
+From: Andre Heinecke <aheinecke@gnupg.org>
+Date: Tue, 4 Jun 2019 10:38:32 +0200
+Subject: [PATCH] Revert "Only use IPM.Note.SMIME.MultipartSigned for SMIME"
+
+This reverts commit 7323a82d1f8d548b85eb1c4cf7cd1e0c0224c246.
+---
+ src/mimemaker.cpp | 7 ++-----
+ 1 file changed, 2 insertions(+), 5 deletions(-)
+
+diff --git a/src/mimemaker.cpp b/src/mimemaker.cpp
+index 91a8c30..06d1375 100644
+--- a/src/mimemaker.cpp
++++ b/src/mimemaker.cpp
+@@ -1235,12 +1235,9 @@ finalize_message (LPMESSAGE message, mapi_attach_item_t *att_table,
+          not immediately showing the GpgOL icon but gives other
+          clients that do not have GpgOL installed a better chance
+          to handle the mail. */
+-      if (encrypt && /* exchange_major_version >= 15*/ 0)
++      if (encrypt && exchange_major_version >= 15)
+         {
+-          (void) exchange_major_version;
+-          /* This only appears to work with later exchange versions and
+-          caused other Problems with incompatibilities. MultipartSigned
+-          seemd to work better, even if it now has the wrong icon. */
++          /* This only appears to work with later exchange versions */
+           prop.Value.lpszA = xstrdup ("IPM.Note.SMIME");
+         }
+       else
+--
+2.20.1
