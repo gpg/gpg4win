@@ -30,9 +30,21 @@ Wiki-Seite zur Integritätsprüfung (auf Englisch)</a>.
 
 <h2>Codesigning Zertifikat</h2>
 
-<p>Die Gpg4win-exe-Dateien sind seit April 2016 mit folgendem Codesigning-Zertifikat
+<p>Die Gpg4win-exe-Dateien sind seit Juni 2019 mit folgendem Codesigning-Zertifikat
 signiert:</p>
 
+<pre>
+      S/N: 53F647D0F1DBA9E312A05669
+   Issuer: CN=GlobalSign CodeSigning CA - SHA256 - G3,O=GlobalSign nv-sa,C=BE 
+  Subject: 1.2.840.113549.1.9.1=#636F64657369676E696E6740696E7465766174696F6E2E6465,
+           CN=Intevation GmbH,O=Intevation GmbH,L=Osnabrueck,ST=Niedersachsen,C=DE
+ sha1_fpr: C1:3A:65:96:3A:D5:3E:78:69:4D:D2:23:D5:18:00:77:91:A0:5F:E4
+  md5_fpr: 4C:AD:36:5A:30:06:B0:A3:6D:BB:1E:30:1E:44:4E:17
+notBefore: 2019-03-13 12:15:07
+ notAfter: 2022-04-30 16:54:41
+</pre>
+<hr/>
+<p>Frühere Versionen wurden mit einem der folgenden Zertifikate signiert:</p>
 <pre>
       S/N: 1121A3D67EAB28AA86FD85728B57FA62630D
    Issuer: CN=GlobalSign CodeSigning CA - SHA256 - G2,O=GlobalSign nv-sa,C=BE
@@ -42,10 +54,7 @@ signiert:</p>
   md5_fpr: C0:98:08:94:D4:E7:97:3E:9D:F4:18:E4:5E:0A:2E:D7
 notBefore: 2016-03-30 16:54:41
  notAfter: 2019-03-31 16:54:41
-</pre>
-<hr/>
-<p>Frühere Versionen wurden mit einem der folgenden Zertifikate signiert:</p>
-<pre>
+
       S/N: 112117F638BDC993B761C6073D63C2F86EC4
    Issuer: CN=GlobalSign CodeSigning CA - G2,O=GlobalSign nv-sa,C=BE
   Subject: 1.2.840.113549.1.9.1=#636F64657369676E696E6740696E7465766174696F6E2E6465,
