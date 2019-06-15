@@ -1,0 +1,42 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From 2b0c2bd30d39d0ec568da788a8e77bc34e227c0c Mon Sep 17 00:00:00 2001
+From: Andre Heinecke <aheinecke@gnupg.org>
+Date: Tue, 11 Jun 2019 09:31:10 +0200
+Subject: [PATCH] Fix key mapping based on summary column
+
+If we move the summary column below num columns data queries
+for this column fail. This breaks for example the
+certificatelineedit in Kleopatra.
+
+The summary column is still hidden because we do not set
+header data.
+
+GnuPG-Bug-ID: T4569
+
+This fixes: 4847fcc27afc8101752de82b0dd1f5fee027695d
+
+Merge is not neccessary as 4847fcc27 was not included
+in any branch so far.
+---
+ src/models/keylistmodelinterface.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/models/keylistmodelinterface.h b/src/models/keylistmodelinterface.h
+index 3167538..4820ece 100644
+--- a/src/models/keylistmodelinterface.h
++++ b/src/models/keylistmodelinterface.h
+@@ -73,8 +73,8 @@ public:
+ #endif
+
+         Validity,
+-        NumColumns,
+         Summary, // Short summary line
++        NumColumns,
+         Icon = PrettyName // which column shall the icon be displayed in?
+     };
+
+--
+2.20.1
