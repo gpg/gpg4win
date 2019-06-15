@@ -3,6 +3,33 @@
 # The version number given below are for the standard installers as
 # distributed by www.gpg4win.org.+
 
+Noteworthy changes in Version 3.1.9 (2019-06-15)
+------------------------------------------------
+
+(en) Kleopatra: Fixed autocompletion of recipients. (T4569)
+
+(de) Kleopatra: Die autovervollständigung von Empfängern
+funktioniert nun wieder. (T4569)
+
+(en) GpgOL: Printing of crypto mails now fully works. (T4560)
+
+(de) GpgOL: Das drucken funktioniert nun vollständig. (T4560)
+
+(en) GpgOL: File -> Save As does now work. (T4318)
+
+(de) GpgOL: Datei -> Speichern unter funktioniert nun. (T4318)
+
+
+~~~~~~~~~~~~~~~
+GnuPG:          2.2.16
+Kleopatra:      3.1.8
+GPA:            0.10.0
+GpgOL:          2.4.0
+GpgEX:          1.0.6
+Kompendium DE:  4.0.1
+Compendium EN:  3.0.0
+~~~~~~~~~~~~~~~
+
 Noteworthy changes in Version 3.1.8 (2019-06-06)
 ------------------------------------------------
 
