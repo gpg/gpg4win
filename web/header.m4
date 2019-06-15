@@ -49,7 +49,6 @@
         Gpg4win 3.1.9 released
       </a></span>')
    <p></p>
-   <p><span class="heading">News</span></p>
    <small>2019-06-06</small><br>
    <span class="serif_word"><img src="img/bulletin.png" alt"" />
      m4_ifelse(LANG_DE, `1', `
