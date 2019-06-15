@@ -65,62 +65,13 @@ Included Gpg4win components in version !VERSION! are:
 New in Gpg4win version !VERSION! (!BUILD_ISODATE!)
 -----------------------------------------
 
-- Kleopatra: The certificate view now has configurable columns
-  and no longer looses state after a refresh.
-  (T4557 T3888 T3604)
+- Kleopatra: Fixed autocompletion of recipients. (T4569)
 
-- Kleopatra: The Dialog to add user-ids was improved and simplified.
-  (T4139)
+funktioniert nun wieder. (T4569)
 
-- Kleopatra: A warning has been removed when searching for
-  fingerprints and the suggested behavior automated. (T4164)
+- GpgOL: Printing of crypto mails now fully works. (T4560)
 
-- Kleopatra: The user-id certifications view has been improved
-  to better show the state of the certifications. (T4458)
-
-- GpgOL: S/MIME certificates can now be placed similar to OpenPGP
-  keys into the address book. (T4479)
-
-- GpgOL: A possible loss of attachments when forwarding crypto
-  and non crypto mails has been fixed. (T4526)
-
-- GpgOL: It no longer can happen that attachments with a
-  Content-ID are hidden even though they are not visible
-  in the message body. (T4203)
-
-- GpgOL: Added Draft encryption as an optional and currently
-  experimental feature. (T4388)
-
-- GpgOL: S/MIME Mails now use the same icons as Outlook to avoid
-  user confusion. (T4558)
-
-- GpgOL: The internal format for S/MIME Messages has
-  been changed to improve compatibility with other clients.
-  (T4278 T4553)
-
-- GpgOL: Automatic encryption is no longer triggered for
-  users without an S/MIME certificate if S/MIME is preferred.
-  (T4483)
-
-- GpgOL: A possibility that S/MIME Mails were still handled by
-  GpgOL even though S/MIME was disabled no longer exists.
-  (T3935)
-
-- GpgOL: The security approval dialog has been improved and
-  handles situations with multiple keys better. (T4559)
-
-- GpgOL: Several rare crashes have been fixed when memory debugging
-  was enabled.
-
-- GpgOL: Now accepts some more broken mails from other clients.
-  (T4552)
-
-- GpgOL, Kleopatra: A race condition that could lead to
-  random hang-ups of the complete GnuPG system after
-  using S/MIME has been fixed.
-
-- GnuPG: Updated to Version 2.2.16.
-  (See: https://gnupg.org for News.)
+- GpgOL: File -> Save As does now work. (T4318)
 
 3. Additional notes
 ===================

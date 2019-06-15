@@ -66,69 +66,14 @@ Die integrierten Gpg4win-Komponenten in Version !VERSION! sind:
 Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 -----------------------------------------
 
-- Kleopatra: Die Zertifikats-Ansicht hat nun konfigurierbare Spalten
-  und verliert bei einer Aktualisierung nicht länger den Zustand.
-  (T4557 T3888 T3604)
+- Kleopatra: Die autovervollständigung von Empfängern
+funktioniert nun wieder. (T4569)
 
-- Kleopatra: Der Dialog um Benutzerkennungen hinzuzufügen wurde
-  überarbeitet und vereinfacht. (T4139)
+- GpgOL: Das drucken funktioniert nun vollständig. (T4560)
 
-- Kleopatra: Die Warnung bei der Suche nach einem Fingerprint
-  wurde entfernt und das vorgeschlagene verhalten automatisiert.
-  (T4164)
+- GpgOL: Datei -> Speichern unter funktioniert nun. (T4318)
 
-- Kleopatra: Der Dialog um Beglaubigungen anzuzeigen wurde
-  verbessert um den Zustand der Beglaubigungen besser anzuzeigen.
-  (T4458)
 
-- GpgOL: S/MIME Zertifikate können nun ähnlich wie OpenPGP Keys
-  im Adressbuch hinterlegt werden. (T4479)
-
-- GpgOL: Ein möglicher Verlust von Anhängen beim weiterleiten
-  von verschlüsselten und unverschlüsselten Mails wurde behoben.
-  (T4526)
-
-- GpgOL: Es kann nicht länger passieren das Anhänge mit
-  einer Content-ID unsichtbar sind auch wenn diese nicht
-  in der Nachricht referenziert werden. (T4203)
-
-- GpgOL: Die Verschlüsselung von Entwürfen als optionales und
-  aktuell experimentelles Feature, wurde hinzugefügt. (T4388)
-
-- GpgOL: S/MIME Mails verwenden nun die gleichen Icons wie
-  Outlook S/MIME Mails um Verwirrung zu vermeiden. (T4558)
-
-- GpgOL: Das interne Format für S/MIME Nachrichten wurde
-  geändert um die Kompatibilität mit anderen Mail-Klienten
-  zu verbessern. (T4278 T4553)
-
-- GpgOL: Automatische Verschlüsselung wird nicht mehr ausgelöst
-  für Nutzer ohne S/MIME Zertifikate, wenn S/MIME bevorzugt wird.
-  (T4483)
-
-- GpgOL: Eine Möglichkeit das S/MIME Mails weiterhin von GpgOL
-  behandelt wurden auch wenn S/MIME ausgeschaltet war existiert
-  nicht länger. (T3935)
-
-- GpgOL: Der Dialog zur Sicherheits-Bestätigung wurde verbessert
-  und behandelt nun Situationen mit mehreren Schlüsseln besser.
-  (T4559)
-
-- GpgOL: Mehrere seltene Abstürze die nur auftraten wenn die
-  Speicherfehler-Analyse in der Fehlersuche aktiviert war wurden
-  behoben.
-
-- GpgOL: Es werden nun einige weitere, fehlerhaft konstruierte,
-  Mails von anderen Klienten akzeptiert. (T4552)
-
-- GpgOL, Kleopatra: Eine Timing-Situation die dazu führen
-  konnte das das komplette GnuPG-System einfriert wurde
-  behoben.
-
-- GnuPG: Auf Version 2.2.16 aktualisiert.
-  (Siehe: https://gnupg.org für die Neuigkeiten.)
-
-3. Anmerkungen
 ==============
 
 - GpgOL
