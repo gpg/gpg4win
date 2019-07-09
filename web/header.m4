@@ -37,9 +37,9 @@
       Try BETA_VERSION
      </span></a>')
    </div>
--->
    <div class="h_text_beta">
-   <p><span class="heading">News</span></p>
+-->
+   <div class="h_text">
    <small>2019-06-15</small><br>
    <span class="serif_word"><img src="img/bulletin.png" alt"" />
      m4_ifelse(LANG_DE, `1', `
@@ -49,20 +49,17 @@
         Gpg4win 3.1.9 released
       </a></span>')
    <p></p>
-   <small>2019-06-06</small><br>
+   <small>2019-04-30</small><br>
    <span class="serif_word"><img src="img/bulletin.png" alt"" />
-     m4_ifelse(LANG_DE, `1', `
-      <a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2019-June/000048.html">Gpg4win 3.1.8 veröffentlicht
-      </a></span>',`
-      <a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce/2019-June/000084.html">
-        Gpg4win 3.1.8 released
-      </a></span>')
+      <a href="statement-spoofing.html">
+      Detecting spoofed email signatures
+      </a></span>
    <p></p>
    <div class="limiter"></div>
    <p>
      m4_ifelse(LANG_DE, `1', `
-     Ältere Meldungen im <a href="newsarchive-de.html">Newsarchiv</a>.', `
-     Older messages in <a href="newsarchive.html">news archive</a>.')
+     <a href="newsarchive-de.html">Newsarchiv</a>', `
+     <a href="newsarchive.html">Archived News</a>')
     </p>
    </div>
   </div>', `
