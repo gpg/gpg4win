@@ -65,13 +65,24 @@ Included Gpg4win components in version !VERSION! are:
 New in Gpg4win version !VERSION! (!BUILD_ISODATE!)
 -----------------------------------------
 
-- Kleopatra: Fixed autocompletion of recipients. (T4569)
+- GpgOL: Eine Möglichkeit das Klartext auf den Server synchronisiert
+  wurde ist behoben.  Dies konnte passieren wenn man Mails
+  gleichzeitig in der Nachrichtenliste angeschaut hat und dabei
+  die Mail auch im eigenen Fenster geöffnet und geschlossen hat.
+  (T4622 T4621)
 
-funktioniert nun wieder. (T4569)
+- GnuPG: Fremde Signaturen von den öffentlichen Keyservern werden
+  nun ignoriert. Dies wurde nötig da ein Denial of Service mit
+  gefälschten Signaturen durchgeführt wird.  Das alte verhalten
+  kann weiter verwendet werden wenn
+     keyserver-options no-self-sigs-only,no-import-clean
+  der gpg.conf hinzugefügt wird. (T4607)
+  Eine alternative für die öffentlichen Keyserver wird unter:
+  https://wiki.gnupg.org/WKD beschrieben.
 
-- GpgOL: Printing of crypto mails now fully works. (T4560)
+- GnuPG: Auf Version 2.2.17 aktualisiert.
+  (Siehe: https://gnupg.org für die Neuigkeiten.)
 
-- GpgOL: File -> Save As does now work. (T4318)
 
 3. Additional notes
 ===================

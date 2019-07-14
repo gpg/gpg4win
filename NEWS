@@ -3,6 +3,52 @@
 # The version number given below are for the standard installers as
 # distributed by www.gpg4win.org.
 
+Noteworthy changes in Version 3.1.10 (2019-07-14)
+------------------------------------------------
+
+(en) GpgOL: Fixed a possible plaintext leak to the
+     mail server, which could occur when opening and closing mails
+     while the mail was also visible in the message list. (T4622 T4621)
+
+(de) GpgOL: Eine Möglichkeit das Klartext auf den Server synchronisiert
+     wurde ist behoben.  Dies konnte passieren wenn man Mails
+     gleichzeitig in der Nachrichtenliste angeschaut hat und dabei
+     die Mail auch im eigenen Fenster geöffnet und geschlossen hat.
+     (T4622 T4621)
+
+(en) GnuPG: Ignore all key-signatures received from keyservers.  This
+     change is required to mitigate a DoS due to keys flooded with
+     faked key-signatures.  The old behaviour can be achieved by adding
+       keyserver-options no-self-sigs-only,no-import-clean
+     to your gpg.conf.  (T4607)
+     See: https://wiki.gnupg.org/WKD for an alternative to the
+     keyservers.
+
+(de) GnuPG: Fremde Signaturen von den öffentlichen Keyservern werden
+     nun ignoriert. Dies wurde nötig da ein Denial of Service mit
+     gefälschten Signaturen durchgeführt wird.  Das alte verhalten
+     kann weiter verwendet werden wenn
+        keyserver-options no-self-sigs-only,no-import-clean
+     der gpg.conf hinzugefügt wird. (T4607)
+     Eine alternative für die öffentlichen Keyserver wird unter:
+     https://wiki.gnupg.org/WKD beschrieben.
+
+(de) GnuPG: Auf Version 2.2.17 aktualisiert.
+     (Siehe: https://gnupg.org für die Neuigkeiten.)
+
+(en) GnuPG: Updated to Version 2.2.17.
+     (See: https://gnupg.org for News.)
+
+~~~~~~~~~~~~~~~
+GnuPG:          2.2.17
+Kleopatra:      3.1.8
+GPA:            0.10.0
+GpgOL:          2.4.2
+GpgEX:          1.0.6
+Kompendium DE:  4.0.1
+Compendium EN:  3.0.0
+~~~~~~~~~~~~~~~
+
 Noteworthy changes in Version 3.1.9 (2019-06-15)
 ------------------------------------------------
 

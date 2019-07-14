@@ -66,12 +66,23 @@ Die integrierten Gpg4win-Komponenten in Version !VERSION! sind:
 Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 -----------------------------------------
 
-- Kleopatra: Die autovervollständigung von Empfängern
-funktioniert nun wieder. (T4569)
+- GpgOL: Eine Möglichkeit das Klartext auf den Server synchronisiert
+  wurde ist behoben.  Dies konnte passieren wenn man Mails
+  gleichzeitig in der Nachrichtenliste angeschaut hat und dabei
+  die Mail auch im eigenen Fenster geöffnet und geschlossen hat.
+  (T4622 T4621)
 
-- GpgOL: Das drucken funktioniert nun vollständig. (T4560)
+- GnuPG: Fremde Signaturen von den öffentlichen Keyservern werden
+  nun ignoriert. Dies wurde nötig da ein Denial of Service mit
+  gefälschten Signaturen durchgeführt wird.  Das alte verhalten
+  kann weiter verwendet werden wenn
+     keyserver-options no-self-sigs-only,no-import-clean
+  der gpg.conf hinzugefügt wird. (T4607)
+  Eine alternative für die öffentlichen Keyserver wird unter:
+  https://wiki.gnupg.org/WKD beschrieben.
 
-- GpgOL: Datei -> Speichern unter funktioniert nun. (T4318)
+- GnuPG: Auf Version 2.2.17 aktualisiert.
+  (Siehe: https://gnupg.org für die Neuigkeiten.)
 
 
 ==============
