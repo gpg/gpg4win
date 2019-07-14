@@ -235,11 +235,11 @@ chk  1dddde1400c3bcb7749d398071af88c3e4754058d2d4c0b3696c2f82dc5cf11c
 #
 server http://files.gpg4win.org/src
 
-# last-changed: 2019-06-15
+# last-changed: 2019-07-14
 # by: ah
 # verified: Sig 5B80 C575 4298 F0CB  55D8 ED6A BCEF 7E29 4B09 2E28
-file gpgol/gpgol-2.4.1.tar.bz2
-chk  1e854a766e716c846c7db72c138436a152d0557e299ede96bcaf09d28daeda07
+file gpgol/gpgol-2.4.2.tar.bz2
+chk  22ffefdfaf6e529c8d96bb7ff94e7292a40b5a081480372daca8756d3b3b069b
 
 # for beta
 server http://files.intevation.de/projects/gpg4all
@@ -302,13 +302,13 @@ chk  91bcb0403866b4e7c4bc1cc52ed4c364a9b5414b3994f718c70303f7f765e702
 # last changed: 2018-08-30
 # by: ah
 # verified: distsigkey.gpg
-name gnupg-w32-2.2.16-20190528-bin.exe
-file binary/gnupg-w32-2.2.16_20190528.exe
-chk  7d917439061cc0310ffda8e8ad1059f0431eac31df624708b9eeb28faddaaf5c
+name gnupg-w32-2.2.17-20190709-bin.exe
+file binary/gnupg-w32-2.2.17_20190709.exe
+chk  e5c99867591c1f72190f5540040ba027233f8cf5acc9ed627dba89a2461b57e0
 
-name gnupg-w32-2.2.16-20190528-src.tar.xz
-file binary/gnupg-w32-2.2.16_20190528.tar.xz
-chk 9e5616e7573d3e960aa525ada5e97463931c3979cda2bd06b04332cf72dd08d4
+name gnupg-w32-2.2.17-20190709-src.tar.xz
+file binary/gnupg-w32-2.2.17_20190709.tar.xz
+chk  ad115b31c84cf7650a66090d266e437c00f6169d1aa6f4e9d3358e2f3e3c950a
 
 server ftp://ftp.gnupg.org/gcrypt
 
