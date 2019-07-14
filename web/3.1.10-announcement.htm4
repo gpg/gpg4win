@@ -1,0 +1,75 @@
+m4_dnl                                                            -*-html-*-
+m4_include(`template.m4')
+m4_dnl $Id$
+
+m4_define(`EN')
+m4_define(`DE_FILE', `3.1.10-announcement-de.html')
+
+m4_define(`TITLE', `Gpg4win-3.1.10')
+m4_define(`MAIN', `gpg4win-3.1.10')
+
+PAGE_START
+
+m4_undefine(`EN')
+
+<div id="intro">
+<h1>Gpg4win-3.1.10 released</h1>
+(2019-07-14)
+
+<i>Due to a technical problem the announcement has not yet been sent to gpg4win-announce.</i>
+</div>
+
+<div id="main">
+
+<pre>
+Hello,
+
+today Gpg4win version 3.1.10 is released!
+
+        https://www.gpg4win.org/download.html
+
+It is important to us that Gpg4win continues to be available
+as Free Software which can be downloaded anonymously without costs.
+Because we know that this is the only way for some people to get
+a software product which enables them to protect their communication.
+As Gpg4win maintenance needs to be funded nevertheless, we recommend
+that you set the price for yourself that shows the value of Gpg4win.
+
+Details about Gpg4win 3.1.10:
+    https://files.gpg4win.org/README-3.1.10.en.txt
+
+
+Highlights in Gpg4win Version 3.1.10 (2019-07-14)
+-------------------------------------------
+* GnuPG:  Now ignores all key-signatures received from keyservers.  This
+   change is required to mitigate a DoS due to keys flooded with
+   faked key-signatures.  The old behaviour can be achieved by adding
+       keyserver-options no-self-sigs-only,no-import-clean
+   to your gpg.conf. 
+   See: https://wiki.gnupg.org/WKD for an alternative to the keyservers.
+
+* GpgOL: Important fixes, which include a fix for an issue that could cause the
+   plaintext of E-Mails to be leaked to the server.
+
+More information: https://files.gpg4win.org/README-3.1.10.en.txt
+
+
+We like to thank the authors of the included packages and first of all,
+our supporters who made this release possible.
+
+
+With best regards
+
+    your Gpg4win Development Team
+
+--
+GnuPG.com - a brand of g10 Code, the GnuPG experts.
+
+g10 Code GmbH, Erkrath/Germany, AG Wuppertal HRB14459
+GF Werner Koch, USt-Id DE215605608, www.g10code.com.
+
+GnuPG e.V., Rochusstr. 44, D-40479 Düsseldorf.  VR 11482 Düsseldorf
+Vorstand: W.Koch, M.Gollowitzer, A.Heinecke.    Mail: board@gnupg.org
+Finanzamt D-Altstadt, St-Nr: 103/5923/1779.   Tel: +49-2104-4938799
+</pre>
+</div>
