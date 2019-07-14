@@ -25,7 +25,7 @@ min_automake_version="1.9.3"
 # (git tag -s gpg4win-2.x.y) and run "./autogen.sh --force".  Please
 # bump the version number immediately after the release and do another
 # commit and push so that the git magic is able to work.
-m4_define([my_version], [3.1.9])
+m4_define([my_version], [3.1.10])
 
 # Below is m4 magic to extract and compute the git revision number,
 # the decimalized short revision number, a beta version string and a
