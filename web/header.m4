@@ -40,13 +40,13 @@
    <div class="h_text_beta">
 -->
    <div class="h_text">
-   <small>2019-06-15</small><br>
+   <small>2019-07-14</small><br>
    <span class="serif_word"><img src="img/bulletin.png" alt"" />
      m4_ifelse(LANG_DE, `1', `
-      <a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2019-June/000049.html">Gpg4win 3.1.9 veröffentlicht
+      <a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2019-July/000050.html">Gpg4win 3.1.10 veröffentlicht
       </a></span>',`
-      <a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce/2019-June/000085.html">
-        Gpg4win 3.1.9 released
+      <a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce/2019-July/000086.html">
+        Gpg4win 3.1.10 released
       </a></span>')
    <p></p>
    <small>2019-04-30</small><br>
