@@ -65,23 +65,20 @@ Included Gpg4win components in version !VERSION! are:
 New in Gpg4win version !VERSION! (!BUILD_ISODATE!)
 -----------------------------------------
 
-- GpgOL: Eine Möglichkeit das Klartext auf den Server synchronisiert
-  wurde ist behoben.  Dies konnte passieren wenn man Mails
-  gleichzeitig in der Nachrichtenliste angeschaut hat und dabei
-  die Mail auch im eigenen Fenster geöffnet und geschlossen hat.
-  (T4622 T4621)
+- GpgOL: Fixed a possible plaintext leak to the
+  mail server, which could occur when opening and closing mails
+  while the mail was also visible in the message list. (T4622 T4621)
 
-- GnuPG: Fremde Signaturen von den öffentlichen Keyservern werden
-  nun ignoriert. Dies wurde nötig da ein Denial of Service mit
-  gefälschten Signaturen durchgeführt wird.  Das alte verhalten
-  kann weiter verwendet werden wenn
-     keyserver-options no-self-sigs-only,no-import-clean
-  der gpg.conf hinzugefügt wird. (T4607)
-  Eine alternative für die öffentlichen Keyserver wird unter:
-  https://wiki.gnupg.org/WKD beschrieben.
+- GnuPG: Ignore all key-signatures received from keyservers.  This
+  change is required to mitigate a DoS due to keys flooded with
+  faked key-signatures.  The old behaviour can be achieved by adding
+    keyserver-options no-self-sigs-only,no-import-clean
+  to your gpg.conf.  (T4607)
+  See: https://wiki.gnupg.org/WKD for an alternative to the
+  keyservers.
 
-- GnuPG: Auf Version 2.2.17 aktualisiert.
-  (Siehe: https://gnupg.org für die Neuigkeiten.)
+- GnuPG: Updated to Version 2.2.17.
+  (See: https://gnupg.org for News.)
 
 
 3. Additional notes
