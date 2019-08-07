@@ -217,7 +217,7 @@ sub nsis_eval
 	{
 	    fail "$file:$.: undefined variable $varname in expression: $expr";
 	}
-	$val =~ s/\${$varname}/$varvalue/g;
+	$val =~ s/\$\{$varname\}/$varvalue/g;
 
 	$iter++;
 	if ($iter > 100)
@@ -781,6 +781,10 @@ sub gpg4win_nsis_stubs
            {
                $parser->{outpath} = "%TEMP%\\" . $1;
            }
+	    elsif ($outpath =~ m/^"\$PLUGINSDIR\\?(.*)"$/)
+	    {
+	        $parser->{outpath} = "FIXME: REMOVE\\" . $1;
+	    }
 	    else
 	    {
 		fail "$file:$.: unsupported out path: $args[0]";
@@ -927,6 +931,34 @@ sub gpg4win_nsis_stubs
 	elsif ($lang eq 'RUSSIAN')
 	{
 	    $lang = 'ru';
+	}
+	elsif ($lang eq 'PORTUGUESE')
+	{
+	    $lang = 'pt';
+	}
+	elsif ($lang eq 'CZECH')
+	{
+	    $lang = 'cz';
+	}
+	elsif ($lang eq 'ITALIAN')
+	{
+	    $lang = 'it';
+	}
+	elsif ($lang eq 'SIMPCHINESE')
+	{
+	    $lang = 'zh_CN';
+	}
+	elsif ($lang eq 'TRADCHINESE')
+	{
+	    $lang = 'zh_TW';
+	}
+	elsif ($lang eq 'NORWEGIAN')
+	{
+	    $lang = 'no';
+	}
+	elsif ($lang eq 'DUTCH')
+	{
+	    $lang = 'nl';
 	}
 	else
 	{

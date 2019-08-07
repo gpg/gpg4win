@@ -624,34 +624,14 @@ installers/gpg4win-vanilla-$(VERSION).exe: gpg4win.nsi $(common_nsi) stamps/stam
 gpg4win-$(VERSION).wix: gpg4win.nsi $(common_nsi) stamps/stamp-final \
 		        $(foosum_exe) \
 			$(README_files) $(HOWTO_files) \
-			versioninfo.txt
+			versioninfo.txt make-msi.pl
 	perl make-msi.pl --guids $(srcdir)/make-msi.guids \
 		--manifest gpg4win-$(VERSION).files \
 		-DBUILD_DIR=. -DTOP_SRCDIR=$(top_srcdir) \
 		-DSRCDIR=$(srcdir) $(srcdir)/gpg4win.nsi > $@
 
-gpg4win-light-$(VERSION).wix: gpg4win.nsi $(common_nsi) stamps/stamp-final \
-		        $(foosum_exe) \
-			$(README_files) $(HOWTO_files) \
-		        versioninfo.txt
-	perl make-msi.pl --guids $(srcdir)/make-msi.guids \
-		--manifest gpg4win-light-$(VERSION).files \
-		-DBUILD_DIR=. -DTOP_SRCDIR=$(top_srcdir) \
-		-DSRCDIR=$(srcdir) -DGPG4WIN_LIGHT=1 $(srcdir)/gpg4win.nsi > $@
-
-gpg4win-vanilla-$(VERSION).wix: gpg4win.nsi $(common_nsi) stamps/stamp-final \
-		        $(foosum_exe) \
-			$(README_files) $(HOWTO_files) \
-                        versioninfo.txt
-	perl make-msi.pl --guids $(srcdir)/make-msi.guids \
-		--manifest gpg4win-vanilla-$(VERSION).files \
-		-DBUILD_DIR=. -DTOP_SRCDIR=$(top_srcdir) \
-		-DSRCDIR=$(srcdir) -DGPG4WIN_VANILLA=1 $(srcdir)/gpg4win.nsi > $@
-
 .PHONY: msi
-msi: gpg4win-$(VERSION).wix gpg4win-light-$(VERSION).wix \
-     gpg4win-vanilla-$(VERSION).wix
-
+wixscript: gpg4win-$(VERSION).wix
 
 stamps/stamp-dist-self: versioninfo.txt
 	(set -e; cd ..; make dist-bzip2)
