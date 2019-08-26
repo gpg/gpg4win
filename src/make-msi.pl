@@ -181,7 +181,7 @@ sub lang_to_lcid
 # includedirs: An array of include directories to search through.
 
 # A couple of variables you can set:
-$::nsis_parser_warn = 0;
+$::nsis_parser_warn = 1;
 $::nsis_parser_debug = 0;
 
 $::nsis_level_default = 1;
