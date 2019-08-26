@@ -105,7 +105,7 @@ sub get_guid
     }
     # Need to generate a new GUID.
     $::guid_changed = 1;
-    $guid = `uuidgen`;
+    $guid = uc `uuidgen`;
     chomp $guid;
     $::guid{$file} = $guid;
     return $guid;
@@ -204,7 +204,7 @@ sub nsis_eval
     }
     
     my $iter = 0;
-    while ($val =~ m/\${([^}]*)}/)
+    while ($val =~ m/\$\{([^}]*)\}/)
     {
 	my $varname = $1;
 	my $varvalue;
@@ -1212,12 +1212,6 @@ sub dump_all
 		    . "Context='InprocServer32' Description='GpgEX' "
 		    . "ThreadingModel='apartment'/>\n";
 	    }
-	    elsif ($targetfull eq 'gpgee.dll')
-	    {
-		print STDERR "ERR: run heat.exe on gpgee.dll and add info\n";
-		exit 1;
-	    }
-
 	    # Create shortcuts.
 	    if (defined $parser->{shortcuts}->{$targetfull})
 	    {
@@ -1321,19 +1315,6 @@ sub dump_all
 	    {
 		print STDERR "ERR: run heat.exe on gpgee.dll and add info\n";
 		exit 1;
-	    }
-	    elsif ($targetfull eq 'dirmngr.exe')
-	    {
-		print ' ' x $::level
-		    . "  <ServiceInstall Id='s_dirmngr' "
-		    . "DisplayName='Directory Manager' "
-		    . "Name='DirMngr' ErrorControl='normal' Start='auto' "
-		    . "Arguments='--service' "
-		    . "Type='ownProcess' Vital='yes'/>\n";
-		print ' ' x $::level
-		    . "  <ServiceControl Id='s_dirmngr_ctrl' "
-		    . "Name='DirMngr' Start='install' Stop='uninstall' "
-		    . "Remove='uninstall'/>\n";
 	    }
 
 	    print ' ' x $::level
