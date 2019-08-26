@@ -645,9 +645,21 @@ sub nsis_parse_file
 	}
     }
 
+    my $incomment = 0;
     while (defined nsis_get_line ($handle))
     {
 	$.++ if ($file eq '-');
+
+    # Check for our block comment
+    if ($_ =~ m/^# BEGIN MSI IGNORE.*/)
+    {
+        $incomment = 1;
+    }
+    elsif ($_ =~ m/^# END MSI IGNORE.*/)
+    {
+        $incomment = 0;
+    }
+    next if $incomment;
 
 	# Skip comment lines.
 	next if $_ =~ m/^#/;
@@ -655,8 +667,14 @@ sub nsis_parse_file
 	# Skip empty lines.
 	next if $_ =~ m/^$/;
 
+
 	nsis_parse_line ($parser, $file, $_);
     }
+
+    if ($incomment) {
+        fail "$file:$.: error: Missing # END MSI IGNORE marker.\n";
+    }
+
 
     close $handle if ($file ne '-');
 }
