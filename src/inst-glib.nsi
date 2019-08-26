@@ -48,8 +48,6 @@ Section "-glib" SEC_glib
   File ${prefix}/bin/gobject-query.exe
   File ${prefix}/bin/gresource.exe
   File ${prefix}/bin/gsettings.exe
-  File ${prefix}/bin/gspawn-win32-helper-console.exe
-  File ${prefix}/bin/gspawn-win32-helper.exe
 
   SetOutPath "$INSTDIR\share\glib-2.0\schemas"
   File ${prefix}/share/glib-2.0/schemas/gschema.dtd

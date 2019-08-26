@@ -36,7 +36,6 @@ Section "-gpgme" SEC_gpgme
   ClearErrors
   SetOverwrite try
   File "${prefix}/bin/libgpgme-11.dll"
-  File "${prefix}/bin/libgpgme-11.dll"
 
   SetOverwrite lastused
   ifErrors 0 +3
