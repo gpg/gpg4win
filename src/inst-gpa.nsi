@@ -41,6 +41,8 @@
   SetOutPath "$INSTDIR\bin"
   File ${prefix}/bin/gpa.exe
 
+  File ${ipdir}/pinentry-${gpg4win_pkg_pinentry_version}/bin/pinentry-gtk-2.exe
+
   SetOutPath "$INSTDIR\share\locale\de\LC_MESSAGES"
   File ${prefix}/share/locale/de/LC_MESSAGES/gpa.mo
 

@@ -37,29 +37,11 @@ Section "-Pinentry" SEC_pinentry
   SetOutPath "$INSTDIR\bin"
 
   File "${prefix}/bin/pinentry-w32.exe"
-!ifdef GPG4WIN_VANILLA
-  File /oname=pinentry.exe "${prefix}/bin/pinentry-w32.exe"
-!else
-  File "${prefix}/bin/pinentry-gtk-2.exe"
 
-!ifndef GPG4WIN_LIGHT
-!ifdef HAVE_PKG_QTBASE
-  File "${prefix}/bin/pinentry-qt.exe"
-
-  # If Qt is installed (usually by selecting kleopatra), we want
-  # the Qt pinentry as well.  Otherwise punt to gtk pinentry,
-  # which is always available.
-  !insertmacro SectionFlagIsSet ${SEC_qtbase} \
-                ${SF_SELECTED} inst_pinentry_have_qt inst_pinentry_skip_qt
-  inst_pinentry_have_qt:
   File /oname=pinentry.exe "${prefix}/bin/pinentry-qt.exe"
   Goto inst_pinentry_done
   inst_pinentry_skip_qt:
-!endif
-!endif
-  File /oname=pinentry.exe "${prefix}/bin/pinentry-gtk-2.exe"
 
-!endif
   inst_pinentry_done:
 
 !endif

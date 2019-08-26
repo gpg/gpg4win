@@ -31,6 +31,7 @@ Section "-un.gpa"
   Call un.SourceDelete
 !else
   Delete /REBOOTOK "$INSTDIR\bin\gpa.exe"
+  Delete /REBOOTOK "$INSTDIR\bin\pinentry-gtk-2.exe"
 
   Delete "$INSTDIR\share\locale\de\LC_MESSAGES\gpa.mo"
   Delete "$INSTDIR\share\locale\ar\LC_MESSAGES\gpa.mo"
