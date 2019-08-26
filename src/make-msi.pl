@@ -1328,18 +1328,46 @@ sub dump_all
 	foreach my $reg (@{$pkg->{registry}})
 	{
 	    my $target;
+        my $root;
+
+        if ($reg->{root} eq 'SHCTX')
+        {
+            $root = 'HKMU';
+        }
+        else
+        {
+            $root = $reg->{root};
+        }
+
+        my $localValue;
+
+        # Some values need to be translated, like descriptions.
+        if ($reg->{value} =~ m/^\$/)
+        {
+            $localValue = nsis_translate ($parser, '', $reg->{value});
+        }
+        else
+        {
+            $localValue = $reg->{value};
+        }
 
 	    $target = '/REGISTRY/' . $reg->{root} . '/' . $reg->{key}
 	    . '/' . $reg->{name};
 
+        my $namepart;
+        if ($reg->{name} ne "")
+        {
+            $namepart = "Name='$reg->{name}' ";
+        }
+
 	    print ' ' x $::level
 		. "<Component Id='c_$pkg->{name}_r_$regidx' Guid='"
-		. get_guid ($target) . "'>\n";
+		. get_guid ($target) . "' KeyPath='yes'>\n";
 	    print ' ' x $::level
 		. "  <RegistryValue Id='r_$pkg->{name}_$regidx' Root='"
-		. $reg->{root} . "' Key='" . $reg->{key} . "' Name='"
-		. $reg->{name} . "' Action='write' Type='" . $reg->{type}
-		. "' Value='" . $reg->{value} . "'/>\n";
+		. $root . "' Key='" . $reg->{key} . "' " . $namepart
+		. " Action='write' Type='" . $reg->{type}
+		. "' Value='" . $localValue . "'/>\n";
 	    print ' ' x $::level
 		. "</Component>\n";
 	    $regidx++;
