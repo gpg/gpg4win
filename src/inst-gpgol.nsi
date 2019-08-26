@@ -67,8 +67,18 @@ ${MementoSection} "GpgOL" SEC_gpgol
   File ${prefix}/share/locale/uk/LC_MESSAGES/gpgol.mo
 
   SetOutPath "$INSTDIR\share\gpgol"
-  File "${prefix}/share/gpgol/*.cfg"
-  File "${prefix}/share/gpgol/*.ico"
+  File "${prefix}/share/gpgol/gpgol.cfg"
+  File "${prefix}/share/gpgol/gpgol-cs.cfg"
+  File "${prefix}/share/gpgol/gpgol-form-signed.cfg"
+  File "${prefix}/share/gpgol/gpgol-ms.cfg"
+  File "${prefix}/share/gpgol/gpgol-form-encrypted.cfg"
+
+  File "${prefix}/share/gpgol/encr-l.ico"
+  File "${prefix}/share/gpgol/encr-s.ico"
+  File "${prefix}/share/gpgol/encr-s-smime.ico"
+  File "${prefix}/share/gpgol/sign-l.ico"
+  File "${prefix}/share/gpgol/sign-s.ico"
+  File "${prefix}/share/gpgol/sign-s-smime.ico"
 
   SetOutPath "$INSTDIR\share\doc\gpgol"
   File "${bdir}/doc/gpgol.pdf"
