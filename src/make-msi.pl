@@ -1212,7 +1212,7 @@ sub dump_all
 		print ' ' x $::level
 		    . "    <Class Id='{42D30988-1A3A-11DA-C687-000D6080E735}' "
 		    . "Context='InprocServer32' Description='GpgOL - The "
-		    . "GnuPG Outlook Plugin' ThreadingModel='neutral'/>\n";
+		    . "GnuPG Outlook Plugin' ThreadingModel='apartment'/>\n";
 	    }
 	    if ($targetfull eq 'gpgex.dll')
 	    {
@@ -1569,18 +1569,24 @@ my $lcid = lang_to_lcid ($::lang);
 print <<EOF;
 <?xml version='1.0'?>
 <Wix xmlns='http://schemas.microsoft.com/wix/2006/wi'>
-  <Product Name='Gpg4win'
+  <!-- The product blup -->
+  <Product Name='Gpg4win Enterprise'
            Id='$product_id'
            UpgradeCode='$upgrade_code'
            Language='$lcid'
+           Codepage='1252'
            Version='$BUILD_FILEVERSION'
-           Manufacturer='g10 Code GmbH'>
-    <Package Description='Gpg4win Installer'
-             Comments='http://www.gpg4win.org/'
-             Compressed='yes' 
+           Manufacturer='GnuPG.com'>
+    <Package Description='Gpg4win Enterprise Installer'
+             Comments='http://www.gnupg.com/'
+             Compressed='yes'
              InstallerVersion='200'
-             InstallPrivileges='elevated'
-             Manufacturer='g10 Code GmbH'/>
+             Manufacturer='GnuPG.com'
+             Languages='1033' SummaryCodepage='1252'/>
+
+    <InstallExecuteSequence>
+      <RemoveExistingProducts After='InstallFinalize' />
+    </InstallExecuteSequence>
 
     <Upgrade Id='$upgrade_code'>
       <UpgradeVersion Property='UPGRADEPROP'
@@ -1588,23 +1594,26 @@ print <<EOF;
                       Maximum='$BUILD_FILEVERSION'/>
     </Upgrade>
 
-    <InstallExecuteSequence>
-      <RemoveExistingProducts After='InstallFinalize' />
-    </InstallExecuteSequence>
-
-    <Condition
-     Message="You need to be an administrator to install this product.">
-      Privileged
-    </Condition>
-
-    <Media Id='1' Cabinet='gpg4win.cab' EmbedCab='yes'/>
+    <!-- Set up Properties -->
+    <MediaTemplate EmbedCab="yes" />
+    <!-- 2 is like highest available in msi -->
+    <Property Id="ALLUSERS" Value="2" />
 
     <Property Id="INSTDIR">
       <RegistrySearch Id='gpg4win_instdir_registry' Type='raw'
-       Root='HKLM' Key='Software\\GNU\\GnuPG' Name='Install Directory'/>
+       Root='HKLM' Key='Software\\Gpg4win' Name='Install Directory'/>
       <IniFileSearch Id='gpg4win_instdir_ini' Type='raw'
        Name='gpg4win.ini' Section='gpg4win' Key='instdir'/>
     </Property>
+
+    <!-- Set up the UI -->
+
+    <Feature Id="Feature_GnuPG"
+         Title="GnuPG"
+         Level="1"
+         Absent='disallow'>
+      <ComponentGroupRef Id="CMP_GnuPG" />
+    </Feature>
 
 EOF
 
@@ -1627,8 +1636,9 @@ EOF
 print <<EOF;
     <Directory Id='TARGETDIR' Name='SourceDir'>
       <Directory Id='ProgramFilesFolder' Name='PFiles'>
-        <Directory Id='GNU' Name='GNU'>
-          <Directory Id='INSTDIR' Name='$INSTALL_DIR'>
+        <!-- DIR_GnuPG is used be the GnuPG wxlib -->
+        <Directory Id='DIR_GnuPG' Name='GnuPG'/>
+        <Directory Id='INSTDIR' Name='Gpg4win'>
 EOF
 
 $::level = 12;
@@ -1636,7 +1646,6 @@ dump_all ($parser);
 
 
 print <<EOF;
-          </Directory>
         </Directory>
       </Directory>
 EOF
