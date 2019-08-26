@@ -763,6 +763,8 @@ sub gpg4win_nsis_stubs
 	my $pkg = \%{$parser->{pkgs}->{$name}};
 
 	$pkg->{name} = $name;
+    # Replace - in names to avoid errors with identifies
+    $pkg->{name} =~ s/-/_/g;
 	$pkg->{title} = $title;
 	$pkg->{level} = $level;
 	$pkg->{hidden} = $hidden;
@@ -1417,6 +1419,7 @@ sub dump_all2
 
 	foreach my $dep (keys %{$pkg->{deps}})
 	{
+        $dep =~ s/-/_/g;
 	    my $deppkg = $parser->{pkgs}->{$dep};
 	    
 	    # We use Level=1 because with InstallDefault followParent
