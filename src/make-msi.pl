@@ -1194,9 +1194,16 @@ sub dump_all
 	    print ' ' x $::level
 		. "<Component Id='c_$pkg->{name}_$fileidx' Guid='"
 		. get_guid ($targetfull) . "'>\n";
+		my $sourcefull;
+		$sourcefull = $file->{source};
+		$sourcefull =~ s/playground\/install-ex/\$(var.InstDirEx)/;
+		$sourcefull =~ s/playground\/install/\$(var.InstDir)/;
+		$sourcefull =~ s/\.\//\$(var.SrcDir)\//;
+		$sourcefull =~ s/\//\\/g;
 	    print ' ' x $::level
 		. "  <File Id='f_$pkg->{name}_$fileidx' Name='"
-		. $file->{target} . "' Source='" . $file->{source} . "'>\n";
+		. $file->{target} ."' KeyPath='yes'" . " Source='" .
+			$sourcefull . "'>\n";
 	    # Does not help to avoid the warnings: DefaultLanguage='1033'.
 
 	    # EXCEPTIONS:
