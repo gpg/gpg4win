@@ -780,9 +780,35 @@ Function CalcDepends
   !insertmacro SectionFlagIsSet ${SEC_kleopatra} ${SF_SELECTED} have_kleopatra skip_kleopatra
   have_kleopatra:
   !insertmacro SelectSection ${SEC_gpgme}
-  # This drags in all the other KDE and Qt stuff.
   !insertmacro SelectSection ${SEC_kleopatra}
-  skip_kleopatra:
+  !insertmacro SelectSection ${SEC_compendium}
+  !insertmacro SelectSection ${SEC_qtbase}
+  !insertmacro SelectSection ${SEC_breeze_icons}
+  !insertmacro SelectSection ${SEC_kconfig}
+  !insertmacro SelectSection ${SEC_ki18n}
+  !insertmacro SelectSection ${SEC_kwidgetsaddons}
+  !insertmacro SelectSection ${SEC_kcompletion}
+  !insertmacro SelectSection ${SEC_kwindowsystem}
+  !insertmacro SelectSection ${SEC_kcoreaddons}
+  !insertmacro SelectSection ${SEC_kcodecs}
+  !insertmacro SelectSection ${SEC_kconfigwidgets}
+  !insertmacro SelectSection ${SEC_kxmlgui}
+  !insertmacro SelectSection ${SEC_kitemviews}
+  !insertmacro SelectSection ${SEC_kitemmodels}
+  !insertmacro SelectSection ${SEC_kiconthemes}
+  !insertmacro SelectSection ${SEC_karchive}
+  !insertmacro SelectSection ${SEC_kcrash}
+  !insertmacro SelectSection ${SEC_kguiaddons}
+  !insertmacro SelectSection ${SEC_qtsvg}
+  !insertmacro SelectSection ${SEC_qttranslations}
+  !insertmacro SelectSection ${SEC_kmime}
+  !insertmacro SelectSection ${SEC_kde-l10n}
+  !insertmacro SelectSection ${SEC_libkleo}
+  !insertmacro SelectSection ${SEC_qttools}
+  !insertmacro SelectSection ${SEC_qtwinextras}
+  !insertmacro SelectSection ${SEC_boost}
+  !insertmacro SelectSection ${SEC_extra-cmake-modules}
+  ip_kleopatra:
 !ifndef SOURCES
   ${IfNot} ${AtLeastWin7}
     # Disable Kleo for Windows below 7
@@ -818,41 +844,7 @@ have_gpgme_browser:
 !insertmacro SelectSection ${SEC_gpgme}
 skip_gpgme_browser:
 
-  # Now the implicitely installed packages.
-
-!ifdef HAVE_PKG_KLEOPATRA
-  !insertmacro SectionFlagIsSet ${SEC_kleopatra} \
-		${SF_SELECTED} have_kleopatra_libs skip_kleopatra_libs
-  have_kleopatra_libs:
-  !insertmacro SelectSection ${SEC_compendium}
-  !insertmacro SelectSection ${SEC_qtbase}
-  !insertmacro SelectSection ${SEC_breeze_icons}
-  !insertmacro SelectSection ${SEC_kconfig}
-  !insertmacro SelectSection ${SEC_ki18n}
-  !insertmacro SelectSection ${SEC_kwidgetsaddons}
-  !insertmacro SelectSection ${SEC_kcompletion}
-  !insertmacro SelectSection ${SEC_kwindowsystem}
-  !insertmacro SelectSection ${SEC_kcoreaddons}
-  !insertmacro SelectSection ${SEC_kcodecs}
-  !insertmacro SelectSection ${SEC_kconfigwidgets}
-  !insertmacro SelectSection ${SEC_kxmlgui}
-  !insertmacro SelectSection ${SEC_kitemviews}
-  !insertmacro SelectSection ${SEC_kitemmodels}
-  !insertmacro SelectSection ${SEC_kiconthemes}
-  !insertmacro SelectSection ${SEC_karchive}
-  !insertmacro SelectSection ${SEC_kcrash}
-  !insertmacro SelectSection ${SEC_kguiaddons}
-  !insertmacro SelectSection ${SEC_qtsvg}
-  !insertmacro SelectSection ${SEC_qttranslations}
-  !insertmacro SelectSection ${SEC_kmime}
-  !insertmacro SelectSection ${SEC_kde-l10n}
-  !insertmacro SelectSection ${SEC_libkleo}
-  !insertmacro SelectSection ${SEC_qttools}
-  !insertmacro SelectSection ${SEC_qtwinextras}
-  !insertmacro SelectSection ${SEC_boost}
-  !insertmacro SelectSection ${SEC_extra-cmake-modules}
-   skip_kleopatra_libs:
-!endif
+# Now the implicitely installed packages.
 
 !ifdef HAVE_PKG_GPGME
   !insertmacro SectionFlagIsSet ${SEC_gpgme} \
