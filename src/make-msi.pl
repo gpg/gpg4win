@@ -763,10 +763,10 @@ sub gpg4win_nsis_stubs
 	my $pkg = \%{$parser->{pkgs}->{$name}};
 
     # Check for ignored packages
-    if ($pkg eq "GPA")
+    if ($pkg eq "gpa")
     {
         print STDERR "Ignoring package: " . $pkg . "\n"
-        if $::nsis_parser_debug;
+        if $::nsis_parser_warn;
         return;
     }
 
@@ -1068,6 +1068,8 @@ sub gpg4win_nsis_stubs
 		else
 		{
 		    my $dep_name = $parser->{dep_name};
+            print STDERR "DEP: Add " . $name . " as a dependency for " .
+            $dep_name . "\n" if $::nsis_parser_debug;
 
 		    # Add $name as a dependency for $dep_name.
 		    $parser->{pkgs}->{$dep_name}->{deps}->{$name} = 1;
