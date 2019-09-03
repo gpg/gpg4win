@@ -762,6 +762,14 @@ sub gpg4win_nsis_stubs
 	
 	my $pkg = \%{$parser->{pkgs}->{$name}};
 
+    # Check for ignored packages
+    if ($pkg eq "GPA")
+    {
+        print STDERR "Ignoring package: " . $pkg . "\n"
+        if $::nsis_parser_debug;
+        return;
+    }
+
 	$pkg->{name} = $name;
     # Replace - in names to avoid errors with identifies
     $pkg->{name} =~ s/-/_/g;
@@ -803,7 +811,7 @@ sub gpg4win_nsis_stubs
            }
 	    elsif ($outpath =~ m/^"\$PLUGINSDIR\\?(.*)"$/)
 	    {
-	        $parser->{outpath} = "FIXME: REMOVE\\" . $1;
+	        $parser->{outpath} = "REMOVE_ME\\" . $1;
 	    }
 	    else
 	    {
