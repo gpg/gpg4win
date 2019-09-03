@@ -134,6 +134,11 @@ gpg4win_kdepkgs = kconfig kwidgetsaddons ki18n extra-cmake-modules \
 gpg4win_expkgs = libgpg-error libassuan libiconv gettext w32pth gpgex gpgol \
                  gpgme
 
+# Some variables
+WINE = wine
+WINHOST = win10
+WINLIGHT = c:/wix/light.exe
+
 # Extra options to configure for individual packages.
 # We can use $(idir) here for the installation prefix.
 
@@ -598,28 +603,83 @@ installers/gpg4win-$(VERSION).exe: gpg4win.nsi $(common_nsi) stamps/stamp-final 
            -DSRCDIR=$(srcdir) $(EXTRA_MAKENSIS_FLAGS) $(srcdir)/gpg4win.nsi && \
 		   mv gpg4win-$(VERSION).exe installers/gpg4win-$(VERSION).exe
 
-installers/gpg4win-light-$(VERSION).exe: gpg4win.nsi $(common_nsi) stamps/stamp-final \
-                        g4wihelp.dll \
-		        $(foosum_exe) \
-			$(README_files) $(HOWTO_files) \
-			license.blurb versioninfo.txt
-	$(MAKENSIS) -V3 -DBUILD_DIR=`pwd` -DTOP_SRCDIR=$(top_srcdir) \
-           -DSRCDIR=$(srcdir) $(EXTRA_MAKENSIS_FLAGS) \
-           -DGPG4WIN_LIGHT=1 $(srcdir)/gpg4win.nsi && \
-		   mv gpg4win-light-$(VERSION).exe installers/gpg4win-light-$(VERSION).exe
+installers/Gpg4win-Enterprise-$(VERSION).msi: \
+	playground/install/gpg4win-$(VERSION).wixlib \
+	ssh $(WINHOST) "mkdir AppData\\Local\\Temp\\gpg4win-$(VERSION)"
+	scp $(idir)/gpg4win-$(VERSION).wixlib $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)
+	scp $(top_srcdir)/packages/gnupg-w32-$(gpg4win_pkg_gnupg_w32_version).wixlib \
+		$(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION);
+	scp $(top_srcdir)/src/gpl.rtf $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)
+	ssh $(WINHOST) $(WINLIGHT) \
+	-ext WixUIExtension \
+	-out AppData/Local/Temp/gpg4win-$(VERSION)\Gpg4win-Enterprise-$(VERSION).msi \
+	-dcl:high \
+	-v -pedantic \
+	-sval -sacl \
+	 AppData/Local/Temp/gpg4win-$(VERSION)/gpg4win-$(VERSION).wixlib \
+	 AppData/Local/Temp/gpg4win-$(VERSION)/gnupg-w32-$(gpg4win_pkg_gnupg_w32_version).wixlib; \
 
+playground/install/gpg4win-$(VERSION).wixlib: \
+      gpg4win-$(VERSION).wxs stamps/stamp-final \
+      $(foosum_exe) \
+      $(README_files) $(HOWTO_files) \
+      license.blurb versioninfo.txt
+	if [ -z "$$(which $(WINE))" ]; then \
+		echo "ERROR: For the msi-package wine needs to be installed."; \
+	exit 1; \
+	fi;
+	if [ -z "$(WIXPREFIX)" ]; then \
+		echo "ERROR: You must set WIXPREFIX to an installation of wixtools."; \
+		exit 1; \
+	fi;
+	(if [ -z "$$WINEPREFIX" ]; then \
+		WINEPREFIX="$$HOME/.wine"; \
+		if [ ! -e "$$WINEPREFIX/dosdevices" ]; then \
+			echo "ERROR: No wine prefix found under $$WINEPREFIX"; \
+			exit 1; \
+		fi; \
+	fi; \
+	WINEINST=$$WINEPREFIX/dosdevices/k:; \
+	WINESRC=$$WINEPREFIX/dosdevices/i:; \
+	WINEINSTEX=$$WINEPREFIX/dosdevices/j:; \
+	if [ -e "$$WINEINST" ]; then \
+		echo "ERROR: $$WINEINST already exists. Please remove."; \
+		exit 1; \
+	fi; \
+	if [ -e "$$WINESRC" ]; then \
+		echo "ERROR: $$WINESRC already exists. Please remove."; \
+		exit 1; \
+	fi; \
+	if [ -e "$$WINEINSTEX" ]; then \
+		echo "ERROR: $$WINEINSTEX already exists. Please remove."; \
+		exit 1; \
+	fi; \
+	echo "Gpg4win" > $(srcdir)/playground/VERSION; \
+	echo "$(VERSION)" >> $(srcdir)/playground/VERSION; \
+	MSI_VERSION=$$(echo $(VERSION) | tr -s \\-beta .); \
+	(ln -s $(idir) $$WINEINST; \
+	 ln -s $(ex_idir) $$WINEINSTEX; \
+	 ln -s `readlink -f $(top_srcdir)` $$WINESRC; \
+		$(WINE) $(WIXPREFIX)/candle.exe \
+		-dInstDir=k: \
+		-dInstDirEx=j: \
+		-dSrcDir=i:\\src \
+		-dVersion=$$MSI_VERSION \
+		-out k:\\gpg4win-$(VERSION).wixobj \
+		-pedantic -wx i:\\src\\gpg4win-$(VERSION).wxs; \
+		\
+		$(WINE) $(WIXPREFIX)/lit.exe \
+		-out k:\\gpg4win-$(VERSION).wixlib \
+		-bf \
+		-wx \
+		-pedantic \
+		k:\\gpg4win-$(VERSION).wixobj; \
+		\
+	); \
+		(rm $$WINEINST; rm $$WINESRC; rm $$WINEINSTEX) \
+	)
 
-installers/gpg4win-vanilla-$(VERSION).exe: gpg4win.nsi $(common_nsi) stamps/stamp-final \
-                        g4wihelp.dll  \
-		        $(foosum_exe) \
-			$(README_files) $(HOWTO_files) \
-		        license.blurb versioninfo.txt
-	$(MAKENSIS) -V3 -DBUILD_DIR=`pwd` -DTOP_SRCDIR=$(top_srcdir) \
-           -DSRCDIR=$(srcdir) $(EXTRA_MAKENSIS_FLAGS) \
-           -DGPG4WIN_VANILLA=1 $(srcdir)/gpg4win.nsi && \
-		   mv gpg4win-vanilla-$(VERSION).exe installers/gpg4win-vanilla-$(VERSION).exe
-
-gpg4win-$(VERSION).wix: gpg4win.nsi $(common_nsi) stamps/stamp-final \
+gpg4win-$(VERSION).wxs: gpg4win.nsi $(common_nsi) stamps/stamp-final \
 		        $(foosum_exe) \
 			$(README_files) $(HOWTO_files) \
 			versioninfo.txt make-msi.pl
