@@ -629,11 +629,19 @@ playground/install/gpg4win-$(VERSION).wixlib: \
 		echo "ERROR: For the msi-package wine needs to be installed."; \
 	exit 1; \
 	fi;
+	( \
 	if [ -z "$(WIXPREFIX)" ]; then \
-		echo "ERROR: You must set WIXPREFIX to an installation of wixtools."; \
-		exit 1; \
-	fi;
-	(if [ -z "$$WINEPREFIX" ]; then \
+		if [ -d `readlink -f ~/wix` ]; then \
+			WIXPREFIX2=`readlink -f ~/wix`; \
+			echo "Using $$WIXPREFIX2 as WIXPREFIX"; \
+		else \
+			echo "ERROR: You must set WIXPREFIX to an installation of wixtools."; \
+			exit 1; \
+		fi; \
+	else \
+		WIXPREFIX2="$(WIXPREFIX)"; \
+	fi; \
+	if [ -z "$$WINEPREFIX" ]; then \
 		WINEPREFIX="$$HOME/.wine"; \
 		if [ ! -e "$$WINEPREFIX/dosdevices" ]; then \
 			echo "ERROR: No wine prefix found under $$WINEPREFIX"; \
@@ -661,7 +669,7 @@ playground/install/gpg4win-$(VERSION).wixlib: \
 	(ln -s $(idir) $$WINEINST; \
 	 ln -s $(ex_idir) $$WINEINSTEX; \
 	 ln -s `readlink -f $(top_srcdir)` $$WINESRC; \
-		$(WINE) $(WIXPREFIX)/candle.exe \
+		$(WINE) $$WIXPREFIX2/candle.exe \
 		-dInstDir=k: \
 		-dInstDirEx=j: \
 		-dSrcDir=i:\\src \
@@ -669,7 +677,7 @@ playground/install/gpg4win-$(VERSION).wixlib: \
 		-out k:\\gpg4win-$(VERSION).wixobj \
 		-pedantic -wx i:\\src\\gpg4win-$(VERSION).wxs; \
 		\
-		$(WINE) $(WIXPREFIX)/lit.exe \
+		$(WINE) $$WIXPREFIX2/lit.exe \
 		-out k:\\gpg4win-$(VERSION).wixlib \
 		-bf \
 		-wx \
