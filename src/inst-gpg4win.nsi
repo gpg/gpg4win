@@ -86,9 +86,13 @@ skip_uninst:
   FileClose $0
   DetailPrint "VERSION closed"
 
+# BEGIN MSI IGNORE
+
   # Register the install directory for Gpg4win suite.
-  WriteRegStr SHCTX "Software\${PRETTY_PACKAGE_SHORT}" "Install Directory" $INSTDIR
+  WriteRegStr SHCTX "Software\Gpg4win" "Install Directory" $INSTDIR
   DetailPrint "Saved install directory in the registry"
+
+# END MSI IGNORE
 
   # We used to determine the language using a Registry entry.
   # Although we don't want to delete the user's Lang Registry Setting
