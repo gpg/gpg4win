@@ -787,7 +787,6 @@ Function CalcDepends
   !insertmacro SectionFlagIsSet ${SEC_kleopatra} ${SF_SELECTED} have_kleopatra skip_kleopatra
   have_kleopatra:
   !insertmacro SelectSection ${SEC_gpgme}
-  !insertmacro SelectSection ${SEC_kleopatra}
   !insertmacro SelectSection ${SEC_compendium}
   !insertmacro SelectSection ${SEC_qtbase}
   !insertmacro SelectSection ${SEC_breeze_icons}
