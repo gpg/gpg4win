@@ -603,8 +603,7 @@ installers/gpg4win-$(VERSION).exe: gpg4win.nsi $(common_nsi) stamps/stamp-final 
            -DSRCDIR=$(srcdir) $(EXTRA_MAKENSIS_FLAGS) $(srcdir)/gpg4win.nsi && \
 		   mv gpg4win-$(VERSION).exe installers/gpg4win-$(VERSION).exe
 
-installers/Gpg4win-Enterprise-$(VERSION).msi: \
-	playground/install/gpg4win-$(VERSION).wixlib \
+installers/Gpg4win-Enterprise-$(VERSION).msi: playground/install/gpg4win-$(VERSION).wixlib
 	ssh $(WINHOST) "mkdir AppData\\Local\\Temp\\gpg4win-$(VERSION)"
 	scp $(idir)/gpg4win-$(VERSION).wixlib $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)
 	scp $(top_srcdir)/packages/gnupg-w32-$(gpg4win_pkg_gnupg_w32_version).wixlib \
@@ -612,12 +611,14 @@ installers/Gpg4win-Enterprise-$(VERSION).msi: \
 	scp $(top_srcdir)/src/gpl.rtf $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)
 	ssh $(WINHOST) $(WINLIGHT) \
 	-ext WixUIExtension \
-	-out AppData/Local/Temp/gpg4win-$(VERSION)\Gpg4win-Enterprise-$(VERSION).msi \
+	-out AppData/Local/Temp/gpg4win-$(VERSION)/Gpg4win-Enterprise-$(VERSION).msi \
 	-dcl:high \
 	-v -pedantic \
-	-sval -sacl \
+	 \
 	 AppData/Local/Temp/gpg4win-$(VERSION)/gpg4win-$(VERSION).wixlib \
 	 AppData/Local/Temp/gpg4win-$(VERSION)/gnupg-w32-$(gpg4win_pkg_gnupg_w32_version).wixlib; \
+	 scp $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)/Gpg4win-Enterprise-$(VERSION).msi \
+	 installers;
 
 playground/install/gpg4win-$(VERSION).wixlib: \
       gpg4win-$(VERSION).wxs stamps/stamp-final \
