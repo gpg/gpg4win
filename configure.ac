@@ -117,15 +117,6 @@ AC_SUBST(BUILD_TIMESTAMP)
 AC_SUBST(BUILD_ISODATE)
 AC_SUBST(BUILD_FILEVERSION)
 
-# To test the manuals using an actual web server, the preview target
-# may be used in doc/manuals.  The default is my (wk) test environment
-# but may be overriden using another preview variable.  PREVIEWHOST is
-# expected to be the target for an rsync command.
-if test -z "$PREVIEWHOST" ; then
-   PREVIEWHOST="vigenere:/var/www/all/preview.gpg4win.org/htdocs/"
-fi
-AC_SUBST(PREVIEWHOST)
-
 # The final release is copied to an archive server.  The default
 # location may be changed by setting the RELEASEHOST envvar.
 if test -z "$RELEASEHOST" ; then
@@ -150,35 +141,6 @@ AC_ARG_ENABLE(source-installer,
                     build_source_installer=$enableval,
                     build_source_installer=yes)
 AM_CONDITIONAL(BUILD_SOURCE_INSTALLER, test "$build_source_installer" = yes)
-
-
-# You can build a light version of the installer in addition to the
-# regular version.  This one does not contain the manuals.
-AC_ARG_ENABLE(light-installer,
-    AC_HELP_STRING([--disable-light-installer],
-                   [Do not create the light version of the installer]),
-                    build_light_installer=$enableval,
-                    build_light_installer=no)
-AM_CONDITIONAL(BUILD_LIGHT_INSTALLER, test "$build_light_installer" = yes)
-
-# You can build a vanilla version of the installer, featuring only
-# GnuPG, a pinentry and GPGME, in addition to the regular version.
-# This one does not contain the manuals.
-AC_ARG_ENABLE(vanilla-installer,
-    AC_HELP_STRING([--disable-vanilla-installer],
-                   [Do not create the vanilla version of the installer]),
-                    build_vanilla_installer=$enableval,
-                    build_vanilla_installer=no)
-AM_CONDITIONAL(BUILD_VANILLA_INSTALLER, test "$build_vanilla_installer" = yes)
-
-# If you want to build only the light or vanilla installer, you may
-# disable building of the full installer.
-AC_ARG_ENABLE(full-installer,
-    AC_HELP_STRING([--disable-full-installer],
-                   [Do not create the full version of the installer]),
-                    build_full_installer=$enableval,
-                    build_full_installer=yes)
-AM_CONDITIONAL(BUILD_FULL_INSTALLER, test "$build_full_installer" = yes)
 
 # For development it is often faster to build without manuals.
 AC_ARG_ENABLE(manuals,

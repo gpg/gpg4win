@@ -234,10 +234,8 @@ gpg4win_pkg_libpng_configure = HAVE_SOLARIS_LD_FALSE=yes CPPFLAGS=\"-I$(idir)/in
 # We would like to use --with-libiconv-prefix and
 # --with-libintl-prefix, but these don't work with the cheesy
 # non-"libfoo.la" versions of iconv and gettext that we are using.
-if BUILD_FULL_INSTALLER
-pinentry_enable_disable= --enable-pinentry-qt
-endif
 gpg4win_pkg_pinentry_configure = \
+  --enable-pinentry-qt \
   $(pinentry_enable_disable) \
   --disable-pinentry-fltk \
   --enable-pinentry-gtk2 \
@@ -631,7 +629,8 @@ gpg4win-$(VERSION).wix: gpg4win.nsi $(common_nsi) stamps/stamp-final \
 		-DSRCDIR=$(srcdir) $(srcdir)/gpg4win.nsi > $@
 
 .PHONY: msi
-wixscript: gpg4win-$(VERSION).wix
+msi: installers/Gpg4win-Enterprise-$(VERSION).msi
+wixscript: gpg4win-$(VERSION).wxs
 
 stamps/stamp-dist-self: versioninfo.txt
 	(set -e; cd ..; make dist-bzip2)
@@ -679,25 +678,9 @@ else
 all_src =
 endif
 
-if BUILD_LIGHT_INSTALLER
-all_light = installers/gpg4win-light-$(VERSION).exe
-else
-all_light =
-endif
-
-if BUILD_VANILLA_INSTALLER
-all_vanilla = installers/gpg4win-vanilla-$(VERSION).exe
-else
-all_vanilla =
-endif
-
-if BUILD_FULL_INSTALLER
 all_full = installers/gpg4win-$(VERSION).exe
-else
-all_full =
-endif
 
-all-local: $(all_full) $(all_light) $(all_vanilla) $(all_src)
+all-local: $(all_full) $(all_src)
 	@echo "###################################################"
 	@echo " Gpg4win $(VERSION) successfully build!"
 	@echo " Installers can be found under src/installers"
@@ -705,6 +688,5 @@ all-local: $(all_full) $(all_light) $(all_vanilla) $(all_src)
 
 clean-local:
 	rm -f installers/gpg4win-$(VERSION).exe \
-		  installers/gpg4win-light-$(VERSION).exe \
-		  installers/gpg4win-vanilla-$(VERSION).exe \
-		  installers/gpg4win-src-$(VERSION).exe
+		  installers/gpg4win-src-$(VERSION).exe \
+		  installers/Gpg4win-Enterprise-$(VERSION).msi
