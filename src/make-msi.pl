@@ -689,6 +689,9 @@ sub nsis_parse_file
 # state: specifies a state for special parsing of certain parts.
 # dep_name: the current package for which we list dependencies (- for none)
 
+# Ignored packages:
+%::ignored_pkgs = ("gpa", "gtk_", "glib", "expat", "gdk_pixbuf", "cairo", "fontconfig");
+
 sub gpg4win_nsis_stubs
 {
     my ($parser, $file, $command, @args) = @_;
@@ -763,11 +766,14 @@ sub gpg4win_nsis_stubs
         my $pkg = \%{$parser->{pkgs}->{$name}};
 
         # Check for ignored packages
-        if ($pkg eq "gpa")
+        foreach my $ignored (%::ignored_pkgs)
         {
-            print STDERR "Ignoring package: " . $pkg . "\n"
-            if $::nsis_parser_warn;
-            return;
+            if ($name eq $ignored)
+            {
+                print STDERR "Ignoring package: " . $name . "\n"
+                if $::nsis_parser_debug;
+                return;
+            }
         }
 
         $pkg->{name} = $name;
