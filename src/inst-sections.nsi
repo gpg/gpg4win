@@ -777,6 +777,13 @@ Function CalcDepends
 !endif
 
 !ifdef HAVE_PKG_KLEOPATRA
+!ifndef SOURCES
+  ${IfNot} ${AtLeastWin7}
+    # Disable Kleo for Windows below 7
+    SectionSetFlags ${SEC_kleopatra} 16
+    !insertmacro SelectSection ${SEC_gpa}
+  ${Endif}
+!endif
   !insertmacro SectionFlagIsSet ${SEC_kleopatra} ${SF_SELECTED} have_kleopatra skip_kleopatra
   have_kleopatra:
   !insertmacro SelectSection ${SEC_gpgme}
@@ -808,14 +815,7 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_qtwinextras}
   !insertmacro SelectSection ${SEC_boost}
   !insertmacro SelectSection ${SEC_extra-cmake-modules}
-  ip_kleopatra:
-!ifndef SOURCES
-  ${IfNot} ${AtLeastWin7}
-    # Disable Kleo for Windows below 7
-    SectionSetFlags ${SEC_kleopatra} 16
-    !insertmacro SelectSection ${SEC_gpa}
-  ${Endif}
-!endif
+  skip_kleopatra:
 !endif
 
 !ifdef HAVE_PKG_GNUPG_W32
