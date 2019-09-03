@@ -1577,7 +1577,7 @@ my $lcid = lang_to_lcid ($::lang);
 print <<EOF;
 <?xml version='1.0'?>
 <Wix xmlns='http://schemas.microsoft.com/wix/2006/wi'>
-  <!-- The product blup -->
+  <!-- The general product setup -->
   <Product Name='Gpg4win Enterprise'
            Id='$product_id'
            UpgradeCode='$upgrade_code'
@@ -1591,6 +1591,10 @@ print <<EOF;
              InstallerVersion='200'
              Manufacturer='GnuPG.com'
              Languages='1033' SummaryCodepage='1252'/>
+
+    <Condition Message="At least Windows 7 or Server 2008 R2 required.">
+        <![CDATA[Installed OR (VersionNT >= 601)]]>
+    </Condition>
 
     <InstallExecuteSequence>
       <RemoveExistingProducts After='InstallFinalize' />
