@@ -1377,7 +1377,7 @@ sub dump_all
             $target = '/REGISTRY/' . $reg->{root} . '/' . $reg->{key}
             . '/' . $reg->{name};
 
-            my $namepart;
+            my $namepart="";
             if ($reg->{name} ne "")
             {
                 $namepart = "Name='$reg->{name}' ";
