@@ -20,9 +20,10 @@ PAGE_START
 Zeitnahe und erschöpfend richtige Antworten können natürlich nicht garantiert werden.</p>
 <ul>
     <li><a href=community-de.html>Mailing Listen</a></li>
-    <li><a href=https://dev.gnupg.org>Bug Tracker</a></li>
+    <li><a href=https://dev.gnupg.org>Tracker</a></li>
     <li><a href=https://wald.intevation.org/forum/forum.php?forum_id=21&group_id=11>
     Foren</a></li>
+    <li><a href="https://wiki.gnupg.org/TroubleShooting">Wiki (z.B. TroubleShooting auf Englisch)</a></li>
     <li><a href=documentation-de.html> Dokumentation</a></li>
 </ul>
 
