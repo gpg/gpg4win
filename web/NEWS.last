@@ -240,36 +240,6 @@ Kompendium DE:  4.0.1
 Compendium EN:  3.0.0
 ~~~~~~~~~~~~~~~
 
-Noteworthy changes in Version 3.1.7 (2019-03-28)
-------------------------------------------------
-
-(en) Kleopatra: Fixed a regression from 3.1.6 that
-     broke secret key export, keyserver refresh and
-     keyserver upload. (T4438)
-
-(de) Kleopatra: Ein mit 3.1.6 eingeführtes Problem,
-     dass den Export geheimer
-     Schlüssel sowie aktualisieren und hochladen
-     von OpenPGP Schlüsseln verhinderte, wurde behoben.
-     (T4438)
-
-(en) GPA: Fixed regressions from 3.1.6 that could
-     lead to crashes. (T4440 T4439)
-
-(de) GPA: Mit 3.1.6 eingeführte Probleme, die zu
-     Programmabstürzen führen konnten, wurden behoben.
-     (T4440 T4439)
-
-~~~~~~~~~~~~~~~
-GnuPG:          2.2.15
-Kleopatra:      3.1.7
-GPA:            0.10.0
-GpgOL:          2.3.3
-GpgEX:          1.0.6
-Kompendium DE:  4.0.1
-Compendium EN:  3.0.0
-~~~~~~~~~~~~~~~
-
 
 Noteworthy changes in Version 3.1.6 (2019-03-27)
 ------------------------------------------------
