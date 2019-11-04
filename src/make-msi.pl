@@ -1716,8 +1716,22 @@ dump_all2 ($parser);
 print <<EOF;
     </Feature>
 
+    <!-- Launch Kleopatra after setup exits -->
+    <CustomAction Id            = "StartAppOnExit"
+                  FileKey       = "kleopatra.exe"
+                  ExeCommand    = ""
+                  Execute       = "immediate"
+                  Impersonate   = "yes"
+                  Return        = "asyncNoWait" />
+    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT"
+      Value="Launch Kleopatra" />
+    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOX" Value="1" />
+
     <WixVariable Id='WixUILicenseRtf' Value='gpl.rtf'/>
-    <UIRef Id='WixUI_Mondo' />
+
+    <!-- Set up the UI -->
+
+    <UIRef Id='WixUI_Advanced' />
 
   </Product>
 </Wix>
