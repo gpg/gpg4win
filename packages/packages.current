@@ -412,8 +412,8 @@ server https://download.kde.org/stable/frameworks
 # last changed: 2019-02-18
 # by: ah
 # verified: PGP Signed by ./kde-release-key.gpg (created by gen-frameworks.sh)
-file 5.55/extra-cmake-modules-5.55.0.tar.xz
-chk 649453922aef38a24af04258ab6661ddfd566aaba4d1773a9e1f4799344406f5
+file 5.63/extra-cmake-modules-5.63.0.tar.xz
+chk 79926a0a2c6f5aa760a5a63209a7cad641476591b9bf4e51819f4fb752280792
 
 # kconfig
 # last changed: 2019-02-18
