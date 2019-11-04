@@ -554,15 +554,15 @@ file pinentry/pinentry-1.1.1-beta5.tar.bz2
 chk 7bda3fef7d7f0f77dd4dfe11e3364c64f1e9646945afa995da8a5084ce59e101
 
 # by: ah
-file gpgme/gpgme-1.13.1-beta21.tar.bz2
-chk 11cd4d23dca109acfafc3b199919e69392a5301f0310a0f138cb4681ded2b679
+file gpgme/gpgme-1.14.0-beta25.tar.bz2
+chk eeef3265dcc12f20209f337032e0c523715dc0dd3fb0ca192b43875d4ceabf20
 
 # Libkleo
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah.
-file libkleo/libkleo-201906031247.tar.gz
-chk 20fd31e55f9d742d3ae0562e1f6adb2fc3d5fb745d8cb98c510e61d8b0fd46a5
+file libkleo/libkleo-201911041623.tar.gz
+chk 6220a56624b27d3f4a86f6c2c70fad954ba609fe48e166273309b18bb48e49d5
 
 # KDE-L10n
 # last changed: see package date.
@@ -578,12 +578,12 @@ chk  6026ee66421b6c363c3df84eb57bd7f858ea9e5191285f39824053cd405f0112
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah.
-file gpg4win-tools/gpg4win-tools-201906041457.tar.gz
-chk 6ccd576ca54a497a84699f25e0c5d49e1238aa1514d70445995381f87d5502a0
+file gpg4win-tools/gpg4win-tools-201911011207.tar.gz
+chk 2750836c66f648aa1912e1ecbed56457e8442e4ffb8227e2167619c24f306c01
 
 # Kleopatra
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah.
-file kleopatra/kleopatra-201906031248.tar.gz
-chk 034cb94c12b4e539143b1a58a45c441cd9295b1eefec3a67a4536c83dc44c62f
+file kleopatra/kleopatra-201911041621.tar.gz
+chk 5dc78ee4025d8b8c31e9dc89dfa3b2897d2dba698ca7dd0558d866bdf683913c
