@@ -182,9 +182,9 @@ done
 cat >> $instfile << EOF
 !define prefix \${ipdir}/kde-l10n-\${gpg4win_pkg_kde_l10n_version}
 !ifdef DEBUG
-Section "kde-l10n" SEC_kde-l10n
+Section "kde-l10n" SEC_kde_l10n
 !else
-Section "-kde-l10n" SEC_kde-l10n
+Section "-kde-l10n" SEC_kde_l10n
 !endif
   SetOutPath "\$INSTDIR"
 !ifdef SOURCES

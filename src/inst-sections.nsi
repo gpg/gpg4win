@@ -708,7 +708,7 @@ Function CalcDepends
   !insertmacro UnselectSection ${SEC_kmime}
 !endif
 !ifdef HAVE_PKG_KDE_L10N
-  !insertmacro UnselectSection ${SEC_kde-l10n}
+  !insertmacro UnselectSection ${SEC_kde_l10n}
 !endif
 !ifdef HAVE_PKG_QTSVG
   !insertmacro UnselectSection ${SEC_qtsvg}
@@ -764,7 +764,7 @@ Function CalcDepends
 		${SF_SELECTED} have_gpgol skip_gpgol
   have_gpgol:
   !insertmacro SelectSection ${SEC_gpgme}
-  !insertmacro SelectSection ${SEC_gpg4win-tools}
+  !insertmacro SelectSection ${SEC_gpg4win_tools}
 
   # This is not a build dependency, but it is a run-time dependency.
   !insertmacro SectionFlagIsSet ${SEC_gpa} \
@@ -808,7 +808,7 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_qtsvg}
   !insertmacro SelectSection ${SEC_qttranslations}
   !insertmacro SelectSection ${SEC_kmime}
-  !insertmacro SelectSection ${SEC_kde-l10n}
+  !insertmacro SelectSection ${SEC_kde_l10n}
   !insertmacro SelectSection ${SEC_libkleo}
   !insertmacro SelectSection ${SEC_qttools}
   !insertmacro SelectSection ${SEC_qtwinextras}

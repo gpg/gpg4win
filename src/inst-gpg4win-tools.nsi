@@ -21,9 +21,9 @@
 !define prefix ${ipdir}/gpg4win-tools-${gpg4win_pkg_gpg4win_tools_version}
 
 !ifdef DEBUG
-Section "gpg4win_tools" SEC_gpg4win-tools
+Section "gpg4win_tools" SEC_gpg4win_tools
 !else
-Section "-gpg4win_tools" SEC_gpg4win-tools
+Section "-gpg4win_tools" SEC_gpg4win_tools
 !endif
   SetOutPath "$INSTDIR\bin"
   File ${prefix}/bin/resolver.exe
