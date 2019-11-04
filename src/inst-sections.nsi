@@ -92,9 +92,11 @@
 !ifdef HAVE_PKG_PINENTRY
 !include "inst-pinentry.nsi"
 !endif
+# BEGIN MSI IGNORE
 !ifdef HAVE_PKG_GNUPG_W32
 !include "inst-gnupg-w32.nsi"
 !endif
+# END MSI IGNORE
 !ifdef HAVE_PKG_GPGME
 !include "inst-gpgme.nsi"
 !endif
@@ -176,26 +178,8 @@
 !ifdef HAVE_PKG_SCUTE
 !include "inst-scute.nsi"
 !endif
-
-# These are displayed in the selection dialog.
-
-!ifdef HAVE_PKG_KLEOPATRA
-!include "inst-kleopatra.nsi"
-!endif
-!ifdef HAVE_PKG_GPA
-!include "inst-gpa.nsi"
-!endif
-!ifdef HAVE_PKG_GPGOL
-!include "inst-gpgol.nsi"
-!endif
-!ifdef HAVE_PKG_GPGEX
-!include "inst-gpgex.nsi"
-!endif
 !ifdef HAVE_PKG_PAPERKEY
 !include "inst-paperkey.nsi"
-!endif
-!ifdef HAVE_PKG_COMPENDIUM
-!include "inst-compendium.nsi"
 !endif
 !ifdef HAVE_PKG_MAN_NOVICE_EN
 !include "inst-man_novice_en.nsi"
@@ -208,6 +192,26 @@
 !endif
 !ifdef HAVE_PKG_MAN_ADVANCED_DE
 !include "inst-man_advanced_de.nsi"
+!endif
+
+# These are displayed in the selection dialog.
+
+!ifdef HAVE_PKG_KLEOPATRA
+!include "inst-kleopatra.nsi"
+!endif
+# BEGIN MSI IGNORE
+!ifdef HAVE_PKG_GPA
+!include "inst-gpa.nsi"
+!endif
+# END MSI IGNORE
+!ifdef HAVE_PKG_GPGOL
+!include "inst-gpgol.nsi"
+!endif
+!ifdef HAVE_PKG_GPGEX
+!include "inst-gpgex.nsi"
+!endif
+!ifdef HAVE_PKG_COMPENDIUM
+!include "inst-compendium.nsi"
 !endif
 
 !include "inst-gpgme-browser.nsi"
@@ -626,9 +630,6 @@ Function CalcDepends
 !ifdef HAVE_PKG_LIBASSUAN
   !insertmacro UnselectSection ${SEC_libassuan}
 !endif
-!ifdef HAVE_PKG_PINENTRY
-  !insertmacro UnselectSection ${SEC_pinentry}
-!endif
 !ifdef HAVE_PKG_GPGME
   !insertmacro UnselectSection ${SEC_gpgme}
 !endif
@@ -717,12 +718,11 @@ Function CalcDepends
   !insertmacro UnselectSection ${SEC_qttranslations}
 !endif
 !ifdef HAVE_PKG_GPG4WIN_TOOLS
-  !insertmacro UnselectSection ${SEC_gpg4win-tools}
-!endif
-!ifdef HAVE_PKG_SCUTE
-  !insertmacro UnselectSection ${SEC_scute}
+  !insertmacro UnselectSection ${SEC_gpg4win_tools}
 !endif
 
+# BEGIN MSI IGNORE
+# MSI pulls this in through the gnupg-w32 component.
   # Always install gnupg2.  This is also ensured by putting
   # these packages in the RO section and enabling them by default, but
   # it doesn't harm to add it explicitely here as well.
@@ -733,6 +733,7 @@ Function CalcDepends
   # Then enable all dependencies, mostly in reverse build list order!
 
   # First the explicitely installed packages.
+# END MSI IGNORE
 
 
 !ifdef HAVE_PKG_PAPERKEY
@@ -817,14 +818,7 @@ Function CalcDepends
   skip_kleopatra:
 !endif
 
-!ifdef HAVE_PKG_GNUPG_W32
-  !insertmacro SectionFlagIsSet ${SEC_gnupg_w32} ${SF_SELECTED} have_gnupg_w32 skip_gnupg_w32
-  have_gnupg_w32:
-  !insertmacro SelectSection ${SEC_pinentry}
-  !insertmacro SelectSection ${SEC_scute}
-  skip_gnupg_w32:
-!endif
-
+# BEGIN MSI IGNORE
 !ifdef HAVE_PKG_GPA
   !insertmacro SectionFlagIsSet ${SEC_gpa} ${SF_SELECTED} have_gpa skip_gpa
   have_gpa:
@@ -837,6 +831,7 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_gpgme}
   skip_gpa:
 !endif
+# END MSI IGNORE
 
 !insertmacro SectionFlagIsSet ${SEC_gpgme_browser} ${SF_SELECTED} have_gpgme_browser skip_gpgme_browser
 have_gpgme_browser:
@@ -869,9 +864,11 @@ skip_gpgme_browser:
 !ifdef HAVE_PKG_QTBASE
   !insertmacro SelectSection ${SEC_qtbase}
 !endif
+# BEGIN MSI IGNORE
 !ifdef HAVE_PKG_GTK_
   !insertmacro SelectSection ${SEC_gtk_}
 !endif
+# END MSI IGNORE
    skip_pinentry:
 !endif
 

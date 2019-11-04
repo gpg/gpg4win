@@ -26,6 +26,10 @@ Section "-gpg4win" SEC_gpg4win
 !else
   Call KillOtherAppsOrWarn
   StrCpy $is_update "0"
+
+# BEGIN MSI IGNORE
+#  For MSI we ignore this.
+
 # Start the slideshow.
   SetDetailsPrint none
 
@@ -38,6 +42,7 @@ Section "-gpg4win" SEC_gpg4win
   g4wihelp::slide_show /NOUNLOAD /CCOLOR=0x000000 "/auto=$PLUGINSDIR\Slides\slides.dat" /FIT=WIDTH
   SetDetailsPrint both
   SetOutPath "$INSTDIR"
+# END MSI IGNORE
 
 # Uninstall an old version if found.
   ClearErrors
@@ -62,6 +67,7 @@ skip_uninst:
 
   File "${BUILD_DIR}/README.en.txt"
   File "${BUILD_DIR}/README.de.txt"
+# BEGIN MSI IGNORE
   File /oname=README.ar.txt "${BUILD_DIR}/README.en.txt"
   File /oname=README.cz.txt "${BUILD_DIR}/README.en.txt"
   File /oname=README.es.txt "${BUILD_DIR}/README.en.txt"
@@ -72,6 +78,7 @@ skip_uninst:
   File /oname=README.ru.txt "${BUILD_DIR}/README.en.txt"
   File /oname=README.zh_CN.txt "${BUILD_DIR}/README.en.txt"
   File /oname=README.zh_TW.txt "${BUILD_DIR}/README.en.txt"
+# END MSI IGNORE
 
   File "${BUILD_DIR}/HOWTO-SMIME.en.txt"
   File "${BUILD_DIR}/HOWTO-SMIME.de.txt"

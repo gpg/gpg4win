@@ -690,7 +690,9 @@ sub nsis_parse_file
 # dep_name: the current package for which we list dependencies (- for none)
 
 # Ignored packages:
-%::ignored_pkgs = ("gpa", "gtk_", "glib", "expat", "gdk_pixbuf", "cairo", "fontconfig");
+%::ignored_pkgs = ("gpa", "gtk_", "glib", "expat", "gdk_pixbuf",
+                   "cairo", "fontconfig", "atk", "zlib", "libpng",
+                   "freetype", "libffi", "pango");
 
 sub gpg4win_nsis_stubs
 {
@@ -1582,6 +1584,9 @@ my $INSTALL_DIR = nsis_fetch ($parser, 'INSTALL_DIR');
 
 my $lcid = lang_to_lcid ($::lang);
 
+# Replacement regex for components:
+# :'<,'>s/.*Component: \(.*\) does not.*/      <ComponentRef Id=\1 \/>/
+
 print <<EOF;
 <?xml version='1.0'?>
 <Wix xmlns='http://schemas.microsoft.com/wix/2006/wi'>
@@ -1626,15 +1631,34 @@ print <<EOF;
        Name='gpg4win.ini' Section='gpg4win' Key='instdir'/>
     </Property>
 
-    <!-- Set up the UI -->
-
     <Feature Id="Feature_GnuPG"
          Title="GnuPG"
          Level="1"
          Absent='disallow'>
       <ComponentGroupRef Id="CMP_GnuPG" />
-    </Feature>
 
+      <!-- Hardcode some components that always should be installed -->
+
+      <!-- List comes from ICE21 and was transformed by see: comment above -->
+      <ComponentRef Id='c_gpg4win_0' />
+      <ComponentRef Id='c_gpg4win_1' />
+      <ComponentRef Id='c_gpg4win_2' />
+      <ComponentRef Id='c_gpg4win_3' />
+      <ComponentRef Id='c_gpg4win_4' />
+      <ComponentRef Id='c_gpg4win_5' />
+      <ComponentRef Id='c_gpg4win_6' />
+      <ComponentRef Id='c_gpg4win_7' />
+      <ComponentRef Id='c_gpg4win_8' />
+      <ComponentRef Id='c_gpg4win_9' />
+      <ComponentRef Id='c_gpg4win_10' />
+      <ComponentRef Id='c_gpg4win_11' />
+      <ComponentRef Id='c_pinentry_0' />
+      <ComponentRef Id='c_pinentry_1' />
+      <ComponentRef Id='c_scute_0' />
+      <ComponentRef Id='c_paperkey_0' />
+      <ComponentRef Id='c_paperkey_1' />
+
+    </Feature>
 EOF
 
 foreach my $pkgname (@{$parser->{pkg_list}})
