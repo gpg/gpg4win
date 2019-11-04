@@ -1225,13 +1225,6 @@ sub dump_all
             # Does not help to avoid the warnings: DefaultLanguage='1033'.
 
             # EXCEPTIONS:
-            if ($targetfull eq 'gpgol.dll')
-            {
-                print ' ' x $::level
-                . "    <Class Id='{42D30988-1A3A-11DA-C687-000D6080E735}' "
-                . "Context='InprocServer32' Description='GpgOL - The "
-                . "GnuPG Outlook Plugin' ThreadingModel='apartment'/>\n";
-            }
             if ($targetfull eq 'gpgex.dll')
             {
                 print ' ' x $::level
@@ -1300,26 +1293,21 @@ sub dump_all
 
             # EXCEPTIONS:
             # We use $targetfull because there is also a gpg.exe in pub\.
-            if ($targetfull eq 'gpg.exe')
+            if ($targetfull eq 'bin\\gpgol.dll')
             {
-                print ' ' x $::level
-                . "  <Environment Id='env_path' Name='PATH' Action='set' "
-                . "System='yes' Part='last' Value='[INSTDIR]pub'/>\n";
-            }
-            elsif ($targetfull eq 'gpgol.dll')
-            {
-                print ' ' x $::level
-                . "  <RegistryValue Root='HKLM' Key='Software\\"
-                . "Microsoft\\Exchange\\Client\\Extensions' "
-                . "Name='GpgOL' "
-                . "Value='4.0;[!gpgol.dll];1;11000111111100;11111101' "
-                . "Type='string' Action='write'/>\n";
-                print ' ' x $::level
-                . "  <RegistryValue Root='HKLM' Key='Software\\"
-                . "Microsoft\\Exchange\\Client\\Extensions' "
-                . "Name='Outlook Setup Extension' "
-                . "Value='4.0;Outxxx.dll;7;000000000000000;0000000000;OutXXX' "
-                . "Type='string' Action='write'/>\n";
+                print <<EOF;
+                <RegistryValue Root="HKMU" KeyPath='yes' Key="Software\\Classes\\CLSID\\{42d30988-1a3a-11da-c687-000d6080e735}\\InprocServer32" Value="[#f_gpgol_0]" Type="string" Action="write" />
+                <RegistryValue Root="HKMU" KeyPath='yes' Key="Software\\Classes\\CLSID\\{42d30988-1a3a-11da-c687-000d6080e735}\\InprocServer32" Name="ThreadingModel" Value="Both" Type="string" Action="write" />
+                <RegistryValue Root="HKMU" KeyPath='yes' Key="Software\\Classes\\CLSID\\{42d30988-1a3a-11da-c687-000d6080e735}\\ProgID" Value="GNU.GpgOL" Type="string" Action="write" />
+                <RegistryValue Root="HKMU" KeyPath='yes' Key="Software\\Classes\\CLSID\\{42d30988-1a3a-11da-c687-000d6080e735}" Value="GpgOL - The GnuPG Outlook Plugin" Type="string" Action="write" />
+                <RegistryValue Root="HKMU" KeyPath='yes' Key="Software\\Classes\\GNU.GpgOL\\CLSID" Value="{42d30988-1a3a-11da-c687-000d6080e735}" Type="string" Action="write" />
+                <RegistryValue Root="HKMU" KeyPath='yes' Key="Software\\Classes\\GNU.GpgOL" Value="GpgOL - The GnuPG Outlook Plugin" Type="string" Action="write" />
+                <RegistryValue Root="HKMU" KeyPath='yes' Key="Software\\GNU\\GpgOL" Value="" Type="string" Action="write" />
+                <RegistryValue Root="HKMU" KeyPath='yes' Key="Software\\Microsoft\\Office\\Outlook\\Addins\\GNU.GpgOL" Name="LoadBehavior" Value="3" Type="integer" Action="write" />
+                <RegistryValue Root="HKMU" KeyPath='yes' Key="Software\\Microsoft\\Office\\Outlook\\Addins\\GNU.GpgOL" Name="CommandLineSafe" Value="0" Type="integer" Action="write" />
+                <RegistryValue Root="HKMU" KeyPath='yes' Key="Software\\Microsoft\\Office\\Outlook\\Addins\\GNU.GpgOL" Name="FriendlyName" Value="GpgOL - The GnuPG Outlook Plugin" Type="string" Action="write" />
+                <RegistryValue Root="HKMU" KeyPath='yes' Key="Software\\Microsoft\\Office\\Outlook\\Addins\\GNU.GpgOL" Name="Description" Value="Cryptography for Outlook" Type="string" Action="write" />
+EOF
             }
             elsif ($targetfull eq 'gpgex.dll')
             {
