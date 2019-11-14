@@ -244,8 +244,19 @@ server http://files.gpg4win.org/src
 # for beta
 server http://files.intevation.de/projects/gpg4all
 
-file gpgol/gpgol-2.4.3-beta11.tar.bz2
-chk aef70fb2178733e99c1734893516d463406ff8c1e7bc7b272e1ef25c19ffd181
+file gpgol/gpgol-2.4.3-beta17.tar.bz2
+chk 6d14b76c48547706d90a5c543670320be98e6a00aa72e0fb95ee1569a25e6be3
+
+#TODO Back to stable
+
+name gnupg-w32-2.2.18-beta51-20191114-bin.exe
+file gnupg/gnupg-w32-2.2.18-beta51_20191114.exe
+chk  4a59de96c44a7fc4f922e5d1389b5b3170f4c3be089da886007c5aa5666f629e
+
+name gnupg-w32-2.2.18-beta51-20191114-src.tar.xz
+file gnupg/gnupg-w32-2.2.18-beta51_20191114.tar.xz
+chk  85c37cb2a51d21ffa51ea9246985e9b05ba566beac2ea30d5509807ce1515679
+
 
 #
 # GpgEX
@@ -302,17 +313,16 @@ chk  91bcb0403866b4e7c4bc1cc52ed4c364a9b5414b3994f718c70303f7f765e702
 # last changed: 2018-08-30
 # by: ah
 # verified: distsigkey.gpg
-name gnupg-w32-2.2.17-20190709-bin.exe
-file binary/gnupg-w32-2.2.17_20190709.exe
-chk  e5c99867591c1f72190f5540040ba027233f8cf5acc9ed627dba89a2461b57e0
+#name gnupg-w32-2.2.17-20190709-bin.exe
+#file binary/gnupg-w32-2.2.17_20190709.exe
+#chk  e5c99867591c1f72190f5540040ba027233f8cf5acc9ed627dba89a2461b57e0
 
-name gnupg-w32-2.2.17-20190709-src.tar.xz
-file binary/gnupg-w32-2.2.17_20190709.tar.xz
-chk  ad115b31c84cf7650a66090d266e437c00f6169d1aa6f4e9d3358e2f3e3c950a
+#name gnupg-w32-2.2.17-20190709-src.tar.xz
+#file binary/gnupg-w32-2.2.17_20190709.tar.xz
+#chk  ad115b31c84cf7650a66090d266e437c00f6169d1aa6f4e9d3358e2f3e3c950a
 
 server ftp://ftp.gnupg.org/gcrypt
 
-# TODO back to stable
 # last changed: 2017-12-05
 # by: ah
 #file pinentry/pinentry-1.1.0.tar.bz2
@@ -561,8 +571,8 @@ chk eeef3265dcc12f20209f337032e0c523715dc0dd3fb0ca192b43875d4ceabf20
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah.
-file libkleo/libkleo-201911070943.tar.gz
-chk 02de31956b78422c533c5eaaa068840447ae0b47197609f10f9b2d9f5099793c
+file libkleo/libkleo-201911141156.tar.gz
+chk d3f5fa02c7d3c646930587b4e0dbf3be006d1dbe1c3f9e8ce1f75db0f15ee64b
 
 # KDE-L10n
 # last changed: see package date.
