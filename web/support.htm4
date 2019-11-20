@@ -16,21 +16,6 @@ PAGE_START
 
 <div id="main">
 
-<h2>Community Support</h2>
-<p>Recieve help and help others – Volunteers of Gpg4win offer free support.
-Due to the huge number of users, there is a good chance of
-receiving helpful answers.
-Naturally, timely and exhaustive answers can not be guaranteed.</p>
-<ul>
-    <li><a href=community.html>Mailing Lists</a></li>
-    <li><a href=https://dev.gnupg.org>Issue Tracker</a></li>
-    <li><a href=https://wald.intevation.org/forum/forum.php?forum_id=21&group_id=11>
-    Forums</a></li>
-    <li><a href="https://wiki.gnupg.org/TroubleShooting">Wiki (e.g. for TroubleShooting)</a></li>
-    <li><a href=documentation.html>Documentation</a></li>
-</ul>
-</p>
-
 <h2>Professional Support</h2>
 <p>You searching for help by experts? – This service is  fee-based.</p>
 
@@ -40,8 +25,8 @@ In case timely answers, quick software modification or general
 consulting for using Gpg4win (installation, configuration etc.) are
 needed, the German Free Software companies
 <a href="https://www.intevation.de">Intevation
-GmbH</a>, <a href="https://www.g10code.de">g10code GmbH</a> and
-<a href="http://www.kdab.com">KDAB</a> jointly
+GmbH</a> and <a href="https://gnupg.com">g10code GmbH</a>
+jointly
 offer suitable professional support.
 Pricing for this service is not listed here because the support
 contracts are tailored to the needs of the individual customer.
@@ -51,7 +36,7 @@ contracts are tailored to the needs of the individual customer.
 <p>
 Please contact us with at
 <a href="mailto:gpg4win-professional@gpg4win.org">gpg4win-professional@gpg4win.org</a>
-if you plan to buy professional support from any of the three companies named above.</p>
+if you plan to buy professional support from any of the two companies named above.</p>
 
 <p>Please describe your needs (e.g. which of the Gpg4win
 applications you want support for, which crypto-workflows you have or
@@ -76,6 +61,21 @@ Then we offer you our technical support.
 Do you miss an important feature in Gpg4win or do you have
 ideas for the further development of Gpg4win?
 Then please contact us! We will provide you with an individual quote.
+</p>
+
+<h2>Community Support</h2>
+<p>Receive help and help others – Volunteers of Gpg4win offer free support.
+Due to the huge number of users, there is a good chance of
+receiving helpful answers.
+Naturally, timely and exhaustive answers can not be guaranteed.</p>
+<ul>
+    <li><a href=community.html>Mailing Lists</a></li>
+    <li><a href=https://dev.gnupg.org>Issue Tracker</a></li>
+    <li><a href=https://wald.intevation.org/forum/forum.php?forum_id=21&group_id=11>
+    Forums</a></li>
+    <li><a href="https://wiki.gnupg.org/TroubleShooting">Wiki (e.g. for TroubleShooting)</a></li>
+    <li><a href=documentation.html>Documentation</a></li>
+</ul>
 </p>
 
 </div>
