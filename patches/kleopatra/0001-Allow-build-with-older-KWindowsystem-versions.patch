@@ -32,9 +32,9 @@ index e2e38989..45e70f46 100644
 --- a/src/kleopatraapplication.cpp
 +++ b/src/kleopatraapplication.cpp
 @@ -542,7 +542,7 @@ void KleopatraApplication::openConfigDialogWithForeignParent(WId parentWId)
-         if (QWidget *pw = QWidget::find(parentWId)) {
              d->configureDialog->setParent(pw, d->configureDialog->windowFlags());
          } else {
+             d->configureDialog->setAttribute(Qt::WA_NativeWindow, true);
 -            KWindowSystem::setMainWindow(d->configureDialog->windowHandle(), parentWId);
 +            KWindowSystem::setMainWindow(d->configureDialog, parentWId);
          }
