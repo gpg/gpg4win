@@ -387,7 +387,7 @@ endef
 gpg4win_pkg_kleopatra_configure = \
     -DFORCE_DISABLE_KCMUTILS=ON \
     -DDISABLE_KWATCHGNUPG=ON \
-    -DKLEOPATRA_VERSION_SUFFIX=-gpg4win-$(VERSION)
+    -DKLEOPATRA_VERSION_SUFFIX=-Gpg4win-$(VERSION)
 
 gpg4win_pkg_kxmlgui_configure = \
     -DFORCE_DISABLE_KGLOBALACCEL=ON \
