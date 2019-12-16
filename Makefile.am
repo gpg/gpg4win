@@ -36,6 +36,7 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         patches/kleopatra/0005-Hack-generated-conf-files-for-Crosscompiling.patch \
         patches/kleopatra/fix-qt5.6-build.patch \
         patches/kleopatra/0001-Allow-build-with-older-KWindowsystem-versions.patch \
+        patches/kleopatra/allow-older-kde-frameworks.patch \
         patches/kxmlgui/0001-make-qdbus-optional.patch \
         patches/kxmlgui/0003-Make-KTextWidgets-optional.patch \
         patches/kxmlgui/0004-Cruedly-disable-KSendbugmail.patch \
