@@ -177,7 +177,6 @@ const char * const full_files[] =
   "bin/glib-compile-schemas.exe",
   "bin/zlib1.dll",
   "bin/libcairo-gobject-2.dll",
-  "bin/pinentry-qt.exe",
   "bin/libKF5ConfigWidgets.dll",
   "bin/iconengines/qsvgicon.dll",
   "bin/imageformats/qsvg.dll",
