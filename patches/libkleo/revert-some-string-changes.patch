@@ -1,0 +1,87 @@
+#! /bin/sh
+patch -p1 -l -f -R $* < $0
+exit $?
+
+diff --git a/src/ui/auditlogviewer.cpp b/src/ui/auditlogviewer.cpp
+index b32322a..db03c37 100644
+--- a/src/ui/auditlogviewer.cpp
++++ b/src/ui/auditlogviewer.cpp
+@@ -46,7 +46,7 @@ AuditLogViewer::AuditLogViewer(const QString &log, QWidget *parent)
+       m_textEdit(new QTextEdit(this))
+ #endif
+ {
+-    setWindowTitle(i18n("View GnuPG Audit Log"));
++    setWindowTitle(i18nc("@title:window", "View GnuPG Audit Log"));
+     QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Close);
+
+     QPushButton *copyClipBtn = new QPushButton;
+diff --git a/src/ui/cryptoconfigdialog.cpp b/src/ui/cryptoconfigdialog.cpp
+index 5ac4774..cfce3d5 100644
+--- a/src/ui/cryptoconfigdialog.cpp
++++ b/src/ui/cryptoconfigdialog.cpp
+@@ -42,7 +42,7 @@
+ Kleo::CryptoConfigDialog::CryptoConfigDialog(QGpgME::CryptoConfig *config, QWidget *parent)
+     : QDialog(parent)
+ {
+-    setWindowTitle(i18n("Configure GnuPG Backend"));
++    setWindowTitle(i18nc("@title:window", "Configure GnuPG Backend"));
+     QVBoxLayout *mainLayout = new QVBoxLayout(this);
+     mButtonBox = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel | QDialogButtonBox::RestoreDefaults | QDialogButtonBox::Apply, this);
+     QPushButton *okButton = mButtonBox->button(QDialogButtonBox::Ok);
+diff --git a/src/ui/cryptoconfigmodule.cpp b/src/ui/cryptoconfigmodule.cpp
+index 4d891c3..77a1b1e 100644
+--- a/src/ui/cryptoconfigmodule.cpp
++++ b/src/ui/cryptoconfigmodule.cpp
+@@ -831,7 +831,7 @@ void Kleo::CryptoConfigEntryLDAPURL::slotOpenDialog()
+     // I'm a bad boy and I do it all on the stack. Enough classes already :)
+     // This is just a simple dialog around the directory-services-widget
+     QDialog dialog(mPushButton->parentWidget());
+-    dialog.setWindowTitle(i18n("Configure LDAP Servers"));
++    dialog.setWindowTitle(i18nc("@title:window", "Configure LDAP Servers"));
+
+     DirectoryServicesWidget *dirserv = new DirectoryServicesWidget(&dialog);
+
+@@ -958,7 +958,7 @@ void Kleo::CryptoConfigEntryKeyserver::slotOpenDialog()
+     // I'm a bad boy and I do it all on the stack. Enough classes already :)
+     // This is just a simple dialog around the directory-services-widget
+     QDialog dialog(mPushButton->parentWidget());
+-    dialog.setWindowTitle(i18n("Configure Keyservers"));
++    dialog.setWindowTitle(i18nc("@title:window", "Configure Keyservers"));
+
+     DirectoryServicesWidget *dirserv = new DirectoryServicesWidget(&dialog);
+
+diff --git a/src/ui/keyapprovaldialog.cpp b/src/ui/keyapprovaldialog.cpp
+index 968daba..9849866 100644
+--- a/src/ui/keyapprovaldialog.cpp
++++ b/src/ui/keyapprovaldialog.cpp
+@@ -108,7 +108,7 @@ Kleo::KeyApprovalDialog::KeyApprovalDialog(const std::vector<Item> &recipients,
+     : QDialog(parent),
+       d(new Private())
+ {
+-    setWindowTitle(i18n("Encryption Key Approval"));
++    setWindowTitle(i18nc("@title:window", "Encryption Key Approval"));
+     QVBoxLayout *mainLayout = new QVBoxLayout(this);
+     QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel, this);
+     QPushButton *okButton = buttonBox->button(QDialogButtonBox::Ok);
+diff --git a/src/ui/newkeyapprovaldialog.cpp b/src/ui/newkeyapprovaldialog.cpp
+index 43ee1e8..22a56f7 100644
+--- a/src/ui/newkeyapprovaldialog.cpp
++++ b/src/ui/newkeyapprovaldialog.cpp
+@@ -264,7 +264,7 @@ public:
+         mScrollArea->setFrameStyle(QFrame::NoFrame);
+         mScrollLayout->setContentsMargins(0, 0, 0, 0);
+
+-        q->setWindowTitle(i18n("Security approval"));
++        q->setWindowTitle(i18nc("@title:window", "Security approval"));
+
+         auto fmtLayout = new QHBoxLayout;
+         mFormatBtns = new QButtonGroup;
+@@ -326,7 +326,7 @@ public:
+         auto progress = new Kleo::ProgressDialog(job, i18n("Generating key for '%1'...", addr) + QStringLiteral("\n\n") +
+                                                  i18n("This can take several minutes."), q);
+         progress->setWindowFlags(progress->windowFlags() & ~Qt::WindowContextHelpButtonHint);
+-        progress->setWindowTitle(i18n("Key generation"));
++        progress->setWindowTitle(i18nc("@title:window", "Key generation"));
+         progress->setModal(true);
+         progress->setAutoClose(true);
+         progress->setMinimumDuration(0);
