@@ -5,11 +5,122 @@
 Noteworthy changes in Version 3.1.11 (unreleased)
 ------------------------------------------------
 
+(en) GpgOL: Improved compatibility with other clients for S/MIME
+     e.g. the Outlook web interface. (T4543 T4525)
+
+(de) GpgOL: Verbesserte Kompatibilität mit anderen Klienten
+     für S/MIME Mails. Zum Beispiel mit dem Outlook Web
+     Interface. (T4543 T4525)
+
+(en) GpgOL: E-Mails which are too large to fully decrypt / verify
+     on a Server with E-Mail size limits are now handled with a proper error.
+     (T4731)
+
+(de) GpgOL: Mails die zu groß sind um auf einem Server, mit Limits
+     für die Mail-Größe, verarbeitet werden zu können, werden
+     nun mit einer eigenen Fehlermeldung behandelt. (T4731)
+
+(en) GpgOL / Kleopatra: The GnuPG-System config page can now
+     be hidden.
+
+(de) GpgOL / Kleopatra: Die GnuPG-System Konfiguration kann nun
+     versteckt werden.
+
+(en) GpgOL: There is now an additional configuration option to
+     always show the security approval dialog, even with full automation.
+
+(de) GpgOL: Es gibt nun eine weitere Konfigurationsoption um
+     den Dialog zur Zertifikats-Bestätigung auch bei voller
+     Automatisierung anzuzeigen.
+
+(en) GpgOL: E-Mails are no longer always classified as HTML.
+
+(de) GpgOL: Mails werden nun nicht immer als HTML klassifiziert.
+
+(en) GpgOL: Saving E-Mails as files now also works when the
+     mail is opened in its own Window.
+
+(de) GpgOL: Es funktioniert nun auch Mails als Dateien abzuspeichern
+     wenn diese in einem eigenen Fenster geöffnet sind.
+
+(en) GpgOL: Fixed a rare case where GpgOL could crash when opening
+     a Mail from the file system.
+
+(de) GpgOL: Ein seltener Absturz wurde behoben der beim öffnen
+     von Mails aus dem Dateisystem passieren konnte.
+
+(en) GpgOL: The security approval dialog now has additional
+     info buttons to show extended information.
+
+(de) GpgOL: Der Dialog zur Zertifikats-Bestätigung hat nun
+     Info Knöpfe um Details anzuzeigen.
+
+(en) Kleopatra: The certify dialog has been reworked to be
+     more user friendly and require less clicks. (T4649)
+
+(de) Kleopatra: Der Dialog zum beglaubigen von Benutzerkennungen
+     wurde überarbeitet um die Benutzerfreundlichkeit zu verbessern.
+     (T4649)
+
+(en) Kleopatra: New Feature "Search Tags": When certifying a user
+     identity you can now add additional "Tags". Tags are shown
+     which are made by any user that has full ceritification
+     trust. They can be used to group or search keys by additional
+     information. (T4734)
+
+(de) Kleopatra: Neues Feature "Tags": Beim beglaubigen einer
+     Benutzerkennung kann man nun zusätzliche Tags angeben.
+     Diese Tags können verwendet werden um Schlüssel zu
+     gruppieren oder danach zu suchen. Es werden alle Tags
+     angezeigt die von Schlüsseln mit vollem Beglaubigungs-Vertrauen
+     angelegt wurden. (T4734)
+
+(en) Kleopatra: There is now an error message when a key could not
+     be found during file encryption.
+
+(de) Kleopatra: Es erscheint nun eine Fehlermeldung wenn bei der
+     Datei-Verschlüsselung ein Schlüssel nicht gefunden werden
+     konnte.
+
+(en) Kleopatra: The Smartcard Management now also works for
+     OpenPGP 3 cards e.g. newer Yubikeys.
+
+(de) Kleopatra: Die Smartcard-Verwaltung unterstützt nun
+     auch OpenPGP 3 Karten. Zum Beispiel neuere Yubikeys.
+
+(en) GnuPG: Network access is now much faster if IPv6 is
+     not available. (T4165)
+
+(de) GnuPG: Netzwerk-Operationen sind nun deutlich
+     schneller wenn IPv6 nicht verfügbar ist. (T4165)
+
+(en) GnuPG: Prepare against chosen-prefix SHA-1 collisions in key
+     signatures. This change removes all SHA-1 based key signature
+     newer than 2019-01-19 from the web-of-trust.
+     Note that this includes all key signature created with DSA-1024 keys.
+     The new  option --allow-weak-key-signatues can be used to override
+     the new and safer behaviour.  (T4755, CVE-2019-14855)
+
+(de) GnuPG: Vorbereitung auf "chosen-prefix" SHA-1 Kollisionen in
+     Schlüssel-Signaturen (Beglaubigungen).
+     Diese Änderung ignoriert alle SHA-1 basierten Beglaubigungen,
+     welche nach dem 19.1.2019 erstellt wurden.
+     Dies betrifft alle DSA-1024 Schlüssel.
+     Die neue Option --allow-weak-key-signatures kann verwendet
+     werden um das alte, unsicherere, verhalten wiederherzustellen.
+     (T4755, CVE-2019-14855)
+
+(de) GnuPG: Auf Version 2.2.19 aktualisiert.
+     (Siehe: https://gnupg.org für weitere Neuigkeiten.)
+
+(en) GnuPG: Updated to Version 2.2.19.
+     (See: https://gnupg.org for additional News.)
+
 ~~~~~~~~~~~~~~~
-GnuPG:          2.2.17
-Kleopatra:      3.1.8
+GnuPG:          2.2.19
+Kleopatra:      3.1.11
 GPA:            0.10.0
-GpgOL:          2.4.2
+GpgOL:          2.4.4
 GpgEX:          1.0.6
 Kompendium DE:  4.0.1
 Compendium EN:  3.0.0

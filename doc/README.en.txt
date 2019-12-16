@@ -65,21 +65,57 @@ Included Gpg4win components in version !VERSION! are:
 New in Gpg4win version !VERSION! (!BUILD_ISODATE!)
 -----------------------------------------
 
-- GpgOL: Fixed a possible plaintext leak to the
-  mail server, which could occur when opening and closing mails
-  while the mail was also visible in the message list. (T4622 T4621)
+- GpgOL: Improved compatibility with other clients for S/MIME
+  e.g. the Outlook web interface. (T4543 T4525)
 
-- GnuPG: Ignore all key-signatures received from keyservers.  This
-  change is required to mitigate a DoS due to keys flooded with
-  faked key-signatures.  The old behaviour can be achieved by adding
-    keyserver-options no-self-sigs-only,no-import-clean
-  to your gpg.conf.  (T4607)
-  See: https://wiki.gnupg.org/WKD for an alternative to the
-  keyservers.
+- GpgOL: E-Mails which are too large to fully decrypt / verify
+  on a Server with E-Mail size limits are now handled with a proper error.
+  (T4731)
 
-- GnuPG: Updated to Version 2.2.17.
-  (See: https://gnupg.org for News.)
+- GpgOL / Kleopatra: The GnuPG-System config page can now
+  be hidden.
 
+- GpgOL: There is now an additional configuration option to
+  always show the security approval dialog, even with full automation.
+
+- GpgOL: E-Mails are no longer always classified as HTML.
+
+- GpgOL: Saving E-Mails as files now also works when the
+  mail is opened in its own Window.
+
+- GpgOL: Fixed a rare case where GpgOL could crash when opening
+  a Mail from the file system.
+
+- GpgOL: The security approval dialog now has additional
+  info buttons to show extended information.
+
+- Kleopatra: The certify dialog has been reworked to be
+  more user friendly and require less clicks. (T4649)
+
+- Kleopatra: New Feature "Search Tags": When certifying a user
+  identity you can now add additional "Tags". Tags are shown
+  which are made by any user that has full ceritification
+  trust. They can be used to group or search keys by additional
+  information. (T4734)
+
+- Kleopatra: There is now an error message when a key could not
+  be found during file encryption.
+
+- Kleopatra: The Smartcard Management now also works for
+  OpenPGP 3 cards e.g. newer Yubikeys.
+
+- GnuPG: Network access is now much faster if IPv6 is
+  not available. (T4165)
+
+- GnuPG: Prepare against chosen-prefix SHA-1 collisions in key
+  signatures. This change removes all SHA-1 based key signature
+  newer than 2019-01-19 from the web-of-trust.
+  Note that this includes all key signature created with DSA-1024 keys.
+  The new  option --allow-weak-key-signatues can be used to override
+  the new and safer behaviour.  (T4755, CVE-2019-14855)
+
+- GnuPG: Updated to Version 2.2.19.
+  (See: https://gnupg.org for additional News.)
 
 3. Additional notes
 ===================
