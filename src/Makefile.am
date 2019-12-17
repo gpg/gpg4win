@@ -741,12 +741,6 @@ mkportable.exe: mkportable.c \
 	$(CC) -O2 -o $@ $(srcdir)/mkportable.c
 	$(STRIP) $@
 
-if BUILD_SOURCE_INSTALLER
-all_src = installers/gpg4win-src-$(VERSION).exe
-else
-all_src =
-endif
-
 all_full = installers/gpg4win-$(VERSION).exe
 
 all-local: $(all_full) $(all_src)
@@ -757,5 +751,4 @@ all-local: $(all_full) $(all_src)
 
 clean-local:
 	rm -f installers/gpg4win-$(VERSION).exe \
-		  installers/gpg4win-src-$(VERSION).exe \
 		  installers/Gpg4win-Enterprise-$(VERSION).msi

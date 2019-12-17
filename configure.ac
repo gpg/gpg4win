@@ -132,16 +132,6 @@ AC_SUBST(emacs_local_vars_begin, ['Local Variables:'])
 AC_SUBST(emacs_local_vars_read_only, ['buffer-read-only: t'])
 AC_SUBST(emacs_local_vars_end, ['End:'])
 
-# For development of this package it is useful to build without
-# creating the source installer (takes a long time).  This option may
-# be used to suppress creation of the source installer.
-AC_ARG_ENABLE(source-installer,
-    AC_HELP_STRING([--disable-source-installer],
-                   [Do not create the Source installer]),
-                    build_source_installer=$enableval,
-                    build_source_installer=yes)
-AM_CONDITIONAL(BUILD_SOURCE_INSTALLER, test "$build_source_installer" = yes)
-
 # For development it is often faster to build without manuals.
 AC_ARG_ENABLE(manuals,
     AC_HELP_STRING([--disable-manuals],
