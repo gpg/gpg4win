@@ -89,3 +89,6 @@ gen-ChangeLog:
 	  rm -f $(distdir)/ChangeLog;					\
 	  mv $(distdir)/cl-t $(distdir)/ChangeLog;			\
 	fi
+
+download: packages/packages.current
+	(cd packages; ./download.sh)
