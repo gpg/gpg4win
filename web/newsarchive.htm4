@@ -21,12 +21,17 @@ The latest news are placed at the <a href="./">welcome page</a>.
 <h2>2019</h2>
 <ul>
     <li>
-      <a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce/2019-June/000085.html">
+      <a
+          href="3.1.10-announcement.html">2019-07-14: Gpg4win 3.1.10 released
+      </a>
+    </li>
+    <li>
+      <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2019-June/000085.html">
         2019-06-15: Gpg4win 3.1.9 released
       </a>
     </li>
     <li>
-      <a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce/2019-June/000084.html">
+      <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2019-June/000084.html">
         2019-06-06: Gpg4win 3.1.8 released
     </li>
     <li>
