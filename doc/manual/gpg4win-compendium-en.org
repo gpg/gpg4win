@@ -72,7 +72,7 @@ The Gpg4win Compendium consists of three parts:
 
 - *Part [[#part:AdvancedUsers][“For Advanced Users”]]*: Background information for Gpg4win.
 
-- *[[part:Annex][Annex]]*: Additional technical information about Gpg4win.
+- *[[#part:Annex][Annex]]*: Additional technical information about Gpg4win.
 
 *Part [[#part:Novices][“For Novices”]]* provides a brief guide for the installation and daily
 use of Gpg4win program components. The practice robot *Adele* will
@@ -91,7 +91,7 @@ can be used independently of each other. However, to achieve an
 optimum understanding, you should read both parts in the indicated
 sequence, if possible.
 
-The *[[part:Annex][Annex]]* contains details regarding the specific technical issues
+The *[[#part:Annex][Annex]]* contains details regarding the specific technical issues
 surrounding Gpg4win, including the GpgOL Outlook program extension.
 
 Just like the cryptography program package Gpg4win, this compendium
@@ -1417,7 +1417,7 @@ Double-click on your new certificate to view all details
 related to the certificate:
 
 #+ATTR_LaTeX: width=0.85\textwidth
-[[sc-kleopatra-openpgp-certificateDetails_en]]
+[[file:images-compendium/sc-kleopatra-openpgp-certificateDetails_en.png]]
 
 What do the certificate details mean?
 
@@ -2635,7 +2635,7 @@ compendium. It contains even more interesting stuff!
    :END:
 #+index: Certificate!details
 
-In Chapter [[sec_finishKeyPairGeneration]], you have already seen the
+In Chapter [[#sec_finishKeyPairGeneration]], you have already seen the
 detailed dialog for the certificate you generated. It contains a lot of
 information about your certificate. The following section provides a
 more detailed overview of the most important points, with brief
@@ -2846,10 +2846,10 @@ servers whose URL begins with: =http://=
 
 The certificate servers under the addresses
 
--  [[hkp://keys.gnupg.net]] (Kleopatra pre-selection, see screenshot on
+-  =hkp://keys.gnupg.net= (Kleopatra pre-selection, see screenshot on
    previous page)
 
--  http://http-keys.gnupg.net
+-  =http://http-keys.gnupg.net=
 
 are a collection point for an entire network of these servers; a
 concrete server will be selected randomly.
