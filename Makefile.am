@@ -92,3 +92,6 @@ gen-ChangeLog:
 
 download: packages/packages.current
 	(cd packages; ./download.sh)
+
+msi:
+	$(MAKE) $(AM_MAKEFLAGS) -C src msi
