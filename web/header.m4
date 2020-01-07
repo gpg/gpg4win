@@ -40,6 +40,16 @@
    <div class="h_text_beta">
 -->
    <div class="h_text">
+   <small>2020-01-07</small><br>
+   <span class="serif_word"><img src="img/bulletin.png" alt"" />
+     m4_ifelse(LANG_DE, `1', `
+      <a href="https://gnupg.com/20200107-freigabe-vs-nfd.html">
+      Gpg4win für VS-NfD freigegeben</a>
+      </span>',`
+      <a href="https://gnupg.com/20200107-freigabe-vs-nfd.html">
+      German press release: Gpg4win für VS-NfD freigegeben</a>
+      </span>')
+   <p></p>
    <small>2019-12-17</small><br>
    <span class="serif_word"><img src="img/bulletin.png" alt"" />
      m4_ifelse(LANG_DE, `1', `
@@ -48,12 +58,6 @@
       <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2019-December/000087.html">
         Gpg4win 3.1.11 released
       </a></span>')
-   <p></p>
-   <small>2019-04-30</small><br>
-   <span class="serif_word"><img src="img/bulletin.png" alt"" />
-      <a href="statement-spoofing.html">
-      Detecting spoofed email signatures
-      </a></span>
    <p></p>
    <div class="limiter"></div>
    <p>
