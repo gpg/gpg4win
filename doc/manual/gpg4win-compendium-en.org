@@ -23,7 +23,7 @@
 
 \begin{titlepage}
   \begin{center}
-    \includegraphics[width=0.8\textwidth]{gpg4win-logo.png}
+    \includegraphics[width=0.8\textwidth]{images-compendium/gpg4win-logo.png}
     \\[10mm]
     \LARGE The Gpg4win Compendium
     \\[3mm]
@@ -378,7 +378,7 @@ errors.
 
 #+ATTR_HTML: width=300
 #+ATTR_LaTeX: width=0.5\textwidth
-file:tangled-schlapphut.png
+[[file:images-compendium/tangled-schlapphut.png]]
 
 #+index: Symmetric encryption
 The basic problem with the "ordinary" secret transmission of messages is
@@ -431,7 +431,7 @@ Both key components have very different functions:
 #+END_QUOTE
 
 #+ATTR_LaTeX: width=0.75\textwidth
-file:key-with-shadow-bit.png
+[[file:images-compendium/key-with-shadow-bit.png]]
 
 #+BEGIN_QUOTE
   The public key component *encrypts* messages.
@@ -490,7 +490,7 @@ secret before they can send secret messages per email.
 So we might as well forget about this option ...
 
 #+ATTR_LaTeX: width=0.75\textwidth
-file:letter-out-of-safe.png
+[[file:images-compendium/letter-out-of-safe.png]]
 
 *Now the "public key" method*
 
@@ -548,7 +548,7 @@ strongbox with his private key and read the message.
 
 
 #+ATTR_LaTeX: width=0.75\textwidth
-file:pk-safe-opened-with-sk.png
+[[file:images-compendium/pk-safe-opened-with-sk.png]]
 
 *But what did we really gain:* There is still a secret key!
 
@@ -594,7 +594,7 @@ stored on your computer. To prevent unauthorised access of this file, it
 is secured in two ways:
 
 #+ATTR_LaTeX: width=0.5\textwidth
-file:think-passphrase.png
+[[file:images-compendium/think-passphrase.png]]
 
 #+index: Viruses
 #+index: Worms
@@ -880,7 +880,7 @@ want to use the software, you can do this right away --- without reading
 the license.
 
 #+ATTR_LaTeX: width=0.85\textwidth
-file:sc-inst-license_en.png
+[[file:images-compendium/sc-inst-license_en.png]]
 
 Click on {{{Button(Next)}}}.
 
@@ -895,7 +895,7 @@ description. Another useful feature is the display of required hard
 drive space for all selected components.
 
 #+ATTR_LaTeX: width=0.85\textwidth
-file:sc-inst-components_en.png
+[[file:images-compendium/sc-inst-components_en.png]]
 
 Click on {{{Button(Next)}}}.
 
@@ -906,7 +906,7 @@ You can accept the suggestion or select a different folder for
 installing Gpg4win.
 
 #+ATTR_LaTeX: width=0.85\textwidth
-file:sc-inst-directory_en.png
+[[file:images-compendium/sc-inst-directory_en.png]]
 
 Then click on {{{Button(Next)}}}.
 
@@ -915,7 +915,7 @@ system will automatically create a link with the start menu. You can
 change this link later on using the Windows dashboard settings.
 
 #+ATTR_LaTeX: width=0.85\textwidth
-file:sc-inst-options_en.png
+[[file:images-compendium/sc-inst-options_en.png]]
 
 Then click on {{{Button(Next)}}}.
 
@@ -924,7 +924,7 @@ menu* --- you can define the name of this start menu on the next page or
 simply accept the name.
 
 #+ATTR_LaTeX: width=0.85\textwidth
-file:sc-inst-startmenu_en.png
+[[file:images-compendium/sc-inst-startmenu_en.png]]
 
 Then click on {{{Button(Install)}}}.
 
@@ -934,7 +934,7 @@ You can press {{{Button(Show~details)}}} at any time to show the installation
 log.
 
 #+ATTR_LaTeX: width=0.85\textwidth
-file:sc-inst-progress_en.png
+[[file:images-compendium/sc-inst-progress_en.png]]
 
 Once you have completed the installation, please click on {{{Button(Next)}}}.
 
@@ -942,7 +942,7 @@ The last page of the installation process is shown once the
 installation has been successfully completed:
 
 #+ATTR_LaTeX: width=0.85\textwidth
-file:sc-inst-finished_en.png
+[[file:images-compendium/sc-inst-finished_en.png]]
 
 You have the option of displaying the README file, which contains
 important information on the Gpg4win version you have just installed. If
@@ -954,7 +954,7 @@ In some cases you may have to restart Windows. In this case,
 you will see the following page:
 
 #+ATTR_LaTeX: width=0.85\textwidth
-file:sc-inst-finished2_en.png
+[[file:images-compendium/sc-inst-finished2_en.png]]
 
 Now you can decide whether Windows should be restarted immediately or
 manually at a later time.
@@ -1039,7 +1039,7 @@ You will see the main Kleopatra screen --- the
 certificate administration:
 
 #+ATTR_LaTeX: width=0.85\textwidth
-file:sc-kleopatra-mainwindow-empty_en.png
+[[file:images-compendium/sc-kleopatra-mainwindow-empty_en.png]]
 
 At the beginning, this overview will be empty, since you have not
 created or imported any certificates yet.
@@ -1054,7 +1054,7 @@ discussed in Chapter\ref{ch:openpgpsmime}.
 
 # <<chooseCertificateFormat>>
 #+ATTR_LaTeX: width=0.85\textwidth
-file:sc-kleopatra-ChooseCertificateFormat_en.png]
+[[file:images-compendium/sc-kleopatra-ChooseCertificateFormat_en.png]]]
 
 This chapter of the compendium breaks off into two sections for each
 method at this point. Information is then combined at the end of the
@@ -1089,7 +1089,7 @@ key. This comment becomes part of your login name, and will become
 public just like your name and email address.
 
 #+ATTR_LaTeX: width=0.85\textwidth
-file:sc-kleopatra-openpgp-personalDetails_en.png
+[[file:images-compendium/sc-kleopatra-openpgp-personalDetails_en.png]]
 
 If you first wish to *test* your OpenPGP key pair, you can simply
 enter any name and fictional email address, e.g.: =Heinrich Heine= and
@@ -1106,7 +1106,7 @@ for *review purposes*. If you are interested in the (default) expert
 settings, you can view these via the {{{Menu(All details)}}} option.
 
 #+ATTR_LaTeX: width=0.85\textwidth
-file:sc-kleopatra-openpgp-reviewParameters_en.png
+[[file:images-compendium/sc-kleopatra-openpgp-reviewParameters_en.png]]
 
 If everything is correct, click on {{{Button(Create key)}}}.
 
@@ -1115,7 +1115,7 @@ Now to the most important part: entering your *passphrase*!
 To create a key pair, you must enter your personal passphrase:
 
 #+ATTR_LaTeX: width=0.45\textwidth
-file:sc-kleopatra-openpgp-pinentry_en.png
+[[file:images-compendium/sc-kleopatra-openpgp-pinentry_en.png]]
 
 If you have read Chapter\ref{ch:passphrase} you should now have an
 easy-to-remember but hard to break secret passphrase. Enter it in the
@@ -1137,7 +1137,7 @@ with {{{Button(OK)}}}.
 Now your OpenPGP key pair is being created:
 
 #+ATTR_LaTeX: width=0.85\textwidth
-file:sc-kleopatra-openpgp-createKey_en.png
+[[file:images-compendium/sc-kleopatra-openpgp-createKey_en.png]]
 
 This may take a couple of minutes. You can assist the creation of the
 required random numbers by entering information in the lower input
@@ -1150,7 +1150,7 @@ As soon as *the key pair creation has been successful*, you
 will see the following dialog:
 
 #+ATTR_LaTeX: width=0.85\textwidth
-file:sc-kleopatra-openpgp-keyPairCreated_en.png
+[[file:images-compendium/sc-kleopatra-openpgp-keyPairCreated_en.png]]
 
 #+index: Fingerprint
 #+index: Key!ID
@@ -1606,7 +1606,7 @@ file in the attachment:
 
 Add the previously exported certificate file as an attachment to your
 new email --- just as you would for any other file (e.g. pulling the
-file into the emtpy \Emailwindow). Add the recipient (adele@gnupp.de)
+file into the emtpy Emailwindow). Add the recipient (adele@gnupp.de)
 and a subject, e.g.: {{{Menu(My public OpenPGP certificate --- as a file
 attachment)}}}.
 
