@@ -21,6 +21,8 @@ TEXI2PDF = texi2pdf
 INDEX = makeindex
 HYPERLATEX = hyperlatex
 HTML_DIR = compendium-html
+EMACS = emacs
+PDFLATEX = pdflatex
 
 png_compendium_files = \
 	images-compendium/adele01.png \
@@ -290,6 +292,7 @@ eps_manual_files = $(png_manual_files:.png=.eps)
 EXTRA_DIST = 	gpg4win-compendium-de.tex \
 		gpg4win-compendium-en.tex \
 		gpg4win-compendium-en.org \
+		gnupg-desktop-manual-de.org \
 		fdl.tex fdl-book.tex version.tex.in indexstyle.ist \
 		hyperlatex.sty \
 		$(png_compendium_files) $(png_hyperlatex_files)
@@ -335,6 +338,15 @@ novices.html.d-stamp : version.tex macros-en.tex
 
 pdf-de: gpg4win-compendium-de.pdf
 pdf-en: gpg4win-compendium-en.pdf
+gnupg-desktop-manual-de.tex: gnupg-desktop-manual-de.org
+	$(EMACS) --no-site-file --batch  \
+		--eval "(require 'org)" \
+		--eval "(setq make-backup-files nil)" \
+		--eval "(find-file \"$<\")" \
+		--eval "(org-latex-export-to-latex)"
+
+gnupg-desktop-manual-de.pdf: gnupg-desktop-manual-de.tex
+	$(PDFLATEX)  "$<"
 
 dvi-de: gpg4win-compendium-de.dvi
 dvi-en: gpg4win-compendium-en.dvi
