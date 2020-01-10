@@ -165,9 +165,17 @@ Im folgenden werden die Ausdrücke und Kennzeichnungen verwendet:
 	    \end{latexonly}
 \end{itemize}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Part I
+\clearpage
+\T\part{Für Einsteiger}
+\W\part*{\textbf{I Für Einsteiger}}
+\label{part:Einsteiger}
+\addtocontents{toc}{\protect\vspace{0.3cm}}
+\addtocontents{toc}{\protect\vspace{0.3cm}}
 
-\die folgenden Programme:
-chapter{Gpg4win -- Kryptografie für alle}
+
+\chapter{Gpg4win -- Kryptografie für alle}
 \index{Kryptografie}
 
 Was ist Gpg4win?\index{Gpg4win} Die deutsche Wikipedia beantwortet diese Frage
@@ -180,22 +188,13 @@ so:
 		Integrität und die Authentizität der verschlüsselten E-Mails und
 		Dateien überprüft werden. Das Paket besteht aus verschiedenen
 		Programmkomponenten und einem Handbuch. }
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Part I
-\clearpage
-\T\part{Für Einsteiger}
-\W\part*{\textbf{I Für Einsteiger}}
-\label{part:Einsteiger}
-\addtocontents{toc}{\protect\vspace{0.3cm}}
-\addtocontents{toc}{\protect\vspace{0.3cm}}
 
-
-
-\END_QUOTE
+\end{quote}
 
 Die Handbücher "`Einsteiger"' und "`Durchblicker"' wurden für die vorliegende
 zweite Version unter der Bezeichnung "`Kompendium"' zusammengeführt.
-Gpg4win umfasst in Version 2
+Gpg4win umfasst in Version 2 die folgenden Programme:
+
 \begin{itemize}
     \item \textbf{GnuPG}\index{GnuPG}\\ GnuPG ist das Kernstück von
         Gpg4win -- die eigentliche Verschlüsselungs-Software.
@@ -260,6 +259,7 @@ Bundesregierung zum Schutz im Internet finden Sie auf den Webseiten
 \uniurl[www.bsi.bund.de]{http://www.bsi.bund.de} und
 \uniurl[www.bsi-fuer-buerger.de]{http://www.bsi-fuer-buerger.de} des
 Bundesamtes für Sicherheit in der Informationstechnik.
+
 
 
 \clearpage
