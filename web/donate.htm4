@@ -50,14 +50,19 @@ are grateful for your financial contribution.<br>
 
   <div id="sponsors">
     <h2>List of sponsors</h2>
-    <p>The following list shows the sponsors who donated over 20,- EUR / USD in the years 2018 and 2017 to support
+    <p>The following list shows the sponsors who donated over 20,- EUR / USD in the years 2018-2019 to support
     the Gpg4win initiative and agreed to make their donation(s) public.
 
 <!--
     Donation details and the sponsor lists for previous years are to be found in
     <a href="https://wiki.gnupg.org/Gpg4win/donations">the summary of donation</a>. -->
 
-    (Last updated: 2018/06/29)</p>
+    (Last updated: 2020/02/24)</p>
+
+    <h3>Sponsors 2019</h3>
+    <div class="sponsornames">
+    m4_include(`SPONSORS-2019')
+    </div>
 
     <h3>Sponsors 2018</h3>
     <div class="sponsornames">

@@ -35,7 +35,7 @@ Eine Zusammenfassung der bisherigen Spenden finden Sie
   <div id="contract">
   <h2>Beauftragungen</h2>
     <p>Unterstützen Sie die Gpg4win-Weiterentwicklung mit einer konkreten Beauftragung!</p>
-  
+
     <p><b>Als engagierter Anwender</b> können Sie einen bestimmten
     Schritt, wie z.B. Aktualisierung, Beseitigung eines Fehlers oder Hinzufügen einer Funktion
     beauftragen. Jede beauftragte Verbesserung kommt dem Gpg4win-Hauptstrom zu Gute.</p>
@@ -52,7 +52,7 @@ Eine Zusammenfassung der bisherigen Spenden finden Sie
   <div id="sponsors">
     <h2>Liste der Spender</h2>
     <p>Die folgende Liste zeigt alle Spender, die über 20,- EUR / USD in den
-    Jahren 2017 und 2018 für Gpg4win gespendet und einer
+    Jahren 2017-2019 für Gpg4win gespendet und einer
     Veröffentlichung ihrer Spende zugestimmt haben.
 
     <!-- This needs to be updated:
@@ -60,7 +60,12 @@ Eine Zusammenfassung der bisherigen Spenden finden Sie
     Eine Zusammenfassung aller Spenden und die Spender der früheren
     Jahren finden Sie <a href="https://wiki.gnupg.org/Gpg4win/donations">hier</a>. -->
 
-    (Zuletzt aktualisiert: 2018/06/29)</p>
+    (Zuletzt aktualisiert: 2020/02/24)</p>
+
+    <h3>Spender 2019</h3>
+    <div class="sponsornames">
+    m4_include(`SPONSORS-2019')
+    </div>
 
     <h3>Spender 2018</h3>
     <div class="sponsornames">
