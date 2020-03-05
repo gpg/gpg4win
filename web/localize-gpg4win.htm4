@@ -45,7 +45,7 @@ E.g. "de" is german language, "de_DE" is German language as used in Germany and
 <h4>Available languages</h4>
 
 <p>
-See the .po filenames in the <a href="http://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpg4win.git;a=tree;f=po;hb=HEAD">Gpg4win
+See the .po filenames in the <a href="https://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpg4win.git;a=tree;f=po;hb=HEAD">Gpg4win
 po directory</a>. This is the most current status, so in case of relatively new files the most
 recent release of Gpg4win might not yet support it.
 </p>
@@ -131,7 +131,7 @@ Since the initial setup of the website (which supports two languages),
 no further languages have been added. Thus, there does not yet exist
 a practical guideline for this. However, you basically need to
 create a "-LL.htm4" file for any file in
-<a href="http://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpg4win.git;a=tree;f=doc/website;hb=HEAD">doc/website</a>
+<a href="https://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpg4win.git;a=tree;f=doc/website;hb=HEAD">doc/website</a>
 that ends with "-de.htm4" (where LL is code of your language). Basis of the translation
 are the files without the LL suffix which are in fact the English
 defaults. Some further changes are needed for the website build process.
@@ -194,7 +194,7 @@ want to start with a new translation.
 <p>
 Basically you need to pick the German file
 <a
-href="http://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpg4win.git;a=blob;f=doc/manual/gpg4win-compendium-de.tex;hb=HEAD">doc/manual/gpg4win-compendium-de.tex</a> and
+href="https://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpg4win.git;a=blob;f=doc/manual/gpg4win-compendium-de.tex;hb=HEAD">doc/manual/gpg4win-compendium-de.tex</a> and
 translate the text to your language. Next there are many screenshots
 to be done with the software running in your language.
 </p>
@@ -244,7 +244,7 @@ languages.
 <h4>Available languages</h4>
 
 <p>
-See the .po filenames in the <a href="http://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpgol.git;a=tree;f=po;hb=HEAD">GpgOL
+See the .po filenames in the <a href="https://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpgol.git;a=tree;f=po;hb=HEAD">GpgOL
 po directory</a>. This is the most current status, so in case of relatively new files the most
 recent release of GpgOL might not yet support it.
 </p>
@@ -271,7 +271,7 @@ Otherwise, English is used.
 <h4>Available languages</h4>
 
 <p>
-See the .po filenames in the <a href="http://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpgex.git;a=tree;f=po;hb=HEAD">GpgEX
+See the .po filenames in the <a href="https://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpgex.git;a=tree;f=po;hb=HEAD">GpgEX
 po directory</a>. This is the most current status, so in case of relatively new files the most
 recent release of GpgEX might not yet support it.
 </p>

@@ -50,19 +50,19 @@ Ein vorheriges "Hallo" auf einer der Gpg4win-Mailingliste
 und der Wunsch, dass man gerne mitmachen möchte, ist natürlich immer sinnvoll.
 
 <ol>
-<li> Auf <a href="http://wald.intevation.de">wald.intevation.de</a> ein
-     <a href="http://wald.intevation.org/account/register.php">Benutzerkonto
+<li> Auf <a href="https://wald.intevation.de">wald.intevation.de</a> ein
+     <a href="https://wald.intevation.org/account/register.php">Benutzerkonto
      einrichten</a>.<br>
      Das geht schnell, denn es ist ein vollautomatischer Prozess.
 
 <li> Mitgliedschaft beim Projekt Gpg4win
-     <a href="http://wald.intevation.org/project/request.php?group_id=11"
+     <a href="https://wald.intevation.org/project/request.php?group_id=11"
        >beantragen</a>.<br>
      Das dauert ein wenig, da einer der Projektadministoren den Antrag
      persönlich bearbeitet.
 
 <li> Einen SSH-Schlüssel erzeugen und auf wald.intevation.de
-     <a href="http://wald.intevation.org/account/">hochladen</a>.
+     <a href="https://wald.intevation.org/account/">hochladen</a>.
 
 <li> Die Quellen zur Website holen:<br>
      <code>git clone git://git.gnupg.org/gpg4win.git -b website </code>
