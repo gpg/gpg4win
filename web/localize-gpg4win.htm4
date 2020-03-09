@@ -28,7 +28,7 @@ Note, that English is always the default base for any translation.
 </p>
 
 <p>
-In most cases the <a href="http://www.gnu.org/software/gettext/">GNU gettext</a> technology is applied for translations
+In most cases the <a href="https://www.gnu.org/software/gettext/">GNU gettext</a> technology is applied for translations
 which more or less means to edit .po files. This is a very common
 technology and various graphical tools to aid the translation are available (e.g. <a href="http://www.poedit.net/">poedit</a> or
 <a href="http://kbabel.kde.org/">KBabel</a>). However, a simple text
