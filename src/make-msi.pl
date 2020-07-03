@@ -1288,52 +1288,61 @@ sub dump_all
                 . "Directory='ProgramMenuDir' On='uninstall'/>\n";
             }
 
+
             # EXCEPTIONS:
-            # We use $targetfull because there is also a gpg.exe in pub\.
             if ($targetfull eq 'bin\\gpgol.dll')
             {
-                print <<EOF;
-                <RegistryValue Root="HKMU" KeyPath='yes' Key="Software\\Classes\\CLSID\\{42d30988-1a3a-11da-c687-000d6080e735}\\InprocServer32" Value="[#f_gpgol_0]" Type="string" Action="write" />
-                <RegistryValue Root="HKMU" KeyPath='yes' Key="Software\\Classes\\CLSID\\{42d30988-1a3a-11da-c687-000d6080e735}\\InprocServer32" Name="ThreadingModel" Value="Both" Type="string" Action="write" />
-                <RegistryValue Root="HKMU" KeyPath='yes' Key="Software\\Classes\\CLSID\\{42d30988-1a3a-11da-c687-000d6080e735}\\ProgID" Value="GNU.GpgOL" Type="string" Action="write" />
-                <RegistryValue Root="HKMU" KeyPath='yes' Key="Software\\Classes\\CLSID\\{42d30988-1a3a-11da-c687-000d6080e735}" Value="GpgOL - The GnuPG Outlook Plugin" Type="string" Action="write" />
-                <RegistryValue Root="HKMU" KeyPath='yes' Key="Software\\Classes\\GNU.GpgOL\\CLSID" Value="{42d30988-1a3a-11da-c687-000d6080e735}" Type="string" Action="write" />
-                <RegistryValue Root="HKMU" KeyPath='yes' Key="Software\\Classes\\GNU.GpgOL" Value="GpgOL - The GnuPG Outlook Plugin" Type="string" Action="write" />
-                <RegistryValue Root="HKMU" KeyPath='yes' Key="Software\\GNU\\GpgOL" Value="" Type="string" Action="write" />
-                <RegistryValue Root="HKMU" KeyPath='yes' Key="Software\\Microsoft\\Office\\Outlook\\Addins\\GNU.GpgOL" Name="LoadBehavior" Value="3" Type="integer" Action="write" />
-                <RegistryValue Root="HKMU" KeyPath='yes' Key="Software\\Microsoft\\Office\\Outlook\\Addins\\GNU.GpgOL" Name="CommandLineSafe" Value="0" Type="integer" Action="write" />
-                <RegistryValue Root="HKMU" KeyPath='yes' Key="Software\\Microsoft\\Office\\Outlook\\Addins\\GNU.GpgOL" Name="FriendlyName" Value="GpgOL - The GnuPG Outlook Plugin" Type="string" Action="write" />
-                <RegistryValue Root="HKMU" KeyPath='yes' Key="Software\\Microsoft\\Office\\Outlook\\Addins\\GNU.GpgOL" Name="Description" Value="Cryptography for Outlook" Type="string" Action="write" />
+                # KeyPath=no as the file is the key path and the registry values
+                # are only meta information for the files.
+              print <<EOF;
+                <RegistryValue Root="HKMU" KeyPath='no' Key="Software\\Classes\\CLSID\\{42d30988-1a3a-11da-c687-000d6080e735}\\InprocServer32" Value="[#f_$pkg->{name}_$fileidx]" Type="string" Action="write" />
+                <RegistryValue Root="HKMU" KeyPath='no' Key="Software\\Classes\\CLSID\\{42d30988-1a3a-11da-c687-000d6080e735}\\InprocServer32" Name="ThreadingModel" Value="Both" Type="string" Action="write" />
+                <RegistryValue Root="HKMU" KeyPath='no' Key="Software\\Classes\\CLSID\\{42d30988-1a3a-11da-c687-000d6080e735}\\ProgID" Value="GNU.GpgOL" Type="string" Action="write" />
+                <RegistryValue Root="HKMU" KeyPath='no' Key="Software\\Classes\\CLSID\\{42d30988-1a3a-11da-c687-000d6080e735}" Value="GpgOL - The GnuPG Outlook Plugin" Type="string" Action="write" />
+                <RegistryValue Root="HKMU" KeyPath='no' Key="Software\\Classes\\GNU.GpgOL\\CLSID" Value="{42d30988-1a3a-11da-c687-000d6080e735}" Type="string" Action="write" />
+                <RegistryValue Root="HKMU" KeyPath='no' Key="Software\\Classes\\GNU.GpgOL" Value="GpgOL - The GnuPG Outlook Plugin" Type="string" Action="write" />
+                <RegistryValue Root="HKMU" KeyPath='no' Key="Software\\GNU\\GpgOL" Value="" Type="string" Action="write" />
+                <RegistryValue Root="HKMU" KeyPath='no' Key="Software\\Microsoft\\Office\\Outlook\\Addins\\GNU.GpgOL" Name="LoadBehavior" Value="3" Type="integer" Action="write" />
+                <RegistryValue Root="HKMU" KeyPath='no' Key="Software\\Microsoft\\Office\\Outlook\\Addins\\GNU.GpgOL" Name="CommandLineSafe" Value="0" Type="integer" Action="write" />
+                <RegistryValue Root="HKMU" KeyPath='no' Key="Software\\Microsoft\\Office\\Outlook\\Addins\\GNU.GpgOL" Name="FriendlyName" Value="GpgOL - The GnuPG Outlook Plugin" Type="string" Action="write" />
+                <RegistryValue Root="HKMU" KeyPath='no' Key="Software\\Microsoft\\Office\\Outlook\\Addins\\GNU.GpgOL" Name="Description" Value="Cryptography for Outlook" Type="string" Action="write" />
+EOF
+            } elsif ($targetfull eq 'bin_64\\gpgol.dll') {
+              print <<EOF;
+                <RegistryValue Root="HKMU" KeyPath='no' Key="Software\\Wow6432Node\\Classes\\CLSID\\{42d30988-1a3a-11da-c687-000d6080e735}\\InprocServer32" Value="[#f_$pkg->{name}_$fileidx]" Type="string" Action="write" />
+                <RegistryValue Root="HKMU" KeyPath='no' Key="Software\\Wow6432Node\\Classes\\CLSID\\{42d30988-1a3a-11da-c687-000d6080e735}\\InprocServer32" Name="ThreadingModel" Value="Both" Type="string" Action="write" />
+                <RegistryValue Root="HKMU" KeyPath='no' Key="Software\\Wow6432Node\\Classes\\CLSID\\{42d30988-1a3a-11da-c687-000d6080e735}\\ProgID" Value="GNU.GpgOL" Type="string" Action="write" />
+                <RegistryValue Root="HKMU" KeyPath='no' Key="Software\\Wow6432Node\\Classes\\CLSID\\{42d30988-1a3a-11da-c687-000d6080e735}" Value="GpgOL - The GnuPG Outlook Plugin" Type="string" Action="write" />
+                <RegistryValue Root="HKMU" KeyPath='no' Key="Software\\Wow6432Node\\Classes\\GNU.GpgOL\\CLSID" Value="{42d30988-1a3a-11da-c687-000d6080e735}" Type="string" Action="write" />
+                <RegistryValue Root="HKMU" KeyPath='no' Key="Software\\Wow6432Node\\Classes\\GNU.GpgOL" Value="GpgOL - The GnuPG Outlook Plugin" Type="string" Action="write" />
+                <RegistryValue Root="HKMU" KeyPath='no' Key="Software\\Wow6432Node\\GNU\\GpgOL" Value="" Type="string" Action="write" />
+                <RegistryValue Root="HKMU" KeyPath='no' Key="Software\\Wow6432Node\\Microsoft\\Office\\Outlook\\Addins\\GNU.GpgOL" Name="LoadBehavior" Value="3" Type="integer" Action="write" />
+                <RegistryValue Root="HKMU" KeyPath='no' Key="Software\\Wow6432Node\\Microsoft\\Office\\Outlook\\Addins\\GNU.GpgOL" Name="CommandLineSafe" Value="0" Type="integer" Action="write" />
+                <RegistryValue Root="HKMU" KeyPath='no' Key="Software\\Wow6432Node\\Microsoft\\Office\\Outlook\\Addins\\GNU.GpgOL" Name="FriendlyName" Value="GpgOL - The GnuPG Outlook Plugin" Type="string" Action="write" />
+                <RegistryValue Root="HKMU" KeyPath='no' Key="Software\\Wow6432Node\\Microsoft\\Office\\Outlook\\Addins\\GNU.GpgOL" Name="Description" Value="Cryptography for Outlook" Type="string" Action="write" />
+EOF
+            } elsif ($targetfull eq 'bin\\gpgex.dll') {
+              print <<EOF;
+                <RegistryValue Root="HKMU" KeyPath='no' Key="Software\\Classes\\CLSID\\{CCD955E4-5C16-4A33-AFDA-A8947A94946B} Value="GpgEX" Type="string" Action="write" />
+                <RegistryValue Root="HKMU" KeyPath='no' Key="Software\\Classes\\CLSID\\{CCD955E4-5C16-4A33-AFDA-A8947A94946B}\\InprocServer32" Name="ThreadingModel" Value="Apartment" Type="string" Action="write" />
+                <RegistryValue Root="HKMU" KeyPath='no' Key="Software\\Classes\\CLSID\\{CCD955E4-5C16-4A33-AFDA-A8947A94946B}\\InprocServer32" Value="[#f_$pkg->{name}_$fileidx]" Type="string" Action="write" />
+                <RegistryValue Root="HKMU" KeyPath='no' Key="Software\\Classes\\*\\ShellEx\\ContextMenuHandlers\\GpgEx" Value="{CCD955E4-5C16-4A33-AFDA-A8947A94946B}" Type="string" Action="write" />
+                <RegistryValue Root="HKMU" KeyPath='no' Key="Software\\Classes\\Directory\\ShellEx\\ContextMenuHandlers\\GpgEx" Value="{CCD955E4-5C16-4A33-AFDA-A8947A94946B}" Type="string" Action="write" />
+EOF
+            } elsif ($targetfull eq 'bin_64\\gpgex.dll') {
+              print <<EOF;
+                <RegistryValue Root="HKMU" KeyPath='no' Key="Software\\Wow6432Node\\Classes\\CLSID\\{CCD955E4-5C16-4A33-AFDA-A8947A94946B} Value="GpgEX" Type="string" Action="write" />
+                <RegistryValue Root="HKMU" KeyPath='no' Key="Software\\Wow6432Node\\Classes\\CLSID\\{CCD955E4-5C16-4A33-AFDA-A8947A94946B}\\InprocServer32" Name="ThreadingModel" Value="Apartment" Type="string" Action="write" />
+                <RegistryValue Root="HKMU" KeyPath='no' Key="Software\\Wow6432Node\\Classes\\CLSID\\{CCD955E4-5C16-4A33-AFDA-A8947A94946B}\\InprocServer32" Value="[#f_$pkg->{name}_$fileidx]" Type="string" Action="write" />
+                <RegistryValue Root="HKMU" KeyPath='no' Key="Software\\Wow6432Node\\Classes\\*\\ShellEx\\ContextMenuHandlers\\GpgEx" Value="{CCD955E4-5C16-4A33-AFDA-A8947A94946B}" Type="string" Action="write" />
+                <RegistryValue Root="HKMU" KeyPath='no' Key="Software\\Wow6432Node\\Classes\\Directory\\ShellEx\\ContextMenuHandlers\\GpgEx" Value="{CCD955E4-5C16-4A33-AFDA-A8947A94946B}" Type="string" Action="write" />
 EOF
             }
-            elsif ($targetfull eq 'gpgex.dll')
-            {
-                print ' ' x $::level
-                . "  <ProgId Id='*'/>\n";
-                print ' ' x $::level
-                . "  <ProgId Id='Directory'/>\n";
-                print ' ' x $::level
-                . "  <RegistryValue Root='HKCR' "
-                . "Key='*\\ShellEx\\ContextMenuHandlers\\GpgEX' "
-                . "Value='{CCD955E4-5C16-4A33-AFDA-A8947A94946B}' "
-                . "Type='string' Action='write'/>\n";
-                print ' ' x $::level
-                . "  <RegistryValue Root='HKCR' "
-                . "Key='Directory\\ShellEx\\ContextMenuHandlers\\GpgEX' "
-                . "Value='{CCD955E4-5C16-4A33-AFDA-A8947A94946B}' "
-                . "Type='string' Action='write'/>\n";
-            }
-            elsif ($targetfull eq 'gpgee.dll')
-            {
-                print STDERR "ERR: run heat.exe on gpgee.dll and add info\n";
-                exit 1;
-            }
-
+            # Close the component
             print ' ' x $::level
             . "</Component>\n";
             $fileidx++;
         }
-
         $regidx = 0;
         foreach my $reg (@{$pkg->{registry}})
         {
