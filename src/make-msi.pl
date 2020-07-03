@@ -162,10 +162,7 @@ sub lang_to_lcid
     {
         return 1049;
     }
-    else
-    {
-        fail "language $lang not supported";
-    }
+    return 0;
 }
 
 
@@ -1420,6 +1417,45 @@ sub dump_meat
     }
 }
 
+sub store_l10n
+{
+    my ($parser) = @_;
+
+    return if ($::l10n_file eq '');
+    open (FILE, ">$::l10n_file") or die;
+
+    # Dump the localization
+    foreach my $lang (keys %{$parser->{po}})
+    {
+        my $codepage;
+        my $langid = lang_to_lcid ($::lang);
+        my $culture;
+        if ($::lang eq 'ENGLISH')
+        {
+            $codepage = '1252';
+            $culture = 'en-us';
+        } elsif ($lang eq 'de')
+        {
+            $codepage = '1252';
+            $culture = 'de-de';
+            $langid = '1031';
+        } else {
+            print STDERR "Ignored Language $lang\n";
+            next;
+        }
+
+        print FILE "<WixLocalization Culture=\"$culture\" Codepage=\"$codepage\"";
+        print FILE "     xmlns=\"http://schemas.microsoft.com/wix/2006/localization\">\n";
+        print FILE "  <String Id=\"Language\">$langid</String>\n";
+
+        my $key;
+        foreach $key (keys %{$parser->{po}->{$lang}})
+        {
+            print FILE "     <String Id=\"$key\">$parser->{po}->{$lang}->{$key}</String>\n";
+        }
+        print FILE "</WixLocalization>\n";
+    }
+}
 
 sub dump_all2
 {
@@ -1510,7 +1546,11 @@ while ($#ARGV >= 0 and $ARGV[0] =~ m/^-/)
     {
         $::lang = $1;
         # Test if it is supported.
-        lang_to_lcid ($::lang);
+        if (!lang_to_lcid ($::lang))
+        {
+            print STDERR "language: $::lang is not supported.";
+            exit 1;
+        }
     }
     elsif ($opt eq '--usage')
     {
@@ -1562,6 +1602,7 @@ $parser->{pkgs}->{gnupg}->{deps}->{gpg4win} = 1;
 
 # Dump the gathered information.
 # ==============================
+$::l10n_file = "gpg4win-all.wxl";
 
 my $BUILD_FILEVERSION = nsis_fetch ($parser, '_BUILD_FILEVERSION');
 
@@ -1579,14 +1620,14 @@ print <<EOF;
 <?xml version='1.0'?>
 <Wix xmlns='http://schemas.microsoft.com/wix/2006/wi'>
   <!-- The general product setup -->
-  <Product Name='Gpg4win Enterprise'
+  <Product Name='GnuPG Desktop'
            Id='$product_id'
            UpgradeCode='$upgrade_code'
            Language='$lcid'
            Codepage='1252'
            Version='$BUILD_FILEVERSION'
            Manufacturer='GnuPG.com'>
-    <Package Description='Gpg4win Enterprise Installer'
+    <Package Description='GnuPG Desktop'
              Comments='http://www.gnupg.com/'
              Compressed='yes'
              InstallerVersion='200'
@@ -1742,4 +1783,5 @@ EOF
 # different machine for invocation of WiX.
 
 store_guids ();
+store_l10n ($parser);
 store_files ($parser);

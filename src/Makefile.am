@@ -676,16 +676,26 @@ playground/install/gpg4win-$(VERSION).wixlib: \
 		-dVersion=$$MSI_VERSION \
 		-out k:\\gpg4win-$(VERSION).wixobj \
 		-pedantic -wx i:\\src\\gpg4win-$(VERSION).wxs; \
+		$(WINE) $$WIXPREFIX2/candle.exe \
+		-dInstDir=k: \
+		-dInstDirEx=j: \
+		-dSrcDir=i:\\src \
+		-dVersion=$$MSI_VERSION \
+		-out k:\\gpg4win-ui.wixobj \
+		-pedantic -wx i:\\src\\WixUI_Gpg4win.wxs; \
 		\
 		$(WINE) $$WIXPREFIX2/lit.exe \
 		-out k:\\gpg4win-$(VERSION).wixlib \
 		-bf \
 		-wx \
 		-pedantic \
-		k:\\gpg4win-$(VERSION).wixobj; \
+		k:\\gpg4win-$(VERSION).wixobj k:\\gpg4win-ui.wixobj; \
 		\
-	); \
-		(rm $$WINEINST; rm $$WINESRC; rm $$WINEINSTEX) \
+	) || ERR=1; \
+		(rm $$WINEINST; rm $$WINESRC; rm $$WINEINSTEX); \
+	if [ -n "$$ERR" ]; then \
+		exit 1; \
+	fi \
 	)
 
 gpg4win-$(VERSION).wxs: gpg4win.nsi $(common_nsi) stamps/stamp-final \
@@ -698,7 +708,9 @@ gpg4win-$(VERSION).wxs: gpg4win.nsi $(common_nsi) stamps/stamp-final \
 		-DSRCDIR=$(srcdir) $(srcdir)/gpg4win.nsi > $@
 
 .PHONY: msi
-msi: installers/Gpg4win-Enterprise-$(VERSION).msi
+msi: installers/GnuPG-Desktop-$(VERSION).msi \
+	 installers/GnuPG-Desktop-$(VERSION)-de.msi
+
 wixscript: gpg4win-$(VERSION).wxs
 
 stamps/stamp-dist-self: versioninfo.txt
@@ -751,4 +763,4 @@ all-local: $(all_full) $(all_src)
 
 clean-local:
 	rm -f installers/gpg4win-$(VERSION).exe \
-		  installers/Gpg4win-Enterprise-$(VERSION).msi
+		  installers/GnuPG-Desktop-$(VERSION).msi
