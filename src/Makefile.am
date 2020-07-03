@@ -387,7 +387,7 @@ endef
 gpg4win_pkg_kleopatra_configure = \
     -DFORCE_DISABLE_KCMUTILS=ON \
     -DDISABLE_KWATCHGNUPG=ON \
-    -DKLEOPATRA_VERSION_SUFFIX=-Gpg4win-$(VERSION)
+    -DRELEASE_SERVICE_VERSION=-Gpg4win-$(VERSION)
 
 gpg4win_pkg_kxmlgui_configure = \
     -DFORCE_DISABLE_KGLOBALACCEL=ON \
@@ -603,36 +603,66 @@ installers/gpg4win-$(VERSION).exe: gpg4win.nsi $(common_nsi) stamps/stamp-final 
            -DSRCDIR=$(srcdir) $(EXTRA_MAKENSIS_FLAGS) $(srcdir)/gpg4win.nsi && \
 		   mv gpg4win-$(VERSION).exe installers/gpg4win-$(VERSION).exe
 
-installers/Gpg4win-Enterprise-$(VERSION).msi: playground/install/gpg4win-$(VERSION).wixlib
-	ssh $(WINHOST) "mkdir AppData\\Local\\Temp\\gpg4win-$(VERSION)"
+installers/GnuPG-Desktop-$(VERSION)-de.msi: installers/GnuPG-Desktop-$(VERSION).msi
+	scp $(top_srcdir)/po/gpg4win-de.wxl $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)
+	ssh $(WINHOST) "cd AppData/Local/Temp/gpg4win-$(VERSION) && $(WINLIGHT) \
+	-spdb \
+	-ext WixUIExtension \
+	-out GnuPG-Desktop-$(VERSION)-de.msi \
+	-dcl:high \
+	-cultures:de-de -loc gpg4win-de.wxl \
+	-v -pedantic \
+	 \
+	 gpg4win-$(VERSION).wixlib \
+	 gnupg-w32-$(gpg4win_pkg_gnupg_w32_version).wixlib"; \
+	 scp $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)/GnuPG-Desktop-$(VERSION)-de.msi \
+	 installers;
+
+
+installers/GnuPG-Desktop-$(VERSION).msi: playground/install/gpg4win-$(VERSION).wixlib \
+                                         shield.ico Makefile.am \
+                                         $(top_srcdir)/doc/logo/gpg4win-msi*.bmp \
+                                         gpg4win-all.wxl
+	ssh $(WINHOST) "mkdir AppData\\Local\\Temp\\gpg4win-$(VERSION)" || true
 	scp $(idir)/gpg4win-$(VERSION).wixlib $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)
 	scp $(top_srcdir)/packages/gnupg-w32-$(gpg4win_pkg_gnupg_w32_version).wixlib \
 		$(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION);
-	scp $(top_srcdir)/src/gpl.rtf $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)
-	ssh $(WINHOST) $(WINLIGHT) \
+	scp $(top_srcdir)/src/shield.ico $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)
+	scp $(top_srcdir)/doc/logo/gpg4win-msi-header_install-493x58.bmp \
+		$(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)/header.bmp
+	scp $(top_srcdir)/doc/logo/gpg4win-msi-wizard_install-493x312.bmp \
+		$(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)/dialog.bmp
+	scp $(top_srcdir)/doc/logo/gpg4win-msi-wizard_install-493x312.bmp \
+		$(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)/dialog.bmp
+	scp $(top_srcdir)/po/gpg4win-en.wxl $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)
+	scp WixUI_Gpg4win.wxs $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)
+	ssh $(WINHOST) "cd AppData/Local/Temp/gpg4win-$(VERSION) && $(WINLIGHT) \
+	-spdb \
 	-ext WixUIExtension \
-	-out AppData/Local/Temp/gpg4win-$(VERSION)/Gpg4win-Enterprise-$(VERSION).msi \
+	-out GnuPG-Desktop-$(VERSION).msi \
 	-dcl:high \
+	-cultures:en-us -loc gpg4win-en.wxl \
 	-v -pedantic \
 	 \
-	 AppData/Local/Temp/gpg4win-$(VERSION)/gpg4win-$(VERSION).wixlib \
-	 AppData/Local/Temp/gpg4win-$(VERSION)/gnupg-w32-$(gpg4win_pkg_gnupg_w32_version).wixlib; \
-	 scp $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)/Gpg4win-Enterprise-$(VERSION).msi \
+	 gpg4win-$(VERSION).wixlib \
+	 gnupg-w32-$(gpg4win_pkg_gnupg_w32_version).wixlib"; \
+	 scp $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)/GnuPG-Desktop-$(VERSION).msi \
 	 installers;
 
 playground/install/gpg4win-$(VERSION).wixlib: \
       gpg4win-$(VERSION).wxs stamps/stamp-final \
       $(foosum_exe) \
       $(README_files) $(HOWTO_files) \
-      license.blurb versioninfo.txt
+      license.blurb versioninfo.txt \
+      WixUI_Gpg4win.wxs
 	if [ -z "$$(which $(WINE))" ]; then \
 		echo "ERROR: For the msi-package wine needs to be installed."; \
 	exit 1; \
 	fi;
 	( \
 	if [ -z "$(WIXPREFIX)" ]; then \
-		if [ -d `readlink -f ~/wix` ]; then \
-			WIXPREFIX2=`readlink -f ~/wix`; \
+		if [ -d `readlink -f ~/w32root/wixtools` ]; then \
+			WIXPREFIX2=`readlink -f ~/w32root/wixtools`; \
 			echo "Using $$WIXPREFIX2 as WIXPREFIX"; \
 		else \
 			echo "ERROR: You must set WIXPREFIX to an installation of wixtools."; \
