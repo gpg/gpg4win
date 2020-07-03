@@ -1638,10 +1638,6 @@ print <<EOF;
         <![CDATA[Installed OR (VersionNT >= 601)]]>
     </Condition>
 
-    <InstallExecuteSequence>
-      <RemoveExistingProducts After='InstallFinalize' />
-    </InstallExecuteSequence>
-
     <Upgrade Id='$upgrade_code'>
       <UpgradeVersion Property='UPGRADEPROP'
                       IncludeMaximum='no'
@@ -1659,6 +1655,63 @@ print <<EOF;
       <IniFileSearch Id='gpg4win_instdir_ini' Type='raw'
        Name='gpg4win.ini' Section='gpg4win' Key='instdir'/>
     </Property>
+
+    <Icon Id="shield.ico" SourceFile="shield.ico"/>
+    <Property Id="ARPPRODUCTICON" Value="shield.ico"/>
+
+    <WixVariable Id="WixUIBannerBmp" Value="header.bmp" />
+    <WixVariable Id="WixUIDialogBmp" Value="dialog.bmp" />
+
+    <Property Id="ARPHELPLINK" Value="https://gnupg.com" />
+    <Property Id="ARPNOREPAIR" Value="yes" Secure="yes" />      <!-- Remove repair -->
+    <Property Id="ARPNOMODIFY" Value="yes" Secure="yes" />      <!-- Remove modify -->
+
+    <MajorUpgrade DowngradeErrorMessage="!(loc.T_FoundExistingVersion)" AllowSameVersionUpgrades="yes" />
+
+    <!-- This is the main installer sequence run when the product is actually installed -->
+    <InstallExecuteSequence>
+
+       <!-- Determine the install location after the install path has been validated by the installer -->
+       <Custom Action="SetARPINSTALLLOCATION" After="InstallValidate"></Custom>
+
+    </InstallExecuteSequence>
+
+    <!-- Set up ARPINSTALLLOCATION property (http://blogs.technet.com/b/alexshev/archive/2008/02/09/from-msi-to-wix-part-2.aspx) -->
+    <CustomAction Id="SetARPINSTALLLOCATION" Property="ARPINSTALLLOCATION" Value="[INSTDIR]" />
+
+    <!-- Save the command line value INSTALLDIR and restore it later in the sequence or it will be overwritten by the value saved to the registry during an upgrade -->
+    <!-- http://robmensching.com/blog/posts/2010/5/2/the-wix-toolsets-remember-property-pattern/ -->
+    <CustomAction Id='SaveCmdLineValueINSTALLDIR' Property='CMDLINE_INSTALLDIR' Value='[INSTDIR]' Execute='firstSequence' />
+    <CustomAction Id='SetFromCmdLineValueINSTALLDIR' Property='INSTALLDIR' Value='[CMDLINE_INSTALLDIR]' Execute='firstSequence' />
+    <InstallUISequence>
+       <Custom Action='SaveCmdLineValueINSTALLDIR' Before='AppSearch' />
+       <Custom Action='SetFromCmdLineValueINSTALLDIR' After='AppSearch'>
+          CMDLINE_INSTALLDIR
+       </Custom>
+    </InstallUISequence>
+    <InstallExecuteSequence>
+       <Custom Action='SaveCmdLineValueINSTALLDIR' Before='AppSearch' />
+       <Custom Action='SetFromCmdLineValueINSTALLDIR' After='AppSearch'>
+          CMDLINE_INSTALLDIR
+       </Custom>
+    </InstallExecuteSequence>
+
+    <Property Id="INSTALLDIR">
+      <RegistrySearch Id="DetermineInstallLocation" Type="raw" Root="HKLM" Key="Software\Gpg4win" Name="Install Directory" />
+    </Property>
+
+    <!-- Launch Kleopatra after setup exits
+    <CustomAction Id            = "StartAppOnExit"
+                  FileKey       = "kleopatra.exe"
+                  ExeCommand    = ""
+                  Execute       = "immediate"
+                  Impersonate   = "yes"
+                  Return        = "asyncNoWait" />
+    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT"
+      Value="Launch Kleopatra" />
+    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOX" Value="1" />
+ -->
+
 
     <Feature Id="Feature_GnuPG"
          Title="GnuPG"
@@ -1742,14 +1795,12 @@ EOF
 print <<EOF;
     </Directory>
 
-    <Feature Id='Complete' Title='Gpg4win' Description='All components.'
+    <Feature Id='Complete' Title='GnuPG Desktop' Description='All components.'
              Display='expand' Level='1' ConfigurableDirectory='INSTDIR'>
 EOF
 
 $::level = 6;
 dump_all2 ($parser);
-
-#    <Icon Id="Foobar10.exe" SourceFile="FoobarAppl10.exe"/>
 
 # Removed this, because it is not localized:
 #    <UIRef Id='WixUI_ErrorProgressText' />
@@ -1757,22 +1808,10 @@ dump_all2 ($parser);
 print <<EOF;
     </Feature>
 
-    <!-- Launch Kleopatra after setup exits -->
-    <CustomAction Id            = "StartAppOnExit"
-                  FileKey       = "kleopatra.exe"
-                  ExeCommand    = ""
-                  Execute       = "immediate"
-                  Impersonate   = "yes"
-                  Return        = "asyncNoWait" />
-    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT"
-      Value="Launch Kleopatra" />
-    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOX" Value="1" />
-
-    <WixVariable Id='WixUILicenseRtf' Value='gpl.rtf'/>
-
     <!-- Set up the UI -->
-
-    <UIRef Id='WixUI_Advanced' />
+    <UI>
+      <UIRef Id="WixUI_Gpg4win"/>
+    </UI>
 
   </Product>
 </Wix>
