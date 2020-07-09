@@ -104,26 +104,27 @@ For gpg4win-VERSION.tar.bz2:
   >https://files.gpg4win.org/gpg4win-VERSION.tar.bz2.sig</a>
   </p>
 
-<p>
-The signatures have been created with the following OpenPGP certificate:<br>
-<a href="https://ssl.intevation.de/Intevation-Distribution-Key.asc">Intevation File Distribution Key
-<distribution-key@intevation.de><br>(Fingerprint: 61AC 3F5E E4BE 593C 13D6  8B1E 7CBD 620B EC70 B1B8)</a>
-<br>
-<br>
-Since 2017 new releases are additionally signed with a new certificate that
-matches more modern key standards:
+The following public OpenPGP key (aka certificate) was used to
+sign. Download and import it from here or get it from public keyservers.
+
+In use since 2017:
 <br>
 <a href="https://ssl.intevation.de/Intevation-Distribution-Key-2016.asc">Intevation File Distribution Key
 <distribution-key@intevation.de><br>(Fingerprint: 13E3 CE81 AFEA 6F68 3E46  6E0D 42D8 7608 2688 DA1A)</a>
 </p>
 
 <p>
-The certificate can also be retrieved from OpenPGP certificate servers.
-Loading a certificate from a certificate server can be done e.g. via
-Kleopatra or GPA.
-Checking the signature of a file is best done with GpgEX via
-the Explorer.
+Previous public key (used up to 2016):
+<br>
+<a href="https://ssl.intevation.de/Intevation-Distribution-Key.asc">Intevation File Distribution Key
+<distribution-key@intevation.de><br>(Fingerprint: 61AC 3F5E E4BE 593C 13D6  8B1E 7CBD 620B EC70 B1B8)</a>
+<br>
+
+<p>
+Checking the signature is best done via the File Explorer:
+Right click on the file and use GpgEX options -> verify.
 </p>
+
 
 <h2>File lengths</h2>
 
