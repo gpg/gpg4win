@@ -237,8 +237,8 @@ server http://files.gpg4win.org/src
 
 # by: ah
 # verified: Sig 5B80 C575 4298 F0CB  55D8 ED6A BCEF 7E29 4B09 2E28
-file gpgol/gpgol-2.4.4.tar.bz2
-chk  5c8111deb89d5f26b9fd33af77f9314e5c93a0377491c5607fc07457e2f3e6a3
+file gpgol/gpgol-2.4.6.tar.bz2
+chk  cbb8034b2351edcdd5935abc79e65a22905fb551145bc27ee5d5a2e0409f869c
 
 # for beta
 #server http://files.intevation.de/projects/gpg4all
@@ -286,12 +286,12 @@ chk  c2a9b3aec1a38d34b66106116a39f64b01d84f475fef75c40ea0bda0ea67ed07
 # D869 2123 C406 5DEA 5E0F  3AB5 249B 39D2 4F25 E3B6
 server ftp://ftp.gnupg.org/gcrypt
 
-# last changed 2019-03-26
+# last changed 2020-07-22
 # by ah
 # verified: distsigkey.gpg
 server ftp://ftp.gnupg.org/gcrypt
-file libgpg-error/libgpg-error-1.36.tar.bz2
-chk babd98437208c163175c29453f8681094bcaf92968a15cafb1a276076b33c97c
+file libgpg-error/libgpg-error-1.38.tar.bz2
+chk d8988275aa69d7149f931c10442e9e34c0242674249e171592b430ff7b3afd02
 
 # last-changed: 2019-03-26
 # by: ah
@@ -299,16 +299,16 @@ chk babd98437208c163175c29453f8681094bcaf92968a15cafb1a276076b33c97c
 file libassuan/libassuan-2.5.3.tar.bz2
 chk  91bcb0403866b4e7c4bc1cc52ed4c364a9b5414b3994f718c70303f7f765e702
 
-# last changed: 2019-12-13
+# last changed: 2020-07-09
 # by: ah
 # verified: distsigkey.gpg
-name gnupg-w32-2.2.19-20191207-bin.exe
-file binary/gnupg-w32-2.2.19_20191207.exe
-chk  0128df5f58c4836b36e5f44df6c055b5043c346c91eccffc7155b9cf1f833c00
+name gnupg-w32-2.2.21-20200709-bin.exe
+file binary/gnupg-w32-2.2.21_20200709.exe
+chk  0bafb8e053ba704db85c638c902bed2eb6c4a690d42016f0ad3b2e7852481fd2
 
-name gnupg-w32-2.2.19-20191207-src.tar.xz
-file binary/gnupg-w32-2.2.19_20191207.tar.xz
-chk  bbd1de6333333df09eb3152884f747db7df1eff75e5ecae65b2fba4f1ccaf0c0
+name gnupg-w32-2.2.21-20200709-src.tar.xz
+file binary/gnupg-w32-2.2.21_20200709.tar.xz
+chk  8226f9bbb8e3557d10d6fc7431aac7f9b1bb99a58dc8cad46ae26e922c143569
 
 server ftp://ftp.gnupg.org/gcrypt
 
@@ -317,16 +317,19 @@ server ftp://ftp.gnupg.org/gcrypt
 #file pinentry/pinentry-1.1.0.tar.bz2
 #chk  68076686fa724a290ea49cdf0d1c0c1500907d1b759a3bcbfbec0293e8f56570
 
-# last changed: 2019-03-26
+# last changed: 2020-07-22
 # by: ah
 # verified: distsigkey.gpg
-#file gpgme/gpgme-1.13.0.tar.bz2
-#chk  d4b23e47a9e784a63e029338cce0464a82ce0ae4af852886afda410f9e39c630
+file gpgme/gpgme-1.14.0.tar.bz2
+chk  cef1f710a6b0d28f5b44242713ad373702d1466dcbe512eb4e754d7f35cd4307
 
 # last changed: 2018-10-17
 # by: ah
 file gpa/gpa-0.10.0.tar.bz2
 chk  95dbabe75fa5c8dc47e3acf2df7a51cee096051e5a842b4c9b6d61e40a6177b1
+
+file scute/scute-1.6.0.tar.bz2
+chk 511be523407590a586b7d61b5985af965dd91901b75d9650b55e9ae1d86d0ab0
 
 #
 #  GnuPG utilities
@@ -545,44 +548,45 @@ chk 29f11eafeb13c0045069a250bdcd57fda4bdd3423e7e1b7e0ca0517a9afefd24
 server http://files.intevation.de/projects/gpg4all
 
 #by ah
-file scute/scute-1.6.0-beta187.tar.bz2
-chk 8d2a56dff6e6c12d628dd32075497326e8345c0096dec1280f7ab2c737410837
+#file scute/scute-1.6.0-beta187.tar.bz2
+#chk 8d2a56dff6e6c12d628dd32075497326e8345c0096dec1280f7ab2c737410837
 
 # by: ah
-file pinentry/pinentry-1.1.1-beta5.tar.bz2
-chk 7bda3fef7d7f0f77dd4dfe11e3364c64f1e9646945afa995da8a5084ce59e101
+file pinentry/pinentry-1.1.1-beta36.tar.bz2
+chk 69d659deac4a8348a0526db0373219596f4b05c536b4b4799fc917b41ea51745
 
 # by: ah
-file gpgme/gpgme-1.14.0-beta36.tar.bz2
-chk b70a8aa8573d81bd410aeb28e24570361f6d3b2eb2a74c46eeda4bb6a0dd0c36
+# file gpgme/gpgme-1.14.0-beta36.tar.bz2
+# chk b70a8aa8573d81bd410aeb28e24570361f6d3b2eb2a74c46eeda4bb6a0dd0c36
 
 # Libkleo
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah.
-file libkleo/libkleo-201912161043.tar.gz
-chk 4865e23106602ea6bd849e980f4f41b65193686392c66fba438c9af3ce42cb99
+file libkleo/libkleo-202007221150.tar.gz
+chk 29d5a4831a8a857823f17f8a192f077a548cae25601ac9ecac78b0cf2eab07b5
 
 # KDE-L10n
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah with script kde-l10n.sh
-file kde-l10n/kde-l10n-201912161047-bin.tar.xz
-chk  341af8970c235c23bde03e49aa027a60d185ecc421faa0c821d33bd84340519b
+file kde-l10n/kde-l10n-202007221205-bin.tar.xz
+chk  aeac6ae09342decb621c32d010d62146c0864237095a671026434bc153f93a96
 
-file kde-l10n/kde-l10n-201912161047-src.tar.xz
-chk  faaae1f432e6e63bd4684bc811fc3cb04dfbc646e354202da48ce653007d0876
+file kde-l10n/kde-l10n-202007221205-src.tar.xz
+chk  d261f48d917dd684c62fc01bc01aa0631a9078d8a32be5633513d75dfb41f24f
 
 # Gpg4win-tools package
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah.
-file gpg4win-tools/gpg4win-tools-201912131027.tar.gz
-chk 666d32627e10cfcbe4f3561a00f66bd827582b0979e7451b4aa69db67f71f95e
+file gpg4win-tools/gpg4win-tools-202007221152.tar.gz
+chk ec343a8faadb2a092ea384e2d6f214d5e27f8c32f8819c1a57765512bd0b3532
+
 
 # Kleopatra
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah.
-file kleopatra/kleopatra-201912171000.tar.gz
-chk f64c9ffe4db8e41c592985f32c8f762bcfa6d8714dceb9a6477b426c6a9cbe5f
+file kleopatra/kleopatra-202007221148.tar.gz
+chk 498a1b2fa90a71d47b4b6adbf6e8810fae82fecaea72985563dc706c7bc7c39c
