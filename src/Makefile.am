@@ -705,21 +705,21 @@ playground/install/gpg4win-$(VERSION).wixlib: \
 		-dSrcDir=i:\\src \
 		-dVersion=$$MSI_VERSION \
 		-out k:\\gpg4win-$(VERSION).wixobj \
-		-pedantic -wx i:\\src\\gpg4win-$(VERSION).wxs; \
+		-pedantic -wx i:\\src\\gpg4win-$(VERSION).wxs || exit 1;\
 		$(WINE) $$WIXPREFIX2/candle.exe \
 		-dInstDir=k: \
 		-dInstDirEx=j: \
 		-dSrcDir=i:\\src \
 		-dVersion=$$MSI_VERSION \
 		-out k:\\gpg4win-ui.wixobj \
-		-pedantic -wx i:\\src\\WixUI_Gpg4win.wxs; \
+		-pedantic -wx i:\\src\\WixUI_Gpg4win.wxs || exit 1;\
 		\
 		$(WINE) $$WIXPREFIX2/lit.exe \
 		-out k:\\gpg4win-$(VERSION).wixlib \
 		-bf \
 		-wx \
 		-pedantic \
-		k:\\gpg4win-$(VERSION).wixobj k:\\gpg4win-ui.wixobj; \
+		k:\\gpg4win-$(VERSION).wixobj k:\\gpg4win-ui.wixobj || exit 1; \
 		\
 	) || ERR=1; \
 		(rm $$WINEINST; rm $$WINESRC; rm $$WINEINSTEX); \
