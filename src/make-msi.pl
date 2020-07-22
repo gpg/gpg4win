@@ -1206,9 +1206,22 @@ sub dump_all
                 $targetfull = $file->{target};
             }
 
-            print ' ' x $::level
-            . "<Component Id='c_$pkg->{name}_$fileidx' Guid='"
-            . get_guid ($targetfull) . "'>\n";
+
+            # 64 bit components
+            if ($targetfull eq 'bin_64\\gpgol.dll' or
+                $targetfull eq 'bin_64\\gpgex.dll')
+            {
+                print ' ' x $::level
+                . "<Component Id='c_$pkg->{name}_$fileidx' Win64='yes' Guid='"
+                . get_guid ($targetfull) . "'>\n";
+            }
+            else # 32 bit components
+            {
+                print ' ' x $::level
+                . "<Component Id='c_$pkg->{name}_$fileidx' Guid='"
+                . get_guid ($targetfull) . "'>\n";
+            }
+
             my $sourcefull;
             $sourcefull = $file->{source};
             $sourcefull =~ s/playground\/install-ex/\$(var.InstDirEx)/;
@@ -1290,7 +1303,8 @@ sub dump_all
 
 
             # EXCEPTIONS:
-            if ($targetfull eq 'bin\\gpgol.dll')
+            if ($targetfull eq 'bin\\gpgol.dll' or
+                $targetfull eq 'bin_64\\gpgol.dll')
             {
                 # KeyPath=no as the file is the key path and the registry values
                 # are only meta information for the files.
@@ -1307,35 +1321,17 @@ sub dump_all
                 <RegistryValue Root="HKMU" KeyPath='no' Key="Software\\Microsoft\\Office\\Outlook\\Addins\\GNU.GpgOL" Name="FriendlyName" Value="GpgOL - The GnuPG Outlook Plugin" Type="string" Action="write" />
                 <RegistryValue Root="HKMU" KeyPath='no' Key="Software\\Microsoft\\Office\\Outlook\\Addins\\GNU.GpgOL" Name="Description" Value="Cryptography for Outlook" Type="string" Action="write" />
 EOF
-            } elsif ($targetfull eq 'bin_64\\gpgol.dll') {
+            } elsif ($targetfull eq 'bin\\gpgex.dll' or $targetfull eq 'bin_64\\gpgex.dll') {
+                print ' ' x $::level
+                . "  <ProgId Id='*'/>\n";
+                print ' ' x $::level
+                . "  <ProgId Id='Directory'/>\n";
               print <<EOF;
-                <RegistryValue Root="HKMU" KeyPath='no' Key="Software\\Wow6432Node\\Classes\\CLSID\\{42d30988-1a3a-11da-c687-000d6080e735}\\InprocServer32" Value="[#f_$pkg->{name}_$fileidx]" Type="string" Action="write" />
-                <RegistryValue Root="HKMU" KeyPath='no' Key="Software\\Wow6432Node\\Classes\\CLSID\\{42d30988-1a3a-11da-c687-000d6080e735}\\InprocServer32" Name="ThreadingModel" Value="Both" Type="string" Action="write" />
-                <RegistryValue Root="HKMU" KeyPath='no' Key="Software\\Wow6432Node\\Classes\\CLSID\\{42d30988-1a3a-11da-c687-000d6080e735}\\ProgID" Value="GNU.GpgOL" Type="string" Action="write" />
-                <RegistryValue Root="HKMU" KeyPath='no' Key="Software\\Wow6432Node\\Classes\\CLSID\\{42d30988-1a3a-11da-c687-000d6080e735}" Value="GpgOL - The GnuPG Outlook Plugin" Type="string" Action="write" />
-                <RegistryValue Root="HKMU" KeyPath='no' Key="Software\\Wow6432Node\\Classes\\GNU.GpgOL\\CLSID" Value="{42d30988-1a3a-11da-c687-000d6080e735}" Type="string" Action="write" />
-                <RegistryValue Root="HKMU" KeyPath='no' Key="Software\\Wow6432Node\\Classes\\GNU.GpgOL" Value="GpgOL - The GnuPG Outlook Plugin" Type="string" Action="write" />
-                <RegistryValue Root="HKMU" KeyPath='no' Key="Software\\Wow6432Node\\GNU\\GpgOL" Value="" Type="string" Action="write" />
-                <RegistryValue Root="HKMU" KeyPath='no' Key="Software\\Wow6432Node\\Microsoft\\Office\\Outlook\\Addins\\GNU.GpgOL" Name="LoadBehavior" Value="3" Type="integer" Action="write" />
-                <RegistryValue Root="HKMU" KeyPath='no' Key="Software\\Wow6432Node\\Microsoft\\Office\\Outlook\\Addins\\GNU.GpgOL" Name="CommandLineSafe" Value="0" Type="integer" Action="write" />
-                <RegistryValue Root="HKMU" KeyPath='no' Key="Software\\Wow6432Node\\Microsoft\\Office\\Outlook\\Addins\\GNU.GpgOL" Name="FriendlyName" Value="GpgOL - The GnuPG Outlook Plugin" Type="string" Action="write" />
-                <RegistryValue Root="HKMU" KeyPath='no' Key="Software\\Wow6432Node\\Microsoft\\Office\\Outlook\\Addins\\GNU.GpgOL" Name="Description" Value="Cryptography for Outlook" Type="string" Action="write" />
-EOF
-            } elsif ($targetfull eq 'bin\\gpgex.dll') {
-              print <<EOF;
-                <RegistryValue Root="HKMU" KeyPath='no' Key="Software\\Classes\\CLSID\\{CCD955E4-5C16-4A33-AFDA-A8947A94946B} Value="GpgEX" Type="string" Action="write" />
+                <RegistryValue Root="HKMU" KeyPath='no' Key="Software\\Classes\\CLSID\\{CCD955E4-5C16-4A33-AFDA-A8947A94946B}" Value="GpgEX" Type="string" Action="write" />
                 <RegistryValue Root="HKMU" KeyPath='no' Key="Software\\Classes\\CLSID\\{CCD955E4-5C16-4A33-AFDA-A8947A94946B}\\InprocServer32" Name="ThreadingModel" Value="Apartment" Type="string" Action="write" />
                 <RegistryValue Root="HKMU" KeyPath='no' Key="Software\\Classes\\CLSID\\{CCD955E4-5C16-4A33-AFDA-A8947A94946B}\\InprocServer32" Value="[#f_$pkg->{name}_$fileidx]" Type="string" Action="write" />
                 <RegistryValue Root="HKMU" KeyPath='no' Key="Software\\Classes\\*\\ShellEx\\ContextMenuHandlers\\GpgEx" Value="{CCD955E4-5C16-4A33-AFDA-A8947A94946B}" Type="string" Action="write" />
                 <RegistryValue Root="HKMU" KeyPath='no' Key="Software\\Classes\\Directory\\ShellEx\\ContextMenuHandlers\\GpgEx" Value="{CCD955E4-5C16-4A33-AFDA-A8947A94946B}" Type="string" Action="write" />
-EOF
-            } elsif ($targetfull eq 'bin_64\\gpgex.dll') {
-              print <<EOF;
-                <RegistryValue Root="HKMU" KeyPath='no' Key="Software\\Wow6432Node\\Classes\\CLSID\\{CCD955E4-5C16-4A33-AFDA-A8947A94946B} Value="GpgEX" Type="string" Action="write" />
-                <RegistryValue Root="HKMU" KeyPath='no' Key="Software\\Wow6432Node\\Classes\\CLSID\\{CCD955E4-5C16-4A33-AFDA-A8947A94946B}\\InprocServer32" Name="ThreadingModel" Value="Apartment" Type="string" Action="write" />
-                <RegistryValue Root="HKMU" KeyPath='no' Key="Software\\Wow6432Node\\Classes\\CLSID\\{CCD955E4-5C16-4A33-AFDA-A8947A94946B}\\InprocServer32" Value="[#f_$pkg->{name}_$fileidx]" Type="string" Action="write" />
-                <RegistryValue Root="HKMU" KeyPath='no' Key="Software\\Wow6432Node\\Classes\\*\\ShellEx\\ContextMenuHandlers\\GpgEx" Value="{CCD955E4-5C16-4A33-AFDA-A8947A94946B}" Type="string" Action="write" />
-                <RegistryValue Root="HKMU" KeyPath='no' Key="Software\\Wow6432Node\\Classes\\Directory\\ShellEx\\ContextMenuHandlers\\GpgEx" Value="{CCD955E4-5C16-4A33-AFDA-A8947A94946B}" Type="string" Action="write" />
 EOF
             }
             # Close the component
