@@ -41,7 +41,9 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         patches/kxmlgui/0003-Make-KTextWidgets-optional.patch \
         patches/kxmlgui/0004-Cruedly-disable-KSendbugmail.patch \
         patches/libgpg-error-1.29/0001-doc-Fix-yat2m-build-for-cross-compilation.patch \
-        patches/qtbase/config-standardpaths.patch \
+        patches/qtbase/0001-Fix-build-without-std-thread.patch \
+        patches/qtbase/0002-Gpg4win-theme-names-and-relpaths.patch \
+        patches/qtbase/0001-Gpg4win-qstandardpaths-patch.patch
         patches/qtbase/qtbase-mingw-fixes.patch \
         patches/qtbase/relative-paths.patch \
         patches/qttools/disable-most-tools.patch \

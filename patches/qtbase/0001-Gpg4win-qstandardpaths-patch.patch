@@ -1,10 +1,22 @@
-i#! /bin/sh
+#! /bin/sh
 patch -p1 -f -l $* < $0
 exit $?
 
-diff -Nru qtbase-5.6.1.orig/src/corelib/io/qstandardpaths.cpp qtbase-5.6.1/src/corelib/io/qstandardpaths.cpp
---- qtbase-5.6.1.orig/src/corelib/io/qstandardpaths.cpp 2016-07-22 15:11:23.307466618 +0200
-+++ qtbase-5.6.1/src/corelib/io/qstandardpaths.cpp      2016-07-22 15:12:52.629403686 +0200
+From ec9c327d811b4a7c489d42ae45d0fb69443ab30f Mon Sep 17 00:00:00 2001
+From: Andre Heinecke <aheinecke@gnupg.org>
+Date: Wed, 22 Jul 2020 13:17:21 +0200
+Subject: [PATCH 1/2] Gpg4win-qstandardpaths-patch
+
+---
+ src/corelib/io/qstandardpaths.cpp     | 72 +++++++++++++++++++++++++++
+ src/corelib/io/qstandardpaths.h       |  2 +
+ src/corelib/io/qstandardpaths_win.cpp |  4 +-
+ 3 files changed, 77 insertions(+), 1 deletion(-)
+
+diff --git a/src/corelib/io/qstandardpaths.cpp b/src/corelib/io/qstandardpaths.cpp
+index 04aff3d1..deda4492 100644
+--- a/src/corelib/io/qstandardpaths.cpp
++++ b/src/corelib/io/qstandardpaths.cpp
 @@ -56,6 +56,14 @@
  #include <unistd.h>
  #endif
@@ -20,7 +32,7 @@ diff -Nru qtbase-5.6.1.orig/src/corelib/io/qstandardpaths.cpp qtbase-5.6.1/src/c
  #ifndef QT_NO_STANDARDPATHS
 
  QT_BEGIN_NAMESPACE
-@@ -672,6 +680,70 @@
+@@ -624,6 +632,70 @@ bool QStandardPaths::isTestModeEnabled()
      return qsp_testMode;
  }
 
@@ -91,10 +103,11 @@ diff -Nru qtbase-5.6.1.orig/src/corelib/io/qstandardpaths.cpp qtbase-5.6.1/src/c
 
  QT_END_NAMESPACE
 
-:diff -Nru qtbase-5.6.1.orig/src/corelib/io/qstandardpaths.h qtbase-5.6.1/src/corelib/io/qstandardpaths.h
---- qtbase-5.6.1.orig/src/corelib/io/qstandardpaths.h   2016-07-22 15:11:23.307466618 +0200
-+++ qtbase-5.6.1/src/corelib/io/qstandardpaths.h        2016-07-22 15:11:49.940044214 +0200
-@@ -92,6 +92,8 @@
+diff --git a/src/corelib/io/qstandardpaths.h b/src/corelib/io/qstandardpaths.h
+index df76d73e..7b665519 100644
+--- a/src/corelib/io/qstandardpaths.h
++++ b/src/corelib/io/qstandardpaths.h
+@@ -103,6 +103,8 @@ public:
      static bool isTestModeEnabled();
 
  private:
@@ -103,10 +116,11 @@ diff -Nru qtbase-5.6.1.orig/src/corelib/io/qstandardpaths.cpp qtbase-5.6.1/src/c
      // prevent construction
      QStandardPaths();
      ~QStandardPaths();
-diff -Nru qtbase-5.6.1.orig/src/corelib/io/qstandardpaths_win.cpp qtbase-5.6.1/src/corelib/io/qstandardpaths_win.cpp
---- qtbase-5.6.1.orig/src/corelib/io/qstandardpaths_win.cpp     2016-07-22 15:11:23.307466618 +0200
-+++ qtbase-5.6.1/src/corelib/io/qstandardpaths_win.cpp  2016-07-22 15:13:41.682467339 +0200
-@@ -203,7 +203,9 @@
+diff --git a/src/corelib/io/qstandardpaths_win.cpp b/src/corelib/io/qstandardpaths_win.cpp
+index cbe4ccd0..c25abc3d 100644
+--- a/src/corelib/io/qstandardpaths_win.cpp
++++ b/src/corelib/io/qstandardpaths_win.cpp
+@@ -196,7 +196,9 @@ static QString sHGetKnownFolderPath(const GUID &clsid)
 
  QString QStandardPaths::writableLocation(StandardLocation type)
  {
@@ -116,4 +130,6 @@ diff -Nru qtbase-5.6.1.orig/src/corelib/io/qstandardpaths_win.cpp qtbase-5.6.1/s
 +        return result;
      switch (type) {
      case DownloadLocation:
-         result = sHGetKnownFolderPath(qCLSID_FOLDERID_Downloads, type);
+         result = sHGetKnownFolderPath(FOLDERID_Downloads);
+--
+2.20.1
