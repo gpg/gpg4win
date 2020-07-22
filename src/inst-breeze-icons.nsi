@@ -164,61 +164,6 @@ Section "-breeze-icons" SEC_breeze_icons
   File ${prefix}/share/icons/breeze/actions/22/kt-remove-filters.svg
   File ${prefix}/share/icons/breeze/actions/22/resource-group-new.svg
 
-  SetOutPath "$INSTDIR\share\icons\breeze\actions\24"
-
-  File ${prefix}/share/icons/breeze/actions/24/application-exit.svg
-  File ${prefix}/share/icons/breeze/actions/24/arrow-down.svg
-  File ${prefix}/share/icons/breeze/actions/24/arrow-up.svg
-  File ${prefix}/share/icons/breeze/actions/24/configure-toolbars.svg
-  File ${prefix}/share/icons/breeze/actions/24/configure.svg
-  File ${prefix}/share/icons/breeze/actions/24/dialog-cancel.svg
-  File ${prefix}/share/icons/breeze/actions/24/dialog-close.svg
-  File ${prefix}/share/icons/breeze/actions/24/dialog-ok-apply.svg
-  File ${prefix}/share/icons/breeze/actions/24/dialog-ok.svg
-  File ${prefix}/share/icons/breeze/actions/24/document-edit-decrypt-verify.svg
-  File ${prefix}/share/icons/breeze/actions/24/document-edit-decrypt.svg
-  File ${prefix}/share/icons/breeze/actions/24/document-edit-encrypt.svg
-  File ${prefix}/share/icons/breeze/actions/24/document-edit-sign-encrypt.svg
-  File ${prefix}/share/icons/breeze/actions/24/document-edit-sign.svg
-  File ${prefix}/share/icons/breeze/actions/24/document-edit-verify.svg
-  File ${prefix}/share/icons/breeze/actions/24/document-encrypt.svg
-  File ${prefix}/share/icons/breeze/actions/24/document-sign.svg
-  File ${prefix}/share/icons/breeze/actions/24/document-open.svg
-  File ${prefix}/share/icons/breeze/actions/24/document-print.svg
-  File ${prefix}/share/icons/breeze/actions/24/document-revert.svg
-  File ${prefix}/share/icons/breeze/actions/24/draw-arrow-down.svg
-  File ${prefix}/share/icons/breeze/actions/24/draw-arrow-up.svg
-  File ${prefix}/share/icons/breeze/actions/24/edit-clear-locationbar-rtl.svg
-  File ${prefix}/share/icons/breeze/actions/24/edit-delete.svg
-  File ${prefix}/share/icons/breeze/actions/24/edit-find.svg
-  File ${prefix}/share/icons/breeze/actions/24/edit-paste.svg
-  File ${prefix}/share/icons/breeze/actions/24/edit-redo.svg
-  File ${prefix}/share/icons/breeze/actions/24/edit-rename.svg
-  File ${prefix}/share/icons/breeze/actions/24/edit-undo.svg
-  File ${prefix}/share/icons/breeze/actions/24/go-bottom.svg
-  File ${prefix}/share/icons/breeze/actions/24/go-down.svg
-  File ${prefix}/share/icons/breeze/actions/24/go-first.svg
-  File ${prefix}/share/icons/breeze/actions/24/go-last.svg
-  File ${prefix}/share/icons/breeze/actions/24/go-next.svg
-  File ${prefix}/share/icons/breeze/actions/24/go-previous.svg
-  File ${prefix}/share/icons/breeze/actions/24/go-top.svg
-  File ${prefix}/share/icons/breeze/actions/24/go-up.svg
-  File ${prefix}/share/icons/breeze/actions/24/gtk-tab-duplicate.svg
-  File ${prefix}/share/icons/breeze/actions/24/help-contextual.svg
-  File ${prefix}/share/icons/breeze/actions/24/list-add.svg
-  File ${prefix}/share/icons/breeze/actions/24/list-remove.svg
-  File ${prefix}/share/icons/breeze/actions/24/process-stop.svg
-  File ${prefix}/share/icons/breeze/actions/24/run-build-configure.svg
-  File ${prefix}/share/icons/breeze/actions/24/tab-close.svg
-  File ${prefix}/share/icons/breeze/actions/24/tab-duplicate.svg
-  File ${prefix}/share/icons/breeze/actions/24/tab-new-background.svg
-  File ${prefix}/share/icons/breeze/actions/24/tools-report-bug.svg
-  File ${prefix}/share/icons/breeze/actions/24/view-refresh.svg
-  File ${prefix}/share/icons/breeze/actions/24/window-close.svg
-  File ${prefix}/share/icons/breeze/actions/24/visibility.svg
-  File ${prefix}/share/icons/breeze/actions/24/hint.svg
-  File ${prefix}/share/icons/breeze/actions/24/resource-group-new.svg
-
   SetOutPath "$INSTDIR\share\icons\breeze\actions\32"
 
   File ${prefix}/share/icons/breeze/actions/32/application-exit.svg

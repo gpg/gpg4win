@@ -411,123 +411,123 @@ server https://download.kde.org/stable/frameworks
 # Don't forget to update gpg4win.mk.in with new version numbers
 #
 # extra-cmake-modules
-# last changed: 2019-02-18
+# last changed: 2020-07-22
 # by: ah
 # verified: PGP Signed by ./kde-release-key.gpg (created by gen-frameworks.sh)
-file 5.63/extra-cmake-modules-5.63.0.tar.xz
-chk 79926a0a2c6f5aa760a5a63209a7cad641476591b9bf4e51819f4fb752280792
+file 5.72/extra-cmake-modules-5.72.0.tar.xz
+chk 077af496e208722365f095da59e02382b66f7498352c8666e903603062657940
 
 # kconfig
-# last changed: 2019-02-18
+# last changed: 2020-07-22
 # by: ah
 # verified: PGP Signed by ./kde-release-key.gpg (created by gen-frameworks.sh)
-file 5.55/kconfig-5.55.0.tar.xz
-chk 4a566842d566e9904d1478fa428cbf8b1caf49efe142ae237f24a4c16e64fa19
+file 5.72/kconfig-5.72.0.tar.xz
+chk c6b8dea6f6b07ce6fa3427e67c691a66ce4cb3f026d9e35c2bd14207fa541a58
 
 # ki18n
-# last changed: 2019-02-18
+# last changed: 2020-07-22
 # by: ah
 # verified: PGP Signed by ./kde-release-key.gpg (created by gen-frameworks.sh)
-file 5.55/ki18n-5.55.0.tar.xz
-chk 22fdd19fe805467b15abc977143d951acaa5026a0b2de7b972c9af15f1977c4f
+file 5.72/ki18n-5.72.0.tar.xz
+chk 080e6f0e71a82f5aa72d47f52c3a8b2cddf3491897b3484b6d22c248dd669f6a
 
 # kwidgetsaddons
-# last changed: 2019-02-18
+# last changed: 2020-07-22
 # by: ah
 # verified: PGP Signed by ./kde-release-key.gpg (created by gen-frameworks.sh)
-file 5.55/kwidgetsaddons-5.55.0.tar.xz
-chk ec5b7ffd47c2b26763e363f741f0d57d280330fdc32c061896bdc32cebdeeb4e
+file 5.72/kwidgetsaddons-5.72.0.tar.xz
+chk a7d6f63951b776ca552c4051147a6bbb416f996561f639c3a41946734853e486
 
 # kcompletion
-# last changed: 2019-02-18
+# last changed: 2020-07-22
 # by: ah
 # verified: PGP Signed by ./kde-release-key.gpg (created by gen-frameworks.sh)
-file 5.55/kcompletion-5.55.0.tar.xz
-chk 224761954421b2e25c2b9651c7e730da9fb7a569674c399c867a9f895d3ad523
+file 5.72/kcompletion-5.72.0.tar.xz
+chk c73259f91c569162d4ff4aa52df9e3c8da9c43a5a2f25daa5b7d0f9c622cb220
 
 # kwindowsystem
-# last changed: 2019-02-18
+# last changed: 2020-07-22
 # by: ah
 # verified: PGP Signed by ./kde-release-key.gpg (created by gen-frameworks.sh)
-file 5.55/kwindowsystem-5.55.0.tar.xz
-chk a698ddf3caeb890314b3b768a15b4cc35dd9e10356af4cf9faa89c8640eded83
+file 5.72/kwindowsystem-5.72.0.tar.xz
+chk b4c4a682d467247a8e3397487a2a4c773fa91dd587cc1f4ddc6350891af12a3f
 
 # kcoreaddons
-# last changed: 2019-02-18
+# last changed: 2020-07-22
 # by: ah
 # verified: PGP Signed by ./kde-release-key.gpg (created by gen-frameworks.sh)
-file 5.55/kcoreaddons-5.55.0.tar.xz
-chk 3cd840b3f308b4529012d16aeee05494b5e55c938b6ad7f6580d4d055d61ebc8
+file 5.72/kcoreaddons-5.72.0.tar.xz
+chk b404433ae2310b91475598e801a8cecc048d9cfd85f664e02feb7a166f877bb9
 
 # kcodecs
-# last changed: 2019-02-18
+# last changed: 2020-07-22
 # by: ah
 # verified: PGP Signed by ./kde-release-key.gpg (created by gen-frameworks.sh)
-file 5.55/kcodecs-5.55.0.tar.xz
-chk 4bd6fd48268d83b59f1b3c8ee19a50d9bee72f3601098dd5bb8e4b24a8912111
+file 5.72/kcodecs-5.72.0.tar.xz
+chk a125d9870e462cd6e1271385c10576e5e67661e0a0d7a7dece2effa684edc3b5
 
 # kconfigwidgets
-# last changed: 2019-02-18
+# last changed: 2020-07-22
 # by: ah
 # verified: PGP Signed by ./kde-release-key.gpg (created by gen-frameworks.sh)
-file 5.55/kconfigwidgets-5.55.0.tar.xz
-chk b3acbce98798eb5fe897fae671b898697b5ffdd2e357aa8d4750305abeb9ee5a
+file 5.72/kconfigwidgets-5.72.0.tar.xz
+chk 1ccbb1d87b403e75e9ee9980eb27c2e24aab26f99b1335e415226f1cb7f6f61d
 
 # kxmlgui
-# last changed: 2019-02-18
+# last changed: 2020-07-22
 # by: ah
 # verified: PGP Signed by ./kde-release-key.gpg (created by gen-frameworks.sh)
-file 5.55/kxmlgui-5.55.0.tar.xz
-chk 963dd83e7898946933b0ea3d0b70afba910d63ce4b2074ee664c0797d53f065e
+file 5.72/kxmlgui-5.72.0.tar.xz
+chk 7ea6e2292c087a278cc33f641e731a9cb69ff12f2fbf0b30274be8ed52dff8f2
 
 # kguiaddons
-# last changed: 2019-02-18
+# last changed: 2020-07-22
 # by: ah
 # verified: PGP Signed by ./kde-release-key.gpg (created by gen-frameworks.sh)
-file 5.55/kguiaddons-5.55.0.tar.xz
-chk 039a0f98b5491668ea4e2e45ca57c68bd5fea956f46ba50778283a8137e412a4
+file 5.72/kguiaddons-5.72.0.tar.xz
+chk a269c76390ff391613cd9030c4fafb85421145cb95dd784c63a2421595bc3b37
 
 # kitemviews
-# last changed: 2019-02-18
+# last changed: 2020-07-22
 # by: ah
 # verified: PGP Signed by ./kde-release-key.gpg (created by gen-frameworks.sh)
-file 5.55/kitemviews-5.55.0.tar.xz
-chk 4d91a42f300cb63cd817feceebe148b32a22cf75b8228c853a0c2ed6cb3ff0d5
+file 5.72/kitemviews-5.72.0.tar.xz
+chk a778eba6da9e56399b81dfb978745d919b0edc7580e67311ad137d94751fa8b1
 
 # kitemmodels
-# last changed: 2019-02-18
+# last changed: 2020-07-22
 # by: ah
 # verified: PGP Signed by ./kde-release-key.gpg (created by gen-frameworks.sh)
-file 5.55/kitemmodels-5.55.0.tar.xz
-chk 862f2b2888a563ff9f61bd25e59b637ca16c8531679cec7f3ad1653cb74ac08c
+file 5.72/kitemmodels-5.72.0.tar.xz
+chk 4660283d83488f8866dd46de9a9f0729db243b915a20ca8e5b04012928e250f7
 
 # kiconthemes
-# last changed: 2019-02-18
+# last changed: 2020-07-22
 # by: ah
 # verified: PGP Signed by ./kde-release-key.gpg (created by gen-frameworks.sh)
-file 5.55/kiconthemes-5.55.0.tar.xz
-chk 3c1be304537d4c7eedd097463c977b3d0e845c575567ffc53faff7b3e874ebe5
+file 5.72/kiconthemes-5.72.0.tar.xz
+chk 55e45a77ddea27fb0f0d130e2f568540443e04e454c1f1a7b746bef5a782f989
 
 # breeze-icons
-# last changed: 2019-02-18
+# last changed: 2020-07-22
 # by: ah
 # verified: PGP Signed by ./kde-release-key.gpg (created by gen-frameworks.sh)
-file 5.55/breeze-icons-5.55.0.tar.xz
-chk 89381f2e78cd479c533095bc0a58da74c8bbe6ca2ee64a9664060a56513fab0e
+file 5.72/breeze-icons-5.72.0.tar.xz
+chk 8df70bb27aa7ec981b76ae5fe332603d815f82cb8cdc12ab792022e25b35ad24
 
 # karchive
-# last changed: 2019-02-18
+# last changed: 2020-07-22
 # by: ah
 # verified: PGP Signed by ./kde-release-key.gpg (created by gen-frameworks.sh)
-file 5.55/karchive-5.55.0.tar.xz
-chk 8475efa46cdc054d9fb6336e42c6075fb037921a9147d4e5aa564a5e58b79fd2
+file 5.72/karchive-5.72.0.tar.xz
+chk d1857451305bbc06c2391f1be2aa59836291910391f4f26f243e8f038a47ef5a
 
 # kcrash
-# last changed: 2019-02-18
+# last changed: 2020-07-22
 # by: ah
 # verified: PGP Signed by ./kde-release-key.gpg (created by gen-frameworks.sh)
-file 5.55/kcrash-5.55.0.tar.xz
-chk c90d96fbac26727e1de32898a93bb7cbc9a05ee992c11d4303941ab96a614821
+file 5.72/kcrash-5.72.0.tar.xz
+chk b754fee5f62a12dcfb75a8219f1b78b1749680a8ca36c3d43b8dedcf5a639b9d
 
 ##### End Paste #####
 
@@ -563,8 +563,8 @@ chk 69d659deac4a8348a0526db0373219596f4b05c536b4b4799fc917b41ea51745
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah.
-file libkleo/libkleo-202007221150.tar.gz
-chk 29d5a4831a8a857823f17f8a192f077a548cae25601ac9ecac78b0cf2eab07b5
+file libkleo/libkleo-202007221657.tar.gz
+chk 53efceb7b5622f739513899bf3d365ff211a498e5fb50b373025e83dd41b8661
 
 # KDE-L10n
 # last changed: see package date.
