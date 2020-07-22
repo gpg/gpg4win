@@ -43,15 +43,13 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         patches/libgpg-error-1.29/0001-doc-Fix-yat2m-build-for-cross-compilation.patch \
         patches/qtbase/0001-Fix-build-without-std-thread.patch \
         patches/qtbase/0002-Gpg4win-theme-names-and-relpaths.patch \
-        patches/qtbase/0001-Gpg4win-qstandardpaths-patch.patch
+        patches/qtbase/0001-Gpg4win-qstandardpaths-patch.patch \
         patches/qtbase/qtbase-mingw-fixes.patch \
         patches/qtbase/relative-paths.patch \
         patches/qttools/disable-most-tools.patch \
         patches/qtwinextras/support-xp.patch \
         patches/w32pth-2.0.5/workaround-broken-libtool.patch \
-        patches/breeze-icons/0001-Make-binary-icons-cross-compilable.patch \
-        patches/libkleo/revert-some-string-changes.patch \
-        patches/gpgol/0001-Fix-check-for-plain-text-attachments.patch
+        patches/breeze-icons/0001-Make-binary-icons-cross-compilable.patch
 
 copy-news:
 	cp NEWS doc/website/NEWS.last
