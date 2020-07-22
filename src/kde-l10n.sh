@@ -40,9 +40,9 @@ QFRAMEWORKS="kconfig kcompletion kcodecs kcoreaddons kitemviews kwidgetsaddons k
 # KFrameworks are frameworks that use KDE translations
 KFRAMEWORKS="kconfigwidgets ki18n kiconthemes kxmlgui"
 
-POFILES="pim/libkleopatra.po \
-    pim/kwatchgnupg.po
-    pim/kleopatra.po"
+POFILES="libkleo/libkleopatra.po \
+    kleopatra/kwatchgnupg.po
+    kleopatra/kleopatra.po"
 # See: https://websvn.kde.org/*checkout*/trunk/l10n-kf5/subdirs
 LANGS="af \
 ar \
