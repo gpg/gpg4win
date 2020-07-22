@@ -877,7 +877,7 @@ sub gpg4win_nsis_stubs
 
             my $value = $args[3];
             $value =~ s/^"(.*)"$/$1/;
-            $value =~ s/\$INSTDIR\\?/\[INSTDIR\]/g;
+            $value =~ s/\$INSTDIR\\?/\[APPLICATIONFOLDER\]/g;
 
             push (@{$parser->{pkg}->{registry}},
                 { root => $root, key => $key, name => $name,
@@ -915,7 +915,7 @@ sub gpg4win_nsis_stubs
 
             my $icon = $args[3];
             $icon =~ s/^"(.*)"$/$1/;
-            $icon =~ s/^\$INSTDIR\\/[INSTDIR]/;
+            $icon =~ s/^\$INSTDIR\\/[APPLICATIONFOLDER]/;
             $icon = nsis_eval ($parser, $file, $icon);
 
             my $icon_idx = nsis_eval ($parser, $file, $args[4]);
@@ -1658,7 +1658,10 @@ print <<EOF;
     <!-- 2 is like highest available in msi -->
     <Property Id="ALLUSERS" Value="2" />
 
-    <Property Id="INSTDIR">
+    <Property Id="ApplicationFolderName" Value="Gpg4win" />
+    <Property Id="WixAppFolder" Value="WixPerMachineFolder" />
+
+    <Property Id="APPLICATIONFOLDER">
       <RegistrySearch Id='gpg4win_instdir_registry' Type='raw'
        Root='HKLM' Key='Software\\Gpg4win' Name='Install Directory'/>
       <IniFileSearch Id='gpg4win_instdir_ini' Type='raw'
@@ -1686,11 +1689,11 @@ print <<EOF;
     </InstallExecuteSequence>
 
     <!-- Set up ARPINSTALLLOCATION property (http://blogs.technet.com/b/alexshev/archive/2008/02/09/from-msi-to-wix-part-2.aspx) -->
-    <CustomAction Id="SetARPINSTALLLOCATION" Property="ARPINSTALLLOCATION" Value="[INSTDIR]" />
+    <CustomAction Id="SetARPINSTALLLOCATION" Property="ARPINSTALLLOCATION" Value="[APPLICATIONFOLDER]" />
 
     <!-- Save the command line value INSTALLDIR and restore it later in the sequence or it will be overwritten by the value saved to the registry during an upgrade -->
     <!-- http://robmensching.com/blog/posts/2010/5/2/the-wix-toolsets-remember-property-pattern/ -->
-    <CustomAction Id='SaveCmdLineValueINSTALLDIR' Property='CMDLINE_INSTALLDIR' Value='[INSTDIR]' Execute='firstSequence' />
+    <CustomAction Id='SaveCmdLineValueINSTALLDIR' Property='CMDLINE_INSTALLDIR' Value='[APPLICATIONFOLDER]' Execute='firstSequence' />
     <CustomAction Id='SetFromCmdLineValueINSTALLDIR' Property='INSTALLDIR' Value='[CMDLINE_INSTALLDIR]' Execute='firstSequence' />
     <InstallUISequence>
        <Custom Action='SaveCmdLineValueINSTALLDIR' Before='AppSearch' />
@@ -1706,7 +1709,7 @@ print <<EOF;
     </InstallExecuteSequence>
 
     <Property Id="INSTALLDIR">
-      <RegistrySearch Id="DetermineInstallLocation" Type="raw" Root="HKLM" Key="Software\Gpg4win" Name="Install Directory" />
+      <RegistrySearch Id="DetermineInstallLocation" Type="raw" Root="HKLM" Key="Software\\Gpg4win" Name="Install Directory" />
     </Property>
 
     <!-- Launch Kleopatra after setup exits
@@ -1727,7 +1730,10 @@ print <<EOF;
          Level="1"
          Absent='disallow'>
       <ComponentGroupRef Id="CMP_GnuPG" />
-
+      <Component Id="gpg4win_reg_cmp" Guid="7F122F29-DB6A-4DE5-9DD2-0DAF1A24B61F" Directory="APPLICATIONFOLDER">
+        <RegistryValue Id="r_gpg4win_01" Root="HKMU" Key="Software\\Gpg4win" Name="Install Directory" Action="write"
+                       Type="string" Value="[APPLICATIONFOLDER]" KeyPath="yes"/>
+      </Component>
       <!-- Hardcode some components that always should be installed -->
 
       <!-- List comes from ICE21 and was transformed by see: comment above -->
@@ -1773,7 +1779,7 @@ print <<EOF;
       <Directory Id='ProgramFilesFolder' Name='PFiles'>
         <!-- DIR_GnuPG is used be the GnuPG wxlib -->
         <Directory Id='DIR_GnuPG' Name='GnuPG'/>
-        <Directory Id='INSTDIR' Name='Gpg4win'>
+        <Directory Id='APPLICATIONFOLDER' Name='Gpg4win'>
 EOF
 
 $::level = 12;
@@ -1805,7 +1811,7 @@ print <<EOF;
     </Directory>
 
     <Feature Id='Complete' Title='GnuPG Desktop' Description='All components.'
-             Display='expand' Level='1' ConfigurableDirectory='INSTDIR'>
+             Display='expand' Level='1' ConfigurableDirectory='APPLICATIONFOLDER'>
 EOF
 
 $::level = 6;
@@ -1819,7 +1825,7 @@ print <<EOF;
 
     <!-- Set up the UI -->
     <UI>
-      <UIRef Id="WixUI_Gpg4win"/>
+      <UIRef Id="WixUI_Advanced"/>
     </UI>
 
   </Product>
