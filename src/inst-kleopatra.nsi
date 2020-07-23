@@ -273,13 +273,13 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
   WriteRegStr SHCTX "Software\Classes\openpgp4fpr" "" "URL:OpenPGP master key fingerprint"
   WriteRegStr SHCTX "Software\Classes\openpgp4fpr" "URL Protocol" ""
   WriteRegStr SHCTX "Software\Classes\openpgp4fpr\DefaultIcon" "" "$INSTDIR\bin\kleopatra.exe,0"
-  WriteRegStr SHCTX "Software\Classes\openpgp4fpr\shell\open\command" "" "$\"$INSTDIR\bin\kleopatra.exe$\" --query $\"%1$\""
+  WriteRegStr SHCTX "Software\Classes\openpgp4fpr\shell\open\command" "" "$\"$INSTDIR\bin\kleopatra.exe$\" --query -- $\"%1$\""
 
   # p7s / p7m are special because they are already known
-  WriteRegExpandStr SHCTX "Software\Classes\P7MFile\shell\open\command" "" "$\"$INSTDIR\bin\kleopatra.exe$\" $\"%1$\""
+  WriteRegExpandStr SHCTX "Software\Classes\P7MFile\shell\open\command" "" "$\"$INSTDIR\bin\kleopatra.exe$\" -- $\"%1$\""
   WriteRegStr SHCTX "Software\Classes\P7MFile\DefaultIcon" "" "$INSTDIR\share\gpg4win\file-ext.ico"
 
-  WriteRegExpandStr SHCTX "Software\Classes\P7SFile\shell\open\command" "" "$\"$INSTDIR\bin\kleopatra.exe$\" $\"%1$\""
+  WriteRegExpandStr SHCTX "Software\Classes\P7SFile\shell\open\command" "" "$\"$INSTDIR\bin\kleopatra.exe$\" -- $\"%1$\""
   WriteRegStr SHCTX "Software\Classes\P7SFile\DefaultIcon" "" "$INSTDIR\share\gpg4win\file-ext.ico"
 
 !endif
