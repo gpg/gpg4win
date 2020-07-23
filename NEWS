@@ -14,7 +14,7 @@ Noteworthy changes in Version 3.1.12 (unreleased)
 (en) GpgOL: Improved integration with Web Key Services to
      automatically provide public keys. (T4839)
 
-(de) GpgOL: Die integration mit Web Key Diensten um öffentl.
+(de) GpgOL: Die Integration mit Web Key Diensten um öffentl.
      Schlüssel zu veröffentlichen wurde verbessert. (T4839)
 
 (en) GpgOL: The addressbook integration is now more visible. (T4874)
@@ -37,11 +37,11 @@ Noteworthy changes in Version 3.1.12 (unreleased)
 (en) GpgOL: Printing of encrypted mails now works correctly
      after changing the printer. (T4890)
 
-(de) GpgOL: Das drucken von verschlüsselten Mails funktioniert
-     nun auch nach dem ändern des Druckers. (T4890)
+(de) GpgOL: Das Drucken von verschlüsselten Mails funktioniert
+     nun auch nach dem Ändern des Druckers. (T4890)
 
 (en) GpgOL: Security level of keys obtained from a Web Key
-     Directory is now poperly shown as Level 2.
+     Directory is now properly shown as Level 2.
 
 (de) GpgOL: Die Sicherheitsstufe von Schlüsseln aus einem
      Web Key Directory ist nun korrekterweise Stufe 2.
@@ -49,22 +49,22 @@ Noteworthy changes in Version 3.1.12 (unreleased)
 (en) GpgOL: Permanently decrypt now works more reliably and
      should no longer lead to "No Data" errors. (T4718)
 
-(de) GpgOL: Dauerhaftes entschlüsseln funktioniert nun
-     zuverlässiger und sollte nicht mehr zu "No Data" fehlern
+(de) GpgOL: Dauerhaftes Entschlüsseln funktioniert nun
+     zuverlässiger und sollte nicht mehr zu "No Data" Fehlern
      führen. (T4718)
 
 (en) GpgOL: Long lines in plaintext mails should no longer
      be displayed as multiple lines after decryption. (T4987)
 
 (de) GpgOL: Lange Zeilen in "Nur Text" Mails werden nicht
-     mehr auf mehrere Zeilen nach dem entschlüsseln umgebrochen.
+     mehr auf mehrere Zeilen nach dem Entschlüsseln umgebrochen.
      (T4987)
 
 (en) GpgOL: Attachments with filenames that are not allowed
      on Windows can now be handled. (T4835)
 
 (de) GpgOL: Anhänge mit Sonderzeichen im Dateinamen die das
-     Windows Dateisystem verbietet können nun verarbeitet
+     Windows Dateisystem verbietet, können nun verarbeitet
      werden. (T4835)
 
 (en) GpgOL: Mails with exactly one attachment and no body
@@ -93,19 +93,19 @@ Noteworthy changes in Version 3.1.12 (unreleased)
 
 (en) GnuPG: Support for rsaPSS signatures has been added. (T4538)
 
-(de) GnuPG: Unterstützung für rsaPSS signaturen wurde hinzugefügt.
+(de) GnuPG: Unterstützung für rsaPSS Signaturen wurde hinzugefügt.
      (T4538)
 
 (en) GnuPG: The "Quality" of a new passphrase is
      no longer incorrectly displayed. (T2103)
 
-(de) GnuPG: Die "Qualität" einer neuen passphrase wird nun
+(de) GnuPG: Die "Qualität" einer neuen Passphrase wird nun
      nicht mehr falsch dargestellt. (T2103)
 
 (en) Kleopatra: Overwriting secret key exports now works
      correctly. (T4709)
 
-(de) Kleopatra: Das überschreiben von exports des privaten
+(de) Kleopatra: Das überschreiben von Exports des privaten
      Schlüssels funktioniert nun korrekt. (T4709)
 
 (en) Kleopatra: Fixed a case where file sign & encrypt dialogs
@@ -124,7 +124,7 @@ Noteworthy changes in Version 3.1.12 (unreleased)
      reduced to better support non latin names. (T4745)
 
 (de) Kleopatra: Die minimale Länge des Namens wurde
-     reduziert um besser nicht lateinische Sprachen zu
+     reduziert um besser die nicht lateinische Sprache zu
      unterstützen. (T4745)
 
 (en) Kleopatra: The filename suggestion for key exports
@@ -164,7 +164,7 @@ Noteworthy changes in Version 3.1.12 (unreleased)
      URL.
 
 (de) Gpg4win: Die Datei und URL verknüpfungen mit Kleopatra spalten nun
-     korrekt argumente und potentiell externe Daten wie Dateinamen und
+     korrekt Argumente und potentiell externe Daten wie Dateinamen und
      Such-Parameter.
      Dies verhindert ein Sicherheits-Problem mit dem Kleopatra dazu
      gebracht werden konnte eine Bibliothek von einem Pfad zu laden
