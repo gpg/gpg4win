@@ -124,7 +124,7 @@
 !define VERSION "${_VERSION}"
 !define PROD_VERSION "${_BUILD_FILEVERSION}"
 !define COMPANY "Intevation GmbH"
-!define COPYRIGHT "Copyright (C) 2019 Intevation GmbH"
+!define COPYRIGHT "Copyright (C) 2020 Intevation GmbH"
 !define DESCRIPTION "Gpg4win: The GNU Privacy Guard and Tools for Windows"
 
 !define INSTALL_DIR "Gpg4win"
