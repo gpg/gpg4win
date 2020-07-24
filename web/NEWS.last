@@ -2,6 +2,184 @@
 #
 # The version number given below are for the standard installers as
 # distributed by www.gpg4win.org.+
+Noteworthy changes in Version 3.1.12 (2020-07-24)
+------------------------------------------------
+
+(en) GpgOL: Improved handling of mails with encrypted
+     subjects. (T4796)
+
+(de) GpgOL: Verbesserte Behandlung von Mails mit verschlüsseltem
+     Betreff. (T4796)
+
+(en) GpgOL: Improved integration with Web Key Services to
+     automatically provide public keys. (T4839)
+
+(de) GpgOL: Die Integration mit Web Key Diensten um öffentl.
+     Schlüssel zu veröffentlichen wurde verbessert. (T4839)
+
+(en) GpgOL: The addressbook integration is now more visible. (T4874)
+
+(de) GpgOL: Die Addressbuch Integration ist nun stärker sichtbar.
+     (T4874)
+
+(en) GpgOL: Group accounts are now properly considered when
+     preselecting the signing key. (T4090)
+
+(de) GpgOL: Die Vorauswahl des Signaturschlüssels berücksichtigt
+     nun auch Gruppenpostfächer. (T4090)
+
+(en) GpgOL: During signature verification a preview of the
+     content is now displayed. (T4944)
+
+(de) GpgOL: Während der Signaturprüfung wird nun eine
+     Vorschau angezeigt. (T4944)
+
+(en) GpgOL: Printing of encrypted mails now works correctly
+     after changing the printer. (T4890)
+
+(de) GpgOL: Das Drucken von verschlüsselten Mails funktioniert
+     nun auch nach dem Ändern des Druckers. (T4890)
+
+(en) GpgOL: Security level of keys obtained from a Web Key
+     Directory is now properly shown as Level 2.
+
+(de) GpgOL: Die Sicherheitsstufe von Schlüsseln aus einem
+     Web Key Directory ist nun korrekterweise Stufe 2.
+
+(en) GpgOL: Permanently decrypt now works more reliably and
+     should no longer lead to "No Data" errors. (T4718)
+
+(de) GpgOL: Dauerhaftes Entschlüsseln funktioniert nun
+     zuverlässiger und sollte nicht mehr zu "No Data" Fehlern
+     führen. (T4718)
+
+(en) GpgOL: Long lines in plaintext mails should no longer
+     be displayed as multiple lines after decryption. (T4987)
+
+(de) GpgOL: Lange Zeilen in "Nur Text" Mails werden nicht
+     mehr auf mehrere Zeilen nach dem Entschlüsseln umgebrochen.
+     (T4987)
+
+(en) GpgOL: Attachments with filenames that are not allowed
+     on Windows can now be handled. (T4835)
+
+(de) GpgOL: Anhänge mit Sonderzeichen im Dateinamen die das
+     Windows Dateisystem verbietet, können nun verarbeitet
+     werden. (T4835)
+
+(en) GpgOL: Mails with exactly one attachment and no body
+     are now displayed correctly.
+
+(de) GpgOL: Mails mit exakt einem Anhang, ohne Nachricht,
+     werden nun korrekt dargestellt.
+
+(en) GnuPG: Symmetric encryption now uses only one
+     password dialog. (T4971)
+
+(de) GnuPG: Symmetrische Verschlüsselung fragt nun in
+     nur einem Dialog nach dem Passwort. (T4971)
+
+(en) GnuPG: Improved certificate import for S/MIME
+     certificates. (T4847)
+
+(de) GnuPG: Verbesserter Import von einigen S/MIME
+     Zertifikaten. (T4847)
+
+(en) GnuPG: Added support for CardOS 5 Smartcards
+     based on the D-Trust 3.1 card.
+
+(de) GnuPG: Basierend auf der D-Trust 3.1 Karte werden
+     nun CardOS 5 Karten unterstützt.
+
+(en) GnuPG: Support for rsaPSS signatures has been added. (T4538)
+
+(de) GnuPG: Unterstützung für rsaPSS Signaturen wurde hinzugefügt.
+     (T4538)
+
+(en) GnuPG: The "Quality" of a new passphrase is
+     no longer incorrectly displayed. (T2103)
+
+(de) GnuPG: Die "Qualität" einer neuen Passphrase wird nun
+     nicht mehr falsch dargestellt. (T2103)
+
+(en) Kleopatra: Overwriting secret key exports now works
+     correctly. (T4709)
+
+(de) Kleopatra: Das überschreiben von Exports des privaten
+     Schlüssels funktioniert nun korrekt. (T4709)
+
+(en) Kleopatra: Fixed a case where file sign & encrypt dialogs
+     would not be shown on high DPI systems. (T4819)
+
+(de) Kleopatra: Ein Fehler wurde behoben durch den der
+     Dateiverschlüsselungsdialog auf Systemen mit hoher
+     Auflösung nicht korrekt angezeigt wurde. (T4819)
+
+(en) Kleopatra: The sorting of multiple tabs has been
+     fixed.
+
+(de) Kleopatra: Die Sortierung mehrerer Tabs wurde korrigiert.
+
+(en) Kleopatra: The minimal lenght of the Name has been
+     reduced to better support non latin names. (T4745)
+
+(de) Kleopatra: Die minimale Länge des Namens wurde
+     reduziert um besser die nicht lateinische Sprache zu
+     unterstützen. (T4745)
+
+(en) Kleopatra: The filename suggestion for key exports
+     has been improved to avoid confusion between
+     public and private key exports. (T4995)
+
+(de) Kleopatra: Der vorgeschlagene Dateiname beim
+     Export wurde verbessert um eine Verwechslung zwischen
+     privaten und öffentlichen Schlüsseln zu vermeiden.
+     (T4995)
+
+(en) Kleopatra: Authentication subkeys can now be exported
+     in the OpenSSH format.
+
+(de) Kleopatra: Authentifizierungs-Schlüssel können nun im
+     OpenSSH Format exportiert werden.
+
+(en) Kleopatra: Markup is now automatically removed when
+     pasting into the notepad. (T4969)
+
+(de) Kleopatra: Markup wird nun automatisch entfernt wenn
+     man Daten in den Notizblock kopiert. (T4969)
+
+(en) Kleopatra: "updating..." as key validity is no
+     longer displayed incorrectly when doing a keyserver
+     search. (T4948)
+
+(de) Kleopatra: Es wird nun nicht länger "aktualisiere..." als
+     Gültigkeit angezeigt wenn man eine Suche auf dem Schlüsselserver
+     durchführt. (T4948)
+
+(en) Gpg4win: The file and URL connections with Kleopatra now properly
+     split arguments and potential external data like filenames and
+     the search query.
+     This prevents a security issue where Kleopatra could be triggered
+     to load a library from a filename provided through an unescaped
+     URL.
+
+(de) Gpg4win: Die Datei und URL verknüpfungen mit Kleopatra spalten nun
+     korrekt Argumente und potentiell externe Daten wie Dateinamen und
+     Such-Parameter.
+     Dies verhindert ein Sicherheits-Problem mit dem Kleopatra dazu
+     gebracht werden konnte eine Bibliothek von einem Pfad zu laden
+     der durch eine nicht escapte URL übergeben wurde.
+
+~~~~~~~~~~~~~~~
+GnuPG:          2.2.21
+Kleopatra:      3.1.12
+GPA:            0.10.0
+GpgOL:          2.4.6
+GpgEX:          1.0.6
+Kompendium DE:  4.0.1
+Compendium EN:  3.0.0
+~~~~~~~~~~~~~~~
+
 Noteworthy changes in Version 3.1.11 (2019-12-17)
 ------------------------------------------------
 

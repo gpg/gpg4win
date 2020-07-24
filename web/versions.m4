@@ -1,26 +1,23 @@
-m4_define(`VERSION',`3.1.11')
-m4_define(`DL_DATE',`2019-12-17')
+m4_define(`VERSION',`3.1.12')
+m4_define(`DL_DATE',`2020-07-24')
 m4_define(`DOWNLOAD_URL',`https://files.gpg4win.org/gpg4win-VERSION.exe')
 m4_define(`DL_SIZE',`27.6 MByte')
 m4_define(`SDOWNLOAD_URL',`https://files.gpg4win.org/gpg4win-VERSION.tar.bz2')
-m4_define(`SDL_SIZE',`5.3 MByte')
+m4_define(`SDL_SIZE',`242 MByte')
 
 m4_dnl Paste output of mk-chksums here
-m4_define(`SHA1_SRC',`08ebe638188826ebbea1114977aca073e624837d')
-m4_define(`SHA1_EXE',`6a8178004ee24e30dbeed3dc158231bf10eaf635')
-m4_define(`SHA1_EXS',`8d1df8086f80bbe7ba433c12aa65f59ee0539155')
-m4_define(`SHA2_SRC',`15927a175d5ab802d36a257adeae7af989868a5dfbbbfd49593b6300ce486a52')
-m4_define(`SHA2_EXE',`156de9f3f50bb5a42b207af67ae4ebcb2d10a7aaf732149e9c468eaf74ce7ffc')
-m4_define(`SHA2_EXS',`1f39973687023e84952f6a339797941cc911fa9e7038222b381ba42297c4255b')
-m4_define(`LEN_SRC',`5432480')
-m4_define(`LEN_EXE',`28973920')
-m4_define(`LEN_EXS',`233070024')
+m4_define(`SHA1_SRC',`dbe3e56ee2ebcf509773b64322323db128aea5fd')
+m4_define(`SHA1_EXE',`b483d6c422722e8825957e1d944bee48181be24b')
+m4_define(`SHA2_SRC',`a270e50aac3ccaf827b858aa17f77c0e60388565eafe950a638c2b813680a104')
+m4_define(`SHA2_EXE',`1c903fc5cdf3e72a7de0962b8c4530a6e0ecdf63bda55cc54aa6b1b9036f6c5b')
+m4_define(`LEN_SRC',`253073953')
+m4_define(`LEN_EXE',`29322264')
 m4_dnl end paste
 
 m4_define(`DLPAGE',`I18N(`EN',`download.html')`'I18N(`DE',`download-de.html')')
 m4_define(`SOFTWAREOVERVIEW',`
-I18N(`EN', `<a href="https://www.gnupg.org/">GnuPG</a>')I18N(`DE', `<a href="https://www.gnupg.org/index.de.html">GnuPG</a>') 2.2.17
-<a href="https://www.kde.org/applications/utilities/kleopatra/">Kleopatra</a> 3.1.11
+I18N(`EN', `<a href="https://www.gnupg.org/">GnuPG</a>')I18N(`DE', `<a href="https://www.gnupg.org/index.de.html">GnuPG</a>') 2.2.21
+<a href="https://www.kde.org/applications/utilities/kleopatra/">Kleopatra</a> 3.1.12
 I18N(`EN', `<a href="https://www.gnupg.org/related_software/gpa/index.html">GPA</a>')I18N(`DE', `<a href="https://www.gnupg.org/related_software/gpa/index.de.html">GPA</a>') 0.10.0
 <a href="https://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpgol.git;a=summary">GpgOL</a> 2.4.2
 <a href="https://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpgex.git;a=summary">GpgEX</a> 1.0.6
