@@ -3,21 +3,21 @@
    <Fragment>
       <UIRef Id="WixUI_Advanced" />
       <UI Id="WixUI_Gpg4win">
+
+         <Property Id="DefaultUIFont" Value="WixUI_Font_Normal" />
+         <Property Id="WixUI_Mode" Value="Advanced" />
+         <DialogRef Id="FilesInUse" />
+         <DialogRef Id="MsiRMFilesInUse" />
          <!--
          <TextStyle Id="WixUI_Font_Normal" FaceName="Tahoma" Size="8" />
          <TextStyle Id="WixUI_Font_Bigger" FaceName="Tahoma" Size="12" />
          <TextStyle Id="WixUI_Font_Title" FaceName="Tahoma" Size="9" Bold="yes" />
          <UIRef Id="WixUI_ErrorProgressText" />
 
-         <Property Id="DefaultUIFont" Value="WixUI_Font_Normal" />
-         <Property Id="WixUI_Mode" Value="Advanced" />
-
          <DialogRef Id="BrowseDlg" />
          <DialogRef Id="DiskCostDlg" />
          <DialogRef Id="ErrorDlg" />
          <DialogRef Id="FatalError" />
-         <DialogRef Id="FilesInUse" />
-         <DialogRef Id="MsiRMFilesInUse" />
          <DialogRef Id="PrepareDlg" />
          <DialogRef Id="ProgressDlg" />
          <DialogRef Id="ResumeDlg" />

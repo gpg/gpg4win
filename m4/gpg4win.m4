@@ -144,6 +144,9 @@ AC_DEFUN([GPG4WIN_FIND],
     AS_IF([test -z "$_gpg4win_file" -a $_gpg4win_format != tar -a $_gpg4win_format != zip],
           [_gpg4win_file=`echo ${_gpg4win_dir}/${_gpg4win_glob}.exe`
            _gpg4win_suffix=.exe])
+    AS_IF([test -z "$_gpg4win_file" -a $_gpg4win_format != tar -a $_gpg4win_format != zip],
+          [_gpg4win_file=`echo ${_gpg4win_dir}/${_gpg4win_glob}.wixlib`
+           _gpg4win_suffix=.wixlib])
     shopt -u nullglob])
 
   AS_IF([test -z "$_gpg4win_file"],
@@ -720,6 +723,60 @@ AC_DEFUN([GPG4WIN_BPKG_GNU],
           done)
           [$3],
           [$4])
+])
+
+# GPG4WIN_BPKG_MSISRC([PKG],[DEPENDS],[IF-FOUND],[IF-NOT-FOUND])
+# Set up package PKG which is expected to be delivered as two ZIP files
+# with a "-(src|source)" and a "-(bin|noinstaller)" suffix.
+AC_DEFUN([GPG4WIN_BPKG_MSISRC],
+[
+  AC_REQUIRE([GPG4WIN_INIT])
+  _gpg4win_pkg=maybe
+  AC_ARG_ENABLE([pkg-$1],
+    AS_HELP_STRING([--enable-pkg-$1[=DIR]],
+                   [include package $1]),
+    _gpg4win_pkg=$enableval)
+  _gpg4win_bpkg=no
+  _gpg4win_version=
+  AS_IF([test "$_gpg4win_pkg" != no],
+        [GPG4WIN_FIND($1-bin, [$1-\(.*\)-bin],,
+         $_gpg4win_pkg,
+         _gpg4win_bpkg=$gpg4win_val
+	 _gpg4win_version=$gpg4win_version)])
+  AS_IF([test "$_gpg4win_pkg" != no -a "$_gpg4win_bpkg" = no],
+        [GPG4WIN_FIND($1-noinstaller, [$1-\(.*\)-noinstaller],,
+         $_gpg4win_pkg,
+         _gpg4win_bpkg=$gpg4win_val
+	 _gpg4win_version=$gpg4win_version)])
+
+  # At this point, _gpg4win_bpkg is no, or the actual package binary file.
+
+  # gpg4win_pkg_PKGNAME=FILENAME_OF_BINARY
+  gpg4win_pkg_[]m4_translit([$1],[A-Z+-],[a-z__])[]=$_gpg4win_bpkg
+  AC_SUBST(gpg4win_pkg_[]m4_translit([$1],[A-Z+-],[a-z__]))
+
+  # gpg4win_pkg_PKGNAME_version=VERSION
+  gpg4win_pkg_[]m4_translit([$1],[A-Z+-],[a-z__])[]_version=$_gpg4win_version
+  AC_SUBST(gpg4win_pkg_[]m4_translit([$1],[A-Z+-],[a-z__])[]_version)
+
+  # gpg4win_pkg_PKGNAME_deps=DEPS
+  gpg4win_pkg_[]m4_translit([$1],[A-Z+-],[a-z__])[]_deps="$2"
+  AC_SUBST(gpg4win_pkg_[]m4_translit([$1],[A-Z+-],[a-z__])[]_deps)
+
+  AS_IF([test "$_gpg4win_bpkg" != no],
+    tmp_binsrc=yes
+    GPG4WIN_FIND($1-src, [$1-\(.*\)-src],,
+                 $_gpg4win_pkg, _gpg4win_bpkg=$gpg4win_val, tmp_binsrc=no)
+    if test $tmp_binsrc = no ; then
+       GPG4WIN_FIND($1-source, [$1-\(.*\)-source],,
+                    $_gpg4win_pkg, _gpg4win_bpkg=$gpg4win_val,
+                    AC_MSG_ERROR(can not find sources for package $1))
+    fi
+    # gpg4win_pkg_PKGNAME_src=FILENAME_OF_SOURCE
+    gpg4win_pkg_[]m4_translit([$1],[A-Z+-],[a-z__])[]_src=$_gpg4win_bpkg
+    AC_SUBST(gpg4win_pkg_[]m4_translit([$1],[A-Z+-],[a-z__])[]_src)
+    GPG4WIN_DEFINE(HAVE_PKG_[]m4_translit([$1],[a-z+-],[A-Z__]))
+    )
 ])
 
 

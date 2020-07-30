@@ -290,6 +290,7 @@ GPG4WIN_IPKG([compendium])
 
 # The GnuPG Package.
 GPG4WIN_BPKG_BINSRC([gnupg-w32])
+GPG4WIN_BPKG_MSISRC([gnupg-msi])
 # See the script kde-l10n.sh how this package is created.
 GPG4WIN_BPKG_BINSRC([kde-l10n])
 

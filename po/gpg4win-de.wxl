@@ -1,5 +1,6 @@
 <WixLocalization Culture="de-de" Codepage="1252"     xmlns="http://schemas.microsoft.com/wix/2006/localization">
   <String Id="Language">1031</String>
-  <String Id="T_FoundExistingVersion">Eine neuere Version von GnuPG Desktop ist hier bereits installiert.
+  <String Id="T_FoundExistingVersion">Eine neuere Version von GnuPG VS-Desktop ist hier bereits installiert.
  Möchten Sie diese überschreiben?</String>
+<String Id="gpg4winInstalled">Bitte deinstallieren Sie Gpg4win vor der Installation von GnuPG VS-Desktop.</String>
 </WixLocalization>

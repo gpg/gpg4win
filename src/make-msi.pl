@@ -33,6 +33,8 @@
 use strict;
 use warnings;
 use diagnostics;
+use File::Basename;
+use Cwd;
 
 
 # Default language.
@@ -686,11 +688,6 @@ sub nsis_parse_file
 # state: specifies a state for special parsing of certain parts.
 # dep_name: the current package for which we list dependencies (- for none)
 
-# Ignored packages:
-%::ignored_pkgs = ("gpa", "gtk_", "glib", "expat", "gdk_pixbuf",
-                   "cairo", "fontconfig", "atk", "zlib", "libpng",
-                   "freetype", "libffi", "pango");
-
 sub gpg4win_nsis_stubs
 {
     my ($parser, $file, $command, @args) = @_;
@@ -765,7 +762,10 @@ sub gpg4win_nsis_stubs
         my $pkg = \%{$parser->{pkgs}->{$name}};
 
         # Check for ignored packages
-        foreach my $ignored (%::ignored_pkgs)
+        # Ignored packages:
+        foreach my $ignored ("gpa", "gtk_", "glib", "expat", "gdk_pixbuf",
+                             "cairo", "fontconfig", "atk", "zlib", "libpng",
+                             "freetype", "libffi", "pango")
         {
             if ($name eq $ignored)
             {
@@ -1301,6 +1301,10 @@ sub dump_all
                 . "Directory='ProgramMenuDir' On='uninstall'/>\n";
             }
 
+            if ($targetfull eq 'bin\\kleopatra.exe')
+            {
+                #TODO write registration for .p12
+            }
 
             # EXCEPTIONS:
             if ($targetfull eq 'bin\\gpgol.dll' or
@@ -1523,6 +1527,150 @@ sub dump_all2
     }
 }
 
+sub scan_dir {
+    my ($workdir) = @_;
+
+    my @ret;
+
+    my ($startdir) = &cwd; # keep track of where we began
+
+    chdir($workdir) or die "Unable to enter dir $workdir:$!\n";
+    opendir(DIR, ".") or die "Unable to open $workdir:$!\n";
+    my @names = readdir(DIR) or die "Unable to read $workdir:$!\n";
+    closedir(DIR);
+
+    foreach my $name (@names){
+        next if ($name eq ".");
+        next if ($name eq "..");
+
+        my $abspath = "$startdir/$workdir/$name";
+
+        if (-d "$abspath") {
+            foreach my $subname (&scan_dir($name)) {
+                push (@ret, $subname);
+            }
+            next;
+        }
+        push (@ret, $abspath);
+    }
+
+    chdir($startdir) or
+        die "Unable to change to dir $startdir:$!\n";
+    return @ret;
+}
+
+sub dump_single_custom {
+    my ($workdir) = @_;
+    my $custom_name = basename($workdir);
+    open (FILE, ">$workdir/$custom_name.wxs") or die;
+    print FILE <<EOF;
+<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Fragment>
+    <DirectoryRef Id="TARGETDIR">
+     <Directory Id="CommonAppDataFolder">
+        <Directory Id="CommonAppDataManufacturerFolder" Name="GNU">
+          <Directory Id="AppDataSubFolder" Name="etc">
+            <Directory Id="GnuPGDataFolder" Name="gnupg">
+              <Directory Id="GnuPGTrustedCerts" Name="trusted-certs"/>
+              <Directory Id="GnuPGExtraCerts" Name="extra-certs"/>
+            </Directory>
+          </Directory>
+        </Directory>
+      </Directory>
+      </DirectoryRef>
+    </Fragment>
+   <Fragment>
+    <ComponentGroup Id="c_customization">
+EOF
+    my $fileidx = 0;
+
+    foreach my $file (&scan_dir($workdir)) {
+        my $basename = basename($file);
+        my $dirname = dirname($file);
+
+        if ($basename eq "$custom_name.wxs") {
+            next;
+        }
+        if ($basename eq "$custom_name.wixlib") {
+            next;
+        }
+
+        if ($basename eq "$custom_name.wxs.include") {
+           print STDERR "Including: $basename\n";
+           open (INCFILE, "<$workdir/$custom_name.wxs.include") or die;
+           while (<INCFILE>)
+           {
+               print FILE $_;
+           }
+           close (INCFILE);
+        }
+
+        my $guid = get_guid ($file);
+        my $sourcefull = "\$(var.SrcDir)/" . $file;
+        $sourcefull =~ s/.*\/src\//\$(var.SrcDir)\//;
+        $sourcefull =~ s/\//\\/g;
+
+        if ($dirname =~ /trusted-certs$/) {
+            $dirname = "GnuPGTrustedCerts";
+        } elsif ($dirname =~ /extra-certs$/) {
+            $dirname = "GnuPGExtraCerts";
+        } elsif ($basename eq "VERSION" || $basename eq "VERSION.sig") {
+            # The VERSION file is special and needs to go
+            # in the Gpg4win root folder.
+            $dirname = "APPLICATIONFOLDER";
+        }
+        else {
+            $dirname = "GnuPGDataFolder";
+        }
+
+        print FILE ' ' x 6 . '<Component Id="c_' . $custom_name . "_" . $fileidx
+        . '" Directory="' . $dirname . '" Guid="' . $guid . '" KeyPath="yes">' . "\n";
+
+        print FILE ' ' x 8
+        . "  <File Id='f_$custom_name" . "_$fileidx' Name='"
+        . $basename ."' KeyPath='no'" . " Source='" .
+        $sourcefull . "'/>\n";
+
+        print FILE ' ' x 6 . '</Component>' . "\n";
+
+        $fileidx += 1;
+    }
+    print FILE <<EOF;
+    </ComponentGroup>
+  </Fragment>
+</Wix>
+EOF
+    close FILE;
+}
+
+sub dump_customs
+{
+    my ($startdir) = &cwd;
+    my ($workdir) = @_;
+
+    chdir($workdir) or die "Unable to enter dir $workdir:$!\n";
+    opendir(DIR, ".") or die "Unable to open $workdir:$!\n";
+    my @names = readdir(DIR) or die "Unable to read $workdir:$!\n";
+    closedir(DIR);
+
+    foreach my $name (@names) {
+        next if ($name eq ".");
+        next if ($name eq "..");
+
+        if (-d $name){                  # is this a directory?
+            dump_single_custom($name);
+            next;
+        }
+        print STDERR "Unknown file in vsd-custom directory. '$name' \n";
+        chdir($startdir) or
+           die "Unable to change to dir $startdir:$!\n";
+    }
+    chdir($startdir) or die "Unable to start dir $startdir!\n";
+}
+
+dump_customs("gnupg-vsd");
+
 
 # Just so that it is defined.
 $. = 0;
@@ -1625,14 +1773,14 @@ print <<EOF;
 <?xml version='1.0'?>
 <Wix xmlns='http://schemas.microsoft.com/wix/2006/wi'>
   <!-- The general product setup -->
-  <Product Name='GnuPG Desktop'
+  <Product Name='GnuPG VS-Desktop'
            Id='$product_id'
            UpgradeCode='$upgrade_code'
            Language='$lcid'
            Codepage='1252'
            Version='$BUILD_FILEVERSION'
            Manufacturer='GnuPG.com'>
-    <Package Description='GnuPG Desktop'
+    <Package Description='GnuPG VS-Desktop'
              Comments='http://www.gnupg.com/'
              Compressed='yes'
              InstallerVersion='200'
@@ -1642,6 +1790,7 @@ print <<EOF;
     <Condition Message="At least Windows 7 or Server 2008 R2 required.">
         <![CDATA[Installed OR (VersionNT >= 601)]]>
     </Condition>
+
 
     <Upgrade Id='$upgrade_code'>
       <UpgradeVersion Property='UPGRADEPROP'
@@ -1664,17 +1813,24 @@ print <<EOF;
        Name='gpg4win.ini' Section='gpg4win' Key='instdir'/>
     </Property>
 
+    <Condition Message="!(loc.gpg4winInstalled)">
+        <![CDATA[NOT Installed AND gpg4win_instdir_registry)]]>
+    </Condition>
+
     <Icon Id="shield.ico" SourceFile="shield.ico"/>
     <Property Id="ARPPRODUCTICON" Value="shield.ico"/>
 
     <WixVariable Id="WixUIBannerBmp" Value="header.bmp" />
     <WixVariable Id="WixUIDialogBmp" Value="dialog.bmp" />
+    <WixVariable Id="WixUIExclamationIcon" Value="exclamation.bmp" />
+    <WixVariable Id="WixUIInfoBmp" Value="info.bmp" />
 
     <Property Id="ARPHELPLINK" Value="https://gnupg.com" />
-    <Property Id="ARPNOREPAIR" Value="yes" Secure="yes" />      <!-- Remove repair -->
-    <Property Id="ARPNOMODIFY" Value="yes" Secure="yes" />      <!-- Remove modify -->
+    <!-- We leave repair Property Id="ARPNOREPAIR" Value="yes" Secure="yes" /> -->
+    <!-- We leave modify <Property Id="ARPNOMODIFY" Value="yes" Secure="yes" /> -->
 
     <MajorUpgrade DowngradeErrorMessage="!(loc.T_FoundExistingVersion)" AllowSameVersionUpgrades="yes" />
+    <WixVariable Id="WixUILicenseRtf" Value="license.rtf" />
 
     <!-- This is the main installer sequence run when the product is actually installed -->
     <InstallExecuteSequence>
@@ -1750,6 +1906,7 @@ print <<EOF;
       <ComponentRef Id='c_scute_0' />
       <ComponentRef Id='c_paperkey_0' />
       <ComponentRef Id='c_paperkey_1' />
+      <ComponentGroupRef Id='c_customization' />
 
     </Feature>
 EOF
@@ -1789,7 +1946,7 @@ EOF
 
 if (scalar keys %{$parser->{shortcuts}})
 {
-    my $name = nsis_fetch ($parser, 'PRETTY_PACKAGE');
+    my $name = "GnuPG VS-Desktop";
 
     print <<EOF;
       <Directory Id='ProgramMenuFolder' Name='PMenu'>
@@ -1806,7 +1963,7 @@ EOF
 print <<EOF;
     </Directory>
 
-    <Feature Id='Complete' Title='GnuPG Desktop' Description='All components.'
+    <Feature Id='Complete' Title='GnuPG VS-Desktop' Description='All components.'
              Display='expand' Level='1' ConfigurableDirectory='APPLICATIONFOLDER'>
 EOF
 

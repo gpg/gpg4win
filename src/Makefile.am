@@ -535,6 +535,33 @@ endef
 gpg4win_ipkgs = man_novice_de man_advanced_de man_novice_en man_advanced_en \
 		compendium
 
+# Include installer targets for customized packages
+-include gnupg-vsd/custom.mk
+
+stamps/stamp-msi-base:  playground/install/gpg4win-$(VERSION).wixlib \
+                       shield.ico Makefile.am \
+                       $(top_srcdir)/doc/logo/gpg4win-msi*.bmp \
+                       $(top_srcdir)/po/gpg4win-de.wxl \
+                       $(top_srcdir)/po/gpg4win-en.wxl
+	ssh $(WINHOST) "mkdir AppData\\Local\\Temp\\gpg4win-$(VERSION)" || true
+	scp $(idir)/gpg4win-$(VERSION).wixlib $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)
+	scp $(top_srcdir)/packages/gnupg-msi-$(gpg4win_pkg_gnupg_msi_version)-bin.wixlib \
+		$(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION);
+	scp $(top_srcdir)/src/shield.ico $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)
+	scp $(top_srcdir)/doc/logo/gpg4win-msi-header_install-493x58.bmp \
+		$(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)/header.bmp
+	scp $(top_srcdir)/doc/logo/gpg4win-msi-wizard_install-493x312.bmp \
+		$(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)/dialog.bmp
+	scp $(top_srcdir)/doc/logo/gpg4win-msi-wizard_install-493x312.bmp \
+		$(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)/dialog.bmp
+	scp $(top_srcdir)/doc/logo/gpg4win-msi-wizard_install-info-32x32.bmp \
+		$(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)/info.bmp
+	scp $(top_srcdir)/doc/logo/gpg4win-msi-wizard_install-exclamation-32x32.bmp \
+		$(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)/exclamation.bmp
+	scp $(top_srcdir)/po/gpg4win-en.wxl $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)
+	scp $(top_srcdir)/po/gpg4win-de.wxl $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)
+	scp WixUI_Gpg4win.wxs $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)
+	touch stamps/stamp-msi-base
 
 # Now do the bunch of the work.  This is a bunch of dirty magic to
 # integrate our special makefile into automake, while not actually
@@ -554,6 +581,53 @@ common_nsi = inst-sections.nsi installer.nsi installer-finish.nsi	\
   $(addsuffix .nsi,$(addprefix inst-,$(gpg4win_build_list)))		\
   $(addsuffix .nsi,$(addprefix uninst-,$(gpg4win_build_list)))
 
+playground/install/gpg4win-$(VERSION).wixlib: \
+      gpg4win-$(VERSION).wxs stamps/stamp-final \
+      $(foosum_exe) \
+      $(README_files) $(HOWTO_files) \
+      license.blurb versioninfo.txt \
+      WixUI_Gpg4win.wxs
+	($(call SETVARS_WINE_TWO_DOLLAR,); \
+	echo "Gpg4win" > $(srcdir)/playground/VERSION; \
+	echo "$(VERSION)" >> $(srcdir)/playground/VERSION; \
+	(ln -s $(idir) $$WINEINST; \
+	 ln -s $(ex_idir) $$WINEINSTEX; \
+	 ln -s `readlink -f $(top_srcdir)` $$WINESRC; \
+		$(WINE) $$WIXPREFIX2/candle.exe \
+		-dInstDir=k: \
+		-dInstDirEx=j: \
+		-dSrcDir=i:\\src \
+		-dVersion=$$MSI_VERSION \
+		-out k:\\gpg4win-$(VERSION).wixobj \
+		-pedantic -wx i:\\src\\gpg4win-$(VERSION).wxs || exit 1;\
+		$(WINE) $$WIXPREFIX2/candle.exe \
+		-dInstDir=k: \
+		-dInstDirEx=j: \
+		-dSrcDir=i:\\src \
+		-dVersion=$$MSI_VERSION \
+		-out k:\\gpg4win-ui.wixobj \
+		-pedantic -wx i:\\src\\WixUI_Gpg4win.wxs || exit 1;\
+		\
+		$(WINE) $$WIXPREFIX2/lit.exe \
+		-out k:\\gpg4win-$(VERSION).wixlib \
+		-bf \
+		-wx \
+		-pedantic \
+		k:\\gpg4win-$(VERSION).wixobj k:\\gpg4win-ui.wixobj || exit 1; \
+		\
+	) || ERR=1; (rm $$WINEINST; rm $$WINESRC; rm $$WINEINSTEX); \
+	if [ -n "$$ERR" ]; then \
+		exit 1; \
+	fi)
+
+gpg4win-$(VERSION).wxs: gpg4win.nsi $(common_nsi) stamps/stamp-final \
+		        $(foosum_exe) \
+			$(README_files) $(HOWTO_files) \
+			versioninfo.txt make-msi.pl
+	perl make-msi.pl --guids $(srcdir)/make-msi.guids \
+		--manifest gpg4win-$(VERSION).files \
+		-DBUILD_DIR=. -DTOP_SRCDIR=$(top_srcdir) \
+		-DSRCDIR=$(srcdir) $(srcdir)/gpg4win.nsi > $@
 
 # Prepare the versioninfo file.  The pipeline extracts the last
 # occurrence of a package with the same name, sorts the entries and
@@ -602,146 +676,6 @@ installers/gpg4win-$(VERSION).exe: gpg4win.nsi $(common_nsi) stamps/stamp-final 
 	$(MAKENSIS) -V3 -DBUILD_DIR=`pwd` -DTOP_SRCDIR=$(top_srcdir) \
            -DSRCDIR=$(srcdir) $(EXTRA_MAKENSIS_FLAGS) $(srcdir)/gpg4win.nsi && \
 		   mv gpg4win-$(VERSION).exe installers/gpg4win-$(VERSION).exe
-
-installers/GnuPG-Desktop-$(VERSION)-de.msi: installers/GnuPG-Desktop-$(VERSION).msi
-	scp $(top_srcdir)/po/gpg4win-de.wxl $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)
-	ssh $(WINHOST) "cd AppData/Local/Temp/gpg4win-$(VERSION) && $(WINLIGHT) \
-	-spdb \
-	-ext WixUIExtension \
-	-out GnuPG-Desktop-$(VERSION)-de.msi \
-	-dcl:high \
-	-cultures:de-de -loc gpg4win-de.wxl \
-	-v -pedantic \
-	 \
-	 gpg4win-$(VERSION).wixlib \
-	 gnupg-w32-$(gpg4win_pkg_gnupg_w32_version).wixlib"; \
-	 scp $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)/GnuPG-Desktop-$(VERSION)-de.msi \
-	 installers;
-
-
-installers/GnuPG-Desktop-$(VERSION).msi: playground/install/gpg4win-$(VERSION).wixlib \
-                                         shield.ico Makefile.am \
-                                         $(top_srcdir)/doc/logo/gpg4win-msi*.bmp \
-                                         gpg4win-all.wxl
-	ssh $(WINHOST) "mkdir AppData\\Local\\Temp\\gpg4win-$(VERSION)" || true
-	scp $(idir)/gpg4win-$(VERSION).wixlib $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)
-	scp $(top_srcdir)/packages/gnupg-w32-$(gpg4win_pkg_gnupg_w32_version).wixlib \
-		$(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION);
-	scp $(top_srcdir)/src/shield.ico $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)
-	scp $(top_srcdir)/doc/logo/gpg4win-msi-header_install-493x58.bmp \
-		$(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)/header.bmp
-	scp $(top_srcdir)/doc/logo/gpg4win-msi-wizard_install-493x312.bmp \
-		$(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)/dialog.bmp
-	scp $(top_srcdir)/doc/logo/gpg4win-msi-wizard_install-493x312.bmp \
-		$(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)/dialog.bmp
-	scp $(top_srcdir)/po/gpg4win-en.wxl $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)
-	scp WixUI_Gpg4win.wxs $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)
-	ssh $(WINHOST) "cd AppData/Local/Temp/gpg4win-$(VERSION) && $(WINLIGHT) \
-	-spdb \
-	-ext WixUIExtension \
-	-out GnuPG-Desktop-$(VERSION).msi \
-	-dcl:high \
-	-cultures:en-us -loc gpg4win-en.wxl \
-	-v -pedantic \
-	 \
-	 gpg4win-$(VERSION).wixlib \
-	 gnupg-w32-$(gpg4win_pkg_gnupg_w32_version).wixlib"; \
-	 scp $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)/GnuPG-Desktop-$(VERSION).msi \
-	 installers;
-
-playground/install/gpg4win-$(VERSION).wixlib: \
-      gpg4win-$(VERSION).wxs stamps/stamp-final \
-      $(foosum_exe) \
-      $(README_files) $(HOWTO_files) \
-      license.blurb versioninfo.txt \
-      WixUI_Gpg4win.wxs
-	if [ -z "$$(which $(WINE))" ]; then \
-		echo "ERROR: For the msi-package wine needs to be installed."; \
-	exit 1; \
-	fi;
-	( \
-	if [ -z "$(WIXPREFIX)" ]; then \
-		if [ -d `readlink -f ~/w32root/wixtools` ]; then \
-			WIXPREFIX2=`readlink -f ~/w32root/wixtools`; \
-			echo "Using $$WIXPREFIX2 as WIXPREFIX"; \
-		else \
-			echo "ERROR: You must set WIXPREFIX to an installation of wixtools."; \
-			exit 1; \
-		fi; \
-	else \
-		WIXPREFIX2="$(WIXPREFIX)"; \
-	fi; \
-	if [ -z "$$WINEPREFIX" ]; then \
-		WINEPREFIX="$$HOME/.wine"; \
-		if [ ! -e "$$WINEPREFIX/dosdevices" ]; then \
-			echo "ERROR: No wine prefix found under $$WINEPREFIX"; \
-			exit 1; \
-		fi; \
-	fi; \
-	WINEINST=$$WINEPREFIX/dosdevices/k:; \
-	WINESRC=$$WINEPREFIX/dosdevices/i:; \
-	WINEINSTEX=$$WINEPREFIX/dosdevices/j:; \
-	if [ -e "$$WINEINST" ]; then \
-		echo "ERROR: $$WINEINST already exists. Please remove."; \
-		exit 1; \
-	fi; \
-	if [ -e "$$WINESRC" ]; then \
-		echo "ERROR: $$WINESRC already exists. Please remove."; \
-		exit 1; \
-	fi; \
-	if [ -e "$$WINEINSTEX" ]; then \
-		echo "ERROR: $$WINEINSTEX already exists. Please remove."; \
-		exit 1; \
-	fi; \
-	echo "Gpg4win" > $(srcdir)/playground/VERSION; \
-	echo "$(VERSION)" >> $(srcdir)/playground/VERSION; \
-	MSI_VERSION=$$(echo $(VERSION) | tr -s \\-beta .); \
-	(ln -s $(idir) $$WINEINST; \
-	 ln -s $(ex_idir) $$WINEINSTEX; \
-	 ln -s `readlink -f $(top_srcdir)` $$WINESRC; \
-		$(WINE) $$WIXPREFIX2/candle.exe \
-		-dInstDir=k: \
-		-dInstDirEx=j: \
-		-dSrcDir=i:\\src \
-		-dVersion=$$MSI_VERSION \
-		-out k:\\gpg4win-$(VERSION).wixobj \
-		-pedantic -wx i:\\src\\gpg4win-$(VERSION).wxs || exit 1;\
-		$(WINE) $$WIXPREFIX2/candle.exe \
-		-dInstDir=k: \
-		-dInstDirEx=j: \
-		-dSrcDir=i:\\src \
-		-dVersion=$$MSI_VERSION \
-		-out k:\\gpg4win-ui.wixobj \
-		-pedantic -wx i:\\src\\WixUI_Gpg4win.wxs || exit 1;\
-		\
-		$(WINE) $$WIXPREFIX2/lit.exe \
-		-out k:\\gpg4win-$(VERSION).wixlib \
-		-bf \
-		-wx \
-		-pedantic \
-		k:\\gpg4win-$(VERSION).wixobj k:\\gpg4win-ui.wixobj || exit 1; \
-		\
-	) || ERR=1; \
-		(rm $$WINEINST; rm $$WINESRC; rm $$WINEINSTEX); \
-	if [ -n "$$ERR" ]; then \
-		exit 1; \
-	fi \
-	)
-
-gpg4win-$(VERSION).wxs: gpg4win.nsi $(common_nsi) stamps/stamp-final \
-		        $(foosum_exe) \
-			$(README_files) $(HOWTO_files) \
-			versioninfo.txt make-msi.pl
-	perl make-msi.pl --guids $(srcdir)/make-msi.guids \
-		--manifest gpg4win-$(VERSION).files \
-		-DBUILD_DIR=. -DTOP_SRCDIR=$(top_srcdir) \
-		-DSRCDIR=$(srcdir) $(srcdir)/gpg4win.nsi > $@
-
-.PHONY: msi
-msi: installers/GnuPG-Desktop-$(VERSION).msi \
-	 installers/GnuPG-Desktop-$(VERSION)-de.msi
-
-wixscript: gpg4win-$(VERSION).wxs
 
 stamps/stamp-dist-self: versioninfo.txt
 	(set -e; cd ..; make dist-bzip2)
