@@ -1,4 +1,4 @@
-# Makefile.am - GnuPG 4 Windows Makefile for Logos.
+i# Makefile.am - GnuPG 4 Windows Makefile for Logos.
 # Copyright (C) 2005 g10 Code GmbH
 # 
 # This file is part of GPG4Win.
@@ -29,5 +29,8 @@ EXTRA_DIST = gpg4win-logo.eps         \
              gpg4win-nsis-install.ico		       \
              gpg4win-nsis-uninstall.ico		       \
              gpg4win-nsis-wizard-install-164x314.bmp   \
-             gpg4win-nsis-wizard-uninstall-164x314.bmp
-
+             gpg4win-nsis-wizard-uninstall-164x314.bmp \
+             gpg4win-msi-wizard_install-exclamation-32x32.bmp \
+             gpg4win-msi-wizard_install-info-32x32.bmp \
+             gpg4win-msi-wizard_install-493x312.bmp \
+             gpg4win-msi-header_install-493x58.bmp
