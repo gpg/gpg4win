@@ -1595,6 +1595,9 @@ EOF
         if ($basename eq "$custom_name.wixlib") {
             next;
         }
+        if ($basename =~ /^\./) {
+            next;
+        }
 
         if ($basename eq "$custom_name.wxs.include") {
            print STDERR "Including: $basename\n";
@@ -1615,7 +1618,9 @@ EOF
             $dirname = "GnuPGTrustedCerts";
         } elsif ($dirname =~ /extra-certs$/) {
             $dirname = "GnuPGExtraCerts";
-        } elsif ($basename eq "VERSION" || $basename eq "VERSION.sig") {
+        } elsif ($basename eq "VERSION" ||
+                 $basename eq "VERSION.sig" ||
+                 $basename eq "license.rtf") {
             # The VERSION file is special and needs to go
             # in the Gpg4win root folder.
             $dirname = "APPLICATIONFOLDER";
@@ -1657,16 +1662,18 @@ sub dump_customs
     foreach my $name (@names) {
         next if ($name eq ".");
         next if ($name eq "..");
+        next if ($name eq "vs-desktop-branding");
+        next if ($name eq "custom.mk");
+        next if ($name eq "sign.mk");
+        next if ($name eq ".git");
 
-        if (-d $name){                  # is this a directory?
+        if (-d $name) {
             dump_single_custom($name);
             next;
         }
         print STDERR "Unknown file in vsd-custom directory. '$name' \n";
-        chdir($startdir) or
-           die "Unable to change to dir $startdir:$!\n";
     }
-    chdir($startdir) or die "Unable to start dir $startdir!\n";
+    chdir($startdir) or die "Unable to dir $startdir!\n";
 }
 
 dump_customs("gnupg-vsd");
