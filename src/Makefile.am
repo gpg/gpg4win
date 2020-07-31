@@ -537,6 +537,8 @@ gpg4win_ipkgs = man_novice_de man_advanced_de man_novice_en man_advanced_en \
 
 # Include installer targets for customized packages
 -include gnupg-vsd/custom.mk
+# Signging host/key setup for codesigning
+-include gnupg-vsd/sign.mk
 
 stamps/stamp-msi-base:  playground/install/gpg4win-$(VERSION).wixlib \
                        shield.ico Makefile.am \
@@ -581,12 +583,28 @@ common_nsi = inst-sections.nsi installer.nsi installer-finish.nsi	\
   $(addsuffix .nsi,$(addprefix inst-,$(gpg4win_build_list)))		\
   $(addsuffix .nsi,$(addprefix uninst-,$(gpg4win_build_list)))
 
+# Sign additional files as per signing setup
+# This is a bit of a hack.
+stamps/stamp-additional-signedfiles:
+	(set -e;\
+     cd "$(idir)"; \
+     for f in $(AUTHENTICODE_FILES); do \
+       if [ -f "$$f" ]; then \
+         $(call AUTHENTICODE_sign,"$$f","$$f");\
+       else \
+         echo "speedo: WARNING: file '$$f' not available for signing";\
+       fi;\
+     done \
+     )
+	touch stamps/stamp-additional-signedfiles
+
 playground/install/gpg4win-$(VERSION).wixlib: \
       gpg4win-$(VERSION).wxs stamps/stamp-final \
       $(foosum_exe) \
       $(README_files) $(HOWTO_files) \
       license.blurb versioninfo.txt \
-      WixUI_Gpg4win.wxs
+      WixUI_Gpg4win.wxs \
+      stamps/stamp-additional-signedfiles
 	($(call SETVARS_WINE_TWO_DOLLAR,); \
 	echo "Gpg4win" > $(srcdir)/playground/VERSION; \
 	echo "$(VERSION)" >> $(srcdir)/playground/VERSION; \
@@ -727,4 +745,4 @@ all-local: $(all_full) $(all_src)
 
 clean-local:
 	rm -f installers/gpg4win-$(VERSION).exe \
-		  installers/GnuPG-Desktop-$(VERSION).msi
+		  installers/GnuPG-VS-Desktop-$(VERSION).msi
