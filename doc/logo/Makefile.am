@@ -1,4 +1,4 @@
-i# Makefile.am - GnuPG 4 Windows Makefile for Logos.
+# Makefile.am - GnuPG 4 Windows Makefile for Logos.
 # Copyright (C) 2005 g10 Code GmbH
 # 
 # This file is part of GPG4Win.
