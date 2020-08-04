@@ -78,6 +78,111 @@
   WriteRegStr SHCTX "Software\Gpg4win\gpa\Capabilities" "ApplicationIcon" "$INSTDIR\bin\gpa.exe,0"
   WriteRegStr SHCTX "Software\Gpg4win\gpa\Capabilities" "ApplicationName" "$(DESC_SEC_gpa)"
 
+  SetOutPath "$INSTDIR\share\gpg4win"
+  File "file-ext.ico"
+
+  # .gpg
+  WriteRegExpandStr SHCTX "Software\Classes\gpg4win.AssocFile.GPA.GPG\shell\open\command" "" "$\"$INSTDIR\bin\GPA.exe$\" $\"%1$\""
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.GPA.GPG" "" "$(T_File_Type_gpg_Name)"
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.GPA.GPG" "FriendlyTypeName" "$(T_File_Type_gpg_Name)"
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.GPA.GPG" "PercievedType" "Document"
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.GPA.GPG" "InfoTip" "$(T_File_Type_info_tip)"
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.GPA.GPG\CurVer" "" "${VERSION}"
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.GPA.GPG\DefaultIcon" "" "$INSTDIR\share\gpg4win\file-ext.ico"
+
+  WriteRegBin SHCTX "Software\Classes\.gpg\OpenWithProgIDs" "gpg4win.AssocFile.GPA.GPG" 0
+
+  # .asc
+  WriteRegExpandStr SHCTX "Software\Classes\gpg4win.AssocFile.GPA.ASC\shell\open\command" "" "$\"$INSTDIR\bin\GPA.exe$\" $\"%1$\""
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.GPA.ASC" "" "$(T_File_Type_asc_Name)"
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.GPA.ASC" "FriendlyTypeName" "$(T_File_Type_asc_Name)"
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.GPA.ASC" "PercievedType" "Document"
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.GPA.ASC" "InfoTip" "$(T_File_Type_info_tip)"
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.GPA.ASC\CurVer" "" "${VERSION}"
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.GPA.ASC\DefaultIcon" "" "$INSTDIR\share\gpg4win\file-ext.ico"
+  WriteRegBin SHCTX "Software\Classes\.asc\OpenWithProgIDs" "gpg4win.AssocFile.GPA.ASC" 0
+
+  # .pgp
+  WriteRegBin SHCTX "Software\Classes\.pgp\OpenWithProgIDs" "gpg4win.AssocFile.GPA.GPG" 0
+
+  # .sig
+  WriteRegExpandStr SHCTX "Software\Classes\gpg4win.AssocFile.GPA.PGPSIG\shell\open\command" "" "$\"$INSTDIR\bin\GPA.exe$\" $\"%1$\""
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.GPA.PGPSIG" "" "$(T_File_Type_sig_Name)"
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.GPA.PGPSIG" "FriendlyTypeName" "$(T_File_Type_sig_Name)"
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.GPA.PGPSIG" "PercievedType" "Document"
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.GPA.PGPSIG" "InfoTip" "$(T_File_Type_sig_info_tip)"
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.GPA.PGPSIG\CurVer" "" "${VERSION}"
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.GPA.PGPSIG\DefaultIcon" "" "$INSTDIR\share\gpg4win\file-ext.ico"
+
+  WriteRegBin SHCTX "Software\Classes\.sig\OpenWithProgIDs" "gpg4win.AssocFile.GPA.PGPSIG" 0
+
+  # OpenPGP Key to be used in mime registry
+  WriteRegExpandStr SHCTX "Software\Classes\gpg4win.AssocFile.GPA.PGPKEY\shell\open\command" "" "$\"$INSTDIR\bin\GPA.exe$\" $\"%1$\""
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.GPA.PGPKEY" "" "$(T_File_Type_pgp_key_Name)"
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.GPA.PGPKEY" "FriendlyTypeName" "$(T_File_Type_pgp_key_Name)"
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.GPA.PGPKEY" "PercievedType" "Document"
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.GPA.PGPKEY" "InfoTip" "$(T_File_Type_pgp_key_info_tip)"
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.GPA.PGPKEY\CurVer" "" "${VERSION}"
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.GPA.PGPKEY\DefaultIcon" "" "$INSTDIR\share\gpg4win\file-ext.ico"
+
+  # CMS
+  WriteRegExpandStr SHCTX "Software\Classes\gpg4win.AssocFile.GPA.CMS\shell\open\command" "" "$\"$INSTDIR\bin\GPA.exe$\" $\"%1$\""
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.GPA.CMS" "" "$(T_File_Type_pem_Name)"
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.GPA.CMS" "FriendlyTypeName" "$(T_File_Type_pem_Name)"
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.GPA.CMS" "PercievedType" "Document"
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.GPA.CMS" "InfoTip" "$(T_File_Type_info_tip)"
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.GPA.CMS\CurVer" "" "${VERSION}"
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.GPA.CMS\DefaultIcon" "" "$INSTDIR\share\gpg4win\file-ext.ico"
+
+  WriteRegBin SHCTX "Software\Classes\.p7s\OpenWithProgIDs" "gpg4win.AssocFile.GPA.CMS" 0
+  WriteRegBin SHCTX "Software\Classes\.p7m\OpenWithProgIDs" "gpg4win.AssocFile.GPA.CMS" 0
+  WriteRegBin SHCTX "Software\Classes\.crl\OpenWithProgIDs" "gpg4win.AssocFile.GPA.CMS" 0
+  WriteRegBin SHCTX "Software\Classes\.pem\OpenWithProgIDs" "gpg4win.AssocFile.GPA.CMS" 0
+  WriteRegBin SHCTX "Software\Classes\.arl\OpenWithProgIDs" "gpg4win.AssocFile.GPA.CMS" 0
+
+  # X509 Certificates
+  WriteRegExpandStr SHCTX "Software\Classes\gpg4win.AssocFile.GPA.X509\shell\open\command" "" "$\"$INSTDIR\bin\GPA.exe$\" $\"%1$\""
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.GPA.X509" "FriendlyTypeName" "$(T_File_Type_x509_Name)"
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.GPA.X509" "PercievedType" "Document"
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.GPA.X509" "InfoTip" "$(T_File_Type_x509_info_tip)"
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.GPA.X509\CurVer" "" "${VERSION}"
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.GPA.X509\DefaultIcon" "" "$INSTDIR\share\gpg4win\file-ext.ico"
+  WriteRegBin SHCTX "Software\Classes\gpg4win.AssocFile.GPA.X509" "AllowSilentDefaultTakeOver" 0
+
+  # Register capabilities
+  WriteRegStr SHCTX "Software\RegisteredApplications" "Gpg4win.GPA" "SOFTWARE\Gpg4win\GPA\Capabilities"
+  WriteRegStr SHCTX "Software\Gpg4win\GPA" "" "GPA"
+
+  # File extensions
+  WriteRegStr SHCTX "Software\Gpg4win\GPA\Capabilities\FileAssociations" ".pgp" "gpg4win.AssocFile.GPA.GPG"
+  WriteRegStr SHCTX "Software\Gpg4win\GPA\Capabilities\FileAssociations" ".asc" "gpg4win.AssocFile.GPA.ASC"
+  WriteRegStr SHCTX "Software\Gpg4win\GPA\Capabilities\FileAssociations" ".gpg" "gpg4win.AssocFile.GPA.GPG"
+  WriteRegStr SHCTX "Software\Gpg4win\GPA\Capabilities\FileAssociations" ".cer" "gpg4win.AssocFile.GPA.X509"
+  WriteRegStr SHCTX "Software\Gpg4win\GPA\Capabilities\FileAssociations" ".p10" "gpg4win.AssocFile.GPA.X509"
+  WriteRegStr SHCTX "Software\Gpg4win\GPA\Capabilities\FileAssociations" ".p12" "gpg4win.AssocFile.GPA.X509"
+  WriteRegStr SHCTX "Software\Gpg4win\GPA\Capabilities\FileAssociations" ".p7c" "gpg4win.AssocFile.GPA.X509"
+  WriteRegStr SHCTX "Software\Gpg4win\GPA\Capabilities\FileAssociations" ".pfx" "gpg4win.AssocFile.GPA.X509"
+  WriteRegStr SHCTX "Software\Gpg4win\GPA\Capabilities\FileAssociations" ".crt" "gpg4win.AssocFile.GPA.X509"
+  WriteRegStr SHCTX "Software\Gpg4win\GPA\Capabilities\FileAssociations" ".der" "gpg4win.AssocFile.GPA.X509"
+  WriteRegStr SHCTX "Software\Gpg4win\GPA\Capabilities\FileAssociations" ".sig" "gpg4win.AssocFile.GPA.PGPSIG"
+  WriteRegStr SHCTX "Software\Gpg4win\GPA\Capabilities\FileAssociations" ".arl" "gpg4win.AssocFile.GPA.CMS"
+  WriteRegStr SHCTX "Software\Gpg4win\GPA\Capabilities\FileAssociations" ".crl" "gpg4win.AssocFile.GPA.CMS"
+  WriteRegStr SHCTX "Software\Gpg4win\GPA\Capabilities\FileAssociations" ".p7m" "gpg4win.AssocFile.GPA.CMS"
+  WriteRegStr SHCTX "Software\Gpg4win\GPA\Capabilities\FileAssociations" ".p7s" "gpg4win.AssocFile.GPA.CMS"
+  WriteRegStr SHCTX "Software\Gpg4win\GPA\Capabilities\FileAssociations" ".pem" "gpg4win.AssocFile.GPA.CMS"
+
+  WriteRegExpandStr SHCTX "Software\Gpg4win\GPA\Capabilities\shell\open\command" "" "$\"$INSTDIR\bin\GPA.exe$\" $\"%1$\""
+
+  # Mime extensions For PGP this is probably pretty useless
+  WriteRegStr SHCTX "Software\Gpg4win\GPA\Capabilities\MimeAssociations" "application/pgp" "gpg4win.AssocFile.GPA.GPG"
+  WriteRegStr SHCTX "Software\Gpg4win\GPA\Capabilities\MimeAssociations" "application/pgp-keys" "gpg4win.AssocFile.GPA.PGPKEY"
+  WriteRegStr SHCTX "Software\Gpg4win\GPA\Capabilities\MimeAssociations" "application/pgp-encrypted" "gpg4win.AssocFile.GPA.GPG"
+  WriteRegStr SHCTX "Software\Gpg4win\GPA\Capabilities\MimeAssociations" "application/pgp-signature" "gpg4win.AssocFile.GPA.GPG"
+  WriteRegStr SHCTX "Software\Gpg4win\GPA\Capabilities\MimeAssociations" "application/pkcs7-mime" "gpg4win.AssocFile.GPA.CMS"
+  WriteRegStr SHCTX "Software\Gpg4win\GPA\Capabilities\MimeAssociations" "application/pkix-cert" "gpg4win.AssocFile.GPA.CMS"
+  WriteRegStr SHCTX "Software\Gpg4win\GPA\Capabilities\MimeAssociations" "application/x-x509-ca-cert" "gpg4win.AssocFile.GPA.X509"
+  WriteRegStr SHCTX "Software\Gpg4win\GPA\Capabilities\MimeAssociations" "application/x-pkcs12" "gpg4win.AssocFile.GPA.X509"
+
 !endif
 ${MementoSectionEnd}
 
