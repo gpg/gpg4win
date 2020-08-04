@@ -535,6 +535,8 @@ endef
 gpg4win_ipkgs = man_novice_de man_advanced_de man_novice_en man_advanced_en \
 		compendium
 
+# Default to same version.
+VSD_VERSION=$(VERSION)
 # Include installer targets for customized packages
 -include gnupg-vsd/custom.mk
 # Signging host/key setup for codesigning
@@ -644,6 +646,7 @@ gpg4win-$(VERSION).wxs: gpg4win.nsi $(common_nsi) stamps/stamp-final \
 			versioninfo.txt make-msi.pl
 	perl make-msi.pl --guids $(srcdir)/make-msi.guids \
 		--manifest gpg4win-$(VERSION).files \
+		--version $(VSD_VERSION) \
 		-DBUILD_DIR=. -DTOP_SRCDIR=$(top_srcdir) \
 		-DSRCDIR=$(srcdir) $(srcdir)/gpg4win.nsi > $@
 

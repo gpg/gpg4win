@@ -149,7 +149,7 @@ define SETVARS_WINE
 		echo "ERROR: $$$$WINEINSTEX already exists. Please remove."; \
 		exit 1; \
 	fi; \
-	MSI_VERSION=$$$$(echo $(VERSION) | tr -s \\-beta .)
+	MSI_VERSION=$$$$(echo $(VSD_VERSION) | tr -s \\-beta .)
 endef
 
 # Same as above
@@ -192,7 +192,7 @@ define SETVARS_WINE_TWO_DOLLAR
 		echo "ERROR: $$WINEINSTEX already exists. Please remove."; \
 		exit 1; \
 	fi; \
-	MSI_VERSION=$$(echo $(VERSION) | tr -s \\-beta .)
+	MSI_VERSION=$$(echo $(VSD_VERSION) | tr -s \\-beta .)
 endef
 
 # Support macro.  Unpack the archive $(1).
@@ -858,8 +858,10 @@ gnupg-vsd/$(1)/VERSION.sig: gnupg-vsd/$(1)/VERSION
 
 gnupg-vsd/$(1)/VERSION: gnupg-vsd/custom.mk
 	echo "$(call GETVAR,msi_target_$(1)_VERSION)" > gnupg-vsd/$(1)/VERSION
+	echo "$(call GETVAR,msi_target_$(1)_DESC)" >> gnupg-vsd/$(1)/VERSION
+	echo "$(call GETVAR,msi_target_$(1)_DESC_SHORT)" >> gnupg-vsd/$(1)/VERSION
 
-installers/GnuPG-VS-Desktop-$(VERSION)-$(1).msi: stamps/stamp-msi-base playground/install/$(1).wixlib \
+installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi: stamps/stamp-msi-base playground/install/$(1).wixlib \
 	gnupg-vsd/$(1)/license.rtf
 	scp gnupg-vsd/$(1)/license.rtf \
 		 $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION); \
