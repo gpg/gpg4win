@@ -34,6 +34,8 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         patches/kconfigwidgets/0001-Make-QDbus-optional.patch \
         patches/kiconthemes/0001-Make-DBus-optional.patch \
         patches/kleopatra/0005-Hack-generated-conf-files-for-Crosscompiling.patch \
+        patches/kleopatra/0001-Use-gnupg-helper-code-from-libkleo.patch \
+        patches/kleopatra/0002-Use-aboutdata-from-libkleo-Gpg4win-on-Windows.patch \
         patches/kxmlgui/0001-make-qdbus-optional.patch \
         patches/kxmlgui/0004-Cruedly-disable-KSendbugmail.patch \
         patches/libgpg-error-1.29/0001-doc-Fix-yat2m-build-for-cross-compilation.patch \
@@ -42,7 +44,8 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         patches/qtbase/0001-Gpg4win-qstandardpaths-patch.patch \
         patches/qttools/disable-most-tools.patch \
         patches/w32pth-2.0.5/workaround-broken-libtool.patch \
-        patches/breeze-icons/0001-Make-binary-icons-cross-compilable.patch
+        patches/breeze-icons/0001-Make-binary-icons-cross-compilable.patch \
+        patches/libkleo/0001-Add-some-more-Gpg4win-version-code-from-Kleopatra.patch
 
 copy-news:
 	cp NEWS doc/website/NEWS.last
