@@ -3,4 +3,5 @@
   <String Id="T_FoundExistingVersion">A newer version of GnuPG VS-Desktop is already installed.
  Do you wish to overwrite this version?</String>
 <String Id="gpg4winInstalled">Please uninstall Gpg4win before installing GnuPG VS-Desktop.</String>
+<String Id="DESC_Menu_kleopatra">Run the Kleopatra key management tool.</String>
 </WixLocalization>

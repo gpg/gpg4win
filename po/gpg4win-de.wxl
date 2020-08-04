@@ -3,4 +3,5 @@
   <String Id="T_FoundExistingVersion">Eine neuere Version von GnuPG VS-Desktop ist hier bereits installiert.
  Möchten Sie diese überschreiben?</String>
 <String Id="gpg4winInstalled">Bitte deinstallieren Sie Gpg4win vor der Installation von GnuPG VS-Desktop.</String>
+<String Id="DESC_Menu_kleopatra">Den Zertifikatsmanager Kleopatra aufrufen.</String>
 </WixLocalization>

@@ -1,0 +1,80 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From a72fe32fd1b52dea15ce32d2880204e709e38b23 Mon Sep 17 00:00:00 2001
+From: Andre Heinecke <aheinecke@gnupg.org>
+Date: Mon, 3 Aug 2020 11:27:26 +0200
+Subject: [PATCH 2/2] Use aboutdata from libkleo / Gpg4win on Windows
+
+On Windows we distribute Kleopatra as part of a package
+and we take the about data from the filesystem to have it
+match the Package Version.
+
+GnuPG-Bug-Id: T5011
+---
+ src/aboutdata.cpp          | 13 +++++++++++--
+ src/view/welcomewidget.cpp |  5 +++++
+ 2 files changed, 16 insertions(+), 2 deletions(-)
+
+diff --git a/src/aboutdata.cpp b/src/aboutdata.cpp
+index b239857f..6bf254fc 100644
+--- a/src/aboutdata.cpp
++++ b/src/aboutdata.cpp
+@@ -35,6 +35,8 @@
+
+ #include "aboutdata.h"
+
++#include <Libkleo/GnuPG>
++
+ #include <KLocalizedString>
+
+ static const char kleopatra_version[] = KLEOPATRA_VERSION_STRING;
+@@ -89,12 +91,19 @@ static const about_data credits[] = {
+
+ AboutData::AboutData()
+     : KAboutData(QStringLiteral("kleopatra"), i18n("Kleopatra"),
+-                 QLatin1String(kleopatra_version), i18n(description), KAboutLicense::GPL,
++#ifdef Q_OS_WIN
++                 Kleo::gpg4winVersion(),
++                 Kleo::gpg4winDescription(),
++#else
++                 QLatin1String(kleopatra_version),
++                 i18n(description),
++#endif
++                 KAboutLicense::GPL,
+                  i18n("(c) 2002 Steffen\u00A0Hansen, Matthias\u00A0Kalle\u00A0" "Dalheimer, Klar\u00E4lvdalens\u00A0" "Datakonsult\u00A0" "AB\n"
+                       "(c) 2004, 2007, 2008, 2009 Marc\u00A0Mutz, Klar\u00E4lvdalens\u00A0" "Datakonsult\u00A0" "AB") +
+                  QLatin1Char('\n') + i18n("(c) 2010-2019 The Kleopatra developers")
+ #ifdef Q_OS_WIN
+-                 , i18n("<a href=https://www.gpg4win.org>Visit the Gpg4win homepage</a>")
++                 , Kleo::gpg4winLongDescription()
+ #endif
+                  )
+ {
+diff --git a/src/view/welcomewidget.cpp b/src/view/welcomewidget.cpp
+index 1e507129..46f6e0bd 100644
+--- a/src/view/welcomewidget.cpp
++++ b/src/view/welcomewidget.cpp
+@@ -33,6 +33,7 @@
+ #include "welcomewidget.h"
+
+ #include <version-kleopatra.h>
++#include <Libkleo/GnuPG>
+
+ #include <QVBoxLayout>
+ #include <QHBoxLayout>
+@@ -63,7 +64,11 @@ public:
+         auto hLay = new QHBoxLayout;
+
+         const QString welcome = i18nc("%1 is version", "Welcome to Kleopatra %1",
++#ifdef Q_OS_WIN
++                                      Kleo::gpg4winVersion());
++#else
+                                       QStringLiteral(KLEOPATRA_VERSION_STRING));
++#endif
+         const QString introduction = i18n("Kleopatra is a front-end for the crypto software <a href=\"https://gnupg.org\">GnuPG</a>.");
+
+         const QString keyExplanation = i18n("For most actions you need either a public key (certificate) or your own private key.");
+--
+2.20.1

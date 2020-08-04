@@ -1,0 +1,1068 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From 274ec5656815046936e5c4360daef3191d6f428f Mon Sep 17 00:00:00 2001
+From: Andre Heinecke <aheinecke@gnupg.org>
+Date: Mon, 3 Aug 2020 11:23:32 +0200
+Subject: [PATCH 1/2] Use gnupg-helper code from libkleo
+
+The gnupg-helper was added to Libkleo some time ago.
+Use it now to avoid duplicated code.
+---
+ src/CMakeLists.txt                            |   1 -
+ src/commands/changeroottrustcommand.cpp       |   2 +-
+ src/commands/clearcrlcachecommand.cpp         |   2 +-
+ src/commands/dumpcertificatecommand.cpp       |   2 +-
+ src/commands/dumpcrlcachecommand.cpp          |   2 +-
+ .../exportopenpgpcertstoservercommand.cpp     |   2 +-
+ src/commands/exportpaperkeycommand.cpp        |   2 +-
+ src/commands/exportsecretkeycommand.cpp       |   2 +-
+ src/commands/genrevokecommand.cpp             |   2 +-
+ src/commands/gnupgprocesscommand.cpp          |   2 +-
+ src/commands/importcrlcommand.cpp             |   2 +-
+ src/commands/importpaperkeycommand.cpp        |   2 +-
+ src/commands/learncardkeyscommand.cpp         |   2 +-
+ src/commands/lookupcertificatescommand.cpp    |   2 +-
+ src/commands/refreshopenpgpcertscommand.cpp   |   2 +-
+ src/commands/refreshx509certscommand.cpp      |   2 +-
+ .../autodecryptverifyfilescontroller.cpp      |   2 +-
+ src/crypto/decryptverifyemailcontroller.cpp   |   2 +-
+ src/crypto/decryptverifyfilescontroller.cpp   |   2 +-
+ src/crypto/decryptverifytask.cpp              |   2 +-
+ .../gui/signencryptemailconflictdialog.cpp    |   2 +-
+ src/crypto/gui/signencryptfileswizard.cpp     |   2 +-
+ src/crypto/gui/signencryptwidget.cpp          |   2 +-
+ src/crypto/newsignencryptemailcontroller.cpp  |   2 +-
+ src/crypto/task.cpp                           |   2 +-
+ src/crypto/taskcollection.cpp                 |   2 +-
+ src/dialogs/updatenotification.cpp            |   2 +-
+ src/kleopatraapplication.cpp                  |   2 +-
+ src/kwatchgnupg/CMakeLists.txt                |   1 -
+ src/kwatchgnupg/kwatchgnupg.h                 |   2 +-
+ src/main.cpp                                  |   2 +-
+ src/mainwindow.cpp                            |   2 +-
+ .../newcertificatewizard.cpp                  |   2 +-
+ src/selftest/enginecheck.cpp                  |   2 +-
+ src/selftest/gpgconfcheck.cpp                 |   2 +-
+ src/smartcard/readerstatus.cpp                |   2 +-
+ src/uiserver/assuanserverconnection.cpp       |   2 +-
+ src/uiserver/uiserver.cpp                     |   2 +-
+ src/uiserver/uiserver_unix.cpp                |   2 +-
+ src/uiserver/uiserver_win.cpp                 |   2 +-
+ src/utils/gnupg-helper.cpp                    | 428 ------------------
+ src/utils/gnupg-helper.h                      |  82 ----
+ src/utils/windowsprocessdevice.cpp            |   2 +-
+ src/view/padwidget.cpp                        |   2 +-
+ src/view/pgpcardwidget.cpp                    |   2 +-
+ src/view/searchbar.cpp                        |   2 +-
+ 46 files changed, 42 insertions(+), 554 deletions(-)
+ delete mode 100644 src/utils/gnupg-helper.cpp
+ delete mode 100644 src/utils/gnupg-helper.h
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index bce974a9..12b379eb 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -64,7 +64,6 @@ endif()
+ ki18n_wrap_ui(_kleopatra_uiserver_SRCS crypto/gui/signingcertificateselectionwidget.ui)
+
+ set(_kleopatra_SRCS
+-  utils/gnupg-helper.cpp
+   utils/gui-helper.cpp
+   utils/filedialog.cpp
+   utils/kdpipeiodevice.cpp
+diff --git a/src/commands/changeroottrustcommand.cpp b/src/commands/changeroottrustcommand.cpp
+index afd268f0..efa93735 100644
+--- a/src/commands/changeroottrustcommand.cpp
++++ b/src/commands/changeroottrustcommand.cpp
+@@ -37,7 +37,7 @@
+
+ #include <Libkleo/KeyCache>
+
+-#include <utils/gnupg-helper.h>
++#include <Libkleo/GnuPG>
+
+ #include "kleopatra_debug.h"
+ #include <KLocalizedString>
+diff --git a/src/commands/clearcrlcachecommand.cpp b/src/commands/clearcrlcachecommand.cpp
+index 3cceca75..649900a3 100644
+--- a/src/commands/clearcrlcachecommand.cpp
++++ b/src/commands/clearcrlcachecommand.cpp
+@@ -33,7 +33,7 @@
+ #include <config-kleopatra.h>
+
+ #include "clearcrlcachecommand.h"
+-#include "utils/gnupg-helper.h"
++#include <Libkleo/GnuPG>
+
+ #include <KLocalizedString>
+
+diff --git a/src/commands/dumpcertificatecommand.cpp b/src/commands/dumpcertificatecommand.cpp
+index c96bf52f..673ad7e8 100644
+--- a/src/commands/dumpcertificatecommand.cpp
++++ b/src/commands/dumpcertificatecommand.cpp
+@@ -36,7 +36,7 @@
+
+ #include "command_p.h"
+
+-#include <utils/gnupg-helper.h>
++#include <Libkleo/GnuPG>
+
+ #include <gpgme++/key.h>
+
+diff --git a/src/commands/dumpcrlcachecommand.cpp b/src/commands/dumpcrlcachecommand.cpp
+index 2c18197d..557f1a1c 100644
+--- a/src/commands/dumpcrlcachecommand.cpp
++++ b/src/commands/dumpcrlcachecommand.cpp
+@@ -36,7 +36,7 @@
+
+ #include "command_p.h"
+
+-#include <utils/gnupg-helper.h>
++#include <Libkleo/GnuPG>
+
+ #include <KProcess>
+ #include <KMessageBox>
+diff --git a/src/commands/exportopenpgpcertstoservercommand.cpp b/src/commands/exportopenpgpcertstoservercommand.cpp
+index 6669e592..36bff90c 100644
+--- a/src/commands/exportopenpgpcertstoservercommand.cpp
++++ b/src/commands/exportopenpgpcertstoservercommand.cpp
+@@ -36,7 +36,7 @@
+
+ #include "command_p.h"
+
+-#include <utils/gnupg-helper.h>
++#include <Libkleo/GnuPG>
+
+ #include <gpgme++/key.h>
+
+diff --git a/src/commands/exportpaperkeycommand.cpp b/src/commands/exportpaperkeycommand.cpp
+index df21bc90..9bec0129 100644
+--- a/src/commands/exportpaperkeycommand.cpp
++++ b/src/commands/exportpaperkeycommand.cpp
+@@ -36,7 +36,7 @@
+
+ #include "exportpaperkeycommand.h"
+
+-#include <utils/gnupg-helper.h>
++#include <Libkleo/GnuPG>
+
+ #include <gpgme++/key.h>
+
+diff --git a/src/commands/exportsecretkeycommand.cpp b/src/commands/exportsecretkeycommand.cpp
+index 1b2be5bb..a31a263d 100644
+--- a/src/commands/exportsecretkeycommand.cpp
++++ b/src/commands/exportsecretkeycommand.cpp
+@@ -38,7 +38,7 @@
+
+ #include "command_p.h"
+
+-#include <utils/gnupg-helper.h>
++#include <Libkleo/GnuPG>
+ #include <utils/filedialog.h>
+
+ #include <Libkleo/Classify>
+diff --git a/src/commands/genrevokecommand.cpp b/src/commands/genrevokecommand.cpp
+index bd5c9a26..04403a77 100644
+--- a/src/commands/genrevokecommand.cpp
++++ b/src/commands/genrevokecommand.cpp
+@@ -36,7 +36,7 @@
+
+ #include "genrevokecommand.h"
+
+-#include <utils/gnupg-helper.h>
++#include <Libkleo/GnuPG>
+
+ #include <Libkleo/Formatting>
+
+diff --git a/src/commands/gnupgprocesscommand.cpp b/src/commands/gnupgprocesscommand.cpp
+index c56fb4fa..bf8a3c86 100644
+--- a/src/commands/gnupgprocesscommand.cpp
++++ b/src/commands/gnupgprocesscommand.cpp
+@@ -36,7 +36,7 @@
+
+ #include "command_p.h"
+
+-#include "utils/gnupg-helper.h"
++#include <Libkleo/GnuPG>
+
+ #include "kleopatra_debug.h"
+ #include <KLocalizedString>
+diff --git a/src/commands/importcrlcommand.cpp b/src/commands/importcrlcommand.cpp
+index 1ad2ed0c..7c81afd8 100644
+--- a/src/commands/importcrlcommand.cpp
++++ b/src/commands/importcrlcommand.cpp
+@@ -36,7 +36,7 @@
+
+ #include "command_p.h"
+
+-#include "utils/gnupg-helper.h"
++#include <Libkleo/GnuPG>
+
+ #include <QString>
+ #include <QByteArray>
+diff --git a/src/commands/importpaperkeycommand.cpp b/src/commands/importpaperkeycommand.cpp
+index fbb15515..1e183b7a 100644
+--- a/src/commands/importpaperkeycommand.cpp
++++ b/src/commands/importpaperkeycommand.cpp
+@@ -35,7 +35,7 @@
+
+ #include "importpaperkeycommand.h"
+
+-#include <utils/gnupg-helper.h>
++#include <Libkleo/GnuPG>
+
+ #include <gpgme++/key.h>
+ #include <gpgme++/importresult.h>
+diff --git a/src/commands/learncardkeyscommand.cpp b/src/commands/learncardkeyscommand.cpp
+index a8f7074c..a98d6550 100644
+--- a/src/commands/learncardkeyscommand.cpp
++++ b/src/commands/learncardkeyscommand.cpp
+@@ -38,7 +38,7 @@
+
+ #include <smartcard/readerstatus.h>
+
+-#include <utils/gnupg-helper.h>
++#include <Libkleo/GnuPG>
+
+ #include <gpgme++/key.h>
+
+diff --git a/src/commands/lookupcertificatescommand.cpp b/src/commands/lookupcertificatescommand.cpp
+index 0d49a86f..53db2e00 100644
+--- a/src/commands/lookupcertificatescommand.cpp
++++ b/src/commands/lookupcertificatescommand.cpp
+@@ -38,7 +38,7 @@
+
+ #include "detailscommand.h"
+
+-#include "utils/gnupg-helper.h"
++#include <Libkleo/GnuPG>
+
+ #include <dialogs/lookupcertificatesdialog.h>
+
+diff --git a/src/commands/refreshopenpgpcertscommand.cpp b/src/commands/refreshopenpgpcertscommand.cpp
+index 070a5fc0..8e1b068a 100644
+--- a/src/commands/refreshopenpgpcertscommand.cpp
++++ b/src/commands/refreshopenpgpcertscommand.cpp
+@@ -34,7 +34,7 @@
+
+ #include "refreshopenpgpcertscommand.h"
+
+-#include <utils/gnupg-helper.h>
++#include <Libkleo/GnuPG>
+
+ #include <KLocalizedString>
+ #include <KMessageBox>
+diff --git a/src/commands/refreshx509certscommand.cpp b/src/commands/refreshx509certscommand.cpp
+index b33756b0..6761ee68 100644
+--- a/src/commands/refreshx509certscommand.cpp
++++ b/src/commands/refreshx509certscommand.cpp
+@@ -34,7 +34,7 @@
+
+ #include "refreshx509certscommand.h"
+
+-#include <utils/gnupg-helper.h>
++#include <Libkleo/GnuPG>
+
+ #include <KLocalizedString>
+ #include <KMessageBox>
+diff --git a/src/crypto/autodecryptverifyfilescontroller.cpp b/src/crypto/autodecryptverifyfilescontroller.cpp
+index 2f996002..706a350f 100644
+--- a/src/crypto/autodecryptverifyfilescontroller.cpp
++++ b/src/crypto/autodecryptverifyfilescontroller.cpp
+@@ -45,7 +45,7 @@
+
+ #include "commands/decryptverifyfilescommand.h"
+
+-#include <utils/gnupg-helper.h>
++#include <Libkleo/GnuPG>
+ #include <utils/path-helper.h>
+ #include <utils/input.h>
+ #include <utils/output.h>
+diff --git a/src/crypto/decryptverifyemailcontroller.cpp b/src/crypto/decryptverifyemailcontroller.cpp
+index 80271f32..0a605051 100644
+--- a/src/crypto/decryptverifyemailcontroller.cpp
++++ b/src/crypto/decryptverifyemailcontroller.cpp
+@@ -40,7 +40,7 @@
+ #include <crypto/decryptverifytask.h>
+ #include <crypto/taskcollection.h>
+
+-#include <utils/gnupg-helper.h>
++#include <Libkleo/GnuPG>
+ #include <utils/input.h>
+ #include <utils/output.h>
+ #include <utils/kleo_assert.h>
+diff --git a/src/crypto/decryptverifyfilescontroller.cpp b/src/crypto/decryptverifyfilescontroller.cpp
+index c47759df..950e4e5c 100644
+--- a/src/crypto/decryptverifyfilescontroller.cpp
++++ b/src/crypto/decryptverifyfilescontroller.cpp
+@@ -39,7 +39,7 @@
+ #include <crypto/decryptverifytask.h>
+ #include <crypto/taskcollection.h>
+
+-#include <utils/gnupg-helper.h>
++#include <Libkleo/GnuPG>
+ #include <utils/path-helper.h>
+ #include <utils/input.h>
+ #include <utils/output.h>
+diff --git a/src/crypto/decryptverifytask.cpp b/src/crypto/decryptverifytask.cpp
+index 1559b0f8..8143d82e 100644
+--- a/src/crypto/decryptverifytask.cpp
++++ b/src/crypto/decryptverifytask.cpp
+@@ -53,7 +53,7 @@
+ #include <utils/output.h>
+ #include <utils/kleo_assert.h>
+ #include <utils/auditlog.h>
+-#include <utils/gnupg-helper.h>
++#include <Libkleo/GnuPG>
+
+ #include <kmime/kmime_header_parsing.h>
+
+diff --git a/src/crypto/gui/signencryptemailconflictdialog.cpp b/src/crypto/gui/signencryptemailconflictdialog.cpp
+index a3c677d6..8f17e5a6 100644
+--- a/src/crypto/gui/signencryptemailconflictdialog.cpp
++++ b/src/crypto/gui/signencryptemailconflictdialog.cpp
+@@ -40,7 +40,7 @@
+ #include "dialogs/certificateselectiondialog.h"
+ #include "certificateselectionline.h"
+
+-#include "utils/gnupg-helper.h"
++#include <Libkleo/GnuPG>
+ #include "utils/gui-helper.h"
+ #include "utils/kleo_assert.h"
+
+diff --git a/src/crypto/gui/signencryptfileswizard.cpp b/src/crypto/gui/signencryptfileswizard.cpp
+index 7938fc07..7521090f 100644
+--- a/src/crypto/gui/signencryptfileswizard.cpp
++++ b/src/crypto/gui/signencryptfileswizard.cpp
+@@ -47,7 +47,7 @@
+ #include <KMessageBox>
+
+ #include "kleopatra_debug.h"
+-#include <utils/gnupg-helper.h>
++#include <Libkleo/GnuPG>
+
+ #include <Libkleo/FileNameRequester>
+ #include <QWindow>
+diff --git a/src/crypto/gui/signencryptwidget.cpp b/src/crypto/gui/signencryptwidget.cpp
+index 419f20d9..2fb51b86 100644
+--- a/src/crypto/gui/signencryptwidget.cpp
++++ b/src/crypto/gui/signencryptwidget.cpp
+@@ -50,7 +50,7 @@
+ #include <Libkleo/KeySelectionCombo>
+ #include <Libkleo/KeyListSortFilterProxyModel>
+
+-#include <utils/gnupg-helper.h>
++#include <Libkleo/GnuPG>
+
+ #include <KLocalizedString>
+ #include <KConfigGroup>
+diff --git a/src/crypto/newsignencryptemailcontroller.cpp b/src/crypto/newsignencryptemailcontroller.cpp
+index 20b9410b..80af2ead 100644
+--- a/src/crypto/newsignencryptemailcontroller.cpp
++++ b/src/crypto/newsignencryptemailcontroller.cpp
+@@ -46,7 +46,7 @@
+
+ #include "utils/input.h"
+ #include "utils/output.h"
+-#include "utils/gnupg-helper.h"
++#include <Libkleo/GnuPG>
+ #include "utils/kleo_assert.h"
+
+ #include <Libkleo/Stl_Util>
+diff --git a/src/crypto/task.cpp b/src/crypto/task.cpp
+index 4b57dd88..a1944724 100644
+--- a/src/crypto/task.cpp
++++ b/src/crypto/task.cpp
+@@ -37,7 +37,7 @@
+
+ #include <Libkleo/Exception>
+
+-#include <utils/gnupg-helper.h>
++#include <Libkleo/GnuPG>
+ #include <utils/auditlog.h>
+
+ #include <gpgme++/exception.h>
+diff --git a/src/crypto/taskcollection.cpp b/src/crypto/taskcollection.cpp
+index 2d4b5d0b..b9f948f2 100644
+--- a/src/crypto/taskcollection.cpp
++++ b/src/crypto/taskcollection.cpp
+@@ -38,7 +38,7 @@
+ #include "task.h"
+ #include "kleopatra_debug.h"
+
+-#include "utils/gnupg-helper.h"
++#include <Libkleo/GnuPG>
+
+ #include <algorithm>
+ #include <map>
+diff --git a/src/dialogs/updatenotification.cpp b/src/dialogs/updatenotification.cpp
+index b06e862f..1b768afe 100644
+--- a/src/dialogs/updatenotification.cpp
++++ b/src/dialogs/updatenotification.cpp
+@@ -31,7 +31,7 @@
+ */
+ #include "updatenotification.h"
+
+-#include "utils/gnupg-helper.h"
++#include <Libkleo/GnuPG>
+
+ #include "kleopatra_debug.h"
+
+diff --git a/src/kleopatraapplication.cpp b/src/kleopatraapplication.cpp
+index a8c5dd08..b6b3346a 100644
+--- a/src/kleopatraapplication.cpp
++++ b/src/kleopatraapplication.cpp
+@@ -42,7 +42,7 @@
+ #include <smartcard/readerstatus.h>
+ #include <conf/configuredialog.h>
+
+-#include <utils/gnupg-helper.h>
++#include <Libkleo/GnuPG>
+ #include <utils/kdpipeiodevice.h>
+ #include <utils/log.h>
+
+diff --git a/src/kwatchgnupg/CMakeLists.txt b/src/kwatchgnupg/CMakeLists.txt
+index 762b8e03..369525c1 100644
+--- a/src/kwatchgnupg/CMakeLists.txt
++++ b/src/kwatchgnupg/CMakeLists.txt
+@@ -6,7 +6,6 @@ find_package(KF5TextWidgets ${KF5_MIN_VERSION} CONFIG REQUIRED)
+ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/version-kwatchgnupg.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/version-kwatchgnupg.h)
+
+ set(kwatchgnupg_SRCS
+-  ../utils/gnupg-helper.cpp
+   ../utils/hex.cpp
+   ../utils/kuniqueservice.cpp
+   ../kleopatra_debug.cpp
+diff --git a/src/kwatchgnupg/kwatchgnupg.h b/src/kwatchgnupg/kwatchgnupg.h
+index b09a8c56..dc150ee6 100644
+--- a/src/kwatchgnupg/kwatchgnupg.h
++++ b/src/kwatchgnupg/kwatchgnupg.h
+@@ -33,7 +33,7 @@
+ #define KWATCHGNUPG_H
+
+ #include <QString>
+-#include <utils/gnupg-helper.h>
++#include <Libkleo/GnuPG>
+
+ #define WATCHGNUPGBINARY QStringLiteral("watchgnupg")
+ #define WATCHGNUPGSOCKET QString( Kleo::gnupgHomeDirectory() + QLatin1String("/log-socket") )
+diff --git a/src/main.cpp b/src/main.cpp
+index 88abb0f0..c86246b7 100644
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -43,7 +43,7 @@
+ #include <commands/reloadkeyscommand.h>
+ #include <commands/selftestcommand.h>
+
+-#include <utils/gnupg-helper.h>
++#include <Libkleo/GnuPG>
+ #include <utils/archivedefinition.h>
+ #include "utils/kuniqueservice.h"
+
+diff --git a/src/mainwindow.cpp b/src/mainwindow.cpp
+index 85816461..51b2c23c 100644
+--- a/src/mainwindow.cpp
++++ b/src/mainwindow.cpp
+@@ -50,7 +50,7 @@
+ #include "commands/signencryptfilescommand.h"
+
+ #include "utils/detail_p.h"
+-#include "utils/gnupg-helper.h"
++#include <Libkleo/GnuPG>
+ #include "utils/action_data.h"
+ #include "utils/filedialog.h"
+ #include "utils/clipboardmenu.h"
+diff --git a/src/newcertificatewizard/newcertificatewizard.cpp b/src/newcertificatewizard/newcertificatewizard.cpp
+index 4034f7fa..ad900f24 100644
+--- a/src/newcertificatewizard/newcertificatewizard.cpp
++++ b/src/newcertificatewizard/newcertificatewizard.cpp
+@@ -50,7 +50,7 @@
+
+ #include <utils/validation.h>
+ #include <utils/filedialog.h>
+-#include "utils/gnupg-helper.h"
++#include <Libkleo/GnuPG>
+
+ #include <Libkleo/Stl_Util>
+ #include <Libkleo/Dn>
+diff --git a/src/selftest/enginecheck.cpp b/src/selftest/enginecheck.cpp
+index 9bb2349c..7a6783f6 100644
+--- a/src/selftest/enginecheck.cpp
++++ b/src/selftest/enginecheck.cpp
+@@ -33,7 +33,7 @@
+ #include <config-kleopatra.h>
+
+ #include "enginecheck.h"
+-#include "utils/gnupg-helper.h"
++#include <Libkleo/GnuPG>
+
+ #include "implementation_p.h"
+
+diff --git a/src/selftest/gpgconfcheck.cpp b/src/selftest/gpgconfcheck.cpp
+index 4c52ad91..2690a39a 100644
+--- a/src/selftest/gpgconfcheck.cpp
++++ b/src/selftest/gpgconfcheck.cpp
+@@ -36,7 +36,7 @@
+
+ #include "implementation_p.h"
+
+-#include <utils/gnupg-helper.h>
++#include <Libkleo/GnuPG>
+ #include <utils/hex.h>
+
+ #include "kleopatra_debug.h"
+diff --git a/src/smartcard/readerstatus.cpp b/src/smartcard/readerstatus.cpp
+index 4f2d9ede..d223030f 100644
+--- a/src/smartcard/readerstatus.cpp
++++ b/src/smartcard/readerstatus.cpp
+@@ -34,7 +34,7 @@
+
+ #include "readerstatus.h"
+
+-#include <utils/gnupg-helper.h>
++#include <Libkleo/GnuPG>
+
+ #include <Libkleo/FileSystemWatcher>
+ #include <Libkleo/Stl_Util>
+diff --git a/src/uiserver/assuanserverconnection.cpp b/src/uiserver/assuanserverconnection.cpp
+index 3fbd7503..e60cbc04 100644
+--- a/src/uiserver/assuanserverconnection.cpp
++++ b/src/uiserver/assuanserverconnection.cpp
+@@ -45,7 +45,7 @@
+
+ #include <utils/input.h>
+ #include <utils/output.h>
+-#include <utils/gnupg-helper.h>
++#include <Libkleo/GnuPG>
+ #include <utils/detail_p.h>
+ #include <utils/hex.h>
+ #include <utils/log.h>
+diff --git a/src/uiserver/uiserver.cpp b/src/uiserver/uiserver.cpp
+index 85149064..a17b4844 100644
+--- a/src/uiserver/uiserver.cpp
++++ b/src/uiserver/uiserver.cpp
+@@ -38,7 +38,7 @@
+ #include "sessiondata.h"
+
+ #include <utils/detail_p.h>
+-#include <utils/gnupg-helper.h>
++#include <Libkleo/GnuPG>
+
+ #include <Libkleo/Stl_Util>
+ #include <Libkleo/Exception>
+diff --git a/src/uiserver/uiserver_unix.cpp b/src/uiserver/uiserver_unix.cpp
+index 1f4b9915..0111a333 100644
+--- a/src/uiserver/uiserver_unix.cpp
++++ b/src/uiserver/uiserver_unix.cpp
+@@ -34,7 +34,7 @@
+
+ #include "uiserver_p.h"
+
+-#include "utils/gnupg-helper.h"
++#include <Libkleo/GnuPG>
+
+ #include <KLocalizedString>
+
+diff --git a/src/uiserver/uiserver_win.cpp b/src/uiserver/uiserver_win.cpp
+index 57c79a07..597aadce 100644
+--- a/src/uiserver/uiserver_win.cpp
++++ b/src/uiserver/uiserver_win.cpp
+@@ -34,7 +34,7 @@
+
+ #include "uiserver_p.h"
+
+-#include "utils/gnupg-helper.h"
++#include <Libkleo/GnuPG>
+
+ #include <KLocalizedString>
+
+diff --git a/src/utils/gnupg-helper.cpp b/src/utils/gnupg-helper.cpp
+deleted file mode 100644
+index d171c9b7..00000000
+--- a/src/utils/gnupg-helper.cpp
++++ /dev/null
+@@ -1,428 +0,0 @@
+-/* -*- mode: c++; c-basic-offset:4 -*-
+-    utils/gnupg-helper.cpp
+-
+-    This file is part of Kleopatra, the KDE keymanager
+-    Copyright (c) 2008 Klarälvdalens Datakonsult AB
+-    2016 by Bundesamt für Sicherheit in der Informationstechnik
+-    Software engineering by Intevation GmbH
+-
+-    Kleopatra is free software; you can redistribute it and/or modify
+-    it under the terms of the GNU General Public License as published by
+-    the Free Software Foundation; either version 2 of the License, or
+-    (at your option) any later version.
+-
+-    Kleopatra is distributed in the hope that it will be useful,
+-    but WITHOUT ANY WARRANTY; without even the implied warranty of
+-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+-    General Public License for more details.
+-
+-    You should have received a copy of the GNU General Public License
+-    along with this program; if not, write to the Free Software
+-    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+-
+-    In addition, as a special exception, the copyright holders give
+-    permission to link the code of this program with any edition of
+-    the Qt library by Trolltech AS, Norway (or with modified versions
+-    of Qt that use the same license as Qt), and distribute linked
+-    combinations including the two.  You must obey the GNU General
+-    Public License in all respects for all of the code used other than
+-    Qt.  If you modify this file, you may extend this exception to
+-    your version of the file, but you are not obligated to do so.  If
+-    you do not wish to do so, delete this exception statement from
+-    your version.
+-*/
+-
+-#include <config-kleopatra.h>
+-
+-#include "gnupg-helper.h"
+-
+-#include "utils/hex.h"
+-
+-#include <gpgme++/engineinfo.h>
+-#include <gpgme++/error.h>
+-#include <gpgme++/key.h>
+-
+-#include <QGpgME/Protocol>
+-#include <QGpgME/CryptoConfig>
+-
+-#include "kleopatra_debug.h"
+-
+-#include <QDir>
+-#include <QFile>
+-#include <QString>
+-#include <QProcess>
+-#include <QByteArray>
+-#include <QStandardPaths>
+-#include <QCoreApplication>
+-#include <gpg-error.h>
+-
+-#ifdef Q_OS_WIN
+-#include "gnupg-registry.h"
+-#endif // Q_OS_WIN
+-
+-#include <algorithm>
+-#include <array>
+-
+-using namespace GpgME;
+-
+-QString Kleo::gnupgHomeDirectory()
+-{
+-#ifdef Q_OS_WIN
+-    return QFile::decodeName(default_homedir());
+-#else
+-    const QByteArray gnupgHome = qgetenv("GNUPGHOME");
+-    if (!gnupgHome.isEmpty()) {
+-        return QFile::decodeName(gnupgHome);
+-    } else {
+-        return QDir::homePath() + QLatin1String("/.gnupg");
+-    }
+-#endif
+-}
+-
+-int Kleo::makeGnuPGError(int code)
+-{
+-    return gpg_error(static_cast<gpg_err_code_t>(code));
+-}
+-
+-static QString findGpgExe(GpgME::Engine engine, const QString &exe)
+-{
+-    const GpgME::EngineInfo info = GpgME::engineInfo(engine);
+-    return info.fileName() ? QFile::decodeName(info.fileName()) : QStandardPaths::findExecutable(exe);
+-}
+-
+-QString Kleo::gpgConfPath()
+-{
+-    static const auto path = findGpgExe(GpgME::GpgConfEngine, QStringLiteral("gpgconf"));
+-    return path;
+-}
+-
+-QString Kleo::gpgSmPath()
+-{
+-    static const auto path = findGpgExe(GpgME::GpgSMEngine, QStringLiteral("gpgsm"));
+-    return path;
+-}
+-
+-QString Kleo::gpgPath()
+-{
+-    static const auto path = findGpgExe(GpgME::GpgEngine, QStringLiteral("gpg"));
+-    return path;
+-}
+-
+-QStringList Kleo::gnupgFileWhitelist()
+-{
+-    return QStringList()
+-           // The obvious pubring
+-           << QStringLiteral("pubring.gpg")
+-           // GnuPG 2.1 pubring
+-           << QStringLiteral("pubring.kbx")
+-           // Trust in X509 Certificates
+-           << QStringLiteral("trustlist.txt")
+-           // Trustdb controls ownertrust and thus WOT validity
+-           << QStringLiteral("trustdb.gpg")
+-           // We want to update when smartcard status changes
+-           << QStringLiteral("reader*.status")
+-           // No longer used in 2.1 but for 2.0 we want this
+-           << QStringLiteral("secring.gpg")
+-           // Changes to the trustmodel / compliance mode might
+-           // affect validity so we check this, too.
+-           // Globbing for gpg.conf* here will trigger too often
+-           // as gpgconf creates files like gpg.conf.bak or
+-           // gpg.conf.tmp12312.gpgconf that should not trigger
+-           // a change.
+-           << QStringLiteral("gpg.conf")
+-           << QStringLiteral("gpg.conf-?")
+-           << QStringLiteral("gpg.conf-?.?")
+-           ;
+-}
+-
+-QString Kleo::gpg4winVersion()
+-{
+-    QFile versionFile(gpg4winInstallPath() + QStringLiteral("/../VERSION"));
+-    if (!versionFile.open(QIODevice::ReadOnly)) {
+-        // No need to translate this should only be the case in development
+-        // builds.
+-        return QStringLiteral("Unknown (no VERSION file found)");
+-    }
+-    const QString g4wTag = QString::fromUtf8(versionFile.readLine());
+-    if (!g4wTag.startsWith(QLatin1String("gpg4win"))) {
+-        // Hu? Something unknown
+-        return QStringLiteral("Unknown (invalid VERSION file found)");
+-    }
+-    // Next line is version.
+-    return QString::fromUtf8(versionFile.readLine()).trimmed();
+-}
+-
+-QString Kleo::gpg4winInstallPath()
+-{
+-#ifdef Q_OS_WIN
+-    // QApplication::applicationDirPath is only used as a fallback
+-    // to support the case where Kleopatra is not installed from
+-    // Gpg4win but Gpg4win is also installed.
+-    char *instDir = read_w32_registry_string("HKEY_LOCAL_MACHINE",
+-                                             "Software\\GPG4Win",
+-                                             "Install Directory");
+-    if (!instDir) {
+-        // Fallback to HKCU
+-        instDir = read_w32_registry_string("HKEY_CURRENT_USER",
+-                                           "Software\\GPG4Win",
+-                                           "Install Directory");
+-    }
+-    if (instDir) {
+-        QString ret = QString::fromLocal8Bit(instDir) + QStringLiteral("/bin");
+-        free(instDir);
+-        return ret;
+-    }
+-    qCDebug(KLEOPATRA_LOG) << "Gpg4win not found. Falling back to Kleopatra instdir.";
+-#endif
+-    return QCoreApplication::applicationDirPath();
+-}
+-
+-QString Kleo::gnupgInstallPath()
+-{
+-
+-#ifdef Q_OS_WIN
+-    // QApplication::applicationDirPath is only used as a fallback
+-    // to support the case where Kleopatra is not installed from
+-    // Gpg4win but Gpg4win is also installed.
+-    char *instDir = read_w32_registry_string("HKEY_LOCAL_MACHINE",
+-                                             "Software\\GnuPG",
+-                                             "Install Directory");
+-    if (!instDir) {
+-        // Fallback to HKCU
+-        instDir = read_w32_registry_string("HKEY_CURRENT_USER",
+-                                           "Software\\GnuPG",
+-                                           "Install Directory");
+-    }
+-    if (instDir) {
+-        QString ret = QString::fromLocal8Bit(instDir) + QStringLiteral("/bin");
+-        free(instDir);
+-        return ret;
+-    }
+-    qCDebug(KLEOPATRA_LOG) << "GnuPG not found. Falling back to gpgconf list dir.";
+-#endif
+-    return gpgConfListDir("bindir");
+-}
+-
+-QString Kleo::gpgConfListDir(const char *which)
+-{
+-    if (!which || !*which) {
+-        return QString();
+-    }
+-    const QString gpgConfPath = Kleo::gpgConfPath();
+-    if (gpgConfPath.isEmpty()) {
+-        return QString();
+-    }
+-    QProcess gpgConf;
+-    qCDebug(KLEOPATRA_LOG) << "gpgConfListDir: starting " << qPrintable(gpgConfPath) << " --list-dirs";
+-    gpgConf.start(gpgConfPath, QStringList() << QStringLiteral("--list-dirs"));
+-    if (!gpgConf.waitForFinished()) {
+-        qCDebug(KLEOPATRA_LOG) << "gpgConfListDir(): failed to execute gpgconf: " << qPrintable(gpgConf.errorString());
+-        qCDebug(KLEOPATRA_LOG) << "output was:\n" << gpgConf.readAllStandardError().constData();
+-        return QString();
+-    }
+-    const QList<QByteArray> lines = gpgConf.readAllStandardOutput().split('\n');
+-    for (const QByteArray &line : lines)
+-        if (line.startsWith(which) && line[qstrlen(which)] == ':') {
+-            const int begin = qstrlen(which) + 1;
+-            int end = line.size();
+-            while (end && (line[end - 1] == '\n' || line[end - 1] == '\r')) {
+-                --end;
+-            }
+-            const QString result = QDir::fromNativeSeparators(QFile::decodeName(hexdecode(line.mid(begin, end - begin))));
+-            qCDebug(KLEOPATRA_LOG) << "gpgConfListDir: found " << qPrintable(result)
+-                                   << " for '" << which << "'entry";
+-            return result;
+-        }
+-    qCDebug(KLEOPATRA_LOG) << "gpgConfListDir(): didn't find '" << which << "'"
+-                           << "entry in output:\n" << gpgConf.readAllStandardError().constData();
+-    return QString();
+-}
+-
+-static std::array<int, 3> getVersionFromString(const char *actual, bool &ok)
+-{
+-    std::array<int, 3> ret;
+-    ok = false;
+-
+-    if (!actual) {
+-        return ret;
+-    }
+-
+-    QString versionString = QString::fromLatin1(actual);
+-
+-    // Try to fix it up
+-    QRegExp rx(QLatin1String("(\\d+)\\.(\\d+)\\.(\\d+)(?:-svn\\d+)?.*"));
+-    for (int i = 0; i < 3; i++) {
+-        if (!rx.exactMatch(versionString)) {
+-            versionString += QStringLiteral(".0");
+-        } else {
+-            ok = true;
+-            break;
+-        }
+-    }
+-
+-    if (!ok) {
+-        qCDebug(KLEOPATRA_LOG) << "Can't parse version " << actual;
+-        return ret;
+-    }
+-
+-    for (int i = 0; i < 3; ++i) {
+-        ret[i] = rx.cap(i + 1).toUInt(&ok);
+-        if (!ok) {
+-            return ret;
+-        }
+-    }
+-
+-    ok = true;
+-    return ret;
+-}
+-
+-bool Kleo::versionIsAtLeast(const char *minimum, const char *actual)
+-{
+-    if (!minimum || !actual) {
+-        return false;
+-    }
+-    bool ok;
+-    const auto minimum_version = getVersionFromString(minimum, ok);
+-    if (!ok) {
+-        return false;
+-    }
+-    const auto actual_version = getVersionFromString(actual, ok);
+-    if (!ok) {
+-        return false;
+-    }
+-
+-    return !std::lexicographical_compare(std::begin(actual_version), std::end(actual_version),
+-                                         std::begin(minimum_version), std::end(minimum_version));
+-
+-}
+-
+-bool Kleo::engineIsVersion(int major, int minor, int patch, GpgME::Engine engine)
+-{
+-    static QMap<Engine, std::array<int, 3> > cachedVersions;
+-    const int required_version[] = {major, minor, patch};
+-    // Gpgconf means spawning processes which is expensive on windows.
+-    std::array<int, 3> actual_version;
+-    if (!cachedVersions.contains(engine)) {
+-        const Error err = checkEngine(engine);
+-        if (err.code() == GPG_ERR_INV_ENGINE) {
+-            qCDebug(KLEOPATRA_LOG) << "isVersion: invalid engine. '";
+-            return false;
+-        }
+-
+-        const char *actual = GpgME::engineInfo(engine).version();
+-        bool ok;
+-        actual_version = getVersionFromString(actual, ok);
+-
+-        qCDebug(KLEOPATRA_LOG) << "Parsed" << actual << "as: "
+-                               << actual_version[0] << '.'
+-                               << actual_version[1] << '.'
+-                               << actual_version[2] << '.';
+-        if (!ok) {
+-            return false;
+-        }
+-        cachedVersions.insert(engine, actual_version);
+-    } else {
+-        actual_version = cachedVersions.value(engine);
+-    }
+-
+-    // return ! ( actual_version < required_version )
+-    return !std::lexicographical_compare(std::begin(actual_version), std::end(actual_version),
+-                                         std::begin(required_version), std::end(required_version));
+-}
+-
+-const QString& Kleo::paperKeyInstallPath()
+-{
+-    static const QString pkPath = QStandardPaths::findExecutable(QStringLiteral("paperkey"), QStringList() << QCoreApplication::applicationDirPath()).isEmpty() ?
+-                                  QStandardPaths::findExecutable(QStringLiteral("paperkey")) :
+-                                  QStandardPaths::findExecutable(QStringLiteral("paperkey"), QStringList() << QCoreApplication::applicationDirPath());
+-    return pkPath;
+-}
+-
+-bool Kleo::haveKeyserverConfigured()
+-{
+-    if (engineIsVersion(2, 1, 19)) {
+-        // since 2.1.19 there is a builtin keyserver
+-        return true;
+-    }
+-    const QGpgME::CryptoConfig *const config = QGpgME::cryptoConfig();
+-    if (!config) {
+-        return false;
+-    }
+-    const QGpgME::CryptoConfigEntry *const entry = config->entry(QStringLiteral("gpg"), QStringLiteral("Keyserver"), QStringLiteral("keyserver"));
+-    return entry && !entry->stringValue().isEmpty();
+-}
+-
+-bool Kleo::gpgComplianceP(const char *mode)
+-{
+-    const auto conf = QGpgME::cryptoConfig();
+-    const auto entry = conf->entry(QStringLiteral("gpg"),
+-                                   QStringLiteral("Configuration"),
+-                                   QStringLiteral("compliance"));
+-
+-    return entry && entry->stringValue() == QString::fromLatin1(mode);
+-}
+-
+-enum GpgME::UserID::Validity Kleo::keyValidity(const GpgME::Key &key)
+-{
+-    enum UserID::Validity validity = UserID::Validity::Unknown;
+-
+-    for (const auto &uid: key.userIDs()) {
+-        if (validity == UserID::Validity::Unknown
+-            || validity > uid.validity()) {
+-            validity = uid.validity();
+-        }
+-    }
+-
+-    return validity;
+-}
+-
+-#ifdef Q_OS_WIN
+-static QString fromEncoding (unsigned int src_encoding, const char *data)
+-{
+-    int n = MultiByteToWideChar(src_encoding, 0, data, -1, NULL, 0);
+-    if (n < 0) {
+-        return QString();
+-    }
+-
+-    wchar_t *result = (wchar_t *) malloc ((n+1) * sizeof *result);
+-
+-    n = MultiByteToWideChar(src_encoding, 0, data, -1, result, n);
+-    if (n < 0) {
+-        free(result);
+-        return QString();
+-    }
+-    const auto ret = QString::fromWCharArray(result, n);
+-    free(result);
+-    return ret;
+-}
+-#endif
+-
+-QString Kleo::stringFromGpgOutput(const QByteArray &ba)
+-{
+-#ifdef Q_OS_WIN
+-    /* Qt on Windows uses GetACP while GnuPG prefers
+-     * GetConsoleOutputCP.
+-     *
+-     * As we are not a console application GetConsoleOutputCP
+-     * usually returns 0.
+-     * From experience the closest thing that let's us guess
+-     * what GetConsoleOutputCP returns for a console application
+-     * it appears to be the OEMCP.
+-     */
+-    unsigned int cpno = GetConsoleOutputCP ();
+-    if (!cpno) {
+-        cpno = GetOEMCP();
+-    }
+-    if (!cpno) {
+-        cpno = GetACP();
+-    }
+-    if (!cpno) {
+-        qCDebug(KLEOPATRA_LOG) << "Failed to find native codepage";
+-        return QString();
+-    }
+-
+-    return fromEncoding(cpno, ba.constData());
+-#else
+-    return QString::fromLocal8Bit(ba);
+-#endif
+-}
+diff --git a/src/utils/windowsprocessdevice.cpp b/src/utils/windowsprocessdevice.cpp
+index 19f2ff58..ddbed2b5 100644
+--- a/src/utils/windowsprocessdevice.cpp
++++ b/src/utils/windowsprocessdevice.cpp
+@@ -33,7 +33,7 @@
+
+ #include "kleopatra_debug.h"
+
+-#include "gnupg-helper.h"
++#include <Libkleo/GnuPG>
+
+ #include <windows.h>
+
+diff --git a/src/view/padwidget.cpp b/src/view/padwidget.cpp
+index 89c5e12f..d565cbfc 100644
+--- a/src/view/padwidget.cpp
++++ b/src/view/padwidget.cpp
+@@ -42,7 +42,7 @@
+
+ #include "crypto/signencrypttask.h"
+ #include "crypto/decryptverifytask.h"
+-#include "utils/gnupg-helper.h"
++#include <Libkleo/GnuPG>
+ #include "utils/input.h"
+ #include "utils/output.h"
+
+diff --git a/src/view/pgpcardwidget.cpp b/src/view/pgpcardwidget.cpp
+index 5e8d1d8d..9ce60506 100644
+--- a/src/view/pgpcardwidget.cpp
++++ b/src/view/pgpcardwidget.cpp
+@@ -38,7 +38,7 @@
+ #include "smartcard/readerstatus.h"
+
+ #include "dialogs/gencardkeydialog.h"
+-#include "utils/gnupg-helper.h"
++#include <Libkleo/GnuPG>
+
+ #include <QProgressDialog>
+ #include <QThread>
+diff --git a/src/view/searchbar.cpp b/src/view/searchbar.cpp
+index 5aeea9a8..f64e811b 100644
+--- a/src/view/searchbar.cpp
++++ b/src/view/searchbar.cpp
+@@ -45,7 +45,7 @@
+ #include <QPushButton>
+
+
+-#include <utils/gnupg-helper.h>
++#include <Libkleo/GnuPG>
+ #include <qgpgme/keylistjob.h>
+ #include <qgpgme/protocol.h>
+ #include <gpgme++/keylistresult.h>
+--
+2.20.1
