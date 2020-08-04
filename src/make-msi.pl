@@ -863,7 +863,8 @@ sub gpg4win_nsis_stubs
                 dir => $parser->{outpath},
                 target => $target };
         }
-        elsif ($command eq 'WriteRegStr')
+        elsif ($command eq 'WriteRegStr' ||
+               $command eq 'WriteRegExpandStr')
         {
             fail "$file:$.: not supported" if ($#args != 3);
 
@@ -878,10 +879,19 @@ sub gpg4win_nsis_stubs
             my $value = $args[3];
             $value =~ s/^"(.*)"$/$1/;
             $value =~ s/\$INSTDIR\\?/\[APPLICATIONFOLDER\]/g;
+            $value =~ s/\${VERSION}/1.0.0/g;
+            $value =~ s/\$\\"/"/g;
+
+            my $type;
+            if ($command eq 'WriteRegExpandStr') {
+                $type = 'expandable';
+            } else {
+                $type = 'string';
+            }
 
             push (@{$parser->{pkg}->{registry}},
                 { root => $root, key => $key, name => $name,
-                    value => $value, type => 'string' });
+                    value => $value, type => $type });
         }
     }
 
@@ -1212,8 +1222,9 @@ sub dump_all
                 $targetfull eq 'bin_64\\gpgex.dll')
             {
                 print ' ' x $::level
-                . "<Component Id='c_$pkg->{name}_$fileidx' Win64='yes' Guid='"
+                . "<Component Id='c_$pkg->{name}_$fileidx' Guid='"
                 . get_guid ($targetfull) . "'>\n";
+                print ' ' x $::level . "<Condition>VersionNT64</Condition>\n";
             }
             else # 32 bit components
             {
@@ -1231,18 +1242,24 @@ sub dump_all
             print ' ' x $::level
             . "  <File Id='f_$pkg->{name}_$fileidx' Name='"
             . $file->{target} ."' KeyPath='yes'" . " Source='" .
-            $sourcefull . "'>\n";
-            # Does not help to avoid the warnings: DefaultLanguage='1033'.
+            $sourcefull . "'";
 
-            # EXCEPTIONS:
-            if ($targetfull eq 'gpgex.dll')
+            if ($targetfull eq 'bin_64\\gpgol.dll' or
+                $targetfull eq 'bin_64\\gpgex.dll')
             {
                 print ' ' x $::level
-                . "    <Class Id='{CCD955E4-5C16-4A33-AFDA-A8947A94946B}' "
-                . "Context='InprocServer32' Description='GpgEX' "
-                . "ThreadingModel='apartment'/>\n";
+                . " SelfRegCost='1' ";
             }
+            print ">\n";
+
             # Create shortcuts.
+            if ($targetfull eq 'bin\\kleopatra.exe')
+            {
+                print ' ' x $::level
+                . "    <Shortcut Id='sm_$pkg->{name}_$fileidx' "
+                . "Directory='ProgramMenuDir' Name='Kleopatra'"
+                . " Description='!(loc.DESC_Menu_kleopatra)'/>" . "\n";
+            }
             if (defined $parser->{shortcuts}->{$targetfull})
             {
                 my $shortcut = $parser->{shortcuts}->{$targetfull};
@@ -1271,7 +1288,7 @@ sub dump_all
 
                 #       if ($shortcut->{icon} eq '')
                 #       {
-                print "/>\n";
+                # print "/>\n";
                 #       }
                 #       else
                 #       {
@@ -1307,8 +1324,7 @@ sub dump_all
             }
 
             # EXCEPTIONS:
-            if ($targetfull eq 'bin\\gpgol.dll' or
-                $targetfull eq 'bin_64\\gpgol.dll')
+            if ($targetfull eq 'bin\\gpgol.dll')
             {
                 # KeyPath=no as the file is the key path and the registry values
                 # are only meta information for the files.
@@ -1325,12 +1341,12 @@ sub dump_all
                 <RegistryValue Root="HKMU" KeyPath='no' Key="Software\\Microsoft\\Office\\Outlook\\Addins\\GNU.GpgOL" Name="FriendlyName" Value="GpgOL - The GnuPG Outlook Plugin" Type="string" Action="write" />
                 <RegistryValue Root="HKMU" KeyPath='no' Key="Software\\Microsoft\\Office\\Outlook\\Addins\\GNU.GpgOL" Name="Description" Value="Cryptography for Outlook" Type="string" Action="write" />
 EOF
-            } elsif ($targetfull eq 'bin\\gpgex.dll' or $targetfull eq 'bin_64\\gpgex.dll') {
+            } elsif ($targetfull eq 'bin\\gpgex.dll') {
                 print ' ' x $::level
                 . "  <ProgId Id='*'/>\n";
                 print ' ' x $::level
                 . "  <ProgId Id='Directory'/>\n";
-              print <<EOF;
+                print <<EOF;
                 <RegistryValue Root="HKMU" KeyPath='no' Key="Software\\Classes\\CLSID\\{CCD955E4-5C16-4A33-AFDA-A8947A94946B}" Value="GpgEX" Type="string" Action="write" />
                 <RegistryValue Root="HKMU" KeyPath='no' Key="Software\\Classes\\CLSID\\{CCD955E4-5C16-4A33-AFDA-A8947A94946B}\\InprocServer32" Name="ThreadingModel" Value="Apartment" Type="string" Action="write" />
                 <RegistryValue Root="HKMU" KeyPath='no' Key="Software\\Classes\\CLSID\\{CCD955E4-5C16-4A33-AFDA-A8947A94946B}\\InprocServer32" Value="[#f_$pkg->{name}_$fileidx]" Type="string" Action="write" />
@@ -1568,6 +1584,7 @@ sub dump_single_custom {
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
   <Fragment>
     <DirectoryRef Id="TARGETDIR">
+     <Directory Id="KleopatraDataFolder" Name="share"/>
      <Directory Id="CommonAppDataFolder">
         <Directory Id="CommonAppDataManufacturerFolder" Name="GNU">
           <Directory Id="AppDataSubFolder" Name="etc">
@@ -1624,6 +1641,10 @@ EOF
             # The VERSION file is special and needs to go
             # in the Gpg4win root folder.
             $dirname = "APPLICATIONFOLDER";
+        } elsif ($basename eq "kleopatrarc") {
+            # The VERSION file is special and needs to go
+            # in the Gpg4win root folder.
+            $dirname = "KleopatraDataFolder";
         }
         else {
             $dirname = "GnuPGDataFolder";
@@ -1687,6 +1708,8 @@ my $parser = \%parser;
 
 fetch_guids ();
 
+$::build_version = '';
+
 while ($#ARGV >= 0 and $ARGV[0] =~ m/^-/)
 {
     my $opt = shift @ARGV;
@@ -1697,6 +1720,10 @@ while ($#ARGV >= 0 and $ARGV[0] =~ m/^-/)
     elsif ($opt =~ m/^--manifest$/)
     {
         $::files_file = shift @ARGV;
+    }
+    elsif ($opt =~ m/^--version$/)
+    {
+        $::build_version = shift @ARGV;
     }
     elsif ($opt =~ m/^-D([^=]*)=(.*)$/)
     {
@@ -1727,6 +1754,7 @@ while ($#ARGV >= 0 and $ARGV[0] =~ m/^-/)
         print STDERR "       --manifest NAME  Save included files into file NAME (default: $::files_file)\n";
         print STDERR "       -DNAME=VALUE     Define preprocessor symbol NAME to VALUE\n";
         print STDERR "       -LLANG           Build installer for language LANG (default: $::lang)\n";
+        print STDERR "       --version        VERSION of the installer.\n";
         print STDERR "\n";
         print STDERR "       -h|--help        Print this help and exit\n";
         exit 0;
@@ -1766,6 +1794,11 @@ $::l10n_file = "gpg4win-all.wxl";
 
 my $BUILD_FILEVERSION = nsis_fetch ($parser, '_BUILD_FILEVERSION');
 
+if ($::build_version eq '')
+{
+    $::build_version = $BUILD_FILEVERSION;
+}
+
 my $product_id = get_guid ("/PRODUCT/$BUILD_FILEVERSION");
 my $upgrade_code = get_guid ("/UPGRADE/1");
 
@@ -1785,7 +1818,7 @@ print <<EOF;
            UpgradeCode='$upgrade_code'
            Language='$lcid'
            Codepage='1252'
-           Version='$BUILD_FILEVERSION'
+           Version='$::build_version'
            Manufacturer='GnuPG.com'>
     <Package Description='GnuPG VS-Desktop'
              Comments='http://www.gnupg.com/'
@@ -1798,11 +1831,10 @@ print <<EOF;
         <![CDATA[Installed OR (VersionNT >= 601)]]>
     </Condition>
 
-
     <Upgrade Id='$upgrade_code'>
       <UpgradeVersion Property='UPGRADEPROP'
                       IncludeMaximum='no'
-                      Maximum='$BUILD_FILEVERSION'/>
+                      Maximum='$::build_version'/>
     </Upgrade>
 
     <!-- Set up Properties -->
@@ -1820,10 +1852,19 @@ print <<EOF;
        Name='gpg4win.ini' Section='gpg4win' Key='instdir'/>
     </Property>
 
+    <Property Id="GPG4WININSTALLED">
+      <RegistrySearch Id='gpg4win_instdir_registry2' Type='raw'
+       Root='HKLM' Key='Software\\Gpg4win' Name='Install Directory'
+       Win64='no'/>
+    </Property>
+
     <Condition Message="!(loc.gpg4winInstalled)">
-        <![CDATA[NOT Installed AND gpg4win_instdir_registry)]]>
+        <![CDATA[Installed OR (NOT GPG4WININSTALLED)]]>
     </Condition>
 
+    <!-- Turn on logging
+        <Property Id="MsiLogging" Value="gnupg-vs-desktop"/>
+    -->
     <Icon Id="shield.ico" SourceFile="shield.ico"/>
     <Property Id="ARPPRODUCTICON" Value="shield.ico"/>
 
@@ -1882,7 +1923,6 @@ print <<EOF;
       Value="Launch Kleopatra" />
     <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOX" Value="1" />
  -->
-
 
     <Feature Id="Feature_GnuPG"
          Title="GnuPG"
@@ -1951,16 +1991,13 @@ print <<EOF;
       </Directory>
 EOF
 
-if (scalar keys %{$parser->{shortcuts}})
-{
-    my $name = "GnuPG VS-Desktop";
+my $name = "GnuPG VS-Desktop";
 
-    print <<EOF;
-      <Directory Id='ProgramMenuFolder' Name='PMenu'>
-        <Directory Id='ProgramMenuDir' Name='$name'/>
-      </Directory>
+print <<EOF;
+  <Directory Id='ProgramMenuFolder' Name='PMenu'>
+    <Directory Id='ProgramMenuDir' Name='$name'/>
+  </Directory>
 EOF
-}
 
 #print <<EOF;
 #      <Directory Id="DesktopFolder" Name="Desktop"/>
