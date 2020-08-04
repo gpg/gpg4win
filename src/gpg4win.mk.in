@@ -881,11 +881,19 @@ installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi: stamps/stamp-msi-base playg
 	 gnupg-msi-$(gpg4win_pkg_gnupg_msi_version)-bin.wixlib \
 	 $(1).wixlib"; \
 	 scp $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)/GnuPG-VS-Desktop-$(VERSION)-$(1).msi \
-	 installers;
+	 installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi;
 
-signed_installers/GnuPG-VS-Desktop-$(VERSION)-$(1).msi: installers/GnuPG-VS-Desktop-$(VERSION)-$(1).msi
+signed_installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi: installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi
 	mkdir -p signed_installers
 	$(call AUTHENTICODE_sign,"installers/GnuPG-VS-Desktop-$(VERSION)-$(1).msi","signed_installers/GnuPG-VS-Desktop-$(VERSION)-$(1).msi");\
+
+stamps/stamp-$(1)-upload: signed_installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi
+	sha256sum signed_installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi > \
+		signed_installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi.sha256
+	scp signed_installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi \
+		signed_installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi.sha256 \
+		$(VSD_PUBLISH_HOST)/$(call GETVAR,msi_target_$(1)_directory)
+	touch stamps/stamp-$(1)-upload
 
 endef
 
@@ -936,16 +944,26 @@ clean-gpg4win:
 	$(RM) -fR playground stamps
 
 stamps/stamp-versions-all-signed: \
-	$(addsuffix /VERSION.sig, $(addprefix gnupg-vsd/,$(msi_targets))) \
+	$(addsuffix /VERSION.sig, $(addprefix gnupg-vsd/,$(msi_targets)))
+	touch stamps/stamp-versions-all-signed
+
+stamps/stamp-all-upload: \
+	$(addsuffix -upload, $(addprefix stamps/stamp-,$(msi_targets)))
+	touch stamps/stamps-all-upload
+
 
 msi: stamps/stamp-versions-all-signed \
-	$(addsuffix .msi,$(addprefix installers/GnuPG-VS-Desktop-$(VERSION)-,$(msi_targets)))
-	if [ -z "$(addsuffix .msi,$(addprefix installers/GnuPG-VS-Desktop-$(VERSION)-,$(msi_targets)))" ]; then \
+	$(addsuffix .msi,$(addprefix installers/GnuPG-VS-Desktop-$(VSD_VERSION)-,$(msi_targets)))
+	if [ -z "$(addsuffix .msi,$(addprefix installers/GnuPG-VS-Desktop-$(VSD_VERSION)-,$(msi_targets)))" ]; then \
 		echo "No MSI targets configured."; \
+	else \
+		echo "######################"; \
+		echo "# MSI Packaging done #"; \
+		echo "######################"; \
 	fi
 
 stamps/stamp-msi-all-signed: gnupg-vsd/sign.mk \
-	$(addsuffix .msi,$(addprefix signed_installers/GnuPG-VS-Desktop-$(VERSION)-,$(msi_targets)))
+	$(addsuffix .msi,$(addprefix signed_installers/GnuPG-VS-Desktop-$(VSD_VERSION)-,$(msi_targets)))
 	touch stamps/stamp-msi-all-signed
 
 
