@@ -1841,7 +1841,8 @@ print <<EOF;
     <!-- Set up Properties -->
     <MediaTemplate EmbedCab="yes" />
     <!-- 2 is like highest available in msi -->
-    <Property Id="ALLUSERS" Value="2" />
+    <!-- 1 forces highest available -->
+    <Property Id="ALLUSERS" Value="1" />
 
     <Property Id="ApplicationFolderName" Value="Gpg4win" />
     <Property Id="WixAppFolder" Value="WixPerMachineFolder" />
