@@ -1799,7 +1799,7 @@ if ($::build_version eq '')
     $::build_version = $BUILD_FILEVERSION;
 }
 
-my $product_id = get_guid ("/PRODUCT/$BUILD_FILEVERSION");
+my $product_id = get_guid ("/PRODUCT/$::build_version");
 my $upgrade_code = get_guid ("/UPGRADE/1");
 
 my $INSTALL_DIR = nsis_fetch ($parser, 'INSTALL_DIR');
@@ -1825,7 +1825,8 @@ print <<EOF;
              Compressed='yes'
              InstallerVersion='200'
              Manufacturer='GnuPG.com'
-             Languages='1033' SummaryCodepage='1252'/>
+             Languages='1033'
+             SummaryCodepage='1252'/>
 
     <Condition Message="At least Windows 7 or Server 2008 R2 required.">
         <![CDATA[Installed OR (VersionNT >= 601)]]>

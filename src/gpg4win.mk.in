@@ -149,7 +149,7 @@ define SETVARS_WINE
 		echo "ERROR: $$$$WINEINSTEX already exists. Please remove."; \
 		exit 1; \
 	fi; \
-	MSI_VERSION=$$$$(echo $(VSD_VERSION) | tr -s \\-beta .)
+	MSI_VERSION=$$$$(echo $(VSD_VERSION))
 endef
 
 # Same as above
@@ -192,7 +192,7 @@ define SETVARS_WINE_TWO_DOLLAR
 		echo "ERROR: $$WINEINSTEX already exists. Please remove."; \
 		exit 1; \
 	fi; \
-	MSI_VERSION=$$(echo $(VSD_VERSION) | tr -s \\-beta .)
+	MSI_VERSION=$$(echo $(VSD_VERSION))
 endef
 
 # Support macro.  Unpack the archive $(1).
@@ -885,15 +885,18 @@ installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi: stamps/stamp-msi-base playg
 
 signed_installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi: installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi
 	mkdir -p signed_installers
-	$(call AUTHENTICODE_sign,"installers/GnuPG-VS-Desktop-$(VERSION)-$(1).msi","signed_installers/GnuPG-VS-Desktop-$(VERSION)-$(1).msi");\
+	$(call AUTHENTICODE_sign,"installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi","signed_installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi");\
 
 stamps/stamp-$(1)-upload: signed_installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi
 	sha256sum signed_installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi > \
 		signed_installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi.sha256
+	gpg --yes -o signed_installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi.sig -bau $(msi_signkey) \
+		signed_installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi
 	scp signed_installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi \
 		signed_installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi.sha256 \
 		$(VSD_PUBLISH_HOST)/$(call GETVAR,msi_target_$(1)_directory)
-	touch stamps/stamp-$(1)-upload
+	echo "https://download.gnupg.com/files/$(call GETVAR,msi_target_$(1)_directory)/signed_installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi" \
+	> stamps/stamp-$(1)-upload
 
 endef
 
