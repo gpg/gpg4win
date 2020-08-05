@@ -946,12 +946,17 @@ clean-stamps:
 clean-gpg4win:
 	$(RM) -fR playground stamps
 
-stamps/stamp-versions-all-signed: \
+stamps/stamp-versions-all-signed: stamps/stamp-directories \
 	$(addsuffix /VERSION.sig, $(addprefix gnupg-vsd/,$(msi_targets)))
 	touch stamps/stamp-versions-all-signed
 
-stamps/stamp-all-upload: \
+stamps/stamp-all-upload: stamps/stamp-dist-self \
 	$(addsuffix -upload, $(addprefix stamps/stamp-,$(msi_targets)))
+	echo "Upload URLs:"
+	cat $(addsuffix -upload, $(addprefix stamps/stamp-,$(msi_targets)))
+	gpg --yes -o gnupg-vsd-$(VERSION).tar.bz2.sig -bau $(msi_signkey) \
+		../gpg4win-$(VERSION).tar.bz2
+	scp ../gpg4win-$(VERSION).tar.bz2 $(VSD_PUBLISH_HOST)/src/gnupg-vsd-$(VERSION).tar.bz2
 	touch stamps/stamps-all-upload
 
 
@@ -971,8 +976,9 @@ stamps/stamp-msi-all-signed: gnupg-vsd/sign.mk \
 
 
 msi-signed: stamps/stamp-msi-all-signed
+msi-upload: stamps/stamp-all-upload stamps/stamp-dist-self
 
-.PHONY : all-gpg4win clean-stamps clean-gpg4win msi msi-signed
+.PHONY : all-gpg4win clean-stamps clean-gpg4win msi msi-signed msi-upload
 
 # Insert the template for msi packages.
 $(foreach msipkg, $(msi_targets), $(eval $(call MSI_template,$(msipkg))))
