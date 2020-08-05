@@ -1860,8 +1860,14 @@ print <<EOF;
        Win64='no'/>
     </Property>
 
+    <Property Id="VSDINSTALLED">
+      <RegistrySearch Id='vsdinstalled' Type='raw'
+       Root='HKLM' Key='Software\\Gpg4win' Name='VS-Desktop-Version'
+       Win64='no'/>
+    </Property>
+
     <Condition Message="!(loc.gpg4winInstalled)">
-        <![CDATA[Installed OR (NOT GPG4WININSTALLED)]]>
+        <![CDATA[VSDINSTALLED OR (NOT GPG4WININSTALLED)]]>
     </Condition>
 
     <!-- Turn on logging
@@ -1934,6 +1940,8 @@ print <<EOF;
       <Component Id="gpg4win_reg_cmp" Guid="7F122F29-DB6A-4DE5-9DD2-0DAF1A24B61F" Directory="APPLICATIONFOLDER">
         <RegistryValue Id="r_gpg4win_01" Root="HKMU" Key="Software\\Gpg4win" Name="Install Directory" Action="write"
                        Type="string" Value="[APPLICATIONFOLDER]" KeyPath="yes"/>
+        <RegistryValue Id="r_gpg4win_02" Root="HKMU" Key="Software\\Gpg4win" Name="VS-Desktop-Version" Action="write"
+                       Type="string" Value="$::build_version" KeyPath="no"/>
       </Component>
       <!-- Hardcode some components that always should be installed -->
 
