@@ -4,4 +4,15 @@
  Do you wish to overwrite this version?</String>
 <String Id="gpg4winInstalled">Please uninstall Gpg4win before installing GnuPG VS-Desktop.</String>
 <String Id="DESC_Menu_kleopatra">Run the Kleopatra key management tool.</String>
+<String Id="DESC_SEC_kleopatra">Keymanager for OpenPGP and X.509 and common crypto dialogs.</String>
+<String Id="T_File_Type_gpg_Name">OpenPGP Binary File</String>
+<String Id="T_File_Type_asc_Name">OpenPGP Text File</String>
+<String Id="T_File_Type_sig_Name">OpenPGP Signature</String>
+<String Id="T_File_Type_pgp_key_Name">OpenPGP Certficate File</String>
+<String Id="T_File_Type_pem_Name">CMS (S/MIME) File</String>
+<String Id="T_File_Type_x509_Name">X509 Certificate File</String>
+<String Id="T_File_Type_x509_info_tip">Certificate for CMS (S/MIME)</String>
+<String Id="T_File_Type_info_tip">This can be encrypted data, a signature or a certificate.</String>
+<String Id="T_File_Type_sig_info_tip">A cryptographic signature to verify the authenticity of another file.</String>
+<String Id="T_File_Type_pgp_key_info_tip">Certificate for OpenPGP</String>
 </WixLocalization>

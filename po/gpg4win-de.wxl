@@ -4,4 +4,15 @@
  Möchten Sie diese überschreiben?</String>
 <String Id="gpg4winInstalled">Bitte deinstallieren Sie Gpg4win vor der Installation von GnuPG VS-Desktop.</String>
 <String Id="DESC_Menu_kleopatra">Den Zertifikatsmanager Kleopatra aufrufen.</String>
+<String Id="DESC_SEC_kleopatra">Zertifikatsmanager für OpenPGP und X.509 (S/MIME) sowie einheitliche Benutzerführung für alle Krypto-Operationen.</String>
+<String Id="T_File_Type_gpg_Name">OpenPGP Binärdatei</String>
+<String Id="T_File_Type_asc_Name">OpenPGP Text Datei</String>
+<String Id="T_File_Type_sig_Name">OpenPGP Signatur</String>
+<String Id="T_File_Type_pgp_key_Name">OpenPGP Zertifikats-Datei</String>
+<String Id="T_File_Type_pem_Name">CMS (S/MIME) Datei</String>
+<String Id="T_File_Type_x509_Name">X509 Zertifikats-Datei</String>
+<String Id="T_File_Type_x509_info_tip">Zertifikat für CMS (S/MIME).</String>
+<String Id="T_File_Type_info_tip">Dies können verschlüsselte Daten sein, eine Signatur oder Zertifikate.</String>
+<String Id="T_File_Type_sig_info_tip">Eine Kryptographische Signatur um die Authenzität einer anderen Datei zu prüfen.</String>
+<String Id="T_File_Type_pgp_key_info_tip">OpenPGP Zertifikat.</String>
 </WixLocalization>

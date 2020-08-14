@@ -259,8 +259,10 @@ sub nsis_translate
 
         if (exists $parser->{po}->{$::lang}->{$1})
         {
-            my $subst = $parser->{po}->{$::lang}->{$1};
-            $val =~ s/\$\($var\)/$subst/g;
+            # This was historic taking nsis translations we now do this
+            # through WXL l10n system.
+            #my $subst = $parser->{po}->{$::lang}->{$1};
+            $val =~ s/\$\($var\)/!\(loc.$var\)/g;
         }
         else
         {
