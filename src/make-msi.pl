@@ -1887,7 +1887,11 @@ print <<EOF;
     <!-- We leave repair Property Id="ARPNOREPAIR" Value="yes" Secure="yes" /> -->
     <!-- We leave modify <Property Id="ARPNOMODIFY" Value="yes" Secure="yes" /> -->
 
-    <MajorUpgrade DowngradeErrorMessage="!(loc.T_FoundExistingVersion)" AllowSameVersionUpgrades="yes" />
+    <!-- We allow Downgrades
+    <MajorUpgrade DowngradeErrorMessage="!(loc.T_FoundExistingVersion)" AllowDowngrades="yes" AllowSameVersionUpgrades="yes" />
+    -->
+    <MajorUpgrade AllowDowngrades="yes"/>
+
     <WixVariable Id="WixUILicenseRtf" Value="license.rtf" />
 
     <!-- This is the main installer sequence run when the product is actually installed -->
