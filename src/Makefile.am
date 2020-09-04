@@ -95,7 +95,8 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
         slideshow/slide2-gpgex.png \
         slideshow/slide3-kleopatra.png \
         slideshow/slide4-summary.png \
-        file-ext.ico
+        file-ext.ico \
+        kdeglobals qtlogging.ini
 
 gpg4win_readme_ll = en de ar es fr ru pt
 
