@@ -3,15 +3,43 @@
 # The version number given below are for the standard installers as
 # distributed by www.gpg4win.org.
 
-Noteworthy changes in Version 4.0.0 (unreleased)
+Noteworthy changes in Version 3.1.13 (2020-09-04)
 ------------------------------------------------
 
+(en) GnuPG: Updated to 2.2.23 to fix CVE-2020-25125.
+     ( https://lists.gnupg.org/pipermail/gnupg-announce/2020q3/000448.html )
+
+(de) GnuPG: Aktualisiert auf Version 2.2.23 um CVE-2020-25125 zu
+     beheben.
+     ( https://ists.gnupg.org/pipermail/gnupg-announce/2020q3/000448.html )
+
+(en) GpgOL: Fixed an issue where unencrypted drafts of mails were stored
+     on the an Exchange Server and could be restored through the
+     "recently deleted items" option. Especially if the draft encryption,
+     introduced in Gpg4win-3.1.8, is used this can be a security issue. (T5022)
+
+     Gpg4win cannot offer guarantees that Outlook does not send data which
+     is entered *before* the encryption to Microsoft or an Exchange Server.
+     Under Windows with Outlook this is impossible to control.
+     The draft encryption option is our best effort to avoid this.
+
+(de) GpgOL: Eine Möglichkeit wird verhindert das Outlook an einen
+     Exchange server unverschlüsselte Daten vor der Verschlüsselung sendet.
+     Insbesondere wenn die in Gpg4win-3.1.8 eingeführte Entwurfs-
+     Verschlüsselung verwendet wurde ist dies ein Sicherheitsproblem.
+     (T5022)
+
+     Gpg4win kann nicht garantieren, dass Outlook keine Daten *vor* der
+     Verschlüsselung an Microsoft oder Exchange Server sendet.  Dies
+     ist bei dem Betriebssystem Windows und der Verwendung von Outlook
+     unmöglich.  Die Entwurfsverschlüsselung ist unsere beste Lösung um
+     dies möglichst zu vermeiden.
 
 ~~~~~~~~~~~~~~~
-GnuPG:          2.3.0
+GnuPG:          2.2.23
 Kleopatra:      3.1.12
 GPA:            0.10.0
-GpgOL:          2.4.6
+GpgOL:          2.4.7
 GpgEX:          1.0.6
 Kompendium DE:  4.0.1
 Compendium EN:  3.0.0
