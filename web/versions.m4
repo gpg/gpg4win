@@ -1,25 +1,25 @@
-m4_define(`VERSION',`3.1.12')
-m4_define(`DL_DATE',`2020-07-24')
+m4_define(`VERSION',`3.1.13')
+m4_define(`DL_DATE',`2020-09-04')
 m4_define(`DOWNLOAD_URL',`https://files.gpg4win.org/gpg4win-VERSION.exe')
 m4_define(`DL_SIZE',`27.6 MByte')
 m4_define(`SDOWNLOAD_URL',`https://files.gpg4win.org/gpg4win-VERSION.tar.bz2')
 m4_define(`SDL_SIZE',`242 MByte')
 
 m4_dnl Paste output of mk-chksums here
-m4_define(`SHA1_SRC',`dbe3e56ee2ebcf509773b64322323db128aea5fd')
-m4_define(`SHA1_EXE',`b483d6c422722e8825957e1d944bee48181be24b')
-m4_define(`SHA2_SRC',`a270e50aac3ccaf827b858aa17f77c0e60388565eafe950a638c2b813680a104')
-m4_define(`SHA2_EXE',`1c903fc5cdf3e72a7de0962b8c4530a6e0ecdf63bda55cc54aa6b1b9036f6c5b')
-m4_define(`LEN_SRC',`253073953')
-m4_define(`LEN_EXE',`29322264')
+m4_define(`SHA1_SRC',`f1098fc603a2881f260a59312352978a79d2c580')
+m4_define(`SHA1_EXE',`f3b0e89e26533b263173cef61caa566734cf732e')
+m4_define(`SHA2_SRC',`c17047e8d551e4bcbab7ad4f1aa00bbc68b1281d3bc71ee3a486dba8d2044ddd')
+m4_define(`SHA2_EXE',`1d86557e4cdcc60e848fdbf2ead5f57d3ee91338d15051754f67d6b7d97af2fa')
+m4_define(`LEN_SRC',`254119119')
+m4_define(`LEN_EXE',`29603944')
 m4_dnl end paste
 
 m4_define(`DLPAGE',`I18N(`EN',`download.html')`'I18N(`DE',`download-de.html')')
 m4_define(`SOFTWAREOVERVIEW',`
-I18N(`EN', `<a href="https://www.gnupg.org/">GnuPG</a>')I18N(`DE', `<a href="https://www.gnupg.org/index.de.html">GnuPG</a>') 2.2.21
+I18N(`EN', `<a href="https://www.gnupg.org/">GnuPG</a>')I18N(`DE', `<a href="https://www.gnupg.org/index.de.html">GnuPG</a>') 2.2.23
 <a href="https://www.kde.org/applications/utilities/kleopatra/">Kleopatra</a> 3.1.12
 I18N(`EN', `<a href="https://www.gnupg.org/related_software/gpa/index.html">GPA</a>')I18N(`DE', `<a href="https://www.gnupg.org/related_software/gpa/index.de.html">GPA</a>') 0.10.0
-<a href="https://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpgol.git;a=summary">GpgOL</a> 2.4.2
+<a href="https://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpgol.git;a=summary">GpgOL</a> 2.4.7
 <a href="https://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpgex.git;a=summary">GpgEX</a> 1.0.6
 <a href="doc/de/gpg4win-compendium.html">Kompendium (de)</a> 4.0.1
 <a href="doc/en/gpg4win-compendium.html">Compendium (en)</a> 3.0.0

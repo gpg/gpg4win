@@ -40,6 +40,17 @@
    <div class="h_text_beta">
 -->
    <div class="h_text">
+   <small>2020-09-04</small><br>
+   <span class="serif_word"><img src="img/bulletin.png" alt"" />
+     m4_ifelse(LANG_DE, `1', `
+      <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2020-September/000053.html">
+      Gpg4win 3.1.13 veröffentlicht</a>
+      </span>',`
+      <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2020-September/000089.html">
+        Gpg4win 3.1.13 released
+      </a>
+      </span>')
+   <p></p>
    <small>2020-07-24</small><br>
    <span class="serif_word"><img src="img/bulletin.png" alt"" />
      m4_ifelse(LANG_DE, `1', `
@@ -48,16 +59,6 @@
       <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2020-July/000088.html">
         Gpg4win 3.1.12 released
       </a></span>')
-   <p></p>
-   <small>2020-01-07</small><br>
-   <span class="serif_word"><img src="img/bulletin.png" alt"" />
-     m4_ifelse(LANG_DE, `1', `
-      <a href="https://gnupg.com/20200107-freigabe-vs-nfd.html">
-      Gpg4win für VS-NfD freigegeben</a>
-      </span>',`
-      <a href="https://gnupg.com/20200107-freigabe-vs-nfd.html">
-      German press release: Gpg4win für VS-NfD freigegeben</a>
-      </span>')
    <p></p>
    <div class="limiter"></div>
    <p>
