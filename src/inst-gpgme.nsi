@@ -22,6 +22,10 @@
 !undef prefix
 !endif
 !define prefix ${ipdir}/gpgme-${gpg4win_pkg_gpgme_version}
+!ifdef exprefix
+!undef exprefix
+!endif
+!define exprefix ${exipdir}/gpgme-${gpg4win_pkg_gpgme_version}
 
 !ifdef DEBUG
 Section "gpgme" SEC_gpgme
@@ -61,6 +65,26 @@ Section "-gpgme" SEC_gpgme
 
   SetOutPath "$INSTDIR\include"
   File "${prefix}/include/gpgme.h"
+
+${If} ${RunningX64}
+
+  # Install the 64 bit version of the dll.
+  SetOutPath "$INSTDIR\bin_64"
+  ClearErrors
+  SetOverwrite try
+  File ${exprefix}/bin/libgpgme-11.dll
+  SetOverwrite lastused
+  ifErrors 0 +3
+      File /oname=libgpgme-11.dll.tmp "${exprefix}/bin/libgpgme-11.dll"
+      Rename /REBOOTOK libgpgme-11.dll.tmp libgpgme-11.dll
+  SetOverwrite try
+  File ${exprefix}/bin/libgpgmepp-6.dll
+  SetOverwrite lastused
+  ifErrors 0 +3
+      File /oname=libgpgmepp-6.dll.tmp "${exprefix}/bin/libgpgmepp-6.dll"
+      Rename /REBOOTOK libgpgmepp-6.dll.tmp libgpgmepp-6.dll
+  File ${exprefix}/bin/gpgme-json.exe
+${EndIf}
 
 !endif
 SectionEnd

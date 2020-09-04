@@ -34,6 +34,9 @@ Section "-un.libassuan"
   Delete /REBOOTOK "$INSTDIR\bin\libassuan-0.dll"
   Delete "$INSTDIR\lib\libassuan.imp"
   Delete "$INSTDIR\include\assuan.h"
+${If} ${RunningX64}
+  Delete /REBOOTOK "$INSTDIR\bin_64\libassuan-0.dll"
+${EndIf}
 
 !endif
 SectionEnd

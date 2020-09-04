@@ -22,6 +22,10 @@
 !undef prefix
 !endif
 !define prefix ${ipdir}/libgpg-error-${gpg4win_pkg_libgpg_error_version}
+!ifdef exprefix
+!undef exprefix
+!endif
+!define exprefix ${exipdir}/libgpg-error-${gpg4win_pkg_libgpg_error_version}
 
 
 !ifdef DEBUG
@@ -61,6 +65,19 @@ Section "-libgpg-error" SEC_libgpg_error
 
   SetOutPath "$INSTDIR\include"
   File "${prefix}/include/gpg-error.h"
+
+${If} ${RunningX64}
+  # Install the 64 bit version of the dll.
+  SetOutPath "$INSTDIR\bin_64"
+  ClearErrors
+  SetOverwrite try
+  File ${exprefix}/bin/libgpg-error6-0.dll
+  SetOverwrite lastused
+  ifErrors 0 +3
+      File /oname=libgpg-error6-0.dll.tmp "${exprefix}/bin/libgpg-error6-0.dll"
+      Rename /REBOOTOK libgpg-error6-0.dll.tmp libgpg-error6-0.dll
+${EndIf}
+
 
 !endif
 SectionEnd

@@ -23,6 +23,10 @@
 !undef prefix
 !endif
 !define prefix ${ipdir}/libassuan-${gpg4win_pkg_libassuan_version}
+!ifdef exprefix
+!undef exprefix
+!endif
+!define exprefix ${exipdir}/libassuan-${gpg4win_pkg_libassuan_version}
 
 
 !ifdef DEBUG
@@ -49,6 +53,18 @@ Section "-libassuan" SEC_libassuan
 
   SetOutPath "$INSTDIR\include"
   File "${prefix}/include/assuan.h"
+
+${If} ${RunningX64}
+  # Install the 64 bit version of the dll.
+  SetOutPath "$INSTDIR\bin_64"
+  ClearErrors
+  SetOverwrite try
+  File ${exprefix}/bin/libassuan6-0.dll
+  SetOverwrite lastused
+  ifErrors 0 +3
+      File /oname=libassuan6-0.dll.tmp "${exprefix}/bin/libassuan6-0.dll"
+      Rename /REBOOTOK libassuan6-0.dll.tmp libassuan6-0.dll
+${EndIf}
 
 !endif
 SectionEnd
