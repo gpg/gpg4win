@@ -46,8 +46,7 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         patches/w32pth-2.0.5/workaround-broken-libtool.patch \
         patches/breeze-icons/0001-Make-binary-icons-cross-compilable.patch \
         patches/libkleo/0001-Add-some-more-Gpg4win-version-code-from-Kleopatra.patch \
-        patches/gpg4win-tools/0001-Show-about-data-information-from-VERSION.patch \
-        patches/gpgol/0001-w64-Use-alternate-regview-instead-of-ifdefed-keys.patch
+        patches/gpg4win-tools/0001-Show-about-data-information-from-VERSION.patch
 
 copy-news:
 	cp NEWS doc/website/NEWS.last
