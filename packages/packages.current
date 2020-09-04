@@ -237,8 +237,8 @@ server http://files.gpg4win.org/src
 
 # by: ah
 # verified: Sig 5B80 C575 4298 F0CB  55D8 ED6A BCEF 7E29 4B09 2E28
-file gpgol/gpgol-2.4.6.tar.bz2
-chk  cbb8034b2351edcdd5935abc79e65a22905fb551145bc27ee5d5a2e0409f869c
+file gpgol/gpgol-2.4.7.tar.bz2
+chk  57e781b60cf62f1b175b9e2ee653970f887fcce5c0e7e03c2dc7d93ab47e7be8
 
 # for beta
 #server http://files.intevation.de/projects/gpg4all
@@ -302,13 +302,13 @@ chk  91bcb0403866b4e7c4bc1cc52ed4c364a9b5414b3994f718c70303f7f765e702
 # last changed: 2020-07-09
 # by: ah
 # verified: distsigkey.gpg
-name gnupg-w32-2.2.21-20200709-bin.exe
-file binary/gnupg-w32-2.2.21_20200709.exe
-chk  0bafb8e053ba704db85c638c902bed2eb6c4a690d42016f0ad3b2e7852481fd2
+name gnupg-w32-2.2.23-20200903-bin.exe
+file binary/gnupg-w32-2.2.23_20200903.exe
+chk  521fa2bceca8e19f708cee3410e275d842de741290668c57cebf9a3a6ee2b4ff
 
-name gnupg-w32-2.2.21-20200709-src.tar.xz
-file binary/gnupg-w32-2.2.21_20200709.tar.xz
-chk  8226f9bbb8e3557d10d6fc7431aac7f9b1bb99a58dc8cad46ae26e922c143569
+name gnupg-w32-2.2.23-20200903-src.tar.xz
+file binary/gnupg-w32-2.2.23_20200903.tar.xz
+chk  3a698a5581a54bca07f2300b5ccb27b3b63c3cb3447b8678fd66289a451c022a
 
 server ftp://ftp.gnupg.org/gcrypt
 
