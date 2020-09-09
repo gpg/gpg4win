@@ -899,6 +899,15 @@ stamps/stamp-$(1)-upload: signed_installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1)
 	echo "https://download.gnupg.com/files/$(call GETVAR,msi_target_$(1)_directory)/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi" \
 	> stamps/stamp-$(1)-upload
 
+.PHONY : $(1)-upload
+$(1)-upload: stamps/stamp-$(1)-upload
+	gpg --yes -o gnupg-vsd-$(VERSION).tar.bz2.sig -bau $(msi_signkey) \
+		../gpg4win-$(VERSION).tar.bz2
+	rsync -vP ../gpg4win-$(VERSION).tar.bz2 $(VSD_PUBLISH_HOST)/src/gnupg-vsd-$(VERSION).tar.bz2
+	rsync -vP gnupg-vsd-$(VERSION).tar.bz2.sig $(VSD_PUBLISH_HOST)/src/gnupg-vsd-$(VERSION).tar.bz2.sig
+	echo "Upload URLs:"
+	cat stamps/stamp-$(1)-upload
+
 endef
 
 # Insert the template for each source package.
@@ -957,9 +966,8 @@ stamps/stamp-all-upload: stamps/stamp-dist-self \
 	cat $(addsuffix -upload, $(addprefix stamps/stamp-,$(msi_targets)))
 	gpg --yes -o gnupg-vsd-$(VERSION).tar.bz2.sig -bau $(msi_signkey) \
 		../gpg4win-$(VERSION).tar.bz2
-	scp ../gpg4win-$(VERSION).tar.bz2 $(VSD_PUBLISH_HOST)/src/gnupg-vsd-$(VERSION).tar.bz2
+	rsync -vP gnupg-vsd-$(VERSION).tar.bz2.sig $(VSD_PUBLISH_HOST)/src/gnupg-vsd-$(VERSION).tar.bz2.sig
 	touch stamps/stamps-all-upload
-
 
 msi: stamps/stamp-versions-all-signed \
 	$(addsuffix .msi,$(addprefix installers/GnuPG-VS-Desktop-$(VSD_VERSION)-,$(msi_targets)))
