@@ -88,8 +88,7 @@ skip_uninst:
   # Write a version file.
   DetailPrint "Opening VERSION file for writing"
   FileOpen $0 "$INSTDIR\VERSION" w
-  FileWrite $0 "${PACKAGE}$\r$\n"
-  FileWrite $0 "${VERSION}$\r$\n"
+  FileWrite $0 "${PRETTY_PACKAGE}-${VERSION}$\r$\n"
   FileClose $0
   DetailPrint "VERSION closed"
 
