@@ -896,6 +896,9 @@ stamps/stamp-$(1)-upload: signed_installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1)
 		signed_installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi.sha256 \
 		signed_installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi.sig \
 		$(VSD_PUBLISH_HOST)/$(call GETVAR,msi_target_$(1)_directory)
+	ssh `echo $(VSD_PUBLISH_HOST) | cut -d ":" -f 1` \
+		"cd `echo $(VSD_PUBLISH_HOST) | cut -d ":" -f 2`/$(call GETVAR,msi_target_$(1)_directory) && rm -f GnuPG-VS-Desktop.msi && \
+		ln -s GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi GnuPG-VS-Desktop.msi"
 	echo "https://download.gnupg.com/files/$(call GETVAR,msi_target_$(1)_directory)/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi" \
 	> stamps/stamp-$(1)-upload
 
