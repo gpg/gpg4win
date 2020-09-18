@@ -865,6 +865,7 @@ AC_DEFUN([GPG4WIN_RUNTIME_LIBRARY],
                              | awk 'NR==1 {split($NF,a,"."); print a[1] "." a[2]}')
         changequote([,])
         guesses="/usr/lib/gcc/$host/$gcc_major_minor/$1.dll
+                 /usr/$host/bin/$1.dll
                  /usr/$host/lib/$1.dll
                  /usr/lib/gcc/$host/${gcc_major_minor}-win32/$1.dll
                  /usr/lib/gcc/$host/${gcc_major_minor_alt}-win32/$1.dll
