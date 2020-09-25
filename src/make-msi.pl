@@ -1249,6 +1249,9 @@ sub dump_all
             if ($targetfull eq 'bin_64\\gpgol.dll' or
                 $targetfull eq 'bin_64\\gpgex.dll')
             {
+                # we cannot write in the 32 bit MSI package into
+                # the 64 bit registry. So either we change our
+                # package to be 64bit only or do it with the selfreg here.
                 print ' ' x $::level
                 . " SelfRegCost='1' ";
             }
