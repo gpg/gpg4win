@@ -881,7 +881,7 @@ sub gpg4win_nsis_stubs
             my $value = $args[3];
             $value =~ s/^"(.*)"$/$1/;
             $value =~ s/\$INSTDIR\\?/\[APPLICATIONFOLDER\]/g;
-            $value =~ s/\${VERSION}/1.0.0/g;
+            $value =~ s/\$\{VERSION\}/1.0.0/g;
             $value =~ s/\$\\"/"/g;
 
             my $type;
