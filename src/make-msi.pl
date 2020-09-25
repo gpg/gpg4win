@@ -1588,7 +1588,7 @@ sub dump_single_custom {
 <?xml version="1.0" encoding="utf-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
   <Fragment>
-    <DirectoryRef Id="TARGETDIR">
+    <DirectoryRef Id="APPLICATIONFOLDER">
      <Directory Id="KleopatraDataFolder" Name="share"/>
      <Directory Id="CommonAppDataFolder">
         <Directory Id="CommonAppDataManufacturerFolder" Name="GNU">
@@ -1692,6 +1692,7 @@ sub dump_customs
         next if ($name eq "custom.mk");
         next if ($name eq "sign.mk");
         next if ($name eq ".git");
+        next if ($name eq ".gitignore");
 
         if (-d $name) {
             dump_single_custom($name);
