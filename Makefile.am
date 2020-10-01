@@ -92,3 +92,9 @@ download: packages/packages.current
 
 msi:
 	$(MAKE) $(AM_MAKEFLAGS) -C src msi
+
+msi-signed:
+	$(MAKE) $(AM_MAKEFLAGS) -C src msi-signed
+
+msi-upload:
+	$(MAKE) $(AM_MAKEFLAGS) -C src msi-upload
