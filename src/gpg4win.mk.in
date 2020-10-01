@@ -832,6 +832,7 @@ playground/install/$(1).wixlib: gnupg-vsd/$(1)/$(1).wxs
 		-dSrcDir=i:\\src \
 		-dVersion=$$$$MSI_VERSION \
 		-out k:\\$(1)-$(VERSION).wixobj \
+		-arch x64 \
 		-pedantic -wx i:\\src\\gnupg-vsd\\$(1)\\$(1).wxs || exit 1;\
 		$(WINE) $$$$WIXPREFIX2/lit.exe \
 		-out k:\\$(1).wixlib \

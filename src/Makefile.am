@@ -620,13 +620,15 @@ playground/install/gpg4win-$(VERSION).wixlib: \
 		-dSrcDir=i:\\src \
 		-dVersion=$$MSI_VERSION \
 		-out k:\\gpg4win-$(VERSION).wixobj \
-		-pedantic -wx i:\\src\\gpg4win-$(VERSION).wxs || exit 1;\
+		-pedantic -wx i:\\src\\gpg4win-$(VERSION).wxs \
+		-arch x64 || exit 1;\
 		$(WINE) $$WIXPREFIX2/candle.exe \
 		-dInstDir=k: \
 		-dInstDirEx=j: \
 		-dSrcDir=i:\\src \
 		-dVersion=$$MSI_VERSION \
 		-out k:\\gpg4win-ui.wixobj \
+		-arch x64 \
 		-pedantic -wx i:\\src\\WixUI_Gpg4win.wxs || exit 1;\
 		\
 		$(WINE) $$WIXPREFIX2/lit.exe \

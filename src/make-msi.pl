@@ -1224,14 +1224,13 @@ sub dump_all
                 $targetfull eq 'bin_64\\gpgex.dll')
             {
                 print ' ' x $::level
-                . "<Component Id='c_$pkg->{name}_$fileidx' Guid='"
+                . "<Component Win64='yes' Id='c_$pkg->{name}_$fileidx' Guid='"
                 . get_guid ($targetfull) . "'>\n";
-                print ' ' x $::level . "<Condition>VersionNT64</Condition>\n";
             }
             else # 32 bit components
             {
                 print ' ' x $::level
-                . "<Component Id='c_$pkg->{name}_$fileidx' Guid='"
+                . "<Component Win64='no' Id='c_$pkg->{name}_$fileidx' Guid='"
                 . get_guid ($targetfull) . "'>\n";
             }
 
@@ -1252,8 +1251,8 @@ sub dump_all
                 # we cannot write in the 32 bit MSI package into
                 # the 64 bit registry. So either we change our
                 # package to be 64bit only or do it with the selfreg here.
-                print ' ' x $::level
-                . " SelfRegCost='1' ";
+                #                print ' ' x $::level
+                # . " SelfRegCost='1' ";
             }
             print ">\n";
 
@@ -1329,7 +1328,8 @@ sub dump_all
             }
 
             # EXCEPTIONS:
-            if ($targetfull eq 'bin\\gpgol.dll')
+            if ($targetfull eq 'bin\\gpgol.dll' or
+                $targetfull eq 'bin_64\\gpgol.dll')
             {
                 # KeyPath=no as the file is the key path and the registry values
                 # are only meta information for the files.
@@ -1346,7 +1346,8 @@ sub dump_all
                 <RegistryValue Root="HKMU" KeyPath='no' Key="Software\\Microsoft\\Office\\Outlook\\Addins\\GNU.GpgOL" Name="FriendlyName" Value="GpgOL - The GnuPG Outlook Plugin" Type="string" Action="write" />
                 <RegistryValue Root="HKMU" KeyPath='no' Key="Software\\Microsoft\\Office\\Outlook\\Addins\\GNU.GpgOL" Name="Description" Value="Cryptography for Outlook" Type="string" Action="write" />
 EOF
-            } elsif ($targetfull eq 'bin\\gpgex.dll') {
+            } elsif ($targetfull eq 'bin\\gpgex.dll' or
+                     $targetfull eq 'bin_64\\gpgex.dll') {
                 print ' ' x $::level
                 . "  <ProgId Id='*'/>\n";
                 print ' ' x $::level
@@ -1401,7 +1402,7 @@ EOF
             }
 
             print ' ' x $::level
-            . "<Component Id='c_$pkg->{name}_r_$regidx' Guid='"
+            . "<Component Win64='yes' Id='c_$pkg->{name}_r_$regidx' Guid='"
             . get_guid ($target) . "' KeyPath='yes'>\n";
             print ' ' x $::level
             . "  <RegistryValue Id='r_$pkg->{name}_$regidx' Root='"
@@ -1832,6 +1833,7 @@ print <<EOF;
              InstallerVersion='200'
              Manufacturer='GnuPG.com'
              Languages='1033'
+             Platform='x64'
              SummaryCodepage='1252'/>
 
     <Condition Message="At least Windows 7 or Server 2008 R2 required.">
@@ -1927,7 +1929,7 @@ print <<EOF;
     </InstallExecuteSequence>
 
     <Property Id="INSTALLDIR">
-      <RegistrySearch Id="DetermineInstallLocation" Type="raw" Root="HKLM" Key="Software\\Gpg4win" Name="Install Directory" />
+      <RegistrySearch Win64='no' Id="DetermineInstallLocation" Type="raw" Root="HKLM" Key="Software\\Gpg4win" Name="Install Directory" />
     </Property>
 
     <!-- Launch Kleopatra after setup exits
@@ -1947,7 +1949,7 @@ print <<EOF;
          Level="1"
          Absent='disallow'>
       <ComponentGroupRef Id="CMP_GnuPG" />
-      <Component Id="gpg4win_reg_cmp" Guid="7F122F29-DB6A-4DE5-9DD2-0DAF1A24B61F" Directory="APPLICATIONFOLDER">
+      <Component Win64='no' Id="gpg4win_reg_cmp" Guid="7F122F29-DB6A-4DE5-9DD2-0DAF1A24B62F" Directory="APPLICATIONFOLDER">
         <RegistryValue Id="r_gpg4win_01" Root="HKMU" Key="Software\\Gpg4win" Name="Install Directory" Action="write"
                        Type="string" Value="[APPLICATIONFOLDER]" KeyPath="yes"/>
         <RegistryValue Id="r_gpg4win_02" Root="HKMU" Key="Software\\Gpg4win" Name="VS-Desktop-Version" Action="write"
