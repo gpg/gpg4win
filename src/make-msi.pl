@@ -866,7 +866,8 @@ sub gpg4win_nsis_stubs
                 target => $target };
         }
         elsif ($command eq 'WriteRegStr' ||
-               $command eq 'WriteRegExpandStr')
+               $command eq 'WriteRegExpandStr' ||
+               $command eq 'WriteRegBin')
         {
             fail "$file:$.: not supported" if ($#args != 3);
 
@@ -887,6 +888,8 @@ sub gpg4win_nsis_stubs
             my $type;
             if ($command eq 'WriteRegExpandStr') {
                 $type = 'expandable';
+            } elsif ($command eq 'WriteRegBin') {
+                $type = 'binary';
             } else {
                 $type = 'string';
             }
