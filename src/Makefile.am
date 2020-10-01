@@ -644,7 +644,8 @@ playground/install/gpg4win-$(VERSION).wixlib: \
 gpg4win-$(VERSION).wxs: gpg4win.nsi $(common_nsi) stamps/stamp-final \
 		        $(foosum_exe) \
 			$(README_files) $(HOWTO_files) \
-			versioninfo.txt make-msi.pl
+			versioninfo.txt make-msi.pl \
+	$(addsuffix /VERSION.sig,$(addprefix gnupg-vsd/,$(msi_targets)))
 	perl make-msi.pl --guids $(srcdir)/make-msi.guids \
 		--manifest gpg4win-$(VERSION).files \
 		--version $(VSD_VERSION) \
