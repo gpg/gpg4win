@@ -77,7 +77,6 @@ notBefore: 2010-08-11 09:27:29
 
 <pre>
 SHA2_EXE  gpg4win-VERSION.exe
-SHA2_EXS  gpg4win-src-VERSION.exe
 SHA2_SRC  gpg4win-VERSION.tar.bz2
 </pre>
 
@@ -85,7 +84,6 @@ SHA2_SRC  gpg4win-VERSION.tar.bz2
 
 <pre>
 SHA1_EXE  gpg4win-VERSION.exe
-SHA1_EXS  gpg4win-src-VERSION.exe
 SHA1_SRC  gpg4win-VERSION.tar.bz2
 </pre>
 
@@ -94,10 +92,6 @@ SHA1_SRC  gpg4win-VERSION.tar.bz2
 <p>For gpg4win-VERSION.exe:
 <a href="https://files.gpg4win.org/gpg4win-VERSION.exe.sig"
   >https://files.gpg4win.org/gpg4win-VERSION.exe.sig</a><br>
-
-For gpg4win-src-VERSION.exe:
-<a href="https://files.gpg4win.org/gpg4win-src-VERSION.exe.sig"
-  >https://files.gpg4win.org/gpg4win-src-VERSION.exe.sig</a><br>
 
 For gpg4win-VERSION.tar.bz2:
 <a href="https://files.gpg4win.org/gpg4win-VERSION.tar.bz2.sig"
@@ -134,7 +128,6 @@ the lengths you should get:</p>
 
 <pre>
 LEN_EXE  bytes for gpg4win-VERSION.exe
-LEN_EXS bytes for gpg4win-src-VERSION.exe
 LEN_SRC   bytes for gpg4win-VERSION.tar.bz2
 </pre>
 </div>
