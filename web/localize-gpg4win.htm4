@@ -124,24 +124,26 @@ names that are struck out, only the current page
 is not translated, but the language is supported in general.
 </p>
 
+<p><strong>Before you start, please coordinate with us,
+e.g. (via the Gpg4win developer mailing list).
+</strong>
+Check out the
+<a href="website-maintenance.html">technical steps to maintain the website</a>
+.
+</p>
+
+
 <h4>How to initialize a new language</h4>
 
 <p>
-Since the initial setup of the website (which supports two languages),
-no further languages have been added. Thus, there does not yet exist
-a practical guideline for this. However, you basically need to
+You basically need to
 create a "-LL.htm4" file for any file in
-<a href="https://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpg4win.git;a=tree;f=doc/website;hb=HEAD">doc/website</a>
+<a href="https://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpg4win.git;a=tree;hb=refs/heads/website">doc/website</a>
 that ends with "-de.htm4" (where LL is code of your language). Basis of the translation
 are the files without the LL suffix which are in fact the English
 defaults. Some further changes are needed for the website build process.
 </p>
 
-<p>
-It is highly recommended to coordinate with the Gpg4win developers (via the Gpg4win
-developer mailing list) before you start if you want to have the Gpg4win
-web site officially in your language.
-</p>
 
 <h4>How to update an available language</h4>
 
