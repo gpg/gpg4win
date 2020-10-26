@@ -10,7 +10,6 @@ PAGE_START
 
 <div id="intro">
 <h2>Links</h2>
-<p>Cryptography on the web</p>
 </div>
 
 <div id="main">
@@ -18,7 +17,7 @@ PAGE_START
 
 <ul>
 <li><a href="https://www.gnupg.org">GnuPG</a></li>
-<li><a href="https://www.gpgtools.org">GPGTools</a>
+<li><a href="https://gpgtools.org">GPGTools</a>
 <p>
 GPGTools provides a Mac OS X version of GnuPG. It is nicely
 integrated into an installer and features all required tools.
@@ -30,7 +29,11 @@ integrated into an installer and features all required tools.
 background, hence eliminating the need for a plugin for any e-mail
 tool of your choice.
 </p></li>
-<li><a href="http://enigmail.mozdev.org/">Thunderbird/Enigmail</a></li>
+<li><a
+href="https://www.enigmail.net/">Enigmail</a>
+is an add-on for Interlink Mail & News, Postbox and
+Thunderbird Version <=68.</li>
+</li>
 <li><a href="http://www.gpg4kde.org">Gpg4kde</a> (outdated)</li>
 <li><a href="http://www.gnupp.de/start.html">GnuPP</a> (outdated)</li>
 </ul>

@@ -11,7 +11,6 @@ PAGE_START
 
 <div id="intro">
 <h2>Links</h2>
-<p>Kryptografie im Netz</p>
 </div>
 
 <div id="main">
@@ -19,7 +18,7 @@ PAGE_START
 
 <ul>
 <li><a href="https://www.gnupg.org">GnuPG</a></li>
-<li><a href="https://www.gpgtools.org">GPGTools</a>
+<li><a href="https://gpgtools.org">GPGTools</a>
 <p>
 Das Projekt GPGTools bietet eine Mac OS X Version von GnuPG. Diese ist
 nett in einen Installer eingebunden und kommt mit aller benötigter
@@ -27,8 +26,11 @@ Software.
 </p></li>
 <li><a href="http://www.rose-indorf.de/gnupgpack/">GnuPG-Pack</a></li>
 <li><a
-href="http://www.thunderbird-mail.de/wiki/Enigmail_OpenPGP">Thunderbird/Enigmail</a></li>
+href="https://www.enigmail.net/">Enigmail</a>
+ist eine Erweiterung für Interlink Mail & News, Postbox und
+Thunderbird Version <=68.
 </li>
+
 <!-- <li><a href="http://sites.inka.de/tesla/gpgrelay.html">GPGrelay</a> -->
 <li><a href="https://sourceforge.net/projects/gpgrelay/">GPGrelay</a>
 <p>ist ein Verschlüsselungsprogramm, welches im Hintergrund E-Mails
