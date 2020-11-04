@@ -820,6 +820,34 @@ define MSI_template
 .PHONY : $(1)-package
 $(1)-package: installers/GnuPG-VS-Desktop-$(VERSION)-$(1).msi
 
+playground/install/$(1)-x86.wixlib: gnupg-vsd/$(1)/$(1).wxs
+	($(call SETVARS_WINE,); \
+	( \
+	ln -s $(idir) $$$$WINEINST; \
+	ln -s $(ex_idir) $$$$WINEINSTEX; \
+	ln -s `readlink -f $(top_srcdir)` $$$$WINESRC; \
+		$(WINE) $$$$WIXPREFIX2/candle.exe \
+		-dInstDir=k: \
+		-dInstDirEx=j: \
+		-dSrcDir=i:\\src \
+		-dVersion=$$$$MSI_VERSION \
+		-arch x86 \
+		-out k:\\$(1)-$(VERSION)-x86.wixobj \
+		-pedantic -wx i:\\src\\gnupg-vsd\\$(1)\\$(1).wxs || exit 1;\
+		$(WINE) $$$$WIXPREFIX2/lit.exe \
+		-out k:\\$(1)-x86.wixlib \
+		-bf \
+		-wx \
+		-pedantic \
+		k:\\$(1)-$(VERSION)-x86.wixobj || exit 1; \
+		\
+	) || ERR=1; \
+		(rm $$$$WINEINST; rm $$$$WINESRC; rm $$$$WINEINSTEX); \
+	if [ -n "$$$$ERR" ]; then \
+		exit 1; \
+	fi \
+	)
+
 playground/install/$(1).wixlib: gnupg-vsd/$(1)/$(1).wxs
 	($(call SETVARS_WINE,); \
 	( \
@@ -889,6 +917,31 @@ installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi: stamps/stamp-msi-base playg
 	 scp $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)/GnuPG-VS-Desktop-$(VERSION)-$(1).msi \
 	 installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi;
 
+installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1)-x86.msi: stamps/stamp-msi-base playground/install/$(1)-x86.wixlib \
+	gnupg-vsd/$(1)/license.rtf \
+	playground/install/gpg4win-$(VERSION)-x86.wixlib
+	scp gnupg-vsd/$(1)/license.rtf \
+		 $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION); \
+	scp playground/install/gpg4win-$(VERSION)-x86.wixlib \
+		 $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION); \
+	scp playground/install/$(1)-x86.wixlib \
+		 $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION); \
+	scp $(call GETVAR,msi_target_$(1)_branding)/*.bmp \
+		 $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION); \
+	ssh $(WINHOST) "cd AppData/Local/Temp/gpg4win-$(VERSION) && $(WINLIGHT) \
+	-spdb \
+	-ext WixUIExtension \
+	-out GnuPG-VS-Desktop-$(VERSION)-$(1)-x86.msi \
+	 $(call GETVAR,msi_target_$(1)_l10n) \
+	-dcl:high \
+	-v -pedantic \
+	 \
+	 gpg4win-$(VERSION)-x86.wixlib \
+	 gnupg-msi-$(gpg4win_pkg_gnupg_msi_version)-bin.wixlib \
+	 $(1)-x86.wixlib"; \
+	 scp $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)/GnuPG-VS-Desktop-$(VERSION)-$(1)-x86.msi \
+	 installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1)-x86.msi;
+
 signed_installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi: installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi
 	mkdir -p signed_installers
 	$(call AUTHENTICODE_sign,"installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi","signed_installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi");\
@@ -909,6 +962,12 @@ stamps/stamp-$(1)-upload: signed_installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1)
 	> stamps/stamp-$(1)-upload
 	echo "https://download.gnupg.com/files/$(call GETVAR,msi_target_$(1)_directory)/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi.sig" \
 	>> stamps/stamp-$(1)-upload
+
+.PHONY : $(1)
+$(1): installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi
+
+.PHONY : $(1)-x86
+$(1)-x86: installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1)-x86.msi
 
 .PHONY : $(1)-upload
 $(1)-upload: stamps/stamp-$(1)-upload

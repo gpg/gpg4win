@@ -643,6 +643,47 @@ playground/install/gpg4win-$(VERSION).wixlib: \
 		exit 1; \
 	fi)
 
+playground/install/gpg4win-$(VERSION)-x86.wixlib: \
+      gpg4win-$(VERSION).wxs stamps/stamp-final \
+      $(foosum_exe) \
+      $(README_files) $(HOWTO_files) \
+      license.blurb versioninfo.txt \
+      WixUI_Gpg4win.wxs \
+      stamps/stamp-additional-signedfiles
+	($(call SETVARS_WINE_TWO_DOLLAR,); \
+	echo "Gpg4win" > $(srcdir)/playground/VERSION; \
+	echo "$(VERSION)" >> $(srcdir)/playground/VERSION; \
+	(ln -s $(idir) $$WINEINST; \
+	 ln -s $(ex_idir) $$WINEINSTEX; \
+	 ln -s `readlink -f $(top_srcdir)` $$WINESRC; \
+		$(WINE) $$WIXPREFIX2/candle.exe \
+		-dInstDir=k: \
+		-dInstDirEx=j: \
+		-dSrcDir=i:\\src \
+		-dVersion=$$MSI_VERSION \
+		-arch x86 \
+		-out k:\\gpg4win-$(VERSION)-x86.wixobj \
+		-pedantic -wx i:\\src\\gpg4win-$(VERSION).wxs || exit 1;\
+		$(WINE) $$WIXPREFIX2/candle.exe \
+		-dInstDir=k: \
+		-dInstDirEx=j: \
+		-dSrcDir=i:\\src \
+		-dVersion=$$MSI_VERSION \
+		-arch x86 \
+		-out k:\\gpg4win-ui-x86.wixobj \
+		-pedantic -wx i:\\src\\WixUI_Gpg4win.wxs || exit 1;\
+		\
+		$(WINE) $$WIXPREFIX2/lit.exe \
+		-out k:\\gpg4win-$(VERSION)-x86.wixlib \
+		-bf \
+		-wx \
+		-pedantic \
+		k:\\gpg4win-$(VERSION)-x86.wixobj k:\\gpg4win-ui-x86.wixobj || exit 1; \
+		\
+	) || ERR=1; (rm $$WINEINST; rm $$WINESRC; rm $$WINEINSTEX); \
+	if [ -n "$$ERR" ]; then \
+		exit 1; \
+	fi)
 gpg4win-$(VERSION).wxs: gpg4win.nsi $(common_nsi) stamps/stamp-final \
 		        $(foosum_exe) \
 			$(README_files) $(HOWTO_files) \

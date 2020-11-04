@@ -1836,7 +1836,6 @@ print <<EOF;
              InstallerVersion='200'
              Manufacturer='GnuPG.com'
              Languages='1033'
-             Platform='x64'
              SummaryCodepage='1252'/>
 
     <Condition Message="At least Windows 7 or Server 2008 R2 required.">
