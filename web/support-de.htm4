@@ -15,69 +15,64 @@ PAGE_START
 </div>
 
 <div id="main">
-<h2>Professioneller Support</h2>
-
-<p>Überlassen Sie die Arbeit den Experten. – Dieser Service ist kostenpflichtig!</p>
-
-<h3>Antworten finden</h3>
-<p>
-Werden zeitnahe Antworten, schnelle Anpassungen oder Korrekturen sowie
-allgemeine Beratung für den Einsatz (Installation, Konfiguration, etc.)
-von Gpg4win benötigt, so bieten
-die Unternehmen <a href="https://www.intevation.de">Intevation
-GmbH</a> und <a href="https://gnupg.com">g10code GmbH</a>
-gemeinsam
-entsprechenden professionellen Support an.
-Dieser ist individuell zugeschnitten, daher
-finden Sie hier keine Preistabelle oder ähnliches.
-</p>
-
-<h3>Angebotsanfrage stellen</h3>
-<p>
-Bitte kontaktieren Sie uns
-<!--über das untenstehende Formular oder direkt an-->
-unter <a
-href="mailto:gpg4win-professional@gpg4win.de">gpg4win-professional@gpg4win.de</a>,
-wenn Sie professionellen Support durch die o.g. beiden Unternehmen einkaufen
-möchten.</p>
-
-<p>Beschreiben Sie dabei am besten
-schon mit der Anfrage Ihre fachlichen Anforderungen (z.B. welche Anwendungen,
-welche Krypto-Workflows), sowie Anzahl der Nutzer, Ihre IT-Infrastruktur (z.B. welche
-Windows-Versionen, Terminal-Server, V-Server), welche Aufgaben Sie bei sich
-selbst belassen wollen und was Sie von uns erwarten.
-</p>
-
-<p>
-Wir werden uns dann bei Ihnen mit einer Einschätzung der entstehenden Kosten
-sowie ggf. Rückfragen melden.
-</p>
-
-
-<h3>Unterstützungsart</h3>
-
-<p><b>Professionelle Unterstützung beim Einsatz von Gpg4win:</b><br>
-Sie haben z.B. ein Problem bei der Konfiguration in Ihrem
-Unternehmen oder benötigen Unterstützung beim korrekten Betrieb von
-Gpg4win? Dann bieten wir Ihnen unseren technischen Support an.
-</p>
-
-<p><b>Weiterentwicklung von Gpg4win:</b><br>
-Sie vermissen eine wichtige Funktion in Gpg4win? Sie haben
-spezielle Vorstellungen, um die Weiterentwicklung von Gpg4win zu
-fördern? Dann kontaktieren Sie uns! Wir stellen Ihnen - nach
-Einschätzung unserer Entwicklern - ein individuelles Angebot zusammen.
 
 <h2>Community Support</h2>
-<p>Helfen und helfen lassen. – Freiwillige Nutzer und Entwickler von Gpg4win bietet kostenfreie Unterstützung an.
-Zeitnahe und erschöpfend richtige Antworten können natürlich nicht garantiert werden.</p>
-<ul>
-    <li><a href=community-de.html>Mailing Listen</a></li>
-    <li><a href=https://dev.gnupg.org>Issue Tracker</a></li>
-    <li><a href=https://wald.intevation.org/forum/forum.php?forum_id=21&group_id=11>
-    Foren</a></li>
-    <li><a href="https://wiki.gnupg.org/TroubleShooting">Wiki (z.B. TroubleShooting auf Englisch)</a></li>
-    <li><a href=documentation-de.html> Dokumentation</a></li>
-</ul>
+<p>
+Als Teil der Gpg4win-Gemeinschaft bieten
+die Entwickler:nnen von Gpg4win kostenlose Unterstützung an.
+(Zeitnahe und erschöpfend richtige Antworten können natürlich
+nicht garantiert werden.)
+</p>
+
+<p>
+Gehen Sie wie folgt vor:
+<ol>
+  <li>Schauen Sie, ob Ihre Frage nicht schon in der
+      <a href=documentation-de.html>Dokumentation</a>
+      behandelt wird.
+  <li>Beachten Sie die Hinweise zur Analyse auf der Wiki-Seite
+      <a href="https://wiki.gnupg.org/TroubleShooting"
+        >Trouble Shooting (Englisch)</a>.
+  <li>Wenden Sie sich an die
+      <a href="/community-de.html">Gemeinschaft</a>
+      (z.B. über das Forum).
+</ol>
+</p>
+
+
+<h2>Professioneller Support</h2>
+
+Überlassen Sie die Arbeit den Experten.
+
+<h3>Service-Level-Agreements</h3>
+
+<p>
+Die Service-Level-Agreements von
+<a href="https://gnupg.com/">GnuPG.com</a>
+bieten zuverlässige Kontakte für Ihr technisches Team
+mit garantierten Reaktionszeiten.
+
+<p>
+Dort werden Sie beraten, wie Sie behördliche
+Verschlusssachen der Stufe „Nur für den Dienstgebrauch“ (VS-NfD)
+mit Gpg4win verarbeiten und die Abläufe benutzerfreundlich in Ihre
+Infrastruktur integrieren.
+
+
+<h3>Individuelle Software-Entwicklung</h3>
+<p>
+Die Gpg4win-Komponenten und GnuPG sind Freie Software,
+deshalb kann grundsätzlich jedes Unternehmen
+auf dessen Basis Dienstleistungen, Integration und
+Software-Entwicklung anbieten und unabhängig überprüfen.
+Das macht sie sicherer und zukunftsfähig.
+
+<p>
+Die Unternehmen <a href="https://www.intevation.de">Intevation
+GmbH</a> und <a href="https://gnupg.com">g10code GmbH</a>
+aus Deutschland haben in dem Bereich mehr als 20 Jahre Erfahrung.
+Zu erreichen per (gern verschlüsselter) Email an
+<a href="mailto:gpg4win-professional@gpg4win.de"
+  >gpg4win-professional@gpg4win.de</a>.
 
 </div>
