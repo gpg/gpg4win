@@ -95,6 +95,7 @@ Section "-breeze-icons" SEC_breeze_icons
   File ${prefix}/share/icons/breeze/actions/16/visibility.svg
   File ${prefix}/share/icons/breeze/actions/16/hint.svg
   File ${prefix}/share/icons/breeze/actions/16/resource-group-new.svg
+  File ${prefix}/share/icons/breeze/actions/16/password-generate.svg
 
   SetOutPath "$INSTDIR\share\icons\breeze\actions\22"
 
@@ -163,6 +164,7 @@ Section "-breeze-icons" SEC_breeze_icons
   File ${prefix}/share/icons/breeze/actions/22/kt-add-filters.svg
   File ${prefix}/share/icons/breeze/actions/22/kt-remove-filters.svg
   File ${prefix}/share/icons/breeze/actions/22/resource-group-new.svg
+  File ${prefix}/share/icons/breeze/actions/22/password-generate.svg
 
   SetOutPath "$INSTDIR\share\icons\breeze\actions\32"
 
