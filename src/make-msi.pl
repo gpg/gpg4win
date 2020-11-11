@@ -2001,8 +2001,8 @@ print <<EOF;
     <Directory Id='TARGETDIR' Name='SourceDir'>
       <Directory Id='ProgramFilesFolder' Name='PFiles'>
         <!-- DIR_GnuPG is used be the GnuPG wxlib -->
-        <Directory Id='DIR_GnuPG' Name='GnuPG'/>
-        <Directory Id='APPLICATIONFOLDER' Name='Gpg4win'>
+        <Directory Id='APPLICATIONFOLDER' Name='GnuPG VS-Desktop'>
+          <Directory Id='DIR_GnuPG' Name='GnuPG'/>
 EOF
 
 $::level = 12;
