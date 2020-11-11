@@ -1650,9 +1650,8 @@ EOF
             # The VERSION file is special and needs to go
             # in the Gpg4win root folder.
             $dirname = "APPLICATIONFOLDER";
-        } elsif ($basename eq "kleopatrarc") {
-            # The VERSION file is special and needs to go
-            # in the Gpg4win root folder.
+        } elsif ($basename eq "kleopatrarc" or
+                 $basename eq "libkleopatrarc") {
             $dirname = "KleopatraDataFolder";
         }
         else {
