@@ -286,12 +286,12 @@ chk  c2a9b3aec1a38d34b66106116a39f64b01d84f475fef75c40ea0bda0ea67ed07
 # D869 2123 C406 5DEA 5E0F  3AB5 249B 39D2 4F25 E3B6
 server ftp://ftp.gnupg.org/gcrypt
 
-# last changed 2020-07-22
+# last changed 2020-11-11
 # by ah
 # verified: distsigkey.gpg
 server ftp://ftp.gnupg.org/gcrypt
-file libgpg-error/libgpg-error-1.38.tar.bz2
-chk d8988275aa69d7149f931c10442e9e34c0242674249e171592b430ff7b3afd02
+file libgpg-error/libgpg-error-1.39.tar.bz2
+chk 0bb5baf2a2c912ee6e9706805709d946e08dad50b31db44fa9380ef87af7b53f
 
 # last-changed: 2019-03-26
 # by: ah
@@ -320,8 +320,8 @@ server ftp://ftp.gnupg.org/gcrypt
 # last changed: 2020-07-22
 # by: ah
 # verified: distsigkey.gpg
-file gpgme/gpgme-1.14.0.tar.bz2
-chk  cef1f710a6b0d28f5b44242713ad373702d1466dcbe512eb4e754d7f35cd4307
+#file gpgme/gpgme-1.14.0.tar.bz2
+#chk  cef1f710a6b0d28f5b44242713ad373702d1466dcbe512eb4e754d7f35cd4307
 
 # last changed: 2018-10-17
 # by: ah
@@ -552,19 +552,19 @@ server http://files.intevation.de/projects/gpg4all
 #chk 8d2a56dff6e6c12d628dd32075497326e8345c0096dec1280f7ab2c737410837
 
 # by: ah
-file pinentry/pinentry-1.1.1-beta36.tar.bz2
-chk 69d659deac4a8348a0526db0373219596f4b05c536b4b4799fc917b41ea51745
+file pinentry/pinentry-1.1.1-beta41.tar.bz2
+chk fec993a3a6a78b4eb06a2a749c3cafa0104f34756350f3721d2b25e5cbcaee71
 
 # by: ah
-# file gpgme/gpgme-1.14.0-beta36.tar.bz2
-# chk b70a8aa8573d81bd410aeb28e24570361f6d3b2eb2a74c46eeda4bb6a0dd0c36
+file gpgme/gpgme-1.14.1-beta36.tar.bz2
+chk a81d5e573400ada9c60bfa0e096da890f7589473fbffe00fe3a54264c10bd679
 
 # Libkleo
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah.
-file libkleo/libkleo-202007241104.tar.gz
-chk eaefd1ad0c1dd302ee84cce534626abbf44d013c5edf2b9a257be486bf7dcb12
+file libkleo/libkleo-202011111629.tar.gz
+chk 6030b4de13cf2e8864935b99eaaf5b82f998fd4440b2b5a7ad45a8a330538925
 
 # KDE-L10n
 # last changed: see package date.
@@ -587,5 +587,5 @@ chk a60c02cda58069eb7e947dd74e0c8c1abf1a55219e995dbf6801c056e87638d3
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah.
-file kleopatra/kleopatra-202007221148.tar.gz
-chk 498a1b2fa90a71d47b4b6adbf6e8810fae82fecaea72985563dc706c7bc7c39c
+file kleopatra/kleopatra-202011111635.tar.gz
+chk f0c7f4bab22b164fb241800a3d805864efc94b065b464b2366e8cee571317d16
