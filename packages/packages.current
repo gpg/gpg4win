@@ -291,7 +291,7 @@ server ftp://ftp.gnupg.org/gcrypt
 # verified: distsigkey.gpg
 server ftp://ftp.gnupg.org/gcrypt
 file libgpg-error/libgpg-error-1.39.tar.bz2
-chk 0bb5baf2a2c912ee6e9706805709d946e08dad50b31db44fa9380ef87af7b53f
+chk 4a836edcae592094ef1c5a4834908f44986ab2b82e0824a0344b49df8cdb298f
 
 # last-changed: 2019-03-26
 # by: ah
@@ -563,8 +563,8 @@ chk a81d5e573400ada9c60bfa0e096da890f7589473fbffe00fe3a54264c10bd679
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah.
-file libkleo/libkleo-202011111629.tar.gz
-chk 6030b4de13cf2e8864935b99eaaf5b82f998fd4440b2b5a7ad45a8a330538925
+file libkleo/libkleo-202011111722.tar.gz
+chk 86e8112abdac7a12e4a35a62aff2b6a29882026fe98aaa65172e3b6a679da259
 
 # KDE-L10n
 # last changed: see package date.
