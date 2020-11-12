@@ -293,11 +293,11 @@ server ftp://ftp.gnupg.org/gcrypt
 file libgpg-error/libgpg-error-1.39.tar.bz2
 chk 4a836edcae592094ef1c5a4834908f44986ab2b82e0824a0344b49df8cdb298f
 
-# last-changed: 2019-03-26
+# last-changed: 2019-11-11
 # by: ah
 # verified: distsigkey.gpg
-file libassuan/libassuan-2.5.3.tar.bz2
-chk  91bcb0403866b4e7c4bc1cc52ed4c364a9b5414b3994f718c70303f7f765e702
+file libassuan/libassuan-2.5.4.tar.bz2
+chk  c080ee96b3bd519edd696cfcebdecf19a3952189178db9887be713ccbcb5fbf0
 
 # last changed: 2020-07-09
 # by: ah
@@ -317,11 +317,11 @@ server ftp://ftp.gnupg.org/gcrypt
 #file pinentry/pinentry-1.1.0.tar.bz2
 #chk  68076686fa724a290ea49cdf0d1c0c1500907d1b759a3bcbfbec0293e8f56570
 
-# last changed: 2020-07-22
+# last changed: 2020-11-11
 # by: ah
 # verified: distsigkey.gpg
-#file gpgme/gpgme-1.14.0.tar.bz2
-#chk  cef1f710a6b0d28f5b44242713ad373702d1466dcbe512eb4e754d7f35cd4307
+file gpgme/gpgme-1.15.0.tar.bz2
+chk  0b472bc12c7d455906c8a539ec56da0a6480ef1c3a87aa5b74d7125df68d0e5b
 
 # last changed: 2018-10-17
 # by: ah
@@ -556,8 +556,8 @@ file pinentry/pinentry-1.1.1-beta41.tar.bz2
 chk fec993a3a6a78b4eb06a2a749c3cafa0104f34756350f3721d2b25e5cbcaee71
 
 # by: ah
-file gpgme/gpgme-1.14.1-beta36.tar.bz2
-chk a81d5e573400ada9c60bfa0e096da890f7589473fbffe00fe3a54264c10bd679
+#file gpgme/gpgme-1.14.1-beta36.tar.bz2
+#chk a81d5e573400ada9c60bfa0e096da890f7589473fbffe00fe3a54264c10bd679
 
 # Libkleo
 # last changed: see package date.
@@ -587,5 +587,5 @@ chk a60c02cda58069eb7e947dd74e0c8c1abf1a55219e995dbf6801c056e87638d3
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah.
-file kleopatra/kleopatra-202011111635.tar.gz
-chk f0c7f4bab22b164fb241800a3d805864efc94b065b464b2366e8cee571317d16
+file kleopatra/kleopatra-202011121242.tar.gz
+f0c7f4bab22b164fb241800a3d805864efc94b065b464b2366e8cee571317d16
