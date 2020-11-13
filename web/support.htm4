@@ -16,66 +16,64 @@ PAGE_START
 
 <div id="main">
 
-<h2>Professional Support</h2>
-<p>You searching for help by experts? – This service is  fee-based.</p>
-
-<h3>Find a solution</h3>
-<p>
-In case timely answers, quick software modification or general
-consulting for using Gpg4win (installation, configuration etc.) are
-needed, the German Free Software companies
-<a href="https://www.intevation.de">Intevation
-GmbH</a> and <a href="https://gnupg.com">g10code GmbH</a>
-jointly
-offer suitable professional support.
-Pricing for this service is not listed here because the support
-contracts are tailored to the needs of the individual customer.
-</p>
-
-<h3>Request a quote</h3>
-<p>
-Please contact us with at
-<a href="mailto:gpg4win-professional@gpg4win.org">gpg4win-professional@gpg4win.org</a>
-if you plan to buy professional support from any of the two companies named above.</p>
-
-<p>Please describe your needs (e.g. which of the Gpg4win
-applications you want support for, which crypto-workflows you have or
-want to establish), the number of users, your IT infrastructure (e.g.
-which Windows versions, terminal servers, virtual servers), which
-tasks you want to do yourself and what you expect from us.
-</p>
-
-<p>
-We will get back to you with cost estimates and, if necessary, questions to
-clarify your requirements.
-</p>
-
-<h3>Support types</h3>
-<p><b>Professional support for using Gpg4win</b>:<br>
-Do you have, for instance, a problem with the configuration in your
-company or you need support for your use of Gpg4win?
-Then we offer you our technical support.
-</p>
-
-<p><b>Further development of Gpg4win</b>:<br>
-Do you miss an important feature in Gpg4win or do you have
-ideas for the further development of Gpg4win?
-Then please contact us! We will provide you with an individual quote.
-</p>
-
 <h2>Community Support</h2>
-<p>Receive help and help others – Volunteers of Gpg4win offer free support.
-Due to the huge number of users, there is a good chance of
-receiving helpful answers.
-Naturally, timely and exhaustive answers can not be guaranteed.</p>
-<ul>
-    <li><a href=community.html>Mailing Lists</a></li>
-    <li><a href=https://dev.gnupg.org>Issue Tracker</a></li>
-    <li><a href=https://wald.intevation.org/forum/forum.php?forum_id=21&group_id=11>
-    Forums</a></li>
-    <li><a href="https://wiki.gnupg.org/TroubleShooting">Wiki (e.g. for TroubleShooting)</a></li>
-    <li><a href=documentation.html>Documentation</a></li>
-</ul>
+<p>
+  As part of the community, the developers of Gpg4win
+  offer support free of charge.
+  (Naturally, timely or exhaustive answers can not be guaranteed.)
 </p>
+
+<p>
+  Take the following steps:
+  <ol>
+    <li>Check the
+        <a href=documentation.html>documentation</a>, it may already
+        address your question.
+    <li>Take a look at the hints for
+        <a href="https://wiki.gnupg.org/TroubleShooting"
+        >Trouble Shooting</a> in the public wiki.
+    <li>Contact the
+        <a href="/community.html">Community</a>
+        (e.g. via the forum).
+  </ol>
+</p>
+
+
+<h2>Professional Support</h2>
+
+Delegate to experts.
+
+<h3>Service-Level Agreements</h3>
+
+<p>
+<a href="https://gnupg.com/">GnuPG.com</a>
+offers reliable contact points for your technical team,
+with guaranteed response times.
+
+<p>
+In addition GnuPG.com offers consulting to handle
+EU RESTRICTED (VS-NfD) data with Gpg4win and
+helps you to integrate a user friendly workflow into your
+infrastructure.
+
+<h3>Custom Software Development</h3>
+
+<p>
+All Gpg4win components are Free Software, including its crypto engine GnuPG.
+Therefor anybody can offer services,
+customisation or development services for them.
+It is possible to have independent audits.
+For you this means a more secure and future-proof product.
+
+<p>
+The Germany based companies
+<a href="https://intevation.de/index.en.html">Intevation GmbH</a>
+and <a href="https://g10code.com/">g10code GmbH</a>
+each have more than 20 years of experience with
+with cryptography and Free Software solutions.
+They can be contacted via email to
+<a href="mailto:gpg4win-professional@gpg4win.de"
+  >gpg4win-professional@gpg4win.de</a>
+(encrypted, if you like).
 
 </div>
