@@ -968,6 +968,9 @@ $(1): installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi
 
 .PHONY : $(1)-x86
 $(1)-x86: installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1)-x86.msi
+	echo "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+	echo "XXXX FIXME: x86 Registration of GpgOL and GpgEX does not work! XXXX"
+	echo "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 
 .PHONY : $(1)-upload
 $(1)-upload: stamps/stamp-$(1)-upload
