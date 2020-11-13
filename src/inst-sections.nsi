@@ -804,6 +804,8 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_kitemmodels}
   !insertmacro SelectSection ${SEC_kiconthemes}
   !insertmacro SelectSection ${SEC_karchive}
+# KArchive depdens on zlib
+  !insertmacro SelectSection ${SEC_zlib}
   !insertmacro SelectSection ${SEC_kcrash}
   !insertmacro SelectSection ${SEC_kguiaddons}
   !insertmacro SelectSection ${SEC_qtsvg}
