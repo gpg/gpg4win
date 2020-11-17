@@ -547,12 +547,11 @@ server https://download.kde.org/Attic/applications
 
 # server http://download.kde.org/stable/applications/
 # kmime
-# last changed: 2018-02-02
+# last changed: 2020-11-12
 # by: ah
-# verified: https://download.kde.org/stable/applications/17.12.2/src/kmime-17.12.2.tar.xz.mirrorlist
-file 17.12.2/src/kmime-17.12.2.tar.xz
-chk 29f11eafeb13c0045069a250bdcd57fda4bdd3423e7e1b7e0ca0517a9afefd24
-
+# verified: PGP Sig F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87
+file 19.08.3/src/kmime-19.08.3.tar.xz
+chk e659e1154fbc11db624f1b76bc1a8e5cf8c7f6731cef7b4ff6fad9ccf90580dd
 # Snapshots which contain unreleased fixes important for Gpg4win
 server http://files.intevation.de/projects/gpg4all
 
@@ -597,4 +596,4 @@ chk a60c02cda58069eb7e947dd74e0c8c1abf1a55219e995dbf6801c056e87638d3
 # by: ah
 # verified: Tarball created by ah.
 file kleopatra/kleopatra-202011121242.tar.gz
-f0c7f4bab22b164fb241800a3d805864efc94b065b464b2366e8cee571317d16
+chk dfbe38b8a3556cc16442927b883ce994d2eb3299d460af0b30036a11471f9945
