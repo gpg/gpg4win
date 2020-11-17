@@ -299,16 +299,25 @@ chk 4a836edcae592094ef1c5a4834908f44986ab2b82e0824a0344b49df8cdb298f
 file libassuan/libassuan-2.5.4.tar.bz2
 chk  c080ee96b3bd519edd696cfcebdecf19a3952189178db9887be713ccbcb5fbf0
 
-# last changed: 2020-07-09
+# last changed: 2020-11-17
 # by: ah
 # verified: distsigkey.gpg
-name gnupg-w32-2.2.23-20200903-bin.exe
-file binary/gnupg-w32-2.2.23_20200903.exe
-chk  521fa2bceca8e19f708cee3410e275d842de741290668c57cebf9a3a6ee2b4ff
+name gnupg-w32-2.2.24-20201117-bin.exe
+file binary/gnupg-w32-2.2.24_20201117.exe
+chk  30352deb29dc65dfbf246209e567859de59cb60f01129f234ac5e3532caa501f
 
-name gnupg-w32-2.2.23-20200903-src.tar.xz
-file binary/gnupg-w32-2.2.23_20200903.tar.xz
-chk  3a698a5581a54bca07f2300b5ccb27b3b63c3cb3447b8678fd66289a451c022a
+name gnupg-w32-2.2.24-20201117-src.tar.xz
+file binary/gnupg-w32-2.2.24_20201117.tar.xz
+chk  09e92f081616869d02070d6c778e0f540bc59242026cc809e6101f46916b5926
+
+name gnupg-msi-2.2.24-20201117-bin.wixlib
+file binary/gnupg-w32-2.2.24_20201117.wixlib
+chk  2462fbaa982f3ad70d17e07dda0870ee083cc5fde73d548c77d1b63deca0a7e3
+
+name gnupg-msi-2.2.24-20201117-src.tar.xz
+file binary/gnupg-w32-2.2.24_20201117.tar.xz
+chk  09e92f081616869d02070d6c778e0f540bc59242026cc809e6101f46916b5926
+
 
 server ftp://ftp.gnupg.org/gcrypt
 
