@@ -1,0 +1,67 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From 429620b33426a1efc04faf7a00738888507bb334 Mon Sep 17 00:00:00 2001
+From: Andre Heinecke <aheinecke@gnupg.org>
+Date: Fri, 20 Nov 2020 14:04:44 +0100
+Subject: [PATCH] Add option to disable the S/MIME efail security
+
+* src/common_indep.h (opt): Add option.
+* src/mailitem-events.cpp (REPLY/FORWARD/REPLYALL): Check
+for new option.
+* src/main.c (read_options): Read new config option.
+
+--
+Allow sysadmins to disable S/MIME Efail security as
+an option. It is of course disabled by default, hidden
+and should only be used in scenarios which are fully
+under control or which use organizational mesasures
+to defend against manipulation of unsigned S/MIME
+messages.
+---
+ src/common_indep.h      | 2 ++
+ src/mailitem-events.cpp | 2 +-
+ src/main.c              | 1 +
+ 3 files changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/src/common_indep.h b/src/common_indep.h
+index aad03a8..0ddc2c7 100644
+--- a/src/common_indep.h
++++ b/src/common_indep.h
+@@ -195,6 +195,8 @@ struct
+   int sync_dec;              /* Disabed async decryption */
+   int prefer_smime;          /* S/MIME prefered when autoresolving */
+   int smime_html_warn_shown; /* Flag to save if unsigned smime warning was shown */
++  int smime_insecure_reply_fw_allowed ; /* Flag to save if unsigned smime reply forwards
++                                           should be allowed */
+   int autoretrieve;           /* Use --auto-key-retrieve. */
+   int search_smime_servers;  /* Search for S/MIME keys on all configured S/MIME keyservers
+                                 for each new unknown mail */
+diff --git a/src/mailitem-events.cpp b/src/mailitem-events.cpp
+index c7f4a1b..670dcaa 100644
+--- a/src/mailitem-events.cpp
++++ b/src/mailitem-events.cpp
+@@ -1008,7 +1008,7 @@ EVENT_SINK_INVOKE(MailItemEvents)
+                                  SRCNAME, __func__, last_mail,
+                                  last_mail->item ());
+                     }
+-                  if (m_mail->isBlockHTML ())
++                  if (m_mail->isBlockHTML () && !opt.smime_insecure_reply_fw_allowed)
+                     {
+                       std::string buf;
+                       /** TRANSLATORS: Part of a warning dialog that disallows
+diff --git a/src/main.c b/src/main.c
+index d779c0f..92119bf 100644
+--- a/src/main.c
++++ b/src/main.c
+@@ -300,6 +300,7 @@ read_options (void)
+   opt.autotrust = get_conf_bool ("autotrust", 0);
+   opt.search_smime_servers = get_conf_bool ("searchSmimeServers", 0);
+   opt.smime_html_warn_shown = get_conf_bool ("smimeHtmlWarnShown", 0);
++  opt.smime_insecure_reply_fw_allowed = get_conf_bool ("smimeInsecureReplyAllowed", 0);
+   opt.auto_unstrusted = get_conf_bool ("autoencryptUntrusted", 0);
+   opt.autoimport = get_conf_bool ("autoimport", 0);
+   opt.splitBCCMails = get_conf_bool ("splitBCCMails", 0);
+--
+2.20.1

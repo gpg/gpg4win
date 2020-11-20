@@ -237,8 +237,8 @@ server http://files.gpg4win.org/src
 
 # by: ah
 # verified: Sig 5B80 C575 4298 F0CB  55D8 ED6A BCEF 7E29 4B09 2E28
-file gpgol/gpgol-2.4.7.tar.bz2
-chk  57e781b60cf62f1b175b9e2ee653970f887fcce5c0e7e03c2dc7d93ab47e7be8
+file gpgol/gpgol-2.4.8.tar.bz2
+chk  2f7af0bce2c8706d2267285408dc3dcec6155631038d39434afb62b5ec90dfc2
 
 # for beta
 #server http://files.intevation.de/projects/gpg4all
@@ -560,8 +560,8 @@ server http://files.intevation.de/projects/gpg4all
 #chk 8d2a56dff6e6c12d628dd32075497326e8345c0096dec1280f7ab2c737410837
 
 # by: ah
-file pinentry/pinentry-1.1.1-beta41.tar.bz2
-chk fec993a3a6a78b4eb06a2a749c3cafa0104f34756350f3721d2b25e5cbcaee71
+file pinentry/pinentry-1.1.1-beta44.tar.bz2
+chk c2091536687cd83569c9919d6d9fc8c3a53e74d8419320bcbb8b7dc36019c677
 
 # by: ah
 #file gpgme/gpgme-1.14.1-beta36.tar.bz2
@@ -571,8 +571,8 @@ chk fec993a3a6a78b4eb06a2a749c3cafa0104f34756350f3721d2b25e5cbcaee71
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah.
-file libkleo/libkleo-202011111722.tar.gz
-chk 86e8112abdac7a12e4a35a62aff2b6a29882026fe98aaa65172e3b6a679da259
+file libkleo/libkleo-202011201304.tar.gz
+chk 4e97a92681c5e5a32a4faf5799f42818effa6ec4f842b284ba18ff8eb4628923
 
 # KDE-L10n
 # last changed: see package date.
@@ -595,5 +595,5 @@ chk a60c02cda58069eb7e947dd74e0c8c1abf1a55219e995dbf6801c056e87638d3
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah.
-file kleopatra/kleopatra-202011121242.tar.gz
-chk dfbe38b8a3556cc16442927b883ce994d2eb3299d460af0b30036a11471f9945
+file kleopatra/kleopatra-202011201301.tar.gz
+chk ef77d8484218e06f9aeacdf25fc73ca41722469b139c31eaf08c0075c91429bd
