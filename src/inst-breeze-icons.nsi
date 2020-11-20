@@ -152,6 +152,7 @@ Section "-breeze-icons" SEC_breeze_icons
   File ${prefix}/share/icons/breeze/actions/22/tab-new-background.svg
   File ${prefix}/share/icons/breeze/actions/22/tools-report-bug.svg
   File ${prefix}/share/icons/breeze/actions/22/view-certificate-add.svg
+  File ${prefix}/share/icons/breeze/actions/22/view-certificate.svg
   File ${prefix}/share/icons/breeze/actions/22/view-certificate-export-secret.svg
   File ${prefix}/share/icons/breeze/actions/22/view-certificate-export-server.svg
   File ${prefix}/share/icons/breeze/actions/22/view-certificate-export.svg
@@ -165,6 +166,7 @@ Section "-breeze-icons" SEC_breeze_icons
   File ${prefix}/share/icons/breeze/actions/22/kt-remove-filters.svg
   File ${prefix}/share/icons/breeze/actions/22/resource-group-new.svg
   File ${prefix}/share/icons/breeze/actions/22/password-generate.svg
+  File ${prefix}/share/icons/breeze/actions/22/note.svg
 
   SetOutPath "$INSTDIR\share\icons\breeze\actions\32"
 
