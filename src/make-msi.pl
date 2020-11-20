@@ -1853,7 +1853,7 @@ print <<EOF;
     <!-- 1 forces highest available -->
     <Property Id="ALLUSERS" Value="1" />
 
-    <Property Id="ApplicationFolderName" Value="Gpg4win" />
+    <Property Id="ApplicationFolderName" Value="GnuPG VS-Desktop" />
     <Property Id="WixAppFolder" Value="WixPerMachineFolder" />
 
     <Property Id="APPLICATIONFOLDER">
