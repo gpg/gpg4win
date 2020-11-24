@@ -1,0 +1,42 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From d7ec61b1b6b0f65667ac80c9713b51bd60eaf90e Mon Sep 17 00:00:00 2001
+From: Andre Heinecke <aheinecke@gnupg.org>
+Date: Tue, 24 Nov 2020 11:11:28 +0100
+Subject: [PATCH] w32: Add ws2_32 linkage
+
+* src/Makefile.am (scute_la_LIBADD): Add ws2_32
+
+--
+Scute directly uses it but previously incorrectly
+pulled it in through gpg-error dependencies.
+---
+ src/Makefile.am | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/Makefile.am b/src/Makefile.am
+index e32f354..806f6db 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -93,6 +93,8 @@ scute_deps = $(scute_res) scute.def libgpg-error.a libassuan.a
+
+ scute_libadd = -L.
+
++scute_w32_extra_libs = -lws2_32
++
+ libgpg-error.a:
+	ln -sf $$($(GPG_ERROR_CONFIG) --prefix)/lib/libgpg-error.a .
+
+@@ -135,7 +137,7 @@ scute_la_DEPENDENCIES = @LTLIBOBJS@ $(srcdir)/libscute.vers $(scute_deps)
+ # scute_libadd must come BEFORE libassuan and gpg-error, because we
+ # override it on Windows targets.
+ scute_la_LIBADD = $(scute_libadd) \
+-	@LTLIBOBJS@ @LIBASSUAN_LIBS@ @GPG_ERROR_LIBS@
++	@LTLIBOBJS@ @LIBASSUAN_LIBS@ @GPG_ERROR_LIBS@ $(scute_w32_extra_libs)
+
+ scute_la_CPPFLAGS = -I$(srcdir)/../include \
+	@LIBASSUAN_CFLAGS@ @GPG_ERROR_CFLAGS@
+--
+2.20.1
