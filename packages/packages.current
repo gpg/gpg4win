@@ -302,22 +302,21 @@ chk  c080ee96b3bd519edd696cfcebdecf19a3952189178db9887be713ccbcb5fbf0
 # last changed: 2020-11-17
 # by: ah
 # verified: distsigkey.gpg
-name gnupg-w32-2.2.24-20201117-bin.exe
-file binary/gnupg-w32-2.2.24_20201117.exe
-chk  30352deb29dc65dfbf246209e567859de59cb60f01129f234ac5e3532caa501f
+name gnupg-w32-2.2.25-20201123-bin.exe
+file binary/gnupg-w32-2.2.25_20201123.exe
+chk  1ac8ff6bcd5a5a66cd14abe448e5be2627a82b770f3caadc3852fdabce89d511
 
-name gnupg-w32-2.2.24-20201117-src.tar.xz
-file binary/gnupg-w32-2.2.24_20201117.tar.xz
-chk  09e92f081616869d02070d6c778e0f540bc59242026cc809e6101f46916b5926
+name gnupg-w32-2.2.25-20201123-src.tar.xz
+file binary/gnupg-w32-2.2.25_20201123.tar.xz
+chk  5e1efea1a5ad80b194e97ed4b2bfc099653ff187fcc40b2bc7642d10791b2973
 
-name gnupg-msi-2.2.24-20201117-bin.wixlib
-file binary/gnupg-w32-2.2.24_20201117.wixlib
-chk  2462fbaa982f3ad70d17e07dda0870ee083cc5fde73d548c77d1b63deca0a7e3
+name gnupg-msi-2.2.25-20201123-src.tar.xz
+file binary/gnupg-w32-2.2.25_20201123.tar.xz
+chk  5e1efea1a5ad80b194e97ed4b2bfc099653ff187fcc40b2bc7642d10791b2973
 
-name gnupg-msi-2.2.24-20201117-src.tar.xz
-file binary/gnupg-w32-2.2.24_20201117.tar.xz
-chk  09e92f081616869d02070d6c778e0f540bc59242026cc809e6101f46916b5926
-
+name gnupg-msi-2.2.25-20201123-bin.wixlib
+file binary/gnupg-w32-2.2.25_20201123.wixlib
+chk  41b7382fba9ee4f0e6320fa47fa708099437d8485865f2be4b23d0c5d0c63304
 
 server ftp://ftp.gnupg.org/gcrypt
 
