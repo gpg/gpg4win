@@ -65,85 +65,29 @@ Included Gpg4win components in version !VERSION! are:
 New in Gpg4win version !VERSION! (!BUILD_ISODATE!)
 -----------------------------------------
 
-- GpgOL: Improved handling of mails with encrypted
-  subjects. (T4796)
+- Kleopatra: It is now possible to revoke certifications with Kleopatra.
+  (T5094)
 
-- GpgOL: Improved integration with Web Key Services to
-  automatically provide public keys. (T4839)
+- Kleopatra / GnuPG: Unicode home directories are now supported.
+  (T5055)
 
-- GpgOL: The addressbook integration is now more visible. (T4874)
+- Kleopatra: Directories for encryption may now contain unicode
+  filenames. (T4083)
 
-- GpgOL: Group accounts are now properly considered when
-  preselecting the signing key. (T4090)
+- Kleopatra: Improved Smartcard support, preshadowing the full
+  multicard support with GnuPG 2.3. (T5066)
 
-- GpgOL: During signature verification a preview of the
-  content is now displayed. (T4944)
+- Pinentry: The dialog should now receive input focus in more scenarios.
+  (T4123)
 
-- GpgOL: Printing of encrypted mails now works correctly
-  after changing the printer. (T4890)
+- GpgOL: Plain text mails without attachments are properly displayed
+  again.
 
-- GpgOL: Security level of keys obtained from a Web Key
-  Directory is now properly shown as Level 2.
+- GpgOL: Plain text e-mails without attachments are displayed correctly
+  again.
 
-- GpgOL: Permanently decrypt now works more reliably and
-  should no longer lead to "No Data" errors. (T4718)
-
-- GpgOL: Long lines in plaintext mails should no longer
-  be displayed as multiple lines after decryption. (T4987)
-
-- GpgOL: Attachments with filenames that are not allowed
-  on Windows can now be handled. (T4835)
-
-- GpgOL: Mails with exactly one attachment and no body
-  are now displayed correctly.
-
-- GnuPG: Symmetric encryption now uses only one
-  password dialog. (T4971)
-
-- GnuPG: Improved certificate import for S/MIME
-  certificates. (T4847)
-
-- GnuPG: Added support for CardOS 5 Smartcards
-  based on the D-Trust 3.1 card.
-
-- GnuPG: Support for rsaPSS signatures has been added. (T4538)
-
-- GnuPG: The "Quality" of a new passphrase is
-  no longer incorrectly displayed. (T2103)
-
-- Kleopatra: Overwriting secret key exports now works
-  correctly. (T4709)
-
-- Kleopatra: Fixed a case where file sign & encrypt dialogs
-  would not be shown on high DPI systems. (T4819)
-
-- Kleopatra: The sorting of multiple tabs has been
-  fixed.
-
-- Kleopatra: The minimal lenght of the Name has been
-  reduced to better support non latin names. (T4745)
-
-- Kleopatra: The filename suggestion for key exports
-  has been improved to avoid confusion between
-  public and private key exports. (T4995)
-
-- Kleopatra: Authentication subkeys can now be exported
-  in the OpenSSH format.
-
-- Kleopatra: Markup is now automatically removed when
-  pasting into the notepad. (T4969)
-
-- Kleopatra: "updating..." as key validity is no
-  longer displayed incorrectly when doing a keyserver
-  search. (T4948)
-
-- Gpg4win: The file and URL connections with Kleopatra now properly
-  split arguments and potential external data like filenames and
-  the search query.
-  This prevents a security issue where Kleopatra could be triggered
-  to load a library from a filename provided through an unescaped
-  URL.
-
+- GnuPG: Updated to 2.2.25
+    ( https://lists.gnupg.org/pipermail/gnupg-announce/2020q4/000450.html )
 
 3. Additional notes
 ===================

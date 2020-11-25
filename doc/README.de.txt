@@ -66,93 +66,36 @@ Die integrierten Gpg4win-Komponenten in Version !VERSION! sind:
 Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 -----------------------------------------
 
-- GpgOL: Verbesserte Behandlung von Mails mit verschlüsseltem
-  Betreff. (T4796)
+- Kleopatra: Es ist nun möglich Beglaubigungen zu mit Kleopatra zu
+  wiederrufen. (T5094)
 
-- GpgOL: Die Integration mit Web Key Diensten um öffentl.
-  Schlüssel zu veröffentlichen wurde verbessert. (T4839)
+- Kleopatra / GnuPG: Heimat-Verzeichnisse mit Unicode Zeichen im
+  Namen werden nun unterstützt. (T5055 und weitere)
 
-- GpgOL: Die Addressbuch Integration ist nun stärker sichtbar.
-  (T4874)
+- Kleopatra: Verzeichnisse können nun auch verschlüsselt werden
+  wenn Sie Unicode Dateinamen enthalten. (T4083)
 
-- GpgOL: Die Vorauswahl des Signaturschlüssels berücksichtigt
-  nun auch Gruppenpostfächer. (T4090)
+- Kleopatra: Die Smartcard Unterstützung wurde weiter verbessert um
+  unter anderem auf die Unterstützung mehrer Smartcards mit GnuPG 2.3
+  vorzubereiten. (T5066)
 
-- GpgOL: Während der Signaturprüfung wird nun eine
-  Vorschau angezeigt. (T4944)
+- Pinentry: Der Eingabefokus wird nun häufiger auf die Passworteingabe
+  umgelenkt. (T4123)
 
-- GpgOL: Das Drucken von verschlüsselten Mails funktioniert
-  nun auch nach dem Ändern des Druckers. (T4890)
+- GpgOL: Reine Text Mails ohne Anhänge werden nun wieder korrekt
+  dargestellt.
 
-- GpgOL: Die Sicherheitsstufe von Schlüsseln aus einem
-  Web Key Directory ist nun korrekterweise Stufe 2.
+- GpgOL: S/MIME Mails with multiple attachments no longer create an
+  invalid warning.
 
-- GpgOL: Dauerhaftes Entschlüsseln funktioniert nun
-  zuverlässiger und sollte nicht mehr zu "No Data" Fehlern
-  führen. (T4718)
+- GpgOL: S/MIME Mails mit mehreren Anhängen erzeugen nun nicht mehr
+  fälschliche Warnungen.
 
-- GpgOL: Lange Zeilen in "Nur Text" Mails werden nicht
-  mehr auf mehrere Zeilen nach dem Entschlüsseln umgebrochen.
-  (T4987)
+- GnuPG: Aktualisiert auf Version 2.2.25
+    ( https://lists.gnupg.org/pipermail/gnupg-announce/2020q4/000450.html )
 
-- GpgOL: Anhänge mit Sonderzeichen im Dateinamen die das
-  Windows Dateisystem verbietet, können nun verarbeitet
-  werden. (T4835)
-
-- GpgOL: Mails mit exakt einem Anhang, ohne Nachricht,
-  werden nun korrekt dargestellt.
-
-- GnuPG: Symmetrische Verschlüsselung fragt nun in
-  nur einem Dialog nach dem Passwort. (T4971)
-
-- GnuPG: Verbesserter Import von einigen S/MIME
-  Zertifikaten. (T4847)
-
-- GnuPG: Basierend auf der D-Trust 3.1 Karte werden
-  nun CardOS 5 Karten unterstützt.
-
-- GnuPG: Unterstützung für rsaPSS Signaturen wurde hinzugefügt.
-  (T4538)
-
-- GnuPG: Die "Qualität" einer neuen Passphrase wird nun
-  nicht mehr falsch dargestellt. (T2103)
-
-- Kleopatra: Das überschreiben von Exports des privaten
-  Schlüssels funktioniert nun korrekt. (T4709)
-
-- Kleopatra: Ein Fehler wurde behoben durch den der
-  Dateiverschlüsselungsdialog auf Systemen mit hoher
-  Auflösung nicht korrekt angezeigt wurde. (T4819)
-
-- Kleopatra: Die Sortierung mehrerer Tabs wurde korrigiert.
-
-- Kleopatra: Die minimale Länge des Namens wurde
-  reduziert um besser die nicht lateinische Sprache zu
-  unterstützen. (T4745)
-
-- Kleopatra: Der vorgeschlagene Dateiname beim
-  Export wurde verbessert um eine Verwechslung zwischen
-  privaten und öffentlichen Schlüsseln zu vermeiden.
-  (T4995)
-
-- Kleopatra: Authentifizierungs-Schlüssel können nun im
-  OpenSSH Format exportiert werden.
-
-- Kleopatra: Markup wird nun automatisch entfernt wenn
-  man Daten in den Notizblock kopiert. (T4969)
-
-- Kleopatra: Es wird nun nicht länger "aktualisiere..." als
-  Gültigkeit angezeigt wenn man eine Suche auf dem Schlüsselserver
-  durchführt. (T4948)
-
-- Gpg4win: Die Datei und URL verknüpfungen mit Kleopatra spalten nun
-  korrekt Argumente und potentiell externe Daten wie Dateinamen und
-  Such-Parameter.
-  Dies verhindert ein Sicherheits-Problem mit dem Kleopatra dazu
-  gebracht werden konnte eine Bibliothek von einem Pfad zu laden
-  der durch eine nicht escapte URL übergeben wurde.
-
-==============
+3. Hinweise
+===========
 
 - GpgOL
 
