@@ -151,6 +151,9 @@ gpg4win_pkg_gettext_configure = \
   --with-lib-prefix=$(idir) --with-libiconv-prefix=$(idir) \
   CPPFLAGS=-I$(idir)/include CFLAGS=-O2 LDFLAGS=-L$(idir)/lib
 
+gpg4win_pkg_scute_configure = \
+  LDFLAGS=-lws2_32
+
 gpg4win_pkg_gettext_ex_configure = \
   --with-lib-prefix=$(ex_idir) --with-libiconv-prefix=$(ex_idir) \
   CPPFLAGS=-I$(ex_idir)/include CFLAGS=-O2 LDFLAGS=-L$(ex_idir)/lib
