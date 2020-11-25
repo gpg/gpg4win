@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:svg="http://www.w3.org/2000/svg" xmlns:ns1="http://sozi.baierouge.fr" xmlns:xlink="http://www.w3.org/1999/xlink" id="svg878" sodipodi:docname="smartcard.svg" viewBox="0 0 303.31 191.27" sodipodi:version="0.32" version="1.0" inkscape:output_extension="org.inkscape.output.svg.inkscape" inkscape:version="0.46+devel">
+  <sodipodi:namedview id="base" inkscape:zoom="1.6970563" borderopacity="1.0" inkscape:current-layer="layer1" inkscape:cx="91.218971" inkscape:cy="101.4325" inkscape:snap-grids="true" inkscape:snap-bbox="false" showgrid="true" units="mm" showguides="true" bordercolor="#666666" inkscape:window-x="68" inkscape:guide-bbox="true" inkscape:window-y="109" inkscape:window-width="1144" inkscape:pageopacity="0.0" inkscape:pageshadow="2" pagecolor="#ffffff" inkscape:snap-to-guides="true" inkscape:document-units="mm" inkscape:window-height="798">
+    <inkscape:grid id="grid887" dotted="true" enabled="false" visible="true" snapvisiblegridlinesonly="true" units="px" type="xygrid" empspacing="10"/>
+    <inkscape:grid id="grid1408" opacity=".12549" empopacity="0.25098039" spacingx="1mm" color="#ff0000" enabled="false" spacingy="1mm" visible="true" snapvisiblegridlinesonly="true" units="mm" empcolor="#ff0000" type="xygrid" empspacing="10"/>
+    <sodipodi:guide id="guide2255" position="0,191.26772" orientation="0,1"/>
+    <sodipodi:guide id="guide2273" position="-25.337993,88.511814" orientation="0,1"/>
+    <sodipodi:guide id="guide2277" position="-144.16667,123.94489" orientation="0,1"/>
+    <sodipodi:guide id="guide2281" position="35.433071,0" orientation="1,0"/>
+    <sodipodi:guide id="guide2283" position="70.866142,0" orientation="1,0"/>
+  </sodipodi:namedview>
+  <g id="layer1" inkscape:label="Layer 1" inkscape:groupmode="layer">
+    <rect id="rect893" style="stroke:#2e3436;stroke-width:7.0866;fill:#d3d7cf" ry="11.268" height="184.18" width="296.22" y="3.5433" x="3.5433"/>
+    <rect id="rect2287" style="stroke:#2e3436;stroke-width:3.5433;fill:#888a85" ry="3.5433" height="31.89" width="31.89" y="69.094" x="37.205"/>
+  </g>
+  <metadata>
+    <rdf:RDF>
+      <cc:Work>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+        <cc:license rdf:resource="http://creativecommons.org/licenses/publicdomain/"/>
+        <dc:publisher>
+          <cc:Agent rdf:about="http://openclipart.org/">
+            <dc:title>Openclipart</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:title>smartcard</dc:title>
+        <dc:date>2009-11-13T23:19:07</dc:date>
+        <dc:description/>
+        <dc:source>https://openclipart.org/detail/28351/smartcard-by-nikiwaibel</dc:source>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>nikiwaibel</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>how i did it</rdf:li>
+            <rdf:li>icon</rdf:li>
+            <rdf:li>line art</rdf:li>
+            <rdf:li>outline</rdf:li>
+            <rdf:li>symbol</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+      </cc:Work>
+      <cc:License rdf:about="http://creativecommons.org/licenses/publicdomain/">
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Reproduction"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Distribution"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#DerivativeWorks"/>
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+<script xmlns="">try {
+                        Object.defineProperty(screen, "availTop", { value: 0 });
+                    } catch (e) {}
+                    try {
+                        Object.defineProperty(screen, "availLeft", { value: 0 });
+                    } catch (e) {}
+                    try {
+                        Object.defineProperty(screen, "availWidth", { value: 2400 });
+                    } catch (e) {}
+                    try {
+                        Object.defineProperty(screen, "availHeight", { value: 1350 });
+                    } catch (e) {}
+                    try {
+                        Object.defineProperty(screen, "colorDepth", { value: 24 });
+                    } catch (e) {}
+                    try {
+                        Object.defineProperty(screen, "pixelDepth", { value: 24 });
+                    } catch (e) {}
+                    try {
+                        Object.defineProperty(navigator, "hardwareConcurrency", { value: 8 });
+                    } catch (e) {}
+                    try {
+                        Object.defineProperty(navigator, "appVersion", { value: "5.0 (X11)" });
+                    } catch (e) {}
+                    try {
+                        Object.defineProperty(navigator, "doNotTrack", { value: "unspecified" });
+                    } catch (e) {}
+            try {
+                window.screenY = 214
+            } catch (e) { }
+            try {
+                window.screenTop = 214
+            } catch (e) { }
+            try {
+                window.top.window.outerHeight = 859
+            } catch (e) { }
+            try {
+                window.screenX = 13
+            } catch (e) { }
+            try {
+                window.screenLeft = 13
+            } catch (e) { }
+            try {
+                window.top.window.outerWidth = 1590
+            } catch (e) { }
+        </script></svg>

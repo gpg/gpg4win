@@ -30,6 +30,7 @@ Section "-un.breeze-icons"
   Push "${gpg4win_pkg_breeze_icons}"
   Call un.SourceDelete
 !else
+  Delete "$INSTDIR\share\icons\breeze\actions\22\secure-card.svg"
   Delete "$INSTDIR\share\icons\breeze\status\64\security-medium.svg"
   Delete "$INSTDIR\share\icons\breeze\status\64\security-low.svg"
   Delete "$INSTDIR\share\icons\breeze\status\64\security-high.svg"

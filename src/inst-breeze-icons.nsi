@@ -167,6 +167,7 @@ Section "-breeze-icons" SEC_breeze_icons
   File ${prefix}/share/icons/breeze/actions/22/resource-group-new.svg
   File ${prefix}/share/icons/breeze/actions/22/password-generate.svg
   File ${prefix}/share/icons/breeze/actions/22/note.svg
+  File secure-card.svg
 
   SetOutPath "$INSTDIR\share\icons\breeze\actions\32"
 
