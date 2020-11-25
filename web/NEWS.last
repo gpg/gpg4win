@@ -2,6 +2,69 @@
 #
 # The version number given below are for the standard installers as
 # distributed by www.gpg4win.org.
+Noteworthy changes in Version 3.1.14 (2020-11-25)
+------------------------------------------------
+(en) Kleopatra: It is now possible to revoke certifications with Kleopatra.
+     (T5094)
+
+(de) Kleopatra: Es ist nun möglich Beglaubigungen zu mit Kleopatra zu
+     wiederrufen. (T5094)
+
+(en) Kleopatra / GnuPG: Unicode home directories are now supported.
+     (T5055)
+
+(de) Kleopatra / GnuPG: Heimat-Verzeichnisse mit Unicode Zeichen im
+     Namen werden nun unterstützt. (T5055 und weitere)
+
+(en) Kleopatra: Directories for encryption may now contain unicode
+     filenames. (T4083)
+
+(de) Kleopatra: Verzeichnisse können nun auch verschlüsselt werden
+     wenn Sie Unicode Dateinamen enthalten. (T4083)
+
+(en) Kleopatra: Improved Smartcard support, preshadowing the full
+     multicard support with GnuPG 2.3. (T5066)
+
+(de) Kleopatra: Die Smartcard Unterstützung wurde weiter verbessert um
+     unter anderem auf die Unterstützung mehrer Smartcards mit GnuPG 2.3
+     vorzubereiten. (T5066)
+
+(en) Pinentry: The dialog should now receive input focus in more scenarios.
+     (T4123)
+
+(de) Pinentry: Der Eingabefokus wird nun häufiger auf die Passworteingabe
+     umgelenkt. (T4123)
+
+(en) GpgOL: Plain text mails without attachments are properly displayed
+     again.
+
+(de) GpgOL: Reine Text Mails ohne Anhänge werden nun wieder korrekt
+     dargestellt.
+
+(en) GpgOL: Plain text e-mails without attachments are displayed correctly
+     again.
+
+(de) GpgOL: S/MIME Mails with multiple attachments no longer create an
+     invalid warning.
+
+(de) GpgOL: S/MIME Mails mit mehreren Anhängen erzeugen nun nicht mehr
+     fälschliche Warnungen.
+
+(en) GnuPG: Updated to 2.2.25
+    ( https://lists.gnupg.org/pipermail/gnupg-announce/2020q4/000450.html )
+
+(de) GnuPG: Aktualisiert auf Version 2.2.25
+    ( https://lists.gnupg.org/pipermail/gnupg-announce/2020q4/000450.html )
+
+~~~~~~~~~~~~~~~
+GnuPG:          2.2.25
+Kleopatra:      3.1.14
+GPA:            0.10.0
+GpgOL:          2.4.8
+GpgEX:          1.0.6
+Kompendium DE:  4.0.1
+Compendium EN:  3.0.0
+~~~~~~~~~~~~~~~
 
 Noteworthy changes in Version 3.1.13 (2020-09-04)
 ------------------------------------------------
