@@ -47,6 +47,20 @@ ${MementoUnselectedSection} "Browser integration" SEC_gpgme_browser
   pop $1
 
   push $1
+  FileOpen $1 "$INSTDIR\bin\gpgme-edge.json" "w"
+  FileWrite $1 '{$\r$\n'
+  FileWrite $1 '"name": "gpgmejson",$\r$\n'
+  FileWrite $1 '"description": "Javascript-binding for gnupg",$\r$\n'
+  FileWrite $1 '"path": "$2\\bin\\gpgme-json.exe",$\r$\n'
+  FileWrite $1 '"type": "stdio",$\r$\n'
+  FileWrite $1 '"allowed_origins": [$\r$\n'
+  FileWrite $1 '	"chrome-extension://dgcbddhdhjppfdfjpciagmmibadmoapc/"$\r$\n'
+  FileWrite $1 ']$\r$\n'
+  FileWrite $1 '}$\r$\n'
+  FileClose $1
+  pop $1
+
+  push $1
   FileOpen $1 "$INSTDIR\bin\gpgme-mozilla.json" "w"
   FileWrite $1 '{$\r$\n'
   FileWrite $1 '"name": "gpgmejson",$\r$\n'
@@ -62,10 +76,12 @@ ${MementoUnselectedSection} "Browser integration" SEC_gpgme_browser
   pop $2
 
   WriteRegStr SHCTX "Software\Google\Chrome\NativeMessagingHosts\gpgmejson" "" "$INSTDIR\bin\gpgme-chrome.json"
+  WriteRegStr SHCTX "Software\Microsoft\Edge\NativeMessagingHosts\gpgmejson" "" "$INSTDIR\bin\gpgme-edge.json"
   WriteRegStr SHCTX "Software\Mozilla\NativeMessagingHosts\gpgmejson" "" "$INSTDIR\bin\gpgme-mozilla.json"
   SetRegView 64
 # BEGIN MSI IGNORE
   WriteRegStr SHCTX "Software\Google\Chrome\NativeMessagingHosts\gpgmejson" "" "$INSTDIR\bin\gpgme-chrome.json"
+  WriteRegStr SHCTX "Software\Microsoft\Edge\NativeMessagingHosts\gpgmejson" "" "$INSTDIR\bin\gpgme-edge.json"
   WriteRegStr SHCTX "Software\Mozilla\NativeMessagingHosts\gpgmejson" "" "$INSTDIR\bin\gpgme-mozilla.json"
 # END MSI IGNORE
   SetRegView 32
