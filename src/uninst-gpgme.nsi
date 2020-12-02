@@ -38,6 +38,7 @@ ${If} ${RunningX64}
   Delete /REBOOTOK "$INSTDIR\bin_64\libgpgmepp-6.dll"
   Delete /REBOOTOK "$INSTDIR\bin_64\libgpgme11.dll"
   Delete /REBOOTOK "$INSTDIR\bin_64\gpgme-json.exe"
+  Delete "$INSTDIR\bin_64\gpgme-w32spawn.exe"
 ${EndIf}
   Delete "$INSTDIR\bin\gpgme-w32spawn.exe"
   Delete "$INSTDIR\bin\gpgme-json.exe"

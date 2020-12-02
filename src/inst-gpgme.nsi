@@ -84,6 +84,8 @@ ${If} ${RunningX64}
       File /oname=libgpgmepp-6.dll.tmp "${exprefix}/bin/libgpgmepp-6.dll"
       Rename /REBOOTOK libgpgmepp-6.dll.tmp libgpgmepp-6.dll
   File ${exprefix}/bin/gpgme-json.exe
+  File "${prefix}/libexec/gpgme-w32spawn.exe"
+
 ${EndIf}
 
 !endif
