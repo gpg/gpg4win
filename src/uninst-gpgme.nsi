@@ -47,12 +47,15 @@ ${EndIf}
   Delete "$INSTDIR\include\gpgme.h"
   Delete "$INSTDIR\bin\gpgme-chrome.json"
   Delete "$INSTDIR\bin\gpgme-mozilla.json"
+  Delete "$INSTDIR\bin\gpgme-edge.json"
 
   DeleteRegKey SHCTX "Software\Google\Chrome\NativeMessagingHosts\gpgmejson"
+  DeleteRegKey SHCTX "Software\Microsoft\Edge\NativeMessagingHosts\gpgmejson"
   DeleteRegKey SHCTX "Software\Mozilla\NativeMessagingHosts\gpgmejson"
 
   SetRegView 64
   DeleteRegKey SHCTX "Software\Google\Chrome\NativeMessagingHosts\gpgmejson"
+  DeleteRegKey SHCTX "Software\Microsoft\Edge\NativeMessagingHosts\gpgmejson"
   DeleteRegKey SHCTX "Software\Mozilla\NativeMessagingHosts\gpgmejson"
   SetRegView 32
 
