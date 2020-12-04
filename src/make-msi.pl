@@ -1658,11 +1658,14 @@ EOF
             $dirname = "GnuPGDataFolder";
         }
 
-        print FILE ' ' x 6 . '<Component Id="c_' . $custom_name . "_" . $fileidx
+        my $custom_name_us=$custom_name;
+        $custom_name_us =~ s/-/_/;
+
+        print FILE ' ' x 6 . '<Component Id="c_' . $custom_name_us . "_" . $fileidx
         . '" Directory="' . $dirname . '" Guid="' . $guid . '" KeyPath="yes">' . "\n";
 
         print FILE ' ' x 8
-        . "  <File Id='f_$custom_name" . "_$fileidx' Name='"
+        . "  <File Id='f_$custom_name_us" . "_$fileidx' Name='"
         . $basename ."' KeyPath='no'" . " Source='" .
         $sourcefull . "'/>\n";
 
