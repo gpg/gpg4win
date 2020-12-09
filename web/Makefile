@@ -1,8 +1,8 @@
 # Build html from m4 macrofiles
 # $Id$
 #
-# (c)2005,2006,2015 by Intevation GmbH
-# Author(s): Sascha Wilde
+# (c)2005,2006,2015,2020 by Intevation GmbH
+# Author(s): Sascha Wilde, Bernhard Reiter
 #
 # This is Free Software licensed under the GPL
 
@@ -52,7 +52,7 @@ online: all
 	@echo "Going to put current contents online for www.gpg4win.org ..."
 	@echo "(ssh fingerprint may be found via https://ssl.intevation.de/)"
 	@echo ""
-	rsync -rvPC --perms --chmod=ug+rw,o+r,Dg+s,Da+x,u-s,Fg-s,o-wt --exclude='*.swp' $(ADD_INST_TYPES) $(TARGETS) $(ADD_INST_DIRS) \
+	rsync -rvPC --perms --chmod=ug+rw,o+r,Dg+s,Da+x,u-s,Fg-s,o-wt --exclude='*.swp' --exclude 'src/' $(ADD_INST_TYPES) $(TARGETS) $(ADD_INST_DIRS) \
 	$(USER)@www.gpg4win.org:/srv/gpg4win-www/
 
 install: all
