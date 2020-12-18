@@ -114,7 +114,7 @@ foosum_exe = sha1sum.exe md5sum.exe sha256sum.exe mkportable.exe
 CLEANFILES = g4wihelp.dll desktopshellrun.o versioninfo.txt $(README_files) \
 			 $(HOWTO_files) NEWS.tmp COMPONENTS-list.tmp \
 			 license.blurb cdversioninfo.tmp slideshow.o \
-			 $(foosum_exe)
+			 $(foosum_exe) gpgwrap.exe
 
 # Supported source packages.
 gpg4win_spkgs = glib libffi gdk-pixbuf gtk+ \
@@ -689,7 +689,7 @@ playground/install/gpg4win-$(VERSION)-x86.wixlib: \
 		exit 1; \
 	fi)
 gpg4win-$(VERSION).wxs: gpg4win.nsi $(common_nsi) stamps/stamp-final \
-		        $(foosum_exe) \
+		        $(foosum_exe) gpgwrap.exe \
 			$(README_files) $(HOWTO_files) \
 			versioninfo.txt make-msi.pl \
 	$(addsuffix /VERSION.sig,$(addprefix gnupg-vsd/,$(msi_targets)))
@@ -739,7 +739,7 @@ COMPONENTS-list.tmp : $(top_srcdir)/NEWS
 # if makensis changed to the directory of the source file at startup.
 # So we have to pull a couple of strings to correct this.
 installers/gpg4win-$(VERSION).exe: gpg4win.nsi $(common_nsi) stamps/stamp-final \
-                        g4wihelp.dll \
+                        g4wihelp.dll gpgwrap.exe \
 		        $(foosum_exe) \
 			$(README_files) $(HOWTO_files) \
 	                license.blurb versioninfo.txt
@@ -769,6 +769,10 @@ g4wihelp.dll: slideshow.cpp desktopshellrun.cpp g4wihelp.c exdll.h
 	  desktopshellrun.o slideshow.o -lwinmm -lgdi32 -luserenv -lshell32 \
 	  -lole32 -loleaut32 -lshlwapi -lmsimg32
 	$(STRIP) g4wihelp.dll
+
+gpgwrap.exe: gpgwrap.c
+	$(CC) -I. -I.. -DHAVE_CONFIG_H -O2 -Wl,-subsystem,windows -o $@ $^
+	$(STRIP) $@
 
 sha1sum.exe: sha1sum.c
 	$(CC) -O2 -o $@ $^

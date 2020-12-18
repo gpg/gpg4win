@@ -36,6 +36,9 @@ Section  "un.gnupg_w32"
   # gpg4win
   StrCmp $0 "" gnupg_w32_not_installed
   DetailPrint  "$(T_Uninstalling_GnuPG) ${gpg4win_pkg_gnupg_w32_version}"
+  Delete "$0\bin\gpg-w32.exe"
+  Delete "$0\bin\gpgsm-w32.exe"
+  Delete "$0\bin\gpgconf-w32.exe"
   ExecWait '"$0\gnupg-uninstall.exe" /S _?=$0'
   Delete /REBOOTOK "$0\gnupg-uninstall.exe"
   RmDir "$0"
