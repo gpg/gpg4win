@@ -286,12 +286,12 @@ chk  c2a9b3aec1a38d34b66106116a39f64b01d84f475fef75c40ea0bda0ea67ed07
 # D869 2123 C406 5DEA 5E0F  3AB5 249B 39D2 4F25 E3B6
 server ftp://ftp.gnupg.org/gcrypt
 
-# last changed 2020-11-11
+# last changed 2020-12-24
 # by ah
 # verified: distsigkey.gpg
 server ftp://ftp.gnupg.org/gcrypt
-file libgpg-error/libgpg-error-1.39.tar.bz2
-chk 4a836edcae592094ef1c5a4834908f44986ab2b82e0824a0344b49df8cdb298f
+file libgpg-error/libgpg-error-1.41.tar.bz2
+chk 64b078b45ac3c3003d7e352a5e05318880a5778c42331ce1ef33d1a0d9922742
 
 # last-changed: 2019-11-11
 # by: ah
@@ -302,21 +302,21 @@ chk  c080ee96b3bd519edd696cfcebdecf19a3952189178db9887be713ccbcb5fbf0
 # last changed: 2020-11-17
 # by: ah
 # verified: distsigkey.gpg
-name gnupg-w32-2.2.25-20201123-bin.exe
-file binary/gnupg-w32-2.2.25_20201123.exe
-chk  1ac8ff6bcd5a5a66cd14abe448e5be2627a82b770f3caadc3852fdabce89d511
+name gnupg-w32-2.2.26-20201221-bin.exe
+file binary/gnupg-w32-2.2.26_20201221.exe
+chk  a194559cc4f2cf857ec93c49c3eba7d78f3a99c11347070d61363ee01b44cd55
 
-name gnupg-w32-2.2.25-20201123-src.tar.xz
-file binary/gnupg-w32-2.2.25_20201123.tar.xz
-chk  5e1efea1a5ad80b194e97ed4b2bfc099653ff187fcc40b2bc7642d10791b2973
+name gnupg-w32-2.2.26-20201221-src.tar.xz
+file binary/gnupg-w32-2.2.26_20201221.tar.xz
+chk 35d60229f1a6e02eccc84d83c7d015e298070350935148f29ff05966e658fc44
 
-name gnupg-msi-2.2.25-20201123-src.tar.xz
-file binary/gnupg-w32-2.2.25_20201123.tar.xz
-chk  5e1efea1a5ad80b194e97ed4b2bfc099653ff187fcc40b2bc7642d10791b2973
+name gnupg-msi-2.2.26-beta18-20201221-src.tar.xz
+file binary/gnupg-w32-2.2.26_20201221.tar.xz
+chk  35d60229f1a6e02eccc84d83c7d015e298070350935148f29ff05966e658fc44
 
-name gnupg-msi-2.2.25-20201123-bin.wixlib
-file binary/gnupg-w32-2.2.25_20201123.wixlib
-chk  41b7382fba9ee4f0e6320fa47fa708099437d8485865f2be4b23d0c5d0c63304
+name gnupg-msi-2.2.26-20201221-bin.wixlib
+file binary/gnupg-w32-2.2.26_20201221.wixlib
+chk  35b8cbbc07da5ab4f8611af8b94a3c1697560870f49dc1ba9172627c3f6b980d
 
 server ftp://ftp.gnupg.org/gcrypt
 
