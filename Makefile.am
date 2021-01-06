@@ -32,6 +32,7 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         patches/glib-2.41.5/01-socket.patch \
         patches/glib-2.41.5/02-formatsec.patch \
         patches/kconfigwidgets/0001-Make-QDbus-optional.patch \
+        patches/kconfig/0001-Allow-to-override-kconfig-executable.patch \
         patches/kiconthemes/0001-Make-DBus-optional.patch \
         patches/kleopatra/0005-Hack-generated-conf-files-for-Crosscompiling.patch \
         patches/kxmlgui/0001-make-qdbus-optional.patch \

@@ -50,7 +50,7 @@ to be installed:
     libglib2.0-dev gettext docbook-utils ghostscript \
     texinfo libgdk-pixbuf2.0-dev texlive-latex-extra libqt4-dev-bin \
     wget mingw-w64 texlive-lang-german cmake libgtk2.0-bin libxml2-utils \
-    gperf libgettextpo-dev automake-1.15
+    gperf libgettextpo-dev automake-1.15 libkf5config-dev-bin
 
 Building the Webpages
 =====================

@@ -194,6 +194,8 @@ AC_CHECK_PROGS(MSGFMT, msgfmt)
 AC_CHECK_PROGS(GITLOG_TO_CHANGELOG, gitlog-to-changelog,
                [build-aux/gitlog-to-changelog])
 AC_CHECK_PROGS(BUILD_CC, gcc cc)
+AC_PATH_PROGS(KF5_CONFIG_EXECUTABLE,kconfig_compiler_kf5,,
+              /usr/lib/libexec/kf5:$PATH)
 AC_PROG_INSTALL
 
 if test -n "$GPGEX_ADD_HOST"; then
@@ -209,7 +211,7 @@ AC_SUBST(GPG4WIN_PARALLEL)
 
 missing_tools=
 for i in DLLTOOL MAKE UNZIP TAR MKDIR CP RM STOW MAKENSIS ZCAT TEXI2DVI \
-         DVIPDF CONVERT SHA1SUM MSGFMT BUILD_CC; do
+         DVIPDF CONVERT SHA1SUM MSGFMT BUILD_CC KF5_CONFIG_EXECUTABLE; do
    eval tmp='$'$i
    if test -z "$tmp"; then
       missing_tools="$missing_tools `echo $i | tr 'A-Z' 'a-z'`"
