@@ -237,8 +237,9 @@ server http://files.gpg4win.org/src
 
 # by: ah
 # verified: Sig 5B80 C575 4298 F0CB  55D8 ED6A BCEF 7E29 4B09 2E28
-file gpgol/gpgol-2.4.8.tar.bz2
-chk  2f7af0bce2c8706d2267285408dc3dcec6155631038d39434afb62b5ec90dfc2
+file gpgol/gpgol-2.4.9.tar.bz2
+chk  522b3922aa865e558edd81f4ac8e1af0be18c74f212eb8d9e740816d7656a78d
+
 
 # for beta
 #server http://files.intevation.de/projects/gpg4all
