@@ -337,8 +337,10 @@ chk  0b472bc12c7d455906c8a539ec56da0a6480ef1c3a87aa5b74d7125df68d0e5b
 file gpa/gpa-0.10.0.tar.bz2
 chk  95dbabe75fa5c8dc47e3acf2df7a51cee096051e5a842b4c9b6d61e40a6177b1
 
-file scute/scute-1.6.0.tar.bz2
-chk 511be523407590a586b7d61b5985af965dd91901b75d9650b55e9ae1d86d0ab0
+# last changed: 2021-01-07
+# by: ah
+file scute/scute-1.7.0.tar.bz2
+chk 437fe758b27c243a5ee2535c6b065ea1d09f2c9a02d83567d2f934bb6395c249
 
 #
 #  GnuPG utilities
@@ -577,11 +579,11 @@ chk 4e97a92681c5e5a32a4faf5799f42818effa6ec4f842b284ba18ff8eb4628923
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah with script kde-l10n.sh
-file kde-l10n/kde-l10n-202101061433-bin.tar.xz
-chk  d2406e9375b5493c42e0de5bc96ab31eeec9f261ecd090ac9b5660093e53e7e6
+file kde-l10n/kde-l10n-202101071558-bin.tar.xz
+chk  65347028dd2c33c269c9a420e0c05c1de40e874b630d2772531c3cb1dc69e475
 
-file kde-l10n/kde-l10n-202101061433-src.tar.xz
-chk  6a462326ea72f8e148a00b42203efff40ab1a0d078756689c617c645fddeb48e
+file kde-l10n/kde-l10n-202101071558-src.tar.xz
+chk  a5a9e4944b2ec97994e40f687d4fb8a60c6bbaf287ecd64acce35541bdca75f1
 
 # Gpg4win-tools package
 # last changed: see package date.

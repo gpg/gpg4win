@@ -33,7 +33,6 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         patches/glib-2.41.5/02-formatsec.patch \
         patches/kconfigwidgets/0001-Make-QDbus-optional.patch \
         patches/kiconthemes/0001-Make-DBus-optional.patch \
-        patches/kleopatra/0005-Hack-generated-conf-files-for-Crosscompiling.patch \
         patches/kxmlgui/0001-make-qdbus-optional.patch \
         patches/kxmlgui/0004-Cruedly-disable-KSendbugmail.patch \
         patches/qtbase/0001-Fix-build-without-std-thread.patch \
@@ -43,9 +42,7 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         patches/w32pth-2.0.5/workaround-broken-libtool.patch \
         patches/breeze-icons/0001-Make-binary-icons-cross-compilable.patch \
         patches/gpg4win-tools/0001-Show-about-data-information-from-VERSION.patch \
-        patches/gpgme/0001-qt-Fix-export-of-qDebug-GpgME-Error-overload.patch \
-        patches/gpgol/0001-Add-option-to-disable-the-S-MIME-efail-security.patch \
-        patches/scute/0001-w32-Add-ws2_32-linkage.patch
+        patches/gpgme/0001-qt-Fix-export-of-qDebug-GpgME-Error-overload.patch
 
 copy-news:
 	cp NEWS doc/website/NEWS.last
