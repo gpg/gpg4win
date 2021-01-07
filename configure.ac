@@ -194,8 +194,7 @@ AC_CHECK_PROGS(MSGFMT, msgfmt)
 AC_CHECK_PROGS(GITLOG_TO_CHANGELOG, gitlog-to-changelog,
                [build-aux/gitlog-to-changelog])
 AC_CHECK_PROGS(BUILD_CC, gcc cc)
-AC_PATH_PROGS(KF5_CONFIG_EXECUTABLE,kconfig_compiler_kf5,,
-              /usr/lib/libexec/kf5:$PATH)
+
 AC_PROG_INSTALL
 
 if test -n "$GPGEX_ADD_HOST"; then
@@ -211,12 +210,23 @@ AC_SUBST(GPG4WIN_PARALLEL)
 
 missing_tools=
 for i in DLLTOOL MAKE UNZIP TAR MKDIR CP RM STOW MAKENSIS ZCAT TEXI2DVI \
-         DVIPDF CONVERT SHA1SUM MSGFMT BUILD_CC KF5_CONFIG_EXECUTABLE; do
+         DVIPDF CONVERT SHA1SUM MSGFMT BUILD_CC; do
    eval tmp='$'$i
    if test -z "$tmp"; then
       missing_tools="$missing_tools `echo $i | tr 'A-Z' 'a-z'`"
    fi
 done
+
+# Try to find the KF5ConfigConfig to set up host tooling
+# variable for the kconfig compiler.
+# A variable path here would probably be better but we cant
+# use $libdir to avoid it beeing required to configure gpg4win
+# build with a multiarch libdir set.
+kf5_host_tooling="/usr/lib/x86_64-linux-gnu/cmake"
+if test ! -f "$kf5_host_tooling/KF5Config/KF5ConfigConfig.cmake"; then
+    missing_tools="$missing_tools libkf5config-dev"
+fi
+AC_SUBST(kf5_host_tooling)
 
 # Additional runtime libraries from mingw.
 GPG4WIN_RUNTIME_LIBRARY(libgcc_s_sjlj-1)
