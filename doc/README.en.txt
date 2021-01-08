@@ -65,29 +65,54 @@ Included Gpg4win components in version !VERSION! are:
 New in Gpg4win version !VERSION! (!BUILD_ISODATE!)
 -----------------------------------------
 
-- Kleopatra: It is now possible to revoke certifications with Kleopatra.
-  (T5094)
+- GpgOL: Fixed a critical issue since Gpg4win-3.1.12 where
+  the selection of "No Key" for a recipient could lead to arbitrary
+  keys selected instead. (T5223)
 
-- Kleopatra / GnuPG: Unicode home directories are now supported.
-  (T5055)
+- GpgOL: auto-key-retrieve in the GnuPG config now no longer
+  leads to "No Data" errors when viewing signed mails. (T5164)
 
-- Kleopatra: Directories for encryption may now contain unicode
-  filenames. (T4083)
+- GpgOL: The error "No Data" now leads to more useful output in
+  the mail view. (T5164)
 
-- Kleopatra: Improved Smartcard support, preshadowing the full
-  multicard support with GnuPG 2.3. (T5066)
+- GpgOL: The name for VS-NfD compliance is now configurable through
+  libkleopatrarc.
 
-- Pinentry: The dialog should now receive input focus in more scenarios.
-  (T4123)
+- Kleopatra: The dialog to create new keys has been simplified and
+  makes it easier to create keys without protection. This can
+  be disabled by setting "enforce-passphrase-constraints" in the
+  gpg-agent configuration. (T5181)
 
-- GpgOL: Plain text mails without attachments are properly displayed
-  again.
+- Kleopatra: Name and e-mail for new keys are now obtained through
+  active directory if they are available. (T5181)
 
-- GpgOL: Plain text e-mails without attachments are displayed correctly
-  again.
+- Kleopatra: Creating S/MIME CSRs for OpenPGP Smartcards has been
+  further improved. (T5127)
 
-- GnuPG: Updated to 2.2.25
-    ( https://lists.gnupg.org/pipermail/gnupg-announce/2020q4/000450.html )
+- Kleopatra: Tag support for certifications has been greatly improved
+  and is now also available when adding keys in the file encrypt
+  dialog. (T5174)
+
+- Kleopatra: Elevated execution of Kleopatra (run as Administrator)
+  is now prevented to avoid accidental permission problems in the
+  GnuPG data folder. (T5212)
+
+- Kleopatra: Setting the initial SigG PIN for NetKey cards now also
+  works if the generic PIN is not set. (T5220)
+
+- GnuPG: Now supports system wide configuration files in
+  "%ProgramData%\GNU\etc\gnupg" so Administrators can both set defaults
+  and enforce a specific configuration. The Format is the same as
+  the user configuration under "%AppData%\gnupg" with additional syntax
+  to enforce some options and ignore other options. (T4788)
+
+- GnuPG: OpenPGP certificates can no be obtained automatically
+  over Active Directory.
+
+- GnuPG: The scheme for LDAP access has been improved.
+
+- GnuPG: Updated to 2.2.26 See:
+  https://lists.gnupg.org/pipermail/gnupg-announce/2020q4/000451.html
 
 3. Additional notes
 ===================

@@ -66,33 +66,59 @@ Die integrierten Gpg4win-Komponenten in Version !VERSION! sind:
 Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 -----------------------------------------
 
-- Kleopatra: Es ist nun möglich Beglaubigungen zu mit Kleopatra zu
-  wiederrufen. (T5094)
+- GpgOL: Ein kritischer Fehler der seit Gpg4win-3.1.12 existierte
+  wurde behoben bei der Auswahl von "Kein Schlüssel" für einen
+  Empfänger konnte es dazu kommen das an beliebige Schlüssel
+  verschlüsselt wurde. (T5223)
 
-- Kleopatra / GnuPG: Heimat-Verzeichnisse mit Unicode Zeichen im
-  Namen werden nun unterstützt. (T5055 und weitere)
+- GpgOL: auto-key-retrieve in der GnuPG Konfiguration führt nun
+  nicht mehr zu "Keine Daten" Fehlern beim betrachten signierter
+  Mails. (T5164)
 
-- Kleopatra: Verzeichnisse können nun auch verschlüsselt werden
-  wenn Sie Unicode Dateinamen enthalten. (T4083)
+- GpgOL: Der Fehler "Keine Daten" wird nun besser behandelt und
+  zeigt hilfreiche Informationen in der Mail-Ansicht. (T5164)
 
-- Kleopatra: Die Smartcard Unterstützung wurde weiter verbessert um
-  unter anderem auf die Unterstützung mehrer Smartcards mit GnuPG 2.3
-  vorzubereiten. (T5066)
+- GpgOL: Der Name für VS-NfD Konformität ist nun in der libkleopatrarc
+  konfigurierbar.
 
-- Pinentry: Der Eingabefokus wird nun häufiger auf die Passworteingabe
-  umgelenkt. (T4123)
+- Kleopatra: Der Dialog um neue Schlüssel zu erstellen wurde
+  vereinfacht und macht es nun leichter Schlüssel ohne zusätzlichen
+  Passphrase Schutz zu erstellen. Dies kann mit der Option
+  "enforce-passphrase-constraints" in der gpg-agent Konfiguration
+  deaktiviert werden. (T5181)
 
-- GpgOL: Reine Text Mails ohne Anhänge werden nun wieder korrekt
-  dargestellt.
+- Kleopatra: Name und Mailaddresse für neue Schlüssel werden nun über
+  Active Directory befüllt wenn diese Information verfügbar ist.
+  (T5181)
 
-- GpgOL: S/MIME Mails with multiple attachments no longer create an
-  invalid warning.
+- Kleopatra: Das erstellen von S/MIME CSRs zu OpenPGP Smartcards
+  wurde weiter verbessert. (T5127)
 
-- GpgOL: S/MIME Mails mit mehreren Anhängen erzeugen nun nicht mehr
-  fälschliche Warnungen.
+- Kleopatra: Die Unterstützung für Tags in Beglaubigungen wurde
+  deutlich verbessert und tags werden nun auch berücksichtigt wenn
+  man Schlüssel zur Datei-Verschlüsselung auswählt. (T5174)
 
-- GnuPG: Aktualisiert auf Version 2.2.25
-    ( https://lists.gnupg.org/pipermail/gnupg-announce/2020q4/000450.html )
+- Kleopatra: Das ausführen mit erhöhten Rechten (als Administrator starten)
+  wird nun verhindert um zu vermeiden das die Dateirechte im GnuPG
+  Datenordner fehlerhaft gesetzt werden. (T5212)
+
+- Klepoatra: Das setzen der initialen SigG PIN für NetKey Karten funktioniert
+  nun auch wenn die generelle PIN nicht gesetzt ist. (T5220)
+
+- GnuPG: Es gibt nun eine systemweite Konfigurationsmöglichkeit
+  Konfigurationsdateien unter "%ProgramData%\GNU\etc\gnupg" werden
+  nun berücksichtigt. Das Format entspricht der Nutzerkonfiguration
+  unter "%AppData%\gnupg" mit zusätzlicher Syntax um Optionen zu
+  erzwingen und andere zu ignorieren. (T4788)
+
+- GnuPG: OpenPGP Zertifikate können nun automatisch
+  über Active Directory bezogen werden.
+
+- GnuPG: Für LDAP Schlüsselserver wird nun ein verbessertes
+  Schema verwendet.
+
+- GnuPG: Auf Version 2.2.26 aktualisiert:
+  https://lists.gnupg.org/pipermail/gnupg-announce/2020q4/000451.html
 
 3. Hinweise
 ===========
