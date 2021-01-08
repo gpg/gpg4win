@@ -44,6 +44,10 @@ done:
   File /oname=gpg-w32.exe     "${BUILD_DIR}/gpgwrap.exe"
   File /oname=gpgsm-w32.exe   "${BUILD_DIR}/gpgwrap.exe"
   File /oname=gpgconf-w32.exe "${BUILD_DIR}/gpgwrap.exe"
+  SetOutPath "$LocalAppData\GNU\etc\gnupg"
+# BEGIN MSI IGNORE
+  File "${BUILD_DIR}/gpg.conf"
+# END MSI IGNORE
 
   Delete "$TEMP\gnupg-w32-${gpg4win_pkg_gnupg_w32_version}-bin.exe"
 !endif
