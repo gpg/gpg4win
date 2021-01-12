@@ -21,7 +21,7 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
 	config.site config.nsi.in \
         libiconv.def libintl.def loreley.mid \
         gpg4win-splash.wav exdll.h g4wihelp.c desktopshellrun.cpp \
-        g4wihelp.nsi slideshow.cpp \
+        g4wihelp.nsi slideshow.cpp gpgwrap.c \
         inst-sections.nsi installer.nsi installer-finish.nsi  \
 	zlib.pc sha1sum.c mkportable.c     \
 	mkportable-vanilla.h mkportable-full.h \
