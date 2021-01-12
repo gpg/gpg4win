@@ -102,14 +102,20 @@ Noteworthy changes in Version 3.1.15 (unreleased)
 (de) GnuPG: Für LDAP Schlüsselserver wird nun ein verbessertes
      Schema verwendet.
 
-(en) GnuPG: Updated to 2.2.26 See:
+(en) GnuPG: Updated to 2.2.27 See:
+     https://lists.gnupg.org/pipermail/gnupg-announce/2021q1/000452.html
+
+     Announcement for 2.2.26:
      https://lists.gnupg.org/pipermail/gnupg-announce/2020q4/000451.html
 
-(de) GnuPG: Auf Version 2.2.26 aktualisiert:
+(de) GnuPG: Auf Version 2.2.27 aktualisiert:
+     https://lists.gnupg.org/pipermail/gnupg-announce/2021q1/000452.html
+
+     Ankündigung von Version 2.2.26:
      https://lists.gnupg.org/pipermail/gnupg-announce/2020q4/000451.html
 
 ~~~~~~~~~~~~~~~
-GnuPG:          2.2.26
+GnuPG:          2.2.27
 Kleopatra:      3.1.15
 GPA:            0.10.0
 GpgOL:          2.4.10
