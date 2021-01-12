@@ -117,7 +117,10 @@ Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 - GnuPG: Für LDAP Schlüsselserver wird nun ein verbessertes
   Schema verwendet.
 
-- GnuPG: Auf Version 2.2.26 aktualisiert:
+- GnuPG: Auf Version 2.2.27 aktualisiert:
+  https://lists.gnupg.org/pipermail/gnupg-announce/2021q1/000452.html
+
+  Ankündigung von Version 2.2.26:
   https://lists.gnupg.org/pipermail/gnupg-announce/2020q4/000451.html
 
 3. Hinweise

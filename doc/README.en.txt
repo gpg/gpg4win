@@ -111,7 +111,10 @@ New in Gpg4win version !VERSION! (!BUILD_ISODATE!)
 
 - GnuPG: The scheme for LDAP access has been improved.
 
-- GnuPG: Updated to 2.2.26 See:
+- GnuPG: Updated to 2.2.27 See:
+  https://lists.gnupg.org/pipermail/gnupg-announce/2021q1/000452.html
+
+  Announcement for 2.2.26:
   https://lists.gnupg.org/pipermail/gnupg-announce/2020q4/000451.html
 
 3. Additional notes

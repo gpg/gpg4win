@@ -3,7 +3,7 @@
 # The version number given below are for the standard installers as
 # distributed by www.gpg4win.org.
 
-Noteworthy changes in Version 3.1.15 (unreleased)
+Noteworthy changes in Version 3.1.15 (2021-01-12)
 ------------------------------------------------
 (en) GpgOL: Fixed a critical issue since Gpg4win-3.1.12 where
      the selection of "No Key" for a recipient could lead to arbitrary
