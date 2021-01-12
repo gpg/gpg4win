@@ -30,9 +30,23 @@ Wiki-Seite zur Integritätsprüfung (auf Englisch)</a>.
 
 <h2>Codesigning Zertifikat</h2>
 
-<p>Die Gpg4win-exe-Dateien sind seit Juni 2019 mit folgendem Codesigning-Zertifikat
+<p>Die Gpg4win-exe Datei ist seit 2021 mit folgendem Codesigning-Zertifikat
 signiert:</p>
 
+<pre>
+      S/N: 39E684F05C48911BAFB37629
+   Issuer: CN=GlobalSign CodeSigning CA - SHA256 - G3,O=GlobalSign nv-sa,C=BE
+  Subject: 1.2.840.113549.1.9.1=#636F646540673130636F64652E636F6D,
+           CN=g10 Code GmbH,O=g10 Code GmbH,L=Erkrath,ST=Nordrhein-Westfalen,C=DE
+ sha2_fpr: E0:4D:CD:E2:C9:EA:51:F3:34:63:CC:16:05:F2:9E:01:C2:84:F1:8F:ED:C8:E6:A6:42:05:EE:81:11:EF:BE:8C
+ sha1_fpr: 42:DE:0F:25:84:8B:D2:E4:41:62:E1:BF:29:CD:97:0E:EB:70:F6:48
+  md5_fpr: 89:A8:7B:01:99:1B:74:AD:75:86:20:C3:AF:36:9E:76
+notBefore: 2019-04-23 05:54:41
+ notAfter: 2022-06-02 12:12:13
+</pre>
+
+<hr/>
+<p>Frühere Versionen wurden mit einem der folgenden Zertifikate signiert:</p>
 <pre>
       S/N: 53F647D0F1DBA9E312A05669
    Issuer: CN=GlobalSign CodeSigning CA - SHA256 - G3,O=GlobalSign nv-sa,C=BE 
@@ -42,10 +56,7 @@ signiert:</p>
   md5_fpr: 4C:AD:36:5A:30:06:B0:A3:6D:BB:1E:30:1E:44:4E:17
 notBefore: 2019-03-13 12:15:07
  notAfter: 2022-04-30 16:54:41
-</pre>
-<hr/>
-<p>Frühere Versionen wurden mit einem der folgenden Zertifikate signiert:</p>
-<pre>
+
       S/N: 1121A3D67EAB28AA86FD85728B57FA62630D
    Issuer: CN=GlobalSign CodeSigning CA - SHA256 - G2,O=GlobalSign nv-sa,C=BE
   Subject: 1.2.840.113549.1.9.1=#636F64657369676E696E6740696E7465766174696F6E2E6465,
@@ -101,10 +112,11 @@ Für gpg4win-VERSION.tar.bz2:
 </p>
 
 <p>
-Die Signaturen wurden mit folgendem öffentlichen OpenPGP-Schlüssel
-(Zertifikat) erstellt. Er kann von hier herunterladen und importiert
-werden, oder von öffentlichen Keyservern.
+Die Signaturen werden seit 2021 mit einem der offiziellen GnuPG Release-Schlüsseln (Zertifikaten) erstellt.
+Diese sind auf der <a href="https://gnupg.org/signature_key.html">GnuPG Homepage</a> aufgeführt.
+</p>
 
+Der bis 2021 verwendete Schlüssel:
 <br>
 <a href="https://ssl.intevation.de/Intevation-Distribution-Key-2016.asc">Intevation File Distribution Key
 <distribution-key@intevation.de><br>(Fingerprint: 13E3 CE81 AFEA 6F68 3E46  6E0D 42D8 7608 2688 DA1A)</a>
