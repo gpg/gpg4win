@@ -2,6 +2,127 @@
 #
 # The version number given below are for the standard installers as
 # distributed by www.gpg4win.org.
+Noteworthy changes in Version 3.1.15 (2021-01-12)
+------------------------------------------------
+(en) GpgOL: Fixed a critical issue since Gpg4win-3.1.12 where
+     the selection of "No Key" for a recipient could lead to arbitrary
+     keys selected instead. (T5223)
+
+(de) GpgOL: Ein kritischer Fehler der seit Gpg4win-3.1.12 existierte
+     wurde behoben bei der Auswahl von "Kein Schlüssel" für einen
+     Empfänger konnte es dazu kommen das an beliebige Schlüssel
+     verschlüsselt wurde. (T5223)
+
+(en) GpgOL: auto-key-retrieve in the GnuPG config now no longer
+     leads to "No Data" errors when viewing signed mails. (T5164)
+
+(de) GpgOL: auto-key-retrieve in der GnuPG Konfiguration führt nun
+     nicht mehr zu "Keine Daten" Fehlern beim betrachten signierter
+     Mails. (T5164)
+
+(en) GpgOL: The error "No Data" now leads to more useful output in
+     the mail view. (T5164)
+
+(de) GpgOL: Der Fehler "Keine Daten" wird nun besser behandelt und
+     zeigt hilfreiche Informationen in der Mail-Ansicht. (T5164)
+
+(en) GpgOL: The name for VS-NfD compliance is now configurable through
+     libkleopatrarc.
+
+(de) GpgOL: Der Name für VS-NfD Konformität ist nun in der libkleopatrarc
+     konfigurierbar.
+
+(en) Kleopatra: The dialog to create new keys has been simplified and
+     makes it easier to create keys without protection. This can
+     be disabled by setting "enforce-passphrase-constraints" in the
+     gpg-agent configuration. (T5181)
+
+(de) Kleopatra: Der Dialog um neue Schlüssel zu erstellen wurde
+     vereinfacht und macht es nun leichter Schlüssel ohne zusätzlichen
+     Passphrase Schutz zu erstellen. Dies kann mit der Option
+     "enforce-passphrase-constraints" in der gpg-agent Konfiguration
+     deaktiviert werden. (T5181)
+
+(en) Kleopatra: Name and e-mail for new keys are now obtained through
+     active directory if they are available. (T5181)
+
+(de) Kleopatra: Name und Mailaddresse für neue Schlüssel werden nun über
+     Active Directory befüllt wenn diese Information verfügbar ist.
+     (T5181)
+
+(en) Kleopatra: Creating S/MIME CSRs for OpenPGP Smartcards has been
+     further improved. (T5127)
+
+(de) Kleopatra: Das erstellen von S/MIME CSRs zu OpenPGP Smartcards
+     wurde weiter verbessert. (T5127)
+
+(en) Kleopatra: Tag support for certifications has been greatly improved
+     and is now also available when adding keys in the file encrypt
+     dialog. (T5174)
+
+(de) Kleopatra: Die Unterstützung für Tags in Beglaubigungen wurde
+     deutlich verbessert und tags werden nun auch berücksichtigt wenn
+     man Schlüssel zur Datei-Verschlüsselung auswählt. (T5174)
+
+(en) Kleopatra: Elevated execution of Kleopatra (run as Administrator)
+     is now prevented to avoid accidental permission problems in the
+     GnuPG data folder. (T5212)
+
+(de) Kleopatra: Das ausführen mit erhöhten Rechten (als Administrator starten)
+     wird nun verhindert um zu vermeiden das die Dateirechte im GnuPG
+     Datenordner fehlerhaft gesetzt werden. (T5212)
+
+(en) Kleopatra: Setting the initial SigG PIN for NetKey cards now also
+     works if the generic PIN is not set. (T5220)
+
+(de) Klepoatra: Das setzen der initialen SigG PIN für NetKey Karten funktioniert
+     nun auch wenn die generelle PIN nicht gesetzt ist. (T5220)
+
+(en) GnuPG: Now supports system wide configuration files in
+     "%ProgramData%\GNU\etc\gnupg" so Administrators can both set defaults
+     and enforce a specific configuration. The Format is the same as
+     the user configuration under "%AppData%\gnupg" with additional syntax
+     to enforce some options and ignore other options. (T4788)
+
+(de) GnuPG: Es gibt nun eine systemweite Konfigurationsmöglichkeit
+     Konfigurationsdateien unter "%ProgramData%\GNU\etc\gnupg" werden
+     nun berücksichtigt. Das Format entspricht der Nutzerkonfiguration
+     unter "%AppData%\gnupg" mit zusätzlicher Syntax um Optionen zu
+     erzwingen und andere zu ignorieren. (T4788)
+
+(en) GnuPG: OpenPGP certificates can no be obtained automatically
+     over Active Directory.
+
+(de) GnuPG: OpenPGP Zertifikate können nun automatisch
+     über Active Directory bezogen werden.
+
+(en) GnuPG: The scheme for LDAP access has been improved.
+
+(de) GnuPG: Für LDAP Schlüsselserver wird nun ein verbessertes
+     Schema verwendet.
+
+(en) GnuPG: Updated to 2.2.27 See:
+     https://lists.gnupg.org/pipermail/gnupg-announce/2021q1/000452.html
+
+     Announcement for 2.2.26:
+     https://lists.gnupg.org/pipermail/gnupg-announce/2020q4/000451.html
+
+(de) GnuPG: Auf Version 2.2.27 aktualisiert:
+     https://lists.gnupg.org/pipermail/gnupg-announce/2021q1/000452.html
+
+     Ankündigung von Version 2.2.26:
+     https://lists.gnupg.org/pipermail/gnupg-announce/2020q4/000451.html
+
+~~~~~~~~~~~~~~~
+GnuPG:          2.2.27
+Kleopatra:      3.1.15
+GPA:            0.10.0
+GpgOL:          2.4.10
+GpgEX:          1.0.6
+Kompendium DE:  4.0.1
+Compendium EN:  3.0.0
+~~~~~~~~~~~~~~~
+
 Noteworthy changes in Version 3.1.14 (2020-11-25)
 ------------------------------------------------
 (en) Kleopatra: It is now possible to revoke certifications with Kleopatra.
