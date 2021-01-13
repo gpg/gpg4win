@@ -17,7 +17,7 @@ Noteworthy changes in Version 3.1.15 (2021-01-12)
      leads to "No Data" errors when viewing signed mails. (T5164)
 
 (de) GpgOL: auto-key-retrieve in der GnuPG Konfiguration führt nun
-     nicht mehr zu "Keine Daten" Fehlern beim betrachten signierter
+     nicht mehr zu "Keine Daten" Fehlern beim Betrachten signierter
      Mails. (T5164)
 
 (en) GpgOL: The error "No Data" now leads to more useful output in
@@ -53,7 +53,7 @@ Noteworthy changes in Version 3.1.15 (2021-01-12)
 (en) Kleopatra: Creating S/MIME CSRs for OpenPGP Smartcards has been
      further improved. (T5127)
 
-(de) Kleopatra: Das erstellen von S/MIME CSRs zu OpenPGP Smartcards
+(de) Kleopatra: Das Erstellen von S/MIME CSRs zu OpenPGP Smartcards
      wurde weiter verbessert. (T5127)
 
 (en) Kleopatra: Tag support for certifications has been greatly improved
@@ -61,21 +61,21 @@ Noteworthy changes in Version 3.1.15 (2021-01-12)
      dialog. (T5174)
 
 (de) Kleopatra: Die Unterstützung für Tags in Beglaubigungen wurde
-     deutlich verbessert und tags werden nun auch berücksichtigt wenn
+     deutlich verbessert und Tags werden nun auch berücksichtigt wenn
      man Schlüssel zur Datei-Verschlüsselung auswählt. (T5174)
 
 (en) Kleopatra: Elevated execution of Kleopatra (run as Administrator)
      is now prevented to avoid accidental permission problems in the
      GnuPG data folder. (T5212)
 
-(de) Kleopatra: Das ausführen mit erhöhten Rechten (als Administrator starten)
-     wird nun verhindert um zu vermeiden das die Dateirechte im GnuPG
+(de) Kleopatra: Das Ausführen mit erhöhten Rechten (als Administrator starten)
+     wird nun verhindert, um zu vermeiden das die Dateirechte im GnuPG
      Datenordner fehlerhaft gesetzt werden. (T5212)
 
 (en) Kleopatra: Setting the initial SigG PIN for NetKey cards now also
      works if the generic PIN is not set. (T5220)
 
-(de) Klepoatra: Das setzen der initialen SigG PIN für NetKey Karten funktioniert
+(de) Klepoatra: Das Setzen der initialen SigG PIN für NetKey Karten funktioniert
      nun auch wenn die generelle PIN nicht gesetzt ist. (T5220)
 
 (en) GnuPG: Now supports system wide configuration files in
@@ -84,9 +84,9 @@ Noteworthy changes in Version 3.1.15 (2021-01-12)
      the user configuration under "%AppData%\gnupg" with additional syntax
      to enforce some options and ignore other options. (T4788)
 
-(de) GnuPG: Es gibt nun eine systemweite Konfigurationsmöglichkeit
+(de) GnuPG: Es gibt nun eine systemweite Konfigurationsmöglichkeit.
      Konfigurationsdateien unter "%ProgramData%\GNU\etc\gnupg" werden
-     nun berücksichtigt. Das Format entspricht der Nutzerkonfiguration
+     berücksichtigt. Das Format entspricht der Nutzerkonfiguration
      unter "%AppData%\gnupg" mit zusätzlicher Syntax um Optionen zu
      erzwingen und andere zu ignorieren. (T4788)
 
