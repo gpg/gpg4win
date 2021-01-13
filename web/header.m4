@@ -43,10 +43,10 @@
    <small>2021-01-12</small><br>
    <span class="serif_word"><img src="img/bulletin.png" alt"" />
      m4_ifelse(LANG_DE, `1', `
-      <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2020-January/000054.html">
+      <a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2021-January/000055.html">
       Gpg4win 3.1.15 veröffentlicht</a>
       </span>',`
-      <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2021-January/000090.html">
+      <a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce/2021-January/000091.html">
         Gpg4win 3.1.15 released
       </a>
       </span>')
@@ -54,9 +54,9 @@
    <small>2020-11-25</small><br>
    <span class="serif_word"><img src="img/bulletin.png" alt"" />
      m4_ifelse(LANG_DE, `1', `
-      <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2020-November/000054.html">Gpg4win 3.1.14 veröffentlicht
+      <a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2020-November/000054.html">Gpg4win 3.1.14 veröffentlicht
       </a></span>',`
-      <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2020-November/000090.html">
+      <a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce/2020-November/000090.html">
         Gpg4win 3.1.14 released
       </a></span>')
    <p></p>
