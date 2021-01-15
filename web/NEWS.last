@@ -192,10 +192,10 @@ Noteworthy changes in Version 3.1.13 (2020-09-04)
 
 (de) GnuPG: Aktualisiert auf Version 2.2.23 um CVE-2020-25125 zu
      beheben.
-     ( https://ists.gnupg.org/pipermail/gnupg-announce/2020q3/000448.html )
+     ( https://lists.gnupg.org/pipermail/gnupg-announce/2020q3/000448.html )
 
 (en) GpgOL: Fixed an issue where unencrypted drafts of mails were stored
-     on the an Exchange Server and could be restored through the
+     on the Exchange Server and could be restored through the
      "recently deleted items" option. Especially if the draft encryption,
      introduced in Gpg4win-3.1.8, is used this can be a security issue. (T5022)
 
@@ -204,10 +204,10 @@ Noteworthy changes in Version 3.1.13 (2020-09-04)
      Under Windows with Outlook this is impossible to control.
      The draft encryption option is our best effort to avoid this.
 
-(de) GpgOL: Eine Möglichkeit wird verhindert das Outlook an einen
-     Exchange server unverschlüsselte Daten vor der Verschlüsselung sendet.
+(de) GpgOL: Eine Möglichkeit wird verhindert, bei der Outlook unverschlüsselte
+     Daten vor der Verschlüsselung an den Exchange Server sendet.
      Insbesondere wenn die in Gpg4win-3.1.8 eingeführte Entwurfs-
-     Verschlüsselung verwendet wurde ist dies ein Sicherheitsproblem.
+     Verschlüsselung verwendet wurde, ist dies ein Sicherheitsproblem.
      (T5022)
 
      Gpg4win kann nicht garantieren, dass Outlook keine Daten *vor* der
@@ -388,7 +388,7 @@ Noteworthy changes in Version 3.1.12 (2020-07-24)
      to load a library from a filename provided through an unescaped
      URL.
 
-(de) Gpg4win: Die Datei und URL verknüpfungen mit Kleopatra spalten nun
+(de) Gpg4win: Die Datei- und URL-Verknüpfungen mit Kleopatra spalten nun
      korrekt Argumente und potentiell externe Daten wie Dateinamen und
      Such-Parameter.
      Dies verhindert ein Sicherheits-Problem mit dem Kleopatra dazu
