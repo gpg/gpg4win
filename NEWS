@@ -2,6 +2,18 @@
 #
 # The version number given below are for the standard installers as
 # distributed by www.gpg4win.org.
+Noteworthy changes in Version 3.1.16 (unreleased)
+------------------------------------------------
+
+~~~~~~~~~~~~~~~
+GnuPG:          2.2.27
+Kleopatra:      3.1.15
+GPA:            0.10.0
+GpgOL:          2.4.10
+GpgEX:          1.0.6
+Kompendium DE:  4.0.1
+Compendium EN:  3.0.0
+~~~~~~~~~~~~~~~
 
 Noteworthy changes in Version 3.1.15 (2021-01-12)
 ------------------------------------------------
