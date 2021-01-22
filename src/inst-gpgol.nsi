@@ -65,6 +65,8 @@ ${MementoSection} "GpgOL" SEC_gpgol
   File ${prefix}/share/locale/nl/LC_MESSAGES/gpgol.mo
   SetOutPath "$INSTDIR\share\locale\uk\LC_MESSAGES"
   File ${prefix}/share/locale/uk/LC_MESSAGES/gpgol.mo
+  SetOutPath "$INSTDIR\share\locale\it\LC_MESSAGES"
+  File ${prefix}/share/locale/it/LC_MESSAGES/gpgol.mo
 
   SetOutPath "$INSTDIR\share\gpgol"
   File "${prefix}/share/gpgol/gpgol.cfg"
