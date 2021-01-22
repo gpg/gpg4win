@@ -895,6 +895,12 @@ gnupg-vsd/$(1)/VERSION: gnupg-vsd/custom.mk
 	echo "$(call GETVAR,msi_target_$(1)_DESC)" >> gnupg-vsd/$(1)/VERSION
 	echo "$(call GETVAR,msi_target_$(1)_DESC_SHORT)" >> gnupg-vsd/$(1)/VERSION
 
+gnupg-vsd/$(1)/announcement.txt: gnupg-vsd/custom.mk gnupg-vsd/announcement.de.in gnupg-vsd/announcement.en.in
+	cat gnupg-vsd/$(call GETVAR,msi_target_$(1)_announcement) | \
+		sed 's/VSD_VERSION/$(VSD_VERSION)/' | \
+		sed 's@GNUPG_VSD_CUSTOMER_LINK@https://download.gnupg.com/files/$(call GETVAR,msi_target_$(1)_directory)/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi@' | \
+		sed 's@GNUPG_VSD_SOURCE_LINK@https://download.gnupg.com/files/src/Gnupg-VS-Desktop-$(VSD_VERSION).tar.bz2@' > gnupg-vsd/$(1)/announcement.txt
+
 installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi: stamps/stamp-msi-base playground/install/$(1).wixlib \
 	gnupg-vsd/$(1)/license.rtf
 	scp gnupg-vsd/$(1)/license.rtf \
@@ -983,6 +989,15 @@ $(1)-upload: stamps/stamp-$(1)-upload
 	echo "Source links:"
 	echo "https://download.gnupg.com/files/src/Gnupg-VS-Desktop-$(VSD_VERSION).tar.bz2"
 	echo "https://download.gnupg.com/files/src/Gnupg-VS-Desktop-$(VSD_VERSION).tar.bz2.sig"
+
+$(1)-announce: gnupg-vsd/$(1)/announcement.txt
+	set -x
+	echo "-------- Announcement for $(1) ---------"
+	cat gnupg-vsd/$(1)/announcement.txt
+	echo "-----------------------------"
+	echo "Send to: $(call GETVAR,msi_target_$(1)_contact)"
+	echo "Ticket: $(call GETVAR,msi_target_$(1)_ticket)"
+	echo "-----------------------------"
 
 endef
 
