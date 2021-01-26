@@ -76,8 +76,8 @@ skip_uninst:
   File /oname=README.no.txt "${BUILD_DIR}/README.en.txt"
   File /oname=README.pt.txt "${BUILD_DIR}/README.en.txt"
   File /oname=README.ru.txt "${BUILD_DIR}/README.en.txt"
-  File /oname=README.zh_CN.txt "${BUILD_DIR}/README.en.txt"
-  File /oname=README.zh_TW.txt "${BUILD_DIR}/README.en.txt"
+  File /oname=README.zh_CN.txt "${BUILD_DIR}/README.zh.txt"
+  File /oname=README.zh_TW.txt "${BUILD_DIR}/README.zh.txt"
 # END MSI IGNORE
 
   File "${BUILD_DIR}/HOWTO-SMIME.en.txt"
