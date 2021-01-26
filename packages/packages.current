@@ -253,11 +253,11 @@ chk  d15c055b02ac6e10cf45043db1578392a112250f509e7cc832d22bca0db665d3
 #
 server http://files.gpg4win.org/src
 
-# last-changed: 2018-04-10
+# last-changed: 2021-01-26
 # by: ah
 # verified: Sig 5B80 C575 4298 F0CB  55D8 ED6A BCEF 7E29 4B09 2E28
-file gpgex/gpgex-1.0.6.tar.bz2
-chk  d69898d1022400bd09bb684080edc95be554af736ae9c014df73543f34f7481b
+file gpgex/gpgex-1.0.7.tar.bz2
+chk  ff6b9cce03d835bbf0fbfd5fbe986ed42813ababa4a98a791da8b57d745b5848
 
 #
 # Pth emulation
