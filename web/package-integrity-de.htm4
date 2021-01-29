@@ -41,8 +41,8 @@ signiert:</p>
  sha2_fpr: E0:4D:CD:E2:C9:EA:51:F3:34:63:CC:16:05:F2:9E:01:C2:84:F1:8F:ED:C8:E6:A6:42:05:EE:81:11:EF:BE:8C
  sha1_fpr: 42:DE:0F:25:84:8B:D2:E4:41:62:E1:BF:29:CD:97:0E:EB:70:F6:48
   md5_fpr: 89:A8:7B:01:99:1B:74:AD:75:86:20:C3:AF:36:9E:76
-notBefore: 2019-04-23 05:54:41
- notAfter: 2022-06-02 12:12:13
+notBefore: 2019-04-23 05:54:41 UTC
+ notAfter: 2022-06-02 12:12:13 UTC
 </pre>
 
 <hr/>
