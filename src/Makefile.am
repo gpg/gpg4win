@@ -99,7 +99,7 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
         kdeglobals qtlogging.ini \
         secure-card.svg
 
-gpg4win_readme_ll = en de ar es fr ru pt
+gpg4win_readme_ll = en de ar es fr ru pt zh
 
 README_files = $(addsuffix .txt,$(addprefix README.,$(gpg4win_readme_ll)))
 
