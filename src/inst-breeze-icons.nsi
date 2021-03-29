@@ -167,7 +167,6 @@ Section "-breeze-icons" SEC_breeze_icons
   File ${prefix}/share/icons/breeze/actions/22/resource-group-new.svg
   File ${prefix}/share/icons/breeze/actions/22/password-generate.svg
   File ${prefix}/share/icons/breeze/actions/22/note.svg
-  File secure-card.svg
 
   SetOutPath "$INSTDIR\share\icons\breeze\actions\32"
 
@@ -234,6 +233,7 @@ Section "-breeze-icons" SEC_breeze_icons
   File ${prefix}/share/icons/breeze/status/22/security-high.svg
   File ${prefix}/share/icons/breeze/status/22/security-low.svg
   File ${prefix}/share/icons/breeze/status/22/security-medium.svg
+  File ${prefix}/share/icons/breeze/status/22/auth-sim-locked.svg
 
   SetOutPath "$INSTDIR\share\icons\breeze\status\24"
 
