@@ -321,10 +321,10 @@ chk  46f7bf49ac5445370012a3698e048cd994579981df28f80f8b8494cf45869e8d
 
 server ftp://ftp.gnupg.org/gcrypt
 
-# last changed: 2017-12-05
+# last changed: 2021-04-21
 # by: ah
-#file pinentry/pinentry-1.1.0.tar.bz2
-#chk  68076686fa724a290ea49cdf0d1c0c1500907d1b759a3bcbfbec0293e8f56570
+file pinentry/pinentry-1.1.1.tar.bz2
+chk  cd12a064013ed18e2ee8475e669b9f58db1b225a0144debdb85a68cecddba57f
 
 # last changed: 2021-01-08
 # by: wk
@@ -561,8 +561,8 @@ server http://files.intevation.de/projects/gpg4all
 #chk 8d2a56dff6e6c12d628dd32075497326e8345c0096dec1280f7ab2c737410837
 
 # by: ah
-file pinentry/pinentry-1.1.1-beta44.tar.bz2
-chk c2091536687cd83569c9919d6d9fc8c3a53e74d8419320bcbb8b7dc36019c677
+# file pinentry/pinentry-1.1.1-beta44.tar.bz2
+# chk c2091536687cd83569c9919d6d9fc8c3a53e74d8419320bcbb8b7dc36019c677
 
 # by: ah
 # file gpgme/gpgme-1.15.1-beta13.tar.bz2
