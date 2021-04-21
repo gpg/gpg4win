@@ -40,7 +40,9 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         patches/qtbase/0001-Gpg4win-qstandardpaths-patch.patch \
         patches/qttools/disable-most-tools.patch \
         patches/w32pth-2.0.5/workaround-broken-libtool.patch \
-        patches/breeze-icons/0001-Make-binary-icons-cross-compilable.patch
+        patches/breeze-icons/0001-Make-binary-icons-cross-compilable.patch \
+        patches/libkleo/lower-cmake-requirement.patch \
+        patches/kleopatra/lower-cmake-requirement.patch
 
 copy-news:
 	cp NEWS doc/website/NEWS.last

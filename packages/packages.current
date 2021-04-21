@@ -572,8 +572,8 @@ chk c2091536687cd83569c9919d6d9fc8c3a53e74d8419320bcbb8b7dc36019c677
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah.
-file libkleo/libkleo-202103221216.tar.gz
-chk a2eda6d7e4a4fb0d1f457ef4c599e4c669958ee937c144ada83a692afae9b3e5
+file libkleo/libkleo-202104211047.tar.gz
+chk ce488563578b0a4b2b0bb41cb2d09bd3ef3139f73d75a8fd322ec57fa851a721
 
 # KDE-L10n
 # last changed: see package date.
@@ -596,5 +596,5 @@ chk 8748b1ad3b6ad3725b42672c3a5a3aea7447fb3f691d284ee2157307bb2e458d
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah.
-file kleopatra/kleopatra-202103221220.tar.gz
-chk aab930679ef0a7742f685becd0da4333a6e0afe9bc24cc193e42eca5ce21a0d2
+file kleopatra/kleopatra-202104211047.tar.gz
+chk c3fad40c7d053d3043f5576f81c25242ba940a592e4d99caa63adca450fdb53d
