@@ -287,18 +287,18 @@ chk  c2a9b3aec1a38d34b66106116a39f64b01d84f475fef75c40ea0bda0ea67ed07
 # D869 2123 C406 5DEA 5E0F  3AB5 249B 39D2 4F25 E3B6
 server ftp://ftp.gnupg.org/gcrypt
 
-# last changed 2020-12-24
+# last changed 2021-04-21
 # by ah
 # verified: distsigkey.gpg
 server ftp://ftp.gnupg.org/gcrypt
-file libgpg-error/libgpg-error-1.41.tar.bz2
-chk 64b078b45ac3c3003d7e352a5e05318880a5778c42331ce1ef33d1a0d9922742
+file libgpg-error/libgpg-error-1.42.tar.bz2
+chk fc07e70f6c615f8c4f590a8e37a9b8dd2e2ca1e9408f8e60459c67452b925e23
 
-# last-changed: 2019-11-11
+# last-changed: 2021-04-21
 # by: ah
 # verified: distsigkey.gpg
-file libassuan/libassuan-2.5.4.tar.bz2
-chk  c080ee96b3bd519edd696cfcebdecf19a3952189178db9887be713ccbcb5fbf0
+file libassuan/libassuan-2.5.5.tar.bz2
+chk  8e8c2fcc982f9ca67dcbb1d95e2dc746b1739a4668bc20b3a3c5be632edb34e4
 
 # last changed: 2020-11-17
 # by: ah
