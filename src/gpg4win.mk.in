@@ -799,7 +799,7 @@ define AUTHENTICODE_sign
      echo "speedo: Signing via host $(AUTHENTICODE_SIGNHOST)";\
      scp $(1) "$(AUTHENTICODE_SIGNHOST):a.exe" ;\
      ssh "$(AUTHENTICODE_SIGNHOST)" $(AUTHENTICODE_TOOL) sign \
-        /n '"g10 Code GmbH"' \
+        /a /n '"g10 Code GmbH"' \
         /tr 'http://rfc3161timestamp.globalsign.com/advanced' /td sha256 \
         /d '"GnuPG VS-Desktop"' \
         /fd sha256 /du https://gnupg.com a.exe; \
