@@ -305,19 +305,19 @@ chk  8e8c2fcc982f9ca67dcbb1d95e2dc746b1739a4668bc20b3a3c5be632edb34e4
 # verified: distsigkey.gpg
 name gnupg-w32-2.2.28-beta69-20210507-bin.exe
 file binary/unstable/gnupg-w32-2.2.28-beta69_20210507.exe
-chk  5d89e239790822711eae2899467a764879d21440ab68e9413452fa96cedeba50
+chk  768c89ce638db3576aaf668fedff48d25583ea8e83721e830037ea8dc99b8066
 
 name gnupg-w32-2.2.28-beta69-20210507-src.tar.xz
 file binary/unstable/gnupg-w32-2.2.28-beta69_20210507.tar.xz
-chk  e1a2dc705c940938b7bf7a17f521a41b1ef14139acd8860b2fd59aed2750aa3b
+chk  05ca40ad7a7113a5d4bdef328a9f53e18eaf71d6924a5295b27e73cacc8d5ca1
 
 name gnupg-msi-2.2.27-beta18-20210111-src.tar.xz
 file binary/unstable/gnupg-w32-2.2.28-beta69_20210507.tar.xz
-chk  e1a2dc705c940938b7bf7a17f521a41b1ef14139acd8860b2fd59aed2750aa3b
+chk  05ca40ad7a7113a5d4bdef328a9f53e18eaf71d6924a5295b27e73cacc8d5ca1
 
 name gnupg-msi-2.2.28-beta69-20210507-bin.wixlib
 file binary/unstable/gnupg-w32-2.2.28-beta69_20210507.wixlib
-chk  133817a4c4d11996956676c5c200222839ee5dc16e9476bd682d4e68b33ef73e
+chk  f87bef3cbdfacdf249cc56d88a284fdc836d792e6d8f6fc5dc51377d45d958b4
 
 server ftp://ftp.gnupg.org/gcrypt
 
