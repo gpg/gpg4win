@@ -311,7 +311,7 @@ name gnupg-w32-2.2.28-beta69-20210507-src.tar.xz
 file binary/unstable/gnupg-w32-2.2.28-beta69_20210507.tar.xz
 chk  05ca40ad7a7113a5d4bdef328a9f53e18eaf71d6924a5295b27e73cacc8d5ca1
 
-name gnupg-msi-2.2.27-beta18-20210111-src.tar.xz
+name gnupg-msi-2.2.28-beta18-20210111-src.tar.xz
 file binary/unstable/gnupg-w32-2.2.28-beta69_20210507.tar.xz
 chk  05ca40ad7a7113a5d4bdef328a9f53e18eaf71d6924a5295b27e73cacc8d5ca1
 
