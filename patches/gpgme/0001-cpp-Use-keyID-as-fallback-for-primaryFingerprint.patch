@@ -1,0 +1,50 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From c1843ee030fa4b8b2ff0a51b9b4d2c41caba6f54 Mon Sep 17 00:00:00 2001
+From: Andre Heinecke <aheinecke@gnupg.org>
+Date: Wed, 19 May 2021 13:54:54 +0200
+Subject: [PATCH] cpp: Use keyID as fallback for primaryFingerprint
+
+* lang/cpp/src/key.cpp (Key::primaryFingerprint): Fallback
+to keyID when we have no fingerprint.
+
+--
+When a keylist returns a key without a fingerprint this for
+example can happen when searching in LDAP then code assuming
+the primaryFingerprint is the main identifier of the key
+will fail.
+
+This way we have "best available unique identifier" still
+connected to primaryFingerprint. And this should avoid bugs
+in code using GPGME that would handle two different keys
+without a fingerprint as the same key.
+
+GnuPG-Bug-Id: T5441
+---
+ lang/cpp/src/key.cpp | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/lang/cpp/src/key.cpp b/lang/cpp/src/key.cpp
+index b893a7cd..9d9f4615 100644
+--- a/lang/cpp/src/key.cpp
++++ b/lang/cpp/src/key.cpp
+@@ -292,10 +292,14 @@ const char *Key::primaryFingerprint() const
+         /* Return what gpgme thinks is the primary fingerprint */
+         return key->fpr;
+     }
+-    if (key->subkeys) {
++    if (key->subkeys && key->subkeys->fpr) {
+         /* Return the first subkeys fingerprint */
+         return key->subkeys->fpr;
+     }
++    if (key->subkeys && key->subkeys->keyid) {
++        /* When no fingerprint is available use the first subkeys keyid */
++        return key->subkeys->keyid;
++    }
+     return nullptr;
+ }
+
+--
+2.20.1
