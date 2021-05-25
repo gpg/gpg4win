@@ -1,17 +1,16 @@
 Here is a list with collected copyright notices.  For details see the
-description of each individual package.  This is not meant as an
+description of each individual package.  This list is not meant as an
 exhaustive list of copyright notices.  Notices from several packages
-are even not listed.  The license with the highest freedom protection is
+are even not listed.  The license with the most restrictive terms is
 the GNU General Public License version 3 (GPLv3+); thus complying to
-those terms and conditions should be sufficient.  If in doubt check
-the individual packages.
+those terms and conditions will be sufficient.  If in doubt check the
+source code of the individual packages.
 
 
 Gpg4win (the installer) is
 
-  Copyright (C) 2005-2013 g10 Code GmbH
+  Copyright (C) 2005-2013,2019-2021 g10 Code GmbH
                 2013-2018 Intevation GmbH
-                2019      g10 Code GmbH
                 2015-2018 Bundesamt für Sicherheit in der Informationstechnik
                           Software Engineering by Intevation GmbH
 
@@ -26,14 +25,14 @@ Gpg4win (the installer) is
   General Public License for more details.
 
   You should have received a copy of the GNU General Public License
-  along with this program; if not, write to the Free Software
-  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
-  02110-1301, USA
+  along with this program; if not, see <https://gnu.org/licenses/>.
 
 
 GnuPG is
 
-  Copyright 1998-2019 Free Software Foundation, Inc.
+  Copyright (C) 1997-2019 Werner Koch
+  Copyright (C) 1998-2021 Free Software Foundation, Inc.
+  Copyright (C) 2003-2021 g10 Code GmbH
 
   GnuPG is free software; you can redistribute it and/or modify it
   under the terms of the GNU General Public License as published by
@@ -46,7 +45,7 @@ GnuPG is
   License for more details.
 
   You should have received a copy of the GNU General Public License
-  along with this program; if not, see <http://www.gnu.org/licenses/>.
+  along with this program; if not, see <https://gnu.org/licenses/>.
 
   See the files AUTHORS and THANKS for credits, further legal
   information and bug reporting addresses pertaining to GnuPG.
@@ -54,12 +53,7 @@ GnuPG is
 
 NSIS is
 
-  Copyright 1999-2009 Nullsoft, Jeff Doozan and Contributors
-  Copyright 2002-2008 Amir Szekely
-  Copyright 2003 Ramon
-  Copyright 1995-1998 Jean-loup Gailly and Mark Adler
-  Copyright 1999-2006 Igor Pavlov
-  Copyright 1996-2000 Julian R Seward
+  Copyright 1999-2018 NSIS Contributors
 
   This license applies to everything in the NSIS package, except where
   otherwise noted.
@@ -83,40 +77,30 @@ NSIS is
   3. This notice may not be removed or altered from any source
      distribution.
 
-  The user interface used with the installer is
-
-  Copyright (C) 2002-2005 Joost Verburg
-
-  [It is distributed along with NSIS and the same conditions as stated
-   above apply]
 
 
 GLIB is
 
-  Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
-  Copyright (C) 1995-2011 Red Hat, Inc.
+  Copyright (C) 1995-2018 Red Hat, Inc.
   Copyright (C) 2008-2010 Novell, Inc.
   Copyright (C) 2008-2010 Codethink Limited.
-  Copyright (C) 2008-2010 Collabora, Ltd.
+  Copyright (C) 2008-2018 Collabora, Ltd.
+  Copyright (C) 2018 Endless Mobile, Inc.
+  Copyright (C) 2018 Emmanuele Bassi
 
-  This library is free software; you can redistribute it and/or
+  This package is free software; you can redistribute it and/or
   modify it under the terms of the GNU Lesser General Public
   License as published by the Free Software Foundation; either
   version 2 of the License, or (at your option) any later version.
 
-  This library is distributed in the hope that it will be useful,
+  This package is distributed in the hope that it will be useful,
   but WITHOUT ANY WARRANTY; without even the implied warranty of
-  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.	 See the GNU
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
   Lesser General Public License for more details.
 
   You should have received a copy of the GNU Lesser General Public
-  License along with this library; if not, write to the
-  Free Software Foundation, Inc., 59 Temple Place - Suite 330,
-  Boston, MA 02111-1307, USA.
-
-  See the AUTHORS file for a list of people on the GLib Team.  See the
-  ChangeLog files for a list of changes.  These files are distributed
-  with GLib at ftp://ftp.gtk.org/pub/gtk/.
+  License along with this package; if not, write to the Free Software
+  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301 USA
 
 
 GPA is
@@ -160,9 +144,7 @@ GPGEX is
   GNU Lesser General Public License for more details.
 
   You should have received a copy of the GNU Lesser General Public
-  License along with this program; if not, write to the Free Software
-  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
-  02110-1301, USA.
+  License along with this program; if not, see <http://www.gnu.org/licenses/>.
 
 
 GPGME is
@@ -191,11 +173,9 @@ GPGME is
 
 GpgOL is
 
-  Copyright (C) 2004-2011 g10 Code GmbH
+  Copyright (C) 2004-2011,2019-2021 g10 Code GmbH
                 2015-2018 Bundesamt für Sicherheit in der Informationstechnik
-                          Software Engineering by Intevation GmbH
                 2013-2018 Intevation GmbH
-                     2019 g10 Code GmbH
 
   GpgOL is free software; you can redistribute it and/or
   modify it under the terms of the GNU Lesser General Public
@@ -209,9 +189,6 @@ GpgOL is
 
   You should have received a copy of the GNU Lesser General Public
   License along with this program; if not, see <http://www.gnu.org/licenses/>.
-
-  See the files AUTHORS and THANKS for credits, further legal
-  information and bug reporting addresses pertaining to GpgOL.
 
 
 GTK+ is
@@ -235,13 +212,13 @@ GTK+ is
 
   Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
   file for a list of people on the GTK+ Team.  See the ChangeLog
-  files for a list of changes.  These files are distributed with
-  GTK+ at ftp://ftp.gtk.org/pub/gtk/.
+  files for a list of changes.  These files are part of the source
+  code.
 
 
 LIBGCRYPT is
 
-  Copyright (C) 1989,1991-2016· Free Software Foundation, Inc.
+  Copyright (C) 1989,1991-2016 Free Software Foundation, Inc.
                 1994 X Consortium
                 1996 L. Peter Deutsch
                 1997 Werner Koch
@@ -250,7 +227,7 @@ LIBGCRYPT is
                 1996-2006 Peter Gutmann, Matt Thomlinson and Blake Coverett
                 2003 Nikos Mavroyanopoulos
                 2006-2007 NTT (Nippon Telegraph and Telephone Corporation)
-                2012-2019 g10 Code GmbH
+                2012-2021 g10 Code GmbH
                 2012 Simon Josefsson, Niels Möller
                 2012 Intel Corporation
                 2013 Christian Grothoff
@@ -274,7 +251,7 @@ LIBGCRYPT is
 
 LIBGPG-ERROR is
 
-  Copyright (C) 2001-2004, 2010, 2012-2019, g10 Code GmbH
+  Copyright (C) 2001-2004, 2010, 2012-2021, g10 Code GmbH
 
   libgpg-error is free software; you can redistribute it and/or
   modify it under the terms of the GNU Lesser General Public License
@@ -288,18 +265,6 @@ LIBGPG-ERROR is
 
   You should have received a copy of the GNU Lesser General Public
   License along with this program; if not, see <http://www.gnu.org/licenses/>.
-
-
-Pthreads-win32 is
-
-  Copyright(C) 1998 John E. Bossom
-  Copyright(C) 1999,2005 Pthreads-win32 contributors
-
-  Most of this is work available under the GNU Lesser General Public
-  License as published by the Free Software Foundation version 2.1 of
-  the License.  The detailed terms are given in the file COPYING in
-  the source distribution; that very file may not be modified and thus
-  it is not possible to include it here.
 
 
 BZIP2 is
@@ -342,28 +307,6 @@ BZIP2 is
   Julian Seward, Cambridge, UK.
   jseward@bzip.org
   bzip2/libbzip2 version 1.0.4 of 20 December 2006
-
-
-ADNS
-
-  adns is Copyright 2008 g10 Code GmbH, Copyright 1997-2000,2003,2006
-  Ian Jackson, Copyright 1999-2000,2003,2006 Tony Finch, and Copyright
-  (C) 1991 Massachusetts Institute of Technology.
-
-  adns is free software; you can redistribute it and/or modify it
-  under the terms of the GNU General Public License as published by
-  the Free Software Foundation; either version 2 of the License, or
-  (at your option) any later version.
-
-  This program and documentation is distributed in the hope that it will
-  be useful, but without any warranty; without even the implied warranty
-  of merchantability or fitness for a particular purpose. See the
-  GNU General Public License for more details.
-
-  You should have received a copy of the GNU General Public License
-  along with adns, or one should be available above; if not, write to
-  the Free Software Foundation, 59 Temple Place - Suite 330, Boston,
-  MA 02111-1307, USA, or email adns-maint@chiark.greenend.org.uk.
 
 
 Paperkey
@@ -432,14 +375,12 @@ KDE-Frameworks
 
 Kleopatra
 
-  Copyright (C):
-           2002-2003, Marc Mutz <mutz@kde.org>
-           2008, Nokia Corporation and/or its subsidiary(-ies)
-           2001-2010, Klarälvdalens Datakonsult AB
-           2015-2018, Intevation GmbH
-           2015-2018, Bundesamt für Sicherheit in der Informationstechnik
-                      Software Engineering by Intevation GmbH
-                2019, g10 Code GmbH
+  Copyright (C) 2002-2003 Marc Mutz <mutz@kde.org>
+  Copyright (C) 2008 Nokia Corporation and/or its subsidiary(-ies)
+  Copyright (C) 2001-2010 Klarälvdalens Datakonsult AB
+  Copyright (C) 2015-2018 Intevation GmbH
+  Copyright (C) 2015-2018 Bundesamt für Sicherheit in der Informationstechnik
+  Copyright (C) 2019-2021 g10 Code GmbH
 
   Kleopatra is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -451,4 +392,27 @@ Kleopatra
   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
   General Public License for more details.
 
-[Compiled by wk 2006-02-15, last updated 2019-04-02]
+  You should have received a copy of the GNU General Public License
+  along with this library.  If not, see <http://www.gnu.org/licenses/>.
+
+Qt Toolkit
+
+  Copyright (C) 2018 The Qt Company Ltd. and other contributors
+
+  Qt is free software; you can redistribute it and/or modify it
+  under the terms of the GNU Lesser General Public License as
+  published by the Free Software Foundation; version 3 of
+  the License.
+
+  Qt is distributed in the hope that it will be useful, but
+  WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+  Lesser General Public License for more details.
+
+  You should have received a copy of the GNU Lesser General Public
+  License along with this program; if not, see <http://www.gnu.org/licenses/>.
+
+  For a list of other, less restrictive, licenses used in Qt see
+  <https://doc.qt.io/qt-5/licenses-used-in-qt.html>
+
+[Compiled by wk 2006-02-15, last updated 2021-05-25]
