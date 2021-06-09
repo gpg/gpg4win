@@ -329,8 +329,8 @@ chk  cd12a064013ed18e2ee8475e669b9f58db1b225a0144debdb85a68cecddba57f
 # last changed: 2021-01-08
 # by: wk
 # verified: swdb.mac
-file gpgme/gpgme-1.15.1.tar.bz2
-chk  eebc3c1b27f1c8979896ff361ba9bb4778b508b2496c2fc10e3775a40b1de1ad
+#cd file gpgme/gpgme-1.15.1.tar.bz2
+#chk  eebc3c1b27f1c8979896ff361ba9bb4778b508b2496c2fc10e3775a40b1de1ad
 
 # last changed: 2018-10-17
 # by: ah
@@ -565,16 +565,15 @@ server http://files.intevation.de/projects/gpg4all
 # chk c2091536687cd83569c9919d6d9fc8c3a53e74d8419320bcbb8b7dc36019c677
 
 # by: ah
-# file gpgme/gpgme-1.15.1-beta13.tar.bz2
-# chk a547c1c5ecb493e96e7a3c68fcfea4aa89c850110d33706fcc9ab93644f9a502
+file gpgme/gpgme-1.15.2-beta19.tar.bz2
+chk 1f3c50f497d62e524e7cae05a13510a8143a742873d560d25ac86e816baa437b
 
 # Libkleo
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah.
-file libkleo/libkleo-202105190927.tar.gz
-chk fdfd55573f400ede48b2a9674f9f018997887945a993c926cfcb7c10d29c3c1c
-
+file libkleo/libkleo-202106090957.tar.gz
+chk f1322fa0040e87a68b4471a57eb80c883ac088cd4d981ee6484e57f229b33cb4
 
 # KDE-L10n
 # last changed: see package date.
@@ -597,5 +596,5 @@ chk 79ea82ede46bbd02f70a64e4f003c6279e98cf4ad1e302eca753087c42fccdf3
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah.
-file kleopatra/kleopatra-202105190957.tar.gz
-chk 16958aa62d4d80a490e39c01d82359e23f96075ca948aef281bf66ce8f8b22dd
+file kleopatra/kleopatra-202106091008.tar.gz
+chk e15d61d5fce3039ff42d2e93f5d6999b2a8f94d57e8259822b6ac4f4542101aa

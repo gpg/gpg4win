@@ -42,6 +42,7 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         patches/w32pth-2.0.5/workaround-broken-libtool.patch \
         patches/breeze-icons/0001-Make-binary-icons-cross-compilable.patch \
         patches/libkleo/lower-cmake-requirement.patch \
+        patches/libkleo/0001-Revert-Use-more-target-centric-cmake-code.patch \
         patches/kleopatra/lower-cmake-requirement.patch \
         patches/gpgme/0001-cpp-Use-keyID-as-fallback-for-primaryFingerprint.patch
 
