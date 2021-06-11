@@ -40,13 +40,14 @@ The Compendium has more hints for manual or automated installation.
 System requirements
 -------------------
 
-Gpg4win runs on Windows versions 7 or newer (up to Windows 10).
-Both 32 and 64bit systems are supported. If you have at least Windows XP,
-some parts of Gpg4win can be used, but are not officially supported.
+Gpg4win runs on Windows versions 7 or newer including Windows Server 2008
+and later. Both 32 and 64bit systems are supported.
+If you have at least Windows XP, some parts of Gpg4win can be used,
+but are not officially supported.
 
-The Outlook plugin GpgOL is compatible with Microsoft Outlook 2010,
-2013 and 2016 (both 32 and 64bit) and supports transporting emails
-via SMTP/IMAP and MS Exchange Server (version 2010 or newer).
+The Outlook plugin GpgOL is compatible with Microsoft Outlook 2010 and
+later and supports transporting emails via SMTP/IMAP and MS Exchange Server
+(version 2010 or newer).
 
 With Gpg4win version 3.1.2 Outlook 2003 and 2007 support was removed for
 security reasons.
