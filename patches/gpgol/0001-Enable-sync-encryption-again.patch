@@ -1,0 +1,37 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From aae2120d3e685c139f954f0b4ada2dddcf3e8134 Mon Sep 17 00:00:00 2001
+From: Andre Heinecke <aheinecke@gnupg.org>
+Date: Fri, 11 Jun 2021 17:11:29 +0200
+Subject: [PATCH] Enable sync encryption again
+
+* src/main.c (read_options): Always use sync enc again.
+
+--
+This is my epic enemy, during testing I still had issues with
+this so this needs further work to be 100% stable. It is better
+to block outlook like the users are used to now anyway then to
+have some instabilities there.
+
+GnuPG-Bug-Id: T5485
+---
+ src/main.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/main.c b/src/main.c
+index 6e3c34a..92119bf 100644
+--- a/src/main.c
++++ b/src/main.c
+@@ -338,7 +338,7 @@ read_options (void)
+   opt.alwaysShowApproval = get_conf_bool ("alwaysShowApproval", 0);
+
+   /* Hidden options  */
+-  opt.sync_enc = get_conf_bool ("syncEnc", 0);
++  opt.sync_enc = 1; //get_conf_bool ("syncEnc", 0);
+   /* Due to an issue where async encryption would leave
+      unencrypted mails in the recently deleted folder on the
+      server we block it. */
+--
+2.20.1

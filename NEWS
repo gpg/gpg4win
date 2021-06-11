@@ -11,11 +11,6 @@ Noteworthy changes in Version 3.1.16 (2021-06-11)
 (de) GpgOL: Es werden nun auch Outlook Elemente, wie etwa weitergeleitete
      Mails oder Kontakte und Termine in Krypo Mails unterstützt. (T4184)
 
-(en) GpgOL: Encryption no longer blocks the Outlook window. (T5022)
-
-(de) GpgOL: Verschlüsseln blockiert das Outlook Fenster nicht
-     mehr. (T5022)
-
 (en) GpgOL: The "conflicting crypto preferences" warning
      now ignores more undocumented states. (T5335)
 

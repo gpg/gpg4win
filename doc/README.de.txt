@@ -69,9 +69,6 @@ Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 - GpgOL: Es werden nun auch Outlook Elemente, wie etwa weitergeleitete
   Mails oder Kontakte und Termine in Krypo Mails unterstützt. (T4184)
 
-- GpgOL: Verschlüsseln blockiert das Outlook Fenster nicht
-  mehr. (T5022)
-
 - GpgOL: Die Warnung zu "Widersprüchlichen Krypto Einstellungen"
   ignoriert nun undokumentierte Werte von Outlook. (T5335)
 

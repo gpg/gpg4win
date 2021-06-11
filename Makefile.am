@@ -44,7 +44,8 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         patches/libkleo/lower-cmake-requirement.patch \
         patches/libkleo/0001-Revert-Use-more-target-centric-cmake-code.patch \
         patches/kleopatra/lower-cmake-requirement.patch \
-        patches/gpgme/0001-cpp-Use-keyID-as-fallback-for-primaryFingerprint.patch
+        patches/gpgme/0001-cpp-Use-keyID-as-fallback-for-primaryFingerprint.patch \
+        patches/gpgol/0001-Enable-sync-encryption-again.patch
 
 copy-news:
 	cp NEWS doc/website/NEWS.last

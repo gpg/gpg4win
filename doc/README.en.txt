@@ -69,8 +69,6 @@ New in Gpg4win version !VERSION! (!BUILD_ISODATE!)
 - GpgOL: Added support for encrypting Outlook elements such
   as forwarded mails or contacts and events. (T4184)
 
-- GpgOL: Encryption no longer blocks the Outlook window. (T5022)
-
 - GpgOL: The "conflicting crypto preferences" warning
   now ignores more undocumented states. (T5335)
 
