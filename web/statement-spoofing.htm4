@@ -77,7 +77,7 @@ several states for a signature.</p>
 <h3>Research is hard to summarize</h3>
 <p>The summary of the research article shows that the majority of tested clients
 had one or more issues. And the root case is that it is hard to make
-digital signature usable, as the researcher conclude.</p>
+digital signatures usable, as the researchers conclude.</p>
 <p>In order to reason this, they took a variety of technical approaches
 - called 'attacks' - to see if they find technical problems.
 The combination of 14 attacks with about 40 email client- and
@@ -90,7 +90,7 @@ this will not be reflected in the summary.
 This is fine from the perspective of research because it helps to support
 the conclusion that in addition to good cryptographic foundations,
 also sound suggestions for implementing the user facing side have to be made.</p>
-<p>Needed are good recommendation how applications should behave
+<p>Needed are good recommendations on how applications should behave
 regarding email signatures. This is a lot of work and will take time.
 For once it has to work with the user interfaces of different applications.
 And secondly it is harder than specifying algorithms or protocols,
@@ -148,7 +148,7 @@ in the trusted sender category, close to the mail body.</p>
 <h3>HTML display attacks on GpgOL</h3>
 <p>The article describes that GpgOL should partially be affected
 if an attacker added HTML elements in the mail,
-that trick the user into believing the would they come from GpgOL
+that trick the user into believing they would come from GpgOL
 and thus faking the display of a signature status.</p>
 <p>GpgOL has multiple countermeasures against this:</p>
 <ul><li>The signature state is displayed as a large icon in the
