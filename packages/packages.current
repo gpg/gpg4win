@@ -577,11 +577,11 @@ chk f1322fa0040e87a68b4471a57eb80c883ac088cd4d981ee6484e57f229b33cb4
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah with script kde-l10n.sh
-file kde-l10n/kde-l10n-202104261621-bin.tar.xz
-chk  7d8186d048212bc43f35c0a53afec2202a072fdd2a0fa9148dc2d2b3329d3b77
+file kde-l10n/kde-l10n-202106110943-bin.tar.xz
+chk  25f7fdcf28b099f4468a1b284e5b91d4bde6ad82341d8267b2258625a660bc4f
 
-file kde-l10n/kde-l10n-202104261621-src.tar.xz
-chk  751fbf7c24bb7388e20eb9ee1c3ea277e81a663551725ed931f6cdc568bfd503
+file kde-l10n/kde-l10n-202106110943-src.tar.xz
+chk  2bbd748c5bd4ed6b9389ed9d05eeb9d0f543104ef916c09a1d89b1633632f2a4
 
 # Gpg4win-tools package
 # last changed: see package date.
