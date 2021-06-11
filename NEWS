@@ -8,7 +8,7 @@ Noteworthy changes in Version 3.1.16 (2021-06-11)
 (en) GpgOL: Added support for encrypting Outlook elements such
      as forwarded mails or contacts and events. (T4184)
 
-(de) GpgOL: Es werden nun auch Outlook elemente, wie etwa weitergeleitete
+(de) GpgOL: Es werden nun auch Outlook Elemente, wie etwa weitergeleitete
      Mails oder Kontakte und Termine in Krypo Mails unterstützt. (T4184)
 
 (en) GpgOL: Encryption no longer blocks the Outlook window. (T5022)
@@ -26,11 +26,11 @@ Noteworthy changes in Version 3.1.16 (2021-06-11)
      recipient groups that can then be selected as a whole when
      doing operations. (T5175 T5241)
 
-(de) Kleopatra: Das neue Feature "Gruppen" erlaubt es Gruppen zu
-     definieren die dann bei der Empfänger-Auswahl als ganze
+(de) Kleopatra: Das neue Feature "Gruppen" erlaubt es, Gruppen zu
+     definieren, die dann bei der Empfänger-Auswahl als Ganzes
      ausgewählt werden können. (T5175 T5241)
 
-(en) Kleopatra: Encryption works again with windows shared file
+(en) Kleopatra: Encryption works again with Windows shared file
      system paths. (T5216)
 
 (de) Kleopatra: Verschlüsseln funktioniert nun auch wieder mit
@@ -39,14 +39,14 @@ Noteworthy changes in Version 3.1.16 (2021-06-11)
 (en) Kleopatra: The check for elevated execution is now
      only a warning and no longer a hard error. (T5248)
 
-(de) Kleopatra: Die Prüfung ob Kleopatra mit erhöhten rechten
-     ausgeführt wird führt nun zu einer Warnung und nicht
-     mehr zu einem Fehler (T5248)
+(de) Kleopatra: Die Prüfung ob Kleopatra mit erhöhten Rechten
+     ausgeführt wird, führt nur noch zu einer Warnung und nicht
+     mehr zu einem Fehler. (T5248)
 
 (en) Kleopatra: The combined export of S/MIME and OpenPGP certificates
      has been improved. (T5002)
 
-(de) Kleopatra: Das gleichzeitige exportieren von S/MIME und
+(de) Kleopatra: Das gleichzeitige Exportieren von S/MIME und
      OpenPGP Zertifikaten wurde vereinfacht. (T5002)
 
 (en) Kleopatra: Search no longer shows all results as uncertified.
@@ -61,11 +61,11 @@ Noteworthy changes in Version 3.1.16 (2021-06-11)
 (de) Kleopatra: Neue Unterstützung für weitere CardOS Smartcards.
      (T4876)
 
-(en) Kleopatra: Automatically imports public keys for inserted
-     Smartcards from an Active Directory / LDAP Server. (T4876)
+(en) Kleopatra: Automatically imports public keys for the inserted
+     Smartcard from an Active Directory / LDAP Server. (T4876)
 
-(de) Kleopatra: Zertifikate werden nun passend zu eingesteckten
-     Smartcards von einem konfigurieren Active Directory bzw. LDAP
+(de) Kleopatra: Zertifikate werden nun passend zur eingesteckten
+     Smartcard von einem konfigurieren Active Directory bzw. LDAP
      Server geladen. (T4876)
 
 (en) Kleopatra: The certify dialog now allows to certify a key
@@ -73,9 +73,9 @@ Noteworthy changes in Version 3.1.16 (2021-06-11)
      enables Public Key Infrastructures where the certification
      is delegated. (T5245)
 
-(de) Kleopatra: Bei der Beglaubigung kann man nun festlegen das
-     ein Zertifikat vertrauenswürdige Beglaubigungen für eine bestimme
-     Domäne ausstellen darf. So kann man die Strukturen etablieren
+(de) Kleopatra: Bei der Beglaubigung kann man nun festlegen, dass
+     ein Zertifikat vertrauenswürdige Beglaubigungen für eine bestimmte
+     Domäne ausstellen darf. So kann man eine Infrastruktur etablieren,
      bei denen die Verantwortlichkeit für eine Domäne delegiert wird.
      (T5245)
 
@@ -100,34 +100,34 @@ Noteworthy changes in Version 3.1.16 (2021-06-11)
 (en) Kleopatra: The performance when decrypting archives has
      been improved. (T5478)
 
-(de) Kleopatra: Das entschlüsseln von Archiven wurde beschleunigt.
+(de) Kleopatra: Das Entschlüsseln von Archiven wurde beschleunigt.
      (T5478)
 
 (en) Kleopatra: Encrypting folders with files larger then 4GB no
      longer leads to truncated archives. (T5475)
 
-(de) Kleopatra: Verschlüsseln von Ordnern mit Dateien die größer
-     als 4GB sind führt nun nicht mehr zu fehlerhaften Archiven.
+(de) Kleopatra: Verschlüsseln von Ordnern mit Dateien, die größer
+     als 4GB sind, führt nun nicht mehr zu fehlerhaften Archiven.
      (T5478)
 
 (en) Kleopatra: Searching on LDAP / Active Directory for OpenPGP
      keys can now show multiple keys and shows details. (T5441)
 
-(de) Kleopatra: Suche in LDAP / Active Directory kann nun mehr
+(de) Kleopatra: Die Suche in LDAP / Active Directory kann nun mehr
      als einen Schlüssel anzeigen und zeigt die korrekten Details.
      (T5441)
 
-(en) GnuPG: Importing keys from LDAP no longer strips third party
-     signatures. (T5387)
+(en) GnuPG: Importing OpenPGP keys from LDAP no longer strips third
+     party signatures. (T5387)
 
-(de) GnuPG: Schlüssel aus dem LDAP werden nun mit Beglaubigungen
-     importiert. (T5387)
+(de) GnuPG: OpenPGP Schlüssel aus dem LDAP werden nun mit
+     Beglaubigungen importiert. (T5387)
 
 (en) GnuPG: Files encrypted with S/MIME (CMS) but only with
      a password can now be decrypted.
 
 (de) GnuPG: Dateien die mit S/MIME (CMS) aber nur mit Passwort
-     verschlüsselt wurden können nun entschlüsselt werden.
+     verschlüsselt wurden, können nun entschlüsselt werden.
 
 (en) GnuPG: Special characters (non 7bit) are now handled again.
      (T4398)
