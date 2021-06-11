@@ -563,8 +563,8 @@ server http://files.intevation.de/projects/gpg4all
 # chk c2091536687cd83569c9919d6d9fc8c3a53e74d8419320bcbb8b7dc36019c677
 
 # by: ah
-file gpgme/gpgme-1.15.2-beta19.tar.bz2
-chk 1f3c50f497d62e524e7cae05a13510a8143a742873d560d25ac86e816baa437b
+file gpgme/gpgme-1.15.2-beta23.tar.bz2
+chk a974a7d2cbde36501ba40c9b38e34cd50de4076b7c916a3abef16d21311ed917
 
 # Libkleo
 # last changed: see package date.
