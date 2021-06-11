@@ -31,6 +31,20 @@ Wiki page on integrity checks</a>.
 <p>The Gpg4win exe installe is signed with the following code
 signing certificate (since 2021):</p>
 <pre>
+      S/N: 2F48FAE3C9E7B142B9A8B259
+   Issuer: CN=GlobalSign GCC R45 CodeSigning CA 2020,O=GlobalSign nv-sa,C=BE
+  Subject: 1.2.840.113549.1.9.1=#636F646540673130636F64652E636F6D,CN=g10 Code GmbH,O=g10 Code GmbH,L=Erkrath,ST=Nordrhein-Westfalen,C=DE
+ sha2_fpr: B7:15:C7:C6:11:5A:99:A8:B1:C2:91:BE:68:90:BB:EE:AD:42:EE:2F:F6:17:78:E3:66:A0:1A:21:4E:FD:D8:00
+ sha1_fpr: 87:94:97:61:BE:B0:7B:FD:0B:90:F3:76:1F:1D:3E:3F:CC:3C:4D:B3
+   certid: 6E9CA841CF00ABF4F8929210FF478C9CAB578518.2F48FAE3C9E7B142B9A8B259
+  keygrip: 353A5BE748A8622E4D121DB3340A4EC1D4058BE1
+notBefore: 2021-04-21 16:45:15
+ notAfter: 2022-06-02 12:12:13
+</pre>
+
+<hr/>
+<p>Previously used code signing certificates were:</p>
+<pre>
       S/N: 39E684F05C48911BAFB37629
    Issuer: CN=GlobalSign CodeSigning CA - SHA256 - G3,O=GlobalSign nv-sa,C=BE
   Subject: 1.2.840.113549.1.9.1=#636F646540673130636F64652E636F6D,
@@ -40,11 +54,7 @@ signing certificate (since 2021):</p>
   md5_fpr: 89:A8:7B:01:99:1B:74:AD:75:86:20:C3:AF:36:9E:76
 notBefore: 2019-04-23 05:54:41 UTC
  notAfter: 2022-06-02 12:12:13 UTC
-</pre>
 
-<hr/>
-<p>Previously used code signing certificates were:</p>
-<pre>
       S/N: 53F647D0F1DBA9E312A05669
    Issuer: CN=GlobalSign CodeSigning CA - SHA256 - G3,O=GlobalSign nv-sa,C=BE 
   Subject: 1.2.840.113549.1.9.1=#636F64657369676E696E6740696E7465766174696F6E2E6465,
