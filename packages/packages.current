@@ -237,14 +237,14 @@ server http://files.gpg4win.org/src
 
 # by: ah
 # verified: Sig 5B80 C575 4298 F0CB  55D8 ED6A BCEF 7E29 4B09 2E28
-#file gpgol/gpgol-2.4.10.tar.bz2
-#chk  d15c055b02ac6e10cf45043db1578392a112250f509e7cc832d22bca0db665d3
+file gpgol/gpgol-2.5.0.tar.bz2
+chk  76cb742ae53cf54f2d42d258f6ba657d2b98c752d2c742b1e4f04b26a6baf0df
 
 # for beta
-server http://files.intevation.de/projects/gpg4all
+#server http://files.intevation.de/projects/gpg4all
 
-file gpgol/gpgol-2.4.9-beta33.tar.bz2
-chk 9f57059c688923edadc8e38bcfec236327a29b890f3035d7deb7591aca7f67c3
+#file gpgol/gpgol-2.5.0-beta36.tar.bz2
+#chk cf3431d9ffb06f6c86af4aaa35fd69f343a18854016ab7d4145844a9be8346cf
 
 #
 # GpgEX
