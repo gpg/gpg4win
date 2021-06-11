@@ -38,9 +38,6 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
   File ${prefix}/bin/libkleopatraclientcore.dll
   File ${prefix}/bin/libkleopatraclientgui.dll
 
-  # The KCM lib is directly linked
-  File ${prefix}/lib/plugins/kcm_kleopatra.dll
-
   SetOutPath "$INSTDIR\share\kleopatra\pics"
 
   File ${prefix}/share/kleopatra/pics/gpg4win.png
@@ -48,13 +45,6 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
   File ${prefix}/share/kleopatra/pics/kleopatra_splashscreen.svgz
   File ${prefix}/share/kleopatra/pics/kleopatra_wizard.png
   File ${prefix}/share/kleopatra/pics/kleopatra_wizard.svgz
-
-  SetOutPath "$INSTDIR\share\kservices5"
-  File ${prefix}/share/kservices5/kleopatra_config_appear.desktop
-  File ${prefix}/share/kservices5/kleopatra_config_gnupgsystem.desktop
-  File ${prefix}/share/kservices5/kleopatra_config_cryptooperations.desktop
-  File ${prefix}/share/kservices5/kleopatra_config_smimevalidation.desktop
-  File ${prefix}/share/kservices5/kleopatra_config_dirserv.desktop
 
 #  SetOutPath "$INSTDIR\share\apps\kwatchgnupg\pics"
 
