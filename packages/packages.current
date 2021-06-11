@@ -564,7 +564,7 @@ server http://files.intevation.de/projects/gpg4all
 
 # by: ah
 file gpgme/gpgme-1.15.2-beta23.tar.bz2
-chk a974a7d2cbde36501ba40c9b38e34cd50de4076b7c916a3abef16d21311ed917
+chk c5defc62ab9f2872762461c7cdf1c426302862246c649bd80b7ceb2ec0c7ee15
 
 # Libkleo
 # last changed: see package date.
