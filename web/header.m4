@@ -43,9 +43,9 @@
    <small>2021-06-11</small><br>
    <span class="serif_word"><img src="img/bulletin.png" alt"" />
      m4_ifelse(LANG_DE, `1', `
-      <a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2021-June/000055.html">Gpg4win 3.1.16 veröffentlicht
+      <a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2021-June/000056.html">Gpg4win 3.1.16 veröffentlicht
       </a></span>',`
-      <a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce/2021-June/000091.html">
+      <a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce/2021-June/000092.html">
         Gpg4win 3.1.16 released
       </a></span>')
    <p></p>
