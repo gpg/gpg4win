@@ -15,17 +15,18 @@ diff --git a/src/corelib/thread/qwaitcondition_p.h b/src/corelib/thread/qwaitcon
 index 5133e52e..d86ab804 100644
 --- a/src/corelib/thread/qwaitcondition_p.h
 +++ b/src/corelib/thread/qwaitcondition_p.h
-@@ -58,12 +58,20 @@
+@@ -58,12 +58,21 @@
  #include <condition_variable>
  #include <mutex>
 
++#if !QT_CONFIG(cxx11_future)
 +namespace std {
 +enum class cv_status {
 +    no_timeout,
 +    timeout
 +};
 +}
-+
++#endif
 +
  QT_BEGIN_NAMESPACE
 
