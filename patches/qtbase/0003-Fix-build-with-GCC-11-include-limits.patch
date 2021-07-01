@@ -1,0 +1,40 @@
+#! /bin/sh
+patch -p1 -f -l $* < $0
+exit $?
+
+From f27486e24b612d49a3e4d9768c515ae74845c982 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
+Date: Thu, 1 Jul 2021 16:33:03 +0200
+Subject: [PATCH] Fix build with GCC 11: include <limits>
+
+---
+ src/corelib/global/qfloat16.h        | 1 +
+ src/corelib/text/qbytearraymatcher.h | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/src/corelib/global/qfloat16.h b/src/corelib/global/qfloat16.h
+index f35eefd922..b2a0916b3b 100644
+--- a/src/corelib/global/qfloat16.h
++++ b/src/corelib/global/qfloat16.h
+@@ -43,6 +43,7 @@
+
+ #include <QtCore/qglobal.h>
+ #include <QtCore/qmetatype.h>
++#include <limits>
+ #include <string.h>
+
+ #if defined(QT_COMPILER_SUPPORTS_F16C) && defined(__AVX2__) && !defined(__F16C__)
+diff --git a/src/corelib/text/qbytearraymatcher.h b/src/corelib/text/qbytearraymatcher.h
+index 0eedfc1d20..ee415e336d 100644
+--- a/src/corelib/text/qbytearraymatcher.h
++++ b/src/corelib/text/qbytearraymatcher.h
+@@ -41,6 +41,7 @@
+ #define QBYTEARRAYMATCHER_H
+
+ #include <QtCore/qbytearray.h>
++#include <limits>
+
+ QT_BEGIN_NAMESPACE
+
+--
+2.32.0
