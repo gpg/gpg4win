@@ -1699,6 +1699,9 @@ sub dump_customs
         next if ($name eq "sign.mk");
         next if ($name eq ".git");
         next if ($name eq ".gitignore");
+        next if ($name eq "announcement.de.in");
+        next if ($name eq "announcement.en.in");
+        next if ($name eq "gnupg.com-info-key.asc");
 
         if (-d $name) {
             dump_single_custom($name);

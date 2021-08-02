@@ -955,28 +955,44 @@ signed_installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi: installers/GnuPG-VS-
 stamps/stamp-$(1)-upload: signed_installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi
 	(cd signed_installers; sha256sum GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi > \
 		GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi.sha256; \
-	gpg --yes -o GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi.sig -bau $(msi_signkey) \
-		GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi)
-	scp signed_installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi \
-		signed_installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi.sha256 \
-		signed_installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi.sig \
-		$(VSD_PUBLISH_HOST)/$(call GETVAR,msi_target_$(1)_directory)
-	ssh `echo $(VSD_PUBLISH_HOST) | cut -d ":" -f 1` \
-		"cd `echo $(VSD_PUBLISH_HOST) | cut -d ":" -f 2`/$(call GETVAR,msi_target_$(1)_directory) && rm -f GnuPG-VS-Desktop.msi && \
-		ln -s GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi GnuPG-VS-Desktop.msi"
-	echo "https://download.gnupg.com/files/$(call GETVAR,msi_target_$(1)_directory)/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi" \
-	> stamps/stamp-$(1)-upload
-	echo "https://download.gnupg.com/files/$(call GETVAR,msi_target_$(1)_directory)/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi.sig" \
-	>> stamps/stamp-$(1)-upload
+	if [ -f "../gnupg-vsd/$(1)/customer-enc-key.asc" ]; then \
+		echo "Encrypting installer"; \
+		gpg --yes -o GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi.gpg -seau $(msi_signkey) \
+			-f "../gnupg-vsd/$(1)/customer-enc-key.asc" \
+			-f "../gnupg-vsd/general-enc-key.asc" \
+			GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi;\
+		sha256sum GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi.gpg > \
+			GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi.gpg.sha256; \
+		scp GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi.gpg \
+			GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi.gpg.sha256 \
+			$(VSD_PUBLISH_HOST)/$(call GETVAR,msi_target_$(1)_directory); \
+		echo "https://download.gnupg.com/files/$(call GETVAR,msi_target_$(1)_directory)/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi.gpg" \
+		> ../stamps/stamp-$(1)-upload; \
+	else \
+		gpg --yes -o GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi.sig -bau $(msi_signkey) \
+			GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi; \
+		scp GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi \
+			GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi.sha256 \
+			GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi.sig \
+			$(VSD_PUBLISH_HOST)/$(call GETVAR,msi_target_$(1)_directory); \
+		ssh `echo $(VSD_PUBLISH_HOST) | cut -d ":" -f 1` \
+			"cd `echo $(VSD_PUBLISH_HOST) | cut -d ":" -f 2`/$(call GETVAR,msi_target_$(1)_directory) && rm -f GnuPG-VS-Desktop.msi && \
+			ln -s gnupg-vs-desktop-$(VSD_VERSION)-$(1).msi GnuPG-VS-Desktop.msi"; \
+			echo "https://download.gnupg.com/files/$(call GETVAR,msi_target_$(1)_directory)/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi" \
+				> ../stamps/stamp-$(1)-upload; \
+			echo "https://download.gnupg.com/files/$(call GETVAR,msi_target_$(1)_directory)/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi.sig" \
+			>> ../stamps/stamp-$(1)-upload; \
+	fi)
 
-.PHONY : $(1)
-$(1): installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi
+.phony : $(1)
+$(1): installers/gnupg-vs-desktop-$(VSD_VERSION)-$(1).msi
 
 .PHONY : $(1)-x86
 $(1)-x86: installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1)-x86.msi
 	echo "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 	echo "XXXX FIXME: x86 Registration of GpgOL and GpgEX does not work! XXXX"
 	echo "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+
 
 .PHONY : $(1)-upload
 $(1)-upload: stamps/stamp-$(1)-upload
