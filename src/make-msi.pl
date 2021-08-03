@@ -1264,8 +1264,9 @@ sub dump_all
             {
                 print ' ' x $::level
                 . "    <Shortcut Id='sm_$pkg->{name}_$fileidx' "
-                . "Directory='ProgramMenuDir' Name='Kleopatra'"
+                . " Directory='ProgramMenuDir' Name='Kleopatra'"
                 . " Description='!(loc.DESC_Menu_kleopatra)'/>" . "\n";
+
             }
             if (defined $parser->{shortcuts}->{$targetfull})
             {
@@ -1524,6 +1525,16 @@ sub dump_all2
             print ' ' x $::level
             . "<Condition Level='$::nsis_level_optional'>"
             . "INST_$uc_pkgname = \"false\"</Condition>\n";
+        }
+        if ($pkg->{name} eq "kleopatra")
+        {
+            print ' ' x $::level
+            . " <Feature Id='p_kleo_desktop' Title='p_kleo_desktop' Level='1000'"
+            . " Display='hidden' InstallDefault='followParent'>\n"
+            . "  <Condition Level='1'>INST_DESKTOP= \"true\"</Condition>\n"
+            . "  <Condition Level='1000'>INST_DESKTOP= \"false\"</Condition>\n"
+            . "  <ComponentRef Id='ApplicationShortcutDesktop'/>\n"
+            . " </Feature>\n";
         }
 
         dump_meat ($pkg);
@@ -1939,6 +1950,11 @@ print <<EOF;
       <RegistrySearch Win64='no' Id="DetermineInstallLocation" Type="raw" Root="HKLM" Key="Software\\Gpg4win" Name="Install Directory" />
     </Property>
 
+    <Property Id="INST_DESKTOP">
+      <IniFileSearch Id='gpg4win_ini_inst_desktop' Type='raw'
+       Name='gpg4win.ini' Section='gpg4win' Key='inst_desktop'/>
+    </Property>
+
     <!-- Launch Kleopatra after setup exits
     <CustomAction Id            = "StartAppOnExit"
                   FileKey       = "kleopatra.exe"
@@ -2025,6 +2041,22 @@ my $name = "GnuPG VS-Desktop";
 print <<EOF;
   <Directory Id='ProgramMenuFolder' Name='PMenu'>
     <Directory Id='ProgramMenuDir' Name='$name'/>
+  </Directory>
+  <Directory Id='DesktopFolder' Name='Desktop' >
+    <Component Id='ApplicationShortcutDesktop' Guid='8FCEA457-D3AD-41CC-BD0B-3E071D6E70BE'>
+      <Shortcut Id='ApplicationDesktopShortcut'
+       Name='Kleopatra'
+       Description='!(loc.DESC_Menu_kleopatra)'
+       Target='[APPLICATIONFOLDER]bin\\kleopatra.exe'/>
+      <RemoveFolder Id="DesktopFolder" On="uninstall"/>
+      <RegistryValue
+          Root="HKMU"
+          Key="Software\\Gpg4win"
+          Name="desktop_icon"
+          Type="integer"
+          Value="1"
+          KeyPath="yes"/>
+   </Component>
   </Directory>
 EOF
 
