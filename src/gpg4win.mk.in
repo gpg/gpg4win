@@ -957,7 +957,7 @@ stamps/stamp-$(1)-upload: signed_installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1)
 		GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi.sha256; \
 	if [ -f "../gnupg-vsd/$(1)/customer-enc-key.asc" ]; then \
 		echo "Encrypting installer"; \
-		gpg --yes -o GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi.gpg -seau $(msi_signkey) \
+		gpg --yes -o GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi.gpg -seu $(msi_signkey) \
 			-f "../gnupg-vsd/$(1)/customer-enc-key.asc" \
 			-f "../gnupg-vsd/general-enc-key.asc" \
 			GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi;\
@@ -969,7 +969,7 @@ stamps/stamp-$(1)-upload: signed_installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1)
 		echo "https://download.gnupg.com/files/$(call GETVAR,msi_target_$(1)_directory)/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi.gpg" \
 		> ../stamps/stamp-$(1)-upload; \
 	else \
-		gpg --yes -o GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi.sig -bau $(msi_signkey) \
+		gpg --yes -o GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi.sig -bu $(msi_signkey) \
 			GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi; \
 		scp GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi \
 			GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi.sha256 \
