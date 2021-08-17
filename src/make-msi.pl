@@ -1595,6 +1595,43 @@ sub scan_dir {
     return @ret;
 }
 
+sub dump_help {
+    my ($workdir) = @_;
+    my $custom_name = basename($workdir);
+    open (FILE, ">$workdir/$custom_name.wxs") or die;
+    my $fileidx = 0;
+
+    foreach my $file (&scan_dir($workdir)) {
+        my $basename = basename($file);
+        my $dirname = "HelpDataFolder";
+
+        if ($basename =~ /^\./) {
+            next;
+        }
+
+        my $guid = get_guid ($file);
+        my $sourcefull = "\$(var.SrcDir)/" . $file;
+        $sourcefull =~ s/.*\/src\//\$(var.SrcDir)\//;
+        $sourcefull =~ s/\//\\/g;
+
+        my $custom_name_us=$custom_name;
+        $custom_name_us =~ s/-/_/;
+
+        print FILE ' ' x 6 . '<Component Id="c_' . $custom_name_us . "_" . $fileidx
+        . '" Directory="' . $dirname . '" Guid="' . $guid . '" KeyPath="yes">' . "\n";
+
+        print FILE ' ' x 8
+        . "  <File Id='f_$custom_name_us" . "_$fileidx' Name='"
+        . $basename ."' KeyPath='no'" . " Source='" .
+        $sourcefull . "'/>\n";
+
+        print FILE ' ' x 6 . '</Component>' . "\n";
+
+        $fileidx += 1;
+    }
+    close FILE;
+}
+
 sub dump_single_custom {
     my ($workdir) = @_;
     my $custom_name = basename($workdir);
@@ -1604,7 +1641,6 @@ sub dump_single_custom {
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
   <Fragment>
     <DirectoryRef Id="APPLICATIONFOLDER">
-     <Directory Id="KleopatraDataFolder" Name="share"/>
      <Directory Id="CommonAppDataFolder">
         <Directory Id="CommonAppDataManufacturerFolder" Name="GNU">
           <Directory Id="AppDataSubFolder" Name="etc">
@@ -1620,6 +1656,14 @@ sub dump_single_custom {
    <Fragment>
     <ComponentGroup Id="c_customization">
 EOF
+   print STDERR "Including: help\n";
+   open (INCFILE, "<$workdir/../help/help.wxs") or die;
+   while (<INCFILE>)
+   {
+       print FILE $_;
+   }
+   close (INCFILE);
+
     my $fileidx = 0;
 
     foreach my $file (&scan_dir($workdir)) {
@@ -1701,6 +1745,7 @@ sub dump_customs
     opendir(DIR, ".") or die "Unable to open $workdir:$!\n";
     my @names = readdir(DIR) or die "Unable to read $workdir:$!\n";
     closedir(DIR);
+    dump_help("help");
 
     foreach my $name (@names) {
         next if ($name eq ".");
@@ -1713,6 +1758,7 @@ sub dump_customs
         next if ($name eq "announcement.de.in");
         next if ($name eq "announcement.en.in");
         next if ($name eq "gnupg.com-info-key.asc");
+        next if ($name eq "help");
 
         if (-d $name) {
             dump_single_custom($name);
@@ -2024,6 +2070,9 @@ print <<EOF;
       <Directory Id='ProgramFilesFolder' Name='PFiles'>
         <!-- DIR_GnuPG is used be the GnuPG wxlib -->
         <Directory Id='APPLICATIONFOLDER' Name='GnuPG VS-Desktop'>
+          <Directory Id="KleopatraDataFolder" Name="share">
+            <Directory Id="HelpDataFolder" Name="kleopatra"/>
+          </Directory>
           <Directory Id='DIR_GnuPG' Name='GnuPG'/>
 EOF
 
