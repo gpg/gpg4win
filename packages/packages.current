@@ -321,8 +321,8 @@ server ftp://ftp.gnupg.org/gcrypt
 
 # last changed: 2021-04-21
 # by: ah
-file pinentry/pinentry-1.1.1.tar.bz2
-chk  cd12a064013ed18e2ee8475e669b9f58db1b225a0144debdb85a68cecddba57f
+file pinentry/pinentry-1.2.0.tar.bz2
+chk  10072045a3e043d0581f91cd5676fcac7ffee957a16636adedaa4f583a616470
 
 # last changed: 2021-01-08
 # by: wk
@@ -563,15 +563,15 @@ server http://files.intevation.de/projects/gpg4all
 # chk c2091536687cd83569c9919d6d9fc8c3a53e74d8419320bcbb8b7dc36019c677
 
 # by: ah
-file gpgme/gpgme-1.15.2-beta23.tar.bz2
-chk c5defc62ab9f2872762461c7cdf1c426302862246c649bd80b7ceb2ec0c7ee15
+file gpgme/gpgme-1.16.1-beta14.tar.bz2
+chk 941118668e7ed7bb907c09f7f2b9d803162e1023db713bb306815fe5e8da1168
 
 # Libkleo
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah.
-file libkleo/libkleo-202106111621.tar.gz
-chk b887c04b1d4a9e0622fac057896d833c8cac016fe39120fbc2506be00d046507
+file libkleo/libkleo-202108261518.tar.gz
+chk aa5e5da428075f61a3bb62e8e0065efd8756cf535558c254d1de94e6efce1ff1
 
 # KDE-L10n
 # last changed: see package date.
@@ -594,5 +594,5 @@ chk 79ea82ede46bbd02f70a64e4f003c6279e98cf4ad1e302eca753087c42fccdf3
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah.
-file kleopatra/kleopatra-202106110841.tar.gz
-chk 23f423e456347f3ca5935f61b57d5cbded5b860ea20056c539d0d52fd9f21d03
+file kleopatra/kleopatra-202108261520.tar.gz
+chk 4440c6992acbf05a7283e8fb62fbe878cb3f38799d2d5f0985c3a80e2245027b
