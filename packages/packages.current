@@ -298,24 +298,24 @@ chk fc07e70f6c615f8c4f590a8e37a9b8dd2e2ca1e9408f8e60459c67452b925e23
 file libassuan/libassuan-2.5.5.tar.bz2
 chk  8e8c2fcc982f9ca67dcbb1d95e2dc746b1739a4668bc20b3a3c5be632edb34e4
 
-# last changed: 2020-11-17
+# last changed: 2021-08-27
 # by: ah
 # verified: distsigkey.gpg
-name gnupg-w32-2.2.28-20210610-bin.exe
-file binary/gnupg-w32-2.2.28_20210610.exe
-chk  c5eba50db9a2bf45e775f6fc770acde042588120a3443a3fb71bc5e556cd6695
+name gnupg-w32-2.2.30-20210826-bin.exe
+file binary/gnupg-w32-2.2.30_20210826.exe
+chk  646833b59645a6dd1138b1a93ae384f702ee4b55b72a26b5d42a185d9b6523c4
 
-name gnupg-w32-2.2.28-20210610-src.tar.xz
-file binary/gnupg-w32-2.2.28_20210610.tar.xz
-chk  1de6aadeb2038628d41fdc9e8e9009a292179722232458a661f80ea70c2eb317
+name gnupg-w32-2.2.30-20210826-src.tar.xz
+file binary/gnupg-w32-2.2.30_20210826.tar.xz
+chk  0d30b30c207a1ecb0472b65f167e651d161d096d629589722ec72742d50b8b04
 
-name gnupg-msi-2.2.28-20210610-src.tar.xz
-file binary/gnupg-w32-2.2.28_20210610.tar.xz
-chk  1de6aadeb2038628d41fdc9e8e9009a292179722232458a661f80ea70c2eb317
+name gnupg-msi-2.2.30-20210826-src.tar.xz
+file binary/gnupg-w32-2.2.30_20210826.tar.xz
+chk  0d30b30c207a1ecb0472b65f167e651d161d096d629589722ec72742d50b8b04
 
-name gnupg-msi-2.2.28-20210610-bin.wixlib
-file binary/gnupg-w32-2.2.28_20210610.wixlib
-chk  8f337316e2ecaf746861a3b10b0bb224f576b2a8b4abd0b04e502b45f7f01709
+name gnupg-msi-2.2.30-20210826-bin.wixlib
+file binary/gnupg-w32-2.2.30_20210826.wixlib
+chk  93e05470f126c64964d67d5789c74903c4f0190e44ccfa1187db1ede3fa3931f
 
 server ftp://ftp.gnupg.org/gcrypt
 
