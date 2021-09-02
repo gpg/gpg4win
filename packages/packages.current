@@ -41,6 +41,13 @@ chk  ccf536620a45458d26ba83887a983b96827001e92a13847b45e4925cc8913178
 # verified: Sig 9001 B85A F9E1 B83D F1BD A942 F5BE 8B26 7C6A 406D
 file gettext/gettext-0.21.tar.xz
 
+
+# Glib needs PCRE
+# last-changed: 2021-09-02
+# verified: Sig: 45F6 8D54 BBE2 3FB3 039B 46E5 9766 E084 FB0F 43D8
+server https://ftp.pcre.org/pub/pcre/
+file pcre-8.44.tar.gz
+
 #
 # GLIB
 #
@@ -53,16 +60,12 @@ file gettext/gettext-0.21.tar.xz
 #   Your 21th Century sig
 #   21th Century sig, I wanna be your file
 #
-server http://ftp.gnome.org/pub/gnome/sources/glib/2.41
+server http://ftp.gnome.org/pub/gnome/sources/glib/2.49
 
-# last-changed: 2015-06-05
-# Latest minor release is 2.45 but 2.41 works for us.
+# last-changed: 2021-08-17
 # by: ah
-# compared checksum with debian experimental version.
-# https://lists.debian.org/debian-experimental-changes/2014/09/msg00182.html
-# verified: Sig 3D0E FB95 E7B5 237F 16E8  2258 E352 D5C5 1C50 41D4
-file glib-2.41.5.tar.xz
-chk  e76a6bd1456749bdd05db19a8f0f174e787e612ed443d30cc9cf02237dd58e16
+file glib-2.49.7.tar.xz
+chk  0fd13406ca31d6f654c3be620e0adaaa4f9fb788e164e265e33edf4b21e64ef6
 
 #
 # GDK-PIXBUF

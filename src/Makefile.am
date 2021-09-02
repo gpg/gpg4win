@@ -90,6 +90,7 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
         inst-gpg4win-tools.nsi uninst-gpg4win-tools.nsi \
         inst-gpgme-browser.nsi \
         inst-final.nsi index.theme \
+        inst-pcre.nsi uninst-pcre.nsi \
         slideshow/slides.dat \
         slideshow/slide1-gpgol.png \
         slideshow/slide2-gpgex.png \
@@ -120,7 +121,7 @@ CLEANFILES = g4wihelp.dll desktopshellrun.o versioninfo.txt $(README_files) \
 gpg4win_spkgs = glib libffi gdk-pixbuf gtk+ \
                 libgpg-error gpgme gpgol gpgex libpng \
 		gpa opencdk \
-		pinentry libassuan \
+		pinentry libassuan pcre \
 		w32pth paperkey regex libiconv gettext scute
 
 gpg4win_qtpkgs = qtbase qttools qtwinextras qtsvg qttranslations
@@ -178,6 +179,14 @@ gpg4win_pkg_gdk_pixbuf_configure = \
 
 gpg4win_pkg_gtk__configure = \
   CPPFLAGS=-I$(idir)/include LDFLAGS=-L$(idir)/lib --disable-cups
+
+gpg4win_pkg_pcre_configure = \
+  --enable-utf \
+  --enable-unicode-properties \
+  --enable-cpp \
+  --disable-pcregrep-libz \
+  --disable-pcregrep-libbz2 \
+  --disable-pcretest-libreadline
 
 # The GnuPG package provides man pages which we have to convert.
 # We also create the MO files here.
