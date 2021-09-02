@@ -294,6 +294,10 @@
 !define gpg4win_pkg_scute @gpg4win_pkg_scute@
 !define gpg4win_pkg_scute_version @gpg4win_pkg_scute_version@
 
+@HAVE_PKG_PCRE@
+!define gpg4win_pkg_pcre @gpg4win_pkg_pcre@
+!define gpg4win_pkg_pcre_version @gpg4win_pkg_pcre_version@
+
 # Internal packages.
 @HAVE_PKG_COMPENDIUM@
 

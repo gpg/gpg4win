@@ -285,7 +285,8 @@ if test "$build_gpg4win" = yes ; then
     GPG4WIN_BPKG_GTK([pkgconfig])
 
     GPG4WIN_SPKG([libffi], [pkgconfig])
-    GPG4WIN_SPKG([glib], [libiconv gettext pkgconfig libffi zlib])
+    GPG4WIN_SPKG([pcre], [pkgconfig])
+    GPG4WIN_SPKG([glib], [pcre libiconv gettext pkgconfig libffi zlib])
     GPG4WIN_BPKG_GTK_DEV([atk], [glib pkgconfig])
     GPG4WIN_BPKG_GTK_DEV([pango], [glib pkgconfig])
     GPG4WIN_BPKG_GTK_DEV([cairo], [glib pkgconfig])

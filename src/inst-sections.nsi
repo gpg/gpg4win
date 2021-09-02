@@ -151,6 +151,9 @@
 !ifdef HAVE_PKG_KARCHIVE
 !include "inst-karchive.nsi"
 !endif
+!ifdef HAVE_PKG_PCRE
+!include "inst-pcre.nsi"
+!endif
 !ifdef HAVE_PKG_KCRASH
 !include "inst-kcrash.nsi"
 !endif
@@ -382,6 +385,9 @@
 !endif
 !ifdef HAVE_PKG_KARCHIVE
 !include "uninst-karchive.nsi"
+!endif
+!ifdef HAVE_PKG_PCRE
+!include "uninst-pcre.nsi"
 !endif
 !ifdef HAVE_PKG_KCRASH
 !include "uninst-kcrash.nsi"
