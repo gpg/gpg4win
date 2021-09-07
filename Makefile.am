@@ -29,8 +29,8 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         build-aux/git-log-footer build-aux/git-log-fix \
 		patches/boost/boost-1-fixes.patch \
         patches/extra-cmake-modules/0001-Use-BIN_INSTALL_DIR-data-for-DATAROOTDIR-on-Windows.patch \
-        patches/glib-2.41.5/01-socket.patch \
-        patches/glib-2.41.5/02-formatsec.patch \
+        patches/glib/glib-1-fixes.patch \
+        patches/glib/glib-2-fixes.patch \
         patches/kconfigwidgets/0001-Make-QDbus-optional.patch \
         patches/kiconthemes/0001-Make-DBus-optional.patch \
         patches/kxmlgui/0001-make-qdbus-optional.patch \

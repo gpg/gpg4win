@@ -272,7 +272,7 @@ stamps/stamp-$(1)-ex-02-configure: stamps/stamp-$(1)-ex-01-patch
 		--prefix="$$$${pkgidir}"		\
 		--host=$(GPGEX_ADD_HOST)		\
 		--build=$(build)			\
-		$$$${pkgcfg} CFLAGS=\"-mms-bitfields $$$${pkgextracflags}\";\
+		$$$${pkgcfg} CFLAGS=\"-mms-bitfields -fcommon $$$${pkgextracflags}\";\
 	 shopt -s nullglob;					\
 	 for pfile in "$$$${pkgpbdir}"/*.postcfg       		\
                        "$$$${pkgpdir}"/*.postcfg ; do  		\
@@ -357,7 +357,7 @@ stamps/stamp-$(1)-02-configure: stamps/stamp-$(1)-01-patch
 		--prefix="$$$${pkgidir}" \
 		--host=$(host) \
 		--build=$(build) \
-	$$$${pkgcfg} CFLAGS=\"-mms-bitfields $$$${pkgextracflags}\";\
+	$$$${pkgcfg} CFLAGS=\"-mms-bitfields  -fcommon $$$${pkgextracflags}\";\
 	shopt -s nullglob; \
 	for pfile in "$$$${pkgpbdir}"/*.postcfg \
 				"$$$${pkgpdir}"/*.postcfg ; do \

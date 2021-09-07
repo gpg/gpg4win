@@ -169,6 +169,7 @@ gpg4win_pkg_gettext_ex_make_dir_inst = gettext-runtime
 gpg4win_pkg_glib_configure = \
   --disable-modular-tests \
   --with-lib-prefix=$(idir) --with-libiconv-prefix=$(idir) \
+  CFLAGS=-DGLIB_COMPILATION \
   CPPFLAGS=-I$(idir)/include LDFLAGS=-L$(idir)/lib CCC=$(host)-g++
 gpg4win_pkg_glib_extracflags = -march=i486
 
