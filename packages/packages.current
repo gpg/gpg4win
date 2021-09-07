@@ -61,12 +61,12 @@ file pcre-8.44.tar.gz
 #   Your 21th Century sig
 #   21th Century sig, I wanna be your file
 #
-server http://ftp.gnome.org/pub/gnome/sources/glib/2.49
+server http://ftp.gnome.org/pub/gnome/sources/glib/2.50
 
-# last-changed: 2021-08-17
+# last-changed: 2021-09-02
 # by: ah
-file glib-2.49.7.tar.xz
-chk  0fd13406ca31d6f654c3be620e0adaaa4f9fb788e164e265e33edf4b21e64ef6
+file glib-2.50.2.tar.xz
+chk  be68737c1f268c05493e503b3b654d2b7f43d7d0b8c5556f7e4651b870acfbf5
 
 #
 # GDK-PIXBUF
