@@ -30,7 +30,7 @@ Section "-un.gettext"
   Push "${gpg4win_pkg_gettext}"
   Call un.SourceDelete
 !else
-  Delete /REBOOTOK "$INSTDIR\bin\libintl-9.dll"
+  Delete /REBOOTOK "$INSTDIR\bin\libintl-8.dll"
   Delete /REBOOTOK "$INSTDIR\bin\intl.dll"
 !ifdef DEBUG
   Delete "$INSTDIR\bin\gettext.exe"
