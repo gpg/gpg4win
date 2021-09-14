@@ -43,7 +43,10 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
         patches/breeze-icons/0001-Make-binary-icons-cross-compilable.patch \
         patches/libkleo/lower-cmake-requirement.patch \
         patches/libkleo/0001-Revert-Use-more-target-centric-cmake-code.patch \
+        patches/libkleo/set-cxx-standard.patch \
+        patches/kleopatra/set-cxx-standard.patch \
         patches/kleopatra/lower-cmake-requirement.patch \
+        patches/kleopatra/build-fixes.patch \
         patches/gpgme/0001-cpp-Use-keyID-as-fallback-for-primaryFingerprint.patch \
         patches/gpgol/0001-Enable-sync-encryption-again.patch
 

@@ -1,0 +1,34 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+diff --git a/src/dialogs/certificatedetailswidget.cpp b/src/dialogs/certificatedetailswidget.cpp
+index f7783583..68745236 100644
+--- a/src/dialogs/certificatedetailswidget.cpp
++++ b/src/dialogs/certificatedetailswidget.cpp
+@@ -172,11 +172,11 @@ private:
+             hboxLayout_1->addWidget(trustChainDetailsBtn);
+
+             genRevokeBtn = new QPushButton(i18n("Generate revocation certificate"), parent);
+-            genRevokeBtn->setToolTip(u"<html>" +
++            genRevokeBtn->setToolTip(QStringLiteral("<html>") +
+                                      i18n("A revocation certificate is a file that serves as a \"kill switch\" to publicly "
+                                           "declare that a key shall not anymore be used.  It is not possible "
+                                           "to retract such a revocation certificate once it has been published.") +
+-                                     u"</html>");
++                                     QStringLiteral("</html>"));
+
+             hboxLayout_1->addWidget(genRevokeBtn);
+
+diff --git a/src/mainwindow.cpp b/src/mainwindow.cpp
+index 4a312855..5ae755e1 100644
+--- a/src/mainwindow.cpp
++++ b/src/mainwindow.cpp
+@@ -167,7 +167,7 @@ public:
+     }
+     void editKeybindings()
+     {
+-        KShortcutsDialog::showDialog(q->actionCollection(), KShortcutsEditor::LetterShortcutsAllowed, q);
++        KShortcutsDialog::configure(q->actionCollection(), KShortcutsEditor::LetterShortcutsAllowed);
+         updateSearchBarClickMessage();
+     }
