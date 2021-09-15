@@ -1676,6 +1676,9 @@ EOF
         if ($basename eq "$custom_name.wixlib") {
             next;
         }
+        if ($basename eq "customer-enc-key.asc") {
+            next;
+        }
         if ($basename =~ /^\./) {
             next;
         }
