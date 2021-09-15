@@ -89,6 +89,7 @@ DE065EE2-DAD3-4267-B1B7-060C54BE1DBE bin\libexpat-1.dll
 FE1B4DA9-A3E3-4F24-820D-87E8831A56F7 bin\libffi-6.dll
 BF62351D-259B-4376-B4B1-29321372C2BC bin\libfontconfig-1.dll
 5A7F4775-9CD5-430D-B547-230AC81FC6EE bin\libgailutil-18.dll
+825353A2-D978-44C4-8F3A-D24797F40697 bin\libgcc_s_dw2-1.dll
 86EEDD43-9A7D-4CCC-96DC-205916B6370C bin\libgcc_s_sjlj-1.dll
 D29E9BBB-F673-48C1-A37D-E326EBB64256 bin\libgdk-win32-2.0-0.dll
 2EEF5F1C-B07C-4401-A7F7-5EE397C2BF14 bin\libgdk_pixbuf-2.0-0.dll
@@ -103,6 +104,7 @@ CD9EE17E-F88A-409E-B23B-C7F49DC7FD4D bin\libgobject-2.0-0.dll
 FE48BD5F-42C5-4759-8A85-362E570CCE49 bin\libgthread-2.0-0.dll
 CEAE91FF-D0D2-4C6A-9C13-AEEA83996100 bin\libgtk-win32-2.0-0.dll
 772F339F-D4E4-40D4-8D5A-EBB3F4E7C041 bin\libiconv-2.dll
+06FDB28E-A649-4811-AB34-A229C6B92163 bin\libintl-8.dll
 1BCB8EA0-CD27-4AE5-9765-5D5522A30E8C bin\libintl-9.dll
 12DEB433-8B24-43CC-A99D-C880975F2145 bin\libkleopatraclientcore.dll
 98AB4AF8-B683-4E13-A0E8-684EA4EF0D54 bin\libkleopatraclientgui.dll
@@ -110,6 +112,9 @@ CEAE91FF-D0D2-4C6A-9C13-AEEA83996100 bin\libgtk-win32-2.0-0.dll
 4D2061C4-9554-4921-82F3-4C4AB05A40E5 bin\libpangocairo-1.0-0.dll
 BB109212-C4BD-423F-BA82-46752918762A bin\libpangoft2-1.0-0.dll
 AA91E31D-B677-4A44-B17A-8061EA29FB9F bin\libpangowin32-1.0-0.dll
+530CFE66-4ADF-4341-A96F-96C783409515 bin\libpcre-1.dll
+FAF74A2A-8E55-4366-96C9-C06F9ED94C29 bin\libpcrecpp-0.dll
+C8076FBC-7357-42AC-AD56-680E6892FBCC bin\libpcreposix-0.dll
 1DCD0506-EECB-4E7C-9308-28ED0327E56E bin\libpng14-14.dll
 08D4FB89-602B-4EB1-BD06-EC26EE655F82 bin\libqgpgme-7.dll
 3D64849E-0B63-476C-92CD-1B5CC770079E bin\libstdc++-6.dll
@@ -220,7 +225,13 @@ C64A5269-CBCF-4D9D-8B97-AC39A1A2E662 bin\translations\qtxmlpatterns_ja.qm
 92E1CF54-CA8B-48BE-AF3F-1E62CCC6A967 bin\translations\qtxmlpatterns_uk.qm
 8D336967-BA3D-4B46-9FEF-C491FA88CFBE bin\zlib1.dll
 4A816F35-0DA1-4385-A1B7-E48B3C9F9CF8 bin_64\gpgex.dll
+D4DB2E9A-CC9E-4AAB-B3CC-B76CAB8D67EC bin_64\gpgme-json.exe
+C551DE77-E2D2-48B6-9D47-DF41F7E8F952 bin_64\gpgme-w32spawn.exe
 29DF0CB4-08D3-4B71-A5E3-05D5288ED104 bin_64\gpgol.dll
+523319BD-F262-4EA5-AA27-8178368020AE bin_64\libassuan6-0.dll
+26350BD2-2815-4550-8038-E538E2544EE3 bin_64\libgpg-error6-0.dll
+03990001-3FA4-4ACF-94DB-4AF3FB3857D4 bin_64\libgpgme-11.dll
+AF018D0D-4D0A-426C-8BC9-BEE20ED67CC1 bin_64\libgpgmepp-6.dll
 1B678803-1407-4FB4-964E-B6A05626EA8F etc\fonts\fonts.conf
 55A87356-4E73-4BD5-9A53-C335D0271850 etc\gtk-2.0\im-multipress.conf
 6A1286A0-1667-4EFC-9895-F92756ADFA89 etc\pango\pango.modules
@@ -247,6 +258,7 @@ E2A93F74-4912-474F-AFFB-BEB37D605A62 lib\gtk-2.0\modules\libgail.dll
 12A92EC2-DDB5-41EE-91C1-E3579AC26ACC lib\libgpg-error.imp
 F5DBC35A-1F50-4005-91A3-0C464B557EF6 lib\libgpgme-glib.imp
 02B47FC4-FA85-474C-A99D-B9DFFDC6A044 lib\libgpgme.imp
+9CAF7663-93E7-4E29-9621-59B7CBA912A7 share\QtProject\qtlogging.ini
 63337B40-964B-4D8D-A00F-3DB8C57CE810 share\doc\gpgex\gpgex-de.html
 A77FF361-B5B8-4CC3-BF62-2895B6E658BE share\doc\gpgex\gpgex-en.html
 F5823C2A-1916-4772-9374-28FA64C4F5BC share\doc\gpgol\gpgol.pdf
@@ -267,6 +279,7 @@ DAE4788E-D4AD-43C3-A38C-F067062E3A6A share\gpg4win\README.pt.txt
 3A1AFF0F-0966-453E-A8FB-B21F1D7E0957 share\gpg4win\README.ru.txt
 4EFD8975-81E6-4994-9641-AE7428008C04 share\gpg4win\README.zh_CN.txt
 3AF80CBC-13C4-4CCE-8FA5-BB06FCB9DB2D share\gpg4win\README.zh_TW.txt
+5885C5E6-13E2-465C-8354-AFE25887BC29 share\gpg4win\file-ext.ico
 54E20F2E-AEE8-4DEE-9BCE-FFE30DF66860 share\gpg4win\gpg4win-compendium-de.pdf
 0968176F-6106-48BE-80EC-2FB6B37EB539 share\gpg4win\gpg4win-compendium-en.pdf
 CD671400-6983-48B5-8D83-0A18C7563218 share\gpg4win\versioninfo.txt
@@ -326,6 +339,7 @@ D6334973-D5D0-4F78-8557-8514008B565F share\icons\breeze\actions\16\help-contextu
 D2D3C615-1B3E-4763-A1E3-4654A6B94A3A share\icons\breeze\actions\16\hint.svg
 053A3135-5FF0-40B8-9BB6-EB4503F5E079 share\icons\breeze\actions\16\list-add.svg
 8060846D-8DB2-485C-B13C-6F96F92A599E share\icons\breeze\actions\16\list-remove.svg
+6086F8E2-540C-4DBE-9E07-D6D8331B110E share\icons\breeze\actions\16\password-generate.svg
 1A139720-9F75-43D5-905C-D3CA6DDD718A share\icons\breeze\actions\16\process-stop.svg
 E9FAA5A0-08D4-44DB-86B6-59AE580A5CA6 share\icons\breeze\actions\16\resource-group-new.svg
 84A18989-A593-4014-A1D0-945F7758ABAD share\icons\breeze\actions\16\run-build-configure.svg
@@ -378,12 +392,15 @@ E02D8369-FEB7-4381-BD9D-545FC94595D4 share\icons\breeze\actions\22\go-last.svg
 A0E3B05E-9017-4BF3-8D8F-5C9132C11EE2 share\icons\breeze\actions\22\go-previous.svg
 AEA2E470-3E73-4B55-9D93-E1C700628A4D share\icons\breeze\actions\22\go-top.svg
 6C0D1BBE-5ECF-46D0-9C26-A936E065E84F share\icons\breeze\actions\22\go-up.svg
+97DC4DD2-F1A2-4D44-B933-FBF7E38CBBAF share\icons\breeze\actions\22\group.svg
 6D277EB3-7C5B-47F9-B3D1-7751FA45DEA8 share\icons\breeze\actions\22\help-contents.svg
 30B09358-E7E8-490E-8B05-954930F3B041 share\icons\breeze\actions\22\help-contextual.svg
 3F4377E3-A6B9-427F-A081-5D8ED8877157 share\icons\breeze\actions\22\kt-add-filters.svg
 3930A92C-7442-4D84-8A37-9D7058AA2B48 share\icons\breeze\actions\22\kt-remove-filters.svg
 7C223777-7B0E-4514-9112-E86B59A6C948 share\icons\breeze\actions\22\list-add.svg
 C16826ED-AAB6-4C67-A1B9-C6968037A245 share\icons\breeze\actions\22\list-remove.svg
+83FDC6B3-A3DC-4E27-8FEF-F1DC54C7ED8C share\icons\breeze\actions\22\note.svg
+4DFD8367-292D-430A-9C18-57E96BFD9320 share\icons\breeze\actions\22\password-generate.svg
 E793B1A6-2A2B-418B-8F34-F531F63C2DF0 share\icons\breeze\actions\22\process-stop.svg
 6BC933F1-9FA8-4812-B28D-938C8736ACDD share\icons\breeze\actions\22\question.svg
 B6A335C1-49B7-4ABB-8947-8CFA2E545194 share\icons\breeze\actions\22\resource-group-new.svg
@@ -400,6 +417,7 @@ EBEFAC4D-1230-4894-87B8-0994F8F6A96B share\icons\breeze\actions\22\view-certific
 56AEB6BD-9223-4261-A86F-E8E236494DBB share\icons\breeze\actions\22\view-certificate-import.svg
 45410701-F2BC-41EA-91C9-6522C536E539 share\icons\breeze\actions\22\view-certificate-server-configure.svg
 78C9064B-9BFC-4FEE-9DA5-10DB19B55451 share\icons\breeze\actions\22\view-certificate-sign.svg
+0FF92E72-D73F-4840-8BAA-3EC4D03FFF74 share\icons\breeze\actions\22\view-certificate.svg
 36D8E7B2-B348-4F70-945B-9DBD1BD32760 share\icons\breeze\actions\22\view-refresh.svg
 2D175AD1-0964-4B37-A97E-D475DD6076FC share\icons\breeze\actions\22\window-close.svg
 E709DB21-B8D4-4919-826A-F6C22DADD0EF share\icons\breeze\actions\24\application-exit.svg
@@ -492,6 +510,7 @@ B3279654-1317-4C71-A25F-A1310344D87C share\icons\breeze\emblems\8\emblem-warning
 34DF9837-360C-4178-81D4-72D463F968F8 share\icons\breeze\places\64\start-here-kde.svg
 2E75AADC-BD1A-44E3-9CB2-69B2596AF7F9 share\icons\breeze\preferences\32\preferences-desktop-locale.svg
 35EBB45E-D9D1-4862-9E6D-45A4F53E10F0 share\icons\breeze\preferences\32\preferences-system-network.svg
+3FC5C7C0-4517-4D26-8443-EF9BD3635FA2 share\icons\breeze\status\22\auth-sim-locked.svg
 F9053423-8131-4A1E-B054-479C3F4FAB0D share\icons\breeze\status\22\security-high.svg
 8891C4A8-F0A6-40CE-9289-BB854DECA866 share\icons\breeze\status\22\security-low.svg
 6CACE2CC-FF58-4BF5-975A-3DDC457F7226 share\icons\breeze\status\22\security-medium.svg
@@ -511,6 +530,7 @@ F2BB2ED6-A252-40C7-935E-ED0B5FCAF998 share\icons\hicolor\22x22\apps\kleopatra.pn
 C6A6BD74-D237-4BE9-B416-F081D6C4DBD8 share\icons\hicolor\64x64\apps\kleopatra.png
 CB70F6CF-B36C-4EDB-9F89-B0112688234D share\icons\hicolor\icon-theme.cache
 4BAED221-5DB8-4CF7-82D6-34F6EF8BE1DD share\icons\hicolor\index.theme
+F63A2504-9365-4CF3-9215-22B789836839 share\kdeglobals
 7E82FCE2-938D-440D-875B-686B1189FB05 share\kleopatra\pics\gpg4win.png
 B4F36612-F6B2-4699-BDF5-B63AA9FF963F share\kleopatra\pics\kleopatra_splashscreen.png
 CC14F3C8-059E-4C34-A6DE-7D657BE2938E share\kleopatra\pics\kleopatra_splashscreen.svgz
@@ -1020,6 +1040,7 @@ B83D90BF-EA83-425C-9D29-B08FD0184AFD share\locale\is\LC_MESSAGES\kitemviews5_qt.
 A677A9C3-6ACF-4D27-96CF-1EF0585539A2 share\locale\is\LC_MESSAGES\kxmlgui5.mo
 180B6630-3584-46DE-9D8D-A90FC2298FC0 share\locale\is\LC_MESSAGES\libkleopatra.mo
 16174059-70AE-4DAD-A0F6-0863F4FA4A37 share\locale\is\kf5_entry.desktop
+26CCCD14-340D-4BA5-8A8B-EF388E7ED05B share\locale\it\LC_MESSAGES\gpgol.mo
 54CD374C-0DF6-4DC0-961C-77EAF146A429 share\locale\it\LC_MESSAGES\kcodecs5_qt.qm
 E0FB177B-3197-4BFE-917C-13D27BB3C187 share\locale\it\LC_MESSAGES\kcompletion5_qt.qm
 E57330A8-CA83-4828-AF18-A32BFE92FB8F share\locale\it\LC_MESSAGES\kconfig5_qt.qm
@@ -1228,6 +1249,7 @@ E331BC5D-93BF-4F81-9C53-36654D0A0574 share\locale\ne\LC_MESSAGES\kwindowsystem5_
 83F9BDA1-7D5A-4DEB-A020-9354DB22B87F share\locale\ne\LC_MESSAGES\kxmlgui5.mo
 40C8081B-EC60-49CB-82A8-4BEADC2BD52B share\locale\ne\LC_MESSAGES\libkleopatra.mo
 AC34B557-5B74-4AC4-A736-F7E329F2A964 share\locale\ne\kf5_entry.desktop
+679A3360-D1A2-4E13-8278-7252315332E7 share\locale\nl\LC_MESSAGES\gpgex.mo
 98F45290-B684-440F-9705-E3292A874747 share\locale\nl\LC_MESSAGES\gpgol.mo
 F1636DD7-0816-4D7F-8478-358B04525E19 share\locale\nl\LC_MESSAGES\kcodecs5_qt.qm
 406365FE-1E5C-4D43-9307-7C3A150DFC4C share\locale\nl\LC_MESSAGES\kcompletion5_qt.qm
