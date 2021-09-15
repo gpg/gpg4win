@@ -817,9 +817,6 @@ endef
 
 define MSI_template
 
-.PHONY : $(1)-package
-$(1)-package: installers/GnuPG-VS-Desktop-$(VERSION)-$(1).msi
-
 playground/install/$(1)-x86.wixlib: gnupg-vsd/$(1)/$(1).wxs
 	($(call SETVARS_WINE,); \
 	( \
@@ -985,7 +982,7 @@ stamps/stamp-$(1)-upload: signed_installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1)
 	fi)
 
 .phony : $(1)
-$(1): installers/gnupg-vs-desktop-$(VSD_VERSION)-$(1).msi
+$(1): installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi
 
 .PHONY : $(1)-x86
 $(1)-x86: installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1)-x86.msi
