@@ -1535,6 +1535,17 @@ sub dump_all2
             . "  <Condition Level='1000'>INST_DESKTOP= \"false\"</Condition>\n"
             . "  <ComponentRef Id='ApplicationShortcutDesktop'/>\n"
             . " </Feature>\n";
+
+            print ' ' x $::level
+            . " <Feature Id='p_kleo_autostart' Title='p_kleo_autostart' Level='1000'"
+            . " Display='hidden' InstallDefault='followParent'>\n"
+            . "  <Condition Level='1'>AUTOSTART= \"true\"</Condition>\n"
+            . "  <Condition Level='1000'>AUTOSTART= \"false\"</Condition>\n"
+            . "  <Component Id='KleoAutostartRegKey' Guid='6520AE4C-E588-4CC9-B433-102F35C95B74' Directory='APPLICATIONFOLDER'>\n"
+            . "  <RegistryValue Root='HKMU' Key='Software\\Microsoft\\Windows\\CurrentVersion\\Run' Name='Kleopatra'\n"
+            . "    Type='string' Value='[APPLICATIONFOLDER]bin\\kleopatra.exe --daemon' KeyPath='yes'/>\n"
+            . "  </Component>\n"
+            . " </Feature>\n"
         }
 
         dump_meat ($pkg);
@@ -2004,6 +2015,16 @@ print <<EOF;
        Name='gpg4win.ini' Section='gpg4win' Key='inst_desktop'/>
     </Property>
 
+    <Property Id="AUTOSTART">
+      <IniFileSearch Id='gpg4win_ini_autostart' Type='raw'
+       Name='gpg4win.ini' Section='gpg4win' Key='autostart'/>
+    </Property>
+
+    <Property Id="HOMEDIR">
+      <IniFileSearch Id='gpg4win_ini_homedir' Type='raw'
+       Name='gpg4win.ini' Section='gpg4win' Key='homedir'/>
+    </Property>
+
     <!-- Launch Kleopatra after setup exits
     <CustomAction Id            = "StartAppOnExit"
                   FileKey       = "kleopatra.exe"
@@ -2027,6 +2048,14 @@ print <<EOF;
         <RegistryValue Id="r_gpg4win_02" Root="HKMU" Key="Software\\Gpg4win" Name="VS-Desktop-Version" Action="write"
                        Type="string" Value="$::build_version" KeyPath="no"/>
       </Component>
+      <Feature Id='p_homedir' Title='p_homedir' Level='1000'
+        Display='hidden' InstallDefault='followParent'>
+        <Condition Level='1'>HOMEDIR</Condition>
+        <Component Win64='no' Id='homedir_non_default_cmp' Guid='2C11476C-747D-4CA9-9A53-A64445761A4C' Directory='APPLICATIONFOLDER'>
+        <RegistryValue Root='HKMU' Key='Software\\GNU\\GnuPG' Name='HomeDir'
+         Type='expandable' Value='[HOMEDIR]' KeyPath='yes'/>
+        </Component>
+      </Feature>
       <!-- Hardcode some components that always should be installed -->
 
       <!-- List comes from ICE21 and was transformed by see: comment above -->
