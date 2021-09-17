@@ -98,7 +98,8 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
         slideshow/slide4-summary.png \
         file-ext.ico \
         kdeglobals qtlogging.ini \
-        make-msi.pl WixUI_Gpg4win.wxs shield.ico
+        make-msi.pl make-msi.guids \
+        WixUI_Gpg4win.wxs shield.ico
 
 gpg4win_readme_ll = en de ar es fr ru pt zh
 

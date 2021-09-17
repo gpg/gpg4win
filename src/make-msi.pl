@@ -113,6 +113,13 @@ sub get_guid
     return $guid;
 }
 
+sub get_tmp_guid
+{
+    my $guid = uc `uuidgen`;
+    chomp $guid;
+    return $guid;
+}
+
 
 $::files_file = '';
 
@@ -1620,7 +1627,7 @@ sub dump_help {
             next;
         }
 
-        my $guid = get_guid ($file);
+        my $guid = get_tmp_guid ($file);
         my $sourcefull = "\$(var.SrcDir)/" . $file;
         $sourcefull =~ s/.*\/src\//\$(var.SrcDir)\//;
         $sourcefull =~ s/\//\\/g;
@@ -1704,7 +1711,7 @@ EOF
            close (INCFILE);
         }
 
-        my $guid = get_guid ($file);
+        my $guid = get_tmp_guid ($file);
         my $sourcefull = "\$(var.SrcDir)/" . $file;
         $sourcefull =~ s/.*\/src\//\$(var.SrcDir)\//;
         $sourcefull =~ s/\//\\/g;
