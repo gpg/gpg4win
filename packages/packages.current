@@ -233,33 +233,6 @@ chk  1dddde1400c3bcb7749d398071af88c3e4754058d2d4c0b3696c2f82dc5cf11c
 
 
 #
-# GpgOL
-#
-server http://files.gpg4win.org/src
-
-# by: ah
-# verified: Sig 5B80 C575 4298 F0CB  55D8 ED6A BCEF 7E29 4B09 2E28
-file gpgol/gpgol-2.5.0.tar.bz2
-chk  76cb742ae53cf54f2d42d258f6ba657d2b98c752d2c742b1e4f04b26a6baf0df
-
-# for beta
-#server http://files.intevation.de/projects/gpg4all
-
-#file gpgol/gpgol-2.5.0-beta36.tar.bz2
-#chk cf3431d9ffb06f6c86af4aaa35fd69f343a18854016ab7d4145844a9be8346cf
-
-#
-# GpgEX
-#
-server http://files.gpg4win.org/src
-
-# last-changed: 2021-01-26
-# by: ah
-# verified: Sig 5B80 C575 4298 F0CB  55D8 ED6A BCEF 7E29 4B09 2E28
-file gpgex/gpgex-1.0.7.tar.bz2
-chk  ff6b9cce03d835bbf0fbfd5fbe986ed42813ababa4a98a791da8b57d745b5848
-
-#
 # Pth emulation
 #
 
@@ -283,14 +256,14 @@ chk  c2a9b3aec1a38d34b66106116a39f64b01d84f475fef75c40ea0bda0ea67ed07
 # GnuPG et al.
 #
 # All tarballs from this server are verified with an openpgp
-# signature made by "Werner Koch (dist sig)".
-# D869 2123 C406 5DEA 5E0F  3AB5 249B 39D2 4F25 E3B6
-server ftp://ftp.gnupg.org/gcrypt
+# signature made by "Werner Koch (dist sig)" or one of the other
+# gnupg main contributors.
+# Server changed from ftp to https by wk 2021-09-22
+server https://gnupg.org/ftp/gcrypt
 
 # last changed 2021-04-21
 # by ah
 # verified: distsigkey.gpg
-server ftp://ftp.gnupg.org/gcrypt
 file libgpg-error/libgpg-error-1.42.tar.bz2
 chk fc07e70f6c615f8c4f590a8e37a9b8dd2e2ca1e9408f8e60459c67452b925e23
 
@@ -319,8 +292,6 @@ name gnupg-msi-2.2.31-20210915-bin.wixlib
 file binary/gnupg-w32-2.2.31_20210915.wixlib
 chk  5e404d4442227fcc5ff5226414fc9b6afd3a97c298c802036b6d887a16184510
 
-server ftp://ftp.gnupg.org/gcrypt
-
 # last changed: 2021-04-21
 # by: ah
 file pinentry/pinentry-1.2.0.tar.bz2
@@ -341,6 +312,24 @@ chk  95dbabe75fa5c8dc47e3acf2df7a51cee096051e5a842b4c9b6d61e40a6177b1
 # by: ah
 file scute/scute-1.7.0.tar.bz2
 chk 437fe758b27c243a5ee2535c6b065ea1d09f2c9a02d83567d2f934bb6395c249
+
+#
+# GpgOL
+#
+# by: ah
+# verified: Sig 5B80 C575 4298 F0CB  55D8 ED6A BCEF 7E29 4B09 2E28
+file gpgol/gpgol-2.5.0.tar.bz2
+chk  76cb742ae53cf54f2d42d258f6ba657d2b98c752d2c742b1e4f04b26a6baf0df
+
+#
+# GpgEX
+#
+# last-changed: 2021-09-22
+# by: wk
+# verified: distsigkey.gpg
+file gpgex/gpgex-1.0.8.tar.bz2
+chk  dc044904e0d2dfe28ba1dca9a55b5b4abd306070b9f34e122493b332d15f8b14
+
 
 #
 #  GnuPG utilities
