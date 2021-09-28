@@ -48,12 +48,13 @@ FRAMEWORKS="extra-cmake-modules
     karchive
     kcrash"
 
-tmpdir=$(mktemp -d)
 
 majorversion=$(echo $1 | head -c 4)
 curdate=$(date +%Y-%m-%d)
 
 KEYRING=$(dirname $0)/kde-release-key.gpg
+
+tmpdir=$(mktemp -d -t gen-frameworks.XXXXXXXXXX)
 
 for fw in $FRAMEWORKS; do
     # Download pacakges over https now and verify that the signature matches
