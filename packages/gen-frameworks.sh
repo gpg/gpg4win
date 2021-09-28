@@ -38,6 +38,7 @@ FRAMEWORKS="extra-cmake-modules
     kcoreaddons
     kcodecs
     kconfigwidgets
+    kdbugaddons
     kxmlgui
     kguiaddons
     kitemviews
