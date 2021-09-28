@@ -740,8 +740,8 @@ $(stampdir)/stamp-$(1)-01-patch: $(stampdir)/stamp-$(1)-00-unpack
 $(stampdir)/stamp-$(1)-02-configure: $(stampdir)/stamp-$(1)-01-patch
 	($(call SETVARS,$(1));				\
 	 mkdir "$$$${pkgbdir}";				\
-	  cd "$$$${pkgbdir}";				\
-	 cmake 		\
+	 cd "$$$${pkgbdir}";				\
+	 $(CMAKE)					\
 		-DCMAKE_INSTALL_PREFIX="$$$${pkgidir}" \
 		-DCMAKE_PREFIX_PATH="$$$${pkgidir}" \
 		-DCMAKE_TOOLCHAIN_FILE=$(abs_top_srcdir)/src/toolchain.cmake \
