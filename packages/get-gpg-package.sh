@@ -24,7 +24,7 @@
 set -e
 #set -x
 
-GNUPG="libgpg-error libgcrypt libksba libassuan ntbtls npth"
+GNUPG="libgpg-error libgcrypt libksba libassuan ntbtls npth pinentry gpgme"
 GPG4WIN="gpgex gpgol"
 
 WGET=wget
