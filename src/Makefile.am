@@ -383,7 +383,7 @@ gpg4win_pkg_qttranslations_configure = \
 	"$(idir)/bin/qmake" ../$$$${pkg_version}
 
 define gpg4win_pkg_qttranslations_post_install
- ( rm -f $$$${pkgidir}/qttranslations; \
+ ( rm -fR $$$${pkgidir}/qttranslations; \
    mkdir -p $$$${pkgidir}; \
    cp -r $$$${pkgbdir}/translations $$$${pkgidir}/qttranslations;)
 endef
