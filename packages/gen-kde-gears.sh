@@ -21,8 +21,8 @@
 #
 # SPDX-License-Identifier: GPL-2.0+
 
-# Grab the version information for KDE Frameworks and generate a text block
-# that can be copy and pasted into packages.current.
+# Grab the version information for packages released with a KDE Gears release
+# and generate a text block that can be copy and pasted into packages.current.
 
 set -e
 
@@ -31,24 +31,8 @@ if [ -z "$1" ]; then
     exit 1
 fi
 
-FRAMEWORKS="extra-cmake-modules
-    kconfig
-    ki18n
-    kwidgetsaddons
-    kcompletion
-    kwindowsystem
-    kcoreaddons
-    kcodecs
-    kconfigwidgets
-    kdbugaddons
-    kxmlgui
-    kguiaddons
-    kitemviews
-    kitemmodels
-    kiconthemes
-    breeze-icons
-    karchive
-    kcrash"
+GEARS="libkleo
+    kleopatra"
 
 fullversion=$1
 case ${fullversion} in
@@ -70,15 +54,15 @@ curdate=$(date +%Y-%m-%d)
 
 KEYRING=$(dirname $0)/kde-release-keys.gpg
 
-server=https://download.kde.org/stable/frameworks
+server=https://download.kde.org/stable/release-service
 echo "server ${server}"
 
-tmpdir=$(mktemp -d -t gen-frameworks.XXXXXXXXXX)
+tmpdir=$(mktemp -d -t gen-kde-gears.XXXXXXXXXX)
 
-for fw in $FRAMEWORKS; do
+for package in $GEARS; do
     # Download packages over https now and verify that the signature matches
-    tarfile="$fw-${fullversion}.tar.xz"
-    tarfileurl="${server}/$majorversion/${tarfile}"
+    tarfile="${package}-${fullversion}.tar.xz"
+    tarfileurl="${server}/${fullversion}/src/${tarfile}"
     if ! curl -L --silent --show-error --fail "${tarfileurl}" > "$tmpdir/${tarfile}"; then
         echo "Downloading ${tarfileurl} failed"
         exit 1
@@ -97,11 +81,11 @@ for fw in $FRAMEWORKS; do
 
     sha2=$(sha256sum $tmpdir/${tarfile} | cut -d ' ' -f 1)
 
-    echo "# $fw"
+    echo "# $package"
     echo "# last changed: $curdate"
     echo "# by: ah"
-    echo "# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)"
-    echo "file $majorversion/${tarfile}"
+    echo "# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-kde-gears.sh)"
+    echo "file ${fullversion}/src/${tarfile}"
     echo "chk $sha2"
     echo ""
 done
