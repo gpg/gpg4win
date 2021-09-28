@@ -23,6 +23,7 @@
 
 # These paths must be absolute, as we switch directories pretty often.
 root := $(shell pwd)/playground
+stampdir := $(shell pwd)/stamps
 bdir := $(root)/build
 idir := $(root)/install
 ipdir := $(root)/install/pkgs
@@ -36,8 +37,8 @@ pkg_files =
 
 # The playground area is our scratch area, where we unpack, build and
 # install the packages.
-stamps/stamp-directories:
-	$(MKDIR) stamps
+$(stampdir)/stamp-directories:
+	$(MKDIR) $(stampdir)
 	$(MKDIR) $(root)
 	$(MKDIR) -p installers
 	$(MKDIR) $(bdir)
@@ -46,7 +47,7 @@ stamps/stamp-directories:
 	$(if $GPGEX_ADD_HOST, $(MKDIR) $(ex_idir))
 	$(if $GPGEX_ADD_HOST, $(MKDIR) $(ex_ipdir))
 	touch $(bdir)/versioninfo.txt
-	touch stamps/stamp-directories
+	touch $(stampdir)/stamp-directories
 
 
 # Frob the name $1 by converting all '-' and '+' characters to '_'.
@@ -245,11 +246,11 @@ define STRIP_EX_macro
 endef
 
 define GETDEPS
-  $(addprefix stamps/stamp-final-, $(call GETVAR,gpg4win_pkg_$(1)_deps))
+  $(addprefix $(stampdir)/stamp-final-, $(call GETVAR,gpg4win_pkg_$(1)_deps))
 endef
 
 define GETDEPS_EX
-  $(addprefix stamps/stamp-final-ex-, $(call GETVAR,gpg4win_pkg_$(1)_ex_deps))
+  $(addprefix $(stampdir)/stamp-final-ex-, $(call GETVAR,gpg4win_pkg_$(1)_ex_deps))
 endef
 
 # Template for source packages to build for an additional host
@@ -258,13 +259,13 @@ define EXPKG_template_
 
 pkg_files += $(call GETVAR,gpg4win_pkg_$(1))
 
-stamps/stamp-$(1)-ex-00-unpack: stamps/stamp-$(1)-00-unpack $(call GETDEPS_EX,$(1))
-	touch stamps/stamp-$(1)-ex-00-unpack
+$(stampdir)/stamp-$(1)-ex-00-unpack: $(stampdir)/stamp-$(1)-00-unpack $(call GETDEPS_EX,$(1))
+	touch $(stampdir)/stamp-$(1)-ex-00-unpack
 
-stamps/stamp-$(1)-ex-01-patch: stamps/stamp-$(1)-ex-00-unpack stamps/stamp-$(1)-01-patch
-	touch stamps/stamp-$(1)-ex-01-patch
+$(stampdir)/stamp-$(1)-ex-01-patch: $(stampdir)/stamp-$(1)-ex-00-unpack $(stampdir)/stamp-$(1)-01-patch
+	touch $(stampdir)/stamp-$(1)-ex-01-patch
 
-stamps/stamp-$(1)-ex-02-configure: stamps/stamp-$(1)-ex-01-patch
+$(stampdir)/stamp-$(1)-ex-02-configure: $(stampdir)/stamp-$(1)-ex-01-patch
 	($(call SETVARS_EX,$(1));				\
 	 mkdir "$$$${pkgbdir}";				\
 	  cd "$$$${pkgbdir}";				\
@@ -282,35 +283,35 @@ stamps/stamp-$(1)-ex-02-configure: stamps/stamp-$(1)-ex-01-patch
                        "$$$${pkgpdir}"/*.postcfg-build ; do	\
 	   (cd "$$$${pkgbdir}"; "$$$${pfile}")			\
 	 done)
-	touch stamps/stamp-$(1)-ex-02-configure
+	touch $(stampdir)/stamp-$(1)-ex-02-configure
 
-stamps/stamp-$(1)-ex-03-make: stamps/stamp-$(1)-ex-02-configure
+$(stampdir)/stamp-$(1)-ex-03-make: $(stampdir)/stamp-$(1)-ex-02-configure
 	($(call SETVARS_EX,$(1));				\
 	  cd "$$$${pkgbdir}";				\
 	  test -n "$$$${pkgmkdir}" && cd "$$$${pkgmkdir}";	\
 	  $(MAKE) $(AM_MAKEFLAGS) $(GPG4WIN_PARALLEL) $$$${pkgmkargs} \
 	  )
-	touch stamps/stamp-$(1)-ex-03-make
+	touch $(stampdir)/stamp-$(1)-ex-03-make
 
 # Note that post_install must come last because it may be empty and
 # "; ;" is a syntax error.
-stamps/stamp-$(1)-ex-04-install: stamps/stamp-$(1)-ex-03-make
+$(stampdir)/stamp-$(1)-ex-04-install: $(stampdir)/stamp-$(1)-ex-03-make
 	($(call SETVARS_EX,$(1));				\
 	  cd "$$$${pkgbdir}";				\
 	  $(MAKE) $(AM_MAKEFLAGS) $$$${pkgmkargs_inst} install; \
 	  $(call STRIP_EX_macro,"$$$${pkgidir}");		\
 	  rm -f "$$$${pkgidir}/share/info/dir";		\
 	  $(call gpg4win_pkg_$(call FROB_macro,$(1))_ex_post_install))
-	touch stamps/stamp-$(1)-ex-04-install
+	touch $(stampdir)/stamp-$(1)-ex-04-install
 
-stamps/stamp-$(1)-ex-05-stow: stamps/stamp-$(1)-ex-04-install
+$(stampdir)/stamp-$(1)-ex-05-stow: $(stampdir)/stamp-$(1)-ex-04-install
 	($(call SETVARS_EX,$(1));				\
 	 cd $(ex_ipdir);					\
 	 $(STOW) -t `readlink -f $(ex_idir)` "$$$${pkg_version}")
-	touch stamps/stamp-$(1)-ex-05-stow
+	touch $(stampdir)/stamp-$(1)-ex-05-stow
 
-stamps/stamp-final-ex-$(1): stamps/stamp-$(1)-ex-05-stow
-	touch stamps/stamp-final-ex-$(1)
+$(stampdir)/stamp-final-ex-$(1): $(stampdir)/stamp-$(1)-ex-05-stow
+	touch $(stampdir)/stamp-final-ex-$(1)
 
 .PHONY : clean-ex-$(1)
 clean-ex-$(1):
@@ -319,7 +320,7 @@ clean-ex-$(1):
 	  ($(STOW) -D "$$$${pkg_version}";		\
 	   rm -fR "$$$${pkg_version}"));		\
 	 rm -fR "$$$${pkgsdir}" "$$$${pkgbdir}")
-	rm -f stamps/stamp-final-ex-$(1) stamps/stamp-$(1)-ex-*
+	rm -f $(stampdir)/stamp-final-ex-$(1) $(stampdir)/stamp-$(1)-ex-*
 
 endef
 
@@ -335,21 +336,21 @@ define SPKG_template_
 
 pkg_files += $(call GETVAR,gpg4win_pkg_$(1))
 
-stamps/stamp-$(1)-00-unpack: stamps/stamp-directories $(call GETDEPS,$(1))
+$(stampdir)/stamp-$(1)-00-unpack: $(stampdir)/stamp-directories $(call GETDEPS,$(1))
 	(cd $(bdir);					\
 	 $(call SETVARS,$(1));				\
 	 $(call DEFLATE_macro,$$$${pkg}))
-	touch stamps/stamp-$(1)-00-unpack
+	touch $(stampdir)/stamp-$(1)-00-unpack
 
-stamps/stamp-$(1)-01-patch: stamps/stamp-$(1)-00-unpack
+$(stampdir)/stamp-$(1)-01-patch: $(stampdir)/stamp-$(1)-00-unpack
 	(shopt -s nullglob;				\
 	 $(call SETVARS,$(1));				\
 	 for pfile in "$$$${pkgpbdir}"/*.patch "$$$${pkgpdir}"/*.patch ; do  \
 	   (cd "$$$${pkgsdir}"; "$$$${pfile}")		\
 	 done)
-	touch stamps/stamp-$(1)-01-patch
+	touch $(stampdir)/stamp-$(1)-01-patch
 
-stamps/stamp-$(1)-02-configure: stamps/stamp-$(1)-01-patch
+$(stampdir)/stamp-$(1)-02-configure: $(stampdir)/stamp-$(1)-01-patch
 	($(call SETVARS,$(1)); \
 	mkdir "$$$${pkgbdir}"; \
 	cd "$$$${pkgbdir}"; \
@@ -367,18 +368,18 @@ stamps/stamp-$(1)-02-configure: stamps/stamp-$(1)-01-patch
 				 "$$$${pkgpdir}"/*.postcfg-build ; do \
 				(cd "$$$${pkgbdir}"; "$$$${pfile}") \
 	done;) && \
-	touch stamps/stamp-$(1)-02-configure
+	touch $(stampdir)/stamp-$(1)-02-configure
 
-stamps/stamp-$(1)-03-make: stamps/stamp-$(1)-02-configure
+$(stampdir)/stamp-$(1)-03-make: $(stampdir)/stamp-$(1)-02-configure
 	($(call SETVARS,$(1));				\
 	  cd "$$$${pkgbdir}";				\
 	  test -n "$$$${pkgmkdir}" && cd "$$$${pkgmkdir}";	\
 	  $(MAKE) $(AM_MAKEFLAGS) $(GPG4WIN_PARALLEL) $$$${pkgmkargs})
-	touch stamps/stamp-$(1)-03-make
+	touch $(stampdir)/stamp-$(1)-03-make
 
 # Note that post_install must come last because it may be empty and
 # "; ;" is a syntax error.
-stamps/stamp-$(1)-04-install: stamps/stamp-$(1)-03-make
+$(stampdir)/stamp-$(1)-04-install: $(stampdir)/stamp-$(1)-03-make
 	($(call SETVARS,$(1));				\
 	  cd "$$$${pkgbdir}";				\
 	  cd "$$$${pkgmkdir_inst}";			\
@@ -386,16 +387,16 @@ stamps/stamp-$(1)-04-install: stamps/stamp-$(1)-03-make
 	  $(call STRIP_macro,"$$$${pkgidir}");		\
 	  rm -f "$$$${pkgidir}/share/info/dir";		\
 	  $(call gpg4win_pkg_$(call FROB_macro,$(1))_post_install))
-	touch stamps/stamp-$(1)-04-install
+	touch $(stampdir)/stamp-$(1)-04-install
 
-stamps/stamp-$(1)-05-stow: stamps/stamp-$(1)-04-install
+$(stampdir)/stamp-$(1)-05-stow: $(stampdir)/stamp-$(1)-04-install
 	($(call SETVARS,$(1));				\
 	 cd $(ipdir);					\
 	 $(STOW) "$$$${pkg_version}")
-	touch stamps/stamp-$(1)-05-stow
+	touch $(stampdir)/stamp-$(1)-05-stow
 
-stamps/stamp-final-$(1): stamps/stamp-$(1)-05-stow
-	touch stamps/stamp-final-$(1)
+$(stampdir)/stamp-final-$(1): $(stampdir)/stamp-$(1)-05-stow
+	touch $(stampdir)/stamp-final-$(1)
 
 .PHONY : clean-$(1)
 clean-$(1):
@@ -404,7 +405,7 @@ clean-$(1):
 	  ($(STOW) -D "$$$${pkg_version}";		\
 	   rm -fR "$$$${pkg_version}"));		\
 	 rm -fR "$$$${pkgsdir}" "$$$${pkgbdir}")
-	rm -f stamps/stamp-final-$(1) stamps/stamp-$(1)-*
+	rm -f $(stampdir)/stamp-final-$(1) $(stampdir)/stamp-$(1)-*
 
 endef
 
@@ -421,43 +422,43 @@ define MPKG_template_
 
 pkg_files += $(call GETVAR,gpg4win_pkg_$(1))
 
-stamps/stamp-$(1)-00-unpack: stamps/stamp-directories $(call GETDEPS,$(1))
+$(stampdir)/stamp-$(1)-00-unpack: $(stampdir)/stamp-directories $(call GETDEPS,$(1))
 	(cd $(bdir);					\
 	 $(call SETVARS,$(1));				\
 	 $(call DEFLATE_macro,$$$${pkg}))
-	touch stamps/stamp-$(1)-00-unpack
+	touch $(stampdir)/stamp-$(1)-00-unpack
 
-stamps/stamp-$(1)-01-patch: stamps/stamp-$(1)-00-unpack
+$(stampdir)/stamp-$(1)-01-patch: $(stampdir)/stamp-$(1)-00-unpack
 	(shopt -s nullglob;				\
 	 $(call SETVARS,$(1));				\
 	 for pfile in "$$$${pkgpbdir}"/*.patch "$$$${pkgpdir}"/*.patch ; do \
 	   (cd "$$$${pkgsdir}"; "$$$${pfile}")		\
 	 done)
-	touch stamps/stamp-$(1)-01-patch
+	touch $(stampdir)/stamp-$(1)-01-patch
 
-stamps/stamp-$(1)-03-make: stamps/stamp-$(1)-01-patch
+$(stampdir)/stamp-$(1)-03-make: $(stampdir)/stamp-$(1)-01-patch
 	($(call SETVARS,$(1));				\
 	  cd "$$$${pkgsdir}";				\
 	  test -n "$$$${pkgmkdir}" && cd "$$$${pkgmkdir}";	\
 	  $(MAKE) $(AM_MAKEFLAGS) $$$${pkgmkargs})
-	touch stamps/stamp-$(1)-03-make
+	touch $(stampdir)/stamp-$(1)-03-make
 
-stamps/stamp-$(1)-04-install: stamps/stamp-$(1)-03-make
+$(stampdir)/stamp-$(1)-04-install: $(stampdir)/stamp-$(1)-03-make
 	($(call SETVARS,$(1));				\
 	  cd "$$$${pkgsdir}";				\
 	  $(MAKE) $(AM_MAKEFLAGS) $$$${pkgmkargs_inst} install; \
 	  $(call STRIP_macro,"$$$${pkgidir}"); \
 	  $(call gpg4win_pkg_$(call FROB_macro,$(1))_post_install))
-	touch stamps/stamp-$(1)-04-install
+	touch $(stampdir)/stamp-$(1)-04-install
 
-stamps/stamp-$(1)-05-stow: stamps/stamp-$(1)-04-install
+$(stampdir)/stamp-$(1)-05-stow: $(stampdir)/stamp-$(1)-04-install
 	($(call SETVARS,$(1));				\
 	 cd $(ipdir);					\
 	 $(STOW) "$$$${pkg_version}")
-	touch stamps/stamp-$(1)-05-stow
+	touch $(stampdir)/stamp-$(1)-05-stow
 
-stamps/stamp-final-$(1): stamps/stamp-$(1)-05-stow
-	touch stamps/stamp-final-$(1)
+$(stampdir)/stamp-final-$(1): $(stampdir)/stamp-$(1)-05-stow
+	touch $(stampdir)/stamp-final-$(1)
 
 .PHONY : clean-$(1)
 clean-$(1):
@@ -466,7 +467,7 @@ clean-$(1):
 	  ($(STOW) -D "$$$${pkg_version}";		\
 	   rm -fR "$$$${pkg_version}"));		\
 	 rm -fR "$$$${pkgsdir}")
-	rm -f stamps/stamp-final-$(1) stamps/stamp-$(1)-*
+	rm -f $(stampdir)/stamp-final-$(1) $(stampdir)/stamp-$(1)-*
 
 endef
 
@@ -484,37 +485,37 @@ define BPKG_template_
 pkg_files += $(call GETVAR,gpg4win_pkg_$(1))
 pkg_files += $(call GETVAR,gpg4win_pkg_$(1)_dev)
 
-stamps/stamp-$(1)-00-install: stamps/stamp-directories $(call GETDEPS,$(1))
+$(stampdir)/stamp-$(1)-00-install: $(stampdir)/stamp-directories $(call GETDEPS,$(1))
 	($(call SETVARS,$(1));				\
 	 $(MKDIR) "$$$${pkgidir}";			\
 	 cd $$$${pkgidir};				\
 	 $(call DEFLATE_macro,$$$${pkg}))
-	touch stamps/stamp-$(1)-00-install
+	touch $(stampdir)/stamp-$(1)-00-install
 
 # Note that post_install must come last because it may be empty and
 # "; ;" is a syntax error.
-stamps/stamp-$(1)-01-install-dev: stamps/stamp-$(1)-00-install
+$(stampdir)/stamp-$(1)-01-install-dev: $(stampdir)/stamp-$(1)-00-install
 	($(call SETVARS,$(1));				\
 	 $(MKDIR) "$$$${pkgidir_dev}";			\
 	 (cd $$$${pkgidir_dev};				\
 	  $(call DEFLATE_macro,$$$${pkg_dev}));		\
 	 $(call gpg4win_pkg_$(call FROB_macro,$(1))_post_install))
-	touch stamps/stamp-$(1)-01-install-dev
+	touch $(stampdir)/stamp-$(1)-01-install-dev
 
-stamps/stamp-$(1)-02-stow: stamps/stamp-$(1)-01-install-dev
+$(stampdir)/stamp-$(1)-02-stow: $(stampdir)/stamp-$(1)-01-install-dev
 	($(call SETVARS,$(1));				\
 	 cd $(ipdir);					\
 	 $(STOW) "$$$${pkg_version}")
-	touch stamps/stamp-$(1)-02-stow
+	touch $(stampdir)/stamp-$(1)-02-stow
 
-stamps/stamp-$(1)-03-stow-dev: stamps/stamp-$(1)-02-stow
+$(stampdir)/stamp-$(1)-03-stow-dev: $(stampdir)/stamp-$(1)-02-stow
 	($(call SETVARS,$(1));				\
 	 cd $(ipdir);					\
 	 $(STOW) "$$$${pkg_version_dev}")
-	touch stamps/stamp-$(1)-03-stow-dev
+	touch $(stampdir)/stamp-$(1)-03-stow-dev
 
-stamps/stamp-final-$(1): stamps/stamp-$(1)-03-stow-dev
-	touch stamps/stamp-final-$(1)
+$(stampdir)/stamp-final-$(1): $(stampdir)/stamp-$(1)-03-stow-dev
+	touch $(stampdir)/stamp-final-$(1)
 
 .PHONY : clean-$(1)
 clean-$(1):
@@ -523,7 +524,7 @@ clean-$(1):
 	 ($(STOW) -D "$$$${pkg_version}";		\
 	  $(STOW) -D "$$$${pkg_version_dev}";		\
 	  rm -fR "$$$${pkg_version}" "$$$${pkg_version_dev}"))
-	rm -f stamps/stamp-final-$(1) stamps/stamp-$(1)-*
+	rm -f $(stampdir)/stamp-final-$(1) $(stampdir)/stamp-$(1)-*
 
 endef
 
@@ -538,49 +539,49 @@ define QTPKG_template_
 
 pkg_files += $(call GETVAR,gpg4win_pkg_$(1))
 
-stamps/stamp-$(1)-00-unpack: stamps/stamp-directories $(call GETDEPS,$(1))
+$(stampdir)/stamp-$(1)-00-unpack: $(stampdir)/stamp-directories $(call GETDEPS,$(1))
 	(cd $(bdir);					\
 	 $(call SETVARS,$(1));				\
 	 $(call DEFLATE_macro,$$$${pkg}))
-	touch stamps/stamp-$(1)-00-unpack
+	touch $(stampdir)/stamp-$(1)-00-unpack
 
-stamps/stamp-$(1)-01-patch: stamps/stamp-$(1)-00-unpack
+$(stampdir)/stamp-$(1)-01-patch: $(stampdir)/stamp-$(1)-00-unpack
 	(shopt -s nullglob;				\
 	 $(call SETVARS,$(1));				\
 	 for pfile in "$$$${pkgpbdir}"/*.patch "$$$${pkgpdir}"/*.patch ; do  \
 	   (cd "$$$${pkgsdir}"; "$$$${pfile}")		\
 	 done)
-	touch stamps/stamp-$(1)-01-patch
+	touch $(stampdir)/stamp-$(1)-01-patch
 
-stamps/stamp-$(1)-02-configure: stamps/stamp-$(1)-01-patch
+$(stampdir)/stamp-$(1)-02-configure: $(stampdir)/stamp-$(1)-01-patch
 	($(call SETVARS,$(1)); \
 	mkdir "$$$${pkgbdir}"; \
 	cd "$$$${pkgbdir}"; \
 	$$$${pkgcfg}) && \
-	touch stamps/stamp-$(1)-02-configure
+	touch $(stampdir)/stamp-$(1)-02-configure
 
-stamps/stamp-$(1)-03-make: stamps/stamp-$(1)-02-configure
+$(stampdir)/stamp-$(1)-03-make: $(stampdir)/stamp-$(1)-02-configure
 	($(call SETVARS,$(1));				\
 	  cd "$$$${pkgbdir}";				\
 	  test -n "$$$${pkgmkdir}" && cd "$$$${pkgmkdir}";	\
 	  $(MAKE) $(AM_MAKEFLAGS) $(GPG4WIN_PARALLEL) $$$${pkgmkargs})
-	touch stamps/stamp-$(1)-03-make
+	touch $(stampdir)/stamp-$(1)-03-make
 
 # Note that post_install must come last because it may be empty and
 # "; ;" is a syntax error.
-stamps/stamp-$(1)-04-install: stamps/stamp-$(1)-03-make
+$(stampdir)/stamp-$(1)-04-install: $(stampdir)/stamp-$(1)-03-make
 	($(call SETVARS,$(1)); \
 	$(call gpg4win_pkg_$(call FROB_macro,$(1))_post_install))
-	touch stamps/stamp-$(1)-04-install
+	touch $(stampdir)/stamp-$(1)-04-install
 
-stamps/stamp-$(1)-05-stow: stamps/stamp-$(1)-04-install
+$(stampdir)/stamp-$(1)-05-stow: $(stampdir)/stamp-$(1)-04-install
 	($(call SETVARS,$(1));				\
 	 cd $(ipdir);					\
 	 $(STOW) "$$$${pkg_version}")
-	touch stamps/stamp-$(1)-05-stow
+	touch $(stampdir)/stamp-$(1)-05-stow
 
-stamps/stamp-final-$(1): stamps/stamp-$(1)-05-stow
-	touch stamps/stamp-final-$(1)
+$(stampdir)/stamp-final-$(1): $(stampdir)/stamp-$(1)-05-stow
+	touch $(stampdir)/stamp-final-$(1)
 
 .PHONY : clean-$(1)
 clean-$(1):
@@ -589,7 +590,7 @@ clean-$(1):
 	  ($(STOW) -D "$$$${pkg_version}";		\
 	   rm -fR "$$$${pkg_version}"));		\
 	 rm -fR "$$$${pkgsdir}" "$$$${pkgbdir}")
-	rm -f stamps/stamp-final-$(1) stamps/stamp-$(1)-*
+	rm -f $(stampdir)/stamp-final-$(1) $(stampdir)/stamp-$(1)-*
 
 endef
 
@@ -602,8 +603,8 @@ endef
 
 define IPKG_template
 
-stamps/stamp-final-$(1): stamps/stamp-directories $(call GETDEPS,$(1))
-	touch stamps/stamp-final-$(1)
+$(stampdir)/stamp-final-$(1): $(stampdir)/stamp-directories $(call GETDEPS,$(1))
+	touch $(stampdir)/stamp-final-$(1)
 endef
 
 # Template for README files
@@ -639,21 +640,21 @@ endef
 define BOOST_template_
 pkg_files += $(call GETVAR,gpg4win_pkg_$(1))
 
-stamps/stamp-$(1)-00-unpack: stamps/stamp-directories $(call GETDEPS,$(1))
+$(stampdir)/stamp-$(1)-00-unpack: $(stampdir)/stamp-directories $(call GETDEPS,$(1))
 	(cd $(bdir);					\
 	 $(call SETVARS,$(1));				\
 	 $(call DEFLATE_macro,$$$${pkg}))
-	touch stamps/stamp-$(1)-00-unpack
+	touch $(stampdir)/stamp-$(1)-00-unpack
 
-stamps/stamp-$(1)-01-patch: stamps/stamp-$(1)-00-unpack
+$(stampdir)/stamp-$(1)-01-patch: $(stampdir)/stamp-$(1)-00-unpack
 	(shopt -s nullglob;				\
 	 $(call SETVARS,$(1));				\
 	 for pfile in "$$$${pkgpbdir}"/*.patch "$$$${pkgpdir}"/*.patch ; do  \
 	   (cd "$$$${pkgsdir}"; "$$$${pfile}")		\
 	 done)
-	touch stamps/stamp-$(1)-01-patch
+	touch $(stampdir)/stamp-$(1)-01-patch
 
-stamps/stamp-$(1)-02-build: stamps/stamp-$(1)-01-patch
+$(stampdir)/stamp-$(1)-02-build: $(stampdir)/stamp-$(1)-01-patch
 	($(call SETVARS,$(1)); \
 	cd $$$${pkgsdir}/tools/build/; \
 	./bootstrap.sh; \
@@ -689,16 +690,16 @@ stamps/stamp-$(1)-02-build: stamps/stamp-$(1)-01-patch
         -sBZIP2_INCLUDE='$(idir)/include' \
         -sBZIP2_LIBPATH='$(idir)/lib' \
         install) && \
-        touch stamps/stamp-$(1)-02-build
+        touch $(stampdir)/stamp-$(1)-02-build
 
-stamps/stamp-$(1)-03-stow: stamps/stamp-$(1)-02-build
+$(stampdir)/stamp-$(1)-03-stow: $(stampdir)/stamp-$(1)-02-build
 	($(call SETVARS,$(1));				\
 	 cd $(ipdir);					\
 	 $(STOW) "$$$${pkg_version}")
-	touch stamps/stamp-$(1)-03-stow
+	touch $(stampdir)/stamp-$(1)-03-stow
 
-stamps/stamp-final-$(1): stamps/stamp-$(1)-03-stow
-	touch stamps/stamp-final-$(1)
+$(stampdir)/stamp-final-$(1): $(stampdir)/stamp-$(1)-03-stow
+	touch $(stampdir)/stamp-final-$(1)
 
 .PHONY : clean-$(1)
 clean-$(1):
@@ -707,7 +708,7 @@ clean-$(1):
 	  ($(STOW) -D "$$$${pkg_version}";		\
 	   rm -fR "$$$${pkg_version}"));		\
 	 rm -fR "$$$${pkgsdir}" "$$$${pkgbdir}")
-	rm -f stamps/stamp-final-$(1) stamps/stamp-$(1)-*
+	rm -f $(stampdir)/stamp-final-$(1) $(stampdir)/stamp-$(1)-*
 endef
 
 # Template for source packages of KDE software
@@ -715,13 +716,13 @@ define KDEPKG_template_
 
 pkg_files += $(call GETVAR,gpg4win_pkg_$(1))
 
-stamps/stamp-$(1)-00-unpack: stamps/stamp-directories $(call GETDEPS,$(1))
+$(stampdir)/stamp-$(1)-00-unpack: $(stampdir)/stamp-directories $(call GETDEPS,$(1))
 	(cd $(bdir);					\
 	 $(call SETVARS,$(1));				\
 	 $(call DEFLATE_macro,$$$${pkg}))
-	touch stamps/stamp-$(1)-00-unpack
+	touch $(stampdir)/stamp-$(1)-00-unpack
 
-stamps/stamp-$(1)-01-patch: stamps/stamp-$(1)-00-unpack
+$(stampdir)/stamp-$(1)-01-patch: $(stampdir)/stamp-$(1)-00-unpack
 	(shopt -s nullglob;				\
 	 $(call SETVARS,$(1));				\
 	 cd "$$$${pkgsdir}";				\
@@ -734,9 +735,9 @@ stamps/stamp-$(1)-01-patch: stamps/stamp-$(1)-00-unpack
 	 for pfile in "$$$${pkgpbdir}"/*.patch "$$$${pkgpdir}"/*.patch ; do  \
 	   (cd "$$$${pkgsdir}"; "$$$${pfile}")		\
 	 done)
-	touch stamps/stamp-$(1)-01-patch
+	touch $(stampdir)/stamp-$(1)-01-patch
 
-stamps/stamp-$(1)-02-configure: stamps/stamp-$(1)-01-patch
+$(stampdir)/stamp-$(1)-02-configure: $(stampdir)/stamp-$(1)-01-patch
 	($(call SETVARS,$(1));				\
 	 mkdir "$$$${pkgbdir}";				\
 	  cd "$$$${pkgbdir}";				\
@@ -747,34 +748,34 @@ stamps/stamp-$(1)-02-configure: stamps/stamp-$(1)-01-patch
 		-DKDE_INSTALL_DATADIR="$$$${pkgidir}/share" \
 		-DBUILD_TESTING=False \
 		$$$${pkgcfg} $$$${pkgextracflags} "../$$$${pkg_version}") && \
-	touch stamps/stamp-$(1)-02-configure
+	touch $(stampdir)/stamp-$(1)-02-configure
 
-stamps/stamp-$(1)-03-make: stamps/stamp-$(1)-02-configure
+$(stampdir)/stamp-$(1)-03-make: $(stampdir)/stamp-$(1)-02-configure
 	($(call SETVARS,$(1));				\
 	  cd "$$$${pkgbdir}";				\
 	  test -n "$$$${pkgmkdir}" && cd "$$$${pkgmkdir}";	\
 	  $(MAKE) $(AM_MAKEFLAGS) $(GPG4WIN_PARALLEL) $$$${pkgmkargs})
-	touch stamps/stamp-$(1)-03-make
+	touch $(stampdir)/stamp-$(1)-03-make
 
 # Note that post_install must come last because it may be empty and
 # "; ;" is a syntax error.
-stamps/stamp-$(1)-04-install: stamps/stamp-$(1)-03-make
+$(stampdir)/stamp-$(1)-04-install: $(stampdir)/stamp-$(1)-03-make
 	($(call SETVARS,$(1));				\
 	  cd "$$$${pkgbdir}";				\
 	  cd "$$$${pkgmkdir_inst}";			\
 	  $(MAKE) $(AM_MAKEFLAGS) $$$${pkgmkargs_inst} install; \
 	  $(call STRIP_macro,"$$$${pkgidir}");		\
 	  $(call gpg4win_pkg_$(call FROB_macro,$(1))_post_install))
-	touch stamps/stamp-$(1)-04-install
+	touch $(stampdir)/stamp-$(1)-04-install
 
-stamps/stamp-$(1)-05-stow: stamps/stamp-$(1)-04-install
+$(stampdir)/stamp-$(1)-05-stow: $(stampdir)/stamp-$(1)-04-install
 	($(call SETVARS,$(1));				\
 	 cd $(ipdir);					\
 	 $(STOW) "$$$${pkg_version}")
-	touch stamps/stamp-$(1)-05-stow
+	touch $(stampdir)/stamp-$(1)-05-stow
 
-stamps/stamp-final-$(1): stamps/stamp-$(1)-05-stow
-	touch stamps/stamp-final-$(1)
+$(stampdir)/stamp-final-$(1): $(stampdir)/stamp-$(1)-05-stow
+	touch $(stampdir)/stamp-final-$(1)
 
 .PHONY : clean-$(1)
 clean-$(1):
@@ -783,7 +784,7 @@ clean-$(1):
 	  ($(STOW) -D "$$$${pkg_version}";		\
 	   rm -fR "$$$${pkg_version}"));		\
 	 rm -fR "$$$${pkgsdir}" "$$$${pkgbdir}")
-	rm -f stamps/stamp-final-$(1) stamps/stamp-$(1)-*
+	rm -f $(stampdir)/stamp-final-$(1) $(stampdir)/stamp-$(1)-*
 
 endef
 
@@ -901,7 +902,7 @@ gnupg-vsd/$(1)/announcement.txt: gnupg-vsd/custom.mk gnupg-vsd/announcement.de.i
 		sed 's@GNUPG_VSD_CUSTOMER_LINK@https://download.gnupg.com/files/$(call GETVAR,msi_target_$(1)_directory)/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi@' | \
 		sed 's@GNUPG_VSD_SOURCE_LINK@https://download.gnupg.com/files/src/Gnupg-VS-Desktop-$(VSD_VERSION).tar.bz2@' > gnupg-vsd/$(1)/announcement.txt
 
-installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi: stamps/stamp-msi-base $(idir)/$(1).wixlib \
+installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi: $(stampdir)/stamp-msi-base $(idir)/$(1).wixlib \
 	gnupg-vsd/$(1)/license.rtf
 	scp gnupg-vsd/$(1)/license.rtf \
 		 $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION); \
@@ -923,7 +924,7 @@ installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi: stamps/stamp-msi-base $(idi
 	 scp $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)/GnuPG-VS-Desktop-$(VERSION)-$(1).msi \
 	 installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi;
 
-installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1)-x86.msi: stamps/stamp-msi-base $(idir)/$(1)-x86.wixlib \
+installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1)-x86.msi: $(stampdir)/stamp-msi-base $(idir)/$(1)-x86.wixlib \
 	gnupg-vsd/$(1)/license.rtf \
 	$(idir)/gpg4win-$(VERSION)-x86.wixlib
 	scp gnupg-vsd/$(1)/license.rtf \
@@ -952,7 +953,7 @@ signed_installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi: installers/GnuPG-VS-
 	mkdir -p signed_installers
 	$(call AUTHENTICODE_sign,"installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi","signed_installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi");\
 
-stamps/stamp-$(1)-upload: signed_installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi
+$(stampdir)/stamp-$(1)-upload: signed_installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi
 	(cd signed_installers; sha256sum GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi > \
 		GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi.sha256; \
 	gpg --yes -o GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi.sig -bau $(msi_signkey) \
@@ -965,9 +966,9 @@ stamps/stamp-$(1)-upload: signed_installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1)
 		"cd `echo $(VSD_PUBLISH_HOST) | cut -d ":" -f 2`/$(call GETVAR,msi_target_$(1)_directory) && rm -f GnuPG-VS-Desktop.msi && \
 		ln -s GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi GnuPG-VS-Desktop.msi"
 	echo "https://download.gnupg.com/files/$(call GETVAR,msi_target_$(1)_directory)/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi" \
-	> stamps/stamp-$(1)-upload
+	> $(stampdir)/stamp-$(1)-upload
 	echo "https://download.gnupg.com/files/$(call GETVAR,msi_target_$(1)_directory)/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi.sig" \
-	>> stamps/stamp-$(1)-upload
+	>> $(stampdir)/stamp-$(1)-upload
 
 .PHONY : $(1)
 $(1): installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi
@@ -979,13 +980,13 @@ $(1)-x86: installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1)-x86.msi
 	echo "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 
 .PHONY : $(1)-upload
-$(1)-upload: stamps/stamp-$(1)-upload
+$(1)-upload: $(stampdir)/stamp-$(1)-upload
 	gpg --yes -o gnupg-vsd-$(VERSION).tar.bz2.sig -bau $(msi_signkey) \
 		../gpg4win-$(VERSION).tar.bz2
 	rsync -vP ../gpg4win-$(VERSION).tar.bz2 $(VSD_PUBLISH_HOST)/src/Gnupg-VS-Desktop-$(VSD_VERSION).tar.bz2
 	rsync -vP gnupg-vsd-$(VERSION).tar.bz2.sig $(VSD_PUBLISH_HOST)/src/GnuPG-VS-Desktop-$(VSD_VERSION).tar.bz2.sig
 	echo "Upload URLs:"
-	cat stamps/stamp-$(1)-upload
+	cat $(stampdir)/stamp-$(1)-upload
 	echo "Source links:"
 	echo "https://download.gnupg.com/files/src/Gnupg-VS-Desktop-$(VSD_VERSION).tar.bz2"
 	echo "https://download.gnupg.com/files/src/Gnupg-VS-Desktop-$(VSD_VERSION).tar.bz2.sig"
@@ -1030,31 +1031,31 @@ $(foreach rll, $(gpg4win_howto_smime_ll), \
 
 $(eval $(call BOOST_template_,boost))
 
-stamps/stamp-final: stamps/stamp-directories
-stamps/stamp-final: $(addprefix stamps/stamp-final-,$(gpg4win_build_list)) \
-	$(addprefix stamps/stamp-final-ex-,$(gpg4win_build_ex_list))
-	touch stamps/stamp-final
+$(stampdir)/stamp-final: $(stampdir)/stamp-directories
+$(stampdir)/stamp-final: $(addprefix $(stampdir)/stamp-final-,$(gpg4win_build_list)) \
+	$(addprefix $(stampdir)/stamp-final-ex-,$(gpg4win_build_ex_list))
+	touch $(stampdir)/stamp-final
 
-$(bdir)/versioninfo.txt: stamps/stamp-final
+$(bdir)/versioninfo.txt: $(stampdir)/stamp-final
 	touch $(bdir)/versioninfo.txt
 
-all-gpg4win: stamps/stamp-final
+all-gpg4win: $(stampdir)/stamp-final
 
 # Just to check if we catched all stamps.
 clean-stamps:
-	$(RM) -fR $(stamps)
+	$(RM) -fR $(stampdir)
 
 clean-gpg4win:
-	$(RM) -fR $(root) stamps
+	$(RM) -fR $(root) $(stampdir)
 
-stamps/stamp-versions-all-signed: stamps/stamp-directories \
+$(stampdir)/stamp-versions-all-signed: $(stampdir)/stamp-directories \
 	$(addsuffix /VERSION.sig, $(addprefix gnupg-vsd/,$(msi_targets)))
-	touch stamps/stamp-versions-all-signed
+	touch $(stampdir)/stamp-versions-all-signed
 
-stamps/stamp-all-upload: stamps/stamp-dist-self \
-	$(addsuffix -upload, $(addprefix stamps/stamp-,$(msi_targets)))
+$(stampdir)/stamp-all-upload: $(stampdir)/stamp-dist-self \
+	$(addsuffix -upload, $(addprefix $(stampdir)/stamp-,$(msi_targets)))
 	echo "Upload URLs:"
-	cat $(addsuffix -upload, $(addprefix stamps/stamp-,$(msi_targets)))
+	cat $(addsuffix -upload, $(addprefix $(stampdir)/stamp-,$(msi_targets)))
 	gpg --yes -o gnupg-vsd-$(VERSION).tar.bz2.sig -bau $(msi_signkey) \
 		../gpg4win-$(VERSION).tar.bz2
 	rsync -vP ../gpg4win-$(VERSION).tar.bz2 $(VSD_PUBLISH_HOST)/src/Gnupg-VS-Desktop-$(VSD_VERSION).tar.bz2
@@ -1062,9 +1063,9 @@ stamps/stamp-all-upload: stamps/stamp-dist-self \
 	echo "Source links:"
 	echo "https://download.gnupg.com/files/src/Gnupg-VS-Desktop-$(VSD_VERSION).tar.bz2"
 	echo "https://download.gnupg.com/files/src/Gnupg-VS-Desktop-$(VSD_VERSION).tar.bz2.sig"
-	touch stamps/stamps-all-upload
+	touch $(stampdir)/stamps-all-upload
 
-msi: stamps/stamp-versions-all-signed \
+msi: $(stampdir)/stamp-versions-all-signed \
 	$(addsuffix .msi,$(addprefix installers/GnuPG-VS-Desktop-$(VSD_VERSION)-,$(msi_targets)))
 	if [ -z "$(addsuffix .msi,$(addprefix installers/GnuPG-VS-Desktop-$(VSD_VERSION)-,$(msi_targets)))" ]; then \
 		echo "No MSI targets configured."; \
@@ -1074,13 +1075,13 @@ msi: stamps/stamp-versions-all-signed \
 		echo "######################"; \
 	fi
 
-stamps/stamp-msi-all-signed: gnupg-vsd/sign.mk \
+$(stampdir)/stamp-msi-all-signed: gnupg-vsd/sign.mk \
 	$(addsuffix .msi,$(addprefix signed_installers/GnuPG-VS-Desktop-$(VSD_VERSION)-,$(msi_targets)))
-	touch stamps/stamp-msi-all-signed
+	touch $(stampdir)/stamp-msi-all-signed
 
 
-msi-signed: stamps/stamp-msi-all-signed
-msi-upload: stamps/stamp-all-upload stamps/stamp-dist-self
+msi-signed: $(stampdir)/stamp-msi-all-signed
+msi-upload: $(stampdir)/stamp-all-upload $(stampdir)/stamp-dist-self
 
 .PHONY : all-gpg4win clean-stamps clean-gpg4win msi msi-signed msi-upload
 
