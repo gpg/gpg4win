@@ -317,7 +317,7 @@ $(stampdir)/stamp-final-ex-$(1): $(stampdir)/stamp-$(1)-ex-05-stow
 clean-ex-$(1):
 	($(call SETVARS_EX,$(1));				\
 	 (cd $(ex_ipdir) &&				\
-	  ($(STOW) -D "$$$${pkg_version}";		\
+	  ($(STOW) -D "$$$${pkg_version}" || true;	\
 	   rm -fR "$$$${pkg_version}"));		\
 	 rm -fR "$$$${pkgsdir}" "$$$${pkgbdir}")
 	rm -f $(stampdir)/stamp-final-ex-$(1) $(stampdir)/stamp-$(1)-ex-*
@@ -402,7 +402,7 @@ $(stampdir)/stamp-final-$(1): $(stampdir)/stamp-$(1)-05-stow
 clean-$(1):
 	($(call SETVARS,$(1));				\
 	 (cd $(ipdir) &&				\
-	  ($(STOW) -D "$$$${pkg_version}";		\
+	  ($(STOW) -D "$$$${pkg_version}" || true;	\
 	   rm -fR "$$$${pkg_version}"));		\
 	 rm -fR "$$$${pkgsdir}" "$$$${pkgbdir}")
 	rm -f $(stampdir)/stamp-final-$(1) $(stampdir)/stamp-$(1)-*
@@ -464,7 +464,7 @@ $(stampdir)/stamp-final-$(1): $(stampdir)/stamp-$(1)-05-stow
 clean-$(1):
 	($(call SETVARS,$(1));				\
 	 (cd $(ipdir) &&				\
-	  ($(STOW) -D "$$$${pkg_version}";		\
+	  ($(STOW) -D "$$$${pkg_version}" || true;	\
 	   rm -fR "$$$${pkg_version}"));		\
 	 rm -fR "$$$${pkgsdir}")
 	rm -f $(stampdir)/stamp-final-$(1) $(stampdir)/stamp-$(1)-*
@@ -521,8 +521,8 @@ $(stampdir)/stamp-final-$(1): $(stampdir)/stamp-$(1)-03-stow-dev
 clean-$(1):
 	($(call SETVARS,$(1));				\
 	 cd $(ipdir) &&					\
-	 ($(STOW) -D "$$$${pkg_version}";		\
-	  $(STOW) -D "$$$${pkg_version_dev}";		\
+	 ($(STOW) -D "$$$${pkg_version}" || true;	\
+	  $(STOW) -D "$$$${pkg_version_dev}" || true;	\
 	  rm -fR "$$$${pkg_version}" "$$$${pkg_version_dev}"))
 	rm -f $(stampdir)/stamp-final-$(1) $(stampdir)/stamp-$(1)-*
 
@@ -587,7 +587,7 @@ $(stampdir)/stamp-final-$(1): $(stampdir)/stamp-$(1)-05-stow
 clean-$(1):
 	($(call SETVARS,$(1));				\
 	 (cd $(ipdir) &&				\
-	  ($(STOW) -D "$$$${pkg_version}";		\
+	  ($(STOW) -D "$$$${pkg_version}" || true;	\
 	   rm -fR "$$$${pkg_version}"));		\
 	 rm -fR "$$$${pkgsdir}" "$$$${pkgbdir}")
 	rm -f $(stampdir)/stamp-final-$(1) $(stampdir)/stamp-$(1)-*
@@ -705,7 +705,7 @@ $(stampdir)/stamp-final-$(1): $(stampdir)/stamp-$(1)-03-stow
 clean-$(1):
 	($(call SETVARS,$(1));				\
 	 (cd $(ipdir) &&				\
-	  ($(STOW) -D "$$$${pkg_version}";		\
+	  ($(STOW) -D "$$$${pkg_version}" || true;	\
 	   rm -fR "$$$${pkg_version}"));		\
 	 rm -fR "$$$${pkgsdir}" "$$$${pkgbdir}")
 	rm -f $(stampdir)/stamp-final-$(1) $(stampdir)/stamp-$(1)-*
@@ -781,7 +781,7 @@ $(stampdir)/stamp-final-$(1): $(stampdir)/stamp-$(1)-05-stow
 clean-$(1):
 	($(call SETVARS,$(1));				\
 	 (cd $(ipdir) &&				\
-	  ($(STOW) -D "$$$${pkg_version}";		\
+	  ($(STOW) -D "$$$${pkg_version}" || true;	\
 	   rm -fR "$$$${pkg_version}"));		\
 	 rm -fR "$$$${pkgsdir}" "$$$${pkgbdir}")
 	rm -f $(stampdir)/stamp-final-$(1) $(stampdir)/stamp-$(1)-*
