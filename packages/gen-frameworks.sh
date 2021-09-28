@@ -48,31 +48,52 @@ FRAMEWORKS="extra-cmake-modules
     karchive
     kcrash"
 
+fullversion=$1
+case ${fullversion} in
+    *.*.*)
+        majorversion=${fullversion%.*}
+        ;;
+    *.*)
+        majorversion=${fullversion}
+        fullversion=${majorversion}.0
+        echo "Using full version ${fullversion}"
+        ;;
+    *)
+        echo "Invalid version ${fullversion}"
+        exit 1
+        ;;
+esac
 
-majorversion=$(echo $1 | head -c 4)
 curdate=$(date +%Y-%m-%d)
 
 KEYRING=$(dirname $0)/kde-release-key.gpg
 
+server=https://download.kde.org/stable/frameworks
+echo "server ${server}"
+
 tmpdir=$(mktemp -d -t gen-frameworks.XXXXXXXXXX)
 
 for fw in $FRAMEWORKS; do
-    # Download pacakges over https now and verify that the signature matches
-    curl -L -s "https://download.kde.org/stable/frameworks/$majorversion/$fw-$1.tar.xz" > "$tmpdir/$fw-$1.tar.xz"
-    curl -L -s "https://download.kde.org/stable/frameworks/$majorversion/$fw-$1.tar.xz.sig" > "$tmpdir/$fw-$1.tar.xz.sig"
+    # Download packages over https now and verify that the signature matches
+    tarfile="$fw-${fullversion}.tar.xz"
+    tarfileurl="${server}/$majorversion/${tarfile}"
+    curl -L -s "${tarfileurl}" > "$tmpdir/${tarfile}"
+    sigfile="${tarfile}.sig"
+    sigfileurl="${tarfileurl}.sig"
+    curl -L -s "${sigfileurl}" > "$tmpdir/${sigfile}"
     # Check the signature
-    if ! gpgv --keyring "$KEYRING" "$tmpdir/$fw-$1.tar.xz.sig" "$tmpdir/$fw-$1.tar.xz"; then
-        echo "Signature for $tmpdir/$fw-$1.tar.xz! does not match!"
+    if ! gpgv --keyring "$KEYRING" "$tmpdir/${sigfile}" "$tmpdir/${tarfile}"; then
+        echo "Signature for $tmpdir/${tarfile} is not valid!"
         exit 1
     fi
 
-    sha2=$(sha256sum $tmpdir/$fw-$1.tar.xz | cut -d ' ' -f 1)
+    sha2=$(sha256sum $tmpdir/${tarfile} | cut -d ' ' -f 1)
 
     echo "# $fw"
     echo "# last changed: $curdate"
     echo "# by: ah"
     echo "# verified: PGP Signed by ./kde-release-key.gpg (created by gen-frameworks.sh)"
-    echo "file $majorversion/$fw-$1.tar.xz"
+    echo "file $majorversion/${tarfile}"
     echo "chk $sha2"
     echo ""
 done
