@@ -77,10 +77,16 @@ for fw in $FRAMEWORKS; do
     # Download packages over https now and verify that the signature matches
     tarfile="$fw-${fullversion}.tar.xz"
     tarfileurl="${server}/$majorversion/${tarfile}"
-    curl -L -s "${tarfileurl}" > "$tmpdir/${tarfile}"
+    if ! curl -L --silent --show-error --fail "${tarfileurl}" > "$tmpdir/${tarfile}"; then
+        echo "Downloading ${tarfileurl} failed"
+        exit 1
+    fi
     sigfile="${tarfile}.sig"
     sigfileurl="${tarfileurl}.sig"
-    curl -L -s "${sigfileurl}" > "$tmpdir/${sigfile}"
+    if ! curl -L --silent --show-error --fail "${sigfileurl}" > "$tmpdir/${sigfile}"; then
+        echo "Downloading ${sigfileurl} failed"
+        exit 1
+    fi
     # Check the signature
     if ! gpgv --keyring "$KEYRING" "$tmpdir/${sigfile}" "$tmpdir/${tarfile}"; then
         echo "Signature for $tmpdir/${tarfile} is not valid!"
