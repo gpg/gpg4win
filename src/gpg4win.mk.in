@@ -38,7 +38,7 @@ pkg_files =
 # install the packages.
 stamps/stamp-directories:
 	$(MKDIR) stamps
-	$(MKDIR) playground
+	$(MKDIR) $(root)
 	$(MKDIR) -p installers
 	$(MKDIR) $(bdir)
 	$(MKDIR) $(idir)
@@ -820,7 +820,7 @@ define MSI_template
 .PHONY : $(1)-package
 $(1)-package: installers/GnuPG-VS-Desktop-$(VERSION)-$(1).msi
 
-playground/install/$(1)-x86.wixlib: gnupg-vsd/$(1)/$(1).wxs
+$(idir)/$(1)-x86.wixlib: gnupg-vsd/$(1)/$(1).wxs
 	($(call SETVARS_WINE,); \
 	( \
 	ln -s $(idir) $$$$WINEINST; \
@@ -848,7 +848,7 @@ playground/install/$(1)-x86.wixlib: gnupg-vsd/$(1)/$(1).wxs
 	fi \
 	)
 
-playground/install/$(1).wixlib: gnupg-vsd/$(1)/$(1).wxs
+$(idir)/$(1).wixlib: gnupg-vsd/$(1)/$(1).wxs
 	($(call SETVARS_WINE,); \
 	( \
 	ln -s $(idir) $$$$WINEINST; \
@@ -901,11 +901,11 @@ gnupg-vsd/$(1)/announcement.txt: gnupg-vsd/custom.mk gnupg-vsd/announcement.de.i
 		sed 's@GNUPG_VSD_CUSTOMER_LINK@https://download.gnupg.com/files/$(call GETVAR,msi_target_$(1)_directory)/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi@' | \
 		sed 's@GNUPG_VSD_SOURCE_LINK@https://download.gnupg.com/files/src/Gnupg-VS-Desktop-$(VSD_VERSION).tar.bz2@' > gnupg-vsd/$(1)/announcement.txt
 
-installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi: stamps/stamp-msi-base playground/install/$(1).wixlib \
+installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi: stamps/stamp-msi-base $(idir)/$(1).wixlib \
 	gnupg-vsd/$(1)/license.rtf
 	scp gnupg-vsd/$(1)/license.rtf \
 		 $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION); \
-	scp playground/install/$(1).wixlib \
+	scp $(idir)/$(1).wixlib \
 		 $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION); \
 	scp $(call GETVAR,msi_target_$(1)_branding)/*.bmp \
 		 $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION); \
@@ -923,14 +923,14 @@ installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi: stamps/stamp-msi-base playg
 	 scp $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)/GnuPG-VS-Desktop-$(VERSION)-$(1).msi \
 	 installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi;
 
-installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1)-x86.msi: stamps/stamp-msi-base playground/install/$(1)-x86.wixlib \
+installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1)-x86.msi: stamps/stamp-msi-base $(idir)/$(1)-x86.wixlib \
 	gnupg-vsd/$(1)/license.rtf \
-	playground/install/gpg4win-$(VERSION)-x86.wixlib
+	$(idir)/gpg4win-$(VERSION)-x86.wixlib
 	scp gnupg-vsd/$(1)/license.rtf \
 		 $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION); \
-	scp playground/install/gpg4win-$(VERSION)-x86.wixlib \
+	scp $(idir)/gpg4win-$(VERSION)-x86.wixlib \
 		 $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION); \
-	scp playground/install/$(1)-x86.wixlib \
+	scp $(idir)/$(1)-x86.wixlib \
 		 $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION); \
 	scp $(call GETVAR,msi_target_$(1)_branding)/*.bmp \
 		 $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION); \
@@ -1045,7 +1045,7 @@ clean-stamps:
 	$(RM) -fR $(stamps)
 
 clean-gpg4win:
-	$(RM) -fR playground stamps
+	$(RM) -fR $(root) stamps
 
 stamps/stamp-versions-all-signed: stamps/stamp-directories \
 	$(addsuffix /VERSION.sig, $(addprefix gnupg-vsd/,$(msi_targets)))
