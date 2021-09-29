@@ -1,0 +1,41 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 806b1bb..496843d 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -51,11 +51,13 @@ target_sources(KF5Libkleo PRIVATE
+    utils/cryptoconfig.cpp
+    utils/test.cpp
+    )
+-ecm_qt_declare_logging_category(KF5Libkleo HEADER libkleo_debug.h IDENTIFIER LIBKLEO_LOG CATEGORY_NAME org.kde.pim.libkleo
++ecm_qt_declare_logging_category(libkleo_core_SRCS HEADER libkleo_debug.h IDENTIFIER LIBKLEO_LOG CATEGORY_NAME org.kde.pim.libkleo
+         DESCRIPTION "libkleo (kleo_core)"
+         EXPORT LIBKLEO
+     )
+-
++target_sources(KF5Libkleo PRIVATE
++    ${libkleo_core_SRCS}
++)
+
+ target_sources(KF5Libkleo PRIVATE
+    ui/dnattributeorderconfigwidget.cpp
+@@ -70,12 +72,14 @@ target_sources(KF5Libkleo PRIVATE
+    ui/editdirectoryservicedialog.cpp
+    )
+
+-ecm_qt_declare_logging_category(KF5Libkleo HEADER kleo_ui_debug.h IDENTIFIER KLEO_UI_LOG CATEGORY_NAME org.kde.pim.kleo_ui
++ecm_qt_declare_logging_category(libkleo_ui_SRCS HEADER kleo_ui_debug.h IDENTIFIER KLEO_UI_LOG CATEGORY_NAME org.kde.pim.kleo_ui
+         DESCRIPTION "libkleo (kleo_ui)"
+         OLD_CATEGORY_NAMES log_kleo_ui
+         EXPORT LIBKLEO
+     )
+-
++target_sources(KF5Libkleo PRIVATE
++    ${libkleo_ui_SRCS}
++)
+
+ target_sources(KF5Libkleo PRIVATE    # make this a separate lib.
+     ui/keylistview.cpp

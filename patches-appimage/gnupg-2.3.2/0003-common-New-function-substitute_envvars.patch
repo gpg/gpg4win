@@ -1,0 +1,274 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From 9c272dc245456d5403e3bd50553b4fdccb370e27 Mon Sep 17 00:00:00 2001
+From: Werner Koch <wk@gnupg.org>
+Date: Fri, 17 Sep 2021 17:33:21 +0200
+Subject: [PATCH GnuPG 1/2] common: New function substitute_envvars.
+
+* common/stringhelp.c (substitute_envvars): New.  Based on code in
+gpg-connect-agent.
+* common/t-stringhelp.c: Include sysutils.h.
+(test_substitute_envvars): New.
+--
+
+GnuPG-bug-id: 5599
+---
+ common/stringhelp.c   | 104 ++++++++++++++++++++++++++++++++++++++++++
+ common/stringhelp.h   |   3 ++
+ common/t-stringhelp.c |  99 ++++++++++++++++++++++++++++++++++++++++
+ 3 files changed, 206 insertions(+)
+
+diff --git a/common/stringhelp.c b/common/stringhelp.c
+index 4dc179738..c9e10800d 100644
+--- a/common/stringhelp.c
++++ b/common/stringhelp.c
+@@ -1692,3 +1692,107 @@ format_text (const char *text_in, int target_cols, int max_cols)
+
+   return text;
+ }
++
++
++/* Substitute environment variables in STRING and return a new string.
++ * On error the function returns NULL.  */
++char *
++substitute_envvars (const char *string)
++{
++  char *line, *p, *pend;
++  const char *value;
++  size_t valuelen, n;
++  char *result = NULL;
++
++  result = line = xtrystrdup (string);
++  if (!result)
++    return NULL; /* Ooops */
++
++  while (*line)
++    {
++      p = strchr (line, '$');
++      if (!p)
++        goto leave; /* No or no more variables.  */
++
++      if (p[1] == '$') /* Escaped dollar sign. */
++        {
++          memmove (p, p+1, strlen (p+1)+1);
++          line = p + 1;
++          continue;
++        }
++
++      if (p[1] == '{')
++        {
++          int count = 0;
++
++          for (pend=p+2; *pend; pend++)
++            {
++              if (*pend == '{')
++                count++;
++              else if (*pend == '}')
++                {
++                  if (--count < 0)
++                    break;
++                }
++            }
++          if (!*pend)
++            goto leave; /* Unclosed - don't substitute.  */
++        }
++      else
++        {
++          for (pend = p+1; *pend && (alnump (pend) || *pend == '_'); pend++)
++            ;
++        }
++
++      if (p[1] == '{' && *pend == '}')
++        {
++          int save = *pend;
++          *pend = 0;
++          value = getenv (p+2);
++          *pend++ = save;
++        }
++      else
++        {
++          int save = *pend;
++          *pend = 0;
++          value = getenv (p+1);
++          *pend = save;
++        }
++
++      if (!value)
++        value = "";
++      valuelen = strlen (value);
++      if (valuelen <= pend - p)
++        {
++          memcpy (p, value, valuelen);
++          p += valuelen;
++          n = pend - p;
++          if (n)
++            memmove (p, p+n, strlen (p+n)+1);
++          line = p;
++        }
++      else
++        {
++          char *src = result;
++          char *dst;
++
++          dst = xtrymalloc (strlen (src) + valuelen + 1);
++          if (!dst)
++            {
++              xfree (result);
++              return NULL;
++            }
++          n = p - src;
++          memcpy (dst, src, n);
++          memcpy (dst + n, value, valuelen);
++          n += valuelen;
++          strcpy (dst + n, pend);
++          line = dst + n;
++          xfree (result);
++          result = dst;
++        }
++    }
++
++ leave:
++  return result;
++}
+diff --git a/common/stringhelp.h b/common/stringhelp.h
+index 598f698c8..cd874af2e 100644
+--- a/common/stringhelp.h
++++ b/common/stringhelp.h
+@@ -166,6 +166,9 @@ int compare_version_strings (const char *my_version, const char *req_version);
+ /* Format a string so that it fits within about TARGET_COLS columns.  */
+ char *format_text (const char *text, int target_cols, int max_cols);
+
++/* Substitute environmen variabales in STRING.  */
++char *substitute_envvars (const char *string);
++
+
+ /*-- mapstrings.c --*/
+ const char *map_static_macro_string (const char *string);
+diff --git a/common/t-stringhelp.c b/common/t-stringhelp.c
+index 5eca5a092..8d0c1c576 100644
+--- a/common/t-stringhelp.c
++++ b/common/t-stringhelp.c
+@@ -43,6 +43,7 @@
+ #include <limits.h>
+
+ #include "t-support.h"
++#include "sysutils.h"
+ #include "stringhelp.h"
+
+
+@@ -1194,6 +1195,103 @@ test_compare_version_strings (void)
+ }
+
+
++static void
++test_substitute_envvars (void)
++{
++  struct {
++    const char *name;
++    const char *value;
++  } envvars[] = {
++    { "HOME", "/home/joe" },
++    { "AVAR",  "avar" },
++    { "AVAR1", "avarx" },
++    { "AVAR2", "avarxy" },
++    { "AVAR3", "avarxyz" },
++    { "AVAR0", "ava" },
++    { "MY_VAR", "my_vars_value" },
++    { "STRANGE{X}VAR", "strange{x}vars-value" },
++    { "ZERO",  "" }
++  };
++  struct {
++    const char *string;
++    const char *result;
++  } tests[] = {
++    { "foo bar",
++      "foo bar"
++    },
++    { "foo $HOME",
++      "foo /home/joe"
++    },
++    { "foo $HOME ",
++      "foo /home/joe "
++    },
++    { "foo $HOME$$",
++      "foo /home/joe$"
++    },
++    { "foo ${HOME}/.ssh",
++      "foo /home/joe/.ssh"
++    },
++    { "foo $HOME/.ssh",
++      "foo /home/joe/.ssh"
++    },
++    { "foo $HOME_/.ssh",
++      "foo /.ssh"
++    },
++    { "foo $HOME/.ssh/$MY_VAR:1",
++      "foo /home/joe/.ssh/my_vars_value:1"
++    },
++    { "foo $HOME${MY_VAR}:1",
++      "foo /home/joemy_vars_value:1"
++    },
++    { "${STRANGE{X}VAR}-bla",
++      "strange{x}vars-value-bla"
++    },
++    { "${STRANGE{X}{VAR}-bla", /* missing "}" */
++      "${STRANGE{X}{VAR}-bla"
++    },
++    { "zero->$ZERO<-",
++      "zero-><-"
++    },
++    { "->$AVAR.$AVAR1.$AVAR2.$AVAR3.$AVAR0<-",
++      "->avar.avarx.avarxy.avarxyz.ava<-"
++    },
++    { "",
++      ""
++    }
++  };
++  int idx;
++  char *res;
++
++  for (idx=0; idx < DIM(envvars); idx++)
++    if (gnupg_setenv (envvars[idx].name, envvars[idx].value, 1))
++      {
++        fprintf (stderr,"error setting envvar '%s' to '%s': %s\n",
++                 envvars[idx].name, envvars[idx].value,
++                 strerror (errno));
++        exit (2);
++      }
++
++  for (idx=0; idx < DIM(tests); idx++)
++    {
++      res = substitute_envvars (tests[idx].string);
++      if (!res)
++        {
++          fprintf (stderr,"error substituting '%s' (test %d): %s\n",
++                   tests[idx].string, idx, strerror (errno));
++          exit (2);
++        }
++      if (strcmp (res, tests[idx].result))
++        {
++          fprintf (stderr, "substituted '%s'\n", tests[idx].string);
++          fprintf (stderr, "     wanted '%s'\n", tests[idx].result);
++          fprintf (stderr, "        got '%s'\n", res);
++          fail (idx);
++        }
++      xfree (res);
++    }
++}
++
++
+ int
+ main (int argc, char **argv)
+ {
+@@ -1213,6 +1311,7 @@ main (int argc, char **argv)
+   test_split_fields_colon ();
+   test_compare_version_strings ();
+   test_format_text ();
++  test_substitute_envvars ();
+
+   xfree (home_buffer);
+   return !!errcount;
+--
+2.33.0

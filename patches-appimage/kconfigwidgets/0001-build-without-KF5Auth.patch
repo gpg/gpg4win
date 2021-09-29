@@ -1,0 +1,17 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index bed53d1..87f976c 100644
+--- CMakeLists.txt.orig 2018-02-28 08:33:32.052419561 +0100
++++ CMakeLists.txt      2018-02-28 08:35:44.523986191 +0100
+@@ -39,7 +39,7 @@
+                         PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KF5ConfigWidgetsConfigVersion.cmake"
+                         SOVERSION 5)
+
+-if (NOT ANDROID)
++if (FALSE)
+   find_package(KF5Auth ${KF5_DEP_VERSION} REQUIRED)
+ endif()
+ find_package(KF5CoreAddons ${KF5_DEP_VERSION} REQUIRED)

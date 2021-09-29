@@ -1,0 +1,31 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From 991d6b9f1868080a9ed93ed55cf6dc794ee6a9d1 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
+Date: Thu, 23 Sep 2021 12:08:06 +0200
+Subject: [PATCH] Add support for non-standard boost include directories
+
+GnuPG-bug-id: 5592
+---
+ src/CMakeLists.txt | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 48e6cfa..ba85f6c 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -1,6 +1,9 @@
+
+ # target_include_directories does not handle empty include paths
+-include_directories(${GPGME_INCLUDES})
++include_directories(
++    ${Boost_INCLUDE_DIRS}
++    ${GPGME_INCLUDES}
++)
+
+ add_definitions(-DTRANSLATION_DOMAIN=\"libkleopatra\")
+
+--
+2.33.0
