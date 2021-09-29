@@ -36,24 +36,27 @@ SUBDIRS = ${po} packages ${doc} src
 # find patches -type f | sort | sed 's/$/ \\/' | sed 's/^/             /'
 
 EXTRA_DIST = autogen.sh README.GIT ONEWS \
-        doc/license-page doc/GPLv3 \
-        build-aux/git-log-footer build-aux/git-log-fix \
-		patches/boost/boost-1-fixes.patch \
-        patches/extra-cmake-modules/0001-Use-BIN_INSTALL_DIR-data-for-DATAROOTDIR-on-Windows.patch \
-        patches/glib-2.41.5/01-socket.patch \
-        patches/glib-2.41.5/02-formatsec.patch \
-        patches/kconfigwidgets/0001-Make-QDbus-optional.patch \
-        patches/kiconthemes/0001-Make-DBus-optional.patch \
-        patches/kxmlgui/0001-make-qdbus-optional.patch \
-        patches/kxmlgui/0004-Cruedly-disable-KSendbugmail.patch \
-        patches/qtbase/0001-Fix-build-without-std-thread.patch \
-        patches/qtbase/0002-Gpg4win-theme-names-and-relpaths.patch \
-        patches/qtbase/0001-Gpg4win-qstandardpaths-patch.patch \
-        patches/qttools/disable-most-tools.patch \
-        patches/w32pth-2.0.5/workaround-broken-libtool.patch \
-        patches/breeze-icons/0001-Make-binary-icons-cross-compilable.patch \
-        patches/libkleo/lower-cmake-requirement.patch \
-        patches/kleopatra/lower-cmake-requirement.patch
+             doc/license-page doc/GPLv3 \
+             build-aux/git-log-footer build-aux/git-log-fix \
+             patches/boost/boost-1-fixes.patch \
+             patches/breeze-icons/0001-Make-binary-icons-cross-compilable.patch \
+             patches/extra-cmake-modules/0001-Use-BIN_INSTALL_DIR-data-for-DATAROOTDIR-on-Windows.patch \
+             patches/glib-2.41.5/01-socket.patch \
+             patches/glib-2.41.5/02-formatsec.patch \
+             patches/gpgol/0001-Handle-protected-headers-also-on-multipart-parts.patch \
+             patches/kconfigwidgets/0001-Make-QDbus-optional.patch \
+             patches/kiconthemes/0001-Make-DBus-optional.patch \
+             patches/kleopatra/lower-cmake-requirement.patch \
+             patches/kxmlgui/0001-make-qdbus-optional.patch \
+             patches/kxmlgui/0004-Cruedly-disable-KSendbugmail.patch \
+             patches/libkleo/lower-cmake-requirement.patch \
+             patches/libkleo/z-01-use-pre-5.80-ecm_qt_declare_logging_category.patch \
+             patches/qtbase/0001-Fix-build-without-std-thread.patch \
+             patches/qtbase/0001-Gpg4win-qstandardpaths-patch.patch \
+             patches/qtbase/0002-Gpg4win-theme-names-and-relpaths.patch \
+             patches/qtbase/0003-Fix-build-with-GCC-11-include-limits.patch \
+             patches/qttools/disable-most-tools.patch \
+             patches/w32pth-2.0.5/workaround-broken-libtool.patch
 
 copy-news:
 	cp NEWS doc/website/NEWS.last
