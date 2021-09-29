@@ -132,6 +132,9 @@ AC_SUBST(emacs_local_vars_begin, ['Local Variables:'])
 AC_SUBST(emacs_local_vars_read_only, ['buffer-read-only: t'])
 AC_SUBST(emacs_local_vars_end, ['End:'])
 
+GPG4WIN_BUILD_RELEASE(gpg4win, no)
+GPG4WIN_BUILD_RELEASE(appimage, no)
+
 # For development it is often faster to build without manuals.
 AC_ARG_ENABLE(manuals,
     AC_HELP_STRING([--disable-manuals],
@@ -169,6 +172,11 @@ if test "$use_fast_makensis" = yes; then
 fi
 AC_SUBST(EXTRA_MAKENSIS_FLAGS)
 
+#
+# Set variables for use by automake makefiles.
+#
+AM_CONDITIONAL(BUILD_GPG4WIN,  test "$build_gpg4win" = "yes")
+AM_CONDITIONAL(BUILD_APPIMAGE, test "$build_appimage" = "yes")
 
 # Required tools.
 AC_PROG_CC
@@ -195,6 +203,7 @@ AC_CHECK_PROGS(GITLOG_TO_CHANGELOG, gitlog-to-changelog,
                [build-aux/gitlog-to-changelog])
 AC_CHECK_PROGS(BUILD_CC, gcc cc)
 AC_CHECK_PROGS(CMAKE, cmake3 cmake)
+AC_CHECK_PROGS(RSYNC, rsync)
 
 AC_PROG_INSTALL
 
@@ -209,40 +218,51 @@ if test -z "$GPG4WIN_PARALLEL"; then
 fi
 AC_SUBST(GPG4WIN_PARALLEL)
 
+required_tools="MAKE TAR MKDIR CP RM ZCAT SHA1SUM MSGFMT BUILD_CC CMAKE"
+if test "$build_gpg4win" = yes ; then
+    required_tools="$required_tools DLLTOOL UNZIP STOW MAKENSIS TEXI2DVI DVIPDF CONVERT"
+fi
+if test "$build_appimage" = yes ; then
+    required_tools="$required_tools RSYNC"
+fi
+
 missing_tools=
-for i in DLLTOOL MAKE UNZIP TAR MKDIR CP RM STOW MAKENSIS ZCAT TEXI2DVI \
-         DVIPDF CONVERT SHA1SUM MSGFMT BUILD_CC CMAKE; do
+for i in $required_tools; do
    eval tmp='$'$i
    if test -z "$tmp"; then
       missing_tools="$missing_tools `echo $i | tr 'A-Z' 'a-z'`"
    fi
 done
 
-# Try to find the KF5ConfigConfig to set up host tooling
-# variable for the kconfig compiler.
-# A variable path here would probably be better but we cant
-# use $libdir to avoid it beeing required to configure gpg4win
-# build with a multiarch libdir set.
-kf5_host_tooling="/usr/lib/x86_64-linux-gnu/cmake"
-if test ! -f "$kf5_host_tooling/KF5Config/KF5ConfigConfig.cmake"; then
-    missing_tools="$missing_tools libkf5config-dev"
+if test "$build_gpg4win" = yes ; then
+    # Try to find the KF5ConfigConfig to set up host tooling
+    # variable for the kconfig compiler.
+    # A variable path here would probably be better but we cant
+    # use $libdir to avoid it beeing required to configure gpg4win
+    # build with a multiarch libdir set.
+    kf5_host_tooling="/usr/lib/x86_64-linux-gnu/cmake"
+    if test ! -f "$kf5_host_tooling/KF5Config/KF5ConfigConfig.cmake"; then
+        missing_tools="$missing_tools libkf5config-dev"
+    fi
+    AC_SUBST(kf5_host_tooling)
+
+    # Additional runtime libraries from mingw.
+    GPG4WIN_RUNTIME_LIBRARY(libgcc_s_sjlj-1)
+    GPG4WIN_RUNTIME_LIBRARY(libstdc++-6)
+    GPG4WIN_RUNTIME_LIBRARY(libwinpthread-1)
+
+    AC_CHECK_PROGS(GLIB_GENMARSHAL, glib-genmarshal)
+    AC_CHECK_PROGS(GLIB_COMPILE_SCHEMAS, glib-compile-schemas)
+    AC_CHECK_PROGS(GLIB_COMPILE_RESOURCES, glib-compile-resources)
+    AC_CHECK_PROGS(GDK_PIXBUF_CSOURCE, gdk-pixbuf-csource)
 fi
-AC_SUBST(kf5_host_tooling)
 
-# Additional runtime libraries from mingw.
-GPG4WIN_RUNTIME_LIBRARY(libgcc_s_sjlj-1)
-GPG4WIN_RUNTIME_LIBRARY(libstdc++-6)
-GPG4WIN_RUNTIME_LIBRARY(libwinpthread-1)
-
-AC_CHECK_PROGS(GLIB_GENMARSHAL, glib-genmarshal)
-AC_CHECK_PROGS(GLIB_COMPILE_SCHEMAS, glib-compile-schemas)
-AC_CHECK_PROGS(GLIB_COMPILE_RESOURCES, glib-compile-resources)
-AC_CHECK_PROGS(GDK_PIXBUF_CSOURCE, gdk-pixbuf-csource)
-
-
+opt_tools=
+if test "$build_gpg4win" = yes ; then
+    opt_tools="GLIB_GENMARSHAL GLIB_COMPILE_SCHEMAS GLIB_COMPILE_RESOURCES GDK_PIXBUF_CSOURCE"
+fi
 missing_opt_tools=
-for i in GLIB_GENMARSHAL GLIB_COMPILE_SCHEMAS GLIB_COMPILE_RESOURCES \
-         GDK_PIXBUF_CSOURCE; do
+for i in $opt_tools; do
    eval tmp='$'$i
    if test -z "$tmp"; then
       missing_opt_tools="$missing_opt_tools `echo $i | tr 'A-Z' 'a-z'`"
@@ -256,87 +276,148 @@ done
 AC_CHECK_PROGS(WGET, wget)
 
 
-# Packages.
-gpg4win_dup_sources=""
+# Packages for Gpg4Win.
+if test "$build_gpg4win" = yes ; then
+    gpg4win_dup_sources=""
+
+    GPG4WIN_SPKG([zlib])
+
+    GPG4WIN_BPKG_GTK([pkgconfig])
+
+    GPG4WIN_SPKG([libffi], [pkgconfig])
+    GPG4WIN_SPKG([glib], [libiconv gettext pkgconfig libffi zlib])
+    GPG4WIN_BPKG_GTK_DEV([atk], [glib pkgconfig])
+    GPG4WIN_BPKG_GTK_DEV([pango], [glib pkgconfig])
+    GPG4WIN_BPKG_GTK_DEV([cairo], [glib pkgconfig])
+    GPG4WIN_BPKG_GTK_DEV([expat])
+    GPG4WIN_BPKG_GTK_DEV([freetype], [pkgconfig zlib])
+    GPG4WIN_BPKG_GTK_DEV([fontconfig], [pkgconfig zlib expat])
+    GPG4WIN_SPKG([gdk-pixbuf], [glib])
+    GPG4WIN_SPKG([gtk+], [libiconv gettext pkgconfig atk pango dnl
+                          glib gdk-pixbuf cairo])
+    GPG4WIN_SPKG([libpng], [pkgconfig])
+
+    GPG4WIN_SPKG([bzip2])
+    GPG4WIN_SPKG([libgpg-error], [libiconv gettext])
+    GPG4WIN_SPKG([libassuan], [libgpg-error w32pth])
+    GPG4WIN_SPKG([scute], [libgpg-error libassuan])
+    GPG4WIN_SPKG([pinentry], [qtbase libiconv gtk+])
+    GPG4WIN_SPKG([gpgme], [libgpg-error libassuan glib qtbase])
+    GPG4WIN_SPKG([gpgol], [gpgme libassuan])
+    GPG4WIN_SPKG([gpgex], [libassuan])
+    GPG4WIN_SPKG([paperkey])
+    GPG4WIN_SPKG([gpa], [libiconv gettext zlib gtk+ libpng glib gpgme])
+    GPG4WIN_SPKG([w32pth])
+    GPG4WIN_SPKG([libiconv])
+    GPG4WIN_SPKG([gettext], [libiconv])
 
 
-GPG4WIN_SPKG([zlib])
+    # Packages needed for gpgex
+    GPG4WIN_SPKGEX([libgpg-error])
+    GPG4WIN_SPKGEX([libassuan], [libgpg-error])
+    GPG4WIN_SPKGEX([gpgex], [libassuan])
+    GPG4WIN_SPKGEX([gpgme], [libgpg-error libassuan])
+    GPG4WIN_SPKGEX([gpgol], [gpgme])
 
-GPG4WIN_BPKG_GTK([pkgconfig])
+    GPG4WIN_IPKG([compendium])
 
-GPG4WIN_SPKG([libffi], [pkgconfig])
-GPG4WIN_SPKG([glib], [libiconv gettext pkgconfig libffi zlib])
-GPG4WIN_BPKG_GTK_DEV([atk], [glib pkgconfig])
-GPG4WIN_BPKG_GTK_DEV([pango], [glib pkgconfig])
-GPG4WIN_BPKG_GTK_DEV([cairo], [glib pkgconfig])
-GPG4WIN_BPKG_GTK_DEV([expat])
-GPG4WIN_BPKG_GTK_DEV([freetype], [pkgconfig zlib])
-GPG4WIN_BPKG_GTK_DEV([fontconfig], [pkgconfig zlib expat])
-GPG4WIN_SPKG([gdk-pixbuf], [glib])
-GPG4WIN_SPKG([gtk+], [libiconv gettext pkgconfig atk pango dnl
-                      glib gdk-pixbuf cairo])
-GPG4WIN_SPKG([libpng], [pkgconfig])
+    # The GnuPG Package.
+    GPG4WIN_BPKG_BINSRC([gnupg-w32])
+    GPG4WIN_BPKG_MSISRC([gnupg-msi])
+    # See the script kde-l10n.sh how this package is created.
+    GPG4WIN_BPKG_BINSRC([kde-l10n])
 
-GPG4WIN_SPKG([bzip2])
-GPG4WIN_SPKG([libgpg-error], [libiconv gettext])
-GPG4WIN_SPKG([libassuan], [libgpg-error w32pth])
-GPG4WIN_SPKG([scute], [libgpg-error libassuan])
-GPG4WIN_SPKG([pinentry], [qtbase libiconv gtk+])
-GPG4WIN_SPKG([gpgme], [libgpg-error libassuan glib qtbase])
-GPG4WIN_SPKG([gpgol], [gpgme libassuan])
-GPG4WIN_SPKG([gpgex], [libassuan])
-GPG4WIN_SPKG([paperkey])
-GPG4WIN_SPKG([gpa], [libiconv gettext zlib gtk+ libpng glib gpgme])
-GPG4WIN_SPKG([w32pth])
-GPG4WIN_SPKG([libiconv])
-GPG4WIN_SPKG([gettext], [libiconv])
+    # Qt related stuff.
+    GPG4WIN_SPKG([qtbase], [libpng])
+    GPG4WIN_SPKG([qttools], [qtbase])
+    GPG4WIN_SPKG([qttranslations], [qtsvg qttools qtwinextras])
+    GPG4WIN_SPKG([qtwinextras], [qtbase])
+    GPG4WIN_SPKG([qtsvg], [qtbase])
+    GPG4WIN_SPKG([boost], [expat zlib bzip2])
+    GPG4WIN_KDEPKG([breeze-icons], [extra-cmake-modules qtbase])
+    GPG4WIN_KDEPKG([kleopatra], [gnupg-w32 breeze-icons kxmlgui libkleo kde-l10n kitemmodels qttranslations])
+    GPG4WIN_KDEPKG([extra-cmake-modules])
+    GPG4WIN_KDEPKG([kconfig], [qtbase qttools extra-cmake-modules])
+    GPG4WIN_KDEPKG([ki18n], [qtbase gettext qttools extra-cmake-modules])
+    GPG4WIN_KDEPKG([kwidgetsaddons], [kconfig qttools qtbase])
+    GPG4WIN_KDEPKG([kcompletion], [kwidgetsaddons])
+    GPG4WIN_KDEPKG([kwindowsystem], [qtbase qtwinextras])
+    GPG4WIN_KDEPKG([kcoreaddons], [qtbase qttools])
+    GPG4WIN_KDEPKG([kcodecs], [qtbase qttools])
+    GPG4WIN_KDEPKG([kguiaddons], [qtbase qttools])
+    GPG4WIN_KDEPKG([kmime], [kcodecs ki18n])
+    GPG4WIN_KDEPKG([kconfigwidgets], [kwidgetsaddons kguiaddons ki18n kcodecs kconfig])
+    GPG4WIN_KDEPKG([kitemviews], [qtbase qttools])
+    GPG4WIN_KDEPKG([kitemmodels], [qtbase qttools])
+    GPG4WIN_KDEPKG([karchive], [qtbase qttools extra-cmake-modules])
+    GPG4WIN_KDEPKG([kcrash], [kwindowsystem kcoreaddons])
+    GPG4WIN_KDEPKG([kiconthemes], [qtsvg kconfigwidgets karchive])
+    GPG4WIN_KDEPKG([kxmlgui], [kiconthemes kconfigwidgets kitemviews])
+    GPG4WIN_KDEPKG([libkleo], [kmime kwidgetsaddons kwindowsystem kcompletion kconfig gpgme])
+    GPG4WIN_KDEPKG([gpg4win-tools], [libkleo gpgme])
 
+    GPG4WIN_FINALIZE
+fi
 
-# Packages needed for gpgex
-GPG4WIN_SPKGEX([libgpg-error])
-GPG4WIN_SPKGEX([libassuan], [libgpg-error])
-GPG4WIN_SPKGEX([gpgex], [libassuan])
-GPG4WIN_SPKGEX([gpgme], [libgpg-error libassuan])
-GPG4WIN_SPKGEX([gpgol], [gpgme])
+# Packages for the AppImage
+if test "$build_appimage" = yes ; then
+    appimage_dup_sources=""
 
-GPG4WIN_IPKG([compendium])
+    APPIMAGE_SPKG([sqlite])
 
-# The GnuPG Package.
-GPG4WIN_BPKG_BINSRC([gnupg-w32])
-GPG4WIN_BPKG_MSISRC([gnupg-msi])
-# See the script kde-l10n.sh how this package is created.
-GPG4WIN_BPKG_BINSRC([kde-l10n])
+    APPIMAGE_SPKG([libgpg-error])
+    APPIMAGE_SPKG([libassuan], [libgpg-error])
+    APPIMAGE_SPKG([npth])
+    APPIMAGE_SPKG([libgcrypt], [libgpg-error])
+    APPIMAGE_SPKG([libksba], [libgpg-error])
+    APPIMAGE_SPKG([gnupg], [libgpg-error libassuan npth libgcrypt libksba sqlite])
+    APPIMAGE_SPKG([pinentry], [qtbase qtx11extras])
+    APPIMAGE_SPKG([gpgme], [libgpg-error libassuan qtbase])
+    APPIMAGE_SPKG([paperkey])
 
-# Qt related stuff.
-GPG4WIN_SPKG([qtbase], [libpng])
-GPG4WIN_SPKG([qttools], [qtbase])
-GPG4WIN_SPKG([qttranslations], [qtsvg qttools qtwinextras])
-GPG4WIN_SPKG([qtwinextras], [qtbase])
-GPG4WIN_SPKG([qtsvg], [qtbase])
-GPG4WIN_SPKG([boost], [expat zlib bzip2])
-GPG4WIN_KDEPKG([breeze-icons], [extra-cmake-modules qtbase])
-GPG4WIN_KDEPKG([kleopatra], [gnupg-w32 breeze-icons kxmlgui libkleo kde-l10n kitemmodels qttranslations])
-GPG4WIN_KDEPKG([extra-cmake-modules])
-GPG4WIN_KDEPKG([kconfig], [qtbase qttools extra-cmake-modules])
-GPG4WIN_KDEPKG([ki18n], [qtbase gettext qttools extra-cmake-modules])
-GPG4WIN_KDEPKG([kwidgetsaddons], [kconfig qttools qtbase])
-GPG4WIN_KDEPKG([kcompletion], [kwidgetsaddons])
-GPG4WIN_KDEPKG([kwindowsystem], [qtbase qtwinextras])
-GPG4WIN_KDEPKG([kcoreaddons], [qtbase qttools])
-GPG4WIN_KDEPKG([kcodecs], [qtbase qttools])
-GPG4WIN_KDEPKG([kguiaddons], [qtbase qttools])
-GPG4WIN_KDEPKG([kmime], [kcodecs])
-GPG4WIN_KDEPKG([kconfigwidgets], [kwidgetsaddons kguiaddons ki18n kcodecs kconfig])
-GPG4WIN_KDEPKG([kitemviews], [qtbase qttools])
-GPG4WIN_KDEPKG([kitemmodels], [qtbase qttools])
-GPG4WIN_KDEPKG([karchive], [qtbase qttools extra-cmake-modules])
-GPG4WIN_KDEPKG([kcrash], [kwindowsystem kcoreaddons])
-GPG4WIN_KDEPKG([kiconthemes], [qtsvg kconfigwidgets karchive])
-GPG4WIN_KDEPKG([kxmlgui], [kiconthemes kconfigwidgets kitemviews])
-GPG4WIN_KDEPKG([libkleo], [kmime kwidgetsaddons kwindowsystem kcompletion kconfig gpgme])
-GPG4WIN_KDEPKG([gpg4win-tools], [libkleo gpgme])
+    # See the script kde-l10n.sh how this package is created.
+    #APPIMAGE_BPKG_BINSRC([kde-l10n])
 
-GPG4WIN_FINALIZE
+    # Qt related stuff.
+    APPIMAGE_SPKG([qtbase])
+    APPIMAGE_SPKG([qttools], [qtbase])
+    APPIMAGE_SPKG([qttranslations], [qtsvg qttools qtx11extras])
+    APPIMAGE_SPKG([qtx11extras], [qtbase])
+    APPIMAGE_SPKG([qtwayland], [qtbase])
+    APPIMAGE_SPKG([qtsvg], [qtbase])
+
+    APPIMAGE_KDEPKG([extra-cmake-modules], [qttools])
+    APPIMAGE_KDEPKG([breeze-icons], [extra-cmake-modules qtbase])
+    APPIMAGE_KDEPKG([kconfig], [qtbase qttools extra-cmake-modules])
+    APPIMAGE_KDEPKG([ki18n], [qtbase qttools extra-cmake-modules])
+    APPIMAGE_KDEPKG([kcoreaddons], [qtbase qttools extra-cmake-modules])
+    APPIMAGE_KDEPKG([kcodecs], [qtbase qttools extra-cmake-modules])
+    APPIMAGE_KDEPKG([kdbusaddons], [qtbase qttools extra-cmake-modules])
+    APPIMAGE_KDEPKG([kguiaddons], [qtbase qttools extra-cmake-modules])
+    APPIMAGE_KDEPKG([kitemviews], [qtbase qttools extra-cmake-modules])
+    APPIMAGE_KDEPKG([kitemmodels], [qtbase qttools extra-cmake-modules])
+    APPIMAGE_KDEPKG([karchive], [qtbase qttools extra-cmake-modules])
+    APPIMAGE_KDEPKG([kwindowsystem], [qtbase qtx11extras extra-cmake-modules])
+
+    APPIMAGE_KDEPKG([kcrash], [kwindowsystem kcoreaddons])
+    APPIMAGE_KDEPKG([kmime], [kcodecs ki18n])
+    APPIMAGE_KDEPKG([kwidgetsaddons], [kconfig qttools qtbase])
+
+    APPIMAGE_KDEPKG([kcompletion], [kwidgetsaddons])
+    APPIMAGE_KDEPKG([kconfigwidgets], [kwidgetsaddons kguiaddons ki18n kcodecs kconfig])
+
+    APPIMAGE_KDEPKG([kiconthemes], [qtsvg kconfigwidgets karchive])
+
+    APPIMAGE_KDEPKG([kxmlgui], [kiconthemes kconfigwidgets kitemviews])
+
+    #APPIMAGE_KDEPKG([libkleo], [kmime kwidgetsaddons kwindowsystem kcompletion kconfig gpgme kde-l10n])
+    APPIMAGE_KDEPKG([libkleo], [kmime kwidgetsaddons kwindowsystem kcompletion kconfig gpgme])
+
+    #APPIMAGE_KDEPKG([kleopatra], [gnupg gpgme breeze-icons kxmlgui libkleo kde-l10n kitemmodels qttranslations kdbusaddons])
+    APPIMAGE_KDEPKG([kleopatra], [gnupg gpgme breeze-icons kxmlgui libkleo kitemmodels qttranslations kdbusaddons])
+
+    APPIMAGE_FINALIZE
+fi
 
 # Throw an error if required tools are missing
 if test -n "$missing_tools"; then
@@ -368,6 +449,22 @@ rm $i"
     AC_MSG_ERROR([Packages with more that one source version:$tmp$tmp2])
 fi
 
+if test -n "$appimage_dup_sources"; then
+    tmp=
+    for i in $appimage_dup_sources; do
+      tmp="$tmp
+$i"
+    done
+    tmp2="
+You might remove them with:"
+    for i in $appimage_rm_candidates; do
+        if ! grep -q $(basename $i) packages/packages.current; then
+            tmp2="$tmp2
+rm $i"
+        fi
+    done
+    AC_MSG_ERROR([Packages with more that one source version:$tmp$tmp2])
+fi
 
 # Finalize.
 
@@ -379,6 +476,7 @@ AC_CONFIG_FILES(doc/Makefile)
 AC_CONFIG_FILES(doc/logo/Makefile)
 AC_CONFIG_FILES(doc/manual/Makefile doc/manual/version.tex)
 AC_CONFIG_FILES(src/toolchain.cmake)
+AC_CONFIG_FILES(src/appimage/Makefile src/appimage/appimage.mk)
 AC_OUTPUT
 
 # Throw a warning if optional tools are missing

@@ -16,7 +16,6 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, see <http://www.gnu.org/licenses/>.
 
-
 EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
 	config.site config.nsi.in \
         libiconv.def libintl.def loreley.mid \
@@ -97,6 +96,14 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
         slideshow/slide4-summary.png \
         file-ext.ico \
         kdeglobals qtlogging.ini
+
+if BUILD_APPIMAGE
+appimage = appimage
+else
+appimage =
+endif
+
+SUBDIRS = ${appimage}
 
 gpg4win_readme_ll = en de ar es fr ru pt zh
 
@@ -581,7 +588,9 @@ define INCLUDE_BY_MAKE
 include $(1)
 endef
 
+if BUILD_GPG4WIN
 $(eval $(call INCLUDE_BY_MAKE,gpg4win.mk))
+endif
 
 clean-local: clean-gpg4win
 
@@ -790,7 +799,9 @@ mkportable.exe: mkportable.c \
 	$(CC) -O2 -o $@ $(srcdir)/mkportable.c
 	$(STRIP) $@
 
+if BUILD_GPG4WIN
 all_full = installers/gpg4win-$(VERSION).exe
+endif
 
 all-local: $(all_full) $(all_src)
 	@echo "###################################################"

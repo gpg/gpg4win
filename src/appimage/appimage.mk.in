@@ -1,0 +1,459 @@
+# appimage.m4.in - Makefile for building AppImage of Kleopatra. -*- makefile -*-
+# Copyright (C) 2005, 2009, 2021 g10 Code GmbH
+#
+# Software engineering by Ingo Klöcker <dev@ingo-kloecker.de>
+#
+# This file is part of Gpg4win.
+#
+# Gpg4win is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# Gpg4win is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, see <https://www.gnu.org/licenses/>.
+#
+# SPDX-License-Identifier: GPL-2.0+
+
+# No servicable parts below this line :)
+
+# These paths must be absolute, as we switch directories pretty often.
+logdir := $(root)/logs
+bdir := $(root)/build
+appdir := $(root)/AppDir
+idir := $(appdir)/usr
+ipdir := $(root)/install/pkgs
+tsdir := $(shell pwd)/${top_srcdir}
+pdir := $(shell pwd)/${top_srcdir}/patches-appimage
+
+# We collect the names of all pkg files used.
+pkg_files =
+
+# The build area is our scratch area, where we unpack, build and
+# install the packages.
+$(stampdir)/stamp-directories:
+	$(MKDIR) -p $(root)
+	$(MKDIR) -p $(stampdir)
+	$(MKDIR) -p $(logdir)
+	$(MKDIR) -p $(bdir)
+	$(MKDIR) -p $(idir)
+	$(MKDIR) -p $(ipdir)
+	touch $(bdir)/versioninfo.txt
+	touch $(stampdir)/stamp-directories
+
+# Frob the name $1 by converting all '-' and '+' characters to '_'.
+define FROB_macro
+$(subst +,_,$(subst -,_,$(1)))
+endef
+
+# Get the variable $(1) (which may contain '-' and '+' characters).
+define GETVAR
+$($(call FROB_macro,$(1)))
+endef
+
+# Set a couple of common variables.
+define SETVARS
+	set -e; \
+	pkg="$(call GETVAR,appimage_pkg_$(1))";				\
+	pkg_version="$(1)-$(call GETVAR,appimage_pkg_$(1)_version)";	\
+	pkglogdir="$(logdir)/$$$${pkg_version}";				\
+	pkgsdir="$(bdir)/$$$${pkg_version}";				\
+	pkgbdir="$(bdir)/$$$${pkg_version}-build";			\
+	pkgpdir="$(pdir)/$$$${pkg_version}";				\
+	pkgpbdir="$(pdir)/$(1)";	          			\
+	pkgidir="$(ipdir)/$$$${pkg_version}";				\
+	pkginstallroot="/tmp/$$$${pkg_version}";			\
+	pkgbladir="/tmp/$$$${pkg_version}/$(idir)";			\
+	pkg_dev="$(call GETVAR,appimage_pkg_$(1)_dev)";			\
+	pkg_version_dev="$(1)-dev-$(call GETVAR,appimage_pkg_$(1)_version)"; \
+	pkgidir_dev="$(ipdir)/$$$${pkg_version_dev}";			\
+	pkgcfg="$(call GETVAR,appimage_pkg_$(1)_configure)";		\
+	pkgextracflags="$(call GETVAR,appimage_pkg_$(1)_extracflags)";	\
+	pkgmkargs="$(call GETVAR,appimage_pkg_$(1)_make_args)";          \
+	pkgmkargs_inst="$(call GETVAR,appimage_pkg_$(1)_make_args_inst)";\
+	pkgmkdir="$(call GETVAR,appimage_pkg_$(1)_make_dir)";             \
+	pkgmkdir_inst="$(call GETVAR,appimage_pkg_$(1)_make_dir)"; \
+	export PKG_CONFIG_PATH="$(idir)/lib/pkgconfig";			\
+	export PATH="$(idir)/bin:$${PATH}"
+endef
+
+# Support macro.  Unpack the archive $(1).
+define DEFLATE_macro
+	rm -rf $$$${pkgsdir}; \
+	case "$(1)" in			\
+          */qtbase*.*.tar.xz)          \
+            $(TAR) -xJ --transform='s,^qtbase-everywhere-src,qtbase,' -f "$(1)" ;; \
+          */qttools*.*.tar.xz)          \
+            $(TAR) -xJ --transform='s,^qttools-everywhere-src,qttools,' -f "$(1)" ;; \
+          */qtx11extras*.*.tar.xz)          \
+            $(TAR) -xJ --transform='s,^qtx11extras-everywhere-src,qtx11extras,' -f "$(1)" ;; \
+          */qtwayland*.*.tar.xz)          \
+            $(TAR) -xJ --transform='s,^qtwayland-everywhere-src,qtwayland,' -f "$(1)" ;; \
+          */qtsvg*.*.tar.xz)          \
+            $(TAR) -xJ --transform='s,^qtsvg-everywhere-src,qtsvg,' -f "$(1)" ;; \
+          */qttranslations*.*.tar.xz)          \
+            $(TAR) -xJ --transform='s,^qttranslations-everywhere-src,qttranslations,' -f "$(1)" ;; \
+          */sqlite*.*.tar.gz)          \
+            $(TAR) -xz --transform='s,^sqlite-autoconf-3270200,sqlite-3.27.2,' -f "$(1)" ;; \
+	  *.tar.gz | *.tgz)		\
+	    $(TAR) xzf "$(1)" ;;	\
+	  *.tar.bz2 | *.tbz2 | *.tbz)	\
+	    $(TAR) xjf "$(1)" ;;	\
+	  *.tar.xz )          		\
+	    $(TAR) xJf "$(1)" ;;	\
+	  *.exe ) 	         		\
+	    cp "$(1)" .       ;;	\
+	  *.zip)			\
+	    $(UNZIP) -o "$(1)" ;;		\
+	esac
+endef
+
+# Support macro.  Strip all exe files below $(1).
+define STRIP_macro
+	if test -z '$(DEBUG)'; then			\
+	  (cd $(1);					\
+	   for f in `find . -name \*.exe -o -name \*.dll`; do		\
+	   echo Calling $(STRIP) "$$$${pkg_version}/$$$${f}"; \
+	   $(STRIP) "$$$${f}"; done);			\
+	fi
+endef
+
+define GETDEPS
+  $(addprefix $(stampdir)/stamp-final-, $(call GETVAR,appimage_pkg_$(1)_deps))
+endef
+
+
+# Template for source packages.
+
+define SPKG_template_
+
+pkg_files += $(call GETVAR,appimage_pkg_$(1))
+
+$(stampdir)/stamp-$(1)-00-unpack: $(stampdir)/stamp-directories $(call GETDEPS,$(1))
+	(cd $(bdir);					\
+	 $(call SETVARS,$(1));				\
+	 $(call DEFLATE_macro,$$$${pkg}))
+	touch $(stampdir)/stamp-$(1)-00-unpack
+
+$(stampdir)/stamp-$(1)-01-patch: $(stampdir)/stamp-$(1)-00-unpack
+	(shopt -s nullglob;				\
+	 $(call SETVARS,$(1));				\
+	 for pfile in "$$$${pkgpbdir}"/*.patch "$$$${pkgpdir}"/*.patch ; do  \
+	   (cd "$$$${pkgsdir}"; chmod +x "$$$${pfile}"; "$$$${pfile}")		\
+	 done)
+	touch $(stampdir)/stamp-$(1)-01-patch
+
+$(stampdir)/stamp-$(1)-02-configure: $(stampdir)/stamp-$(1)-01-patch
+	($(call SETVARS,$(1)); \
+	set -x; \
+	mkdir -p "$$$${pkglogdir}"; \
+	mkdir -p "$$$${pkgbdir}"; \
+	cd "$$$${pkgbdir}"; \
+	eval "../$$$${pkg_version}/configure" \
+		--prefix="$$$${pkgidir}" \
+		$$$${pkgcfg} \
+		CFLAGS=\"-mms-bitfields $$$${pkgextracflags}\" | \
+		tee "$$$${pkglogdir}/configure.log"; \
+	shopt -s nullglob; \
+	for pfile in "$$$${pkgpbdir}"/*.postcfg \
+				"$$$${pkgpdir}"/*.postcfg ; do \
+			(cd "$$$${pkgsdir}"; "$$$${pfile}") \
+		done; \
+	for pfile in "$$$${pkgpbdir}"/*.postcfg-build \
+				 "$$$${pkgpdir}"/*.postcfg-build ; do \
+				(cd "$$$${pkgbdir}"; "$$$${pfile}") \
+	done;) && \
+	touch $(stampdir)/stamp-$(1)-02-configure
+
+$(stampdir)/stamp-$(1)-03-make: $(stampdir)/stamp-$(1)-02-configure
+	($(call SETVARS,$(1));				\
+	  cd "$$$${pkgbdir}";				\
+	  test -n "$$$${pkgmkdir}" && cd "$$$${pkgmkdir}";	\
+	  $(MAKE) $(AM_MAKEFLAGS) $(GPG4WIN_PARALLEL) $$$${pkgmkargs})
+	touch $(stampdir)/stamp-$(1)-03-make
+
+# Note that post_install must come last because it may be empty and
+# "; ;" is a syntax error.
+$(stampdir)/stamp-$(1)-04-install: $(stampdir)/stamp-$(1)-03-make
+	($(call SETVARS,$(1));				\
+	  cd "$$$${pkgbdir}";				\
+	  cd "$$$${pkgmkdir_inst}";			\
+	  $(MAKE) $(AM_MAKEFLAGS) $$$${pkgmkargs_inst} install; \
+	  $(call STRIP_macro,"$$$${pkgidir}");		\
+	  rm -f "$$$${pkgidir}/share/info/dir";		\
+	  $(call appimage_pkg_$(call FROB_macro,$(1))_post_install))
+	touch $(stampdir)/stamp-$(1)-04-install
+
+$(stampdir)/stamp-$(1)-05-rsync: $(stampdir)/stamp-$(1)-04-install
+	($(call SETVARS,$(1));				\
+	 set -x;					\
+	 $(RSYNC) -a --link-dest="$$$${pkgidir}/" "$$$${pkgidir}/" "$(idir)/" )
+	touch $(stampdir)/stamp-$(1)-05-rsync
+
+$(stampdir)/stamp-final-$(1): $(stampdir)/stamp-$(1)-05-rsync
+	touch $(stampdir)/stamp-final-$(1)
+
+.PHONY : clean-$(1)
+clean-$(1):
+	($(call SETVARS,$(1));				\
+	 (cd $(ipdir) &&				\
+	  (rm -fR "$$$${pkg_version}"));		\
+	 rm -fR "$$$${pkgsdir}" "$$$${pkgbdir}")
+	rm -f $(stampdir)/stamp-final-$(1) $(stampdir)/stamp-$(1)-*
+
+endef
+
+define SPKG_template
+$(if $(filter-out no, $(call GETVAR,appimage_pkg_$(1))),
+  $(call SPKG_template_,$1))
+endef
+
+
+# Template for binary packages.
+
+define BPKG_template_
+
+pkg_files += $(call GETVAR,appimage_pkg_$(1))
+pkg_files += $(call GETVAR,appimage_pkg_$(1)_dev)
+
+$(stampdir)/stamp-$(1)-00-install: $(stampdir)/stamp-directories $(call GETDEPS,$(1))
+	($(call SETVARS,$(1));				\
+	 $(MKDIR) "$$$${pkgidir}";			\
+	 cd $$$${pkgidir};				\
+	 $(call DEFLATE_macro,$$$${pkg}))
+	touch $(stampdir)/stamp-$(1)-00-install
+
+# Note that post_install must come last because it may be empty and
+# "; ;" is a syntax error.
+$(stampdir)/stamp-$(1)-01-install-dev: $(stampdir)/stamp-$(1)-00-install
+	($(call SETVARS,$(1));				\
+	 $(MKDIR) "$$$${pkgidir_dev}";			\
+	 (cd $$$${pkgidir_dev};				\
+	  $(call DEFLATE_macro,$$$${pkg_dev}));		\
+	 $(call appimage_pkg_$(call FROB_macro,$(1))_post_install))
+	touch $(stampdir)/stamp-$(1)-01-install-dev
+
+$(stampdir)/stamp-$(1)-02-stow: $(stampdir)/stamp-$(1)-01-install-dev
+	($(call SETVARS,$(1));				\
+	 cd $(ipdir);					\
+	 $(STOW) "$$$${pkg_version}")
+	touch $(stampdir)/stamp-$(1)-02-stow
+
+$(stampdir)/stamp-$(1)-03-stow-dev: $(stampdir)/stamp-$(1)-02-stow
+	($(call SETVARS,$(1));				\
+	 cd $(ipdir);					\
+	 $(STOW) "$$$${pkg_version_dev}")
+	touch $(stampdir)/stamp-$(1)-03-stow-dev
+
+$(stampdir)/stamp-final-$(1): $(stampdir)/stamp-$(1)-03-stow-dev
+	touch $(stampdir)/stamp-final-$(1)
+
+.PHONY : clean-$(1)
+clean-$(1):
+	($(call SETVARS,$(1));				\
+	 cd $(ipdir) &&					\
+	 ($(STOW) -D "$$$${pkg_version}" || true;	\
+	  $(STOW) -D "$$$${pkg_version_dev}" || true;	\
+	  rm -fR "$$$${pkg_version}" "$$$${pkg_version_dev}"))
+	rm -f $(stampdir)/stamp-final-$(1) $(stampdir)/stamp-$(1)-*
+
+endef
+
+define BPKG_template
+$(if $(filter-out no, $(call GETVAR,appimage_pkg_$(1))),
+  $(call BPKG_template_,$1))
+endef
+
+
+# Template for Qt packages.
+
+define QTPKG_template_
+
+pkg_files += $(call GETVAR,appimage_pkg_$(1))
+
+$(stampdir)/stamp-$(1)-00-unpack: $(stampdir)/stamp-directories $(call GETDEPS,$(1))
+	(cd $(bdir);					\
+	 $(call SETVARS,$(1));				\
+	 $(call DEFLATE_macro,$$$${pkg}))
+	touch $(stampdir)/stamp-$(1)-00-unpack
+
+$(stampdir)/stamp-$(1)-01-patch: $(stampdir)/stamp-$(1)-00-unpack
+	(shopt -s nullglob;				\
+	 $(call SETVARS,$(1));				\
+	 for pfile in "$$$${pkgpbdir}"/*.patch "$$$${pkgpdir}"/*.patch ; do  \
+	   (cd "$$$${pkgsdir}"; chmod +x "$$$${pfile}"; "$$$${pfile}")		\
+	 done)
+	touch $(stampdir)/stamp-$(1)-01-patch
+
+$(stampdir)/stamp-$(1)-02-configure: $(stampdir)/stamp-$(1)-01-patch
+	($(call SETVARS,$(1)); \
+	set -x; \
+	mkdir -p "$$$${pkglogdir}"; \
+	mkdir -p "$$$${pkgbdir}"; \
+	cd "$$$${pkgbdir}"; \
+	$$$${pkgcfg} | \
+		tee "$$$${pkglogdir}/configure.log") && \
+	touch $(stampdir)/stamp-$(1)-02-configure
+
+$(stampdir)/stamp-$(1)-03-make: $(stampdir)/stamp-$(1)-02-configure
+	($(call SETVARS,$(1));				\
+	  cd "$$$${pkgbdir}";				\
+	  test -n "$$$${pkgmkdir}" && cd "$$$${pkgmkdir}";	\
+	  export LD_LIBRARY_PATH=$(idir)/lib; \
+	  $(MAKE) $(AM_MAKEFLAGS) $(GPG4WIN_PARALLEL) $$$${pkgmkargs})
+	touch $(stampdir)/stamp-$(1)-03-make
+
+# Note that post_install must come last because it may be empty and
+# "; ;" is a syntax error.
+$(stampdir)/stamp-$(1)-04-install: $(stampdir)/stamp-$(1)-03-make
+	($(call SETVARS,$(1)); \
+	set -x; \
+	$(call appimage_pkg_$(call FROB_macro,$(1))_post_install))
+	touch $(stampdir)/stamp-$(1)-04-install
+
+$(stampdir)/stamp-$(1)-05-rsync: $(stampdir)/stamp-$(1)-04-install
+	($(call SETVARS,$(1));				\
+	 set -x;					\
+	 $(RSYNC) -a --link-dest="$$$${pkgidir}/" "$$$${pkgidir}/" "$(idir)/" )
+	touch $(stampdir)/stamp-$(1)-05-rsync
+
+$(stampdir)/stamp-final-$(1): $(stampdir)/stamp-$(1)-05-rsync
+	touch $(stampdir)/stamp-final-$(1)
+
+.PHONY : clean-$(1)
+clean-$(1):
+	($(call SETVARS,$(1));				\
+	 (cd $(ipdir) &&				\
+	  (rm -fR "$$$${pkg_version}"));		\
+	 rm -fR "$$$${pkgsdir}" "$$$${pkgbdir}")
+	rm -f $(stampdir)/stamp-final-$(1) $(stampdir)/stamp-$(1)-*
+
+endef
+
+define QTPKG_template
+$(if $(filter-out no, $(call GETVAR,appimage_pkg_$(1))),
+  $(call QTPKG_template_,$1))
+endef
+
+
+# Template for KDE packages.
+define KDEPKG_template_
+
+pkg_files += $(call GETVAR,appimage_pkg_$(1))
+
+$(stampdir)/stamp-$(1)-00-unpack: $(stampdir)/stamp-directories $(call GETDEPS,$(1))
+	(cd $(bdir);					\
+	 $(call SETVARS,$(1));				\
+	 $(call DEFLATE_macro,$$$${pkg}))
+	touch $(stampdir)/stamp-$(1)-00-unpack
+
+$(stampdir)/stamp-$(1)-01-patch: $(stampdir)/stamp-$(1)-00-unpack
+	(shopt -s nullglob;				\
+	 $(call SETVARS,$(1));				\
+	 cd "$$$${pkgsdir}";				\
+	 sed -i 's/set(KF5_MIN_VERSION.*)/set(KF5_MIN_VERSION "5.77.0")/' CMakeLists.txt; \
+	 sed -i 's/set(KF5_VERSION.*)/set(KF5_VERSION "5.77.0")/' CMakeLists.txt; \
+	 sed -i 's/set(KMIME_VERSION.*)/set(KMIME_VERSION "5.2.40")/' CMakeLists.txt; \
+	 sed -i 's/set(LIBKLEO_VERSION.*)/set(LIBKLEO_VERSION "5.4.40")/' CMakeLists.txt; \
+	 sed -i 's/set(QT_REQUIRED_VERSION.*)/set(QT_REQUIRED_VERSION "5.15.0")/' CMakeLists.txt; \
+	 for pfile in "$$$${pkgpbdir}"/*.patch "$$$${pkgpdir}"/*.patch ; do  \
+	   (cd "$$$${pkgsdir}"; chmod +x "$$$${pfile}"; "$$$${pfile}")		\
+	 done)
+	touch $(stampdir)/stamp-$(1)-01-patch
+
+$(stampdir)/stamp-$(1)-02-configure: $(stampdir)/stamp-$(1)-01-patch
+	(set -x;						\
+	 $(call SETVARS,$(1));				\
+	 mkdir -p "$$$${pkglogdir}"; \
+	 mkdir -p "$$$${pkgbdir}";				\
+	 cd "$$$${pkgbdir}";				\
+	 $(CMAKE) 		\
+		-DCMAKE_INSTALL_PREFIX="$$$${pkgidir}" \
+		-DCMAKE_PREFIX_PATH="$$$${pkgidir}" \
+		-DKDE_INSTALL_DATADIR="$$$${pkgidir}/share" \
+		-DBUILD_TESTING=False \
+		$$$${pkgcfg} $$$${pkgextracflags} "../$$$${pkg_version}" | \
+		tee "$$$${pkglogdir}/configure.log") && \
+	touch $(stampdir)/stamp-$(1)-02-configure
+
+$(stampdir)/stamp-$(1)-03-make: $(stampdir)/stamp-$(1)-02-configure
+	($(call SETVARS,$(1));				\
+	  cd "$$$${pkgbdir}";				\
+	  test -n "$$$${pkgmkdir}" && cd "$$$${pkgmkdir}";	\
+	  export LD_LIBRARY_PATH=$(idir)/lib; \
+	  $(MAKE) $(AM_MAKEFLAGS) $(GPG4WIN_PARALLEL) $$$${pkgmkargs})
+	touch $(stampdir)/stamp-$(1)-03-make
+
+# Note that post_install must come last because it may be empty and
+# "; ;" is a syntax error.
+$(stampdir)/stamp-$(1)-04-install: $(stampdir)/stamp-$(1)-03-make
+	($(call SETVARS,$(1));				\
+	  cd "$$$${pkgbdir}";				\
+	  cd "$$$${pkgmkdir_inst}";			\
+	  $(MAKE) $(AM_MAKEFLAGS) $$$${pkgmkargs_inst} install; \
+	  $(call STRIP_macro,"$$$${pkgidir}");		\
+	  $(call appimage_pkg_$(call FROB_macro,$(1))_post_install))
+	touch $(stampdir)/stamp-$(1)-04-install
+
+$(stampdir)/stamp-$(1)-05-rsync: $(stampdir)/stamp-$(1)-04-install
+	($(call SETVARS,$(1));				\
+	 set -x;					\
+	 $(RSYNC) -a --link-dest="$$$${pkgidir}/" "$$$${pkgidir}/" "$(idir)/" )
+	touch $(stampdir)/stamp-$(1)-05-rsync
+
+$(stampdir)/stamp-final-$(1): $(stampdir)/stamp-$(1)-05-rsync
+	touch $(stampdir)/stamp-final-$(1)
+
+.PHONY : clean-$(1)
+clean-$(1):
+	($(call SETVARS,$(1));				\
+	 (cd $(ipdir) &&				\
+	  (rm -fR "$$$${pkg_version}"));		\
+	 rm -fR "$$$${pkgsdir}" "$$$${pkgbdir}")
+	rm -f $(stampdir)/stamp-final-$(1) $(stampdir)/stamp-$(1)-*
+
+endef
+
+define KDEPKG_template
+$(if $(filter-out no, $(call GETVAR,appimage_pkg_$(1))),
+  $(call KDEPKG_template_,$1))
+endef
+
+# Insert the template for each source package.
+$(foreach spkg, $(appimage_spkgs), $(eval $(call SPKG_template,$(spkg))))
+
+# Insert the template for each binary package.
+$(foreach bpkg, $(appimage_bpkgs), $(eval $(call BPKG_template,$(bpkg))))
+
+# Insert the template for Qt packages.
+$(foreach qtpkg, $(appimage_qtpkgs), $(eval $(call QTPKG_template,$(qtpkg))))
+
+# Insert the template for KDE packages.
+$(foreach kdepkg, $(appimage_kdepkgs), $(eval $(call KDEPKG_template,$(kdepkg))))
+
+$(stampdir)/stamp-final: $(stampdir)/stamp-directories
+$(stampdir)/stamp-final: $(addprefix $(stampdir)/stamp-final-,$(appimage_build_list))
+	touch $(stampdir)/stamp-final
+
+$(bdir)/versioninfo.txt: $(stampdir)/stamp-final
+	touch $(bdir)/versioninfo.txt
+
+all-appimage: $(stampdir)/stamp-final
+
+# Just to check if we catched all stamps.
+clean-stamps:
+	$(RM) -fR $(stampdir)
+
+clean-appimage:
+	$(RM) -fR $(root) $(stampdir) $(logdir) $(appdir)
+
+.PHONY : all-appimage clean-stamps clean-appimage
+
+# @emacs_local_vars_begin@
+# @emacs_local_vars_read_only@
+# @emacs_local_vars_end@
