@@ -203,7 +203,7 @@ while read key value ; do
            exit 1
        fi
        [ $quiet = no ] && echo -n "checking    \`$name' ..."
-       if echo "$value *$name" | sha256sum -c >/dev/null 2>&1 ; then
+       if echo "$value *$name" | sha256sum -c --status ; then
            [ $quiet = no ] && echo " okay"
        else
            [ $quiet = no ] && echo " FAILED (line $lnr)"
