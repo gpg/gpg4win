@@ -39,6 +39,11 @@ SUBDIRS = ${po} packages ${doc} src
 EXTRA_DIST = autogen.sh README.GIT ONEWS \
              doc/license-page doc/GPLv3 \
              build-aux/git-log-footer build-aux/git-log-fix \
+             docker/appimage/AppRun \
+             docker/appimage/build-appimage.sh \
+             docker/appimage/Dockerfile \
+             docker/build-appimage-docker-image.sh \
+             docker/run-appimage-build.sh \
              patches/boost/boost-1-fixes.patch \
              patches/breeze-icons/0001-Make-binary-icons-cross-compilable.patch \
              patches/extra-cmake-modules/0001-Use-BIN_INSTALL_DIR-data-for-DATAROOTDIR-on-Windows.patch \

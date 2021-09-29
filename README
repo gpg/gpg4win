@@ -32,6 +32,22 @@ The installer will be made available under src/installers:
 src/installers/gpg4win-X.Y.Z.exe
 
 
+Instructions for AppImage:
+==========================
+
+1. (Only necessary when building from Git)
+
+   $ ./autogen.sh
+
+2. Build the Docker image that will be used for creating the AppImage:
+
+   $ docker/build-appimage-docker-image.sh
+
+3. Build the AppImage using the Docker image:
+
+   $ docker/run-appimage-build.sh
+
+
 Basic requirements
 ==================
 
