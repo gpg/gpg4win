@@ -231,6 +231,19 @@ chk  1dddde1400c3bcb7749d398071af88c3e4754058d2d4c0b3696c2f82dc5cf11c
 
 
 #
+# SQLite
+#
+server https://www.sqlite.org
+
+# last changed: 2021-09-20
+# by: ik
+# verified: SHA1 checksum on https://web.archive.org/web/20190228201545/https://www.sqlite.org/download.html
+name sqlite-3.27.2.tar.gz
+file 2019/sqlite-autoconf-3270200.tar.gz
+chk  50c39e85ea28b5ecfdb3f9e860afe9ba606381e21836b2849efca6a0bfe6ef6e
+
+
+#
 # Pth emulation
 #
 
@@ -271,6 +284,30 @@ chk fc07e70f6c615f8c4f590a8e37a9b8dd2e2ca1e9408f8e60459c67452b925e23
 file libassuan/libassuan-2.5.5.tar.bz2
 chk  8e8c2fcc982f9ca67dcbb1d95e2dc746b1739a4668bc20b3a3c5be632edb34e4
 
+# last changed 2021-09-20
+# by ik
+# verified: distsigkey.gpg
+file npth/npth-1.6.tar.bz2
+chk 1393abd9adcf0762d34798dc34fdcf4d0d22a8410721e76f1e3afcd1daa4e2d1
+
+# last changed 2021-09-20
+# by ik
+# verified: distsigkey.gpg
+file libgcrypt/libgcrypt-1.9.4.tar.bz2
+chk ea849c83a72454e3ed4267697e8ca03390aee972ab421e7df69dfe42b65caaf7
+
+# last changed 2021-09-20
+# by ik
+# verified: distsigkey.gpg
+file libksba/libksba-1.6.0.tar.bz2
+chk dad683e6f2d915d880aa4bed5cea9a115690b8935b78a1bbe01669189307a48b
+
+# last changed: 2021-09-09
+# by: ik
+# verified: "Werner Koch (dist signing 2020)" (distsigkey.gpg)
+file gnupg/gnupg-2.3.2.tar.bz2
+chk  e1d953e0e296072fca284215103ef168885eaac596c4660c5039a36a83e3041b
+
 # last changed: 2020-11-17
 # by: ah
 # verified: distsigkey.gpg
@@ -295,11 +332,11 @@ chk  46f7bf49ac5445370012a3698e048cd994579981df28f80f8b8494cf45869e8d
 file pinentry/pinentry-1.2.0.tar.bz2
 chk  10072045a3e043d0581f91cd5676fcac7ffee957a16636adedaa4f583a616470
 
-# last changed: 2021-01-08
-# by: wk
-# verified: swdb.mac
-file gpgme/gpgme-1.15.1.tar.bz2
-chk  eebc3c1b27f1c8979896ff361ba9bb4778b508b2496c2fc10e3775a40b1de1ad
+# last changed 2021-09-20
+# by ik
+# verified: distsigkey.gpg
+file gpgme/gpgme-1.16.0.tar.bz2
+chk 6c8cc4aedb10d5d4c905894ba1d850544619ee765606ac43df7405865de29ed0
 
 # last changed: 2018-10-17
 # by: ah
@@ -381,6 +418,22 @@ chk ddbcb49aab3a2e3672582c6e2e7bec0058feff790f67472343c79e2895e0e437
 name qtwinextras-5.15.0.tar.xz
 file 5.15/5.15.0/submodules/qtwinextras-everywhere-src-5.15.0.tar.xz
 chk d77f2cb2ce83bdbfd0a970bc8d7d11c96b2df16befc257d6594f79dfd92abff0
+
+# Qt X11 extras
+# last changed: 2021-09-20
+# by: ik
+# verified: HTTPS https://download.qt.io/official_releases/qt/5.15/5.15.0/submodules/qtx11extras-everywhere-src-5.15.0.tar.xz.sha256
+name qtx11extras-5.15.0.tar.xz
+file 5.15/5.15.0/submodules/qtx11extras-everywhere-src-5.15.0.tar.xz
+chk c72b6c188284facddcf82835af048240e721dc8d6d9e8a7bd71d76fd876881a1
+
+# Qt WaylandClient
+# last changed: 2021-09-21
+# by: ik
+# verified: HTTPS https://download.qt.io/official_releases/qt/5.15/5.15.0/submodules/qtwayland-everywhere-src-5.15.0.tar.xz.sha256
+name qtwayland-5.15.0.tar.xz
+file 5.15/5.15.0/submodules/qtwayland-everywhere-src-5.15.0.tar.xz
+chk 084133e10bfbd32a28125639660c59975f23457bba6a79b30a25802cec76a9fb
 
 # Qt svg
 # last changed: 2020-07-22
@@ -471,6 +524,13 @@ chk c1b34aac21f6ab21e91e0e11f620949574678146f4407c853516c0f456e81fc4
 file 5.77/kconfigwidgets-5.77.0.tar.xz
 chk 5f4a6897ef58992d38e820e8b0112069aec2ef0e7b943eb14265482c4fb22cd1
 
+# kdbusaddons
+# last changed: 2021-09-23
+# by: ah
+# verified: PGP Signed by ./kde-release-key.gpg (created by gen-frameworks.sh)
+file 5.77/kdbusaddons-5.77.0.tar.xz
+chk f9c11ebd460ecc198d65b1c3e00dfd4121b6b2ac63dadb14189fee1f605d78bc
+
 # kxmlgui
 # last changed: 2021-01-06
 # by: ah
@@ -540,8 +600,25 @@ server https://download.kde.org/Attic/applications
 # verified: PGP Sig F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87
 file 19.08.3/src/kmime-19.08.3.tar.xz
 chk e659e1154fbc11db624f1b76bc1a8e5cf8c7f6731cef7b4ff6fad9ccf90580dd
+
+server https://download.kde.org/stable/release-service
+
+# libkleo
+# last changed: 2021-09-23
+# by: ik
+# verified: PGP Signed by ./kde-release-key.gpg (created by gen-kde-gears.sh)
+file 21.08.1/src/libkleo-21.08.1.tar.xz
+chk bf9ff39620e06303fba0d9bdf77c4dce19d52a1bcbf48bb014dc021c325336d8
+
+# kleopatra
+# last changed: 2021-09-23
+# by: ik
+# verified: PGP Signed by ./kde-release-key.gpg (created by gen-kde-gears.sh)
+file 21.08.1/src/kleopatra-21.08.1.tar.xz
+chk fd5747063654ef5a1a64f33e0344c0e5bacdfa2422c3ffa9155970b6236a32c8
+
 # Snapshots which contain unreleased fixes important for Gpg4win
-server http://files.intevation.de/projects/gpg4all
+server https://files.intevation.de/projects/gpg4all
 
 #by ah
 #file scute/scute-1.6.0-beta187.tar.bz2
@@ -552,15 +629,15 @@ server http://files.intevation.de/projects/gpg4all
 # chk c2091536687cd83569c9919d6d9fc8c3a53e74d8419320bcbb8b7dc36019c677
 
 # by: ah
-file gpgme/gpgme-1.16.1-beta14.tar.bz2
-chk 941118668e7ed7bb907c09f7f2b9d803162e1023db713bb306815fe5e8da1168
+#file gpgme/gpgme-1.16.1-beta14.tar.bz2
+#chk 941118668e7ed7bb907c09f7f2b9d803162e1023db713bb306815fe5e8da1168
 
 # Libkleo
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah.
-file libkleo/libkleo-202108261518.tar.gz
-chk aa5e5da428075f61a3bb62e8e0065efd8756cf535558c254d1de94e6efce1ff1
+#file libkleo/libkleo-202108261518.tar.gz
+#chk aa5e5da428075f61a3bb62e8e0065efd8756cf535558c254d1de94e6efce1ff1
 
 # KDE-L10n
 # last changed: see package date.
@@ -589,5 +666,5 @@ server ftp://ftp.gnupg.org/gcrypt/snapshots
 # last changed: 2021-10-09
 # by: wk
 # verified: Tarball created by wk.
-file kleopatra/kleopatra-202110091719.tar.xz
-chk ff519b18c76bf39b3c3a37e9027a2b3f87e37940e72e40e9d62736b6c2aa5438
+#file kleopatra/kleopatra-202110091719.tar.xz
+#chk ff519b18c76bf39b3c3a37e9027a2b3f87e37940e72e40e9d62736b6c2aa5438
