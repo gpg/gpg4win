@@ -1,0 +1,27 @@
+#! /usr/bin/env bash
+
+this_dir="$(readlink -f "$(dirname "$0")")"
+
+export PATH="${APPDIR}/usr/bin:${PATH}"
+
+"${this_dir}/usr/bin/kleopatra" "$@"
+
+dirmngr=$(gpgconf --list-components | grep ^dirmngr: | cut -d ':' -f 3)
+if ps -o exe -C dirmngr | grep -q "${dirmngr}"; then
+    echo Shutting down dirmngr
+    gpgconf --kill dirmngr
+fi
+
+scdaemon=$(gpgconf --list-components | grep ^scdaemon: | cut -d ':' -f 3)
+if ps -o exe -C scdaemon | grep -q "${scdaemon}"; then
+    echo Shutting down scdaemon
+    gpgconf --kill scdaemon
+fi
+
+agent=$(gpgconf --list-components | grep ^gpg-agent: | cut -d ':' -f 3)
+if ps -o exe -C gpg-agent | grep -q "${agent}"; then
+    echo Shutting down gpg-agent
+    gpgconf --kill all
+fi
+
+echo Goodbye!

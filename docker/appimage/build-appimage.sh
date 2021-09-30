@@ -50,9 +50,13 @@ export QMAKE=/build/AppDir/usr/bin/qmake
 mkdir -p /build/AppDir/usr/plugins/{printsupport,sqldrivers}
 
 cd /build
+# remove existing wrapped AppRun, that may be left over from a previous run of
+# linuxdeploy, to ensure that our custom AppRun is deployed
+rm -f /build/AppDir/AppRun.wrapped
 linuxdeploy --appdir /build/AppDir \
             --desktop-file /build/AppDir/usr/share/applications/org.kde.kleopatra.desktop \
             --icon-file /build/AppDir/usr/share/icons/hicolor/256x256/apps/kleopatra.png \
+            --custom-apprun /src/src/appimage/AppRun \
             --plugin qt \
             --output appimage \
     2>&1 | tee /build/logs/linuxdeploy-kleopatra.log
