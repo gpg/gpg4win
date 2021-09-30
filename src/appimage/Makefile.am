@@ -20,7 +20,7 @@
 #
 # SPDX-License-Identifier: GPL-2.0+
 
-#EXTRA_DIST =
+EXTRA_DIST = AppRun
 
 root := /build
 stampdir := $(root)/stamps
