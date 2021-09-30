@@ -251,13 +251,14 @@ chk  76cb742ae53cf54f2d42d258f6ba657d2b98c752d2c742b1e4f04b26a6baf0df
 #
 # GpgEX
 #
-server http://files.gpg4win.org/src
+#server http://files.gpg4win.org/src
+server ftp://ftp.gnupg.org/gcrypt
 
-# last-changed: 2021-01-26
+# last-changed: 2021-09-30
 # by: ah
-# verified: Sig 5B80 C575 4298 F0CB  55D8 ED6A BCEF 7E29 4B09 2E28
-file gpgex/gpgex-1.0.7.tar.bz2
-chk  ff6b9cce03d835bbf0fbfd5fbe986ed42813ababa4a98a791da8b57d745b5848
+# verified: Sig 6DAA6E64A76D2840571B4902528897B826403ADA
+file gpgex/gpgex-1.0.8.tar.bz2
+chk  dc044904e0d2dfe28ba1dca9a55b5b4abd306070b9f34e122493b332d15f8b14
 
 #
 # Pth emulation
@@ -597,5 +598,5 @@ chk 79ea82ede46bbd02f70a64e4f003c6279e98cf4ad1e302eca753087c42fccdf3
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah.
-file kleopatra/kleopatra-202109171155.tar.gz
-chk dabe75284fd5e8b1bf8233f73af8c13271b8b0f70b372a1f7744e047fbe1e949
+file kleopatra/kleopatra-202109301728.tar.gz
+chk 1bb11c10dab7abe8c7fc053d05dfabbaf9660e9ca9727b30775b83816e79c0e8
