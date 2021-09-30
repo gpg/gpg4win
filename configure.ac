@@ -229,7 +229,11 @@ fi
 AC_SUBST(kf5_host_tooling)
 
 # Additional runtime libraries from mingw.
-GPG4WIN_RUNTIME_LIBRARY(libgcc_s_sjlj-1)
+if test -f "/usr/lib/gcc/i686-w64-mingw32/10-win32/libgcc_s_dw2-1.dll"; then
+    GPG4WIN_RUNTIME_LIBRARY(libgcc_s_dw2-1)
+else
+    GPG4WIN_RUNTIME_LIBRARY(libgcc_s_sjlj-1)
+fi
 GPG4WIN_RUNTIME_LIBRARY(libstdc++-6)
 GPG4WIN_RUNTIME_LIBRARY(libwinpthread-1)
 
