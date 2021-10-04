@@ -26,10 +26,11 @@
 logdir := $(root)/logs
 bdir := $(root)/build
 appdir := $(root)/AppDir
-idir := $(appdir)/usr
+idir := $(root)/install
 ipdir := $(root)/install/pkgs
 tsdir := $(shell pwd)/${top_srcdir}
 pdir := $(shell pwd)/${top_srcdir}/patches-appimage
+rsyncfilterdir := $(tsdir)/src/appimage/rsync-filters
 
 # We collect the names of all pkg files used.
 pkg_files =
@@ -43,6 +44,7 @@ $(stampdir)/stamp-directories:
 	$(MKDIR) -p $(bdir)
 	$(MKDIR) -p $(idir)
 	$(MKDIR) -p $(ipdir)
+	$(MKDIR) -p $(appdir)/usr
 	touch $(bdir)/versioninfo.txt
 	touch $(stampdir)/stamp-directories
 
@@ -78,6 +80,7 @@ define SETVARS
 	pkgmkargs_inst="$(call GETVAR,appimage_pkg_$(1)_make_args_inst)";\
 	pkgmkdir="$(call GETVAR,appimage_pkg_$(1)_make_dir)";             \
 	pkgmkdir_inst="$(call GETVAR,appimage_pkg_$(1)_make_dir)"; \
+	pkgrsyncfilter="$(rsyncfilterdir)/$(1).rsync-filter"; \
 	export PKG_CONFIG_PATH="$(idir)/lib/pkgconfig";			\
 	export PATH="$(idir)/bin:$${PATH}"
 endef
@@ -195,7 +198,16 @@ $(stampdir)/stamp-$(1)-05-rsync: $(stampdir)/stamp-$(1)-04-install
 	 $(RSYNC) -a --link-dest="$$$${pkgidir}/" "$$$${pkgidir}/" "$(idir)/" )
 	touch $(stampdir)/stamp-$(1)-05-rsync
 
-$(stampdir)/stamp-final-$(1): $(stampdir)/stamp-$(1)-05-rsync
+$(stampdir)/stamp-$(1)-06-copy-to-appdir: $(stampdir)/stamp-$(1)-05-rsync
+	($(call SETVARS,$(1));				\
+	 set -x;					\
+	 if test -f "$$$${pkgrsyncfilter}"; then \
+	   cp "$$$${pkgrsyncfilter}" "$$$${pkgidir}/.rsync-filter"; \
+	   $(RSYNC) -av -FF --omit-dir-times --link-dest="$$$${pkgidir}/" "$$$${pkgidir}/" "$(appdir)/usr/"; \
+	 fi )
+	touch $(stampdir)/stamp-$(1)-06-copy-to-appdir
+
+$(stampdir)/stamp-final-$(1): $(stampdir)/stamp-$(1)-06-copy-to-appdir
 	touch $(stampdir)/stamp-final-$(1)
 
 .PHONY : clean-$(1)
@@ -322,7 +334,16 @@ $(stampdir)/stamp-$(1)-05-rsync: $(stampdir)/stamp-$(1)-04-install
 	 $(RSYNC) -a --link-dest="$$$${pkgidir}/" "$$$${pkgidir}/" "$(idir)/" )
 	touch $(stampdir)/stamp-$(1)-05-rsync
 
-$(stampdir)/stamp-final-$(1): $(stampdir)/stamp-$(1)-05-rsync
+$(stampdir)/stamp-$(1)-06-copy-to-appdir: $(stampdir)/stamp-$(1)-05-rsync
+	($(call SETVARS,$(1));				\
+	 set -x;					\
+	 if test -f "$$$${pkgrsyncfilter}"; then \
+	   cp "$$$${pkgrsyncfilter}" "$$$${pkgidir}/.rsync-filter"; \
+	   $(RSYNC) -av -FF --omit-dir-times --link-dest="$$$${pkgidir}/" "$$$${pkgidir}/" "$(appdir)/usr/"; \
+	 fi )
+	touch $(stampdir)/stamp-$(1)-06-copy-to-appdir
+
+$(stampdir)/stamp-final-$(1): $(stampdir)/stamp-$(1)-06-copy-to-appdir
 	touch $(stampdir)/stamp-final-$(1)
 
 .PHONY : clean-$(1)
@@ -406,7 +427,16 @@ $(stampdir)/stamp-$(1)-05-rsync: $(stampdir)/stamp-$(1)-04-install
 	 $(RSYNC) -a --link-dest="$$$${pkgidir}/" "$$$${pkgidir}/" "$(idir)/" )
 	touch $(stampdir)/stamp-$(1)-05-rsync
 
-$(stampdir)/stamp-final-$(1): $(stampdir)/stamp-$(1)-05-rsync
+$(stampdir)/stamp-$(1)-06-copy-to-appdir: $(stampdir)/stamp-$(1)-05-rsync
+	($(call SETVARS,$(1));				\
+	 set -x;					\
+	 if test -f "$$$${pkgrsyncfilter}"; then \
+	   cp "$$$${pkgrsyncfilter}" "$$$${pkgidir}/.rsync-filter"; \
+	   $(RSYNC) -av -FF --omit-dir-times --link-dest="$$$${pkgidir}/" "$$$${pkgidir}/" "$(appdir)/usr/"; \
+	 fi )
+	touch $(stampdir)/stamp-$(1)-06-copy-to-appdir
+
+$(stampdir)/stamp-final-$(1): $(stampdir)/stamp-$(1)-06-copy-to-appdir
 	touch $(stampdir)/stamp-final-$(1)
 
 .PHONY : clean-$(1)
@@ -450,7 +480,7 @@ clean-stamps:
 	$(RM) -fR $(stampdir)
 
 clean-appimage:
-	$(RM) -fR $(root) $(stampdir) $(logdir) $(appdir)
+	$(RM) -fR $(bdir) $(idir) $(stampdir) $(logdir) $(appdir)
 
 .PHONY : all-appimage clean-stamps clean-appimage
 

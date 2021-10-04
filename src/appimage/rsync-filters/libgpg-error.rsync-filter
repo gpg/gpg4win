@@ -1,0 +1,12 @@
+- /bin/
+- /include/
+
+# explicitly copy libgpg-error.so to AppDir because linuxdeploy blacklists it
++ /lib/
++ /lib/libgpg-error.so*
+- /lib/*
+
++ /share/
++ /share/locale/
++ /share/locale/**
+- /share/*

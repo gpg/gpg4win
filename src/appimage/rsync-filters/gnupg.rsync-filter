@@ -1,0 +1,10 @@
++ /bin/*
++ /libexec/*
+- /sbin/
+
++ /share/
++ /share/gnupg/
++ /share/gnupg/*
++ /share/locale/
++ /share/locale/**
+- /share/*

@@ -1,0 +1,5 @@
++ /etc/
+- /include/
+- /lib64/
+- /mkspecs/
++ /share/

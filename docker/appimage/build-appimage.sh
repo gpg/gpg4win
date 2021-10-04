@@ -37,22 +37,22 @@ make
 echo 'rootdir = $APPDIR/usr' >/build/AppDir/usr/bin/gpgconf.ctl
 
 export PATH=/opt/linuxdeploy/usr/bin:$PATH
-export LD_LIBRARY_PATH=/build/AppDir/usr/lib
+export LD_LIBRARY_PATH=/build/install/lib
 
 # tell the linuxdeploy qt-plugin where to find qmake
-export QMAKE=/build/AppDir/usr/bin/qmake
+export QMAKE=/build/install/bin/qmake
 
 # create plugin directories expected by linuxdeploy qt-plugin
 # workaround for
 # [qt/stdout] Deploy[qt/stderr] terminate called after throwing an instance of 'boost::filesystem::filesystem_error'
 # [qt/stderr]   what():  boost::filesystem::directory_iterator::construct: No such file or directory: "/build/AppDir/usr/plugins/printsupport"
 # ERROR: Failed to run plugin: qt (exit code: 6)
-mkdir -p /build/AppDir/usr/plugins/{printsupport,sqldrivers}
+mkdir -p /build/install/plugins/{printsupport,sqldrivers}
 
 cd /build
-# remove existing wrapped AppRun, that may be left over from a previous run of
+# remove existing AppRun and wrapped AppRun, that may be left over from a previous run of
 # linuxdeploy, to ensure that our custom AppRun is deployed
-rm -f /build/AppDir/AppRun.wrapped
+rm -f /build/AppDir/AppRun /build/AppDir/AppRun.wrapped
 linuxdeploy --appdir /build/AppDir \
             --desktop-file /build/AppDir/usr/share/applications/org.kde.kleopatra.desktop \
             --icon-file /build/AppDir/usr/share/icons/hicolor/256x256/apps/kleopatra.png \
