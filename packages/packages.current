@@ -610,9 +610,9 @@ chk  d68abe3c6f03b5934bee380b88c66bf27c23eed658c8a11fb57357bc85038a92
 file gpg4win-tools/gpg4win-tools-202104211124.tar.gz
 chk 79ea82ede46bbd02f70a64e4f003c6279e98cf4ad1e302eca753087c42fccdf3
 
-# Kleopatra
-# last changed: see package date.
-# by: ah
-# verified: Tarball created by ah.
-file kleopatra/kleopatra-202109301728.tar.gz
-chk 1bb11c10dab7abe8c7fc053d05dfabbaf9660e9ca9727b30775b83816e79c0e8
+# kleopatra
+# last changed: 2021-10-07
+# by: ik
+# verified: Tarball created by ik.
+file kleopatra/kleopatra-202110071517.tar.xz
+chk 056f87143ac78b3958dbbd3a42df670a7f92b54874353f396ac7af676b3edb28
