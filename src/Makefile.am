@@ -590,9 +590,10 @@ endef
 
 if BUILD_GPG4WIN
 $(eval $(call INCLUDE_BY_MAKE,gpg4win.mk))
+gpg4win_clean = clean-gpg4win
 endif
 
-clean-local: clean-gpg4win
+clean-local: $(gpg4win_clean)
 
 common_nsi = inst-sections.nsi installer.nsi installer-finish.nsi	\
   $(addsuffix .nsi,$(addprefix inst-,$(gpg4win_build_list)))		\
