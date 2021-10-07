@@ -133,6 +133,9 @@ define appimage_pkg_qttranslations_post_install
    cp -r $$$${pkgbdir}/translations $$$${pkgidir}/translations;)
 endef
 
+# do not create the huge icon resource files
+appimage_pkg_breeze_icons_configure = -DBINARY_ICONS_RESOURCE=OFF
+
 appimage_pkg_ki18n_configure = -DBUILD_WITH_QML=OFF
 
 appimage_pkg_libkleo_configure = \

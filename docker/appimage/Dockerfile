@@ -64,6 +64,7 @@ RUN yum -y install \
         git \
         gnutls-devel \
         gperf \
+        gtk-update-icon-cache \
         libXrender-devel \
         libicu-devel \
         libjpeg-devel \
@@ -75,6 +76,7 @@ RUN yum -y install \
         openssl11-devel \
         patch \
         pcre2-devel \
+        python36-lxml \
         readline-devel \
         stow \
         wayland-devel \
