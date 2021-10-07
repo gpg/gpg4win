@@ -128,9 +128,9 @@ appimage_pkg_qttranslations_configure = \
 	"$(idir)/bin/qmake" ../$$$${pkg_version}
 
 define appimage_pkg_qttranslations_post_install
- ( rm -rf $$$${pkgidir}/qttranslations; \
+ ( rm -rf $$$${pkgidir}/translations; \
    mkdir -p $$$${pkgidir}; \
-   cp -r $$$${pkgbdir}/translations $$$${pkgidir}/qttranslations;)
+   cp -r $$$${pkgbdir}/translations $$$${pkgidir}/translations;)
 endef
 
 appimage_pkg_ki18n_configure = -DBUILD_WITH_QML=OFF

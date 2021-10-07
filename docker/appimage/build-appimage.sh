@@ -59,6 +59,10 @@ cd /build
 # remove existing AppRun and wrapped AppRun, that may be left over from a previous run of
 # linuxdeploy, to ensure that our custom AppRun is deployed
 rm -f /build/AppDir/AppRun /build/AppDir/AppRun.wrapped
+# remove existing Qt translations; this prevents linuxdeploy from creating symlinks from
+# /build/AppDir/usr/share/locale/*/LC_MESSAGES/kfoo5_qt.qm to /build/AppDir/usr/translations/kfoo5_qt.qm
+# (note the missing language id in the symlinks) which obviously makes no sense
+rm -rf /build/AppDir/usr/translations
 linuxdeploy --appdir /build/AppDir \
             --desktop-file /build/AppDir/usr/share/applications/org.kde.kleopatra.desktop \
             --icon-file /build/AppDir/usr/share/icons/hicolor/256x256/apps/kleopatra.png \
