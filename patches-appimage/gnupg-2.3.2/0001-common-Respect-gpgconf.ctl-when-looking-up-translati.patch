@@ -1,0 +1,67 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From 8b001f5e35cc02bd2a5470dc0902855a4d409878 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
+Date: Wed, 6 Oct 2021 13:19:39 +0200
+Subject: [PATCH GnuPG] common: Respect gpgconf.ctl when looking up
+ translations
+
+* common/i18n.c (i18n_init): Use gnupg_localedir() instead of LOCALEDIR.
+(i18n_localegettext): Ditto.
+* tools/gpgconf-comp.c (my_dgettext): Ditto.
+--
+
+On Unix, gnupg_localedir() returns the locale directory relative to
+the root directory of the gnupg installation if specified in the
+gpgconf.ctl. Otherwise, it returns the built-in LOCALEDIR.
+
+GnuPG-bug-id: 5999
+---
+ common/i18n.c        | 6 +++---
+ tools/gpgconf-comp.c | 2 +-
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/common/i18n.c b/common/i18n.c
+index b5a286439..60362cebb 100644
+--- a/common/i18n.c
++++ b/common/i18n.c
+@@ -87,7 +87,7 @@ i18n_init (void)
+ #else
+ # ifdef ENABLE_NLS
+   setlocale (LC_ALL, "" );
+-  bindtextdomain (PACKAGE_GT, LOCALEDIR);
++  bindtextdomain (PACKAGE_GT, gnupg_localedir ());
+   textdomain (PACKAGE_GT);
+ # endif
+ #endif
+@@ -199,10 +199,10 @@ i18n_localegettext (const char *lc_messages, const char *string)
+   if (!setlocale (LC_MESSAGES, lc_messages))
+     goto leave;
+ 
+-  bindtextdomain (PACKAGE_GT, LOCALEDIR);
++  bindtextdomain (PACKAGE_GT, gnupg_localedir ());
+   result = gettext (string);
+   setlocale (LC_MESSAGES, saved);
+-  bindtextdomain (PACKAGE_GT, LOCALEDIR);
++  bindtextdomain (PACKAGE_GT, gnupg_localedir ());
+ 
+   /* Cache the result.  */
+   if (!mh)
+diff --git a/tools/gpgconf-comp.c b/tools/gpgconf-comp.c
+index d8e75739f..73921ddb2 100644
+--- a/tools/gpgconf-comp.c
++++ b/tools/gpgconf-comp.c
+@@ -1082,7 +1082,7 @@ my_dgettext (const char *domain, const char *msgid)
+           switched_codeset = 1;
+           bind_textdomain_codeset (PACKAGE_GT, "utf-8");
+ 
+-          bindtextdomain (DIRMNGR_NAME, LOCALEDIR);
++          bindtextdomain (DIRMNGR_NAME, gnupg_localedir ());
+           bind_textdomain_codeset (DIRMNGR_NAME, "utf-8");
+ 
+         }
+-- 
+2.33.0
+
