@@ -49,6 +49,12 @@ export QMAKE=/build/install/bin/qmake
 # ERROR: Failed to run plugin: qt (exit code: 6)
 mkdir -p /build/install/plugins/{printsupport,sqldrivers}
 
+# copy KDE plugins
+for d in iconengines kf5 pim; do
+    mkdir -p /build/AppDir/usr/plugins/${d}/
+    rsync -av --delete --omit-dir-times /build/install/lib64/plugins/${d}/ /build/AppDir/usr/plugins/${d}/
+done
+
 cd /build
 # remove existing AppRun and wrapped AppRun, that may be left over from a previous run of
 # linuxdeploy, to ensure that our custom AppRun is deployed
