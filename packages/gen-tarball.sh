@@ -41,8 +41,12 @@ case ${package} in
         package=$(basename ${repo})
         package=${package%.git}
         ;;
-    kleopatra)
-        repo=https://invent.kde.org/pim/kleopatra.git
+    gnupg | gpgme | libassuan | libgcrypt | libgpg-error | libksba | npth | pinentry | gpg4win-tools | scute)
+        repo=git://git.gnupg.org/${package}.git
+        ;;
+    k* | libk*)
+        # assume that package is provided by KDE
+        repo=https://invent.kde.org/pim/${package}.git
         ;;
     *)
         echo "Error: Unsupported package '${package}'"
