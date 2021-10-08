@@ -26,7 +26,10 @@
 set -e
 
 if [ -z "$1" ]; then
-    echo "Usage $0 package > snippet"
+    echo "Usage: $0 PACKAGE > snippet"
+    echo "where PACKAGE is either the name of a supported library or application, e.g. 'kleopatra',"
+    echo "or the path of a local Git repository, e.g. '~/src/kleopatra',"
+    echo "or the URL of a remote Git repository, e.g. 'https://invent.kde.org/pim/kleopatra.git'."
     exit 1
 fi
 
@@ -34,14 +37,15 @@ package=$1
 
 case ${package} in
     */*)
-        repo=${package}
-        package=$(basename ${package})
+        repo=${package%/}
+        package=$(basename ${repo})
+        package=${package%.git}
         ;;
     kleopatra)
         repo=https://invent.kde.org/pim/kleopatra.git
         ;;
     *)
-        echo "Unsupported package '${package}'"
+        echo "Error: Unsupported package '${package}'"
         exit 1
         ;;
 esac
