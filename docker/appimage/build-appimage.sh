@@ -59,10 +59,20 @@ cd /build
 # remove existing AppRun and wrapped AppRun, that may be left over from a previous run of
 # linuxdeploy, to ensure that our custom AppRun is deployed
 rm -f /build/AppDir/AppRun /build/AppDir/AppRun.wrapped
-# remove existing Qt translations; this prevents linuxdeploy from creating symlinks from
-# /build/AppDir/usr/share/locale/*/LC_MESSAGES/kfoo5_qt.qm to /build/AppDir/usr/translations/kfoo5_qt.qm
-# (note the missing language id in the symlinks) which obviously makes no sense
-rm -rf /build/AppDir/usr/translations
+# copy the translations of qtscript, qtmultimedia and qtxmlpatterns; we do not use those
+# Qt modules, but Kleopatra (via ki18n) loads the qt_ meta catalog which depends on
+# the catalogs of qtbase and the above three modules for most languages; loading the
+# Qt translations fails if any of those catalogs are missing; linuxdeploy automatically
+# includes the catalogs of the modules we use, but as we do not use the other three
+# we have to copy them ourselves
+# as a side effect linuxdeploy will create bogus symlinks from
+# /build/AppDir/usr/share/locale/*/LC_MESSAGES/kfoo5_qt.qm to
+# /build/AppDir/usr/translations/kfoo5_qt.qm
+# (note the missing language id in the symlinks) which obviously makes no sense;
+# luckily, this does not seem to cause problems
+rsync -av /build/install/translations/qtscript_* /build/AppDir/usr/translations/
+rsync -av /build/install/translations/qtmultimedia_* /build/AppDir/usr/translations/
+rsync -av /build/install/translations/qtxmlpatterns_*.qm /build/AppDir/usr/translations/
 linuxdeploy --appdir /build/AppDir \
             --desktop-file /build/AppDir/usr/share/applications/org.kde.kleopatra.desktop \
             --icon-file /build/AppDir/usr/share/icons/hicolor/256x256/apps/kleopatra.png \
