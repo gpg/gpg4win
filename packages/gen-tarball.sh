@@ -50,6 +50,18 @@ case ${package} in
         ;;
 esac
 
+case ${package} in
+    kleopatra)
+        pofiles="kleopatra.po kwatchgnupg.po"
+        ;;
+    libkleo)
+        pofiles="libkleopatra.po"
+        ;;
+    *)
+        echo "Warning: No known translations for package '${package}'"
+        ;;
+esac
+
 tmpdir=$(mktemp -d -t gen-tarball.XXXXXXXXXX)
 curdate=$(date +%Y-%m-%d)
 timestamp=$(date +%Y%m%d%H%M)
@@ -57,6 +69,30 @@ snapshotdir=${package}-${timestamp}
 tarball=${snapshotdir}.tar.xz
 
 git clone ${repo} ${tmpdir}/${snapshotdir}
+
+# fetch the translations
+if test -n "${pofiles}"; then
+    echo "Fetching languages ..."
+    languagesurl="https://websvn.kde.org/*checkout*/trunk/l10n-kf5/subdirs"
+    # we have to pretend to be a browser to be able to retrieve the file
+    languages=$(curl --silent --show-error --fail -H "User-Agent: Mozilla/5.0" "${languagesurl}" || true)
+    if test -z "${languages}"; then
+        echo "Warning: Downloading the list of languages from ${languagesurl} failed."
+    fi
+    echo "Fetching translations ..."
+    for lang in ${languages}; do
+        mkdir -p ${tmpdir}/${snapshotdir}/po/${lang}
+        for pofile in ${pofiles}; do
+            svn export --force \
+                "svn://anonsvn.kde.org/home/kde/trunk/l10n-kf5/${lang}/messages/${package}/${pofile}" \
+                "${tmpdir}/${snapshotdir}/po/${lang}/${pofile}" \
+            || echo "Info: $pofile not found in $lang"
+        done
+        # remove empty language folders
+        rmdir --ignore-fail-on-non-empty ${tmpdir}/${snapshotdir}/po/${lang}
+    done
+fi
+
 (cd ${tmpdir} && tar -cJ --exclude-vcs ${snapshotdir}) > ${tarball}
 
 checksum=$(sha256sum ${tarball} | cut -d ' ' -f 1)
