@@ -2,6 +2,39 @@
 #
 # The version number given below are for the standard installers as
 # distributed by www.gpg4win.org.
+
+Noteworthy changes in Version 3.1.19 (2021-10-09)
+-------------------------------------------------
+
+(en) Kleopatra: Ask GnuPG for the correct path for the uiserver socket
+     (T5619).
+
+(en) Kleopatra: Fix a problem with smartcard detection on startup.
+     (rKd2338373ab41)
+
+(en) Kleopatra: Enable the "create openpgp key from card" command only
+     for GnuPG >= 2.3.  (rK107abfdb1a41)
+
+(en) GnuPG: Updated to 2.2.32.  For details see:
+     https://lists.gnupg.org/pipermail/gnupg-announce/2021q4/000465.html
+
+~~~~~~~~~~~~~~~
+GnuPG:          2.2.32
+Kleopatra:      3.1.19
+GPA:            0.10.0
+GpgOL:          2.5.0
+GpgEX:          1.0.8
+Kompendium DE:  4.0.1
+Compendium EN:  3.0.0
+~~~~~~~~~~~~~~~
+
+
+Noteworthy changes in Version 3.1.18
+------------------------------------
+
+(en) [not released]
+
+
 Noteworthy changes in Version 3.1.17 (2021-09-17)
 ------------------------------------------------
 
