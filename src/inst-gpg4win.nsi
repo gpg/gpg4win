@@ -131,7 +131,7 @@ skip_uninst:
   # list symbol names.
   File /oname=libstdc++-6.dll     "${BUILD_DIR}/libstdc++-6.dll-x"
   File /oname=libgcc_s_sjlj-1.dll "${BUILD_DIR}/libgcc_s_sjlj-1.dll-x"
-  File /oname=libgcc_s_dw2-1.dll  "${BUILD_DIR}/libgcc_s_dw2-1.dll-x"
+  # File /oname=libgcc_s_dw2-1.dll  "${BUILD_DIR}/libgcc_s_dw2-1.dll-x"
   File /oname=libwinpthread-1.dll "${BUILD_DIR}/libwinpthread-1.dll-x"
 
 !endif
