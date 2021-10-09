@@ -17,6 +17,7 @@ doc/manual/version.tex
 src/config.nsi
 po/POTFILES
 po/*.nsi
+po/*.gmo
 po/gpg4win.pot
 po/remove-potcdate.sed
 po/stamp-po
@@ -33,6 +34,9 @@ src/mingwm10.dll
 /packages/packages.current.sig
 /src/playground
 /src/stamps
+
+src/installers
+src/signed_installers
 
 /doc/manual/gpg4win-compendium-de.aux
 /doc/manual/gpg4win-compendium-de.idx
