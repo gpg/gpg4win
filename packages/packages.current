@@ -301,24 +301,25 @@ chk fc07e70f6c615f8c4f590a8e37a9b8dd2e2ca1e9408f8e60459c67452b925e23
 file libassuan/libassuan-2.5.5.tar.bz2
 chk  8e8c2fcc982f9ca67dcbb1d95e2dc746b1739a4668bc20b3a3c5be632edb34e4
 
-# last changed: 2021-09-16
-# by: ah
-# verified: distsigkey.gpg
-name gnupg-w32-2.2.31-20210915-bin.exe
-file binary/gnupg-w32-2.2.31_20210915.exe
-chk  8dddf88026e7c9594c154ae249416697eb8f349a8ca107a1c6b36ececeb91e76
+# last changed: 2021-10-09
+# by: wk
+# verified: own signing key
+name gnupg-w32-2.2.32_20211006-bin.exe
+file binary/gnupg-w32-2.2.32_20211006.exe
+chk  7d14476aab7316486005164d283f26efa52dfa02afab425afd54544c90f2dff8
 
-name gnupg-w32-2.2.31-20210915-src.tar.xz
-file binary/gnupg-w32-2.2.31_20210915.tar.xz
-chk  e93f399ffb7b724460f2ead72fd07bc90867b2c2c9697f273de655e4ce85e450
+name gnupg-w32-2.2.32-20210915-src.tar.xz
+file binary/gnupg-w32-2.2.32_20211006.tar.xz
+chk  1e5aa7cbe989284d6ed7a2ba7f6a3f5e2eb6d9128b2356f2b44f0eadfe0a68a7
 
-name gnupg-msi-2.2.31-20210915-src.tar.xz
-file binary/gnupg-w32-2.2.31_20210915.tar.xz
-chk  e93f399ffb7b724460f2ead72fd07bc90867b2c2c9697f273de655e4ce85e450
+name gnupg-msi-2.2.32-20210915-src.tar.xz
+file binary/gnupg-w32-2.2.32_20211006.tar.xz
+chk  1e5aa7cbe989284d6ed7a2ba7f6a3f5e2eb6d9128b2356f2b44f0eadfe0a68a7
 
-name gnupg-msi-2.2.31-20210915-bin.wixlib
-file binary/gnupg-w32-2.2.31_20210915.wixlib
-chk  5e404d4442227fcc5ff5226414fc9b6afd3a97c298c802036b6d887a16184510
+name gnupg-msi-2.2.32-20210915-bin.wixlib
+file binary/gnupg-w32-2.2.32_20211006.wixlib
+chk  3eb3ecc68fdfea865112f5dc1b807323aa2d2911ac65abaaca38e476fa752af6
+
 
 # last changed: 2021-04-21
 # by: ah
