@@ -56,10 +56,10 @@ esac
 
 case ${package} in
     kleopatra)
-        pofiles="kleopatra.po kwatchgnupg.po"
+        # pofiles="kleopatra.po kwatchgnupg.po"
         ;;
     libkleo)
-        pofiles="libkleopatra.po"
+        #pofiles="libkleopatra.po"
         ;;
     *)
         echo "Warning: No known translations for package '${package}'"
@@ -104,8 +104,8 @@ checksum=$(sha256sum ${tarball} | cut -d ' ' -f 1)
 echo "------------------------------ >8 ------------------------------"
 echo "# ${package}"
 echo "# last changed: ${curdate}"
-echo "# by: ik"
-echo "# verified: Tarball created by ik."
+echo "# by: $USER"
+echo "# verified: Tarball created by $USER."
 echo "file ${package}/${tarball}"
 echo "chk ${checksum}"
 echo "------------------------------ >8 ------------------------------"
