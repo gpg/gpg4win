@@ -167,7 +167,7 @@ appimage_pkg_kleopatra_configure = \
     -DBOOST_INCLUDEDIR=/usr/include/boost169 \
     -DBOOST_LIBRARYDIR=/usr/lib64/boost169 \
     -DDISABLE_KWATCHGNUPG=ON \
-    -DRELEASE_SERVICE_VERSION=Gpg4win-$(VERSION)
+    -DRELEASE_SERVICE_VERSION=AppImage-$(VERSION)
 
 
 ########################################################################
