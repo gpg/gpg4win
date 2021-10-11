@@ -191,6 +191,6 @@ license.blurb: $(top_srcdir)/doc/license-page $(top_srcdir)/doc/GPLv3
 
 all-local: $(stampdir)/stamp-final
 	@echo "###################################################"
-	@echo " AppImage $(VERSION) successfully build!"
-	@echo " The AppImage can be found under src/installers"
+	@echo " AppDir prepared successfully for the AppImage!"
+	@echo " Now run linuxdeploy to create the AppImage."
 	@echo "###################################################"
