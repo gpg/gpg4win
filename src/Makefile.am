@@ -804,7 +804,7 @@ if BUILD_GPG4WIN
 all_full = installers/gpg4win-$(VERSION).exe
 endif
 
-all-local: $(all_full) $(all_src)
+all-local: $(all_full)
 	@echo "###################################################"
 	@echo " Gpg4win $(VERSION) successfully build!"
 	@echo " Installers can be found under src/installers"
