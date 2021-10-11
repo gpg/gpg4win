@@ -163,11 +163,6 @@ appimage_pkg_libkleo_configure = \
     -DBOOST_INCLUDEDIR=/usr/include/boost169 \
     -DBOOST_LIBRARYDIR=/usr/lib64/boost169
 
-gpg4win_pkg_kleopatra_configure = \
-    -DFORCE_DISABLE_KCMUTILS=ON \
-    -DDISABLE_KWATCHGNUPG=ON \
-    -DRELEASE_SERVICE_VERSION=Gpg4win-$(VERSION)
-
 appimage_pkg_kleopatra_configure = \
     -DBOOST_INCLUDEDIR=/usr/include/boost169 \
     -DBOOST_LIBRARYDIR=/usr/lib64/boost169 \
