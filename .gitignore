@@ -33,6 +33,7 @@ src/mingwm10.dll
 /packages/packages.current.sig
 /src/playground
 /src/stamps
+/src/appimage/appimage.mk
 
 /doc/manual/gpg4win-compendium-de.aux
 /doc/manual/gpg4win-compendium-de.idx
