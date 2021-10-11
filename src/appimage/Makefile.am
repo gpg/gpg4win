@@ -136,7 +136,28 @@ endef
 # do not create the huge icon resource files
 appimage_pkg_breeze_icons_configure = -DBINARY_ICONS_RESOURCE=OFF
 
+appimage_pkg_kcompletion_configure = \
+    -DBUILD_DESIGNERPLUGIN=OFF
+
+appimage_pkg_kconfigwidgets_configure = \
+    -DBUILD_DESIGNERPLUGIN=OFF
+
 appimage_pkg_ki18n_configure = -DBUILD_WITH_QML=OFF
+
+appimage_pkg_kiconthemes_configure = \
+    -DBUILD_DESIGNERPLUGIN=OFF
+
+appimage_pkg_kitemviews_configure = \
+    -DBUILD_DESIGNERPLUGIN=OFF
+
+appimage_pkg_kwidgetsaddons_configure = \
+    -DBUILD_DESIGNERPLUGIN=OFF
+
+# FIXME: Uses spaces in distribution text
+appimage_pkg_kxmlgui_configure = \
+    -DBUILD_DESIGNERPLUGIN=OFF \
+    -DFORCE_DISABLE_KGLOBALACCEL=ON \
+    -DXMLGUI_DISTRIBUTION_TEXT=g10_Code_GmbH_AppImage
 
 appimage_pkg_libkleo_configure = \
     -DBOOST_INCLUDEDIR=/usr/include/boost169 \
@@ -153,10 +174,6 @@ appimage_pkg_kleopatra_configure = \
     -DDISABLE_KWATCHGNUPG=ON \
     -DRELEASE_SERVICE_VERSION=Gpg4win-$(VERSION)
 
-# FIXME: Uses spaces in distribution text
-appimage_pkg_kxmlgui_configure = \
-    -DFORCE_DISABLE_KGLOBALACCEL=ON \
-    -DXMLGUI_DISTRIBUTION_TEXT=g10_Code_GmbH_AppImage
 
 ########################################################################
 
