@@ -73,6 +73,7 @@ RUN yum -y install \
         libinput-devel \
         libjpeg-devel \
         libpng-devel \
+        libusbx-devel \
         libxkbcommon-x11-devel \
         libzstd-devel \
         mesa-libEGL-devel \
