@@ -100,8 +100,8 @@ RUN yum -y install \
 # download the necessary linuxdeploy AppImages and extract them because we have no fuse in the container
 RUN mkdir -p /tmp/download \
     && cd /tmp/download \
-    && wget https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-x86_64.AppImage \
-    && wget https://github.com/linuxdeploy/linuxdeploy-plugin-qt/releases/download/continuous/linuxdeploy-plugin-qt-x86_64.AppImage \
+    && wget --no-verbose https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-x86_64.AppImage \
+    && wget --no-verbose https://github.com/linuxdeploy/linuxdeploy-plugin-qt/releases/download/continuous/linuxdeploy-plugin-qt-x86_64.AppImage \
     && chmod +x linuxdeploy-* \
     && cd /tmp \
     && download/linuxdeploy-plugin-qt-x86_64.AppImage --appimage-extract \
