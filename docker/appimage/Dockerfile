@@ -51,11 +51,13 @@ RUN yum -y install \
         bzip2 \
         bzip2-devel \
         cmake3 \
+        cups-devel \
         dbus-devel \
         devtoolset-7-binutils \
         devtoolset-7-gcc \
         devtoolset-7-gcc-c++ \
         devtoolset-7-make \
+        double-conversion-devel \
         egl-wayland-devel \
         file \
         fontconfig-devel \
@@ -65,13 +67,17 @@ RUN yum -y install \
         gnutls-devel \
         gperf \
         gtk-update-icon-cache \
+        harfbuzz-devel \
         libXrender-devel \
         libicu-devel \
+        libinput-devel \
         libjpeg-devel \
         libpng-devel \
         libxkbcommon-x11-devel \
+        libzstd-devel \
         mesa-libEGL-devel \
         mesa-libGL-devel \
+        mtdev-devel \
         openldap-devel \
         openssl11-devel \
         patch \
@@ -79,6 +85,7 @@ RUN yum -y install \
         python36-lxml \
         readline-devel \
         stow \
+        systemd-devel \
         wayland-devel \
         wget \
         which \

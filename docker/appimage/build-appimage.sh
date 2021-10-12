@@ -45,9 +45,9 @@ export QMAKE=/build/install/bin/qmake
 # create plugin directories expected by linuxdeploy qt-plugin
 # workaround for
 # [qt/stdout] Deploy[qt/stderr] terminate called after throwing an instance of 'boost::filesystem::filesystem_error'
-# [qt/stderr]   what():  boost::filesystem::directory_iterator::construct: No such file or directory: "/build/AppDir/usr/plugins/printsupport"
+# [qt/stderr]   what():  boost::filesystem::directory_iterator::construct: No such file or directory: "/build/AppDir/usr/plugins/sqldrivers"
 # ERROR: Failed to run plugin: qt (exit code: 6)
-mkdir -p /build/install/plugins/{printsupport,sqldrivers}
+mkdir -p /build/install/plugins/sqldrivers
 
 # copy KDE plugins
 for d in iconengines kf5 pim; do
