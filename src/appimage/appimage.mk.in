@@ -61,6 +61,7 @@ endef
 # Set a couple of common variables.
 define SETVARS
 	set -e; \
+	set -o pipefail; \
 	pkg="$(call GETVAR,appimage_pkg_$(1))";				\
 	pkg_version="$(1)-$(call GETVAR,appimage_pkg_$(1)_version)";	\
 	pkglogdir="$(logdir)/$$$${pkg_version}";				\
@@ -170,7 +171,7 @@ $(stampdir)/stamp-$(1)-02-configure: $(stampdir)/stamp-$(1)-01-patch
 	for pfile in "$$$${pkgpbdir}"/*.postcfg-build \
 				 "$$$${pkgpdir}"/*.postcfg-build ; do \
 				(cd "$$$${pkgbdir}"; "$$$${pfile}") \
-	done;) && \
+	done)
 	touch $(stampdir)/stamp-$(1)-02-configure
 
 $(stampdir)/stamp-$(1)-03-make: $(stampdir)/stamp-$(1)-02-configure
@@ -309,7 +310,7 @@ $(stampdir)/stamp-$(1)-02-configure: $(stampdir)/stamp-$(1)-01-patch
 	mkdir -p "$$$${pkgbdir}"; \
 	cd "$$$${pkgbdir}"; \
 	$$$${pkgcfg} | \
-		tee "$$$${pkglogdir}/configure.log") && \
+		tee "$$$${pkglogdir}/configure.log")
 	touch $(stampdir)/stamp-$(1)-02-configure
 
 $(stampdir)/stamp-$(1)-03-make: $(stampdir)/stamp-$(1)-02-configure
@@ -399,7 +400,7 @@ $(stampdir)/stamp-$(1)-02-configure: $(stampdir)/stamp-$(1)-01-patch
 		-DKDE_INSTALL_DATADIR="$$$${pkgidir}/share" \
 		-DBUILD_TESTING=False \
 		$$$${pkgcfg} $$$${pkgextracflags} "../$$$${pkg_version}" | \
-		tee "$$$${pkglogdir}/configure.log") && \
+		tee "$$$${pkglogdir}/configure.log")
 	touch $(stampdir)/stamp-$(1)-02-configure
 
 $(stampdir)/stamp-$(1)-03-make: $(stampdir)/stamp-$(1)-02-configure
