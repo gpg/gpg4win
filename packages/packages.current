@@ -8,7 +8,7 @@
 # rest of the line will be taken as the base URL for following file
 # commands.  If the first word of a line is "file" the rest of the
 # line will be appended to the current base URL (with a / as
-# delimiter).  The statement "chk" is followed by the SHA1 checksum of
+# delimiter).  The statement "chk" is followed by the SHA256 checksum of
 # the last file.
 
 
