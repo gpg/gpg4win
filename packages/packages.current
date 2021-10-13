@@ -37,16 +37,19 @@ file libiconv/libiconv-1.15.tar.gz
 chk  ccf536620a45458d26ba83887a983b96827001e92a13847b45e4925cc8913178
 
 # last-changed: 2021-08-17
-# by: ah
+# by: ah (checksum added by ik)
 # verified: Sig 9001 B85A F9E1 B83D F1BD A942 F5BE 8B26 7C6A 406D
 file gettext/gettext-0.21.tar.xz
+chk  d20fcbb537e02dcf1383197ba05bd0734ef7bf5db06bdb241eb69b7d16b73192
 
 
 # Glib needs PCRE
 # last-changed: 2021-09-02
+# by: ah (checksum added by ik)
 # verified: Sig: 45F6 8D54 BBE2 3FB3 039B 46E5 9766 E084 FB0F 43D8
 server https://ftp.pcre.org/pub/pcre/
 file pcre-8.44.tar.gz
+chk  aecafd4af3bd0f3935721af77b889d9024b2e01d96b58471bd91a3063fb47728
 
 #
 # GLIB
