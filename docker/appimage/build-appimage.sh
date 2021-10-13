@@ -61,6 +61,11 @@ cd /build
 rm -f /build/AppDir/AppRun /build/AppDir/AppRun.wrapped
 # remove existing translations that may be left over from a previous run of linuxdeploy
 rm -rf /build/AppDir/usr/translations
+
+# extract Kleopatra version for filename of AppImage
+kleopatra_version=$(grep KLEOPATRA_VERSION_STRING /build/build/kleopatra-*-build/version-kleopatra.h | cut -d '"' -f 2 | cut -d '.' -f 1-3)
+export OUTPUT=Kleopatra-${kleopatra_version}-x86_64.AppImage
+
 linuxdeploy --appdir /build/AppDir \
             --desktop-file /build/AppDir/usr/share/applications/org.kde.kleopatra.desktop \
             --icon-file /build/AppDir/usr/share/icons/hicolor/256x256/apps/kleopatra.png \
