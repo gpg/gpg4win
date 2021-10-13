@@ -236,34 +236,6 @@ chk  1dddde1400c3bcb7749d398071af88c3e4754058d2d4c0b3696c2f82dc5cf11c
 
 
 #
-# GpgOL
-#
-server http://files.gpg4win.org/src
-
-# by: ah
-# verified: Sig 5B80 C575 4298 F0CB  55D8 ED6A BCEF 7E29 4B09 2E28
-file gpgol/gpgol-2.5.0.tar.bz2
-chk  76cb742ae53cf54f2d42d258f6ba657d2b98c752d2c742b1e4f04b26a6baf0df
-
-# for beta
-#server http://files.intevation.de/projects/gpg4all
-
-#file gpgol/gpgol-2.5.0-beta36.tar.bz2
-#chk cf3431d9ffb06f6c86af4aaa35fd69f343a18854016ab7d4145844a9be8346cf
-
-#
-# GpgEX
-#
-#server http://files.gpg4win.org/src
-server ftp://ftp.gnupg.org/gcrypt
-
-# last-changed: 2021-09-30
-# by: ah
-# verified: Sig 6DAA6E64A76D2840571B4902528897B826403ADA
-file gpgex/gpgex-1.0.8.tar.bz2
-chk  dc044904e0d2dfe28ba1dca9a55b5b4abd306070b9f34e122493b332d15f8b14
-
-#
 # Pth emulation
 #
 
