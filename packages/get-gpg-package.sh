@@ -24,7 +24,7 @@
 set -e
 #set -x
 
-GNUPG="libgpg-error libgcrypt libksba libassuan ntbtls npth pinentry gpgme"
+GNUPG="libgpg-error libgcrypt libksba libassuan ntbtls npth pinentry gpgme gnupg"
 GPG4WIN="gpgex gpgol"
 
 WGET=wget
@@ -62,7 +62,7 @@ function list_include_item {
 }
 
 if `list_include_item "$GNUPG" "$1"` ; then
-    SERVER="ftp://ftp.gnupg.org/gcrypt"
+    SERVER="https://gnupg.org/ftp/gcrypt"
 elif `list_include_item "$GPG4WIN" "$1"` ; then
     SERVER="http://files.gpg4win.org/src"
 else

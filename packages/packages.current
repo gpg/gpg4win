@@ -302,11 +302,11 @@ chk ea849c83a72454e3ed4267697e8ca03390aee972ab421e7df69dfe42b65caaf7
 file libksba/libksba-1.6.0.tar.bz2
 chk dad683e6f2d915d880aa4bed5cea9a115690b8935b78a1bbe01669189307a48b
 
-# last changed: 2021-09-09
-# by: ik
-# verified: "Werner Koch (dist signing 2020)" (distsigkey.gpg)
-file gnupg/gnupg-2.3.2.tar.bz2
-chk  e1d953e0e296072fca284215103ef168885eaac596c4660c5039a36a83e3041b
+# last changed 2021-10-13
+# by ik
+# verified: distsigkey.gpg
+file gnupg/gnupg-2.3.3.tar.bz2
+chk 5789b86da6a1a6752efb38598f16a77af51170a8494039c3842b085032e8e937
 
 # last changed: 2020-11-17
 # by: ah
