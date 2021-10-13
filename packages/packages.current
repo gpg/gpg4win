@@ -36,9 +36,9 @@ server ftp://ftp.gnu.org/pub/gnu
 file libiconv/libiconv-1.15.tar.gz
 chk  ccf536620a45458d26ba83887a983b96827001e92a13847b45e4925cc8913178
 
-# last-changed: 2021-07-01
-# by: ik
-# verified: Sig 9001 B85A F9E1 B83D F1BD  A942 F5BE 8B26 7C6A 406D
+# last-changed: 2021-08-17
+# by: ah (checksum added by ik)
+# verified: Sig 9001 B85A F9E1 B83D F1BD A942 F5BE 8B26 7C6A 406D
 file gettext/gettext-0.21.tar.xz
 chk  d20fcbb537e02dcf1383197ba05bd0734ef7bf5db06bdb241eb69b7d16b73192
 
