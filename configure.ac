@@ -376,7 +376,7 @@ if test "$build_appimage" = yes ; then
     APPIMAGE_SPKG([paperkey])
 
     # See the script kde-l10n.sh how this package is created.
-    #APPIMAGE_BPKG_BINSRC([kde-l10n])
+    APPIMAGE_BPKG_BINSRC([kde-l10n])
 
     # Qt related stuff.
     APPIMAGE_SPKG([qtbase])
@@ -410,11 +410,15 @@ if test "$build_appimage" = yes ; then
 
     APPIMAGE_KDEPKG([kxmlgui], [kiconthemes kconfigwidgets kitemviews])
 
-    #APPIMAGE_KDEPKG([libkleo], [kmime kwidgetsaddons kwindowsystem kcompletion kconfig gpgme kde-l10n])
-    APPIMAGE_KDEPKG([libkleo], [kmime kwidgetsaddons kwindowsystem kcompletion kconfig gpgme])
+    # snapshot of libkleo without translations; needs kde-l10n
+    APPIMAGE_KDEPKG([libkleo], [kmime kwidgetsaddons kwindowsystem kcompletion kconfig gpgme kde-l10n])
+    # (release) tarball of libkleo with translations
+    #APPIMAGE_KDEPKG([libkleo], [kmime kwidgetsaddons kwindowsystem kcompletion kconfig gpgme])
 
-    #APPIMAGE_KDEPKG([kleopatra], [gnupg gpgme breeze-icons kxmlgui libkleo kde-l10n kitemmodels qttranslations kdbusaddons])
-    APPIMAGE_KDEPKG([kleopatra], [gnupg gpgme breeze-icons kxmlgui libkleo kitemmodels qttranslations kdbusaddons])
+    # snapshot of kleopatra without translations; needs kde-l10n
+    APPIMAGE_KDEPKG([kleopatra], [gnupg gpgme breeze-icons kxmlgui libkleo kitemmodels qttranslations kdbusaddons kde-l10n])
+    # (release) tarball of kleopatra with translations
+    #APPIMAGE_KDEPKG([kleopatra], [gnupg gpgme breeze-icons kxmlgui libkleo kitemmodels qttranslations kdbusaddons])
 
     APPIMAGE_FINALIZE
 fi

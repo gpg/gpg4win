@@ -72,9 +72,6 @@ define SETVARS
 	pkgidir="$(ipdir)/$$$${pkg_version}";				\
 	pkginstallroot="/tmp/$$$${pkg_version}";			\
 	pkgbladir="/tmp/$$$${pkg_version}/$(idir)";			\
-	pkg_dev="$(call GETVAR,appimage_pkg_$(1)_dev)";			\
-	pkg_version_dev="$(1)-dev-$(call GETVAR,appimage_pkg_$(1)_version)"; \
-	pkgidir_dev="$(ipdir)/$$$${pkg_version_dev}";			\
 	pkgcfg="$(call GETVAR,appimage_pkg_$(1)_configure)";		\
 	pkgextracflags="$(call GETVAR,appimage_pkg_$(1)_extracflags)";	\
 	pkgmkargs="$(call GETVAR,appimage_pkg_$(1)_make_args)";          \
@@ -232,7 +229,6 @@ endef
 define BPKG_template_
 
 pkg_files += $(call GETVAR,appimage_pkg_$(1))
-pkg_files += $(call GETVAR,appimage_pkg_$(1)_dev)
 
 $(stampdir)/stamp-$(1)-00-install: $(stampdir)/stamp-directories $(call GETDEPS,$(1))
 	($(call SETVARS,$(1));				\
@@ -241,38 +237,29 @@ $(stampdir)/stamp-$(1)-00-install: $(stampdir)/stamp-directories $(call GETDEPS,
 	 $(call DEFLATE_macro,$$$${pkg}))
 	touch $(stampdir)/stamp-$(1)-00-install
 
-# Note that post_install must come last because it may be empty and
-# "; ;" is a syntax error.
-$(stampdir)/stamp-$(1)-01-install-dev: $(stampdir)/stamp-$(1)-00-install
+$(stampdir)/stamp-$(1)-01-rsync: $(stampdir)/stamp-$(1)-00-install
 	($(call SETVARS,$(1));				\
-	 $(MKDIR) "$$$${pkgidir_dev}";			\
-	 (cd $$$${pkgidir_dev};				\
-	  $(call DEFLATE_macro,$$$${pkg_dev}));		\
-	 $(call appimage_pkg_$(call FROB_macro,$(1))_post_install))
-	touch $(stampdir)/stamp-$(1)-01-install-dev
+	 set -x;					\
+	 $(RSYNC) -a --link-dest="$$$${pkgidir}/" "$$$${pkgidir}/" "$(idir)/" )
+	touch $(stampdir)/stamp-$(1)-01-rsync
 
-$(stampdir)/stamp-$(1)-02-stow: $(stampdir)/stamp-$(1)-01-install-dev
+$(stampdir)/stamp-$(1)-02-copy-to-appdir: $(stampdir)/stamp-$(1)-01-rsync
 	($(call SETVARS,$(1));				\
-	 cd $(ipdir);					\
-	 $(STOW) "$$$${pkg_version}")
-	touch $(stampdir)/stamp-$(1)-02-stow
+	 set -x;					\
+	 if test -f "$$$${pkgrsyncfilter}"; then \
+	   cp "$$$${pkgrsyncfilter}" "$$$${pkgidir}/.rsync-filter"; \
+	   $(RSYNC) -av -FF --omit-dir-times --link-dest="$$$${pkgidir}/" "$$$${pkgidir}/" "$(appdir)/usr/"; \
+	 fi )
+	touch $(stampdir)/stamp-$(1)-02-copy-to-appdir
 
-$(stampdir)/stamp-$(1)-03-stow-dev: $(stampdir)/stamp-$(1)-02-stow
-	($(call SETVARS,$(1));				\
-	 cd $(ipdir);					\
-	 $(STOW) "$$$${pkg_version_dev}")
-	touch $(stampdir)/stamp-$(1)-03-stow-dev
-
-$(stampdir)/stamp-final-$(1): $(stampdir)/stamp-$(1)-03-stow-dev
+$(stampdir)/stamp-final-$(1): $(stampdir)/stamp-$(1)-02-copy-to-appdir
 	touch $(stampdir)/stamp-final-$(1)
 
 .PHONY : clean-$(1)
 clean-$(1):
 	($(call SETVARS,$(1));				\
 	 cd $(ipdir) &&					\
-	 ($(STOW) -D "$$$${pkg_version}" || true;	\
-	  $(STOW) -D "$$$${pkg_version_dev}" || true;	\
-	  rm -fR "$$$${pkg_version}" "$$$${pkg_version_dev}"))
+	 (rm -fR "$$$${pkg_version}"))
 	rm -f $(stampdir)/stamp-final-$(1) $(stampdir)/stamp-$(1)-*
 
 endef

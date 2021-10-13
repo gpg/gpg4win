@@ -1,0 +1,100 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index a14b52f..e2cc379 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -15,11 +15,9 @@ add_subdirectory( pics )
+ if (BUILD_TESTING)
+    add_subdirectory( tests )
+ endif()
+-add_library(KF5Libkleo)
+-add_library(KF5::Libkleo ALIAS KF5Libkleo)
+
+ ########### next target ###############
+-target_sources(KF5Libkleo PRIVATE
++set(libkleo_core_SRCS
+    kleo/checksumdefinition.cpp
+    kleo/debug.cpp
+    kleo/defaultkeyfilter.cpp
+@@ -51,13 +49,13 @@ target_sources(KF5Libkleo PRIVATE
+    utils/cryptoconfig.cpp
+    utils/test.cpp
+    )
+-ecm_qt_declare_logging_category(KF5Libkleo HEADER libkleo_debug.h IDENTIFIER LIBKLEO_LOG CATEGORY_NAME org.kde.pim.libkleo
++ecm_qt_declare_logging_category(libkleo_core_SRCS HEADER libkleo_debug.h IDENTIFIER LIBKLEO_LOG CATEGORY_NAME org.kde.pim.libkleo
+         DESCRIPTION "libkleo (kleo_core)"
+         EXPORT LIBKLEO
+     )
+
+
+-target_sources(KF5Libkleo PRIVATE
++set(libkleo_ui_common_SRCS
+    ui/dnattributeorderconfigwidget.cpp
+    ui/kdhorizontalline.cpp
+    ui/filenamerequester.cpp
+@@ -70,14 +68,14 @@ target_sources(KF5Libkleo PRIVATE
+    ui/editdirectoryservicedialog.cpp
+    )
+
+-ecm_qt_declare_logging_category(KF5Libkleo HEADER kleo_ui_debug.h IDENTIFIER KLEO_UI_LOG CATEGORY_NAME org.kde.pim.kleo_ui
++ecm_qt_declare_logging_category(libkleo_ui_common_SRCS HEADER kleo_ui_debug.h IDENTIFIER KLEO_UI_LOG CATEGORY_NAME org.kde.pim.kleo_ui
+         DESCRIPTION "libkleo (kleo_ui)"
+         OLD_CATEGORY_NAMES log_kleo_ui
+         EXPORT LIBKLEO
+     )
+
+
+-target_sources(KF5Libkleo PRIVATE    # make this a separate lib.
++set(libkleo_ui_SRCS    # make this a separate lib.
+     ui/keylistview.cpp
+     ui/keyselectiondialog.cpp
+     ui/keyrequester.cpp
+@@ -86,8 +84,10 @@ target_sources(KF5Libkleo PRIVATE    # make this a separate lib.
+     ui/keyselectioncombo.cpp
+     )
+
++set(kleo_LIB_SRCS ${libkleo_core_SRCS} ${libkleo_ui_SRCS}
++                                       ${libkleo_ui_common_SRCS})
+
+-target_link_libraries(KF5Libkleo PUBLIC QGpgme Gpgmepp PRIVATE Qt::Widgets
++set(kleo_LIB_LIBS PUBLIC QGpgme Gpgmepp PRIVATE Qt::Widgets
+                                                 KF5::I18n
+                                                 KF5::Completion
+                                                 KF5::ConfigCore
+@@ -98,15 +98,19 @@ target_link_libraries(KF5Libkleo PUBLIC QGpgme Gpgmepp PRIVATE Qt::Widgets
+
+ if (KF5PimTextEdit_FOUND)
+   add_definitions(-DHAVE_PIMTEXTEDIT)
+-  target_link_libraries(KF5Libkleo PRIVATE KF5::PimTextEdit)
++  set(kleo_LIB_LIBS ${kleo_LIB_LIBS} PRIVATE KF5::PimTextEdit)
+ endif()
+
++add_library(KF5Libkleo ${kleo_LIB_SRCS})
+ if (COMPILE_WITH_UNITY_CMAKE_SUPPORT)
+     set_target_properties(KF5Libkleo PROPERTIES UNITY_BUILD ON)
+ endif()
+ generate_export_header(KF5Libkleo BASE_NAME kleo)
++add_library(KF5::Libkleo ALIAS KF5Libkleo)
+ if(WIN32)
+-    target_link_libraries(KF5Libkleo ${GPGME_VANILLA_LIBRARIES} )
++target_link_libraries(KF5Libkleo ${kleo_LIB_LIBS}  ${GPGME_VANILLA_LIBRARIES} )
++else()
++target_link_libraries(KF5Libkleo ${kleo_LIB_LIBS} )
+ endif()
+
+ set_target_properties(KF5Libkleo PROPERTIES
+@@ -229,9 +233,9 @@ install(FILES
+
+
+ if ( WIN32 )
+-    install ( FILES libkleopatrarc-win32.desktop DESTINATION ${KDE_INSTALL_CONFDIR} RENAME libkleopatrarc )
++install ( FILES libkleopatrarc-win32.desktop DESTINATION ${KDE_INSTALL_CONFDIR} RENAME libkleopatrarc )
+ else ()
+-    install ( FILES libkleopatrarc.desktop DESTINATION ${KDE_INSTALL_CONFDIR} RENAME libkleopatrarc )
++install ( FILES libkleopatrarc.desktop DESTINATION ${KDE_INSTALL_CONFDIR} RENAME libkleopatrarc )
+ endif ()
+
+ if (BUILD_QCH)

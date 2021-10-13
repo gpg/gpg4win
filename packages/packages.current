@@ -335,8 +335,8 @@ chk  10072045a3e043d0581f91cd5676fcac7ffee957a16636adedaa4f583a616470
 # last changed 2021-09-20
 # by ik
 # verified: distsigkey.gpg
-file gpgme/gpgme-1.16.0.tar.bz2
-chk 6c8cc4aedb10d5d4c905894ba1d850544619ee765606ac43df7405865de29ed0
+#file gpgme/gpgme-1.16.0.tar.bz2
+#chk 6c8cc4aedb10d5d4c905894ba1d850544619ee765606ac43df7405865de29ed0
 
 # last changed: 2018-10-17
 # by: ah
@@ -607,15 +607,15 @@ server https://download.kde.org/stable/release-service
 # last changed: 2021-09-23
 # by: ik
 # verified: PGP Signed by ./kde-release-key.gpg (created by gen-kde-gears.sh)
-file 21.08.1/src/libkleo-21.08.1.tar.xz
-chk bf9ff39620e06303fba0d9bdf77c4dce19d52a1bcbf48bb014dc021c325336d8
+#file 21.08.1/src/libkleo-21.08.1.tar.xz
+#chk bf9ff39620e06303fba0d9bdf77c4dce19d52a1bcbf48bb014dc021c325336d8
 
 # kleopatra
 # last changed: 2021-09-23
 # by: ik
 # verified: PGP Signed by ./kde-release-key.gpg (created by gen-kde-gears.sh)
-file 21.08.1/src/kleopatra-21.08.1.tar.xz
-chk fd5747063654ef5a1a64f33e0344c0e5bacdfa2422c3ffa9155970b6236a32c8
+#file 21.08.1/src/kleopatra-21.08.1.tar.xz
+#chk fd5747063654ef5a1a64f33e0344c0e5bacdfa2422c3ffa9155970b6236a32c8
 
 # Snapshots which contain unreleased fixes important for Gpg4win
 server https://files.intevation.de/projects/gpg4all
@@ -629,15 +629,15 @@ server https://files.intevation.de/projects/gpg4all
 # chk c2091536687cd83569c9919d6d9fc8c3a53e74d8419320bcbb8b7dc36019c677
 
 # by: ah
-#file gpgme/gpgme-1.16.1-beta14.tar.bz2
-#chk 941118668e7ed7bb907c09f7f2b9d803162e1023db713bb306815fe5e8da1168
+file gpgme/gpgme-1.16.1-beta16.tar.bz2
+chk 2aebf01c533a68372ce4b95ffaa6cd5144aa147c143f1125a947dff5d4dda6c9
 
 # Libkleo
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah.
-#file libkleo/libkleo-202108261518.tar.gz
-#chk aa5e5da428075f61a3bb62e8e0065efd8756cf535558c254d1de94e6efce1ff1
+file libkleo/libkleo-202108261518.tar.gz
+chk aa5e5da428075f61a3bb62e8e0065efd8756cf535558c254d1de94e6efce1ff1
 
 # KDE-L10n
 # last changed: see package date.
@@ -666,5 +666,5 @@ server ftp://ftp.gnupg.org/gcrypt/snapshots
 # last changed: 2021-10-09
 # by: wk
 # verified: Tarball created by wk.
-#file kleopatra/kleopatra-202110091719.tar.xz
-#chk ff519b18c76bf39b3c3a37e9027a2b3f87e37940e72e40e9d62736b6c2aa5438
+file kleopatra/kleopatra-202110091719.tar.xz
+chk ff519b18c76bf39b3c3a37e9027a2b3f87e37940e72e40e9d62736b6c2aa5438
