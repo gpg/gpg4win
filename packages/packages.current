@@ -579,9 +579,15 @@ chk  d68abe3c6f03b5934bee380b88c66bf27c23eed658c8a11fb57357bc85038a92
 file gpg4win-tools/gpg4win-tools-202104211124.tar.gz
 chk 79ea82ede46bbd02f70a64e4f003c6279e98cf4ad1e302eca753087c42fccdf3
 
-# Kleopatra
-# last changed: see package date.
-# by: ah
-# verified: Tarball created by ah.
-file kleopatra/kleopatra-202109171155.tar.gz
-chk dabe75284fd5e8b1bf8233f73af8c13271b8b0f70b372a1f7744e047fbe1e949
+
+#
+# Snapshots stored on the GnuPG server
+#
+server ftp://ftp.gnupg.org/gcrypt/snapshots
+
+# kleopatra
+# last changed: 2021-10-09
+# by: wk
+# verified: Tarball created by wk.
+file kleopatra/kleopatra-202110091719.tar.xz
+chk ff519b18c76bf39b3c3a37e9027a2b3f87e37940e72e40e9d62736b6c2aa5438
