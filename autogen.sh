@@ -163,6 +163,7 @@ if [ "$myhost" = "w32" ]; then
     fi
 
     $tsdir/configure --host=${host} --build=${build} --enable-maintainer-mode \
+                     --enable-gpg4win \
                      ${extraoptions} "$@"
     rc=$?
 
@@ -251,4 +252,5 @@ echo "Running autoconf${FORCE} ..."
 $AUTOCONF${FORCE}
 
 #echo "You may now run \"./configure --host=i586-mingw32msvc && make\"."
-echo "You may now run \"./autogen.sh --build-w32 && make\"."
+echo "For building a Gpg4win installer you may now run \"./autogen.sh --build-w32 && make\"."
+echo "For building an AppImage check the README."
