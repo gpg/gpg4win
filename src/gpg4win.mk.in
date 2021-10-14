@@ -344,7 +344,7 @@ $(stampdir)/stamp-$(1)-01-patch: $(stampdir)/stamp-$(1)-00-unpack
 	(shopt -s nullglob;				\
 	 $(call SETVARS,$(1));				\
 	 for pfile in "$$$${pkgpbdir}"/*.patch "$$$${pkgpdir}"/*.patch ; do  \
-	   (cd "$$$${pkgsdir}"; "$$$${pfile}")		\
+	   (cd "$$$${pkgsdir}"; chmod +x "$$$${pfile}"; "$$$${pfile}")		\
 	 done)
 	touch $(stampdir)/stamp-$(1)-01-patch
 
@@ -430,7 +430,7 @@ $(stampdir)/stamp-$(1)-01-patch: $(stampdir)/stamp-$(1)-00-unpack
 	(shopt -s nullglob;				\
 	 $(call SETVARS,$(1));				\
 	 for pfile in "$$$${pkgpbdir}"/*.patch "$$$${pkgpdir}"/*.patch ; do \
-	   (cd "$$$${pkgsdir}"; "$$$${pfile}")		\
+	   (cd "$$$${pkgsdir}"; chmod +x "$$$${pfile}"; "$$$${pfile}")		\
 	 done)
 	touch $(stampdir)/stamp-$(1)-01-patch
 
@@ -547,7 +547,7 @@ $(stampdir)/stamp-$(1)-01-patch: $(stampdir)/stamp-$(1)-00-unpack
 	(shopt -s nullglob;				\
 	 $(call SETVARS,$(1));				\
 	 for pfile in "$$$${pkgpbdir}"/*.patch "$$$${pkgpdir}"/*.patch ; do  \
-	   (cd "$$$${pkgsdir}"; "$$$${pfile}")		\
+	   (cd "$$$${pkgsdir}"; chmod +x "$$$${pfile}"; "$$$${pfile}")		\
 	 done)
 	touch $(stampdir)/stamp-$(1)-01-patch
 
@@ -648,7 +648,7 @@ $(stampdir)/stamp-$(1)-01-patch: $(stampdir)/stamp-$(1)-00-unpack
 	(shopt -s nullglob;				\
 	 $(call SETVARS,$(1));				\
 	 for pfile in "$$$${pkgpbdir}"/*.patch "$$$${pkgpdir}"/*.patch ; do  \
-	   (cd "$$$${pkgsdir}"; "$$$${pfile}")		\
+	   (cd "$$$${pkgsdir}"; chmod +x "$$$${pfile}"; "$$$${pfile}")		\
 	 done)
 	touch $(stampdir)/stamp-$(1)-01-patch
 
@@ -731,7 +731,7 @@ $(stampdir)/stamp-$(1)-01-patch: $(stampdir)/stamp-$(1)-00-unpack
 	 sed -i 's/set(QT_REQUIRED_VERSION.*)/set(QT_REQUIRED_VERSION "5.10.0")/' CMakeLists.txt; \
 	 sed -i 's/set(GPGME_REQUIRED_VERSION.*)/set(GPGME_REQUIRED_VERSION "1.10.0")/' CMakeLists.txt; \
 	 for pfile in "$$$${pkgpbdir}"/*.patch "$$$${pkgpdir}"/*.patch ; do  \
-	   (cd "$$$${pkgsdir}"; "$$$${pfile}")		\
+	   (cd "$$$${pkgsdir}"; chmod +x "$$$${pfile}"; "$$$${pfile}")		\
 	 done)
 	touch $(stampdir)/stamp-$(1)-01-patch
 
