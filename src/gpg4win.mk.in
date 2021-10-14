@@ -22,8 +22,6 @@
 
 
 # These paths must be absolute, as we switch directories pretty often.
-root := $(shell pwd)/playground
-stampdir := $(shell pwd)/stamps
 bdir := $(root)/build
 idir := $(root)/install
 ipdir := $(root)/install/pkgs

@@ -105,6 +105,10 @@ endif
 
 SUBDIRS = ${appimage}
 
+# These paths must be absolute, as we switch directories pretty often.
+root := $(shell pwd)/playground
+stampdir := $(shell pwd)/stamps
+
 gpg4win_readme_ll = en de ar es fr ru pt zh
 
 README_files = $(addsuffix .txt,$(addprefix README.,$(gpg4win_readme_ll)))
@@ -553,7 +557,7 @@ VSD_VERSION=$(VERSION)
 # Signging host/key setup for codesigning
 -include gnupg-vsd/sign.mk
 
-stamps/stamp-msi-base:  playground/install/gpg4win-$(VERSION).wixlib \
+$(stampdir)/stamp-msi-base:  $(root)/install/gpg4win-$(VERSION).wixlib \
                        shield.ico Makefile.am \
                        $(top_srcdir)/doc/logo/gpg4win-msi*.bmp \
                        $(top_srcdir)/po/gpg4win-de.wxl \
@@ -576,7 +580,7 @@ stamps/stamp-msi-base:  playground/install/gpg4win-$(VERSION).wixlib \
 	scp $(top_srcdir)/po/gpg4win-en.wxl $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)
 	scp $(top_srcdir)/po/gpg4win-de.wxl $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)
 	scp WixUI_Gpg4win.wxs $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)
-	touch stamps/stamp-msi-base
+	touch $(stampdir)/stamp-msi-base
 
 # Now do the bunch of the work.  This is a bunch of dirty magic to
 # integrate our special makefile into automake, while not actually
@@ -601,7 +605,7 @@ common_nsi = inst-sections.nsi installer.nsi installer-finish.nsi	\
 
 # Sign additional files as per signing setup
 # This is a bit of a hack.
-stamps/stamp-additional-signedfiles:
+$(stampdir)/stamp-additional-signedfiles:
 	(set -e;\
      cd "$(idir)"; \
      for f in $(AUTHENTICODE_FILES); do \
@@ -612,18 +616,18 @@ stamps/stamp-additional-signedfiles:
        fi;\
      done \
      )
-	touch stamps/stamp-additional-signedfiles
+	touch $(stampdir)/stamp-additional-signedfiles
 
-playground/install/gpg4win-$(VERSION).wixlib: \
-      gpg4win-$(VERSION).wxs stamps/stamp-final \
+$(root)/install/gpg4win-$(VERSION).wixlib: \
+      gpg4win-$(VERSION).wxs $(stampdir)/stamp-final \
       $(foosum_exe) \
       $(README_files) $(HOWTO_files) \
       license.blurb versioninfo.txt \
       WixUI_Gpg4win.wxs \
-      stamps/stamp-additional-signedfiles
+      $(stampdir)/stamp-additional-signedfiles
 	($(call SETVARS_WINE_TWO_DOLLAR,); \
-	echo "Gpg4win" > $(srcdir)/playground/VERSION; \
-	echo "$(VERSION)" >> $(srcdir)/playground/VERSION; \
+	echo "Gpg4win" > $(root)/VERSION; \
+	echo "$(VERSION)" >> $(root)/VERSION; \
 	(ln -s $(idir) $$WINEINST; \
 	 ln -s $(ex_idir) $$WINEINSTEX; \
 	 ln -s `readlink -f $(top_srcdir)` $$WINESRC; \
@@ -656,16 +660,16 @@ playground/install/gpg4win-$(VERSION).wixlib: \
 		exit 1; \
 	fi)
 
-playground/install/gpg4win-$(VERSION)-x86.wixlib: \
-      gpg4win-$(VERSION).wxs stamps/stamp-final \
+$(root)/install/gpg4win-$(VERSION)-x86.wixlib: \
+      gpg4win-$(VERSION).wxs $(stampdir)/stamp-final \
       $(foosum_exe) \
       $(README_files) $(HOWTO_files) \
       license.blurb versioninfo.txt \
       WixUI_Gpg4win.wxs \
-      stamps/stamp-additional-signedfiles
+      $(stampdir)/stamp-additional-signedfiles
 	($(call SETVARS_WINE_TWO_DOLLAR,); \
-	echo "Gpg4win" > $(srcdir)/playground/VERSION; \
-	echo "$(VERSION)" >> $(srcdir)/playground/VERSION; \
+	echo "Gpg4win" > $(root)/VERSION; \
+	echo "$(VERSION)" >> $(root)/VERSION; \
 	(ln -s $(idir) $$WINEINST; \
 	 ln -s $(ex_idir) $$WINEINSTEX; \
 	 ln -s `readlink -f $(top_srcdir)` $$WINESRC; \
@@ -697,7 +701,7 @@ playground/install/gpg4win-$(VERSION)-x86.wixlib: \
 	if [ -n "$$ERR" ]; then \
 		exit 1; \
 	fi)
-gpg4win-$(VERSION).wxs: gpg4win.nsi $(common_nsi) stamps/stamp-final \
+gpg4win-$(VERSION).wxs: gpg4win.nsi $(common_nsi) $(stampdir)/stamp-final \
 		        $(foosum_exe) gpgwrap.exe \
 			$(README_files) $(HOWTO_files) \
 			versioninfo.txt make-msi.pl \
@@ -747,7 +751,7 @@ COMPONENTS-list.tmp : $(top_srcdir)/NEWS
 # For some nut-crazy reason someone thought it would be a great idea
 # if makensis changed to the directory of the source file at startup.
 # So we have to pull a couple of strings to correct this.
-installers/gpg4win-$(VERSION).exe: gpg4win.nsi $(common_nsi) stamps/stamp-final \
+installers/gpg4win-$(VERSION).exe: gpg4win.nsi $(common_nsi) $(stampdir)/stamp-final \
                         g4wihelp.dll gpgwrap.exe \
 		        $(foosum_exe) \
 			$(README_files) $(HOWTO_files) \
@@ -756,13 +760,13 @@ installers/gpg4win-$(VERSION).exe: gpg4win.nsi $(common_nsi) stamps/stamp-final 
            -DSRCDIR=$(srcdir) $(EXTRA_MAKENSIS_FLAGS) $(srcdir)/gpg4win.nsi && \
 		   mv gpg4win-$(VERSION).exe installers/gpg4win-$(VERSION).exe
 
-stamps/stamp-dist-self: versioninfo.txt
+$(stampdir)/stamp-dist-self: versioninfo.txt
 	(set -e; cd ..; make dist-bzip2)
-	touch stamps/stamp-dist-self
+	touch $(stampdir)/stamp-dist-self
 
 installers/gpg4win-src-$(VERSION).exe: gpg4win-src.nsi $(common_nsii) \
-                            stamps/stamp-final \
-                            stamps/stamp-dist-self \
+                            $(stampdir)/stamp-final \
+                            $(stampdir)/stamp-dist-self \
 		            license.blurb
 	$(MAKENSIS) -V3 -DBUILD_DIR=`pwd` -DTOP_SRCDIR=$(top_srcdir) \
 	  -DSRCDIR=$(srcdir) $(EXTRA_MAKENSIS_FLAGS) $(srcdir)/gpg4win-src.nsi && \
