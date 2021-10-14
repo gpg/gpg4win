@@ -1,0 +1,30 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index bb34e0d..9faec4f 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -73,6 +73,8 @@ add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0)
+ add_definitions(-DKF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x055600)
+ remove_definitions(-DQT_NO_FOREACH)
+ add_definitions(-DQT_NO_EMIT)
++set(CMAKE_CXX_STANDARD 17)
++
+ ########### CMake Config Files ###########
+ set(CMAKECONFIG_INSTALL_DIR "${KDE_INSTALL_CMAKEPACKAGEDIR}/KF5Libkleo")
+
+diff --git a/src/ui/keyselectiondialog.cpp b/src/ui/keyselectiondialog.cpp
+index 6a2630e..28298d2 100644
+--- a/src/ui/keyselectiondialog.cpp
++++ b/src/ui/keyselectiondialog.cpp
+@@ -252,7 +252,7 @@ QString ColumnStrategy::toolTip(const GpgME::Key &key, int) const
+     QString keyStatusString;
+     if (!checkKeyUsage(key, mKeyUsage, &keyStatusString)) {
+         // Show the status in bold if there is a problem
+-        keyStatusString = QLatin1String("<b>") % keyStatusString % QLatin1String("</b>");
++        keyStatusString = QLatin1String("<b>") + keyStatusString + QLatin1String("</b>");
+     }
+
+     QString html = QStringLiteral("<qt><p style=\"style='white-space:pre'\">");

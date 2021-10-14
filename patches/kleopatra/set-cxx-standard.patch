@@ -1,0 +1,16 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index d7d1cfc9..05e750ac 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -168,6 +168,7 @@ if(CMAKE_COMPILER_IS_GNUCXX)
+ endif()
+ add_definitions(-DQT_NO_EMIT)
+ remove_definitions(-DQT_NO_FOREACH)
++set(CMAKE_CXX_STANDARD 17)
+
+ kde_enable_exceptions()
+ option(USE_UNITY_CMAKE_SUPPORT "Use UNITY cmake support (speedup compile time)" OFF)

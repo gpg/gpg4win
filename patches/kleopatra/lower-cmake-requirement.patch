@@ -3,15 +3,12 @@ patch -p1 -l -f $* < $0
 exit $?
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 43562b94..2f6cb167 100644
+index d7d1cfc9..11163068 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -1,7 +1,7 @@
- set(kleopatra_version 3.1.15)
- # The following is for Windows. Keep in line with kleopatra_version.
- set(kleopatra_fileversion 3,1,15,0)
+@@ -1,4 +1,4 @@
 -cmake_minimum_required(VERSION 3.16 FATAL_ERROR)
 +cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
- project(kleopatra VERSION ${kleopatra_version})
 
  # The RELEASE_SERVICE_VERSION is used by Gpg4win to add the Gpg4win version
+ set(RELEASE_SERVICE_VERSION_MAJOR "21")

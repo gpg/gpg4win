@@ -51,11 +51,14 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
              patches/gpgol/0001-Enable-sync-encryption-again.patch \
              patches/kconfigwidgets/0001-Make-QDbus-optional.patch \
              patches/kiconthemes/0001-Make-DBus-optional.patch \
+             patches/kleopatra/build-fixes.patch \
              patches/kleopatra/lower-cmake-requirement.patch \
+             patches/kleopatra/set-cxx-standard.patch \
              patches/kxmlgui/0001-make-qdbus-optional.patch \
              patches/kxmlgui/0004-Cruedly-disable-KSendbugmail.patch \
+             patches/libkleo/0001-Revert-Use-more-target-centric-cmake-code.patch \
              patches/libkleo/lower-cmake-requirement.patch \
-             patches/libkleo/z-01-use-pre-5.80-ecm_qt_declare_logging_category.patch \
+             patches/libkleo/set-cxx-standard.patch \
              patches/qtbase/0001-Fix-build-without-std-thread.patch \
              patches/qtbase/0001-Gpg4win-qstandardpaths-patch.patch \
              patches/qtbase/0002-Gpg4win-theme-names-and-relpaths.patch \

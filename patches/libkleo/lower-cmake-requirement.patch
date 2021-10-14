@@ -9,6 +9,6 @@ index 4fea1af..feed360 100644
 @@ -1,4 +1,4 @@
 -cmake_minimum_required(VERSION 3.16 FATAL_ERROR)
 +cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
- set(PIM_VERSION "5.17.44")
+ set(PIM_VERSION "5.18.40")
 
  project(libkleo VERSION ${PIM_VERSION})
