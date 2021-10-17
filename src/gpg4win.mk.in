@@ -883,9 +883,9 @@ gnupg-vsd/$(1)/$(1).wxs: gnupg-vsd/$(1)/VERSION.sig make-msi.pl gpg4win-$(VERSIO
 
 gnupg-vsd/$(1)/VERSION.sig: gnupg-vsd/$(1)/VERSION
 	echo "----------SIGNING----------"
-	echo "using key: $(msi_signkey)"
+	echo "using key: $(version_signkey)"
 	cat gnupg-vsd/$(1)/VERSION
-	gpg --yes -o gnupg-vsd/$(1)/VERSION.sig -bau $(msi_signkey) gnupg-vsd/$(1)/VERSION
+	gpg --yes -o gnupg-vsd/$(1)/VERSION.sig -bau $(version_signkey) gnupg-vsd/$(1)/VERSION
 
 gnupg-vsd/$(1)/VERSION: gnupg-vsd/custom.mk
 	echo "$(call GETVAR,msi_target_$(1)_VERSION)" > gnupg-vsd/$(1)/VERSION
@@ -974,7 +974,7 @@ stamps/stamp-$(1)-upload: signed_installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1)
 			$(VSD_PUBLISH_HOST)/$(call GETVAR,msi_target_$(1)_directory); \
 		ssh `echo $(VSD_PUBLISH_HOST) | cut -d ":" -f 1` \
 			"cd `echo $(VSD_PUBLISH_HOST) | cut -d ":" -f 2`/$(call GETVAR,msi_target_$(1)_directory) && rm -f GnuPG-VS-Desktop.msi && \
-			ln -s gnupg-vs-desktop-$(VSD_VERSION)-$(1).msi GnuPG-VS-Desktop.msi"; \
+			ln -s GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi GnuPG-VS-Desktop.msi"; \
 			echo "https://download.gnupg.com/files/$(call GETVAR,msi_target_$(1)_directory)/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi" \
 				> ../stamps/stamp-$(1)-upload; \
 			echo "https://download.gnupg.com/files/$(call GETVAR,msi_target_$(1)_directory)/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi.sig" \
