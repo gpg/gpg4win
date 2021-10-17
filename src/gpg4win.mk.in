@@ -912,7 +912,7 @@ installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi: stamps/stamp-msi-base playg
 	-out GnuPG-VS-Desktop-$(VERSION)-$(1).msi \
 	 $(call GETVAR,msi_target_$(1)_l10n) \
 	-dcl:high \
-	-v -pedantic \
+	-pedantic \
 	 \
 	 gpg4win-$(VERSION).wixlib \
 	 gnupg-msi-$(gpg4win_pkg_gnupg_msi_version)-bin.wixlib \
@@ -950,9 +950,10 @@ signed_installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi: installers/GnuPG-VS-
 	$(call AUTHENTICODE_sign,"installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi","signed_installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi");\
 
 stamps/stamp-$(1)-upload: signed_installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi
-	(cd signed_installers; sha256sum GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi > \
+	@(cd signed_installers; \
+          sha256sum GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi > \
 		GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi.sha256; \
-	if [ -f "../gnupg-vsd/$(1)/customer-enc-key.asc" ]; then \
+	  if [ -f "../gnupg-vsd/$(1)/customer-enc-key.asc" ]; then \
 		echo "Encrypting installer"; \
 		gpg --yes -o GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi.gpg -seu $(msi_signkey) \
 			-f "../gnupg-vsd/$(1)/customer-enc-key.asc" \
@@ -965,7 +966,7 @@ stamps/stamp-$(1)-upload: signed_installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1)
 			$(VSD_PUBLISH_HOST)/$(call GETVAR,msi_target_$(1)_directory); \
 		echo "https://download.gnupg.com/files/$(call GETVAR,msi_target_$(1)_directory)/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi.gpg" \
 		> ../stamps/stamp-$(1)-upload; \
-	else \
+	  else \
 		gpg --yes -o GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi.sig -bu $(msi_signkey) \
 			GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi; \
 		scp GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi \
@@ -979,7 +980,7 @@ stamps/stamp-$(1)-upload: signed_installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1)
 				> ../stamps/stamp-$(1)-upload; \
 			echo "https://download.gnupg.com/files/$(call GETVAR,msi_target_$(1)_directory)/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi.sig" \
 			>> ../stamps/stamp-$(1)-upload; \
-	fi)
+	  fi)
 
 .phony : $(1)
 $(1): installers/GnuPG-VS-Desktop-$(VSD_VERSION)-$(1).msi
