@@ -66,12 +66,12 @@ td {
 
 .fancy_intro {
  background: url('img/fancy_bg.png') no-repeat;
- background-position: 278px 0px;
+ background-position: 276px 0px;
  height:250px;
- margin: 0 20px 25px 20px;
+ margin: 0 20px 25px 14px;
  border-bottom:1px solid gray;
  overflow: hidden;
- width:860px;
+ width:870px;
  padding-bottom: 15px;
 }
 
@@ -305,8 +305,8 @@ input[type='range']::-moz-range-thumb {
 .h_text {
  position: relative;
  top: -125px;
- left: 669px;
- width: 180px;
+ left: 656px;
+ width: 202px;
  font-size: 11px;
  border-left: 1px solid #CCCCCC;
  padding-left: 10px;
