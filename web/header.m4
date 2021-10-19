@@ -40,6 +40,15 @@
    <div class="h_text_beta">
 -->
    <div class="h_text">
+   <small>2021-10-19</small><br>
+   <span class="serif_word"><img src="img/bulletin.png" alt"" />
+     m4_ifelse(LANG_DE, `1', `
+      <a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2021-October/000057.html">Auf GnuPG 2.2.32 aktualisieren
+      </a></span>',`
+      <a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce/2021-October/000093.html">
+        Update to GnuPG 2.2.32
+      </a></span>')
+   <p></p>
    <small>2021-06-11</small><br>
    <span class="serif_word"><img src="img/bulletin.png" alt"" />
      m4_ifelse(LANG_DE, `1', `
