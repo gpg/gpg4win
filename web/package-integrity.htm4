@@ -28,7 +28,7 @@ Wiki page on integrity checks</a>.
 
 <h2>Code Signing Certificate</h2>
 
-<p>The Gpg4win exe installe is signed with the following code
+<p>The Gpg4win exe installer is signed with the following code
 signing certificate (since 2021):</p>
 <pre>
       S/N: 2F48FAE3C9E7B142B9A8B259
