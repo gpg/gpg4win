@@ -4,6 +4,10 @@
 
   <li>Installieren Sie Gpg4win.
 
+  <li>(Übergangsweise für Version 3.1.16) Laden und
+      <a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2021-October/000057.html"
+         >aktualisieren Sie auf GnuPG 2.2.32</a>.
+
   <li>Erstellen Sie sich ein OpenPGP-Schlüsselpaar mit Kleopatra.
   Signieren/verschlüsseln Sie zum Test eine Datei und E-Mail an sich
   selbst (siehe Kapitel 7+8 im 
