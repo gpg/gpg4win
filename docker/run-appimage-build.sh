@@ -12,3 +12,5 @@ docker run -it --rm --user "$(id -u):$(id -g)" \
     --volume ${buildroot}:/build \
     g10-build-appimage-kleopatra:centos7 \
     /build-appimage.sh
+
+echo "You can find the AppImage in ${buildroot} (if the build succeeded)."
