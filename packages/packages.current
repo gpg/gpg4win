@@ -45,9 +45,11 @@ chk  d20fcbb537e02dcf1383197ba05bd0734ef7bf5db06bdb241eb69b7d16b73192
 
 # Glib needs PCRE
 # last-changed: 2021-09-02
+# by: ah (checksum added by ik)
 # verified: Sig: 45F6 8D54 BBE2 3FB3 039B 46E5 9766 E084 FB0F 43D8
 server https://ftp.pcre.org/pub/pcre/
 file pcre-8.44.tar.gz
+chk  aecafd4af3bd0f3935721af77b889d9024b2e01d96b58471bd91a3063fb47728
 
 #
 # GLIB
