@@ -1,29 +1,73 @@
 #! /usr/bin/env bash
 
+if [ "$1" = "--help" ]; then
+    cat <<EOF
+GnuPG as AppImage
+Options:
+  -c          Run an intercactive shell.
+  -c command  Run command with optional arguments.
+  --gui       Run the GUI with optional arguments.
+  --debug     Enable debugging of the start script.
+  --help      Print this help.
+The default is to run the GUI with optional arguments.
+EOF
+    exit 0
+fi
+if [ "$1" = "--debug" ]; then
+    shift
+    set -x
+fi
+
+
 this_dir="$(readlink -f "$(dirname "$0")")"
 
 export PATH="${APPDIR}/usr/bin:${PATH}"
 export XDG_DATA_DIRS="${APPDIR}/usr/share:${XDG_DATA_DIRS:-/usr/share}:/usr/share"
 export XDG_CONFIG_DIRS="${APPDIR}/usr/etc/xdg:${XDG_CONFIG_DIRS:-/etc/xdg}:/etc/xdg"
 
-"${this_dir}/usr/bin/kleopatra" "$@"
+# Allow GnuPG config scripts to detect the appimage install.  We can't
+# rely on APPDIR because other appimages might come with their own
+# gnupg version.  Change the value to "vsd" for a GnuPG VS-Desktop build.
+export _gnupg_appimage=generic
 
-dirmngr=$(gpgconf --list-components | grep ^dirmngr: | cut -d ':' -f 3)
-if ps -o exe -C dirmngr | grep -q "${dirmngr}"; then
-    echo Shutting down dirmngr
-    gpgconf --kill dirmngr
+if [ -z "$SHELL" ]; then
+    SHELL="$(grep '/bash$' /etc/shells)"
+    if [ -z "$SHELL" ]; then
+        export SHELL=/bin/bash
+    fi
 fi
 
-scdaemon=$(gpgconf --list-components | grep ^scdaemon: | cut -d ':' -f 3)
-if ps -o exe -C scdaemon | grep -q "${scdaemon}"; then
-    echo Shutting down scdaemon
-    gpgconf --kill scdaemon
+if [ "$1" = "-c" ]; then
+    shift
+    if [ ! -x "$SHELL" ]; then
+        echo "No shell found" >&2
+        exit 2
+    fi
+    if [ -n "$1" ]; then
+        pgm="$SHELL"
+        pgmargs="-c $@"
+    else
+        pgm="$SHELL"
+        pgmargs=-i
+    fi
+else
+    # Ignore the optional --gui option
+    if [ "$1" = "--gui" ]; then
+        shift
+    fi
+    if [ -x "${this_dir}/usr/bin/kleopatra" ];then
+        pgm="${this_dir}/usr/bin/kleopatra"
+        pgmargs="$@"
+    else
+        echo "Kleopatra not found" >&2
+        exit 2
+    fi
 fi
 
-agent=$(gpgconf --list-components | grep ^gpg-agent: | cut -d ':' -f 3)
-if ps -o exe -C gpg-agent | grep -q "${agent}"; then
-    echo Shutting down gpg-agent
-    gpgconf --kill all
-fi
+# Start gpg-agent launching a program.  gpg-agent will then watch for
+# termination of the program and kill itself after this has been
+# detected.  We also steal an existing socket so that already running
+# system instances of gpg-agent are not anymore used.
+"${this_dir}/usr/bin/gpg-agent" --steal-socket --daemon -- $pgm $pgmargs
 
-echo Goodbye!
+echo Goodbye from the GnuPG AppImage! >&2

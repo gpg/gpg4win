@@ -35,6 +35,8 @@ cd /src
 make
 
 echo 'rootdir = $APPDIR/usr' >/build/AppDir/usr/bin/gpgconf.ctl
+# Enable the next to build a GnuPG VSD version
+#echo 'sysconfdir = /etc/gnupg-vsd' >>/build/AppDir/usr/bin/gpgconf.ctl
 
 export PATH=/opt/linuxdeploy/usr/bin:$PATH
 export LD_LIBRARY_PATH=/build/install/lib
