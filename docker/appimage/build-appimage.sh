@@ -86,8 +86,8 @@ if [ $GNUPG_BUILD_VSD = yes ]; then
     OUTPUT=gnupg-vs-desktop-${myversion}-x86_64.AppImage
     echo $myversion >/build/AppDir/GnuPG-VS-Desktop-VERSION
 else
-    myversion=$(grep '^file gnupg/gnupg-2.*tar' packages.current \
-                    | sed -n 's,.*/gnupg-\(2.[0-9.-]*\).tar.*,\1,p')
+    myversion=$(grep '^file gnupg/gnupg-2.*tar' /src/packages/packages.current \
+                    | sed -n 's,.*/gnupg-\(2.*\).tar.*,\1,p')
     OUTPUT=gnupg-desktop-${myversion}-x86_64.AppImage
     echo $myversion >/build/AppDir/GnuPG-Desktop-VERSION
 fi
