@@ -34,9 +34,19 @@ cd /src
 cd /src
 make
 
+if [ -f /src/src/gnupg-vsd/custom.mk ]; then
+    GNUPG_BUILD_VSD=yes
+else
+    GNUPG_BUILD_VSD=no
+fi
+export GNUPG_BUILD_VSD
+
 echo 'rootdir = $APPDIR/usr' >/build/AppDir/usr/bin/gpgconf.ctl
-# Enable the next to build a GnuPG VSD version
-#echo 'sysconfdir = /etc/gnupg-vsd' >>/build/AppDir/usr/bin/gpgconf.ctl
+if [ $GNUPG_BUILD_VSD = yes ]; then
+    echo 'sysconfdir = /etc/gnupg-vsd' >>/build/AppDir/usr/bin/gpgconf.ctl
+else
+    echo 'sysconfdir = /etc/gnupg' >>/build/AppDir/usr/bin/gpgconf.ctl
+fi
 
 export PATH=/opt/linuxdeploy/usr/bin:$PATH
 export LD_LIBRARY_PATH=/build/install/lib
@@ -58,15 +68,30 @@ for d in iconengines kf5 pim; do
 done
 
 cd /build
-# remove existing AppRun and wrapped AppRun, that may be left over from a previous run of
-# linuxdeploy, to ensure that our custom AppRun is deployed
-rm -f /build/AppDir/AppRun /build/AppDir/AppRun.wrapped
-# remove existing translations that may be left over from a previous run of linuxdeploy
+# Remove existing AppRun and wrapped AppRun, that may be left over
+# from a previous run of linuxdeploy, to ensure that our custom AppRun
+# is deployed
+rm -f /build/AppDir/AppRun /build/AppDir/AppRun.wrapped 2>/dev/null
+# Remove existing translations that may be left over from a previous
+# run of linuxdeploy
 rm -rf /build/AppDir/usr/translations
+# Remove the version files to make sure that only one will be created.
+rm -f /build/AppDir/GnuPG-VS-Desktop-VERSION 2>/dev/null
+rm -f /build/AppDir/GnuPG-Desktop-VERSION    2>/dev/null
 
-# extract Kleopatra version for filename of AppImage
-kleopatra_version=$(grep KLEOPATRA_VERSION_STRING /build/build/kleopatra-*-build/version-kleopatra.h | cut -d '"' -f 2 | cut -d '.' -f 1-3)
-export OUTPUT=Kleopatra-${kleopatra_version}-x86_64.AppImage
+# Extract gnupg version or (for VSD builds) Kleopatra version for use
+# as filename of the AppImage
+if [ $GNUPG_BUILD_VSD = yes ]; then
+    myversion=$(grep KLEOPATRA_VERSION_STRING /build/build/kleopatra-*-build/version-kleopatra.h | cut -d '"' -f 2 | cut -d '.' -f 1-3)
+    OUTPUT=gnupg-vs-desktop-${myversion}-x86_64.AppImage
+    echo $myversion >/build/AppDir/GnuPG-VS-Desktop-VERSION
+else
+    myversion=$(grep '^file gnupg/gnupg-2.*tar' packages.current \
+                    | sed -n 's,.*/gnupg-\(2.[0-9.-]*\).tar.*,\1,p')
+    OUTPUT=gnupg-desktop-${myversion}-x86_64.AppImage
+    echo $myversion >/build/AppDir/GnuPG-Desktop-VERSION
+fi
+export OUTPUT
 
 linuxdeploy --appdir /build/AppDir \
             --desktop-file /build/AppDir/usr/share/applications/org.kde.kleopatra.desktop \
@@ -74,4 +99,4 @@ linuxdeploy --appdir /build/AppDir \
             --custom-apprun /src/src/appimage/AppRun \
             --plugin qt \
             --output appimage \
-    2>&1 | tee /build/logs/linuxdeploy-kleopatra.log
+    2>&1 | tee /build/logs/linuxdeploy-gnupg-desktop.log
