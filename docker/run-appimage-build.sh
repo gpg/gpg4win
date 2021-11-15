@@ -10,8 +10,9 @@ fi
 
 sourcedir=$(cd $(dirname $0)/..; pwd)
 
-if [ -n "$devmode" ]; then
+if [ -z "$devmode" ]; then
     buildroot="/tmp/appimage-gnupg.$(id -un).d"
+    [ -d "$buildroot" ] || mkdir "$buildroot"
 else
     buildroot=$(mktemp -d --tmpdir appimage-gnupg.XXXXXXXXXX)
 fi
