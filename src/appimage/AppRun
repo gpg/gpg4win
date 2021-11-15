@@ -13,7 +13,7 @@ if [ "$1" = "--help" ]; then
     cat <<EOF
 
 Options:
-  -c          Run an intercactive shell.
+  -c          Run an interactive shell.
   -c command  Run command with optional arguments.
   --gui       Run the GUI with optional arguments.
   --debug     Enable debugging of the start script.
