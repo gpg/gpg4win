@@ -1,0 +1,10 @@
+#!/bin/sh
+# This script is started instead of bash by gpg-agent so
+# that we can set prompts etc.  $SHELL is assumed to be bash.
+
+SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+export SSH_AUTH_SOCK
+cat >"$gnupg_SETUPINIFILE" <<'EOF'
+PS1="$(echo "$PS1" | sed 's,\\\$ $,(GnuPG Shell)\\\$ ,')"
+EOF
+exec "$SHELL" --init-file "$gnupg_SETUPINIFILE"

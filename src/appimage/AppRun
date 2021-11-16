@@ -2,29 +2,45 @@
 
 this_dir="$(readlink -f "$(dirname "$0")")"
 
+if [ "$1" = "--debug" ]; then
+    shift
+    set -x
+else
+    set -e
+fi
+
 if [ -f "${APPDIR}/GnuPG-VS-Desktop-VERSION" ]; then
     myname="GnuPG VS-Desktop "$(cat "${APPDIR}/GnuPG-VS-Desktop-VERSION")
 else
     myname="GnuPG Desktop "$(cat "${APPDIR}/GnuPG-Desktop-VERSION")
 fi
 
-if [ "$1" = "--help" ]; then
+if [ "$1" = "--help" -o "$1" = "--version" ]; then
     echo "$myname"
-    cat <<EOF
+    if [ "$1" = "--help" ]; then
+        cat <<EOF
 
 Options:
   -c          Run an interactive shell.
   -c command  Run command with optional arguments.
   --gui       Run the GUI with optional arguments.
   --debug     Enable debugging of the start script.
+  --version   Print only the version
   --help      Print this help.
 The default is to run the GUI with optional arguments.
 EOF
+    elif [ "$1" = "--version" ]; then
+        # Do some basic verification - not really secure because an
+        # attacker may change the appimage and the included keyring.
+        if ! "${APPDIR}"/usr/bin/gpgv --quiet \
+                    --keyring "${APPDIR}"/usr/share/gnupg/distsigkey.gpg \
+                    "$APPNAME".sig "$APPNAME" ; then
+
+            echo "error: this appimage is not correctly signed" >&2
+            exit 2
+        fi
+    fi
     exit 0
-fi
-if [ "$1" = "--debug" ]; then
-    shift
-    set -x
 fi
 
 export PATH="${APPDIR}/usr/bin:${PATH}"
@@ -48,23 +64,51 @@ if [ -z "$SHELL" ]; then
     fi
 fi
 
+
+
+mycleanup () {
+    if [ -n $"gnupg_SETUPINIFILE" ]; then
+        rm -f $"gnupg_SETUPINIFILE"
+    fi
+}
+
+gnupg_SETUPINIFILE=
+trap mycleanup 0 INT QUIT
+
+
 if [ "$1" = "-c" -o "$1" = "-i" ]; then
     shift
     if [ ! -x "$SHELL" ]; then
-        echo "No shell found" >&2
+        echo "error: no shell found" >&2
         exit 2
     fi
     if [ -n "$1" ]; then
         pgm="$SHELL"
         pgmargs="-c $@"
     else
-        pgm="$SHELL"
-        pgmargs=-i
+        export gnupg_SETUPINIFILE SHELL
+        if [ $(id -u) -eq 0 -a ! -d /etc/gnupg-vsd ]; then
+            echo "no global configuration - installing default" >&2
+            mkdir /etc/gnupg-vsd
+            cp "${APPDIR}"/usr/share/gnupg/conf/gnupg-vsd/* /etc/gnupg-vsd/
+        fi
+        if echo "$SHELL" | grep '/bash$' >/dev/null 2>&1; then
+            pgm="${APPDIR}/start-shell"
+            pgmargs=
+            gnupg_SETUPINIFILE="/tmp/gnupg-tmp.$(id -u).$$.ini"
+        else
+            pgm="$SHELL"
+            pgmargs="-i"
+        fi
         echo Welcome to "$myname"\! >&2
         echo "(type \"exit\" to leave)" >&2
         echo "" >&2
     fi
 else
+    if [ $(id -u) -eq 0 ]; then
+        echo "error: the GUI may not be run by root" >&2
+        exit 2
+    fi
     # Ignore the optional --gui option
     if [ "$1" = "--gui" ]; then
         shift

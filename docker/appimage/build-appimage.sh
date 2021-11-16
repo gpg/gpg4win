@@ -48,6 +48,18 @@ else
     echo 'sysconfdir = /etc/gnupg' >>/build/AppDir/usr/bin/gpgconf.ctl
 fi
 
+# Copy the start-shell helper for use AppRun
+cp /src/src/appimage/start-shell /build/AppDir/
+chmod +x /build/AppDir/start-shell
+
+# Copy standard global configuration
+if [ $GNUPG_BUILD_VSD = yes ]; then
+    mkdir -p /build/AppDir/usr/share/gnupg/conf/gnupg-vsd
+    rsync -av --delete --omit-dir-times \
+          /src/src/gnupg-vsd/Standard/etc/gnupg/ \
+          /build/AppDir/usr/share/gnupg/conf/gnupg-vsd/
+fi
+
 export PATH=/opt/linuxdeploy/usr/bin:$PATH
 export LD_LIBRARY_PATH=/build/install/lib
 
