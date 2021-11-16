@@ -91,10 +91,10 @@ rm -rf /build/AppDir/usr/translations
 rm -f /build/AppDir/GnuPG-VS-Desktop-VERSION 2>/dev/null
 rm -f /build/AppDir/GnuPG-Desktop-VERSION    2>/dev/null
 
-# Extract gnupg version or (for VSD builds) Kleopatra version for use
+# Extract gnupg version or (for VSD builds) gpg4win version for use
 # as filename of the AppImage
 if [ $GNUPG_BUILD_VSD = yes ]; then
-    myversion=$(grep KLEOPATRA_VERSION_STRING /build/build/kleopatra-*-build/version-kleopatra.h | cut -d '"' -f 2 | cut -d '.' -f 1-3)
+    myversion=$(grep PACKAGE_VERSION /src/config.h|sed -n 's/.*"\(.*\)"$/\1/p')
     OUTPUT=gnupg-vs-desktop-${myversion}-x86_64.AppImage
     echo $myversion >/build/AppDir/GnuPG-VS-Desktop-VERSION
 else
