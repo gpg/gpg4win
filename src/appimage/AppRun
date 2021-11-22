@@ -126,7 +126,7 @@ fi
 
 # The admin may tweak this script by creating a snippet to be sourced
 # here.  For example, this can be used to set a different per user
-# GNUPGHOME so that the entire installation will be separate form the
+# GNUPGHOME so that the entire installation will be separate from the
 # system's standard configuration.
 if [ -f $prestart_snippet ]; then
     . $prestart_snippet
