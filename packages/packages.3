@@ -1,0 +1,49 @@
+#  packages.3 the list of packages for use with gpg4win-3.x -*- sh -*-
+#
+# The download script processes the statements here to
+# actually download the packages.  The syntax is trivial:
+#
+# If the first non whitespace character of a line is #, the line is
+# considered a comment.  If the first word of a line is "server", the
+# rest of the line will be taken as the base URL for following file
+# commands.  If the first word of a line is "file" the rest of the
+# line will be appended to the current base URL (with a / as
+# delimiter).  The statement "chk" is followed by the SHA256 checksum of
+# the last file.
+
+server https://gnupg.org/ftp/gcrypt
+
+# All tarballs from this server are verified with an openpgp
+# signature made by "Werner Koch (dist sig)" or one of the other
+# gnupg main contributors.
+
+# last changed 2021-11-22
+# by ah
+# verified: distsigkey.gpg
+file libgcrypt/libgcrypt-1.8.8.tar.bz2
+chk  895de2bb981dd127f0821d1ce13fadf7d760f9fa7737648b15f2c1fe13cc5af5
+
+# last changed 2021-11-22
+# by ah
+# verified: distsigkey.gpg
+file gnupg/gnupg-2.2.32.tar.bz2
+chk b2571b35f82c63e7d278aa6a1add0d73453dc14d3f0854be490c844fca7e0614
+
+# last changed: 2021-10-09
+# by: wk
+# verified: own signing key
+name gnupg-w32-2.2.32_20211006-bin.exe
+file binary/gnupg-w32-2.2.32_20211006.exe
+chk  7d14476aab7316486005164d283f26efa52dfa02afab425afd54544c90f2dff8
+
+name gnupg-w32-2.2.32-20210915-src.tar.xz
+file binary/gnupg-w32-2.2.32_20211006.tar.xz
+chk  1e5aa7cbe989284d6ed7a2ba7f6a3f5e2eb6d9128b2356f2b44f0eadfe0a68a7
+
+name gnupg-msi-2.2.32-20210915-src.tar.xz
+file binary/gnupg-w32-2.2.32_20211006.tar.xz
+chk  1e5aa7cbe989284d6ed7a2ba7f6a3f5e2eb6d9128b2356f2b44f0eadfe0a68a7
+
+name gnupg-msi-2.2.32-20210915-bin.wixlib
+file binary/gnupg-w32-2.2.32_20211006.wixlib
+chk  3eb3ecc68fdfea865112f5dc1b807323aa2d2911ac65abaaca38e476fa752af6

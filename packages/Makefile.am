@@ -17,8 +17,9 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
 
-EXTRA_DIST = download.sh packages.current gen-frameworks.sh \
-			 get-gpg-package.sh distsigkey.gpg \
+EXTRA_DIST = download.sh packages.common packages.3 packages.4 \
+			 gen-frameworks.sh gen-tarball.sh gen-kde-gears.sh \
+			 get-gpg-package.sh distsigkey.gpg kde-release-keys.gpg \
 			 $(wildcard *.tar.gz *.tar.bz2 *.tar.xz *.zip *.exe *.wixlib)
 
 

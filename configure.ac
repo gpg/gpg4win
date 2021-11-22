@@ -454,7 +454,7 @@ $i"
     tmp2="
 You might remove them with:"
     for i in $gpg4win_rm_candidates; do
-        if ! grep -q $(basename $i) packages/packages.current; then
+        if ! grep -q $(basename $i) packages/packages.common packages/packages.3 packages/packages.4; then
             tmp2="$tmp2
 rm $i"
         fi
@@ -471,7 +471,7 @@ $i"
     tmp2="
 You might remove them with:"
     for i in $appimage_rm_candidates; do
-        if ! grep -q $(basename $i) packages/packages.current; then
+        if ! grep -q $(basename $i) packages/packages.common packages/packages.3 packages/packages.4; then
             tmp2="$tmp2
 rm $i"
         fi
