@@ -25,7 +25,8 @@ min_automake_version="1.9.3"
 # (git tag -s gpg4win-2.x.y) and run "./autogen.sh --force".  Please
 # bump the version number immediately after the release and do another
 # commit and push so that the git magic is able to work.
-m4_define([my_version], [4.0.0])
+m4_define([my_gnupg_3_version], [4.0.0])
+m4_define([my_gnupg_2_version], [3.1.20])
 
 # Below is m4 magic to extract and compute the git revision number,
 # the decimalized short revision number, a beta version string and a
@@ -38,7 +39,10 @@ m4_define([git_revision_dec],
 m4_define([git_betastring],
           m4_esyscmd_s([git describe --tags --match 'gpg4win-[0-9].*.*[0-9]' \
                        --long | awk -F- '$3!=0{print"-beta"$3}']))
+m4_define([my_gnupg_minor],
+          m4_esyscmd_s([ls packages/gnupg-*.tar.* | cut -d. -f2]))
 m4_define([my_isgit],m4_if(git_betastring,[],[no],[yes]))
+m4_define([my_version],m4_if(my_gnupg_minor, [2], [[my_gnupg_2_version]], [[my_gnupg_3_version]]))
 m4_define([my_full_version],[my_version[]git_betastring])
 
 AC_INIT([gpg4win],[my_full_version],[gpg4win-devel@wald.intevation.org])
