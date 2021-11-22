@@ -51,9 +51,11 @@ export XDG_CONFIG_DIRS="${APPDIR}/usr/etc/xdg:${XDG_CONFIG_DIRS:-/etc/xdg}:/etc/
 # rely on APPDIR because other appimages might come with their own
 # gnupg version.  Change the value to "vsd" for a GnuPG VS-Desktop build.
 if [ -f "${APPDIR}/GnuPG-VS-Desktop-VERSION" ]; then
-   _gnupg_appimage=vsd
+    _gnupg_appimage=vsd
+   prestart_snippet=/etc/gnupg-vsd/apprun.pre-start.sh
 else
    _gnupg_appimage=generic
+   prestart_snippet=/etc/gnupg/apprun.pre-start.sh
 fi
 export _gnupg_appimage
 
@@ -120,6 +122,14 @@ else
         echo "Kleopatra not found" >&2
         exit 2
     fi
+fi
+
+# The admin may tweak this script by creating a snippet to be sourced
+# here.  For example, this can be used to set a different per user
+# GNUPGHOME so that the entire installation will be separate form the
+# system's standard configuration.
+if [ -f $prestart_snippet ]; then
+    . $prestart_snippet
 fi
 
 # Start gpg-agent launching a program.  gpg-agent will then watch for
