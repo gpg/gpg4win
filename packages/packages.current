@@ -332,6 +332,26 @@ chk  46f7bf49ac5445370012a3698e048cd994579981df28f80f8b8494cf45869e8d
 #file binary/gnupg-w32-2.3.1_20210420.wixlib
 #chk  133817a4c4d11996956676c5c200222839ee5dc16e9476bd682d4e68b33ef73e
 
+# last changed: 2021-10-09
+# by: wk
+# verified: own signing key
+name gnupg-w32-2.2.32_20211006-bin.exe
+file binary/gnupg-w32-2.2.32_20211006.exe
+chk  7d14476aab7316486005164d283f26efa52dfa02afab425afd54544c90f2dff8
+
+name gnupg-w32-2.2.32-20210915-src.tar.xz
+file binary/gnupg-w32-2.2.32_20211006.tar.xz
+chk  1e5aa7cbe989284d6ed7a2ba7f6a3f5e2eb6d9128b2356f2b44f0eadfe0a68a7
+
+name gnupg-msi-2.2.32-20210915-src.tar.xz
+file binary/gnupg-w32-2.2.32_20211006.tar.xz
+chk  1e5aa7cbe989284d6ed7a2ba7f6a3f5e2eb6d9128b2356f2b44f0eadfe0a68a7
+
+name gnupg-msi-2.2.32-20210915-bin.wixlib
+file binary/gnupg-w32-2.2.32_20211006.wixlib
+chk  3eb3ecc68fdfea865112f5dc1b807323aa2d2911ac65abaaca38e476fa752af6
+
+
 # last changed: 2021-04-21
 # by: ah
 file pinentry/pinentry-1.2.0.tar.bz2

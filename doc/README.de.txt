@@ -39,13 +39,13 @@ Installation.
 Systemvoraussetzungen
 ---------------------
 
-Gpg4win läuft auf Windows Versionen 7 oder neuer (bis Windows 10).
-32- und 64bit-Systeme werden unterstützt. Wird mindestens Windows XP verwendet,
-können einige Komponenten von Gpg4win verwendet werden, sie sind allerdings
-nicht offiziell unterstützt.
+Gpg4win läuft auf Windows Versionen 7 oder neuer. Inklusive Windows
+Server ab Version 2008. Es werden sowohl 32- und 64bit-Systeme unterstützt.
+Wird mindestens Windows XP verwendet, können einige Komponenten von
+Gpg4win verwendet werden, sie sind allerdings nicht offiziell unterstützt.
 
-Das Outlook-Plugin GpgOL ist kompatibel mit Microsoft Outlook 2010, 2013 und
-2016 (sowohl 32 als auch 64bit) und unterstützt E-Mail Transport per SMTP/IMAP
+Das Outlook-Plugin GpgOL ist kompatibel mit Microsoft Outlook 2010 und späteren
+Versionen (sowohl 32 als auch 64bit) und unterstützt E-Mail Transport per SMTP/IMAP
 und MS Exchange Server (ab Version 2010).
 
 Mit Gpg4win Version 3.1.2 wurde die Unterstützung für Outlook 2003 und 2007
@@ -66,62 +66,74 @@ Die integrierten Gpg4win-Komponenten in Version !VERSION! sind:
 Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 -----------------------------------------
 
-- GpgOL: Ein kritischer Fehler der seit Gpg4win-3.1.12 existierte
-  wurde behoben bei der Auswahl von "Kein Schlüssel" für einen
-  Empfänger konnte es dazu kommen das an beliebige Schlüssel
-  verschlüsselt wurde. (T5223)
+- GpgOL: Es werden nun auch Outlook Elemente, wie etwa weitergeleitete
+  Mails oder Kontakte und Termine in Krypo Mails unterstützt. (T4184)
 
-- GpgOL: auto-key-retrieve in der GnuPG Konfiguration führt nun
-  nicht mehr zu "Keine Daten" Fehlern beim betrachten signierter
-  Mails. (T5164)
+- GpgOL: Die Warnung zu "Widersprüchlichen Krypto Einstellungen"
+  ignoriert nun undokumentierte Werte von Outlook. (T5335)
 
-- GpgOL: Der Fehler "Keine Daten" wird nun besser behandelt und
-  zeigt hilfreiche Informationen in der Mail-Ansicht. (T5164)
+- Kleopatra: Das neue Feature "Gruppen" erlaubt es, Gruppen zu
+  definieren, die dann bei der Empfänger-Auswahl als Ganzes
+  ausgewählt werden können. (T5175 T5241)
 
-- GpgOL: Der Name für VS-NfD Konformität ist nun in der libkleopatrarc
-  konfigurierbar.
+- Kleopatra: Verschlüsseln funktioniert nun auch wieder mit
+  Windows Netzwerkpfaden. (T5216)
 
-- Kleopatra: Der Dialog um neue Schlüssel zu erstellen wurde
-  vereinfacht und macht es nun leichter Schlüssel ohne zusätzlichen
-  Passphrase Schutz zu erstellen. Dies kann mit der Option
-  "enforce-passphrase-constraints" in der gpg-agent Konfiguration
-  deaktiviert werden. (T5181)
+- Kleopatra: Die Prüfung ob Kleopatra mit erhöhten Rechten
+  ausgeführt wird, führt nur noch zu einer Warnung und nicht
+  mehr zu einem Fehler. (T5248)
 
-- Kleopatra: Name und Mailaddresse für neue Schlüssel werden nun über
-  Active Directory befüllt wenn diese Information verfügbar ist.
-  (T5181)
+- Kleopatra: Das gleichzeitige Exportieren von S/MIME und
+  OpenPGP Zertifikaten wurde vereinfacht. (T5002)
 
-- Kleopatra: Das erstellen von S/MIME CSRs zu OpenPGP Smartcards
-  wurde weiter verbessert. (T5127)
+- Kleopatra: Die Suche zeigt nicht länger alle Ergebnisse als
+  "nicht beglaubigt" an. (T5388)
 
-- Kleopatra: Die Unterstützung für Tags in Beglaubigungen wurde
-  deutlich verbessert und tags werden nun auch berücksichtigt wenn
-  man Schlüssel zur Datei-Verschlüsselung auswählt. (T5174)
+- Kleopatra: Neue Unterstützung für weitere CardOS Smartcards.
+  (T4876)
 
-- Kleopatra: Das ausführen mit erhöhten Rechten (als Administrator starten)
-  wird nun verhindert um zu vermeiden das die Dateirechte im GnuPG
-  Datenordner fehlerhaft gesetzt werden. (T5212)
+- Kleopatra: Zertifikate werden nun passend zur eingesteckten
+  Smartcard von einem konfigurieren Active Directory bzw. LDAP
+  Server geladen. (T4876)
 
-- Klepoatra: Das setzen der initialen SigG PIN für NetKey Karten funktioniert
-  nun auch wenn die generelle PIN nicht gesetzt ist. (T5220)
+- Kleopatra: Bei der Beglaubigung kann man nun festlegen, dass
+  ein Zertifikat vertrauenswürdige Beglaubigungen für eine bestimmte
+  Domäne ausstellen darf. So kann man eine Infrastruktur etablieren,
+  bei denen die Verantwortlichkeit für eine Domäne delegiert wird.
+  (T5245)
 
-- GnuPG: Es gibt nun eine systemweite Konfigurationsmöglichkeit
-  Konfigurationsdateien unter "%ProgramData%\GNU\etc\gnupg" werden
-  nun berücksichtigt. Das Format entspricht der Nutzerkonfiguration
-  unter "%AppData%\gnupg" mit zusätzlicher Syntax um Optionen zu
-  erzwingen und andere zu ignorieren. (T4788)
+- Kleopatra: Die Benutzbarkeit der Smartcard Ansicht wurde
+  weiter verbessert. (T4876)
 
-- GnuPG: OpenPGP Zertifikate können nun automatisch
-  über Active Directory bezogen werden.
+- Kleopatra: Komplexe LDAP Schlüsselserver Einträge können nun
+  eingegeben werden ohne das es zu Syntax Fehlern kommt. (T5404)
 
-- GnuPG: Für LDAP Schlüsselserver wird nun ein verbessertes
-  Schema verwendet.
+- Kleopatra: Sehr große Archive führen nun nicht länger zu einem
+  Absturz von Kleopatra. (T5475)
 
-- GnuPG: Auf Version 2.2.27 aktualisiert:
-  https://lists.gnupg.org/pipermail/gnupg-announce/2021q1/000452.html
+- Kleopatra: Das Entschlüsseln von Archiven wurde beschleunigt.
+  (T5478)
 
-  Ankündigung von Version 2.2.26:
-  https://lists.gnupg.org/pipermail/gnupg-announce/2020q4/000451.html
+- Kleopatra: Verschlüsseln von Ordnern mit Dateien, die größer
+  als 4GB sind, führt nun nicht mehr zu fehlerhaften Archiven.
+  (T5478)
+
+- Kleopatra: Die Suche in LDAP / Active Directory kann nun mehr
+  als einen Schlüssel anzeigen und zeigt die korrekten Details.
+  (T5441)
+
+- GnuPG: OpenPGP Schlüssel aus dem LDAP werden nun mit
+  Beglaubigungen importiert. (T5387)
+
+- GnuPG: Dateien die mit S/MIME (CMS) aber nur mit Passwort
+  verschlüsselt wurden, können nun entschlüsselt werden.
+
+- GnuPG: Sonderzeichen auf der Kommandozeile werden nun erneut
+  gehandhabt. (T4398)
+
+- GnuPG: Auf Version 2.2.28 aktualisiert:
+  https://lists.gnupg.org/pipermail/gnupg-announce/2021q2/000460.html
+
 
 3. Hinweise
 ===========

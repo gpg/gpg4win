@@ -3,13 +3,323 @@
 # The version number given below are for the standard installers as
 # distributed by www.gpg4win.org.
 Noteworthy changes in Version 4.0.0 (unreleased)
-------------------------------------------------
+-------------------------------------------------
 
 ~~~~~~~~~~~~~~~
 GnuPG:          2.3.1
-Kleopatra:      3.1.15
+Kleopatra:      3.1.19
 GPA:            0.10.0
-GpgOL:          2.4.10
+GpgOL:          2.5.0
+GpgEX:          1.0.8
+Kompendium DE:  4.0.1
+Compendium EN:  3.0.0
+~~~~~~~~~~~~~~~
+
+Noteworthy changes in Version 3.1.19 (2021-10-09)
+-------------------------------------------------
+
+(en) Kleopatra: Ask GnuPG for the correct path for the uiserver socket
+     (T5619).
+
+(en) Kleopatra: Fix a problem with smartcard detection on startup.
+     (rKd2338373ab41)
+
+(en) Kleopatra: Enable the "create openpgp key from card" command only
+     for GnuPG >= 2.3.  (rK107abfdb1a41)
+
+(en) GnuPG: Updated to 2.2.32.  For details see:
+     https://lists.gnupg.org/pipermail/gnupg-announce/2021q4/000465.html
+
+~~~~~~~~~~~~~~~
+GnuPG:          2.2.32
+Kleopatra:      3.1.19
+GPA:            0.10.0
+GpgOL:          2.5.0
+GpgEX:          1.0.8
+Kompendium DE:  4.0.1
+Compendium EN:  3.0.0
+~~~~~~~~~~~~~~~
+
+Noteworthy changes in Version 3.1.18
+------------------------------------
+
+(en) [not released]
+
+
+Noteworthy changes in Version 3.1.17 (2021-09-17)
+------------------------------------------------
+
+(en) Kleopatra: Windows no longer appear in the background
+     when Kleopatra is not the active foreground process.
+     (T5533)
+
+(de) Kleopatra: Fenster erscheinen nicht mehr im Hintergrund
+     wenn Kleopatra nicht das aktive Vordergrund Fenster war.
+     (T5533)
+
+(en) Kleopatra: The directory services configuration for LDAP
+     servers has been extended. (T5465)
+
+(de) Kleopatra: Die Konfiguration von LDAP Verzeichnisdiensten
+     wurde verbessert. (T5465)
+
+(en) Kleopatra: It is now possible to set an expiration date
+     for a certification. (T5336)
+
+(de) Kleopatra: Es ist nun möglich ein Ablaufdatum für eine
+     beglaubigung zu setzen. (T5336)
+
+(en) Kleopatra: It is now possible to update subkey expiration
+     dates with Kleopatra. (T4717)
+
+(de) Kleopatra: Es ist nun möglich auch das Ablaufdatum von
+     unterschlüsseln zu ändern. (T4717)
+
+(en) Kleopatra: The default keyserver is now queried from GnuPG.
+     (T5514)
+
+(de) Kleopatra: Der standard Schlüsselserver wird nun von GnuPG
+     abgefragt. (T5514)
+
+(en) Kleopatra: Users are now prompted to set the ownertrust
+     when certifying with an untrusted key. (T5511)
+
+(de) Kleopatra: Es wird nun aufgefordert das Beglaubigungsvertrauen
+     zu setzen wenn man mit einem nicht vertrautem Schlüssel
+     eine Beglaubigung durchführt. (T5511)
+
+(en) Kleopatra: Symmetric encryption is now preselected if
+     no keys are present. (T5545)
+
+(de) Kleopatra: Symmetrische Verschlüsselung ist nun vorausgewählt
+     wenn keine Schlüssel vorhanden sind. (T5545)
+
+(en) Kleopatra: Every action in the file encryption dialow
+     is now accessible through a shortcut. (T5544)
+
+(de) Kleopatra: Jede Aktion im Verschlüsselungs-Dialog hat nun
+     einen Keyboard-Shortcut. (T5544)
+
+(en) Kleopatra: Accessibility, especially for encryption,
+     has been greatly improved. (T5535)
+
+(de) Kleopatra: Die Barrierefreiheit, besonders für Verschlüsselung
+     wurde stark verbessert. (T5535)
+
+(en) Pinentry: Symmetric passwords are now formatted when
+     visible if the corresponding gpg-agent option
+     "pinentry-formatted-passphrase" has been set. (T5517)
+
+(de) Pinentry: Symmetrische Passwörter werden nun formatiert
+     angezeigt wenn die entsprechende Option
+     "pinentry-formatted-passphrase" im gpg-agent
+     gesetzt wurde. (T5517)
+
+(en) Pinentry: It is now possible to generate secure
+     passwords for symmetric encryption through gpg-agent.
+     (T5517)
+
+(de) Pinentry: Es ist nun möglich sichere Passwörter für
+     die symmetrische Verschlüsselung über den gpg-agent
+     zu generieren. (T5517)
+
+(en) Pinentry: It is now possible to add custom help text
+     files to explain passphrase constraints. (T5517)
+
+(de) Pinentry: Es ist jetzt möglich angepasste Hilfe Texte
+     zu hinterlegen um Passwort-Regeln anzuzeigen. (T5517)
+
+(en) Pinentry: Passphrase constraints are now better
+     checked and violations no longer clear the entered
+     passphrase. (T5532)
+
+(de) Pinentry: Passwort Regeln können nun besser geprüft
+     werden und ein nicht entsprechendes Passwort wird
+     nicht mehr aus der Eingabe gelöscht. (T5532)
+
+(en) Pinentry: A capslock warning is now shown. (T4950)
+
+(de) Pinentry: Es wird nun eine Warnung angezeigt wenn
+     die Hochstelltaste aktiv ist. (T4950)
+
+(en) Pinentry: The dialog is now more accessible and
+     constraints are shown in a way that screenreaders
+     can handle.
+
+(de) Pinentry: Die Barrierefreiheit des Dialogs wurde
+     verbessert so das alle Warnungen und Aktionen gut
+     von Screenreadern verarbeitet werden.
+
+(en) GnuPG: Passphrase constraint handling has been
+     improved with a new syntax for constraints.
+     (T5517)
+
+(de) GnuPG: Die Unterstützung für Passwort-Regeln wurde
+     verbessert und erlaubt nun auch Sonder-Regeln für
+     symmetrische Passwörter.
+     (T5517)
+
+(en) GnuPG: The socket files are now located under
+     Appdata/Local. (T5537)
+
+(de) GnuPG: Die Socket Dateien liegen nun unter
+     Appdata/Local. (T5537)
+
+(en) GnuPG: Updated to 2.2.31 See:
+     https://lists.gnupg.org/pipermail/gnupg-announce/2021q3/000464.html
+
+(de) GnuPG: Auf Version 2.2.31 aktualisiert:
+     https://lists.gnupg.org/pipermail/gnupg-announce/2021q3/000464.html
+
+~~~~~~~~~~~~~~~
+GnuPG:          2.2.31
+Kleopatra:      3.1.17
+GPA:            0.10.0
+GpgOL:          2.5.0
+GpgEX:          1.0.6
+Kompendium DE:  4.0.1
+Compendium EN:  3.0.0
+~~~~~~~~~~~~~~~
+
+Noteworthy changes in Version 3.1.16 (2021-06-11)
+------------------------------------------------
+
+(en) GpgOL: Added support for encrypting Outlook elements such
+     as forwarded mails or contacts and events. (T4184)
+
+(de) GpgOL: Es werden nun auch Outlook Elemente, wie etwa weitergeleitete
+     Mails oder Kontakte und Termine in Krypo Mails unterstützt. (T4184)
+
+(en) GpgOL: The "conflicting crypto preferences" warning
+     now ignores more undocumented states. (T5335)
+
+(de) GpgOL: Die Warnung zu "Widersprüchlichen Krypto Einstellungen"
+     ignoriert nun undokumentierte Werte von Outlook. (T5335)
+
+(en) Kleopatra: Added a "Groups" feature where you can define
+     recipient groups that can then be selected as a whole when
+     doing operations. (T5175 T5241)
+
+(de) Kleopatra: Das neue Feature "Gruppen" erlaubt es, Gruppen zu
+     definieren, die dann bei der Empfänger-Auswahl als Ganzes
+     ausgewählt werden können. (T5175 T5241)
+
+(en) Kleopatra: Encryption works again with Windows shared file
+     system paths. (T5216)
+
+(de) Kleopatra: Verschlüsseln funktioniert nun auch wieder mit
+     Windows Netzwerkpfaden. (T5216)
+
+(en) Kleopatra: The check for elevated execution is now
+     only a warning and no longer a hard error. (T5248)
+
+(de) Kleopatra: Die Prüfung ob Kleopatra mit erhöhten Rechten
+     ausgeführt wird, führt nur noch zu einer Warnung und nicht
+     mehr zu einem Fehler. (T5248)
+
+(en) Kleopatra: The combined export of S/MIME and OpenPGP certificates
+     has been improved. (T5002)
+
+(de) Kleopatra: Das gleichzeitige Exportieren von S/MIME und
+     OpenPGP Zertifikaten wurde vereinfacht. (T5002)
+
+(en) Kleopatra: Search no longer shows all results as uncertified.
+     (T5388)
+
+(de) Kleopatra: Die Suche zeigt nicht länger alle Ergebnisse als
+     "nicht beglaubigt" an. (T5388)
+
+(en) Kleopatra: Added support for additional CardOS Smartcards.
+     (T4876)
+
+(de) Kleopatra: Neue Unterstützung für weitere CardOS Smartcards.
+     (T4876)
+
+(en) Kleopatra: Automatically imports public keys for the inserted
+     Smartcard from an Active Directory / LDAP Server. (T4876)
+
+(de) Kleopatra: Zertifikate werden nun passend zur eingesteckten
+     Smartcard von einem konfigurieren Active Directory bzw. LDAP
+     Server geladen. (T4876)
+
+(en) Kleopatra: The certify dialog now allows to certify a key
+     as the certification authority for a specific domain. This
+     enables Public Key Infrastructures where the certification
+     is delegated. (T5245)
+
+(de) Kleopatra: Bei der Beglaubigung kann man nun festlegen, dass
+     ein Zertifikat vertrauenswürdige Beglaubigungen für eine bestimmte
+     Domäne ausstellen darf. So kann man eine Infrastruktur etablieren,
+     bei denen die Verantwortlichkeit für eine Domäne delegiert wird.
+     (T5245)
+
+(en) Kleopatra: The Smartcard view has been improved for better
+     usability. (T4876)
+
+(de) Kleopatra: Die Benutzbarkeit der Smartcard Ansicht wurde
+     weiter verbessert. (T4876)
+
+(en) Kleopatra: Complex LDAP Keyserver entries can now be entered
+     without corruption. (T5404)
+
+(de) Kleopatra: Komplexe LDAP Schlüsselserver Einträge können nun
+     eingegeben werden ohne das es zu Syntax Fehlern kommt. (T5404)
+
+(en) Kleopatra: Very large Archives no longer lead to crashes on
+     decryption. (T5475)
+
+(de) Kleopatra: Sehr große Archive führen nun nicht länger zu einem
+     Absturz von Kleopatra. (T5475)
+
+(en) Kleopatra: The performance when decrypting archives has
+     been improved. (T5478)
+
+(de) Kleopatra: Das Entschlüsseln von Archiven wurde beschleunigt.
+     (T5478)
+
+(en) Kleopatra: Encrypting folders with files larger then 4GB no
+     longer leads to truncated archives. (T5475)
+
+(de) Kleopatra: Verschlüsseln von Ordnern mit Dateien, die größer
+     als 4GB sind, führt nun nicht mehr zu fehlerhaften Archiven.
+     (T5478)
+
+(en) Kleopatra: Searching on LDAP / Active Directory for OpenPGP
+     keys can now show multiple keys and shows details. (T5441)
+
+(de) Kleopatra: Die Suche in LDAP / Active Directory kann nun mehr
+     als einen Schlüssel anzeigen und zeigt die korrekten Details.
+     (T5441)
+
+(en) GnuPG: Importing OpenPGP keys from LDAP no longer strips third
+     party signatures. (T5387)
+
+(de) GnuPG: OpenPGP Schlüssel aus dem LDAP werden nun mit
+     Beglaubigungen importiert. (T5387)
+
+(en) GnuPG: Files encrypted with S/MIME (CMS) but only with
+     a password can now be decrypted.
+
+(de) GnuPG: Dateien die mit S/MIME (CMS) aber nur mit Passwort
+     verschlüsselt wurden, können nun entschlüsselt werden.
+
+(en) GnuPG: Special characters (non 7bit) are now handled again.
+     (T4398)
+
+(de) GnuPG: Sonderzeichen auf der Kommandozeile werden nun erneut
+     gehandhabt. (T4398)
+
+(en) GnuPG: Updated to 2.2.28 See:
+     https://lists.gnupg.org/pipermail/gnupg-announce/2021q2/000460.html
+
+(de) GnuPG: Auf Version 2.2.28 aktualisiert:
+     https://lists.gnupg.org/pipermail/gnupg-announce/2021q2/000460.html
+
+~~~~~~~~~~~~~~~
+GnuPG:          2.2.28
+Kleopatra:      3.1.16
+GPA:            0.10.0
+GpgOL:          2.5.0
 GpgEX:          1.0.6
 Kompendium DE:  4.0.1
 Compendium EN:  3.0.0

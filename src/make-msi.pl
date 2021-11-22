@@ -113,6 +113,13 @@ sub get_guid
     return $guid;
 }
 
+sub get_tmp_guid
+{
+    my $guid = uc `uuidgen`;
+    chomp $guid;
+    return $guid;
+}
+
 
 $::files_file = '';
 
@@ -1264,8 +1271,9 @@ sub dump_all
             {
                 print ' ' x $::level
                 . "    <Shortcut Id='sm_$pkg->{name}_$fileidx' "
-                . "Directory='ProgramMenuDir' Name='Kleopatra'"
+                . " Directory='ProgramMenuDir' Name='Kleopatra'"
                 . " Description='!(loc.DESC_Menu_kleopatra)'/>" . "\n";
+
             }
             if (defined $parser->{shortcuts}->{$targetfull})
             {
@@ -1525,6 +1533,27 @@ sub dump_all2
             . "<Condition Level='$::nsis_level_optional'>"
             . "INST_$uc_pkgname = \"false\"</Condition>\n";
         }
+        if ($pkg->{name} eq "kleopatra")
+        {
+            print ' ' x $::level
+            . " <Feature Id='p_kleo_desktop' Title='p_kleo_desktop' Level='1000'"
+            . " Display='hidden' InstallDefault='followParent'>\n"
+            . "  <Condition Level='1'>INST_DESKTOP= \"true\"</Condition>\n"
+            . "  <Condition Level='1000'>INST_DESKTOP= \"false\"</Condition>\n"
+            . "  <ComponentRef Id='ApplicationShortcutDesktop'/>\n"
+            . " </Feature>\n";
+
+            print ' ' x $::level
+            . " <Feature Id='p_kleo_autostart' Title='p_kleo_autostart' Level='1000'"
+            . " Display='hidden' InstallDefault='followParent'>\n"
+            . "  <Condition Level='1'>AUTOSTART= \"true\"</Condition>\n"
+            . "  <Condition Level='1000'>AUTOSTART= \"false\"</Condition>\n"
+            . "  <Component Id='KleoAutostartRegKey' Guid='6520AE4C-E588-4CC9-B433-102F35C95B74' Directory='APPLICATIONFOLDER'>\n"
+            . "  <RegistryValue Root='HKMU' Key='Software\\Microsoft\\Windows\\CurrentVersion\\Run' Name='Kleopatra'\n"
+            . "    Type='string' Value='[APPLICATIONFOLDER]bin\\kleopatra.exe --daemon' KeyPath='yes'/>\n"
+            . "  </Component>\n"
+            . " </Feature>\n"
+        }
 
         dump_meat ($pkg);
 
@@ -1584,6 +1613,43 @@ sub scan_dir {
     return @ret;
 }
 
+sub dump_help {
+    my ($workdir) = @_;
+    my $custom_name = basename($workdir);
+    open (FILE, ">$workdir/$custom_name.wxs") or die;
+    my $fileidx = 0;
+
+    foreach my $file (&scan_dir($workdir)) {
+        my $basename = basename($file);
+        my $dirname = "HelpDataFolder";
+
+        if ($basename =~ /^\./) {
+            next;
+        }
+
+        my $guid = get_tmp_guid ($file);
+        my $sourcefull = "\$(var.SrcDir)/" . $file;
+        $sourcefull =~ s/.*\/src\//\$(var.SrcDir)\//;
+        $sourcefull =~ s/\//\\/g;
+
+        my $custom_name_us=$custom_name;
+        $custom_name_us =~ s/-/_/;
+
+        print FILE ' ' x 6 . '<Component Id="c_' . $custom_name_us . "_" . $fileidx
+        . '" Directory="' . $dirname . '" Guid="' . $guid . '" KeyPath="yes">' . "\n";
+
+        print FILE ' ' x 8
+        . "  <File Id='f_$custom_name_us" . "_$fileidx' Name='"
+        . $basename ."' KeyPath='no'" . " Source='" .
+        $sourcefull . "'/>\n";
+
+        print FILE ' ' x 6 . '</Component>' . "\n";
+
+        $fileidx += 1;
+    }
+    close FILE;
+}
+
 sub dump_single_custom {
     my ($workdir) = @_;
     my $custom_name = basename($workdir);
@@ -1593,7 +1659,6 @@ sub dump_single_custom {
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
   <Fragment>
     <DirectoryRef Id="APPLICATIONFOLDER">
-     <Directory Id="KleopatraDataFolder" Name="share"/>
      <Directory Id="CommonAppDataFolder">
         <Directory Id="CommonAppDataManufacturerFolder" Name="GNU">
           <Directory Id="AppDataSubFolder" Name="etc">
@@ -1609,6 +1674,14 @@ sub dump_single_custom {
    <Fragment>
     <ComponentGroup Id="c_customization">
 EOF
+   print STDERR "Including: help\n";
+   open (INCFILE, "<$workdir/../help/help.wxs") or die;
+   while (<INCFILE>)
+   {
+       print FILE $_;
+   }
+   close (INCFILE);
+
     my $fileidx = 0;
 
     foreach my $file (&scan_dir($workdir)) {
@@ -1619,6 +1692,9 @@ EOF
             next;
         }
         if ($basename eq "$custom_name.wixlib") {
+            next;
+        }
+        if ($basename eq "customer-enc-key.asc") {
             next;
         }
         if ($basename =~ /^\./) {
@@ -1635,7 +1711,7 @@ EOF
            close (INCFILE);
         }
 
-        my $guid = get_guid ($file);
+        my $guid = get_tmp_guid ($file);
         my $sourcefull = "\$(var.SrcDir)/" . $file;
         $sourcefull =~ s/.*\/src\//\$(var.SrcDir)\//;
         $sourcefull =~ s/\//\\/g;
@@ -1690,6 +1766,7 @@ sub dump_customs
     opendir(DIR, ".") or die "Unable to open $workdir:$!\n";
     my @names = readdir(DIR) or die "Unable to read $workdir:$!\n";
     closedir(DIR);
+    dump_help("help");
 
     foreach my $name (@names) {
         next if ($name eq ".");
@@ -1699,6 +1776,10 @@ sub dump_customs
         next if ($name eq "sign.mk");
         next if ($name eq ".git");
         next if ($name eq ".gitignore");
+        next if ($name eq "announcement.de.in");
+        next if ($name eq "announcement.en.in");
+        next if ($name eq "gnupg.com-info-key.asc");
+        next if ($name eq "help");
 
         if (-d $name) {
             dump_single_custom($name);
@@ -1936,6 +2017,21 @@ print <<EOF;
       <RegistrySearch Win64='no' Id="DetermineInstallLocation" Type="raw" Root="HKLM" Key="Software\\Gpg4win" Name="Install Directory" />
     </Property>
 
+    <Property Id="INST_DESKTOP">
+      <IniFileSearch Id='gpg4win_ini_inst_desktop' Type='raw'
+       Name='gpg4win.ini' Section='gpg4win' Key='inst_desktop'/>
+    </Property>
+
+    <Property Id="AUTOSTART">
+      <IniFileSearch Id='gpg4win_ini_autostart' Type='raw'
+       Name='gpg4win.ini' Section='gpg4win' Key='autostart'/>
+    </Property>
+
+    <Property Id="HOMEDIR">
+      <IniFileSearch Id='gpg4win_ini_homedir' Type='raw'
+       Name='gpg4win.ini' Section='gpg4win' Key='homedir'/>
+    </Property>
+
     <!-- Launch Kleopatra after setup exits
     <CustomAction Id            = "StartAppOnExit"
                   FileKey       = "kleopatra.exe"
@@ -1959,6 +2055,14 @@ print <<EOF;
         <RegistryValue Id="r_gpg4win_02" Root="HKMU" Key="Software\\Gpg4win" Name="VS-Desktop-Version" Action="write"
                        Type="string" Value="$::build_version" KeyPath="no"/>
       </Component>
+      <Feature Id='p_homedir' Title='p_homedir' Level='1000'
+        Display='hidden' InstallDefault='followParent'>
+        <Condition Level='1'>HOMEDIR</Condition>
+        <Component Win64='no' Id='homedir_non_default_cmp' Guid='2C11476C-747D-4CA9-9A53-A64445761A4C' Directory='APPLICATIONFOLDER'>
+        <RegistryValue Root='HKMU' Key='Software\\GNU\\GnuPG' Name='HomeDir'
+         Type='expandable' Value='[HOMEDIR]' KeyPath='yes'/>
+        </Component>
+      </Feature>
       <!-- Hardcode some components that always should be installed -->
 
       <!-- List comes from ICE21 and was transformed by see: comment above -->
@@ -2005,6 +2109,9 @@ print <<EOF;
       <Directory Id='ProgramFilesFolder' Name='PFiles'>
         <!-- DIR_GnuPG is used be the GnuPG wxlib -->
         <Directory Id='APPLICATIONFOLDER' Name='GnuPG VS-Desktop'>
+          <Directory Id="KleopatraDataFolder" Name="share">
+            <Directory Id="HelpDataFolder" Name="kleopatra"/>
+          </Directory>
           <Directory Id='DIR_GnuPG' Name='GnuPG'/>
 EOF
 
@@ -2022,6 +2129,22 @@ my $name = "GnuPG VS-Desktop";
 print <<EOF;
   <Directory Id='ProgramMenuFolder' Name='PMenu'>
     <Directory Id='ProgramMenuDir' Name='$name'/>
+  </Directory>
+  <Directory Id='DesktopFolder' Name='Desktop' >
+    <Component Id='ApplicationShortcutDesktop' Guid='8FCEA457-D3AD-41CC-BD0B-3E071D6E70BE'>
+      <Shortcut Id='ApplicationDesktopShortcut'
+       Name='Kleopatra'
+       Description='!(loc.DESC_Menu_kleopatra)'
+       Target='[APPLICATIONFOLDER]bin\\kleopatra.exe'/>
+      <RemoveFolder Id="DesktopFolder" On="uninstall"/>
+      <RegistryValue
+          Root="HKMU"
+          Key="Software\\Gpg4win"
+          Name="desktop_icon"
+          Type="integer"
+          Value="1"
+          KeyPath="yes"/>
+   </Component>
   </Directory>
 EOF
 

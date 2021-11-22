@@ -40,13 +40,14 @@ The Compendium has more hints for manual or automated installation.
 System requirements
 -------------------
 
-Gpg4win runs on Windows versions 7 or newer (up to Windows 10).
-Both 32 and 64bit systems are supported. If you have at least Windows XP,
-some parts of Gpg4win can be used, but are not officially supported.
+Gpg4win runs on Windows versions 7 or newer including Windows Server 2008
+and later. Both 32 and 64bit systems are supported.
+If you have at least Windows XP, some parts of Gpg4win can be used,
+but are not officially supported.
 
-The Outlook plugin GpgOL is compatible with Microsoft Outlook 2010,
-2013 and 2016 (both 32 and 64bit) and supports transporting emails
-via SMTP/IMAP and MS Exchange Server (version 2010 or newer).
+The Outlook plugin GpgOL is compatible with Microsoft Outlook 2010 and
+later and supports transporting emails via SMTP/IMAP and MS Exchange Server
+(version 2010 or newer).
 
 With Gpg4win version 3.1.2 Outlook 2003 and 2007 support was removed for
 security reasons.
@@ -65,57 +66,69 @@ Included Gpg4win components in version !VERSION! are:
 New in Gpg4win version !VERSION! (!BUILD_ISODATE!)
 -----------------------------------------
 
-- GpgOL: Fixed a critical issue since Gpg4win-3.1.12 where
-  the selection of "No Key" for a recipient could lead to arbitrary
-  keys selected instead. (T5223)
+- GpgOL: Added support for encrypting Outlook elements such
+  as forwarded mails or contacts and events. (T4184)
 
-- GpgOL: auto-key-retrieve in the GnuPG config now no longer
-  leads to "No Data" errors when viewing signed mails. (T5164)
+- GpgOL: The "conflicting crypto preferences" warning
+  now ignores more undocumented states. (T5335)
 
-- GpgOL: The error "No Data" now leads to more useful output in
-  the mail view. (T5164)
+- Kleopatra: Added a "Groups" feature where you can define
+  recipient groups that can then be selected as a whole when
+  doing operations. (T5175 T5241)
 
-- GpgOL: The name for VS-NfD compliance is now configurable through
-  libkleopatrarc.
+- Kleopatra: Encryption works again with Windows shared file
+  system paths. (T5216)
 
-- Kleopatra: The dialog to create new keys has been simplified and
-  makes it easier to create keys without protection. This can
-  be disabled by setting "enforce-passphrase-constraints" in the
-  gpg-agent configuration. (T5181)
+- Kleopatra: The check for elevated execution is now
+  only a warning and no longer a hard error. (T5248)
 
-- Kleopatra: Name and e-mail for new keys are now obtained through
-  active directory if they are available. (T5181)
+- Kleopatra: The combined export of S/MIME and OpenPGP certificates
+  has been improved. (T5002)
 
-- Kleopatra: Creating S/MIME CSRs for OpenPGP Smartcards has been
-  further improved. (T5127)
+- Kleopatra: Search no longer shows all results as uncertified.
+  (T5388)
 
-- Kleopatra: Tag support for certifications has been greatly improved
-  and is now also available when adding keys in the file encrypt
-  dialog. (T5174)
+- Kleopatra: Added support for additional CardOS Smartcards.
+  (T4876)
 
-- Kleopatra: Elevated execution of Kleopatra (run as Administrator)
-  is now prevented to avoid accidental permission problems in the
-  GnuPG data folder. (T5212)
+- Kleopatra: Automatically imports public keys for the inserted
+  Smartcard from an Active Directory / LDAP Server. (T4876)
 
-- Kleopatra: Setting the initial SigG PIN for NetKey cards now also
-  works if the generic PIN is not set. (T5220)
+- Kleopatra: The certify dialog now allows to certify a key
+  as the certification authority for a specific domain. This
+  enables Public Key Infrastructures where the certification
+  is delegated. (T5245)
 
-- GnuPG: Now supports system wide configuration files in
-  "%ProgramData%\GNU\etc\gnupg" so Administrators can both set defaults
-  and enforce a specific configuration. The Format is the same as
-  the user configuration under "%AppData%\gnupg" with additional syntax
-  to enforce some options and ignore other options. (T4788)
+- Kleopatra: The Smartcard view has been improved for better
+  usability. (T4876)
 
-- GnuPG: OpenPGP certificates can no be obtained automatically
-  over Active Directory.
+- Kleopatra: Complex LDAP Keyserver entries can now be entered
+  without corruption. (T5404)
 
-- GnuPG: The scheme for LDAP access has been improved.
+- Kleopatra: Very large Archives no longer lead to crashes on
+  decryption. (T5475)
 
-- GnuPG: Updated to 2.2.27 See:
-  https://lists.gnupg.org/pipermail/gnupg-announce/2021q1/000452.html
+- Kleopatra: The performance when decrypting archives has
+  been improved. (T5478)
 
-  Announcement for 2.2.26:
-  https://lists.gnupg.org/pipermail/gnupg-announce/2020q4/000451.html
+- Kleopatra: Encrypting folders with files larger then 4GB no
+  longer leads to truncated archives. (T5475)
+
+- Kleopatra: Searching on LDAP / Active Directory for OpenPGP
+  keys can now show multiple keys and shows details. (T5441)
+
+- GnuPG: Importing OpenPGP keys from LDAP no longer strips third
+  party signatures. (T5387)
+
+- GnuPG: Files encrypted with S/MIME (CMS) but only with
+  a password can now be decrypted.
+
+- GnuPG: Special characters (non 7bit) are now handled again.
+  (T4398)
+
+- GnuPG: Updated to 2.2.28 See:
+  https://lists.gnupg.org/pipermail/gnupg-announce/2021q2/000460.html
+
 
 3. Additional notes
 ===================
