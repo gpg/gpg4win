@@ -96,11 +96,13 @@ rm -f /build/AppDir/GnuPG-Desktop-VERSION    2>/dev/null
 if [ $GNUPG_BUILD_VSD = yes ]; then
     myversion=$(grep PACKAGE_VERSION /src/config.h|sed -n 's/.*"\(.*\)"$/\1/p')
     OUTPUT=gnupg-vs-desktop-${myversion}-x86_64.AppImage
+    echo "Packaging GnuPG VS-Desktop Appimage: $myversion"
     echo $myversion >/build/AppDir/GnuPG-VS-Desktop-VERSION
 else
-    myversion=$(ls gnupg/gnupg-2.*tar /src/packages \
+    myversion=$(ls /src/packages/gnupg-2.*tar.* \
                     | sed -n 's,.*/gnupg-\(2.*\).tar.*,\1,p')
     OUTPUT=gnupg-desktop-${myversion}-x86_64.AppImage
+    echo "Packaging Gpg4win Appimage: $myversion"
     echo $myversion >/build/AppDir/GnuPG-Desktop-VERSION
 fi
 export OUTPUT
