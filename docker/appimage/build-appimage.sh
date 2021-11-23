@@ -23,7 +23,7 @@
 
 set -e
 
-source /opt/rh/devtoolset-7/enable
+. /opt/rh/devtoolset-7/enable
 
 cd /src/packages
 ./download.sh
