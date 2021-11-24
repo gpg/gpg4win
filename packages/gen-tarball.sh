@@ -34,6 +34,7 @@ if [ -z "$1" ]; then
 fi
 
 package=$1
+is_gpg="no"
 
 case ${package} in
     */*)
@@ -43,6 +44,7 @@ case ${package} in
         ;;
     gnupg | gpgme | libassuan | libgcrypt | libgpg-error | libksba | npth | pinentry | gpg4win-tools | scute)
         repo=git://git.gnupg.org/${package}.git
+        is_gpg="yes"
         ;;
     k* | libk*)
         # assume that package is provided by KDE
@@ -97,8 +99,25 @@ if test -n "${pofiles}"; then
     done
 fi
 
-(cd ${tmpdir} && tar -cJ --exclude-vcs ${snapshotdir}) > ${tarball}
+if [ -e ${tmpdir}/${snapshotdir}/po ]; then
+    (cd ${tmpdir}/${snapshotdir} && git add po && git commit -m "Add po files")
+fi
 
+if [ "${is_gpg}" == "yes" ]; then
+    olddir=$(pwd)
+    cd ${tmpdir}/${snapshotdir}
+    ./autogen.sh --force > &2
+    ./configure > &2
+    make distcheck > &2
+    make dist-xz > &2
+    tarfile=$(ls -t *.tar.xz | head -1)
+    cd ${olddir}
+    cp ${tmpdir}/${snapshotdir}/${tarfile} ${tarball}
+else
+    (cd ${tmpdir}/${snapshotdir} && \
+    git archive --format tar.xz --prefix=${snapshotdir} master) > ${tarball} || \
+      (echo "Failed to archive tarball. Is tar.xz configured?: git config --global tar.tar.xz.command \"xz -c\"" && exit 1)
+fi
 checksum=$(sha256sum ${tarball} | cut -d ' ' -f 1)
 
 echo "------------------------------ >8 ------------------------------"
@@ -110,4 +129,6 @@ echo "file ${package}/${tarball}"
 echo "chk ${checksum}"
 echo "------------------------------ >8 ------------------------------"
 
-rm -r ${tmpdir}
+echo "To upload:" >&2
+echo "rsync -vP ${tarball} trithemius.gnupg.org:/home/ftp/gcrypt/snapshots/${package}/" >&2
+rm -fr ${tmpdir}
