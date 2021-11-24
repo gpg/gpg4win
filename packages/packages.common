@@ -645,12 +645,12 @@ chk d468cbce3b4d1bba220efec88514a7ef5a6c816de1acfddc8c37f34c2972d770
 # last changed: 2021-11-24
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file kleopatra/kleopatra-202111241022.tar.xz
-chk eee37ee617aa98955f445d42fee1f6e30d8e1a8af15da0bfb2be8b36ad7a24f2
+file kleopatra/kleopatra-202111241606.tar.xz
+chk 6f47a870f9ce7a73d600b342702f30720b749305effe225d55fa0f845b6aa72e
 
 # libkleo
 # last changed: 2021-11-24
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file libkleo/libkleo-202111241024.tar.xz
-chk b0c44cfa956be6856e83171e17f81369a6dceb2573113b0d41c14371cdff24e1
+file libkleo/libkleo-202111241418.tar.xz
+chk 253e36cbca27bb81ff94e20870ac2d73d9540a7d9af8f7ff2dec765f261a1911

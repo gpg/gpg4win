@@ -114,7 +114,7 @@ if [ "${is_gpg}" == "yes" ]; then
     cp ${tmpdir}/${snapshotdir}/${tarball} ${olddir}
 else
     (cd ${tmpdir}/${snapshotdir} && \
-    git archive --format tar.xz --prefix=${snapshotdir} master) > ${tarball} || \
+    git archive --format tar.xz --prefix=${snapshotdir}/ master) > ${tarball} || \
       (echo "Failed to archive tarball. Is tar.xz configured?: git config --global tar.tar.xz.command \"xz -c\"" && exit 1)
 fi
 checksum=$(sha256sum ${tarball} | cut -d ' ' -f 1)
