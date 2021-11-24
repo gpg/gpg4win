@@ -56,7 +56,6 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
              patches/kleopatra/set-cxx-standard.patch \
              patches/kxmlgui/0001-make-qdbus-optional.patch \
              patches/kxmlgui/0004-Cruedly-disable-KSendbugmail.patch \
-             patches/libkleo/0001-Revert-Use-more-target-centric-cmake-code.patch \
              patches/libkleo/lower-cmake-requirement.patch \
              patches/libkleo/set-cxx-standard.patch \
              patches/qtbase/0001-Fix-build-without-std-thread.patch \

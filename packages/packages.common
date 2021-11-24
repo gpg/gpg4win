@@ -445,11 +445,11 @@ server https://download.kde.org/stable/frameworks
 # Don't forget to update gpg4win.mk.in with new version numbers
 #
 # extra-cmake-modules
-# last changed: 2021-01-06
+# last changed: 2021-11-24
 # by: ah
-# verified: PGP Signed by ./kde-release-key.gpg (created by gen-frameworks.sh)
-file 5.77/extra-cmake-modules-5.77.0.tar.xz
-chk 42f071f628b192122894026de20097cb0b3de411cb41c6935b48eb86ce992a65
+# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
+file 5.88/extra-cmake-modules-5.88.0.tar.xz
+chk 33bd83908daa531654455b77fc121b598f757aadf8ba01dbacfda8b8fb050319
 
 # kconfig
 # last changed: 2021-01-06
