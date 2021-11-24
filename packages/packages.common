@@ -638,8 +638,8 @@ server ftp://ftp.gnupg.org/gcrypt/snapshots
 # last changed: 2021-11-24
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file gpgme/gpgme-202111241038.tar.xz
-chk b1133b452070df59d706668c07a81c39989c2d5646271153d7fb25a23927ee0b
+file gpgme/gpgme-1.16.1-beta22.tar.xz
+chk d468cbce3b4d1bba220efec88514a7ef5a6c816de1acfddc8c37f34c2972d770
 
 # kleopatra
 # last changed: 2021-11-24

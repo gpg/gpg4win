@@ -106,13 +106,12 @@ fi
 if [ "${is_gpg}" == "yes" ]; then
     olddir=$(pwd)
     cd ${tmpdir}/${snapshotdir}
-    ./autogen.sh --force > &2
-    ./configure > &2
-    make distcheck > &2
-    make dist-xz > &2
-    tarfile=$(ls -t *.tar.xz | head -1)
-    cd ${olddir}
-    cp ${tmpdir}/${snapshotdir}/${tarfile} ${tarball}
+    ./autogen.sh --force >&2
+    ./configure >&2
+    make -j`nproc` distcheck >&2
+    make dist-xz >&2
+    tarball=$(ls -t *.tar.xz | head -1)
+    cp ${tmpdir}/${snapshotdir}/${tarball} ${olddir}
 else
     (cd ${tmpdir}/${snapshotdir} && \
     git archive --format tar.xz --prefix=${snapshotdir} master) > ${tarball} || \
