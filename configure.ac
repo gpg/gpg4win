@@ -40,7 +40,7 @@ m4_define([git_betastring],
           m4_esyscmd_s([git describe --tags --match 'gpg4win-[0-9].*.*[0-9]' \
                        --long | awk -F- '$3!=0{print"-beta"$3}']))
 m4_define([my_gnupg_minor],
-          m4_esyscmd_s([ls packages/gnupg-*.tar.* | cut -d. -f2]))
+          m4_esyscmd_s([ls packages/gnupg-2.*.tar.* | cut -d. -f2]))
 m4_define([my_isgit],m4_if(git_betastring,[],[no],[yes]))
 m4_define([my_version],m4_if(my_gnupg_minor, [2], [[my_gnupg_2_version]], [[my_gnupg_3_version]]))
 m4_define([my_full_version],[my_version[]git_betastring])
