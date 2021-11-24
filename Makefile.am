@@ -114,7 +114,7 @@ gen-ChangeLog:
 	  mv $(distdir)/cl-t $(distdir)/ChangeLog;			\
 	fi
 
-download: packages/packages.current
+download: packages/packages.common packages/packages.4 packages/packages.3
 	(cd packages; ./download.sh)
 
 msi:
