@@ -641,16 +641,16 @@ server ftp://ftp.gnupg.org/gcrypt/snapshots
 file gpgme/gpgme-1.16.1-beta22.tar.xz
 chk d468cbce3b4d1bba220efec88514a7ef5a6c816de1acfddc8c37f34c2972d770
 
-# kleopatra
-# last changed: 2021-11-24
-# by: aheinecke
-# verified: Tarball created by aheinecke.
-file kleopatra/kleopatra-202111241606.tar.xz
-chk 6f47a870f9ce7a73d600b342702f30720b749305effe225d55fa0f845b6aa72e
-
 # libkleo
-# last changed: 2021-11-24
+# last changed: 2021-11-25
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file libkleo/libkleo-202111241418.tar.xz
-chk 253e36cbca27bb81ff94e20870ac2d73d9540a7d9af8f7ff2dec765f261a1911
+file libkleo/libkleo-202111251051.tar.xz
+chk ca29ea38e67ccd59752384a2a32950daee0a1a3728d49073f32c771c2b81a21d
+
+# kleopatra
+# last changed: 2021-11-25
+# by: aheinecke
+# verified: Tarball created by aheinecke.
+file kleopatra/kleopatra-202111251050.tar.xz
+chk b2186513a7e9f6c0318e919608fea53b981c0f79beaf20fe769c4cf04b2ece42
