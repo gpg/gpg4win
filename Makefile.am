@@ -64,15 +64,14 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
              patches/qtbase/0003-Fix-build-with-GCC-11-include-limits.patch \
              patches/qttools/disable-most-tools.patch \
              patches/w32pth-2.0.5/workaround-broken-libtool.patch \
-             patches-appimage/gnupg-2.3.2/0001-agent-Fix-segv-in-GET_PASSPHRASE-regression.patch \
-             patches-appimage/gnupg-2.3.2/0002-build-Fix-ksba.h-not-found-problem.patch \
-             patches-appimage/gnupg-2.3.2/0003-common-New-function-substitute_envvars.patch \
-             patches-appimage/gnupg-2.3.2/0004-common-Support-a-gpgconf.ctl-file-under-Unix.patch \
-             patches-appimage/gnupg-2.3.2/0005-build-Fix-several-include-file-not-found-problems.patch \
              patches-appimage/kconfigwidgets/0001-build-without-KF5Auth.patch \
-             patches-appimage/libkleo-21.08.1/0001-Add-support-for-non-standard-boost-include-directori.patch \
-             patches-appimage/libkleo-21.08.1/z-01-use-pre-5.80-ecm_qt_declare_logging_category.patch \
-             patches-appimage/qtwayland-5.15.0/00-disable-wayland-server.patch
+             patches-appimage/ki18n/0001-Load-Qt-translations-even-if-some-catalogs-are-missi.patch \
+             patches-appimage/qtwayland-5.15.0/00-disable-wayland-server.patch \
+             patches-appimage/0001-Add-support-for-non-standard-boost-include-directori.patch \
+             patches-appimage/set-cxx-standard.patch \
+             patches-appimage/kleopatra/build-fixes.patch \
+             patches-appimage/kleopatra/set-cxx-standard.patch \
+             patches-appimage/libkleo/set-cxx-standard.patch
 
 copy-news:
 	cp NEWS doc/website/NEWS.last
