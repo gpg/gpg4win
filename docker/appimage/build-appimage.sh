@@ -25,9 +25,6 @@ set -e
 
 . /opt/rh/devtoolset-7/enable
 
-cd /src/packages
-./download.sh
-
 cd /src
 ./configure --enable-appimage --enable-maintainer-mode --disable-manuals
 

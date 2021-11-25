@@ -15,15 +15,15 @@ Instructions:
    [...]
    $ cd ..
 
-1.5 (Only necessary when building from Git)
+2. Generate config files
 
    $ ./autogen.sh
 
-2. Configure the source tree for cross compilation:
+3. Configure the source tree for cross compilation:
 
    $ ./autogen.sh --build-w32
 
-3. Build the installer:
+4. Build the installer:
 
    $ make
 
@@ -35,15 +35,23 @@ src/installers/gpg4win-X.Y.Z.exe
 Instructions for AppImage:
 ==========================
 
-1. (Only necessary when building from Git)
+1. Download the source and binary packages that are required to build
+   the installer:
+
+   $ cd packages
+   $ sh download.sh
+   [...]
+   $ cd ..
+
+2. Generate config files
 
    $ ./autogen.sh
 
-2. Build the Docker image that will be used for creating the AppImage:
+3. Build the Docker image that will be used for creating the AppImage:
 
    $ docker/build-appimage-docker-image.sh
 
-3. Build the AppImage using the Docker image:
+4. Build the AppImage using the Docker image:
 
    $ docker/run-appimage-build.sh
 
