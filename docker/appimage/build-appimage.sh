@@ -52,7 +52,7 @@ chmod +x /build/AppDir/start-shell
 # Copy standard global configuration
 if [ $GNUPG_BUILD_VSD = yes ]; then
     mkdir -p /build/AppDir/usr/share/gnupg/conf/gnupg-vsd
-    rsync -av --delete --omit-dir-times \
+    rsync -aLv --delete --omit-dir-times \
           /src/src/gnupg-vsd/Standard/etc/gnupg/ \
           /build/AppDir/usr/share/gnupg/conf/gnupg-vsd/
 fi
