@@ -47,6 +47,16 @@ export PATH="${APPDIR}/usr/bin:${PATH}"
 export XDG_DATA_DIRS="${APPDIR}/usr/share:${XDG_DATA_DIRS:-/usr/share}:/usr/share"
 export XDG_CONFIG_DIRS="${APPDIR}/usr/etc/xdg:${XDG_CONFIG_DIRS:-/etc/xdg}:/etc/xdg"
 
+# Avoid problems due to caller set ld.so envvars.
+if [ -n "$LD_PRELOAD" ]; then
+  _gnupg_save_LD_PRELOAD="$LD_PRELOAD"
+  LD_PRELOAD=
+fi
+if [ -n "$LD_LIBRARY_PATH" ]; then
+  _gnupg_save_LD_LIBRARY_PATH="$LD_LIBRARY_PATH"
+  LD_LIBRARY_PATH=
+fi
+
 # Allow GnuPG config scripts to detect the appimage install.  We can't
 # rely on APPDIR because other appimages might come with their own
 # gnupg version.  Change the value to "vsd" for a GnuPG VS-Desktop build.
@@ -89,10 +99,12 @@ if [ "$1" = "-c" -o "$1" = "-i" ]; then
         pgmargs="-c $@"
     else
         export gnupg_SETUPINIFILE SHELL
-        if [ $(id -u) -eq 0 -a ! -d /etc/gnupg-vsd ]; then
+        if [ ${_gnupg_appimage} = vsd ]; then
+          if [ $(id -u) -eq 0 -a ! -d /etc/gnupg-vsd ]; then
             echo "no global configuration - installing default" >&2
             mkdir /etc/gnupg-vsd
-            cp "${APPDIR}"/usr/share/gnupg/conf/gnupg-vsd/* /etc/gnupg-vsd/
+            cp -R "${APPDIR}"/usr/share/gnupg/conf/gnupg-vsd/* /etc/gnupg-vsd/
+          fi
         fi
         if echo "$SHELL" | grep '/bash$' >/dev/null 2>&1; then
             pgm="${APPDIR}/start-shell"
