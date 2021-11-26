@@ -1,0 +1,22 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+diff --git a/src/aboutdata.cpp b/src/aboutdata.cpp
+index c6df6bf6..7ffd5acb 100644
+--- a/src/aboutdata.cpp
++++ b/src/aboutdata.cpp
+@@ -128,4 +128,13 @@ AboutData::AboutData()
+ #ifdef Q_OS_WIN
+     setBugAddress("https://dev.gnupg.org/u/rgpg4win");
+ #endif
++
++    /* For Linux it is possible that kleo is shipped as part
++     * of a Gpg4win based Appimage */
++    if (Kleo::gpg4winSignedversion()) {
++        setVersion(Kleo::gpg4winVersion().toUtf8());
++        setShortDescription(Kleo::gpg4winDescription());
++        setOtherText(Kleo::gpg4winLongDescription());
++        setBugAddress("https://dev.gnupg.org/u/rgpg4win");
++    }
+ }

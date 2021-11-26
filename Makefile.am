@@ -71,7 +71,9 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
              patches-appimage/set-cxx-standard.patch \
              patches-appimage/kleopatra/build-fixes.patch \
              patches-appimage/kleopatra/set-cxx-standard.patch \
-             patches-appimage/libkleo/set-cxx-standard.patch
+             patches-appimage/libkleo/set-cxx-standard.patch \
+             patches-appimage/libkleo/gpg4win-check.patch \
+             patches-appimage/kleopatra/aboutdata.patch
 
 copy-news:
 	cp NEWS doc/website/NEWS.last
