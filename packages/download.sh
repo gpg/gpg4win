@@ -136,9 +136,14 @@ packages="packages.common"
 if [ "$version4" = "yes" ] && [ "$version3" = "yes" ]; then
     echo "Invalid arguments. Both -v4 and -v3 set."
     exit 1;
-elif [ "$version3" = "yes" ]; then
+elif [ "$version4" = "yes" ]; then
+    echo "Downloading packages for version 4.x"
+    rm -f '.#download.v3'
+    packages="$packages packages.4"
+elif [ "$version3" = "yes" ] || [ -f '.#download.v3' ]; then
     echo "Downloading packages for version 3.x"
     packages="$packages packages.3"
+    touch '.#download.v3'
 else
     echo "Downloading packages for version 4.x"
     packages="$packages packages.4"
