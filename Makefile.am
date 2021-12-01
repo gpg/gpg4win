@@ -48,7 +48,6 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
              patches/extra-cmake-modules/0001-Use-BIN_INSTALL_DIR-data-for-DATAROOTDIR-on-Windows.patch \
              patches/glib/glib-1-fixes.patch \
              patches/glib/glib-2-fixes.patch \
-             patches/gpgol/0001-Enable-sync-encryption-again.patch \
              patches/kconfigwidgets/0001-Make-QDbus-optional.patch \
              patches/kiconthemes/0001-Make-DBus-optional.patch \
              patches/kleopatra/build-fixes.patch \
