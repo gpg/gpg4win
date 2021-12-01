@@ -331,13 +331,12 @@ chk  95dbabe75fa5c8dc47e3acf2df7a51cee096051e5a842b4c9b6d61e40a6177b1
 file scute/scute-1.7.0.tar.bz2
 chk 437fe758b27c243a5ee2535c6b065ea1d09f2c9a02d83567d2f934bb6395c249
 
-#
 # GpgOL
-#
+# last-changed: 2021-12-01
 # by: ah
 # verified: Sig 5B80 C575 4298 F0CB  55D8 ED6A BCEF 7E29 4B09 2E28
-file gpgol/gpgol-2.5.0.tar.bz2
-chk  76cb742ae53cf54f2d42d258f6ba657d2b98c752d2c742b1e4f04b26a6baf0df
+file gpgol/gpgol-2.5.1.tar.bz2
+chk  4a374857d02f195e12ca0663af133e5f8d779224dff7ca96f05ba0e5ca723631
 
 #
 # GpgEX
