@@ -614,12 +614,12 @@ server https://files.intevation.de/projects/gpg4all
 # KDE-L10n
 # last changed: see package date.
 # by: ah
-# verified: Tarball created by ah with script kde-l10n.sh
-file kde-l10n/kde-l10n-202109141048-bin.tar.xz
-chk  dc7b20473a5fe314e491e6f7e365a7e9464422b9d039fe9e834aac26353b1d4d
+# verified: Tarball created by ah with script gen-kde-l10n.sh
+file kde-l10n/kde-l10n-202112011441-bin.tar.xz
+chk  8b6da82e77c425b614920e0d5b9282b71b7220d65ea786f2726aff6fcf93a201
 
-file kde-l10n/kde-l10n-202109141048-src.tar.xz
-chk  d68abe3c6f03b5934bee380b88c66bf27c23eed658c8a11fb57357bc85038a92
+file kde-l10n/kde-l10n-202112011441-src.tar.xz
+chk  b3ea10f85870a66cfab0c479a8b268e60b092f050c5538c6ae564dfd03ea2bf2
 
 # Gpg4win-tools package
 # last changed: see package date.
@@ -642,15 +642,15 @@ file gpgme/gpgme-1.16.1-beta22.tar.xz
 chk d468cbce3b4d1bba220efec88514a7ef5a6c816de1acfddc8c37f34c2972d770
 
 # libkleo
-# last changed: 2021-11-25
+# last changed: 2021-12-01
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file libkleo/libkleo-202111251326.tar.xz
-chk 895ce1e03c35253928f642a8231a8bba1318ccc00f991b6ed72f1af54f4025bb
+file libkleo/libkleo-202112011408.tar.xz
+chk a07db8932d974a77f059f0083efd48362026b6ebc4fd22eb831db384edf70e04
 
 # kleopatra
-# last changed: 2021-11-25
+# last changed: 2021-12-01
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file kleopatra/kleopatra-202111251326.tar.xz
-chk 3eb28bad4a38af5c4149b903440ebd4d47beb7b1673776dd878d6ba784907312
+file kleopatra/kleopatra-202112011409.tar.xz
+chk 295e2429d9c12b75f808a022ea33f8e3bde0ac84d6116c7a006b0bee434ebda3
