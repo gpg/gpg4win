@@ -133,7 +133,7 @@ and run configure as described above.
 Kleopatra Locatization
 ======================
 
-The kde-l10n package is generated with the script src/kde-l10n.sh
+The kde-l10n package is generated with the script packages/gen-kde-l10n.sh
 execute it after a build to generate an updated l10n package which
 you can then upload and add to packages.common.
 The tarballs and the nsis scripts are located in the temp directory

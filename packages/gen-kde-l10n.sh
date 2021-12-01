@@ -27,7 +27,7 @@ set -e
 tmpdir=$(mktemp -d -p $(pwd))
 VERSION=$(date +%Y%m%d%H%M)
 
-g4widir="$(readlink -f $(dirname $0)/playground/install)"
+g4widir="$(readlink -f $(dirname $0)/../src/playground/install)"
 
 if [ ! -e "$g4widir" ]; then
     echo "Please build gpg4win first."
