@@ -48,6 +48,7 @@ Options:
         [--ipv6]
         [--v4] Downlad packages for Version 4.x (default)
         [--v3] Downlad packages for Version 3.x
+        [--clean] Do not download but remove downloaded files.
 EOF
     exit $1
 }
@@ -58,6 +59,7 @@ quiet=no
 version3=no
 version4=no
 ipvx=
+clean=no
 #keep_list=no
 #sig_check=yes
 while [ $# -gt 0 ]; do
@@ -96,6 +98,9 @@ while [ $# -gt 0 ]; do
             ;;
         --v3)
             version3=yes
+            ;;
+        --clean)
+            clean=yes
             ;;
 	*)
 	    usage 1 1>&2
@@ -138,7 +143,7 @@ if [ "$version4" = "yes" ] && [ "$version3" = "yes" ]; then
     exit 1;
 elif [ "$version4" = "yes" ]; then
     echo "Downloading packages for version 4.x"
-    rm -f '.#download.v3'
+    rm -f '.#download.v*'
     packages="$packages packages.4"
 elif [ "$version3" = "yes" ] || [ -f '.#download.v3' ]; then
     echo "Downloading packages for version 3.x"
@@ -152,6 +157,7 @@ fi
 
 lnr=0
 name=
+[ $clean = yes ] && rm -f '.#download.v*'
 [ -f '.#download.failed' ] && rm '.#download.failed'
 cat $packages | \
 while read key value ; do
@@ -184,7 +190,11 @@ while read key value ; do
        if [ -z "$name" ]; then
            name=`basename "$value"`
        fi
-       if [ -s "$name" -a "$force" = "no" ]; then
+
+       if [ "$clean" = "yes" ]; then
+           [ $quiet = no ] && echo "Removing: $name"
+           rm -f $name
+       elif [ -s "$name" -a "$force" = "no" ]; then
            [ $quiet = no ] && echo "package     \`$url' ... already exists"
        else
            echo -n "downloading \`$url' ..."
@@ -210,7 +220,10 @@ while read key value ; do
            echo "no name for link in line $lnr" >&2
            exit 1
        fi
-       if [ -f "$value" -a "$force" = "no" ]; then
+       if [ $clean = yes ]; then
+           [ $quiet = no ] && echo "Removing link: $name"
+           rm -f $name
+       elif [ -f "$value" -a "$force" = "no" ]; then
            [ $quiet = no ] && echo "package     \`$value' ... already exists"
        else
            echo -n "linking \`$value' to \`$name' ..."
@@ -223,6 +236,7 @@ while read key value ; do
        fi
        ;;
      chk)
+       [ $clean = yes ] && continue
        if [ -z "$value" ]; then
            echo "syntax error in chk statement, line $lnr" >&2
            exit 1
