@@ -202,6 +202,7 @@ Section "-un.kleopatra"
   DeleteRegKey SHCTX "Software\Classes\gpg4win.AssocFile.kleopatra.X509"
   DeleteRegKey SHCTX "Software\Classes\gpg4win.AssocFile.kleopatra.PGPSIG"
   DeleteRegKey SHCTX "Software\Classes\gpg4win.AssocFile.kleopatra.PGPKEY"
+  DeleteRegKey SHCTX "Software\Classes\gpg4win.AssocFile.kleopatra.KGRP"
   DeleteRegKey SHCTX "Software\Gpg4win\kleopatra"
   DeleteRegValue SHCTX "Software\RegisteredApplications" "Gpg4win.kleopatra"
   DeleteRegValue SHCTX "Software\Classes\.gpg" "gpg4win.AssocFile.kleopatra.GPG"
@@ -213,6 +214,7 @@ Section "-un.kleopatra"
   DeleteRegValue SHCTX "Software\Classes\.arl" "gpg4win.AssocFile.kleopatra.CMS"
   DeleteRegValue SHCTX "Software\Classes\.crl" "gpg4win.AssocFile.kleopatra.CMS"
   DeleteRegValue SHCTX "Software\Classes\.crl" "gpg4win.AssocFile.kleopatra.CMS"
+  DeleteRegValue SHCTX "Software\Classes\.kgrp" "gpg4win.AssocFile.Kleopatra.KGRP"
 
   DeleteRegKey SHCTX "Software\Classes\P7SFile\DefaultIcon"
   DeleteRegKey SHCTX "Software\Classes\P7SFile\shell\open\command"
@@ -230,5 +232,7 @@ Section "-un.kleopatra"
   DeleteRegKey /ifempty SHCTX "Software\Classes\.p7s"
   DeleteRegKey /ifempty SHCTX "Software\Classes\.crl"
   DeleteRegKey /ifempty SHCTX "Software\Classes\.arl"
+  DeleteRegKey /ifempty SHCTX "Software\Classes\.kgrp"
 !endif
+
 SectionEnd

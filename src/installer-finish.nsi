@@ -41,6 +41,9 @@ LangString T_File_Type_pem_Name ${LANG_ENGLISH} \
 LangString T_File_Type_x509_Name ${LANG_ENGLISH} \
    "X509 Certificate File"
 
+LangString T_File_Type_kgrp_Name ${LANG_ENGLISH} \
+   "Kleopatra Certificate Groups"
+
 LangString T_File_Type_x509_info_tip ${LANG_ENGLISH} \
    "Certificate for CMS (S/MIME)."
 
@@ -49,6 +52,9 @@ LangString T_File_Type_info_tip ${LANG_ENGLISH} \
 
 LangString T_File_Type_sig_info_tip ${LANG_ENGLISH} \
    "A cryptographic signature to verify the authenticity of another file."
+
+LangString T_File_Type_kgrp_info_tip ${LANG_ENGLISH} \
+   "Certificate groups to be used by Kleopatra for encryption."
 
 LangString T_File_Type_pgp_key_info_tip ${LANG_ENGLISH} \
    "Certificate for OpenPGP."

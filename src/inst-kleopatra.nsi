@@ -292,6 +292,17 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
   WriteRegStr SHCTX "Software\RegisteredApplications" "Gpg4win.Kleopatra" "SOFTWARE\Gpg4win\Kleopatra\Capabilities"
   WriteRegStr SHCTX "Software\Gpg4win\Kleopatra" "" "Kleopatra"
 
+  # .kgrp
+  WriteRegExpandStr SHCTX "Software\Classes\gpg4win.AssocFile.Kleopatra.KGRP\shell\open\command" "" "$\"$INSTDIR\bin\Kleopatra.exe$\" $\"%1$\""
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.Kleopatra.KGRP" "" "$(T_File_Type_kgrp_Name)"
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.Kleopatra.KGRP" "FriendlyTypeName" "$(T_File_Type_kgrp_Name)"
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.Kleopatra.KGRP" "PercievedType" "Document"
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.Kleopatra.KGRP" "InfoTip" "$(T_File_Type_kgrp_info_tip)"
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.Kleopatra.KGRP\CurVer" "" "${VERSION}"
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.Kleopatra.KGRP\DefaultIcon" "" "$INSTDIR\share\gpg4win\file-ext.ico"
+
+  WriteRegBin SHCTX "Software\Classes\.sig\OpenWithProgIDs" "gpg4win.AssocFile.Kleopatra.KGRP" 0
+
   # File extensions
   WriteRegStr SHCTX "Software\Gpg4win\Kleopatra\Capabilities\FileAssociations" ".pgp" "gpg4win.AssocFile.Kleopatra.GPG"
   WriteRegStr SHCTX "Software\Gpg4win\Kleopatra\Capabilities\FileAssociations" ".asc" "gpg4win.AssocFile.Kleopatra.ASC"
@@ -309,6 +320,7 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
   WriteRegStr SHCTX "Software\Gpg4win\Kleopatra\Capabilities\FileAssociations" ".p7m" "gpg4win.AssocFile.Kleopatra.CMS"
   WriteRegStr SHCTX "Software\Gpg4win\Kleopatra\Capabilities\FileAssociations" ".p7s" "gpg4win.AssocFile.Kleopatra.CMS"
   WriteRegStr SHCTX "Software\Gpg4win\Kleopatra\Capabilities\FileAssociations" ".pem" "gpg4win.AssocFile.Kleopatra.CMS"
+  WriteRegStr SHCTX "Software\Gpg4win\Kleopatra\Capabilities\FileAssociations" ".kgrp" "gpg4win.AssocFile.Kleopatra.KGRP"
 
   WriteRegExpandStr SHCTX "Software\Gpg4win\Kleopatra\Capabilities\shell\open\command" "" "$\"$INSTDIR\bin\Kleopatra.exe$\" $\"%1$\""
 

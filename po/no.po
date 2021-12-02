@@ -403,6 +403,10 @@ msgctxt "T_File_Type_x509_Name"
 msgid "X509 Certificate File"
 msgstr ""
 
+msgctxt "T_File_Type_kgrp_Name"
+msgid "Kleopatra Certificate Groups"
+msgstr ""
+
 msgctxt "T_File_Type_x509_info_tip"
 msgid "Certificate for CMS (S/MIME)."
 msgstr ""
@@ -413,6 +417,10 @@ msgstr ""
 
 msgctxt "T_File_Type_sig_info_tip"
 msgid "A cryptographic signature to verify the authenticity of another file."
+msgstr ""
+
+msgctxt "T_File_Type_kgrp_info_tip"
+msgid "Certificate groups to be used by Kleopatra for encryption."
 msgstr ""
 
 msgctxt "T_File_Type_pgp_key_info_tip"

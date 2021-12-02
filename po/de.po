@@ -3,21 +3,21 @@
 # This file is distributed under the same license as the gpg4win package.
 #
 # Andre Heinecke <andre.heinecke@intevation.de>, 2018.
-# aheinecke <aheinecke@gnupg.org>, 2018.
+# aheinecke <aheinecke@gnupg.org>, 2018, 2021.
 # Heike Falk <hfalk@g10code.com>, 2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: gpg4win 2.0\n"
 "Report-Msgid-Bugs-To: gpg4win-devel@wald.intevation.org\n"
-"PO-Revision-Date: 2020-03-09 23:51+0100\n"
-"Last-Translator: Heike Falk <hfalk@g10code.com>\n"
+"PO-Revision-Date: 2021-12-02 15:11+0100\n"
+"Last-Translator: aheinecke <aheinecke@gnupg.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.3\n"
+"X-Generator: Lokalize 20.12.0\n"
 
 msgctxt "T_AlreadyRunning"
 msgid "An instance of this installer is already running."
@@ -480,6 +480,10 @@ msgctxt "T_File_Type_x509_Name"
 msgid "X509 Certificate File"
 msgstr "X509 Zertifikats-Datei"
 
+msgctxt "T_File_Type_kgrp_Name"
+msgid "Kleopatra Certificate Groups"
+msgstr "Kleopatra Zertifikats-Gruppen"
+
 msgctxt "T_File_Type_x509_info_tip"
 msgid "Certificate for CMS (S/MIME)."
 msgstr "Zertifikat für CMS (S/MIME)."
@@ -493,6 +497,11 @@ msgid "A cryptographic signature to verify the authenticity of another file."
 msgstr ""
 "Eine Kryptographische Signatur um die Authentizität einer anderen Datei zu "
 "prüfen."
+
+msgctxt "T_File_Type_kgrp_info_tip"
+msgid "Certificate groups to be used by Kleopatra for encryption."
+msgstr ""
+"Zertifikate und Gruppen-Informationen für die Verschlüsselung in Kleopatra."
 
 msgctxt "T_File_Type_pgp_key_info_tip"
 msgid "Certificate for OpenPGP."

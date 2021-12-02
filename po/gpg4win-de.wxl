@@ -15,4 +15,7 @@
 <String Id="T_File_Type_info_tip">Dies können verschlüsselte Daten sein, eine Signatur oder Zertifikate.</String>
 <String Id="T_File_Type_sig_info_tip">Eine Kryptographische Signatur um die Authenzität einer anderen Datei zu prüfen.</String>
 <String Id="T_File_Type_pgp_key_info_tip">OpenPGP Zertifikat.</String>
+<String Id="T_File_Type_kgrp_Name">Kleopatra Zertifikats-Gruppen</String>
+<String Id="T_File_Type_kgrp_info_tip">Zertifikate und Gruppen-Informationen für die Verschlüsselung in Kleopatra.</String>
+
 </WixLocalization>
