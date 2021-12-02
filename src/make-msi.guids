@@ -15,6 +15,7 @@ CB0DD13C-3429-42CF-BCE8-8C50839EBBA2 /REGISTRY/SHCTX/Software\Classes\.asc\OpenW
 38EE7427-7E8A-4C06-8B0B-416635293955 /REGISTRY/SHCTX/Software\Classes\.pem\OpenWithProgIDs/gpg4win.AssocFile.Kleopatra.CMS
 DD4B4555-9B01-45B4-8CFD-8F86E6F446EC /REGISTRY/SHCTX/Software\Classes\.pgp\OpenWithProgIDs/gpg4win.AssocFile.Kleopatra.GPG
 4C925EAB-A4D9-4D19-BA44-EDFEF4AC0193 /REGISTRY/SHCTX/Software\Classes\.sig\OpenWithProgIDs/gpg4win.AssocFile.Kleopatra.PGPSIG
+F5A9A0BB-73DC-45C0-8B35-6DC7CC260106 /REGISTRY/SHCTX/Software\Classes\.kgrp\OpenWithProgIDs/gpg4win.AssocFile.Kleopatra.KGRP
 2B529E47-853B-4599-BA9B-6679A7D862C9 /REGISTRY/SHCTX/Software\Classes\P7MFile\DefaultIcon/
 04B8782C-E303-4F38-8701-B5F3CAE7A204 /REGISTRY/SHCTX/Software\Classes\P7MFile\shell\open\command/
 88A08CD8-7B0A-40F4-A13D-51E5F40FC429 /REGISTRY/SHCTX/Software\Classes\P7SFile\DefaultIcon/
@@ -40,6 +41,13 @@ AE2BA375-DC91-47F0-BE08-4AB0B4365463 /REGISTRY/SHCTX/Software\Classes\gpg4win.As
 B10849E4-23B9-49B8-989D-85CC7F10C5A4 /REGISTRY/SHCTX/Software\Classes\gpg4win.AssocFile.Kleopatra.GPG\CurVer/
 E877AD35-1BCC-4B16-9164-6E677F873398 /REGISTRY/SHCTX/Software\Classes\gpg4win.AssocFile.Kleopatra.GPG\DefaultIcon/
 03A2F725-022E-4068-A765-E3FCB62D152F /REGISTRY/SHCTX/Software\Classes\gpg4win.AssocFile.Kleopatra.GPG\shell\open\command/
+6F8A4C12-6605-48DF-8E80-01C90A0DC29A /REGISTRY/SHCTX/Software\Classes\gpg4win.AssocFile.Kleopatra.KGRP/
+558F985C-F44A-491B-B06A-8ADA448585A6 /REGISTRY/SHCTX/Software\Classes\gpg4win.AssocFile.Kleopatra.KGRP/FriendlyTypeName
+F00F5DEB-4E6F-41B2-B200-E016B887E7E5 /REGISTRY/SHCTX/Software\Classes\gpg4win.AssocFile.Kleopatra.KGRP/InfoTip
+5AA9B654-6462-44F1-ACD1-F3027E38C1FA /REGISTRY/SHCTX/Software\Classes\gpg4win.AssocFile.Kleopatra.KGRP/PercievedType
+7F41E7D0-B258-4046-A5D3-FDD7D50A25B8 /REGISTRY/SHCTX/Software\Classes\gpg4win.AssocFile.Kleopatra.KGRP\CurVer/
+5B134007-5DA8-4844-A957-2CDAD60892EF /REGISTRY/SHCTX/Software\Classes\gpg4win.AssocFile.Kleopatra.KGRP\DefaultIcon/
+020B98B9-35CE-4B4F-AE9C-2DDBD48BAB08 /REGISTRY/SHCTX/Software\Classes\gpg4win.AssocFile.Kleopatra.KGRP\shell\open\command/
 04DDF9C9-1793-4318-AAC6-BCFC570AEF17 /REGISTRY/SHCTX/Software\Classes\gpg4win.AssocFile.Kleopatra.PGPKEY/
 00185700-BD09-4DDC-B5E1-AD856EF68D60 /REGISTRY/SHCTX/Software\Classes\gpg4win.AssocFile.Kleopatra.PGPKEY/FriendlyTypeName
 1B4C883F-AED4-4C5D-B961-761800A2C03F /REGISTRY/SHCTX/Software\Classes\gpg4win.AssocFile.Kleopatra.PGPKEY/InfoTip
@@ -75,6 +83,7 @@ B0186ADF-D43E-4258-BA80-42EB05BFDA6B /REGISTRY/SHCTX/Software\Gpg4win\Kleopatra\
 F06BE60C-1C9A-4FEB-803A-F27C7B965E84 /REGISTRY/SHCTX/Software\Gpg4win\Kleopatra\Capabilities\FileAssociations/.crt
 605C85B8-B568-46A1-95D8-8434596C194B /REGISTRY/SHCTX/Software\Gpg4win\Kleopatra\Capabilities\FileAssociations/.der
 8E23DB1D-05B1-461A-834C-674F39EE455D /REGISTRY/SHCTX/Software\Gpg4win\Kleopatra\Capabilities\FileAssociations/.gpg
+FB45F2CA-57F1-417D-A1D1-649C83F1CD83 /REGISTRY/SHCTX/Software\Gpg4win\Kleopatra\Capabilities\FileAssociations/.kgrp
 87C8FA80-A35A-4118-A1EC-067C104CC92A /REGISTRY/SHCTX/Software\Gpg4win\Kleopatra\Capabilities\FileAssociations/.p10
 8D1937C7-33F3-449D-8B8F-8D00AFFE39D2 /REGISTRY/SHCTX/Software\Gpg4win\Kleopatra\Capabilities\FileAssociations/.p12
 56C08B1C-395A-403F-8006-99EC2048D31D /REGISTRY/SHCTX/Software\Gpg4win\Kleopatra\Capabilities\FileAssociations/.p7c

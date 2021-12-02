@@ -301,7 +301,7 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
   WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.Kleopatra.KGRP\CurVer" "" "${VERSION}"
   WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.Kleopatra.KGRP\DefaultIcon" "" "$INSTDIR\share\gpg4win\file-ext.ico"
 
-  WriteRegBin SHCTX "Software\Classes\.sig\OpenWithProgIDs" "gpg4win.AssocFile.Kleopatra.KGRP" 0
+  WriteRegBin SHCTX "Software\Classes\.kgrp\OpenWithProgIDs" "gpg4win.AssocFile.Kleopatra.KGRP" 0
 
   # File extensions
   WriteRegStr SHCTX "Software\Gpg4win\Kleopatra\Capabilities\FileAssociations" ".pgp" "gpg4win.AssocFile.Kleopatra.GPG"
