@@ -66,8 +66,6 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
              patches-appimage/kconfigwidgets/0001-build-without-KF5Auth.patch \
              patches-appimage/ki18n/0001-Load-Qt-translations-even-if-some-catalogs-are-missi.patch \
              patches-appimage/qtwayland-5.15.0/00-disable-wayland-server.patch \
-             patches-appimage/0001-Add-support-for-non-standard-boost-include-directori.patch \
-             patches-appimage/set-cxx-standard.patch \
              patches-appimage/kleopatra/build-fixes.patch \
              patches-appimage/kleopatra/set-cxx-standard.patch \
              patches-appimage/libkleo/set-cxx-standard.patch \
