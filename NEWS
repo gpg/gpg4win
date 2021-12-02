@@ -15,11 +15,170 @@ Kompendium DE:  4.0.1
 Compendium EN:  3.0.0
 ~~~~~~~~~~~~~~~
 
+Noteworthy changes in Version 3.1.20 (2021-12-02)
+-------------------------------------------------
+
+(en) Kleopatra: The group configuration has been extended so that groups
+     can now be exported and imported. (T5638)
+
+(de) Kleopatra: Die Gruppen Konfiguration wurde erweitert so das nun
+     Gruppen nun exportiert und importiert werden können. (T5638)
+
+(en) Kleopatra: Now shows the used GnuPG version in the about dialog.
+     (T5652)
+
+(de) Kleopatra: Es wird nun die verwendete GnuPG Version im
+     "Über Kleopatra" Dialog angezeigt. (T5652)
+
+(en) Kleopatra: Added an option under crypto operations to only
+     use symmetric encryption. (T5661)
+
+(de) Kleopatra: Eine Option wurde hinzugefügt durch die rein
+     symmetrische Ve erzwungen werden kann. (T5661)
+
+(en) Kleopatra: Available Smartcard readers can now be listed under
+     settings. (T5662)
+
+(de) Kleopatra: Verwendbare Smartcard-Leser können nun unter Einstellungen
+     angezeigt werden. (T5662)
+
+(en) Kleopatra: The update notification has been fixed. (T5663)
+
+(de) Kleopatra: Der Hinweis auf aktualisierte Versionen funktioniert nun
+     wieder. (T5663)
+
+(en) Kleopatra: Checks for RESTRICTED / VS-NfD compliance
+     now take underlying library configurations into account. (T5362)
+
+(de) Kleopatra: Die Prüfung auf RESTRICTED / VS-NfD Konformität berücksichtigt
+     nun die Konfiguration der zugrundeliegenden Bibliotheken. (T5362)
+
+(en) Kleopatra: Added error handling for operations which are not
+     allowed in the configured compliance mode. (T5653)
+
+(de) Kleopatra: Es wurde eine Fehlerbehandlung für Aktionen eingeführt
+     die nicht der konfigurierten Konformität entsprechen. (T5653)
+
+(en) Kleopatra: Configuration of Keyservers is now shown correctly
+     even when done through dirmngr.conf. (T5672)
+
+(de) Kleopatra: Die Konfiguration von Schlüsselservern wird nun
+     auch angezeigt wenn Sie in dirmngr.conf vorgenommen wird. (T5672)
+
+(en) Kleopatra: Smartcard reader can now be selected through a menu
+     which shows all available readers. This is found under the GnuPG System
+     Smartcard configuration. (T5666)
+
+(de) Kleopatra: Smartcard-Leser können nun über ein Menü in der GnuPG-System
+     Smartcard Konfiguration ausgewählt werden. Dabei werden verfügbare Leser
+     angezeigt. (T5666)
+
+(en) Kleopatra: When searching for certificates in the available list, a
+     following "Search on Server" is now prefilled with the search string.
+     (T5624)
+
+(de) Kleopatra: Bei der Suche nach Zertifikaten über die Zertifikatsliste
+     wird nun bei einer folgenden Suche auf einem Server der Suchstring
+     schon vorausgefüllt. (T5624)
+
+(en) Kleopatra: Both S/MIME and OpenPGP certificates can now be imported
+     from a single file. (T5638)
+
+(de) Kleopatra: Es können nun sowohl S/MIME als auch OpenPGP Zertifikate
+     aus einer einzelnen Datei importiert werden. (T5638)
+
+(en) Kleopatra: Configuration pages can now be hidden. (T5689)
+
+(de) Kleopatra: Konfigurations-Seiten können nun individuell versteckt
+     werden. (T5689)
+
+(en) Kleopatra: The key creation wizard can now be customized with
+     custom placeholders and expiry times. (T5690 T5708)
+
+(de) Kleopatra: Der Assistent für neue Schlüsselpaare kann nun
+     mit individuellen Platzhaltern und Ablaufdaten vorkonfiguriert
+     werden. (T5690 T5708)
+
+(en) Kleopatra: It is now possible to hide S/MIME (CMS) actions for
+     an OpenPGP only mode. (T5688)
+
+(de) Kleopatra: Es ist nun möglich einen OpenPGP Modus zu konfigurieren
+     in dem die meisten Aktionen für S/MIME (CMS) versteckt werden.
+     (T5688)
+
+(en) Kleopatra: The GnuPG-System configuration has received minor
+     cleanups. (T5677)
+
+(de) Kleopatra: Die GnuPG-System Konfiguration wurde leicht
+     aufgeräumt. (T5677)
+
+(en) Kleopatra: A crash related to circular certificate chains
+     has been fixed. (T5697)
+
+(de) Kleopatra: Ein Absturz im Zusammenhang mit rekursiven
+     Zertifikatsketten wurde behoben. (T5697)
+
+(en) GpgOL: Contents are no longer hidden if plain text
+     only is configured through group policies. (T5681)
+
+(de) GpgOL: Inhalte werden nun angezeigt wenn die Präferenz
+     von reinen Text Mails über Gruppen-Richtlinien gesetzt wird.
+     (T5681)
+
+(en) GnuPG: A new, optional, configuration syntax has been implemented
+     which allows conditional configuration based on variables. Variables
+     can be read from the Windows registry and controlled by Group Policies.
+
+(de) GnuPG: Eine neue, optionale, Konfigurations-Syntax wurde implementiert
+     mit der das System dynamisch konfiguriert werden kann. Dabei können
+     Variablen aus der Windows Registry gelesen und über Gruppenrichtlinen
+     konfiguriert werden.
+
+(de) GnuPG: Der "PIN-Cache" wird nun korrekter als "Passwort-Cache"
+     bezeichnet.
+
+(en) GnuPG: The configured "trusted-key" options can now be
+     properly changed. (T5685)
+
+(de) GnuPG: Die konfigurierten "trusted-key" Optionen können nun
+     korrekt geändert werden. (T5685)
+
+(en) GnuPG: The default selection for smartcard reader now tries
+     to ignore virtual smartcard readers. (T5644)
+
+(de) GnuPG: Die Auswahl des Standard Smartcard-Lesers versucht nun
+     virtuelle Smartcard-Leser zu ignorieren. (T5644)
+
+(en) GnuPG: With "gpgconf --show-configs" the configuration of the
+     system can now be listed.
+
+(de) GnuPG: Mit dem Kommando "gpgconf --show-configs" kann nun die
+     vollständige Konfiguration des Systems aufgelistet werden.
+
+(en) GnuPG: Updated to 2.2.33.  For details see:
+     https://lists.gnupg.org/pipermail/gnupg-announce/2021q4/000466.html
+
+(de) GnuPG: Auf Version 2.2.33 aktualisiert:
+     https://lists.gnupg.org/pipermail/gnupg-announce/2021q4/000466.html
+
+~~~~~~~~~~~~~~~
+GnuPG:          2.2.33
+Kleopatra:      3.1.19
+GPA:            0.10.0
+GpgOL:          2.5.1
+GpgEX:          1.0.8
+Kompendium DE:  4.0.1
+Compendium EN:  3.0.0
+~~~~~~~~~~~~~~~
+
 Noteworthy changes in Version 3.1.19 (2021-10-09)
 -------------------------------------------------
 
 (en) Kleopatra: Ask GnuPG for the correct path for the uiserver socket
      (T5619).
+
+(de) Kleopatra: Es wird nun der korrekte Pfad für den UIServer Socket
+     verwendet
 
 (en) Kleopatra: Fix a problem with smartcard detection on startup.
      (rKd2338373ab41)

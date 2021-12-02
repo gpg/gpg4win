@@ -66,73 +66,81 @@ Die integrierten Gpg4win-Komponenten in Version !VERSION! sind:
 Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 -----------------------------------------
 
-- GpgOL: Es werden nun auch Outlook Elemente, wie etwa weitergeleitete
-  Mails oder Kontakte und Termine in Krypo Mails unterstützt. (T4184)
+- Kleopatra: Die Gruppen Konfiguration wurde erweitert so das nun
+  Gruppen nun exportiert und importiert werden können. (T5638)
 
-- GpgOL: Die Warnung zu "Widersprüchlichen Krypto Einstellungen"
-  ignoriert nun undokumentierte Werte von Outlook. (T5335)
+- Kleopatra: Es wird nun die verwendete GnuPG Version im
+  "Über Kleopatra" Dialog angezeigt. (T5652)
 
-- Kleopatra: Das neue Feature "Gruppen" erlaubt es, Gruppen zu
-  definieren, die dann bei der Empfänger-Auswahl als Ganzes
-  ausgewählt werden können. (T5175 T5241)
+- Kleopatra: Eine Option wurde hinzugefügt durch die rein
+  symmetrische Ve erzwungen werden kann. (T5661)
 
-- Kleopatra: Verschlüsseln funktioniert nun auch wieder mit
-  Windows Netzwerkpfaden. (T5216)
+- Kleopatra: Verwendbare Smartcard-Leser können nun unter Einstellungen
+  angezeigt werden. (T5662)
 
-- Kleopatra: Die Prüfung ob Kleopatra mit erhöhten Rechten
-  ausgeführt wird, führt nur noch zu einer Warnung und nicht
-  mehr zu einem Fehler. (T5248)
+- Kleopatra: Der Hinweis auf aktualisierte Versionen funktioniert nun
+  wieder. (T5663)
 
-- Kleopatra: Das gleichzeitige Exportieren von S/MIME und
-  OpenPGP Zertifikaten wurde vereinfacht. (T5002)
+- Kleopatra: Die Prüfung auf RESTRICTED / VS-NfD Konformität berücksichtigt
+  nun die Konfiguration der zugrundeliegenden Bibliotheken. (T5362)
 
-- Kleopatra: Die Suche zeigt nicht länger alle Ergebnisse als
-  "nicht beglaubigt" an. (T5388)
+- Kleopatra: Es wurde eine Fehlerbehandlung für Aktionen eingeführt
+  die nicht der konfigurierten Konformität entsprechen. (T5653)
 
-- Kleopatra: Neue Unterstützung für weitere CardOS Smartcards.
-  (T4876)
+- Kleopatra: Die Konfiguration von Schlüsselservern wird nun
+  auch angezeigt wenn Sie in dirmngr.conf vorgenommen wird. (T5672)
 
-- Kleopatra: Zertifikate werden nun passend zur eingesteckten
-  Smartcard von einem konfigurieren Active Directory bzw. LDAP
-  Server geladen. (T4876)
+- Kleopatra: Smartcard-Leser können nun über ein Menü in der GnuPG-System
+  Smartcard Konfiguration ausgewählt werden. Dabei werden verfügbare Leser
+  angezeigt. (T5666)
 
-- Kleopatra: Bei der Beglaubigung kann man nun festlegen, dass
-  ein Zertifikat vertrauenswürdige Beglaubigungen für eine bestimmte
-  Domäne ausstellen darf. So kann man eine Infrastruktur etablieren,
-  bei denen die Verantwortlichkeit für eine Domäne delegiert wird.
-  (T5245)
+- Kleopatra: Bei der Suche nach Zertifikaten über die Zertifikatsliste
+  wird nun bei einer folgenden Suche auf einem Server der Suchstring
+  schon vorausgefüllt. (T5624)
 
-- Kleopatra: Die Benutzbarkeit der Smartcard Ansicht wurde
-  weiter verbessert. (T4876)
+- Kleopatra: Es können nun sowohl S/MIME als auch OpenPGP Zertifikate
+  aus einer einzelnen Datei importiert werden. (T5638)
 
-- Kleopatra: Komplexe LDAP Schlüsselserver Einträge können nun
-  eingegeben werden ohne das es zu Syntax Fehlern kommt. (T5404)
+- Kleopatra: Konfigurations-Seiten können nun individuell versteckt
+  werden. (T5689)
 
-- Kleopatra: Sehr große Archive führen nun nicht länger zu einem
-  Absturz von Kleopatra. (T5475)
+- Kleopatra: Der Assistent für neue Schlüsselpaare kann nun
+  mit individuellen Platzhaltern und Ablaufdaten vorkonfiguriert
+  werden. (T5690 T5708)
 
-- Kleopatra: Das Entschlüsseln von Archiven wurde beschleunigt.
-  (T5478)
+- Kleopatra: Es ist nun möglich einen OpenPGP Modus zu konfigurieren
+  in dem die meisten Aktionen für S/MIME (CMS) versteckt werden.
+  (T5688)
 
-- Kleopatra: Verschlüsseln von Ordnern mit Dateien, die größer
-  als 4GB sind, führt nun nicht mehr zu fehlerhaften Archiven.
-  (T5478)
+- Kleopatra: Die GnuPG-System Konfiguration wurde leicht
+  aufgeräumt. (T5677)
 
-- Kleopatra: Die Suche in LDAP / Active Directory kann nun mehr
-  als einen Schlüssel anzeigen und zeigt die korrekten Details.
-  (T5441)
+- Kleopatra: Ein Absturz im Zusammenhang mit rekursiven
+  Zertifikatsketten wurde behoben. (T5697)
 
-- GnuPG: OpenPGP Schlüssel aus dem LDAP werden nun mit
-  Beglaubigungen importiert. (T5387)
+- GpgOL: Inhalte werden nun angezeigt wenn die Präferenz
+  von reinen Text Mails über Gruppen-Richtlinien gesetzt wird.
+  (T5681)
 
-- GnuPG: Dateien die mit S/MIME (CMS) aber nur mit Passwort
-  verschlüsselt wurden, können nun entschlüsselt werden.
+- GnuPG: Eine neue, optionale, Konfigurations-Syntax wurde implementiert
+  mit der das System dynamisch konfiguriert werden kann. Dabei können
+  Variablen aus der Windows Registry gelesen und über Gruppenrichtlinen
+  konfiguriert werden.
 
-- GnuPG: Sonderzeichen auf der Kommandozeile werden nun erneut
-  gehandhabt. (T4398)
+- GnuPG: Der "PIN-Cache" wird nun korrekter als "Passwort-Cache"
+  bezeichnet.
 
-- GnuPG: Auf Version 2.2.28 aktualisiert:
-  https://lists.gnupg.org/pipermail/gnupg-announce/2021q2/000460.html
+- GnuPG: Die konfigurierten "trusted-key" Optionen können nun
+  korrekt geändert werden. (T5685)
+
+- GnuPG: Die Auswahl des Standard Smartcard-Lesers versucht nun
+  virtuelle Smartcard-Leser zu ignorieren. (T5644)
+
+- GnuPG: Mit dem Kommando "gpgconf --show-configs" kann nun die
+  vollständige Konfiguration des Systems aufgelistet werden.
+
+- GnuPG: Auf Version 2.2.33 aktualisiert:
+  https://lists.gnupg.org/pipermail/gnupg-announce/2021q4/000466.html
 
 
 3. Hinweise
