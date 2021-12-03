@@ -961,7 +961,8 @@ signed_installers/GnuPG-VS-Desktop-$(VSD_VERSION_FILE)-$(1).msi: installers/GnuP
 	mkdir -p signed_installers
 	$(call AUTHENTICODE_sign,"installers/GnuPG-VS-Desktop-$(VSD_VERSION_FILE)-$(1).msi","signed_installers/GnuPG-VS-Desktop-$(VSD_VERSION_FILE)-$(1).msi");\
 
-$(stampdir)/stamp-$(1)-upload: signed_installers/GnuPG-VS-Desktop-$(VSD_VERSION_FILE)-$(1).msi
+$(stampdir)/stamp-$(1)-upload: signed_installers/GnuPG-VS-Desktop-$(VSD_VERSION_FILE)-$(1).msi \
+	$(stampdir)/stamp-dist-self
 	@(cd signed_installers; \
           sha256sum GnuPG-VS-Desktop-$(VSD_VERSION_FILE)-$(1).msi > \
 		GnuPG-VS-Desktop-$(VSD_VERSION_FILE)-$(1).msi.sha256; \
@@ -1005,7 +1006,7 @@ $(1)-x86: installers/GnuPG-VS-Desktop-$(VSD_VERSION_FILE)-$(1)-x86.msi
 
 
 .PHONY : $(1)-upload
-$(1)-upload: $(stampdir)/stamp-$(1)-upload
+$(1)-upload: $(stampdir)/stamp-$(1)-upload $(stampdir)/stamp-dist-self
 	gpg --yes -o gnupg-vsd-$(VERSION).tar.bz2.sig -bau $(msi_signkey) \
 		../gpg4win-$(VERSION).tar.bz2
 	rsync -vP ../gpg4win-$(VERSION).tar.bz2 $(VSD_PUBLISH_HOST)/src/GnuPG-VS-Desktop-$(VSD_VERSION).tar.bz2
