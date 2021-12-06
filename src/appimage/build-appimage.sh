@@ -105,6 +105,15 @@ else
 fi
 export OUTPUT
 
+# Hack around that linuxdeploy does not know libexec
+for f in dirmngr_ldap gpg-check-pattern \
+         gpg-preset-passphrase gpg-protect-tool \
+	 gpg-wks-client scdaemon ; do
+    /opt/linuxdeploy/usr/bin/patchelf \
+              --set-rpath '$ORIGIN/../lib' /build/AppDir/usr/libexec/$f
+done
+
+# Fix up everything and build the file system
 linuxdeploy --appdir /build/AppDir \
             --desktop-file /build/AppDir/usr/share/applications/org.kde.kleopatra.desktop \
             --icon-file /build/AppDir/usr/share/icons/hicolor/256x256/apps/kleopatra.png \
@@ -113,11 +122,4 @@ linuxdeploy --appdir /build/AppDir \
             --output appimage \
     2>&1 | tee /build/logs/linuxdeploy-gnupg-desktop.log
 
-# Hack around that linuxdeploy does not know libexec
-for f in dirmngr_ldap gpg-check-pattern \
-         gpg-preset-passphrase gpg-protect-tool \
-	 gpg-wks-client scdaemon ; do
-    /opt/linuxdeploy/usr/bin/patchelf \
-              --set-rpath '$ORIGIN/../lib' /build/AppDir/usr/libexec/$f
-done
 echo ready
