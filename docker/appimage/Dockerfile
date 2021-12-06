@@ -110,6 +110,7 @@ RUN mkdir -p /tmp/download \
     && mkdir -p /opt \
     && mv /tmp/squashfs-root /opt/linuxdeploy
 
-COPY build-appimage.sh /
-
-RUN chmod +x build-appimage.sh
+# No need to copy the build scripts becuase it is available
+# in the mounted /src hierachy.
+# COPY build-appimage.sh /
+# RUN chmod +x build-appimage.sh

@@ -5,7 +5,7 @@ set -e
 if [ "$1" = "--devel" ]; then
     devmode=
 else
-    devmode="/build-appimage.sh"
+    devmode="/src/src/appimage/build-appimage.sh"
 fi
 
 sourcedir=$(cd $(dirname $0)/..; pwd)

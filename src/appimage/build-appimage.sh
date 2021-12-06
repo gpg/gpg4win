@@ -1,5 +1,5 @@
 #!/bin/sh
-# Build an AppImage of Kleopatra
+# Build an AppImage of GnuPG (VS-)Desktop
 # Copyright (C) 2021 g10 Code GmbH
 #
 # Software engineering by Ingo Klöcker <dev@ingo-kloecker.de>
@@ -112,3 +112,12 @@ linuxdeploy --appdir /build/AppDir \
             --plugin qt \
             --output appimage \
     2>&1 | tee /build/logs/linuxdeploy-gnupg-desktop.log
+
+# Hack around that linuxdeploy does not know libexec
+for f in dirmngr_ldap gpg-check-pattern \
+         gpg-preset-passphrase gpg-protect-tool \
+	 gpg-wks-client scdaemon ; do
+    /opt/linuxdeploy/usr/bin/patchelf \
+              --set-rpath '$ORIGIN/../lib' /build/AppDir/usr/libexec/$f
+done
+echo ready
