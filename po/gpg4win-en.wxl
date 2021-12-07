@@ -16,6 +16,6 @@
 <String Id="T_File_Type_sig_info_tip">A cryptographic signature to verify the authenticity of another file.</String>
 <String Id="T_File_Type_pgp_key_info_tip">Certificate for OpenPGP</String>
 <String Id="T_File_Type_kgrp_Name">Kleopatra Certificate Groups </String>
-<String Id="T_File_Type_kgrp_info_tip">Certificate groups to be used by Kleopatra for encryption</String>
+<String Id="T_File_Type_kgrp_info_tip">Certificate groups to be used by Kleopatra for encryption.</String>
 
 </WixLocalization>
