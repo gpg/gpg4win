@@ -963,19 +963,19 @@ signed_installers/GnuPG-VS-Desktop-$(VSD_VERSION_FILE)-$(1).msi: installers/GnuP
 
 $(stampdir)/stamp-$(1)-upload: signed_installers/GnuPG-VS-Desktop-$(VSD_VERSION_FILE)-$(1).msi \
 	$(stampdir)/stamp-dist-self
-	@(cd signed_installers; \
+	@(set -e; cd signed_installers; \
           sha256sum GnuPG-VS-Desktop-$(VSD_VERSION_FILE)-$(1).msi > \
 		GnuPG-VS-Desktop-$(VSD_VERSION_FILE)-$(1).msi.sha256; \
 	  if [ -f "../gnupg-vsd/$(1)/customer-enc-key.asc" ]; then \
 		echo "Encrypting installer"; \
-	        keys="-f ../gnupg-vsd/$(1)/customer-enc-key.asc" ; \
-                for i in 2 3 4 5 6 7 8 9; do; \
-	          if [ -f "../gnupg-vsd/$(1)/customer-enc-key$i.asc" ]; then \
-                    keys="$keys -f ../gnupg-vsd/$(1)/customer-enc-key$i.asc";\
+	        k="-f ../gnupg-vsd/$(1)/customer-enc-key.asc" ; \
+                for i in 2 3 4 5 6 7 8 9; do \
+	          if [ -f "../gnupg-vsd/$(1)/customer-enc-key$$$${i}.asc" ]; then \
+                    k="$$$${k} -f ../gnupg-vsd/$(1)/customer-enc-key$$$${i}.asc";\
 		  fi; \
 	        done; \
 		gpg --no-options --batch --yes -seu $(msi_signkey) \
-			"$keys" \
+			$$$${k} \
 			-f "../gnupg-vsd/general-enc-key.asc" \
                         -o GnuPG-VS-Desktop-$(VSD_VERSION_FILE)-$(1).msi.gpg \
 			GnuPG-VS-Desktop-$(VSD_VERSION_FILE)-$(1).msi;\
