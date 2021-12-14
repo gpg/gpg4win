@@ -1,0 +1,31 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From 3f2223ff8254b560eec322bce9ed21002d1a610b Mon Sep 17 00:00:00 2001
+From: Andre Heinecke <aheinecke@gnupg.org>
+Date: Tue, 14 Dec 2021 11:24:14 +0100
+Subject: [PATCH] Add compatibility for older kcfg versions
+
+The is...Immutable helpers were added in a later version.
+
+GnuPG-Bug-Id: T5716
+---
+ src/newcertificatewizard/newcertificatewizard.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/newcertificatewizard/newcertificatewizard.cpp b/src/newcertificatewizard/newcertificatewizard.cpp
+index 153c0c24..dbafb16a 100644
+--- a/src/newcertificatewizard/newcertificatewizard.cpp
++++ b/src/newcertificatewizard/newcertificatewizard.cpp
+@@ -1965,7 +1965,7 @@ void AdvancedSettingsDialog::updateWidgetVisibility()
+     ui.expiryDE->setVisible(protocol == OpenPGP);
+     ui.expiryCB->setVisible(protocol == OpenPGP);
+     const auto settings = Kleo::Settings{};
+-    if (settings.isValidityPeriodInDaysImmutable()) {
++    if (settings.isImmutable(QStringLiteral("ValidityPeriodInDays"))) {
+         ui.expiryDE->setEnabled(false);
+         ui.expiryCB->setEnabled(false);
+     }
+--
+2.30.2
