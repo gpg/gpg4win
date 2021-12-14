@@ -20,7 +20,7 @@
 #
 # SPDX-License-Identifier: GPL-2.0+
 
-EXTRA_DIST = AppRun start-shell
+EXTRA_DIST = AppRun start-shell build-appimage.sh
 
 root := /build
 stampdir := $(root)/stamps

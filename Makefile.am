@@ -39,7 +39,6 @@ SUBDIRS = ${po} packages ${doc} src
 EXTRA_DIST = autogen.sh README.GIT ONEWS \
              doc/license-page doc/GPLv3 \
              build-aux/git-log-footer build-aux/git-log-fix \
-             docker/appimage/build-appimage.sh \
              docker/appimage/Dockerfile \
              docker/build-appimage-docker-image.sh \
              docker/run-appimage-build.sh \
