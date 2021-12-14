@@ -52,6 +52,7 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
              patches/kleopatra/build-fixes.patch \
              patches/kleopatra/lower-cmake-requirement.patch \
              patches/kleopatra/set-cxx-standard.patch \
+             patches/kleopatra/Add-setting-to-always-search-for-smartcard-certs.patch \
              patches/kxmlgui/0001-make-qdbus-optional.patch \
              patches/kxmlgui/0004-Cruedly-disable-KSendbugmail.patch \
              patches/libkleo/lower-cmake-requirement.patch \

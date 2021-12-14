@@ -1,0 +1,64 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From daca8a21e8a04a005a46afbc82d25b5699272d73 Mon Sep 17 00:00:00 2001
+From: Andre Heinecke <aheinecke@gnupg.org>
+Date: Tue, 14 Dec 2021 09:10:02 +0100
+Subject: [PATCH] Add setting to always search for smartcard certs
+
+By default kleopatra only searches on LDAP servers for
+certificates belonging to a PKCS#15 smartcards. But
+there could also be scenrios where other protocols make
+sense. So we now add a default off setting for this.
+
+To implement this also for OpenPGP smartcards we now
+have:
+GnuPG-Bug-Id: T5735
+---
+ src/kcfg/settings.kcfg     | 9 +++++++++
+ src/view/p15cardwidget.cpp | 4 +++-
+ 2 files changed, 12 insertions(+), 1 deletion(-)
+
+diff --git a/src/kcfg/settings.kcfg b/src/kcfg/settings.kcfg
+index d2f40282..71ed45e5 100644
+--- a/src/kcfg/settings.kcfg
++++ b/src/kcfg/settings.kcfg
+@@ -100,4 +100,13 @@
+      <default>true</default>
+    </entry>
+  </group>
++ <group name="Smartcard">
++   <entry name="AlwaysSearchCardOnKeyserver" type="Bool">
++     <label>Always search smartcard certificates on keyserver</label>
++     <tooltip>Searches for the certificates belonging the smartcard keys on the configured keyserver.</tooltip>
++     <whatsthis>Searches on keyservers regardless of the protocol for the smartcards key, regardless
++        of the keyserver protocol. Default behavior is to only do this for LDAP keyservers.</whatsthis>
++     <default>false</default>
++   </entry>
++ </group>
+ </kcfg>
+diff --git a/src/view/p15cardwidget.cpp b/src/view/p15cardwidget.cpp
+index d010d718..af6613dc 100644
+--- a/src/view/p15cardwidget.cpp
++++ b/src/view/p15cardwidget.cpp
+@@ -12,6 +12,8 @@
+
+ #include "openpgpkeycardwidget.h"
+
++#include "settings.h"
++
+ #include "smartcard/p15card.h"
+ #include "smartcard/openpgpcard.h"
+ #include "smartcard/readerstatus.h"
+@@ -105,7 +107,7 @@ void P15CardWidget::searchPGPFpr(const std::string &fpr)
+     /* Only do auto import from LDAP */
+     auto conf = QGpgME::cryptoConfig();
+     Q_ASSERT (conf);
+-    if (!Kleo::keyserver().startsWith(QLatin1String{"ldap"})) {
++    if (!Settings().alwaysSearchCardOnKeyserver() && !Kleo::keyserver().startsWith(QLatin1String{"ldap"})) {
+         return;
+     }
+     mStatusLabel->setText(i18n("Searching in directory service..."));
+--
+2.30.2
