@@ -18,43 +18,44 @@ PAGE_START
 <div id="main">
 <h2>Krypto-Engine (GnuPG 2.3)</h2>
 <p>Die nächste Generation</p>
-Gpg4win-4 enthält ein großes Update von GnuPG. Dieses Update
-stellt sicher das Gpg4win auch zukünftig den Stand der Technik
-im bereich der Datensicherheit definiert.
+Gpg4win-4 enthält ein großes Update von GnuPG. Diese Aktualisierung
+stellt sicher, dass Gpg4win auch zukünftig den Stand der Technik
+im Bereich der Datensicherheit definiert.
 <ul>
     <li>Unterstützung für
         <a href="https://datatracker.ietf.org/doc/draft-ietf-openpgp-rfc4880bis/">RFC-4880bis</a>,
-    die nächste Version des OpenPGP Standards.</li>
+    der nächsten Version des OpenPGP-Standards.</li>
     <li>ECC (Elliptic Curve Cryptography) in S/MIME. Inklusive Brainpool Kurven.</li>
-    <li>Überarbeitete Smartcard anbindung mit Unterstützung für mehrere Smartcards</li>
+    <li>Überarbeitete Smartcard-Anbindung mit Unterstützung für mehrere Smartcards</li>
     <li>Neue Unterstützung für:</li>
     <ul>
-    <li>Personal Identity Verification (PIV) smartcards.</li>
+    <li>Personal Identity Verification (PIV) Smartcards.</li>
     <li>Telesec Signature Cards v2.0.</li>
-    <li>ECC mit S/MIME für Rohde &amp; Schwarz Cybersecurity smartcards.</li>
+    <li>ECC mit S/MIME für Rohde &amp; Schwarz Cybersecurity Smartcards.</li>
     <li>Kurve X448 (ed448, cv448).</li>
     </ul>
     <li>Erweitere Unterstützung für Passwort-Regeln.</li>
-    <li>Vollständiger Unicode Support auf der Kommandozeile</li>
-    <li>Ein neuer, experimenteller Datenbank-Dienst für Zertifikate wurde
-    implementiert.  Um diesen zu verwenden kann "use-keyboxd" in die gpg.conf
-    und gpgsm.conf hinzugefügt werden. Mit der vewendeten SQlite Datenbank
-    werden alle Schlüsseloperationen viel schneller.</li>
-    <li>ECC mit<a href="https://de.wikipedia.org/wiki/Curve25519">Curve25519</a> ist nun der
-        Standard für neue OpenPGP Schlüssel.</li>
-    <li>Für weiteres Siehe: <a href="https://lists.gnupg.org/pipermail/gnupg-announce/2021q2/000458.html">
-             Die GnuPG-2.3 Ankündigung</a>
+    <li>Vollständiger Unicode-Support auf der Kommandozeile</li>
+    <li>Ein neuer, experimenteller Datenbank-Dienst für Zertifikate.
+    Um diesen zu verwenden kann "use-keyboxd" in die gpg.conf
+    und gpgsm.conf hinzugefügt werden. Mit der verwendeten SQlite-Datenbank
+    sind alle Schlüsseloperationen deutlich schneller.</li>
+    <li>ECC mit
+        <a href="https://de.wikipedia.org/wiki/Curve25519">Curve25519</a>
+        ist nun die Voreinstellung für neue OpenPGP-Schlüssel.</li>
+    <li>Für Weiteres siehe: <a href="https://lists.gnupg.org/pipermail/gnupg-announce/2021q2/000458.html">
+             Die GnuPG-2.3.0 Ankündigung (Englisch)</a>
 </ul>
 
 <h2>Krypto-Manager (Kleopatra)</h2>
 <ul>
     <li>Vervollständigte Unterstützung, inklusive Import und Export für Gruppen.
-        Gruppen können sowohl aus S/MIME als auch aus OpenPGP Zertifikaten bestehen. Diese
+        Gruppen können sowohl aus S/MIME- als auch aus OpenPGP-Zertifikaten bestehen. Diese
         können im neuen "kgrp" Format inklusive der Schlüssel exportiert und geteilt werden.
-        Gruppen ermöglichen es regelmäßig die gleichen Kommunikationspartner zu adressieren.
+        Gruppen ermöglichen es, regelmäßig die gleichen Kommunikationspartner zu adressieren.
     </li>
-    <li>Die Barrierefreitheit von Kleopatra wurde stark verbessert, so dass es nun möglich
-    ist mit einem Screenreader die Verschlüsselung zu verwenden.</li>
+    <li>Verbesserte Barrierefreitheit von Kleopatra. Es ist nun möglich,
+    die Verschlüsselung mit einem Screenreader zu verwenden.</li>
     <li>Benutzeroberfläche für mehrere Smartcards zugleich.</li>
     <li>Neue Konfigurationsoptionen für Institutionen um Funktionen auszublenden.</li>
     <li>Verbesserte symmetrische (passwortbasierte) Verschlüsselung. Mit einer Funktion um sichere
@@ -76,6 +77,6 @@ im bereich der Datensicherheit definiert.
 <h2>Hinweis zur VS-NfD konformität</h2>
 Die neue Version der Krypto-Engine ist noch nicht für VS-NfD und RESTRICTED eingestufte
 Dokumente zugelassen. Sollten Sie eine offizielle Zulassung in ihrer Arbeit benötigen
-verwenden Sie bitte GnuPG VS-Desktop von unserem kommerziellen <a
-    href="https://gnupg.com">GnuPG.com</a> Vertrieb.
+verwenden Sie bitte GnuPG VS-Desktop von unserem kommerziellen
+<a href="https://gnupg.com">GnuPG.com</a> Vertrieb.
 </div>

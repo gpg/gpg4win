@@ -25,7 +25,7 @@ art in data security.
     <li>Support for
         <a href="https://datatracker.ietf.org/doc/draft-ietf-openpgp-rfc4880bis/">RFC-4880bis</a>,
     the upcoming version of the OpenPGP standard.</li>
-    <li>ECC (Elliptic Curve Cryptography) Support for S/MIME. Including brainpool curves.</li>
+    <li>ECC (Elliptic Curve Cryptography) support for S/MIME. Including brainpool curves.</li>
     <li>New smartcard handling with better support for multiple smartcards.</li>
     <li>New support for:</li>
     <ul>
@@ -38,7 +38,7 @@ art in data security.
     <li>Full unicode support on the command line.</li>
     <li>A new experimental key database daemon is provided.  To enable it
     put "use-keyboxd" into gpg.conf and gpgsm.conf.  Keys are stored
-    in a SQLite database and make key lookup much faster.</li>
+    in an SQLite database and make key lookups much faster.</li>
     <li>ECC with <a href="https://en.wikipedia.org/wiki/Curve25519">Curve25519</a> is now the default
         for new OpenPGP keys.</li>
     <li>See also: <a href="https://lists.gnupg.org/pipermail/gnupg-announce/2021q2/000458.html">
