@@ -38,34 +38,37 @@ The user interface stays mostly the same, while the backend provides more:
     <li>Extended, regular expression based, password rules.</li>
     <li>Full unicode support on the command line.</li>
     <li>A new storage for certificates (public keys).  To enable it
-    put "use-keyboxd" into gpg.conf and gpgsm.conf.  Keys are stored
-    in an SQLite database and make key lookups much faster.</li>
-    <li>ECC with <a href="https://en.wikipedia.org/wiki/Curve25519">Curve25519</a> is now the default
-        for new OpenPGP keys.</li>
+    put "use-keyboxd" into gpg.conf and gpgsm.conf. Public keys are stored
+    in an SQLite database, which makes lookups much faster.</li>
+    <li>ECC with <a href="https://en.wikipedia.org/wiki/Curve25519">Curve25519</a> is the new default
+        when creating fresh OpenPGP keys.</li>
 </ul>
 
 <h2>Crypto-Manager (Kleopatra)</h2>
 <ul>
     <li>Groups enable you to regularly adress the same communication partners. They can
-    now also be exported and imported, including both the S/MIME and OpenPGP certificates of a
-    group.</li>
-    <li>Greatly improved accessibility to ensure that Kleopatra can be used for encryption while
+    also be exported and imported, including both the S/MIME and OpenPGP
+    certificates.
+    </li>
+    <li>Improved accessibility so that Kleopatra can be used
+        for encryption while
         using a screenreaders</li>
-    <li>Ui for multiple smartcards.</li>
-    <li>New configuration settings for institutions to restrict actions.</li>
-    <li>Improved symmetric (password based) encryption with password generation.</li>
+    <li>UI for multiple smartcards.</li>
+    <li>New configuration settings for administrators to restrict actions.</li>
+    <li>Improved symmetric (password based) encryption, including generating passwords.</li>
 </ul>
 
 <h2>Outlook Plugin (GpgOL)</h2>
 
-The Outlook Add-in stays mostly the same as in Version 3. Although GpgOL profits from the
-new Crypto Backend and new improvements and features are still in development for the
-upcoming Gpg4win 4 releases.
+The Outlook add-in is mostly the same as in Version 3,
+but GpgOL profits from the new crypto backend
+and will get more features in the following Gpg4win 4 releases.
 
 <h2>Note on compliance</h2>
 
 The new version of the crypto backend is not yet approved for VS-NfD / RESTRICTED communication.
-Where an officially approved version is required, please use our version with supplier support:
+Where an officially approved version is required, please use our
+product variant with support from the vendor:
 <a href="https://gnupg.com">GnuPG VS-Desktop</a>.
 
 </div>
