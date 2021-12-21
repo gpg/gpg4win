@@ -17,14 +17,15 @@ PAGE_START
 <div id="main">
 
 <h2>Crypto Backend (GnuPG 2.3)</h2>
-<p>The next generation</p>
-Gpg4win-4 brings a major update of GnuPG. This
-update ensures that Gpg4win continues to define the state of the
-art in data security.
+
+Gpg4win 4 is a major update to the underlying crypto backend. The new GnuPG 2.3 is the
+future-proof foundation for the secure exchange of data and mails over the next years.
+The user interface stays mostly the same, while the backend provides more:
+
 <ul>
-    <li>Support for
-        <a href="https://datatracker.ietf.org/doc/draft-ietf-openpgp-rfc4880bis/">RFC-4880bis</a>,
-    the upcoming version of the OpenPGP standard.</li>
+    <li>Support for the upcoming
+        <a href="https://datatracker.ietf.org/doc/draft-ietf-openpgp-crypto-refresh/">refresh of the OpenPGP-Standards</a>.
+    </li>
     <li>ECC (Elliptic Curve Cryptography) support for S/MIME. Including brainpool curves.</li>
     <li>New smartcard handling with better support for multiple smartcards.</li>
     <li>New support for:</li>
@@ -36,22 +37,18 @@ art in data security.
     </ul>
     <li>Extended, regular expression based, password rules.</li>
     <li>Full unicode support on the command line.</li>
-    <li>A new experimental key database daemon is provided.  To enable it
+    <li>A new storage for certificates (public keys).  To enable it
     put "use-keyboxd" into gpg.conf and gpgsm.conf.  Keys are stored
     in an SQLite database and make key lookups much faster.</li>
     <li>ECC with <a href="https://en.wikipedia.org/wiki/Curve25519">Curve25519</a> is now the default
         for new OpenPGP keys.</li>
-    <li>See also: <a href="https://lists.gnupg.org/pipermail/gnupg-announce/2021q2/000458.html">
-            The GnuPG-2.3 announcement.</a>
 </ul>
 
 <h2>Crypto-Manager (Kleopatra)</h2>
 <ul>
-    <li>Full support, including import and export, for groups. Groups can consist of both
-    S/MIME and OpenPGP keys. They can be exported in a new "kgrp" format. Including the group
-    info and all the certificates in this group. Groups allow an easy way to regularly
-    address the same communication partners. The settings can be found under "Configure
-    Groups" in the settings menu.</li>
+    <li>Groups enable you to regularly adress the same communication partners. They can
+    now also be exported and imported, including both the S/MIME and OpenPGP certificates of a
+    group.</li>
     <li>Greatly improved accessibility to ensure that Kleopatra can be used for encryption while
         using a screenreaders</li>
     <li>Ui for multiple smartcards.</li>
@@ -60,19 +57,15 @@ art in data security.
 </ul>
 
 <h2>Outlook Plugin (GpgOL)</h2>
-<p>Minor update</p>
-<ul>
-    <li>
-    The outlook plugin received only a minor update. Larger changes
-    to combine S/MIME and OpenPGP encryption in a single operation
-    and improvements to systematic issues like blocking outlook when
-    encrypting and support for flags and other marks on crypto mails
-    are still on the roadmap.
-    </li>
-</ul>
+
+The Outlook Add-in stays mostly the same as in Version 3. Although GpgOL profits from the
+new Crypto Backend and new improvements and features are still in development for the
+upcoming Gpg4win 4 releases.
 
 <h2>Note on compliance</h2>
-The new version of the crypto backend is not yet approved for VS-NfD / RESTRICTED communication
-if an officially approved version is required please obtain GnuPG VS-Desktop from our
-commercial branch <a href="https://gnupg.com">GnuPG.com</a>.
+
+The new version of the crypto backend is not yet approved for VS-NfD / RESTRICTED communication.
+Where an officially approved version is required, please use our version with supplier support:
+<a href="https://gnupg.com">GnuPG VS-Desktop</a>.
+
 </div>

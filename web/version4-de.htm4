@@ -56,7 +56,7 @@ während die Engine mehr kann:
     <li> Gruppen ermöglichen es, regelmäßig die gleichen
          Kommunikationspartner zu adressieren.
          Sie können sowohl aus S/MIME- als auch aus OpenPGP-Zertifikaten
-         bestehen, und im- und exportiert werden.
+         bestehen, und mit diesen im- und exportiert werden.
     </li>
     <li>Barrierefreiheit von Kleopatra. Es ist nun möglich,
         die Verschlüsselung mit einem Screenreader zu verwenden.</li>
