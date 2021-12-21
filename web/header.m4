@@ -40,6 +40,17 @@
    <div class="h_text_beta">
 -->
    <div class="h_text">
+   <small>2021-12-21</small><br>
+   <span class="serif_word"><img src="img/bulletin.png" alt"" />
+     m4_ifelse(LANG_DE, `1', `
+      <a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2021-December/000058.html">
+      Gpg4win 4.0.0 veröffentlicht</a>
+      </span>',`
+      <a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce/2021-December/000094.html">
+        Gpg4win 4.0.0 released
+      </a>
+      </span>')
+   <p></p>
    <small>2021-10-19</small><br>
    <span class="serif_word"><img src="img/bulletin.png" alt"" />
      m4_ifelse(LANG_DE, `1', `
@@ -57,17 +68,6 @@
       <a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce/2021-June/000092.html">
         Gpg4win 3.1.16 released
       </a></span>')
-   <p></p>
-   <small>2021-01-12</small><br>
-   <span class="serif_word"><img src="img/bulletin.png" alt"" />
-     m4_ifelse(LANG_DE, `1', `
-      <a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2021-January/000055.html">
-      Gpg4win 3.1.15 veröffentlicht</a>
-      </span>',`
-      <a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce/2021-January/000091.html">
-        Gpg4win 3.1.15 released
-      </a>
-      </span>')
    <p></p>
    <div class="limiter"></div>
    <p>

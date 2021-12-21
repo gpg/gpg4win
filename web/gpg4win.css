@@ -516,20 +516,24 @@ input[type='range']::-moz-range-thumb {
 
 #menu .mlogo a {
  display:block;
- width: 307px;
+ /* With what's new shield */
+ width: 161;
+ /* Without shield
+  width: 307px
+ */
  height: 58px;
  position: relative;
  top: -13px;
  background: url('img/inmenulogo.png');
- /* activate next line for version without shield shadow */
  background-position: 0px -116px;
 }
 
 #menu .mlogo a:hover {
  background: url('img/inmenulogo.png');
- /* background-position: 0px -58px; */
- /* activate next line for version without shield shadow */
- background-position: 0px -174px;
+ /* With what's new shield */
+ background-position: 0px -58px;
+ /* Without shield
+ background-position: 0px -174px */;
 }
 
 #menu .mwhatsnew  {
