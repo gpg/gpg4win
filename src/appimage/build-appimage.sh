@@ -108,9 +108,12 @@ export OUTPUT
 # Hack around that linuxdeploy does not know libexec
 for f in dirmngr_ldap gpg-check-pattern \
          gpg-preset-passphrase gpg-protect-tool \
-	 gpg-wks-client scdaemon ; do
+         gpg-wks-client scdaemon \
+         keyboxd gpg-pair-tool; do
+# Ignore errors because some files might not exist depending
+# on GnuPG Version
     /opt/linuxdeploy/usr/bin/patchelf \
-              --set-rpath '$ORIGIN/../lib' /build/AppDir/usr/libexec/$f
+              --set-rpath '$ORIGIN/../lib' /build/AppDir/usr/libexec/$f || true
 done
 
 # Fix up everything and build the file system
