@@ -22,6 +22,8 @@
 
 EXTRA_DIST = AppRun start-shell build-appimage.sh
 
+SUBDIRS = rsync-filters
+
 root := /build
 stampdir := $(root)/stamps
 

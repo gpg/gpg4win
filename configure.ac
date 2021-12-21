@@ -492,6 +492,7 @@ AC_CONFIG_FILES(doc/logo/Makefile)
 AC_CONFIG_FILES(doc/manual/Makefile doc/manual/version.tex)
 AC_CONFIG_FILES(src/toolchain.cmake)
 AC_CONFIG_FILES(src/appimage/Makefile src/appimage/appimage.mk)
+AC_CONFIG_FILES(src/appimage/rsync-filters/Makefile)
 AC_OUTPUT
 
 # Throw a warning if optional tools are missing
