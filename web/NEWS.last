@@ -2,6 +2,297 @@
 #
 # The version number given below are for the standard installers as
 # distributed by www.gpg4win.org.
+Noteworthy changes in Version 4.0.0 (2021-12-21)
+-------------------------------------------------
+
+(en) Kleopatra: The group configuration has been extended so that groups
+     can now be exported and imported. (T5638)
+
+(de) Kleopatra: Die Gruppen Konfiguration wurde erweitert so das nun
+     Gruppen nun exportiert und importiert werden können. (T5638)
+
+(en) Kleopatra: Now shows the used GnuPG version in the about dialog.
+     (T5652)
+
+(de) Kleopatra: Es wird nun die verwendete GnuPG Version im
+     "Über Kleopatra" Dialog angezeigt. (T5652)
+
+(en) Kleopatra: Added an option under crypto operations to only
+     use symmetric encryption. (T5661)
+
+(de) Kleopatra: Eine Option wurde hinzugefügt durch die rein
+     symmetrische Ve erzwungen werden kann. (T5661)
+
+(en) Kleopatra: Available Smartcard readers can now be listed under
+     settings. (T5662)
+
+(de) Kleopatra: Verwendbare Smartcard-Leser können nun unter Einstellungen
+     angezeigt werden. (T5662)
+
+(en) Kleopatra: The update notification has been fixed. (T5663)
+
+(de) Kleopatra: Der Hinweis auf aktualisierte Versionen funktioniert nun
+     wieder. (T5663)
+
+(en) Kleopatra: Checks for RESTRICTED / VS-NfD compliance
+     now take underlying library configurations into account. (T5362)
+
+(de) Kleopatra: Die Prüfung auf RESTRICTED / VS-NfD Konformität berücksichtigt
+     nun die Konfiguration der zugrundeliegenden Bibliotheken. (T5362)
+
+(en) Kleopatra: Added error handling for operations which are not
+     allowed in the configured compliance mode. (T5653)
+
+(de) Kleopatra: Es wurde eine Fehlerbehandlung für Aktionen eingeführt
+     die nicht der konfigurierten Konformität entsprechen. (T5653)
+
+(en) Kleopatra: Configuration of Keyservers is now shown correctly
+     even when done through dirmngr.conf. (T5672)
+
+(de) Kleopatra: Die Konfiguration von Schlüsselservern wird nun
+     auch angezeigt wenn Sie in dirmngr.conf vorgenommen wird. (T5672)
+
+(en) Kleopatra: Smartcard reader can now be selected through a menu
+     which shows all available readers. This is found under the GnuPG System
+     Smartcard configuration. (T5666)
+
+(de) Kleopatra: Smartcard-Leser können nun über ein Menü in der GnuPG-System
+     Smartcard Konfiguration ausgewählt werden. Dabei werden verfügbare Leser
+     angezeigt. (T5666)
+
+(en) Kleopatra: When searching for certificates in the available list, a
+     following "Search on Server" is now prefilled with the search string.
+     (T5624)
+
+(de) Kleopatra: Bei der Suche nach Zertifikaten über die Zertifikatsliste
+     wird nun bei einer folgenden Suche auf einem Server der Suchstring
+     schon vorausgefüllt. (T5624)
+
+(en) Kleopatra: Both S/MIME and OpenPGP certificates can now be imported
+     from a single file. (T5638)
+
+(de) Kleopatra: Es können nun sowohl S/MIME als auch OpenPGP Zertifikate
+     aus einer einzelnen Datei importiert werden. (T5638)
+
+(en) Kleopatra: Configuration pages can now be hidden. (T5689)
+
+(de) Kleopatra: Konfigurations-Seiten können nun individuell versteckt
+     werden. (T5689)
+
+(en) Kleopatra: The key creation wizard can now be customized with
+     custom placeholders and expiry times. (T5690 T5708)
+
+(de) Kleopatra: Der Assistent für neue Schlüsselpaare kann nun
+     mit individuellen Platzhaltern und Ablaufdaten vorkonfiguriert
+     werden. (T5690 T5708)
+
+(en) Kleopatra: It is now possible to hide S/MIME (CMS) actions for
+     an OpenPGP only mode. (T5688)
+
+(de) Kleopatra: Es ist nun möglich einen OpenPGP Modus zu konfigurieren
+     in dem die meisten Aktionen für S/MIME (CMS) versteckt werden.
+     (T5688)
+
+(en) Kleopatra: The GnuPG-System configuration has received minor
+     cleanups. (T5677)
+
+(de) Kleopatra: Die GnuPG-System Konfiguration wurde leicht
+     aufgeräumt. (T5677)
+
+(en) Kleopatra: A crash related to circular certificate chains
+     has been fixed. (T5697)
+
+(de) Kleopatra: Ein Absturz im Zusammenhang mit rekursiven
+     Zertifikatsketten wurde behoben. (T5697)
+
+(en) Kleopatra: Ask GnuPG for the correct path for the uiserver socket
+     (T5619).
+
+(de) Kleopatra: Es wird nun der korrekte Pfad für den UIServer Socket
+     verwendet
+
+(en) Kleopatra: Fix a problem with smartcard detection on startup.
+     (rKd2338373ab41)
+
+(en) Kleopatra: Enable the "create openpgp key from card" command only
+     for GnuPG >= 2.3.  (rK107abfdb1a41)
+
+(en) Kleopatra: Windows no longer appear in the background
+     when Kleopatra is not the active foreground process.
+     (T5533)
+
+(de) Kleopatra: Fenster erscheinen nicht mehr im Hintergrund
+     wenn Kleopatra nicht das aktive Vordergrund Fenster war.
+     (T5533)
+
+(en) Kleopatra: The directory services configuration for LDAP
+     servers has been extended. (T5465)
+
+(de) Kleopatra: Die Konfiguration von LDAP Verzeichnisdiensten
+     wurde verbessert. (T5465)
+
+(en) Kleopatra: It is now possible to set an expiration date
+     for a certification. (T5336)
+
+(de) Kleopatra: Es ist nun möglich ein Ablaufdatum für eine
+     beglaubigung zu setzen. (T5336)
+
+(en) Kleopatra: It is now possible to update subkey expiration
+     dates with Kleopatra. (T4717)
+
+(de) Kleopatra: Es ist nun möglich auch das Ablaufdatum von
+     unterschlüsseln zu ändern. (T4717)
+
+(en) Kleopatra: The default keyserver is now queried from GnuPG.
+     (T5514)
+
+(de) Kleopatra: Der standard Schlüsselserver wird nun von GnuPG
+     abgefragt. (T5514)
+
+(en) Kleopatra: Users are now prompted to set the ownertrust
+     when certifying with an untrusted key. (T5511)
+
+(de) Kleopatra: Es wird nun aufgefordert das Beglaubigungsvertrauen
+     zu setzen wenn man mit einem nicht vertrautem Schlüssel
+     eine Beglaubigung durchführt. (T5511)
+
+(en) Kleopatra: Symmetric encryption is now preselected if
+     no keys are present. (T5545)
+
+(de) Kleopatra: Symmetrische Verschlüsselung ist nun vorausgewählt
+     wenn keine Schlüssel vorhanden sind. (T5545)
+
+(en) Kleopatra: Every action in the file encryption dialow
+     is now accessible through a shortcut. (T5544)
+
+(de) Kleopatra: Jede Aktion im Verschlüsselungs-Dialog hat nun
+     einen Keyboard-Shortcut. (T5544)
+
+(en) Kleopatra: Accessibility, especially for encryption,
+     has been greatly improved. (T5535)
+
+(de) Kleopatra: Die Barrierefreiheit, besonders für Verschlüsselung
+     wurde stark verbessert. (T5535)
+
+(en) GpgOL: Contents are no longer hidden if plain text
+     only is configured through group policies. (T5681)
+
+(de) GpgOL: Inhalte werden nun angezeigt wenn die Präferenz
+     von reinen Text Mails über Gruppen-Richtlinien gesetzt wird.
+     (T5681)
+
+(en) Pinentry: Symmetric passwords are now formatted when
+     visible if the corresponding gpg-agent option
+     "pinentry-formatted-passphrase" has been set. (T5517)
+
+(de) Pinentry: Symmetrische Passwörter werden nun formatiert
+     angezeigt wenn die entsprechende Option
+     "pinentry-formatted-passphrase" im gpg-agent
+     gesetzt wurde. (T5517)
+
+(en) Pinentry: It is now possible to generate secure
+     passwords for symmetric encryption through gpg-agent.
+     (T5517)
+
+(de) Pinentry: Es ist nun möglich sichere Passwörter für
+     die symmetrische Verschlüsselung über den gpg-agent
+     zu generieren. (T5517)
+
+(en) Pinentry: It is now possible to add custom help text
+     files to explain passphrase constraints. (T5517)
+
+(de) Pinentry: Es ist jetzt möglich angepasste Hilfe Texte
+     zu hinterlegen um Passwort-Regeln anzuzeigen. (T5517)
+
+(en) Pinentry: Passphrase constraints are now better
+     checked and violations no longer clear the entered
+     passphrase. (T5532)
+
+(de) Pinentry: Passwort Regeln können nun besser geprüft
+     werden und ein nicht entsprechendes Passwort wird
+     nicht mehr aus der Eingabe gelöscht. (T5532)
+
+(en) Pinentry: A capslock warning is now shown. (T4950)
+
+(de) Pinentry: Es wird nun eine Warnung angezeigt wenn
+     die Hochstelltaste aktiv ist. (T4950)
+
+(en) Pinentry: The dialog is now more accessible and
+     constraints are shown in a way that screenreaders
+     can handle.
+
+(de) Pinentry: Die Barrierefreiheit des Dialogs wurde
+     verbessert so das alle Warnungen und Aktionen gut
+     von Screenreadern verarbeitet werden.
+
+(en) GnuPG: Passphrase constraint handling has been
+     improved with a new syntax for constraints.
+     (T5517)
+
+(de) GnuPG: Die Unterstützung für Passwort-Regeln wurde
+     verbessert und erlaubt nun auch Sonder-Regeln für
+     symmetrische Passwörter.
+     (T5517)
+
+(en) GnuPG: The socket files are now located under
+     Appdata/Local. (T5537)
+
+(de) GnuPG: Die Socket Dateien liegen nun unter
+     Appdata/Local. (T5537)
+
+(en) GnuPG: A new, optional, configuration syntax has been implemented
+     which allows conditional configuration based on variables. Variables
+     can be read from the Windows registry and controlled by Group Policies.
+
+(de) GnuPG: Eine neue, optionale, Konfigurations-Syntax wurde implementiert
+     mit der das System dynamisch konfiguriert werden kann. Dabei können
+     Variablen aus der Windows Registry gelesen und über Gruppenrichtlinen
+     konfiguriert werden.
+
+(de) GnuPG: Der "PIN-Cache" wird nun korrekter als "Passwort-Cache"
+     bezeichnet.
+
+(en) GnuPG: The configured "trusted-key" options can now be
+     properly changed. (T5685)
+
+(de) GnuPG: Die konfigurierten "trusted-key" Optionen können nun
+     korrekt geändert werden. (T5685)
+
+(en) GnuPG: The default selection for smartcard reader now tries
+     to ignore virtual smartcard readers. (T5644)
+
+(de) GnuPG: Die Auswahl des Standard Smartcard-Lesers versucht nun
+     virtuelle Smartcard-Leser zu ignorieren. (T5644)
+
+(en) GnuPG: With "gpgconf --show-configs" the configuration of the
+     system can now be listed.
+
+(de) GnuPG: Mit dem Kommando "gpgconf --show-configs" kann nun die
+     vollständige Konfiguration des Systems aufgelistet werden.
+
+(en) GnuPG: A new experimental key database daemon is provided.  To enable it
+    put "use-keyboxd" into gpg.conf and gpgsm.conf.  Keys are stored
+    in a SQLite database and make key lookup much faster.
+
+(de) GnuPG: Ein neuer, experimenteller Datenbank-Dienst für Zertifikate wurde
+    implementiert.  Um diesen zu verwenden kann "use-keyboxd" in die gpg.conf
+    und gpgsm.conf hinzugefügt werden. Mit der vewendeten SQlite Datenbank
+    werden alle Schlüsseloperationen viel schneller.
+
+(en) GnuPG: Major update to Version 2.3.4.
+
+(de) GnuPG: Ein großes Update auf Version 2.3.4.
+
+~~~~~~~~~~~~~~~
+GnuPG:          2.3.4
+Kleopatra:      3.1.20
+GPA:            0.10.0
+GpgOL:          2.5.1
+GpgEX:          1.0.8
+Kompendium DE:  4.0.1
+Compendium EN:  3.0.0
+~~~~~~~~~~~~~~~
+
 Noteworthy changes in Version 3.1.16 (2021-06-11)
 ------------------------------------------------
 
