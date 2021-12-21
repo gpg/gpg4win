@@ -114,8 +114,73 @@ New in Gpg4win version !VERSION! (!BUILD_ISODATE!)
 - Kleopatra: A crash related to circular certificate chains
   has been fixed. (T5697)
 
+- Kleopatra: Ask GnuPG for the correct path for the uiserver socket
+  (T5619).
+
+- Kleopatra: Fix a problem with smartcard detection on startup.
+  (rKd2338373ab41)
+
+- Kleopatra: Enable the "create openpgp key from card" command only
+  for GnuPG >= 2.3.  (rK107abfdb1a41)
+
+- Kleopatra: Windows no longer appear in the background
+  when Kleopatra is not the active foreground process.
+  (T5533)
+
+- Kleopatra: The directory services configuration for LDAP
+  servers has been extended. (T5465)
+
+- Kleopatra: It is now possible to set an expiration date
+  for a certification. (T5336)
+
+- Kleopatra: It is now possible to update subkey expiration
+  dates with Kleopatra. (T4717)
+
+- Kleopatra: The default keyserver is now queried from GnuPG.
+  (T5514)
+
+- Kleopatra: Users are now prompted to set the ownertrust
+  when certifying with an untrusted key. (T5511)
+
+- Kleopatra: Symmetric encryption is now preselected if
+  no keys are present. (T5545)
+
+- Kleopatra: Every action in the file encryption dialow
+  is now accessible through a shortcut. (T5544)
+
+- Kleopatra: Accessibility, especially for encryption,
+  has been greatly improved. (T5535)
+
 - GpgOL: Contents are no longer hidden if plain text
   only is configured through group policies. (T5681)
+
+- Pinentry: Symmetric passwords are now formatted when
+  visible if the corresponding gpg-agent option
+  "pinentry-formatted-passphrase" has been set. (T5517)
+
+- Pinentry: It is now possible to generate secure
+  passwords for symmetric encryption through gpg-agent.
+  (T5517)
+
+- Pinentry: It is now possible to add custom help text
+  files to explain passphrase constraints. (T5517)
+
+- Pinentry: Passphrase constraints are now better
+  checked and violations no longer clear the entered
+  passphrase. (T5532)
+
+- Pinentry: A capslock warning is now shown. (T4950)
+
+- Pinentry: The dialog is now more accessible and
+  constraints are shown in a way that screenreaders
+  can handle.
+
+- GnuPG: Passphrase constraint handling has been
+  improved with a new syntax for constraints.
+  (T5517)
+
+- GnuPG: The socket files are now located under
+  Appdata/Local. (T5537)
 
 - GnuPG: A new, optional, configuration syntax has been implemented
   which allows conditional configuration based on variables. Variables
@@ -130,8 +195,11 @@ New in Gpg4win version !VERSION! (!BUILD_ISODATE!)
 - GnuPG: With "gpgconf --show-configs" the configuration of the
   system can now be listed.
 
-- GnuPG: Updated to 2.2.33.  For details see:
-  https://lists.gnupg.org/pipermail/gnupg-announce/2021q4/000466.html
+- GnuPG: A new experimental key database daemon is provided.  To enable it
+    put "use-keyboxd" into gpg.conf and gpgsm.conf.  Keys are stored
+    in a SQLite database and make key lookup much faster.
+
+- GnuPG: Major update to Version 2.3.4.
 
 
 3. Additional notes

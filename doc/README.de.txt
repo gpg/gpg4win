@@ -118,9 +118,72 @@ Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 - Kleopatra: Ein Absturz im Zusammenhang mit rekursiven
   Zertifikatsketten wurde behoben. (T5697)
 
+- Kleopatra: Es wird nun der korrekte Pfad für den UIServer Socket
+  verwendet
+
+- Kleopatra: Fenster erscheinen nicht mehr im Hintergrund
+  wenn Kleopatra nicht das aktive Vordergrund Fenster war.
+  (T5533)
+
+- Kleopatra: Die Konfiguration von LDAP Verzeichnisdiensten
+  wurde verbessert. (T5465)
+
+- Kleopatra: Es ist nun möglich ein Ablaufdatum für eine
+  beglaubigung zu setzen. (T5336)
+
+- Kleopatra: Es ist nun möglich auch das Ablaufdatum von
+  unterschlüsseln zu ändern. (T4717)
+
+- Kleopatra: Der standard Schlüsselserver wird nun von GnuPG
+  abgefragt. (T5514)
+
+- Kleopatra: Es wird nun aufgefordert das Beglaubigungsvertrauen
+  zu setzen wenn man mit einem nicht vertrautem Schlüssel
+  eine Beglaubigung durchführt. (T5511)
+
+- Kleopatra: Symmetrische Verschlüsselung ist nun vorausgewählt
+  wenn keine Schlüssel vorhanden sind. (T5545)
+
+- Kleopatra: Jede Aktion im Verschlüsselungs-Dialog hat nun
+  einen Keyboard-Shortcut. (T5544)
+
+- Kleopatra: Die Barrierefreiheit, besonders für Verschlüsselung
+  wurde stark verbessert. (T5535)
+
 - GpgOL: Inhalte werden nun angezeigt wenn die Präferenz
   von reinen Text Mails über Gruppen-Richtlinien gesetzt wird.
   (T5681)
+
+- Pinentry: Symmetrische Passwörter werden nun formatiert
+  angezeigt wenn die entsprechende Option
+  "pinentry-formatted-passphrase" im gpg-agent
+  gesetzt wurde. (T5517)
+
+- Pinentry: Es ist nun möglich sichere Passwörter für
+  die symmetrische Verschlüsselung über den gpg-agent
+  zu generieren. (T5517)
+
+- Pinentry: Es ist jetzt möglich angepasste Hilfe Texte
+  zu hinterlegen um Passwort-Regeln anzuzeigen. (T5517)
+
+- Pinentry: Passwort Regeln können nun besser geprüft
+  werden und ein nicht entsprechendes Passwort wird
+  nicht mehr aus der Eingabe gelöscht. (T5532)
+
+- Pinentry: Es wird nun eine Warnung angezeigt wenn
+  die Hochstelltaste aktiv ist. (T4950)
+
+- Pinentry: Die Barrierefreiheit des Dialogs wurde
+  verbessert so das alle Warnungen und Aktionen gut
+  von Screenreadern verarbeitet werden.
+
+- GnuPG: Die Unterstützung für Passwort-Regeln wurde
+  verbessert und erlaubt nun auch Sonder-Regeln für
+  symmetrische Passwörter.
+  (T5517)
+
+- GnuPG: Die Socket Dateien liegen nun unter
+  Appdata/Local. (T5537)
 
 - GnuPG: Eine neue, optionale, Konfigurations-Syntax wurde implementiert
   mit der das System dynamisch konfiguriert werden kann. Dabei können
@@ -139,9 +202,12 @@ Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 - GnuPG: Mit dem Kommando "gpgconf --show-configs" kann nun die
   vollständige Konfiguration des Systems aufgelistet werden.
 
-- GnuPG: Auf Version 2.2.33 aktualisiert:
-  https://lists.gnupg.org/pipermail/gnupg-announce/2021q4/000466.html
+- GnuPG: Ein neuer, experimenteller Datenbank-Dienst für Zertifikate wurde
+    implementiert.  Um diesen zu verwenden kann "use-keyboxd" in die gpg.conf
+    und gpgsm.conf hinzugefügt werden. Mit der vewendeten SQlite Datenbank
+    werden alle Schlüsseloperationen viel schneller.
 
+- GnuPG: Ein großes Update auf Version 2.3.4.
 
 3. Hinweise
 ===========

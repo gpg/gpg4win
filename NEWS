@@ -2,7 +2,7 @@
 #
 # The version number given below are for the standard installers as
 # distributed by www.gpg4win.org.
-Noteworthy changes in Version 4.0.0 (unreleased)
+Noteworthy changes in Version 4.0.0 (2021-12-21)
 -------------------------------------------------
 
 (en) Kleopatra: The group configuration has been extended so that groups
@@ -279,14 +279,9 @@ Noteworthy changes in Version 4.0.0 (unreleased)
     und gpgsm.conf hinzugefügt werden. Mit der vewendeten SQlite Datenbank
     werden alle Schlüsseloperationen viel schneller.
 
-(en) GnuPG: Major update to Version 2.3.3. Please see the 2.3.0 release
-    announcment ( https://lists.gnupg.org/pipermail/gnupg-announce/2021q2/000458.html )
-    for full details.
+(en) GnuPG: Major update to Version 2.3.4.
 
-(de) GnuPG: Ein großes Update auf Version 2.3.3. Die Details können
-    der Ankündigung von Version 2.3.0 entnommen werden.
-    ( https://lists.gnupg.org/pipermail/gnupg-announce/2021q2/000458.html )
-
+(de) GnuPG: Ein großes Update auf Version 2.3.4.
 
 ~~~~~~~~~~~~~~~
 GnuPG:          2.3.4
