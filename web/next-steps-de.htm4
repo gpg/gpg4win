@@ -1,20 +1,19 @@
 <h2>Ihre nächsten Schritte:</h2>
 <ol>
-  <li><a target="_blank" href="package-integrity-de.html">Prüfen Sie die Integrität</a> des heruntergeladenen Gpg4win-Installers!
+  <li><a target="_blank" href="package-integrity-de.html">Prüfen Sie die Integrität</a> des heruntergeladenen Gpg4win-Installers.
 
   <li>Installieren Sie Gpg4win.
 
-  <li>(Übergangsweise für Version 3.1.16) Laden und
-      <a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2021-October/000057.html"
-         >aktualisieren Sie auf GnuPG 2.2.32</a>.
-
   <li>Erstellen Sie sich ein OpenPGP-Schlüsselpaar mit Kleopatra.
-  Signieren/verschlüsseln Sie zum Test eine Datei und E-Mail an sich
-  selbst (siehe Kapitel 7+8 im 
+  (Oder importieren sich ein Bestehendes.)
+
+  <li>
+  Signieren/verschlüsseln Sie zum Test eine Datei oder eine E-Mail an sich
+  selbst (siehe Kapitel 7+8 im
   <a target="_blank" href="https://files.gpg4win.org/doc/gpg4win-compendium-de.pdf">Gpg4win-Kompendium</a>).
 
   <li>Erfahren Sie mehr über die Funktionsweise der „Public-Key“-Methode (siehe
 insbesondere Kapitel 1-5 im <a target="_blank" href="https://files.gpg4win.org/doc/gpg4win-compendium-de.pdf">Gpg4win-Kompendium</a>).
 
-  <li>Richten Sie Fragen und Probleme an die <a target="_blank" href="community-de.html">Gpg4win-Gemeinschaft</a>.
+  <li>Richten Sie Fragen und Problemberichte an die <a target="_blank" href="community-de.html">Gpg4win-Gemeinschaft</a>.
 </ol>

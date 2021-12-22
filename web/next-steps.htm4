@@ -5,14 +5,12 @@
 
   <li>Install Gpg4win.
 
-  <li>(only for Version 3.1.16) Download and
-      <a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce/2021-October/000093.html"
-         >update to GnuPG 2.2.32</a>.
+  <li>Create an OpenPGP key pair with Kleopatra.
+      (Or import an existing one.)
 
-
-  <li>Create an OpenPGP key pair with Kleopatra. Sign/encrypt a file and email to yourself for testing.
+  <li> Sign/encrypt a file or an email to yourself for testing.
 
   <li><a href="documentation.html">Read more about the public key method (see chapter 1-5 in <a target="_blank" href="https://files.gpg4win.org/doc/gpg4win-compendium-en.pdf">Gpg4win Compendium</a>).
 
-  <li>Ask your questions and report your problems to <a target="_blank" href="community.html">Gpg4win Community</a>.
+  <li>Ask your questions and report your problems to the <a target="_blank" href="community.html">Gpg4win Community</a>.
 </ol>
