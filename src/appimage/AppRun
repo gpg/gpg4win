@@ -95,8 +95,8 @@ if [ "$1" = "-c" -o "$1" = "-i" ]; then
         exit 2
     fi
     if [ -n "$1" ]; then
-        pgm="$SHELL"
-        pgmargs="-c $@"
+        pgm=/usr/bin/env
+        pgmargs="$@"
     else
         export gnupg_SETUPINIFILE SHELL
         if [ ${_gnupg_appimage} = vsd ]; then
