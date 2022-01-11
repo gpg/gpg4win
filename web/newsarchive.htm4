@@ -20,8 +20,20 @@ The latest news are placed at the <a href="./">welcome page</a>.
 <h2>2021</h2>
 <ul>
     <li>
-      <a href="ttps://lists.wald.intevation.org/pipermail/gpg4win-announce/2021-January/000091.html">
-          2020-01-12: Gpg4win 3.1.15 released</a>
+      <a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce/2021/000094.html">
+          2021-12-21: Gpg4win 4.0.0 released</a>
+    </li>
+    <li>
+      <a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce/2021-October/000093.html">
+          2021-10-19: Update to GnuPG 2.2.32</a>
+    </li>
+    <li>
+      <a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce/2021-June/000092.html">
+          2021-06-11: Gpg4win 3.1.16 released</a>
+    </li>
+    <li>
+      <a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce/2021-January/000091.html">
+          2021-01-12: Gpg4win 3.1.15 released</a>
     </li>
 </ul>
 <h2>2020</h2>
@@ -31,19 +43,19 @@ The latest news are placed at the <a href="./">welcome page</a>.
           2020-11-25: Gpg4win 3.1.14 released</a>
     </li>
     <li>
-      <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2020-September/000089.html">
+      <a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce/2020-September/000089.html">
            2020-09-04: Gpg4win 3.1.13 released
       </a>
     </li>
     <li>
-        <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2020-July/000088.html">
+        <a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce/2020-July/000088.html">
            2020-07-24: Gpg4win 3.1.12 released</a>
     </li>
 </ul>
 <h2>2019</h2>
 <ul>
     <li>
-      <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2019-December/000087.html">
+      <a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce/2019-December/000087.html">
         2019-12-17: Gpg4win 3.1.11 released
       </a>
     </li>
@@ -53,23 +65,23 @@ The latest news are placed at the <a href="./">welcome page</a>.
       </a>
     </li>
     <li>
-      <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2019-June/000085.html">
+      <a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce/2019-June/000085.html">
         2019-06-15: Gpg4win 3.1.9 released
       </a>
     </li>
     <li>
-      <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2019-June/000084.html">
+      <a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce/2019-June/000084.html">
         2019-06-06: Gpg4win 3.1.8 released
     </li>
     <li>
         <a href="statement-spoofing.html">2019-04-30 Detecting spoofed email signatures</a>
     </li>
     <li>
-      <a href="http://lists.wald.intevation.org/pipermail/gpg4win-users-en/2019-March/001556.html">
+      <a href="https://lists.wald.intevation.org/pipermail/gpg4win-users-en/2019-March/001556.html">
         2019-03-28: Gpg4win 3.1.7 released
     </li>
     <li>
-      <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2019-March/000083.html">
+      <a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce/2019-March/000083.html">
         2019-03-27: Gpg4win 3.1.6 released
       </a>
     </li>
@@ -78,116 +90,116 @@ The latest news are placed at the <a href="./">welcome page</a>.
 <h2>2018</h2>
 <ul>
     <li>
-      <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2018-November/000082.html">
+      <a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce/2018-November/000082.html">
         2018-11-13: Gpg4win 3.1.5 released
       </a>
     </li>
     <li>
-      <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2018-October/000081.html">
+      <a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce/2018-October/000081.html">
         2018-10-18: Gpg4win 3.1.4 released
       </a>
     </li>
     <li>
-      <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2018-August/000080.html">
+      <a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce/2018-August/000080.html">
         2018-08-31: Gpg4win 3.1.3 released
       </a>
     </li>
-    <li><a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2018-June/000079.html">
+    <li><a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce/2018-June/000079.html">
     2018-06-17: Gpg4win 3.1.2 released
     </a></li>
     <li><a href="statement-efail.html">2018-05-17: Statement on Efail</a></li>
     <li><a
-    href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2018-May/000078.html">
+    href="https://lists.wald.intevation.org/pipermail/gpg4win-announce/2018-May/000078.html">
     2018-05-03: Gpg4win 3.1.1 released</a></li>
     <li><a
-     href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2018-April/000077.html">
+     href="https://lists.wald.intevation.org/pipermail/gpg4win-announce/2018-April/000077.html">
      2018-04-13: Gpg4win 3.1.0 released</a></li>
     <li><a
      href="version3.1.html">
      2018-03-08: Gpg4win 3.1.0 beta released</a></li>
     <li><a
-     href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2018-January/000076.html">
+     href="https://lists.wald.intevation.org/pipermail/gpg4win-announce/2018-January/000076.html">
      2018-01-13: Gpg4win 3.0.3 released</a></li>
 </ul>
 
 <h2>2017</h2>
 <ul>
     <li><a
-     href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2017-December/000075.html">
+     href="https://lists.wald.intevation.org/pipermail/gpg4win-announce/2017-December/000075.html">
      2017-12-08: Gpg4win 3.0.2 released</a></li>
     <li><a href="version3.html">2017-09-20 Gpg4win 3.0.0 released</a></li>
-    <li><a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2017-August/000072.html">
+    <li><a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce/2017-August/000072.html">
     2017-08-24: Gpg4win 3.0 has release candidate status</a>
-    <li><a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2017-July/000071.html">
+    <li><a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce/2017-July/000071.html">
     2017-07-06: Gpg4win 2.3.4 released</a>
 </ul>
 
 <h2>2016</h2>
 <ul>
     <li>
-    <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2016-August/000070.html">
+    <a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce/2016-August/000070.html">
     2016-08-18: Gpg4win 2.3.3 released</a>
     <li>
-    <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2016-July/000069.html">
+    <a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce/2016-July/000069.html">
     2016-07-05: GPG4win 2.3.2 released</a>
     <li>
-    <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2016-April/000068.html">
+    <a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce/2016-April/000068.html">
     2016-04-05: GPG4win 2.3.1 released</a>
 </ul>
 
 <h2>2015</h2>
 <ul>
     <li>
-    <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2015-November/000032.html">
+    <a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2015-November/000032.html">
     2015-11-25: Gpg4win 2.3.0 released</a>
     <br><small><a href="pm-20151125-de.html">Presse release (German)</a></small>
     <li>
-    <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2015-September/000065.html">
+    <a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce/2015-September/000065.html">
     2015-09-09: Gpg4win 2.2.6 released</a>
     <li>
-    <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2015-July/000064.html">
+    <a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce/2015-July/000064.html">
     2015-07-10: Gpg4win 2.2.5 released</a>
     <li>
-    <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2015-March/000063.html">
+    <a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce/2015-March/000063.html">
     2015-03-18: Gpg4win 2.2.4 released</a>
 </ul>
 
 <h2>2014</h2>
 <ul>
     <li>
-    <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2014-November/000062.html">
+    <a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce/2014-November/000062.html">
     2014-11-26: Gpg4win 2.2.3 released</a>
     <li>
-    <a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2014-September/000061.html">
+    <a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce/2014-September/000061.html">
     2014-09-04: Gpg4win 2.2.2 released</a>
 </ul>
 
 <h2>2013</h2>
 <ul>
-    <li><a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2013-October/000059.html">2013-10-07: Gpg4win 2.2.1 released</a>
+    <li><a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce/2013-October/000059.html">2013-10-07: Gpg4win 2.2.1 released</a>
     </li>
 
-    <li><a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2013-August/000058.html">2013-08-21: Gpg4win 2.2.0 released</a>
+    <li><a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce/2013-August/000058.html">2013-08-21: Gpg4win 2.2.0 released</a>
     </li>
 
-    <li><a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2013-July/000056.html">2013-07-16: Gpg4win 2.2.0-beta2 released</a>
+    <li><a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce/2013-July/000056.html">2013-07-16: Gpg4win 2.2.0-beta2 released</a>
    </li>
 
-    <li><a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2013-May/000054.html">2013-05-31:
+    <li><a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce/2013-May/000054.html">2013-05-31:
     Gpg4win 2.1.1 released</a>
     </li>
 
-    <li><a href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2013-May/000053.html">2013-05-16:
+    <li><a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce/2013-May/000053.html">2013-05-16:
     Gpg4win 2.1.1-beta197 released</a>
     </li>
 </ul>
 
 
 <h2>2012</h2>
-   
+
 <dt><b>+++ 2012-05-04: Gpg4win 2.1.1 Beta released +++</b></dt>
 <dd>See the <a
-href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2012-May/000052.html">announcement</a>
+href="https://lists.wald.intevation.org/pipermail/gpg4win-announce/2012-May/000052.html">announcement</a>
 for details.
 <br></dd>
 
@@ -196,7 +208,7 @@ for details.
 
 <dt><b>+++ 2011-03-15: Gpg4win 2.1.0 released +++</b></dt>
 <dd>See the <a
-href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2011-March/000051.html">announcement</a>
+href="https://lists.wald.intevation.org/pipermail/gpg4win-announce/2011-March/000051.html">announcement</a>
 for details.
 <br></dd>
 
@@ -210,7 +222,7 @@ for details.
 
 <dt><b>+++ 2010-07-28: Gpg4win 2.0.4 released +++</b></dt>
 <dd>Security fix for GPGSM (GnuPG). See the <a
-href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2010-July/000046.html">announcement</a>
+href="https://lists.wald.intevation.org/pipermail/gpg4win-announce/2010-July/000046.html">announcement</a>
 for details.
 </dd>
 
@@ -221,7 +233,7 @@ href="donate.html">list of sponsors</a>.
 
 <dt><b>+++ 2010-05-29: Gpg4win 2.0.3 released +++</b></dt>
 <dd>See the <a
-href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2010-June/000045.html">announcement</a>
+href="https://lists.wald.intevation.org/pipermail/gpg4win-announce/2010-June/000045.html">announcement</a>
 for details.
 </dd>
 
@@ -236,7 +248,7 @@ details.
 <dt><b>+++ 2010-04-13: Gpg4win 2.0.2 released +++</b></dt>
 <dd>This is basically the same as the 2.0.2 release candidate
 2 - additionally with the current compendium 3.0.0 RC1. See the <a
-href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2010-April/000043.html">announcement</a>
+href="https://lists.wald.intevation.org/pipermail/gpg4win-announce/2010-April/000043.html">announcement</a>
 for details.
 </dd>
 
@@ -247,7 +259,7 @@ the translation into English will start. </dd>
 
 <dt><b>+++ 2010-03-05: Gpg4win 2.0.2 RC2 released +++</b></dt>
 <dd>with a lot of improvements in Kleopatra and Pinentry. See the <a
-href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2010-March/000041.html">announcement</a>
+href="https://lists.wald.intevation.org/pipermail/gpg4win-announce/2010-March/000041.html">announcement</a>
 for details.</dd>
 
 <dt><b>+++ 2010-02-04: Gpg4win 2.0.2 RC1 released +++</b></dt>
@@ -261,7 +273,7 @@ for details.</dd>
 <dt><b>+++ 2009-09-28: Gpg4win 2.0.1 released +++</b></dt>
 <dd>This is basically the same as the release 2.0.1 candidate.
 See the <a
-href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2009-September/000040.html">announcement</a>
+href="https://lists.wald.intevation.org/pipermail/gpg4win-announce/2009-September/000040.html">announcement</a>
 for details.</dd>
 
 <dt><b>+++ 2009-09-01: Outlook users should download Gpg4win 2.0.1 RC1
@@ -269,7 +281,7 @@ for details.</dd>
 <dd>The delay problems frequently reported with Outlook 2003 and 2007
 are addressed by Gpg4win 2.0.1RC1.  Note that sending emails with Outlook/GpgOL
 over Exchange still does not work. See the <a
-href="http://lists.wald.intevation.org/pipermail/gpg4win-announce/2009-September/000039.html">announcement</a>
+href="https://lists.wald.intevation.org/pipermail/gpg4win-announce/2009-September/000039.html">announcement</a>
 for details.</dd>
 
 <dt><b>+++ 2009-08-19: Using smart cards with Gpg4win 2.0.0 +++</b></dt>
