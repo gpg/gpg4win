@@ -47,7 +47,7 @@ The user interface stays mostly the same, while the backend provides more:
 
 <h2>Crypto-Manager (Kleopatra)</h2>
 <ul>
-    <li>Groups enable you to regularly adress the same communication partners. They can
+    <li>Groups enable you to regularly address the same communication partners. They can
     also be exported and imported, including both the S/MIME and OpenPGP
     certificates.
     </li>
