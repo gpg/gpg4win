@@ -144,6 +144,18 @@ if [ -f $prestart_snippet ]; then
     . $prestart_snippet
 fi
 
+# In vsd mode create a .gnupg-vsd so that we use a dedicated homedir
+# in for VSD.  This is important on Linux because there gpg is a
+# standard tool and a .gnupg is often in active use.
+if [ ${_gnupg_appimage} = vsd -a -z "$GNUPGHOME" ]; then
+    GNUPGHOME="$HOME/.gnupg-vsd"
+    export GNUPGHOME
+    if [ ! -d "$GNUPGHOME" ]; then
+        mkdir "$GNUPGHOME"
+        chmod 700 "$GNUPGHOME"
+    fi
+fi
+
 # Start gpg-agent launching a program.  gpg-agent will then watch for
 # termination of the program and kill itself after this has been
 # detected.  We also steal an existing socket so that already running
