@@ -1,51 +1,25 @@
 #! /bin/sh
-patch -p1 -l -R -f $* < $0
+patch -p1 -l -f $* < $0
 exit $?
 
-From 2503481e4537b88d76b4a596f519cb3311e1ca2a Mon Sep 17 00:00:00 2001
-From: Hannah von Reth <vonreth@kde.org>
-Date: Tue, 14 Jun 2016 16:42:08 +0200
-Subject: [PATCH 1/4] Use "${BIN_INSTALL_DIR}/data" for DATAROOTDIR on Windows.
+--- a/kde-modules/KDEInstallDirsCommon.cmake
++++ b/kde-modules/KDEInstallDirsCommon.cmake
+@@ -264,15 +264,9 @@
+ _define_absolute(SHAREDSTATEDIR "com"
+     "modifiable architecture-independent data")
 
-Summary:
-Instead of using "share" use "${BIN_INSTALL_DIR}/data" on Windows,
-this is the location provided by QStandardPaths for GenericDataLocation
-on Windows.
-
-Reviewers: dfaure
-
-Reviewed By: dfaure
-
-Subscribers: kfunk
-
-Differential Revision: https://phabricator.kde.org/D1873
----
- kde-modules/KDEInstallDirs.cmake | 13 +++++++++----
- 1 file changed, 9 insertions(+), 4 deletions(-)
-
-diff --git a/kde-modules/KDEInstallDirs.cmake b/kde-modules/KDEInstallDirs.cmake
-index d9c3b78..f518a4a 100644
---- a/kde-modules/KDEInstallDirs.cmake
-+++ b/kde-modules/KDEInstallDirs.cmake
-@@ -489,10 +489,15 @@ _define_absolute(SHAREDSTATEDIR "com"
-
-
-
--
--_define_absolute(DATAROOTDIR "share"
--    "read-only architecture-independent data root"
--    SHARE_INSTALL_PREFIX)
-+if (WIN32)
-+    _define_relative(DATAROOTDIR BINDIR "data"
-+        "read-only architecture-independent data root"
-+        SHARE_INSTALL_PREFIX)
-+else()
-+    _define_absolute(DATAROOTDIR "share"
-+        "read-only architecture-independent data root"
-+        SHARE_INSTALL_PREFIX)
-+endif()
+-if (WIN32)
+-    _define_relative(DATAROOTDIR BINDIR "data"
+-        "read-only architecture-independent data root"
+-        SHARE_INSTALL_PREFIX)
+-else()
+-    _define_absolute(DATAROOTDIR "share"
+-        "read-only architecture-independent data root"
+-        SHARE_INSTALL_PREFIX)
+-endif()
++_define_absolute(DATAROOTDIR "share"
++    "read-only architecture-independent data root"
++    SHARE_INSTALL_PREFIX)
 
  _define_relative(DATADIR DATAROOTDIR ""
      "read-only architecture-independent data"
---
-2.1.4

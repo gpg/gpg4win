@@ -43,20 +43,14 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
              docker/build-appimage-docker-image.sh \
              docker/run-appimage-build.sh \
              patches/boost/boost-1-fixes.patch \
-             patches/breeze-icons/0001-Make-binary-icons-cross-compilable.patch \
              patches/extra-cmake-modules/0001-Use-BIN_INSTALL_DIR-data-for-DATAROOTDIR-on-Windows.patch \
              patches/glib/glib-1-fixes.patch \
              patches/glib/glib-2-fixes.patch \
              patches/kconfigwidgets/0001-Make-QDbus-optional.patch \
              patches/kiconthemes/0001-Make-DBus-optional.patch \
-             patches/kleopatra/build-fixes.patch \
-             patches/kleopatra/lower-cmake-requirement.patch \
              patches/kleopatra/set-cxx-standard.patch \
-             patches/kleopatra/Add-setting-to-always-search-for-smartcard-certs.patch \
-             patches/kleopatra/Add-compatibility-for-older-kcfg-versions.patch \
              patches/kxmlgui/0001-make-qdbus-optional.patch \
              patches/kxmlgui/0004-Cruedly-disable-KSendbugmail.patch \
-             patches/libkleo/lower-cmake-requirement.patch \
              patches/libkleo/set-cxx-standard.patch \
              patches/qtbase/0001-Fix-build-without-std-thread.patch \
              patches/qtbase/0001-Gpg4win-qstandardpaths-patch.patch \
@@ -67,7 +61,6 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
              patches-appimage/kconfigwidgets/0001-build-without-KF5Auth.patch \
              patches-appimage/ki18n/0001-Load-Qt-translations-even-if-some-catalogs-are-missi.patch \
              patches-appimage/qtwayland-5.15.0/00-disable-wayland-server.patch \
-             patches-appimage/kleopatra/build-fixes.patch \
              patches-appimage/kleopatra/set-cxx-standard.patch \
              patches-appimage/libkleo/set-cxx-standard.patch \
              patches-appimage/libkleo/gpg4win-check.patch \

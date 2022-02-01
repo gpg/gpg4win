@@ -2110,7 +2110,9 @@ print <<EOF;
         <!-- DIR_GnuPG is used be the GnuPG wxlib -->
         <Directory Id='APPLICATIONFOLDER' Name='GnuPG VS-Desktop'>
           <Directory Id="KleopatraDataFolder" Name="share">
-            <Directory Id="HelpDataFolder" Name="kleopatra"/>
+            <Directory Id="ShareDocFolder" Name="doc">
+              <Directory Id="HelpDataFolder" Name="gnupg-vsd"/>
+            </Directory>
           </Directory>
           <Directory Id='DIR_GnuPG' Name='GnuPG'/>
 EOF
