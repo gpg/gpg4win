@@ -12,6 +12,6 @@ index bed53d1..87f976c 100644
 
 -if (NOT ANDROID)
 +if (FALSE)
-   find_package(KF5Auth ${KF5_DEP_VERSION} REQUIRED)
+   find_package(KF5Auth ${KF_DEP_VERSION} REQUIRED)
  endif()
- find_package(KF5CoreAddons ${KF5_DEP_VERSION} REQUIRED)
+ find_package(KF5CoreAddons ${KF_DEP_VERSION} REQUIRED)
