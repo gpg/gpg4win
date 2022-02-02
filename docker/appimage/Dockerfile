@@ -94,6 +94,7 @@ RUN yum -y install \
         xcb-util-keysyms-devel \
         xcb-util-renderutil-devel \
         xcb-util-wm-devel \
+        xcb-util-devel \
         xz-devel \
         zlib-devel
 
