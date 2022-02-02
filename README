@@ -76,6 +76,9 @@ to be installed:
     gperf libgettextpo-dev automake-1.15 libkf5config-dev libkf5config-dev-bin \
     libkf5coreaddons-dev gpgrt-tools imagemagick
 
+Additionally on Debian Buster cmake has to be at least version 3.1.16 from
+debian backports.
+
 Building the Webpages
 =====================
 
