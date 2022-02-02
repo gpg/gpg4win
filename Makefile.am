@@ -59,10 +59,10 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
              patches/qttools/disable-most-tools.patch \
              patches/w32pth-2.0.5/workaround-broken-libtool.patch \
              patches-appimage/kconfigwidgets/0001-build-without-KF5Auth.patch \
-             patches-appimage/ki18n/0001-Load-Qt-translations-even-if-some-catalogs-are-missi.patch \
              patches-appimage/qtwayland-5.15.0/00-disable-wayland-server.patch \
              patches-appimage/kleopatra/set-cxx-standard.patch \
              patches-appimage/libkleo/set-cxx-standard.patch \
+             patches-appimage/kmime/set-cxx-standard.patch \
              patches-appimage/libkleo/gpg4win-check.patch \
              patches-appimage/kleopatra/aboutdata.patch
 
