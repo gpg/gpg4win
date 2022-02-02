@@ -69,6 +69,7 @@ appimage_pkg_qtbase_configure = ../$$$${pkg_version}/configure -opensource \
             -no-sql-psql \
             -no-sql-tds \
             -v \
+            -xcb \
             OPENSSL_INCDIR=/usr/include/openssl11
 
 define appimage_pkg_qtbase_post_install
