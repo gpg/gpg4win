@@ -278,11 +278,11 @@ chk  c2a9b3aec1a38d34b66106116a39f64b01d84f475fef75c40ea0bda0ea67ed07
 # Server changed from ftp to https by wk 2021-09-22
 server https://gnupg.org/ftp/gcrypt
 
-# last changed 2021-11-14
+# last changed 2022-02-03
 # by wk
 # verified: swdb
-file libgpg-error/libgpg-error-1.43.tar.bz2
-chk a9ab83ca7acc442a5bd846a75b920285ff79bdb4e3d34aa382be88ed2c3aebaf
+file libgpg-error/libgpg-error-1.44.tar.bz2
+chk 8e3d2da7a8b9a104dd8e9212ebe8e0daf86aa838cc1314ba6bc4de8f2d8a1ff9
 
 # last-changed: 2021-04-21
 # by: ah
