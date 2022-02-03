@@ -133,7 +133,7 @@ CLEANFILES = g4wihelp.dll desktopshellrun.o versioninfo.txt $(README_files) \
 gpg4win_spkgs = glib libffi gdk-pixbuf gtk+ \
                 libgpg-error gpgme gpgol gpgex libpng \
 		gpa opencdk \
-		pinentry libassuan pcre \
+		pinentry libassuan ntbtls pcre \
 		w32pth paperkey regex libiconv gettext scute
 
 gpg4win_qtpkgs = qtbase qttools qtwinextras qtsvg qttranslations
