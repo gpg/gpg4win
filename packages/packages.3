@@ -23,24 +23,28 @@ server https://gnupg.org/ftp/gcrypt
 file libgcrypt/libgcrypt-1.8.8.tar.bz2
 chk  895de2bb981dd127f0821d1ce13fadf7d760f9fa7737648b15f2c1fe13cc5af5
 
-# last changed 2021-11-23
+
+# Let's test with a snapshot.
+server ftp://ftp.gnupg.org/gcrypt/snapshots
+
+# last changed 2022-02-03
 # by wk
 # verified: buildtree
-file gnupg/gnupg-2.2.33.tar.bz2
+file gnupg/gnupg-2.2.34-beta36.tar.bz2
 chk 8688836e8c043d70410bb64d72de6ae15176e09ecede8d24528b4380c000e4e3
 
-# last changed: 2021-11-23
+# last changed: 2022-02-03
 # by: wk
 # verified: buildtree
-name gnupg-w32-2.2.33_20211123-bin.exe
-file binary/gnupg-w32-2.2.33_20211123.exe
-chk  e1eb271647cd083b63d534b358bbeac6f33dac3fe61f7fa9bebd38f86aa470e7
+name gnupg-w32-2.2.34-beta36_20220203-bin.exe
+file gnupg/gnupg-w32-2.2.34-beta36_20220203.exe
+chk  565b78eaf0b6ab87ca47f2c7c94eb30c2bc47f39cccacfc0624619e19b440db8
 
-name gnupg-w32-2.2.33_20211123-src.tar.xz
-file binary/gnupg-w32-2.2.33_20211123.tar.xz
-link gnupg-msi-2.2.33_20211123-src.tar.xz
-chk  0578794329ae1439d0353ce473c4e3c328476204d76a99412c2192040794c298
+name gnupg-w32-2.2.34-beta36_20220203-src.tar.xz
+file gnupg/gnupg-w32-2.2.34-beta36_20220203.tar.xz
+link gnupg-msi-2.2.34-beta36_20220203-src.tar.xz
+chk  424cca97f3fc1c1baef5a39a79445986cb479b1d2b125753c5814a3c5f99eaae
 
-name gnupg-msi-2.2.33_20211123-bin.wixlib
-file binary/gnupg-w32-2.2.33_20211123.wixlib
-chk  ba775f6cba1d0484ba9fc15f3428dabbdaec8421611c7f48c214cf008e229be5
+name gnupg-msi-2.2.34-beta36_20220203-bin.wixlib
+file gnupg/gnupg-w32-2.2.34-beta36_20220203.wixlib
+chk  fffc20b97693396d08030384357e29e0245a71471bb65637114ad761b87d4392
