@@ -129,7 +129,7 @@ CLEANFILES = g4wihelp.dll desktopshellrun.o versioninfo.txt $(README_files) \
 			 license.blurb cdversioninfo.tmp slideshow.o \
 			 $(foosum_exe) gpgwrap.exe
 
-# Supported source packages.
+# Supported source packages. (see also ../appimage/Makefile.am)
 gpg4win_spkgs = glib libffi gdk-pixbuf gtk+ \
                 libgpg-error gpgme gpgol gpgex libpng \
 		gpa opencdk \

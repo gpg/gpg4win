@@ -27,9 +27,9 @@ SUBDIRS = rsync-filters
 root := /build
 stampdir := $(root)/stamps
 
-# Source packages for the AppImage
+# Source packages for the AppImage (see also ../src/Makefile.am)
 appimage_spkgs = sqlite libgpg-error libassuan npth libgcrypt libksba gnupg \
-		 pinentry gpgme paperkey
+		 pinentry gpgme paperkey ntbtls
 
 # Qt packages for the AppImage
 appimage_qtpkgs = qtbase qttools qtx11extras qtwayland qtsvg qttranslations

@@ -384,6 +384,8 @@ if test "$build_appimage" = yes ; then
     APPIMAGE_SPKG([ntbtls], [libgcrypt libksba])
     APPIMAGE_SPKG([gnupg], [libgpg-error libassuan npth libgcrypt libksba sqlite ntbtls])
     APPIMAGE_SPKG([pinentry], [qtbase qtx11extras])
+
+    #  Note that GPGME needs Qt
     APPIMAGE_SPKG([gpgme], [libgpg-error libassuan qtbase])
     APPIMAGE_SPKG([paperkey])
 
@@ -391,7 +393,9 @@ if test "$build_appimage" = yes ; then
     APPIMAGE_BPKG_BINSRC([kde-l10n])
 
     # Qt related stuff.
-    APPIMAGE_SPKG([qtbase])
+    # (dependency on gnupg is only to make sure gnupg is build first so
+    #  that we don't need to wait for the long running Qt builds)
+    APPIMAGE_SPKG([qtbase], [gnupg])
     APPIMAGE_SPKG([qttools], [qtbase])
     APPIMAGE_SPKG([qttranslations], [qtsvg qttools qtx11extras])
     APPIMAGE_SPKG([qtx11extras], [qtbase])
