@@ -42,7 +42,7 @@ case ${package} in
         package=$(basename ${repo})
         package=${package%.git}
         ;;
-    gnupg | gpgme | libassuan | libgcrypt | libgpg-error | libksba | npth | pinentry | gpg4win-tools | scute)
+    gnupg | gpgme | libassuan | libgcrypt | libgpg-error | libksba | npth | pinentry | gpg4win-tools | scute | ntbtls)
         repo=git://git.gnupg.org/${package}.git
         is_gpg="yes"
         ;;
