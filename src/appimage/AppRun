@@ -154,6 +154,9 @@ if [ ${_gnupg_appimage} = vsd -a -z "$GNUPGHOME" ]; then
         mkdir "$GNUPGHOME"
         chmod 700 "$GNUPGHOME"
     fi
+    # Create a symlink so that external programs have a way to figure
+    # out information on this AppImage instance
+    ln -sf $APPDIR/usr/bin/gpgconf "$GNUPGHOME"/run-gpgconf || true
 fi
 
 # Start gpg-agent launching a program.  gpg-agent will then watch for
