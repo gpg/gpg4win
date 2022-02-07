@@ -323,11 +323,11 @@ chk  d1d9c86fc31e8154657a4c01ec6da17628c75c0ea5d43388956305e3067c7d46
 file pinentry/pinentry-1.2.0.tar.bz2
 chk  10072045a3e043d0581f91cd5676fcac7ffee957a16636adedaa4f583a616470
 
-# last changed 2021-09-20
-# by ik
-# verified: distsigkey.gpg
-#file gpgme/gpgme-1.16.0.tar.bz2
-#chk 6c8cc4aedb10d5d4c905894ba1d850544619ee765606ac43df7405865de29ed0
+# last changed 2022-02-07
+# by wk
+# verified: buildtree
+file gpgme/gpgme-1.17.0.tar.bz2
+chk 4ed3f50ceb7be2fce2c291414256b20c9ebf4c03fddb922c88cda99c119a69f5
 
 # last changed: 2018-10-17
 # by: ah
@@ -621,13 +621,6 @@ chk 79ea82ede46bbd02f70a64e4f003c6279e98cf4ad1e302eca753087c42fccdf3
 # Snapshots stored on the GnuPG server
 #
 server https://gnupg.org/ftp/gcrypt/snapshots
-
-# gpgme
-# last changed: 2022-02-07
-# by: aheinecke
-# verified: Tarball created by aheinecke.
-file gpgme/gpgme-1.16.1-beta77.tar.xz
-chk 4524e6d0605530125d718337a9cf37da110a06dbbf4de3a12f0920d3525736c2
 
 # libkleo
 # last changed: 2022-02-07
