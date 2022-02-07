@@ -164,6 +164,7 @@ APPDIR="$APPDIR"
 export GNUPGHOME APPDIR
 exec $APPDIR/usr/bin/gpgconf "\$@"
 EOF
+    chmod +x "$GNUPGHOME"/run-gpgconf || true
 fi
 
 # Start gpg-agent launching a program.  gpg-agent will then watch for
