@@ -47,7 +47,6 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kconfigwidgets_prefix}/share/locale/af/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/af/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/af/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/af/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/af/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/af/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/af/LC_MESSAGES/kcodecs5_qt.qm
@@ -62,7 +61,6 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kconfigwidgets_prefix}/share/locale/ar/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/ar/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/ar/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/ar/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/ar/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/ar/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/ar/LC_MESSAGES/kcodecs5_qt.qm
@@ -79,7 +77,6 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kconfigwidgets_prefix}/share/locale/be/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/be/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/be/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/be/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/be/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/be/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/be/LC_MESSAGES/kcodecs5_qt.qm
@@ -96,7 +93,6 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kconfigwidgets_prefix}/share/locale/bg/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/bg/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/bg/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/bg/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/bg/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/bg/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/bg/LC_MESSAGES/kcodecs5_qt.qm
@@ -113,7 +109,6 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kconfigwidgets_prefix}/share/locale/br/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/br/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/br/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/br/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/br/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/br/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/br/LC_MESSAGES/kcodecs5_qt.qm
@@ -130,7 +125,6 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kconfigwidgets_prefix}/share/locale/bs/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/bs/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/bs/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/bs/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/bs/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/bs/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/bs/LC_MESSAGES/kcodecs5_qt.qm
@@ -147,7 +141,6 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kconfigwidgets_prefix}/share/locale/ca/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/ca/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/ca/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/ca/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/ca/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/ca/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/ca/LC_MESSAGES/kcodecs5_qt.qm
@@ -164,7 +157,6 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kconfigwidgets_prefix}/share/locale/ca@valencia/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/ca@valencia/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/ca@valencia/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/ca@valencia/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/ca@valencia/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/ca@valencia/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/ca@valencia/LC_MESSAGES/kcodecs5_qt.qm
@@ -181,7 +173,6 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kconfigwidgets_prefix}/share/locale/cs/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/cs/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/cs/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/cs/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/cs/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/cs/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/cs/LC_MESSAGES/kcodecs5_qt.qm
@@ -198,7 +189,6 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kconfigwidgets_prefix}/share/locale/cy/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/cy/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/cy/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/cy/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/cy/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/cy/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/cy/LC_MESSAGES/kcodecs5_qt.qm
@@ -215,7 +205,6 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kconfigwidgets_prefix}/share/locale/da/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/da/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/da/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/da/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/da/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/da/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/da/LC_MESSAGES/kcodecs5_qt.qm
@@ -232,7 +221,6 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kconfigwidgets_prefix}/share/locale/de/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/de/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/de/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/de/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/de/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/de/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/de/LC_MESSAGES/kcodecs5_qt.qm
@@ -249,7 +237,6 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kconfigwidgets_prefix}/share/locale/el/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/el/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/el/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/el/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/el/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/el/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/el/LC_MESSAGES/kcodecs5_qt.qm
@@ -266,7 +253,6 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kconfigwidgets_prefix}/share/locale/en_GB/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/en_GB/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/en_GB/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/en_GB/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/en_GB/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/en_GB/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/en_GB/LC_MESSAGES/kcodecs5_qt.qm
@@ -283,7 +269,6 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kconfigwidgets_prefix}/share/locale/eo/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/eo/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/eo/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/eo/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/eo/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/eo/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/eo/LC_MESSAGES/kcodecs5_qt.qm
@@ -300,7 +285,6 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kconfigwidgets_prefix}/share/locale/es/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/es/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/es/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/es/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/es/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/es/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/es/LC_MESSAGES/kcodecs5_qt.qm
@@ -317,7 +301,6 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kconfigwidgets_prefix}/share/locale/et/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/et/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/et/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/et/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/et/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/et/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/et/LC_MESSAGES/kcodecs5_qt.qm
@@ -328,13 +311,28 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${prefix}/share/locale/et/LC_MESSAGES/libkleopatra.mo
   File ${prefix}/share/locale/et/LC_MESSAGES/kwatchgnupg.mo
   File ${prefix}/share/locale/et/LC_MESSAGES/kleopatra.mo
+  SetOutPath "$INSTDIR\share\locale\eu"
+  File ${kcfg_prefix}/share/locale/eu/kf5_entry.desktop
+  SetOutPath "$INSTDIR\share\locale\eu\LC_MESSAGES"
+  File ${kconfigwidgets_prefix}/share/locale/eu/LC_MESSAGES/kconfigwidgets5.mo
+  File ${ki18n_prefix}/share/locale/eu/LC_MESSAGES/ki18n5.mo
+  File ${kiconthemes_prefix}/share/locale/eu/LC_MESSAGES/kiconthemes5.mo
+  File ${kconfig_prefix}/share/locale/eu/LC_MESSAGES/kconfig5_qt.qm
+  File ${kcompletion_prefix}/share/locale/eu/LC_MESSAGES/kcompletion5_qt.qm
+  File ${kcodecs_prefix}/share/locale/eu/LC_MESSAGES/kcodecs5_qt.qm
+  File ${kcoreaddons_prefix}/share/locale/eu/LC_MESSAGES/kcoreaddons5_qt.qm
+  File ${kitemviews_prefix}/share/locale/eu/LC_MESSAGES/kitemviews5_qt.qm
+  File ${kwidgetsaddons_prefix}/share/locale/eu/LC_MESSAGES/kwidgetsaddons5_qt.qm
+  File ${kwindowsystem_prefix}/share/locale/eu/LC_MESSAGES/kwindowsystem5_qt.qm
+  File ${prefix}/share/locale/eu/LC_MESSAGES/libkleopatra.mo
+  File ${prefix}/share/locale/eu/LC_MESSAGES/kwatchgnupg.mo
+  File ${prefix}/share/locale/eu/LC_MESSAGES/kleopatra.mo
   SetOutPath "$INSTDIR\share\locale\fa"
   File ${kcfg_prefix}/share/locale/fa/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\fa\LC_MESSAGES"
   File ${kconfigwidgets_prefix}/share/locale/fa/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/fa/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/fa/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/fa/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/fa/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/fa/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/fa/LC_MESSAGES/kcodecs5_qt.qm
@@ -351,7 +349,6 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kconfigwidgets_prefix}/share/locale/fi/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/fi/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/fi/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/fi/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/fi/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/fi/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/fi/LC_MESSAGES/kcodecs5_qt.qm
@@ -368,7 +365,6 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kconfigwidgets_prefix}/share/locale/fr/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/fr/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/fr/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/fr/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/fr/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/fr/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/fr/LC_MESSAGES/kcodecs5_qt.qm
@@ -385,7 +381,6 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kconfigwidgets_prefix}/share/locale/fy/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/fy/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/fy/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/fy/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/fy/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/fy/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/fy/LC_MESSAGES/kcodecs5_qt.qm
@@ -402,7 +397,6 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kconfigwidgets_prefix}/share/locale/ga/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/ga/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/ga/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/ga/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/ga/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/ga/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/ga/LC_MESSAGES/kcodecs5_qt.qm
@@ -419,7 +413,6 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kconfigwidgets_prefix}/share/locale/gl/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/gl/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/gl/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/gl/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/gl/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/gl/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/gl/LC_MESSAGES/kcodecs5_qt.qm
@@ -436,7 +429,6 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kconfigwidgets_prefix}/share/locale/he/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/he/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/he/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/he/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/he/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/he/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/he/LC_MESSAGES/kcodecs5_qt.qm
@@ -451,7 +443,6 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kconfigwidgets_prefix}/share/locale/hi/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/hi/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/hi/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/hi/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/hi/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/hi/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/hi/LC_MESSAGES/kcodecs5_qt.qm
@@ -467,7 +458,6 @@ Section "-kde-l10n" SEC_kde_l10n
   SetOutPath "$INSTDIR\share\locale\hne\LC_MESSAGES"
   File ${kconfigwidgets_prefix}/share/locale/hne/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/hne/LC_MESSAGES/ki18n5.mo
-  File ${kxmlgui_prefix}/share/locale/hne/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/hne/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/hne/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/hne/LC_MESSAGES/kcodecs5_qt.qm
@@ -484,7 +474,6 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kconfigwidgets_prefix}/share/locale/hr/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/hr/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/hr/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/hr/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/hr/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/hr/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/hr/LC_MESSAGES/kcodecs5_qt.qm
@@ -500,7 +489,6 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kconfigwidgets_prefix}/share/locale/hu/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/hu/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/hu/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/hu/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/hu/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/hu/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/hu/LC_MESSAGES/kcodecs5_qt.qm
@@ -517,7 +505,6 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kconfigwidgets_prefix}/share/locale/ia/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/ia/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/ia/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/ia/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/ia/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/ia/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/ia/LC_MESSAGES/kcodecs5_qt.qm
@@ -534,7 +521,6 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kconfigwidgets_prefix}/share/locale/it/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/it/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/it/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/it/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/it/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/it/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/it/LC_MESSAGES/kcodecs5_qt.qm
@@ -551,7 +537,6 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kconfigwidgets_prefix}/share/locale/ja/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/ja/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/ja/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/ja/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/ja/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/ja/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/ja/LC_MESSAGES/kcodecs5_qt.qm
@@ -568,7 +553,6 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kconfigwidgets_prefix}/share/locale/kk/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/kk/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/kk/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/kk/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/kk/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/kk/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/kk/LC_MESSAGES/kcodecs5_qt.qm
@@ -585,7 +569,6 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kconfigwidgets_prefix}/share/locale/km/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/km/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/km/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/km/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/km/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/km/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/km/LC_MESSAGES/kcodecs5_qt.qm
@@ -602,7 +585,6 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kconfigwidgets_prefix}/share/locale/ko/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/ko/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/ko/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/ko/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/ko/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/ko/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/ko/LC_MESSAGES/kcodecs5_qt.qm
@@ -619,7 +601,6 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kconfigwidgets_prefix}/share/locale/lt/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/lt/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/lt/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/lt/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/lt/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/lt/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/lt/LC_MESSAGES/kcodecs5_qt.qm
@@ -636,7 +617,6 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kconfigwidgets_prefix}/share/locale/lv/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/lv/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/lv/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/lv/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/lv/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/lv/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/lv/LC_MESSAGES/kcodecs5_qt.qm
@@ -653,7 +633,6 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kconfigwidgets_prefix}/share/locale/mai/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/mai/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/mai/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/mai/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/mai/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/mai/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/mai/LC_MESSAGES/kcodecs5_qt.qm
@@ -668,7 +647,6 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kconfigwidgets_prefix}/share/locale/mk/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/mk/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/mk/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/mk/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/mk/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/mk/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/mk/LC_MESSAGES/kcodecs5_qt.qm
@@ -685,7 +663,6 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kconfigwidgets_prefix}/share/locale/mr/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/mr/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/mr/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/mr/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/mr/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/mr/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/mr/LC_MESSAGES/kcodecs5_qt.qm
@@ -702,7 +679,6 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kconfigwidgets_prefix}/share/locale/ms/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/ms/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/ms/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/ms/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/ms/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/ms/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/ms/LC_MESSAGES/kcodecs5_qt.qm
@@ -719,7 +695,6 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kconfigwidgets_prefix}/share/locale/nb/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/nb/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/nb/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/nb/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/nb/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/nb/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/nb/LC_MESSAGES/kcodecs5_qt.qm
@@ -736,7 +711,6 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kconfigwidgets_prefix}/share/locale/nds/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/nds/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/nds/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/nds/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/nds/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/nds/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/nds/LC_MESSAGES/kcodecs5_qt.qm
@@ -753,7 +727,6 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kconfigwidgets_prefix}/share/locale/ne/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/ne/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/ne/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/ne/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/ne/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/ne/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/ne/LC_MESSAGES/kcodecs5_qt.qm
@@ -770,7 +743,6 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kconfigwidgets_prefix}/share/locale/nl/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/nl/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/nl/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/nl/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/nl/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/nl/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/nl/LC_MESSAGES/kcodecs5_qt.qm
@@ -787,7 +759,6 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kconfigwidgets_prefix}/share/locale/nn/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/nn/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/nn/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/nn/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/nn/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/nn/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/nn/LC_MESSAGES/kcodecs5_qt.qm
@@ -804,7 +775,6 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kconfigwidgets_prefix}/share/locale/pa/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/pa/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/pa/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/pa/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/pa/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/pa/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/pa/LC_MESSAGES/kcodecs5_qt.qm
@@ -821,7 +791,6 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kconfigwidgets_prefix}/share/locale/pl/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/pl/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/pl/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/pl/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/pl/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/pl/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/pl/LC_MESSAGES/kcodecs5_qt.qm
@@ -838,7 +807,6 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kconfigwidgets_prefix}/share/locale/pt/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/pt/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/pt/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/pt/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/pt/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/pt/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/pt/LC_MESSAGES/kcodecs5_qt.qm
@@ -855,7 +823,6 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kconfigwidgets_prefix}/share/locale/pt_BR/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/pt_BR/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/pt_BR/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/pt_BR/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/pt_BR/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/pt_BR/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/pt_BR/LC_MESSAGES/kcodecs5_qt.qm
@@ -872,7 +839,6 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kconfigwidgets_prefix}/share/locale/ro/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/ro/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/ro/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/ro/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/ro/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/ro/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/ro/LC_MESSAGES/kcodecs5_qt.qm
@@ -889,7 +855,6 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kconfigwidgets_prefix}/share/locale/ru/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/ru/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/ru/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/ru/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/ru/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/ru/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/ru/LC_MESSAGES/kcodecs5_qt.qm
@@ -906,7 +871,6 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kconfigwidgets_prefix}/share/locale/se/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/se/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/se/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/se/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/se/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/se/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/se/LC_MESSAGES/kcodecs5_qt.qm
@@ -923,7 +887,6 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kconfigwidgets_prefix}/share/locale/sk/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/sk/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/sk/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/sk/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/sk/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/sk/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/sk/LC_MESSAGES/kcodecs5_qt.qm
@@ -940,7 +903,6 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kconfigwidgets_prefix}/share/locale/sl/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/sl/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/sl/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/sl/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/sl/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/sl/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/sl/LC_MESSAGES/kcodecs5_qt.qm
@@ -957,7 +919,6 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kconfigwidgets_prefix}/share/locale/sq/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/sq/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/sq/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/sq/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/sq/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/sq/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/sq/LC_MESSAGES/kcodecs5_qt.qm
@@ -974,7 +935,6 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kconfigwidgets_prefix}/share/locale/sr/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/sr/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/sr/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/sr/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/sr/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/sr/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/sr/LC_MESSAGES/kcodecs5_qt.qm
@@ -990,7 +950,6 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kconfigwidgets_prefix}/share/locale/sr@ijekavian/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/sr@ijekavian/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/sr@ijekavian/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/sr@ijekavian/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/sr@ijekavian/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/sr@ijekavian/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/sr@ijekavian/LC_MESSAGES/kcodecs5_qt.qm
@@ -1006,7 +965,6 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kconfigwidgets_prefix}/share/locale/sr@ijekavianlatin/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/sr@ijekavianlatin/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/sr@ijekavianlatin/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/sr@ijekavianlatin/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/sr@ijekavianlatin/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/sr@ijekavianlatin/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/sr@ijekavianlatin/LC_MESSAGES/kcodecs5_qt.qm
@@ -1022,7 +980,6 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kconfigwidgets_prefix}/share/locale/sr@latin/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/sr@latin/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/sr@latin/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/sr@latin/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/sr@latin/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/sr@latin/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/sr@latin/LC_MESSAGES/kcodecs5_qt.qm
@@ -1038,7 +995,6 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kconfigwidgets_prefix}/share/locale/sv/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/sv/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/sv/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/sv/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/sv/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/sv/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/sv/LC_MESSAGES/kcodecs5_qt.qm
@@ -1055,7 +1011,6 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kconfigwidgets_prefix}/share/locale/ta/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/ta/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/ta/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/ta/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/ta/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/ta/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/ta/LC_MESSAGES/kcodecs5_qt.qm
@@ -1072,7 +1027,6 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kconfigwidgets_prefix}/share/locale/tg/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/tg/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/tg/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/tg/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/tg/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/tg/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/tg/LC_MESSAGES/kcodecs5_qt.qm
@@ -1089,7 +1043,6 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kconfigwidgets_prefix}/share/locale/th/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/th/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/th/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/th/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/th/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/th/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/th/LC_MESSAGES/kcodecs5_qt.qm
@@ -1104,7 +1057,6 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kconfigwidgets_prefix}/share/locale/tr/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/tr/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/tr/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/tr/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/tr/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/tr/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/tr/LC_MESSAGES/kcodecs5_qt.qm
@@ -1121,7 +1073,6 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kconfigwidgets_prefix}/share/locale/ug/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/ug/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/ug/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/ug/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/ug/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/ug/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/ug/LC_MESSAGES/kcodecs5_qt.qm
@@ -1138,7 +1089,6 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kconfigwidgets_prefix}/share/locale/uk/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/uk/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/uk/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/uk/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/uk/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/uk/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/uk/LC_MESSAGES/kcodecs5_qt.qm
@@ -1155,7 +1105,6 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kconfigwidgets_prefix}/share/locale/uz/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/uz/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/uz/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/uz/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/uz/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/uz/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/uz/LC_MESSAGES/kcodecs5_qt.qm
@@ -1170,7 +1119,6 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kconfigwidgets_prefix}/share/locale/uz@cyrillic/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/uz@cyrillic/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/uz@cyrillic/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/uz@cyrillic/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/uz@cyrillic/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/uz@cyrillic/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/uz@cyrillic/LC_MESSAGES/kcodecs5_qt.qm
@@ -1185,7 +1133,6 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kconfigwidgets_prefix}/share/locale/xh/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/xh/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/xh/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/xh/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/xh/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/xh/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/xh/LC_MESSAGES/kcodecs5_qt.qm
@@ -1200,7 +1147,6 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kconfigwidgets_prefix}/share/locale/zh_CN/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/zh_CN/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/zh_CN/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/zh_CN/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/zh_CN/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/zh_CN/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/zh_CN/LC_MESSAGES/kcodecs5_qt.qm
@@ -1217,7 +1163,6 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kconfigwidgets_prefix}/share/locale/zh_TW/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/zh_TW/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/zh_TW/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/zh_TW/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/zh_TW/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/zh_TW/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/zh_TW/LC_MESSAGES/kcodecs5_qt.qm
