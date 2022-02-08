@@ -621,8 +621,8 @@ file libkleo/libkleo-202202071042.tar.xz
 chk d54e280295aa2dc9cd97dbf7bcbcb94f22014cad35434e2d900496aa84dc8902
 
 # kleopatra
-# last changed: 2022-02-07
+# last changed: 2022-02-08
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file kleopatra/kleopatra-202202071041.tar.xz
-chk ae95e0f424d26d176dba9c7a4d8e5874fa5f322cb546337f3c62c05692f4903c
+file kleopatra/kleopatra-202202081150.tar.xz
+chk df1cd79bc8b251a5d34b52af528d5a52b5c83f4095ef6201b4ebb415f8533dde
