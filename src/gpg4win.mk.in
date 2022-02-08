@@ -41,12 +41,17 @@ pkg_files =
 
 # The playground area is our scratch area, where we unpack, build and
 # install the packages.
+#
+# Boost includes are only needed for the host and are linked in the
+# playground install tree
 $(stampdir)/stamp-directories:
 	$(MKDIR) $(stampdir)
 	$(MKDIR) $(root)
 	$(MKDIR) -p installers
 	$(MKDIR) $(bdir)
 	$(MKDIR) $(idir)
+	$(MKDIR) $(idir)/include
+	ln -s /usr/include/boost $(idir)/include/boost
 	$(MKDIR) $(ipdir)
 	$(if $GPGEX_ADD_HOST, $(MKDIR) $(ex_idir))
 	$(if $GPGEX_ADD_HOST, $(MKDIR) $(ex_ipdir))
