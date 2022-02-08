@@ -83,7 +83,6 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
         inst-qttools.nsi uninst-qttools.nsi \
         inst-qttranslations.nsi uninst-qttranslations.nsi \
         inst-qtwinextras.nsi uninst-qtwinextras.nsi \
-        inst-boost.nsi uninst-boost.nsi \
         inst-scute.nsi uninst-scute.nsi \
         inst-extra-cmake-modules.nsi uninst-extra-cmake-modules.nsi \
         inst-gpg4win-tools.nsi uninst-gpg4win-tools.nsi \
@@ -411,9 +410,15 @@ define gpg4win_pkg_qttranslations_post_install
    cp -r $$$${pkgbdir}/translations $$$${pkgidir}/qttranslations;)
 endef
 
+gpg4win_pkg_libkleo_configure = \
+    -DBOOST_INCLUDEDIR=/usr/include/boost \
+    -DBOOST_LIBRARYDIR=/usr/lib/86_64-linux-gnu
+
 gpg4win_pkg_kleopatra_configure = \
     -DFORCE_DISABLE_KCMUTILS=ON \
     -DDISABLE_KWATCHGNUPG=ON \
+    -DBOOST_INCLUDEDIR=/usr/include/boost \
+    -DBOOST_LIBRARYDIR=/usr/lib/86_64-linux-gnu \
     -DRELEASE_SERVICE_VERSION=Gpg4win-$(VERSION)
 
 gpg4win_pkg_kxmlgui_configure = \

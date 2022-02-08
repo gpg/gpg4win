@@ -106,9 +106,6 @@
 !ifdef HAVE_PKG_QTWINEXTRAS
 !include "inst-qtwinextras.nsi"
 !endif
-!ifdef HAVE_PKG_BOOST
-!include "inst-boost.nsi"
-!endif
 !ifdef HAVE_PKG_KCONFIG
 !include "inst-kconfig.nsi"
 !endif
@@ -346,9 +343,6 @@
 !endif
 !ifdef HAVE_PKG_QTWINEXTRAS
 !include "uninst-qtwinextras.nsi"
-!endif
-!ifdef HAVE_PKG_BOOST
-!include "uninst-boost.nsi"
 !endif
 !ifdef HAVE_PKG_KCONFIG
 !include "uninst-kconfig.nsi"
@@ -821,7 +815,6 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_libkleo}
   !insertmacro SelectSection ${SEC_qttools}
   !insertmacro SelectSection ${SEC_qtwinextras}
-  !insertmacro SelectSection ${SEC_boost}
   !insertmacro SelectSection ${SEC_extra-cmake-modules}
   skip_kleopatra:
 !endif

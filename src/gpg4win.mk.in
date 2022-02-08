@@ -214,8 +214,6 @@ define DEFLATE_macro
             $(TAR) -xJ --transform='s,^qtsvg-everywhere-src,qtsvg,' -f "$(1)" ;; \
           */qttranslations*.*.tar.xz)          \
             $(TAR) -xJ --transform='s,^qttranslations-everywhere-src,qttranslations,' -f "$(1)" ;; \
-          */boost*.*.tar.bz2)          \
-            $(TAR) -xj --transform='s,^boost_1_60_0,boost-1.60.0,' -f "$(1)" ;; \
 	  *.tar.gz | *.tgz)		\
 	    $(TAR) xzf "$(1)" ;;	\
 	  *.tar.bz2 | *.tbz2 | *.tbz)	\
@@ -640,81 +638,6 @@ HOWTO-$(1).$(2).txt : $(top_srcdir)/doc/HOWTO-$(1).$(2).txt
         | awk '{printf "%s\r\n", $$$$0}' > HOWTO-$(1).$(2).txt
 endef
 
-# Special Template for boost.
-define BOOST_template_
-pkg_files += $(call GETVAR,gpg4win_pkg_$(1))
-
-$(stampdir)/stamp-$(1)-00-unpack: $(stampdir)/stamp-directories $(call GETDEPS,$(1))
-	(cd $(bdir);					\
-	 $(call SETVARS,$(1));				\
-	 $(call DEFLATE_macro,$$$${pkg}))
-	touch $(stampdir)/stamp-$(1)-00-unpack
-
-$(stampdir)/stamp-$(1)-01-patch: $(stampdir)/stamp-$(1)-00-unpack
-	(shopt -s nullglob;				\
-	 $(call SETVARS,$(1));				\
-	 for pfile in "$$$${pkgpbdir}"/*.patch "$$$${pkgpdir}"/*.patch ; do  \
-	   (cd "$$$${pkgsdir}"; chmod +x "$$$${pfile}"; "$$$${pfile}")		\
-	 done)
-	touch $(stampdir)/stamp-$(1)-01-patch
-
-$(stampdir)/stamp-$(1)-02-build: $(stampdir)/stamp-$(1)-01-patch
-	($(call SETVARS,$(1)); \
-	cd $$$${pkgsdir}/tools/build/; \
-	./bootstrap.sh; \
-	cd $$$${pkgsdir}; \
-	echo "using gcc : mxe : $(host)-g++ : <rc>$(host)-windres <archiver>$(host)-ar <ranlib>$(host)-ranlib ;" > "user-config.jam"; \
-	./tools/build/b2 \
-        -a \
-        -q \
-        '$(GPG4WIN_PARALLEL)' \
-        --ignore-site-config \
-        --user-config=user-config.jam \
-        abi=ms \
-        address-model=32 \
-        architecture=x86 \
-        binary-format=pe \
-        link=shared \
-        target-os=windows \
-        threadapi=win32 \
-        threading=multi \
-        variant=release \
-        toolset=gcc-mxe \
-        cxxflags=-std=gnu++98 \
-        --layout=tagged \
-        --disable-icu \
-        --without-mpi \
-        --without-python \
-        --prefix=$$$${pkgidir} \
-        --exec-prefix=$$$${pkgidir}/bin \
-        --libdir=$$$${pkgidir}/lib \
-        --includedir=$$$${pkgidir}/include \
-        -sEXPAT_INCLUDE='$(idir)/include' \
-        -sEXPAT_LIBPATH='$(idir)/lib' \
-        -sBZIP2_INCLUDE='$(idir)/include' \
-        -sBZIP2_LIBPATH='$(idir)/lib' \
-        install) && \
-        touch $(stampdir)/stamp-$(1)-02-build
-
-$(stampdir)/stamp-$(1)-03-stow: $(stampdir)/stamp-$(1)-02-build
-	($(call SETVARS,$(1));				\
-	 cd $(ipdir);					\
-	 $(STOW) "$$$${pkg_version}")
-	touch $(stampdir)/stamp-$(1)-03-stow
-
-$(stampdir)/stamp-final-$(1): $(stampdir)/stamp-$(1)-03-stow
-	touch $(stampdir)/stamp-final-$(1)
-
-.PHONY : clean-$(1)
-clean-$(1):
-	($(call SETVARS,$(1));				\
-	 (cd $(ipdir) &&				\
-	  ($(STOW) -D "$$$${pkg_version}" || true;	\
-	   rm -fR "$$$${pkg_version}"));		\
-	 rm -fR "$$$${pkgsdir}" "$$$${pkgbdir}")
-	rm -f $(stampdir)/stamp-final-$(1) $(stampdir)/stamp-$(1)-*
-endef
-
 # Template for source packages of KDE software
 define KDEPKG_template_
 
@@ -1062,8 +985,6 @@ $(foreach qtpkg, $(gpg4win_qtpkgs), $(eval $(call QTPKG_template,$(qtpkg))))
 
 $(foreach rll, $(gpg4win_howto_smime_ll), \
                $(eval $(call HOWTO_template,SMIME,$(rll))))
-
-$(eval $(call BOOST_template_,boost))
 
 $(stampdir)/stamp-final: $(stampdir)/stamp-directories
 $(stampdir)/stamp-final: $(addprefix $(stampdir)/stamp-final-,$(gpg4win_build_list)) \

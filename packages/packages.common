@@ -371,17 +371,6 @@ chk  c4737943083ce92e41faf13c27a9d608105b6285c0840dfb684a7ee294142ddf
 #  Kleopatra and dependencies
 #
 
-# Boost
-# last changes: 2016-01-21
-# by: ah
-# verified: Second source https://github.com/mxe/mxe/commit/fdd5b9f7aa8bf0e40c1f1f8119701af96e51457e
-
-server http://downloads.sourceforge.net/project/boost/boost/
-
-name boost-1.60.0.tar.bz2
-file 1.60.0/boost_1_60_0.tar.bz2
-chk 686affff989ac2488f79a97b9479efb9f2abae035b5ed4d8226de6857933fd3b
-
 # Qt base
 # last changed: 2020-07-22
 # by: ah

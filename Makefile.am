@@ -42,7 +42,6 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
              docker/appimage/Dockerfile \
              docker/build-appimage-docker-image.sh \
              docker/run-appimage-build.sh \
-             patches/boost/boost-1-fixes.patch \
              patches/extra-cmake-modules/0001-Use-BIN_INSTALL_DIR-data-for-DATAROOTDIR-on-Windows.patch \
              patches/glib/glib-1-fixes.patch \
              patches/glib/glib-2-fixes.patch \

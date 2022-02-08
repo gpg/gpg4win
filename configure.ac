@@ -344,7 +344,6 @@ if test "$build_gpg4win" = yes ; then
     GPG4WIN_SPKG([qttranslations], [qtsvg qttools qtwinextras])
     GPG4WIN_SPKG([qtwinextras], [qtbase])
     GPG4WIN_SPKG([qtsvg], [qtbase])
-    GPG4WIN_SPKG([boost], [expat zlib bzip2])
     GPG4WIN_KDEPKG([breeze-icons], [extra-cmake-modules qtbase])
     GPG4WIN_KDEPKG([kleopatra], [gnupg-w32 breeze-icons kxmlgui libkleo kde-l10n kitemmodels qttranslations])
     GPG4WIN_KDEPKG([extra-cmake-modules])
