@@ -593,11 +593,9 @@ server https://files.intevation.de/projects/gpg4all
 # by: ah
 # verified: Tarball created by ah with script gen-kde-l10n.sh
 file kde-l10n/kde-l10n-202202081139-bin.tar.xz
-kde-l10n-202112011441-bin.tar.xz
 chk  8d7c91f8174c3412a1c45e82730669c038832fd0f27eb2ab0aeeadcd625d77f7
 
 file kde-l10n/kde-l10n-202202081139-src.tar.xz
-kde-l10n-202112011441-src.tar.xz
 chk  3c36637483e1064490e1105f7233a934f7fb77e17a7b7e7a3efbc652d97a88bc
 
 # Gpg4win-tools package
