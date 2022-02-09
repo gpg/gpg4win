@@ -2074,11 +2074,6 @@ print <<EOF;
       <ComponentRef Id='c_gpg4win_4' />
       <ComponentRef Id='c_gpg4win_5' />
       <ComponentRef Id='c_gpg4win_6' />
-      <ComponentRef Id='c_gpg4win_7' />
-      <ComponentRef Id='c_gpg4win_8' />
-      <ComponentRef Id='c_gpg4win_9' />
-      <ComponentRef Id='c_gpg4win_10' />
-      <ComponentRef Id='c_gpg4win_11' />
       <ComponentRef Id='c_pinentry_0' />
       <ComponentRef Id='c_pinentry_1' />
       <ComponentRef Id='c_scute_0' />
