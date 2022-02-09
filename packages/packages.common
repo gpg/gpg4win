@@ -615,12 +615,12 @@ server https://gnupg.org/ftp/gcrypt/snapshots
 # last changed: 2022-02-09
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file libkleo/libkleo-202202091421.tar.xz
-chk 916156c31bb37e357af71b656aaca65e3f2daa948fc126e4c7e0cdfb0a44bd93
+file libkleo/libkleo-202202091431.tar.xz
+chk 0984d75423f11e6b33a6775528bce338d02993d196a21e2918fa9f3db55174d4
 
 # kleopatra
 # last changed: 2022-02-09
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file kleopatra/kleopatra-202202091421.tar.xz
-chk be0777b87df1ad02625981412761748203d3c41985fa7c0205bd3a6b7fe2a1fb
+file kleopatra/kleopatra-202202091431.tar.xz
+chk e4cef02ba5b5f8121edb8932469424cd0b7c82e7e76b46ebde19a49e61436a02
