@@ -2,6 +2,176 @@
 #
 # The version number given below are for the standard installers as
 # distributed by www.gpg4win.org.
+Noteworthy changes in Version 3.1.21 (unreleased)
+-------------------------------------------------
+
+(en) Kleopatra: Keyserver configuration now properly resets to default
+     value on empty configuration. (T5711)
+
+(de) Kleopatra: Keyserver Konfiguration wird nun automatisch auf den
+     Standardwert gesetzt wenn ein leerer Wert eingetragen wrid.
+     (T5711)
+
+(en) Kleopatra: Configuration of default-new-key-algo is simplified
+     for ECC curves. (T5717)
+
+(de) Kleopatra: Die Konfiguration von "default-new-key-algo" ist nun
+     für ECC Kurven vereinfacht einzutragen. (T5717)
+
+(en) Kleopatra: The key creation wizard can now hide advanced
+     settings through configuration. (T5690)
+
+(de) Kleopatra: Der Assistent für neue Schlüsselpaare kann nun
+     konfiguriert werden um erweiterte Einstellungen auszublenden.
+     (T5690)
+
+(en) Kleopatra: When searching for keys a Web Key Directory is also
+     searched if this is available for the searched domain. (T5334)
+
+(de) Kleopatra: Bei der Suche auf Server wird nun auch ein möglicherweise
+     vorhandenes Web-Key-Directory (WKD) berücksichtig. (T5334)
+
+(en) Kleopatra: A new setting in group [Smartcard] "AlwaysSearchCardOnKeyserver"
+     enables the query of any configured keyserver for certificates of a
+     smartcard if set to true. (T5735)
+
+(de) Kleopatra: Eine neue Einstellung in der Gruppe [Smartcard] mit Name
+     "AlwaysSearchCardOnKeyserver" sorgt dafür das Kleopatra beliebige
+     Schlüsselserver bei der Suche Zertifikaten für eine Smartcard
+     abfragt. (T5735)
+
+(en) Kleopatra: Additional dialogs have file endings preset when saving
+     crypto files. (T5736)
+
+(de) Kleopatra: Weitere Dialoge haben entsprechende Datei-Endungen
+     vorausgewählt wenn Dateien gespeichert werden sollen. (T5736)
+
+(en) Kleopatra: Error handling for failed PKCS#12 imports is improved.
+     (T5713)
+
+(de) Kleopatra: Die Fehlerbehandlung für PKCS#12 Imports wurde
+     verbessert. (T5713)
+
+(en) Kleopatra: An information is now shown if keyserver return invalid
+     search results. (T5725)
+
+(de) Kleopatra: Es wird nun eine Information angezeigt wenn Schlüsselserver
+     ungültige Antworten liefern. (T5725)
+
+(en) Kleopatra: Additional help documents, for GnuPG VS-Desktop, are now
+     added in the help menu.
+
+(de) Kleopatra: Unter Hilfe können nun in GnuPG VS-Desktop weitere
+     Dokumente hinterlegt werden.
+
+(en) Kleopatra: Secret subkeys can now be exported and imported. (T5755)
+
+(de) Kleopatra: Geheime Unterschlüssel können nun exportiert und importiert
+     werden. (T5755)
+
+(en) Kleopatra: Config settings which are forced in global configuration
+     are now properly greyed out. (T5791)
+
+(de) Kleopatra: Konfigurations-Elemente die in der globalen Konfiguration
+     erzwungen werden sind nun korrekt ausgegraut. (T5791)
+
+(en) Kleopatra: Automatic detection of new smartcards has been improved.
+     (T5782)
+
+(de) Kleopatra: Die automatische Erkennung neuer Smartcards wurde verbessert.
+     (T5782)
+
+(en) Kleopatra: Configurating both an OpenPGP and X.509 keyservers has been
+     improved. (T5801)
+
+(de) Kleopatra: Die gleichzeitige Konfiguration von OpenPGP und X.509
+     Schlüsselservern wurde verbessert. (T5801)
+
+(en) Kleopatra: Opening external links can now be administratively
+     prohibited. (T5777)
+
+(de) Kleopatra: Das öffnen von externen links kann nun administrativ
+     deaktiviert werden. (T5777)
+
+(en) Kleopatra: When opening outlook attachments the default output
+     path is now in the documents folder of the user. (T5774)
+
+(de) Kleopatra: Beim öffnen von Outlook anhängen wird nun der Dokumente
+     Ordner des Nutzers vorausgewählt. (T5774)
+
+(en) Kleopatra: In the certificate details certification view it is
+     now possible to retrieve all certifier certificates. (T5805)
+
+(de) Kleopatra: In den Zertifikatsdetails ist es nun unter Beglaubigungen
+     möglich alle Zertifikate der Beglaubiger abzurufen. (T5805)
+
+(en) Kleopatra: It is now possible to fetch the keys of certifiers automatically
+     on import. This can be enabled through the setting
+     "RetrieveSignerKeysAfterImport" in the "Import" group. (T5805)
+
+(de) Kleopatra: Es ist nun möglich die Zertifikate von Beglaubigern automatisch
+     bei einem Import abzurufen. Dies wird mit der Eintellung
+     "RetrieveSignerKeysAfterImport" in der "Import" Gruppe aktiviert. (T5805)
+
+(en) A Problem has been fixed which could cause cleartext to be sent to
+     the Exchange Server. This occurred when modifying an encrypted draft.
+     (T5564)
+
+(de) GpgOL: Es wurde ein Problem behoben das dazu führen konnte das bei
+     der erneuten Bearbeitung eines Entwurfs der Entwurf nicht korrekt
+     verschlüsselt wurde. Dadurch wurde Klartext zum Exchange
+     Server übertragen. (T5564)
+
+(en) GpgOL: Draft Encryption can now be enabled through the registry by
+     setting the value "auto" for "draftKey". (T5564)
+
+(de) GpgOL: Die Entwurfsverschlüsselung kann nun über die Registry aktiviert
+     werden wenn man den Wert "auto" als "draftKey" hinterlegt. (T5564).
+
+(en) GnuPG: Config values from the windows registry are now properly
+     shown with gpgconf --show-configs. (T5724)
+
+(de) GnuPG: Konfigurationswerte aus der Windows Registry werden nun
+     korrekt bei gpgconf --show-configs angezeigt. (T5724)
+
+(en) GnuPG: When importing certificates, certificates with specific
+     identifiers can now be filtered out. This allows to avoid
+     certificates used by other applications like Rohde & Schwarz Trusted
+     Disk.
+
+(de) GnuPG: Beim importieren von Zertifikaten können nun Zertifikate
+     mit bestimmten Merkmalen ausgefiltert werden. Dies erlaubt es
+     Zertifikate von anderen Anwendungen, wie Rohde & Schwarz Trusted
+     Disk, auszublenden.
+
+(en) GnuPG: Windows account names with special characters are handled
+     again.
+
+(de) GnuPG: Windows Benutzerkonten mit Sonderzeichen im Namen funktionieren
+     nun wieder.
+
+(en) GnuPG: Longer file names are now supported when creating archives.
+     (T5754)
+
+(de) GnuPG: Beim Archivieren von Ordnern werden nun längere Dateinamen
+     unterstützt. (T5754)
+
+(en) GnuPG: Updated to 2.2.34.  For more details see:
+     https://lists.gnupg.org/pipermail/gnupg-announce/2022q1/000470.html
+
+(de) GnuPG: Auf Version 2.2.34 aktualisiert:
+     https://lists.gnupg.org/pipermail/gnupg-announce/2022q1/000470.html
+
+~~~~~~~~~~~~~~~
+GnuPG:          2.2.34
+Kleopatra:      3.1.21
+GPA:            0.10.0
+GpgOL:          2.5.2
+GpgEX:          1.0.8
+Kompendium DE:  4.0.1
+Compendium EN:  3.0.0
+~~~~~~~~~~~~~~~
+
 Noteworthy changes in Version 4.0.0 (2021-12-21)
 -------------------------------------------------
 
@@ -21,7 +191,7 @@ Noteworthy changes in Version 4.0.0 (2021-12-21)
      use symmetric encryption. (T5661)
 
 (de) Kleopatra: Eine Option wurde hinzugefügt durch die rein
-     symmetrische Ve erzwungen werden kann. (T5661)
+     symmetrische Verschlüsselung erzwungen werden kann. (T5661)
 
 (en) Kleopatra: Available Smartcard readers can now be listed under
      settings. (T5662)
