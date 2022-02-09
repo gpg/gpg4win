@@ -97,8 +97,8 @@ if [ $GNUPG_BUILD_VSD = yes ]; then
     echo $myversion >/build/AppDir/GnuPG-VS-Desktop-VERSION
     cp /src/src/gnupg-vsd/Standard/VERSION* /build/AppDir/usr/
     echo "Packaging help files"
-    mkdir -p /build/AppDir/share/doc/gnupg-vsd
-    cp /src/src/gnupg-vsd/help/*.pdf /build/AppDir/share/doc/gnupg-vsd
+    mkdir -p /build/AppDir/usr/share/doc/gnupg-vsd
+    cp /src/src/gnupg-vsd/help/*.pdf /build/AppDir/usr/share/doc/gnupg-vsd
 else
     myversion=$(ls /src/packages/gnupg-2.*tar.* \
                     | sed -n 's,.*/gnupg-\(2.*\).tar.*,\1,p')
