@@ -99,6 +99,9 @@ if [ $GNUPG_BUILD_VSD = yes ]; then
     echo "Packaging help files"
     mkdir -p /build/AppDir/usr/share/doc/gnupg-vsd
     cp /src/src/gnupg-vsd/help/*.pdf /build/AppDir/usr/share/doc/gnupg-vsd
+    echo "Packaging kleopatrarc"
+    mkdir -p /build/AppDir/usr/etc/xdg
+    cp /src/src/gnupg-vsd/Standard/kleopatrarc /build/AppDir/usr/etc/xdg
 else
     myversion=$(ls /src/packages/gnupg-2.*tar.* \
                     | sed -n 's,.*/gnupg-\(2.*\).tar.*,\1,p')
