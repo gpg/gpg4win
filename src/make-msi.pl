@@ -85,14 +85,14 @@ sub store_guids
 
     return if (not $::guid_changed);
     print STDERR "GUID list stored in $::guid_file changed, please commit!\n";
-    open (FILE, ">$::guid_file.bak") or die;
+    open (FILE, ">$::guid_file.bak") or die "open failed:$!\n";
     print FILE "# This is an automatically generated file.  DO NOT EDIT.\n";
     foreach my $file (sort keys %::guid)
     {
         print FILE "$::guid{$file} $file\n";
     }
     close FILE;
-    rename "$::guid_file.bak", $::guid_file or die;
+    rename "$::guid_file.bak", $::guid_file or die "rename failed:$!\n";
 }
 
 
@@ -130,7 +130,7 @@ sub store_files
     my ($parser) = @_;
 
     return if ($::files_file eq '');
-    open (FILE, ">$::files_file") or die;
+    open (FILE, ">$::files_file") or die "open failed:$!\n";
     foreach my $name (@{$parser->{pkg_list}})
     {
         my $pkg = $parser->{pkgs}->{$name};
@@ -1465,7 +1465,7 @@ sub store_l10n
     my ($parser) = @_;
 
     return if ($::l10n_file eq '');
-    open (FILE, ">$::l10n_file") or die;
+    open (FILE, ">$::l10n_file") or die "open failed:$!\n";
 
     # Dump the localization
     foreach my $lang (keys %{$parser->{po}})
@@ -1617,7 +1617,8 @@ sub scan_dir {
 sub dump_help {
     my ($workdir) = @_;
     my $custom_name = basename($workdir);
-    open (FILE, ">$workdir/$custom_name.wxs") or die;
+    open (FILE, ">$workdir/$custom_name.wxs") or
+        die "Can't create $custom_name.wxs:$!\n";
     my $fileidx = 0;
 
     foreach my $file (&scan_dir($workdir)) {
@@ -1654,7 +1655,7 @@ sub dump_help {
 sub dump_single_custom {
     my ($workdir) = @_;
     my $custom_name = basename($workdir);
-    open (FILE, ">$workdir/$custom_name.wxs") or die;
+    open (FILE, ">$workdir/$custom_name.wxs") or die "open failed:$!\n";
     print FILE <<EOF;
 <?xml version="1.0" encoding="utf-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
@@ -1676,7 +1677,7 @@ sub dump_single_custom {
     <ComponentGroup Id="c_customization">
 EOF
    print STDERR "Including: help\n";
-   open (INCFILE, "<$workdir/../help/help.wxs") or die;
+   open (INCFILE, "<$workdir/../help/help.wxs") or die "open failed:$!\n";
    while (<INCFILE>)
    {
        print FILE $_;
@@ -1704,7 +1705,8 @@ EOF
 
         if ($basename eq "$custom_name.wxs.include") {
            print STDERR "Including: $basename\n";
-           open (INCFILE, "<$workdir/$custom_name.wxs.include") or die;
+           open (INCFILE, "<$workdir/$custom_name.wxs.include") or
+               die "open failed:$!\n";
            while (<INCFILE>)
            {
                print FILE $_;
