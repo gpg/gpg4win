@@ -150,12 +150,6 @@ Noteworthy changes in Version 3.1.21 (unreleased)
 (de) GnuPG: Windows Benutzerkonten mit Sonderzeichen im Namen funktionieren
      nun wieder.
 
-(en) GnuPG: Longer file names are now supported when creating archives.
-     (T5754)
-
-(de) GnuPG: Beim Archivieren von Ordnern werden nun längere Dateinamen
-     unterstützt. (T5754)
-
 (en) GnuPG: Updated to 2.2.34.  For more details see:
      https://lists.gnupg.org/pipermail/gnupg-announce/2022q1/000470.html
 
