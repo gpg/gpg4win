@@ -752,7 +752,7 @@ endef
 define MSI_template
 
 .PHONY : $(1)-package
-$(1)-package: installers/GnuPG-VS-Desktop-$(VERSION)-$(1).msi
+$(1)-package: installers/GnuPG-VS-Desktop-$(VSD_VERSION_FILE)-$(1).msi
 
 $(idir)/$(1)-x86.wixlib: gnupg-vsd/$(1)/$(1).wxs
 	($(call SETVARS_WINE,); \
@@ -1027,8 +1027,8 @@ $(stampdir)/stamp-all-upload: $(stampdir)/stamp-dist-self \
 	touch $(stampdir)/stamps-all-upload
 
 msi: $(stampdir)/stamp-versions-all-signed \
-	$(addsuffix .msi,$(addprefix installers/GnuPG-VS-Desktop-$(VSD_VERSION)-,$(msi_targets)))
-	if [ -z "$(addsuffix .msi,$(addprefix installers/GnuPG-VS-Desktop-$(VSD_VERSION)-,$(msi_targets)))" ]; then \
+	$(addsuffix .msi,$(addprefix installers/GnuPG-VS-Desktop-$(VSD_VERSION_FILE)-,$(msi_targets)))
+	if [ -z "$(addsuffix .msi,$(addprefix installers/GnuPG-VS-Desktop-$(VSD_VERSION_FILE)-,$(msi_targets)))" ]; then \
 		echo "No MSI targets configured."; \
 	else \
 		echo "######################"; \
@@ -1037,7 +1037,7 @@ msi: $(stampdir)/stamp-versions-all-signed \
 	fi
 
 $(stampdir)/stamp-msi-all-signed: gnupg-vsd/sign.mk \
-	$(addsuffix .msi,$(addprefix signed_installers/GnuPG-VS-Desktop-$(VSD_VERSION)-,$(msi_targets)))
+	$(addsuffix .msi,$(addprefix signed_installers/GnuPG-VS-Desktop-$(VSD_VERSION_FILE)-,$(msi_targets)))
 	touch $(stampdir)/stamp-msi-all-signed
 
 
