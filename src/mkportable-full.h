@@ -121,7 +121,7 @@ const char * const full_files[] =
   "bin/libgpgme-11.dll",
   "bin/glib-genmarshal.exe",
   "bin/gsettings.exe",
-  "bin/libintl-9.dll",
+  "bin/libintl-8.dll",
   "bin/libgpgmepp-6.dll",
   "bin/libKF5Archive.dll",
   "bin/gdk-pixbuf-query-loaders.exe",
