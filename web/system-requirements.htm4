@@ -15,21 +15,22 @@ PAGE_START
 </div>
 
 <div id="main">
-<p>Gpg4win runs on Windows versions 7 or newer (up to Windows 10).
+<p>Gpg4win runs on Windows versions 7 or newer (including Windows 11).
 Both 32 and 64bit systems are supported. If you have at least Windows XP,
 some parts of Gpg4win can be used, but are not officially supported.
 </p>
 
-<p>The Outlook plugin GpgOL is compatible with Microsoft Outlook
-2010, 2013, 2016 and 2019 (both 32 and 64bit) and supports transporting
-emails via SMTP/IMAP and MS Exchange Server (version 2010 or newer).
-For elder Outlook versions 2003 and 2007 less functionality is offered.
-</p>
+<p>The Outlook add-in GpgOL is compatible with Microsoft Outlook
+2010, 2013, 2016, 2019, Office 365 and 2021 (both 32 and 64bit)
+and supports transporting
+emails via SMTP/IMAP and MS Exchange Server.
 
 <h2>Other Systems</h2>
 <p>With <b>MacOS X</b> you can use the <a href="https://gpgtools.org/">GPG Suite</a>.</p>
 
-<p>With a <b>GNU/Linux</b> based systems you can use your built-in paketmanager to install GnuPG.
+<p>With a <b>GNU/Linux</b> based systems you can use the
+package manager to install GnuPG.
 Alternatively you can compile GnuPG directly from
-<a href="https://gnupg.org/index.html">the sources</a></p> by yourself.
+<a href="https://gnupg.org/index.html">the sources</a> by yourself.
+</p>
 </div>
