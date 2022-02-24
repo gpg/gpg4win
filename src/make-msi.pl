@@ -1353,11 +1353,12 @@ sub dump_all
                 <RegistryValue Root="HKMU" KeyPath='no' Key="Software\\Classes\\GNU.GpgOL\\CLSID" Value="{42d30988-1a3a-11da-c687-000d6080e735}" Type="string" Action="write" />
                 <RegistryValue Root="HKMU" KeyPath='no' Key="Software\\Classes\\GNU.GpgOL" Value="GpgOL - The GnuPG Outlook Plugin" Type="string" Action="write" />
                 <RegistryValue Root="HKMU" KeyPath='no' Key="Software\\GNU\\GpgOL" Value="" Type="string" Action="write" />
-                <RegistryValue Root="HKMU" KeyPath='no' Key="Software\\Microsoft\\Office\\Outlook\\Addins\\GNU.GpgOL" Name="LoadBehavior" Value="3" Type="integer" Action="write" />
                 <RegistryValue Root="HKMU" KeyPath='no' Key="Software\\Microsoft\\Office\\Outlook\\Addins\\GNU.GpgOL" Name="CommandLineSafe" Value="0" Type="integer" Action="write" />
                 <RegistryValue Root="HKMU" KeyPath='no' Key="Software\\Microsoft\\Office\\Outlook\\Addins\\GNU.GpgOL" Name="FriendlyName" Value="GpgOL - The GnuPG Outlook Plugin" Type="string" Action="write" />
                 <RegistryValue Root="HKMU" KeyPath='no' Key="Software\\Microsoft\\Office\\Outlook\\Addins\\GNU.GpgOL" Name="Description" Value="Cryptography for Outlook" Type="string" Action="write" />
 EOF
+
+
             } elsif ($targetfull eq 'bin\\gpgex.dll' or
                      $targetfull eq 'bin_64\\gpgex.dll') {
                 print ' ' x $::level
@@ -1554,6 +1555,21 @@ sub dump_all2
             . "    Type='string' Value='[APPLICATIONFOLDER]bin\\kleopatra.exe --daemon' KeyPath='yes'/>\n"
             . "  </Component>\n"
             . " </Feature>\n"
+        }
+        if ($pkg->{name} eq "gpgol")
+        {
+            # Enable INST_GPGOL=inactive
+            print <<EOF;
+            <Feature Id='p_gpgol_autoload' Title='p_gpgol_autoload' Level='1' Display='hidden' InstallDefault='followParent'>
+              <Condition Level='1000'>INST_GPGOL=\"inactive\"</Condition>
+              <Component Id='GpgOLActivateRegKey' Win64='yes' Guid='87765E51-3902-41F8-B624-4CCEBC731A13' Directory='APPLICATIONFOLDER'>
+                <RegistryValue Root="HKMU" KeyPath='yes' Key="Software\\Microsoft\\Office\\Outlook\\Addins\\GNU.GpgOL" Name="LoadBehavior" Value="3" Type="integer" Action="write" />
+              </Component>
+              <Component Id='GpgOLActivateRegKey_32' Win64='no' Guid='87765E51-3902-41F8-B624-4CCEBC731A14' Directory='APPLICATIONFOLDER'>
+                <RegistryValue Root="HKMU" KeyPath='yes' Key="Software\\Microsoft\\Office\\Outlook\\Addins\\GNU.GpgOL" Name="LoadBehavior" Value="3" Type="integer" Action="write" />
+              </Component>
+            </Feature>
+EOF
         }
 
         dump_meat ($pkg);
