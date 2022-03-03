@@ -63,8 +63,8 @@ src="img/t100.kleopatra_logo.png">
 src="img/t100.gpgol_logo.png">
 </a>
 <b>GpgOL</b>
- <p>A plugin for Microsoft Outlook 2010/2013/2016/2019 (email encryption).
-    With Outlook 2010 and higher GpgpOL supports MS Exchange Server.
+ <p>An add-in for Microsoft Outlook providing email cryptography.
+    Supports both IMAP/SMTP and MS Exchange servers.
  </p>
 </li>
 <li>
