@@ -1719,6 +1719,12 @@ EOF
             next;
         }
 
+        if ($dirname =~ /Standard\/etc\/gnupg/) {
+            # We need to skip the Unix etc directory so that it does
+            # not end up as global config on Windows.
+            next;
+        }
+
         if ($basename eq "$custom_name.wxs.include") {
            print STDERR "Including: $basename\n";
            open (INCFILE, "<$workdir/$custom_name.wxs.include") or
@@ -1798,7 +1804,10 @@ sub dump_customs
         next if ($name eq "announcement.de.in");
         next if ($name eq "announcement.en.in");
         next if ($name eq "gnupg.com-info-key.asc");
+        next if ($name eq "general-enc-key.asc");
         next if ($name eq "help");
+        next if ($name eq "README");
+        next if ($name =~ /~$/);
 
         if (-d $name) {
             dump_single_custom($name);
