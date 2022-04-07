@@ -68,6 +68,7 @@ appimage_pkg_qtbase_configure = ../$$$${pkg_version}/configure -opensource \
             -no-sql-odbc \
             -no-sql-psql \
             -no-sql-tds \
+            -qt-harfbuzz \
             -v \
             -xcb \
             OPENSSL_INCDIR=/usr/include/openssl11
