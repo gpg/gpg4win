@@ -278,11 +278,11 @@ chk  c2a9b3aec1a38d34b66106116a39f64b01d84f475fef75c40ea0bda0ea67ed07
 # Server changed from ftp to https by wk 2021-09-22
 server https://gnupg.org/ftp/gcrypt
 
-# last changed 2022-02-03
+# last changed 2022-04-07
 # by wk
 # verified: swdb
-file libgpg-error/libgpg-error-1.44.tar.bz2
-chk 8e3d2da7a8b9a104dd8e9212ebe8e0daf86aa838cc1314ba6bc4de8f2d8a1ff9
+file libgpg-error/libgpg-error-1.45.tar.bz2
+chk 570f8ee4fb4bff7b7495cff920c275002aea2147e9a1d220c068213267f80a26
 
 # last-changed: 2021-04-21
 # by: ah
@@ -304,11 +304,11 @@ file libksba/libksba-1.6.0.tar.bz2
 chk dad683e6f2d915d880aa4bed5cea9a115690b8935b78a1bbe01669189307a48b
 
 
-# last changed 2022-02-07
-# by ah
-# verified: distsigkey.gpg
-file ntbtls/ntbtls-0.3.0.tar.bz2
-chk  d1d9c86fc31e8154657a4c01ec6da17628c75c0ea5d43388956305e3067c7d46
+# last changed 2022-04-07
+# by wk
+# verified: swdb
+file ntbtls/ntbtls-0.3.1.tar.bz2
+chk  8922181fef523b77b71625e562e4d69532278eabbd18bc74579dbe14135729ba
 
 #name gnupg-msi-2.3.1-beta18-20210420-src.tar.xz
 #file binary/gnupg-w32-2.3.1_20210420.tar.xz
