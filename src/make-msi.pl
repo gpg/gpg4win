@@ -1740,6 +1740,7 @@ EOF
         my $sourcefull = "\$(var.SrcDir)/" . $file;
         $sourcefull =~ s/.*\/src\//\$(var.SrcDir)\//;
         $sourcefull =~ s/\//\\/g;
+        my $mode = "";
 
         if ($dirname =~ /trusted-certs$/) {
             $dirname = "GnuPGTrustedCerts";
@@ -1751,9 +1752,12 @@ EOF
             # The VERSION file is special and needs to go
             # in the Gpg4win root folder.
             $dirname = "APPLICATIONFOLDER";
-        } elsif ($basename eq "kleopatrarc" or
-                 $basename eq "libkleopatrarc") {
+        } elsif ($basename =~ /kleopatrarc(.*)/ or
+                 $basename =~ /libkleopatrarc(.*)/) {
             $dirname = "KleopatraDataFolder";
+            $mode = "$1";
+            $mode =~ s/_(.*)/\1/;
+            $basename =~ s/_.*//;
         }
         else {
             $dirname = "GnuPGDataFolder";
@@ -1769,6 +1773,15 @@ EOF
         . "  <File Id='f_$custom_name_us" . "_$fileidx' Name='"
         . $basename ."' KeyPath='no'" . " Source='" .
         $sourcefull . "'/>\n";
+
+        if ($mode ne "") {
+            print FILE ' ' x 10 . "<Condition>MODE = \"" . $mode . "\"</Condition>\n";
+        }
+        if (($basename =~ /kleopatrarc/ or
+             $basename =~ /libkleopatrarc/) and
+             $mode eq "") {
+            print FILE ' ' x 10 . "<Condition>MODE = \"" . "default" . "\"</Condition>\n";
+        }
 
         print FILE ' ' x 6 . '</Component>' . "\n";
 
@@ -2059,6 +2072,8 @@ print <<EOF;
       <IniFileSearch Id='gpg4win_ini_homedir' Type='raw'
        Name='gpg4win.ini' Section='gpg4win' Key='homedir'/>
     </Property>
+
+    <Property Id="MODE">default</Property>
 
     <!-- Launch Kleopatra after setup exits
     <CustomAction Id            = "StartAppOnExit"
