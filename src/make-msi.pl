@@ -1724,6 +1724,10 @@ EOF
             # not end up as global config on Windows.
             next;
         }
+        if ($dirname =~ /[^/]+\/misc/ {
+            # Ignore 2nd level subdirs named "misc"
+            next;
+        }
 
         if ($basename eq "$custom_name.wxs.include") {
            print STDERR "Including: $basename\n";
