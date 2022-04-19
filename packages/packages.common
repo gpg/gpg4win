@@ -443,11 +443,11 @@ server https://download.kde.org/stable/frameworks
 # KDE Applications
 
 # extra-cmake-modules
-# last changed: 2022-02-01
+# last changed: 2022-04-19
 # by: ah
 # verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
-file 5.90/extra-cmake-modules-5.90.0.tar.xz
-chk f3007c3ceca56249292cf340a38518589a55a4afcf27e166ab63c5ac8ffabcb0
+file 5.93/extra-cmake-modules-5.93.0.tar.xz
+chk 093dea7b11647bc5f74e6971d47ef15b5c410cba2b4620acae00f008d5480b21
 
 # kconfig
 # last changed: 2022-02-01
@@ -612,16 +612,15 @@ chk 79ea82ede46bbd02f70a64e4f003c6279e98cf4ad1e302eca753087c42fccdf3
 server https://gnupg.org/ftp/gcrypt/snapshots
 
 # libkleo
-# last changed: 2022-02-09
+# last changed: 2022-04-19
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file libkleo/libkleo-202202091431.tar.xz
-chk 0984d75423f11e6b33a6775528bce338d02993d196a21e2918fa9f3db55174d4
-
+file libkleo/libkleo-202204191126.tar.xz
+chk 6ba160c0e647c154684259cae0c5c7bd25e2d8ed44a4b3acec77cc847351426d
 
 # kleopatra
-# last changed: 2022-02-10
+# last changed: 2022-04-19
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file kleopatra/kleopatra-202202101319.tar.xz
-chk 5a01c2b151cf43466a00461bfc933fe5695e498da15c8238181e0948d8856a23
+file kleopatra/kleopatra-202204191122.tar.xz
+chk 1174d7c48276f112a28772a2fb45d43a3dc50dbba3cdf25f97f6eda0b7ceefb6
