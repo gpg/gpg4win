@@ -1724,7 +1724,7 @@ EOF
             # not end up as global config on Windows.
             next;
         }
-        if ($dirname =~ /[^/]+\/misc/ {
+        if ($dirname =~ /[^\/]+\/misc/) {
             # Ignore 2nd level subdirs named "misc"
             next;
         }
