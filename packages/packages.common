@@ -320,14 +320,14 @@ chk  8922181fef523b77b71625e562e4d69532278eabbd18bc74579dbe14135729ba
 
 # last changed: 2021-04-21
 # by: ah
-file pinentry/pinentry-1.2.0.tar.bz2
-chk  10072045a3e043d0581f91cd5676fcac7ffee957a16636adedaa4f583a616470
+#file pinentry/pinentry-1.2.0.tar.bz2
+#chk  10072045a3e043d0581f91cd5676fcac7ffee957a16636adedaa4f583a616470
 
 # last changed 2022-02-07
 # by wk
 # verified: buildtree
-file gpgme/gpgme-1.17.0.tar.bz2
-chk 4ed3f50ceb7be2fce2c291414256b20c9ebf4c03fddb922c88cda99c119a69f5
+#file gpgme/gpgme-1.17.0.tar.bz2
+#chk 4ed3f50ceb7be2fce2c291414256b20c9ebf4c03fddb922c88cda99c119a69f5
 
 # last changed: 2018-10-17
 # by: ah
@@ -580,6 +580,12 @@ chk c1f4c06c61f6b4ddde7395b1cfb1f2411a32638e09c6f0a58c6557a7dffe4120
 
 server https://files.intevation.de/projects/gpg4all
 
+# gpgme-beta
+# by ah
+# verified: buildtree
+file gpgme/gpgme-1.17.2-beta22.tar.bz2
+chk 4e08796c5288ad18f8be98fac74e1c623ce3e68d7e440f97f5e2106b441f257e
+
 #by ah
 #file scute/scute-1.6.0-beta187.tar.bz2
 #chk 8d2a56dff6e6c12d628dd32075497326e8345c0096dec1280f7ab2c737410837
@@ -587,6 +593,8 @@ server https://files.intevation.de/projects/gpg4all
 # by: ah
 # file pinentry/pinentry-1.1.1-beta44.tar.bz2
 # chk c2091536687cd83569c9919d6d9fc8c3a53e74d8419320bcbb8b7dc36019c677
+file pinentry/pinentry-1.2.1-beta29.tar.bz2
+chk 5f22d65e81873ca9dbde111ab5188ecca0af544b4a988ea4c3f59c28eba11876
 
 # KDE-L10n
 # last changed: see package date.
