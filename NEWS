@@ -143,12 +143,20 @@ Noteworthy changes in Version 3.1.22 (unreleased)
      Konfiguration erzwingt nun auch korrekte
      Schlüsselverwendungs-Einstellungen. (T5856)
 
+(en) GpgOL: Fixed a double free error which could lead
+     to random crashes. This double free was not
+     exploitable as a security issue.
+
+(de) GpgOL: Eine doppelte Speicherfreigabe wurde
+     behoben. Diese Speicherfreigabe war nicht
+     als Sicherheitsproblem ausnutzbar.
+
 
 ~~~~~~~~~~~~~~~
 GnuPG:          2.2.35
 Kleopatra:      3.1.22
 GPA:            0.10.0
-GpgOL:          2.5.2
+GpgOL:          2.5.3
 GpgEX:          1.0.8
 Kompendium DE:  4.0.1
 Compendium EN:  3.0.0
