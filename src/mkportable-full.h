@@ -105,7 +105,7 @@ const char * const full_files[] =
   "bin/qt.conf",
   "bin/libKF5CoreAddons.dll",
   "bin/libKF5Crash.dll",
-  "bin/libqgpgme-7.dll",
+  "bin/libqgpgme-15.dll",
   "bin/libKF5ConfigGui.dll",
   "bin/libgcc_s_sjlj-1.dll",
   "bin/kleopatra.exe",

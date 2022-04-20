@@ -32,7 +32,7 @@ Section "-un.gpgme"
 !else
   Delete /REBOOTOK "$INSTDIR\bin\libgpgme-11.dll"
   Delete /REBOOTOK "$INSTDIR\bin\libgpgme-glib-11.dll"
-  Delete /REBOOTOK "$INSTDIR\bin\libqgpgme-7.dll"
+  Delete /REBOOTOK "$INSTDIR\bin\libqgpgme-15.dll"
   Delete /REBOOTOK "$INSTDIR\bin\libgpgmepp-6.dll"
 ${If} ${RunningX64}
   Delete /REBOOTOK "$INSTDIR\bin_64\libgpgmepp-6.dll"
