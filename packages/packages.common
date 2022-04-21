@@ -349,11 +349,11 @@ chk  c916deb2897c1f37f4e011b5019b7118321673b7c4c1f090b3921b9335b96432
 #
 # GpgEX
 #
-# last-changed: 2021-09-22
-# by: wk
+# last-changed: 2022-04-21
+# by: ah
 # verified: distsigkey.gpg
-file gpgex/gpgex-1.0.8.tar.bz2
-chk  dc044904e0d2dfe28ba1dca9a55b5b4abd306070b9f34e122493b332d15f8b14
+file gpgex/gpgex-1.0.9.tar.bz2
+chk  32a31affe0bc2587b6b61c5aae6a3328280feccde315dfa3a3c2dc374c5c0400
 
 
 #
