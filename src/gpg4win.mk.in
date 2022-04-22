@@ -729,7 +729,7 @@ endef
 # Sign the file $1 and save the result as $2
 define AUTHENTICODE_sign
    set -e;\
-   if [ "$(IS_VSD_BUILD") = yes ]; then \
+   if [ "$(IS_VSD_BUILD)" = yes ]; then \
      infostr='-n "GnuPG VS-Desktop" -i https://gnupg.com' ;\
    else \
      infostr='-n "GnuPG" -i https://gnupg.org' ;\
