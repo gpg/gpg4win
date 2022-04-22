@@ -8,11 +8,11 @@ Noteworthy changes in Version 3.1.22 (unreleased)
 
 --- Accessibility ---
 
-(en) Kleopatra: OpenPGP and S/MIME key generation is now optimized
+(en) Kleopatra: OpenPGP and S/MIME key generation are now optimized
      for accessibility. (T5832)
 
-(de) Kleopatra: OpenPGP und S/MIME Schlüsserstellung ist nun für
-     Barrierefreiheit optiomiert. (T5832)
+(de) Kleopatra: OpenPGP und S/MIME Schlüsselerstellung sind nun für
+     Barrierefreiheit optimiert. (T5832)
 
 (en) Kleopatra: The tab bar for different certificate views is
      now always shown. (T5841)
@@ -24,41 +24,41 @@ Noteworthy changes in Version 3.1.22 (unreleased)
      keys to make it more accessible by keyboard. (T5841)
 
 (de) Kleopatra: Die Zertifikatsliste kann nun mit den Pfeiltasten
-     navigiert werden um Sie zugänglicher für Tastatureingabe zu machen.
+     navigiert werden, um sie zugänglicher für Tastatureingabe zu machen.
      (T5841)
 
-(en) Kleopatra: Empty cells in the certificate view now have screenreader
+(en) Kleopatra: Empty cells in the certificate view now have screen reader
      specific annotations to make them readable. e.g.: "no name" or
      "no email". (T5841)
 
 (de) Kleopatra: Leere Zellen in der Zertifikatsliste haben nun
-     Screenreader spezifische Anmerkungen damit Sie z.B. als: "kein Name"
+     Screenreader spezifische Anmerkungen, damit sie z.B. als: "kein Name"
      oder "keine E-Mail" gelesen werden. (T5841)
 
-(en) Kleopatra: Key Ids and Fingerprints are now read by screenreaders
-     in groups of four charactersl. (T5841)
+(en) Kleopatra: Key-IDs and Fingerprints are now read by screen readers
+     in groups of four characters. (T5841)
 
-(de) Kleopatra: Schlüsselids und Fingerprints werden nun von
+(de) Kleopatra: Schlüsselkennungen und Fingerabdrücke werden nun von
      Screenreadern in Gruppen von vier Zeichen gelesen. (T5841)
 
 (en) Kleopatra: The file encryption dialog has been optimized
      for accessibility. (T5845)
 
-(de) Kleopatra: Der Dateiverschlüsseln Dialog wurde hinsichtlich
+(de) Kleopatra: Der Dateiverschlüsselungsdialog wurde hinsichtlich
      Barrierefreiheit optimiert. (T5845)
 
-(en) Kleopatra: The certificate selection dialog which can be
-     accessed through the file encryption dialog has been
+(en) Kleopatra: The certificate selection dialog, which can be
+     accessed through the file encryption dialog, has been
      optimized for accessibility. (T5876)
 
 (de) Kleopatra: Der Zertifikatsauswahl-Dialog, welcher aus dem
-     Dateiverschlüsseln Dialog aufgerufen werden kann wurde
-     hinsichtlich Barrierefreiheit optimiert. (T5876)
+     Dateiverschlüsseln Dialog aufgerufen werden kann, wurde
+     hinsichtlich der Barrierefreiheit optimiert. (T5876)
 
-(en) Kleopatra: The dialog for adding a User ID has been
-     rewritten with full accessibility. (T5916)
+(en) Kleopatra: The dialog for adding a User-ID has been
+     rewritten for full accessibility. (T5916)
 
-(de) Kleopatra: Der Dialog um Benutzerkennungen hinzuzufügen
+(de) Kleopatra: Der Dialog zum Hinzufügen von Benutzerkennungen
      wurde vollständig auf Barrierefreiheit hin überarbeitet.
      (T5916)
 
@@ -74,7 +74,7 @@ Noteworthy changes in Version 3.1.22 (unreleased)
      in the advanced key generation dialog. (T5781)
 
 (de) Kleopatra: In der erweiterten Schlüsselerstellung weist
-     nun ein Tooltip auf den Zweck von Subkeys hin. (T5781)
+     nun ein Tooltip auf den Zweck von Unterschlüsseln hin. (T5781)
 
 (en) Kleopatra: There is now a button in certificate details
      to copy the fingerprint via clipboard without spaces.
@@ -84,7 +84,7 @@ Noteworthy changes in Version 3.1.22 (unreleased)
      nun einfach ohne Leerzeichen in die Zwischenablage kopiert
      werden. (T5776)
 
-(en) Kleopatra: The smartcard reader settings are now in their
+(en) Kleopatra: The smartcard reader settings are now on their
      own configuration page. (T5857)
 
 (de) Kleopatra: Die Smartcard Leser Einstellungen sind nun
@@ -96,36 +96,36 @@ Noteworthy changes in Version 3.1.22 (unreleased)
 (de) Kleopatra: Es ist nun möglich den eigenen Schlüssel
      zurückzurufen. (T5859)
 
-(en) Kleopatra: The dialog for adding a User ID has been
+(en) Kleopatra: The dialog for adding a User-ID has been
      rewritten and now also accepts names starting with
      numbers. (T5916)
 
-(de) Kleopatra: Der Dialog um Benutzerkennungen hinzuzufügen
-     wurde überarbeitet und akzeptiert nun auch Namen
+(de) Kleopatra: Der Dialog zum Hinzufügen von Benutzerkennungen
+     wurde überarbeitet und akzeptiert nun auch Namen,
      die mit einer Zahl beginnen. (T5916)
 
 (en) Kleopatra: It is now possible to configure a minimal
-     an maximal validity for new keys. (T5864)
+     and maximal validity period for new keys. (T5864)
 
 (de) Kleopatra: Es ist nun möglich eine minimale und maximale
-     Gültigkeit für Schlüssel zu konfigurieren. (T5864)
+     Gültigkeitsdauer für Schlüssel zu konfigurieren. (T5864)
 
 --- Bug fixes ---
 
 (en) Kleopatra: Several places where the application name
      was written in lowercase have been fixed. (T5833)
 
-(de) Kleopatra: Mehrere Stellen an denen der Name der
-     Anwendung klein geschrieben wurde sind angepasst
+(de) Kleopatra: Mehrere Stellen, an denen der Name der
+     Anwendung klein geschrieben wurde, sind angepasst
      worden. (T5833)
 
-(en) Kleopatra: A crash has been fixed that occured
+(en) Kleopatra: A crash has been fixed that occurred
      when revoking a certification without a selected
      key. (T5858)
 
-(de) Kleopatra: Ein Absturz wurde behoben der auftrat
-     wenn man Beglaubigungen zurückrufte ohne einen
-     Schlüssel gewählt zu haben. (T5858)
+(de) Kleopatra: Ein Absturz wurde behoben, der auftrat,
+     wenn man eine Beglaubigung zurückzurufen versuchte
+     ohne einen Schlüssel gewählt zu haben. (T5858)
 
 (en) Kleopatra: The keylist filter for not certified certificates
      now only shows not certified keys and not all invalid
@@ -133,7 +133,7 @@ Noteworthy changes in Version 3.1.22 (unreleased)
 
 (de) Kleopatra: Der Zertifikatsfilter für nicht beglaubigte
      Zertifikate zeigt nun nicht mehr alle invaliden
-     Zertifikate an sondern nur die nicht beglaubigten.
+     Zertifikate an, sondern nur die nicht beglaubigten.
      (T5850)
 
 (en) Kleopatra: Forcing the key type through configuration
@@ -147,9 +147,9 @@ Noteworthy changes in Version 3.1.22 (unreleased)
      to random crashes. This double free was not
      exploitable as a security issue.
 
-(de) GpgOL: Eine doppelte Speicherfreigabe wurde
-     behoben. Diese Speicherfreigabe war nicht
-     als Sicherheitsproblem ausnutzbar.
+(de) GpgOL: Eine doppelte Speicherfreigabe wurde behoben,
+     die zu Abstürzen hätte führen können. Diese Speicherfreigabe
+     war nicht als Sicherheitsproblem ausnutzbar.
 
 
 ~~~~~~~~~~~~~~~
@@ -189,7 +189,7 @@ Noteworthy changes in Version 3.1.21 (2022-02-11)
      searched if this is available for the searched domain. (T5334)
 
 (de) Kleopatra: Bei der Suche auf Server wird nun auch ein möglicherweise
-     vorhandenes Web-Key-Directory (WKD) berücksichtig. (T5334)
+     vorhandenes Web-Key-Directory (WKD) berücksichtigt. (T5334)
 
 (en) Kleopatra: A new setting in group [Smartcard] "AlwaysSearchCardOnKeyserver"
      enables the query of any configured keyserver for certificates of a
@@ -241,7 +241,7 @@ Noteworthy changes in Version 3.1.21 (2022-02-11)
 (de) Kleopatra: Die automatische Erkennung neuer Smartcards wurde verbessert.
      (T5782)
 
-(en) Kleopatra: Configurating both an OpenPGP and X.509 keyservers has been
+(en) Kleopatra: Configuring both an OpenPGP and X.509 keyservers has been
      improved. (T5801)
 
 (de) Kleopatra: Die gleichzeitige Konfiguration von OpenPGP und X.509
@@ -270,7 +270,7 @@ Noteworthy changes in Version 3.1.21 (2022-02-11)
      "RetrieveSignerKeysAfterImport" in the "Import" group. (T5805)
 
 (de) Kleopatra: Es ist nun möglich die Zertifikate von Beglaubigern automatisch
-     bei einem Import abzurufen. Dies wird mit der Eintellung
+     bei einem Import abzurufen. Dies wird mit der Einstellung
      "RetrieveSignerKeysAfterImport" in der "Import" Gruppe aktiviert. (T5805)
 
 (en) A Problem has been fixed which could cause cleartext to be sent to
@@ -370,7 +370,7 @@ Noteworthy changes in Version 4.0.0 (2021-12-21)
 (de) Kleopatra: Es wurde eine Fehlerbehandlung für Aktionen eingeführt
      die nicht der konfigurierten Konformität entsprechen. (T5653)
 
-(en) Kleopatra: Configuration of Keyservers is now shown correctly
+(en) Kleopatra: Configuration of keyservers is now shown correctly
      even when done through dirmngr.conf. (T5672)
 
 (de) Kleopatra: Die Konfiguration von Schlüsselservern wird nun
@@ -459,13 +459,13 @@ Noteworthy changes in Version 4.0.0 (2021-12-21)
      for a certification. (T5336)
 
 (de) Kleopatra: Es ist nun möglich ein Ablaufdatum für eine
-     beglaubigung zu setzen. (T5336)
+     Beglaubigung zu setzen. (T5336)
 
 (en) Kleopatra: It is now possible to update subkey expiration
      dates with Kleopatra. (T4717)
 
 (de) Kleopatra: Es ist nun möglich auch das Ablaufdatum von
-     unterschlüsseln zu ändern. (T4717)
+     Unterschlüsseln zu ändern. (T4717)
 
 (en) Kleopatra: The default keyserver is now queried from GnuPG.
      (T5514)
@@ -486,7 +486,7 @@ Noteworthy changes in Version 4.0.0 (2021-12-21)
 (de) Kleopatra: Symmetrische Verschlüsselung ist nun vorausgewählt
      wenn keine Schlüssel vorhanden sind. (T5545)
 
-(en) Kleopatra: Every action in the file encryption dialow
+(en) Kleopatra: Every action in the file encryption dialog
      is now accessible through a shortcut. (T5544)
 
 (de) Kleopatra: Jede Aktion im Verschlüsselungs-Dialog hat nun
@@ -542,7 +542,7 @@ Noteworthy changes in Version 4.0.0 (2021-12-21)
      die Hochstelltaste aktiv ist. (T4950)
 
 (en) Pinentry: The dialog is now more accessible and
-     constraints are shown in a way that screenreaders
+     constraints are shown in a way that screen readers
      can handle.
 
 (de) Pinentry: Die Barrierefreiheit des Dialogs wurde
@@ -554,7 +554,7 @@ Noteworthy changes in Version 4.0.0 (2021-12-21)
      (T5517)
 
 (de) GnuPG: Die Unterstützung für Passwort-Regeln wurde
-     verbessert und erlaubt nun auch Sonder-Regeln für
+     verbessert und erlaubt nun auch Sonderregeln für
      symmetrische Passwörter.
      (T5517)
 
@@ -600,7 +600,7 @@ Noteworthy changes in Version 4.0.0 (2021-12-21)
 
 (de) GnuPG: Ein neuer, experimenteller Datenbank-Dienst für Zertifikate wurde
     implementiert.  Um diesen zu verwenden kann "use-keyboxd" in die gpg.conf
-    und gpgsm.conf hinzugefügt werden. Mit der vewendeten SQlite Datenbank
+    und gpgsm.conf hinzugefügt werden. Mit der verwendeten SQLite Datenbank
     werden alle Schlüsseloperationen viel schneller.
 
 (en) GnuPG: Major update to Version 2.3.4.
@@ -636,7 +636,7 @@ Noteworthy changes in Version 3.1.20 (2021-12-02)
      use symmetric encryption. (T5661)
 
 (de) Kleopatra: Eine Option wurde hinzugefügt durch die rein
-     symmetrische Ve erzwungen werden kann. (T5661)
+     symmetrische Verschlüsselung erzwungen werden kann. (T5661)
 
 (en) Kleopatra: Available Smartcard readers can now be listed under
      settings. (T5662)
@@ -661,7 +661,7 @@ Noteworthy changes in Version 3.1.20 (2021-12-02)
 (de) Kleopatra: Es wurde eine Fehlerbehandlung für Aktionen eingeführt
      die nicht der konfigurierten Konformität entsprechen. (T5653)
 
-(en) Kleopatra: Configuration of Keyservers is now shown correctly
+(en) Kleopatra: Configuration of keyservers is now shown correctly
      even when done through dirmngr.conf. (T5672)
 
 (de) Kleopatra: Die Konfiguration von Schlüsselservern wird nun
@@ -828,13 +828,13 @@ Noteworthy changes in Version 3.1.17 (2021-09-17)
      for a certification. (T5336)
 
 (de) Kleopatra: Es ist nun möglich ein Ablaufdatum für eine
-     beglaubigung zu setzen. (T5336)
+     Beglaubigung zu setzen. (T5336)
 
 (en) Kleopatra: It is now possible to update subkey expiration
      dates with Kleopatra. (T4717)
 
 (de) Kleopatra: Es ist nun möglich auch das Ablaufdatum von
-     unterschlüsseln zu ändern. (T4717)
+     Unterschlüsseln zu ändern. (T4717)
 
 (en) Kleopatra: The default keyserver is now queried from GnuPG.
      (T5514)
@@ -855,7 +855,7 @@ Noteworthy changes in Version 3.1.17 (2021-09-17)
 (de) Kleopatra: Symmetrische Verschlüsselung ist nun vorausgewählt
      wenn keine Schlüssel vorhanden sind. (T5545)
 
-(en) Kleopatra: Every action in the file encryption dialow
+(en) Kleopatra: Every action in the file encryption dialog
      is now accessible through a shortcut. (T5544)
 
 (de) Kleopatra: Jede Aktion im Verschlüsselungs-Dialog hat nun
@@ -904,7 +904,7 @@ Noteworthy changes in Version 3.1.17 (2021-09-17)
      die Hochstelltaste aktiv ist. (T4950)
 
 (en) Pinentry: The dialog is now more accessible and
-     constraints are shown in a way that screenreaders
+     constraints are shown in a way that screen readers
      can handle.
 
 (de) Pinentry: Die Barrierefreiheit des Dialogs wurde
@@ -949,7 +949,7 @@ Noteworthy changes in Version 3.1.16 (2021-06-11)
      as forwarded mails or contacts and events. (T4184)
 
 (de) GpgOL: Es werden nun auch Outlook Elemente, wie etwa weitergeleitete
-     Mails oder Kontakte und Termine in Krypo Mails unterstützt. (T4184)
+     Mails oder Kontakte und Termine in Krypto Mails unterstützt. (T4184)
 
 (en) GpgOL: The "conflicting crypto preferences" warning
      now ignores more undocumented states. (T5335)
@@ -1020,7 +1020,7 @@ Noteworthy changes in Version 3.1.16 (2021-06-11)
 (de) Kleopatra: Die Benutzbarkeit der Smartcard Ansicht wurde
      weiter verbessert. (T4876)
 
-(en) Kleopatra: Complex LDAP Keyserver entries can now be entered
+(en) Kleopatra: Complex LDAP keyserver entries can now be entered
      without corruption. (T5404)
 
 (de) Kleopatra: Komplexe LDAP Schlüsselserver Einträge können nun
@@ -1159,7 +1159,7 @@ Noteworthy changes in Version 3.1.15 (2021-01-12)
 (en) Kleopatra: Setting the initial SigG PIN for NetKey cards now also
      works if the generic PIN is not set. (T5220)
 
-(de) Klepoatra: Das setzen der initialen SigG PIN für NetKey Karten funktioniert
+(de) Kleopatra: Das Setzen der initialen SigG PIN für NetKey Karten funktioniert
      nun auch wenn die generelle PIN nicht gesetzt ist. (T5220)
 
 (en) GnuPG: Now supports system wide configuration files in
@@ -1213,7 +1213,7 @@ Noteworthy changes in Version 3.1.14 (2020-11-25)
      (T5094)
 
 (de) Kleopatra: Es ist nun möglich Beglaubigungen zu mit Kleopatra zu
-     wiederrufen. (T5094)
+     widerrufen. (T5094)
 
 (en) Kleopatra / GnuPG: Unicode home directories are now supported.
      (T5055)
@@ -1231,7 +1231,7 @@ Noteworthy changes in Version 3.1.14 (2020-11-25)
      multicard support with GnuPG 2.3. (T5066)
 
 (de) Kleopatra: Die Smartcard Unterstützung wurde weiter verbessert um
-     unter anderem auf die Unterstützung mehrer Smartcards mit GnuPG 2.3
+     unter anderem auf die Unterstützung mehrerer Smartcards mit GnuPG 2.3
      vorzubereiten. (T5066)
 
 (en) Pinentry: The dialog should now receive input focus in more scenarios.
@@ -1282,7 +1282,7 @@ Noteworthy changes in Version 3.1.13 (2020-09-04)
      ( https://ists.gnupg.org/pipermail/gnupg-announce/2020q3/000448.html )
 
 (en) GpgOL: Fixed an issue where unencrypted drafts of mails were stored
-     on the an Exchange Server and could be restored through the
+     on an Exchange Server and could be restored through the
      "recently deleted items" option. Especially if the draft encryption,
      introduced in Gpg4win-3.1.8, is used this can be a security issue. (T5022)
 
@@ -1329,9 +1329,9 @@ Noteworthy changes in Version 3.1.12 (2020-07-24)
 (de) GpgOL: Die Integration mit Web Key Diensten um öffentl.
      Schlüssel zu veröffentlichen wurde verbessert. (T4839)
 
-(en) GpgOL: The addressbook integration is now more visible. (T4874)
+(en) GpgOL: The address book integration is now more visible. (T4874)
 
-(de) GpgOL: Die Addressbuch Integration ist nun stärker sichtbar.
+(de) GpgOL: Die Adressbuch Integration ist nun stärker sichtbar.
      (T4874)
 
 (en) GpgOL: Group accounts are now properly considered when
@@ -1432,7 +1432,7 @@ Noteworthy changes in Version 3.1.12 (2020-07-24)
 
 (de) Kleopatra: Die Sortierung mehrerer Tabs wurde korrigiert.
 
-(en) Kleopatra: The minimal lenght of the Name has been
+(en) Kleopatra: The minimal length of the Name has been
      reduced to better support non latin names. (T4745)
 
 (de) Kleopatra: Die minimale Länge des Namens wurde
