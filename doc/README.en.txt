@@ -66,140 +66,169 @@ Included Gpg4win components in version !VERSION! are:
 New in Gpg4win version !VERSION! (!BUILD_ISODATE!)
 -----------------------------------------
 
-- Kleopatra: The group configuration has been extended so that groups
-  can now be exported and imported. (T5638)
+--- Accessibility ---
 
-- Kleopatra: Now shows the used GnuPG version in the about dialog.
-  (T5652)
+- Kleopatra: OpenPGP and S/MIME key generation are now optimized
+  for accessibility. (T5832)
 
-- Kleopatra: Added an option under crypto operations to only
-  use symmetric encryption. (T5661)
+- Kleopatra: The tab bar for different certificate views is
+  now always shown. (T5841)
 
-- Kleopatra: Available Smartcard readers can now be listed under
-  settings. (T5662)
+- Kleopatra: The certificate view can now be navigated by arrow
+  keys to make it more accessible by keyboard. (T5841)
 
-- Kleopatra: The update notification has been fixed. (T5663)
+- Kleopatra: Empty cells in the certificate view now have screen reader
+  specific annotations to make them readable. e.g.: "no name" or
+  "no email". (T5841)
 
-- Kleopatra: Checks for RESTRICTED / VS-NfD compliance
-  now take underlying library configurations into account. (T5362)
+- Kleopatra: Key-IDs and Fingerprints are now read by screen readers
+  in groups of four characters. (T5841)
 
-- Kleopatra: Added error handling for operations which are not
-  allowed in the configured compliance mode. (T5653)
+- Kleopatra: The file encryption dialog has been optimized
+  for accessibility. (T5845)
 
-- Kleopatra: Configuration of Keyservers is now shown correctly
-  even when done through dirmngr.conf. (T5672)
+- Kleopatra: The certificate selection dialog, which can be
+  accessed through the file encryption dialog, has been
+  optimized for accessibility. (T5876)
 
-- Kleopatra: Smartcard reader can now be selected through a menu
-  which shows all available readers. This is found under the GnuPG System
-  Smartcard configuration. (T5666)
+- Kleopatra: The dialog for adding a User-ID has been
+  rewritten for full accessibility. (T5916)
 
-- Kleopatra: When searching for certificates in the available list, a
-  following "Search on Server" is now prefilled with the search string.
-  (T5624)
+--- Features ---
 
-- Kleopatra: Both S/MIME and OpenPGP certificates can now be imported
-  from a single file. (T5638)
+- Kleopatra: The GnuPG backend can now be restarted
+  through an action in the Extras menu. (T5775)
 
-- Kleopatra: Configuration pages can now be hidden. (T5689)
+- Kleopatra: A tooltip highlights why subkeys are needed
+  in the advanced key generation dialog. (T5781)
 
-- Kleopatra: The key creation wizard can now be customized with
-  custom placeholders and expiry times. (T5690 T5708)
+- Kleopatra: There is now a button in certificate details
+  to copy the fingerprint via clipboard without spaces.
+  (T5776)
 
-- Kleopatra: It is now possible to hide S/MIME (CMS) actions for
-  an OpenPGP only mode. (T5688)
+- Kleopatra: The smartcard reader settings are now on their
+  own configuration page. (T5857)
 
-- Kleopatra: The GnuPG-System configuration has received minor
-  cleanups. (T5677)
+- Kleopatra: It is now possible to revoke your own
+  key. (T5859)
 
-- Kleopatra: A crash related to circular certificate chains
-  has been fixed. (T5697)
+- Kleopatra: The dialog for adding a User-ID has been
+  rewritten and now also accepts names starting with
+  numbers. (T5916)
 
-- Kleopatra: Ask GnuPG for the correct path for the uiserver socket
-  (T5619).
+- Kleopatra: It is now possible to configure a minimal
+  and maximal validity period for new keys. (T5864)
 
-- Kleopatra: Fix a problem with smartcard detection on startup.
-  (rKd2338373ab41)
+- Kleopatra: Configuration of default-new-key-algo is simplified
+  for ECC curves. (T5717)
 
-- Kleopatra: Enable the "create openpgp key from card" command only
-  for GnuPG >= 2.3.  (rK107abfdb1a41)
+- Kleopatra: The key creation wizard can now hide advanced
+  settings through configuration. (T5690)
 
-- Kleopatra: Windows no longer appear in the background
-  when Kleopatra is not the active foreground process.
-  (T5533)
+- Kleopatra: When searching for keys a Web Key Directory is also
+  searched if this is available for the searched domain. (T5334)
 
-- Kleopatra: The directory services configuration for LDAP
-  servers has been extended. (T5465)
+- Kleopatra: A new setting in group [Smartcard] "AlwaysSearchCardOnKeyserver"
+  enables the query of any configured keyserver for certificates of a
+  smartcard if set to true. (T5735)
 
-- Kleopatra: It is now possible to set an expiration date
-  for a certification. (T5336)
+- Kleopatra: Additional dialogs have file endings preset when saving
+  crypto files. (T5736)
 
-- Kleopatra: It is now possible to update subkey expiration
-  dates with Kleopatra. (T4717)
+- Kleopatra: Error handling for failed PKCS#12 imports is improved.
+  (T5713)
 
-- Kleopatra: The default keyserver is now queried from GnuPG.
-  (T5514)
+- Kleopatra: An information is now shown if keyserver return invalid
+  search results. (T5725)
 
-- Kleopatra: Users are now prompted to set the ownertrust
-  when certifying with an untrusted key. (T5511)
+- Kleopatra: Additional help documents, for GnuPG VS-Desktop, are now
+  added in the help menu.
 
-- Kleopatra: Symmetric encryption is now preselected if
-  no keys are present. (T5545)
+- Kleopatra: Secret subkeys can now be exported and imported. (T5755)
 
-- Kleopatra: Every action in the file encryption dialow
-  is now accessible through a shortcut. (T5544)
+- Kleopatra: Config settings which are forced in global configuration
+  are now properly greyed out. (T5791)
 
-- Kleopatra: Accessibility, especially for encryption,
-  has been greatly improved. (T5535)
+- Kleopatra: Automatic detection of new smartcards has been improved.
+  (T5782)
 
-- GpgOL: Contents are no longer hidden if plain text
-  only is configured through group policies. (T5681)
+- Kleopatra: Configuring both an OpenPGP and X.509 keyservers has been
+  improved. (T5801)
 
-- Pinentry: Symmetric passwords are now formatted when
-  visible if the corresponding gpg-agent option
-  "pinentry-formatted-passphrase" has been set. (T5517)
+- Kleopatra: Opening external links can now be administratively
+  prohibited. (T5777)
 
-- Pinentry: It is now possible to generate secure
-  passwords for symmetric encryption through gpg-agent.
-  (T5517)
+- Kleopatra: When opening outlook attachments the default output
+  path is now in the documents folder of the user. (T5774)
 
-- Pinentry: It is now possible to add custom help text
-  files to explain passphrase constraints. (T5517)
+- Kleopatra: In the certificate details certification view it is
+  now possible to retrieve all certifier certificates. (T5805)
 
-- Pinentry: Passphrase constraints are now better
-  checked and violations no longer clear the entered
-  passphrase. (T5532)
+- Kleopatra: It is now possible to fetch the keys of certifiers automatically
+  on import. This can be enabled through the setting
+  "RetrieveSignerKeysAfterImport" in the "Import" group. (T5805)
 
-- Pinentry: A capslock warning is now shown. (T4950)
+- GpgEX: It is now possible to configure the default
+  command through the Windows registry. (T5915)
 
-- Pinentry: The dialog is now more accessible and
-  constraints are shown in a way that screenreaders
-  can handle.
+- GnuPG: Massive performance improvements:
+         - Doubled detached signing speed.
+         - Up to five times faster verification of detached
+           signatures.
+         - Threefold decryption speedup for large files.
+         - Nearly double the AES256.OCB encryption speed.
+         (T5826, T5820)
+    For full use of these improvements use GnuPG on the command line.
 
-- GnuPG: Passphrase constraint handling has been
-  improved with a new syntax for constraints.
-  (T5517)
+- GnuPG: New Option "--require-compliance" to create an error if
+  an Operation did not comply to the compliance setting.
 
-- GnuPG: The socket files are now located under
-  Appdata/Local. (T5537)
+- GnuPG: Tar archives now support longer filenames larger then MAX_PATH.
+  (T5754)
 
-- GnuPG: A new, optional, configuration syntax has been implemented
-  which allows conditional configuration based on variables. Variables
-  can be read from the Windows registry and controlled by Group Policies.
+- GnuPG: ECDSA is now supported for CRLs and OCSP.
 
-- GnuPG: The configured "trusted-key" options can now be
-  properly changed. (T5685)
+- GnuPG: WKD lookups now also work for resolvers not handling SRV records.
+  (T4729)
 
-- GnuPG: The default selection for smartcard reader now tries
-  to ignore virtual smartcard readers. (T5644)
+- GnuPG: Updated to 2.3.5.  For full details see:
+  https://lists.gnupg.org/pipermail/gnupg-announce/2022q2/000472.html
 
-- GnuPG: With "gpgconf --show-configs" the configuration of the
-  system can now be listed.
+--- Bug fixes ---
 
-- GnuPG: A new experimental key database daemon is provided.  To enable it
-    put "use-keyboxd" into gpg.conf and gpgsm.conf.  Keys are stored
-    in a SQLite database and make key lookup much faster.
+- Kleopatra: Keyserver configuration now properly resets to default
+  value on empty configuration. (T5711)
 
-- GnuPG: Major update to Version 2.3.4.
+- Kleopatra: Several places where the application name
+  was written in lowercase have been fixed. (T5833)
+
+- Kleopatra: A crash has been fixed that occurred
+  when revoking a certification without a selected
+  key. (T5858)
+
+- Kleopatra: The keylist filter for not certified certificates
+  now only shows not certified keys and not all invalid
+  certificates. (T5850)
+
+- Kleopatra: Forcing the key type through configuration
+  now also forces correct usage flags. (T5856)
+
+- GpgOL: Fixed a double free error which could lead
+  to random crashes. This double free was not
+  exploitable as a security issue.
+
+- GpgOL: A Problem has been fixed which could cause cleartext to be sent to
+  the Exchange Server. This occurred when modifying an encrypted draft.
+  (T5564)
+
+- GpgOL: Draft Encryption can now be enabled through the registry by
+  setting the value "auto" for "draftKey". (T5564)
+
+- GnuPG: Windows account names with special characters are handled
+  again.
+
+- GnuPG: Config values from the windows registry are now properly
+  shown with gpgconf --show-configs. (T5724)
 
 
 3. Additional notes
