@@ -600,11 +600,11 @@ chk 5f22d65e81873ca9dbde111ab5188ecca0af544b4a988ea4c3f59c28eba11876
 # last changed: see package date.
 # by: ah
 # verified: Tarball created by ah with script gen-kde-l10n.sh
-file kde-l10n/kde-l10n-202204211249-bin.tar.xz
-chk  8c23b1c6826bf04682ccf43caa3579db318034e9e128edf4633bb0f4f8309c6e
+file kde-l10n/kde-l10n-202204221053-bin.tar.xz
+chk  8bd2a5ac5cb7e25ad1809e162f3e42be1150bf7b2f2ed39a5ae6480f4ef386f8
 
-file kde-l10n/kde-l10n-202204211249-src.tar.xz
-chk  a7c9388e10d4dedc2c8d5c193a4104f5437bc383ec72f259d2151f458bfdbbd5
+file kde-l10n/kde-l10n-202204221053-src.tar.xz
+chk  af849f7d4a3f55b41edb553bd0c9980af711828e5aed80ab86f7040af3e28f79
 
 # Gpg4win-tools package
 # last changed: see package date.
@@ -627,8 +627,8 @@ file libkleo/libkleo-202204191126.tar.xz
 chk 6ba160c0e647c154684259cae0c5c7bd25e2d8ed44a4b3acec77cc847351426d
 
 # kleopatra
-# last changed: 2022-04-19
+# last changed: 2022-04-22
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file kleopatra/kleopatra-202204191122.tar.xz
-chk 1174d7c48276f112a28772a2fb45d43a3dc50dbba3cdf25f97f6eda0b7ceefb6
+file kleopatra/kleopatra-202204220917.tar.xz
+chk 9e8b44a3ad5262d99488b68da2ed3f032407c4fc18fe5e40035f5e4c18465067
