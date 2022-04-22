@@ -65,6 +65,7 @@ COMPENDIUMINPROGRESS_EN="last minor changes from 30th November 2016"
 
 MANUALINPROGRESS_DE=m4_if(my_isgit,[yes],["~und evtl. seitdem weiter bearbeitet"])
 MANUALINPROGRESS_EN=m4_if(my_isgit,[yes],["~and may have been further edited"])
+IS_VSD_BUILD=m4_if(my_gnupg_minor, [2], [yes], [no])
 PACKAGE=$PACKAGE_NAME
 VERSION=$PACKAGE_VERSION
 GIT_REVISION=git_revision
@@ -110,6 +111,7 @@ else
   IS_BETA_BUILD=no
 fi
 AC_SUBST(IS_BETA_BUILD)
+AC_SUBST(IS_VSD_BUILD)
 
 # Generate extended version information.  Note, that for NSIS use we
 # must not translate the dots to commas in the BUILD_FILEVERSION.
