@@ -30,22 +30,20 @@ m4_define([my_gnupg_2_version], [3.1.22])
 
 # Below is m4 magic to extract and compute the git revision number,
 # the decimalized short revision number, a beta version string and a
-# flag indicating a development version (my_isgit). The latter works
-# by requiring the final tag in the repository.
-m4_define([git_revision],
-          m4_esyscmd([git rev-parse --short HEAD | tr -d '\n\r']))
-m4_define([git_revision_dec],
-          m4_esyscmd_s([echo $((0x$(echo ]git_revision[|head -c 4)))]))
-m4_define([git_betastring],
-          m4_esyscmd_s([git describe --tags --match 'gpg4win-[0-9].*.*[0-9]' \
-                       --long | awk -F- '$3!=0{print"-beta"$3}']))
-m4_define([my_gnupg_minor],
-          m4_esyscmd_s([ls packages/gnupg-2.*.tar.* | cut -d. -f2]))
-m4_define([my_isgit],m4_if(git_betastring,[],[no],[yes]))
-m4_define([my_version],m4_if(my_gnupg_minor, [2], [[my_gnupg_2_version]], [[my_gnupg_3_version]]))
-m4_define([my_full_version],[my_version[]git_betastring])
+# flag indicating a development version (mym4_isbeta).  Note that the
+# m4 processing is done by autoconf and not during the configure run.
+m4_define([mym4_verslist], m4_split(m4_esyscmd([./autogen.sh --find-version] \
+                                    my_gnupg_2_version my_gnupg_3_version),[:]))
+m4_define([mym4_isbeta],       m4_argn(2, mym4_verslist))
+m4_define([mym4_ingit],        m4_argn(3, mym4_verslist))
+m4_define([mym4_version],      m4_argn(4, mym4_verslist))
+m4_define([mym4_betastr],      m4_argn(6, mym4_verslist))
+m4_define([mym4_revision],     m4_argn(7, mym4_verslist))
+m4_define([mym4_revision_dec], m4_argn(8, mym4_verslist))
+m4_define([mym4_isvsd],        m4_argn(9, mym4_verslist))
 
-AC_INIT([gpg4win],[my_full_version],[gpg4win-devel@wald.intevation.org])
+
+AC_INIT([gpg4win],[mym4_version],[gpg4win-devel@wald.intevation.org])
 
 # Remember to update these version numbers also in the NEWS file.
 MANUALVERSION_EINSTEIGER="2.0.2"
@@ -63,14 +61,16 @@ COMPENDIUM_VERSION_EN="3.0.0"
 COMPENDIUM_DATE_EN="30th November 2016"
 COMPENDIUMINPROGRESS_EN="last minor changes from 30th November 2016"
 
-MANUALINPROGRESS_DE=m4_if(my_isgit,[yes],["~und evtl. seitdem weiter bearbeitet"])
-MANUALINPROGRESS_EN=m4_if(my_isgit,[yes],["~and may have been further edited"])
+MANUALINPROGRESS_DE=m4_if(my_isbeta,[yes],["~und evtl. seitdem weiter bearbeitet"])
+MANUALINPROGRESS_EN=m4_if(my_isbeta,[yes],["~and may have been further edited"])
 IS_VSD_BUILD=m4_if(my_gnupg_minor, [2], [yes], [no])
 PACKAGE=$PACKAGE_NAME
 VERSION=$PACKAGE_VERSION
-GIT_REVISION=git_revision
-GIT_REVISION_DEC=git_revision_dec
-GIT_BETASTRING=git_betastring
+GIT_REVISION=mym4_revision
+GIT_REVISION_DEC=mym4_revision_dec
+GIT_BETASTRING=mym4_betastr
+IS_BETA_BUILD=mym4_isbeta
+IS_VSD_BUILD=mym4_isvsd
 
 
 AC_CONFIG_SRCDIR(src/config.nsi.in)
@@ -104,12 +104,6 @@ AC_SUBST(COMPENDIUM_VERSION_EN)
 AC_SUBST(COMPENDIUM_DATE_EN)
 AC_SUBST(COMPENDIUMINPROGRESS_EN)
 AC_SUBST(GIT_BETASTRING)
-
-if echo "${PACKAGE_VERSION}" | egrep 'svn|rc|beta|git' >/dev/null ; then
-  IS_BETA_BUILD=yes
-else
-  IS_BETA_BUILD=no
-fi
 AC_SUBST(IS_BETA_BUILD)
 AC_SUBST(IS_VSD_BUILD)
 

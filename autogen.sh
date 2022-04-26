@@ -36,7 +36,26 @@ AUTOMAKE=${AUTOMAKE_PREFIX}${AUTOMAKE:-automake}${AUTOMAKE_SUFFIX}
 ACLOCAL=${AUTOMAKE_PREFIX}${ACLOCAL:-aclocal}${AUTOMAKE_SUFFIX}
 
 DIE=no
+SILENT=
 FORCE=
+
+if [ -n "${AUTOGEN_SH_SILENT}" ]; then
+  SILENT=" --silent"
+fi
+if test x"$1" = x"--help"; then
+  echo "usage: ./autogen.sh [OPTIONS] [ARGS]"
+  echo "  Options:"
+  echo "    --silent       Silent operation"
+  echo "    --force        Pass --force to autoconf"
+  echo "    --find-version Helper for configure.ac"
+  echo ""
+  echo "  ARGS are passed to configure in --build-TYPE mode."
+  exit 0
+fi
+if test x"$1" = x"--silent"; then
+  SILENT=" --silent"
+  shift
+fi
 if test x"$1" = x"--force"; then
   FORCE=" --force"
   shift
@@ -77,6 +96,11 @@ fi
 myhost=""
 myhostsub=""
 case "$1" in
+    --find-version)
+        myhost="find-version"
+        SILENT=" --silent"
+        shift
+        ;;
     --build-w32)
         myhost="w32"
         myhostsub="w64"
@@ -90,6 +114,65 @@ case "$1" in
     *)
         ;;
 esac
+
+# **** FIND VERSION ****
+# This is a helper for the configure.ac M4 magic
+# Called
+#   ./autogen.sh --find-version ARGS
+# returns a complete version string with automatic beta numbering
+# and testing whether Gpg4win or vsd is to be build.
+# Note that this is modified from the usually found autogen.sh
+if [ "$myhost" = "find-version" ]; then
+    package="gpg4win"
+    v="$2"
+    vsd=no
+    if [ "$(ls packages/gnupg-2.*.tar.* | head -1 | cut -d. -f2)" = 2 ]; then
+        v="$1"
+        vsd=yes
+    fi
+
+    major=$(echo "$v"|sed -n 's,^\([0-9]\)*\.\([0-9]\)*\.\([0-9]*\)$,\1,p')
+    minor=$(echo "$v"|sed -n 's,^\([0-9]\)*\.\([0-9]\)*\.\([0-9]*\)$,\2,p')
+    micro=$(echo "$v"|sed -n 's,^\([0-9]\)*\.\([0-9]\)*\.\([0-9]*\)$,\3,p')
+
+    if [ -z "$major" -o -z "$minor" -o -z "$micro" ]; then
+        echo "usage: ./autogen.sh --find-version VERSION1 VERSION2"     >&2
+        echo "       VERSION1 is the 3-part version string for VSD"     >&2
+        echo "       VERSION2 is the 3-part version string for Gpg4win" >&2
+        exit 1
+    fi
+
+    matchstr1="$package-$major.$minor.[0-9]*"
+    matchstr2="$package-$major.$minor-base"
+    vers="$major.$minor.$micro"
+
+    beta=no
+    if [ -e .git ]; then
+      ingit=yes
+      tmp=$(git describe --match "${matchstr1}" --long 2>/dev/null)
+      tmp=$(echo "$tmp" | sed s/^"$package"//)
+      if [ -n "$tmp" ]; then
+          tmp=$(echo "$tmp" | sed s/^"$package"//  \
+                | awk -F- '$3!=0 && $3 !~ /^beta/ {print"-beta"$3}')
+      else
+          tmp=$(git describe --match "${matchstr2}" --long 2>/dev/null \
+                | awk -F- '$4!=0{print"-beta"$4}')
+      fi
+      [ -n "$tmp" ] && beta=yes
+      rev=$(git rev-parse --short HEAD | tr -d '\n\r')
+      rvd=$((0x$(echo ${rev} | dd bs=1 count=4 2>/dev/null)))
+    else
+      ingit=no
+      beta=yes
+      tmp="-unknown"
+      rev="0000000"
+      rvd="0"
+    fi
+
+    echo "$package-$vers$tmp:$beta:$ingit:$vers$tmp:$vers:$tmp:$rev:$rvd:$vsd:"
+    exit 0
+fi
+# **** end FIND VERSION ****
 
 
 # ***** W32 build script *******
