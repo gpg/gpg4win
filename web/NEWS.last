@@ -257,10 +257,10 @@ Noteworthy changes in Version 4.0.2 (2022-04-25)
 (de) GnuPG: WKD Suche funktioniert nun auch mit DNS Servern welche keine
      SRV Einträge verarbeiten. (T4729)
 
-(en) GnuPG: Updated to 2.3.5.  For full details see:
+(en) GnuPG: Updated to 2.3.6.  For full details see:
      https://lists.gnupg.org/pipermail/gnupg-announce/2022q2/000472.html
 
-(de) GnuPG: Auf Version 2.3.5 aktualisiert. Für all Details siehe:
+(de) GnuPG: Auf Version 2.3.6 aktualisiert. Für all Details siehe:
      https://lists.gnupg.org/pipermail/gnupg-announce/2022q2/000472.html
 
 --- Bug fixes ---
