@@ -65,6 +65,7 @@ Section "-breeze-icons" SEC_breeze_icons
   File ${prefix}/share/icons/breeze/actions/16/draw-arrow-down.svg
   File ${prefix}/share/icons/breeze/actions/16/draw-arrow-up.svg
   File ${prefix}/share/icons/breeze/actions/16/edit-clear-locationbar-rtl.svg
+  File ${prefix}/share/icons/breeze/actions/16/edit-copy.svg
   File ${prefix}/share/icons/breeze/actions/16/edit-delete.svg
   File ${prefix}/share/icons/breeze/actions/16/edit-find.svg
   File ${prefix}/share/icons/breeze/actions/16/edit-paste.svg
@@ -126,6 +127,7 @@ Section "-breeze-icons" SEC_breeze_icons
   File ${prefix}/share/icons/breeze/actions/22/draw-arrow-down.svg
   File ${prefix}/share/icons/breeze/actions/22/draw-arrow-up.svg
   File ${prefix}/share/icons/breeze/actions/22/edit-clear-locationbar-rtl.svg
+  File ${prefix}/share/icons/breeze/actions/22/edit-copy.svg
   File ${prefix}/share/icons/breeze/actions/22/edit-delete.svg
   File ${prefix}/share/icons/breeze/actions/22/edit-find.svg
   File ${prefix}/share/icons/breeze/actions/22/edit-paste.svg
