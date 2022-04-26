@@ -40,7 +40,17 @@
    <div class="h_text_beta">
 -->
    <div class="h_text">
-   <small>2021-12-21</small><br>
+   <small>2022-04-22</small><br>
+   <span class="serif_word"><img src="img/bulletin.png" alt"" />
+     m4_ifelse(LANG_DE, `1', `
+      <a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2022/000059.html">
+      Gpg4win 4.0.2 veröffentlicht</a>
+      </span>',`
+      <a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce/2022/000095.html">
+        Gpg4win 4.0.2 released
+      </a>
+      </span>')
+   <p></p>
    <span class="serif_word"><img src="img/bulletin.png" alt"" />
      m4_ifelse(LANG_DE, `1', `
       <a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2021/000058.html">
@@ -58,15 +68,6 @@
       </a></span>',`
       <a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce/2021-October/000093.html">
         Update to GnuPG 2.2.32
-      </a></span>')
-   <p></p>
-   <small>2021-06-11</small><br>
-   <span class="serif_word"><img src="img/bulletin.png" alt"" />
-     m4_ifelse(LANG_DE, `1', `
-      <a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2021-June/000056.html">Gpg4win 3.1.16 veröffentlicht
-      </a></span>',`
-      <a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce/2021-June/000092.html">
-        Gpg4win 3.1.16 released
       </a></span>')
    <p></p>
    <div class="limiter"></div>

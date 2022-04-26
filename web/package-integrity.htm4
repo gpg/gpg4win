@@ -29,7 +29,21 @@ Wiki page on integrity checks</a>.
 <h2>Code Signing Certificate</h2>
 
 <p>The Gpg4win exe installer is signed with the following code
-signing certificate (since 2021):</p>
+signing certificate (since 2022):</p>
+<pre>
+      S/N: 4F7382A39E57A34E167CF912
+   Issuer: CN=GlobalSign GCC R45 CodeSigning CA 2020,O=GlobalSign nv-sa,C=BE
+  Subject: 1.2.840.113549.1.9.1=#636F646540673130636F64652E636F6D,CN=g10 Code GmbH,O=g10 Code GmbH,L=Erkrath,ST=Nordrhein-Westfalen,C=DE
+ sha2_fpr: DF:B5:9B:70:5C:47:9E:4E:FF:34:AD:BF:F9:B8:DC:AF:5F:74:D3:F6:58:91:F3:8C:D1:B1:0D:C8:D3:F1:42:20
+ sha1_fpr: B2:85:2D:44:90:F6:55:EB:EA:DF:9F:FD:8D:09:2E:81:54:45:00:77
+   certid: 6E9CA841CF00ABF4F8929210FF478C9CAB578518.4F7382A39E57A34E167CF912
+  keygrip: A340DB2D0B82943E8AFD854C6366D5953014D583
+notBefore: 2022-04-08 08:26:24
+ notAfter: 2025-07-02 12:12:13
+</pre>
+
+<hr/>
+<p>Previously used code signing certificates were:</p>
 <pre>
       S/N: 2F48FAE3C9E7B142B9A8B259
    Issuer: CN=GlobalSign GCC R45 CodeSigning CA 2020,O=GlobalSign nv-sa,C=BE
@@ -40,11 +54,7 @@ signing certificate (since 2021):</p>
   keygrip: 353A5BE748A8622E4D121DB3340A4EC1D4058BE1
 notBefore: 2021-04-21 16:45:15 UTC
  notAfter: 2022-06-02 12:12:13 UTC
-</pre>
 
-<hr/>
-<p>Previously used code signing certificates were:</p>
-<pre>
       S/N: 39E684F05C48911BAFB37629
    Issuer: CN=GlobalSign CodeSigning CA - SHA256 - G3,O=GlobalSign nv-sa,C=BE
   Subject: 1.2.840.113549.1.9.1=#636F646540673130636F64652E636F6D,
