@@ -100,10 +100,32 @@ if [ "$1" = "-c" -o "$1" = "-i" ]; then
     else
         export gnupg_SETUPINIFILE SHELL
         if [ ${_gnupg_appimage} = vsd ]; then
-          if [ $(id -u) -eq 0 -a ! -d /etc/gnupg-vsd ]; then
-            echo "no global configuration - installing default" >&2
-            mkdir /etc/gnupg-vsd
-            cp -R "${APPDIR}"/usr/share/gnupg/conf/gnupg-vsd/* /etc/gnupg-vsd/
+          if [ $(id -u) -eq 0 ]; then
+            dotcfg="/etc/gnupg-vsd/.config-by-appimage"
+            docopy=yes
+            if [ ! -d /etc/gnupg-vsd ]; then
+                echo "no global configuration - installing default" >&2
+                mkdir /etc/gnupg-vsd
+            elif [ -f $dotcfg -a "$(head -1 $dotcfg )" = "$myname" ]; then
+                docopy=no
+            else
+                echo "updating global configuration" >&2
+            fi
+            if [ $docopy = yes ]; then
+              for f in "${APPDIR}"/usr/share/gnupg/conf/gnupg-vsd/* ; do
+                t="/etc/gnupg-vsd/${f##*/}"
+                if [ -d "$t" ]; then
+                    cp -R "$f" /etc/gnupg-vsd/
+                elif [ -f "$t" ]; then
+                    cp "$t" "$t.old"
+                    cp "$f" "$t"
+                    cmp -s "$t" "$t.old" && rm "$t.old"
+                else
+                    cp "$f" "$t"
+                fi
+              done
+              echo "$myname" >$dotcfg
+            fi
           fi
         fi
         if echo "$SHELL" | grep '/bash$' >/dev/null 2>&1; then
