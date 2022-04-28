@@ -618,12 +618,14 @@ chk 79ea82ede46bbd02f70a64e4f003c6279e98cf4ad1e302eca753087c42fccdf3
 # Snapshots stored on the GnuPG server
 #
 server https://gnupg.org/ftp/gcrypt/snapshots
+
 # libkleo
-# last changed: 2022-04-27
+# last changed: 2022-04-28
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file libkleo/libkleo-202204271526.tar.xz
-chk 3f317967817756ef47c019a86edc67a1d7265fef9dd44db4766058a11e28cd4e
+file libkleo/libkleo-202204281347.tar.xz
+chk 475ed33fa37791bf15d1a11336f962f5464ff15ab0c2ff545ac91e3f61822877
+
 
 # kleopatra
 # last changed: 2022-04-28
