@@ -106,7 +106,8 @@ if [ "$1" = "-c" -o "$1" = "-i" ]; then
             if [ ! -d /etc/gnupg-vsd ]; then
                 echo "no global configuration - installing default" >&2
                 mkdir /etc/gnupg-vsd
-            elif [ -f $dotcfg -a "$(head -1 $dotcfg )" = "$myname" ]; then
+            elif [ -f $dotcfg \
+                   -a "$(head -1 $dotcfg 2>/dev/null)" = "$myname" ]; then
                 docopy=no
             else
                 echo "updating global configuration" >&2
