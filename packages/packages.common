@@ -628,8 +628,8 @@ chk 475ed33fa37791bf15d1a11336f962f5464ff15ab0c2ff545ac91e3f61822877
 
 
 # kleopatra
-# last changed: 2022-04-28
+# last changed: 2022-04-29
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file kleopatra/kleopatra-202204281141.tar.xz
-chk 0f6a7e66faea59e70f533f5fa67c5d8d8d0c562d0f6a6e37360fcfb78f46ead2
+file kleopatra/kleopatra-202204291013.tar.xz
+chk 5222a285136ccd1b26a7dded27c87672653400261ce46f687c079f26bc3bad20
