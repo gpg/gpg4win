@@ -2,6 +2,221 @@
 #
 # The version number given below are for the standard installers as
 # distributed by www.gpg4win.org.
+Noteworthy changes in Version 3.1.22 (unreleased)
+-------------------------------------------------
+
+--- Accessibility ---
+
+(en) Kleopatra: OpenPGP and S/MIME key generation are now optimized
+     for accessibility. (T5832)
+
+(de) Kleopatra: OpenPGP und S/MIME Schlüsselerstellung sind nun für
+     Barrierefreiheit optimiert. (T5832)
+
+(en) Kleopatra: The tab bar for different certificate views is
+     now always shown. (T5841)
+
+(de) Kleopatra: Die Tab Leiste für verschiedene Zertifikatsansichten
+     ist nun immer sichtbar. (T5841)
+
+(en) Kleopatra: The certificate view can now be navigated by arrow
+     keys to make it more accessible by keyboard. (T5841)
+
+(de) Kleopatra: Die Zertifikatsliste kann nun mit den Pfeiltasten
+     navigiert werden, um sie zugänglicher für Tastatureingabe zu machen.
+     (T5841)
+
+(en) Kleopatra: Empty cells in the certificate view now have screen reader
+     specific annotations to make them readable. e.g.: "no name" or
+     "no email". (T5841)
+
+(de) Kleopatra: Leere Zellen in der Zertifikatsliste haben nun
+     Screenreader spezifische Anmerkungen, damit sie z.B. als: "kein Name"
+     oder "keine E-Mail" gelesen werden. (T5841)
+
+(en) Kleopatra: Key-IDs and Fingerprints are now read by screen readers
+     in groups of four characters. (T5841)
+
+(de) Kleopatra: Schlüsselkennungen und Fingerabdrücke werden nun von
+     Screenreadern in Gruppen von vier Zeichen gelesen. (T5841)
+
+(en) Kleopatra: The file encryption dialog has been optimized
+     for accessibility. (T5845)
+
+(de) Kleopatra: Der Dateiverschlüsselungsdialog wurde hinsichtlich
+     Barrierefreiheit optimiert. (T5845)
+
+(en) Kleopatra: The certificate selection dialog, which can be
+     accessed through the file encryption dialog, has been
+     optimized for accessibility. (T5876)
+
+(de) Kleopatra: Der Zertifikatsauswahl-Dialog, welcher aus dem
+     Dateiverschlüsseln Dialog aufgerufen werden kann, wurde
+     hinsichtlich der Barrierefreiheit optimiert. (T5876)
+
+(en) Kleopatra: The dialog for adding a User-ID has been
+     rewritten for full accessibility. (T5916)
+
+(de) Kleopatra: Der Dialog zum Hinzufügen von Benutzerkennungen
+     wurde vollständig auf Barrierefreiheit hin überarbeitet.
+     (T5916)
+
+--- Features ---
+
+(en) Kleopatra: The GnuPG backend can now be restarted
+     through an action in the Extras menu. (T5775)
+
+(de) Kleopatra: Das GnuPG Backend kann jetzt über eine
+     Menüoption unter Extras neu gestartet Werden. (T5775)
+
+(en) Kleopatra: A tooltip highlights why subkeys are needed
+     in the advanced key generation dialog. (T5781)
+
+(de) Kleopatra: In der erweiterten Schlüsselerstellung weist
+     nun ein Tooltip auf den Zweck von Unterschlüsseln hin. (T5781)
+
+(en) Kleopatra: There is now a button in certificate details
+     to copy the fingerprint via clipboard without spaces.
+     (T5776)
+
+(de) Kleopatra: In den Zertifikatsdetails kann der Fingerprint
+     nun einfach ohne Leerzeichen in die Zwischenablage kopiert
+     werden. (T5776)
+
+(en) Kleopatra: The smartcard reader settings are now on their
+     own configuration page. (T5857)
+
+(de) Kleopatra: Die Smartcard Leser Einstellungen sind nun
+     auf einer eigenen Konfigurationsseite. (T5857)
+
+(en) Kleopatra: It is now possible to revoke your own
+     key. (T5859)
+
+(de) Kleopatra: Es ist nun möglich den eigenen Schlüssel
+     zurückzurufen. (T5859)
+
+(en) Kleopatra: The dialog for adding a User-ID has been
+     rewritten and now also accepts names starting with
+     numbers. (T5916)
+
+(de) Kleopatra: Der Dialog zum Hinzufügen von Benutzerkennungen
+     wurde überarbeitet und akzeptiert nun auch Namen,
+     die mit einer Zahl beginnen. (T5916)
+
+(en) Kleopatra: It is now possible to configure a minimal
+     and maximal validity period for new keys. (T5864)
+
+(de) Kleopatra: Es ist nun möglich eine minimale und maximale
+     Gültigkeitsdauer für Schlüssel zu konfigurieren. (T5864)
+
+(en) Kleopatra: Support for using S/MIME certificate from PKCS#15 Smartcards.
+
+(de) Kleopatra: Unterstützung für S/MIME Zertifikate auf PKCS#15 Smartcards.
+
+(en) GpgEX: It is now possible to configure the default
+     command through the Windows registry. (T5915)
+
+(de) GpgEX: Es ist nun möglich das Standardkommando über
+     die Windows registry zu konfigurieren. (T5915)
+
+(en) GnuPG: Threefold decryption speedup for large files.
+            (T5820)
+    For full use of this improvements use GnuPG on the command line.
+
+(de) GnuPG: Dreifache Geschwindigkeit beim entschlüsseln großer Dateien.
+            (T5820)
+    Um diese Verbesserungen voll auszunutzen sollte die Kommandozeile
+    verwendet werden.
+
+(en) GnuPG: New Option "--require-compliance" to create an error if
+     an Operation did not comply to the compliance setting.
+
+(de) GnuPG: Neue Option "--require-compliance" um einen Fehler zu erzeugen
+     wenn eine Operation nicht der compliance Einstellung entsprach.
+
+(en) GnuPG: Tar archives now support longer filenames larger then MAX_PATH.
+     (T5754)
+
+(de) GnuPG: Tar Archive unterstützen nun längere Dateinamen als MAX_PATH.
+     (T5754)
+
+(en) GnuPG: Support for GeNUA Smartcards.
+
+(de) GnuPG: Unterstützung für GeNUA Smartcards.
+
+(en) GnuPG: WKD lookups now also work for resolvers not handling SRV records.
+     (T4729)
+
+(de) GnuPG: WKD Suche funktioniert nun auch mit DNS Servern welche keine
+     SRV Einträge verarbeiten. (T4729)
+
+(en) GnuPG: Updated to 2.2.35.
+
+(de) GnuPG: Auf Version 2.2.35 aktualisiert.
+
+--- Bug fixes ---
+
+(en) Kleopatra: Several places where the application name
+     was written in lowercase have been fixed. (T5833)
+
+(de) Kleopatra: Mehrere Stellen, an denen der Name der
+     Anwendung klein geschrieben wurde, sind angepasst
+     worden. (T5833)
+
+(en) Kleopatra: A crash has been fixed that occurred
+     when revoking a certification without a selected
+     key. (T5858)
+
+(de) Kleopatra: Ein Absturz wurde behoben, der auftrat,
+     wenn man eine Beglaubigung zurückzurufen versuchte
+     ohne einen Schlüssel gewählt zu haben. (T5858)
+
+(en) Kleopatra: The keylist filter for not certified certificates
+     now only shows not certified keys and not all invalid
+     certificates. (T5850)
+
+(de) Kleopatra: Der Zertifikatsfilter für nicht beglaubigte
+     Zertifikate zeigt nun nicht mehr alle invaliden
+     Zertifikate an, sondern nur die nicht beglaubigten.
+     (T5850)
+
+(en) Kleopatra: Forcing the key type through configuration
+     now also forces correct usage flags. (T5856)
+
+(de) Kleopatra: Erzwingen des Schlüsseltyps über die
+     Konfiguration erzwingt nun auch korrekte
+     Schlüsselverwendungs-Einstellungen. (T5856)
+
+(en) GpgOL: Fixed a double free error which could lead
+     to random crashes. This double free was not
+     exploitable as a security issue.
+
+(de) GpgOL: Eine doppelte Speicherfreigabe wurde behoben,
+     die zu Abstürzen hätte führen können. Diese Speicherfreigabe
+     war nicht als Sicherheitsproblem ausnutzbar.
+
+(en) GnuPG: Config values from the windows registry are now properly
+     shown with gpgconf --show-configs. (T5724)
+
+(de) GnuPG: Konfigurationswerte aus der Windows Registry werden nun
+     korrekt bei gpgconf --show-configs angezeigt. (T5724)
+
+(en) GnuPG: Additional non compliant ciphers can now be decrypted
+     in compliance mode.
+
+(de) GnuPG: Weitere nicht konforme Verschlüsselungsalgorithmen können
+     nun im Konformitätsmodus entschlüsselt werden.
+
+
+~~~~~~~~~~~~~~~
+GnuPG:          2.2.35
+Kleopatra:      3.1.22
+GPA:            0.10.0
+GpgOL:          2.5.3
+GpgEX:          1.0.9
+Kompendium DE:  4.0.1
+Compendium EN:  3.0.0
+~~~~~~~~~~~~~~~
 Noteworthy changes in Version 4.0.2 (2022-04-25)
 -------------------------------------------------
 
@@ -257,10 +472,10 @@ Noteworthy changes in Version 4.0.2 (2022-04-25)
 (de) GnuPG: WKD Suche funktioniert nun auch mit DNS Servern welche keine
      SRV Einträge verarbeiten. (T4729)
 
-(en) GnuPG: Updated to 2.3.5.  For full details see:
+(en) GnuPG: Updated to 2.3.6.  For full details see:
      https://lists.gnupg.org/pipermail/gnupg-announce/2022q2/000472.html
 
-(de) GnuPG: Auf Version 2.3.5 aktualisiert. Für all Details siehe:
+(de) GnuPG: Auf Version 2.3.6 aktualisiert. Für all Details siehe:
      https://lists.gnupg.org/pipermail/gnupg-announce/2022q2/000472.html
 
 --- Bug fixes ---
@@ -354,170 +569,6 @@ Noteworthy changes in Version 4.0.1 (unreleased)
 ------------------------------------------------
 
 
-Noteworthy changes in Version 3.1.22 (unreleased)
--------------------------------------------------
-
---- Accessibility ---
-
-(en) Kleopatra: OpenPGP and S/MIME key generation are now optimized
-     for accessibility. (T5832)
-
-(de) Kleopatra: OpenPGP und S/MIME Schlüsselerstellung sind nun für
-     Barrierefreiheit optimiert. (T5832)
-
-(en) Kleopatra: The tab bar for different certificate views is
-     now always shown. (T5841)
-
-(de) Kleopatra: Die Tab Leiste für verschiedene Zertifikatsansichten
-     ist nun immer sichtbar. (T5841)
-
-(en) Kleopatra: The certificate view can now be navigated by arrow
-     keys to make it more accessible by keyboard. (T5841)
-
-(de) Kleopatra: Die Zertifikatsliste kann nun mit den Pfeiltasten
-     navigiert werden, um sie zugänglicher für Tastatureingabe zu machen.
-     (T5841)
-
-(en) Kleopatra: Empty cells in the certificate view now have screen reader
-     specific annotations to make them readable. e.g.: "no name" or
-     "no email". (T5841)
-
-(de) Kleopatra: Leere Zellen in der Zertifikatsliste haben nun
-     Screenreader spezifische Anmerkungen, damit sie z.B. als: "kein Name"
-     oder "keine E-Mail" gelesen werden. (T5841)
-
-(en) Kleopatra: Key-IDs and Fingerprints are now read by screen readers
-     in groups of four characters. (T5841)
-
-(de) Kleopatra: Schlüsselkennungen und Fingerabdrücke werden nun von
-     Screenreadern in Gruppen von vier Zeichen gelesen. (T5841)
-
-(en) Kleopatra: The file encryption dialog has been optimized
-     for accessibility. (T5845)
-
-(de) Kleopatra: Der Dateiverschlüsselungsdialog wurde hinsichtlich
-     Barrierefreiheit optimiert. (T5845)
-
-(en) Kleopatra: The certificate selection dialog, which can be
-     accessed through the file encryption dialog, has been
-     optimized for accessibility. (T5876)
-
-(de) Kleopatra: Der Zertifikatsauswahl-Dialog, welcher aus dem
-     Dateiverschlüsseln Dialog aufgerufen werden kann, wurde
-     hinsichtlich der Barrierefreiheit optimiert. (T5876)
-
-(en) Kleopatra: The dialog for adding a User-ID has been
-     rewritten for full accessibility. (T5916)
-
-(de) Kleopatra: Der Dialog zum Hinzufügen von Benutzerkennungen
-     wurde vollständig auf Barrierefreiheit hin überarbeitet.
-     (T5916)
-
---- Features ---
-
-(en) Kleopatra: The GnuPG backend can now be restarted
-     through an action in the Extras menu. (T5775)
-
-(de) Kleopatra: Das GnuPG Backend kann jetzt über eine
-     Menüoption unter Extras neu gestartet Werden. (T5775)
-
-(en) Kleopatra: A tooltip highlights why subkeys are needed
-     in the advanced key generation dialog. (T5781)
-
-(de) Kleopatra: In der erweiterten Schlüsselerstellung weist
-     nun ein Tooltip auf den Zweck von Unterschlüsseln hin. (T5781)
-
-(en) Kleopatra: There is now a button in certificate details
-     to copy the fingerprint via clipboard without spaces.
-     (T5776)
-
-(de) Kleopatra: In den Zertifikatsdetails kann der Fingerprint
-     nun einfach ohne Leerzeichen in die Zwischenablage kopiert
-     werden. (T5776)
-
-(en) Kleopatra: The smartcard reader settings are now on their
-     own configuration page. (T5857)
-
-(de) Kleopatra: Die Smartcard Leser Einstellungen sind nun
-     auf einer eigenen Konfigurationsseite. (T5857)
-
-(en) Kleopatra: It is now possible to revoke your own
-     key. (T5859)
-
-(de) Kleopatra: Es ist nun möglich den eigenen Schlüssel
-     zurückzurufen. (T5859)
-
-(en) Kleopatra: The dialog for adding a User-ID has been
-     rewritten and now also accepts names starting with
-     numbers. (T5916)
-
-(de) Kleopatra: Der Dialog zum Hinzufügen von Benutzerkennungen
-     wurde überarbeitet und akzeptiert nun auch Namen,
-     die mit einer Zahl beginnen. (T5916)
-
-(en) Kleopatra: It is now possible to configure a minimal
-     and maximal validity period for new keys. (T5864)
-
-(de) Kleopatra: Es ist nun möglich eine minimale und maximale
-     Gültigkeitsdauer für Schlüssel zu konfigurieren. (T5864)
-
-(en) GpgEX: It is now possible to configure the default
-     command through the Windows registry. (T5915)
-
-(de) GpgEX: Es ist nun möglich das Standardkommando über
-     die Windows registry zu konfigurieren. (T5915)
-
---- Bug fixes ---
-
-(en) Kleopatra: Several places where the application name
-     was written in lowercase have been fixed. (T5833)
-
-(de) Kleopatra: Mehrere Stellen, an denen der Name der
-     Anwendung klein geschrieben wurde, sind angepasst
-     worden. (T5833)
-
-(en) Kleopatra: A crash has been fixed that occurred
-     when revoking a certification without a selected
-     key. (T5858)
-
-(de) Kleopatra: Ein Absturz wurde behoben, der auftrat,
-     wenn man eine Beglaubigung zurückzurufen versuchte
-     ohne einen Schlüssel gewählt zu haben. (T5858)
-
-(en) Kleopatra: The keylist filter for not certified certificates
-     now only shows not certified keys and not all invalid
-     certificates. (T5850)
-
-(de) Kleopatra: Der Zertifikatsfilter für nicht beglaubigte
-     Zertifikate zeigt nun nicht mehr alle invaliden
-     Zertifikate an, sondern nur die nicht beglaubigten.
-     (T5850)
-
-(en) Kleopatra: Forcing the key type through configuration
-     now also forces correct usage flags. (T5856)
-
-(de) Kleopatra: Erzwingen des Schlüsseltyps über die
-     Konfiguration erzwingt nun auch korrekte
-     Schlüsselverwendungs-Einstellungen. (T5856)
-
-(en) GpgOL: Fixed a double free error which could lead
-     to random crashes. This double free was not
-     exploitable as a security issue.
-
-(de) GpgOL: Eine doppelte Speicherfreigabe wurde behoben,
-     die zu Abstürzen hätte führen können. Diese Speicherfreigabe
-     war nicht als Sicherheitsproblem ausnutzbar.
-
-
-~~~~~~~~~~~~~~~
-GnuPG:          2.2.35
-Kleopatra:      3.1.22
-GPA:            0.10.0
-GpgOL:          2.5.3
-GpgEX:          1.0.9
-Kompendium DE:  4.0.1
-Compendium EN:  3.0.0
-~~~~~~~~~~~~~~~
 
 Noteworthy changes in Version 3.1.21 (2022-02-11)
 -------------------------------------------------
