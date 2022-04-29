@@ -2,7 +2,7 @@
 #
 # The version number given below are for the standard installers as
 # distributed by www.gpg4win.org.
-Noteworthy changes in Version 3.1.22 (unreleased)
+Noteworthy changes in Version 3.1.22 (2022-04-29)
 -------------------------------------------------
 
 --- Accessibility ---
@@ -108,6 +108,13 @@ Noteworthy changes in Version 3.1.22 (unreleased)
 
 (de) Kleopatra: Es ist nun möglich eine minimale und maximale
      Gültigkeitsdauer für Schlüssel zu konfigurieren. (T5864)
+
+(en) Kleopatra: A wrong passphrase for symmetric decryption
+     now shows as wrong passphrase error. (T5406)
+
+(de) Kleopatra: Eine falsche Passphrase bei der symmetrischen
+     Entschlüsselung zeigt nun false Passphrase an und nicht
+     nur fehlerhafter Sitzungsschlüssel. (T5406)
 
 (en) Kleopatra: Support for using S/MIME certificate from PKCS#15 Smartcards.
 

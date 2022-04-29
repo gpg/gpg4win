@@ -65,6 +65,7 @@ Die integrierten Gpg4win-Komponenten in Version !VERSION! sind:
 
 Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 -----------------------------------------
+
 --- Accessibility ---
 
 - Kleopatra: OpenPGP und S/MIME Schlüsselerstellung sind nun für
@@ -120,68 +121,17 @@ Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 - Kleopatra: Es ist nun möglich eine minimale und maximale
   Gültigkeitsdauer für Schlüssel zu konfigurieren. (T5864)
 
-- Kleopatra: Die Konfiguration von "default-new-key-algo" ist nun
-  für ECC Kurven vereinfacht einzutragen. (T5717)
+- Kleopatra: Eine falsche Passphrase bei der symmetrischen
+  Entschlüsselung zeigt nun false Passphrase an und nicht
+  nur fehlerhafter Sitzungsschlüssel. (T5406)
 
-- Kleopatra: Der Assistent für neue Schlüsselpaare kann nun
-  konfiguriert werden um erweiterte Einstellungen auszublenden.
-  (T5690)
-
-- Kleopatra: Bei der Suche auf Server wird nun auch ein möglicherweise
-  vorhandenes Web-Key-Directory (WKD) berücksichtigt. (T5334)
-
-- Kleopatra: Eine neue Einstellung in der Gruppe [Smartcard] mit Name
-  "AlwaysSearchCardOnKeyserver" sorgt dafür das Kleopatra beliebige
-  Schlüsselserver bei der Suche Zertifikaten für eine Smartcard
-  abfragt. (T5735)
-
-- Kleopatra: Weitere Dialoge haben entsprechende Datei-Endungen
-  vorausgewählt wenn Dateien gespeichert werden sollen. (T5736)
-
-- Kleopatra: Die Fehlerbehandlung für PKCS#12 Imports wurde
-  verbessert. (T5713)
-
-- Kleopatra: Es wird nun eine Information angezeigt wenn Schlüsselserver
-  ungültige Antworten liefern. (T5725)
-
-- Kleopatra: Unter Hilfe können nun in GnuPG VS-Desktop weitere
-  Dokumente hinterlegt werden.
-
-- Kleopatra: Geheime Unterschlüssel können nun exportiert und importiert
-  werden. (T5755)
-
-- Kleopatra: Konfigurations-Elemente die in der globalen Konfiguration
-  erzwungen werden sind nun korrekt ausgegraut. (T5791)
-
-- Kleopatra: Die automatische Erkennung neuer Smartcards wurde verbessert.
-  (T5782)
-
-- Kleopatra: Die gleichzeitige Konfiguration von OpenPGP und X.509
-  Schlüsselservern wurde verbessert. (T5801)
-
-- Kleopatra: Das öffnen von externen links kann nun administrativ
-  deaktiviert werden. (T5777)
-
-- Kleopatra: Beim öffnen von Outlook anhängen wird nun der Dokumente
-  Ordner des Nutzers vorausgewählt. (T5774)
-
-- Kleopatra: In den Zertifikatsdetails ist es nun unter Beglaubigungen
-  möglich alle Zertifikate der Beglaubiger abzurufen. (T5805)
-
-- Kleopatra: Es ist nun möglich die Zertifikate von Beglaubigern automatisch
-  bei einem Import abzurufen. Dies wird mit der Einstellung
-  "RetrieveSignerKeysAfterImport" in der "Import" Gruppe aktiviert. (T5805)
+- Kleopatra: Unterstützung für S/MIME Zertifikate auf PKCS#15 Smartcards.
 
 - GpgEX: Es ist nun möglich das Standardkommando über
   die Windows registry zu konfigurieren. (T5915)
 
-- GnuPG: Große performance Verbesserungen:
-         - Verdoppelte Geschwindigkeit beim erstellen von
-           detached Signaturen (.sig Dateien).
-         - Bis zu fünf mal schnellere Überprüfung von detached
-           Signaturen (.sig Dateien).
-         - Dreifache Geschwindigkeit beim entschlüsseln großer Dateien.
-         - Nahezu doppelte Geschwindigkeit bei AES256.OCB Verschlüsselung.
+- GnuPG: Dreifache Geschwindigkeit beim entschlüsseln großer Dateien.
+         (T5820)
     Um diese Verbesserungen voll auszunutzen sollte die Kommandozeile
     verwendet werden.
 
@@ -191,19 +141,14 @@ Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 - GnuPG: Tar Archive unterstützen nun längere Dateinamen als MAX_PATH.
   (T5754)
 
-- GnuPG: ECDSA wird nun für CRLs und OCSP unterstützt.
+- GnuPG: Unterstützung für GeNUA Smartcards.
 
 - GnuPG: WKD Suche funktioniert nun auch mit DNS Servern welche keine
   SRV Einträge verarbeiten. (T4729)
 
-- GnuPG: Auf Version 2.3.5 aktualisiert. Für all Details siehe:
-  https://lists.gnupg.org/pipermail/gnupg-announce/2022q2/000472.html
+- GnuPG: Auf Version 2.2.35 aktualisiert.
 
 --- Bug fixes ---
-
-- Kleopatra: Keyserver Konfiguration wird nun automatisch auf den
-  Standardwert gesetzt wenn ein leerer Wert eingetragen wrid.
-  (T5711)
 
 - Kleopatra: Mehrere Stellen, an denen der Name der
   Anwendung klein geschrieben wurde, sind angepasst
@@ -222,24 +167,15 @@ Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
   Konfiguration erzwingt nun auch korrekte
   Schlüsselverwendungs-Einstellungen. (T5856)
 
-- GpgOL: Es wurde ein Problem behoben das dazu führen konnte das bei
-  der erneuten Bearbeitung eines Entwurfs der Entwurf nicht korrekt
-  verschlüsselt wurde. Dadurch wurde Klartext zum Exchange
-  Server übertragen. (T5564)
-
-- GpgOL: Die Entwurfsverschlüsselung kann nun über die Registry aktiviert
-  werden wenn man den Wert "auto" als "draftKey" hinterlegt. (T5564).
-
-
 - GpgOL: Eine doppelte Speicherfreigabe wurde behoben,
   die zu Abstürzen hätte führen können. Diese Speicherfreigabe
   war nicht als Sicherheitsproblem ausnutzbar.
 
-- GnuPG: Windows Benutzerkonten mit Sonderzeichen im Namen funktionieren
-  nun wieder.
-
 - GnuPG: Konfigurationswerte aus der Windows Registry werden nun
   korrekt bei gpgconf --show-configs angezeigt. (T5724)
+
+- GnuPG: Weitere nicht konforme Verschlüsselungsalgorithmen können
+  nun im Konformitätsmodus entschlüsselt werden.
 
 3. Hinweise
 ===========
