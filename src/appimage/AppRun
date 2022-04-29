@@ -114,7 +114,7 @@ if [ "$1" = "-c" -o "$1" = "-i" ]; then
             if [ $docopy = yes ]; then
               for f in "${APPDIR}"/usr/share/gnupg/conf/gnupg-vsd/* ; do
                 t="/etc/gnupg-vsd/${f##*/}"
-                if [ -d "$t" ]; then
+                if [ -d "$f" ]; then
                     cp -R "$f" /etc/gnupg-vsd/
                 elif [ -f "$t" ]; then
                     cp "$t" "$t.old"
