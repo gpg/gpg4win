@@ -1061,6 +1061,9 @@ $(stampdir)/stamp-msi-all-signed: gnupg-vsd/sign.mk \
 msi-signed: $(stampdir)/stamp-msi-all-signed
 msi-upload: $(stampdir)/stamp-all-upload $(stampdir)/stamp-dist-self
 
+installers: \
+	$(addsuffix .msi,$(addprefix installers/GnuPG-VS-Desktop-$(VSD_VERSION_FILE)-,$(msi_targets)))
+
 .PHONY : all-gpg4win clean-stamps clean-gpg4win msi msi-signed msi-upload
 
 # Insert the template for msi packages.
