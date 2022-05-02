@@ -5,118 +5,110 @@ m4_dnl $Id$
 m4_define(`EN')
 m4_define(`DE_FILE', `privacy-policy-de.html')
 
-m4_define(`TITLE', `Privacy Policy (Datenschutzerklärung)')
+m4_define(`TITLE', `Privacy Policy')
 m4_define(`MAIN', `privacy-policy')
 
 PAGE_START
 
 <div id="main">
-<h2>Note</h2>
-<p>For legal reasons our privacy policy is currently only available in German.<br/>Our team is working
-on a corresponding English version.</p>
-
-
-<h2>Datenschutzerklärung</h2>
+<h2>Privacy Policy</h2>
 <p>
-Wir wissen, dass Ihnen der sorgfältige Umgang mit Ihren persönlichen Informationen wichtig ist. Deshalb schätzen
-wir Ihr Vertrauen, dass die Unternehmen Intevation GmbH, Osnabrück und die g10 Code GmbH, Erkrath, gewissenhaft
-mit diesen Informationen umgeht.
-Ihre personenbezogenen Daten werden vertraulich und entsprechend den gesetzlichen Bestimmungen und dieser
-Datenschutzerklärung verwendet.
+We know that it is important for you that your personal information is handled carefully. Therefore, we appreciate your
+trust in the companies Intevation GmbH, Osnabrück and g10 Code GmbH, Erkrath, to deal conscientiously with this information.
+Your personal data will be used confidentially and in accordance with the legal provisions and this privacy policy.
 
-Die meisten Seiten unserer Webseite können ohne Angabe personenbezogener Daten besucht werden. Wenn auf unseren
-Seiten personenbezogene Daten erhoben werden (z. B. Kontaktformular), geschieht dies, wenn möglich, auf freiwilliger
-Basis. Ihre Daten werden ohne Ihre Einwilligung nicht an Dritte weitergegeben. 
+Most pages of our website can be visited without providing personal data. If personal data is collected on our
+pages (e.g. contact form), this is done on a voluntary basis where possible. Your data will not be passed to
+third parties without your consent.
 </p>
 
-
-<h3>Wie sicher sind Informationen über mich?</h3>
+<h3> How secure is information about me?</h3>
 
 <ul>
   <li>
-    Um die Sicherheit Ihrer Informationen zu schützen, hat nur ein ausgewählter Kreis von Mitarbeitern die
-    Berechtigung, die zur Verfügung gestellten Daten zu verwenden.
+  To protect the security of your information only a selected group of employees is authorized to use the
+  information provided.
   </li>
   <li>
-    Wir unterhalten physische, elektronische und verfahrenstechnische Sicherheitsmaßnahmen im Zusammenhang mit der
-    Erhebung, dem Speichern und der Offenlegung von persönlichen Informationen unserer Kunden.
+    We maintain physical, electronic and procedural security measures related to the collection, storage and
+    disclosure of our customers' personal information.
   </li>
 </ul>
 
-<h3>Gespeicherte Serverdaten</h3>
+<h3>Stored server data</h3>
 <p>
-Wenn Sie diese Webseite besuchen, werden vom Webserver automatisch bestimmte Daten erhoben und in Logdateien
-gespeichert. Dabei handelt es sich um übliche Verbindungsinformationen, in etwa:
+When you visit this website certain data is automatically collected by the web server and stored in log files. This
+data contains common information like:
 </p>
 
 <ul>
-  <li>angefragte Webseite</li>
-  <li>Einstiegswebseite (die Seite, über der Sie unsere Webseite zuerst aufgerufen haben)</li>
-  <li>Datum und Uhrzeit der Anfrage</li>
-  <li>übertragende Datenmenge</li>
-  <li>User-Agent (Browsertyp und -version)</li>
+  <li>requested website</li>
+  <li>initial website (the page from which you first accessed our website)</li>
+  <li>date and time of your request</li>
+  <li>data volume transmitted</li>
+  <li>user agent (type and version of your browser)</li>
 </ul>
 
 <p>
-Es erfolgt keine Kombination dieser Daten mit anderen Datenquellen. Wenn eine rechtswidrige Nutzung bekannt wird, werden
-diese Daten ggf. nachträglich überprüft. Diese Daten sind notwendig für den Betrieb unserer Webseiten; die
-Rechtsgrundlage für ihre Erhebung ist Art. 6 I lit. f DSGVO.
+This data is not combined with other data sources. If any unlawful use becomes known, this data may be subsequently
+checked. This data is necessary for the operation of our websites;
+the legal basis for their collection is Art. 6 I lit. f GDPR
 </p>
 
 <h3>Cookies</h3>
 <p>
-Wir setzen keine Tracking- oder Analyse-Cookies ein, daher bitten wir Sie auf unseren Webseiten auch nicht um eine
-entsprechende Zustimmung. 
+We do not use any tracking or analysis cookies. Therefore, we do not ask for your consent on our websites.
 </p>
 
-<h3>SSL- bzw. TLS-Verschlüsselung</h3>
-<p>Diese Seite nutzt aus Sicherheitsgründen und zum Schutz der Übertragung vertraulicher Inhalte, wie zum Beispiel
-Bestellungen oder Anfragen, die Sie an uns als Seitenbetreiber senden, eine SSL- bzw. TLS-Verschlüsselung. Eine
-verschlüsselte Verbindung erkennen Sie daran, dass die Adresszeile des Browsers von „http://“ auf „https://“ wechselt
-und an dem Schloss-Symbol in Ihrer Browserzeile. Wenn die SSL- bzw. TLS-Verschlüsselung aktiviert ist, können die Daten,
-die Sie an uns übermitteln, nicht von Dritten mitgelesen werden. </p>
-
-
-<h3>Auskunft, Löschung, Sperrung</h3>
+<h3>SSL- and TLS-encryption</h3>
 <p>
-Als Betroffener haben jederzeit das Recht auf kostenlose Auskunft über Ihre gespeicherten personenbezogenen Daten,
-deren Herkunft und Empfänger, und den Zweck der Verarbeitung Ihrer Daten. Es besteht ein Recht auf Berichtigung,
-Sperrung oder Löschung dieser Daten unter Beachtung eventuell bestehender gesetzlicher Aufbewahrungspflichten.
-Diesbezügliche Anfragen bitte an die im Impressum genannte Adresse richten.
+This site uses SSL or TLS encryption for security reasons and to protect the transmission of confidential content,
+such as orders or requests that you send to us as the site operator. You can recognize an encrypted connection by
+the fact that the URL field of the browser changes from "http://" to "https://" and furthermore contains a lock symbol.
+If SSL or TLS encryption is activated, the data you transmit to us cannot be read by third parties.
 </p>
 
-
-<h3>Beschwerde</h3>
+<h3>Disclosure, deletion, blocking</h3>
 <p>
-Sie haben das Recht auf Beschwerde bei einer Datenschutzaufsichtsbehörde, wenn Sie der Ansicht sind, dass unsere
-Verarbeitung Ihrer personenbezogenen Daten Ihre Rechte verletzt.
+As a data subject you have the right to freely obtain information about your stored personal data, its origin and recipient,
+and the purpose of processing your data at any time. You have the right to correction, blocking or deletion of this
+data with possibly existing legal storage obligations in mind. Please address any inquiries in this regard
+to the address given in the imprint.
 </p>
 
 
-<h3>Datenschutzbeauftragter</h3>
-<p>Die Intevation GmbH hat mit Herrn Dr. Johannes Schröder einen Datenschutzbeauftragten (DSB) bestellt. Fragen zum
-Datenschutz richten Sie bitte an:
-<br>
-Postanschrift: DSB der Intevation GmbH, Neuer Graben 17, 49074 Osnabrück
-<br>
-Telefon: 05461-886299
-<br>
-Mail (bevorzugt): datenschutz@intevation.de</p>
-
-
-<h3>Spendenmöglichkeit</h3>
+<h3>Grievance</h3>
 <p>
-Wir bieten auf dieser Seite an, freiwillig für die Software zu spenden. Dazu integrieren wir auf unserer Website
-auch nützliche Dienste anderer Anbieter, die wir für sinnvoll halten. Sofern bei deren Nutzung Daten über Sie
-erhoben verarbeitet oder genutzt werden, geschieht dies nur, sofern Sie Daten selbst eingeben. Ansprechpartner
-hierfür („verantwortliche Stelle“) ist der jeweilige Anbieter. Für die Verwendung und Bearbeitung Ihrer Daten
-gilt die Datenschutzerklärung des jeweiligen Anbieters. Derzeit als externer Dienst eingebunden ist PayPal:
-<br>
-PayPal (Europe) S.à r.l. et Cie, S.C.A., 22-24 Boulevard Royal, L-2449 Luxemburg, ist verantwortliche Stelle.
-Informationen zum Datenschutz und auch zur möglichen Bonitätsprüfung seitens weiterer Dienstleister, finden Sie hier:
-<a href="https://www.paypal.com/de/webapps/mpp/ua/privacy-full?locale.x=de_DE"></a>
+You have the right to complain to a data protection supervisory authority if you believe that our processing of your
+personal data infringes your rights.
 </p>
 
+
+<h3>Privacy Commissioner</h3>
+<p>
+Intevation GmbH has appointed Dr. Johannes Schröder as data protection officer (DPO). Please direct any privacy concerning
+questions to:
+<br>
+Post address: DSB der Intevation GmbH, Neuer Graben 17, 49074 Osnabrück - Germany
+<br>
+Telephone: 05461-886299
+<br>
+Email (prefered): datenschutz@intevation.de
+</p>
+
+
+<h3>Donations</h3>
+<p>
+On this page we offer to donate voluntarily for the software. To do this, we also integrate useful services from other
+providers on our website, which we consider useful. If data about you is processed or used during their use, this only
+happens if you enter data yourself. The contact person ("responsible authority") is the respective provider. The privacy
+policy of the respective provider applies to the use and processing of your data. PayPal is currently integrated as an
+external service:
+<br>
+PayPal (Europe) S.à r.l. et Cie, S.C.A., 22-24 Boulevard Royal, L-2449 Luxemburg, is the responsible authority.
+For further information about their privacy policy, please visit this site:
+<a href="https://www.paypal.com/de/webapps/mpp/ua/privacy-full?locale.x=en_EN">https://www.paypal.com/de/webapps/mpp/ua/privacy-full?locale.x=en_EN</a>
+</p>
 
 
 </div>
