@@ -748,14 +748,15 @@ define AUTHENTICODE_sign
      scp "$(AUTHENTICODE_SIGNHOST):a.exe" $(2);\
      echo "signed file is '$(2)'" ;\
    elif [ "$(AUTHENTICODE_KEY)" = card ]; then \
-     echo "speedo: Signing using a card";\
+     echo "speedo: Signing using a card '$(1)'";\
      $(OSSLSIGNCODE) sign \
        -pkcs11engine $(OSSLPKCS11ENGINE) \
        -pkcs11module $(SCUTEMODULE) \
        -certs $(AUTHENTICODE_CERTS) \
        -h sha256 -n "$$$${val_n}" -i "$$$${val_i}" \
        -ts http://rfc3161timestamp.globalsign.com/advanced \
-       -in $(1) -out $(2).tmp ; mv $(2).tmp $(2) ; \
+       -in $(1) -out $(2).tmp ; cp $(2).tmp $(2) ; rm $(2).tmp ; \
+       echo "signed file is '$(2)'" ;\
    else \
      echo "speedo: Signing using key $(AUTHENTICODE_KEY)";\
      osslsigncode sign -certs $(AUTHENTICODE_CERTS) \
