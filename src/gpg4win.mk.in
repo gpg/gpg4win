@@ -658,8 +658,8 @@ $(stampdir)/stamp-$(1)-01-patch: $(stampdir)/stamp-$(1)-00-unpack
 	(shopt -s nullglob;				\
 	 $(call SETVARS,$(1));				\
 	 cd "$$$${pkgsdir}";				\
-	 sed -i 's/set(KF5_MIN_VERSION.*)/set(KF5_MIN_VERSION "5.90.0")/' CMakeLists.txt; \
-	 sed -i 's/set(KF5_VERSION.*)/set(KF5_VERSION "5.90.0")/' CMakeLists.txt; \
+	 sed -i 's/set(KF5_MIN_VERSION.*)/set(KF5_MIN_VERSION "5.93.0")/' CMakeLists.txt; \
+	 sed -i 's/set(KF5_VERSION.*)/set(KF5_VERSION "5.93.0")/' CMakeLists.txt; \
 	 sed -i 's/set(KMIME_VERSION.*)/set(KMIME_VERSION "5.2.40")/' CMakeLists.txt; \
 	 sed -i 's/set(LIBKLEO_VERSION.*)/set(LIBKLEO_VERSION "5.4.40")/' CMakeLists.txt; \
 	 sed -i 's/set(QT_REQUIRED_VERSION.*)/set(QT_REQUIRED_VERSION "5.10.0")/' CMakeLists.txt; \
