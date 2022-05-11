@@ -5,17 +5,18 @@ A0C0D856-B600-4A58-BBF3-3BAFC404A112 /PRODUCT/3.1.10.3576
 20D765BE-D506-47F0-B742-C7A0AA889007 /PRODUCT/3.1.10.51333
 3C0A7176-9C49-4165-A95D-D0E305ABA48F /PRODUCT/3.1.12.34215
 5CCD771C-460A-46FF-8BED-361CCF7859A2 /PRODUCT/3.1.17.2
+F9324F68-E15E-4B39-9529-7AFE1A80D6A7 /PRODUCT/3.1.22.0
 E5551DF7-8072-42E4-A41F-1BEACB5801E1 /REGISTRY/SHCTX/Software\${PRETTY_PACKAGE_SHORT}/Install Directory
 626CA786-4F3A-47D4-9634-887EFE37FCC2 /REGISTRY/SHCTX/Software\Classes\.arl\OpenWithProgIDs/gpg4win.AssocFile.Kleopatra.CMS
 CB0DD13C-3429-42CF-BCE8-8C50839EBBA2 /REGISTRY/SHCTX/Software\Classes\.asc\OpenWithProgIDs/gpg4win.AssocFile.Kleopatra.ASC
 7BFA3ADC-7BD2-4BD0-830D-2447AD485C1F /REGISTRY/SHCTX/Software\Classes\.crl\OpenWithProgIDs/gpg4win.AssocFile.Kleopatra.CMS
 70EF1624-4C08-41C3-AAE1-5BD47EA275F0 /REGISTRY/SHCTX/Software\Classes\.gpg\OpenWithProgIDs/gpg4win.AssocFile.Kleopatra.GPG
+F5A9A0BB-73DC-45C0-8B35-6DC7CC260106 /REGISTRY/SHCTX/Software\Classes\.kgrp\OpenWithProgIDs/gpg4win.AssocFile.Kleopatra.KGRP
 26840107-B885-4B15-BFBD-1E354B78FC6B /REGISTRY/SHCTX/Software\Classes\.p7m\OpenWithProgIDs/gpg4win.AssocFile.Kleopatra.CMS
 3A569890-4760-43D6-AE21-C860DDAB112D /REGISTRY/SHCTX/Software\Classes\.p7s\OpenWithProgIDs/gpg4win.AssocFile.Kleopatra.CMS
 38EE7427-7E8A-4C06-8B0B-416635293955 /REGISTRY/SHCTX/Software\Classes\.pem\OpenWithProgIDs/gpg4win.AssocFile.Kleopatra.CMS
 DD4B4555-9B01-45B4-8CFD-8F86E6F446EC /REGISTRY/SHCTX/Software\Classes\.pgp\OpenWithProgIDs/gpg4win.AssocFile.Kleopatra.GPG
 4C925EAB-A4D9-4D19-BA44-EDFEF4AC0193 /REGISTRY/SHCTX/Software\Classes\.sig\OpenWithProgIDs/gpg4win.AssocFile.Kleopatra.PGPSIG
-F5A9A0BB-73DC-45C0-8B35-6DC7CC260106 /REGISTRY/SHCTX/Software\Classes\.kgrp\OpenWithProgIDs/gpg4win.AssocFile.Kleopatra.KGRP
 2B529E47-853B-4599-BA9B-6679A7D862C9 /REGISTRY/SHCTX/Software\Classes\P7MFile\DefaultIcon/
 04B8782C-E303-4F38-8701-B5F3CAE7A204 /REGISTRY/SHCTX/Software\Classes\P7MFile\shell\open\command/
 88A08CD8-7B0A-40F4-A13D-51E5F40FC429 /REGISTRY/SHCTX/Software\Classes\P7SFile\DefaultIcon/
@@ -207,6 +208,7 @@ AA91E31D-B677-4A44-B17A-8061EA29FB9F bin\libpangowin32-1.0-0.dll
 FAF74A2A-8E55-4366-96C9-C06F9ED94C29 bin\libpcrecpp-0.dll
 C8076FBC-7357-42AC-AD56-680E6892FBCC bin\libpcreposix-0.dll
 1DCD0506-EECB-4E7C-9308-28ED0327E56E bin\libpng14-14.dll
+ED07E322-D718-4344-9CA1-AECF62FFBE71 bin\libqgpgme-15.dll
 08D4FB89-602B-4EB1-BD06-EC26EE655F82 bin\libqgpgme-7.dll
 3D64849E-0B63-476C-92CD-1B5CC770079E bin\libstdc++-6.dll
 EFAA91A1-168B-4A58-B424-8F46621E7DF2 bin\libw32pth-0.dll
@@ -411,6 +413,7 @@ E2D0E16C-D019-453F-937F-BEA58FB08170 share\icons\breeze\actions\16\document-prin
 D50CBC01-080E-428D-9AFF-69814996ADA3 share\icons\breeze\actions\16\draw-arrow-up.svg
 37C6770B-29B3-4EF6-890A-B795606C6D63 share\icons\breeze\actions\16\dvipdf.svg
 8465D671-AE21-4A06-8910-B27989E8EBD6 share\icons\breeze\actions\16\edit-clear-locationbar-rtl.svg
+5E0A3C75-48A4-4871-AE9F-21637102C6E8 share\icons\breeze\actions\16\edit-copy.svg
 BC03B0E9-485E-4CB0-AFDF-875185E7B65B share\icons\breeze\actions\16\edit-delete.svg
 69263E46-5ADC-43C1-B36F-3ACDA0C14CD7 share\icons\breeze\actions\16\edit-find.svg
 20CCE443-A610-43C1-9CF0-697465509DBD share\icons\breeze\actions\16\edit-paste.svg
@@ -469,6 +472,7 @@ E0B6D873-FC84-47E2-8A24-FC768959F32E share\icons\breeze\actions\22\draw-arrow-do
 EA3658B2-E729-449E-B7CE-F371F379328F share\icons\breeze\actions\22\draw-arrow-up.svg
 D199F6E2-5AD1-43CD-8229-7C249F6CE900 share\icons\breeze\actions\22\dvipdf.svg
 FF2885B1-E9CD-4E63-BF63-655EC8EADCD4 share\icons\breeze\actions\22\edit-clear-locationbar-rtl.svg
+F6C8C206-2E98-4B44-B77E-386C9936702C share\icons\breeze\actions\22\edit-copy.svg
 9745EC8E-8E90-4B6C-97ED-B918FB200B86 share\icons\breeze\actions\22\edit-delete.svg
 9D8E2896-0BB5-4F1D-9200-E038EC73053E share\icons\breeze\actions\22\edit-find.svg
 01568944-0A23-4C3B-9058-54A8D721CE0D share\icons\breeze\actions\22\edit-paste.svg
