@@ -46,6 +46,7 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
              patches/glib/glib-1-fixes.patch \
              patches/glib/glib-2-fixes.patch \
              patches/kconfigwidgets/0001-Make-QDbus-optional.patch \
+             patches/kconfigwidgets/0001-Fix-crash-on-exit-on-Windows.patch \
              patches/kiconthemes/0001-Make-DBus-optional.patch \
              patches/kleopatra/set-cxx-standard.patch \
              patches/kxmlgui/0001-make-qdbus-optional.patch \
