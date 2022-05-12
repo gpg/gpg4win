@@ -584,8 +584,8 @@ server https://files.intevation.de/projects/gpg4all
 # gpgme-beta
 # by ah
 # verified: buildtree
-file gpgme/gpgme-1.17.2-beta26.tar.bz2
-chk aa8e3002454090158531fda2da4158a535317becace0c7e5b6848243c84ede9f
+file gpgme/gpgme-1.17.2-beta51.tar.bz2
+chk 4eeb3f0532e99e1337464bc3fdb3a55af90703706232de64cbced14b241bd3b7
 
 #by ah
 #file scute/scute-1.6.0-beta187.tar.bz2
@@ -621,11 +621,11 @@ chk 79ea82ede46bbd02f70a64e4f003c6279e98cf4ad1e302eca753087c42fccdf3
 server https://gnupg.org/ftp/gcrypt/snapshots
 
 # libkleo
-# last changed: 2022-04-28
+# last changed: 2022-05-12
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file libkleo/libkleo-202204281347.tar.xz
-chk 475ed33fa37791bf15d1a11336f962f5464ff15ab0c2ff545ac91e3f61822877
+file libkleo/libkleo-202205120851.tar.xz
+chk e3965d3e733feaa13f30882693a7f646fd5e96b2b4c685b5f54654f302e40f6d
 
 # kleopatra
 # last changed: 2022-05-11
