@@ -18,7 +18,7 @@ who <a href="contribute.html">get involved</a> with the initiative.</p>
 <p>You can help, for example, by <a href="reporting-bugs.html">reporting problems</a>.</p>
 
 <p>You can communicate with the Gpg4win community via
-mailing lists, web forums and IRC.</p>
+mailing lists and web forums.</p>
 </div>
 
 <div id="main">
@@ -106,18 +106,6 @@ href="https://wald.intevation.org/forum/forum.php?forum_id=84">Go to Forum >></a
 <h2>Wiki</h2>
 <p>For user and developer of Gpg4win and GnuPG:</p>
 <p><a href="http://wiki.gnupg.org">http://wiki.gnupg.org</a></p>
-
-<h2>IRC</h2>
-
-<p>To contact Gpg4win users and developers in a chat you can use IRC:</p>
-
-<p>Network: <b>freenode</b><br>
-Channel: <b>#gpg4win</b></p>
-
-<p><a
-href="irc://irc.freenode.net/#gpg4win">irc://irc.freenode.net/#gpg4win</a></p>
-
-</div>
 
 
 <div id="sidebar">

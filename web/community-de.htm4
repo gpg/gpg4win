@@ -19,8 +19,8 @@ href="contribute-de.html">mitmachen</a>.</p>
      href="reporting-bugs-de.html">berichten von Problemen</a>.</p>
 
 <p>
-Mit Gpg4win-Gemeinschaft können Sie über mehrere Medien
-kommunizieren: Mailinglisten, Webforen und IRC.</p>
+Mit Gpg4win-Gemeinschaft können Sie über Mailinglisten
+und Webforen kommunizieren.</p>
 </div>
 <div id="main">
 <h2>Mailinglisten</h2>
@@ -99,19 +99,6 @@ href="https://wald.intevation.org/forum/forum.php?forum_id=21">Zum Forum >></a>
 <h2>Wiki</h2>
 <p>Für Anwender und Entwickler von Gpg4win und GnuPG:</p>
 <p><a href="http://wiki.gnupg.org">http://wiki.gnupg.org</a></p>
-
-
-<h2>IRC</h2>
-
-<p>Für den direkten Kontakt zwischen interessierten Gpg4win-Anwendern
-und -Entwicklern nutzen Sie IRC (ein textbasierter Chat):</p>
-
-<p>Netzwerk: <b>freenode</b><br>
-Kanal: <b>#gpg4win</b></p>
-
-<p><a
-href="irc://irc.freenode.net/#gpg4win">irc://irc.freenode.net/#gpg4win</a></p>
-</div>
 
 
 <div id="sidebar">
