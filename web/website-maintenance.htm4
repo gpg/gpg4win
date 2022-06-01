@@ -47,35 +47,11 @@ make
      again and reopen it in your browser.
 </ol>
 
-<h2>What to do initially to become an active team member</h2>
-
-A prior "Hello" on one of the Gpg4win mailing lists and your
-expression of interest to join the team is of course a good idea.
-
-<ol>
-<li> At <a href="https://wald.intevation.de">wald.intevation.de</a> you
-     should
-     <a href="https://wald.intevation.org/account/register.php">create
-     a user account</a>.<br>
-     This is established quickly because it is an automated process.
-
-<li> <a href="https://wald.intevation.org/project/request.php?group_id=11"
-       >Request</a> membership for project Gpg4win.<br>
-     This takes a little time because one of the project administrators
-     has to answer the request.
-
-<li> Create a SSH key and
-     <a href="https://wald.intevation.org/account/">upload</a>
-     it to wald.intevation.de
-
-<li> Get the source for the website:<br>
-     <code>git clone git://git.gnupg.org/gpg4win.git -b website</code>
-
-</ol>
-
 <h2>How to update the website and put it online</h2>
 
 <ol>
+<li> Get the source for the website:<br>
+     <code>git clone git://git.gnupg.org/gpg4win.git -b website</code>
 <li> Apply your desired changes in the directory <em>/web</em> which
      you retrieved via GIT. The file <em>README</em> in the top
      directory will provide you some helpful hints.
@@ -83,13 +59,19 @@ expression of interest to join the team is of course a good idea.
 <li> Create local version:<br>
      <em>make</em><br>
      and open file index.html in your browser.
+     
+<li> Before commiting the changes you should check them:<br>
+     <code>git diff | less</code><br>
 
 <li> If your changes are complete, commit them as usual.  For example
      you can simply do:<br>
      <code>git commit -a</code><br>
-      and then prepare a patch to be
-     send to the mailing list:<br>
-     <code>git format-patch -k --stdout >draft</code>.
+         
+<li>Then prepare a patch to be send to the mailing list Gpg4win-devel
+    (A prior "Hello" on one of the Gpg4win <a href="https://www.gpg4win.de/community.html">mailing lists</a> and your expression of interest to join the team is of course a good idea.):<br>
+    <code>git format-patch HEAD~1 --stdout > draft.patch</code><br>
+    You have to replace the number behind "HEAD~" with the number of commits
+    you made for the patch.
 
 <li> The last step is to put the new version online:<br>
      <em>make online</em><br>
