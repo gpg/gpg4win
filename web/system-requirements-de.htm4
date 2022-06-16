@@ -32,7 +32,7 @@ E-Mail Transport per SMTP/IMAP und MS Exchange Server.
 <h2>Andere Systeme</h2>
 <p>Unter <b>MacOS X</b> kann die <a href="https://gpgtools.org/">GPG Suite</a> verwendet werden.</p>
 
-<p>Unter <b>GNU/Linux</b> basierenden System kann meist direkt GnuPG 
+<p>Unter Systemen, die auf <b>GNU/Linux</b> basieren, kann GnuPG meist direkt 
 über den Paketmanager installiert werden. Alternativ können Sie GnuPG auch aus
 dem <a href="https://gnupg.org/index.html">Quellcode</a> selbst kompilieren.</p>
 </div>
