@@ -51,7 +51,7 @@ kommt RSA zum Einsatz.</p>
 <div class="column3">
 <h4>SmartCard</h4>
 <p>Gpg4win unterstützt (durch GnuPG) die sichere Nutzung von
-SmartCards für OpenPGP und S/MIME. Technische Details (in englisch) finden Sie bei <a
+SmartCards für OpenPGP und S/MIME. Technische Details (in Englisch) finden Sie bei <a
 href="http://www.gnupg.org/documentation/howtos.de.html#GnuPG-cardHOWTO">GnuPG</a>.</p>
 <img src="img/gnupg.png">
 </div>
@@ -70,7 +70,7 @@ ablegen.</p>
 
 <div class="column2">
 <h4>Prüfsummen</h4>
-<p>Erstellen und Überprüfen Sie Prüfsummen von Dateien - ebenfalls
+<p>Erstellen und überprüfen Sie Prüfsummen von Dateien - ebenfalls
 direkt aus dem Windows Explorer. Gpg4win legt (rekursiv) für jede
 ausgewählte Datei eine eindeutige Prüfsumme ab und sichert damit die
 Unverändertheit (Integrität) der Dateien. Das Überprüfen dieser
@@ -153,7 +153,7 @@ Es ist verfügbar in deutscher und englischer Sprache.</p>
 <div class="column1">
 <h4>Zertifikate sicher und komfortabel verwalten</h4>
 <p>Kleopatra ist der bevorzugte Zertifikatsmanager in Gpg4win.
-Kleopatra ermöglicht Ihnen die einfache Verwaltung alle Zertifikate
+Kleopatra ermöglicht Ihnen die einfache Verwaltung aller Zertifikate
 (OpenPGP und S/MIME).</p>
 <a href="img/sc-kleopatra-mainwindow-openpgp-certificates_de.png">
 <img style="width:540px;" src="img/sc-kleopatra-mainwindow-openpgp-certificates_de.png"></a>
@@ -168,8 +168,8 @@ X.509-(LDAP-)Zertifikatsservern.</p>
 <h4>OpenPGP-Zertifikate beglaubigen</h4>
 <a href="img/sc-kleopatra-certifyCertificate1_de.png">
 <img src="img/sc-kleopatra-certifyCertificate1_de.png"></a>
-<p>Durch das Beglaubigen (auch signieren) von einem anderen, Ihnen
-vertrauten, OpenPGP-Zertifikat bringt Kleopatra dieses Zertifikat in
+<p>Durch das Beglaubigen (auch Signieren) eines anderen, Ihnen
+vertrauten, OpenPGP-Zertifikats bringt Kleopatra dieses Zertifikat in
 eine neue Vertrauensstufe - gekennzeichnet als "vertrauenswürdiges
 Zertifikat".
 </<p>
@@ -189,7 +189,7 @@ Für die Nutzung von Gpg4win entstehen keine Lizenzkosten.
 
 <div class="column2">
 <h4>Systemunterstützung</h4>
-<p>Details unter den Angaben zur Systemanforderung finden Sie unter <a
+<p>Details zu den Systemanforderungen finden Sie auf <a
 href="system-requirements-de.html">der entsprechenden Seite</a>.</p>
 </div>
 
