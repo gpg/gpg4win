@@ -82,14 +82,14 @@ Informationen der Logdatei dem Fehlerbericht beilegen.
 <h2>Private Berichte / Sicherheitsprobleme</h2>
 <p>
 Wenn Sie ihren Bericht nicht öffentlich machen wollen, da er
-private informationen enthält oder ein gravirendes Sicherheitsproblem
+private informationen enthält oder ein gravierendes Sicherheitsproblem
 beschreibt, können Sie unserem Team eine verschlüsselte
 Nachricht an <a href="mailto://gpg4win-professional@gpg4win.org">gpg4win-professional@gpg4win.org</a>
 senden.
 </p>
 
 <p>
-Der öffentliche Schlüssel für diese Adresse ist:<a
+Der öffentliche Schlüssel für diese Adresse ist: <a
       href="gpg4win-professional-key.asc">5BFB FFC6 C040 8D5B B0C9  BDF4 6113 F899 1A8C 17A9</a>.
 </p>
 
