@@ -12,8 +12,8 @@ PAGE_START
 
 <div id="intro">
 <h2>About Gpg4win</h2>
-<p>Gpg4win (GNU Privacy Guard for Windows) is
-encryption software for files and emails.</p>
+<p>Gpg4win (GNU Privacy Guard for Windows) is an
+encryption software to sign and encrypt files and emails.</p>
 </div>
 
 <div id="main">
@@ -105,7 +105,7 @@ Compendium") is maintained as part of the effort.
 </p>
 
 <p>
-Both OpenPGP and S/MIME should be supported in a unified way.
+Another goal is to support OpenPGP and S/MIME in a unified way.
 </p>
 
 <p>
