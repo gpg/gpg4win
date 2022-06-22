@@ -61,11 +61,11 @@ href="http://www.gnupg.org/documentation/howtos.de.html#GnuPG-cardHOWTO">GnuPG</
 <h2>Dateien und Ordner</h2>
 <div class="column1">
 <h4>Signieren/Verschlüsseln</h4>
-<p>Signieren Sie Dateien und Ordner direkt aus dem Windows
-Explorer - mit dem Explorer-Plugin GpgEX.
-Sie können auch mehrere Dateien und ganze Ordner auswählen und diese
-dann rekursiv signieren/verschlüsseln in einem gpgtar-Archiv
-ablegen.</p>
+<p>Signieren Sie Dateien und Ordner direkt aus dem Windows Explorer - 
+mit dem Add-on GpgEX. Sie können auch mehrere Dateien und ganze 
+Ordner auswählen und diese dann über das Kontext Menü signieren/ verschlüsseln. Dann erhalten Sie eine Datei, die beim Empfänger
+geprüft und entschlüsselt werden kann. Das technische Archivformat dieser Datei ist
+gpgtar.</p>
 </div>
 
 <div class="column2">

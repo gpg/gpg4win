@@ -62,9 +62,9 @@ page</a>.</p>
 <div class="column1">
 <h4>Signing and encrypting</h4>
 <p>Sign single files or complete folders directly from the Windows
-Explorer with GpgEX or Kleopatra.
-You can select multiple files and folders to sign and encrypt them
-recursively into a gpgtar archive.</p>
+Explorer with GpgEX.
+You can also select multiple files and folders to sign and encrypt them.
+Then you get a file that can be checked and decrypted by the receiver. The technical format of this file is gpgtar.</p>
 </div>
 
 <div class="column2">
