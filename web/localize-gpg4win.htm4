@@ -3,7 +3,7 @@ m4_include(`template.m4')
 m4_dnl $Id$
 
 m4_define(`EN')
-m4_dnl m4_define(`DE_FILE', `localize-gpg4win-de.html')
+m4_define(`DE_FILE', `localize-gpg4win-de.html')
 
 m4_define(`MAIN', `community')
 m4_define(`TITLE', `Translate Gpg4win into your language')
