@@ -21,6 +21,7 @@ Erfahren Sie hier, welche Funktionen in Gpg4win stecken!</p>
 
 <div id="full">
 
+    
 <h2>Sicherheit</h2>
 
 <div class="flex-container">
@@ -62,7 +63,11 @@ href="http://www.gnupg.org/documentation/howtos.de.html#GnuPG-cardHOWTO">GnuPG</
 
 <br clear="all"/>
 
+
 <h2>Dateien und Ordner</h2>
+
+<div class="flex-container">
+
 <div class="column1">
 <h4>Signieren/Verschlüsseln</h4>
 <p>Signieren Sie Dateien und Ordner direkt aus dem Windows Explorer - 
@@ -85,9 +90,15 @@ Gpg4win unterstützt die Verfahren sha1sum, sha256sum und md5sum.</p>
 <img src="img/t250.sc-gpgex-contextmenu-signEncrypt_de.png">
 </div>
 
+</div>
+
 <br clear="all"/>
 
+
 <h2>E-Mail</h2>
+
+<div class="flex-container">
+    
 <div class="column1">
 <h4>Signieren und Verschlüsseln</h4>
 <p>Das mitgelieferte Outlook-Plugin GpgOL ermöglicht E-Mails direkt
@@ -121,11 +132,15 @@ Sicherheit.
 </p>
 </div>
 
+</div>
+
 <br clear="all"/>
 
 
 <h2>Installation und Kompendium</h2>
 
+<div class="flex-container">
+    
 <div class="column1">
 <h4>Installationsassistent</h4>
 <p>Der Gpg4win-Installationsassistent erleichtert
@@ -149,10 +164,14 @@ die Kryptografie und die Verwendung von Gpg4win bietet das
 Es ist verfügbar in deutscher und englischer Sprache.</p>
 </div>
 
+</div>
+
 <br clear="all"/>
+
 
 <h2>Zertifikatsverwaltung mit Kleopatra</h2>
 
+<div class="flex-container">
 
 <div class="column1">
 <h4>Zertifikate sicher und komfortabel verwalten</h4>
@@ -179,9 +198,15 @@ Zertifikat".
 </<p>
 </div>
 
+</div>
+
 <br clear="all"/>
 
+
 <h2>Weiteres Wissenswertes</h2>
+
+<div class="flex-container">
+    
 <div class="column1">
 <h4>Freie Software</h4>
 <p>Gpg4win ist Freie Software und besteht aus einer ganzen Reihe von
@@ -202,6 +227,8 @@ href="system-requirements-de.html">der entsprechenden Seite</a>.</p>
 <p>Alle Dialoge in Gpg4win sind vollständig in deutscher und englischer Sprache
 verfügbar. Der Gpg4win-Installer bietet darüber hinaus weitere
 Sprachen an.</p>
+</div>
+
 </div>
 
 </div>

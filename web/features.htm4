@@ -20,7 +20,10 @@ The focus of Gpg4win is on secure file and email encryption as well as good usab
 
 <div id="full">
 
+    
 <h2>Security</h2>
+
+<div class="flex-container">
 
 <div class="column1">
 <h4>OpenPGP & S/MIME</h4>
@@ -56,9 +59,15 @@ page</a>.</p>
 <img src="img/gnupg.png">
 </div>
 
+</div>
+
 <br clear="all"/>
 
+
 <h2>Files and Folders</h2>
+
+<div class="flex-container">
+    
 <div class="column1">
 <h4>Signing and encrypting</h4>
 <p>Sign single files or complete folders directly from the Windows
@@ -82,9 +91,15 @@ GUI. Gpg4win supports the hash algorithms SHA-1, SHA-256 and MD5.
 <img src="img/t250.sc-gpgex-contextmenu-signEncrypt_de.png">
 </div> 
 
+</div>
+
 <br clear="all"/>
 
+
 <h2>Email</h2>
+
+<div class="flex-container">
+    
 <div class="column1">
 <h4>Signing and encrypting</h4>
 <p>The provided Outlook plugin GpgOL allows to sign and encrypt
@@ -113,10 +128,14 @@ certificates which do accord uniquely. You work more quickly - without reducing 
 </p>
 </div>
 
+</div>
+
 <br clear="all"/>
 
 
 <h2>Installation and Compendium</h2>
+
+<div class="flex-container">
 
 <div class="column1">
 <h4>Installer</h4>
@@ -138,10 +157,14 @@ cryptography and using Gpg4win.
 It is available in German and English.</p>
 </div>
 
+</div>
+
 <br clear="all"/>
+
 
 <h2>Certificate Management with Kleopatra</h2>
 
+<div class="flex-container">
 
 <div class="column1">
 <h4>Manage certificates securely and comfortably</h4>
@@ -166,9 +189,15 @@ Thus, these certificates will be marked as "trusted certificates".
 </p>
 </div>
 
+</div>
+
 <br clear="all"/>
 
+
 <h2>Other things to know</h2>
+
+<div class="flex-container">
+    
 <div class="column1">
 <h4>Free Software</h4>
 <p>Gpg4win is Free Software and
@@ -188,6 +217,8 @@ href="system-requirements.html">System Requirements</a>.</p>
 <h4>Internationalization</h4>
 <p>All dialogs of Gpg4win are available both English and German.
 The Gpg4win Installer provides some additional languages.</p>
+</div>
+
 </div>
 
 </div>
