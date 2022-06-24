@@ -19,6 +19,7 @@ m4_define(`RQ',`m4_changequote(<,>)m4_dnl`
 <html xmlns="http://www.w3.org/1999/xhtml">
  <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="keywords" content="Gpg4win, GnuPG, GPA, GpgOL, E-Mail, Email, Windows, PGP, GPG, OpenPGP, S/MIME, Outlook, I18N(`EN', `Encryption, secure, security') I18N(`DE', `Verschlüsselung, sicher, Sicherheit')">
   <link rel="stylesheet" type="text/css" href="__TMPL_ROOT`'gpg4win.css">
   <link rel="shortcut icon" href="__TMPL_ROOT`'favicon.png" type="image/png" />
