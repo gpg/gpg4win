@@ -66,116 +66,16 @@ Die integrierten Gpg4win-Komponenten in Version !VERSION! sind:
 Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 -----------------------------------------
 
---- Accessibility ---
-
-- Kleopatra: OpenPGP und S/MIME Schlüsselerstellung sind nun für
-  Barrierefreiheit optimiert. (T5832)
-
-- Kleopatra: Die Tab Leiste für verschiedene Zertifikatsansichten
-  ist nun immer sichtbar. (T5841)
-
-- Kleopatra: Die Zertifikatsliste kann nun mit den Pfeiltasten
-  navigiert werden, um sie zugänglicher für Tastatureingabe zu machen.
-  (T5841)
-
-- Kleopatra: Leere Zellen in der Zertifikatsliste haben nun
-  Screenreader spezifische Anmerkungen, damit sie z.B. als: "kein Name"
-  oder "keine E-Mail" gelesen werden. (T5841)
-
-- Kleopatra: Schlüsselkennungen und Fingerabdrücke werden nun von
-  Screenreadern in Gruppen von vier Zeichen gelesen. (T5841)
-
-- Kleopatra: Der Dateiverschlüsselungsdialog wurde hinsichtlich
-  Barrierefreiheit optimiert. (T5845)
-
-- Kleopatra: Der Zertifikatsauswahl-Dialog, welcher aus dem
-  Dateiverschlüsseln Dialog aufgerufen werden kann, wurde
-  hinsichtlich der Barrierefreiheit optimiert. (T5876)
-
-- Kleopatra: Der Dialog zum Hinzufügen von Benutzerkennungen
-  wurde vollständig auf Barrierefreiheit hin überarbeitet.
-  (T5916)
-
---- Features ---
-
-- Kleopatra: Das GnuPG Backend kann jetzt über eine
-  Menüoption unter Extras neu gestartet Werden. (T5775)
-
-- Kleopatra: In der erweiterten Schlüsselerstellung weist
-  nun ein Tooltip auf den Zweck von Unterschlüsseln hin. (T5781)
-
-- Kleopatra: In den Zertifikatsdetails kann der Fingerprint
-  nun einfach ohne Leerzeichen in die Zwischenablage kopiert
-  werden. (T5776)
-
-- Kleopatra: Die Smartcard Leser Einstellungen sind nun
-  auf einer eigenen Konfigurationsseite. (T5857)
-
-- Kleopatra: Es ist nun möglich den eigenen Schlüssel
-  zurückzurufen. (T5859)
-
-- Kleopatra: Der Dialog zum Hinzufügen von Benutzerkennungen
-  wurde überarbeitet und akzeptiert nun auch Namen,
-  die mit einer Zahl beginnen. (T5916)
-
-- Kleopatra: Es ist nun möglich eine minimale und maximale
-  Gültigkeitsdauer für Schlüssel zu konfigurieren. (T5864)
-
-- Kleopatra: Eine falsche Passphrase bei der symmetrischen
-  Entschlüsselung zeigt nun false Passphrase an und nicht
-  nur fehlerhafter Sitzungsschlüssel. (T5406)
-
-- Kleopatra: Unterstützung für S/MIME Zertifikate auf PKCS#15 Smartcards.
-
-- GpgEX: Es ist nun möglich das Standardkommando über
-  die Windows registry zu konfigurieren. (T5915)
-
-- GnuPG: Dreifache Geschwindigkeit beim entschlüsseln großer Dateien.
-         (T5820)
-    Um diese Verbesserungen voll auszunutzen sollte die Kommandozeile
-    verwendet werden.
-
-- GnuPG: Neue Option "--require-compliance" um einen Fehler zu erzeugen
-  wenn eine Operation nicht der compliance Einstellung entsprach.
-
-- GnuPG: Tar Archive unterstützen nun längere Dateinamen als MAX_PATH.
-  (T5754)
-
-- GnuPG: Unterstützung für GeNUA Smartcards.
-
-- GnuPG: WKD Suche funktioniert nun auch mit DNS Servern welche keine
-  SRV Einträge verarbeiten. (T4729)
-
-- GnuPG: Auf Version 2.2.35 aktualisiert.
-
 --- Bug fixes ---
 
-- Kleopatra: Mehrere Stellen, an denen der Name der
-  Anwendung klein geschrieben wurde, sind angepasst
-  worden. (T5833)
+- Kleopatra: Ein Absturz wenn das Programm beendet
+  wurde, ist behoben. (T5962)
 
-- Kleopatra: Ein Absturz wurde behoben, der auftrat,
-  wenn man eine Beglaubigung zurückzurufen versuchte
-  ohne einen Schlüssel gewählt zu haben. (T5858)
+- GnuPG: Sicherheitsupdate auf 2.2.36 um CVE-2022-34903 zu
+  beheben. (T6027)
 
-- Kleopatra: Der Zertifikatsfilter für nicht beglaubigte
-  Zertifikate zeigt nun nicht mehr alle invaliden
-  Zertifikate an, sondern nur die nicht beglaubigten.
-  (T5850)
-
-- Kleopatra: Erzwingen des Schlüsseltyps über die
-  Konfiguration erzwingt nun auch korrekte
-  Schlüsselverwendungs-Einstellungen. (T5856)
-
-- GpgOL: Eine doppelte Speicherfreigabe wurde behoben,
-  die zu Abstürzen hätte führen können. Diese Speicherfreigabe
-  war nicht als Sicherheitsproblem ausnutzbar.
-
-- GnuPG: Konfigurationswerte aus der Windows Registry werden nun
-  korrekt bei gpgconf --show-configs angezeigt. (T5724)
-
-- GnuPG: Weitere nicht konforme Verschlüsselungsalgorithmen können
-  nun im Konformitätsmodus entschlüsselt werden.
+- GnuPG: Verbesserter Import von PKCS#12 Objekten.
+  (T6037,T5793,T4921,T4757)
 
 3. Hinweise
 ===========

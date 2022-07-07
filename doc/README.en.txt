@@ -66,109 +66,16 @@ Included Gpg4win components in version !VERSION! are:
 New in Gpg4win version !VERSION! (!BUILD_ISODATE!)
 -----------------------------------------
 
---- Accessibility ---
-
-- Kleopatra: OpenPGP and S/MIME key generation are now optimized
-  for accessibility. (T5832)
-
-- Kleopatra: The tab bar for different certificate views is
-  now always shown. (T5841)
-
-- Kleopatra: The certificate view can now be navigated by arrow
-  keys to make it more accessible by keyboard. (T5841)
-
-- Kleopatra: Empty cells in the certificate view now have screen reader
-  specific annotations to make them readable. e.g.: "no name" or
-  "no email". (T5841)
-
-- Kleopatra: Key-IDs and Fingerprints are now read by screen readers
-  in groups of four characters. (T5841)
-
-- Kleopatra: The file encryption dialog has been optimized
-  for accessibility. (T5845)
-
-- Kleopatra: The certificate selection dialog, which can be
-  accessed through the file encryption dialog, has been
-  optimized for accessibility. (T5876)
-
-- Kleopatra: The dialog for adding a User-ID has been
-  rewritten for full accessibility. (T5916)
-
---- Features ---
-
-- Kleopatra: The GnuPG backend can now be restarted
-  through an action in the Extras menu. (T5775)
-
-- Kleopatra: A tooltip highlights why subkeys are needed
-  in the advanced key generation dialog. (T5781)
-
-- Kleopatra: There is now a button in certificate details
-  to copy the fingerprint via clipboard without spaces.
-  (T5776)
-
-- Kleopatra: The smartcard reader settings are now on their
-  own configuration page. (T5857)
-
-- Kleopatra: It is now possible to revoke your own
-  key. (T5859)
-
-- Kleopatra: The dialog for adding a User-ID has been
-  rewritten and now also accepts names starting with
-  numbers. (T5916)
-
-- Kleopatra: It is now possible to configure a minimal
-  and maximal validity period for new keys. (T5864)
-
-- Kleopatra: A wrong passphrase for symmetric decryption
-  now shows as wrong passphrase error. (T5406)
-
-- Kleopatra: Support for using S/MIME certificate from PKCS#15 Smartcards.
-
-- GpgEX: It is now possible to configure the default
-  command through the Windows registry. (T5915)
-
-- GnuPG: Threefold decryption speedup for large files.
-         (T5820)
-    For full use of this improvements use GnuPG on the command line.
-
-- GnuPG: New Option "--require-compliance" to create an error if
-  an Operation did not comply to the compliance setting.
-
-- GnuPG: Tar archives now support longer filenames larger then MAX_PATH.
-  (T5754)
-
-- GnuPG: Support for GeNUA Smartcards.
-
-- GnuPG: WKD lookups now also work for resolvers not handling SRV records.
-  (T4729)
-
-- GnuPG: Updated to 2.2.35.
-
 --- Bug fixes ---
 
-- Kleopatra: Several places where the application name
-  was written in lowercase have been fixed. (T5833)
+- Kleopatra: A crash that occured when exiting
+  the Application has been fixed. (T5962)
 
-- Kleopatra: A crash has been fixed that occurred
-  when revoking a certification without a selected
-  key. (T5858)
+- GnuPG: Security update to 2.2.36 to fix CVE-2022-34903.
+  (T6027)
 
-- Kleopatra: The keylist filter for not certified certificates
-  now only shows not certified keys and not all invalid
-  certificates. (T5850)
-
-- Kleopatra: Forcing the key type through configuration
-  now also forces correct usage flags. (T5856)
-
-- GpgOL: Fixed a double free error which could lead
-  to random crashes. This double free was not
-  exploitable as a security issue.
-
-- GnuPG: Config values from the windows registry are now properly
-  shown with gpgconf --show-configs. (T5724)
-
-- GnuPG: Additional non compliant ciphers can now be decrypted
-  in compliance mode.
+- GnuPG: Improved import of PKCS#12 containers.
+  (T6037,T5793,T4921,T4757)
 
 
 3. Additional notes
