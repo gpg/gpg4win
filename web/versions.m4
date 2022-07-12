@@ -1,22 +1,22 @@
-m4_define(`VERSION',`4.0.2')
-m4_define(`DL_DATE',`2022-04-26')
+m4_define(`VERSION',`4.0.3')
+m4_define(`DL_DATE',`2022-07-12')
 m4_define(`DOWNLOAD_URL',`https://files.gpg4win.org/gpg4win-VERSION.exe')
-m4_define(`DL_SIZE',`27.6 MByte')
+m4_define(`DL_SIZE',`30 MByte')
 m4_define(`SDOWNLOAD_URL',`https://files.gpg4win.org/gpg4win-VERSION.tar.bz2')
-m4_define(`SDL_SIZE',`273 MByte')
+m4_define(`SDL_SIZE',`194 MByte')
 
 m4_dnl Paste output of mk-chksums here
-m4_define(`SHA1_SRC',`7d9bd6cfd189b364a02586159b6b995f1fc7bba2')
-m4_define(`SHA1_EXE',`5bf307c0e7de31e94572d97cca6ef1d8be5008af')
-m4_define(`SHA2_SRC',`5b2dc8df86dac22c4da80c33827b58692e4426bfb99696a67a1ef73688378d96')
-m4_define(`SHA2_EXE',`1583979e2400e6dba6f881db81c5ff72747af3c6b106e9face2323c68793a8a7')
-m4_define(`LEN_SRC',`214952377')
-m4_define(`LEN_EXE',`31002960')
+m4_define(`SHA1_SRC',`c85e62061729a7281d9e505e2ebc963e3e4a2807')
+m4_define(`SHA1_EXE',`fd6d785c68f3f86f107f9cc02cd3fae84d3fd730')
+m4_define(`SHA2_SRC',`8a67cfda81cadf05b09b10f4bfacb2dcd98743a508e3ef845bd65026b6267aa2')
+m4_define(`SHA2_EXE',`c3396b065cae3078ddd9f70899ae89ae21a02acdcd1667d32951f9060ea7d120')
+m4_define(`LEN_SRC',`203144191')
+m4_define(`LEN_EXE',`31078944')
 m4_dnl end paste
 
 m4_define(`DLPAGE',`I18N(`EN',`download.html')`'I18N(`DE',`download-de.html')')
 m4_define(`SOFTWAREOVERVIEW',`
-I18N(`EN', `<a href="https://www.gnupg.org/">GnuPG</a>')I18N(`DE', `<a href="https://www.gnupg.org/index.de.html">GnuPG</a>') 2.3.6
+I18N(`EN', `<a href="https://www.gnupg.org/">GnuPG</a>')I18N(`DE', `<a href="https://www.gnupg.org/index.de.html">GnuPG</a>') 2.3.7
 <a href="https://www.kde.org/applications/utilities/kleopatra/">Kleopatra</a> 3.1.22
 I18N(`EN', `<a href="https://www.gnupg.org/related_software/gpa/index.html">GPA</a>')I18N(`DE', `<a href="https://www.gnupg.org/related_software/gpa/index.de.html">GPA</a>') 0.10.0
 <a href="https://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpgol.git;a=summary">GpgOL</a> 2.5.3
