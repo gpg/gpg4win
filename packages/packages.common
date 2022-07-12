@@ -584,8 +584,8 @@ server https://files.intevation.de/projects/gpg4all
 # gpgme-beta
 # by ah
 # verified: buildtree
-file gpgme/gpgme-1.17.2-beta52.tar.bz2
-chk cf2e701d1c73f2422ddc6cd3a3aa2797ba8940bb0d1180e1f56117be0749b904
+file gpgme/gpgme-1.17.2-beta65.tar.bz2
+chk be2245dc5181e4bf13007215ce859ff2617b80e2c3ac7f0cfca70f5192658cfc
 
 #by ah
 #file scute/scute-1.6.0-beta187.tar.bz2
