@@ -59,6 +59,7 @@
       </a>
       </span>')
    <p></p>
+   <small>2021-12-21</small><br>
    <span class="serif_word"><img src="img/bulletin.png" alt"" />
      m4_ifelse(LANG_DE, `1', `
       <a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2021/000058.html">
