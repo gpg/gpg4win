@@ -3,11 +3,32 @@
 # The version number given below are for the standard installers as
 # distributed by www.gpg4win.org.
 
-Noteworthy changes in Version 3.1.24 (unreleased)
+Noteworthy changes in Version 4.0.3 (2022-07-12)
 -------------------------------------------------
 
+--- Bug fixes ---
+
+(en) Kleopatra: A crash that occured when exiting
+     the Application has been fixed. (T5962)
+
+(de) Kleopatra: Ein Absturz wenn das Programm beendet
+     wurde, ist behoben. (T5962)
+
+(en) GnuPG: Security update to 2.3.7 to fix CVE-2022-34903.
+     (T6027)
+
+(de) GnuPG: Sicherheitsupdate auf 2.3.7 um CVE-2022-34903 zu
+     beheben. (T6027)
+
+(en) GnuPG: Improved import of PKCS#12 containers.
+     (T6037,T5793,T4921,T4757)
+
+(de) GnuPG: Verbesserter Import von PKCS#12 Objekten.
+     (T6037,T5793,T4921,T4757)
+
+
 ~~~~~~~~~~~~~~~
-GnuPG:          2.2.36
+GnuPG:          2.3.7
 Kleopatra:      3.1.22
 GPA:            0.10.0
 GpgOL:          2.5.3

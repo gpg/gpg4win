@@ -71,7 +71,7 @@ New in Gpg4win version !VERSION! (!BUILD_ISODATE!)
 - Kleopatra: A crash that occured when exiting
   the Application has been fixed. (T5962)
 
-- GnuPG: Security update to 2.2.36 to fix CVE-2022-34903.
+- GnuPG: Security update to 2.3.7 to fix CVE-2022-34903.
   (T6027)
 
 - GnuPG: Improved import of PKCS#12 containers.
