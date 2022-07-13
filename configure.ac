@@ -359,7 +359,7 @@ if test "$build_gpg4win" = yes ; then
     GPG4WIN_KDEPKG([kcrash], [kwindowsystem kcoreaddons])
     GPG4WIN_KDEPKG([kiconthemes], [qtsvg kconfigwidgets karchive])
     GPG4WIN_KDEPKG([kxmlgui], [kiconthemes kconfigwidgets kitemviews])
-    GPG4WIN_KDEPKG([libkleo], [kmime kwidgetsaddons kwindowsystem kcompletion kconfig gpgme])
+    GPG4WIN_KDEPKG([libkleo], [kmime kconfigwidgets kwindowsystem kcompletion gpgme])
     GPG4WIN_KDEPKG([gpg4win-tools], [libkleo gpgme])
 
     GPG4WIN_FINALIZE
@@ -422,9 +422,9 @@ if test "$build_appimage" = yes ; then
     APPIMAGE_KDEPKG([kxmlgui], [kiconthemes kconfigwidgets kitemviews])
 
     # snapshot of libkleo without translations; needs kde-l10n
-    APPIMAGE_KDEPKG([libkleo], [kmime kwidgetsaddons kwindowsystem kcompletion kconfig gpgme kde-l10n])
+    APPIMAGE_KDEPKG([libkleo], [kmime kconfigwidgets kwindowsystem kcompletion gpgme kde-l10n])
     # (release) tarball of libkleo with translations
-    #APPIMAGE_KDEPKG([libkleo], [kmime kwidgetsaddons kwindowsystem kcompletion kconfig gpgme])
+    #APPIMAGE_KDEPKG([libkleo], [kmime kconfigwidgets kwindowsystem kcompletion gpgme])
 
     # snapshot of kleopatra without translations; needs kde-l10n
     APPIMAGE_KDEPKG([kleopatra], [gnupg gpgme breeze-icons kxmlgui libkleo kitemmodels qttranslations kdbusaddons kde-l10n])
