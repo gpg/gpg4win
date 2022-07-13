@@ -44,7 +44,7 @@
    <span class="serif_word"><img src="img/bulletin.png" alt"" />
      m4_ifelse(LANG_DE, `1', `
       <a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2022/000060.html">Gpg4win 4.0.3 veröffentlicht</a></span>',`
-      <a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce/2021-October/000096.html">
+      <a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce/2022/000097.html">
         Gpg4win 4.0.3 released
       </a></span>')
    <p></p>
