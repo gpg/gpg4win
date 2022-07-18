@@ -4,8 +4,8 @@
 
   <li>Installieren Sie Gpg4win.
 
-  <li>Erstellen Sie sich ein OpenPGP-Schlüsselpaar mit Kleopatra.
-  (Oder importieren sich ein Bestehendes.)
+  <li>Erstellen Sie sich ein OpenPGP-Schlüsselpaar (oder importieren sich ein Bestehendes)
+      mit Kleopatra, das standardmäßig zusammen mit Gpg4win installiert wird.
 
   <li>
   Signieren/verschlüsseln Sie zum Test eine Datei oder eine E-Mail an sich
