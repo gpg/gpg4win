@@ -34,10 +34,6 @@ img {
  margin: 0px 20px 30px 0px;
 }
 
-.flex-container{
-    display: flex;
-}
-
 td {
  vertical-align: top;
 }
@@ -341,7 +337,6 @@ input[type='range']::-moz-range-thumb {
 
 .content {
  width: 100%;
- max-width: 100vw;
 }
 
 #intro {
@@ -377,7 +372,10 @@ input[type='range']::-moz-range-thumb {
 }
 
 .column1, .column2, .column3 {
+ display: inline;
+ float: left;
  margin-right: 25px;
+ position: relative;
  width: 270px;
 }
 
@@ -1034,34 +1032,4 @@ input[type=number] {
 
 .switches{
   width: 100%;
-}
-
-@media screen and (max-width: 800px){
-    #intro {
-        padding: 0px 20px 20px 20px;
-    }
-    
-    #main {
-        width: unset;
-        padding-right: 20px;
-    }
-    
-    .flex-container{
-        flex-direction: column;
-    }
-    
-    .column1, .column2, .column3 {
-        width: unset;
-        max-width: 90vw;
-    }
-    
-    #footer{
-        height: unset;
-    }
-    
-    #sitemap{
-    display: flex;
-    max-width: 90vw;
-    flex-wrap: wrap;
-    }
 }

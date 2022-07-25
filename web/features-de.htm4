@@ -24,8 +24,6 @@ Erfahren Sie hier, welche Funktionen in Gpg4win stecken!</p>
     
 <h2>Sicherheit</h2>
 
-<div class="flex-container">
-    
 <div class="column1">
 <h4>OpenPGP & S/MIME</h4>
 <p>Gpg4win unterstützt die beiden kryptografischen Standards OpenPGP und S/MIME (X.509).</p>
@@ -57,8 +55,6 @@ kommt RSA zum Einsatz.</p>
 SmartCards für OpenPGP und S/MIME. Technische Details (in Englisch) finden Sie bei <a
 href="http://www.gnupg.org/documentation/howtos.de.html#GnuPG-cardHOWTO">GnuPG</a>.</p>
 <img src="img/gnupg.png">
-</div>
-
 </div>
 
 <br clear="all"/>
