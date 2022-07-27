@@ -48,7 +48,9 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
              patches/kconfigwidgets/0001-Make-QDbus-optional.patch \
              patches/kconfigwidgets/0001-Fix-crash-on-exit-on-Windows.patch \
              patches/kiconthemes/0001-Make-DBus-optional.patch \
+             patches/kconfig/0001-Read-defaults-from-Windows-registry.patch \
              patches/kleopatra/set-cxx-standard.patch \
+             patches/kleopatra/set-windows-registry-key.patch \
              patches/kxmlgui/0001-make-qdbus-optional.patch \
              patches/kxmlgui/0004-Cruedly-disable-KSendbugmail.patch \
              patches/libkleo/set-cxx-standard.patch \

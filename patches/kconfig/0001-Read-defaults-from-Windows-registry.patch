@@ -1,0 +1,356 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From 54c42272973084b80caa4f3c825cfe9969e2c875 Mon Sep 17 00:00:00 2001
+From: Andre Heinecke <aheinecke@gnupg.org>
+Date: Wed, 27 Jul 2022 11:40:44 +0200
+Subject: [PATCH] Read defaults from Windows registry
+
+This optionally enables an application to define a Windows
+registry key in which defaults are looked up. This allows
+KDE Software to be configured under Windows through Group
+Policies.
+
+Keys below this key are treated as configuration
+groups. Values below this key are treated as values
+of the default group.
+
+To add a key to a group create a subkey under regKey and
+add the value in this group with type REG_SZ.
+
+Immutable groups or values can be suffixed with [$i].
+
+The values are read from HKLM and treated as defaults.
+---
+ src/core/CMakeLists.txt   |   5 ++
+ src/core/kconfig.cpp      |  24 ++++++
+ src/core/kconfig.h        |  24 ++++++
+ src/core/kconfig_p.h      |   1 +
+ src/core/registry_win.cpp | 160 ++++++++++++++++++++++++++++++++++++++
+ src/core/registry_win_p.h |  14 ++++
+ 6 files changed, 228 insertions(+)
+ create mode 100644 src/core/registry_win.cpp
+ create mode 100644 src/core/registry_win_p.h
+
+diff --git a/src/core/CMakeLists.txt b/src/core/CMakeLists.txt
+index ec1e4995..e37ad3d6 100644
+--- a/src/core/CMakeLists.txt
++++ b/src/core/CMakeLists.txt
+@@ -1,6 +1,10 @@
+ add_library(KF5ConfigCore)
+ add_library(KF5::ConfigCore ALIAS KF5ConfigCore)
+
++if (WIN32)
++   set(kconfig_extra_src registry_win.cpp)
++endif()
++
+ target_sources(KF5ConfigCore PRIVATE
+    kconfig.cpp
+    kconfigbase.cpp
+@@ -14,6 +18,7 @@ target_sources(KF5ConfigCore PRIVATE
+    kauthorized.cpp
+    kemailsettings.cpp
+    kconfigwatcher.cpp
++   ${kconfig_extra_src}
+ )
+
+ ecm_qt_declare_logging_category(KF5ConfigCore
+diff --git a/src/core/kconfig.cpp b/src/core/kconfig.cpp
+index 22ae0b54..ace4dc29 100644
+--- a/src/core/kconfig.cpp
++++ b/src/core/kconfig.cpp
+@@ -43,6 +43,8 @@
+ #include <QDBusMetaType>
+ #endif
+
++#include "registry_win_p.h"
++
+ bool KConfigPrivate::mappingsRegistered = false;
+
+ // For caching purposes
+@@ -584,6 +586,7 @@ struct KConfigStaticData {
+     QString globalMainConfigName;
+     // Keep a copy so we can use it in global dtors, after qApp is gone
+     QStringList appArgs;
++    QString globalRegKey;
+ };
+ Q_GLOBAL_STATIC(KConfigStaticData, globalData)
+
+@@ -592,6 +595,16 @@ void KConfig::setMainConfigName(const QString &str)
+     globalData()->globalMainConfigName = str;
+ }
+
++void KConfig::setWindowsRegistryKey(const QString &regKey)
++{
++    globalData()->globalRegKey = regKey;
++}
++
++QString KConfig::windowsRegistryKey()
++{
++    return globalData()->globalRegKey;
++}
++
+ QString KConfig::mainConfigName()
+ {
+     KConfigStaticData *data = globalData();
+@@ -682,6 +695,9 @@ void KConfig::reparseConfiguration()
+         d->parseGlobalFiles();
+     }
+
++    // Parse the windows registry defaults if desired
++    d->parseWindowsDefaults();
++
+     d->parseConfigFiles();
+ }
+
+@@ -750,6 +766,14 @@ void KConfigPrivate::parseGlobalFiles()
+     sGlobalParse->localData().insert(key, new ParseCacheValue({entryMap, newest}));
+ }
+
++void KConfigPrivate::parseWindowsDefaults()
++{
++    const QString regKey = KConfig::windowsRegistryKey ();
++    if (!regKey.isEmpty()) {
++        parseWindowsRegistry(regKey, entryMap);
++    }
++}
++
+ void KConfigPrivate::parseConfigFiles()
+ {
+     // can only read the file if there is a backend and a file name
+diff --git a/src/core/kconfig.h b/src/core/kconfig.h
+index c8ca0ca3..28c93fba 100644
+--- a/src/core/kconfig.h
++++ b/src/core/kconfig.h
+@@ -372,6 +372,30 @@ public:
+      */
+     static QString mainConfigName();
+
++    /**
++     * Optionally add a Windows registry key to use.
++     *
++     * Keys below this key are treated as configuration
++     * groups. Values below this key are treated as values
++     * of the default group.
++     *
++     * To add a key to a group create a subkey under regKey and
++     * add the value in this group with type REG_SZ.
++     *
++     * Immutable groups or values can be suffixed with [$i].
++     *
++     * The values are read from HKLM and treated as defaults.
++     *
++     * @since 5.98
++     */
++    static void setWindowsRegistryKey(const QString &regKey);
++
++    /**
++     * Get the registry key under which additional values are parsed.
++     * @since 5.98
++     */
++    static QString windowsRegistryKey();
++
+ protected:
+     bool hasGroupImpl(const QByteArray &group) const override;
+     KConfigGroup groupImpl(const QByteArray &b) override;
+diff --git a/src/core/kconfig_p.h b/src/core/kconfig_p.h
+index 60604477..72b21629 100644
+--- a/src/core/kconfig_p.h
++++ b/src/core/kconfig_p.h
+@@ -104,6 +104,7 @@ private:
+     bool setLocale(const QString &aLocale);
+     QStringList getGlobalFiles() const;
+     void parseGlobalFiles();
++    void parseWindowsDefaults();
+     void parseConfigFiles();
+     void initCustomized(KConfig *);
+     bool lockLocal();
+diff --git a/src/core/registry_win.cpp b/src/core/registry_win.cpp
+new file mode 100644
+index 00000000..0f1a876b
+--- /dev/null
++++ b/src/core/registry_win.cpp
+@@ -0,0 +1,160 @@
++/*
++    This file is part of the KDE libraries
++    SPDX-FileCopyrightText: 2022 g10 Code GmbH
++    SPDX-FileContributor: Andre Heinecke <aheinecke@gnupg.com>
++
++    SPDX-License-Identifier: LGPL-2.0-or-later
++*/
++#include "registry_win_p.h"
++#include "kconfig_core_log_settings.h"
++
++#include <windows.h>
++
++void parseRegValues(const QString &regKey, const QString &groupName, KEntryMap &entryMap)
++{
++    const bool groupOptionImmutable = regKey.endsWith(QStringLiteral("[$i]"));
++    HKEY key;
++    if (RegOpenKeyExW(HKEY_LOCAL_MACHINE,
++                      (wchar_t *) regKey.utf16(),
++                      0, KEY_ENUMERATE_SUB_KEYS | KEY_READ,
++                      &key) != ERROR_SUCCESS) {
++        qCWarning(KCONFIG_CORE_LOG) << "Failed to open HKLM" << regKey;
++        return;
++    }
++    DWORD values = 0,
++          maxNameLen = 0,
++          maxValueLen = 0;
++
++    DWORD err = RegQueryInfoKey (key,
++                                 nullptr,
++                                 nullptr,
++                                 nullptr,
++                                 nullptr,
++                                 nullptr,
++                                 nullptr,
++                                 &values,
++                                 &maxNameLen,
++                                 &maxValueLen,
++                                 nullptr,
++                                 nullptr);
++
++    if (err != ERROR_SUCCESS) {
++        qCWarning(KCONFIG_CORE_LOG) << "Failed to query key info for" << regKey;
++        RegCloseKey(key);
++        return;
++    }
++
++    maxNameLen++;
++    maxValueLen++;
++    wchar_t *name = new wchar_t[maxNameLen + 1];
++    wchar_t *value = new wchar_t[maxValueLen + 1];
++    for (DWORD i = 0; i < values; i++) {
++        DWORD nameLen = maxNameLen;
++        err = RegEnumValueW(key, i,
++                            name,
++                            &nameLen,
++                            nullptr,
++                            nullptr,
++                            nullptr,
++                            nullptr);
++
++        if (err != ERROR_SUCCESS){
++            qCWarning(KCONFIG_CORE_LOG) << "Failed to enum value " << i;
++            continue;
++        }
++
++        DWORD type;
++        DWORD valueLen = maxValueLen;
++        err = RegQueryValueExW(key, name,
++                               NULL, &type,
++                               (BYTE*)value, &valueLen);
++
++        if (err != ERROR_SUCCESS) {
++            qCWarning(KCONFIG_CORE_LOG) << "Failed to query value " << name;
++            continue;
++        }
++        // Only accept plain string values
++        if (type != REG_SZ) {
++            qCWarning(KCONFIG_CORE_LOG) << "Invalid type for value " << name;
++            continue;
++        }
++        KEntryMap::EntryOptions entryOptions = KEntryMap::EntryDefault;
++        if (groupOptionImmutable) {
++            entryOptions |= KEntryMap::EntryImmutable;
++        }
++
++        QString entryName = QString::fromWCharArray(name, nameLen);
++        const QString valueString = QString::fromWCharArray(value, (valueLen / sizeof (wchar_t)) - 1);
++        if (entryName.endsWith(QStringLiteral("[$i]"))) {
++            entryOptions |= KEntryMap::EntryImmutable;
++            entryName.chop(4);
++        }
++        entryMap.setEntry(groupName.toUtf8(), entryName.toUtf8(), valueString.toUtf8(), entryOptions);
++        qDebug () << "Adding Entry" << entryName << valueString << "to group" << groupName << "value len" << valueLen;
++    }
++    delete[] name;
++    delete[] value;
++    RegCloseKey(key);
++}
++
++void parseWindowsRegistry(const QString &regKey, KEntryMap &entryMap)
++{
++    // Parse default group
++    parseRegValues(regKey, QStringLiteral("<default>"), entryMap);
++
++    // Enumerate the subkeys (groups)
++    HKEY key;
++    if (RegOpenKeyEx(HKEY_LOCAL_MACHINE,
++                     (wchar_t *)regKey.utf16(),
++                     0, KEY_ENUMERATE_SUB_KEYS | KEY_READ,
++                     &key) != ERROR_SUCCESS) {
++        qCWarning(KCONFIG_CORE_LOG) << "Failed to open HKLM" << regKey;
++        return;
++    }
++
++    DWORD subKeys = 0,
++          maxSubKeyLen = 0;
++    DWORD err = RegQueryInfoKey(key,
++                                nullptr,
++                                nullptr,
++                                nullptr,
++                                &subKeys,
++                                &maxSubKeyLen,
++                                nullptr,
++                                nullptr,
++                                nullptr,
++                                nullptr,
++                                nullptr,
++                                nullptr);
++
++    if (err != ERROR_SUCCESS) {
++        qCWarning(KCONFIG_CORE_LOG) << "Failed to query key info for" << regKey;
++        RegCloseKey(key);
++        return;
++    }
++
++    maxSubKeyLen++;
++    wchar_t *subKey = new wchar_t[maxSubKeyLen + 1];
++    for (DWORD i = 0; i < subKeys; i++) {
++        DWORD keyLen = maxSubKeyLen;
++        err = RegEnumKeyEx(key, i,
++                           subKey,
++                           &keyLen,
++                           nullptr,
++                           nullptr,
++                           nullptr,
++                           nullptr);
++        if (err != ERROR_SUCCESS) {
++            qCWarning(KCONFIG_CORE_LOG) << "Failed to enum value " << i;
++            continue;
++        }
++        QString subKeyName = QString::fromWCharArray(subKey, keyLen);
++        QString subReg = regKey + QLatin1Char('\\') + subKeyName;
++        if (subKeyName.endsWith(QStringLiteral("[$i]"))) {
++            subKeyName.chop(4);
++        }
++        parseRegValues (subReg, subKeyName, entryMap);
++    }
++    delete[] subKey;
++    RegCloseKey(key);
++}
+diff --git a/src/core/registry_win_p.h b/src/core/registry_win_p.h
+new file mode 100644
+index 00000000..1cf2ab74
+--- /dev/null
++++ b/src/core/registry_win_p.h
+@@ -0,0 +1,14 @@
++/*
++    This file is part of the KDE libraries
++    SPDX-FileCopyrightText: 2022 g10 Code GmbH
++    SPDX-FileContributor: Andre Heinecke <aheinecke@gnupg.com>
++
++    SPDX-License-Identifier: LGPL-2.0-or-later
++*/
++#include "kconfigdata_p.h"
++
++#ifdef Q_OS_WIN
++void parseWindowsRegistry(const QString &regKey, KEntryMap &entryMap);
++#else
++void parseWindowsRegistry(const QString &, KEntryMap &) {}
++#endif
+--
+2.30.2

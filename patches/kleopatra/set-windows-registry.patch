@@ -1,0 +1,16 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+diff --git a/src/kleopatraapplication.cpp b/src/kleopatraapplication.cpp
+index bbbd0172..7236e555 100644
+--- a/src/kleopatraapplication.cpp
++++ b/src/kleopatraapplication.cpp
+@@ -241,6 +241,7 @@ void KleopatraApplication::init()
+ #ifdef Q_OS_WIN
+     QWindowsWindowFunctions::setWindowActivationBehavior(
+             QWindowsWindowFunctions::AlwaysActivateWindow);
++    KConfig::setWindowsRegistryKey("SOFTWARE\\GNU\\Kleopatra");
+ #endif
+     const auto blockedUrlSchemes = Settings{}.blockedUrlSchemes();
+     for (const auto &scheme : blockedUrlSchemes) {
