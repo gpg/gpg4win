@@ -1065,8 +1065,7 @@ input[type=number] {
   }
 
   body{
-    padding: 6pt;
-    padding-left: 10pt;
+    padding: 6pt 10pt;
   }
 
   .wrapper{
@@ -1160,7 +1159,7 @@ input[type=number] {
   }
 
   #menu-button{
-    display: block;
+    display: none;
     opacity: 0;
   }
 
@@ -1334,6 +1333,10 @@ input[type=number] {
     max-width: 90%;
   }
 
+  #download-button-container{
+    order: 1;
+  }
+
   #download_button{
     position: initial;
     width: 150pt;
@@ -1385,6 +1388,7 @@ input[type=number] {
     font-size: 0.8rem;
     border: none;
     padding-left: 0pt;
+    order: 2;
   }
 
   .h_text .serif_word{
@@ -1392,13 +1396,16 @@ input[type=number] {
   }
 
   .content{
-    width: 95%;
     margin: 0pt;
   }
 
   #intro{
     max-width: 100%;
-    width: initial;
+    width: fit-content;
+    padding-left: 0pt;
+  }
+
+  #main{
     padding-left: 0pt;
   }
 
