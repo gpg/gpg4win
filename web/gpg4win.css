@@ -404,7 +404,6 @@ input[type='range']::-moz-range-thumb {
 
 
 #main {
- float: left;
  padding: 0px 0px 0px 20px;
  width: 600px;
 }
@@ -825,35 +824,60 @@ hr {
 
 /* donation form */
 .tabs{
-	list-style: none;
+  position: relative;
 	width: 100%;
-	float: left;
 	height: 290px;
+  display: grid;
+  grid-template-columns: 20pt auto 2fr;
+  grid-template-rows: 20pt 20pt 20pt 20pt auto;
 	padding-left: 0;
-	position: relative;
 }
-.tabs li label[for^=tab]{
-	clear: right;
+.tabs > p, #tab1, #tab2, #tab3{
+  grid-column-start: 1;
+}
+.tabs > p{
+  grid-column-end: 3;
+}
+#tab1, #tab2, #tab3{
+  justify-self: start;
+}
+.tabs label[for="tab1"], .tabs label[for="tab2"], .tabs label[for="tab3"]{
+  grid-column-start: 2;
+}
+#tab1, .tabs label[for="tab1"]{
+  grid-row-start: 2;
+}
+#tab2, .tabs label[for="tab2"]{
+  grid-row-start: 3;
+}
+#tab3, .tabs label[for="tab3"]{
+  grid-row-start: 4;
+}
+.tabs label[for^=tab]{
 	margin-right: 10px	 !important;
 	background-color: transparent;
 	border: none;
 	border-radius: 4px;
 	width: 120px;
-	text-align: center;
+  align-self: center;
 }
 .tabs .tab-content{
 	display: none;
-	position: absolute;
 	overflow: hidden;
-	right: 0;
-	top: 0;
-	width: 68%;
-	height: 100%;
 	border-left: 1px dotted #ccc;
 	padding-left: 20px;
+  grid-column: 3;
+  grid-row-start: 1;
+  grid-row-end: 6;
 }
-.tabs [id^="tab"]:checked ~ [id$="_tab"]{
+.tabs #tab1:checked ~ #paypal_tab, .tabs #tab2:checked ~ #bitcoin_tab, .tabs #tab3:checked ~ #transfer_tab{
+  display: block;
+}
+/*.tabs [id^="tab"]:checked ~ [id$="_tab"]{
 	display: block;
+}*/
+.tabs input{
+  max-height: 20pt;
 }
 .download_div{
 	display:none;
