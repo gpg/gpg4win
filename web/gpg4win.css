@@ -870,7 +870,9 @@ hr {
   grid-row-start: 1;
   grid-row-end: 6;
 }
-.tabs #tab1:checked ~ #paypal_tab, .tabs #tab2:checked ~ #bitcoin_tab, .tabs #tab3:checked ~ #transfer_tab{
+.tabs #tab1:checked ~ #paypal_tab,
+.tabs #tab2:checked ~ #bitcoin_tab,
+.tabs #tab3:checked ~ #transfer_tab{
   display: block;
 }
 /*.tabs [id^="tab"]:checked ~ [id$="_tab"]{
@@ -1451,4 +1453,17 @@ input[type=number] {
     padding-left: 0pt;
   }
 
+  .tabs{
+    height: initial;
+    grid-template-columns: 20pt auto auto;
+    grid-template-rows: 20pt 20pt 20pt 20pt auto;
+    padding-left: 0;
+  }
+
+  .tabs .tab-content{
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 5;
+    margin-top: 12pt;
+  }
 }
