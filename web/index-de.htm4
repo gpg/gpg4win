@@ -10,7 +10,7 @@ m4_define(`FANCY_HEADER')
 
 PAGE_START
 
-<div id="intro" style="float:left; padding-right:0; width:600px;">
+<div id="intro" style="float:left; padding-right:0;">
     <span></span>
     <h2>Gpg4win - eine sichere Lösung...</h2>
     <p>

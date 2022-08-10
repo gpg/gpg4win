@@ -53,6 +53,14 @@ td {
  height: 100%;
 }
 
+#menu-button, #menu-button-label{
+  display: none;
+}
+
+#header-logo{
+  display: none;
+}
+
 .logo {
  margin-top: 20px;
  margin-left: 15px;
@@ -65,14 +73,21 @@ td {
 }
 
 .fancy_intro {
- background: url('img/fancy_bg.png') no-repeat;
- background-position: 276px 0px;
- height:250px;
  margin: 0 20px 25px 14px;
  border-bottom:1px solid gray;
  overflow: hidden;
  width:870px;
  padding-bottom: 15px;
+ display: flex;
+}
+
+#fancy_bg{
+  max-width: 450px;
+  height: auto;
+}
+
+#intro{
+  width: 600px;
 }
 
 .mini_intro {
@@ -80,6 +95,10 @@ td {
  font-size: 12px;
  line-height: 38px;
  margin-top: 8px;
+}
+
+#download-button-container{
+  margin-right: 20pt;
 }
 
 #download_button {
@@ -156,6 +175,7 @@ td {
 .download_button_links {
  font-size:11px;
  position: relative;
+ display: flex;
  left: 25px;
  top: 43px;
  width: 250px;
@@ -195,7 +215,6 @@ td {
 a>.donateButton{
   margin-top: 40px;
 }
-
 
 .donate_box blockquote {
     line-height: 150%;
@@ -303,10 +322,6 @@ input[type='range']::-moz-range-thumb {
 }
 
 .h_text {
- position: relative;
- top: -125px;
- left: 656px;
- width: 202px;
  font-size: 11px;
  border-left: 1px solid #CCCCCC;
  padding-left: 10px;
@@ -557,7 +572,6 @@ input[type='range']::-moz-range-thumb {
 }
 
 #menu .mwhatsnew div {
- font-size: 120%;
  padding-top: 10px;
  line-height: 24px;
 }
@@ -1032,4 +1046,378 @@ input[type=number] {
 
 .switches{
   width: 100%;
+}
+
+@media screen and (max-width: 800px){
+  :root{
+    --gpg4win-gradient: linear-gradient(to bottom, #ffd987, #ffc853 4%, #f4b836, #ffc343 99%, #ffdf99);
+  }
+
+  *{
+    max-width: 100%;
+    font-size: 1rem;
+  }
+  
+  html, body{
+    position: relative;
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+
+  body{
+    padding: 6pt;
+    padding-left: 10pt;
+  }
+
+  .wrapper{
+    width: 100%;
+    margin: 0px;
+  }
+  
+  .language_select{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    column-gap: 4pt;
+    margin-bottom: 12pt;
+    padding-right: 4pt;
+  }
+
+  .language_select *{
+    font-size: 1rem;
+    width: auto;
+  }
+
+  .language_select img{
+    min-height: 100%;
+    width: 20pt;
+  }
+
+  .header{
+    height: initial;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #logo-container{
+    position: relative;
+    left: -10pt;
+    max-width: initial;
+    width: 110%;
+    background: linear-gradient(to bottom, #ffd987, #ffc853 4%, #f4b836, #ffc343 99%, #ffdf99);
+    border-top: solid black 1px;
+    border-bottom: solid black 1px;
+    padding-top: 8pt;
+  }
+
+  #header-logo{
+    display: block;
+    min-height: 30pt;
+    max-height: 50pt;
+    width: auto;
+  }
+
+  .header a{
+    display: block;
+    width: max-content;
+  }
+
+  #menu-container{
+    height: auto;
+    width: calc(100% - 34pt);
+    height: 100vh;
+    background-color: white;
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    right: calc(-100% + 34pt);
+    overflow-y: auto;
+    animation-name: slide-menu-out;
+    animation-duration: 0.3s;
+    animation-timing-function: ease-in-out;
+  }
+
+  #menu-button:checked ~ #menu-container{
+    right: 0pt;
+    animation-name: slide-menu-in;
+    animation-duration: 0.4s;
+    animation-timing-function: ease-in-out;
+  }
+
+  @keyframes slide-menu-in {
+    0%{right: calc(-100% + 34pt)}
+    100%{right: 0pt}
+  }
+
+  @keyframes slide-menu-out {
+    0%{right: 0pt}
+    100%{right: calc(-100% + 34pt)}
+  }
+
+  #menu{
+    padding: 8pt;
+    padding-bottom: 20pt;
+  }
+
+  #menu-button{
+    display: block;
+    opacity: 0;
+  }
+
+  #menu-button-label{
+    display: block;
+    z-index: 2;
+    order: 1;
+    height: 34pt;
+    width: 34pt;
+    background: none;
+    position: absolute;
+    top: 54pt;
+    right: 0pt;
+    animation-name: slide-menu-button-out;
+    animation-duration: 0.3s;
+    animation-timing-function: ease-in-out;
+  }
+
+  #menu-button-image-container{
+    background-color: rgba(255, 255, 255, 0);
+    position: relative;
+    z-index: 3;
+    padding: 4pt;
+  }
+
+  #menu-button:checked ~ #menu-button-label{
+    right: calc(100% - 34pt);
+    background: none;
+    animation-name: slide-menu-button-in;
+    animation-duration: 0.4s;
+    animation-timing-function: ease-in-out;
+  }
+
+  @keyframes slide-menu-button-in {
+    0%{right: 0pt;}
+    100%{right: calc(100% - 34pt);}
+  }
+
+  @keyframes slide-menu-button-out {
+    0%{right: calc(100% - 34pt);}
+    100%{right: 0pt;}
+  }
+
+  #menu-shadow{
+    position: absolute;
+    left: -100vw;
+    top: -50vh;
+    width: 200vw;
+    height: 0pt;
+    max-width: 200vw;
+    max-height: 200vh;
+    z-index: -1;
+    background-color: rgba(0, 0, 0, 0.7);
+    opacity: 0;
+    animation-name: fade-out;
+    animation-duration: 0.3s;
+  }
+
+  #menu-button:checked ~ #menu-button-label #menu-shadow{
+    animation-name: fade-in;
+    animation-duration: 0.4s;
+    opacity: 1;
+    height: 200vh;
+  }
+
+  @keyframes fade-in {
+    0%{opacity: 0; height: 200vh;}
+    100%{opacity: 1; height: 200vh;}
+  }
+
+  @keyframes fade-out {
+    0%{opacity: 1; height: 200vh;}
+    100%{opacity: 0; height: 200vh;}
+  }
+
+  #menu ul{
+    display: flex;
+    flex-direction: column;
+  }
+
+  #menu li{
+    text-align: left;
+  }
+
+  #menu ul a, #menu ul a:hover,
+  #menu .mwhatsnew a, #menu .mwhatsnew a:hover,
+  #menu .mwhatsnew a, #menu .mwhatsnew a:hover,
+  #menu ul a, #menu ul a:hover,
+  #menu .mdonate a, #menu .mdonate a:hover,
+  #menu ul li ul li a{
+    width: 95%;
+    margin-bottom: 6px;
+    padding-left: 6pt;
+    border-radius: 2pt;
+    font-size: 1rem;
+  }
+
+  #menu ul a, #menu ul a:hover, #menu .mwhatsnew a, #menu .mwhatsnew a:hover, #menu .mwhatsnew a, #menu .mwhatsnew a:hover, #menu ul a, #menu ul a:hover{
+    background: linear-gradient(to bottom, #fdedbb, #efce6c, #fde085);
+    background: var(--gpg4win-gradient);
+  }
+
+  #menu .mlogo{
+    margin-bottom: 10px;
+  }
+
+  #menu .mlogo a{
+    background: none;
+    background-image: url('img/src/gpg4win_logo.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    top: unset;
+  }
+
+  #menu .mlogo a:hover{
+    background: none;
+    background-image: url('img/src/gpg4win_logo.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  #menu .mwhatsnew div {
+    font-size: 1rem;
+   }
+
+  #menu ul li ul{
+    display: flex;
+    flex-direction: column;
+    position: inherit;
+    width: 80%;
+  }
+
+  #menu ul li ul li{
+    width: 100%;
+    min-height: 30pt;
+    background-color: #fde085;
+    margin-bottom: 4pt;
+    display: flex;
+    align-items: center;
+  }
+
+  #menu ul li ul li a{
+    width: 100%;
+    background: none;
+    border: none;
+    line-height: -50%;
+  }
+
+  .mbetween{
+    display: none;
+  }
+
+  #menu ul li .subcap{
+    display: none;
+  }
+
+  #menu .mdonate a, #menu .mdonate a:hover{
+    float: initial;
+    text-indent: 0pt;
+    background: none;
+    background-image: linear-gradient(to bottom, #a3d97f, #54c010, #63c322);
+  }
+
+  .fancy_intro{
+    flex-direction: column;
+    border: none;
+    margin-left: 0pt;
+  }
+
+  #fancy_bg{
+    max-width: 90%;
+  }
+
+  #download_button{
+    position: initial;
+    width: 150pt;
+    max-height: 70pt;
+    border: solid #707070 1px;
+    border-radius: 4pt;
+    background: linear-gradient(to bottom, #94d36b 1%, #b8e29d 2%, #92d267 3%,  #54c010 40%, #63c322);
+    margin-bottom: 6pt;
+  }
+
+  #download_button a{
+    background: none;
+    height: 50pt;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #download_button .text{
+    position: inherit;
+  }
+
+  .download_button_links{
+    position: initial;
+    font-size: 1rem;
+    width: initial;
+    column-gap: 3pt;
+    margin-bottom: 10pt;
+  }
+
+  small{
+    font-size: 0.9rem;
+  }
+
+  h4{
+    margin-top: 24pt;
+    margin-bottom: 14pt;
+  }
+
+  #main h4, #full h4{
+    font-size: 1.2rem;
+  }
+
+  #main p, #full p{
+    line-height: 24px;
+  }
+
+  .h_text{
+    font-size: 0.8rem;
+    border: none;
+    padding-left: 0pt;
+  }
+
+  .h_text .serif_word{
+    font-size: 1rem;
+  }
+
+  .content{
+    width: 95%;
+    margin: 0pt;
+  }
+
+  #intro{
+    max-width: 100%;
+    width: initial;
+    padding-left: 0pt;
+  }
+
+  #footer{
+    height: initial;
+    width: 100vw;
+    max-width: 100vw;
+    position: relative;
+    left: -10pt;
+    bottom: -6pt;
+  }
+
+  #sitemap ul{
+    float: none;
+    margin-left: 10pt;
+  }
+
+  #full{
+    padding-left: 0pt;
+  }
+
 }

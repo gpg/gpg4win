@@ -20,10 +20,12 @@ m4_define(`RQ',`m4_changequote(<,>)m4_dnl`
  <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="keywords" content="Gpg4win, GnuPG, GPA, GpgOL, E-Mail, Email, Windows, PGP, GPG, OpenPGP, S/MIME, Outlook, I18N(`EN', `Encryption, secure, security') I18N(`DE', `Verschlüsselung, sicher, Sicherheit')">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="stylesheet" type="text/css" href="__TMPL_ROOT`'gpg4win.css">
   <link rel="shortcut icon" href="__TMPL_ROOT`'favicon.png" type="image/png" />
   <title>__TMPL_PAGE_TITLE</title>
  </head>
+  m4_ifdef(`EN_FILE', `m4_define(`LANG_DE', `1')', `m4_define(`LANG_DE', `0')')
  <body>
  <a name="top"></a>
  <div class="wrapper">
@@ -32,44 +34,57 @@ m4_define(`RQ',`m4_changequote(<,>)m4_dnl`
    <img src="img/english.png"> LANG_LINK(`EN',`English', EN_FILE) |
    <img src="img/german.png"> LANG_LINK(`DE',`Deutsch', DE_FILE)
   </div>
+  <div id="logo-container">
+    m4_ifelse(LANG_DE, `1',`<a href="index-de.html">', '<a href="index.html">')
+      <img src="img/src/gpg4win_lock_white.png" alt="Gpg4win logo" id="header-logo">
+    </a>'
+  </div>
  </div>
- m4_ifdef(`EN_FILE', `m4_define(`LANG_DE', `1')', `m4_define(`LANG_DE', `0')')
- <div id="menu">
-  <ul>
-   <li class="mlogo">
-    m4_ifelse(LANG_DE, `1', `<a href="index-de.html" title="Startseite"></a>', `<a href="index.html" title="Home"></a>')
-   </li>
-   <li class="mwhatsnew">
-    m4_ifelse(LANG_DE, `1', `<a href="version4-de.html" title="Was ist in Version 4 neu"><div>Was ist neu</br>Version 4</div></a>', `<a href="version4.html" title="What is new in version 4"><div>What`'RQ()s new</br>Version 4</div></a>')
-   </li>
-   <li class="mbetween">
-    m4_ifelse(LANG_DE, `1', `<a href="index-de.html" title="Startseite"></a>', `<a href="index.html" title="Home"></a>')
-   </li>
-   MENU(`about', `Über Gpg4win', `About Gpg4win', `about', MAIN, LANG_DE)
-    <ul>
-     MENU(`about', `Über Gpg4win', `About Gpg4win', `about', SUB, LANG_DE)
-     MENU(`features', `Funktionen', `Features', `features', SUB, LANG_DE)
-     MENU(`system-requirements', `Systemvoraussetzungen', `System Requirements', `system-requirements', SUB, LANG_DE)
-     MENU(`documentation', `Dokumentation', `Documentation', `documentation', SUB, LANG_DE)
-     MENU(`screenshots', `Screenshots', `Screenshots', `screenshots', SUB, LANG_DE)
-     MENU(`privacy-policy', `Datenschutzerklärung', `Privacy Policy', `privacy-policy', SUB, LANG_DE)
-     <li class="subcap"></li>
-    </ul>
-   </li>
-   MENU(`community', `Gemeinschaft', `Community', `community', MAIN, LANG_DE)
-    <ul>
-     MENU(`community', `Gemeinschaft', `Community', `community', SUB, LANG_DE)
-     MENU(`contribute', `Zu Gpg4win beitragen', `Contribute to Gpg4win', `contribute', SUB, LANG_DE)
-     <li class="subcap"></li>
-    </ul>
-   </li>
-   MENU(`support', `Support', `Support', `support', MAIN, LANG_DE)
-   </li>
-   <li class="mdonate">
-    m4_ifelse(LANG_DE, `1', `<a href="get-gpg4win-de.html">Download</a>', `<a href="get-gpg4win.html">Download</a>')
-    </li>
-  </ul>
- </div>
+  <input type="checkbox" id="menu-button">
+  <label id="menu-button-label" for="menu-button">
+    <div id="menu-button-image-container">
+      <img alt="menu button" src="img/src/menu_white.png"/>
+    </div>
+    <div id="menu-shadow"></div>
+  </label>
+  <div id="menu-container">
+    <div id="menu">
+      <ul>
+      <li class="mlogo">
+        m4_ifelse(LANG_DE, `1', `<a href="index-de.html" title="Startseite"></a>', `<a href="index.html" title="Home"></a>')
+      </li>
+      <li class="mwhatsnew">
+        m4_ifelse(LANG_DE, `1', `<a href="version4-de.html" title="Was ist in Version 4 neu"><div>Was ist neu</br>Version 4</div></a>', `<a href="version4.html" title="What is new in version 4"><div>What`'RQ()s new</br>Version 4</div></a>')
+      </li>
+      <li class="mbetween">
+        m4_ifelse(LANG_DE, `1', `<a href="index-de.html" title="Startseite"></a>', `<a href="index.html" title="Home"></a>')
+      </li>
+      MENU(`about', `Über Gpg4win', `About Gpg4win', `about', MAIN, LANG_DE)
+        <ul>
+        MENU(`about', `Über Gpg4win', `About Gpg4win', `about', SUB, LANG_DE)
+        MENU(`features', `Funktionen', `Features', `features', SUB, LANG_DE)
+        MENU(`system-requirements', `Systemvoraussetzungen', `System Requirements', `system-requirements', SUB, LANG_DE)
+        MENU(`documentation', `Dokumentation', `Documentation', `documentation', SUB, LANG_DE)
+        MENU(`screenshots', `Screenshots', `Screenshots', `screenshots', SUB, LANG_DE)
+        MENU(`privacy-policy', `Datenschutzerklärung', `Privacy Policy', `privacy-policy', SUB, LANG_DE)
+        <li class="subcap"></li>
+        </ul>
+      </li>
+      MENU(`community', `Gemeinschaft', `Community', `community', MAIN, LANG_DE)
+        <ul>
+        MENU(`community', `Gemeinschaft', `Community', `community', SUB, LANG_DE)
+        MENU(`contribute', `Zu Gpg4win beitragen', `Contribute to Gpg4win', `contribute', SUB, LANG_DE)
+        <li class="subcap"></li>
+        </ul>
+      </li>
+      MENU(`support', `Support', `Support', `support', MAIN, LANG_DE)
+      </li>
+      <li class="mdonate">
+        m4_ifelse(LANG_DE, `1', `<a href="get-gpg4win-de.html">Download</a>', `<a href="get-gpg4win.html">Download</a>')
+        </li>
+      </ul>
+    </div>
+  </div>
   m4_include(`header.m4')
   <div class="content">
    m4_divert(999)
