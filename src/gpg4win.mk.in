@@ -207,29 +207,33 @@ endef
 
 # Support macro.  Unpack the archive $(1).
 define DEFLATE_macro
-	rm -rf $$$${pkgsdir}; \
-	case "$(1)" in			\
-          */qtbase*.*.tar.xz)          \
-            $(TAR) -xJ --transform='s,^qtbase-everywhere-src,qtbase,' -f "$(1)" ;; \
-          */qttools*.*.tar.xz)          \
-            $(TAR) -xJ --transform='s,^qttools-everywhere-src,qttools,' -f "$(1)" ;; \
-          */qtwinextras*.*.tar.xz)          \
-            $(TAR) -xJ --transform='s,^qtwinextras-everywhere-src,qtwinextras,' -f "$(1)" ;; \
-          */qtsvg*.*.tar.xz)          \
-            $(TAR) -xJ --transform='s,^qtsvg-everywhere-src,qtsvg,' -f "$(1)" ;; \
-          */qttranslations*.*.tar.xz)          \
-            $(TAR) -xJ --transform='s,^qttranslations-everywhere-src,qttranslations,' -f "$(1)" ;; \
-	  *.tar.gz | *.tgz)		\
-	    $(TAR) xzf "$(1)" ;;	\
-	  *.tar.bz2 | *.tbz2 | *.tbz)	\
-	    $(TAR) xjf "$(1)" ;;	\
-	  *.tar.xz )          		\
-	    $(TAR) xJf "$(1)" ;;	\
-	  *.exe ) 	         		\
-	    cp "$(1)" .       ;;	\
-	  *.zip)			\
-	    $(UNZIP) -o "$(1)" ;;		\
-	esac
+	if [ -L "$$$${pkgsdir}" ]; then \
+		echo "Not overwriting symlink $$$${pkgsdir}"; \
+	else \
+		rm -rf $$$${pkgsdir}; \
+		case "$(1)" in			\
+			  */qtbase*.*.tar.xz)          \
+				$(TAR) -xJ --transform='s,^qtbase-everywhere-src,qtbase,' -f "$(1)" ;; \
+			  */qttools*.*.tar.xz)          \
+				$(TAR) -xJ --transform='s,^qttools-everywhere-src,qttools,' -f "$(1)" ;; \
+			  */qtwinextras*.*.tar.xz)          \
+				$(TAR) -xJ --transform='s,^qtwinextras-everywhere-src,qtwinextras,' -f "$(1)" ;; \
+			  */qtsvg*.*.tar.xz)          \
+				$(TAR) -xJ --transform='s,^qtsvg-everywhere-src,qtsvg,' -f "$(1)" ;; \
+			  */qttranslations*.*.tar.xz)          \
+				$(TAR) -xJ --transform='s,^qttranslations-everywhere-src,qttranslations,' -f "$(1)" ;; \
+		  *.tar.gz | *.tgz)		\
+			$(TAR) xzf "$(1)" ;;	\
+		  *.tar.bz2 | *.tbz2 | *.tbz)	\
+			$(TAR) xjf "$(1)" ;;	\
+		  *.tar.xz )          		\
+			$(TAR) xJf "$(1)" ;;	\
+		  *.exe ) 	         		\
+			cp "$(1)" .       ;;	\
+		  *.zip)			\
+			$(UNZIP) -o "$(1)" ;;		\
+		esac; \
+	fi
 endef
 
 # Support macro.  Strip all exe files below $(1).
@@ -274,7 +278,7 @@ $(stampdir)/stamp-$(1)-ex-01-patch: $(stampdir)/stamp-$(1)-ex-00-unpack $(stampd
 
 $(stampdir)/stamp-$(1)-ex-02-configure: $(stampdir)/stamp-$(1)-ex-01-patch
 	($(call SETVARS_EX,$(1));				\
-	 mkdir "$$$${pkgbdir}";				\
+	 mkdir -p "$$$${pkgbdir}";				\
 	  cd "$$$${pkgbdir}";				\
 	 eval "../$$$${pkg_version}/configure"		\
 		--prefix="$$$${pkgidir}"		\
@@ -351,10 +355,14 @@ $(stampdir)/stamp-$(1)-00-unpack: $(stampdir)/stamp-directories $(call GETDEPS,$
 
 $(stampdir)/stamp-$(1)-01-patch: $(stampdir)/stamp-$(1)-00-unpack
 	(shopt -s nullglob;				\
-	 $(call SETVARS,$(1));				\
-	 for pfile in "$$$${pkgpbdir}"/*.patch "$$$${pkgpdir}"/*.patch ; do  \
-	   (cd "$$$${pkgsdir}"; chmod +x "$$$${pfile}"; "$$$${pfile}")		\
-	 done)
+	$(call SETVARS,$(1));				\
+	if [ ! -L "$$$${pkgsdir}" ]; then \
+		for pfile in "$$$${pkgpbdir}"/*.patch "$$$${pkgpdir}"/*.patch ; do  \
+			(cd "$$$${pkgsdir}"; chmod +x "$$$${pfile}"; "$$$${pfile}")		\
+		done \
+	else \
+		echo "Not patching symlinked $(1)"; \
+	fi)
 	touch $(stampdir)/stamp-$(1)-01-patch
 
 $(stampdir)/stamp-$(1)-02-configure: $(stampdir)/stamp-$(1)-01-patch
@@ -437,10 +445,14 @@ $(stampdir)/stamp-$(1)-00-unpack: $(stampdir)/stamp-directories $(call GETDEPS,$
 
 $(stampdir)/stamp-$(1)-01-patch: $(stampdir)/stamp-$(1)-00-unpack
 	(shopt -s nullglob;				\
-	 $(call SETVARS,$(1));				\
-	 for pfile in "$$$${pkgpbdir}"/*.patch "$$$${pkgpdir}"/*.patch ; do \
-	   (cd "$$$${pkgsdir}"; chmod +x "$$$${pfile}"; "$$$${pfile}")		\
-	 done)
+	$(call SETVARS,$(1));				\
+	if [ ! -L "$$$${pkgsdir}" ]; then \
+		for pfile in "$$$${pkgpbdir}"/*.patch "$$$${pkgpdir}"/*.patch ; do \
+			(cd "$$$${pkgsdir}"; chmod +x "$$$${pfile}"; "$$$${pfile}")		\
+		done \
+	else \
+		echo "Not patching symlinked $(1)"; \
+	fi)
 	touch $(stampdir)/stamp-$(1)-01-patch
 
 $(stampdir)/stamp-$(1)-03-make: $(stampdir)/stamp-$(1)-01-patch
@@ -554,10 +566,14 @@ $(stampdir)/stamp-$(1)-00-unpack: $(stampdir)/stamp-directories $(call GETDEPS,$
 
 $(stampdir)/stamp-$(1)-01-patch: $(stampdir)/stamp-$(1)-00-unpack
 	(shopt -s nullglob;				\
-	 $(call SETVARS,$(1));				\
-	 for pfile in "$$$${pkgpbdir}"/*.patch "$$$${pkgpdir}"/*.patch ; do  \
-	   (cd "$$$${pkgsdir}"; chmod +x "$$$${pfile}"; "$$$${pfile}")		\
-	 done)
+	$(call SETVARS,$(1));				\
+	if [ ! -L "$$$${pkgsdir}" ]; then \
+		for pfile in "$$$${pkgpbdir}"/*.patch "$$$${pkgpdir}"/*.patch ; do  \
+			(cd "$$$${pkgsdir}"; chmod +x "$$$${pfile}"; "$$$${pfile}")		\
+		done \
+	else \
+		echo "Not patching symlinked $(1)"; \
+	fi)
 	touch $(stampdir)/stamp-$(1)-01-patch
 
 $(stampdir)/stamp-$(1)-02-configure: $(stampdir)/stamp-$(1)-01-patch
@@ -656,17 +672,21 @@ $(stampdir)/stamp-$(1)-00-unpack: $(stampdir)/stamp-directories $(call GETDEPS,$
 
 $(stampdir)/stamp-$(1)-01-patch: $(stampdir)/stamp-$(1)-00-unpack
 	(shopt -s nullglob;				\
-	 $(call SETVARS,$(1));				\
-	 cd "$$$${pkgsdir}";				\
-	 sed -i 's/set(KF5_MIN_VERSION.*)/set(KF5_MIN_VERSION "5.93.0")/' CMakeLists.txt; \
-	 sed -i 's/set(KF5_VERSION.*)/set(KF5_VERSION "5.93.0")/' CMakeLists.txt; \
-	 sed -i 's/set(KMIME_VERSION.*)/set(KMIME_VERSION "5.2.40")/' CMakeLists.txt; \
-	 sed -i 's/set(LIBKLEO_VERSION.*)/set(LIBKLEO_VERSION "5.4.40")/' CMakeLists.txt; \
-	 sed -i 's/set(QT_REQUIRED_VERSION.*)/set(QT_REQUIRED_VERSION "5.10.0")/' CMakeLists.txt; \
-	 sed -i 's/set(GPGME_REQUIRED_VERSION.*)/set(GPGME_REQUIRED_VERSION "1.10.0")/' CMakeLists.txt; \
-	 for pfile in "$$$${pkgpbdir}"/*.patch "$$$${pkgpdir}"/*.patch ; do  \
-	   (cd "$$$${pkgsdir}"; chmod +x "$$$${pfile}"; "$$$${pfile}")		\
-	 done)
+	$(call SETVARS,$(1));				\
+	if [ ! -L "$$$${pkgsdir}" ]; then \
+		cd "$$$${pkgsdir}";				\
+		sed -i 's/set(KF5_MIN_VERSION.*)/set(KF5_MIN_VERSION "5.93.0")/' CMakeLists.txt; \
+		sed -i 's/set(KF5_VERSION.*)/set(KF5_VERSION "5.93.0")/' CMakeLists.txt; \
+		sed -i 's/set(KMIME_VERSION.*)/set(KMIME_VERSION "5.2.40")/' CMakeLists.txt; \
+		sed -i 's/set(LIBKLEO_VERSION.*)/set(LIBKLEO_VERSION "5.4.40")/' CMakeLists.txt; \
+		sed -i 's/set(QT_REQUIRED_VERSION.*)/set(QT_REQUIRED_VERSION "5.10.0")/' CMakeLists.txt; \
+		sed -i 's/set(GPGME_REQUIRED_VERSION.*)/set(GPGME_REQUIRED_VERSION "1.10.0")/' CMakeLists.txt; \
+		for pfile in "$$$${pkgpbdir}"/*.patch "$$$${pkgpdir}"/*.patch ; do  \
+		(cd "$$$${pkgsdir}"; chmod +x "$$$${pfile}"; "$$$${pfile}")		\
+		done \
+	else \
+		echo "Not patching symlinked $(1)"; \
+	fi)
 	touch $(stampdir)/stamp-$(1)-01-patch
 
 $(stampdir)/stamp-$(1)-02-configure: $(stampdir)/stamp-$(1)-01-patch
