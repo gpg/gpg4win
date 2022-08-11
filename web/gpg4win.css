@@ -32,6 +32,7 @@ img {
 .imgfloatleft {
  float: left;
  margin: 0px 20px 30px 0px;
+ max-width: 112px;
 }
 
 td {
@@ -1499,4 +1500,35 @@ input[type=number] {
   #paypal_tab textarea{
     min-height: 80pt;
   }
+
+  .cleanlist{
+    padding-left: 0pt;
+  }
+
+  #component-list{
+    margin-top: 22pt;
+  }
+
+  #component-list li{
+    margin-bottom: 16pt;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #component-list .imgfloatleft{
+    max-width: initial;
+    width: 140pt;
+    float: none;
+    margin-bottom: 0pt;
+  }
+
+  #component-list li:last-child .imgfloatleft{
+    width: 70pt;
+  }
+
+  #component-list a{
+    display: block;
+    order: 2;
+  }
+
 }

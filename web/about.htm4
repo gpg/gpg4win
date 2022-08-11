@@ -40,11 +40,11 @@ all commercial and non-commercial purposes).
 Free Software components:
 </p>
 
-<ul class="cleanlist">
+<ul id="component-list" class="cleanlist">
 <li>
 <a href="img/gnupg_logo.svg">
 <img class="imgfloatleft imageframe"
-src="img/t100.gnupg_logo.png">
+src="img/t250.gnupg_logo.png">
 </a>
 <b>GnuPG</b>
  <p>The backend; this is the actual encryption tool.</p>
@@ -52,7 +52,7 @@ src="img/t100.gnupg_logo.png">
 <li>
 <a href="img/kleopatra_logo.png">
 <img class="imgfloatleft imageframe"
-src="img/t100.kleopatra_logo.png">
+src="img/t250.kleopatra_logo.png">
 </a>
 <b>Kleopatra</b>
  <p>A certificate manager for OpenPGP and X.509 (S/MIME) and common crypto dialogs.</p>
@@ -60,7 +60,7 @@ src="img/t100.kleopatra_logo.png">
 <li>
 <a href="img/gpgol_logo.svg">
 <img class="imgfloatleft imageframe"
-src="img/t100.gpgol_logo.png">
+src="img/t250.gpgol_logo.png">
 </a>
 <b>GpgOL</b>
  <p>An add-in for Microsoft Outlook providing email cryptography.
@@ -70,7 +70,7 @@ src="img/t100.gpgol_logo.png">
 <li>
 <a href="img/gpgex_logo.svg">
 <img class="imgfloatleft imageframe"
-src="img/t100.gpgex_logo.png">
+src="img/t250.gpgex_logo.png">
 </a>
 <b>GpgEX</b>
 <p>A plugin for Microsoft Explorer (file encryption).</p>
