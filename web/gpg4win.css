@@ -1449,6 +1449,11 @@ input[type=number] {
   #sitemap ul{
     float: none;
     margin-left: 10pt;
+    width: initial;
+  }
+
+  #sitemap li{
+    line-height: 18pt;
   }
 
   #full{
