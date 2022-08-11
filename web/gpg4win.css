@@ -1325,10 +1325,13 @@ input[type=number] {
     width: 80%;
   }
 
+  #menu ul li ul li, #menu ul li ul li a:hover{
+    background-color: #fde085;
+  }
+
   #menu ul li ul li{
     width: 100%;
     min-height: 30pt;
-    background-color: #fde085;
     margin-bottom: 4pt;
     display: flex;
     align-items: center;
