@@ -53,7 +53,7 @@ Released: COMPENDIUM_DATE_EN</small></span>
 The following manuals are <b>out of date</b>
 and only preserved for historical purposes.
 
-<dl>
+<dl id="documentation-collection">
   <dt><b>Gpg4win Compendium 3.0 (HTML Version)</b></dt>
   <dd>Last Version: 3.0.0-bet1 (2010-09-21)<br>
     <a href="./doc/en/gpg4win-compendium.html">HTML Version</a>

@@ -1548,4 +1548,20 @@ input[type=number] {
   .column1 img, .column2 img, .column3 img{
     width: initial;
   }
+
+  .dlbutton2 img{
+    display: none;
+  }
+
+  dd{
+    margin-left: 0pt;
+  }
+
+  #documentation-collection dd{
+    margin-bottom: 10pt;
+  }
+
+  #documentation-collection dd a{
+    margin-top: 22pt;
+  }
 }

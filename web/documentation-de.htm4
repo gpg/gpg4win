@@ -54,7 +54,7 @@ Veröffentlicht: COMPENDIUM_DATE_DE</small></span>
 alle folgenden, bisherigen Gpg4win-Handbücher <b>veraltet</b> (und
 werden nicht mehr aktualisiert):
 
-<dl>
+<dl id="documentation-collection">
   <dt><b>Gpg4win Kompendium 3.0 (HTML Version)</b></dt>
   <dd>Last Version: 3.0.0 (2010-05-21)<br>
     <a href="./doc/de/gpg4win-compendium.html">HTML Version</a>
