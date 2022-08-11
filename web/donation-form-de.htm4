@@ -1,14 +1,14 @@
 <!-- donation form -->
 <div class="donate_box">
-    <h3>Bitte spenden Sie für Gpg4win, um die Pflege und Weiterentwicklung zu sichern!</h3>
-    <p>Zahlen Sie das, was Gpg4win Ihnen wert ist! – Danke!</p>
+  <h3>Bitte spenden Sie für Gpg4win, um die Pflege und Weiterentwicklung zu sichern!</h3>
+  <p>Zahlen Sie das, was Gpg4win Ihnen wert ist! – Danke!</p>
 
-    <div class="tabs">
-			<p><i>Spenden via</i></p>
-      <!-- paypal -->
-			<input id="tab1" type="radio" value="paypal" name="paymethod" checked="checked">
-			<label for="tab1">PayPal</label>
-			<div id="paypal_tab" class="tab-content">
+  <div class="tabs">
+		<p><i>Spenden via</i></p>
+    <!-- paypal -->
+		<input id="tab1" type="radio" value="paypal" name="paymethod" checked="checked">
+		<label for="tab1">PayPal</label>
+		<div id="paypal_tab" class="tab-content">
 	  	<img class="pay-logo" src="img/paypal-logo.png">
 	  	<!-- amount -->
 	  	<br>
@@ -104,49 +104,51 @@
 				</div>
 			</form>
 
-	  <!-- download -->
-	  <div id="download_div">
-	    <p>
-	      <a href="thanks-for-download.html"><button
-class="donateButton" alt="download">Herunterladen</button></a>
-	    </p>
-	  </div>
-	</div>
+	  	<!-- download -->
+	  	<div id="download_div">
+	    	<p>
+	      	<a href="thanks-for-download.html"><button
+						class="donateButton" alt="download">Herunterladen</button></a>
+	    	</p>
+	  	</div>
+		</div>
     
-      <!-- bitcoin -->
-			<input id="tab2" type="radio" value="bitcoin" name="paymethod">
-			<label for="tab2">Bitcoin</label>
-			<div id="bitcoin_tab" class="tab-content">
-	  		<p>
-          <img class="pay-logo" src="img/bitcoin-logo.png">
-          <p>Bitcoins können Sie uns anonym an folgende Adresse spenden:</p>
+    <!-- bitcoin -->
+		<input id="tab2" type="radio" value="bitcoin" name="paymethod">
+		<label for="tab2">Bitcoin</label>
+		<div id="bitcoin_tab" class="tab-content">
+	  	<p>
+        <img class="pay-logo" src="img/bitcoin-logo.png">
+        <p>Bitcoins können Sie uns anonym an folgende Adresse spenden:</p>
           <a href="https://blockchain.info/address/1M3GipkG2YyHPDMPewqTpup83jitXvBg9N">
             1M3GipkG2YyHPDMPewqTpup83jitXvBg9N
           </a>
         <p>
 	  		<img class="qrcode" src="img/bitcoin-qrcode.png">
-        <p>
-	  		Nach Abschluss der Transaktion: <a href="thanks-for-download-de.html">Gpg4win VERSION herunterladen</a>
-			</div>
+      <p>
+	  	Nach Abschluss der Transaktion: <a href="thanks-for-download-de.html">Gpg4win VERSION herunterladen</a>
+		</div>
 
-      <!-- bank transfer -->
-      <input id="tab3" type="radio" value="transfer" name="paymethod" >
-	  	<label for="tab3">Überweisung</label>
-	  	<div id="transfer_tab" class="tab-content">
-				<b>Spendenkonto:</b>
-				<blockquote>
+    <!-- bank transfer -->
+    <input id="tab3" type="radio" value="transfer" name="paymethod" >
+	  <label for="tab3">Überweisung</label>
+	  <div id="transfer_tab" class="tab-content">
+			<b>Spendenkonto:</b>
+			<blockquote>
 				Empfänger: Intevation GmbH<br>
 				IBAN: DE33 2654 0070 0539 2006 00<br>
 				BIC: COBADEFFXXX (Commerzbank Osnabr&uuml;ck)<br>
 				Verwendungszweck: "Gpg4win Spende"
-				</blockquote>
-	    	<p>
-	    		<a href="mailto:gpg4win-professional@gpg4win.org">Kontaktieren Sie uns</a>,
-	    		wenn Sie eine Rechnung benötigen (nur bei Beträgen ab 100,- EUR).
+			</blockquote>
+	    <p>
+	    	<a href="mailto:gpg4win-professional@gpg4win.org">Kontaktieren Sie uns</a>,
+	    	wenn Sie eine Rechnung benötigen (nur bei Beträgen ab 100,- EUR).
 	    	<p>
 	    		Nach Abschluss der Überweisung: <a href="thanks-for-download-de.html">Gpg4win VERSION herunterladen</a>
 	    	</p>
-	  	</div>
+			</p>
+	  </div>
+	</div>
 </div>
 
 <script type="text/javascript">
@@ -185,7 +187,7 @@ class="donateButton" alt="download">Herunterladen</button></a>
 
   function currency_choice(txt) {
     if (txt == "USD") {
-      document.getElementById('USD').style.display = "block";
+      document.getElementById('USD').style.display = "flex";
       document.getElementById('EUR').style.display = "none";
       for (var i = 0; i < 5; i++) {
 	    var v = document.getElementsByName('amount')[i];
@@ -196,7 +198,7 @@ class="donateButton" alt="download">Herunterladen</button></a>
     }
     if (txt == "EUR") {
      document.getElementById('USD').style.display = "none";
-     document.getElementById('EUR').style.display = "block";
+     document.getElementById('EUR').style.display = "flex";
      for (var i = 5; i < 10; i++) {
 	   var v = document.getElementsByName('amount')[i];
 	     if (v.value == amountGiven) {

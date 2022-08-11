@@ -186,7 +186,7 @@
 
   function currency_choice(txt) {
     if (txt == "USD") {
-      document.getElementById('USD').style.display = "block";
+      document.getElementById('USD').style.display = "flex";
       document.getElementById('EUR').style.display = "none";
       for (var i = 0; i < 5; i++) {
 	var v = document.getElementsByName('amount')[i];
@@ -197,7 +197,7 @@
     }
     if (txt == "EUR") {
      document.getElementById('USD').style.display = "none";
-     document.getElementById('EUR').style.display = "block";
+     document.getElementById('EUR').style.display = "flex";
      for (var i = 5; i < 10; i++) {
 	var v = document.getElementsByName('amount')[i];
 	if (v.value == amountGiven) {
