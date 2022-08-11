@@ -829,6 +829,7 @@ hr {
   display: grid;
   grid-template-columns: 20pt auto 2fr;
   grid-template-rows: 20pt 20pt 20pt 20pt auto;
+  align-items: start;
 	padding-left: 0;
 }
 .tabs > p, #tab1, #tab2, #tab3{
@@ -858,7 +859,6 @@ hr {
 	border: none;
 	border-radius: 4px;
 	width: 120px;
-  align-self: center;
 }
 .tabs .tab-content{
 	display: none;
@@ -1025,7 +1025,6 @@ input[type=number] {
 .switch-field {
   padding: 10px 0 15px 0;
   margin: 5px 0 5px 0;
-  overflow: hidden;
   display: flex;
   height: 16pt;
 }
@@ -1073,6 +1072,7 @@ input[type=number] {
 
 .switches{
   display: flex;
+  flex-wrap: wrap;
   width: max-content;
 }
 
@@ -1458,7 +1458,7 @@ input[type=number] {
   .tabs{
     height: initial;
     grid-template-columns: 20pt auto auto;
-    grid-template-rows: 20pt 20pt 20pt 20pt auto;
+    grid-template-rows: 20pt 20pt 20pt 40pt auto;
     padding-left: 0;
   }
 
@@ -1467,5 +1467,31 @@ input[type=number] {
     grid-column-end: 3;
     grid-row-start: 5;
     margin-top: 12pt;
+    padding-left: 0pt;
+  }
+
+  .amountlabel{
+    margin-bottom: 20pt;
+  }
+
+  .switches{
+    margin-bottom: 20pt;
+  }
+
+  .switch-field{
+    margin-bottom: 10pt;
+  }
+
+  .amountlabel > label, .switch-field label{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 32pt;
+    width: 60pt;
+    padding: 0pt;
+  }
+
+  #paypal_tab textarea{
+    min-height: 80pt;
   }
 }
