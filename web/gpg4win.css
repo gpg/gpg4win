@@ -451,8 +451,17 @@ input[type='range']::-moz-range-thumb {
  clear: both;
 }
 
+#main.screenshots{
+  width: initial;
+}
+
 .screenshots img {
- width: 250px;
+  min-width: 300px;
+}
+
+.screenshots .flex-container {
+  gap: 20pt;
+  row-gap: 20pt;
 }
 
 #sidebar {

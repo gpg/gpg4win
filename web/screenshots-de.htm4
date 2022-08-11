@@ -18,150 +18,130 @@ Die Screenshots zeigen Ihnen ausgewählte Komponenten in Aktion.</p>
 </div>
 
 <div id="main" class="screenshots">
-<h2>Gpg4win-Installationsassistent</h2>
 
-<ul class="cleanlist">
-<li>
-<a href="img/sc-inst-welcome_de.png">
-<img class="imgfloatleft imageframe"
-src="img/t250.sc-inst-welcome_de.png">
-</a>
-<p>Begrüßungsbildschirm</p>
-</li>
-</ul>
+  <h2>Gpg4win-Installationsassistent</h2>
+  <a href="img/sc-inst-welcome_de.png">
+    <img class="imageframe"
+    src="img/h250.sc-inst-welcome_de.png">
+  </a>
+  <p>Begrüßungsbildschirm</p>
 
-<h2>Kleopatra</h2>
-<ul class="cleanlist">
+  <h2>Kleopatra</h2>
+  <div class="flex-container">
+    <div class="screenshot-container">
+      <a href="img/sc-kleopatra-mainwindow-empty_de.png">
+      <img class="imageframe"
+      src="img/h250.sc-kleopatra-mainwindow-empty_de.png">
+      </a>
+      <p>Darstellung des Kleopatra Hauptfensters.</p>
+    </div>
 
-<li>
-<a href="img/sc-kleopatra-mainwindow-empty_de.png">
-<img class="imgfloatleft imageframe"
-src="img/t250.sc-kleopatra-mainwindow-empty_de.png">
-</a>
-<p>Darstellung des Kleopatra Hauptfensters.
-</p>
-</li>
+    <div class="screenshot-container">
+      <a href="img/sc-kleopatra-openpgp-personalDetails_de.png">
+      <img class="imageframe"
+      src="img/h250.sc-kleopatra-openpgp-personalDetails_de.png">
+      </a>
+      <p>Erstellung eines OpenPGP-Zertifikats: Eingabe der persönlichen
+      Angaben.
+      </p>
+    </div>
 
-<li>
-<a href="img/sc-kleopatra-openpgp-personalDetails_de.png">
-<img class="imgfloatleft imageframe"
-src="img/t250.sc-kleopatra-openpgp-personalDetails_de.png">
-</a>
-<p>Erstellung eines OpenPGP-Zertifikats: Eingabe der persönlichen
-Angaben.
-</p>
-</li>
+    <div class="screenshot-container">
+      <a href="img/sc-kleopatra-x509-personalDetails_de.png">
+      <img class="imageframe"
+      src="img/h250.sc-kleopatra-x509-personalDetails_de.png">
+      </a>
+      <p>Erstellung eines S/MIME-Zertifikats: Eingabe der persönlichen
+      Angaben.
+      </p>
+    </div>
 
-<li>
-<a href="img/sc-kleopatra-x509-personalDetails_de.png">
-<img class="imgfloatleft imageframe"
-src="img/t250.sc-kleopatra-x509-personalDetails_de.png">
-</a>
-<p>Erstellung eines S/MIME-Zertifikats: Eingabe der persönlichen
-Angaben.
-</p>
-</li>
+    <div class="screenshot-container">
+      <a href="img/sc-kleopatra-openpgp-certificateDetails_de.png">
+      <img class="imageframe"
+      src="img/h250.sc-kleopatra-openpgp-certificateDetails_de.png">
+      </a>
+      <p>Details eines OpenPGP-Zertifikats.
+      </p>
+    </div>
 
-<li>
-<a href="img/sc-kleopatra-openpgp-certificateDetails_de.png">
-<img class="imgfloatleft imageframe"
-src="img/t250.sc-kleopatra-openpgp-certificateDetails_de.png">
-</a>
-<p>Details eines OpenPGP-Zertifikats.
-</p>
-</li>
+    <div class="screenshot-container">
+      <a href="img/sc-kleopatra-configureCertificateserver_de.png">
+      <img class="imageframe"
+      src="img/h250.sc-kleopatra-configureCertificateserver_de.png">
+      </a>
+      <p>Konfiguration von OpenPGP- und X.509-Zertifikatsservern.</p>
+    </div>
 
-<li>
-<a href="img/sc-kleopatra-configureCertificateserver_de.png">
-<img class="imgfloatleft imageframe"
-src="img/t250.sc-kleopatra-configureCertificateserver_de.png">
-</a>
-<p>Konfiguration von OpenPGP- und X.509-Zertifikatsservern.</p>
-</li>
+    <div class="screenshot-container">
+      <a href="img/sc-kleopatra-certifyCertificate1_de.png">
+      <img class="imageframe"
+      src="img/h250.sc-kleopatra-certifyCertificate1_de.png">
+      </a>
+      <p>Ein OpenPGP-Zertifikat beglaubigen.
+      </p>
+    </div>
 
-<li>
-<a href="img/sc-kleopatra-certifyCertificate1_de.png">
-<img class="imgfloatleft imageframe"
-src="img/t250.sc-kleopatra-certifyCertificate1_de.png">
-</a>
-<p>Ein OpenPGP-Zertifikat beglaubigen.
-</p>
-</li>
+    <div class="screenshot-container">
+      <a href="img/sc-kleopatra-encryptFile1_de.png">
+      <img class="imageframe"
+      src="img/h250.sc-kleopatra-encryptFile1_de.png">
+      </a>
+      <p>Dateien und Ordner verschlüsseln<br>
+      Datei und Empfänger auswählen
+      </p>
+    </div>
 
-<li>
-<a href="img/sc-kleopatra-encryptFile1_de.png">
-<img class="imgfloatleft imageframe"
-src="img/t250.sc-kleopatra-encryptFile1_de.png">
-</a>
-<p>Dateien und Ordner verschlüsseln<br>
-Datei und Empfänger auswählen
-</p>
-</li>
+    <div class="screenshot-container">
+      <a href="img/sc-kleopatra-encryptFile3_de.png">
+      <img class="imageframe"
+      src="img/h250.sc-kleopatra-encryptFile3_de.png">
+      </a>
+      <p>Die fertig verschlüsselte Archivdatei.</p>
+    </div>
 
-<li>
-<a href="img/sc-kleopatra-encryptFile3_de.png">
-<img class="imgfloatleft imageframe"
-src="img/t250.sc-kleopatra-encryptFile3_de.png">
-</a>
-<p>Die fertig verschlüsselte Archivdatei.</p>
-</li>
+    <div class="screenshot-container">
+      <a href="img/sc-kleopatra-verifyFile1_de.png">
+      <img class="imageframe"
+      src="img/h250.sc-kleopatra-verifyFile1_de.png"
+      </a>
+      <p>Erfolgreiche Signaturprüfung einer mit OpenPGP signierten Datei.
+      </p>
+    </div>
+  </div>
 
-<li>
-<a href="img/sc-kleopatra-verifyFile1_de.png">
-<img class="imgfloatleft imageframe"
-src="img/t250.sc-kleopatra-verifyFile1_de.png"
-</a>
-<p>Erfolgreiche Signaturprüfung einer mit OpenPGP signierten Datei.
-</p>
-</li>
-
-</ul>
-
-<h2>GpgEX</h2>
-<ul class="cleanlist">
-<li>
-<a href="img/sc-gpgex-contextmenu-signEncrypt_de.png">
-<img class="imgfloatleft imageframe"
-src="img/t250.sc-gpgex-contextmenu-signEncrypt_de.png">
-</a>
-<p>Das Kontextmenü von GpgEX im Windows Explorer.</p>
-</li>
-</ul>
+  <h2>GpgEX</h2>
+  <a href="img/sc-gpgex-contextmenu-signEncrypt_de.png">
+  <img class="imageframe"
+  src="img/h250.sc-gpgex-contextmenu-signEncrypt_de.png">
+  </a>
+  <p>Das Kontextmenü von GpgEX im Windows Explorer.</p>
 
 
-<h2>GpgOL</h2>
-<ul class="cleanlist">
-<li>
-<a href="img/sc-ol-sendSignedMail_de.png">
-<img class="imgfloatleft imageframe"
-src="img/t250.sc-ol-sendSignedMail_de.png">
-</a>
-<p>Signieren und Verschlüsseln einer E-Mail in Outlook 2010
-</p>
-</li>
+  <h2>GpgOL</h2>
+  <a href="img/sc-ol-sendSignedMail_de.png">
+  <img class="imageframe"
+  src="img/h250.sc-ol-sendSignedMail_de.png">
+  </a>
+  <p>Signieren und Verschlüsseln einer E-Mail in Outlook 2010
+  </p>
 
-<li>
-<a href="img/sc-gpgol-options_de.png">
-<img class="imgfloatleft imageframe"
-src="img/t250.sc-gpgol-options_de.png">
-</a>
-<p>Die Optionen von GpgOL.
-</li>
-</ul>
 
-<h2>Pinentry</h2>
+  <a href="img/sc-gpgol-options_de.png">
+  <img class="imageframe"
+  src="img/h250.sc-gpgol-options_de.png">
+  </a>
+  <p>Die Optionen von GpgOL.
 
-<ul class="cleanlist">
-<li>
-<a href="img/sc-kleopatra-openpgp-pinentry_de.png">
-<img class="imgfloatleft imageframe"
-src="img/t250.sc-kleopatra-openpgp-pinentry_de.png">
-</a>
-<p>Setzen einer Passphrase (mit Qualitätsprüfung).
-</p>
-</li>
 
-</ul>
+  <h2>Pinentry</h2>
+
+  <a href="img/sc-kleopatra-openpgp-pinentry_de.png">
+  <img class="imageframe"
+  src="img/t250.sc-kleopatra-openpgp-pinentry_de.png">
+  </a>
+  <p>Setzen einer Passphrase (mit Qualitätsprüfung).
+  </p>
 
 
 </div>

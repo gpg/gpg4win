@@ -19,151 +19,131 @@ The screenshots show you some components in action.</p>
 
 <div id="main" class="screenshots">
 
-<i>Note: All screenshots are in German only. Please contact the
-<a href="community.html">gpgwin-devel mailing list</a> if you can create Windows7 screenshots for Gpg4win in English.</i>
+  <i>Note: All screenshots are in German only. Please contact the
+  <a href="community.html">gpgwin-devel mailing list</a> if you can create Windows7 screenshots for Gpg4win in English.</i>
 
 
-<h2>Gpg4win Installer</h2>
-
-<ul class="cleanlist">
-<li>
-<a href="img/sc-inst-welcome_de.png">
-<img class="imgfloatleft imageframe"
-src="img/t250.sc-inst-welcome_de.png">
-</a>
-<p>The welcome screen</p>
-</li>
-</ul>
+  <h2>Gpg4win Installer</h2>
+  <a href="img/sc-inst-welcome_de.png">
+  <img class="imageframe"
+  src="img/h250.sc-inst-welcome_de.png">
+  </a>
+  <p>The welcome screen</p>
 
 
-<h2>Kleopatra</h2>
-<ul class="cleanlist">
 
-<li>
-<a href="img/sc-kleopatra-mainwindow-empty_de.png">
-<img class="imgfloatleft imageframe"
-src="img/t250.sc-kleopatra-mainwindow-empty_de.png">
-</a>
-<p>Kleopatra's main window.
-</p>
-</li>
+  <h2>Kleopatra</h2>
+  <div class="flex-container">
+    <div class="screenshot-container">
+      <a href="img/sc-kleopatra-mainwindow-empty_de.png">
+      <img class="imageframe"
+      src="img/h250.sc-kleopatra-mainwindow-empty_de.png">
+      </a>
+      <p>Kleopatra's main window.
+      </p>
+    </div>
 
-<li>
-<a href="img/sc-kleopatra-openpgp-personalDetails_de.png">
-<img class="imgfloatleft imageframe"
-src="img/t250.sc-kleopatra-openpgp-personalDetails_de.png">
-</a>
-<p>Creation of an OpenPGP certificate: Input of personal details.
-</p>
-</li>
+    <div class="screenshot-container">
+      <a href="img/sc-kleopatra-openpgp-personalDetails_de.png">
+      <img class="imageframe"
+      src="img/h250.sc-kleopatra-openpgp-personalDetails_de.png">
+      </a>
+      <p>Creation of an OpenPGP certificate: Input of personal details.
+      </p>
+    </div>
 
-<li>
-<a href="img/sc-kleopatra-x509-personalDetails_de.png">
-<img class="imgfloatleft imageframe"
-src="img/sc-kleopatra-x509-personalDetails_de.png">
-</a>
-<p>Creation of an X.509 certificate: Input of personal details.
-</p>
-</li>
+    <div class="screenshot-container">
+      <a href="img/sc-kleopatra-x509-personalDetails_de.png">
+      <img class="imageframe"
+      src="img/sc-kleopatra-x509-personalDetails_de.png">
+      </a>
+      <p>Creation of an X.509 certificate: Input of personal details.
+      </p>
+    </div>
 
-<li>
-<a href="img/sc-kleopatra-openpgp-certificateDetails_de.png">
-<img class="imgfloatleft imageframe"
-src="img/t250.sc-kleopatra-openpgp-certificateDetails_de.png">
-</a>
-<p>Details of an OpenPGP certificate.
-</p>
-</li>
+    <div class="screenshot-container">
+      <a href="img/sc-kleopatra-openpgp-certificateDetails_de.png">
+      <img class="imageframe"
+      src="img/h250.sc-kleopatra-openpgp-certificateDetails_de.png">
+      </a>
+      <p>Details of an OpenPGP certificate.
+      </p>
+    </div>
 
-<li>
-<a href="img/sc-kleopatra-configureCertificateserver_de.png">
-<img class="imgfloatleft imageframe"
-src="img/t250.sc-kleopatra-configureCertificateserver_de.png">
-</a>
-<p>Configuration of certificate servers (OpenPGP and X.509).</p>
-</li>
+    <div class="screenshot-container">
+      <a href="img/sc-kleopatra-configureCertificateserver_de.png">
+      <img class="imageframe"
+      src="img/h250.sc-kleopatra-configureCertificateserver_de.png">
+      </a>
+      <p>Configuration of certificate servers (OpenPGP and X.509).</p>
+    </div>
 
-<li>
-<a href="img/sc-kleopatra-certifyCertificate1_de.png">
-<img class="imgfloatleft imageframe"
-src="img/sc-kleopatra-certifyCertificate1_de.png">
-</a>
-<p>Certify an OpenPGP certificate.
-</p>
-</li>
+    <div class="screenshot-container">
+      <a href="img/sc-kleopatra-certifyCertificate1_de.png">
+      <img class="imageframe"
+      src="img/sc-kleopatra-certifyCertificate1_de.png">
+      </a>
+      <p>Certify an OpenPGP certificate.</p>
+    </div>
 
-<li>
-<a href="img/sc-kleopatra-encryptFile1_de.png">
-<img class="imgfloatleft imageframe"
-src="img/t250.sc-kleopatra-encryptFile1_de.png">
-</a>
-<p>Encrypting files and folders <br>
-Select files, folders, recipients...
-</p>
-</li>
+    <div class="screenshot-container">
+      <a href="img/sc-kleopatra-encryptFile1_de.png">
+      <img class="imageframe"
+      src="img/h250.sc-kleopatra-encryptFile1_de.png">
+      </a>
+      <p>Encrypting files and folders <br>
+      Select files, folders, recipients...
+      </p>
+    </div>
 
-<li>
-<a href="img/sc-kleopatra-encryptFile3_de.png">
-<img class="imgfloatleft imageframe"
-src="img/t250.sc-kleopatra-encryptFile3_de.png">
-</a>
-<p>The encrypted archive file.</p>
-</li>
+    <div class="screenshot-container">
+      <a href="img/sc-kleopatra-encryptFile3_de.png">
+      <img class="imageframe"
+      src="img/h250.sc-kleopatra-encryptFile3_de.png">
+      </a>
+      <p>The encrypted archive file.</p>
+    </div>
 
-<li>
-<a href="img/sc-kleopatra-verifyFile1_de.png">
-<img class="imgfloatleft imageframe"
-src="img/t250.sc-kleopatra-verifyFile1_de.png"
-</a>
-<p>Successful check of a signed file.
-</p>
-</li>
+    <div class="screenshot-container">
+      <a href="img/sc-kleopatra-verifyFile1_de.png">
+      <img class="imageframe"
+      src="img/h250.sc-kleopatra-verifyFile1_de.png"
+      </a>
+      <p>Successful check of a signed file.
+      </p>
+    </div>
+  </div>
 
-</ul>
-
-<h2>GpgEX</h2>
-<ul class="cleanlist">
-<li>
-<a href="img/sc-gpgex-contextmenu-signEncrypt_de.png">
-<img class="imgfloatleft imageframe"
-src="img/t250.sc-gpgex-contextmenu-signEncrypt_de.png">
-</a>
-<p>The context menu of GpgEX in Windows Explorer.</p>
-</li>
-</ul>
+  <h2>GpgEX</h2>
+  <a href="img/sc-gpgex-contextmenu-signEncrypt_de.png">
+  <img class="imageframe"
+  src="img/h250.sc-gpgex-contextmenu-signEncrypt_de.png">
+  </a>
+  <p>The context menu of GpgEX in Windows Explorer.</p>
 
 
-<h2>GpgOL</h2>
-<ul class="cleanlist">
-<li>
-<a href="img/sc-ol-sendSignedMail_de.png">
-<img class="imgfloatleft imageframe"
-src="img/t250.sc-ol-sendSignedMail_de.png">
-</a>
-<p>Sign and encrypt an email in Outlook 2010.
-</p>
-</li>
 
-<li>
-<a href="img/sc-gpgol-options_de.png">
-<img class="imgfloatleft imageframe"
-src="img/t250.sc-gpgol-options_de.png">
-</a>
-<p>The option dialog of GpgOL.
-</li>
-</ul>
+  <h2>GpgOL</h2>
+  <a href="img/sc-ol-sendSignedMail_de.png">
+  <img class="imageframe"
+  src="img/h250.sc-ol-sendSignedMail_de.png">
+  </a>
+  <p>Sign and encrypt an email in Outlook 2010.
+  </p>
 
-<h2>Pinentry</h2>
+  <a href="img/sc-gpgol-options_de.png">
+  <img class="imageframe"
+  src="img/h250.sc-gpgol-options_de.png">
+  </a>
+  <p>The option dialog of GpgOL.
 
-<ul class="cleanlist">
-<li>
-<a href="img/sc-kleopatra-openpgp-pinentry_de.png">
-<img class="imgfloatleft imageframe"
-src="img/t250.sc-kleopatra-openpgp-pinentry_de.png">
-</a>
-<p>Set a passphrase (with quality check).
-</p>
-</li>
-</ul>
+
+  <h2>Pinentry</h2>
+  <a href="img/sc-kleopatra-openpgp-pinentry_de.png">
+  <img class="imageframe"
+  src="img/t250.sc-kleopatra-openpgp-pinentry_de.png">
+  </a>
+  <p>Set a passphrase (with quality check).
+  </p>
 
 </div>
