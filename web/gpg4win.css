@@ -39,6 +39,11 @@ td {
  vertical-align: top;
 }
 
+.flex-container{
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .odd td {
  background: #E6E6E6;
 }
@@ -388,11 +393,10 @@ input[type='range']::-moz-range-thumb {
 }
 
 .column1, .column2, .column3 {
- display: inline;
- float: left;
  margin-right: 25px;
  position: relative;
  width: 270px;
+ min-width: 270px;
 }
 
 .column3 {
@@ -1401,7 +1405,7 @@ input[type=number] {
   }
 
   h4{
-    margin-top: 24pt;
+    margin-top: 12pt;
     margin-bottom: 14pt;
   }
 
@@ -1432,6 +1436,7 @@ input[type=number] {
     max-width: 100%;
     width: fit-content;
     padding-left: 0pt;
+    margin-bottom: 12pt;
   }
 
   #main{
@@ -1531,4 +1536,13 @@ input[type=number] {
     order: 2;
   }
 
+  .column1, .column2, .column3{
+    margin-bottom: 10pt;
+    margin-right: 0pt;
+  }
+
+  .column1, .column2, .column3,
+  .column1 img, .column2 img, .column3 img{
+    width: initial;
+  }
 }

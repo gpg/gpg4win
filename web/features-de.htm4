@@ -24,37 +24,39 @@ Erfahren Sie hier, welche Funktionen in Gpg4win stecken!</p>
     
 <h2>Sicherheit</h2>
 
-<div class="column1">
-<h4>OpenPGP & S/MIME</h4>
-<p>Gpg4win unterstützt die beiden kryptografischen Standards OpenPGP und S/MIME (X.509).</p>
-<p>Das Einrichten von X.509-Wurzelzertifikaten ist durch Gpg4win stark
-vereinfacht worden und ermöglicht so auch unerfahrenen Anwendern die
-einfache Verwendung von S/MIME.
-Für komplexere Anforderungen werden Systemadministratoren durch eine Anleitung
-bei der Einrichtung einer systemweiten Wurzel-Vertrauensstellung
-unterstützt.</p>
-<img src="img/sc-pinentry-openpgp_de.png">
-</div>
+<div class="flex-container">
+  <div class="column1">
+    <h4>OpenPGP & S/MIME</h4>
+    <p>Gpg4win unterstützt die beiden kryptografischen Standards OpenPGP und S/MIME (X.509).</p>
+    <p>Das Einrichten von X.509-Wurzelzertifikaten ist durch Gpg4win stark
+    vereinfacht worden und ermöglicht so auch unerfahrenen Anwendern die
+    einfache Verwendung von S/MIME.
+    Für komplexere Anforderungen werden Systemadministratoren durch eine Anleitung
+    bei der Einrichtung einer systemweiten Wurzel-Vertrauensstellung
+    unterstützt.</p>
+    <img src="img/sc-pinentry-openpgp_de.png">
+  </div>
 
-<div class="column2">
-<h4>Hohe Algorithmenstärken in GnuPG</h4>
-<p>Gpg4win ist die offizielle <a href="http://gnupg.org">GnuPG</a> Distribution für Windows und bietet
-damit die gewohnt hohe Sicherheit von GnuPG. GnuPG hält sich an die
-Empfehlungen des <a href="http://www.bsi.bund.de/Algorithmenkatalog.html">Bundesamtes
-für Sicherheit in der Informationstechnik (BSI)</a>.</p>
+  <div class="column2">
+    <h4>Hohe Algorithmenstärken in GnuPG</h4>
+    <p>Gpg4win ist die offizielle <a href="http://gnupg.org">GnuPG</a> Distribution für Windows und bietet
+      damit die gewohnt hohe Sicherheit von GnuPG. GnuPG hält sich an die
+      Empfehlungen des <a href="http://www.bsi.bund.de/Algorithmenkatalog.html">Bundesamtes
+      für Sicherheit in der Informationstechnik (BSI)</a>.
+    </p>
+    <p>Bei der Erstellung von OpenPGP- und X.509-Zertifikaten wird eine
+      voreingestellte Schlüssellänge von 2048 bit verwendet. Als Signatur- und Verschlüsselungsverfahren
+      kommt RSA zum Einsatz.
+    </p>
+  </div>
 
-<p>Bei der Erstellung von OpenPGP- und X.509-Zertifikaten wird eine
-voreingestellte Schlüssellänge von 2048 bit verwendet. Als Signatur- und Verschlüsselungsverfahren
-kommt RSA zum Einsatz.</p>
-
-</div>
-
-<div class="column3">
-<h4>SmartCard</h4>
-<p>Gpg4win unterstützt (durch GnuPG) die sichere Nutzung von
-SmartCards für OpenPGP und S/MIME. Technische Details (in Englisch) finden Sie bei <a
-href="http://www.gnupg.org/documentation/howtos.de.html#GnuPG-cardHOWTO">GnuPG</a>.</p>
-<img src="img/gnupg.png">
+  <div class="column3">
+    <h4>SmartCard</h4>
+    <p>Gpg4win unterstützt (durch GnuPG) die sichere Nutzung von
+    SmartCards für OpenPGP und S/MIME. Technische Details (in Englisch) finden Sie bei <a
+    href="http://www.gnupg.org/documentation/howtos.de.html#GnuPG-cardHOWTO">GnuPG</a>.</p>
+    <img src="img/gnupg.png">
+  </div>
 </div>
 
 <br clear="all"/>
@@ -83,7 +85,7 @@ Prüfsummen funktioniert ebenso einfach wie das Erstellen.
 Gpg4win unterstützt die Verfahren sha1sum, sha256sum und md5sum.</p>
 </div>
 <div class="column3">
-<img src="img/t250.sc-gpgex-contextmenu-signEncrypt_de.png">
+<img src="img/sc-gpgex-contextmenu-signEncrypt_de.png">
 </div>
 
 </div>
@@ -169,30 +171,30 @@ Es ist verfügbar in deutscher und englischer Sprache.</p>
 
 <div class="flex-container">
 
-<div class="column1">
-<h4>Zertifikate sicher und komfortabel verwalten</h4>
-<p>Kleopatra ist der bevorzugte Zertifikatsmanager in Gpg4win.
-Kleopatra ermöglicht Ihnen die einfache Verwaltung aller Zertifikate
-(OpenPGP und S/MIME).</p>
-<a href="img/sc-kleopatra-mainwindow-openpgp-certificates_de.png">
-<img style="width:540px;" src="img/sc-kleopatra-mainwindow-openpgp-certificates_de.png"></a>
-</div>
-<div class="column2">
-<h4>Zertifikatsserver</h4>
-<p>Kleopatra bietet einen einfachen Im- und Export von Zertifikaten
-von bzw. zu OpenPGP-Zertifikatsservern (auch Schlüsselserver) und
-X.509-(LDAP-)Zertifikatsservern.</p>
-</div>
-<div class="column3">
-<h4>OpenPGP-Zertifikate beglaubigen</h4>
-<a href="img/sc-kleopatra-certifyCertificate1_de.png">
-<img src="img/sc-kleopatra-certifyCertificate1_de.png"></a>
-<p>Durch das Beglaubigen (auch Signieren) eines anderen, Ihnen
-vertrauten, OpenPGP-Zertifikats bringt Kleopatra dieses Zertifikat in
-eine neue Vertrauensstufe - gekennzeichnet als "vertrauenswürdiges
-Zertifikat".
-</<p>
-</div>
+  <div class="column1">
+    <h4>Zertifikate sicher und komfortabel verwalten</h4>
+    <p>Kleopatra ist der bevorzugte Zertifikatsmanager in Gpg4win.
+    Kleopatra ermöglicht Ihnen die einfache Verwaltung aller Zertifikate
+    (OpenPGP und S/MIME).</p>
+    <a href="img/sc-kleopatra-mainwindow-openpgp-certificates_de.png">
+    <img style="width:540px;" src="img/sc-kleopatra-mainwindow-openpgp-certificates_de.png"></a>
+  </div>
+  <div class="column2">
+    <h4>Zertifikatsserver</h4>
+    <p>Kleopatra bietet einen einfachen Im- und Export von Zertifikaten
+    von bzw. zu OpenPGP-Zertifikatsservern (auch Schlüsselserver) und
+    X.509-(LDAP-)Zertifikatsservern.</p>
+  </div>
+  <div class="column3">
+    <h4>OpenPGP-Zertifikate beglaubigen</h4>
+    <a href="img/sc-kleopatra-certifyCertificate1_de.png">
+    <img src="img/sc-kleopatra-certifyCertificate1_de.png"></a>
+    <p>Durch das Beglaubigen (auch Signieren) eines anderen, Ihnen
+    vertrauten, OpenPGP-Zertifikats bringt Kleopatra dieses Zertifikat in
+    eine neue Vertrauensstufe - gekennzeichnet als "vertrauenswürdiges
+    Zertifikat".
+    </p>
+  </div>
 
 </div>
 

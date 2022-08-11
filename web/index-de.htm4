@@ -22,34 +22,34 @@ PAGE_START
 </div>
 
 <div id="full">
+<div class="flex-container">
+    <div class="column1">
+    <h4>Gpg4win kennen lernen</h4>
+    <p>
+    Entdecken Sie, was in Gpg4win steckt! Lernen Sie Gpg4win kennen und lassen Sie sich die Funktionen zeigen.
+    </p>
+    <a href="about-de.html">Über Gpg4win »</a>
 
-<div class="column1">
-<h4>Gpg4win kennen lernen</h4>
-<p>
-Entdecken Sie, was in Gpg4win steckt! Lernen Sie Gpg4win kennen und lassen Sie sich die Funktionen zeigen.
-</p>
-<a href="about-de.html">Über Gpg4win »</a>
+    </div>
 
+    <div class="column2">
+    <h4>Erste Schritte</h4>
+    <p>
+    Wir helfen Ihnen Gpg4win zum Einsatz zu bringen.
+    Lernen Sie, wie einfach der Einstieg in die Kryptografie ist und
+    beginnen Sie am besten mit dem Gpg4win-Kompendium!
+    </p>
+    <a href="documentation-de.html">Zum Gpg4win-Kompendium »</a>
+    </div>
+
+    <div class="column3">
+    <h4>Gemeinschaft erleben</h4>
+    <p>
+    Gpg4win ist Freie Software. Nutzen Sie die Gemeinschaft und gestalten
+    Sie mit!<br>  Unsere Empfehlung: Abonnieren Sie die
+    <a href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-announce-de">Gpg4win-Bekanntmachungs-Mailingliste</a>, um automatisch über neue Versionen informiert zu werden.
+    </p>
+    <a href="community-de.html">Zur Gpg4win-Gemeinschaft »</a>
+    </div>
 </div>
-
-<div class="column2">
-<h4>Erste Schritte</h4>
-<p>
-Wir helfen Ihnen Gpg4win zum Einsatz zu bringen.
-Lernen Sie, wie einfach der Einstieg in die Kryptografie ist und
-beginnen Sie am besten mit dem Gpg4win-Kompendium!
-</p>
-<a href="documentation-de.html">Zum Gpg4win-Kompendium »</a>
-</div>
-
-<div class="column3">
-<h4>Gemeinschaft erleben</h4>
-<p>
-Gpg4win ist Freie Software. Nutzen Sie die Gemeinschaft und gestalten
-Sie mit!<br>  Unsere Empfehlung: Abonnieren Sie die
-<a href="http://lists.wald.intevation.org/mailman/listinfo/gpg4win-announce-de">Gpg4win-Bekanntmachungs-Mailingliste</a>, um automatisch über neue Versionen informiert zu werden.
-</p>
-<a href="community-de.html">Zur Gpg4win-Gemeinschaft »</a>
-</div>
-
 </div>
