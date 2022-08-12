@@ -1155,7 +1155,10 @@ input[type=number] {
     left: -10pt;
     max-width: initial;
     width: 110%;
-    background: linear-gradient(to bottom, #ffd987, #ffc853 4%, #f4b836, #ffc343 99%, #ffdf99);
+  }
+
+  #logo-container{
+    background: var(--gpg4win-gradient);
     border-top: solid black 1px;
     border-bottom: solid black 1px;
   }
@@ -1181,7 +1184,7 @@ input[type=number] {
     top: 0;
     right: calc(-100% + 34pt);
     overflow-y: auto;
-    border-bottom-left-radius: 4pt;
+    border-bottom-left-radius: 2pt;
     animation-name: slide-menu-out;
     animation-duration: 0.3s;
     animation-timing-function: ease-in-out;
@@ -1205,9 +1208,8 @@ input[type=number] {
   }
 
   #menu{
-    padding: 8pt;
-    padding-bottom: 20pt;
     height: auto;
+    margin: 10pt 0pt;
   }
 
   #menu-button{
@@ -1259,8 +1261,6 @@ input[type=number] {
     position: fixed;
     left: 0;
     top: 0;
-    width: 100vw;
-    height: 0vw;
     max-width: unset;
     max-height: unset;
     z-index: -1;
@@ -1274,17 +1274,17 @@ input[type=number] {
     animation-name: fade-in;
     animation-duration: 0.4s;
     opacity: 1;
-    height: 100vh;
+    right: 0;bottom: 0;
   }
 
   @keyframes fade-in {
-    0%{opacity: 0; height: 100vh;}
-    100%{opacity: 1; height: 100vh;}
+    0%{opacity: 0; right: 0;bottom: 0;}
+    100%{opacity: 1; right: 0;bottom: 0;}
   }
 
   @keyframes fade-out {
-    0%{opacity: 1; height: 100vh;}
-    100%{opacity: 0; height: 100vh;}
+    0%{opacity: 1; right: 0;bottom: 0;}
+    100%{opacity: 0; right: 0;bottom: 0;}
   }
 
   #menu ul{
@@ -1296,46 +1296,56 @@ input[type=number] {
     text-align: left;
   }
 
+  #menu .mwhatsnew a{
+    top: 0;
+    height: unset;
+  }
+
+  #menu .mwhatsnew div {
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    padding: 10px 0pt;
+  }
+
   #menu ul a, #menu ul a:hover,
   #menu .mwhatsnew a, #menu .mwhatsnew a:hover,
   #menu .mwhatsnew a, #menu .mwhatsnew a:hover,
   #menu ul a, #menu ul a:hover,
   #menu .mdonate a, #menu .mdonate a:hover,
   #menu ul li ul li a{
-    width: 95%;
+    width: 90%;
     margin-bottom: 6px;
     padding-left: 6pt;
-    border-radius: 2pt;
+    border-bottom-left-radius: 0pt;
+    border-top-left-radius: 0pt;
+    border-top-right-radius: 4pt;
+    border-bottom-right-radius: 4pt;
     font-size: 1rem;
   }
 
-  #menu ul a, #menu ul a:hover, #menu .mwhatsnew a, #menu .mwhatsnew a:hover, #menu .mwhatsnew a, #menu .mwhatsnew a:hover, #menu ul a, #menu ul a:hover{
-    background: linear-gradient(to bottom, #fdedbb, #efce6c, #fde085);
-    background: var(--gpg4win-gradient);
+  #menu ul a, #menu ul a:hover, #menu .mwhatsnew a,
+  #menu .mwhatsnew a:hover, #menu .mwhatsnew a,
+  #menu .mwhatsnew a:hover, #menu ul a, #menu ul a:hover{
+    background: none;
+    background-color: #ecce90;
   }
 
   #menu .mlogo{
     margin-bottom: 10px;
+    height: 34pt;
+    background-color: #ffc853;
   }
 
-  #menu .mlogo a{
+  #menu .mlogo a, #menu .mlogo a:hover{
+    height: 100%;
     background: none;
-    background-image: url('img/src/gpg4win_logo.png');
+    background-image: url('img/src/gpg4win_lock_white.png');
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: 26pt;
+    background-position-y: center;
     top: unset;
   }
-
-  #menu .mlogo a:hover{
-    background: none;
-    background-image: url('img/src/gpg4win_logo.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-  }
-
-  #menu .mwhatsnew div {
-    font-size: 1rem;
-   }
 
   #menu ul li ul{
     display: flex;
@@ -1375,7 +1385,7 @@ input[type=number] {
     float: initial;
     text-indent: 0pt;
     background: none;
-    background-image: linear-gradient(to bottom, #a3d97f, #54c010, #63c322);
+    background-color: #60bf24;
   }
 
   .fancy_intro{
