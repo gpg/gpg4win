@@ -35,9 +35,9 @@ m4_define(`RQ',`m4_changequote(<,>)m4_dnl`
    <img src="img/german.png"> LANG_LINK(`DE',`Deutsch', DE_FILE)
   </div>
   <div id="logo-container">
-    m4_ifelse(LANG_DE, `1',`<a href="index-de.html">', '<a href="index.html">')
+    m4_ifelse(LANG_DE, `1',`<a href="index-de.html">', `<a href="index.html">')
       <img src="img/src/gpg4win_lock_white.png" alt="Gpg4win logo" id="header-logo">
-    </a>'
+    </a>
   </div>
  </div>
   <input type="checkbox" id="menu-button">

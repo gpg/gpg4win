@@ -1124,7 +1124,7 @@ input[type=number] {
     display: flex;
     justify-content: end;
     column-gap: 4pt;
-    margin-bottom: 12pt;
+    margin-bottom: 8pt;
     padding-right: 4pt;
   }
 
@@ -1142,6 +1142,7 @@ input[type=number] {
     height: initial;
     display: flex;
     flex-direction: column;
+    padding-top: 0px;
   }
 
   #logo-container{
@@ -1152,14 +1153,13 @@ input[type=number] {
     background: linear-gradient(to bottom, #ffd987, #ffc853 4%, #f4b836, #ffc343 99%, #ffdf99);
     border-top: solid black 1px;
     border-bottom: solid black 1px;
-    padding-top: 8pt;
   }
 
   #header-logo{
     display: block;
-    min-height: 30pt;
-    max-height: 50pt;
+    height: 40pt;
     width: auto;
+    margin: 8pt 0pt;
   }
 
   .header a{
@@ -1217,7 +1217,7 @@ input[type=number] {
     width: 34pt;
     background: none;
     position: absolute;
-    top: 54pt;
+    top: 46pt;
     right: 0pt;
     animation-name: slide-menu-button-out;
     animation-duration: 0.3s;
@@ -1598,6 +1598,15 @@ input[type=number] {
   pre{
     overflow-x: scroll;
     padding-bottom: 8pt;
+  }
+
+  #breadcrum{
+    float: none;
+  }
+
+  .mini_intro{
+    line-height: initial;
+    margin-bottom: 0pt;
   }
   
 }
