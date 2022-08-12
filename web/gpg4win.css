@@ -1103,15 +1103,20 @@ input[type=number] {
     max-width: 100%;
     font-size: 1rem;
   }
+
+  html{
+    min-height: 100%;
+    position: relative;
+  }
   
   html, body{
-    position: relative;
     overflow-x: hidden;
     max-width: 100vw;
   }
 
   body{
     padding: 6pt 10pt;
+    height: 100%;
   }
 
   .wrapper{
@@ -1170,13 +1175,13 @@ input[type=number] {
   #menu-container{
     height: auto;
     width: calc(100% - 34pt);
-    height: 100vh;
     background-color: white;
     z-index: 2;
     position: absolute;
     top: 0;
     right: calc(-100% + 34pt);
     overflow-y: auto;
+    border-bottom-left-radius: 4pt;
     animation-name: slide-menu-out;
     animation-duration: 0.3s;
     animation-timing-function: ease-in-out;
@@ -1202,6 +1207,7 @@ input[type=number] {
   #menu{
     padding: 8pt;
     padding-bottom: 20pt;
+    height: auto;
   }
 
   #menu-button{
@@ -1250,13 +1256,13 @@ input[type=number] {
   }
 
   #menu-shadow{
-    position: absolute;
-    left: -100vw;
-    top: -50vh;
-    width: 200vw;
-    height: 0pt;
-    max-width: 200vw;
-    max-height: 200vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 0vw;
+    max-width: unset;
+    max-height: unset;
     z-index: -1;
     background-color: rgba(0, 0, 0, 0.7);
     opacity: 0;
@@ -1268,17 +1274,17 @@ input[type=number] {
     animation-name: fade-in;
     animation-duration: 0.4s;
     opacity: 1;
-    height: 200vh;
+    height: 100vh;
   }
 
   @keyframes fade-in {
-    0%{opacity: 0; height: 200vh;}
-    100%{opacity: 1; height: 200vh;}
+    0%{opacity: 0; height: 100vh;}
+    100%{opacity: 1; height: 100vh;}
   }
 
   @keyframes fade-out {
-    0%{opacity: 1; height: 200vh;}
-    100%{opacity: 0; height: 200vh;}
+    0%{opacity: 1; height: 100vh;}
+    100%{opacity: 0; height: 100vh;}
   }
 
   #menu ul{
