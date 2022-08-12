@@ -48,24 +48,24 @@ make
 
 <ol>
 <li> Die Quellen zur Website holen:<br>
-     <code>git clone git://git.gnupg.org/gpg4win.git -b website </code>
+     <pre>git clone git://git.gnupg.org/gpg4win.git -b website </pre>
 <li> Gewünschte Änderungen in dem per git geholten Verzeichnis
-     <code>/web</code> durchführen.
-     Zum besseren Verständnis ggf. die Datei <code>README</code> vorher
+     <em>/web</em> durchführen.
+     Zum besseren Verständnis ggf. die Datei <em>README</em> vorher
      durchlesen.
 <li> Lokale Version zum Anschauen herstellen:<br>
-     <code>make</code><br>
+     <pre>make</pre>
      und im Browser anschauen.
 <li> Sind die Änderungen in Ordnung, sollte man sie noch mal prüfen:<br>
-     <code>git diff | less</code><br>
+     <pre>git diff | less</pre>
 <li> Dann werden die Änderungen mit möglichst sinnvollen Kommentaren committet:<br>
-     <code>git commit -a </code>
+     <pre>git commit -a </pre>
 <li> Mit folgendem Befehl wird ein Patch erstellt, der daraufhin an die Mailingliste
     Gpg4win-devel gesendet werden muss (Ein vorheriges "Hallo" auf einer der <a href="https://www.gpg4win.de/community-de.html">Gpg4win-Mailinglisten</a> und der Wunsch, dass man gerne mitmachen möchte, ist natürlich immer sinnvoll.):<br>
-     <code>git format-patch HEAD~1 --stdout > draft.patch</code><br>
+     <pre>git format-patch HEAD~1 --stdout > draft.patch</pre>
     Die Zahl hinter "HEAD~" müssen Sie dabei durch die Anzahl der Commits ersetzen, die
     zu diesem Patch gehören.
 <li> Der letzte Schritt ist das online schalten:<br>
-     <code>make online</code><br>
+     <pre>make online</pre>
 </ol>
 </div>

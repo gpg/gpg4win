@@ -39,6 +39,10 @@ td {
  vertical-align: top;
 }
 
+pre{
+  margin-bottom: 10pt;
+}
+
 .flex-container{
   display: flex;
   flex-wrap: wrap;
@@ -1590,4 +1594,10 @@ input[type=number] {
   #sidebar li{
     margin-bottom: 3pt;
   }
+
+  pre{
+    overflow-x: scroll;
+    padding-bottom: 8pt;
+  }
+  
 }

@@ -44,10 +44,12 @@ einfügen.
 
 <h2>3. Fehlerbericht erstellen</h2>
 
+<p>
 Bitte berichten Sie den Fehler in Englisch indem Sie
 <a href="https://dev.gnupg.org/maniphest/task/edit/form/5/">dieses Formular</a> verwenden.
 <br/>
 Beachten Sie dabei folgendes:
+</p>
 
 <h3>3.1 Versionsnummern angeben</h3>
 
