@@ -70,7 +70,9 @@ the support of your language will cause bigger problems.
 
 <h4>How to update an available language</h4>
 
+<p>
 This should work on basically any GNU/Linux or other unixoid system:
+</p>
 
 <ol>
 <li> Get the sources for the website anonymously (without write access):
@@ -95,14 +97,18 @@ make update-po
      are marked inside the source code for translation, about
      the number of fuzzy and un-translated strings. If only
      the number of translated messages is reported, there is
-     nothing to do and you can stop for now (at a later
-     time you might want to <code>git pull && git up</code>
-     and repeat the check).
+     nothing to do and you can stop for now. At a later
+     time you might want to get the newest updates with the
+     following command to repeat the check:
+     <pre>git pull && git up</pre>
      </p>
 
-<li> Edit the .po file to resolve fuzzy and missing translations
-     with your preferred tool. Then repeat "make update-po" to
-     check whether you completed the translation successfully.
+<li>
+  <p>
+    Edit the .po file to resolve fuzzy and missing translations
+    with your preferred tool. Then repeat "make update-po" to
+    check whether you completed the translation successfully.
+  </p>
 </ol>
 
 <h4>How to activate an available language</h4>

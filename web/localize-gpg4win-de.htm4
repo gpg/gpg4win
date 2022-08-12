@@ -78,7 +78,9 @@ verraten, ob die Unterstützung Ihrer Sprache zu größeren Problemen führen k�
 
 <h4>Eine vorhandene Übersetzung aktualisieren</h4>
 
+<p>
 Diese Anleitung sollte auf allen GNU/Linux-Betriebssystemen funktionieren:
+</p>
 
 <ol>
 <li> Holen Sie sich die Quellen von Gpg4win anonym (ohne Schreib-Rechte):
@@ -112,13 +114,16 @@ make update-po
      die Überprüfung bei einer neuen Version erneut durchführen, ist es notwendig,
      dass Sie die folgenden Befehle ausführen, um den Quellcode auf den neusten
      Stand zu bringen:
-     <code>git pull && git up</code>
+     <pre>git pull && git up</pre>
      </p>
 
-<li> Bearbeiten Sie die .po Dateien mit Ihrem bevorzugten Programm, um unpräzise
-     Übersetzungen zu verbessern und fehlende Übersetzungen zu ergänzen. Dann führen
-     Sie den Befehl <code>make update-po</code> aus, um zu sehen, ob Sie die
-     Übersetzung erfolgreich beendet haben.
+<li>
+  <p>
+    Bearbeiten Sie die .po Dateien mit Ihrem bevorzugten Programm, um unpräzise
+    Übersetzungen zu verbessern und fehlende Übersetzungen zu ergänzen. Dann führen
+    Sie den Befehl <code>make update-po</code> aus, um zu sehen, ob Sie die
+    Übersetzung erfolgreich beendet haben.
+  </p>
 </ol>
 
 <h4>Eine verfügbare Übersetzung aktivieren</h4>
