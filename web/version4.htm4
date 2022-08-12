@@ -19,9 +19,11 @@ PAGE_START
 
 <h2>Crypto Backend (GnuPG 2.3)</h2>
 
+<p>
 Gpg4win 4 is a major update to the underlying crypto backend. The new GnuPG 2.3 is the
 future-proof foundation for the secure exchange of data and mails over the next years.
 The user interface stays mostly the same, while the backend provides more:
+<p/>
 
 <ul>
     <li>Support for the upcoming
@@ -61,15 +63,20 @@ The user interface stays mostly the same, while the backend provides more:
 
 <h2>Outlook Plugin (GpgOL)</h2>
 
+<p>
 The Outlook add-in is mostly the same as in Version 3,
 but GpgOL profits from the new crypto backend
 and will get more features in the following Gpg4win 4 releases.
+</p>
+
 
 <h2>Note on compliance</h2>
 
+<p>
 The new version of the crypto backend is not yet approved for VS-NfD / RESTRICTED communication.
 Where an officially approved version is required, please use our
 product variant with support from the vendor:
 <a href="https://gnupg.com">GnuPG VS-Desktop</a>.
+</p>
 
 </div>

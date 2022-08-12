@@ -19,11 +19,13 @@ PAGE_START
 <div id="main">
 <h2>Krypto-Engine (GnuPG 2.3)</h2>
 
+<p>
 Gpg4win 4 macht bei der enthaltenen Krypto-Engine eine großen Sprung.
 Das neue GnuPG 2.3 bietet die technische Grundlage für
 sicheren Datenaustausch von E-Mail und Dateien
 in den nächsten Jahren. Die User-Interfaces bleiben wie gewohnt,
 während die Engine mehr kann:
+</p>
 
 <ul>
     <li> Unterstützung für die
@@ -69,18 +71,21 @@ während die Engine mehr kann:
 
 <h2>Outlook-Plugin (GpgOL)</h2>
 
+<p>
 Das Outlook-Add-in entspricht weitgehend der Version
 aus Gpg4win 3. Allerdings profitiert GpgOL von
 der neuen Krypto-Engine und erhält in den nächsten Monaten
 Verbesserungen über kommende Gpg4win 4 Releases.
+</p>
 
 
 <h2>Hinweis zur VS-NfD Konformität</h2>
 
+<p>
 Die neue Version der Krypto-Engine ist noch nicht für VS-NfD
 und RESTRICTED eingestufte Dokumente zugelassen.
 Sollten Sie eine offizielle Zulassung benötigen,
 verwenden Sie bitte unsere Produktvariante mit Herstellersupport:
 <a href="https://gnupg.com/gnupg-desktop.de.html">GnuPG VS-Desktop</a>.
-
+</p>
 </div>
