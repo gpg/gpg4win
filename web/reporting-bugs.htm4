@@ -40,10 +40,11 @@ your problem. Add your additional comments there.
 
 <h2>3. Create a new report</h2>
 
-Please report the problem using
+<p>Please report the problem using
 <a href="https://dev.gnupg.org/maniphest/task/edit/form/5/">this form</a>.
-<br/>
+</br>
 Please note the following:
+</p>
 
 <h3>3.1 Provide version numbers</h3>
 

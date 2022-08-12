@@ -1429,6 +1429,10 @@ input[type=number] {
     line-height: 24px;
   }
 
+  #main ul, #main ol{
+    padding-left: 18pt;
+  }
+
   .h_text{
     font-size: 0.8rem;
     border: none;
@@ -1449,6 +1453,10 @@ input[type=number] {
     width: fit-content;
     padding-left: 0pt;
     margin-bottom: 12pt;
+  }
+
+  #intro p{
+    font-size: unset;
   }
 
   #main{
@@ -1566,11 +1574,20 @@ input[type=number] {
     margin-left: 0pt;
   }
 
-  #documentation-collection dd{
-    margin-bottom: 10pt;
+  dd{
+    margin-bottom: 16pt;
   }
 
-  #documentation-collection dd a{
-    margin-top: 22pt;
+  dd br{
+    margin-bottom: 4pt;
+  }
+
+  #sidebar{
+    width: initial;
+    float: none;
+  }
+
+  #sidebar li{
+    margin-bottom: 3pt;
   }
 }
