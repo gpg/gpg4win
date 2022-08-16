@@ -71,7 +71,7 @@ export QMAKE=/build/install/bin/qmake
 mkdir -p /build/install/plugins/sqldrivers
 
 # copy KDE plugins
-for d in iconengines kf5 pim; do
+for d in iconengines kf5 pim5; do
     mkdir -p /build/AppDir/usr/plugins/${d}/
     rsync -av --delete --omit-dir-times /build/install/lib64/plugins/${d}/ /build/AppDir/usr/plugins/${d}/
 done
