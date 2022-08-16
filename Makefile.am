@@ -45,11 +45,12 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
              patches/extra-cmake-modules/0001-Use-BIN_INSTALL_DIR-data-for-DATAROOTDIR-on-Windows.patch \
              patches/glib/glib-1-fixes.patch \
              patches/glib/glib-2-fixes.patch \
-             patches/kconfigwidgets/0001-Make-QDbus-optional.patch \
-             patches/kconfigwidgets/0001-Fix-crash-on-exit-on-Windows.patch \
-             patches/kiconthemes/0001-Make-DBus-optional.patch \
              patches/kconfig/0001-Read-defaults-from-Windows-registry.patch \
+             patches/kconfigwidgets/0001-Fix-crash-on-exit-on-Windows.patch \
+             patches/kconfigwidgets/0001-Make-QDbus-optional.patch \
+             patches/kiconthemes/0001-Make-DBus-optional.patch \
              patches/kleopatra/set-windows-registry-key.patch \
+             patches/kwidgetsaddons/0001-KMessageWidget-Ensure-correct-tab-order-of-action-bu.patch \
              patches/kxmlgui/0001-make-qdbus-optional.patch \
              patches/kxmlgui/0004-Cruedly-disable-KSendbugmail.patch \
              patches/libkleo/set-cxx-standard.patch \
@@ -60,11 +61,12 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
              patches/qttools/disable-most-tools.patch \
              patches/w32pth-2.0.5/workaround-broken-libtool.patch \
              patches-appimage/kconfigwidgets/0001-build-without-KF5Auth.patch \
-             patches-appimage/qtwayland-5.15.0/00-disable-wayland-server.patch \
              patches-appimage/kleopatra/set-cxx-standard.patch \
-             patches-appimage/libkleo/set-cxx-standard.patch \
              patches-appimage/kmime/set-cxx-standard.patch \
-             patches-appimage/libkleo/gpg4win-check.patch
+             patches-appimage/kwidgetsaddons/0001-KMessageWidget-Ensure-correct-tab-order-of-action-bu.patch \
+             patches-appimage/libkleo/gpg4win-check.patch \
+             patches-appimage/libkleo/set-cxx-standard.patch \
+             patches-appimage/qtwayland-5.15.0/00-disable-wayland-server.patch \
 
 copy-news:
 	cp NEWS doc/website/NEWS.last
