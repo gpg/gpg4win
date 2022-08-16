@@ -2,16 +2,23 @@
 patch -p1 -l -f $* < $0
 exit $?
 
-diff --git a/CMakeLists.txt b/CMakeLists.txt
-index bed53d1..87f976c 100644
---- CMakeLists.txt.orig 2018-02-28 08:33:32.052419561 +0100
-+++ CMakeLists.txt      2018-02-28 08:35:44.523986191 +0100
-@@ -39,7 +39,7 @@
-                         PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KF5ConfigWidgetsConfigVersion.cmake"
-                         SOVERSION 5)
+--- a/CMakeLists.txt.orig 2022-08-11 16:55:07.647126624 +0200
++++ b/CMakeLists.txt      2022-08-16 17:31:31.609503511 +0200
+@@ -26,7 +26,7 @@
 
+ set(REQUIRED_QT_VERSION 5.15.2)
+ find_package(Qt${QT_MAJOR_VERSION} ${REQUIRED_QT_VERSION} CONFIG REQUIRED Widgets)
 -if (NOT ANDROID)
-+if (FALSE)
-   find_package(KF5Auth ${KF_DEP_VERSION} REQUIRED)
++if (NOT ANDROID AND NOT WIN32)
+   find_package(Qt${QT_MAJOR_VERSION} ${REQUIRED_QT_VERSION} CONFIG REQUIRED DBus)
  endif()
- find_package(KF5CoreAddons ${KF_DEP_VERSION} REQUIRED)
+
+@@ -44,7 +44,7 @@
+ cmake_dependent_option(BUILD_DESIGNERPLUGIN "Build plugin for Qt Designer" ON "NOT CMAKE_CROSSCOMPILING" OFF)
+ add_feature_info(DESIGNERPLUGIN ${BUILD_DESIGNERPLUGIN} "Build plugin for Qt Designer")
+
+-if (NOT ANDROID AND NOT WIN32)
++if (FALSE)
+     option(WITH_KAUTH "Build with KAuth support" ON)
+ else()
+     set(WITH_KAUTH OFF)
