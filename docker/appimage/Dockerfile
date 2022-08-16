@@ -53,10 +53,10 @@ RUN yum -y install \
         cmake3 \
         cups-devel \
         dbus-devel \
-        devtoolset-7-binutils \
-        devtoolset-7-gcc \
-        devtoolset-7-gcc-c++ \
-        devtoolset-7-make \
+        devtoolset-10-binutils \
+        devtoolset-10-gcc \
+        devtoolset-10-gcc-c++ \
+        devtoolset-10-make \
         double-conversion-devel \
         egl-wayland-devel \
         file \

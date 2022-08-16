@@ -23,7 +23,7 @@
 
 set -e
 
-. /opt/rh/devtoolset-7/enable
+. /opt/rh/devtoolset-10/enable
 
 cd /src
 ./configure --enable-appimage --enable-maintainer-mode --disable-manuals
