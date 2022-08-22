@@ -1631,5 +1631,24 @@ input[type=number] {
     line-height: initial;
     margin-bottom: 0pt;
   }
+
+  .donate_header {
+    margin-bottom: 0pt;
+    top: 0pt;
+    background-position-x: 220px;
+    border-bottom: none;
+  }
+
+  .donate_header .text {
+    left: 0;
+  }
+
+  .sponsornames .three-column {
+    column-count: 2;
+  }
+
+  .sponsornames li {
+    word-wrap: break-word;
+  }
   
 }
