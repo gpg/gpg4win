@@ -1106,11 +1106,13 @@ input[type=number] {
 
   html{
     min-height: 100%;
-    position: relative;
+    position: absolute;
   }
   
   html, body{
-    overflow-x: hidden;
+    position: sticky;
+    overflow-y: auto;
+    overflow-x: hidden !important;
     max-width: 100vw;
   }
 
@@ -1470,7 +1472,6 @@ input[type=number] {
 
   #intro{
     max-width: 100%;
-    width: fit-content;
     padding-left: 0pt;
     margin-bottom: 12pt;
   }
