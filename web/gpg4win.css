@@ -1572,14 +1572,16 @@ input[type=number] {
     width: 140pt;
     float: none;
     margin-bottom: 0pt;
+    order: 2;
   }
 
-  #component-list li:last-child .imgfloatleft{
+  #component-list .imgfloatleft[src="img/gpa_logo.png"]{
     width: 70pt;
   }
 
   #component-list a{
-    display: block;
+    display: flex;
+    flex-direction: column;
     order: 2;
   }
 
