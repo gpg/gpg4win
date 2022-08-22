@@ -1327,6 +1327,7 @@ input[type=number] {
     margin-bottom: 1px;
     height: 34pt;
     background-color: #ffc853;
+    border-bottom: 1pt var(--menu-border-color) solid;
   }
 
   #menu .mlogo a, #menu .mlogo a:hover{
