@@ -1097,6 +1097,7 @@ input[type=number] {
 @media screen and (max-width: 800px){
   :root{
     --gpg4win-gradient: linear-gradient(to bottom, #ffd987, #ffc853 4%, #f4b836, #ffc343 99%, #ffdf99);
+    --menu-border-color: #555555;
   }
 
   *{
@@ -1211,7 +1212,6 @@ input[type=number] {
 
   #menu{
     height: auto;
-    margin: 10pt 0pt;
   }
 
   #menu-button{
@@ -1316,13 +1316,9 @@ input[type=number] {
   #menu ul a, #menu ul a:hover,
   #menu .mdonate a, #menu .mdonate a:hover,
   #menu ul li ul li a{
-    width: 90%;
-    margin-bottom: 6px;
+    width: 100%;
     padding-left: 6pt;
-    border-bottom-left-radius: 0pt;
-    border-top-left-radius: 0pt;
-    border-top-right-radius: 4pt;
-    border-bottom-right-radius: 4pt;
+    border-bottom: 1pt var(--menu-border-color) solid;
     font-size: 1rem;
   }
 
@@ -1330,11 +1326,11 @@ input[type=number] {
   #menu .mwhatsnew a:hover, #menu .mwhatsnew a,
   #menu .mwhatsnew a:hover, #menu ul a, #menu ul a:hover{
     background: none;
-    background-color: #ecce90;
+    background-color: #fde085;
   }
 
   #menu .mlogo{
-    margin-bottom: 10px;
+    margin-bottom: 1px;
     height: 34pt;
     background-color: #ffc853;
   }
@@ -1353,19 +1349,20 @@ input[type=number] {
     display: flex;
     flex-direction: column;
     position: inherit;
-    width: 80%;
+    width: 100%;
   }
 
   #menu ul li ul li, #menu ul li ul li a:hover{
-    background-color: #fde085;
+    /*background-color: #fde085;*/
+    background-color: #ffffff;
   }
 
   #menu ul li ul li{
     width: 100%;
     min-height: 30pt;
-    margin-bottom: 4pt;
     display: flex;
     align-items: center;
+    border-bottom: 1pt var(--menu-border-color) solid;
   }
 
   #menu ul li ul li a{
