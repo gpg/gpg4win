@@ -1188,9 +1188,6 @@ input[type=number] {
     right: calc(-100% + 34pt);
     overflow-y: auto;
     border-bottom-left-radius: 2pt;
-    animation-name: slide-menu-out;
-    animation-duration: 0.3s;
-    animation-timing-function: ease-in-out;
   }
 
   #menu-button:checked ~ #menu-container{
@@ -1229,9 +1226,6 @@ input[type=number] {
     position: absolute;
     top: 46pt;
     right: 0pt;
-    animation-name: slide-menu-button-out;
-    animation-duration: 0.3s;
-    animation-timing-function: ease-in-out;
   }
 
   #menu-button-image-container{
