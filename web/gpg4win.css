@@ -1187,7 +1187,7 @@ input[type=number] {
     top: 0;
     right: calc(-100% + 34pt);
     overflow-y: auto;
-    border-bottom-left-radius: 2pt;
+    border-bottom-left-radius: 4pt;
   }
 
   #menu-button:checked ~ #menu-container{
@@ -1270,7 +1270,8 @@ input[type=number] {
     animation-name: fade-in;
     animation-duration: 0.4s;
     opacity: 1;
-    right: 0;bottom: 0;
+    right: 0;
+    bottom: 0;
   }
 
   @keyframes fade-in {
@@ -1324,7 +1325,6 @@ input[type=number] {
   }
 
   #menu .mlogo{
-    margin-bottom: 1px;
     height: 34pt;
     background-color: #ffc853;
     border-bottom: 1pt var(--menu-border-color) solid;
@@ -1348,7 +1348,6 @@ input[type=number] {
   }
 
   #menu ul li ul li, #menu ul li ul li a:hover{
-    /*background-color: #fde085;*/
     background-color: #ffffff;
   }
 
