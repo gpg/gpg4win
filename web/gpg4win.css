@@ -1520,6 +1520,11 @@ input[type=number] {
     grid-row-start: 5;
     margin-top: 12pt;
     padding-left: 0pt;
+    border-left: none;
+  }
+
+  .donate_box {
+    margin-bottom: 4pt;
   }
 
   .amountlabel{
@@ -1541,6 +1546,15 @@ input[type=number] {
     height: 32pt;
     width: 60pt;
     padding: 0pt;
+  }
+
+  /* Need to overwrite the color when hovering because this affects the color
+  on Chrome in the mobile version */
+  .amountlabel > label:hover,
+  .amountlabel > input[type="radio"]:hover + label:hover,
+  .switch-field label:hover,
+  .donateButton:hover {
+    background-color: #179bd7;
   }
 
   #paypal_tab textarea{
