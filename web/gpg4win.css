@@ -1187,6 +1187,7 @@ input[type=number] {
     top: 0;
     right: calc(-100% + 34pt);
     overflow-y: auto;
+    overflow-x: hidden;
     border-bottom-left-radius: 4pt;
   }
 
