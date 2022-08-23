@@ -297,4 +297,21 @@ cd $l10ndir_bin
 tar -cJf ../kde-l10n-$VERSION-bin.tar.xz *
 cd ..
 
-echo "Done dir is: $tmpdir"
+checksum_bin=$(sha256sum kde-l10n-$VERSION-bin.tar.xz | cut -d ' ' -f 1)
+checksum_src=$(sha256sum kde-l10n-$VERSION-src.tar.xz | cut -d ' ' -f 1)
+curdate=$(date +%Y-%m-%d)
+
+echo "------------------------------ >8 ------------------------------"
+echo "# KDE-l10n"
+echo "# last changed: ${curdate}"
+echo "# by: $USER"
+echo "# verified: Tarball created by $USER."
+echo "file kde-l10n/kde-l10n-$VERSION-bin.tar.xz"
+echo "chk ${checksum_bin}"
+echo ""
+echo "file kde-l10n/kde-l10n-$VERSION-src.tar.xz"
+echo "chk ${checksum_src}"
+echo "------------------------------ >8 ------------------------------"
+
+echo "To upload:" >&2
+echo "rsync -vP $tmpdir/kde-l10n-$VERSION-*.tar.xz trithemius.gnupg.org:/home/ftp/gcrypt/snapshots/kde-l10n/" >&2
