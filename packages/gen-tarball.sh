@@ -35,6 +35,7 @@ fi
 
 package=$1
 is_gpg="no"
+is_w32="no"
 
 case ${package} in
     */*)
@@ -42,9 +43,18 @@ case ${package} in
         package=$(basename ${repo})
         package=${package%.git}
         ;;
-    gnupg | gpgme | libassuan | libgcrypt | libgpg-error | libksba | npth | pinentry | gpg4win-tools | scute | ntbtls)
+    gnupg | gpgme | libassuan | libgcrypt | libgpg-error | \
+        libksba | npth | pinentry | scute | ntbtls)
         repo=git://git.gnupg.org/${package}.git
         is_gpg="yes"
+        ;;
+    gpgol | gpgex)
+        repo=git://git.gnupg.org/${package}.git
+        is_gpg="yes"
+        is_w32="yes"
+        ;;
+    gpg4win-tools)
+        repo=git://git.gnupg.org/${package}.git
         ;;
     k* | libk*)
         # assume that package is provided by KDE
@@ -76,38 +86,15 @@ tarball=${snapshotdir}.tar.xz
 
 git clone ${repo} ${tmpdir}/${snapshotdir}
 
-# fetch the translations
-if test -n "${pofiles}"; then
-    echo "Fetching languages ..."
-    languagesurl="https://websvn.kde.org/*checkout*/trunk/l10n-kf5/subdirs"
-    # we have to pretend to be a browser to be able to retrieve the file
-    languages=$(curl --silent --show-error --fail -H "User-Agent: Mozilla/5.0" "${languagesurl}" || true)
-    if test -z "${languages}"; then
-        echo "Warning: Downloading the list of languages from ${languagesurl} failed."
-    fi
-    echo "Fetching translations ..."
-    for lang in ${languages}; do
-        mkdir -p ${tmpdir}/${snapshotdir}/po/${lang}
-        for pofile in ${pofiles}; do
-            svn export --force \
-                "svn://anonsvn.kde.org/home/kde/trunk/l10n-kf5/${lang}/messages/${package}/${pofile}" \
-                "${tmpdir}/${snapshotdir}/po/${lang}/${pofile}" \
-            || echo "Info: $pofile not found in $lang"
-        done
-        # remove empty language folders
-        rmdir --ignore-fail-on-non-empty ${tmpdir}/${snapshotdir}/po/${lang}
-    done
-fi
-
-if [ -e ${tmpdir}/${snapshotdir}/po ]; then
-    (cd ${tmpdir}/${snapshotdir} && git add po && git commit -m "Add po files")
-fi
-
 if [ "${is_gpg}" == "yes" ]; then
     olddir=$(pwd)
     cd ${tmpdir}/${snapshotdir}
     ./autogen.sh --force >&2
-    ./configure >&2
+    if [ "${is_w32}" == "yes" ]; then
+        ./autogen.sh --build-w32 >&2
+    else
+        ./configure >&2
+    fi
     make -j`nproc` distcheck >&2
     make dist-xz >&2
     tarball=$(ls -t *.tar.xz | head -1)
