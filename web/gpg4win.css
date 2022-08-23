@@ -1209,6 +1209,7 @@ input[type=number] {
 
   #menu{
     height: auto;
+    overflow-x: hidden;
   }
 
   #menu-button{
