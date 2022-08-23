@@ -49,8 +49,9 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
              patches/kconfigwidgets/0001-Fix-crash-on-exit-on-Windows.patch \
              patches/kconfigwidgets/0001-Make-QDbus-optional.patch \
              patches/kiconthemes/0001-Make-DBus-optional.patch \
-             patches/kleopatra/set-windows-registry-key.patch \
-             patches/kwidgetsaddons/0001-KMessageWidget-Ensure-correct-tab-order-of-action-bu.patch \
+             patches/kleopatra/set-windows-registry.patch \
+             patches/kwidgetsaddons/KMessageWidget-fix-tab-order.patch \
+             patches/kwidgetsaddons/ignore-invalid-dates-in-picker.patch \
              patches/kxmlgui/0001-make-qdbus-optional.patch \
              patches/kxmlgui/0004-Cruedly-disable-KSendbugmail.patch \
              patches/libkleo/set-cxx-standard.patch \
@@ -62,7 +63,7 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
              patches/w32pth-2.0.5/workaround-broken-libtool.patch \
              patches-appimage/kconfigwidgets/0001-build-without-KF5Auth.patch \
              patches-appimage/qtwayland-5.15.0/00-disable-wayland-server.patch \
-             patches-appimage/kwidgetsaddons/0001-KMessageWidget-Ensure-correct-tab-order-of-action-bu.patch \
+             patches-appimage/kwidgetsaddons/KMessageWidget-fix-tab-order.patch \
              patches-appimage/libkleo/set-cxx-standard.patch \
              patches-appimage/kmime/set-cxx-standard.patch \
              patches-appimage/gnupg-2.3.7/0001-dirmngr-Fix-NTBTLS-include-for-test.patch \
