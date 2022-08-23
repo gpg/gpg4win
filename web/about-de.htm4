@@ -83,7 +83,7 @@ src="img/t250.gpgex_logo.png">
 <li>
 <a href="img/gpa_logo.png">
 <img class="imgfloatleft imageframe"
-src="img/gpa_logo_white_bg.png">
+src="img/gpa_logo.png">
 </a>
 <b>GPA</b>
  <p>Ein alternativer Zertifikatsmanager für OpenPGP und X.509.</p>
