@@ -2,7 +2,7 @@
 patch -p1 -l -f $* < $0
 exit $?
 
-From 54c42272973084b80caa4f3c825cfe9969e2c875 Mon Sep 17 00:00:00 2001
+From 91ebb2d25cdfbecdb02f5772a4a284ebd79af91b Mon Sep 17 00:00:00 2001
 From: Andre Heinecke <aheinecke@gnupg.org>
 Date: Wed, 27 Jul 2022 11:40:44 +0200
 Subject: [PATCH] Read defaults from Windows registry
@@ -27,9 +27,9 @@ The values are read from HKLM and treated as defaults.
  src/core/kconfig.cpp      |  24 ++++++
  src/core/kconfig.h        |  24 ++++++
  src/core/kconfig_p.h      |   1 +
- src/core/registry_win.cpp | 160 ++++++++++++++++++++++++++++++++++++++
+ src/core/registry_win.cpp | 171 ++++++++++++++++++++++++++++++++++++++
  src/core/registry_win_p.h |  14 ++++
- 6 files changed, 228 insertions(+)
+ 7 files changed, 242 insertions(+), 3 deletions(-)
  create mode 100644 src/core/registry_win.cpp
  create mode 100644 src/core/registry_win_p.h
 
@@ -168,10 +168,10 @@ index 60604477..72b21629 100644
      bool lockLocal();
 diff --git a/src/core/registry_win.cpp b/src/core/registry_win.cpp
 new file mode 100644
-index 00000000..0f1a876b
+index 00000000..e1924178
 --- /dev/null
 +++ b/src/core/registry_win.cpp
-@@ -0,0 +1,160 @@
+@@ -0,0 +1,171 @@
 +/*
 +    This file is part of the KDE libraries
 +    SPDX-FileCopyrightText: 2022 g10 Code GmbH
@@ -184,15 +184,14 @@ index 00000000..0f1a876b
 +
 +#include <windows.h>
 +
-+void parseRegValues(const QString &regKey, const QString &groupName, KEntryMap &entryMap)
++void parseRegValues(const QString &regKey, const QString &groupName, KEntryMap &entryMap, bool userRegistry)
 +{
 +    const bool groupOptionImmutable = regKey.endsWith(QStringLiteral("[$i]"));
 +    HKEY key;
-+    if (RegOpenKeyExW(HKEY_LOCAL_MACHINE,
++    if (RegOpenKeyExW(userRegistry ? HKEY_CURRENT_USER : HKEY_LOCAL_MACHINE,
 +                      (wchar_t *) regKey.utf16(),
 +                      0, KEY_ENUMERATE_SUB_KEYS | KEY_READ,
 +                      &key) != ERROR_SUCCESS) {
-+        qCWarning(KCONFIG_CORE_LOG) << "Failed to open HKLM" << regKey;
 +        return;
 +    }
 +    DWORD values = 0,
@@ -237,6 +236,12 @@ index 00000000..0f1a876b
 +            continue;
 +        }
 +
++        QString entryName = QString::fromWCharArray(name, nameLen);
++        if (entryMap.getEntryOption(groupName.toUtf8(), entryName.toUtf8(), KEntryMap::SearchDefaults, KEntryMap::EntryImmutable)) {
++            qDebug () << "Ignoring " << entryName << "already immutable";
++            continue;
++        }
++
 +        DWORD type;
 +        DWORD valueLen = maxValueLen;
 +        err = RegQueryValueExW(key, name,
@@ -257,32 +262,30 @@ index 00000000..0f1a876b
 +            entryOptions |= KEntryMap::EntryImmutable;
 +        }
 +
-+        QString entryName = QString::fromWCharArray(name, nameLen);
 +        const QString valueString = QString::fromWCharArray(value, (valueLen / sizeof (wchar_t)) - 1);
 +        if (entryName.endsWith(QStringLiteral("[$i]"))) {
 +            entryOptions |= KEntryMap::EntryImmutable;
 +            entryName.chop(4);
 +        }
 +        entryMap.setEntry(groupName.toUtf8(), entryName.toUtf8(), valueString.toUtf8(), entryOptions);
-+        qDebug () << "Adding Entry" << entryName << valueString << "to group" << groupName << "value len" << valueLen;
++        // qDebug () << "Adding Entry" << entryName << valueString << "to group" << groupName << "value len" << valueLen;
 +    }
 +    delete[] name;
 +    delete[] value;
 +    RegCloseKey(key);
 +}
 +
-+void parseWindowsRegistry(const QString &regKey, KEntryMap &entryMap)
++void parseRegSubkeys(const QString &regKey, KEntryMap &entryMap, bool userRegistry)
 +{
 +    // Parse default group
-+    parseRegValues(regKey, QStringLiteral("<default>"), entryMap);
++    parseRegValues(regKey, QStringLiteral("<default>"), entryMap, userRegistry);
 +
 +    // Enumerate the subkeys (groups)
 +    HKEY key;
-+    if (RegOpenKeyEx(HKEY_LOCAL_MACHINE,
++    if (RegOpenKeyEx(userRegistry ? HKEY_CURRENT_USER : HKEY_LOCAL_MACHINE,
 +                     (wchar_t *)regKey.utf16(),
 +                     0, KEY_ENUMERATE_SUB_KEYS | KEY_READ,
 +                     &key) != ERROR_SUCCESS) {
-+        qCWarning(KCONFIG_CORE_LOG) << "Failed to open HKLM" << regKey;
 +        return;
 +    }
 +
@@ -327,10 +330,18 @@ index 00000000..0f1a876b
 +        if (subKeyName.endsWith(QStringLiteral("[$i]"))) {
 +            subKeyName.chop(4);
 +        }
-+        parseRegValues (subReg, subKeyName, entryMap);
++        parseRegValues (subReg, subKeyName, entryMap, userRegistry);
 +    }
 +    delete[] subKey;
 +    RegCloseKey(key);
++}
++
++void parseWindowsRegistry(const QString &regKey, KEntryMap &entryMap)
++{
++    // First take the HKLM values into account
++    parseRegSubkeys(regKey, entryMap, false);
++    // Then HKCU
++    parseRegSubkeys(regKey, entryMap, true);
 +}
 diff --git a/src/core/registry_win_p.h b/src/core/registry_win_p.h
 new file mode 100644
