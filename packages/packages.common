@@ -592,11 +592,11 @@ file gpgme/gpgme-1.18.1-beta13.tar.xz
 chk b6e444b057747ad7a00a98b333a9dadff6c8eea970c6768f22ee969ef5de6b0f
 
 # pinentry
-# last changed: 2022-08-23
-# by: aheinecke
-# verified: Tarball created by aheinecke.
-file pinentry/pinentry-1.2.1-beta46.tar.xz
-chk 18c0489d90d68c5896648b6c68d86c320ca0241b094c01132f31cde36634ebb5
+# last changed: 2022-08-24
+# by: wk
+# verified: swdb
+file pinentry/pinentry-1.2.1.tar.xz
+chk 457a185e5a85238fb945a955dc6352ab962dc8b48720b62fc9fa48c7540a4067
 
 # gpgol
 # last changed: 2022-08-23
