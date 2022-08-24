@@ -1186,7 +1186,7 @@ input[type=number] {
 
   #menu-container{
     height: auto;
-    width: calc(100% - 34pt);
+    width: 200pt;
     background-color: white;
     z-index: 2;
     position: absolute;
@@ -1244,7 +1244,7 @@ input[type=number] {
   }
 
   #menu-button:checked ~ #menu-button-label{
-    right: calc(100% - 34pt);
+    right: calc(240pt - 34pt);
     background: none;
     animation-name: slide-menu-button-in;
     animation-duration: 0.4s;
@@ -1253,11 +1253,11 @@ input[type=number] {
 
   @keyframes slide-menu-button-in {
     0%{right: 0pt;}
-    100%{right: calc(100% - 34pt);}
+    100%{right: calc(240pt - 34pt);}
   }
 
   @keyframes slide-menu-button-out {
-    0%{right: calc(100% - 34pt);}
+    0%{right: calc(240pt - 34pt);}
     100%{right: 0pt;}
   }
 
