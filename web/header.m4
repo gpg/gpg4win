@@ -26,7 +26,7 @@
       <a href="package-integrity.html">Check integrity</a>')
     </div>
    </div>
-   <img src="img/fancy_bg.png" id="fancy_bg"/>
+   <img src="img/fancy_bg3.png" id="fancy_bg"/>
    <br/>
 <!-- BETA
    <div id="download_button_mini">
