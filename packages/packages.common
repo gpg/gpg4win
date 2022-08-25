@@ -318,10 +318,12 @@ chk  8922181fef523b77b71625e562e4d69532278eabbd18bc74579dbe14135729ba
 #file binary/gnupg-w32-2.3.1_20210420.wixlib
 #chk  133817a4c4d11996956676c5c200222839ee5dc16e9476bd682d4e68b33ef73e
 
-# last changed: 2021-04-21
-# by: ah
-#file pinentry/pinentry-1.2.0.tar.bz2
-#chk  10072045a3e043d0581f91cd5676fcac7ffee957a16636adedaa4f583a616470
+# pinentry
+# last changed: 2022-08-24
+# by: wk
+# verified: swdb
+file pinentry/pinentry-1.2.1.tar.bz2
+chk 457a185e5a85238fb945a955dc6352ab962dc8b48720b62fc9fa48c7540a4067
 
 # last changed 2022-02-07
 # by wk
@@ -354,7 +356,6 @@ chk 437fe758b27c243a5ee2535c6b065ea1d09f2c9a02d83567d2f934bb6395c249
 # verified: distsigkey.gpg
 file gpgex/gpgex-1.0.9.tar.bz2
 chk  32a31affe0bc2587b6b61c5aae6a3328280feccde315dfa3a3c2dc374c5c0400
-
 
 #
 #  GnuPG utilities
@@ -591,19 +592,12 @@ server https://gnupg.org/ftp/gcrypt/snapshots
 file gpgme/gpgme-1.18.1-beta13.tar.xz
 chk b6e444b057747ad7a00a98b333a9dadff6c8eea970c6768f22ee969ef5de6b0f
 
-# pinentry
-# last changed: 2022-08-24
-# by: wk
-# verified: swdb
-file pinentry/pinentry-1.2.1.tar.xz
-chk 457a185e5a85238fb945a955dc6352ab962dc8b48720b62fc9fa48c7540a4067
-
 # gpgol
-# last changed: 2022-08-23
+# last changed: 2022-08-25
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file gpgol/gpgol-2.5.4-beta6.tar.xz
-chk 654c42a6f6bf8a99b5bf473ff630ed3b4286bbc035a6d61c67f70f7e6627bf0a
+file gpgol/gpgol-2.5.4-beta9.tar.xz
+chk bb7023da18b6802426fa9ee4e2ab6098b9c1b0672ea22ac74aac4d10aeb86be4
 
 # gpg4win-tools
 # last changed: 2022-08-23
@@ -613,32 +607,25 @@ file gpg4win-tools/gpg4win-tools-202208231643.tar.xz
 chk e5a960ae17803e91aa335876ca49e6752c41a87629db273122812be8c3423a43
 
 # KDE-l10n
-# last changed: 2022-08-23
+# last changed: 2022-08-25
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file kde-l10n/kde-l10n-202208231620-bin.tar.xz
-chk a3f05995242a38c30cb7f2c0b5e6b9b5ab01ce58b8f082b9963fdf598ccfdc00
+file kde-l10n/kde-l10n-202208251431-bin.tar.xz
+chk b8478b172b71e4e956e7ac76eba29b8643602ec7bde79ac8d83ee66ae721720d
 
-file kde-l10n/kde-l10n-202208231620-src.tar.xz
-chk 44561dfed2a788b8b16615bd628238c4338ddbf8bce2ba5e2f0455748db1659a
-
-# libkleo
-# last changed: 2022-08-03
-# by: aheinecke
-# verified: Tarball created by aheinecke.
-file libkleo/libkleo-202208031130.tar.xz
-chk 3b98f826108fad4bb2929bfad8a5e89cf8458d2c4520d4ecc0e10d44b3a2cae9
+file kde-l10n/kde-l10n-202208251431-src.tar.xz
+chk dad07ad5a81f0787265327a84b0fb9fcfd40383cd615bbbdc900482d53669d82
 
 # libkleo
-# last changed: 2022-08-23
+# last changed: 2022-08-25
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file libkleo/libkleo-202208231612.tar.xz
-chk 00de50fa615c626e15e8d2c9984f873609462bbe8b9894abd2a6730ff42099b6
+file libkleo/libkleo-202208251434.tar.xz
+chk 6a01fc89c6792bc2b9f04e4432fd1fa8125891205ce58771d0f02bb7a6d68cee
 
 # kleopatra
-# last changed: 2022-08-23
+# last changed: 2022-08-25
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file kleopatra/kleopatra-202208231611.tar.xz
-chk 41869c8e9e4dedc6ca075d0905fa5af1c2fcbe5583e61e3002330e968463b1b5
+file kleopatra/kleopatra-202208251434.tar.xz
+chk 425db4bc4b0c67e6691f0fb29e242c2600074761136bacf8786b22ec8e1423dc
