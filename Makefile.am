@@ -54,6 +54,7 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
              patches/kwidgetsaddons/ignore-invalid-dates-in-picker.patch \
              patches/kxmlgui/0001-make-qdbus-optional.patch \
              patches/kxmlgui/0004-Cruedly-disable-KSendbugmail.patch \
+             patches/kxmlgui/0001-Replace-OS-specific-system-information-code-with-QSy.patch \
              patches/libkleo/set-cxx-standard.patch \
              patches/qtbase/0001-Fix-build-without-std-thread.patch \
              patches/qtbase/0001-Gpg4win-qstandardpaths-patch.patch \

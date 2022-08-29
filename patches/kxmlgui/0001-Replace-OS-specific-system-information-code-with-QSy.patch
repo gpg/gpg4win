@@ -1,0 +1,123 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From cd8e7ce5a6e6779923ba6676b13ec6929580bf6a Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Sat, 26 Feb 2022 15:01:21 +0100
+Subject: [PATCH] Replace OS-specific system information code with QSysInfo
+
+BUG: 450862
+---
+ src/kbugreport.cpp        | 22 +++++++++++++++++-
+ src/systeminformation_p.h | 48 ---------------------------------------
+ 2 files changed, 21 insertions(+), 49 deletions(-)
+
+diff --git a/src/kbugreport.cpp b/src/kbugreport.cpp
+index f62c5e61..04a04b4e 100644
+--- a/src/kbugreport.cpp
++++ b/src/kbugreport.cpp
+@@ -208,7 +208,27 @@ KBugReport::KBugReport(const KAboutData &aboutData, QWidget *_parent)
+
+     tmpLabel = new QLabel(i18n("OS:"), this);
+     glay->addWidget(tmpLabel, ++row, 0);
+-    d->os = SystemInformation::operatingSystemVersion();
++
++#ifdef Q_OS_WINDOWS
++    d->os = i18nc("%1 is the operating system name, e.g. 'Windows 10', %2 is the CPU architecture, e.g. 'x86_64'",
++                  "%1 (%2)",
++                  QSysInfo::prettyProductName(),
++                  QSysInfo::kernelVersion());
++#else
++    if (QSysInfo::productVersion() != QLatin1String("unknown")) {
++        d->os = i18nc(
++            "%1 is the operating system name, e.g. 'Fedora Linux', %2 is the operating system version, e.g. '35', %3 is the CPU architecture, e.g. 'x86_64'",
++            "%1 %2 (%3)",
++            QSysInfo::prettyProductName(),
++            QSysInfo::productVersion(),
++            QSysInfo::currentCpuArchitecture());
++    } else {
++        d->os = i18nc("%1 is the operating system name, e.g. 'Fedora Linux', %2 is the CPU architecture, e.g. 'x86_64'",
++                      "%1 (%2)",
++                      QSysInfo::prettyProductName(),
++                      QSysInfo::currentCpuArchitecture());
++    }
++#endif
+
+     tmpLabel = new QLabel(d->os, this);
+     tmpLabel->setTextInteractionFlags(Qt::TextBrowserInteraction);
+diff --git a/src/systeminformation_p.h b/src/systeminformation_p.h
+index ce7e6ca9..bd0cfadb 100644
+--- a/src/systeminformation_p.h
++++ b/src/systeminformation_p.h
+@@ -12,7 +12,6 @@
+ namespace SystemInformation
+ {
+ QString userName();
+-QString operatingSystemVersion();
+ }
+
+ #if !defined(Q_OS_WIN)
+@@ -25,13 +24,6 @@ inline QString SystemInformation::userName()
+     return QString::fromLatin1(p->pw_name);
+ }
+
+-inline QString SystemInformation::operatingSystemVersion()
+-{
+-    struct utsname unameBuf;
+-    uname(&unameBuf);
+-    return QString::fromUtf8(unameBuf.sysname) + QLatin1String(" (") + QString::fromUtf8(unameBuf.machine) + QLatin1String(") ") + QLatin1String("release ")
+-        + QString::fromUtf8(unameBuf.release);
+-}
+ #else
+ #include <QOperatingSystemVersion>
+ #include <qt_windows.h>
+@@ -49,46 +41,6 @@ inline QString SystemInformation::userName()
+     return QString::fromWCharArray(nameBuffer);
+ }
+
+-static inline QString windowsVersionString()
+-{
+-    const auto version = QOperatingSystemVersion::current();
+-    // We're comparing with class instances, can't use a switch
+-    // There's not even an operator== anyway.
+-    if (version >= QOperatingSystemVersion::Windows10)
+-        return QStringLiteral("Windows 10");
+-    if (version >= QOperatingSystemVersion::Windows8_1)
+-        return QStringLiteral("Windows 8.1");
+-    if (version >= QOperatingSystemVersion::Windows8)
+-        return QStringLiteral("Windows 8");
+-    if (version >= QOperatingSystemVersion::Windows7)
+-        return QStringLiteral("Windows 7");
+-    return QStringLiteral("Unknown Windows");
+-}
+-
+-inline QString SystemInformation::operatingSystemVersion()
+-{
+-    SYSTEM_INFO info;
+-    GetNativeSystemInfo(&info);
+-    QString arch;
+-    switch (info.dwProcessorType) {
+-    case PROCESSOR_ARCHITECTURE_AMD64:
+-    case PROCESSOR_ARCHITECTURE_IA32_ON_WIN64:
+-        arch = QStringLiteral(" (x86_64)");
+-        break;
+-    case PROCESSOR_ARCHITECTURE_INTEL:
+-        arch = QStringLiteral(" (x86)");
+-        break;
+-    case PROCESSOR_ARCHITECTURE_ARM:
+-        arch = QStringLiteral(" (ARM)");
+-        break;
+-    default:
+-        arch = QStringLiteral(" (unknown architecture)");
+-    }
+-    QString winVer;
+-    // TODO: handle Service packs?
+-    return windowsVersionString() + arch;
+-}
+-
+ #endif
+
+ #endif // SYSTEMINFORMATION_P_H
+--
+2.30.2
