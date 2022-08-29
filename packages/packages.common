@@ -593,39 +593,39 @@ file gpgme/gpgme-1.18.1-beta13.tar.xz
 chk b6e444b057747ad7a00a98b333a9dadff6c8eea970c6768f22ee969ef5de6b0f
 
 # gpgol
-# last changed: 2022-08-25
+# last changed: 2022-08-29
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file gpgol/gpgol-2.5.4-beta9.tar.xz
-chk bb7023da18b6802426fa9ee4e2ab6098b9c1b0672ea22ac74aac4d10aeb86be4
+file gpgol/gpgol-2.5.4-beta12.tar.xz
+chk 80cb7f2393fff3ac0c936adf415160da65a3cbadd48cd543a837c3123c415298
 
 # gpg4win-tools
-# last changed: 2022-08-23
+# last changed: 2022-08-29
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file gpg4win-tools/gpg4win-tools-202208231643.tar.xz
-chk e5a960ae17803e91aa335876ca49e6752c41a87629db273122812be8c3423a43
+file gpg4win-tools/gpg4win-tools-202208290924.tar.xz
+chk fe20b69d84893618625d76e55f772477a80628da98411c8bb9c1a5e01028b3f9
 
 # KDE-l10n
-# last changed: 2022-08-25
+# last changed: 2022-08-29
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file kde-l10n/kde-l10n-202208251431-bin.tar.xz
-chk b8478b172b71e4e956e7ac76eba29b8643602ec7bde79ac8d83ee66ae721720d
+file kde-l10n/kde-l10n-202208291124-bin.tar.xz
+chk fc510d2d2726b433fba5eb444baef416a2f8fdce507bd665ac5f6053b18ec9dc
 
-file kde-l10n/kde-l10n-202208251431-src.tar.xz
-chk dad07ad5a81f0787265327a84b0fb9fcfd40383cd615bbbdc900482d53669d82
+file kde-l10n/kde-l10n-202208291124-src.tar.xz
+chk a9b0f8d43bba621fe374c3be6d0918c4f5568c5029fa310d9a6f378f1dc72072
 
 # libkleo
-# last changed: 2022-08-25
+# last changed: 2022-08-29
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file libkleo/libkleo-202208251434.tar.xz
-chk 6a01fc89c6792bc2b9f04e4432fd1fa8125891205ce58771d0f02bb7a6d68cee
+file libkleo/libkleo-202208290924.tar.xz
+chk 449dd1eb8cd7f84f4e4c499ed29dc94ad38429841adccfea9188b46afc767c75
 
 # kleopatra
-# last changed: 2022-08-25
+# last changed: 2022-08-29
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file kleopatra/kleopatra-202208251434.tar.xz
-chk 425db4bc4b0c67e6691f0fb29e242c2600074761136bacf8786b22ec8e1423dc
+file kleopatra/kleopatra-202208291137.tar.xz
+chk 036e6c9b58160defe2a9c74754159840355292d35932c20d3a3042a5781c958c
