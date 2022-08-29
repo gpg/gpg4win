@@ -610,11 +610,11 @@ chk fe20b69d84893618625d76e55f772477a80628da98411c8bb9c1a5e01028b3f9
 # last changed: 2022-08-29
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file kde-l10n/kde-l10n-202208291154-bin.tar.xz
-chk cc8e1a3bbd5f8ca18628e351e9d4016139a6f162af21d6628b3c98bf299e57d8
+file kde-l10n/kde-l10n-202208291256-bin.tar.xz
+chk bc5bdacc7d728b2061675f3507de1fbab58aa350b09cf2c711eed863c49610a1
 
-file kde-l10n/kde-l10n-202208291154-src.tar.xz
-chk 241604b41ae6b219dc8d63ff99a846c53a73b1f4a4f709b9503e26a57d7a7039
+file kde-l10n/kde-l10n-202208291256-src.tar.xz
+chk 53d56cef245f370eef594818f868945fb2a1e6a6aa8380b2a772c90afb0116c5
 
 # libkleo
 # last changed: 2022-08-29
