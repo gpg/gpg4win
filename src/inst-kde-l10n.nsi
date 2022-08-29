@@ -23,7 +23,6 @@
 !define kconfigwidgets_prefix ${ipdir}/kconfigwidgets-${gpg4win_pkg_kconfigwidgets_version}
 !define ki18n_prefix ${ipdir}/ki18n-${gpg4win_pkg_ki18n_version}
 !define kiconthemes_prefix ${ipdir}/kiconthemes-${gpg4win_pkg_kiconthemes_version}
-!define kxmlgui_prefix ${ipdir}/kxmlgui-${gpg4win_pkg_kxmlgui_version}
 !define kconfig_prefix ${ipdir}/kconfig-${gpg4win_pkg_kconfig_version}
 !define kcompletion_prefix ${ipdir}/kcompletion-${gpg4win_pkg_kcompletion_version}
 !define kcodecs_prefix ${ipdir}/kcodecs-${gpg4win_pkg_kcodecs_version}
@@ -47,7 +46,6 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kconfigwidgets_prefix}/share/locale/af/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/af/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/af/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/af/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/af/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/af/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/af/LC_MESSAGES/kcodecs5_qt.qm
@@ -56,13 +54,13 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kwidgetsaddons_prefix}/share/locale/af/LC_MESSAGES/kwidgetsaddons5_qt.qm
   File ${kwindowsystem_prefix}/share/locale/af/LC_MESSAGES/kwindowsystem5_qt.qm
   File ${prefix}/share/locale/af/LC_MESSAGES/kleopatra.mo
+  File ${prefix}/share/locale/af/LC_MESSAGES/kxmlgui5.mo
   SetOutPath "$INSTDIR\share\locale\ar"
   File ${kcfg_prefix}/share/locale/ar/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\ar\LC_MESSAGES"
   File ${kconfigwidgets_prefix}/share/locale/ar/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/ar/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/ar/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/ar/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/ar/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/ar/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/ar/LC_MESSAGES/kcodecs5_qt.qm
@@ -73,13 +71,13 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${prefix}/share/locale/ar/LC_MESSAGES/libkleopatra.mo
   File ${prefix}/share/locale/ar/LC_MESSAGES/kwatchgnupg.mo
   File ${prefix}/share/locale/ar/LC_MESSAGES/kleopatra.mo
+  File ${prefix}/share/locale/ar/LC_MESSAGES/kxmlgui5.mo
   SetOutPath "$INSTDIR\share\locale\be"
   File ${kcfg_prefix}/share/locale/be/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\be\LC_MESSAGES"
   File ${kconfigwidgets_prefix}/share/locale/be/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/be/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/be/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/be/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/be/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/be/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/be/LC_MESSAGES/kcodecs5_qt.qm
@@ -90,13 +88,13 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${prefix}/share/locale/be/LC_MESSAGES/libkleopatra.mo
   File ${prefix}/share/locale/be/LC_MESSAGES/kwatchgnupg.mo
   File ${prefix}/share/locale/be/LC_MESSAGES/kleopatra.mo
+  File ${prefix}/share/locale/be/LC_MESSAGES/kxmlgui5.mo
   SetOutPath "$INSTDIR\share\locale\bg"
   File ${kcfg_prefix}/share/locale/bg/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\bg\LC_MESSAGES"
   File ${kconfigwidgets_prefix}/share/locale/bg/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/bg/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/bg/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/bg/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/bg/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/bg/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/bg/LC_MESSAGES/kcodecs5_qt.qm
@@ -107,13 +105,13 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${prefix}/share/locale/bg/LC_MESSAGES/libkleopatra.mo
   File ${prefix}/share/locale/bg/LC_MESSAGES/kwatchgnupg.mo
   File ${prefix}/share/locale/bg/LC_MESSAGES/kleopatra.mo
+  File ${prefix}/share/locale/bg/LC_MESSAGES/kxmlgui5.mo
   SetOutPath "$INSTDIR\share\locale\br"
   File ${kcfg_prefix}/share/locale/br/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\br\LC_MESSAGES"
   File ${kconfigwidgets_prefix}/share/locale/br/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/br/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/br/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/br/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/br/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/br/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/br/LC_MESSAGES/kcodecs5_qt.qm
@@ -124,13 +122,13 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${prefix}/share/locale/br/LC_MESSAGES/libkleopatra.mo
   File ${prefix}/share/locale/br/LC_MESSAGES/kwatchgnupg.mo
   File ${prefix}/share/locale/br/LC_MESSAGES/kleopatra.mo
+  File ${prefix}/share/locale/br/LC_MESSAGES/kxmlgui5.mo
   SetOutPath "$INSTDIR\share\locale\bs"
   File ${kcfg_prefix}/share/locale/bs/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\bs\LC_MESSAGES"
   File ${kconfigwidgets_prefix}/share/locale/bs/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/bs/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/bs/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/bs/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/bs/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/bs/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/bs/LC_MESSAGES/kcodecs5_qt.qm
@@ -141,13 +139,13 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${prefix}/share/locale/bs/LC_MESSAGES/libkleopatra.mo
   File ${prefix}/share/locale/bs/LC_MESSAGES/kwatchgnupg.mo
   File ${prefix}/share/locale/bs/LC_MESSAGES/kleopatra.mo
+  File ${prefix}/share/locale/bs/LC_MESSAGES/kxmlgui5.mo
   SetOutPath "$INSTDIR\share\locale\ca"
   File ${kcfg_prefix}/share/locale/ca/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\ca\LC_MESSAGES"
   File ${kconfigwidgets_prefix}/share/locale/ca/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/ca/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/ca/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/ca/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/ca/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/ca/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/ca/LC_MESSAGES/kcodecs5_qt.qm
@@ -158,13 +156,13 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${prefix}/share/locale/ca/LC_MESSAGES/libkleopatra.mo
   File ${prefix}/share/locale/ca/LC_MESSAGES/kwatchgnupg.mo
   File ${prefix}/share/locale/ca/LC_MESSAGES/kleopatra.mo
+  File ${prefix}/share/locale/ca/LC_MESSAGES/kxmlgui5.mo
   SetOutPath "$INSTDIR\share\locale\ca@valencia"
   File ${kcfg_prefix}/share/locale/ca@valencia/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\ca@valencia\LC_MESSAGES"
   File ${kconfigwidgets_prefix}/share/locale/ca@valencia/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/ca@valencia/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/ca@valencia/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/ca@valencia/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/ca@valencia/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/ca@valencia/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/ca@valencia/LC_MESSAGES/kcodecs5_qt.qm
@@ -175,13 +173,13 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${prefix}/share/locale/ca@valencia/LC_MESSAGES/libkleopatra.mo
   File ${prefix}/share/locale/ca@valencia/LC_MESSAGES/kwatchgnupg.mo
   File ${prefix}/share/locale/ca@valencia/LC_MESSAGES/kleopatra.mo
+  File ${prefix}/share/locale/ca@valencia/LC_MESSAGES/kxmlgui5.mo
   SetOutPath "$INSTDIR\share\locale\cs"
   File ${kcfg_prefix}/share/locale/cs/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\cs\LC_MESSAGES"
   File ${kconfigwidgets_prefix}/share/locale/cs/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/cs/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/cs/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/cs/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/cs/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/cs/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/cs/LC_MESSAGES/kcodecs5_qt.qm
@@ -192,13 +190,13 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${prefix}/share/locale/cs/LC_MESSAGES/libkleopatra.mo
   File ${prefix}/share/locale/cs/LC_MESSAGES/kwatchgnupg.mo
   File ${prefix}/share/locale/cs/LC_MESSAGES/kleopatra.mo
+  File ${prefix}/share/locale/cs/LC_MESSAGES/kxmlgui5.mo
   SetOutPath "$INSTDIR\share\locale\cy"
   File ${kcfg_prefix}/share/locale/cy/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\cy\LC_MESSAGES"
   File ${kconfigwidgets_prefix}/share/locale/cy/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/cy/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/cy/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/cy/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/cy/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/cy/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/cy/LC_MESSAGES/kcodecs5_qt.qm
@@ -209,13 +207,13 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${prefix}/share/locale/cy/LC_MESSAGES/libkleopatra.mo
   File ${prefix}/share/locale/cy/LC_MESSAGES/kwatchgnupg.mo
   File ${prefix}/share/locale/cy/LC_MESSAGES/kleopatra.mo
+  File ${prefix}/share/locale/cy/LC_MESSAGES/kxmlgui5.mo
   SetOutPath "$INSTDIR\share\locale\da"
   File ${kcfg_prefix}/share/locale/da/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\da\LC_MESSAGES"
   File ${kconfigwidgets_prefix}/share/locale/da/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/da/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/da/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/da/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/da/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/da/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/da/LC_MESSAGES/kcodecs5_qt.qm
@@ -226,13 +224,13 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${prefix}/share/locale/da/LC_MESSAGES/libkleopatra.mo
   File ${prefix}/share/locale/da/LC_MESSAGES/kwatchgnupg.mo
   File ${prefix}/share/locale/da/LC_MESSAGES/kleopatra.mo
+  File ${prefix}/share/locale/da/LC_MESSAGES/kxmlgui5.mo
   SetOutPath "$INSTDIR\share\locale\de"
   File ${kcfg_prefix}/share/locale/de/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\de\LC_MESSAGES"
   File ${kconfigwidgets_prefix}/share/locale/de/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/de/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/de/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/de/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/de/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/de/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/de/LC_MESSAGES/kcodecs5_qt.qm
@@ -243,13 +241,13 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${prefix}/share/locale/de/LC_MESSAGES/libkleopatra.mo
   File ${prefix}/share/locale/de/LC_MESSAGES/kwatchgnupg.mo
   File ${prefix}/share/locale/de/LC_MESSAGES/kleopatra.mo
+  File ${prefix}/share/locale/de/LC_MESSAGES/kxmlgui5.mo
   SetOutPath "$INSTDIR\share\locale\el"
   File ${kcfg_prefix}/share/locale/el/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\el\LC_MESSAGES"
   File ${kconfigwidgets_prefix}/share/locale/el/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/el/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/el/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/el/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/el/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/el/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/el/LC_MESSAGES/kcodecs5_qt.qm
@@ -260,13 +258,13 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${prefix}/share/locale/el/LC_MESSAGES/libkleopatra.mo
   File ${prefix}/share/locale/el/LC_MESSAGES/kwatchgnupg.mo
   File ${prefix}/share/locale/el/LC_MESSAGES/kleopatra.mo
+  File ${prefix}/share/locale/el/LC_MESSAGES/kxmlgui5.mo
   SetOutPath "$INSTDIR\share\locale\en_GB"
   File ${kcfg_prefix}/share/locale/en_GB/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\en_GB\LC_MESSAGES"
   File ${kconfigwidgets_prefix}/share/locale/en_GB/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/en_GB/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/en_GB/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/en_GB/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/en_GB/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/en_GB/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/en_GB/LC_MESSAGES/kcodecs5_qt.qm
@@ -277,13 +275,13 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${prefix}/share/locale/en_GB/LC_MESSAGES/libkleopatra.mo
   File ${prefix}/share/locale/en_GB/LC_MESSAGES/kwatchgnupg.mo
   File ${prefix}/share/locale/en_GB/LC_MESSAGES/kleopatra.mo
+  File ${prefix}/share/locale/en_GB/LC_MESSAGES/kxmlgui5.mo
   SetOutPath "$INSTDIR\share\locale\eo"
   File ${kcfg_prefix}/share/locale/eo/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\eo\LC_MESSAGES"
   File ${kconfigwidgets_prefix}/share/locale/eo/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/eo/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/eo/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/eo/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/eo/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/eo/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/eo/LC_MESSAGES/kcodecs5_qt.qm
@@ -294,13 +292,13 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${prefix}/share/locale/eo/LC_MESSAGES/libkleopatra.mo
   File ${prefix}/share/locale/eo/LC_MESSAGES/kwatchgnupg.mo
   File ${prefix}/share/locale/eo/LC_MESSAGES/kleopatra.mo
+  File ${prefix}/share/locale/eo/LC_MESSAGES/kxmlgui5.mo
   SetOutPath "$INSTDIR\share\locale\es"
   File ${kcfg_prefix}/share/locale/es/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\es\LC_MESSAGES"
   File ${kconfigwidgets_prefix}/share/locale/es/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/es/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/es/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/es/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/es/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/es/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/es/LC_MESSAGES/kcodecs5_qt.qm
@@ -311,13 +309,13 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${prefix}/share/locale/es/LC_MESSAGES/libkleopatra.mo
   File ${prefix}/share/locale/es/LC_MESSAGES/kwatchgnupg.mo
   File ${prefix}/share/locale/es/LC_MESSAGES/kleopatra.mo
+  File ${prefix}/share/locale/es/LC_MESSAGES/kxmlgui5.mo
   SetOutPath "$INSTDIR\share\locale\et"
   File ${kcfg_prefix}/share/locale/et/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\et\LC_MESSAGES"
   File ${kconfigwidgets_prefix}/share/locale/et/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/et/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/et/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/et/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/et/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/et/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/et/LC_MESSAGES/kcodecs5_qt.qm
@@ -328,13 +326,13 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${prefix}/share/locale/et/LC_MESSAGES/libkleopatra.mo
   File ${prefix}/share/locale/et/LC_MESSAGES/kwatchgnupg.mo
   File ${prefix}/share/locale/et/LC_MESSAGES/kleopatra.mo
+  File ${prefix}/share/locale/et/LC_MESSAGES/kxmlgui5.mo
   SetOutPath "$INSTDIR\share\locale\eu"
   File ${kcfg_prefix}/share/locale/eu/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\eu\LC_MESSAGES"
   File ${kconfigwidgets_prefix}/share/locale/eu/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/eu/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/eu/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/eu/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/eu/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/eu/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/eu/LC_MESSAGES/kcodecs5_qt.qm
@@ -345,13 +343,13 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${prefix}/share/locale/eu/LC_MESSAGES/libkleopatra.mo
   File ${prefix}/share/locale/eu/LC_MESSAGES/kwatchgnupg.mo
   File ${prefix}/share/locale/eu/LC_MESSAGES/kleopatra.mo
+  File ${prefix}/share/locale/eu/LC_MESSAGES/kxmlgui5.mo
   SetOutPath "$INSTDIR\share\locale\fa"
   File ${kcfg_prefix}/share/locale/fa/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\fa\LC_MESSAGES"
   File ${kconfigwidgets_prefix}/share/locale/fa/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/fa/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/fa/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/fa/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/fa/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/fa/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/fa/LC_MESSAGES/kcodecs5_qt.qm
@@ -362,13 +360,13 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${prefix}/share/locale/fa/LC_MESSAGES/libkleopatra.mo
   File ${prefix}/share/locale/fa/LC_MESSAGES/kwatchgnupg.mo
   File ${prefix}/share/locale/fa/LC_MESSAGES/kleopatra.mo
+  File ${prefix}/share/locale/fa/LC_MESSAGES/kxmlgui5.mo
   SetOutPath "$INSTDIR\share\locale\fi"
   File ${kcfg_prefix}/share/locale/fi/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\fi\LC_MESSAGES"
   File ${kconfigwidgets_prefix}/share/locale/fi/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/fi/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/fi/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/fi/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/fi/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/fi/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/fi/LC_MESSAGES/kcodecs5_qt.qm
@@ -379,13 +377,13 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${prefix}/share/locale/fi/LC_MESSAGES/libkleopatra.mo
   File ${prefix}/share/locale/fi/LC_MESSAGES/kwatchgnupg.mo
   File ${prefix}/share/locale/fi/LC_MESSAGES/kleopatra.mo
+  File ${prefix}/share/locale/fi/LC_MESSAGES/kxmlgui5.mo
   SetOutPath "$INSTDIR\share\locale\fr"
   File ${kcfg_prefix}/share/locale/fr/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\fr\LC_MESSAGES"
   File ${kconfigwidgets_prefix}/share/locale/fr/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/fr/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/fr/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/fr/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/fr/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/fr/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/fr/LC_MESSAGES/kcodecs5_qt.qm
@@ -396,13 +394,13 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${prefix}/share/locale/fr/LC_MESSAGES/libkleopatra.mo
   File ${prefix}/share/locale/fr/LC_MESSAGES/kwatchgnupg.mo
   File ${prefix}/share/locale/fr/LC_MESSAGES/kleopatra.mo
+  File ${prefix}/share/locale/fr/LC_MESSAGES/kxmlgui5.mo
   SetOutPath "$INSTDIR\share\locale\fy"
   File ${kcfg_prefix}/share/locale/fy/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\fy\LC_MESSAGES"
   File ${kconfigwidgets_prefix}/share/locale/fy/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/fy/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/fy/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/fy/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/fy/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/fy/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/fy/LC_MESSAGES/kcodecs5_qt.qm
@@ -413,13 +411,13 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${prefix}/share/locale/fy/LC_MESSAGES/libkleopatra.mo
   File ${prefix}/share/locale/fy/LC_MESSAGES/kwatchgnupg.mo
   File ${prefix}/share/locale/fy/LC_MESSAGES/kleopatra.mo
+  File ${prefix}/share/locale/fy/LC_MESSAGES/kxmlgui5.mo
   SetOutPath "$INSTDIR\share\locale\ga"
   File ${kcfg_prefix}/share/locale/ga/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\ga\LC_MESSAGES"
   File ${kconfigwidgets_prefix}/share/locale/ga/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/ga/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/ga/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/ga/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/ga/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/ga/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/ga/LC_MESSAGES/kcodecs5_qt.qm
@@ -430,13 +428,13 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${prefix}/share/locale/ga/LC_MESSAGES/libkleopatra.mo
   File ${prefix}/share/locale/ga/LC_MESSAGES/kwatchgnupg.mo
   File ${prefix}/share/locale/ga/LC_MESSAGES/kleopatra.mo
+  File ${prefix}/share/locale/ga/LC_MESSAGES/kxmlgui5.mo
   SetOutPath "$INSTDIR\share\locale\gl"
   File ${kcfg_prefix}/share/locale/gl/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\gl\LC_MESSAGES"
   File ${kconfigwidgets_prefix}/share/locale/gl/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/gl/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/gl/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/gl/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/gl/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/gl/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/gl/LC_MESSAGES/kcodecs5_qt.qm
@@ -447,13 +445,13 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${prefix}/share/locale/gl/LC_MESSAGES/libkleopatra.mo
   File ${prefix}/share/locale/gl/LC_MESSAGES/kwatchgnupg.mo
   File ${prefix}/share/locale/gl/LC_MESSAGES/kleopatra.mo
+  File ${prefix}/share/locale/gl/LC_MESSAGES/kxmlgui5.mo
   SetOutPath "$INSTDIR\share\locale\he"
   File ${kcfg_prefix}/share/locale/he/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\he\LC_MESSAGES"
   File ${kconfigwidgets_prefix}/share/locale/he/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/he/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/he/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/he/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/he/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/he/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/he/LC_MESSAGES/kcodecs5_qt.qm
@@ -462,13 +460,13 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kwidgetsaddons_prefix}/share/locale/he/LC_MESSAGES/kwidgetsaddons5_qt.qm
   File ${kwindowsystem_prefix}/share/locale/he/LC_MESSAGES/kwindowsystem5_qt.qm
   File ${prefix}/share/locale/he/LC_MESSAGES/kleopatra.mo
+  File ${prefix}/share/locale/he/LC_MESSAGES/kxmlgui5.mo
   SetOutPath "$INSTDIR\share\locale\hi"
   File ${kcfg_prefix}/share/locale/hi/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\hi\LC_MESSAGES"
   File ${kconfigwidgets_prefix}/share/locale/hi/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/hi/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/hi/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/hi/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/hi/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/hi/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/hi/LC_MESSAGES/kcodecs5_qt.qm
@@ -479,12 +477,12 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${prefix}/share/locale/hi/LC_MESSAGES/libkleopatra.mo
   File ${prefix}/share/locale/hi/LC_MESSAGES/kwatchgnupg.mo
   File ${prefix}/share/locale/hi/LC_MESSAGES/kleopatra.mo
+  File ${prefix}/share/locale/hi/LC_MESSAGES/kxmlgui5.mo
   SetOutPath "$INSTDIR\share\locale\hne"
   File ${kcfg_prefix}/share/locale/hne/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\hne\LC_MESSAGES"
   File ${kconfigwidgets_prefix}/share/locale/hne/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/hne/LC_MESSAGES/ki18n5.mo
-  File ${kxmlgui_prefix}/share/locale/hne/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/hne/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/hne/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/hne/LC_MESSAGES/kcodecs5_qt.qm
@@ -495,13 +493,13 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${prefix}/share/locale/hne/LC_MESSAGES/libkleopatra.mo
   File ${prefix}/share/locale/hne/LC_MESSAGES/kwatchgnupg.mo
   File ${prefix}/share/locale/hne/LC_MESSAGES/kleopatra.mo
+  File ${prefix}/share/locale/hne/LC_MESSAGES/kxmlgui5.mo
   SetOutPath "$INSTDIR\share\locale\hr"
   File ${kcfg_prefix}/share/locale/hr/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\hr\LC_MESSAGES"
   File ${kconfigwidgets_prefix}/share/locale/hr/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/hr/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/hr/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/hr/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/hr/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/hr/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/hr/LC_MESSAGES/kcodecs5_qt.qm
@@ -511,13 +509,13 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kwindowsystem_prefix}/share/locale/hr/LC_MESSAGES/kwindowsystem5_qt.qm
   File ${prefix}/share/locale/hr/LC_MESSAGES/libkleopatra.mo
   File ${prefix}/share/locale/hr/LC_MESSAGES/kleopatra.mo
+  File ${prefix}/share/locale/hr/LC_MESSAGES/kxmlgui5.mo
   SetOutPath "$INSTDIR\share\locale\hu"
   File ${kcfg_prefix}/share/locale/hu/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\hu\LC_MESSAGES"
   File ${kconfigwidgets_prefix}/share/locale/hu/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/hu/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/hu/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/hu/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/hu/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/hu/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/hu/LC_MESSAGES/kcodecs5_qt.qm
@@ -528,13 +526,13 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${prefix}/share/locale/hu/LC_MESSAGES/libkleopatra.mo
   File ${prefix}/share/locale/hu/LC_MESSAGES/kwatchgnupg.mo
   File ${prefix}/share/locale/hu/LC_MESSAGES/kleopatra.mo
+  File ${prefix}/share/locale/hu/LC_MESSAGES/kxmlgui5.mo
   SetOutPath "$INSTDIR\share\locale\ia"
   File ${kcfg_prefix}/share/locale/ia/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\ia\LC_MESSAGES"
   File ${kconfigwidgets_prefix}/share/locale/ia/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/ia/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/ia/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/ia/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/ia/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/ia/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/ia/LC_MESSAGES/kcodecs5_qt.qm
@@ -545,13 +543,30 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${prefix}/share/locale/ia/LC_MESSAGES/libkleopatra.mo
   File ${prefix}/share/locale/ia/LC_MESSAGES/kwatchgnupg.mo
   File ${prefix}/share/locale/ia/LC_MESSAGES/kleopatra.mo
+  File ${prefix}/share/locale/ia/LC_MESSAGES/kxmlgui5.mo
+  SetOutPath "$INSTDIR\share\locale\is"
+  File ${kcfg_prefix}/share/locale/is/kf5_entry.desktop
+  SetOutPath "$INSTDIR\share\locale\is\LC_MESSAGES"
+  File ${kconfigwidgets_prefix}/share/locale/is/LC_MESSAGES/kconfigwidgets5.mo
+  File ${ki18n_prefix}/share/locale/is/LC_MESSAGES/ki18n5.mo
+  File ${kiconthemes_prefix}/share/locale/is/LC_MESSAGES/kiconthemes5.mo
+  File ${kconfig_prefix}/share/locale/is/LC_MESSAGES/kconfig5_qt.qm
+  File ${kcompletion_prefix}/share/locale/is/LC_MESSAGES/kcompletion5_qt.qm
+  File ${kcodecs_prefix}/share/locale/is/LC_MESSAGES/kcodecs5_qt.qm
+  File ${kcoreaddons_prefix}/share/locale/is/LC_MESSAGES/kcoreaddons5_qt.qm
+  File ${kitemviews_prefix}/share/locale/is/LC_MESSAGES/kitemviews5_qt.qm
+  File ${kwidgetsaddons_prefix}/share/locale/is/LC_MESSAGES/kwidgetsaddons5_qt.qm
+  File ${kwindowsystem_prefix}/share/locale/is/LC_MESSAGES/kwindowsystem5_qt.qm
+  File ${prefix}/share/locale/is/LC_MESSAGES/libkleopatra.mo
+  File ${prefix}/share/locale/is/LC_MESSAGES/kwatchgnupg.mo
+  File ${prefix}/share/locale/is/LC_MESSAGES/kleopatra.mo
+  File ${prefix}/share/locale/is/LC_MESSAGES/kxmlgui5.mo
   SetOutPath "$INSTDIR\share\locale\it"
   File ${kcfg_prefix}/share/locale/it/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\it\LC_MESSAGES"
   File ${kconfigwidgets_prefix}/share/locale/it/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/it/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/it/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/it/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/it/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/it/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/it/LC_MESSAGES/kcodecs5_qt.qm
@@ -562,13 +577,13 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${prefix}/share/locale/it/LC_MESSAGES/libkleopatra.mo
   File ${prefix}/share/locale/it/LC_MESSAGES/kwatchgnupg.mo
   File ${prefix}/share/locale/it/LC_MESSAGES/kleopatra.mo
+  File ${prefix}/share/locale/it/LC_MESSAGES/kxmlgui5.mo
   SetOutPath "$INSTDIR\share\locale\ja"
   File ${kcfg_prefix}/share/locale/ja/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\ja\LC_MESSAGES"
   File ${kconfigwidgets_prefix}/share/locale/ja/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/ja/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/ja/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/ja/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/ja/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/ja/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/ja/LC_MESSAGES/kcodecs5_qt.qm
@@ -579,13 +594,13 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${prefix}/share/locale/ja/LC_MESSAGES/libkleopatra.mo
   File ${prefix}/share/locale/ja/LC_MESSAGES/kwatchgnupg.mo
   File ${prefix}/share/locale/ja/LC_MESSAGES/kleopatra.mo
+  File ${prefix}/share/locale/ja/LC_MESSAGES/kxmlgui5.mo
   SetOutPath "$INSTDIR\share\locale\kk"
   File ${kcfg_prefix}/share/locale/kk/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\kk\LC_MESSAGES"
   File ${kconfigwidgets_prefix}/share/locale/kk/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/kk/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/kk/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/kk/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/kk/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/kk/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/kk/LC_MESSAGES/kcodecs5_qt.qm
@@ -596,13 +611,13 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${prefix}/share/locale/kk/LC_MESSAGES/libkleopatra.mo
   File ${prefix}/share/locale/kk/LC_MESSAGES/kwatchgnupg.mo
   File ${prefix}/share/locale/kk/LC_MESSAGES/kleopatra.mo
+  File ${prefix}/share/locale/kk/LC_MESSAGES/kxmlgui5.mo
   SetOutPath "$INSTDIR\share\locale\km"
   File ${kcfg_prefix}/share/locale/km/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\km\LC_MESSAGES"
   File ${kconfigwidgets_prefix}/share/locale/km/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/km/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/km/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/km/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/km/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/km/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/km/LC_MESSAGES/kcodecs5_qt.qm
@@ -613,13 +628,13 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${prefix}/share/locale/km/LC_MESSAGES/libkleopatra.mo
   File ${prefix}/share/locale/km/LC_MESSAGES/kwatchgnupg.mo
   File ${prefix}/share/locale/km/LC_MESSAGES/kleopatra.mo
+  File ${prefix}/share/locale/km/LC_MESSAGES/kxmlgui5.mo
   SetOutPath "$INSTDIR\share\locale\ko"
   File ${kcfg_prefix}/share/locale/ko/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\ko\LC_MESSAGES"
   File ${kconfigwidgets_prefix}/share/locale/ko/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/ko/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/ko/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/ko/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/ko/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/ko/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/ko/LC_MESSAGES/kcodecs5_qt.qm
@@ -630,13 +645,13 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${prefix}/share/locale/ko/LC_MESSAGES/libkleopatra.mo
   File ${prefix}/share/locale/ko/LC_MESSAGES/kwatchgnupg.mo
   File ${prefix}/share/locale/ko/LC_MESSAGES/kleopatra.mo
+  File ${prefix}/share/locale/ko/LC_MESSAGES/kxmlgui5.mo
   SetOutPath "$INSTDIR\share\locale\lt"
   File ${kcfg_prefix}/share/locale/lt/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\lt\LC_MESSAGES"
   File ${kconfigwidgets_prefix}/share/locale/lt/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/lt/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/lt/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/lt/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/lt/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/lt/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/lt/LC_MESSAGES/kcodecs5_qt.qm
@@ -647,13 +662,13 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${prefix}/share/locale/lt/LC_MESSAGES/libkleopatra.mo
   File ${prefix}/share/locale/lt/LC_MESSAGES/kwatchgnupg.mo
   File ${prefix}/share/locale/lt/LC_MESSAGES/kleopatra.mo
+  File ${prefix}/share/locale/lt/LC_MESSAGES/kxmlgui5.mo
   SetOutPath "$INSTDIR\share\locale\lv"
   File ${kcfg_prefix}/share/locale/lv/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\lv\LC_MESSAGES"
   File ${kconfigwidgets_prefix}/share/locale/lv/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/lv/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/lv/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/lv/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/lv/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/lv/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/lv/LC_MESSAGES/kcodecs5_qt.qm
@@ -664,28 +679,13 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${prefix}/share/locale/lv/LC_MESSAGES/libkleopatra.mo
   File ${prefix}/share/locale/lv/LC_MESSAGES/kwatchgnupg.mo
   File ${prefix}/share/locale/lv/LC_MESSAGES/kleopatra.mo
-  SetOutPath "$INSTDIR\share\locale\mai"
-  File ${kcfg_prefix}/share/locale/mai/kf5_entry.desktop
-  SetOutPath "$INSTDIR\share\locale\mai\LC_MESSAGES"
-  File ${kconfigwidgets_prefix}/share/locale/mai/LC_MESSAGES/kconfigwidgets5.mo
-  File ${ki18n_prefix}/share/locale/mai/LC_MESSAGES/ki18n5.mo
-  File ${kiconthemes_prefix}/share/locale/mai/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/mai/LC_MESSAGES/kxmlgui5.mo
-  File ${kconfig_prefix}/share/locale/mai/LC_MESSAGES/kconfig5_qt.qm
-  File ${kcompletion_prefix}/share/locale/mai/LC_MESSAGES/kcompletion5_qt.qm
-  File ${kcodecs_prefix}/share/locale/mai/LC_MESSAGES/kcodecs5_qt.qm
-  File ${kcoreaddons_prefix}/share/locale/mai/LC_MESSAGES/kcoreaddons5_qt.qm
-  File ${kitemviews_prefix}/share/locale/mai/LC_MESSAGES/kitemviews5_qt.qm
-  File ${kwidgetsaddons_prefix}/share/locale/mai/LC_MESSAGES/kwidgetsaddons5_qt.qm
-  File ${kwindowsystem_prefix}/share/locale/mai/LC_MESSAGES/kwindowsystem5_qt.qm
-  File ${prefix}/share/locale/mai/LC_MESSAGES/libkleopatra.mo
+  File ${prefix}/share/locale/lv/LC_MESSAGES/kxmlgui5.mo
   SetOutPath "$INSTDIR\share\locale\mk"
   File ${kcfg_prefix}/share/locale/mk/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\mk\LC_MESSAGES"
   File ${kconfigwidgets_prefix}/share/locale/mk/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/mk/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/mk/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/mk/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/mk/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/mk/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/mk/LC_MESSAGES/kcodecs5_qt.qm
@@ -696,13 +696,13 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${prefix}/share/locale/mk/LC_MESSAGES/libkleopatra.mo
   File ${prefix}/share/locale/mk/LC_MESSAGES/kwatchgnupg.mo
   File ${prefix}/share/locale/mk/LC_MESSAGES/kleopatra.mo
+  File ${prefix}/share/locale/mk/LC_MESSAGES/kxmlgui5.mo
   SetOutPath "$INSTDIR\share\locale\mr"
   File ${kcfg_prefix}/share/locale/mr/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\mr\LC_MESSAGES"
   File ${kconfigwidgets_prefix}/share/locale/mr/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/mr/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/mr/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/mr/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/mr/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/mr/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/mr/LC_MESSAGES/kcodecs5_qt.qm
@@ -713,13 +713,13 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${prefix}/share/locale/mr/LC_MESSAGES/libkleopatra.mo
   File ${prefix}/share/locale/mr/LC_MESSAGES/kwatchgnupg.mo
   File ${prefix}/share/locale/mr/LC_MESSAGES/kleopatra.mo
+  File ${prefix}/share/locale/mr/LC_MESSAGES/kxmlgui5.mo
   SetOutPath "$INSTDIR\share\locale\ms"
   File ${kcfg_prefix}/share/locale/ms/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\ms\LC_MESSAGES"
   File ${kconfigwidgets_prefix}/share/locale/ms/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/ms/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/ms/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/ms/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/ms/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/ms/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/ms/LC_MESSAGES/kcodecs5_qt.qm
@@ -730,13 +730,13 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${prefix}/share/locale/ms/LC_MESSAGES/libkleopatra.mo
   File ${prefix}/share/locale/ms/LC_MESSAGES/kwatchgnupg.mo
   File ${prefix}/share/locale/ms/LC_MESSAGES/kleopatra.mo
+  File ${prefix}/share/locale/ms/LC_MESSAGES/kxmlgui5.mo
   SetOutPath "$INSTDIR\share\locale\nb"
   File ${kcfg_prefix}/share/locale/nb/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\nb\LC_MESSAGES"
   File ${kconfigwidgets_prefix}/share/locale/nb/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/nb/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/nb/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/nb/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/nb/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/nb/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/nb/LC_MESSAGES/kcodecs5_qt.qm
@@ -747,13 +747,13 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${prefix}/share/locale/nb/LC_MESSAGES/libkleopatra.mo
   File ${prefix}/share/locale/nb/LC_MESSAGES/kwatchgnupg.mo
   File ${prefix}/share/locale/nb/LC_MESSAGES/kleopatra.mo
+  File ${prefix}/share/locale/nb/LC_MESSAGES/kxmlgui5.mo
   SetOutPath "$INSTDIR\share\locale\nds"
   File ${kcfg_prefix}/share/locale/nds/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\nds\LC_MESSAGES"
   File ${kconfigwidgets_prefix}/share/locale/nds/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/nds/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/nds/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/nds/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/nds/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/nds/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/nds/LC_MESSAGES/kcodecs5_qt.qm
@@ -764,13 +764,13 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${prefix}/share/locale/nds/LC_MESSAGES/libkleopatra.mo
   File ${prefix}/share/locale/nds/LC_MESSAGES/kwatchgnupg.mo
   File ${prefix}/share/locale/nds/LC_MESSAGES/kleopatra.mo
+  File ${prefix}/share/locale/nds/LC_MESSAGES/kxmlgui5.mo
   SetOutPath "$INSTDIR\share\locale\ne"
   File ${kcfg_prefix}/share/locale/ne/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\ne\LC_MESSAGES"
   File ${kconfigwidgets_prefix}/share/locale/ne/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/ne/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/ne/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/ne/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/ne/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/ne/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/ne/LC_MESSAGES/kcodecs5_qt.qm
@@ -781,13 +781,13 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${prefix}/share/locale/ne/LC_MESSAGES/libkleopatra.mo
   File ${prefix}/share/locale/ne/LC_MESSAGES/kwatchgnupg.mo
   File ${prefix}/share/locale/ne/LC_MESSAGES/kleopatra.mo
+  File ${prefix}/share/locale/ne/LC_MESSAGES/kxmlgui5.mo
   SetOutPath "$INSTDIR\share\locale\nl"
   File ${kcfg_prefix}/share/locale/nl/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\nl\LC_MESSAGES"
   File ${kconfigwidgets_prefix}/share/locale/nl/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/nl/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/nl/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/nl/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/nl/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/nl/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/nl/LC_MESSAGES/kcodecs5_qt.qm
@@ -798,13 +798,13 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${prefix}/share/locale/nl/LC_MESSAGES/libkleopatra.mo
   File ${prefix}/share/locale/nl/LC_MESSAGES/kwatchgnupg.mo
   File ${prefix}/share/locale/nl/LC_MESSAGES/kleopatra.mo
+  File ${prefix}/share/locale/nl/LC_MESSAGES/kxmlgui5.mo
   SetOutPath "$INSTDIR\share\locale\nn"
   File ${kcfg_prefix}/share/locale/nn/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\nn\LC_MESSAGES"
   File ${kconfigwidgets_prefix}/share/locale/nn/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/nn/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/nn/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/nn/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/nn/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/nn/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/nn/LC_MESSAGES/kcodecs5_qt.qm
@@ -815,13 +815,13 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${prefix}/share/locale/nn/LC_MESSAGES/libkleopatra.mo
   File ${prefix}/share/locale/nn/LC_MESSAGES/kwatchgnupg.mo
   File ${prefix}/share/locale/nn/LC_MESSAGES/kleopatra.mo
+  File ${prefix}/share/locale/nn/LC_MESSAGES/kxmlgui5.mo
   SetOutPath "$INSTDIR\share\locale\pa"
   File ${kcfg_prefix}/share/locale/pa/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\pa\LC_MESSAGES"
   File ${kconfigwidgets_prefix}/share/locale/pa/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/pa/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/pa/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/pa/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/pa/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/pa/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/pa/LC_MESSAGES/kcodecs5_qt.qm
@@ -832,13 +832,13 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${prefix}/share/locale/pa/LC_MESSAGES/libkleopatra.mo
   File ${prefix}/share/locale/pa/LC_MESSAGES/kwatchgnupg.mo
   File ${prefix}/share/locale/pa/LC_MESSAGES/kleopatra.mo
+  File ${prefix}/share/locale/pa/LC_MESSAGES/kxmlgui5.mo
   SetOutPath "$INSTDIR\share\locale\pl"
   File ${kcfg_prefix}/share/locale/pl/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\pl\LC_MESSAGES"
   File ${kconfigwidgets_prefix}/share/locale/pl/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/pl/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/pl/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/pl/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/pl/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/pl/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/pl/LC_MESSAGES/kcodecs5_qt.qm
@@ -849,13 +849,13 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${prefix}/share/locale/pl/LC_MESSAGES/libkleopatra.mo
   File ${prefix}/share/locale/pl/LC_MESSAGES/kwatchgnupg.mo
   File ${prefix}/share/locale/pl/LC_MESSAGES/kleopatra.mo
+  File ${prefix}/share/locale/pl/LC_MESSAGES/kxmlgui5.mo
   SetOutPath "$INSTDIR\share\locale\pt"
   File ${kcfg_prefix}/share/locale/pt/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\pt\LC_MESSAGES"
   File ${kconfigwidgets_prefix}/share/locale/pt/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/pt/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/pt/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/pt/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/pt/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/pt/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/pt/LC_MESSAGES/kcodecs5_qt.qm
@@ -866,13 +866,13 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${prefix}/share/locale/pt/LC_MESSAGES/libkleopatra.mo
   File ${prefix}/share/locale/pt/LC_MESSAGES/kwatchgnupg.mo
   File ${prefix}/share/locale/pt/LC_MESSAGES/kleopatra.mo
+  File ${prefix}/share/locale/pt/LC_MESSAGES/kxmlgui5.mo
   SetOutPath "$INSTDIR\share\locale\pt_BR"
   File ${kcfg_prefix}/share/locale/pt_BR/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\pt_BR\LC_MESSAGES"
   File ${kconfigwidgets_prefix}/share/locale/pt_BR/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/pt_BR/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/pt_BR/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/pt_BR/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/pt_BR/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/pt_BR/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/pt_BR/LC_MESSAGES/kcodecs5_qt.qm
@@ -883,13 +883,13 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${prefix}/share/locale/pt_BR/LC_MESSAGES/libkleopatra.mo
   File ${prefix}/share/locale/pt_BR/LC_MESSAGES/kwatchgnupg.mo
   File ${prefix}/share/locale/pt_BR/LC_MESSAGES/kleopatra.mo
+  File ${prefix}/share/locale/pt_BR/LC_MESSAGES/kxmlgui5.mo
   SetOutPath "$INSTDIR\share\locale\ro"
   File ${kcfg_prefix}/share/locale/ro/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\ro\LC_MESSAGES"
   File ${kconfigwidgets_prefix}/share/locale/ro/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/ro/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/ro/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/ro/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/ro/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/ro/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/ro/LC_MESSAGES/kcodecs5_qt.qm
@@ -900,13 +900,13 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${prefix}/share/locale/ro/LC_MESSAGES/libkleopatra.mo
   File ${prefix}/share/locale/ro/LC_MESSAGES/kwatchgnupg.mo
   File ${prefix}/share/locale/ro/LC_MESSAGES/kleopatra.mo
+  File ${prefix}/share/locale/ro/LC_MESSAGES/kxmlgui5.mo
   SetOutPath "$INSTDIR\share\locale\ru"
   File ${kcfg_prefix}/share/locale/ru/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\ru\LC_MESSAGES"
   File ${kconfigwidgets_prefix}/share/locale/ru/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/ru/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/ru/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/ru/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/ru/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/ru/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/ru/LC_MESSAGES/kcodecs5_qt.qm
@@ -917,13 +917,13 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${prefix}/share/locale/ru/LC_MESSAGES/libkleopatra.mo
   File ${prefix}/share/locale/ru/LC_MESSAGES/kwatchgnupg.mo
   File ${prefix}/share/locale/ru/LC_MESSAGES/kleopatra.mo
+  File ${prefix}/share/locale/ru/LC_MESSAGES/kxmlgui5.mo
   SetOutPath "$INSTDIR\share\locale\se"
   File ${kcfg_prefix}/share/locale/se/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\se\LC_MESSAGES"
   File ${kconfigwidgets_prefix}/share/locale/se/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/se/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/se/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/se/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/se/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/se/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/se/LC_MESSAGES/kcodecs5_qt.qm
@@ -934,13 +934,13 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${prefix}/share/locale/se/LC_MESSAGES/libkleopatra.mo
   File ${prefix}/share/locale/se/LC_MESSAGES/kwatchgnupg.mo
   File ${prefix}/share/locale/se/LC_MESSAGES/kleopatra.mo
+  File ${prefix}/share/locale/se/LC_MESSAGES/kxmlgui5.mo
   SetOutPath "$INSTDIR\share\locale\sk"
   File ${kcfg_prefix}/share/locale/sk/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\sk\LC_MESSAGES"
   File ${kconfigwidgets_prefix}/share/locale/sk/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/sk/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/sk/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/sk/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/sk/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/sk/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/sk/LC_MESSAGES/kcodecs5_qt.qm
@@ -951,13 +951,13 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${prefix}/share/locale/sk/LC_MESSAGES/libkleopatra.mo
   File ${prefix}/share/locale/sk/LC_MESSAGES/kwatchgnupg.mo
   File ${prefix}/share/locale/sk/LC_MESSAGES/kleopatra.mo
+  File ${prefix}/share/locale/sk/LC_MESSAGES/kxmlgui5.mo
   SetOutPath "$INSTDIR\share\locale\sl"
   File ${kcfg_prefix}/share/locale/sl/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\sl\LC_MESSAGES"
   File ${kconfigwidgets_prefix}/share/locale/sl/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/sl/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/sl/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/sl/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/sl/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/sl/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/sl/LC_MESSAGES/kcodecs5_qt.qm
@@ -968,13 +968,13 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${prefix}/share/locale/sl/LC_MESSAGES/libkleopatra.mo
   File ${prefix}/share/locale/sl/LC_MESSAGES/kwatchgnupg.mo
   File ${prefix}/share/locale/sl/LC_MESSAGES/kleopatra.mo
+  File ${prefix}/share/locale/sl/LC_MESSAGES/kxmlgui5.mo
   SetOutPath "$INSTDIR\share\locale\sq"
   File ${kcfg_prefix}/share/locale/sq/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\sq\LC_MESSAGES"
   File ${kconfigwidgets_prefix}/share/locale/sq/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/sq/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/sq/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/sq/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/sq/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/sq/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/sq/LC_MESSAGES/kcodecs5_qt.qm
@@ -985,13 +985,13 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${prefix}/share/locale/sq/LC_MESSAGES/libkleopatra.mo
   File ${prefix}/share/locale/sq/LC_MESSAGES/kwatchgnupg.mo
   File ${prefix}/share/locale/sq/LC_MESSAGES/kleopatra.mo
+  File ${prefix}/share/locale/sq/LC_MESSAGES/kxmlgui5.mo
   SetOutPath "$INSTDIR\share\locale\sr"
   File ${kcfg_prefix}/share/locale/sr/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\sr\LC_MESSAGES"
   File ${kconfigwidgets_prefix}/share/locale/sr/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/sr/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/sr/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/sr/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/sr/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/sr/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/sr/LC_MESSAGES/kcodecs5_qt.qm
@@ -1001,61 +1001,14 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kwindowsystem_prefix}/share/locale/sr/LC_MESSAGES/kwindowsystem5_qt.qm
   File ${prefix}/share/locale/sr/LC_MESSAGES/libkleopatra.mo
   File ${prefix}/share/locale/sr/LC_MESSAGES/kwatchgnupg.mo
-  SetOutPath "$INSTDIR\share\locale\sr@ijekavian"
-  File ${kcfg_prefix}/share/locale/sr@ijekavian/kf5_entry.desktop
-  SetOutPath "$INSTDIR\share\locale\sr@ijekavian\LC_MESSAGES"
-  File ${kconfigwidgets_prefix}/share/locale/sr@ijekavian/LC_MESSAGES/kconfigwidgets5.mo
-  File ${ki18n_prefix}/share/locale/sr@ijekavian/LC_MESSAGES/ki18n5.mo
-  File ${kiconthemes_prefix}/share/locale/sr@ijekavian/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/sr@ijekavian/LC_MESSAGES/kxmlgui5.mo
-  File ${kconfig_prefix}/share/locale/sr@ijekavian/LC_MESSAGES/kconfig5_qt.qm
-  File ${kcompletion_prefix}/share/locale/sr@ijekavian/LC_MESSAGES/kcompletion5_qt.qm
-  File ${kcodecs_prefix}/share/locale/sr@ijekavian/LC_MESSAGES/kcodecs5_qt.qm
-  File ${kcoreaddons_prefix}/share/locale/sr@ijekavian/LC_MESSAGES/kcoreaddons5_qt.qm
-  File ${kitemviews_prefix}/share/locale/sr@ijekavian/LC_MESSAGES/kitemviews5_qt.qm
-  File ${kwidgetsaddons_prefix}/share/locale/sr@ijekavian/LC_MESSAGES/kwidgetsaddons5_qt.qm
-  File ${kwindowsystem_prefix}/share/locale/sr@ijekavian/LC_MESSAGES/kwindowsystem5_qt.qm
-  File ${prefix}/share/locale/sr@ijekavian/LC_MESSAGES/libkleopatra.mo
-  File ${prefix}/share/locale/sr@ijekavian/LC_MESSAGES/kwatchgnupg.mo
-  SetOutPath "$INSTDIR\share\locale\sr@ijekavianlatin"
-  File ${kcfg_prefix}/share/locale/sr@ijekavianlatin/kf5_entry.desktop
-  SetOutPath "$INSTDIR\share\locale\sr@ijekavianlatin\LC_MESSAGES"
-  File ${kconfigwidgets_prefix}/share/locale/sr@ijekavianlatin/LC_MESSAGES/kconfigwidgets5.mo
-  File ${ki18n_prefix}/share/locale/sr@ijekavianlatin/LC_MESSAGES/ki18n5.mo
-  File ${kiconthemes_prefix}/share/locale/sr@ijekavianlatin/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/sr@ijekavianlatin/LC_MESSAGES/kxmlgui5.mo
-  File ${kconfig_prefix}/share/locale/sr@ijekavianlatin/LC_MESSAGES/kconfig5_qt.qm
-  File ${kcompletion_prefix}/share/locale/sr@ijekavianlatin/LC_MESSAGES/kcompletion5_qt.qm
-  File ${kcodecs_prefix}/share/locale/sr@ijekavianlatin/LC_MESSAGES/kcodecs5_qt.qm
-  File ${kcoreaddons_prefix}/share/locale/sr@ijekavianlatin/LC_MESSAGES/kcoreaddons5_qt.qm
-  File ${kitemviews_prefix}/share/locale/sr@ijekavianlatin/LC_MESSAGES/kitemviews5_qt.qm
-  File ${kwidgetsaddons_prefix}/share/locale/sr@ijekavianlatin/LC_MESSAGES/kwidgetsaddons5_qt.qm
-  File ${kwindowsystem_prefix}/share/locale/sr@ijekavianlatin/LC_MESSAGES/kwindowsystem5_qt.qm
-  File ${prefix}/share/locale/sr@ijekavianlatin/LC_MESSAGES/libkleopatra.mo
-  File ${prefix}/share/locale/sr@ijekavianlatin/LC_MESSAGES/kwatchgnupg.mo
-  SetOutPath "$INSTDIR\share\locale\sr@latin"
-  File ${kcfg_prefix}/share/locale/sr@latin/kf5_entry.desktop
-  SetOutPath "$INSTDIR\share\locale\sr@latin\LC_MESSAGES"
-  File ${kconfigwidgets_prefix}/share/locale/sr@latin/LC_MESSAGES/kconfigwidgets5.mo
-  File ${ki18n_prefix}/share/locale/sr@latin/LC_MESSAGES/ki18n5.mo
-  File ${kiconthemes_prefix}/share/locale/sr@latin/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/sr@latin/LC_MESSAGES/kxmlgui5.mo
-  File ${kconfig_prefix}/share/locale/sr@latin/LC_MESSAGES/kconfig5_qt.qm
-  File ${kcompletion_prefix}/share/locale/sr@latin/LC_MESSAGES/kcompletion5_qt.qm
-  File ${kcodecs_prefix}/share/locale/sr@latin/LC_MESSAGES/kcodecs5_qt.qm
-  File ${kcoreaddons_prefix}/share/locale/sr@latin/LC_MESSAGES/kcoreaddons5_qt.qm
-  File ${kitemviews_prefix}/share/locale/sr@latin/LC_MESSAGES/kitemviews5_qt.qm
-  File ${kwidgetsaddons_prefix}/share/locale/sr@latin/LC_MESSAGES/kwidgetsaddons5_qt.qm
-  File ${kwindowsystem_prefix}/share/locale/sr@latin/LC_MESSAGES/kwindowsystem5_qt.qm
-  File ${prefix}/share/locale/sr@latin/LC_MESSAGES/libkleopatra.mo
-  File ${prefix}/share/locale/sr@latin/LC_MESSAGES/kwatchgnupg.mo
+  File ${prefix}/share/locale/sr/LC_MESSAGES/kleopatra.mo
+  File ${prefix}/share/locale/sr/LC_MESSAGES/kxmlgui5.mo
   SetOutPath "$INSTDIR\share\locale\sv"
   File ${kcfg_prefix}/share/locale/sv/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\sv\LC_MESSAGES"
   File ${kconfigwidgets_prefix}/share/locale/sv/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/sv/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/sv/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/sv/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/sv/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/sv/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/sv/LC_MESSAGES/kcodecs5_qt.qm
@@ -1066,13 +1019,13 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${prefix}/share/locale/sv/LC_MESSAGES/libkleopatra.mo
   File ${prefix}/share/locale/sv/LC_MESSAGES/kwatchgnupg.mo
   File ${prefix}/share/locale/sv/LC_MESSAGES/kleopatra.mo
+  File ${prefix}/share/locale/sv/LC_MESSAGES/kxmlgui5.mo
   SetOutPath "$INSTDIR\share\locale\ta"
   File ${kcfg_prefix}/share/locale/ta/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\ta\LC_MESSAGES"
   File ${kconfigwidgets_prefix}/share/locale/ta/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/ta/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/ta/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/ta/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/ta/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/ta/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/ta/LC_MESSAGES/kcodecs5_qt.qm
@@ -1083,13 +1036,13 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${prefix}/share/locale/ta/LC_MESSAGES/libkleopatra.mo
   File ${prefix}/share/locale/ta/LC_MESSAGES/kwatchgnupg.mo
   File ${prefix}/share/locale/ta/LC_MESSAGES/kleopatra.mo
+  File ${prefix}/share/locale/ta/LC_MESSAGES/kxmlgui5.mo
   SetOutPath "$INSTDIR\share\locale\tg"
   File ${kcfg_prefix}/share/locale/tg/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\tg\LC_MESSAGES"
   File ${kconfigwidgets_prefix}/share/locale/tg/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/tg/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/tg/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/tg/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/tg/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/tg/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/tg/LC_MESSAGES/kcodecs5_qt.qm
@@ -1100,13 +1053,13 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${prefix}/share/locale/tg/LC_MESSAGES/libkleopatra.mo
   File ${prefix}/share/locale/tg/LC_MESSAGES/kwatchgnupg.mo
   File ${prefix}/share/locale/tg/LC_MESSAGES/kleopatra.mo
+  File ${prefix}/share/locale/tg/LC_MESSAGES/kxmlgui5.mo
   SetOutPath "$INSTDIR\share\locale\th"
   File ${kcfg_prefix}/share/locale/th/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\th\LC_MESSAGES"
   File ${kconfigwidgets_prefix}/share/locale/th/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/th/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/th/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/th/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/th/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/th/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/th/LC_MESSAGES/kcodecs5_qt.qm
@@ -1115,13 +1068,13 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kwidgetsaddons_prefix}/share/locale/th/LC_MESSAGES/kwidgetsaddons5_qt.qm
   File ${kwindowsystem_prefix}/share/locale/th/LC_MESSAGES/kwindowsystem5_qt.qm
   File ${prefix}/share/locale/th/LC_MESSAGES/kleopatra.mo
+  File ${prefix}/share/locale/th/LC_MESSAGES/kxmlgui5.mo
   SetOutPath "$INSTDIR\share\locale\tr"
   File ${kcfg_prefix}/share/locale/tr/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\tr\LC_MESSAGES"
   File ${kconfigwidgets_prefix}/share/locale/tr/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/tr/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/tr/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/tr/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/tr/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/tr/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/tr/LC_MESSAGES/kcodecs5_qt.qm
@@ -1132,13 +1085,13 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${prefix}/share/locale/tr/LC_MESSAGES/libkleopatra.mo
   File ${prefix}/share/locale/tr/LC_MESSAGES/kwatchgnupg.mo
   File ${prefix}/share/locale/tr/LC_MESSAGES/kleopatra.mo
+  File ${prefix}/share/locale/tr/LC_MESSAGES/kxmlgui5.mo
   SetOutPath "$INSTDIR\share\locale\ug"
   File ${kcfg_prefix}/share/locale/ug/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\ug\LC_MESSAGES"
   File ${kconfigwidgets_prefix}/share/locale/ug/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/ug/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/ug/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/ug/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/ug/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/ug/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/ug/LC_MESSAGES/kcodecs5_qt.qm
@@ -1149,13 +1102,13 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${prefix}/share/locale/ug/LC_MESSAGES/libkleopatra.mo
   File ${prefix}/share/locale/ug/LC_MESSAGES/kwatchgnupg.mo
   File ${prefix}/share/locale/ug/LC_MESSAGES/kleopatra.mo
+  File ${prefix}/share/locale/ug/LC_MESSAGES/kxmlgui5.mo
   SetOutPath "$INSTDIR\share\locale\uk"
   File ${kcfg_prefix}/share/locale/uk/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\uk\LC_MESSAGES"
   File ${kconfigwidgets_prefix}/share/locale/uk/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/uk/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/uk/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/uk/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/uk/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/uk/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/uk/LC_MESSAGES/kcodecs5_qt.qm
@@ -1166,13 +1119,13 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${prefix}/share/locale/uk/LC_MESSAGES/libkleopatra.mo
   File ${prefix}/share/locale/uk/LC_MESSAGES/kwatchgnupg.mo
   File ${prefix}/share/locale/uk/LC_MESSAGES/kleopatra.mo
+  File ${prefix}/share/locale/uk/LC_MESSAGES/kxmlgui5.mo
   SetOutPath "$INSTDIR\share\locale\uz"
   File ${kcfg_prefix}/share/locale/uz/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\uz\LC_MESSAGES"
   File ${kconfigwidgets_prefix}/share/locale/uz/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/uz/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/uz/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/uz/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/uz/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/uz/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/uz/LC_MESSAGES/kcodecs5_qt.qm
@@ -1181,13 +1134,13 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kwidgetsaddons_prefix}/share/locale/uz/LC_MESSAGES/kwidgetsaddons5_qt.qm
   File ${kwindowsystem_prefix}/share/locale/uz/LC_MESSAGES/kwindowsystem5_qt.qm
   File ${prefix}/share/locale/uz/LC_MESSAGES/kleopatra.mo
+  File ${prefix}/share/locale/uz/LC_MESSAGES/kxmlgui5.mo
   SetOutPath "$INSTDIR\share\locale\uz@cyrillic"
   File ${kcfg_prefix}/share/locale/uz@cyrillic/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\uz@cyrillic\LC_MESSAGES"
   File ${kconfigwidgets_prefix}/share/locale/uz@cyrillic/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/uz@cyrillic/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/uz@cyrillic/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/uz@cyrillic/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/uz@cyrillic/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/uz@cyrillic/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/uz@cyrillic/LC_MESSAGES/kcodecs5_qt.qm
@@ -1196,13 +1149,13 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kwidgetsaddons_prefix}/share/locale/uz@cyrillic/LC_MESSAGES/kwidgetsaddons5_qt.qm
   File ${kwindowsystem_prefix}/share/locale/uz@cyrillic/LC_MESSAGES/kwindowsystem5_qt.qm
   File ${prefix}/share/locale/uz@cyrillic/LC_MESSAGES/kleopatra.mo
+  File ${prefix}/share/locale/uz@cyrillic/LC_MESSAGES/kxmlgui5.mo
   SetOutPath "$INSTDIR\share\locale\xh"
   File ${kcfg_prefix}/share/locale/xh/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\xh\LC_MESSAGES"
   File ${kconfigwidgets_prefix}/share/locale/xh/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/xh/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/xh/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/xh/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/xh/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/xh/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/xh/LC_MESSAGES/kcodecs5_qt.qm
@@ -1211,13 +1164,13 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kwidgetsaddons_prefix}/share/locale/xh/LC_MESSAGES/kwidgetsaddons5_qt.qm
   File ${kwindowsystem_prefix}/share/locale/xh/LC_MESSAGES/kwindowsystem5_qt.qm
   File ${prefix}/share/locale/xh/LC_MESSAGES/kleopatra.mo
+  File ${prefix}/share/locale/xh/LC_MESSAGES/kxmlgui5.mo
   SetOutPath "$INSTDIR\share\locale\zh_CN"
   File ${kcfg_prefix}/share/locale/zh_CN/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\zh_CN\LC_MESSAGES"
   File ${kconfigwidgets_prefix}/share/locale/zh_CN/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/zh_CN/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/zh_CN/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/zh_CN/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/zh_CN/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/zh_CN/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/zh_CN/LC_MESSAGES/kcodecs5_qt.qm
@@ -1228,13 +1181,13 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${prefix}/share/locale/zh_CN/LC_MESSAGES/libkleopatra.mo
   File ${prefix}/share/locale/zh_CN/LC_MESSAGES/kwatchgnupg.mo
   File ${prefix}/share/locale/zh_CN/LC_MESSAGES/kleopatra.mo
+  File ${prefix}/share/locale/zh_CN/LC_MESSAGES/kxmlgui5.mo
   SetOutPath "$INSTDIR\share\locale\zh_TW"
   File ${kcfg_prefix}/share/locale/zh_TW/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\zh_TW\LC_MESSAGES"
   File ${kconfigwidgets_prefix}/share/locale/zh_TW/LC_MESSAGES/kconfigwidgets5.mo
   File ${ki18n_prefix}/share/locale/zh_TW/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/zh_TW/LC_MESSAGES/kiconthemes5.mo
-  File ${kxmlgui_prefix}/share/locale/zh_TW/LC_MESSAGES/kxmlgui5.mo
   File ${kconfig_prefix}/share/locale/zh_TW/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/zh_TW/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/zh_TW/LC_MESSAGES/kcodecs5_qt.qm
@@ -1245,5 +1198,6 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${prefix}/share/locale/zh_TW/LC_MESSAGES/libkleopatra.mo
   File ${prefix}/share/locale/zh_TW/LC_MESSAGES/kwatchgnupg.mo
   File ${prefix}/share/locale/zh_TW/LC_MESSAGES/kleopatra.mo
+  File ${prefix}/share/locale/zh_TW/LC_MESSAGES/kxmlgui5.mo
 !endif
 SectionEnd

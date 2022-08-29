@@ -38,11 +38,12 @@ fi
 # QFrameworks are frameworks that use qt translations
 QFRAMEWORKS="kconfig kcompletion kcodecs kcoreaddons kitemviews kwidgetsaddons kwindowsystem"
 # KFrameworks are frameworks that use KDE translations
-KFRAMEWORKS="kconfigwidgets ki18n kiconthemes kxmlgui"
+KFRAMEWORKS="kconfigwidgets ki18n kiconthemes" #kxmlgui currently in trunk
 
 POFILES="libkleo/libkleopatra.po \
     kleopatra/kwatchgnupg.po
-    kleopatra/kleopatra.po"
+    kleopatra/kleopatra.po
+    kxmlgui/kxmlgui5.po"
 # See: https://websvn.kde.org/*checkout*/trunk/l10n-kf5/subdirs
 LANGS="af \
 ar \
@@ -231,9 +232,14 @@ for lang in $LANGS; do
     mkdir -p $lang
     cd $lang
     for pofile in $POFILES; do
+        # First try trunk then summit as not all languages use summit
         svn export svn://anonsvn.kde.org/home/kde/trunk/l10n-kf5/$lang/messages/$pofile \
         `basename $pofile` 2>/dev/null || \
-        echo "$pofile not found in $lang"
+        svn export svn://anonsvn.kde.org/home/kde/trunk/l10n-support/$lang/summit/messages/$pofile \
+        `basename $pofile` 2>/dev/null || true
+        if [ ! -f `basename $pofile` ]; then
+            echo "$pofile not found in $lang"
+        fi
     done
     cd ..
 done
@@ -242,7 +248,7 @@ l10ndir_bin=$tmpdir/kde-l10n-$VERSION-bin
 mkdir -p $l10ndir_bin
 cd $l10ndir_bin
 for lang in $LANGS; do
-    if ! ls $l10ndir/$lang/*.po > /dev/null 2>&1; then
+    if ! ls $l10ndir/$lang/kleopatra.po > /dev/null 2>&1; then
         # No kleo translations. Skip it.
         continue
     fi
