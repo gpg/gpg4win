@@ -234,8 +234,8 @@ for lang in $LANGS; do
     for pofile in $POFILES; do
         # First try trunk then summit as not all languages use summit
         svn export svn://anonsvn.kde.org/home/kde/trunk/l10n-kf5/$lang/messages/$pofile \
-        `basename $pofile` 2>/dev/null || \
-        svn export svn://anonsvn.kde.org/home/kde/trunk/l10n-support/$lang/summit/messages/$pofile \
+        `basename $pofile` 2>/dev/null || true
+        svn export --force svn://anonsvn.kde.org/home/kde/trunk/l10n-support/$lang/summit/messages/$pofile \
         `basename $pofile` 2>/dev/null || true
         if [ ! -f `basename $pofile` ]; then
             echo "$pofile not found in $lang"
