@@ -610,11 +610,11 @@ chk fe20b69d84893618625d76e55f772477a80628da98411c8bb9c1a5e01028b3f9
 # last changed: 2022-08-29
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file kde-l10n/kde-l10n-202208291256-bin.tar.xz
-chk bc5bdacc7d728b2061675f3507de1fbab58aa350b09cf2c711eed863c49610a1
+file kde-l10n/kde-l10n-202208291812-bin.tar.xz
+chk 2f37f13dfaf9a986e730fd211dd1279c24d5c6a6317b67ec44a78d1a37d0c226
 
-file kde-l10n/kde-l10n-202208291256-src.tar.xz
-chk 53d56cef245f370eef594818f868945fb2a1e6a6aa8380b2a772c90afb0116c5
+file kde-l10n/kde-l10n-202208291812-src.tar.xz
+chk df870ad5b4ce820d27b20514ee15bee495a30497e72bada71e58ec7651d86b2f
 
 # libkleo
 # last changed: 2022-08-29
@@ -627,5 +627,5 @@ chk 449dd1eb8cd7f84f4e4c499ed29dc94ad38429841adccfea9188b46afc767c75
 # last changed: 2022-08-29
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file kleopatra/kleopatra-202208291137.tar.xz
-chk 036e6c9b58160defe2a9c74754159840355292d35932c20d3a3042a5781c958c
+file kleopatra/kleopatra-202208291757.tar.xz
+chk 4b9de7a9533663db5f67a7238be9c6a3bb6f7025e3d03a409233179e5320be68
