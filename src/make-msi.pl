@@ -1764,9 +1764,9 @@ EOF
             next;
         }
 
-        if ($basename eq "$custom_name.wxs.include") {
-           print STDERR "Including: $basename\n";
-           open (INCFILE, "<$workdir/$custom_name.wxs.include") or
+        if ($basename =~ /.+\.wxs\.include$/) {
+           print STDERR "Including $basename for $custom_name\n";
+           open (INCFILE, "<$workdir/$basename") or
                die "open failed:$!\n";
            while (<INCFILE>)
            {
