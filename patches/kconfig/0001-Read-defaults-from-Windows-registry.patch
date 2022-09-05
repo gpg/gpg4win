@@ -1,10 +1,9 @@
 #! /bin/sh
 patch -p1 -l -f $* < $0
 exit $?
-
-From 91ebb2d25cdfbecdb02f5772a4a284ebd79af91b Mon Sep 17 00:00:00 2001
+From d3ec1440cd9533fbeb15c972905694278f68ebd8 Mon Sep 17 00:00:00 2001
 From: Andre Heinecke <aheinecke@gnupg.org>
-Date: Wed, 27 Jul 2022 11:40:44 +0200
+Date: Mon, 5 Sep 2022 09:33:36 +0200
 Subject: [PATCH] Read defaults from Windows registry
 
 This optionally enables an application to define a Windows
@@ -17,19 +16,19 @@ groups. Values below this key are treated as values
 of the default group.
 
 To add a key to a group create a subkey under regKey and
-add the value in this group with type REG_SZ.
+add the value in this group with type REG_SZ or REG_EXPAND_SZ.
 
 Immutable groups or values can be suffixed with [$i].
 
-The values are read from HKLM and treated as defaults.
+The values are read from HKLM and HKCU and treated as defaults.
 ---
  src/core/CMakeLists.txt   |   5 ++
- src/core/kconfig.cpp      |  24 ++++++
- src/core/kconfig.h        |  24 ++++++
+ src/core/kconfig.cpp      |  24 +++++
+ src/core/kconfig.h        |  28 ++++++
  src/core/kconfig_p.h      |   1 +
- src/core/registry_win.cpp | 171 ++++++++++++++++++++++++++++++++++++++
- src/core/registry_win_p.h |  14 ++++
- 7 files changed, 242 insertions(+), 3 deletions(-)
+ src/core/registry_win.cpp | 183 ++++++++++++++++++++++++++++++++++++++
+ src/core/registry_win_p.h |  14 +++
+ 6 files changed, 255 insertions(+)
  create mode 100644 src/core/registry_win.cpp
  create mode 100644 src/core/registry_win_p.h
 
@@ -120,10 +119,10 @@ index 22ae0b54..ace4dc29 100644
  {
      // can only read the file if there is a backend and a file name
 diff --git a/src/core/kconfig.h b/src/core/kconfig.h
-index c8ca0ca3..28c93fba 100644
+index c8ca0ca3..0a15fce2 100644
 --- a/src/core/kconfig.h
 +++ b/src/core/kconfig.h
-@@ -372,6 +372,30 @@ public:
+@@ -372,6 +372,34 @@ public:
       */
      static QString mainConfigName();
 
@@ -139,7 +138,11 @@ index c8ca0ca3..28c93fba 100644
 +     *
 +     * Immutable groups or values can be suffixed with [$i].
 +     *
-+     * The values are read from HKLM and treated as defaults.
++     * The values are read both form HKLM and HKCU
++     * and are treated as defaults. The use case for this is
++     * that Group Policies can set defaults for specific
++     * users and groups. User configuration is still stored
++     * in the main config file.
 +     *
 +     * @since 5.98
 +     */
@@ -168,10 +171,10 @@ index 60604477..72b21629 100644
      bool lockLocal();
 diff --git a/src/core/registry_win.cpp b/src/core/registry_win.cpp
 new file mode 100644
-index 00000000..e1924178
+index 00000000..43ba719e
 --- /dev/null
 +++ b/src/core/registry_win.cpp
-@@ -0,0 +1,171 @@
+@@ -0,0 +1,183 @@
 +/*
 +    This file is part of the KDE libraries
 +    SPDX-FileCopyrightText: 2022 g10 Code GmbH
@@ -184,6 +187,38 @@ index 00000000..e1924178
 +
 +#include <windows.h>
 +
++#define RRF_SUBKEY_WOW6464KEY 0x00010000
++
++QString readRegString (HKEY key, const wchar_t *name)
++{
++    DWORD nbytes = 0;
++    DWORD err = RegGetValueW(key,
++                             nullptr,
++                             name,
++                             RRF_RT_REG_EXPAND_SZ | RRF_RT_REG_SZ,
++                             nullptr,
++                             nullptr,
++                             &nbytes);
++    if (err != ERROR_SUCCESS) {
++        qCWarning(KCONFIG_CORE_LOG) << "Failed to get size of value:" << std::wstring(name) << err;
++        return QString();
++    }
++    std::vector<wchar_t> result(nbytes / sizeof (wchar_t));
++
++    err = RegGetValueW(key,
++                       nullptr,
++                       name,
++                       RRF_RT_REG_EXPAND_SZ | RRF_RT_REG_SZ,
++                       nullptr,
++                       &result[0],
++                       &nbytes);
++    if (err != ERROR_SUCCESS) {
++        qCWarning(KCONFIG_CORE_LOG) << "Invalid type of value:" << name << err;
++        return QString();
++    }
++    return QString::fromWCharArray(&result[0]);
++}
++
 +void parseRegValues(const QString &regKey, const QString &groupName, KEntryMap &entryMap, bool userRegistry)
 +{
 +    const bool groupOptionImmutable = regKey.endsWith(QStringLiteral("[$i]"));
@@ -195,8 +230,7 @@ index 00000000..e1924178
 +        return;
 +    }
 +    DWORD values = 0,
-+          maxNameLen = 0,
-+          maxValueLen = 0;
++          maxNameLen = 0;
 +
 +    DWORD err = RegQueryInfoKey (key,
 +                                 nullptr,
@@ -207,7 +241,7 @@ index 00000000..e1924178
 +                                 nullptr,
 +                                 &values,
 +                                 &maxNameLen,
-+                                 &maxValueLen,
++                                 nullptr,
 +                                 nullptr,
 +                                 nullptr);
 +
@@ -218,9 +252,8 @@ index 00000000..e1924178
 +    }
 +
 +    maxNameLen++;
-+    maxValueLen++;
-+    wchar_t *name = new wchar_t[maxNameLen + 1];
-+    wchar_t *value = new wchar_t[maxValueLen + 1];
++    std::vector<wchar_t> buf(maxNameLen + 1);
++    wchar_t *name = &buf[0];
 +    for (DWORD i = 0; i < values; i++) {
 +        DWORD nameLen = maxNameLen;
 +        err = RegEnumValueW(key, i,
@@ -231,47 +264,29 @@ index 00000000..e1924178
 +                            nullptr,
 +                            nullptr);
 +
-+        if (err != ERROR_SUCCESS){
-+            qCWarning(KCONFIG_CORE_LOG) << "Failed to enum value " << i;
-+            continue;
-+        }
-+
-+        QString entryName = QString::fromWCharArray(name, nameLen);
-+        if (entryMap.getEntryOption(groupName.toUtf8(), entryName.toUtf8(), KEntryMap::SearchDefaults, KEntryMap::EntryImmutable)) {
-+            qDebug () << "Ignoring " << entryName << "already immutable";
-+            continue;
-+        }
-+
-+        DWORD type;
-+        DWORD valueLen = maxValueLen;
-+        err = RegQueryValueExW(key, name,
-+                               NULL, &type,
-+                               (BYTE*)value, &valueLen);
-+
 +        if (err != ERROR_SUCCESS) {
-+            qCWarning(KCONFIG_CORE_LOG) << "Failed to query value " << name;
++            qCWarning(KCONFIG_CORE_LOG) << "Failed to enum value " << i << "of" << regKey << groupName << *name << "err:" << err << values << maxNameLen << nameLen;
 +            continue;
-+        }
-+        // Only accept plain string values
-+        if (type != REG_SZ) {
-+            qCWarning(KCONFIG_CORE_LOG) << "Invalid type for value " << name;
-+            continue;
-+        }
-+        KEntryMap::EntryOptions entryOptions = KEntryMap::EntryDefault;
-+        if (groupOptionImmutable) {
-+            entryOptions |= KEntryMap::EntryImmutable;
 +        }
 +
-+        const QString valueString = QString::fromWCharArray(value, (valueLen / sizeof (wchar_t)) - 1);
++        KEntryMap::EntryOptions entryOptions = KEntryMap::EntryDefault;
++        QString entryName = QString::fromWCharArray(name, nameLen);
++
 +        if (entryName.endsWith(QStringLiteral("[$i]"))) {
 +            entryOptions |= KEntryMap::EntryImmutable;
 +            entryName.chop(4);
 +        }
-+        entryMap.setEntry(groupName.toUtf8(), entryName.toUtf8(), valueString.toUtf8(), entryOptions);
-+        // qDebug () << "Adding Entry" << entryName << valueString << "to group" << groupName << "value len" << valueLen;
++
++        if (entryMap.getEntryOption(groupName.toUtf8(), entryName.toUtf8(), KEntryMap::SearchDefaults, KEntryMap::EntryImmutable)) {
++            continue;
++        }
++        const auto value = readRegString(key, name);
++        if (groupOptionImmutable) {
++            entryOptions |= KEntryMap::EntryImmutable;
++        }
++        entryMap.setEntry(groupName.toUtf8(), entryName.toUtf8(), value.toUtf8(), entryOptions);
++        // qDebug () << "Adding Entry" << entryName << value << "to group" << groupName << "namelen " << nameLen;
 +    }
-+    delete[] name;
-+    delete[] value;
 +    RegCloseKey(key);
 +}
 +
@@ -305,7 +320,7 @@ index 00000000..e1924178
 +                                nullptr);
 +
 +    if (err != ERROR_SUCCESS) {
-+        qCWarning(KCONFIG_CORE_LOG) << "Failed to query key info for" << regKey;
++        qCWarning(KCONFIG_CORE_LOG) << "Failed to query key info for" << regKey << "err:" << err;
 +        RegCloseKey(key);
 +        return;
 +    }
@@ -322,7 +337,7 @@ index 00000000..e1924178
 +                           nullptr,
 +                           nullptr);
 +        if (err != ERROR_SUCCESS) {
-+            qCWarning(KCONFIG_CORE_LOG) << "Failed to enum value " << i;
++            qCWarning(KCONFIG_CORE_LOG) << "Failed to enum key" << i << "err:" << err;
 +            continue;
 +        }
 +        QString subKeyName = QString::fromWCharArray(subKey, keyLen);
