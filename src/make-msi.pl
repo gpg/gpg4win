@@ -1334,11 +1334,6 @@ sub dump_all
                 . "Directory='ProgramMenuDir' On='uninstall'/>\n";
             }
 
-            if ($targetfull eq 'bin\\kleopatra.exe')
-            {
-                #TODO write registration for .p12
-            }
-
             # EXCEPTIONS:
             if ($targetfull eq 'bin\\gpgol.dll' or
                 $targetfull eq 'bin_64\\gpgol.dll')
@@ -1543,6 +1538,46 @@ sub dump_all2
             . "  <Condition Level='1'>INST_DESKTOP= \"true\"</Condition>\n"
             . "  <Condition Level='1000'>INST_DESKTOP= \"false\"</Condition>\n"
             . "  <ComponentRef Id='ApplicationShortcutDesktop'/>\n"
+            . " </Feature>\n";
+
+            # That p12 and der, crt have pfx and cer names respectively is a Windows thing.
+            print ' ' x $::level
+            . " <Feature Id='p_kleo_smime_types' Title='p_kleo_smime_types' Level='1000'"
+            . " Display='hidden' InstallDefault='followParent'>\n"
+            . "  <Condition Level='1'>DEFAULT_ALL_SMIME = \"true\"</Condition>\n"
+            . "  <Condition Level='1000'>DEFAULT_ALL_SMIME = \"false\"</Condition>\n"
+            . "  <Component Win64='yes' Id='DefaultSmimeExt' Guid='9B63C4D2-50F1-4747-8D79-0621130B7318' KeyPath='yes' Directory='APPLICATIONFOLDER'>\n"
+            . "      <RegistryValue Id='r_kleopatra_default' Root='HKMU' Key='Software\\Classes\\gpg4win.AssocFile.Kleopatra.X509' Name='AllowSilentDefaultTakeOver' Action='write' Type='binary' Value='1'/>\n"
+            . "      <RegistryValue Id='r_kleopatra_cer' Root='HKMU' Key='Software\\Classes\\.cer\\OpenWithProgIDs' Name='gpg4win.AssocFile.Kleopatra.X509'  Action='write' Type='binary' Value='0'/>\n"
+            . "      <RegistryValue Id='r_kleopatra_cer_o' Root='HKMU' Key='Software\\Classes\\CERFile\\shell\\open\\command'  Action='write' Type='expandable' Value='\"[APPLICATIONFOLDER]bin\\kleopatra.exe\" -- \"%1\"'/>\n"
+            . "      <RegistryValue Id='r_kleopatra_cer_i' Root='HKMU' Key='Software\\Classes\\CERFile\\DefaultIcon'  Action='write' Type='string' Value='\"[APPLICATIONFOLDER]share\\gpg4win\\file-ext.ico\"'/>\n"
+            . "      <RegistryValue Id='r_kleopatra_p10' Root='HKMU' Key='Software\\Classes\\.p10\\OpenWithProgIDs' Name='gpg4win.AssocFile.Kleopatra.X509'  Action='write' Type='binary' Value='0'/>\n"
+            . "      <RegistryValue Id='r_kleopatra_p10_o' Root='HKMU' Key='Software\\Classes\\P10File\\shell\\open\\command'  Action='write' Type='expandable' Value='\"[APPLICATIONFOLDER]bin\\kleopatra.exe\" -- \"%1\"'/>\n"
+            . "      <RegistryValue Id='r_kleopatra_p10_i' Root='HKMU' Key='Software\\Classes\\P10File\\DefaultIcon'  Action='write' Type='string' Value='\"[APPLICATIONFOLDER]share\\gpg4win\\file-ext.ico\"'/>\n"
+            . "      <RegistryValue Id='r_kleopatra_p12' Root='HKMU' Key='Software\\Classes\\.p12\\OpenWithProgIDs' Name='gpg4win.AssocFile.Kleopatra.X509'  Action='write' Type='binary' Value='0'/>\n"
+            . "      <RegistryValue Id='r_kleopatra_p12_o' Root='HKMU' Key='Software\\Classes\\PFXFile\\shell\\open\\command'  Action='write' Type='expandable' Value='\"[APPLICATIONFOLDER]bin\\kleopatra.exe\" -- \"%1\"'/>\n"
+            . "      <RegistryValue Id='r_kleopatra_p12_i' Root='HKMU' Key='Software\\Classes\\PFXFile\\DefaultIcon'  Action='write' Type='string' Value='\"[APPLICATIONFOLDER]share\\gpg4win\\file-ext.ico\"'/>\n"
+            . "      <RegistryValue Id='r_kleopatra_p7c' Root='HKMU' Key='Software\\Classes\\.p7c\\OpenWithProgIDs' Name='gpg4win.AssocFile.Kleopatra.X509'  Action='write' Type='binary' Value='0'/>\n"
+            . "      <RegistryValue Id='r_kleopatra_p7c_o' Root='HKMU' Key='Software\\Classes\\certificate_wab_auto_file\\shell\\open\\command'  Action='write' Type='expandable' Value='\"[APPLICATIONFOLDER]bin\\kleopatra.exe\" -- \"%1\"'/>\n"
+            . "      <RegistryValue Id='r_kleopatra_p7c_i' Root='HKMU' Key='Software\\Classes\\certificate_wab_auto_file\\DefaultIcon'  Action='write' Type='string' Value='\"[APPLICATIONFOLDER]share\\gpg4win\\file-ext.ico\"'/>\n"
+            . "      <RegistryValue Id='r_kleopatra_pfx' Root='HKMU' Key='Software\\Classes\\.pfx\\OpenWithProgIDs' Name='gpg4win.AssocFile.Kleopatra.X509'  Action='write' Type='binary' Value='0'/>\n"
+            . "      <RegistryValue Id='r_kleopatra_pfx_o' Root='HKMU' Key='Software\\Classes\\PFXFile\\shell\\open\\command'  Action='write' Type='expandable' Value='\"[APPLICATIONFOLDER]bin\\kleopatra.exe\" -- \"%1\"'/>\n"
+            . "      <RegistryValue Id='r_kleopatra_pfx_i' Root='HKMU' Key='Software\\Classes\\PFXFile\\DefaultIcon'  Action='write' Type='string' Value='\"[APPLICATIONFOLDER]share\\gpg4win\\file-ext.ico\"'/>\n"
+            . "      <RegistryValue Id='r_kleopatra_crt' Root='HKMU' Key='Software\\Classes\\.crt\\OpenWithProgIDs' Name='gpg4win.AssocFile.Kleopatra.X509'  Action='write' Type='binary' Value='0'/>\n"
+            . "      <RegistryValue Id='r_kleopatra_crt_o' Root='HKMU' Key='Software\\Classes\\CERFile\\shell\\open\\command'  Action='write' Type='expandable' Value='\"[APPLICATIONFOLDER]bin\\kleopatra.exe\" -- \"%1\"'/>\n"
+            . "      <RegistryValue Id='r_kleopatra_crt_i' Root='HKMU' Key='Software\\Classes\\CERFile\\DefaultIcon'  Action='write' Type='string' Value='\"[APPLICATIONFOLDER]share\\gpg4win\\file-ext.ico\"'/>\n"
+            . "      <RegistryValue Id='r_kleopatra_der' Root='HKMU' Key='Software\\Classes\\.der\\OpenWithProgIDs' Name='gpg4win.AssocFile.Kleopatra.X509'  Action='write' Type='binary' Value='0'/>\n"
+            . "      <RegistryValue Id='r_kleopatra_der_o' Root='HKMU' Key='Software\\Classes\\CERFile\\shell\\open\\command'  Action='write' Type='expandable' Value='\"[APPLICATIONFOLDER]bin\\kleopatra.exe\" -- \"%1\"'/>\n"
+            . "      <RegistryValue Id='r_kleopatra_der_i' Root='HKMU' Key='Software\\Classes\\CERFile\\DefaultIcon'  Action='write' Type='string' Value='\"[APPLICATIONFOLDER]share\\gpg4win\\file-ext.ico\"'/>\n"
+            . "  </Component>\n"
+            . " </Feature>\n"
+            . " <Feature Id='p_kleo_smime_types_no' Title='p_kleo_smime_types_no' Level='1'"
+            . " Display='hidden' InstallDefault='followParent'>\n"
+            . "  <Condition Level='1000'>DEFAULT_ALL_SMIME = \"true\"</Condition>\n"
+            . "  <Condition Level='1'>DEFAULT_ALL_SMIME = \"false\"</Condition>\n"
+            . "  <Component Win64='yes' Id='DefaultSmimeExtNo' Guid='9B63C4D2-50F1-4747-8D79-0621130B7319' KeyPath='yes' Directory='APPLICATIONFOLDER'>\n"
+            . "      <RegistryValue Id='r_kleopatra_no_default' Root='HKMU' Key='Software\\Classes\\gpg4win.AssocFile.Kleopatra.X509' Name='AllowSilentDefaultTakeOver' Action='write' Type='binary' Value='0'/>\n"
+            . "  </Component>\n"
             . " </Feature>\n";
 
             print ' ' x $::level
@@ -2065,6 +2100,11 @@ print <<EOF;
     <Property Id="INST_DESKTOP">
       <IniFileSearch Id='gpg4win_ini_inst_desktop' Type='raw'
        Name='gpg4win.ini' Section='gpg4win' Key='inst_desktop'/>
+    </Property>
+
+    <Property Id="DEFAULT_ALL_SMIME">
+      <IniFileSearch Id='gpg4win_ini_all_smime' Type='raw'
+       Name='gpg4win.ini' Section='gpg4win' Key='default_all_smime'/>
     </Property>
 
     <Property Id="AUTOSTART">

@@ -286,7 +286,10 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
   WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.Kleopatra.X509" "InfoTip" "$(T_File_Type_x509_info_tip)"
   WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.Kleopatra.X509\CurVer" "" "${VERSION}"
   WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.Kleopatra.X509\DefaultIcon" "" "$INSTDIR\share\gpg4win\file-ext.ico"
+
+# BEGIN MSI IGNORE
   WriteRegBin SHCTX "Software\Classes\gpg4win.AssocFile.Kleopatra.X509" "AllowSilentDefaultTakeOver" 0
+# END MSI IGNORE
 
   # Register capabilities
   WriteRegStr SHCTX "Software\RegisteredApplications" "Gpg4win.Kleopatra" "SOFTWARE\Gpg4win\Kleopatra\Capabilities"
