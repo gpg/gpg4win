@@ -56,7 +56,7 @@ MANUALVERSION_ADVANCED="0.0.0"
 MANUALDATE_ADVANCED="Nov. 30, 2006"
 COMPENDIUM_VERSION_DE="4.0.1"
 COMPENDIUM_DATE_DE="3. April 2018"
-COMPENDIUMINPROGRESS_DE="zuletzt geringf�gig korrigiert am 3. April 2018"
+COMPENDIUMINPROGRESS_DE="zuletzt leicht korrigiert am 3. April 2018"
 COMPENDIUM_VERSION_EN="3.0.0"
 COMPENDIUM_DATE_EN="30th November 2016"
 COMPENDIUMINPROGRESS_EN="last minor changes from 30th November 2016"
@@ -72,6 +72,9 @@ GIT_BETASTRING=mym4_betastr
 IS_BETA_BUILD=mym4_isbeta
 IS_VSD_BUILD=mym4_isvsd
 
+# XXX: It seems to be impossible in the way we call cmake to pass
+# defines with spaces. So we use a nice "FOUR-PER-EM SPACE" U+2005 *cough*
+DISTRIBUTION_TEXT=m4_if(mym4_isvsd, [yes], ["g10 Code GmbH"], ["Gpg4win"])
 
 AC_CONFIG_SRCDIR(src/config.nsi.in)
 AC_CONFIG_MACRO_DIR(m4)
@@ -106,6 +109,7 @@ AC_SUBST(COMPENDIUMINPROGRESS_EN)
 AC_SUBST(GIT_BETASTRING)
 AC_SUBST(IS_BETA_BUILD)
 AC_SUBST(IS_VSD_BUILD)
+AC_SUBST(DISTRIBUTION_TEXT)
 
 # Generate extended version information.  Note, that for NSIS use we
 # must not translate the dots to commas in the BUILD_FILEVERSION.
@@ -515,6 +519,7 @@ echo -n "
         Revision: ${GIT_REVISION}  (${GIT_REVISION_DEC})
         32bit platform: $host
         64bit platform: ${GPGEX_ADD_HOST}
+        Distribution: ${DISTRIBUTION_TEXT}
 "
 if test -n "$JOBS"; then
     echo "        make jobs: ${JOBS}"
