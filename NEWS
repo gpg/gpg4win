@@ -6,12 +6,376 @@
 Noteworthy changes in Version 3.1.24 (unreleased)
 ------------------------------------------------
 
+--- Features ---
+
+(en) GnuPG: Avoids "invalid hash method" errors by using SHA-256
+     for certificates with implicit SHA-1 preferences in de-vs mode.
+     (T6043)
+
+(de) GnuPG: Verwendet SHA-256 für Zertifikate mit impliziten SHA-1
+     Einstellungen, um den Fehler "Ungültige Hashmethode" im VS-NfD
+     Modus zu vermeiden. (T6043)
+
+(en) GnuPG: It is now possible to forbid users to trust additional
+     root certificates. The option for this is "no-user-trustlist".
+     (T5990)
+
+(de) GnuPG: Es ist jetzt möglich Administrativ zu verhindern das
+     Nutzer weiteren Wurzelzertifikaten vertrauen können.  Die
+     Option ist "no-user-trustlist", or on Windows the
+     registry. (T5990)
+
+(en) GnuPG: It is now possible to change the default trustlist.txt
+     name for S/MIME root certificates.  The option for this is
+     "sys-trustlist-name", or on Windows the registry.
+     This allows Admins to change the S/MIME root certificate
+     trustlist.txt from the  packaged default without having
+     it overwritten with each update. (T5990)
+
+(de) GnuPG: Es ist jetzt für Administratoren möglich den Dateinamen
+     der Liste von vertrauenswürdigen Wurzelzertifikaten zu ändern.
+     Dies erlaubt es diese zu ändern ohne das Sie bei einem
+     Update überschrieben werden. (T5990)
+
+(en) GnuPG: The "display serial number" is now used for card insert
+     prompts.  This should match the serial number printed on
+     smartcards. (T6135)
+
+(de) GnuPG: Der Dialog der nach dem einlegen der Smartcard fragt,
+     zeigt nun die "Anzeige-Seriennummer" an.  Dies soll der Nummer
+     entsprechen, welche auf die Smartcards gedruckt ist. (T6135)
+
+(en) GpgOL: An exclamation mark at the end of the GpgOL config registry
+     values under HKLM now disallows the user to change that setting.
+     (T5827)
+
+(de) GpgOL: Ein Ausrufezeichen am Ende der GpgOL Konfigurationswerte
+     aus der "Local Machine" Windows Registry sorgt nun dafür
+     das diese Option für Nutzer nicht änderbar ist. (T5827)
+
+(en) Kleopatra: Any configuration settings which had to be done in
+     kleopatrarc are now possible through the Windows Registry / Group
+     Policies.  (T5707)
+
+(de) Kleopatra: Jegliche Konfigurationseinstellungen die in der
+     kleopatrarc vorgenommen werden mussten sind nun über die
+     Windows Registry bzw. Gruppenrichtlinien einstellbar.
+
+(en) Kleopatra: Automatic extraction of tar archives can now be disabled
+     in the settings. (T6057)
+
+(de) Kleopatra: Das automatische entpacken von tar Archiven kann nun
+     über die Konfiguration deaktiviert werden. (T6057)
+
+(en) Kleopatra: The original file name is now embedded in encrypted
+     files. (T6056)
+
+(de) Kleopatra: Der original Dateiname wird nun bei verschlüsselten
+     Dateien verschlüsselt eingebettet. (T6056)
+
+(en) Kleopatra: In case the embedded filename does not match the
+     filename of the encrypted file, the user is asked after decryption
+     to rename the file to the embedded name. (T6056)
+
+(de) Kleopatra: Beim entschlüsseln wird erfragt ob der ursprüngliche
+     Dateiname verwendet werden soll, oder der der verschlüsselten
+     Datei, falls diese voneinander abweichen.
+     Dies funktioniert nur bei Dateien die von GnuPG VS-Desktop
+     3.1.24 oder später verschlüsselt wurden. (T6056)
+
+(en) Kleopatra: The user is now asked which file should be verified
+     if the signed data for a detached signature (.sig) could not be found
+     automatically. (T6062)
+
+(de) Kleopatra: Bei der Verifikation von eigenständigen Signaturen (.sig)
+     wird nun gefragt welche Datei verifiziert werden
+     soll, wenn Kleopatra dies nicht automatisch feststellen kann. (T6062)
+
+(en) Kleopatra: Queries containing just a single character are now allowed
+     when searching in remote directories.  This should make it easier
+     to list all certificates in a directory. (T6064)
+
+(de) Kleopatra: Suchanfragen mit nur einem Zeichen sind nun erlaubt.
+     Dies soll erleichtern alle Zertifikate in einem Verzeichnis anzuzeigen.
+     (T6064)
+
+(en) Kleopatra: When a user specific trustlist.txt is created by Kleopatra
+     it now adds a header, which also includes the "include-default" keyword,
+     so that the system wide trustlist.txt is still included. (T6096)
+
+(de) Kleopatra: Wenn eine Benutzerspezifische trustlist.txt erzeugt wird,
+     wird nun eine Einführung in die Datei geschrieben.  Diese enthält
+     auch das Schlüsselwort "include-default", so dass die Systemweite
+     trustlist.txt zusätzlich benutzt wird. (T6096)
+
+(en) Kleopatra: The storage location is now displayed per subkey to
+     better support offline keys and multiple smartcards. (T6108)
+
+(de) Kleopatra: Der Speicherort wird nun für jeden Unterschlüssel einzeln
+     angezeigt um besser mehrere Smartcards und offline Unterschlüssel
+     zu unterstützen. (T6108)
+
+(en) Kleopatra: The certificate details now have an explicit update button
+     to refresh a key from the configured directory services. (T5903)
+
+(de) Kleopatra: Der Zertifikatsdetails-Dialog enthält nun einen
+     expliziten "Aktualisieren" Knopf um das Zertifikat aus den
+     konfigurierten Verzeichnisdiensten neu zu laden. (T5903)
+
+(en) Kleopatra: The fingerprint with the suffix .rev is now used
+     as suggested filename for revocation certificates. (T6121)
+
+(de) Kleopatra: Der Fingerabdruck mit der Dateiendung .rev wird nun
+     als Dateiname für Wiederrufszertifikate vorgeschlagen. (T6121)
+
+(en) Kleopatra: Several more file dialogs now save the last used
+     directory. (T6121)
+
+(de) Kleopatra: Weitere Dateidialoge merken sich das zuletzt verwendete
+     Verzeichnis. (T6121)
+
+(en) Kleopatra: After some feedback revocatioin of certifications
+     has been redesigned to actively search for "revokable"
+     certifications and offer to revoke all of them.  Very
+     special use cases not covered by this need to use the command
+     line. (T6115)
+
+(de) Kleopatra: Nach Rückmeldungen unserer Nutzer:innen haben wir das
+     zurückziehen von Beglaubigungen überarbeitet.  Dies ermittelt
+     nun alle eigenen Beglaubigungen und bietet an diese
+     zurückzuziehen.
+     Sehr seltene Spezialfälle in denen dies nicht erwünscht ist
+     müssen zukünftig die Kommandozeile benutzen. (T6115)
+
+--- Bug fixes ---
+
+(en) GnuPG: Yubikeys with Firmware Versions 5.4 and above are correctly
+     detected again. (T6070)
+
+(de) GnuPG: Yubikeys ab der Firmware Version 5.4. werden nun wieder
+     korrekt erkannt. (T6070)
+
+(en) GnuPG: Combined symmetric and asymmetric encryption / decryption
+     is now displayed as VS-NfD compliant, if appropiate. (T6119)
+
+(de) GnuPG: Die kombinierte symmetrische und asymmetrische
+     Verschlüsselung wird nun entsprechend der Algorithmen als
+     VS-NfD konform angezeigt. (T6119)
+
+(en) GnuPG: A wrong error message when transferring keys to a
+     smartcard was changed. (T6122)
+
+(de) GnuPG: Eine falsche Fehlermeldung die auftrat wenn ein
+     Schlüssel auf eine Smartcard übertragen wurde, wurde
+     geändert. (T6122).
+
+(en) GnuPG: The options "auto-key-import" and "include-key-block" are
+     changeable through Kleopatra, again. (T6138)
+
+(de) GnuPG: Die Optionen "auto-key-import" und "include-key-block"
+     sind nun erneut durch Kleopatra änderbar. (T6138)
+
+(en) GnuPG: A possible path traversal security issue regarding
+     "gpg-wks-server" has been fixed. This only affects
+     users of "gpg-wks-server" in a WKS deployment. (T6098)
+
+(de) GnuPG: Ein möglicher "path traversal" Angriff wurde in
+     "gpg-wks-server" behoben. Dieser betrifft nur
+     Anwender des "gpg-wks-server" in einer WKS
+     Installation. (T6098)
+
+(en) GpgOL: Fixed some encoding Problems.
+
+(de) GpgOL: Einige Stellen an denen Sonderzeichen falsch angezeigt
+     wurden sind behoben.
+
+(en) GpgOL: Sender resolution for draft mails is now fixed.
+
+(de) GpgOL: Die Absendererkennung für Entwürfe mit geänderter
+     Absenderidentität funktioniert nun.
+
+
+(en) GpgOL: A hang and performance problem when displaying unencrypted
+     mails with a specific structure has been fixed. (#8917)
+
+(de) GpgOL: Ein Hänger bzw, ein Performance Problem das bei unverschlüsselten
+     Mails in einer gewissen Struktur auftreten konnte wurde behoben.
+     (#8917)
+
+(en) GpgOL: Stale temporary files created by GpgOL are now deleted to avoid
+     clutter on systems that do not clean the temporary files. (T5926)
+
+(de) GpgOL: Alte, temporäre, Dateien die von GpgOL erstellt wurden werden
+     nun entfernt um auf Systemen die das nicht selbst vornehmen keine
+     Überfüllung zu produzieren. (T5926)
+
+(en) Kleopatra: No longer reports success when adding an empty userid.
+     (T5997)
+
+(de) Kleopatra: Meldet nun keinen Erfolg mehr wenn eine leere Benutzer-
+     kennung hinzugefügt wird. (T5997)
+
+(en) Kleopatra: The maximum expiration date is now 2106-02-05. (T5991)
+
+(de) Kleopatra: Die maximale Gültigkeit von Zertifikaten ist nun
+     2106-02-05. (T5991)
+
+(en) Kleopatra: S/MIME certificate trees are no longer collapsed when
+     details are opened by double click. (T6055)
+
+(de) Kleopatra: S/MIME Zertifikats-Hierarchien werden nicht mehr
+     eingeklappt wenn man ein Zertifikat per Doppelklick öffnet.
+     (T6055)
+
+(en) Kleopatra: Minor improvements to the encrypt / sign recipient
+     selection dialog. (T6080)
+
+(de) Kleopatra: Kleine Verbesserungen bei der Empfängerauswahl für
+     das verschlüsseln / signieren. (T6080)
+
+(en) Kleopatra: Cancelling the password entry when exporting a secret
+     key now correctly aborts the operation. (T6090)
+
+(de) Kleopatra: Das abbrechen der Passworteingabe bei der erstellung
+     einer Sicherungskopie des geheimen Schlüssels funktioniert nun
+     wie erwartet. (T6090)
+
+(en) Kleopatra: A family of startup crashes has been fixed.  The
+     crashes would show up in the event log as crashes in
+     libstdc++6.dll. (T6131)
+
+(de) Kleopatra: Ein Bündel von Abstürzen welche unmittelbar beim Start
+     von Kleopatra auftreten konnten wurde behoben.  In der Windows
+     Ereignissanzeige erschienen diese als Abstürze in libstdc++6.dll.
+     (T6131)
+
+(en) Kleopatra: Fixed a very rare hang when archiving files.  This would
+     cause Kleopatra never to finish an archiving operation. (T6139)
+
+(de) Kleopatra: Ein sehr seltener Hänger beim Archivieren von Dateien
+     konnte behoben werden.  Dieser sorgte dafür das Kleopatra das
+     archivieren von Dateien nie beendet hat. (T6139)
+
+(en) Kleopatra: When only a single OpenPGP certificate is imported
+     the question about weather to certify it has been restored.
+     (T6144)
+
+(de) Kleopatra: Wenn nur ein einzelnes OpenPGP Zertifikat importiert
+     wird, wird nun wieder gefragt ob dieses direkt beglaubigt werden
+     soll. (T6144)
+
+(en) Kleopatra: Problems of "Failed to move directory" when decrypting
+     archives on systems where the users TEMP directory was placed
+     on Microsoft virtual hard disks have been resolved. (T6147)
+
+(de) Kleopatra: Die Probleme, welche auftraten wenn das TEMP
+     Verzeichnis des Nutzers auf einer Microsoft Virtual
+     Hard Disk lag, wurden behoben. (T6147)
+
+--- Accessibility ---
+
+(en) Kleopatra: The following Dialogs have been changed so that they are
+     Usable:
+     * with keyboard only
+     * with a screenreader (tested NVDA and ORCA)
+     * with 400% magnification
+     * with high contrast color scheme (T6073)
+     * with inverted color scheme (T6073)
+
+     - OpenPGP certificate creation. (T5969, T5832)
+     - The main window toolbar. (T6026)
+     - Certificate Details. (T5843)
+     - Certificate certification. (T6046)
+     - Expiration date change. (T6080)
+     - Group configuration. (T6095)
+     - DN Attribute Order configuration. (T6089)
+     - Subkey details. (T6104)
+     - Certifications view. (T6102)
+     - Self Test. (T6101)
+
+(de) Kleopatra: Die folgenden Dialoge sind nun benutzbar:
+     * nur mit der Tastatur
+     * mit einem Screenreader (getestet NVDA und Orca)
+     * mit 400% Vergrößerung
+     * mit hohem Kontrast (T6073)
+     * mit invertiertem Farbschema (T6073)
+
+     - OpenPGP Zertifikats-Erstellung. (T5969, T5832)
+     - Die Werkzeugleiste im Hauptfenster. (T6026)
+     - Zertifikat Details. (T5843)
+     - Zertifikat beglaubigen. (T6046)
+     - Gültigkeitsdauer ändern. (T6080)
+     - Gruppen einrichten. (T6095)
+     - DN Attributreihenfolge konfigurieren. (T6089)
+     - Unterschlüssel-Details. (T6104)
+     - Beglaubigungen. (T6102)
+     - Selbsttest. (T6101)
+
+(en) Kleopatra: Generating a new OpenPGP certificate is reduced to
+     a single dialog. (T5832)
+
+(de) Kleopatra: Das erstellen von OpenPGP Zertifikaten passiert nun
+     mit einem einzigen Dialogfenster. (T5832)
+
+(en) Kleopatra: Creating an S/MIME Certificate Signing Request (CSR)
+     is now a standalone action in Kleopatras file menu. (T5832)
+
+(de) Kleopatra: Erstellen von S/MIME Beglaubigungsanfragen (CSR)
+     ist nun eine alleinstehende Aktion im Datei Menü. (T5832)
+
+(en) Kleopatra: Links used in Kleopatra texts are now accessible for
+     screenreaders. (T6034)
+
+(de) Kleopatra: Links innerhalb von texten in Kleopatra sind nun
+     auch für Screenreader geeignet. (T6034)
+
+(en) Kleopatra: Text parts (labels) are now selectable and the
+     selection is highlighted.  This is easier to control with
+     a Screenreader. (T6036)
+
+(de) Kleopatra: Texte in Kleopatra (Label) sind nun auswählbar.
+     Die Auswahl wird zudem hervorgehoben.  Dies macht es für
+     Nutzer von Screenreadern einfacher den passenden Text
+     auszuwählen. (T6036)
+
+(en) Kleopatra: Tooltip pop-ups are now read out by screenreaders.
+     (T6044)
+
+(de) Kleopatra: Tooltips werden nun von Screenreadern gelesen.
+     (T6044)
+
+(en) Kleopatra: All icon-only buttons should now have a description
+     which can be read by Screenreaders. (T6088)
+
+(de) Kleopatra: Reine Symbolknöpfe sollten nun alle eine Beschreibung
+     haben die von Screenreadern verarbeitet werden kann. (T6088)
+
+(en) Kleopatra: Navigating the certificate list with the keyboard
+     is improved. (T5841)
+
+(de) Kleopatra: Die Keyboard-Navigation durch die Zertifikatsliste
+     wurde verbessert. (T5841)
+
+(en) Kleopatra: Validity period labels have been unified to
+     "Valid from" and "Valid until" respectively. (T6120)
+
+(de) Kleopatra: Die Beschreibung der Gültigkeit eines Zertifikats
+     wurde auf "Gültig ab" bzw. "Gültig bis" vereinheitlicht.
+     (T6120)
+
+(en) Kleopatra: Compliance display has been simplified by
+     removing the "communication is possible" part.
+     (T5855)
+
+(de) Kleopatra: Die Anzeige der Konformität wurde vereinfacht
+     indem nicht mehr der Teil "Kommunikation ist möglich"
+     angefügt wird. (T5855)
 
 ~~~~~~~~~~~~~~~
 GnuPG:          2.2.39
-Kleopatra:      3.1.22
+Kleopatra:      3.1.24
 GPA:            0.10.0
-GpgOL:          2.5.3
+GpgOL:          2.5.4
 GpgEX:          1.0.9
 Kompendium DE:  4.0.1
 Compendium EN:  3.0.0
