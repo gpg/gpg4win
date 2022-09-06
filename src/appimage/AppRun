@@ -46,6 +46,7 @@ fi
 export PATH="${APPDIR}/usr/bin:${PATH}"
 export XDG_DATA_DIRS="${APPDIR}/usr/share:${XDG_DATA_DIRS:-/usr/share}:/usr/share"
 export XDG_CONFIG_DIRS="${APPDIR}/usr/etc/xdg:${XDG_CONFIG_DIRS:-/etc/xdg}:/etc/xdg"
+export MANPATH="${APPDIR}/usr/share/man:${MANPATH:-/usr/share/man}:/usr/share/man"
 
 # Avoid problems due to caller set ld.so envvars.
 if [ -n "$LD_PRELOAD" ]; then

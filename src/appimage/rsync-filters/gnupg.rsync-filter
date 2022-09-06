@@ -7,4 +7,6 @@
 + /share/gnupg/*
 + /share/locale/
 + /share/locale/**
++ /share/man/
++ /share/man/**
 - /share/*
