@@ -342,11 +342,11 @@ file scute/scute-1.7.0.tar.bz2
 chk 437fe758b27c243a5ee2535c6b065ea1d09f2c9a02d83567d2f934bb6395c249
 
 # GpgOL
-# last-changed: 2022-04-20
+# last-changed: 2022-09-06
 # by: ah
 # verified: Sig 5B80 C575 4298 F0CB  55D8 ED6A BCEF 7E29 4B09 2E28
-#file gpgol/gpgol-2.5.3.tar.bz2
-#chk  c916deb2897c1f37f4e011b5019b7118321673b7c4c1f090b3921b9335b96432
+file gpgol/gpgol-2.5.4.tar.bz2
+chk  5c67f6de1098e8b8ccb8deb04ac714a324c6fcba4e51318b522d9158f72c1d0f
 
 #
 # GpgEX
@@ -596,8 +596,8 @@ chk b6e444b057747ad7a00a98b333a9dadff6c8eea970c6768f22ee969ef5de6b0f
 # last changed: 2022-09-05
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file gpgol/gpgol-2.5.4-beta14.tar.xz
-chk 245f1151189cdeb10afa7aadf7e4d68f17f5d1ed9df8a05bf8472ee220721105
+# file gpgol/gpgol-2.5.4-beta14.tar.xz
+# chk 245f1151189cdeb10afa7aadf7e4d68f17f5d1ed9df8a05bf8472ee220721105
 
 # gpg4win-tools
 # last changed: 2022-08-29
