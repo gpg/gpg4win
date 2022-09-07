@@ -3,7 +3,7 @@
 # The version number given below are for the standard installers as
 # distributed by www.gpg4win.org.
 
-Noteworthy changes in Version 3.1.24 (unreleased)
+Noteworthy changes in Version 3.1.24 (2022-09-07)
 ------------------------------------------------
 
 --- Features ---
@@ -46,6 +46,17 @@ Noteworthy changes in Version 3.1.24 (unreleased)
 (de) GnuPG: Der Dialog, der zum Einlegen der Smartcard auffordert,
      zeigt nun die "Anzeige-Seriennummer" an.  Dies sollte der Nummer
      entsprechen, welche auf die Smartcards gedruckt ist. (T6135)
+
+(en) GpgOL: Groups configured in Kleopatra can now be used for mail
+     encryption. Groups must contain only keys of one protocol
+     (either S/MIME or OpenPGP) and be named like the mail address.
+     (T5967)
+
+(de) GpgOL: Gruppen, welche in Kleopatra konfiguriert wurden, können
+     nun zur Mailverschlüsselung verwendet werden.  Gruppen dürfen
+     dabei nur Zertifikate aus einem Protokoll (entweder S/MIME oder
+     OpenPGP) enthalten und müssen nach der Mailadresse benannt sein.
+     (T5967)
 
 (en) GpgOL: An exclamation mark at the end of the GpgOL config registry
      values under "Local machine" now disallows the user to change that

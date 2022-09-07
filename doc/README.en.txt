@@ -66,16 +66,186 @@ Included Gpg4win components in version !VERSION! are:
 New in Gpg4win version !VERSION! (!BUILD_ISODATE!)
 -----------------------------------------
 
+--- Features ---
+
+- GnuPG: Avoids "invalid hash method" errors by using SHA-256
+  for certificates with implicit SHA-1 preferences in de-vs mode.
+  (T6043)
+
+- GnuPG: It is now possible to forbid users to trust additional
+  root certificates. The option for this is "no-user-trustlist".
+  (T5990)
+
+- GnuPG: It is now possible to change the default filename
+  (trustlist.txt) for the list of S/MIME root certificates.
+  The option for this is "sys-trustlist-name" or on Windows
+  it can be configured in the registry.
+  This allows admins to change the S/MIME root certificates
+  from the packaged default without having it overwritten with
+  each update. (T5990)
+
+- GnuPG: The "display serial number" is now used for card insert
+  prompts.  This should match the serial number printed on
+  smart cards. (T6135)
+
+- GpgOL: Groups configured in Kleopatra can now be used for mail
+  encryption. Groups must contain only keys of one protocol
+  (either S/MIME or OpenPGP) and be named like the mail address.
+  (T5967)
+
+- GpgOL: An exclamation mark at the end of the GpgOL config registry
+  values under "Local machine" now disallows the user to change that
+  setting. (T5827)
+
+- Kleopatra: Any configuration settings in kleopatrarc are now
+  configurable through the Windows Registry / Group Policies, too.
+  (T5707)
+
+- Kleopatra: Automatic extraction of tar archives can now be disabled
+  in the Kleopatra settings. (T6057)
+
+- Kleopatra: The original filename is now embedded in encrypted
+  files. (T6056)
+
+- Kleopatra: In case the embedded filename does not match the
+  filename of the encrypted file, the user is asked after decryption
+  if the file should be renamed to the embedded name.
+  This only works for files encrypted with GnuPG VS-Desktop 3.1.24
+  or later. (T6056)
+
+- Kleopatra: The user is now asked which file should be verified
+  if the signed data for a detached signature (.sig) could not be found
+  automatically. (T6062)
+
+- Kleopatra: Queries containing just a single character are now allowed
+  when searching in remote directories.  This should make it easier
+  to list all certificates in a directory. (T6064)
+
+- Kleopatra: When a user specific trustlist.txt is created by Kleopatra
+  it now adds the "include-default" keyword, so that the system wide
+  trustlist.txt is still included. (T6096)
+
+- Kleopatra: The storage location is now displayed per subkey to
+  better support offline keys and multiple smart cards. (T6108)
+
+- Kleopatra: The certificate details now have an explicit update button
+  to refresh a key from the configured directory services. (T5903)
+
+- Kleopatra: The fingerprint with the suffix .rev is now used
+  as suggested filename for revocation certificates. (T6121)
+
+- Kleopatra: Several more file dialogs now save the last used
+  directory. (T6121)
+
+- Kleopatra: When withdrawing certifications, the own certifications
+  on the certificate are now automatically determined. (T6115)
+
 --- Bug fixes ---
 
-- Kleopatra: A crash that occured when exiting
-  the Application has been fixed. (T5962)
+- GnuPG: YubiKeys with firmware versions 5.4 and above are correctly
+  detected again. (T6070)
 
-- GnuPG: Security update to 2.3.7 to fix CVE-2022-34903.
-  (T6027)
+- GnuPG: Combined symmetric and asymmetric encryption / decryption
+  is now displayed as VS-NfD compliant, if appropriate. (T6119)
 
-- GnuPG: Improved import of PKCS#12 containers.
-  (T6037,T5793,T4921,T4757)
+- GnuPG: A misleading error message when transferring keys to a
+  smart card was changed. (T6122)
+
+- GnuPG: The options "auto-key-import" and "include-key-block" are
+  changeable through Kleopatra, again. (T6138)
+
+- GnuPG: A possible path traversal security issue regarding
+  "gpg-wks-server" has been fixed. This only affects
+  users of "gpg-wks-server" in a WKS deployment. (T6098)
+
+- GpgOL: Fixed some encoding issues.
+
+- GpgOL: Issue with sender resolution for draft mails fixed.
+
+- GpgOL: A hang and performance problem when displaying unencrypted
+  mails with a specific structure has been fixed. (#8917)
+
+- GpgOL: Stale temporary files created by GpgOL are now deleted to avoid
+  clutter on systems that do not clean the temporary files. (T5926)
+
+- Kleopatra: No longer reports success when adding an empty userid.
+  (T5997)
+
+- Kleopatra: The maximum expiration date is now 2106-02-05. (T5991)
+
+- Kleopatra: S/MIME certificate trees are no longer collapsed when
+  details are opened by double click. (T6055)
+
+- Kleopatra: Minor improvements to the encrypt / sign recipient
+  selection dialog. (T6080)
+
+- Kleopatra: Canceling the password entry when exporting a secret
+  key now correctly aborts the operation. (T6090)
+
+- Kleopatra: A family of startup crashes has been fixed.  The
+  crashes would show up in the event log as crashes in
+  libstdc++6.dll. (T6131)
+
+- Kleopatra: Fixed a very rare hang when archiving files.  This
+  caused Kleopatra never to finish an archiving operation. (T6139)
+
+- Kleopatra: When only a single OpenPGP certificate is imported,
+  the question about weather to certify it has been restored.
+  (T6144)
+
+- Kleopatra: Problems of "Failed to move directory" when decrypting
+  archives on systems where the users TEMP directory was placed
+  on Microsoft virtual hard disks have been resolved. (T6147)
+
+--- Accessibility ---
+
+- Kleopatra: The following dialogs have been changed so that they are
+  usable:
+  * with keyboard only
+  * with a screenreader (tested NVDA and ORCA)
+  * with 400% magnification
+  * with high contrast color scheme (T6073)
+  * with inverted color scheme (T6073)
+
+  - OpenPGP certificate creation (T5969, T5832)
+  - The main window toolbar (T6026)
+  - Certificate Details (T5843)
+  - Certificate certification (T6046)
+  - Expiration date change (T6080)
+  - Group configuration (T6095)
+  - DN Attribute Order configuration (T6089)
+  - Subkey details (T6104)
+  - Certifications view (T6102)
+  - Self Test (T6101)
+
+- Kleopatra: Generating a new OpenPGP certificate is reduced to
+  a single dialog. (T5832)
+
+- Kleopatra: Creating an S/MIME Certificate Signing Request (CSR)
+  is now a standalone action in Kleopatras file menu. (T5832)
+
+- Kleopatra: Links used in Kleopatra texts are now accessible for
+  screenreaders. (T6034)
+
+- Kleopatra: Text parts (labels) are now selectable and the
+  selection is highlighted.  This is easier to control with
+  a Screenreader. (T6036)
+
+- Kleopatra: Tooltip pop-ups are now read out by screenreaders.
+  (T6044)
+
+- Kleopatra: All icon-only buttons should now have a description
+  which can be read by Screenreaders. (T6088)
+
+- Kleopatra: Navigating the certificate list with the keyboard
+  is improved. (T5841)
+
+- Kleopatra: Validity period labels have been unified to
+  "Valid from" and "Valid until" respectively. (T6120)
+
+- Kleopatra: Compliance display has been simplified by
+  removing the "communication is possible" part.
+  (T5855)
 
 
 3. Additional notes
