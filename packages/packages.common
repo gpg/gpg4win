@@ -607,14 +607,14 @@ file gpg4win-tools/gpg4win-tools-202208290924.tar.xz
 chk fe20b69d84893618625d76e55f772477a80628da98411c8bb9c1a5e01028b3f9
 
 # KDE-l10n
-# last changed: 2022-08-29
+# last changed: 2022-09-07
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file kde-l10n/kde-l10n-202208291812-bin.tar.xz
-chk 2f37f13dfaf9a986e730fd211dd1279c24d5c6a6317b67ec44a78d1a37d0c226
+file kde-l10n/kde-l10n-202209071336-bin.tar.xz
+chk b4b42483931a703d344a4b0658d20587aefbae8dc8906d970c71d3c91af11ca6
 
-file kde-l10n/kde-l10n-202208291812-src.tar.xz
-chk df870ad5b4ce820d27b20514ee15bee495a30497e72bada71e58ec7651d86b2f
+file kde-l10n/kde-l10n-202209071336-src.tar.xz
+chk 38d796b3fa4a487014b70cf437d82cd9de0d4b92f8c9389a20d5a4a65fc56400
 
 # libkleo
 # last changed: 2022-09-05
@@ -624,8 +624,8 @@ file libkleo/libkleo-202209050940.tar.xz
 chk a8ce9be955fe14cf3b53555d217872e3d8ddf7d0bbd5cb4724e044c47b8a1c5e
 
 # kleopatra
-# last changed: 2022-09-05
+# last changed: 2022-09-07
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file kleopatra/kleopatra-202209051735.tar.xz
-chk 998fbdbc14d0dc4394684c7dd9d2bcf9f0ec8daf9987723fb029fa00e82a6877
+file kleopatra/kleopatra-202209071217.tar.xz
+chk b38af32209f5789b6033e5742a8b128f7517bf0c23e0a3cd939b71550ade0377
