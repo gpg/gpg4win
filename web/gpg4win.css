@@ -420,6 +420,7 @@ input[type='range']::-moz-range-thumb {
 #main {
  padding: 0px 0px 0px 20px;
  width: 600px;
+ float: left;
 }
 
 #full {
@@ -1483,6 +1484,7 @@ input[type=number] {
 
   #main{
     padding-left: 0pt;
+    float: unset;
   }
 
   #footer{
