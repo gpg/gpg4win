@@ -252,14 +252,18 @@ if test "$build_gpg4win" = yes ; then
     fi
     AC_SUBST(kf5_host_tooling)
 
-    # Additional runtime libraries from mingw.
-    if test -f "/usr/lib/gcc/i686-w64-mingw32/10-win32/libgcc_s_dw2-1.dll"; then
-        GPG4WIN_RUNTIME_LIBRARY(libgcc_s_dw2-1)
-    else
-        GPG4WIN_RUNTIME_LIBRARY(libgcc_s_sjlj-1)
-    fi
     GPG4WIN_RUNTIME_LIBRARY(libstdc++-6)
     GPG4WIN_RUNTIME_LIBRARY(libwinpthread-1)
+
+    if test -f "/usr/lib/gcc/i686-w64-mingw32/10-win32/libgcc_s_dw2-1.dll"; then
+        AC_MSG_NOTICE([Using dw2 exceptions.])
+        GPG4WIN_RUNTIME_LIBRARY(libgcc_s_dw2-1)
+        $CP /dev/null src/libgcc_s_sjlj-1.dll-x
+    else
+        AC_MSG_NOTICE([Using sjlj exceptions.])
+        GPG4WIN_RUNTIME_LIBRARY(libgcc_s_sjlj-1)
+        $CP /dev/null src/libgcc_s_dw2-1.dll-x
+    fi
 
     AC_CHECK_PROGS(GLIB_GENMARSHAL, glib-genmarshal)
     AC_CHECK_PROGS(GLIB_COMPILE_SCHEMAS, glib-compile-schemas)
