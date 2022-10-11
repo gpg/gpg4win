@@ -3,11 +3,77 @@
 # The version number given below are for the standard installers as
 # distributed by www.gpg4win.org.
 
-Noteworthy changes in Version 3.1.25 (unreleased)
-------------------------------------------------
+Noteworthy changes in Version 3.1.25 (2022-10-11)
+-------------------------------------------------
+
+--- Features ---
+
+(en) GnuPG: In de-vs mode use AES-128 instead of 3-DES as implicit
+     preference.  This avoids problems with software considering 3-DES
+     as non-compliant but does only announce 3-DES as supported
+     algorithm.  [T6063]
+
+(de) GnuPG: Im VS-NfD Modus wird jetzt AES-128 ansatt 3-DES als
+     implizierter Verschlüsselungsalgorithmus verwendet.  Dies
+     vermeidet Probleme mit Software, die 3-DES als nicht nicht
+     konform ansieht obgleich sie lediglich 3-DES als unterstützen
+     Algorithmus publiziert.   [T6063]
+
+(en) GnuPG: Add new LDAP server flag "areconly" (A-record-only) to
+     help against long delays on some AD installations.
+
+(de) GnuPG: Eine neues LDAP Server Flag "areconly" (A-record-only)
+     kann benutzt werden, um lange Verzögerungen auf einigen AD
+     Installationen zu vermeiden.
+
+(en) GnuPG: New feature to mirror an LDAP keyserver to a Web key
+     Directory.  [T6224]
+
+(de) GnuPG: Ein neues Feature ermöglicht das spiegeln der Schlüssel
+     eines internen LDAP Keyservers auf ein Web Key Directory.
+     [T6224]
+
+(en) GnuPG: Improve reporting of bad passphrase errors during PKCS#11
+     import.  [T5713,T6037]
+
+(de) GnuPG: Die Ausgabe von Fehlern für falsche Passwörter beim Import
+     von PKCS#11 Daten wurde verbessert.  [T5713,T6037]
+
+--- Bug fixes ---
+
+(en) GnuPG: Update the X.509/CMS parsing library Libksba to version
+     1.6.2 to fix a severe security problem.  [T6230]
+
+(de) GnuPG: Die X.509/CMS Parser DLL Libksba wurde auf Version
+     1.6.2 aktualisiert um eine ein gravierendes Sicherheitsproblem zu
+     beheben.  [T6230]
+
+(en) GnuPG: Do not consider unknown public keys as non-compliant while
+     decrypting.  [T6205]
+
+(de) GnuPG: Unbekannte Schlüssel werden während der Entschlüsselung
+     nicht mehr als nicht-konform angesehen.  [T6205]
+
+(en) GnuPG: Fix CRL Distribution Point fallback to other schemes.
+
+(de) GnuPG: Der Rückgriff auf andere CRL Distribution Points im
+     Fehlerfall wurde verbessert.
+
+(en) GnuPG: Fix upload of multiple keys for an LDAP server specified
+     using the colon format.
+
+(de) GnuPG: Das Hochladen von mehreren Schlüsseln auf LDAP Server, die
+     im "colon" Format konfiguriert sind, funktioniert jetzt.
+
+(en) GnuPG: Fix a key upload problem when a BaseDN is specified for an
+     LDAP server.  [T6047]
+
+(de) GnuPG: Das Hochladen von Schlüsseln auf einen LDAP Server, mit
+     konfigurierter BaseDN, funktioniert jetzt.  [T6047]
+
 
 ~~~~~~~~~~~~~~~
-GnuPG:          2.2.39
+GnuPG:          2.2.40
 Kleopatra:      3.1.24
 GPA:            0.10.0
 GpgOL:          2.5.4
