@@ -2,9 +2,13 @@
 
 this_dir="$(readlink -f "$(dirname "$0")")"
 if [ -f "${APPDIR}/GnuPG-VS-Desktop-VERSION" ]; then
-    myname="GnuPG VS-Desktop "$(cat "${APPDIR}/GnuPG-VS-Desktop-VERSION")
+    _gnupg_appimage=vsd
+    _gnupg_appimage_name="GnuPG VS-Desktop"
+    myname="_gnupg_appimage_name "$(cat "${APPDIR}/GnuPG-VS-Desktop-VERSION")
 else
-    myname="GnuPG Desktop "$(cat "${APPDIR}/GnuPG-Desktop-VERSION")
+    _gnupg_appimage=generic
+    _gnupg_appimage_name="GnuPG Desktop"
+    myname="$_gnupg_appimage_name "$(cat "${APPDIR}/GnuPG-Desktop-VERSION")
 fi
 
 opt_c=no
@@ -33,10 +37,32 @@ while [ $# -gt 0 ]; do
 	    ;;
         --version)
             opt_version=yes
+            cat <<EOF
+$myname
+Copyright (C) 2022 g10 Code GmbH
+
+$_gnupg_appimage_name consist of several independent developed packages,
+available under different license conditions.  Most of these packages
+however are available under the GNU General Public License (GNU GPL).
+Common to all is that they are free to use without restrictions, may
+be modified and that modifications may be distributed.
+
+If the source code is distributed along with the binaries and the
+use of the GNU GPL has been pointed out, distribution is in in all
+cases possible.
+
+The list of used licenses and their text is part of the source code
+and also available online at <https://gnupg.com/vsd/licenses.html>.
+
+"GnuPG Desktop" and "GnuPG VS-Desktop" are registered trademarks of
+g10 Code GmbH.  For more infomation see <https://gnupg.com>.
+
+EOF
             ;;
-	--help)
-           echo "$myname"
-           cat <<EOF
+	--help|-h)
+
+            cat <<EOF
+$myname
 
 Options:
   -c            Run an interactive shell.
@@ -44,9 +70,11 @@ Options:
   --gui         Run the GUI with optional arguments.
   --keep-socket Keep an existing gpg-agent socket.
   --debug       Enable debugging of the start script.
-  --version     Print only the version
+  --version     Print version and copyright info
   --help        Print this help.
+
 The default is to run the GUI with optional arguments.
+
 EOF
 	    exit 0
 	    ;;
@@ -68,13 +96,14 @@ fi
 
 
 if [ $opt_version = yes ]; then
-    echo "$myname"
     # Do some basic verification - not really secure because an
     # attacker may change the appimage and the included keyring.
-    if ! "${APPDIR}"/usr/bin/gpgv --quiet \
+    if [ ! -f "$APPNAME".sig ]; then
+        echo "error: no signature found for this appimage" >&2
+        exit 2
+    elif ! "${APPDIR}"/usr/bin/gpgv --quiet \
          --keyring "${APPDIR}"/usr/share/gnupg/distsigkey.gpg \
          "$APPNAME".sig "$APPNAME" ; then
-
         echo "error: this appimage is not correctly signed" >&2
         exit 2
     fi
@@ -99,11 +128,9 @@ fi
 # Allow GnuPG config scripts to detect the appimage install.  We can't
 # rely on APPDIR because other appimages might come with their own
 # gnupg version.  Change the value to "vsd" for a GnuPG VS-Desktop build.
-if [ -f "${APPDIR}/GnuPG-VS-Desktop-VERSION" ]; then
-    _gnupg_appimage=vsd
+if [ ${_gnupg_appimage} = vsd ]; then
    prestart_snippet=/etc/gnupg-vsd/apprun.pre-start.sh
 else
-   _gnupg_appimage=generic
    prestart_snippet=/etc/gnupg/apprun.pre-start.sh
 fi
 export _gnupg_appimage
