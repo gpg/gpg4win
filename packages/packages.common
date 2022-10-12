@@ -629,3 +629,7 @@ chk a8ce9be955fe14cf3b53555d217872e3d8ddf7d0bbd5cb4724e044c47b8a1c5e
 # verified: Tarball created by aheinecke.
 file kleopatra/kleopatra-202209071217.tar.xz
 chk b38af32209f5789b6033e5742a8b128f7517bf0c23e0a3cd939b71550ade0377
+# Due to tagging the actual used version in 3.1.24 and 3.1.25 is
+# file kleopatra/kleopatra-202209071717.tar.xz
+# chk  a260b4e4c66e69ef7bf23a51b5da3657bcfa2d392d0b1e64ba4e796de8e7b97c
+# but the unpacked files are identical.  (wk 2022-10-11)
