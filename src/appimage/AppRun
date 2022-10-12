@@ -1,44 +1,82 @@
 #! /usr/bin/env bash
 
 this_dir="$(readlink -f "$(dirname "$0")")"
-
-if [ "$1" = "--debug" ]; then
-    shift
-    set -x
-else
-    set -e
-fi
-
 if [ -f "${APPDIR}/GnuPG-VS-Desktop-VERSION" ]; then
     myname="GnuPG VS-Desktop "$(cat "${APPDIR}/GnuPG-VS-Desktop-VERSION")
 else
     myname="GnuPG Desktop "$(cat "${APPDIR}/GnuPG-Desktop-VERSION")
 fi
 
-if [ "$1" = "--help" -o "$1" = "--version" ]; then
-    echo "$myname"
-    if [ "$1" = "--help" ]; then
-        cat <<EOF
+opt_c=no
+opt_gui=no
+opt_keep_socket=no
+opt_debug=no
+opt_version=no
+lastoption=no
+while [ $# -gt 0 ]; do
+    case "$1" in
+        --)
+            lastoption=yes
+            ;;
+        -c|-i)
+            opt_c=yes
+            lastoption=yes
+            ;;
+	--gui)
+	    opt_gui=yes
+	    ;;
+	--keep-socket)
+	    opt_keep_socket=yes
+	    ;;
+	--debug)
+	    opt_debug=yes
+	    ;;
+        --version)
+            opt_version=yes
+            ;;
+	--help)
+           echo "$myname"
+           cat <<EOF
 
 Options:
-  -c          Run an interactive shell.
-  -c command  Run command with optional arguments.
-  --gui       Run the GUI with optional arguments.
-  --debug     Enable debugging of the start script.
-  --version   Print only the version
-  --help      Print this help.
+  -c            Run an interactive shell.
+  -c command    Run command with optional arguments.
+  --gui         Run the GUI with optional arguments.
+  --keep-socket Keep an existing gpg-agent socket.
+  --debug       Enable debugging of the start script.
+  --version     Print only the version
+  --help        Print this help.
 The default is to run the GUI with optional arguments.
 EOF
-    elif [ "$1" = "--version" ]; then
-        # Do some basic verification - not really secure because an
-        # attacker may change the appimage and the included keyring.
-        if ! "${APPDIR}"/usr/bin/gpgv --quiet \
-                    --keyring "${APPDIR}"/usr/share/gnupg/distsigkey.gpg \
-                    "$APPNAME".sig "$APPNAME" ; then
+	    exit 0
+	    ;;
+	*)
+	    break
+	    ;;
+    esac
+    shift
+    if [ $lastoption = yes ]; then
+        break;
+    fi
+done
 
-            echo "error: this appimage is not correctly signed" >&2
-            exit 2
-        fi
+if [ $opt_debug = yes ]; then
+    set -x
+else
+    set -e
+fi
+
+
+if [ $opt_version = yes ]; then
+    echo "$myname"
+    # Do some basic verification - not really secure because an
+    # attacker may change the appimage and the included keyring.
+    if ! "${APPDIR}"/usr/bin/gpgv --quiet \
+         --keyring "${APPDIR}"/usr/share/gnupg/distsigkey.gpg \
+         "$APPNAME".sig "$APPNAME" ; then
+
+        echo "error: this appimage is not correctly signed" >&2
+        exit 2
     fi
     exit 0
 fi
@@ -89,7 +127,7 @@ gnupg_SETUPINIFILE=
 trap mycleanup 0 INT QUIT
 
 
-if [ "$1" = "-c" -o "$1" = "-i" ]; then
+if [ $opt_c = yes ]; then
     shift
     if [ ! -x "$SHELL" ]; then
         echo "error: no shell found" >&2
@@ -195,6 +233,11 @@ fi
 # termination of the program and kill itself after this has been
 # detected.  We also steal an existing socket so that already running
 # system instances of gpg-agent are not anymore used.
-"${this_dir}/usr/bin/gpg-agent" --steal-socket --daemon -- $pgm $pgmargs
+if [ $opt_keep_socket = yes ]; then
+   steal=""
+else
+   steal="--steal-socket"
+fi
+"${this_dir}/usr/bin/gpg-agent" $steal --daemon -- $pgm $pgmargs
 
 echo Goodbye from "$myname"\! >&2
