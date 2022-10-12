@@ -202,7 +202,7 @@ if [ -f $prestart_snippet ]; then
 fi
 
 # In vsd mode create a .gnupg-vsd so that we use a dedicated homedir
-# in for VSD.  This is important on Linux because there gpg is a
+# for VSD.  This is important on Linux because there gpg is a
 # standard tool and a .gnupg is often in active use.
 if [ ${_gnupg_appimage} = vsd -a -z "$GNUPGHOME" ]; then
     GNUPGHOME="$HOME/.gnupg-vsd"
@@ -229,10 +229,10 @@ fi
 # detected.  We also steal an existing socket so that already running
 # system instances of gpg-agent are not anymore used.
 if [ $opt_keep_socket = yes ]; then
-   steal=""
+   "${this_dir}/usr/bin/gpgconf" --launch gpg-agent
+   $pgm $pgmargs
 else
-   steal="--steal-socket"
+   "${this_dir}/usr/bin/gpg-agent" $steal --daemon -- $pgm $pgmargs
 fi
-"${this_dir}/usr/bin/gpg-agent" $steal --daemon -- $pgm $pgmargs
 
 echo Goodbye from "$myname"\! >&2
