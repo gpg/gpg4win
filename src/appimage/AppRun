@@ -128,7 +128,6 @@ trap mycleanup 0 INT QUIT
 
 
 if [ $opt_c = yes ]; then
-    shift
     if [ ! -x "$SHELL" ]; then
         echo "error: no shell found" >&2
         exit 2
@@ -184,10 +183,6 @@ else
     if [ $(id -u) -eq 0 ]; then
         echo "error: the GUI may not be run by root" >&2
         exit 2
-    fi
-    # Ignore the optional --gui option
-    if [ "$1" = "--gui" ]; then
-        shift
     fi
     if [ -x "${this_dir}/usr/bin/kleopatra" ];then
         pgm="${this_dir}/usr/bin/kleopatra"
