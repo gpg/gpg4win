@@ -55,6 +55,14 @@ Instructions for AppImage:
 
    $ docker/run-appimage-build.sh
 
+   During development is it often easier to use
+
+   $ docker/run-appimage-build.sh --devel
+
+   which does not delete the temporary directory.  Inside the
+   docker shell you start the build using
+      src/src/appimage/build-appimage.sh
+
 
 Basic requirements
 ==================
@@ -74,7 +82,7 @@ to be installed:
     texinfo libgdk-pixbuf2.0-dev texlive-latex-extra libqt4-dev-bin \
     wget mingw-w64 texlive-lang-german cmake libgtk2.0-bin libxml2-utils \
     gperf libgettextpo-dev automake-1.15 libkf5config-dev libkf5config-dev-bin \
-    libkf5coreaddons-dev gpgrt-tools imagemagick libboost-graph-dev
+    libkf5coreaddons-dev gpgrt-tools imagemagick libboost-graph-dev icoutils
 
 Additionally on Debian Buster cmake has to be at least version 3.1.16 from
 debian backports.
