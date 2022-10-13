@@ -97,6 +97,7 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
         file-ext.ico \
         kdeglobals qtlogging.ini \
         make-msi.pl make-msi.guids \
+        build-gpg4win.sh \
         WixUI_Gpg4win.wxs shield.ico
 
 if BUILD_APPIMAGE

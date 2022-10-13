@@ -41,7 +41,10 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
              build-aux/git-log-footer build-aux/git-log-fix \
              docker/appimage/Dockerfile \
              docker/build-appimage-docker-image.sh \
+             docker/build-gpg4win-docker-image.sh \
+             docker/gpg4win-bullseye/Dockerfile \
              docker/run-appimage-build.sh \
+             docker/run-gpg4win-build.sh \
              patches/extra-cmake-modules/0001-Use-BIN_INSTALL_DIR-data-for-DATAROOTDIR-on-Windows.patch \
              patches/glib/glib-1-fixes.patch \
              patches/glib/glib-2-fixes.patch \
