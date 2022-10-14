@@ -37,7 +37,6 @@ Section "-un.gpg4win"
   Delete "$INSTDIR\bin\libgcc_s_sjlj-1.dll"
   Delete "$INSTDIR\bin\libgcc_s_dw2-1.dll"
   Delete "$INSTDIR\bin\libwinpthread-1.dll"
-  Delete "$INSTDIR\bin\libgcc_s_dw2-1.dll"
 
   # Delete standard stuff.
   Delete "$INSTDIR\share\gpg4win\README.*.txt"
