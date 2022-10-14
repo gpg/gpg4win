@@ -98,12 +98,12 @@ fi
 if [ $opt_version = yes ]; then
     # Do some basic verification - not really secure because an
     # attacker may change the appimage and the included keyring.
-    if [ ! -f "$APPNAME".sig ]; then
+    if [ ! -f "$APPIMAGE".sig ]; then
         echo "error: no signature found for this appimage" >&2
         exit 2
     elif ! "${APPDIR}"/usr/bin/gpgv --quiet \
          --keyring "${APPDIR}"/usr/share/gnupg/distsigkey.gpg \
-         "$APPNAME".sig "$APPNAME" ; then
+         "$APPIMAGE".sig "$APPIMAGE" ; then
         echo "error: this appimage is not correctly signed" >&2
         exit 2
     fi
