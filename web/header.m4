@@ -46,10 +46,10 @@
    <small>2022-10-17</small><br>
    <span class="serif_word"><img src="img/bulletin.png" alt"" />
      m4_ifelse(LANG_DE, `1', `
-      <a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2022/000059.html">
+      <a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2022/000061.html">
       Gpg4win 4.0.4 veröffentlicht</a>
       </span>',`
-      <a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce/2022/000095.html">
+      <a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce/2022/000098.html">
         Gpg4win 4.0.4 released
       </a>
       </span>')
