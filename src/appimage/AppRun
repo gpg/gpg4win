@@ -259,7 +259,7 @@ if [ $opt_keep_socket = yes ]; then
    "${this_dir}/usr/bin/gpgconf" --launch gpg-agent
    $pgm $pgmargs
 else
-   "${this_dir}/usr/bin/gpg-agent" $steal --daemon -- $pgm $pgmargs
+   "${this_dir}/usr/bin/gpg-agent" --steal-socket --daemon -- $pgm $pgmargs
 fi
 
 echo Goodbye from "$myname"\! >&2
