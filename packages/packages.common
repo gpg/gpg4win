@@ -43,164 +43,6 @@ file gettext/gettext-0.21.tar.xz
 chk  d20fcbb537e02dcf1383197ba05bd0734ef7bf5db06bdb241eb69b7d16b73192
 
 
-# Glib needs PCRE
-# last-changed: 2021-10-11
-# by: ah (checksum added by ik)
-# verified: Sig: 45F6 8D54 BBE2 3FB3 039B 46E5 9766 E084 FB0F 43D8
-server https://sourceforge.net/projects/pcre/files/pcre/
-file 8.44/pcre-8.44.tar.gz
-chk  aecafd4af3bd0f3935721af77b889d9024b2e01d96b58471bd91a3063fb47728
-
-#
-# GLIB
-#
-# The GTK boyz seem to think that sha256sum files on the server
-# magically get them a lot of additional security karma.
-#
-#   And it's plain to see
-#   You were meant for me
-#   Yeah I'm your .sig
-#   Your 21th Century sig
-#   21th Century sig, I wanna be your file
-#
-server http://ftp.gnome.org/pub/gnome/sources/glib/2.50
-
-# last-changed: 2021-09-02
-# by: ah
-file glib-2.50.2.tar.xz
-chk  be68737c1f268c05493e503b3b654d2b7f43d7d0b8c5556f7e4651b870acfbf5
-
-#
-# GDK-PIXBUF
-#
-server http://ftp.gnome.org/pub/gnome/sources/gdk-pixbuf/2.30/
-
-# checked: 2015-06-05
-# by: ah
-# There is a 2.31 series but afaik no security problems with 2.30
-# verified: with linuxfromscratch and frugalware checksums
-file gdk-pixbuf-2.30.8.tar.xz
-chk  4853830616113db4435837992c0aebd94cbb993c44dc55063cee7f72a7bef8be
-
-
-#
-# ATK
-#
-server http://ftp.gnome.org/pub/gnome/sources/atk/1.32
-
-# checked: 2013-04-29 wk (1.32.0 still the latest in 1.32)
-file atk-1.32.0.tar.bz2
-chk  e9a3e598f75c4db1af914f8b052dd9f7e89e920a96cc187c18eb06b8339cb16e
-
-server http://ftp.gnome.org/pub/gnome/binaries/win32/atk/1.32
-
-# checked: 2013-04-29 wk
-name atk-1.32.0.zip
-file atk_1.32.0-2_win32.zip
-chk  cadc6d52f2af21996a6dcba7b1fac27ce66721e14d1c4ab21fde7bc9965f5037
-
-# checked: 2013-04-29 wk
-name atk-dev-1.32.0.zip
-file atk-dev_1.32.0-2_win32.zip
-chk  5021d64043d270350d6a8d50b91db691a7421a68ca0bfa4eeb0c8804a176ac44
-
-#
-# PANGO
-#
-server http://ftp.gnome.org/pub/gnome/sources/pango/1.29
-
-# fixme: 2013-04-29 wk - There is a 1.29.5 but no 1.29.5 binaries
-#                        What shall we do:  Update to 1.32?  There are no
-#                        1.32 binaries either.
-file pango-1.29.4.tar.bz2
-chk  f15deecaecf1e9dcb7db0e4947d12b5bcff112586434f8d30a5afd750747ff2b
-
-server http://ftp.gnome.org/pub/gnome/binaries/win32/pango/1.29
-
-name pango-1.29.4.zip
-file pango_1.29.4-1_win32.zip
-chk  e1b865ae2e4054388c598f92b34593b3d24d7fd15e6308c8926ee634717c21ce
-
-name pango-dev-1.29.4.zip
-file pango-dev_1.29.4-1_win32.zip
-chk  0d7fb255e65ed4bd43acedab4405986e4877b87ba8227d5fa22b38330485e3cb
-
-#
-# CAIRO
-#
-server http://cairographics.org/releases
-
-# checked: 2013-04-29 wk - 1.10.2 is the latest in the 1.10 series.
-file cairo-1.10.2.tar.gz
-chk  32018c7998358eebc2ad578ff8d8559d34fc80252095f110a572ed23d989fc41
-
-server http://ftp.gnome.org/pub/gnome/binaries/win32/dependencies
-# checked: 2013-07-16 ah most recent package on that server is from
-# 2012-09-27 TODO -> Move to another source / source build of those
-# dependencies
-
-# checked: 2013-04-29 wk
-name cairo-1.10.2.zip
-file cairo_1.10.2-2_win32.zip
-chk  e6c361ec1df4ccb23edbe5b68db16329d563a19eeee7fa70d583dda3d2358f4e
-name cairo-dev-1.10.2.zip
-file cairo-dev_1.10.2-2_win32.zip
-chk  b86f875bf776bbf578e3fa8c46866b84c93200b962b30d03cf795f82157e3167
-
-# checked: 2013-04-29 wk
-file freetype-2.4.2.tar.bz2
-chk  9a987aef8c50d9bcfdfdc9f012f8bd0de6095cc1a5524e62c1a037deb8dacbfe
-name freetype-2.4.2.zip
-file freetype_2.4.2-1_win32.zip
-chk  bdf67e6573363fd2256a58295931cc1186382fd0ad1fe420059d6ffdb5fba7c0
-name freetype-dev-2.4.2.zip
-file freetype-dev_2.4.2-1_win32.zip
-chk  eed58c2807b65d5e0ec78031e89f1628577ad76bf47f02eaecde432c0b99eae9
-
-server http://www.fontconfig.org/release
-
-# checked: 2013-04-29 wk - 2.8.0 still the latest in 2.8
-file fontconfig-2.8.0.tar.gz
-chk  fa2a1c6eea654d9fce7a4b1220f10c99cdec848dccaf1625c01f076b31382335
-
-server http://ftp.gnome.org/pub/gnome/binaries/win32/dependencies
-
-# checked: 2013-04-29 wk
-name fontconfig-2.8.0.zip
-file fontconfig_2.8.0-2_win32.zip
-chk  9d6bcaeed0eced43a649953132d9f2b3e15b98c7bb9e4a207872dfeade818204
-name fontconfig-dev-2.8.0.zip
-file fontconfig-dev_2.8.0-2_win32.zip
-chk  2f15af3d27ca507dad2a208e58409f484aa7e7c7eac10b49edca079b31ae7073
-
-server ftp://ftp.g10code.com/g10code/misc
-
-# checked: 2013-04-29 wk - 2.0.1 still the latest in 2.0
-file expat-2.0.1.tar.gz
-chk  847660b4df86e707c9150e33cd8c25bc5cd828f708c7418e765e3e983a2e5e93
-
-server http://ftp.gnome.org/pub/gnome/binaries/win32/dependencies
-
-# checked: 2013-04-29 wk
-name expat-2.0.1.zip
-file expat_2.0.1-1_win32.zip
-chk  77b88ab780e698d6590426b26a877878584b9f8b6357909699674fb5045737bd
-name expat-dev-2.0.1.zip
-file expat-dev_2.0.1-1_win32.zip
-chk  67b92b7f3441fee077bdc0094bf4dd673870acdf51899e32e199246801538162
-
-
-#
-# GTK+
-#
-server http://ftp.gnome.org/pub/gnome/sources/gtk+/2.24
-
-# last-changed: 2015-06-05
-# by: ah
-# verified: chk from https://download.gnome.org/core/3.17/3.17.2/sources/SHA256SUMS-for-xz
-file gtk+-2.24.28.tar.xz
-chk  b2c6441e98bc5232e5f9bba6965075dcf580a8726398f7374d39f90b88ed4656
-
 #
 # GIMP stuff for W32
 #
@@ -214,26 +56,6 @@ chk  08a0e072d6a05419a58124db864f0685e6ac96e71b2875bf15ac12714e983b53
 name pkgconfig-0.23.zip
 file pkg-config_0.23-3_win32.zip
 chk  677d6055494e24cad6c49eab33eee618ddc6ed65da827c8b5b7da761b4063278
-
-
-# PNG
-
-# last changed: 2021-12-01
-# by: ah
-# verified: Sig 8048 643B A2C8 40F4 F92A  195F F549 84BF A16C 640F
-server https://downloads.sourceforge.net
-file libpng/libpng14/1.4.22/libpng-1.4.22.tar.xz
-chk  8d419a8b2a5edddda5cbcb897ded92205344a3249fa7a00d6384ea23ac3ccbd8
-
-#
-# LibFFI
-#
-server ftp://sourceware.org/pub/libffi
-
-# checked: 2013-04-29 wk - updated from 3.0.10.
-# checked: 2014-07-16 ah - only rc availble from 3.0.14
-file libffi-3.0.13.tar.gz
-chk  1dddde1400c3bcb7749d398071af88c3e4754058d2d4c0b3696c2f82dc5cf11c
 
 
 #
@@ -330,11 +152,6 @@ chk 457a185e5a85238fb945a955dc6352ab962dc8b48720b62fc9fa48c7540a4067
 # verified: buildtree
 #file gpgme/gpgme-1.17.0.tar.bz2
 #chk 4ed3f50ceb7be2fce2c291414256b20c9ebf4c03fddb922c88cda99c119a69f5
-
-# last changed: 2018-10-17
-# by: ah
-file gpa/gpa-0.10.0.tar.bz2
-chk  95dbabe75fa5c8dc47e3acf2df7a51cee096051e5a842b4c9b6d61e40a6177b1
 
 # last changed: 2021-01-07
 # by: ah

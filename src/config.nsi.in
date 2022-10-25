@@ -84,10 +84,6 @@
 !define gpg4win_pkg_gpgex @gpg4win_pkg_gpgex@
 !define gpg4win_pkg_gpgex_version @gpg4win_pkg_gpgex_version@
 
-@HAVE_PKG_GPA@
-!define gpg4win_pkg_gpa @gpg4win_pkg_gpa@
-!define gpg4win_pkg_gpa_version @gpg4win_pkg_gpa_version@
-
 @HAVE_PKG_ZLIB@
 !define gpg4win_pkg_zlib @gpg4win_pkg_zlib@
 !define gpg4win_pkg_zlib_version @gpg4win_pkg_zlib_version@
@@ -96,71 +92,10 @@
 !define gpg4win_pkg_bzip2 @gpg4win_pkg_bzip2@
 !define gpg4win_pkg_bzip2_version @gpg4win_pkg_bzip2_version@
 
-@HAVE_PKG_LIBPNG@
-!define gpg4win_pkg_libpng @gpg4win_pkg_libpng@
-!define gpg4win_pkg_libpng_version @gpg4win_pkg_libpng_version@
-
 @HAVE_PKG_PKGCONFIG@
 !define gpg4win_pkg_pkgconfig @gpg4win_pkg_pkgconfig@
 !define gpg4win_pkg_pkgconfig_version @gpg4win_pkg_pkgconfig_version@
 !define gpg4win_pkg_pkgconfig_src @gpg4win_pkg_pkgconfig_src@
-
-@HAVE_PKG_GLIB@
-!define gpg4win_pkg_glib @gpg4win_pkg_glib@
-!define gpg4win_pkg_glib_version @gpg4win_pkg_glib_version@
-#!define gpg4win_pkg_glib_dev @gpg4win_pkg_glib_dev@
-#!define gpg4win_pkg_glib_src @gpg4win_pkg_glib_src@
-
-@HAVE_PKG_GDK_PIXBUF@
-!define gpg4win_pkg_gdk_pixbuf @gpg4win_pkg_gdk_pixbuf@
-!define gpg4win_pkg_gdk_pixbuf_version @gpg4win_pkg_gdk_pixbuf_version@
-
-@HAVE_PKG_LIBFFI@
-!define gpg4win_pkg_libffi @gpg4win_pkg_libffi@
-!define gpg4win_pkg_libffi_version @gpg4win_pkg_libffi_version@
-
-
-@HAVE_PKG_ATK@
-!define gpg4win_pkg_atk @gpg4win_pkg_atk@
-!define gpg4win_pkg_atk_version @gpg4win_pkg_atk_version@
-!define gpg4win_pkg_atk_dev @gpg4win_pkg_atk_dev@
-!define gpg4win_pkg_atk_src @gpg4win_pkg_atk_src@
-
-@HAVE_PKG_EXPAT@
-!define gpg4win_pkg_expat @gpg4win_pkg_expat@
-!define gpg4win_pkg_expat_version @gpg4win_pkg_expat_version@
-!define gpg4win_pkg_expat_dev @gpg4win_pkg_expat_dev@
-!define gpg4win_pkg_expat_src @gpg4win_pkg_expat_src@
-
-@HAVE_PKG_FREETYPE@
-!define gpg4win_pkg_freetype @gpg4win_pkg_freetype@
-!define gpg4win_pkg_freetype_version @gpg4win_pkg_freetype_version@
-!define gpg4win_pkg_freetype_dev @gpg4win_pkg_freetype_dev@
-!define gpg4win_pkg_freetype_src @gpg4win_pkg_freetype_src@
-
-@HAVE_PKG_FONTCONFIG@
-!define gpg4win_pkg_fontconfig @gpg4win_pkg_fontconfig@
-!define gpg4win_pkg_fontconfig_version @gpg4win_pkg_fontconfig_version@
-!define gpg4win_pkg_fontconfig_dev @gpg4win_pkg_fontconfig_dev@
-!define gpg4win_pkg_fontconfig_src @gpg4win_pkg_fontconfig_src@
-
-@HAVE_PKG_CAIRO@
-!define gpg4win_pkg_cairo @gpg4win_pkg_cairo@
-!define gpg4win_pkg_cairo_version @gpg4win_pkg_cairo_version@
-!define gpg4win_pkg_cairo_dev @gpg4win_pkg_cairo_dev@
-!define gpg4win_pkg_cairo_src @gpg4win_pkg_cairo_src@
-
-@HAVE_PKG_PANGO@
-!define gpg4win_pkg_pango @gpg4win_pkg_pango@
-!define gpg4win_pkg_pango_version @gpg4win_pkg_pango_version@
-!define gpg4win_pkg_pango_dev @gpg4win_pkg_pango_dev@
-!define gpg4win_pkg_pango_src @gpg4win_pkg_pango_src@
-
-@HAVE_PKG_GTK_@
-!define gpg4win_pkg_gtk_ @gpg4win_pkg_gtk_@
-!define gpg4win_pkg_gtk__version @gpg4win_pkg_gtk__version@
-!define gpg4win_pkg_gtk__dev @gpg4win_pkg_gtk__dev@
-!define gpg4win_pkg_gtk__src @gpg4win_pkg_gtk__src@
 
 @HAVE_PKG_LIBICONV@
 !define gpg4win_pkg_libiconv @gpg4win_pkg_libiconv@
@@ -289,10 +224,6 @@
 @HAVE_PKG_SCUTE@
 !define gpg4win_pkg_scute @gpg4win_pkg_scute@
 !define gpg4win_pkg_scute_version @gpg4win_pkg_scute_version@
-
-@HAVE_PKG_PCRE@
-!define gpg4win_pkg_pcre @gpg4win_pkg_pcre@
-!define gpg4win_pkg_pcre_version @gpg4win_pkg_pcre_version@
 
 # Internal packages.
 @HAVE_PKG_COMPENDIUM@

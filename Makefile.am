@@ -46,9 +46,6 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
              docker/run-appimage-build.sh \
              docker/run-gpg4win-build.sh \
              patches/extra-cmake-modules/0001-Use-BIN_INSTALL_DIR-data-for-DATAROOTDIR-on-Windows.patch \
-             patches/glib/glib-1-fixes.patch \
-             patches/glib/glib-2-fixes.patch \
-             patches/glib/glib-9-fixes.patch \
              patches/kconfig/0001-Read-defaults-from-Windows-registry.patch \
              patches/kconfigwidgets/0001-Fix-crash-on-exit-on-Windows.patch \
              patches/kconfigwidgets/0001-Make-QDbus-optional.patch \

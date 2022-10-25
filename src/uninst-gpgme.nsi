@@ -31,7 +31,6 @@ Section "-un.gpgme"
   Call un.SourceDelete
 !else
   Delete /REBOOTOK "$INSTDIR\bin\libgpgme-11.dll"
-  Delete /REBOOTOK "$INSTDIR\bin\libgpgme-glib-11.dll"
   Delete /REBOOTOK "$INSTDIR\bin\libqgpgme-15.dll"
   Delete /REBOOTOK "$INSTDIR\bin\libgpgmepp-6.dll"
 ${If} ${RunningX64}
@@ -43,7 +42,6 @@ ${EndIf}
   Delete "$INSTDIR\bin\gpgme-w32spawn.exe"
   Delete "$INSTDIR\bin\gpgme-json.exe"
   Delete "$INSTDIR\lib\libgpgme.imp"
-  Delete "$INSTDIR\lib\libgpgme-glib.imp"
   Delete "$INSTDIR\include\gpgme.h"
   Delete "$INSTDIR\bin\gpgme-chrome.json"
   Delete "$INSTDIR\bin\gpgme-mozilla.json"

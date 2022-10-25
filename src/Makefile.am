@@ -26,32 +26,20 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
 	mkportable-vanilla.h mkportable-full.h \
         potomo Memento.nsh \
         inst-gpg4win.nsi	   uninst-gpg4win.nsi	      \
-        inst-atk.nsi               uninst-atk.nsi	      \
-        inst-expat.nsi		   uninst-expat.nsi	      \
-        inst-freetype.nsi	   uninst-freetype.nsi	      \
-        inst-fontconfig.nsi	   uninst-fontconfig.nsi      \
-        inst-cairo.nsi		   uninst-cairo.nsi	      \
         inst-gettext.nsi	   uninst-gettext.nsi	      \
-        inst-libffi.nsi		   uninst-libffi.nsi	      \
-        inst-glib.nsi		   uninst-glib.nsi	      \
         inst-gnupg-w32.nsi	   uninst-gnupg-w32.nsi	      \
-        inst-gpa.nsi		   uninst-gpa.nsi	      \
         inst-gpgme.nsi		   uninst-gpgme.nsi	      \
         inst-paperkey.nsi	   uninst-paperkey.nsi	      \
         inst-gpgol.nsi		   uninst-gpgol.nsi	      \
         inst-gpgex.nsi		   uninst-gpgex.nsi	      \
-        inst-gdk-pixbuf.nsi        uninst-gdk-pixbuf.nsi      \
-        inst-gtk+.nsi		   uninst-gtk+.nsi	      \
         inst-libassuan.nsi	   uninst-libassuan.nsi	      \
         inst-libgpg-error.nsi	   uninst-libgpg-error.nsi    \
         inst-libiconv.nsi	   uninst-libiconv.nsi	      \
-        inst-libpng.nsi		   uninst-libpng.nsi	      \
         inst-compendium.nsi	   uninst-compendium.nsi   \
         inst-man_advanced_de.nsi   uninst-man_advanced_de.nsi \
         inst-man_advanced_en.nsi   uninst-man_advanced_en.nsi \
         inst-man_novice_de.nsi	   uninst-man_novice_de.nsi   \
         inst-man_novice_en.nsi	   uninst-man_novice_en.nsi   \
-        inst-pango.nsi		   uninst-pango.nsi	      \
         inst-pinentry.nsi	   uninst-pinentry.nsi	      \
         inst-pkgconfig.nsi	   uninst-pkgconfig.nsi	      \
         inst-w32pth.nsi		   uninst-w32pth.nsi	      \
@@ -59,7 +47,6 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
         inst-kconfig.nsi        uninst-kconfig.nsi              \
         inst-kleopatra.nsi  	   uninst-kleopatra.nsi       \
 	inst-bzip2.nsi             uninst-bzip2.nsi           \
-        uninst-claws-mail.nsi uninst-claws-mail-cmds.nsi \
         inst-qtbase.nsi uninst-qtbase.nsi \
         inst-ki18n.nsi uninst-ki18n.nsi \
         inst-kwidgetsaddons.nsi uninst-kwidgetsaddons.nsi \
@@ -88,7 +75,6 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
         inst-gpg4win-tools.nsi uninst-gpg4win-tools.nsi \
         inst-gpgme-browser.nsi \
         inst-final.nsi index.theme \
-        inst-pcre.nsi uninst-pcre.nsi \
         slideshow/slides.dat \
         slideshow/slide1-gpgol.png \
         slideshow/slide2-gpgex.png \
@@ -274,7 +260,8 @@ gpg4win_pkg_pinentry_configure = \
   --enable-pinentry-qt \
   $(pinentry_enable_disable) \
   --disable-pinentry-fltk \
-  --enable-pinentry-gtk2 \
+  --disable-pinentry-curses \
+  --disable-fallback-curses \
   CPPFLAGS=-I$(idir)/include LDFLAGS=-L$(idir)/lib
 #  --with-libiconv-prefix=$(idir) --with-libintl-prefix=$(idir)
 
@@ -282,8 +269,6 @@ gpg4win_pkg_pinentry_configure = \
 # around the lack of cross compilation support in qt-dev.
 gpg4win_pkg_gpgme_configure = --silent \
   --with-gpg-error-prefix=$(idir) --enable-static \
-  `test -n "@HAVE_PKG_GLIB@" && echo "--enable-w32-glib"` \
-  CFLAGS=-I$(idir)/include/glib-2.0/ \
   LDFLAGS=-L$(idir)/lib \
   --enable-languages=qt,cpp \
   --disable-gpg-test \
@@ -448,8 +433,7 @@ gpg4win_pkg_zlib_make_args_inst = -fwin32/Makefile.gcc install \
 	LIBRARY_PATH=$$$${pkgidir}/lib SHARED_MODE=1 IMPLIB=libz.dll.a
 
 # Supported binary packages.
-gpg4win_bpkgs = pkgconfig pango expat freetype fontconfig \
-                cairo atk gnupg-w32 kde-l10n
+gpg4win_bpkgs = pkgconfig gnupg-w32 kde-l10n
 
 # libiconv needs some special magic to generate a usable import
 # library.
@@ -490,57 +474,6 @@ echo "dlopen=''" >> lib/libz.la;			\
 echo "dlpreopen=''" >> lib/libz.la;			\
 echo "libdir=\"$$$${pkgidir}/lib\"" >> lib/libz.la)
 endef
-
-# We need to fix the prefix in the various packages using pkgconfig,
-# or we can't substitute it properly in our pkg-config wrapper.
-# glib also installs an empty charset.alias for mingw which creates
-# a stow conflict with the one from iconv.
-define gpg4win_pkg_glib_post_install
- (cd $$$${pkgidir};							\
- perl -pi -e 's/^prefix=.*$$$$/prefix=\/usr/' `find . -name \*.pc`; \
- rm $$$${pkgidir}/lib/charset.alias)
-endef
-
-define gpg4win_pkg_libffi_post_install
- (cd $$$${pkgidir};							\
- perl -pi -e 's/^prefix=.*$$$$/prefix=\/usr/' `find . -name \*.pc`)
-endef
-
-define gpg4win_pkg_gdk_pixbuf_post_install
- (cd $$$${pkgidir};							\
- perl -pi -e 's/^prefix=.*$$$$/prefix=\/usr/' `find . -name \*.pc`)
-endef
-
-define gpg4win_pkg_atk_post_install
- (cd $$$${pkgidir_dev};							\
- perl -pi -e 's/^prefix=.*$$$$/prefix=\/usr/' `find . -name \*.pc`)
-endef
-
-define gpg4win_pkg_freetype_post_install
- (cd $$$${pkgidir_dev};							\
- perl -pi -e 's/^prefix=.*$$$$/prefix=\/usr/' `find . -name \*.pc`)
-endef
-
-define gpg4win_pkg_fontconfig_post_install
- (cd $$$${pkgidir_dev};							\
- perl -pi -e 's/^prefix=.*$$$$/prefix=\/usr/' `find . -name \*.pc`)
-endef
-
-define gpg4win_pkg_cairo_post_install
- (cd $$$${pkgidir_dev};							\
- perl -pi -e 's/^prefix=.*$$$$/prefix=\/usr/' `find . -name \*.pc`)
-endef
-
-define gpg4win_pkg_pango_post_install
- (cd $$$${pkgidir_dev};							\
- perl -pi -e 's/^prefix=.*$$$$/prefix=\/usr/' `find . -name \*.pc`)
-endef
-
-define gpg4win_pkg_libpng_post_install
- (cd $$$${pkgidir};							\
- perl -pi -e 's/^prefix=.*$$$$/prefix=\/usr/' `find . -name \*.pc`)
-endef
-
 
 # We don't use khelpcenter in kleopatra so remove the help links and
 # point to the correct common folder

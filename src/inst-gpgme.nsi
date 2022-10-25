@@ -48,11 +48,6 @@ Section "-gpgme" SEC_gpgme
 
   ClearErrors
   SetOverwrite try
-  File "${prefix}/bin/libgpgme-glib-11.dll"
-  SetOverwrite lastused
-  ifErrors 0 +3
-      File /oname=libgpgme-glib-11.dll.tmp "${prefix}/bin/libgpgme-glib-11.dll"
-      Rename /REBOOTOK libgpgme-glib-11.dll.tmp libgpgme-glib-11.dll
 
   File "${prefix}/bin/libqgpgme-15.dll"
   File "${prefix}/bin/libgpgmepp-6.dll"
@@ -61,7 +56,6 @@ Section "-gpgme" SEC_gpgme
 
   SetOutPath "$INSTDIR\lib"
   File /oname=libgpgme.imp "${prefix}/lib/libgpgme.dll.a"
-  File /oname=libgpgme-glib.imp "${prefix}/lib/libgpgme-glib.dll.a"
 
   SetOutPath "$INSTDIR\include"
   File "${prefix}/include/gpgme.h"
