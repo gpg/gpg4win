@@ -19,14 +19,14 @@ The screenshots show you some components in action.</p>
 
 <div id="main" class="screenshots">
 
-  <i>Note: All screenshots are in German only. Please contact the
-  <a href="community.html">gpgwin-devel mailing list</a> if you can create Windows7 screenshots for Gpg4win in English.</i>
+  <i>Note: Some screenshots are in German only. Please contact the
+  <a href="community.html">gpgwin-devel mailing list</a> if you can create Windows 10 screenshots for Gpg4win in English.</i>
 
 
   <h2>Gpg4win Installer</h2>
-  <a href="img/sc-inst-welcome_de.png">
+  <a href="img/screenshots/sc-inst-welcome_en.png">
   <img class="imageframe"
-  src="img/h250.sc-inst-welcome_de.png">
+  src="img/screenshots/h250.sc-inst-welcome_en.png">
   </a>
   <p>The welcome screen</p>
 
@@ -35,18 +35,18 @@ The screenshots show you some components in action.</p>
   <h2>Kleopatra</h2>
   <div class="flex-container">
     <div class="screenshot-container">
-      <a href="img/sc-kleopatra-mainwindow-empty_de.png">
+      <a href="img/screenshots/sc-kleopatra-mainwindow-empty_en.png">
       <img class="imageframe"
-      src="img/h250.sc-kleopatra-mainwindow-empty_de.png">
+      src="img/screenshots/h250.sc-kleopatra-mainwindow-empty_en.png">
       </a>
       <p>Kleopatra's main window.
       </p>
     </div>
 
     <div class="screenshot-container">
-      <a href="img/sc-kleopatra-openpgp-personalDetails_de.png">
+      <a href="img/screenshots/sc-kleopatra-openpgp-personalDetails_en.png">
       <img class="imageframe"
-      src="img/h250.sc-kleopatra-openpgp-personalDetails_de.png">
+      src="img/screenshots/h250.sc-kleopatra-openpgp-personalDetails_en.png">
       </a>
       <p>Creation of an OpenPGP certificate: Input of personal details.
       </p>
@@ -62,6 +62,15 @@ The screenshots show you some components in action.</p>
     </div>
 
     <div class="screenshot-container">
+      <a href="img/screenshots/sc-kleopatra-manage-certificates_en.png">
+      <img class="imageframe"
+      src="img/screenshots/h250.sc-kleopatra-manage-certificates_en.png">
+      </a>
+      <p>Manage certificates.
+      </p>
+    </div>
+
+    <div class="screenshot-container">
       <a href="img/sc-kleopatra-openpgp-certificateDetails_de.png">
       <img class="imageframe"
       src="img/h250.sc-kleopatra-openpgp-certificateDetails_de.png">
@@ -71,9 +80,9 @@ The screenshots show you some components in action.</p>
     </div>
 
     <div class="screenshot-container">
-      <a href="img/sc-kleopatra-configureCertificateserver_de.png">
+      <a href="img/screenshots/sc-kleopatra-configureCertificateserver_en.png">
       <img class="imageframe"
-      src="img/h250.sc-kleopatra-configureCertificateserver_de.png">
+      src="img/screenshots/h250.sc-kleopatra-configureCertificateserver_en.png">
       </a>
       <p>Configuration of certificate servers (OpenPGP and X.509).</p>
     </div>
@@ -115,18 +124,18 @@ The screenshots show you some components in action.</p>
   </div>
 
   <h2>GpgEX</h2>
-  <a href="img/sc-gpgex-contextmenu-signEncrypt_de.png">
+  <a href="img/screenshots/sc-gpgex-contextmenu-signEncrypt_en.png">
   <img class="imageframe"
-  src="img/h250.sc-gpgex-contextmenu-signEncrypt_de.png">
+  src="img/screenshots/h250.sc-gpgex-contextmenu-signEncrypt_en.png">
   </a>
   <p>The context menu of GpgEX in Windows Explorer.</p>
 
 
 
   <h2>GpgOL</h2>
-  <a href="img/sc-ol-sendSignedMail_de.png">
+  <a href="img/screenshots/sc-ol-sendSignedMail_en.png">
   <img class="imageframe"
-  src="img/h250.sc-ol-sendSignedMail_de.png">
+  src="img/screenshots/h250.sc-ol-sendSignedMail_en.png">
   </a>
   <p>Sign and encrypt an email in Outlook 2010.
   </p>
