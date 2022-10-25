@@ -85,10 +85,6 @@ msgctxt "T_RunKleopatra"
 msgid "Run Kleopatra"
 msgstr "Kleopatra"
 
-msgctxt "T_RunGPA"
-msgid "Run GPA"
-msgstr ""
-
 msgctxt "T_LangCode"
 msgid "en"
 msgstr "ru"
@@ -325,15 +321,6 @@ msgid ""
 "https://gnupg.org/download"
 msgstr ""
 
-msgctxt "DESC_SEC_gpa"
-msgid "GNU Privacy Assistant"
-msgstr "GNU Privacy Assistant"
-
-#, fuzzy
-msgctxt "DESC_Menu_gpa"
-msgid "Run the GNU Privacy Assistant key management tool."
-msgstr "Запуск менеджера ключей Kleopatra."
-
 #, fuzzy
 msgctxt "DESC_Menu_gpg4win_readme"
 msgid "General information on Gpg4win"
@@ -424,6 +411,15 @@ msgstr ""
 msgctxt "T_File_Type_pgp_key_info_tip"
 msgid "Certificate for OpenPGP."
 msgstr ""
+
+#~ msgctxt "DESC_SEC_gpa"
+#~ msgid "GNU Privacy Assistant"
+#~ msgstr "GNU Privacy Assistant"
+
+#, fuzzy
+#~ msgctxt "DESC_Menu_gpa"
+#~ msgid "Run the GNU Privacy Assistant key management tool."
+#~ msgstr "Запуск менеджера ключей Kleopatra."
 
 #~ msgctxt "T_MoreInfo"
 #~ msgid "Click here for the project's homepage"
