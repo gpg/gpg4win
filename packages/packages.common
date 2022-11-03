@@ -310,13 +310,6 @@ chk  fce01ccac59812bddadffacff017dac2e4762bdb6ebc6ffe06f6ed4f6192c971
 file ntbtls/ntbtls-0.3.1.tar.bz2
 chk  8922181fef523b77b71625e562e4d69532278eabbd18bc74579dbe14135729ba
 
-#name gnupg-msi-2.3.1-beta18-20210420-src.tar.xz
-#file binary/gnupg-w32-2.3.1_20210420.tar.xz
-#chk  e1a2dc705c940938b7bf7a17f521a41b1ef14139acd8860b2fd59aed2750aa3b
-
-#name gnupg-msi-2.3.1-20210420-bin.wixlib
-#file binary/gnupg-w32-2.3.1_20210420.wixlib
-#chk  133817a4c4d11996956676c5c200222839ee5dc16e9476bd682d4e68b33ef73e
 
 # pinentry
 # last changed: 2022-08-24
