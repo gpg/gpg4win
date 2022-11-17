@@ -1,0 +1,24 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+  Only reject NetKey cards with version < 3
+
+  GnuPG-bug-id: 6277
+  commit 4e7cd9bd41f80be812c41b3ddd456b87c96a682f
+
+diff --git a/src/smartcard/readerstatus.cpp b/src/smartcard/readerstatus.cpp
+index 16a3b64f..47f59055 100644
+--- a/src/smartcard/readerstatus.cpp
++++ b/src/smartcard/readerstatus.cpp
+@@ -531,8 +531,8 @@ static void handle_netkey_card(std::shared_ptr<Card> &ci, std::shared_ptr<Contex
+         return;
+     }
+
+-    if (ci->appVersion() != 3) {
+-        qCDebug(KLEOPATRA_LOG) << "not a NetKey v3 card, giving up. Version:" << ci->appVersion();
++    if (ci->appVersion() < 3) {
++        qCDebug(KLEOPATRA_LOG) << "not a NetKey v3 (or later) card, giving up. Version:" << ci->appVersion();
+         ci->setErrorMsg(QStringLiteral("NetKey v%1 cards are not supported.").arg(ci->appVersion()));
+         return;
+     }

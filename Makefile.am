@@ -54,6 +54,7 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
              patches/kconfigwidgets/0001-Make-QDbus-optional.patch \
              patches/kiconthemes/0001-Make-DBus-optional.patch \
              patches/kleopatra/set-windows-registry.patch \
+             patches/kleopatra/support-nks-ge-3.patch \
              patches/kwidgetsaddons/KMessageWidget-fix-tab-order.patch \
              patches/kwidgetsaddons/ignore-invalid-dates-in-picker.patch \
              patches/kxmlgui/0001-make-qdbus-optional.patch \
