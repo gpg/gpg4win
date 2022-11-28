@@ -981,13 +981,13 @@ $(1)-x86: installers/GnuPG-VS-Desktop-$(VSD_VERSION_FILE)-$(1)-x86.msi
 $(1)-upload: $(stampdir)/stamp-$(1)-upload $(stampdir)/stamp-dist-self
 	gpg --yes -o gnupg-vsd-$(VERSION).tar.bz2.sig -bau $(msi_signkey) \
 		../gpg4win-$(VERSION).tar.bz2
-	rsync -vP ../gpg4win-$(VERSION).tar.bz2 $(VSD_PUBLISH_HOST)/src/GnuPG-VS-Desktop-$(VSD_VERSION).tar.bz2
-	rsync -vP gnupg-vsd-$(VERSION).tar.bz2.sig $(VSD_PUBLISH_HOST)/src/GnuPG-VS-Desktop-$(VSD_VERSION).tar.bz2.sig
+	rsync -vP ../gpg4win-$(VERSION).tar.bz2 $(VSD_PUBLISH_HOST)/src/GnuPG-VS-Desktop-$(VERSION).tar.bz2
+	rsync -vP gnupg-vsd-$(VERSION).tar.bz2.sig $(VSD_PUBLISH_HOST)/src/GnuPG-VS-Desktop-$(VERSION).tar.bz2.sig
 	echo "Upload URLs:"
 	cat $(stampdir)/stamp-$(1)-upload
 	echo "Source links:"
-	echo "https://download.gnupg.com/files/src/GnuPG-VS-Desktop-$(VSD_VERSION).tar.bz2"
-	echo "https://download.gnupg.com/files/src/GnuPG-VS-Desktop-$(VSD_VERSION).tar.bz2.sig"
+	echo "https://download.gnupg.com/files/src/GnuPG-VS-Desktop-$(VERSION).tar.bz2"
+	echo "https://download.gnupg.com/files/src/GnuPG-VS-Desktop-$(VERSION).tar.bz2.sig"
 
 $(1)-announce: gnupg-vsd/$(1)/announcement.txt
 	set -x

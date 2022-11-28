@@ -41,7 +41,7 @@ while [ $# -gt 0 ]; do
 $myname
 Copyright (C) 2022 g10 Code GmbH
 
-$_gnupg_appimage_name consist of several independent developed packages,
+$_gnupg_appimage_name consists of several independent developed packages,
 available under different license conditions.  Most of these packages
 however are available under the GNU General Public License (GNU GPL).
 Common to all is that they are free to use without restrictions, may
@@ -259,7 +259,7 @@ if [ $opt_keep_socket = yes ]; then
    "${this_dir}/usr/bin/gpgconf" --launch gpg-agent
    $pgm $pgmargs
 else
-   "${this_dir}/usr/bin/gpg-agent" $steal --daemon -- $pgm $pgmargs
+   "${this_dir}/usr/bin/gpg-agent" --steal-socket --daemon -- $pgm $pgmargs
 fi
 
 echo Goodbye from "$myname"\! >&2
