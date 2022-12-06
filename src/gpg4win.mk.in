@@ -807,10 +807,6 @@ endif
 
 $(1)-package: installers/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi
 
-$(1)-echo:
-	echo intutive is: $$($(1)_PRODUCT)
-	echo VSD is: $(VSD_PRODUCT)
-
 $$($(1)_PRODUCT)-$(VERSION).wxs: gpg4win.nsi $(common_nsi) $(stampdir)/stamp-final \
 		        $(foosum_exe) gpgwrap.exe \
 			$(README_files) $(HOWTO_files) \
@@ -822,6 +818,92 @@ $$($(1)_PRODUCT)-$(VERSION).wxs: gpg4win.nsi $(common_nsi) $(stampdir)/stamp-fin
 		--name "$$($(1)_PRODUCT_PRETTY)" \
 		-DBUILD_DIR=. -DTOP_SRCDIR=$(top_srcdir) \
 		-DSRCDIR=$(srcdir) $(srcdir)/gpg4win.nsi > $$($(1)_PRODUCT)-$(VERSION).wxs
+
+$(idir)/$$($(1)_PRODUCT)-$(VERSION).wixlib: \
+      gpg4win-$(VERSION).wxs $(stampdir)/stamp-final \
+      $(foosum_exe) \
+      $(README_files) $(HOWTO_files) \
+      license.blurb versioninfo.txt \
+      WixUI_Gpg4win.wxs \
+      $$($(1)_PRODUCT)-$(VERSION).wxs \
+      $(stampdir)/stamp-additional-signedfiles
+	($(call SETVARS_WINE,); \
+	echo "Gpg4win" > $(root)/VERSION; \
+	echo "$(VERSION)" >> $(root)/VERSION; \
+	(ln -s $(idir) $$$$WINEINST; \
+	 ln -s $(ex_idir) $$$$WINEINSTEX; \
+	 ln -s `readlink -f $(top_srcdir)` $$$$WINESRC; \
+		$(WINE) $$$$WIXPREFIX2/candle.exe \
+		-dInstDir=k: \
+		-dInstDirEx=j: \
+		-dSrcDir=i:\\src \
+		-dVersion=$$$$MSI_VERSION \
+		-out k:\\$$($(1)_PRODUCT)-$(VERSION).wixobj \
+		-pedantic -wx i:\\src\\$$($(1)_PRODUCT)-$(VERSION).wxs \
+		-arch x64 || exit 1;\
+		$(WINE) $$$$WIXPREFIX2/candle.exe \
+		-dInstDir=k: \
+		-dInstDirEx=j: \
+		-dSrcDir=i:\\src \
+		-dVersion=$$$$MSI_VERSION \
+		-out k:\\gpg4win-ui.wixobj \
+		-arch x64 \
+		-pedantic -wx i:\\src\\WixUI_Gpg4win.wxs || exit 1;\
+		\
+		$(WINE) $$$$WIXPREFIX2/lit.exe \
+		-out k:\\$$($(1)_PRODUCT)-$(VERSION).wixlib \
+		-bf \
+		-wx \
+		-pedantic \
+		k:\\$$($(1)_PRODUCT)-$(VERSION).wixobj k:\\gpg4win-ui.wixobj || exit 1; \
+		\
+	) || ERR=1; (rm $$$$WINEINST; rm $$$$WINESRC; rm $$$$WINEINSTEX); \
+	if [ -n "$$$$ERR" ]; then \
+		exit 1; \
+	fi)
+
+$(idir)/$$($(1)_PRODUCT)-$(VERSION)-x86.wixlib: \
+      gpg4win-$(VERSION).wxs $(stampdir)/stamp-final \
+      $(foosum_exe) \
+      $(README_files) $(HOWTO_files) \
+      license.blurb versioninfo.txt \
+      WixUI_Gpg4win.wxs \
+      $$($(1)_PRODUCT)-$(VERSION).wxs \
+      $(stampdir)/stamp-additional-signedfiles
+	($(call SETVARS_WINE,); \
+	echo "Gpg4win" > $(root)/VERSION; \
+	echo "$(VERSION)" >> $(root)/VERSION; \
+	(ln -s $(idir) $$$$WINEINST; \
+	 ln -s $(ex_idir) $$$$WINEINSTEX; \
+	 ln -s `readlink -f $(top_srcdir)` $$$$WINESRC; \
+		$(WINE) $$$$WIXPREFIX2/candle.exe \
+		-dInstDir=k: \
+		-dInstDirEx=j: \
+		-dSrcDir=i:\\src \
+		-dVersion=$$$$MSI_VERSION \
+		-arch x86 \
+		-out k:\\$$($(1)_PRODUCT)-$(VERSION)-x86.wixobj \
+		-pedantic -wx i:\\src\\$$($(1)_PRODUCT)-$(VERSION).wxs || exit 1;\
+		$(WINE) $$$$WIXPREFIX2/candle.exe \
+		-dInstDir=k: \
+		-dInstDirEx=j: \
+		-dSrcDir=i:\\src \
+		-dVersion=$$$$MSI_VERSION \
+		-arch x86 \
+		-out k:\\gpg4win-ui-x86.wixobj \
+		-pedantic -wx i:\\src\\WixUI_Gpg4win.wxs || exit 1;\
+		\
+		$(WINE) $$$$WIXPREFIX2/lit.exe \
+		-out k:\\$$$$($(1)_PRODUCT)-$(VERSION)-x86.wixlib \
+		-bf \
+		-wx \
+		-pedantic \
+		k:\\$$($(1)_PRODUCT)-$(VERSION)-x86.wixobj k:\\gpg4win-ui-x86.wixobj || exit 1; \
+		\
+	) || ERR=1; (rm $$$$WINEINST; rm $$$$WINESRC; rm $$$$WINEINSTEX); \
+	if [ -n "$$$$ERR" ]; then \
+		exit 1; \
+	fi)
 
 $(idir)/$(1)-x86.wixlib: gnupg-vsd/$(1)/$(1).wxs
 	($(call SETVARS_WINE,); \
@@ -1000,92 +1082,6 @@ $(stampdir)/stamp-$(1)-upload: signed_installers/$$($(1)_PRODUCT)-$(VSD_VERSION_
 			echo "https://download.gnupg.com/files/$(call GETVAR,msi_target_$(1)_directory)/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi.sig" \
 			>> $(stampdir)/stamp-$(1)-upload; \
 	  fi)
-
-$(idir)/$$($(1)_PRODUCT)-$(VERSION).wixlib: \
-      gpg4win-$(VERSION).wxs $(stampdir)/stamp-final \
-      $(foosum_exe) \
-      $(README_files) $(HOWTO_files) \
-      license.blurb versioninfo.txt \
-      WixUI_Gpg4win.wxs \
-      $$($(1)_PRODUCT)-$(VERSION).wxs \
-      $(stampdir)/stamp-additional-signedfiles
-	($(call SETVARS_WINE,); \
-	echo "Gpg4win" > $(root)/VERSION; \
-	echo "$(VERSION)" >> $(root)/VERSION; \
-	(ln -s $(idir) $$$$WINEINST; \
-	 ln -s $(ex_idir) $$$$WINEINSTEX; \
-	 ln -s `readlink -f $(top_srcdir)` $$$$WINESRC; \
-		$(WINE) $$$$WIXPREFIX2/candle.exe \
-		-dInstDir=k: \
-		-dInstDirEx=j: \
-		-dSrcDir=i:\\src \
-		-dVersion=$$$$MSI_VERSION \
-		-out k:\\$$($(1)_PRODUCT)-$(VERSION).wixobj \
-		-pedantic -wx i:\\src\\$$($(1)_PRODUCT)-$(VERSION).wxs \
-		-arch x64 || exit 1;\
-		$(WINE) $$$$WIXPREFIX2/candle.exe \
-		-dInstDir=k: \
-		-dInstDirEx=j: \
-		-dSrcDir=i:\\src \
-		-dVersion=$$$$MSI_VERSION \
-		-out k:\\gpg4win-ui.wixobj \
-		-arch x64 \
-		-pedantic -wx i:\\src\\WixUI_Gpg4win.wxs || exit 1;\
-		\
-		$(WINE) $$$$WIXPREFIX2/lit.exe \
-		-out k:\\$$($(1)_PRODUCT)-$(VERSION).wixlib \
-		-bf \
-		-wx \
-		-pedantic \
-		k:\\$$($(1)_PRODUCT)-$(VERSION).wixobj k:\\gpg4win-ui.wixobj || exit 1; \
-		\
-	) || ERR=1; (rm $$$$WINEINST; rm $$$$WINESRC; rm $$$$WINEINSTEX); \
-	if [ -n "$$$$ERR" ]; then \
-		exit 1; \
-	fi)
-
-$(idir)/$$($(1)_PRODUCT)-$(VERSION)-x86.wixlib: \
-      gpg4win-$(VERSION).wxs $(stampdir)/stamp-final \
-      $(foosum_exe) \
-      $(README_files) $(HOWTO_files) \
-      license.blurb versioninfo.txt \
-      WixUI_Gpg4win.wxs \
-      $$($(1)_PRODUCT)-$(VERSION).wxs \
-      $(stampdir)/stamp-additional-signedfiles
-	($(call SETVARS_WINE,); \
-	echo "Gpg4win" > $(root)/VERSION; \
-	echo "$(VERSION)" >> $(root)/VERSION; \
-	(ln -s $(idir) $$$$WINEINST; \
-	 ln -s $(ex_idir) $$$$WINEINSTEX; \
-	 ln -s `readlink -f $(top_srcdir)` $$$$WINESRC; \
-		$(WINE) $$$$WIXPREFIX2/candle.exe \
-		-dInstDir=k: \
-		-dInstDirEx=j: \
-		-dSrcDir=i:\\src \
-		-dVersion=$$$$MSI_VERSION \
-		-arch x86 \
-		-out k:\\$$($(1)_PRODUCT)-$(VERSION)-x86.wixobj \
-		-pedantic -wx i:\\src\\$$($(1)_PRODUCT)-$(VERSION).wxs || exit 1;\
-		$(WINE) $$$$WIXPREFIX2/candle.exe \
-		-dInstDir=k: \
-		-dInstDirEx=j: \
-		-dSrcDir=i:\\src \
-		-dVersion=$$$$MSI_VERSION \
-		-arch x86 \
-		-out k:\\gpg4win-ui-x86.wixobj \
-		-pedantic -wx i:\\src\\WixUI_Gpg4win.wxs || exit 1;\
-		\
-		$(WINE) $$$$WIXPREFIX2/lit.exe \
-		-out k:\\$$$$($(1)_PRODUCT)-$(VERSION)-x86.wixlib \
-		-bf \
-		-wx \
-		-pedantic \
-		k:\\$$($(1)_PRODUCT)-$(VERSION)-x86.wixobj k:\\gpg4win-ui-x86.wixobj || exit 1; \
-		\
-	) || ERR=1; (rm $$$$WINEINST; rm $$$$WINESRC; rm $$$$WINEINSTEX); \
-	if [ -n "$$$$ERR" ]; then \
-		exit 1; \
-	fi)
 
 .phony : $(1)
 $(1): installers/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi
