@@ -103,14 +103,14 @@ server https://gnupg.org/ftp/gcrypt
 # last changed 2022-04-07
 # by wk
 # verified: swdb
-file libgpg-error/libgpg-error-1.45.tar.bz2
-chk 570f8ee4fb4bff7b7495cff920c275002aea2147e9a1d220c068213267f80a26
+file libgpg-error/libgpg-error-1.46.tar.bz2
+chk b7e11a64246bbe5ef37748de43b245abd72cfcd53c9ae5e7fc5ca59f1c81268d
 
 # last-changed: 2021-04-21
 # by: ah
 # verified: distsigkey.gpg
-file libassuan/libassuan-2.5.5.tar.bz2
-chk  8e8c2fcc982f9ca67dcbb1d95e2dc746b1739a4668bc20b3a3c5be632edb34e4
+#file libassuan/libassuan-2.5.5.tar.bz2
+#chk  8e8c2fcc982f9ca67dcbb1d95e2dc746b1739a4668bc20b3a3c5be632edb34e4
 
 # last changed 2021-09-20
 # by ik
@@ -162,17 +162,17 @@ chk 437fe758b27c243a5ee2535c6b065ea1d09f2c9a02d83567d2f934bb6395c249
 # last-changed: 2022-10-14
 # by: ah
 # verified: build tree
-file gpgol/gpgol-2.5.5.tar.bz2
-chk  d8c56b671c88e1fe9f8542bc0295b3f98202f13e81dd544dc0267c797526a75e
+#file gpgol/gpgol-2.5.5.tar.bz2
+#chk  d8c56b671c88e1fe9f8542bc0295b3f98202f13e81dd544dc0267c797526a75e
 
 #
 # GpgEX
 #
-# last-changed: 2022-04-21
+# last-changed: 2022-11-18
 # by: ah
 # verified: distsigkey.gpg
-file gpgex/gpgex-1.0.9.tar.bz2
-chk  32a31affe0bc2587b6b61c5aae6a3328280feccde315dfa3a3c2dc374c5c0400
+#file gpgex/gpgex-1.0.10-beta5.tar.bz2
+#chk  f7e4c619aefed02dfbb07363a4435878a50999b290c60779e670fceb826e283e
 
 #
 #  GnuPG utilities
@@ -409,12 +409,26 @@ server https://gnupg.org/ftp/gcrypt/snapshots
 file gpgme/gpgme-1.18.1-beta13.tar.xz
 chk b6e444b057747ad7a00a98b333a9dadff6c8eea970c6768f22ee969ef5de6b0f
 
-# gpgol
-# last changed: 2022-09-05
+# libassuan
+# last changed: 2022-11-18
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-# file gpgol/gpgol-2.5.4-beta14.tar.xz
-# chk 245f1151189cdeb10afa7aadf7e4d68f17f5d1ed9df8a05bf8472ee220721105
+file libassuan/libassuan-2.5.6-beta50.tar.xz
+chk 217551826467e28837ff211fe2c8b5cb7d1d6ab28b05719feb095ac223322150
+
+# gpgol
+# last changed: 2022-11-28
+# by: aheinecke
+# verified: Tarball created by aheinecke.
+file gpgol/gpgol-2.5.6-beta5.tar.xz
+chk 7ecc29787b7ea141969a6be482119051847b8aad5f492b875b874ee55f6901d3
+
+# gpgex
+# last changed: 2022-12-06
+# by: aheinecke
+# verified: Tarball created by aheinecke.
+file gpgex/gpgex-1.0.10-beta5.tar.xz
+chk 2c227634528ef76bcca7fd4b7fe5c38a535f6e68bbe5b2cdc6cc4a74810b2dba
 
 # gpg4win-tools
 # last changed: 2022-08-29

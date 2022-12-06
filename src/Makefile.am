@@ -231,10 +231,10 @@ endef
 #  --with-libiconv-prefix=$(idir) --with-libintl-prefix=$(idir)
 gpg4win_pkg_libgpg_error_configure = --silent \
   CPPFLAGS=-I$(idir)/include LDFLAGS=-L$(idir)/lib \
-  --enable-static
+  --enable-static --enable-install-gpg-error-config
 
 gpg4win_pkg_libgpg_error_ex_configure = --silent \
-  --enable-static
+  --enable-static --enable-install-gpg-error-config
 
 # We convert the PO files to UTF-8.  FIXME: This should be done in
 # libgpg-error proper.
@@ -249,7 +249,7 @@ endef
 
 gpg4win_pkg_libassuan_configure =  --silent --enable-static
 
-gpg4win_pkg_libassuan_ex_configure =  --silent --enable-static
+gpg4win_pkg_libassuan_ex_configure = --with-gpg-error-prefix=$(ex_idir) --silent --enable-static
 
 gpg4win_pkg_libpng_configure = HAVE_SOLARIS_LD_FALSE=yes CPPFLAGS=\"-I$(idir)/include -DPNG_BUILD_DLL\" LDFLAGS=\"-L$(idir)/lib\" LIBPNG_DEFINES=\"-DPNG_BUILD_DLL\"
 
