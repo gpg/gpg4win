@@ -1992,7 +1992,9 @@ if ($::product_name eq 'GnuPG VS-Desktop')
         my $prod_underscored = $::product_name;
         $prod_underscored =~ s/ /_/g;
         $product_id = get_guid ("/PRODUCT/$prod_underscored/$::build_version");
-        $upgrade_code = get_guid ("/UPGRADE/$prod_underscored/1");
+#       The upgrade code should be the same across all versions to avoid
+#       that two versions are installed at the same time.
+#       $upgrade_code = get_guid ("/UPGRADE/$prod_underscored/1");
 }
 
 my $INSTALL_DIR = nsis_fetch ($parser, 'INSTALL_DIR');
