@@ -910,7 +910,7 @@ gnupg-vsd/$(1)/announcement.txt: gnupg-vsd/custom.mk gnupg-vsd/announcement.de.i
 		sed 's@GNUPG_VSD_SOURCE_LINK@https://download.gnupg.com/files/src/Gnupg-VS-Desktop-$(VSD_VERSION).tar.bz2@' > gnupg-vsd/$(1)/announcement.txt
 
 installers/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi: $(stampdir)/stamp-msi-base $(idir)/$(1).wixlib \
-	gnupg-vsd/$(1)/license.rtf $(root)/install/$$($(1)_PRODUCT)-$(VERSION).wixlib
+	gnupg-vsd/$(1)/license.rtf $(idir)/$$($(1)_PRODUCT)-$(VERSION).wixlib
 	scp gnupg-vsd/$(1)/license.rtf \
 		 $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION); \
 	scp $(idir)/$(1).wixlib \
@@ -934,7 +934,7 @@ installers/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi: $(stampdir)/stamp-msi-
 
 installers/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1)-x86.msi: $(stampdir)/stamp-msi-base $(idir)/$(1)-x86.wixlib \
 	gnupg-vsd/$(1)/license.rtf \
-	$(root)/install/$$($(1)_PRODUCT)-$(VERSION)-x86.wixlib
+	$(idir)/$$($(1)_PRODUCT)-$(VERSION)-x86.wixlib
 	scp gnupg-vsd/$(1)/license.rtf \
 		 $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION); \
 	scp $(idir)/$$($(1)_PRODUCT)-$(VERSION)-x86.wixlib \
@@ -1001,12 +1001,13 @@ $(stampdir)/stamp-$(1)-upload: signed_installers/$$($(1)_PRODUCT)-$(VSD_VERSION_
 			>> $(stampdir)/stamp-$(1)-upload; \
 	  fi)
 
-$(root)/install/$$($(1)_PRODUCT)-$(VERSION).wixlib: \
+$(idir)/$$($(1)_PRODUCT)-$(VERSION).wixlib: \
       gpg4win-$(VERSION).wxs $(stampdir)/stamp-final \
       $(foosum_exe) \
       $(README_files) $(HOWTO_files) \
       license.blurb versioninfo.txt \
       WixUI_Gpg4win.wxs \
+      $$($(1)_PRODUCT)-$(VERSION).wxs \
       $(stampdir)/stamp-additional-signedfiles
 	($(call SETVARS_WINE,); \
 	echo "Gpg4win" > $(root)/VERSION; \
@@ -1019,8 +1020,8 @@ $(root)/install/$$($(1)_PRODUCT)-$(VERSION).wixlib: \
 		-dInstDirEx=j: \
 		-dSrcDir=i:\\src \
 		-dVersion=$$$$MSI_VERSION \
-		-out k:\\gpg4win-$(VERSION).wixobj \
-		-pedantic -wx i:\\src\\gpg4win-$(VERSION).wxs \
+		-out k:\\$$($(1)_PRODUCT)-$(VERSION).wixobj \
+		-pedantic -wx i:\\src\\$$($(1)_PRODUCT)-$(VERSION).wxs \
 		-arch x64 || exit 1;\
 		$(WINE) $$$$WIXPREFIX2/candle.exe \
 		-dInstDir=k: \
@@ -1036,19 +1037,20 @@ $(root)/install/$$($(1)_PRODUCT)-$(VERSION).wixlib: \
 		-bf \
 		-wx \
 		-pedantic \
-		k:\\gpg4win-$(VERSION).wixobj k:\\gpg4win-ui.wixobj || exit 1; \
+		k:\\$$($(1)_PRODUCT)-$(VERSION).wixobj k:\\gpg4win-ui.wixobj || exit 1; \
 		\
 	) || ERR=1; (rm $$$$WINEINST; rm $$$$WINESRC; rm $$$$WINEINSTEX); \
 	if [ -n "$$$$ERR" ]; then \
 		exit 1; \
 	fi)
 
-$(root)/install/$$($(1)_PRODUCT)-$(VERSION)-x86.wixlib: \
+$(idir)/$$($(1)_PRODUCT)-$(VERSION)-x86.wixlib: \
       gpg4win-$(VERSION).wxs $(stampdir)/stamp-final \
       $(foosum_exe) \
       $(README_files) $(HOWTO_files) \
       license.blurb versioninfo.txt \
       WixUI_Gpg4win.wxs \
+      $$($(1)_PRODUCT)-$(VERSION).wxs \
       $(stampdir)/stamp-additional-signedfiles
 	($(call SETVARS_WINE,); \
 	echo "Gpg4win" > $(root)/VERSION; \
@@ -1062,8 +1064,8 @@ $(root)/install/$$($(1)_PRODUCT)-$(VERSION)-x86.wixlib: \
 		-dSrcDir=i:\\src \
 		-dVersion=$$$$MSI_VERSION \
 		-arch x86 \
-		-out k:\\gpg4win-$(VERSION)-x86.wixobj \
-		-pedantic -wx i:\\src\\gpg4win-$(VERSION).wxs || exit 1;\
+		-out k:\\$$($(1)_PRODUCT)-$(VERSION)-x86.wixobj \
+		-pedantic -wx i:\\src\\$$($(1)_PRODUCT)-$(VERSION).wxs || exit 1;\
 		$(WINE) $$$$WIXPREFIX2/candle.exe \
 		-dInstDir=k: \
 		-dInstDirEx=j: \
@@ -1078,7 +1080,7 @@ $(root)/install/$$($(1)_PRODUCT)-$(VERSION)-x86.wixlib: \
 		-bf \
 		-wx \
 		-pedantic \
-		k:\\gpg4win-$(VERSION)-x86.wixobj k:\\gpg4win-ui-x86.wixobj || exit 1; \
+		k:\\$$($(1)_PRODUCT)-$(VERSION)-x86.wixobj k:\\gpg4win-ui-x86.wixobj || exit 1; \
 		\
 	) || ERR=1; (rm $$$$WINEINST; rm $$$$WINESRC; rm $$$$WINEINSTEX); \
 	if [ -n "$$$$ERR" ]; then \
