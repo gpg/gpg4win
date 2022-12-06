@@ -1849,6 +1849,7 @@ sub dump_customs
         next if ($name eq ".");
         next if ($name eq "..");
         next if ($name eq "vs-desktop-branding");
+        next if ($name eq "desktop-branding");
         next if ($name eq "custom.mk");
         next if ($name eq "sign.mk");
         next if ($name eq ".git");
@@ -1882,6 +1883,7 @@ my $parser = \%parser;
 fetch_guids ();
 
 $::build_version = '';
+$::product_name = '';
 
 while ($#ARGV >= 0 and $ARGV[0] =~ m/^-/)
 {
@@ -1897,6 +1899,10 @@ while ($#ARGV >= 0 and $ARGV[0] =~ m/^-/)
     elsif ($opt =~ m/^--version$/)
     {
         $::build_version = shift @ARGV;
+    }
+    elsif ($opt =~ m/^--name$/)
+    {
+        $::product_name = shift @ARGV;
     }
     elsif ($opt =~ m/^-D([^=]*)=(.*)$/)
     {
@@ -1928,6 +1934,7 @@ while ($#ARGV >= 0 and $ARGV[0] =~ m/^-/)
         print STDERR "       -DNAME=VALUE     Define preprocessor symbol NAME to VALUE\n";
         print STDERR "       -LLANG           Build installer for language LANG (default: $::lang)\n";
         print STDERR "       --version        VERSION of the installer.\n";
+        print STDERR "       --name           Product name to use in the installer.\n";
         print STDERR "\n";
         print STDERR "       -h|--help        Print this help and exit\n";
         exit 0;
@@ -1972,8 +1979,21 @@ if ($::build_version eq '')
     $::build_version = $BUILD_FILEVERSION;
 }
 
+if ($::product_name eq '')
+{
+    $::product_name = nsis_fetch ($parser, '_PACKAGE');
+}
+
 my $product_id = get_guid ("/PRODUCT/$::build_version");
 my $upgrade_code = get_guid ("/UPGRADE/1");
+
+if ($::product_name eq 'GnuPG VS-Desktop')
+{
+        my $prod_underscored = $::product_name;
+        $prod_underscored =~ s/ /_/g;
+        $product_id = get_guid ("/PRODUCT/$prod_underscored/$::build_version");
+        $upgrade_code = get_guid ("/UPGRADE/$prod_underscored/1");
+}
 
 my $INSTALL_DIR = nsis_fetch ($parser, 'INSTALL_DIR');
 
@@ -1986,14 +2006,14 @@ print <<EOF;
 <?xml version='1.0'?>
 <Wix xmlns='http://schemas.microsoft.com/wix/2006/wi'>
   <!-- The general product setup -->
-  <Product Name='GnuPG VS-Desktop'
+  <Product Name='$::product_name'
            Id='$product_id'
            UpgradeCode='$upgrade_code'
            Language='$lcid'
            Codepage='1252'
            Version='$::build_version'
            Manufacturer='GnuPG.com'>
-    <Package Description='GnuPG VS-Desktop'
+    <Package Description='$::product_name'
              Comments='http://www.gnupg.com/'
              Compressed='yes'
              InstallerVersion='200'
@@ -2017,7 +2037,7 @@ print <<EOF;
     <!-- 1 forces highest available -->
     <Property Id="ALLUSERS" Value="1" />
 
-    <Property Id="ApplicationFolderName" Value="GnuPG VS-Desktop" />
+    <Property Id="ApplicationFolderName" Value="$::product_name" />
     <Property Id="WixAppFolder" Value="WixPerMachineFolder" />
 
     <Property Id="APPLICATIONFOLDER">
@@ -2044,7 +2064,7 @@ print <<EOF;
     </Condition>
 
     <!-- Turn on logging
-        <Property Id="MsiLogging" Value="gnupg-vs-desktop"/>
+        <Property Id="MsiLogging" Value="gnupg-desktop"/>
     -->
     <Icon Id="shield.ico" SourceFile="shield.ico"/>
     <Property Id="ARPPRODUCTICON" Value="shield.ico"/>
@@ -2191,7 +2211,7 @@ print <<EOF;
     <Directory Id='TARGETDIR' Name='SourceDir'>
       <Directory Id='ProgramFilesFolder' Name='PFiles'>
         <!-- DIR_GnuPG is used be the GnuPG wxlib -->
-        <Directory Id='APPLICATIONFOLDER' Name='GnuPG VS-Desktop'>
+        <Directory Id='APPLICATIONFOLDER' Name='$::product_name'>
           <Directory Id="KleopatraDataFolder" Name="share">
             <Directory Id="ShareDocFolder" Name="doc">
               <Directory Id="HelpDataFolder" Name="gnupg-vsd"/>
@@ -2209,11 +2229,9 @@ print <<EOF;
       </Directory>
 EOF
 
-my $name = "GnuPG VS-Desktop";
-
 print <<EOF;
   <Directory Id='ProgramMenuFolder' Name='PMenu'>
-    <Directory Id='ProgramMenuDir' Name='$name'/>
+    <Directory Id='ProgramMenuDir' Name='$::product_name'/>
   </Directory>
   <Directory Id='DesktopFolder' Name='Desktop' >
     <Component Id='ApplicationShortcutDesktop' Guid='8FCEA457-D3AD-41CC-BD0B-3E071D6E70BE'>
@@ -2241,7 +2259,7 @@ EOF
 print <<EOF;
     </Directory>
 
-    <Feature Id='Complete' Title='GnuPG VS-Desktop' Description='All components.'
+    <Feature Id='Complete' Title='$::product_name' Description='All components.'
              Display='expand' Level='1' ConfigurableDirectory='APPLICATIONFOLDER'>
 EOF
 

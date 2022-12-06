@@ -506,13 +506,11 @@ VSD_VERSION=$(VERSION)
 # Signging host/key setup for codesigning
 -include gnupg-vsd/sign.mk
 
-$(stampdir)/stamp-msi-base:  $(root)/install/gpg4win-$(VERSION).wixlib \
-                       shield.ico Makefile.am \
+$(stampdir)/stamp-msi-base: shield.ico Makefile.am \
                        $(top_srcdir)/doc/logo/gpg4win-msi*.bmp \
                        $(top_srcdir)/po/gpg4win-de.wxl \
                        $(top_srcdir)/po/gpg4win-en.wxl
 	ssh $(WINHOST) "mkdir AppData\\Local\\Temp\\gpg4win-$(VERSION)" || true
-	scp $(idir)/gpg4win-$(VERSION).wixlib $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)
 	scp $(top_srcdir)/packages/gnupg-msi-$(gpg4win_pkg_gnupg_msi_version)-bin.wixlib \
 		$(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION);
 	scp $(top_srcdir)/src/shield.ico $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)
@@ -554,7 +552,7 @@ common_nsi = inst-sections.nsi installer.nsi installer-finish.nsi	\
 
 # Sign additional files as per signing setup
 # This is a bit of a hack.
-$(stampdir)/stamp-additional-signedfiles:
+$(stampdir)/stamp-additional-signedfiles: $(stampdir)/stamp-binaries
 	(set -e;\
      cd "$(idir)"; \
      for f in $(AUTHENTICODE_FILES); do \
@@ -566,100 +564,6 @@ $(stampdir)/stamp-additional-signedfiles:
      done \
      )
 	touch $(stampdir)/stamp-additional-signedfiles
-
-$(root)/install/gpg4win-$(VERSION).wixlib: \
-      gpg4win-$(VERSION).wxs $(stampdir)/stamp-final \
-      $(foosum_exe) \
-      $(README_files) $(HOWTO_files) \
-      license.blurb versioninfo.txt \
-      WixUI_Gpg4win.wxs \
-      $(stampdir)/stamp-additional-signedfiles
-	($(call SETVARS_WINE_TWO_DOLLAR,); \
-	echo "Gpg4win" > $(root)/VERSION; \
-	echo "$(VERSION)" >> $(root)/VERSION; \
-	(ln -s $(idir) $$WINEINST; \
-	 ln -s $(ex_idir) $$WINEINSTEX; \
-	 ln -s `readlink -f $(top_srcdir)` $$WINESRC; \
-		$(WINE) $$WIXPREFIX2/candle.exe \
-		-dInstDir=k: \
-		-dInstDirEx=j: \
-		-dSrcDir=i:\\src \
-		-dVersion=$$MSI_VERSION \
-		-out k:\\gpg4win-$(VERSION).wixobj \
-		-pedantic -wx i:\\src\\gpg4win-$(VERSION).wxs \
-		-arch x64 || exit 1;\
-		$(WINE) $$WIXPREFIX2/candle.exe \
-		-dInstDir=k: \
-		-dInstDirEx=j: \
-		-dSrcDir=i:\\src \
-		-dVersion=$$MSI_VERSION \
-		-out k:\\gpg4win-ui.wixobj \
-		-arch x64 \
-		-pedantic -wx i:\\src\\WixUI_Gpg4win.wxs || exit 1;\
-		\
-		$(WINE) $$WIXPREFIX2/lit.exe \
-		-out k:\\gpg4win-$(VERSION).wixlib \
-		-bf \
-		-wx \
-		-pedantic \
-		k:\\gpg4win-$(VERSION).wixobj k:\\gpg4win-ui.wixobj || exit 1; \
-		\
-	) || ERR=1; (rm $$WINEINST; rm $$WINESRC; rm $$WINEINSTEX); \
-	if [ -n "$$ERR" ]; then \
-		exit 1; \
-	fi)
-
-$(root)/install/gpg4win-$(VERSION)-x86.wixlib: \
-      gpg4win-$(VERSION).wxs $(stampdir)/stamp-final \
-      $(foosum_exe) \
-      $(README_files) $(HOWTO_files) \
-      license.blurb versioninfo.txt \
-      WixUI_Gpg4win.wxs \
-      $(stampdir)/stamp-additional-signedfiles
-	($(call SETVARS_WINE_TWO_DOLLAR,); \
-	echo "Gpg4win" > $(root)/VERSION; \
-	echo "$(VERSION)" >> $(root)/VERSION; \
-	(ln -s $(idir) $$WINEINST; \
-	 ln -s $(ex_idir) $$WINEINSTEX; \
-	 ln -s `readlink -f $(top_srcdir)` $$WINESRC; \
-		$(WINE) $$WIXPREFIX2/candle.exe \
-		-dInstDir=k: \
-		-dInstDirEx=j: \
-		-dSrcDir=i:\\src \
-		-dVersion=$$MSI_VERSION \
-		-arch x86 \
-		-out k:\\gpg4win-$(VERSION)-x86.wixobj \
-		-pedantic -wx i:\\src\\gpg4win-$(VERSION).wxs || exit 1;\
-		$(WINE) $$WIXPREFIX2/candle.exe \
-		-dInstDir=k: \
-		-dInstDirEx=j: \
-		-dSrcDir=i:\\src \
-		-dVersion=$$MSI_VERSION \
-		-arch x86 \
-		-out k:\\gpg4win-ui-x86.wixobj \
-		-pedantic -wx i:\\src\\WixUI_Gpg4win.wxs || exit 1;\
-		\
-		$(WINE) $$WIXPREFIX2/lit.exe \
-		-out k:\\gpg4win-$(VERSION)-x86.wixlib \
-		-bf \
-		-wx \
-		-pedantic \
-		k:\\gpg4win-$(VERSION)-x86.wixobj k:\\gpg4win-ui-x86.wixobj || exit 1; \
-		\
-	) || ERR=1; (rm $$WINEINST; rm $$WINESRC; rm $$WINEINSTEX); \
-	if [ -n "$$ERR" ]; then \
-		exit 1; \
-	fi)
-gpg4win-$(VERSION).wxs: gpg4win.nsi $(common_nsi) $(stampdir)/stamp-final \
-		        $(foosum_exe) gpgwrap.exe \
-			$(README_files) $(HOWTO_files) \
-			versioninfo.txt make-msi.pl \
-	$(addsuffix /VERSION.sig,$(addprefix gnupg-vsd/,$(msi_targets)))
-	perl make-msi.pl --guids $(srcdir)/make-msi.guids \
-		--manifest gpg4win-$(VERSION).files \
-		--version $(VSD_VERSION) \
-		-DBUILD_DIR=. -DTOP_SRCDIR=$(top_srcdir) \
-		-DSRCDIR=$(srcdir) $(srcdir)/gpg4win.nsi > $@
 
 # Prepare the versioninfo file.  The pipeline extracts the last
 # occurrence of a package with the same name, sorts the entries and
