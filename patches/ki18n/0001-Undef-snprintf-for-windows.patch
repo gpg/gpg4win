@@ -1,0 +1,28 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From 12192625993a320519a99a76c4031f64d9f89ab8 Mon Sep 17 00:00:00 2001
+From: Andre Heinecke <aheinecke@gnupg.org>
+Date: Wed, 7 Dec 2022 12:38:20 +0100
+Subject: [PATCH] Undef snprintf for windows
+
+Under mingw without gnulib libintl defined snprintf to libintl_snprintf.
+---
+ src/i18n/kcatalog.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/i18n/kcatalog.cpp b/src/i18n/kcatalog.cpp
+index 2bd9432..f4e2128 100644
+--- a/src/i18n/kcatalog.cpp
++++ b/src/i18n/kcatalog.cpp
+@@ -52,6 +52,7 @@ using QAndroidJniObject = QJniObject;
+
+ // not defined on win32 :(
+ #ifdef _WIN32
++#undef snprintf
+ #ifndef LC_MESSAGES
+ #define LC_MESSAGES 42
+ #endif
+--
+2.38.1
