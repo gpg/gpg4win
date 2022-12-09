@@ -12,13 +12,13 @@ Somehow refcounting messes with destruction.
  src/kcolorschemehelpers_p.h | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/src/kcolorscheme.cpp b/src/kcolorscheme.cpp
+diff --git a/src/kcolorschemehelpers_p.h b/src/kcolorschemehelpers_p.h
 index bc9ec1c4..b6d4ae6a 100644
---- a/src/kcolorscheme.cpp
-+++ b/src/kcolorscheme.cpp
-@@ -269,7 +269,7 @@
-
- KSharedConfigPtr defaultConfig() {
+--- a/src/kcolorschemehelpers_p.h
++++ b/src/kcolorschemehelpers_p.h
+@@ -17,7 +17,7 @@
+ static KSharedConfigPtr defaultConfig()
+ {
      // cache the value we'll return, since usually it's going to be the same value
 -    static thread_local KSharedConfigPtr config;
 +    static KSharedConfigPtr config;

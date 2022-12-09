@@ -306,7 +306,7 @@ gpg4win_pkg_gpgex_ex_configure = --silent \
 gpg4win_pkg_paperkey_configure = --silent
 
 gpg4win_pkg_ki18n_configure = -DBUILD_WITH_QML=OFF
-gpg4win_pkg_kconfig_configure = -DKCONFIG_USE_DBUS=OFF
+gpg4win_pkg_kconfig_configure = -DKCONFIG_USE_DBUS=OFF -DKCONFIG_USE_QML=OFF
 
 gpg4win_pkg_qtbase_configure = ../$$$${pkg_version}/configure -opensource \
             -confirm-license \
