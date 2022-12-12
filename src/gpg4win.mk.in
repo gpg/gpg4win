@@ -820,7 +820,7 @@ $$($(1)_PRODUCT)-$(VERSION).wxs: gpg4win.nsi $(common_nsi) $(stampdir)/stamp-fin
 		-DSRCDIR=$(srcdir) $(srcdir)/gpg4win.nsi > $$($(1)_PRODUCT)-$(VERSION).wxs
 
 $(idir)/$$($(1)_PRODUCT)-$(VERSION).wixlib: \
-      gpg4win-$(VERSION).wxs $(stampdir)/stamp-final \
+      $(stampdir)/stamp-final \
       $(foosum_exe) \
       $(README_files) $(HOWTO_files) \
       license.blurb versioninfo.txt \
@@ -863,7 +863,7 @@ $(idir)/$$($(1)_PRODUCT)-$(VERSION).wixlib: \
 	fi)
 
 $(idir)/$$($(1)_PRODUCT)-$(VERSION)-x86.wixlib: \
-      gpg4win-$(VERSION).wxs $(stampdir)/stamp-final \
+      $(stampdir)/stamp-final \
       $(foosum_exe) \
       $(README_files) $(HOWTO_files) \
       license.blurb versioninfo.txt \
