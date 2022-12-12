@@ -265,27 +265,7 @@ if test "$build_gpg4win" = yes ; then
         $CP /dev/null src/libgcc_s_dw2-1.dll-x
     fi
 
-    AC_CHECK_PROGS(GLIB_GENMARSHAL, glib-genmarshal)
-    AC_CHECK_PROGS(GLIB_COMPILE_SCHEMAS, glib-compile-schemas)
-    AC_CHECK_PROGS(GLIB_COMPILE_RESOURCES, glib-compile-resources)
-    AC_CHECK_PROGS(GDK_PIXBUF_CSOURCE, gdk-pixbuf-csource)
 fi
-
-opt_tools=
-if test "$build_gpg4win" = yes ; then
-    opt_tools="GLIB_GENMARSHAL GLIB_COMPILE_SCHEMAS GLIB_COMPILE_RESOURCES GDK_PIXBUF_CSOURCE"
-fi
-missing_opt_tools=
-for i in $opt_tools; do
-   eval tmp='$'$i
-   if test -z "$tmp"; then
-      missing_opt_tools="$missing_opt_tools `echo $i | tr 'A-Z' 'a-z'`"
-   fi
-done
-
-
-
-# Optional tools.
 
 AC_CHECK_PROGS(WGET, wget)
 
@@ -298,30 +278,15 @@ if test "$build_gpg4win" = yes ; then
 
     GPG4WIN_BPKG_GTK([pkgconfig])
 
-    GPG4WIN_SPKG([libffi], [pkgconfig])
-    GPG4WIN_SPKG([pcre], [pkgconfig])
-    GPG4WIN_SPKG([glib], [pcre libiconv gettext pkgconfig libffi zlib])
-    GPG4WIN_BPKG_GTK_DEV([atk], [glib pkgconfig])
-    GPG4WIN_BPKG_GTK_DEV([pango], [glib pkgconfig])
-    GPG4WIN_BPKG_GTK_DEV([cairo], [glib pkgconfig])
-    GPG4WIN_BPKG_GTK_DEV([expat])
-    GPG4WIN_BPKG_GTK_DEV([freetype], [pkgconfig zlib])
-    GPG4WIN_BPKG_GTK_DEV([fontconfig], [pkgconfig zlib expat])
-    GPG4WIN_SPKG([gdk-pixbuf], [glib])
-    GPG4WIN_SPKG([gtk+], [libiconv gettext pkgconfig atk pango dnl
-                          glib gdk-pixbuf cairo])
-    GPG4WIN_SPKG([libpng], [pkgconfig])
-
     GPG4WIN_SPKG([bzip2])
     GPG4WIN_SPKG([libgpg-error], [libiconv gettext])
     GPG4WIN_SPKG([libassuan], [libgpg-error w32pth])
     GPG4WIN_SPKG([scute], [libgpg-error libassuan])
-    GPG4WIN_SPKG([pinentry], [qtbase libiconv gtk+])
-    GPG4WIN_SPKG([gpgme], [libgpg-error libassuan glib qtbase])
+    GPG4WIN_SPKG([pinentry], [qtbase libassuan libiconv])
+    GPG4WIN_SPKG([gpgme], [libgpg-error libassuan qtbase])
     GPG4WIN_SPKG([gpgol], [gpgme libassuan])
     GPG4WIN_SPKG([gpgex], [libassuan])
     GPG4WIN_SPKG([paperkey])
-    GPG4WIN_SPKG([gpa], [libiconv gettext zlib gtk+ libpng glib gpgme])
     GPG4WIN_SPKG([w32pth])
     GPG4WIN_SPKG([libiconv])
     GPG4WIN_SPKG([gettext], [libiconv])
@@ -339,17 +304,15 @@ if test "$build_gpg4win" = yes ; then
     # The GnuPG Package.
     GPG4WIN_BPKG_BINSRC([gnupg-w32])
     GPG4WIN_BPKG_MSISRC([gnupg-msi])
-    # See the script kde-l10n.sh how this package is created.
-    GPG4WIN_BPKG_BINSRC([kde-l10n])
 
     # Qt related stuff.
-    GPG4WIN_SPKG([qtbase], [libpng])
+    GPG4WIN_SPKG([qtbase])
     GPG4WIN_SPKG([qttools], [qtbase])
     GPG4WIN_SPKG([qttranslations], [qtsvg qttools qtwinextras])
     GPG4WIN_SPKG([qtwinextras], [qtbase])
     GPG4WIN_SPKG([qtsvg], [qtbase])
     GPG4WIN_KDEPKG([breeze-icons], [extra-cmake-modules qtbase])
-    GPG4WIN_KDEPKG([kleopatra], [gnupg-w32 breeze-icons kxmlgui libkleo kde-l10n kitemmodels qttranslations])
+    GPG4WIN_KDEPKG([kleopatra], [gnupg-w32 breeze-icons kxmlgui libkleo kitemmodels qttranslations])
     GPG4WIN_KDEPKG([extra-cmake-modules])
     GPG4WIN_KDEPKG([kconfig], [qtbase qttools extra-cmake-modules])
     GPG4WIN_KDEPKG([ki18n], [qtbase gettext qttools extra-cmake-modules])
@@ -392,9 +355,6 @@ if test "$build_appimage" = yes ; then
     APPIMAGE_SPKG([gpgme], [libgpg-error libassuan qtbase])
     APPIMAGE_SPKG([paperkey])
 
-    # See the script kde-l10n.sh how this package is created.
-    APPIMAGE_BPKG_BINSRC([kde-l10n])
-
     # Qt related stuff.
     # (dependency on gnupg is only to make sure gnupg is build first so
     #  that we don't need to wait for the long running Qt builds)
@@ -429,15 +389,9 @@ if test "$build_appimage" = yes ; then
 
     APPIMAGE_KDEPKG([kxmlgui], [kiconthemes kconfigwidgets kitemviews])
 
-    # snapshot of libkleo without translations; needs kde-l10n
-    APPIMAGE_KDEPKG([libkleo], [kmime kconfigwidgets kwindowsystem kcompletion gpgme kde-l10n])
-    # (release) tarball of libkleo with translations
-    #APPIMAGE_KDEPKG([libkleo], [kmime kconfigwidgets kwindowsystem kcompletion gpgme])
+    APPIMAGE_KDEPKG([libkleo], [kmime kconfigwidgets kwindowsystem kcompletion gpgme])
 
-    # snapshot of kleopatra without translations; needs kde-l10n
     APPIMAGE_KDEPKG([kleopatra], [gnupg gpgme breeze-icons kxmlgui libkleo kitemmodels qttranslations kdbusaddons kde-l10n])
-    # (release) tarball of kleopatra with translations
-    #APPIMAGE_KDEPKG([kleopatra], [gnupg gpgme breeze-icons kxmlgui libkleo kitemmodels qttranslations kdbusaddons])
 
     APPIMAGE_FINALIZE
 fi

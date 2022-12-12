@@ -1,0 +1,29 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From ad73be63c5862e24bc2e1537690b0b50455c21b8 Mon Sep 17 00:00:00 2001
+From: Andre Heinecke <aheinecke@gnupg.org>
+Date: Fri, 9 Dec 2022 12:13:46 +0100
+Subject: [PATCH 4/4] Fix windows build
+
+QtGlobal is needed in userinfo.cpp to gain the Qt Platform defines.
+---
+ src/utils/userinfo.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/utils/userinfo.cpp b/src/utils/userinfo.cpp
+index 59fc0a8d..b66b6014 100644
+--- a/src/utils/userinfo.cpp
++++ b/src/utils/userinfo.cpp
+@@ -10,6 +10,8 @@
+
+ #include "userinfo.h"
+
++// Needed for global defines
++#include <QtGlobal>
+
+ #ifdef Q_OS_WIN
+ #include "userinfo_win_p.h"
+--
+2.38.1

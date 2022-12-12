@@ -81,10 +81,6 @@ msgctxt "T_RunKleopatra"
 msgid "Run Kleopatra"
 msgstr "Kleopatra uitvoeren"
 
-msgctxt "T_RunGPA"
-msgid "Run GPA"
-msgstr "GPA uitvoeren"
-
 msgctxt "T_LangCode"
 msgid "en"
 msgstr "nl"
@@ -347,14 +343,6 @@ msgstr ""
 "\n"
 "https://gnupg.org/download"
 
-msgctxt "DESC_SEC_gpa"
-msgid "GNU Privacy Assistant"
-msgstr "GNU Privacy Assistant"
-
-msgctxt "DESC_Menu_gpa"
-msgid "Run the GNU Privacy Assistant key management tool."
-msgstr "De GNU Privacy Assistant sleutelbeheertool uitvoeren."
-
 msgctxt "DESC_Menu_gpg4win_readme"
 msgid "General information on Gpg4win"
 msgstr "Algemene informatie over Gpg4win"
@@ -448,3 +436,15 @@ msgstr ""
 msgctxt "T_File_Type_pgp_key_info_tip"
 msgid "Certificate for OpenPGP."
 msgstr "Certificaat voor OpenPGP."
+
+#~ msgctxt "T_RunGPA"
+#~ msgid "Run GPA"
+#~ msgstr "GPA uitvoeren"
+
+#~ msgctxt "DESC_SEC_gpa"
+#~ msgid "GNU Privacy Assistant"
+#~ msgstr "GNU Privacy Assistant"
+
+#~ msgctxt "DESC_Menu_gpa"
+#~ msgid "Run the GNU Privacy Assistant key management tool."
+#~ msgstr "De GNU Privacy Assistant sleutelbeheertool uitvoeren."

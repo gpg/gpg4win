@@ -43,164 +43,6 @@ file gettext/gettext-0.21.tar.xz
 chk  d20fcbb537e02dcf1383197ba05bd0734ef7bf5db06bdb241eb69b7d16b73192
 
 
-# Glib needs PCRE
-# last-changed: 2021-10-11
-# by: ah (checksum added by ik)
-# verified: Sig: 45F6 8D54 BBE2 3FB3 039B 46E5 9766 E084 FB0F 43D8
-server https://sourceforge.net/projects/pcre/files/pcre/
-file 8.44/pcre-8.44.tar.gz
-chk  aecafd4af3bd0f3935721af77b889d9024b2e01d96b58471bd91a3063fb47728
-
-#
-# GLIB
-#
-# The GTK boyz seem to think that sha256sum files on the server
-# magically get them a lot of additional security karma.
-#
-#   And it's plain to see
-#   You were meant for me
-#   Yeah I'm your .sig
-#   Your 21th Century sig
-#   21th Century sig, I wanna be your file
-#
-server http://ftp.gnome.org/pub/gnome/sources/glib/2.50
-
-# last-changed: 2021-09-02
-# by: ah
-file glib-2.50.2.tar.xz
-chk  be68737c1f268c05493e503b3b654d2b7f43d7d0b8c5556f7e4651b870acfbf5
-
-#
-# GDK-PIXBUF
-#
-server http://ftp.gnome.org/pub/gnome/sources/gdk-pixbuf/2.30/
-
-# checked: 2015-06-05
-# by: ah
-# There is a 2.31 series but afaik no security problems with 2.30
-# verified: with linuxfromscratch and frugalware checksums
-file gdk-pixbuf-2.30.8.tar.xz
-chk  4853830616113db4435837992c0aebd94cbb993c44dc55063cee7f72a7bef8be
-
-
-#
-# ATK
-#
-server http://ftp.gnome.org/pub/gnome/sources/atk/1.32
-
-# checked: 2013-04-29 wk (1.32.0 still the latest in 1.32)
-file atk-1.32.0.tar.bz2
-chk  e9a3e598f75c4db1af914f8b052dd9f7e89e920a96cc187c18eb06b8339cb16e
-
-server http://ftp.gnome.org/pub/gnome/binaries/win32/atk/1.32
-
-# checked: 2013-04-29 wk
-name atk-1.32.0.zip
-file atk_1.32.0-2_win32.zip
-chk  cadc6d52f2af21996a6dcba7b1fac27ce66721e14d1c4ab21fde7bc9965f5037
-
-# checked: 2013-04-29 wk
-name atk-dev-1.32.0.zip
-file atk-dev_1.32.0-2_win32.zip
-chk  5021d64043d270350d6a8d50b91db691a7421a68ca0bfa4eeb0c8804a176ac44
-
-#
-# PANGO
-#
-server http://ftp.gnome.org/pub/gnome/sources/pango/1.29
-
-# fixme: 2013-04-29 wk - There is a 1.29.5 but no 1.29.5 binaries
-#                        What shall we do:  Update to 1.32?  There are no
-#                        1.32 binaries either.
-file pango-1.29.4.tar.bz2
-chk  f15deecaecf1e9dcb7db0e4947d12b5bcff112586434f8d30a5afd750747ff2b
-
-server http://ftp.gnome.org/pub/gnome/binaries/win32/pango/1.29
-
-name pango-1.29.4.zip
-file pango_1.29.4-1_win32.zip
-chk  e1b865ae2e4054388c598f92b34593b3d24d7fd15e6308c8926ee634717c21ce
-
-name pango-dev-1.29.4.zip
-file pango-dev_1.29.4-1_win32.zip
-chk  0d7fb255e65ed4bd43acedab4405986e4877b87ba8227d5fa22b38330485e3cb
-
-#
-# CAIRO
-#
-server http://cairographics.org/releases
-
-# checked: 2013-04-29 wk - 1.10.2 is the latest in the 1.10 series.
-file cairo-1.10.2.tar.gz
-chk  32018c7998358eebc2ad578ff8d8559d34fc80252095f110a572ed23d989fc41
-
-server http://ftp.gnome.org/pub/gnome/binaries/win32/dependencies
-# checked: 2013-07-16 ah most recent package on that server is from
-# 2012-09-27 TODO -> Move to another source / source build of those
-# dependencies
-
-# checked: 2013-04-29 wk
-name cairo-1.10.2.zip
-file cairo_1.10.2-2_win32.zip
-chk  e6c361ec1df4ccb23edbe5b68db16329d563a19eeee7fa70d583dda3d2358f4e
-name cairo-dev-1.10.2.zip
-file cairo-dev_1.10.2-2_win32.zip
-chk  b86f875bf776bbf578e3fa8c46866b84c93200b962b30d03cf795f82157e3167
-
-# checked: 2013-04-29 wk
-file freetype-2.4.2.tar.bz2
-chk  9a987aef8c50d9bcfdfdc9f012f8bd0de6095cc1a5524e62c1a037deb8dacbfe
-name freetype-2.4.2.zip
-file freetype_2.4.2-1_win32.zip
-chk  bdf67e6573363fd2256a58295931cc1186382fd0ad1fe420059d6ffdb5fba7c0
-name freetype-dev-2.4.2.zip
-file freetype-dev_2.4.2-1_win32.zip
-chk  eed58c2807b65d5e0ec78031e89f1628577ad76bf47f02eaecde432c0b99eae9
-
-server http://www.fontconfig.org/release
-
-# checked: 2013-04-29 wk - 2.8.0 still the latest in 2.8
-file fontconfig-2.8.0.tar.gz
-chk  fa2a1c6eea654d9fce7a4b1220f10c99cdec848dccaf1625c01f076b31382335
-
-server http://ftp.gnome.org/pub/gnome/binaries/win32/dependencies
-
-# checked: 2013-04-29 wk
-name fontconfig-2.8.0.zip
-file fontconfig_2.8.0-2_win32.zip
-chk  9d6bcaeed0eced43a649953132d9f2b3e15b98c7bb9e4a207872dfeade818204
-name fontconfig-dev-2.8.0.zip
-file fontconfig-dev_2.8.0-2_win32.zip
-chk  2f15af3d27ca507dad2a208e58409f484aa7e7c7eac10b49edca079b31ae7073
-
-server ftp://ftp.g10code.com/g10code/misc
-
-# checked: 2013-04-29 wk - 2.0.1 still the latest in 2.0
-file expat-2.0.1.tar.gz
-chk  847660b4df86e707c9150e33cd8c25bc5cd828f708c7418e765e3e983a2e5e93
-
-server http://ftp.gnome.org/pub/gnome/binaries/win32/dependencies
-
-# checked: 2013-04-29 wk
-name expat-2.0.1.zip
-file expat_2.0.1-1_win32.zip
-chk  77b88ab780e698d6590426b26a877878584b9f8b6357909699674fb5045737bd
-name expat-dev-2.0.1.zip
-file expat-dev_2.0.1-1_win32.zip
-chk  67b92b7f3441fee077bdc0094bf4dd673870acdf51899e32e199246801538162
-
-
-#
-# GTK+
-#
-server http://ftp.gnome.org/pub/gnome/sources/gtk+/2.24
-
-# last-changed: 2015-06-05
-# by: ah
-# verified: chk from https://download.gnome.org/core/3.17/3.17.2/sources/SHA256SUMS-for-xz
-file gtk+-2.24.28.tar.xz
-chk  b2c6441e98bc5232e5f9bba6965075dcf580a8726398f7374d39f90b88ed4656
-
 #
 # GIMP stuff for W32
 #
@@ -214,26 +56,6 @@ chk  08a0e072d6a05419a58124db864f0685e6ac96e71b2875bf15ac12714e983b53
 name pkgconfig-0.23.zip
 file pkg-config_0.23-3_win32.zip
 chk  677d6055494e24cad6c49eab33eee618ddc6ed65da827c8b5b7da761b4063278
-
-
-# PNG
-
-# last changed: 2021-12-01
-# by: ah
-# verified: Sig 8048 643B A2C8 40F4 F92A  195F F549 84BF A16C 640F
-server https://downloads.sourceforge.net
-file libpng/libpng14/1.4.22/libpng-1.4.22.tar.xz
-chk  8d419a8b2a5edddda5cbcb897ded92205344a3249fa7a00d6384ea23ac3ccbd8
-
-#
-# LibFFI
-#
-server ftp://sourceware.org/pub/libffi
-
-# checked: 2013-04-29 wk - updated from 3.0.10.
-# checked: 2014-07-16 ah - only rc availble from 3.0.14
-file libffi-3.0.13.tar.gz
-chk  1dddde1400c3bcb7749d398071af88c3e4754058d2d4c0b3696c2f82dc5cf11c
 
 
 #
@@ -281,14 +103,14 @@ server https://gnupg.org/ftp/gcrypt
 # last changed 2022-04-07
 # by wk
 # verified: swdb
-file libgpg-error/libgpg-error-1.45.tar.bz2
-chk 570f8ee4fb4bff7b7495cff920c275002aea2147e9a1d220c068213267f80a26
+file libgpg-error/libgpg-error-1.46.tar.bz2
+chk b7e11a64246bbe5ef37748de43b245abd72cfcd53c9ae5e7fc5ca59f1c81268d
 
 # last-changed: 2021-04-21
 # by: ah
 # verified: distsigkey.gpg
-file libassuan/libassuan-2.5.5.tar.bz2
-chk  8e8c2fcc982f9ca67dcbb1d95e2dc746b1739a4668bc20b3a3c5be632edb34e4
+#file libassuan/libassuan-2.5.5.tar.bz2
+#chk  8e8c2fcc982f9ca67dcbb1d95e2dc746b1739a4668bc20b3a3c5be632edb34e4
 
 # last changed 2021-09-20
 # by ik
@@ -331,11 +153,6 @@ chk 457a185e5a85238fb945a955dc6352ab962dc8b48720b62fc9fa48c7540a4067
 #file gpgme/gpgme-1.17.0.tar.bz2
 #chk 4ed3f50ceb7be2fce2c291414256b20c9ebf4c03fddb922c88cda99c119a69f5
 
-# last changed: 2018-10-17
-# by: ah
-file gpa/gpa-0.10.0.tar.bz2
-chk  95dbabe75fa5c8dc47e3acf2df7a51cee096051e5a842b4c9b6d61e40a6177b1
-
 # last changed: 2021-01-07
 # by: ah
 file scute/scute-1.7.0.tar.bz2
@@ -345,17 +162,17 @@ chk 437fe758b27c243a5ee2535c6b065ea1d09f2c9a02d83567d2f934bb6395c249
 # last-changed: 2022-10-14
 # by: ah
 # verified: build tree
-file gpgol/gpgol-2.5.5.tar.bz2
-chk  d8c56b671c88e1fe9f8542bc0295b3f98202f13e81dd544dc0267c797526a75e
+#file gpgol/gpgol-2.5.5.tar.bz2
+#chk  d8c56b671c88e1fe9f8542bc0295b3f98202f13e81dd544dc0267c797526a75e
 
 #
 # GpgEX
 #
-# last-changed: 2022-04-21
+# last-changed: 2022-11-18
 # by: ah
 # verified: distsigkey.gpg
-file gpgex/gpgex-1.0.9.tar.bz2
-chk  32a31affe0bc2587b6b61c5aae6a3328280feccde315dfa3a3c2dc374c5c0400
+#file gpgex/gpgex-1.0.10-beta5.tar.bz2
+#chk  f7e4c619aefed02dfbb07363a4435878a50999b290c60779e670fceb826e283e
 
 #
 #  GnuPG utilities
@@ -442,134 +259,131 @@ server https://download.kde.org/stable/frameworks
 # Don't forget to update gpg4win.mk.in with new version numbers
 #
 # KDE Applications
-
 # extra-cmake-modules
-# last changed: 2022-05-11
+# last changed: 2022-12-06
 # by: ah
 # verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
-file 5.93/extra-cmake-modules-5.93.0.tar.xz
-chk 093dea7b11647bc5f74e6971d47ef15b5c410cba2b4620acae00f008d5480b21
+file 5.100/extra-cmake-modules-5.100.0.tar.xz
+chk 34563ce7bbe3c4d8f69ce1f5dc87ae052443a6b0349fefb9e244a7358b16c0c5
 
 # kconfig
-# last changed: 2022-05-11
+# last changed: 2022-12-06
 # by: ah
 # verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
-file 5.93/kconfig-5.93.0.tar.xz
-chk 71857c20d4829017c22dd6d46ae5a642c86344960e21bc1520458fb76d02c06e
+file 5.100/kconfig-5.100.0.tar.xz
+chk 7aed349a2bea953baa71de134855659c862a498f69ba6d28673f6912941dc921
 
 # ki18n
-# last changed: 2022-05-11
+# last changed: 2022-12-06
 # by: ah
 # verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
-file 5.93/ki18n-5.93.0.tar.xz
-chk c2705400d175f18612dfe1afb28dc14accf614f7cfd65409dfa7fdcde5237339
+file 5.100/ki18n-5.100.0.tar.xz
+chk de63f1d6b86591eff69c502c8d247d6d86494abdd1d179ea84855c3678b30f01
 
 # kwidgetsaddons
-# last changed: 2022-05-11
+# last changed: 2022-12-06
 # by: ah
 # verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
-file 5.93/kwidgetsaddons-5.93.0.tar.xz
-chk 9c35e17d8c6faae58bfd48180bf968b813e6bfe2d49041b3285f8e326842a410
+file 5.100/kwidgetsaddons-5.100.0.tar.xz
+chk c71913964fa66cc03d9faafeb91efd397095ecfc369f3cd60235cfda49484a1f
 
 # kcompletion
-# last changed: 2022-05-11
+# last changed: 2022-12-06
 # by: ah
 # verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
-file 5.93/kcompletion-5.93.0.tar.xz
-chk 7f8c9355e8875b619ca852741e972f41c252aa2e95b439161acc7b32d9e8fb9c
+file 5.100/kcompletion-5.100.0.tar.xz
+chk 63689d9bad9c7320734e84c5b6434aa11c15b026c845ae05f5ce154afd0a4586
 
 # kwindowsystem
-# last changed: 2022-05-11
+# last changed: 2022-12-06
 # by: ah
 # verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
-file 5.93/kwindowsystem-5.93.0.tar.xz
-chk 97cb223a4d1a7487a3ed496e10ff5e8c320ea7458eb34cbe4ed114bc19ebe4a1
+file 5.100/kwindowsystem-5.100.0.tar.xz
+chk 69b24ebaa5c94aa040c46dc1270a8fc9e44ed35d497c16b9b3244bb200834fb3
 
 # kcoreaddons
-# last changed: 2022-05-11
+# last changed: 2022-12-06
 # by: ah
 # verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
-file 5.93/kcoreaddons-5.93.0.tar.xz
-chk 920a278af97dea3add06770a6f3604744c20d667973cb71cf477145785dbf043
+file 5.100/kcoreaddons-5.100.0.tar.xz
+chk dfed68386f919bd214f07837a2a5356e61958237d845115b632e35349e5c1790
 
 # kcodecs
-# last changed: 2022-05-11
+# last changed: 2022-12-06
 # by: ah
 # verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
-file 5.93/kcodecs-5.93.0.tar.xz
-chk 0efc5c8baab3142f8a0ab9369b255061772a57a80fb616b7305bf98235b2288b
+file 5.100/kcodecs-5.100.0.tar.xz
+chk 55e8b79a27846d1ef90cdc2567b227b31ef8ef5325143c95d404f6eca1e40ca3
 
 # kconfigwidgets
-# last changed: 2022-05-11
+# last changed: 2022-12-09
 # by: ah
 # verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
-file 5.93/kconfigwidgets-5.93.0.tar.xz
-chk db18e0f2217ead6dd6f5877551902d5da86aa026686e3c564f5f96be279f24bb
+file 5.99/kconfigwidgets-5.99.0.tar.xz
+chk 8579be2a4301071fb0485fccc733083b58330ac92d776be1b73e6f377a7dbf1f
 
 # kdbusaddons
-# last changed: 2022-05-11
+# last changed: 2022-12-06
 # by: ah
 # verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
-file 5.93/kdbusaddons-5.93.0.tar.xz
-chk cc2c74501e65b97af1849ff454e51393f3a07755c155854bdee741a006822ad9
+file 5.100/kdbusaddons-5.100.0.tar.xz
+chk e0755137a3acd57e08b7cc257f60b50322ffe88e8933adfac84d156a920224b3
 
 # kxmlgui
-# last changed: 2022-05-11
+# last changed: 2022-12-06
 # by: ah
 # verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
-file 5.93/kxmlgui-5.93.0.tar.xz
-chk 74ba65d95fac0cd09cb66e14d199efc739e1a8c9aec25812f41cfc64d7f4b099
+file 5.100/kxmlgui-5.100.0.tar.xz
+chk 7eee0553056d033d95cd2a04259585d789746f011a8c5bd89fc6632cdc568ea5
 
 # kguiaddons
-# last changed: 2022-05-11
+# last changed: 2022-12-06
 # by: ah
 # verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
-file 5.93/kguiaddons-5.93.0.tar.xz
-chk 27f26392140bd1abcb86c154fd6fd87e50b2493787827b2b1cacaf76544af40a
+file 5.100/kguiaddons-5.100.0.tar.xz
+chk 5ce16343ed9d881ebb2b5e5ff4b8bd886dd95778910d27308197b072dd3b3d02
 
 # kitemviews
-# last changed: 2022-05-11
+# last changed: 2022-12-06
 # by: ah
 # verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
-file 5.93/kitemviews-5.93.0.tar.xz
-chk 93f01dec3b795b28cc6f6859873ebb941a9504eaafd13ff9f72b987d71e55abf
+file 5.100/kitemviews-5.100.0.tar.xz
+chk 9c6d1109e956ded4950fd791d1895c421dda85db35c7d8d08550b92533a3ff1a
 
 # kitemmodels
-# last changed: 2022-05-11
+# last changed: 2022-12-06
 # by: ah
 # verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
-file 5.93/kitemmodels-5.93.0.tar.xz
-chk 5bb9918b92ac37f1bc52c5abe04e8dbea54f31fa0101edad6d9e92c3a9f0485b
+file 5.100/kitemmodels-5.100.0.tar.xz
+chk a327626184f36e19998ec8848714e362de615cbc2c98cdf3737457d9878e31d8
 
 # kiconthemes
-# last changed: 2022-05-11
+# last changed: 2022-12-06
 # by: ah
 # verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
-file 5.93/kiconthemes-5.93.0.tar.xz
-chk 75f7c5b34f4f1a228b4cbd81a284dbfdc0c0810ddd3a39e69f9363ab3598e2b4
+file 5.100/kiconthemes-5.100.0.tar.xz
+chk 902ecc3b61e7492d62a1a5fb6c9493a72507ade5d312c6633ce508b0437850b9
 
 # breeze-icons
-# last changed: 2022-05-11
+# last changed: 2022-12-06
 # by: ah
 # verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
-file 5.93/breeze-icons-5.93.0.tar.xz
-chk 4367dfa6b48aa645a3680489be96e03a9a6fc20f57277b3ca5e37ce8df4d03e6
+file 5.100/breeze-icons-5.100.0.tar.xz
+chk d02c1b6952fddb306ff58f368ffc8d5cbdf0d46afd652c9c56c86020440dcadb
 
 # karchive
-# last changed: 2022-05-11
+# last changed: 2022-12-06
 # by: ah
 # verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
-file 5.93/karchive-5.93.0.tar.xz
-chk 61e326a840860270b7f8b9e8966462085b4f309be5c3a84c3b265eb95694c7fb
+file 5.100/karchive-5.100.0.tar.xz
+chk f5ae507b0ceca71229017128997e12eff51b697ca2a1a37b729f9253ebfe969b
 
 # kcrash
-# last changed: 2022-05-11
+# last changed: 2022-12-06
 # by: ah
 # verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
-file 5.93/kcrash-5.93.0.tar.xz
-chk 2ff8d6c6924b2b752ef4a929390606bb55ce2aa55c582927269bd65556992dd6
-
-
+file 5.100/kcrash-5.100.0.tar.xz
+chk 1a76e9ddb2be3980b38ec0d6d29102b635a925d6a8bce938a5cf1a46d812a728
 ### END PASTE ###
 
 server http://download.kde.org/stable/release-service/
@@ -586,18 +400,32 @@ chk c1f4c06c61f6b4ddde7395b1cfb1f2411a32638e09c6f0a58c6557a7dffe4120
 server https://gnupg.org/ftp/gcrypt/snapshots
 
 # gpgme
-# last changed: 2022-08-23
+# last changed: 2022-12-09
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file gpgme/gpgme-1.18.1-beta13.tar.xz
-chk b6e444b057747ad7a00a98b333a9dadff6c8eea970c6768f22ee969ef5de6b0f
+file gpgme/gpgme-1.18.1-beta46.tar.xz
+chk 34fc73611e9081f8b2aab5431cc556bdd55493e0741426a92e276f979490f55a
+
+# libassuan
+# last changed: 2022-11-18
+# by: aheinecke
+# verified: Tarball created by aheinecke.
+file libassuan/libassuan-2.5.6-beta50.tar.xz
+chk 217551826467e28837ff211fe2c8b5cb7d1d6ab28b05719feb095ac223322150
 
 # gpgol
-# last changed: 2022-09-05
+# last changed: 2022-11-28
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-# file gpgol/gpgol-2.5.4-beta14.tar.xz
-# chk 245f1151189cdeb10afa7aadf7e4d68f17f5d1ed9df8a05bf8472ee220721105
+file gpgol/gpgol-2.5.6-beta5.tar.xz
+chk 7ecc29787b7ea141969a6be482119051847b8aad5f492b875b874ee55f6901d3
+
+# gpgex
+# last changed: 2022-12-06
+# by: aheinecke
+# verified: Tarball created by aheinecke.
+file gpgex/gpgex-1.0.10-beta5.tar.xz
+chk 2c227634528ef76bcca7fd4b7fe5c38a535f6e68bbe5b2cdc6cc4a74810b2dba
 
 # gpg4win-tools
 # last changed: 2022-08-29
@@ -606,30 +434,16 @@ chk b6e444b057747ad7a00a98b333a9dadff6c8eea970c6768f22ee969ef5de6b0f
 file gpg4win-tools/gpg4win-tools-202208290924.tar.xz
 chk fe20b69d84893618625d76e55f772477a80628da98411c8bb9c1a5e01028b3f9
 
-# KDE-l10n
-# last changed: 2022-09-07
-# by: aheinecke
-# verified: Tarball created by aheinecke.
-file kde-l10n/kde-l10n-202209071336-bin.tar.xz
-chk b4b42483931a703d344a4b0658d20587aefbae8dc8906d970c71d3c91af11ca6
-
-file kde-l10n/kde-l10n-202209071336-src.tar.xz
-chk 38d796b3fa4a487014b70cf437d82cd9de0d4b92f8c9389a20d5a4a65fc56400
-
 # libkleo
-# last changed: 2022-09-05
+# last changed: 2022-12-09
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file libkleo/libkleo-202209050940.tar.xz
-chk a8ce9be955fe14cf3b53555d217872e3d8ddf7d0bbd5cb4724e044c47b8a1c5e
+file libkleo/libkleo-202212091057.tar.xz
+chk 33c57c729ba38f79ef9fdec9dd5281f51042035436c0264ebee90e2cc43e0d19
 
-# kleopatra
-# last changed: 2022-09-07
+# kleopatra 3.1.25
+# last changed: 2022-12-07
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file kleopatra/kleopatra-202209071217.tar.xz
-chk b38af32209f5789b6033e5742a8b128f7517bf0c23e0a3cd939b71550ade0377
-# Due to tagging the actual used version in 3.1.24 and 3.1.25 is
-# file kleopatra/kleopatra-202209071717.tar.xz
-# chk  a260b4e4c66e69ef7bf23a51b5da3657bcfa2d392d0b1e64ba4e796de8e7b97c
-# but the unpacked files are identical.  (wk 2022-10-11)
+file kleopatra/kleopatra-202212071431.tar.xz
+chk 59770959ea1cb8831cfd7fa6af5b07f6c9e6cd1ea6e3f0130a313f90150245f3

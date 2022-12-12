@@ -46,19 +46,17 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
              docker/run-appimage-build.sh \
              docker/run-gpg4win-build.sh \
              patches/extra-cmake-modules/0001-Use-BIN_INSTALL_DIR-data-for-DATAROOTDIR-on-Windows.patch \
-             patches/glib/glib-1-fixes.patch \
-             patches/glib/glib-2-fixes.patch \
-             patches/glib/glib-9-fixes.patch \
              patches/kconfig/0001-Read-defaults-from-Windows-registry.patch \
              patches/kconfigwidgets/0001-Fix-crash-on-exit-on-Windows.patch \
              patches/kconfigwidgets/0001-Make-QDbus-optional.patch \
+             patches/kconfigwidgets/fake-version.patch \
              patches/kiconthemes/0001-Make-DBus-optional.patch \
              patches/kleopatra/set-windows-registry.patch \
-             patches/kwidgetsaddons/KMessageWidget-fix-tab-order.patch \
-             patches/kwidgetsaddons/ignore-invalid-dates-in-picker.patch \
+             patches/kleopatra/0001-Don-t-report-success-if-the-key-signing-job-was-canc.patch \
+             patches/kleopatra/0003-Add-group-configuration-to-help-menu.patch \
+             patches/kleopatra/0004-Fix-windows-build.patch \
              patches/kxmlgui/0001-make-qdbus-optional.patch \
              patches/kxmlgui/0004-Cruedly-disable-KSendbugmail.patch \
-             patches/kxmlgui/0001-Replace-OS-specific-system-information-code-with-QSy.patch \
              patches/libkleo/set-cxx-standard.patch \
              patches/qtbase/0001-Fix-build-without-std-thread.patch \
              patches/qtbase/0001-Gpg4win-qstandardpaths-patch.patch \
@@ -66,9 +64,13 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
              patches/qtbase/0003-Fix-build-with-GCC-11-include-limits.patch \
              patches/qttools/disable-most-tools.patch \
              patches/w32pth-2.0.5/workaround-broken-libtool.patch \
+             patches/kcoreaddons/0001-Fix-MINGW-build.patch \
+             patches/ki18n/0001-Undef-snprintf-for-windows.patch \
              patches-appimage/kconfigwidgets/0001-build-without-KF5Auth.patch \
+             patches-appimage/kconfigwidgets/fake-version.patch \
+             patches-appimage/kleopatra/0001-Don-t-report-success-if-the-key-signing-job-was-canc.patch \
+             patches-appimage/kleopatra/0003-Add-group-configuration-to-help-menu.patch \
              patches-appimage/qtwayland-5.15.0/00-disable-wayland-server.patch \
-             patches-appimage/kwidgetsaddons/KMessageWidget-fix-tab-order.patch \
              patches-appimage/libkleo/set-cxx-standard.patch \
              patches-appimage/kmime/set-cxx-standard.patch \
              patches-appimage/gnupg-2.3.7/0001-dirmngr-Fix-NTBTLS-include-for-test.patch \
