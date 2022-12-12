@@ -837,18 +837,17 @@ sub gpg4win_nsis_stubs
         {
             my $idx = 0;
             my $target;
+            if ($args[0] eq '/nonfatal')
+            {
+                print STDERR "$file:$.: ignoring: non-fatal flag for $args[1]\n"
+                if $::nsis_parser_warn;
+                shift @args
+            }
 
             fail "$file:$.: not supported" if ($#args < 0 || $#args > 1);
 
             if ($#args == 1)
             {
-                if ($args[0] eq '/nonfatal')
-                {
-                    print STDERR "$file:$.: warning: skipping non-fatal file $args[1]\n"
-                    if $::nsis_parser_warn;
-                    return;
-                }
-
                 $target = $args[0];
                 if (not $target =~ s,^/oname=(.*)$,$1,)
                 {
