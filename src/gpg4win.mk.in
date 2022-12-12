@@ -1179,8 +1179,11 @@ $(stampdir)/stamp-all-upload: $(stampdir)/stamp-dist-self \
 	echo "https://download.gnupg.com/files/src/Gnupg-VS-Desktop-$(VSD_VERSION).tar.bz2.sig"
 	touch $(stampdir)/stamps-all-upload
 
+.PHONY: msi
+# Add here if you use new product names we need new subst targets
 msi: $(stampdir)/stamp-versions-all-signed \
-	$(addsuffix .msi,$(addprefix installers/GnuPG-VS-Desktop-$(VSD_VERSION_FILE)-,$(msi_targets)))
+	$(subst GnuPG-VS-Desktop-$(VSD_VERSION_FILE)-Desktop.msi, installers/GnuPG-Desktop-$(VSD_VERSION_FILE)-Desktop.msi, \
+	$(addsuffix .msi,$(addprefix installers/GnuPG-VS-Desktop-$(VSD_VERSION_FILE)-,$(msi_targets))))
 	if [ -z "$(addsuffix .msi,$(addprefix installers/GnuPG-VS-Desktop-$(VSD_VERSION_FILE)-,$(msi_targets)))" ]; then \
 		echo "No MSI targets configured."; \
 	else \
