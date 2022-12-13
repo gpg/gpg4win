@@ -220,10 +220,6 @@ define gpg4win_pkg_gpgol_post_install
 ( cd $$$${pkgbdir}/doc; make pdf )
 endef
 
-define gpg4win_pkg_kxmlgui_post_install
-	rm -rf $$$${pkgidir}/share/locale
-endef
-
 # We would like to use --with-libiconv-prefix and
 # --with-libintl-prefix, but these don't work with the cheesy
 # non-"libfoo.la" versions of iconv and gettext that we are using.
