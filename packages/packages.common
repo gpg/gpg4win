@@ -109,8 +109,8 @@ chk b7e11a64246bbe5ef37748de43b245abd72cfcd53c9ae5e7fc5ca59f1c81268d
 # last-changed: 2021-04-21
 # by: ah
 # verified: distsigkey.gpg
-#file libassuan/libassuan-2.5.5.tar.bz2
-#chk  8e8c2fcc982f9ca67dcbb1d95e2dc746b1739a4668bc20b3a3c5be632edb34e4
+file libassuan/libassuan-2.5.5.tar.bz2
+chk  8e8c2fcc982f9ca67dcbb1d95e2dc746b1739a4668bc20b3a3c5be632edb34e4
 
 # last changed 2021-09-20
 # by ik
@@ -405,13 +405,6 @@ server https://gnupg.org/ftp/gcrypt/snapshots
 # verified: Tarball created by aheinecke.
 file gpgme/gpgme-1.18.1-beta46.tar.xz
 chk 34fc73611e9081f8b2aab5431cc556bdd55493e0741426a92e276f979490f55a
-
-# libassuan
-# last changed: 2022-11-18
-# by: aheinecke
-# verified: Tarball created by aheinecke.
-file libassuan/libassuan-2.5.6-beta50.tar.xz
-chk 217551826467e28837ff211fe2c8b5cb7d1d6ab28b05719feb095ac223322150
 
 # gpgol
 # last changed: 2022-11-28
