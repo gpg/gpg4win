@@ -946,7 +946,7 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kwidgetsaddons_prefix}/share/locale/sr/LC_MESSAGES/kwidgetsaddons5_qt.qm
   File ${kwindowsystem_prefix}/share/locale/sr/LC_MESSAGES/kwindowsystem5_qt.qm
   File ${libkleo_prefix}/share/locale/sr/LC_MESSAGES/libkleopatra.mo
-  File ${kleopatra_prefix}/share/locale/sr/LC_MESSAGES/kleopatra.mo
+#  File ${kleopatra_prefix}/share/locale/sr/LC_MESSAGES/kleopatra.mo
 #  File ${kxmlgui_prefix}/share/locale/sr/LC_MESSAGES/kxmlgui5.mo
   SetOutPath "$INSTDIR\share\locale\sv"
   File ${kcfg_prefix}/share/locale/sv/kf5_entry.desktop
