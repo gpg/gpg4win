@@ -30,5 +30,24 @@ index 5ab12455..1a8a87b5 100644
      const auto man_gpg = new DocAction(QIcon::fromTheme(QStringLiteral("help-contextual")), i18n("GnuPG Manual"),
              QStringLiteral("gnupg.pdf"), QStringLiteral("../share/doc/gnupg"));
      coll->addAction(QStringLiteral("help_doc_gnupg"), man_gpg);
+diff --git a/src/kleopatra.rc b/src/kleopatra.rc
+index 17b20f71..5bba1cba 100644
+--- a/src/kleopatra.rc
++++ b/src/kleopatra.rc
+@@ -1,5 +1,5 @@
+ <!DOCTYPE gui >
+-<gui name="kleopatra" version="511" >
++<gui name="kleopatra" version="512" >
+     <MenuBar>
+         <Menu name="file">
+             <text>&amp;File</text>
+@@ -96,6 +96,7 @@
+             <Action name="help_doc_smartcard"/>
+             <Action name="help_doc_vsa10573"/>
+             <Action name="help_doc_vsa10584"/>
++            <Action name="help_doc_groups"/>
+             <Separator/>
+             <Action name="help_check_updates"/>
+         </Menu>
 --
 2.38.1
