@@ -150,6 +150,10 @@ appimage_pkg_kcompletion_configure = \
 appimage_pkg_kconfigwidgets_configure = \
     -DBUILD_DESIGNERPLUGIN=OFF
 
+appimage_pkg_kconfig_configure = -DKCONFIG_USE_DBUS=OFF -DKCONFIG_USE_QML=OFF
+
+appimage_pkg_kguiaddons_configure = -DWITH_WAYLAND=OFF
+
 appimage_pkg_ki18n_configure = -DBUILD_WITH_QML=OFF
 
 appimage_pkg_kiconthemes_configure = \
