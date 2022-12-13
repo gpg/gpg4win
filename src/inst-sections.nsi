@@ -106,9 +106,8 @@
 !ifdef HAVE_PKG_KMIME
 !include "inst-kmime.nsi"
 !endif
-!ifdef HAVE_PKG_KDE_L10N
+# include translations unconditionally
 !include "inst-kde-l10n.nsi"
-!endif
 !ifdef HAVE_PKG_KICONTHEMES
 !include "inst-kiconthemes.nsi"
 !endif
