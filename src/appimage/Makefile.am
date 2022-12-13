@@ -46,7 +46,7 @@ appimage_kdepkgs = kconfig kwidgetsaddons ki18n extra-cmake-modules \
 		   kcrash kdbusaddons
 
 # Binary packages for the AppImage
-appimage_bpkgs = kde-l10n
+# appimage_bpkgs =
 
 appimage_pkg_gpgme_configure = --enable-languages=cpp,qt \
   --disable-gpg-test \
