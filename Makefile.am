@@ -74,6 +74,10 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
              patches-appimage/libkleo/set-cxx-standard.patch \
              patches-appimage/kmime/set-cxx-standard.patch \
              patches-appimage/gnupg-2.3.7/0001-dirmngr-Fix-NTBTLS-include-for-test.patch \
+             patches-appimage/kleopatra/0001-po-Update-German-translation-for-3.1.26.patch \
+	     patches-appimage/libkleo/0001-po-Update-German-translation-for-kleopatra-3.1.26.patch \
+	     patches/kleopatra/0001-po-Update-German-translation-for-3.1.26.patch \
+	     patches/libkleo/0001-po-Update-German-translation-for-kleopatra-3.1.26.patch \
              patches-appimage/libkleo/gpg4win-check.patch
 
 copy-news:
