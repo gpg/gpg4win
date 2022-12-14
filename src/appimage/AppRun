@@ -246,7 +246,7 @@ if [ ${_gnupg_appimage} = vsd -a -z "$GNUPGHOME" ]; then
     # Create a script so that external programs have a way to figure
     # out information on this AppImage instance.  We don't fail on
     # write error so that it is usable also in read-only environments.
-    cat > "${GNUPGHOME:-$HOME/.gnupg}"/run-gpgconf <<EOF || true
+    cat > "$GNUPGHOME"/run-gpgconf <<EOF || true
 #!/bin/sh
 # Created by $myname
 GNUPGHOME="$GNUPGHOME"
