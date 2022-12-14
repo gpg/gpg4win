@@ -1193,7 +1193,8 @@ msi: $(stampdir)/stamp-versions-all-signed \
 	fi
 
 $(stampdir)/stamp-msi-all-signed: gnupg-vsd/sign.mk \
-	$(addsuffix .msi,$(addprefix signed_installers/GnuPG-VS-Desktop-$(VSD_VERSION_FILE)-,$(msi_targets)))
+	$(subst GnuPG-VS-Desktop-$(VSD_VERSION_FILE)-Desktop.msi, signed_installers/GnuPG-Desktop-$(VSD_VERSION_FILE)-Desktop.msi, \
+	  $(addsuffix .msi,$(addprefix signed_installers/GnuPG-VS-Desktop-$(VSD_VERSION_FILE)-,$(msi_targets))))
 	touch $(stampdir)/stamp-msi-all-signed
 
 
