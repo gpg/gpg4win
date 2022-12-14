@@ -4,11 +4,15 @@ this_dir="$(readlink -f "$(dirname "$0")")"
 if [ -f "${APPDIR}/GnuPG-VS-Desktop-VERSION" ]; then
     _gnupg_appimage=vsd
     _gnupg_appimage_name="GnuPG VS-Desktop"
-    myname="_gnupg_appimage_name "$(cat "${APPDIR}/GnuPG-VS-Desktop-VERSION")
+    myname="$_gnupg_appimage_name "$(cat "${APPDIR}/GnuPG-VS-Desktop-VERSION")
+elif [ -f "${APPDIR}/GnuPG-Desktop-VERSION" ]; then
+    _gnupg_appimage=desktop
+    _gnupg_appimage_name="GnuPG Desktop"
+    myname="$_gnupg_appimage_name "$(cat "${APPDIR}/GnuPG-VS-Desktop-VERSION")
 else
     _gnupg_appimage=generic
-    _gnupg_appimage_name="GnuPG Desktop"
-    myname="$_gnupg_appimage_name "$(cat "${APPDIR}/GnuPG-Desktop-VERSION")
+    _gnupg_appimage_name="GnuPG Foo"
+    myname="$_gnupg_appimage_name "$(cat "${APPDIR}/GnuPG-Foo-VERSION")
 fi
 
 opt_c=no
@@ -41,7 +45,7 @@ while [ $# -gt 0 ]; do
 $myname
 Copyright (C) 2022 g10 Code GmbH
 
-$_gnupg_appimage_name consists of several independent developed packages,
+${_gnupg_appimage_name} consists of several independent developed packages,
 available under different license conditions.  Most of these packages
 however are available under the GNU General Public License (GNU GPL).
 Common to all is that they are free to use without restrictions, may
@@ -225,6 +229,7 @@ fi
 # GNUPGHOME so that the entire installation will be separate from the
 # system's standard configuration.
 if [ -f $prestart_snippet ]; then
+     echo "note: including $prestart_snippet" >&2
     . $prestart_snippet
 fi
 
@@ -241,14 +246,28 @@ if [ ${_gnupg_appimage} = vsd -a -z "$GNUPGHOME" ]; then
     # Create a script so that external programs have a way to figure
     # out information on this AppImage instance.  We don't fail on
     # write error so that it is usable also in read-only environments.
-    cat > "$GNUPGHOME"/run-gpgconf <<EOF || true
+    cat > "${GNUPGHOME:-$HOME/.gnupg}"/run-gpgconf <<EOF || true
 #!/bin/sh
+# Created by $myname
 GNUPGHOME="$GNUPGHOME"
 APPDIR="$APPDIR"
 export GNUPGHOME APPDIR
 exec $APPDIR/usr/bin/gpgconf "\$@"
 EOF
     chmod +x "$GNUPGHOME"/run-gpgconf || true
+elif [ ${_gnupg_appimage} = desktop -a -w "${GNUPGHOME:-$HOME/.gnupg}" ]; then
+    # Create a script so that external programs have a way to figure
+    # out information on this AppImage instance.  We don't fail on
+    # write error so that it is usable also in read-only environments.
+    cat > "${GNUPGHOME:-$HOME/.gnupg}"/run-desktop-gpgconf <<EOF || true
+#!/bin/sh
+# Created by $myname
+GNUPGHOME="${GNUPGHOME:-$HOME/.gnupg}"
+APPDIR="$APPDIR"
+export GNUPGHOME APPDIR
+exec $APPDIR/usr/bin/gpgconf "\$@"
+EOF
+    chmod +x "${GNUPGHOME:-$HOME/.gnupg}"/run-desktop-gpgconf || true
 fi
 
 # Start gpg-agent launching a program.  gpg-agent will then watch for
