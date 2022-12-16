@@ -679,7 +679,7 @@ $(stampdir)/stamp-$(1)-01-patch: $(stampdir)/stamp-$(1)-00-unpack
 		sed -i 's/set(KF5_VERSION.*)/set(KF5_VERSION "5.100.0")/' CMakeLists.txt; \
 		sed -i 's/set(KMIME_VERSION.*)/set(KMIME_VERSION "5.2.40")/' CMakeLists.txt; \
 		sed -i 's/set(LIBKLEO_VERSION.*)/set(LIBKLEO_VERSION "5.4.40")/' CMakeLists.txt; \
-		sed -i 's/set(QT_REQUIRED_VERSION.*)/set(QT_REQUIRED_VERSION "5.10.0")/' CMakeLists.txt; \
+		sed -i 's/set(QT_REQUIRED_VERSION.*"5.*)/set(QT_REQUIRED_VERSION "5.10.0")/' CMakeLists.txt; \
 		sed -i 's/set(GPGME_REQUIRED_VERSION.*)/set(GPGME_REQUIRED_VERSION "1.10.0")/' CMakeLists.txt; \
 		for pfile in "$$$${pkgpbdir}"/*.patch "$$$${pkgpdir}"/*.patch ; do  \
 		(cd "$$$${pkgsdir}"; chmod +x "$$$${pfile}"; "$$$${pfile}")		\
