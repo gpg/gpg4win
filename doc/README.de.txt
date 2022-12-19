@@ -163,9 +163,6 @@ Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 
 Eine aktuelle, deutschsprachige Übersicht der Änderungen finden Sie online
 unter: https://www.gpg4win.de/change-history-de.html
-Im Weiteren finden Sie die Einträge aus der englischen NEWS-Datei:
-
-!NEWSFILE!
 
 
 5. Versionsnummern der einzelnen Programmteile

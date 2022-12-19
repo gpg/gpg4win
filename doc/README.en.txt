@@ -151,8 +151,6 @@ Listed below are the changes as recorded in the source distribution's
 NEWS file. An up-to-date list of changes is also available at:
 https://www.gpg4win.org/change-history.html
 
-!NEWSFILE!
-
 
 5. Version numbers of included software
 =======================================
