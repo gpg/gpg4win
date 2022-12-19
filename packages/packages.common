@@ -119,11 +119,11 @@ file npth/npth-1.6.tar.bz2
 chk 1393abd9adcf0762d34798dc34fdcf4d0d22a8410721e76f1e3afcd1daa4e2d1
 
 
-# last changed 2022-10-07
-# by wk
-# verified: build tree
-file libksba/libksba-1.6.2.tar.bz2
-chk  fce01ccac59812bddadffacff017dac2e4762bdb6ebc6ffe06f6ed4f6192c971
+# last changed 2022-12-19
+# by ah
+# verified: Signature from: 6DAA6E64A76D2840571B4902528897B826403ADA
+file libksba/libksba-1.6.3.tar.bz2
+chk  3f72c68db30971ebbf14367527719423f0a4d5f8103fc9f4a1c01a9fa440de5c
 
 
 # last changed 2022-04-07
