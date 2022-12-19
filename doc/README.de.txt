@@ -66,43 +66,81 @@ Die integrierten Gpg4win-Komponenten in Version !VERSION! sind:
 Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 -----------------------------------------
 
+- GPA: Macht's gut, und danke für den Fisch.  Um den
+  Wartungsaufwand zu verringern und die allgemeine Qualität von
+  Gpg4win zu verbessern, haben wir entschieden, GPA nicht weiter
+  auszuliefern.  Im letzten Jahrzehnt wurde zudem Kleopatra
+  erheblich weiterentwickelt und wir richten unserer Hauptaugenmerk
+  weiterhin auf dessen Entwicklung.
+
 --- Features ---
 
--  GnuPG: Im VS-NfD Modus wird jetzt AES-128 ansatt 3-DES als
-   implizierter Verschlüsselungsalgorithmus verwendet.  Dies
-   vermeidet Probleme mit Software, die 3-DES als nicht nicht
-   konform ansieht obgleich sie lediglich 3-DES als unterstützen
-   Algorithmus publiziert.   [T6063]
+- GnuPG: Die Überprüfung von Signaturen ist jetzt viermal
+  schneller.  Das Signieren ist jetzt doppelt so schnell.  [T5826]
 
--  GnuPG: Eine neues LDAP Server Flag "areconly" (A-record-only)
-   kann benutzt werden, um lange Verzögerungen auf einigen AD
-   Installationen zu vermeiden.
+- GnuPG: Zusätzlich eingefügte Revocation Zertifikate werden jetzt
+  mit importiert um das WKD zu verbessern.
 
--  GnuPG: Ein neues Feature ermöglicht das spiegeln der Schlüssel
-   eines internen LDAP Keyservers auf ein Web Key Directory.
-   [T6224]
+- GnuPG: Das Programm gpg-wks-client hat jetzt eine neue Option
+  --add-revocs.  [rG2f4492f3be]
 
--  GnuPG: Die Ausgabe von Fehlern für falsche Passwörter beim Import
-   von PKCS#11 Daten wurde verbessert.  [T5713,T6037]
+- GnuPG: Das Programm gpg-wks-client ignoriert jetzt abgelaufene
+  User IDs.  [T6292]
+
+- GnuPG: Die Telesec Signature Card v2.0 wird jetzt für OpenPGP
+  unterstützt.  [T6252]
+
+- GnuPG: Für das neue AEAD Format wird jetzt nur noch der schnelle
+  OCB Modus erlaubt.  Der EAX Modus steht aber noch zur
+  Entschlüsselung bereit.  [rG5a2cef801d]
+
+- Kleopatra: Der Import von Zertifikaten aus nicht Standard
+  konformen UTF-16 kodierten Textdateien ist nun möglich.  [T6298]
+
+- Kleopatra: Neue Option um den lokal gespeicherten geheimen
+  Schlüssel nach der Übertragung auf eine Smartcard zu löschen.
+  [T5836]
+
+- Kleopatra: Im Dialog zur Einrichtung von Gruppen wurde die
+  Darstellung von Schlüsseln verbessert.  [T6295]
+
+- Kleopatra: Der Dialog zur Änderung der Vertrauenswürdigkeit des
+  Besitzers wurde vereinfacht.  [T6148]
+
+- Kleopatra: Bei der Generierung von Schlüsseln auf Smartcards
+  werden jetzt auch unterstützte ECC Kurven angeboten.   [T4429]
 
 --- Bug fixes ---
 
--  GnuPG: Die X.509/CMS Parser DLL Libksba wurde auf Version
-   1.6.2 aktualisiert um eine ein gravierendes Sicherheitsproblem zu
-   beheben.  [T6230]
+- GnuPG: Die X.509/CMS DLL Libksba wurde auf Version 1.6.3
+  aktualisiert um ein Sicherheitsproblem im Parser von CRL
+  Signaturen zu beheben.  [T6230]
 
--  GnuPG: Unbekannte Schlüssel werden während der Entschlüsselung
-   nicht mehr als nicht-konform angesehen.  [T6205]
+- GnuPG: Trusted Introducer funktionieren jetzt auch mit einer
+  Mailadresse ohne spitze Klammern.  [T6238]
 
--  GnuPG: Der Rückgriff auf andere CRL Distribution Points im
-   Fehlerfall wurde verbessert.
+- GpgOL: IMAP Zugriff auf verschlüsselte Mails funktioniert wieder.
+  [T6203]
 
--  GnuPG: Das Hochladen von mehreren Schlüsseln auf LDAP Server, die
-   im "colon" Format konfiguriert sind, funktioniert jetzt.
+- Kleopatra: Es wird nicht mehr "Erfolg" angezeigt, wenn die
+  Beglaubigung eines Schlüssels abgebrochen wurde.  [T6305]
 
--  GnuPG: Das Hochladen von Schlüsseln auf einen LDAP Server, mit
-   konfigurierter BaseDN, funktioniert jetzt.  [T6047]
+- Kleopatra: Fehler beim Import werden jetzt direkt angezeigt.
+  [T6302]
 
+- Kleopatra: S/MIME Zertifikate, die zum Signieren oder
+  Verschlüsseln nicht gültig sind, werden nicht mehr angeboten.
+  [T6216]
+
+- Kleopatra: Die Benutzerin wird nicht mehr gefrat, ein
+  importiertes aber abgelaufen oder widerrufenes OpenPGP Zertifikat
+  zu beglaubigen.  [T6155]
+
+- Kleopatra: Ein Absturz nach dem Schließen eines Details Dialogs
+  wurde behoben.  [T6180]
+
+- Kleopatra: Verbesserungen an der Barrierefreiheit des
+  Notizblocks.  [T6188]
 
 3. Hinweise
 ===========

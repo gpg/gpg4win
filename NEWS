@@ -7,6 +7,19 @@
 Noteworthy changes in Version 4.1.0 (2022-12-20)
 -------------------------------------------------
 
+(en) GPA: So long, and thanks for all the fish.  To reduce maintenance
+     and overall quality of Gpg4win we have decided to retire
+     GPA. Over the last decade Kleopatra has made large improvements
+     in quality and is very well maintained and the focus of our
+     development.  [rW3f7ed3834f]
+
+(de) GPA: Macht's gut, und danke für den Fisch.  Um den
+     Wartungsaufwand zu verringern und die allgemeine Qualität von
+     Gpg4win zu verbessern, haben wir entschieden, GPA nicht weiter
+     auszuliefern.  Im letzten Jahrzehnt wurde zudem Kleopatra
+     erheblich weiterentwickelt und wir richten unserer Hauptaugenmerk
+     weiterhin auf dessen Entwicklung.
+
 --- Features ---
 
 (en) GnuPG: Improve signature verification speed by a factor of more
@@ -59,7 +72,7 @@ Noteworthy changes in Version 4.1.0 (2022-12-20)
      [T5836]
 
 (en) Kleopatra: Improve the display of keys in the group edit
-     dialog. [6295]
+     dialog. [T6295]
 
 (de) Kleopatra: Im Dialog zur Einrichtung von Gruppen wurde die
      Darstellung von Schlüsseln verbessert.  [T6295]
@@ -74,19 +87,6 @@ Noteworthy changes in Version 4.1.0 (2022-12-20)
 
 (de) Kleopatra: Bei der Generierung von Schlüsseln auf Smartcards
      werden jetzt auch unterstützte ECC Kurven angeboten.   [T4429]
-
-(en) GPA: So long, and thanks for all the fish.  To reduce maintenance
-     and overall quality of Gpg4win we have decided to retire
-     GPA. Over the last decade Kleopatra has made large improvements
-     in quality and is very well maintained and the focus of our
-     development.  [rW3f7ed3834f]
-
-(de) GPA: Macht's gut, und danke für den Fisch.  Um den
-     Wartungsaufwand zu verringern und die allgemeine Qualität von
-     Gpg4win zu verbessern, haben wir entschieden, GPA nicht weiter
-     auszuliefern.  Im letzten Jahrzehnt wurde zudem Kleopatra
-     erheblich weiterentwickelt und wir richten unserer Hauptaugenmerk
-     weiterhin auf dessen Entwicklung.
 
 --- Bug fixes ---
 
@@ -146,14 +146,13 @@ Noteworthy changes in Version 4.1.0 (2022-12-20)
      Notizblocks.  [T6188]
 
 ~~~~~~~~~~~~~~~
-GnuPG:          2.2.41
+GnuPG:          2.4.0
 Kleopatra:      3.1.26
 GpgOL:          2.5.6
 GpgEX:          1.0.9
 Kompendium DE:  4.0.1
 Compendium EN:  3.0.0
 ~~~~~~~~~~~~~~~
-
 
 Noteworthy changes in Version 3.1.26 (2022-12-14)
 -------------------------------------------------
