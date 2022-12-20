@@ -43,6 +43,17 @@
    <div class="h_text_beta">
 -->
    <div class="h_text">
+   <small>2022-12-20</small><br>
+   <span class="serif_word"><img src="img/bulletin.png" alt"" />
+     m4_ifelse(LANG_DE, `1', `
+      <a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2022/000062.html">
+      Gpg4win 4.1.0 veröffentlicht</a>
+      </span>',`
+      <a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce/2022/000099.html">
+        Gpg4win 4.1.0 released
+      </a>
+      </span>')
+   <p></p>
    <small>2022-10-17</small><br>
    <span class="serif_word"><img src="img/bulletin.png" alt"" />
      m4_ifelse(LANG_DE, `1', `
@@ -61,17 +72,6 @@
       <a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce/2022/000097.html">
         Gpg4win 4.0.3 released
       </a></span>')
-   <p></p>
-   <small>2022-04-22</small><br>
-   <span class="serif_word"><img src="img/bulletin.png" alt"" />
-     m4_ifelse(LANG_DE, `1', `
-      <a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2022/000059.html">
-      Gpg4win 4.0.2 veröffentlicht</a>
-      </span>',`
-      <a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce/2022/000095.html">
-        Gpg4win 4.0.2 released
-      </a>
-      </span>')
    <p></p>
    <div class="limiter"></div>
    <p>
