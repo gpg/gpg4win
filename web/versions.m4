@@ -7,11 +7,11 @@ m4_define(`SDL_SIZE',`169 MByte')
 
 m4_dnl Paste output of mk-chksums here
 m4_define(`SHA1_SRC',`82453e937568f783c210c25ba33cd738d95f08cc')
-m4_define(`SHA1_EXE',`11f888c25d38027aa8545bcc773e9b33dcbbc64b')
+m4_define(`SHA1_EXE',`71e83bc35445e3db8b5fe2a05c723c0e3f2d0b01')
 m4_define(`SHA2_SRC',`cec8cfed0b21621c1e46cd333e573f47a1abcbf5a7f6debc4e010167a621da41')
-m4_define(`SHA2_EXE',`09a247d0999ecb1cabaf566910fa2943858dadb602734b0d5739284dcc1c9646')
+m4_define(`SHA2_EXE',`e0fddc840808eef9531f14a515f8b3b6c46511977f00569161129c1dee413b38')
 m4_define(`LEN_SRC',`177269312')
-m4_define(`LEN_EXE',`28609808')
+m4_define(`LEN_EXE',`28619288')
 m4_dnl end paste
 
 m4_define(`DLPAGE',`I18N(`EN',`download.html')`'I18N(`DE',`download-de.html')')
