@@ -164,45 +164,6 @@ gpg4win_pkg_gettext_make_dir_inst = gettext-runtime
 gpg4win_pkg_gettext_ex_make_dir = gettext-runtime
 gpg4win_pkg_gettext_ex_make_dir_inst = gettext-runtime
 
-gpg4win_pkg_glib_configure = \
-  --disable-modular-tests \
-  --with-lib-prefix=$(idir) --with-libiconv-prefix=$(idir) \
-  CFLAGS=-DGLIB_COMPILATION \
-  CPPFLAGS=-I$(idir)/include LDFLAGS=-L$(idir)/lib CCC=$(host)-g++
-gpg4win_pkg_glib_extracflags = -march=i486
-
-gpg4win_pkg_gdk_pixbuf_configure = \
-  --with-lib-prefix=$(idir) --with-libiconv-prefix=$(idir) \
-  --with-included-loaders=yes \
-  CPPFLAGS=-I$(idir)/include LDFLAGS=-L$(idir)/lib
-
-gpg4win_pkg_gtk__configure = \
-  CPPFLAGS=-I$(idir)/include LDFLAGS=-L$(idir)/lib --disable-cups
-
-gpg4win_pkg_pcre_configure = \
-  --enable-utf \
-  --enable-unicode-properties \
-  --enable-cpp \
-  --disable-pcregrep-libz \
-  --disable-pcregrep-libbz2 \
-  --disable-pcretest-libreadline
-
-# The GnuPG package provides man pages which we have to convert.
-# We also create the MO files here.
-define gpg4win_pkg_gnupg2_post_install
-(for i in gpg2 gpgv2 gpgsm gpg-agent scdaemon gpg-connect-agent gpgconf ; \
-  do man -Tlatin1 -l $$$${pkgidir}/share/man/man1/$$$${i}.1 | \
-    sed `printf "s/_\b//g;s/\b.//g"` | \
-    sed -e 's/$$$$/\r/' > $$$${pkgidir}/share/man/man1/$$$${i}.man ; \
- done ; \
- for i in `$(tsdir)/src/potomo --get-linguas $$$${pkgsdir}/po` ; do \
-     $(MKDIR_P) $$$${pkgidir}/share/locale/$$$${i}/LC_MESSAGES || true; \
-     rm $$$${pkgidir}/share/locale/$$$${i}/LC_MESSAGES/gnupg2.mo 2>/dev/null \
-       || true; \
-     $(tsdir)/src/potomo $$$${pkgsdir}/po/$$$${i}.po \
-              $$$${pkgidir}/share/locale/$$$${i}/LC_MESSAGES/gnupg2.mo; \
- done)
-endef
 
 # Paperkey comes with a man pages which we have to convert.
 define gpg4win_pkg_paperkey_post_install
@@ -277,11 +238,6 @@ gpg4win_pkg_gpgme_ex_configure = --silent \
   --enable-languages=cpp \
   --disable-gpg-test \
   --disable-gpgsm-test
-
-gpg4win_pkg_gpa_configure = --silent \
-  --with-libiconv-prefix=$(idir) --with-libintl-prefix=$(idir) \
-  --with-gpgme-prefix=$(idir) --with-zlib=$(idir) \
-  --with-libassuan-prefix=$(idir) --with-gpg-error-prefix=$(idir)
 
 gpg4win_pkg_gpgol_configure = --silent \
   --with-gpgme-prefix=$(idir) --with-gpg-error-prefix=$(idir) \
