@@ -421,15 +421,15 @@ file gpg4win-tools/gpg4win-tools-202208290924.tar.xz
 chk fe20b69d84893618625d76e55f772477a80628da98411c8bb9c1a5e01028b3f9
 
 # libkleo
-# last changed: 2022-12-09
+# last changed: 2022-12-21
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file libkleo/libkleo-202212091057.tar.xz
-chk 33c57c729ba38f79ef9fdec9dd5281f51042035436c0264ebee90e2cc43e0d19
+file libkleo/libkleo-202212211440.tar.xz
+chk 4605baa3df7bff6eae23412d33c76d57a90894e8ffa3ae9f8d037e84bd02cb2a
 
-# kleopatra 3.1.25
-# last changed: 2022-12-07
+# kleopatra
+# last changed: 2022-12-21
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file kleopatra/kleopatra-202212071431.tar.xz
-chk 59770959ea1cb8831cfd7fa6af5b07f6c9e6cd1ea6e3f0130a313f90150245f3
+file kleopatra/kleopatra-202212211440.tar.xz
+chk abc1b57479a2d07fe8ae2a3f39a968517343856ba72f4c9651f140802bed8669

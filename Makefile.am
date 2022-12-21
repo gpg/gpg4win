@@ -52,9 +52,6 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
              patches/kconfigwidgets/fake-version.patch \
              patches/kiconthemes/0001-Make-DBus-optional.patch \
              patches/kleopatra/set-windows-registry.patch \
-             patches/kleopatra/0001-Don-t-report-success-if-the-key-signing-job-was-canc.patch \
-             patches/kleopatra/0003-Add-group-configuration-to-help-menu.patch \
-             patches/kleopatra/0004-Fix-windows-build.patch \
              patches/kxmlgui/0001-make-qdbus-optional.patch \
              patches/kxmlgui/0004-Cruedly-disable-KSendbugmail.patch \
              patches/libkleo/set-cxx-standard.patch \
@@ -68,8 +65,6 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
              patches/ki18n/0001-Undef-snprintf-for-windows.patch \
              patches-appimage/kconfigwidgets/0001-build-without-KF5Auth.patch \
              patches-appimage/kconfigwidgets/fake-version.patch \
-             patches-appimage/kleopatra/0001-Don-t-report-success-if-the-key-signing-job-was-canc.patch \
-             patches-appimage/kleopatra/0003-Add-group-configuration-to-help-menu.patch \
              patches-appimage/qtwayland-5.15.0/00-disable-wayland-server.patch \
              patches-appimage/libkleo/set-cxx-standard.patch \
              patches-appimage/kmime/set-cxx-standard.patch \
