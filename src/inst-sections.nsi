@@ -468,6 +468,7 @@ select_minimal:
    !insertmacro SelectSection ${SEC_paperkey}
    !insertmacro SelectSection ${SEC_gnupg_w32}
    !insertmacro SelectSection ${SEC_pinentry}
+   !insertmacro SelectSection ${SEC_gpgme}
 continue:
 
 # Check if browser integration was selected on the command line
@@ -603,6 +604,7 @@ Function CalcDepends
 
   # TODO: Handle newer / other gnupg versions
   !insertmacro SelectSection ${SEC_gnupg_w32}
+  !insertmacro SelectSection ${SEC_gpgme}
 
   # Then enable all dependencies, mostly in reverse build list order!
 
