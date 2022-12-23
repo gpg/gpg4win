@@ -320,9 +320,7 @@
 !ifdef HAVE_PKG_KMIME
 !include "uninst-kmime.nsi"
 !endif
-!ifdef HAVE_PKG_KDE_L10N
 !include "uninst-kde-l10n.nsi"
-!endif
 !ifdef HAVE_PKG_LIBKLEO
 !include "uninst-libkleo.nsi"
 !endif

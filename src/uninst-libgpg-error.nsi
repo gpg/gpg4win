@@ -42,7 +42,7 @@ Section "-un.libgpg-error"
   Delete "$INSTDIR\lib\libgpg-assuan.imp"
   Delete "$INSTDIR\include\gpg-error.h"
 ${If} ${RunningX64}
-  Delete /REBOOTOK "$INSTDIR\bin_64\libgpg-error-0.dll"
+  Delete /REBOOTOK "$INSTDIR\bin_64\libgpg-error6-0.dll"
 ${EndIf}
 
 !endif

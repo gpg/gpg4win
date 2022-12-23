@@ -16,17 +16,9 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
-!ifdef prefix
-!undef prefix
-!endif
-!define prefix ${ipdir}/kde-l10n-${gpg4win_pkg_kde_l10n_version}
 
 ; Uninstaller section.
 Section "-un.kde-l10n"
-!ifdef SOURCES
-  Push "${gpg4win_pkg_kde-l10n}"
-  Call un.SourceDelete
-!else
   Delete "$INSTDIR\share\locale\af\kf5_entry.desktop"
   Delete "$INSTDIR\share\locale\af\LC_MESSAGES\kconfigwidgets5.mo"
   Delete "$INSTDIR\share\locale\af\LC_MESSAGES\ki18n5.mo"
@@ -1258,5 +1250,4 @@ RMDir "$INSTDIR\share\locale\zh_TW"
 RMDir "$INSTDIR\share\locale"
 RMDir "$INSTDIR\share"
 RMDir "$INSTDIR"
-!endif
 SectionEnd
