@@ -746,7 +746,10 @@ endef
 # Sign the file $1 and save the result as $2
 define AUTHENTICODE_sign
    set -e;\
-   if [ "$(IS_VSD_BUILD)" = yes ]; then \
+   if [ -n "$(3)" ]; then \
+     val_n="$(3)"; \
+     val_i="https://gnupg.com"; \
+   elif [ "$(IS_VSD_BUILD)" = yes ]; then \
      val_n="GnuPG VS-Desktop" ;\
      val_i="https://gnupg.com" ;\
    else \
@@ -1043,7 +1046,7 @@ installers/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1)-x86.msi: $(stampdir)/stamp-
 
 signed_installers/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi: installers/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi
 	mkdir -p signed_installers
-	$(call AUTHENTICODE_sign,"installers/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi","signed_installers/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi");\
+	$(call AUTHENTICODE_sign,"installers/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi","signed_installers/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi",$$($(1)_PRODUCT_PRETTY));\
 
 $(stampdir)/stamp-$(1)-upload: signed_installers/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi \
 	$(stampdir)/stamp-dist-self
@@ -1105,6 +1108,8 @@ $(1)-upload: $(stampdir)/stamp-$(1)-upload $(stampdir)/stamp-dist-self
 	echo "Source links:"
 	echo "https://download.gnupg.com/files/src/$$($(1)_PRODUCT)-$(VERSION).tar.bz2"
 	echo "https://download.gnupg.com/files/src/$$($(1)_PRODUCT)-$(VERSION).tar.bz2.sig"
+
+$(1)-signed: signed_installers/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi
 
 $(1)-announce: gnupg-vsd/$(1)/announcement.txt
 	set -x
