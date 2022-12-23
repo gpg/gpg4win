@@ -998,6 +998,8 @@ installers/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi: $(stampdir)/stamp-msi-
 		 $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION); \
 	scp $(idir)/$$($(1)_PRODUCT)-$(VERSION).wixlib $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION); \
 	ssh $(WINHOST) "cd AppData/Local/Temp/gpg4win-$(VERSION) && $(WINLIGHT) \
+	-cc . \
+	-reusecab \
 	-spdb \
 	-ext WixUIExtension \
 	-out $$($(1)_PRODUCT)-$(VERSION)-$(1).msi \
@@ -1024,6 +1026,8 @@ installers/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1)-x86.msi: $(stampdir)/stamp-
 		 $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION); \
 	scp $(idir)/$$($(1)_PRODUCT)-$(VERSION)-x86.wixlib $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION); \
 	ssh $(WINHOST) "cd AppData/Local/Temp/gpg4win-$(VERSION) && $(WINLIGHT) \
+	-cc . \
+	-reusecab \
 	-spdb \
 	-ext WixUIExtension \
 	-out $$($(1)_PRODUCT)-$(VERSION)-$(1)-x86.msi \

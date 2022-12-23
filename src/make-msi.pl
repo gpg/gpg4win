@@ -2033,7 +2033,7 @@ print <<EOF;
     </Upgrade>
 
     <!-- Set up Properties -->
-    <MediaTemplate EmbedCab="yes" />
+    <MediaTemplate EmbedCab="yes" MaximumUncompressedMediaSize="10"/>
     <!-- 2 is like highest available in msi -->
     <!-- 1 forces highest available -->
     <Property Id="ALLUSERS" Value="1" />
