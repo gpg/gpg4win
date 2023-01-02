@@ -48,41 +48,6 @@ of Gpg4win VERSION here:</p>
         <a href="https://files.gpg4win.org/">files.gpg4win.org</a>.</li>
 </ul>
 
-<h4>Portable version of Gpg4win</h4>
-<ul>
-    <li><b>Precondition:</b> For the portable version of Gpg4win you
-    need to have Gpg4win installed with all components <i>including GPA</i>.
-    </li>
-    <li>To create the portable version of Gpg4win use the
-    included tool <code>mkportable.exe</code>.
-    </li>
-    <li>In the install directory run the following command from the
-    command line (cmd):
-    <br>
-    <code>mkportable.exe [OPTIONS] TARGETDIR</code>
-    <br>
-    (Important: The name of the target folder has to be at least
-    four characters long.)
-    </li>
-    <br>
-    More hints:
-    <ul>
-      <li>Your certificates and settings are saved in the directory 'home' 
-      of portable version.
-      </li>
-      <li>The portable version does not include GpgOL nor GpgEX!
-      </li>
-      <li><i>Please note:</i> Do not use portable applications - especially 
-      crypto applications - on potentially infected systems.
-      </li>
-      <li>To see all options for creating the portable version run this command:
-      <br>
-      <code>mkportable.exe --help</code>
-      </li>
-    </ul>
-  </ul>
-
-
 <h4>Installation</h4>
 
 <p>After downloading
