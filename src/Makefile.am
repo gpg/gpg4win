@@ -22,8 +22,7 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
         gpg4win-splash.wav exdll.h g4wihelp.c desktopshellrun.cpp \
         g4wihelp.nsi slideshow.cpp gpgwrap.c \
         inst-sections.nsi installer.nsi installer-finish.nsi  \
-	zlib.pc sha1sum.c mkportable.c     \
-	mkportable-vanilla.h mkportable-full.h \
+	zlib.pc sha1sum.c \
         potomo Memento.nsh \
         inst-gpg4win.nsi	   uninst-gpg4win.nsi	      \
         inst-gettext.nsi	   uninst-gettext.nsi	      \
@@ -107,7 +106,7 @@ gpg4win_howto_smime_ll = en de
 HOWTO_files = $(addsuffix .txt, \
                 $(addprefix HOWTO-SMIME.,$(gpg4win_howto_smime_ll)))
 
-foosum_exe = sha1sum.exe md5sum.exe sha256sum.exe mkportable.exe
+foosum_exe = sha1sum.exe md5sum.exe sha256sum.exe
 
 # Need to clean the dll because we bypassed automake.
 CLEANFILES = g4wihelp.dll desktopshellrun.o versioninfo.txt $(README_files) \
@@ -603,11 +602,6 @@ md5sum.exe: sha1sum.c
 
 sha256sum.exe: sha1sum.c
 	$(CC) -DBUILD_SHA256SUM -O2 -o $@ $^
-	$(STRIP) $@
-
-mkportable.exe: mkportable.c \
-                mkportable-vanilla.h mkportable-full.h
-	$(CC) -O2 -o $@ $(srcdir)/mkportable.c
 	$(STRIP) $@
 
 if BUILD_GPG4WIN

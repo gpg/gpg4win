@@ -124,7 +124,6 @@ skip_uninst:
   SetOutPath "$INSTDIR\bin"
   File "${BUILD_DIR}/sha256sum.exe"
   File "${BUILD_DIR}/md5sum.exe"
-  File "${BUILD_DIR}/mkportable.exe"
 
   # Install the mingw32 runtime libraries.  They are stored in the
   # build directory with a different suffix, so that makensis does not
