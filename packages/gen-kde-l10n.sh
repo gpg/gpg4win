@@ -38,17 +38,19 @@ fi
 # QFrameworks are frameworks that use qt translations
 QFRAMEWORKS="kconfig kcompletion kcodecs kcoreaddons kitemviews kwidgetsaddons kwindowsystem"
 # KFrameworks are frameworks that use KDE translations
-KFRAMEWORKS="kconfigwidgets ki18n kiconthemes" #kxmlgui currently in trunk
+KFRAMEWORKS="kconfigwidgets ki18n kiconthemes kxmlgui"
 
+POPREFIXES="kleopatra libkleo"
 POFILES="libkleo/libkleopatra.po \
-    kleopatra/kwatchgnupg.po
-    kleopatra/kleopatra.po
-    kxmlgui/kxmlgui5.po"
+    kleopatra/kleopatra.po"
 # See: https://websvn.kde.org/*checkout*/trunk/l10n-kf5/subdirs
-LANGS="af \
+# and remove x-test
+LANGS="
+af \
 ar \
 as \
 ast \
+az \
 be \
 be@latin \
 bg \
@@ -65,6 +67,7 @@ cy \
 da \
 de \
 el \
+en \
 en_GB \
 eo \
 es \
@@ -88,10 +91,12 @@ hu \
 hy \
 ia \
 id \
+ie \
 is \
 it \
 ja \
 ka \
+kab \
 kk \
 km \
 kn \
@@ -106,6 +111,7 @@ ml \
 mr \
 ms \
 mt \
+my \
 nb \
 nds \
 ne \
@@ -136,6 +142,8 @@ ta \
 te \
 tg \
 th \
+tn \
+tok \
 tr \
 tt \
 ug \
@@ -145,7 +153,6 @@ uz@cyrillic \
 vi \
 wa \
 xh \
-x-test \
 zh_CN \
 zh_HK \
 zh_TW"
@@ -172,25 +179,18 @@ cat > $instfile <<EOF
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
-!ifdef prefix
-!undef prefix
-!endif
 !define kcfg_prefix \${ipdir}/kconfigwidgets-\${gpg4win_pkg_kconfigwidgets_version}
 EOF
-for frame in $KFRAMEWORKS $QFRAMEWORKS; do
+for frame in $KFRAMEWORKS $QFRAMEWORKS $POPREFIXES; do
     echo "!define ${frame}_prefix \${ipdir}/${frame}-\${gpg4win_pkg_${frame}_version}" >> $instfile
 done
 cat >> $instfile << EOF
-!define prefix \${ipdir}/kde-l10n-\${gpg4win_pkg_kde_l10n_version}
 !ifdef DEBUG
 Section "kde-l10n" SEC_kde_l10n
 !else
 Section "-kde-l10n" SEC_kde_l10n
 !endif
   SetOutPath "\$INSTDIR"
-!ifdef SOURCES
-  File "\${gpg4win_pkg_kde_l10n_src}"
-!else
 EOF
 
 cat > $uninstfile <<EOF
@@ -212,17 +212,9 @@ cat > $uninstfile <<EOF
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
-!ifdef prefix
-!undef prefix
-!endif
-!define prefix \${ipdir}/kde-l10n-\${gpg4win_pkg_kde_l10n_version}
 
 ; Uninstaller section.
 Section "-un.kde-l10n"
-!ifdef SOURCES
-  Push "\${gpg4win_pkg_kde-l10n}"
-  Call un.SourceDelete
-!else
 EOF
 
 l10ndir=$tmpdir/kde-l10n-$VERSION-src
@@ -252,6 +244,11 @@ for lang in $LANGS; do
         # No kleo translations. Skip it.
         continue
     fi
+    translated=$(msgfmt --statistics $l10ndir/$lang/kleopatra.po 2>&1 | tail -n 1 | cut -f 1 -d " ")
+    if [ -n "$translated" -a "$translated" -lt "500" ]; then
+        echo "Only $translated strings translated in $lang - skipping"
+        continue
+    fi
     if ! [ -e "$g4widir/share/locale/$lang/kf5_entry.desktop" ]; then
         # No desktop file. Won't show up in ui
         echo "$g4widir/share/locale/$lang/kf5_entry.desktop does not exist"
@@ -279,8 +276,9 @@ for lang in $LANGS; do
 
     for pofile in $POFILES; do
         moname=$(basename $pofile | sed 's/\.po/\.mo/')
+        poprefix="`dirname $pofile`_prefix"
         if msgfmt -o $l10ndir_bin/share/locale/$lang/LC_MESSAGES/$moname $l10ndir/$lang/`basename $pofile` 2>/dev/null; then
-            echo "  File \${prefix}/share/locale/$lang/LC_MESSAGES/$moname" >> $instfile
+            echo "  File \${$poprefix}/share/locale/$lang/LC_MESSAGES/$moname" >> $instfile
             echo "  Delete \"\$INSTDIR\\share\\locale\\$lang\\LC_MESSAGES\\$moname\"" >> $uninstfile
         fi
     done
@@ -292,9 +290,7 @@ done
 echo "RMDir \"\$INSTDIR\\share\\locale\"" >> $uninstfile
 echo "RMDir \"\$INSTDIR\\share\"" >> $uninstfile
 echo "RMDir \"\$INSTDIR\"" >> $uninstfile
-echo "!endif" >> $uninstfile
 echo "SectionEnd" >> $uninstfile
-echo "!endif" >> $instfile
 echo "SectionEnd" >> $instfile
 
 cd $tmpdir
@@ -321,3 +317,5 @@ echo "------------------------------ >8 ------------------------------"
 
 echo "To upload:" >&2
 echo "rsync -vP $tmpdir/kde-l10n-$VERSION-*.tar.xz trithemius.gnupg.org:/home/ftp/gcrypt/snapshots/kde-l10n/" >&2
+
+echo "NOTE: TARBALLS ARE CURRENTLY NOT NEEDED. INSTALLATION HAPPENS FROM PACKAGE SOURCES"
