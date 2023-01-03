@@ -81,7 +81,11 @@ src="img/t250.gpgex_logo.png">
 <img class="imgfloatleft imageframe"
 src="img/gpa_logo.png">
 <b>GPA</b>
- <p>An alternative certificate manager for OpenPGP and X.509 (S/MIME).</p>
+ <p>
+  An alternative certificate manager for OpenPGP and X.509 (S/MIME).
+  <br>
+  Note: Since version 4.1.0 GPA is not included in Gpg4win anymore.
+ </p>
 </li>
 </ul>
 

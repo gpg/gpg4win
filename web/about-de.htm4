@@ -86,7 +86,11 @@ src="img/t250.gpgex_logo.png">
 src="img/gpa_logo.png">
 </a>
 <b>GPA</b>
- <p>Ein alternativer Zertifikatsmanager für OpenPGP und X.509.</p>
+ <p>
+  Ein alternativer Zertifikatsmanager für OpenPGP und X.509.
+  <br>
+  Hinweis: Ab Version 4.1.0 ist GPA nicht mehr in Gpg4win enthalten.
+ </p>
 </li>
 </ul>
 
