@@ -22,36 +22,23 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
         gpg4win-splash.wav exdll.h g4wihelp.c desktopshellrun.cpp \
         g4wihelp.nsi slideshow.cpp gpgwrap.c \
         inst-sections.nsi installer.nsi installer-finish.nsi  \
-	zlib.pc sha1sum.c mkportable.c     \
-	mkportable-vanilla.h mkportable-full.h \
+	zlib.pc sha1sum.c \
         potomo Memento.nsh \
         inst-gpg4win.nsi	   uninst-gpg4win.nsi	      \
-        inst-atk.nsi               uninst-atk.nsi	      \
-        inst-expat.nsi		   uninst-expat.nsi	      \
-        inst-freetype.nsi	   uninst-freetype.nsi	      \
-        inst-fontconfig.nsi	   uninst-fontconfig.nsi      \
-        inst-cairo.nsi		   uninst-cairo.nsi	      \
         inst-gettext.nsi	   uninst-gettext.nsi	      \
-        inst-libffi.nsi		   uninst-libffi.nsi	      \
-        inst-glib.nsi		   uninst-glib.nsi	      \
         inst-gnupg-w32.nsi	   uninst-gnupg-w32.nsi	      \
-        inst-gpa.nsi		   uninst-gpa.nsi	      \
         inst-gpgme.nsi		   uninst-gpgme.nsi	      \
         inst-paperkey.nsi	   uninst-paperkey.nsi	      \
         inst-gpgol.nsi		   uninst-gpgol.nsi	      \
         inst-gpgex.nsi		   uninst-gpgex.nsi	      \
-        inst-gdk-pixbuf.nsi        uninst-gdk-pixbuf.nsi      \
-        inst-gtk+.nsi		   uninst-gtk+.nsi	      \
         inst-libassuan.nsi	   uninst-libassuan.nsi	      \
         inst-libgpg-error.nsi	   uninst-libgpg-error.nsi    \
         inst-libiconv.nsi	   uninst-libiconv.nsi	      \
-        inst-libpng.nsi		   uninst-libpng.nsi	      \
         inst-compendium.nsi	   uninst-compendium.nsi   \
         inst-man_advanced_de.nsi   uninst-man_advanced_de.nsi \
         inst-man_advanced_en.nsi   uninst-man_advanced_en.nsi \
         inst-man_novice_de.nsi	   uninst-man_novice_de.nsi   \
         inst-man_novice_en.nsi	   uninst-man_novice_en.nsi   \
-        inst-pango.nsi		   uninst-pango.nsi	      \
         inst-pinentry.nsi	   uninst-pinentry.nsi	      \
         inst-pkgconfig.nsi	   uninst-pkgconfig.nsi	      \
         inst-w32pth.nsi		   uninst-w32pth.nsi	      \
@@ -59,7 +46,6 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
         inst-kconfig.nsi        uninst-kconfig.nsi              \
         inst-kleopatra.nsi  	   uninst-kleopatra.nsi       \
 	inst-bzip2.nsi             uninst-bzip2.nsi           \
-        uninst-claws-mail.nsi uninst-claws-mail-cmds.nsi \
         inst-qtbase.nsi uninst-qtbase.nsi \
         inst-ki18n.nsi uninst-ki18n.nsi \
         inst-kwidgetsaddons.nsi uninst-kwidgetsaddons.nsi \
@@ -88,7 +74,6 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
         inst-gpg4win-tools.nsi uninst-gpg4win-tools.nsi \
         inst-gpgme-browser.nsi \
         inst-final.nsi index.theme \
-        inst-pcre.nsi uninst-pcre.nsi \
         slideshow/slides.dat \
         slideshow/slide1-gpgol.png \
         slideshow/slide2-gpgex.png \
@@ -121,7 +106,7 @@ gpg4win_howto_smime_ll = en de
 HOWTO_files = $(addsuffix .txt, \
                 $(addprefix HOWTO-SMIME.,$(gpg4win_howto_smime_ll)))
 
-foosum_exe = sha1sum.exe md5sum.exe sha256sum.exe mkportable.exe
+foosum_exe = sha1sum.exe md5sum.exe sha256sum.exe
 
 # Need to clean the dll because we bypassed automake.
 CLEANFILES = g4wihelp.dll desktopshellrun.o versioninfo.txt $(README_files) \
@@ -178,45 +163,6 @@ gpg4win_pkg_gettext_make_dir_inst = gettext-runtime
 gpg4win_pkg_gettext_ex_make_dir = gettext-runtime
 gpg4win_pkg_gettext_ex_make_dir_inst = gettext-runtime
 
-gpg4win_pkg_glib_configure = \
-  --disable-modular-tests \
-  --with-lib-prefix=$(idir) --with-libiconv-prefix=$(idir) \
-  CFLAGS=-DGLIB_COMPILATION \
-  CPPFLAGS=-I$(idir)/include LDFLAGS=-L$(idir)/lib CCC=$(host)-g++
-gpg4win_pkg_glib_extracflags = -march=i486
-
-gpg4win_pkg_gdk_pixbuf_configure = \
-  --with-lib-prefix=$(idir) --with-libiconv-prefix=$(idir) \
-  --with-included-loaders=yes \
-  CPPFLAGS=-I$(idir)/include LDFLAGS=-L$(idir)/lib
-
-gpg4win_pkg_gtk__configure = \
-  CPPFLAGS=-I$(idir)/include LDFLAGS=-L$(idir)/lib --disable-cups
-
-gpg4win_pkg_pcre_configure = \
-  --enable-utf \
-  --enable-unicode-properties \
-  --enable-cpp \
-  --disable-pcregrep-libz \
-  --disable-pcregrep-libbz2 \
-  --disable-pcretest-libreadline
-
-# The GnuPG package provides man pages which we have to convert.
-# We also create the MO files here.
-define gpg4win_pkg_gnupg2_post_install
-(for i in gpg2 gpgv2 gpgsm gpg-agent scdaemon gpg-connect-agent gpgconf ; \
-  do man -Tlatin1 -l $$$${pkgidir}/share/man/man1/$$$${i}.1 | \
-    sed `printf "s/_\b//g;s/\b.//g"` | \
-    sed -e 's/$$$$/\r/' > $$$${pkgidir}/share/man/man1/$$$${i}.man ; \
- done ; \
- for i in `$(tsdir)/src/potomo --get-linguas $$$${pkgsdir}/po` ; do \
-     $(MKDIR_P) $$$${pkgidir}/share/locale/$$$${i}/LC_MESSAGES || true; \
-     rm $$$${pkgidir}/share/locale/$$$${i}/LC_MESSAGES/gnupg2.mo 2>/dev/null \
-       || true; \
-     $(tsdir)/src/potomo $$$${pkgsdir}/po/$$$${i}.po \
-              $$$${pkgidir}/share/locale/$$$${i}/LC_MESSAGES/gnupg2.mo; \
- done)
-endef
 
 # Paperkey comes with a man pages which we have to convert.
 define gpg4win_pkg_paperkey_post_install
@@ -234,10 +180,6 @@ define gpg4win_pkg_gpgol_post_install
 ( cd $$$${pkgbdir}/doc; make pdf )
 endef
 
-define gpg4win_pkg_kxmlgui_post_install
-	rm -rf $$$${pkgidir}/share/locale
-endef
-
 # We would like to use --with-libiconv-prefix and
 # --with-libintl-prefix, but these don't work with the cheesy
 # non-"libfoo.la" versions of iconv and gettext that we are using.
@@ -245,10 +187,10 @@ endef
 #  --with-libiconv-prefix=$(idir) --with-libintl-prefix=$(idir)
 gpg4win_pkg_libgpg_error_configure = --silent \
   CPPFLAGS=-I$(idir)/include LDFLAGS=-L$(idir)/lib \
-  --enable-static
+  --enable-static --enable-install-gpg-error-config
 
 gpg4win_pkg_libgpg_error_ex_configure = --silent \
-  --enable-static
+  --enable-static --enable-install-gpg-error-config
 
 # We convert the PO files to UTF-8.  FIXME: This should be done in
 # libgpg-error proper.
@@ -263,7 +205,7 @@ endef
 
 gpg4win_pkg_libassuan_configure =  --silent --enable-static
 
-gpg4win_pkg_libassuan_ex_configure =  --silent --enable-static
+gpg4win_pkg_libassuan_ex_configure = --with-gpg-error-prefix=$(ex_idir) --silent --enable-static
 
 gpg4win_pkg_libpng_configure = HAVE_SOLARIS_LD_FALSE=yes CPPFLAGS=\"-I$(idir)/include -DPNG_BUILD_DLL\" LDFLAGS=\"-L$(idir)/lib\" LIBPNG_DEFINES=\"-DPNG_BUILD_DLL\"
 
@@ -274,7 +216,8 @@ gpg4win_pkg_pinentry_configure = \
   --enable-pinentry-qt \
   $(pinentry_enable_disable) \
   --disable-pinentry-fltk \
-  --enable-pinentry-gtk2 \
+  --disable-pinentry-curses \
+  --disable-fallback-curses \
   CPPFLAGS=-I$(idir)/include LDFLAGS=-L$(idir)/lib
 #  --with-libiconv-prefix=$(idir) --with-libintl-prefix=$(idir)
 
@@ -282,8 +225,6 @@ gpg4win_pkg_pinentry_configure = \
 # around the lack of cross compilation support in qt-dev.
 gpg4win_pkg_gpgme_configure = --silent \
   --with-gpg-error-prefix=$(idir) --enable-static \
-  `test -n "@HAVE_PKG_GLIB@" && echo "--enable-w32-glib"` \
-  CFLAGS=-I$(idir)/include/glib-2.0/ \
   LDFLAGS=-L$(idir)/lib \
   --enable-languages=qt,cpp \
   --disable-gpg-test \
@@ -297,18 +238,13 @@ gpg4win_pkg_gpgme_ex_configure = --silent \
   --disable-gpg-test \
   --disable-gpgsm-test
 
-gpg4win_pkg_gpa_configure = --silent \
-  --with-libiconv-prefix=$(idir) --with-libintl-prefix=$(idir) \
-  --with-gpgme-prefix=$(idir) --with-zlib=$(idir) \
-  --with-libassuan-prefix=$(idir) --with-gpg-error-prefix=$(idir)
-
 gpg4win_pkg_gpgol_configure = --silent \
   --with-gpgme-prefix=$(idir) --with-gpg-error-prefix=$(idir) \
-  --with-libassuan-prefix=$(idir) --enable-mime-send
+  --with-libassuan-prefix=$(idir)
 
 gpg4win_pkg_gpgol_ex_configure = --silent \
   --with-gpgme-prefix=$(ex_idir) --with-gpg-error-prefix=$(ex_idir) \
-  --with-libassuan-prefix=$(ex_idir) --enable-mime-send
+  --with-libassuan-prefix=$(ex_idir)
 
 gpg4win_pkg_gpgex_configure = --silent \
   --with-gpg-error-prefix=$(idir) \
@@ -321,7 +257,7 @@ gpg4win_pkg_gpgex_ex_configure = --silent \
 gpg4win_pkg_paperkey_configure = --silent
 
 gpg4win_pkg_ki18n_configure = -DBUILD_WITH_QML=OFF
-gpg4win_pkg_kconfig_configure = -DKCONFIG_USE_DBUS=OFF
+gpg4win_pkg_kconfig_configure = -DKCONFIG_USE_DBUS=OFF -DKCONFIG_USE_QML=OFF
 
 gpg4win_pkg_qtbase_configure = ../$$$${pkg_version}/configure -opensource \
             -confirm-license \
@@ -418,7 +354,8 @@ endef
 gpg4win_pkg_kleopatra_configure = \
     -DFORCE_DISABLE_KCMUTILS=ON \
     -DDISABLE_KWATCHGNUPG=ON \
-    -DRELEASE_SERVICE_VERSION=Gpg4win-$(VERSION)
+    -DRELEASE_SERVICE_VERSION=Gpg4win-$(VERSION) \
+    -DKLEOPATRA_DISTRIBUTION_TEXT="$(DISTRIBUTION_TEXT)"
 
 gpg4win_pkg_kxmlgui_configure = \
     -DFORCE_DISABLE_KGLOBALACCEL=ON \
@@ -448,8 +385,7 @@ gpg4win_pkg_zlib_make_args_inst = -fwin32/Makefile.gcc install \
 	LIBRARY_PATH=$$$${pkgidir}/lib SHARED_MODE=1 IMPLIB=libz.dll.a
 
 # Supported binary packages.
-gpg4win_bpkgs = pkgconfig pango expat freetype fontconfig \
-                cairo atk gnupg-w32 kde-l10n
+gpg4win_bpkgs = pkgconfig gnupg-w32 kde-l10n
 
 # libiconv needs some special magic to generate a usable import
 # library.
@@ -491,57 +427,6 @@ echo "dlpreopen=''" >> lib/libz.la;			\
 echo "libdir=\"$$$${pkgidir}/lib\"" >> lib/libz.la)
 endef
 
-# We need to fix the prefix in the various packages using pkgconfig,
-# or we can't substitute it properly in our pkg-config wrapper.
-# glib also installs an empty charset.alias for mingw which creates
-# a stow conflict with the one from iconv.
-define gpg4win_pkg_glib_post_install
- (cd $$$${pkgidir};							\
- perl -pi -e 's/^prefix=.*$$$$/prefix=\/usr/' `find . -name \*.pc`; \
- rm $$$${pkgidir}/lib/charset.alias)
-endef
-
-define gpg4win_pkg_libffi_post_install
- (cd $$$${pkgidir};							\
- perl -pi -e 's/^prefix=.*$$$$/prefix=\/usr/' `find . -name \*.pc`)
-endef
-
-define gpg4win_pkg_gdk_pixbuf_post_install
- (cd $$$${pkgidir};							\
- perl -pi -e 's/^prefix=.*$$$$/prefix=\/usr/' `find . -name \*.pc`)
-endef
-
-define gpg4win_pkg_atk_post_install
- (cd $$$${pkgidir_dev};							\
- perl -pi -e 's/^prefix=.*$$$$/prefix=\/usr/' `find . -name \*.pc`)
-endef
-
-define gpg4win_pkg_freetype_post_install
- (cd $$$${pkgidir_dev};							\
- perl -pi -e 's/^prefix=.*$$$$/prefix=\/usr/' `find . -name \*.pc`)
-endef
-
-define gpg4win_pkg_fontconfig_post_install
- (cd $$$${pkgidir_dev};							\
- perl -pi -e 's/^prefix=.*$$$$/prefix=\/usr/' `find . -name \*.pc`)
-endef
-
-define gpg4win_pkg_cairo_post_install
- (cd $$$${pkgidir_dev};							\
- perl -pi -e 's/^prefix=.*$$$$/prefix=\/usr/' `find . -name \*.pc`)
-endef
-
-define gpg4win_pkg_pango_post_install
- (cd $$$${pkgidir_dev};							\
- perl -pi -e 's/^prefix=.*$$$$/prefix=\/usr/' `find . -name \*.pc`)
-endef
-
-define gpg4win_pkg_libpng_post_install
- (cd $$$${pkgidir};							\
- perl -pi -e 's/^prefix=.*$$$$/prefix=\/usr/' `find . -name \*.pc`)
-endef
-
-
 # We don't use khelpcenter in kleopatra so remove the help links and
 # point to the correct common folder
 # TODO Needs to be fixed with current doc
@@ -573,13 +458,11 @@ VSD_VERSION=$(VERSION)
 # Signging host/key setup for codesigning
 -include gnupg-vsd/sign.mk
 
-$(stampdir)/stamp-msi-base:  $(root)/install/gpg4win-$(VERSION).wixlib \
-                       shield.ico Makefile.am \
+$(stampdir)/stamp-msi-base: shield.ico Makefile.am \
                        $(top_srcdir)/doc/logo/gpg4win-msi*.bmp \
                        $(top_srcdir)/po/gpg4win-de.wxl \
                        $(top_srcdir)/po/gpg4win-en.wxl
 	ssh $(WINHOST) "mkdir AppData\\Local\\Temp\\gpg4win-$(VERSION)" || true
-	scp $(idir)/gpg4win-$(VERSION).wixlib $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)
 	scp $(top_srcdir)/packages/gnupg-msi-$(gpg4win_pkg_gnupg_msi_version)-bin.wixlib \
 		$(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION);
 	scp $(top_srcdir)/src/shield.ico $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)
@@ -621,7 +504,7 @@ common_nsi = inst-sections.nsi installer.nsi installer-finish.nsi	\
 
 # Sign additional files as per signing setup
 # This is a bit of a hack.
-$(stampdir)/stamp-additional-signedfiles:
+$(stampdir)/stamp-additional-signedfiles: $(stampdir)/stamp-binaries
 	(set -e;\
      cd "$(idir)"; \
      for f in $(AUTHENTICODE_FILES); do \
@@ -633,100 +516,6 @@ $(stampdir)/stamp-additional-signedfiles:
      done \
      )
 	touch $(stampdir)/stamp-additional-signedfiles
-
-$(root)/install/gpg4win-$(VERSION).wixlib: \
-      gpg4win-$(VERSION).wxs $(stampdir)/stamp-final \
-      $(foosum_exe) \
-      $(README_files) $(HOWTO_files) \
-      license.blurb versioninfo.txt \
-      WixUI_Gpg4win.wxs \
-      $(stampdir)/stamp-additional-signedfiles
-	($(call SETVARS_WINE_TWO_DOLLAR,); \
-	echo "Gpg4win" > $(root)/VERSION; \
-	echo "$(VERSION)" >> $(root)/VERSION; \
-	(ln -s $(idir) $$WINEINST; \
-	 ln -s $(ex_idir) $$WINEINSTEX; \
-	 ln -s `readlink -f $(top_srcdir)` $$WINESRC; \
-		$(WINE) $$WIXPREFIX2/candle.exe \
-		-dInstDir=k: \
-		-dInstDirEx=j: \
-		-dSrcDir=i:\\src \
-		-dVersion=$$MSI_VERSION \
-		-out k:\\gpg4win-$(VERSION).wixobj \
-		-pedantic -wx i:\\src\\gpg4win-$(VERSION).wxs \
-		-arch x64 || exit 1;\
-		$(WINE) $$WIXPREFIX2/candle.exe \
-		-dInstDir=k: \
-		-dInstDirEx=j: \
-		-dSrcDir=i:\\src \
-		-dVersion=$$MSI_VERSION \
-		-out k:\\gpg4win-ui.wixobj \
-		-arch x64 \
-		-pedantic -wx i:\\src\\WixUI_Gpg4win.wxs || exit 1;\
-		\
-		$(WINE) $$WIXPREFIX2/lit.exe \
-		-out k:\\gpg4win-$(VERSION).wixlib \
-		-bf \
-		-wx \
-		-pedantic \
-		k:\\gpg4win-$(VERSION).wixobj k:\\gpg4win-ui.wixobj || exit 1; \
-		\
-	) || ERR=1; (rm $$WINEINST; rm $$WINESRC; rm $$WINEINSTEX); \
-	if [ -n "$$ERR" ]; then \
-		exit 1; \
-	fi)
-
-$(root)/install/gpg4win-$(VERSION)-x86.wixlib: \
-      gpg4win-$(VERSION).wxs $(stampdir)/stamp-final \
-      $(foosum_exe) \
-      $(README_files) $(HOWTO_files) \
-      license.blurb versioninfo.txt \
-      WixUI_Gpg4win.wxs \
-      $(stampdir)/stamp-additional-signedfiles
-	($(call SETVARS_WINE_TWO_DOLLAR,); \
-	echo "Gpg4win" > $(root)/VERSION; \
-	echo "$(VERSION)" >> $(root)/VERSION; \
-	(ln -s $(idir) $$WINEINST; \
-	 ln -s $(ex_idir) $$WINEINSTEX; \
-	 ln -s `readlink -f $(top_srcdir)` $$WINESRC; \
-		$(WINE) $$WIXPREFIX2/candle.exe \
-		-dInstDir=k: \
-		-dInstDirEx=j: \
-		-dSrcDir=i:\\src \
-		-dVersion=$$MSI_VERSION \
-		-arch x86 \
-		-out k:\\gpg4win-$(VERSION)-x86.wixobj \
-		-pedantic -wx i:\\src\\gpg4win-$(VERSION).wxs || exit 1;\
-		$(WINE) $$WIXPREFIX2/candle.exe \
-		-dInstDir=k: \
-		-dInstDirEx=j: \
-		-dSrcDir=i:\\src \
-		-dVersion=$$MSI_VERSION \
-		-arch x86 \
-		-out k:\\gpg4win-ui-x86.wixobj \
-		-pedantic -wx i:\\src\\WixUI_Gpg4win.wxs || exit 1;\
-		\
-		$(WINE) $$WIXPREFIX2/lit.exe \
-		-out k:\\gpg4win-$(VERSION)-x86.wixlib \
-		-bf \
-		-wx \
-		-pedantic \
-		k:\\gpg4win-$(VERSION)-x86.wixobj k:\\gpg4win-ui-x86.wixobj || exit 1; \
-		\
-	) || ERR=1; (rm $$WINEINST; rm $$WINESRC; rm $$WINEINSTEX); \
-	if [ -n "$$ERR" ]; then \
-		exit 1; \
-	fi)
-gpg4win-$(VERSION).wxs: gpg4win.nsi $(common_nsi) $(stampdir)/stamp-final \
-		        $(foosum_exe) gpgwrap.exe \
-			$(README_files) $(HOWTO_files) \
-			versioninfo.txt make-msi.pl \
-	$(addsuffix /VERSION.sig,$(addprefix gnupg-vsd/,$(msi_targets)))
-	perl make-msi.pl --guids $(srcdir)/make-msi.guids \
-		--manifest gpg4win-$(VERSION).files \
-		--version $(VSD_VERSION) \
-		-DBUILD_DIR=. -DTOP_SRCDIR=$(top_srcdir) \
-		-DSRCDIR=$(srcdir) $(srcdir)/gpg4win.nsi > $@
 
 # Prepare the versioninfo file.  The pipeline extracts the last
 # occurrence of a package with the same name, sorts the entries and
@@ -813,11 +602,6 @@ md5sum.exe: sha1sum.c
 
 sha256sum.exe: sha1sum.c
 	$(CC) -DBUILD_SHA256SUM -O2 -o $@ $^
-	$(STRIP) $@
-
-mkportable.exe: mkportable.c \
-                mkportable-vanilla.h mkportable-full.h
-	$(CC) -O2 -o $@ $(srcdir)/mkportable.c
 	$(STRIP) $@
 
 if BUILD_GPG4WIN

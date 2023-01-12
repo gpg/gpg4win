@@ -85,10 +85,6 @@ msgctxt "T_RunKleopatra"
 msgid "Run Kleopatra"
 msgstr "Kleopatra starten"
 
-msgctxt "T_RunGPA"
-msgid "Run GPA"
-msgstr "GPA starten"
-
 msgctxt "T_LangCode"
 msgid "en"
 msgstr "de"
@@ -394,16 +390,6 @@ msgstr ""
 "https://gnupg.org/download \n"
 "herunter und installieren ihn manuell."
 
-msgctxt "DESC_SEC_gpa"
-msgid "GNU Privacy Assistant"
-msgstr ""
-"GNU Privacy Assistent (GPA) ist ein Programm zum Verwalten von Zertifikaten "
-"welches für mehrere Plattformen verfügbar ist."
-
-msgctxt "DESC_Menu_gpa"
-msgid "Run the GNU Privacy Assistant key management tool."
-msgstr "Das Schlüsselverwaltungsprogramm GPA aufrufen."
-
 msgctxt "DESC_Menu_gpg4win_readme"
 msgid "General information on Gpg4win"
 msgstr "Allgemeine Informationen zu Gpg4win"
@@ -506,6 +492,20 @@ msgstr ""
 msgctxt "T_File_Type_pgp_key_info_tip"
 msgid "Certificate for OpenPGP."
 msgstr "OpenPGP Zertifikat."
+
+#~ msgctxt "T_RunGPA"
+#~ msgid "Run GPA"
+#~ msgstr "GPA starten"
+
+#~ msgctxt "DESC_SEC_gpa"
+#~ msgid "GNU Privacy Assistant"
+#~ msgstr ""
+#~ "GNU Privacy Assistent (GPA) ist ein Programm zum Verwalten von "
+#~ "Zertifikaten welches für mehrere Plattformen verfügbar ist."
+
+#~ msgctxt "DESC_Menu_gpa"
+#~ msgid "Run the GNU Privacy Assistant key management tool."
+#~ msgstr "Das Schlüsselverwaltungsprogramm GPA aufrufen."
 
 #~ msgctxt "DESC_Name_compendium"
 #~ msgid "Gpg4win Compendium"

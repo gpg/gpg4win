@@ -1,9 +1,0 @@
-#! /bin/sh
-# The patches for glib are problematic because they require that
-# autotools and libtoolize must be run.  The problem way is to also
-# patch configure but that needs too many changes.  Because we plan to
-# remove glib (and GPA) anyway, we just call autoreconf which should
-# not be worse than what we have right now; i.e. requiring the exact
-# automake version 1.15 to be installed.
-autoreconf -fi
-exit 0

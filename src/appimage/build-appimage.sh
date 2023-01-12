@@ -32,7 +32,11 @@ cd /src
 make
 
 if [ -f /src/src/gnupg-vsd/custom.mk ]; then
-    GNUPG_BUILD_VSD=yes
+    if ls /src/packages/gnupg-2.2* >/dev/null 2>&1 ; then
+        GNUPG_BUILD_VSD=yes
+    else
+        GNUPG_BUILD_VSD=desktop
+    fi
 else
     GNUPG_BUILD_VSD=no
 fi
@@ -87,6 +91,7 @@ rm -rf /build/AppDir/usr/translations
 # Remove the version files to make sure that only one will be created.
 rm -f /build/AppDir/GnuPG-VS-Desktop-VERSION 2>/dev/null
 rm -f /build/AppDir/GnuPG-Desktop-VERSION    2>/dev/null
+rm -f /build/AppDir/GnuPG-Foo-VERSION        2>/dev/null
 
 # Extract gnupg version or (for VSD builds) gpg4win version for use
 # as filename of the AppImage
@@ -102,12 +107,24 @@ if [ $GNUPG_BUILD_VSD = yes ]; then
     echo "Packaging kleopatrarc"
     mkdir -p /build/AppDir/usr/etc/xdg
     cp /src/src/gnupg-vsd/Standard/kleopatrarc /build/AppDir/usr/etc/xdg
-else
+elif [ $GNUPG_BUILD_VSD = desktop ]; then
     myversion=$(ls /src/packages/gnupg-2.*tar.* \
-                    | sed -n 's,.*/gnupg-\(2.*\).tar.*,\1,p')
+                    | sed -n 's,.*/gnupg-\(2.*\).tar.bz2,\1,p')
     OUTPUT=gnupg-desktop-${myversion}-x86_64.AppImage
-    echo "Packaging Gpg4win Appimage: $myversion"
+    echo "Packaging GnuPG Desktop Appimage: $myversion"
     echo $myversion >/build/AppDir/GnuPG-Desktop-VERSION
+    cp /src/src/gnupg-vsd/Desktop/VERSION* /build/AppDir/usr/
+    if [ -f /src/src/gnupg-vsd/Desktop/kleopatrarc ]; then
+        echo "Packaging kleopatrarc"
+        mkdir -p /build/AppDir/usr/etc/xdg
+        cp /src/src/gnupg-vsd/Desktop/kleopatrarc /build/AppDir/usr/etc/xdg
+    fi
+else
+    myversion=$(ls /src/packages/gnupg-2.*tar.bz2 \
+                    | sed -n 's,.*/gnupg-\(2.*\).tar.*,\1,p')
+    OUTPUT=gnupg-foo-${myversion}-x86_64.AppImage
+    echo "Packaging Gpg4win Appimage: $myversion"
+    echo $myversion >/build/AppDir/GnuPG-Foo-VERSION
 fi
 export OUTPUT
 

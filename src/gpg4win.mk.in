@@ -675,12 +675,9 @@ $(stampdir)/stamp-$(1)-01-patch: $(stampdir)/stamp-$(1)-00-unpack
 	$(call SETVARS,$(1));				\
 	if [ ! -L "$$$${pkgsdir}" ]; then \
 		cd "$$$${pkgsdir}";				\
-		sed -i 's/set(KF5_MIN_VERSION.*)/set(KF5_MIN_VERSION "5.93.0")/' CMakeLists.txt; \
-		sed -i 's/set(KF5_VERSION.*)/set(KF5_VERSION "5.93.0")/' CMakeLists.txt; \
+		sed -i 's/set(KF5_MIN_VERSION.*)/set(KF5_MIN_VERSION "5.100.0")/' CMakeLists.txt; \
+		sed -i 's/set(KF5_VERSION.*)/set(KF5_VERSION "5.100.0")/' CMakeLists.txt; \
 		sed -i 's/set(KMIME_VERSION.*)/set(KMIME_VERSION "5.2.40")/' CMakeLists.txt; \
-		sed -i 's/set(LIBKLEO_VERSION.*)/set(LIBKLEO_VERSION "5.4.40")/' CMakeLists.txt; \
-		sed -i 's/set(QT_REQUIRED_VERSION.*)/set(QT_REQUIRED_VERSION "5.10.0")/' CMakeLists.txt; \
-		sed -i 's/set(GPGME_REQUIRED_VERSION.*)/set(GPGME_REQUIRED_VERSION "1.10.0")/' CMakeLists.txt; \
 		for pfile in "$$$${pkgpbdir}"/*.patch "$$$${pkgpdir}"/*.patch ; do  \
 		(cd "$$$${pkgsdir}"; chmod +x "$$$${pfile}"; "$$$${pfile}")		\
 		done \
@@ -749,7 +746,10 @@ endef
 # Sign the file $1 and save the result as $2
 define AUTHENTICODE_sign
    set -e;\
-   if [ "$(IS_VSD_BUILD)" = yes ]; then \
+   if [ -n "$(3)" ]; then \
+     val_n="$(3)"; \
+     val_i="https://gnupg.com"; \
+   elif [ "$(IS_VSD_BUILD)" = yes ]; then \
      val_n="GnuPG VS-Desktop" ;\
      val_i="https://gnupg.com" ;\
    else \
@@ -789,8 +789,121 @@ endef
 
 define MSI_template
 
-.PHONY : $(1)-package
-$(1)-package: installers/GnuPG-VS-Desktop-$(VSD_VERSION_FILE)-$(1).msi
+$(1)_PRODUCT := $(msi_target_$(1)_PRODUCT)
+ifeq ($$($(1)_PRODUCT),)
+	$(1)_PRODUCT := $(VSD_PRODUCT)
+endif
+ifeq ($$($(1)_PRODUCT),)
+	$(1)_PRODUCT := Gpg4win
+endif
+
+$(1)_PRODUCT_PRETTY := $(msi_target_$(1)_PRODUCT_PRETTY)
+ifeq ($$($(1)_PRODUCT_PRETTY),)
+	$(1)_PRODUCT_PRETTY := $(VSD_PRODUCT_PRETTY)
+endif
+ifeq ($$($(1)_PRODUCT_PRETTY),)
+	$(1)_PRODUCT_PRETTY := Gpg4win
+endif
+
+$(1)-package: installers/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi
+
+$$($(1)_PRODUCT)-$(VERSION).wxs: gpg4win.nsi $(common_nsi) $(stampdir)/stamp-final \
+		        $(foosum_exe) gpgwrap.exe \
+			$(README_files) $(HOWTO_files) \
+			versioninfo.txt make-msi.pl \
+	$(addsuffix /VERSION.sig,$(addprefix gnupg-vsd/,$(msi_targets)))
+	perl make-msi.pl --guids $(srcdir)/make-msi.guids \
+		--manifest gpg4win-$(VERSION).files \
+		--version $(VSD_VERSION) \
+		--name "$$($(1)_PRODUCT_PRETTY)" \
+		-DBUILD_DIR=. -DTOP_SRCDIR=$(top_srcdir) \
+		-DSRCDIR=$(srcdir) $(srcdir)/gpg4win.nsi > $$($(1)_PRODUCT)-$(VERSION).wxs
+
+$(idir)/$$($(1)_PRODUCT)-$(VERSION).wixlib: \
+      $(stampdir)/stamp-final \
+      $(foosum_exe) \
+      $(README_files) $(HOWTO_files) \
+      license.blurb versioninfo.txt \
+      WixUI_Gpg4win.wxs \
+      $$($(1)_PRODUCT)-$(VERSION).wxs \
+      $(stampdir)/stamp-additional-signedfiles
+	($(call SETVARS_WINE,); \
+	echo "Gpg4win" > $(root)/VERSION; \
+	echo "$(VERSION)" >> $(root)/VERSION; \
+	(ln -s $(idir) $$$$WINEINST; \
+	 ln -s $(ex_idir) $$$$WINEINSTEX; \
+	 ln -s `readlink -f $(top_srcdir)` $$$$WINESRC; \
+		$(WINE) $$$$WIXPREFIX2/candle.exe \
+		-dInstDir=k: \
+		-dInstDirEx=j: \
+		-dSrcDir=i:\\src \
+		-dVersion=$$$$MSI_VERSION \
+		-out k:\\$$($(1)_PRODUCT)-$(VERSION).wixobj \
+		-pedantic -wx i:\\src\\$$($(1)_PRODUCT)-$(VERSION).wxs \
+		-arch x64 || exit 1;\
+		$(WINE) $$$$WIXPREFIX2/candle.exe \
+		-dInstDir=k: \
+		-dInstDirEx=j: \
+		-dSrcDir=i:\\src \
+		-dVersion=$$$$MSI_VERSION \
+		-out k:\\gpg4win-ui.wixobj \
+		-arch x64 \
+		-pedantic -wx i:\\src\\WixUI_Gpg4win.wxs || exit 1;\
+		\
+		$(WINE) $$$$WIXPREFIX2/lit.exe \
+		-out k:\\$$($(1)_PRODUCT)-$(VERSION).wixlib \
+		-bf \
+		-wx \
+		-pedantic \
+		k:\\$$($(1)_PRODUCT)-$(VERSION).wixobj k:\\gpg4win-ui.wixobj || exit 1; \
+		\
+	) || ERR=1; (rm $$$$WINEINST; rm $$$$WINESRC; rm $$$$WINEINSTEX); \
+	if [ -n "$$$$ERR" ]; then \
+		exit 1; \
+	fi)
+
+$(idir)/$$($(1)_PRODUCT)-$(VERSION)-x86.wixlib: \
+      $(stampdir)/stamp-final \
+      $(foosum_exe) \
+      $(README_files) $(HOWTO_files) \
+      license.blurb versioninfo.txt \
+      WixUI_Gpg4win.wxs \
+      $$($(1)_PRODUCT)-$(VERSION).wxs \
+      $(stampdir)/stamp-additional-signedfiles
+	($(call SETVARS_WINE,); \
+	echo "Gpg4win" > $(root)/VERSION; \
+	echo "$(VERSION)" >> $(root)/VERSION; \
+	(ln -s $(idir) $$$$WINEINST; \
+	 ln -s $(ex_idir) $$$$WINEINSTEX; \
+	 ln -s `readlink -f $(top_srcdir)` $$$$WINESRC; \
+		$(WINE) $$$$WIXPREFIX2/candle.exe \
+		-dInstDir=k: \
+		-dInstDirEx=j: \
+		-dSrcDir=i:\\src \
+		-dVersion=$$$$MSI_VERSION \
+		-arch x86 \
+		-out k:\\$$($(1)_PRODUCT)-$(VERSION)-x86.wixobj \
+		-pedantic -wx i:\\src\\$$($(1)_PRODUCT)-$(VERSION).wxs || exit 1;\
+		$(WINE) $$$$WIXPREFIX2/candle.exe \
+		-dInstDir=k: \
+		-dInstDirEx=j: \
+		-dSrcDir=i:\\src \
+		-dVersion=$$$$MSI_VERSION \
+		-arch x86 \
+		-out k:\\gpg4win-ui-x86.wixobj \
+		-pedantic -wx i:\\src\\WixUI_Gpg4win.wxs || exit 1;\
+		\
+		$(WINE) $$$$WIXPREFIX2/lit.exe \
+		-out k:\\$$$$($(1)_PRODUCT)-$(VERSION)-x86.wixlib \
+		-bf \
+		-wx \
+		-pedantic \
+		k:\\$$($(1)_PRODUCT)-$(VERSION)-x86.wixobj k:\\gpg4win-ui-x86.wixobj || exit 1; \
+		\
+	) || ERR=1; (rm $$$$WINEINST; rm $$$$WINESRC; rm $$$$WINEINSTEX); \
+	if [ -n "$$$$ERR" ]; then \
+		exit 1; \
+	fi)
 
 $(idir)/$(1)-x86.wixlib: gnupg-vsd/$(1)/$(1).wxs
 	($(call SETVARS_WINE,); \
@@ -849,10 +962,11 @@ $(idir)/$(1).wixlib: gnupg-vsd/$(1)/$(1).wxs
 	)
 
 # This is generated by make-msi.pl
-gnupg-vsd/$(1)/$(1).wxs: gnupg-vsd/$(1)/VERSION.sig make-msi.pl gpg4win-$(VERSION).wxs
+gnupg-vsd/$(1)/$(1).wxs: gnupg-vsd/$(1)/VERSION.sig make-msi.pl $$($(1)_PRODUCT)-$(VERSION).wxs
 	perl make-msi.pl --guids $(srcdir)/make-msi.guids \
 		--manifest gpg4win-$(VERSION).files \
 		--version $(VSD_VERSION) \
+		--name "$$($(1)_PRODUCT_PRETTY)" \
 		-DBUILD_DIR=. -DTOP_SRCDIR=$(top_srcdir) \
 		-DSRCDIR=$(srcdir) $(srcdir)/gpg4win.nsi > /dev/null
 
@@ -874,65 +988,71 @@ gnupg-vsd/$(1)/VERSION: gnupg-vsd/custom.mk
 gnupg-vsd/$(1)/announcement.txt: gnupg-vsd/custom.mk gnupg-vsd/announcement.de.in gnupg-vsd/announcement.en.in
 	cat gnupg-vsd/$(call GETVAR,msi_target_$(1)_announcement) | \
 		sed 's/VSD_VERSION/$(VSD_VERSION)/' | \
-		sed 's@GNUPG_VSD_CUSTOMER_LINK@https://download.gnupg.com/files/$(call GETVAR,msi_target_$(1)_directory)/GnuPG-VS-Desktop-$(VSD_VERSION_FILE)-$(1).msi@' | \
+		sed 's@GNUPG_VSD_CUSTOMER_LINK@https://download.gnupg.com/files/$(call GETVAR,msi_target_$(1)_directory)/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi@' | \
 		sed 's@GNUPG_VSD_SOURCE_LINK@https://download.gnupg.com/files/src/Gnupg-VS-Desktop-$(VSD_VERSION).tar.bz2@' > gnupg-vsd/$(1)/announcement.txt
 
-installers/GnuPG-VS-Desktop-$(VSD_VERSION_FILE)-$(1).msi: $(stampdir)/stamp-msi-base $(idir)/$(1).wixlib \
-	gnupg-vsd/$(1)/license.rtf
+installers/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi: $(stampdir)/stamp-msi-base $(idir)/$(1).wixlib \
+	gnupg-vsd/$(1)/license.rtf $(idir)/$$($(1)_PRODUCT)-$(VERSION).wixlib
 	scp gnupg-vsd/$(1)/license.rtf \
 		 $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION); \
 	scp $(idir)/$(1).wixlib \
 		 $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION); \
 	scp $(call GETVAR,msi_target_$(1)_branding)/*.bmp \
 		 $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION); \
+	scp $(idir)/$$($(1)_PRODUCT)-$(VERSION).wixlib $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION); \
 	ssh $(WINHOST) "cd AppData/Local/Temp/gpg4win-$(VERSION) && $(WINLIGHT) \
+	-cc . \
+	-reusecab \
 	-spdb \
 	-ext WixUIExtension \
-	-out GnuPG-VS-Desktop-$(VERSION)-$(1).msi \
+	-out $$($(1)_PRODUCT)-$(VERSION)-$(1).msi \
 	 $(call GETVAR,msi_target_$(1)_l10n) \
 	-dcl:high \
 	-pedantic \
 	 \
-	 gpg4win-$(VERSION).wixlib \
+	 $$($(1)_PRODUCT)-$(VERSION).wixlib \
 	 gnupg-msi-$(gpg4win_pkg_gnupg_msi_version)-bin.wixlib \
 	 $(1).wixlib" | grep -v "ICE80" | grep -v "ICE57" ; \
-	 scp $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)/GnuPG-VS-Desktop-$(VERSION)-$(1).msi \
-	 installers/GnuPG-VS-Desktop-$(VSD_VERSION_FILE)-$(1).msi;
+	 scp $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)/$$($(1)_PRODUCT)-$(VERSION)-$(1).msi \
+	 installers/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi;
 
-installers/GnuPG-VS-Desktop-$(VSD_VERSION_FILE)-$(1)-x86.msi: $(stampdir)/stamp-msi-base $(idir)/$(1)-x86.wixlib \
+installers/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1)-x86.msi: $(stampdir)/stamp-msi-base $(idir)/$(1)-x86.wixlib \
 	gnupg-vsd/$(1)/license.rtf \
-	$(idir)/gpg4win-$(VERSION)-x86.wixlib
+	$(idir)/$$($(1)_PRODUCT)-$(VERSION)-x86.wixlib
 	scp gnupg-vsd/$(1)/license.rtf \
 		 $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION); \
-	scp $(idir)/gpg4win-$(VERSION)-x86.wixlib \
+	scp $(idir)/$$($(1)_PRODUCT)-$(VERSION)-x86.wixlib \
 		 $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION); \
 	scp $(idir)/$(1)-x86.wixlib \
 		 $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION); \
 	scp $(call GETVAR,msi_target_$(1)_branding)/*.bmp \
 		 $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION); \
+	scp $(idir)/$$($(1)_PRODUCT)-$(VERSION)-x86.wixlib $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION); \
 	ssh $(WINHOST) "cd AppData/Local/Temp/gpg4win-$(VERSION) && $(WINLIGHT) \
+	-cc . \
+	-reusecab \
 	-spdb \
 	-ext WixUIExtension \
-	-out GnuPG-VS-Desktop-$(VERSION)-$(1)-x86.msi \
+	-out $$($(1)_PRODUCT)-$(VERSION)-$(1)-x86.msi \
 	 $(call GETVAR,msi_target_$(1)_l10n) \
 	-dcl:high \
 	-v -pedantic \
 	 \
-	 gpg4win-$(VERSION)-x86.wixlib \
+	 $$($(1)_PRODUCT)-$(VERSION)-x86.wixlib \
 	 gnupg-msi-$(gpg4win_pkg_gnupg_msi_version)-bin.wixlib \
 	 $(1)-x86.wixlib"; \
-	 scp $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)/GnuPG-VS-Desktop-$(VERSION)-$(1)-x86.msi \
-	 installers/GnuPG-VS-Desktop-$(VSD_VERSION_FILE)-$(1)-x86.msi;
+	 scp $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)/$$($(1)_PRODUCT)-$(VERSION)-$(1)-x86.msi \
+	 installers/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1)-x86.msi;
 
-signed_installers/GnuPG-VS-Desktop-$(VSD_VERSION_FILE)-$(1).msi: installers/GnuPG-VS-Desktop-$(VSD_VERSION_FILE)-$(1).msi
+signed_installers/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi: installers/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi
 	mkdir -p signed_installers
-	$(call AUTHENTICODE_sign,"installers/GnuPG-VS-Desktop-$(VSD_VERSION_FILE)-$(1).msi","signed_installers/GnuPG-VS-Desktop-$(VSD_VERSION_FILE)-$(1).msi");\
+	$(call AUTHENTICODE_sign,"installers/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi","signed_installers/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi",$$($(1)_PRODUCT_PRETTY));\
 
-$(stampdir)/stamp-$(1)-upload: signed_installers/GnuPG-VS-Desktop-$(VSD_VERSION_FILE)-$(1).msi \
+$(stampdir)/stamp-$(1)-upload: signed_installers/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi \
 	$(stampdir)/stamp-dist-self
 	@(set -e; cd signed_installers; \
-          sha256sum GnuPG-VS-Desktop-$(VSD_VERSION_FILE)-$(1).msi > \
-		GnuPG-VS-Desktop-$(VSD_VERSION_FILE)-$(1).msi.sha256; \
+          sha256sum $$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi > \
+		$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi.sha256; \
 	  if [ -f "../gnupg-vsd/$(1)/customer-enc-key.asc" ]; then \
 		echo "Encrypting installer"; \
 	        k="-f ../gnupg-vsd/$(1)/customer-enc-key.asc" ; \
@@ -944,34 +1064,34 @@ $(stampdir)/stamp-$(1)-upload: signed_installers/GnuPG-VS-Desktop-$(VSD_VERSION_
 		gpg --no-options --batch --yes -seu $(msi_signkey) \
 			$$$${k} \
 			-f "../gnupg-vsd/general-enc-key.asc" \
-                        -o GnuPG-VS-Desktop-$(VSD_VERSION_FILE)-$(1).msi.gpg \
-			GnuPG-VS-Desktop-$(VSD_VERSION_FILE)-$(1).msi;\
-		sha256sum GnuPG-VS-Desktop-$(VSD_VERSION_FILE)-$(1).msi.gpg > \
-		   GnuPG-VS-Desktop-$(VSD_VERSION_FILE)-$(1).msi.gpg.sha256; \
-		scp GnuPG-VS-Desktop-$(VSD_VERSION_FILE)-$(1).msi.gpg \
-		   GnuPG-VS-Desktop-$(VSD_VERSION_FILE)-$(1).msi.gpg.sha256 \
+                        -o $$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi.gpg \
+			$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi;\
+		sha256sum $$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi.gpg > \
+		   $$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi.gpg.sha256; \
+		scp $$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi.gpg \
+		   $$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi.gpg.sha256 \
 		   $(VSD_PUBLISH_HOST)/$(call GETVAR,msi_target_$(1)_directory); \
-		echo "https://download.gnupg.com/files/$(call GETVAR,msi_target_$(1)_directory)/GnuPG-VS-Desktop-$(VSD_VERSION_FILE)-$(1).msi.gpg" \
+		echo "https://download.gnupg.com/files/$(call GETVAR,msi_target_$(1)_directory)/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi.gpg" \
 		> $(stampdir)/stamp-$(1)-upload; \
 	  else \
-		gpg --yes -o GnuPG-VS-Desktop-$(VSD_VERSION_FILE)-$(1).msi.sig -bu $(msi_signkey) \
-			GnuPG-VS-Desktop-$(VSD_VERSION_FILE)-$(1).msi; \
-		scp GnuPG-VS-Desktop-$(VSD_VERSION_FILE)-$(1).msi \
-			GnuPG-VS-Desktop-$(VSD_VERSION_FILE)-$(1).msi.sha256 \
-			GnuPG-VS-Desktop-$(VSD_VERSION_FILE)-$(1).msi.sig \
+		gpg --yes -o $$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi.sig -bu $(msi_signkey) \
+			$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi; \
+		scp $$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi \
+			$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi.sha256 \
+			$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi.sig \
 			$(VSD_PUBLISH_HOST)/$(call GETVAR,msi_target_$(1)_directory); \
 		ssh `echo $(VSD_PUBLISH_HOST) | cut -d ":" -f 1` \
-			echo "https://download.gnupg.com/files/$(call GETVAR,msi_target_$(1)_directory)/GnuPG-VS-Desktop-$(VSD_VERSION_FILE)-$(1).msi" \
+			echo "https://download.gnupg.com/files/$(call GETVAR,msi_target_$(1)_directory)/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi" \
 				> $(stampdir)/stamp-$(1)-upload; \
-			echo "https://download.gnupg.com/files/$(call GETVAR,msi_target_$(1)_directory)/GnuPG-VS-Desktop-$(VSD_VERSION_FILE)-$(1).msi.sig" \
+			echo "https://download.gnupg.com/files/$(call GETVAR,msi_target_$(1)_directory)/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi.sig" \
 			>> $(stampdir)/stamp-$(1)-upload; \
 	  fi)
 
 .phony : $(1)
-$(1): installers/GnuPG-VS-Desktop-$(VSD_VERSION_FILE)-$(1).msi
+$(1): installers/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi
 
 .PHONY : $(1)-x86
-$(1)-x86: installers/GnuPG-VS-Desktop-$(VSD_VERSION_FILE)-$(1)-x86.msi
+$(1)-x86: installers/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1)-x86.msi
 	echo "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 	echo "XXXX FIXME: x86 Registration of GpgOL and GpgEX does not work! XXXX"
 	echo "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
@@ -981,13 +1101,15 @@ $(1)-x86: installers/GnuPG-VS-Desktop-$(VSD_VERSION_FILE)-$(1)-x86.msi
 $(1)-upload: $(stampdir)/stamp-$(1)-upload $(stampdir)/stamp-dist-self
 	gpg --yes -o gnupg-vsd-$(VERSION).tar.bz2.sig -bau $(msi_signkey) \
 		../gpg4win-$(VERSION).tar.bz2
-	rsync -vP ../gpg4win-$(VERSION).tar.bz2 $(VSD_PUBLISH_HOST)/src/GnuPG-VS-Desktop-$(VERSION).tar.bz2
-	rsync -vP gnupg-vsd-$(VERSION).tar.bz2.sig $(VSD_PUBLISH_HOST)/src/GnuPG-VS-Desktop-$(VERSION).tar.bz2.sig
+	rsync -vP ../gpg4win-$(VERSION).tar.bz2 $(VSD_PUBLISH_HOST)/src/$$($(1)_PRODUCT)-$(VERSION).tar.bz2
+	rsync -vP gnupg-vsd-$(VERSION).tar.bz2.sig $(VSD_PUBLISH_HOST)/src/$$($(1)_PRODUCT)-$(VERSION).tar.bz2.sig
 	echo "Upload URLs:"
 	cat $(stampdir)/stamp-$(1)-upload
 	echo "Source links:"
-	echo "https://download.gnupg.com/files/src/GnuPG-VS-Desktop-$(VERSION).tar.bz2"
-	echo "https://download.gnupg.com/files/src/GnuPG-VS-Desktop-$(VERSION).tar.bz2.sig"
+	echo "https://download.gnupg.com/files/src/$$($(1)_PRODUCT)-$(VERSION).tar.bz2"
+	echo "https://download.gnupg.com/files/src/$$($(1)_PRODUCT)-$(VERSION).tar.bz2.sig"
+
+$(1)-signed: signed_installers/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi
 
 $(1)-announce: gnupg-vsd/$(1)/announcement.txt
 	set -x
@@ -1027,10 +1149,11 @@ $(foreach qtpkg, $(gpg4win_qtpkgs), $(eval $(call QTPKG_template,$(qtpkg))))
 $(foreach rll, $(gpg4win_howto_smime_ll), \
                $(eval $(call HOWTO_template,SMIME,$(rll))))
 
-$(stampdir)/stamp-final: $(stampdir)/stamp-directories
-$(stampdir)/stamp-final: $(addprefix $(stampdir)/stamp-final-,$(gpg4win_build_list)) \
-	$(addprefix $(stampdir)/stamp-final-ex-,$(gpg4win_build_ex_list)) \
-	$(stampdir)/stamp-additional-signedfiles
+$(stampdir)/stamp-binaries: $(addprefix $(stampdir)/stamp-final-,$(gpg4win_build_list)) \
+	$(addprefix $(stampdir)/stamp-final-ex-,$(gpg4win_build_ex_list))
+	touch $(stampdir)/stamp-binaries
+
+$(stampdir)/stamp-final: $(stampdir)/stamp-directories $(stampdir)/stamp-additional-signedfiles
 	touch $(stampdir)/stamp-final
 
 $(bdir)/versioninfo.txt: $(stampdir)/stamp-final
@@ -1062,8 +1185,11 @@ $(stampdir)/stamp-all-upload: $(stampdir)/stamp-dist-self \
 	echo "https://download.gnupg.com/files/src/Gnupg-VS-Desktop-$(VSD_VERSION).tar.bz2.sig"
 	touch $(stampdir)/stamps-all-upload
 
+.PHONY: msi
+# Add here if you use new product names we need new subst targets
 msi: $(stampdir)/stamp-versions-all-signed \
-	$(addsuffix .msi,$(addprefix installers/GnuPG-VS-Desktop-$(VSD_VERSION_FILE)-,$(msi_targets)))
+	$(subst GnuPG-VS-Desktop-$(VSD_VERSION_FILE)-Desktop.msi, installers/GnuPG-Desktop-$(VSD_VERSION_FILE)-Desktop.msi, \
+	$(addsuffix .msi,$(addprefix installers/GnuPG-VS-Desktop-$(VSD_VERSION_FILE)-,$(msi_targets))))
 	if [ -z "$(addsuffix .msi,$(addprefix installers/GnuPG-VS-Desktop-$(VSD_VERSION_FILE)-,$(msi_targets)))" ]; then \
 		echo "No MSI targets configured."; \
 	else \
@@ -1073,7 +1199,8 @@ msi: $(stampdir)/stamp-versions-all-signed \
 	fi
 
 $(stampdir)/stamp-msi-all-signed: gnupg-vsd/sign.mk \
-	$(addsuffix .msi,$(addprefix signed_installers/GnuPG-VS-Desktop-$(VSD_VERSION_FILE)-,$(msi_targets)))
+	$(subst GnuPG-VS-Desktop-$(VSD_VERSION_FILE)-Desktop.msi, signed_installers/GnuPG-Desktop-$(VSD_VERSION_FILE)-Desktop.msi, \
+	  $(addsuffix .msi,$(addprefix signed_installers/GnuPG-VS-Desktop-$(VSD_VERSION_FILE)-,$(msi_targets))))
 	touch $(stampdir)/stamp-msi-all-signed
 
 

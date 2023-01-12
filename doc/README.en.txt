@@ -66,39 +66,71 @@ Included Gpg4win components in version !VERSION! are:
 New in Gpg4win version !VERSION! (!BUILD_ISODATE!)
 -----------------------------------------
 
+- GPA: So long, and thanks for all the fish.  To reduce maintenance
+  and overall quality of Gpg4win we have decided to retire
+  GPA. Over the last decade Kleopatra has made large improvements
+  in quality and is very well maintained and the focus of our
+  development.  [rW3f7ed3834f]
+
 --- Features ---
 
--  GnuPG: In de-vs mode use AES-128 instead of 3-DES as implicit
-   preference.  This avoids problems with software considering 3-DES
-   as non-compliant but does only announce 3-DES as supported
-   algorithm.  [T6063]
+- GnuPG: Improve signature verification speed by a factor of more
+  than four.  Double detached signing speed.  [T5826]
 
--  GnuPG: Add new LDAP server flag "areconly" (A-record-only) to
-   help against long delays on some AD installations.
+- GnuPG: Import stray revocation certificates to improve WKD
+  usability.
 
--  GnuPG: New feature to mirror an LDAP keyserver to a Web key
-   Directory.  [T6224]
+- GnuPG: New option --add-revocs for gpg-wks-client.  [rG2f4492f3be]
 
--  GnuPG: Improve reporting of bad passphrase errors during PKCS#11
-   import.  [T5713,T6037]
+- GnuPG: Ignore expired user-ids in gpg-wks-client.  [T6292]
+
+- GnuPG: Support the Telesec Signature Card v2.0 in OpenPGP.
+  [T6252]
+
+- GnuPG: For the new AEAD Format we now only allow the fast OCB
+  mode.  The EAX mode may still be used for decryption.
+  [rG5a2cef801d]
+
+- Kleopatra: Support the import of non-standard conforming UTF-16
+  encoded text files with certificates.  [T6298]
+
+- Kleopatra: New Option to delete the locally stored secret key
+  after a transfer to a smart card.  [T5836]
+
+- Kleopatra: Improve the display of keys in the group edit
+  dialog. [T6295]
+
+- Kleopatra: Simplify changing the owner trust of keys.  [T6148]
+
+- Kleopatra: Allow selecting ECC with supported curves when
+  generating new keys for smart cards.  [T4429]
 
 --- Bug fixes ---
 
--  GnuPG: Update the X.509/CMS parsing library Libksba to version
-   1.6.2 to fix a severe security problem.  [T6230]
+- GnuPG: Update the X.509/CMS library Libksba to version 1.6.3 to
+  fix a security problem in the CRL signature parser.  [T6230]
 
--  GnuPG: Do not consider unknown public keys as non-compliant while
-   decrypting.  [T6205]
+- GnuPG: Fix trusted introducer for mbox only user-ids.  [T6238]
 
--  GnuPG: Fix CRL Distribution Point fallback to other schemes.
+- GpgOL: IMAP access to encrypted mails works again.  [T6203]
 
--  GnuPG: Fix upload of multiple keys for an LDAP server specified
-   using the colon format.
+- Kleopatra: Don't report success if the key signing job was
+  canceled.  [T6305]
 
--  GnuPG: Fix a key upload problem when a BaseDN is specified for an
-   LDAP server.  [T6047]
+- Kleopatra: Report failed imports immediately when receiving the result.
+  [T6302]
 
+- Kleopatra: Do not offer invalid S/MIME certificates for signing
+  or encryption.  [T6216]
 
+- Kleopatra: Don't ask user to certify an imported expired or
+  revoked OpenPGP key.  [T6155]
+
+- Kleopatra: Do not crash when closing details widget while
+  certificate dump is shown.  [T6180]
+
+- Kleopatra: Improve usability and accessibility of the notepad
+  operations.  [T6188]
 
 3. Additional notes
 ===================
@@ -118,8 +150,6 @@ New in Gpg4win version !VERSION! (!BUILD_ISODATE!)
 Listed below are the changes as recorded in the source distribution's
 NEWS file. An up-to-date list of changes is also available at:
 https://www.gpg4win.org/change-history.html
-
-!NEWSFILE!
 
 
 5. Version numbers of included software

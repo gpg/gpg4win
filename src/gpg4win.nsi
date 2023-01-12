@@ -24,90 +24,6 @@
 !addplugindir "${BUILD_DIR}"
 !include "config.nsi"
 
-# For the "light" version of the package, we explicitely disable some
-# of the packages right after including config.nsi.
-!ifdef GPG4WIN_LIGHT
-!ifdef HAVE_PKG_COMPENDIUM
-!undef HAVE_PKG_COMPENDIUM
-!endif
-!ifdef HAVE_PKG_KLEOPATRA
-!undef HAVE_PKG_KLEOPATRA
-!endif
-!ifdef HAVE_PKG_OXYGEN_ICONS
-!undef HAVE_PKG_OXYGEN_ICONS
-!endif
-!ifdef HAVE_PKG_QTBASE
-!undef HAVE_PKG_QTBASE
-!endif
-!endif
-
-# For the "vanilla" version of the package, we explicitely disable most
-# of the packages right after including config.nsi.
-!ifdef GPG4WIN_VANILLA
-!ifdef HAVE_PKG_GPGOL
-!undef HAVE_PKG_GPGOL
-!endif
-!ifdef HAVE_PKG_GPGEX
-!undef HAVE_PKG_GPGEX
-!endif
-!ifdef HAVE_PKG_GPA
-!undef HAVE_PKG_GPA
-!endif
-!ifdef HAVE_PKG_LIBGSASL
-!undef HAVE_PKG_LIBGSASL
-!endif
-;!ifdef HAVE_PKG_LIBTASN1
-;!undef HAVE_PKG_LIBTASN1
-;!endif
-;!ifdef HAVE_PKG_GNUTLS
-;!undef HAVE_PKG_GNUTLS
-;!endif
-!ifdef HAVE_PKG_LIBPNG
-!undef HAVE_PKG_LIBPNG
-!endif
-!ifdef HAVE_PKG_PKGCONFIG
-!undef HAVE_PKG_PKGCONFIG
-!endif
-!ifdef HAVE_PKG_GLIB
-!undef HAVE_PKG_GLIB
-!endif
-!ifdef HAVE_PKG_ATK
-!undef HAVE_PKG_ATK
-!endif
-!ifdef HAVE_PKG_EXPAT
-!undef HAVE_PKG_EXPAT
-!endif
-!ifdef HAVE_PKG_FREETYPE
-!undef HAVE_PKG_FREETYPE
-!endif
-!ifdef HAVE_PKG_FONTCONFIG
-!undef HAVE_PKG_FONTCONFIG
-!endif
-!ifdef HAVE_PKG_CAIRO
-!undef HAVE_PKG_CAIRO
-!endif
-!ifdef HAVE_PKG_PANGO
-!undef HAVE_PKG_PANGO
-!endif
-!ifdef HAVE_PKG_GTK_
-!undef HAVE_PKG_GTK_
-!endif
-!ifdef HAVE_PKG_DBUS
-!undef HAVE_PKG_DBUS
-!endif
-!ifdef HAVE_PKG_QTBASE
-!undef HAVE_PKG_QTBASE
-!endif
-!ifdef HAVE_PKG_OXYGEN_ICONS
-!undef HAVE_PKG_OXYGEN_ICONS
-!endif
-!ifdef HAVE_PKG_KLEOPATRA
-!undef HAVE_PKG_KLEOPATRA
-!endif
-!ifdef HAVE_PKG_COMPENDIUM
-!undef HAVE_PKG_COMPENDIUM
-!endif
-!endif
 
 # Define this early automatically it is only defined after
 # MUI_LANGUAGE has been called.
@@ -165,14 +81,6 @@ SetCompressor /SOLID lzma
 !define ipdir "playground/install/pkgs"
 !define exipdir "playground/install-ex/pkgs"
 !define bpdir "playground/build"
-
-!ifndef GPG4WIN_VANILLA
-# Claws is a bit special because we installed
-# it for some time and now remove the old
-# version we did install during installation
-# to be part of an update.
-!include "uninst-claws-mail.nsi"
-!endif
 
 # Variables
 VAR is_minimal

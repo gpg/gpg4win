@@ -31,6 +31,10 @@ stampdir := $(root)/stamps
 appimage_spkgs = sqlite libgpg-error libassuan npth libgcrypt libksba gnupg \
 		 pinentry gpgme paperkey ntbtls
 
+
+appimage_pkg_libgpg_error_configure = --enable-install-gpg-error-config
+
+
 # Qt packages for the AppImage
 appimage_qtpkgs = qtbase qttools qtx11extras qtwayland qtsvg qttranslations
 
@@ -42,7 +46,7 @@ appimage_kdepkgs = kconfig kwidgetsaddons ki18n extra-cmake-modules \
 		   kcrash kdbusaddons
 
 # Binary packages for the AppImage
-appimage_bpkgs = kde-l10n
+# appimage_bpkgs =
 
 appimage_pkg_gpgme_configure = --enable-languages=cpp,qt \
   --disable-gpg-test \
@@ -145,6 +149,10 @@ appimage_pkg_kcompletion_configure = \
 
 appimage_pkg_kconfigwidgets_configure = \
     -DBUILD_DESIGNERPLUGIN=OFF
+
+appimage_pkg_kconfig_configure = -DKCONFIG_USE_DBUS=OFF -DKCONFIG_USE_QML=OFF
+
+appimage_pkg_kguiaddons_configure = -DWITH_WAYLAND=OFF
 
 appimage_pkg_ki18n_configure = -DBUILD_WITH_QML=OFF
 

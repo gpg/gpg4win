@@ -143,7 +143,7 @@ if [ "$version4" = "yes" ] && [ "$version3" = "yes" ]; then
     exit 1;
 elif [ "$version4" = "yes" ]; then
     echo "Downloading packages for version 4.x"
-    rm -f '.#download.v*'
+    rm -f '.#download.v3'
     packages="$packages packages.4"
 elif [ "$version3" = "yes" ] || [ -f '.#download.v3' ]; then
     echo "Downloading packages for version 3.x"

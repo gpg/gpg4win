@@ -979,7 +979,7 @@ hash_list (void)
 static void
 usage (void)
 {
-  fprintf (stderr, "usage: sha1sum [-c|-0] [--] FILENAMES|-\n");
+  fprintf (stderr, "usage: " PGM " [-c|-0] [--] FILENAMES|-\n");
   exit (1);
 }
 

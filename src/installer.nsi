@@ -160,40 +160,26 @@ FunctionEnd
 Function FinishFunction
   IfSilent leave
   !insertmacro SectionFlagIsSet ${SEC_kleopatra} \
-        ${SF_SELECTED} have_kleo check_gpa
-check_gpa:
-  !insertmacro SectionFlagIsSet ${SEC_gpa} \
-        ${SF_SELECTED} have_gpa have_nothing
+        ${SF_SELECTED} have_kleo have_nothing
 have_nothing:
   ShowWindow $mui.FinishPage.Run ${SW_HIDE}
   goto leave
 have_kleo:
   SendMessage $mui.FinishPage.Run.Text ${WM_SETTEXT} 0 "STR:$(T_RunKleopatra)"
   goto leave
-have_gpa:
-  SendMessage $mui.FinishPage.Run.Text ${WM_SETTEXT} 0 "STR:$(T_RunGPA)"
 leave:
 FunctionEnd
 
 Function RunAsUser
   !insertmacro SectionFlagIsSet ${SEC_kleopatra} \
-        ${SF_SELECTED} do_kleo skip_kleo
+        ${SF_SELECTED} do_kleo leave
 do_kleo:
   g4wihelp::DesktopShellRun "$INSTDIR\bin\kleopatra.exe"
-  goto leave
-skip_kleo:
-  !insertmacro SectionFlagIsSet ${SEC_gpa} \
-        ${SF_SELECTED} do_gpa leave
-do_gpa:
-  g4wihelp::DesktopShellRun "$INSTDIR\bin\gpa.exe"
 leave:
 FunctionEnd
 
 LangString T_RunKleopatra ${LANG_ENGLISH} \
    "Run Kleopatra"
-
-LangString T_RunGPA ${LANG_ENGLISH} \
-   "Run GPA"
 
 # /SOURCES
 !endif
@@ -419,7 +405,6 @@ FunctionEnd
 # that it is better to close other apps before continuing
 Function KillOtherAppsOrWarn
    g4wihelp::KillProc "kleopatra.exe"
-   g4wihelp::KillProc "gpa.exe"
    g4wihelp::KillProc "gpgme-w32spawn.exe"
    g4wihelp::KillProc "resolver.exe"
    g4wihelp::KillProc "overlayer.exe"
@@ -436,7 +421,6 @@ FunctionEnd
 
 Function un.CloseApps
    g4wihelp::KillProc "kleopatra.exe"
-   g4wihelp::KillProc "gpa.exe"
    g4wihelp::KillProc "gpgme-w32spawn.exe"
    g4wihelp::KillProc "resolver.exe"
    g4wihelp::KillProc "overlayer.exe"
@@ -775,9 +759,6 @@ FunctionEnd
 !endif
 !ifdef HAVE_PKG_PAPERKEY
   !insertmacro MUI_DESCRIPTION_TEXT ${SEC_paperkey} $(DESC_SEC_paperkey)
-!endif
-!ifdef HAVE_PKG_GPA
-  !insertmacro MUI_DESCRIPTION_TEXT ${SEC_gpa} $(DESC_SEC_gpa)
 !endif
 !ifdef HAVE_PKG_KLEOPATRA
   !insertmacro MUI_DESCRIPTION_TEXT ${SEC_kleopatra} $(DESC_SEC_kleopatra)
