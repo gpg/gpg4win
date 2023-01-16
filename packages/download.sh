@@ -46,9 +46,10 @@ Options:
         [--quiet]
         [--ipv4]
         [--ipv6]
-        [--v4] Downlad packages for Version 4.x (default)
-        [--v3] Downlad packages for Version 3.x
-        [--clean] Do not download but remove downloaded files.
+        [--v4]       Downlad packages for Version 4.x (default)
+        [--v3]       Downlad packages for Version 3.x
+	[--dry-run]  Do not download - just check
+        [--clean]    Do not download but remove downloaded files.
 EOF
     exit $1
 }
@@ -60,6 +61,7 @@ version3=no
 version4=no
 ipvx=
 clean=no
+dryrun=no
 #keep_list=no
 #sig_check=yes
 while [ $# -gt 0 ]; do
@@ -101,6 +103,9 @@ while [ $# -gt 0 ]; do
             ;;
         --clean)
             clean=yes
+            ;;
+        --dry-run|-n)
+            dryrun=yes
             ;;
 	*)
 	    usage 1 1>&2
@@ -196,6 +201,8 @@ while read key value ; do
            rm -f $name
        elif [ -s "$name" -a "$force" = "no" ]; then
            [ $quiet = no ] && echo "package     \`$url' ... already exists"
+       elif [ $dryrun = yes ]; then
+           echo "skipping download of \`$url' ... --dry-run active"
        else
            echo -n "downloading \`$url' ..."
            if ${WGET} -c -q "$url" -O "$name" ; then
@@ -260,6 +267,7 @@ while read key value ; do
        exit 1
      esac
 done
+[ $dryrun = yes ] && echo "Note: option --dry-run was used" >&2
 if [ -f '.#download.failed' ]; then
   cat '.#download.failed' >&2
   rm '.#download.failed'
