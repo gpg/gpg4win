@@ -43,7 +43,7 @@ m4_define([mym4_revision_dec], m4_argn(8, mym4_verslist))
 m4_define([mym4_isvsd],        m4_argn(9, mym4_verslist))
 
 
-AC_INIT([gpg4win],[mym4_version],[gpg4win-devel@wald.intevation.org])
+AC_INIT([gpg4win],[mym4_version],[https://bugs.gnupg.org])
 
 # Remember to update these version numbers also in the NEWS file.
 MANUALVERSION_EINSTEIGER="2.0.2"
