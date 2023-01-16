@@ -17,7 +17,7 @@
 # along with this program; if not, see <http://www.gnu.org/licenses/>.
 
 ACLOCAL_AMFLAGS = -I m4
-AUTOMAKE_OPTIONS = dist-bzip2 no-dist-gzip
+AUTOMAKE_OPTIONS = dist-xz no-dist-gzip
 DISTCHECK_CONFIGURE_FLAGS = --host=i686-w64-mingw32
 
 if BUILD_GPG4WIN
