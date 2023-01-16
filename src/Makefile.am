@@ -79,11 +79,11 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
         slideshow/slide2-gpgex.png \
         slideshow/slide3-kleopatra.png \
         slideshow/slide4-summary.png \
-        file-ext.ico \
+        icons/file-ext.ico \
         kdeglobals qtlogging.ini \
         make-msi.pl make-msi.guids \
         build-gpg4win.sh \
-        WixUI_Gpg4win.wxs shield.ico
+        WixUI_Gpg4win.wxs icons/shield.ico
 
 if BUILD_APPIMAGE
 appimage = appimage
@@ -458,14 +458,14 @@ VSD_VERSION=$(VERSION)
 # Signging host/key setup for codesigning
 -include gnupg-vsd/sign.mk
 
-$(stampdir)/stamp-msi-base: shield.ico Makefile.am \
+$(stampdir)/stamp-msi-base: icons/shield.ico Makefile.am \
                        $(top_srcdir)/doc/logo/gpg4win-msi*.bmp \
                        $(top_srcdir)/po/gpg4win-de.wxl \
                        $(top_srcdir)/po/gpg4win-en.wxl
 	ssh $(WINHOST) "mkdir AppData\\Local\\Temp\\gpg4win-$(VERSION)" || true
 	scp $(top_srcdir)/packages/gnupg-msi-$(gpg4win_pkg_gnupg_msi_version)-bin.wixlib \
 		$(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION);
-	scp $(top_srcdir)/src/shield.ico $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)
+	scp $(top_srcdir)/src/icons/shield.ico $(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)
 	scp $(top_srcdir)/doc/logo/gpg4win-msi-header_install-493x58.bmp \
 		$(WINHOST):AppData/Local/Temp/gpg4win-$(VERSION)/header.bmp
 	scp $(top_srcdir)/doc/logo/gpg4win-msi-wizard_install-493x312.bmp \

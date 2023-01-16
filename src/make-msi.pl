@@ -2067,8 +2067,8 @@ print <<EOF;
     <!-- Turn on logging
         <Property Id="MsiLogging" Value="gnupg-desktop"/>
     -->
-    <Icon Id="shield.ico" SourceFile="shield.ico"/>
-    <Property Id="ARPPRODUCTICON" Value="shield.ico"/>
+    <Icon Id="shield.ico" SourceFile="icons/shield.ico"/>
+    <Property Id="ARPPRODUCTICON" Value="icons/shield.ico"/>
 
     <WixVariable Id="WixUIBannerBmp" Value="header.bmp" />
     <WixVariable Id="WixUIDialogBmp" Value="dialog.bmp" />

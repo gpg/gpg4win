@@ -205,7 +205,7 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
   WriteRegStr SHCTX "Software\Gpg4win\kleopatra\Capabilities" "ApplicationName" "Kleopatra"
 
   SetOutPath "$INSTDIR\share\gpg4win"
-  File "file-ext.ico"
+  File "icons/file-ext.ico"
 
   # Openpgp4fpr URI scheme
   WriteRegStr SHCTX "Software\Classes\openpgp4fpr" "" "URL:OpenPGP master key fingerprint"
