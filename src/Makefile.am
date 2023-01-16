@@ -566,7 +566,7 @@ installers/gpg4win-$(VERSION).exe: gpg4win.nsi $(common_nsi) $(stampdir)/stamp-f
 		   mv gpg4win-$(VERSION).exe installers/gpg4win-$(VERSION).exe
 
 $(stampdir)/stamp-dist-self: versioninfo.txt
-	(set -e; cd ..; make dist-bzip2)
+	(set -e; cd ..; make dist-xz)
 	touch $(stampdir)/stamp-dist-self
 
 installers/gpg4win-src-$(VERSION).exe: gpg4win-src.nsi $(common_nsii) \

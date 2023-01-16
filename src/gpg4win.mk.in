@@ -989,7 +989,7 @@ gnupg-vsd/$(1)/announcement.txt: gnupg-vsd/custom.mk gnupg-vsd/announcement.de.i
 	cat gnupg-vsd/$(call GETVAR,msi_target_$(1)_announcement) | \
 		sed 's/VSD_VERSION/$(VSD_VERSION)/' | \
 		sed 's@GNUPG_VSD_CUSTOMER_LINK@https://download.gnupg.com/files/$(call GETVAR,msi_target_$(1)_directory)/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi@' | \
-		sed 's@GNUPG_VSD_SOURCE_LINK@https://download.gnupg.com/files/src/Gnupg-VS-Desktop-$(VSD_VERSION).tar.bz2@' > gnupg-vsd/$(1)/announcement.txt
+		sed 's@GNUPG_VSD_SOURCE_LINK@https://download.gnupg.com/files/src/Gnupg-VS-Desktop-$(VSD_VERSION).tar.xz@' > gnupg-vsd/$(1)/announcement.txt
 
 installers/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi: $(stampdir)/stamp-msi-base $(idir)/$(1).wixlib \
 	gnupg-vsd/$(1)/license.rtf $(idir)/$$($(1)_PRODUCT)-$(VERSION).wixlib
@@ -1099,15 +1099,15 @@ $(1)-x86: installers/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1)-x86.msi
 
 .PHONY : $(1)-upload
 $(1)-upload: $(stampdir)/stamp-$(1)-upload $(stampdir)/stamp-dist-self
-	gpg --yes -o gnupg-vsd-$(VERSION).tar.bz2.sig -bau $(msi_signkey) \
-		../gpg4win-$(VERSION).tar.bz2
-	rsync -vP ../gpg4win-$(VERSION).tar.bz2 $(VSD_PUBLISH_HOST)/src/$$($(1)_PRODUCT)-$(VERSION).tar.bz2
-	rsync -vP gnupg-vsd-$(VERSION).tar.bz2.sig $(VSD_PUBLISH_HOST)/src/$$($(1)_PRODUCT)-$(VERSION).tar.bz2.sig
+	gpg --yes -o gnupg-vsd-$(VERSION).tar.xz.sig -bau $(msi_signkey) \
+		../gpg4win-$(VERSION).tar.xz
+	rsync -vP ../gpg4win-$(VERSION).tar.xz $(VSD_PUBLISH_HOST)/src/$$($(1)_PRODUCT)-$(VERSION).tar.xz
+	rsync -vP gnupg-vsd-$(VERSION).tar.xz.sig $(VSD_PUBLISH_HOST)/src/$$($(1)_PRODUCT)-$(VERSION).tar.xz.sig
 	echo "Upload URLs:"
 	cat $(stampdir)/stamp-$(1)-upload
 	echo "Source links:"
-	echo "https://download.gnupg.com/files/src/$$($(1)_PRODUCT)-$(VERSION).tar.bz2"
-	echo "https://download.gnupg.com/files/src/$$($(1)_PRODUCT)-$(VERSION).tar.bz2.sig"
+	echo "https://download.gnupg.com/files/src/$$($(1)_PRODUCT)-$(VERSION).tar.xz"
+	echo "https://download.gnupg.com/files/src/$$($(1)_PRODUCT)-$(VERSION).tar.xz.sig"
 
 $(1)-signed: signed_installers/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi
 
@@ -1176,13 +1176,13 @@ $(stampdir)/stamp-all-upload: $(stampdir)/stamp-dist-self \
 	$(addsuffix -upload, $(addprefix $(stampdir)/stamp-,$(msi_targets)))
 	echo "Upload URLs:"
 	cat $(addsuffix -upload, $(addprefix $(stampdir)/stamp-,$(msi_targets)))
-	gpg --yes -o gnupg-vsd-$(VERSION).tar.bz2.sig -bau $(msi_signkey) \
-		../gpg4win-$(VERSION).tar.bz2
-	rsync -vP ../gpg4win-$(VERSION).tar.bz2 $(VSD_PUBLISH_HOST)/src/GnuPG-VS-Desktop-$(VSD_VERSION).tar.bz2
-	rsync -vP gnupg-vsd-$(VERSION).tar.bz2.sig $(VSD_PUBLISH_HOST)/src/GnuPG-VS-Desktop-$(VSD_VERSION).tar.bz2.sig
+	gpg --yes -o gnupg-vsd-$(VERSION).tar.xz.sig -bau $(msi_signkey) \
+		../gpg4win-$(VERSION).tar.xz
+	rsync -vP ../gpg4win-$(VERSION).tar.xz $(VSD_PUBLISH_HOST)/src/GnuPG-VS-Desktop-$(VSD_VERSION).tar.bz2
+	rsync -vP gnupg-vsd-$(VERSION).tar.xz.sig $(VSD_PUBLISH_HOST)/src/GnuPG-VS-Desktop-$(VSD_VERSION).tar.xz.sig
 	echo "Source links:"
-	echo "https://download.gnupg.com/files/src/Gnupg-VS-Desktop-$(VSD_VERSION).tar.bz2"
-	echo "https://download.gnupg.com/files/src/Gnupg-VS-Desktop-$(VSD_VERSION).tar.bz2.sig"
+	echo "https://download.gnupg.com/files/src/Gnupg-VS-Desktop-$(VSD_VERSION).tar.xz"
+	echo "https://download.gnupg.com/files/src/Gnupg-VS-Desktop-$(VSD_VERSION).tar.xz.sig"
 	touch $(stampdir)/stamps-all-upload
 
 .PHONY: msi
