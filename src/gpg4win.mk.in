@@ -695,6 +695,7 @@ $(stampdir)/stamp-$(1)-02-configure: $(stampdir)/stamp-$(1)-01-patch
 		-DCMAKE_PREFIX_PATH="$$$${pkgidir}" \
 		-DQT_MAJOR_VERSION="5" \
 		-DCMAKE_TOOLCHAIN_FILE=$(abs_top_srcdir)/src/toolchain.cmake \
+		-DPKG_CONFIG_EXECUTABLE=$(abs_top_srcdir)/src/pkg-config \
 		-DKDE_INSTALL_DATADIR="$$$${pkgidir}/share" \
 		-DBUILD_TESTING=False \
 		$$$${pkgcfg} $$$${pkgextracflags} "../$$$${pkg_version}") && \

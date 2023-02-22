@@ -26,9 +26,9 @@ if [ ! "$SYSROOT" ]; then
     exit 2
 fi
 
-#if [ ! "$PKG_CONFIG_LIBDIR" ]; then
-#    export PKG_CONFIG_LIBDIR=$SYSROOT/lib/pkgconfig/
-#fi
+if [ ! "$PKG_CONFIG_LIBDIR" ]; then
+    export PKG_CONFIG_LIBDIR=$SYSROOT/lib/pkgconfig/
+fi
 
 export PKG_CONFIG_LIBDIR
 export PKG_CONFIG_PATH
