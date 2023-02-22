@@ -38,9 +38,6 @@
 !ifdef HAVE_PKG_PKGCONFIG
 !include "inst-pkgconfig.nsi"
 !endif
-!ifdef HAVE_PKG_W32PTH
-!include "inst-w32pth.nsi"
-!endif
 !ifdef HAVE_PKG_ZLIB
 !include "inst-zlib.nsi"
 !endif
@@ -238,9 +235,6 @@
 !endif
 !ifdef HAVE_PKG_ZLIB
 !include "uninst-zlib.nsi"
-!endif
-!ifdef HAVE_PKG_W32PTH
-!include "uninst-w32pth.nsi"
 !endif
 !ifdef HAVE_PKG_PKGCONFIG
 !include "uninst-pkgconfig.nsi"
@@ -509,9 +503,6 @@ Function CalcDepends
 !ifdef HAVE_PKG_LIBGPG_ERROR
   !insertmacro UnselectSection ${SEC_libgpg_error}
 !endif
-!ifdef HAVE_PKG_W32PTH
-  !insertmacro UnselectSection ${SEC_w32pth}
-!endif
 !ifdef HAVE_PKG_LIBASSUAN
   !insertmacro UnselectSection ${SEC_libassuan}
 !endif
@@ -743,11 +734,8 @@ skip_gpgme_browser:
   !insertmacro SectionFlagIsSet ${SEC_libassuan} ${SF_SELECTED} have_libassuan skip_libassuan
   have_libassuan:
   !insertmacro SelectSection ${SEC_libgpg_error}
-  !insertmacro SelectSection ${SEC_w32pth}
   skip_libassuan:
 !endif
-
-  # Package "w32pth" has no dependencies.
 
 !ifdef HAVE_PKG_LIBGPG_ERROR
   !insertmacro SectionFlagIsSet ${SEC_libgpg_error} ${SF_SELECTED} have_libgpg_error skip_libgpg_error

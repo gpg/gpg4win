@@ -41,7 +41,6 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
         inst-man_novice_en.nsi	   uninst-man_novice_en.nsi   \
         inst-pinentry.nsi	   uninst-pinentry.nsi	      \
         inst-pkgconfig.nsi	   uninst-pkgconfig.nsi	      \
-        inst-w32pth.nsi		   uninst-w32pth.nsi	      \
         inst-zlib.nsi        	   uninst-zlib.nsi            \
         inst-kconfig.nsi        uninst-kconfig.nsi              \
         inst-kleopatra.nsi  	   uninst-kleopatra.nsi       \
@@ -119,7 +118,7 @@ gpg4win_spkgs = glib libffi gdk-pixbuf gtk+ \
                 libgpg-error gpgme gpgol gpgex libpng \
 		gpa opencdk \
 		pinentry libassuan ntbtls pcre \
-		w32pth paperkey regex libiconv gettext scute
+		paperkey regex libiconv gettext scute
 
 gpg4win_qtpkgs = qtbase qttools qtwinextras qtsvg qttranslations
 
@@ -131,7 +130,7 @@ gpg4win_kdepkgs = kconfig kwidgetsaddons ki18n extra-cmake-modules \
                   gpg4win-tools kcrash
 
 # Supported source packages to build in an additional architecture
-gpg4win_expkgs = libgpg-error libassuan libiconv gettext w32pth gpgex gpgol \
+gpg4win_expkgs = libgpg-error libassuan libiconv gettext gpgex gpgol \
                  gpgme
 
 # Some variables

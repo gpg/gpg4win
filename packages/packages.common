@@ -72,16 +72,6 @@ chk  50c39e85ea28b5ecfdb3f9e860afe9ba606381e21836b2849efca6a0bfe6ef6e
 
 
 #
-# Pth emulation
-#
-
-server ftp://ftp.g10code.com/g10code/w32pth
-
-# checked: 2014-07-16 ah
-file w32pth-2.0.5.tar.bz2
-chk  5e462d06ed50e9e961546ab5264258e606b101860a74c1e410d086432ec27a06
-
-#
 # Stripped down version of BZIP2
 # (full source at http://bzip.org)
 #

@@ -280,14 +280,13 @@ if test "$build_gpg4win" = yes ; then
 
     GPG4WIN_SPKG([bzip2])
     GPG4WIN_SPKG([libgpg-error], [libiconv gettext])
-    GPG4WIN_SPKG([libassuan], [libgpg-error w32pth])
+    GPG4WIN_SPKG([libassuan], [libgpg-error])
     GPG4WIN_SPKG([scute], [libgpg-error libassuan])
     GPG4WIN_SPKG([pinentry], [qtbase libassuan libiconv])
     GPG4WIN_SPKG([gpgme], [libgpg-error libassuan qtbase])
     GPG4WIN_SPKG([gpgol], [gpgme libassuan])
     GPG4WIN_SPKG([gpgex], [libassuan])
     GPG4WIN_SPKG([paperkey])
-    GPG4WIN_SPKG([w32pth])
     GPG4WIN_SPKG([libiconv])
     GPG4WIN_SPKG([gettext], [libiconv])
 

@@ -56,10 +56,6 @@
 !define gpg4win_pkg_libgpg_error @gpg4win_pkg_libgpg_error@
 !define gpg4win_pkg_libgpg_error_version @gpg4win_pkg_libgpg_error_version@
 
-@HAVE_PKG_W32PTH@
-!define gpg4win_pkg_w32pth @gpg4win_pkg_w32pth@
-!define gpg4win_pkg_w32pth_version @gpg4win_pkg_w32pth_version@
-
 @HAVE_PKG_LIBASSUAN@
 !define gpg4win_pkg_libassuan @gpg4win_pkg_libassuan@
 !define gpg4win_pkg_libassuan_version @gpg4win_pkg_libassuan_version@
