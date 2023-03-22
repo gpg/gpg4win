@@ -30,7 +30,7 @@ Section "-libkleo" SEC_libkleo
   File "${gpg4win_pkg_libkleo}"
 !else
   SetOutPath "$INSTDIR\bin"
-  File ${prefix}/bin/libKF5Libkleo.dll
+  File ${prefix}/bin/libKPim5Libkleo.dll
   SetOutPath "$INSTDIR\etc\xdg"
   File ${prefix}/etc/xdg/libkleopatrarc
   SetOutPath "$INSTDIR\share\libkleopatra\pics"
