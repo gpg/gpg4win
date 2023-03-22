@@ -30,7 +30,7 @@ Section "-un.libkleo"
   RmDir "$INSTDIR\etc\xdg"
   RmDir "$INSTDIR\etc"
 
-  Delete "$INSTDIR\bin\libKF5Libkleo.dll"
+  Delete "$INSTDIR\bin\libKPim5Libkleo.dll"
   RmDir "$INSTDIR\bin"
 
   Delete "$INSTDIR\share\libkleopatra\pics\chiasmus_chi.png"
