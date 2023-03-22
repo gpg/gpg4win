@@ -373,6 +373,41 @@ chk b62f3dfe68691ad2917d0592d66ffc02cfbcc7571b7d1fb1d3fadd695534fd2e
 # verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
 file 5.104/kcrash-5.104.0.tar.xz
 chk 12d6004f9e2e51a9d74f044462753dd7410e10a40a1f6b07727dcd5b52a7ea96
+
+# kio
+# last changed: 2023-03-22
+# by: ah
+# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
+file 5.104/kio-5.104.0.tar.xz
+chk 5a8b93a5de72406fc4cc7b9aa4715be6d1d5264e617b26be257f5d0e26dde310
+
+# kbookmarks
+# last changed: 2023-03-22
+# by: ah
+# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
+file 5.104/kbookmarks-5.104.0.tar.xz
+chk 85e565590233cfc6dc8c3459717c327961e79c74199d4d1c2741b40946936354
+
+# kservice
+# last changed: 2023-03-22
+# by: ah
+# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
+file 5.104/kservice-5.104.0.tar.xz
+chk 215b109738ea5a10f97c4abbd3c9b9da58c826127708eddd34af345b4e8ad8a3
+
+# solid
+# last changed: 2023-03-22
+# by: ah
+# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
+file 5.104/solid-5.104.0.tar.xz
+chk 2a9a33bc71b4cafec35b9692bd7681a736eeb4e4b81c25f5bd87dbec38c143cf
+
+# kjobwidgets
+# last changed: 2023-03-22
+# by: ah
+# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
+file 5.104/kjobwidgets-5.104.0.tar.xz
+chk 3b254124d3bf20666a514710fef8990325da2ade14f49368b1bed1256eb8fea1
 ### END PASTE ###
 
 server http://download.kde.org/stable/release-service/

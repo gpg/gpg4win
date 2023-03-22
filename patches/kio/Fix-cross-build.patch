@@ -1,0 +1,255 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From e8bc5ca649c334c07a08f79a21cb66b74cbf759b Mon Sep 17 00:00:00 2001
+From: Andre Heinecke <aheinecke@gnupg.org>
+Date: Wed, 22 Mar 2023 17:08:51 +0100
+Subject: [PATCH] Fix cross build
+
+This generalizes some Android defines for Windows build without
+SSL support and DBus.
+---
+ CMakeLists.txt                   |  7 +++++--
+ KF5KIOConfig.cmake.in            |  6 ++++--
+ src/CMakeLists.txt               |  6 +++---
+ src/core/CMakeLists.txt          |  2 +-
+ src/core/desktopexecparser.cpp   |  6 +++---
+ src/gui/dbusactivationrunner.cpp |  6 +++---
+ src/gui/kprocessrunner.cpp       |  4 ++--
+ src/widgets/CMakeLists.txt       | 15 ++++++++++-----
+ 8 files changed, 31 insertions(+), 21 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 1c29da5a8..ea01a854a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -67,8 +67,11 @@ find_package(KF5I18n ${KF_DEP_VERSION} REQUIRED)
+ find_package(KF5Service ${KF_DEP_VERSION} REQUIRED)
+ find_package(KF5DocTools ${KF_DEP_VERSION})
+ find_package(KF5Solid ${KF_DEP_VERSION} REQUIRED) # for kio_trash
++
+ if (NOT ANDROID)
+     find_package(KF5Crash ${KF_DEP_VERSION} REQUIRED)
++endif()
++if (NOT ANDROID AND NOT WIN32)
+     find_package(KF5DBusAddons ${KF_DEP_VERSION} REQUIRED)
+ endif()
+
+@@ -102,7 +105,7 @@ set_package_properties(KF5DocTools PROPERTIES DESCRIPTION "Provides tools to gen
+
+ set(REQUIRED_QT_VERSION 5.15.2)
+ find_package(Qt${QT_MAJOR_VERSION} ${REQUIRED_QT_VERSION} CONFIG REQUIRED Widgets Network Concurrent Xml Test)
+-if (NOT ANDROID)
++if (NOT ANDROID AND NOT WIN32)
+     find_package(Qt${QT_MAJOR_VERSION} ${REQUIRED_QT_VERSION} CONFIG REQUIRED DBus)
+ endif()
+
+@@ -145,7 +148,7 @@ if (CMAKE_SYSTEM_NAME MATCHES "Linux")
+     set(HAVE_LIB_MOUNT ${LibMount_FOUND})
+ endif()
+
+-if (ANDROID)
++if (ANDROID OR WIN32)
+     # used to mark code that is just stubbed out on Android for now
+     # and that would still need a decision on how to deal with that
+     add_definitions(-DKIO_ANDROID_STUB)
+diff --git a/KF5KIOConfig.cmake.in b/KF5KIOConfig.cmake.in
+index 5e3fa3884..99c343e66 100644
+--- a/KF5KIOConfig.cmake.in
++++ b/KF5KIOConfig.cmake.in
+@@ -25,8 +25,10 @@ if (NOT @KIOCORE_ONLY@)
+         find_dependency(KF5GuiAddons "@KF_DEP_VERSION@")
+         find_dependency(KF5IconThemes "@KF_DEP_VERSION@")
+
+-        if (NOT ANDROID)
++        if (NOT ANDROID AND NOT WIN32)
+             find_dependency(KF5DBusAddons "@KF_DEP_VERSION@")
++        endif()
++        if (NOT ANDROID)
+             find_dependency(KF5Crash "@KF_DEP_VERSION@")
+         endif()
+
+@@ -40,7 +42,7 @@ find_dependency(Qt@QT_MAJOR_VERSION@Network "@REQUIRED_QT_VERSION@")
+ if (NOT @KIO_NO_PUBLIC_QTCONCURRENT@)
+ find_dependency(Qt@QT_MAJOR_VERSION@Concurrent "@REQUIRED_QT_VERSION@")
+ endif()
+-if (NOT ANDROID)
++if (NOT ANDROID AND NOT WIN32)
+     find_dependency(Qt@QT_MAJOR_VERSION@DBus "@REQUIRED_QT_VERSION@")
+ endif()
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 6e402ce74..886327687 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -3,7 +3,7 @@ add_subdirectory(core)
+ # KIOCore-only executables
+ add_subdirectory(protocoltojson)
+ add_subdirectory(kntlm)
+-if (NOT ANDROID)
++if (NOT ANDROID AND NOT WIN32)
+     add_subdirectory(ioslaves)
+     add_subdirectory(kioworkers)
+     add_subdirectory(kiod)
+@@ -15,7 +15,7 @@ add_subdirectory(kioslave)
+ if (NOT KIOCORE_ONLY)
+ add_subdirectory(gui)
+ add_subdirectory(widgets)
+-if (NOT ANDROID)
++if (NOT ANDROID AND NOT WIN32)
+     add_subdirectory(kpasswdserver)
+     add_subdirectory(filewidgets)
+     add_subdirectory(kioexec)
+@@ -41,7 +41,7 @@ set(NON_KIOCORE_LINK_QCHS
+     KF5WindowSystem_QCH
+ )
+
+-if(BUILD_DESIGNERPLUGIN AND NOT ANDROID)
++if(BUILD_DESIGNERPLUGIN AND NOT ANDROID AND NOT WIN32)
+     add_subdirectory(designer)
+ endif()
+
+diff --git a/src/core/CMakeLists.txt b/src/core/CMakeLists.txt
+index ddfdc0216..f12eb2cca 100644
+--- a/src/core/CMakeLists.txt
++++ b/src/core/CMakeLists.txt
+@@ -99,7 +99,7 @@ target_sources(KF5KIOCore PRIVATE
+   kfilefilter.cpp
+ )
+
+-if (NOT ANDROID)
++if (NOT ANDROID AND NOT WIN32)
+ target_sources(KF5KIOCore PRIVATE
+   tcpslavebase.cpp
+   tcpworkerbase.cpp
+diff --git a/src/core/desktopexecparser.cpp b/src/core/desktopexecparser.cpp
+index be7580d5e..e28e5773b 100644
+--- a/src/core/desktopexecparser.cpp
++++ b/src/core/desktopexecparser.cpp
+@@ -8,7 +8,7 @@
+ */
+
+ #include "desktopexecparser.h"
+-#ifndef Q_OS_ANDROID
++#if !defined(Q_OS_ANDROID) && !defined(Q_OS_WIN)
+ #include "kiofuse_interface.h"
+ #endif
+
+@@ -22,7 +22,7 @@
+ #include <KShell>
+ #include <kprotocolinfo.h> // KF6 TODO remove after moving hasSchemeHandler to OpenUrlJob
+
+-#ifndef Q_OS_ANDROID
++#ifdef QT_DBUS_LIB
+ #include <QDBusConnection>
+ #include <QDBusReply>
+ #endif
+@@ -404,7 +404,7 @@ QStringList KIO::DesktopExecParser::resultingArguments() const
+
+     // Check if we need kioexec, or KIOFuse
+     bool useKioexec = false;
+-#ifndef Q_OS_ANDROID
++#ifdef QT_DBUS_LIB
+     org::kde::KIOFuse::VFS kiofuse_iface(QStringLiteral("org.kde.KIOFuse"), QStringLiteral("/org/kde/KIOFuse"), QDBusConnection::sessionBus());
+     struct MountRequest {
+         QDBusPendingReply<QString> reply;
+diff --git a/src/gui/dbusactivationrunner.cpp b/src/gui/dbusactivationrunner.cpp
+index b60c2f0ab..d5fea1776 100644
+--- a/src/gui/dbusactivationrunner.cpp
++++ b/src/gui/dbusactivationrunner.cpp
+@@ -10,7 +10,7 @@
+ #include "kiogui_debug.h"
+ #include <KWindowSystem>
+
+-#ifndef Q_OS_ANDROID
++#ifdef QT_DBUS_LIB
+ #include <QDBusConnection>
+ #include <QDBusConnectionInterface>
+ #include <QDBusMessage>
+@@ -47,7 +47,7 @@ DBusActivationRunner::DBusActivationRunner(const QString &action)
+
+ void DBusActivationRunner::startProcess()
+ {
+-#ifndef Q_OS_ANDROID
++#ifdef QT_DBUS_LIB
+     // DBusActivatable as per https://specifications.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html#dbus
+     const QString objectPath = QStringLiteral("/%1").arg(m_desktopName).replace(QLatin1Char('.'), QLatin1Char('/'));
+     const QString interface = QStringLiteral("org.freedesktop.Application");
+@@ -98,7 +98,7 @@ void DBusActivationRunner::startProcess()
+
+ bool DBusActivationRunner::waitForStarted(int timeout)
+ {
+-#ifndef Q_OS_ANDROID
++#ifndef QT_DBUS_LIB
+     if (m_finished) {
+         return m_pid != 0;
+     }
+diff --git a/src/gui/kprocessrunner.cpp b/src/gui/kprocessrunner.cpp
+index 232b0e4ca..0d9dc1698 100644
+--- a/src/gui/kprocessrunner.cpp
++++ b/src/gui/kprocessrunner.cpp
+@@ -22,7 +22,7 @@
+ #include <KLocalizedString>
+ #include <KWindowSystem>
+
+-#ifndef Q_OS_ANDROID
++#ifdef QT_DBUS_LIB
+ #include <QDBusConnection>
+ #include <QDBusInterface>
+ #include <QDBusReply>
+@@ -108,7 +108,7 @@ KProcessRunner *KProcessRunner::fromApplication(const KService::Ptr &service,
+     qCDebug(KIO_GUI) << "Starting process:" << args;
+     *instance->m_process << args;
+
+-#ifndef Q_OS_ANDROID
++#ifdef QT_DBUS_LIB
+     enum DiscreteGpuCheck { NotChecked, Present, Absent };
+     static DiscreteGpuCheck s_gpuCheck = NotChecked;
+
+diff --git a/src/widgets/CMakeLists.txt b/src/widgets/CMakeLists.txt
+index 481f1d2bb..fd8e45fbf 100644
+--- a/src/widgets/CMakeLists.txt
++++ b/src/widgets/CMakeLists.txt
+@@ -45,10 +45,7 @@ target_sources(KF5KIOWidgets PRIVATE
+   kurifilter.cpp
+   previewjob.cpp
+   renamedialog.cpp
+-  ksslcertificatebox.cpp
+-  ksslinfodialog.cpp
+   skipdialog.cpp
+-  jobuidelegate.cpp
+   kdirlister.cpp
+   executablefileopendialog.cpp
+   dndpopupmenuplugin.cpp
+@@ -56,10 +53,18 @@ target_sources(KF5KIOWidgets PRIVATE
+   widgetsuntrustedprogramhandler.cpp
+   widgetsopenwithhandler.cpp
+   widgetsopenorexecutefilehandler.cpp
++)
++
++if (NOT WIN32)
++target_sources(KF5KIOWidgets PRIVATE
++  ksslcertificatebox.cpp
++  ksslinfodialog.cpp
+   widgetsaskuseractionhandler.cpp
++  jobuidelegate.cpp
+ )
++endif()
+
+-if(NOT ANDROID)
++if(NOT ANDROID AND NOT WIN32)
+ target_sources(KF5KIOWidgets PRIVATE
+   ${kiowidgets_dbus_SRCS}
+   accessmanager.cpp
+@@ -80,7 +85,7 @@ target_sources(KF5KIOWidgets PRIVATE
+   renamefiledialog.cpp
+ )
+ endif()
+-if (NOT ANDROID)
++if (NOT ANDROID AND NOT WIN32)
+     target_sources(KF5KIOWidgets PRIVATE
+         kdynamicjobtracker.cpp
+     )
+--
+2.39.2

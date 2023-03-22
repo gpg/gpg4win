@@ -136,8 +136,6 @@ some of these tasks.  Here is a short run up:
    within gpg4win (or peculiarly shipped), or in the development
    package ${pkgidir_dev}.
 
-8. Add the installed files to the mkportable headers.
-
 Then run the usual "./autogen.sh" to create the actual configure file
 and run configure as described above.
 

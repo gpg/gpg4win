@@ -48,7 +48,12 @@ FRAMEWORKS="extra-cmake-modules
     kiconthemes
     breeze-icons
     karchive
-    kcrash"
+    kcrash
+    kio
+    kbookmarks
+    kservice
+    solid
+    kjobwidgets"
 
 fullversion=$1
 case ${fullversion} in

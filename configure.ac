@@ -1,5 +1,5 @@
 # configure.ac for GPG4Win
-# Copyright (C) 2005, 2006, 2007, 2008, 2010 g10 Code GmbH
+# Copyright (C) 2005, 2006, 2007, 2008, 2010, 2023 g10 Code GmbH
 #
 # This file is part of GPG4Win
 #
@@ -327,6 +327,11 @@ if test "$build_gpg4win" = yes ; then
     GPG4WIN_KDEPKG([kitemmodels], [qtbase qttools])
     GPG4WIN_KDEPKG([karchive], [qtbase qttools extra-cmake-modules])
     GPG4WIN_KDEPKG([kcrash], [kwindowsystem kcoreaddons])
+    GPG4WIN_KDEPKG([solid], [qtbase extra-cmake-modules])
+    GPG4WIN_KDEPKG([kjobwidgets], [qtbase extra-cmake-modules])
+    GPG4WIN_KDEPKG([kservice], [kconfig kcoreaddons ki18n])
+    GPG4WIN_KDEPKG([kbookmarks], [kconfig kcoreaddons kconfigwidgets kwidgetsaddons kcodecs])
+    GPG4WIN_KDEPKG([kio], [kcrash kjobwidgets solid kservice kbookmarks kwidgetsaddons kxmlgui kwindowsystem karchive kconfig kcoreaddons ki18n])
     GPG4WIN_KDEPKG([kiconthemes], [qtsvg kconfigwidgets karchive])
     GPG4WIN_KDEPKG([kxmlgui], [kiconthemes kconfigwidgets kitemviews])
     GPG4WIN_KDEPKG([libkleo], [kmime kconfigwidgets kwindowsystem kcompletion gpgme])

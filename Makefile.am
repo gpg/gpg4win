@@ -61,6 +61,7 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
              patches/qttools/disable-most-tools.patch \
              patches/kcoreaddons/0001-Fix-MINGW-build.patch \
              patches/ki18n/0001-Undef-snprintf-for-windows.patch \
+             patches/kio/Fix-cross-build.patch \
              patches-appimage/kconfigwidgets/0001-build-without-KF5Auth.patch \
              patches-appimage/kconfigwidgets/fake-version.patch \
              patches-appimage/qtwayland-5.15.0/00-disable-wayland-server.patch \

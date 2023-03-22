@@ -1,5 +1,5 @@
 # inst-sections.nsi - Installer for GPG4Win sections.  -*- coding: latin-1; -*-
-# Copyright (C) 2005, 2006, 2007, 2008, 2009 g10 Code GmbH
+# Copyright (C) 2005, 2006, 2007, 2008, 2009, 2023 g10 Code GmbH
 #
 # This file is part of GPG4Win.
 #
@@ -116,6 +116,18 @@
 !endif
 !ifdef HAVE_PKG_KCRASH
 !include "inst-kcrash.nsi"
+!endif
+!ifdef HAVE_PKG_KIO
+!include "inst-kio.nsi"
+!endif
+!ifdef HAVE_PKG_SOLID
+!include "inst-solid.nsi"
+!endif
+!ifdef HAVE_PKG_KBOOKMARKS
+!include "inst-kbookmarks.nsi"
+!endif
+!ifdef HAVE_PKG_KSERVICE
+!include "inst-kservice.nsi"
 !endif
 !ifdef HAVE_PKG_KITEMVIEWS
 !include "inst-kitemviews.nsi"
@@ -304,6 +316,21 @@
 !endif
 !ifdef HAVE_PKG_KCRASH
 !include "uninst-kcrash.nsi"
+!endif
+!ifdef HAVE_PKG_KIO
+!include "uninst-kio.nsi"
+!endif
+!ifdef HAVE_PKG_KJOBWIDGETS
+!include "uninst-kjobwidgets.nsi"
+!endif
+!ifdef HAVE_PKG_SOLID
+!include "uninst-solid.nsi"
+!endif
+!ifdef HAVE_PKG_KBOOKMARKS
+!include "uninst-kbookmarks.nsi"
+!endif
+!ifdef HAVE_PKG_KSERVICE
+!include "uninst-kservice.nsi"
 !endif
 !ifdef HAVE_PKG_KITEMVIEWS
 !include "uninst-kitemviews.nsi"
@@ -557,6 +584,21 @@ Function CalcDepends
 !ifdef HAVE_PKG_KCRASH
   !insertmacro UnselectSection ${SEC_kcrash}
 !endif
+!ifdef HAVE_PKG_KIO
+  !insertmacro UnselectSection ${SEC_kio}
+!endif
+!ifdef HAVE_PKG_KJOBWIDGETS
+  !insertmacro UnselectSection ${SEC_kjobwidgets}
+!endif
+!ifdef HAVE_PKG_SOLID
+  !insertmacro UnselectSection ${SEC_solid}
+!endif
+!ifdef HAVE_PKG_KBOOKMARKS
+  !insertmacro UnselectSection ${SEC_kbookmarks}
+!endif
+!ifdef HAVE_PKG_KSERVICE
+  !insertmacro UnselectSection ${SEC_kservice}
+!endif
 !ifdef HAVE_PKG_KITEMVIEWS
   !insertmacro UnselectSection ${SEC_kitemviews}
 !endif
@@ -660,6 +702,11 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_kitemmodels}
   !insertmacro SelectSection ${SEC_kiconthemes}
   !insertmacro SelectSection ${SEC_karchive}
+  !insertmacro SelectSection ${SEC_kio}
+  !insertmacro SelectSection ${SEC_kjobwidgets}
+  !insertmacro SelectSection ${SEC_solid}
+  !insertmacro SelectSection ${SEC_kservice}
+  !insertmacro SelectSection ${SEC_kbookmarks}
 # KArchive depdens on zlib
   !insertmacro SelectSection ${SEC_zlib}
   !insertmacro SelectSection ${SEC_kcrash}

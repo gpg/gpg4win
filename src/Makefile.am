@@ -44,9 +44,14 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
         inst-zlib.nsi        	   uninst-zlib.nsi            \
         inst-kconfig.nsi        uninst-kconfig.nsi              \
         inst-kleopatra.nsi  	   uninst-kleopatra.nsi       \
-	inst-bzip2.nsi             uninst-bzip2.nsi           \
+        inst-bzip2.nsi             uninst-bzip2.nsi           \
         inst-qtbase.nsi uninst-qtbase.nsi \
         inst-ki18n.nsi uninst-ki18n.nsi \
+        inst-kio.nsi uninst-kio.nsi \
+        inst-kbookmarks.nsi uninst-kbookmarks.nsi \
+        inst-kservice.nsi uninst-kservice.nsi \
+        inst-solid.nsi uninst-solid.nsi \
+        inst-kjobwidgets.nsi uninst-kjobwidgets.nsi \
         inst-kwidgetsaddons.nsi uninst-kwidgetsaddons.nsi \
         inst-kcompletion.nsi uninst-kcompletion.nsi \
         inst-kwindowsystem.nsi uninst-kwindowsystem.nsi \
@@ -127,7 +132,8 @@ gpg4win_kdepkgs = kconfig kwidgetsaddons ki18n extra-cmake-modules \
                   kcompletion kwindowsystem kcoreaddons libkleo kcodecs \
                   kmime kconfigwidgets kxmlgui kguiaddons kitemviews \
                   kiconthemes kleopatra breeze-icons kitemmodels karchive \
-                  gpg4win-tools kcrash
+                  gpg4win-tools kcrash kio kbookmarks kservice solid \
+                  kjobwidgets
 
 # Supported source packages to build in an additional architecture
 gpg4win_expkgs = libgpg-error libassuan libiconv gettext gpgex gpgol \
@@ -364,6 +370,15 @@ gpg4win_pkg_kxmlgui_configure = \
 
 gpg4win_pkg_breeze_icons_configure = \
     -DBINARY_ICONS_RESOURCE=OFF
+
+gpg4win_pkg_kbookmarks_configure = \
+    -DANDROID=ON
+
+gpg4win_pkg_kservice_configure = \
+    -DANDROID=ON
+
+gpg4win_pkg_kjobwidgets_configure = \
+    -DANDROID=ON
 
 # Supported make-only source packages.
 gpg4win_mpkgs = bzip2 zlib
