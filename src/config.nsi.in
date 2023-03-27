@@ -212,6 +212,18 @@
 !define gpg4win_pkg_kio @gpg4win_pkg_kio@
 !define gpg4win_pkg_kio_version @gpg4win_pkg_kio_version@
 
+@HAVE_PKG_KSERVICE@
+!define gpg4win_pkg_kservice @gpg4win_pkg_kservice@
+!define gpg4win_pkg_kservice_version @gpg4win_pkg_kservice_version@
+
+@HAVE_PKG_SOLID@
+!define gpg4win_pkg_solid @gpg4win_pkg_solid@
+!define gpg4win_pkg_solid_version @gpg4win_pkg_solid_version@
+
+@HAVE_PKG_KBOOKMARKS@
+!define gpg4win_pkg_kbookmarks @gpg4win_pkg_kbookmarks@
+!define gpg4win_pkg_kbookmarks_version @gpg4win_pkg_kbookmarks_version@
+
 @HAVE_PKG_GPG4WIN_TOOLS@
 !define gpg4win_pkg_gpg4win_tools @gpg4win_pkg_gpg4win_tools@
 !define gpg4win_pkg_gpg4win_tools_version @gpg4win_pkg_gpg4win_tools_version@
