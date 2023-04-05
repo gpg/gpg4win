@@ -27,9 +27,11 @@ RUN set -x \
     && apt-get install --no-install-recommends --no-install-suggests -y \
         autoconf \
         automake \
+        bison \
         build-essential \
         cmake \
         docbook-utils \
+        flex \
         gettext \
         ghostscript \
         git \
