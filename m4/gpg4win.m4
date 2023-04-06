@@ -120,34 +120,28 @@ AC_DEFUN([GPG4WIN_FIND],
     _gpg4win_format=both
     AS_IF([test ! -z "$3"], _gpg4win_format="$3")
 
-    AS_IF([test -z "$_gpg4win_file" -a $_gpg4win_format != zip],
-          [_gpg4win_file=`echo ${_gpg4win_dir}/${_gpg4win_glob}.tar.xz`
-           _gpg4win_suffix=.tar.xz])
-    AS_IF([test -z "$_gpg4win_file" -a $_gpg4win_format != zip],
-          [_gpg4win_file=`echo ${_gpg4win_dir}/${_gpg4win_glob}.tar.bz2`
-           _gpg4win_suffix=.tar.bz2])
-    AS_IF([test -z "$_gpg4win_file" -a $_gpg4win_format != zip],
-          [_gpg4win_file=`echo ${_gpg4win_dir}/${_gpg4win_glob}.tbz2`
-           _gpg4win_suffix=.tbz2])
-    AS_IF([test -z "$_gpg4win_file" -a $_gpg4win_format != zip],
-          [_gpg4win_file=`echo ${_gpg4win_dir}/${_gpg4win_glob}.tbz`
-           _gpg4win_suffix=.tbz])
-    AS_IF([test -z "$_gpg4win_file" -a $_gpg4win_format != zip],
-          [_gpg4win_file=`echo ${_gpg4win_dir}/${_gpg4win_glob}.tar.gz`
-           _gpg4win_suffix=.tar.gz])
-    AS_IF([test -z "$_gpg4win_file" -a $_gpg4win_format != zip],
-          [_gpg4win_file=`echo ${_gpg4win_dir}/${_gpg4win_glob}.tgz`
-           _gpg4win_suffix=.tgz])
-    AS_IF([test -z "$_gpg4win_file" -a $_gpg4win_format != tar],
-          [_gpg4win_file=`echo ${_gpg4win_dir}/${_gpg4win_glob}.zip`
-           _gpg4win_suffix=.zip])
-    AS_IF([test -z "$_gpg4win_file" -a $_gpg4win_format != tar -a $_gpg4win_format != zip],
-          [_gpg4win_file=`echo ${_gpg4win_dir}/${_gpg4win_glob}.exe`
-           _gpg4win_suffix=.exe])
-    AS_IF([test -z "$_gpg4win_file" -a $_gpg4win_format != tar -a $_gpg4win_format != zip],
-          [_gpg4win_file=`echo ${_gpg4win_dir}/${_gpg4win_glob}.wixlib`
-           _gpg4win_suffix=.wixlib])
+    AS_IF([test $_gpg4win_format != zip],
+          [_gpg4win_file="$_gpg4win_file "`echo ${_gpg4win_dir}/${_gpg4win_glob}.tar.xz`])
+    AS_IF([test $_gpg4win_format != zip],
+          [_gpg4win_file="$_gpg4win_file "`echo ${_gpg4win_dir}/${_gpg4win_glob}.tar.bz2`])
+    AS_IF([test $_gpg4win_format != zip],
+          [_gpg4win_file="$_gpg4win_file "`echo ${_gpg4win_dir}/${_gpg4win_glob}.tbz2`])
+    AS_IF([test $_gpg4win_format != zip],
+          [_gpg4win_file="$_gpg4win_file "`echo ${_gpg4win_dir}/${_gpg4win_glob}.tbz`])
+    AS_IF([test $_gpg4win_format != zip],
+          [_gpg4win_file="$_gpg4win_file "`echo ${_gpg4win_dir}/${_gpg4win_glob}.tar.gz`])
+    AS_IF([test $_gpg4win_format != zip],
+          [_gpg4win_file="$_gpg4win_file "`echo ${_gpg4win_dir}/${_gpg4win_glob}.tgz`])
+    AS_IF([test $_gpg4win_format != tar],
+          [_gpg4win_file="$_gpg4win_file "`echo ${_gpg4win_dir}/${_gpg4win_glob}.zip`])
+    AS_IF([test $_gpg4win_format != tar -a $_gpg4win_format != zip],
+          [_gpg4win_file="$_gpg4win_file "`echo ${_gpg4win_dir}/${_gpg4win_glob}.exe`])
+    AS_IF([test $_gpg4win_format != tar -a $_gpg4win_format != zip],
+          [_gpg4win_file="$_gpg4win_file "`echo ${_gpg4win_dir}/${_gpg4win_glob}.wixlib`])
     shopt -u nullglob])
+
+  # remove leading and trailing whitespace
+  [_gpg4win_file=`echo $_gpg4win_file`]
 
   AS_IF([test -z "$_gpg4win_file"],
         AC_MSG_RESULT(no),
@@ -167,9 +161,10 @@ AC_DEFUN([GPG4WIN_FIND],
       _gpg4win_found=yes
   done
 
+  _gpg4win_suffix_pat='\.\(tar.xz\|tar.bz2\|tbz2\|tbz\|tar.gz\|tgz\|zip\|exe\|wixlib\)'
   AS_IF([test ! -z "$_gpg4win_file"],
         [gpg4win_val="$_gpg4win_file"
- 	[gpg4win_version=`echo "$gpg4win_val" | sed -e "s,^.*/${_gpg4win_pat}${_gpg4win_suffix}$,\1,"`]
+         [gpg4win_version=`echo "$gpg4win_val" | sed -e "s,^.*/${_gpg4win_pat}${_gpg4win_suffix_pat}$,\1,"`]
          [$5]],
         [$6])
 ])
