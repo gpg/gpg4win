@@ -31,7 +31,7 @@ while [ $# -gt 0 ]; do
 
     case $1 in
 	--v4)
-	    forversion=3
+	    forversion=4
 	    ;;
 	--v3)
 	    forversion=3
