@@ -1,0 +1,32 @@
+#! /bin/sh
+patch -p1 -f $* < $0
+exit $?
+
+From b608c084b9220d8ed288eb916e88a236abac0707 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
+Date: Mon, 27 Mar 2023 16:49:03 +0200
+Subject: [PATCH] core: Initialize error variable
+
+* src/engine-gpg.c (build_argv): Initialize err.
+--
+
+Fixes-commit: fbce7deb3b68af900f692591d5d05fa5c1a83f5f
+---
+ src/engine-gpg.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/engine-gpg.c b/src/engine-gpg.c
+index 9419f089..50497987 100644
+--- a/src/engine-gpg.c
++++ b/src/engine-gpg.c
+@@ -874,7 +874,7 @@ gpg_set_command_handler (void *engine, engine_command_handler_t fnc,
+ static gpgme_error_t
+ build_argv (engine_gpg_t gpg, const char *pgmname)
+ {
+-  gpgme_error_t err;
++  gpgme_error_t err = 0;
+   struct arg_and_data_s *a;
+   struct fd_data_map_s *fd_data_map = NULL;
+   size_t datac=0, argc=0, allocated_argc=0;
+--
+2.32.0
