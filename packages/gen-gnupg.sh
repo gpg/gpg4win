@@ -76,12 +76,13 @@ fi
 
 cp "$dir/${prefix}-${version}.tar.bz2"            "${prefix}-${version}.tar.bz2"
 
-cp "$dir/${prefix}-w32-${version}_${date}.tar.xz" "${prefix}-w32-${version}_${date}-src.tar.xz"
-cp "$dir/${prefix}-w32-${version}_${date}.exe"    "${prefix}-w32-${version}_${date}-bin.exe"
-cp "$dir/${prefix}-w32-${version}_${date}.wixlib" "${prefix}-w32-${version}_${date}-bin.wixlib"
+for suf in tar.xz exe wixlib; do
+    cp "$dir/${prefix}-w32-${version}_${date}.$suf" .
+done
 
-ln -f "${prefix}-w32-${version}_${date}-src.tar.xz" "${prefix}-msi-${version}_${date}-src.tar.xz"
-ln -f "${prefix}-w32-${version}_${date}-bin.wixlib" "${prefix}-msi-${version}_${date}-bin.wixlib"
+ln -f "${prefix}-w32-${version}_${date}.tar.xz" "${prefix}-w32-${version}_${date}-src.tar.xz"
+ln -f "${prefix}-w32-${version}_${date}.exe" "${prefix}-w32-${version}_${date}-bin.exe"
+ln -f "${prefix}-w32-${version}_${date}.wixlib" "${prefix}-msi-${version}_${date}-bin.wixlib"
 
 outfile="packages.$forversion"
 echo >>$outfile
@@ -94,24 +95,27 @@ echo >>$outfile "file $file"
 echo >>$outfile "chk  $(sha256sum < $file | cut -d ' ' -f1)"
 echo >>$outfile
 
+orgfile="${prefix}-w32-${version}_${date}.exe"
 file="${prefix}-w32-${version}_${date}-bin.exe"
 echo >>$outfile "name $file"
-echo >>$outfile "file binary/${prefix}-w32-${version}_${date}.exe"
-echo >>$outfile "chk  $(sha256sum < $file | cut -d ' ' -f1)"
+echo >>$outfile "file binary/${orgfile}"
+echo >>$outfile "chk  $(sha256sum < $orgfile | cut -d ' ' -f1)"
 echo >>$outfile
 
+orgfile="${prefix}-w32-${version}_${date}.tar.xz"
 file="${prefix}-w32-${version}_${date}-src.tar.xz"
 msifile="$(echo $file | sed s/-w32-/-msi-/)"
 echo >>$outfile "name $file"
-echo >>$outfile "file binary/${prefix}-w32-${version}_${date}.tar.xz"
+echo >>$outfile "file binary/${orgfile}"
 echo >>$outfile "link $msifile"
-echo >>$outfile "chk  $(sha256sum < $file | cut -d ' ' -f1)"
+echo >>$outfile "chk  $(sha256sum < $orgfile | cut -d ' ' -f1)"
 echo >>$outfile
 
+orgfile="${prefix}-w32-${version}_${date}.wixlib"
 file="${prefix}-msi-${version}_${date}-bin.wixlib"
 echo >>$outfile "name $file"
-echo >>$outfile "file binary/${prefix}-w32-${version}_${date}.wixlib"
-echo >>$outfile "chk  $(sha256sum < $file | cut -d ' ' -f1)"
+echo >>$outfile "file binary/${orgfile}"
+echo >>$outfile "chk  $(sha256sum < $orgfile | cut -d ' ' -f1)"
 echo >>$outfile
 
 echo >>$outfile "# eof"
