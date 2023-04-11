@@ -101,15 +101,16 @@ echo >>$outfile "chk  $(sha256sum < $file | cut -d ' ' -f1)"
 echo >>$outfile
 
 file="${prefix}-w32-${version}_${date}-src.tar.xz"
+msifile="$(echo $file | sed s/-w32-/-msi-/)"
 echo >>$outfile "name $file"
 echo >>$outfile "file binary/${prefix}-w32-${version}_${date}.tar.xz"
-echo >>$outfile "link ${prefix}-msi-${version}_${date}-src.tar.xz"
+echo >>$outfile "link $msifile"
 echo >>$outfile "chk  $(sha256sum < $file | cut -d ' ' -f1)"
 echo >>$outfile
 
-file="${prefix}-w32-${version}_${date}-bin.wixlib"
+file="${prefix}-msi-${version}_${date}-bin.wixlib"
 echo >>$outfile "name $file"
-echo >>$outfile "file binary/${prefix}-w32-${version}_${date}-bin.wixlib"
+echo >>$outfile "file binary/${prefix}-w32-${version}_${date}.wixlib"
 echo >>$outfile "chk  $(sha256sum < $file | cut -d ' ' -f1)"
 echo >>$outfile
 
