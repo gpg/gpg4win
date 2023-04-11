@@ -25,25 +25,35 @@ min_automake_version="1.9.3"
 # (git tag -s gpg4win-2.x.y) and run "./autogen.sh --force".  Please
 # bump the version number immediately after the release and do another
 # commit and push so that the git magic is able to work.
-m4_define([my_gnupg_3_version], [4.1.1])
-m4_define([my_gnupg_2_version], [3.1.27])
+m4_define([mym4_package],[gpg4win])
+m4_define([mym4_isvsd],m4_if(m4_esyscmd([ls packages/gnupg-2.*.tar.* | \
+                               head -1 | cut -d. -f2 | tr -d '\n']),[2],
+                               [yes], [no]))
+
+m4_if(mym4_isvsd,yes,
+      [m4_define([mym4_major],[3])
+       m4_define([mym4_minor],[1])
+       m4_define([mym4_micro],[27])],
+      [m4_define([mym4_major],[4])
+       m4_define([mym4_minor],[1])
+       m4_define([mym4_micro],[1])])
+
 
 # Below is m4 magic to extract and compute the git revision number,
 # the decimalized short revision number, a beta version string and a
 # flag indicating a development version (mym4_isbeta).  Note that the
 # m4 processing is done by autoconf and not during the configure run.
 m4_define([mym4_verslist], m4_split(m4_esyscmd([./autogen.sh --find-version] \
-                                    my_gnupg_2_version my_gnupg_3_version),[:]))
+                          mym4_package mym4_major mym4_minor mym4_micro),[:]))
 m4_define([mym4_isbeta],       m4_argn(2, mym4_verslist))
 m4_define([mym4_ingit],        m4_argn(3, mym4_verslist))
 m4_define([mym4_version],      m4_argn(4, mym4_verslist))
 m4_define([mym4_betastr],      m4_argn(6, mym4_verslist))
 m4_define([mym4_revision],     m4_argn(7, mym4_verslist))
 m4_define([mym4_revision_dec], m4_argn(8, mym4_verslist))
-m4_define([mym4_isvsd],        m4_argn(9, mym4_verslist))
 
 
-AC_INIT([gpg4win],[mym4_version],[https://bugs.gnupg.org])
+AC_INIT([mym4_package],[mym4_version],[https://bugs.gnupg.org])
 
 # Remember to update these version numbers also in the NEWS file.
 MANUALVERSION_EINSTEIGER="2.0.2"
@@ -63,7 +73,7 @@ COMPENDIUMINPROGRESS_EN="last minor changes from 30th November 2016"
 
 MANUALINPROGRESS_DE=m4_if(my_isbeta,[yes],["~und evtl. seitdem weiter bearbeitet"])
 MANUALINPROGRESS_EN=m4_if(my_isbeta,[yes],["~and may have been further edited"])
-IS_VSD_BUILD=m4_if(my_gnupg_minor, [2], [yes], [no])
+IS_VSD_BUILD=mym4_isvsd
 PACKAGE=$PACKAGE_NAME
 VERSION=$PACKAGE_VERSION
 GIT_REVISION=mym4_revision
@@ -79,6 +89,7 @@ DISTRIBUTION_TEXT=m4_if(mym4_isvsd, [yes], ["g10 Code GmbH"], ["Gpg4win"])
 AC_CONFIG_SRCDIR(src/config.nsi.in)
 AC_CONFIG_MACRO_DIR(m4)
 
+AC_CONFIG_AUX_DIR([build-aux])
 AM_INIT_AUTOMAKE([tar-ustar])
 AM_MAINTAINER_MODE
 AC_CANONICAL_HOST

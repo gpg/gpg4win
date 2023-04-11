@@ -1,0 +1,25 @@
+# autogen.sh configuration for gpg4win                            -*- sh -*-
+
+display_name="Gpg4win"
+patches_to="https://bugs.gnupg.org"
+
+case "$myhost:$myhostsub" in
+  w32:64)
+    extraoptions=
+    ;;
+  w32:)
+    extraoptions=
+    ;;
+esac
+
+case "$myhost" in
+  w32)
+    configure_opts="--enable-gpg4win --with-additional-gpgex-host=x86_64-w64-mingw32"
+    ;;
+esac
+
+extra_automake_flags="-Wno-portability"
+
+final_info="For building a Gpg4win installer:\
+  \"./autogen.sh --build-w32 && make\".
+  For building an AppImage: check the README."
