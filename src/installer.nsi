@@ -675,7 +675,8 @@ FunctionEnd
 
 
 Function .onInit
-  Call G4wRunOnce
+  # Temporay disabled until we have fixed the DLL issue (wk 2023-04-11)
+  # Call G4wRunOnce
 
   SetOutPath $TEMP
 !ifdef SOURCES
@@ -781,4 +782,3 @@ FunctionEnd
 
 !insertmacro MUI_DESCRIPTION_TEXT ${SEC_gpgme_browser} $(DESC_SEC_gpgme_browser)
 !insertmacro MUI_FUNCTION_DESCRIPTION_END
-
