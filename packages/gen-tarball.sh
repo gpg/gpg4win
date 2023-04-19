@@ -26,7 +26,7 @@
 set -e
 
 if [ -z "$1" ]; then
-    echo "Usage: $0 PACKAGE > snippet"
+    echo "Usage: $0 PACKAGE"
     echo "where PACKAGE is either the name of a supported library or application, e.g. 'kleopatra',"
     echo "or the path of a local Git repository, e.g. '~/src/kleopatra',"
     echo "or the URL of a remote Git repository, e.g. 'https://invent.kde.org/pim/kleopatra.git'."
@@ -36,6 +36,7 @@ fi
 package=$1
 is_gpg="no"
 is_w32="no"
+branch="master"
 
 case ${package} in
     */*)
@@ -59,6 +60,14 @@ case ${package} in
     k* | libk*)
         # assume that package is provided by KDE
         repo=https://invent.kde.org/pim/${package}.git
+        ;;
+    okular)
+        repo=https://invent.kde.org/graphics/${package}.git
+        branch="work/sune/WORK"
+        ;;
+    poppler)
+        repo=https://gitlab.freedesktop.org/svuorela/${package}.git
+        branch="WORK"
         ;;
     *)
         echo "Error: Unsupported package '${package}'"
@@ -91,17 +100,16 @@ if [ "${is_gpg}" == "yes" ]; then
     cd ${tmpdir}/${snapshotdir}
     ./autogen.sh --force >&2
     if [ "${is_w32}" == "yes" ]; then
-        ./autogen.sh --build-w32 >&2
+        ./autogen.sh --build-w32 --with-libassuan-prefix=/home/aheinecke/w64root/ >&2
     else
         ./configure >&2
     fi
-    make -j`nproc` distcheck >&2
     make dist-xz >&2
     tarball=$(ls -t *.tar.xz | head -1)
     cp ${tmpdir}/${snapshotdir}/${tarball} ${olddir}
 else
     (cd ${tmpdir}/${snapshotdir} && \
-    git archive --format tar.xz --prefix=${snapshotdir}/ master) > ${tarball} || \
+    git archive --format tar.xz --prefix=${snapshotdir}/ "origin/$branch") > ${tarball} || \
       (echo "Failed to archive tarball. Is tar.xz configured?: git config --global tar.tar.xz.command \"xz -c\"" && exit 1)
 fi
 checksum=$(sha256sum ${tarball} | cut -d ' ' -f 1)
@@ -117,4 +125,5 @@ echo "------------------------------ >8 ------------------------------"
 
 echo "To upload:" >&2
 echo "rsync -vP ${tarball} trithemius.gnupg.org:/home/ftp/gcrypt/snapshots/${package}/" >&2
+echo $tmpdir
 rm -fr ${tmpdir}
