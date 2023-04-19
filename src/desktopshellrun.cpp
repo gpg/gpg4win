@@ -241,7 +241,7 @@ void __declspec(dllexport) __cdecl DesktopShellRun(HWND hwndParent,
 
   /* For unicodensis this has to be utf8 to wchar */
 
-  wbuf = acp_to_wchar((*stacktop)->text, strlen((*stacktop)->text));
+  wbuf = wcsdup ((*stacktop)->text);
   if (!wbuf)
     {
       ERRORPRINTF ("Failed to convert argument to wchar. error = 0x%lx.", hr);

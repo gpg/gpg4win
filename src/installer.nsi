@@ -676,7 +676,7 @@ FunctionEnd
 
 Function .onInit
   # Temporay disabled until we have fixed the DLL issue (wk 2023-04-11)
-  # Call G4wRunOnce
+  Call G4wRunOnce
 
   SetOutPath $TEMP
 !ifdef SOURCES

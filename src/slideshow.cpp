@@ -142,7 +142,7 @@ slide_abort(bool stayAuto = false)
 static void
 slide_NewImage(LPCTSTR imgPath, LPCTSTR caption, int duration)
 {
-#ifdef _UNICODE
+#ifdef UNICODE
   LPCWSTR imgPathW = imgPath;
 #else
   WCHAR imgPathW[MAX_PATH];
@@ -378,7 +378,7 @@ slide_show(HWND hwndParent, int string_size, TCHAR *variables, stack_t **stackto
   // parse arguments
   TCHAR arg[MAX_PATH];
   LPTSTR argValue;
-  while(!popstring(arg, sizeof arg) && *arg == '/' && (argValue = StrChr(arg, '=')) != NULL)
+  while(!popstringn(arg, sizeof arg) && *arg == '/' && (argValue = StrChr(arg, '=')) != NULL)
     {
       *argValue++ = '\0';     // replace '=' by '\0'
       if(lstrcmpi(arg, TEXT("/hwnd")) == 0)
