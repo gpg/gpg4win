@@ -41,13 +41,13 @@ void NSISCALL pushstring(LPCTSTR str)
 LPTSTR NSISCALL getuservariable(const int varnum)
 {
   if (!isvalidnsisvarindex(varnum)) return NULL;
-  return g_variables+varnum*g_stringsize;
+  return (LPWSTR)((char*)g_variables+varnum*g_stringsize);
 }
 
 void NSISCALL setuservariable(const int varnum, LPCTSTR var)
 {
   if (var && isvalidnsisvarindex(varnum))
-    lstrcpy(g_variables + varnum*g_stringsize, var);
+    lstrcpy((LPWSTR)((char*)g_variables + varnum*g_stringsize), var);
 }
 
 #ifdef UNICODE
@@ -94,7 +94,7 @@ void NSISCALL SetUserVariableA(const int varnum, LPCSTR ansiStr)
 {
    if (ansiStr && isvalidnsisvarindex(varnum))
    {
-      LPWSTR wideStr = g_variables + varnum * g_stringsize;
+      LPWSTR wideStr = (LPWSTR)((char*)g_variables + varnum * g_stringsize);
       MultiByteToWideChar(CP_ACP, 0, ansiStr, -1, wideStr, g_stringsize);
    }
 }
@@ -143,7 +143,7 @@ void NSISCALL SetUserVariableW(const int varnum, LPCWSTR wideStr)
 {
    if (wideStr && isvalidnsisvarindex(varnum))
    {
-      LPSTR ansiStr = g_variables + varnum * g_stringsize;
+      LPSTR ansiStr = (char*)g_variables + varnum * g_stringsize;
       WideCharToMultiByte(CP_ACP, 0, wideStr, -1, ansiStr, g_stringsize, NULL, NULL);
    }
 }

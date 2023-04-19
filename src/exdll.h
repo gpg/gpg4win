@@ -24,6 +24,15 @@ extern "C" {
         g_stacktop=stacktop;      \
         g_variables=variables; }
 
+
+enum NSPIM
+{
+  NSPIM_UNLOAD,
+  NSPIM_GUIUNLOAD
+};
+
+typedef UINT_PTR (*NSISPLUGINCALLBACK)(enum NSPIM);
+
 typedef struct _stack_t {
   struct _stack_t *next;
 #ifdef UNICODE
@@ -41,16 +50,20 @@ typedef struct {
   int exec_reboot;
   int reboot_called;
   int XXX_cur_insttype; /* deprecated */
-  int XXX_insttype_changed; /* deprecated */
+  int plugin_api_version;   /* Used to be insttype_changed */
   int silent;
   int instdir_error;
   int rtl;
   int errlvl;
+  int alter_reg_view;
+  int status_update;
 } exec_flags_t;
 
 typedef struct {
   exec_flags_t *exec_flags;
   int (__stdcall *ExecuteCodeSegment)(int, HWND);
+  void (__stdcall *validate_filename)(LPTSTR);
+  int (__stdcall  *RegisterPluginCallback)(HMODULE, NSISPLUGINCALLBACK);
 } extra_parameters_t;
 
 
@@ -109,6 +122,7 @@ void NSISCALL setuservariable(const int varnum, LPCTSTR var);
 #define SetUserVariableW(x,y) setuservariable(x,y)
 
 int  NSISCALL PopStringA(LPSTR ansiStr);
+int  NSISCALL PopStringNA(LPSTR ansiStr, int maxlen);
 void NSISCALL PushStringA(LPCSTR ansiStr);
 void NSISCALL GetUserVariableW(const int varnum, LPWSTR wideStr);
 void NSISCALL GetUserVariableA(const int varnum, LPSTR ansiStr);

@@ -58,7 +58,7 @@ DllMain (HANDLE hinst, DWORD reason, LPVOID reserved)
 
 /* Dummy function for testing. */
 void __declspec(dllexport)
-dummy (HWND hwndParent, int string_size, char *variables,
+dummy (HWND hwndParent, int string_size, LPTSTR variables,
        stack_t **stacktop, extra_parameters_t *extra)
 {
   g_hwndParent = hwndParent;
@@ -74,19 +74,25 @@ dummy (HWND hwndParent, int string_size, char *variables,
 
   // do your stuff here
   {
-    char buf[1024];
-    sprintf(buf,"$R0=%s\r\n$R1=%s\r\n",
+    wchar_t buf[1024];
+
+    swprintf(buf, 1024,
+             L"stringsize=%d\r\n$0=%s\r\n$1=%s\r\n$R0=%s\r\n$R1=%s\r\n",
+            string_size,
+            getuservariable(INST_0),
+            getuservariable(INST_1),
             getuservariable(INST_R0),
             getuservariable(INST_R1));
-    MessageBox(g_hwndParent,buf,0,MB_OK);
+    MessageBoxW(g_hwndParent,buf,0,MB_OK);
 
-    sprintf (buf,
-             "autoclose    =%d\r\n"
+    swprintf (buf, 1024,
+             L"autoclose    =%d\r\n"
              "all_user_var =%d\r\n"
              "exec_error   =%d\r\n"
              "abort        =%d\r\n"
              "exec_reboot  =%d\r\n"
              "reboot_called=%d\r\n"
+	     "api_version  =%d\r\n"
              "silent       =%d\r\n"
              "instdir_error=%d\r\n"
              "rtl          =%d\r\n"
@@ -97,29 +103,28 @@ dummy (HWND hwndParent, int string_size, char *variables,
              extra->exec_flags->abort,
              extra->exec_flags->exec_reboot,
              extra->exec_flags->reboot_called,
+             extra->exec_flags->plugin_api_version,
              extra->exec_flags->silent,
              extra->exec_flags->instdir_error,
              extra->exec_flags->rtl,
              extra->exec_flags->errlvl);
-    MessageBox(g_hwndParent,buf,0,MB_OK);
+    MessageBoxW(g_hwndParent,buf,0,MB_OK);
   }
 }
 
 
 
 void __declspec(dllexport)
-runonce (HWND hwndParent, int string_size, char *variables,
+runonce (HWND hwndParent, int string_size, LPTSTR variables,
          stack_t **stacktop, extra_parameters_t *extra)
 {
-  LPCTSTR result;
+  LPCWSTR result;
 
   g_hwndParent = hwndParent;
   EXDLL_INIT();
 
-  CreateMutexA (NULL, 0, "gpg4win");
+  CreateMutexW (NULL, 0, getuservariable(INST_R0));
   result = GetLastError ()? L"1" : L"0";
-  OutputDebugStringA ("Runonce returns:");
-  OutputDebugStringW (result);
   setuservariable (INST_R0, result);
 }
 
@@ -140,6 +145,7 @@ void
 config_init (char **keys, char **values, int max)
 {
   /* First, parse the command line.  */
+  LPCWSTR wcmdline;
   char *cmdline;
   char *begin = NULL;
   char *end = NULL;
@@ -151,7 +157,15 @@ config_init (char **keys, char **values, int max)
   *keys = NULL;
   *values = NULL;
 
-  cmdline = getuservariable (INST_CMDLINE);
+  cmdline = malloc (4096);
+  if (!cmdline)
+    return;
+
+  wcmdline = getuservariable (INST_CMDLINE);
+  *cmdline = 0;
+  WideCharToMultiByte(CP_ACP, 0, wcmdline, -1, cmdline, 4095, NULL, NULL);
+  if (!*cmdline)
+    return;
 
   mark = (*cmdline == '"') ? (cmdline++, '"') : ' ';
   while (*cmdline && *cmdline != mark)
@@ -217,6 +231,7 @@ config_init (char **keys, char **values, int max)
 
   conf = fopen (fname, "r");
   free (fname);
+  free (cmdline);
   if (!conf)
     return;
 
@@ -339,7 +354,7 @@ config_lookup (char *key)
 
 
 void __declspec(dllexport)
-config_fetch (HWND hwndParent, int string_size, char *variables,
+config_fetch (HWND hwndParent, int string_size, LPTSTR variables,
 	      stack_t **stacktop, extra_parameters_t *extra)
 {
   char key[256];
@@ -350,23 +365,23 @@ config_fetch (HWND hwndParent, int string_size, char *variables,
   EXDLL_INIT();
 
   /* The expected stack layout: key.  */
-  if (popstringn (key, sizeof (key)))
+  if (PopStringNA (key, sizeof (key)))
     err = 1;
   if (err)
     {
-      setuservariable (INST_R0, "");
+      setuservariable (INST_R0, L"");
       return;
     }
 
   value = config_lookup (key);
 
-  setuservariable (INST_R0, value == NULL ? "" : value);
+  SetUserVariableA (INST_R0, value == NULL ? "" : value);
   return;
 }
 
 
 void __declspec(dllexport)
-config_fetch_bool (HWND hwndParent, int string_size, char *variables,
+config_fetch_bool (HWND hwndParent, int string_size, LPTSTR variables,
 		   stack_t **stacktop, extra_parameters_t *extra)
 {
   char key[256];
@@ -378,18 +393,18 @@ config_fetch_bool (HWND hwndParent, int string_size, char *variables,
   EXDLL_INIT();
 
   /* The expected stack layout: key.  */
-  if (popstringn (key, sizeof (key)))
+  if (PopStringNA (key, sizeof (key)))
     err = 1;
   if (err)
     {
-      setuservariable (INST_R0, "");
+      setuservariable (INST_R0, L"");
       return;
     }
 
   value = config_lookup (key);
   if (value == NULL || *value == '\0')
     {
-      setuservariable (INST_R0, "");
+      setuservariable (INST_R0, L"");
       return;
     }
 
@@ -399,7 +414,7 @@ config_fetch_bool (HWND hwndParent, int string_size, char *variables,
       || atoi (value) != 0)
     result = 1;
 
-  setuservariable (INST_R0, result == 0 ? "0" : "1");
+  SetUserVariableA (INST_R0, result == 0 ? "0" : "1");
   return;
 }
 
@@ -419,24 +434,24 @@ read_w32_registry_string (HKEY root, const char *dir, const char *name)
   if (! root_key)
     root_key = HKEY_CURRENT_USER;
 
-  if( RegOpenKeyEx( root_key, dir, 0, KEY_READ, &key_handle ) )
+  if( RegOpenKeyExA( root_key, dir, 0, KEY_READ, &key_handle ) )
     {
       if (root)
 	return NULL; /* no need for a RegClose, so return direct */
       /* It seems to be common practise to fall back to HKLM. */
-      if (RegOpenKeyEx (HKEY_LOCAL_MACHINE, dir, 0, KEY_READ, &key_handle) )
+      if (RegOpenKeyExA (HKEY_LOCAL_MACHINE, dir, 0, KEY_READ, &key_handle) )
 	return NULL; /* still no need for a RegClose, so return direct */
     }
 
   nbytes = 1;
-  if( RegQueryValueEx( key_handle, name, 0, NULL, NULL, &nbytes ) ) {
+  if( RegQueryValueExA ( key_handle, name, 0, NULL, NULL, &nbytes ) ) {
     if (root)
       goto leave;
     /* Try to fallback to HKLM also vor a missing value.  */
     RegCloseKey (key_handle);
-    if (RegOpenKeyEx (HKEY_LOCAL_MACHINE, dir, 0, KEY_READ, &key_handle) )
+    if (RegOpenKeyExA (HKEY_LOCAL_MACHINE, dir, 0, KEY_READ, &key_handle) )
       return NULL; /* Nope.  */
-    if (RegQueryValueEx( key_handle, name, 0, NULL, NULL, &nbytes))
+    if (RegQueryValueExA ( key_handle, name, 0, NULL, NULL, &nbytes))
       goto leave;
   }
 
@@ -444,7 +459,7 @@ read_w32_registry_string (HKEY root, const char *dir, const char *name)
 
   if( !result )
     goto leave;
-  if( RegQueryValueEx( key_handle, name, 0, &type, result, &n1 ) ) {
+  if( RegQueryValueExA ( key_handle, name, 0, &type, result, &n1 ) ) {
     free(result); result = NULL;
     goto leave;
   }
@@ -498,7 +513,7 @@ void __declspec(dllexport) __cdecl KillProc(HWND hwndParent,
 
   do
     {
-      if (!strcmp ((*stacktop)->text, pe32.szExeFile))
+      if (!wcscmp ((*stacktop)->text, pe32.szExeFile))
         {
           HANDLE hProc = OpenProcess (PROCESS_ALL_ACCESS, FALSE,
                                       pe32.th32ProcessID);

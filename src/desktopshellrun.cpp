@@ -126,7 +126,7 @@ extern "C" {
  */
 void __declspec(dllexport) __cdecl DesktopShellRun(HWND hwndParent,
                                                    int string_size,
-                                                   char *variables,
+                                                   LPTSTR variables,
                                                    stack_t **stacktop)
 {
   UNUSED(hwndParent);
