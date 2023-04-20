@@ -63,7 +63,6 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
              patches/ki18n/0001-Undef-snprintf-for-windows.patch \
              patches/kio/Fix-cross-build.patch \
              patches/kservice/0001-Remove-unused-include.patch \
-             patches/gpgme-1.19.0/fix-err-var.patch \
              patches-appimage/kconfigwidgets/0001-build-without-KF5Auth.patch \
              patches-appimage/kconfigwidgets/fake-version.patch \
              patches-appimage/qtwayland-5.15.0/00-disable-wayland-server.patch \

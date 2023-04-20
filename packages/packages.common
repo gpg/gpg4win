@@ -137,11 +137,11 @@ chk  8922181fef523b77b71625e562e4d69532278eabbd18bc74579dbe14135729ba
 file pinentry/pinentry-1.2.1.tar.bz2
 chk 457a185e5a85238fb945a955dc6352ab962dc8b48720b62fc9fa48c7540a4067
 
-# last changed 2023-03-22
-# by ah
-# verified: distsigkey.gpg
-file gpgme/gpgme-1.19.0.tar.bz2
-chk cb58494dc415fba9eeb12b826550ad3190dc92e265c5bb2ae1a21c92841cfd38
+# last changed 2023-04-20
+# by wk
+# verified: [build tree]
+file gpgme/gpgme-1.20.0.tar.bz2
+chk 25a5785a5da356689001440926b94e967d02e13c49eb7743e35ef0cf22e42750
 
 # last changed: 2021-01-07
 # by: ah
@@ -423,12 +423,6 @@ server http://download.kde.org/stable/release-service/
 #
 server https://gnupg.org/ftp/gcrypt/snapshots
 
-# gpgme
-# last changed: 2023-03-15
-# by: aheinecke
-# verified: Tarball created by aheinecke.
-#file gpgme/gpgme-1.19.0.tar.xz
-#chk d34ec01cc180cb96e7ae77cc87343a3d7e26a4018efd2ba039bc1c830dd0bfbc
 
 # gpgex
 # last changed: 2022-12-06
