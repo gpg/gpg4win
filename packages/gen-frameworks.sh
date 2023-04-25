@@ -53,7 +53,9 @@ FRAMEWORKS="extra-cmake-modules
     kbookmarks
     kservice
     solid
-    kjobwidgets"
+    kjobwidgets
+    threadweaver
+    kparts"
 
 fullversion=$1
 case ${fullversion} in

@@ -111,6 +111,9 @@
 !ifdef HAVE_PKG_KARCHIVE
 !include "inst-karchive.nsi"
 !endif
+!ifdef HAVE_PKG_KJOBWIDGETS
+!include "inst-kjobwidgets.nsi"
+!endif
 !ifdef HAVE_PKG_PCRE
 !include "inst-pcre.nsi"
 !endif
@@ -122,6 +125,21 @@
 !endif
 !ifdef HAVE_PKG_SOLID
 !include "inst-solid.nsi"
+!endif
+!ifdef HAVE_PKG_FREETYPE
+!include "inst-freetype.nsi"
+!endif
+!ifdef HAVE_PKG_THREADWEAVER
+!include "inst-threadweaver.nsi"
+!endif
+!ifdef HAVE_PKG_POPPLER
+!include "inst-poppler.nsi"
+!endif
+!ifdef HAVE_PKG_KPARTS
+!include "inst-kparts.nsi"
+!endif
+!ifdef HAVE_PKG_OKULAR
+!include "inst-okular.nsi"
 !endif
 !ifdef HAVE_PKG_KBOOKMARKS
 !include "inst-kbookmarks.nsi"
@@ -311,6 +329,9 @@
 !ifdef HAVE_PKG_KARCHIVE
 !include "uninst-karchive.nsi"
 !endif
+!ifdef HAVE_PKG_KJOBWIDGETS
+!include "uninst-kjobwidgets.nsi"
+!endif
 !ifdef HAVE_PKG_PCRE
 !include "uninst-pcre.nsi"
 !endif
@@ -325,6 +346,21 @@
 !endif
 !ifdef HAVE_PKG_SOLID
 !include "uninst-solid.nsi"
+!endif
+!ifdef HAVE_PKG_FREETYPE
+!include "uninst-freetype.nsi"
+!endif
+!ifdef HAVE_PKG_THREADWEAVER
+!include "uninst-threadweaver.nsi"
+!endif
+!ifdef HAVE_PKG_POPPLER
+!include "uninst-poppler.nsi"
+!endif
+!ifdef HAVE_PKG_KPARTS
+!include "uninst-kparts.nsi"
+!endif
+!ifdef HAVE_PKG_OKULAR
+!include "uninst-okular.nsi"
 !endif
 !ifdef HAVE_PKG_KBOOKMARKS
 !include "uninst-kbookmarks.nsi"
@@ -382,6 +418,17 @@ Function CalcDefaults
   StrCmp $R0 "0" 0 calc_defaults_kleopatra_done
    !insertmacro UnselectSection ${SEC_kleopatra}
 calc_defaults_kleopatra_done:
+!endif
+
+!ifdef HAVE_PKG_OKULAR
+  g4wihelp::config_fetch_bool "inst_okular"
+  StrCmp $R0 "1" 0 calc_defaults_okular_not_one
+   !insertmacro SelectSection ${SEC_okular}
+   Goto calc_defaults_okular_done
+  calc_defaults_okular_not_one:
+  StrCmp $R0 "0" 0 calc_defaults_okular_done
+   !insertmacro UnselectSection ${SEC_okular}
+calc_defaults_okular_done:
 !endif
 
 !ifdef HAVE_PKG_GPGOL
@@ -478,6 +525,7 @@ calc_defaults_man_advanced_en_done:
 StrCmp $is_minimal '1' select_minimal continue
 select_minimal:
    !insertmacro UnselectSection ${SEC_kleopatra}
+   !insertmacro UnselectSection ${SEC_okular}
    !insertmacro UnselectSection ${SEC_gpgol}
    !insertmacro UnselectSection ${SEC_gpgex}
    !insertmacro UnselectSection ${SEC_gpgme_browser}
@@ -545,6 +593,9 @@ Function CalcDepends
 !ifdef HAVE_PKG_QTWINEXTRAS
   !insertmacro UnselectSection ${SEC_qtwinextras}
 !endif
+!ifdef HAVE_PKG_FREETYPE
+  !insertmacro UnselectSection ${SEC_freetype}
+!endif
 !ifdef HAVE_PKG_BREEZE_ICONS
   !insertmacro UnselectSection ${SEC_breeze_icons}
 !endif
@@ -592,6 +643,15 @@ Function CalcDepends
 !endif
 !ifdef HAVE_PKG_SOLID
   !insertmacro UnselectSection ${SEC_solid}
+!endif
+!ifdef HAVE_PKG_POPPLER
+  !insertmacro UnselectSection ${SEC_poppler}
+!endif
+!ifdef HAVE_PKG_KPARTS
+  !insertmacro UnselectSection ${SEC_kparts}
+!endif
+!ifdef HAVE_PKG_FREETYPE
+  !insertmacro UnselectSection ${SEC_freetype}
 !endif
 !ifdef HAVE_PKG_KBOOKMARKS
   !insertmacro UnselectSection ${SEC_kbookmarks}
@@ -674,6 +734,52 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_kleopatra}
 
   skip_gpgol:
+!endif
+
+!ifdef HAVE_PKG_OKULAR
+  ${IfNot} ${AtLeastWin7}
+    # Disable Okular for Windows below 7
+    SectionSetFlags ${SEC_okular} 16
+  ${Endif}
+  !insertmacro SectionFlagIsSet ${SEC_okular} ${SF_SELECTED} have_okular skip_okular
+  have_okular:
+  !insertmacro SelectSection ${SEC_gpgme}
+  !insertmacro SelectSection ${SEC_qtbase}
+  !insertmacro SelectSection ${SEC_breeze_icons}
+  !insertmacro SelectSection ${SEC_kconfig}
+  !insertmacro SelectSection ${SEC_ki18n}
+  !insertmacro SelectSection ${SEC_kwidgetsaddons}
+  !insertmacro SelectSection ${SEC_kcompletion}
+  !insertmacro SelectSection ${SEC_kwindowsystem}
+  !insertmacro SelectSection ${SEC_kcoreaddons}
+  !insertmacro SelectSection ${SEC_kcodecs}
+  !insertmacro SelectSection ${SEC_kconfigwidgets}
+  !insertmacro SelectSection ${SEC_kxmlgui}
+  !insertmacro SelectSection ${SEC_kitemviews}
+  !insertmacro SelectSection ${SEC_kitemmodels}
+  !insertmacro SelectSection ${SEC_kiconthemes}
+  !insertmacro SelectSection ${SEC_karchive}
+  !insertmacro SelectSection ${SEC_kio}
+  !insertmacro SelectSection ${SEC_kjobwidgets}
+  !insertmacro SelectSection ${SEC_solid}
+  !insertmacro SelectSection ${SEC_kservice}
+  !insertmacro SelectSection ${SEC_kbookmarks}
+  !insertmacro SelectSection ${SEC_freetype}
+  !insertmacro SelectSection ${SEC_poppler}
+  !insertmacro SelectSection ${SEC_threadweaver}
+  !insertmacro SelectSection ${SEC_kparts}
+# KArchive depdens on zlib
+  !insertmacro SelectSection ${SEC_zlib}
+  !insertmacro SelectSection ${SEC_kcrash}
+  !insertmacro SelectSection ${SEC_kguiaddons}
+  !insertmacro SelectSection ${SEC_qtsvg}
+  !insertmacro SelectSection ${SEC_qttranslations}
+  !insertmacro SelectSection ${SEC_kde_l10n}
+  !insertmacro SelectSection ${SEC_qttools}
+  !insertmacro SelectSection ${SEC_freetype}
+  !insertmacro SelectSection ${SEC_qtwinextras}
+  !insertmacro SelectSection ${SEC_extra-cmake-modules}
+  skip_okular:
 !endif
 
 !ifdef HAVE_PKG_KLEOPATRA
@@ -853,6 +959,16 @@ is_no_admin:
 	"$INSTDIR\bin\kleopatra.exe" \
         "" "$INSTDIR\bin\kleopatra.exe" "" SW_SHOWNORMAL "" $(DESC_Menu_kleopatra)
   no_kleopatra_menu:
+!endif
+
+!ifdef HAVE_PKG_OKULAR
+    SectionGetFlags ${SEC_okular} $R0
+    IntOp $R0 $R0 & ${SF_SELECTED}
+    IntCmp $R0 ${SF_SELECTED} 0 no_okular_menu
+    CreateShortCut "$SMPROGRAMS\Okular.lnk" \
+	"$INSTDIR\bin\okular.exe" \
+        "" "$INSTDIR\bin\okular.exe" "" SW_SHOWNORMAL "" $(DESC_Menu_okular)
+  no_okular_menu:
 !endif
 
  no_start_menu:

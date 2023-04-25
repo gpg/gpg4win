@@ -18,16 +18,10 @@
 !ifdef prefix
 !undef prefix
 !endif
-!define prefix ${ipdir}/kio-${gpg4win_pkg_kio_version}
+!define prefix ${ipdir}/threadweaver-${gpg4win_pkg_kbookmarks_version}
 
-!ifdef DEBUG
-Section "kio" SEC_kio
-!else
-Section "-kio" SEC_kio
-!endif
-  SetOutPath "$INSTDIR"
-  SetOutPath "$INSTDIR\bin"
-  File ${prefix}/bin/libKF5KIOGui.dll
-  File ${prefix}/bin/libKF5KIOCore.dll
-  File ${prefix}/bin/libKF5KIOWidgets.dll
+; Uninstaller section.
+Section "-un.threadweaver"
+  Delete "$INSTDIR\bin\libKF5ThreadWeaver.dll"
+  RmDir "$INSTDIR\bin"
 SectionEnd

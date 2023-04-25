@@ -1,0 +1,178 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From 8249018af650498e38da2ea99198f4a9f60db4ef Mon Sep 17 00:00:00 2001
+From: Andre Heinecke <aheinecke@gnupg.org>
+Date: Tue, 25 Apr 2023 16:16:01 +0200
+Subject: [PATCH] Dirty hack to remove KTextWidgets
+
+This is not even functionally tested because the
+hacked code is not really used in Gpg4win.
+---
+ CMakeLists.txt          |  2 +-
+ KF5PartsConfig.cmake.in |  2 +-
+ src/CMakeLists.txt      |  5 ++++-
+ src/browserrun.cpp      | 11 +++++++++++
+ src/readwritepart.cpp   |  2 ++
+ src/textextension.cpp   |  2 ++
+ src/textextension.h     |  4 ++++
+ 7 files changed, 25 insertions(+), 3 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 28ac4cb..c8e36cf 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -44,7 +44,7 @@ find_package(KF5IconThemes ${KF_DEP_VERSION} REQUIRED)
+ find_package(KF5KIO ${KF_DEP_VERSION} REQUIRED)
+ find_package(KF5JobWidgets ${KF_DEP_VERSION} REQUIRED)
+ find_package(KF5Service ${KF_DEP_VERSION} REQUIRED)
+-find_package(KF5TextWidgets ${KF_DEP_VERSION} REQUIRED)
++find_package(KF5TextWidgets ${KF_DEP_VERSION})
+ find_package(KF5WidgetsAddons ${KF_DEP_VERSION} REQUIRED)
+ find_package(KF5XmlGui ${KF_DEP_VERSION} REQUIRED)
+
+diff --git a/KF5PartsConfig.cmake.in b/KF5PartsConfig.cmake.in
+index 7623e3f..90b4891 100644
+--- a/KF5PartsConfig.cmake.in
++++ b/KF5PartsConfig.cmake.in
+@@ -2,7 +2,7 @@
+
+ include(CMakeFindDependencyMacro)
+ find_dependency(KF5KIO "@KF_DEP_VERSION@")
+-find_dependency(KF5TextWidgets "@KF_DEP_VERSION@")
++#find_dependency(KF5TextWidgets "@KF_DEP_VERSION@")
+ find_dependency(KF5XmlGui "@KF_DEP_VERSION@")
+
+ include("${CMAKE_CURRENT_LIST_DIR}/KF5PartsTargets.cmake")
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index ebf0966..0bb4c32 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -104,10 +104,13 @@ target_include_directories(KF5Parts
+
+ target_link_libraries(KF5Parts PUBLIC  KF5::KIOWidgets #browserrun.h uses krun.h
+                                        KF5::XmlGui # essential to the technology
+-                                       KF5::TextWidgets # needed for KFind, as interface
++                                       KF5::CoreAddons
+                                PRIVATE KF5::I18n #few uses of i18n and i18nc, can be probably stripped down
+                                        KF5::IconThemes #only used by KPart::iconLoader()
+                       )
++if(KF5TextWidgets_FOUND)
++  target_link_libraries(KF5Parts PUBLIC  KF5::KF5TextWidgets)
++endif()
+
+ set_target_properties(KF5Parts PROPERTIES VERSION   ${KPARTS_VERSION}
+                                           SOVERSION ${KPARTS_SOVERSION}
+diff --git a/src/browserrun.cpp b/src/browserrun.cpp
+index ae9dd0f..e9543af 100644
+--- a/src/browserrun.cpp
++++ b/src/browserrun.cpp
+@@ -14,7 +14,9 @@
+ #include <KConfigGroup>
+ #include <KIO/CommandLauncherJob>
+ #include <KIO/FileCopyJob>
++#ifdef GPG4WIN_HACK
+ #include <KIO/JobUiDelegate>
++#endif
+ #include <KIO/OpenUrlJob>
+ #include <KIO/Scheduler>
+ #include <KIO/TransferJob>
+@@ -410,7 +412,9 @@ void KParts::BrowserRun::saveUrl(const QUrl &url, const QString &suggestedFileNa
+
+                 auto *job = new KIO::CommandLauncherJob(downloadManager, args);
+                 job->setExecutable(downloadManager);
++#ifdef GPG4WIN_HACK
+                 job->setUiDelegate(new KDialogJobUiDelegate(KJobUiDelegate::AutoHandlingEnabled, window));
++#endif
+                 job->start();
+                 return;
+             }
+@@ -454,7 +458,10 @@ void BrowserRun::saveUrlUsingKIO(const QUrl &srcUrl, const QUrl &destUrl, QWidge
+     job->addMetaData(QStringLiteral("MaxCacheSize"), QStringLiteral("0")); // Don't store in http cache.
+     job->addMetaData(QStringLiteral("cache"), QStringLiteral("cache")); // Use entry from cache if available.
+     KJobWidgets::setWindow(job, window);
++
++#ifdef GPG4WIN_HACK
+     job->uiDelegate()->setAutoErrorHandlingEnabled(true);
++#endif
+ }
+
+ void BrowserRun::handleError(KJob *job)
+@@ -522,12 +529,16 @@ void BrowserRun::redirectToError(int error, const QString &errorText)
+ void BrowserRun::slotCopyToTempFileResult(KJob *job)
+ {
+     if (job->error()) {
++#ifdef GPG4WIN_HACK
+         job->uiDelegate()->showErrorMessage();
++#endif
+     } else {
+         // Same as KRun::foundMimeType but with a different URL
+         const QUrl destUrl = static_cast<KIO::FileCopyJob *>(job)->destUrl();
+         KIO::OpenUrlJob *job = new KIO::OpenUrlJob(destUrl, d->m_mimeType);
++#ifdef GPG4WIN_HACK
+         job->setUiDelegate(new KIO::JobUiDelegate(KJobUiDelegate::AutoHandlingEnabled, d->m_window));
++#endif
+         job->setRunExecutables(true);
+         job->start();
+     }
+diff --git a/src/readwritepart.cpp b/src/readwritepart.cpp
+index 55d7c34..6feba30 100644
+--- a/src/readwritepart.cpp
++++ b/src/readwritepart.cpp
+@@ -275,7 +275,9 @@ void ReadWritePartPrivate::slotUploadFinished(KJob *)
+         Q_EMIT q->canceled(error);
+     } else {
+ #ifndef Q_OS_ANDROID
++#ifndef Q_OS_WIN
+         ::org::kde::KDirNotify::emitFilesAdded(m_url.adjusted(QUrl::RemoveFilename));
++#endif
+ #endif
+
+         m_uploadJob = nullptr;
+diff --git a/src/textextension.cpp b/src/textextension.cpp
+index f442482..dc2104c 100644
+--- a/src/textextension.cpp
++++ b/src/textextension.cpp
+@@ -58,7 +58,9 @@ QString KParts::TextExtension::pageText(Format) const
+     return QString();
+ }
+
++#ifdef WITH_KTEXTWIDGETS
+ bool KParts::TextExtension::findText(const QString &, KFind::SearchOptions) const
+ {
+     return false;
+ }
++#endif
+diff --git a/src/textextension.h b/src/textextension.h
+index 5d959c7..a865514 100644
+--- a/src/textextension.h
++++ b/src/textextension.h
+@@ -10,7 +10,9 @@
+
+ #include <kparts/kparts_export.h>
+
++#ifdef WITH_KTEXTWIDGETS
+ #include <KFind>
++#endif
+ #include <QObject>
+ #include <memory>
+
+@@ -76,6 +78,7 @@ public:
+      */
+     virtual QString pageText(Format format) const;
+
++#ifdef WITH_KTEXTWIDGETS
+     /**
+      * Returns true if @p string is found using the given @p options.
+      *
+@@ -89,6 +92,7 @@ public:
+      * options available in @ref KFind::SearchOptions.
+      */
+     virtual bool findText(const QString &string, KFind::SearchOptions options) const;
++#endif
+
+     // for future extensions can be made via slots
+
+--
+2.40.0

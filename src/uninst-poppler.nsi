@@ -18,16 +18,11 @@
 !ifdef prefix
 !undef prefix
 !endif
-!define prefix ${ipdir}/kio-${gpg4win_pkg_kio_version}
+!define prefix ${ipdir}/poppler-${gpg4win_pkg_poppler_version}
 
-!ifdef DEBUG
-Section "kio" SEC_kio
-!else
-Section "-kio" SEC_kio
-!endif
-  SetOutPath "$INSTDIR"
-  SetOutPath "$INSTDIR\bin"
-  File ${prefix}/bin/libKF5KIOGui.dll
-  File ${prefix}/bin/libKF5KIOCore.dll
-  File ${prefix}/bin/libKF5KIOWidgets.dll
+; Uninstaller section.
+Section "-un.poppler"
+  Delete "$INSTDIR\bin\libpoppler-127.dll"
+  Delete "$INSTDIR\bin\libpoppler-qt5-1.dll"
+  RmDir "$INSTDIR\bin"
 SectionEnd

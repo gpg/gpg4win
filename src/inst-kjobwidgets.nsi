@@ -27,5 +27,5 @@ Section "-kjobwidgets" SEC_kjobwidgets
 !endif
   SetOutPath "$INSTDIR"
   SetOutPath "$INSTDIR\bin"
-  File ${prefix}/bin/libKF5KJobWidgets.dll
+  File ${prefix}/bin/libKF5JobWidgets.dll
 SectionEnd

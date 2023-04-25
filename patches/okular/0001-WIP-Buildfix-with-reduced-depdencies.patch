@@ -1,0 +1,1079 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From 5f06785155c2878fea6ba43db2eb9ef9c74a5197 Mon Sep 17 00:00:00 2001
+From: Andre Heinecke <aheinecke@gnupg.org>
+Date: Tue, 25 Apr 2023 16:06:44 +0200
+Subject: [PATCH] WIP: Buildfix with reduced depdencies
+
+This needs to be split up and cleaned up.
+Easy ones:
+Qt QML and Qt Quick
+
+KTextWidgets should only remove the spellchecking and some
+undo behavior in Text annotations
+
+Phonon disables all Media features.
+
+KIOFileWidgets should functionally be replaced for Windows
+with native code but needs testing.
+
+DBus needs probably replacement by Kleopatras variant
+of KUniqueService for the same functionality.
+---
+ CMakeLists.txt                   | 53 +++++++++++++++++++++++++-------
+ core/document.cpp                | 13 ++++++++
+ part/annotwindow.cpp             |  9 ++++++
+ part/annotwindow.h               |  4 +++
+ part/dlgpresentation.cpp         | 11 +++++++
+ part/formwidgets.cpp             |  4 ++-
+ part/formwidgets.h               |  5 +++
+ part/pageview.cpp                | 22 +++++++++++--
+ part/pageviewmouseannotation.cpp |  5 ++-
+ part/pageviewutils.cpp           |  6 ++++
+ part/part.cpp                    | 16 ++++++++++
+ part/part.h                      |  4 +++
+ part/presentationwidget.cpp      | 38 ++++++++++++++++++-----
+ shell/CMakeLists.txt             |  7 ++++-
+ shell/main.cpp                   |  1 -
+ shell/okular_main.cpp            | 11 +++++++
+ shell/shell.cpp                  |  9 +++++-
+ shell/shell.h                    |  6 +++-
+ shell/welcomescreen.cpp          |  9 ++++++
+ 19 files changed, 207 insertions(+), 26 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 009924862..4f007bcf3 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -102,7 +102,7 @@ ecm_setup_version(${PROJECT_VERSION}
+                   VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/core/version.h"
+                   PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/Okular5ConfigVersion.cmake")
+
+-find_package(Qt5 ${QT_REQUIRED_VERSION} CONFIG REQUIRED COMPONENTS Core Test Widgets PrintSupport Svg Qml Quick)
++find_package(Qt5 ${QT_REQUIRED_VERSION} CONFIG REQUIRED COMPONENTS Core Test Widgets PrintSupport Svg)
+
+ if(ANDROID)
+     find_package(Qt5 ${QT_REQUIRED_VERSION} CONFIG REQUIRED COMPONENTS AndroidExtras)
+@@ -147,8 +147,16 @@ if(KF5JS_FOUND)
+ endif()
+
+ if (BUILD_DESKTOP)
+-    find_package(Qt5 ${QT_REQUIRED_VERSION} CONFIG REQUIRED COMPONENTS DBus)
+-    find_package(KF5 ${KF5_REQUIRED_VERSION} REQUIRED COMPONENTS Parts Crash IconThemes TextWidgets)
++    find_package(Qt5DBus ${QT_REQUIRED_VERSION} CONFIG)
++    if (Qt5DBus_FOUND)
++        add_definitions(-DHAVE_DBUS)
++    endif()
++    find_package(KF5 ${KF5_REQUIRED_VERSION} REQUIRED COMPONENTS Parts Crash IconThemes)
++
++    find_package(KF5TextWidgets ${KF5_REQUIRED_VERSION} CONFIG)
++    if (KF5TextWidgets_FOUND)
++        add_definitions(-DHAVE_TEXTWIDGETS)
++    endif()
+
+     find_package(KF5Purpose)
+     set_okular_optional_package_properties(KF5Purpose PROPERTIES
+@@ -169,6 +177,7 @@ if (BUILD_DESKTOP)
+ endif()
+
+ if (BUILD_MOBILE)
++    find_package(Qt5 ${QT_REQUIRED_VERSION} CONFIG REQUIRED COMPONENTS Qml Quick)
+     find_package(KF5Kirigami2)
+     set_package_properties(KF5Kirigami2 PROPERTIES
+         DESCRIPTION "A QtQuick based components set"
+@@ -191,7 +200,14 @@ if(NOT WIN32 AND NOT ANDROID AND NOT APPLE)
+ else()
+     set(HAVE_X11 FALSE)
+ endif()
+-find_package(Phonon4Qt5 CONFIG REQUIRED)
++
++find_package(Phonon4Qt5 CONFIG)
++set_okular_optional_package_properties(Phonon4Qt5 PROPERTIES
++        PURPOSE "Support for media files in okular.")
++if (Phonon_FOUND)
++    add_definitions(-DHAVE_PHONON)
++    set(PHONON_LIB Phonon::phonon4qt)
++endif()
+
+ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_SOURCE_DIR}/cmake/modules)
+
+@@ -315,11 +331,16 @@ endif(NOT WIN32)
+
+ # okularcore
+
++if (Phonon_FOUND)
++set(media_SRCS
++   core/audioplayer.cpp
++)
++endif()
++
+ set(okularcore_SRCS
+    core/action.cpp
+    core/annotations.cpp
+    core/area.cpp
+-   core/audioplayer.cpp
+    core/bookmarkmanager.cpp
+    core/chooseenginedialog.cpp
+    core/document.cpp
+@@ -352,7 +373,9 @@ set(okularcore_SRCS
+    core/script/event.cpp
+    core/synctex/synctex_parser.c
+    core/synctex/synctex_parser_utils.c
++   ${media_SRCS}
+ )
++
+ qt5_add_resources(okularcore_SRCS
+    core/script/builtin.qrc
+ )
+@@ -435,7 +458,7 @@ PRIVATE
+     KF5::I18n
+     KF5::ThreadWeaver
+     KF5::Bookmarks
+-    Phonon::phonon4qt5
++    ${PHONON_LIB}
+     Qt5::Svg
+     ${MATH_LIB}
+     ZLIB::ZLIB
+@@ -479,6 +502,13 @@ install(FILES conf/okular.kcfg DESTINATION ${KDE_INSTALL_KCFGDIR})
+ install(FILES conf/okular_core.kcfg DESTINATION ${KDE_INSTALL_KCFGDIR})
+ install(FILES core/okularGenerator.desktop DESTINATION ${KDE_INSTALL_KSERVICETYPES5DIR})
+
++if (Phonon_FOUND)
++set(additional_phonon_SRCS
++   part/snapshottaker.cpp
++   part/videowidget.cpp
++)
++endif()
++
+ if(BUILD_DESKTOP)
+   # okularpart
+   set(okularpart_SRCS
+@@ -541,15 +571,14 @@ if(BUILD_DESKTOP)
+     part/searchwidget.cpp
+     part/sidebar.cpp
+     part/side_reviews.cpp
+-    part/snapshottaker.cpp
+     part/thumbnaillist.cpp
+     part/toc.cpp
+     part/toggleactionmenu.cpp
+-    part/videowidget.cpp
+     part/layers.cpp
+     part/signaturepartutils.cpp
+     part/signaturepropertiesdialog.cpp
+     part/signaturepanel.cpp
++    ${additional_phonon_SRCS}
+   )
+
+ if (Qt5TextToSpeech_FOUND)
+@@ -565,21 +594,23 @@ generate_export_header(okularpart BASE_NAME okularpart)
+ target_link_libraries(okularpart okularcore
+     ${MATH_LIB}
+     Qt5::Svg
+-    Phonon::phonon4qt5
++    ${PHONON_LIB}
+     KF5::Archive
+     KF5::Bookmarks
+     KF5::I18n
+     KF5::IconThemes
+     KF5::ItemViews
+     KF5::KIOCore
+-    KF5::KIOFileWidgets
+     KF5::KIOWidgets
+     KF5::Parts
+     KF5::Solid
+     KF5::WindowSystem
+-    KF5::TextWidgets
+ )
+
++if(KF5TextWidgets_FOUND)
++    target_link_libraries(okularpart KF5::TextWidgets)
++endif()
++
+ if(KF5Wallet_FOUND)
+     target_link_libraries(okularpart KF5::Wallet)
+ endif()
+diff --git a/core/document.cpp b/core/document.cpp
+index 234243480..d996a40f0 100644
+--- a/core/document.cpp
++++ b/core/document.cpp
+@@ -70,8 +70,10 @@
+ #include "action.h"
+ #include "annotations.h"
+ #include "annotations_p.h"
++#ifdef HAVE_PHONON
+ #include "audioplayer.h"
+ #include "audioplayer_p.h"
++#endif
+ #include "bookmarkmanager.h"
+ #include "chooseenginedialog_p.h"
+ #include "debug_p.h"
+@@ -2576,7 +2578,9 @@ Document::OpenResult Document::openDocument(const QString &docFile, const QUrl &
+         d->m_nextDocumentDestination = QString();
+     }
+
++#ifdef HAVE_PHONON
+     AudioPlayer::instance()->d->m_currentDocument = fromFileDescriptor ? QUrl() : d->m_url;
++#endif
+
+     const QStringList docScripts = d->m_generator->metaData(QStringLiteral("DocumentScripts"), QStringLiteral("JavaScript")).toStringList();
+     if (!docScripts.isEmpty()) {
+@@ -2648,8 +2652,10 @@ void Document::closeDocument()
+         d->m_fontThread = nullptr;
+     }
+
++#ifdef HAVE_PHONON
+     // stop any audio playback
+     AudioPlayer::instance()->stopPlaybacks();
++#endif
+
+     // close the current document and save document info if a document is still opened
+     if (d->m_generator && d->m_pagesVector.size() > 0) {
+@@ -2773,7 +2779,9 @@ void Document::closeDocument()
+     d->m_documentInfo = DocumentInfo();
+     d->m_documentInfoAskedKeys.clear();
+
++#ifdef HAVE_PHONON
+     AudioPlayer::instance()->d->m_currentDocument = QUrl();
++#endif
+
+     d->m_undoStack->clear();
+     d->m_docdataMigrationNeeded = false;
+@@ -4304,10 +4312,12 @@ void Document::processAction(const Action *action)
+         }
+     } break;
+
++#ifdef HAVE_PHONON
+     case Action::Sound: {
+         const SoundAction *linksound = static_cast<const SoundAction *>(action);
+         AudioPlayer::instance()->playSound(linksound->sound(), linksound);
+     } break;
++#endif
+
+     case Action::Script: {
+         const ScriptAction *linkscript = static_cast<const ScriptAction *>(action);
+@@ -4317,6 +4327,7 @@ void Document::processAction(const Action *action)
+         d->m_scripter->execute(linkscript->scriptType(), linkscript->script());
+     } break;
+
++#ifdef HAVE_PHONON
+     case Action::Movie:
+         Q_EMIT processMovieAction(static_cast<const MovieAction *>(action));
+         break;
+@@ -4331,6 +4342,8 @@ void Document::processAction(const Action *action)
+
+         Q_EMIT processRenditionAction(static_cast<const RenditionAction *>(action));
+     } break;
++#endif
++
+     case Action::BackendOpaque: {
+         d->m_generator->opaqueAction(static_cast<const BackendOpaqueAction *>(action));
+     } break;
+diff --git a/part/annotwindow.cpp b/part/annotwindow.cpp
+index 68bc16f4d..c77c42697 100644
+--- a/part/annotwindow.cpp
++++ b/part/annotwindow.cpp
+@@ -13,7 +13,12 @@
+ // qt/kde includes
+ #include <KLocalizedString>
+ #include <KStandardAction>
++#ifdef HAVE_TEXTWIDGETS
+ #include <KTextEdit>
++#else
++#include <QTextEdit>
++#define KTextEdit QTextEdit
++#endif
+ #include <QAction>
+ #include <QApplication>
+ #include <QDebug>
+@@ -21,9 +26,11 @@
+ #include <QFont>
+ #include <QFontInfo>
+ #include <QFontMetrics>
++#include <QKeyEvent>
+ #include <QLabel>
+ #include <QLayout>
+ #include <QMenu>
++#include <QMouseEvent>
+ #include <QPushButton>
+ #include <QSizeGrip>
+ #include <QStyle>
+@@ -234,7 +241,9 @@ AnnotWindow::AnnotWindow(QWidget *parent, Okular::Annotation *annot, Okular::Doc
+
+     connect(textEdit, &KTextEdit::textChanged, this, &AnnotWindow::slotsaveWindowText);
+     connect(textEdit, &KTextEdit::cursorPositionChanged, this, &AnnotWindow::slotsaveWindowText);
++#ifdef HAVE_TEXTWIDGETS
+     connect(textEdit, &KTextEdit::aboutToShowContextMenu, this, &AnnotWindow::slotUpdateUndoAndRedoInContextMenu);
++#endif
+     connect(m_document, &Okular::Document::annotationContentsChangedByUndoRedo, this, &AnnotWindow::slotHandleContentsChangedByUndoRedo);
+
+     if (!canEditAnnotation) {
+diff --git a/part/annotwindow.h b/part/annotwindow.h
+index 8f48e698a..8d99b1ebd 100644
+--- a/part/annotwindow.h
++++ b/part/annotwindow.h
+@@ -25,6 +25,10 @@ namespace GuiUtils
+ class LatexRenderer;
+ }
+
++#ifndef HAVE_TEXTWIDGETS
++#define KTextEdit QTextEdit
++#endif
++
+ class KTextEdit;
+ class MovableTitle;
+ class QMenu;
+diff --git a/part/dlgpresentation.cpp b/part/dlgpresentation.cpp
+index 5dd763b3f..4b4d6c5e2 100644
+--- a/part/dlgpresentation.cpp
++++ b/part/dlgpresentation.cpp
+@@ -10,7 +10,13 @@
+
+ #include <KColorButton>
+ #include <KLocalizedString>
++
++#ifdef HAVE_TEXTWIDGETS
+ #include <KPluralHandlingSpinBox>
++#else
++#include <QSpinBox>
++#define KPluralHandlingSpinBox QSpinBox
++#endif
+
+ #include <QApplication>
+ #include <QCheckBox>
+@@ -35,7 +41,12 @@ DlgPresentation::DlgPresentation(QWidget *parent)
+
+     KPluralHandlingSpinBox *advanceTime = new KPluralHandlingSpinBox(this);
+     advanceTime->setPrefix(i18nc("Spinbox prefix: Advance automatically: every n seconds", "every "));
++#ifdef HAVE_TEXTWIDGETS
+     advanceTime->setSuffix(ki18ncp("Advance every %1 seconds", " second", " seconds"));
++#else
++    advanceTime->setPrefix(i18nc("Spinbox suffix: Advance automatically: every n seconds", " seconds"));
++#endif
++
+     advanceTime->setObjectName(QStringLiteral("kcfg_SlidesAdvanceTime"));
+
+     QHBoxLayout *advanceAutomaticallyLayout = new QHBoxLayout();
+diff --git a/part/formwidgets.cpp b/part/formwidgets.cpp
+index c2291e4c6..cc737ea9c 100644
+--- a/part/formwidgets.cpp
++++ b/part/formwidgets.cpp
+@@ -614,14 +614,16 @@ TextAreaEdit::TextAreaEdit(Okular::FormFieldText *text, PageView *pageView)
+     , FormWidgetIface(this, text)
+ {
+     setAcceptRichText(text->isRichText());
++#ifdef HAVE_TEXTWIDGETS
+     setCheckSpellingEnabled(text->canBeSpellChecked());
++    connect(this, &KTextEdit::aboutToShowContextMenu, this, &TextAreaEdit::slotUpdateUndoAndRedoInContextMenu);
++#endif
+     setAlignment(text->textAlignment());
+     setPlainText(text->text());
+     setUndoRedoEnabled(false);
+
+     connect(this, &QTextEdit::textChanged, this, &TextAreaEdit::slotChanged);
+     connect(this, &QTextEdit::cursorPositionChanged, this, &TextAreaEdit::slotChanged);
+-    connect(this, &KTextEdit::aboutToShowContextMenu, this, &TextAreaEdit::slotUpdateUndoAndRedoInContextMenu);
+     m_prevCursorPos = textCursor().position();
+     m_prevAnchorPos = textCursor().anchor();
+     m_editing = false;
+diff --git a/part/formwidgets.h b/part/formwidgets.h
+index ea0d2fef8..e59276593 100644
+--- a/part/formwidgets.h
++++ b/part/formwidgets.h
+@@ -13,7 +13,12 @@
+ #include "core/area.h"
+ #include "core/form.h"
+
++#ifdef HAVE_TEXTWIDGETS
+ #include <KTextEdit>
++#else
++#include <QTextEdit>
++#define KTextEdit QTextEdit
++#endif
+ #include <KUrlRequester>
+ #include <QCheckBox>
+ #include <QComboBox>
+diff --git a/part/pageview.cpp b/part/pageview.cpp
+index 8e0206ef1..20119da5e 100644
+--- a/part/pageview.cpp
++++ b/part/pageview.cpp
+@@ -83,12 +83,14 @@
+ #include "tts.h"
+ #endif
+ #include "core/action.h"
+-#include "core/audioplayer.h"
+ #include "core/document_p.h"
+ #include "core/form.h"
+ #include "core/generator.h"
+ #include "core/misc.h"
++#ifdef HAVE_PHONON
++#include "core/audioplayer.h"
+ #include "core/movie.h"
++#endif
+ #include "core/page.h"
+ #include "core/page_p.h"
+ #include "core/sourcereference.h"
+@@ -1128,6 +1130,7 @@ void PageView::selectAll()
+
+ void PageView::createAnnotationsVideoWidgets(PageViewItem *item, const QList<Okular::Annotation *> &annotations)
+ {
++#ifdef HAVE_PHONON
+     qDeleteAll(item->videoWidgets());
+     item->videoWidgets().clear();
+
+@@ -1152,6 +1155,7 @@ void PageView::createAnnotationsVideoWidgets(PageViewItem *item, const QList<Oku
+             }
+         }
+     }
++#endif
+ }
+
+ // BEGIN DocumentObserver inherited methods
+@@ -1206,6 +1210,7 @@ void PageView::notifySetup(const QVector<Okular::Page *> &pageSet, int setupFlag
+
+                     // For the video widgets we don't really care about reusing them since they don't contain much info so just
+                     // create them again
++#ifdef HAVE_PHONON
+                     createAnnotationsVideoWidgets(item, pageSet[i]->annotations());
+                     const QHash<Okular::Movie *, VideoWidget *> videoWidgets = item->videoWidgets();
+                     for (VideoWidget *vw : videoWidgets) {
+@@ -1219,6 +1224,7 @@ void PageView::notifySetup(const QVector<Okular::Page *> &pageSet, int setupFlag
+                         vw->show();
+                         vw->hide();
+                     }
++#endif
+                 }
+             }
+
+@@ -1576,12 +1582,14 @@ void PageView::notifyCurrentPageChanged(int previous, int current)
+ {
+     if (previous != -1) {
+         PageViewItem *item = d->items.at(previous);
++#ifdef HAVE_PHONON
+         if (item) {
+             const QHash<Okular::Movie *, VideoWidget *> videoWidgetsList = item->videoWidgets();
+             for (VideoWidget *videoWidget : videoWidgetsList) {
+                 videoWidget->pageLeft();
+             }
+         }
++#endif
+
+         // On close, run the widget scripts, needed for running animated PDF
+         const Okular::Page *page = d->document->page(previous);
+@@ -1596,12 +1604,14 @@ void PageView::notifyCurrentPageChanged(int previous, int current)
+
+     if (current != -1) {
+         PageViewItem *item = d->items.at(current);
++#ifdef HAVE_PHONON
+         if (item) {
+             const QHash<Okular::Movie *, VideoWidget *> videoWidgetsList = item->videoWidgets();
+             for (VideoWidget *videoWidget : videoWidgetsList) {
+                 videoWidget->pageEntered();
+             }
+         }
++#endif
+
+         // update zoom text and factor if in a ZoomFit/* zoom mode
+         if (d->zoomMode != ZoomFixed) {
+@@ -4360,6 +4370,7 @@ QMenu *PageView::createProcessLinkMenu(PageViewItem *item, const QPoint eventPos
+         // creating the menu and its actions
+         QAction *processLink = menu->addAction(i18n("Follow This Link"));
+         processLink->setObjectName(QStringLiteral("ProcessLinkAction"));
++#ifdef HAVE_PHONON
+         if (link->actionType() == Okular::Action::Sound) {
+             processLink->setText(i18n("Play this Sound"));
+             if (Okular::AudioPlayer::instance()->state() == Okular::AudioPlayer::PlayingState) {
+@@ -4367,6 +4378,7 @@ QMenu *PageView::createProcessLinkMenu(PageViewItem *item, const QPoint eventPos
+                 connect(actStopSound, &QAction::triggered, []() { Okular::AudioPlayer::instance()->stopPlaybacks(); });
+             }
+         }
++#endif
+
+         if (dynamic_cast<const Okular::BrowseAction *>(link)) {
+             QAction *actCopyLinkLocation = menu->addAction(QIcon::fromTheme(QStringLiteral("edit-copy")), i18n("Copy Link Address"));
+@@ -4667,6 +4679,8 @@ void PageView::slotRequestVisiblePixmaps(int newValue)
+             Okular::NormalizedRect r = fwi->rect();
+             fwi->moveTo(qRound(i->uncroppedGeometry().left() + i->uncroppedWidth() * r.left) + 1 - viewportRect.left(), qRound(i->uncroppedGeometry().top() + i->uncroppedHeight() * r.top) + 1 - viewportRect.top());
+         }
++
++#ifdef HAVE_PHONON
+         const QHash<Okular::Movie *, VideoWidget *> videoWidgets = i->videoWidgets();
+         for (VideoWidget *vw : videoWidgets) {
+             const Okular::NormalizedRect r = vw->normGeometry();
+@@ -4677,7 +4691,7 @@ void PageView::slotRequestVisiblePixmaps(int newValue)
+                 vw->pageLeft();
+             }
+         }
+-
++#endif
+         if (!i->isVisible()) {
+             continue;
+         }
+@@ -5307,6 +5321,7 @@ void PageView::externalKeyPressEvent(QKeyEvent *e)
+
+ void PageView::slotProcessMovieAction(const Okular::MovieAction *action)
+ {
++#ifdef HAVE_PHONON
+     const Okular::MovieAnnotation *movieAnnotation = action->annotation();
+     if (!movieAnnotation) {
+         return;
+@@ -5346,10 +5361,12 @@ void PageView::slotProcessMovieAction(const Okular::MovieAction *action)
+         vw->play();
+         break;
+     };
++#endif
+ }
+
+ void PageView::slotProcessRenditionAction(const Okular::RenditionAction *action)
+ {
++#ifdef HAVE_PHONON
+     Okular::Movie *movie = action->movie();
+     if (!movie) {
+         return;
+@@ -5390,6 +5407,7 @@ void PageView::slotProcessRenditionAction(const Okular::RenditionAction *action)
+     default:
+         return;
+     };
++#endif
+ }
+
+ void PageView::slotFitWindowToPage()
+diff --git a/part/pageviewmouseannotation.cpp b/part/pageviewmouseannotation.cpp
+index 1e2edaaff..73649ff87 100644
+--- a/part/pageviewmouseannotation.cpp
++++ b/part/pageviewmouseannotation.cpp
+@@ -647,6 +647,7 @@ void MouseAnnotation::processAction(const AnnotationDescription &ad)
+         Okular::Annotation *ann = ad.annotation;
+         PageViewItem *pageItem = ad.pageViewItem;
+
++#ifdef HAVE_PHONON
+         if (ann->subType() == Okular::Annotation::AMovie) {
+             VideoWidget *vw = pageItem->videoWidgets().value(static_cast<Okular::MovieAnnotation *>(ann)->movie());
+             vw->show();
+@@ -655,7 +656,9 @@ void MouseAnnotation::processAction(const AnnotationDescription &ad)
+             VideoWidget *vw = pageItem->videoWidgets().value(static_cast<Okular::RichMediaAnnotation *>(ann)->movie());
+             vw->show();
+             vw->play();
+-        } else if (ann->subType() == Okular::Annotation::AScreen) {
++        } else
++#endif
++        if (ann->subType() == Okular::Annotation::AScreen) {
+             m_document->processAction(static_cast<Okular::ScreenAnnotation *>(ann)->action());
+         } else if (ann->subType() == Okular::Annotation::AFileAttachment) {
+             const Okular::FileAttachmentAnnotation *fileAttachAnnot = static_cast<Okular::FileAttachmentAnnotation *>(ann);
+diff --git a/part/pageviewutils.cpp b/part/pageviewutils.cpp
+index 3da2fb52c..d42e74cfd 100644
+--- a/part/pageviewutils.cpp
++++ b/part/pageviewutils.cpp
+@@ -14,6 +14,8 @@
+ #include <QMenu>
+ #include <QPainter>
+ #include <QTimer>
++#include <QEvent>
++#include <QResizeEvent>
+
+ // local includes
+ #include "core/form.h"
+@@ -128,10 +130,12 @@ void PageViewItem::setWHZC(int w, int h, double z, const Okular::NormalizedRect
+         Okular::NormalizedRect r = fwi->rect();
+         fwi->setWidthHeight(qRound(fabs(r.right - r.left) * m_uncroppedGeometry.width()), qRound(fabs(r.bottom - r.top) * m_uncroppedGeometry.height()));
+     }
++#ifdef HAVE_PHONON
+     for (VideoWidget *vw : qAsConst(m_videoWidgets)) {
+         const Okular::NormalizedRect r = vw->normGeometry();
+         vw->resize(qRound(fabs(r.right - r.left) * m_uncroppedGeometry.width()), qRound(fabs(r.bottom - r.top) * m_uncroppedGeometry.height()));
+     }
++#endif
+ }
+
+ void PageViewItem::moveTo(int x, int y)
+@@ -146,10 +150,12 @@ void PageViewItem::moveTo(int x, int y)
+         Okular::NormalizedRect r = (*it)->rect();
+         (*it)->moveTo(qRound(x + m_uncroppedGeometry.width() * r.left) + 1, qRound(y + m_uncroppedGeometry.height() * r.top) + 1);
+     }
++#ifdef HAVE_PHONON
+     for (VideoWidget *vw : qAsConst(m_videoWidgets)) {
+         const Okular::NormalizedRect r = vw->normGeometry();
+         vw->move(qRound(x + m_uncroppedGeometry.width() * r.left) + 1, qRound(y + m_uncroppedGeometry.height() * r.top) + 1);
+     }
++#endif
+ }
+
+ void PageViewItem::setVisible(bool visible)
+diff --git a/part/part.cpp b/part/part.cpp
+index c6301fd73..493c4b8f7 100644
+--- a/part/part.cpp
++++ b/part/part.cpp
+@@ -34,10 +34,13 @@
+ #include <QLayout>
+ #include <QMenu>
+ #include <QMenuBar>
++#include <QMimeDatabase>
++#include <QMimeData>
+ #include <QPrintDialog>
+ #include <QPrintPreviewDialog>
+ #include <QPrinter>
+ #include <QScrollBar>
++#include <QScopedValueRollback>
+ #include <QSlider>
+ #include <QSpinBox>
+ #include <QStandardPaths>
+@@ -123,6 +126,11 @@
+ #include <memory>
+ #include <type_traits>
+
++#ifdef Q_OS_WIN
++#include <windows.h>
++#include <shellapi.h>
++#endif
++
+ #ifdef OKULAR_KEEP_FILE_OPEN
+ class FileKeeper
+ {
+@@ -321,6 +329,7 @@ Part::Part(QWidget *parentWidget, QObject *parent, const QVariantList &args)
+
+     setupConfigSkeleton(args, componentName());
+
++#ifdef HAVE_DBUS
+     numberOfParts++;
+     if (numberOfParts == 1) {
+         m_registerDbusName = QStringLiteral("/okular");
+@@ -328,6 +337,7 @@ Part::Part(QWidget *parentWidget, QObject *parent, const QVariantList &args)
+         m_registerDbusName = QStringLiteral("/okular%1").arg(numberOfParts);
+     }
+     QDBusConnection::sessionBus().registerObject(m_registerDbusName, this, QDBusConnection::ExportScriptableSlots);
++#endif
+
+     // connect the started signal to tell the job the mimetypes we like,
+     // and get some more information from it
+@@ -984,7 +994,9 @@ void Part::setupActions()
+
+ Part::~Part()
+ {
++#ifdef HAVE_DBUS
+     QDBusConnection::sessionBus().unregisterObject(m_registerDbusName);
++#endif
+
+     m_document->removeObserver(this);
+
+@@ -3848,7 +3860,11 @@ void Part::setEditorCmd(const QString &editorCmd)
+
+ void Part::slotOpenContainingFolder()
+ {
++#ifdef Q_OS_WIN
++    ShellExecuteW(NULL, L"explore", (wchar_t *)localFilePath().utf16(), NULL, NULL, SW_SHOWDEFAULT);
++#else
+     KIO::highlightInFileManager({QUrl(localFilePath())});
++#endif
+ }
+
+ } // namespace Okular
+diff --git a/part/part.h b/part/part.h
+index c880d4747..f463d1ada 100644
+--- a/part/part.h
++++ b/part/part.h
+@@ -20,7 +20,11 @@
+ #include <QPointer>
+ #include <QProcess>
+ #include <QUrl>
++#ifdef HAVE_DBUS
+ #include <QtDBus> // krazy:exclude=includes
++#else
++#define Q_NOREPLY
++#endif
+
+ #include <KCompressionDevice>
+ #include <KIO/Job>
+diff --git a/part/presentationwidget.cpp b/part/presentationwidget.cpp
+index bd5192c53..81e069195 100644
+--- a/part/presentationwidget.cpp
++++ b/part/presentationwidget.cpp
+@@ -7,9 +7,6 @@
+ #include "presentationwidget.h"
+
+ // qt/kde includes
+-#include <QDBusConnection>
+-#include <QDBusMessage>
+-#include <QDBusReply>
+ #include <QLoggingCategory>
+
+ #include <KActionCollection>
+@@ -39,6 +36,9 @@
+ #include <QValidator>
+
+ #ifdef Q_OS_LINUX
++#include <QDBusConnection>
++#include <QDBusMessage>
++#include <QDBusReply>
+ #include <QDBusUnixFileDescriptor>
+ #include <unistd.h> // For ::close() for sleep inhibition
+ #endif
+@@ -51,10 +51,13 @@
+ #include "annotationtools.h"
+ #include "core/action.h"
+ #include "core/annotations.h"
++#ifdef HAVE_PHONON
+ #include "core/audioplayer.h"
++#include "core/movie.h"
++#include "videowidget.h"
++#endif
+ #include "core/document.h"
+ #include "core/generator.h"
+-#include "core/movie.h"
+ #include "core/page.h"
+ #include "drawingtoolactions.h"
+ #include "gui/debug_ui.h"
+@@ -64,7 +67,6 @@
+ #include "presentationsearchbar.h"
+ #include "settings.h"
+ #include "settings_core.h"
+-#include "videowidget.h"
+
+ // comment this to disable the top-right progress indicator
+ #define ENABLE_PROGRESS_OVERLAY
+@@ -76,7 +78,9 @@ struct PresentationFrame {
+
+     ~PresentationFrame()
+     {
++#ifdef HAVE_PHONON
+         qDeleteAll(videoWidgets);
++#endif
+     }
+
+     PresentationFrame(const PresentationFrame &) = delete;
+@@ -94,17 +98,21 @@ struct PresentationFrame {
+         }
+         geometry.setRect((width - pageWidth) / 2, (height - pageHeight) / 2, pageWidth, pageHeight);
+
++#ifdef HAVE_PHONON
+         for (VideoWidget *vw : qAsConst(videoWidgets)) {
+             const Okular::NormalizedRect r = vw->normGeometry();
+             QRect vwgeom = r.geometry(geometry.width(), geometry.height());
+             vw->resize(vwgeom.size());
+             vw->move(geometry.topLeft() + vwgeom.topLeft());
+         }
++#endif
+     }
+
+     const Okular::Page *page;
+     QRect geometry;
++#ifdef HAVE_PHONON
+     QHash<Okular::Movie *, VideoWidget *> videoWidgets;
++#endif
+     std::vector<SmoothPath> drawings;
+ };
+
+@@ -256,8 +264,10 @@ PresentationWidget::PresentationWidget(QWidget *parent, Okular::Document *doc, D
+     connect(m_nextPageTimer, &QTimer::timeout, this, &PresentationWidget::slotNextPage);
+     setPlayPauseIcon();
+
++#ifdef HAVE_PHONON
+     connect(m_document, &Okular::Document::processMovieAction, this, &PresentationWidget::slotProcessMovieAction);
+     connect(m_document, &Okular::Document::processRenditionAction, this, &PresentationWidget::slotProcessRenditionAction);
++#endif
+
+     // handle cursor appearance as specified in configuration
+     if (Okular::Settings::slidesCursor() == Okular::Settings::EnumSlidesCursor::HiddenDelay) {
+@@ -286,8 +296,10 @@ PresentationWidget::~PresentationWidget()
+     // allow power management saver again
+     allowPowerManagement();
+
++#ifdef HAVE_PHONON
+     // stop the audio playbacks
+     Okular::AudioPlayer::instance()->stopPlaybacks();
++#endif
+
+     // remove our highlights
+     if (m_searchBar) {
+@@ -331,6 +343,7 @@ void PresentationWidget::notifySetup(const QVector<Okular::Page *> &pageSet, int
+     for (const Okular::Page *page : pageSet) {
+         PresentationFrame *frame = new PresentationFrame();
+         frame->page = page;
++#ifdef HAVE_PHONON
+         const QList<Okular::Annotation *> annotations = page->annotations();
+         for (Okular::Annotation *a : annotations) {
+             if (a->subType() == Okular::Annotation::AMovie) {
+@@ -355,6 +368,7 @@ void PresentationWidget::notifySetup(const QVector<Okular::Page *> &pageSet, int
+                 }
+             }
+         }
++#endif
+         frame->recalcGeometry(m_width, m_height, screenRatio);
+         // add the frame to the vector
+         m_frames.push_back(frame);
+@@ -401,13 +415,14 @@ void PresentationWidget::notifyCurrentPageChanged(int previousPage, int currentP
+ {
+     if (previousPage != -1) {
+         // stop video playback
++#ifdef HAVE_PHONON
+         for (VideoWidget *vw : qAsConst(m_frames[previousPage]->videoWidgets)) {
+             vw->stop();
+             vw->pageLeft();
+         }
+-
+         // stop audio playback, if any
+         Okular::AudioPlayer::instance()->stopPlaybacks();
++#endif
+
+         // perform the page closing action, if any
+         if (m_document->page(previousPage)->pageAction(Okular::Page::Closing)) {
+@@ -474,10 +489,12 @@ void PresentationWidget::notifyCurrentPageChanged(int previousPage, int currentP
+             }
+         }
+
++#ifdef HAVE_PHONON
+         // start autoplay video playback
+         for (VideoWidget *vw : qAsConst(m_frames[m_frameIndex]->videoWidgets)) {
+             vw->pageEntered();
+         }
++#endif
+     }
+ }
+
+@@ -673,6 +690,7 @@ void PresentationWidget::mousePressEvent(QMouseEvent *e)
+
+         const Okular::Annotation *annotation = getAnnotation(e->x(), e->y());
+         if (annotation) {
++#ifdef HAVE_PHONON
+             if (annotation->subType() == Okular::Annotation::AMovie) {
+                 const Okular::MovieAnnotation *movieAnnotation = static_cast<const Okular::MovieAnnotation *>(annotation);
+
+@@ -687,7 +705,9 @@ void PresentationWidget::mousePressEvent(QMouseEvent *e)
+                 vw->show();
+                 vw->play();
+                 return;
+-            } else if (annotation->subType() == Okular::Annotation::AScreen) {
++            }
++#endif
++            if (annotation->subType() == Okular::Annotation::AScreen) {
+                 m_document->processAction(static_cast<const Okular::ScreenAnnotation *>(annotation)->action());
+                 return;
+             }
+@@ -2258,6 +2278,7 @@ void PresentationWidget::initTransition(const Okular::PageTransition *transition
+
+ void PresentationWidget::slotProcessMovieAction(const Okular::MovieAction *action)
+ {
++#ifdef HAVE_PHONON
+     const Okular::MovieAnnotation *movieAnnotation = action->annotation();
+     if (!movieAnnotation) {
+         return;
+@@ -2290,10 +2311,12 @@ void PresentationWidget::slotProcessMovieAction(const Okular::MovieAction *actio
+         vw->play();
+         break;
+     };
++#endif
+ }
+
+ void PresentationWidget::slotProcessRenditionAction(const Okular::RenditionAction *action)
+ {
++#ifdef HAVE_PHONON
+     Okular::Movie *movie = action->movie();
+     if (!movie) {
+         return;
+@@ -2327,6 +2350,7 @@ void PresentationWidget::slotProcessRenditionAction(const Okular::RenditionActio
+     default:
+         return;
+     };
++#endif
+ }
+
+ void PresentationWidget::slotTogglePlayPause()
+diff --git a/shell/CMakeLists.txt b/shell/CMakeLists.txt
+index 597f0b74c..7b83323e3 100644
+--- a/shell/CMakeLists.txt
++++ b/shell/CMakeLists.txt
+@@ -23,7 +23,12 @@ ecm_add_app_icon(okular_SRCS ICONS ${ICONS_SRCS})
+
+ add_executable(okular ${okular_SRCS})
+
+-target_link_libraries(okular KF5::I18n KF5::Parts KF5::WindowSystem KF5::Crash KF5::IconThemes Qt5::DBus)
++target_link_libraries(okular KF5::I18n KF5::Parts KF5::WindowSystem KF5::Crash KF5::IconThemes)
++
++if(TARGET Qt5::DBus)
++    target_link_libraries(okular Qt5::DBus)
++endif()
++
+ if(TARGET KF5::Activities)
+     target_compile_definitions(okular PUBLIC -DWITH_KACTIVITIES=1)
+
+diff --git a/shell/main.cpp b/shell/main.cpp
+index 35f3aea65..dd08abeaf 100644
+--- a/shell/main.cpp
++++ b/shell/main.cpp
+@@ -21,7 +21,6 @@
+ #include <QApplication>
+ #include <QCommandLineOption>
+ #include <QCommandLineParser>
+-#include <QDBusInterface>
+ #include <QTextStream>
+ #include <QtGlobal>
+
+diff --git a/shell/okular_main.cpp b/shell/okular_main.cpp
+index c23f46356..78ed04936 100644
+--- a/shell/okular_main.cpp
++++ b/shell/okular_main.cpp
+@@ -16,8 +16,11 @@
+ #include <KLocalizedString>
+ #include <KWindowSystem>
+ #include <QApplication>
++#ifdef HAVE_DBUS
+ #include <QDBusInterface>
++#endif
+ #include <QTextStream>
++#include <QTemporaryFile>
+
+ #include "config-okular.h"
+ #if HAVE_X11
+@@ -47,6 +50,7 @@ static bool attachUniqueInstance(const QStringList &paths, const QString &serial
+         return false;
+     }
+
++#ifdef HAVE_DBUS
+     QDBusInterface iface(QStringLiteral("org.kde.okular"), QStringLiteral("/okularshell"), QStringLiteral("org.kde.okular"));
+     if (!iface.isValid()) {
+         return false;
+@@ -64,6 +68,7 @@ static bool attachUniqueInstance(const QStringList &paths, const QString &serial
+     if (!ShellUtils::noRaise(serializedOptions)) {
+         iface.call(QStringLiteral("tryRaise"), startupId());
+     }
++#endif
+
+     return true;
+ }
+@@ -81,6 +86,7 @@ static bool attachExistingInstance(const QStringList &paths, const QString &seri
+         return false;
+     }
+
++#ifdef HAVE_DBUS
+     // If DBus isn't running, we can't attach to an existing instance.
+     auto *sessionInterface = QDBusConnection::sessionBus().interface();
+     if (!sessionInterface) {
+@@ -113,6 +119,7 @@ static bool attachExistingInstance(const QStringList &paths, const QString &seri
+     if (!bestService) {
+         return false;
+     }
++#endif
+
+     for (const QString &arg : paths) {
+         // Copy stdin to temporary file which can be opened by the existing
+@@ -142,11 +149,13 @@ static bool attachExistingInstance(const QStringList &paths, const QString &seri
+             path = ShellUtils::urlFromArg(arg, ShellUtils::qfileExistFunc(), page).url();
+         }
+
++#ifdef HAVE_DBUS
+         // Returns false if it can't fit another document
+         const QDBusReply<bool> reply = bestService->call(QStringLiteral("openDocument"), path, serializedOptions);
+         if (!reply.isValid() || !reply.value()) {
+             return false;
+         }
++#endif
+     }
+
+     if (!ShellUtils::editorCmd(serializedOptions).isEmpty()) {
+@@ -156,7 +165,9 @@ static bool attachExistingInstance(const QStringList &paths, const QString &seri
+         exit(1);
+     }
+
++#ifdef HAVE_DBUS
+     bestService->call(QStringLiteral("tryRaise"), startupId());
++#endif
+
+     return true;
+ }
+diff --git a/shell/shell.cpp b/shell/shell.cpp
+index 3685f6116..f72429caf 100644
+--- a/shell/shell.cpp
++++ b/shell/shell.cpp
+@@ -36,11 +36,15 @@
+ #include <KWindowSystem>
+ #include <KXMLGUIFactory>
+ #include <QApplication>
++#ifdef HAVE_DBUS
+ #include <QDBusConnection>
++#endif
+ #include <QDockWidget>
+ #include <QDragMoveEvent>
+ #include <QFileDialog>
+ #include <QMenuBar>
++#include <QMimeDatabase>
++#include <QMimeData>
+ #include <QObject>
+ #include <QScreen>
+ #include <QTabBar>
+@@ -237,6 +241,7 @@ Shell::Shell(const QString &serializedOptions)
+         readSettings();
+
+         m_unique = ShellUtils::unique(serializedOptions);
++#ifdef HAVE_DBUS
+         if (m_unique) {
+             m_unique = QDBusConnection::sessionBus().registerService(QStringLiteral("org.kde.okular"));
+             if (!m_unique) {
+@@ -258,7 +263,7 @@ Shell::Shell(const QString &serializedOptions)
+         }
+
+         QDBusConnection::sessionBus().registerObject(QStringLiteral("/okularshell"), this, QDBusConnection::ExportScriptableSlots);
+-
++#endif
+         // Make sure that the welcome scren is visible on startup.
+         showWelcomeScreen();
+     } else {
+@@ -333,9 +338,11 @@ Shell::~Shell()
+         }
+         m_tabs.clear();
+     }
++#ifdef HAVE_DBUS
+     if (m_unique) {
+         QDBusConnection::sessionBus().unregisterService(QStringLiteral("org.kde.okular"));
+     }
++#endif
+
+     delete m_tabWidget;
+ }
+diff --git a/shell/shell.h b/shell/shell.h
+index facffe33b..a864cb72e 100644
+--- a/shell/shell.h
++++ b/shell/shell.h
+@@ -20,7 +20,11 @@
+ #include <kparts/readwritepart.h>
+
+ #include <QStackedWidget>
+-#include <QtDBus> // krazy:exclude=includes
++#ifdef HAVE_DBUS
++#include <QtDBus> // krazy:exclude=include
++#else
++#define Q_NOREPLY
++#endif
+
+ #include "welcomescreen.h"
+
+diff --git a/shell/welcomescreen.cpp b/shell/welcomescreen.cpp
+index 128abd7a2..ead12eb7c 100644
+--- a/shell/welcomescreen.cpp
++++ b/shell/welcomescreen.cpp
+@@ -21,6 +21,11 @@
+
+ #include "recentitemsmodel.h"
+
++#ifdef Q_OS_WIN
++#include <windows.h>
++#include <shellapi.h>
++#endif
++
+ class RecentsListItemDelegate : public QStyledItemDelegate
+ {
+     Q_OBJECT
+@@ -78,7 +83,11 @@ public:
+                 showDirectoryAction->setIcon(QIcon::fromTheme(QStringLiteral("document-open-folder")));
+                 connect(showDirectoryAction, &QAction::triggered, this, [item]() {
+                     if (item->url.isLocalFile()) {
++#ifdef Q_OS_WIN
++                        ShellExecuteW(NULL, L"explore", (wchar_t *)item->url.toLocalFile().utf16(), NULL, NULL, SW_SHOWDEFAULT);
++#else
+                         KIO::highlightInFileManager({item->url});
++#endif
+                     }
+                 });
+                 menu.addAction(showDirectoryAction);
+--
+2.40.0

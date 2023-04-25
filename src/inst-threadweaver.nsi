@@ -18,16 +18,14 @@
 !ifdef prefix
 !undef prefix
 !endif
-!define prefix ${ipdir}/kio-${gpg4win_pkg_kio_version}
+!define prefix ${ipdir}/threadweaver-${gpg4win_pkg_threadweaver_version}
 
 !ifdef DEBUG
-Section "kio" SEC_kio
+Section "threadweaver" SEC_threadweaver
 !else
-Section "-kio" SEC_kio
+Section "-threadweaver" SEC_threadweaver
 !endif
   SetOutPath "$INSTDIR"
   SetOutPath "$INSTDIR\bin"
-  File ${prefix}/bin/libKF5KIOGui.dll
-  File ${prefix}/bin/libKF5KIOCore.dll
-  File ${prefix}/bin/libKF5KIOWidgets.dll
+  File ${prefix}/bin/libKF5ThreadWeaver.dll
 SectionEnd

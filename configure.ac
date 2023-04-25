@@ -347,6 +347,11 @@ if test "$build_gpg4win" = yes ; then
     GPG4WIN_KDEPKG([kxmlgui], [kiconthemes kconfigwidgets kitemviews])
     GPG4WIN_KDEPKG([libkleo], [kmime kconfigwidgets kwindowsystem kcompletion gpgme])
     GPG4WIN_KDEPKG([gpg4win-tools], [libkleo gpgme])
+    GPG4WIN_KDEPKG([threadweaver], [qtbase extra-cmake-modules])
+    GPG4WIN_KDEPKG([freetype], [zlib bzip2])
+    GPG4WIN_KDEPKG([poppler], [gpgme kio qtbase freetype])
+    GPG4WIN_KDEPKG([kparts], [kio kservice kxmlgui kconfigwidgets kwidgetsaddons])
+    GPG4WIN_KDEPKG([okular], [kparts gpgme kio poppler threadweaver qtsvg])
 
     GPG4WIN_FINALIZE
 fi

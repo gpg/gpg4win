@@ -18,16 +18,15 @@
 !ifdef prefix
 !undef prefix
 !endif
-!define prefix ${ipdir}/kio-${gpg4win_pkg_kio_version}
+!define prefix ${ipdir}/poppler-${gpg4win_pkg_poppler_version}
 
 !ifdef DEBUG
-Section "kio" SEC_kio
+Section "poppler" SEC_poppler
 !else
-Section "-kio" SEC_kio
+Section "-poppler" SEC_poppler
 !endif
   SetOutPath "$INSTDIR"
   SetOutPath "$INSTDIR\bin"
-  File ${prefix}/bin/libKF5KIOGui.dll
-  File ${prefix}/bin/libKF5KIOCore.dll
-  File ${prefix}/bin/libKF5KIOWidgets.dll
+  File ${prefix}/bin/libpoppler-127.dll
+  File ${prefix}/bin/libpoppler-qt5-1.dll
 SectionEnd

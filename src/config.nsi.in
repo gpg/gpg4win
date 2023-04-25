@@ -224,6 +224,30 @@
 !define gpg4win_pkg_kbookmarks @gpg4win_pkg_kbookmarks@
 !define gpg4win_pkg_kbookmarks_version @gpg4win_pkg_kbookmarks_version@
 
+@HAVE_PKG_KJOBWIDGETS@
+!define gpg4win_pkg_kjobwidgets @gpg4win_pkg_kjobwidgets@
+!define gpg4win_pkg_kjobwidgets_version @gpg4win_pkg_kjobwidgets_version@
+
+@HAVE_PKG_OKULAR@
+!define gpg4win_pkg_okular @gpg4win_pkg_okular@
+!define gpg4win_pkg_okular_version @gpg4win_pkg_okular_version@
+
+@HAVE_PKG_FREETYPE@
+!define gpg4win_pkg_freetype @gpg4win_pkg_freetype@
+!define gpg4win_pkg_freetype_version @gpg4win_pkg_freetype_version@
+
+@HAVE_PKG_POPPLER@
+!define gpg4win_pkg_poppler @gpg4win_pkg_poppler@
+!define gpg4win_pkg_poppler_version @gpg4win_pkg_poppler_version@
+
+@HAVE_PKG_KPARTS@
+!define gpg4win_pkg_kparts @gpg4win_pkg_kparts@
+!define gpg4win_pkg_kparts_version @gpg4win_pkg_kparts_version@
+
+@HAVE_PKG_THREADWEAVER@
+!define gpg4win_pkg_threadweaver @gpg4win_pkg_threadweaver@
+!define gpg4win_pkg_threadweaver_version @gpg4win_pkg_threadweaver_version@
+
 @HAVE_PKG_GPG4WIN_TOOLS@
 !define gpg4win_pkg_gpg4win_tools @gpg4win_pkg_gpg4win_tools@
 !define gpg4win_pkg_gpg4win_tools_version @gpg4win_pkg_gpg4win_tools_version@

@@ -22,6 +22,7 @@
 
 ; Uninstaller section.
 Section "-un.kio"
+  Delete "$INSTDIR\bin\libKF5KIOGui.dll"
   Delete "$INSTDIR\bin\libKF5KIOCore.dll"
   Delete "$INSTDIR\bin\libKF5KIOWidgets.dll"
   RmDir "$INSTDIR\bin"

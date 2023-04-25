@@ -77,6 +77,11 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
         inst-extra-cmake-modules.nsi uninst-extra-cmake-modules.nsi \
         inst-gpg4win-tools.nsi uninst-gpg4win-tools.nsi \
         inst-gpgme-browser.nsi \
+        inst-poppler.nsi uninst-poppler.nsi \
+        inst-freetype.nsi uninst-freetype.nsi \
+        inst-threadweaver.nsi uninst-threadweaver.nsi \
+        inst-kparts.nsi uninst-kparts.nsi \
+        inst-okular.nsi uninst-okular.nsi \
         inst-final.nsi index.theme \
         slideshow/slides.dat \
         slideshow/slide1-gpgol.png \
@@ -133,7 +138,8 @@ gpg4win_kdepkgs = kconfig kwidgetsaddons ki18n extra-cmake-modules \
                   kmime kconfigwidgets kxmlgui kguiaddons kitemviews \
                   kiconthemes kleopatra breeze-icons kitemmodels karchive \
                   gpg4win-tools kcrash kio kbookmarks kservice solid \
-                  kjobwidgets
+                  kjobwidgets poppler okular freetype threadweaver \
+                  kparts
 
 # Supported source packages to build in an additional architecture
 gpg4win_expkgs = libgpg-error libassuan libiconv gettext gpgex gpgol \
@@ -301,9 +307,11 @@ gpg4win_pkg_qtbase_configure = ../$$$${pkg_version}/configure -opensource \
 gpg4win_pkg_qtbase_make_args = \
     QMAKE='$$$${pkgbdir}/bin/qmake'
 
-# Qmake still writes debug names in pkgconfig files.
+# Make install step. Somehow qtprintsupport is now installed automatically.
 define gpg4win_pkg_qtbase_post_install
 	(cd $$$${pkgbdir}; \
+	 make install; \
+	 cd $$$${pkgbdir}/src/printsupport; \
 	 make install;)
 endef
 
@@ -356,6 +364,10 @@ define gpg4win_pkg_qttranslations_post_install
    cp -r $$$${pkgbdir}/translations $$$${pkgidir}/qttranslations;)
 endef
 
+define gpg4win_pkg_okular_post_install
+ ( rm $$$${pkgidir}/share/icons/hicolor/icon-theme.cache; )
+endef
+
 gpg4win_pkg_kleopatra_configure = \
     -DFORCE_DISABLE_KCMUTILS=ON \
     -DDISABLE_KWATCHGNUPG=ON \
@@ -379,6 +391,13 @@ gpg4win_pkg_kservice_configure = \
 
 gpg4win_pkg_kjobwidgets_configure = \
     -DANDROID=ON
+
+gpg4win_pkg_poppler_configure = \
+    -DENABLE_DCTDECODER=none \
+    -DENABLE_LIBOPENJPEG=none
+
+gpg4win_pkg_okular_configure = \
+    -DFORCE_NOT_REQUIRED_DEPENDENCIES="KF5Purpose\;KF5TextWidgets\;Qt5TextToSpeech\;LibZip\;KF5Wallet\;KF5DocTools\;KF5JS\;Phonon4Qt5\;TIFF\;JPEG\;LibSpectre\;KF5KExiv2\;CHM\;KF5KHtml\;DjVuLibre\;EPub\;QMobipocket\;Discount"
 
 # Supported make-only source packages.
 gpg4win_mpkgs = bzip2 zlib

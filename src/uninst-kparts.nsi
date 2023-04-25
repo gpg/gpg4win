@@ -18,16 +18,10 @@
 !ifdef prefix
 !undef prefix
 !endif
-!define prefix ${ipdir}/kio-${gpg4win_pkg_kio_version}
+!define prefix ${ipdir}/kparts-${gpg4win_pkg_kparts_version}
 
-!ifdef DEBUG
-Section "kio" SEC_kio
-!else
-Section "-kio" SEC_kio
-!endif
-  SetOutPath "$INSTDIR"
-  SetOutPath "$INSTDIR\bin"
-  File ${prefix}/bin/libKF5KIOGui.dll
-  File ${prefix}/bin/libKF5KIOCore.dll
-  File ${prefix}/bin/libKF5KIOWidgets.dll
+; Uninstaller section.
+Section "-un.kparts"
+  Delete "$INSTDIR\bin\libKF5Parts.dll"
+  RmDir "$INSTDIR\bin"
 SectionEnd

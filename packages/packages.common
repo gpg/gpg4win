@@ -57,6 +57,12 @@ name pkgconfig-0.23.zip
 file pkg-config_0.23-3_win32.zip
 chk  677d6055494e24cad6c49eab33eee618ddc6ed65da827c8b5b7da761b4063278
 
+server https://download.savannah.gnu.org/releases/
+# last-changed: 2023-04-19
+# by: ah
+# verified: SIG E30674707856409FF1948010BE6C3AAC63AD8E3F
+file freetype/freetype-2.13.0.tar.xz
+chk  5ee23abd047636c24b2d43c6625dcafc66661d1aca64dec9e0d05df29592624c
 
 #
 # SQLite
@@ -408,6 +414,21 @@ chk 2a9a33bc71b4cafec35b9692bd7681a736eeb4e4b81c25f5bd87dbec38c143cf
 # verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
 file 5.104/kjobwidgets-5.104.0.tar.xz
 chk 3b254124d3bf20666a514710fef8990325da2ade14f49368b1bed1256eb8fea1
+
+# threadweaver
+# last changed: 2023-04-19
+# by: ah
+# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
+file 5.104/threadweaver-5.104.0.tar.xz
+chk 963decfdf0cf780406eb585efdb213539a00cd16ae4dff2b2ffe8822a609a647
+
+# kparts
+# last changed: 2023-04-19
+# by: ah
+# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
+file 5.104/kparts-5.104.0.tar.xz
+chk 66a40646cc4890669991cc63d33803ec335b0c08b7aeb0476b2a852951e700cd
+
 ### END PASTE ###
 
 server http://download.kde.org/stable/release-service/
@@ -458,3 +479,18 @@ chk 0dfe1000d56242c95b54dd59be831e4a11f6bf19b194c922e719638c5eef98fa
 # verified: Tarball created by aheinecke.
 file kleopatra/kleopatra-202303221715.tar.xz
 chk 8b78bc7d5487db5ae6fa1addc9756f24922a9af8386210f453c015e3f0e30eab
+
+# Okular and dependencies
+# poppler
+# last changed: 2023-04-17
+# by: aheinecke
+# verified: Tarball created by aheinecke.
+file poppler/poppler-202304171532.tar.xz
+chk bbe1abc9caa2b5eb1582a7ab5974fd0e27babb333230b34add16227c75f292cc
+
+# okular
+# last changed: 2023-04-19
+# by: aheinecke
+# verified: Tarball created by aheinecke.
+file okular/okular-202304191155.tar.xz
+chk aca442b9823310f3f7205b07bc04cdfc69a911d8e162bb2e90aa9b6f40f1c0d7
