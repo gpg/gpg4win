@@ -21,6 +21,9 @@ with native code but needs testing.
 
 DBus needs probably replacement by Kleopatras variant
 of KUniqueService for the same functionality.
+
+The CMake version requirement is just to allow compiling on debian
+stable.
 ---
  CMakeLists.txt                   | 53 +++++++++++++++++++++++++-------
  core/document.cpp                | 13 ++++++++
@@ -47,6 +50,12 @@ diff --git a/CMakeLists.txt b/CMakeLists.txt
 index 009924862..4f007bcf3 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.22)
++cmake_minimum_required(VERSION 3.18)
+
+ # KDE Application Version, managed by release script
+ set (RELEASE_SERVICE_VERSION_MAJOR "23")
 @@ -102,7 +102,7 @@ ecm_setup_version(${PROJECT_VERSION}
                    VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/core/version.h"
                    PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/Okular5ConfigVersion.cmake")
