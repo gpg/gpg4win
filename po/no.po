@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gpg4win 1.1.1-svn417\n"
-"Report-Msgid-Bugs-To: gpg4win-devel@wald.intevation.org\n"
+"Report-Msgid-Bugs-To: https://bugs.gnupg.org\n"
 "PO-Revision-Date: 2016-06-26 20:57+0200\n"
 "Last-Translator: Asbjørn Stokka <asstokka@online.no>\n"
 "Language-Team: Norsk <asstokka@online.no>\n"
@@ -300,7 +300,7 @@ msgid ""
 "Windows Versions before Windows 7 are no longer maintained by Gpg4win.\n"
 "Support for them may be removed in a future version.\n"
 "\n"
-"Kleopatra is disabled."
+"Kleopatra and Okular are disabled."
 msgstr ""
 
 #, fuzzy
@@ -357,6 +357,10 @@ msgstr "GnuPG for Outlook"
 msgctxt "DESC_SEC_gpgme_browser"
 msgid ""
 "Register GnuPG as native messaging service e.g. for the Mailvelope extension."
+msgstr ""
+
+msgctxt "T_Sign_Encrypt"
+msgid "Sign/Encrypt"
 msgstr ""
 
 msgctxt "DESC_SEC_kleopatra"
