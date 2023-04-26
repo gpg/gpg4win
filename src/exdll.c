@@ -41,13 +41,13 @@ void NSISCALL pushstring(LPCTSTR str)
 LPTSTR NSISCALL getuservariable(const int varnum)
 {
   if (!isvalidnsisvarindex(varnum)) return NULL;
-  return (LPWSTR)((char*)g_variables+varnum*g_stringsize);
+  return (LPWSTR)((wchar_t*)g_variables+varnum*g_stringsize);
 }
 
 void NSISCALL setuservariable(const int varnum, LPCTSTR var)
 {
   if (var && isvalidnsisvarindex(varnum))
-    lstrcpy((LPWSTR)((char*)g_variables + varnum*g_stringsize), var);
+    lstrcpy((LPWSTR)((wchar_t*)g_variables + varnum*g_stringsize), var);
 }
 
 #ifdef UNICODE

@@ -1,4 +1,4 @@
-/* g4wihelp.c - NSIS Helper DLL used with gpg4win. -*- coding: latin-1; -*-
+/* g4wihelp.c - NSIS Helper DLL used with gpg4win.
  * Copyright (C) 2005, 2023 g10 Code GmbH
  * Copyright (C) 2001 Justin Frankel
  * Copyright (C) 2016, 2017 Intevation GmbH
@@ -93,7 +93,46 @@ dummy (HWND hwndParent, int string_size, LPTSTR variables,
   // you should empty the stack of your parameters, and ONLY your
   // parameters.
 
-  // do your stuff here
+  /* Let's dump the variables.  */
+  {
+    char line[512];
+    char *p;
+    const unsigned char *s = (void*)g_variables;
+    int i,j;
+
+    for (i=0; i < string_size* __INST_LAST; i+=32, s += 32)
+      {
+        for (j=0; j < 32; j++)
+          if (s[j])
+            break;
+        if (j != 32)
+          {
+            p = line;
+            *p = 0;
+            snprintf (p, 10, "%05x: ", i);
+            p += strlen (p);
+            for (j=0; j < 32; j++)
+              {
+                snprintf (p, 10, "%02x", s[j]);
+                p += strlen (p);
+              }
+            strcat (p, " |");
+            p += strlen (p);
+            for (j=0; j < 32; j++)
+              {
+                if (s[j] >= 32 && s[j] < 127)
+                  *p = s[j];
+                else
+                  *p = '.';
+                p++;
+              }
+            strcat (p, "|");
+            OutputDebugStringA (line);
+          }
+      }
+  }
+
+
   {
     wchar_t buf[1024];
 
