@@ -1,0 +1,29 @@
+From d15297a555d9358655d0687249261de284ece3fc Mon Sep 17 00:00:00 2001
+From: Andre Heinecke <aheinecke@gnupg.org>
+Date: Thu, 27 Apr 2023 17:18:25 +0200
+Subject: [PATCH] Explicitly set -pthread for gcc windows builds
+
+We need pthread on windows explicity on windows if
+gcc-win32 is used and not gcc-posix.
+---
+ CMakeLists.txt | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 5d81fb47..bde58a22 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -580,6 +580,11 @@ if(WIN32)
+   add_definitions(-DWIN32_LEAN_AND_MEAN)
+   # gdi32 is needed under win32
+   set(poppler_LIBS ${poppler_LIBS} gdi32)
++  if (CMAKE_SYSTEM_NAME STREQUAL GNU)
++  # we need pthread on windows explicity on windows if
++  # gcc-win32 is used and not gcc-posix
++  set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -pthread")
++  endif()
+ endif()
+ if(PNG_FOUND)
+   set(poppler_LIBS ${poppler_LIBS} PNG::PNG)
+--
+2.40.0

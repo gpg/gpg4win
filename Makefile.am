@@ -64,6 +64,7 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
              patches/kio/Fix-cross-build.patch \
              patches/kservice/0001-Remove-unused-include.patch \
              patches/okular/0001-WIP-Buildfix-with-reduced-depdencies.patch \
+             patches/poppler/0001-Explicitly-set-pthread-for-gcc-windows-builds.patch \
              patches/kparts/0001-Dirty-hack-to-remove-KTextWidgets.patch \
              patches-appimage/kconfigwidgets/0001-build-without-KF5Auth.patch \
              patches-appimage/kconfigwidgets/fake-version.patch \
