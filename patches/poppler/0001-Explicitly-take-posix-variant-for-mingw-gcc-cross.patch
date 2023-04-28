@@ -1,0 +1,51 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From 13e3852bd004c0e9608dab4d892d63997e67bae6 Mon Sep 17 00:00:00 2001
+From: Andre Heinecke <aheinecke@gnupg.org>
+Date: Thu, 27 Apr 2023 17:18:25 +0200
+Subject: [PATCH] Explicitly take posix variant for mingw-gcc cross
+
+We need pthread on windows explicity on windows if
+gcc-win32 is used and not gcc-posix.
+
+Due to some changes we might have accidentally made on the
+build system it seems that -win32 is forced there and the
+-pthreads flags set in the CMake Way are ignored. So we just
+do a brutal:
+    set(CMAKE_CXX_COMPILER i686-w64-mingw32-g++-posix)
+
+For now to get it to compile before we can investigate the
+issue further.
+---
+ CMakeLists.txt | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 5d81fb47..cee95933 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -580,6 +580,20 @@ if(WIN32)
+   add_definitions(-DWIN32_LEAN_AND_MEAN)
+   # gdi32 is needed under win32
+   set(poppler_LIBS ${poppler_LIBS} gdi32)
++  # we need pthread on windows explicity on windows if
++  # gcc-win32 is used and not gcc-posix
++  if (CMAKE_HOST_SYSTEM_NAME STREQUAL Linux)
++
++    # XXX: Find out if the line below this comment was caused
++    # by us changing update alternatives explicitly for the compiler
++    set(CMAKE_CXX_COMPILER i686-w64-mingw32-g++-posix)
++
++    # This is probably the correct solution
++    set(CMAKE_THREAD_PREFER_THREAD PTHREAD)
++    set(THREADS_PREFER_PTHREAD_FLAG TRUE)
++    find_package(Threads REQUIRED)
++    set(poppler_LIBS ${poppler_LIBS} Threads::Threads)
++  endif()
+ endif()
+ if(PNG_FOUND)
+   set(poppler_LIBS ${poppler_LIBS} PNG::PNG)
+--
+2.40.0
