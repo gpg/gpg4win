@@ -1,3 +1,7 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
 From d15297a555d9358655d0687249261de284ece3fc Mon Sep 17 00:00:00 2001
 From: Andre Heinecke <aheinecke@gnupg.org>
 Date: Thu, 27 Apr 2023 17:18:25 +0200
