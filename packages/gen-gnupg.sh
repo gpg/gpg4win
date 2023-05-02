@@ -91,7 +91,8 @@ echo >>$outfile "# by $LOGNAME"
 echo >>$outfile "# verified: [taken from buildtree]"
 
 file="${prefix}-${version}.tar.bz2"
-echo >>$outfile "file $file"
+echo >>$outfile "name $file"
+echo >>$outfile "file gnupg/$file"
 echo >>$outfile "chk  $(sha256sum < $file | cut -d ' ' -f1)"
 echo >>$outfile
 
