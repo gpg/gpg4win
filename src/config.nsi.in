@@ -240,6 +240,22 @@
 !define gpg4win_pkg_poppler @gpg4win_pkg_poppler@
 !define gpg4win_pkg_poppler_version @gpg4win_pkg_poppler_version@
 
+@HAVE_PKG_LIBPNG@
+!define gpg4win_pkg_libpng @gpg4win_pkg_libpng@
+!define gpg4win_pkg_libpng_version @gpg4win_pkg_libpng_version@
+
+@HAVE_PKG_TIFF@
+!define gpg4win_pkg_tiff @gpg4win_pkg_tiff@
+!define gpg4win_pkg_tiff_version @gpg4win_pkg_tiff_version@
+
+@HAVE_PKG_OPENJPEG@
+!define gpg4win_pkg_openjpeg @gpg4win_pkg_openjpeg@
+!define gpg4win_pkg_openjpeg_version @gpg4win_pkg_openjpeg_version@
+
+@HAVE_PKG_JPEG@
+!define gpg4win_pkg_jpeg @gpg4win_pkg_jpeg@
+!define gpg4win_pkg_jpeg_version @gpg4win_pkg_jpeg_version@
+
 @HAVE_PKG_KPARTS@
 !define gpg4win_pkg_kparts @gpg4win_pkg_kparts@
 !define gpg4win_pkg_kparts_version @gpg4win_pkg_kparts_version@

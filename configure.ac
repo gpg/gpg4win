@@ -300,7 +300,8 @@ if test "$build_gpg4win" = yes ; then
     GPG4WIN_SPKG([paperkey])
     GPG4WIN_SPKG([libiconv])
     GPG4WIN_SPKG([gettext], [libiconv])
-
+    GPG4WIN_SPKG([libpng], [zlib])
+    GPG4WIN_SPKG([jpeg])
 
     # Packages needed for gpgex
     GPG4WIN_SPKGEX([libgpg-error])
@@ -321,6 +322,8 @@ if test "$build_gpg4win" = yes ; then
     GPG4WIN_SPKG([qttranslations], [qtsvg qttools qtwinextras])
     GPG4WIN_SPKG([qtwinextras], [qtbase])
     GPG4WIN_SPKG([qtsvg], [qtbase])
+    GPG4WIN_KDEPKG([tiff])
+    GPG4WIN_KDEPKG([openjpeg], [tiff jpeg])
     GPG4WIN_KDEPKG([breeze-icons], [extra-cmake-modules qtbase])
     GPG4WIN_KDEPKG([kleopatra], [kio gnupg-w32 breeze-icons kxmlgui libkleo kitemmodels qttranslations])
     GPG4WIN_KDEPKG([extra-cmake-modules])
@@ -349,7 +352,7 @@ if test "$build_gpg4win" = yes ; then
     GPG4WIN_KDEPKG([gpg4win-tools], [libkleo gpgme])
     GPG4WIN_KDEPKG([threadweaver], [qtbase extra-cmake-modules])
     GPG4WIN_KDEPKG([freetype], [zlib bzip2])
-    GPG4WIN_KDEPKG([poppler], [gpgme kio qtbase freetype])
+    GPG4WIN_KDEPKG([poppler], [libpng openjpeg tiff gpgme kio qtbase freetype])
     GPG4WIN_KDEPKG([kparts], [kio kservice kxmlgui kconfigwidgets kwidgetsaddons])
     GPG4WIN_KDEPKG([okular], [kparts gpgme kio poppler threadweaver qtsvg])
 

@@ -117,6 +117,18 @@
 !ifdef HAVE_PKG_PCRE
 !include "inst-pcre.nsi"
 !endif
+!ifdef HAVE_PKG_LIBPNG
+!include "inst-libpng.nsi"
+!endif
+!ifdef HAVE_PKG_TIFF
+!include "inst-tiff.nsi"
+!endif
+!ifdef HAVE_PKG_OPENJPEG
+!include "inst-openjpeg.nsi"
+!endif
+!ifdef HAVE_PKG_JPEG
+!include "inst-jpeg.nsi"
+!endif
 !ifdef HAVE_PKG_KCRASH
 !include "inst-kcrash.nsi"
 !endif
@@ -334,6 +346,18 @@
 !endif
 !ifdef HAVE_PKG_PCRE
 !include "uninst-pcre.nsi"
+!endif
+!ifdef HAVE_PKG_LIBPNG
+!include "uninst-libpng.nsi"
+!endif
+!ifdef HAVE_PKG_TIFF
+!include "uninst-tiff.nsi"
+!endif
+!ifdef HAVE_PKG_OPENJPEG
+!include "uninst-openjpeg.nsi"
+!endif
+!ifdef HAVE_PKG_JPEG
+!include "uninst-jpeg.nsi"
 !endif
 !ifdef HAVE_PKG_KCRASH
 !include "uninst-kcrash.nsi"
@@ -641,6 +665,18 @@ Function CalcDepends
 !ifdef HAVE_PKG_KJOBWIDGETS
   !insertmacro UnselectSection ${SEC_kjobwidgets}
 !endif
+!ifdef HAVE_PKG_LIBPNG
+  !insertmacro UnselectSection ${SEC_libpng}
+!endif
+!ifdef HAVE_PKG_TIFF
+  !insertmacro UnselectSection ${SEC_tiff}
+!endif
+!ifdef HAVE_PKG_OPENJPEG
+  !insertmacro UnselectSection ${SEC_openjpeg}
+!endif
+!ifdef HAVE_PKG_JPEG
+  !insertmacro UnselectSection ${SEC_jpeg}
+!endif
 !ifdef HAVE_PKG_SOLID
   !insertmacro UnselectSection ${SEC_solid}
 !endif
@@ -779,6 +815,10 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_freetype}
   !insertmacro SelectSection ${SEC_qtwinextras}
   !insertmacro SelectSection ${SEC_extra-cmake-modules}
+  !insertmacro SelectSection ${SEC_libpng}
+  !insertmacro SelectSection ${SEC_tiff}
+  !insertmacro SelectSection ${SEC_openjpeg}
+  !insertmacro SelectSection ${SEC_jpeg}
   skip_okular:
 !endif
 

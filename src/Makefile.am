@@ -78,6 +78,10 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
         inst-gpg4win-tools.nsi uninst-gpg4win-tools.nsi \
         inst-gpgme-browser.nsi \
         inst-poppler.nsi uninst-poppler.nsi \
+        inst-libpng.nsi uninst-libpng.nsi \
+        inst-openjpeg.nsi uninst-openjpeg.nsi \
+        inst-jpeg.nsi uninst-jpeg.nsi \
+        inst-tiff.nsi uninst-tiff.nsi \
         inst-freetype.nsi uninst-freetype.nsi \
         inst-threadweaver.nsi uninst-threadweaver.nsi \
         inst-kparts.nsi uninst-kparts.nsi \
@@ -126,7 +130,7 @@ CLEANFILES = g4wihelp.dll desktopshellrun.o versioninfo.txt $(README_files) \
 # Supported source packages. (see also ../appimage/Makefile.am)
 gpg4win_spkgs = glib libffi gdk-pixbuf gtk+ \
                 libgpg-error gpgme gpgol gpgex libpng \
-		gpa opencdk \
+		gpa opencdk jpeg \
 		pinentry libassuan ntbtls pcre \
 		paperkey regex libiconv gettext scute
 
@@ -139,7 +143,7 @@ gpg4win_kdepkgs = kconfig kwidgetsaddons ki18n extra-cmake-modules \
                   kiconthemes kleopatra breeze-icons kitemmodels karchive \
                   gpg4win-tools kcrash kio kbookmarks kservice solid \
                   kjobwidgets poppler okular freetype threadweaver \
-                  kparts
+                  kparts tiff openjpeg
 
 # Supported source packages to build in an additional architecture
 gpg4win_expkgs = libgpg-error libassuan libiconv gettext gpgex gpgol \
@@ -264,6 +268,8 @@ gpg4win_pkg_gpgex_configure = --silent \
 gpg4win_pkg_gpgex_ex_configure = --silent \
   --with-gpg-error-prefix=$(ex_idir) \
   --with-libassuan-prefix=$(ex_idir)
+
+gpg4win_pkg_openjpeg_configure = -DBUILD_CODEC=OFF
 
 gpg4win_pkg_paperkey_configure = --silent
 
@@ -391,10 +397,6 @@ gpg4win_pkg_kservice_configure = \
 
 gpg4win_pkg_kjobwidgets_configure = \
     -DANDROID=ON
-
-gpg4win_pkg_poppler_configure = \
-    -DENABLE_DCTDECODER=none \
-    -DENABLE_LIBOPENJPEG=none
 
 gpg4win_pkg_okular_configure = \
     -DFORCE_NOT_REQUIRED_DEPENDENCIES="KF5Purpose\;KF5TextWidgets\;Qt5TextToSpeech\;LibZip\;KF5Wallet\;KF5DocTools\;KF5JS\;Phonon4Qt5\;TIFF\;JPEG\;LibSpectre\;KF5KExiv2\;CHM\;KF5KHtml\;DjVuLibre\;EPub\;QMobipocket\;Discount"

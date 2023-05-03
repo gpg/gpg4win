@@ -66,6 +66,7 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
              patches/okular/0001-WIP-Buildfix-with-reduced-depdencies.patch \
              patches/poppler/0001-Explicitly-take-posix-variant-for-mingw-gcc-cross.patch \
              patches/kparts/0001-Dirty-hack-to-remove-KTextWidgets.patch \
+             patches/jpeg/fix-redefine.patch \
              patches-appimage/kconfigwidgets/0001-build-without-KF5Auth.patch \
              patches-appimage/kconfigwidgets/fake-version.patch \
              patches-appimage/qtwayland-5.15.0/00-disable-wayland-server.patch \

@@ -1,0 +1,15 @@
+#! /bin/sh
+patch -p0 -l -f $* < $0
+exit $?
+
+--- jmorecfg.h.orig     2023-05-03 17:37:25.996283515 +0200
++++ jmorecfg.h  2023-05-03 17:37:30.984296710 +0200
+@@ -213,7 +213,7 @@
+ #ifndef _BASETSD_H_            /* Microsoft defines it in basetsd.h */
+ #ifndef _BASETSD_H             /* MinGW is slightly different */
+ #ifndef QGLOBAL_H              /* Qt defines it in qglobal.h */
+-typedef long INT32;
++typedef signed int INT32;
+ #endif
+ #endif
+ #endif

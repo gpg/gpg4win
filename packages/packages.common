@@ -42,6 +42,33 @@ chk  ccf536620a45458d26ba83887a983b96827001e92a13847b45e4925cc8913178
 file gettext/gettext-0.21.tar.xz
 chk  d20fcbb537e02dcf1383197ba05bd0734ef7bf5db06bdb241eb69b7d16b73192
 
+# last-changed: 2023-05-03
+# by ah
+# verified: verification of checksum from both sf and libpng.org
+server https://downloads.sourceforge.net
+file libpng/libpng16/1.6.39/libpng-1.6.39.tar.xz
+chk 1f4696ce70b4ee5f85f1e1623dc1229b210029fa4b7aee573df3e2ba7b036937
+
+# verified: verification of checksum from multiple sources
+server https://www.ijg.org
+name jpeg-9e.tar.gz
+file files/jpegsrc.v9e.tar.gz
+chk  4077d6a6a75aeb01884f708919d25934c93305e49f7e3f36db9129320e6f4f3d
+
+# last-changed: 2023-05-03
+# by ah
+# verified: verification of checksum from multiple sources e.g. homebrew
+server https://github.com/uclouvain/openjpeg/archive/refs/tags/
+name openjpeg-2.5.0.tar.gz
+file v2.5.0.tar.gz
+chk  0333806d6adecc6f7a91243b2b839ff4d2053823634d4f6ed7a59bc87409122a
+
+# last-changed: 2023-05-03
+# by ah
+# verified: SIG B1FA7D81EEB8E66399178B9733EBBFC47B3DD87D
+server https://download.osgeo.org
+file libtiff/tiff-4.5.0.tar.xz
+chk dafac979c5e7b6c650025569c5a4e720995ba5f17bc17e6276d1f12427be267c
 
 #
 # GIMP stuff for W32
