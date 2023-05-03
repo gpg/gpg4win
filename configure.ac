@@ -328,7 +328,7 @@ if test "$build_gpg4win" = yes ; then
     GPG4WIN_KDEPKG([ki18n], [qtbase gettext qttools extra-cmake-modules])
     GPG4WIN_KDEPKG([kwidgetsaddons], [kconfig qttools qtbase])
     GPG4WIN_KDEPKG([kcompletion], [kwidgetsaddons])
-    GPG4WIN_KDEPKG([kwindowsystem], [qtbase qtwinextras])
+    GPG4WIN_KDEPKG([kwindowsystem], [qtbase qtwinextras qttools])
     GPG4WIN_KDEPKG([kcoreaddons], [qtbase qttools])
     GPG4WIN_KDEPKG([kcodecs], [qtbase qttools])
     GPG4WIN_KDEPKG([kguiaddons], [qtbase qttools])
