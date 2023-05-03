@@ -21,6 +21,10 @@
 !define ki18n_prefix ${ipdir}/ki18n-${gpg4win_pkg_ki18n_version}
 !define kiconthemes_prefix ${ipdir}/kiconthemes-${gpg4win_pkg_kiconthemes_version}
 !define kxmlgui_prefix ${ipdir}/kxmlgui-${gpg4win_pkg_kxmlgui_version}
+!define kio_prefix ${ipdir}/kio-${gpg4win_pkg_kio_version}
+!define kparts_prefix ${ipdir}/kparts-${gpg4win_pkg_kparts_version}
+!define kjobwidgets_prefix ${ipdir}/kjobwidgets-${gpg4win_pkg_kjobwidgets_version}
+!define kbookmarks_prefix ${ipdir}/kbookmarks-${gpg4win_pkg_kbookmarks_version}
 !define kconfig_prefix ${ipdir}/kconfig-${gpg4win_pkg_kconfig_version}
 !define kcompletion_prefix ${ipdir}/kcompletion-${gpg4win_pkg_kcompletion_version}
 !define kcodecs_prefix ${ipdir}/kcodecs-${gpg4win_pkg_kcodecs_version}
@@ -30,6 +34,7 @@
 !define kwindowsystem_prefix ${ipdir}/kwindowsystem-${gpg4win_pkg_kwindowsystem_version}
 !define kleopatra_prefix ${ipdir}/kleopatra-${gpg4win_pkg_kleopatra_version}
 !define libkleo_prefix ${ipdir}/libkleo-${gpg4win_pkg_libkleo_version}
+!define okular_prefix ${ipdir}/okular-${gpg4win_pkg_okular_version}
 !ifdef DEBUG
 Section "kde-l10n" SEC_kde_l10n
 !else
@@ -43,6 +48,8 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${ki18n_prefix}/share/locale/bg/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/bg/LC_MESSAGES/kiconthemes5.mo
   File ${kxmlgui_prefix}/share/locale/bg/LC_MESSAGES/kxmlgui5.mo
+  File ${kio_prefix}/share/locale/bg/LC_MESSAGES/kio5.mo
+  File ${kparts_prefix}/share/locale/bg/LC_MESSAGES/kparts5.mo
   File ${kconfig_prefix}/share/locale/bg/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/bg/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/bg/LC_MESSAGES/kcodecs5_qt.qm
@@ -52,6 +59,7 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kwindowsystem_prefix}/share/locale/bg/LC_MESSAGES/kwindowsystem5_qt.qm
   File ${libkleo_prefix}/share/locale/bg/LC_MESSAGES/libkleopatra.mo
   File ${kleopatra_prefix}/share/locale/bg/LC_MESSAGES/kleopatra.mo
+  File ${okular_prefix}/share/locale/bg/LC_MESSAGES/okular.mo
   SetOutPath "$INSTDIR\share\locale\bs"
   File ${kcfg_prefix}/share/locale/bs/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\bs\LC_MESSAGES"
@@ -59,6 +67,8 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${ki18n_prefix}/share/locale/bs/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/bs/LC_MESSAGES/kiconthemes5.mo
   File ${kxmlgui_prefix}/share/locale/bs/LC_MESSAGES/kxmlgui5.mo
+  File ${kio_prefix}/share/locale/bs/LC_MESSAGES/kio5.mo
+  File ${kparts_prefix}/share/locale/bs/LC_MESSAGES/kparts5.mo
   File ${kconfig_prefix}/share/locale/bs/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/bs/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/bs/LC_MESSAGES/kcodecs5_qt.qm
@@ -68,6 +78,7 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kwindowsystem_prefix}/share/locale/bs/LC_MESSAGES/kwindowsystem5_qt.qm
   File ${libkleo_prefix}/share/locale/bs/LC_MESSAGES/libkleopatra.mo
   File ${kleopatra_prefix}/share/locale/bs/LC_MESSAGES/kleopatra.mo
+  File ${okular_prefix}/share/locale/bs/LC_MESSAGES/okular.mo
   SetOutPath "$INSTDIR\share\locale\ca"
   File ${kcfg_prefix}/share/locale/ca/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\ca\LC_MESSAGES"
@@ -75,6 +86,8 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${ki18n_prefix}/share/locale/ca/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/ca/LC_MESSAGES/kiconthemes5.mo
   File ${kxmlgui_prefix}/share/locale/ca/LC_MESSAGES/kxmlgui5.mo
+  File ${kio_prefix}/share/locale/ca/LC_MESSAGES/kio5.mo
+  File ${kparts_prefix}/share/locale/ca/LC_MESSAGES/kparts5.mo
   File ${kconfig_prefix}/share/locale/ca/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/ca/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/ca/LC_MESSAGES/kcodecs5_qt.qm
@@ -84,6 +97,7 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kwindowsystem_prefix}/share/locale/ca/LC_MESSAGES/kwindowsystem5_qt.qm
   File ${libkleo_prefix}/share/locale/ca/LC_MESSAGES/libkleopatra.mo
   File ${kleopatra_prefix}/share/locale/ca/LC_MESSAGES/kleopatra.mo
+  File ${okular_prefix}/share/locale/ca/LC_MESSAGES/okular.mo
   SetOutPath "$INSTDIR\share\locale\ca@valencia"
   File ${kcfg_prefix}/share/locale/ca@valencia/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\ca@valencia\LC_MESSAGES"
@@ -91,6 +105,8 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${ki18n_prefix}/share/locale/ca@valencia/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/ca@valencia/LC_MESSAGES/kiconthemes5.mo
   File ${kxmlgui_prefix}/share/locale/ca@valencia/LC_MESSAGES/kxmlgui5.mo
+  File ${kio_prefix}/share/locale/ca@valencia/LC_MESSAGES/kio5.mo
+  File ${kparts_prefix}/share/locale/ca@valencia/LC_MESSAGES/kparts5.mo
   File ${kconfig_prefix}/share/locale/ca@valencia/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/ca@valencia/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/ca@valencia/LC_MESSAGES/kcodecs5_qt.qm
@@ -100,6 +116,7 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kwindowsystem_prefix}/share/locale/ca@valencia/LC_MESSAGES/kwindowsystem5_qt.qm
   File ${libkleo_prefix}/share/locale/ca@valencia/LC_MESSAGES/libkleopatra.mo
   File ${kleopatra_prefix}/share/locale/ca@valencia/LC_MESSAGES/kleopatra.mo
+  File ${okular_prefix}/share/locale/ca@valencia/LC_MESSAGES/okular.mo
   SetOutPath "$INSTDIR\share\locale\cs"
   File ${kcfg_prefix}/share/locale/cs/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\cs\LC_MESSAGES"
@@ -107,6 +124,8 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${ki18n_prefix}/share/locale/cs/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/cs/LC_MESSAGES/kiconthemes5.mo
   File ${kxmlgui_prefix}/share/locale/cs/LC_MESSAGES/kxmlgui5.mo
+  File ${kio_prefix}/share/locale/cs/LC_MESSAGES/kio5.mo
+  File ${kparts_prefix}/share/locale/cs/LC_MESSAGES/kparts5.mo
   File ${kconfig_prefix}/share/locale/cs/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/cs/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/cs/LC_MESSAGES/kcodecs5_qt.qm
@@ -116,6 +135,7 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kwindowsystem_prefix}/share/locale/cs/LC_MESSAGES/kwindowsystem5_qt.qm
   File ${libkleo_prefix}/share/locale/cs/LC_MESSAGES/libkleopatra.mo
   File ${kleopatra_prefix}/share/locale/cs/LC_MESSAGES/kleopatra.mo
+  File ${okular_prefix}/share/locale/cs/LC_MESSAGES/okular.mo
   SetOutPath "$INSTDIR\share\locale\da"
   File ${kcfg_prefix}/share/locale/da/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\da\LC_MESSAGES"
@@ -123,6 +143,8 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${ki18n_prefix}/share/locale/da/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/da/LC_MESSAGES/kiconthemes5.mo
   File ${kxmlgui_prefix}/share/locale/da/LC_MESSAGES/kxmlgui5.mo
+  File ${kio_prefix}/share/locale/da/LC_MESSAGES/kio5.mo
+  File ${kparts_prefix}/share/locale/da/LC_MESSAGES/kparts5.mo
   File ${kconfig_prefix}/share/locale/da/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/da/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/da/LC_MESSAGES/kcodecs5_qt.qm
@@ -132,6 +154,7 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kwindowsystem_prefix}/share/locale/da/LC_MESSAGES/kwindowsystem5_qt.qm
   File ${libkleo_prefix}/share/locale/da/LC_MESSAGES/libkleopatra.mo
   File ${kleopatra_prefix}/share/locale/da/LC_MESSAGES/kleopatra.mo
+  File ${okular_prefix}/share/locale/da/LC_MESSAGES/okular.mo
   SetOutPath "$INSTDIR\share\locale\de"
   File ${kcfg_prefix}/share/locale/de/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\de\LC_MESSAGES"
@@ -139,6 +162,8 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${ki18n_prefix}/share/locale/de/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/de/LC_MESSAGES/kiconthemes5.mo
   File ${kxmlgui_prefix}/share/locale/de/LC_MESSAGES/kxmlgui5.mo
+  File ${kio_prefix}/share/locale/de/LC_MESSAGES/kio5.mo
+  File ${kparts_prefix}/share/locale/de/LC_MESSAGES/kparts5.mo
   File ${kconfig_prefix}/share/locale/de/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/de/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/de/LC_MESSAGES/kcodecs5_qt.qm
@@ -148,6 +173,7 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kwindowsystem_prefix}/share/locale/de/LC_MESSAGES/kwindowsystem5_qt.qm
   File ${libkleo_prefix}/share/locale/de/LC_MESSAGES/libkleopatra.mo
   File ${kleopatra_prefix}/share/locale/de/LC_MESSAGES/kleopatra.mo
+  File ${okular_prefix}/share/locale/de/LC_MESSAGES/okular.mo
   SetOutPath "$INSTDIR\share\locale\el"
   File ${kcfg_prefix}/share/locale/el/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\el\LC_MESSAGES"
@@ -155,6 +181,8 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${ki18n_prefix}/share/locale/el/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/el/LC_MESSAGES/kiconthemes5.mo
   File ${kxmlgui_prefix}/share/locale/el/LC_MESSAGES/kxmlgui5.mo
+  File ${kio_prefix}/share/locale/el/LC_MESSAGES/kio5.mo
+  File ${kparts_prefix}/share/locale/el/LC_MESSAGES/kparts5.mo
   File ${kconfig_prefix}/share/locale/el/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/el/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/el/LC_MESSAGES/kcodecs5_qt.qm
@@ -164,6 +192,7 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kwindowsystem_prefix}/share/locale/el/LC_MESSAGES/kwindowsystem5_qt.qm
   File ${libkleo_prefix}/share/locale/el/LC_MESSAGES/libkleopatra.mo
   File ${kleopatra_prefix}/share/locale/el/LC_MESSAGES/kleopatra.mo
+  File ${okular_prefix}/share/locale/el/LC_MESSAGES/okular.mo
   SetOutPath "$INSTDIR\share\locale\en_GB"
   File ${kcfg_prefix}/share/locale/en_GB/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\en_GB\LC_MESSAGES"
@@ -171,6 +200,8 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${ki18n_prefix}/share/locale/en_GB/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/en_GB/LC_MESSAGES/kiconthemes5.mo
   File ${kxmlgui_prefix}/share/locale/en_GB/LC_MESSAGES/kxmlgui5.mo
+  File ${kio_prefix}/share/locale/en_GB/LC_MESSAGES/kio5.mo
+  File ${kparts_prefix}/share/locale/en_GB/LC_MESSAGES/kparts5.mo
   File ${kconfig_prefix}/share/locale/en_GB/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/en_GB/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/en_GB/LC_MESSAGES/kcodecs5_qt.qm
@@ -180,6 +211,26 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kwindowsystem_prefix}/share/locale/en_GB/LC_MESSAGES/kwindowsystem5_qt.qm
   File ${libkleo_prefix}/share/locale/en_GB/LC_MESSAGES/libkleopatra.mo
   File ${kleopatra_prefix}/share/locale/en_GB/LC_MESSAGES/kleopatra.mo
+  File ${okular_prefix}/share/locale/en_GB/LC_MESSAGES/okular.mo
+  SetOutPath "$INSTDIR\share\locale\eo"
+  File ${kcfg_prefix}/share/locale/eo/kf5_entry.desktop
+  SetOutPath "$INSTDIR\share\locale\eo\LC_MESSAGES"
+  File ${kconfigwidgets_prefix}/share/locale/eo/LC_MESSAGES/kconfigwidgets5.mo
+  File ${ki18n_prefix}/share/locale/eo/LC_MESSAGES/ki18n5.mo
+  File ${kiconthemes_prefix}/share/locale/eo/LC_MESSAGES/kiconthemes5.mo
+  File ${kxmlgui_prefix}/share/locale/eo/LC_MESSAGES/kxmlgui5.mo
+  File ${kio_prefix}/share/locale/eo/LC_MESSAGES/kio5.mo
+  File ${kparts_prefix}/share/locale/eo/LC_MESSAGES/kparts5.mo
+  File ${kconfig_prefix}/share/locale/eo/LC_MESSAGES/kconfig5_qt.qm
+  File ${kcompletion_prefix}/share/locale/eo/LC_MESSAGES/kcompletion5_qt.qm
+  File ${kcodecs_prefix}/share/locale/eo/LC_MESSAGES/kcodecs5_qt.qm
+  File ${kcoreaddons_prefix}/share/locale/eo/LC_MESSAGES/kcoreaddons5_qt.qm
+  File ${kitemviews_prefix}/share/locale/eo/LC_MESSAGES/kitemviews5_qt.qm
+  File ${kwidgetsaddons_prefix}/share/locale/eo/LC_MESSAGES/kwidgetsaddons5_qt.qm
+  File ${kwindowsystem_prefix}/share/locale/eo/LC_MESSAGES/kwindowsystem5_qt.qm
+  File ${libkleo_prefix}/share/locale/eo/LC_MESSAGES/libkleopatra.mo
+  File ${kleopatra_prefix}/share/locale/eo/LC_MESSAGES/kleopatra.mo
+  File ${okular_prefix}/share/locale/eo/LC_MESSAGES/okular.mo
   SetOutPath "$INSTDIR\share\locale\es"
   File ${kcfg_prefix}/share/locale/es/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\es\LC_MESSAGES"
@@ -187,6 +238,8 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${ki18n_prefix}/share/locale/es/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/es/LC_MESSAGES/kiconthemes5.mo
   File ${kxmlgui_prefix}/share/locale/es/LC_MESSAGES/kxmlgui5.mo
+  File ${kio_prefix}/share/locale/es/LC_MESSAGES/kio5.mo
+  File ${kparts_prefix}/share/locale/es/LC_MESSAGES/kparts5.mo
   File ${kconfig_prefix}/share/locale/es/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/es/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/es/LC_MESSAGES/kcodecs5_qt.qm
@@ -196,6 +249,7 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kwindowsystem_prefix}/share/locale/es/LC_MESSAGES/kwindowsystem5_qt.qm
   File ${libkleo_prefix}/share/locale/es/LC_MESSAGES/libkleopatra.mo
   File ${kleopatra_prefix}/share/locale/es/LC_MESSAGES/kleopatra.mo
+  File ${okular_prefix}/share/locale/es/LC_MESSAGES/okular.mo
   SetOutPath "$INSTDIR\share\locale\et"
   File ${kcfg_prefix}/share/locale/et/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\et\LC_MESSAGES"
@@ -203,6 +257,8 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${ki18n_prefix}/share/locale/et/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/et/LC_MESSAGES/kiconthemes5.mo
   File ${kxmlgui_prefix}/share/locale/et/LC_MESSAGES/kxmlgui5.mo
+  File ${kio_prefix}/share/locale/et/LC_MESSAGES/kio5.mo
+  File ${kparts_prefix}/share/locale/et/LC_MESSAGES/kparts5.mo
   File ${kconfig_prefix}/share/locale/et/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/et/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/et/LC_MESSAGES/kcodecs5_qt.qm
@@ -212,6 +268,7 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kwindowsystem_prefix}/share/locale/et/LC_MESSAGES/kwindowsystem5_qt.qm
   File ${libkleo_prefix}/share/locale/et/LC_MESSAGES/libkleopatra.mo
   File ${kleopatra_prefix}/share/locale/et/LC_MESSAGES/kleopatra.mo
+  File ${okular_prefix}/share/locale/et/LC_MESSAGES/okular.mo
   SetOutPath "$INSTDIR\share\locale\fi"
   File ${kcfg_prefix}/share/locale/fi/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\fi\LC_MESSAGES"
@@ -219,6 +276,8 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${ki18n_prefix}/share/locale/fi/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/fi/LC_MESSAGES/kiconthemes5.mo
   File ${kxmlgui_prefix}/share/locale/fi/LC_MESSAGES/kxmlgui5.mo
+  File ${kio_prefix}/share/locale/fi/LC_MESSAGES/kio5.mo
+  File ${kparts_prefix}/share/locale/fi/LC_MESSAGES/kparts5.mo
   File ${kconfig_prefix}/share/locale/fi/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/fi/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/fi/LC_MESSAGES/kcodecs5_qt.qm
@@ -228,6 +287,7 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kwindowsystem_prefix}/share/locale/fi/LC_MESSAGES/kwindowsystem5_qt.qm
   File ${libkleo_prefix}/share/locale/fi/LC_MESSAGES/libkleopatra.mo
   File ${kleopatra_prefix}/share/locale/fi/LC_MESSAGES/kleopatra.mo
+  File ${okular_prefix}/share/locale/fi/LC_MESSAGES/okular.mo
   SetOutPath "$INSTDIR\share\locale\fr"
   File ${kcfg_prefix}/share/locale/fr/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\fr\LC_MESSAGES"
@@ -235,6 +295,8 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${ki18n_prefix}/share/locale/fr/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/fr/LC_MESSAGES/kiconthemes5.mo
   File ${kxmlgui_prefix}/share/locale/fr/LC_MESSAGES/kxmlgui5.mo
+  File ${kio_prefix}/share/locale/fr/LC_MESSAGES/kio5.mo
+  File ${kparts_prefix}/share/locale/fr/LC_MESSAGES/kparts5.mo
   File ${kconfig_prefix}/share/locale/fr/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/fr/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/fr/LC_MESSAGES/kcodecs5_qt.qm
@@ -244,6 +306,7 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kwindowsystem_prefix}/share/locale/fr/LC_MESSAGES/kwindowsystem5_qt.qm
   File ${libkleo_prefix}/share/locale/fr/LC_MESSAGES/libkleopatra.mo
   File ${kleopatra_prefix}/share/locale/fr/LC_MESSAGES/kleopatra.mo
+  File ${okular_prefix}/share/locale/fr/LC_MESSAGES/okular.mo
   SetOutPath "$INSTDIR\share\locale\gl"
   File ${kcfg_prefix}/share/locale/gl/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\gl\LC_MESSAGES"
@@ -251,6 +314,8 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${ki18n_prefix}/share/locale/gl/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/gl/LC_MESSAGES/kiconthemes5.mo
   File ${kxmlgui_prefix}/share/locale/gl/LC_MESSAGES/kxmlgui5.mo
+  File ${kio_prefix}/share/locale/gl/LC_MESSAGES/kio5.mo
+  File ${kparts_prefix}/share/locale/gl/LC_MESSAGES/kparts5.mo
   File ${kconfig_prefix}/share/locale/gl/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/gl/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/gl/LC_MESSAGES/kcodecs5_qt.qm
@@ -260,6 +325,7 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kwindowsystem_prefix}/share/locale/gl/LC_MESSAGES/kwindowsystem5_qt.qm
   File ${libkleo_prefix}/share/locale/gl/LC_MESSAGES/libkleopatra.mo
   File ${kleopatra_prefix}/share/locale/gl/LC_MESSAGES/kleopatra.mo
+  File ${okular_prefix}/share/locale/gl/LC_MESSAGES/okular.mo
   SetOutPath "$INSTDIR\share\locale\hu"
   File ${kcfg_prefix}/share/locale/hu/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\hu\LC_MESSAGES"
@@ -267,6 +333,8 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${ki18n_prefix}/share/locale/hu/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/hu/LC_MESSAGES/kiconthemes5.mo
   File ${kxmlgui_prefix}/share/locale/hu/LC_MESSAGES/kxmlgui5.mo
+  File ${kio_prefix}/share/locale/hu/LC_MESSAGES/kio5.mo
+  File ${kparts_prefix}/share/locale/hu/LC_MESSAGES/kparts5.mo
   File ${kconfig_prefix}/share/locale/hu/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/hu/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/hu/LC_MESSAGES/kcodecs5_qt.qm
@@ -276,6 +344,7 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kwindowsystem_prefix}/share/locale/hu/LC_MESSAGES/kwindowsystem5_qt.qm
   File ${libkleo_prefix}/share/locale/hu/LC_MESSAGES/libkleopatra.mo
   File ${kleopatra_prefix}/share/locale/hu/LC_MESSAGES/kleopatra.mo
+  File ${okular_prefix}/share/locale/hu/LC_MESSAGES/okular.mo
   SetOutPath "$INSTDIR\share\locale\ia"
   File ${kcfg_prefix}/share/locale/ia/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\ia\LC_MESSAGES"
@@ -283,6 +352,8 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${ki18n_prefix}/share/locale/ia/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/ia/LC_MESSAGES/kiconthemes5.mo
   File ${kxmlgui_prefix}/share/locale/ia/LC_MESSAGES/kxmlgui5.mo
+  File ${kio_prefix}/share/locale/ia/LC_MESSAGES/kio5.mo
+  File ${kparts_prefix}/share/locale/ia/LC_MESSAGES/kparts5.mo
   File ${kconfig_prefix}/share/locale/ia/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/ia/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/ia/LC_MESSAGES/kcodecs5_qt.qm
@@ -292,6 +363,7 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kwindowsystem_prefix}/share/locale/ia/LC_MESSAGES/kwindowsystem5_qt.qm
   File ${libkleo_prefix}/share/locale/ia/LC_MESSAGES/libkleopatra.mo
   File ${kleopatra_prefix}/share/locale/ia/LC_MESSAGES/kleopatra.mo
+  File ${okular_prefix}/share/locale/ia/LC_MESSAGES/okular.mo
   SetOutPath "$INSTDIR\share\locale\it"
   File ${kcfg_prefix}/share/locale/it/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\it\LC_MESSAGES"
@@ -299,6 +371,8 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${ki18n_prefix}/share/locale/it/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/it/LC_MESSAGES/kiconthemes5.mo
   File ${kxmlgui_prefix}/share/locale/it/LC_MESSAGES/kxmlgui5.mo
+  File ${kio_prefix}/share/locale/it/LC_MESSAGES/kio5.mo
+  File ${kparts_prefix}/share/locale/it/LC_MESSAGES/kparts5.mo
   File ${kconfig_prefix}/share/locale/it/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/it/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/it/LC_MESSAGES/kcodecs5_qt.qm
@@ -308,6 +382,7 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kwindowsystem_prefix}/share/locale/it/LC_MESSAGES/kwindowsystem5_qt.qm
   File ${libkleo_prefix}/share/locale/it/LC_MESSAGES/libkleopatra.mo
   File ${kleopatra_prefix}/share/locale/it/LC_MESSAGES/kleopatra.mo
+  File ${okular_prefix}/share/locale/it/LC_MESSAGES/okular.mo
   SetOutPath "$INSTDIR\share\locale\ja"
   File ${kcfg_prefix}/share/locale/ja/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\ja\LC_MESSAGES"
@@ -315,6 +390,8 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${ki18n_prefix}/share/locale/ja/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/ja/LC_MESSAGES/kiconthemes5.mo
   File ${kxmlgui_prefix}/share/locale/ja/LC_MESSAGES/kxmlgui5.mo
+  File ${kio_prefix}/share/locale/ja/LC_MESSAGES/kio5.mo
+  File ${kparts_prefix}/share/locale/ja/LC_MESSAGES/kparts5.mo
   File ${kconfig_prefix}/share/locale/ja/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/ja/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/ja/LC_MESSAGES/kcodecs5_qt.qm
@@ -324,6 +401,7 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kwindowsystem_prefix}/share/locale/ja/LC_MESSAGES/kwindowsystem5_qt.qm
   File ${libkleo_prefix}/share/locale/ja/LC_MESSAGES/libkleopatra.mo
   File ${kleopatra_prefix}/share/locale/ja/LC_MESSAGES/kleopatra.mo
+  File ${okular_prefix}/share/locale/ja/LC_MESSAGES/okular.mo
   SetOutPath "$INSTDIR\share\locale\ka"
   File ${kcfg_prefix}/share/locale/ka/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\ka\LC_MESSAGES"
@@ -331,6 +409,8 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${ki18n_prefix}/share/locale/ka/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/ka/LC_MESSAGES/kiconthemes5.mo
   File ${kxmlgui_prefix}/share/locale/ka/LC_MESSAGES/kxmlgui5.mo
+  File ${kio_prefix}/share/locale/ka/LC_MESSAGES/kio5.mo
+  File ${kparts_prefix}/share/locale/ka/LC_MESSAGES/kparts5.mo
   File ${kconfig_prefix}/share/locale/ka/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/ka/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/ka/LC_MESSAGES/kcodecs5_qt.qm
@@ -340,6 +420,7 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kwindowsystem_prefix}/share/locale/ka/LC_MESSAGES/kwindowsystem5_qt.qm
   File ${libkleo_prefix}/share/locale/ka/LC_MESSAGES/libkleopatra.mo
   File ${kleopatra_prefix}/share/locale/ka/LC_MESSAGES/kleopatra.mo
+  File ${okular_prefix}/share/locale/ka/LC_MESSAGES/okular.mo
   SetOutPath "$INSTDIR\share\locale\kk"
   File ${kcfg_prefix}/share/locale/kk/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\kk\LC_MESSAGES"
@@ -347,6 +428,8 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${ki18n_prefix}/share/locale/kk/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/kk/LC_MESSAGES/kiconthemes5.mo
   File ${kxmlgui_prefix}/share/locale/kk/LC_MESSAGES/kxmlgui5.mo
+  File ${kio_prefix}/share/locale/kk/LC_MESSAGES/kio5.mo
+  File ${kparts_prefix}/share/locale/kk/LC_MESSAGES/kparts5.mo
   File ${kconfig_prefix}/share/locale/kk/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/kk/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/kk/LC_MESSAGES/kcodecs5_qt.qm
@@ -356,6 +439,7 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kwindowsystem_prefix}/share/locale/kk/LC_MESSAGES/kwindowsystem5_qt.qm
   File ${libkleo_prefix}/share/locale/kk/LC_MESSAGES/libkleopatra.mo
   File ${kleopatra_prefix}/share/locale/kk/LC_MESSAGES/kleopatra.mo
+  File ${okular_prefix}/share/locale/kk/LC_MESSAGES/okular.mo
   SetOutPath "$INSTDIR\share\locale\km"
   File ${kcfg_prefix}/share/locale/km/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\km\LC_MESSAGES"
@@ -363,6 +447,8 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${ki18n_prefix}/share/locale/km/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/km/LC_MESSAGES/kiconthemes5.mo
   File ${kxmlgui_prefix}/share/locale/km/LC_MESSAGES/kxmlgui5.mo
+  File ${kio_prefix}/share/locale/km/LC_MESSAGES/kio5.mo
+  File ${kparts_prefix}/share/locale/km/LC_MESSAGES/kparts5.mo
   File ${kconfig_prefix}/share/locale/km/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/km/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/km/LC_MESSAGES/kcodecs5_qt.qm
@@ -372,6 +458,7 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kwindowsystem_prefix}/share/locale/km/LC_MESSAGES/kwindowsystem5_qt.qm
   File ${libkleo_prefix}/share/locale/km/LC_MESSAGES/libkleopatra.mo
   File ${kleopatra_prefix}/share/locale/km/LC_MESSAGES/kleopatra.mo
+  File ${okular_prefix}/share/locale/km/LC_MESSAGES/okular.mo
   SetOutPath "$INSTDIR\share\locale\ko"
   File ${kcfg_prefix}/share/locale/ko/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\ko\LC_MESSAGES"
@@ -379,6 +466,8 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${ki18n_prefix}/share/locale/ko/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/ko/LC_MESSAGES/kiconthemes5.mo
   File ${kxmlgui_prefix}/share/locale/ko/LC_MESSAGES/kxmlgui5.mo
+  File ${kio_prefix}/share/locale/ko/LC_MESSAGES/kio5.mo
+  File ${kparts_prefix}/share/locale/ko/LC_MESSAGES/kparts5.mo
   File ${kconfig_prefix}/share/locale/ko/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/ko/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/ko/LC_MESSAGES/kcodecs5_qt.qm
@@ -388,6 +477,7 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kwindowsystem_prefix}/share/locale/ko/LC_MESSAGES/kwindowsystem5_qt.qm
   File ${libkleo_prefix}/share/locale/ko/LC_MESSAGES/libkleopatra.mo
   File ${kleopatra_prefix}/share/locale/ko/LC_MESSAGES/kleopatra.mo
+  File ${okular_prefix}/share/locale/ko/LC_MESSAGES/okular.mo
   SetOutPath "$INSTDIR\share\locale\lv"
   File ${kcfg_prefix}/share/locale/lv/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\lv\LC_MESSAGES"
@@ -395,6 +485,8 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${ki18n_prefix}/share/locale/lv/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/lv/LC_MESSAGES/kiconthemes5.mo
   File ${kxmlgui_prefix}/share/locale/lv/LC_MESSAGES/kxmlgui5.mo
+  File ${kio_prefix}/share/locale/lv/LC_MESSAGES/kio5.mo
+  File ${kparts_prefix}/share/locale/lv/LC_MESSAGES/kparts5.mo
   File ${kconfig_prefix}/share/locale/lv/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/lv/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/lv/LC_MESSAGES/kcodecs5_qt.qm
@@ -404,6 +496,7 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kwindowsystem_prefix}/share/locale/lv/LC_MESSAGES/kwindowsystem5_qt.qm
   File ${libkleo_prefix}/share/locale/lv/LC_MESSAGES/libkleopatra.mo
   File ${kleopatra_prefix}/share/locale/lv/LC_MESSAGES/kleopatra.mo
+  File ${okular_prefix}/share/locale/lv/LC_MESSAGES/okular.mo
   SetOutPath "$INSTDIR\share\locale\nb"
   File ${kcfg_prefix}/share/locale/nb/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\nb\LC_MESSAGES"
@@ -411,6 +504,8 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${ki18n_prefix}/share/locale/nb/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/nb/LC_MESSAGES/kiconthemes5.mo
   File ${kxmlgui_prefix}/share/locale/nb/LC_MESSAGES/kxmlgui5.mo
+  File ${kio_prefix}/share/locale/nb/LC_MESSAGES/kio5.mo
+  File ${kparts_prefix}/share/locale/nb/LC_MESSAGES/kparts5.mo
   File ${kconfig_prefix}/share/locale/nb/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/nb/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/nb/LC_MESSAGES/kcodecs5_qt.qm
@@ -420,6 +515,7 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kwindowsystem_prefix}/share/locale/nb/LC_MESSAGES/kwindowsystem5_qt.qm
   File ${libkleo_prefix}/share/locale/nb/LC_MESSAGES/libkleopatra.mo
   File ${kleopatra_prefix}/share/locale/nb/LC_MESSAGES/kleopatra.mo
+  File ${okular_prefix}/share/locale/nb/LC_MESSAGES/okular.mo
   SetOutPath "$INSTDIR\share\locale\nds"
   File ${kcfg_prefix}/share/locale/nds/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\nds\LC_MESSAGES"
@@ -427,6 +523,8 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${ki18n_prefix}/share/locale/nds/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/nds/LC_MESSAGES/kiconthemes5.mo
   File ${kxmlgui_prefix}/share/locale/nds/LC_MESSAGES/kxmlgui5.mo
+  File ${kio_prefix}/share/locale/nds/LC_MESSAGES/kio5.mo
+  File ${kparts_prefix}/share/locale/nds/LC_MESSAGES/kparts5.mo
   File ${kconfig_prefix}/share/locale/nds/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/nds/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/nds/LC_MESSAGES/kcodecs5_qt.qm
@@ -436,6 +534,7 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kwindowsystem_prefix}/share/locale/nds/LC_MESSAGES/kwindowsystem5_qt.qm
   File ${libkleo_prefix}/share/locale/nds/LC_MESSAGES/libkleopatra.mo
   File ${kleopatra_prefix}/share/locale/nds/LC_MESSAGES/kleopatra.mo
+  File ${okular_prefix}/share/locale/nds/LC_MESSAGES/okular.mo
   SetOutPath "$INSTDIR\share\locale\nl"
   File ${kcfg_prefix}/share/locale/nl/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\nl\LC_MESSAGES"
@@ -443,6 +542,8 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${ki18n_prefix}/share/locale/nl/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/nl/LC_MESSAGES/kiconthemes5.mo
   File ${kxmlgui_prefix}/share/locale/nl/LC_MESSAGES/kxmlgui5.mo
+  File ${kio_prefix}/share/locale/nl/LC_MESSAGES/kio5.mo
+  File ${kparts_prefix}/share/locale/nl/LC_MESSAGES/kparts5.mo
   File ${kconfig_prefix}/share/locale/nl/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/nl/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/nl/LC_MESSAGES/kcodecs5_qt.qm
@@ -452,6 +553,7 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kwindowsystem_prefix}/share/locale/nl/LC_MESSAGES/kwindowsystem5_qt.qm
   File ${libkleo_prefix}/share/locale/nl/LC_MESSAGES/libkleopatra.mo
   File ${kleopatra_prefix}/share/locale/nl/LC_MESSAGES/kleopatra.mo
+  File ${okular_prefix}/share/locale/nl/LC_MESSAGES/okular.mo
   SetOutPath "$INSTDIR\share\locale\nn"
   File ${kcfg_prefix}/share/locale/nn/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\nn\LC_MESSAGES"
@@ -459,6 +561,8 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${ki18n_prefix}/share/locale/nn/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/nn/LC_MESSAGES/kiconthemes5.mo
   File ${kxmlgui_prefix}/share/locale/nn/LC_MESSAGES/kxmlgui5.mo
+  File ${kio_prefix}/share/locale/nn/LC_MESSAGES/kio5.mo
+  File ${kparts_prefix}/share/locale/nn/LC_MESSAGES/kparts5.mo
   File ${kconfig_prefix}/share/locale/nn/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/nn/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/nn/LC_MESSAGES/kcodecs5_qt.qm
@@ -468,6 +572,7 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kwindowsystem_prefix}/share/locale/nn/LC_MESSAGES/kwindowsystem5_qt.qm
   File ${libkleo_prefix}/share/locale/nn/LC_MESSAGES/libkleopatra.mo
   File ${kleopatra_prefix}/share/locale/nn/LC_MESSAGES/kleopatra.mo
+  File ${okular_prefix}/share/locale/nn/LC_MESSAGES/okular.mo
   SetOutPath "$INSTDIR\share\locale\pl"
   File ${kcfg_prefix}/share/locale/pl/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\pl\LC_MESSAGES"
@@ -475,6 +580,8 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${ki18n_prefix}/share/locale/pl/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/pl/LC_MESSAGES/kiconthemes5.mo
   File ${kxmlgui_prefix}/share/locale/pl/LC_MESSAGES/kxmlgui5.mo
+  File ${kio_prefix}/share/locale/pl/LC_MESSAGES/kio5.mo
+  File ${kparts_prefix}/share/locale/pl/LC_MESSAGES/kparts5.mo
   File ${kconfig_prefix}/share/locale/pl/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/pl/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/pl/LC_MESSAGES/kcodecs5_qt.qm
@@ -484,6 +591,7 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kwindowsystem_prefix}/share/locale/pl/LC_MESSAGES/kwindowsystem5_qt.qm
   File ${libkleo_prefix}/share/locale/pl/LC_MESSAGES/libkleopatra.mo
   File ${kleopatra_prefix}/share/locale/pl/LC_MESSAGES/kleopatra.mo
+  File ${okular_prefix}/share/locale/pl/LC_MESSAGES/okular.mo
   SetOutPath "$INSTDIR\share\locale\pt"
   File ${kcfg_prefix}/share/locale/pt/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\pt\LC_MESSAGES"
@@ -491,6 +599,8 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${ki18n_prefix}/share/locale/pt/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/pt/LC_MESSAGES/kiconthemes5.mo
   File ${kxmlgui_prefix}/share/locale/pt/LC_MESSAGES/kxmlgui5.mo
+  File ${kio_prefix}/share/locale/pt/LC_MESSAGES/kio5.mo
+  File ${kparts_prefix}/share/locale/pt/LC_MESSAGES/kparts5.mo
   File ${kconfig_prefix}/share/locale/pt/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/pt/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/pt/LC_MESSAGES/kcodecs5_qt.qm
@@ -500,6 +610,7 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kwindowsystem_prefix}/share/locale/pt/LC_MESSAGES/kwindowsystem5_qt.qm
   File ${libkleo_prefix}/share/locale/pt/LC_MESSAGES/libkleopatra.mo
   File ${kleopatra_prefix}/share/locale/pt/LC_MESSAGES/kleopatra.mo
+  File ${okular_prefix}/share/locale/pt/LC_MESSAGES/okular.mo
   SetOutPath "$INSTDIR\share\locale\pt_BR"
   File ${kcfg_prefix}/share/locale/pt_BR/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\pt_BR\LC_MESSAGES"
@@ -507,6 +618,8 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${ki18n_prefix}/share/locale/pt_BR/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/pt_BR/LC_MESSAGES/kiconthemes5.mo
   File ${kxmlgui_prefix}/share/locale/pt_BR/LC_MESSAGES/kxmlgui5.mo
+  File ${kio_prefix}/share/locale/pt_BR/LC_MESSAGES/kio5.mo
+  File ${kparts_prefix}/share/locale/pt_BR/LC_MESSAGES/kparts5.mo
   File ${kconfig_prefix}/share/locale/pt_BR/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/pt_BR/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/pt_BR/LC_MESSAGES/kcodecs5_qt.qm
@@ -516,6 +629,7 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kwindowsystem_prefix}/share/locale/pt_BR/LC_MESSAGES/kwindowsystem5_qt.qm
   File ${libkleo_prefix}/share/locale/pt_BR/LC_MESSAGES/libkleopatra.mo
   File ${kleopatra_prefix}/share/locale/pt_BR/LC_MESSAGES/kleopatra.mo
+  File ${okular_prefix}/share/locale/pt_BR/LC_MESSAGES/okular.mo
   SetOutPath "$INSTDIR\share\locale\ru"
   File ${kcfg_prefix}/share/locale/ru/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\ru\LC_MESSAGES"
@@ -523,6 +637,8 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${ki18n_prefix}/share/locale/ru/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/ru/LC_MESSAGES/kiconthemes5.mo
   File ${kxmlgui_prefix}/share/locale/ru/LC_MESSAGES/kxmlgui5.mo
+  File ${kio_prefix}/share/locale/ru/LC_MESSAGES/kio5.mo
+  File ${kparts_prefix}/share/locale/ru/LC_MESSAGES/kparts5.mo
   File ${kconfig_prefix}/share/locale/ru/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/ru/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/ru/LC_MESSAGES/kcodecs5_qt.qm
@@ -532,6 +648,7 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kwindowsystem_prefix}/share/locale/ru/LC_MESSAGES/kwindowsystem5_qt.qm
   File ${libkleo_prefix}/share/locale/ru/LC_MESSAGES/libkleopatra.mo
   File ${kleopatra_prefix}/share/locale/ru/LC_MESSAGES/kleopatra.mo
+  File ${okular_prefix}/share/locale/ru/LC_MESSAGES/okular.mo
   SetOutPath "$INSTDIR\share\locale\sk"
   File ${kcfg_prefix}/share/locale/sk/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\sk\LC_MESSAGES"
@@ -539,6 +656,8 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${ki18n_prefix}/share/locale/sk/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/sk/LC_MESSAGES/kiconthemes5.mo
   File ${kxmlgui_prefix}/share/locale/sk/LC_MESSAGES/kxmlgui5.mo
+  File ${kio_prefix}/share/locale/sk/LC_MESSAGES/kio5.mo
+  File ${kparts_prefix}/share/locale/sk/LC_MESSAGES/kparts5.mo
   File ${kconfig_prefix}/share/locale/sk/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/sk/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/sk/LC_MESSAGES/kcodecs5_qt.qm
@@ -548,6 +667,7 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kwindowsystem_prefix}/share/locale/sk/LC_MESSAGES/kwindowsystem5_qt.qm
   File ${libkleo_prefix}/share/locale/sk/LC_MESSAGES/libkleopatra.mo
   File ${kleopatra_prefix}/share/locale/sk/LC_MESSAGES/kleopatra.mo
+  File ${okular_prefix}/share/locale/sk/LC_MESSAGES/okular.mo
   SetOutPath "$INSTDIR\share\locale\sl"
   File ${kcfg_prefix}/share/locale/sl/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\sl\LC_MESSAGES"
@@ -555,6 +675,8 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${ki18n_prefix}/share/locale/sl/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/sl/LC_MESSAGES/kiconthemes5.mo
   File ${kxmlgui_prefix}/share/locale/sl/LC_MESSAGES/kxmlgui5.mo
+  File ${kio_prefix}/share/locale/sl/LC_MESSAGES/kio5.mo
+  File ${kparts_prefix}/share/locale/sl/LC_MESSAGES/kparts5.mo
   File ${kconfig_prefix}/share/locale/sl/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/sl/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/sl/LC_MESSAGES/kcodecs5_qt.qm
@@ -564,6 +686,7 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kwindowsystem_prefix}/share/locale/sl/LC_MESSAGES/kwindowsystem5_qt.qm
   File ${libkleo_prefix}/share/locale/sl/LC_MESSAGES/libkleopatra.mo
   File ${kleopatra_prefix}/share/locale/sl/LC_MESSAGES/kleopatra.mo
+  File ${okular_prefix}/share/locale/sl/LC_MESSAGES/okular.mo
   SetOutPath "$INSTDIR\share\locale\sv"
   File ${kcfg_prefix}/share/locale/sv/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\sv\LC_MESSAGES"
@@ -571,6 +694,8 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${ki18n_prefix}/share/locale/sv/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/sv/LC_MESSAGES/kiconthemes5.mo
   File ${kxmlgui_prefix}/share/locale/sv/LC_MESSAGES/kxmlgui5.mo
+  File ${kio_prefix}/share/locale/sv/LC_MESSAGES/kio5.mo
+  File ${kparts_prefix}/share/locale/sv/LC_MESSAGES/kparts5.mo
   File ${kconfig_prefix}/share/locale/sv/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/sv/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/sv/LC_MESSAGES/kcodecs5_qt.qm
@@ -580,6 +705,7 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kwindowsystem_prefix}/share/locale/sv/LC_MESSAGES/kwindowsystem5_qt.qm
   File ${libkleo_prefix}/share/locale/sv/LC_MESSAGES/libkleopatra.mo
   File ${kleopatra_prefix}/share/locale/sv/LC_MESSAGES/kleopatra.mo
+  File ${okular_prefix}/share/locale/sv/LC_MESSAGES/okular.mo
   SetOutPath "$INSTDIR\share\locale\tr"
   File ${kcfg_prefix}/share/locale/tr/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\tr\LC_MESSAGES"
@@ -587,6 +713,8 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${ki18n_prefix}/share/locale/tr/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/tr/LC_MESSAGES/kiconthemes5.mo
   File ${kxmlgui_prefix}/share/locale/tr/LC_MESSAGES/kxmlgui5.mo
+  File ${kio_prefix}/share/locale/tr/LC_MESSAGES/kio5.mo
+  File ${kparts_prefix}/share/locale/tr/LC_MESSAGES/kparts5.mo
   File ${kconfig_prefix}/share/locale/tr/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/tr/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/tr/LC_MESSAGES/kcodecs5_qt.qm
@@ -596,6 +724,7 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kwindowsystem_prefix}/share/locale/tr/LC_MESSAGES/kwindowsystem5_qt.qm
   File ${libkleo_prefix}/share/locale/tr/LC_MESSAGES/libkleopatra.mo
   File ${kleopatra_prefix}/share/locale/tr/LC_MESSAGES/kleopatra.mo
+  File ${okular_prefix}/share/locale/tr/LC_MESSAGES/okular.mo
   SetOutPath "$INSTDIR\share\locale\uk"
   File ${kcfg_prefix}/share/locale/uk/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\uk\LC_MESSAGES"
@@ -603,6 +732,8 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${ki18n_prefix}/share/locale/uk/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/uk/LC_MESSAGES/kiconthemes5.mo
   File ${kxmlgui_prefix}/share/locale/uk/LC_MESSAGES/kxmlgui5.mo
+  File ${kio_prefix}/share/locale/uk/LC_MESSAGES/kio5.mo
+  File ${kparts_prefix}/share/locale/uk/LC_MESSAGES/kparts5.mo
   File ${kconfig_prefix}/share/locale/uk/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/uk/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/uk/LC_MESSAGES/kcodecs5_qt.qm
@@ -612,6 +743,7 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kwindowsystem_prefix}/share/locale/uk/LC_MESSAGES/kwindowsystem5_qt.qm
   File ${libkleo_prefix}/share/locale/uk/LC_MESSAGES/libkleopatra.mo
   File ${kleopatra_prefix}/share/locale/uk/LC_MESSAGES/kleopatra.mo
+  File ${okular_prefix}/share/locale/uk/LC_MESSAGES/okular.mo
   SetOutPath "$INSTDIR\share\locale\zh_CN"
   File ${kcfg_prefix}/share/locale/zh_CN/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\zh_CN\LC_MESSAGES"
@@ -619,6 +751,8 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${ki18n_prefix}/share/locale/zh_CN/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/zh_CN/LC_MESSAGES/kiconthemes5.mo
   File ${kxmlgui_prefix}/share/locale/zh_CN/LC_MESSAGES/kxmlgui5.mo
+  File ${kio_prefix}/share/locale/zh_CN/LC_MESSAGES/kio5.mo
+  File ${kparts_prefix}/share/locale/zh_CN/LC_MESSAGES/kparts5.mo
   File ${kconfig_prefix}/share/locale/zh_CN/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/zh_CN/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/zh_CN/LC_MESSAGES/kcodecs5_qt.qm
@@ -628,6 +762,7 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kwindowsystem_prefix}/share/locale/zh_CN/LC_MESSAGES/kwindowsystem5_qt.qm
   File ${libkleo_prefix}/share/locale/zh_CN/LC_MESSAGES/libkleopatra.mo
   File ${kleopatra_prefix}/share/locale/zh_CN/LC_MESSAGES/kleopatra.mo
+  File ${okular_prefix}/share/locale/zh_CN/LC_MESSAGES/okular.mo
   SetOutPath "$INSTDIR\share\locale\zh_TW"
   File ${kcfg_prefix}/share/locale/zh_TW/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\zh_TW\LC_MESSAGES"
@@ -635,6 +770,8 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${ki18n_prefix}/share/locale/zh_TW/LC_MESSAGES/ki18n5.mo
   File ${kiconthemes_prefix}/share/locale/zh_TW/LC_MESSAGES/kiconthemes5.mo
   File ${kxmlgui_prefix}/share/locale/zh_TW/LC_MESSAGES/kxmlgui5.mo
+  File ${kio_prefix}/share/locale/zh_TW/LC_MESSAGES/kio5.mo
+  File ${kparts_prefix}/share/locale/zh_TW/LC_MESSAGES/kparts5.mo
   File ${kconfig_prefix}/share/locale/zh_TW/LC_MESSAGES/kconfig5_qt.qm
   File ${kcompletion_prefix}/share/locale/zh_TW/LC_MESSAGES/kcompletion5_qt.qm
   File ${kcodecs_prefix}/share/locale/zh_TW/LC_MESSAGES/kcodecs5_qt.qm
@@ -644,4 +781,5 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kwindowsystem_prefix}/share/locale/zh_TW/LC_MESSAGES/kwindowsystem5_qt.qm
   File ${libkleo_prefix}/share/locale/zh_TW/LC_MESSAGES/libkleopatra.mo
   File ${kleopatra_prefix}/share/locale/zh_TW/LC_MESSAGES/kleopatra.mo
+  File ${okular_prefix}/share/locale/zh_TW/LC_MESSAGES/okular.mo
 SectionEnd

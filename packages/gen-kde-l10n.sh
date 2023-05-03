@@ -38,11 +38,12 @@ fi
 # QFrameworks are frameworks that use qt translations
 QFRAMEWORKS="kconfig kcompletion kcodecs kcoreaddons kitemviews kwidgetsaddons kwindowsystem"
 # KFrameworks are frameworks that use KDE translations
-KFRAMEWORKS="kconfigwidgets ki18n kiconthemes kxmlgui"
+KFRAMEWORKS="kconfigwidgets ki18n kiconthemes kxmlgui kio kparts kjobwidgets kbookmarks"
 
-POPREFIXES="kleopatra libkleo"
+POPREFIXES="kleopatra libkleo okular"
 POFILES="libkleo/libkleopatra.po \
-    kleopatra/kleopatra.po"
+    kleopatra/kleopatra.po \
+    okular/okular.po"
 # See: https://websvn.kde.org/*checkout*/trunk/l10n-kf5/subdirs
 # and remove x-test
 LANGS="
