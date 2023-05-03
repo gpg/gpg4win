@@ -100,7 +100,8 @@ if [ "${is_gpg}" == "yes" ]; then
     cd ${tmpdir}/${snapshotdir}
     ./autogen.sh --force >&2
     if [ "${is_w32}" == "yes" ]; then
-        ./autogen.sh --build-w32 --with-libassuan-prefix=/home/aheinecke/w64root/ >&2
+        ./autogen.sh --build-w32 >&2
+#        ./autogen.sh --build-w32 --with-libassuan-prefix=/home/aheinecke/w64root/ >&2
     else
         ./configure >&2
     fi
