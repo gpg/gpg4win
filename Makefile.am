@@ -61,7 +61,7 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
              patches/qttools/disable-most-tools.patch \
              patches/kcoreaddons/0001-Fix-MINGW-build.patch \
              patches/ki18n/0001-Undef-snprintf-for-windows.patch \
-             patches/kio/Fix-cross-build.patch \
+             patches/kio/0001-WIP-Remove-dependency-to-dbus.patch \
              patches/kservice/0001-Remove-unused-include.patch \
              patches/okular/0001-WIP-Buildfix-with-reduced-depdencies.patch \
              patches/poppler/0001-Explicitly-take-posix-variant-for-mingw-gcc-cross.patch \

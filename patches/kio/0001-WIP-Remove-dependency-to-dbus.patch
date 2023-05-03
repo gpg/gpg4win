@@ -1,0 +1,466 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From 765b8d246b1703590fd77f6ceae54676e54a90d5 Mon Sep 17 00:00:00 2001
+From: Andre Heinecke <aheinecke@gnupg.org>
+Date: Wed, 3 May 2023 11:29:23 +0200
+Subject: [PATCH] WIP: Remove dependency to dbus
+
+This makes heavy use of the already existing code for Android
+---
+ CMakeLists.txt                    | 13 +++++++----
+ KF5KIOConfig.cmake.in             |  6 +++--
+ src/CMakeLists.txt                | 10 +++++---
+ src/core/CMakeLists.txt           |  2 +-
+ src/core/desktopexecparser.cpp    |  6 ++---
+ src/filewidgets/knewfilemenu.cpp  |  2 ++
+ src/gui/dbusactivationrunner.cpp  |  6 ++---
+ src/gui/kprocessrunner.cpp        |  4 ++--
+ src/ioslaves/CMakeLists.txt       |  2 +-
+ src/ioslaves/file/CMakeLists.txt  |  8 ++++++-
+ src/ioslaves/file/file.cpp        |  2 ++
+ src/widgets/CMakeLists.txt        | 38 ++++++++++++++++++-------------
+ src/widgets/fileundomanager.cpp   |  8 +++++++
+ src/widgets/kpropertiesdialog.cpp |  6 +++++
+ src/widgets/paste.cpp             |  2 ++
+ 15 files changed, 78 insertions(+), 37 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 5a1f4b408..6ad953bbe 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -67,8 +67,11 @@ find_package(KF5I18n ${KF_DEP_VERSION} REQUIRED)
+ find_package(KF5Service ${KF_DEP_VERSION} REQUIRED)
+ find_package(KF5DocTools ${KF_DEP_VERSION})
+ find_package(KF5Solid ${KF_DEP_VERSION} REQUIRED) # for kio_trash
++
+ if (NOT ANDROID)
+     find_package(KF5Crash ${KF_DEP_VERSION} REQUIRED)
++endif()
++if (NOT ANDROID AND NOT WIN32)
+     find_package(KF5DBusAddons ${KF_DEP_VERSION} REQUIRED)
+ endif()
+
+@@ -102,7 +105,7 @@ set_package_properties(KF5DocTools PROPERTIES DESCRIPTION "Provides tools to gen
+
+ set(REQUIRED_QT_VERSION 5.15.2)
+ find_package(Qt${QT_MAJOR_VERSION} ${REQUIRED_QT_VERSION} CONFIG REQUIRED Widgets Network Concurrent Xml Test)
+-if (NOT ANDROID)
++if (NOT ANDROID AND NOT WIN32)
+     find_package(Qt${QT_MAJOR_VERSION} ${REQUIRED_QT_VERSION} CONFIG REQUIRED DBus)
+ endif()
+
+@@ -145,7 +148,7 @@ if (CMAKE_SYSTEM_NAME MATCHES "Linux")
+     set(HAVE_LIB_MOUNT ${LibMount_FOUND})
+ endif()
+
+-if (ANDROID)
++if (ANDROID OR WIN32)
+     # used to mark code that is just stubbed out on Android for now
+     # and that would still need a decision on how to deal with that
+     add_definitions(-DKIO_ANDROID_STUB)
+diff --git a/KF5KIOConfig.cmake.in b/KF5KIOConfig.cmake.in
+index 5e3fa3884..99c343e66 100644
+--- a/KF5KIOConfig.cmake.in
++++ b/KF5KIOConfig.cmake.in
+@@ -25,8 +25,10 @@ if (NOT @KIOCORE_ONLY@)
+         find_dependency(KF5GuiAddons "@KF_DEP_VERSION@")
+         find_dependency(KF5IconThemes "@KF_DEP_VERSION@")
+
+-        if (NOT ANDROID)
++        if (NOT ANDROID AND NOT WIN32)
+             find_dependency(KF5DBusAddons "@KF_DEP_VERSION@")
++        endif()
++        if (NOT ANDROID)
+             find_dependency(KF5Crash "@KF_DEP_VERSION@")
+         endif()
+
+@@ -40,7 +42,7 @@ find_dependency(Qt@QT_MAJOR_VERSION@Network "@REQUIRED_QT_VERSION@")
+ if (NOT @KIO_NO_PUBLIC_QTCONCURRENT@)
+ find_dependency(Qt@QT_MAJOR_VERSION@Concurrent "@REQUIRED_QT_VERSION@")
+ endif()
+-if (NOT ANDROID)
++if (NOT ANDROID AND NOT WIN32)
+     find_dependency(Qt@QT_MAJOR_VERSION@DBus "@REQUIRED_QT_VERSION@")
+ endif()
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 6e402ce74..91e9d8dee 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -4,7 +4,9 @@ add_subdirectory(core)
+ add_subdirectory(protocoltojson)
+ add_subdirectory(kntlm)
+ if (NOT ANDROID)
+-    add_subdirectory(ioslaves)
++add_subdirectory(ioslaves)
++endif()
++if (NOT ANDROID AND NOT WIN32)
+     add_subdirectory(kioworkers)
+     add_subdirectory(kiod)
+     add_subdirectory(kssld)
+@@ -16,8 +18,10 @@ if (NOT KIOCORE_ONLY)
+ add_subdirectory(gui)
+ add_subdirectory(widgets)
+ if (NOT ANDROID)
+-    add_subdirectory(kpasswdserver)
++endif()
++if (NOT ANDROID AND NOT WIN32)
+     add_subdirectory(filewidgets)
++    add_subdirectory(kpasswdserver)
+     add_subdirectory(kioexec)
+     add_subdirectory(urifilters)
+     add_subdirectory(kcms)
+@@ -41,7 +45,7 @@ set(NON_KIOCORE_LINK_QCHS
+     KF5WindowSystem_QCH
+ )
+
+-if(BUILD_DESIGNERPLUGIN AND NOT ANDROID)
++if(BUILD_DESIGNERPLUGIN AND NOT ANDROID AND NOT WIN32)
+     add_subdirectory(designer)
+ endif()
+
+diff --git a/src/core/CMakeLists.txt b/src/core/CMakeLists.txt
+index ddfdc0216..f12eb2cca 100644
+--- a/src/core/CMakeLists.txt
++++ b/src/core/CMakeLists.txt
+@@ -99,7 +99,7 @@ target_sources(KF5KIOCore PRIVATE
+   kfilefilter.cpp
+ )
+
+-if (NOT ANDROID)
++if (NOT ANDROID AND NOT WIN32)
+ target_sources(KF5KIOCore PRIVATE
+   tcpslavebase.cpp
+   tcpworkerbase.cpp
+diff --git a/src/core/desktopexecparser.cpp b/src/core/desktopexecparser.cpp
+index be7580d5e..e28e5773b 100644
+--- a/src/core/desktopexecparser.cpp
++++ b/src/core/desktopexecparser.cpp
+@@ -8,7 +8,7 @@
+ */
+
+ #include "desktopexecparser.h"
+-#ifndef Q_OS_ANDROID
++#if !defined(Q_OS_ANDROID) && !defined(Q_OS_WIN)
+ #include "kiofuse_interface.h"
+ #endif
+
+@@ -22,7 +22,7 @@
+ #include <KShell>
+ #include <kprotocolinfo.h> // KF6 TODO remove after moving hasSchemeHandler to OpenUrlJob
+
+-#ifndef Q_OS_ANDROID
++#ifdef QT_DBUS_LIB
+ #include <QDBusConnection>
+ #include <QDBusReply>
+ #endif
+@@ -404,7 +404,7 @@ QStringList KIO::DesktopExecParser::resultingArguments() const
+
+     // Check if we need kioexec, or KIOFuse
+     bool useKioexec = false;
+-#ifndef Q_OS_ANDROID
++#ifdef QT_DBUS_LIB
+     org::kde::KIOFuse::VFS kiofuse_iface(QStringLiteral("org.kde.KIOFuse"), QStringLiteral("/org/kde/KIOFuse"), QDBusConnection::sessionBus());
+     struct MountRequest {
+         QDBusPendingReply<QString> reply;
+diff --git a/src/filewidgets/knewfilemenu.cpp b/src/filewidgets/knewfilemenu.cpp
+index 98dd382dc..f372d6e49 100644
+--- a/src/filewidgets/knewfilemenu.cpp
++++ b/src/filewidgets/knewfilemenu.cpp
+@@ -1598,8 +1598,10 @@ void KNewFileMenu::slotResult(KJob *job)
+                 }
+                 Q_EMIT fileCreated(destUrl);
+             } else if (KIO::SimpleJob *simpleJob = ::qobject_cast<KIO::SimpleJob *>(job)) {
++#ifdef QT_DBUS_LIB
+                 // Called in the storedPut() case
+                 org::kde::KDirNotify::emitFilesAdded(simpleJob->url().adjusted(QUrl::RemoveFilename | QUrl::StripTrailingSlash));
++#endif
+                 Q_EMIT fileCreated(simpleJob->url());
+             }
+         }
+diff --git a/src/gui/dbusactivationrunner.cpp b/src/gui/dbusactivationrunner.cpp
+index b60c2f0ab..d5fea1776 100644
+--- a/src/gui/dbusactivationrunner.cpp
++++ b/src/gui/dbusactivationrunner.cpp
+@@ -10,7 +10,7 @@
+ #include "kiogui_debug.h"
+ #include <KWindowSystem>
+
+-#ifndef Q_OS_ANDROID
++#ifdef QT_DBUS_LIB
+ #include <QDBusConnection>
+ #include <QDBusConnectionInterface>
+ #include <QDBusMessage>
+@@ -47,7 +47,7 @@ DBusActivationRunner::DBusActivationRunner(const QString &action)
+
+ void DBusActivationRunner::startProcess()
+ {
+-#ifndef Q_OS_ANDROID
++#ifdef QT_DBUS_LIB
+     // DBusActivatable as per https://specifications.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html#dbus
+     const QString objectPath = QStringLiteral("/%1").arg(m_desktopName).replace(QLatin1Char('.'), QLatin1Char('/'));
+     const QString interface = QStringLiteral("org.freedesktop.Application");
+@@ -98,7 +98,7 @@ void DBusActivationRunner::startProcess()
+
+ bool DBusActivationRunner::waitForStarted(int timeout)
+ {
+-#ifndef Q_OS_ANDROID
++#ifndef QT_DBUS_LIB
+     if (m_finished) {
+         return m_pid != 0;
+     }
+diff --git a/src/gui/kprocessrunner.cpp b/src/gui/kprocessrunner.cpp
+index b97079c24..5d7d8e5d4 100644
+--- a/src/gui/kprocessrunner.cpp
++++ b/src/gui/kprocessrunner.cpp
+@@ -22,7 +22,7 @@
+ #include <KLocalizedString>
+ #include <KWindowSystem>
+
+-#ifndef Q_OS_ANDROID
++#ifdef QT_DBUS_LIB
+ #include <QDBusConnection>
+ #include <QDBusInterface>
+ #include <QDBusReply>
+@@ -108,7 +108,7 @@ KProcessRunner *KProcessRunner::fromApplication(const KService::Ptr &service,
+     qCDebug(KIO_GUI) << "Starting process:" << args;
+     *instance->m_process << args;
+
+-#ifndef Q_OS_ANDROID
++#ifdef QT_DBUS_LIB
+     enum DiscreteGpuCheck { NotChecked, Present, Absent };
+     static DiscreteGpuCheck s_gpuCheck = NotChecked;
+
+diff --git a/src/ioslaves/CMakeLists.txt b/src/ioslaves/CMakeLists.txt
+index 91a838f59..975b50417 100644
+--- a/src/ioslaves/CMakeLists.txt
++++ b/src/ioslaves/CMakeLists.txt
+@@ -2,6 +2,6 @@
+ add_subdirectory( file )
+
+ # Currently kio_trash doesn't work on Android
+-if (NOT ANDROID)
++if (NOT ANDROID AND NOT WIN32)
+     add_subdirectory(trash)
+ endif()
+diff --git a/src/ioslaves/file/CMakeLists.txt b/src/ioslaves/file/CMakeLists.txt
+index 88aa3964e..fb6baa738 100644
+--- a/src/ioslaves/file/CMakeLists.txt
++++ b/src/ioslaves/file/CMakeLists.txt
+@@ -28,7 +28,13 @@ ecm_qt_export_logging_category(
+     EXPORT KIO
+ )
+
+-target_link_libraries(kio_file KF5::KIOCore KF5::I18n KF5::ConfigCore Qt${QT_MAJOR_VERSION}::DBus Qt${QT_MAJOR_VERSION}::Network)
++target_link_libraries(kio_file KF5::KIOCore KF5::I18n KF5::ConfigCore Qt${QT_MAJOR_VERSION}::Network)
++if (TARGET Qt${QT_MAJOR_VERSION}::DBus)
++    target_link_libraries(kio_file
++        PRIVATE
++            Qt${QT_MAJOR_VERSION}::DBus
++    )
++endif()
+
+ if(UNIX)
+   target_link_libraries(kio_file Qt${QT_MAJOR_VERSION}::Network KF5::AuthCore)
+diff --git a/src/ioslaves/file/file.cpp b/src/ioslaves/file/file.cpp
+index c8f715679..687c7f228 100644
+--- a/src/ioslaves/file/file.cpp
++++ b/src/ioslaves/file/file.cpp
+@@ -707,7 +707,9 @@ void FileProtocol::put(const QUrl &url, int _mode, KIO::JobFlags _flags)
+                 return;
+             }
+         }
++#ifdef QT_DBUS_LIB
+         org::kde::KDirNotify::emitFileRenamed(QUrl::fromLocalFile(dest), QUrl::fromLocalFile(dest_orig));
++#endif
+     }
+
+     // set final permissions
+diff --git a/src/widgets/CMakeLists.txt b/src/widgets/CMakeLists.txt
+index 481f1d2bb..dd1dd2e39 100644
+--- a/src/widgets/CMakeLists.txt
++++ b/src/widgets/CMakeLists.txt
+@@ -45,10 +45,7 @@ target_sources(KF5KIOWidgets PRIVATE
+   kurifilter.cpp
+   previewjob.cpp
+   renamedialog.cpp
+-  ksslcertificatebox.cpp
+-  ksslinfodialog.cpp
+   skipdialog.cpp
+-  jobuidelegate.cpp
+   kdirlister.cpp
+   executablefileopendialog.cpp
+   dndpopupmenuplugin.cpp
+@@ -56,33 +53,42 @@ target_sources(KF5KIOWidgets PRIVATE
+   widgetsuntrustedprogramhandler.cpp
+   widgetsopenwithhandler.cpp
+   widgetsopenorexecutefilehandler.cpp
++)
++
++if (NOT WIN32)
++target_sources(KF5KIOWidgets PRIVATE
++  ksslcertificatebox.cpp
++  ksslinfodialog.cpp
+   widgetsaskuseractionhandler.cpp
++  jobuidelegate.cpp
+ )
++endif()
+
+ if(NOT ANDROID)
+ target_sources(KF5KIOWidgets PRIVATE
+   ${kiowidgets_dbus_SRCS}
+-  accessmanager.cpp
+-  accessmanagerreply_p.cpp
++)
++endif()
++
++if (NOT ANDROID AND NOT WIN32)
++    target_sources(KF5KIOWidgets PRIVATE
++  kdirmodel.cpp
++  renamefiledialog.cpp
+   deleteortrashjob.cpp
+-  fileundomanager.cpp
+-  kpropertiesdialog.cpp
+   delegateanimationhandler.cpp
+   kfileitemdelegate.cpp
+   paste.cpp
++  joburlcache.cpp
++    openfilemanagerwindowjob.cpp
++  fileundomanager.cpp
++  kpropertiesdialog.cpp
+   kbuildsycocaprogressdialog.cpp
++  accessmanager.cpp
++  accessmanagerreply_p.cpp
++        kdynamicjobtracker.cpp
+   sslui.cpp
+   dropjob.cpp
+-  openfilemanagerwindowjob.cpp
+   pastejob.cpp
+-  joburlcache.cpp
+-  kdirmodel.cpp
+-  renamefiledialog.cpp
+-)
+-endif()
+-if (NOT ANDROID)
+-    target_sources(KF5KIOWidgets PRIVATE
+-        kdynamicjobtracker.cpp
+     )
+ endif()
+ if (NOT WIN32 AND NOT ANDROID)
+diff --git a/src/widgets/fileundomanager.cpp b/src/widgets/fileundomanager.cpp
+index e5ad694d1..bb6b8ff5e 100644
+--- a/src/widgets/fileundomanager.cpp
++++ b/src/widgets/fileundomanager.cpp
+@@ -9,7 +9,9 @@
+ #include "fileundomanager.h"
+ #include "askuseractioninterface.h"
+ #include "clipboardupdater_p.h"
++#ifdef QT_DBUS_LIB
+ #include "fileundomanager_adaptor.h"
++#endif
+ #include "fileundomanager_p.h"
+ #include "kio_widgets_debug.h"
+ #include <job_p.h>
+@@ -27,7 +29,9 @@
+ #include <KLocalizedString>
+ #include <KMessageBox>
+
++#ifdef QT_DBUS_LIB
+ #include <QDBusConnection>
++#endif
+ #include <QDateTime>
+ #include <QFileInfo>
+ #include <QLocale>
+@@ -236,6 +240,7 @@ FileUndoManagerPrivate::FileUndoManagerPrivate(FileUndoManager *qq)
+     , m_nextCommandIndex(1000)
+     , q(qq)
+ {
++#ifdef QT_DBUS_LIB
+     (void)new KIOFileUndoManagerAdaptor(this);
+     const QString dbusPath = QStringLiteral("/FileUndoManager");
+     const QString dbusInterface = QStringLiteral("org.kde.kio.FileUndoManager");
+@@ -246,6 +251,7 @@ FileUndoManagerPrivate::FileUndoManagerPrivate(FileUndoManager *qq)
+     dbus.connect(QString(), dbusPath, dbusInterface, QStringLiteral("pop"), this, SLOT(slotPop()));
+     dbus.connect(QString(), dbusPath, dbusInterface, QStringLiteral("push"), this, SLOT(slotPush(QByteArray)));
+     dbus.connect(QString(), dbusPath, dbusInterface, QStringLiteral("unlock"), this, SLOT(slotUnlock()));
++#endif
+ }
+
+ FileUndoManager::FileUndoManager()
+@@ -632,10 +638,12 @@ void FileUndoManagerPrivate::stepRemovingDirectories()
+             m_undoJob->emitResult();
+             m_undoJob = nullptr;
+         }
++#ifdef QT_DBUS_LIB
+         for (const QUrl &url : std::as_const(m_dirsToUpdate)) {
+             // qDebug() << "Notifying FilesAdded for " << url;
+             org::kde::KDirNotify::emitFilesAdded(url);
+         }
++#endif
+         Q_EMIT q->undoJobFinished();
+         slotUnlock();
+     }
+diff --git a/src/widgets/kpropertiesdialog.cpp b/src/widgets/kpropertiesdialog.cpp
+index 759243596..95f638228 100644
+--- a/src/widgets/kpropertiesdialog.cpp
++++ b/src/widgets/kpropertiesdialog.cpp
+@@ -92,9 +92,11 @@
+ #include <QCheckBox>
+ #include <QClipboard>
+ #include <QComboBox>
++#ifdef QT_DBUS_LIB
+ #include <QDBusConnection>
+ #include <QDBusInterface>
+ #include <QDBusReply>
++#endif
+ #include <QDebug>
+ #include <QDialogButtonBox>
+ #include <QDir>
+@@ -1698,7 +1700,9 @@ void KFilePropsPlugin::postApplyChanges()
+
+     const KFileItemList items = properties->items();
+     const QList<QUrl> lst = items.urlList();
++#ifdef QT_DBUS_LIB
+     org::kde::KDirNotify::emitFilesChanged(QList<QUrl>(lst));
++#endif
+ }
+
+ class KFilePermissionsPropsPlugin::KFilePermissionsPropsPluginPrivate
+@@ -3319,6 +3323,7 @@ KDesktopPropsPlugin::KDesktopPropsPlugin(KPropertiesDialog *_props)
+     if (s_gpuCheck == NotChecked) {
+         // Check whether we have a discrete gpu
+         bool hasDiscreteGpu = false;
++#ifdef QT_DBUS_LIB
+         QDBusInterface iface(QStringLiteral("org.kde.Solid.PowerManagement"),
+                              QStringLiteral("/org/kde/Solid/PowerManagement"),
+                              QStringLiteral("org.kde.Solid.PowerManagement"),
+@@ -3329,6 +3334,7 @@ KDesktopPropsPlugin::KDesktopPropsPlugin(KPropertiesDialog *_props)
+                 hasDiscreteGpu = reply.value();
+             }
+         }
++#endif
+
+         s_gpuCheck = hasDiscreteGpu ? Present : Absent;
+     }
+diff --git a/src/widgets/paste.cpp b/src/widgets/paste.cpp
+index 96babbbd0..bc2ce421d 100644
+--- a/src/widgets/paste.cpp
++++ b/src/widgets/paste.cpp
+@@ -113,11 +113,13 @@ static QUrl getNewFileName(const QUrl &u, const QString &text, const QString &su
+ static KIO::Job *putDataAsyncTo(const QUrl &url, const QByteArray &data, QWidget *widget, KIO::JobFlags flags)
+ {
+     KIO::Job *job = KIO::storedPut(data, url, -1, flags);
++#ifdef QT_DBUS_LIB
+     QObject::connect(job, &KIO::Job::result, [url](KJob *job) {
+         if (job->error() == KJob::NoError) {
+             org::kde::KDirNotify::emitFilesAdded(url.adjusted(QUrl::RemoveFilename | QUrl::StripTrailingSlash));
+         }
+     });
++#endif
+     KJobWidgets::setWindow(job, widget);
+     return job;
+ }
+--
+2.40.1

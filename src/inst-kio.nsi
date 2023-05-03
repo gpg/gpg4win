@@ -30,4 +30,6 @@ Section "-kio" SEC_kio
   File ${prefix}/bin/libKF5KIOGui.dll
   File ${prefix}/bin/libKF5KIOCore.dll
   File ${prefix}/bin/libKF5KIOWidgets.dll
+  SetOutPath "$INSTDIR\bin\plugins\kf5\kio"
+  File ${prefix}/lib/plugins/kf5/kio/kio_file.dll
 SectionEnd
