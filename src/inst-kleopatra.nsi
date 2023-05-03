@@ -221,7 +221,7 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
   WriteRegStr SHCTX "Software\Classes\P7SFile\DefaultIcon" "" "$INSTDIR\share\gpg4win\file-ext.ico"
 
   # .gpg
-  WriteRegExpandStr SHCTX "Software\Classes\gpg4win.AssocFile.Kleopatra.GPG\shell\open\command" "" "$\"$INSTDIR\bin\Kleopatra.exe$\" $\"%1$\""
+  WriteRegExpandStr SHCTX "Software\Classes\gpg4win.AssocFile.Kleopatra.GPG\shell\open\command" "" "$\"$INSTDIR\bin\Kleopatra.exe$\" -- $\"%1$\""
   WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.Kleopatra.GPG" "" "$(T_File_Type_gpg_Name)"
   WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.Kleopatra.GPG" "FriendlyTypeName" "$(T_File_Type_gpg_Name)"
   WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.Kleopatra.GPG" "PercievedType" "Document"
@@ -232,7 +232,7 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
   WriteRegBin SHCTX "Software\Classes\.gpg\OpenWithProgIDs" "gpg4win.AssocFile.Kleopatra.GPG" 0
 
   # .asc
-  WriteRegExpandStr SHCTX "Software\Classes\gpg4win.AssocFile.Kleopatra.ASC\shell\open\command" "" "$\"$INSTDIR\bin\Kleopatra.exe$\" $\"%1$\""
+  WriteRegExpandStr SHCTX "Software\Classes\gpg4win.AssocFile.Kleopatra.ASC\shell\open\command" "" "$\"$INSTDIR\bin\Kleopatra.exe$\" -- $\"%1$\""
   WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.Kleopatra.ASC" "" "$(T_File_Type_asc_Name)"
   WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.Kleopatra.ASC" "FriendlyTypeName" "$(T_File_Type_asc_Name)"
   WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.Kleopatra.ASC" "PercievedType" "Document"
@@ -245,7 +245,7 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
   WriteRegBin SHCTX "Software\Classes\.pgp\OpenWithProgIDs" "gpg4win.AssocFile.Kleopatra.GPG" 0
 
   # .sig
-  WriteRegExpandStr SHCTX "Software\Classes\gpg4win.AssocFile.Kleopatra.PGPSIG\shell\open\command" "" "$\"$INSTDIR\bin\Kleopatra.exe$\" $\"%1$\""
+  WriteRegExpandStr SHCTX "Software\Classes\gpg4win.AssocFile.Kleopatra.PGPSIG\shell\open\command" "" "$\"$INSTDIR\bin\Kleopatra.exe$\" -- $\"%1$\""
   WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.Kleopatra.PGPSIG" "" "$(T_File_Type_sig_Name)"
   WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.Kleopatra.PGPSIG" "FriendlyTypeName" "$(T_File_Type_sig_Name)"
   WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.Kleopatra.PGPSIG" "PercievedType" "Document"
@@ -256,7 +256,7 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
   WriteRegBin SHCTX "Software\Classes\.sig\OpenWithProgIDs" "gpg4win.AssocFile.Kleopatra.PGPSIG" 0
 
   # OpenPGP Key to be used in mime registry
-  WriteRegExpandStr SHCTX "Software\Classes\gpg4win.AssocFile.Kleopatra.PGPKEY\shell\open\command" "" "$\"$INSTDIR\bin\Kleopatra.exe$\" $\"%1$\""
+  WriteRegExpandStr SHCTX "Software\Classes\gpg4win.AssocFile.Kleopatra.PGPKEY\shell\open\command" "" "$\"$INSTDIR\bin\Kleopatra.exe$\" -- $\"%1$\""
   WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.Kleopatra.PGPKEY" "" "$(T_File_Type_pgp_key_Name)"
   WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.Kleopatra.PGPKEY" "FriendlyTypeName" "$(T_File_Type_pgp_key_Name)"
   WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.Kleopatra.PGPKEY" "PercievedType" "Document"
@@ -265,7 +265,7 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
   WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.Kleopatra.PGPKEY\DefaultIcon" "" "$INSTDIR\share\gpg4win\file-ext.ico"
 
   # CMS
-  WriteRegExpandStr SHCTX "Software\Classes\gpg4win.AssocFile.Kleopatra.CMS\shell\open\command" "" "$\"$INSTDIR\bin\Kleopatra.exe$\" $\"%1$\""
+  WriteRegExpandStr SHCTX "Software\Classes\gpg4win.AssocFile.Kleopatra.CMS\shell\open\command" "" "$\"$INSTDIR\bin\Kleopatra.exe$\" -- $\"%1$\""
   WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.Kleopatra.CMS" "" "$(T_File_Type_pem_Name)"
   WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.Kleopatra.CMS" "FriendlyTypeName" "$(T_File_Type_pem_Name)"
   WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.Kleopatra.CMS" "PercievedType" "Document"
@@ -277,10 +277,9 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
   WriteRegBin SHCTX "Software\Classes\.p7m\OpenWithProgIDs" "gpg4win.AssocFile.Kleopatra.CMS" 0
   WriteRegBin SHCTX "Software\Classes\.crl\OpenWithProgIDs" "gpg4win.AssocFile.Kleopatra.CMS" 0
   WriteRegBin SHCTX "Software\Classes\.pem\OpenWithProgIDs" "gpg4win.AssocFile.Kleopatra.CMS" 0
-  WriteRegBin SHCTX "Software\Classes\.arl\OpenWithProgIDs" "gpg4win.AssocFile.Kleopatra.CMS" 0
 
   # X509 Certificates
-  WriteRegExpandStr SHCTX "Software\Classes\gpg4win.AssocFile.Kleopatra.X509\shell\open\command" "" "$\"$INSTDIR\bin\Kleopatra.exe$\" $\"%1$\""
+  WriteRegExpandStr SHCTX "Software\Classes\gpg4win.AssocFile.Kleopatra.X509\shell\open\command" "" "$\"$INSTDIR\bin\Kleopatra.exe$\" -- $\"%1$\""
   WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.Kleopatra.X509" "FriendlyTypeName" "$(T_File_Type_x509_Name)"
   WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.Kleopatra.X509" "PercievedType" "Document"
   WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.Kleopatra.X509" "InfoTip" "$(T_File_Type_x509_info_tip)"
@@ -296,7 +295,7 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
   WriteRegStr SHCTX "Software\Gpg4win\Kleopatra" "" "Kleopatra"
 
   # .kgrp
-  WriteRegExpandStr SHCTX "Software\Classes\gpg4win.AssocFile.Kleopatra.KGRP\shell\open\command" "" "$\"$INSTDIR\bin\Kleopatra.exe$\" $\"%1$\""
+  WriteRegExpandStr SHCTX "Software\Classes\gpg4win.AssocFile.Kleopatra.KGRP\shell\open\command" "" "$\"$INSTDIR\bin\Kleopatra.exe$\" -- $\"%1$\""
   WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.Kleopatra.KGRP" "" "$(T_File_Type_kgrp_Name)"
   WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.Kleopatra.KGRP" "FriendlyTypeName" "$(T_File_Type_kgrp_Name)"
   WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.Kleopatra.KGRP" "PercievedType" "Document"
@@ -318,14 +317,13 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
   WriteRegStr SHCTX "Software\Gpg4win\Kleopatra\Capabilities\FileAssociations" ".crt" "gpg4win.AssocFile.Kleopatra.X509"
   WriteRegStr SHCTX "Software\Gpg4win\Kleopatra\Capabilities\FileAssociations" ".der" "gpg4win.AssocFile.Kleopatra.X509"
   WriteRegStr SHCTX "Software\Gpg4win\Kleopatra\Capabilities\FileAssociations" ".sig" "gpg4win.AssocFile.Kleopatra.PGPSIG"
-  WriteRegStr SHCTX "Software\Gpg4win\Kleopatra\Capabilities\FileAssociations" ".arl" "gpg4win.AssocFile.Kleopatra.CMS"
   WriteRegStr SHCTX "Software\Gpg4win\Kleopatra\Capabilities\FileAssociations" ".crl" "gpg4win.AssocFile.Kleopatra.CMS"
   WriteRegStr SHCTX "Software\Gpg4win\Kleopatra\Capabilities\FileAssociations" ".p7m" "gpg4win.AssocFile.Kleopatra.CMS"
   WriteRegStr SHCTX "Software\Gpg4win\Kleopatra\Capabilities\FileAssociations" ".p7s" "gpg4win.AssocFile.Kleopatra.CMS"
   WriteRegStr SHCTX "Software\Gpg4win\Kleopatra\Capabilities\FileAssociations" ".pem" "gpg4win.AssocFile.Kleopatra.CMS"
   WriteRegStr SHCTX "Software\Gpg4win\Kleopatra\Capabilities\FileAssociations" ".kgrp" "gpg4win.AssocFile.Kleopatra.KGRP"
 
-  WriteRegExpandStr SHCTX "Software\Gpg4win\Kleopatra\Capabilities\shell\open\command" "" "$\"$INSTDIR\bin\Kleopatra.exe$\" $\"%1$\""
+  WriteRegExpandStr SHCTX "Software\Gpg4win\Kleopatra\Capabilities\shell\open\command" "" "$\"$INSTDIR\bin\Kleopatra.exe$\" -- $\"%1$\""
 
   # Mime extensions For PGP this is probably pretty useless
   WriteRegStr SHCTX "Software\Gpg4win\Kleopatra\Capabilities\MimeAssociations" "application/pgp" "gpg4win.AssocFile.Kleopatra.GPG"
