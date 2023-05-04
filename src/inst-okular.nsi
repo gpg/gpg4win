@@ -63,6 +63,51 @@ ${MementoUnselectedSection} "Okular (experimental)" SEC_okular
 
   File ${prefix}/share/icons/hicolor/64x64/apps/okular.png
 
+  SetOutPath "$INSTDIR\share\kxmlgui5\okular"
+  File ${prefix}/share/kxmlgui5/okular/part.rc
+  File ${prefix}/share/kxmlgui5/okular/part-viewermode.rc
+  File ${prefix}/share/kxmlgui5/okular/shell.rc
+
+  SetOutPath "$INSTDIR\share\okular"
+  File ${prefix}/share/okular/drawingtools.xml
+  File ${prefix}/share/okular/toolsQuick.xml
+  File ${prefix}/share/okular/tools.xml
+
+  SetOutPath "$INSTDIR\share\okular\pics"
+  File ${prefix}/share/okular/pics/checkmark.png
+  File ${prefix}/share/okular/pics/circle.png
+  File ${prefix}/share/okular/pics/comment.png
+  File ${prefix}/share/okular/pics/cross.png
+  File ${prefix}/share/okular/pics/help.png
+  File ${prefix}/share/okular/pics/insert.png
+  File ${prefix}/share/okular/pics/key.png
+  File ${prefix}/share/okular/pics/newparagraph.png
+  File ${prefix}/share/okular/pics/note.png
+  File ${prefix}/share/okular/pics/paperclip.png
+  File ${prefix}/share/okular/pics/paragraph.png
+  File ${prefix}/share/okular/pics/pushpin.png
+  File ${prefix}/share/okular/pics/rightarrow.png
+  File ${prefix}/share/okular/pics/rightpointer.png
+  File ${prefix}/share/okular/pics/stamps.svg
+  File ${prefix}/share/okular/pics/star.png
+  File ${prefix}/share/okular/pics/tool-base-okular@2x.png
+  File ${prefix}/share/okular/pics/tool-base-okular.png
+  File ${prefix}/share/okular/pics/tool-highlighter-okular-colorizable@2x.png
+  File ${prefix}/share/okular/pics/tool-highlighter-okular-colorizable.png
+  File ${prefix}/share/okular/pics/tool-ink-okular-colorizable@2x.png
+  File ${prefix}/share/okular/pics/tool-ink-okular-colorizable.png
+  File ${prefix}/share/okular/pics/tool-note-inline-okular-colorizable@2x.png
+  File ${prefix}/share/okular/pics/tool-note-inline-okular-colorizable.png
+  File ${prefix}/share/okular/pics/tool-note-inline.png
+  File ${prefix}/share/okular/pics/tool-note-okular-colorizable@2x.png
+  File ${prefix}/share/okular/pics/tool-note-okular-colorizable.png
+  File ${prefix}/share/okular/pics/tool-note.png
+  File ${prefix}/share/okular/pics/tool-typewriter-okular-colorizable@2x.png
+  File ${prefix}/share/okular/pics/tool-typewriter-okular-colorizable.png
+  File ${prefix}/share/okular/pics/uparrow.png
+  File ${prefix}/share/okular/pics/upleftarrow.png
+
+
   WriteRegStr SHCTX "Software\RegisteredApplications" "Gpg4win.Okular" "SOFTWARE\Gpg4win\Okular\Capabilities"
   WriteRegStr SHCTX "Software\Gpg4win\Okular" "" "Okular"
   WriteRegStr SHCTX "Software\Gpg4win\Okular\Capabilities\FileAssociations" ".pdf" "gpg4win.AssocFile.Okular.PDF"
@@ -74,7 +119,7 @@ ${MementoUnselectedSection} "Okular (experimental)" SEC_okular
   WriteRegExpandStr SHCTX "Software\Classes\gpg4win.AssocFile.Okular.PDF\shell\open\command" "" "$\"$INSTDIR\bin\Okular.exe$\" -- $\"%1$\""
   WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.Okular.PDF\CurVer" "" "${VERSION}"
   # TODO need to generate a icon from application-pdf
-  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.Okular.PDF\DefaultIcon" "" "$INSTDIR\share\gpg4win\file-ext.ico"
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.Okular.PDF\DefaultIcon" "" "$INSTDIR\bin\okular.exe,0"
 
 ${MementoSectionEnd}
 
