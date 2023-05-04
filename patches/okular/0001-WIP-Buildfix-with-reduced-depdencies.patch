@@ -2,15 +2,12 @@
 patch -p1 -l -f $* < $0
 exit $?
 
-From 5f06785155c2878fea6ba43db2eb9ef9c74a5197 Mon Sep 17 00:00:00 2001
+From a3eec4564cf4f65391af8010d5e48a80094065ea Mon Sep 17 00:00:00 2001
 From: Andre Heinecke <aheinecke@gnupg.org>
-Date: Tue, 25 Apr 2023 16:06:44 +0200
+Date: Thu, 4 May 2023 14:07:02 +0200
 Subject: [PATCH] WIP: Buildfix with reduced depdencies
 
 This needs to be split up and cleaned up.
-Easy ones:
-Qt QML and Qt Quick
-
 KTextWidgets should only remove the spellchecking and some
 undo behavior in Text annotations
 
@@ -25,14 +22,14 @@ of KUniqueService for the same functionality.
 The CMake version requirement is just to allow compiling on debian
 stable.
 ---
- CMakeLists.txt                   | 53 +++++++++++++++++++++++++-------
+ CMakeLists.txt                   | 52 +++++++++++++++++++++++++-------
  core/document.cpp                | 13 ++++++++
  part/annotwindow.cpp             |  9 ++++++
  part/annotwindow.h               |  4 +++
  part/dlgpresentation.cpp         | 11 +++++++
  part/formwidgets.cpp             |  4 ++-
  part/formwidgets.h               |  5 +++
- part/pageview.cpp                | 22 +++++++++++--
+ part/pageview.cpp                | 22 ++++++++++++--
  part/pageviewmouseannotation.cpp |  5 ++-
  part/pageviewutils.cpp           |  6 ++++
  part/part.cpp                    | 16 ++++++++++
@@ -44,10 +41,10 @@ stable.
  shell/shell.cpp                  |  9 +++++-
  shell/shell.h                    |  6 +++-
  shell/welcomescreen.cpp          |  9 ++++++
- 19 files changed, 207 insertions(+), 26 deletions(-)
+ 19 files changed, 206 insertions(+), 26 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 009924862..4f007bcf3 100644
+index 47c8832e1..69f1a0a85 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -1,4 +1,4 @@
@@ -56,15 +53,6 @@ index 009924862..4f007bcf3 100644
 
  # KDE Application Version, managed by release script
  set (RELEASE_SERVICE_VERSION_MAJOR "23")
-@@ -102,7 +102,7 @@ ecm_setup_version(${PROJECT_VERSION}
-                   VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/core/version.h"
-                   PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/Okular5ConfigVersion.cmake")
-
--find_package(Qt5 ${QT_REQUIRED_VERSION} CONFIG REQUIRED COMPONENTS Core Test Widgets PrintSupport Svg Qml Quick)
-+find_package(Qt5 ${QT_REQUIRED_VERSION} CONFIG REQUIRED COMPONENTS Core Test Widgets PrintSupport Svg)
-
- if(ANDROID)
-     find_package(Qt5 ${QT_REQUIRED_VERSION} CONFIG REQUIRED COMPONENTS AndroidExtras)
 @@ -147,8 +147,16 @@ if(KF5JS_FOUND)
  endif()
 
@@ -84,15 +72,7 @@ index 009924862..4f007bcf3 100644
 
      find_package(KF5Purpose)
      set_okular_optional_package_properties(KF5Purpose PROPERTIES
-@@ -169,6 +177,7 @@ if (BUILD_DESKTOP)
- endif()
-
- if (BUILD_MOBILE)
-+    find_package(Qt5 ${QT_REQUIRED_VERSION} CONFIG REQUIRED COMPONENTS Qml Quick)
-     find_package(KF5Kirigami2)
-     set_package_properties(KF5Kirigami2 PROPERTIES
-         DESCRIPTION "A QtQuick based components set"
-@@ -191,7 +200,14 @@ if(NOT WIN32 AND NOT ANDROID AND NOT APPLE)
+@@ -192,7 +200,14 @@ if(NOT WIN32 AND NOT ANDROID AND NOT APPLE)
  else()
      set(HAVE_X11 FALSE)
  endif()
@@ -108,7 +88,7 @@ index 009924862..4f007bcf3 100644
 
  set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_SOURCE_DIR}/cmake/modules)
 
-@@ -315,11 +331,16 @@ endif(NOT WIN32)
+@@ -316,11 +331,16 @@ endif(NOT WIN32)
 
  # okularcore
 
@@ -126,7 +106,7 @@ index 009924862..4f007bcf3 100644
     core/bookmarkmanager.cpp
     core/chooseenginedialog.cpp
     core/document.cpp
-@@ -352,7 +373,9 @@ set(okularcore_SRCS
+@@ -353,7 +373,9 @@ set(okularcore_SRCS
     core/script/event.cpp
     core/synctex/synctex_parser.c
     core/synctex/synctex_parser_utils.c
@@ -136,7 +116,7 @@ index 009924862..4f007bcf3 100644
  qt5_add_resources(okularcore_SRCS
     core/script/builtin.qrc
  )
-@@ -435,7 +458,7 @@ PRIVATE
+@@ -436,7 +458,7 @@ PRIVATE
      KF5::I18n
      KF5::ThreadWeaver
      KF5::Bookmarks
@@ -145,7 +125,7 @@ index 009924862..4f007bcf3 100644
      Qt5::Svg
      ${MATH_LIB}
      ZLIB::ZLIB
-@@ -479,6 +502,13 @@ install(FILES conf/okular.kcfg DESTINATION ${KDE_INSTALL_KCFGDIR})
+@@ -480,6 +502,13 @@ install(FILES conf/okular.kcfg DESTINATION ${KDE_INSTALL_KCFGDIR})
  install(FILES conf/okular_core.kcfg DESTINATION ${KDE_INSTALL_KCFGDIR})
  install(FILES core/okularGenerator.desktop DESTINATION ${KDE_INSTALL_KSERVICETYPES5DIR})
 
@@ -159,7 +139,7 @@ index 009924862..4f007bcf3 100644
  if(BUILD_DESKTOP)
    # okularpart
    set(okularpart_SRCS
-@@ -541,15 +571,14 @@ if(BUILD_DESKTOP)
+@@ -542,15 +571,14 @@ if(BUILD_DESKTOP)
      part/searchwidget.cpp
      part/sidebar.cpp
      part/side_reviews.cpp
@@ -174,9 +154,9 @@ index 009924862..4f007bcf3 100644
      part/signaturepanel.cpp
 +    ${additional_phonon_SRCS}
    )
+   ki18n_wrap_ui(okularpart_SRCS part/selectcertificatedialog.ui)
 
- if (Qt5TextToSpeech_FOUND)
-@@ -565,21 +594,23 @@ generate_export_header(okularpart BASE_NAME okularpart)
+@@ -567,21 +595,23 @@ generate_export_header(okularpart BASE_NAME okularpart)
  target_link_libraries(okularpart okularcore
      ${MATH_LIB}
      Qt5::Svg
@@ -204,7 +184,7 @@ index 009924862..4f007bcf3 100644
      target_link_libraries(okularpart KF5::Wallet)
  endif()
 diff --git a/core/document.cpp b/core/document.cpp
-index 234243480..d996a40f0 100644
+index b1b6c94d3..cd6a5f066 100644
 --- a/core/document.cpp
 +++ b/core/document.cpp
 @@ -70,8 +70,10 @@
@@ -404,7 +384,7 @@ index ea0d2fef8..e59276593 100644
  #include <QCheckBox>
  #include <QComboBox>
 diff --git a/part/pageview.cpp b/part/pageview.cpp
-index 8e0206ef1..20119da5e 100644
+index 3872dd29f..0bf051981 100644
 --- a/part/pageview.cpp
 +++ b/part/pageview.cpp
 @@ -83,12 +83,14 @@
@@ -423,7 +403,7 @@ index 8e0206ef1..20119da5e 100644
  #include "core/page.h"
  #include "core/page_p.h"
  #include "core/sourcereference.h"
-@@ -1128,6 +1130,7 @@ void PageView::selectAll()
+@@ -1138,6 +1140,7 @@ void PageView::selectAll()
 
  void PageView::createAnnotationsVideoWidgets(PageViewItem *item, const QList<Okular::Annotation *> &annotations)
  {
@@ -431,7 +411,7 @@ index 8e0206ef1..20119da5e 100644
      qDeleteAll(item->videoWidgets());
      item->videoWidgets().clear();
 
-@@ -1152,6 +1155,7 @@ void PageView::createAnnotationsVideoWidgets(PageViewItem *item, const QList<Oku
+@@ -1162,6 +1165,7 @@ void PageView::createAnnotationsVideoWidgets(PageViewItem *item, const QList<Oku
              }
          }
      }
@@ -439,7 +419,7 @@ index 8e0206ef1..20119da5e 100644
  }
 
  // BEGIN DocumentObserver inherited methods
-@@ -1206,6 +1210,7 @@ void PageView::notifySetup(const QVector<Okular::Page *> &pageSet, int setupFlag
+@@ -1216,6 +1220,7 @@ void PageView::notifySetup(const QVector<Okular::Page *> &pageSet, int setupFlag
 
                      // For the video widgets we don't really care about reusing them since they don't contain much info so just
                      // create them again
@@ -447,7 +427,7 @@ index 8e0206ef1..20119da5e 100644
                      createAnnotationsVideoWidgets(item, pageSet[i]->annotations());
                      const QHash<Okular::Movie *, VideoWidget *> videoWidgets = item->videoWidgets();
                      for (VideoWidget *vw : videoWidgets) {
-@@ -1219,6 +1224,7 @@ void PageView::notifySetup(const QVector<Okular::Page *> &pageSet, int setupFlag
+@@ -1229,6 +1234,7 @@ void PageView::notifySetup(const QVector<Okular::Page *> &pageSet, int setupFlag
                          vw->show();
                          vw->hide();
                      }
@@ -455,7 +435,7 @@ index 8e0206ef1..20119da5e 100644
                  }
              }
 
-@@ -1576,12 +1582,14 @@ void PageView::notifyCurrentPageChanged(int previous, int current)
+@@ -1586,12 +1592,14 @@ void PageView::notifyCurrentPageChanged(int previous, int current)
  {
      if (previous != -1) {
          PageViewItem *item = d->items.at(previous);
@@ -470,7 +450,7 @@ index 8e0206ef1..20119da5e 100644
 
          // On close, run the widget scripts, needed for running animated PDF
          const Okular::Page *page = d->document->page(previous);
-@@ -1596,12 +1604,14 @@ void PageView::notifyCurrentPageChanged(int previous, int current)
+@@ -1606,12 +1614,14 @@ void PageView::notifyCurrentPageChanged(int previous, int current)
 
      if (current != -1) {
          PageViewItem *item = d->items.at(current);
@@ -485,7 +465,7 @@ index 8e0206ef1..20119da5e 100644
 
          // update zoom text and factor if in a ZoomFit/* zoom mode
          if (d->zoomMode != ZoomFixed) {
-@@ -4360,6 +4370,7 @@ QMenu *PageView::createProcessLinkMenu(PageViewItem *item, const QPoint eventPos
+@@ -4370,6 +4380,7 @@ QMenu *PageView::createProcessLinkMenu(PageViewItem *item, const QPoint eventPos
          // creating the menu and its actions
          QAction *processLink = menu->addAction(i18n("Follow This Link"));
          processLink->setObjectName(QStringLiteral("ProcessLinkAction"));
@@ -493,7 +473,7 @@ index 8e0206ef1..20119da5e 100644
          if (link->actionType() == Okular::Action::Sound) {
              processLink->setText(i18n("Play this Sound"));
              if (Okular::AudioPlayer::instance()->state() == Okular::AudioPlayer::PlayingState) {
-@@ -4367,6 +4378,7 @@ QMenu *PageView::createProcessLinkMenu(PageViewItem *item, const QPoint eventPos
+@@ -4377,6 +4388,7 @@ QMenu *PageView::createProcessLinkMenu(PageViewItem *item, const QPoint eventPos
                  connect(actStopSound, &QAction::triggered, []() { Okular::AudioPlayer::instance()->stopPlaybacks(); });
              }
          }
@@ -501,7 +481,7 @@ index 8e0206ef1..20119da5e 100644
 
          if (dynamic_cast<const Okular::BrowseAction *>(link)) {
              QAction *actCopyLinkLocation = menu->addAction(QIcon::fromTheme(QStringLiteral("edit-copy")), i18n("Copy Link Address"));
-@@ -4667,6 +4679,8 @@ void PageView::slotRequestVisiblePixmaps(int newValue)
+@@ -4677,6 +4689,8 @@ void PageView::slotRequestVisiblePixmaps(int newValue)
              Okular::NormalizedRect r = fwi->rect();
              fwi->moveTo(qRound(i->uncroppedGeometry().left() + i->uncroppedWidth() * r.left) + 1 - viewportRect.left(), qRound(i->uncroppedGeometry().top() + i->uncroppedHeight() * r.top) + 1 - viewportRect.top());
          }
@@ -510,7 +490,7 @@ index 8e0206ef1..20119da5e 100644
          const QHash<Okular::Movie *, VideoWidget *> videoWidgets = i->videoWidgets();
          for (VideoWidget *vw : videoWidgets) {
              const Okular::NormalizedRect r = vw->normGeometry();
-@@ -4677,7 +4691,7 @@ void PageView::slotRequestVisiblePixmaps(int newValue)
+@@ -4687,7 +4701,7 @@ void PageView::slotRequestVisiblePixmaps(int newValue)
                  vw->pageLeft();
              }
          }
@@ -519,7 +499,7 @@ index 8e0206ef1..20119da5e 100644
          if (!i->isVisible()) {
              continue;
          }
-@@ -5307,6 +5321,7 @@ void PageView::externalKeyPressEvent(QKeyEvent *e)
+@@ -5317,6 +5331,7 @@ void PageView::externalKeyPressEvent(QKeyEvent *e)
 
  void PageView::slotProcessMovieAction(const Okular::MovieAction *action)
  {
@@ -527,7 +507,7 @@ index 8e0206ef1..20119da5e 100644
      const Okular::MovieAnnotation *movieAnnotation = action->annotation();
      if (!movieAnnotation) {
          return;
-@@ -5346,10 +5361,12 @@ void PageView::slotProcessMovieAction(const Okular::MovieAction *action)
+@@ -5356,10 +5371,12 @@ void PageView::slotProcessMovieAction(const Okular::MovieAction *action)
          vw->play();
          break;
      };
@@ -540,7 +520,7 @@ index 8e0206ef1..20119da5e 100644
      Okular::Movie *movie = action->movie();
      if (!movie) {
          return;
-@@ -5390,6 +5407,7 @@ void PageView::slotProcessRenditionAction(const Okular::RenditionAction *action)
+@@ -5400,6 +5417,7 @@ void PageView::slotProcessRenditionAction(const Okular::RenditionAction *action)
      default:
          return;
      };
@@ -611,7 +591,7 @@ index 3da2fb52c..d42e74cfd 100644
 
  void PageViewItem::setVisible(bool visible)
 diff --git a/part/part.cpp b/part/part.cpp
-index c6301fd73..493c4b8f7 100644
+index d5a620947..652da35cd 100644
 --- a/part/part.cpp
 +++ b/part/part.cpp
 @@ -34,10 +34,13 @@
@@ -666,7 +646,7 @@ index c6301fd73..493c4b8f7 100644
 
      m_document->removeObserver(this);
 
-@@ -3848,7 +3860,11 @@ void Part::setEditorCmd(const QString &editorCmd)
+@@ -3871,7 +3883,11 @@ void Part::setEditorCmd(const QString &editorCmd)
 
  void Part::slotOpenContainingFolder()
  {
@@ -991,7 +971,7 @@ index c23f46356..78ed04936 100644
      return true;
  }
 diff --git a/shell/shell.cpp b/shell/shell.cpp
-index 3685f6116..f72429caf 100644
+index 970dafb82..cbf68d419 100644
 --- a/shell/shell.cpp
 +++ b/shell/shell.cpp
 @@ -36,11 +36,15 @@
@@ -1085,4 +1065,4 @@ index 128abd7a2..ead12eb7c 100644
                  });
                  menu.addAction(showDirectoryAction);
 --
-2.40.0
+2.40.1

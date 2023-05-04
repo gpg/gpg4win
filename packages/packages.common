@@ -509,15 +509,15 @@ chk 8b78bc7d5487db5ae6fa1addc9756f24922a9af8386210f453c015e3f0e30eab
 
 # Okular and dependencies
 # poppler
-# last changed: 2023-04-25
+# last changed: 2023-05-04
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file poppler/poppler-202304252208.tar.xz
-chk 541728005bd468f402be00da3e1949c8181112eb78015257e51c55d1e3de5b34
+file poppler/poppler-202305041410.tar.xz
+chk ba2e334f1f1a7285a5b4af6280094f0664ff2348f3c041f77bd3e721e472a131
 
 # okular
-# last changed: 2023-04-25
+# last changed: 2023-05-04
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file okular/okular-202304252324.tar.xz
-chk dca8ecab53724d3b293da02254df2d73d3115beb9890edc545ebaeea99d815d3
+file okular/okular-202305041409.tar.xz
+chk 1bc74f8b35cc5fae5937eeda387742249fab878ec06c2e573e00efe0f90c7339
