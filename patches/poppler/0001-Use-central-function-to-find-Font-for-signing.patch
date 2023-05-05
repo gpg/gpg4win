@@ -1,0 +1,124 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From 0906a739394a19eeb038a5ce859ab387f1cafbe1 Mon Sep 17 00:00:00 2001
+From: Andre Heinecke <aheinecke@gnupg.org>
+Date: Fri, 5 May 2023 15:09:00 +0200
+Subject: [PATCH] Use central function to find Font for signing
+
+To find / add a font for the signature annotation should
+be done in a central place. Form seems reasonable as it needs
+to be available before the Form is specialized into a signature
+form.
+
+This fixes a crash on Windows where Helvetica is not available.
+The list of reasonable fonts should probably be extended.
+---
+ poppler/Form.cc   | 24 ++++++++++++++++++++++--
+ poppler/Form.h    |  4 ++++
+ poppler/PDFDoc.cc | 24 +-----------------------
+ 3 files changed, 27 insertions(+), 25 deletions(-)
+
+diff --git a/poppler/Form.cc b/poppler/Form.cc
+index a56ae048..1a36af50 100644
+--- a/poppler/Form.cc
++++ b/poppler/Form.cc
+@@ -702,9 +702,9 @@ bool FormWidgetSignature::signDocumentWithAppearance(const std::string &saveFile
+     std::string originalDefaultAppearance = aux ? aux->toStr() : std::string();
+
+     Form *form = doc->getCatalog()->getCreateForm();
+-    std::string pdfFontName = form->findFontInDefaultResources("Helvetica", "");
++    const std::string pdfFontName = form->findPdfFontNameToUseForSigning();
+     if (pdfFontName.empty()) {
+-        pdfFontName = form->addFontToDefaultResources("Helvetica", "").fontName;
++        return false;
+     }
+
+     const DefaultAppearance da { { objName, pdfFontName.c_str() }, fontSize, std::move(fontColor) };
+@@ -3099,6 +3099,26 @@ void Form::reset(const std::vector<std::string> &fields, bool excludeFields)
+     }
+ }
+
++std::string Form::findPdfFontNameToUseForSigning()
++{
++    static constexpr std::array<const char *, 2> fontsToUseToSign = { "Helvetica", "Arial" };
++    for (const char *fontToUseToSign : fontsToUseToSign) {
++        std::string pdfFontName = findFontInDefaultResources(fontToUseToSign, "");
++        if (!pdfFontName.empty()) {
++            return pdfFontName;
++        }
++
++        pdfFontName = addFontToDefaultResources(fontToUseToSign, "").fontName;
++        if (!pdfFontName.empty()) {
++            return pdfFontName;
++        }
++    }
++
++    error(errInternal, -1, "Form::findPdfFontNameToUseForSigning: No suitable font found'\n");
++
++    return {};
++}
++
+ //------------------------------------------------------------------------
+ // FormPageWidgets
+ //------------------------------------------------------------------------
+diff --git a/poppler/Form.h b/poppler/Form.h
+index 5ebdec0e..12d4c2ed 100644
+--- a/poppler/Form.h
++++ b/poppler/Form.h
+@@ -685,6 +685,10 @@ public:
+     // has the given fontFamily and fontStyle. This makes us relatively sure that we added that font ourselves
+     std::string findFontInDefaultResources(const std::string &fontFamily, const std::string &fontStyle) const;
+
++    // Finds in the default resources a font that is suitable to create a signature annotation.
++    // If none is found then it is added to the default resources.
++    std::string findPdfFontNameToUseForSigning();
++
+     struct AddFontResult
+     {
+         std::string fontName;
+diff --git a/poppler/PDFDoc.cc b/poppler/PDFDoc.cc
+index f1b9bfcb..665c1c66 100644
+--- a/poppler/PDFDoc.cc
++++ b/poppler/PDFDoc.cc
+@@ -2154,24 +2154,6 @@ bool PDFDoc::hasJavascript()
+     return jsInfo.containsJS();
+ }
+
+-static std::string findPdfFontNameToUseForSigning(Form *form)
+-{
+-    static constexpr std::array<const char *, 2> fontsToUseToSign = { "Helvetica", "Arial" };
+-    for (const char *fontToUseToSign : fontsToUseToSign) {
+-        std::string pdfFontName = form->findFontInDefaultResources(fontToUseToSign, "");
+-        if (!pdfFontName.empty()) {
+-            return pdfFontName;
+-        }
+-
+-        pdfFontName = form->addFontToDefaultResources(fontToUseToSign, "").fontName;
+-        if (!pdfFontName.empty()) {
+-            return pdfFontName;
+-        }
+-    }
+-
+-    return {};
+-}
+-
+ bool PDFDoc::sign(const std::string &saveFilename, const std::string &certNickname, const std::string &password, GooString *partialFieldName, int page, const PDFRectangle &rect, const GooString &signatureText,
+                   const GooString &signatureTextLeft, double fontSize, double leftFontSize, std::unique_ptr<AnnotColor> &&fontColor, double borderWidth, std::unique_ptr<AnnotColor> &&borderColor,
+                   std::unique_ptr<AnnotColor> &&backgroundColor, const GooString *reason, const GooString *location, const std::string &imagePath, const std::optional<GooString> &ownerPassword, const std::optional<GooString> &userPassword)
+@@ -2189,11 +2171,7 @@ bool PDFDoc::sign(const std::string &saveFilename, const std::string &certNickna
+     }
+
+     Form *form = catalog->getCreateForm();
+-    const std::string pdfFontName = findPdfFontNameToUseForSigning(form);
+-    if (pdfFontName.empty()) {
+-        return false;
+-    }
+-
++    const std::string pdfFontName = form->findPdfFontNameToUseForSigning();
+     const DefaultAppearance da { { objName, pdfFontName.c_str() }, fontSize, std::move(fontColor) };
+
+     Object annotObj = Object(new Dict(getXRef()));
+--
+2.40.1

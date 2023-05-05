@@ -66,6 +66,7 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
              patches/kservice/0001-Remove-unused-include.patch \
              patches/okular/0001-WIP-Buildfix-with-reduced-depdencies.patch \
              patches/poppler/0001-Explicitly-take-posix-variant-for-mingw-gcc-cross.patch \
+             patches/poppler/0001-Use-central-function-to-find-Font-for-signing.patch \
              patches/kparts/0001-Dirty-hack-to-remove-KTextWidgets.patch \
              patches/jpeg/fix-redefine.patch \
              patches-appimage/kconfigwidgets/0001-build-without-KF5Auth.patch \
