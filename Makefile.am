@@ -49,6 +49,7 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
              patches/kconfig/0001-Read-defaults-from-Windows-registry.patch \
              patches/kconfigwidgets/0001-Fix-crash-on-exit-on-Windows.patch \
              patches/kconfigwidgets/0001-Make-QDbus-optional.patch \
+             patches/kcoreaddons/0001-Add-KSharedDataCache-for-Windows.patch \
              patches/kiconthemes/0001-Make-DBus-optional.patch \
              patches/kleopatra/set-windows-registry.patch \
              patches/kxmlgui/0001-make-qdbus-optional.patch \
