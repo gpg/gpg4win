@@ -82,7 +82,8 @@ Section "-qttranslations" SEC_qttranslations
   File ${prefix}/qttranslations/qtmultimedia_sk.qm
   File ${prefix}/qttranslations/qtmultimedia_uk.qm
   File ${prefix}/qttranslations/qt_pl.qm
-  File ${prefix}/qttranslations/qt_pt.qm
+  File ${prefix}/qttranslations/qt_pt_PT.qm
+  File ${prefix}/qttranslations/qt_pt_BR.qm
   File ${prefix}/qttranslations/qt_ru.qm
   File ${prefix}/qttranslations/qtscript_ca.qm
   File ${prefix}/qttranslations/qtscript_cs.qm
