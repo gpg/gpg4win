@@ -360,6 +360,14 @@ msgctxt "DESC_Menu_kleopatra"
 msgid "Run the Kleopatra key management tool."
 msgstr "شغل أداة إدارة المفاتيح كليوباترا."
 
+msgctxt "DESC_SEC_okular"
+msgid "A PDF viewer to sign and verify pdf documents with GnuPG."
+msgstr ""
+
+msgctxt "DESC_Menu_okular"
+msgid "Run the Okular PDF viewer to sign and verify documents with GnuPG."
+msgstr ""
+
 msgctxt "T_File_Type_gpg_Name"
 msgid "OpenPGP Binary File"
 msgstr ""

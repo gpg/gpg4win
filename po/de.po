@@ -3,13 +3,13 @@
 # This file is distributed under the same license as the gpg4win package.
 #
 # Andre Heinecke <andre.heinecke@intevation.de>, 2018.
-# aheinecke <aheinecke@gnupg.org>, 2018, 2021.
+# aheinecke <aheinecke@gnupg.org>, 2018, 2021, 2023.
 # Heike Falk <hfalk@g10code.com>, 2019.
 msgid ""
 msgstr ""
 "Project-Id-Version: gpg4win 2.0\n"
 "Report-Msgid-Bugs-To: https://bugs.gnupg.org\n"
-"PO-Revision-Date: 2021-12-02 15:11+0100\n"
+"PO-Revision-Date: 2023-05-08 14:44+0200\n"
 "Last-Translator: aheinecke <aheinecke@gnupg.org>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 20.12.0\n"
+"X-Generator: Lokalize 22.11.70\n"
 
 msgctxt "T_AlreadyRunning"
 msgid "An instance of this installer is already running."
@@ -93,8 +93,7 @@ msgctxt "T_GPLHeader"
 msgid ""
 "This software is licensed under the terms of the GNU General Public License "
 "(GNU GPL)."
-msgstr ""
-"Diese Software ist unter der GNU General Public License (GPL) lizensiert."
+msgstr "Diese Software ist unter der GNU General Public License (GPL) lizensiert."
 
 msgctxt "T_GPLShort"
 msgid ""
@@ -150,8 +149,7 @@ msgstr "Bitte wählen Sie welche Verknüpfungen angelegt werden sollen:"
 
 msgctxt "T_InstOptLabelB"
 msgid "(Only programs will be linked into the quick launch bar.)"
-msgstr ""
-"(In der Schnellstartleiste werden nur Verknüpfungen für Programme angelegt.)"
+msgstr "(In der Schnellstartleiste werden nur Verknüpfungen für Programme angelegt.)"
 
 msgctxt "T_InstOptFieldA"
 msgid "Start Menu"
@@ -349,7 +347,6 @@ msgstr ""
 "\n"
 "Claws Mail aus Gpg4win jetzt deinstallieren?"
 
-#, fuzzy
 msgctxt "T_WinisDeprecated"
 msgid ""
 "Windows Versions before Windows 7 are no longer maintained by Gpg4win.\n"
@@ -362,7 +359,7 @@ msgstr ""
 "Unterstützung für diese Versionen kann in einer zukünftigen Version entfernt "
 "werden.\n"
 "\n"
-"Kleopatra ist deaktiviert."
+"Kleopatra und Okular sind deaktiviert."
 
 msgctxt "T_UPDATE_STR"
 msgid "Updating Version"
@@ -401,8 +398,7 @@ msgstr "Anleitung zur S/MIME-Konfiguration"
 
 msgctxt "DESC_Menu_gnupg_faq"
 msgid "Show the Frequently Asked Questions document for GnuPG"
-msgstr ""
-"Das Dokument mit den häufigst gestellten Fragen (FAQ) zu GnuPG anzeigen"
+msgstr "Das Dokument mit den häufigst gestellten Fragen (FAQ) zu GnuPG anzeigen"
 
 msgctxt "T_GpgEX_RegFailed"
 msgid "Warning: Registration of the GpgEX plugin failed."
@@ -427,15 +423,14 @@ msgstr ""
 "Benötigt Kleopatra oder GPA."
 
 msgctxt "DESC_SEC_gpgme_browser"
-msgid ""
-"Register GnuPG as native messaging service e.g. for the Mailvelope extension."
+msgid "Register GnuPG as native messaging service e.g. for the Mailvelope extension."
 msgstr ""
 "GnuPG als nativen messaging Dienst registrieren. Zum Beispiel für die "
 "Mailvelope Erweiterung."
 
 msgctxt "T_Sign_Encrypt"
 msgid "Sign/Encrypt"
-msgstr ""
+msgstr "Signieren/Verschlüsseln"
 
 msgctxt "DESC_SEC_kleopatra"
 msgid "Keymanager for OpenPGP and X.509 and common crypto dialogs."
@@ -446,6 +441,14 @@ msgstr ""
 msgctxt "DESC_Menu_kleopatra"
 msgid "Run the Kleopatra key management tool."
 msgstr "Den Zertifikatsmanager Kleopatra aufrufen."
+
+msgctxt "DESC_SEC_okular"
+msgid "A PDF viewer to sign and verify pdf documents with GnuPG."
+msgstr "Ein PDF Betrachter der mit GnuPG Dokumente signieren und verifizieren kann."
+
+msgctxt "DESC_Menu_okular"
+msgid "Run the Okular PDF viewer to sign and verify documents with GnuPG."
+msgstr "Starte das PDF Anzeigeprogramm Okular um Dokumente mit GnuPG zu signieren und zu verifizieren."
 
 msgctxt "T_File_Type_gpg_Name"
 msgid "OpenPGP Binary File"
@@ -491,8 +494,7 @@ msgstr ""
 
 msgctxt "T_File_Type_kgrp_info_tip"
 msgid "Certificate groups to be used by Kleopatra for encryption."
-msgstr ""
-"Zertifikate und Gruppen-Informationen für die Verschlüsselung in Kleopatra."
+msgstr "Zertifikate und Gruppen-Informationen für die Verschlüsselung in Kleopatra."
 
 msgctxt "T_File_Type_pgp_key_info_tip"
 msgid "Certificate for OpenPGP."
