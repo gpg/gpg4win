@@ -260,6 +260,14 @@
 !define gpg4win_pkg_kparts @gpg4win_pkg_kparts@
 !define gpg4win_pkg_kparts_version @gpg4win_pkg_kparts_version@
 
+@HAVE_PKG_KTEXTWIDGETS@
+!define gpg4win_pkg_ktextwidgets @gpg4win_pkg_ktextwidgets@
+!define gpg4win_pkg_ktextwidgets_version @gpg4win_pkg_ktextwidgets_version@
+
+@HAVE_PKG_SONNET@
+!define gpg4win_pkg_sonnet @gpg4win_pkg_sonnet@
+!define gpg4win_pkg_sonnet_version @gpg4win_pkg_sonnet_version@
+
 @HAVE_PKG_THREADWEAVER@
 !define gpg4win_pkg_threadweaver @gpg4win_pkg_threadweaver@
 !define gpg4win_pkg_threadweaver_version @gpg4win_pkg_threadweaver_version@

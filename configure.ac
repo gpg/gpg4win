@@ -325,7 +325,7 @@ if test "$build_gpg4win" = yes ; then
     GPG4WIN_KDEPKG([tiff])
     GPG4WIN_KDEPKG([openjpeg], [tiff jpeg])
     GPG4WIN_KDEPKG([breeze-icons], [extra-cmake-modules qtbase])
-    GPG4WIN_KDEPKG([kleopatra], [kio gnupg-w32 breeze-icons kxmlgui libkleo kitemmodels qttranslations])
+    GPG4WIN_KDEPKG([kleopatra], [kio gnupg-w32 breeze-icons kxmlgui libkleo kitemmodels qttranslations ktextwidgets])
     GPG4WIN_KDEPKG([extra-cmake-modules])
     GPG4WIN_KDEPKG([kconfig], [qtbase qttools extra-cmake-modules])
     GPG4WIN_KDEPKG([ki18n], [qtbase gettext qttools extra-cmake-modules])
@@ -352,8 +352,10 @@ if test "$build_gpg4win" = yes ; then
     GPG4WIN_KDEPKG([gpg4win-tools], [libkleo gpgme])
     GPG4WIN_KDEPKG([threadweaver], [qtbase extra-cmake-modules])
     GPG4WIN_KDEPKG([freetype], [zlib bzip2])
+    GPG4WIN_KDEPKG([sonnet], [qtbase qttools])
+    GPG4WIN_KDEPKG([ktextwidgets], [sonnet kcompletion kconfig kconfigwidgets ki18n kwidgetsaddons])
     GPG4WIN_KDEPKG([poppler], [libpng openjpeg tiff gpgme kio qtbase freetype])
-    GPG4WIN_KDEPKG([kparts], [kio kservice kxmlgui kconfigwidgets kwidgetsaddons])
+    GPG4WIN_KDEPKG([kparts], [kio kservice kxmlgui kconfigwidgets kwidgetsaddons ktextwidgets])
     GPG4WIN_KDEPKG([okular], [kparts gpgme kio poppler threadweaver qtsvg])
 
     GPG4WIN_FINALIZE

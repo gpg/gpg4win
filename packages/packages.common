@@ -457,6 +457,20 @@ chk 963decfdf0cf780406eb585efdb213539a00cd16ae4dff2b2ffe8822a609a647
 file 5.104/kparts-5.104.0.tar.xz
 chk 66a40646cc4890669991cc63d33803ec335b0c08b7aeb0476b2a852951e700cd
 
+# ktextwidgets
+# last changed: 2023-05-08
+# by: ah
+# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
+file 5.104/ktextwidgets-5.104.0.tar.xz
+chk 48fe28cbe8a54b1227a0ce502c3f4534e46789a4988db44b2e5f362ee2e17dea
+
+# sonnet
+# last changed: 2023-05-08
+# by: ah
+# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
+file 5.104/sonnet-5.104.0.tar.xz
+chk 17276e51f0f4ac2f8745796db135d3143f2f91ee3fc8fb823c94072de5c0b953
+
 ### END PASTE ###
 
 server http://download.kde.org/stable/release-service/

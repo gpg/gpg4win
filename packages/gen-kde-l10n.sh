@@ -38,7 +38,7 @@ fi
 # QFrameworks are frameworks that use qt translations
 QFRAMEWORKS="kconfig kcompletion kcodecs kcoreaddons kitemviews kwidgetsaddons kwindowsystem"
 # KFrameworks are frameworks that use KDE translations
-KFRAMEWORKS="kconfigwidgets ki18n kiconthemes kxmlgui kio kparts kjobwidgets kbookmarks"
+KFRAMEWORKS="kconfigwidgets ki18n kiconthemes kxmlgui kio kparts kjobwidgets kbookmarks ktextwidgets"
 
 POPREFIXES="kleopatra libkleo okular"
 POFILES="libkleo/libkleopatra.po \

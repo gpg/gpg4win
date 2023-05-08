@@ -55,7 +55,9 @@ FRAMEWORKS="extra-cmake-modules
     solid
     kjobwidgets
     threadweaver
-    kparts"
+    kparts
+    ktextwidgets
+    sonnet"
 
 fullversion=$1
 case ${fullversion} in

@@ -183,6 +183,12 @@
 !ifdef HAVE_PKG_SCUTE
 !include "inst-scute.nsi"
 !endif
+!ifdef HAVE_PKG_SONNET
+!include "inst-sonnet.nsi"
+!endif
+!ifdef HAVE_PKG_KTEXTWIDGETS
+!include "inst-ktextwidgets.nsi"
+!endif
 !ifdef HAVE_PKG_PAPERKEY
 !include "inst-paperkey.nsi"
 !endif
@@ -419,6 +425,12 @@
 !endif
 !ifdef HAVE_PKG_GPG4WIN_TOOLS
 !include "uninst-gpg4win-tools.nsi"
+!endif
+!ifdef HAVE_PKG_KTEXTWIDGETS
+!include "uninst-ktextwidgets.nsi"
+!endif
+!ifdef HAVE_PKG_SONNET
+!include "uninst-sonnet.nsi"
 !endif
 !ifdef HAVE_PKG_SCUTE
 !include "uninst-scute.nsi"
@@ -710,6 +722,12 @@ Function CalcDepends
 !ifdef HAVE_PKG_KMIME
   !insertmacro UnselectSection ${SEC_kmime}
 !endif
+!ifdef HAVE_PKG_SONNET
+  !insertmacro UnselectSection ${SEC_sonnet}
+!endif
+!ifdef HAVE_PKG_KTEXTWIDGETS
+  !insertmacro UnselectSection ${SEC_ktextwidgets}
+!endif
 !ifdef HAVE_PKG_KDE_L10N
   !insertmacro UnselectSection ${SEC_kde_l10n}
 !endif
@@ -819,6 +837,8 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_tiff}
   !insertmacro SelectSection ${SEC_openjpeg}
   !insertmacro SelectSection ${SEC_jpeg}
+  !insertmacro SelectSection ${SEC_sonnet}
+  !insertmacro SelectSection ${SEC_ktextwidgets}
   skip_okular:
 !endif
 
@@ -865,6 +885,8 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_qttools}
   !insertmacro SelectSection ${SEC_qtwinextras}
   !insertmacro SelectSection ${SEC_extra-cmake-modules}
+  !insertmacro SelectSection ${SEC_sonnet}
+  !insertmacro SelectSection ${SEC_ktextwidgets}
   skip_kleopatra:
 !endif
 

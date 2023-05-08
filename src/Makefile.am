@@ -55,6 +55,8 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
         inst-kwidgetsaddons.nsi uninst-kwidgetsaddons.nsi \
         inst-kcompletion.nsi uninst-kcompletion.nsi \
         inst-kwindowsystem.nsi uninst-kwindowsystem.nsi \
+        inst-ktextwidgets.nsi uninst-ktextwidgets.nsi \
+        inst-sonnet.nsi uninst-sonnet.nsi \
         inst-libkleo.nsi uninst-libkleo.nsi \
         inst-kcoreaddons.nsi uninst-kcoreaddons.nsi \
         inst-kcodecs.nsi uninst-kcodecs.nsi \
@@ -143,7 +145,7 @@ gpg4win_kdepkgs = kconfig kwidgetsaddons ki18n extra-cmake-modules \
                   kiconthemes kleopatra breeze-icons kitemmodels karchive \
                   gpg4win-tools kcrash kio kbookmarks kservice solid \
                   kjobwidgets poppler okular freetype threadweaver \
-                  kparts tiff openjpeg
+                  kparts tiff openjpeg sonnet ktextwidgets
 
 # Supported source packages to build in an additional architecture
 gpg4win_expkgs = libgpg-error libassuan libiconv gettext gpgex gpgol \
@@ -272,6 +274,8 @@ gpg4win_pkg_gpgex_ex_configure = --silent \
 gpg4win_pkg_openjpeg_configure = -DBUILD_CODEC=OFF
 
 gpg4win_pkg_paperkey_configure = --silent
+
+gpg4win_pkg_sonnet_configure = -DSONNET_USE_QML=OFF
 
 gpg4win_pkg_ki18n_configure = -DBUILD_WITH_QML=OFF
 gpg4win_pkg_kconfig_configure = -DKCONFIG_USE_DBUS=OFF -DKCONFIG_USE_QML=OFF
