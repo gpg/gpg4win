@@ -505,8 +505,8 @@ chk f5cfb5527330abe428a90bbbec55cbcd1b8f503ea1f7c529b710715d4ff5eaef
 # last changed: 2023-05-08
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file kleopatra/kleopatra-202305081143.tar.xz
-chk 33aa068d1e2349d8039a8fdd6b9b3ea0924f88df569f753152866d75997941a6
+file kleopatra/kleopatra-202305081408.tar.xz
+chk 3dab9400e119a7ad21ae526e27f887cd47a24535489f3a9a87406e254fb2da58
 
 # Okular and dependencies
 # poppler
