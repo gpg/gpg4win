@@ -213,63 +213,64 @@ chk  c4737943083ce92e41faf13c27a9d608105b6285c0840dfb684a7ee294142ddf
 #
 
 # Qt base
-# last changed: 2020-07-22
+# last changed: 2023-05-08
 # by: ah
-# verified: HTTPS https://download.qt.io/official_releases/qt/5.15/5.15.2/submodules/qtbase-everywhere-src-5.15.2.tar.xz.sha256
+# verified: HTTPS https://download.qt.io/official_releases/qt/5.15/5.15.9/submodules/qtbase-everywhere-opensource-src-5.15.9.tar.xz.sha256
 
 server http://download.qt.io/official_releases/qt/
 
-name qtbase-5.15.2.tar.xz
-file 5.15/5.15.2/submodules/qtbase-everywhere-src-5.15.2.tar.xz
-chk 909fad2591ee367993a75d7e2ea50ad4db332f05e1c38dd7a5a274e156a4e0f8
+name qtbase-5.15.9.tar.xz
+file 5.15/5.15.9/submodules/qtbase-everywhere-opensource-src-5.15.9.tar.xz
+chk 1947deb9d98aaf46bf47e6659b3e1444ce6616974470523756c082041d396d1e
 
 # Qt Tools
-# last changed: 2020-07-22
+# last changed: 2023-05-08
 # by: ah
-# verified: HTTPS https://download.qt.io/official_releases/qt/5.15/5.15.2/submodules/qttools-everywhere-src-5.15.2.tar.xz.sha256
-name qttools-5.15.2.tar.xz
-file 5.15/5.15.2/submodules/qttools-everywhere-src-5.15.2.tar.xz
-chk c189d0ce1ff7c739db9a3ace52ac3e24cb8fd6dbf234e49f075249b38f43c1cc
+# verified: HTTPS https://download.qt.io/official_releases/qt/5.15/5.15.9/submodules/qttools-everywhere-opensource-src-5.15.9.tar.xz.sha256
+name qttools-5.15.9.tar.xz
+file 5.15/5.15.9/submodules/qttools-everywhere-opensource-src-5.15.9.tar.xz
+chk 40dce7845bc156dce7878b304e05b19f1ce7dedd4221c67af3bdf0138196006d
 
 # Qt Winextras
-# last changed: 2020-07-22
+# last changed: 2023-05-08
 # by: ah
-# verified: HTTPS https://download.qt.io/official_releases/qt/5.15/5.15.2/submodules/qtwinextras-everywhere-src-5.15.2.tar.xz.sha256
-name qtwinextras-5.15.2.tar.xz
-file 5.15/5.15.2/submodules/qtwinextras-everywhere-src-5.15.2.tar.xz
-chk 65b8272005dec00791ab7d81ab266d1e3313a3bbd8e54e546d984cf4c4ab550e
+# verified: HTTPS https://download.qt.io/official_releases/qt/5.15/5.15.9/submodules/qtwinextras-everywhere-opensource-src-5.15.9.tar.xz.sha256
+name qtwinextras-5.15.9.tar.xz
+file 5.15/5.15.9/submodules/qtwinextras-everywhere-opensource-src-5.15.9.tar.xz
+chk ea5107105b2072ea7194c16cc0721212f28f77c484ce38b370aaa78bfca45798
 
 # Qt X11 extras
 # last changed: 2021-09-20
 # by: ik
-# verified: HTTPS https://download.qt.io/official_releases/qt/5.15/5.15.2/submodules/qtx11extras-everywhere-src-5.15.2.tar.xz.sha256
-name qtx11extras-5.15.2.tar.xz
-file 5.15/5.15.2/submodules/qtx11extras-everywhere-src-5.15.2.tar.xz
-chk 7014702ee9a644a5a93da70848ac47c18851d4f8ed622b29a72eed9282fc6e3e
+# verified: HTTPS https://download.qt.io/official_releases/qt/5.15/5.15.9/submodules/qtx11extras-everywhere-opensource-src-5.15.9.tar.xz.sha256
+name qtx11extras-5.15.9.tar.xz
+file 5.15/5.15.9/submodules/qtx11extras-everywhere-opensource-src-5.15.9.tar.xz
+chk 7ba3123de7b4ff87d02f513ffa1e4c4284e8f882563d114f29cb98d4c00fcbdb
 
 # Qt WaylandClient
 # last changed: 2021-09-21
 # by: ik
-# verified: HTTPS https://download.qt.io/official_releases/qt/5.15/5.15.2/submodules/qtwayland-everywhere-src-5.15.2.tar.xz.sha256
-name qtwayland-5.15.2.tar.xz
-file 5.15/5.15.2/submodules/qtwayland-everywhere-src-5.15.2.tar.xz
-chk 193732229ff816f3aaab9a5e2f6bed71ddddbf1988ce003fe8dd84a92ce9aeb5
+# verified: HTTPS https://download.qt.io/official_releases/qt/5.15/5.15.9/submodules/qtwayland-everywhere-opensource-src-5.15.9.tar.xz.sha256
+name qtwayland-5.15.9.tar.xz
+file 5.15/5.15.9/submodules/qtwayland-everywhere-opensource-src-5.15.9.tar.xz
+chk b719baf33068f3b92309ac610c3b7ed70edb5bf1e8fa07eefc7cbae6ab6a3c12
+
 
 # Qt svg
-# last changed: 2020-07-22
+# last changed: 2023-05-08
 # by: ah
-# verified: HTTPS https://download.qt.io/official_releases/qt/5.15/5.15.2/submodules/qtsvg-everywhere-src-5.15.2.tar.xz.sha256
-name qtsvg-5.15.2.tar.xz
-file 5.15/5.15.2/submodules/qtsvg-everywhere-src-5.15.2.tar.xz
-chk 8bc3c2c1bc2671e9c67d4205589a8309b57903721ad14c60ea21a5d06acb585e
+# verified: HTTPS https://download.qt.io/official_releases/qt/5.15/5.15.9/submodules/qtsvg-everywhere-opensource-src-5.15.9.tar.xz.sha256
+name qtsvg-5.15.9.tar.xz
+file 5.15/5.15.9/submodules/qtsvg-everywhere-opensource-src-5.15.9.tar.xz
+chk 881f75d3c4a29a4ef88202763115c19d4869af2638227e9c3474e422639abb5a
 
 # Qt translations
-# last changed: 2020-07-22
+# last changed: 2023-05-08
 # by: ah
-# verified: HTTPS https://download.qt.io/official_releases/qt/5.15/5.15.2/submodules/qttranslations-everywhere-src-5.15.2.tar.xz.sha256
-name qttranslations-5.15.2.tar.xz
-file 5.15/5.15.2/submodules/qttranslations-everywhere-src-5.15.2.tar.xz
-chk d5788e86257b21d5323f1efd94376a213e091d1e5e03b45a95dd052b5f570db8
+# verified: HTTPS https://download.qt.io/official_releases/qt/5.15/5.15.9/submodules/qttranslations-everywhere-opensource-src-5.15.9.tar.xz.sha256
+name qttranslations-5.15.9.tar.xz
+file 5.15/5.15.9/submodules/qttranslations-everywhere-opensource-src-5.15.9.tar.xz
+chk 35f4c4496e8a1f0605b3fb2e28c4b08e191796c9c03c32175a608e9c4dc4bb60
 
 # KDE Frameworks generated by gen-frameworks.sh
 

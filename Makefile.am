@@ -59,7 +59,6 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
              patches/qtbase/0001-Fix-build-without-std-thread.patch \
              patches/qtbase/0001-Gpg4win-qstandardpaths-patch.patch \
              patches/qtbase/0002-Gpg4win-theme-names-and-relpaths.patch \
-             patches/qtbase/0003-Fix-build-with-GCC-11-include-limits.patch \
              patches/qttools/disable-most-tools.patch \
              patches/kcoreaddons/0001-Fix-MINGW-build.patch \
              patches/ki18n/0001-Undef-snprintf-for-windows.patch \
