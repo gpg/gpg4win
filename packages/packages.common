@@ -494,18 +494,18 @@ file kmime/kmime-202303221649.tar.xz
 chk 0a26c6b7a1b921191e52ee17d8d131f606a1def9ed09e31074a1c7aed5c4c6b7
 
 # libkleo
-# last changed: 2023-03-22
+# last changed: 2023-05-08
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file libkleo/libkleo-202303221217.tar.xz
-chk 0dfe1000d56242c95b54dd59be831e4a11f6bf19b194c922e719638c5eef98fa
+file libkleo/libkleo-202305081104.tar.xz
+chk f5cfb5527330abe428a90bbbec55cbcd1b8f503ea1f7c529b710715d4ff5eaef
 
 # kleopatra
-# last changed: 2023-03-22
+# last changed: 2023-05-08
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file kleopatra/kleopatra-202303221715.tar.xz
-chk 8b78bc7d5487db5ae6fa1addc9756f24922a9af8386210f453c015e3f0e30eab
+file kleopatra/kleopatra-202305081143.tar.xz
+chk 33aa068d1e2349d8039a8fdd6b9b3ea0924f88df569f753152866d75997941a6
 
 # Okular and dependencies
 # poppler
