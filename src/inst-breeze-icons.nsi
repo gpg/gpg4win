@@ -34,7 +34,7 @@ Section "-breeze-icons" SEC_breeze_icons
 !else
 
   #
-  # Note: You may want to use the pkg-to-nsi.pl script to create the
+  # Note: You may want to use the findicton.sh script to create the
   # list of icons.
   #
   SetOutPath "$INSTDIR\share\icons\breeze\actions\16"
@@ -437,6 +437,7 @@ Section "-breeze-icons" SEC_breeze_icons
   SetOutPath "$INSTDIR\share\icons\breeze\apps\22"
 
   File ${prefix}/share/icons/breeze/apps/22/kde.svg
+  File ${prefix}/share/icons/breeze/apps/22/accessories-text-editor.svg
 
   SetOutPath "$INSTDIR\share\icons\breeze\preferences\22"
   File ${prefix}/share/icons/breeze/preferences/22/preferences-web-browser-shortcuts.svg
@@ -446,6 +447,8 @@ Section "-breeze-icons" SEC_breeze_icons
   File ${prefix}/share/icons/breeze/preferences/32/preferences-desktop-locale.svg
   File ${prefix}/share/icons/breeze/preferences/32/preferences-system-network.svg
   File ${prefix}/share/icons/breeze/preferences/32/preferences-web-browser-shortcuts.svg
+  File ${prefix}/share/icons/breeze/preferences/32/preferences-desktop-accessibility.svg
+  File ${prefix}/share/icons/breeze/preferences/32/preferences-system-performance.svg
 
   SetOutPath "$INSTDIR\share\icons\breeze\apps\48"
 
@@ -453,6 +456,8 @@ Section "-breeze-icons" SEC_breeze_icons
   File ${prefix}/share/icons/breeze/apps/48/telepathy-kde.svg
   File ${prefix}/share/icons/breeze/apps/48/usb-creator-kde.svg
   File ${prefix}/share/icons/breeze/apps/48/okular.svg
+  File ${prefix}/share/icons/breeze/apps/48/accessories-text-editor.svg
+
 
   SetOutPath "$INSTDIR\share\icons\breeze\categories\32"
 
@@ -478,6 +483,10 @@ Section "-breeze-icons" SEC_breeze_icons
   File ${prefix}/share/icons/breeze/mimetypes/16/text-html.svg
   File ${prefix}/share/icons/breeze/mimetypes/16/text-plain.svg
   File ${prefix}/share/icons/breeze/mimetypes/16/text-x-generic.svg
+  File ${prefix}/share/icons/breeze/mimetypes/16/application-epub+zip.svg
+  File ${prefix}/share/icons/breeze/mimetypes/16/text-markdown.svg
+
+
 
   SetOutPath "$INSTDIR\share\icons\breeze\mimetypes\22"
   File ${prefix}/share/icons/breeze/mimetypes/22/application-octet-stream.svg
@@ -488,6 +497,9 @@ Section "-breeze-icons" SEC_breeze_icons
   File ${prefix}/share/icons/breeze/mimetypes/22/text-html.svg
   File ${prefix}/share/icons/breeze/mimetypes/22/text-plain.svg
   File ${prefix}/share/icons/breeze/mimetypes/22/text-x-generic.svg
+  File ${prefix}/share/icons/breeze/mimetypes/22/application-epub+zip.svg
+  File ${prefix}/share/icons/breeze/mimetypes/22/text-markdown.svg
+
 
   SetOutPath "$INSTDIR\share\icons\breeze\mimetypes\32"
   File ${prefix}/share/icons/breeze/mimetypes/32/application-octet-stream.svg
@@ -498,6 +510,9 @@ Section "-breeze-icons" SEC_breeze_icons
   File ${prefix}/share/icons/breeze/mimetypes/32/text-html.svg
   File ${prefix}/share/icons/breeze/mimetypes/32/text-plain.svg
   File ${prefix}/share/icons/breeze/mimetypes/32/text-x-generic.svg
+  File ${prefix}/share/icons/breeze/mimetypes/32/application-epub+zip.svg
+  File ${prefix}/share/icons/breeze/mimetypes/32/text-markdown.svg
+
 
   SetOutPath "$INSTDIR\share\icons\breeze\mimetypes\64"
   File ${prefix}/share/icons/breeze/mimetypes/64/application-octet-stream.svg
@@ -508,6 +523,8 @@ Section "-breeze-icons" SEC_breeze_icons
   File ${prefix}/share/icons/breeze/mimetypes/64/text-html.svg
   File ${prefix}/share/icons/breeze/mimetypes/64/text-plain.svg
   File ${prefix}/share/icons/breeze/mimetypes/64/text-x-generic.svg
+  File ${prefix}/share/icons/breeze/mimetypes/64/application-epub+zip.svg
+  File ${prefix}/share/icons/breeze/mimetypes/64/text-markdown.svg
 
   SetOutPath "$INSTDIR\share\icons\breeze\places\16"
 
