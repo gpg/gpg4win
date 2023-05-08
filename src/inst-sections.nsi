@@ -1005,7 +1005,7 @@ is_no_admin:
     SectionGetFlags ${SEC_okular} $R0
     IntOp $R0 $R0 & ${SF_SELECTED}
     IntCmp $R0 ${SF_SELECTED} 0 no_okular_menu
-    CreateShortCut "$SMPROGRAMS\Okular.lnk" \
+    CreateShortCut "$SMPROGRAMS\Okular (GnuPG Edition).lnk" \
 	"$INSTDIR\bin\okular.exe" \
         "" "$INSTDIR\bin\okular.exe" "" SW_SHOWNORMAL "" $(DESC_Menu_okular)
   no_okular_menu:

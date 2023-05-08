@@ -109,12 +109,12 @@ ${MementoUnselectedSection} "Okular (experimental)" SEC_okular
 
 
   WriteRegStr SHCTX "Software\RegisteredApplications" "Gpg4win.Okular" "SOFTWARE\Gpg4win\Okular\Capabilities"
-  WriteRegStr SHCTX "Software\Gpg4win\Okular" "" "Okular"
+  WriteRegStr SHCTX "Software\Gpg4win\Okular" "" "Okular (GnuPG Edition)"
   WriteRegStr SHCTX "Software\Gpg4win\Okular\Capabilities\FileAssociations" ".pdf" "gpg4win.AssocFile.Okular.PDF"
   WriteRegStr SHCTX "Software\Gpg4win\Okular\Capabilities\MimeAssociations" "application/pdf" "gpg4win.AssocFile.Okular.PDF"
   WriteRegStr SHCTX "Software\Gpg4win\kleopatra\Capabilities" "ApplicationDescription" "$(DESC_SEC_okular)"
   WriteRegStr SHCTX "Software\Gpg4win\kleopatra\Capabilities" "ApplicationIcon" "$INSTDIR\bin\okular.exe,0"
-  WriteRegStr SHCTX "Software\Gpg4win\kleopatra\Capabilities" "ApplicationName" "Okular"
+  WriteRegStr SHCTX "Software\Gpg4win\kleopatra\Capabilities" "ApplicationName" "Okular (GnuPG Edition)"
 
   WriteRegExpandStr SHCTX "Software\Classes\gpg4win.AssocFile.Okular.PDF\shell\open\command" "" "$\"$INSTDIR\bin\Okular.exe$\" -- $\"%1$\""
   WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.Okular.PDF\CurVer" "" "${VERSION}"
@@ -124,7 +124,7 @@ ${MementoUnselectedSection} "Okular (experimental)" SEC_okular
 ${MementoSectionEnd}
 
 LangString DESC_SEC_okular ${LANG_ENGLISH} \
-   "A high security PDF reader to sign and verify pdf documents with GnuPG."
+   "A PDF viewer to sign and verify pdf documents with GnuPG."
 
 LangString DESC_Menu_okular ${LANG_ENGLISH} \
    "Run the Okular PDF viewer to sign and verify documents with GnuPG."
