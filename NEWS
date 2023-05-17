@@ -3,6 +3,45 @@
 # The version number given below are for the standard installers as
 # distributed by www.gpg4win.org.
 
+Noteworthy changes in Version 3.1.27 (2023-05-17)
+-------------------------------------------------
+
+--- Bug fixes ---
+
+(en) GpgOL: An issue has been fixed that could leave messages
+     permanently decrypted and leak the plaintext back to
+     the server in some configurations. (dd3ff839)
+
+(de) GpgOL: Ein Problem wurde behoben das in seltenen Konfigurationen
+     dazu führen konnte das Mails entschlüsselt auf dem Server gespeichert
+     wurden. (dd3ff839)
+
+(en) GpgOL: Category and flag changes are now reliably synced to the server if
+     the mail is currently not opened in the preview window or in a viewer
+     window. (T4127)
+
+(de) GpgOL: Änderungen an Kategorien und Nachverfolgungsflaggen werden nun
+     zuverlässig synchronisiert. Sofern Sie an Nachrichten vorgenommen werden
+     die gerade weder in der Vorschau noch in einem eigenen Fenster geöffnet
+     sind. (T4127)
+
+(en) GpgOL: Mails with the special "protected-header" content attribute
+     and only one small text part are now properly displayed when text
+     only display is activated. (T6357)
+
+(de) GpgOL: Mails mit dem speziellen Attribut "protected-header" werden nun
+     auch korrekt angezeigt wenn sie nur einen einzelnen text Teil enthalten
+     und die reine Textanzeige von Outlook aktiviert ist. (T6357)
+
+~~~~~~~~~~~~~~~
+GnuPG:          2.2.41
+Kleopatra:      3.1.26
+GpgOL:          2.5.7
+GpgEX:          1.0.9
+Kompendium DE:  4.0.1
+Compendium EN:  3.0.0
+~~~~~~~~~~~~~~~
+
 Noteworthy changes in Version 3.1.26 (2022-12-14)
 -------------------------------------------------
 
