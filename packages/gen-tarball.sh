@@ -57,6 +57,11 @@ case ${package} in
     gpg4win-tools)
         repo=git://git.gnupg.org/${package}.git
         ;;
+    kleopatra)
+        # assume that package is provided by KDE
+        repo=https://invent.kde.org/pim/${package}.git
+        branch=gpg4win/3.1.27
+        ;;
     k* | libk*)
         # assume that package is provided by KDE
         repo=https://invent.kde.org/pim/${package}.git
@@ -109,6 +114,7 @@ if [ "${is_gpg}" == "yes" ]; then
     tarball=$(ls -t *.tar.xz | head -1)
     cp ${tmpdir}/${snapshotdir}/${tarball} ${olddir}
 else
+    echo "Archiving $branch.."
     (cd ${tmpdir}/${snapshotdir} && \
     git archive --format tar.xz --prefix=${snapshotdir}/ "origin/$branch") > ${tarball} || \
       (echo "Failed to archive tarball. Is tar.xz configured?: git config --global tar.tar.xz.command \"xz -c\"" && exit 1)
@@ -126,5 +132,4 @@ echo "------------------------------ >8 ------------------------------"
 
 echo "To upload:" >&2
 echo "rsync -vP ${tarball} trithemius.gnupg.org:/home/ftp/gcrypt/snapshots/${package}/" >&2
-echo $tmpdir
 rm -fr ${tmpdir}
