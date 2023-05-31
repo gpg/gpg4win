@@ -99,8 +99,8 @@ m4_define(`RQ',`m4_changequote(<,>)m4_dnl`
      <li><a href="index-de.html"></a></li>
      MENU(`download', `Alle Downloads', `All Downloads', `download', MAIN, LANG_DE)
      <li>
-       <a href="https://twitter.com/gpg4win" target="_blank" title="Follow @gpg4win">
-         <img src="img/twitter-icon.png" class="social-icon">
+       <a href="https://mstdn.social/@GnuPG" target="_blank" rel="me" title="Follow @GnuPG@mstdn.social">
+         <img src="img/mastodon-icon.png" class="social-icon">
        </a>
 <!-- Our flattr account results in a 404. Needs to be fixed.
        <a href="https://flattr.com/thing/2053326/Gpg4win-Secure-email-and-file-encryption-with-GnuPG-for-Windows"
