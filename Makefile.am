@@ -60,6 +60,7 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
              patches/qtbase/0001-Gpg4win-qstandardpaths-patch.patch \
              patches/qtbase/0002-Gpg4win-theme-names-and-relpaths.patch \
              patches/qtsvg/CVE-2023-32573-qtsvg-5.15.patch \
+             patches/qtbase/CVE-2023-32763-qtbase-5.15.diff \
              patches/qttools/disable-most-tools.patch \
              patches/kcoreaddons/0001-Fix-MINGW-build.patch \
              patches/ki18n/0001-Undef-snprintf-for-windows.patch \
@@ -67,7 +68,6 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
              patches/kservice/0001-Remove-unused-include.patch \
              patches/okular/0001-WIP-Buildfix-with-reduced-depdencies.patch \
              patches/poppler/0001-Explicitly-take-posix-variant-for-mingw-gcc-cross.patch \
-             patches/poppler/0001-Use-central-function-to-find-Font-for-signing.patch \
              patches/kparts/0001-Dirty-hack-to-remove-KTextWidgets.patch \
              patches/jpeg/fix-redefine.patch \
              patches-appimage/kconfigwidgets/0001-build-without-KF5Auth.patch \
@@ -76,6 +76,7 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
              patches-appimage/libkleo/set-cxx-standard.patch \
              patches-appimage/kmime/set-cxx-standard.patch \
              patches-appimage/qtsvg/CVE-2023-32573-qtsvg-5.15.patch \
+             patches-appimage/qtbase/CVE-2023-32763-qtbase-5.15.diff \
              patches-appimage/gnupg-2.3.7/0001-dirmngr-Fix-NTBTLS-include-for-test.patch \
              patches-appimage/kleopatra/0001-po-Update-German-translation-for-3.1.26.patch \
 	     patches-appimage/libkleo/0001-po-Update-German-translation-for-kleopatra-3.1.26.patch \
