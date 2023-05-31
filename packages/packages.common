@@ -517,8 +517,8 @@ file poppler/poppler-202305311402.tar.xz
 chk cb86be10bb3f3f937e0bcba1adca74f0d0b610fd1072b409ea558c2af6882566
 
 # okular
-# last changed: 2023-05-04
+# last changed: 2023-05-31
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file okular/okular-202305041409.tar.xz
-chk 1bc74f8b35cc5fae5937eeda387742249fab878ec06c2e573e00efe0f90c7339
+file okular/okular-202305311441.tar.xz
+chk 8645ebfc9cbd359daf2505de09d919f0cc89cf42b6bb6530a87b560f7d189397
