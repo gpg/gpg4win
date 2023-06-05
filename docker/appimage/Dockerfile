@@ -47,6 +47,7 @@ RUN test $(gpg --with-colons --with-fingerprint < /etc/pki/rpm-gpg/RPM-GPG-KEY-C
 RUN yum -y install \
         at-spi2-core-devel \
         automake \
+        bison \
         boost169-devel \
         bzip2 \
         bzip2-devel \
@@ -60,6 +61,7 @@ RUN yum -y install \
         double-conversion-devel \
         egl-wayland-devel \
         file \
+        flex \
         fontconfig-devel \
         freetype-devel \
         gettext \
