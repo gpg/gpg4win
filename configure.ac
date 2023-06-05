@@ -347,7 +347,7 @@ if test "$build_gpg4win" = yes ; then
     GPG4WIN_KDEPKG([kbookmarks], [kconfig kxmlgui kcoreaddons kconfigwidgets kwidgetsaddons kcodecs])
     GPG4WIN_KDEPKG([kio], [kcrash kjobwidgets solid kservice kbookmarks kwidgetsaddons kxmlgui kwindowsystem karchive kconfig kcoreaddons ki18n])
     GPG4WIN_KDEPKG([kiconthemes], [qtsvg kconfigwidgets karchive])
-    GPG4WIN_KDEPKG([kxmlgui], [kiconthemes kconfigwidgets kitemviews])
+    GPG4WIN_KDEPKG([kxmlgui], [kiconthemes kconfigwidgets kitemviews ktextwidgets])
     GPG4WIN_KDEPKG([libkleo], [kmime kconfigwidgets kwindowsystem kcompletion gpgme])
     GPG4WIN_KDEPKG([gpg4win-tools], [libkleo gpgme])
     GPG4WIN_KDEPKG([threadweaver], [qtbase extra-cmake-modules])
