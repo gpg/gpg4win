@@ -23,6 +23,8 @@ EXTRA_DIST = download.sh packages.common packages.3 packages.4 \
 			 gen-kde-l10n.sh \
 			 $(wildcard *.tar.gz *.tar.bz2 *.tar.xz *.zip *.exe *.wixlib)
 
+packages-clean:
+	rm -f *.tar.* *.zip *.exe *.wixlib
 
 #upload: packages.current packages.current.sig
 #	set -e; \
