@@ -21,7 +21,7 @@
 !define prefix ${ipdir}/ktextwidgets-${gpg4win_pkg_ktextwidgets_version}
 
 ; Uninstaller section.
-Section "-un.kparts"
+Section "-un.ktextwidgets"
   Delete "$INSTDIR\bin\libKF5TextWidgets.dll"
   RmDir "$INSTDIR\bin"
 SectionEnd
