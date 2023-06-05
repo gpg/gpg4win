@@ -390,30 +390,32 @@ if test "$build_appimage" = yes ; then
     APPIMAGE_SPKG([qtwayland], [qtbase])
     APPIMAGE_SPKG([qtsvg], [qtbase])
 
+    # KDE Frameworks Tier 1
     APPIMAGE_KDEPKG([extra-cmake-modules], [qttools])
     APPIMAGE_KDEPKG([breeze-icons], [extra-cmake-modules qtbase])
-    APPIMAGE_KDEPKG([kconfig], [qtbase qttools extra-cmake-modules])
-    APPIMAGE_KDEPKG([ki18n], [qtbase qttools extra-cmake-modules])
-    APPIMAGE_KDEPKG([kcoreaddons], [qtbase qttools extra-cmake-modules])
+    APPIMAGE_KDEPKG([karchive], [qtbase qttools extra-cmake-modules])
     APPIMAGE_KDEPKG([kcodecs], [qtbase qttools extra-cmake-modules])
+    APPIMAGE_KDEPKG([kconfig], [qtbase qttools extra-cmake-modules])
+    APPIMAGE_KDEPKG([kcoreaddons], [qtbase qttools extra-cmake-modules])
     APPIMAGE_KDEPKG([kdbusaddons], [qtbase qttools extra-cmake-modules])
     APPIMAGE_KDEPKG([kguiaddons], [qtbase qttools extra-cmake-modules])
-    APPIMAGE_KDEPKG([kitemviews], [qtbase qttools extra-cmake-modules])
+    APPIMAGE_KDEPKG([ki18n], [qtbase qttools extra-cmake-modules])
     APPIMAGE_KDEPKG([kitemmodels], [qtbase qttools extra-cmake-modules])
-    APPIMAGE_KDEPKG([karchive], [qtbase qttools extra-cmake-modules])
+    APPIMAGE_KDEPKG([kitemviews], [qtbase qttools extra-cmake-modules])
+    APPIMAGE_KDEPKG([kwidgetsaddons], [kconfig qttools qtbase])
     APPIMAGE_KDEPKG([kwindowsystem], [qtbase qtx11extras extra-cmake-modules])
 
-    APPIMAGE_KDEPKG([kcrash], [kwindowsystem kcoreaddons])
-    APPIMAGE_KDEPKG([kmime], [kcodecs ki18n])
-    APPIMAGE_KDEPKG([kwidgetsaddons], [kconfig qttools qtbase])
-
+    # KDE Frameworks Tier 2
     APPIMAGE_KDEPKG([kcompletion], [kwidgetsaddons])
+    APPIMAGE_KDEPKG([kcrash], [kwindowsystem kcoreaddons])
+
+    # KDE Frameworks Tier 3
     APPIMAGE_KDEPKG([kconfigwidgets], [kwidgetsaddons kguiaddons ki18n kcodecs kconfig])
-
     APPIMAGE_KDEPKG([kiconthemes], [qtsvg kconfigwidgets karchive])
-
     APPIMAGE_KDEPKG([kxmlgui], [kiconthemes kconfigwidgets kitemviews])
 
+    # KDE PIM
+    APPIMAGE_KDEPKG([kmime], [kcodecs ki18n])
     APPIMAGE_KDEPKG([libkleo], [kmime kconfigwidgets kwindowsystem kcompletion gpgme])
 
     APPIMAGE_KDEPKG([kleopatra], [gnupg gpgme breeze-icons kxmlgui libkleo kitemmodels qttranslations kdbusaddons])
