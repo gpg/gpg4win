@@ -57,7 +57,7 @@ case ${package} in
     gpg4win-tools)
         repo=git://git.gnupg.org/${package}.git
         ;;
-    kleopatra)
+    kleopatra | libkleo)
         # assume that package is provided by KDE
         repo=https://invent.kde.org/pim/${package}.git
         branch=gpg4win/3.1.27

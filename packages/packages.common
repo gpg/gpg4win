@@ -509,11 +509,11 @@ file kmime/kmime-202303221649.tar.xz
 chk 0a26c6b7a1b921191e52ee17d8d131f606a1def9ed09e31074a1c7aed5c4c6b7
 
 # libkleo
-# last changed: 2023-05-31
+# last changed: 2023-06-05
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file libkleo/libkleo-202305311419.tar.xz
-chk 38752fc52ea2b8ac5b79ddf7ad01ecad5f30dcc8c9fb963370421f09b14c585f
+file libkleo/libkleo-202306051058.tar.xz
+chk 6dce5cbf864f20fd50c69d03cf6300b21b2a8d3a26f1c79b6b5d21d4a97c32da
 
 # kleopatra
 # last changed: 2023-05-31
