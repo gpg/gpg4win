@@ -72,6 +72,7 @@ RUN yum -y install \
         libicu-devel \
         libinput-devel \
         libjpeg-devel \
+        libmount-devel \
         libpng-devel \
         libusbx-devel \
         libxkbcommon-x11-devel \

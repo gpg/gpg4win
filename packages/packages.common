@@ -471,6 +471,13 @@ chk 48fe28cbe8a54b1227a0ce502c3f4534e46789a4988db44b2e5f362ee2e17dea
 file 5.104/sonnet-5.104.0.tar.xz
 chk 17276e51f0f4ac2f8745796db135d3143f2f91ee3fc8fb823c94072de5c0b953
 
+# kauth
+# last changed: 2023-06-05
+# by: ikloecker
+# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
+file 5.104/kauth-5.104.0.tar.xz
+chk 614086598e66c1f136e5a6296f358548509e0e868f62a03c97ade73d9b7d581e
+
 ### END PASTE ###
 
 server http://download.kde.org/stable/release-service/

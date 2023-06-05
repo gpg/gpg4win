@@ -43,7 +43,9 @@ appimage_kdepkgs = kconfig kwidgetsaddons ki18n extra-cmake-modules \
 		   kcompletion kwindowsystem kcoreaddons libkleo kcodecs \
 		   kmime kconfigwidgets kxmlgui kguiaddons kitemviews \
 		   kiconthemes kleopatra breeze-icons kitemmodels karchive \
-		   kcrash kdbusaddons
+		   kcrash kdbusaddons kio kbookmarks kservice solid \
+		   kjobwidgets \
+		   sonnet ktextwidgets kauth
 
 # Binary packages for the AppImage
 # appimage_bpkgs =
@@ -153,6 +155,8 @@ appimage_pkg_kconfigwidgets_configure = \
 appimage_pkg_kconfig_configure = -DKCONFIG_USE_DBUS=OFF -DKCONFIG_USE_QML=OFF
 
 appimage_pkg_kguiaddons_configure = -DWITH_WAYLAND=OFF
+
+appimage_pkg_sonnet_configure = -DSONNET_USE_QML=OFF
 
 appimage_pkg_ki18n_configure = -DBUILD_WITH_QML=OFF
 
