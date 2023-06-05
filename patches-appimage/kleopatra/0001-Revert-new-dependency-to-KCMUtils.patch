@@ -1,0 +1,558 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From 921618cd885d6006aa277fd599aee4af1ec04c2b Mon Sep 17 00:00:00 2001
+From: Andre Heinecke <aheinecke@gnupg.org>
+Date: Mon, 8 May 2023 12:27:43 +0200
+Subject: [PATCH] Revert new dependency to KCMUtils
+
+Might not be a problem but I don't have the time to package this
+for Gpg4win right now.
+
+Revert "Keep alphabetical order of required/linked modules
+
+This reverts commit 0a03443ccbba19698710e1bac226866d9b2a7813.
+
+Revert "Do not use a local include for the external kcmutils_version.h"
+
+This reverts commit 00dd596fb3c43aba67f185f89d9c59661cca4af2.
+
+Revert "Port to new api"
+
+This reverts commit e41c6de418b84951d0e3fe50577a4bb9bc4b6755.
+---
+ CMakeLists.txt                                |  1 -
+ src/conf/CMakeLists.txt                       |  4 +-
+ src/conf/appearanceconfigpage.cpp             | 10 ----
+ src/conf/appearanceconfigpage.h               |  6 +--
+ src/conf/cryptooperationsconfigpage.cpp       | 12 +----
+ src/conf/cryptooperationsconfigpage.h         |  6 +--
+ src/conf/dirservconfigpage.cpp                | 51 -------------------
+ src/conf/dirservconfigpage.h                  |  8 +--
+ src/conf/gnupgsystemconfigurationpage.cpp     | 13 -----
+ src/conf/gnupgsystemconfigurationpage.h       |  6 +--
+ src/conf/kleopageconfigdialog.cpp             |  7 +--
+ src/conf/smartcardconfigpage.cpp              | 17 -------
+ src/conf/smartcardconfigpage.h                |  8 +--
+ src/conf/smimevalidationconfigurationpage.cpp | 13 -----
+ src/conf/smimevalidationconfigurationpage.h   |  7 +--
+ 15 files changed, 13 insertions(+), 156 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 2e2f3d8a..2fc9cfba 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -98,7 +98,6 @@ find_package(KF${KF_MAJOR_VERSION} ${KF5_WANT_VERSION}
+     I18n
+     IconThemes
+     ItemModels
+-    KCMUtils
+     KIO
+     WidgetsAddons
+     WindowSystem
+diff --git a/src/conf/CMakeLists.txt b/src/conf/CMakeLists.txt
+index 6d1fd11a..21aa7cc7 100644
+--- a/src/conf/CMakeLists.txt
++++ b/src/conf/CMakeLists.txt
+@@ -60,10 +60,10 @@ set_property(TARGET kcm_kleopatra_static PROPERTY POSITION_INDEPENDENT_CODE ON)
+
+ target_link_libraries(kcm_kleopatra_static
+   KPim${KF_MAJOR_VERSION}::Libkleo
+-  KF${KF_MAJOR_VERSION}::I18n
+   KF${KF_MAJOR_VERSION}::IconThemes
+-  KF${KF_MAJOR_VERSION}::KCMUtils
++  KF${KF_MAJOR_VERSION}::I18n
+   KF${KF_MAJOR_VERSION}::WidgetsAddons
++  KF${KF_MAJOR_VERSION}::ConfigWidgets
+   ${_kcm_kleopatra_extra_libs}
+   ${_kleopatra_dbusaddons_libs}
+   ${_kcm_kleopatra_libkleopatraclient_extra_LIBS}
+diff --git a/src/conf/appearanceconfigpage.cpp b/src/conf/appearanceconfigpage.cpp
+index 87197369..e71e9d19 100644
+--- a/src/conf/appearanceconfigpage.cpp
++++ b/src/conf/appearanceconfigpage.cpp
+@@ -18,21 +18,11 @@
+ using namespace Kleo;
+ using namespace Kleo::Config;
+
+-#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
+ AppearanceConfigurationPage::AppearanceConfigurationPage(QWidget *parent, const QVariantList &args)
+     : KCModule(parent, args)
+-#else
+-AppearanceConfigurationPage::AppearanceConfigurationPage(QObject *parent, const KPluginMetaData &data, const QVariantList &args)
+-    : KCModule(parent, data, args)
+-#endif
+ {
+-#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
+     auto lay = new QVBoxLayout(this);
+     mWidget = new AppearanceConfigWidget(this);
+-#else
+-    auto lay = new QVBoxLayout(widget());
+-    mWidget = new AppearanceConfigWidget(widget());
+-#endif
+     lay->addWidget(mWidget);
+
+     connect(mWidget, &AppearanceConfigWidget::changed, this, &Kleo::Config::AppearanceConfigurationPage::markAsChanged);
+diff --git a/src/conf/appearanceconfigpage.h b/src/conf/appearanceconfigpage.h
+index 7abff68d..fcd8d817 100644
+--- a/src/conf/appearanceconfigpage.h
++++ b/src/conf/appearanceconfigpage.h
+@@ -8,7 +8,7 @@
+ */
+
+ #pragma once
+-#include <kcmutils_version.h>
++
+ #include <KCModule>
+ namespace Kleo
+ {
+@@ -24,11 +24,7 @@ class AppearanceConfigurationPage : public KCModule
+ {
+     Q_OBJECT
+ public:
+-#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
+     explicit AppearanceConfigurationPage(QWidget *parent = nullptr, const QVariantList &args = QVariantList());
+-#else
+-    explicit AppearanceConfigurationPage(QObject *parent, const KPluginMetaData &data = {}, const QVariantList &args = QVariantList());
+-#endif
+
+ public Q_SLOTS:
+     void load() override;
+diff --git a/src/conf/cryptooperationsconfigpage.cpp b/src/conf/cryptooperationsconfigpage.cpp
+index 4688a139..2f8c3463 100644
+--- a/src/conf/cryptooperationsconfigpage.cpp
++++ b/src/conf/cryptooperationsconfigpage.cpp
+@@ -18,22 +18,12 @@
+ using namespace Kleo;
+ using namespace Kleo::Config;
+
+-#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
+ CryptoOperationsConfigurationPage::CryptoOperationsConfigurationPage(QWidget *parent, const QVariantList &args)
+     : KCModule(parent, args)
+-#else
+-CryptoOperationsConfigurationPage::CryptoOperationsConfigurationPage(QObject *parent, const KPluginMetaData &data, const QVariantList &args)
+-    : KCModule(parent, data, args)
+-#endif
+ {
+-#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
+     auto lay = new QVBoxLayout(this);
+-    mWidget = new CryptoOperationsConfigWidget(this);
+-#else
+-    auto lay = new QVBoxLayout(widget());
+-    mWidget = new CryptoOperationsConfigWidget(widget());
+-#endif
+     lay->setContentsMargins(0, 0, 0, 0);
++    mWidget = new CryptoOperationsConfigWidget(this);
+     lay->addWidget(mWidget);
+     connect(mWidget, &CryptoOperationsConfigWidget::changed, this, &Kleo::Config::CryptoOperationsConfigurationPage::markAsChanged);
+ }
+diff --git a/src/conf/cryptooperationsconfigpage.h b/src/conf/cryptooperationsconfigpage.h
+index b6e95da6..5c0dcef6 100644
+--- a/src/conf/cryptooperationsconfigpage.h
++++ b/src/conf/cryptooperationsconfigpage.h
+@@ -8,7 +8,7 @@
+ */
+
+ #pragma once
+-#include <kcmutils_version.h>
++
+ #include <KCModule>
+ namespace Kleo
+ {
+@@ -24,11 +24,7 @@ class CryptoOperationsConfigurationPage : public KCModule
+ {
+     Q_OBJECT
+ public:
+-#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
+     explicit CryptoOperationsConfigurationPage(QWidget *parent = nullptr, const QVariantList &args = QVariantList());
+-#else
+-    explicit CryptoOperationsConfigurationPage(QObject *parent, const KPluginMetaData &data = {}, const QVariantList &args = QVariantList());
+-#endif
+
+ public Q_SLOTS:
+     void load() override;
+diff --git a/src/conf/dirservconfigpage.cpp b/src/conf/dirservconfigpage.cpp
+index 9925fc59..4862c0dc 100644
+--- a/src/conf/dirservconfigpage.cpp
++++ b/src/conf/dirservconfigpage.cpp
+@@ -112,11 +112,7 @@ private:
+ DirectoryServicesConfigurationPage::Private::Private(DirectoryServicesConfigurationPage *q)
+ {
+     mConfig = QGpgME::cryptoConfig();
+-#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
+     auto glay = new QGridLayout(q);
+-#else
+-    auto glay = new QGridLayout(q->widget());
+-#endif
+     glay->setContentsMargins(0, 0, 0, 0);
+
+     // OpenPGP keyserver
+@@ -125,11 +121,7 @@ DirectoryServicesConfigurationPage::Private::Private(DirectoryServicesConfigurat
+         auto l = new QHBoxLayout{};
+         l->setContentsMargins(0, 0, 0, 0);
+
+-#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
+         mOpenPGPKeyserverEdit.createWidgets(q);
+-#else
+-        mOpenPGPKeyserverEdit.createWidgets(q->widget());
+-#endif
+         mOpenPGPKeyserverEdit.label()->setText(i18n("OpenPGP keyserver:"));
+         l->addWidget(mOpenPGPKeyserverEdit.label());
+         l->addWidget(mOpenPGPKeyserverEdit.widget());
+@@ -142,19 +134,11 @@ DirectoryServicesConfigurationPage::Private::Private(DirectoryServicesConfigurat
+     // X.509 servers
+     if (Settings{}.cmsEnabled()) {
+         ++row;
+-#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
+         auto groupBox = new QGroupBox{i18n("X.509 Directory Services"), q};
+-#else
+-        auto groupBox = new QGroupBox{i18n("X.509 Directory Services"), q->widget()};
+-#endif
+         auto groupBoxLayout = new QVBoxLayout{groupBox};
+
+         if (gpgme_check_version("1.16.0")) {
+-#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
+             mDirectoryServices = new Kleo::DirectoryServicesWidget(q);
+-#else
+-            mDirectoryServices = new Kleo::DirectoryServicesWidget(q->widget());
+-#endif
+             if (QLayout *l = mDirectoryServices->layout()) {
+                 l->setContentsMargins(0, 0, 0, 0);
+             }
+@@ -164,15 +148,8 @@ DirectoryServicesConfigurationPage::Private::Private(DirectoryServicesConfigurat
+         } else {
+             // QGpgME does not properly support keyserver flags for X.509 keyservers (added in GnuPG 2.2.28);
+             // disable the configuration to prevent the configuration from being corrupted
+-#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
+             groupBoxLayout->addWidget(new QLabel{i18n("Configuration of directory services is not possible "
+                                                       "because the used gpgme libraries are too old."), q});
+-#else
+-            groupBoxLayout->addWidget(new QLabel{i18n("Configuration of directory services is not possible "
+-                                                      "because the used gpgme libraries are too old."),
+-                                                 q->widget()});
+-
+-#endif
+         }
+
+         glay->addWidget(groupBox, row, 0, 1, 3);
+@@ -180,11 +157,7 @@ DirectoryServicesConfigurationPage::Private::Private(DirectoryServicesConfigurat
+
+     // LDAP timeout
+     ++row;
+-#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
+     mTimeout.createWidgets(q);
+-#else
+-    mTimeout.createWidgets(q->widget());
+-#endif
+     mTimeout.label()->setText(i18n("LDAP &timeout (minutes:seconds):"));
+     mTimeout.widget()->setDisplayFormat(QStringLiteral("mm:ss"));
+     connect(mTimeout.widget(), &QTimeEdit::timeChanged,
+@@ -194,11 +167,7 @@ DirectoryServicesConfigurationPage::Private::Private(DirectoryServicesConfigurat
+
+     // Max number of items returned by queries
+     ++row;
+-#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
+     mMaxItems.createWidgets(q);
+-#else
+-    mMaxItems.createWidgets(q->widget());
+-#endif
+     mMaxItems.label()->setText(i18n("&Maximum number of items returned by query:"));
+     mMaxItems.widget()->setMinimum(0);
+ #if QT_DEPRECATED_SINCE(5, 14)
+@@ -472,41 +441,21 @@ CryptoConfigEntry *DirectoryServicesConfigurationPage::Private::configEntry(cons
+     CryptoConfigEntry *const entry = Kleo::getCryptoConfigEntry(mConfig, componentName, entryName);
+     if (!entry) {
+         if (showError == DoShowError) {
+-#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
+             KMessageBox::error(q, i18n("Backend error: gpgconf does not seem to know the entry for %1/%2", QLatin1String(componentName), QLatin1String(entryName)));
+-#else
+-            KMessageBox::error(
+-                q->widget(),
+-                i18n("Backend error: gpgconf does not seem to know the entry for %1/%2", QLatin1String(componentName), QLatin1String(entryName)));
+-#endif
+         }
+         return nullptr;
+     }
+     if (entry->argType() != argType || entry->isList() != bool(multiplicity)) {
+         if (showError == DoShowError) {
+-#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
+             KMessageBox::error(q, i18n("Backend error: gpgconf has wrong type for %1/%2: %3 %4", QLatin1String(componentName), QLatin1String(entryName), entry->argType(), entry->isList()));
+-#else
+-            KMessageBox::error(q->widget(),
+-                               i18n("Backend error: gpgconf has wrong type for %1/%2: %3 %4",
+-                                    QLatin1String(componentName),
+-                                    QLatin1String(entryName),
+-                                    entry->argType(),
+-                                    entry->isList()));
+-#endif
+         }
+         return nullptr;
+     }
+     return entry;
+ }
+
+-#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
+ DirectoryServicesConfigurationPage::DirectoryServicesConfigurationPage(QWidget *parent, const QVariantList &args)
+     : KCModule{parent, args}
+-#else
+-DirectoryServicesConfigurationPage::DirectoryServicesConfigurationPage(QObject *parent, const KPluginMetaData &data, const QVariantList &args)
+-    : KCModule(parent, data, args)
+-#endif
+     , d{new Private{this}}
+ {
+ }
+diff --git a/src/conf/dirservconfigpage.h b/src/conf/dirservconfigpage.h
+index 254da70d..da9377a2 100644
+--- a/src/conf/dirservconfigpage.h
++++ b/src/conf/dirservconfigpage.h
+@@ -8,7 +8,7 @@
+ */
+
+ #pragma once
+-#include <kcmutils_version.h>
++
+ #include <KCModule>
+
+ #include <memory>
+@@ -22,11 +22,7 @@ class DirectoryServicesConfigurationPage : public KCModule
+ {
+     Q_OBJECT
+ public:
+-#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
+-    explicit DirectoryServicesConfigurationPage(QWidget *parent = nullptr, const QVariantList &args = QVariantList());
+-#else
+-    explicit DirectoryServicesConfigurationPage(QObject *parent, const KPluginMetaData &data = {}, const QVariantList &args = QVariantList());
+-#endif
++    explicit DirectoryServicesConfigurationPage(QWidget *parent = nullptr, const QVariantList &args = {});
+     ~DirectoryServicesConfigurationPage() override;
+
+ public Q_SLOTS:
+diff --git a/src/conf/gnupgsystemconfigurationpage.cpp b/src/conf/gnupgsystemconfigurationpage.cpp
+index cac84525..5fe36d63 100644
+--- a/src/conf/gnupgsystemconfigurationpage.cpp
++++ b/src/conf/gnupgsystemconfigurationpage.cpp
+@@ -18,30 +18,17 @@
+
+ using namespace Kleo::Config;
+
+-#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
+ GnuPGSystemConfigurationPage::GnuPGSystemConfigurationPage(QWidget *parent, const QVariantList &args)
+     : KCModule(parent, args)
+-#else
+-GnuPGSystemConfigurationPage::GnuPGSystemConfigurationPage(QObject *parent, const KPluginMetaData &data, const QVariantList &args)
+-    : KCModule(parent, data, args)
+-#endif
+ {
+-#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
+     auto lay = new QVBoxLayout(this);
+-#else
+-    auto lay = new QVBoxLayout(widget());
+-#endif
+     lay->setContentsMargins(0, 0, 0, 0);
+
+     QGpgME::CryptoConfig *const config = QGpgME::cryptoConfig();
+
+     mWidget = new CryptoConfigModule(config,
+                                      CryptoConfigModule::TabbedLayout,
+-#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
+                                      this);
+-#else
+-                                     widget());
+-#endif
+     lay->addWidget(mWidget);
+
+
+diff --git a/src/conf/gnupgsystemconfigurationpage.h b/src/conf/gnupgsystemconfigurationpage.h
+index 4ea4e4af..481df410 100644
+--- a/src/conf/gnupgsystemconfigurationpage.h
++++ b/src/conf/gnupgsystemconfigurationpage.h
+@@ -7,7 +7,7 @@
+     SPDX-License-Identifier: GPL-2.0-or-later
+ */
+ #pragma once
+-#include <kcmutils_version.h>
++
+ #include <KCModule>
+ namespace Kleo
+ {
+@@ -23,11 +23,7 @@ class GnuPGSystemConfigurationPage : public KCModule
+ {
+     Q_OBJECT
+ public:
+-#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
+     explicit GnuPGSystemConfigurationPage(QWidget *parent = nullptr, const QVariantList &args = QVariantList());
+-#else
+-    explicit GnuPGSystemConfigurationPage(QObject *parent, const KPluginMetaData &data = {}, const QVariantList &args = QVariantList());
+-#endif
+     ~GnuPGSystemConfigurationPage() override;
+
+ public Q_SLOTS:
+diff --git a/src/conf/kleopageconfigdialog.cpp b/src/conf/kleopageconfigdialog.cpp
+index 676ae0b1..57b1b527 100644
+--- a/src/conf/kleopageconfigdialog.cpp
++++ b/src/conf/kleopageconfigdialog.cpp
+@@ -22,8 +22,6 @@
+
+ #include "kleopageconfigdialog.h"
+
+-#include <kcmutils_version.h>
+-
+ #include <QDesktopServices>
+ #include <QDialogButtonBox>
+ #include <QProcess>
+@@ -193,19 +191,11 @@ void KleoPageConfigDialog::slotHelpClicked()
+ void KleoPageConfigDialog::addModule(const QString &name, const QString &docPath, const QString &icon, KCModule *module)
+ {
+     mModules << module;
+-#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
++
+     KPageWidgetItem *item = addPage(module, name);
+-#else
+-    KPageWidgetItem *item = addPage(module->widget(), name);
+-#endif
+     item->setIcon(QIcon::fromTheme(icon));
++
+-#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
+     connect(module, SIGNAL(changed(bool)), this, SLOT(moduleChanged(bool)));
+-#else
+-    connect(module, &KCModule::needsSaveChanged, this, [this, module]() {
+-        moduleChanged(module->needsSave());
+-    });
+-#endif
+
+     mHelpUrls.insert(name, docPath);
+ }
+diff --git a/src/conf/smartcardconfigpage.cpp b/src/conf/smartcardconfigpage.cpp
+index 7e160213..b8a4260d 100644
+--- a/src/conf/smartcardconfigpage.cpp
++++ b/src/conf/smartcardconfigpage.cpp
+@@ -40,11 +40,7 @@ public:
+ };
+
+ SmartCardConfigurationPage::Private::Private(SmartCardConfigurationPage *qq)
+-#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
+     : mReaderPort{new ReaderPortSelection{qq}}
+-#else
+-    : mReaderPort{new ReaderPortSelection{qq->widget()}}
+-#endif
+ {
+ }
+
+@@ -57,31 +53,18 @@ CryptoConfigEntry *SmartCardConfigurationPage::Private::readerPortConfigEntry(co
+     return Kleo::getCryptoConfigEntry(config, "scdaemon", "reader-port");
+ }
+
+-#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
+ SmartCardConfigurationPage::SmartCardConfigurationPage(QWidget *parent, const QVariantList &args)
+     : KCModule{parent, args}
+-#else
+-SmartCardConfigurationPage::SmartCardConfigurationPage(QObject *parent, const KPluginMetaData &data, const QVariantList &args)
+-    : KCModule(parent, data, args)
+-#endif
+     , d{std::make_unique<Private>(this)}
+ {
+-#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
+     auto mainLayout = new QVBoxLayout{this};
+-#else
+-    auto mainLayout = new QVBoxLayout{widget()};
+-#endif
+     mainLayout->setContentsMargins(0, 0, 0, 0);
+
+     {
+         auto l = new QHBoxLayout{};
+         l->setContentsMargins(0, 0, 0, 0);
+
+-#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
+         auto label = new QLabel{i18n("Smart card reader to use:"), this};
+-#else
+-        auto label = new QLabel{i18n("Smart card reader to use:"), widget()};
+-#endif
+         label->setBuddy(d->mReaderPort);
+
+         l->addWidget(label);
+diff --git a/src/conf/smartcardconfigpage.h b/src/conf/smartcardconfigpage.h
+index aa38f152..d7954f80 100644
+--- a/src/conf/smartcardconfigpage.h
++++ b/src/conf/smartcardconfigpage.h
+@@ -9,7 +9,7 @@
+ */
+
+ #pragma once
+-#include <kcmutils_version.h>
++
+ #include <KCModule>
+
+ #include <memory>
+@@ -23,11 +23,7 @@ class SmartCardConfigurationPage : public KCModule
+ {
+     Q_OBJECT
+ public:
+-#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
+-    explicit SmartCardConfigurationPage(QWidget *parent = nullptr, const QVariantList &args = QVariantList());
+-#else
+-    explicit SmartCardConfigurationPage(QObject *parent, const KPluginMetaData &data = {}, const QVariantList &args = QVariantList());
+-#endif
++    explicit SmartCardConfigurationPage(QWidget *parent = nullptr, const QVariantList &args = {});
+     ~SmartCardConfigurationPage() override;
+
+     void load() override;
+diff --git a/src/conf/smimevalidationconfigurationpage.cpp b/src/conf/smimevalidationconfigurationpage.cpp
+index 3ec893a9..b0e690cf 100644
+--- a/src/conf/smimevalidationconfigurationpage.cpp
++++ b/src/conf/smimevalidationconfigurationpage.cpp
+@@ -15,26 +15,13 @@
+
+ using namespace Kleo::Config;
+
+-#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
+ SMimeValidationConfigurationPage::SMimeValidationConfigurationPage(QWidget *parent, const QVariantList &args)
+     : KCModule(parent, args)
+-#else
+-SMimeValidationConfigurationPage::SMimeValidationConfigurationPage(QObject *parent, const KPluginMetaData &data, const QVariantList &args)
+-    : KCModule(parent, data, args)
+-#endif
+ {
+-#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
+     auto lay = new QVBoxLayout(this);
+-#else
+-    auto lay = new QVBoxLayout(widget());
+-#endif
+     lay->setContentsMargins(0, 0, 0, 0);
+
+-#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
+     mWidget = new SMimeValidationConfigurationWidget(this);
+-#else
+-    mWidget = new SMimeValidationConfigurationWidget(widget());
+-#endif
+     lay->addWidget(mWidget);
+
+     connect(mWidget, &SMimeValidationConfigurationWidget::changed, this, &Kleo::Config::SMimeValidationConfigurationPage::markAsChanged);
+diff --git a/src/conf/smimevalidationconfigurationpage.h b/src/conf/smimevalidationconfigurationpage.h
+index e53ebe85..eaa0344d 100644
+--- a/src/conf/smimevalidationconfigurationpage.h
++++ b/src/conf/smimevalidationconfigurationpage.h
+@@ -7,7 +7,7 @@
+     SPDX-License-Identifier: GPL-2.0-or-later
+ */
+ #pragma once
+-#include <kcmutils_version.h>
++
+ #include <KCModule>
+ namespace Kleo
+ {
+@@ -20,11 +20,8 @@ class SMimeValidationConfigurationPage : public KCModule
+ {
+     Q_OBJECT
+ public:
+-#if KCMUTILS_VERSION < QT_VERSION_CHECK(5, 240, 0)
+     explicit SMimeValidationConfigurationPage(QWidget *parent = nullptr, const QVariantList &args = QVariantList());
+-#else
+-    explicit SMimeValidationConfigurationPage(QObject *parent, const KPluginMetaData &data = {}, const QVariantList &args = QVariantList());
+-#endif
++
+ public Q_SLOTS:
+     void load() override;
+     void save() override;
+--
+2.40.1

@@ -6,6 +6,15 @@ diff --git a/CMakeLists.txt b/CMakeLists.txt
 index bb34e0d..9faec4f 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
+@@ -5,7 +5,7 @@ set(PIM_VERSION "5.23.47")
+
+ project(libkleo VERSION ${PIM_VERSION})
+
+-set(KF_MIN_VERSION "5.105.0")
++set(KF_MIN_VERSION "5.104.0")
+
+ if (WIN32)
+   set(KF5_WANT_VERSION "5.70.0")
 @@ -73,6 +73,8 @@ add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0)
  add_definitions(-DKF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x055600)
  remove_definitions(-DQT_NO_FOREACH)

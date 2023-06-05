@@ -70,17 +70,14 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
              patches/poppler/0001-Explicitly-take-posix-variant-for-mingw-gcc-cross.patch \
              patches/kparts/0001-Dirty-hack-to-remove-KTextWidgets.patch \
              patches/jpeg/fix-redefine.patch \
-             patches-appimage/kconfigwidgets/0001-build-without-KF5Auth.patch \
-             patches-appimage/kconfigwidgets/fake-version.patch \
              patches-appimage/qtwayland-5.15.0/00-disable-wayland-server.patch \
              patches-appimage/libkleo/set-cxx-standard.patch \
              patches-appimage/kmime/set-cxx-standard.patch \
              patches-appimage/qtsvg/CVE-2023-32573-qtsvg-5.15.patch \
              patches-appimage/qtbase/CVE-2023-32763-qtbase-5.15.diff \
-             patches-appimage/gnupg-2.3.7/0001-dirmngr-Fix-NTBTLS-include-for-test.patch \
-             patches-appimage/kleopatra/0001-po-Update-German-translation-for-3.1.26.patch \
-	     patches-appimage/libkleo/0001-po-Update-German-translation-for-kleopatra-3.1.26.patch \
-             patches-appimage/libkleo/gpg4win-check.patch
+             patches-appimage/libkleo/gpg4win-check.patch \
+             patches-appimage/kleopatra/0001-Revert-new-dependency-to-KCMUtils.patch \
+             patches-appimage/kleopatra/require-ecm-5.104.patch
 
 copy-news:
 	cp NEWS doc/website/NEWS.last

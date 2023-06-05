@@ -1,0 +1,17 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 8c2cb88d..bdf2fca4 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -34,7 +34,7 @@ project(kleopatra VERSION ${kleopatra_version})
+ option(DISABLE_KWATCHGNUPG "Don't build the kwatchgnupg tool [default=OFF]" OFF)
+
+ # Standalone build. Find / include everything necessary.
+-set(KF_MIN_VERSION "5.105.0")
++set(KF_MIN_VERSION "5.104.0")
+ set(KIDENTITYMANAGEMENT_VERSION "5.23.40")
+ set(KMAILTRANSPORT_VERSION "5.23.40")
+ set(AKONADI_MIME_VERSION "5.23.41")
