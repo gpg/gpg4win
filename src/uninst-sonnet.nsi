@@ -23,5 +23,10 @@
 ; Uninstaller section.
 Section "-un.sonnet"
   Delete "$INSTDIR\bin\libKF5SonnetCore.dll"
+  Delete "$INSTDIR\bin\libKF5SonnetUi.dll"
+  Delete "$INSTDIR\bin\plugins\kf5\sonnet\sonnet_ispellchecker.dll"
+  RmDir "$INSTDIR\bin\plugins\kf5\sonnet"
+  RmDir "$INSTDIR\bin\plugins\kf5"
+  RmDir "$INSTDIR\bin\plugins"
   RmDir "$INSTDIR\bin"
 SectionEnd
