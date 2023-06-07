@@ -119,7 +119,7 @@
 		<div id="bitcoin_tab" class="tab-content">
 	  	<p>
         <img class="pay-logo" src="img/bitcoin-logo.png">
-        <p>Bitcoins können Sie uns anonym an folgende Adresse spenden:</p>
+        <p>Bitcoins können Sie uns an folgende Adresse spenden:</p>
           <a href="https://blockchain.info/address/1M3GipkG2YyHPDMPewqTpup83jitXvBg9N">
             1M3GipkG2YyHPDMPewqTpup83jitXvBg9N
           </a>
