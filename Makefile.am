@@ -68,7 +68,9 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
              patches/kservice/0001-Remove-unused-include.patch \
              patches/okular/0001-WIP-Buildfix-with-reduced-depdencies.patch \
              patches/poppler/0001-Explicitly-take-posix-variant-for-mingw-gcc-cross.patch \
-             patches/kparts/0001-Dirty-hack-to-remove-KTextWidgets.patch \
+             patches/kparts/0001-Apply-implicit-android-DBUS-fix-for-Win.patch \
+             patches/kparts/disable-jobuidelegate.patch \
+             patches/sonnet/0001-W32-Force-ispellchecker-for-sonnet.patch \
              patches/jpeg/fix-redefine.patch \
              patches-appimage/qtwayland-5.15.0/00-disable-wayland-server.patch \
              patches-appimage/libkleo/set-cxx-standard.patch \
