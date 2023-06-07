@@ -33,6 +33,10 @@ all: $(TARGETS) subdirs
 $(TARGETS): template.m4 template_header.m4 versions.m4 \
             header.m4 gpg4win.css
 
+# add prerequities for some m4_include s
+get-gpg4win.html donate.html: donation-form.htm4
+get-gpg4win-de.html donate-de.html: donation-form-de.htm4
+
 subdirs: $(SUBDIRS)
 	@for dir in $^ ; do \
 	  $(MAKE) -C $$dir SUBDIRS="" ; \
