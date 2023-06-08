@@ -358,8 +358,7 @@ input[type='range']::-moz-range-thumb {
 .h_text .limiter {
  border-bottom: 3px dotted #CCCCCC;
  width: 190px;
- height: 10px;
- margin-bottom: 3px;
+ margin: 3pt 0pt;
 }
 .center {
  text-align: center;
@@ -459,6 +458,10 @@ input[type='range']::-moz-range-thumb {
  list-style: none;
  padding: 0px;
  clear: both;
+}
+
+#mastodon-logo {
+  max-width: 20pt;
 }
 
 #main.screenshots{

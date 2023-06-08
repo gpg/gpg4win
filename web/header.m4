@@ -79,6 +79,15 @@
      <a href="newsarchive-de.html">Newsarchiv</a>', `
      <a href="newsarchive.html">Archived News</a>')
     </p>
+    <div class="limiter"></div>
+    <div style="display: flex">
+     m4_ifelse(LANG_DE, `1', `
+     <h3 style="margin-right: 8pt;">Folgen Sie uns auf</h3>', `
+     <h3 style="margin-right: 8pt;">Follow us on</h3>')
+     <a style="display: flex;" href="https://mstdn.social/@GnuPG" target="_blank" rel="me" title="Follow @GnuPG@mstdn.social">
+      <img id="mastodon-logo" src="img/src/logo_mastodon_yellow.svg" />
+     </a>
+    </div>
    </div>
   </div>', `
   <div class="mini_intro">
