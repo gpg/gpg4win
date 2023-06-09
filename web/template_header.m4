@@ -97,7 +97,6 @@ m4_define(`RQ',`m4_changequote(<,>)m4_dnl`
    <div id="sitemap">
     <ul>
      <li><a href="index-de.html"></a></li>
-     MENU(`download', `Alle Downloads', `All Downloads', `download', MAIN, LANG_DE)
      <li>
        <a href="https://mstdn.social/@GnuPG" target="_blank" rel="me" title="Follow @GnuPG@mstdn.social">
          <img src="img/mastodon-icon.png" class="social-icon">
@@ -121,8 +120,8 @@ m4_define(`RQ',`m4_changequote(<,>)m4_dnl`
      MENU(`about', `Über Gpg4win', `About Gpg4win', `about', MAIN, LANG_DE)
      MENU(`features', `Funktionen', `Features', `features', MAIN, LANG_DE)
      MENU(`system-requirements', `System Voraussetzungen', `System Requirements', `system-requirements', SUB, LANG_DE)
-     MENU(`documentation', `Dokumentation', `Documentation', `documentation', SUB, LANG_DE)
      MENU(`screenshots', `Screenshots', `Screenshots', `screenshots', MAIN, LANG_DE)
+     MENU(`download', `Alle Downloads', `All Downloads', `download', MAIN, LANG_DE)
      MENU(`privacy-policy', `Datenschutzerklärung', `Privacy Policy', `privacy-policy', SUB, LANG_DE)
     </ul>
     <ul>
@@ -140,6 +139,8 @@ m4_define(`RQ',`m4_changequote(<,>)m4_dnl`
     <ul>
      <li><b>Support</b></li>
      MENU(`support', `Support', `Support', `support', MAIN, LANG_DE)
+     MENU(`documentation', `Dokumentation', `Documentation', `documentation', SUB, LANG_DE)
+     <li><a href="https://wiki.gnupg.org">Wiki</a></li>
     </ul>
     <ul>
      <li><b>
@@ -149,7 +150,6 @@ m4_define(`RQ',`m4_changequote(<,>)m4_dnl`
      MENU(`license', `Lizenz', `License', `license', SUB, LANG_DE)
      m4_ifelse(LANG_DE, `1', `<li><a href="https://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpg4win.git;a=summary">Quellcode</a></li>',
          `<li><a href="https://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpg4win.git;a=summary">Source Code</a></li>')
-     <li><a href="https://wiki.gnupg.org">Wiki</a></li>
      m4_ifelse(LANG_DE, `1', `<li><a href="https://dev.gnupg.org/">Entwicklungsplattform</a></li>',
          `<li><a href="https://dev.gnupg.org/">Development Platform</a></li>')
      m4_ifelse(LANG_DE, `1', `<li><a href="Kurzstudie-Nachhaltige-FS-Beispiel-Gpg4win.html">Kurzstudie Gpg4win</a></li>',
