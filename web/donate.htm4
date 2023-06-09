@@ -11,11 +11,14 @@ m4_define(`MAIN', `donate')
 PAGE_START
 
 <div class="donate_header">
- <span class="text">
-  We love Free Software!<br />
-  You too?<br />
-  <b>Please support Gpg4win!</b>
- </span>
+ <div>
+  <span class="text">
+   We love Free Software!<br />
+   You too?<br />
+   <b>Please support Gpg4win!</b>
+  </span>
+ </div>
+ <img src="img/heart.png" alt="image with three hearts" />
 </div>
 
 <div id="intro">

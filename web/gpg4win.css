@@ -715,23 +715,18 @@ input[type='range']::-moz-range-thumb {
 }
 
 .donate_header {
- display: block;
- position: relative;
- top: -80px;
+ display: flex;
  height: 180px;
- background: url('img/heart.png') no-repeat;
- background-position: 550px 10px;
  font-size: 26px;
  border-bottom: 1px solid #CCCCCC;
- margin-bottom: -70px;
- z-index: -100;
+ margin-bottom: 20pt;
 }
 
 .donate_header .text {
  position:relative;
- left: 180px;
  top: 40px;
  text-align:center;
+ margin-right: 20pt;
 }
 
 .donate_header b {
