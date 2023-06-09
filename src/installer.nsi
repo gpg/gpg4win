@@ -410,6 +410,9 @@ Function KillOtherAppsOrWarn
    g4wihelp::KillProc "overlayer.exe"
    g4wihelp::KillProc "gpg-agent.exe"
    g4wihelp::KillProc "gpg.exe"
+   g4wihelp::KillProc "keyboxd.exe"
+   g4wihelp::KillProc "scdaemon.exe" # should die with the agent
+   g4wihelp::KillProc "gpgolconfig.exe"
    g4wihelp::KillProc "dirmngr.exe"
    g4wihelp::KillProc "gpgsm.exe"
    g4wihelp::KillProc "okular.exe"
