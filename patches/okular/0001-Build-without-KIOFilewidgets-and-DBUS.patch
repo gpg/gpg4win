@@ -1,31 +1,23 @@
-#! /bin/sh
-patch -p1 -l -f $* < $0
-exit $?
-
-From 16452ac27fab19e639721808e13c89a454cc0232 Mon Sep 17 00:00:00 2001
+From edefd0e3e750849edd0008f28cd4d670b3fb7af2 Mon Sep 17 00:00:00 2001
 From: Andre Heinecke <aheinecke@gnupg.org>
-Date: Thu, 4 May 2023 14:07:02 +0200
-Subject: [PATCH] WIP: Buildfix with reduced depdencies
+Date: Tue, 13 Jun 2023 14:56:49 +0200
+Subject: [PATCH] Build without KIOFilewidgets and DBUS
 
-This needs to be split up and cleaned up.
-KTextWidgets should only remove the spellchecking and some
-undo behavior in Text annotations
-
-Phonon disables all Media features.
-
-KIOFileWidgets should functionally be replaced for Windows
-with native code but needs testing.
-
-DBus needs probably replacement by Kleopatras variant
-of KUniqueService for the same functionality. For
-now it always opens in new windows.
-
-The CMake version requirement is just to allow compiling on debian
-stable.
 ---
+ CMakeLists.txt              |  9 ++++++---
+ part/part.cpp               | 16 ++++++++++++++++
+ part/part.h                 |  4 ++++
+ part/presentationwidget.cpp |  6 +++---
+ shell/CMakeLists.txt        |  7 ++++++-
+ shell/main.cpp              |  1 -
+ shell/okular_main.cpp       | 11 +++++++++++
+ shell/shell.cpp             |  9 ++++++++-
+ shell/shell.h               |  6 +++++-
+ shell/welcomescreen.cpp     |  9 +++++++++
+ 10 files changed, 68 insertions(+), 10 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index b66bd756f..b5a9c6072 100644
+index b66bd756f..a335cfcc4 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -1,4 +1,4 @@
@@ -34,26 +26,19 @@ index b66bd756f..b5a9c6072 100644
 
  # KDE Application Version, managed by release script
  set (RELEASE_SERVICE_VERSION_MAJOR "23")
-@@ -151,8 +151,16 @@ else()
+@@ -151,7 +151,10 @@ else()
  endif()
 
  if (BUILD_DESKTOP)
 -    find_package(Qt5 ${QT_REQUIRED_VERSION} CONFIG REQUIRED COMPONENTS DBus)
--    find_package(KF5 ${KF5_REQUIRED_VERSION} REQUIRED COMPONENTS Parts Crash IconThemes TextWidgets)
 +    find_package(Qt5DBus ${QT_REQUIRED_VERSION} CONFIG)
 +    if (Qt5DBus_FOUND)
 +        add_definitions(-DHAVE_DBUS)
 +    endif()
-+    find_package(KF5 ${KF5_REQUIRED_VERSION} REQUIRED COMPONENTS Parts Crash IconThemes)
-+
-+    find_package(KF5TextWidgets ${KF5_REQUIRED_VERSION} CONFIG)
-+    if (KF5TextWidgets_FOUND)
-+        add_definitions(-DHAVE_TEXTWIDGETS)
-+    endif()
+     find_package(KF5 ${KF5_REQUIRED_VERSION} REQUIRED COMPONENTS Parts Crash IconThemes TextWidgets)
 
      find_package(KF5Purpose)
-     set_okular_optional_package_properties(KF5Purpose PROPERTIES
-@@ -588,13 +596,16 @@ target_link_libraries(okularpart okularcore
+@@ -588,13 +591,13 @@ target_link_libraries(okularpart okularcore
      KF5::IconThemes
      KF5::ItemViews
      KF5::KIOCore
@@ -62,153 +47,12 @@ index b66bd756f..b5a9c6072 100644
      KF5::Parts
      KF5::Solid
      KF5::WindowSystem
--    KF5::TextWidgets
+     KF5::TextWidgets
  )
-+
-+if(KF5TextWidgets_FOUND)
-+    target_link_libraries(okularpart KF5::TextWidgets)
-+endif()
 +
  if (Phonon4Qt5_FOUND)
     target_link_libraries(okularpart Phonon::phonon4qt5)
  endif()
-diff --git a/part/annotwindow.cpp b/part/annotwindow.cpp
-index 68bc16f4d..c77c42697 100644
---- a/part/annotwindow.cpp
-+++ b/part/annotwindow.cpp
-@@ -13,7 +13,12 @@
- // qt/kde includes
- #include <KLocalizedString>
- #include <KStandardAction>
-+#ifdef HAVE_TEXTWIDGETS
- #include <KTextEdit>
-+#else
-+#include <QTextEdit>
-+#define KTextEdit QTextEdit
-+#endif
- #include <QAction>
- #include <QApplication>
- #include <QDebug>
-@@ -21,9 +26,11 @@
- #include <QFont>
- #include <QFontInfo>
- #include <QFontMetrics>
-+#include <QKeyEvent>
- #include <QLabel>
- #include <QLayout>
- #include <QMenu>
-+#include <QMouseEvent>
- #include <QPushButton>
- #include <QSizeGrip>
- #include <QStyle>
-@@ -234,7 +241,9 @@ AnnotWindow::AnnotWindow(QWidget *parent, Okular::Annotation *annot, Okular::Doc
-
-     connect(textEdit, &KTextEdit::textChanged, this, &AnnotWindow::slotsaveWindowText);
-     connect(textEdit, &KTextEdit::cursorPositionChanged, this, &AnnotWindow::slotsaveWindowText);
-+#ifdef HAVE_TEXTWIDGETS
-     connect(textEdit, &KTextEdit::aboutToShowContextMenu, this, &AnnotWindow::slotUpdateUndoAndRedoInContextMenu);
-+#endif
-     connect(m_document, &Okular::Document::annotationContentsChangedByUndoRedo, this, &AnnotWindow::slotHandleContentsChangedByUndoRedo);
-
-     if (!canEditAnnotation) {
-diff --git a/part/annotwindow.h b/part/annotwindow.h
-index 8f48e698a..8d99b1ebd 100644
---- a/part/annotwindow.h
-+++ b/part/annotwindow.h
-@@ -25,6 +25,10 @@ namespace GuiUtils
- class LatexRenderer;
- }
-
-+#ifndef HAVE_TEXTWIDGETS
-+#define KTextEdit QTextEdit
-+#endif
-+
- class KTextEdit;
- class MovableTitle;
- class QMenu;
-diff --git a/part/dlgpresentation.cpp b/part/dlgpresentation.cpp
-index 5dd763b3f..4b4d6c5e2 100644
---- a/part/dlgpresentation.cpp
-+++ b/part/dlgpresentation.cpp
-@@ -10,7 +10,13 @@
-
- #include <KColorButton>
- #include <KLocalizedString>
-+
-+#ifdef HAVE_TEXTWIDGETS
- #include <KPluralHandlingSpinBox>
-+#else
-+#include <QSpinBox>
-+#define KPluralHandlingSpinBox QSpinBox
-+#endif
-
- #include <QApplication>
- #include <QCheckBox>
-@@ -35,7 +41,12 @@ DlgPresentation::DlgPresentation(QWidget *parent)
-
-     KPluralHandlingSpinBox *advanceTime = new KPluralHandlingSpinBox(this);
-     advanceTime->setPrefix(i18nc("Spinbox prefix: Advance automatically: every n seconds", "every "));
-+#ifdef HAVE_TEXTWIDGETS
-     advanceTime->setSuffix(ki18ncp("Advance every %1 seconds", " second", " seconds"));
-+#else
-+    advanceTime->setPrefix(i18nc("Spinbox suffix: Advance automatically: every n seconds", " seconds"));
-+#endif
-+
-     advanceTime->setObjectName(QStringLiteral("kcfg_SlidesAdvanceTime"));
-
-     QHBoxLayout *advanceAutomaticallyLayout = new QHBoxLayout();
-diff --git a/part/formwidgets.cpp b/part/formwidgets.cpp
-index c2291e4c6..cc737ea9c 100644
---- a/part/formwidgets.cpp
-+++ b/part/formwidgets.cpp
-@@ -614,14 +614,16 @@ TextAreaEdit::TextAreaEdit(Okular::FormFieldText *text, PageView *pageView)
-     , FormWidgetIface(this, text)
- {
-     setAcceptRichText(text->isRichText());
-+#ifdef HAVE_TEXTWIDGETS
-     setCheckSpellingEnabled(text->canBeSpellChecked());
-+    connect(this, &KTextEdit::aboutToShowContextMenu, this, &TextAreaEdit::slotUpdateUndoAndRedoInContextMenu);
-+#endif
-     setAlignment(text->textAlignment());
-     setPlainText(text->text());
-     setUndoRedoEnabled(false);
-
-     connect(this, &QTextEdit::textChanged, this, &TextAreaEdit::slotChanged);
-     connect(this, &QTextEdit::cursorPositionChanged, this, &TextAreaEdit::slotChanged);
--    connect(this, &KTextEdit::aboutToShowContextMenu, this, &TextAreaEdit::slotUpdateUndoAndRedoInContextMenu);
-     m_prevCursorPos = textCursor().position();
-     m_prevAnchorPos = textCursor().anchor();
-     m_editing = false;
-diff --git a/part/formwidgets.h b/part/formwidgets.h
-index ea0d2fef8..e59276593 100644
---- a/part/formwidgets.h
-+++ b/part/formwidgets.h
-@@ -13,7 +13,12 @@
- #include "core/area.h"
- #include "core/form.h"
-
-+#ifdef HAVE_TEXTWIDGETS
- #include <KTextEdit>
-+#else
-+#include <QTextEdit>
-+#define KTextEdit QTextEdit
-+#endif
- #include <KUrlRequester>
- #include <QCheckBox>
- #include <QComboBox>
-diff --git a/part/pageviewutils.cpp b/part/pageviewutils.cpp
-index 3da2fb52c..4a47cdf33 100644
---- a/part/pageviewutils.cpp
-+++ b/part/pageviewutils.cpp
-@@ -14,6 +14,8 @@
- #include <QMenu>
- #include <QPainter>
- #include <QTimer>
-+#include <QEvent>
-+#include <QResizeEvent>
-
- // local includes
- #include "core/form.h"
 diff --git a/part/part.cpp b/part/part.cpp
 index 9c22672cf..68303e5b0 100644
 --- a/part/part.cpp
@@ -491,3 +335,5 @@ index 1e4bff15e..1066c5f18 100644
                      }
                  });
                  menu.addAction(showDirectoryAction);
+--
+2.41.0
