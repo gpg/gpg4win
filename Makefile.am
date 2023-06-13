@@ -67,6 +67,7 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
              patches/kio/0001-WIP-Remove-dependency-to-dbus.patch \
              patches/kservice/0001-Remove-unused-include.patch \
              patches/okular/0001-Build-without-KIOFilewidgets-and-DBUS.patch \
+             patches/okular/0001-Add-GnuPG-specific-manifest-to-okular.patch \
              patches/poppler/0001-Explicitly-take-posix-variant-for-mingw-gcc-cross.patch \
              patches/kparts/0001-Apply-implicit-android-DBUS-fix-for-Win.patch \
              patches/kparts/disable-jobuidelegate.patch \

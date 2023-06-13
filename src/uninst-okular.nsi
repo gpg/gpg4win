@@ -104,9 +104,11 @@ Section "-un.okular"
 
   DetailPrint "Unregistering file extensions"
 
-  DeleteRegValue SHCTX "Software\RegisteredApplications" "Gpg4win.Okular"
-  DeleteRegKey SHCTX "Software\Gpg4win\Okular"
+  DeleteRegValue SHCTX "Software\RegisteredApplications" "Okular - GnuPG Edition"
+  DeleteRegKey SHCTX "Software\Gpg4win\okular"
 
-  DeleteRegKey SHCTX "Software\Classes\gpg4win.AssocFile.Okular.PDF"
+  DeleteRegKey SHCTX "Software\Classes\gpgokular.AssocFile.PDF"
+  DeleteRegValue SHCTX "Software\Classes\.pdf\OpenWithProgIDs" "gpgokular.AssocFile.PDF"
+  DeleteRegValue SHCTX "Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.pdf\OpenWithProgids" "gpgokular.AssocFile.PDF"
 
 SectionEnd

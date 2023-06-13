@@ -1,0 +1,114 @@
+From b0266be15272535c6de6af3d8aa0c34eee6a735f Mon Sep 17 00:00:00 2001
+From: Andre Heinecke <aheinecke@gnupg.org>
+Date: Tue, 13 Jun 2023 15:31:26 +0200
+Subject: [PATCH] Add GnuPG specific manifest to okular
+
+For an upstreamable version of this patch we would need some more
+variables.
+---
+ shell/CMakeLists.txt         |  7 ++++++
+ shell/okular.w32-manifest.in | 25 +++++++++++++++++++++
+ shell/versioninfo.rc.in      | 42 ++++++++++++++++++++++++++++++++++++
+ 3 files changed, 74 insertions(+)
+ create mode 100644 shell/okular.w32-manifest.in
+ create mode 100644 shell/versioninfo.rc.in
+
+diff --git a/shell/CMakeLists.txt b/shell/CMakeLists.txt
+index 7b83323e3..b5ec82e5b 100644
+--- a/shell/CMakeLists.txt
++++ b/shell/CMakeLists.txt
+@@ -15,6 +15,13 @@ set(okular_SRCS
+    welcomescreen.cpp
+ )
+
++if(WIN32)
++  configure_file (versioninfo.rc.in versioninfo.rc)
++  set(okular_SRCS ${CMAKE_CURRENT_BINARY_DIR}/versioninfo.rc ${okular_SRCS})
++  configure_file (okular.w32-manifest.in okular.w32-manifest)
++  set(okular_SRCS ${CMAKE_CURRENT_BINARY_DIR}/okular.w32-manifest ${okular_SRCS})
++endif()
++
+ ki18n_wrap_ui(okular_SRCS
+     welcomescreen.ui)
+
+diff --git a/shell/okular.w32-manifest.in b/shell/okular.w32-manifest.in
+new file mode 100644
+index 000000000..8e4b315de
+--- /dev/null
++++ b/shell/okular.w32-manifest.in
+@@ -0,0 +1,25 @@
++<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
++<assembly xmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0">
++<description>Okular - GnuPG Edition</description>
++<assemblyIdentity
++    type="win32"
++    name="GnuPG.Okular"
++    version="@RELEASE_SERVICE_VERSION@.0"
++    />
++<compatibility xmlns="urn:schemas-microsoft-com:compatibility.v1">
++  <application>
++    <supportedOS Id="{e2011457-1546-43c5-a5fe-008deee3d3f0}"/><!-- Vista -->
++    <supportedOS Id="{35138b9a-5d96-4fbd-8e2d-a2440225f93a}"/><!-- 7 -->
++    <supportedOS Id="{4a2f28e3-53b9-4441-ba9c-d69d4a4a6e38}"/><!-- 8 -->
++    <supportedOS Id="{1f676c76-80e1-4239-95bb-83d0f6d0da78}"/><!-- 8.1 -->
++    <supportedOS Id="{8e0f7a12-bfb3-4fe8-b9a5-48fd50a15a9a}"/><!-- 10 -->
++  </application>
++</compatibility>
++<trustInfo xmlns="urn:schemas-microsoft-com:asm.v2">
++  <security>
++    <requestedPrivileges>
++      <requestedExecutionLevel level="asInvoker"/>
++    </requestedPrivileges>
++  </security>
++</trustInfo>
++</assembly>
+diff --git a/shell/versioninfo.rc.in b/shell/versioninfo.rc.in
+new file mode 100644
+index 000000000..0ce626460
+--- /dev/null
++++ b/shell/versioninfo.rc.in
+@@ -0,0 +1,42 @@
++/*
++    SPDX-FileCopyrightText: 2023 g10 Code GmbH
++    SPDX-License-Identifier: GPL-2.0-or-later
++*/
++
++/* This file is processed by cmake to create versioninfo.rc */
++#include "afxres.h"
++
++VS_VERSION_INFO VERSIONINFO
++ FILEVERSION @RELEASE_SERVICE_VERSION_MAJOR@,@RELEASE_SERVICE_VERSION_MINOR@,@RELEASE_SERVICE_VERSION_MICRO@,0
++ PRODUCTVERSION @RELEASE_SERVICE_VERSION_MAJOR@,@RELEASE_SERVICE_VERSION_MINOR@,@RELEASE_SERVICE_VERSION_MICRO@,0
++ FILEFLAGSMASK 0x3fL
++ FILEFLAGS 0x20L
++ FILEOS 0x40004L
++ FILETYPE 0x1L
++ FILESUBTYPE 0x0L
++BEGIN
++    BLOCK "StringFileInfo"
++    BEGIN
++        BLOCK "040904b0"
++        BEGIN
++            VALUE "Comments", "This program is available under the terms of the GNU General Public License, version 2 or any later version.\0"
++            VALUE "CompanyName", "Gpg4win\0"
++            VALUE "FileDescription", "Okular - GnuPG Edition\0"
++            VALUE "FileVersion", "@RELEASE_SERVICE_VERSION@\0"
++            VALUE "InternalName", "okular\0"
++            VALUE "LegalCopyright", "Gpg4win\0"
++            VALUE "LegalTrademarks", "\0"
++            VALUE "OriginalFilename", "okular.exe\0"
++            VALUE "PrivateBuild", "\0"
++            VALUE "ProductName", "Okular - GnuPG Edition\0"
++            VALUE "ProductVersion", "@RELEASE_SERVICE_VERSION@\0"
++            VALUE "SpecialBuild", "\0"
++        END
++    END
++    BLOCK "VarFileInfo"
++    BEGIN
++      VALUE "Translation", 0x409, 0x4b0
++    END
++END
++
++1 RT_MANIFEST "okular.w32-manifest"
+--
+2.41.0

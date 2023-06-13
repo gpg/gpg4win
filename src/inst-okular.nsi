@@ -107,19 +107,32 @@ ${MementoUnselectedSection} "Okular (experimental)" SEC_okular
   File ${prefix}/share/okular/pics/uparrow.png
   File ${prefix}/share/okular/pics/upleftarrow.png
 
+  # ProgID gpgokular.AssocFile.PDF
+  # Capability_name 'okular'
+  # assocname gpgokular
+  # name: Okular - GnuPG Edition
+  # capability_path Software\Gpg4win\okular\Capabilities
 
-  WriteRegStr SHCTX "Software\RegisteredApplications" "Gpg4win.Okular" "SOFTWARE\Gpg4win\Okular\Capabilities"
-  WriteRegStr SHCTX "Software\Gpg4win\Okular" "" "Okular (GnuPG Edition)"
-  WriteRegStr SHCTX "Software\Gpg4win\Okular\Capabilities\FileAssociations" ".pdf" "gpg4win.AssocFile.Okular.PDF"
-  WriteRegStr SHCTX "Software\Gpg4win\Okular\Capabilities\MimeAssociations" "application/pdf" "gpg4win.AssocFile.Okular.PDF"
-  WriteRegStr SHCTX "Software\Gpg4win\kleopatra\Capabilities" "ApplicationDescription" "$(DESC_SEC_okular)"
-  WriteRegStr SHCTX "Software\Gpg4win\kleopatra\Capabilities" "ApplicationIcon" "$INSTDIR\bin\okular.exe,0"
-  WriteRegStr SHCTX "Software\Gpg4win\kleopatra\Capabilities" "ApplicationName" "Okular (GnuPG Edition)"
+  # Register Capabilities
+  WriteRegStr SHCTX "Software\RegisteredApplications" "Okular - GnuPG Edition" "Software\Gpg4win\okular\Capabilities"
+  WriteRegStr SHCTX "Software\Gpg4win\okular" "" "Okular - GnuPG Edition"
 
-  WriteRegExpandStr SHCTX "Software\Classes\gpg4win.AssocFile.Okular.PDF\shell\open\command" "" "$\"$INSTDIR\bin\Okular.exe$\" -- $\"%1$\""
-  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.Okular.PDF\CurVer" "" "${VERSION}"
-  # TODO need to generate a icon from application-pdf
-  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.Okular.PDF\DefaultIcon" "" "$INSTDIR\bin\okular.exe,0"
+  WriteRegStr SHCTX "Software\Gpg4win\okular\Capabilities" "ApplicationDescription" "Okular - GnuPG Edition"
+  WriteRegStr SHCTX "Software\Gpg4win\okular\Capabilities" "ApplicationName" "Okular - GnuPG Edition"
+  WriteRegStr SHCTX "Software\Gpg4win\okular\Capabilities" "ApplicationIcon" "$INSTDIR\bin\okular.exe,0"
+  WriteRegStr SHCTX "Software\Gpg4win\okular\Capabilities\FileAssociations" ".pdf" "gpgokular.AssocFile.PDF"
+  WriteRegStr SHCTX "Software\Gpg4win\okular\Capabilities\MimeAssociations" "application/pdf" "gpgokular.AssocFile.PDF"
+  WriteRegStr SHCTX "Software\Gpg4win\okular\Capabilities\shell\open\command" "" "$\"$INSTDIR\bin\okular.exe$\" -- $\"%1$\""
+
+
+  WriteRegStr SHCTX "Software\Classes\gpgokular.AssocFile.PDF" "" "PDF Dokument"
+  WriteRegStr SHCTX "Software\Classes\gpgokular.AssocFile.PDF\shell\open\command" "" "$\"$INSTDIR\bin\okular.exe$\" -- $\"%1$\""
+  WriteRegStr SHCTX "Software\Classes\gpgokular.AssocFile.PDF" "FriendlyTypeName" "PDF Document"
+  WriteRegStr SHCTX "Software\Classes\gpgokular.AssocFile.PDF" "PerceivedType" "Document"
+  WriteRegStr SHCTX "Software\Classes\gpgokular.AssocFile.PDF\DefaultIcon" "" "$INSTDIR\bin\okular.exe,0"
+
+  WriteRegBin SHCTX "Software\Classes\.pdf\OpenWithProgids" "gpgokular.AssocFile.PDF" 0
+  WriteRegBin SHCTX "SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.pdf\OpenWithProgids" "gpgokular.AssocFile.PDF" 0
 
 ${MementoSectionEnd}
 
