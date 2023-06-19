@@ -79,7 +79,8 @@
 					<p>
 					<input type="hidden" name="on1" value="Rückeldung">
 					<input type="hidden" name="os1" value="">
-					<textarea value=""   name="os1" placeholder="Ich benutze Gpg4win, weil ..." rows="3" cols="48"></textarea>
+					<label for="os1">Feedback:</label>
+					<textarea value=""   name="os1" placeholder="Ich finde an Gpg4win (nicht) gut, dass ..." rows="3" cols="48"></textarea>
 
 					<!-- pay button -->
 					<input type="hidden" name="lc" value="DE">

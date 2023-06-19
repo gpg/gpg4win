@@ -80,7 +80,8 @@
 					<p>
 					<input type="hidden" name="on1" value="Feedback">
 					<input type="hidden" name="os1" value="US">
-	      	<textarea value=""   name="os1" placeholder="I am using Gpg4win because ..." rows="3" cols="48"></textarea>
+					<label for="os1">Feedback:</label>
+					<textarea value=""   name="os1" placeholder="What I (don't) like about Gpg4win is ..." rows="3" cols="48"></textarea>
 
 					<!-- pay button -->
 					<input type="hidden" name="lc" value="US">
