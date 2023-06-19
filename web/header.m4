@@ -26,7 +26,9 @@
       <a href="package-integrity.html">Check integrity</a>')
     </div>
    </div>
-   <img src="img/fancy_bg3.png" id="fancy_bg"/>
+   <a href="img/intro_screenshot.png" alt="Screenshot GpgOL & Kleopatra">
+    <img src="img/intro_screenshot.png" id="fancy_bg"/>
+   </a>
    <br/>
 <!-- BETA
    <div id="download_button_mini">
