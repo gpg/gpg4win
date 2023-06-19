@@ -129,11 +129,11 @@ server https://gnupg.org/ftp/gcrypt
 file libgpg-error/libgpg-error-1.47.tar.bz2
 chk  9e3c670966b96ecc746c28c2c419541e3bcb787d1a73930f5e5f5e1bcbbb9bdb
 
-# last-changed: 2021-04-21
-# by: ah
-# verified: distsigkey.gpg
-file libassuan/libassuan-2.5.5.tar.bz2
-chk  8e8c2fcc982f9ca67dcbb1d95e2dc746b1739a4668bc20b3a3c5be632edb34e4
+# last-changed: 2023-06-19
+# by: wk
+# verified: build tree
+file libassuan/libassuan-2.5.6.tar.bz2
+chk  e9fd27218d5394904e4e39788f9b1742711c3e6b41689a31aa3380bd5aa4f426
 
 # last changed 2021-09-20
 # by ik
@@ -142,11 +142,11 @@ file npth/npth-1.6.tar.bz2
 chk 1393abd9adcf0762d34798dc34fdcf4d0d22a8410721e76f1e3afcd1daa4e2d1
 
 
-# last changed 2022-12-19
-# by ah
-# verified: Signature from: 6DAA6E64A76D2840571B4902528897B826403ADA
-file libksba/libksba-1.6.3.tar.bz2
-chk  3f72c68db30971ebbf14367527719423f0a4d5f8103fc9f4a1c01a9fa440de5c
+# last changed 2023-06-19
+# by wk
+# verified: build tree
+file libksba/libksba-1.6.4.tar.bz2
+chk  bbb43f032b9164d86c781ffe42213a83bf4f2fee91455edfa4654521b8b03b6b
 
 
 # last changed 2022-04-07
