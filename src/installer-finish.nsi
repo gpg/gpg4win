@@ -101,7 +101,7 @@ is_no_admin:
   #---------------------------------------------------
   Delete "$SMPROGRAMS\GPA.lnk"
   Delete "$SMPROGRAMS\Kleopatra.lnk"
-  Delete "$SMPROGRAMS\Okular.lnk"
+  Delete "$SMPROGRAMS\Okular - GnuPG Edition.lnk"
 
   # Delete Desktop links.
   StrCmp $is_update '1' no_desktop_delete
