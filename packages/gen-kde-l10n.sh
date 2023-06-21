@@ -36,14 +36,14 @@ if [ ! -e "$g4widir" ]; then
 fi
 
 # QFrameworks are frameworks that use qt translations
-QFRAMEWORKS="kconfig kcompletion kcodecs kcoreaddons kitemviews kwidgetsaddons kwindowsystem"
+QFRAMEWORKS="kconfig kcompletion kcodecs kcoreaddons kitemviews kwidgetsaddons kwindowsystem sonnet"
 # KFrameworks are frameworks that use KDE translations
 KFRAMEWORKS="kconfigwidgets ki18n kiconthemes kxmlgui kio kparts kjobwidgets kbookmarks ktextwidgets"
 
 POPREFIXES="kleopatra libkleo okular"
 POFILES="libkleo/libkleopatra.po \
     kleopatra/kleopatra.po \
-    okular/okular.po"
+    okular/okular.po okular/okular_poppler.po"
 # See: https://websvn.kde.org/*checkout*/trunk/l10n-kf5/subdirs
 # and remove x-test
 LANGS="
