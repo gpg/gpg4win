@@ -173,8 +173,8 @@ chk 457a185e5a85238fb945a955dc6352ab962dc8b48720b62fc9fa48c7540a4067
 # last changed 2023-04-20
 # by wk
 # verified: [build tree]
-file gpgme/gpgme-1.20.0.tar.bz2
-chk 25a5785a5da356689001440926b94e967d02e13c49eb7743e35ef0cf22e42750
+#file gpgme/gpgme-1.20.0.tar.bz2
+#chk 25a5785a5da356689001440926b94e967d02e13c49eb7743e35ef0cf22e42750
 
 # last changed: 2021-01-07
 # by: ah
@@ -493,6 +493,12 @@ server http://download.kde.org/stable/release-service/
 #
 server https://gnupg.org/ftp/gcrypt/snapshots
 
+# gpgme
+# last changed: 2023-06-21
+# by: aheinecke
+# verified: Tarball created by aheinecke.
+file gpgme/gpgme-1.21.0-beta461.tar.xz
+chk 871c9eaa5abc2289f0199e971092e08d401728f336c4dbebcf008826a6c41643
 
 # gpgex
 # last changed: 2022-12-06
@@ -502,11 +508,11 @@ file gpgex/gpgex-1.0.10-beta5.tar.xz
 chk 2c227634528ef76bcca7fd4b7fe5c38a535f6e68bbe5b2cdc6cc4a74810b2dba
 
 # gpg4win-tools
-# last changed: 2022-08-29
+# last changed: 2023-06-21
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file gpg4win-tools/gpg4win-tools-202208290924.tar.xz
-chk fe20b69d84893618625d76e55f772477a80628da98411c8bb9c1a5e01028b3f9
+file gpg4win-tools/gpg4win-tools-202306211455.tar.xz
+chk d62e15b63c3837277c99548933ec2bc17d38af3d09fccb468b590951d934ea7a
 
 # kmime
 # last changed: 2023-03-22
@@ -516,18 +522,18 @@ file kmime/kmime-202303221649.tar.xz
 chk 0a26c6b7a1b921191e52ee17d8d131f606a1def9ed09e31074a1c7aed5c4c6b7
 
 # libkleo
-# last changed: 2023-06-05
+# last changed: 2023-06-21
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file libkleo/libkleo-202306051058.tar.xz
-chk 6dce5cbf864f20fd50c69d03cf6300b21b2a8d3a26f1c79b6b5d21d4a97c32da
+file libkleo/libkleo-202306211439.tar.xz
+chk ab55c15a60ad2e6470df9bd01ef175fb80a2a8467baec68c961b506413cc4cf3
 
 # kleopatra
-# last changed: 2023-06-05
+# last changed: 2023-06-21
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file kleopatra/kleopatra-202306051115.tar.xz
-chk 2b32e6ae78a4989d91b68e4201ae077554e3abc66d4b6cb7910eff57e38b8dcd
+file kleopatra/kleopatra-202306211438.tar.xz
+chk cdf115dde8e3e1aaa1b05caeabdc4c895b536eb591c3f4c92021288b7dd417ea
 
 # Okular and dependencies
 # poppler
