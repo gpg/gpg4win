@@ -34,8 +34,8 @@ Section "-un.gpgme"
   Delete /REBOOTOK "$INSTDIR\bin\libqgpgme-15.dll"
   Delete /REBOOTOK "$INSTDIR\bin\libgpgmepp-6.dll"
 ${If} ${RunningX64}
-  Delete /REBOOTOK "$INSTDIR\bin_64\libgpgmepp-6.dll"
-  Delete /REBOOTOK "$INSTDIR\bin_64\libgpgme-11.dll"
+  Delete /REBOOTOK "$INSTDIR\bin_64\libgpgmepp6-6.dll"
+  Delete /REBOOTOK "$INSTDIR\bin_64\libgpgme6-11.dll"
   Delete /REBOOTOK "$INSTDIR\bin_64\gpgme-json.exe"
   Delete "$INSTDIR\bin_64\gpgme-w32spawn.exe"
 ${EndIf}
