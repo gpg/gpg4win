@@ -494,11 +494,11 @@ server http://download.kde.org/stable/release-service/
 server https://gnupg.org/ftp/gcrypt/snapshots
 
 # gpgme
-# last changed: 2023-06-21
+# last changed: 2023-06-22
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file gpgme/gpgme-1.21.0-beta461.tar.xz
-chk 871c9eaa5abc2289f0199e971092e08d401728f336c4dbebcf008826a6c41643
+file gpgme/gpgme-1.21.0-beta463.tar.xz
+chk 68965570c3b244654b6e300af6c61f0fb663cc0c3397e12664de03b584eaeb04
 
 # gpgex
 # last changed: 2022-12-06
