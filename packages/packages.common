@@ -105,16 +105,6 @@ chk  50c39e85ea28b5ecfdb3f9e860afe9ba606381e21836b2849efca6a0bfe6ef6e
 
 
 #
-# Stripped down version of BZIP2
-# (full source at http://bzip.org)
-#
-server ftp://ftp.g10code.com/g10code/bzip2
-
-# checked: 2014-07-16 ah
-file bzip2-1.0.6-g10.tar.gz
-chk  c2a9b3aec1a38d34b66106116a39f64b01d84f475fef75c40ea0bda0ea67ed07
-
-#
 # GnuPG et al.
 #
 # All tarballs from this server are verified with an openpgp
@@ -122,6 +112,12 @@ chk  c2a9b3aec1a38d34b66106116a39f64b01d84f475fef75c40ea0bda0ea67ed07
 # gnupg main contributors.
 # Server changed from ftp to https by wk 2021-09-22
 server https://gnupg.org/ftp/gcrypt
+
+# Stripped down version of BZIP2
+# (full source at http://bzip.org)
+# checked: 2014-07-16 ah
+file bzip2/bzip2-1.0.6-g10.tar.gz
+chk  c2a9b3aec1a38d34b66106116a39f64b01d84f475fef75c40ea0bda0ea67ed07
 
 # last changed 2023-04-11
 # by wk
