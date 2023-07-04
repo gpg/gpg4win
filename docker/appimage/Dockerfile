@@ -76,12 +76,15 @@ RUN yum -y install \
         libjpeg-devel \
         libmount-devel \
         libpng-devel \
+        libtiff-devel \
         libusbx-devel \
         libxkbcommon-x11-devel \
         libzstd-devel \
         mesa-libEGL-devel \
         mesa-libGL-devel \
         mtdev-devel \
+        nss-devel \
+        openjpeg2-devel \
         openldap-devel \
         openssl11-devel \
         patch \

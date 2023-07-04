@@ -32,6 +32,7 @@ if [ -z "$1" ]; then
 fi
 
 FRAMEWORKS="extra-cmake-modules
+    kactivities
     kconfig
     ki18n
     kwidgetsaddons

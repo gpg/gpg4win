@@ -365,6 +365,7 @@ fi
 if test "$build_appimage" = yes ; then
     appimage_dup_sources=""
 
+    APPIMAGE_SPKG([freetype])
     APPIMAGE_SPKG([sqlite])
 
     APPIMAGE_SPKG([libgpg-error])
@@ -383,7 +384,7 @@ if test "$build_appimage" = yes ; then
     # Qt related stuff.
     # (dependency on gnupg is only to make sure gnupg is build first so
     #  that we don't need to wait for the long running Qt builds)
-    APPIMAGE_SPKG([qtbase], [gnupg])
+    APPIMAGE_SPKG([qtbase], [freetype gnupg])
     APPIMAGE_SPKG([qttools], [qtbase])
     APPIMAGE_SPKG([qttranslations], [qtsvg qttools qtx11extras])
     APPIMAGE_SPKG([qtx11extras], [qtbase])
@@ -407,8 +408,10 @@ if test "$build_appimage" = yes ; then
     APPIMAGE_KDEPKG([kwindowsystem], [qtbase qtx11extras extra-cmake-modules])
     APPIMAGE_KDEPKG([solid], [qtbase extra-cmake-modules])
     APPIMAGE_KDEPKG([sonnet], [qtbase extra-cmake-modules])
+    APPIMAGE_KDEPKG([threadweaver], [qtbase extra-cmake-modules])
 
     # KDE Frameworks Tier 2
+    APPIMAGE_KDEPKG([kactivities], [kwindowsystem])
     APPIMAGE_KDEPKG([kcompletion], [kwidgetsaddons])
     APPIMAGE_KDEPKG([kcrash], [kwindowsystem kcoreaddons])
     APPIMAGE_KDEPKG([kjobwidgets], [kwidgetsaddons kcoreaddons qtbase extra-cmake-modules])
@@ -421,12 +424,18 @@ if test "$build_appimage" = yes ; then
     APPIMAGE_KDEPKG([kbookmarks], [kconfig kxmlgui kcoreaddons kconfigwidgets kwidgetsaddons kcodecs])
     APPIMAGE_KDEPKG([kservice], [kconfig kcoreaddons ki18n])
     APPIMAGE_KDEPKG([kio], [kcrash kjobwidgets solid kservice kbookmarks kwidgetsaddons kxmlgui kwindowsystem karchive kconfig kcoreaddons ki18n kauth])
+    APPIMAGE_KDEPKG([kparts], [kio kservice kxmlgui kconfigwidgets kwidgetsaddons ktextwidgets])
 
     # KDE PIM
     APPIMAGE_KDEPKG([kmime], [kcodecs ki18n])
     APPIMAGE_KDEPKG([libkleo], [kmime kconfigwidgets kwindowsystem kcompletion gpgme])
 
     APPIMAGE_KDEPKG([kleopatra], [gnupg gpgme breeze-icons kio kxmlgui libkleo kitemmodels qttranslations kdbusaddons])
+
+    # Okular/Poppler
+#    APPIMAGE_KDEPKG([poppler], [libpng openjpeg tiff gpgme kio qtbase freetype])
+    APPIMAGE_KDEPKG([poppler], [gpgme kio qtbase freetype])
+    APPIMAGE_KDEPKG([okular], [kparts gpgme kio poppler threadweaver qtsvg kactivities])
 
     APPIMAGE_FINALIZE
 fi
