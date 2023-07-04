@@ -29,7 +29,8 @@ stampdir := $(root)/stamps
 
 # Source packages for the AppImage (see also ../src/Makefile.am)
 appimage_spkgs = sqlite libgpg-error libassuan npth libgcrypt libksba gnupg \
-		 pinentry gpgme paperkey ntbtls
+		 pinentry gpgme paperkey ntbtls \
+		 freetype
 
 
 appimage_pkg_libgpg_error_configure = --enable-install-gpg-error-config
@@ -45,7 +46,8 @@ appimage_kdepkgs = kconfig kwidgetsaddons ki18n extra-cmake-modules \
 		   kiconthemes kleopatra breeze-icons kitemmodels karchive \
 		   kcrash kdbusaddons kio kbookmarks kservice solid \
 		   kjobwidgets \
-		   sonnet ktextwidgets kauth
+		   sonnet ktextwidgets kauth \
+		   threadweaver kparts poppler okular kactivities
 
 # Binary packages for the AppImage
 # appimage_bpkgs =
@@ -146,6 +148,11 @@ endef
 # do not create the huge icon resource files
 appimage_pkg_breeze_icons_configure = -DBINARY_ICONS_RESOURCE=OFF
 
+appimage_pkg_kactivities_configure = \
+    -DBOOST_INCLUDEDIR=/usr/include/boost169 \
+    -DBOOST_LIBRARYDIR=/usr/lib64/boost169 \
+    -DKACTIVITIES_LIBRARY_ONLY=ON
+
 appimage_pkg_kcompletion_configure = \
     -DBUILD_DESIGNERPLUGIN=OFF
 
@@ -185,6 +192,11 @@ appimage_pkg_kleopatra_configure = \
     -DDISABLE_KWATCHGNUPG=ON \
     -DRELEASE_SERVICE_VERSION=AppImage-$(VERSION)
 
+appimage_pkg_poppler_configure = \
+    -DENABLE_BOOST=OFF
+
+appimage_pkg_okular_configure = \
+    -DFORCE_NOT_REQUIRED_DEPENDENCIES="KF5Wallet\;KF5DocTools\;KF5JS\;KF5Purpose\;Qt5TextToSpeech\;Phonon4Qt5\;LibSpectre\;KF5KExiv2\;CHM\;KF5KHtml\;LibZip\;DjVuLibre\;EPub\;QMobipocket\;Discount"
 
 ########################################################################
 

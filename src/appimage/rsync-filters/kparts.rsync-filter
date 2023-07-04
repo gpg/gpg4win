@@ -1,0 +1,8 @@
+- /include/
+- /lib64/
+- /mkspecs/
+
+- /share/kdevappwizard/
++ /share/kservicetypes5/
++ /share/locale/
+- /share/qlogging-categories5/

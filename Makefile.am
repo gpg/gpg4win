@@ -73,14 +73,18 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
              patches/kparts/disable-jobuidelegate.patch \
              patches/sonnet/0001-W32-Force-ispellchecker-for-sonnet.patch \
              patches/jpeg/fix-redefine.patch \
-             patches-appimage/qtwayland-5.15.0/00-disable-wayland-server.patch \
-             patches-appimage/libkleo/set-cxx-standard.patch \
-             patches-appimage/kmime/set-cxx-standard.patch \
-             patches-appimage/qtsvg/CVE-2023-32573-qtsvg-5.15.patch \
-             patches-appimage/qtbase/CVE-2023-32763-qtbase-5.15.diff \
-             patches-appimage/libkleo/gpg4win-check.patch \
              patches-appimage/kleopatra/0001-Revert-new-dependency-to-KCMUtils.patch \
-             patches-appimage/kleopatra/require-ecm-5.104.patch
+             patches-appimage/kleopatra/require-ecm-5.104.patch \
+             patches-appimage/kmime/set-cxx-standard.patch \
+             patches-appimage/libkleo/gpg4win-check.patch \
+             patches-appimage/libkleo/set-cxx-standard.patch \
+             patches-appimage/okular/0001-Disable-comicbook-generator.patch \
+             patches-appimage/okular/0001-Include-stdarg.h-for-va_start-and-va_end.patch \
+             patches-appimage/okular/lower-cmake-requirement.patch \
+             patches-appimage/poppler/fix-gpg-error-include.patch \
+             patches-appimage/qtbase/CVE-2023-32763-qtbase-5.15.diff \
+             patches-appimage/qtsvg/CVE-2023-32573-qtsvg-5.15.patch \
+             patches-appimage/qtwayland-5.15.0/00-disable-wayland-server.patch
 
 copy-news:
 	cp NEWS doc/website/NEWS.last

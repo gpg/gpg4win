@@ -79,7 +79,8 @@ define SETVARS
 	pkgmkdir="$(call GETVAR,appimage_pkg_$(1)_make_dir)";             \
 	pkgmkdir_inst="$(call GETVAR,appimage_pkg_$(1)_make_dir)"; \
 	pkgrsyncfilter="$(rsyncfilterdir)/$(1).rsync-filter"; \
-	export PKG_CONFIG_PATH="$(idir)/lib/pkgconfig";			\
+	export PKG_CONFIG_PATH="$(idir)/lib/pkgconfig:$(idir)/lib64/pkgconfig";	\
+	export FREETYPE_DIR="$(idir)"					\
 	export PATH="$(idir)/bin:$${PATH}"
 endef
 

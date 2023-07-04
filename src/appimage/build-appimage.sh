@@ -62,7 +62,7 @@ if [ $GNUPG_BUILD_VSD = yes ]; then
 fi
 
 export PATH=/opt/linuxdeploy/usr/bin:$PATH
-export LD_LIBRARY_PATH=/build/install/lib
+export LD_LIBRARY_PATH=/build/install/lib:/build/install/lib64
 
 # tell the linuxdeploy qt-plugin where to find qmake
 export QMAKE=/build/install/bin/qmake
@@ -75,10 +75,24 @@ export QMAKE=/build/install/bin/qmake
 mkdir -p /build/install/plugins/sqldrivers
 
 # copy KDE plugins
-for d in iconengines kf5 pim5; do
+for d in iconengines kauth kf5 okular pim5 plasma; do
     mkdir -p /build/AppDir/usr/plugins/${d}/
     rsync -av --delete --omit-dir-times /build/install/lib64/plugins/${d}/ /build/AppDir/usr/plugins/${d}/
 done
+cp -av /build/install/lib64/plugins/okularpart.so /build/AppDir/usr/plugins/
+
+mkdir -p /build/AppDir/usr/lib
+# copy dependencies of the plugins
+# okularGenerator_*.so
+cp -av /build/install/lib/libfreetype* /build/AppDir/usr/lib
+# okularGenerator_poppler.so
+cp -av /build/install/lib64/libpoppler* /build/AppDir/usr/lib
+# okularGenerator_tiff.so
+cp -av /usr/lib64/libtiff.so* /build/AppDir/usr/lib
+
+# copy other libraries that are loaded dynamically
+mkdir -p /build/AppDir/usr/lib
+cp -av /build/install/lib64/libOkular5Core.so* /build/AppDir/usr/lib
 
 cd /build
 # Remove existing AppRun and wrapped AppRun, that may be left over
@@ -138,6 +152,18 @@ for f in dirmngr_ldap gpg-check-pattern \
     /opt/linuxdeploy/usr/bin/patchelf \
               --set-rpath '$ORIGIN/../lib' /build/AppDir/usr/libexec/$f || true
 done
+
+# linuxdeploy also doesn't know about non-Qt plugins
+for d in iconengines kauth kf5 okular pim5 plasma; do
+    for f in $(find /build/AppDir/usr/plugins/${d}/ -mindepth 1 -maxdepth 1 -type f); do
+        /opt/linuxdeploy/usr/bin/patchelf --set-rpath '$ORIGIN/../../lib' $f
+    done
+    for f in $(find /build/AppDir/usr/plugins/${d}/ -mindepth 2 -maxdepth 2 -type f); do
+        /opt/linuxdeploy/usr/bin/patchelf --set-rpath '$ORIGIN/../../../lib' $f
+    done
+done
+/opt/linuxdeploy/usr/bin/patchelf \
+        --set-rpath '$ORIGIN/../lib' /build/AppDir/usr/plugins/okularpart.so
 
 # Fix up everything and build the file system
 linuxdeploy --appdir /build/AppDir \
