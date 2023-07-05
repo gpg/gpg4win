@@ -25,11 +25,13 @@ po/nsis-msgfmt
 patches/gnupg2/01-version.patch
 src/gpg4win.mk
 src/mingwm10.dll
+/packages/*.exe
 /packages/*.tar.gz
 /packages/*.tar.bz2
 /packages/*.zip
 /packages/*.tar.bz2
 /packages/*.tar.xz
+/packages/*.wixlib
 /gpg4win-2.*.*-git???????/
 /packages/packages.current.sig
 /src/playground
