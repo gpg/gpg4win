@@ -1,0 +1,422 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From 698d6b3366e361cdbb9a7536493806033fc92390 Mon Sep 17 00:00:00 2001
+From: Sune Vuorela <sune@vuorela.dk>
+Date: Mon, 3 Jul 2023 16:52:44 +0200
+Subject: [PATCH] Allow dbus to be disabled
+
+In certain usecases, especially for non-linux desktop builds, the
+advantage of of dbus is often limited. Provide a way to disable
+building with dbus.
+
+Note that this also disables the related functionalities of having a
+second okular launch open the document in the first okular.
+
+This also disables the unit tests that tests those features.
+---
+ CMakeLists.txt              | 12 +++++++++++-
+ autotests/mainshelltest.cpp | 12 ++++++++++++
+ config-okular.h.cmake       |  3 +++
+ part/part.cpp               |  6 ++++++
+ part/part.h                 |  8 ++++++--
+ part/presentationwidget.cpp | 13 +++++++++++--
+ shell/CMakeLists.txt        |  5 ++++-
+ shell/main.cpp              |  1 -
+ shell/okular_main.cpp       | 14 ++++++++++++--
+ shell/shell.cpp             |  6 ++++++
+ shell/shell.h               |  5 +++++
+ 11 files changed, 76 insertions(+), 9 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index cc92b92580..dfeecd81df 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -151,7 +151,14 @@ else()
+ endif()
+
+ if (BUILD_DESKTOP)
+-    find_package(Qt5 ${QT_REQUIRED_VERSION} CONFIG REQUIRED COMPONENTS DBus)
++    find_package(Qt5DBus)
++    set_okular_optional_package_properties(Qt5DBus PROPERTIES
++        PURPOSE "Required for interprocess communication, external open in same instance and various presentation related bits.")
++    if(TARGET Qt5::DBus)
++        set(HAVE_DBUS 1)
++    else()
++        set(HAVE_DBUS 0)
++    endif()
+     find_package(KF5 ${KF5_REQUIRED_VERSION} REQUIRED COMPONENTS Parts Crash IconThemes TextWidgets)
+
+     find_package(KF5Purpose)
+@@ -595,6 +602,9 @@ target_link_libraries(okularpart okularcore
+     KF5::WindowSystem
+     KF5::TextWidgets
+ )
++if (TARGET Qt5::DBus)
++    target_link_libraries(okularpart Qt5::DBus)
++endif()
+ if (Phonon4Qt5_FOUND)
+    target_link_libraries(okularpart Phonon::phonon4qt5)
+ endif()
+diff --git a/autotests/mainshelltest.cpp b/autotests/mainshelltest.cpp
+index 35912305ac..efbececbff 100644
+--- a/autotests/mainshelltest.cpp
++++ b/autotests/mainshelltest.cpp
+@@ -7,12 +7,16 @@
+ // clazy:excludeall=qstring-allocations
+
+ #include <QTest>
++#include <config-okular.h>
+
+ #include <KConfigGroup>
+ #include <KLineEdit>
+ #include <KRecentFilesAction>
++
++#if HAVE_DBUS
+ #include <QDBusConnection>
+ #include <QDBusConnectionInterface>
++#endif // HAVE_DBUS
+ #include <QPrintDialog>
+ #include <QStandardPaths>
+ #include <QTabBar>
+@@ -141,10 +145,12 @@ void MainShellTest::initTestCase()
+     Okular::Settings::instance(QStringLiteral("mainshelltest"));
+
+     // Register in bus as okular
++#if HAVE_DBUS
+     QDBusConnectionInterface *bus = QDBusConnection::sessionBus().interface();
+     const QString myPid = QString::number(getpid());
+     const QString serviceName = QStringLiteral("org.kde.okular-") + myPid;
+     QVERIFY(bus->registerService(serviceName) == QDBusConnectionInterface::ServiceRegistered);
++#endif
+
+     // Tell the presentationWidget and queryClose to not be annoying
+     KSharedConfigPtr c = KSharedConfig::openConfig();
+@@ -215,11 +221,14 @@ void MainShellTest::testShell_data()
+     QTest::newRow("two files no tabs") << file1AndToc << QString() << false << QString() << 0u << false << false << false << 0u << false << false << QString();
+     QTest::newRow("two files with tabs") << file1AndToc << QString() << true << QString() << 0u << false << false << false << 0u << false << false << QString();
+     QTest::newRow("two files sequence no tabs") << file1 << QString() << false << tocReload << 0u << false << false << false << 0u << false << false << QString();
++#if HAVE_DBUS
+     QTest::newRow("two files sequence with tabs") << file1 << QString() << true << tocReload << 0u << false << false << false << 0u << false << false << QString();
++#endif // HAVE_DBUS
+     QTest::newRow("open file page number") << contentsEpub << optionsPage2 << false << QString() << 1u << false << false << false << 0u << false << false << QString();
+     QTest::newRow("open file page number and presentation") << contentsEpub << optionsPage2Presentation << false << QString() << 1u << true << false << false << 0u << false << false << QString();
+     QTest::newRow("open file find") << file1 << optionsFind << false << QString() << 0u << false << false << false << 0u << false << false << QStringLiteral("si:next-testing parameters!");
+     QTest::newRow("open file print") << file1 << optionsPrint << false << QString() << 0u << false << true << false << 0u << false << false << QString();
++#if HAVE_DBUS
+     QTest::newRow("open two files unique") << file1 << optionsUnique << false << tocReload << 0u << false << false << true << 0u << false << false << QString();
+     QTest::newRow("open two files unique tabs") << file1 << optionsUnique << true << tocReload << 0u << false << false << true << 0u << false << false << QString();
+     QTest::newRow("page number attach tabs") << file1 << QString() << true << contentsEpub[0] << 0u << false << false << false << 2u << false << false << QString();
+@@ -231,6 +240,7 @@ void MainShellTest::testShell_data()
+     QTest::newRow("page number attach unique tabs") << file1 << optionsUnique << true << contentsEpub[0] << 0u << false << false << true << 3u << false << false << QString();
+     QTest::newRow("presentation attach unique tabs") << file1 << optionsUnique << true << contentsEpub[0] << 0u << false << false << true << 2u << true << false << QString();
+     QTest::newRow("print attach unique tabs") << file1 << optionsUnique << true << contentsEpub[0] << 0u << false << false << true << 2u << false << true << QString();
++#endif // HAVE_DBUS
+ }
+
+ void MainShellTest::testShell()
+@@ -473,8 +483,10 @@ void MainShellTest::test2FilesError_data()
+
+     QTest::newRow("startInPresentation") << ShellUtils::serializeOptions(true, false, false, false, false, QString(), QString(), QString());
+     QTest::newRow("showPrintDialog") << ShellUtils::serializeOptions(false, true, false, false, false, QString(), QString(), QString());
++#if HAVE_DBUS
+     QTest::newRow("unique") << ShellUtils::serializeOptions(false, false, false, true, false, QString(), QString(), QString());
+     QTest::newRow("pageNumber") << ShellUtils::serializeOptions(false, false, false, false, false, QStringLiteral("3"), QString(), QString());
++#endif // HAVE_DBUS
+     QTest::newRow("find") << ShellUtils::serializeOptions(false, false, false, false, false, QString(), QStringLiteral("silly"), QString());
+ }
+
+diff --git a/config-okular.h.cmake b/config-okular.h.cmake
+index d6e0f1f086..4f455562eb 100644
+--- a/config-okular.h.cmake
++++ b/config-okular.h.cmake
+@@ -21,3 +21,6 @@
+
+ /* Defines wheter we are building with Phonon support */
+ #cmakedefine01 HAVE_PHONON
++
++/* Defines whether we are building with dbus enabled */
++#cmakedefine01 HAVE_DBUS
+diff --git a/part/part.cpp b/part/part.cpp
+index a748cedd55..d0839321eb 100644
+--- a/part/part.cpp
++++ b/part/part.cpp
+@@ -27,7 +27,9 @@
+ // qt/kde includes
+ #include <QApplication>
+ #include <QContextMenuEvent>
++#if HAVE_DBUS
+ #include <QDBusConnection>
++#endif // HAVE_DBUS
+ #include <QDialog>
+ #include <QDialogButtonBox>
+ #include <QFile>
+@@ -327,6 +329,7 @@ Part::Part(QWidget *parentWidget, QObject *parent, const QVariantList &args)
+
+     setupConfigSkeleton(args, componentName());
+
++#if HAVE_DBUS
+     numberOfParts++;
+     if (numberOfParts == 1) {
+         m_registerDbusName = QStringLiteral("/okular");
+@@ -334,6 +337,7 @@ Part::Part(QWidget *parentWidget, QObject *parent, const QVariantList &args)
+         m_registerDbusName = QStringLiteral("/okular%1").arg(numberOfParts);
+     }
+     QDBusConnection::sessionBus().registerObject(m_registerDbusName, this, QDBusConnection::ExportScriptableSlots);
++#endif // HAVE_DBUS
+
+     // connect the started signal to tell the job the mimetypes we like,
+     // and get some more information from it
+@@ -990,7 +994,9 @@ void Part::setupActions()
+
+ Part::~Part()
+ {
++#if HAVE_DBUS
+     QDBusConnection::sessionBus().unregisterObject(m_registerDbusName);
++#endif // HAVE_DBUS
+
+     m_document->removeObserver(this);
+
+diff --git a/part/part.h b/part/part.h
+index ef08481630..8eb6b48f40 100644
+--- a/part/part.h
++++ b/part/part.h
+@@ -15,7 +15,13 @@
+ #ifndef _PART_H_
+ #define _PART_H_
+
++#include <config-okular.h>
++
++#if HAVE_DBUS
+ #include <QDBusAbstractAdaptor> // for Q_NOREPLY
++#else                           // HAVE_DBUS
++#define Q_NOREPLY
++#endif // HAVE_DBUS
+ #include <QIcon>
+ #include <QList>
+ #include <QPointer>
+@@ -35,8 +41,6 @@
+
+ #include "okularpart_export.h"
+
+-#include <config-okular.h>
+-
+ class QAction;
+ class QWidget;
+ class QPrinter;
+diff --git a/part/presentationwidget.cpp b/part/presentationwidget.cpp
+index bd5192c534..40a220d93a 100644
+--- a/part/presentationwidget.cpp
++++ b/part/presentationwidget.cpp
+@@ -5,11 +5,14 @@
+ */
+
+ #include "presentationwidget.h"
++#include "config-okular.h"
+
+ // qt/kde includes
++#if HAVE_DBUS
+ #include <QDBusConnection>
+ #include <QDBusMessage>
+ #include <QDBusReply>
++#endif
+ #include <QLoggingCategory>
+
+ #include <KActionCollection>
+@@ -39,7 +42,9 @@
+ #include <QValidator>
+
+ #ifdef Q_OS_LINUX
++#if HAVE_DBUS
+ #include <QDBusUnixFileDescriptor>
++#endif
+ #include <unistd.h> // For ::close() for sleep inhibition
+ #endif
+
+@@ -1697,6 +1702,7 @@ void PresentationWidget::setScreen(const QScreen *newScreen)
+
+ void PresentationWidget::inhibitPowerManagement()
+ {
++#if HAVE_DBUS
+ #ifdef Q_OS_LINUX
+     QString reason = i18nc("Reason for inhibiting the screensaver activation, when the presentation mode is active", "Giving a presentation");
+
+@@ -1730,11 +1736,13 @@ void PresentationWidget::inhibitPowerManagement()
+             qCWarning(OkularUiDebug) << "Unable to inhibit sleep" << reply.error();
+         }
+     }
+-#endif
++#endif // Q_OS_LINUX
++#endif // HAVE_DBUS
+ }
+
+ void PresentationWidget::allowPowerManagement()
+ {
++#if HAVE_DBUS
+ #ifdef Q_OS_LINUX
+     if (m_sleepInhibitFd != -1) {
+         ::close(m_sleepInhibitFd);
+@@ -1750,7 +1758,8 @@ void PresentationWidget::allowPowerManagement()
+
+         m_screenInhibitCookie = 0;
+     }
+-#endif
++#endif // Q_OS_LINUX
++#endif // HAVE_DBUS
+ }
+
+ void PresentationWidget::showTopBar(bool show)
+diff --git a/shell/CMakeLists.txt b/shell/CMakeLists.txt
+index 597f0b74ce..f550514dcc 100644
+--- a/shell/CMakeLists.txt
++++ b/shell/CMakeLists.txt
+@@ -23,7 +23,10 @@ ecm_add_app_icon(okular_SRCS ICONS ${ICONS_SRCS})
+
+ add_executable(okular ${okular_SRCS})
+
+-target_link_libraries(okular KF5::I18n KF5::Parts KF5::WindowSystem KF5::Crash KF5::IconThemes Qt5::DBus)
++target_link_libraries(okular KF5::I18n KF5::Parts KF5::WindowSystem KF5::Crash KF5::IconThemes)
++if (TARGET Qt5::DBus)
++    target_link_libraries(okular Qt5::DBus)
++endif()
+ if(TARGET KF5::Activities)
+     target_compile_definitions(okular PUBLIC -DWITH_KACTIVITIES=1)
+
+diff --git a/shell/main.cpp b/shell/main.cpp
+index 35f3aea654..dd08abeafa 100644
+--- a/shell/main.cpp
++++ b/shell/main.cpp
+@@ -21,7 +21,6 @@
+ #include <QApplication>
+ #include <QCommandLineOption>
+ #include <QCommandLineParser>
+-#include <QDBusInterface>
+ #include <QTextStream>
+ #include <QtGlobal>
+
+diff --git a/shell/okular_main.cpp b/shell/okular_main.cpp
+index cfb74c1141..3931355052 100644
+--- a/shell/okular_main.cpp
++++ b/shell/okular_main.cpp
+@@ -16,8 +16,6 @@
+ #include <KLocalizedString>
+ #include <KWindowSystem>
+ #include <QApplication>
+-#include <QDBusConnectionInterface>
+-#include <QDBusInterface>
+ #include <QMimeData>
+ #include <QTemporaryFile>
+ #include <QTextStream>
+@@ -26,6 +24,10 @@
+ #if HAVE_X11
+ #include <QX11Info>
+ #endif
++#if HAVE_DBUS
++#include <QDBusConnectionInterface>
++#include <QDBusInterface>
++#endif // HAVE_DBUS
+
+ #include <iostream>
+
+@@ -46,6 +48,7 @@ static QString startupId()
+
+ static bool attachUniqueInstance(const QStringList &paths, const QString &serializedOptions)
+ {
++#if HAVE_DBUS
+     if (!ShellUtils::unique(serializedOptions) || paths.count() != 1) {
+         return false;
+     }
+@@ -69,11 +72,15 @@ static bool attachUniqueInstance(const QStringList &paths, const QString &serial
+     }
+
+     return true;
++#else  // HAVE_DBUS
++    return false;
++#endif // HAVE_DBUS
+ }
+
+ // Ask an existing non-unique instance to open new tabs
+ static bool attachExistingInstance(const QStringList &paths, const QString &serializedOptions)
+ {
++#if HAVE_DBUS
+     if (paths.count() < 1) {
+         return false;
+     }
+@@ -162,6 +169,9 @@ static bool attachExistingInstance(const QStringList &paths, const QString &seri
+     bestService->call(QStringLiteral("tryRaise"), startupId());
+
+     return true;
++#else  // HAVE_DBUS
++    return false;
++#endif // HAVE_DBUS
+ }
+
+ namespace Okular
+diff --git a/shell/shell.cpp b/shell/shell.cpp
+index 54c10bd44f..b1728484f2 100644
+--- a/shell/shell.cpp
++++ b/shell/shell.cpp
+@@ -36,7 +36,9 @@
+ #include <KWindowSystem>
+ #include <KXMLGUIFactory>
+ #include <QApplication>
++#if HAVE_DBUS
+ #include <QDBusConnection>
++#endif // HAVE_DBUS
+ #include <QDockWidget>
+ #include <QDragMoveEvent>
+ #include <QFileDialog>
+@@ -239,6 +241,7 @@ Shell::Shell(const QString &serializedOptions)
+         readSettings();
+
+         m_unique = ShellUtils::unique(serializedOptions);
++#if HAVE_DBUS
+         if (m_unique) {
+             m_unique = QDBusConnection::sessionBus().registerService(QStringLiteral("org.kde.okular"));
+             if (!m_unique) {
+@@ -260,6 +263,7 @@ Shell::Shell(const QString &serializedOptions)
+         }
+
+         QDBusConnection::sessionBus().registerObject(QStringLiteral("/okularshell"), this, QDBusConnection::ExportScriptableSlots);
++#endif // HAVE_DBUS
+
+         // Make sure that the welcome scren is visible on startup.
+         showWelcomeScreen();
+@@ -335,9 +339,11 @@ Shell::~Shell()
+         }
+         m_tabs.clear();
+     }
++#if HAVE_DBUS
+     if (m_unique) {
+         QDBusConnection::sessionBus().unregisterService(QStringLiteral("org.kde.okular"));
+     }
++#endif // HAVE_DBUS
+
+     delete m_tabWidget;
+ }
+diff --git a/shell/shell.h b/shell/shell.h
+index a062214b7c..e285f1bfc6 100644
+--- a/shell/shell.h
++++ b/shell/shell.h
+@@ -12,6 +12,7 @@
+ #ifndef _OKULAR_SHELL_H_
+ #define _OKULAR_SHELL_H_
+
++#include "config-okular.h"
+ #include <QAction>
+ #include <QList>
+ #include <QMimeDatabase>
+@@ -19,7 +20,11 @@
+ #include <kparts/mainwindow.h>
+ #include <kparts/readwritepart.h>
+
++#if HAVE_DBUS
+ #include <QDBusAbstractAdaptor> // for Q_NOREPLY
++#else
++#define Q_NOREPLY
++#endif
+ #include <QStackedWidget>
+
+ #include "welcomescreen.h"
+--

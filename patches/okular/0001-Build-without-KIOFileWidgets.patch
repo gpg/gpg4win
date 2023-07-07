@@ -1,0 +1,99 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From edefd0e3e750849edd0008f28cd4d670b3fb7af2 Mon Sep 17 00:00:00 2001
+From: Andre Heinecke <aheinecke@gnupg.org>
+Date: Tue, 13 Jun 2023 14:56:49 +0200
+Subject: [PATCH] Build without KIOFilewidgets and DBUS
+
+---
+ CMakeLists.txt              |  9 ++++++---
+ part/part.cpp               | 16 ++++++++++++++++
+ part/part.h                 |  4 ++++
+ part/presentationwidget.cpp |  6 +++---
+ shell/CMakeLists.txt        |  7 ++++++-
+ shell/main.cpp              |  1 -
+ shell/okular_main.cpp       | 11 +++++++++++
+ shell/shell.cpp             |  9 ++++++++-
+ shell/shell.h               |  6 +++++-
+ shell/welcomescreen.cpp     |  9 +++++++++
+ 10 files changed, 68 insertions(+), 10 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index b66bd756f..a335cfcc4 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -588,13 +591,13 @@ target_link_libraries(okularpart okularcore
+     KF5::IconThemes
+     KF5::ItemViews
+     KF5::KIOCore
+-    KF5::KIOFileWidgets
+     KF5::KIOWidgets
+     KF5::Parts
+     KF5::Solid
+     KF5::WindowSystem
+     KF5::TextWidgets
+ )
++
+ if (Phonon4Qt5_FOUND)
+    target_link_libraries(okularpart Phonon::phonon4qt5)
+ endif()
+diff --git a/part/part.cpp b/part/part.cpp
+index 9c22672cf..68303e5b0 100644
+--- a/part/part.cpp
++++ b/part/part.cpp
+@@ -125,6 +128,11 @@
+ #include <memory>
+ #include <type_traits>
+
++#ifdef Q_OS_WIN
++#include <windows.h>
++#include <shellapi.h>
++#endif
++
+ #ifdef OKULAR_KEEP_FILE_OPEN
+ class FileKeeper
+ {
+@@ -3873,7 +3885,11 @@ void Part::setEditorCmd(const QString &editorCmd)
+
+ void Part::slotOpenContainingFolder()
+ {
++#ifdef Q_OS_WIN
++    ShellExecuteW(NULL, L"explore", (wchar_t *)localFilePath().utf16(), NULL, NULL, SW_SHOWDEFAULT);
++#else
+     KIO::highlightInFileManager({QUrl(localFilePath())});
++#endif
+ }
+
+ } // namespace Okular
+diff --git a/shell/welcomescreen.cpp b/shell/welcomescreen.cpp
+index 1e4bff15e..1066c5f18 100644
+--- a/shell/welcomescreen.cpp
++++ b/shell/welcomescreen.cpp
+@@ -21,6 +21,11 @@
+
+ #include "recentitemsmodel.h"
+
++#ifdef Q_OS_WIN
++#include <windows.h>
++#include <shellapi.h>
++#endif
++
+ class RecentsListItemDelegate : public QStyledItemDelegate
+ {
+     Q_OBJECT
+@@ -78,7 +83,11 @@ public:
+                 showDirectoryAction->setIcon(QIcon::fromTheme(QStringLiteral("document-open-folder")));
+                 connect(showDirectoryAction, &QAction::triggered, this, [item]() {
+                     if (item->url.isLocalFile()) {
++#ifdef Q_OS_WIN
++                        ShellExecuteW(NULL, L"explore", (wchar_t *)item->url.toLocalFile().utf16(), NULL, NULL, SW_SHOWDEFAULT);
++#else
+                         KIO::highlightInFileManager({item->url});
++#endif
+                     }
+                 });
+                 menu.addAction(showDirectoryAction);
+--
+2.41.0
