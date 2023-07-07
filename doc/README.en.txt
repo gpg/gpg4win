@@ -66,71 +66,163 @@ Included Gpg4win components in version !VERSION! are:
 New in Gpg4win version !VERSION! (!BUILD_ISODATE!)
 -----------------------------------------
 
-- GPA: So long, and thanks for all the fish.  To reduce maintenance
-  and overall quality of Gpg4win we have decided to retire
-  GPA. Over the last decade Kleopatra has made large improvements
-  in quality and is very well maintained and the focus of our
-  development.  [rW3f7ed3834f]
+--- General ---
+
+- Okular (GnuPG Edition): Gpg4win has been extended with the popular
+  Okular PDF Viewer.  Although our Okular version is currently considered
+  experimental and therefore not installed by default, this provides the
+  ability to legally sign and verify documents with the S/MIME certificates
+  and smart cards GnuPG supports.
+  The GnuPG Edition of Okular is optimized to be lightweight and to provide
+  as little attack surface as possible. It does not support any active
+  content like JavaScript or media files in PDF documents. It should
+  therefore be more suitable in high security environments than other
+  PDF readers.
+
+  See: TODO: Link auf Neuigkeiten.
+
+- GnuPG: The new component "keyboxd" is now enabled by default for new users
+  of Gpg4win. keyboxd stores certificates (public keys) in an sqlite
+  database and keeps it in memory.  The resulting performance improvement
+  can be quite large especially for users with large keyrings.
+
+  Adventuresome users can enable it manually:
+  Select all certificates in Kleopatra and export them with a right click.
+  Add a file %APPDATA%\gnupg\common.conf with the contents
+  "use-keyboxd" (without the quote marks), then restart Kleopatra and
+  import your certificates again.
+
+  As usual we caution to make a backup of the %APPDATA%\gnupg directory
+  before modifying files in there.
+
+  To switch back to the old behavior, add a "#" character in front of
+  the "use-keyboxd" and restart Kleopatra. Where applicable you have to
+  export the certificate before and import them again after the restart.
+
+- mkportable has been removed. Please see:
+  https://wiki.gnupg.org/Gpg4win/PortableVersion
+  on how to create a portable version of Gpg4win.
 
 --- Features ---
 
-- GnuPG: Improve signature verification speed by a factor of more
-  than four.  Double detached signing speed.  [T5826]
+- Kleopatra: Folder encryption and decryption (gpgtar) has been completely
+  reworked so that it now has roughly the same performance as on the
+  command line. The new architecture also allows for further performance
+  improvements in the future and is much more robust.  And solves several
+  issues.  [T5478 T6488 T6499 et.al.]
 
-- GnuPG: Import stray revocation certificates to improve WKD
-  usability.
+- Kleopatra: The progress indicator now also works for very large data
+  files. [T6534]
 
-- GnuPG: New option --add-revocs for gpg-wks-client.  [rG2f4492f3be]
+- Kleopatra: It is now possible to rename the output file, if a file
+  with the same name already exists, instead of just overwriting or
+  canceling. [T6372]
 
-- GnuPG: Ignore expired user-ids in gpg-wks-client.  [T6292]
+- Kleopatra: It is now offered to delete the secret key on the computer
+  after it was successfully transferred to a smart card. [T5836]
 
-- GnuPG: Support the Telesec Signature Card v2.0 in OpenPGP.
-  [T6252]
+- Kleopatra: Added warnings when your certificate or other certificates
+  in your keyring are about to expire.  The warnings are configurable
+  and should allow a smoother switch to a new or extended certificate.
+  [T6452]
 
-- GnuPG: For the new AEAD Format we now only allow the fast OCB
-  mode.  The EAX mode may still be used for decryption.
-  [rG5a2cef801d]
+- Kleopatra: The Notepad now also uses the last chosen certificates for
+  signing and self-encryption as default.
+  The values are shared with file encryption.[T6415]
 
-- Kleopatra: Support the import of non-standard conforming UTF-16
-  encoded text files with certificates.  [T6298]
+- Kleopatra: The startup time of Kleopatra has been slightly improved.
+  [T6259]
 
-- Kleopatra: New Option to delete the locally stored secret key
-  after a transfer to a smart card.  [T5836]
+- Kleopatra: The certificate selection input and dropdown fields are now
+  alphabetically sorted. [T6492, T6514]
 
-- Kleopatra: Improve the display of keys in the group edit
-  dialog. [T6295]
+- Kleopatra: Backed up subkeys can now be restored through the UI even when
+  they were used from a smart card in between. [T3456, T3391]
 
-- Kleopatra: Simplify changing the owner trust of keys.  [T6148]
+- Kleopatra: For certifications of public keys it is now possible to
+  configure a default validity period. [T6452]
 
-- Kleopatra: Allow selecting ECC with supported curves when
-  generating new keys for smart cards.  [T4429]
+- Kleopatra: When extending the validity period of a certificate,
+  the default for new ones is now preset. [T6479]
+
+- Kleopatra: The default validity of new certificates is now three years
+  instead of two. This can be changed through configuration. [T2701]
+
+- GpgOL: Now offers to create a OpenPGP certificate, if none with
+  signing capability exists and only signing is requested. [T5869]
+
+- GnuPG: The PKCS#12 (.p12 files) parser has been rewritten to increase
+  compatibility with other PKCS#12 implementations. [T6536]
+
+- GnuPG: S/MIME certificate listings have been sped up on Windows.
+  [rG08ff55bd44]
+
+- GnuPG: A new option "ADSK" has been added to signal the intention that
+  messages should be encrypted to multiple subkeys.
+  [T6395, https://gnupg.org/blog/20230321-adsk.html]
+
+- GnuPG: There are now more compressed formats detected for which GnuPG then
+  automatically disables its builtin compression. This can result in
+  significant speed ups. [T6332]
 
 --- Bug fixes ---
 
-- GnuPG: Update the X.509/CMS library Libksba to version 1.6.3 to
-  fix a security problem in the CRL signature parser.  [T6230]
+- Kleopatra: An accidental timeout when creating checksum files has been
+  removed. This could result in empty or incomplete checksum files. [T6573]
 
-- GnuPG: Fix trusted introducer for mbox only user-ids.  [T6238]
+- Kleopatra: The validity period of all subkeys is now extended
+  even if the primary key was already expired.
+  This fixes the case where seemingly extended keys were no
+  longer usable for encryption. [T6473]
 
-- GpgOL: IMAP access to encrypted mails works again.  [T6203]
+- Kleopatra: A rare occurrence, where encryption only keys would be offered
+  as signing keys, has been fixed. [T6456]
 
-- Kleopatra: Don't report success if the key signing job was
-  canceled.  [T6305]
+- Kleopatra: Transferring brainpool subkeys to smart cards now works again
+  directly in Kleopatra. [T6379]
 
-- Kleopatra: Report failed imports immediately when receiving the result.
-  [T6302]
+- Kleopatra: Some obsolete configuration options have been removed.
+  [T6326 T6327]
 
-- Kleopatra: Do not offer invalid S/MIME certificates for signing
-  or encryption.  [T6216]
+- Kleopatra: The button "What's this" in the right upper corner has
+  been removed, since it was only used in very few places. [T6318]
 
-- Kleopatra: Don't ask user to certify an imported expired or
-  revoked OpenPGP key.  [T6155]
+- Kleopatra: Canceling file operations now reliably cancels the underlying
+  backend operations, too. [T6524]
 
-- Kleopatra: Do not crash when closing details widget while
-  certificate dump is shown.  [T6180]
+- Kleopatra: A number of encoding problems when displaying output from the
+  backend have been solved. [T5960]
 
-- Kleopatra: Improve usability and accessibility of the notepad
-  operations.  [T6188]
+- Kleopatra: A cause for longer loading time of the certificate list at
+  startup was fixed. [T6261]
+
+- Kleopatra: Selecting cancel when exporting a secret subkey now properly
+  cancels instead of creating a file without the secret part. [T5755]
+
+- Kleopatra: When importing secret keys you do not want to mark as your own,
+  it is no longer asked multiple times if it is your own key. [T6474]
+
+- GnuPG/Kleopatra: Error handling for permission and write errors has
+  been improved across the board. [T6528]
+
+- GpgOL: An issue has been fixed where crypto mails would show up empty
+  if text/plain display was preferred. [T6357]
+
+- GpgOL: Fixed a crash that occurred when encrypting a mail with an
+  attachment without a file name. [T6546]
+
+- GpgOL: Category and flag changes now work again if the mail is
+  not displayed in a decrypted state when they are made. [T4127]
+
+- GpgOL: Added safeguards against a plain text leak back to the server
+  in a specific unusual configuration. (dd3ff839)
+
+- GnuPG: For a full list of the backend changes between GnuPG 2.4.0 in
+  Gpg4win-4.1.0 and GnuPG 2.4.3 in Gpg4win-4.2.0 please see:
+
+  2.4.1: https://lists.gnupg.org/pipermail/gnupg-announce/2023q2/000478.html
+  2.4.2: https://lists.gnupg.org/pipermail/gnupg-announce/2023q2/000479.html
+  2.4.3: https://lists.gnupg.org/pipermail/gnupg-announce/2023q3/000480.html
 
 3. Additional notes
 ===================
