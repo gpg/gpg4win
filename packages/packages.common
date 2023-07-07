@@ -518,30 +518,30 @@ file kmime/kmime-202303221649.tar.xz
 chk 0a26c6b7a1b921191e52ee17d8d131f606a1def9ed09e31074a1c7aed5c4c6b7
 
 # libkleo
-# last changed: 2023-06-29
+# last changed: 2023-07-07
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file libkleo/libkleo-202306291243.tar.xz
-chk 2799682fada297898669053fe4bce6069e9584c8604f91191851121fb6522306
+file libkleo/libkleo-202307071303.tar.xz
+chk fdfe10ee9c890a09a63f07133be7e152f902ea9f0eae68dde74db0f3f9cb1a71
 
 # kleopatra
-# last changed: 2023-06-29
+# last changed: 2023-07-07
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file kleopatra/kleopatra-202306291241.tar.xz
-chk 00d1bf37d2c3857d38a4b7526bb6989401792609bb4be5264f44aed124bf0153
+file kleopatra/kleopatra-202307071311.tar.xz
+chk f20b54ebf958515ad7c33567edadef1a823026f13ba5c6aec4ace94b9e352808
 
 # Okular and dependencies
 # poppler
-# last changed: 2023-05-31
+# last changed: 2023-07-07
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file poppler/poppler-202305311402.tar.xz
-chk cb86be10bb3f3f937e0bcba1adca74f0d0b610fd1072b409ea558c2af6882566
+file poppler/poppler-202307071312.tar.xz
+chk a78a6be3d49a46ee2ad59d568694efa32051ee23523f49d73bc66390f4e20c81
 
 # okular
-# last changed: 2023-05-31
+# last changed: 2023-07-07
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file okular/okular-202305311441.tar.xz
-chk 8645ebfc9cbd359daf2505de09d919f0cc89cf42b6bb6530a87b560f7d189397
+file okular/okular-202307071512.tar.xz
+chk 6c011b80a86c1f8f3bbc91ce50b12af33ecb115b4860f491701a5fd5e36242f8
