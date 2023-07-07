@@ -353,10 +353,6 @@ msgid ""
 "Register GnuPG as native messaging service e.g. for the Mailvelope extension."
 msgstr "将 GnuPG 注册为本机消息服务，用于例如 MailDevelope 扩展。"
 
-msgctxt "T_Sign_Encrypt"
-msgid "Sign/Encrypt"
-msgstr ""
-
 msgctxt "DESC_SEC_kleopatra"
 msgid "Keymanager for OpenPGP and X.509 and common crypto dialogs."
 msgstr "OpenPGP 和 X.509 密钥管理器和通用加解密窗口。"

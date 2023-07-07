@@ -374,10 +374,6 @@ msgstr ""
 "Regista o GnuPG como um serviço nativo de mensagens, por exemplo, para a "
 "extensão Mailvelope."
 
-msgctxt "T_Sign_Encrypt"
-msgid "Sign/Encrypt"
-msgstr ""
-
 msgctxt "DESC_SEC_kleopatra"
 msgid "Keymanager for OpenPGP and X.509 and common crypto dialogs."
 msgstr ""
