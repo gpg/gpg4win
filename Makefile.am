@@ -79,8 +79,8 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
              patches-appimage/kmime/set-cxx-standard.patch \
              patches-appimage/libkleo/gpg4win-check.patch \
              patches-appimage/libkleo/set-cxx-standard.patch \
-             patches-appimage/okular/0001-Disable-comicbook-generator.patch \
              patches-appimage/okular/0001-Include-stdarg.h-for-va_start-and-va_end.patch \
+             patches-appimage/okular/0001-Make-KF5Pty-dependency-optional.patch \
              patches-appimage/okular/lower-cmake-requirement.patch \
              patches-appimage/poppler/fix-gpg-error-include.patch \
              patches-appimage/qtbase/CVE-2023-32763-qtbase-5.15.diff \
