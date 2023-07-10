@@ -232,12 +232,6 @@ Noteworthy changes in Version 4.2.0 (unreleased)
 (de) Kleopatra: Ein seltener Fall, bei dem Schlüssel ohne Signaturfunktion
      zum Signieren angeboten wurden, wurde behoben. [T6456]
 
-(en) Kleopatra: Transferring brainpool subkeys to smart cards now works again
-     directly in Kleopatra. [T6379]
-
-(de) Kleopatra: Das Übertragen von Brainpool Unterschlüsseln auf Smartcards
-     funktioniert nun wieder direkt in Kleopatra. [T6379]
-
 (en) Kleopatra: Some obsolete configuration options have been removed.
      [T6326 T6327]
 

@@ -178,9 +178,6 @@ New in Gpg4win version !VERSION! (!BUILD_ISODATE!)
 - Kleopatra: A rare occurrence, where encryption only keys would be offered
   as signing keys, has been fixed. [T6456]
 
-- Kleopatra: Transferring brainpool subkeys to smart cards now works again
-  directly in Kleopatra. [T6379]
-
 - Kleopatra: Some obsolete configuration options have been removed.
   [T6326 T6327]
 

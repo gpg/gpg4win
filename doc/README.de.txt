@@ -187,9 +187,6 @@ Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
 - Kleopatra: Ein seltener Fall, bei dem Schlüssel ohne Signaturfunktion
   zum Signieren angeboten wurden, wurde behoben. [T6456]
 
-- Kleopatra: Das Übertragen von Brainpool Unterschlüsseln auf Smartcards
-  funktioniert nun wieder direkt in Kleopatra. [T6379]
-
 - Kleopatra: Einige überflüssige Konfigurationsoptionen wurden entfernt.
   [T6326 T6327]
 
