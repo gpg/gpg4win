@@ -83,7 +83,6 @@ RUN yum -y install \
         mesa-libEGL-devel \
         mesa-libGL-devel \
         mtdev-devel \
-        nss-devel \
         openjpeg2-devel \
         openldap-devel \
         openssl11-devel \

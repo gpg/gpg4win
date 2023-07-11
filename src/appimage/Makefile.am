@@ -193,7 +193,9 @@ appimage_pkg_kleopatra_configure = \
     -DRELEASE_SERVICE_VERSION=AppImage-$(VERSION)
 
 appimage_pkg_poppler_configure = \
-    -DENABLE_BOOST=OFF
+    -DENABLE_BOOST=OFF \
+    -DENABLE_NSS=OFF
+
 
 appimage_pkg_okular_configure = \
     -DFORCE_NOT_REQUIRED_DEPENDENCIES="KF5Wallet\;KF5DocTools\;KF5JS\;KF5Purpose\;Qt5TextToSpeech\;Phonon4Qt5\;LibSpectre\;KF5KExiv2\;CHM\;KF5KHtml\;LibZip\;DjVuLibre\;EPub\;QMobipocket\;Discount\;KF5Pty\;Qt5Qml"
