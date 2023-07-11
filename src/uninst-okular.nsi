@@ -34,6 +34,8 @@ Section "-un.okular"
   Delete "$INSTDIR\share\kxmlgui5\okular\part.rc"
   Delete "$INSTDIR\share\kxmlgui5\okular\part-viewermode.rc"
   Delete "$INSTDIR\share\kxmlgui5\okular\shell.rc"
+  RmDir  "$INSTDIR\share\kxmlgui5\okular"
+  RmDir  "$INSTDIR\share\kxmlgui5"
 
   Delete "$INSTDIR\share\okular\drawingtools.xml"
   Delete "$INSTDIR\share\okular\toolsQuick.xml"
