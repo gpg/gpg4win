@@ -1,0 +1,93 @@
+m4_dnl                                                            -*-html-*-
+m4_include(`template.m4')
+m4_dnl $Id$
+
+m4_define(`EN')
+m4_define(`DE_FILE', `version4.2-de.html')
+
+m4_define(`TITLE', `What's new - Version 4.2')
+m4_define(`MAIN', `version4.2')
+
+PAGE_START
+
+<div id="intro">
+<h2>What's new in Gpg4win 4.2?</h2>
+2023-07-12
+</div>
+
+<div id="main">
+
+<h2>Okular (GnuPG Edition)</h2>
+
+<p>
+Gpg4win has been extended with the popular Okular PDF Viewer.
+Although our Okular version is currently considered experimental and
+therefore not installed by default, this provides the ability to
+legally sign and verify documents with the S/MIME certificates and
+smart cards GnuPG supports.
+</p>
+
+<p>
+The GnuPG Edition of Okular is optimized to be lightweight and to
+provide as little attack surface as possible.  It does not support any
+active content like JavaScript or media files in PDF documents. It
+should therefore be more suitable in high security environments than
+other PDF readers.
+</p>
+
+<p>
+See: TODO: Link auf Neuigkeiten.
+
+<p/>
+
+
+<h2>GnuPG</h2>
+
+<p>
+The new component <b>keyboxd</b> is now enabled by default for new users of
+Gpg4win. keyboxd stores certificates (public keys) in an sqlite
+database and keeps it in memory.  The resulting performance
+improvement can be quite large especially for users with large
+keyrings.
+<p/>
+
+<p>
+Adventuresome users can enable it manually: Select all
+certificates in Kleopatra and export them with a right click.  Add a
+file %APPDATA%\gnupg\common.conf with the contents "use-keyboxd"
+(without the quote marks), then restart Kleopatra and import your
+certificates again.
+</p>
+
+<p>
+As usual we caution to make a backup of the %APPDATA%\gnupg directory
+before modifying files in there.
+</p>
+
+<p>
+To switch back to the old behavior, add a "#" character in front
+of the "use-keyboxd" and restart Kleopatra. Where applicable you have
+to export the certificate before and import them again after the
+restart.
+</p>
+
+<h2>Crypto Manager Kleopatra</h2>
+
+<p>
+Folder encryption and decryption (gpgtar) has been completely reworked
+so that it now has roughly the same performance as on the command
+line. The new architecture also allows for further performance
+improvements in the future and is much more robust.
+<p/>
+
+<p>
+Some other improvements are:
+<ul>
+<li> The standard validity period for the extension of certificates is now the same as for certificate creation. </li>
+<li> Hints for the upcoming expiry of certificates.  </li>
+<li> Option to rename an encrypted archive file in case of name collision. </li>
+</ul>
+
+For the entire list of changes see: TODO Link
+</p>
+</div>

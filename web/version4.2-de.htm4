@@ -1,0 +1,106 @@
+m4_dnl                                                            -*-html-*-
+m4_include(`template.m4')
+m4_dnl $Id$
+
+m4_define(`EN')
+m4_define(`DE_FILE', `version4.2-de.html')
+
+m4_define(`TITLE', `Neuigkeiten - Version 4.2')
+m4_define(`MAIN', `version4.2')
+
+PAGE_START
+
+<div id="intro">
+<h2>Was gibts Neues in Gpg4win 4.2?</h2>
+2023-07-12
+</div>
+
+<div id="main">
+
+<h2>Okular (GnuPG Edition)</h2>
+
+<p>
+Gpg4win wurde um den beliebten Okular PDF Reader erweitert.  Diese
+erste Version gilt zwar noch als experimentell und wird noch nicht per
+default installiert, ermöglicht es aber, Dokumente rechtsverbindlich
+mit den in GnuPG unterstützten S/MIME Zertifikaten und Smartcards zu
+unterschreiben bzw. zu prüfen.
+</p>
+
+<p>
+Die GnuPG Edition von Okular ist zudem darauf optimiert,
+leichtgewichtig zu sein und eine möglichst geringe Angriffsfläche zu
+bieten. So werden beispielsweise keine aktiven Inhalte wie
+Mediendateien oder JavaScript unterstützt. Sie sollte daher in
+Umgebungen mit hohen Sicherheitsanforderungen geeigneter sein als
+andere PDF Reader.
+</p>
+
+<p>
+Siehe: TODO: Link auf Neuigkeiten.
+
+<p/>
+
+
+<h2>GnuPG</h2>
+
+<p>
+Die neue Komponente <b>keyboxd</b> wird nun bei neuen Gpg4win Nutzern per
+Default verwendet.  Keyboxd speichert Zertifikate (Public Keys) in
+einer sqlite Datenbank und hält sie im Speicher.  Der daraus
+resultierende Geschwindigkeitsgewinn kann insbesondere bei großen
+Schlüsselringen hoch sein.
+
+<p/>
+
+<p>
+Experimentierfreudige können auch auf den keyboxd umsteigen. Dafür
+alle Zertifikate in Kleopatra auswählen und per Rechtsklick
+exportieren.  Dann die Datei %APPDATA%\gnupg\common.conf mit dem
+Inhalt "use-keyboxd" (ohne Anführungszeichen) anlegen und Kleopatra
+neu starten. Jetzt die gerade exportierten Zertifikate importieren, um
+von nun an keyboxd zu verwenden.
+
+</p>
+
+<p>
+Wie immer empfehlen wir natürlich eine Sicherungskopie des
+%APPDATA%\gnupg Verzeichnisses anzulegen, bevor darin Dateien
+verändert werden.
+
+</p>
+
+<p>
+Man kann den keyboxd wieder ausschalten, indem man ein "#" dem
+"use-keyboxd" voranstellt und Kleopatra neu startet. Gegebenenfalls
+muss man auch hier vorher die Zertifikate exportieren und nach dem
+Neustart wieder importieren.
+
+</p>
+
+<h2>Krypto-Manager Kleopatra</h2>
+
+<p>
+Das Ver- und Entschlüsseln von Dateiordnern wurde komplett
+überarbeitet, so dass es nun in Kleopatra etwa genau so schnell ist
+wie auf der Kommandozeile.  Die neue Architektur ist zudem deutlich
+robuster und ermöglicht auch zukünftige Leistungsverbesserungen.
+
+<p/>
+
+<p>
+Einige weitere Verbesserungen:
+
+<ul>
+<li> Die Standardgültigkeitsdauer bei der Verlängerung von neuen
+Zertifikaten ist nun die gleiche wie bei der Erstellung von Neuen. </li>
+<li> Hinweise bei bevorstehenden Ablauf von Zertifikaten. </li>
+<li> Option der Umbenennung einer verschlüsselten Archivdatei im Fall von
+Namenskollision.</li>
+
+</ul>
+
+Für die ganze Liste der Änderungen siehe: TODO Link
+</p>
+
+</div>
