@@ -402,7 +402,7 @@ gpg4win_pkg_kjobwidgets_configure = \
     -DANDROID=ON
 
 gpg4win_pkg_okular_configure = \
-    -DFORCE_NOT_REQUIRED_DEPENDENCIES="KF5Purpose\;KF5TextWidgets\;Qt5TextToSpeech\;LibZip\;KF5Wallet\;KF5DocTools\;KF5JS\;Phonon4Qt5\;TIFF\;JPEG\;LibSpectre\;KF5KExiv2\;CHM\;KF5KHtml\;DjVuLibre\;EPub\;QMobipocket\;Discount\;Qt5Qml\;Qt5DBus"
+    -DFORCE_NOT_REQUIRED_DEPENDENCIES="KF5Purpose\;Qt5TextToSpeech\;LibZip\;KF5Wallet\;KF5DocTools\;KF5JS\;Phonon4Qt5\;TIFF\;JPEG\;LibSpectre\;KF5KExiv2\;CHM\;KF5KHtml\;DjVuLibre\;EPub\;QMobipocket\;Discount\;Qt5Qml\;Qt5DBus"
 
 # Supported make-only source packages.
 gpg4win_mpkgs = bzip2 zlib
