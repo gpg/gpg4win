@@ -22,8 +22,12 @@ Subject: [PATCH] Build without KIOFilewidgets and DBUS
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
 index b66bd756f..a335cfcc4 100644
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 3.22)
++cmake_minimum_required(VERSION 3.18)
+
+ # KDE Application Version, managed by release script
+ set (RELEASE_SERVICE_VERSION_MAJOR "23")
 @@ -588,13 +591,13 @@ target_link_libraries(okularpart okularcore
      KF5::IconThemes
      KF5::ItemViews
