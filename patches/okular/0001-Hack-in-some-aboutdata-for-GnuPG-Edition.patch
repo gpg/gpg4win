@@ -22,7 +22,7 @@ index 90cfa9532..470efa8dc 100644
  {
      KAboutData about(QStringLiteral("okular"),
 -                     i18n("Okular"),
-+                     i18n("Okular (GnuPG Edition)"),
++                     i18n("Okular - GnuPG Edition"),
                       QStringLiteral(OKULAR_VERSION_STRING),
                       i18n("Okular, a universal document viewer"),
                       KAboutLicense::GPL,
