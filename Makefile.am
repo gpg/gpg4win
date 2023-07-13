@@ -69,6 +69,7 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
              patches/okular/0001-Build-without-KIOFileWidgets.patch \
              patches/okular/allow-dbus-to-be-disabled.patch \
              patches/okular/0001-Add-GnuPG-specific-manifest-to-okular.patch \
+             patches/okular/0001-Hack-in-some-aboutdata-for-GnuPG-Edition.patch \
              patches/poppler/0001-Explicitly-take-posix-variant-for-mingw-gcc-cross.patch \
              patches/kparts/0001-Apply-implicit-android-DBUS-fix-for-Win.patch \
              patches/kparts/disable-jobuidelegate.patch \
@@ -81,6 +82,7 @@ EXTRA_DIST = autogen.sh README.GIT ONEWS \
              patches-appimage/libkleo/set-cxx-standard.patch \
              patches-appimage/okular/0001-Include-stdarg.h-for-va_start-and-va_end.patch \
              patches-appimage/okular/0001-Make-KF5Pty-dependency-optional.patch \
+             patches-appimage/okular/0001-Hack-in-some-aboutdata-for-GnuPG-Edition.patch \
              patches-appimage/okular/lower-cmake-requirement.patch \
              patches-appimage/poppler/fix-gpg-error-include.patch \
              patches-appimage/qtbase/CVE-2023-32763-qtbase-5.15.diff \
