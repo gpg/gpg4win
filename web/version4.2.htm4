@@ -12,7 +12,7 @@ PAGE_START
 
 <div id="intro">
 <h2>What's new in Gpg4win 4.2?</h2>
-2023-07-12
+2023-07-14
 </div>
 
 <div id="main">
@@ -24,13 +24,10 @@ Gpg4win has been extended with the popular Okular PDF Viewer as
 a new optional component.
 Although our Okular version is currently considered experimental and
 therefore not installed by default, this provides the ability to
-legally sign and verify documents with the S/MIME certificates and
-smart cards GnuPG supports.<br/>
-User experience 
-Die Nutzer-Erfahrung und Geschwindigkeit wird sich in den nächsten
-Versionen dann nach und nach verbessern.
+legally sign and verify documents with S/MIME certificates and
+smart cards which GnuPG supports.<br/>
 The user experience regarding signatures and the performance will
-then improve over the next releases.
+improve over the next releases.
 </p>
 
 <p>
@@ -40,10 +37,10 @@ active content like JavaScript or media files in PDF documents. It
 should therefore be more suitable in high security environments than
 other PDF readers.
 <br/>
-This is by choice, the fully featured Okular with support for many
+If needed, the fully featured Okular with support for many
 document formats and active forms can be installed from the
 <a "https://apps.microsoft.com/store/detail/okular/9N41MSQ1WNM8">Microsoft Store</a>
-but this currently lacks the GnuPG integration.
+but this lacks the GnuPG integration.
 </p>
 
 <p>
@@ -52,7 +49,7 @@ It is worth noting that Okular recently became the first, and at the time of wri
 <a href="https://www.blauer-engel.de/en/productworld/resources-and-energy-efficient-software-products">Blue Angel certificate</a>
 issued by the German Federal Environment Agency. With the Blue Angel, the agency certifies,
 among other things, the openness and verifiability of the code,
-ensuring that Okular is a secure and reliable application that can guarantee
+ensuring that Okular is a secure and reliable application that respects
 the privacy of its users and the confidentiality of their documents.</p>
 <p>
 <img src="img/okular-verify-en.gif">Verification in Okular</img>
@@ -65,7 +62,7 @@ the privacy of its users and the confidentiality of their documents.</p>
 
 <p>
 The new component <b>keyboxd</b> is now enabled by default for new users of
-Gpg4win. keyboxd stores certificates (public keys) in an sqlite
+Gpg4win. Keyboxd stores certificates (public keys) in a sqlite
 database and keeps it in memory.  The resulting performance
 improvement can be quite large especially for users with large
 keyrings.
