@@ -45,7 +45,7 @@
    <div class="h_text_beta">
 -->
    <div class="h_text">
-   <small>2022-07-14</small><br>
+   <small>2023-07-14</small><br>
    <span class="serif_word"><img src="img/bulletin.png" alt"" />
      m4_ifelse(LANG_DE, `1', `
       <a href="version4.2-de.html">Gpg4win 4.2.0 veröffentlicht</a></span>',`
