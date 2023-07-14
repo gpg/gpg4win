@@ -58,10 +58,13 @@ ihrer Dokumente respektiert.
 </p>
 
 <p>
-<img src="img/okular-verify-de.gif">Dokumente in Okular überprüfen</img>
-</p>
-<p>
-<img src="img/okular-sign-de.gif">Dokumente in Okular signieren</img>
+<img width="150%" src="img/screenshots/okular-de.gif">
+<ul>
+    <li>Zum prüfen den GnuPG Zertifikatsspeicher nutzen.</li>
+    <li>Vorgefertigte Signaturfelder signieren.</li>
+    <li>Beliebige PDF Dateien signieren.</li>
+</ul>
+</img>
 </p>
 
 <h2>GnuPG</h2>
