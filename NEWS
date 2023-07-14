@@ -18,7 +18,7 @@ Noteworthy changes in Version 4.2.0 (2023-07-14)
      therefore be more suitable in high security environments than other
      PDF readers.
 
-     See: TODO: Link auf Neuigkeiten.
+     See: https://www.gpg4win.org/version4.2.html
 
 (de) Okular (GnuPG Edition): Gpg4win wurde um den beliebten Okular PDF Reader
      erweitert.  Diese erste Version gilt zwar noch als experimentell und wird
@@ -31,7 +31,7 @@ Noteworthy changes in Version 4.2.0 (2023-07-14)
      unterstützt. Sie sollte daher in Umgebungen mit hohen
      Sicherheitsanforderungen geeigneter sein als andere PDF Reader.
 
-     Siehe: TODO: Link auf Neuigkeiten.
+     Siehe: https://www.gpg4win.org/version4.2-de.html
 
 (en) GnuPG: The new component "keyboxd" is now enabled by default for new users
      of Gpg4win. keyboxd stores certificates (public keys) in an sqlite

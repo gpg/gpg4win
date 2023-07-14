@@ -79,7 +79,7 @@ Neu in Gpg4win Version !VERSION! (!BUILD_ISODATE!)
   unterstützt. Sie sollte daher in Umgebungen mit hohen
   Sicherheitsanforderungen geeigneter sein als andere PDF Reader.
 
-  Siehe: TODO: Link auf Neuigkeiten.
+  Siehe: https://www.gpg4win.org/version4.2-de.html
 
 - GnuPG: Die neue Komponente "keyboxd" wird nun für neue Gpg4win
   Nutzer per Default verwendet.  Keyboxd speichert Zertifikate

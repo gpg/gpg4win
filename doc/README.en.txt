@@ -79,7 +79,7 @@ New in Gpg4win version !VERSION! (!BUILD_ISODATE!)
   therefore be more suitable in high security environments than other
   PDF readers.
 
-  See: TODO: Link auf Neuigkeiten.
+  See: https://www.gpg4win.org/version4.2.html
 
 - GnuPG: The new component "keyboxd" is now enabled by default for new users
   of Gpg4win. keyboxd stores certificates (public keys) in an sqlite
