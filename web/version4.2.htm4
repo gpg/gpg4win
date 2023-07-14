@@ -20,11 +20,17 @@ PAGE_START
 <h2>Okular (GnuPG Edition)</h2>
 
 <p>
-Gpg4win has been extended with the popular Okular PDF Viewer.
+Gpg4win has been extended with the popular Okular PDF Viewer as
+a new optional component.
 Although our Okular version is currently considered experimental and
 therefore not installed by default, this provides the ability to
 legally sign and verify documents with the S/MIME certificates and
-smart cards GnuPG supports.
+smart cards GnuPG supports.<br/>
+User experience 
+Die Nutzer-Erfahrung und Geschwindigkeit wird sich in den nächsten
+Versionen dann nach und nach verbessern.
+The user experience regarding signatures and the performance will
+then improve over the next releases.
 </p>
 
 <p>
@@ -33,13 +39,27 @@ provide as little attack surface as possible.  It does not support any
 active content like JavaScript or media files in PDF documents. It
 should therefore be more suitable in high security environments than
 other PDF readers.
+<br/>
+This is by choice, the fully featured Okular with support for many
+document formats and active forms can be installed from the
+<a "https://apps.microsoft.com/store/detail/okular/9N41MSQ1WNM8">Microsoft Store</a>
+but this currently lacks the GnuPG integration.
 </p>
 
 <p>
-See: TODO: Link auf Neuigkeiten.
-
-<p/>
-
+It is worth noting that Okular recently became the first, and at the time of writing
+(2023-07-14) the only, software package to be awarded the
+<a href="https://www.blauer-engel.de/en/productworld/resources-and-energy-efficient-software-products">Blue Angel certificate</a>
+issued by the German Federal Environment Agency. With the Blue Angel, the agency certifies,
+among other things, the openness and verifiability of the code,
+ensuring that Okular is a secure and reliable application that can guarantee
+the privacy of its users and the confidentiality of their documents.</p>
+<p>
+<img src="img/okular-verify-en.gif">Verification in Okular</img>
+</p>
+<p>
+<img src="img/okular-sign-en.gif">Signing in Okular</img>
+</p>
 
 <h2>GnuPG</h2>
 
@@ -52,23 +72,10 @@ keyrings.
 <p/>
 
 <p>
-Adventuresome users can enable it manually: Select all
-certificates in Kleopatra and export them with a right click.  Add a
-file %APPDATA%\gnupg\common.conf with the contents "use-keyboxd"
-(without the quote marks), then restart Kleopatra and import your
-certificates again.
-</p>
+If you like you can switch to keyboxd at any time.  To do this, open
+a command line (cmd) and run <pre>gpg-enable-keyboxd</pre><br/>
 
-<p>
-As usual we caution to make a backup of the %APPDATA%\gnupg directory
-before modifying files in there.
-</p>
-
-<p>
-To switch back to the old behavior, add a "#" character in front
-of the "use-keyboxd" and restart Kleopatra. Where applicable you have
-to export the certificate before and import them again after the
-restart.
+To deactivate it again the command is: <pre>gpg-disable-keyboxd</pre>
 </p>
 
 <h2>Crypto Manager Kleopatra</h2>
@@ -88,6 +95,6 @@ Some other improvements are:
 <li> Option to rename an encrypted archive file in case of name collision. </li>
 </ul>
 
-For the entire list of changes see: TODO Link
+For the entire list of changes see: <a href="change-history.html">The changelog</a>
 </p>
 </div>
