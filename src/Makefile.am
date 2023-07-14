@@ -21,6 +21,7 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
         libiconv.def libintl.def loreley.mid \
         gpg4win-splash.wav exdll.h exdll.c g4wihelp.c desktopshellrun.cpp \
         g4wihelp.nsi slideshow.cpp gpgwrap.c \
+        gpg-enable-keyboxd.bat gpg-disable-keyboxd.bat \
         inst-sections.nsi installer.nsi installer-finish.nsi  \
 	zlib.pc sha1sum.c \
         potomo Memento.nsh \
