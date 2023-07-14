@@ -45,6 +45,14 @@
    <div class="h_text_beta">
 -->
    <div class="h_text">
+   <small>2022-07-14</small><br>
+   <span class="serif_word"><img src="img/bulletin.png" alt"" />
+     m4_ifelse(LANG_DE, `1', `
+      <a href="version4.2-de.html">Gpg4win 4.2.0 veröffentlicht</a></span>',`
+      <a href="version4.2.html">
+        Gpg4win 4.2.0 released
+      </a></span>')
+   <p></p>
    <small>2022-12-20</small><br>
    <span class="serif_word"><img src="img/bulletin.png" alt"" />
      m4_ifelse(LANG_DE, `1', `
@@ -66,14 +74,6 @@
         Gpg4win 4.0.4 released
       </a>
       </span>')
-   <p></p>
-   <small>2022-07-12</small><br>
-   <span class="serif_word"><img src="img/bulletin.png" alt"" />
-     m4_ifelse(LANG_DE, `1', `
-      <a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce-de/2022/000060.html">Gpg4win 4.0.3 veröffentlicht</a></span>',`
-      <a href="https://lists.wald.intevation.org/pipermail/gpg4win-announce/2022/000097.html">
-        Gpg4win 4.0.3 released
-      </a></span>')
    <p></p>
    <div class="limiter"></div>
    <p>

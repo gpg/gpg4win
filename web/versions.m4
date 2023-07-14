@@ -1,26 +1,27 @@
-m4_define(`VERSION',`4.1.0')
-m4_define(`DL_DATE',`2022-12-20')
+m4_define(`VERSION',`4.2.0')
+m4_define(`DL_DATE',`2023-07-14')
 m4_define(`DOWNLOAD_URL',`https://files.gpg4win.org/gpg4win-VERSION.exe')
-m4_define(`DL_SIZE',`27 MByte')
-m4_define(`SDOWNLOAD_URL',`https://files.gpg4win.org/gpg4win-VERSION.tar.bz2')
-m4_define(`SDL_SIZE',`169 MByte')
+m4_define(`DL_SIZE',`33 MByte')
+m4_define(`SDOWNLOAD_URL',`https://files.gpg4win.org/gpg4win-VERSION.tar.xz')
+m4_define(`SDL_SIZE',`214 MByte')
 
 m4_dnl Paste output of mk-chksums here
-m4_define(`SHA1_SRC',`82453e937568f783c210c25ba33cd738d95f08cc')
-m4_define(`SHA1_EXE',`71e83bc35445e3db8b5fe2a05c723c0e3f2d0b01')
-m4_define(`SHA2_SRC',`cec8cfed0b21621c1e46cd333e573f47a1abcbf5a7f6debc4e010167a621da41')
-m4_define(`SHA2_EXE',`e0fddc840808eef9531f14a515f8b3b6c46511977f00569161129c1dee413b38')
-m4_define(`LEN_SRC',`177269312')
-m4_define(`LEN_EXE',`28619288')
+m4_define(`SHA1_SRC',`bf4c6725382f267b9000847db78a00174e08cb28')
+m4_define(`SHA1_EXE',`65efffc3a3068f2d4eed4cbabcbc0c24b42bf43a')
+m4_define(`SHA2_SRC',`81e0800cc090f8f387cee8e59b9f742f2e6d2d81a408414fc051a8df64e37d90')
+m4_define(`SHA2_EXE',`829b5c8eb913fa383abdd4cf129a42e0f72d4e9924b2610134f593851f0ab119')
+m4_define(`LEN_SRC',`224560616')
+m4_define(`LEN_EXE',`34894656')
 m4_dnl end paste
 
 m4_define(`DLPAGE',`I18N(`EN',`download.html')`'I18N(`DE',`download-de.html')')
 m4_define(`SOFTWAREOVERVIEW',`
-I18N(`EN', `<a href="https://www.gnupg.org/">GnuPG</a>')I18N(`DE', `<a href="https://www.gnupg.org/index.de.html">GnuPG</a>') 2.4.0
-<a href="https://www.kde.org/applications/utilities/kleopatra/">Kleopatra</a> 3.1.26
+I18N(`EN', `<a href="https://www.gnupg.org/">GnuPG</a>')I18N(`DE', `<a href="https://www.gnupg.org/index.de.html">GnuPG</a>') 2.4.3
+<a href="https://www.kde.org/applications/utilities/kleopatra/">Kleopatra</a> 3.1.28
 I18N(`EN', `<a href="https://www.gnupg.org/related_software/gpa/index.html">GPA</a>')I18N(`DE', `<a href="https://www.gnupg.org/related_software/gpa/index.de.html">GPA</a>') 0.10.0
 <a href="https://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpgol.git;a=summary">GpgOL</a> 2.5.6
 <a href="https://git.gnupg.org/cgi-bin/gitweb.cgi?p=gpgex.git;a=summary">GpgEX</a> 1.0.9
+<a href="https://okular.kde.org">Okular</a> 23.07.70-patched
 <a href="doc/de/gpg4win-compendium.html">Kompendium (de)</a> 4.0.1
 <a href="doc/en/gpg4win-compendium.html">Compendium (en)</a> 3.0.0
 ')
