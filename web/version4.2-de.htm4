@@ -58,13 +58,12 @@ ihrer Dokumente respektiert.
 </p>
 
 <p>
-<img width="150%" src="img/screenshots/okular-de.gif">
+<video width="100%" src="img/screenshots/okular-de.webm" controls loop/>
 <ul>
     <li>Zum prüfen den GnuPG Zertifikatsspeicher nutzen.</li>
     <li>Vorgefertigte Signaturfelder signieren.</li>
     <li>Beliebige PDF Dateien signieren.</li>
 </ul>
-</img>
 </p>
 
 <h2>GnuPG</h2>

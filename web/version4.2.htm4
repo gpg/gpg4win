@@ -52,13 +52,12 @@ among other things, the openness and verifiability of the code,
 ensuring that Okular is a secure and reliable application that respects
 the privacy of its users and the confidentiality of their documents.</p>
 <p>
-<img width="150%" src="img/screenshots/okular-en.gif">
+<video width="100%" src="img/screenshots/okular-en.webm" controls loop/>
 <ul>
     <li>Verify with the GnuPG certificate store.</li>
     <li>Sign signature fields.</li>
     <li>Sign any PDF.</li>
-    </ul>
-</img>
+</ul>
 
 <h2>GnuPG</h2>
 
