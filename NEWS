@@ -2,6 +2,19 @@
 #
 # The version number given below are for the standard installers as
 # distributed by www.gpg4win.org.
+Noteworthy changes in Version 4.2.1 (unreleased)
+-------------------------------------------------
+
+~~~~~~~~~~~~~~~
+GnuPG:          2.4.3
+Kleopatra:      3.1.28
+Okular:         23.07.70-patched
+GpgOL:          2.5.8
+GpgEX:          1.0.9
+Kompendium DE:  4.0.1
+Compendium EN:  3.0.0
+~~~~~~~~~~~~~~~
+
 Noteworthy changes in Version 4.2.0 (2023-07-14)
 -------------------------------------------------
 

@@ -36,7 +36,7 @@ m4_if(mym4_isvsd,yes,
        m4_define([mym4_micro],[27])],
       [m4_define([mym4_major],[4])
        m4_define([mym4_minor],[2])
-       m4_define([mym4_micro],[0])])
+       m4_define([mym4_micro],[1])])
 
 
 # Below is m4 magic to extract and compute the git revision number,
