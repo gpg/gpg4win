@@ -15,11 +15,6 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
-!ifdef prefix
-!undef prefix
-!endif
-!define prefix ${ipdir}/threadweaver-${gpg4win_pkg_kbookmarks_version}
-
 ; Uninstaller section.
 Section "-un.threadweaver"
   Delete "$INSTDIR\bin\libKF5ThreadWeaver.dll"
