@@ -12,24 +12,12 @@
 # the last file.
 
 
-#
-# zlib
-#
-server https://gnupg.org/ftp/gcrypt
-
-# last-changed: 2022-04-07
-# by: wk
-# verified: swdb
-file zlib/zlib-1.2.12.tar.gz
-chk 91844808532e5ce316b3c010929493c0244f3d37593afd6de04f71821d5136d9
-
 
 #
-# GNU
+# Third party libraries
 #
 
 server ftp://ftp.gnu.org/pub/gnu
-
 # last-changed: 2017-02-15
 # by: ah
 # verified: Sig 68D9 4D8A AEEA D48A E7DC  5B90 4F49 4A94 2E46 16C2
@@ -112,6 +100,12 @@ chk  50c39e85ea28b5ecfdb3f9e860afe9ba606381e21836b2849efca6a0bfe6ef6e
 # gnupg main contributors.
 # Server changed from ftp to https by wk 2021-09-22
 server https://gnupg.org/ftp/gcrypt
+
+# last-changed: 2022-04-07
+# by: wk
+# verified: swdb
+file zlib/zlib-1.2.12.tar.gz
+chk 91844808532e5ce316b3c010929493c0244f3d37593afd6de04f71821d5136d9
 
 # Stripped down version of BZIP2
 # (full source at http://bzip.org)
