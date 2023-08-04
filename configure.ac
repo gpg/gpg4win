@@ -257,7 +257,13 @@ if test "$build_gpg4win" = yes ; then
     # A variable path here would probably be better but we cant
     # use $libdir to avoid it beeing required to configure gpg4win
     # build with a multiarch libdir set.
-    kf5_host_tooling="/usr/lib/x86_64-linux-gnu/cmake"
+    kf5_host_tooling_candidates="/usr/lib/x86_64-linux-gnu/cmake /usr/lib64/cmake"
+    for i in $kf5_host_tooling_candidates; do
+        if test -f "$i/KF5Config/KF5ConfigConfig.cmake"; then
+            kf5_host_tooling="$i"
+            break;
+        fi
+    done
     if test ! -f "$kf5_host_tooling/KF5Config/KF5ConfigConfig.cmake"; then
         missing_tools="$missing_tools libkf5config-dev"
     fi
