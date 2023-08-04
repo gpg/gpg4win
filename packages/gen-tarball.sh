@@ -63,7 +63,6 @@ case ${package} in
     kleopatra | libkleo)
         # assume that package is provided by KDE
         repo=https://invent.kde.org/pim/${package}.git
-        branch=gpg4win/23.07
         ;;
     k* | libk*)
         # assume that package is provided by KDE
