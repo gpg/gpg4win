@@ -77,10 +77,10 @@ To satisfy all needs of configure at least the following packages need
 to be installed:
 
     build-essential autoconf automake mingw-w64 mingw-w64-i686-dev \
-    mingw-w64-x86-64-dev nsis stow unzip icoutils texlive \
+    mingw-w64-x86-64-dev nsis stow unzip icoutils \
     libglib2.0-dev gettext docbook-utils ghostscript \
     texinfo libgdk-pixbuf2.0-dev texlive-latex-extra libqt4-dev-bin \
-    wget mingw-w64 texlive-lang-german cmake libgtk2.0-bin libxml2-utils \
+    wget mingw-w64 cmake libgtk2.0-bin libxml2-utils \
     gperf libgettextpo-dev automake-1.15 libkf5config-dev libkf5config-dev-bin \
     libkf5coreaddons-dev gpgrt-tools imagemagick libboost-graph-dev icoutils
 
