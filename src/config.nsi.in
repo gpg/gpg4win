@@ -280,6 +280,18 @@
 !define gpg4win_pkg_scute @gpg4win_pkg_scute@
 !define gpg4win_pkg_scute_version @gpg4win_pkg_scute_version@
 
+@HAVE_PKG_KCALENDARCORE@
+!define gpg4win_pkg_kcalendarcore @gpg4win_pkg_kcalendarcore@
+!define gpg4win_pkg_kcalendarcore_version @gpg4win_pkg_kcalendarcore_version@
+
+@HAVE_PKG_LIBICAL@
+!define gpg4win_pkg_libical @gpg4win_pkg_libical@
+!define gpg4win_pkg_libical_version @gpg4win_pkg_libical_version@
+
+@HAVE_PKG_MIMETREEPARSER@
+!define gpg4win_pkg_mimetreeparser @gpg4win_pkg_mimetreeparser@
+!define gpg4win_pkg_mimetreeparser_version @gpg4win_pkg_mimetreeparser_version@
+
 # Internal packages.
 @HAVE_PKG_COMPENDIUM@
 

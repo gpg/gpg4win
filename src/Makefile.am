@@ -89,6 +89,9 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
         inst-threadweaver.nsi uninst-threadweaver.nsi \
         inst-kparts.nsi uninst-kparts.nsi \
         inst-okular.nsi uninst-okular.nsi \
+        inst-mimetreeparser.nsi uninst-mimetreeparser.nsi \
+        inst-kcalendarcore.nsi uninst-kcalendarcore.nsi \
+        inst-libical.nsi uninst-libical.nsi \
         inst-final.nsi index.theme \
         slideshow/slides.dat \
         slideshow/slide1-gpgol.png \
@@ -146,7 +149,8 @@ gpg4win_kdepkgs = kconfig kwidgetsaddons ki18n extra-cmake-modules \
                   kiconthemes kleopatra breeze-icons kitemmodels karchive \
                   gpg4win-tools kcrash kio kbookmarks kservice solid \
                   kjobwidgets poppler okular freetype threadweaver \
-                  kparts tiff openjpeg sonnet ktextwidgets
+                  kparts tiff openjpeg sonnet ktextwidgets mimetreeparser \
+                  libical kcalendarcore
 
 # Supported source packages to build in an additional architecture
 gpg4win_expkgs = libgpg-error libassuan libiconv gettext gpgex gpgol \
@@ -404,6 +408,10 @@ gpg4win_pkg_kjobwidgets_configure = \
 
 gpg4win_pkg_okular_configure = \
     -DFORCE_NOT_REQUIRED_DEPENDENCIES="KF5Purpose\;Qt5TextToSpeech\;LibZip\;KF5Wallet\;KF5DocTools\;KF5JS\;Phonon4Qt5\;TIFF\;JPEG\;LibSpectre\;KF5KExiv2\;CHM\;KF5KHtml\;DjVuLibre\;EPub\;QMobipocket\;Discount\;Qt5Qml\;Qt5DBus"
+
+gpg4win_pkg_libical_configure = \
+    -DICAL_GLIB=false \
+    -DENABLE_GTK_DOC=false
 
 # Supported make-only source packages.
 gpg4win_mpkgs = bzip2 zlib

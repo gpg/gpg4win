@@ -189,6 +189,15 @@
 !ifdef HAVE_PKG_KTEXTWIDGETS
 !include "inst-ktextwidgets.nsi"
 !endif
+!ifdef HAVE_PKG_MIMETREEPARSER
+!include "inst-mimetreeparser.nsi"
+!endif
+!ifdef HAVE_PKG_KCALENDARCORE
+!include "inst-kcalendarcore.nsi"
+!endif
+!ifdef HAVE_PKG_LIBICAL
+!include "inst-libical.nsi"
+!endif
 !ifdef HAVE_PKG_PAPERKEY
 !include "inst-paperkey.nsi"
 !endif
@@ -428,6 +437,15 @@
 !endif
 !ifdef HAVE_PKG_KTEXTWIDGETS
 !include "uninst-ktextwidgets.nsi"
+!endif
+!ifdef HAVE_PKG_KCALENDARCORE
+!include "uninst-kcalendarcore.nsi"
+!endif
+!ifdef HAVE_PKG_LIBICAL
+!include "uninst-libical.nsi"
+!endif
+!ifdef HAVE_PKG_MIMETREEPARSER
+!include "uninst-mimetreeparser.nsi"
 !endif
 !ifdef HAVE_PKG_SONNET
 !include "uninst-sonnet.nsi"
@@ -728,6 +746,15 @@ Function CalcDepends
 !ifdef HAVE_PKG_KTEXTWIDGETS
   !insertmacro UnselectSection ${SEC_ktextwidgets}
 !endif
+!ifdef HAVE_PKG_KCALENDARCORE
+  !insertmacro UnselectSection ${SEC_kcalendarcore}
+!endif
+!ifdef HAVE_PKG_LIBICAL
+  !insertmacro UnselectSection ${SEC_libical}
+!endif
+!ifdef HAVE_PKG_MIMETREEPARSER
+  !insertmacro UnselectSection ${SEC_mimetreeparser}
+!endif
 !ifdef HAVE_PKG_KDE_L10N
   !insertmacro UnselectSection ${SEC_kde_l10n}
 !endif
@@ -873,7 +900,6 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_solid}
   !insertmacro SelectSection ${SEC_kservice}
   !insertmacro SelectSection ${SEC_kbookmarks}
-# KArchive depdens on zlib
   !insertmacro SelectSection ${SEC_zlib}
   !insertmacro SelectSection ${SEC_kcrash}
   !insertmacro SelectSection ${SEC_kguiaddons}
@@ -887,6 +913,9 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_extra-cmake-modules}
   !insertmacro SelectSection ${SEC_sonnet}
   !insertmacro SelectSection ${SEC_ktextwidgets}
+  !insertmacro SelectSection ${SEC_mimetreeparser}
+  !insertmacro SelectSection ${SEC_libical}
+  !insertmacro SelectSection ${SEC_kcalendarcore}
   skip_kleopatra:
 !endif
 

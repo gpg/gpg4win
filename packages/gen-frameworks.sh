@@ -58,7 +58,8 @@ FRAMEWORKS="extra-cmake-modules
     threadweaver
     kparts
     ktextwidgets
-    sonnet"
+    sonnet
+    kcalendarcore"
 
 fullversion=$1
 case ${fullversion} in

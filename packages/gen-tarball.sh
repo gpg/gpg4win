@@ -57,6 +57,9 @@ case ${package} in
     gpg4win-tools)
         repo=git://git.gnupg.org/${package}.git
         ;;
+    mimetreeparser)
+        repo=https://dev.gnupg.org/source/${package}.git
+        ;;
     kleopatra | libkleo)
         # assume that package is provided by KDE
         repo=https://invent.kde.org/pim/${package}.git
