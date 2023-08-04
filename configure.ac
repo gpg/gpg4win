@@ -55,24 +55,6 @@ m4_define([mym4_revision_dec], m4_argn(8, mym4_verslist))
 
 AC_INIT([mym4_package],[mym4_version],[https://bugs.gnupg.org])
 
-# Remember to update these version numbers also in the NEWS file.
-MANUALVERSION_EINSTEIGER="2.0.2"
-MANUALDATE_EINSTEIGER="30. Mai 2006"
-MANUALVERSION_DURCHBLICKER="2.0.2"
-MANUALDATE_DURCHBLICKER="30. Mai 2006"
-MANUALVERSION_NOVICES="1.0.0"
-MANUALDATE_NOVICES="Nov. 30, 2006"
-MANUALVERSION_ADVANCED="0.0.0"
-MANUALDATE_ADVANCED="Nov. 30, 2006"
-COMPENDIUM_VERSION_DE="4.0.1"
-COMPENDIUM_DATE_DE="3. April 2018"
-COMPENDIUMINPROGRESS_DE="zuletzt leicht korrigiert am 3. April 2018"
-COMPENDIUM_VERSION_EN="3.0.0"
-COMPENDIUM_DATE_EN="30th November 2016"
-COMPENDIUMINPROGRESS_EN="last minor changes from 30th November 2016"
-
-MANUALINPROGRESS_DE=m4_if(my_isbeta,[yes],["~und evtl. seitdem weiter bearbeitet"])
-MANUALINPROGRESS_EN=m4_if(my_isbeta,[yes],["~and may have been further edited"])
 IS_VSD_BUILD=mym4_isvsd
 PACKAGE=$PACKAGE_NAME
 VERSION=$PACKAGE_VERSION
@@ -101,22 +83,6 @@ AM_PO_SUBDIRS
 
 AC_SUBST(PACKAGE)
 AC_SUBST(VERSION)
-AC_SUBST(MANUALVERSION_EINSTEIGER)
-AC_SUBST(MANUALDATE_EINSTEIGER)
-AC_SUBST(MANUALVERSION_DURCHBLICKER)
-AC_SUBST(MANUALDATE_DURCHBLICKER)
-AC_SUBST(MANUALINPROGRESS_DE)
-AC_SUBST(MANUALVERSION_NOVICES)
-AC_SUBST(MANUALDATE_NOVICES)
-AC_SUBST(MANUALVERSION_ADVANCED)
-AC_SUBST(MANUALDATE_ADVANCED)
-AC_SUBST(MANUALINPROGRESS_EN)
-AC_SUBST(COMPENDIUM_VERSION_DE)
-AC_SUBST(COMPENDIUM_DATE_DE)
-AC_SUBST(COMPENDIUMINPROGRESS_DE)
-AC_SUBST(COMPENDIUM_VERSION_EN)
-AC_SUBST(COMPENDIUM_DATE_EN)
-AC_SUBST(COMPENDIUMINPROGRESS_EN)
 AC_SUBST(GIT_BETASTRING)
 AC_SUBST(IS_BETA_BUILD)
 AC_SUBST(IS_VSD_BUILD)
@@ -151,14 +117,6 @@ AC_SUBST(emacs_local_vars_end, ['End:'])
 
 GPG4WIN_BUILD_RELEASE(gpg4win, no)
 GPG4WIN_BUILD_RELEASE(appimage, no)
-
-# For development it is often faster to build without manuals.
-AC_ARG_ENABLE(manuals,
-    AC_HELP_STRING([--disable-manuals],
-                   [Do not build the manuals (for debugging)]),
-                    build_manuals=$enableval,
-                    build_manuals=yes)
-AM_CONDITIONAL(BUILD_MANUALS, test "$build_manuals" = yes)
 
 # Additionaly enable building gpgex for another host
 AC_ARG_WITH([additional-gpgex-host],
@@ -503,7 +461,6 @@ AC_CONFIG_FILES(po/build-cc)
 AC_CONFIG_FILES(src/config.nsi src/gpg4win.mk)
 AC_CONFIG_FILES(doc/Makefile)
 AC_CONFIG_FILES(doc/logo/Makefile)
-AC_CONFIG_FILES(doc/manual/Makefile doc/manual/version.tex)
 AC_CONFIG_FILES(src/toolchain.cmake)
 AC_CONFIG_FILES(src/appimage/Makefile src/appimage/appimage.mk)
 AC_CONFIG_FILES(src/appimage/rsync-filters/Makefile)

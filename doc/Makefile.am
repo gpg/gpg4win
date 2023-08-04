@@ -22,10 +22,4 @@ EXTRA_DIST = nsi-mode.el pkg-copyright.txt beta-warning.txt HACKING\
 	     README.fr.txt README.ru.txt README.pt.txt README.zh.txt \
 	     HOWTO-SMIME.en.txt HOWTO-SMIME.de.txt
 
-if BUILD_MANUALS
-manual = manual
-else
-manual =
-endif
-
-SUBDIRS = logo $(manual)
+UBDIRS = logo

@@ -41,22 +41,6 @@ src/mingwm10.dll
 src/installers
 src/signed_installers
 
-/doc/manual/gpg4win-compendium-de.aux
-/doc/manual/gpg4win-compendium-de.idx
-/doc/manual/gpg4win-compendium-de.ilg
-/doc/manual/gpg4win-compendium-de.ind
-/doc/manual/gpg4win-compendium-de.log
-/doc/manual/gpg4win-compendium-de.out
-/doc/manual/gpg4win-compendium-de.pdf
-/doc/manual/gpg4win-compendium-de.toc
-/doc/manual/gpg4win-compendium-en.aux
-/doc/manual/gpg4win-compendium-en.idx
-/doc/manual/gpg4win-compendium-en.ilg
-/doc/manual/gpg4win-compendium-en.ind
-/doc/manual/gpg4win-compendium-en.log
-/doc/manual/gpg4win-compendium-en.out
-/doc/manual/gpg4win-compendium-en.pdf
-/doc/manual/gpg4win-compendium-en.toc
 /src/NEWS.tmp
 /src/README.ar.txt
 /src/README.de.txt
