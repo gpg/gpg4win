@@ -52,7 +52,7 @@ EXTRA_DIST = autogen.rc autogen.sh README.GIT ONEWS \
              patches/kcoreaddons/0001-Add-KSharedDataCache-for-Windows.patch \
              patches/kiconthemes/0001-Make-DBus-optional.patch \
              patches/kleopatra/set-windows-registry.patch \
-             patches/kleopatra/0001-Revert-new-dependency-to-KCMUtils.patch \
+             patches/kleopatra/0001-Make-KCMUtils-optional.patch \
              patches/kxmlgui/0001-make-qdbus-optional.patch \
              patches/kxmlgui/0004-Cruedly-disable-KSendbugmail.patch \
              patches/qtbase/0001-Fix-build-without-std-thread.patch \
@@ -74,7 +74,7 @@ EXTRA_DIST = autogen.rc autogen.sh README.GIT ONEWS \
              patches/kparts/disable-jobuidelegate.patch \
              patches/sonnet/0001-W32-Force-ispellchecker-for-sonnet.patch \
              patches/jpeg/fix-redefine.patch \
-             patches-appimage/kleopatra/0001-Revert-new-dependency-to-KCMUtils.patch \
+             patches-appimage/kleopatra/0001-Make-KCMUtils-optional.patch \
              patches-appimage/kleopatra/require-ecm-5.104.patch \
              patches-appimage/kmime/set-cxx-standard.patch \
              patches-appimage/libkleo/gpg4win-check.patch \
