@@ -20,7 +20,7 @@
 EXTRA_DIST = download.sh packages.common packages.3 packages.4 \
 			 gen-frameworks.sh gen-tarball.sh gen-kde-gears.sh \
 			 get-gpg-package.sh distsigkey.gpg kde-release-keys.gpg \
-			 gen-kde-l10n.sh \
+			 gen-kde-l10n.sh gen-breeze-icons.sh \
 			 $(wildcard *.tar.gz *.tar.bz2 *.tar.xz *.zip *.exe *.wixlib)
 
 packages-clean:
