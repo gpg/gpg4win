@@ -62,6 +62,8 @@ Section "-breeze-icons" SEC_breeze_icons
   File ${prefix}/share/icons/breeze/actions/16/document-open.svg
   File ${prefix}/share/icons/breeze/actions/16/document-print.svg
   File ${prefix}/share/icons/breeze/actions/16/document-revert.svg
+  File ${prefix}/share/icons/breeze/actions/16/draw-text.svg
+  File ${prefix}/share/icons/breeze/actions/16/view-list-text.svg
   File ${prefix}/share/icons/breeze/actions/16/draw-arrow-down.svg
   File ${prefix}/share/icons/breeze/actions/16/draw-arrow-up.svg
   File ${prefix}/share/icons/breeze/actions/16/edit-clear-locationbar-rtl.svg
@@ -78,6 +80,7 @@ Section "-breeze-icons" SEC_breeze_icons
   File ${prefix}/share/icons/breeze/actions/16/go-first.svg
   File ${prefix}/share/icons/breeze/actions/16/go-last.svg
   File ${prefix}/share/icons/breeze/actions/16/go-next.svg
+  File ${prefix}/share/icons/breeze/actions/16/go-next-skip.svg
   File ${prefix}/share/icons/breeze/actions/16/go-previous.svg
   File ${prefix}/share/icons/breeze/actions/16/go-top.svg
   File ${prefix}/share/icons/breeze/actions/16/go-up.svg
@@ -240,6 +243,7 @@ Section "-breeze-icons" SEC_breeze_icons
   File ${prefix}/share/icons/breeze/actions/22/go-first.svg
   File ${prefix}/share/icons/breeze/actions/22/go-last.svg
   File ${prefix}/share/icons/breeze/actions/22/go-next.svg
+  File ${prefix}/share/icons/breeze/actions/16/go-next-skip.svg
   File ${prefix}/share/icons/breeze/actions/22/go-previous.svg
   File ${prefix}/share/icons/breeze/actions/22/go-top.svg
   File ${prefix}/share/icons/breeze/actions/22/go-up.svg
@@ -308,6 +312,8 @@ Section "-breeze-icons" SEC_breeze_icons
   File ${prefix}/share/icons/breeze/actions/22/draw-line.svg
   File ${prefix}/share/icons/breeze/actions/22/draw-polyline.svg
   File ${prefix}/share/icons/breeze/actions/22/draw-rectangle.svg
+  File ${prefix}/share/icons/breeze/actions/22/draw-text.svg
+  File ${prefix}/share/icons/breeze/actions/22/view-list-text.svg
   File ${prefix}/share/icons/breeze/actions/22/edit-comment.svg
   File ${prefix}/share/icons/breeze/actions/22/edit-line-width.svg
   File ${prefix}/share/icons/breeze/actions/22/edit-opacity.svg
@@ -389,6 +395,8 @@ Section "-breeze-icons" SEC_breeze_icons
   File ${prefix}/share/icons/breeze/actions/32/edit-redo.svg
   File ${prefix}/share/icons/breeze/actions/32/edit-undo.svg
   File ${prefix}/share/icons/breeze/actions/32/editor.svg
+  File ${prefix}/share/icons/breeze/actions/32/go-next-skip.svg
+  File ${prefix}/share/icons/breeze/actions/32/view-list-text.svg
   File ${prefix}/share/icons/breeze/actions/32/view-refresh.svg
   File ${prefix}/share/icons/breeze/actions/32/window-close.svg
   File ${prefix}/share/icons/breeze/actions/32/help-about.svg
@@ -468,8 +476,13 @@ Section "-breeze-icons" SEC_breeze_icons
   File ${prefix}/share/icons/breeze/index.theme
   File ${prefix}/share/icons/breeze/icon-theme.cache
 
-  SetOutPath "$INSTDIR\share\icons\breeze\devices\64"
   # From Okular
+  SetOutPath "$INSTDIR\share\icons\breeze\devices\16"
+  File ${prefix}/share/icons/breeze/devices/16/input-mouse.svg
+  SetOutPath "$INSTDIR\share\icons\breeze\devices\22"
+  File ${prefix}/share/icons/breeze/devices/22/input-mouse.svg
+  SetOutPath "$INSTDIR\share\icons\breeze\devices\64"
+  File ${prefix}/share/icons/breeze/devices/64/input-mouse.svg
   File ${prefix}/share/icons/breeze/devices/64/cpu.svg
   File ${prefix}/share/icons/breeze/devices/64/video-display.svg
 
