@@ -200,13 +200,10 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
   SetOutPath "$INSTDIR\share\QtProject"
   File qtlogging.ini
 
-  WriteRegStr SHCTX "Software\Gpg4win\kleopatra\Capabilities" "ApplicationDescription" "$(DESC_SEC_kleopatra)"
-  WriteRegStr SHCTX "Software\Gpg4win\kleopatra\Capabilities" "ApplicationIcon" "$INSTDIR\bin\kleopatra.exe,0"
-  WriteRegStr SHCTX "Software\Gpg4win\kleopatra\Capabilities" "ApplicationName" "Kleopatra"
-
   SetOutPath "$INSTDIR\share\gpg4win"
   File "icons/file-ext.ico"
 
+#  SetRegView 64
   # Openpgp4fpr URI scheme
   WriteRegStr SHCTX "Software\Classes\openpgp4fpr" "" "URL:OpenPGP master key fingerprint"
   WriteRegStr SHCTX "Software\Classes\openpgp4fpr" "URL Protocol" ""
@@ -286,14 +283,6 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
   WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.Kleopatra.X509\CurVer" "" "${VERSION}"
   WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.Kleopatra.X509\DefaultIcon" "" "$INSTDIR\share\gpg4win\file-ext.ico"
 
-# BEGIN MSI IGNORE
-  WriteRegBin SHCTX "Software\Classes\gpg4win.AssocFile.Kleopatra.X509" "AllowSilentDefaultTakeOver" 0
-# END MSI IGNORE
-
-  # Register capabilities
-  WriteRegStr SHCTX "Software\RegisteredApplications" "Gpg4win.Kleopatra" "SOFTWARE\Gpg4win\Kleopatra\Capabilities"
-  WriteRegStr SHCTX "Software\Gpg4win\Kleopatra" "" "Kleopatra"
-
   # .kgrp
   WriteRegExpandStr SHCTX "Software\Classes\gpg4win.AssocFile.Kleopatra.KGRP\shell\open\command" "" "$\"$INSTDIR\bin\Kleopatra.exe$\" -- $\"%1$\""
   WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.Kleopatra.KGRP" "" "$(T_File_Type_kgrp_Name)"
@@ -304,6 +293,17 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
   WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.Kleopatra.KGRP\DefaultIcon" "" "$INSTDIR\share\gpg4win\file-ext.ico"
 
   WriteRegBin SHCTX "Software\Classes\.kgrp\OpenWithProgIDs" "gpg4win.AssocFile.Kleopatra.KGRP" 0
+
+# BEGIN MSI IGNORE
+  WriteRegBin SHCTX "Software\Classes\gpg4win.AssocFile.Kleopatra.X509" "AllowSilentDefaultTakeOver" 0
+# END MSI IGNORE
+
+  # Register capabilities
+  WriteRegStr SHCTX "Software\RegisteredApplications" "Kleopatra" "SOFTWARE\Gpg4win\Kleopatra\Capabilities"
+  WriteRegStr SHCTX "Software\Gpg4win\Kleopatra" "" "Kleopatra"
+  WriteRegStr SHCTX "Software\Gpg4win\kleopatra\Capabilities" "ApplicationDescription" "$(DESC_SEC_kleopatra)"
+  WriteRegStr SHCTX "Software\Gpg4win\kleopatra\Capabilities" "ApplicationIcon" "$INSTDIR\bin\kleopatra.exe,0"
+  WriteRegStr SHCTX "Software\Gpg4win\kleopatra\Capabilities" "ApplicationName" "Kleopatra"
 
   # File extensions
   WriteRegStr SHCTX "Software\Gpg4win\Kleopatra\Capabilities\FileAssociations" ".pgp" "gpg4win.AssocFile.Kleopatra.GPG"
@@ -334,10 +334,18 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
   WriteRegStr SHCTX "Software\Gpg4win\Kleopatra\Capabilities\MimeAssociations" "application/pkix-cert" "gpg4win.AssocFile.Kleopatra.CMS"
   WriteRegStr SHCTX "Software\Gpg4win\Kleopatra\Capabilities\MimeAssociations" "application/x-x509-ca-cert" "gpg4win.AssocFile.Kleopatra.X509"
   WriteRegStr SHCTX "Software\Gpg4win\Kleopatra\Capabilities\MimeAssociations" "application/x-pkcs12" "gpg4win.AssocFile.Kleopatra.X509"
+#  SetRegView 32
 
+#  Explorer entry for unknown files
+#  WriteRegStr SHCTX "Software\Classes\*\Kleopatra" "" "$(T_Sign_Encrypt)"
+#  Filter out all our known
+#  WriteRegStr SHCTX "Software\Classes\*\Kleopatra" "$\"AppliesTo$\"" "$\"System.FileName:~!$\".gpg$\" AND System.FileName:~!$\".asc$\" AND System.FileName:~!$\".cer$\" AND System.FileName:~!$\".p10$\" AND System.FileName:~!$\".p12$\" AND System.FileName:~!$\".p7c$\" AND System.FileName:~!$\".pfx$\" AND System.FileName:~!$\".crt$\" AND System.FileName:~!$\".der$\" AND System.FileName:~!$\".sig$\" AND System.FileName:~!$\".p7m$\" AND System.FileName:~!$\".p7s$\" AND System.FileName:~!$\".pem$\" AND System.FileName:~!$\".kgrp$\""
+#  WriteRegStr SHCTX "Software\Classes\command" "" "$\"$INSTDIR\bin\Kleopatra.exe$\" -- $\"%1$\""
 !endif
 ${MementoSectionEnd}
 
+LangString T_Sign_Encrypt ${LANG_ENGLISH} \
+    "Sign/Encrypt"
 
 LangString DESC_SEC_kleopatra ${LANG_ENGLISH} \
    "Keymanager for OpenPGP and X.509 and common crypto dialogs."
