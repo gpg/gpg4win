@@ -27,4 +27,6 @@ Section "-libical" SEC_libical
 !endif
   SetOutPath "$INSTDIR\bin"
   File ${prefix}/bin/libical.dll
+  File ${prefix}/bin/libicalss.dll
+  File ${prefix}/bin/libicalvcal.dll
 SectionEnd

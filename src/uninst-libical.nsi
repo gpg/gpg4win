@@ -19,5 +19,7 @@
 ; Uninstaller section.
 Section "-un.libical"
   Delete "$INSTDIR\bin\libical.dll"
+  Delete "$INSTDIR\bin\libicalss.dll"
+  Delete "$INSTDIR\bin\libicalvcal.dll"
   RmDir "$INSTDIR\bin"
 SectionEnd
