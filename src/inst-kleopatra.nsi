@@ -283,6 +283,13 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
   WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.Kleopatra.X509\CurVer" "" "${VERSION}"
   WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.Kleopatra.X509\DefaultIcon" "" "$INSTDIR\share\gpg4win\file-ext.ico"
 
+  WriteRegBin SHCTX "Software\Classes\.cer\OpenWithProgIDs" "gpg4win.AssocFile.Kleopatra.X509" 0
+  WriteRegBin SHCTX "Software\Classes\.p12\OpenWithProgIDs" "gpg4win.AssocFile.Kleopatra.X509" 0
+  WriteRegBin SHCTX "Software\Classes\.p7c\OpenWithProgIDs" "gpg4win.AssocFile.Kleopatra.X509" 0
+  WriteRegBin SHCTX "Software\Classes\.pfx\OpenWithProgIDs" "gpg4win.AssocFile.Kleopatra.X509" 0
+  WriteRegBin SHCTX "Software\Classes\.crt\OpenWithProgIDs" "gpg4win.AssocFile.Kleopatra.X509" 0
+  WriteRegBin SHCTX "Software\Classes\.der\OpenWithProgIDs" "gpg4win.AssocFile.Kleopatra.X509" 0
+
   # .kgrp
   WriteRegExpandStr SHCTX "Software\Classes\gpg4win.AssocFile.Kleopatra.KGRP\shell\open\command" "" "$\"$INSTDIR\bin\Kleopatra.exe$\" -- $\"%1$\""
   WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.Kleopatra.KGRP" "" "$(T_File_Type_kgrp_Name)"
@@ -293,10 +300,6 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
   WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.Kleopatra.KGRP\DefaultIcon" "" "$INSTDIR\share\gpg4win\file-ext.ico"
 
   WriteRegBin SHCTX "Software\Classes\.kgrp\OpenWithProgIDs" "gpg4win.AssocFile.Kleopatra.KGRP" 0
-
-# BEGIN MSI IGNORE
-  WriteRegBin SHCTX "Software\Classes\gpg4win.AssocFile.Kleopatra.X509" "AllowSilentDefaultTakeOver" 0
-# END MSI IGNORE
 
   # Register capabilities
   WriteRegStr SHCTX "Software\RegisteredApplications" "Kleopatra" "SOFTWARE\Gpg4win\Kleopatra\Capabilities"
@@ -310,7 +313,6 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
   WriteRegStr SHCTX "Software\Gpg4win\Kleopatra\Capabilities\FileAssociations" ".asc" "gpg4win.AssocFile.Kleopatra.ASC"
   WriteRegStr SHCTX "Software\Gpg4win\Kleopatra\Capabilities\FileAssociations" ".gpg" "gpg4win.AssocFile.Kleopatra.GPG"
   WriteRegStr SHCTX "Software\Gpg4win\Kleopatra\Capabilities\FileAssociations" ".cer" "gpg4win.AssocFile.Kleopatra.X509"
-  WriteRegStr SHCTX "Software\Gpg4win\Kleopatra\Capabilities\FileAssociations" ".p10" "gpg4win.AssocFile.Kleopatra.X509"
   WriteRegStr SHCTX "Software\Gpg4win\Kleopatra\Capabilities\FileAssociations" ".p12" "gpg4win.AssocFile.Kleopatra.X509"
   WriteRegStr SHCTX "Software\Gpg4win\Kleopatra\Capabilities\FileAssociations" ".p7c" "gpg4win.AssocFile.Kleopatra.X509"
   WriteRegStr SHCTX "Software\Gpg4win\Kleopatra\Capabilities\FileAssociations" ".pfx" "gpg4win.AssocFile.Kleopatra.X509"

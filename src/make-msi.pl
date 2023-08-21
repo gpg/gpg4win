@@ -1569,14 +1569,6 @@ sub dump_all2
             . "      <RegistryValue Id='r_kleopatra_der_o' Root='HKMU' Key='Software\\Classes\\CERFile\\shell\\open\\command'  Action='write' Type='expandable' Value='\"[APPLICATIONFOLDER]bin\\kleopatra.exe\" -- \"%1\"'/>\n"
             . "      <RegistryValue Id='r_kleopatra_der_i' Root='HKMU' Key='Software\\Classes\\CERFile\\DefaultIcon'  Action='write' Type='string' Value='\"[APPLICATIONFOLDER]share\\gpg4win\\file-ext.ico\"'/>\n"
             . "  </Component>\n"
-            . " </Feature>\n"
-            . " <Feature Id='p_kleo_smime_types_no' Title='p_kleo_smime_types_no' Level='1'"
-            . " Display='hidden' InstallDefault='followParent'>\n"
-            . "  <Condition Level='1000'>DEFAULT_ALL_SMIME = \"true\"</Condition>\n"
-            . "  <Condition Level='1'>DEFAULT_ALL_SMIME = \"false\"</Condition>\n"
-            . "  <Component Win64='yes' Id='DefaultSmimeExtNo' Guid='9B63C4D2-50F1-4747-8D79-0621130B7319' KeyPath='yes' Directory='APPLICATIONFOLDER'>\n"
-            . "      <RegistryValue Id='r_kleopatra_no_default' Root='HKMU' Key='Software\\Classes\\gpg4win.AssocFile.Kleopatra.X509' Name='AllowSilentDefaultTakeOver' Action='write' Type='binary' Value='0'/>\n"
-            . "  </Component>\n"
             . " </Feature>\n";
 
             print ' ' x $::level
