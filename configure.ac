@@ -272,7 +272,7 @@ if test "$build_gpg4win" = yes ; then
     GPG4WIN_RUNTIME_LIBRARY(libstdc++-6)
     GPG4WIN_RUNTIME_LIBRARY(libwinpthread-1)
 
-    if test -f "/usr/lib/gcc/i686-w64-mingw32/10-win32/libgcc_s_dw2-1.dll"; then
+    if test -f "/usr/lib/gcc/i686-w64-mingw32/10-posix/libgcc_s_dw2-1.dll"; then
         AC_MSG_NOTICE([Using dw2 exceptions.])
         GPG4WIN_RUNTIME_LIBRARY(libgcc_s_dw2-1)
         $CP /dev/null src/libgcc_s_sjlj-1.dll-x
