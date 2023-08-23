@@ -507,11 +507,11 @@ server http://download.kde.org/stable/release-service/
 server https://gnupg.org/ftp/gcrypt/snapshots
 
 # gpgme
-# last changed: 2023-08-07
+# last changed: 2023-08-23
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file gpgme/gpgme-1.21.1-beta9.tar.xz
-chk dee324658865f94eaf282aa171c29745e5a504d627aa014aef80794fec098d89
+file gpgme/gpgme-1.22.1-beta6.tar.xz
+chk d020907abc8b855171719a8ed568eb4775a310a56f4e145bef30794a6f188e82
 
 # gpgex
 # last changed: 2022-12-06
@@ -557,15 +557,15 @@ chk 4a4c53e5750bbb989bbc02cc215647ecccc71e610d31518703ac8629712ec2cc
 
 # Okular and dependencies
 # poppler
-# last changed: 2023-07-12
+# last changed: 2023-08-23
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file poppler/poppler-202307121527.tar.xz
-chk 347931704cf6fc80f5672254814d623cb24151139d767c8e43f3cd9c8d48b80b
+file poppler/poppler-202308231008.tar.xz
+chk 71fa1409aa6f1c5186c8acdac9ac2d282adb3dd7d97adc0d0eb1586976e91577
 
 # okular
-# last changed: 2023-07-07
+# last changed: 2023-08-23
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file okular/okular-202307071512.tar.xz
-chk 6c011b80a86c1f8f3bbc91ce50b12af33ecb115b4860f491701a5fd5e36242f8
+file okular/okular-202308231007.tar.xz
+chk ac4e68aca36761496d237a68f77ac7b24e24a5b71554132552c8d096f4b8dc02
