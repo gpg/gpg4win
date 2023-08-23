@@ -73,9 +73,9 @@ case ${package} in
         branch="work/sune/WORK"
         ;;
     poppler)
-        repo=https://anongit.freedesktop.org/git/poppler/poppler.git
-        #repo=https://gitlab.freedesktop.org/svuorela/${package}.git
-        #branch="WORK"
+        #repo=https://anongit.freedesktop.org/git/poppler/poppler.git
+        repo=https://gitlab.freedesktop.org/svuorela/${package}.git
+        branch="WORK"
         ;;
     *)
         echo "Error: Unsupported package '${package}'"
