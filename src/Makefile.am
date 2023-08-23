@@ -395,7 +395,7 @@ gpg4win_pkg_kxmlgui_configure = \
     -DXMLGUI_DISTRIBUTION_TEXT="$(DISTRIBUTION_TEXT)"
 
 gpg4win_pkg_breeze_icons_configure = \
-    -DBINARY_ICONS_RESOURCE=OFF
+    -DBINARY_ICONS_RESOURCE=ON
 
 gpg4win_pkg_kbookmarks_configure = \
     -DANDROID=ON

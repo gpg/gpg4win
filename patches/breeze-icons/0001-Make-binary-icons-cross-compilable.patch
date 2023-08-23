@@ -2,41 +2,33 @@
 patch -p1 -l -f $* < $0
 exit $?
 
-From 290479782278cdf07945be059eb47580fc8502ac Mon Sep 17 00:00:00 2001
+From 88c4cdcf84711bf976cc4acd679c8eb28a132d33 Mon Sep 17 00:00:00 2001
 From: Andre Heinecke <aheinecke@gnupg.org>
-Date: Mon, 4 Mar 2019 10:22:23 +0100
+Date: Wed, 23 Aug 2023 16:29:24 +0200
 Subject: [PATCH] Make binary icons cross compilable
 
 This uses KF5_HOST_TOOLING as used by other frameworks
 to find host libraries and builds qrcAlias as external
 project against it.
 ---
- CMakeLists.txt                        | 28 +++++++++++++++++++++++----
+ CMakeLists.txt                        | 27 ++++++++++++++++++++++++---
  qrcAlias/CMakeLists.txt               |  8 ++++++++
  qrcAlias.cpp => qrcAlias/qrcAlias.cpp |  0
- 3 files changed, 32 insertions(+), 4 deletions(-)
+ 3 files changed, 32 insertions(+), 3 deletions(-)
  create mode 100644 qrcAlias/CMakeLists.txt
  rename qrcAlias.cpp => qrcAlias/qrcAlias.cpp (100%)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 1045e6b3..920a535a 100644
+index 6e0bcdb8..08a80a99 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -19,7 +19,6 @@ include(GtkUpdateIconCache)
- # Dependencies
- set(REQUIRED_QT_VERSION 5.10.0)
-
--# When cross-compiling, we should compile qrcAlias natively (against a native Qt build)
- if (CMAKE_CROSSCOMPILING)
-     set(BINARY_ICONS_RESOURCE_OPTION_DEFAULT OFF)
- else()
-@@ -30,9 +29,30 @@ option(BINARY_ICONS_RESOURCE "Install Qt binary resource files containing breeze
+@@ -64,9 +64,30 @@ option(BINARY_ICONS_RESOURCE "Install Qt binary resource files containing breeze
  option(SKIP_INSTALL_ICONS "Skip installing the icons files" OFF)
 
  if(BINARY_ICONS_RESOURCE)
--    find_package(Qt5 NO_MODULE REQUIRED Core)
+-    find_package(Qt${QT_MAJOR_VERSION} NO_MODULE REQUIRED Core)
 -    add_executable(qrcAlias qrcAlias.cpp)
--    target_link_libraries(qrcAlias PUBLIC Qt5::Core)
+-    target_link_libraries(qrcAlias PUBLIC Qt${QT_MAJOR_VERSION}::Core)
 +    if (CMAKE_CROSSCOMPILING)
 +        if (NOT KF5_HOST_TOOLING)
 +            message(FATAL_ERROR "Please provide a prefix with a native Qt build and pass -DKF5_HOST_TOOLING=path or disable BINARY_ICONS_RESOURCE")
@@ -66,7 +58,7 @@ index 1045e6b3..920a535a 100644
      set(RESOURCES_WORKING_DIR ${CMAKE_CURRENT_BINARY_DIR}/res)
 diff --git a/qrcAlias/CMakeLists.txt b/qrcAlias/CMakeLists.txt
 new file mode 100644
-index 00000000..4199f2fe
+index 00000000..13e554ad
 --- /dev/null
 +++ b/qrcAlias/CMakeLists.txt
 @@ -0,0 +1,8 @@
@@ -83,4 +75,4 @@ similarity index 100%
 rename from qrcAlias.cpp
 rename to qrcAlias/qrcAlias.cpp
 --
-2.20.1
+2.41.0
