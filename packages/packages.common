@@ -280,216 +280,209 @@ server https://download.kde.org/stable/frameworks
 ##### Paste Here #####
 #
 # Don't forget to update gpg4win.mk.in with new version numbers
-#
 # extra-cmake-modules
-# last changed: 2023-03-22
+# last changed: 2023-08-23
 # by: ah
 # verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
-file 5.104/extra-cmake-modules-5.104.0.tar.xz
-chk e49eb21fdb66634b84cccbf6ba65eae3f8e0eee0dc72d50f627280f49df585d9
-
-# kconfig
-# last changed: 2023-03-22
-# by: ah
-# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
-file 5.104/kconfig-5.104.0.tar.xz
-chk b8e7a6b7b0e78e3eb01755a965d893bd95c231befeff10479243e5a182ec2938
-
-# ki18n
-# last changed: 2023-03-22
-# by: ah
-# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
-file 5.104/ki18n-5.104.0.tar.xz
-chk fe815b9e28c680fa472c7ab56e4d7934a8915f19409734a13433797a4be14ee1
-
-# kwidgetsaddons
-# last changed: 2023-03-22
-# by: ah
-# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
-file 5.104/kwidgetsaddons-5.104.0.tar.xz
-chk 4abbb552cd43e51ad2070d8780ca7112e2c9771c2258734ae4a97712b9123120
-
-# kcompletion
-# last changed: 2023-03-22
-# by: ah
-# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
-file 5.104/kcompletion-5.104.0.tar.xz
-chk b0ed0246871283df04c62f0df2b221e32911cb4d292d5ae42f860958032eb510
-
-# kwindowsystem
-# last changed: 2023-03-22
-# by: ah
-# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
-file 5.104/kwindowsystem-5.104.0.tar.xz
-chk 6b10ee354ebb7d2dfd6baa1374929d30811f8169c8233e55849e31e38e6af81a
-
-# kcoreaddons
-# last changed: 2023-03-22
-# by: ah
-# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
-file 5.104/kcoreaddons-5.104.0.tar.xz
-chk ed760d4a7fed6c03480dcc3cfe621a49ac5ca9853c846080afe393f7ce794e40
-
-# kcodecs
-# last changed: 2023-03-22
-# by: ah
-# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
-file 5.104/kcodecs-5.104.0.tar.xz
-chk 7ec909f6865eba87a99b046a9aeaa6a83c01308ad1dda87be3f69e91a7909d6b
-
-# kconfigwidgets
-# last changed: 2023-03-22
-# by: ah
-# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
-file 5.104/kconfigwidgets-5.104.0.tar.xz
-chk eb9014b813a1c8a18c78ef11be296964b31338e5237080a74234bf97ead64522
-
-# kdbusaddons
-# last changed: 2023-03-22
-# by: ah
-# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
-file 5.104/kdbusaddons-5.104.0.tar.xz
-chk 4c6add0481c407bc3768729e27e8644feba748c333872e62aaa3260338fd56b4
-
-# kxmlgui
-# last changed: 2023-03-22
-# by: ah
-# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
-file 5.104/kxmlgui-5.104.0.tar.xz
-chk f45d5a5411b3ca0197c1e4720c27c7d85e351aeee03aca861066e8db3c7c93e6
-
-# kguiaddons
-# last changed: 2023-03-22
-# by: ah
-# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
-file 5.104/kguiaddons-5.104.0.tar.xz
-chk fb8d8de25b684af6f9e9e893912664a18231486ac995d2522676018c3e93840d
-
-# kitemviews
-# last changed: 2023-03-22
-# by: ah
-# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
-file 5.104/kitemviews-5.104.0.tar.xz
-chk 94920dc68c187319fa79c64e194e9ebecaef8c97fc4bd6aba342c18bc75a48bc
-
-# kitemmodels
-# last changed: 2023-03-22
-# by: ah
-# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
-file 5.104/kitemmodels-5.104.0.tar.xz
-chk 0bac2fe2fc607443e3332911655ced5dd309e346f2f6a2ff3f29b2f45b7b18d7
-
-# kiconthemes
-# last changed: 2023-03-22
-# by: ah
-# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
-file 5.104/kiconthemes-5.104.0.tar.xz
-chk 70f4d9f950acdaa28b539838226ed1cff7e70cdcf177272185bac7c75a6cccdf
-
-# breeze-icons
-# last changed: 2023-03-22
-# by: ah
-# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
-file 5.104/breeze-icons-5.104.0.tar.xz
-chk ff2dacc3fb6f1c7acd378638329f2e5b5fc4fdb3dab1321716d2d54b32eaae6a
-
-# karchive
-# last changed: 2023-03-22
-# by: ah
-# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
-file 5.104/karchive-5.104.0.tar.xz
-chk b62f3dfe68691ad2917d0592d66ffc02cfbcc7571b7d1fb1d3fadd695534fd2e
-
-# kcrash
-# last changed: 2023-03-22
-# by: ah
-# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
-file 5.104/kcrash-5.104.0.tar.xz
-chk 12d6004f9e2e51a9d74f044462753dd7410e10a40a1f6b07727dcd5b52a7ea96
-
-# kio
-# last changed: 2023-03-22
-# by: ah
-# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
-file 5.104/kio-5.104.0.tar.xz
-chk 5a8b93a5de72406fc4cc7b9aa4715be6d1d5264e617b26be257f5d0e26dde310
-
-# kbookmarks
-# last changed: 2023-03-22
-# by: ah
-# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
-file 5.104/kbookmarks-5.104.0.tar.xz
-chk 85e565590233cfc6dc8c3459717c327961e79c74199d4d1c2741b40946936354
-
-# kservice
-# last changed: 2023-03-22
-# by: ah
-# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
-file 5.104/kservice-5.104.0.tar.xz
-chk 215b109738ea5a10f97c4abbd3c9b9da58c826127708eddd34af345b4e8ad8a3
-
-# solid
-# last changed: 2023-03-22
-# by: ah
-# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
-file 5.104/solid-5.104.0.tar.xz
-chk 2a9a33bc71b4cafec35b9692bd7681a736eeb4e4b81c25f5bd87dbec38c143cf
-
-# kjobwidgets
-# last changed: 2023-03-22
-# by: ah
-# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
-file 5.104/kjobwidgets-5.104.0.tar.xz
-chk 3b254124d3bf20666a514710fef8990325da2ade14f49368b1bed1256eb8fea1
-
-# threadweaver
-# last changed: 2023-04-19
-# by: ah
-# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
-file 5.104/threadweaver-5.104.0.tar.xz
-chk 963decfdf0cf780406eb585efdb213539a00cd16ae4dff2b2ffe8822a609a647
-
-# kparts
-# last changed: 2023-04-19
-# by: ah
-# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
-file 5.104/kparts-5.104.0.tar.xz
-chk 66a40646cc4890669991cc63d33803ec335b0c08b7aeb0476b2a852951e700cd
-
-# ktextwidgets
-# last changed: 2023-05-08
-# by: ah
-# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
-file 5.104/ktextwidgets-5.104.0.tar.xz
-chk 48fe28cbe8a54b1227a0ce502c3f4534e46789a4988db44b2e5f362ee2e17dea
-
-# sonnet
-# last changed: 2023-05-08
-# by: ah
-# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
-file 5.104/sonnet-5.104.0.tar.xz
-chk 17276e51f0f4ac2f8745796db135d3143f2f91ee3fc8fb823c94072de5c0b953
-
-# kauth
-# last changed: 2023-06-05
-# by: ikloecker
-# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
-file 5.104/kauth-5.104.0.tar.xz
-chk 614086598e66c1f136e5a6296f358548509e0e868f62a03c97ade73d9b7d581e
+file 5.109/extra-cmake-modules-5.109.0.tar.xz
+chk 1526b557cf9718e4d3bf31ff241578178d1ee60bdfb863110c97d43d478b7fb7
 
 # kactivities
-# last changed: 2023-07-03
-# by: ikloecker
-# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
-file 5.104/kactivities-5.104.0.tar.xz
-chk 29c31525763a44def441fed012af951fe424bd9a88892701ddf16d84f0917953
-
-# kcalendarcore
-# last changed: 2023-07-31
+# last changed: 2023-08-23
 # by: ah
 # verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
-file 5.104/kcalendarcore-5.104.0.tar.xz
-chk 8e1037bf7af35799a33fd0cf05b4dc57b5a07d9cac3f14ba5671beaf66ca1432
+file 5.109/kactivities-5.109.0.tar.xz
+chk 1c7eef71a887c612af89ec6813282a13dcc1a9b0762c59412a8ef8b5419a52f1
+
+# kconfig
+# last changed: 2023-08-23
+# by: ah
+# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
+file 5.109/kconfig-5.109.0.tar.xz
+chk 5ba91551fb682d3e1d536bc3735b56cecaa57bb698ab32dd8f662e1cc78f7ad8
+
+# ki18n
+# last changed: 2023-08-23
+# by: ah
+# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
+file 5.109/ki18n-5.109.0.tar.xz
+chk dd8b6cb94b082c1e2e564199315cb08c982edb22a27ec0db481884c48b5cdf45
+
+# kwidgetsaddons
+# last changed: 2023-08-23
+# by: ah
+# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
+file 5.109/kwidgetsaddons-5.109.0.tar.xz
+chk d68072f9f351b71a09c86f2856aaa6b6883e4681e542111c42faa1219692e2e2
+
+# kcompletion
+# last changed: 2023-08-23
+# by: ah
+# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
+file 5.109/kcompletion-5.109.0.tar.xz
+chk 72c4a602664b88f16d138cd36a709afbee86a555609232084e29ddb0c2a4aaf1
+
+# kwindowsystem
+# last changed: 2023-08-23
+# by: ah
+# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
+file 5.109/kwindowsystem-5.109.0.tar.xz
+chk 088075c9ff367b5b53b6ecdd34dcf8a47a4cf47458ef02fd9d8df3266679c1a2
+
+# kcoreaddons
+# last changed: 2023-08-23
+# by: ah
+# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
+file 5.109/kcoreaddons-5.109.0.tar.xz
+chk ff647fc1d4dd62370f261854af0870f2a1c7ba7abe7e276e5a4c42d923f15300
+
+# kcodecs
+# last changed: 2023-08-23
+# by: ah
+# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
+file 5.109/kcodecs-5.109.0.tar.xz
+chk 9648fe05222c0755441a2091e4f97fd7b65649bcbaa2fb8c120e90d9c8934ca5
+
+# kconfigwidgets
+# last changed: 2023-08-23
+# by: ah
+# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
+file 5.109/kconfigwidgets-5.109.0.tar.xz
+chk 1e67fa94fd1a91ceb7800061b80e7a498d8031b75d8baabe1099e9e62cd614bf
+
+# kdbusaddons
+# last changed: 2023-08-23
+# by: ah
+# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
+file 5.109/kdbusaddons-5.109.0.tar.xz
+chk 251876bc1a0006741a32406bf52d4f0034f69c4dec9842a47353f5221965f035
+
+# kxmlgui
+# last changed: 2023-08-23
+# by: ah
+# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
+file 5.109/kxmlgui-5.109.0.tar.xz
+chk b4094d33bfb381a07506ac0eb6844ecee3d45e63ab8596587fd0e883259adaee
+
+# kguiaddons
+# last changed: 2023-08-23
+# by: ah
+# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
+file 5.109/kguiaddons-5.109.0.tar.xz
+chk 207d66c3b1b2630f366cb6bab408be60e3f8299ac56be35b24a3c8f336ce7fbd
+
+# kitemviews
+# last changed: 2023-08-23
+# by: ah
+# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
+file 5.109/kitemviews-5.109.0.tar.xz
+chk 4d59fbb9f07737a9d104abf6678e3ac3433885eca379d180b1b22f2514d8c2a9
+
+# kitemmodels
+# last changed: 2023-08-23
+# by: ah
+# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
+file 5.109/kitemmodels-5.109.0.tar.xz
+chk 16f0e59a76368524ebdc90cce62e4cead41142953889312aab0ee157b53ab0f0
+
+# kiconthemes
+# last changed: 2023-08-23
+# by: ah
+# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
+file 5.109/kiconthemes-5.109.0.tar.xz
+chk d319fbb3dbe8e08022690683b7fe27359dd2b036ea52e10f767a63354f68e66c
+
+# breeze-icons
+# last changed: 2023-08-23
+# by: ah
+# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
+file 5.109/breeze-icons-5.109.0.tar.xz
+chk e07a0be85f4fe67576204339be9ac9c6809618b16963fb147d59a325380c54b2
+
+# karchive
+# last changed: 2023-08-23
+# by: ah
+# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
+file 5.109/karchive-5.109.0.tar.xz
+chk 9c4a01c2e4190824e901d487aaa8ce6b2731aa8254fddd9c1a25ee1d1bbbc966
+
+# kcrash
+# last changed: 2023-08-23
+# by: ah
+# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
+file 5.109/kcrash-5.109.0.tar.xz
+chk 2e96d147803f4fb4f9a3affc9ebf69149d221ab49e78f8561ef80cdcf5b276fb
+
+# kio
+# last changed: 2023-08-23
+# by: ah
+# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
+file 5.109/kio-5.109.0.tar.xz
+chk f65a69ef167f5932c4f0f662ff8eb150aba36476fbcbd806744320a1049c0c62
+
+# kbookmarks
+# last changed: 2023-08-23
+# by: ah
+# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
+file 5.109/kbookmarks-5.109.0.tar.xz
+chk 4d979b6b2504c80f2b4db7451ed82eac083d67641607146b9f897f3f04d01f06
+
+# kservice
+# last changed: 2023-08-23
+# by: ah
+# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
+file 5.109/kservice-5.109.0.tar.xz
+chk 5eefe87a080d88d2e8d60bc19e49ef925ab4c2c3cdffb29edb63eb91db3a6995
+
+# solid
+# last changed: 2023-08-23
+# by: ah
+# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
+file 5.109/solid-5.109.0.tar.xz
+chk bc4dfb6d1792711a48745ddb3698ed764da86fca1f79a1b931072e910b4bd569
+
+# kjobwidgets
+# last changed: 2023-08-23
+# by: ah
+# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
+file 5.109/kjobwidgets-5.109.0.tar.xz
+chk 860ed5b80d868c42ff957c9d1003d542f9b7fe026c877786dc14969d50a7c2b7
+
+# threadweaver
+# last changed: 2023-08-23
+# by: ah
+# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
+file 5.109/threadweaver-5.109.0.tar.xz
+chk 7274529540c4f478519271655a409e4d89c297683eab531a764cf2e5b8c2d2e0
+
+# kparts
+# last changed: 2023-08-23
+# by: ah
+# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
+file 5.109/kparts-5.109.0.tar.xz
+chk 6b1da5f8c00c2204e9da1eb6767e00f72a966d1152073515bb677f0e7734f79e
+
+# ktextwidgets
+# last changed: 2023-08-23
+# by: ah
+# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
+file 5.109/ktextwidgets-5.109.0.tar.xz
+chk 380d02e7deefe33cb0ca8c5125dd1e1636510a0843b455a999be2c45571e1da0
+
+# sonnet
+# last changed: 2023-08-23
+# by: ah
+# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
+file 5.109/sonnet-5.109.0.tar.xz
+chk 593ba654a8b5f61af95fec3fd0b269a8f5e89dbed54d62aafb41a0ce0146eeba
+
+# kcalendarcore
+# last changed: 2023-08-23
+# by: ah
+# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
+file 5.109/kcalendarcore-5.109.0.tar.xz
+chk 8581e0e2ac540ce4c8ea76fb61c61234c85c3c908e70b8b5afd0b8ca244edad4
+
 
 ### END PASTE ###
 

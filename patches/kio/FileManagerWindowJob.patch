@@ -1,0 +1,554 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+diff --git a/src/gui/CMakeLists.txt b/src/gui/CMakeLists.txt
+index cf80ef7ba..168c18d36 100644
+--- a/src/gui/CMakeLists.txt
++++ b/src/gui/CMakeLists.txt
+@@ -43,6 +43,10 @@ if (CMAKE_SYSTEM_NAME STREQUAL "Linux")
+     )
+ endif ()
+
++if (NOT ANDROID)
++  target_sources(KF5KIOGui PRIVATE openfilemanagerwindowjob.cpp)
++endif()
++
+ ecm_qt_declare_logging_category(KF5KIOGui
+     HEADER kiogui_debug.h
+     IDENTIFIER KIO_GUI
+@@ -95,6 +99,7 @@ ecm_generate_headers(KIOGui_CamelCase_HEADERS
+   ApplicationLauncherJob
+   CommandLauncherJob
+   FavIconRequestJob
++  OpenFileManagerWindowJob
+   OpenUrlJob
+   OpenWithHandlerInterface
+   ThumbnailCreator
+diff --git a/src/gui/openfilemanagerwindowjob.cpp b/src/gui/openfilemanagerwindowjob.cpp
+new file mode 100644
+index 000000000..b81f0bcd6
+--- /dev/null
++++ b/src/gui/openfilemanagerwindowjob.cpp
+@@ -0,0 +1,217 @@
++/*
++    This file is part of the KDE libraries
++    SPDX-FileCopyrightText: 2016 Kai Uwe Broulik <kde@privat.broulik.de>
++    SPDX-FileCopyrightText: 2023 g10 Code GmbH
++    SPDX-FileContributor: Sune Stolborg Vuorela <sune@vuorela.dk>
++
++    SPDX-License-Identifier: LGPL-2.0-or-later
++*/
++
++#include "openfilemanagerwindowjob.h"
++#include "openfilemanagerwindowjob_p.h"
++
++#if USE_DBUS
++#include <QDBusConnection>
++#include <QDBusMessage>
++#include <QDBusPendingCallWatcher>
++#include <QDBusPendingReply>
++#endif
++#if defined(Q_OS_WINDOWS)
++#include <QDir>
++#include <shlobj.h>
++#include <vector>
++#endif
++#include <QGuiApplication>
++
++#include <KWindowSystem>
++
++#include <KIO/OpenUrlJob>
++
++namespace KIO
++{
++class OpenFileManagerWindowJobPrivate
++{
++public:
++    OpenFileManagerWindowJobPrivate(OpenFileManagerWindowJob *qq)
++        : q(qq)
++        , strategy(nullptr)
++    {
++    }
++
++    ~OpenFileManagerWindowJobPrivate() = default;
++
++#if USE_DBUS
++    void createDBusStrategy()
++    {
++        strategy = std::make_unique<OpenFileManagerWindowDBusStrategy>(q);
++    }
++#endif
++#if defined(Q_OS_WINDOWS)
++    void createWindowsShellStrategy()
++    {
++        strategy = std::make_unique<OpenFileManagerWindowWindowsShellStrategy>(q);
++    }
++#endif
++
++    void createKRunStrategy()
++    {
++        strategy = std::make_unique<OpenFileManagerWindowKRunStrategy>(q);
++    }
++
++    OpenFileManagerWindowJob *const q;
++    QList<QUrl> highlightUrls;
++    QByteArray startupId;
++
++    std::unique_ptr<AbstractOpenFileManagerWindowStrategy> strategy;
++};
++
++OpenFileManagerWindowJob::OpenFileManagerWindowJob(QObject *parent)
++    : KJob(parent)
++    , d(new OpenFileManagerWindowJobPrivate(this))
++{
++#if USE_DBUS
++    d->createDBusStrategy();
++#elif defined(Q_OS_WINDOWS)
++    d->createWindowsShellStrategy();
++#else
++    d->createKRunStrategy();
++#endif
++}
++
++OpenFileManagerWindowJob::~OpenFileManagerWindowJob() = default;
++
++QList<QUrl> OpenFileManagerWindowJob::highlightUrls() const
++{
++    return d->highlightUrls;
++}
++
++void OpenFileManagerWindowJob::setHighlightUrls(const QList<QUrl> &highlightUrls)
++{
++    d->highlightUrls = highlightUrls;
++}
++
++QByteArray OpenFileManagerWindowJob::startupId() const
++{
++    return d->startupId;
++}
++
++void OpenFileManagerWindowJob::setStartupId(const QByteArray &startupId)
++{
++    d->startupId = startupId;
++}
++
++void OpenFileManagerWindowJob::start()
++{
++    if (d->highlightUrls.isEmpty()) {
++        setError(NoValidUrlsError);
++        emitResult();
++        return;
++    }
++
++    d->strategy->start(d->highlightUrls, d->startupId);
++}
++
++OpenFileManagerWindowJob *highlightInFileManager(const QList<QUrl> &urls, const QByteArray &asn)
++{
++    auto *job = new OpenFileManagerWindowJob();
++    job->setHighlightUrls(urls);
++    job->setStartupId(asn);
++    job->start();
++
++    return job;
++}
++
++#if USE_DBUS
++void OpenFileManagerWindowDBusStrategy::start(const QList<QUrl> &urls, const QByteArray &asn)
++{
++    // see the spec at: https://www.freedesktop.org/wiki/Specifications/file-manager-interface/
++
++    auto runWithToken = [this, urls](const QByteArray &asn) {
++        QDBusMessage msg = QDBusMessage::createMethodCall(QStringLiteral("org.freedesktop.FileManager1"),
++                                                          QStringLiteral("/org/freedesktop/FileManager1"),
++                                                          QStringLiteral("org.freedesktop.FileManager1"),
++                                                          QStringLiteral("ShowItems"));
++
++        msg << QUrl::toStringList(urls) << QString::fromUtf8(asn);
++
++        QDBusPendingReply<void> reply = QDBusConnection::sessionBus().asyncCall(msg);
++        QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(reply, m_job);
++        QObject::connect(watcher, &QDBusPendingCallWatcher::finished, m_job, [=](QDBusPendingCallWatcher *watcher) {
++            QDBusPendingReply<void> reply = *watcher;
++            watcher->deleteLater();
++
++            if (reply.isError()) {
++                // Try the KRun strategy as fallback, also calls emitResult inside
++                m_job->d->createKRunStrategy();
++                m_job->d->strategy->start(urls, asn);
++                return;
++            }
++
++            emitResultProxy();
++        });
++    };
++
++    if (asn.isEmpty()) {
++        auto window = qGuiApp->focusWindow();
++        if (!window && !qGuiApp->allWindows().isEmpty()) {
++            window = qGuiApp->allWindows().constFirst();
++        }
++        const int launchedSerial = KWindowSystem::lastInputSerial(window);
++        QObject::connect(KWindowSystem::self(),
++                         &KWindowSystem::xdgActivationTokenArrived,
++                         m_job,
++                         [launchedSerial, runWithToken, job = m_job](int serial, const QString &token) {
++                             QObject::disconnect(KWindowSystem::self(), &KWindowSystem::xdgActivationTokenArrived, job, nullptr);
++                             if (serial == launchedSerial) {
++                                 runWithToken(token.toUtf8());
++                             }
++                         });
++        KWindowSystem::requestXdgActivationToken(window, launchedSerial, {});
++    } else {
++        runWithToken(asn);
++    }
++}
++#endif
++
++void OpenFileManagerWindowKRunStrategy::start(const QList<QUrl> &urls, const QByteArray &asn)
++{
++    KIO::OpenUrlJob *urlJob = new KIO::OpenUrlJob(urls.at(0).adjusted(QUrl::RemoveFilename), QStringLiteral("inode/directory"));
++    urlJob->setUiDelegate(m_job->uiDelegate());
++    urlJob->setStartupId(asn);
++    QObject::connect(urlJob, &KJob::result, m_job, [this](KJob *urlJob) {
++        if (urlJob->error()) {
++            emitResultProxy(OpenFileManagerWindowJob::LaunchFailedError);
++        } else {
++            emitResultProxy();
++        }
++    });
++    urlJob->start();
++}
++
++#if defined(Q_OS_WINDOWS)
++void OpenFileManagerWindowWindowsShellStrategy::start(const QList<QUrl> &urls, const QByteArray &asn)
++{
++    Q_UNUSED(asn);
++    LPITEMIDLIST dir = ILCreateFromPathW(QDir::toNativeSeparators(urls.at(0).adjusted(QUrl::RemoveFilename).toLocalFile()).toStdWString().data());
++
++    std::vector<LPCITEMIDLIST> items;
++    for (const auto &url : urls) {
++        LPITEMIDLIST item = ILCreateFromPathW(QDir::toNativeSeparators(url.toLocalFile()).toStdWString().data());
++        items.push_back(item);
++    }
++
++    auto result = SHOpenFolderAndSelectItems(dir, items.size(), items.data(), 0);
++    if (SUCCEEDED(result)) {
++        emitResultProxy();
++    } else {
++        emitResultProxy(OpenFileManagerWindowJob::LaunchFailedError);
++    }
++    ILFree(dir);
++    for (auto &item : items) {
++        ILFree(const_cast<LPITEMIDLIST>(item));
++    }
++}
++#endif
++} // namespace KIO
++
++#include "moc_openfilemanagerwindowjob.cpp"
+diff --git a/src/widgets/openfilemanagerwindowjob.h b/src/gui/openfilemanagerwindowjob.h
+similarity index 93%
+rename from src/widgets/openfilemanagerwindowjob.h
+rename to src/gui/openfilemanagerwindowjob.h
+index a4300cefd..81b741940 100644
+--- a/src/widgets/openfilemanagerwindowjob.h
++++ b/src/gui/openfilemanagerwindowjob.h
+@@ -8,7 +8,7 @@
+ #ifndef OPENFILEMANAGERWINDOWJOB_H
+ #define OPENFILEMANAGERWINDOWJOB_H
+
+-#include "kiowidgets_export.h"
++#include "kiogui_export.h"
+
+ #include <KJob>
+
+@@ -44,7 +44,7 @@ class OpenFileManagerWindowJobPrivate;
+  *
+  * @since 5.24
+  */
+-class KIOWIDGETS_EXPORT OpenFileManagerWindowJob : public KJob
++class KIOGUI_EXPORT OpenFileManagerWindowJob : public KJob
+ {
+     Q_OBJECT
+
+@@ -110,7 +110,7 @@ private:
+  *
+  * @since 5.24
+  */
+-KIOWIDGETS_EXPORT OpenFileManagerWindowJob *highlightInFileManager(const QList<QUrl> &urls, const QByteArray &asn = QByteArray());
++KIOGUI_EXPORT OpenFileManagerWindowJob *highlightInFileManager(const QList<QUrl> &urls, const QByteArray &asn = QByteArray());
+
+ } // namespace KIO
+
+diff --git a/src/widgets/openfilemanagerwindowjob_p.h b/src/gui/openfilemanagerwindowjob_p.h
+similarity index 76%
+rename from src/widgets/openfilemanagerwindowjob_p.h
+rename to src/gui/openfilemanagerwindowjob_p.h
+index 3f6399ae8..ccb556625 100644
+--- a/src/widgets/openfilemanagerwindowjob_p.h
++++ b/src/gui/openfilemanagerwindowjob_p.h
+@@ -8,6 +8,8 @@
+ #ifndef OPENFILEMANAGERWINDOWJOB_P_H
+ #define OPENFILEMANAGERWINDOWJOB_P_H
+
++#define USE_DBUS defined(Q_OS_LINUX) || defined(Q_OS_FREEBSD)
++
+ #include <KJob>
+
+ namespace KIO
+@@ -37,6 +39,7 @@ protected:
+     OpenFileManagerWindowJob *m_job;
+ };
+
++#if USE_DBUS
+ class OpenFileManagerWindowDBusStrategy : public AbstractOpenFileManagerWindowStrategy
+ {
+ public:
+@@ -46,6 +49,7 @@ public:
+     }
+     void start(const QList<QUrl> &urls, const QByteArray &asn) override;
+ };
++#endif
+
+ class OpenFileManagerWindowKRunStrategy : public AbstractOpenFileManagerWindowStrategy
+ {
+@@ -57,6 +61,17 @@ public:
+     void start(const QList<QUrl> &urls, const QByteArray &asn) override;
+ };
+
++#if defined(Q_OS_WINDOWS)
++class OpenFileManagerWindowWindowsShellStrategy : public AbstractOpenFileManagerWindowStrategy
++{
++public:
++    explicit OpenFileManagerWindowWindowsShellStrategy(OpenFileManagerWindowJob *job)
++        : AbstractOpenFileManagerWindowStrategy(job)
++    {
++    }
++    void start(const QList<QUrl> &urls, const QByteArray &asn) override;
++};
++#endif
+ }
+
+ #endif // OPENFILEMANAGERWINDOWJOB_P_H
+diff --git a/src/widgets/CMakeLists.txt b/src/widgets/CMakeLists.txt
+index 395a2a2df..61af31f9f 100644
+--- a/src/widgets/CMakeLists.txt
++++ b/src/widgets/CMakeLists.txt
+@@ -79,7 +79,6 @@
+   kfileitemdelegate.cpp
+   paste.cpp
+   joburlcache.cpp
+-    openfilemanagerwindowjob.cpp
+   fileundomanager.cpp
+   kpropertiesdialog.cpp
+   kbuildsycocaprogressdialog.cpp
+@@ -205,7 +204,6 @@
+   ThumbCreator
+   DropJob
+   DndPopupMenuPlugin
+-  OpenFileManagerWindowJob
+   PasteJob
+   PreviewJob
+   RenameDialog
+diff --git a/src/widgets/openfilemanagerwindowjob.cpp b/src/widgets/openfilemanagerwindowjob.cpp
+deleted file mode 100644
+index f1b6705c0..000000000
+--- a/src/widgets/openfilemanagerwindowjob.cpp
++++ /dev/null
+@@ -1,177 +0,0 @@
+-/*
+-    This file is part of the KDE libraries
+-    SPDX-FileCopyrightText: 2016 Kai Uwe Broulik <kde@privat.broulik.de>
+-
+-    SPDX-License-Identifier: LGPL-2.0-or-later
+-*/
+-
+-#include "openfilemanagerwindowjob.h"
+-#include "openfilemanagerwindowjob_p.h"
+-
+-#include <QDBusConnection>
+-#include <QDBusMessage>
+-#include <QDBusPendingCallWatcher>
+-#include <QDBusPendingReply>
+-#include <QGuiApplication>
+-
+-#include <KJobWidgets>
+-#include <KWindowSystem>
+-
+-#include <KIO/JobUiDelegate>
+-#include <KIO/JobUiDelegateFactory>
+-#include <KIO/OpenUrlJob>
+-
+-namespace KIO
+-{
+-class OpenFileManagerWindowJobPrivate
+-{
+-public:
+-    OpenFileManagerWindowJobPrivate(OpenFileManagerWindowJob *qq)
+-        : q(qq)
+-        , strategy(nullptr)
+-    {
+-    }
+-
+-    ~OpenFileManagerWindowJobPrivate()
+-    {
+-        delete strategy;
+-    }
+-
+-    AbstractOpenFileManagerWindowStrategy *createDBusStrategy()
+-    {
+-        delete strategy;
+-        strategy = new OpenFileManagerWindowDBusStrategy(q);
+-        return strategy;
+-    }
+-
+-    AbstractOpenFileManagerWindowStrategy *createKRunStrategy()
+-    {
+-        delete strategy;
+-        strategy = new OpenFileManagerWindowKRunStrategy(q);
+-        return strategy;
+-    }
+-
+-    OpenFileManagerWindowJob *const q;
+-    QList<QUrl> highlightUrls;
+-    QByteArray startupId;
+-
+-    AbstractOpenFileManagerWindowStrategy *strategy;
+-};
+-
+-OpenFileManagerWindowJob::OpenFileManagerWindowJob(QObject *parent)
+-    : KJob(parent)
+-    , d(new OpenFileManagerWindowJobPrivate(this))
+-{
+-#ifdef Q_OS_LINUX
+-    d->createDBusStrategy();
+-#else
+-    d->createKRunStrategy();
+-#endif
+-}
+-
+-OpenFileManagerWindowJob::~OpenFileManagerWindowJob() = default;
+-
+-QList<QUrl> OpenFileManagerWindowJob::highlightUrls() const
+-{
+-    return d->highlightUrls;
+-}
+-
+-void OpenFileManagerWindowJob::setHighlightUrls(const QList<QUrl> &highlightUrls)
+-{
+-    d->highlightUrls = highlightUrls;
+-}
+-
+-QByteArray OpenFileManagerWindowJob::startupId() const
+-{
+-    return d->startupId;
+-}
+-
+-void OpenFileManagerWindowJob::setStartupId(const QByteArray &startupId)
+-{
+-    d->startupId = startupId;
+-}
+-
+-void OpenFileManagerWindowJob::start()
+-{
+-    if (d->highlightUrls.isEmpty()) {
+-        setError(NoValidUrlsError);
+-        emitResult();
+-        return;
+-    }
+-
+-    d->strategy->start(d->highlightUrls, d->startupId);
+-}
+-
+-OpenFileManagerWindowJob *highlightInFileManager(const QList<QUrl> &urls, const QByteArray &asn)
+-{
+-    auto *job = new OpenFileManagerWindowJob();
+-    job->setHighlightUrls(urls);
+-
+-    if (asn.isNull()) {
+-        auto window = qGuiApp->focusWindow();
+-        if (!window && !qGuiApp->allWindows().isEmpty()) {
+-            window = qGuiApp->allWindows().constFirst();
+-        }
+-        const int launchedSerial = KWindowSystem::lastInputSerial(window);
+-        QObject::connect(KWindowSystem::self(), &KWindowSystem::xdgActivationTokenArrived, job, [launchedSerial, job](int serial, const QString &token) {
+-            QObject::disconnect(KWindowSystem::self(), &KWindowSystem::xdgActivationTokenArrived, job, nullptr);
+-            if (serial == launchedSerial) {
+-                job->setStartupId(token.toLatin1());
+-                job->start();
+-            }
+-        });
+-        KWindowSystem::requestXdgActivationToken(window, launchedSerial, {});
+-    } else {
+-        job->setStartupId(asn);
+-        job->start();
+-    }
+-
+-    return job;
+-}
+-
+-void OpenFileManagerWindowDBusStrategy::start(const QList<QUrl> &urls, const QByteArray &asn)
+-{
+-    // see the spec at: https://www.freedesktop.org/wiki/Specifications/file-manager-interface/
+-
+-    QDBusMessage msg = QDBusMessage::createMethodCall(QStringLiteral("org.freedesktop.FileManager1"),
+-                                                      QStringLiteral("/org/freedesktop/FileManager1"),
+-                                                      QStringLiteral("org.freedesktop.FileManager1"),
+-                                                      QStringLiteral("ShowItems"));
+-
+-    msg << QUrl::toStringList(urls) << QString::fromUtf8(asn);
+-
+-    QDBusPendingReply<void> reply = QDBusConnection::sessionBus().asyncCall(msg);
+-    QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(reply, m_job);
+-    QObject::connect(watcher, &QDBusPendingCallWatcher::finished, m_job, [=](QDBusPendingCallWatcher *watcher) {
+-        QDBusPendingReply<void> reply = *watcher;
+-        watcher->deleteLater();
+-
+-        if (reply.isError()) {
+-            // Try the KRun strategy as fallback, also calls emitResult inside
+-            AbstractOpenFileManagerWindowStrategy *kRunStrategy = m_job->d->createKRunStrategy();
+-            kRunStrategy->start(urls, asn);
+-            return;
+-        }
+-
+-        emitResultProxy();
+-    });
+-}
+-
+-void OpenFileManagerWindowKRunStrategy::start(const QList<QUrl> &urls, const QByteArray &asn)
+-{
+-    KIO::OpenUrlJob *urlJob = new KIO::OpenUrlJob(urls.at(0).adjusted(QUrl::RemoveFilename), QStringLiteral("inode/directory"));
+-    urlJob->setUiDelegate(KIO::createDefaultJobUiDelegate(KJobUiDelegate::AutoHandlingEnabled, KJobWidgets::window(m_job)));
+-    urlJob->setStartupId(asn);
+-    QObject::connect(urlJob, &KJob::result, m_job, [this](KJob *urlJob) {
+-        if (urlJob->error()) {
+-            emitResultProxy(OpenFileManagerWindowJob::LaunchFailedError);
+-        } else {
+-            emitResultProxy();
+-        }
+-    });
+-    urlJob->start();
+-}
+-
+-} // namespace KIO
+-
+-#include "moc_openfilemanagerwindowjob.cpp"
+diff --git a/tests/openfilemanagerwindowtest.cpp b/tests/openfilemanagerwindowtest.cpp
+index 87fd170a5..77630bb0f 100644
+--- a/tests/openfilemanagerwindowtest.cpp
++++ b/tests/openfilemanagerwindowtest.cpp
+@@ -16,8 +16,11 @@ int main(int argc, char **argv)
+ {
+     QApplication::setApplicationName(QStringLiteral("openfilemanagerwindowtest"));
+     QApplication app(argc, argv);
+-
++#ifndef Q_OS_WINDOWS
+     const QList<QUrl> urls{QUrl(QStringLiteral("file:///etc/fstab")), QUrl(QStringLiteral("file:///etc/passwd"))};
++#else
++    const QList<QUrl> urls{QUrl(QStringLiteral("file:///c:/windows/notepad.exe")), QUrl(QStringLiteral("file:///c:/windows/explorer.exe"))};
++#endif
+
+     auto *job = new KIO::OpenFileManagerWindowJob();
+     job->setHighlightUrls(urls);

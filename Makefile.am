@@ -64,9 +64,8 @@ EXTRA_DIST = autogen.rc autogen.sh README.GIT ONEWS \
              patches/kcoreaddons/0001-Fix-MINGW-build.patch \
              patches/ki18n/0001-Undef-snprintf-for-windows.patch \
              patches/kio/0001-WIP-Remove-dependency-to-dbus.patch \
-             patches/kservice/0001-Remove-unused-include.patch \
-             patches/okular/0001-Build-without-KIOFileWidgets.patch \
-             patches/okular/allow-dbus-to-be-disabled.patch \
+             patches/kio/FileManagerWindowJob.patch \
+             patches/okular/lower-cmake-requirement.patch \
              patches/okular/0001-Add-GnuPG-specific-manifest-to-okular.patch \
              patches/okular/0001-Hack-in-some-aboutdata-for-GnuPG-Edition.patch \
              patches/poppler/0001-Explicitly-take-posix-variant-for-mingw-gcc-cross.patch \

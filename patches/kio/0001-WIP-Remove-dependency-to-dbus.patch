@@ -224,15 +224,15 @@ index b97079c24..5d7d8e5d4 100644
  #include <QDBusConnection>
  #include <QDBusInterface>
  #include <QDBusReply>
-@@ -108,7 +108,7 @@ KProcessRunner *KProcessRunner::fromApplication(const KService::Ptr &service,
+@@ -119,7 +119,7 @@
      qCDebug(KIO_GUI) << "Starting process:" << args;
      *instance->m_process << args;
 
 -#ifndef Q_OS_ANDROID
 +#ifdef QT_DBUS_LIB
-     enum DiscreteGpuCheck { NotChecked, Present, Absent };
-     static DiscreteGpuCheck s_gpuCheck = NotChecked;
-
+     if (service->runOnDiscreteGpu()) {
+         modifyEnv(*instance->m_process, KIO::discreteGpuEnvironment());
+     }
 diff --git a/src/ioslaves/CMakeLists.txt b/src/ioslaves/CMakeLists.txt
 index 91a838f59..975b50417 100644
 --- a/src/ioslaves/CMakeLists.txt
@@ -428,22 +428,6 @@ index 759243596..95f638228 100644
  }
 
  class KFilePermissionsPropsPlugin::KFilePermissionsPropsPluginPrivate
-@@ -3319,6 +3323,7 @@ KDesktopPropsPlugin::KDesktopPropsPlugin(KPropertiesDialog *_props)
-     if (s_gpuCheck == NotChecked) {
-         // Check whether we have a discrete gpu
-         bool hasDiscreteGpu = false;
-+#ifdef QT_DBUS_LIB
-         QDBusInterface iface(QStringLiteral("org.kde.Solid.PowerManagement"),
-                              QStringLiteral("/org/kde/Solid/PowerManagement"),
-                              QStringLiteral("org.kde.Solid.PowerManagement"),
-@@ -3329,6 +3334,7 @@ KDesktopPropsPlugin::KDesktopPropsPlugin(KPropertiesDialog *_props)
-                 hasDiscreteGpu = reply.value();
-             }
-         }
-+#endif
-
-         s_gpuCheck = hasDiscreteGpu ? Present : Absent;
-     }
 diff --git a/src/widgets/paste.cpp b/src/widgets/paste.cpp
 index 96babbbd0..bc2ce421d 100644
 --- a/src/widgets/paste.cpp
