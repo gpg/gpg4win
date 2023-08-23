@@ -87,6 +87,15 @@ to be installed:
 Additionally on Debian Buster cmake has to be at least version 3.1.16 from
 debian backports.
 
+Note: That Gpg4win requires to be compiled with the -posix flavor of mingw
+so if you have both installed use update-alterantives to select the posix ones.
+
+The use update-alternatives:
+    update-alternatives --install /usr/bin/i686-w64-mingw32-gcc i686-w64-mingw32-gcc /usr/bin/i686-w64-mingw32-gcc-posix 10
+
+This is probably also required for:
+i686-w64-mingw32-c++ i686-w64-mingw32-cpp i686-w64-mingw32-g++ i686-w64-mingw32-gcc-10 i686-w64-mingw32-gcc-ar
+
 Building the Webpages
 =====================
 
