@@ -26,16 +26,19 @@
 set -e
 
 if [ -z "$1" ]; then
-    echo "Usage: $0 PACKAGE"
+    echo "Usage: $0 PACKAGE --auto"
     echo "where PACKAGE is either the name of a supported library or application, e.g. 'kleopatra',"
     echo "or the path of a local Git repository, e.g. '~/src/kleopatra',"
     echo "or the URL of a remote Git repository, e.g. 'https://invent.kde.org/pim/kleopatra.git'."
+    echo ""
+    echo "add the --auto parameter to automatically update packages.common and upload the tarball."
     exit 1
 fi
 
 package=$1
 is_gpg="no"
 is_w32="no"
+do_auto="no"
 branch="master"
 
 case ${package} in
@@ -81,17 +84,9 @@ case ${package} in
         ;;
 esac
 
-case ${package} in
-    kleopatra)
-        # pofiles="kleopatra.po kwatchgnupg.po"
-        ;;
-    libkleo)
-        #pofiles="libkleopatra.po"
-        ;;
-    *)
-        echo "Warning: No known translations for package '${package}'"
-        ;;
-esac
+if [ "$2" == "--auto" ]; then
+    do_auto="yes";
+fi
 
 tmpdir=$(mktemp -d -t gen-tarball.XXXXXXXXXX)
 curdate=$(date +%Y-%m-%d)
@@ -114,6 +109,7 @@ if [ "${is_gpg}" == "yes" ]; then
     make dist-xz >&2
     tarball=$(ls -t *.tar.xz | head -1)
     cp ${tmpdir}/${snapshotdir}/${tarball} ${olddir}
+    cd ${olddir}
 else
     echo "Archiving $branch.."
     (cd ${tmpdir}/${snapshotdir} && \
@@ -122,15 +118,27 @@ else
 fi
 checksum=$(sha256sum ${tarball} | cut -d ' ' -f 1)
 
-echo "------------------------------ >8 ------------------------------"
-echo "# ${package}"
-echo "# last changed: ${curdate}"
-echo "# by: $USER"
-echo "# verified: Tarball created by $USER."
-echo "file ${package}/${tarball}"
-echo "chk ${checksum}"
-echo "------------------------------ >8 ------------------------------"
 
-echo "To upload:" >&2
-echo "rsync -vP ${tarball} trithemius.gnupg.org:/home/ftp/gcrypt/snapshots/${package}/" >&2
+cat > ${tmpdir}/snippet <<EOF
+# ${package}
+# last changed: ${curdate}
+# by: $USER
+# verified: Tarball created by $USER.
+file ${package}/${tarball}
+chk ${checksum}
+EOF
+
+if [ "${do_auto}" == "yes" ]; then
+    perl -i -p0e "s@# ${package}\n# last changed:.*?\n# by:.*?\n# verified:.*?\nfile.*?\nchk.*?\n@'`cat ${tmpdir}/snippet`
+'@se" packages.common
+
+    echo "uploading" >&2
+    rsync -vP ${tarball} trithemius.gnupg.org:/home/ftp/gcrypt/snapshots/${package}/
+else
+    echo "------------------------------ >8 ------------------------------"
+    cat "${tmpdir}/snippet"
+    echo "------------------------------ >8 ------------------------------"
+    echo "To upload:" >&2
+    echo "rsync -vP ${tarball} trithemius.gnupg.org:/home/ftp/gcrypt/snapshots/${package}/" >&2
+fi;
 rm -fr ${tmpdir}
