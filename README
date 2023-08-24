@@ -90,11 +90,13 @@ debian backports.
 Note: That Gpg4win requires to be compiled with the -posix flavor of mingw
 so if you have both installed use update-alterantives to select the posix ones.
 
-The use update-alternatives:
-    update-alternatives --install /usr/bin/i686-w64-mingw32-gcc i686-w64-mingw32-gcc /usr/bin/i686-w64-mingw32-gcc-posix 10
+To use update-alternatives:
+    update-alternatives --install /usr/bin/i686-w64-mingw32-gcc \
+        i686-w64-mingw32-gcc /usr/bin/i686-w64-mingw32-gcc-posix 100
 
-This is probably also required for:
-i686-w64-mingw32-c++ i686-w64-mingw32-cpp i686-w64-mingw32-g++ i686-w64-mingw32-gcc-10 i686-w64-mingw32-gcc-ar
+    update-alternatives --install /usr/bin/i686-w64-mingw32-g++ \
+        i686-w64-mingw32-g++ /usr/bin/i686-w64-mingw32-g++-posix 100
+
 
 Building the Webpages
 =====================
