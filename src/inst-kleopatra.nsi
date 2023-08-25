@@ -352,6 +352,41 @@ LangString T_Sign_Encrypt ${LANG_ENGLISH} \
 LangString DESC_SEC_kleopatra ${LANG_ENGLISH} \
    "Keymanager for OpenPGP and X.509 and common crypto dialogs."
 
-
 LangString DESC_Menu_kleopatra ${LANG_ENGLISH} \
    "Run the Kleopatra key management tool."
+
+LangString T_File_Type_gpg_Name ${LANG_ENGLISH} \
+   "OpenPGP Binary File"
+
+LangString T_File_Type_asc_Name ${LANG_ENGLISH} \
+   "OpenPGP Text File"
+
+LangString T_File_Type_sig_Name ${LANG_ENGLISH} \
+   "OpenPGP Signature"
+
+LangString T_File_Type_pgp_key_Name ${LANG_ENGLISH} \
+   "OpenPGP Certificate File"
+
+LangString T_File_Type_pem_Name ${LANG_ENGLISH} \
+   "CMS (S/MIME) File"
+
+LangString T_File_Type_x509_Name ${LANG_ENGLISH} \
+   "X509 Certificate File"
+
+LangString T_File_Type_kgrp_Name ${LANG_ENGLISH} \
+   "Kleopatra Certificate Groups"
+
+LangString T_File_Type_x509_info_tip ${LANG_ENGLISH} \
+   "Certificate for CMS (S/MIME)."
+
+LangString T_File_Type_info_tip ${LANG_ENGLISH} \
+   "This can be encrypted data, a signature or a certificate."
+
+LangString T_File_Type_sig_info_tip ${LANG_ENGLISH} \
+   "A cryptographic signature to verify the authenticity of another file."
+
+LangString T_File_Type_kgrp_info_tip ${LANG_ENGLISH} \
+   "Certificate groups to be used by Kleopatra for encryption."
+
+LangString T_File_Type_pgp_key_info_tip ${LANG_ENGLISH} \
+   "Certificate for OpenPGP."
