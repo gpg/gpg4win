@@ -353,6 +353,10 @@ msgid ""
 "Register GnuPG as native messaging service e.g. for the Mailvelope extension."
 msgstr "将 GnuPG 注册为本机消息服务，用于例如 MailDevelope 扩展。"
 
+msgctxt "T_Sign_Encrypt"
+msgid "Sign/Encrypt"
+msgstr ""
+
 msgctxt "DESC_SEC_kleopatra"
 msgid "Keymanager for OpenPGP and X.509 and common crypto dialogs."
 msgstr "OpenPGP 和 X.509 密钥管理器和通用加解密窗口。"
@@ -360,14 +364,6 @@ msgstr "OpenPGP 和 X.509 密钥管理器和通用加解密窗口。"
 msgctxt "DESC_Menu_kleopatra"
 msgid "Run the Kleopatra key management tool."
 msgstr "运行 Kleopatra 密钥管理工具。"
-
-msgctxt "DESC_SEC_okular"
-msgid "A PDF viewer to sign and verify pdf documents with GnuPG."
-msgstr ""
-
-msgctxt "DESC_Menu_okular"
-msgid "Run the Okular PDF viewer to sign and verify documents with GnuPG."
-msgstr ""
 
 msgctxt "T_File_Type_gpg_Name"
 msgid "OpenPGP Binary File"
@@ -393,6 +389,10 @@ msgctxt "T_File_Type_x509_Name"
 msgid "X509 Certificate File"
 msgstr "X.509 证书文件"
 
+msgctxt "T_File_Type_MIME_Name"
+msgid "E-Mail file"
+msgstr ""
+
 msgctxt "T_File_Type_kgrp_Name"
 msgid "Kleopatra Certificate Groups"
 msgstr ""
@@ -400,6 +400,10 @@ msgstr ""
 msgctxt "T_File_Type_x509_info_tip"
 msgid "Certificate for CMS (S/MIME)."
 msgstr "CMS (S/MIME) 证书。"
+
+msgctxt "T_File_Type_MIME_info_tip"
+msgid "An E-Mail file that can either be encrypted or unencrypted"
+msgstr ""
 
 msgctxt "T_File_Type_info_tip"
 msgid "This can be encrypted data, a signature or a certificate."
@@ -416,6 +420,14 @@ msgstr ""
 msgctxt "T_File_Type_pgp_key_info_tip"
 msgid "Certificate for OpenPGP."
 msgstr "OpenPGP 证书。"
+
+msgctxt "DESC_SEC_okular"
+msgid "A PDF viewer to sign and verify pdf documents with GnuPG."
+msgstr ""
+
+msgctxt "DESC_Menu_okular"
+msgid "Run the Okular PDF viewer to sign and verify documents with GnuPG."
+msgstr ""
 
 #~ msgctxt "T_RunGPA"
 #~ msgid "Run GPA"
