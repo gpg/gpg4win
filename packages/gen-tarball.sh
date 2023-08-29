@@ -63,13 +63,13 @@ case ${package} in
     mimetreeparser)
         repo=https://dev.gnupg.org/source/${package}.git
         ;;
-    kleopatra | libkleo)
-        # assume that package is provided by KDE
+    kleopatra)
         repo=https://invent.kde.org/pim/${package}.git
+        # branch="work/carl/allow-opening-mbox-file"
         ;;
-    k* | libk*)
-        # assume that package is provided by KDE
+    libkleo)
         repo=https://invent.kde.org/pim/${package}.git
+        # branch="work/carl/clasify-mimefile"
         ;;
     okular)
         repo=https://invent.kde.org/graphics/${package}.git
