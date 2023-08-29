@@ -303,6 +303,19 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
 
   WriteRegBin SHCTX "Software\Classes\.kgrp\OpenWithProgIDs" "gpg4win.AssocFile.Kleopatra.KGRP" 0
 
+  # MIME structures
+  WriteRegExpandStr SHCTX "Software\Classes\gpg4win.AssocFile.Kleopatra.MIME\shell\open\command" "" "$\"$INSTDIR\bin\Kleopatra.exe$\" -- $\"%1$\""
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.Kleopatra.MIME" "FriendlyTypeName" "$(T_File_Type_MIME_Name)"
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.Kleopatra.MIME" "PercievedType" "Document"
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.Kleopatra.MIME" "InfoTip" "$(T_File_Type_MIME_info_tip)"
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.Kleopatra.MIME\CurVer" "" "${VERSION}"
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.Kleopatra.MIME\DefaultIcon" "" "$INSTDIR\share\gpg4win\file-ext.ico"
+
+  WriteRegBin SHCTX "Software\Classes\.mim\OpenWithProgIDs" "gpg4win.AssocFile.Kleopatra.MIME" 0
+  WriteRegBin SHCTX "Software\Classes\.mime\OpenWithProgIDs" "gpg4win.AssocFile.Kleopatra.MIME" 0
+  WriteRegBin SHCTX "Software\Classes\.eml\OpenWithProgIDs" "gpg4win.AssocFile.Kleopatra.MIME" 0
+  WriteRegBin SHCTX "Software\Classes\.mbox\OpenWithProgIDs" "gpg4win.AssocFile.Kleopatra.MIME" 0
+
   # Register capabilities
   WriteRegStr SHCTX "Software\RegisteredApplications" "Kleopatra" "SOFTWARE\Gpg4win\Kleopatra\Capabilities"
   WriteRegStr SHCTX "Software\Gpg4win\Kleopatra" "" "Kleopatra"
@@ -326,6 +339,10 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
   WriteRegStr SHCTX "Software\Gpg4win\Kleopatra\Capabilities\FileAssociations" ".p7s" "gpg4win.AssocFile.Kleopatra.CMS"
   WriteRegStr SHCTX "Software\Gpg4win\Kleopatra\Capabilities\FileAssociations" ".pem" "gpg4win.AssocFile.Kleopatra.CMS"
   WriteRegStr SHCTX "Software\Gpg4win\Kleopatra\Capabilities\FileAssociations" ".kgrp" "gpg4win.AssocFile.Kleopatra.KGRP"
+  WriteRegStr SHCTX "Software\Gpg4win\Kleopatra\Capabilities\FileAssociations" ".mim"  "gpg4win.AssocFile.Kleopatra.MIME"
+  WriteRegStr SHCTX "Software\Gpg4win\Kleopatra\Capabilities\FileAssociations" ".mime" "gpg4win.AssocFile.Kleopatra.MIME"
+  WriteRegStr SHCTX "Software\Gpg4win\Kleopatra\Capabilities\FileAssociations" ".mbox" "gpg4win.AssocFile.Kleopatra.MIME"
+  WriteRegStr SHCTX "Software\Gpg4win\Kleopatra\Capabilities\FileAssociations" ".eml"  "gpg4win.AssocFile.Kleopatra.MIME"
 
   WriteRegExpandStr SHCTX "Software\Gpg4win\Kleopatra\Capabilities\shell\open\command" "" "$\"$INSTDIR\bin\Kleopatra.exe$\" -- $\"%1$\""
 
@@ -338,7 +355,7 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
   WriteRegStr SHCTX "Software\Gpg4win\Kleopatra\Capabilities\MimeAssociations" "application/pkix-cert" "gpg4win.AssocFile.Kleopatra.CMS"
   WriteRegStr SHCTX "Software\Gpg4win\Kleopatra\Capabilities\MimeAssociations" "application/x-x509-ca-cert" "gpg4win.AssocFile.Kleopatra.X509"
   WriteRegStr SHCTX "Software\Gpg4win\Kleopatra\Capabilities\MimeAssociations" "application/x-pkcs12" "gpg4win.AssocFile.Kleopatra.X509"
-#  SetRegView 32
+  WriteRegStr SHCTX "Software\Gpg4win\Kleopatra\Capabilities\MimeAssociations" "message/rfc822" "gpg4win.AssocFile.Kleopatra.MIME"
 
 #  Explorer entry for unknown files
 #  WriteRegStr SHCTX "Software\Classes\*\Kleopatra" "" "$(T_Sign_Encrypt)"
@@ -375,11 +392,17 @@ LangString T_File_Type_pem_Name ${LANG_ENGLISH} \
 LangString T_File_Type_x509_Name ${LANG_ENGLISH} \
    "X509 Certificate File"
 
+LangString T_File_Type_MIME_Name ${LANG_ENGLISH} \
+   "E-Mail file"
+
 LangString T_File_Type_kgrp_Name ${LANG_ENGLISH} \
    "Kleopatra Certificate Groups"
 
 LangString T_File_Type_x509_info_tip ${LANG_ENGLISH} \
    "Certificate for CMS (S/MIME)."
+
+LangString T_File_Type_MIME_info_tip ${LANG_ENGLISH} \
+   "An E-Mail file that can either be encrypted or unencrypted"
 
 LangString T_File_Type_info_tip ${LANG_ENGLISH} \
    "This can be encrypted data, a signature or a certificate."
