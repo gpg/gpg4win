@@ -290,6 +290,8 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
   WriteRegBin SHCTX "Software\Classes\.crt\OpenWithProgIDs" "gpg4win.AssocFile.Kleopatra.X509" 0
   WriteRegBin SHCTX "Software\Classes\.der\OpenWithProgIDs" "gpg4win.AssocFile.Kleopatra.X509" 0
 
+  DeleteRegValue SHCTX "Software\Classes\gpg4win.AssocFile.Kleopatra.X509" "AllowSilentDefaultTakeOver"
+
   # .kgrp
   WriteRegExpandStr SHCTX "Software\Classes\gpg4win.AssocFile.Kleopatra.KGRP\shell\open\command" "" "$\"$INSTDIR\bin\Kleopatra.exe$\" -- $\"%1$\""
   WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.Kleopatra.KGRP" "" "$(T_File_Type_kgrp_Name)"
