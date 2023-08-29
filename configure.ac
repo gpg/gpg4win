@@ -32,8 +32,8 @@ m4_define([mym4_isvsd],m4_if(m4_esyscmd([ls packages/gnupg-2.*.tar.* | \
 
 m4_if(mym4_isvsd,yes,
       [m4_define([mym4_major],[3])
-       m4_define([mym4_minor],[1])
-       m4_define([mym4_micro],[27])],
+       m4_define([mym4_minor],[2])
+       m4_define([mym4_micro],[0])],
       [m4_define([mym4_major],[4])
        m4_define([mym4_minor],[2])
        m4_define([mym4_micro],[0])])
