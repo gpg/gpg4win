@@ -166,11 +166,11 @@ chk  8922181fef523b77b71625e562e4d69532278eabbd18bc74579dbe14135729ba
 file pinentry/pinentry-1.2.1.tar.bz2
 chk 457a185e5a85238fb945a955dc6352ab962dc8b48720b62fc9fa48c7540a4067
 
-# last changed 2023-07-07
-# by wk
+# last changed: 2023-07-07
+# by: wk
 # verified: [build tree]
-file gpgme/gpgme-1.21.0.tar.bz2
-chk 416e174e165734d84806253f8c96bda2993fd07f258c3aad5f053a6efd463e88
+# file gpgme/gpgme-1.21.0.tar.bz2
+# chk 416e174e165734d84806253f8c96bda2993fd07f258c3aad5f053a6efd463e88
 
 # last changed: 2021-01-07
 # by: ah
@@ -496,6 +496,13 @@ server http://download.kde.org/stable/release-service/
 #
 server https://gnupg.org/ftp/gcrypt/snapshots
 
+# gpgme
+# last changed: 2023-08-29
+# by: aheinecke
+# verified: Tarball created by aheinecke.
+file gpgme/gpgme-1.22.1-beta7.tar.xz
+chk 2ac34965515011a56261e052abceadc76fd3942eb32484015a49d496d3ebed83
+
 # gpgex
 # last changed: 2022-12-06
 # by: aheinecke
@@ -518,18 +525,18 @@ file kmime/kmime-202303221649.tar.xz
 chk 0a26c6b7a1b921191e52ee17d8d131f606a1def9ed09e31074a1c7aed5c4c6b7
 
 # libkleo
-# last changed: 2023-07-10
+# last changed: 2023-08-29
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file libkleo/libkleo-202307101603.tar.xz
-chk f48c725ad09212c82e9b92e303a28cbab12fc38386fc870e71c7df650eab49c5
+file libkleo/libkleo-202308291227.tar.xz
+chk 21d44c80164f057efdc8aa4eeef21904fb27bbbc3a263f3eccd88847cb27184a
 
 # kleopatra
-# last changed: 2023-07-13
+# last changed: 2023-08-29
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file kleopatra/kleopatra-202307131432.tar.xz
-chk 46bdef3c4f0769f116f6446f0905d48fa8039f22b739e182fa4260982d852b2a
+file kleopatra/kleopatra-202308291228.tar.xz
+chk ad4d465ebd089f6d5687e2cac5f3cbae4d075531e4690e9540f331d4e6df17d6
 
 # Okular and dependencies
 # poppler
