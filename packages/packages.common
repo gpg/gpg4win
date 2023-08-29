@@ -500,11 +500,11 @@ server http://download.kde.org/stable/release-service/
 server https://gnupg.org/ftp/gcrypt/snapshots
 
 # gpgme
-# last changed: 2023-08-23
+# last changed: 2023-08-29
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file gpgme/gpgme-1.22.1-beta6.tar.xz
-chk d020907abc8b855171719a8ed568eb4775a310a56f4e145bef30794a6f188e82
+file gpgme/gpgme-1.22.1-beta7.tar.xz
+chk ee3a3ad88290b533a10930f045bbf882000c515ded9f255531e7785ae6fe0d18
 
 # gpgex
 # last changed: 2022-12-06
@@ -528,25 +528,25 @@ file kmime/kmime-202303221649.tar.xz
 chk 0a26c6b7a1b921191e52ee17d8d131f606a1def9ed09e31074a1c7aed5c4c6b7
 
 # mimetreeparser
-# last changed: 2023-08-07
+# last changed: 2023-08-29
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file mimetreeparser/mimetreeparser-202308071613.tar.xz
-chk 2d249a20d5bf5b92eb2c3fb3fc59804e4c52a5f58bf52d0b6fa5a3fd756052b7
+file mimetreeparser/mimetreeparser-202308291143.tar.xz
+chk ac25044b2802e553c0cbd89fc85731b5f887991d0bf1dad9d25a523cc0338757
 
 # libkleo
-# last changed: 2023-08-07
+# last changed: 2023-08-29
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file libkleo/libkleo-202308071611.tar.xz
-chk b6fb079304ad6699a4722d388e0afeaad56d9ee4c62cf012dc435304309621d5
+file libkleo/libkleo-202308291142.tar.xz
+chk 461f7fce3888dfbf9a9f939d45f0e5b022695a445680bd627bb94507f52632d0
 
 # kleopatra
-# last changed: 2023-08-09
+# last changed: 2023-08-29
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file kleopatra/kleopatra-202308091451.tar.xz
-chk 4a4c53e5750bbb989bbc02cc215647ecccc71e610d31518703ac8629712ec2cc
+file kleopatra/kleopatra-202308291142.tar.xz
+chk 8667657b08991c6f6f6fdcd7f98d1576523b8b434b1d86a2153e26b6645520fb
 
 # Okular and dependencies
 # poppler
