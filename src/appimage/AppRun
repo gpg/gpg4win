@@ -157,7 +157,7 @@ mycleanup () {
 gnupg_SETUPINIFILE=
 trap mycleanup 0 INT QUIT
 
-
+callerargs=no
 if [ $opt_c = yes ]; then
     if [ ! -x "$SHELL" ]; then
         echo "error: no shell found" >&2
@@ -165,7 +165,8 @@ if [ $opt_c = yes ]; then
     fi
     if [ -n "$1" ]; then
         pgm=/usr/bin/env
-        pgmargs="$@"
+        pgmargs=
+        callerargs=yes
     else
         export gnupg_SETUPINIFILE SHELL
         if [ ${_gnupg_appimage} = vsd ]; then
@@ -217,7 +218,8 @@ else
     fi
     if [ -x "${this_dir}/usr/bin/kleopatra" ];then
         pgm="${this_dir}/usr/bin/kleopatra"
-        pgmargs="$@"
+        pgmargs=
+        callerargs=yes
     else
         echo "Kleopatra not found" >&2
         exit 2
@@ -276,9 +278,19 @@ fi
 # system instances of gpg-agent are not anymore used.
 if [ $opt_keep_socket = yes ]; then
    "${this_dir}/usr/bin/gpgconf" --launch gpg-agent
-   $pgm $pgmargs
+    if [ $callerargs = yes ]; then
+        $pgm $pgmargs "$@"
+    else
+        $pgm $pgmargs
+    fi
 else
-   "${this_dir}/usr/bin/gpg-agent" --steal-socket --daemon -- $pgm $pgmargs
+    if [ $callerargs = yes ]; then
+        "${this_dir}/usr/bin/gpg-agent" --steal-socket --daemon \
+                                        -- $pgm $pgmargs "$@"
+    else
+        "${this_dir}/usr/bin/gpg-agent" --steal-socket --daemon \
+                                        -- $pgm $pgmargs
+    fi
 fi
 
 echo Goodbye from "$myname"\! >&2
