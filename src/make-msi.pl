@@ -775,7 +775,9 @@ sub gpg4win_nsis_stubs
         foreach my $ignored ("gpa", "gtk_", "glib", "expat", "gdk_pixbuf",
                              "cairo", "fontconfig", "atk", "libpng",
                              "freetype", "libffi", "pango", "pcre",
-                             "compendium")
+                             "compendium",
+                             "okular", "poppler", "tiff", "openjpeg",
+                             "kbookmarks", "kparts", "jpeg", "solid")
         {
             if ($name eq $ignored)
             {
