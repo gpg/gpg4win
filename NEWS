@@ -617,7 +617,7 @@ Noteworthy changes in Version 3.1.26 (2022-12-14)
 (en) Kleopatra: Don't ask user to certify an imported expired or
      revoked OpenPGP key.  [T6155]
 
-(de) Kleopatra: Die Benutzerin wird nicht mehr gefrat, ein
+(de) Kleopatra: Die Benutzerin wird nicht mehr gefragt, ein
      importiertes aber abgelaufen oder widerrufenes OpenPGP Zertifikat
      zu beglaubigen.  [T6155]
 
