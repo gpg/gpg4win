@@ -32,10 +32,10 @@ chk  d20fcbb537e02dcf1383197ba05bd0734ef7bf5db06bdb241eb69b7d16b73192
 
 # last-changed: 2023-05-03
 # by ah
-# verified: verification of checksum from both sf and libpng.org
+# verified: verification of checksum from both sf and freebsd.org
 server https://downloads.sourceforge.net
-file libpng/libpng16/1.6.39/libpng-1.6.39.tar.xz
-chk 1f4696ce70b4ee5f85f1e1623dc1229b210029fa4b7aee573df3e2ba7b036937
+file libpng/libpng16/1.6.40/libpng-1.6.40.tar.xz
+chk  535b479b2467ff231a3ec6d92a525906fb8ef27978be4f66dbe05d3f3a01b3a1
 
 # last-changed: 2023-05-03
 # by ah
