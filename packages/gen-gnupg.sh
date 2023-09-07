@@ -13,12 +13,15 @@ Usage: $PGM [OPTIONS]  WINDOWS_SOURCE_TARBALL
 Options:
         [--v4]       Append to packages.4
         [--v3]       Append to packages.3 (default)
+        [--snapshot] Create for snapshot folder
 EOF
     exit $1
 }
 
 
 forversion=3
+bindir="binary"
+snapshot=no
 while [ $# -gt 0 ]; do
     case "$1" in
 	--*=*)
@@ -35,6 +38,10 @@ while [ $# -gt 0 ]; do
 	    ;;
 	--v3)
 	    forversion=3
+	    ;;
+	--snapshot|--snapshots)
+            snapshot=yes
+	    bindir=gnupg
 	    ;;
 	--help|-h)
 	    usage 0
@@ -90,6 +97,12 @@ echo >>$outfile "# last changed $(date +%Y-%m-%d)"
 echo >>$outfile "# by $LOGNAME"
 echo >>$outfile "# verified: [taken from buildtree]"
 
+if [ $snapshot = yes ]; then
+    echo >>$outfile
+    echo >>$outfile "server https://gnupg.org/ftp/gcrypt/snapshots"
+    echo >>$outfile
+fi
+
 file="${prefix}-${version}.tar.bz2"
 echo >>$outfile "name $file"
 echo >>$outfile "file gnupg/$file"
@@ -99,7 +112,7 @@ echo >>$outfile
 orgfile="${prefix}-w32-${version}_${date}.exe"
 file="${prefix}-w32-${version}_${date}-bin.exe"
 echo >>$outfile "name $file"
-echo >>$outfile "file binary/${orgfile}"
+echo >>$outfile "file $bindir/${orgfile}"
 echo >>$outfile "chk  $(sha256sum < $orgfile | cut -d ' ' -f1)"
 echo >>$outfile
 
@@ -107,7 +120,7 @@ orgfile="${prefix}-w32-${version}_${date}.tar.xz"
 file="${prefix}-w32-${version}_${date}-src.tar.xz"
 msifile="$(echo $file | sed s/-w32-/-msi-/)"
 echo >>$outfile "name $file"
-echo >>$outfile "file binary/${orgfile}"
+echo >>$outfile "file $bindir/${orgfile}"
 echo >>$outfile "link $msifile"
 echo >>$outfile "chk  $(sha256sum < $orgfile | cut -d ' ' -f1)"
 echo >>$outfile
@@ -115,7 +128,7 @@ echo >>$outfile
 orgfile="${prefix}-w32-${version}_${date}.wixlib"
 file="${prefix}-msi-${version}_${date}-bin.wixlib"
 echo >>$outfile "name $file"
-echo >>$outfile "file binary/${orgfile}"
+echo >>$outfile "file $bindir/${orgfile}"
 echo >>$outfile "chk  $(sha256sum < $orgfile | cut -d ' ' -f1)"
 echo >>$outfile
 
