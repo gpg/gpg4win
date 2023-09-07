@@ -66,17 +66,17 @@ ${If} ${RunningX64}
   SetOutPath "$INSTDIR\bin_64"
   ClearErrors
   SetOverwrite try
-  File ${exprefix}/bin/libgpgme6-11.dll
+  File ${exprefix}/bin/libgpgme-11.dll
   SetOverwrite lastused
   ifErrors 0 +3
-      File /oname=libgpgme6-11.dll.tmp "${exprefix}/bin/libgpgme6-11.dll"
-      Rename /REBOOTOK libgpgme6-11.dll.tmp libgpgme6-11.dll
+      File /oname=libgpgme-11.dll.tmp "${exprefix}/bin/libgpgme-11.dll"
+      Rename /REBOOTOK libgpgme-11.dll.tmp libgpgme-11.dll
   SetOverwrite try
-  File ${exprefix}/bin/libgpgmepp6-6.dll
+  File ${exprefix}/bin/libgpgmepp-6.dll
   SetOverwrite lastused
   ifErrors 0 +3
-      File /oname=libgpgmepp6-6.dll.tmp "${exprefix}/bin/libgpgmepp6-6.dll"
-      Rename /REBOOTOK libgpgmepp6-6.dll.tmp libgpgmepp6-6.dll
+      File /oname=libgpgmepp-6.dll.tmp "${exprefix}/bin/libgpgmepp-6.dll"
+      Rename /REBOOTOK libgpgmepp-6.dll.tmp libgpgmepp-6.dll
   File ${exprefix}/bin/gpgme-json.exe
   File "${prefix}/libexec/gpgme-w32spawn.exe"
 
