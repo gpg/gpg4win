@@ -323,7 +323,7 @@ if test "$build_gpg4win" = yes ; then
     GPG4WIN_KDEPKG([okular], [kparts gpgme kio poppler threadweaver qtsvg])
     GPG4WIN_KDEPKG([libical])
     GPG4WIN_KDEPKG([kcalendarcore], [qtbase libical extra-cmake-modules])
-    GPG4WIN_KDEPKG([mimetreeparser], [kwidgetsaddons ki18n kmime kcodecs kcalendarcore])
+    GPG4WIN_KDEPKG([mimetreeparser], [libkleo kwidgetsaddons ki18n kmime kcodecs kcalendarcore])
 
     GPG4WIN_FINALIZE
 fi
