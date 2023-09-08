@@ -98,6 +98,23 @@ To use update-alternatives:
         i686-w64-mingw32-g++ /usr/bin/i686-w64-mingw32-g++-posix 100
 
 
+Building on other platforms is not fully supported. Consider using docker:
+
+./autogen.sh
+./docker/build-gpg4win-docker-image.sh
+./docker/run-gpg4win-build.sh
+
+It is known that some developers compile Gpg4win also on other platforms
+
+For Fedora the required packages might be:
+
+yum install mingw64-gcc-c++ icoutils stow autoconf automake git cmake \
+    mingw32-gcc-c++ mingw32-libstdc++ mingw-nsis-base texinfo-tex \
+    ghostscript-tools-dvipdf kf5-kconfig-devel gettext gettext-devel \
+    patch flex bison gperf kf5-kcoreaddons-devel mingw32-nsis
+
+
+
 Building the Webpages
 =====================
 
