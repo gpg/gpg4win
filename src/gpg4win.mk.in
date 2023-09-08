@@ -685,10 +685,6 @@ $(stampdir)/stamp-$(1)-01-patch: $(stampdir)/stamp-$(1)-00-unpack
 	$(call SETVARS,$(1));				\
 	if [ ! -L "$$$${pkgsdir}" ]; then \
 		cd "$$$${pkgsdir}";				\
-		sed -i 's/set(KF5_MIN_VERSION.*)/set(KF5_MIN_VERSION "5.109.0")/' CMakeLists.txt; \
-		sed -i 's/set(KF_MIN_VERSION.*)/set(KF_MIN_VERSION "5.109.0")/' CMakeLists.txt; \
-		sed -i 's/set(KF5_VERSION.*)/set(KF5_VERSION "5.109.0")/' CMakeLists.txt; \
-		sed -i 's/set(KMIME_VERSION.*)/set(KMIME_VERSION "5.2.40")/' CMakeLists.txt; \
 		for pfile in "$$$${pkgpbdir}"/*.patch "$$$${pkgpdir}"/*.patch ; do  \
 		(cd "$$$${pkgsdir}"; chmod +x "$$$${pfile}"; "$$$${pfile}")		\
 		done \
