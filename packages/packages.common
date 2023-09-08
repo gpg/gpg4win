@@ -279,7 +279,6 @@ server https://download.kde.org/stable/frameworks
 
 ##### Paste Here #####
 #
-# Don't forget to update gpg4win.mk.in with new version numbers
 # extra-cmake-modules
 # last changed: 2023-08-23
 # by: ah
@@ -293,6 +292,13 @@ chk 1526b557cf9718e4d3bf31ff241578178d1ee60bdfb863110c97d43d478b7fb7
 # verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
 file 5.109/kactivities-5.109.0.tar.xz
 chk 1c7eef71a887c612af89ec6813282a13dcc1a9b0762c59412a8ef8b5419a52f1
+
+# kauth
+# last changed: 2023-09-08
+# by: ah
+# verified: PGP Signed by ./kde-release-keys.gpg (created by gen-frameworks.sh)
+file 5.109/kauth-5.109.0.tar.xz
+chk 3f7d81fccbc9336306a88ae52016cde3645b3bf9fed16ac3d17fc6ef85d7a0ae
 
 # kconfig
 # last changed: 2023-08-23

@@ -33,6 +33,7 @@ fi
 
 FRAMEWORKS="extra-cmake-modules
     kactivities
+    kauth
     kconfig
     ki18n
     kwidgetsaddons
