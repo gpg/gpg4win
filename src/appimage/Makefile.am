@@ -45,7 +45,7 @@ appimage_kdepkgs = kconfig kwidgetsaddons ki18n extra-cmake-modules \
 		   kmime kconfigwidgets kxmlgui kguiaddons kitemviews \
 		   kiconthemes kleopatra breeze-icons kitemmodels karchive \
 		   kcrash kdbusaddons kio kbookmarks kservice solid \
-		   kjobwidgets \
+		   kjobwidgets libical kcalendarcore mimetreeparser \
 		   sonnet ktextwidgets kauth \
 		   threadweaver kparts poppler okular kactivities
 
@@ -199,6 +199,10 @@ appimage_pkg_poppler_configure = \
 
 appimage_pkg_okular_configure = \
     -DFORCE_NOT_REQUIRED_DEPENDENCIES="KF5Wallet\;KF5DocTools\;KF5JS\;KF5Purpose\;Qt5TextToSpeech\;Phonon4Qt5\;LibSpectre\;KF5KExiv2\;CHM\;KF5KHtml\;LibZip\;DjVuLibre\;EPub\;QMobipocket\;Discount\;KF5Pty\;Qt5Qml"
+
+appimage_pkg_libical_configure = \
+    -DICAL_GLIB=false \
+    -DENABLE_GTK_DOC=false
 
 ########################################################################
 

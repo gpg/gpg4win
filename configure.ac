@@ -396,10 +396,13 @@ if test "$build_appimage" = yes ; then
     APPIMAGE_KDEPKG([kparts], [kio kservice kxmlgui kconfigwidgets kwidgetsaddons ktextwidgets])
 
     # KDE PIM
+    APPIMAGE_KDEPKG([libical])
+    APPIMAGE_KDEPKG([kcalendarcore], [qtbase libical extra-cmake-modules])
+    APPIMAGE_KDEPKG([mimetreeparser], [libkleo kwidgetsaddons ki18n kmime kcodecs kcalendarcore])
     APPIMAGE_KDEPKG([kmime], [kcodecs ki18n])
     APPIMAGE_KDEPKG([libkleo], [kmime kconfigwidgets kwindowsystem kcompletion gpgme])
 
-    APPIMAGE_KDEPKG([kleopatra], [gnupg gpgme breeze-icons kio kxmlgui libkleo kitemmodels qttranslations kdbusaddons])
+    APPIMAGE_KDEPKG([kleopatra], [mimetreeparser gnupg gpgme breeze-icons kio kxmlgui libkleo kitemmodels qttranslations kdbusaddons])
 
     # Okular/Poppler
     APPIMAGE_KDEPKG([poppler], [gpgme kio qtbase freetype])
