@@ -672,3 +672,6 @@ endif
 clean-local:
 	rm -f installers/gpg4win-$(VERSION).exe \
 		  installers/GnuPG-VS-Desktop-$(VERSION).msi
+
+distclean-local:
+	rm -f *.dll-x*
