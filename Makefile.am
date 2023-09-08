@@ -69,7 +69,6 @@ EXTRA_DIST = autogen.rc autogen.sh README.GIT ONEWS \
              patches/okular/lower-cmake-requirement.patch \
              patches/okular/0001-Add-GnuPG-specific-manifest-to-okular.patch \
              patches/okular/0001-Hack-in-some-aboutdata-for-GnuPG-Edition.patch \
-             patches/poppler/0001-Explicitly-take-posix-variant-for-mingw-gcc-cross.patch \
              patches/kparts/0001-Apply-implicit-android-DBUS-fix-for-Win.patch \
              patches/kparts/disable-jobuidelegate.patch \
              patches/sonnet/0001-W32-Force-ispellchecker-for-sonnet.patch \
