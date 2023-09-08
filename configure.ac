@@ -227,19 +227,21 @@ if test "$build_gpg4win" = yes ; then
     fi
     AC_SUBST(kf5_host_tooling)
 
-    GPG4WIN_RUNTIME_LIBRARY(libstdc++-6)
-    GPG4WIN_RUNTIME_LIBRARY(libwinpthread-1)
+    GPG4WIN_RUNTIME_LIBRARY(libstdc++-6, REQUIRED)
+    GPG4WIN_RUNTIME_LIBRARY(libwinpthread-1, REQUIRED)
 
-    if test -f "/usr/lib/gcc/i686-w64-mingw32/10-posix/libgcc_s_dw2-1.dll"; then
-        AC_MSG_NOTICE([Using dw2 exceptions.])
-        GPG4WIN_RUNTIME_LIBRARY(libgcc_s_dw2-1)
-        $CP /dev/null src/libgcc_s_sjlj-1.dll-x
-    else
-        AC_MSG_NOTICE([Using sjlj exceptions.])
-        GPG4WIN_RUNTIME_LIBRARY(libgcc_s_sjlj-1)
-        $CP /dev/null src/libgcc_s_dw2-1.dll-x
+    # This is only required if you also use the pthread flavor for x64
+    GPG4WIN_RUNTIME_LIBRARY_X64(libwinpthread-1)
+
+    # One of these is required
+    GPG4WIN_RUNTIME_LIBRARY(libgcc_s_dw2-1)
+    GPG4WIN_RUNTIME_LIBRARY(libgcc_s_sjlj-1)
+
+    if [ ! test -s "src/libgcc_s_dw2-1.dll-x" -o -s "src/libgcc_s_sjlj-1.dll-x" ]; then
+        AC_MSG_ERROR(No exception library found. Please check what your system
+                     uses and see above message about either dw2 or sjlj
+                     dlls.)
     fi
-
 fi
 
 AC_CHECK_PROGS(WGET, wget)
