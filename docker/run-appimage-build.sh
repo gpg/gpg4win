@@ -11,8 +11,8 @@ fi
 sourcedir=$(cd $(dirname $0)/..; pwd)
 
 if [ -z "$devmode" ]; then
-    buildroot="/tmp/appimage-gnupg.$(id -un).d"
-    [ -d "$buildroot" ] || mkdir "$buildroot"
+    buildroot="${GPG4WIN_APPIMAGE_BUILDROOT:-/tmp/appimage-gnupg.$(id -un).d}"
+    [ -d "$buildroot" ] || mkdir -p "$buildroot"
 else
     buildroot=$(mktemp -d --tmpdir appimage-gnupg.XXXXXXXXXX)
 fi
