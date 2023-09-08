@@ -134,6 +134,8 @@ skip_uninst:
   File /nonfatal /oname=libgcc_s_sjlj-1.dll "${BUILD_DIR}/libgcc_s_sjlj-1.dll-x"
   File /nonfatal /oname=libgcc_s_dw2-1.dll  "${BUILD_DIR}/libgcc_s_dw2-1.dll-x"
 
+  SetOutPath "$INSTDIR\bin_64"
+  File /nonfatal /oname=libwinpthread-1.dll "${BUILD_DIR}/libwinpthread-1.dll-x64"
 !endif
 
 SectionEnd
