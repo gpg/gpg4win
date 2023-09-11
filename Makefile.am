@@ -74,11 +74,7 @@ EXTRA_DIST = autogen.rc autogen.sh README.GIT ONEWS \
              patches/sonnet/0001-W32-Force-ispellchecker-for-sonnet.patch \
              patches/jpeg/fix-redefine.patch \
              patches-appimage/kleopatra/0001-Make-KCMUtils-optional.patch \
-             patches-appimage/kleopatra/require-ecm-5.104.patch \
-             patches-appimage/kmime/set-cxx-standard.patch \
              patches-appimage/libkleo/gpg4win-check.patch \
-             patches-appimage/libkleo/set-cxx-standard.patch \
-             patches-appimage/okular/0001-Include-stdarg.h-for-va_start-and-va_end.patch \
              patches-appimage/okular/0001-Make-KF5Pty-dependency-optional.patch \
              patches-appimage/okular/0001-Hack-in-some-aboutdata-for-GnuPG-Edition.patch \
              patches-appimage/okular/lower-cmake-requirement.patch \
