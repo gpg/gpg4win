@@ -494,11 +494,11 @@ chk 8581e0e2ac540ce4c8ea76fb61c61234c85c3c908e70b8b5afd0b8ca244edad4
 
 server http://download.kde.org/stable/release-service/
 # kmime
-# last changed: 2022-02-01
+# last changed: 2023-09-11
 # by: ah
 # verified: PGP Sig D81C0CB38EB725EF6691C385BB463350D6EF31EF
-#file 21.12.1/src/kmime-21.12.1.tar.xz
-#chk c1f4c06c61f6b4ddde7395b1cfb1f2411a32638e09c6f0a58c6557a7dffe4120
+file 23.08.0/src/kmime-23.08.0.tar.xz
+chk e472d4e0eb4d2fd43cad17265a38ee9cdb2dd0450b3f6a596b240209709aff7c
 
 #
 # Snapshots stored on the GnuPG server
@@ -525,13 +525,6 @@ chk 2c227634528ef76bcca7fd4b7fe5c38a535f6e68bbe5b2cdc6cc4a74810b2dba
 # verified: Tarball created by aheinecke.
 file gpg4win-tools/gpg4win-tools-202306211455.tar.xz
 chk d62e15b63c3837277c99548933ec2bc17d38af3d09fccb468b590951d934ea7a
-
-# kmime
-# last changed: 2023-03-22
-# by: aheinecke
-# verified: Tarball created by aheinecke.
-file kmime/kmime-202303221649.tar.xz
-chk 0a26c6b7a1b921191e52ee17d8d131f606a1def9ed09e31074a1c7aed5c4c6b7
 
 # mimetreeparser
 # last changed: 2023-09-11
