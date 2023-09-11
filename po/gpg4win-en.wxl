@@ -17,5 +17,7 @@
 <String Id="T_File_Type_pgp_key_info_tip">Certificate for OpenPGP</String>
 <String Id="T_File_Type_kgrp_Name">Kleopatra Certificate Groups </String>
 <String Id="T_File_Type_kgrp_info_tip">Certificate groups to be used by Kleopatra for encryption.</String>
+<String Id="T_File_Type_MIME_Name">E-Mail file</String>
+<String Id="T_File_Type_MIME_info_tip">An E-Mail file that can either be encrypted or unencrypted.</String>
 
 </WixLocalization>
