@@ -75,6 +75,7 @@ EXTRA_DIST = autogen.rc autogen.sh README.GIT ONEWS \
              patches/jpeg/fix-redefine.patch \
              patches-appimage/kleopatra/0001-Make-KCMUtils-optional.patch \
              patches-appimage/libkleo/gpg4win-check.patch \
+             patches-appimage/mimetreeparser/0001-Use-GpgmeppConfig-instead-of-FindGpgme.patch \
              patches-appimage/okular/0001-Make-KF5Pty-dependency-optional.patch \
              patches-appimage/okular/0001-Hack-in-some-aboutdata-for-GnuPG-Edition.patch \
              patches-appimage/okular/lower-cmake-requirement.patch \

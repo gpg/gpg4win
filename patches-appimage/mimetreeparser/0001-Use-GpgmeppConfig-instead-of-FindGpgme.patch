@@ -1,0 +1,112 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From 64ddb20025e7c0568646244076cd56c23d6f4860 Mon Sep 17 00:00:00 2001
+From: Andre Heinecke <aheinecke@gnupg.org>
+Date: Mon, 11 Sep 2023 12:20:07 +0200
+Subject: [PATCH] Use GpgmeppConfig instead of FindGpgme
+
+This is similar to what Kleopatra and libkleo do and
+that seems to work. The minimum version is the
+same that libkleo currently has.
+---
+ CMakeLists.txt                    |  3 ++-
+ cmake/modules/FindGpgme.cmake     | 23 -----------------------
+ src/core/CMakeLists.txt           |  2 +-
+ src/core/autotests/CMakeLists.txt |  2 +-
+ src/widgets/CMakeLists.txt        |  2 +-
+ 5 files changed, 5 insertions(+), 27 deletions(-)
+ delete mode 100644 cmake/modules/FindGpgme.cmake
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 158ca29..220435e 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -49,6 +49,7 @@ endif()
+
+ set(KPIM_MIME_VERSION "5.23.40")
+ set(KPIM_LIBKLEO_VERSION "5.23.40")
++set(GPGME_REQUIRED_VERSION "1.16.0")
+
+ ecm_setup_version(PROJECT
+     VARIABLE_PREFIX MIMETREEPARSERNG
+@@ -74,7 +75,7 @@ find_package(KF${KF_MAJOR_VERSION}CalendarCore ${KF_MIN_VERSION} CONFIG REQUIRED
+ find_package(KF${KF_MAJOR_VERSION}WidgetsAddons ${QT_MIN_VERSION} CONFIG)
+ find_package(KPim${KF_MAJOR_VERSION}Mime ${KPIM_MIME_VERSION} CONFIG REQUIRED)
+ find_package(KPim${KF_MAJOR_VERSION}Libkleo ${KPIM_LIBKLEO_VERSION} CONFIG REQUIRED)
+-find_package(Gpgme REQUIRED)
++find_package(Gpgmepp ${GPGME_REQUIRED_VERSION} CONFIG REQUIRED)
+
+ find_package(Qt${KF_MAJOR_VERSION}Quick ${QT_MIN_VERSION} CONFIG)
+ find_package(Qt${KF_MAJOR_VERSION}Widgets ${QT_MIN_VERSION} CONFIG)
+diff --git a/cmake/modules/FindGpgme.cmake b/cmake/modules/FindGpgme.cmake
+deleted file mode 100644
+index 977aed3..0000000
+--- a/cmake/modules/FindGpgme.cmake
++++ /dev/null
+@@ -1,23 +0,0 @@
+-# SPDX-FileCopyrightText: 2013 Sandro Knauß <mail@sandroknauss.de>
+-# SPDX-License-Identifier: BSD-3-Clause
+-
+-find_path(GPGME_INCLUDE_DIR NAMES gpgme.h)
+-find_path(GPGERROR_INCLUDE_DIR NAMES gpg-error.h)
+-find_library(GPGME_LIBRARY NAMES gpgme)
+-find_library(GPGERROR_LIBRARY NAMES gpg-error)
+-
+-include(FindPackageHandleStandardArgs)
+-find_package_handle_standard_args(Gpgme DEFAULT_MSG GPGME_INCLUDE_DIR GPGERROR_INCLUDE_DIR GPGME_LIBRARY GPGERROR_LIBRARY)
+-
+-mark_as_advanced(GPGME_INCLUDE_DIR GPGME_LIBRARY GPGME_INCLUDE_DIR GPGME_LIBRARY)
+-
+-set(GPGME_LIBRARIES ${GPGME_LIBRARY} ${GPGERROR_LIBRARY})
+-set(GPGME_INCLUDE_DIRS ${GPGME_INCLUDE_DIR} ${GPGERROR_INCLUDE_DIR})
+-
+-if (GPGME_FOUND AND NOT TARGET Gpgme::Gpgme)
+-    add_library(Gpgme::Gpgme INTERFACE IMPORTED)
+-    set_target_properties(Gpgme::Gpgme PROPERTIES
+-        INTERFACE_INCLUDE_DIRECTORIES  "${GPGME_INCLUDE_DIRS}"
+-        INTERFACE_LINK_LIBRARIES "${GPGME_LIBRARIES}"
+-        )
+-endif()
+diff --git a/src/core/CMakeLists.txt b/src/core/CMakeLists.txt
+index 16bccc4..ce8d81b 100644
+--- a/src/core/CMakeLists.txt
++++ b/src/core/CMakeLists.txt
+@@ -29,7 +29,7 @@ PUBLIC
+     KF${KF_MAJOR_VERSION}::I18n
+     Qt${KF_MAJOR_VERSION}::Gui
+     KF${KF_MAJOR_VERSION}::Codecs
+-    Gpgme::Gpgme
++    Gpgmepp
+     KPim${KF_MAJOR_VERSION}::Libkleo
+ )
+
+diff --git a/src/core/autotests/CMakeLists.txt b/src/core/autotests/CMakeLists.txt
+index bc6fcd0..819b98b 100644
+--- a/src/core/autotests/CMakeLists.txt
++++ b/src/core/autotests/CMakeLists.txt
+@@ -27,7 +27,7 @@ function(add_mimetreeparser_crypto_unittest _name)
+     if (QT_MAJOR_VERSION STREQUAL "6")
+         target_link_libraries(${_name} PRIVATE QGpgmeQt6 Qt6::Core5Compat)
+     else()
+-        target_link_libraries(${_name} PRIVATE Gpgme::Gpgme)
++        target_link_libraries(${_name} PRIVATE Gpgmepp)
+     endif()
+     target_include_directories(${_name} PRIVATE
+         ${CMAKE_CURRENT_SOURCE_DIR}/..
+diff --git a/src/widgets/CMakeLists.txt b/src/widgets/CMakeLists.txt
+index ca1f787..0a4cd86 100644
+--- a/src/widgets/CMakeLists.txt
++++ b/src/widgets/CMakeLists.txt
+@@ -49,7 +49,7 @@ PRIVATE
+     KF${KF_MAJOR_VERSION}::CalendarCore
+     KF${KF_MAJOR_VERSION}::WidgetsAddons
+     KPim${KF_MAJOR_VERSION}::Libkleo
+-    Gpgme::Gpgme
++    Gpgmepp
+ )
+
+ set_target_properties(KPim${KF_MAJOR_VERSION}MimeTreeParserWidgets PROPERTIES
+--
+2.42.0
