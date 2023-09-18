@@ -42,7 +42,7 @@ appimage_qtpkgs = qtbase qttools qtx11extras qtwayland qtsvg qttranslations
 # KDE packages for the AppImage
 appimage_kdepkgs = kconfig kwidgetsaddons ki18n extra-cmake-modules \
 		   kcompletion kwindowsystem kcoreaddons libkleo kcodecs \
-		   kmime kconfigwidgets kxmlgui kguiaddons kitemviews \
+		   kmime kmbox kconfigwidgets kxmlgui kguiaddons kitemviews \
 		   kiconthemes kleopatra breeze-icons kitemmodels karchive \
 		   kcrash kdbusaddons kio kbookmarks kservice solid \
 		   kjobwidgets libical kcalendarcore mimetreeparser \

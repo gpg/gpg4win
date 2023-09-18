@@ -70,6 +70,7 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
         inst-kitemviews.nsi uninst-kitemviews.nsi \
         inst-kitemmodels.nsi uninst-kitemmodels.nsi \
         inst-kguiaddons.nsi uninst-kguiaddons.nsi \
+        inst-kmbox.nsi uninst-kmbox.nsi \
         inst-kmime.nsi uninst-kmime.nsi \
         inst-kde-l10n.nsi uninst-kde-l10n.nsi \
         inst-qtsvg.nsi uninst-qtsvg.nsi \
@@ -150,7 +151,7 @@ gpg4win_kdepkgs = kconfig kwidgetsaddons ki18n extra-cmake-modules \
                   gpg4win-tools kcrash kio kbookmarks kservice solid \
                   kjobwidgets poppler okular freetype threadweaver \
                   kparts tiff openjpeg sonnet ktextwidgets mimetreeparser \
-                  libical kcalendarcore
+                  libical kcalendarcore kmbox
 
 # Supported source packages to build in an additional architecture
 gpg4win_expkgs = libgpg-error libassuan libiconv gettext gpgex gpgol \

@@ -61,15 +61,16 @@ case ${package} in
         repo=git://git.gnupg.org/${package}.git
         ;;
     mimetreeparser)
-        repo=https://dev.gnupg.org/source/${package}.git
+        repo=https://invent.kde.org/pim/${package}.git
+        branch="kf5"
         ;;
     kleopatra)
         repo=https://invent.kde.org/pim/${package}.git
-        # branch="work/carl/allow-opening-mbox-file"
+        branch="kf5"
         ;;
     libkleo)
         repo=https://invent.kde.org/pim/${package}.git
-        # branch="work/carl/clasify-mimefile"
+        branch="kf5"
         ;;
     okular)
         repo=https://invent.kde.org/graphics/${package}.git

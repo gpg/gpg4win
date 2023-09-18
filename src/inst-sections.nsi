@@ -100,6 +100,9 @@
 !ifdef HAVE_PKG_KGUIADDONS
 !include "inst-kguiaddons.nsi"
 !endif
+!ifdef HAVE_PKG_KMBOX
+!include "inst-kmbox.nsi"
+!endif
 !ifdef HAVE_PKG_KMIME
 !include "inst-kmime.nsi"
 !endif
@@ -415,6 +418,9 @@
 !endif
 !ifdef HAVE_PKG_KMIME
 !include "uninst-kmime.nsi"
+!endif
+!ifdef HAVE_PKG_KMBOX
+!include "uninst-kmbox.nsi"
 !endif
 !include "uninst-kde-l10n.nsi"
 !ifdef HAVE_PKG_LIBKLEO
@@ -740,6 +746,9 @@ Function CalcDepends
 !ifdef HAVE_PKG_KMIME
   !insertmacro UnselectSection ${SEC_kmime}
 !endif
+!ifdef HAVE_PKG_KMBOX
+  !insertmacro UnselectSection ${SEC_kmbox}
+!endif
 !ifdef HAVE_PKG_SONNET
   !insertmacro UnselectSection ${SEC_sonnet}
 !endif
@@ -905,6 +914,7 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_kguiaddons}
   !insertmacro SelectSection ${SEC_qtsvg}
   !insertmacro SelectSection ${SEC_qttranslations}
+  !insertmacro SelectSection ${SEC_kmbox}
   !insertmacro SelectSection ${SEC_kmime}
   !insertmacro SelectSection ${SEC_kde_l10n}
   !insertmacro SelectSection ${SEC_libkleo}

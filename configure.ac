@@ -303,6 +303,7 @@ if test "$build_gpg4win" = yes ; then
     GPG4WIN_KDEPKG([kcodecs], [qtbase qttools])
     GPG4WIN_KDEPKG([kguiaddons], [qtbase qttools])
     GPG4WIN_KDEPKG([kmime], [kcodecs ki18n])
+    GPG4WIN_KDEPKG([kmbox], [kmime])
     GPG4WIN_KDEPKG([kconfigwidgets], [kwidgetsaddons kguiaddons ki18n kcodecs kconfig])
     GPG4WIN_KDEPKG([kitemviews], [qtbase qttools])
     GPG4WIN_KDEPKG([kitemmodels], [qtbase qttools])
@@ -326,7 +327,7 @@ if test "$build_gpg4win" = yes ; then
     GPG4WIN_KDEPKG([okular], [kparts gpgme kio poppler threadweaver qtsvg])
     GPG4WIN_KDEPKG([libical])
     GPG4WIN_KDEPKG([kcalendarcore], [qtbase libical extra-cmake-modules])
-    GPG4WIN_KDEPKG([mimetreeparser], [libkleo kwidgetsaddons ki18n kmime kcodecs kcalendarcore])
+    GPG4WIN_KDEPKG([mimetreeparser], [libkleo kwidgetsaddons ki18n kmbox kmime kcodecs kcalendarcore])
 
     GPG4WIN_FINALIZE
 fi
@@ -399,8 +400,9 @@ if test "$build_appimage" = yes ; then
     # KDE PIM
     APPIMAGE_KDEPKG([libical])
     APPIMAGE_KDEPKG([kcalendarcore], [qtbase libical extra-cmake-modules])
-    APPIMAGE_KDEPKG([mimetreeparser], [libkleo kwidgetsaddons ki18n kmime kcodecs kcalendarcore])
+    APPIMAGE_KDEPKG([mimetreeparser], [libkleo kwidgetsaddons ki18n kmime kcodecs kcalendarcore kmbox])
     APPIMAGE_KDEPKG([kmime], [kcodecs ki18n])
+    APPIMAGE_KDEPKG([kmbox], [kmime])
     APPIMAGE_KDEPKG([libkleo], [kmime kconfigwidgets kwindowsystem kcompletion gpgme])
 
     APPIMAGE_KDEPKG([kleopatra], [mimetreeparser gnupg gpgme breeze-icons kio kxmlgui libkleo kitemmodels qttranslations kdbusaddons])

@@ -168,6 +168,10 @@
 !define gpg4win_pkg_kmime @gpg4win_pkg_kmime@
 !define gpg4win_pkg_kmime_version @gpg4win_pkg_kmime_version@
 
+@HAVE_PKG_KMBOX@
+!define gpg4win_pkg_kmbox @gpg4win_pkg_kmbox@
+!define gpg4win_pkg_kmbox_version @gpg4win_pkg_kmbox_version@
+
 @HAVE_PKG_KCONFIGWIDGETS@
 !define gpg4win_pkg_kconfigwidgets @gpg4win_pkg_kconfigwidgets@
 !define gpg4win_pkg_kconfigwidgets_version @gpg4win_pkg_kconfigwidgets_version@
