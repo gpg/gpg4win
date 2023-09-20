@@ -1,0 +1,44 @@
+#! /bin/sh
+patch -p1 -f -l $* < $0
+exit $?
+
+--- a/src/corelib/mimetypes/mime/packages/freedesktop.org.xml.orig	2023-03-23 20:06:47.000000000 +0100
++++ a/src/corelib/mimetypes/mime/packages/freedesktop.org.xml	2023-09-20 10:02:28.746421950 +0200
+@@ -62,6 +62,25 @@
+   <!ATTLIST sub-class-of type CDATA #REQUIRED>
+ ]>
+ <mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
++  <mime-type type="application/vnd.kde.kleopatra.pgp-encrypted-tar">
++    <comment>Encrypted tar archive</comment>
++    <sub-class-of type="application/pgp-encrypted"/>
++    <glob pattern="*.tar.gpg"/>
++    <glob pattern="*.tar.pgp"/>
++  </mime-type>
++  <mime-type type="application/vnd.kde.kleopatra.pgp-signed-tar">
++    <comment>Signed tar archive</comment>
++    <sub-class-of type="application/pgp-signature"/>
++    <glob pattern="*.tar.sig"/>
++    <glob pattern="*.tar.pgp"/>
++  </mime-type>
++  <mime-type type="application/vnd.kde.kleopatra.pkcs7-encrypted-tar">
++    <comment>Encrypted tar archive</comment>
++    <sub-class-of type="application/pkcs7-mime"/>
++    <glob pattern="*.tar.p7m"/>
++  </mime-type>
++  <mime-type type="application/vnd.kde.kleopatra.pkcs7-signed-tar">
++    <comment>Signed tar archive</comment>
++    <sub-class-of type="application/pkcs7-signature"/>
++    <glob pattern="*.tar.p7s"/>
++  </mime-type>
++  <mime-type type="application/vnd.kde.kleopatra.keygroup">
++    <comment>Kleopatra certificate group</comment>
++    <sub-class-of type="text/plain"/>
++    <generic-icon name="text-x-generic"/>
++    <magic priority="80">
++      <match type="string" value="[KeyGroup-" offset="0"/>
++    </magic>
++    <glob pattern="*.kgrp"/>
++  </mime-type>
+   <mime-type type="application/x-atari-2600-rom">
+     <comment>Atari 2600</comment>
+     <comment xml:lang="ast">Atari 2600</comment>
