@@ -4,7 +4,7 @@ exit $?
 
 --- a/src/corelib/mimetypes/mime/packages/freedesktop.org.xml.orig	2023-03-23 20:06:47.000000000 +0100
 +++ a/src/corelib/mimetypes/mime/packages/freedesktop.org.xml	2023-09-20 10:02:28.746421950 +0200
-@@ -62,6 +62,25 @@
+@@ -62,6 +62,37 @@
    <!ATTLIST sub-class-of type CDATA #REQUIRED>
  ]>
  <mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
