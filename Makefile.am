@@ -73,6 +73,7 @@ EXTRA_DIST = autogen.rc autogen.sh README.GIT ONEWS \
              patches/kparts/disable-jobuidelegate.patch \
              patches/sonnet/0001-W32-Force-ispellchecker-for-sonnet.patch \
              patches/jpeg/fix-redefine.patch \
+             patches/mimetreeparser/path-fixes.patch \
              patches-appimage/kleopatra/0001-Make-KCMUtils-optional.patch \
              patches-appimage/libkleo/gpg4win-check.patch \
              patches-appimage/okular/0001-Make-KF5Pty-dependency-optional.patch \

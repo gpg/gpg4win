@@ -513,11 +513,11 @@ chk 441bbb3c13cb535a216feb411ffe5925f4ca668a679c3cc1c4260c2bf406baec
 server https://gnupg.org/ftp/gcrypt/snapshots
 
 # gpgol
-# last changed: 2023-09-15
+# last changed: 2023-09-22
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file gpgol/gpgol-2.5.10-beta7.tar.xz
-chk 1972985917d0aba4a1f2382e29e4a067edc095e90f668533516e0979293d991e
+file gpgol/gpgol-2.5.10-beta15.tar.xz
+chk 230055abf1355ee286279d772b989385107b08a801f1e9c79ed4dfd05f436920
 
 # gpgme
 # last changed: 2023-09-11
@@ -534,32 +534,32 @@ file gpgex/gpgex-1.0.10-beta5.tar.xz
 chk 2c227634528ef76bcca7fd4b7fe5c38a535f6e68bbe5b2cdc6cc4a74810b2dba
 
 # gpg4win-tools
-# last changed: 2023-06-21
+# last changed: 2023-09-22
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file gpg4win-tools/gpg4win-tools-202306211455.tar.xz
-chk d62e15b63c3837277c99548933ec2bc17d38af3d09fccb468b590951d934ea7a
+file gpg4win-tools/gpg4win-tools-202309220833.tar.xz
+chk 7f7bcd1c03e90fcf63f2ec688bdfcbe96ba20e8e31f8e5c5b6740b23b779817c
 
 # mimetreeparser
-# last changed: 2023-09-18
+# last changed: 2023-09-22
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file mimetreeparser/mimetreeparser-202309181455.tar.xz
-chk 304ebe482f4373081968b8b84afe3a4675c7fab6ff1756804197a84865f3f4ec
+file mimetreeparser/mimetreeparser-202309220928.tar.xz
+chk 94dceeccdb887fc8c1f837dcdd3e714f12bb47675a75e1110db3c466acd98efc
 
 # libkleo
-# last changed: 2023-09-18
+# last changed: 2023-09-22
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file libkleo/libkleo-202309181455.tar.xz
-chk 62676d7ee6fbb33a53b417bd30ca52a6b36a53700a4b985fd8154a7e29e749df
+file libkleo/libkleo-202309220929.tar.xz
+chk 9cd8391ec0a2a11ee5b80610ea5c9dbe4c865b4cef7956004a2f491f66851882
 
 # kleopatra
-# last changed: 2023-09-18
+# last changed: 2023-09-22
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file kleopatra/kleopatra-202309181455.tar.xz
-chk 024331d8ff6a2dc5eb115b72eb715b5f7bb7f6c7b85b46541c9f7e13b3ad6b81
+file kleopatra/kleopatra-202309220929.tar.xz
+chk 99e2f122da3490bb0a6500633092cca729936e7c556b39211cba2dde1c64167f
 
 # Okular and dependencies
 # poppler
