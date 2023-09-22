@@ -4,6 +4,7 @@
  Möchten Sie diese überschreiben?</String>
 <String Id="gpg4winInstalled">Bitte deinstallieren Sie Gpg4win vor der Installation von GnuPG VS-Desktop.</String>
 <String Id="DESC_Menu_kleopatra">Den Zertifikatsmanager Kleopatra aufrufen.</String>
+<String Id="DESC_Menu_okular">Starte das PDF Anzeigeprogramm Okular um Dokumente mit GnuPG zu signieren und zu verifizieren.</String>
 <String Id="DESC_SEC_kleopatra">Zertifikatsmanager für OpenPGP und X.509 (S/MIME) sowie einheitliche Benutzerführung für alle Krypto-Operationen.</String>
 <String Id="T_File_Type_gpg_Name">OpenPGP Binärdatei</String>
 <String Id="T_File_Type_asc_Name">OpenPGP Text Datei</String>

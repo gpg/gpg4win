@@ -4,6 +4,7 @@
  Do you wish to overwrite this version?</String>
 <String Id="gpg4winInstalled">Please uninstall Gpg4win before installing GnuPG VS-Desktop.</String>
 <String Id="DESC_Menu_kleopatra">Run the Kleopatra key management tool.</String>
+<String Id="DESC_Menu_okular">Run the Okular PDF viewer to sign and verify documents with GnuPG.</String>
 <String Id="DESC_SEC_kleopatra">Keymanager for OpenPGP and X.509 and common crypto dialogs.</String>
 <String Id="T_File_Type_gpg_Name">OpenPGP Binary File</String>
 <String Id="T_File_Type_asc_Name">OpenPGP Text File</String>
