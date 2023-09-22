@@ -520,11 +520,11 @@ file gpgol/gpgol-2.5.10-beta15.tar.xz
 chk 230055abf1355ee286279d772b989385107b08a801f1e9c79ed4dfd05f436920
 
 # gpgme
-# last changed: 2023-09-11
+# last changed: 2023-09-22
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file gpgme/gpgme-1.23.0-beta493.tar.xz
-chk 9f766e6ea55826a99e2abfcc3eddb701385a41644f4a626a471b54c02b91d148
+file gpgme/gpgme-1.23.0-beta497.tar.xz
+chk 2eaf47a651dda7cc295d978ff5e7a0ee43dbad27c5e4a5a86315fbfc5f82efd9
 
 # gpgex
 # last changed: 2022-12-06
@@ -544,8 +544,8 @@ chk 7f7bcd1c03e90fcf63f2ec688bdfcbe96ba20e8e31f8e5c5b6740b23b779817c
 # last changed: 2023-09-22
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file mimetreeparser/mimetreeparser-202309220928.tar.xz
-chk 94dceeccdb887fc8c1f837dcdd3e714f12bb47675a75e1110db3c466acd98efc
+file mimetreeparser/mimetreeparser-202309221118.tar.xz
+chk 9d2e02ce65a484bdfbf1cb40983e64c0ef65fe8894a060abbe81ca6493f11b42
 
 # libkleo
 # last changed: 2023-09-22

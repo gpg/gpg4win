@@ -3,7 +3,7 @@ patch -p1 -l -f $* < $0
 exit $?
 
 diff --git a/src/core/attachmentmodel.cpp b/src/core/attachmentmodel.cpp
-index fb6bfa0edc16df4b9bb828d9e3e22049c4bd2967..25ddaf9b3a3b35bbd63df63ce7d6de21e56143e2 100644
+index fb6bfa0..25ddaf9 100644
 --- a/src/core/attachmentmodel.cpp
 +++ b/src/core/attachmentmodel.cpp
 @@ -19,10 +19,15 @@
