@@ -1267,11 +1267,19 @@ sub dump_all
             print ">\n";
 
             # Create shortcuts.
+            if ($targetfull eq 'bin\\okular.exe')
+            {
+                print ' ' x $::level
+                . "    <Shortcut Id='sm_$pkg->{name}_$fileidx' "
+                . " Directory='ProgramMenuDir' Name='$::product_name - Okular'"
+                . " Description='!(loc.DESC_Menu_okular)'/>" . "\n";
+
+            }
             if ($targetfull eq 'bin\\kleopatra.exe')
             {
                 print ' ' x $::level
                 . "    <Shortcut Id='sm_$pkg->{name}_$fileidx' "
-                . " Directory='ProgramMenuDir' Name='Kleopatra'"
+                . " Directory='ProgramMenuDir' Name='$::product_name - Kleopatra'"
                 . " Description='!(loc.DESC_Menu_kleopatra)'/>" . "\n";
 
             }
