@@ -79,11 +79,6 @@ no_desktop_delete:
 
   Delete "$INSTDIR\${PACKAGE}-uninstall.exe"
 
-  Delete "$INSTDIR\share\gpg4win\file-ext.ico"
-  RMDir "$INSTDIR\share\gpg4win"
-  RMDir "$INSTDIR\share"
-  RMDir "$INSTDIR"
-
   # If we installed in the default location, try to be really, really
   # nice with sugar on it to clean up behind us.  In any case, try very
   # hard to get rid of directories which could have REBOOTOK files.

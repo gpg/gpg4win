@@ -202,6 +202,7 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
 
   SetOutPath "$INSTDIR\share\gpg4win"
   File "icons/file-ext.ico"
+  File "icons/mail-ext.ico"
 
 #  SetRegView 64
   # Openpgp4fpr URI scheme
@@ -309,7 +310,7 @@ ${MementoSection} "Kleopatra" SEC_kleopatra
   WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.Kleopatra.MIME" "PercievedType" "Document"
   WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.Kleopatra.MIME" "InfoTip" "$(T_File_Type_MIME_info_tip)"
   WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.Kleopatra.MIME\CurVer" "" "${VERSION}"
-  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.Kleopatra.MIME\DefaultIcon" "" "$INSTDIR\share\gpg4win\file-ext.ico"
+  WriteRegStr SHCTX "Software\Classes\gpg4win.AssocFile.Kleopatra.MIME\DefaultIcon" "" "$INSTDIR\share\gpg4win\mail-ext.ico"
 
   WriteRegBin SHCTX "Software\Classes\.mim\OpenWithProgIDs" "gpg4win.AssocFile.Kleopatra.MIME" 0
   WriteRegBin SHCTX "Software\Classes\.mime\OpenWithProgIDs" "gpg4win.AssocFile.Kleopatra.MIME" 0

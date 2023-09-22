@@ -100,6 +100,7 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
         slideshow/slide3-kleopatra.png \
         slideshow/slide4-summary.png \
         icons/file-ext.ico \
+        icons/mail-ext.ico \
         kdeglobals qtlogging.ini \
         make-msi.pl make-msi.guids \
         build-gpg4win.sh \

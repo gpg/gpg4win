@@ -182,6 +182,12 @@ Section "-un.kleopatra"
   Delete "$INSTDIR\bin\libkleopatraclientcore.dll"
   Delete "$INSTDIR\bin\libkleopatraclientgui.dll"
 
+
+  Delete "$INSTDIR\share\gpg4win\mail-ext.ico"
+  Delete "$INSTDIR\share\gpg4win\file-ext.ico"
+  RMDir "$INSTDIR\share\gpg4win"
+
+
 #  RMDir "$INSTDIR\share\doc\HTML\en\kleopatra"
 #  RMDir "$INSTDIR\share\doc\HTML\en"
 #  RMDir "$INSTDIR\share\doc\HTML\common"
