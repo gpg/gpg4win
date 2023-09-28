@@ -772,10 +772,7 @@ sub gpg4win_nsis_stubs
 
         # Check for ignored packages
         # Ignored packages:
-        foreach my $ignored ("gpa", "gtk_", "glib", "expat", "gdk_pixbuf",
-                             "cairo", "fontconfig", "atk", "libpng",
-                             "freetype", "libffi", "pango", "pcre",
-                             "compendium")
+        foreach my $ignored ("compendium")
         {
             if ($name eq $ignored)
             {
