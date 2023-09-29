@@ -286,17 +286,18 @@ gpg4win_pkg_sonnet_configure = -DSONNET_USE_QML=OFF
 gpg4win_pkg_ki18n_configure = -DBUILD_WITH_QML=OFF
 gpg4win_pkg_kconfig_configure = -DKCONFIG_USE_DBUS=OFF -DKCONFIG_USE_QML=OFF
 
-gpg4win_pkg_qtbase_configure = ../$$$${pkg_version}/configure -opensource \
+gpg4win_pkg_qtbase_configure = \
+            ../$$$${pkg_version}/configure \
+            -opensource \
             -confirm-license \
             -xplatform win32-g++ \
             -device-option CROSS_COMPILE=$(host)- \
-            -device-option PKG_CONFIG='$(host)-pkg-config' \
             -no-use-gold-linker \
             -release \
             -shared \
             -prefix $$$${pkgidir} \
-            -I '$(idir)/include' \
-            -L '$(idir)/lib' \
+            -I "$(idir)/include" \
+            -L "$(idir)/lib" \
             -no-icu \
             -opengl desktop \
             -no-glib \
@@ -308,10 +309,10 @@ gpg4win_pkg_qtbase_configure = ../$$$${pkg_version}/configure -opensource \
             -no-sql-odbc \
             -no-sql-psql \
             -no-sql-tds \
-            -qt-zlib \
-            -qt-libpng \
-            -qt-libjpeg \
-            -qt-freetype \
+            -system-zlib \
+            -system-libpng \
+            -system-libjpeg \
+            -system-freetype \
             -qt-pcre \
             -no-openssl \
             -no-dbus \

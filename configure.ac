@@ -284,7 +284,7 @@ if test "$build_gpg4win" = yes ; then
     GPG4WIN_BPKG_MSISRC([gnupg-msi])
 
     # Qt related stuff.
-    GPG4WIN_SPKG([qtbase])
+    GPG4WIN_SPKG([qtbase], [jpeg zlib libpng freetype])
     GPG4WIN_SPKG([qttools], [qtbase])
     GPG4WIN_SPKG([qttranslations], [qtsvg qttools qtwinextras])
     GPG4WIN_SPKG([qtwinextras], [qtbase])

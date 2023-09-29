@@ -854,27 +854,21 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_solid}
   !insertmacro SelectSection ${SEC_kservice}
   !insertmacro SelectSection ${SEC_kbookmarks}
-  !insertmacro SelectSection ${SEC_freetype}
   !insertmacro SelectSection ${SEC_poppler}
   !insertmacro SelectSection ${SEC_threadweaver}
   !insertmacro SelectSection ${SEC_kparts}
-# KArchive depdens on zlib
-  !insertmacro SelectSection ${SEC_zlib}
   !insertmacro SelectSection ${SEC_kcrash}
   !insertmacro SelectSection ${SEC_kguiaddons}
   !insertmacro SelectSection ${SEC_qtsvg}
   !insertmacro SelectSection ${SEC_qttranslations}
   !insertmacro SelectSection ${SEC_kde_l10n}
   !insertmacro SelectSection ${SEC_qttools}
-  !insertmacro SelectSection ${SEC_freetype}
   !insertmacro SelectSection ${SEC_qtwinextras}
   !insertmacro SelectSection ${SEC_extra-cmake-modules}
-  !insertmacro SelectSection ${SEC_libpng}
   !insertmacro SelectSection ${SEC_tiff}
-  !insertmacro SelectSection ${SEC_openjpeg}
-  !insertmacro SelectSection ${SEC_jpeg}
   !insertmacro SelectSection ${SEC_sonnet}
   !insertmacro SelectSection ${SEC_ktextwidgets}
+  !insertmacro SelectSection ${SEC_openjpeg}
   skip_okular:
 !endif
 
@@ -909,11 +903,9 @@ Function CalcDepends
   !insertmacro SelectSection ${SEC_solid}
   !insertmacro SelectSection ${SEC_kservice}
   !insertmacro SelectSection ${SEC_kbookmarks}
-  !insertmacro SelectSection ${SEC_zlib}
   !insertmacro SelectSection ${SEC_kcrash}
   !insertmacro SelectSection ${SEC_kguiaddons}
   !insertmacro SelectSection ${SEC_qtsvg}
-  !insertmacro SelectSection ${SEC_qttranslations}
   !insertmacro SelectSection ${SEC_kmbox}
   !insertmacro SelectSection ${SEC_kmime}
   !insertmacro SelectSection ${SEC_kde_l10n}
@@ -981,6 +973,9 @@ skip_gpgme_browser:
   have_qt:
   !insertmacro SelectSection ${SEC_zlib}
   !insertmacro SelectSection ${SEC_qttranslations}
+  !insertmacro SelectSection ${SEC_freetype}
+  !insertmacro SelectSection ${SEC_libpng}
+  !insertmacro SelectSection ${SEC_jpeg}
   skip_qt:
 !endif
 
