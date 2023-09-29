@@ -117,8 +117,8 @@
 !ifdef HAVE_PKG_KJOBWIDGETS
 !include "inst-kjobwidgets.nsi"
 !endif
-!ifdef HAVE_PKG_PCRE
-!include "inst-pcre.nsi"
+!ifdef HAVE_PKG_PCRE2
+!include "inst-pcre2.nsi"
 !endif
 !ifdef HAVE_PKG_LIBPNG
 !include "inst-libpng.nsi"
@@ -362,8 +362,8 @@
 !ifdef HAVE_PKG_KJOBWIDGETS
 !include "uninst-kjobwidgets.nsi"
 !endif
-!ifdef HAVE_PKG_PCRE
-!include "uninst-pcre.nsi"
+!ifdef HAVE_PKG_PCRE2
+!include "uninst-pcre2.nsi"
 !endif
 !ifdef HAVE_PKG_LIBPNG
 !include "uninst-libpng.nsi"
@@ -707,6 +707,9 @@ Function CalcDepends
 !ifdef HAVE_PKG_TIFF
   !insertmacro UnselectSection ${SEC_tiff}
 !endif
+!ifdef HAVE_PKG_PCRE2
+  !insertmacro UnselectSection ${SEC_pcre2}
+!endif
 !ifdef HAVE_PKG_OPENJPEG
   !insertmacro UnselectSection ${SEC_openjpeg}
 !endif
@@ -976,6 +979,7 @@ skip_gpgme_browser:
   !insertmacro SelectSection ${SEC_freetype}
   !insertmacro SelectSection ${SEC_libpng}
   !insertmacro SelectSection ${SEC_jpeg}
+  !insertmacro SelectSection ${SEC_pcre2}
   skip_qt:
 !endif
 

@@ -252,6 +252,10 @@
 !define gpg4win_pkg_tiff @gpg4win_pkg_tiff@
 !define gpg4win_pkg_tiff_version @gpg4win_pkg_tiff_version@
 
+@HAVE_PKG_PCRE2@
+!define gpg4win_pkg_pcre2 @gpg4win_pkg_pcre2@
+!define gpg4win_pkg_pcre2_version @gpg4win_pkg_pcre2_version@
+
 @HAVE_PKG_OPENJPEG@
 !define gpg4win_pkg_openjpeg @gpg4win_pkg_openjpeg@
 !define gpg4win_pkg_openjpeg_version @gpg4win_pkg_openjpeg_version@

@@ -40,6 +40,7 @@ EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
         inst-man_advanced_en.nsi   uninst-man_advanced_en.nsi \
         inst-man_novice_de.nsi	   uninst-man_novice_de.nsi   \
         inst-man_novice_en.nsi	   uninst-man_novice_en.nsi   \
+        inst-pcre2.nsi	           uninst-pcre2.nsi	      \
         inst-pinentry.nsi	   uninst-pinentry.nsi	      \
         inst-pkgconfig.nsi	   uninst-pkgconfig.nsi	      \
         inst-zlib.nsi        	   uninst-zlib.nsi            \
@@ -152,7 +153,7 @@ gpg4win_kdepkgs = kconfig kwidgetsaddons ki18n extra-cmake-modules \
                   gpg4win-tools kcrash kio kbookmarks kservice solid \
                   kjobwidgets poppler okular freetype threadweaver \
                   kparts tiff openjpeg sonnet ktextwidgets mimetreeparser \
-                  libical kcalendarcore kmbox
+                  libical kcalendarcore kmbox pcre2
 
 # Supported source packages to build in an additional architecture
 gpg4win_expkgs = libgpg-error libassuan libiconv gettext gpgex gpgol \
@@ -284,7 +285,12 @@ gpg4win_pkg_paperkey_configure = --silent
 gpg4win_pkg_sonnet_configure = -DSONNET_USE_QML=OFF
 
 gpg4win_pkg_ki18n_configure = -DBUILD_WITH_QML=OFF
+
 gpg4win_pkg_kconfig_configure = -DKCONFIG_USE_DBUS=OFF -DKCONFIG_USE_QML=OFF
+
+gpg4win_pkg_pcre2_configure = -DPCRE2_BUILD_PCRE2_8=OFF -DPCRE2_BUILD_PCRE2_16=ON \
+                              -DBUILD_SHARED_LIBS=ON -DBUILD_STATIC_LIBS=OFF
+
 
 gpg4win_pkg_qtbase_configure = \
             ../$$$${pkg_version}/configure \
@@ -313,7 +319,7 @@ gpg4win_pkg_qtbase_configure = \
             -system-libpng \
             -system-libjpeg \
             -system-freetype \
-            -qt-pcre \
+            -system-pcre \
             -no-openssl \
             -no-dbus \
             -v

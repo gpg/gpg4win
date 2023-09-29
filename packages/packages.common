@@ -67,6 +67,12 @@ chk  0333806d6adecc6f7a91243b2b839ff4d2053823634d4f6ed7a59bc87409122a
 file libical/libical/releases/download/v3.0.16/libical-3.0.16.tar.gz
 chk  b44705dd71ca4538c86fb16248483ab4b48978524fb1da5097bd76aa2e0f0c33
 
+# last-changed: 2023-09-29
+# by ah
+# verified: SIG 45F68D54BBE23FB3039B46E59766E084FB0F43D8
+file PCRE2Project/pcre2/releases/download/pcre2-10.42/pcre2-10.42.tar.bz2
+chk  8d36cd8cb6ea2a4c2bb358ff6411b0c788633a2a45dabbf1aeb4b701d1b5e840
+
 #
 # GIMP stuff for W32
 #
