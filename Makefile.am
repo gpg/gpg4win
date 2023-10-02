@@ -58,6 +58,7 @@ EXTRA_DIST = autogen.rc autogen.sh README.GIT ONEWS \
              patches/kwidgetsaddons/0002-Remove-No-date-option-from-date-picker-popup-used-by.patch \
              patches/kxmlgui/0001-make-qdbus-optional.patch \
              patches/kxmlgui/0004-Cruedly-disable-KSendbugmail.patch \
+             patches/libical/workaround-weird-mingw-10.0.0-issue.patch \
              patches/qtbase/0001-Fix-build-without-std-thread.patch \
              patches/qtbase/0001-Gpg4win-qstandardpaths-patch.patch \
              patches/qtbase/0002-Gpg4win-theme-names-and-relpaths.patch \

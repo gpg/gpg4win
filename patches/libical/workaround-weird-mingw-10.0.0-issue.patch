@@ -1,0 +1,28 @@
+#! /bin/sh
+patch -p1 -f $* < $0
+exit $?
+
+From b1c80eb931cac14fc8d47c64b5ca9b8c98a01309 Mon Sep 17 00:00:00 2001
+From: Tobias Fella <fella@posteo.de>
+Date: Mon, 2 Oct 2023 15:27:25 +0200
+Subject: [PATCH] Fix mingw compilation on Fedora
+
+---
+ src/libicalss/icaldirset.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/libicalss/icaldirset.c b/src/libicalss/icaldirset.c
+index eecf22e4..4b84273c 100644
+--- a/src/libicalss/icaldirset.c
++++ b/src/libicalss/icaldirset.c
+@@ -78,7 +78,7 @@ static icalerrorenum icaldirset_read_directory(icaldirset *dset)
+ {
+     char *str;
+
+-#if defined(HAVE_DIRENT_H)
++#if defined(HAVE_DIRENT_H) && 0
+     struct dirent *de;
+     DIR *dp;
+
+--
+2.41.0
