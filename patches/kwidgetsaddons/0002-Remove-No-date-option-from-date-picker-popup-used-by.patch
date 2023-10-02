@@ -1,0 +1,42 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From 43ec0f47be33c0b8448a7e24e4641300138aa5f6 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ingo=20Kl=C3=B6cker?= <dev@ingo-kloecker.de>
+Date: Mon, 2 Oct 2023 11:01:22 +0200
+Subject: [PATCH 2/3] Remove "No date" option from date picker popup used by
+ date combo box
+
+Offering the "No date" option makes no sense because selecting this
+option doesn't have any effect. The handler of the picker's dateChanged
+signal ignores dates that are not in the configured range and invalid
+dates (as emitted by "No date") are always ignored.
+---
+ src/kdatecombobox.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/kdatecombobox.cpp b/src/kdatecombobox.cpp
+index cfaaa83e..c7644273 100644
+--- a/src/kdatecombobox.cpp
++++ b/src/kdatecombobox.cpp
+@@ -61,7 +61,7 @@ public:
+
+ KDateComboBoxPrivate::KDateComboBoxPrivate(KDateComboBox *qq)
+     : q(qq)
+-    , m_dateMenu(new KDatePickerPopup(KDatePickerPopup::DatePicker | KDatePickerPopup::Words | KDatePickerPopup::NoDate, QDate::currentDate(), qq))
++    , m_dateMenu(new KDatePickerPopup(KDatePickerPopup::DatePicker | KDatePickerPopup::Words, QDate::currentDate(), qq))
+     , m_warningShown(false)
+     , m_edited(false)
+     , m_displayFormat(QLocale::ShortFormat)
+@@ -122,7 +122,7 @@ void KDateComboBoxPrivate::initDateWidget()
+         modes |= KDatePickerPopup::DatePicker;
+     }
+     if (m_options & KDateComboBox::DateKeywords) {
+-        modes |= KDatePickerPopup::Words | KDatePickerPopup::NoDate;
++        modes |= KDatePickerPopup::Words;
+     }
+     m_dateMenu->setModes(modes);
+ }
+--
+2.42.0

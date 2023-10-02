@@ -54,6 +54,8 @@ EXTRA_DIST = autogen.rc autogen.sh README.GIT ONEWS \
              patches/kiconthemes/0001-Make-DBus-optional.patch \
              patches/kleopatra/set-windows-registry.patch \
              patches/kleopatra/0001-Make-KCMUtils-optional.patch \
+             patches/kwidgetsaddons/0001-Set-the-modes-on-the-date-picker.patch \
+             patches/kwidgetsaddons/0002-Remove-No-date-option-from-date-picker-popup-used-by.patch \
              patches/kxmlgui/0001-make-qdbus-optional.patch \
              patches/kxmlgui/0004-Cruedly-disable-KSendbugmail.patch \
              patches/qtbase/0001-Fix-build-without-std-thread.patch \
