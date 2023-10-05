@@ -37,6 +37,7 @@
 !define kleopatra_prefix ${ipdir}/kleopatra-${gpg4win_pkg_kleopatra_version}
 !define libkleo_prefix ${ipdir}/libkleo-${gpg4win_pkg_libkleo_version}
 !define okular_prefix ${ipdir}/okular-${gpg4win_pkg_okular_version}
+!define mimetreeparser_prefix ${ipdir}/mimetreeparser-${gpg4win_pkg_mimetreeparser_version}
 !ifdef DEBUG
 Section "kde-l10n" SEC_kde_l10n
 !else
@@ -109,6 +110,7 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kleopatra_prefix}/share/locale/ca/LC_MESSAGES/kleopatra.mo
   File ${okular_prefix}/share/locale/ca/LC_MESSAGES/okular.mo
   File ${okular_prefix}/share/locale/ca/LC_MESSAGES/okular_poppler.mo
+  File ${mimetreeparser_prefix}/share/locale/ca/LC_MESSAGES/mimetreeparser.mo
   SetOutPath "$INSTDIR\share\locale\ca@valencia"
   File ${kcfg_prefix}/share/locale/ca@valencia/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\ca@valencia\LC_MESSAGES"
@@ -131,6 +133,7 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kleopatra_prefix}/share/locale/ca@valencia/LC_MESSAGES/kleopatra.mo
   File ${okular_prefix}/share/locale/ca@valencia/LC_MESSAGES/okular.mo
   File ${okular_prefix}/share/locale/ca@valencia/LC_MESSAGES/okular_poppler.mo
+  File ${mimetreeparser_prefix}/share/locale/ca@valencia/LC_MESSAGES/mimetreeparser.mo
   SetOutPath "$INSTDIR\share\locale\cs"
   File ${kcfg_prefix}/share/locale/cs/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\cs\LC_MESSAGES"
@@ -197,6 +200,7 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kleopatra_prefix}/share/locale/de/LC_MESSAGES/kleopatra.mo
   File ${okular_prefix}/share/locale/de/LC_MESSAGES/okular.mo
   File ${okular_prefix}/share/locale/de/LC_MESSAGES/okular_poppler.mo
+  File ${mimetreeparser_prefix}/share/locale/de/LC_MESSAGES/mimetreeparser.mo
   SetOutPath "$INSTDIR\share\locale\el"
   File ${kcfg_prefix}/share/locale/el/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\el\LC_MESSAGES"
@@ -263,6 +267,7 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kleopatra_prefix}/share/locale/eo/LC_MESSAGES/kleopatra.mo
   File ${okular_prefix}/share/locale/eo/LC_MESSAGES/okular.mo
   File ${okular_prefix}/share/locale/eo/LC_MESSAGES/okular_poppler.mo
+  File ${mimetreeparser_prefix}/share/locale/eo/LC_MESSAGES/mimetreeparser.mo
   SetOutPath "$INSTDIR\share\locale\es"
   File ${kcfg_prefix}/share/locale/es/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\es\LC_MESSAGES"
@@ -285,6 +290,7 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kleopatra_prefix}/share/locale/es/LC_MESSAGES/kleopatra.mo
   File ${okular_prefix}/share/locale/es/LC_MESSAGES/okular.mo
   File ${okular_prefix}/share/locale/es/LC_MESSAGES/okular_poppler.mo
+  File ${mimetreeparser_prefix}/share/locale/es/LC_MESSAGES/mimetreeparser.mo
   SetOutPath "$INSTDIR\share\locale\et"
   File ${kcfg_prefix}/share/locale/et/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\et\LC_MESSAGES"
@@ -307,6 +313,28 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kleopatra_prefix}/share/locale/et/LC_MESSAGES/kleopatra.mo
   File ${okular_prefix}/share/locale/et/LC_MESSAGES/okular.mo
   File ${okular_prefix}/share/locale/et/LC_MESSAGES/okular_poppler.mo
+  SetOutPath "$INSTDIR\share\locale\eu"
+  File ${kcfg_prefix}/share/locale/eu/kf5_entry.desktop
+  SetOutPath "$INSTDIR\share\locale\eu\LC_MESSAGES"
+  File ${kconfigwidgets_prefix}/share/locale/eu/LC_MESSAGES/kconfigwidgets5.mo
+  File ${ki18n_prefix}/share/locale/eu/LC_MESSAGES/ki18n5.mo
+  File ${kiconthemes_prefix}/share/locale/eu/LC_MESSAGES/kiconthemes5.mo
+  File ${kxmlgui_prefix}/share/locale/eu/LC_MESSAGES/kxmlgui5.mo
+  File ${kio_prefix}/share/locale/eu/LC_MESSAGES/kio5.mo
+  File ${kparts_prefix}/share/locale/eu/LC_MESSAGES/kparts5.mo
+  File ${ktextwidgets_prefix}/share/locale/eu/LC_MESSAGES/ktextwidgets5.mo
+  File ${kconfig_prefix}/share/locale/eu/LC_MESSAGES/kconfig5_qt.qm
+  File ${kcompletion_prefix}/share/locale/eu/LC_MESSAGES/kcompletion5_qt.qm
+  File ${kcodecs_prefix}/share/locale/eu/LC_MESSAGES/kcodecs5_qt.qm
+  File ${kcoreaddons_prefix}/share/locale/eu/LC_MESSAGES/kcoreaddons5_qt.qm
+  File ${kitemviews_prefix}/share/locale/eu/LC_MESSAGES/kitemviews5_qt.qm
+  File ${kwidgetsaddons_prefix}/share/locale/eu/LC_MESSAGES/kwidgetsaddons5_qt.qm
+  File ${kwindowsystem_prefix}/share/locale/eu/LC_MESSAGES/kwindowsystem5_qt.qm
+  File ${sonnet_prefix}/share/locale/eu/LC_MESSAGES/sonnet5_qt.qm
+  File ${libkleo_prefix}/share/locale/eu/LC_MESSAGES/libkleopatra.mo
+  File ${kleopatra_prefix}/share/locale/eu/LC_MESSAGES/kleopatra.mo
+  File ${okular_prefix}/share/locale/eu/LC_MESSAGES/okular.mo
+  File ${okular_prefix}/share/locale/eu/LC_MESSAGES/okular_poppler.mo
   SetOutPath "$INSTDIR\share\locale\fi"
   File ${kcfg_prefix}/share/locale/fi/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\fi\LC_MESSAGES"
@@ -329,6 +357,7 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kleopatra_prefix}/share/locale/fi/LC_MESSAGES/kleopatra.mo
   File ${okular_prefix}/share/locale/fi/LC_MESSAGES/okular.mo
   File ${okular_prefix}/share/locale/fi/LC_MESSAGES/okular_poppler.mo
+  File ${mimetreeparser_prefix}/share/locale/fi/LC_MESSAGES/mimetreeparser.mo
   SetOutPath "$INSTDIR\share\locale\fr"
   File ${kcfg_prefix}/share/locale/fr/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\fr\LC_MESSAGES"
@@ -351,6 +380,7 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kleopatra_prefix}/share/locale/fr/LC_MESSAGES/kleopatra.mo
   File ${okular_prefix}/share/locale/fr/LC_MESSAGES/okular.mo
   File ${okular_prefix}/share/locale/fr/LC_MESSAGES/okular_poppler.mo
+  File ${mimetreeparser_prefix}/share/locale/fr/LC_MESSAGES/mimetreeparser.mo
   SetOutPath "$INSTDIR\share\locale\gl"
   File ${kcfg_prefix}/share/locale/gl/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\gl\LC_MESSAGES"
@@ -439,6 +469,7 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kleopatra_prefix}/share/locale/it/LC_MESSAGES/kleopatra.mo
   File ${okular_prefix}/share/locale/it/LC_MESSAGES/okular.mo
   File ${okular_prefix}/share/locale/it/LC_MESSAGES/okular_poppler.mo
+  File ${mimetreeparser_prefix}/share/locale/it/LC_MESSAGES/mimetreeparser.mo
   SetOutPath "$INSTDIR\share\locale\ja"
   File ${kcfg_prefix}/share/locale/ja/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\ja\LC_MESSAGES"
@@ -483,6 +514,7 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kleopatra_prefix}/share/locale/ka/LC_MESSAGES/kleopatra.mo
   File ${okular_prefix}/share/locale/ka/LC_MESSAGES/okular.mo
   File ${okular_prefix}/share/locale/ka/LC_MESSAGES/okular_poppler.mo
+  File ${mimetreeparser_prefix}/share/locale/ka/LC_MESSAGES/mimetreeparser.mo
   SetOutPath "$INSTDIR\share\locale\kk"
   File ${kcfg_prefix}/share/locale/kk/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\kk\LC_MESSAGES"
@@ -549,6 +581,7 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kleopatra_prefix}/share/locale/ko/LC_MESSAGES/kleopatra.mo
   File ${okular_prefix}/share/locale/ko/LC_MESSAGES/okular.mo
   File ${okular_prefix}/share/locale/ko/LC_MESSAGES/okular_poppler.mo
+  File ${mimetreeparser_prefix}/share/locale/ko/LC_MESSAGES/mimetreeparser.mo
   SetOutPath "$INSTDIR\share\locale\lv"
   File ${kcfg_prefix}/share/locale/lv/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\lv\LC_MESSAGES"
@@ -637,6 +670,7 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kleopatra_prefix}/share/locale/nl/LC_MESSAGES/kleopatra.mo
   File ${okular_prefix}/share/locale/nl/LC_MESSAGES/okular.mo
   File ${okular_prefix}/share/locale/nl/LC_MESSAGES/okular_poppler.mo
+  File ${mimetreeparser_prefix}/share/locale/nl/LC_MESSAGES/mimetreeparser.mo
   SetOutPath "$INSTDIR\share\locale\nn"
   File ${kcfg_prefix}/share/locale/nn/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\nn\LC_MESSAGES"
@@ -681,6 +715,7 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kleopatra_prefix}/share/locale/pl/LC_MESSAGES/kleopatra.mo
   File ${okular_prefix}/share/locale/pl/LC_MESSAGES/okular.mo
   File ${okular_prefix}/share/locale/pl/LC_MESSAGES/okular_poppler.mo
+  File ${mimetreeparser_prefix}/share/locale/pl/LC_MESSAGES/mimetreeparser.mo
   SetOutPath "$INSTDIR\share\locale\pt"
   File ${kcfg_prefix}/share/locale/pt/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\pt\LC_MESSAGES"
@@ -791,6 +826,7 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kleopatra_prefix}/share/locale/sl/LC_MESSAGES/kleopatra.mo
   File ${okular_prefix}/share/locale/sl/LC_MESSAGES/okular.mo
   File ${okular_prefix}/share/locale/sl/LC_MESSAGES/okular_poppler.mo
+  File ${mimetreeparser_prefix}/share/locale/sl/LC_MESSAGES/mimetreeparser.mo
   SetOutPath "$INSTDIR\share\locale\sv"
   File ${kcfg_prefix}/share/locale/sv/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\sv\LC_MESSAGES"
@@ -813,6 +849,7 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kleopatra_prefix}/share/locale/sv/LC_MESSAGES/kleopatra.mo
   File ${okular_prefix}/share/locale/sv/LC_MESSAGES/okular.mo
   File ${okular_prefix}/share/locale/sv/LC_MESSAGES/okular_poppler.mo
+  File ${mimetreeparser_prefix}/share/locale/sv/LC_MESSAGES/mimetreeparser.mo
   SetOutPath "$INSTDIR\share\locale\tr"
   File ${kcfg_prefix}/share/locale/tr/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\tr\LC_MESSAGES"
@@ -835,6 +872,7 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kleopatra_prefix}/share/locale/tr/LC_MESSAGES/kleopatra.mo
   File ${okular_prefix}/share/locale/tr/LC_MESSAGES/okular.mo
   File ${okular_prefix}/share/locale/tr/LC_MESSAGES/okular_poppler.mo
+  File ${mimetreeparser_prefix}/share/locale/tr/LC_MESSAGES/mimetreeparser.mo
   SetOutPath "$INSTDIR\share\locale\uk"
   File ${kcfg_prefix}/share/locale/uk/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\uk\LC_MESSAGES"
@@ -857,6 +895,7 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kleopatra_prefix}/share/locale/uk/LC_MESSAGES/kleopatra.mo
   File ${okular_prefix}/share/locale/uk/LC_MESSAGES/okular.mo
   File ${okular_prefix}/share/locale/uk/LC_MESSAGES/okular_poppler.mo
+  File ${mimetreeparser_prefix}/share/locale/uk/LC_MESSAGES/mimetreeparser.mo
   SetOutPath "$INSTDIR\share\locale\zh_CN"
   File ${kcfg_prefix}/share/locale/zh_CN/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\zh_CN\LC_MESSAGES"
@@ -879,6 +918,7 @@ Section "-kde-l10n" SEC_kde_l10n
   File ${kleopatra_prefix}/share/locale/zh_CN/LC_MESSAGES/kleopatra.mo
   File ${okular_prefix}/share/locale/zh_CN/LC_MESSAGES/okular.mo
   File ${okular_prefix}/share/locale/zh_CN/LC_MESSAGES/okular_poppler.mo
+  File ${mimetreeparser_prefix}/share/locale/zh_CN/LC_MESSAGES/mimetreeparser.mo
   SetOutPath "$INSTDIR\share\locale\zh_TW"
   File ${kcfg_prefix}/share/locale/zh_TW/kf5_entry.desktop
   SetOutPath "$INSTDIR\share\locale\zh_TW\LC_MESSAGES"
