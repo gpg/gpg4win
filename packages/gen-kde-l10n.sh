@@ -24,9 +24,6 @@
 # localizations exist
 
 set -e
-tmpdir=$(mktemp -d -p $(pwd))
-VERSION=$(date +%Y%m%d%H%M)
-
 g4widir="$(readlink -f $(dirname $0)/../src/playground/install)"
 
 if [ ! -e "$g4widir" ]; then
@@ -40,10 +37,11 @@ QFRAMEWORKS="kconfig kcompletion kcodecs kcoreaddons kitemviews kwidgetsaddons k
 # KFrameworks are frameworks that use KDE translations
 KFRAMEWORKS="kconfigwidgets ki18n kiconthemes kxmlgui kio kparts kjobwidgets kbookmarks ktextwidgets"
 
-POPREFIXES="kleopatra libkleo okular"
+POPREFIXES="kleopatra libkleo okular mimetreeparser"
 POFILES="libkleo/libkleopatra.po \
     kleopatra/kleopatra.po \
-    okular/okular.po okular/okular_poppler.po"
+    okular/okular.po okular/okular_poppler.po \
+    mimetreeparser/mimetreeparser.po"
 # See: https://websvn.kde.org/*checkout*/trunk/l10n-kf5/subdirs
 # and remove x-test
 LANGS="
@@ -158,8 +156,8 @@ zh_CN \
 zh_HK \
 zh_TW"
 
-instfile=$tmpdir/inst-kde-l10n.nsi
-uninstfile=$tmpdir/uninst-kde-l10n.nsi
+instfile=$(readlink -f $(dirname $0)/../src/inst-kde-l10n.nsi)
+uninstfile=$(readlink -f $(dirname $0)/../src/uninst-kde-l10n.nsi)
 
 cat > $instfile <<EOF
 # THIS FILE IS GENERATED! See kde-l10n.sh
@@ -218,34 +216,12 @@ cat > $uninstfile <<EOF
 Section "-un.kde-l10n"
 EOF
 
-l10ndir=$tmpdir/kde-l10n-$VERSION-src
-mkdir -p $l10ndir
-cd $l10ndir
 for lang in $LANGS; do
-    mkdir -p $lang
-    cd $lang
-    for pofile in $POFILES; do
-        # First try trunk then summit as not all languages use summit
-        svn export svn://anonsvn.kde.org/home/kde/trunk/l10n-kf5/$lang/messages/$pofile \
-        `basename $pofile` 2>/dev/null || true
-        svn export --force svn://anonsvn.kde.org/home/kde/trunk/l10n-support/$lang/summit/messages/$pofile \
-        `basename $pofile` 2>/dev/null || true
-        if [ ! -f `basename $pofile` ]; then
-            echo "$pofile not found in $lang"
-        fi
-    done
-    cd ..
-done
-
-l10ndir_bin=$tmpdir/kde-l10n-$VERSION-bin
-mkdir -p $l10ndir_bin
-cd $l10ndir_bin
-for lang in $LANGS; do
-    if ! ls $l10ndir/$lang/kleopatra.po > /dev/null 2>&1; then
-        # No kleo translations. Skip it.
+    if [ ! -e "$g4widir/share/locale/$lang/LC_MESSAGES/kleopatra.mo" ]; then
+        echo No kleo translations. Skip $lang
         continue
     fi
-    translated=$(msgfmt --statistics $l10ndir/$lang/kleopatra.po 2>&1 | tail -n 1 | cut -f 1 -d " ")
+    translated=$(msgfmt --statistics $g4widir/../build/kleopatra-*/po/$lang/kleopatra.po 2>&1 | tail -n 1 | cut -f 1 -d " ")
     if [ -n "$translated" -a "$translated" -lt "500" ]; then
         echo "Only $translated strings translated in $lang - skipping"
         continue
@@ -255,7 +231,6 @@ for lang in $LANGS; do
         echo "$g4widir/share/locale/$lang/kf5_entry.desktop does not exist"
         continue
     fi
-    mkdir -p $l10ndir_bin/share/locale/$lang/LC_MESSAGES
     echo "  SetOutPath \"\$INSTDIR\\share\\locale\\$lang\"" >> $instfile
     echo "  File \${kcfg_prefix}/share/locale/$lang/kf5_entry.desktop" >> $instfile
     echo "  Delete \"\$INSTDIR\\share\\locale\\$lang\\kf5_entry.desktop\"" >> $uninstfile
@@ -278,9 +253,11 @@ for lang in $LANGS; do
     for pofile in $POFILES; do
         moname=$(basename $pofile | sed 's/\.po/\.mo/')
         poprefix="`dirname $pofile`_prefix"
-        if msgfmt -o $l10ndir_bin/share/locale/$lang/LC_MESSAGES/$moname $l10ndir/$lang/`basename $pofile` 2>/dev/null; then
+        if [ -f "$g4widir/share/locale/$lang/LC_MESSAGES/$moname" ]; then
             echo "  File \${$poprefix}/share/locale/$lang/LC_MESSAGES/$moname" >> $instfile
             echo "  Delete \"\$INSTDIR\\share\\locale\\$lang\\LC_MESSAGES\\$moname\"" >> $uninstfile
+        else
+            echo "$pofile not found installed in $lang skipping"
         fi
     done
     echo "RMDir \"\$INSTDIR\\share\\locale\\$lang\\LC_MESSAGES\"" >> $uninstfile
@@ -294,29 +271,5 @@ echo "RMDir \"\$INSTDIR\"" >> $uninstfile
 echo "SectionEnd" >> $uninstfile
 echo "SectionEnd" >> $instfile
 
-cd $tmpdir
-tar -cJf kde-l10n-$VERSION-src.tar.xz kde-l10n-$VERSION-src
-cd $l10ndir_bin
-tar -cJf ../kde-l10n-$VERSION-bin.tar.xz *
-cd ..
 
-checksum_bin=$(sha256sum kde-l10n-$VERSION-bin.tar.xz | cut -d ' ' -f 1)
-checksum_src=$(sha256sum kde-l10n-$VERSION-src.tar.xz | cut -d ' ' -f 1)
-curdate=$(date +%Y-%m-%d)
-
-echo "------------------------------ >8 ------------------------------"
-echo "# KDE-l10n"
-echo "# last changed: ${curdate}"
-echo "# by: $USER"
-echo "# verified: Tarball created by $USER."
-echo "file kde-l10n/kde-l10n-$VERSION-bin.tar.xz"
-echo "chk ${checksum_bin}"
-echo ""
-echo "file kde-l10n/kde-l10n-$VERSION-src.tar.xz"
-echo "chk ${checksum_src}"
-echo "------------------------------ >8 ------------------------------"
-
-echo "To upload:" >&2
-echo "rsync -vP $tmpdir/kde-l10n-$VERSION-*.tar.xz trithemius.gnupg.org:/home/ftp/gcrypt/snapshots/kde-l10n/" >&2
-
-echo "NOTE: TARBALLS ARE CURRENTLY NOT NEEDED. INSTALLATION HAPPENS FROM PACKAGE SOURCES"
+echo "Translations updated. Plase check git diff"
