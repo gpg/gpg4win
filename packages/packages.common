@@ -526,11 +526,11 @@ file gpgol/gpgol-2.5.10-beta17.tar.xz
 chk 6aa3edf4900ddf21a21c3a9c1902ba3df8e37eed97ac3656149436cd3fdaf6ad
 
 # gpgme
-# last changed: 2023-09-22
+# last changed: 2023-10-09
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file gpgme/gpgme-1.23.0-beta497.tar.xz
-chk 2eaf47a651dda7cc295d978ff5e7a0ee43dbad27c5e4a5a86315fbfc5f82efd9
+file gpgme/gpgme-1.23.0-beta502.tar.xz
+chk 03fd6b2d575b8f6405b4cfde94fd4654528dbb08b07e921ee9bc4c580ae1af4a
 
 # gpgex
 # last changed: 2022-12-06
@@ -547,25 +547,25 @@ file gpg4win-tools/gpg4win-tools-202309220833.tar.xz
 chk 7f7bcd1c03e90fcf63f2ec688bdfcbe96ba20e8e31f8e5c5b6740b23b779817c
 
 # mimetreeparser
-# last changed: 2023-10-04
+# last changed: 2023-10-09
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file mimetreeparser/mimetreeparser-202310041626.tar.xz
-chk 15afe2c8494930bd004075f810740ff909f4ec5df962f191d9e4bd197fc139cf
+file mimetreeparser/mimetreeparser-202310091059.tar.xz
+chk efe65cbf3cd8146be714c9594ccd3035216948451f329ddbc8a426c8e926f43b
 
 # libkleo
-# last changed: 2023-10-04
+# last changed: 2023-10-09
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file libkleo/libkleo-202310041643.tar.xz
-chk 730952b489d1cdbcff76499ef7683d4068cbcb94361e26edff55835a29edb906
+file libkleo/libkleo-202310091059.tar.xz
+chk cd95e740300728cb4c0f4fad2659417557927077fd76376a56bc63021da485c9
 
 # kleopatra
-# last changed: 2023-10-04
+# last changed: 2023-10-09
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file kleopatra/kleopatra-202310041634.tar.xz
-chk 5a10459b50fb259e0a5468d092afa2626fe6ef1727bd156b58bd7dacb02b4792
+file kleopatra/kleopatra-202310091059.tar.xz
+chk 7d671b5410f9651a89913227313c848b1ea5e3f60c0ac6d12d8862161dfb3af3
 
 # Okular and dependencies
 # poppler
