@@ -972,15 +972,15 @@ skip_gpgme_browser:
   ${Endif}
   !endif
   !insertmacro SectionFlagIsSet ${SEC_qtbase} \
-		${SF_SELECTED} have_qt skip_qt
-  have_qt:
+		${SF_SELECTED} have_qtbase skip_qtbase
+  have_qtbase:
   !insertmacro SelectSection ${SEC_zlib}
   !insertmacro SelectSection ${SEC_qttranslations}
   !insertmacro SelectSection ${SEC_freetype}
   !insertmacro SelectSection ${SEC_libpng}
   !insertmacro SelectSection ${SEC_jpeg}
   !insertmacro SelectSection ${SEC_pcre2}
-  skip_qt:
+  skip_qtbase:
 !endif
 
 !ifdef HAVE_PKG_LIBASSUAN
