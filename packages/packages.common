@@ -547,25 +547,25 @@ file gpg4win-tools/gpg4win-tools-202309220833.tar.xz
 chk 7f7bcd1c03e90fcf63f2ec688bdfcbe96ba20e8e31f8e5c5b6740b23b779817c
 
 # mimetreeparser
-# last changed: 2023-10-09
+# last changed: 2023-10-11
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file mimetreeparser/mimetreeparser-202310091059.tar.xz
-chk efe65cbf3cd8146be714c9594ccd3035216948451f329ddbc8a426c8e926f43b
+file mimetreeparser/mimetreeparser-202310111247.tar.xz
+chk d0dffb89459a7d31931c1b8cf4bdfc69343b2aaf9ef249608750ccb2f37ed7b7
 
 # libkleo
-# last changed: 2023-10-09
+# last changed: 2023-10-11
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file libkleo/libkleo-202310091059.tar.xz
-chk cd95e740300728cb4c0f4fad2659417557927077fd76376a56bc63021da485c9
+file libkleo/libkleo-202310111300.tar.xz
+chk 132545c4aca85b5ab81faaeafcce4b82524c9b24d52d427bdd740d4caa920e73
 
 # kleopatra
-# last changed: 2023-10-09
+# last changed: 2023-10-11
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file kleopatra/kleopatra-202310091059.tar.xz
-chk 7d671b5410f9651a89913227313c848b1ea5e3f60c0ac6d12d8862161dfb3af3
+file kleopatra/kleopatra-202310111625.tar.xz
+chk 39a23948042d5f2906bff66ba44f3fb2278d3d20aff8f11f26b07dc9a7d1f89d
 
 # Okular and dependencies
 # poppler
