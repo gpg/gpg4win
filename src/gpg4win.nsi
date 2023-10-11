@@ -41,8 +41,8 @@ Unicode true
 !define PRETTY_PACKAGE_SHORT "Gpg4win"
 !define VERSION "${_VERSION}"
 !define PROD_VERSION "${_BUILD_FILEVERSION}"
-!define COMPANY "Intevation GmbH"
-!define COPYRIGHT "Copyright (C) 2020 Intevation GmbH"
+!define COMPANY "g10 Code GmbH"
+!define COPYRIGHT "Copyright (C) 2023 g10 Code GmbH"
 !define DESCRIPTION "Gpg4win: The GNU Privacy Guard and Tools for Windows"
 
 !define INSTALL_DIR "Gpg4win"
