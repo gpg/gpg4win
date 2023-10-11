@@ -31,7 +31,7 @@ ex_idir := $(root)/install-ex
 ex_ipdir := $(root)/install-ex/pkgs
 
 ifdef GIT_BETASTRING
-	VSD_VERSION_FILE:=$(VSD_VERSION)$(GIT_BETASTRING)
+	VSD_VERSION_FILE:=$(VSD_VERSION)-Beta
 else
 	VSD_VERSION_FILE:=$(VSD_VERSION)
 endif
@@ -990,7 +990,7 @@ gnupg-vsd/$(1)/VERSION.sig: gnupg-vsd/$(1)/VERSION
 	cat gnupg-vsd/$(1)/VERSION
 	gpg --yes -o gnupg-vsd/$(1)/VERSION.sig -bau $(version_signkey) gnupg-vsd/$(1)/VERSION
 
-gnupg-vsd/$(1)/VERSION: gnupg-vsd/custom.mk
+gnupg-vsd/$(1)/VERSION: gnupg-vsd/custom.mk $(stampdir)/stamp-betanum
 	if [ "$(call GETVAR,msi_target_$(1)_VERSION)" = "VS-Desktop-$(VSD_VERSION)" ]; then \
 		echo "VS-Desktop-$(VSD_VERSION_FILE)" > gnupg-vsd/$(1)/VERSION; \
 	else \
@@ -1172,6 +1172,11 @@ $(stampdir)/stamp-final: $(stampdir)/stamp-directories $(stampdir)/stamp-additio
 
 $(bdir)/versioninfo.txt: $(stampdir)/stamp-final
 	touch $(bdir)/versioninfo.txt
+
+$(stampdir)/stamp-betanum: $(top_srcdir)/config.log
+	if [ ! -e "$(stampdir)/stamp-betanum" -o "$$(cat "$(stampdir)/stamp-betanum")" != "$(BUILD_BETANUM)" ]; then \
+		echo -n "$(BUILD_BETANUM)" > "$(stampdir)/stamp-betanum"; \
+	fi
 
 all-gpg4win: $(stampdir)/stamp-final
 
