@@ -1,0 +1,484 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 75fe9f7b..a4c1b7ed 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -62,11 +62,37 @@ endif()
+
+ option(BINARY_ICONS_RESOURCE "Install Qt binary resource files containing breeze icons (breeze-icons.rcc, breeze-icons-dark.rcc)" ${BINARY_ICONS_RESOURCE_OPTION_DEFAULT})
+ option(SKIP_INSTALL_ICONS "Skip installing the icons files" OFF)
++set(ICON_SUBSET_INCLUDE_FILE "" CACHE FILEPATH "Only include icons with completeBaseName as specified in the file mentioned here (absolute path)")
+
+ if(BINARY_ICONS_RESOURCE)
+-    find_package(Qt${QT_MAJOR_VERSION} NO_MODULE REQUIRED Core)
+-    add_executable(qrcAlias qrcAlias.cpp)
+-    target_link_libraries(qrcAlias PUBLIC Qt${QT_MAJOR_VERSION}::Core)
++    if (CMAKE_CROSSCOMPILING)
++        if (NOT KF5_HOST_TOOLING)
++            message(FATAL_ERROR "Please provide a prefix with a native Qt build and pass -DKF5_HOST_TOOLING=path or disable BINARY_ICONS_RESOURCE")
++        endif()
++
++        # search native tooling prefix
++        string(FIND ${KF5_HOST_TOOLING} /lib idx)
++        string(SUBSTRING ${KF5_HOST_TOOLING} 0 ${idx} NATIVE_PREFIX)
++        message(STATUS "Building qrcAlias against ${NATIVE_PREFIX}")
++
++        include(ExternalProject)
++        ExternalProject_Add(native_tools
++                            SOURCE_DIR ${CMAKE_SOURCE_DIR}/tools
++                            CMAKE_ARGS -DCMAKE_PREFIX_PATH=${NATIVE_PREFIX}
++                                -DCMAKE_INSTALL_PREFIX=${CMAKE_CURRENT_BINARY_DIR}
++                            INSTALL_COMMAND ""
++                           )
++        add_executable(qrcAlias IMPORTED GLOBAL)
++        add_executable(iconSubset IMPORTED GLOBAL)
++        add_dependencies(qrcAlias native_tools)
++        add_dependencies(iconSubset native_tools)
++        set_target_properties(qrcAlias PROPERTIES IMPORTED_LOCATION
++            ${CMAKE_BINARY_DIR}/native_tools-prefix/src/native_tools-build/qrcAlias)
++        set_target_properties(iconSubset PROPERTIES IMPORTED_LOCATION
++            ${CMAKE_BINARY_DIR}/native_tools-prefix/src/native_tools-build/iconSubset)
++    else ()
++        add_subdirectory (tools)
++    endif()
+
+ function(generate_binary_resource target outfile)
+     set(RESOURCES_WORKING_DIR ${CMAKE_CURRENT_BINARY_DIR}/res)
+@@ -85,21 +111,43 @@ function(generate_binary_resource target outfile)
+     add_custom_target(breeze-${target}-mkdir
+         COMMAND ${CMAKE_COMMAND} -E make_directory ${RESOURCES_WORKING_DIR}
+     )
+-    add_custom_command(OUTPUT ${RESOURCE_FILE}
+-        COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_CURRENT_SOURCE_DIR} ${RESOURCES_WORKING_DIR}
+-        COMMAND ${CMAKE_COMMAND} -E remove
+-            ${RESOURCE_FILE}
+-            ${RESOURCE_FILE}.depends
+-            ${RESOURCES_WORKING_DIR}/.gitignore
+-            ${RESOURCES_WORKING_DIR}/CMakeLists.txt
+-        COMMAND ${QT_RCC_EXECUTABLE} --project -o ${CMAKE_CURRENT_BINARY_DIR}/tmp.qrc
+-        COMMAND ${CMAKE_COMMAND} -E env
+-            ${pathVarName}=$<TARGET_FILE_DIR:Qt${QT_MAJOR_VERSION}::Core>
+-            $<TARGET_FILE:qrcAlias> -i ${CMAKE_CURRENT_BINARY_DIR}/tmp.qrc -o ${RESOURCE_FILE}
+-
+-        WORKING_DIRECTORY ${RESOURCES_WORKING_DIR}
+-        DEPENDS breeze-${target}-mkdir
+-    )
++    if (ICON_SUBSET_INCLUDE_FILE)
++       set (_icon_subset_include_list -I "${ICON_SUBSET_INCLUDE_FILE}")
++       add_custom_command(OUTPUT ${RESOURCE_FILE}
++           COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_CURRENT_SOURCE_DIR} ${RESOURCES_WORKING_DIR}
++           COMMAND ${CMAKE_COMMAND} -E remove
++               ${RESOURCE_FILE}
++               ${RESOURCE_FILE}.depends
++               ${RESOURCES_WORKING_DIR}/.gitignore
++               ${RESOURCES_WORKING_DIR}/CMakeLists.txt
++           COMMAND ${QT_RCC_EXECUTABLE} --project -o ${CMAKE_CURRENT_BINARY_DIR}/tmp.qrc
++           COMMAND ${CMAKE_COMMAND} -E env
++               ${pathVarName}=$<TARGET_FILE_DIR:Qt${QT_MAJOR_VERSION}::Core>
++               $<TARGET_FILE:iconSubset> -i ${CMAKE_CURRENT_BINARY_DIR}/tmp.qrc -o ${CMAKE_CURRENT_BINARY_DIR}/tmp2.qrc ${_icon_subset_include_list}
++           COMMAND ${CMAKE_COMMAND} -E env
++               ${pathVarName}=$<TARGET_FILE_DIR:Qt${QT_MAJOR_VERSION}::Core>
++               $<TARGET_FILE:qrcAlias> -i ${CMAKE_CURRENT_BINARY_DIR}/tmp2.qrc -o ${RESOURCE_FILE}
++
++           WORKING_DIRECTORY ${RESOURCES_WORKING_DIR}
++           DEPENDS breeze-${target}-mkdir
++       )
++    else()
++       add_custom_command(OUTPUT ${RESOURCE_FILE}
++       COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_CURRENT_SOURCE_DIR} ${RESOURCES_WORKING_DIR}
++       COMMAND ${CMAKE_COMMAND} -E remove
++           ${RESOURCE_FILE}
++           ${RESOURCE_FILE}.depends
++           ${RESOURCES_WORKING_DIR}/.gitignore
++           ${RESOURCES_WORKING_DIR}/CMakeLists.txt
++       COMMAND ${QT_RCC_EXECUTABLE} --project -o ${CMAKE_CURRENT_BINARY_DIR}/tmp.qrc
++       COMMAND ${CMAKE_COMMAND} -E env
++           ${pathVarName}=$<TARGET_FILE_DIR:Qt${QT_MAJOR_VERSION}::Core>
++           $<TARGET_FILE:qrcAlias> -i ${CMAKE_CURRENT_BINARY_DIR}/tmp.qrc -o ${RESOURCE_FILE}
++
++       WORKING_DIRECTORY ${RESOURCES_WORKING_DIR}
++       DEPENDS breeze-${target}-mkdir
++       )
++    endif()
+     add_custom_command(OUTPUT ${BINARY_RESOURCE_FILE}
+         COMMAND ${QT_RCC_EXECUTABLE} --binary
+                     -o ${BINARY_RESOURCE_FILE}
+diff --git a/qrcAlias.cpp b/qrcAlias.cpp
+deleted file mode 100644
+index 596b5b46..00000000
+--- a/qrcAlias.cpp
++++ /dev/null
+@@ -1,119 +0,0 @@
+-/*  This file is part of the KDE libraries
+- *    Copyright (C) 2016 Kåre Särs <kare.sars@iki.fi>
+- *
+- *    This library is free software; you can redistribute it and/or
+- *    modify it under the terms of the GNU Library General Public
+- *    License as published by the Free Software Foundation; either
+- *    version 2 of the License, or (at your option) any later version.
+- *
+- *    This library is distributed in the hope that it will be useful,
+- *    but WITHOUT ANY WARRANTY; without even the implied warranty of
+- *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+- *    Library General Public License for more details.
+- *
+- *    You should have received a copy of the GNU Library General Public License
+- *    along with this library; see the file COPYING.LIB.  If not, write to
+- *    the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+- *    Boston, MA 02110-1301, USA.
+- */
+-#include <QCommandLineParser>
+-#include <QCoreApplication>
+-#include <QDebug>
+-#include <QFile>
+-#include <QFileInfo>
+-#include <QRegularExpression>
+-#include <QString>
+-
+-QString link(const QString &path, const QString &fileName)
+-{
+-    QFile in(path + QLatin1Char('/') + fileName);
+-    if (!in.open(QIODevice::ReadOnly)) {
+-        qDebug() << "failed to read" << path << fileName << in.fileName();
+-        return QString();
+-    }
+-
+-    QString firstLine = QString::fromLocal8Bit(in.readLine());
+-    if (firstLine.isEmpty()) {
+-        qDebug() << in.fileName() << "line could not be read...";
+-        return QString();
+-    }
+-    QRegularExpression fNameReg(QStringLiteral("(.*\\.(?:svg|png|gif|ico))$"));
+-    QRegularExpressionMatch match = fNameReg.match(firstLine);
+-    if (!match.hasMatch()) {
+-        return QString();
+-    }
+-
+-    QFileInfo linkInfo(path + QLatin1Char('/') + match.captured(1));
+-    QString aliasLink = link(linkInfo.path(), linkInfo.fileName());
+-    if (!aliasLink.isEmpty()) {
+-        // qDebug() <<  fileName << "=" << match.captured(1) << "=" << aliasLink;
+-        return aliasLink;
+-    }
+-
+-    return path + QLatin1Char('/') + match.captured(1);
+-}
+-
+-int parseFile(const QString &infile, const QString &outfile)
+-{
+-    QFile in(infile);
+-    QFile out(outfile);
+-    QRegularExpression imageReg(QStringLiteral("<file>(.*\\.(?:svg|png|gif|ico))</file>"));
+-
+-    if (!in.open(QIODevice::ReadOnly)) {
+-        qDebug() << "Failed to open" << infile;
+-        return -1;
+-    }
+-    if (!out.open(QIODevice::WriteOnly)) {
+-        qDebug() << "Failed to create" << outfile;
+-        return -2;
+-    }
+-
+-    while (in.bytesAvailable()) {
+-        QString line = QString::fromLocal8Bit(in.readLine());
+-        QRegularExpressionMatch match = imageReg.match(line);
+-        if (!match.hasMatch()) {
+-            // qDebug() << "No Match: " << line;
+-            out.write(qPrintable(line));
+-            continue;
+-        }
+-
+-        QFileInfo info(match.captured(1));
+-
+-        QString aliasLink = link(info.path(), info.fileName());
+-        if (aliasLink.isEmpty()) {
+-            // qDebug() << "No alias: " << line;
+-            out.write(qPrintable(line));
+-            continue;
+-        }
+-
+-        QString newLine = QStringLiteral("<file alias=\"%1\">%2</file>\n").arg(match.captured(1), aliasLink);
+-        // qDebug() << newLine;
+-        out.write(qPrintable(newLine));
+-    }
+-    return 0;
+-}
+-
+-int main(int argc, char *argv[])
+-{
+-    QCoreApplication app(argc, argv);
+-
+-    QCommandLineParser parser;
+-
+-    QCommandLineOption inOption(QStringList() << QLatin1String("i") << QLatin1String("infile"), QStringLiteral("Input qrc file"), QStringLiteral("infile"));
+-    QCommandLineOption outOption(QStringList() << QLatin1String("o") << QLatin1String("outfile"), QStringLiteral("Output qrc file"), QStringLiteral("outfile"));
+-    parser.setApplicationDescription(
+-        QLatin1String("On Windows git handles symbolic links by converting them "
+-                      "to text files containing the links to the actual file. This application "
+-                      "takes a .qrc file as input and outputs a .qrc file with the symbolic "
+-                      "links converted to qrc-aliases."));
+-    parser.addHelpOption();
+-    parser.addVersionOption();
+-    parser.addOption(inOption);
+-    parser.addOption(outOption);
+-    parser.process(app);
+-
+-    const QString inName = parser.value(inOption);
+-    const QString outName = parser.value(outOption);
+-
+-    return parseFile(inName, outName);
+-}
+diff --git a/tools/CMakeLists.txt b/tools/CMakeLists.txt
+new file mode 100644
+index 00000000..11b08bb5
+--- /dev/null
++++ b/tools/CMakeLists.txt
+@@ -0,0 +1,10 @@
++cmake_minimum_required(VERSION 3.5)
++
++# This lives in a subdirectory to make it easy to switch
++# the toolchain for cross compile.
++
++find_package(Qt5 NO_MODULE REQUIRED Core)
++add_executable(qrcAlias qrcAlias.cpp)
++target_link_libraries(qrcAlias PUBLIC Qt5::Core)
++add_executable(iconSubset subsetBinaryIcons.cpp)
++target_link_libraries(iconSubset PUBLIC Qt5::Core)
+diff --git a/tools/qrcAlias.cpp b/tools/qrcAlias.cpp
+new file mode 100644
+index 00000000..596b5b46
+--- /dev/null
++++ b/tools/qrcAlias.cpp
+@@ -0,0 +1,119 @@
++/*  This file is part of the KDE libraries
++ *    Copyright (C) 2016 Kåre Särs <kare.sars@iki.fi>
++ *
++ *    This library is free software; you can redistribute it and/or
++ *    modify it under the terms of the GNU Library General Public
++ *    License as published by the Free Software Foundation; either
++ *    version 2 of the License, or (at your option) any later version.
++ *
++ *    This library is distributed in the hope that it will be useful,
++ *    but WITHOUT ANY WARRANTY; without even the implied warranty of
++ *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ *    Library General Public License for more details.
++ *
++ *    You should have received a copy of the GNU Library General Public License
++ *    along with this library; see the file COPYING.LIB.  If not, write to
++ *    the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
++ *    Boston, MA 02110-1301, USA.
++ */
++#include <QCommandLineParser>
++#include <QCoreApplication>
++#include <QDebug>
++#include <QFile>
++#include <QFileInfo>
++#include <QRegularExpression>
++#include <QString>
++
++QString link(const QString &path, const QString &fileName)
++{
++    QFile in(path + QLatin1Char('/') + fileName);
++    if (!in.open(QIODevice::ReadOnly)) {
++        qDebug() << "failed to read" << path << fileName << in.fileName();
++        return QString();
++    }
++
++    QString firstLine = QString::fromLocal8Bit(in.readLine());
++    if (firstLine.isEmpty()) {
++        qDebug() << in.fileName() << "line could not be read...";
++        return QString();
++    }
++    QRegularExpression fNameReg(QStringLiteral("(.*\\.(?:svg|png|gif|ico))$"));
++    QRegularExpressionMatch match = fNameReg.match(firstLine);
++    if (!match.hasMatch()) {
++        return QString();
++    }
++
++    QFileInfo linkInfo(path + QLatin1Char('/') + match.captured(1));
++    QString aliasLink = link(linkInfo.path(), linkInfo.fileName());
++    if (!aliasLink.isEmpty()) {
++        // qDebug() <<  fileName << "=" << match.captured(1) << "=" << aliasLink;
++        return aliasLink;
++    }
++
++    return path + QLatin1Char('/') + match.captured(1);
++}
++
++int parseFile(const QString &infile, const QString &outfile)
++{
++    QFile in(infile);
++    QFile out(outfile);
++    QRegularExpression imageReg(QStringLiteral("<file>(.*\\.(?:svg|png|gif|ico))</file>"));
++
++    if (!in.open(QIODevice::ReadOnly)) {
++        qDebug() << "Failed to open" << infile;
++        return -1;
++    }
++    if (!out.open(QIODevice::WriteOnly)) {
++        qDebug() << "Failed to create" << outfile;
++        return -2;
++    }
++
++    while (in.bytesAvailable()) {
++        QString line = QString::fromLocal8Bit(in.readLine());
++        QRegularExpressionMatch match = imageReg.match(line);
++        if (!match.hasMatch()) {
++            // qDebug() << "No Match: " << line;
++            out.write(qPrintable(line));
++            continue;
++        }
++
++        QFileInfo info(match.captured(1));
++
++        QString aliasLink = link(info.path(), info.fileName());
++        if (aliasLink.isEmpty()) {
++            // qDebug() << "No alias: " << line;
++            out.write(qPrintable(line));
++            continue;
++        }
++
++        QString newLine = QStringLiteral("<file alias=\"%1\">%2</file>\n").arg(match.captured(1), aliasLink);
++        // qDebug() << newLine;
++        out.write(qPrintable(newLine));
++    }
++    return 0;
++}
++
++int main(int argc, char *argv[])
++{
++    QCoreApplication app(argc, argv);
++
++    QCommandLineParser parser;
++
++    QCommandLineOption inOption(QStringList() << QLatin1String("i") << QLatin1String("infile"), QStringLiteral("Input qrc file"), QStringLiteral("infile"));
++    QCommandLineOption outOption(QStringList() << QLatin1String("o") << QLatin1String("outfile"), QStringLiteral("Output qrc file"), QStringLiteral("outfile"));
++    parser.setApplicationDescription(
++        QLatin1String("On Windows git handles symbolic links by converting them "
++                      "to text files containing the links to the actual file. This application "
++                      "takes a .qrc file as input and outputs a .qrc file with the symbolic "
++                      "links converted to qrc-aliases."));
++    parser.addHelpOption();
++    parser.addVersionOption();
++    parser.addOption(inOption);
++    parser.addOption(outOption);
++    parser.process(app);
++
++    const QString inName = parser.value(inOption);
++    const QString outName = parser.value(outOption);
++
++    return parseFile(inName, outName);
++}
+diff --git a/tools/subsetBinaryIcons.cpp b/tools/subsetBinaryIcons.cpp
+new file mode 100644
+index 00000000..407a1754
+--- /dev/null
++++ b/tools/subsetBinaryIcons.cpp
+@@ -0,0 +1,104 @@
++/* This file is part of the KDE libraries
++ * SPDX-FileCopyrightText: 2016 Kåre Särs <kare.sars@iki.fi>
++ * SPDX-FileCopyrightText: 2023 g10 Code GmbH
++ * SPDX-FileContributor: Sune Stolborg Vuorela <sune@vuorela.dk>
++ * SPDX-License-Identifier: LGPL-2.0-or-later
++ */
++#include <QCommandLineParser>
++#include <QCoreApplication>
++#include <QDebug>
++#include <QFile>
++#include <QFileInfo>
++#include <QRegularExpression>
++#include <QString>
++
++int parseFile(const QString &infile, const QString &outfile, const QStringList &includeFilter)
++{
++    QFile in(infile);
++    QFile out(outfile);
++    static QRegularExpression imageReg(QStringLiteral("<file>(.*\\.(?:svg|png|gif|ico))</file>"));
++
++    if (!in.open(QIODevice::ReadOnly)) {
++        qWarning() << "Failed to open" << infile;
++        return -1;
++    }
++    if (!out.open(QIODevice::WriteOnly)) {
++        qWarning() << "Failed to create" << outfile;
++        return -2;
++    }
++
++    while (in.bytesAvailable()) {
++        const QString line = QString::fromLocal8Bit(in.readLine());
++        const QRegularExpressionMatch match = imageReg.match(line);
++        if (!match.hasMatch()) {
++            // qDebug() << "No Match: " << line;
++            out.write(qPrintable(line));
++            continue;
++        }
++
++        const QFileInfo info(match.captured(1));
++        if (!includeFilter.contains(info.completeBaseName())) {
++            continue;
++        }
++        out.write(qPrintable(line));
++    }
++    return 0;
++}
++
++static QStringList parseIncludeList(const QString &path)
++{
++    QStringList items;
++    QFile in(path);
++    if (!in.open(QIODevice::ReadOnly)) {
++        qWarning() << "failed to open" << path;
++        return {};
++    }
++    while (in.bytesAvailable()) {
++        const QString line = QString::fromLocal8Bit(in.readLine()).trimmed();
++        if (line.startsWith(QLatin1Char('#'))) {
++            continue;
++        }
++        items.push_back(line);
++    }
++    return items;
++}
++
++int main(int argc, char *argv[])
++{
++    QCoreApplication app(argc, argv);
++
++    QCommandLineParser parser;
++
++    QCommandLineOption inOption({QLatin1String("i"), QLatin1String("infile")}, QStringLiteral("Input qrc file"), QStringLiteral("infile"));
++    QCommandLineOption outOption({QLatin1String("o"), QLatin1String("outfile")}, QStringLiteral("Output qrc file"), QStringLiteral("outfile"));
++    QCommandLineOption includeOption({QLatin1String("I"), QLatin1String("include")},
++                                     QStringLiteral("InputFilter list (newline delimited, no extensions)"),
++                                     QStringLiteral("include"));
++    parser.setApplicationDescription(
++        QLatin1String("Utility to help just include some icons and not a full icon set."
++                      "This is a singleapplication distribution helper for power users; proceed at own risk"));
++    parser.addHelpOption();
++    parser.addVersionOption();
++    parser.addOption(inOption);
++    parser.addOption(outOption);
++    parser.addOption(includeOption);
++    parser.process(app);
++
++    const QString inName = parser.value(inOption);
++    const QString outName = parser.value(outOption);
++    if (!parser.isSet(includeOption)) {
++        auto ret = QFile::copy(inName, outName);
++        if (ret) {
++            return 0;
++        } else {
++            return 1;
++        }
++    }
++
++    const QStringList includeFilters = parseIncludeList(parser.value(includeOption));
++    if (includeFilters.empty()) {
++        return 1;
++    }
++
++    return parseFile(inName, outName, includeFilters);
++}
