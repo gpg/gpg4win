@@ -1,3 +1,9 @@
+# List of included icons. This is referenced by the breeze-icons
+# installation.
+#
+# Note: You may want to use the findicton.sh script to create the
+# list of icons.
+#
 accessories-text-editor
 application-epub+zip
 application-exit
@@ -134,6 +140,7 @@ input-mouse
 internet-mail
 invertimage
 kde
+kleopatra
 kt-add-filters
 kt-remove-filters
 list-add
