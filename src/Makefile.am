@@ -18,7 +18,7 @@
 
 EXTRA_DIST = pkg-config gpg4win.nsi gpg4win-src.nsi \
 	config.site config.nsi.in \
-        libiconv.def libintl.def loreley.mid \
+        libiconv.def libintl.def findicons.sh \
         gpg4win-splash.wav exdll.h exdll.c g4wihelp.c desktopshellrun.cpp \
         g4wihelp.nsi slideshow.cpp gpgwrap.c \
         gpg-enable-keyboxd.bat gpg-disable-keyboxd.bat \
