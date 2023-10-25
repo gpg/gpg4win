@@ -73,8 +73,8 @@ index 47e626f7..0fff05e2 100644
 +/* KCMUtils available */
 +#cmakedefine01 HAVE_KCMUTILS
 +
- /* Whether QGpgME supports changing the expiration date of the primary key and the subkeys simultaneously */
- #cmakedefine01 QGPGME_SUPPORTS_CHANGING_EXPIRATION_OF_COMPLETE_KEY
+ /* Whether the archive jobs allow setting an output filename instead of passing an output IO device */
+ #cmakedefine01 QGPGME_ARCHIVE_JOBS_SUPPORT_OUTPUT_FILENAME
 
 diff --git a/src/conf/CMakeLists.txt b/src/conf/CMakeLists.txt
 index 6d1fd11a..b5d32053 100644
