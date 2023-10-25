@@ -537,8 +537,8 @@ chk 2c227634528ef76bcca7fd4b7fe5c38a535f6e68bbe5b2cdc6cc4a74810b2dba
 # last changed: 2023-10-25
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file gpg4win-tools/gpg4win-tools-202310251632.tar.xz
-chk 82fe23090c07a769df5aa2b81b76ea16cca3affb65d7573495d389d5901bd223
+file gpg4win-tools/gpg4win-tools-202310251638.tar.xz
+chk c4c92a20a3aee3b0ea8db35bb9ebf9b91043e865a75c6565f352cee6f74881ff
 
 # mimetreeparser
 # last changed: 2023-10-12
