@@ -53,6 +53,7 @@ EXTRA_DIST = autogen.rc autogen.sh README.GIT ONEWS \
              patches/kconfigwidgets/0001-Make-QDbus-optional.patch \
              patches/kcoreaddons/0001-Add-KSharedDataCache-for-Windows.patch \
              patches/kiconthemes/0001-Make-DBus-optional.patch \
+             patches/kiconthemes/dark-mode-detection.patch \
              patches/kleopatra/set-windows-registry.patch \
              patches/kleopatra/0001-Make-KCMUtils-optional.patch \
              patches/kwidgetsaddons/0001-Set-the-modes-on-the-date-picker.patch \
