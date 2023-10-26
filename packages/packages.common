@@ -178,8 +178,8 @@ chk 457a185e5a85238fb945a955dc6352ab962dc8b48720b62fc9fa48c7540a4067
 # last changed 2023-10-25
 # by wk
 # verified: [build tree]
-file gpgme/gpgme-1.23.0.tar.bz2
-chk 043e2efe18b4ad22b96d434dde763fbed32cf8d6c220dc69df0d0ffb9dc66fc6
+#file gpgme/gpgme-1.23.0.tar.bz2
+#chk 043e2efe18b4ad22b96d434dde763fbed32cf8d6c220dc69df0d0ffb9dc66fc6
 
 # last changed: 2021-01-07
 # by: ah
@@ -525,6 +525,12 @@ server https://gnupg.org/ftp/gcrypt/snapshots
 file gpgol/gpgol-2.5.10-beta17.tar.xz
 chk 6aa3edf4900ddf21a21c3a9c1902ba3df8e37eed97ac3656149436cd3fdaf6ad
 
+# gpgme
+# last changed: 2023-10-26
+# by: aheinecke
+# verified: Tarball created by aheinecke.
+file gpgme/gpgme-1.23.1-beta2.tar.xz
+chk c29eb24a9ce0e4d00cd652cb7caa0e484bc3d535cd60b04652ff56e7c76da334
 
 # gpgex
 # last changed: 2022-12-06
