@@ -14,12 +14,11 @@
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
-# along with this program; if not, write to the Free Software
-# Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA
+# along with this program; if not, see <http://www.gnu.org/licenses/>.
 
 EXTRA_DIST = nsi-mode.el pkg-copyright.txt beta-warning.txt HACKING\
 	     README.ar.txt README.de.txt README.en.txt README.es.txt \
 	     README.fr.txt README.ru.txt README.pt.txt README.zh.txt \
 	     HOWTO-SMIME.en.txt HOWTO-SMIME.de.txt
 
-UBDIRS = logo
+SUBDIRS = logo
