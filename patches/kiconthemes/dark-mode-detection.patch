@@ -37,7 +37,7 @@ new file mode 100644
 index 00000000..1508aa5b
 --- /dev/null
 +++ b/src/DarkModeSetup.cpp
-@@ -0,0 +1,130 @@
+@@ -0,0 +1,131 @@
 +/*
 +    SPDX-FileCopyrightText: 2019 Richard Yu
 +    SPDX-FileCopyrightText: 2023 g10 Code GmbH
@@ -121,7 +121,8 @@ index 00000000..1508aa5b
 +                        AllowDarkModeForApp(true);
 +                        _RefreshImmersiveColorPolicyState();
 +
-+                        darkModeEnabled = _ShouldAppsUseDarkMode() && !IsHighContrast();
++                        // Windows 10 only has one bright high contrast mode and three dark high contrast themes. So we check for the white one.
++                        darkModeEnabled = _ShouldAppsUseDarkMode() || (IsHighContrast() && GetSysColor(COLOR_WINDOW) != 0xFFFFFF);
 +                    }
 +               }
 +           }
