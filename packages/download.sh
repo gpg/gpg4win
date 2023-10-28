@@ -42,14 +42,15 @@ usage()
     cat <<EOF
 Usage: $0 [OPTIONS]
 Options:
-	[--force]
+        [--force]    Download packages even if they exist.
         [--quiet]
         [--ipv4]
         [--ipv6]
-        [--v4]       Downlad packages for Version 4.x (default)
-        [--v3]       Downlad packages for Version 3.x
-	[--dry-run]  Do not download - just check
+        [--v4]       Download packages for Version 4.x (default)
+        [--v3]       Download packages for Version 3.x
+        [--dry-run]  Do not download - just check
         [--clean]    Do not download but remove downloaded files.
+        [--update]   Remove old files with the same name.
 EOF
     exit $1
 }
@@ -62,6 +63,7 @@ version4=no
 ipvx=
 clean=no
 dryrun=no
+update=no
 #keep_list=no
 #sig_check=yes
 while [ $# -gt 0 ]; do
@@ -106,6 +108,9 @@ while [ $# -gt 0 ]; do
             ;;
         --dry-run|-n)
             dryrun=yes
+            ;;
+        --update|-u)
+            update=yes
             ;;
 	*)
 	    usage 1 1>&2
@@ -204,6 +209,20 @@ while read key value ; do
        elif [ $dryrun = yes ]; then
            echo "skipping download of \`$url' ... --dry-run active"
        else
+           if [ "$update" = "yes" ]; then
+               pkg=$(echo "$name" | cut -d- -f1)
+               pkg2=$(echo "$name" | cut -d- -f2)
+               if [ "$pkg2" == "w32" -o "$pkg2" == "msi" ]; then
+                   pkg=$(echo $pkg-$pkg2);
+               fi
+               pkgsuffix=$(echo "$name" | rev | cut -d. -f1 | rev)
+               if [ -n "$pkg" -a -n "$pkgsuffix" ]; then
+                   if ls ${pkg}*.$pkgsuffix > /dev/null 2>&1; then
+                       [ $quiet = no ] && echo "Removing   "${pkg}*.$pkgsuffix";"
+                       rm ${pkg}*.$pkgsuffix;
+                   fi
+               fi
+           fi
            echo -n "downloading \`$url' ..."
            if ${WGET} -c -q "$url" -O "$name" ; then
                if [ $(stat -c'%s' "$name" 2>/dev/null || echo 0) -eq 0 ]; then
@@ -233,6 +252,20 @@ while read key value ; do
        elif [ -f "$value" -a "$force" = "no" ]; then
            [ $quiet = no ] && echo "package     \`$value' ... already exists"
        else
+           if [ "$update" = "yes" ]; then
+               pkg=$(echo "$value" | cut -d- -f1)
+               pkg2=$(echo "$value" | cut -d- -f2)
+               if [ "$pkg2" == "w32" -o "$pkg2" == "msi" ]; then
+                   pkg=$(echo $pkg-$pkg2);
+               fi
+               pkgsuffix=$(echo "$name" | rev | cut -d. -f1 | rev)
+               if [ -n "$pkg" -a -n "$pkgsuffix" ]; then
+                   if ls ${pkg}*.$pkgsuffix > /dev/null 2>&1; then
+                       [ $quiet = no ] && echo "Removing link  "${pkg}*.$pkgsuffix";"
+                       rm ${pkg}*.$pkgsuffix;
+                   fi
+               fi
+           fi
            echo -n "linking \`$value' to \`$name' ..."
 	   if ln -f "$name" "$value"; then
                echo " okay"
