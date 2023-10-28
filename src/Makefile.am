@@ -120,10 +120,6 @@ SUBDIRS = ${appimage}
 root := $(shell pwd)/playground
 stampdir := $(shell pwd)/stamps
 
-gpg4win_readme_ll = en de ar es fr ru pt zh
-
-README_files = $(addsuffix .txt,$(addprefix README.,$(gpg4win_readme_ll)))
-
 gpg4win_howto_smime_ll = en de
 
 HOWTO_files = $(addsuffix .txt, \
@@ -132,7 +128,7 @@ HOWTO_files = $(addsuffix .txt, \
 foosum_exe = sha1sum.exe md5sum.exe sha256sum.exe
 
 # Need to clean the dll because we bypassed automake.
-CLEANFILES = g4wihelp.dll desktopshellrun.o versioninfo.txt $(README_files) \
+CLEANFILES = g4wihelp.dll desktopshellrun.o versioninfo.txt \
 			 $(HOWTO_files) NEWS.tmp COMPONENTS-list.tmp \
 			 license.blurb cdversioninfo.tmp slideshow.o \
 			 $(foosum_exe) gpgwrap.exe
@@ -617,7 +613,7 @@ COMPONENTS-list.tmp : $(top_srcdir)/NEWS
 installers/gpg4win-$(VERSION).exe: gpg4win.nsi $(common_nsi) $(stampdir)/stamp-final \
                         g4wihelp.dll gpgwrap.exe \
 		        $(foosum_exe) \
-			$(README_files) $(HOWTO_files) \
+				 $(HOWTO_files) \
 	                license.blurb versioninfo.txt
 	$(MAKENSIS) -V3 -DBUILD_DIR=`pwd` -DTOP_SRCDIR=$(top_srcdir) \
            -DSRCDIR=$(srcdir) $(EXTRA_MAKENSIS_FLAGS) $(srcdir)/gpg4win.nsi && \

@@ -66,19 +66,6 @@ skip_uninst:
 # BEGIN MSI IGNORE
   SetOutPath "$INSTDIR\share\gpg4win"
 
-  File "${BUILD_DIR}/README.en.txt"
-  File "${BUILD_DIR}/README.de.txt"
-  File /oname=README.ar.txt "${BUILD_DIR}/README.en.txt"
-  File /oname=README.cz.txt "${BUILD_DIR}/README.en.txt"
-  File /oname=README.es.txt "${BUILD_DIR}/README.en.txt"
-  File /oname=README.fr.txt "${BUILD_DIR}/README.en.txt"
-  File /oname=README.it.txt "${BUILD_DIR}/README.en.txt"
-  File /oname=README.no.txt "${BUILD_DIR}/README.en.txt"
-  File /oname=README.pt.txt "${BUILD_DIR}/README.en.txt"
-  File /oname=README.ru.txt "${BUILD_DIR}/README.en.txt"
-  File /oname=README.zh_CN.txt "${BUILD_DIR}/README.zh.txt"
-  File /oname=README.zh_TW.txt "${BUILD_DIR}/README.zh.txt"
-
   File "${BUILD_DIR}/HOWTO-SMIME.en.txt"
   File "${BUILD_DIR}/HOWTO-SMIME.de.txt"
 

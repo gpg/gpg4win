@@ -39,8 +39,6 @@ Section "-un.gpg4win"
   Delete /REBOOTOK "$INSTDIR\bin_64\libwinpthread-1.dll"
 
   # Delete standard stuff.
-  Delete "$INSTDIR\share\gpg4win\README.*.txt"
-
   Delete "$INSTDIR\share\gpg4win\HOWTO-SMIME.*.txt"
 
   Delete "$INSTDIR\share\gpg4win\versioninfo.txt"

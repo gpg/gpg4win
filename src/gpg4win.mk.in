@@ -640,26 +640,6 @@ $(stampdir)/stamp-final-$(1): $(stampdir)/stamp-directories $(call GETDEPS,$(1))
 	touch $(stampdir)/stamp-final-$(1)
 endef
 
-# Template for README files
-# (The final awk command converts the file endings).
-
-define README_template
-README.$(1).txt : versioninfo.txt NEWS.tmp $(top_srcdir)/doc/README.$(1).txt \
-                  COMPONENTS-list.tmp $(top_srcdir)/doc/beta-warning.txt
-	sed -e '/^;.*/d;/!VERSIONINFO!/{r versioninfo.txt' -e 'd;}' \
-	-e '/!NEWSFILE!/{r NEWS.tmp' -e 'd;}' \
-	-e '/!NEWSFILE!/{r NEWS.tmp' -e 'd;}' \
-	-e '/!COMPONENTS!/{r COMPONENTS-list.tmp' -e 'd;}' \
-        -e '/!PKG-COPYRIGHT!/{r $(top_srcdir)/doc/pkg-copyright.txt' -e 'd;}' \
-        -e 's,!VERSION!,$(VERSION),g' \
-	-e 's,!BUILD_ISODATE!,$(BUILD_ISODATE),g' \
-	   < $(top_srcdir)/doc/README.$(1).txt \
-	   | (if echo "$(VERSION)" | egrep 'svn|rc|beta|git' >/dev/null; then \
-              sed -e '/!BETA-WARNING!/{r $(top_srcdir)/doc/beta-warning.txt' \
-               -e 'd;}'; else sed -e 's,!BETA-WARNING!,,g'; fi) \
-           | awk '{printf "%s\r\n", $$$$0}' >README.$(1).txt
-endef
-
 define HOWTO_template
 HOWTO-$(1).$(2).txt : $(top_srcdir)/doc/HOWTO-$(1).$(2).txt
 	sed -e '/^;.*/d' \
@@ -823,8 +803,7 @@ $(1)-package: installers/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi
 
 $$($(1)_PRODUCT)-$(VERSION).wxs: gpg4win.nsi $(common_nsi) $(stampdir)/stamp-final \
 		        $(foosum_exe) gpgwrap.exe \
-			$(README_files) $(HOWTO_files) \
-			versioninfo.txt make-msi.pl \
+				make-msi.pl \
 	$(addsuffix /VERSION.sig,$(addprefix gnupg-vsd/,$(msi_targets)))
 	perl make-msi.pl --guids $(srcdir)/make-msi.guids \
 		--manifest gpg4win-$(VERSION).files \
@@ -836,8 +815,7 @@ $$($(1)_PRODUCT)-$(VERSION).wxs: gpg4win.nsi $(common_nsi) $(stampdir)/stamp-fin
 $(idir)/$$($(1)_PRODUCT)-$(VERSION).wixlib: \
       $(stampdir)/stamp-final \
       $(foosum_exe) \
-      $(README_files) $(HOWTO_files) \
-      license.blurb versioninfo.txt \
+      license.blurb \
       WixUI_Gpg4win.wxs \
       $$($(1)_PRODUCT)-$(VERSION).wxs \
       $(stampdir)/stamp-additional-signedfiles
@@ -879,8 +857,7 @@ $(idir)/$$($(1)_PRODUCT)-$(VERSION).wixlib: \
 $(idir)/$$($(1)_PRODUCT)-$(VERSION)-x86.wixlib: \
       $(stampdir)/stamp-final \
       $(foosum_exe) \
-      $(README_files) $(HOWTO_files) \
-      license.blurb versioninfo.txt \
+      license.blurb \
       WixUI_Gpg4win.wxs \
       $$($(1)_PRODUCT)-$(VERSION).wxs \
       $(stampdir)/stamp-additional-signedfiles
@@ -1150,9 +1127,6 @@ $(foreach bpkg, $(gpg4win_bpkgs), $(eval $(call BPKG_template,$(bpkg))))
 
 # Insert the template for each internal package.
 $(foreach ipkg, $(gpg4win_ipkgs), $(eval $(call IPKG_template,$(ipkg))))
-
-# Insert the template for the README and HOWTO files.
-$(foreach rll, $(gpg4win_readme_ll), $(eval $(call README_template,$(rll))))
 
 # Insert the template for KDE packages.
 $(foreach kdepkg, $(gpg4win_kdepkgs), $(eval $(call KDEPKG_template,$(kdepkg))))

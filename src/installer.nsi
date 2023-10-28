@@ -150,9 +150,6 @@ FunctionEnd
 !define MUI_PAGE_CUSTOMFUNCTION_SHOW FinishFunction
 !define MUI_FINISHPAGE_RUN
 !define MUI_FINISHPAGE_RUN_FUNCTION RunAsUser
-!define MUI_FINISHPAGE_SHOWREADME "share\gpg4win\README.$(T_LangCode).txt"
-!define MUI_FINISHPAGE_SHOWREADME_TEXT "$(T_ShowReadme)"
-!define MUI_FINISHPAGE_SHOWREADME_NOTCHECKED
 !define MUI_FINISHPAGE_LINK "$(T_MoreInfo)"
 !define MUI_FINISHPAGE_LINK_LOCATION "$(T_MoreInfoURL)"
 !insertmacro MUI_PAGE_FINISH
@@ -244,9 +241,6 @@ LangString T_GPLShort ${LANG_ENGLISH} \
 LangString T_MoreInfo ${LANG_ENGLISH} \
    "Go to Gpg4win's webpage"
 LangString T_MoreInfoURL ${LANG_ENGLISH} "https://www.gpg4win.org"
-
-LangString T_ShowReadme ${LANG_ENGLISH} \
-   "Show the README file"
 
 LangString T_NoKeyManager ${LANG_ENGLISH} \
    "No key manager has been installed, thus we can't run one now."
