@@ -66,11 +66,11 @@ case ${package} in
         ;;
     kleopatra)
         repo=https://invent.kde.org/pim/${package}.git
-        branch="kf5"
+        branch="gpg4win/23.10"
         ;;
     libkleo)
         repo=https://invent.kde.org/pim/${package}.git
-        branch="kf5"
+        branch="gpg4win/23.10"
         ;;
     okular)
         repo=https://invent.kde.org/graphics/${package}.git
