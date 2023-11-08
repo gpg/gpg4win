@@ -40,6 +40,7 @@ is_gpg="no"
 is_w32="no"
 do_auto="no"
 branch="master"
+custom_l10n="no"
 
 case ${package} in
     */*)
@@ -67,6 +68,7 @@ case ${package} in
     kleopatra)
         repo=https://invent.kde.org/pim/${package}.git
         branch="gpg4win/23.10"
+        custom_l10n="l10n-kf5"
         ;;
     libkleo)
         repo=https://invent.kde.org/pim/${package}.git
@@ -114,6 +116,12 @@ if [ "${is_gpg}" == "yes" ]; then
     cp ${tmpdir}/${snapshotdir}/${tarball} ${olddir}
     cd ${olddir}
 else
+    if [ "$custom_l10n" != "no" ]; then
+        echo "Downloading german translations from ${custom_l10n}"
+        svn export --force svn://anonsvn.kde.org/home/kde/trunk/${custom_l10n}/de/messages/${package}/${package}.po \
+            ${tmpdir}/${snapshotdir}/po/de/${package}.po
+        (cd ${tmpdir}/${snapshotdir} && git add po && git commit -m "Add latest german translation")
+    fi
     echo "Archiving $branch.."
     (cd ${tmpdir}/${snapshotdir} && \
     git archive --format tar.xz --prefix=${snapshotdir}/ "origin/$branch") > ${tarball} || \
