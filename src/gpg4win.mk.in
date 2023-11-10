@@ -968,13 +968,26 @@ gnupg-vsd/$(1)/VERSION.sig: gnupg-vsd/$(1)/VERSION
 	gpg --yes -o gnupg-vsd/$(1)/VERSION.sig -bau $(version_signkey) gnupg-vsd/$(1)/VERSION
 
 gnupg-vsd/$(1)/VERSION: gnupg-vsd/custom.mk $(stampdir)/stamp-betanum
+	echo "[Kleopatra]" > gnupg-vsd/$(1)/VERSION
 	if [ "$(call GETVAR,msi_target_$(1)_VERSION)" = "VS-Desktop-$(VSD_VERSION)" ]; then \
-		echo "VS-Desktop-$(VSD_VERSION_FILE)" > gnupg-vsd/$(1)/VERSION; \
+		echo "version=VS-Desktop-$(VSD_VERSION_FILE)" >> gnupg-vsd/$(1)/VERSION; \
 	else \
-		echo "$(call GETVAR,msi_target_$(1)_VERSION)" > gnupg-vsd/$(1)/VERSION;\
+		echo "version=$(call GETVAR,msi_target_$(1)_VERSION)" >> gnupg-vsd/$(1)/VERSION;\
 	fi
-	echo "$(call GETVAR,msi_target_$(1)_DESC)" >> gnupg-vsd/$(1)/VERSION
-	echo "$(call GETVAR,msi_target_$(1)_DESC_SHORT)" >> gnupg-vsd/$(1)/VERSION
+	echo "shortDescription=$(call GETVAR,msi_target_$(1)_DESC)" >> gnupg-vsd/$(1)/VERSION
+	echo "otherText=$(call GETVAR,msi_target_$(1)_DESC_SHORT)" >> gnupg-vsd/$(1)/VERSION
+	echo "bugAddress=$(VSD_BUG_REPORT)" >> gnupg-vsd/$(1)/VERSION
+	echo "homepage=$(VSD_HOMEPAGE)" >> gnupg-vsd/$(1)/VERSION
+	echo "[Okular]" >> gnupg-vsd/$(1)/VERSION
+	if [ "$(call GETVAR,msi_target_$(1)_VERSION)" = "VS-Desktop-$(VSD_VERSION)" ]; then \
+		echo "version=VS-Desktop-$(VSD_VERSION_FILE)" >> gnupg-vsd/$(1)/VERSION; \
+	else \
+		echo "version=$(call GETVAR,msi_target_$(1)_VERSION)" >> gnupg-vsd/$(1)/VERSION;\
+	fi
+	echo "shortDescription=$(call GETVAR,msi_target_$(1)_DESC)" >> gnupg-vsd/$(1)/VERSION
+	echo "otherText=$(call GETVAR,msi_target_$(1)_DESC_SHORT)" >> gnupg-vsd/$(1)/VERSION
+	echo "bugAddress=$(VSD_BUG_REPORT)" >> gnupg-vsd/$(1)/VERSION
+	echo "homepage=$(VSD_HOMEPAGE)" >> gnupg-vsd/$(1)/VERSION
 
 gnupg-vsd/$(1)/announcement.txt: gnupg-vsd/custom.mk gnupg-vsd/announcement.de.in gnupg-vsd/announcement.en.in
 	cat gnupg-vsd/$(call GETVAR,msi_target_$(1)_announcement) | \
