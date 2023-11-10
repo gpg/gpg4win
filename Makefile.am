@@ -67,6 +67,8 @@ EXTRA_DIST = autogen.rc autogen.sh README.GIT ONEWS \
              patches/qtbase/CVE-2023-32763-qtbase-5.15.diff \
              patches/qttools/disable-most-tools.patch \
              patches/kcoreaddons/0001-Fix-MINGW-build.patch \
+             patches/kcoreaddons/0001-Add-KAboutData-updateFromSettings.patch \
+             patches/kcoreaddons/0002-Draft-Add-KVerify-class-to-verify-files.patch \
              patches/ki18n/0001-Undef-snprintf-for-windows.patch \
              patches/kio/0001-WIP-Remove-dependency-to-dbus.patch \
              patches/kio/FileManagerWindowJob.patch \
@@ -85,7 +87,10 @@ EXTRA_DIST = autogen.rc autogen.sh README.GIT ONEWS \
              patches-appimage/poppler/fix-gpg-error-include.patch \
              patches-appimage/qtbase/CVE-2023-32763-qtbase-5.15.diff \
              patches-appimage/qtsvg/CVE-2023-32573-qtsvg-5.15.patch \
-             patches-appimage/qtwayland-5.15.0/00-disable-wayland-server.patch
+             patches-appimage/qtwayland-5.15.0/00-disable-wayland-server.patch \
+             patches-appimage/kcoreaddons/0001-Fix-MINGW-build.patch \
+             patches-appimage/kcoreaddons/0001-Add-KAboutData-updateFromSettings.patch \
+             patches-appimage/kcoreaddons/0002-Draft-Add-KVerify-class-to-verify-files.patch
 
 copy-news:
 	cp NEWS doc/website/NEWS.last

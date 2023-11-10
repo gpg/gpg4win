@@ -1,0 +1,204 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From 6826a1fc65fe52342008081af07b81aa7386b822 Mon Sep 17 00:00:00 2001
+From: Andre Heinecke <aheinecke@gnupg.org>
+Date: Fri, 10 Nov 2023 12:37:43 +0100
+Subject: [PATCH 2/2] Draft: Add KVerify class to verify files
+
+This currently uses gpgv to verify PGP signatures but
+could be extended to also do binary verification with
+elfsign on Linux and windows codesigning verification.
+
+It can be used for example to verify a custom about
+data file before loading it.
+
+GnuPG-Bug-Id: T6594
+---
+ src/lib/CMakeLists.txt   |   2 +
+ src/lib/util/kverify.cpp | 108 +++++++++++++++++++++++++++++++++++++++
+ src/lib/util/kverify.h   |  37 ++++++++++++++
+ 3 files changed, 147 insertions(+)
+ create mode 100644 src/lib/util/kverify.cpp
+ create mode 100644 src/lib/util/kverify.h
+
+diff --git a/src/lib/CMakeLists.txt b/src/lib/CMakeLists.txt
+index 6e8ea137..9879914e 100644
+--- a/src/lib/CMakeLists.txt
++++ b/src/lib/CMakeLists.txt
+@@ -149,6 +149,7 @@ target_sources(KF5CoreAddons PRIVATE
+     util/ksandbox.cpp
+     util/kmemoryinfo.cpp
+     util/kruntimeplatform.cpp
++    util/kverify.cpp
+
+     kaboutdata.h
+     kcoreaddons.h
+@@ -369,6 +370,7 @@ ecm_generate_headers(KCoreAddons_HEADERS
+         KRuntimePlatform
+         KSandbox
+         KMemoryInfo
++        KVerify
+     RELATIVE util
+     REQUIRED_HEADERS KCoreAddons_HEADERS
+ )
+diff --git a/src/lib/util/kverify.cpp b/src/lib/util/kverify.cpp
+new file mode 100644
+index 00000000..658ada06
+--- /dev/null
++++ b/src/lib/util/kverify.cpp
+@@ -0,0 +1,108 @@
++/*
++    KVerify - verify a file with GnuPG or Windows system tools
++
++    SPDX-FileCopyrightText: 2023 g10 Code GmbH
++    SPDX-FileContributor: Andre Heinecke <aheinecke@gnupg.org>
++
++    SPDX-License-Identifier: LGPL-2.0-or-later
++*/
++#include "kverify.h"
++
++#include <QFileInfo>
++#include <QProcess>
++#include <QStandardPaths>
++
++#include "kcoreaddons_debug.h"
++
++class KVerify::Private
++{
++public:
++    Private(KVerify *qq)
++        : q(qq)
++    {
++    }
++
++    void setGPGVSearchPaths(const QStringList &paths)
++    {
++        gpgvPath = QStandardPaths::findExecutable(QStringLiteral("gpgv"), paths);
++    }
++
++    void startGPGVerification(const QString &filePath, const QString &sigPath = QString(), const QString &keyring = QString())
++    {
++        if (gpgvPath.isEmpty()) {
++            gpgvPath = QStandardPaths::findExecutable(QStringLiteral("gpgv"));
++            if (gpgvPath.isEmpty()) {
++                qCDebug(KCOREADDONS_DEBUG) << "Could not find gpgv";
++                Q_EMIT q->verificationDone(false, QString(), QString());
++                return;
++            }
++        }
++
++        const QFileInfo verifyFi(filePath);
++        if (!verifyFi.isReadable()) {
++            // Pretty much the standard case for applications which do
++            // not ship custom signed files.
++            Q_EMIT q->verificationDone(false, QString(), QString());
++            return;
++        }
++
++        QFileInfo sigFi;
++        if (!sigPath.isEmpty()) {
++            sigFi.setFile(sigPath);
++        } else {
++            sigFi.setFile(sigPath + QStringLiteral(".sig"));
++        }
++
++        if (!sigFi.isReadable()) {
++            qCDebug(KCOREADDONS_DEBUG) << "No signature found at" << sigFi.absoluteFilePath();
++            Q_EMIT q->verificationDone(false, QString(), QString());
++            return;
++        }
++
++        auto process = new QProcess(q);
++        process->setProgram(gpgvPath);
++        QStringList args;
++        if (!keyring.isEmpty()) {
++            args << QStringLiteral("--keyring") << keyring;
++        }
++        args << QStringLiteral("--") << sigFi.absoluteFilePath() << verifyFi.absoluteFilePath();
++        process->setArguments(args);
++
++        QObject::connect(process, qOverload<int, QProcess::ExitStatus>(&QProcess::finished), [process, this](int exitCode, QProcess::ExitStatus exitStatus) {
++            const QString err = QString::fromUtf8(process->readAllStandardError());
++            const QString out = QString::fromUtf8(process->readAllStandardOutput());
++            if (exitStatus == QProcess::NormalExit && exitCode == 0) {
++                qCDebug(KCOREADDONS_DEBUG) << "verification successful";
++                Q_EMIT q->verificationDone(true, out, err);
++            } else {
++                Q_EMIT q->verificationDone(false, out, err);
++                qCDebug(KCOREADDONS_DEBUG) << "Stdout:" << out;
++                qCDebug(KCOREADDONS_DEBUG) << "Stderr:" << err;
++            }
++            process->deleteLater();
++        });
++
++        qCDebug(KCOREADDONS_DEBUG).nospace() << "Starting gpgv (" << process << ") with arguments " << process->arguments().join(QLatin1Char(' ')) << " ...";
++        process->start();
++    }
++    KVerify *const q;
++    QString gpgvPath;
++};
++
++void KVerify::startGPGVerification(const QString &filePath, const QString &sigPath, const QString &keyring)
++{
++    d->startGPGVerification(filePath, sigPath, keyring);
++}
++
++void KVerify::setGPGVSearchPaths(const QStringList &paths)
++{
++    d->setGPGVSearchPaths(paths);
++}
++
++KVerify::KVerify(QObject *parent)
++    : QObject(parent)
++    , d(new Private(this))
++{
++}
++
++#include "moc_kverify.cpp"
+diff --git a/src/lib/util/kverify.h b/src/lib/util/kverify.h
+new file mode 100644
+index 00000000..f374c936
+--- /dev/null
++++ b/src/lib/util/kverify.h
+@@ -0,0 +1,37 @@
++/*
++    KVerify - verify a file with GnuPG or Windows system tools
++
++    SPDX-FileCopyrightText: 2023 g10 Code GmbH
++    SPDX-FileContributor: Andre Heinecke <aheinecke@gnupg.org>
++
++    SPDX-License-Identifier: LGPL-2.0-or-later
++*/
++#pragma once
++
++#include <kcoreaddons_export.h>
++
++#include <QObject>
++#include <memory>
++
++class QString;
++class QStringList;
++
++class KCOREADDONS_EXPORT KVerify : public QObject
++{
++    Q_OBJECT
++
++public:
++    explicit KVerify(QObject *parent = nullptr);
++    ~KVerify() = default;
++
++    void setGPGVSearchPaths(const QStringList &paths);
++
++    void startGPGVerification(const QString &filePath, const QString &sigPath = QString(), const QString &keyring = QString());
++Q_SIGNALS:
++    /** Emitted when the verification is done. */
++    void verificationDone(bool valid, const QString &stdOutput, const QString &errorOutput);
++
++private:
++    class Private;
++    std::unique_ptr<Private> d;
++};
+--
+2.42.1

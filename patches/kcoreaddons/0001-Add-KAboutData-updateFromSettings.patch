@@ -1,0 +1,94 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From 083150215ed1c0341d53a73b8db75baa86dde7f8 Mon Sep 17 00:00:00 2001
+From: Andre Heinecke <aheinecke@gnupg.org>
+Date: Fri, 10 Nov 2023 12:18:39 +0100
+Subject: [PATCH 1/2] Add KAboutData::updateFromSettings
+
+This allows distributions to ship a custom about data
+file with software that supports it to update their about
+data. A common usecase for that would be to change the bug
+reporting URL in case they heavily patched it or in our
+case ship a windows distribution that differs far from an
+upstream windows distribution with regards to optional
+depdendencies.
+
+GnuPG-Bug-Id: T6594
+---
+ src/lib/kaboutdata.cpp | 20 ++++++++++++++++++++
+ src/lib/kaboutdata.h   | 13 +++++++++++++
+ 2 files changed, 33 insertions(+)
+
+diff --git a/src/lib/kaboutdata.cpp b/src/lib/kaboutdata.cpp
+index fcf8eb9e..8fef0b0a 100644
+--- a/src/lib/kaboutdata.cpp
++++ b/src/lib/kaboutdata.cpp
+@@ -23,6 +23,7 @@
+ #include <QJsonObject>
+ #include <QList>
+ #include <QLoggingCategory>
++#include <QSettings>
+ #include <QSharedData>
+ #include <QStandardPaths>
+ #include <QTextStream>
+@@ -1056,6 +1057,25 @@ QString KAboutData::desktopFileName() const
+ #endif
+ }
+
++KAboutData &KAboutData::updateFromSettings(const QSettings *settings)
++{
++    if (!settings) {
++        return *this;
++    }
++    d->_displayName = settings->value(QStringLiteral("displayName"), d->_displayName).toString();
++    d->productName = settings->value(QStringLiteral("productName"), d->productName).toByteArray();
++    d->_componentName = settings->value(QStringLiteral("componentName"), d->_componentName).toString();
++    d->_shortDescription = settings->value(QStringLiteral("shortDescription"), d->_shortDescription).toString();
++    d->_homepageAddress = settings->value(QStringLiteral("homepage"), d->_homepageAddress).toString();
++    d->_bugAddress = settings->value(QStringLiteral("bugAddress"), d->_bugAddress).toByteArray();
++    d->_version = settings->value(QStringLiteral("version"), d->_version).toByteArray();
++    d->_otherText = settings->value(QStringLiteral("otherText"), d->_otherText).toString();
++    d->_copyrightStatement = settings->value(QStringLiteral("copyrightStatement"), d->_copyrightStatement).toString();
++    d->desktopFileName = settings->value(QStringLiteral("desktopFileName"), d->desktopFileName).toString();
++
++    return *this;
++}
++
+ class KAboutDataRegistry
+ {
+ public:
+diff --git a/src/lib/kaboutdata.h b/src/lib/kaboutdata.h
+index a0d4a4f7..41f4a7ad 100644
+--- a/src/lib/kaboutdata.h
++++ b/src/lib/kaboutdata.h
+@@ -25,6 +25,7 @@ class QCommandLineParser;
+ class QJsonObject;
+ class KAboutData;
+ class KPluginMetaData;
++class QSettings;
+ namespace KCrash
+ {
+ #ifdef KCOREADDONS_STATIC
+@@ -1310,6 +1311,18 @@ public:
+      */
+     KAboutData &unsetCustomAuthorText();
+
++    /**
++     * Updates all properties available properties from the @p settings object.
++     * This can be used by by distributors that heavily modify optional dependencies
++     * to make it clear that this is not the "real" version of an application by
++     * including a custom settings file in their distribution.
++     *
++     * Note that this does not modify:
++     * authors, credits, translators, components and licenses.
++     * @since never
++     * */
++    KAboutData &updateFromSettings(const QSettings *settings);
++
+     /**
+      * Configures the @p parser command line parser to provide an authors entry with
+      * information about the developers of the application and an entry specifying the license.
+--
+2.42.1
