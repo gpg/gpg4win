@@ -255,7 +255,7 @@ while read key value ; do
            if [ "$update" = "yes" ]; then
                pkg=$(echo "$value" | cut -d- -f1)
                pkg2=$(echo "$value" | cut -d- -f2)
-               if [ "$pkg2" == "w32" -o "$pkg2" == "msi" ]; then
+               if [ "$pkg2" = "w32" -o "$pkg2" = "msi" ]; then
                    pkg=$(echo $pkg-$pkg2);
                fi
                pkgsuffix=$(echo "$name" | rev | cut -d. -f1 | rev)
