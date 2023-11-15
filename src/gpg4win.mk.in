@@ -1009,6 +1009,7 @@ installers/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1).msi: $(stampdir)/stamp-msi-
 	-reusecab \
 	-spdb \
 	-ext WixUIExtension \
+	-ext WixUtilExtension \
 	-out $$($(1)_PRODUCT)-$(VERSION)-$(1).msi \
 	 $(call GETVAR,msi_target_$(1)_l10n) \
 	-dcl:high \
@@ -1037,6 +1038,7 @@ installers/$$($(1)_PRODUCT)-$(VSD_VERSION_FILE)-$(1)-x86.msi: $(stampdir)/stamp-
 	-reusecab \
 	-spdb \
 	-ext WixUIExtension \
+	-ext WixUtilExtension \
 	-out $$($(1)_PRODUCT)-$(VERSION)-$(1)-x86.msi \
 	 $(call GETVAR,msi_target_$(1)_l10n) \
 	-dcl:high \
