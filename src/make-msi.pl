@@ -2083,6 +2083,21 @@ print <<EOF;
 
     <WixVariable Id="WixUILicenseRtf" Value="license.rtf" />
 
+    <!-- We always want our REINSTALLMODE to be amus, so to replace all files.
+         But maybe some SCM wants to set this manually and hardcoding it creates
+         a warning. So we only set it if it is not already set.
+
+         For documentation what amus is vs. the default omus see:
+         https://learn.microsoft.com/en-us/windows/win32/msi/reinstallmode
+
+         a: Always replace everything.
+         o: Reinstall if the file is missing or is an older version.
+         It seems to be a common problem that with "o" files are uninstalled
+         during an upgrade but not actually reinstalled.
+         https://stackoverflow.com/questions/70882621/msi-with-wix-setting-reinstallmode-amus-triggers-lght1076-ice40-reinstallm
+    -->
+    <SetProperty Id="REINSTALLMODE" Value="amus" Before="FindRelatedProducts" Sequence="first">NOT REINSTALLMODE</SetProperty>
+
     <!-- This is the main installer sequence run when the product is actually installed -->
     <InstallExecuteSequence>
 
