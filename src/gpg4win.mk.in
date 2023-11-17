@@ -978,6 +978,7 @@ gnupg-vsd/$(1)/VERSION: gnupg-vsd/custom.mk $(stampdir)/stamp-betanum
 	echo "otherText=$(call GETVAR,msi_target_$(1)_DESC_SHORT)" >> gnupg-vsd/$(1)/VERSION
 	echo "bugAddress=$(VSD_BUG_REPORT)" >> gnupg-vsd/$(1)/VERSION
 	echo "homepage=$(VSD_HOMEPAGE)" >> gnupg-vsd/$(1)/VERSION
+	echo "" >> gnupg-vsd/$(1)/VERSION
 	echo "[Okular]" >> gnupg-vsd/$(1)/VERSION
 	if [ "$(call GETVAR,msi_target_$(1)_VERSION)" = "VS-Desktop-$(VSD_VERSION)" ]; then \
 		echo "version=VS-Desktop-$(VSD_VERSION_FILE)" >> gnupg-vsd/$(1)/VERSION; \
