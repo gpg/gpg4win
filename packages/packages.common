@@ -513,18 +513,18 @@ chk 441bbb3c13cb535a216feb411ffe5925f4ca668a679c3cc1c4260c2bf406baec
 server https://gnupg.org/ftp/gcrypt/snapshots
 
 # gpgme
-# last changed: 2023-11-10
+# last changed: 2023-11-17
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file gpgme/gpgme-1.23.2-beta7.tar.xz
-chk e8c03087db2ec7d2603c4b16a9eeba68860412f01a8aa08bec99ea7fc7f8ecb0
+file gpgme/gpgme-1.23.2-beta11.tar.xz
+chk b8df15d9b757b606280c7beb3a92afa6b6d1e0543ae7c9619ed5c7195cb60fd8
 
 # gpgol
-# last changed: 2023-11-10
+# last changed: 2023-11-17
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file gpgol/gpgol-2.5.10-beta21.tar.xz
-chk 6bcf11e866a546439bf214132eb7a7a77dcfade590199252acf0e8bfc545e6e6
+file gpgol/gpgol-2.5.10-beta22.tar.xz
+chk df5046dfe9c44dbbbb5891afe0c064ef8f94b60b686679355274415717be1cc2
 
 # gpgex
 # last changed: 2022-12-06
@@ -541,25 +541,25 @@ file gpg4win-tools/gpg4win-tools-202311061306.tar.xz
 chk 15d1cf63bfc1207956110e1dc7613dc3748e07cb30cef15c7250dcfa4030ca0c
 
 # mimetreeparser
-# last changed: 2023-11-10
+# last changed: 2023-11-17
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file mimetreeparser/mimetreeparser-202311101744.tar.xz
-chk 1b274642450a257e66f6c01871245a75c9d34dc3027ae0f5ea4b27f4cac08cdc
+file mimetreeparser/mimetreeparser-202311171826.tar.xz
+chk 547518e4e832276dee32efef071ec13f5e95f20976aff44570c3844dcefdaa60
 
 # libkleo
-# last changed: 2023-11-10
+# last changed: 2023-11-17
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file libkleo/libkleo-202311101744.tar.xz
-chk d64265d81383212b964b5f382920776ec59cbaf89aeab41f1e85a181d8dc4e46
+file libkleo/libkleo-202311171828.tar.xz
+chk 26b9cd3a2f1136c84751b2af6acd6f0c963aaec4de2112597d5522db8dffa887
 
 # kleopatra
-# last changed: 2023-11-10
+# last changed: 2023-11-17
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file kleopatra/kleopatra-202311101744.tar.xz
-chk 3121c707c0aab72aade4af23b21de9cf6bf10a845c97741e0d65c980878b2e46
+file kleopatra/kleopatra-202311171943.tar.xz
+chk 3f419734005ac964dbc70d5427aac665ec58d59acfd57f9cfce2a7e00742791f
 
 # Okular and dependencies
 # poppler
