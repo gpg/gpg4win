@@ -116,16 +116,20 @@ if [ "${is_gpg}" == "yes" ]; then
     cp ${tmpdir}/${snapshotdir}/${tarball} ${olddir}
     cd ${olddir}
 else
+    olddir=$(pwd)
+    echo "Archiving $branch.."
+    cd ${tmpdir}/${snapshotdir}
+    git checkout $branch
     if [ "$custom_l10n" != "no" ]; then
         echo "Downloading german translations from ${custom_l10n}"
         svn export --force svn://anonsvn.kde.org/home/kde/trunk/${custom_l10n}/messages/${package}/${package}.po \
-            ${tmpdir}/${snapshotdir}/po/de/${package}.po
-        (cd ${tmpdir}/${snapshotdir} && git add po && git commit -m "Add latest german translation")
+            po/de/${package}.po
+        git add po
+        git commit -m "Add latest german translation"
     fi
-    echo "Archiving $branch.."
-    (cd ${tmpdir}/${snapshotdir} && \
-    git archive --format tar.xz --prefix=${snapshotdir}/ "origin/$branch") > ${tarball} || \
-      (echo "Failed to archive tarball. Is tar.xz configured?: git config --global tar.tar.xz.command \"xz -c\"" && exit 1)
+    git archive --format tar.xz --prefix=${snapshotdir}/ "${branch}" > ${tarball}
+    cp ${tmpdir}/${snapshotdir}/${tarball} ${olddir}
+    cd ${olddir}
 fi
 checksum=$(sha256sum ${tarball} | cut -d ' ' -f 1)
 
