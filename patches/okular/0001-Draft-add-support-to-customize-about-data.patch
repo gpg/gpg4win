@@ -1,0 +1,52 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From 36ceed81a96dffe07f325e6729cf389871ebc1dc Mon Sep 17 00:00:00 2001
+From: Andre Heinecke <aheinecke@gnupg.org>
+Date: Fri, 17 Nov 2023 17:53:15 +0100
+Subject: [PATCH] Draft: add support to customize about data
+
+Since Okular can be built with many optional dependencies
+it might make sense for distributiors to leave a note that
+this might be a restricted / specialized version of Okular
+and where a full featured okular could be obtained.
+
+This patch relies on an extension of KAboutData so it is
+currently only meant as a patch.
+---
+ aboutdata.h | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/aboutdata.h b/aboutdata.h
+index 90cfa9532..af89d9b59 100644
+--- a/aboutdata.h
++++ b/aboutdata.h
+@@ -11,6 +11,12 @@
+
+ #include "core/version.h"
+
++#include <QSettings>
++#include <QCoreApplication>
++#include <QTextCodec>
++
++#include <QDebug>
++
+ #include <KLocalizedString>
+
+ inline KAboutData okularAboutData()
+@@ -37,6 +43,12 @@ inline KAboutData okularAboutData()
+     about.addCredit(i18n("Jiri Baum - NICTA"), i18n("Table selection tool"), QStringLiteral("jiri@baum.com.au"));
+     about.addCredit(i18n("Fabio D'Urso"), i18n("Annotation improvements"), QStringLiteral("fabiodurso@hotmail.it"));
+
++    const QString customFile = QCoreApplication::applicationDirPath() + QStringLiteral("/../VERSION");
++    QSettings customSettings(customFile, QSettings::IniFormat);
++    customSettings.setIniCodec(QTextCodec::codecForName("UTF-8"));
++    customSettings.beginGroup(QStringLiteral("Okular"));
++    about = about.updateFromSettings(&customSettings);
++
+     return about;
+ }
+
+--
+2.42.1

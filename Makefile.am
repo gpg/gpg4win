@@ -75,7 +75,7 @@ EXTRA_DIST = autogen.rc autogen.sh README.GIT ONEWS \
              patches/kio/FileManagerWindowJob.patch \
              patches/okular/lower-cmake-requirement.patch \
              patches/okular/0001-Add-GnuPG-specific-manifest-to-okular.patch \
-             patches/okular/0001-Hack-in-some-aboutdata-for-GnuPG-Edition.patch \
+             patches/okular/0001-Draft-add-support-to-customize-about-data.patch \
              patches/kparts/0001-Apply-implicit-android-DBUS-fix-for-Win.patch \
              patches/kparts/disable-jobuidelegate.patch \
              patches/sonnet/0001-W32-Force-ispellchecker-for-sonnet.patch \
@@ -84,7 +84,7 @@ EXTRA_DIST = autogen.rc autogen.sh README.GIT ONEWS \
              patches-appimage/kleopatra/0001-DRAFT-Rework-aboutdata-to-use-a-settings-file.patch \
              patches-appimage/libkleo/gpg4win-check.patch \
              patches-appimage/okular/0001-Make-KF5Pty-dependency-optional.patch \
-             patches-appimage/okular/0001-Hack-in-some-aboutdata-for-GnuPG-Edition.patch \
+             patches-appimage/okular/0001-Draft-add-support-to-customize-about-data.patch \
              patches-appimage/okular/lower-cmake-requirement.patch \
              patches-appimage/poppler/fix-gpg-error-include.patch \
              patches-appimage/qtbase/CVE-2023-32763-qtbase-5.15.diff \
