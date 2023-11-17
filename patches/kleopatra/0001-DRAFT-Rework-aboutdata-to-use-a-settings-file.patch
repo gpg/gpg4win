@@ -282,5 +282,32 @@ index a836bf37f..4bb8c62e5 100644
      // Disable whats this as the vast majority of things does not have whats this
      // set in Kleopatra.
  #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+diff --git a/src/view/welcomewidget.cpp b/src/view/welcomewidget.cpp
+index e7dcbef20..808df2259 100644
+--- a/src/view/welcomewidget.cpp
++++ b/src/view/welcomewidget.cpp
+@@ -13,8 +13,7 @@
+
+ #include "htmllabel.h"
+
+-#include <Libkleo/GnuPG>
+-#include <version-kleopatra.h>
++#include <KAboutData>
+
+ #include <QAction>
+ #include <QHBoxLayout>
+@@ -115,11 +114,7 @@ public:
+
+         const QString welcome = i18nc("%1 is version",
+                                       "Welcome to Kleopatra %1",
+-#ifdef Q_OS_WIN
+-                                      Kleo::gpg4winVersion());
+-#else
+-                                      QStringLiteral(KLEOPATRA_VERSION_STRING));
+-#endif
++                                      KAboutData::applicationData().version());
+         const QString introduction = i18n("Kleopatra is a front-end for the crypto software <a href=\"https://gnupg.org\">GnuPG</a>.");
+
+         const QString keyExplanation = i18n("For most actions you need either a public key (certificate) or your own private key.");
 --
 2.42.1
