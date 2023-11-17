@@ -68,7 +68,7 @@ case ${package} in
     kleopatra)
         repo=https://invent.kde.org/pim/${package}.git
         branch="gpg4win/23.10"
-        custom_l10n="l10n-kf5"
+        custom_l10n="l10n-support/de/summit"
         ;;
     libkleo)
         repo=https://invent.kde.org/pim/${package}.git
@@ -118,7 +118,7 @@ if [ "${is_gpg}" == "yes" ]; then
 else
     if [ "$custom_l10n" != "no" ]; then
         echo "Downloading german translations from ${custom_l10n}"
-        svn export --force svn://anonsvn.kde.org/home/kde/trunk/${custom_l10n}/de/messages/${package}/${package}.po \
+        svn export --force svn://anonsvn.kde.org/home/kde/trunk/${custom_l10n}/messages/${package}/${package}.po \
             ${tmpdir}/${snapshotdir}/po/de/${package}.po
         (cd ${tmpdir}/${snapshotdir} && git add po && git commit -m "Add latest german translation")
     fi
