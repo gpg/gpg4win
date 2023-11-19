@@ -520,11 +520,11 @@ file gpgme/gpgme-1.23.2-beta11.tar.xz
 chk b8df15d9b757b606280c7beb3a92afa6b6d1e0543ae7c9619ed5c7195cb60fd8
 
 # gpgol
-# last changed: 2023-11-17
+# last changed: 2023-11-19
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file gpgol/gpgol-2.5.10-beta22.tar.xz
-chk df5046dfe9c44dbbbb5891afe0c064ef8f94b60b686679355274415717be1cc2
+file gpgol/gpgol-2.5.10-beta23.tar.xz
+chk 839f6781537769f695fb96c000eac66466c499fdef8654e9622bff310812218b
 
 # gpgex
 # last changed: 2022-12-06
