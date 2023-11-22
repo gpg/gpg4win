@@ -109,10 +109,6 @@ msgctxt "T_MoreInfoURL"
 msgid "https://www.gpg4win.org"
 msgstr "https://www.gpg4win.org"
 
-msgctxt "T_ShowReadme"
-msgid "Show the README file"
-msgstr "顯示 README 檔案"
-
 msgctxt "T_NoKeyManager"
 msgid "No key manager has been installed, thus we can't run one now."
 msgstr "沒有安裝任何金鑰管理器，因此無法啟動金鑰管理器。"
@@ -413,6 +409,10 @@ msgstr ""
 msgctxt "DESC_Menu_okular"
 msgid "Run the Okular PDF viewer to sign and verify documents with GnuPG."
 msgstr ""
+
+#~ msgctxt "T_ShowReadme"
+#~ msgid "Show the README file"
+#~ msgstr "顯示 README 檔案"
 
 #~ msgctxt "DESC_SEC_gpa"
 #~ msgid "GNU Privacy Assistant"

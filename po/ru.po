@@ -117,10 +117,6 @@ msgctxt "T_MoreInfoURL"
 msgid "https://www.gpg4win.org"
 msgstr "https://www.gpg4win.org"
 
-msgctxt "T_ShowReadme"
-msgid "Show the README file"
-msgstr "Показать файл README"
-
 msgctxt "T_NoKeyManager"
 msgid "No key manager has been installed, thus we can't run one now."
 msgstr "Ошибка запуска менеджера ключей: ни один из менеджеров не установлен."
@@ -431,6 +427,10 @@ msgstr ""
 msgctxt "DESC_Menu_okular"
 msgid "Run the Okular PDF viewer to sign and verify documents with GnuPG."
 msgstr ""
+
+#~ msgctxt "T_ShowReadme"
+#~ msgid "Show the README file"
+#~ msgstr "Показать файл README"
 
 #~ msgctxt "DESC_SEC_gpa"
 #~ msgid "GNU Privacy Assistant"
