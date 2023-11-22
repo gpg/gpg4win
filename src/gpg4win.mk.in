@@ -978,6 +978,7 @@ gnupg-vsd/$(1)/VERSION: gnupg-vsd/custom.mk $(stampdir)/stamp-betanum
 	echo "otherText=$(call GETVAR,msi_target_$(1)_DESC_SHORT)" >> gnupg-vsd/$(1)/VERSION
 	echo "bugAddress=$(VSD_BUG_REPORT)" >> gnupg-vsd/$(1)/VERSION
 	echo "homepage=$(VSD_HOMEPAGE)" >> gnupg-vsd/$(1)/VERSION
+	echo "copyrightStatement=<pre><pre/>" >> gnupg-vsd/$(1)/VERSION
 	if [ -n "$(call GETVAR,msi_target_$(1)_statusline)" ]; then \
 		echo "statusline=$(call GETVAR,msi_target_$(1)_statusline)" >> gnupg-vsd/$(1)/VERSION; \
 	fi

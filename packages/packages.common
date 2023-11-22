@@ -520,11 +520,11 @@ file gpgme/gpgme-1.23.2-beta11.tar.xz
 chk b8df15d9b757b606280c7beb3a92afa6b6d1e0543ae7c9619ed5c7195cb60fd8
 
 # gpgol
-# last changed: 2023-11-19
+# last changed: 2023-11-21
 # by: aheinecke
 # verified: Tarball created by aheinecke.
 file gpgol/gpgol-2.5.10-beta23.tar.xz
-chk 839f6781537769f695fb96c000eac66466c499fdef8654e9622bff310812218b
+chk 4582dd9d6c5f80018cd60102edf828d3e4fed159364af5fa8214a8fb17229b9a
 
 # gpgex
 # last changed: 2022-12-06
@@ -534,32 +534,32 @@ file gpgex/gpgex-1.0.10-beta5.tar.xz
 chk 2c227634528ef76bcca7fd4b7fe5c38a535f6e68bbe5b2cdc6cc4a74810b2dba
 
 # gpg4win-tools
-# last changed: 2023-11-06
+# last changed: 2023-11-21
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file gpg4win-tools/gpg4win-tools-202311061306.tar.xz
-chk 15d1cf63bfc1207956110e1dc7613dc3748e07cb30cef15c7250dcfa4030ca0c
+file gpg4win-tools/gpg4win-tools-202311210840.tar.xz
+chk 312e90d9073e6409426db7d603e67b1430256131d9d652da15ac2a27ca5658d3
 
 # mimetreeparser
-# last changed: 2023-11-17
+# last changed: 2023-11-22
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file mimetreeparser/mimetreeparser-202311171826.tar.xz
-chk 547518e4e832276dee32efef071ec13f5e95f20976aff44570c3844dcefdaa60
+file mimetreeparser/mimetreeparser-202311221602.tar.xz
+chk 2719ea0cbbddeb33cd37c8165848be37059f35c8332bfc1f70bc00db07605bd5
 
 # libkleo
-# last changed: 2023-11-17
+# last changed: 2023-11-22
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file libkleo/libkleo-202311171828.tar.xz
-chk 26b9cd3a2f1136c84751b2af6acd6f0c963aaec4de2112597d5522db8dffa887
+file libkleo/libkleo-202311221603.tar.xz
+chk 971f4cd35a7d02a5a374a9652ff4b2236f30dda02c98307960cabe42cd7c776a
 
 # kleopatra
-# last changed: 2023-11-17
+# last changed: 2023-11-22
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file kleopatra/kleopatra-202311172223.tar.xz
-chk 874c1bfc5fb17980be771b088d2898663732225fc4f8ea39088572a5549bc287
+file kleopatra/kleopatra-202311221602.tar.xz
+chk 6cd2a28927951a09a509df436bb11307eb40ed2bf6cd4a3b7a2efca8a68898f8
 
 # Okular and dependencies
 # poppler
@@ -570,8 +570,8 @@ file poppler/poppler-202309080910.tar.xz
 chk 2ca1273a6ef9ce00e9bc886b0864ef02b88f4df2525922e1ac322ce7360e6621
 
 # okular
-# last changed: 2023-10-25
+# last changed: 2023-11-22
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file okular/okular-202310251549.tar.xz
-chk 429c40e1cf7cb890041745bb86b8ce2850e94f82a3744805bcd849d1d928aa95
+file okular/okular-202311221749.tar.xz
+chk 205df68c183900a1b21d1381d9a3d7554a642fa6dd3ef7e9bc5bbcfcd0aa8f1b
