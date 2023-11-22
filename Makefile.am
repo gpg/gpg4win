@@ -55,6 +55,7 @@ EXTRA_DIST = autogen.rc autogen.sh README.GIT ONEWS \
              patches/kiconthemes/dark-mode-detection.patch \
              patches/kleopatra/set-windows-registry.patch \
              patches/kleopatra/0001-Make-KCMUtils-optional.patch \
+             patches/kleopatra/0001-Revert-Change-threading-blocking-when-loading-aboutd.patch \
              patches/kwidgetsaddons/0001-Set-the-modes-on-the-date-picker.patch \
              patches/kwidgetsaddons/0002-Remove-No-date-option-from-date-picker-popup-used-by.patch \
              patches/kxmlgui/0001-make-qdbus-optional.patch \
@@ -80,6 +81,7 @@ EXTRA_DIST = autogen.rc autogen.sh README.GIT ONEWS \
              patches/sonnet/0001-W32-Force-ispellchecker-for-sonnet.patch \
              patches/jpeg/fix-redefine.patch \
              patches-appimage/kleopatra/0001-Make-KCMUtils-optional.patch \
+             patches-appimage/kleopatra/0001-Revert-Change-threading-blocking-when-loading-aboutd.patch \
              patches-appimage/libkleo/gpg4win-check.patch \
              patches-appimage/okular/0001-Make-KF5Pty-dependency-optional.patch \
              patches-appimage/okular/0001-Add-support-to-customize-about-data.patch \
