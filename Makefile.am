@@ -61,11 +61,13 @@ EXTRA_DIST = autogen.rc autogen.sh README.GIT ONEWS \
              patches/kxmlgui/0001-make-qdbus-optional.patch \
              patches/kxmlgui/0004-Cruedly-disable-KSendbugmail.patch \
              patches/libical/workaround-weird-mingw-10.0.0-issue.patch \
-             patches/qtbase/0001-Fix-build-without-std-thread.patch \
+             patches/qtsvg/CVE-2023-32573-qtsvg-5.15.patch \
              patches/qtbase/0001-Gpg4win-qstandardpaths-patch.patch \
              patches/qtbase/0002-Gpg4win-theme-names-and-relpaths.patch \
-             patches/qtsvg/CVE-2023-32573-qtsvg-5.15.patch \
-             patches/qtbase/CVE-2023-32763-qtbase-5.15.diff \
+             patches/qtbase/add-kleopatras-mime-types.patch \
+             patches/qtbase/CVE-2023-32763-qtbase-5.15.patch \
+             patches/qtbase/CVE-2023-37369-qtbase-5.15.patch \
+             patches/qtbase/CVE-2023-43114-5.15.patch \
              patches/qttools/disable-most-tools.patch \
              patches/kcoreaddons/0001-Fix-MINGW-build.patch \
              patches/kcoreaddons/0001-Add-KAboutData-updateFromSettings.patch \
@@ -87,7 +89,10 @@ EXTRA_DIST = autogen.rc autogen.sh README.GIT ONEWS \
              patches-appimage/okular/0001-Draft-add-support-to-customize-about-data.patch \
              patches-appimage/okular/lower-cmake-requirement.patch \
              patches-appimage/poppler/fix-gpg-error-include.patch \
-             patches-appimage/qtbase/CVE-2023-32763-qtbase-5.15.diff \
+             patches-appimage/qtbase/CVE-2023-32763-qtbase-5.15.patch \
+             patches-appimage/qtbase/CVE-2023-37369-qtbase-5.15.patch \
+             patches-appimage/qtbase/CVE-2023-43114-5.15.patch \
+             patches-appimage/qtbase/add-kleopatras-mime-types.patch \
              patches-appimage/qtsvg/CVE-2023-32573-qtsvg-5.15.patch \
              patches-appimage/qtwayland-5.15.0/00-disable-wayland-server.patch \
              patches-appimage/kcoreaddons/0001-Fix-MINGW-build.patch \
