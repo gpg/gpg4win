@@ -1,0 +1,73 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From 46a90c0f6c5a4738ef7523bbeb8a86af813bd14e Mon Sep 17 00:00:00 2001
+From: Andre Heinecke <aheinecke@gnupg.org>
+Date: Wed, 22 Nov 2023 14:58:53 +0100
+Subject: [PATCH] Add support to customize about data
+
+Since Okular can be built with many optional dependencies
+it might make sense for distributiors to leave a note that
+this might be a restricted / specialized version of Okular
+and where a full featured okular could be obtained.
+---
+ aboutdata.h | 34 +++++++++++++++++++++++++++++++++-
+ 1 file changed, 33 insertions(+), 1 deletion(-)
+
+diff --git a/aboutdata.h b/aboutdata.h
+index 90cfa9532..e74981d71 100644
+--- a/aboutdata.h
++++ b/aboutdata.h
+@@ -11,8 +11,33 @@
+
+ #include "core/version.h"
+
++#include <QSettings>
++#include <QCoreApplication>
++#include <QTextCodec>
++
++#include <QDebug>
++
+ #include <KLocalizedString>
+
++inline void updateAboutDataFromSettings(const QSettings *settings)
++{
++    if (!settings) {
++        return;
++    }
++    auto about = KAboutData::applicationData();
++    about.setDisplayName(settings->value(QStringLiteral("displayName"), about.displayName()).toString());
++    about.setProductName(settings->value(QStringLiteral("productName"), about.productName()).toByteArray());
++    about.setComponentName(settings->value(QStringLiteral("componentName"), about.componentName()).toString());
++    about.setShortDescription(settings->value(QStringLiteral("shortDescription"), about.shortDescription()).toString());
++    about.setHomepage(settings->value(QStringLiteral("homepage"), about.homepage()).toString());
++    about.setBugAddress(settings->value(QStringLiteral("bugAddress"), about.bugAddress()).toByteArray());
++    about.setVersion(settings->value(QStringLiteral("version"), about.version()).toByteArray());
++    about.setOtherText(settings->value(QStringLiteral("otherText"), about.otherText()).toString());
++    about.setCopyrightStatement(settings->value(QStringLiteral("copyrightStatement"), about.copyrightStatement()).toString());
++    about.setDesktopFileName(settings->value(QStringLiteral("desktopFileName"), about.desktopFileName()).toString());
++    KAboutData::setApplicationData(about);
++}
++
+ inline KAboutData okularAboutData()
+ {
+     KAboutData about(QStringLiteral("okular"),
+@@ -37,7 +62,14 @@ inline KAboutData okularAboutData()
+     about.addCredit(i18n("Jiri Baum - NICTA"), i18n("Table selection tool"), QStringLiteral("jiri@baum.com.au"));
+     about.addCredit(i18n("Fabio D'Urso"), i18n("Annotation improvements"), QStringLiteral("fabiodurso@hotmail.it"));
+
+-    return about;
++    const QString customFile = QCoreApplication::applicationDirPath() + QStringLiteral("/../VERSION");
++    QSettings customSettings(customFile, QSettings::IniFormat);
++    customSettings.setIniCodec(QTextCodec::codecForName("UTF-8"));
++    customSettings.beginGroup(QStringLiteral("Okular"));
++    KAboutData::setApplicationData(about);
++    updateAboutDataFromSettings(&customSettings);
++
++    return KAboutData::applicationData();
+ }
+
+ #endif
+--
+2.42.1

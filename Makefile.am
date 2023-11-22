@@ -55,7 +55,6 @@ EXTRA_DIST = autogen.rc autogen.sh README.GIT ONEWS \
              patches/kiconthemes/dark-mode-detection.patch \
              patches/kleopatra/set-windows-registry.patch \
              patches/kleopatra/0001-Make-KCMUtils-optional.patch \
-             patches/kleopatra/0001-DRAFT-Rework-aboutdata-to-use-a-settings-file.patch \
              patches/kwidgetsaddons/0001-Set-the-modes-on-the-date-picker.patch \
              patches/kwidgetsaddons/0002-Remove-No-date-option-from-date-picker-popup-used-by.patch \
              patches/kxmlgui/0001-make-qdbus-optional.patch \
@@ -70,23 +69,20 @@ EXTRA_DIST = autogen.rc autogen.sh README.GIT ONEWS \
              patches/qtbase/CVE-2023-43114-5.15.patch \
              patches/qttools/disable-most-tools.patch \
              patches/kcoreaddons/0001-Fix-MINGW-build.patch \
-             patches/kcoreaddons/0001-Add-KAboutData-updateFromSettings.patch \
-             patches/kcoreaddons/0002-Draft-Add-KVerify-class-to-verify-files.patch \
              patches/ki18n/0001-Undef-snprintf-for-windows.patch \
              patches/kio/0001-WIP-Remove-dependency-to-dbus.patch \
              patches/kio/FileManagerWindowJob.patch \
              patches/okular/lower-cmake-requirement.patch \
              patches/okular/0001-Add-GnuPG-specific-manifest-to-okular.patch \
-             patches/okular/0001-Draft-add-support-to-customize-about-data.patch \
+             patches/okular/0001-Add-support-to-customize-about-data.patch \
              patches/kparts/0001-Apply-implicit-android-DBUS-fix-for-Win.patch \
              patches/kparts/disable-jobuidelegate.patch \
              patches/sonnet/0001-W32-Force-ispellchecker-for-sonnet.patch \
              patches/jpeg/fix-redefine.patch \
              patches-appimage/kleopatra/0001-Make-KCMUtils-optional.patch \
-             patches-appimage/kleopatra/0001-DRAFT-Rework-aboutdata-to-use-a-settings-file.patch \
              patches-appimage/libkleo/gpg4win-check.patch \
              patches-appimage/okular/0001-Make-KF5Pty-dependency-optional.patch \
-             patches-appimage/okular/0001-Draft-add-support-to-customize-about-data.patch \
+             patches-appimage/okular/0001-Add-support-to-customize-about-data.patch \
              patches-appimage/okular/lower-cmake-requirement.patch \
              patches-appimage/poppler/fix-gpg-error-include.patch \
              patches-appimage/qtbase/CVE-2023-32763-qtbase-5.15.patch \
@@ -94,10 +90,7 @@ EXTRA_DIST = autogen.rc autogen.sh README.GIT ONEWS \
              patches-appimage/qtbase/CVE-2023-43114-5.15.patch \
              patches-appimage/qtbase/add-kleopatras-mime-types.patch \
              patches-appimage/qtsvg/CVE-2023-32573-qtsvg-5.15.patch \
-             patches-appimage/qtwayland-5.15.0/00-disable-wayland-server.patch \
-             patches-appimage/kcoreaddons/0001-Fix-MINGW-build.patch \
-             patches-appimage/kcoreaddons/0001-Add-KAboutData-updateFromSettings.patch \
-             patches-appimage/kcoreaddons/0002-Draft-Add-KVerify-class-to-verify-files.patch
+             patches-appimage/qtwayland-5.15.0/00-disable-wayland-server.patch
 
 copy-news:
 	cp NEWS doc/website/NEWS.last
