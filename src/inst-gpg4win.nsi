@@ -123,6 +123,9 @@ skip_uninst:
 
   SetOutPath "$INSTDIR\bin_64"
   File /nonfatal /oname=libwinpthread-1.dll "${BUILD_DIR}/libwinpthread-1.dll-x64"
+
+  SetOutPath "$INSTDIR"
+  File /oname=pkg-licenses.txt "${SRCDIR}/../doc/pkg-copyright.txt"
 !endif
 
 SectionEnd

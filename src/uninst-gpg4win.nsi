@@ -45,6 +45,8 @@ Section "-un.gpg4win"
 
   Delete "$INSTDIR\VERSION"
 
+  Delete "$INSTDIR\pkg-licenses.txt"
+
   RMDir "$INSTDIR\share\gpg4win"
 
   # Remove the locale directories.

@@ -2296,14 +2296,24 @@ print <<EOF;
       <!-- Hardcode some components that always should be installed -->
 
       <!-- List comes from ICE21 and was transformed by see: comment above -->
+      <!-- sha1sum.exe -->
       <ComponentRef Id='c_gpg4win_0' />
+      <!-- sha256sum.exe -->
       <ComponentRef Id='c_gpg4win_1' />
+      <!-- md5sum.exe -->
       <ComponentRef Id='c_gpg4win_2' />
+      <!-- libstdc++-6.dll -->
       <ComponentRef Id='c_gpg4win_3' />
+      <!-- libwinpthread-1.dll -->
       <ComponentRef Id='c_gpg4win_4' />
+      <!-- libgcc_s_sjlj-1.dll -->
       <ComponentRef Id='c_gpg4win_5' />
+      <!-- libgcc_s_dw2-1.dll -->
       <ComponentRef Id='c_gpg4win_6' />
+      <!-- bin64 libwinpthread-1.dll -->
       <ComponentRef Id='c_gpg4win_7' />
+      <!-- pkg-copyright.txt -->
+      <ComponentRef Id='c_gpg4win_8' />
       <ComponentRef Id='c_pinentry_0' />
       <ComponentRef Id='c_pinentry_1' />
       <ComponentRef Id='c_scute_0' />
