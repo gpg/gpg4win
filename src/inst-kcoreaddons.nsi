@@ -25,11 +25,13 @@ Section "kcoreaddons" SEC_kcoreaddons
 !else
 Section "-kcoreaddons" SEC_kcoreaddons
 !endif
-  SetOutPath "$INSTDIR"
-!ifdef SOURCES
-  File "${gpg4win_pkg_kcoreaddons}"
-!else
   SetOutPath "$INSTDIR\bin"
   File ${prefix}/bin/libKF5CoreAddons.dll
-!endif
+  SetOutPath "$INSTDIR\share\kf5\licenses"
+  File ${prefix}/share/kf5/licenses/GPL_V2
+  File ${prefix}/share/kf5/licenses/GPL_V3
+  File ${prefix}/share/kf5/licenses/LGPL_V2
+  File ${prefix}/share/kf5/licenses/LGPL_V21
+  File ${prefix}/share/kf5/licenses/LGPL_V3
+  File ${prefix}/share/kf5/licenses/BSD
 SectionEnd
