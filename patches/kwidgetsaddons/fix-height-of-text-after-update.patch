@@ -1,0 +1,17 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+diff --git a/src/kmessagewidget.cpp b/src/kmessagewidget.cpp
+index 383a5be321ed0fcc7b70fac484ac841750119242..f379f52e2233ea20f6fcbdc19e5ab150690e43ff 100644
+--- a/src/kmessagewidget.cpp
++++ b/src/kmessagewidget.cpp
+@@ -282,7 +282,7 @@ bool KMessageWidget::event(QEvent *event)
+ {
+     if (event->type() == QEvent::Polish && !layout()) {
+         d->createLayout();
+-    } else if (event->type() == QEvent::Show && !d->ignoreShowAndResizeEventDoingAnimatedShow) {
++    } else if ((event->type() == QEvent::Show && !d->ignoreShowAndResizeEventDoingAnimatedShow) || (event->type() == QEvent::LayoutRequest)) {
+         setFixedHeight(d->bestContentHeight());
+
+         // if we are displaying this when application first starts, there's

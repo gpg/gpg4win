@@ -57,6 +57,7 @@ EXTRA_DIST = autogen.rc autogen.sh README.GIT ONEWS \
              patches/kleopatra/0001-Make-KCMUtils-optional.patch \
              patches/kwidgetsaddons/0001-Set-the-modes-on-the-date-picker.patch \
              patches/kwidgetsaddons/0002-Remove-No-date-option-from-date-picker-popup-used-by.patch \
+             patches/kwidgetsaddons/fix-height-of-text-after-update.patch.patch \
              patches/kxmlgui/0001-make-qdbus-optional.patch \
              patches/kxmlgui/0004-Cruedly-disable-KSendbugmail.patch \
              patches/libical/workaround-weird-mingw-10.0.0-issue.patch \
@@ -80,6 +81,9 @@ EXTRA_DIST = autogen.rc autogen.sh README.GIT ONEWS \
              patches/sonnet/0001-W32-Force-ispellchecker-for-sonnet.patch \
              patches/jpeg/fix-redefine.patch \
              patches-appimage/kleopatra/0001-Make-KCMUtils-optional.patch \
+             patches-appimage/kwidgetsaddons/0001-Set-the-modes-on-the-date-picker.patch \
+             patches-appimage/kwidgetsaddons/0002-Remove-No-date-option-from-date-picker-popup-used-by.patch \
+             patches-appimage/kwidgetsaddons/fix-height-of-text-after-update.patch.patch \
              patches-appimage/libkleo/gpg4win-check.patch \
              patches-appimage/okular/0001-Make-KF5Pty-dependency-optional.patch \
              patches-appimage/okular/0001-Add-support-to-customize-about-data.patch \
