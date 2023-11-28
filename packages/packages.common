@@ -175,6 +175,14 @@ chk  8922181fef523b77b71625e562e4d69532278eabbd18bc74579dbe14135729ba
 file pinentry/pinentry-1.2.1.tar.bz2
 chk 457a185e5a85238fb945a955dc6352ab962dc8b48720b62fc9fa48c7540a4067
 
+# gpgme
+# last changed: 2023-11-28
+# by:
+# verified: build tree
+file gpgme/gpgme-1.23.2.tar.bz2
+chk 9499e8b1f33cccb6815527a1bc16049d35a6198a6c5fae0185f2bd561bce5224
+
+
 # last changed: 2021-01-07
 # by: ah
 file scute/scute-1.7.0.tar.bz2
@@ -511,13 +519,6 @@ chk 441bbb3c13cb535a216feb411ffe5925f4ca668a679c3cc1c4260c2bf406baec
 # Snapshots stored on the GnuPG server
 #
 server https://gnupg.org/ftp/gcrypt/snapshots
-
-# gpgme
-# last changed: 2023-11-25
-# by: aheinecke
-# verified: Tarball created by aheinecke.
-file gpgme/gpgme-1.23.2-beta12.tar.xz
-chk e52988b6c023e23a805ba7423fc30f2a9df7b33e30aaefa023f645c9251f45d6
 
 # gpgol
 # last changed: 2023-11-21
