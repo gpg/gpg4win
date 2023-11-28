@@ -12,7 +12,6 @@ The installer is
   Copyright (C) 2005-2013,2019-2023 g10 Code GmbH
                 2013-2018 Intevation GmbH
                 2015-2018 Bundesamt für Sicherheit in der Informationstechnik
-                          Software Engineering by Intevation GmbH
 
   Gpg4win is free software; you can redistribute it and/or modify it
   under the terms of the GNU General Public License as published by
@@ -29,9 +28,9 @@ The installer is
 
 GNUPG is
 
-  Copyright (C) 1997-2017 Werner Koch
-  Copyright (C) 1994-2017 Free Software Foundation, Inc.
-  Copyright (C) 2003-2017 g10 Code GmbH
+  Copyright (C) 1997-2019 Werner Koch
+  Copyright (C) 1994-2021 Free Software Foundation, Inc.
+  Copyright (C) 2003-2023 g10 Code GmbH
   Copyright (C) 2002 Klarälvdalens Datakonsult AB
   Copyright (C) 1995-1997, 2000-2007 Ulrich Drepper <drepper@gnu.ai.mit.edu>
   Copyright (C) 1994 X Consortium
@@ -46,6 +45,7 @@ GNUPG is
   Copyright (C) 1992-1996 Regents of the University of Michigan.
   Copyright (C) 2000 Dimitrios Souflis
   Copyright (C) 2008,2009,2010,2012-2016 William Ahern
+  Copyright (C) 2017 Bundesamt für Sicherheit in der Informationstechnik
 
   GnuPG is free software; you can redistribute it and/or modify it
   under the terms of the GNU General Public License as published by
@@ -63,7 +63,9 @@ GNUPG is
 
 LIBGCRYPT is
 
-  Copyright (C) 1989,1991-2017 Free Software Foundation, Inc.
+  Copyright (C) 2012-2023 g10 Code GmbH
+  Copyright (C) 2013-2018 Jussi Kivilinna
+  Copyright (C) 1989,1991-2019 Free Software Foundation, Inc.
   Copyright (C) 1994 X Consortium
   Copyright (C) 1996 L. Peter Deutsch
   Copyright (C) 1997 Werner Koch
@@ -72,11 +74,9 @@ LIBGCRYPT is
   Copyright (C) 1996-2006 Peter Gutmann, Matt Thomlinson and Blake Coverett
   Copyright (C) 2003 Nikos Mavroyanopoulos
   Copyright (C) 2006-2007 NTT (Nippon Telegraph and Telephone Corporation)
-  Copyright (C) 2012-2017 g10 Code GmbH
   Copyright (C) 2012 Simon Josefsson, Niels Möller
   Copyright (c) 2012 Intel Corporation
   Copyright (C) 2013 Christian Grothoff
-  Copyright (C) 2013-2017 Jussi Kivilinna
   Copyright (C) 2013-2014 Dmitry Eremin-Solenikov
   Copyright (C) 2014 Stephan Mueller
   Copyright (C) 2017 Bundesamt für Sicherheit in der Informationstechnik
@@ -97,14 +97,17 @@ LIBGCRYPT is
 
 LIBGPG-ERROR is
 
-  Copyright (C) 2003-2004, 2010, 2013-2017 g10 Code GmbH
+  Copyright (C) 2001-2023 g10 Code GmbH
+  Copyright (C) 1995-2017 Free Software Foundation, Inc.
+  Copyright (C) 1998-2006, 2008-2017  Werner Koch
+  Copyright (C) 2014 Jedi Lin
 
-  libgpg-error is free software; you can redistribute it and/or
+  Libgpg-error is free software; you can redistribute it and/or
   modify it under the terms of the GNU Lesser General Public License
   as published by the Free Software Foundation; either version 2.1 of
   the License, or (at your option) any later version.
 
-  libgpg-error is distributed in the hope that it will be useful, but
+  Libgpg-error is distributed in the hope that it will be useful, but
   WITHOUT ANY WARRANTY; without even the implied warranty of
   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
   Lesser General Public License for more details.
@@ -118,15 +121,15 @@ LIBASSUAN is
   Copyright (C) 1992-2013 Free Software Foundation, Inc.
   Copyright (C) 1994 X Consortium
   Copyright (C) 2000 Werner Koch (dd9jn)
-  Copyright (C) 2001-2016 g10 Code GmbH
+  Copyright (C) 2001-2021 g10 Code GmbH
   Copyright (C) 2004 Simon Josefsson
 
-  Assuan is free software; you can redistribute it and/or modify it
+  Libassuan is free software; you can redistribute it and/or modify it
   under the terms of the GNU Lesser General Public License as
   published by the Free Software Foundation; either version 2.1 of
   the License, or (at your option) any later version.
 
-  Assuan is distributed in the hope that it will be useful, but
+  Libassuan is distributed in the hope that it will be useful, but
   WITHOUT ANY WARRANTY; without even the implied warranty of
   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
   Lesser General Public License for more details.
@@ -137,9 +140,8 @@ LIBASSUAN is
 
 LIBKSBA is
 
-  Copyright (C) 2001, 2002, 2003, 2004, 2005, 2006, 2010, 2011
-                2012, 2013, 2014, 2015 g10 Code GmbH
-  Copyright (C) 2001, 2002, 2003, 2007 Free Software Foundation, Inc.
+  Copyright (C) 2001-2006, 2010-2015, 2018-2023 g10 Code GmbH
+  Copyright (C) 2001-2003, 2007 Free Software Foundation, Inc.
   Copyright (C) 2000, 2001 Fabio Fiorina
 
   The library and the header files are distributed under the following
@@ -200,7 +202,7 @@ NPTH is
 NTBTLS is
 
   Copyright (C) 2006-2014 Brainspark B.V.
-  Copyright (C) 2014-2017 g10 Code GmbH
+  Copyright (C) 2014-2022 g10 Code GmbH
 
   NTBTLS is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -246,14 +248,17 @@ GPGME is
 
   Copyright (C) 1991-2013 Free Software Foundation, Inc.
   Copyright (C) 2000-2001 Werner Koch
-  Copyright (C) 2001-2017 g10 Code GmbH
+  Copyright (C) 2001-2023 g10 Code GmbH
   Copyright (C) 2002 Klarälvdalens Datakonsult AB
   Copyright (C) 2004-2008 Igor Belyi
   Copyright (C) 2002 John Goerzen
+  Copyright (c) 2009 Dave Gamble
   Copyright (C) 2014, 2015 Martin Albrecht
-  Copyright (C) 2015 Ben McGinnes
-  Copyright (C) 2015-2016 Bundesamt für Sicherheit in der Informationstechnik
+  Copyright (C) 2015, 2018 Ben McGinnes
+  Copyright (C) 2015, 2016, 2018
+                Bundesamt für Sicherheit in der Informationstechnik
   Copyright (C) 2016 Intevation GmbH
+
 
   GPGME is free software; you can redistribute it and/or modify it
   under the terms of the GNU Lesser General Public License as
@@ -472,7 +477,81 @@ GpgOL is
   You should have received a copy of the GNU Lesser General Public
   License along with this program; if not, see <http://www.gnu.org/licenses/>.
 
-Mimetreeparser, KMime, KMbox
+
+Mimetreeparser
+
+  Copyright 1998,1999,2000,2001,2002,2003 Free Software Foundation, Inc.
+  Copyright 2001,2002 the KPGP authors
+  Copyright 2002-2004,2009,2010 Klarälvdalens Datakonsult AB
+  Copyright 2002-2003 Karl-Heinz Zimmer
+  Copyright 2003,2004 Marc Mutz
+  Copyright 2004 Ingo Kloecker
+  Copyright 2006 Alexander Neundorf
+  Copyright 2009 Andras Mantia
+  Copyright 2009 Thomas McGuire
+  Copyright 2010 Leo Franchi
+  Copyright 2013,2015,2016 Sandro Knauß
+  Copyright 2015-2023 Laurent Montel
+  Copyright 2015 Volker Krause
+  Copyright 2016 Christian Mollekopf
+  Copyright 2016 Michael Bohlender
+  Copyright 2017-2019 Christian Mollekopf
+  Copyright 2017 Daniel Vrátil
+  Copyright 2021-2023 Carl Schwan
+  Copyright 2022 Devin Lin
+  Copyright 2023 Eloy Cuadra
+  Copyright 2023 Freek de Kruijf
+  Copyright 2023 g10 Code GmbH
+  Copyright 2023 Vincenzo Reale
+  Copyright 2023 Xavier BESNARD
+
+  This Program is free software; you can redistribute it and/or
+  modify it under the terms of the GNU Lesser General Public
+  License as published by the Free Software Foundation; either
+  version 2 of the License, or (at your option) any later version.
+
+  This Program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  GNU Lesser General Public License for more details.
+
+  You should have received a copy of the GNU Lesser General Public
+  License along with this program; if not, see <http://www.gnu.org/licenses/>.
+
+
+KMime
+
+  Copyright 2001-2002 the KMime authors.
+  Copyright 2001-2002 Marc Mutz
+  Copyright 2006-2015 Volker Krause
+  Copyright 2009 Constantin Berzan
+  Copyright 2009 Thomas McGuire
+  Copyright 2010 Leo Franchi
+  Copyright 2015 Albert Astals Cid
+  Copyright 2016 Daniel Vrátil
+  Copyright 2021-2023 Laurent Montel
+
+  This Program is free software; you can redistribute it and/or
+  modify it under the terms of the GNU Lesser General Public
+  License as published by the Free Software Foundation; either
+  version 2 of the License, or (at your option) any later version.
+
+  This Program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  GNU Lesser General Public License for more details.
+
+  You should have received a copy of the GNU Lesser General Public
+  License along with this program; if not, see <http://www.gnu.org/licenses/>.
+
+KMbox
+
+  Copyright 1996-1998 Stefan Taferner
+  Copyright 2009 Bertjan Broeksema
+  Copyright 2010 Tobias Koenig
+  Copyright 2014 Christophe Giboudeaux
+  Copyright 2016 Daniel Vrátil
+  Copyright 2021-2023 Laurent Montel
 
   This Program is free software; you can redistribute it and/or
   modify it under the terms of the GNU Lesser General Public
@@ -951,6 +1030,23 @@ Openjpeg
 
 Gettext
 
+  Copyright (C) 1995-1998, 2000-2002, 2004-2006,
+                2009-2020 Free Software Foundation, Inc.
+
+  Lincese for the libintl.h and libasprintf library:
+
+  This program is free software: you can redistribute it and/or modify it
+  under the terms of the GNU Lesser General Public License as published
+  by the Free Software Foundation; either version 2.1 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+  Lesser General Public License for more details.
+
+  License for all other parts:
+
   This program is free software: you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
   the Free Software Foundation; either version 3 of the License, or
@@ -1009,7 +1105,7 @@ The Breeze Icon Theme
   https://vdesign.kde.org/
 
 
-libical, libiconv
+libical
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU Lesser General Public License as
@@ -1023,6 +1119,53 @@ libical, libiconv
 
   You should have received a copy of the GNU Lesser General Public
   License along with this program; if not, see <http://www.gnu.org/licenses/>.
+
+  Copyright 1984, 1989-1991, 1999-2006 Free Software Foundation, Inc.
+  Copyright 1986-2000 Hiram Clawson
+  Copyright 1994 Gisle Hannemyr
+  Copyright 1995-1998  The University of Utah
+                       and The Regents of the University of California.
+  Copyright 1996 Apple Computer,
+  Copyright 1996 Apple Computer, Inc., AT&T Corp., International
+  Copyright 1999-2001,2008 Eric Busboom
+  Copyright 1999 The Software Studio
+  Copyright 2000,2002 Andrea Campi
+  Copyright 2001,2002 Critical Path
+  Copyright 2001 Damon Chaplin
+  Copyright 2001 Patrick Lewis
+  Copyright 2001 Ximian, Inc.
+  Copyright 2001-2006, NLnet Labs
+  Copyright 2002 Paul Lindner
+  Copyright 2007 Novell, Inc.
+  Copyright 2009 Johns Hopkins University (JHU)
+  Copyright 2010 Glenn Washburn
+  Copyright 2010-2011 Ethan Rublee
+  Copyright 2010-2018 Klaralvdalens Datakonsult AB.
+  Copyright 2010 Andreas Holzammer
+  Copyright 2010 Pino Toscano
+  Copyright 2011-2014 Andrey Kamaev
+  Copyright 2014 Milan Crha
+  Copyright 2015 William Yu
+  Copyright 2017,2019 Red Hat, Inc.
+
+
+libiconv
+
+  Copyright 1999-2003, 2005-2006, 2008-2011 Free Software Foundation, Inc.
+  This file is part of the GNU LIBICONV Library.
+
+  The GNU LIBICONV Library is free software; you can redistribute it
+  and/or modify it under the terms of the GNU Library General Public
+  License as published by the Free Software Foundation; either
+  version 2 of the License, or (at your option) any later version.
+
+  The GNU LIBICONV Library is distributed in the hope that it will be
+  useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+  Library General Public License for more details.
+
+  You should have received a copy of the GNU Library General Public
+  License along with the GNU LIBICONV Library; see the file COPYING.LIB.
 
 
 Poppler, Libkleo, Gpg4win-tools, pkg-config
@@ -1068,10 +1211,12 @@ KDE-Frameworks
 Okular
 
   Copyright (C) 2002 Wilco Greven, Christophe Devriese
+  Copyright (C) 2002-2008,2013-2015,2020,2022 Albert Astals Cid
+  Copyright (C) 2002,2021,2023 g10 Code GmbH
   Copyright (C) 2004-2005 Enrico Ros
   Copyright (C) 2005 Piotr Szymanski
-  Copyright (C) 2004-2017 Albert Astals Cid
   Copyright (C) 2006-2009 Pino Toscano
+  and others
 
   Okular is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -1130,4 +1275,4 @@ Qt Toolkit
   For a list of other, less restrictive, licenses used in Qt see
   <https://doc.qt.io/qt-5/licenses-used-in-qt.html>
 
-[Compiled by wk 2006-02-15, last updated 2023-11-25]
+[Compiled by wk 2006-02-15, last updated 2023-11-28]
