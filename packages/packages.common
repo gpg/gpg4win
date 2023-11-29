@@ -189,11 +189,11 @@ file scute/scute-1.7.0.tar.bz2
 chk 437fe758b27c243a5ee2535c6b065ea1d09f2c9a02d83567d2f934bb6395c249
 
 # GpgOL
-# last-changed: 2023-07-07
+# last-changed: 2023-11-29
 # by: ah
 # verified: build tree
-#file gpgol/gpgol-2.5.8.tar.bz2
-#chk  b737f2b246bec2ace6316649ca12da9825c854f9c48e6c829e670c9c2dd99789
+file gpgol/gpgol-2.5.10.tar.bz2
+chk  236b711fc832adc468c9ccaaf04d54cce50bcaa67aa3cd30b1cfe22ba49acc16
 
 #
 # GpgEX
@@ -524,8 +524,8 @@ server https://gnupg.org/ftp/gcrypt/snapshots
 # last changed: 2023-11-21
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file gpgol/gpgol-2.5.10-beta23.tar.xz
-chk 4582dd9d6c5f80018cd60102edf828d3e4fed159364af5fa8214a8fb17229b9a
+# file gpgol/gpgol-2.5.10-beta23.tar.xz
+# chk 4582dd9d6c5f80018cd60102edf828d3e4fed159364af5fa8214a8fb17229b9a
 
 # gpgex
 # last changed: 2022-12-06
