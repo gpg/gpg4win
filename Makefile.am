@@ -80,6 +80,8 @@ EXTRA_DIST = autogen.rc autogen.sh README.GIT ONEWS \
              patches/kparts/disable-jobuidelegate.patch \
              patches/sonnet/0001-W32-Force-ispellchecker-for-sonnet.patch \
              patches/jpeg/fix-redefine.patch \
+             patches/gpgme/0001-core-percent-decode-filename.patch \
+             patches-appimage/gpgme/0001-core-percent-decode-filename.patch \
              patches-appimage/kleopatra/0001-Make-KCMUtils-optional.patch \
              patches-appimage/kwidgetsaddons/0001-Set-the-modes-on-the-date-picker.patch \
              patches-appimage/kwidgetsaddons/0002-Remove-No-date-option-from-date-picker-popup-used-by.patch \

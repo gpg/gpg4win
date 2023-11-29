@@ -1,0 +1,47 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+From 6baccdc0c35d93253975e672bbf608750f97ab2a Mon Sep 17 00:00:00 2001
+From: Andre Heinecke <aheinecke@gnupg.org>
+Date: Thu, 30 Nov 2023 00:06:08 +0100
+Subject: [PATCH] core: percent decode filename
+
+* src/op-support.c (_gpgme_parse_plaintext): Decode filename
+as percent string.
+
+--
+From gnupg/doc/DETAILS:
+
+    If a filename is available it gets printed as the third
+    argument, percent-escaped as usual.
+
+so we can use the usual percent decode function here.
+
+GnuPG-Bug-Id: T6852
+---
+ src/op-support.c | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
+
+diff --git a/src/op-support.c b/src/op-support.c
+index 88a133be..cc410581 100644
+--- a/src/op-support.c
++++ b/src/op-support.c
+@@ -388,9 +388,12 @@ _gpgme_parse_plaintext (char *args, char **filenamep, int *r_mime)
+   *tail = '\0';
+   if (filenamep && *args != '\0')
+     {
+-      char *filename = strdup (args);
+-      if (!filename)
+-	return gpg_error_from_syserror ();
++      gpgme_error_t err = 0;
++      char *filename = NULL;
++
++      err = _gpgme_decode_percent_string (args, &filename, 0, 0);
++      if (err)
++        return err;
+
+       *filenamep = filename;
+     }
+--
+2.43.0
