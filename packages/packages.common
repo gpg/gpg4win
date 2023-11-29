@@ -542,11 +542,11 @@ file gpg4win-tools/gpg4win-tools-202311210840.tar.xz
 chk 312e90d9073e6409426db7d603e67b1430256131d9d652da15ac2a27ca5658d3
 
 # mimetreeparser
-# last changed: 2023-11-27
+# last changed: 2023-11-30
 # by: aheinecke
 # verified: Tarball created by aheinecke.
-file mimetreeparser/mimetreeparser-202311272230.tar.xz
-chk 5d04c07ffca13fbb866b06b124ca180f82081f42be1aa282d5b1c17d2f947d77
+file mimetreeparser/mimetreeparser-202311300018.tar.xz
+chk e2727dbbc40591b8027cc0d1df4cd6b2ab90c3332946c1bf220b94ebd9037141
 
 # libkleo
 # last changed: 2023-11-25
