@@ -8,6 +8,96 @@ Noteworthy changes in Version 3.2.0 (unreleased)
 
 --- Features ---
 
+(en) GpgOL: Added support for RFC2231 encoded attachment filenames which
+     this increases the compatibility with Apple Mail. (T6604)
+
+(de) GpgOL: Unterstützung für Dateinamen von Anhängen, welche nach RFC2231
+     kodiert waren wurde hinzugefügt. Dies betrifft die Kompatibilität mit
+     Apple Mail. (T6604)
+
+(en) GpgOL: Draft encryption with S/MIME certificates now
+     skips CRL checks and is much faster and reliable. (T6827)
+
+(de) GpgOL: Die Entwurfsverschlüsselung mit S/MIME Zertifikaten wurde massiv
+     verbessert und funktioniert nun zuverlässig. So werden beispielsweise
+     keine CRL Prüfungen mehr durchgeführt. (T6827)
+
+(en) GpgOL: The error handling was improved if a preference
+     for S/MIME is set, signing selected but no signing
+     certificate can be found.
+     See: https://gnupg.com/vsd/registry-settings.html (smimeNoCertSigErr)
+     How to add a custom message for that case to instruct
+     users how to obtain a certificate in your organisation. (T6683)
+
+(de) GpgOL: Die Fehlerbehandlung wurde stark verbessert für den Fall
+     das S/MIME aktiviert und bevozugt ist, signieren angewählt ist,
+     aber kein Signaturzertifikat zur Verfügung steht.
+     Unter: https://gnupg.com/vsd/registry-settings.html (smimeNoCertSigErr)
+     finden Sie eine Möglichkeit dort eine angepasste Nachricht zu
+     hinterlegen um ihre Nutzenden zu istruieren wie diese in ihrer
+     Organisation an ein persönliches S/MIME Zertifikat kommen. (T6683)
+
+(en) GpgOL: Users are now shown a warning when encrypting to S/MIME certificates
+     which are untrusted or can otherwise not be validated because of
+     CRL errors. This was previously impossible, now it is possible but
+     with a clear warning that this is not VS-NfD compliant. (T6701)
+
+(de) GpgOL: Nutzenden wird nun eine deutliche Warnung angezeigt wenn Sie an
+     S/MIME Zertifikate verschlüsseln welche nicht vertrauenswürdig sind. Weil
+     Beispielsweise das Wurzelzertifikat noch nicht von der Administration als
+     vertrauenswürdig markiert wurde oder CRL Prüfungen fehlgeschlagen sind.
+     Dies war vorher unmöglich, nun wird es nach der Warnung gestattet. Dies
+     ist allerdings nicht VS-NfD konform. (T6701)
+
+(en) GpgOL: Mails without the correct MIME type but which still look like
+     crypto mails are now decrypted. This improves the compatibility with
+     Apple Mail and various mail gateways which modify the structure of
+     crypto mails in transit. (T6701)
+
+(de) GpgOL: Mails ohne den korrekten MIME typ, welche aber dennoch so aussehen
+     wie Krypto Mails werden nun auch entschlüsselt. Dies erhöht die
+     Kompatibilität mit anderen Mail clients, insbesondere Apple
+     Mail und verschiedenen Mail Gateways welche die Struktur von Krypto Mails
+     modifizieren. (T6701)
+
+(en) GpgOL: The internal attachments are now called "GpgOL_MIME_strucutre.mime"
+     instead of "GpgOL_MIME_structure.txt" to make it easier to link them to
+     Kleopatra. This is for example visible for users when using the Outlook
+     web interface. (T6656)
+
+(de) GpgOL: Die internen Anhänge werden nun "GpgOL_MIME_strucutre.mime" und
+     nicht mehr "GpgOL_MIME_structure.txt" dies ermöglicht es eine
+     Dateiverknüpfung mit Kleopatra herzustellen. (T6656)
+
+(en) GpgOL: The initialization has been moved to avoid the wrong message that
+     GpgOL is causing a slow start of Outlook. This message might still be
+     shown since Outlook shows this sometimes regardless of actual timings but
+     the delay should be 0ms. (T6856)
+
+(de) GpgOL: Die initalisierung des Plugins passiert nun an anderer Stelle um
+     die falsche Meldung von Outlook zu verhindern das GpgOL für den langsamen
+     Start von Outlook verantwortlich ist. Diese Meldung kann immer noch
+     erscheinen, aber die Verzögerung sollte 0ms betragen. (T6856)
+
+--- Bug Fixes ---
+
+(en) GpgOL: A crash has been fixed that happened reliably when sending crypto
+     mails with attachments without a filename. This happened for some
+     signatures that included an image. (T6546)
+
+(de) GpgOL: Ein Absturz wurde behoben der zuverlässig auftrat wenn man Anhänge
+     ohne Dateinamen verschickte. Dies trat bei einigen Signaturen auf, welche
+     ein Bild enthielten.  (T6546)
+
+(en) GpgOL: Fixed an issue with S/MIME opaque signed mails
+     where the contents of invalid signed mails would
+     not be shown. (T6624)
+
+(de) GpgOL: Ein Problem wurde behoben bei dem S/MIME "opak" signiere Mails
+     mit ungültiger Signatur ohne Inhalt angezeigt wurden. (T6624)
+
+---
+
 (en) Kleopatra: Folder encryption and decryption (gpgtar) has been completely
      reworked so that it now has roughly the same performance as on the
      command line. The new architecture also allows for further performance
