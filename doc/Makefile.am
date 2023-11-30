@@ -16,7 +16,9 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, see <http://www.gnu.org/licenses/>.
 
-EXTRA_DIST = nsi-mode.el pkg-copyright.txt beta-warning.txt HACKING\
-	     HOWTO-SMIME.en.txt HOWTO-SMIME.de.txt
+EXTRA_DIST = nsi-mode.el pkg-copyright.txt beta-warning.txt HACKING \
+             HOWTO-SMIME.en.txt HOWTO-SMIME.de.txt \
+             manual/gpg4win-compendium-de.pdf \
+             manual/gpg4win-compendium-en.pdf
 
 SUBDIRS = logo
