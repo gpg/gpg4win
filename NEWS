@@ -147,6 +147,28 @@ Noteworthy changes in Version 3.2.0 (unreleased)
 (de) Kleopatra: Der Dialog um OpenPGP-Zertifikate zu verlängern wurde
      verbessert und überflüssige Optionen entfernt. [T6621]
 
+(en) Kleopatra: When creating archives, they are now written out as a
+     .part file to improve error handling and canceling the operation without
+     leaving a broken archive in the file system. [T6584]
+
+(de) Kleopatra: Beim Erstellen von Archiven werden diese nun zunächst als
+     .part-Datei geschrieben, um die Fehlerbehandlung zu verbessern und
+     den Vorgang abbrechen zu können, ohne ein defektes Archiv im
+     Dateisystem zu hinterlassen. [T6584]
+
+(en) Kleopatra: Updating certificates now also looks for updates in a
+     Web Key Directory if one exists for the domain. [T5951]
+
+(de) Kleopatra: Das Aktualisieren von Zertifikaten berücksichtigt nun
+     auch ein eventuell vorhandenes Web Key Directory für die entsprechende
+     Domäne. [T5951]
+
+(en) Kleopatra: Progress bars are now also properly shown for S/MIME
+     file operations. [T6534]
+
+(de) Kleopatra: Fortschrittsbalken werden nun auch korrekt für
+     S/MIME-Dateioperationen angezeigt. [T6534]
+
 (en) GpgOL: Added support for RFC2231 encoded attachment filenames,
      which increases compatibility with Apple Mail. [T6604]
 
@@ -232,28 +254,6 @@ Noteworthy changes in Version 3.2.0 (unreleased)
      Größe basierend auf der Anzahl der Empfänger, um Scrollbalken zu
      vermeiden. [T6837]
 
-(en) Kleopatra: When creating archives, they are now written out as a
-     .part file to improve error handling and canceling the operation without
-     leaving a broken archive in the file system. [T6584]
-
-(de) Kleopatra: Beim Erstellen von Archiven werden diese nun zunächst als
-     .part-Datei geschrieben, um die Fehlerbehandlung zu verbessern und
-     den Vorgang abbrechen zu können, ohne ein defektes Archiv im
-     Dateisystem zu hinterlassen. [T6584]
-
-(en) Kleopatra: Updating certificates now also looks for updates in a
-     Web Key Directory if one exists for the domain. [T5951]
-
-(de) Kleopatra: Das Aktualisieren von Zertifikaten berücksichtigt nun
-     auch ein eventuell vorhandenes Web Key Directory für die entsprechende
-     Domäne. [T5951]
-
-(en) Kleopatra: Progress bars are now also properly shown for S/MIME
-     file operations. [T6534]
-
-(de) Kleopatra: Fortschrittsbalken werden nun auch korrekt für
-     S/MIME-Dateioperationen angezeigt. [T6534]
-
 --- Bug Fixes ---
 
 (en) GnuPG: The PKCS#12 parser has been improved to allow for more
@@ -305,6 +305,19 @@ Noteworthy changes in Version 3.2.0 (unreleased)
 (de) Kleopatra: Beim Erstellen von Schlüsselmaterial auf Smartcards
      werden im konformen Modus auch nur konforme Algorithmen angeboten. [T6750]
 
+(en) Kleopatra: Several additional encoding problems when showing GnuPG
+     output have been fixed. [T5960]
+
+(de) Kleopatra: Verschiedene weitere Probleme bei der Darstellung von
+     Sonderzeichen aus GnuPG-Ausgaben wurden behoben. [T5960]
+
+(en) Kleopatra: Fixed an issue where certificate tags would not be
+     displayed correctly after reloading certificates. [T6768]
+
+(de) Kleopatra: Ein Problem wurde behoben, bei dem Tags bzw. Anmerkungen
+     an Zertifikaten nicht korrekt angezeigt wurden, nachdem die Zertifikate
+     neu geladen wurden. [T6768]
+
 (en) GpgOL: A crash has been fixed that happened reliably when sending
      crypto mails with attachments without a filename. This occurred for some
      signatures that included an image. [T6546]
@@ -327,19 +340,6 @@ Noteworthy changes in Version 3.2.0 (unreleased)
 (de) GpgOL: Der Sicherheitsbestätigungs-Dialog wird nun immer
      angezeigt, wenn an Gruppen verschlüsselt wird, die nicht beglaubigte
      oder anderweitig nicht konforme Zertifikate enthalten. [T6401]
-
-(en) Kleopatra: Several additional encoding problems when showing GnuPG
-     output have been fixed. [T5960]
-
-(de) Kleopatra: Verschiedene weitere Probleme bei der Darstellung von
-     Sonderzeichen aus GnuPG-Ausgaben wurden behoben. [T5960]
-
-(en) Kleopatra: Fixed an issue where certificate tags would not be
-     displayed correctly after reloading certificates. [T6768]
-
-(de) Kleopatra: Ein Problem wurde behoben, bei dem Tags bzw. Anmerkungen
-     an Zertifikaten nicht korrekt angezeigt wurden, nachdem die Zertifikate
-     neu geladen wurden. [T6768]
 
 (en) GpgOL: Fixed an issue with S/MIME opaque signed mails where the
      contents of invalid signed mails would not be shown. [T6624]
