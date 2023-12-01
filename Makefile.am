@@ -55,6 +55,8 @@ EXTRA_DIST = autogen.rc autogen.sh README.GIT ONEWS \
              patches/kiconthemes/dark-mode-detection.patch \
              patches/kleopatra/set-windows-registry.patch \
              patches/kleopatra/0001-Make-KCMUtils-optional.patch \
+             patches/kleopatra/kleo-gpg4win-ja.patch \
+             patches/libkleo/libkleo-gpg4win-ja.patch \
              patches/kwidgetsaddons/0001-Set-the-modes-on-the-date-picker.patch \
              patches/kwidgetsaddons/0002-Remove-No-date-option-from-date-picker-popup-used-by.patch \
              patches/kwidgetsaddons/fix-height-of-text-after-update.patch \
@@ -83,6 +85,8 @@ EXTRA_DIST = autogen.rc autogen.sh README.GIT ONEWS \
              patches/gpgme/0001-core-percent-decode-filename.patch \
              patches-appimage/gpgme/0001-core-percent-decode-filename.patch \
              patches-appimage/kleopatra/0001-Make-KCMUtils-optional.patch \
+             patches-appimage/kleopatra/kleo-gpg4win-ja.patch \
+             patches-appimage/libkleo/libkleo-gpg4win-ja.patch \
              patches-appimage/kwidgetsaddons/0001-Set-the-modes-on-the-date-picker.patch \
              patches-appimage/kwidgetsaddons/0002-Remove-No-date-option-from-date-picker-popup-used-by.patch \
              patches-appimage/kwidgetsaddons/fix-height-of-text-after-update.patch \

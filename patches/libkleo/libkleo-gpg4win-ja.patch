@@ -1,0 +1,1663 @@
+#! /bin/sh
+patch -p1 -l -f $* < $0
+exit $?
+
+diff --git a/po/ja/libkleopatra.po b/po/ja/libkleopatra.po
+index 5b02d8d..99d848a 100644
+--- a/po/ja/libkleopatra.po
++++ b/po/ja/libkleopatra.po
+@@ -5,8 +5,25 @@
+ # Yukiko Bando <ybando@k6.dion.ne.jp>, 2006, 2007, 2008, 2009.
+ # Fumiaki Okushi <okushi@kde.gr.jp>, 2011, 2012.
+ #
++#, fuzzy
+ msgid ""
+ msgstr ""
++"#-#-#-#-#  libkleopatra-gniibe.po (libkleopatra)  #-#-#-#-#\n"
++"Project-Id-Version: libkleopatra\n"
++"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
++"POT-Creation-Date: 2023-11-28 01:36+0000\n"
++"PO-Revision-Date: 2023-01-06 09:39+0900\n"
++"Last-Translator: NIIBE Yutaka <gniibe@fsij.org>\n"
++"Language-Team: Japanese <kde-jp@kde.org>\n"
++"Language: ja\n"
++"MIME-Version: 1.0\n"
++"Content-Type: text/plain; charset=UTF-8\n"
++"Content-Transfer-Encoding: 8bit\n"
++"X-Generator: KBabel 1.10.2\n"
++"Plural-Forms: nplurals=1; plural=0;\n"
++"X-Accelerator-Marker: &\n"
++"X-Text-Markup: kde4\n"
++"#-#-#-#-#  libkleopatra.po (libkleopatra)  #-#-#-#-#\n"
+ "Project-Id-Version: libkleopatra\n"
+ "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+ "POT-Creation-Date: 2023-10-14 00:44+0000\n"
+@@ -67,7 +84,7 @@ msgstr "エントリ 'output-file' が空/欠落しています"
+ msgid "'file-patterns' entry is empty/missing"
+ msgstr "エントリ 'file-patterns' が空/欠落しています"
+
+-#: kleo/checksumdefinition.cpp:396
++#: kleo/checksumdefinition.cpp:400 kleo/checksumdefinition.cpp:396
+ #, kde-format
+ msgid "Caught unknown exception in group %1"
+ msgstr "グループ %1 で不明の例外を捕捉しました"
+@@ -156,7 +173,8 @@ msgstr "インライン OpenPGP (廃止予定)"
+ msgid "OpenPGP/MIME"
+ msgstr "OpenPGP/MIME"
+
+-#: kleo/enum.cpp:37 ui/newkeyapprovaldialog.cpp:304
++#: kleo/enum.cpp:37 ui/newkeyapprovaldialog.cpp:305
++#: ui/newkeyapprovaldialog.cpp:308 ui/newkeyapprovaldialog.cpp:304
+ #: ui/newkeyapprovaldialog.cpp:307
+ #, kde-format
+ msgid "S/MIME"
+@@ -235,7 +253,7 @@ msgstr "<設定なし>"
+ #, kde-format
+ msgctxt "<b>User ID of key</b> (KeyID key ID of key in hex notation)"
+ msgid "<b>%1</b> (KeyID 0x%2)"
+-msgstr ""
++msgstr "<b>%1</b> (鍵ID 0x%2)"
+
+ #: kleo/expirychecker.cpp:86
+ #, kde-format
+@@ -243,6 +261,8 @@ msgid ""
+ "<p>Your OpenPGP signing key</p><p align=center>%1</p><p>expired less than a "
+ "day ago.</p>"
+ msgstr ""
++"<p>あなたのOpenPGP署名用鍵</p><p align=center>%1</p><p>数時間前に失効しまし"
++"た。</p>"
+
+ #: kleo/expirychecker.cpp:88
+ #, kde-format
+@@ -250,13 +270,15 @@ msgid ""
+ "<p>Your OpenPGP encryption key</p><p align=center>%1</p><p>expired less than "
+ "a day ago.</p>"
+ msgstr ""
++"<p>あなたのOpenPGP暗号鍵</p><p align=center>%1</p><p>数時間前に失効しました。"
++"</p>"
+
+ #: kleo/expirychecker.cpp:90
+ #, kde-format
+ msgid ""
+ "<p>The OpenPGP key for</p><p align=center>%1</p><p>expired less than a day "
+ "ago.</p>"
+-msgstr ""
++msgstr "<p>OpenPGP鍵</p><p align=center>%1</p><p>数時間前に失効しました。</p>"
+
+ #: kleo/expirychecker.cpp:96
+ #, kde-format
+@@ -267,6 +289,8 @@ msgid_plural ""
+ "<p>Your OpenPGP signing key</p><p align=center>%2</p><p>expired %1 days ago."
+ "</p>"
+ msgstr[0] ""
++"<p>あなたのOpenPGP署名用鍵</p><p align=center>%2</p><p>%1日前に失効しました。"
++"</p>"
+
+ #: kleo/expirychecker.cpp:99
+ #, kde-format
+@@ -277,6 +301,8 @@ msgid_plural ""
+ "<p>Your OpenPGP encryption key</p><p align=center>%2</p><p>expired %1 days "
+ "ago.</p>"
+ msgstr[0] ""
++"<p>あなたのOpenPGP暗号鍵</p><p align=center>%2</p><p>%1日前に失効しました。</"
++"p>"
+
+ #: kleo/expirychecker.cpp:102
+ #, kde-format
+@@ -284,24 +310,26 @@ msgid ""
+ "<p>The OpenPGP key for</p><p align=center>%2</p><p>expired yesterday.</p>"
+ msgid_plural ""
+ "<p>The OpenPGP key for</p><p align=center>%2</p><p>expired %1 days ago.</p>"
+-msgstr[0] ""
++msgstr[0] "<p>OpenPGP鍵</p><p align=center>%2</p><p>%1日前に失効しました。</p>"
+
+ #: kleo/expirychecker.cpp:111
+ #, kde-format
+ msgid ""
+ "<p>Your OpenPGP signing key</p><p align=center>%1</p><p>expires today.</p>"
+ msgstr ""
++"<p>あなたのOpenPGP署名用鍵</p><p align=center>%1</p><p>本日失効します。</p>"
+
+ #: kleo/expirychecker.cpp:113
+ #, kde-format
+ msgid ""
+ "<p>Your OpenPGP encryption key</p><p align=center>%1</p><p>expires today.</p>"
+ msgstr ""
++"<p>あなたのOpenPGP暗号鍵</p><p align=center>%1</p><p>本日失効します。</p>"
+
+ #: kleo/expirychecker.cpp:115
+ #, kde-format
+ msgid "<p>The OpenPGP key for</p><p align=center>%1</p><p>expires today.</p>"
+-msgstr ""
++msgstr "<p>OpenPGP鍵</p><p align=center>%1</p><p>本日失効します。</p>"
+
+ #: kleo/expirychecker.cpp:121
+ #, kde-format
+@@ -311,6 +339,8 @@ msgid_plural ""
+ "<p>Your OpenPGP signing key</p><p align=center>%2</p><p>expires in %1 days.</"
+ "p>"
+ msgstr[0] ""
++"<p>あなたのOpenPGP署名用鍵</p><p align=center>%2</p><p>あと%1日で失効します。"
++"</p>"
+
+ #: kleo/expirychecker.cpp:124
+ #, kde-format
+@@ -321,6 +351,8 @@ msgid_plural ""
+ "<p>Your OpenPGP encryption key</p><p align=center>%2</p><p>expires in %1 "
+ "days.</p>"
+ msgstr[0] ""
++"<p>あなたのOpenPGP暗号鍵</p><p align=center>%2</p><p>あと%1日で失効します。</"
++"p>"
+
+ #: kleo/expirychecker.cpp:127
+ #, kde-format
+@@ -328,14 +360,14 @@ msgid ""
+ "<p>The OpenPGP key for</p><p align=center>%2</p><p>expires tomorrow.</p>"
+ msgid_plural ""
+ "<p>The OpenPGP key for</p><p align=center>%2</p><p>expires in %1 days.</p>"
+-msgstr[0] ""
++msgstr[0] "<p>OpenPGP鍵</p><p align=center>%2</p><p>あと%1日で失効します。</p>"
+
+ #: kleo/expirychecker.cpp:139
+ #, kde-format
+ msgctxt ""
+ "<b>User ID of certificate</b> (serial number serial no. of certificate)"
+ msgid "<b>%1</b> (serial number %2)"
+-msgstr ""
++msgstr "<b>%1</b> (シリアル番号 %2)"
+
+ #: kleo/expirychecker.cpp:150
+ #, kde-format
+@@ -344,6 +376,8 @@ msgid ""
+ "signing certificate</p><p align=center>%1</p><p>expired less than a day ago."
+ "</p>"
+ msgstr ""
++"<p>ルート証明書</p><p align=center><b>%2</b></p><p>あなたのS/MIME 署名用証明"
++"書のための</p><p align=center>%1</p><p>数時間前に失効しました。</p>"
+
+ #: kleo/expirychecker.cpp:155
+ #, kde-format
+@@ -352,6 +386,8 @@ msgid ""
+ "encryption certificate</p><p align=center>%1</p><p>expired less than a day "
+ "ago.</p>"
+ msgstr ""
++"<p>ルート証明書</p><p align=center><b>%2</b></p><p>あなたのS/MIME 暗号用証明"
++"書のための</p><p align=center>%1</p><p>数時間前に失効しました。</p>"
+
+ #: kleo/expirychecker.cpp:160
+ #, kde-format
+@@ -359,6 +395,8 @@ msgid ""
+ "<p>The root certificate</p><p align=center><b>%2</b></p><p>for S/MIME "
+ "certificate</p><p align=center>%1</p><p>expired less than a day ago.</p>"
+ msgstr ""
++"<p>ルート証明書</p><p align=center><b>%2</b></p><p>S/MIME 証明書のための</"
++"p><p align=center>%1</p><p>数時間前に失効しました。</p>"
+
+ #: kleo/expirychecker.cpp:169
+ #, kde-format
+@@ -369,6 +407,8 @@ msgid_plural ""
+ "<p>The root certificate</p><p align=center><b>%3</b></p><p>for your S/MIME "
+ "signing certificate</p><p align=center>%2</p><p>expired %1 days ago.</p>"
+ msgstr[0] ""
++"<p>ルート証明書</p><p align=center><b>%3</b></p><p>あなたのS/MIME 署名用証明"
++"書のための</p><p align=center>%2</p><p>%1日前に失効しました。</p>"
+
+ #: kleo/expirychecker.cpp:177
+ #, kde-format
+@@ -379,6 +419,8 @@ msgid_plural ""
+ "<p>The root certificate</p><p align=center><b>%3</b></p><p>for your S/MIME "
+ "encryption certificate</p><p align=center>%2</p><p>expired %1 days ago.</p>"
+ msgstr[0] ""
++"<p>ルート証明書</p><p align=center><b>%3</b></p><p>あなたのS/MIME 暗号用証明"
++"書のための</p><p align=center>%2</p><p>%1日前に失効しました。</p>"
+
+ #: kleo/expirychecker.cpp:185
+ #, kde-format
+@@ -389,6 +431,8 @@ msgid_plural ""
+ "<p>The root certificate</p><p align=center><b>%3</b></p><p>for S/MIME "
+ "certificate</p><p align=center>%2</p><p>expired %1 days ago.</p>"
+ msgstr[0] ""
++"<p>ルート証明書</p><p align=center><b>%3</b></p><p>S/MIME 証明書のための</"
++"p><p align=center>%2</p><p>%1日前に失効しました。</p>"
+
+ #: kleo/expirychecker.cpp:198
+ #, kde-format
+@@ -397,6 +441,8 @@ msgid ""
+ "your S/MIME signing certificate</p><p align=center>%1</p><p>expired less "
+ "than a day ago.</p>"
+ msgstr ""
++"<p>中間CA証明書</p><p align=center><b>%2</b></p><p>あなたのS/MIME 署名用証明"
++"書のための</p><p align=center>%1</p><p>数時間前に失効しました。</p>"
+
+ #: kleo/expirychecker.cpp:203
+ #, kde-format
+@@ -405,6 +451,8 @@ msgid ""
+ "your S/MIME encryption certificate</p><p align=center>%1</p><p>expired less "
+ "than a day ago.</p>"
+ msgstr ""
++"<p>中間CA証明書</p><p align=center><b>%2</b></p><p>あなたのS/MIME 暗号用証明"
++"書のための</p><p align=center>%1</p><p>数時間前に失効しました。</p>"
+
+ #: kleo/expirychecker.cpp:208
+ #, kde-format
+@@ -412,6 +460,8 @@ msgid ""
+ "<p>The intermediate CA certificate</p><p align=center><b>%2</b></p><p>for S/"
+ "MIME certificate</p><p align=center>%1</p><p>expired less than a day ago.</p>"
+ msgstr ""
++"<p>中間CA証明書</p><p align=center><b>%2</b></p><p>S/MIME証明書のための</"
++"p><p align=center>%1</p><p>数時間前に失効しました。</p>"
+
+ #: kleo/expirychecker.cpp:217
+ #, kde-format
+@@ -424,6 +474,8 @@ msgid_plural ""
+ "your S/MIME signing certificate</p><p align=center>%2</p><p>expired %1 days "
+ "ago.</p>"
+ msgstr[0] ""
++"<p>中間CA証明書</p><p align=center><b>%3</b></p><p>あなたのS/MIME 署名用証明"
++"書のための</p><p align=center>%2</p><p>%1日前に失効しました。</p>"
+
+ #: kleo/expirychecker.cpp:225
+ #, kde-format
+@@ -436,6 +488,8 @@ msgid_plural ""
+ "your S/MIME encryption certificate</p><p align=center>%2</p><p>expired %1 "
+ "days ago.</p>"
+ msgstr[0] ""
++"<p>中間CA証明書</p><p align=center><b>%3</b></p><p>あなたのS/MIME 暗号用証明"
++"書用のための</p><p align=center>%2</p><p>%1日前に失効しました。</p>"
+
+ #: kleo/expirychecker.cpp:233
+ #, kde-format
+@@ -446,6 +500,8 @@ msgid_plural ""
+ "<p>The intermediate CA certificate</p><p align=center><b>%3</b></p><p>for S/"
+ "MIME certificate</p><p align=center>%2</p><p>expired %1 days ago.</p>"
+ msgstr[0] ""
++"<p>中間CA証明書</p><p align=center><b>%3</b></p><p>S/MIME証明書のための</"
++"p><p align=center>%2</p><p>%1日前に失効しました。</p>"
+
+ #: kleo/expirychecker.cpp:246
+ #, kde-format
+@@ -453,6 +509,8 @@ msgid ""
+ "<p>Your S/MIME signing certificate</p><p align=center>%1</p><p>expired less "
+ "than a day ago.</p>"
+ msgstr ""
++"<p>あなたのS/MIME署名用証明書</p><p align=center>%1</p><p>数時間前に失効しま"
++"した。</p>"
+
+ #: kleo/expirychecker.cpp:248
+ #, kde-format
+@@ -460,6 +518,8 @@ msgid ""
+ "<p>Your S/MIME encryption certificate</p><p align=center>%1</p><p>expired "
+ "less than a day ago.</p>"
+ msgstr ""
++"<p>あなたのS/MIME 暗号用証明書</p><p align=center>%1</p><p>は数時間前に失効し"
++"ました。</p>"
+
+ #: kleo/expirychecker.cpp:250
+ #, kde-format
+@@ -467,6 +527,7 @@ msgid ""
+ "<p>The S/MIME certificate for</p><p align=center>%1</p><p>expired less than "
+ "a day ago.</p>"
+ msgstr ""
++"<p>S/MIME証明書</p><p align=center>%1</p><p>は数時間前に失効しました。</p>"
+
+ #: kleo/expirychecker.cpp:256
+ #, kde-format
+@@ -477,6 +538,8 @@ msgid_plural ""
+ "<p>Your S/MIME signing certificate</p><p align=center>%2</p><p>expired %1 "
+ "days ago.</p>"
+ msgstr[0] ""
++"<p>あなたのS/MIME 署名用証明書</p><p align=center>%2</p><p>%1日前に失効しまし"
++"た。</p>"
+
+ #: kleo/expirychecker.cpp:259
+ #, kde-format
+@@ -487,6 +550,8 @@ msgid_plural ""
+ "<p>Your S/MIME encryption certificate</p><p align=center>%2</p><p>expired %1 "
+ "days ago.</p>"
+ msgstr[0] ""
++"<p>あなたのS/MIME 暗号用証明書</p><p align=center>%2</p><p>%1日前に失効しまし"
++"た。</p>"
+
+ #: kleo/expirychecker.cpp:262
+ #, kde-format
+@@ -497,6 +562,7 @@ msgid_plural ""
+ "<p>The S/MIME certificate for</p><p align=center>%2</p><p>expired %1 days "
+ "ago.</p>"
+ msgstr[0] ""
++"<p>S/MIME証明書</p><p align=center>%2</p><p>は%1日前に失効しました。</p>"
+
+ #: kleo/expirychecker.cpp:275
+ #, kde-format
+@@ -504,6 +570,8 @@ msgid ""
+ "<p>The root certificate</p><p align=center><b>%3</b></p><p>for your S/MIME "
+ "signing certificate</p><p align=center>%2</p><p>expires today.</p>"
+ msgstr ""
++"<p>ルート証明書</p><p align=center><b>%3</b></p><p>あなたのS/MIME 署名用証明"
++"書のための</p><p align=center>%2</p><p>本日失効します。</p>"
+
+ #: kleo/expirychecker.cpp:280
+ #, kde-format
+@@ -511,6 +579,8 @@ msgid ""
+ "<p>The root certificate</p><p align=center><b>%3</b></p><p>for your S/MIME "
+ "encryption certificate</p><p align=center>%2</p><p>expires today.</p>"
+ msgstr ""
++"<p>ルート証明書</p><p align=center><b>%3</b></p><p>あなたのS/MIME 暗号用証明"
++"書のための</p><p align=center>%2</p><p>本日失効します。</p>"
+
+ #: kleo/expirychecker.cpp:285
+ #, kde-format
+@@ -518,6 +588,8 @@ msgid ""
+ "<p>The root certificate</p><p align=center><b>%3</b></p><p>for S/MIME "
+ "certificate</p><p align=center>%2</p><p>expires today.</p>"
+ msgstr ""
++"<p>ルート証明書</p><p align=center><b>%3</b></p><p>S/MIME 証明書のための</"
++"p><p align=center>%2</p><p>本日失効します。</p>"
+
+ #: kleo/expirychecker.cpp:294
+ #, kde-format
+@@ -528,6 +600,8 @@ msgid_plural ""
+ "<p>The root certificate</p><p align=center><b>%3</b></p><p>for your S/MIME "
+ "signing certificate</p><p align=center>%2</p><p>expires in %1 days.</p>"
+ msgstr[0] ""
++"<p>ルート証明書</p><p align=center><b>%3</b></p><p>あなたのS/MIME 署名用証明"
++"書のための</p><p align=center>%2</p><p>あと%1日で失効します。</p>"
+
+ #: kleo/expirychecker.cpp:302
+ #, kde-format
+@@ -538,6 +612,8 @@ msgid_plural ""
+ "<p>The root certificate</p><p align=center><b>%3</b></p><p>for your S/MIME "
+ "encryption certificate</p><p align=center>%2</p><p>expires in %1 days.</p>"
+ msgstr[0] ""
++"<p>ルート証明書</p><p align=center><b>%3</b></p><p>あなたのS/MIME 暗号用証明"
++"書のための</p><p align=center>%2</p><p>あと%1日で失効します。</p>"
+
+ #: kleo/expirychecker.cpp:310
+ #, kde-format
+@@ -548,6 +624,8 @@ msgid_plural ""
+ "<p>The root certificate</p><p align=center><b>%3</b></p><p>for S/MIME "
+ "certificate</p><p align=center>%2</p><p>expires in %1 days.</p>"
+ msgstr[0] ""
++"<p>ルート証明書</p><p align=center><b>%3</b></p><p>S/MIME 証明書のための</"
++"p><p align=center>%2</p><p>あと%1日で失効します。</p>"
+
+ #: kleo/expirychecker.cpp:323
+ #, kde-format
+@@ -556,6 +634,8 @@ msgid ""
+ "your S/MIME signing certificate</p><p align=center>%2</p><p>expires today.</"
+ "p>"
+ msgstr ""
++"<p>中間CA証明書</p><p align=center><b>%3</b></p><p>あなたのS/MIME 署名用証明"
++"書のための</p><p align=center>%2</p><p>本日失効します。</p>"
+
+ #: kleo/expirychecker.cpp:328
+ #, kde-format
+@@ -564,6 +644,8 @@ msgid ""
+ "your S/MIME encryption certificate</p><p align=center>%2</p><p>expires today."
+ "</p>"
+ msgstr ""
++"<p>中間CA証明書</p><p align=center><b>%3</b></p><p>あなたのS/MIME 暗号用証明"
++"書のための</p><p align=center>%2</p><p>本日失効します。</p>"
+
+ #: kleo/expirychecker.cpp:333
+ #, kde-format
+@@ -571,6 +653,8 @@ msgid ""
+ "<p>The intermediate CA certificate</p><p align=center><b>%3</b></p><p>for S/"
+ "MIME certificate</p><p align=center>%2</p><p>expires today.</p>"
+ msgstr ""
++"<p>中間CA証明書</p><p align=center><b>%3</b></p><p>S/MIME証明書のための</"
++"p><p align=center>%2</p><p>本日失効します。</p>"
+
+ #: kleo/expirychecker.cpp:341
+ #, kde-format
+@@ -583,6 +667,8 @@ msgid_plural ""
+ "your S/MIME signing certificate</p><p align=center>%2</p><p>expires in %1 "
+ "days.</p>"
+ msgstr[0] ""
++"<p>中間CA証明書</p><p align=center><b>%3</b></p><p>あなたのS/MIME署名用証明書"
++"のための</p><p align=center>%2</p><p>あと%1日で失効します。</p>"
+
+ #: kleo/expirychecker.cpp:349
+ #, kde-format
+@@ -595,6 +681,8 @@ msgid_plural ""
+ "your S/MIME encryption certificate</p><p align=center>%2</p><p>expires in %1 "
+ "days.</p>"
+ msgstr[0] ""
++"<p>中間CA証明書</p><p align=center><b>%3</b></p><p>あなたのS/MIME暗号用証明書"
++"のための</p><p align=center>%2</p><p>あと%1日で失効します。</p>"
+
+ #: kleo/expirychecker.cpp:357
+ #, kde-format
+@@ -605,6 +693,8 @@ msgid_plural ""
+ "<p>The intermediate CA certificate</p><p align=center><b>%3</b></p><p>for S/"
+ "MIME certificate</p><p align=center>%2</p><p>expires in %1 days.</p>"
+ msgstr[0] ""
++"<p>中間CA証明書</p><p align=center><b>%3</b></p><p>S/MIME証明書のための</"
++"p><p align=center>%2</p><p>あと%1日で失効します。</p>"
+
+ #: kleo/expirychecker.cpp:369
+ #, kde-format
+@@ -612,6 +702,8 @@ msgid ""
+ "<p>Your S/MIME signing certificate</p><p align=center>%2</p><p>expires today."
+ "</p>"
+ msgstr ""
++"<p>あなたのS/MIME 署名用証明書</p><p align=center>%2</p><p>本日失効します。</"
++"p>"
+
+ #: kleo/expirychecker.cpp:371
+ #, kde-format
+@@ -619,12 +711,14 @@ msgid ""
+ "<p>Your S/MIME encryption certificate</p><p align=center>%2</p><p>expires "
+ "today.</p>"
+ msgstr ""
++"<p>あなたのS/MIME 暗号用証明書</p><p align=center>%2</p><p>本日失効します。</"
++"p>"
+
+ #: kleo/expirychecker.cpp:373
+ #, kde-format
+ msgid ""
+ "<p>The S/MIME certificate for</p><p align=center>%2</p><p>expires today.</p>"
+-msgstr ""
++msgstr "<p>S/MIME証明書</p><p align=center>%2</p><p>本日失効します。</p>"
+
+ #: kleo/expirychecker.cpp:380
+ #, kde-format
+@@ -635,6 +729,8 @@ msgid_plural ""
+ "<p>Your S/MIME signing certificate</p><p align=center>%2</p><p>expires in %1 "
+ "days.</p>"
+ msgstr[0] ""
++"<p>あなたのS/MIME 署名用証明書</p><p align=center>%2</p><p>あと%1日で失効しま"
++"す。</p>"
+
+ #: kleo/expirychecker.cpp:386
+ #, kde-format
+@@ -645,6 +741,8 @@ msgid_plural ""
+ "<p>Your S/MIME encryption certificate</p><p align=center>%2</p><p>expires in "
+ "%1 days.</p>"
+ msgstr[0] ""
++"<p>あなたのS/MIME 暗号用証明書</p><p align=center>%2</p><p>あと%1日で失効しま"
++"す。</p>"
+
+ #: kleo/expirychecker.cpp:392
+ #, kde-format
+@@ -655,6 +753,7 @@ msgid_plural ""
+ "<p>The S/MIME certificate for</p><p align=center>%2</p><p>expires in %1 days."
+ "</p>"
+ msgstr[0] ""
++"<p>S/MIME証明書</p><p align=center>%2</p><p>あと%1日で失効します。</p>"
+
+ #: kleo/keyfiltermanager.cpp:71
+ #, kde-format
+@@ -691,97 +790,105 @@ msgstr "証明されていない証明書"
+ msgid "Not Validated Certificates"
+ msgstr "検証されていない証明書"
+
+-#: models/keylistmodel.cpp:302 models/useridlistmodel.cpp:105
++#: models/keylistmodel.cpp:319 models/useridlistmodel.cpp:105
++#: models/keylistmodel.cpp:302
+ #, kde-format
+ msgid "Name"
+ msgstr "名前"
+
+-#: models/keylistmodel.cpp:304 models/useridlistmodel.cpp:106
++#: models/keylistmodel.cpp:321 models/useridlistmodel.cpp:106
++#: models/keylistmodel.cpp:304
+ #, kde-format
+ msgid "E-Mail"
+ msgstr "メール"
+
+-#: models/keylistmodel.cpp:306
++#: models/keylistmodel.cpp:323 models/keylistmodel.cpp:306
+ #, kde-format
+ msgid "User-IDs"
+ msgstr "ユーザ ID"
+
+-#: models/keylistmodel.cpp:308 models/subkeylistmodel.cpp:159
+-#: models/useridlistmodel.cpp:107
++#: models/keylistmodel.cpp:325 models/subkeylistmodel.cpp:159
++#: models/useridlistmodel.cpp:107 models/keylistmodel.cpp:308
+ #, kde-format
+ msgid "Valid From"
+ msgstr "ここから有効"
+
+-#: models/keylistmodel.cpp:310 models/subkeylistmodel.cpp:161
+-#: models/useridlistmodel.cpp:108
++#: models/keylistmodel.cpp:327 models/subkeylistmodel.cpp:161
++#: models/useridlistmodel.cpp:108 models/keylistmodel.cpp:310
+ #, kde-format
+ msgid "Valid Until"
+ msgstr "ここまで有効"
+
+-#: models/keylistmodel.cpp:312
++#: models/keylistmodel.cpp:329 models/keylistmodel.cpp:312
+ #, kde-format
+ msgid "Protocol"
+ msgstr "プロトコル"
+
+-#: models/keylistmodel.cpp:314 models/keylistmodel.cpp:316
+-#: utils/formatting.cpp:467
++#: models/keylistmodel.cpp:331 models/keylistmodel.cpp:333
++#: utils/formatting.cpp:478 models/keylistmodel.cpp:314
++#: models/keylistmodel.cpp:316 utils/formatting.cpp:467
+ #, kde-format
+ msgid "Key-ID"
+ msgstr "鍵ID"
+
++#: models/keylistmodel.cpp:335 utils/formatting.cpp:481
+ #: models/keylistmodel.cpp:318 utils/formatting.cpp:470
+ #, kde-format
+ msgid "Fingerprint"
+ msgstr "フィンガープリント"
+
++#: models/keylistmodel.cpp:337 utils/formatting.cpp:448
+ #: models/keylistmodel.cpp:320 utils/formatting.cpp:437
+ #, kde-format
+ msgid "Issuer"
+ msgstr "発行者"
+
+-#: models/keylistmodel.cpp:322
++#: models/keylistmodel.cpp:339 models/keylistmodel.cpp:322
+ #, kde-format
+ msgid "Serial Number"
+ msgstr "シリアル番号"
+
+-#: models/keylistmodel.cpp:324
++#: models/keylistmodel.cpp:341 models/keylistmodel.cpp:324
+ #, kde-format
+ msgid "Origin"
+ msgstr "(鍵の入手)元"
+
+-#: models/keylistmodel.cpp:326
++#: models/keylistmodel.cpp:343 models/keylistmodel.cpp:326
+ #, kde-format
+ msgid "Last Update"
+ msgstr "最終更新"
+
+-#: models/keylistmodel.cpp:328
++#: models/keylistmodel.cpp:345 models/keylistmodel.cpp:328
+ #, kde-format
+ msgid "Certification Trust"
+ msgstr "証明の信頼"
+
+-#: models/keylistmodel.cpp:330 models/useridlistmodel.cpp:111
++#: models/keylistmodel.cpp:347 models/useridlistmodel.cpp:111
++#: models/keylistmodel.cpp:330
+ #, kde-format
+ msgid "Tags"
+ msgstr "タグ"
+
+-#: models/keylistmodel.cpp:378 models/useridlistmodel.cpp:69
++#: models/keylistmodel.cpp:395 models/useridlistmodel.cpp:69
++#: models/keylistmodel.cpp:378
+ #, kde-format
+ msgctxt "text for screen readers for an empty name"
+ msgid "no name"
+ msgstr "名無し"
+
+-#: models/keylistmodel.cpp:385 models/useridlistmodel.cpp:70
++#: models/keylistmodel.cpp:402 models/useridlistmodel.cpp:70
++#: models/keylistmodel.cpp:385
+ #, kde-format
+ msgctxt "text for screen readers for an empty email address"
+ msgid "no email"
+ msgstr "メール無し"
+
+-#: models/keylistmodel.cpp:447
++#: models/keylistmodel.cpp:464 models/keylistmodel.cpp:447
+ #, kde-format
+ msgid "Loading..."
+ msgstr "ロードしてます..."
+
+-#: models/keylistmodel.cpp:525
++#: models/keylistmodel.cpp:542 models/keylistmodel.cpp:525
+ #, kde-format
+ msgctxt "text for screen readers"
+ msgid "not applicable"
+@@ -792,14 +899,15 @@ msgstr "適用外"
+ msgid "ID"
+ msgstr "ID"
+
+-#: models/subkeylistmodel.cpp:157 utils/formatting.cpp:461
+-#: utils/formatting.cpp:505
++#: models/subkeylistmodel.cpp:157 utils/formatting.cpp:472
++#: utils/formatting.cpp:516 utils/formatting.cpp:461 utils/formatting.cpp:505
+ #, kde-format
+ msgid "Type"
+ msgstr "タイプ"
+
+ #: models/subkeylistmodel.cpp:163 models/useridlistmodel.cpp:109
+-#: utils/formatting.cpp:492 utils/formatting.cpp:494
++#: utils/formatting.cpp:503 utils/formatting.cpp:505 utils/formatting.cpp:492
++#: utils/formatting.cpp:494
+ #, kde-format
+ msgid "Status"
+ msgstr "ステータス"
+@@ -809,8 +917,8 @@ msgstr "ステータス"
+ msgid "Strength"
+ msgstr "強度"
+
+-#: models/subkeylistmodel.cpp:167 utils/formatting.cpp:464
+-#: utils/formatting.cpp:508
++#: models/subkeylistmodel.cpp:167 utils/formatting.cpp:475
++#: utils/formatting.cpp:519 utils/formatting.cpp:464 utils/formatting.cpp:508
+ #, kde-format
+ msgid "Usage"
+ msgstr "用途"
+@@ -862,7 +970,8 @@ msgstr "エクスポート可"
+ msgid "Trust Signature For"
+ msgstr "証明署名"
+
+-#: models/useridlistmodel.cpp:167 utils/formatting.cpp:880
++#: models/useridlistmodel.cpp:167 utils/formatting.cpp:891
++#: utils/formatting.cpp:880
+ #, kde-format
+ msgid "class %1"
+ msgstr "クラス %1"
+@@ -943,12 +1052,12 @@ msgctxt "@label:listbox Reader for smart cards"
+ msgid "Reader to connect to"
+ msgstr "接続するスマートカードリーダ"
+
+-#: ui/cryptoconfigmodule.cpp:165
++#: ui/cryptoconfigmodule.cpp:164 ui/cryptoconfigmodule.cpp:165
+ #, kde-format
+ msgid "GpgConf Error"
+ msgstr "GpgConf エラー"
+
+-#: ui/cryptoconfigmodule.cpp:222
++#: ui/cryptoconfigmodule.cpp:221 ui/cryptoconfigmodule.cpp:222
+ #, kde-format
+ msgid ""
+ "The gpgconf tool used to provide the information for this dialog does not "
+@@ -959,7 +1068,7 @@ msgstr ""
+ "た。正しくインストールされていないようです。コマンドラインで %1 を実行して詳"
+ "細を確認してください。"
+
+-#: ui/cryptoconfigmodule.cpp:651
++#: ui/cryptoconfigmodule.cpp:650 ui/cryptoconfigmodule.cpp:651
+ #, kde-format
+ msgctxt ""
+ "Translate this to 'yes' or 'no' (use the English words!) depending on "
+@@ -971,65 +1080,65 @@ msgctxt ""
+ msgid "yes"
+ msgstr "no"
+
+-#: ui/cryptoconfigmodule.cpp:705
++#: ui/cryptoconfigmodule.cpp:704 ui/cryptoconfigmodule.cpp:705
+ msgid "0 - None"
+ msgstr "0 - なし"
+
+-#: ui/cryptoconfigmodule.cpp:706
++#: ui/cryptoconfigmodule.cpp:705 ui/cryptoconfigmodule.cpp:706
+ msgid "1 - Basic"
+ msgstr "1 - 基本"
+
+-#: ui/cryptoconfigmodule.cpp:707
++#: ui/cryptoconfigmodule.cpp:706 ui/cryptoconfigmodule.cpp:707
+ msgid "2 - Verbose"
+ msgstr "2 - 詳細"
+
+-#: ui/cryptoconfigmodule.cpp:708
++#: ui/cryptoconfigmodule.cpp:707 ui/cryptoconfigmodule.cpp:708
+ msgid "3 - More Verbose"
+ msgstr "3 - より詳細"
+
+-#: ui/cryptoconfigmodule.cpp:709
++#: ui/cryptoconfigmodule.cpp:708 ui/cryptoconfigmodule.cpp:709
+ msgid "4 - All"
+ msgstr "4 - すべて"
+
+-#: ui/cryptoconfigmodule.cpp:721
++#: ui/cryptoconfigmodule.cpp:720 ui/cryptoconfigmodule.cpp:721
+ #, kde-format
+ msgid "Set the debugging level to"
+ msgstr "デバッグレベルを指定"
+
+-#: ui/cryptoconfigmodule.cpp:944
++#: ui/cryptoconfigmodule.cpp:943 ui/cryptoconfigmodule.cpp:944
+ #, kde-format
+ msgid "Show..."
+ msgstr "表示..."
+
+-#: ui/cryptoconfigmodule.cpp:944
++#: ui/cryptoconfigmodule.cpp:943 ui/cryptoconfigmodule.cpp:944
+ #, kde-format
+ msgid "Edit..."
+ msgstr "編集..."
+
+-#: ui/cryptoconfigmodule.cpp:997
++#: ui/cryptoconfigmodule.cpp:996 ui/cryptoconfigmodule.cpp:997
+ #, kde-format
+ msgid ""
+ "Configuration of directory services is not possible because the used gpgme "
+ "libraries are too old."
+ msgstr "ディレクトリサービスの設定ができません。gpgme ライブラリが古すぎます。"
+
+-#: ui/cryptoconfigmodule.cpp:999
++#: ui/cryptoconfigmodule.cpp:998 ui/cryptoconfigmodule.cpp:999
+ #, kde-format
+ msgid "Sorry"
+ msgstr "すみません"
+
+-#: ui/cryptoconfigmodule.cpp:1006
++#: ui/cryptoconfigmodule.cpp:1005 ui/cryptoconfigmodule.cpp:1006
+ #, kde-format
+ msgctxt "@title:window"
+ msgid "Configure Directory Services"
+ msgstr "ディレクトリサービスを設定"
+
+-#: ui/cryptoconfigmodule.cpp:1035
++#: ui/cryptoconfigmodule.cpp:1034 ui/cryptoconfigmodule.cpp:1035
+ #, kde-format
+ msgid "None configured"
+ msgstr "設定なし"
+
+-#: ui/cryptoconfigmodule.cpp:1037
++#: ui/cryptoconfigmodule.cpp:1036 ui/cryptoconfigmodule.cpp:1037
+ #, kde-format
+ msgid "1 server configured"
+ msgid_plural "%1 servers configured"
+@@ -1534,8 +1643,8 @@ msgstr "<placeholder>不明</placeholder>"
+ #: ui/keyrequester.cpp:234 ui/keyselectiondialog.cpp:680
+ #, kde-format
+ msgid ""
+-"<qt><p>An error occurred while fetching the keys from the backend:</p><p><b>"
+-"%1</b></p></qt>"
++"<qt><p>An error occurred while fetching the keys from the backend:</"
++"p><p><b>%1</b></p></qt>"
+ msgstr ""
+ "<qt><p>バックエンドから鍵を取得中にエラーが発生しました:</p><p>%1</p></qt>"
+
+@@ -1609,7 +1718,7 @@ msgctxt "Name <email> (validity, type, created: date)"
+ msgid "%1 (%2, %3, created: %4)"
+ msgstr "%1 (%2, %3, 作成: %4)"
+
+-#: ui/keyselectioncombo.cpp:661
++#: ui/keyselectioncombo.cpp:671 ui/keyselectioncombo.cpp:661
+ #, kde-format
+ msgid "Loading keys ..."
+ msgstr "鍵をロード中..."
+@@ -1690,14 +1799,14 @@ msgstr "<b>%1</b> の OpenPGP 鍵"
+ msgid "S/MIME key for <b>%1</b>"
+ msgstr "<b>%1</b> の S/MIME 鍵"
+
+-#: ui/keyselectiondialog.cpp:278 utils/formatting.cpp:454
+-#: utils/formatting.cpp:497
++#: ui/keyselectiondialog.cpp:278 utils/formatting.cpp:465
++#: utils/formatting.cpp:508 utils/formatting.cpp:454 utils/formatting.cpp:497
+ #, kde-format
+ msgid "Valid from"
+ msgstr "ここから有効"
+
+-#: ui/keyselectiondialog.cpp:279 utils/formatting.cpp:457
+-#: utils/formatting.cpp:500
++#: ui/keyselectiondialog.cpp:279 utils/formatting.cpp:468
++#: utils/formatting.cpp:511 utils/formatting.cpp:457 utils/formatting.cpp:500
+ #, kde-format
+ msgid "Valid until"
+ msgstr "ここまで有効"
+@@ -1724,7 +1833,7 @@ msgstr "ステータス"
+ #, kde-format
+ msgctxt "Compliance of key"
+ msgid "Compliance"
+-msgstr ""
++msgstr "コンプライアンス"
+
+ #: ui/keyselectiondialog.cpp:426
+ #, kde-format
+@@ -1829,35 +1938,35 @@ msgctxt "@title:window"
+ msgid "Error"
+ msgstr "エラー"
+
+-#: ui/newkeyapprovaldialog.cpp:141
++#: ui/newkeyapprovaldialog.cpp:142 ui/newkeyapprovaldialog.cpp:141
+ #, kde-format
+ msgctxt "@action:button"
+ msgid "Show Details"
+ msgstr "詳細を見る"
+
+-#: ui/newkeyapprovaldialog.cpp:183
++#: ui/newkeyapprovaldialog.cpp:184 ui/newkeyapprovaldialog.cpp:183
+ #, kde-format
+ msgctxt "@action:button"
+ msgid "Show Matching Keys"
+ msgstr "マッチする鍵を見る"
+
+-#: ui/newkeyapprovaldialog.cpp:184
++#: ui/newkeyapprovaldialog.cpp:185 ui/newkeyapprovaldialog.cpp:184
+ #, kde-format
+ msgid "Show keys matching the email address"
+ msgstr "メールアドレスにマッチする鍵を見る"
+
+-#: ui/newkeyapprovaldialog.cpp:187
++#: ui/newkeyapprovaldialog.cpp:188 ui/newkeyapprovaldialog.cpp:187
+ #, kde-format
+ msgctxt "@action:button short for 'Show all keys'"
+ msgid "Show All"
+ msgstr "すべてを見る"
+
+-#: ui/newkeyapprovaldialog.cpp:188
++#: ui/newkeyapprovaldialog.cpp:189 ui/newkeyapprovaldialog.cpp:188
+ #, kde-format
+ msgid "Show all keys"
+ msgstr "すべての鍵を見る"
+
+-#: ui/newkeyapprovaldialog.cpp:271
++#: ui/newkeyapprovaldialog.cpp:272 ui/newkeyapprovaldialog.cpp:271
+ #, kde-format
+ msgctxt ""
+ "@info:tooltip for a 'Generate new key pair' action in a combobox when a user "
+@@ -1871,67 +1980,69 @@ msgstr ""
+ "復号し、署名するのに必要です。この鍵を保護するためにパスフレーズの問い合わせ"
+ "があります。保護された鍵はあなたのホームディレクトリに保管されます。"
+
+-#: ui/newkeyapprovaldialog.cpp:296
++#: ui/newkeyapprovaldialog.cpp:297 ui/newkeyapprovaldialog.cpp:296
+ #, kde-format
+ msgctxt "@title:window"
+ msgid "Security approval"
+ msgstr "セキュリティの承認"
+
+-#: ui/newkeyapprovaldialog.cpp:303 ui/newkeyapprovaldialog.cpp:306
+-#: utils/formatting.cpp:771
++#: ui/newkeyapprovaldialog.cpp:304 ui/newkeyapprovaldialog.cpp:307
++#: utils/formatting.cpp:782 ui/newkeyapprovaldialog.cpp:303
++#: ui/newkeyapprovaldialog.cpp:306 utils/formatting.cpp:771
+ #, kde-format
+ msgid "OpenPGP"
+ msgstr "OpenPGP"
+
+-#: ui/newkeyapprovaldialog.cpp:394
++#: ui/newkeyapprovaldialog.cpp:398 ui/newkeyapprovaldialog.cpp:394
+ #, kde-format
+ msgid "Generating key for '%1'..."
+ msgstr "'%1' の鍵を生成..."
+
+-#: ui/newkeyapprovaldialog.cpp:394
++#: ui/newkeyapprovaldialog.cpp:398 ui/newkeyapprovaldialog.cpp:394
+ #, kde-format
+ msgid "This can take several minutes."
+ msgstr "数分かかることがあります。"
+
+-#: ui/newkeyapprovaldialog.cpp:396
++#: ui/newkeyapprovaldialog.cpp:400 ui/newkeyapprovaldialog.cpp:396
+ #, kde-format
+ msgctxt "@title:window"
+ msgid "Key generation"
+ msgstr "鍵生成"
+
+-#: ui/newkeyapprovaldialog.cpp:427
++#: ui/newkeyapprovaldialog.cpp:439 ui/newkeyapprovaldialog.cpp:427
+ #, kde-format
+ msgid "Operation Failed"
+ msgstr "操作に失敗しました"
+
++#: ui/newkeyapprovaldialog.cpp:554 ui/newkeyapprovaldialog.cpp:650
+ #: ui/newkeyapprovaldialog.cpp:542 ui/newkeyapprovaldialog.cpp:638
+ #, kde-format
+ msgid "Generate a new key pair"
+ msgstr "新しい鍵ペアを生成"
+
+-#: ui/newkeyapprovaldialog.cpp:545
++#: ui/newkeyapprovaldialog.cpp:557 ui/newkeyapprovaldialog.cpp:545
+ #, kde-format
+ msgid "Don't confirm identity and integrity"
+ msgstr "アイデンティティと一貫性を確かめない"
+
+-#: ui/newkeyapprovaldialog.cpp:547
++#: ui/newkeyapprovaldialog.cpp:559 ui/newkeyapprovaldialog.cpp:547
+ #, kde-format
+ msgctxt "@info:tooltip for not selecting a key for signing."
+ msgid "The E-Mail will not be cryptographically signed."
+ msgstr "このメールは暗号的に署名されません。"
+
+-#: ui/newkeyapprovaldialog.cpp:565
++#: ui/newkeyapprovaldialog.cpp:577 ui/newkeyapprovaldialog.cpp:565
+ #, kde-format
+ msgctxt "Caption for signing key selection"
+ msgid "Confirm identity '%1' as:"
+ msgstr "'%1' のアイデンティティを確認する:"
+
+-#: ui/newkeyapprovaldialog.cpp:642
++#: ui/newkeyapprovaldialog.cpp:654 ui/newkeyapprovaldialog.cpp:642
+ #, kde-format
+ msgid "No key. Recipient will be unable to decrypt."
+ msgstr "鍵がありません。宛先では復号できないでしょう。"
+
+-#: ui/newkeyapprovaldialog.cpp:645
++#: ui/newkeyapprovaldialog.cpp:657 ui/newkeyapprovaldialog.cpp:645
+ #, kde-format
+ msgctxt "@info:tooltip for No Key selected for a specific recipient."
+ msgid ""
+@@ -1942,18 +2053,18 @@ msgstr ""
+ "この宛先に鍵を選定しない。<br/><br/>この宛先は暗号化されたメールを受けとりま"
+ "すが、このダイアログで選定されたほかの鍵でしか復号できません。"
+
+-#: ui/newkeyapprovaldialog.cpp:762
++#: ui/newkeyapprovaldialog.cpp:774 ui/newkeyapprovaldialog.cpp:762
+ #, kde-format
+ msgctxt "Encrypt to self (email address):"
+ msgid "Encrypt to self (%1):"
+ msgstr "自分宛に暗号化する (%1):"
+
+-#: ui/newkeyapprovaldialog.cpp:779
++#: ui/newkeyapprovaldialog.cpp:791 ui/newkeyapprovaldialog.cpp:779
+ #, kde-format
+ msgid "Encrypt to others:"
+ msgstr "ほかの人向けに暗号化する:"
+
+-#: ui/newkeyapprovaldialog.cpp:817
++#: ui/newkeyapprovaldialog.cpp:829 ui/newkeyapprovaldialog.cpp:817
+ #, kde-format
+ msgid "Generate"
+ msgstr "生成"
+@@ -1986,186 +2097,198 @@ msgctxt "@item:inlistbox"
+ msgid "Custom reader ID or port number"
+ msgstr "特定のスマートカードリーダ ID またはポートナンバー"
+
+-#: utils/compliance.cpp:134
++#: utils/compliance.cpp:149 utils/compliance.cpp:134
+ #, kde-format
+ msgid "VS-NfD compliant"
+ msgstr "VS-NfD 準拠"
+
+-#: utils/compliance.cpp:134
++#: utils/compliance.cpp:149 utils/compliance.cpp:134
+ #, kde-format
+ msgid "Not VS-NfD compliant"
+ msgstr "VS-NfD 準拠ではない"
+
+-#: utils/formatting.cpp:310
++#: utils/formatting.cpp:325 utils/formatting.cpp:310
+ #, kde-format
+ msgid "%1-bit %2 (secret key available)"
+ msgstr "%1-bit %2 (秘密鍵が利用可能)"
+
+-#: utils/formatting.cpp:312 utils/formatting.cpp:323
++#: utils/formatting.cpp:327 utils/formatting.cpp:338 utils/formatting.cpp:312
++#: utils/formatting.cpp:323
+ #, kde-format
+ msgid "%1-bit %2"
+ msgstr "%1-bit %2"
+
+-#: utils/formatting.cpp:335 utils/formatting.cpp:357
++#: utils/formatting.cpp:346 utils/formatting.cpp:368 utils/formatting.cpp:335
++#: utils/formatting.cpp:357
+ #, kde-format
+ msgid "Signing (Qualified)"
+ msgstr "署名 (資格あり)"
+
+-#: utils/formatting.cpp:337 utils/formatting.cpp:359
++#: utils/formatting.cpp:348 utils/formatting.cpp:370 utils/formatting.cpp:337
++#: utils/formatting.cpp:359
+ #, kde-format
+ msgid "Signing"
+ msgstr "署名"
+
+-#: utils/formatting.cpp:341 utils/formatting.cpp:363
++#: utils/formatting.cpp:352 utils/formatting.cpp:374 utils/formatting.cpp:341
++#: utils/formatting.cpp:363
+ #, kde-format
+ msgid "Encryption"
+ msgstr "暗号化"
+
+-#: utils/formatting.cpp:344 utils/formatting.cpp:366
++#: utils/formatting.cpp:355 utils/formatting.cpp:377 utils/formatting.cpp:344
++#: utils/formatting.cpp:366
+ #, kde-format
+ msgid "Certifying User-IDs"
+ msgstr "ユーザ ID を証明する"
+
+-#: utils/formatting.cpp:347 utils/formatting.cpp:369
++#: utils/formatting.cpp:358 utils/formatting.cpp:380 utils/formatting.cpp:347
++#: utils/formatting.cpp:369
+ #, kde-format
+ msgid "SSH Authentication"
+ msgstr "SSH 認証"
+
+-#: utils/formatting.cpp:399 utils/formatting.cpp:492
++#: utils/formatting.cpp:410 utils/formatting.cpp:503 utils/formatting.cpp:399
++#: utils/formatting.cpp:492
+ #, kde-format
+ msgid "Revoked"
+ msgstr "取り消し済み"
+
+-#: utils/formatting.cpp:401 utils/formatting.cpp:494
++#: utils/formatting.cpp:412 utils/formatting.cpp:505 utils/formatting.cpp:401
++#: utils/formatting.cpp:494
+ #, kde-format
+ msgid "Expired"
+ msgstr "失効"
+
+-#: utils/formatting.cpp:403
++#: utils/formatting.cpp:414 utils/formatting.cpp:403
+ #, kde-format
+ msgid "Disabled"
+ msgstr "無効"
+
+-#: utils/formatting.cpp:412
++#: utils/formatting.cpp:423 utils/formatting.cpp:412
+ #, kde-format
+ msgid "All User-IDs are certified."
+ msgstr "すべてのユーザ ID は証明されました。"
+
+-#: utils/formatting.cpp:418
++#: utils/formatting.cpp:429 utils/formatting.cpp:418
+ #, kde-format
+ msgid "One User-ID is not certified."
+ msgid_plural "%1 User-IDs are not certified."
+ msgstr[0] "%1 User-ID が証明されてません。"
+
+-#: utils/formatting.cpp:421 utils/formatting.cpp:424
++#: utils/formatting.cpp:432 utils/formatting.cpp:435 utils/formatting.cpp:421
++#: utils/formatting.cpp:424
+ #, kde-format
+ msgid "The validity cannot be checked at the moment."
+ msgstr "いまのところ有効性は確認できません。"
+
+-#: utils/formatting.cpp:434
++#: utils/formatting.cpp:445 utils/formatting.cpp:434
+ #, kde-format
+ msgid "Serial number"
+ msgstr "シリアル番号"
+
+-#: utils/formatting.cpp:443
++#: utils/formatting.cpp:454 utils/formatting.cpp:443
+ #, kde-format
+ msgid "Subject"
+ msgstr "サブジェクト"
+
+-#: utils/formatting.cpp:443
++#: utils/formatting.cpp:454 utils/formatting.cpp:443
+ #, kde-format
+ msgid "User-ID"
+ msgstr "ユーザ ID"
+
+-#: utils/formatting.cpp:448
++#: utils/formatting.cpp:459 utils/formatting.cpp:448
+ #, kde-format
+ msgid "a.k.a."
+ msgstr "別名"
+
+-#: utils/formatting.cpp:474
++#: utils/formatting.cpp:485 utils/formatting.cpp:474
+ #, kde-format
+ msgid "Certification trust"
+ msgstr "証明の信頼"
+
+-#: utils/formatting.cpp:476
++#: utils/formatting.cpp:487 utils/formatting.cpp:476
+ #, kde-format
+ msgid "Trusted issuer?"
+ msgstr "信頼される発行者?"
+
+-#: utils/formatting.cpp:476
++#: utils/formatting.cpp:487 utils/formatting.cpp:476
+ #, kde-format
+ msgid "Yes"
+ msgstr "はい"
+
+-#: utils/formatting.cpp:476
++#: utils/formatting.cpp:487 utils/formatting.cpp:476
+ #, kde-format
+ msgid "No"
+ msgstr "いいえ"
+
+-#: utils/formatting.cpp:482 utils/formatting.cpp:484 utils/formatting.cpp:512
+-#: utils/formatting.cpp:514
++#: utils/formatting.cpp:493 utils/formatting.cpp:495 utils/formatting.cpp:523
++#: utils/formatting.cpp:525 utils/formatting.cpp:482 utils/formatting.cpp:484
++#: utils/formatting.cpp:512 utils/formatting.cpp:514
+ #, kde-format
+ msgid "Stored"
+ msgstr "保管先"
+
+-#: utils/formatting.cpp:482 utils/formatting.cpp:512
++#: utils/formatting.cpp:493 utils/formatting.cpp:523 utils/formatting.cpp:482
++#: utils/formatting.cpp:512
+ #, kde-format
+ msgctxt "stored..."
+ msgid "on SmartCard with serial no. %1"
+ msgstr "スマートカード上、シリアルナンバー %1"
+
+-#: utils/formatting.cpp:484 utils/formatting.cpp:514
++#: utils/formatting.cpp:495 utils/formatting.cpp:525 utils/formatting.cpp:484
++#: utils/formatting.cpp:514
+ #, kde-format
+ msgctxt "stored..."
+ msgid "on this computer"
+ msgstr "このコンピュータ"
+
+-#: utils/formatting.cpp:490
++#: utils/formatting.cpp:501 utils/formatting.cpp:490
+ #, kde-format
+ msgid "Subkey"
+ msgstr "副鍵"
+
+-#: utils/formatting.cpp:538
++#: utils/formatting.cpp:549 utils/formatting.cpp:538
+ #, kde-format
+ msgid "Some keys are revoked, expired, disabled, or invalid."
+ msgstr ""
+ "ある鍵は取り消されているか、失効しているか、無効とされているか有効ではありま"
+ "せん。"
+
+-#: utils/formatting.cpp:542
++#: utils/formatting.cpp:553 utils/formatting.cpp:542
+ #, kde-format
+ msgid "All keys are certified."
+ msgstr "すべての鍵が証明されています。"
+
+-#: utils/formatting.cpp:544
++#: utils/formatting.cpp:555 utils/formatting.cpp:544
+ #, kde-format
+ msgid "Some keys are not certified."
+ msgstr "ある鍵は証明されていません。"
+
+-#: utils/formatting.cpp:548
++#: utils/formatting.cpp:559 utils/formatting.cpp:548
+ #, kde-format
+ msgid "The validity of the keys cannot be checked at the moment."
+ msgstr "この鍵の有効性はいまのところ確認できません。"
+
+-#: utils/formatting.cpp:562
++#: utils/formatting.cpp:573 utils/formatting.cpp:562
+ #, kde-format
+ msgctxt "@info:tooltip"
+ msgid "This group does not contain any keys."
+ msgstr "このグループにはなにも鍵がありません。"
+
+-#: utils/formatting.cpp:582
++#: utils/formatting.cpp:593 utils/formatting.cpp:582
+ #, kde-format
+ msgid "Keys:"
+ msgstr "鍵:"
+
+-#: utils/formatting.cpp:590
++#: utils/formatting.cpp:601 utils/formatting.cpp:590
+ #, kde-format
+ msgctxt "this follows a list of keys"
+ msgid "and 1 more key"
+ msgid_plural "and %1 more keys"
+ msgstr[0] "と %1 個の鍵"
+
+-#: utils/formatting.cpp:618
++#: utils/formatting.cpp:629 utils/formatting.cpp:618
+ #, kde-format
+ msgctxt ""
+ "date format suitable for screen readers; d: day as a number without a "
+@@ -2173,290 +2296,302 @@ msgctxt ""
+ msgid "MMMM d, yyyy"
+ msgstr "MMMM d, yyyy"
+
+-#: utils/formatting.cpp:664 utils/formatting.cpp:699
++#: utils/formatting.cpp:675 utils/formatting.cpp:710 utils/formatting.cpp:664
++#: utils/formatting.cpp:699
+ #, kde-format
+ msgctxt "@info the expiration date of the key is unknown"
+ msgid "unknown"
+ msgstr "不明"
+
+-#: utils/formatting.cpp:706 utils/formatting.cpp:715
++#: utils/formatting.cpp:717 utils/formatting.cpp:726 utils/formatting.cpp:706
++#: utils/formatting.cpp:715
+ #, kde-format
+ msgid "unlimited"
+ msgstr "無制限"
+
+-#: utils/formatting.cpp:768
++#: utils/formatting.cpp:779 utils/formatting.cpp:768
+ #, kde-format
+ msgctxt "X.509/CMS encryption standard"
+ msgid "S/MIME"
+ msgstr "S/MIME"
+
+-#: utils/formatting.cpp:773
++#: utils/formatting.cpp:784 utils/formatting.cpp:773
+ #, kde-format
+ msgctxt "Unknown encryption protocol"
+ msgid "Unknown"
+ msgstr "不明"
+
+-#: utils/formatting.cpp:789
++#: utils/formatting.cpp:800 utils/formatting.cpp:789
+ #, kde-format
+ msgctxt "a group of keys/certificates"
+ msgid "Group"
+ msgstr "グループ"
+
+-#: utils/formatting.cpp:805 utils/formatting.cpp:850
++#: utils/formatting.cpp:816 utils/formatting.cpp:861 utils/formatting.cpp:805
++#: utils/formatting.cpp:850
+ #, kde-format
+ msgctxt "unknown trust level"
+ msgid "unknown"
+ msgstr "不明"
+
+-#: utils/formatting.cpp:807 utils/formatting.cpp:854
++#: utils/formatting.cpp:818 utils/formatting.cpp:865 utils/formatting.cpp:807
++#: utils/formatting.cpp:854
+ #, kde-format
+ msgid "untrusted"
+ msgstr "信頼されていない"
+
+-#: utils/formatting.cpp:809 utils/formatting.cpp:856
++#: utils/formatting.cpp:820 utils/formatting.cpp:867 utils/formatting.cpp:809
++#: utils/formatting.cpp:856
+ #, kde-format
+ msgctxt "marginal trust"
+ msgid "marginal"
+ msgstr "ギリギリ"
+
+-#: utils/formatting.cpp:811 utils/formatting.cpp:858
++#: utils/formatting.cpp:822 utils/formatting.cpp:869 utils/formatting.cpp:811
++#: utils/formatting.cpp:858
+ #, kde-format
+ msgctxt "full trust"
+ msgid "full"
+ msgstr "完全"
+
+-#: utils/formatting.cpp:813 utils/formatting.cpp:860
++#: utils/formatting.cpp:824 utils/formatting.cpp:871 utils/formatting.cpp:813
++#: utils/formatting.cpp:860
+ #, kde-format
+ msgctxt "ultimate trust"
+ msgid "ultimate"
+ msgstr "究極"
+
+-#: utils/formatting.cpp:815 utils/formatting.cpp:852
++#: utils/formatting.cpp:826 utils/formatting.cpp:863 utils/formatting.cpp:815
++#: utils/formatting.cpp:852
+ #, kde-format
+ msgctxt "undefined trust"
+ msgid "undefined"
+ msgstr "未定義"
+
+-#: utils/formatting.cpp:826 utils/formatting.cpp:843 utils/formatting.cpp:878
+-#: utils/formatting.cpp:1255
++#: utils/formatting.cpp:837 utils/formatting.cpp:854 utils/formatting.cpp:889
++#: utils/formatting.cpp:1269 utils/formatting.cpp:826 utils/formatting.cpp:843
++#: utils/formatting.cpp:878 utils/formatting.cpp:1255
+ #, kde-format
+ msgid "revoked"
+ msgstr "取り消された"
+
++#: utils/formatting.cpp:840 utils/formatting.cpp:899 utils/formatting.cpp:1266
+ #: utils/formatting.cpp:829 utils/formatting.cpp:888 utils/formatting.cpp:1252
+ #, kde-format
+ msgid "expired"
+ msgstr "失効した"
+
+-#: utils/formatting.cpp:832 utils/formatting.cpp:1258
++#: utils/formatting.cpp:843 utils/formatting.cpp:1272 utils/formatting.cpp:832
++#: utils/formatting.cpp:1258
+ #, kde-format
+ msgid "disabled"
+ msgstr "無効"
+
+-#: utils/formatting.cpp:835 utils/formatting.cpp:846 utils/formatting.cpp:886
++#: utils/formatting.cpp:846 utils/formatting.cpp:857 utils/formatting.cpp:897
++#: utils/formatting.cpp:1275 utils/formatting.cpp:835 utils/formatting.cpp:886
+ #: utils/formatting.cpp:1261
+ #, kde-format
+ msgid "invalid"
+ msgstr "有効でない"
+
+-#: utils/formatting.cpp:837
++#: utils/formatting.cpp:848 utils/formatting.cpp:837
+ #, kde-format
+ msgctxt "as in good/valid signature"
+ msgid "good"
+ msgstr "正しい"
+
+-#: utils/formatting.cpp:876
++#: utils/formatting.cpp:887 utils/formatting.cpp:876
+ #, kde-format
+ msgid "valid"
+ msgstr "有効"
+
+-#: utils/formatting.cpp:890
++#: utils/formatting.cpp:901 utils/formatting.cpp:890
+ #, kde-format
+ msgid "certificate expired"
+ msgstr "証明が失効しています"
+
+-#: utils/formatting.cpp:892
++#: utils/formatting.cpp:903 utils/formatting.cpp:892
+ #, kde-format
+ msgctxt "fake/invalid signature"
+ msgid "bad"
+ msgstr "不正"
+
+-#: utils/formatting.cpp:898
++#: utils/formatting.cpp:909 utils/formatting.cpp:898
+ #, kde-format
+ msgid "no public key"
+ msgstr "公開鍵がありません"
+
+-#: utils/formatting.cpp:900
++#: utils/formatting.cpp:911 utils/formatting.cpp:900
+ #, kde-format
+ msgid "key expired"
+ msgstr "鍵が失効しています"
+
+-#: utils/formatting.cpp:902
++#: utils/formatting.cpp:913 utils/formatting.cpp:902
+ #, kde-format
+ msgid "key revoked"
+ msgstr "鍵が取り消されています"
+
+-#: utils/formatting.cpp:904
++#: utils/formatting.cpp:915 utils/formatting.cpp:904
+ #, kde-format
+ msgid "key disabled"
+ msgstr "鍵が無効です"
+
+-#: utils/formatting.cpp:960
++#: utils/formatting.cpp:971 utils/formatting.cpp:960
+ #, kde-format
+ msgctxt "name, email, key id"
+ msgid "%1 %2 (%3)"
+ msgstr "%1 %2 (%3)"
+
+-#: utils/formatting.cpp:1002
++#: utils/formatting.cpp:1013 utils/formatting.cpp:1002
+ #, kde-format
+ msgid "Bad signature by unknown certificate %1: %2"
+ msgstr "不明の証明書 %1 による不正の署名: %2"
+
+-#: utils/formatting.cpp:1004
++#: utils/formatting.cpp:1015 utils/formatting.cpp:1004
+ #, kde-format
+ msgid "Bad signature by an unknown certificate: %1"
+ msgstr "不明の証明書による不正の署名: %1"
+
+-#: utils/formatting.cpp:1007
++#: utils/formatting.cpp:1018 utils/formatting.cpp:1007
+ #, kde-format
+ msgid "Bad signature by %1: %2"
+ msgstr "%1 による不正の署名: %2"
+
+-#: utils/formatting.cpp:1013
++#: utils/formatting.cpp:1024 utils/formatting.cpp:1013
+ #, kde-format
+ msgid "Good signature by unknown certificate %1."
+ msgstr "不明の証明書 %1 による正しい署名。"
+
+-#: utils/formatting.cpp:1015
++#: utils/formatting.cpp:1026 utils/formatting.cpp:1015
+ #, kde-format
+ msgid "Good signature by an unknown certificate."
+ msgstr "不明の証明書による正しい署名"
+
+-#: utils/formatting.cpp:1018
++#: utils/formatting.cpp:1029 utils/formatting.cpp:1018
+ #, kde-format
+ msgid "Good signature by %1."
+ msgstr "%1 による正しい署名。"
+
+-#: utils/formatting.cpp:1023
++#: utils/formatting.cpp:1034 utils/formatting.cpp:1023
+ #, kde-format
+ msgid "Invalid signature by unknown certificate %1: %2"
+ msgstr "不明の証明書 %1 による有効でない署名: %2"
+
+-#: utils/formatting.cpp:1025
++#: utils/formatting.cpp:1036 utils/formatting.cpp:1025
+ #, kde-format
+ msgid "Invalid signature by an unknown certificate: %1"
+ msgstr "不明の証明書による有効でない署名: %1"
+
+-#: utils/formatting.cpp:1028
++#: utils/formatting.cpp:1039 utils/formatting.cpp:1028
+ #, kde-format
+ msgid "Invalid signature by %1: %2"
+ msgstr "%1 による有効でない署名: %2"
+
+-#: utils/formatting.cpp:1042
++#: utils/formatting.cpp:1053 utils/formatting.cpp:1042
+ #, kde-format
+ msgid "This certificate was imported from the following sources:"
+ msgstr "この証明書は以下のソースからインポートされました:"
+
+-#: utils/formatting.cpp:1053
++#: utils/formatting.cpp:1064 utils/formatting.cpp:1053
+ #, kde-format
+ msgid "The import of this certificate was canceled."
+ msgstr "この証明書のインポートはキャンセルされました。"
+
+-#: utils/formatting.cpp:1056
++#: utils/formatting.cpp:1067 utils/formatting.cpp:1056
+ #, kde-format
+ msgid "An error occurred importing this certificate: %1"
+ msgstr "この証明書をインポートする際にエラーが起きました: %1"
+
+-#: utils/formatting.cpp:1061
++#: utils/formatting.cpp:1072 utils/formatting.cpp:1061
+ #, kde-format
+ msgid "This certificate was new to your keystore. The secret key is available."
+ msgstr "この証明書はあなたの鍵保管では新しいものでした。秘密鍵が利用可能です。"
+
+-#: utils/formatting.cpp:1062
++#: utils/formatting.cpp:1073 utils/formatting.cpp:1062
+ #, kde-format
+ msgid "This certificate is new to your keystore."
+ msgstr "この証明書はあなたの鍵保管では新しいものです。"
+
+-#: utils/formatting.cpp:1067
++#: utils/formatting.cpp:1078 utils/formatting.cpp:1067
+ #, kde-format
+ msgid "New user-ids were added to this certificate by the import."
+ msgstr "インポートでこの証明書に対し新しいユーザ ID が追加されました。"
+
+-#: utils/formatting.cpp:1070
++#: utils/formatting.cpp:1081 utils/formatting.cpp:1070
+ #, kde-format
+ msgid "New signatures were added to this certificate by the import."
+ msgstr "インポートでこの証明書に対し新しい署名が追加されました。"
+
+-#: utils/formatting.cpp:1073
++#: utils/formatting.cpp:1084 utils/formatting.cpp:1073
+ #, kde-format
+ msgid "New subkeys were added to this certificate by the import."
+ msgstr "インポートでこの証明書に対し新しい副鍵が追加されました。"
+
+-#: utils/formatting.cpp:1076
++#: utils/formatting.cpp:1087 utils/formatting.cpp:1076
+ #, kde-format
+ msgid "The import contained no new data for this certificate. It is unchanged."
+ msgstr ""
+ "インポートに際し、この証明書のためには新しいデータがなにもありませんでした。"
+ "変更はありません。"
+
+-#: utils/formatting.cpp:1092
++#: utils/formatting.cpp:1103 utils/formatting.cpp:1092
+ #, kde-format
+ msgid "Certify"
+ msgstr "証明"
+
+-#: utils/formatting.cpp:1095
++#: utils/formatting.cpp:1106 utils/formatting.cpp:1095
+ #, kde-format
+ msgid "Sign"
+ msgstr "署名"
+
+-#: utils/formatting.cpp:1098
++#: utils/formatting.cpp:1109 utils/formatting.cpp:1098
+ #, kde-format
+ msgid "Encrypt"
+ msgstr "暗号化"
+
+-#: utils/formatting.cpp:1101
++#: utils/formatting.cpp:1112 utils/formatting.cpp:1101
+ #, kde-format
+ msgid "Authenticate"
+ msgstr "認証"
+
+-#: utils/formatting.cpp:1110
++#: utils/formatting.cpp:1121 utils/formatting.cpp:1110
+ #, kde-format
+ msgctxt "(validity, protocol, creation date)"
+ msgid "(%1, %2, created: %3)"
+ msgstr "(%1, %2, 作成: %3)"
+
+-#: utils/formatting.cpp:1122
++#: utils/formatting.cpp:1133 utils/formatting.cpp:1122
+ #, kde-format
+ msgctxt "name of group of keys (n key(s), validity)"
+ msgid "%2 (1 key, %3)"
+ msgid_plural "%2 (%1 keys, %3)"
+ msgstr[0] "%2 (%1 個の鍵, %3)"
+
+-#: utils/formatting.cpp:1129
++#: utils/formatting.cpp:1140 utils/formatting.cpp:1129
+ #, kde-format
+ msgctxt "name of group of keys (n key(s), validity, tag)"
+ msgid "%2 (1 key, %3, tag)"
+ msgid_plural "%2 (%1 keys, %3, tag)"
+ msgstr[0] "%2 (%1 個の鍵, %3, タグ)"
+
+-#: utils/formatting.cpp:1136
++#: utils/formatting.cpp:1147 utils/formatting.cpp:1136
+ #, kde-format
+ msgctxt "name of group of keys (n key(s), validity, group ...)"
+ msgid "%2 (1 key, %3, unknown origin)"
+ msgid_plural "%2 (%1 keys, %3, unknown origin)"
+ msgstr[0] "%2 (%1 個の鍵, %3, 入手先不明)"
+
+-#: utils/formatting.cpp:1157
++#: utils/formatting.cpp:1168 utils/formatting.cpp:1157
+ #, kde-format
+ msgid "The certificate is marked as your own."
+ msgstr "この証明書はあなた自身のものとしるされています。"
+
+-#: utils/formatting.cpp:1159
++#: utils/formatting.cpp:1170 utils/formatting.cpp:1159
+ #, kde-format
+ msgid "The certificate belongs to this recipient."
+ msgstr "この証明書はこの宛先に属します。"
+
+-#: utils/formatting.cpp:1161
++#: utils/formatting.cpp:1172 utils/formatting.cpp:1161
+ #, kde-format
+ msgid ""
+ "The trust model indicates marginally that the certificate belongs to this "
+@@ -2464,94 +2599,89 @@ msgid ""
+ msgstr ""
+ "この信頼モデルでは、この宛先に対してこの証明書が属するかどうかギリギリです。"
+
+-#: utils/formatting.cpp:1163
++#: utils/formatting.cpp:1174 utils/formatting.cpp:1163
+ #, kde-format
+ msgid "This certificate should not be used."
+ msgstr "この証明書は使うべきではありません。"
+
+-#: utils/formatting.cpp:1167
++#: utils/formatting.cpp:1178 utils/formatting.cpp:1167
+ #, kde-format
+ msgid "There is no indication that this certificate belongs to this recipient."
+ msgstr "この宛先に対してこの証明書が属するという徴候はなにもありません。"
+
+-#: utils/formatting.cpp:1179
++#: utils/formatting.cpp:1190 utils/formatting.cpp:1179
+ #, kde-format
+ msgid "This group does not contain any keys."
+ msgstr "このグループにはなにも鍵がありません。"
+
+-#: utils/formatting.cpp:1236
++#: utils/formatting.cpp:1250 utils/formatting.cpp:1236
+ #, kde-format
+ msgctxt "@info the compliance of the key with certain requirements is unknown"
+ msgid "unknown"
+ msgstr "不明"
+
+-#: utils/formatting.cpp:1249
++#: utils/formatting.cpp:1263 utils/formatting.cpp:1249
+ #, kde-format
+ msgctxt "As in all user IDs are valid."
+ msgid "certified"
+ msgstr "証明済"
+
+-#: utils/formatting.cpp:1264
++#: utils/formatting.cpp:1278 utils/formatting.cpp:1264
+ #, kde-format
+ msgctxt "As in not all user IDs are valid."
+ msgid "not certified"
+ msgstr "証明されてません"
+
+-#: utils/formatting.cpp:1267
++#: utils/formatting.cpp:1281 utils/formatting.cpp:1267
+ #, kde-format
+ msgctxt "The validity of the user IDs has not been/could not be checked"
+ msgid "not checked"
+ msgstr "未確認"
+
+-#: utils/formatting.cpp:1276
++#: utils/formatting.cpp:1290 utils/formatting.cpp:1276
+ #, kde-format
+ msgctxt "As in all keys are valid."
+ msgid "all certified"
+ msgstr "すべてが証明されています"
+
+-#: utils/formatting.cpp:1279
++#: utils/formatting.cpp:1293 utils/formatting.cpp:1279
+ #, kde-format
+ msgctxt "As in not all keys are valid."
+ msgid "not all certified"
+ msgstr "すべてを証明はされていません"
+
+-#: utils/formatting.cpp:1312
++#: utils/formatting.cpp:1326 utils/formatting.cpp:1312
+ #, kde-format
+ msgid "Keyserver"
+ msgstr "鍵サーバ"
+
+-#: utils/formatting.cpp:1320
++#: utils/formatting.cpp:1334 utils/formatting.cpp:1320
+ #, kde-format
+ msgid "File import"
+ msgstr "ファイルからインポート"
+
+-#: utils/formatting.cpp:1322
++#: utils/formatting.cpp:1336 utils/formatting.cpp:1322
+ #, kde-format
+ msgid "Generated"
+ msgstr "生成されたもの"
+
+-#: utils/formatting.cpp:1326
++#: utils/formatting.cpp:1340 utils/formatting.cpp:1326
+ #, kde-format
+ msgid "Unknown"
+ msgstr "不明"
+
+-#: utils/formatting.cpp:1362
++#: utils/formatting.cpp:1376 utils/formatting.cpp:1362
+ #, kde-format
+ msgctxt "Certifies this key as partially trusted introducer for 'domain name'."
+ msgid "Certifies this key as partially trusted introducer for '%1'."
+ msgstr "この鍵を '%1' に対して部分的に信頼できる紹介者としてこの鍵を証明する。"
+
+-#: utils/formatting.cpp:1366
++#: utils/formatting.cpp:1380 utils/formatting.cpp:1366
+ #, kde-format
+ msgctxt "Certifies this key as fully trusted introducer for 'domain name'."
+ msgid "Certifies this key as fully trusted introducer for '%1'."
+ msgstr "この鍵を '%1' に対して完全に信頼できる紹介者として証明する。"
+
+-#: utils/gnupg.cpp:164
+-#, kde-format
+-msgid "Certificate Manager and Unified Crypto GUI"
+-msgstr "証明書マネージャと統合Crypto GUI"
+-
+ #: utils/hex.cpp:35
+ #, kde-format
+ msgid "Invalid hex char '%1' in input stream."
+@@ -2562,5 +2692,10 @@ msgstr "入力ストリームで無効な16進文字 '%1'"
+ msgid "Premature end of hex-encoded char in input stream"
+ msgstr "入力ストリームで16進エンコードの文字が途中で終了しました"
+
++#: utils/gnupg.cpp:164
++#, kde-format
++msgid "Certificate Manager and Unified Crypto GUI"
++msgstr "証明書マネージャと統合Crypto GUI"
++
+ #~ msgid "%1: %2"
+ #~ msgstr "%1: %2"
