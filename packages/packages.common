@@ -198,11 +198,11 @@ chk  2d6b82ab72c38e07105ab5b46fc086328b0a11f97dce7032e847d50bf921c428
 #
 # GpgEX
 #
-# last-changed: 2022-11-18
+# last-changed: 2023-12-01
 # by: ah
-# verified: distsigkey.gpg
-#file gpgex/gpgex-1.0.10-beta5.tar.bz2
-#chk  f7e4c619aefed02dfbb07363a4435878a50999b290c60779e670fceb826e283e
+# verified: swdb
+file gpgex/gpgex-1.0.10.tar.bz2
+chk  849f88c2c4c29d4f0f021a8d6b9425ba3fc9d9b706c3e43a0e0e063e172498cd
 
 #
 #  GnuPG utilities
@@ -526,13 +526,6 @@ server https://gnupg.org/ftp/gcrypt/snapshots
 # verified: Tarball created by aheinecke.
 # file gpgol/gpgol-2.5.10-beta23.tar.xz
 # chk 4582dd9d6c5f80018cd60102edf828d3e4fed159364af5fa8214a8fb17229b9a
-
-# gpgex
-# last changed: 2022-12-06
-# by: aheinecke
-# verified: Tarball created by aheinecke.
-file gpgex/gpgex-1.0.10-beta5.tar.xz
-chk 2c227634528ef76bcca7fd4b7fe5c38a535f6e68bbe5b2cdc6cc4a74810b2dba
 
 # gpg4win-tools
 # last changed: 2023-11-21
