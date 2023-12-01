@@ -101,7 +101,7 @@ Noteworthy changes in Version 3.2.0 (unreleased)
      Systemaufrufe zum Starten von Kleopatra wurde etwa halbiert. [T6259]
 
 (en) Kleopatra: The advanced options in the certification view are now
-     automatically visible if they were used in the last certification. [T6480]
+     automatically visible if they were open in the last certification. [T6480]
 
 (de) Kleopatra: Die erweiterten Optionen zur Beglaubigung bleiben
      nun ausgeklappt, wenn sie bei der letzten Beglaubigung ausgeklappt
@@ -109,16 +109,16 @@ Noteworthy changes in Version 3.2.0 (unreleased)
 
 (en) Kleopatra: Windows dark mode is now fully supported. [T4066]
 
-(de) Kleopatra: Der dunkle Windows-Modus wird nun vollständig
+(de) Kleopatra: Der Windows Dark Mode wird nun vollständig
      unterstützt. [T4066]
 
-(en) Kleopatra: Various invalid operations, such as signing with an
-     expired certificate, which would have resulted in errors, can no longer
-     be triggered, with an indication of why this is the case. [T6742 T6788]
+(en) Kleopatra: Some invalid operations, such as signing with an expired
+     certificate, which would have resulted in errors, can no longer be
+     triggered. The reason for this is indicated, too. [T6742 T6788]
 
 (de) Kleopatra: Verschiedene ungültige Operationen, z. B. das Signieren
      mit einem abgelaufenen Zertifikat, die zu Fehlern geführt hätten,
-     können nicht mehr ausgelöst werden, mit einer Angabe, warum dies der
+     können nicht mehr ausgelöst werden. Mit Anzeige, warum dies der
      Fall ist. [T6742 T6788]
 
 (en) Kleopatra: The support for Telesec signature cards has been
@@ -142,7 +142,7 @@ Noteworthy changes in Version 3.2.0 (unreleased)
      sind nun möglich. [T6736]
 
 (en) Kleopatra: The dialog to extend OpenPGP certificates has been
-     improved, and redundant options removed. [T6621]
+     improved and redundant options removed. [T6621]
 
 (de) Kleopatra: Der Dialog um OpenPGP-Zertifikate zu verlängern wurde
      verbessert und überflüssige Optionen entfernt. [T6621]
@@ -157,35 +157,34 @@ Noteworthy changes in Version 3.2.0 (unreleased)
      checks and is much faster and reliable. [T6827]
 
 (de) GpgOL: Die Entwurfsverschlüsselung mit S/MIME-Zertifikaten
-     wurde massiv verbessert und funktioniert nun zuverlässig. So werden
-     beispielsweise keine CRL-Prüfungen mehr durchgeführt. [T6827]
+     wurde massiv verbessert und funktioniert nun zuverlässig. Es werden
+     hierbei z.B. keine CRL-Prüfungen mehr durchgeführt. [T6827]
 
 (en) GpgOL: The error handling was improved if a preference for S/MIME
-     is set, signing selected but no signing certificate can be found. See:
-     https://gnupg.com/vsd/registry-settings.html (smimeNoCertSigErr) on how
-     to add a custom message for that case to instruct users how to obtai
-     a certificate in your organization. [T6683]
+     is set and signing selected but no signing certificate can be found.
+     See: https://gnupg.com/vsd/registry-settings.html (smimeNoCertSigErr)
+     on how to add a custom message to instruct users what to do in this
+     case. [T6683]
 
-(de) GpgOL: Die Fehlerbehandlung wurde stark verbessert für
-     den Fall, dass S/MIME aktiviert und bevorzugt ist, das Signieren
-     ausgewählt ist, aber kein Signaturzertifikat verfügbar ist. Siehe:
-     https://gnupg.com/vsd/registry-settings.html (smimeNoCertSigErr) wie Sie
-     eine benutzerdefinierte Nachricht für diesen Fall hinzufügen können,
-     um Nutzende anzuweisen, wie sie in Ihrer Organisation ein Zertifikat
-     erhalten. [T6683]
+(de) GpgOL: Die Fehlerbehandlung wurde stark verbessert für den Fall,
+     dass S/MIME aktiviert und bevorzugt sowie Signieren ausgewählt
+     ist, ohne dass ein  Signaturzertifikat verfügbar ist. Siehe:
+     https://gnupg.com/vsd/registry-settings.html (smimeNoCertSigErr) dazu,
+     wie Sie eine benutzerdefinierte Anweisung für diesen Fall hinzufügen
+     können. [T6683]
 
 (en) GpgOL: It is now possible to encrypt to S/MIME certificates that
-     are untrusted or otherwise cannot be validated because of CRL errors. In
-     this case, a warning dialog is shown allowing the user to override the
+     are untrusted or cannot be validated because of CRL errors. In
+     this case a warning dialog is shown, allowing the user to override the
      errors. This is not VS-NfD compliant but can be used for unrestricted
      encryption. [T6701]
 
 (de) GpgOL: Es ist nun möglich, an S/MIME-Zertifikate zu verschlüsseln,
-     die nicht vertrauenswürdig sind oder anderweitig aufgrund von CRL-Fehlern
+     die nicht vertrauenswürdig sind oder aufgrund von CRL-Fehlern
      nicht validiert werden können. In diesem Fall wird ein Warnhinweis
      angezeigt, der es dem Benutzer ermöglicht, die Fehler zu ignorieren.
-     Dies ist nicht VS-NfD konform kann aber für nicht eingestufte Kommunikation
-     verwendet werden. [T6701]
+     Dies ist nicht VS-NfD konform, kann aber für nicht eingestufte
+     Kommunikation verwendet werden. [T6701]
 
 (en) GpgOL: Mails without the correct MIME type but which still look
      like crypto mails are now decrypted. This improves compatibility with
@@ -207,9 +206,9 @@ Noteworthy changes in Version 3.2.0 (unreleased)
      machen, sie mit Kleopatra zu verknüpfen. Dies ist beispielsweise für
      Benutzer sichtbar, die die Outlook-Web-Schnittstelle verwenden. [T6656]
 
-(en) GpgOL: The initialization has been moved to avoid the wrong message
+(en) GpgOL: The initialization has been moved to avoid the incorrect message
      that GpgOL is causing a slow start of Outlook. This message might still
-     be shown since Outlook shows this sometimes regardless of actual timings,
+     be shown, since Outlook shows this sometimes regardless of actual timings,
      but the delay should be 0ms. [T6856]
 
 (de) GpgOL: Die Initialisierung des Plugins wurde nun verschoben, um
@@ -226,8 +225,8 @@ Noteworthy changes in Version 3.2.0 (unreleased)
      Probleme mit den verfügbaren Zertifikaten besser anzuzeigen, falls eine
      konforme Verschlüsselung nicht möglich ist. [T6742 T6743 T6744]
 
-(en) GpgOL: The security approval dialog now increases its size based
-     on the number of recipients. [T6837]
+(en) GpgOL: The security approval dialog now increases its size based on
+     the number of recipients to avoid having to use a scroll bar. [T6837]
 
 (de) GpgOL: Der Sicherheitsbestätigungs-Dialog verändert nun seine
      Größe basierend auf der Anzahl der Empfänger, um Scrollbalken zu
@@ -237,10 +236,10 @@ Noteworthy changes in Version 3.2.0 (unreleased)
      .part file to improve error handling and canceling the operation without
      leaving a broken archive in the file system. [T6584]
 
-(de) Kleopatra: Beim Erstellen von Archiven werden diese nun als
+(de) Kleopatra: Beim Erstellen von Archiven werden diese nun zunächst als
      .part-Datei geschrieben, um die Fehlerbehandlung zu verbessern und
-     den Vorgang abzubrechen, ohne ein defektes Archiv im Dateisystem zu
-     hinterlassen. [T6584]
+     den Vorgang abbrechen zu können, ohne ein defektes Archiv im
+     Dateisystem zu hinterlassen. [T6584]
 
 (en) Kleopatra: Updating certificates now also looks for updates in a
      Web Key Directory if one exists for the domain. [T5951]
@@ -258,25 +257,25 @@ Noteworthy changes in Version 3.2.0 (unreleased)
 --- Bug Fixes ---
 
 (en) GnuPG: The PKCS#12 parser has been improved to allow for more
-     formats. This should fix several issues when trying to import .p12 files
-     with Kleopatra. [T6536]
+     formats. This should fix several issues when trying to import
+     .p12 files with Kleopatra. [T6536]
 
 (de) GnuPG: Der Parser für das PKCS#12 Dateiformat wurde erweitert,
      um mehr Formate zu unterstützen. Dies sollte Probleme beim Import von
      .p12 Dateien in Kleopatra beheben. [T6536]
 
 (en) Kleopatra: The state of Kleopatra is now properly stored in
-     configuration files when Kleopatra is shut down when the user logs
-     out. [T6667]
+     configuration files when Kleopatra is shut down on user log out.
+     [T6667]
 
 (de) Kleopatra: Der Zustand von Kleopatra wird nun ordnungsgemäß in
      Konfigurationsdateien gespeichert, wenn Kleopatra beim Ausloggen des
      Benutzers geschlossen wird. [T6667]
 
-(en) Kleopatra: Opening a certificate with Kleopatra will now open the
+(en) Kleopatra: Importing a certificate with Kleopatra will now open the
      main window of Kleopatra. [T6671]
 
-(de) Kleopatra: Das Öffnen einer Zertifikatsdatei öffnet nun auch das
+(de) Kleopatra: Das Importieren einer Zertifikatsdatei öffnet nun auch das
      Hauptfenster von Kleopatra. [T6671]
 
 (en) Kleopatra: No longer unnecessarily watches the clipboard for changes;
@@ -285,8 +284,8 @@ Noteworthy changes in Version 3.2.0 (unreleased)
 
 (de) Kleopatra: Es wird nun nicht mehr unnötigerweise die Zwischenablage
      überwacht. Dies könnte Probleme mit Passwortmanagern verursacht haben,
-     die die Zwischenablage leeren würden, sobald eine Fremdanwendung darauf
-     zugreifen wollte. [T6531]
+     die die Zwischenablage leeren, sobald eine Fremdanwendung darauf
+     zugreifen will. [T6531]
 
 (en) Kleopatra: It is no longer possible to set expiry dates in the
      past. [T6519]
@@ -295,12 +294,12 @@ Noteworthy changes in Version 3.2.0 (unreleased)
      Zertifikats in die Vergangenheit zu legen. [T6519]
 
 (en) Kleopatra: Importing multiple certificates at once can no longer
-     cause Kleopatra to lock up in rare cases. [T6323]
+     cause Kleopatra to lock up. [T6323]
 
 (de) Kleopatra: Beim gleichzeitigen Importieren mehrerer Zertifikate
-     kommt es nicht mehr vor, dass Kleopatra selten einfriert. [T6323]
+     kann es nicht mehr vorkommen, dass Kleopatra einfriert. [T6323]
 
-(en) Kleopatra: When generating keys on a smartcard in compliance mode,
+(en) Kleopatra: When generating keys on a smart card in compliance mode,
      only compliant algorithms are offered. [T6750]
 
 (de) Kleopatra: Beim Erstellen von Schlüsselmaterial auf Smartcards
@@ -349,7 +348,7 @@ Noteworthy changes in Version 3.2.0 (unreleased)
      Mails mit ungültiger Signatur ohne Inhalt angezeigt wurden. [T6624]
 
 (en) GpgOL: When generating a key through the security approval dialog,
-     the configured algorithms from GnuPG are now used. [T6805]
+     the configured default algorithms from GnuPG are now used. [T6805]
 
 (de) GpgOL: Beim Erstellen von Schlüsseln über den
      Sicherheitsbestätigungs-Dialog von GpgOL werden nun die Einstellungen
