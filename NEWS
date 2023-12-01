@@ -8,6 +8,22 @@ Noteworthy changes in Version 3.2.0 (unreleased)
 
 --- Highlights ---
 
+(en) GnuPG: Elliptic-curve cryptography (ECC) has been implemented for S/MIME
+     and the approval documentation adapted accordingly. For now only brainpool
+     curves are VS-NfD compliant. Other curves can be used. [T6253, T6802]
+
+(de) GnuPG: Elliptische-Kurven-Kryptografie (ECC) wurde für S/MIME implementiert
+     und die Zulassungsunterlagen entsprechend angepasst. Derzeit sind nur
+     brainpool Schlüssel VS-NfD konform. Andere Kurven können dennoch verwendet
+     werden. [T6253, T6802]
+
+(en) GnuPG: AES-OCB has been added as a new encryption algorithm, this is
+     compliant for restricted documents in the updated approval documentation.
+     [T6263]
+
+(de) GnuPG: AES-OCB wird als neues Verschlüsselungs-Verfahren unterstützt und
+     ist als VS-NfD konform zugelassen. [T6263]
+
 (en) Kleopatra: It is now possible to certify multiple certificates at once
      using the group interface. [T6469]
 
@@ -15,8 +31,102 @@ Noteworthy changes in Version 3.2.0 (unreleased)
      beglaubigen. Die Funktion steht über die Gruppen-Verwaltung zur
      Verfügung. [T6469]
 
+(en) Kleopatra: A new mail viewer mode has been added so that crypto mails
+     received by mail clients without PGP/MIME or S/MIME support can still
+     be decrypted and the contents and attachments accessed comfortably.
+     This means that you can open an SMIME.p7m file or
+     openpgp-encrypted-message.asc attachment with Kleopatra and it will
+     be displayed as a mail. [T6199]
+
+(de) Kleopatra: Ein neuer Dialog zur Mailanzeige wurde hinzugefügt, damit
+     Krypto Mails auch von Empfängern die keinen S/MIME oder PGP/MIME
+     kompatiblen Mail Klienten haben, komfortabel an den Inhalt der Mail
+     kommen. Dies bedeutet das Dateien wie SMIME.p7m oder
+     openpgp-encrypted-message.asc die nur als Anhang angezeigt wurden
+     nun mit Kleopatra als Mail geöffnet werden können. [T6199]
+
+(en) Installer: The installer now properly terminates running background
+     processes, removing the need to restart the computer after upgrading
+     to a new GnuPG VS-Desktop version. [T6567]
+
+(de) Installer: Das Installationspaket beendet nun laufende
+     Hintergrundprozesse besser. Daher ist ein Neustart nach einem
+     Update von GnuPG VS-Desktop nicht mehr nötig. [T6567]
 
 --- Features ---
+
+(en) GnuPG: Support for proxy authentication using the Negotiation
+     method has been added. [T6719]
+
+(de) GnuPG: Unterstützung für Proxy Authentifizierung nach der "Negotiation"
+     Methode wurde hinzugefügt. [T6719]
+
+(en) GnuPG: Keyserver can now be configured to the value "none" to avoid
+     unneccessary queries to non existing keyservers that would slow down
+     the system. [T6708]
+
+(en) GnuPG: Es kann nun der Wert "none" als Schlüsselserver verwendet
+     werden. Dadurch werden unnötige Abfragen gegen nicht erreichbare
+     Server verhindert. [T6708]
+
+(en) GnuPG: A new option has been added to ignore specific CRL extensions.
+     This can help as a workaround for problems with specific CRLs.
+     [T6545]
+
+(de) GnuPG: Eine neue Option wurde hinzugefügt um spezielle CRL Erweiterungen
+     zu ignorieren. Dies kann helfen um Probleme kurzfristig zu Umgehen.
+     [T6545]
+
+(en) GnuPG: Automatic proxy detection has been improved. [T5768]
+
+(de) GnuPG: Die automatische erkennung von Proxy Server Einstellungen wurde
+     verbessert. [T5768]
+
+(en) GnuPG: Detection of already compressed data has been improved. This
+     can drastically increase the performance when encrypting already compressed
+     data. [T6332]
+
+(de) GnuPG: Die Erkennung von bereits komprimierten Daten wurde verbessert.
+     Dies kann bei der Verschlüsselung bereits komprimierter Daten eine
+     drastische Geschwindigskeitsverbesserung bedeuten. [T6332]
+
+(en) Kleopatra: The start time of Kleopatra has been drastically improved
+     on throttled systems that have third party software installed, which
+     manipulates system calls. The amount of system calls to start
+     Kleopatra has been roughly halved.
+     [T6259]
+
+(de) Kleopatra: Die Startzeit von Kleopatra, insbesondere auf gedrosselten
+     Systemen mit Drittanbieter Software welche Systemaufrufe manipuliert
+     wurde stark verbessert. Die Anzahl der Systemaufrufe zum Start von
+     Kleopatra wurde in etwa halbiert. [T6259]
+
+(en) Kleopatra: The advanced options in the certification view are now
+     automatically visible if they were used in the last certification.
+     [T6480]
+
+(de) Kleopatra: Die erweiterten Optionen zur Beglaubigung bleiben nun
+     ausgeklappt wenn Sie bei der vorherigen Beglaubigung ausgeklappt
+     waren. [T6480]
+
+(en) Kleopatra: Windows dark mode is now fully supported. [T4066]
+
+(de) Kleopatra: Dunkles Windows layout wird nun unterstützt. [T4066]
+
+(en) Kleopatra: Various invalid operations, e.g. signing with an expired
+     certificate which would have resulted in errors can no longer be
+     triggered, with an indication why this is the case. [T6742 T6788]
+
+(de) Kleopatra: Verschiedene ungültige Operationen, wie z.B. das signieren
+     mit einem abgelaufenen Zertifikat werden nun nicht mehr angeboten, da
+     Sie einen Fehler erzeugt hätten. Es wird nun dargestellt warum eine
+     derartige Operation nicht funktioniert. [T6742 T6788]
+
+(en) Kleopatra: The support for Telesec signature cards has been improved.
+     [T6830]
+
+(de) Kleopatra: Die Unterstützung von Telesec Signaturkarten wurde verbessert.
+     [T6830]
 
 (en) Kleopatra: When exporting or publishing certificates the user
      is now informed if there are uncertified certificates in the export.
@@ -25,6 +135,18 @@ Noteworthy changes in Version 3.2.0 (unreleased)
 (de) Kleopatra: Es wird nun eine Information angezeigt wenn Zertifikate
      ohne Beglaubigung exportiert werden sollen. Dies ist besonders beim
      exportieren von Gruppen hilfreich. [T6766]
+
+(en) Kleopatra: Expiry dates after 19.01.2038 (year 2038 bug) are now
+     possible. [T6736]
+
+(de) Kleopatra: Ablaufdaten nach dem 19.01.2038 (Jahr 2038 Fehler) sind
+     nun möglich. [T6736]
+
+(en) Kleopatra: The dialog to extend OpenPGP certificates has been improved
+     and redundant options removed. [T6621]
+
+(de) Kleopatra: Der Dialog um OpenPGP Zertifikate zu verlängern wurde
+     verbessert und überflüssige Optionen entfernt. [T6621]
 
 (en) GpgOL: Added support for RFC2231 encoded attachment filenames which
      this increases the compatibility with Apple Mail. [T6604]
@@ -114,14 +236,78 @@ Noteworthy changes in Version 3.2.0 (unreleased)
      basierend auf der Anzahl der Empfänger um Scrollbalken zu vermeiden.
      [T6837]
 
+(en) Kleopatra: When creating archives they are now written out as a .part
+     file to improve error handling and cancelling the operation without
+     leaving a broken archive in the filesystem. [T6584]
+
+(de) Kleopatra: Beim erstellen von Archiven werden nun .part Dateien geschrieben
+     damit diese im Fehlerfall oder beim Abbruch gelöscht werden können ohne
+     kaputte Archive auf der Festplatte zu hinterlassen. [T6584]
+
+(en) Kleopatra: Updating certificates now also looks for updates in a
+     Web Key Directory if one exists for the domain. [T5951]
+
+(de) Kleopatra: Das aktualisieren von Zertifikaten berücksichtigt nun auch
+     ein eventuell vorhandenes Web Key Directory für die entsprechende domäne.
+     [T5951]
+
+(en) Kleopatra: Progress bars are now also properly shown for S/MIME file
+     operations. [T6534]
+
+(de) Kleopatra: Fortschrittsbalken werden nun auch für S/MIME Dateioperationen
+     korrekt angezeigt. [T6534]
+
 --- Bug Fixes ---
+
+(en) GnuPG: The PKCS#12 parser has been improved to allow for more formats.
+     This should fix several issues when trying to import .p12 files with
+     Kleopatra. [T6536]
+
+(de) GnuPG: Der parser für das PKCS#12 Dateiformat wurde erweitert um mehr
+     Formate zu unterstützen. Dies sollte Probleme beim import von .p12 Dateien
+     in Kleopatra beheben. [T6536]
+
+(en) Kleopatra: The state of Kleopatra is now properly stored in configuration
+     files when Kleopatra is shut down when the user logs out. [T6667]
+
+(de) Kleopatra: Der Zustand von Kleopatra wird nun auch beim ausloggen aus
+     Windows in Konfigurationsdateien gespeichert. [T6667]
+
+(en) Kleopatra: Opening a certificate with Kleopatra will now open the
+     main window of Kleopatra. [T6671]
+
+(de) Kleopatra: Das öffnen einer Zertifikatsdatei öffnet nun auch das
+     Kleopatra Fenster. [T6671]
+
+(en) Kleopatra: No longer unnecessarily watches the clipboard for changes,
+     this could cause issues with password managers that would empty the
+     clipboard as soon as a third party application tried to access it.
+     [T6531]
+
+(de) Kleopatra: Es wird nun nicht mehr überflüssigerweise die Zwischenablage
+     überwacht. Dis konnte Probleme mit Passwort Managern erzeugen welche die
+     Zwischenablage löschten sobald eine fremde Software darauf zugreifen
+     wollte. [T6531]
+
+(en) Kleopatra: It is no longer possible to set expiry dates in the past.
+     [T6519]
+
+(de) Kleopatra: Es ist nun nicht mehr möglich das Ablaufdatum eines
+     Zertifikats in die Vergangenheit zu legen. [T6519]
+
+(en) Kleopatra: Importing multiple certificates at once can no longer
+     cause Kleopatra to lock up in rare cases. [T6323]
+
+(de) Kleopatra: Beim gleichzeitigen Importieren mehrer Zertifikate kommt
+     es nicht mehr vor das Kleopatra selten einfriert. [T6323]
+
+(en) Kleopatra: It is no longer possible to set expi
 
 (en) Kleopatra: When generating keys on a smartcard in compliance mode,
      only compliant algorithms are offered. [T6750]
 
 (de) Kleopatra: Beim erstellen von Schlüsselmaterial auf Smartcards werden
      im konformen Modus auch nur konforme Algorithmen angeboten. [T6750]
-
 
 (en) GpgOL: A crash has been fixed that happened reliably when sending crypto
      mails with attachments without a filename. This happened for some
@@ -180,7 +366,7 @@ Noteworthy changes in Version 3.2.0 (unreleased)
      Sicherheitsbestätigungs-Dialog funktioniert nun wie vorgesehen.
      [T6813 T6823 T6566]
 
----
+--------Changes in Gpg4win 4.2.0 ------------
 
 (en) Kleopatra: Folder encryption and decryption (gpgtar) has been completely
      reworked so that it now has roughly the same performance as on the
